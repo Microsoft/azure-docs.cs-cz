@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: oanapl
 ms.openlocfilehash: a76ae803b1283ce50d2f4e259943ce5ffcf0274c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282013"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84692474"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Řešení problémů pomocí sestav o stavu systému
 Komponenty služby Azure Service Fabric poskytují zprávy o stavu systému pro všechny entity v clusteru přímo ze seznamu. [Health Store](service-fabric-health-introduction.md#health-store) vytvoří a odstraní entity založené na sestavách systému. Uspořádává je také v hierarchii, která zachycuje interakce entit.
@@ -639,30 +639,30 @@ HealthEvents          :
 
 Vlastnost a text indikují, které rozhraní API bylo zablokováno. Další kroky, které je potřeba provést pro různá zablokovaná rozhraní API, se liší. Jakékoli rozhraní API na *IStatefulServiceReplica* nebo *IStatelessServiceInstance* je obvykle chyba v kódu služby. Následující část popisuje, jak se tyto překlady na [model Reliable Services](service-fabric-reliable-services-lifecycle.md):
 
-- **IStatefulServiceReplica. Open**: Toto upozornění indikuje, že volání `CreateServiceInstanceListeners`, `ICommunicationListener.OpenAsync`nebo pokud je přepsáno `OnOpenAsync` , je zablokované.
+- **IStatefulServiceReplica. Open**: Toto upozornění indikuje, že volání `CreateServiceInstanceListeners` , `ICommunicationListener.OpenAsync` nebo pokud je přepsáno, `OnOpenAsync` je zablokované.
 
-- **IStatefulServiceReplica. Close** a **IStatefulServiceReplica. Abort**: Nejběžnější případ je služba, která nedodržuje token zrušení předaný do `RunAsync`. Může to také být, `ICommunicationListener.CloseAsync`že pokud je přepsáno, `OnCloseAsync` bude zablokováno.
+- **IStatefulServiceReplica. Close** a **IStatefulServiceReplica. Abort**: Nejběžnější případ je služba, která nedodržuje token zrušení předaný do `RunAsync` . Může to také být, že `ICommunicationListener.CloseAsync` Pokud je přepsáno, `OnCloseAsync` bude zablokováno.
 
-- **IStatefulServiceReplica. ChangeRole** a **IStatefulServiceReplica. ChangeRole (N)**: nejběžnějším případem je služba, která nedodržuje token zrušení předané do `RunAsync`. V tomto scénáři je nejlepším řešením restartování repliky.
+- **IStatefulServiceReplica. ChangeRole** a **IStatefulServiceReplica. ChangeRole (N)**: nejběžnějším případem je služba, která nedodržuje token zrušení předané do `RunAsync` . V tomto scénáři je nejlepším řešením restartování repliky.
 
-- **IStatefulServiceReplica. ChangeRole (P)**: Nejčastějším případem je, že Služba nevrátila úlohu z `RunAsync`.
+- **IStatefulServiceReplica. ChangeRole (P)**: Nejčastějším případem je, že Služba nevrátila úlohu z `RunAsync` .
 
 Další volání rozhraní API, která můžou zablokovat, jsou v rozhraní **IReplicator** . Příklad:
 
-- **IReplicator. CatchupReplicaSet**: Toto upozornění indikuje jednu ze dvou věcí. Neexistují žádné nedostatečné repliky. Pokud se chcete podívat, jestli se jedná o tento případ, podívejte se na stav repliky v oddílu nebo v sestavě stavu System.FM pro zablokované překonfigurování. Nebo repliky nepotvrzující operace. Pomocí rutiny `Get-ServiceFabricDeployedReplicaDetail` PowerShellu se dá určit průběh všech replik. Problém se nachází v replikách, `LastAppliedReplicationSequenceNumber` jejichž hodnota je za `CommittedSequenceNumber` hodnotou primární.
+- **IReplicator. CatchupReplicaSet**: Toto upozornění indikuje jednu ze dvou věcí. Neexistují žádné nedostatečné repliky. Pokud se chcete podívat, jestli se jedná o tento případ, podívejte se na stav repliky v oddílu nebo v sestavě stavu System.FM pro zablokované překonfigurování. Nebo repliky nepotvrzující operace. Pomocí rutiny PowerShellu se `Get-ServiceFabricDeployedReplicaDetail` dá určit průběh všech replik. Problém se nachází v replikách, jejichž `LastAppliedReplicationSequenceNumber` hodnota je za hodnotou primární `CommittedSequenceNumber` .
 
-- **IReplicator. BuildReplica (\<Remote ReplicaID>)**: Toto upozornění indikuje problém v procesu sestavení. Další informace najdete v tématu [životní cyklus repliky](service-fabric-concepts-replica-lifecycle.md). Příčinou může být nepřesná konfigurace adresy replikátoru. Další informace najdete v tématech [Konfigurace stavového Reliable Services](service-fabric-reliable-services-configuration.md) a [určení prostředků v manifestu služby](service-fabric-service-manifest-resources.md). Může se také jednat o problém na vzdáleném uzlu.
+- **IReplicator. BuildReplica ( \<Remote ReplicaId> )**: Toto upozornění indikuje problém v procesu sestavení. Další informace najdete v tématu [životní cyklus repliky](service-fabric-concepts-replica-lifecycle.md). Příčinou může být nepřesná konfigurace adresy replikátoru. Další informace najdete v tématech [Konfigurace stavového Reliable Services](service-fabric-reliable-services-configuration.md) a [určení prostředků v manifestu služby](service-fabric-service-manifest-resources.md). Může se také jednat o problém na vzdáleném uzlu.
 
 ### <a name="replicator-system-health-reports"></a>Replikace sestav stavu systému
-**Fronta replikace je plná:**
-**System. Replicator** ohlásí upozornění, když je fronta replikace plná. V primárním případě se fronta replikace obvykle zaplní, protože jedna nebo více sekundárních replik je pomalé k potvrzení operací. V sekundárním případě k tomu obvykle dochází, když je služba pomalé pro použití operací. Upozornění je vymazáno, pokud již není fronta zaplněna.
+**Fronta replikace je plná:** 
+ **System. Replicator** hlásí upozornění, když je fronta replikace plná. V primárním případě se fronta replikace obvykle zaplní, protože jedna nebo více sekundárních replik je pomalé k potvrzení operací. V sekundárním případě k tomu obvykle dochází, když je služba pomalé pro použití operací. Upozornění je vymazáno, pokud již není fronta zaplněna.
 
 * **SourceId**: System. Replicator
 * **Vlastnost**: **PrimaryReplicationQueueStatus** nebo **SecondaryReplicationQueueStatus**, v závislosti na roli repliky.
 * **Další kroky**: Pokud je sestava na primárním uzlu, ověřte připojení mezi uzly v clusteru. Pokud jsou všechna připojení v pořádku, může při použití operací dojít k nejméně jednomu pomalému sekundárnímu zpomalení s vysokou latencí disku. Pokud je sestava na sekundárním počítači, nejprve na uzlu ověřte využití disku a výkon. Pak zkontrolujte odchozí připojení z pomalého uzlu k primárnímu.
 
-**RemoteReplicatorConnectionStatus:**
-**System. Replicator** v primární replice oznamuje, že připojení k sekundárnímu (vzdálenému) replikátoru není v pořádku. Adresa vzdáleného replikátoru je zobrazena ve zprávě sestavy, což usnadňuje detekci, zda byla předána Chybná konfigurace, nebo pokud dojde k problémům se sítí mezi replikami.
+**RemoteReplicatorConnectionStatus:** 
+ **System. Replicator** v primární replice hlásí upozornění v případě, že připojení k sekundárnímu (vzdálenému) replikátoru není v pořádku. Adresa vzdáleného replikátoru je zobrazena ve zprávě sestavy, což usnadňuje detekci, zda byla předána Chybná konfigurace, nebo pokud dojde k problémům se sítí mezi replikami.
 
 * **SourceId**: System. Replicator
 * **Vlastnost**: **RemoteReplicatorConnectionStatus**.

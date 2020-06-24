@@ -13,19 +13,19 @@ ms.custom:
 - seo-javascript-september2019
 - seo-python-october2019
 - tracking-python
-ms.openlocfilehash: b140371c42fffd55b271fa0215db89ea9d07da0c
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 1b3a97a11c8d5782b8b7577d6afccbbdaadea0e7
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559834"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85116566"
 ---
 # <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>Rychlý Start: sestavení aplikace v Pythonu pomocí Azure Cosmos DB účtu rozhraní SQL API
 
 > [!div class="op_single_selector"]
 > * [.NET V3](create-sql-api-dotnet.md)
 > * [ROZHRANÍ .NET V4](create-sql-api-dotnet-V4.md)
-> * [Java SDK v4](create-sql-api-java.md)
+> * [Sada Java SDK v4](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
@@ -52,7 +52,7 @@ Nyní můžete použít nástroj Průzkumník dat v Azure Portal k vytvoření d
     
     Úplně vpravo se zobrazí oblast **Přidat kontejner** , možná se budete muset posunout doprava, aby se zobrazila.
 
-    ![Průzkumník dat na portálu Azure Portal – podokno Přidat kontejner](./media/create-sql-api-python/azure-cosmosdb-data-explorer.png)
+    :::image type="content" source="./media/create-sql-api-python/azure-cosmosdb-data-explorer.png" alt-text="Průzkumník dat na portálu Azure Portal – podokno Přidat kontejner":::
 
 2. Na stránce **Přidat kontejner** zadejte nastavení pro nový kontejner.
 
@@ -108,7 +108,7 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
 
 1. V Azure Cosmos DB účtu v [Azure Portal](https://portal.azure.com/)v levém navigačním panelu vyberte **klíče** . Pomocí tlačítek pro kopírování na pravé straně obrazovky zkopírujte **identifikátor URI** a **primární klíč** do souboru *cosmos_get_started. py* v dalším kroku.
 
-    ![Získání přístupového klíče a identifikátoru URI v nastavení klíčů v Azure Portal](./media/create-sql-api-dotnet/access-key-and-uri-in-keys-settings-in-the-azure-portal.png)
+    :::image type="content" source="./media/create-sql-api-dotnet/access-key-and-uri-in-keys-settings-in-the-azure-portal.png" alt-text="Získání přístupového klíče a identifikátoru URI v nastavení klíčů v Azure Portal":::
 
 2. V Visual Studio Code otevřete soubor *cosmos_get_started. py* v *\git-samples\azure-Cosmos-DB-Python-Getting-Started*.
 

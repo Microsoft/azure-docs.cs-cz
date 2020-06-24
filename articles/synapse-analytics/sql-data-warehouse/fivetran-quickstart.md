@@ -6,17 +6,17 @@ author: mlee3gsd
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 10/12/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 4cf6c82b330a2672fdde39c3acf156a74cb57e34
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 96e679c0b284cc649dbde3fba1b640f4e09df05e
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659974"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85201646"
 ---
 # <a name="quickstart-fivetran-with-data-warehouse"></a>Rychlý Start: Fivetran s datovým skladem 
 

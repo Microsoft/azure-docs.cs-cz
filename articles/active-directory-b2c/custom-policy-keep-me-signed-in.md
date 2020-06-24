@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 041fb8d881307b52fb170a11618f930debc522a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3294acecaf98de1f55e1aff8ec97defc1dd13fc7
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80803156"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202700"
 ---
 # <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>Povolit možnost zůstat přihlášeni (políčko zůstat přihlášeni) v Azure Active Directory B2C
 
@@ -34,9 +34,9 @@ Uživatelé by tuto možnost neměli na veřejných počítačích povolit.
 
 ## <a name="configure-the-page-identifier"></a>Konfigurace identifikátoru stránky
 
-Chcete-li povolit políčko zůstat přihlášeni, nastavte element `DataUri` definice obsahu na [identifikátor](contentdefinitions.md#datauri) `unifiedssp` stránky a [verzi stránky](page-layout.md) *1.1.0* nebo vyšší.
+Chcete-li povolit políčko zůstat přihlášeni, nastavte element definice obsahu `DataUri` na [identifikátor stránky](contentdefinitions.md#datauri) `unifiedssp` a [verzi stránky](page-layout.md) *1.1.0* nebo vyšší.
 
-1. Otevřete soubor rozšíření vašich zásad. Například <em> `SocialAndLocalAccounts/` </em>. Tento soubor rozšíření je jedním ze souborů zásad, které jsou součástí úvodní sady Custom Policy Pack, které byste měli mít k dispozici v rámci svých požadavků. Začněte [s vlastními zásadami](custom-policy-get-started.md).
+1. Otevřete soubor rozšíření vašich zásad. Například <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em> . Tento soubor rozšíření je jedním ze souborů zásad, které jsou součástí úvodní sady Custom Policy Pack, které byste měli mít k dispozici v rámci svých požadavků. Začněte [s vlastními zásadami](custom-policy-get-started.md).
 1. Vyhledejte element **BuildingBlocks** . Pokud element neexistuje, přidejte jej.
 1. Přidejte element **ContentDefinitions** do elementu **BuildingBlocks** zásady.
 
@@ -59,7 +59,7 @@ Chcete-li přidat zaškrtávací políčko políčko zůstat přihlášeni do p�
 1. Vyhledejte element ClaimsProviders. Pokud element neexistuje, přidejte jej.
 1. Do prvku ClaimsProviders přidejte následující zprostředkovatele deklarací identity:
 
-```XML
+```xml
 <ClaimsProvider>
   <DisplayName>Local Account</DisplayName>
   <TechnicalProfiles>
@@ -78,11 +78,11 @@ Chcete-li přidat zaškrtávací políčko políčko zůstat přihlášeni do p�
 
 Aktualizujte soubor předávající strany (RP), který iniciuje cestu uživatele, kterou jste vytvořili.
 
-1. Otevřete vlastní soubor zásad. Například *SignUpOrSignin. XML*.
-1. Pokud ještě neexistuje, přidejte do `<UserJourneyBehaviors>` `<RelyingParty>` uzlu podřízený uzel. Musí být umístěn hned po `<DefaultUserJourney ReferenceId="User journey Id" />`, například:. `<DefaultUserJourney ReferenceId="SignUpOrSignIn" />`
+1. Otevřete vlastní soubor zásad. Například *SignUpOrSignin.xml*.
+1. Pokud ještě neexistuje, přidejte `<UserJourneyBehaviors>` do uzlu podřízený uzel `<RelyingParty>` . Musí být umístěn hned po `<DefaultUserJourney ReferenceId="User journey Id" />` , například: `<DefaultUserJourney ReferenceId="SignUpOrSignIn" />` .
 1. Přidejte následující uzel jako podřízený `<UserJourneyBehaviors>` prvek elementu.
 
-    ```XML
+    ```xml
     <UserJourneyBehaviors>
       <SingleSignOn Scope="Tenant" KeepAliveInDays="30" />
       <SessionExpiryType>Absolute</SessionExpiryType>
@@ -90,9 +90,9 @@ Aktualizujte soubor předávající strany (RP), který iniciuje cestu uživatel
     </UserJourneyBehaviors>
     ```
 
-    - **SessionExpiryType** – určuje, jak je relace rozšířena o čas zadaný v `SessionExpiryInSeconds` a `KeepAliveInDays`. `Rolling` Hodnota (výchozí) znamená, že relace je rozšířena pokaždé, když uživatel provede ověření. `Absolute` Hodnota znamená, že se uživatel po uplynutí zadaného časového období nuceně znovu ověří.
+    - **SessionExpiryType** – určuje, jak je relace rozšířena o čas zadaný v `SessionExpiryInSeconds` a `KeepAliveInDays` . `Rolling`Hodnota (výchozí) znamená, že relace je rozšířena pokaždé, když uživatel provede ověření. `Absolute`Hodnota znamená, že se uživatel po uplynutí zadaného časového období nuceně znovu ověří.
 
-    - **SessionExpiryInSeconds** – doba života souborů cookie relací v případě, že je možnost *zůstat přihlášená* , není povolená nebo uživatel nevybere možnost *zůstat přihlášeni*. Platnost relace skončí po `SessionExpiryInSeconds` úspěšném dokončení nebo když je prohlížeč zavřený.
+    - **SessionExpiryInSeconds** – doba života souborů cookie relací v případě, že je možnost *zůstat přihlášená* , není povolená nebo uživatel nevybere možnost *zůstat přihlášeni*. Platnost relace skončí po úspěšném dokončení `SessionExpiryInSeconds` nebo když je prohlížeč zavřený.
 
     - **KeepAliveInDays** – povolený počet souborů cookie relace, pokud je zapnutá možnost *zůstat přihlášení* a uživatel vybere možnost *zůstat přihlášeni*.  Hodnota `KeepAliveInDays` má přednost před `SessionExpiryInSeconds` hodnotou a určuje čas vypršení platnosti relace. Pokud uživatel zavře prohlížeč a později ho znovu otevře, může se stále tiše přihlásit, dokud bude v KeepAliveInDays časovém období.
 
@@ -100,7 +100,7 @@ Aktualizujte soubor předávající strany (RP), který iniciuje cestu uživatel
 
 Doporučujeme nastavit hodnotu SessionExpiryInSeconds na krátkou dobu (1200 sekund), zatímco hodnota KeepAliveInDays se dá nastavit na poměrně dlouhou dobu (30 dnů), jak je znázorněno v následujícím příkladu:
 
-```XML
+```xml
 <RelyingParty>
   <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
   <UserJourneyBehaviors>
@@ -131,7 +131,7 @@ Doporučujeme nastavit hodnotu SessionExpiryInSeconds na krátkou dobu (1200 sek
 1. Pokud chcete otestovat vaše vlastní zásady, které jste nahráli, na stránce Azure Portal klikněte na stránku zásady a pak vyberte **Spustit nyní**.
 1. Zadejte své **uživatelské jméno** a **heslo**, vyberte **zůstat přihlášeni**a potom klikněte na **Přihlásit**se.
 1. Vraťte se na Azure Portal. Přejít na stránku zásady a potom výběrem možnosti **Kopírovat** zkopírujte přihlašovací adresu URL.
-1. V adresním řádku prohlížeče odeberte parametr řetězce `&prompt=login` dotazu, který uživateli vynutí zadání přihlašovacích údajů k této žádosti.
+1. V adresním řádku prohlížeče odeberte `&prompt=login` parametr řetězce dotazu, který uživateli vynutí zadání přihlašovacích údajů k této žádosti.
 1. V prohlížeči klikněte na **Přejít**. Nyní Azure AD B2C vydá přístupový token bez výzvy k přihlášení. 
 
 ## <a name="next-steps"></a>Další kroky

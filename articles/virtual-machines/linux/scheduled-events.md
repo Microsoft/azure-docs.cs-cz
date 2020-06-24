@@ -1,18 +1,19 @@
 ---
 title: Scheduled Events pro virtuální počítače se systémem Linux v Azure
 description: Plánování událostí pomocí Metadata Service Azure pro virtuální počítače se systémem Linux.
-author: mimckitt
-ms.service: virtual-machines-windows
-ms.topic: article
+author: EricRadzikowskiMSFT
+ms.service: virtual-machines-linux
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 06/01/2020
-ms.author: mimckitt
-ms.openlocfilehash: 1f34066b9f8fa16a2889c1872ebfd3f8cf33ee69
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.author: ericrad
+ms.reviewer: mimckitt
+ms.openlocfilehash: ba06350a564990899a593714a1f49d1e00ea544a
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84418105"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262102"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Scheduled Events pro virtuální počítače se systémem Linux
 
@@ -72,7 +73,7 @@ Pokud se virtuální počítač nevytvoří v rámci Virtual Network, výchozí 
 ### <a name="version-and-region-availability"></a>Dostupnost verze a oblasti
 Služba Scheduled Events má verzi. Verze jsou povinné. aktuální verze je `2019-01-01` .
 
-| Verze | Typ verze | Oblasti | Poznámky k verzi | 
+| Verze | Typ verze | Oblasti | Zpráva k vydání verze | 
 | - | - | - | - | 
 | 2019-08-01 | Obecná dostupnost | Vše | <li> Přidání podpory pro EventSource |
 | 2019-04-01 | Obecná dostupnost | Vše | <li> Přidání podpory pro popis události |

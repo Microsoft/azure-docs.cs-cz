@@ -4,20 +4,19 @@ description: Federovat s Facebookem umožňuje externím uživatelům (hostům) 
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
-ms.date: 05/19/2020
+ms.topic: article
+ms.date: 06/16/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
-ms.reviewer: mal
-ms.custom: it-pro, seo-update-azuread-jan
+ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aadbe07c5bb22c23ac32e46fdf7f102cdd33989a
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 9eabee8e287d29f3a3a01b63b0d79da651be9082
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84673099"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84886475"
 ---
 # <a name="add-a-self-service-sign-up-user-flow-to-an-app-preview"></a>Přidání uživatelského toku samoobslužné registrace do aplikace (Preview)
 |     |
@@ -109,5 +108,5 @@ Nyní můžete přidružit aplikace k toku uživatele.
 
 - [Přidat Google do seznamu poskytovatelů sociálních identit](google-federation.md)
 - [Přidat Facebook do seznamu poskytovatelů sociálních identit](facebook-federation.md)
-<!-- - [Use API connectors to customize and extend your user flows via web APIs](api-connectors-overview.md) -->
-<!-- - [Add custom approval to your user flow](self-service-sign-up-add-approvals.md) -->
+- [Použití konektorů rozhraní API k přizpůsobení a rozšíření toků uživatelů přes webová rozhraní API](api-connectors-overview.md)
+- [Přidání vlastního pracovního postupu schválení do toku uživatele](self-service-sign-up-add-approvals.md)

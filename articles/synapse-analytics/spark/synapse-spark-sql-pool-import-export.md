@@ -5,16 +5,16 @@ services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: 20b030079121104fe7bd75924a63ab0e12be9b19
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 515fd9bfedc5bc5d3cefda2a357c351f515fb5f5
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020859"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194667"
 ---
 # <a name="introduction"></a>Úvod
 
@@ -174,7 +174,7 @@ V účtu úložiště ADLS Gen2 připojeném k pracovnímu prostoru musíte být
 
 - Nastavit uživatele jako přispěvatele nebo vlastníka dat objektu BLOB úložiště
 
-### <a name="option-2"></a>2. možnost
+### <a name="option-2"></a>Možnost 2
 
 - Zadejte následující seznamy ACL pro strukturu složek:
 

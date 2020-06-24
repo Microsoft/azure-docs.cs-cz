@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/21/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 3454909707b1f9a8a515ff4432cfb4bf75a20f6e
-ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
+ms.openlocfilehash: 26c48c84521946ff748ca960b8060cc973640eb3
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84509266"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888410"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Povolení ověřování Azure Active Directory Domain Services u souborů Azure
 
@@ -55,6 +55,10 @@ Než povolíte Azure AD přes SMB pro sdílené složky Azure, ujistěte se, že
 1.  **Pomocí klíče účtu úložiště ověřte připojení ke službě soubory Azure pomocí připojení sdílených složek Azure.**
 
     Pokud chcete ověřit, jestli je virtuální počítač a sdílená složka správně nakonfigurované, zkuste připojit sdílenou složku pomocí klíče účtu úložiště. Další informace najdete v tématu [připojení sdílené složky Azure a přístup ke sdílené složce v systému Windows](storage-how-to-use-files-windows.md).
+
+## <a name="regional-availability"></a>Regionální dostupnost
+
+Ověřování souborů Azure pomocí Azure služba AD DS je dostupné ve [všech veřejných oblastech Azure](https://azure.microsoft.com/global-infrastructure/locations/).
 
 ## <a name="overview-of-the-workflow"></a>Přehled pracovního postupu
 

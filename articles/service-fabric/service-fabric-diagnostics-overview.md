@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 1/17/2019
 ms.author: srrengar
 ms.openlocfilehash: ef77810adfab213845c7824740effc3416d85407
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282481"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84712220"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Monitorování a Diagnostika pro Azure Service Fabric
 
@@ -35,13 +35,13 @@ Uživatel má kontrolu nad tím, co telemetrie pochází ze své aplikace, proto
 
 Service Fabric poskytuje ucelenou sadu událostí z boxu. K těmto [událostem Service Fabric](service-fabric-diagnostics-events.md) se dá dostat prostřednictvím eventstoru nebo provozního kanálu (kanál událostí vystavený platformou). 
 
-* Service Fabric kanály událostí – v systému Windows jsou události Service Fabric k dispozici od jednoho poskytovatele ETW se sadou relevantních `logLevelKeywordFilters` , která se používá k výběru mezi provozními a datovými kanály pro zasílání zpráv &. Jedná se o způsob, jakým oddělíte odchozí Service Fabricé události, které se podle potřeby filtrují. V systému Linux Service Fabric události pocházejí prostřednictvím LTTng a jsou vloženy do jedné tabulky úložiště, ze které je lze podle potřeby filtrovat. Tyto kanály obsahují uspořádané strukturované události, které je možné použít k lepšímu pochopení stavu clusteru. V době vytváření clusteru jsou diagnostiky standardně povolené, takže se vytvoří tabulka Azure Storage, kde se události z těchto kanálů odesílají do budoucna k dotazování v budoucnosti. 
+* Service Fabric kanály událostí – v systému Windows jsou události Service Fabric k dispozici od jednoho poskytovatele ETW se sadou relevantních, která se `logLevelKeywordFilters` používá k výběru mezi provozními a datovými kanály pro zasílání zpráv &. Jedná se o způsob, jakým oddělíte odchozí Service Fabricé události, které se podle potřeby filtrují. V systému Linux Service Fabric události pocházejí prostřednictvím LTTng a jsou vloženy do jedné tabulky úložiště, ze které je lze podle potřeby filtrovat. Tyto kanály obsahují uspořádané strukturované události, které je možné použít k lepšímu pochopení stavu clusteru. V době vytváření clusteru jsou diagnostiky standardně povolené, takže se vytvoří tabulka Azure Storage, kde se události z těchto kanálů odesílají do budoucna k dotazování v budoucnosti. 
 
 * Eventstoru – Eventstoru je funkce nabízená platformou, která poskytuje Service Fabric události platformy dostupné v Service Fabric Explorer a REST API. Pro každou entitu, např. Node, službu, aplikace a dotaz na základě času události, se můžete podívat na to, co se ve vašem clusteru chystá. Další informace o Eventstoru najdete v tématu [Přehled eventstoru](service-fabric-diagnostics-eventstore.md).    
 
 ![Eventstoru](media/service-fabric-diagnostics-overview/eventstore.png)
 
-Poskytnuté diagnostiky jsou ve formě komplexní sady událostí mimo pole. Tyto [události Service Fabric](service-fabric-diagnostics-events.md) ilustrují akce prováděné platformou na různých entitách, jako jsou uzly, aplikace, služby, oddíly atd. Pokud by byl uzel v posledním výše uvedeném případě mimo provoz, platforma by vygenerovala `NodeDown` událost a můžete ji okamžitě upozornit vámi zvoleným monitorovacím nástrojem. Mezi další běžné příklady `ApplicationUpgradeRollbackStarted` patří `PartitionReconfigured` nebo během převzetí služeb při selhání. **Stejné události jsou k dispozici v clusterech s Windows i Linux.**
+Poskytnuté diagnostiky jsou ve formě komplexní sady událostí mimo pole. Tyto [události Service Fabric](service-fabric-diagnostics-events.md) ilustrují akce prováděné platformou na různých entitách, jako jsou uzly, aplikace, služby, oddíly atd. Pokud by byl uzel v posledním výše uvedeném případě mimo provoz, platforma by vygenerovala `NodeDown` událost a můžete ji okamžitě upozornit vámi zvoleným monitorovacím nástrojem. Mezi další běžné příklady patří `ApplicationUpgradeRollbackStarted` nebo `PartitionReconfigured` během převzetí služeb při selhání. **Stejné události jsou k dispozici v clusterech s Windows i Linux.**
 
 Události se odesílají přes standardní kanály na Windows i Linux a dají se číst libovolným monitorovacím nástrojem, který je podporuje. Řešení Azure Monitor je Azure Monitor protokolů. Můžete si přečíst další informace o [integraci protokolů Azure monitor](service-fabric-diagnostics-event-analysis-oms.md) , které zahrnují vlastní operační řídicí panel pro váš cluster a některé ukázkové dotazy, ze kterých můžete vytvářet výstrahy. Další koncepty monitorování clusteru jsou k dispozici na [úrovni platforem a generování protokolů](service-fabric-diagnostics-event-generation-infra.md).
 

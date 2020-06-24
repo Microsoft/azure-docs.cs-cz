@@ -4,15 +4,15 @@ description: Naučte se zvládnout složitou migraci dat pro relace 1:1 do SQL A
 author: TheovanKraay
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: thvankra
-ms.openlocfilehash: 467e9627a2623779bd808ca5aebdf76d8a5eda42
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f79ad56d8083e7ef75279eb2a07e1d35a50c45b5
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75896633"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261099"
 ---
 # <a name="migrate-one-to-few-relational-data-into-azure-cosmos-db-sql-api-account"></a>Migrace relačních dat 1:1 do Azure Cosmos DB účtu rozhraní SQL API
 
@@ -25,7 +25,7 @@ Jednou z běžných transformací je denormalizace dat vložením souvisejícíc
 Předpokládejme, že máme v naší databázi SQL, objednávkách a OrderDetails následující dvě tabulky.
 
 
-![Podrobnosti objednávky](./media/migrate-relational-to-cosmos-sql-api/orders.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/orders.png" alt-text="Podrobnosti objednávky" border="false" :::
 
 Chceme během migrace kombinovat tento vztah 1:1 do jednoho dokumentu JSON. K tomu můžeme vytvořit dotaz T-SQL pomocí "pro JSON", jak je uvedeno níže:
 
@@ -91,31 +91,31 @@ SELECT [value] FROM OPENJSON(
 )
 ```
 
-![Kopie ADF](./media/migrate-relational-to-cosmos-sql-api/adf1.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf1.png" alt-text="Kopie ADF":::
 
 
-V případě jímky aktivity kopírování SqlJsonToBlobText vybíráme "text s oddělovači" a Navedeme ho na konkrétní složku v Azure Blob Storage pomocí dynamicky generovaného jedinečného názvu souboru (například@concat(kanálu (). RunId, '. JSON ').
+V případě jímky aktivity kopírování SqlJsonToBlobText vybíráme "text s oddělovači" a Navedeme ho na konkrétní složku v Azure Blob Storage pomocí dynamicky generovaného jedinečného názvu souboru (například @concat (kanálu (). RunId, '. JSON ').
 Vzhledem k tomu, že náš textový soubor není ve skutečnosti "oddělen" a nechcete, aby se analyzoval na samostatné sloupce pomocí čárek a chcete zachovat dvojité uvozovky ("), nastavíme" Oddělovač sloupců "na kartu (" \t ") – nebo jiný znak, který se nevyskytuje v datech-a" znak citace "na" bez znaku uvozovek ".
 
-![Kopie ADF](./media/migrate-relational-to-cosmos-sql-api/adf2.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf2.png" alt-text="Kopie ADF":::
 
 ### <a name="copy-activity-2-blobjsontocosmos"></a>#2 aktivity kopírování: BlobJsonToCosmos
 
 V dalším kroku provedeme úpravu kanálu ADF přidáním druhé aktivity kopírování, která vypadá v Azure Blob Storage pro textový soubor, který byl vytvořen první aktivitou. Zpracuje ho jako zdroj "JSON", který se má vložit do Cosmos DB jímka jako jeden dokument na řádek JSON, který se nachází v textovém souboru.
 
-![Kopie ADF](./media/migrate-relational-to-cosmos-sql-api/adf3.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf3.png" alt-text="Kopie ADF":::
 
 Volitelně taky do kanálu přidáme aktivitu "odstranit", aby se před každým spuštěním odstranily všechny předchozí soubory ve složce/Orders/. Náš kanál ADF teď vypadá nějak takto:
 
-![Kopie ADF](./media/migrate-relational-to-cosmos-sql-api/adf4.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf4.png" alt-text="Kopie ADF":::
 
 Po aktivaci kanálu výše se zobrazí soubor vytvořený v naší zprostředkující službě Azure Blob Storage umístění, které obsahuje jeden objekt JSON pro každý řádek:
 
-![Kopie ADF](./media/migrate-relational-to-cosmos-sql-api/adf5.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf5.png" alt-text="Kopie ADF":::
 
 V naší kolekci Cosmos DB se také v objednávkách objednávek zobrazují správně vložené OrderDetails:
 
-![Kopie ADF](./media/migrate-relational-to-cosmos-sql-api/adf6.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf6.png" alt-text="Kopie ADF":::
 
 
 ## <a name="azure-databricks"></a>Azure Databricks
@@ -128,7 +128,7 @@ Spark v [Azure Databricks](https://azure.microsoft.com/services/databricks/) mů
 
 Nejprve vytvoříme a připojíte požadované knihovny [SQL Connector](https://docs.databricks.com/data/data-sources/sql-databases-azure.html) a [Azure Cosmos DB konektoru](https://docs.databricks.com/data/data-sources/azure/cosmosdb-connector.html) do našeho clusteru Azure Databricks. Restartujte cluster, abyste se ujistili, že jsou knihovny načteny.
 
-![Databricks](./media/migrate-relational-to-cosmos-sql-api/databricks1.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks1.png" alt-text="Databricks":::
 
 Dále pro Scala a Python máme dvě ukázky. 
 
@@ -151,7 +151,7 @@ val orders = sqlContext.read.sqlDB(configSql)
 display(orders)
 ```
 
-![Databricks](./media/migrate-relational-to-cosmos-sql-api/databricks2.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks2.png" alt-text="Databricks":::
 
 V dalším kroku se připojíme k naší Cosmos DB databázi a kolekci:
 
@@ -208,7 +208,7 @@ display(ordersWithSchema)
 CosmosDBSpark.save(ordersWithSchema, configCosmos)
 ```
 
-![Databricks](./media/migrate-relational-to-cosmos-sql-api/databricks3.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks3.png" alt-text="Databricks":::
 
 
 ### <a name="python"></a>Python
@@ -338,7 +338,7 @@ pool.map(writeOrder, orderids)
 ```
 V obou případech by měl být na konci správně uložen vložený OrderDetails v rámci každého dokumentu objednávky v kolekci Cosmos DB:
 
-![Databricks](./media/migrate-relational-to-cosmos-sql-api/databricks4.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks4.png" alt-text="Databricks":::
 
 ## <a name="next-steps"></a>Další kroky
 * Další informace o [modelování dat v Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/modeling-data)

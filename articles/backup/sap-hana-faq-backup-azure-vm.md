@@ -3,12 +3,12 @@ title: Nejčastější dotazy – zálohování databází SAP HANA na virtuáln
 description: V tomto článku najdete odpovědi na běžné dotazy týkající se zálohování SAP HANA databází pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 08e0eaf5f744ebb0ada07a944f627cc1ff1ac496
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: ddc4af9a164de3a822e8aebd6c0a4db769ec62a0
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248800"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262578"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>Nejčastější dotazy – zálohování SAP HANA databází na virtuálních počítačích Azure
 
@@ -18,11 +18,11 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se zálohován�
 
 ### <a name="how-many-full-backups-are-supported-per-day"></a>Kolik úplných záloh se podporuje za den?
 
-Podporujeme jenom jednu úplnou zálohu za den. Nemůžete mít ke stejnému dni spuštěno rozdílové zálohování a úplné zálohování.
+Podporujeme jenom jednu úplnou zálohu za den. Nemůžete mít ke stejnému dni spuštěnou rozdílovou zálohu a úplné zálohování.
 
 ### <a name="do-successful-backup-jobs-create-alerts"></a>Vytvářejí úspěšné úlohy zálohování upozornění?
 
-No. Úspěšné úlohy zálohování negenerují výstrahy. Výstrahy se odesílají jenom pro úlohy zálohování, které selžou. Podrobné chování výstrah na portálu [najdete tady](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-built-in-monitor). Pokud ale máte zájem o výstrahy i pro úspěšné úlohy, můžete použít [Azure monitor](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor).
+Ne. Úspěšné úlohy zálohování negenerují výstrahy. Výstrahy se odesílají jenom pro úlohy zálohování, které selžou. Podrobné chování výstrah na portálu [najdete tady](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-built-in-monitor). Pokud ale máte zájem o výstrahy i pro úspěšné úlohy, můžete použít [Azure monitor](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor).
 
 ### <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>Můžu v nabídce úlohy zálohování Zobrazit naplánované úlohy zálohování?
 
@@ -30,7 +30,7 @@ V nabídce Úloha zálohování se zobrazí pouze úlohy zálohování ad-hoc. V
 
 ### <a name="are-future-databases-automatically-added-for-backup"></a>Budou se automaticky zálohovat i budoucí databáze?
 
-Ne, toto není aktuálně podporováno.
+Ne, aktuálně se nepodporuje.
 
 ### <a name="if-i-delete-a-database-from-an-instance-what-will-happen-to-the-backups"></a>Když odstraním databázi z instance, co se stane s zálohami?
 
@@ -45,7 +45,7 @@ Přejmenovaná databáze je považována za novou databázi. Proto se služba bu
 
 Přečtěte si o [požadavcích](tutorial-backup-sap-hana-db.md#prerequisites) a o [tom, co skript předregistrací zahrnuje](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does) oddíly.
 
-### <a name="what-permissions-should-be-set-for-azure-to-be-able-to-back-up-sap-hana-databases"></a>Jaká oprávnění by měla být nastavená pro Azure, aby bylo možné zálohovat SAP HANA databáze?
+### <a name="what-permissions-should-be-set-so-azure-can-back-up-sap-hana-databases"></a>Jaká oprávnění by se měla nastavit, aby Azure mohl zálohovat SAP HANA databází?
 
 Spuštění předregistračního skriptu nastaví požadovaná oprávnění, která umožní službě Azure zálohovat SAP HANA databáze. Další informace o tom, co skript před registrací dělá, najdete [tady](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does).
 
@@ -55,11 +55,7 @@ Informace najdete v [této části](https://docs.microsoft.com/azure/backup/back
 
 ### <a name="can-azure-hana-backup-be-set-up-against-a-virtual-ip-load-balancer-and-not-a-virtual-machine"></a>Je možné vytvořit zálohu v Azure HANA proti virtuální IP adrese (Nástroj pro vyrovnávání zatížení) a ne virtuálnímu počítači?
 
-V současné době nemáme možnost nastavit řešení pouze na virtuální IP adresu. K provedení řešení potřebujeme virtuální počítač.
-
-### <a name="i-have-a-sap-hana-system-replication-hsr-how-should-i-configure-backup-for-this-setup"></a>Mám replikaci systému SAP HANA (HSR), jak mám nakonfigurovat zálohování pro tuto instalaci?
-
-Primární a sekundární uzel HSR se budou považovat za dva jednotlivé virtuální počítače, které se netýkají. Musíte nakonfigurovat zálohování na primárním uzlu a když dojde k převzetí služeb při selhání, musíte nakonfigurovat zálohování na sekundárním uzlu (který se teď stane primárním uzlem). Neexistuje žádné automatické zálohování po převzetí služeb při selhání do druhého uzlu.
+V současné době není k dispozici možnost k nastavení řešení pouze pro virtuální IP adresu. K provedení řešení potřebujeme virtuální počítač.
 
 ### <a name="how-can-i-move-an-on-demand-backup-to-the-local-file-system-instead-of-the-azure-vault"></a>Jak můžu přesunout zálohu na vyžádání do místního systému souborů místo do trezoru Azure?
 
@@ -72,6 +68,40 @@ Primární a sekundární uzel HSR se budou považovat za dva jednotlivé virtu�
 1. Vraťte se k předchozímu nastavení, aby bylo možné zálohy do trezoru Azure přesměrovat:
     1. Nastavit enable_auto_log_backup na **Ano**
     1. Nastavit log_backup_using_backint na **hodnotu true**
+
+### <a name="how-can-i-use-sap-hana-backup-with-my-hana-replication-set-up"></a>Jak můžu použít zálohování SAP HANA s nastavením replikace v HANA?
+
+V současné době Azure Backup nemá schopnost pochopit HSRou sadu. To znamená, že primární a sekundární uzly HSR budou považovány za dva jednotlivé nesouvisející virtuální počítače. Nejdřív budete muset nakonfigurovat zálohování na primárním uzlu. Pokud dojde k převzetí služeb při selhání, musí být záloha nakonfigurovaná na sekundárním uzlu (který se teď stane primárním uzlem). Neexistuje žádná Automatická převzetí služeb při selhání v rámci zálohování do druhého uzlu.
+
+Chcete-li zálohovat data z aktivního (primárního) uzlu v libovolném daném časovém okamžiku, můžete **Přepnout ochranu** na sekundární uzel, který se nyní stane primárním po převzetí služeb při selhání.
+
+Chcete-li provést **ochranu tohoto přepínače**, postupujte podle těchto kroků:
+
+- [Zastavení ochrany](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) (při zachování dat) na primárním
+- Spuštění [předregistračního skriptu](https://aka.ms/scriptforpermsonhana) na sekundárním uzlu
+- [Zjistit databáze](tutorial-backup-sap-hana-db.md#discover-the-databases) na sekundárním uzlu a nakonfigurovat na nich [zálohy](tutorial-backup-sap-hana-db.md#configure-backup)
+
+Tyto kroky je třeba provést ručně po každém převzetí služeb při selhání. Tyto kroky můžete provést prostřednictvím příkazového řádku nebo protokolu HTTP REST kromě Azure Portal. K automatizaci těchto kroků můžete použít Runbook Azure.
+
+Tady je podrobný příklad toho, jak se musí provést **Ochrana přepínače** :
+
+V tomto příkladu máte v HSR nastavení dva uzly-Node 1 (primární) a Node 2 (sekundární).  V uzlu 1 jsou nakonfigurovány zálohy. Jak je uvedeno výše, nepokoušejte se ještě nepostupovat v konfiguraci záloh v uzlu 2.
+
+Když dojde k prvnímu převzetí služeb při selhání, uzel 2 se stane primárním. Stisknutím
+
+1. Zastavte ochranu uzlu 1 (předchozí primární) pomocí možnosti zachovat data.
+1. Spusťte skript před registrací na uzlu 2 (který je teď primární).
+1. Objevte databáze v uzlu 2, přiřaďte zásady zálohování a nakonfigurujte zálohy.
+
+Pak se v uzlu 2 spustí první úplné zálohování a po dokončení se spustí zálohování protokolu.
+
+Když dojde k dalšímu převzetí služeb při selhání, uzel 1 se znovu stane primárním uzlem a uzel 2 se stane sekundárním. Nyní tento proces opakujte:
+
+1. Zastavte ochranu uzlu 2 s možností zachovat data.
+1. Spusťte skript před registrací v uzlu 1 (který se stane primárním uzlem).
+1. Pak [obnovte zálohu](sap-hana-db-manage.md#resume-protection-for-an-sap-hana-database) v uzlu 1 pomocí požadovaných zásad (protože zálohy byly zastaveny dříve v uzlu 1).
+
+Pak se znovu spustí úplná záloha v uzlu 1 a po dokončení se spustí zálohování protokolu.
 
 ## <a name="restore"></a>Obnovení
 
@@ -87,7 +117,7 @@ Zajistěte, aby při obnovení byla vybrána možnost **Vynutit přepsání** .
 
 Informace o tom, jaké typy obnovení se aktuálně podporují, najdete v SAP HANA Note [1642148](https://launchpad.support.sap.com/#/notes/1642148) .
 
-### <a name="can-i-use-a-backup-of-a-database-running-on-sles-to-restore-to-a-rhel-hana-system-or-vice-versa"></a>Můžu pro obnovení do systému RHEL HANA použít zálohu databáze běžící na SLES nebo naopak?
+### <a name="can-i-use-a-backup-of-a-database-running-on-sles-to-restore-to-an-rhel-hana-system-or-vice-versa"></a>Můžu k obnovení do systému RHEL HANA použít zálohu databáze běžící na SLES nebo naopak?
 
 Ano, zálohy streamování aktivované v databázi HANA běžící na SLES můžete použít k obnovení do systému RHEL HANA a naopak. To znamená, že při zálohování přes streamování je možné provést obnovení mezi různými operačními systémy. Budete ale muset zajistit, aby systém HANA, do kterého chcete obnovit, a systém HANA, který se používá k obnovení, byly kompatibilní pro obnovení podle SAP. Chcete-li zjistit, které typy obnovení jsou kompatibilní, přečtěte si SAP HANA Note [1642148](https://launchpad.support.sap.com/#/notes/1642148) .
 

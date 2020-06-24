@@ -6,12 +6,12 @@ author: renatosalas
 ms.author: regutier
 ms.date: 04/14/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: a185ec4938670519029abaf6fa4d23b7bf5c5399
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 2f928ac2f8772942eb748d68a65662938b1405ed
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84466528"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84882517"
 ---
 # <a name="configure-bring-your-own-storage-byos-for-application-insights-profiler-and-snapshot-debugger"></a>Konfigurace Přineste si vlastní úložiště (BYOS) pro Application Insights Profiler a Snapshot Debugger
 
@@ -32,7 +32,7 @@ Pomocí Přineste si vlastní úložiště se tyto artefakty nahrají do účtu 
 
 ## <a name="prerequisites"></a>Požadavky
 * Ujistěte se, že jste svůj účet úložiště vytvořili ve stejném umístění jako prostředek Application Insights. Například Pokud je prostředek Application Insights Západní USA 2, musí být váš účet úložiště také v Západní USA 2. 
-* Udělte roli Přispěvatel objektů BLOB úložiště do aplikace AAD "přístup k důvěryhodnému úložišti diagnostické služby" v účtu úložiště prostřednictvím uživatelského rozhraní Access Control (IAM).
+* Udělte roli Přispěvatel dat objektů BLOB úložiště do aplikace AAD "přístup k důvěryhodnému úložišti diagnostické služby" v účtu úložiště prostřednictvím uživatelského rozhraní Access Control (IAM).
 * Pokud je povolené soukromé propojení, nakonfigurujte další nastavení tak, aby umožňovalo připojení k naší důvěryhodné službě Microsoftu z vašeho Virtual Network. 
 
 ## <a name="how-to-enable-byos"></a>Jak povolit BYOS
@@ -156,7 +156,7 @@ Chcete-li nakonfigurovat BYOS pro diagnostiku na úrovni kódu (Profiler/ladicí
 
 #### <a name="configure-using-azure-resource-manager-template"></a>Konfigurace pomocí šablony Azure Resource Manager
 
-1. Vytvořte soubor šablony Azure Resource Manager s následujícím obsahem (BYOS. template. JSON).
+1. Vytvořte soubor šablony Azure Resource Manager s následujícím obsahem (byos.template.json).
     ```json
     {
       "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
@@ -229,7 +229,7 @@ Chcete-li nakonfigurovat BYOS pro diagnostiku na úrovni kódu (Profiler/ladicí
 1. Povolte diagnostiku na úrovni kódu (Profiler/ladicí program) na úlohy, které vás zajímají, prostřednictvím Azure Portal. (App Service > Application Insights) _ ![ Obrázek 2,0](media/profiler-bring-your-own-storage/figure-20.png)_ 
  _Obrázek 2,0_
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 ### <a name="template-schema-schema_uri-isnt-supported"></a>Schéma šablony {schema_uri} se nepodporuje.
 * Ujistěte se, že `$schema` je vlastnost šablony platná. Musí splňovat následující vzor:`https://schema.management.azure.com/schemas/{schema_version}/deploymentTemplate.json#`
 * Ujistěte se, že `schema_version` je šablona v rámci platných hodnot: `2014-04-01-preview, 2015-01-01, 2018-05-01, 2019-04-01, 2019-08-01` .

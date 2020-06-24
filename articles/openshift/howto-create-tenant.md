@@ -7,11 +7,11 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: ad03538cafcce9c1d660d0f2ac5eb3c6ae5f4f38
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79243689"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84694901"
 ---
 # <a name="create-an-azure-ad-tenant-for-azure-red-hat-openshift"></a>Vytvoření tenanta Azure AD pro Azure Red Hat OpenShift
 
@@ -33,7 +33,7 @@ Vytvoření tenanta:
 
     ![Snímek obrazovky portálu se zobrazeným jménem klienta v pravém horním rohu][tenantcallout]  
 
-8. Poznamenejte si *ID tenanta* , abyste později mohli určit, kde se má vytvořit cluster Azure Red Hat OpenShift. Na portálu byste teď měli vidět okno Přehled Azure Active Directory pro nového tenanta. Vyberte **vlastnosti** a ZKOPÍRUJTE hodnotu **ID adresáře**. Tato hodnota se na tuto hodnotu odkazuje `TENANT` jako v kurzu [Vytvoření clusteru Azure Red Hat OpenShift](tutorial-create-cluster.md) .
+8. Poznamenejte si *ID tenanta* , abyste později mohli určit, kde se má vytvořit cluster Azure Red Hat OpenShift. Na portálu byste teď měli vidět okno Přehled Azure Active Directory pro nového tenanta. Vyberte **vlastnosti** a ZKOPÍRUJTE hodnotu **ID adresáře**. Tato hodnota se na tuto hodnotu odkazuje jako `TENANT` v kurzu [Vytvoření clusteru Azure Red Hat OpenShift](tutorial-create-cluster.md) .
 
 [tenantcallout]: ./media/howto-create-tenant/tenant-callout.png
 

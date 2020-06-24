@@ -6,12 +6,12 @@ author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.openlocfilehash: de2bc551547706fb820813e57996e77bf49148d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 76016da2ec542091aa57d5081e275a1f9f6671cd
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73888935"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85114261"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Běžné případy použití Azure Cosmos DB
 Tento článek poskytuje přehled několika běžných případů použití pro Azure Cosmos DB.  Doporučení v tomto článku slouží jako výchozí bod při vývoji aplikace pomocí Cosmos DB.   
@@ -42,7 +42,7 @@ Tyto atributy jsou užitečné v aplikacích pro web, mobilní zařízení, hry 
 ## <a name="iot-and-telematics"></a>IoT a telematika
 Případy použití IoT obvykle sdílejí některé vzorce v tom, jak jejich příjem, zpracování a ukládání dat.  Nejprve tyto systémy potřebují ingestovat shluky dat ze senzorů zařízení různých národních prostředí. V dalším kroku tyto systémy zpracovávají a analyzují streamovaná data pro odvození přehledů v reálném čase. Data se pak archivují do studeného úložiště pro dávkovou analýzu. Microsoft Azure nabízí obsáhlé služby, které se dají použít pro případy použití IoT, včetně Azure Cosmos DB, Azure Event Hubs, Azure Stream Analytics, Azure Notification hub, Azure Machine Learning, Azure HDInsight a Power BI. 
 
-![Referenční architektura IoT Azure Cosmos DB](./media/use-cases/iot.png)
+:::image type="content" source="./media/use-cases/iot.png" alt-text="Referenční architektura IoT Azure Cosmos DB" border="false":::
 
 Azure Event Hubs může ingestovat nárůsty dat, protože nabízí příjem dat s vysokou propustností s nízkou latencí. Data ingestovaná, která je potřeba zpracovat pro účely přehledu v reálném čase, je možné rozfiltrovat na Azure Stream Analytics pro analýzy v reálném čase. Data je možné načíst do Azure Cosmos DB pro dotazování ad hoc. Jakmile se data načtou do Azure Cosmos DB, data jsou připravená k dotazování. Kromě toho je možné číst nová data a změny stávajících dat v kanálu změn. Změna kanálu je trvalá, připojovat pouze protokol, který ukládá změny do kontejnerů Cosmos v sekvenčním pořadí. Všechna data nebo pouze změny dat v Azure Cosmos DB lze použít jako součást analýz v reálném čase. Kromě toho je možné data dále zdokonalovat a zpracovávat připojením Azure Cosmos DB dat ke službě HDInsight pro prase, podregistr nebo mapování/snížení úloh.  Data v kontrastu se pak načtou zpátky do Azure Cosmos DB pro vytváření sestav.   
 
@@ -57,11 +57,11 @@ Scénáře použití dat katalogu zahrnují ukládání a dotazování sady atri
 
 Vezměte v úvahu příklad katalogu produktů pro dodavatele automobilových součástí. Každá část může mít kromě běžných atributů, které sdílí všechny části, vlastní atributy. Kromě toho mohou atributy pro určitou část po uvolnění nového modelu změnit následující rok. Azure Cosmos DB podporuje flexibilní schémata a hierarchická data, takže je vhodný pro ukládání dat katalogu produktů.
 
-![Referenční architektura Azure Cosmos DB maloobchodního katalogu](./media/use-cases/product-catalog.png)
+:::image type="content" source="./media/use-cases/product-catalog.png" alt-text="Referenční architektura Azure Cosmos DB maloobchodního katalogu" border="false":::
 
 Azure Cosmos DB se často používá k zajištění, aby se v architektuře řízených událostmi na základě jeho funkcí [změny](change-feed.md) prováděla architektura událostí. Kanál změn poskytuje podřízené mikroslužby schopnost spolehlivě a přírůstkově číst vkládání a aktualizace (například události objednávek) provedené na Azure Cosmos DB. Tato funkce se dá využít k tomu, aby poskytovala trvalé úložiště událostí jako zprostředkovatele zpráv pro události změny stavu a pracovní postupy zpracování pořadí jednotek mezi mnoha mikroslužbami (které je možné implementovat jako [Azure Functions bez serveru](https://azure.com/serverless)).
 
-![Referenční architektura kanálu pro objednávání Azure Cosmos DB](./media/use-cases/event-sourcing.png)
+:::image type="content" source="./media/use-cases/event-sourcing.png" alt-text="Referenční architektura kanálu pro objednávání Azure Cosmos DB" border="false":::
 
 Data uložená v Azure Cosmos DB je navíc možné integrovat se službou HDInsight pro analýzy velkých objemů dat prostřednictvím Apache Spark úloh. Podrobnosti o konektoru Spark pro Azure Cosmos DB najdete v tématu [spuštění úlohy Sparku pomocí Cosmos DB a HDInsight](spark-connector.md).
 
@@ -76,7 +76,7 @@ Azure Cosmos DB se používají ve hrách, jako [je nedoručená](https://azure.
 * Funkce sociálních sítí, včetně zpráv v herních konverzacích, členství v přehrávači Guild, dokončené úkoly, žebříčky s vysokým skóre a sociální grafy, je snazší implementovat pomocí flexibilního schématu.
 * Azure Cosmos DB jako spravovaná platforma jako služba (PaaS) vyžaduje minimální práci s nastavením a správou, která umožňuje rychlou iteraci a zkracuje dobu uvedení na trh.
 
-![Referenční architektura Azure Cosmos DB herních zařízení](./media/use-cases/gaming.png)
+:::image type="content" source="./media/use-cases/gaming.png" alt-text="Referenční architektura Azure Cosmos DB herních zařízení" border="false":::
 
 ## <a name="web-and-mobile-applications"></a>Webové a mobilní aplikace
 Azure Cosmos DB se běžně používají v rámci webových a mobilních aplikací a jsou vhodné pro modelování sociálních interakcí, integraci se službami třetích stran a pro sestavování bohatě přizpůsobených prostředí. Sady Cosmos DB SDK se dají použít k vytváření bohatých aplikací pro iOS a Android s využitím oblíbené [architektury Xamarin](mobile-apps-with-xamarin.md).  
@@ -88,14 +88,14 @@ Aplikace, které se integrují se sociálními sítěmi třetích stran, musí r
 
 Mnohé z sociálních aplikací běží v globálním měřítku a můžou vykazovat nepředvídatelné vzorce používání. Flexibilita při škálování úložiště dat je zásadní, protože aplikační vrstva se škáluje podle požadavků na využití.  Horizontální navýšení kapacity můžete rozšířit přidáním dalších datových oddílů pod Cosmos DB účet.  Kromě toho můžete také vytvořit další Cosmos DB účty napříč několika oblastmi. Dostupnost Cosmos DBho regionu služby najdete v tématu [oblasti Azure](https://azure.microsoft.com/regions/#services).
 
-![Referenční architektura Azure Cosmos DB webové aplikace](./media/use-cases/apps-with-global-reach.png)
+:::image type="content" source="./media/use-cases/apps-with-global-reach.png" alt-text="Referenční architektura Azure Cosmos DB webové aplikace" border="false":::
 
 ### <a name="personalization"></a>Personalizace
 Současné době moderní aplikace se dodávají se složitými zobrazeními a prostředími. Jsou to obvykle dynamické, v stravovacích uživatelských preferencích a potřebách brandingu. Aplikace proto potřebují mít možnost efektivně načítat individuální nastavení, aby bylo možné rychle vykreslovat prvky uživatelského rozhraní a jejich prostředí. 
 
 Formát JSON, který je podporován Cosmos DB, je efektivní formát pro reprezentaci dat rozložení uživatelského rozhraní, protože není pouze odlehčený, ale lze jej snadno interpretovat pomocí JavaScriptu. Cosmos DB nabízí přizpůsobitelné úrovně konzistence, které umožňují rychlé čtení pomocí zápisů s nízkou latencí. Proto ukládání dat rozložení uživatelského rozhraní, včetně individuálních nastavení jako dokumentů JSON Cosmos DB, je efektivní způsob, jak tato data získat napříč vodiči.
 
-![Referenční architektura Azure Cosmos DB webové aplikace](./media/use-cases/personalization.png)
+:::image type="content" source="./media/use-cases/personalization.png" alt-text="Referenční architektura Azure Cosmos DB webové aplikace" border="false":::
 
 ## <a name="next-steps"></a>Další kroky
 

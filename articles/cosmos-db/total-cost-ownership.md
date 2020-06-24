@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: b24b69716e472082abfdb388e7d79e88a8e23e64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ac9e3fd4fec8ab2fe9f0c93d46489e67feebe88d
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72754792"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85116260"
 ---
 # <a name="total-cost-of-ownership-tco-with-azure-cosmos-db"></a>Celkové náklady na vlastnictví (vlastnictví) s Azure Cosmos DB
 
@@ -30,7 +30,7 @@ Model zřizování Azure Cosmos DB bez serveru eliminuje nutnost nadměrného po
 
 * **Není nutná žádná Správa NoSQL DevOps:** Když Azure Cosmos DB nikdo nepotřebuje ke správě nasazení používat DevOps, proveďte údržbu, škálování nebo opravu. Můžete spouštět všechny úlohy, které byste měli udělat s hostovaným clusterem OSS NoSQL, který je hostovaný místně nebo v cloudové infrastruktuře.
 
-![Azure Cosmos DB náklady na vlastnictví](./media/total-cost-ownership/tco.png)
+:::image type="content" source="./media/total-cost-ownership/tco.png" alt-text="Azure Cosmos DB náklady na vlastnictví" border="false":::
 
 * **Možnost elastického škálování:** Propustnost Azure Cosmos DB lze škálovat nahoru a dolů, což vám umožní snížit náklady na vlastnictví během období mimo špičku. Clustery OSS NoSQL nasazené v infrastruktuře cloudu nabízejí omezené pružnost a místní nasazení nejsou elastická podle definice. Pokud ve službě Azure Cosmos DB zřizujete větší propustnost, je zaručená propustnost lineárně škálovat. Tato záruka zálohuje finanční SLA a 99 percentil v jakémkoli měřítku.
 

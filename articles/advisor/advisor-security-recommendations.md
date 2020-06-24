@@ -3,12 +3,12 @@ title: Zvýšení zabezpečení prostředků pomocí Azure Advisor
 description: Pomocí Azure Advisor můžete zlepšit zabezpečení nasazení Azure.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 5a4b7e9a9d9a7919155db361fd2c96ed98e6e5a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bf7a316c893600bed18b9392404af5792e2e31f7
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75443042"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85113853"
 ---
 # <a name="make-resources-more-secure-with-azure-advisor"></a>Zvýšení zabezpečení prostředků pomocí Azure Advisor
 
@@ -29,9 +29,9 @@ Další informace o doporučeních zabezpečení najdete [v tématu Správa dopo
 Další informace o doporučení Advisoru najdete tady:
 * [Úvod do Advisoru](advisor-overview.md)
 * [Začínáme se službou Advisor](advisor-get-started.md)
-* [Doporučení pro náklady na poradce](advisor-cost-recommendations.md)
+* [Doporučení Advisoru týkající se cen](advisor-cost-recommendations.md)
 * [Doporučení pro výkon Advisoru](advisor-performance-recommendations.md)
-* [Doporučení pro vysokou dostupnost poradce](advisor-high-availability-recommendations.md)
+* [Doporučení pro spolehlivost Advisoru](advisor-high-availability-recommendations.md)
 * [Doporučení provozní kvality Advisoru](advisor-operational-excellence-recommendations.md)
-
+* [REST API Advisoru](https://docs.microsoft.com/rest/api/advisor/)
  

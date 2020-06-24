@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: 3d02d3573902964a8549fa0eeb1f4f1471de1752
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cce3a0e6993ea91236a3ce8c8b14eb6c66f72ad1
+ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79284509"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84717796"
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>Ověřování zařízení pomocí certifikátů webu X.509
 
@@ -50,7 +50,7 @@ Vlastník certifikátu certifikační autority X. 509 může kryptograficky pode
 
 ![IMG-Generic-CERT-Chain-of-Trust](./media/generic-cert-chain-of-trust.png)
 
-Certifikát zařízení (označovaný také jako listový certifikát) musí mít *název subjektu* nastavený na **ID zařízení** , které se použilo při registraci zařízení IoT v IoT Hub Azure. Toto nastavení se vyžaduje pro ověřování.
+Certifikát zařízení (označovaný také jako listový certifikát) musí mít *název subjektu* nastavený na **ID zařízení** ( `CN=deviceId` ), které se použilo při registraci zařízení IoT v IoT Hub Azure. Toto nastavení se vyžaduje pro ověřování.
 
 Tady se dozvíte, jak [vytvořit řetěz certifikátů](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) , který se má provést při podepisování zařízení.
 

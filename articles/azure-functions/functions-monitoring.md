@@ -4,12 +4,13 @@ description: Naučte se používat Azure Application Insights s Azure Functions 
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.openlocfilehash: 2aaf52a528f929f183c9bf4565d9f0da4918f146
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 578e1580bdaafb1b309a7af44353602cc31cb5a5
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83757751"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207003"
 ---
 # <a name="monitor-azure-functions"></a>Monitorování Azure Functions
 
@@ -111,7 +112,7 @@ Modul runtime poskytuje `customDimensions.LogLevel` pole a `customDimensions.Cat
 
 ## <a name="configure-categories-and-log-levels"></a>Konfigurovat kategorie a úrovně protokolu
 
-Application Insights můžete použít bez vlastní konfigurace. Výchozí konfigurace může mít za následek velké objemy dat. Pokud používáte předplatné sady Visual Studio Azure, můžete pro Application Insights použít svůj limit dat. Později v tomto článku se dozvíte, jak nakonfigurovat a přizpůsobit data, která vaše funkce odesílají do Application Insights. V případě aplikace Function App se protokolování nakonfiguruje v souboru [Host. JSON] .
+Application Insights můžete použít bez vlastní konfigurace. Výchozí konfigurace může mít za následek velké objemy dat. Pokud používáte předplatné sady Visual Studio Azure, můžete pro Application Insights použít svůj limit dat. Později v tomto článku se dozvíte, jak nakonfigurovat a přizpůsobit data, která vaše funkce odesílají do Application Insights. V případě aplikace Function App se protokolování nakonfiguruje v [host.jsv] souboru.
 
 ### <a name="categories"></a>Kategorie
 
@@ -146,9 +147,9 @@ Protokolovací nástroj Azure Functions zahrnuje i *úroveň protokolu* s každ�
 
 Úroveň protokolu `None` je vysvětleno v další části. 
 
-### <a name="log-configuration-in-hostjson"></a>Protokolovat konfiguraci v Host. JSON
+### <a name="log-configuration-in-hostjson"></a>Protokolovat konfiguraci v host.jsna
 
-Soubor [Host. JSON] nakonfiguruje, kolik protokolování funkcí aplikace odesílá do Application Insights. Pro každou kategorii označíte minimální úroveň protokolu k odeslání. Existují dva příklady: první příklad cílí na [verzi 2. x a novější](functions-versions.md#version-2x) z modulu runtime Functions (s .NET Core) a druhým příkladem pro modul runtime verze 1. x.
+[host.jsv] souboru nakonfiguruje, kolik protokolování aplikace Function App odesílá do Application Insights. Pro každou kategorii označíte minimální úroveň protokolu k odeslání. Existují dva příklady: první příklad cílí na [verzi 2. x a novější](functions-versions.md#version-2x) z modulu runtime Functions (s .NET Core) a druhým příkladem pro modul runtime verze 1. x.
 
 ### <a name="version-2x-and-higher"></a>Verze 2. x a vyšší
 
@@ -188,12 +189,12 @@ Verze v2. x a novější verze modulu runtime Functions používají [hierarchii
 Tento příklad nastavuje následující pravidla:
 
 * Pro protokoly s kategorií `Host.Results` nebo můžete `Function` Odeslat `Error` Application Insights jenom úroveň a vyšší. Protokoly pro `Warning` úroveň a níže jsou ignorovány.
-* Pro protokoly s kategorií `Host.Aggregator` odešlete všechny protokoly do Application Insights. `Trace`Úroveň protokolu je stejná jako u některých volání protokolovacích `Verbose` nástrojů, ale používá se `Trace` v souboru [Host. JSON] .
+* Pro protokoly s kategorií `Host.Aggregator` odešlete všechny protokoly do Application Insights. `Trace`Úroveň protokolu je stejná jako u některých volání protokolovacích `Verbose` nástrojů, ale používá se `Trace` v [host.jsv] souboru.
 * Pro všechny ostatní protokoly odešlete `Information` Application Insights jenom úroveň a vyšší.
 
-Hodnota kategorie v prvku [Host. JSON] určuje protokolování pro všechny kategorie, které začínají stejnou hodnotou. `Host`v ovládacích prvcích [Host. JSON] se přihlašuje pro `Host.General` , `Host.Executor` , `Host.Results` a tak dále.
+Hodnota kategorie v [host.js] řídí protokolování pro všechny kategorie, které začínají stejnou hodnotou. `Host`v [host.js] ovládací prvky pro protokolování `Host.General` , `Host.Executor` , `Host.Results` a tak dále.
 
-Pokud [Host. JSON] obsahuje několik kategorií, které začínají stejným řetězcem, budou se nejdřív shodovat. Předpokládejme, že chcete, aby vše z modulu runtime s výjimkou `Host.Aggregator` protokolování na `Error` úrovni, ale chcete `Host.Aggregator` se přihlásit na `Information` úrovni:
+Pokud [host.jsna] zahrnuje více kategorií, které začínají stejným řetězcem, budou se nejprve shodovat. Předpokládejme, že chcete, aby vše z modulu runtime s výjimkou `Host.Aggregator` protokolování na `Error` úrovni, ale chcete `Host.Aggregator` se přihlásit na `Information` úrovni:
 
 ### <a name="version-2x-and-later"></a>Verze 2. x a novější
 
@@ -232,7 +233,7 @@ Chcete-li potlačit všechny protokoly pro kategorii, můžete použít úroveň
 
 ## <a name="configure-the-aggregator"></a>Konfigurace Agregátoru
 
-Jak je uvedeno v předchozí části, modul runtime agreguje data o spouštěních funkcí v časovém intervalu. Výchozí doba je 30 sekund nebo 1 000 spuštění, podle toho, co nastane dřív. Toto nastavení můžete nakonfigurovat v souboru [Host. JSON] .  Tady je příklad:
+Jak je uvedeno v předchozí části, modul runtime agreguje data o spouštěních funkcí v časovém intervalu. Výchozí doba je 30 sekund nebo 1 000 spuštění, podle toho, co nastane dřív. Toto nastavení můžete nakonfigurovat v [host.js] souboru.  Tady je příklad:
 
 ```json
 {
@@ -245,7 +246,7 @@ Jak je uvedeno v předchozí části, modul runtime agreguje data o spouštění
 
 ## <a name="configure-sampling"></a>Konfigurace vzorkování
 
-Application Insights má funkci [vzorkování](../azure-monitor/app/sampling.md) , která vám může chránit při vytváření příliš velkého množství dat telemetrie při dokončeném provádění v době špičky zatížení. Když frekvence příchozího provádění překročí zadanou prahovou hodnotu, Application Insights začne náhodně ignorovat některé příchozí spuštění. Výchozí nastavení maximálního počtu spuštění za sekundu je 20 (pět ve verzi 1. x). Vzorkování můžete nakonfigurovat v [Host. JSON].  Tady je příklad:
+Application Insights má funkci [vzorkování](../azure-monitor/app/sampling.md) , která vám může chránit při vytváření příliš velkého množství dat telemetrie při dokončeném provádění v době špičky zatížení. Když frekvence příchozího provádění překročí zadanou prahovou hodnotu, Application Insights začne náhodně ignorovat některé příchozí spuštění. Výchozí nastavení maximálního počtu spuštění za sekundu je 20 (pět ve verzi 1. x). Vzorkování můžete nakonfigurovat v [host.jszapnuto](https://docs.microsoft.com/azure/azure-functions/functions-host-json#applicationinsights).  Tady je příklad:
 
 ### <a name="version-2x-and-later"></a>Verze 2. x a novější
 
@@ -255,12 +256,15 @@ Application Insights má funkci [vzorkování](../azure-monitor/app/sampling.md)
     "applicationInsights": {
       "samplingSettings": {
         "isEnabled": true,
-        "maxTelemetryItemsPerSecond" : 20
+        "maxTelemetryItemsPerSecond" : 20,
+        "excludedTypes": "Request"
       }
     }
   }
 }
 ```
+
+Ve verzi 2. x můžete vyloučit určité typy telemetrie z vzorkování. V předchozím příkladu jsou data typu `Request` vyloučena z vzorkování. Tím se zajistí, že se zaprotokolují *všechny* provádění funkcí (požadavky), zatímco jiné typy telemetrie nadále podléhají vzorkování.
 
 ### <a name="version-1x"></a>Verze 1. x 
 
@@ -313,7 +317,7 @@ Tady je ukázková reprezentace dat ve formátu JSON `customDimensions` :
 
 ```json
 {
-  customDimensions: {
+  "customDimensions": {
     "prop__{OriginalFormat}":"C# Queue trigger function processed: {message}",
     "Category":"Function",
     "LogLevel":"Information",
@@ -334,7 +338,7 @@ Tento kód je alternativou pro volání `TrackMetric` pomocí rozhraní Applicat
 
 ## <a name="write-logs-in-javascript-functions"></a>Zápis protokolů ve funkcích JavaScriptu
 
-V funkcích Node. js použijte `context.log` k zápisu protokolů. Strukturované protokolování není povoleno.
+V Node.js funkce použijte `context.log` k zápisu protokolů. Strukturované protokolování není povoleno.
 
 ```
 context.log('JavaScript HTTP trigger function processed a request.' + context.invocationId);
@@ -342,13 +346,13 @@ context.log('JavaScript HTTP trigger function processed a request.' + context.in
 
 ### <a name="custom-metrics-logging"></a>Protokolování vlastních metrik
 
-Pokud používáte [verzi 1. x](functions-versions.md#creating-1x-apps) funkcí runtime Functions, Node. js, může pomocí `context.log.metric` metody vytvořit vlastní metriky v Application Insights. Tato metoda není aktuálně podporovaná ve verzi 2. x a novější. Zde je příklad volání metody:
+Pokud používáte [verzi 1. x](functions-versions.md#creating-1x-apps) modulu runtime Functions, Node.js funkce mohou použít `context.log.metric` metodu k vytváření vlastních metrik v Application Insights. Tato metoda není aktuálně podporovaná ve verzi 2. x a novější. Zde je příklad volání metody:
 
 ```javascript
 context.log.metric("TestMetric", 1234);
 ```
 
-Tento kód je alternativou pro volání `trackMetric` pomocí sady Node. js SDK pro Application Insights.
+Tento kód je alternativou pro volání `trackMetric` pomocí Node.js SDK pro Application Insights.
 
 ## <a name="log-custom-telemetry-in-c-functions"></a>Protokolování vlastní telemetrie ve funkcích jazyka C#
 
@@ -533,7 +537,7 @@ Nenastaveno `telemetryClient.Context.Operation.Id` . Toto globální nastavení 
 
 ## <a name="log-custom-telemetry-in-javascript-functions"></a>Protokolování vlastní telemetrie ve funkcích JavaScriptu
 
-Tady jsou ukázkové fragmenty kódu, které odesílají vlastní telemetrii pomocí [Application Insights Node. js SDK](https://github.com/microsoft/applicationinsights-node.js):
+Tady jsou ukázkové fragmenty kódu, které odesílají vlastní telemetrii pomocí [Application Insights Node.js SDK](https://github.com/microsoft/applicationinsights-node.js):
 
 ### <a name="version-2x-and-later"></a>Verze 2. x a novější
 
@@ -684,6 +688,28 @@ Get-AzSubscription -SubscriptionName "<subscription name>" | Select-AzSubscripti
 Get-AzWebSiteLog -Name <FUNCTION_APP_NAME> -Tail
 ```
 
+## <a name="scale-controller-logs"></a>Škálování protokolů řadičů
+
+[Řadič Azure Functions Scale](./functions-scale.md#runtime-scaling) monitoruje instance hostitelů funkcí, které spouštějí vaši aplikaci, a rozhoduje o tom, kdy přidat nebo odebrat instance hostitele funkce. Pokud potřebujete pochopit rozhodnutí, které kontroler škálování provádí v aplikaci, můžete ji nakonfigurovat tak, aby vygenerovala protokoly pro Application Insights nebo k Blob Storage.
+
+> [!WARNING]
+> Tato funkce je ve verzi Preview. Nedoporučujeme, abyste tuto funkci povolili po neomezenou dobu a místo toho ji měli povolit, pokud potřebujete informace, které shromažďuje, a pak je zakázat.
+
+Chcete-li povolit tuto funkci, přidejte nové nastavení aplikace s názvem `SCALE_CONTROLLER_LOGGING_ENABLED` . Hodnota tohoto nastavení musí být ve formátu `{Destination}:{Verbosity}` , kde:
+* `{Destination}`Určuje cíl, na který budou odesílány protokoly, a musí být buď `AppInsights` nebo `Blob` .
+* `{Verbosity}`Určuje požadovanou úroveň protokolování a musí to být jedna z těchto `None` , `Warning` nebo `Verbose` .
+
+Pokud například chcete protokolovat podrobné informace z kontroleru škálování na Application Insights, použijte hodnotu `AppInsights:Verbose` .
+
+> [!NOTE]
+> Pokud povolíte `AppInsights` typ cíle, musíte se ujistit, že nakonfigurujete [Application Insights vaší aplikace Function App](#enable-application-insights-integration).
+
+Pokud nastavíte cíl na `Blob` , protokoly se vytvoří v kontejneru objektů BLOB s názvem v `azure-functions-scale-controller` `AzureWebJobsStorage` nastavení aplikace.
+
+Pokud nastavíte podrobnosti na `Verbose` , kontroler škálování se zaznamená důvod každé změny v počtu pracovních procesů a také informace o triggerech, které se účastní rozhodnutí řadiče škálování. Například protokoly budou obsahovat upozornění triggeru a hodnoty hash používané triggery před a po spuštění kontroleru škálování.
+
+Chcete-li zakázat protokolování řadiče škálování, nastavte hodnotu na `{Verbosity}` `None` nebo odeberte `SCALE_CONTROLLER_LOGGING_ENABLED` nastavení aplikace.
+
 ## <a name="disable-built-in-logging"></a>Zakázat integrované protokolování
 
 Pokud povolíte Application Insights, zakažte integrované protokolování, které používá Azure Storage. Integrované protokolování je užitečné pro testování s využitím lehkých úloh, ale není určené pro použití v produkčním prostředí s vysokou zátěží. Pro produkční monitorování doporučujeme Application Insights. Pokud se v produkčním prostředí používá integrované protokolování, může být záznam protokolování neúplný z důvodu omezování Azure Storage.
@@ -697,4 +723,4 @@ Další informace najdete v následujících materiálech:
 * [Application Insights](/azure/application-insights/)
 * [Protokolování ASP.NET Core](/aspnet/core/fundamentals/logging/)
 
-[Host. JSON]: functions-host-json.md
+[host.jsna]: functions-host-json.md

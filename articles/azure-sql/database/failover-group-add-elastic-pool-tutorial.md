@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/27/2019
-ms.openlocfilehash: cba39b1631988ec33fb349357de3efa6a321fc03
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 683e448156d8f55c19ba55607f6171ca4279ebe9
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045876"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253898"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Kurz: Přidání elastického fondu Azure SQL Database do skupiny převzetí služeb při selhání
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -268,7 +268,7 @@ Otestujte převzetí služeb při selhání ve skupině převzetí služeb při 
 1. V podokně úloh vyberte **převzetí služeb při** selhání pro skupinu převzetí služeb při selhání, která obsahuje váš elastický fond.
 1. U upozornění, které vás upozorní na to, že relace TDS budou odpojeny, vyberte **Ano** .
 
-   ![Převzetí služeb při selhání ve skupině, která obsahuje vaše databáze SQL](./media/failover-group-add-elastic-pool-tutorial/failover-sql-db.png)
+   ![Převzetí služeb při selhání ve skupině, která obsahuje vaši databázi](./media/failover-group-add-elastic-pool-tutorial/failover-sql-db.png)
 
 1. Zkontrolujte, který server je primární a který server je sekundární. Pokud se převzetí služeb při selhání úspěšně převedlo, musí mít dva servery zaměnitelné role.
 1. Znovu vyberte **převzetí služeb při** selhání, abyste skupinu převzetí služeb při selhání mohli obnovit původní nastavení.

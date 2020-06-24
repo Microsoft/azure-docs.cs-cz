@@ -3,15 +3,15 @@ title: Přehled Durable Functions – Azure
 description: Úvod do rozšíření Durable Functions pro Azure Functions
 author: cgillum
 ms.topic: overview
-ms.date: 08/07/2019
+ms.date: 03/12/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 5d454aefaba89bef9dc9009ff442fa5543dae2ef
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bfbab26e47befbd84ed7b060992d6c0b239ae4db
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79241343"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85193426"
 ---
 # <a name="what-are-durable-functions"></a>Co je Durable Functions?
 
@@ -23,6 +23,7 @@ Durable Functions aktuálně podporuje následující jazyky:
 
 * **C#**: [knihovny předkompilovaných tříd](../functions-dotnet-class-library.md) a [skript jazyka C#](../functions-reference-csharp.md).
 * **JavaScript**: podporuje se jenom pro verzi 2. x Azure Functions runtime. Vyžaduje verzi 1.7.0 rozšíření Durable Functions nebo novější verzi. 
+* **Python**: vyžaduje verzi 1.8.5 rozšíření Durable Functions nebo novější verzi. 
 * **F #**: předkompilované knihovny tříd a skript jazyka F #. Skript F # se podporuje jenom pro verzi 1. x modulu runtime Azure Functions.
 
 Durable Functions má za cíl podporu všech [Azure Functionsch jazyků](../supported-languages.md). Nejnovější stav práce pro podporu dalších jazyků najdete v [seznamu problémů s Durable Functions](https://github.com/Azure/azure-functions-durable-extension/issues) .
@@ -48,9 +49,9 @@ Ve vzoru zřetězení funkcí se posloupnost funkcí provádí v určitém pořa
 
 Můžete použít Durable Functions k implementaci vzor řetězení funkcí stručně, jak je znázorněno v následujícím příkladu.
 
-V tomto příkladu `F1`hodnoty, `F2` `F3`, a `F4` jsou názvy dalších funkcí ve stejné aplikaci Function App. Tok řízení lze implementovat pomocí normálních imperativních konstrukcí kódování. Kód se spustí shora dolů. Kód může zahrnovat stávající sémantiku toku řízení jazyka, jako jsou podmínky a smyčky. `try` / Do `catch` bloků / zahrnout logiku zpracování `finally` chyb.
+V tomto příkladu hodnoty,, `F1` `F2` `F3` a `F4` jsou názvy dalších funkcí ve stejné aplikaci Function App. Tok řízení lze implementovat pomocí normálních imperativních konstrukcí kódování. Kód se spustí shora dolů. Kód může zahrnovat stávající sémantiku toku řízení jazyka, jako jsou podmínky a smyčky. Do bloků můžete zahrnout logiku zpracování chyb `try` / `catch` / `finally` .
 
-# <a name="c"></a>[R #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("Chaining")]
@@ -71,7 +72,7 @@ public static async Task<object> Run(
 }
 ```
 
-Můžete použít `context` parametr k vyvolání dalších funkcí podle názvu, Pass Parameters a vracet výstup funkce. Pokaždé, když kód `await`volá, Durable Functions Framework vystaví průběh aktuální instance funkce. Pokud se proces nebo virtuální počítač recykluje v průběhu provádění, instance funkce pokračuje z předchozího `await` volání. Další informace najdete v další části vzor #2: ventilátor nebo ventilátor v.
+Můžete použít `context` parametr k vyvolání dalších funkcí podle názvu, Pass Parameters a vracet výstup funkce. Pokaždé, když kód volá `await` , Durable Functions Framework vystaví průběh aktuální instance funkce. Pokud se proces nebo virtuální počítač recykluje v průběhu provádění, instance funkce pokračuje z předchozího `await` volání. Další informace najdete v další části vzor #2: ventilátor nebo ventilátor v.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -90,10 +91,33 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Můžete použít `context.df` objekt k vyvolání dalších funkcí podle názvu, Pass Parameters a vracet výstup funkce. Pokaždé, když kód `yield`volá, Durable Functions Framework vystaví průběh aktuální instance funkce. Pokud se proces nebo virtuální počítač recykluje v průběhu provádění, instance funkce pokračuje z předchozího `yield` volání. Další informace najdete v další části vzor #2: ventilátor nebo ventilátor v.
+Můžete použít `context.df` objekt k vyvolání dalších funkcí podle názvu, Pass Parameters a vracet výstup funkce. Pokaždé, když kód volá `yield` , Durable Functions Framework vystaví průběh aktuální instance funkce. Pokud se proces nebo virtuální počítač recykluje v průběhu provádění, instance funkce pokračuje z předchozího `yield` volání. Další informace najdete v další části vzor #2: ventilátor nebo ventilátor v.
 
 > [!NOTE]
-> `context` Objekt v JavaScriptu představuje celý [kontext funkce](../functions-reference-node.md#context-object). Přístup k Durable Functionsmu kontextu pomocí `df` vlastnosti v hlavním kontextu.
+> `context`Objekt v JavaScriptu představuje celý [kontext funkce](../functions-reference-node.md#context-object). Přístup k Durable Functionsmu kontextu pomocí `df` vlastnosti v hlavním kontextu.
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    x = yield context.call_activity("F1", None)
+    y = yield context.call_activity("F2", x)
+    z = yield context.call_activity("F3", y)
+    result = yield context.call_activity("F4", z)
+    return result
+
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
+Můžete použít `context` objekt k vyvolání dalších funkcí podle názvu, Pass Parameters a vracet výstup funkce. Pokaždé, když kód volá `yield` , Durable Functions Framework vystaví průběh aktuální instance funkce. Pokud se proces nebo virtuální počítač recykluje v průběhu provádění, instance funkce pokračuje z předchozího `yield` volání. Další informace najdete v další části vzor #2: ventilátor nebo ventilátor v.
+
+> [!NOTE]
+> `context`Objekt v Pythonu představuje kontext orchestrace. Přístup k hlavnímu kontextu Azure Functions pomocí `function_context` vlastnosti v kontextu orchestrace.
 
 ---
 
@@ -107,7 +131,7 @@ Díky normálním funkcím se můžete dostat do fronty tak, že funkci odešlet
 
 Rozšíření Durable Functions zpracovává tento vzor s poměrně jednoduchým kódem:
 
-# <a name="c"></a>[R #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("FanOutFanIn")]
@@ -132,7 +156,7 @@ public static async Task Run(
 }
 ```
 
-Práce s ventilátorem je distribuována do více instancí `F2` funkce. Práce je sledována pomocí dynamického seznamu úkolů. `Task.WhenAll`se volá, aby se čekalo na dokončení všech volaných funkcí. Výstupy `F2` funkcí pak jsou agregovány z dynamického seznamu úkolů a předány `F3` funkci.
+Práce s ventilátorem je distribuována do více instancí `F2` funkce. Práce je sledována pomocí dynamického seznamu úkolů. `Task.WhenAll`se volá, aby se čekalo na dokončení všech volaných funkcí. `F2`Výstupy funkcí pak jsou agregovány z dynamického seznamu úkolů a předány `F3` funkci.
 
 Automatické kontrolní body, ke kterým dojde při `await` volání, `Task.WhenAll` zajistí, že potenciální funkce pro zhroucení nebo restartování počítače nevyžadují restartování již dokončené úlohy.
 
@@ -158,9 +182,39 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Práce s ventilátorem je distribuována do více instancí `F2` funkce. Práce je sledována pomocí dynamického seznamu úkolů. `context.df.Task.all`Volá se rozhraní API, které čeká na dokončení všech volaných funkcí. Výstupy `F2` funkcí pak jsou agregovány z dynamického seznamu úkolů a předány `F3` funkci.
+Práce s ventilátorem je distribuována do více instancí `F2` funkce. Práce je sledována pomocí dynamického seznamu úkolů. `context.df.Task.all`Volá se rozhraní API, které čeká na dokončení všech volaných funkcí. `F2`Výstupy funkcí pak jsou agregovány z dynamického seznamu úkolů a předány `F3` funkci.
 
 Automatické kontrolní body, ke kterým dojde při `yield` volání, `context.df.Task.all` zajistí, že potenciální funkce pro zhroucení nebo restartování počítače nevyžadují restartování již dokončené úlohy.
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    parallel_tasks = []
+
+    # Get a list of N work items to process in parallel.
+    work_batch = yield context.call_activity("F1", None)
+
+    for i in range(0, len(work_batch)):
+        parallel_tasks.append(context.call_activity("F2", work_batch[i]))
+    
+    outputs = yield context.task_all(parallel_tasks)
+
+    # Aggregate all N outputs and send the result to F3.
+    total = sum(outputs)
+    yield context.call_activity("F3", total)
+
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
+Práce s ventilátorem je distribuována do více instancí `F2` funkce. Práce je sledována pomocí dynamického seznamu úkolů. `context.task_all`Volá se rozhraní API, které čeká na dokončení všech volaných funkcí. `F2`Výstupy funkcí pak jsou agregovány z dynamického seznamu úkolů a předány `F3` funkci.
+
+Automatické kontrolní body, ke kterým dojde při `yield` volání, `context.task_all` zajistí, že potenciální funkce pro zhroucení nebo restartování počítače nevyžadují restartování již dokončené úlohy.
 
 ---
 
@@ -214,11 +268,11 @@ Příkladem vzoru monitorování je vrácení dřívějšího scénáře asynchr
 
 ![Diagram modelu monitoru](./media/durable-functions-concepts/monitor.png)
 
-V několika řádcích kódu můžete pomocí Durable Functions vytvořit více monitorů, které sledují libovolné koncové body. Monitory mohou ukončit provádění, pokud je splněna podmínka, nebo jiná funkce může použít trvalého klienta Orchestration k ukončení monitorování. Můžete změnit `wait` interval monitorování na základě konkrétní podmínky (například exponenciální omezení rychlosti.) 
+V několika řádcích kódu můžete pomocí Durable Functions vytvořit více monitorů, které sledují libovolné koncové body. Monitory mohou ukončit provádění, pokud je splněna podmínka, nebo jiná funkce může použít trvalého klienta Orchestration k ukončení monitorování. Můžete změnit interval monitorování na `wait` základě konkrétní podmínky (například exponenciální omezení rychlosti.) 
 
 Následující kód implementuje základní monitor:
 
-# <a name="c"></a>[R #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("MonitorJobStatus")]
@@ -276,9 +330,41 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+import json
+from datetime import timedelta 
+
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    job = json.loads(context.get_input())
+    job_id = job["jobId"]
+    polling_interval = job["pollingInterval"]
+    expiry_time = job["expiryTime"]
+
+    while context.current_utc_datetime < expiry_time:
+        job_status = yield context.call_activity("GetJobStatus", job_id)
+        if job_status == "Completed":
+            # Perform an action when a condition is met.
+            yield context.call_activity("SendAlert", job_id)
+            break
+
+        # Orchestration sleeps until this time.
+        next_check = context.current_utc_datetime + timedelta(seconds=polling_interval)
+        yield context.create_timer(next_check)
+
+    # Perform more work here, or let the orchestration end.
+
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
 ---
 
-Po přijetí žádosti se pro ID úlohy vytvoří nová instance Orchestration. Instance se dotazuje na stav, dokud není splněna podmínka a dojde k ukončení smyčky. Interval cyklického dotazování řídí trvalý časovač. Pak je možné provést více práce, nebo orchestrace může skončit. Když `nextCheck` se `expiryTime`překročí, monitor skončí.
+Po přijetí žádosti se pro ID úlohy vytvoří nová instance Orchestration. Instance se dotazuje na stav, dokud není splněna podmínka a dojde k ukončení smyčky. Interval cyklického dotazování řídí trvalý časovač. Pak je možné provést více práce, nebo orchestrace může skončit. Když `nextCheck` se překročí `expiryTime` , monitor skončí.
 
 ### <a name="pattern-5-human-interaction"></a><a name="human"></a>Vzor #5: interakce člověka
 
@@ -292,7 +378,7 @@ Vzor v tomto příkladu můžete implementovat pomocí funkce Orchestrator. Nás
 
 Tyto příklady vytvoří proces schvalování, který předvádí vzor lidské interakce:
 
-# <a name="c"></a>[R #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("ApprovalWorkflow")]
@@ -319,7 +405,7 @@ public static async Task Run(
 }
 ```
 
-Chcete-li vytvořit trvalý časovač, `context.CreateTimer`zavolejte. Oznámení přijal (a `context.WaitForExternalEvent`). Pak se `Task.WhenAny` zavolá, aby se rozhodlo, jestli se má eskalovat (časový limit nastane jako první), nebo jestli se má schválit schválení (schválení se přijme před časovým limitem)
+Chcete-li vytvořit trvalý časovač, zavolejte `context.CreateTimer` . Oznámení přijal (a) `context.WaitForExternalEvent` . Pak `Task.WhenAny` se zavolá, aby se rozhodlo, jestli se má eskalovat (časový limit nastane jako první), nebo jestli se má schválit schválení (schválení se přijme před časovým limitem)
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -343,7 +429,37 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Chcete-li vytvořit trvalý časovač, `context.df.createTimer`zavolejte. Oznámení přijal (a `context.df.waitForExternalEvent`). Pak se `context.df.Task.any` zavolá, aby se rozhodlo, jestli se má eskalovat (časový limit nastane jako první), nebo jestli se má schválit schválení (schválení se přijme před časovým limitem)
+Chcete-li vytvořit trvalý časovač, zavolejte `context.df.createTimer` . Oznámení přijal (a) `context.df.waitForExternalEvent` . Pak `context.df.Task.any` se zavolá, aby se rozhodlo, jestli se má eskalovat (časový limit nastane jako první), nebo jestli se má schválit schválení (schválení se přijme před časovým limitem)
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+import json
+from datetime import timedelta 
+
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    yield context.call_activity("RequestApproval", None)
+
+    due_time = context.current_utc_datetime + timedelta(hours=72)
+    durable_timeout_task = context.create_timer(due_time)
+    approval_event_task = context.wait_for_external_event("ApprovalEvent")
+
+    winning_task = yield context.task_any([approval_event_task, durable_timeout_task])
+
+    if approval_event_task == winning_task:
+        durable_timeout_task.cancel()
+        yield context.call_activity("ProcessApproval", approval_event_task.result)
+    else:
+        yield context.call_activity("Escalate", None)
+
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
+Chcete-li vytvořit trvalý časovač, zavolejte `context.create_timer` . Oznámení přijal (a) `context.wait_for_external_event` . Pak `context.task_any` se zavolá, aby se rozhodlo, jestli se má eskalovat (časový limit nastane jako první), nebo jestli se má schválit schválení (schválení se přijme před časovým limitem)
 
 ---
 
@@ -355,7 +471,7 @@ curl -d "true" http://localhost:7071/runtime/webhooks/durabletask/instances/{ins
 
 Událost se dá taky vyvolat pomocí trvalého klienta Orchestration z jiné funkce ve stejné aplikaci Function App:
 
-# <a name="c"></a>[R #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("RaiseEventToOrchestration")]
@@ -380,6 +496,18 @@ module.exports = async function (context) {
 };
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.durable_functions as df
+
+
+async def main(client: str):
+    durable_client = df.DurableOrchestrationClient(client)
+    is_approved = True
+    await durable_client.raise_event(instance_id, "ApprovalEvent", is_approved)
+```
+
 ---
 
 ### <a name="pattern-6-aggregator-stateful-entities"></a><a name="aggregator"></a>Vzor #6: agregátor (stavové entity)
@@ -392,7 +520,7 @@ Důvodem, proč se pokusit o implementaci tohoto modelu s normálními a bezstav
 
 Můžete použít [trvalé entity](durable-functions-entities.md) k jednoduché implementaci tohoto modelu jako jediné funkce.
 
-# <a name="c"></a>[R #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("Counter")]
@@ -457,11 +585,15 @@ module.exports = df.entity(function(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+V Pythonu se v současnosti nepodporují trvalé entity.
+
 ---
 
 Klienti mohou zařadit *operace* do fronty (označované také jako "signalizace") entity funkce pomocí [vazby klienta entit](durable-functions-bindings.md#entity-client).
 
-# <a name="c"></a>[R #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("EventHubTriggerCSharp")]
@@ -493,9 +625,13 @@ module.exports = async function (context) {
 };
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+V Pythonu se v současnosti nepodporují trvalé entity.
+
 ---
 
-Funkce entit jsou k dispozici v [Durable Functions 2,0](durable-functions-versions.md) a vyšších.
+Funkce entit jsou k dispozici v [Durable Functions 2,0](durable-functions-versions.md) a vyšších pro C# a JavaScript.
 
 ## <a name="the-technology"></a>Technologie
 
@@ -515,6 +651,7 @@ Můžete začít s Durable Functions za 10 minut, a to provedením jednoho z tě
 
 * [C# s využitím sady Visual Studio 2019](durable-functions-create-first-csharp.md)
 * [JavaScript pomocí Visual Studio Code](quickstart-js-vscode.md)
+* [Python s použitím Visual Studio Code](quickstart-python-vscode.md)
 
 V obou rychlých startech můžete místně vytvořit a otestovat funkci "Hello World". Kód funkce potom publikujete do Azure. Funkce, kterou vytváříte, orchestruje a řetězí volání dalších funkcí.
 

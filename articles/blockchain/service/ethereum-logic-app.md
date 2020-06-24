@@ -2,14 +2,14 @@
 title: Použití konektoru Ethereem blockchain s Azure Logic Apps – Azure blockchain Service
 description: Pomocí konektoru Ethereem blockchain s Azure Logic Apps můžete aktivovat funkce inteligentních kontraktů a reagovat na události inteligentních kontraktů.
 ms.date: 10/14/2019
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: chrisseg
-ms.openlocfilehash: 4a9acfd6098ed45fd92c7e3047b5d1446eeddbd6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c7b45134e8b5c3e33e5d05d59c006abe103e5bda
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74325226"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85200728"
 ---
 # <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>Použití konektoru Ethereem blockchain s Azure Logic Apps
 
@@ -114,7 +114,7 @@ Následující kroky například generují aplikaci Logic mikroslužeb založeno
     Konfigurace aplikace logiky a soubory kódu jsou generovány v adresáři **generatedLogicApp** .
 
 1. Zobrazit adresář **generatedLogicApp/HelloBlockchain** Pro každou funkci, událost a vlastnost inteligentního kontraktu je k dispozici soubor JSON aplikace logiky.
-1. Otevřete **generatedLogicApp/HelloBlockchain/Service/Property. Soubor RequestMessage. logicapp. JSON** a obsah zkopírujte.
+1. Otevřete soubor **generatedLogicApp/HelloBlockchain/Service/property.RequestMessage.logicapp.js** a zkopírujte jeho obsah.
 
     ![Soubor JSON s kódem ke zkopírování](./media/ethereum-logic-app/requestmessage.png)
 
@@ -132,7 +132,7 @@ Následující kroky například generují aplikaci Logic mikroslužeb založeno
 
     ![Podokno návrháře Logic Apps s adresou URL POST protokolu HTTP](./media/ethereum-logic-app/post-url.png)
 
-1. K vytvoření požadavku HTTP POST použijte oblé. Zástupný text * \<http post\> * nahraďte adresou URL z předchozího kroku.
+1. K vytvoření požadavku HTTP POST použijte oblé. Zástupný text nahraďte *\<HTTP POST URL\>* adresou URL z předchozího kroku.
 
     ``` bash
     curl -d "{}" -H "Content-Type: application/json" -X POST "<HTTP POST URL>"
@@ -181,7 +181,7 @@ Adresa koncového bodu RPC služby Azure blockchain se vyžaduje pro připojení
 
     ![Stránka uzly transakce s výběrem (výchozí uzel)](./media/ethereum-logic-app/transaction-nodes.png)
 
-1. Vyberte**přístupové klíče** **připojovacích řetězců** > .
+1. Vyberte přístupové klíče **připojovacích řetězců**  >  **Access keys**.
 1. Zkopírujte adresu koncového bodu z **https (přístupový klíč 1)** nebo **https (přístupový klíč 2)**.
 
     ![Azure Portal pomocí přístupových klíčů připojovacího řetězce](./media/ethereum-logic-app/connection-string.png)
@@ -261,7 +261,7 @@ Pokud jste k sestavení vaší inteligentní smlouvy použili vývojovou sadu ne
 
 **Použití kompilátoru hustota:**
 
-K vygenerování `solc --bin <smart contract>.sol` bajtového kódu kontraktu použijte příkaz.
+`solc --bin <smart contract>.sol`K vygenerování bajtového kódu kontraktu použijte příkaz.
 
 ## <a name="get-the-contract-address"></a>Získat adresu kontraktu
 

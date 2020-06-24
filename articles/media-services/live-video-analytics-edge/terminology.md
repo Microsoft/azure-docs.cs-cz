@@ -1,14 +1,14 @@
 ---
-title: Terminologie – Azure
+title: Live video Analytics v terminologii IoT EDG – Azure
 description: Tento článek poskytuje přehled živé analýzy videí na IoT Edge terminologii.
 ms.topic: conceptual
 ms.date: 05/30/2020
-ms.openlocfilehash: 51fcc962f6546d727dbbc5e7ff62dc9c4e5677af
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 58f3d7b54fd0bd19e6bc0a057ef053bb2c74cd97
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84261041"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84816523"
 ---
 # <a name="terminology"></a>Terminologie
 
@@ -26,7 +26,7 @@ Live video Analytics na IoT Edge může vytvářet assety nebo přidávat data d
 
 ## <a name="streaming"></a>Streamování
 
-Pokud máte na mobilním zařízení sledované video ze služeb, jako jsou Netflix, YouTube a další, máte streamované video. Přehrávání začne brzy po klepnutí na tlačítko "přehrát" (Pokud máte dostatečnou šířku pásma) a můžete hledat a zpátky na časové ose videa. Díky streamování je nápad doručovat pouze část videa, která je sledována, a nechat prohlížeč začít přehrávat video, zatímco data jsou stále přenášena ze serveru do klienta pro přehrávání. V souvislosti s Azure Media Services [streamování](https://en.wikipedia.org/wiki/Streaming_media) odkazuje na proces doručování médií z [Azure Media Services](https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-overview) na klienta streamování (například Azure Media Player). Můžete použít Azure Media Services ke streamování videa klientům pomocí standardních protokolů pro streamování médií založených na protokolu HTTP, jako je například [http Live Streaming (HLS)](https://developer.apple.com/streaming/) a [MPEG-pomlčka](https://dashif.org/about/). HLS podporuje aplikace Azure Media Player a webové přehrávače, jako je [JW Player](https://www.jwplayer.com/), [HLS. js](https://github.com/video-dev/hls.js/), [VideoJS](https://videojs.com/), [Shaka Player pro Google](https://github.com/google/shaka-player), nebo můžete nakreslit nativně v mobilních aplikacích s využitím [Exoplayer](https://github.com/google/ExoPlayer) a iOS [Foundation](https://developer.apple.com/av-foundation/)v Androidu. Formát MPEG-POMLČKa je také podporován nástrojem Azure Media Player. [na této stránce najdete seznam klientů](https://dashif.org/clients/). 
+Pokud máte na mobilním zařízení sledované video ze služeb, jako jsou Netflix, YouTube a další, máte streamované video. Přehrávání začne brzy po klepnutí na tlačítko "přehrát" (Pokud máte dostatečnou šířku pásma) a můžete hledat a zpátky na časové ose videa. Díky streamování je nápad doručovat pouze část videa, která je sledována, a nechat prohlížeč začít přehrávat video, zatímco data jsou stále přenášena ze serveru do klienta pro přehrávání. V souvislosti s Azure Media Services [streamování](https://en.wikipedia.org/wiki/Streaming_media) odkazuje na proces doručování médií z [Azure Media Services](https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-overview) na klienta streamování (například Azure Media Player). Můžete použít Azure Media Services ke streamování videa klientům pomocí standardních protokolů pro streamování médií založených na protokolu HTTP, jako je například [http Live Streaming (HLS)](https://developer.apple.com/streaming/) a [MPEG-pomlčka](https://dashif.org/about/). HLS podporuje aplikace Azure Media Player a webové přehrávače, jako je [JW Player](https://www.jwplayer.com/), [hls.js](https://github.com/video-dev/hls.js/), [VideoJS](https://videojs.com/), [Shaka Player Google](https://github.com/google/shaka-player), nebo můžete nakreslit nativně v mobilních aplikacích s využitím [Exoplayer](https://github.com/google/ExoPlayer) v Androidu a iOS [Foundation](https://developer.apple.com/av-foundation/). Formát MPEG-POMLČKa je také podporován nástrojem Azure Media Player. [na této stránce najdete seznam klientů](https://dashif.org/clients/). 
 
 Díky použití [Media graphu](#media-graph)s k nahrávání videí do assetu v Azure Media Services můžete využívat možnosti streamování v Media Services, abyste mohli doručovat streamy videa v HLS a spojovníkech. Další informace najdete v článku o [přehrávání videa](video-playback-concept.md) .
 
@@ -34,7 +34,7 @@ Díky použití [Media graphu](#media-graph)s k nahrávání videí do assetu v 
 
 V kontextu systému správy videí pro bezpečnostní kamery se záznam videa označuje procesem digitalizace videa z kamer a jejich uložení do souboru (nebo souborů) pro následné zobrazení prostřednictvím mobilních a prohlížečových aplikací. Záznam videa je možné kategorizovat do [nepřetržitého](continuous-video-recording-concept.md) záznamu videa a [záznamu videa založeného na událostech](event-based-video-recording-concept.md). Tyto informace jsou podrobněji vysvětleny na stránce koncept [záznamu videa](video-recording-concept.md) .
 
-## <a name="media-graph"></a>Media Graph
+## <a name="media-graph"></a>Graf médií
 
 [Media Graph](media-graph-concept.md) umožňuje definovat, odkud se mají média zachytit, jak by měla být zpracována a kde se mají výsledky doručovat. Umožňuje definovat graf skládající se ze zdrojů, procesorů a uzlů jímky a díky tomu je možné vytvářet živé aplikace analýzy videí. Media Graph je podrobně popsán na stránce konceptu mediálního grafu.
 

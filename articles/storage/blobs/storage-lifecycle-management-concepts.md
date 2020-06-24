@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 255e440586af2a5c9115023f45fbf02e25c57ab6
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 789d70f77558bbade854ba31fd10ecd2b8e7b853
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692127"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194701"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Správa životního cyklu úložiště objektů blob v Azure
 
@@ -58,7 +58,7 @@ Zásady je možné číst nebo zapisovat v plném rozsahu. Částečné aktualiz
 
 Tento článek popisuje, jak spravovat zásady pomocí portálu a metod PowerShellu.  
 
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 Existují dva způsoby, jak přidat zásadu prostřednictvím Azure Portal. 
 
@@ -130,7 +130,7 @@ Existují dva způsoby, jak přidat zásadu prostřednictvím Azure Portal.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-K přidání zásad do účtu úložiště se dá použít následující skript PowerShellu. `$rgname` Proměnná musí být inicializována s názvem vaší skupiny prostředků. `$accountName` Proměnná musí být inicializována s názvem vašeho účtu úložiště.
+K přidání zásad do účtu úložiště se dá použít následující skript PowerShellu. `$rgname`Proměnná musí být inicializována s názvem vaší skupiny prostředků. `$accountName`Proměnná musí být inicializována s názvem vašeho účtu úložiště.
 
 ```powershell
 #Install the latest module
@@ -202,7 +202,7 @@ Správu životního cyklu můžete definovat pomocí Azure Resource Manager šab
 
 ---
 
-## <a name="policy"></a>Zásada
+## <a name="policy"></a>Zásady
 
 Zásady správy životního cyklu jsou kolekce pravidel v dokumentu JSON:
 
@@ -232,11 +232,11 @@ Zásada je kolekcí pravidel:
 
 Každé pravidlo v zásadě má několik parametrů:
 
-| Název parametru | Typ parametru | Poznámky | Požaduje se |
+| Název parametru | Typ parametru | Poznámky | Vyžadováno |
 |----------------|----------------|-------|----------|
 | `name`         | Řetězec |Název pravidla může obsahovat až 256 alfanumerických znaků. Název pravidla rozlišuje velká a malá písmena.  Musí být jedinečný v rámci zásad. | True |
 | `enabled`      | Logická hodnota | Volitelná logická hodnota, která povolí dočasné vypnutí pravidla. Výchozí hodnota je true, pokud není nastavena. | False | 
-| `type`         | Hodnota výčtu | Aktuální platný typ je `Lifecycle`. | True |
+| `type`         | Hodnota výčtu | Aktuální platný typ je `Lifecycle` . | True |
 | `definition`   | Objekt definující pravidlo životního cyklu | Každá definice se skládá ze sady filtrů a sady akcí. | True |
 
 ## <a name="rules"></a>Pravidla
@@ -245,7 +245,7 @@ Každá definice pravidla obsahuje sadu filtrů a sadu akcí. [Sada filtr](#rule
 
 ### <a name="sample-rule"></a>Ukázkové pravidlo
 
-Následující ukázkové pravidlo filtruje účet, aby spouštěl akce na objektech, které existují uvnitř `container1` a začínají na `foo`.  
+Následující ukázkové pravidlo filtruje účet, aby spouštěl akce na objektech, které existují uvnitř `container1` a začínají na `foo` .  
 
 >[!NOTE]
 >Správa životního cyklu podporuje jenom typ objektu blob bloku.  
@@ -291,9 +291,9 @@ Filtry zahrnují:
 
 | Název filtru | Typ filtru | Poznámky | Je povinné |
 |-------------|-------------|-------|-------------|
-| blobTypes   | Pole předdefinovaných hodnot výčtu. | Aktuální verze podporuje `blockBlob`. | Ano |
-| prefixMatch | Pole řetězců, pro které mají být předpony spárovány. Každé pravidlo může definovat až 10 předpon. Řetězec předpony musí začínat názvem kontejneru. Například pokud chcete, aby se všechny objekty blob shodovaly `https://myaccount.blob.core.windows.net/container1/foo/...` v rámci pravidla, prefixMatch je `container1/foo`. | Pokud prefixMatch nedefinujete, pravidlo se použije na všechny objekty BLOB v účtu úložiště.  | No |
-| blobIndexMatch | Pole hodnot slovníku sestávající z klíče značek indexu objektu BLOB a podmínky hodnoty, které mají být porovnány. Každé pravidlo může definovat až 10 stavových značek indexu objektu BLOB. Například pokud chcete, aby se všechny objekty blob shodovaly `Project = Contoso` s `https://myaccount.blob.core.windows.net/` v rámci pro pravidlo, je `{"name": "Project","op": "==","value": "Contoso"}`blobIndexMatch. | Pokud blobIndexMatch nedefinujete, pravidlo se použije na všechny objekty BLOB v účtu úložiště. | No |
+| blobTypes   | Pole předdefinovaných hodnot výčtu. | Aktuální verze podporuje `blockBlob` . | Ano |
+| prefixMatch | Pole řetězců, pro které mají být předpony spárovány. Každé pravidlo může definovat až 10 předpon. Řetězec předpony musí začínat názvem kontejneru. Například pokud chcete, aby se všechny objekty blob shodovaly v rámci `https://myaccount.blob.core.windows.net/container1/foo/...` pravidla, prefixMatch je `container1/foo` . | Pokud prefixMatch nedefinujete, pravidlo se použije na všechny objekty BLOB v účtu úložiště.  | Ne |
+| blobIndexMatch | Pole hodnot slovníku sestávající z klíče značek indexu objektu BLOB a podmínky hodnoty, které mají být porovnány. Každé pravidlo může definovat až 10 stavových značek indexu objektu BLOB. Například pokud chcete, aby se všechny objekty blob shodovaly s `Project = Contoso` v rámci `https://myaccount.blob.core.windows.net/` pro pravidlo, je blobIndexMatch `{"name": "Project","op": "==","value": "Contoso"}` . | Pokud blobIndexMatch nedefinujete, pravidlo se použije na všechny objekty BLOB v účtu úložiště. | Ne |
 
 > [!NOTE]
 > Index objektu BLOB je ve verzi Public Preview a je dostupný v oblastech **Francie – střed** a Francie – **jih** . Další informace o této funkci spolu se známými problémy a omezeních najdete v tématu [Správa a hledání dat v Azure Blob Storage s využitím indexu objektů BLOB (Preview)](storage-manage-find-blobs.md).
@@ -311,11 +311,11 @@ Správa životního cyklu podporuje vrstvení a odstraňování objektů BLOB a 
 | delete        | Podporuje se                                   | Podporuje se     |
 
 >[!NOTE]
->Pokud definujete více než jednu akci u stejného objektu blob, bude správa životního cyklu v objektu BLOB platit nejméně náročná akce. Například akce `delete` je levnější než akce `tierToArchive`. Akce `tierToArchive` je levnější než akce `tierToCool`.
+>Pokud definujete více než jednu akci u stejného objektu blob, bude správa životního cyklu v objektu BLOB platit nejméně náročná akce. Například akce `delete` je levnější než akce `tierToArchive` . Akce `tierToArchive` je levnější než akce `tierToCool` .
 
 Podmínky spuštění jsou založené na stáří. Základní objekty blob používají čas poslední změny ke sledování stáří a snímky objektů BLOB používají čas vytvoření snímku ke sledování stáří.
 
-| Podmínka spuštění akce             | Hodnota podmínky                          | Popis                             |
+| Podmínka spuštění akce             | Hodnota podmínky                          | Description                             |
 |----------------------------------|------------------------------------------|-----------------------------------------|
 | daysAfterModificationGreaterThan | Celočíselná hodnota označující stáří ve dnech | Podmínka pro základní akce objektů BLOB     |
 | daysAfterCreationGreaterThan     | Celočíselná hodnota označující stáří ve dnech | Podmínka pro akce snímku objektu BLOB |
@@ -326,7 +326,7 @@ Následující příklady ukazují, jak řešit běžné scénáře s pravidly z
 
 ### <a name="move-aging-data-to-a-cooler-tier"></a>Přesunout data o stárnutí do úrovně chladicího procesu
 
-Tento příklad ukazuje, jak převést objekty blob bloku s `container1/foo` předponou `container2/bar`nebo. Zásady přemění objekty blob, které se nezměnily během více než 30 dní, do studeného úložiště, a objekty BLOB se v 90 dnech nezměnily na úroveň archivu:
+Tento příklad ukazuje, jak převést objekty blob bloku s předponou `container1/foo` nebo `container2/bar` . Zásady přemění objekty blob, které se nezměnily během více než 30 dní, do studeného úložiště, a objekty BLOB se v 90 dnech nezměnily na úroveň archivu:
 
 ```json
 {
@@ -354,10 +354,10 @@ Tento příklad ukazuje, jak převést objekty blob bloku s `container1/foo` př
 
 ### <a name="archive-data-after-ingest"></a>Archivovat data po ingestování
 
-Některá data v cloudu zůstanou nečinná a v případě potřeby jsou po uložení k dispozici zřídka. Následující zásady životního cyklu jsou nakonfigurovány k archivaci dat krátce po ingestování. Tento příklad přechází objekty blob bloku v účtu úložiště v `archivecontainer` kontejneru do archivní úrovně. Přechod se provádí na objektech blob 0 dní od poslední změny:
+Některá data v cloudu zůstanou nečinná a v případě potřeby jsou po uložení k dispozici zřídka. Následující zásady životního cyklu jsou nakonfigurovány k archivaci dat krátce po ingestování. Tento příklad přechází objekty blob bloku v účtu úložiště v kontejneru `archivecontainer` do archivní úrovně. Přechod se provádí na objektech blob 0 dní od poslední změny:
 
 > [!NOTE] 
-> Doporučujeme nahrát objekty blob přímo do archivní vrstvy, aby byly efektivnější. Můžete použít záhlaví x-MS-ACE-úrovně pro [PutBlob](https://docs.microsoft.com/rest/api/storageservices/put-blob) nebo [PutBlockList](https://docs.microsoft.com/rest/api/storageservices/put-block-list) s REST verze 2018-11-09 a novějším nebo nejnovějšími klientskými knihovnami pro úložiště objektů BLOB. 
+> Doporučujeme nahrát objekty blob přímo do archivní vrstvy, aby byly efektivnější. Můžete použít záhlaví x-MS-Access-úrovně pro [PutBlob](https://docs.microsoft.com/rest/api/storageservices/put-blob) nebo [PutBlockList](https://docs.microsoft.com/rest/api/storageservices/put-block-list) s REST verze 2018-11-09 a novějšími nebo nejnovějšími klientskými knihovnami pro úložiště objektů BLOB. 
 
 ```json
 {
@@ -410,7 +410,7 @@ U některých dat se očekává, že vyprší platnost dnů nebo měsíců po vy
 ```
 
 ### <a name="delete-data-with-blob-index-tags"></a>Odstranění dat pomocí značek indexu objektu BLOB
-Některá data by měla být vyhodnocena pouze v případě, že jsou výslovně označeny k odstranění. Můžete nakonfigurovat zásady správy životního cyklu tak, aby prošly daty, která jsou označená atributy klíč/hodnota indexu objektu BLOB. Následující příklad ukazuje zásadu, která odstraní všechny objekty blob bloku s `Project = Contoso`příznakem. Další informace o indexu objektů BLOB najdete v tématu [Správa a hledání dat v Azure Blob Storage s využitím indexu objektů BLOB (Preview)](storage-manage-find-blobs.md).
+Některá data by měla být vyhodnocena pouze v případě, že jsou výslovně označeny k odstranění. Můžete nakonfigurovat zásady správy životního cyklu tak, aby prošly daty, která jsou označená atributy klíč/hodnota indexu objektu BLOB. Následující příklad ukazuje zásadu, která odstraní všechny objekty blob bloku s příznakem `Project = Contoso` . Další informace o indexu objektů BLOB najdete v tématu [Správa a hledání dat v Azure Blob Storage s využitím indexu objektů BLOB (Preview)](storage-manage-find-blobs.md).
 
 ```json
 {
@@ -447,7 +447,7 @@ Některá data by měla být vyhodnocena pouze v případě, že jsou výslovně
 
 ### <a name="delete-old-snapshots"></a>Odstranit staré snímky
 
-Pro data, která se pravidelně upravují a přibývají k nim přistupovaly během své životnosti, se snímky často používají ke sledování starších verzí dat. Můžete vytvořit zásadu, která odstraní staré snímky na základě stáří snímku. Stáří snímku je určeno vyhodnocením času vytvoření snímku. Toto pravidlo zásad odstraní snímky objektů blob bloku v `activedata` rámci kontejneru, které jsou 90 dní nebo starší po vytvoření snímku.
+Pro data, která se pravidelně upravují a přibývají k nim přistupovaly během své životnosti, se snímky často používají ke sledování starších verzí dat. Můžete vytvořit zásadu, která odstraní staré snímky na základě stáří snímku. Stáří snímku je určeno vyhodnocením času vytvoření snímku. Toto pravidlo zásad odstraní snímky objektů blob bloku v rámci kontejneru `activedata` , které jsou 90 dní nebo starší po vytvoření snímku.
 
 ```json
 {

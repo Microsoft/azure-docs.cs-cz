@@ -3,12 +3,12 @@ title: Odpovědi na časté dotazy
 description: 'Odpovědi na běžné dotazy týkající se funkcí služby Azure Backup, včetně trezorů služby Recovery Services, co může zálohovat, jak to funguje, šifrování a omezení. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 04921cd617a688ebcf31bcec29cf26681914f44b
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 4f7c83df738b72d57719de9b9ef650d119ac5dc4
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84247661"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255156"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – Nejčastější dotazy
 
@@ -43,11 +43,11 @@ Ano. Informace o přesunu trezoru služby Recovery Services najdete v tomto [čl
 
 ### <a name="can-i-move-backup-data-to-another-vault"></a>Dají se zálohovaná data přesunout do jiného trezoru?
 
-No. Zálohovaná data uložená v trezoru se nedají přesunout do jiného trezoru.
+Ne. Zálohovaná data uložená v trezoru se nedají přesunout do jiného trezoru.
 
 ### <a name="can-i-change-from-grs-to-lrs-after-a-backup"></a>Můžu po vytvoření zálohy změnit obnovení z GRS na LRS?
 
-No. Trezor Recovery Services může měnit možnosti úložiště jenom před uložením jakýchkoli záloh.
+Ne. Trezor Recovery Services může měnit možnosti úložiště jenom před uložením jakýchkoli záloh.
 
 ### <a name="can-i-do-an-item-level-restore-ilr-for-vms-backed-up-to-a-recovery-services-vault"></a>Dá se pro virtuální počítače zálohované v trezoru služby Recovery Services použít obnovování na úrovni položek (Item Level Restore, ILR)?
 
@@ -75,7 +75,7 @@ Ano.
 
 Azure Backup podporuje pro zálohování souborů a složek a aplikací chráněných pomocí Azure Backup Serveru a DPM následující operační systémy.
 
-**OS** | **SKU** | **Zobrazí**
+**OS** | **SKU** | **Podrobnosti**
 --- | --- | ---
 Pracovní stanice | |
 Windows 10, 64bitová verze | Enterprise, Pro, Home | Na počítačích by měly být spuštěné nejnovější aktualizace Service Pack a aktualizace služeb.
@@ -104,7 +104,7 @@ Platí tato omezení velikosti:
 OS/počítač | Omezení velikosti zdroje dat
 --- | ---
 Windows 8 nebo novější | 54 400 GB
-Windows 7 |1700 GB
+Windows 7 |1700 GB
 Windows Server 2012 nebo novější | 54 400 GB
 Windows Server 2008, Windows Server 2008 R2 | 1700 GB
 Virtuální počítač Azure | Viz [matice podpory pro zálohování virtuálních počítačů Azure](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#vm-storage-support) .
@@ -113,10 +113,10 @@ Virtuální počítač Azure | Viz [matice podpory pro zálohování virtuální
 
 Následující tabulka vysvětluje, jak je určená velikost jednotlivých zdrojů dat.
 
-**Nastavení** | **Zobrazí**
+**Nastavení** | **Podrobnosti**
 --- | ---
 Svazek |Množství dat zálohovaných z jednoho svazku virtuálního počítače
-Databáze SQL Serveru |Velikost jedné zálohované databáze SQL
+Databáze SQL Serveru |Velikost databáze s jedinou zálohovanou velikostí.
 SharePoint | Součet databází obsahu a konfiguračních databází v rámci zálohované farmy služby SharePoint
 Výměna |Součet všech databází systému Exchange na zálohovaném serveru Exchange
 BMR a stav systému |Každá jednotlivá kopie BMR nebo stavu systému zálohovaného počítače
@@ -135,7 +135,7 @@ Ne, Azure Backup nepodporuje odstraňování nebo mazání jednotlivých polože
 
 ### <a name="if-i-cancel-a-backup-job-after-it-starts-is-the-transferred-backup-data-deleted"></a>Když zruším úlohu zálohování poté, co už se spustila, dojde k odstranění přenášených dat?
 
-No. Všechna data přenášená do trezoru před zrušením úlohy zálohování zůstanou v trezoru.
+Ne. Všechna data přenášená do trezoru před zrušením úlohy zálohování zůstanou v trezoru.
 
 - Azure Backup používá mechanismus kontrolních bodů k příležitostnému přidávání kontrolních bodů do zálohovaných dat během zálohování.
 - Díky kontrolním bodům v zálohovaných datech je možné při dalším procesu zálohování ověřit integritu souborů.
@@ -155,13 +155,13 @@ Ano, zásady můžete přizpůsobovat. Můžete například nakonfigurovat poža
 
 ### <a name="can-i-use-different-times-for-backup-scheduling-and-retention-policies"></a>Dají se pro plánování zálohování a zásady uchovávání používat jiné časy?
 
-No. Zásady uchovávání informací lze aplikovat pouze na body záloh. Tento obrázek například ukazuje zásady uchovávání informací pro zálohy vytvořené ve 12:00 a 18:00.
+Ne. Zásady uchovávání informací lze aplikovat pouze na body záloh. Tento obrázek například ukazuje zásady uchovávání informací pro zálohy vytvořené ve 12:00 a 18:00.
 
 ![Plánování zálohování a uchovávání](./media/backup-azure-backup-faq/Schedule.png)
 
 ### <a name="if-a-backup-is-kept-for-a-long-time-does-it-take-more-time-to-recover-an-older-data-point"></a>Pokud se záloha uchovává po dlouhou dobu, trvá pak obnovení staršího datového bodu déle?
 
-No. Obnovení nejstaršího i nejnovějšího bodu trvá stejně dlouho. Každý bod obnovení se chová jako úplný bod.
+Ne. Obnovení nejstaršího i nejnovějšího bodu trvá stejně dlouho. Každý bod obnovení se chová jako úplný bod.
 
 ### <a name="if-each-recovery-point-is-like-a-full-point-does-it-impact-the-total-billable-backup-storage"></a>Jestliže se každý bod obnovení chová jako úplný bod, ovlivní to celkové fakturovatelné úložiště zálohování?
 
@@ -184,7 +184,7 @@ Počet obnovení z Azure Backup není omezený.
 
 ### <a name="when-restoring-data-do-i-pay-for-the-egress-traffic-from-azure"></a>Platí se za výchozí přenos z Azure při obnovování dat?
 
-No. Obnovení je zdarma a výchozí přenos se vám neúčtuje.
+Ne. Obnovení je zdarma a výchozí přenos se vám neúčtuje.
 
 ### <a name="what-happens-when-i-change-my-backup-policy"></a>Co se stane, když změním zásady zálohování?
 

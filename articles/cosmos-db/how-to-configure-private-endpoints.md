@@ -3,15 +3,15 @@ title: Konfigurace privátního odkazu Azure pro účet Azure Cosmos
 description: Přečtěte si, jak nastavit privátní odkaz Azure pro přístup k účtu Azure Cosmos pomocí privátní IP adresy ve virtuální síti.
 author: ThomasWeiss
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 06/04/2020
+ms.topic: how-to
+ms.date: 06/11/2020
 ms.author: thweiss
-ms.openlocfilehash: b05fa32529372a89ff441b953f001dc2ab1b5606
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 1ee468b99cddeb5f18f78a6d1298c8959bda075b
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84431654"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261626"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Konfigurace privátního odkazu Azure pro účet Azure Cosmos
 
@@ -31,7 +31,7 @@ Pomocí následujících kroků můžete vytvořit privátní koncový bod pro e
 
 1. V seznamu nastavení vyberte **připojení privátního koncového bodu** a pak vyberte **privátní koncový bod**:
 
-   ![Výběry pro vytvoření privátního koncového bodu v Azure Portal](./media/how-to-configure-private-endpoints/create-private-endpoint-portal.png)
+   :::image type="content" source="./media/how-to-configure-private-endpoints/create-private-endpoint-portal.png" alt-text="Výběry pro vytvoření privátního koncového bodu v Azure Portal":::
 
 1. V podokně **Vytvoření privátního koncového bodu – základy** zadejte nebo vyberte následující podrobnosti:
 
@@ -66,7 +66,7 @@ Pomocí následujících kroků můžete vytvořit privátní koncový bod pro e
     | Podsíť | Vyberte podsíť. |
     |**Integrace Privátní DNS**||
     |Integrace s privátní zónou DNS |Vyberte **Ano**. <br><br/> Abyste mohli soukromě propojit s vaším soukromým koncovým bodem, budete potřebovat záznam DNS. Doporučujeme integrovat privátní koncový bod s privátní zónou DNS. Můžete také použít vlastní servery DNS nebo vytvořit záznamy DNS pomocí hostitelských souborů na virtuálních počítačích. |
-    |Zóna Privátní DNS |Vyberte **privatelink.Documents.Azure.com**. <br><br/> Privátní zóna DNS je určena automaticky. Nemůžete ho změnit pomocí Azure Portal.|
+    |Zóna Privátní DNS |Vyberte **privatelink.documents.Azure.com**. <br><br/> Privátní zóna DNS je určena automaticky. Nemůžete ho změnit pomocí Azure Portal.|
     |||
 
 1. Vyberte **Zkontrolovat a vytvořit**. Na stránce **Revize + vytvořit** Azure ověří vaši konfiguraci.
@@ -94,7 +94,7 @@ Po zřízení privátního koncového bodu můžete zadat dotaz na IP adresy. Po
 1. Vyhledejte privátní koncový bod, který jste vytvořili dříve. V tomto případě je to **cdbPrivateEndpoint3**.
 1. Vyberte kartu **Přehled** a zobrazte tak nastavení DNS a IP adresy.
 
-![Privátní IP adresy v Azure Portal](./media/how-to-configure-private-endpoints/private-ip-addresses-portal.png)
+:::image type="content" source="./media/how-to-configure-private-endpoints/private-ip-addresses-portal.png" alt-text="Privátní IP adresy v Azure Portal":::
 
 Pro jeden privátní koncový bod se vytvoří víc IP adres:
 
@@ -263,7 +263,7 @@ az network private-dns record-set a add-record --record-set-name recordSet2 --zo
 
 Soukromý odkaz můžete nastavit vytvořením privátního koncového bodu v podsíti virtuální sítě. Dosáhnete toho pomocí šablony Azure Resource Manager.
 
-Pomocí následujícího kódu vytvořte šablonu Správce prostředků s názvem "PrivateEndpoint_template. JSON". Tato šablona vytvoří privátní koncový bod pro existující účet rozhraní SQL API služby Azure Cosmos v existující virtuální síti.
+Pomocí následujícího kódu vytvořte šablonu Správce prostředků s názvem "PrivateEndpoint_template.json". Tato šablona vytvoří privátní koncový bod pro existující účet rozhraní SQL API služby Azure Cosmos v existující virtuální síti.
 
 ```json
 {
@@ -324,7 +324,7 @@ Pomocí následujícího kódu vytvořte šablonu Správce prostředků s názve
 
 **Definování souboru parametrů pro šablonu**
 
-Vytvořte soubor parametrů pro šablonu a pojmenujte ji "PrivateEndpoint_parameters. JSON". Do souboru Parameters přidejte následující kód:
+Vytvořte soubor parametrů pro šablonu a pojmenujte ji "PrivateEndpoint_parameters.json". Do souboru Parameters přidejte následující kód:
 
 ```json
 {
@@ -407,13 +407,13 @@ Pro tyto účty musíte pro každý typ rozhraní API vytvořit jeden privátní
 
 Po úspěšném nasazení šablony se zobrazí výstup podobný následujícímu obrázku. `provisioningState`Hodnota je, `Succeeded` Pokud jsou privátní koncové body nastaveny správně.
 
-![Výstup nasazení pro šablonu Správce prostředků](./media/how-to-configure-private-endpoints/resource-manager-template-deployment-output.png)
+:::image type="content" source="./media/how-to-configure-private-endpoints/resource-manager-template-deployment-output.png" alt-text="Výstup nasazení pro šablonu Správce prostředků":::
 
 Po nasazení šablony jsou privátní IP adresy rezervované v rámci podsítě. Pravidlo brány firewall účtu Azure Cosmos je nakonfigurované tak, aby přijímalo jenom připojení z privátního koncového bodu.
 
 ### <a name="integrate-the-private-endpoint-with-a-private-dns-zone"></a>Integrace privátního koncového bodu se zónou Privátní DNS
 
-Pomocí následujícího kódu vytvořte šablonu Správce prostředků s názvem "PrivateZone_template. JSON". Tato šablona vytvoří privátní zónu DNS pro existující účet rozhraní SQL API služby Azure Cosmos v existující virtuální síti.
+Pomocí následujícího kódu vytvořte šablonu Správce prostředků s názvem "PrivateZone_template.json". Tato šablona vytvoří privátní zónu DNS pro existující účet rozhraní SQL API služby Azure Cosmos v existující virtuální síti.
 
 ```json
 {
@@ -455,7 +455,7 @@ Pomocí následujícího kódu vytvořte šablonu Správce prostředků s názve
 }
 ```
 
-Pomocí následujícího kódu vytvořte šablonu Správce prostředků s názvem "PrivateZoneRecords_template. JSON".
+Pomocí následujícího kódu vytvořte šablonu Správce prostředků s názvem "PrivateZoneRecords_template.json".
 
 ```json
 {
@@ -489,7 +489,7 @@ Pomocí následujícího kódu vytvořte šablonu Správce prostředků s názve
 
 **Definování souboru parametrů pro šablonu**
 
-Vytvořte pro šablonu následující dva soubory parametrů. Vytvoří PrivateZone_parameters. JSON. s následujícím kódem:
+Vytvořte pro šablonu následující dva soubory parametrů. Vytvoří PrivateZone_parameters.js. s následujícím kódem:
 
 ```json
 {
@@ -506,7 +506,7 @@ Vytvořte pro šablonu následující dva soubory parametrů. Vytvoří PrivateZ
 }
 ```
 
-Vytvoří PrivateZoneRecords_parameters. JSON. s následujícím kódem:
+Vytvoří PrivateZoneRecords_parameters.js. s následujícím kódem:
 
 ```json
 {
@@ -645,6 +645,8 @@ Stejný postup můžete použít při odebrání oblasti. Po odebrání této ob
 ## <a name="current-limitations"></a>Aktuální omezení
 
 Pokud používáte privátní propojení s účtem Azure Cosmos, platí následující omezení:
+
+* V jednom účtu Azure Cosmos nemůžete mít více než 200 privátních koncových bodů.
 
 * Pokud používáte privátní propojení s účtem Azure Cosmos prostřednictvím připojení přímého režimu, můžete použít jenom protokol TCP. Protokol HTTP se v tuto chvíli nepodporuje.
 

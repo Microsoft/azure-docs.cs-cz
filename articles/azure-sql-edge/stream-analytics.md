@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 7c15312b48e7118517894d8ffd4807e4892e03a3
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: e323c56f22c3a7d32bda5afe03a3462d3263f0d0
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84233144"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254068"
 ---
 # <a name="using-azure-stream-analytics-jobs-with-sql-edge"></a>Použití úloh Azure Stream Analytics s okrajem SQL
 
@@ -32,7 +32,7 @@ Azure SQL Edge má nativní implementaci modulu Stream Analytics runtime. Tato i
 }
 ```
 
-|Pole | Popis |
+|Pole | Description |
 |------|-------------|
 | SqlPackage | Identifikátor URI úložiště objektů BLOB v Azure pro soubor *. zip, který obsahuje SQL Database balíček DAC.
 | ASAJobInfo | Identifikátor URI úložiště objektů BLOB v Azure pro hraniční úlohu ASA
@@ -49,10 +49,10 @@ Azure SQL Edge má nativní implementaci modulu Stream Analytics runtime. Tato i
 
     **Výstup**. Jako výstup vyberte SQL Database. Vyberte **zadat SQL Database nastavení ručně**. Zadejte podrobnosti o konfiguraci databáze a tabulky.
 
-    |Pole      | Popis |
+    |Pole      | Description |
     |---------------|-------------|
     |Alias pro výstup | Název aliasu výstupu.|
-    |Databáze | Název databáze SQL. Musí se jednat o platný název databáze, která existuje v instanci SQL Edge.|
+    |databáze | Název databáze. Musí se jednat o platný název databáze, která existuje v instanci SQL Edge.|
     |Název serveru | Název (nebo IP adresa) a podrobnosti o číslech portů pro instanci SQL. Pro nasazení SQL Edge můžete pro název serveru použít **TCP:., 1433** .|
     |Uživatelské jméno | Přihlašovací účet SQL, který má čtečku dat a přístup k datům zapisovače dat k databázi, kterou jste zadali dříve.|
     |Heslo | Heslo pro přihlašovací účet SQL, který jste zadali dříve.|

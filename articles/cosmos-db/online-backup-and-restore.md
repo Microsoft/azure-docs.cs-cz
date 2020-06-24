@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: f5cc4339d7d6dce6d49c8d3eb744fca7fa5774d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8ed9e23b178b8eeefbd3c3a690491124e6901180
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80240430"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85112918"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Online zálohování a obnovení dat na vyžádání v Azure Cosmos DB
 
@@ -34,7 +34,7 @@ Díky Azure Cosmos DB, nejen k datům, ale také zálohování dat je vysoce red
 
 Následující obrázek ukazuje, jak se kontejner Azure Cosmos se všemi třemi primárními fyzickými oddíly v Západní USA zálohuje do vzdáleného účtu Azure Blob Storage v Západní USA a pak se replikuje do Východní USA:
 
-![Periodické úplné zálohování všech entit Cosmos DB v GRS Azure Storage](./media/online-backup-and-restore/automatic-backup.png)
+:::image type="content" source="./media/online-backup-and-restore/automatic-backup.png" alt-text="Periodické úplné zálohování všech entit Cosmos DB v GRS Azure Storage" border="false":::
 
 ## <a name="options-to-manage-your-own-backups"></a>Možnosti správy vlastních záloh
 
@@ -62,7 +62,7 @@ Náhodné odstranění nebo změna dat může nastat v jednom z následujících
 
 * Sdílená databáze nabídek nebo kontejnery v rámci sdílené databáze nabídek se odstranily nebo jsou poškozené.
 
-Azure Cosmos DB může obnovit data ve všech výše uvedených scénářích. V rámci procesu obnovení se vždy vytvoří nový účet služby Azure Cosmos DB pro uložení obnovených dat. Název nového účtu, pokud není zadán, bude mít formát `<Azure_Cosmos_account_original_name>-restored1`. Poslední číslice se zvýší, pokud dojde k pokusu o více obnovení. Nemůžete obnovit data na předem vytvořený účet Azure Cosmos.
+Azure Cosmos DB může obnovit data ve všech výše uvedených scénářích. V rámci procesu obnovení se vždy vytvoří nový účet služby Azure Cosmos DB pro uložení obnovených dat. Název nového účtu, pokud není zadán, bude mít formát `<Azure_Cosmos_account_original_name>-restored1` . Poslední číslice se zvýší, pokud dojde k pokusu o více obnovení. Nemůžete obnovit data na předem vytvořený účet Azure Cosmos.
 
 Když se odstraní účet Azure Cosmos, můžeme data obnovit na účet se stejným názvem, za předpokladu, že se název účtu nepoužívá. V takových případech se po odstranění doporučuje účet znovu vytvořit, protože to neumožňuje, aby obnovená data používala stejný název, ale také usnadňuje zjišťování správného účtu pro obnovení z obtížnější. 
 

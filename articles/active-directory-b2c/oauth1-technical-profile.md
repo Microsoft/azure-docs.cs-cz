@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7f734844859d44e66bddbc2ddd999659e52f9668
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d570ddbcf974936bbaa78be5799e7bd42fa6d514
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78184073"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85204077"
 ---
 # <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu OAuth1 v Azure Active Directory B2C vlastní zásady
 
@@ -26,9 +26,9 @@ Azure Active Directory B2C (Azure AD B2C) poskytuje podporu pro poskytovatele id
 
 ## <a name="protocol"></a>Protocol (Protokol)
 
-Atribut **Name** elementu **Protocol** musí být nastaven na `OAuth1`hodnotu. Například protokol pro technický profil **Twitter-OAUTH1** je `OAuth1`.
+Atribut **Name** elementu **Protocol** musí být nastaven na hodnotu `OAuth1` . Například protokol pro technický profil **Twitter-OAUTH1** je `OAuth1` .
 
-```XML
+```xml
 <TechnicalProfile Id="Twitter-OAUTH1">
   <DisplayName>Twitter</DisplayName>
   <Protocol Name="OAuth1" />
@@ -54,7 +54,7 @@ Následující příklad ukazuje deklarace identity vrácené zprostředkovatele
 Technický profil také vrací deklarace identity, které nejsou vráceny zprostředkovatelem identity:
 
 - Deklarace identity **identityProvider** , která obsahuje název poskytovatele identity.
-- Deklarace identity **authenticationSource** s výchozí hodnotou `socialIdpAuthentication`.
+- Deklarace identity **authenticationSource** s výchozí hodnotou `socialIdpAuthentication` .
 
 ```xml
 <OutputClaims>
@@ -68,7 +68,7 @@ Technický profil také vrací deklarace identity, které nejsou vráceny zprost
 
 ## <a name="metadata"></a>Metadata
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
 | client_id | Ano | Identifikátor aplikace zprostředkovatele identity |
 | ProviderName | Ne | Název zprostředkovatele identity |
@@ -82,13 +82,13 @@ Technický profil také vrací deklarace identity, které nejsou vráceny zprost
 
 Element **CryptographicKeys** obsahuje následující atribut:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
 | client_secret | Ano | Tajný kód klienta aplikace zprostředkovatele identity.   |
 
 ## <a name="redirect-uri"></a>Identifikátor URI pro přesměrování
 
-Když nakonfigurujete adresu URL pro přesměrování poskytovatele identity, zadejte `https://login.microsoftonline.com/te/tenant/policyId/oauth1/authresp`. Ujistěte se, že jste **klienta** nahradili názvem vašeho tenanta (například contosob2c.onmicrosoft.com) a **policyId** s identifikátorem zásady (například b2c_1a_policy). Identifikátor URI pro přesměrování musí být malými písmeny. Přidejte adresu URL pro přesměrování pro všechny zásady, které používají přihlášení zprostředkovatele identity.
+Když nakonfigurujete adresu URL pro přesměrování poskytovatele identity, zadejte `https://login.microsoftonline.com/te/tenant/policyId/oauth1/authresp` . Ujistěte se, že jste **klienta** nahradili názvem vašeho tenanta (například contosob2c.onmicrosoft.com) a **policyId** s identifikátorem zásady (například b2c_1a_policy). Identifikátor URI pro přesměrování musí být malými písmeny. Přidejte adresu URL pro přesměrování pro všechny zásady, které používají přihlášení zprostředkovatele identity.
 
 Pokud používáte doménu **b2clogin.com** místo **Login.microsoftonline.com** , nezapomeňte místo Login.microsoftonline.com použít b2clogin.com.
 

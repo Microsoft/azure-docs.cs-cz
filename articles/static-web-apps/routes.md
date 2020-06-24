@@ -7,48 +7,50 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 84067917a43fc7c84770b8852f11622ffe2af930
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: e6c38f3bc695db0e27547e434a81f95fa556e84b
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84629308"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85295994"
 ---
 # <a name="routes-in-azure-static-web-apps-preview"></a>Trasy ve službě Azure static Web Apps Preview
 
-Směrování v Azure static Web Apps definuje pravidla směrování back-endu a autorizační chování pro statický obsah a rozhraní API. Pravidla se definují jako pole pravidel v souboru _Routes. JSON_ .
+Směrování v Azure static Web Apps definuje pravidla směrování back-endu a autorizační chování pro statický obsah a rozhraní API<sup>1</sup>. Pravidla jsou definována jako pole pravidel v _routes.jsv_ souboru.
 
-- Soubor _Routes. JSON_ musí existovat v kořenu složky artefaktů sestavení aplikace.
+- _routes.js_ souboru musí existovat v kořenu složky artefaktů sestavení aplikace.
 - Pravidla se spouštějí v pořadí, ve kterém se zobrazují v poli `routes` .
 - Vyhodnocení pravidla se zastaví při první shodě. Pravidla směrování nejsou zřetězená dohromady.
-- Role jsou definované v souboru _Routes. JSON_ a uživatelé jsou přidruženi k rolím přes [pozvánky](authentication-authorization.md).
+- Role jsou definované v _routes.jspro_ soubor a uživatelé jsou k rolím přidruženi prostřednictvím [pozvánk](authentication-authorization.md).
 - Máte plnou kontrolu nad názvy rolí.
 
 Téma směrování se významně překrývá s koncepty ověřování a autorizace. Nezapomeňte si přečíst průvodce [ověřováním a autorizací](authentication-authorization.md) spolu s tímto článkem.
 
+Podrobnosti najdete v [souboru s ukázkovým směrováním](#example-route-file) .
+
 ## <a name="location"></a>Umístění
 
-Soubor _Routes. JSON_ musí existovat v kořenu složky artefaktů sestavení aplikace. Pokud vaše webová aplikace zahrnuje krok sestavení, který kopíruje sestavené soubory z konkrétní složky do vaší složky artefaktů sestavení, musí soubor _Routes. JSON_ existovat v této konkrétní složce.
+_routes.js_ souboru musí existovat v kořenu složky artefaktů sestavení aplikace. Pokud vaše webová aplikace zahrnuje krok sestavení, který kopíruje sestavené soubory z konkrétní složky do vaší složky artefaktů sestavení, musí _routes.jsv_ souboru existovat v této konkrétní složce.
 
-Následující tabulka uvádí vhodné umístění pro vložení souboru _Routes. JSON_ pro řadu předdefinovaných rozhraní a knihoven JavaScript front-endu.
+Následující tabulka uvádí vhodné umístění pro vložení _routes.js_ do souboru pro řadu předdefinovaných rozhraní a knihoven JavaScript front-endu.
 
 |Architektura/knihovna | Umístění  |
 |---------|----------|
 | Angular | _hmot_   |
-| React   | _public_  |
-| Svelte  | _public_   |
-| Vue     | _public_ |
+| React   | _republik_  |
+| Svelte  | _republik_   |
+| Vue     | _republik_ |
 
 ## <a name="defining-routes"></a>Definování tras
 
-Trasy jsou definovány v souboru _Routes. JSON_ jako pole pravidel směrování pro danou `routes` vlastnost. Každé pravidlo se skládá ze vzoru směrování spolu s jednou nebo více volitelnými vlastnostmi pravidla. Příklady použití najdete v [ukázkovém souboru směrování](#example-route-file) .
+Trasy jsou definovány v _routes.jsv_ souboru jako pole pravidel směrování pro danou `routes` vlastnost. Každé pravidlo se skládá ze vzoru směrování spolu s jednou nebo více volitelnými vlastnostmi pravidla. Příklady použití najdete v [ukázkovém souboru směrování](#example-route-file) .
 
 | Vlastnost pravidla  | Vyžadováno | Výchozí hodnota | Komentář                                                      |
 | -------------- | -------- | ------------- | ------------------------------------------------------------ |
-| `route`        | Yes      | Není k dispozici          | Vzor trasy požadovaný volajícím.<ul><li>[Zástupné znaky](#wildcards) jsou podporovány na konci cest směrování. Například _správce tras/ \* _ odpovídá libovolné trase v cestě _správce_ .<li>Výchozí soubor trasy je _index. html_.</ul>|
-| `serve`        | No       | Není k dispozici          | Definuje soubor nebo cestu vrácenou z požadavku. Cesta k souboru a název se mohou lišit od požadované cesty. Pokud `serve` je definovaná hodnota, použije se požadovaná cesta. |
-| `allowedRoles` | No       | Anonymous     | Pole názvů rolí <ul><li>Mezi platné znaky patří `a-z` , `A-Z` , `0-9` a `_` .<li>Předdefinovaná role `anonymous` platí pro všechny neověřené uživatele.<li>Předdefinovaná role `authenticated` se vztahuje na všechny přihlášené uživatele.<li>Uživatelé musí patřit do alespoň jedné role.<li>Role se shodují na _nebo_ bázi. Pokud je uživatel v některé z uvedených rolí, pak je udělen přístup.<li>Jednotlivé uživatele jsou přidruženi k rolím prostřednictvím [pozvánk](authentication-authorization.md).</ul> |
-| `statusCode`   | No       | 200           | Odpověď [kódu stavu HTTP](https://wikipedia.org/wiki/List_of_HTTP_status_codes) pro požadavek. |
+| `route`        | Ano      | Není k dispozici          | Vzor trasy požadovaný volajícím.<ul><li>[Zástupné znaky](#wildcards) jsou podporovány na konci cest směrování. Například _správce tras/ \* _ odpovídá libovolné trase v cestě _správce_ .<li>Výchozí soubor trasy je _index.html_.</ul>|
+| `serve`        | Ne       | Není k dispozici          | Definuje soubor nebo cestu vrácenou z požadavku. Cesta k souboru a název se mohou lišit od požadované cesty. Pokud není `serve` definována hodnota, použije se požadovaná cesta. Parametry QueryString nejsou podporovány; `serve`hodnoty musí ukazovat na skutečné soubory.  |
+| `allowedRoles` | Ne       | Anonymous     | Pole názvů rolí <ul><li>Mezi platné znaky patří `a-z` , `A-Z` , `0-9` a `_` .<li>Předdefinovaná role `anonymous` platí pro všechny neověřené uživatele.<li>Předdefinovaná role `authenticated` se vztahuje na všechny přihlášené uživatele.<li>Uživatelé musí patřit do alespoň jedné role.<li>Role se shodují na _nebo_ bázi. Pokud je uživatel v některé z uvedených rolí, pak je udělen přístup.<li>Jednotlivé uživatele jsou přidruženi k rolím prostřednictvím [pozvánk](authentication-authorization.md).</ul> |
+| `statusCode`   | Ne       | 200           | Odpověď [kódu stavu HTTP](https://wikipedia.org/wiki/List_of_HTTP_status_codes) pro požadavek. |
 
 ## <a name="securing-routes-with-roles"></a>Zabezpečení tras s rolemi
 
@@ -88,7 +90,7 @@ Chcete-li například implementovat trasy pro aplikaci kalendáře, můžete vš
 }
 ```
 
-Soubor _Calendar. html_ pak může používat směrování na straně klienta pro různé zobrazení odchylek URL `/calendar/january/1` , jako jsou, `/calendar/2020` a `/calendar/overview` .
+Soubor _calendar.html_ pak může použít směrování na straně klienta pro různé zobrazení odchylek URL `/calendar/january/1` , jako jsou, `/calendar/2020` a `/calendar/overview` .
 
 Můžete také zabezpečit trasy pomocí zástupných znaků. V následujícím příkladu všechny soubory požadované v cestě _správce_ vyžadují ověřeného uživatele, který je členem role _správce_ .
 
@@ -126,7 +128,7 @@ Záložní trasa musí být uvedena jako poslední ve svých pravidlech směrov�
 
 Pro přesměrování požadavků z jedné trasy do druhé můžete použít stavové kódy http [301](https://en.wikipedia.org/wiki/HTTP_301) a [302](https://en.wikipedia.org/wiki/HTTP_302) .
 
-Následující pravidlo například vytvoří přesměrování 301 z _Old-Page. html_ do _New-Page. html_.
+Následující pravidlo například vytvoří přesměrování 301 od _old-page.html_ do _new-page.html_.
 
 ```json
 {
@@ -148,11 +150,14 @@ Přesměrování také fungují s cestami, které nedefinují odlišné soubory.
 
 ## <a name="custom-error-pages"></a>Vlastní chybové stránky
 
-Uživatelé mohou narazit na řadu různých situací, které mohou mít za následek chybu. Pomocí `platformErrorOverrides` pole můžete v reakci na tyto chyby poskytnout vlastní prostředí. Přečtěte si [ukázkový soubor směrování](#example-route-file) pro umístění pole v souboru _Routes. JSON_ .
+Uživatelé mohou narazit na řadu různých situací, které mohou mít za následek chybu. Pomocí `platformErrorOverrides` pole můžete v reakci na tyto chyby poskytnout vlastní prostředí. Chcete-li umístit pole do _routes.js_ souboru, přečtěte si [ukázkový soubor směrování](#example-route-file) .
+
+> [!NOTE]
+> Jakmile požadavek nastaví úroveň přepsání platformy, pravidla směrování se znovu nespustí.
 
 V následující tabulce jsou uvedeny potlačení dostupných chyb platformy:
 
-| Typ chyby  | Stavový kód HTTP | Popis |
+| Typ chyby  | Stavový kód HTTP | Description |
 |---------|---------|---------|
 | `NotFound` | 404  | Na serveru se nenašla stránka. |
 | `Unauthenticated` | 401 | Uživatel není přihlášený pomocí [zprostředkovatele ověřování](authentication-authorization.md). |
@@ -164,7 +169,7 @@ V následující tabulce jsou uvedeny potlačení dostupných chyb platformy:
 
 ## <a name="example-route-file"></a>Příklad souboru směrování
 
-Následující příklad ukazuje, jak vytvořit pravidla směrování pro statický obsah a rozhraní API v souboru _Routes. JSON_ . Některé trasy používají [systémovou složku _/.auth_ ](authentication-authorization.md) , která přistupuje k koncovým bodům souvisejícím s ověřováním.
+Následující příklad ukazuje, jak vytvořit pravidla směrování pro statický obsah a rozhraní API v _routes.js_ v souboru. Některé trasy používají [systémovou složku _/.auth_ ](authentication-authorization.md) , která přistupuje k koncovým bodům souvisejícím s ověřováním.
 
 ```json
 {
@@ -214,7 +219,7 @@ Následující příklad ukazuje, jak vytvořit pravidla směrování pro static
     },
     {
       "errorType": "Unauthenticated",
-      "statusCode": "301",
+      "statusCode": "302",
       "serve": "/login"
     }
   ]
@@ -225,23 +230,27 @@ Následující příklady popisují, co se stane, když požadavek odpovídá pr
 
 |Požadavky na...  | Výsledek... |
 |---------|---------|---------|
-| _/Profile_ | Ověřeným uživatelům se zpracovává soubor _/Profile/index.html_ . Neověření uživatelé přesměrováni na _/Login_. |
-| _/admin/reports_ | Ověřeným uživatelům v roli _správců_ se zpracovává soubor _/admin/Reports/index.html_ . Ověřeným uživatelům, kteří nejsou v roli _Administrators_ , se doplní chybová zpráva 401.<sup>1</sup>. Neověření uživatelé přesměrováni na _/Login_. |
+| _/Profile_ | Ověřeným uživatelům se obsluhuje soubor _/profile/index.html_ . Neověření uživatelé přesměrováni na _/Login_. |
+| _/admin/reports_ | Ověřeným uživatelům v roli _správců_ se obsluhuje soubor _/admin/Reports/index.html_ . Ověřeným uživatelům, kteří nejsou v roli _Administrators_ , se doplní chybová zpráva 401.<sup>2</sup>. Neověření uživatelé přesměrováni na _/Login_. |
 | _/api/admin_ | Žádosti od ověřených uživatelů v roli _Administrators_ se odesílají do rozhraní API. Ověřeným uživatelům, kteří nejsou v roli _správců_ a neověřeným uživatelům, je zpracována chyba 401. |
-| _/customers/contoso_ | Ověřeným uživatelům, kteří patří do rolí _správců nebo správců_ _ \_ společnosti Contoso_ , je obsluhován soubor _/Customers/contoso/index.html_ <sup>1</sup>. U ověřených uživatelů, kteří nejsou ve _skupině Administrators_ nebo _Customers role \_ Contoso_ , se doplní chyba 401. Neověření uživatelé přesměrováni na _/Login_. |
+| _/customers/contoso_ | Ověřeným uživatelům, kteří patří do rolí _správců nebo správců_ _ \_ společnosti Contoso_ , je dodáván soubor _/Customers/contoso/index.html_ <sup>2</sup>. U ověřených uživatelů, kteří nejsou ve _skupině Administrators_ nebo _Customers role \_ Contoso_ , se doplní chyba 401. Neověření uživatelé přesměrováni na _/Login_. |
 | _/Login_     | Neověření uživatelé mají k ověření pomocí GitHubu výzvy. |
 | _/.auth/login/twitter_     | Autorizace pomocí Twitteru je zakázaná. Server odpoví chybou 404. |
 | _/logout_     | Uživatelé se odhlásí od jakéhokoli poskytovatele ověřování. |
-| _/calendar/2020/01_ | V prohlížeči se dosloužil soubor _/Calendar.html_ . |
+| _/calendar/2020/01_ | V prohlížeči se dosloužil soubor _/calendar.html_ . |
 | _/specials_ | Prohlížeč se přesměruje na _/Deals_. |
-| _/unknown-folder_     | Soubor _/Custom-404.html_ se obsluhuje. |
+| _/unknown-folder_     | Soubor _/custom-404.html_ se obsluhuje. |
 
-<sup>1</sup> můžete zadat vlastní chybovou stránku definováním `Unauthorized_MissingRoles` pravidla v poli `platformErrorOverrides` .
+<sup>1</sup> pravidla směrování pro funkce rozhraní API podporují jenom [přesměrování](#redirects) a [zabezpečení tras s rolemi](#securing-routes-with-roles).
+
+<sup>2</sup> můžete zadat vlastní chybovou stránku definováním `Unauthorized_MissingRoles` pravidla v poli `platformErrorOverrides` .
 
 ## <a name="restrictions"></a>Omezení
 
-- Soubor _Routes. JSON_ nemůže být větší než 100 kB.
-- Soubor _Routes. JSON_ podporuje maximálně 50 jedinečných rolí.
+- _routes.jsv_ souboru nemůže být větší než 100 kB.
+- _routes.jsv_ souboru podporuje maximálně 50 jedinečných rolí.
+
+Obecná omezení a omezení najdete v článku věnovaném [kvótám](quotas.md) .
 
 ## <a name="next-steps"></a>Další kroky
 

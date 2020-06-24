@@ -4,21 +4,20 @@ description: Naučte se používat podmínku umístění k řízení přístupu 
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
-ms.workload: identity
-ms.date: 05/28/2020
+ms.topic: conceptual
+ms.date: 06/15/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: f9f80cf0c42bdc6e45d62cac930c0bce4b20ee60
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 7db7e64840d248b66a61ff310f9441800e1afc31
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84605455"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253218"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>Použití podmínky umístění v zásadách podmíněného přístupu 
 
@@ -141,6 +140,30 @@ Tato možnost se týká:
 ### <a name="selected-locations"></a>Vybraná umístění
 
 Pomocí této možnosti můžete vybrat jedno nebo více pojmenovaných umístění. Chcete-li použít zásadu s tímto nastavením, musí se uživatel připojit z libovolného umístění. Když kliknete na **Vybrat** ovládací prvek pro výběr sítě, který zobrazuje seznam pojmenovaných sítí, otevře se. V seznamu se zobrazí také informace o tom, zda bylo síťové umístění označeno jako důvěryhodné. Pojmenované umístění s názvem **MFA Trusted IP** adresa slouží k zahrnutí nastavení IP adresy, která se dají konfigurovat na stránce nastavení služby Multi-Factor Authentication Service.
+
+## <a name="ipv6-traffic"></a>Přenos IPv6
+
+Ve výchozím nastavení se zásady podmíněného přístupu použijí na všechny přenosy protokolu IPv6. S [pojmenovaným umístěním v Preview](#preview-features)můžete vyloučit konkrétní rozsahy adres IPv6 ze zásad podmíněného přístupu. Tato možnost je užitečná v případech, kdy nechcete, aby se zásady vynutily pro konkrétní rozsahy IPv6. Například pokud chcete vymáhat zásadu pro použití ve vaší podnikové síti a vaše podniková síť je hostována ve veřejných rozsahech IPv6.  
+
+### <a name="when-will-my-tenant-have-ipv6-traffic"></a>Kdy bude můj tenant provozovat protokolem IPv6?
+
+Azure Active Directory (Azure AD) v současné době nepodporuje přímá síťová připojení, která používají protokol IPv6. Existují však případy, kdy je provoz ověřování proxy serverem prostřednictvím jiné služby. V těchto případech se adresa IPv6 použije při vyhodnocování zásad.
+
+Většina provozu protokolu IPv6, která se proxy serverem do služby Azure AD dostane, přichází z Microsoft Exchange Online. Pokud je k dispozici, Exchange bude preferovat připojení IPv6. **Takže pokud máte nějaké zásady podmíněného přístupu pro Exchange, které jsou nakonfigurované pro konkrétní rozsahy IPv4, budete chtít, abyste měli jistotu, že jste taky přidali rozsahy IPv6 organizací.** Nezahrnuje rozsahy IPv6 způsobí neočekávané chování v následujících dvou případech:
+
+- Pokud se e-mailový klient připojuje k Exchangi Online se starším ověřováním, může Azure AD získat adresu IPv6. Počáteční požadavek na ověření přejde na Exchange a pak se proxy server zaznamená do Azure AD.
+- Pokud se v prohlížeči používá aplikace Outlook Web Access (OWA), bude pravidelně ověřovat všechny zásady podmíněného přístupu. Tato kontrolu se používá k zachytávání případů, kdy se uživatel mohl přesunout z povolené IP adresy na nové místo, jako je třeba káva na ulici. V takovém případě, pokud se použije adresa IPv6, a pokud adresa IPv6 není v nakonfigurovaném rozsahu, uživatel může svou relaci přerušit a vrátit se zpět do Azure AD a znovu ověřit. 
+
+Toto jsou nejběžnější důvody, které možná budete potřebovat ke konfiguraci rozsahů IPv6 ve vašich pojmenovaných umístěních. Pokud navíc používáte Azure virtuální sítě, budete mít provoz z IPv6 adresy. Pokud máte provoz virtuální sítě blokovaný zásadou podmíněného přístupu, podívejte se do přihlašovacího protokolu Azure AD. Jakmile identifikujete provoz, můžete získat využívanou adresu IPv6 a vyloučit ji ze zásad. 
+
+> [!NOTE]
+> Pokud chcete zadat rozsah IP CIDR pro jednu adresu, použijte bitovou masku/32. Pokud říkáte IPv6 adresu 2607: fb90: b27a: 6f69: f8d5: dea0: fb39:74A a chtěli byste vyloučit tuto jednotlivou adresu jako rozsah, použijte 2607: fb90: b27a: 6f69: f8d5: dea0: fb39:74A/32.
+
+### <a name="identifying-ipv6-traffic-in-the-azure-ad-sign-in-activity-reports"></a>Určení provozu protokolu IPv6 v sestavách aktivit přihlášení k Azure AD
+
+Pomocí [sestav aktivit přihlašování služby Azure AD](../reports-monitoring/concept-sign-ins.md)můžete zjistit provoz protokolu IPv6 ve vašem tenantovi. Po otevření sestavy aktivity přidejte sloupec IP adresa. Tento sloupec vám umožní identifikovat přenos protokolu IPv6.
+
+IP adresu klienta můžete najít také tak, že kliknete na řádek v sestavě a pak na kartu umístění v podrobnostech o přihlašovací aktivitě. 
 
 ## <a name="what-you-should-know"></a>Co byste měli vědět
 

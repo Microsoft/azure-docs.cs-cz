@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: a2c57ca6a1f7eb50c277543e9fbe27a13f839bac
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 03402828720272851f9b74000d5bcb79405885a5
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648824"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117221"
 ---
 # <a name="azure-functions-networking-options"></a>Možnosti sítí Azure Functions
 
@@ -28,13 +28,7 @@ Aplikace Function App můžete hostovat několika způsoby:
 
 ## <a name="matrix-of-networking-features"></a>Matice síťových funkcí
 
-|                |[Plán Consumption](functions-scale.md#consumption-plan)|[Plán Premium](functions-scale.md#premium-plan)|[Plán App Service](functions-scale.md#app-service-plan)|[App Service Environment](../app-service/environment/intro.md)|
-|----------------|-----------|----------------|---------|-----------------------|  
-|[Omezení příchozí IP adresy a přístup k privátnímu webu](#inbound-ip-restrictions)|✅Ano|✅Ano|✅Ano|✅Ano|
-|[Integrace virtuální sítě](#virtual-network-integration)|❌Ne|✅Ano (místní)|✅Ano (místní a brána)|✅Ano|
-|[Aktivační události virtuální sítě (jiné než HTTP)](#virtual-network-triggers-non-http)|❌Ne| ✅Ano |✅Ano|✅Ano|
-|[Hybridní připojení](#hybrid-connections) (jenom Windows)|❌Ne|✅Ano|✅Ano|✅Ano|
-|[Omezení odchozích IP adres](#outbound-ip-restrictions)|❌Ne| ✅Ano|✅Ano|✅Ano|
+[!INCLUDE [functions-networking-features](../../includes/functions-networking-features.md)]
 
 ## <a name="inbound-ip-restrictions"></a>Omezení příchozích IP adres
 
@@ -140,7 +134,13 @@ Omezení odchozích IP adres jsou k dispozici v plánu Premium, App Service plá
 
 Když integrujete aplikaci funkcí v plánu Premium nebo App Service plánu s virtuální sítí, může aplikace ve výchozím nastavení dál provádět odchozí volání do Internetu. Přidáním nastavení aplikace `WEBSITE_VNET_ROUTE_ALL=1` vynutíte odeslání veškerého odchozího provozu do vaší virtuální sítě, kde je možné použít pravidla skupiny zabezpečení sítě k omezení provozu.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="automation"></a>Automation
+Následující rozhraní API vám umožní programově spravovat integrace místní virtuální sítě:
+
++ **Azure CLI**: použijte [`az functionapp vnet-integration`](/cli/azure/functionapp/vnet-integration) příkazy k přidání, výpisu nebo odebrání integrace místní virtuální sítě.  
++ **Šablony ARM**: integraci regionální virtuální sítě lze povolit pomocí šablony Azure Resource Manager. Úplný příklad najdete v tématu [Šablona pro rychlý Start pro funkce](https://azure.microsoft.com/resources/templates/101-function-premium-vnet-integration/).
+
+## <a name="troubleshooting"></a>Poradce při potížích
 
 [!INCLUDE [app-service-web-vnet-troubleshooting](../../includes/app-service-web-vnet-troubleshooting.md)]
 

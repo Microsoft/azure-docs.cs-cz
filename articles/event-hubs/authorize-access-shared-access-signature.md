@@ -6,14 +6,15 @@ ms.service: event-hubs
 documentationcenter: ''
 author: spelluru
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: bdb1896f8a40c6de21ae76b536bfccec316341cd
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.reviewer: shvija
+ms.openlocfilehash: 0c572723c493847ed15f80948511d1cc993fa7e1
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "69992793"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298748"
 ---
 # <a name="authorizing-access-to-event-hubs-resources-using-shared-access-signatures"></a>Autorizace přístupu k prostředkům Event Hubs pomocí sdílených přístupových podpisů
 Sdílený přístupový podpis (SAS) poskytuje způsob, jak udělit omezený přístup k prostředkům v oboru názvů Event Hubs. SAS chrání přístup k Event Hubs prostředkům na základě autorizačních pravidel. Tato pravidla se konfigurují buď v oboru názvů, nebo v entitě (centra událostí nebo téma). Tento článek poskytuje přehled modelu SAS a kontroluje osvědčené postupy SAS.
@@ -33,7 +34,7 @@ SAS je mechanismus ověřování založený na deklaracích, který využívá j
 
 ## <a name="shared-access-authorization-policies"></a>Zásady autorizace sdíleného přístupu
 Každý Event Hubs obor názvů a každá Event Hubs entita (instance centra událostí nebo Kafka) má zásady autorizace sdíleného přístupu vytvořené pravidly. Zásady na úrovni oboru názvů platí pro všechny entity v oboru názvů bez ohledu na jejich jednotlivé konfigurace zásad.
-U každého pravidla zásad autorizace se rozhodujete o třech údajích, které se týkají názvu, oboru a práv. Název je jedinečný název v daném oboru. Rozsah je identifikátor URI daného prostředku. V případě oboru názvů Event Hubs obor je plně kvalifikovaný název domény (FQDN), například `https://<yournamespace>.servicebus.windows.net/`.
+U každého pravidla zásad autorizace se rozhodujete o třech údajích, které se týkají názvu, oboru a práv. Název je jedinečný název v daném oboru. Rozsah je identifikátor URI daného prostředku. V případě oboru názvů Event Hubs obor je plně kvalifikovaný název domény (FQDN), například `https://<yournamespace>.servicebus.windows.net/` .
 
 Práva poskytnutá pravidlem zásad mohou být kombinací:
 - **Send** – poskytuje právo odesílat zprávy entitě.

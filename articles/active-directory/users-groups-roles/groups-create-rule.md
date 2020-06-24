@@ -8,18 +8,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/07/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c685fa231bc1f40a78aae0d4fa89569ec146eea
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 4855db7678a8cdea9bdad19ac0a8ec33503ff983
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582912"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84728412"
 ---
 # <a name="create-or-update-a-dynamic-group-in-azure-active-directory"></a>Vytvoření nebo aktualizace dynamické skupiny v Azure Active Directory
 
@@ -67,7 +67,7 @@ Pokud pravidlo, které jste zadali, není platné, zobrazí se v oznámení Azur
 ## <a name="to-update-an-existing-rule"></a>Aktualizace existujícího pravidla
 
 1. Přihlaste se k [centru pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu, který se nachází v roli globální správce, správce skupin, správce Intune nebo Správce uživatelů v organizaci Azure AD.
-1. Vyberte **skupiny** > **všechny skupiny**.
+1. Vyberte **skupiny**  >  **všechny skupiny**.
 1. Vyberte skupinu a otevřete její profil.
 1. Na stránce profil pro skupinu vyberte **dynamická pravidla členství**. Tvůrce pravidel podporuje až pět výrazů. Chcete-li přidat více než pět výrazů, je nutné použít textové pole.
 
@@ -98,7 +98,7 @@ Pro stav **zpracování členství** lze zobrazit následující stavové zpráv
 
 Pro stav **Poslední aktualizace členství** se můžou zobrazit tyto stavové zprávy:
 
-- &lt;**Datum a čas**&gt;: čas poslední aktualizace členství.
+- &lt;**Datum a čas** &gt; : čas poslední aktualizace členství.
 - **Probíhá: aktuálně**probíhá aktualizace.
 - **Neznámé**: čas poslední aktualizace se nedá načíst. Tato skupina může být nová.
 

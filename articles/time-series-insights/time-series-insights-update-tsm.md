@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 04/29/2020
+ms.date: 06/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1487cbb7885711beca969604316fd151defb114a
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 359837ef5d202cd0e98a6c7cf429a34a38fb7d70
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82580596"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052180"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-preview"></a>Model časové řady v Azure Time Series Insights Preview
 
@@ -100,9 +100,9 @@ Instance jsou definovány pomocí **timeSeriesId**, **typeId**, **Name**, **Desc
 
 | Vlastnost | Popis |
 | --- | ---|
-| timeSeriesId | Identifikátor UUID časové řady, ke které je instance přidružena. |
-| typeId | Identifikátor UUID typu modelu časové řady, ke kterému je instance přidružena. Ve výchozím nastavení se všechny zjištěné nové instance přidružit k výchozímu typu.
-| jméno | Vlastnost **Name** je volitelná a rozlišuje velká a malá písmena. Pokud není **název** k dispozici, použije se výchozí hodnota **timeSeriesId**. Pokud je zadán název, je **timeSeriesId** stále k dispozici. [well](time-series-insights-update-explorer.md#4-time-series-well) |
+| timeSeriesId | Jedinečné ID časové řady, ke které je instance přidružena. Ve většině případů jsou instance jednoznačně identifikované vlastností, jako je deviceId nebo assetId. V některých případech lze použít více specifických IDENTIFIKÁTORů s kombinací až tří vlastností. |
+| typeId | Jedinečné ID řetězce s rozlišením velkých a malých písmen pro typ modelu časové řady, ke kterému je instance přidružena. Ve výchozím nastavení se všechny zjištěné nové instance přidružit k výchozímu typu.
+| name | Vlastnost **Name** je volitelná a rozlišuje velká a malá písmena. Pokud není **název** k dispozici, použije se výchozí hodnota **timeSeriesId**. Pokud je zadán název, je **timeSeriesId** stále k dispozici. [well](time-series-insights-update-explorer.md#4-time-series-well) |
 | description | Textový popis instance. |
 | hierarchyIds | Definuje, do kterých hierarchií patří instance. |
 | instanceFields | Vlastnosti instance a všech statických dat, která definují instanci. Definují hodnoty vlastností hierarchie nebo mimo hierarchii a zároveň podporují indexování k provádění operací vyhledávání. |
@@ -149,7 +149,7 @@ Hierarchie jsou definovány podle **ID**, **názvu**a **zdroje**hierarchie.
 | Vlastnost | Popis |
 | ---| ---|
 | id | Jedinečný identifikátor pro hierarchii, který se používá například při definování instance. |
-| jméno | Řetězec, který slouží k zadání názvu hierarchie. |
+| name | Řetězec, který slouží k zadání názvu hierarchie. |
 | source | Určuje organizační hierarchii nebo cestu, která je nejnižším pořadím nadřazeného a podřízeného objektu hierarchie, kterou uživatelé chtějí vytvořit. Vlastnosti nadřazeného a podřízeného objektu mapují pole instance. |
 
 Hierarchie se ve formátu JSON reprezentují jako:
@@ -183,15 +183,15 @@ Hierarchie se ve formátu JSON reprezentují jako:
 
 V předchozím příkladu JSON:
 
-* `Location`definuje hierarchii s nadřazenou `states` a podřízenou `cities`položkou. Každý `location` může mít více `states`, což může mít více `cities`.
-* `ManufactureDate`definuje hierarchii s nadřazenou `year` a podřízenou `month`položkou. Každý `ManufactureDate` může mít více `years`, což může mít více `months`.
+* `Location`definuje hierarchii s nadřazenou `states` a podřízenou položkou `cities` . Každý `location` může mít více `states` , což může mít více `cities` .
+* `ManufactureDate`definuje hierarchii s nadřazenou `year` a podřízenou položkou `month` . Každý `ManufactureDate` může mít více `years` , což může mít více `months` .
 
 > [!TIP]
 > Pro Time Series Insights rozhraní API instance a podporu CRUD si přečtěte článek [dotazování na data](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) a [dokumentaci k rozhraní API hierarchie REST](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api).
 
 ### <a name="hierarchy-example"></a>Příklad hierarchie
 
-Vezměte v úvahu příklad, **H1** kdy hierarchie `building`H1 `floor`má, `room` a jako součást definice **instanceFieldNames** :
+Vezměte v úvahu příklad, kdy hierarchie **H1** má `building` , `floor` a `room` jako součást definice **instanceFieldNames** :
 
 ```JSON
 {
@@ -240,8 +240,8 @@ Typy modelů časových řad jsou definovány podle **ID**, **názvu**, **popisu
 
 | Vlastnost | Popis |
 | ---| ---|
-| id | Identifikátor UUID pro typ. |
-| jméno | Řetězec, který slouží k zadání názvu pro typ. |
+| id | Jedinečné ID řetězce rozlišující velká a malá písmena pro daný typ. |
+| name | Řetězec, který slouží k zadání názvu pro typ. |
 | description | Popis řetězce pro typ. |
 | proměnné | Zadejte proměnné přidružené k typu. |
 
@@ -301,7 +301,7 @@ V následující tabulce jsou uvedeny vlastnosti, které jsou relevantní pro je
 
 #### <a name="numeric-variables"></a>Číselné proměnné
 
-| Proměnná – vlastnost | Popis |
+| Proměnná – vlastnost | Description |
 | --- | ---|
 | Filtr proměnných | Filtry jsou volitelné podmíněné klauzule, které omezují počet řádků, které se považují za výpočet. |
 | Hodnota proměnné | Hodnoty telemetrie používané pro výpočet pocházející ze zařízení nebo senzorů nebo transformované pomocí výrazů Time Series. Proměnné číselného typu musí být typu *Double*.|
@@ -331,7 +331,7 @@ Proměnné odpovídají následujícímu příkladu JSON:
 
 #### <a name="categorical-variables"></a>Proměnné kategorií
 
-| Proměnná – vlastnost | Popis |
+| Proměnná – vlastnost | Description |
 | --- | ---|
 | Filtr proměnných | Filtry jsou volitelné podmíněné klauzule, které omezují počet řádků, které se považují za výpočet. |
 | Hodnota proměnné | Hodnoty telemetrie používané pro výpočet pocházející ze zařízení nebo senzorů. Proměnné kategorií druhu musí být buď *Long* , nebo *String*. |
@@ -371,7 +371,7 @@ Proměnné odpovídají následujícímu příkladu JSON:
 
 #### <a name="aggregate-variables"></a>Agregační proměnné
 
-| Proměnná – vlastnost | Popis |
+| Proměnná – vlastnost | Description |
 | --- | ---|
 | Filtr proměnných | Filtry jsou volitelné podmíněné klauzule, které omezují počet řádků, které se považují za výpočet. |
 | Agregace proměnných | Podpora výpočtů prostřednictvím funkce *AVG*, *min*, *Max*, *Sum*, *Count*, *First*, *Last*. |

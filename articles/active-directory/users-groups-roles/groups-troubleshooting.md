@@ -7,18 +7,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 689a528a75613ac6a38bed74d6597d492f498e8b
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 8730ac8aa6a6056db67613f2ac8decf11740c467
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582729"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84727683"
 ---
 # <a name="troubleshoot-and-resolve-groups-issues"></a>Řešení potíží se skupinami a řešení problémů
 
@@ -35,7 +35,7 @@ Zakázání vytváření skupin pro uživatele, kteří nejsou správci, v Power
    ```
 
   
-2. Pokud se vrátí `UsersPermissionToCreateGroupsEnabled : True`, pak uživatelé bez role správce můžou vytvářet skupiny. Zakázání této funkce:
+2. Pokud se vrátí `UsersPermissionToCreateGroupsEnabled : True` , pak uživatelé bez role správce můžou vytvářet skupiny. Zakázání této funkce:
   
 
    ``` 
@@ -68,7 +68,7 @@ V současné době neexistuje způsob, jak automaticky aktivovat skupinu, která
 | --- | --- | --- |
 | Chyba: atribut není podporován. |(User. invalidProperty-EQ "value") |(User. Department-EQ "hodnota")<br/><br/>Ujistěte se, že je atribut v [seznamu podporovaných vlastností](groups-dynamic-membership.md#supported-properties). |
 | Chyba: operátor není podporován u atributu. |(User. accountEnabled-Contains true) |(User. accountEnabled-EQ true)<br/><br/>Použitý operátor není podporován pro typ vlastnosti (v tomto příkladu-Contains nelze použít pro typ Boolean). Použijte správné operátory pro typ vlastnosti. |
-| Chyba: Chyba kompilace dotazu. | 1. (User. Department-EQ "prodej") (User. Department-EQ "marketing")<br>2. (User. userPrincipalName-Match "*@domain.ext") | 1. chybí operátor. Použití nebo dva predikáty JOIN<br>(User. Department-EQ "Sales")-or (User. Department-EQ "marketing")<br>2. Chyba v regulárním výrazu se používá s-Match.<br>(User. userPrincipalName-Match ". *@domain.ext")<br>nebo alternativně: (User. userPrincipalName-Match@domain.ext"$") |
+| Chyba: Chyba kompilace dotazu. | 1. (User. Department-EQ "prodej") (User. Department-EQ "marketing")<br>2. (User. userPrincipalName-Match "* @domain.ext ") | 1. chybí operátor. Použití nebo dva predikáty JOIN<br>(User. Department-EQ "Sales")-or (User. Department-EQ "marketing")<br>2. Chyba v regulárním výrazu se používá s-Match.<br>(User. userPrincipalName-Match ". * @domain.ext ")<br>nebo alternativně: (User. userPrincipalName-Match " @domain.ext $") |
 
 ## <a name="next-steps"></a>Další kroky
 

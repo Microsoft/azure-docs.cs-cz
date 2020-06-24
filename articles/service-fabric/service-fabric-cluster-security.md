@@ -4,12 +4,12 @@ description: Přečtěte si o scénářích zabezpečení pro cluster Azure Serv
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.custom: sfrev
-ms.openlocfilehash: 71a5891bf26cbd79ba5cfeff8324e225b3febd73
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: ba1565c31e8a3ce3f25501f0cad321d5413dc962
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324007"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080680"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric scénáře zabezpečení clusteru
 
@@ -41,6 +41,11 @@ Informace o tom, jak nastavit zabezpečení certifikátů v clusteru pro samosta
 
 ### <a name="node-to-node-windows-security"></a>Zabezpečení mezi uzly a systémy Windows
 
+> [!NOTE]
+> Ověřování systému Windows je založené na protokolu Kerberos. Protokol NTLM není podporován jako typ ověřování.
+>
+> Kdykoli je to možné, použijte pro Service Fabric clusterů ověřování pomocí certifikátu X. 509.
+
 Informace o nastavení zabezpečení Windows pro samostatný cluster Windows serveru najdete v tématu zabezpečení [samostatného clusteru ve Windows pomocí zabezpečení systému Windows](service-fabric-windows-cluster-windows-security.md).
 
 ## <a name="client-to-node-security"></a>Zabezpečení klient-uzel
@@ -49,7 +54,7 @@ Zabezpečení typu klient-uzel ověřuje klienty a pomáhá zabezpečit komunika
 
 ![Diagram komunikace mezi klientem a uzlem][Client-to-Node]
 
-Clustery běžící v Azure a samostatné clustery, které běží v systému Windows, můžou používat [zabezpečení certifikátů](https://msdn.microsoft.com/library/ff649801.aspx) nebo [zabezpečení systému Windows](https://msdn.microsoft.com/library/ff649396.aspx).
+Clustery běžící v Azure a samostatné clustery, které běží v systému Windows, můžou používat [zabezpečení certifikátů](https://msdn.microsoft.com/library/ff649801.aspx) nebo [zabezpečení systému Windows](https://msdn.microsoft.com/library/ff649396.aspx), i když je to možné, pokud je to možné, doporučuje se používat ověřování certifikátů X. 509.
 
 ### <a name="client-to-node-certificate-security"></a>Zabezpečení certifikátu klienta k uzlu
 
@@ -95,7 +100,7 @@ Digitální certifikáty X. 509 se běžně používají k ověřování klient�
 Mezi důležité věci, které je potřeba vzít v úvahu:
 
 * Pokud chcete vytvořit certifikáty pro clustery, na kterých běží produkční úlohy, použijte správnou nakonfigurovanou službu Certificate Service systému Windows Server nebo jednu z schválených certifikační [autority (CA)](https://en.wikipedia.org/wiki/Certificate_authority).
-* Nikdy nepoužívejte žádné dočasné ani testovací certifikáty, které vytvoříte pomocí nástrojů jako MakeCert. exe v produkčním prostředí.
+* Nikdy nepoužívejte žádné dočasné ani testovací certifikáty, které vytvoříte pomocí nástrojů, jako je MakeCert.exe v produkčním prostředí.
 * Můžete použít certifikát podepsaný svým držitelem, ale pouze v testovacím clusteru. Nepoužívejte certifikát podepsaný svým držitelem v produkčním prostředí.
 * Při generování kryptografického otisku certifikátu nezapomeňte vygenerovat kryptografický otisk SHA1. SHA1 je to, co se používá při konfiguraci kryptografických otisků certifikátu klienta a clusteru.
 

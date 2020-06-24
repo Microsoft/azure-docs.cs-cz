@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 02/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c02ac9392d6f3f95deef38ff86250e96dfb76d96
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: eaf58b964517162ee7f7eb925e1e64830eedc087
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79476684"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202547"
 ---
 # <a name="date-claims-transformations"></a>Transformace deklarací data
 
@@ -39,9 +39,9 @@ Transformace deklarací **AssertDateTimeIsGreaterThan** je vždy prováděna z [
 
 ![Spuštění AssertStringClaimsAreEqual](./media/date-transformations/assert-execution.png)
 
-Následující příklad porovnává `currentDateTime` deklaraci identity s `approvedDateTime` deklarací identity. Je-li vyvolána chyba `currentDateTime` , pokud je `approvedDateTime`pozdější než. Transformace považuje hodnoty za shodné, pokud jsou během 5 minut (30000 milisekund) rozdíl.
+Následující příklad porovnává `currentDateTime` deklaraci identity s `approvedDateTime` deklarací identity. Je-li vyvolána chyba `currentDateTime` , pokud je pozdější než `approvedDateTime` . Transformace považuje hodnoty za shodné, pokud jsou během 5 minut (30000 milisekund) rozdíl.
 
-```XML
+```xml
 <ClaimsTransformation Id="AssertApprovedDateTimeLaterThanCurrentDateTime" TransformationMethod="AssertDateTimeIsGreaterThan">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="approvedDateTime" TransformationClaimType="leftOperand" />
@@ -55,8 +55,8 @@ Následující příklad porovnává `currentDateTime` deklaraci identity s `app
 </ClaimsTransformation>
 ```
 
-Technický `login-NonInteractive` profil ověření volá transformaci `AssertApprovedDateTimeLaterThanCurrentDateTime` deklarací identity.
-```XML
+`login-NonInteractive`Technický profil ověření volá `AssertApprovedDateTimeLaterThanCurrentDateTime` transformaci deklarací identity.
+```xml
 <TechnicalProfile Id="login-NonInteractive">
   ...
   <OutputClaimsTransformations>
@@ -67,7 +67,7 @@ Technický `login-NonInteractive` profil ověření volá transformaci `AssertAp
 
 Technický profil s vlastním uplatněním volá ověřovací **přihlášení – neinteraktivní** technický profil.
 
-```XML
+```xml
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
   <Metadata>
     <Item Key="DateTimeGreaterThan">Custom error message if the provided left operand is greater than the right operand.</Item>
@@ -96,7 +96,7 @@ Převede hodnotu vlastnosti **Date** ClaimType na **typ DateTime** . Transformac
 
 Následující příklad ukazuje převod deklarace identity `dateOfBirth` (datový typ Date) na jinou deklaraci identity `dateOfBirthWithTime` (datový typ DateTime).
 
-```XML
+```xml
   <ClaimsTransformation Id="ConvertToDateTime" TransformationMethod="ConvertDateToDateTimeClaim">
     <InputClaims>
       <InputClaim ClaimTypeReferenceId="dateOfBirth" TransformationClaimType="inputClaim" />
@@ -125,7 +125,7 @@ Převede hodnotu **DateTime** ClaimType na **data** ClaimType. Transformace dekl
 
 Následující příklad ukazuje převod deklarace `systemDateTime` (datový typ DateTime) na jinou deklaraci identity `systemDate` (datový typ datum).
 
-```XML
+```xml
 <ClaimsTransformation Id="ConvertToDate" TransformationMethod="ConvertDateTimeToDateClaim">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="systemDateTime" TransformationClaimType="inputClaim" />
@@ -151,7 +151,7 @@ Získejte aktuální datum a čas UTC a přidejte hodnotu do ClaimType.
 | ---- | ----------------------- | --------- | ----- |
 | OutputClaim | currentDateTime | data a času. | Deklarace ClaimType, která je vytvořena po vyvolání tohoto ClaimsTransformation. |
 
-```XML
+```xml
 <ClaimsTransformation Id="GetSystemDateTime" TransformationMethod="GetCurrentDateTime">
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="systemDateTime" TransformationClaimType="currentDateTime" />
@@ -166,7 +166,7 @@ Získejte aktuální datum a čas UTC a přidejte hodnotu do ClaimType.
 
 ## <a name="datetimecomparison"></a>DateTimeComparison
 
-Určete, zda je jedno datum a čas pozdější, dřívější nebo stejné jako jiné. Výsledkem je nová logická logická hodnota ClaimType s hodnotou `true` nebo. `false`
+Určete, zda je jedno datum a čas pozdější, dřívější nebo stejné jako jiné. Výsledkem je nová logická logická hodnota ClaimType s hodnotou `true` nebo `false` .
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
@@ -179,7 +179,7 @@ Určete, zda je jedno datum a čas pozdější, dřívější nebo stejné jako 
 Pomocí této transformace deklarací identity určíte, zda jsou dva ClaimTypes stejné, pozdější nebo dřívější. Můžete například uložit čas poslední přijetí podmínek služby (TOS) uživatelem. Po 3 měsících můžete požádat uživatele, aby znovu přistupují ke službě TOS.
 Chcete-li spustit transformaci deklarace identity, musíte nejprve získat aktuální datum a čas a také čas, kdy uživatel akceptuje TOS.
 
-```XML
+```xml
 <ClaimsTransformation Id="CompareLastTOSAcceptedWithCurrentDateTime" TransformationMethod="DateTimeComparison">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="currentDateTime" TransformationClaimType="firstDateTime" />

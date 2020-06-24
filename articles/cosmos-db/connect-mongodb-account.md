@@ -5,15 +5,15 @@ author: timsander1
 ms.author: tisande
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: cba16d79b6506f9809a76f0128938a68afd15c92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dd4d6e1632ba858e709f6d463a6da4779314e64d
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80617039"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262017"
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>Připojení aplikace MongoDB ke službě Azure Cosmos DB
 
@@ -21,7 +21,7 @@ Zjistěte, jak připojit aplikaci MongoDB ke službě Azure Cosmos DB pomocí p�
 
 Tento kurz nabízí dva způsoby, jak načíst informace o připojovacím řetězci:
 
-- [Metoda rychlý Start](#get-the-mongodb-connection-string-by-using-the-quick-start)pro použití s ovladači .NET, Node. js, MongoDB Shell, Java a Python
+- [Metoda rychlý Start](#get-the-mongodb-connection-string-by-using-the-quick-start)pro použití s ovladači .net, Node.js, MongoDB Shell, Java a Python
 - [Metoda vlastního připojovacího řetězce](#get-the-mongodb-connection-string-to-customize)pro použití s jinými ovladači
 
 ## <a name="prerequisites"></a>Požadavky
@@ -34,7 +34,7 @@ Tento kurz nabízí dva způsoby, jak načíst informace o připojovacím řetě
 1. V internetovém prohlížeči se přihlaste k [Azure Portal](https://portal.azure.com).
 2. V okně **Azure Cosmos DB** vyberte rozhraní API.
 3. V levém podokně okna účtu klikněte na **rychlý Start**.
-4. Vyberte svou platformu (**.NET**, **Node. js**, **MongoDB Shell**, **Java**, **Python**). Pokud nevidíte váš ovladač nebo nástroj, nedělejte si starosti – budeme průběžně dokumentovat více fragmentů kódu pro připojení. Níže prosím zadejte komentář na to, co byste chtěli vidět. Pokud se chcete dozvědět, jak vytvořit vlastní připojení, přečtěte si téma [získání informací o připojovacím řetězci účtu](#get-the-mongodb-connection-string-to-customize).
+4. Vyberte platformu (**.NET**, **Node.js**, **MongoDB Shell**, **Java**, **Python**). Pokud nevidíte váš ovladač nebo nástroj, nedělejte si starosti – budeme průběžně dokumentovat více fragmentů kódu pro připojení. Níže prosím zadejte komentář na to, co byste chtěli vidět. Pokud se chcete dozvědět, jak vytvořit vlastní připojení, přečtěte si téma [získání informací o připojovacím řetězci účtu](#get-the-mongodb-connection-string-to-customize).
 5. Zkopírujte a vložte fragment kódu do aplikace MongoDB.
 
     ![Okno rychlý Start](./media/connect-mongodb-account/QuickStartBlade.png)
@@ -46,7 +46,7 @@ Tento kurz nabízí dva způsoby, jak načíst informace o připojovacím řetě
 3. V levém podokně okna účtu klikněte na **připojovací řetězec**.
 4. Otevře se okno **připojovací řetězec** . Obsahuje všechny informace potřebné pro připojení k účtu pomocí ovladače pro MongoDB, včetně předkonstruovaného připojovacího řetězce.
 
-   [![Okno](./media/connect-mongodb-account/ConnectionStringBlade.png) připojovací řetězec](./media/connect-mongodb-account/ConnectionStringBlade.png#lightbox)
+   :::image type="content" source="./media/connect-mongodb-account/ConnectionStringBlade.png" alt-text="Okno Připojovací řetězec" lightbox= "./media/connect-mongodb-account/ConnectionStringBlade.png" :::
 
 ## <a name="connection-string-requirements"></a>Požadavky na připojovací řetězec
 

@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/10/2020
-ms.openlocfilehash: 14f304e3846cab25691da347732de50924356540
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 5a81ceea151b937b63544cbe51cc22de11d25230
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84048872"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254935"
 ---
 # <a name="database-advisor-performance-recommendations-for-azure-sql-database"></a>Database Advisor doporučení k výkonu pro Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -43,7 +43,7 @@ Možnosti pro doporučení výkonu dostupné v Azure SQL Database jsou:
 | **Vytvoření doporučení indexu** – doporučuje vytváření indexů, které můžou zlepšit výkon vašich úloh. | Ano | Ne |
 | **Vyřazení doporučení indexu** – doporučuje, abyste každý den odebrali redundantní a duplicitní indexy, s výjimkou jedinečných indexů a indexů, které se nepoužívaly dlouhou dobu (>90 dní). Upozorňujeme, že tato možnost není kompatibilní s aplikacemi, které používají přepínání oddílů a parametry indexu. Vyřazování nepoužívaných indexů se u úrovní služeb Premium a Pro důležité obchodní informace nepodporuje. | Ano | Ne |
 | **Parametrizovat dotazy doporučení (Preview)** – doporučuje vynucené Parametrizace v případech, kdy máte jeden nebo více dotazů, které jsou neustále znovu kompilovány, ale končí stejným plánem spuštění dotazu. | Ano | Ne |
-| **Opravit doporučení pro problémy se schématy (Preview)** – doporučení pro korekci schématu se zobrazí, když Azure SQL Database vydává upozornění na anomálii v počtu chyb SQL souvisejících se schématy, které se vyskytují v databázi SQL. Microsoft momentálně nepoužívá doporučení "opravit problém schématu". | Ano | Ne |
+| **Opravit doporučení pro problémy se schématy (Preview)** – doporučení pro korekci schématu se zobrazí, když Azure SQL Database vydává upozornění na anomálii v počtu chyb SQL souvisejících se schématy, které se vyskytují ve vaší databázi. Microsoft momentálně nepoužívá doporučení "opravit problém schématu". | Ano | Ne |
 
 ![Doporučení k výkonu pro Azure SQL Database](./media/database-advisor-implement-performance-recommendations/performance-recommendations-annotated.png)
 
@@ -97,11 +97,11 @@ Po použití tohoto doporučení povolíte vynucené Parametrizace v průběhu n
 > [!IMPORTANT]
 > Microsoft momentálně nepoužívá doporučení "opravit problém schématu". Doporučujeme použít [Intelligent Insights](intelligent-insights-overview.md) k monitorování problémů s výkonem databáze, včetně problémů schématu, které dříve pokryla doporučení "opravit problém schématu".
 
-**Oprava upozornění na problémy s schématem** se zobrazí, když Azure SQL Database zaznamená anomálii v počtu chyb SQL souvisejících se schématem, které se vyskytují ve vaší databázi SQL. Toto doporučení se obvykle zobrazuje, když vaše databáze narazí na více chyb souvisejících se schématem (neplatný název sloupce, neplatný název objektu atd.) během hodiny.
+**Oprava upozornění na problémy s schématem** se zobrazí, když Azure SQL Database zaznamená anomálii v počtu chyb SQL souvisejících se schématem, které se vyskytují ve vaší databázi. Toto doporučení se obvykle zobrazuje, když vaše databáze narazí na více chyb souvisejících se schématem (neplatný název sloupce, neplatný název objektu atd.) během hodiny.
 
 "Problémy se schématem" jsou třídy chyb syntaxe. K nim dochází, když není zarovnaná definice dotazu SQL a definice schématu databáze. Například jeden ze sloupců očekávaných dotazem může chybět v cílové tabulce nebo naopak.
 
-Doporučení "Oprava potíží se schématem" se zobrazí, když Azure SQL Database vyrozumí anomálii v počtu chyb SQL souvisejících se schématy, které se probíhají ve vaší databázi SQL. Následující tabulka obsahuje chyby, které se týkají potíží se schématem:
+Doporučení "Oprava potíží se schématem" se zobrazí, když Azure SQL Database vydává upozornění na anomálii v počtu chyb SQL souvisejících se schématy, které se ve vaší databázi probíhají. Následující tabulka obsahuje chyby, které se týkají potíží se schématem:
 
 | Kód chyby SQL | Zpráva |
 | --- | --- |

@@ -11,17 +11,17 @@ ms.assetid: ''
 ms.service: virtual-network
 ms.subservice: ip-services
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: allensu
-ms.openlocfilehash: 3dd62d63216d7694f91c9024e4ee57272070a69c
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 265ed0f4cb58a321bde78714f36123bf197d42f6
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84321644"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710996"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Přidání, změna nebo odebrání IP adres pro síťové rozhraní Azure
 
@@ -29,7 +29,7 @@ Naučte se přidávat, měnit a odebírat veřejné a privátní IP adresy pro s
 
 Pokud potřebujete vytvořit, změnit nebo odstranit síťové rozhraní, přečtěte si článek [Správa síťového rozhraní](virtual-network-network-interface.md) . Pokud potřebujete přidat síťová rozhraní nebo odebrat síťová rozhraní z virtuálního počítače, přečtěte si článek [Přidání nebo odebrání síťových rozhraní](virtual-network-network-interface-vm.md) .
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -64,7 +64,7 @@ K síťovému rozhraní můžete podle potřeby přidat tolik [privátních](#pr
 
 |Nástroj|Příkaz|
 |---|---|
-|CLI|[az network nic ip-config create](/cli/azure/network/nic/ip-config)|
+|Rozhraní příkazového řádku|[az network nic ip-config create](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Add-AzNetworkInterfaceIpConfig](/powershell/module/az.network/add-aznetworkinterfaceipconfig)|
 
 ## <a name="change-ip-address-settings"></a>Změnit nastavení IP adresy
@@ -85,7 +85,7 @@ Možná budete muset změnit metodu přiřazení adresy IPv4, změnit statickou 
 
 |Nástroj|Příkaz|
 |---|---|
-|CLI|[AZ Network nic IP-config Update](/cli/azure/network/nic/ip-config)|
+|Rozhraní příkazového řádku|[AZ Network nic IP-config Update](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Set-AzNetworkInterfaceIpConfig](/powershell/module/az.network/set-aznetworkinterfaceipconfig)|
 
 ## <a name="remove-ip-addresses"></a>Odebrat IP adresy
@@ -101,7 +101,7 @@ Možná budete muset změnit metodu přiřazení adresy IPv4, změnit statickou 
 
 |Nástroj|Příkaz|
 |---|---|
-|CLI|[AZ Network nic IP-config DELETE](/cli/azure/network/nic/ip-config)|
+|Rozhraní příkazového řádku|[AZ Network nic IP-config DELETE](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Remove-AzNetworkInterfaceIpConfig](/powershell/module/az.network/remove-aznetworkinterfaceipconfig)|
 
 ## <a name="ip-configurations"></a>Konfigurace protokolu IP

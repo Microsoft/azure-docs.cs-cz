@@ -2,21 +2,21 @@
 title: Rozdíly v jazyce T-SQL mezi SQL Server & spravované instance Azure SQL
 description: Tento článek popisuje rozdíly v jazyce Transact-SQL (T-SQL) mezi spravovanou instancí Azure SQL a SQL Server.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: operations
 ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova, danil
-ms.date: 03/11/2020
+ms.date: 06/02/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 3a912e636c8bd8f762b401bda9623f23913047cb
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 229a74fe760386b59bc83373cc7b1429bd826929
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344522"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298443"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>Rozdíly v jazyce T-SQL mezi SQL Server & spravované instance Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -42,7 +42,7 @@ Dočasné známé problémy, které jsou zjištěny ve spravované instanci SQL 
 
 ## <a name="availability"></a>Dostupnost
 
-### <a name="always-on-availability-groups"></a><a name="always-on-availability-groups"></a>Skupiny dostupnosti Always On
+### <a name="always-on-availability-groups"></a><a name="always-on-availability-groups"></a>Skupiny dostupnosti AlwaysOn
 
 [Vysoká dostupnost](../database/high-availability-sla.md) je integrována do spravované instance SQL a nemůže být řízena uživateli. Následující příkazy nejsou podporovány:
 
@@ -159,7 +159,7 @@ Spravovaná instance SQL nemá přístup k souborům, takže zprostředkovatele 
     - SPUSTIT JAKO UŽIVATEL
     - SPUSTIT JAKO PŘIHLAŠOVACÍ ÚDAJE
 
-- Pro uživatele Azure AD ve spravované instanci SQL se podporuje export a import databáze pomocí souborů BacPac buď [SSMS v 18.4 nebo novější](/sql/ssms/download-sql-server-management-studio-ssms), nebo [SQLPackage. exe](/sql/tools/sqlpackage-download).
+- Pro uživatele Azure AD ve spravované instanci SQL se podporuje export a import databáze pomocí souborů BacPac buď [SSMS v 18.4 nebo novější](/sql/ssms/download-sql-server-management-studio-ssms), nebo [SQLPackage.exe](/sql/tools/sqlpackage-download).
   - Následující konfigurace jsou podporovány pomocí souboru databáze BacPac: 
     - Exportujte/Importujte databázi mezi různými spravovanými instancemi v rámci stejné domény služby Azure AD.
     - Exportujte databázi ze spravované instance SQL a importujte ji do SQL Database v rámci stejné domény služby Azure AD. 
@@ -432,7 +432,7 @@ Další informace o konfiguraci transakční replikace najdete v následujícíc
   - `FROM URL`(Azure Blob Storage) je jedinou podporovanou možností.
   - `FROM DISK`/`TAPE`zařízení/Backup se nepodporuje.
   - Zálohovací sklady nejsou podporované.
-- `WITH`možnosti nejsou podporovány, například ne `DIFFERENTIAL` nebo `STATS` .
+- `WITH`možnosti nejsou podporovány. Pokusy o obnovení, včetně `WITH` Like `DIFFERENTIAL` , `STATS` , atd `REPLACE` ., selžou.
 - `ASYNC RESTORE`: Obnovení pokračuje i v případě, že dojde k přerušení připojení klienta. Pokud je připojení vyřazeno, můžete se podívat na `sys.dm_operation_status` stav operace obnovení a pro databázi pro vytvoření a odstranění. Viz [Sys. dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database). 
 
 Následující možnosti databáze jsou nastaveny nebo přepsány a nelze je změnit později: 
@@ -490,7 +490,7 @@ Následující proměnné, funkce a zobrazení vrací různé výsledky:
 - `@@SERVERNAME`Vrátí úplný název DNS "připojitelné", například my-managed-instance.wcus17662feb9ce98.database.windows.net. Viz [@ @SERVERNAME ](/sql/t-sql/functions/servername-transact-sql). 
 - `SYS.SERVERS`Vrátí úplný název DNS "připojitelné", například `myinstance.domain.database.windows.net` pro vlastnosti "název" a "data_source". Viz [Sys. SERVERY](/sql/relational-databases/system-catalog-views/sys-servers-transact-sql).
 - `@@SERVICENAME`Vrátí hodnotu NULL, protože koncept služby, která existuje pro SQL Server, se nevztahuje na spravovanou instanci SQL. Viz [@ @SERVICENAME ](/sql/t-sql/functions/servicename-transact-sql).
-- `SUSER_ID`je podporováno. Vrátí hodnotu NULL, pokud se přihlášení Azure AD nenachází v tabulce sys. syslogins. Viz [SUSER_ID](/sql/t-sql/functions/suser-id-transact-sql). 
+- `SUSER_ID`je podporováno. Vrátí hodnotu NULL, pokud přihlášení Azure AD není v sys.syspřihlašovacích údajů. Viz [SUSER_ID](/sql/t-sql/functions/suser-id-transact-sql). 
 - `SUSER_SID`není podporováno. Vrátí se nesprávná data, což je dočasný známý problém. Viz [SUSER_SID](/sql/t-sql/functions/suser-sid-transact-sql). 
 
 ## <a name="environment-constraints"></a><a name="Environment"></a>Omezení prostředí

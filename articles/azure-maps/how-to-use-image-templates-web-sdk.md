@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: ee8e8ee4ca64de0390b6fa34e36fb4d06348a8ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 28fee67ccfc1e67d89d0151c8e14bd7c0b688749
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80804805"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207086"
 ---
 # <a name="how-to-use-image-templates"></a>Používání šablon obrázků
 
@@ -32,7 +32,7 @@ Chcete-li zajistit dobrý výkon pomocí vrstev, načtěte obrázky do prostřed
 createFromTemplate(id: string, templateName: string, color?: string, secondaryColor?: string, scale?: number): Promise<void>
 ```
 
-`id` Je jedinečný identifikátor, který vytvoříte. `id` Je přiřazen k obrázku při jeho přidání do Sprite obrázku mapy. Pomocí tohoto identifikátoru v vrstvách určete, který prostředek obrázku se má vykreslit. Určuje `templateName` , která šablona obrázku se má použít. `color` Možnost nastaví primární barvu obrázku a `secondaryColor` možnosti nastaví vedlejší barvu obrázku. `scale` Možnost škáluje šablonu obrázku předtím, než ji použijete na Sprite obrazu. Když se obrázek použije na Sprite obrázku, převede se na PNG. Aby se zajistilo ostré vykreslování, je lepší škálovat šablonu obrázku před přidáním do Sprite, než je můžete škálovat ve vrstvě.
+`id`Je jedinečný identifikátor, který vytvoříte. `id`Je přiřazen k obrázku při jeho přidání do Sprite obrázku mapy. Pomocí tohoto identifikátoru v vrstvách určete, který prostředek obrázku se má vykreslit. `templateName`Určuje, která šablona obrázku se má použít. `color`Možnost nastaví primární barvu obrázku a `secondaryColor` Možnosti nastaví vedlejší barvu obrázku. `scale`Možnost škáluje šablonu obrázku předtím, než ji použijete na Sprite obrazu. Když se obrázek použije na Sprite obrázku, převede se na PNG. Aby se zajistilo ostré vykreslování, je lepší škálovat šablonu obrázku před přidáním do Sprite, než je můžete škálovat ve vrstvě.
 
 Tato funkce asynchronně načte obrázek do Sprite obrazu. Proto vrátí příslib, který můžete počkat na dokončení této funkce.
 
@@ -52,41 +52,41 @@ map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#f
 
 ## <a name="use-an-image-template-with-a-symbol-layer"></a>Použití šablony obrázku s vrstvou symbolů
 
-Jakmile je šablona obrázku načtena do Sprite obrázku mapy, lze ji vykreslit jako symbol v vrstvě symbolů odkazem na ID prostředku obrázku v `image` možnosti. `iconOptions`
+Jakmile je šablona obrázku načtena do Sprite obrázku mapy, lze ji vykreslit jako symbol v vrstvě symbolů odkazem na ID prostředku obrázku v `image` možnosti `iconOptions` .
 
-Následující ukázka vykreslí vrstvu symbolů pomocí šablony `marker-flat` obrázku se šedozelená primární barvou a bílou sekundární barvou. 
+Následující ukázka vykreslí vrstvu symbolů pomocí `marker-flat` šablony obrázku se šedozelená primární barvou a bílou sekundární barvou. 
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Symbolová vrstva s vestavěnou šablonou ikon" src="//codepen.io/azuremaps/embed/VoQMPp/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Podívejte se na <a href='https://codepen.io/azuremaps/pen/VoQMPp/'>vrstvu symbolů pera s integrovanou šablonou ikon</a> podle Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() na <a href='https://codepen.io'>CodePen</a>.
+Podívejte se na <a href='https://codepen.io/azuremaps/pen/VoQMPp/'>vrstvu symbolů pera s integrovanou šablonou ikon</a> podle Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="use-an-image-template-along-a-lines-path"></a>Použití šablony obrázku v cestě čáry
 
-Jakmile je šablona obrázku načtena do Sprite obrázku mapy, lze ji vykreslit podél cesty řádku přidáním LineString ke zdroji dat a použitím vrstvy symbolů s `lineSpacing`možností a odkazem na ID prostředku obrázku v `image` možnosti th. `iconOptions` 
+Jakmile je šablona obrázku načtena do Sprite obrázku mapy, lze ji vykreslit podél cesty řádku přidáním LineString ke zdroji dat a použitím vrstvy symbolů s `lineSpacing` možností a odkazem na ID prostředku obrázku v `image` Možnosti th `iconOptions` . 
 
-Následující ukázka vykreslí růžovou čáru na mapě a používá vrstvu symbolů pomocí šablony `car` obrázku s jasně modrou primární barvou a bílou sekundární barvou. 
+Následující ukázka vykreslí růžovou čáru na mapě a používá vrstvu symbolů pomocí `car` šablony obrázku s jasně modrou primární barvou a bílou sekundární barvou. 
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Spojnicová vrstva s integrovanou šablonou ikon" src="//codepen.io/azuremaps/embed/KOQvJe/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Podívejte se na <a href='https://codepen.io/azuremaps/pen/KOQvJe/'>vrstvu čáry pera s integrovanou šablonou ikon</a> podle Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() na <a href='https://codepen.io'>CodePen</a>.
+Podívejte se na <a href='https://codepen.io/azuremaps/pen/KOQvJe/'>vrstvu čáry pera s integrovanou šablonou ikon</a> podle Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 > [!TIP]
-> Pokud má šablona obrázku body, nastavte možnost `rotation` ikony vrstvy symbolů na 90, pokud chcete, aby ukazovala ve stejném směru jako řádek.
+> Pokud má šablona obrázku body, nastavte `rotation` možnost ikony vrstvy symbolů na 90, pokud chcete, aby ukazovala ve stejném směru jako řádek.
 
 ## <a name="use-an-image-template-with-a-polygon-layer"></a>Použití šablony obrázku s mnohoúhelníkovou vrstvou
 
-Jakmile je šablona obrázku načtena do Sprite obrázku mapy, může být vykreslena jako vzorek výplně v mnohoúhelníkové vrstvě odkazem na ID prostředku obrázku v `fillPattern` možnosti vrstvy.
+Jakmile je šablona obrázku načtena do Sprite obrázku mapy, může být vykreslena jako vzorek výplně v mnohoúhelníkové vrstvě odkazem na ID prostředku obrázku v `fillPattern` Možnosti vrstvy.
 
-Následující ukázka vykreslí mnohoúhelníkovou vrstvu pomocí šablony `dot` obrázku s červenou primární barvou a průhlednou sekundární barvou.  
+Následující ukázka vykreslí mnohoúhelníkovou vrstvu pomocí `dot` šablony obrázku s červenou primární barvou a průhlednou sekundární barvou.  
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Vyplnit mnohoúhelník pomocí předdefinované šablony ikon" src="//codepen.io/azuremaps/embed/WVMEmz/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Podívejte se, jak se v CodePen (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>nachází <a href='https://codepen.io/azuremaps/pen/WVMEmz/'>mnohoúhelník výplně perem pomocí předdefinované Azure Maps šablony ikon</a> .
+Podívejte se, jak se v CodePen () na nachází <a href='https://codepen.io/azuremaps/pen/WVMEmz/'>mnohoúhelník výplně perem pomocí předdefinované Azure Maps šablony ikon</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 > [!TIP]
@@ -94,21 +94,32 @@ Podívejte se, jak se v CodePen (<a href='https://codepen.io/azuremaps'>@azurema
 
 ## <a name="use-an-image-template-with-an-html-marker"></a>Použití šablony obrázku se značkou HTML
 
-Šablonu obrázku lze načíst pomocí `altas.getImageTemplate` funkce a použít ji jako obsah značky HTML. Šablonu `htmlContent` lze předat do možnosti značky a následně přizpůsobit pomocí `color` `secondaryColor` `text` možností, a.
+Šablonu obrázku lze načíst pomocí `altas.getImageTemplate` funkce a použít ji jako obsah značky HTML. Šablonu lze předat do `htmlContent` možnosti značky a následně přizpůsobit pomocí `color` možností, a `secondaryColor` `text` .
 
 Následující ukázka používá `marker-arrow` šablonu s červenou primární barvou, růžovou sekundární barvou a textovou hodnotou "00".
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Značka HTML s integrovanou šablonou ikon" src="//codepen.io/azuremaps/embed/EqQvzq/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Podívejte se na <a href='https://codepen.io/azuremaps/pen/EqQvzq/'>značku HTML pera s integrovanou šablonou ikon</a> podle Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() na <a href='https://codepen.io'>CodePen</a>.
+Podívejte se na <a href='https://codepen.io/azuremaps/pen/EqQvzq/'>značku HTML pera s integrovanou šablonou ikon</a> podle Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
+
+
+> [!TIP]
+> Šablony obrázků lze použít i mimo mapu. GetImageTemplate atanh vrátí řetězec SVG, který obsahuje zástupné symboly; `{color}`, `{secondaryColor}`, `{scale}`, `{text}`. Chcete-li vytvořit platný řetězec SVG, nahraďte tyto zástupné hodnoty. Pak můžete buď přidat řetězec SVG přímo do modelu DOM HTML, nebo ho převést na identifikátor URI dat a vložit ho do značky obrázku. Příklad:
+> ```JavaScript
+> //Retrieve an SVG template and replace the placeholder values.
+> var svg = atlas.getImageTemplate('marker').replace(/{color}/, 'red').replace(/{secondaryColor}/, 'white').replace(/{text}/, '').replace(/{scale}/, 1);
+>
+> //Convert to data URI for use in image tags.
+> var dataUri = 'data:image/svg+xml;base64,' + btoa(svg);
+> ```
 
 ## <a name="create-custom-reusable-templates"></a>Vytváření vlastních opakovaně použitelných šablon
 
-Pokud vaše aplikace používá stejnou ikonu s různými ikonami nebo pokud vytváříte modul, který přidává další šablony obrázků, můžete tyto ikony snadno přidat a načíst z Azure Maps webové sady SDK. V `atlas` oboru názvů použijte následující statické funkce.
+Pokud vaše aplikace používá stejnou ikonu s různými ikonami nebo pokud vytváříte modul, který přidává další šablony obrázků, můžete tyto ikony snadno přidat a načíst z Azure Maps webové sady SDK. V oboru názvů použijte následující statické funkce `atlas` .
 
-| Název | Návratový typ | Popis | 
+| Name | Návratový typ | Description | 
 |-|-|-|
 | `addImageTemplate(templateName: string, template: string, override: boolean)` | | Přidá do oboru názvů Atlas vlastní šablonu obrázku SVG. |
 |  `getImageTemplate(templateName: string, scale?: number)`| řetězec | Načte šablonu SVG podle názvu. |
@@ -116,7 +127,7 @@ Pokud vaše aplikace používá stejnou ikonu s různými ikonami nebo pokud vyt
 
 Šablony obrázků SVG podporují následující zástupné hodnoty:
 
-| Zástupný symbol | Popis |
+| Zástupný symbol | Description |
 |-|-|
 | `{color}` | Primární barva. | 
 | `{secondaryColor}` | Vedlejší barva. | 
@@ -128,7 +139,7 @@ Následující příklad ukazuje, jak převzít šablonu SVG a přidat ji do sad
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Přidat šablonu vlastní ikony do oboru názvů Atlas" src="//codepen.io/azuremaps/embed/NQyvEX/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Podívejte se na pero <a href='https://codepen.io/azuremaps/pen/NQyvEX/'>Přidání vlastní ikony do oboru názvů Atlas</a> pomocí Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() na <a href='https://codepen.io'>CodePen</a>.
+Podívejte se na pero <a href='https://codepen.io/azuremaps/pen/NQyvEX/'>Přidání vlastní ikony do oboru názvů Atlas</a> pomocí Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="list-of-image-templates"></a>Seznam šablon obrázků
@@ -176,6 +187,25 @@ Tato tabulka obsahuje seznam všech šablon imagí, které jsou aktuálně k dis
 | cik – cak | cik-cak – vertikální | palec |  |
 | ![cik – ikona cak](./media/image-templates/zig-zag.png) | ![cik-cak – ikona svislého](./media/image-templates/zig-zag-vertical.png) | ![ikona teček](./media/image-templates/dots.png) | |
 
+**Předem nahrané ikony obrázků**
+
+Mapa předvede sadu ikon do Sprite obrázku mapy pomocí `marker` `pin` šablon, a `pin-round` . Tyto názvy ikon a jejich hodnoty barvy jsou uvedeny v následující tabulce.
+
+| název ikony | color | secondaryColor |
+|-----------|-------|----------------|
+| `marker-black` | `#231f20` | `#ffffff` |
+| `marker-blue` | `#1a73aa` | `#ffffff` |
+| `marker-darkblue` | `#003963` | `#ffffff` |
+| `marker-red` | `#ef4c4c` | `#ffffff` |
+| `marker-yellow` | `#f2c851` | `#ffffff` |
+| `pin-blue` | `#2072b8` | `#ffffff` |
+| `pin-darkblue` | `#003963` | `#ffffff` |
+| `pin-red` | `#ef4c4c` | `#ffffff` |
+| `pin-round-blue` | `#2072b8` | `#ffffff` |
+| `pin-round-darkblue` | `#003963` | `#ffffff` |
+| `pin-round-red` | `#ef4c4c` | `#ffffff` |
+
+
 ## <a name="try-it-now-tool"></a>Vyzkoušet Nástroj hned
 
 Pomocí následujícího nástroje můžete vykreslit různé předdefinované šablony imagí různými způsoby a přizpůsobit primární a sekundární barvy a škálování.
@@ -183,7 +213,7 @@ Pomocí následujícího nástroje můžete vykreslit různé předdefinované �
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Možnosti šablony ikony" src="//codepen.io/azuremaps/embed/NQyaaO/?height=500&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-V CodePen (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>se podívejte na Azure Maps <a href='https://codepen.io/azuremaps/pen/NQyaaO/'>Možnosti šablony s ikonami</a> pera.
+V CodePen () na se podívejte na Azure Maps <a href='https://codepen.io/azuremaps/pen/NQyaaO/'>Možnosti šablony s ikonami</a> pera <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="next-steps"></a>Další kroky

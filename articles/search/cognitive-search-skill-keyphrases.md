@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ddcd95356f9b70fec5a74f36f5b80e55ea56b477
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 529e79abbd7fa8f9733254d207af570237044305
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744015"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080825"
 ---
 #   <a name="key-phrase-extraction-cognitive-skill"></a>Extrakce klíčových frází vnímání znalostí
 
@@ -24,7 +24,7 @@ Tato funkce je užitečná v případě, že potřebujete rychle identifikovat h
 > [!NOTE]
 > Když rozbalíte rozsah zvýšením četnosti zpracování, přidáním dalších dokumentů nebo přidáním dalších algoritmů AI, budete muset [připojit fakturovatelné Cognitive Services prostředku](cognitive-search-attach-cognitive-services.md). Poplatky se účtují při volání rozhraní API v Cognitive Services a pro extrakci obrázků jako součást fáze pro vystavování dokumentů ve službě Azure Kognitivní hledání. Pro extrakci textu z dokumentů se neúčtují žádné poplatky.
 >
-> Při provádění integrovaných dovedností se účtují poplatky za stávající [Cognitive Services průběžných plateb](https://azure.microsoft.com/pricing/details/cognitive-services/). Ceny za extrakci imagí jsou popsané na [stránce s cenami za Azure kognitivní hledání](https://go.microsoft.com/fwlink/?linkid=2042400).
+> Při provádění integrovaných dovedností se účtují poplatky za stávající [Cognitive Services průběžných plateb](https://azure.microsoft.com/pricing/details/cognitive-services/). Ceny za extrakci imagí jsou popsané na [stránce s cenami za Azure kognitivní hledání](https://azure.microsoft.com/pricing/details/search/).
 
 
 ## <a name="odatatype"></a>@odata.type  
@@ -37,26 +37,37 @@ Maximální velikost záznamu musí být 50 000 znaků měřených podle [`Strin
 
 U parametrů se rozlišují malá a velká písmena.
 
-| Vstupy                | Popis |
+| Vstupy                | Description |
 |---------------------|-------------|
-| defaultLanguageCode | Volitelné Kód jazyka, který se má použít pro dokumenty, které nespecifikují jazyk explicitně.  Pokud není zadán výchozí kód jazyka, použije se jako výchozí kód jazyka angličtina (EN). <br/> [Úplný seznam podporovaných jazyků](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)najdete v části. |
-| maxKeyPhraseCount   | Volitelné Maximální počet klíčových frází, které mají být vyprodukovány. |
+| `defaultLanguageCode` | Volitelné Kód jazyka, který se má použít pro dokumenty, které nespecifikují jazyk explicitně.  Pokud není zadán výchozí kód jazyka, použije se jako výchozí kód jazyka angličtina (EN). <br/> [Úplný seznam podporovaných jazyků](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)najdete v části. |
+| `maxKeyPhraseCount`   | Volitelné Maximální počet klíčových frází, které mají být vyprodukovány. |
 
 ## <a name="skill-inputs"></a>Vstupy dovedností
 
-| Vstup  | Popis |
+| Vstup  | Description |
 |--------------------|-------------|
-| text | Text, který má být analyzován.|
-| languageCode  |  Řetězec, který označuje jazyk záznamů. Pokud tento parametr nezadáte, použije se k analýze záznamů výchozí kód jazyka. <br/>Zobrazit [úplný seznam podporovaných jazyků](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)|
+| `text` | Text, který má být analyzován.|
+| `languageCode`    |  Řetězec, který označuje jazyk záznamů. Pokud tento parametr nezadáte, použije se k analýze záznamů výchozí kód jazyka. <br/>Zobrazit [úplný seznam podporovaných jazyků](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)|
 
 ## <a name="skill-outputs"></a>Výstupy dovedností
 
-| Výstup  | Popis |
+| Výstup     | Description |
 |--------------------|-------------|
-| keyPhrases | Seznam klíčových frází extrahovaných ze vstupního textu. Klíčové fráze jsou vraceny v pořadí podle důležitosti. |
+| `keyPhrases` | Seznam klíčových frází extrahovaných ze vstupního textu. Klíčové fráze jsou vraceny v pořadí podle důležitosti. |
 
 
 ##  <a name="sample-definition"></a>Definice vzorku
+
+Vezměte v úvahu záznam SQL, který obsahuje následující pole:
+
+```json
+{
+    "content": "Glaciers are huge rivers of ice that ooze their way over land, powered by gravity and their own sheer weight. They accumulate ice from snowfall and lose it through melting. As global temperatures have risen, many of the world’s glaciers have already started to shrink and retreat. Continued warming could see many iconic landscapes – from the Canadian Rockies to the Mount Everest region of the Himalayas – lose almost all their glaciers by the end of the century.",
+    "language": "en"
+}
+```
+
+Definice dovedností pak může vypadat takto:
 
 ```json
  {
@@ -68,7 +79,7 @@ U parametrů se rozlišují malá a velká písmena.
       },
       {
         "name": "languageCode",
-        "source": "/document/languagecode" 
+        "source": "/document/language" 
       }
     ],
     "outputs": [
@@ -80,33 +91,12 @@ U parametrů se rozlišují malá a velká písmena.
   }
 ```
 
-##  <a name="sample-input"></a>Vzorový vstup
-
-```json
-{
-    "values": [
-      {
-        "recordId": "1",
-        "data":
-           {
-             "text": "Glaciers are huge rivers of ice that ooze their way over land, powered by gravity and their own sheer weight. They accumulate ice from snowfall and lose it through melting. As global temperatures have risen, many of the world’s glaciers have already started to shrink and retreat. Continued warming could see many iconic landscapes – from the Canadian Rockies to the Mount Everest region of the Himalayas – lose almost all their glaciers by the end of the century.",
-             "language": "en"
-           }
-      }
-    ]
-```
-
-
 ##  <a name="sample-output"></a>Ukázkový výstup
 
+Ve výše uvedeném příkladu se výstup vaší dovednosti zapíše do nového uzlu v obohaceném stromu s názvem "Document/myKeyPhrases", protože to je ta, kterou `targetName` jsme určili. Pokud nezadáte a `targetName` , bude to "dokument/klíčová fráze".
+
+#### <a name="documentmykeyphrases"></a>dokument/myKeyPhrases 
 ```json
-{
-    "values": [
-      {
-        "recordId": "1",
-        "data":
-           {
-            "keyPhrases": 
             [
               "world’s glaciers", 
               "huge rivers of ice", 
@@ -115,12 +105,9 @@ U parametrů se rozlišují malá a velká písmena.
               "Mount Everest region",
               "Continued warming"
             ]
-           }
-      }
-    ]
-}
 ```
 
+Jako vstup do jiných dovedností můžete použít "Document/myKeyPhrases", nebo jako zdroj [mapování polí výstupu](cognitive-search-output-field-mapping.md).
 
 ## <a name="errors-and-warnings"></a>Chyby a upozornění
 Pokud zadáte nepodporovaný kód jazyka, je vygenerována chyba a nebudou extrahovány klíčové fráze.
@@ -131,3 +118,4 @@ Pokud je text větší než 50 000 znaků, analyzují se pouze prvních 50 000 z
 
 + [Integrované dovednosti](cognitive-search-predefined-skills.md)
 + [Jak definovat dovednosti](cognitive-search-defining-skillset.md)
++ [Definování mapování polí výstupu](cognitive-search-output-field-mapping.md)

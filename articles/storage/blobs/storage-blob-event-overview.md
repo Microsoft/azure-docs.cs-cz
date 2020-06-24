@@ -7,13 +7,13 @@ ms.date: 04/06/2020
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
-ms.reviewer: cbrooks
-ms.openlocfilehash: d9c666fd6fcf020908b6fc5bdd639261853ad9c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: dineshm
+ms.openlocfilehash: 8f51b6f94ae8a245471757d256a923570582bb12
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80811539"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84809074"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reakce na události služby Blob Storage
 
@@ -39,7 +39,7 @@ Chcete-li zobrazit podrobné příklady reakce na události služby Blob Storage
 - [Kurz: automatizace změny velikosti nahraných imagí pomocí Event Grid](https://docs.microsoft.com/azure/event-grid/resize-images-on-storage-blob-upload-event?tabs=dotnet)
 
 >[!NOTE]
-> Integraci událostí podporují jenom účty úložiště typu **StorageV2 (obecné účely v2)**, **BlockBlobStorage**a **BlobStorage** . **Úložiště (Genral pro účely V1)** *nepodporuje integraci* s Event Grid.
+> Integraci událostí podporují jenom účty úložiště typu **StorageV2 (obecné účely v2)**, **BlockBlobStorage**a **BlobStorage** . **Storage (pro obecné účely V1)** *nepodporuje integraci* s Event Grid.
 
 ## <a name="the-event-model"></a>Model události
 
@@ -76,19 +76,19 @@ Aby se shodovaly události z objektů BLOB vytvořených v sadě kontejnerů, kt
 /blobServices/default/containers/containerprefix
 ```
 
-Chcete-li spárovat události z objektů BLOB vytvořených v konkrétním kontejneru `subjectBeginsWith` , použijte filtr jako:
+Chcete-li spárovat události z objektů BLOB vytvořených v konkrétním kontejneru, použijte `subjectBeginsWith` filtr jako:
 
 ```
 /blobServices/default/containers/containername/
 ```
 
-Aby se shodovaly události z objektů BLOB vytvořených v konkrétním kontejneru sdílením předpony názvu `subjectBeginsWith` objektu blob, použijte filtr, jako je:
+Aby se shodovaly události z objektů BLOB vytvořených v konkrétním kontejneru sdílením předpony názvu objektu blob, použijte `subjectBeginsWith` filtr, jako je:
 
 ```
 /blobServices/default/containers/containername/blobs/blobprefix
 ```
 
-Chcete-li spárovat události objektů BLOB vytvořených v konkrétním kontejneru sdílení přípony objektu blob, `subjectEndsWith` použijte filtr, například ". log" nebo ". jpg". Další informace najdete v tématu [Event Grid koncepty](../../event-grid/concepts.md#event-subscriptions).
+Chcete-li spárovat události objektů BLOB vytvořených v konkrétním kontejneru sdílení přípony objektu blob, použijte `subjectEndsWith` filtr, například ". log" nebo ". jpg". Další informace najdete v tématu [Event Grid koncepty](../../event-grid/concepts.md#event-subscriptions).
 
 ## <a name="practices-for-consuming-events"></a>Postupy pro náročné události
 
@@ -99,10 +99,10 @@ Aplikace, které zpracovávají události služby Blob Storage, by měly dodržo
 > * Jakmile se zprávy můžou dorazit po nějaké prodlevě, použijte pole ETag k pochopení, jestli jsou informace o objektech pořád aktuální. Informace o tom, jak používat pole ETag, najdete v tématu [Správa souběžnosti v úložišti objektů BLOB](https://docs.microsoft.com/azure/storage/common/storage-concurrency?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#managing-concurrency-in-blob-storage). 
 > * Vzhledem k tomu, že zprávy mohou docházet mimo pořadí, použijte pole Sequencer k pochopení pořadí událostí na konkrétním objektu. Pole Sequencer je řetězcová hodnota, která představuje logickou sekvenci událostí pro libovolný konkrétní název objektu BLOB. Standardní porovnání řetězců můžete použít k pochopení relativní posloupnosti dvou událostí u stejného názvu objektu BLOB.
 > * Události úložiště zaručují, že se po doručení nejméně jednou doručí předplatitelům, což zajistí, aby byly všechny zprávy na výstupu. Kvůli opakování nebo dostupnosti předplatných ale může občas dojít k duplicitním zprávám. Pokud se chcete dozvědět víc o doručování zpráv a zkusit to znovu, přečtěte si téma [Event Grid doručování zpráv](../../event-grid/delivery-and-retry.md).
-> * Pomocí pole blobType můžete pochopit, jaký typ operací je u objektu BLOB povolený, a jaké typy klientských knihoven byste měli použít pro přístup k objektu BLOB. Platné hodnoty jsou buď `BlockBlob` nebo `PageBlob`. 
-> * Pro přístup k objektu BLOB použijte `CloudBlockBlob` pole `CloudAppendBlob` URL s konstruktory a.
+> * Pomocí pole blobType můžete pochopit, jaký typ operací je u objektu BLOB povolený, a jaké typy klientských knihoven byste měli použít pro přístup k objektu BLOB. Platné hodnoty jsou buď `BlockBlob` nebo `PageBlob` . 
+> * Pro přístup k objektu BLOB použijte pole URL s `CloudBlockBlob` `CloudAppendBlob` konstruktory a.
 > * Ignorujte pole, která nerozumíte. Tento postup vám pomůže zajistit odolný přístup k novým funkcím, které se v budoucnu můžou přidat.
-> * Chcete-li zajistit, aby se událost **Microsoft. Storage. BlobCreated** aktivovala pouze v případě, že je objekt blob bloku zcela potvrzen, vyfiltrujte `CopyBlob`událost `PutBlob`pro `PutBlockList` volání `FlushWithClose` , nebo REST API volání. Tato volání rozhraní API aktivují událost **Microsoft. Storage. BlobCreated** až po úplném potvrzení dat do objektu blob bloku. Další informace o tom, jak vytvořit filtr, najdete v tématu [filtrování událostí pro Event Grid](https://docs.microsoft.com/azure/event-grid/how-to-filter-events).
+> * Chcete-li zajistit, aby se událost **Microsoft. Storage. BlobCreated** aktivovala pouze v případě, že je objekt blob bloku zcela potvrzen, vyfiltrujte událost pro `CopyBlob` `PutBlob` volání, `PutBlockList` nebo `FlushWithClose` REST API volání. Tato volání rozhraní API aktivují událost **Microsoft. Storage. BlobCreated** až po úplném potvrzení dat do objektu blob bloku. Další informace o tom, jak vytvořit filtr, najdete v tématu [filtrování událostí pro Event Grid](https://docs.microsoft.com/azure/event-grid/how-to-filter-events).
 
 
 ## <a name="next-steps"></a>Další kroky

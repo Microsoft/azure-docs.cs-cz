@@ -4,18 +4,18 @@ description: Přečtěte si, jaký dopad má zásada zabezpečení a ochrany oso
 services: logic-apps
 ms.suite: integration
 ms.reviewer: divswa, logicappspm
-ms.topic: article
-ms.date: 04/24/2020
-ms.openlocfilehash: 590ad6a52d768c7e59d8d97691e146205e43cadd
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.topic: conceptual
+ms.date: 06/05/2020
+ms.openlocfilehash: 384335898c7cd6b379c6107152b49e9931cf513a
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628704"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194965"
 ---
 # <a name="data-security-and-privacy-policies-for-google-connectors-in-azure-logic-apps"></a>Zásady zabezpečení a ochrany osobních údajů pro konektory Google v Azure Logic Apps
 
-Od **1. května 2020**můžou změny v důsledku [zabezpečení a zásad ochrany osobních údajů](https://www.blog.google/technology/safety-security/project-strobe/) v Google ovlivnit pracovní postupy aplikace logiky, které používají [konektor Gmail](https://docs.microsoft.com/connectors/gmail/). Pokud vaše aplikace logiky používají konektor Gmail s účtem uživatele Gmail (e-mailová adresa, @gmail.com která @googlemail.comkončí na nebo), vaše aplikace logiky můžou používat jenom konkrétní [triggery, akce a konektory schválené společností Google](#approved-connectors). 
+Od **1. května 2020**můžou změny v důsledku [zabezpečení a zásad ochrany osobních údajů](https://www.blog.google/technology/safety-security/project-strobe/) v Google ovlivnit pracovní postupy aplikace logiky, které používají [konektor Gmail](https://docs.microsoft.com/connectors/gmail/). Pokud vaše aplikace logiky používají konektor Gmail s účtem uživatele Gmail (e-mailová adresa, která končí @gmail.com @googlemail.com na nebo), vaše aplikace logiky můžou používat jenom konkrétní [triggery, akce a konektory schválené společností Google](#approved-connectors).
 
 > [!NOTE]
 > Pokud vaše aplikace logiky používají konektor Gmail s obchodním účtem G-Suite (e-mailová adresa s vlastní doménou), vaše aplikace logiky se nijak nedotýká a nebude mít k dispozici žádné omezení na používání konektoru gmail.
@@ -36,11 +36,31 @@ V rámci této zásady platí, že když použijete účet příjemce Gmail, mů
 
 * Logic Apps integrovaných triggerů a akcí: Batch, Control, datové operace, datum a čas, plochý soubor, kapalina, požadavek, plán, proměnné a XML
 
+  Integrované triggery a akce, které neschválily Google, například HTTP, Azure Functions, Azure Logic Apps a další, vytvářejí aplikaci logiky nekompatibilní s konektorem Gmail, protože aplikace může data odesílat nebo přijímat odkudkoli.
+
 * Služby Google: Gmail, Kalendář Google, Kontakty Google, disk Google, tabulky Google a úkoly Google
 
 * Schválené služby Microsoftu: Dynamics 365, Excel Online, Microsoft teams, Office 365, OneDrive a SharePoint Online
 
 * Konektory pro zdroje dat spravované zákazníkem: FTP, RSS, SFTP, SMTP a SQL Server
+
+## <a name="non-compliant-examples"></a>Příklady neodpovídajícího typu
+
+Tady je několik příkladů použití konektoru Gmail s integrovanými aktivačními událostmi a akcemi nebo spravovanými konektory, které neschválil Google:
+
+* Tato aplikace logiky používá konektor Gmail s integrovaným triggerem protokolu HTTP:
+
+  ![Aplikace logiky, které nedodržují předpisy – příklad 1](./media/connectors-google-data-security-privacy-policy/not-compliant-logic-app-1.png)
+  
+  Aplikace logiky používá také konektor kalendáře Google, který je schválen.
+
+* Tato aplikace logiky používá konektor Gmail s konektorem Azure Blob Storage:
+
+  ![Aplikace logiky, které nedodržují předpisy – příklad 2](./media/connectors-google-data-security-privacy-policy/not-compliant-logic-app-2.png)
+
+* Tato aplikace logiky používá konektor Gmail s konektorem Twitteru:
+
+  ![Aplikace logiky, které nedodržují předpisy – příklad 3](./media/connectors-google-data-security-privacy-policy/not-compliant-logic-app-3.png)
 
 Nejnovější informace najdete v [technické referenční dokumentaci konektoru Gmail](https://docs.microsoft.com/connectors/gmail/).
 
@@ -70,7 +90,7 @@ Pokud chcete použít ID klienta a tajný klíč klienta z vaší klientské apl
 
 1. V [Azure Portal](https://portal.azure.com)otevřete aplikaci logiky v návrháři aplikace logiky.
 
-1. Pokud přidáváte novou aktivační událost nebo akci Gmail a vytváříte zcela nové připojení, pokračujte k dalšímu kroku. V opačném případě v aktivační události nebo v akci Gmail vyberte **změnit připojení** > **Přidat nový**, například:
+1. Pokud přidáváte novou aktivační událost nebo akci Gmail a vytváříte zcela nové připojení, pokračujte k dalšímu kroku. V opačném případě v aktivační události nebo v akci Gmail vyberte **změnit připojení**  >  **Přidat nový**, například:
 
    ![Vyberte změnit připojení > přidat nový.](./media/connectors-google-data-security-privacy-policy/change-gmail-connection.png)
 
@@ -78,7 +98,7 @@ Pokud chcete použít ID klienta a tajný klíč klienta z vaší klientské apl
 
    ![Zadání informací o připojení](./media/connectors-google-data-security-privacy-policy/authentication-type-bring-your-own.png)
 
-   | Vlastnost | Hodnota | Popis |
+   | Vlastnost | Hodnota | Description |
    |----------|-------|-------------|
    | **Typ ověřování** | **Přineste si vlastní aplikaci** | Určuje, že budete používat vlastní klientskou aplikaci pro ověřování. |
    | **ID klienta** | <*ID klienta*> | ID klienta z klientské aplikace Google |

@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 05/07/2019
 ms.author: cynthn
-ms.openlocfilehash: fa899764e4e80e7eba849e02d617c8c1ca2ae410
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 587e339f2c2d91792ef1c342f7a1f8363da63626
+ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792696"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85106005"
 ---
 # <a name="how-to-use-packer-to-create-linux-virtual-machine-images-in-azure"></a>Použití balíčku k vytváření imagí virtuálních počítačů se systémem Linux v Azure
 Každý virtuální počítač (VM) v Azure je vytvořený z image, která definuje distribuci Linux a verzi operačního systému. Obrázky můžou zahrnovat předem nainstalované aplikace a konfigurace. Azure Marketplace poskytuje spoustu prvních a dalších imagí pro většinu běžných distribucí a prostředí aplikací, nebo můžete vytvořit vlastní image přizpůsobené vašim potřebám. Tento článek podrobně popisuje, jak pomocí Open [source nástroje pro](https://www.packer.io/) definování a vytváření vlastních imagí v Azure.
@@ -63,7 +63,7 @@ Výstup z těchto dvou příkazů můžete použít v dalším kroku.
 ## <a name="define-packer-template"></a>Definovat šablonu balíčku
 K sestavení imagí vytvoříte šablonu jako soubor JSON. V šabloně definujete sestavení a zřizování, které provádějí vlastní proces sestavení. Balírna má [pro Azure zřízeného](https://www.packer.io/docs/builders/azure.html) úložiště, které umožňuje definovat prostředky Azure, například přihlašovací údaje instančního objektu vytvořené v předchozím kroku.
 
-Vytvořte soubor s názvem *Ubuntu. JSON* a vložte následující obsah. Zadejte vlastní hodnoty pro následující:
+Vytvořte soubor s názvem *ubuntu.js* a vložte následující obsah. Zadejte vlastní hodnoty pro následující:
 
 | Parametr                           | Kde získat |
 |-------------------------------------|----------------------------------------------------|
@@ -119,12 +119,12 @@ Vytvořte soubor s názvem *Ubuntu. JSON* a vložte následující obsah. Zadejt
 Tato šablona vytvoří image Ubuntu 16,04 LTS, nainstaluje NGINX a potom odstaví virtuální počítač.
 
 > [!NOTE]
-> Pokud rozbalíte tuto šablonu a zřídíte přihlašovací údaje uživatele, upravte příkaz Správce, který odřadí agenta Azure pro čtení `-deprovision` , nikoli `deprovision+user`.
-> `+user` Příznak odebere ze zdrojového virtuálního počítače všechny uživatelské účty.
+> Pokud rozbalíte tuto šablonu a zřídíte přihlašovací údaje uživatele, upravte příkaz Správce, který odřadí agenta Azure pro čtení, `-deprovision` nikoli `deprovision+user` .
+> `+user`Příznak odebere ze zdrojového virtuálního počítače všechny uživatelské účty.
 
 
 ## <a name="build-packer-image"></a>Obrázek sady Build Pack
-Pokud ještě nemáte v místním počítači nainstalovaný balíček, [postupujte podle pokynů k instalaci nástroje Pack](https://www.packer.io/docs/install/index.html).
+Pokud ještě nemáte v místním počítači nainstalovaný balíček, [postupujte podle pokynů k instalaci nástroje Pack](https://www.packer.io/docs/install).
 
 Sestavte bitovou kopii tak, že zadáte soubor šablony balíčku následujícím způsobem:
 
@@ -210,7 +210,7 @@ az vm create \
 
 Pokud chcete vytvořit virtuální počítače v jiné skupině prostředků nebo v jiné oblasti, než je image vašeho balíčku, zadejte ID image, nikoli název bitové kopie. ID obrázku můžete získat pomocí [AZ image show](/cli/azure/image#az-image-show).
 
-Vytvoření virtuálního počítače trvá několik minut. Až se virtuální počítač vytvoří, poznamenejte `publicIpAddress` si ho v rozhraní příkazového řádku Azure CLI. Tato adresa se používá pro přístup k webu NGINX prostřednictvím webového prohlížeče.
+Vytvoření virtuálního počítače trvá několik minut. Až se virtuální počítač vytvoří, poznamenejte si ho v rozhraní příkazového `publicIpAddress` řádku Azure CLI. Tato adresa se používá pro přístup k webu NGINX prostřednictvím webového prohlížeče.
 
 Pokud chcete umožnit přístup k virtuálnímu počítači webovému provozu, otevřete port 80 z internetu pomocí příkazu [az vm open-port](/cli/azure/vm):
 

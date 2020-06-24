@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/02/2019
-ms.openlocfilehash: 1d3772a17d0429d9b3a5bf95d2060f2dfbbbafe1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/12/2020
+ms.openlocfilehash: 9544d0298a7aa62d5fd935e8670d02e470ac15e5
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418044"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987555"
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Kopírování dat z SAP cloudu pro zákazníky (C4C) pomocí Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -48,9 +48,9 @@ V následujících částech najdete podrobné informace o vlastnostech, které 
 
 Pro propojenou službu SAP Cloud pro zákazníka jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type musí být nastavená na: **SapCloudForCustomer**. | Ano |
+| typ | Vlastnost Type musí být nastavená na: **SapCloudForCustomer**. | Ano |
 | url | Adresa URL služby SAP C4C OData | Ano |
 | uživatelské jméno | Zadejte uživatelské jméno pro připojení k SAP C4C. | Ano |
 | heslo | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
@@ -88,9 +88,9 @@ Pro propojenou službu SAP Cloud pro zákazníka jsou podporovány následujíc�
 
 Pokud chcete kopírovat data ze SAP cloudu pro zákazníka, nastavte vlastnost Type datové sady na **SapCloudForCustomerResource**. Podporovány jsou následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type datové sady musí být nastavená na: **SapCloudForCustomerResource** . |Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na: **SapCloudForCustomerResource** . |Ano |
 | cesta | Zadejte cestu k entitě SAP C4C OData. |Ano |
 
 **Případě**
@@ -120,10 +120,11 @@ Pokud chcete kopírovat data ze SAP cloudu pro zákazníka, nastavte vlastnost T
 
 Pokud chcete kopírovat data ze SAP cloudu pro zákazníka, nastavte typ zdroje v aktivitě kopírování na **SapCloudForCustomerSource**. V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type musí být nastavená na: **SapCloudForCustomerSource** .  | Ano |
+| typ | Vlastnost Type musí být nastavená na: **SapCloudForCustomerSource** .  | Ano |
 | query | Zadejte vlastní dotaz OData pro čtení dat. | Ne |
+| httpRequestTimeout | Časový limit (hodnota **TimeSpan** ) požadavku HTTP získat odpověď. Tato hodnota představuje časový limit pro získání odpovědi, nikoli časový limit pro čtení dat odpovědi. Pokud není zadaný, výchozí hodnota je **00:30:00** (30 minut). | Ne |
 
 Vzorový dotaz pro získání dat pro určitý den:`"query": "$filter=CreatedOn ge datetimeoffset'2017-07-31T10:02:06.4202620Z' and CreatedOn le datetimeoffset'2017-08-01T10:02:06.4202620Z'"`
 
@@ -163,9 +164,9 @@ Vzorový dotaz pro získání dat pro určitý den:`"query": "$filter=CreatedOn 
 
 Pokud chcete zkopírovat data do SAP cloudu pro zákazníka, nastavte typ jímky v aktivitě kopírování na **SapCloudForCustomerSink**. V části **jímka** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type musí být nastavená na: **SapCloudForCustomerSink** .  | Ano |
+| typ | Vlastnost Type musí být nastavená na: **SapCloudForCustomerSink** .  | Ano |
 | writeBehavior | Chování operace zápisu. Může být "vložení", "Update". | Ne. Výchozí hodnota "Insert". |
 | writeBatchSize | Velikost dávky operace zápisu. Velikost dávky, která má dosáhnout nejlepšího výkonu, se může lišit pro různé tabulky nebo servery. | Ne. Výchozí hodnota 10. |
 
@@ -220,7 +221,7 @@ Při kopírování dat z cloudu SAP pro zákazníka se z cloudu SAP pro typy zá
 | EDM. DateTime | DateTime |
 | EDM. Decimal | Desetinné číslo |
 | Edm.Double | Double |
-| EDM. Single | Single |
+| EDM. Single | Jeden |
 | EDM. GUID | Identifikátor GUID |
 | EDM. Int16 | Int16 |
 | Edm.Int32 | Int32 |

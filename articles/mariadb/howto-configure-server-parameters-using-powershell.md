@@ -7,14 +7,14 @@ ms.service: mariadb
 ms.devlang: azurepowershell
 ms.topic: conceptual
 ms.date: 5/26/2020
-ms.openlocfilehash: d7a6f87b704a2e366e0a4e1fc647e83ed88c486c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 53ef9f66034d40e221a9ae4c8647cecdfe709107
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050853"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84726867"
 ---
-# <a name="customize-azure-database-for-mariadb-server-parameters-using-powershell"></a>Přizpůsobení parametrů Azure Database for MariaDB serveru pomocí PowerShellu
+# <a name="configure-server-parameters-in-azure-database-for-mariadb-using-powershell"></a>Konfigurace parametrů serveru v Azure Database for MariaDB pomocí prostředí PowerShell
 
 Pomocí prostředí PowerShell můžete vypsat, zobrazit a aktualizovat parametry konfigurace serveru Azure Database for MariaDB. Podmnožina konfigurací modulu se zveřejňuje na úrovni serveru a dá se upravit.
 

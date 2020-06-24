@@ -8,11 +8,11 @@ author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
 ms.openlocfilehash: a7e6a3a299df8112fe4fbcf457516894c1766b8c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79249084"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84686660"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Přehled agentů Azure Monitor
 
@@ -29,20 +29,20 @@ Následující tabulky poskytují rychlé porovnání Azure Monitor agentů pro 
 
 ### <a name="windows-agents"></a>Agenti systému Windows
 
-| | Diagnostika<br>rozšíření (WAD) | Log Analytics<br>agenta | Závislost<br>agenta |
+| | Diagnostika<br>rozšíření (WAD) | Log Analytics<br>agent | Závislost<br>agent |
 |:---|:---|:---|:---|
-| Podporovaná prostředí | Azure | Azure<br>Jiný Cloud<br>Lokálně | Azure<br>Jiný Cloud<br>Lokálně | 
-| Požadavky agenta  | Žádná | Žádná | Vyžaduje agenta Log Analytics |
+| Podporovaná prostředí | Azure | Azure<br>Jiný Cloud<br>Místní | Azure<br>Jiný Cloud<br>Místní | 
+| Požadavky agenta  | Žádné | Žádné | Vyžaduje agenta Log Analytics |
 | Shromažďovaná data | Protokoly událostí<br>Trasování událostí pro Windows – události<br>Výkon<br>Protokoly založené na souborech<br>Protokoly IIS<br>Protokoly aplikací .NET<br>Výpisy stavu systému<br>Protokoly diagnostiky agenta | Protokoly událostí<br>Výkon<IIS logs><br>Protokoly založené na souborech<br>Přehledy a řešení<br>Další služby | Podrobnosti procesu a závislosti<br>Metriky síťového připojení |
 | Data odesílaná do | Azure Storage<br>Azure Monitor metriky<br>Centrum událostí | Protokoly služby Azure Monitor | Protokoly služby Azure Monitor |
 
 
 ### <a name="linux-agents"></a>Agenti systému Linux
 
-| | Diagnostika<br>rozšíření (LAD) | Telegraf<br>agenta | Log Analytics<br>agenta | Závislost<br>agenta |
+| | Diagnostika<br>rozšíření (LAD) | Telegraf<br>agent | Log Analytics<br>agent | Závislost<br>agent |
 |:---|:---|:---|:---|:---|
-| Podporovaná prostředí | Azure | Azure<br>Jiný Cloud<br>Lokálně | Azure<br>Jiný Cloud<br>Lokálně | Azure<br>Jiný Cloud<br>Lokálně |
-| Požadavky agenta  | Žádná | Žádná | Žádná | Vyžaduje agenta Log Analytics |
+| Podporovaná prostředí | Azure | Azure<br>Jiný Cloud<br>Místní | Azure<br>Jiný Cloud<br>Místní | Azure<br>Jiný Cloud<br>Místní |
+| Požadavky agenta  | Žádné | Žádné | Žádné | Vyžaduje agenta Log Analytics |
 | Shromažďovaná data | Syslog<br>Výkon | Výkon | Syslog<br>Výkon| Podrobnosti procesu a závislosti<br>Metriky síťového připojení |
 | Data odesílaná do | Azure Storage<br>Centrum událostí | Azure Monitor metriky | Protokoly služby Azure Monitor | Protokoly služby Azure Monitor |
 

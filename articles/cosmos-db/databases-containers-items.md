@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/24/2020
 ms.reviewer: sngun
-ms.openlocfilehash: b3874bbe7a5830b0a80b658ac32952fe8985c1c3
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 257d7a2e374867f6ff14aeaa633d95521b7ca39e
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82161686"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85114754"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>Práce s databázemi, kontejnery a položkami v Azure Cosmos DB
 
@@ -20,7 +20,7 @@ Po vytvoření [účtu Azure Cosmos DB](account-overview.md) v rámci předplatn
 
 Následující obrázek znázorňuje hierarchii různých entit v účtu Azure Cosmos DB:
 
-![Entity účtu Azure Cosmos](./media/databases-containers-items/cosmos-entities.png)
+:::image type="content" source="./media/databases-containers-items/cosmos-entities.png" alt-text="Entity účtu Azure Cosmos" border="false":::
 
 ## <a name="azure-cosmos-databases"></a>Databáze Azure Cosmos DB
 
@@ -28,7 +28,7 @@ V rámci svého účtu můžete vytvořit jednu nebo víc databází Azure Cosmo
 
 | Entita Azure Cosmos | SQL API | Rozhraní Cassandra API | Rozhraní API služby Azure Cosmos DB pro MongoDB | Rozhraní Gremlin API | Rozhraní Table API |
 | --- | --- | --- | --- | --- | --- |
-|Databáze Azure Cosmos | databáze | Prostor klíčů | databáze | databáze | Není k dispozici |
+|Databáze Azure Cosmos | databáze | Prostor klíčů | databáze | databáze | NA |
 
 > [!NOTE]
 > Při vytváření první tabulky pomocí rozhraní API pro tabulky účty se ve vašem účtu Azure Cosmos automaticky vytvoří výchozí databáze.
@@ -39,10 +39,10 @@ S Azure Cosmos Database můžete pracovat s Azure Cosmos API, jak je popsáno v 
 
 | Operace | Azure CLI | SQL API | Rozhraní Cassandra API | Rozhraní API služby Azure Cosmos DB pro MongoDB | Rozhraní Gremlin API | Rozhraní Table API |
 | --- | --- | --- | --- | --- | --- | --- |
-|Zobrazit výčet všech databází| Ano | Ano | Ano (databáze je namapována na místo na disku) | Ano | Není k dispozici | Není k dispozici |
-|Čtení databáze| Ano | Ano | Ano (databáze je namapována na místo na disku) | Ano | Není k dispozici | Není k dispozici |
-|Vytvořit novou databázi| Ano | Ano | Ano (databáze je namapována na místo na disku) | Ano | Není k dispozici | Není k dispozici |
-|Aktualizovat databázi| Ano | Ano | Ano (databáze je namapována na místo na disku) | Ano | Není k dispozici | Není k dispozici |
+|Zobrazit výčet všech databází| Ano | Ano | Ano (databáze je namapována na místo na disku) | Ano | NA | NA |
+|Čtení databáze| Ano | Ano | Ano (databáze je namapována na místo na disku) | Ano | NA | NA |
+|Vytvořit novou databázi| Ano | Ano | Ano (databáze je namapována na místo na disku) | Ano | NA | NA |
+|Aktualizovat databázi| Ano | Ano | Ano (databáze je namapována na místo na disku) | Ano | NA | NA |
 
 
 ## <a name="azure-cosmos-containers"></a>Kontejnery Azure Cosmos DB
@@ -101,11 +101,11 @@ Kontejner Azure Cosmos podporuje následující operace při použití kterékol
 
 | Operace | Azure CLI | SQL API | Rozhraní Cassandra API | Rozhraní API služby Azure Cosmos DB pro MongoDB | Rozhraní Gremlin API | Rozhraní Table API |
 | --- | --- | --- | --- | --- | --- | --- |
-| Zobrazení výčtu kontejnerů v databázi | Ano | Ano | Ano | Ano | Není k dispozici | Není k dispozici |
-| Čtení kontejneru | Ano | Ano | Ano | Ano | Není k dispozici | Není k dispozici |
-| Vytvořit nový kontejner | Ano | Ano | Ano | Ano | Není k dispozici | Není k dispozici |
-| Aktualizace kontejneru | Ano | Ano | Ano | Ano | Není k dispozici | Není k dispozici |
-| Odstranění kontejneru | Ano | Ano | Ano | Ano | Není k dispozici | Není k dispozici |
+| Zobrazení výčtu kontejnerů v databázi | Ano | Ano | Ano | Ano | NA | NA |
+| Čtení kontejneru | Ano | Ano | Ano | Ano | NA | NA |
+| Vytvořit nový kontejner | Ano | Ano | Ano | Ano | NA | NA |
+| Aktualizace kontejneru | Ano | Ano | Ano | Ano | NA | NA |
+| Odstranění kontejneru | Ano | Ano | Ano | Ano | NA | NA |
 
 ## <a name="azure-cosmos-items"></a>Položky Azure Cosmos
 

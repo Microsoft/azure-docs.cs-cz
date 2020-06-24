@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b16790e288f6569f08ce14e5a7c751bbd8083faf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 07212f2968ff1db99ef5fee2e6e8eca818ec0e24
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79138430"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202632"
 ---
 # <a name="configure-password-complexity-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurace složitosti hesla pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -31,13 +31,13 @@ Proveďte kroky v části Začínáme [s vlastními zásadami](custom-policy-get
 
 ## <a name="add-the-elements"></a>Přidat elementy
 
-Pokud chcete nakonfigurovat složitost hesla, přepište `newPassword` `reenterPassword` [typy deklarací](claimsschema.md) a a odkaz na [ověření predikátu](predicates.md#predicatevalidations). Element PredicateValidations seskupuje sadu predikátů pro vytvoření ověřování vstupu uživatele, které lze použít na typ deklarace identity. Otevřete soubor rozšíření vaší zásady. Například <em> `SocialAndLocalAccounts/` </em>.
+Pokud chcete nakonfigurovat složitost hesla, přepište `newPassword` `reenterPassword` [typy deklarací](claimsschema.md) a a odkaz na [ověření predikátu](predicates.md#predicatevalidations). Element PredicateValidations seskupuje sadu predikátů pro vytvoření ověřování vstupu uživatele, které lze použít na typ deklarace identity. Otevřete soubor rozšíření vaší zásady. Například <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em> .
 
 1. Vyhledejte element [BuildingBlocks](buildingblocks.md) . Pokud element neexistuje, přidejte jej.
 1. Vyhledejte element [ClaimsSchema](claimsschema.md) . Pokud element neexistuje, přidejte jej.
-1. Přidejte deklarace `newPassword` a `reenterPassword` k elementu **ClaimsSchema** .
+1. Přidejte `newPassword` deklarace a `reenterPassword` k elementu **ClaimsSchema** .
 
-    ```XML
+    ```xml
     <ClaimType Id="newPassword">
       <PredicateValidationReference Id="CustomPassword" />
     </ClaimType>
@@ -48,7 +48,7 @@ Pokud chcete nakonfigurovat složitost hesla, přepište `newPassword` `reenterP
 
 1. [Predikáty](predicates.md) definují základní ověření pro kontrolu hodnoty typu deklarace identity a vrátí hodnotu true nebo false. Ověřování se provádí pomocí zadaného elementu metody a sady parametrů relevantních pro metodu. Do prvku **BuildingBlocks** přidejte následující predikáty hned po ukončení `</ClaimsSchema>` elementu:
 
-    ```XML
+    ```xml
     <Predicates>
       <Predicate Id="LengthRange" Method="IsLengthRange">
         <UserHelpText>The password must be between 6 and 64 characters.</UserHelpText>
@@ -86,7 +86,7 @@ Pokud chcete nakonfigurovat složitost hesla, přepište `newPassword` `reenterP
 
 1. Do elementu **BuildingBlocks** přidejte následující ověřování predikátu hned po ukončení `</Predicates>` elementu:
 
-    ```XML
+    ```xml
     <PredicateValidations>
       <PredicateValidation Id="CustomPassword">
         <PredicateGroups>
@@ -111,7 +111,7 @@ Pokud chcete nakonfigurovat složitost hesla, přepište `newPassword` `reenterP
 
 1. Následující technické profily jsou [technické profily služby Active Directory](active-directory-technical-profile.md), které čtou a zapisují data do Azure Active Directory. Tyto technické profily popište v souboru rozšíření. Použijte `PersistedClaims` k zakázání zásad silného hesla. Vyhledejte element **ClaimsProviders** .  Přidejte následující zprostředkovatele deklarací identity následujícím způsobem:
 
-    ```XML
+    ```xml
     <ClaimsProvider>
       <DisplayName>Azure Active Directory</DisplayName>
       <TechnicalProfiles>
@@ -140,13 +140,13 @@ Pokud chcete nakonfigurovat složitost hesla, přepište `newPassword` `reenterP
 3. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 4. Vyberte **architekturu prostředí identity**.
 5. Na stránce vlastní zásady klikněte na **nahrát zásadu**.
-6. Vyberte **přepsat zásadu, pokud existuje**, a pak vyhledejte a vyberte soubor *TrustFrameworkExtensions. XML* .
+6. Vyberte **přepsat zásadu, pokud existuje**, a pak vyhledejte a vyberte soubor *TrustFrameworkExtensions.xml* .
 7. Klikněte na **Odeslat**.
 
 ### <a name="run-the-policy"></a>Spustit zásadu
 
 1. Otevřete zásadu registrace nebo přihlašování. Například *B2C_1A_signup_signin*.
-2. V případě **aplikace**vyberte svou aplikaci, kterou jste předtím zaregistrovali. Pro zobrazení tokenu by se měla zobrazit `https://jwt.ms` **Adresa URL odpovědi** .
+2. V případě **aplikace**vyberte svou aplikaci, kterou jste předtím zaregistrovali. Pro zobrazení tokenu by se měla zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
 3. Klikněte na **Spustit**.
 4. Vyberte **zaregistrovat se hned**, zadejte e-mailovou adresu a zadejte nové heslo. Doprovodné materiály jsou uvedeny na základě omezení hesel. Dokončete zadávání informací o uživateli a pak klikněte na **vytvořit**. Měl by se zobrazit obsah vráceného tokenu.
 

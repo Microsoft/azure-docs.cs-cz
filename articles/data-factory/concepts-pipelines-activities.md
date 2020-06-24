@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: c3af10d2a88e6d18a7317a2e7e4106cf14132a1e
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: c71e4120d127277e8b46f59bfef7fca403847c2e
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194280"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253757"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Kanály a aktivity v Azure Data Factory
 
@@ -50,7 +50,7 @@ Azure Data Factory podporuje následující aktivity transformace, které lze p�
 Aktivita transformace dat | Výpočetní prostředí
 ---------------------------- | -------------------
 [Data Flow](control-flow-execute-data-flow-activity.md) | Azure Databricks spravované pomocí Azure Data Factory
-[Funkce Azure Functions](control-flow-azure-function-activity.md) | Azure Functions
+[Funkce Azure](control-flow-azure-function-activity.md) | Azure Functions
 [Hive](transform-data-using-hadoop-hive.md) | HDInsight [Hadoop]
 [Pig](transform-data-using-hadoop-pig.md) | HDInsight [Hadoop]
 [MapReduce](transform-data-using-hadoop-map-reduce.md) | HDInsight [Hadoop]
@@ -69,7 +69,7 @@ Další informace najdete v článku [Aktivity transformace dat](transform-data.
 ## <a name="control-flow-activities"></a>Aktivity toku řízení
 Podporují se následující aktivity toku řízení:
 
-Aktivita řízení | Popis
+Aktivita řízení | Description
 ---------------- | -----------
 [Připojit proměnnou](control-flow-append-variable-activity.md) | Přidejte hodnotu do existující proměnné pole.
 [Spustit kanál](control-flow-execute-pipeline-activity.md) | Aktivita spuštění kanálu umožňuje kanálu služby Data Factory volat jiný kanál.
@@ -106,14 +106,14 @@ Tady je způsob definice kanálu ve formátu JSON:
 }
 ```
 
-Značka | Popis | Typ | Vyžadováno
+Značka | Description | Typ | Vyžadováno
 --- | ----------- | ---- | --------
 name | Název kanálu. Určuje název, který představuje akci prováděnou kanálem. <br/><ul><li>Maximální počet znaků: 140.</li><li>Musí začínat písmenem, číslicí nebo podtržítkem ( \_ ).</li><li>Nejsou povoleny následující znaky: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", "\" </li></ul> | Řetězec | Ano
-description | Určuje text popisující, k čemu se kanál používá. | Řetězec | No
+description | Určuje text popisující, k čemu se kanál používá. | Řetězec | Ne
 activities | Část **activities** může obsahovat definici jedné nebo více aktivit. Podrobnosti o elementu activities formátu JSON najdete v části [Zápis JSON aktivity](#activity-json). | Pole | Ano
-parameters | Část **parameters** může obsahovat definici jednoho nebo více parametrů v kanálu, aby byl kanál flexibilní pro opakované použití. | Seznam | No
-souběžnost | Maximální počet souběžných spuštění kanálu může být. Ve výchozím nastavení neexistuje žádná maximální hodnota. Pokud je dosaženo limitu souběžnosti, další spuštění kanálu se zařadí do fronty, dokud se dřív nedokončí. | Číslo | No 
-anotac | Seznam značek přidružených k kanálu | Pole | No
+parameters | Část **parameters** může obsahovat definici jednoho nebo více parametrů v kanálu, aby byl kanál flexibilní pro opakované použití. | Seznam | Ne
+souběžnost | Maximální počet souběžných spuštění kanálu může být. Ve výchozím nastavení neexistuje žádná maximální hodnota. Pokud je dosaženo limitu souběžnosti, další spuštění kanálu se zařadí do fronty, dokud se dřív nedokončí. | Číslo | Ne 
+anotac | Seznam značek přidružených k kanálu | Pole | Ne
 
 ## <a name="activity-json"></a>Zápis JSON aktivity
 Část **activities** může obsahovat definici jedné nebo více aktivit. Existují dva hlavní typy aktivit: aktivity spuštění a aktivity řízení.
@@ -141,15 +141,15 @@ Aktivity spuštění zahrnují aktivity [přesunu dat](#data-movement-activities
 
 Následující tabulka obsahuje popis vlastností v definici aktivity ve formátu JSON:
 
-Značka | Popis | Vyžadováno
+Značka | Description | Vyžadováno
 --- | ----------- | ---------
 name | Název aktivity. Určuje název, který představuje akci prováděnou danou aktivitou. <br/><ul><li>Maximální počet znaků: 55.</li><li>Musí začínat písmenem nebo podtržítkem ( \_ ).</li><li>Nejsou povoleny následující znaky: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", "\" | Ano</li></ul>
 description | Text popisující, k čemu aktivita slouží. | Ano
 typ | Typ aktivity. Různé typy aktivit najdete v částech [aktivity přesunu dat](#data-movement-activities), [aktivity transformace dat](#data-transformation-activities)a [aktivity řízení](#control-flow-activities) . | Ano
 linkedServiceName | Název propojené služby používané aktivitou.<br/><br/>Aktivita může vyžadovat zadání propojené služby, která odkazuje na požadované výpočetní prostředí. | Ano v případě aktivity HDInsight, dávkové hodnoticí aktivity služby Azure Machine Learning a aktivita uložené procedury <br/><br/>Ne ve všech ostatních případech
-typeProperties | Vlastnosti v části typeProperties závisí na příslušném typu aktivity. Pokud chcete zobrazit vlastnosti typu určité aktivity, klikněte na odkaz na aktivitu v předchozí části. | No
-policy | Zásady, které ovlivňují chování aktivity za běhu. Tato vlastnost obsahuje časový limit a chování při opakování. Pokud není zadaný, použijí se výchozí hodnoty. Další informace najdete v části [Zásada aktivity](#activity-policy). | No
-dependsOn | Tato vlastnost slouží k určení závislostí aktivity a toho, jak následující aktivity závisejí na předchozích aktivitách. Další informace najdete v části [Závislost aktivit](#activity-dependency). | No
+typeProperties | Vlastnosti v části typeProperties závisí na příslušném typu aktivity. Pokud chcete zobrazit vlastnosti typu určité aktivity, klikněte na odkaz na aktivitu v předchozí části. | Ne
+policy | Zásady, které ovlivňují chování aktivity za běhu. Tato vlastnost obsahuje časový limit a chování při opakování. Pokud není zadaný, použijí se výchozí hodnoty. Další informace najdete v části [Zásada aktivity](#activity-policy). | Ne
+dependsOn | Tato vlastnost slouží k určení závislostí aktivity a toho, jak následující aktivity závisejí na předchozích aktivitách. Další informace najdete v části [Závislost aktivit](#activity-dependency). | Ne
 
 ### <a name="activity-policy"></a>Zásada aktivity
 Zásady ovlivňují chování aktivity za běhu a nabízejí možnosti konfigurace. Zásady aktivit jsou dostupné jenom pro aktivity spuštění.
@@ -182,12 +182,12 @@ Zásady ovlivňují chování aktivity za běhu a nabízejí možnosti konfigura
 }
 ```
 
-Název JSON | Popis | Povolené hodnoty | Vyžadováno
+Název JSON | Description | Povolené hodnoty | Vyžadováno
 --------- | ----------- | -------------- | --------
-timeout | Určuje časový limit pro spuštění aktivity. | Časový interval | No. Výchozí hodnota časového limitu je 7 dní.
-retry | Maximální počet opakovaných pokusů. | Integer | No. Výchozí hodnota je 0.
-retryIntervalInSeconds | Prodleva mezi pokusy o opakování v sekundách. | Integer | No. Výchozí hodnota je 30 sekund.
-secureOutput | Při nastavení na hodnotu true se výstup z aktivity považuje za zabezpečený a neprotokoluje se k monitorování. | Logická hodnota | No. Výchozí hodnota je false.
+timeout | Určuje časový limit pro spuštění aktivity. | Časový interval | Ne. Výchozí hodnota časového limitu je 7 dní.
+retry | Maximální počet opakovaných pokusů. | Integer | Ne. Výchozí hodnota je 0.
+retryIntervalInSeconds | Prodleva mezi pokusy o opakování v sekundách. | Integer | Ne. Výchozí hodnota je 30 sekund.
+secureOutput | Při nastavení na hodnotu true se výstup z aktivity považuje za zabezpečený a neprotokoluje se k monitorování. | Logická hodnota | Ne. Výchozí hodnota je false.
 
 ### <a name="control-activity"></a>Aktivita řízení
 Aktivity řízení mají následující strukturu nejvyšší úrovně:
@@ -206,13 +206,13 @@ Aktivity řízení mají následující strukturu nejvyšší úrovně:
 }
 ```
 
-Značka | Popis | Vyžadováno
+Značka | Description | Vyžadováno
 --- | ----------- | --------
 name | Název aktivity. Určuje název, který představuje akci prováděnou danou aktivitou.<br/><ul><li>Maximální počet znaků: 55.</li><li>Musí začínat číslem písmenem nebo podtržítkem ( \_ ).</li><li>Nejsou povoleny následující znaky: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", "\" | Ano</li><ul>
 description | Text popisující, k čemu aktivita slouží. | Ano
 typ | Typ aktivity. Informace o různých typech aktivit najdete v částech [Aktivity přesunu dat](#data-movement-activities), [Aktivity transformace dat](#data-transformation-activities) a [Aktivity řízení](#control-flow-activities). | Ano
-typeProperties | Vlastnosti v části typeProperties závisí na příslušném typu aktivity. Pokud chcete zobrazit vlastnosti typu určité aktivity, klikněte na odkaz na aktivitu v předchozí části. | No
-dependsOn | Tato vlastnost slouží k určení závislostí aktivity a toho, jak následující aktivity závisejí na předchozích aktivitách. Další informace najdete v tématu [závislost aktivity](#activity-dependency). | No
+typeProperties | Vlastnosti v části typeProperties závisí na příslušném typu aktivity. Pokud chcete zobrazit vlastnosti typu určité aktivity, klikněte na odkaz na aktivitu v předchozí části. | Ne
+dependsOn | Tato vlastnost slouží k určení závislostí aktivity a toho, jak následující aktivity závisejí na předchozích aktivitách. Další informace najdete v tématu [závislost aktivity](#activity-dependency). | Ne
 
 ### <a name="activity-dependency"></a>Závislost aktivit
 Závislost aktivity definuje způsob, jakým budou následující aktivity závislé na předchozích aktivitách, a určuje podmínky, zda pokračovat v provádění dalšího úkolu. Aktivita může záviset na jedné nebo více předchozích aktivitách s různými podmínkami závislosti.
@@ -268,7 +268,7 @@ Pokud má například kanál scénář aktivita A -> aktivita B, mohou nastat r�
 `"
 
 ## Sample copy pipeline
-In the following sample pipeline, there is one activity of type **Copy** in the **activities** section. In this sample, the [copy activity](copy-activity-overview.md) copies data from an Azure Blob storage to an Azure SQL database.
+In the following sample pipeline, there is one activity of type **Copy** in the **activities** section. In this sample, the [copy activity](copy-activity-overview.md) copies data from an Azure Blob storage to a database in Azure SQL Database.
 
 ```json
 {

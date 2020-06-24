@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 01/30/2020
 ms.author: juliako
 ms.openlocfilehash: 1d28fc37b98493322b9e201ac899b7911dd1d705
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79269884"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708956"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>Analýza videosouborů a zvukových souborů pomocí Azure Media Services
 
@@ -36,7 +36,7 @@ Důležitou připomínkou je, že je nutné dodržovat všechny použitelné zá
 
 Media Services aktuálně podporuje následující předdefinované předvolby analyzátoru:  
 
-|**Název předvolby**|**Scénář**|**Zobrazí**|
+|**Název předvolby**|**Scénář**|**Podrobnosti**|
 |---|---|---|
 |[AudioAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|Analýza zvuku|Přednastavení používá předdefinovanou sadu operací analýzy založených na AI, včetně přepisu řeči. V současné době přednastavení podporuje zpracování obsahu pomocí jedné zvukové stopy, která obsahuje řeč v jednom jazyce. Jazyk pro datovou část zvuku ve vstupu můžete určit pomocí formátu BCP-47 pro ' Language tag-region '. Podporované jazyky jsou angličtina ("en-US" a "en-GB"), španělština (ES-ES a ES-MX), francouzština (' fr-FR '), italština (' IT-IT '), japonština (' IT-Japonsko '), portugalština (' pt-BR '), čínština (' zh-CN '), němčina (' de-DE '), Arabština (' ar-EG ' a ' ar-SY '), ruština (' ru-RU '), hindština (' Hi-IN ') a korejština (' ko-KR ').<br/><br/> Pokud jazyk není zadán nebo je nastaven na hodnotu null, automatické rozpoznávání jazyka zvolí první nalezený jazyk a pokračuje s vybraným jazykem po dobu trvání souboru. Funkce automatického rozpoznávání jazyka aktuálně podporuje angličtinu, čínštinu, francouzštinu, němčinu, italštinu, japonštinu, španělštinu, ruštinu a portugalštinu. Po zjištění prvního jazyka nepodporuje dynamické přepínání mezi jazyky. Funkce automatického rozpoznávání jazyka funguje nejlépe se zvukovým záznamem, který má jasně discernible řeč. Pokud automatické zjišování jazyka nenajde jazyk, přepis se vrátí do angličtiny.|
 |[VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset)|Analýza zvuku a videa|Extrahuje přehledy (bohatá metadata) z zvukového i videa a vytvoří výstup souboru formátu JSON. Můžete určit, jestli chcete při zpracování videosouboru jenom extrahovat zvukové poznatky. Další informace najdete v tématu [Analýza videa](analyze-videos-tutorial-with-api.md).|
@@ -61,13 +61,13 @@ Přednastavení umožňuje extrahovat z videosouboru více zvukových a vizuáln
 * **Moderování vizuálního obsahu**: část videí označená jako dospělý nebo pikantní.
 * **Anotace**: výsledek přidávání poznámek k videím na základě předem definovaného objektového modelu
 
-## <a name="insightsjson-elements"></a>Insights. JSON – elementy
+## <a name="insightsjson-elements"></a>insights.jsu elementů
 
-Výstup obsahuje soubor JSON (Insights. JSON) se všemi přehledy, které najdete ve videu nebo ve zvukovém souboru. JSON může obsahovat následující prvky:
+Výstup obsahuje soubor JSON (insights.json) se všemi přehledy, které najdete ve videu nebo ve zvukovém souboru. JSON může obsahovat následující prvky:
 
 ### <a name="transcript"></a>záznamy
 
-|Název|Popis|
+|Name|Description|
 |---|---|
 |id|ID řádku|
 |text|Samotný přepis.|
@@ -105,7 +105,7 @@ Příklad:
 
 ### <a name="ocr"></a>OCR
 
-|Název|Popis|
+|Name|Description|
 |---|---|
 |id|ID řádku OCR|
 |text|Text OCR|
@@ -148,10 +148,10 @@ Příklad:
 
 ### <a name="faces"></a>emotikon
 
-|Název|Popis|
+|Name|Description|
 |---|---|
 |id|ID obličeje|
-|jméno|Název obličeje Může to být neznámý #0, identifikovaný celebrit nebo osoba školená zákazníkem.|
+|name|Název obličeje Může to být neznámý #0, identifikovaný celebrit nebo osoba školená zákazníkem.|
 |spolehlivost|Spolehlivost identifikace obličeje.|
 |description|Popis celebrit. |
 |thumbnailId|ID miniatury této plochy.|
@@ -193,7 +193,7 @@ Příklad:
 
 ### <a name="shots"></a>řizování
 
-|Název|Popis|
+|Name|Description|
 |---|---|
 |id|ID snímku|
 |Klíčové snímky|Seznam klíčových snímků v rámci tohoto snímku (každý má ID a seznam časových rozsahů instancí). Instance klíčových snímků mají pole thumbnailId s ID miniatury klíčového snímku.|
@@ -250,7 +250,7 @@ Příklad:
 
 ### <a name="statistics"></a>týkají
 
-|Název|Popis|
+|Name|Description|
 |---|---|
 |CorrespondenceCount|Počet korespondencí ve videu.|
 |WordCount|Počet slov na mluvčí.|
@@ -263,7 +263,7 @@ Příklad:
 
 Zabarvení jsou agregované podle jejich sentimentType pole (kladné/neutrální/záporné). Například 0-0,1, 0,1-0,2.
 
-|Název|Popis|
+|Name|Description|
 |---|---|
 |id|ID mínění|
 |averageScore |Průměr všech skóre všech instancí tohoto typu mínění-kladný/neutrální/záporný|
@@ -298,10 +298,10 @@ Zabarvení jsou agregované podle jejich sentimentType pole (kladné/neutrální
 
 ### <a name="labels"></a>popisky
 
-|Název|Popis|
+|Name|Description|
 |---|---|
 |id|ID popisku|
-|jméno|Název popisku (například "Computer", "TV").|
+|name|Název popisku (například "Computer", "TV").|
 |language|Název jazyka popisku (při překladu). BCP – 47|
 |instance|Seznam časových rozsahů, ve kterých se tento popisek objevil (popisek se může zobrazit víckrát). Každá instance má pole s jistotou. |
 
@@ -356,7 +356,7 @@ Zabarvení jsou agregované podle jejich sentimentType pole (kladné/neutrální
 
 ### <a name="keywords"></a>klíčová slova
 
-|Název|Popis|
+|Name|Description|
 |---|---|
 |id|ID klíčového slova.|
 |text|Text klíčového slova|
@@ -407,7 +407,7 @@ Blok visualContentModeration obsahuje časové rozsahy, které Video Indexer nal
 
 K dispozici jsou videa, která se nacházejí v obsahu pro dospělé nebo pikantní, a to pouze pro privátní zobrazení. Uživatelé můžou odeslat žádost o revizi obsahu. v takovém případě `IsAdult` atribut bude obsahovat výsledek lidské recenze.
 
-|Název|Popis|
+|Name|Description|
 |---|---|
 |id|ID moderování vizuálního obsahu.|
 |adultScore|Skóre dospělého (od moderátora obsahu).|

@@ -7,17 +7,17 @@ documentationcenter: ''
 author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: rohink
-ms.openlocfilehash: f5e9b7690c28793a35c692a6125a6b11c7a140a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5299c72d96fd7453d7df352ca842b4ede35f41fd
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76938762"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707663"
 ---
 # <a name="configure-the-performance-traffic-routing-method"></a>Konfigurace metody směrování provozu výkonu
 
@@ -32,7 +32,7 @@ Metoda směrování provozu umožňuje směrovat provoz do koncového bodu s nej
     1. V případě metody **směrování provozu**vyberte v možnosti **Směrování** možnost **výkon**.
     2. **Nastavení monitorování koncového bodu** nastavte u všech koncových bodů v tomto profilu stejným způsobem:
         1. Vyberte odpovídající **protokol**a zadejte číslo **portu** . 
-        2. Jako **cestu** zadejte lomítko */*. Chcete-li monitorovat koncové body, je nutné zadat cestu a název souboru. Lomítko "/" je platná položka relativní cesty a předpokládá, že se soubor nachází v kořenovém adresáři (výchozí).
+        2. Jako **cestu** zadejte lomítko */* . Chcete-li monitorovat koncové body, je nutné zadat cestu a název souboru. Lomítko "/" je platná položka relativní cesty a předpokládá, že se soubor nachází v kořenovém adresáři (výchozí).
         3. V horní části stránky klikněte na **Uložit**.
 5.  Proveďte test změn v konfiguraci následujícím způsobem:
     1.  Na panelu hledání na portálu vyhledejte název profilu Traffic Manager a klikněte na profil Traffic Manager v zobrazených výsledcích.
