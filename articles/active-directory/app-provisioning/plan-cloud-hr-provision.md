@@ -2,21 +2,21 @@
 title: Plánování aplikace cloudového HR pro Azure Active Directory zřizování uživatelů
 description: Tento článek popisuje proces nasazení integrující systémy cloudového HR, jako je například Workday a SuccessFactors, s Azure Active Directory. Integrace služby Azure AD s vaším systémem cloudového HR má za následek kompletní systém pro správu životního cyklu identit.
 services: active-directory
-author: martincoetzer
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 11/22/2019
-ms.author: martinco
+ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 66a5bceb5b59c0e1b14577176cfed933e4503f31
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 09ecaf327b2030a77f8a91d99f291cebb0281235
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014430"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84781595"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Plánování aplikace cloudového HR pro Azure Active Directory zřizování uživatelů
 
@@ -90,7 +90,7 @@ Pro každého uživatele, který se bude nacházet z aplikace cloudového HR a j
 
 ### <a name="training-resources"></a>Školicí materiály
 
-| **Prostředky** | **Odkaz a popis** |
+| **Zdroje informací** | **Odkaz a popis** |
 |:-|:-|
 | Videa | [Co je zřizování uživatelů v aktivním adresáři Azure?](https://youtu.be/_ZjARPpI6NI) |
 | | [Postup nasazení zřizování uživatelů v aktivním adresáři Azure](https://youtu.be/pKzyts6kfrw) |
@@ -398,7 +398,7 @@ Agent Azure AD Connect zřizování nainstalovaný na Windows serveru vytvoří 
 
 Služba zřizování Azure AD negeneruje sestavy, provádí analýzy ani neposkytuje přehledy po dobu 30 dnů, protože služba neukládá, nezpracovává ani neuchovává žádná data déle než 30 dnů.
 
-### <a name="troubleshoot"></a>Odstraňování potíží
+### <a name="troubleshoot"></a>Řešení potíží
 
 Chcete-li vyřešit všechny problémy, které se mohou během zřizování vypnout, přečtěte si následující články:
 

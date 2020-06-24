@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: iainfou
-ms.openlocfilehash: 29d7772ef688134e8fc9009ec32cffacc3f23ca7
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 837ca3afaf014c41fded09fa8342eed1c13e5dcf
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014447"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734924"
 ---
 # <a name="benefits-of-migration-from-the-classic-to-resource-manager-deployment-model-in-azure-active-directory-domain-services"></a>Výhody migrace z modelu nasazení Classic na Správce prostředků v Azure Active Directory Domain Services
 
-Azure Active Directory Domain Services (služba AD DS) umožňuje migrovat existující spravovanou doménu, která používá model nasazení Classic, do modelu nasazení Správce prostředků. Azure služba AD DS spravované domény, které používají model nasazení Správce prostředků poskytují další funkce, jako jsou jemně odstupňované zásady pro hesla, protokoly auditu a ochrana před uzamčením účtu.
+Azure Active Directory Domain Services (Azure služba AD DS) umožňuje migrovat existující spravovanou doménu, která používá model nasazení Classic, do modelu nasazení Správce prostředků. Azure služba AD DS spravované domény, které používají model nasazení Správce prostředků poskytují další funkce, jako jsou jemně odstupňované zásady pro hesla, protokoly auditu a ochrana před uzamčením účtu.
 
 Tento článek popisuje výhody migrace. Informace o tom, jak začít, najdete v tématu [migrace Azure AD Domain Services z modelu klasických virtuálních sítí do Správce prostředků][howto-migrate].
 
@@ -30,7 +30,7 @@ Tento článek popisuje výhody migrace. Informace o tom, jak začít, najdete v
 
 ## <a name="migration-benefits"></a>Výhody migrace
 
-Proces migrace převezme existující instanci služby Azure služba AD DS, která používá model nasazení Classic, a přesune se na použití modelu nasazení Správce prostředků. Když migrujete spravovanou doménu Azure služba AD DS z modelu nasazení Classic na Správce prostředků, vyhnete se nutnosti znovu připojit počítače ke spravované doméně nebo odstranit instanci služby Azure služba AD DS a vytvořit ji úplně od začátku. Virtuální počítače jsou i nadále připojené k spravované doméně Azure služba AD DS na konci procesu migrace.
+Proces migrace převezme existující spravovanou doménu, která používá model nasazení Classic, a přesune se na použití modelu nasazení Správce prostředků. Když migrujete spravovanou doménu z modelu nasazení Classic na Správce prostředků, vyhnete se nutnosti znovu připojit počítače ke spravované doméně nebo odstranit spravovanou doménu a vytvořit ji úplně od začátku. Na konci procesu migrace jsou virtuální počítače i nadále připojené ke spravované doméně.
 
 Po migraci poskytuje Azure služba AD DS mnoho funkcí, které jsou k dispozici pouze pro domény pomocí modelu nasazení Správce prostředků, jako je například následující:
 
@@ -46,7 +46,7 @@ Po migraci poskytuje Azure služba AD DS mnoho funkcí, které jsou k dispozici 
 * Podpora má přístup k další telemetrii a může pomoct řešit efektivněji.
 * Šifrování v klidovém formátu pomocí [Azure Managed disks][managed-disks] pro data na spravovaných řadičích domény.
 
-Služby Azure služba AD DS spravované domény, které používají model nasazení Správce prostředků, vám pomůžou udržet aktuálnost s nejnovějšími novými funkcemi. Nové funkce nejsou k dispozici pro spravované domény Azure služba AD DS, které používají model nasazení Classic.
+Spravované domény, které používají model nasazení Správce prostředků, vám pomůžou udržet aktuálnost s nejnovějšími novými funkcemi. Nové funkce nejsou k dispozici pro spravované domény, které používají model nasazení Classic.
 
 ## <a name="next-steps"></a>Další kroky
 

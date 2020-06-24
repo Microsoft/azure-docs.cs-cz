@@ -3,12 +3,12 @@ title: Privátní koncové body
 description: Pochopení procesu vytváření privátních koncových bodů pro Azure Backup a scénářů, kdy použití privátních koncových bodů pomáhá udržet zabezpečení vašich prostředků.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: 9158ad23bf05bf52f879afb1f1d25d2f4ba42cfb
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 8ce767073e9acfe271e6e57f9e6d1237910b33e0
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84323633"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85124251"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Soukromé koncové body pro Azure Backup
 
@@ -21,10 +21,11 @@ Tento článek vám pomůže pochopit proces vytváření privátních koncovýc
 - Soukromé koncové body lze vytvořit pouze pro nové trezory Recovery Services (které nemají zaregistrovány žádné položky do trezoru). Proto je nutné před pokusem o ochranu položek do trezoru vytvořit privátní koncové body.
 - Jedna virtuální síť může obsahovat privátní koncové body pro několik trezorů Recovery Services. Kromě toho může mít jeden Recovery Services trezor pro něj privátní koncové body ve více virtuálních sítích. Maximální počet privátních koncových bodů, které je možné vytvořit pro trezor, je však 12.
 - Po vytvoření privátního koncového bodu pro trezor se trezor zamkne. Nebude k dispozici (pro zálohování a obnovení) z sítí kromě těch, které obsahují soukromý koncový bod pro trezor. Pokud jsou všechny privátní koncové body trezoru odebrány, bude trezor přístupný ze všech sítí.
+- Připojení privátního koncového bodu pro zálohování používá celkem 11 privátních IP adres ve vaší podsíti. Toto číslo může být pro určité oblasti Azure vyšší (až 15). Proto doporučujeme, abyste při pokusu o vytvoření privátních koncových bodů pro zálohování měli k dispozici dostatek privátních IP adres.
 - I když je Recovery Services trezor používá (obojí) Azure Backup a Azure Site Recovery, Tento článek popisuje použití privátních koncových bodů jenom pro Azure Backup.
 - Azure Active Directory v současné době nepodporuje privátní koncové body. Takže IP adresy a plně kvalifikované názvy domény, které Azure Active Directory pro práci v oblasti, musí mít povolený odchozí přístup ze zabezpečené sítě při provádění zálohování databází ve virtuálních počítačích Azure a při zálohování pomocí agenta MARS. Můžete také použít značky NSG a značky Azure Firewall pro povolení přístupu ke službě Azure AD (podle potřeby).
 - U privátních koncových bodů se virtuální sítě se zásadami sítě nepodporují. Než budete pokračovat, budete muset zakázat zásady sítě.
-- Pokud jste si ho zaregistrovali před 1.2020, je potřeba znovu zaregistrovat poskytovatele prostředků Recovery Services k předplatnému. Pokud chcete poskytovatele znovu zaregistrovat, přejděte do svého předplatného v Azure Portal, v levém navigačním panelu přejděte na **poskytovatel prostředků** , vyberte **Microsoft. RecoveryServices** a klikněte na **znovu zaregistrovat**.
+- Pokud jste ho zaregistrovali před 1 2020, je nutné znovu zaregistrovat poskytovatele prostředků Recovery Services k předplatnému. Pokud chcete poskytovatele znovu zaregistrovat, přejděte do svého předplatného v Azure Portal, v levém navigačním panelu přejděte na **poskytovatel prostředků** , vyberte **Microsoft. RecoveryServices** a klikněte na **znovu zaregistrovat**.
 
 ## <a name="recommended-and-supported-scenarios"></a>Doporučené a podporované scénáře
 
@@ -41,9 +42,6 @@ Tato část pojednává o krocích při vytváření a používání privátníc
 
 >[!IMPORTANT]
 > Důrazně doporučujeme postupovat podle kroků ve stejné posloupnosti, jak je uvedeno v tomto dokumentu. V takovém případě může dojít k tomu, že se vygenerování trezoru nekompatibilním s používáním privátních koncových bodů a vyžaduje restartování procesu v novém trezoru.
-
->[!NOTE]
-> Některé prvky Azure Portalho prostředí nemusí být aktuálně k dispozici. Podívejte se prosím na alternativní prostředí v takových scénářích až do plné dostupnosti ve vaší oblasti.
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -345,7 +343,7 @@ K vytvoření rolí s požadovanými oprávněními můžete použít jednu z n�
 
 Vytvořte následující soubory JSON a pomocí příkazu PowerShellu na konci oddílu vytvořte role:
 
-PrivateEndpointContributorRoleDef. JSON
+PrivateEndpointContributorRoleDef.jsna
 
 ```json
 {
@@ -363,7 +361,7 @@ PrivateEndpointContributorRoleDef. JSON
 }
 ```
 
-NetworkInterfaceReaderRoleDef. JSON
+NetworkInterfaceReaderRoleDef.jsna
 
 ```json
 {
@@ -381,7 +379,7 @@ NetworkInterfaceReaderRoleDef. JSON
 }
 ```
 
-PrivateEndpointSubnetContributorRoleDef. JSON
+PrivateEndpointSubnetContributorRoleDef.jsna
 
 ```json
 {
@@ -554,7 +552,7 @@ Otázka: Pokusili jste se chránit položku do trezoru, ale nedošlo k jejímu u
 A. Ne, trezor nesmí mít žádné pokusy o ochranu jakýchkoli položek v minulosti.
 
 Otázka: Mám trezor, který používá privátní koncové body pro zálohování a obnovení. Můžu později přidat nebo odebrat soukromé koncové body pro tento trezor i v případě, že jsou k němu chráněné zálohované položky?<br>
-A. Yes. Pokud jste již vytvořili privátní koncové body pro trezor a chráněné zálohované položky, můžete později přidat nebo odebrat soukromé koncové body podle potřeby.
+A. Ano. Pokud jste již vytvořili privátní koncové body pro trezor a chráněné zálohované položky, můžete později přidat nebo odebrat soukromé koncové body podle potřeby.
 
 Otázka: Může být privátní koncový bod pro Azure Backup také použit pro Azure Site Recovery?<br>
 A. Ne, privátní koncový bod pro zálohování se dá použít jenom pro Azure Backup. Pro Azure Site Recovery budete muset vytvořit nový privátní koncový bod, pokud ho služba podporuje.

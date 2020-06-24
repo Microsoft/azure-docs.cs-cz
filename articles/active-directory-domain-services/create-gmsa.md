@@ -11,22 +11,22 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 5955f52cda73630f371a46f83ac0fb9a252b80e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9044380ec4f8f28a2056ab1e30a9fec3081ad204
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80655491"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734873"
 ---
-# <a name="create-a-group-managed-service-account-gmsa-in-azure-ad-domain-services"></a>Vytvoření skupinového účtu spravované služby (gMSA) v Azure AD Domain Services
+# <a name="create-a-group-managed-service-account-gmsa-in-azure-active-directory-domain-services"></a>Vytvoření skupinového účtu spravované služby (gMSA) v Azure Active Directory Domain Services
 
 Aplikace a služby často potřebují identitu k ověřování pomocí jiných prostředků. Webová služba může například vyžadovat ověření pomocí databázové služby. Pokud má aplikace nebo služba více instancí, jako je například webová serverová farma, ruční vytvoření a Konfigurace identit pro tyto prostředky získá časově náročnou dobu.
 
 Místo toho je možné vytvořit skupinový účet spravované služby (gMSA) ve spravované doméně služby Azure Active Directory Domain Services (Azure služba AD DS). OPERAČNÍ systém Windows automaticky spravuje přihlašovací údaje pro gMSA, což zjednodušuje správu velkých skupin prostředků.
 
-V tomto článku se dozvíte, jak vytvořit gMSA ve spravované doméně Azure služba AD DS pomocí Azure PowerShell.
+V tomto článku se dozvíte, jak vytvořit gMSA ve spravované doméně pomocí Azure PowerShell.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 K dokončení tohoto článku potřebujete následující prostředky a oprávnění:
 
@@ -35,7 +35,7 @@ K dokončení tohoto článku potřebujete následující prostředky a oprávn�
 * Tenant Azure Active Directory přidružený k vašemu předplatnému, buď synchronizovaný s místním adresářem, nebo jenom s cloudovým adresářem.
     * V případě potřeby [vytvořte tenanta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure k vašemu účtu][associate-azure-ad-tenant].
 * Ve vašem tenantovi Azure AD je povolená a nakonfigurovaná spravovaná doména Azure Active Directory Domain Services.
-    * V případě potřeby dokončete kurz a [vytvořte a nakonfigurujte instanci Azure Active Directory Domain Services][create-azure-ad-ds-instance].
+    * V případě potřeby dokončete kurz a [vytvořte a nakonfigurujte doménu Azure Active Directory Domain Services spravovaných][create-azure-ad-ds-instance].
 * Virtuální počítač pro správu Windows serveru, který je připojený k spravované doméně Azure služba AD DS.
     * V případě potřeby dokončete kurz a [vytvořte virtuální počítač pro správu][tutorial-create-management-vm].
 
@@ -49,11 +49,11 @@ Další informace najdete v tématu [Přehled skupinových účtů spravované s
 
 ## <a name="using-service-accounts-in-azure-ad-ds"></a>Používání účtů služeb v Azure služba AD DS
 
-Jelikož jsou spravované domény služby Azure služba AD DS uzamčeny a spravovány společností Microsoft, existují při používání účtů služeb několik důležitých informací:
+Jelikož jsou spravované domény zamčené a spravované společností Microsoft, existují při používání účtů služeb několik důležitých informací:
 
 * V části vlastní organizační jednotky (OU) ve spravované doméně vytvořte účty služeb.
     * Účet služby nemůžete vytvořit v předdefinovaných *AADDC uživatelích* nebo organizačních jednotkách *AADDC počítačů* .
-    * Místo toho [vytvořte vlastní organizační jednotku][create-custom-ou] ve spravované doméně Azure služba AD DS a pak vytvořte účty služeb v této vlastní organizační jednotce.
+    * Místo toho [vytvořte vlastní organizační jednotku][create-custom-ou] ve spravované doméně a potom vytvořte účty služby v této vlastní organizační jednotce.
 * Kořenový klíč služby KDS (Key Distribution Services) je předem vytvořen.
     * Kořenový klíč KDS se používá ke generování a načítání hesel pro účty gMSA. V Azure služba AD DS se pro vás vytvoří kořen KDS.
     * Nemáte oprávnění k vytvoření jiné nebo zobrazení výchozího kořenového klíče KDS.
@@ -65,7 +65,7 @@ Nejdřív vytvořte vlastní organizační jednotku pomocí rutiny [New-ADOrgani
 > [!TIP]
 > K vytvoření gMSA [použijte virtuální počítač pro správu][tutorial-create-management-vm]a proveďte tyto kroky. Tento virtuální počítač pro správu by už měl mít požadované rutiny služby AD PowerShell a připojení ke spravované doméně.
 
-Následující příklad vytvoří vlastní organizační jednotku s názvem *myNewOU* ve spravované doméně Azure služba AD DS s názvem *aaddscontoso.com*. Použijte vlastní organizační jednotku a název spravované domény:
+Následující příklad vytvoří vlastní organizační jednotku s názvem *myNewOU* ve spravované doméně s názvem *aaddscontoso.com*. Použijte vlastní organizační jednotku a název spravované domény:
 
 ```powershell
 New-ADOrganizationalUnit -Name "myNewOU" -Path "DC=aaddscontoso,DC=COM"

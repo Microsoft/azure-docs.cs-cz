@@ -3,84 +3,103 @@ title: Snížení nákladů na službu pomocí Azure Advisor
 description: Využijte Azure Advisor k optimalizaci nákladů na nasazení Azure.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 99dfec669d8981a557b2e8a8d8979292af74616f
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 8ff4e2d8f778d05e9a0fa271600446e1c24380be
+ms.sourcegitcommit: 666303748238dfdf9da30d49d89b915af73b0468
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84658570"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85130625"
 ---
-# <a name="reduce-service-costs-using-azure-advisor"></a>Snížení nákladů na službu pomocí Azure Advisor
+# <a name="reduce-service-costs-by-using-azure-advisor"></a>Snížení nákladů na službu pomocí Azure Advisor
 
-Poradce vám pomůže optimalizovat a snížit celkové výdaje na Azure tím, že identifikuje nečinné a nevyužité prostředky.Cenová doporučení můžete získat na kartě **náklady** na řídicím panelu poradce.
+Azure Advisor vám pomůže optimalizovat a snížit celkové výdaje na Azure tím, že se identifikují nečinné a nevyužité prostředky.Cenová doporučení můžete získat na kartě **náklady** na řídicím panelu poradce.
 
 ## <a name="optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances"></a>Optimalizace výdajů za virtuální počítače prostřednictvím změny velikosti nebo vypnutí nevyužitých instancí 
 
-I když některé scénáře aplikací můžou mít za následek nízké využití podle návrhu, můžete často ušetřit peníze tím, že spravujete velikost a počet virtuálních počítačů. Modely pro pokročilé hodnocení služby Advisor považují virtuální počítače za vypnuté, pokud P95th maximální hodnoty využití procesoru je menší než 3% a využití sítě je méně než 2% po dobu 7 dnů. Virtuální počítače se považují za správnou velikost, pokud je možné přizpůsobit aktuální zatížení menší SKU (v rámci stejné rodiny SKU) nebo menšímu počtu instancí, aby aktuální zatížení nepřesahoval 80% využití, když úlohy, které nepoužívají uživatele, a nepřesahují 40% při uživatelském zatížení. Tady je typ úlohy určený analýzou vlastností využití procesoru úloh.
+I když některé scénáře aplikací můžou mít za následek nízké využití podle návrhu, můžete často ušetřit peníze tím, že spravujete velikost a počet virtuálních počítačů. 
 
-Doporučené akce mají stav Vypnuto nebo změnit velikost, které jsou specifické pro prostředek doporučený pro. Advisor vám ukáže Odhadované úspory nákladů pro doporučené akce – Změna velikosti nebo vypnutí. Pro doporučené změny velikosti doporučuje poradce poskytovat informace o aktuálním a cílovém SKU. 
+Doporučené akce jsou vypnuté nebo změny velikosti specifické pro vyhodnocování prostředku.
 
-Pokud chcete mít více agresivní při identifikaci nevyužitých virtuálních počítačů, můžete upravit pravidlo využití CPU pro každé předplatné.
+Model pokročilého vyhodnocení v Advisoru se považuje za vypínání virtuálních počítačů, pokud jsou splněné oba tyto příkazy: 
+- P95th z maximální hodnoty využití procesoru je menší než 3%. 
+- Využití sítě je méně než 2% po dobu sedmi dnů.
+- Tlak paměti je nižší než mezní hodnoty.
+
+Poradce bere v úvahu změnu velikosti virtuálních počítačů, pokud je možné přizpůsobit aktuální zatížení menší SKU (ve stejné rodině SKU) nebo menšímu počtu instancí:
+- Aktuální zatížení nepřekračuje 80% využití pro úlohy, které na uživatele nečelí. 
+- Zatížení nepřekračuje 40% pro úlohy pro uživatele. 
+
+Služba Advisor v tomto případě určuje typ úlohy analýzou vlastností využití procesoru úloh.
+
+Advisor zobrazuje odhadované náklady na doporučenou akci: Změna velikosti nebo vypnutí. Pro změnu velikosti poskytuje poradce informace o aktuálním a cílovém SKU.
+
+Pokud chcete mít více agresivní informace o identifikaci nevyužitých virtuálních počítačů, můžete upravit pravidlo využití CPU na základě jednotlivých předplatných.
 
 ## <a name="optimize-spend-for-mariadb-mysql-and-postgresql-servers-by-right-sizing"></a>Optimalizace útraty pro servery MariaDB, MySQL a PostgreSQL podle správného určení velikosti 
-Poradce analyzuje vaše využití a doporučuje, pokud se prostředky serveru databáze MariaDB/MySQL/PostgreSQL po delší dobu během posledních 7 dnů nevyužily. Nízké využití prostředků vede k nežádoucím výdajům a dá se opravit bez výrazného dopadu na výkon. Pokud chcete snížit náklady a efektivně spravovat své prostředky, doporučujeme snížit velikost výpočetních prostředků (virtuálních jader) o polovinu.
+Advisor analyzuje vaše využití a vyhodnotí, jestli se prostředky serveru databáze MariaDB, MySQL nebo PostgreSQL v posledních sedmi dnech nevyužily po delší dobu. Nedostatečné využití prostředků má za následek nechtěné výdaje, které můžete opravit bez významného dopadu na výkon. Pokud chcete snížit náklady a efektivně spravovat prostředky, doporučujeme, abyste snížili velikost výpočetní kapacity (virtuální jádra) o polovinu.
 
 ## <a name="reduce-costs-by-eliminating-unprovisioned-expressroute-circuits"></a>Snížení nákladů odstraněním nezajištěných okruhů ExpressRoute
 
-Advisor identifikuje okruhy ExpressRoute, které byly ve stavu poskytovatele, *Nezřízeny* po dobu více než jednoho měsíce, a doporučuje odstranit okruh, pokud neplánujete zřídit okruh s poskytovatelem připojení.
+Advisor identifikuje okruhy Azure ExpressRoute, které se ve stavu poskytovatele **nezřídily** po dobu více než jednoho měsíce. Doporučuje se odstranit okruh, pokud neplánujete zřídit okruh s vaším poskytovatelem připojení.
 
 ## <a name="reduce-costs-by-deleting-or-reconfiguring-idle-virtual-network-gateways"></a>Snížení nákladů odstraněním nebo překonfigurováním nečinných bran virtuální sítě
 
-Poradce identifikuje brány virtuálních sítí, které byly po více než 90 dnech nečinné. Vzhledem k tomu, že se tyto brány účtují po hodinách, měli byste zvážit jejich opětovnou konfiguraci nebo odstranění, pokud je už nechcete používat. 
+Poradce identifikuje brány virtuální sítě, které byly nečinné déle než 90 dní. Vzhledem k tomu, že se tyto brány účtují po hodinách, měli byste zvážit jejich opětovnou konfiguraci nebo odstranění, pokud je už nechcete používat. 
 
 ## <a name="buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs"></a>Nákup rezervovaných instancí virtuálních počítačů a úspora nákladů oproti průběžným platbám
 
-Služba Advisor zkontroluje využití virtuálního počítače za posledních 30 dní a určí, jestli můžete ušetřit peníze tím, že si zakoupíte rezervaci Azure. Advisor vám ukáže oblasti a velikosti, kde máte pravděpodobně nejvíc úspor, a zobrazí vám Odhadované úspory z nákupních rezervací. Pomocí rezervací Azure můžete předem zakoupit základní náklady na virtuální počítače. Slevy budou automaticky platit pro nové nebo existující virtuální počítače, které mají stejnou velikost a oblast jako vaše rezervace. [Přečtěte si další informace o Azure Reserved VM Instances.](https://azure.microsoft.com/pricing/reserved-vm-instances/)
+Služba Advisor zkontroluje využití virtuálních počítačů během posledních 30 dnů a určí, jestli můžete ušetřit peníze tím, že si zakoupíte rezervaci Azure. Advisor vám ukáže oblasti a velikosti, kde je potenciální úspora nejvyšší a Odhadované úspory z nákupních rezervací. Pomocí rezervací Azure můžete předem zakoupit základní náklady na virtuální počítače. Slevy se automaticky použijí na nové nebo existující virtuální počítače, které mají stejnou velikost a oblast jako vaše rezervace. [Přečtěte si další informace o Azure Reserved VM Instances.](https://azure.microsoft.com/pricing/reserved-vm-instances/)
 
-Advisor vám taky upozorní na rezervované instance, jejichž platnost vyprší během následujících 30 dnů. Doporučujeme, abyste si nakoupili nové rezervované instance, abyste se vyhnuli platbám za průběžné platby.
+Advisor také vás upozorní na rezervované instance, jejichž platnost vyprší během následujících 30 dnů. Doporučuje se zakoupit nové rezervované instance, abyste se vyhnuli průběžným platbám za průběžné platby.
 
 ## <a name="buy-reserved-instances-for-several-resource-types-to-save-over-your-pay-as-you-go-costs"></a>Nákup rezervovaných instancí pro několik typů prostředků, které vám umožní ušetřit náklady na průběžné platby
 
-Analyzujeme vzor využití pro následující seznam prostředků, za posledních 30 dní a doporučte si nákup rezervovaných kapacit, který maximalizuje vaše úspory. 
-### <a name="cosmos-db-reserved-capacity"></a>Záložní kapacita Cosmos DB
-Na základě analýzy vašeho vzorce využití služby Cosmos DB za posledních 30 dnů vám doporučujeme nákup rezervované kapacity za účelem optimalizace nákladů. S rezervovanou kapacitou si můžete předem zakoupit hodinové využití služby Cosmos DB a tím ušetřit oproti průběžným platbám. Rezervovaná kapacita představuje cenové zvýhodnění, které se bude automaticky uplatňovat na nová i stávající nasazení. Odhady úspor se počítají pro jednotlivá předplatná s použitím cen za rezervaci na 3 roky a pozorovaného vzorce využití za posledních 30 dnů. V prostředí pro nákup rezervací jsou k dispozici doporučení pro sdílený rozsah, která můžou úspory ještě zvýšit.
+Advisor analyzuje vzorce využití za posledních 30 dní pro následující prostředky a doporučuje nákup rezervovaných kapacit, který optimalizuje náklady.
+
+### <a name="azure-cosmos-db-reserved-capacity"></a>Azure Cosmos DB rezervovanou kapacitu
+Advisor analyzuje vzorce používání Azure Cosmos DB za posledních 30 dnů a doporučuje nákup rezervovaných kapacit pro optimalizaci nákladů. Pomocí rezervované kapacity si můžete předběžně koupit Azure Cosmos DB hodinové využití a ušetřit náklady za průběžné platby. Rezervovaná kapacita je fakturační zvýhodnění, které se automaticky vztahuje na nová i existující nasazení. Advisor vypočítá Odhadované úspory pro jednotlivá předplatná pomocí ročních cen rezervací a extrapolací vzorců využití zjištěných za posledních 30 dnů. Doporučení ke sdílenému rozsahu jsou k dispozici pro rezervované nákupy kapacity a můžou zvýšit úspory.
 
 ### <a name="sql-paas-reserved-capacity"></a>Vyhrazená kapacita SQL PaaS
-Na základě analýzy vzorce využití spravovaných instancí a elastických fondů SQL PaaS za posledních 30 dnů vám doporučujeme nákup rezervované kapacity, která maximalizuje vaše úspory. S rezervovanou kapacitou si můžete předem zakoupit hodinové využití služby SQL Database a tím ušetřit oproti nákladům na výpočetní prostředky SQL. Licence SQL se účtuje samostatně a neplatí pro ni sleva za rezervaci. Rezervovaná kapacita představuje cenové zvýhodnění, které se bude automaticky uplatňovat na nová i stávající nasazení. Odhady úspor se počítají pro jednotlivá předplatná s použitím cen za rezervaci na 3 roky a pozorovaného vzorce využití za posledních 30 dnů. V prostředí pro nákup rezervací jsou k dispozici doporučení pro sdílený rozsah, která můžou úspory ještě zvýšit.
+Advisor analyzuje fondy elastické databáze SQL PaaS a vzory využití spravované instance za posledních 30 dní. Pak doporučí rezervované nákupy kapacity, které optimalizují náklady. Pomocí rezervované kapacity můžete předem zakoupit SQL DB po hodinách využití a ušetřit náklady na výpočetní výkon SQL. Vaše licence SQL se účtuje samostatně a rezervace se nesleví. Rezervovaná kapacita je fakturační zvýhodnění, které se automaticky vztahuje na nová i existující nasazení. Advisor vypočítá Odhadované úspory pro jednotlivá předplatná pomocí ročních cen rezervací a extrapolací vzorců využití zjištěných za posledních 30 dnů. Doporučení ke sdílenému rozsahu jsou k dispozici pro rezervované nákupy kapacity a můžou zvýšit úspory.
 
-### <a name="app-service-stamp-fee-reserved-capacity"></a>Rezervovaná kapacita poplatku za službu App Service
-Analyzujeme vaše App Service používání poplatků za razítko s použitím s použitím izolovaného prostředí za posledních 30 dní a doporučuje nákup rezervovaných kapacit, který maximalizuje vaše úspory. S rezervovanou kapacitou si můžete předem zakoupit hodinové využití poplatku za kolek izolovaného prostředí a tím ušetřit oproti průběžným platbám. Upozorňujeme, že rezervovaná kapacita se vztahuje pouze na poplatek za kolek, a ne na instance služby App Service. Rezervovaná kapacita představuje cenové zvýhodnění, které se bude automaticky uplatňovat na nová i stávající nasazení. Odhady úspor se počítají pro jednotlivá předplatná s použitím cen za rezervaci na 3 roky na základě vzorce využití za posledních 30 dnů.
+### <a name="app-service-stamp-fee-reserved-capacity"></a>App Service vyhrazenou kapacitu pro poplatky za razítko
+Advisor v posledních 30 dnech analyzuje vzor použití poplatku za Azure App Service izolované prostředí a doporučuje rezervované nákupy kapacity, které optimalizují náklady. Pomocí rezervované kapacity si můžete předem koupit hodinové využití pro poplatek za izolované prostředí a ušetřit náklady za průběžné platby. Rezervovaná kapacita se vztahuje pouze na poplatky za razítko a nikoli na App Service instance. Rezervovaná kapacita je fakturační zvýhodnění, které se automaticky vztahuje na nová i existující nasazení. Služba Advisor počítá s uložením odhadů pro jednotlivá předplatná za použití ceny za 3 roky na základě vzorců využití za posledních 30 dní.
 
 ### <a name="blob-storage-reserved-capacity"></a>Vyhrazená kapacita úložiště objektů BLOB
-Na základě analýzy vašeho využití služeb Azure Blob Storage a Data Lake Storage za posledních 30 dnů jsme vypočítali, jak můžete nákupem rezervované kapacity maximalizovat úspory. S rezervovanou kapacitou si můžete předem zakoupit hodinové využití a tím ušetřit oproti aktuálním nákladům na vyžádání. Rezervovaná kapacita služby Blob Storage se vztahuje pouze na data uložená ve službách Azure Blob Storage (GPv2) a Azure Data Lake Storage (Gen2). Rezervovaná kapacita představuje cenové zvýhodnění, které se bude automaticky uplatňovat na nová i stávající nasazení. Odhady úspor se počítají pro jednotlivá předplatná s použitím cen za rezervaci na 3 roky a pozorovaného vzorce využití za posledních 30 dnů. V prostředí pro nákup rezervací jsou k dispozici doporučení pro sdílený rozsah, která můžou úspory ještě zvýšit.
+Služba Advisor analyzuje úložiště objektů BLOB v Azure a využití úložiště Azure Data Lake za posledních 30 dní. Pak vypočítá rezervované nákupy kapacity, které optimalizují náklady. Díky rezervované kapacitě můžete předem nakoupit hodinové využití a ušetřit je na základě aktuálních nákladů na vyžádání. Rezervovaná kapacita úložiště objektů BLOB se vztahuje jenom na data uložená ve službě Azure Blob pro obecné účely v2 a účty Azure Data Lake Storage Gen2. Rezervovaná kapacita je fakturační zvýhodnění, které se automaticky vztahuje na nová i existující nasazení. Advisor vypočítá Odhadované úspory pro jednotlivá předplatná pomocí cen za 3 roky a vzorců využití zjištěných za posledních 30 dní. Doporučení ke sdílenému rozsahu jsou k dispozici pro rezervované nákupy kapacity a můžou zvýšit úspory.
 
 ### <a name="mariadb-mysql-and-postgresql-reserved-capacity"></a>Vyhrazená kapacita MariaDB, MySQL a PostgreSQL
-V průběhu posledních 30 dnů analyzujeme vaše využití Azure Database for MariaDB, MySQL a PostgreSQL a doporučuje nákup rezervovaných kapacit, který maximalizuje vaše úspory. Díky rezervované kapacitě můžete předem zakoupit MariaDB, MySQL a PostgreSQL hodinové využití a ušetřit náklady. Rezervovaná kapacita představuje cenové zvýhodnění, které se bude automaticky uplatňovat na nová i stávající nasazení. Odhady úspor se počítají pro jednotlivá předplatná s použitím cen za rezervaci na 3 roky a vzorce využití za posledních 30 dnů. V prostředí pro nákup rezervací jsou k dispozici doporučení pro sdílený rozsah, která můžou úspory ještě zvýšit.
+Advisor analyzuje vaše vzory využití pro Azure Database for MariaDB, Azure Database for MySQL a Azure Database for PostgreSQL za posledních 30 dnů. Pak doporučí rezervované nákupy kapacity, které optimalizují náklady. Pomocí rezervované kapacity můžete předem zakoupit MariaDB, MySQL a PostgreSQL hodinové využití a ušetřit přitom své aktuální náklady. Rezervovaná kapacita je fakturační zvýhodnění, které se automaticky vztahuje na nová i existující nasazení. Advisor vypočítá Odhadované úspory pro jednotlivá předplatná pomocí cen za 3 roky a vzorců využití zjištěných za posledních 30 dní. Doporučení ke sdílenému rozsahu jsou k dispozici pro rezervované nákupy kapacity a můžou zvýšit úspory.
 
-### <a name="synapse-analytics-formerly-sql-dw-reserved-capacity"></a>Rezervovaná kapacita synapse Analytics (dříve SQL DW)
-Váš vzor využití analýzy Azure synapse analyzujeme za posledních 30 dní a doporučuje nákup rezervovaných kapacit, který maximalizuje vaše úspory. S rezervovanou kapacitou si můžete předem zakoupit hodinové využití služby Synapse Analytics a tím ušetřit oproti nákladům na vyžádání. Rezervovaná kapacita představuje cenové zvýhodnění, které se bude automaticky uplatňovat na nová i stávající nasazení. Odhady úspor se počítají pro jednotlivá předplatná s použitím cen za rezervaci na 3 roky a pozorovaného vzorce využití za posledních 30 dnů. V prostředí pro nákup rezervací jsou k dispozici doporučení pro sdílený rozsah, která můžou úspory ještě zvýšit.
+### <a name="synapse-analytics-formerly-sql-data-warehouse-reserved-capacity"></a>Rezervovaná kapacita synapse Analytics (dříve SQL Data Warehouse)
+Advisor během posledních 30 dnů analyzuje vaše vzory využití Azure synapse Analytics a doporučuje rezervované nákupy kapacity, které optimalizují náklady. Pomocí rezervované kapacity můžete předem zakoupit synapse analýzu po hodinách a ušetřit náklady na vyžádání. Rezervovaná kapacita je fakturační zvýhodnění, které se automaticky vztahuje na nová i existující nasazení. Advisor vypočítá Odhadované úspory pro jednotlivá předplatná pomocí cen za 3 roky a vzorců využití zjištěných za posledních 30 dní. Doporučení ke sdílenému rozsahu jsou k dispozici pro rezervované nákupy kapacity a můžou zvýšit úspory.
 
 ## <a name="delete-unassociated-public-ip-addresses-to-save-money"></a>Odstraní nepřidružené veřejné IP adresy, aby se ušetřily peníze.
 
-Advisor identifikuje veřejné IP adresy, které nejsou aktuálně přidružené k prostředkům Azure, jako jsou nástroje pro vyrovnávání zatížení nebo virtuální počítače. Tyto veřejné IP adresy se dodávají za nominální poplatek. Pokud je neplánujete použít, může jejich odstranění způsobit úspory nákladů.
+Advisor identifikuje veřejné IP adresy, které nejsou přidružené k prostředkům Azure, jako jsou nástroje pro vyrovnávání zatížení a virtuální počítače. K těmto veřejným IP adresám se přidruží nominální poplatek. Pokud je neplánujete použít, můžete peníze ušetřit jejich odstraněním.
 
 ## <a name="delete-azure-data-factory-pipelines-that-are-failing"></a>Odstranění kanálů Azure Data Factory s chybami
 
-Azure Advisor detekuje Azure Data Factory kanály, které opakovaně selžou, a doporučuje, abyste vyřešili problémy nebo odstranili neúspěšné kanály, pokud už je nepotřebujete. Tyto kanály se budou fakturovat i v případě, že vám nejsou zachovány. 
+Poradce detekuje Azure Data Factory kanály, které opakovaně selžou. Doporučuje, abyste vyřešili problémy nebo odstranili kanály, pokud je nepotřebujete. Tyto kanály se fakturují i v případě, že vám nejsou zachovány.
 
-## <a name="use-standard-snapshots-for-managed-disks"></a>Pro Managed Disks použít standardní snímky
-Pokud chcete ušetřit 60 % nákladů, doporučujeme uložit snímky ve službě Storage úrovně Standard bez ohledu na typ úložiště nadřazeného disku. Tato možnost je výchozí možností pro Managed Disks snímky. Azure Advisor identifikuje snímky uložené Premium Storage a doporučuje migraci snímku z úrovně Premium na úložiště Standard. [Další informace o cenách spravovaného disku](https://aka.ms/aa_manageddisksnapshot_learnmore)
+## <a name="use-standard-snapshots-for-managed-disks"></a>Použít standardní snímky pro spravované disky
+Pokud chcete ušetřit 60% nákladů, doporučujeme ukládat snímky ve službě Storage úrovně Standard bez ohledu na typ úložiště nadřazeného disku. Tato možnost je výchozí možností pro snímky spravovaných disků. Poradce identifikuje snímky uložené v Premium Storage a doporučuje migraci z úrovně Premium na úložiště Standard. [Přečtěte si další informace o cenách spravovaného disku.](https://aka.ms/aa_manageddisksnapshot_learnmore)
 
-## <a name="utilize-lifecycle-management"></a>Využití správy životního cyklu
-Azure Advisor bude využívat inteligentní informace týkající se počtu objektů úložiště objektů BLOB v Azure, celkové velikosti a transakcí, které zjistí, jestli je jeden nebo více účtů úložiště nejvhodnější pro zajištění správy životního cyklu na úrovni dat. Zobrazí se výzva k vytvoření pravidel pro správu životního cyklu, která budou automaticky vrstvit vaše data na studená nebo Archivovaná pro optimalizaci nákladů na úložiště a zachování vašich dat v úložišti objektů BLOB v Azure kvůli kompatibilitě aplikací.
+## <a name="use-lifecycle-management"></a>Použití správy životního cyklu
+Pomocí inteligentních informací o počtu, celkové velikosti a transakcích služby Azure Blob Storage zjistí služba Advisor, jestli byste měli povolit správu životního cyklu na úrovni dat na jednom nebo několika účtech úložiště. Vyzve vás k vytvoření pravidel pro správu životního cyklu, která budou automaticky vrstvit vaše data na studená nebo archivní úložiště pro optimalizaci nákladů na úložiště a zachování vašich dat v úložišti objektů BLOB v Azure kvůli kompatibilitě aplikací.
 
 ## <a name="create-an-ephemeral-os-disk-recommendation"></a>Doporučení k vytvoření dočasného disku s operačním systémem
-S [dočasným diskem s operačním systémem](https://docs.microsoft.com/azure/virtual-machines/windows/ephemeral-os-disks)získají zákazníci tyto výhody: úspory nákladů na úložiště pro disk s operačním systémem. Nižší latence čtení a zápisu na disk s operačním systémem Rychlejší operace obnovení virtuálního počítače z image resetováním operačního systému (a dočasného disku) do původního stavu Je vhodnější použít dočasný disk s operačním systémem pro krátkodobé IaaS virtuální počítače nebo virtuální počítače se stavovým zatížením. Poradce má doporučení pro prostředky, které můžou využívat výhody s dočasným diskem s operačním systémem. 
+[Dočasný disk s operačním systémem](https://docs.microsoft.com/azure/virtual-machines/windows/ephemeral-os-disks) vám umožní: 
+- Ušetřete náklady na úložiště pro disky s operačním systémem. 
+- Získejte nižší latenci čtení a zápisu na disky s operačním systémem. 
+- Získejte rychlejší operace obnovení imagí virtuálních počítačů obnovením operačního systému (a dočasného disku) do původního stavu.
+
+Je vhodnější použít dočasný disk s operačním systémem pro krátkodobé IaaS virtuální počítače nebo virtuální počítače se stavovým zatížením. Advisor poskytuje doporučení pro prostředky, které můžou využívat dočasný disk s operačním systémem.
 
 
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Přístup k cenovým doporučením v Azure Advisor
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. Vyhledejte a vyberte [**Advisor**](https://aka.ms/azureadvisordashboard) na libovolné stránce.
 

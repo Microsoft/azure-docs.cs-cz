@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 05/01/2020
+ms.date: 06/12/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a6a4712f88a6f5351845233f4179e82e4b473ded
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 332ce90de334a384ee6017a12781d0ddb2ed4158
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266720"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85126140"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integrace s partnery virtuálních počítačů s Windows
 
@@ -33,12 +33,12 @@ Citrix rozšiřuje hodnotu virtuální plochy Windows pomocí robustních podnik
 
 ![Logo VMware](./media/partners/vmware.png)
 
-VMware Horizon Cloud v Microsoft Azure poskytuje organizacím možnost připojit svou vlastní instanci Microsoft Azure k jednoduché a intuitivní rovině řídicího cloudového řízení a vytvořit zabezpečené a komplexní řešení hostované v cloudu pro poskytování virtualizovaných aplikací a počítačů s Windows. S vydáním virtuálního počítače s Windows se společnost VMware spolupracuje s Microsoftem, aby rozšířila funkce virtuálních klientů Windows na zákazníky využívajících Horizontal Cloud v Microsoft Azure. Tato funkce bude k dispozici ve verzi Tech Preview po konci 2019.
- 
-V rámci schváleného poskytovatele se výhody virtuálního klienta Windows rozšíří na Cloud VMware Horizon na Microsoft Azure zákazníky, včetně Windows 10 Enterprise pro více relací, Windows 7 s bezplatné rozšířené aktualizace zabezpečení až pro tři roky a FSLogix. Kromě toho zákazníci získají funkce cloudového cloudu na podnikové úrovni, jako je široká podpora koncových bodů. globální cloudově optimalizované zprostředkovatele; flexibilní možnosti a konfigurace desktopu; Správa uživatelského prostředí; a podpora hybridních prostředí.
+VMware Horizon Cloud v Microsoft Azure je nativní cloudovou službou, která umožňuje organizacím rychle nasadit vzdálené plochy a aplikace ze stávajících předplatných Microsoft Azure a přitom využívat všechny funkce horizontu VMware. Horizontal Cloud používá rovinu ovládacího prvku horizontu k poskytnutí jediného rozhraní pro správu pro všechna Horizontická prostředí, místně i v cloudu. To umožňuje hybridní virtualizaci plochy a umožňuje zákazníkům přesunout své úlohy do Azure vlastním tempem.
 
-- [Zaregistrujte se na verzi pro cloudovou verzi Horizontal Preview na Microsoft Azure](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html).
+Jako zprostředkovatel schváleného pro virtuální počítače s Windows může VMware pomáhat zákazníkům, kteří chtějí používat virtuální počítače s Windows, a pořád využívat další funkce, které jsou součástí VMware horizontu, jako je integrovaná a snadno použitelná Správa napájení, cloudové monitorování a protokol vysokého extrémního využití. Tyto funkce se přizpůsobují měnícím se podmínkám sítě za účelem zajištění konzistentního uživatelského prostředí. Cloud VMware Horizon také přichází se svazky aplikací VMware a dynamickým správcem prostředí, které přinášejí pokročilé možnosti správy aplikací a uživatelského prostředí, které pracují s MSIX aplikací připojit a FSLogix.
+
 - [Přejít na web partnera](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html).
+- [Přečtěte si technickou dokumentaci ke službě VMware Horizon Cloud](https://techzone.vmware.com/mastering-horizon-cloud-microsoft-azure).
 
 ## <a name="10zig"></a>10ZiG
 
@@ -102,6 +102,28 @@ deviceTRUST rozšiřuje hodnotu virtuálního klienta Windows s jejich kontextov
 
 - [Přejít na web partnera](https://devicetrust.com/wvd).
 
+## <a name="ekran-system"></a>Ekran systém
+
+![Logo systému Ekran](./media/partners/ekran.png)
+
+Ekran systém je hodnota pro virtuální počítače s Windows – přidejte partnera, který umožňuje týmům IT monitorovat všechny aktivity vzdálených uživatelů na Microsoft Azure virtuálních počítačích. V systému Ekran můžete zaznamenávat aktivitu na obrazovce pro každou relaci uživatele v publikovaných aplikacích nebo virtuálních plochách a současně shromažďovat širokou škálu kontextových metadat, jako jsou názvy aplikací, názvy aktivních oken, navštívené adresy URL a úhozy. Rozšířené funkce nabízejí hloubkovou a rychlou odezvu na incidenty, což Ekran systém efektivního řešení pro správu hrozeb a dodržování předpisů.  
+
+Jedinečné licence na plovoucí koncové body Ekran systémových klientů je automatizovaná na podporu dynamické změny virtuálních ploch. Systém Ekran umožňuje automaticky zrušit přiřazení licencí od odstraněných netrvalých virtuálních ploch a odebrat je z databáze. Systém Ekran se bez problémů integruje s Azure Active Directory a službou Azure Sentinel.
+
+- [Podívejte se na stručné řešení](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yqY8).
+- [Přejít na stránku partner](https://www.ekransystem.com/product/supported-platforms/windows-virtual-desktop-monitoring).
+
+## <a name="flexxible-it"></a>Flexxible
+
+![Logo Flexxible](./media/partners/flexxible.png)
+
+Flexxible je to, že se jedná o virtuální plochu s Windows – přidat partnera, který nabízí organizacím možnost rychle škálovat, monitorovat a efektivně spravovat infrastrukturu virtuálních počítačů s Windows a Citrix v místním prostředí. Flexxible | SADA umožňuje správcům IT inteligentně zřizovat a spravovat úlohy virtuálních klientských počítačů s Windows místně a hostovat v Azure.
+ 
+Flexxible IT technologie rozšiřuje hodnotu nativního virtuálního počítače s Windows i Citrix, protože automatizuje běžné procesy, které zjednodušují konfiguraci infrastruktury, zřizování počítačů a každodenní správu. SADA poskytuje škálovatelné nasazení plochy, rozsáhlé monitorování a vytváření sestav a zabezpečenou delegovanou správu, a to bez nutnosti složitých skriptů PowerShellu nebo časově náročných ručních procesů. Tyto funkce vám umožní zaměřit se na poskytování lepších úrovní služeb a kvality prostředí pro virtuální počítače s Windows pro vaše uživatele.
+
+- [Podívejte se na stručné řešení](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yj7A).
+- [Přejít na web partnera](https://www.flexxible.com/suite-for-windows-virtual-desktop).
+
 ## <a name="hp"></a>EMULEX
 
 ![Logo HP](./media/partners/hp.png)
@@ -127,7 +149,7 @@ IGEL OS podporuje všechny oblíbené virtuální aplikace, stolní počítače 
 
 ![Logo Ivanti](./media/partners/ivanti.png)
 
-Správce pracovního prostoru uživatele Ivanti je služba s přidanou hodnotou pro virtuální počítače s Windows, která usnadňuje nasazení a správu stolních počítačů oddělením uživatelských dat z plochy pro bezproblémové přenositelnosti. Díky Ivanti můžou uživatelé poskytovat komplexní projekty, jako je migrace na Windows 10, přijímání Office 365 nebo přesouvání služeb do cloudu rychleji. 
+Správce pracovního prostoru uživatele Ivanti je služba s přidanou hodnotou pro virtuální počítače s Windows, která usnadňuje nasazení a správu stolních počítačů oddělením uživatelských dat z plochy pro bezproblémové přenositelnosti. Díky Ivanti můžou uživatelé poskytovat komplexní projekty, jako je migrace do Windows 10, přijímání Microsoft 365 nebo přesouvání služeb do cloudu rychleji. 
 
 Při použití s virtuálním počítačem s Windows Ivanti Správce pracovních prostorů uživatelů poskytuje jednoduchou kontextovou správu možností práce s počítačem, eliminují dlouhé časy přihlášení a eradikace Nightmares zásad skupiny. Předem připravené šablony pro uživatele Ivanti User Workspace zjednodušují instalaci pro uživatele prostřednictvím agentů a stávající konzoly. Správce pracovních prostorů uživatele Ivanti nabízí reagovat, zabezpečené plochy, které uživatelé chtějí, ušetřit peníze na serverech, efektivněji spravovat uživatele a snižovat riziko zabezpečení koncového bodu. 
 
@@ -163,6 +185,7 @@ Liquit Application Aggregator and Delivery software umožňuje podnikům a posky
 
 Jako certifikovaný partner pro integraci liquit pomáhá urychlit přechod do cloudu bez prodlevy s protokolem RIP a nahrazování. Virtuální počítač s Windows se může snadno připojit k existujícímu prostředí, vytvořit pracovní prostor a zajistit pracovní plochu. Pak můžete nějakou dobu migrovat ze starých platforem a provádět změny na back-endu bez všímáte vašich uživatelů. Získejte konzistentní prostředí pro koncové uživatele, flexibilní infrastrukturu a udržujte kontrolu nad vašimi aplikacemi bez ohledu na to, kde jsou.
 
+- [Podívejte se na stručné řešení](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yol8).
 - [Přejít na web partnera](https://www.liquit.com/wvd/).
 
 ## <a name="login-vsi"></a>Přihlašovací VSI
@@ -235,6 +258,17 @@ RDPSoft je partner s virtuálními počítači s Windows, který poskytuje výko
 Řešení pro RDPSoft Remote Desktop Commander zlepšují správu virtuálních ploch Windows. Funkce Premium Management zjednodušují delegování úloh správy virtuálních klientů Windows na pracovníky podpory, protože zajišťuje vzdálenou pomoc, relaci uživatelů a správu procesů. V současné době sada funkcí pro vzdálenou plochu shromažďuje bohatou metriku týkající se výkonu a zatížení jednotlivých uživatelů, aktivity a auditování uživatelů, kvality připojení k virtuálním plochám Windows (latence a šířka pásma), licencování a zabezpečení do centrální instance Azure SQL Database pro kontrolu. Díky RDPSoft máte k dispozici bohatě historické sestavy a komplexní řídicí panely hned po kliknutí.
 
 - [Přejít na web partnera](https://www.rdpsoft.com/products/remote-desktop-commander/suite/).
+
+## <a name="rimo3"></a>Rimo3
+
+![Logo Rimo3](./media/partners/rimo3.png)
+
+Rimo3 vylepšuje prostředí pro virtuální počítače s Windows díky urychlení nasazení a vylepšení probíhající správy změn. Rimo3 IT týmy se svými znalostmi, které potřebují k podpoře vašeho portfolia aplikací pro přípravu úloh aplikací pro migraci do Azure. Uživatelé mohou připojit aplikace a testovat je ve svém cílovém pracovním prostoru pro virtuální počítače s Windows rychle a bezproblémově kódovat službu. Uživatelé také mohou aktivně pochopit dopad jakýchkoli změn, protože jejich organizace zavede nové aplikace a aktualizace. Správci IT můžou nakonec využít schopnost inteligentního testování kouře Rimo3's a automatizovat testování funkčnosti bez přerušení uživatelských relací.
+
+Rimo3 nabízí snadno použitelné, škálovatelnou a automatizovanou platformu pro testování aplikací. Tato platforma zahrnuje možnosti pro všechny tři základní funkce testování aplikací: kompatibilitu, funkčnost a výkon. Umožňuje organizacím, vedoucím a týmům zlepšit kontinuitu podnikových aplikací, přijímat změny rychleji a optimalizovat uživatelské prostředí.
+
+- [Podívejte se na stručné řešení](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yj7B).
+- [Přejít na web partnera](https://rimo3.com/outcomes/).
 
 ## <a name="sepago"></a>sepago
 

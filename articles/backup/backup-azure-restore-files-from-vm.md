@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak obnovit soubory a složky z bodu 
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: 91918bb053c1f26e33d08dde3b68debfcffe350e
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 68fa3bb2b17da01004220f5876911fa3289a2e7c
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195753"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85124983"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Obnovení souborů ze zálohy virtuálního počítače Azure
 
@@ -194,7 +194,7 @@ V následující tabulce je uvedena kompatibilita mezi operačním systémem ser
 | Windows Server 2016    | Windows 10 |
 | Windows Server 2012 R2 | Windows 8.1 |
 | Windows Server 2012    | Windows 8  |
-| Windows Server 2008 R2 | Windows 7   |
+| Windows Server 2008 R2 | Windows 7   |
 
 ### <a name="for-linux-os"></a>Pro Linux OS
 
@@ -237,7 +237,7 @@ Pokud skript spustíte na počítači s omezeným přístupem, ujistěte se, že
 
 > [!NOTE]
 >
-> - Název souboru staženého skriptu bude mít v adrese URL zadán **geografickou příponu** . Pro exampple: název staženého skriptu začíná řetězcem \' VMname \' \_ \' name \' _ \' \' , například *ContosoVM_wcus_12345678*
+> - Název souboru staženého skriptu bude mít v adrese URL zadán **geografickou příponu** . Příklad: název staženého skriptu začíná řetězcem \' VMname \' \_ \' name \' _ \' GUID, například \' *ContosoVM_wcus_12345678*
 > - Adresa URL bude <https://pod01-rec2.wcus.backup.windowsazure.com> "
 >
 
@@ -258,7 +258,7 @@ Vzhledem k tomu, že proces obnovy souborů připojí všechny disky ze zálohy,
     - Ujistěte se, že operační systém je WS 2012 nebo vyšší.
     - Zajistěte, aby byly na serveru pro obnovení nastaveny klíče registru, jak je navrženo, a nezapomeňte restartovat server. Číslo vedle identifikátoru GUID může být v rozsahu od 0001-0005. V následujícím příkladu je to 0,0004. Procházejte cestou klíče registru do části Parameters (parametry).
 
-    ![iSCSI-reg-Key-Changes. png](media/backup-azure-restore-files-from-vm/iscsi-reg-key-changes.png)
+    ![iscsi-reg-key-changes.png](media/backup-azure-restore-files-from-vm/iscsi-reg-key-changes.png)
 
 ```registry
 - HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Disk\TimeOutValue – change this from 60 to 1200
@@ -274,7 +274,7 @@ Vzhledem k tomu, že proces obnovy souborů připojí všechny disky ze zálohy,
 - Pokaždé, když uživatel stáhne skript, Azure Backup zahájí proces přípravy bodu obnovení ke stažení. U velkých disků bude tento proces trvat značnou dobu. Pokud dojde k následným nárůstům požadavků, cílová Příprava přejde ke stažení spirály. Proto se doporučuje stáhnout skript z portálu/PowerShell/CLI, počkat po 20-30 minut (Heuristická) a pak ji spustit. V tuto chvíli se očekává, že cíl bude připravený pro připojení ze skriptu.
 - Po obnovení souboru se vraťte na portál a klikněte na **Odpojit disky** pro body obnovení, ve kterých jste nedokázali připojit svazky. V podstatě tento krok vyčistí všechny existující procesy a relace a zvýší pravděpodobnost obnovení.
 
-## <a name="troubleshooting"></a>Odstraňování potíží
+## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud máte při obnovování souborů z virtuálních počítačů problémy, další informace najdete v následující tabulce.
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 05/07/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ab1d0318464f6b44e1f46bd30dc76272584fde64
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 289cc463732ee6b612b67f6c408d9d7260016137
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929821"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85125800"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Co je Windows Virtual Desktop? 
 
@@ -22,7 +22,7 @@ Virtuální plocha Windows je služba virtualizace plochy a aplikací, která b�
 Tady je seznam toho, co můžete udělat při spuštění virtuální plochy Windows v Azure:
 
 * Nastavení nasazení s více relacemi s Windows 10, které poskytuje plnou sadu Windows 10 s škálovatelností
-* Virtualizujte Office 365 ProPlus a optimalizujte pro spouštění ve virtuálních scénářích s více uživateli.
+* Virtualizace Microsoft 365ch aplikací pro podniky a jejich optimalizaci pro spouštění ve virtuálních scénářích s více uživateli
 * Poskytněte virtuálním klientům Windows 7 bezplatné rozšířené aktualizace zabezpečení.
 * Přenesení stávajících klientských počítačů a aplikací pro vzdálenou plochu (RDS) a Windows serveru do libovolného počítače
 * Virtualizujte desktopy i aplikace
@@ -109,11 +109,11 @@ Následující tabulka uvádí volitelné adresy URL, ke kterým můžou mít vi
 
 |Adresa|Odchozí port TCP|Účel|Značka služby|
 |---|---|---|---|
-|*.microsoftonline.com|443|Ověřování pro služby MS Online Services|Žádné|
+|*.microsoftonline.com|443|Ověřování pro online služby Microsoftu|Žádné|
 |*. events.data.microsoft.com|443|Služba telemetrie|Žádné|
 |www.msftconnecttest.com|443|Zjistí, jestli je operační systém připojený k Internetu.|Žádné|
 |*. prod.do.dsp.mp.microsoft.com|443|Windows Update|Žádné|
-|login.windows.net|443|Přihlášení do služeb MS Online Services, Office 365|Žádné|
+|login.windows.net|443|Přihlaste se ke službám Microsoft Online Services Microsoft 365|Žádné|
 |*. sfx.ms|443|Aktualizace klientského softwaru OneDrivu|Žádné|
 |*. digicert.com|443|Ověření odvolání certifikátu|Žádné|
 
@@ -126,7 +126,7 @@ Následující tabulka uvádí volitelné adresy URL, ke kterým můžou mít vi
 >Pro adresy URL, které se týkají provozu služby, je nutné použít zástupný znak (*). Pokud nechcete používat * pro přenosy související s agentem, vyhledáte adresy URL bez zástupných znaků:
 >
 >1. Zaregistrujte virtuální počítače do fondu hostitelů virtuálních počítačů s Windows.
->2. Otevřete **Prohlížeč událostí** a přejděte na **Windows protokoly** > **aplikace** > **WVD-agent** a vyhledejte událost s ID 3702.
+>2. Otevřete **Prohlížeč událostí** a přejděte na **Windows protokoly**  >  **aplikace**  >  **WVD-agent** a vyhledejte událost s ID 3702.
 >3. Seznam povolených adres URL, které najdete v části ID události 3702. Adresy URL v rámci události s ID 3702 jsou specifické pro oblast. Pro každou oblast, ve které chcete virtuální počítače nasadit, budete muset tento postup opakovat s příslušnými adresami URL.
 
 Windows Virtual Desktop obsahuje stolní počítače a aplikace Windows, které dodáváte uživatelům a řešení pro správu, které je hostované jako služba v Azure od Microsoftu. Stolní počítače a aplikace můžou být nasazené na virtuálních počítačích v libovolné oblasti Azure a řešení pro správu a data pro tyto virtuální počítače se budou nacházet v USA. To může vést k přenosu dat do USA.

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: 401317f6b47c97a76ef2ded603063821a420933a
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: e2113df2db89e204fd5d2c0a62234e0c1f7b16cc
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84192543"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85125664"
 ---
 # <a name="introduction-to-azure-security"></a>Seznámení se zabezpečením Azure
 ## <a name="overview"></a>Přehled
@@ -29,7 +29,7 @@ Víme, že zabezpečení je úloha v cloudu a jak důležité je, že najdete p�
 Tento článek poskytuje komplexní přehled o zabezpečení, které je k dispozici v Azure.
 
 ### <a name="azure-platform"></a>Platforma Azure
-Azure je platforma veřejné cloudové služby, která podporuje širokou škálu operačních systémů, programovacích jazyků, architektur, nástrojů, databází a zařízení. Může spouštět kontejnery Linux s integrací Docker. Vytvářejte aplikace pomocí jazyků JavaScript, Python, .NET, PHP, Java a Node. js; Vytvořte back-endy pro zařízení s iOS, Androidem a Windows.
+Azure je platforma veřejné cloudové služby, která podporuje širokou škálu operačních systémů, programovacích jazyků, architektur, nástrojů, databází a zařízení. Může spouštět kontejnery Linux s integrací Docker. Vytvářejte aplikace pomocí jazyků JavaScript, Python, .NET, PHP, Java a Node.js; Vytvořte back-endy pro zařízení s iOS, Androidem a Windows.
 
 Veřejné cloudové služby Azure podporují stejné technologie jako miliony vývojářů a odborníků na IT, kteří už využívají a důvěřují jim. Když vytváříte nebo migrujete prostředky IT na, poskytovatele veřejné cloudové služby, kterého se spoléháte na schopnosti této organizace chránit vaše aplikace a data službami a ovládacími prvky, které poskytují ke správě zabezpečení cloudových prostředků.
 
@@ -223,7 +223,7 @@ Microsoft Azure [ExpressRoute](../../expressroute/expressroute-introduction.md) 
 
 ![Express Route](./media/overview/azure-security-fig1.png)
 
-Pomocí ExpressRoute může vytvořit připojení ke cloudovým službám Microsoftu, jako je například Microsoft Azure, Office 365 a CRM Online. Co se týká připojení, může se jednat o síť typu any-to-any (IP VPN), síť Ethernet typu point-to-point nebo virtuální křížové připojení prostřednictvím poskytovatele připojení ve společném umístění.
+Pomocí ExpressRoute můžete navázat připojení ke cloudovým službám Microsoftu, jako jsou Microsoft Azure, Microsoft 365 a CRM Online. Co se týká připojení, může se jednat o síť typu any-to-any (IP VPN), síť Ethernet typu point-to-point nebo virtuální křížové připojení prostřednictvím poskytovatele připojení ve společném umístění.
 
 Připojení ExpressRoute nevyužívají veřejný Internet, a proto je lze považovat za bezpečnější než řešení založená na síti VPN. To dovoluje připojením ExpressRoute poskytovat větší spolehlivost, vyšší rychlost, nižší latenci a vyšší zabezpečení než typická připojení přes internet.
 
@@ -239,10 +239,10 @@ Poskytuje převzetí služeb při selhání, směrování výkonu požadavků HT
 
 Aplikace poskytuje mnoho funkcí kontroleru doručování aplikací (ADC), včetně vyrovnávání zatížení protokolu HTTP, spřažení relace na základě souborů cookie, [přesměrování zpracování TLS](../../application-gateway/tutorial-restrict-web-traffic-powershell.md), vlastních sond stavu, podpory více webů a mnoha dalších.
 
-### <a name="web-application-firewall"></a>Web Application Firewall (Brána firewall webových aplikací)
+### <a name="web-application-firewall"></a>Firewall webových aplikací
 Firewall webových aplikací je funkce služby [Azure Application Gateway](../../application-gateway/overview.md) , která poskytuje ochranu webových aplikací, které používají Aplikační bránu pro standardní funkce řízení doručování aplikací (ADC). Firewall webových aplikací chrání webové aplikace před většinou z 10 nejčastějších webových hrozeb podle OWASP.
 
-![Web Application Firewall (Brána firewall webových aplikací)](./media/overview/azure-security-fig1.png)
+![Firewall webových aplikací](./media/overview/azure-security-fig1.png)
 
 -   Ochrana před útoky prostřednictvím injektáže SQL.
 
@@ -263,7 +263,7 @@ Microsoft [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview
 
 Traffic Manager poskytuje řadu metod směrování provozu, které vyhovují různým potřebám aplikací, [monitorování](../../traffic-manager/traffic-manager-monitoring.md)stavu koncových bodů a automatickému převzetí služeb při selhání. Služba Traffic Manager je odolná vůči selhání, a to i selhání celé oblasti Azure.
 
-### <a name="azure-load-balancer"></a>Azure Load Balancer
+### <a name="azure-load-balancer"></a>Nástroj pro vyrovnávání zatížení Azure
 [Azure Load Balancer](../../load-balancer/load-balancer-overview.md) zajišťuje vysokou dostupnost a výkon sítě pro vaše aplikace. Jedná se o nástroj pro vyrovnávání zatížení vrstvy 4 (TCP, UDP), který distribuuje příchozí provoz mezi zdravými instancemi služeb definovaných v sadě s vyrovnáváním zatížení. Azure Load Balancer lze nakonfigurovat na:
 
 -   Vyrovnávání zatížení příchozího internetového provozu do virtuálních počítačů. Tato konfigurace se označuje jako [veřejné vyrovnávání zatížení](../../load-balancer/components.md#frontend-ip-configurations).

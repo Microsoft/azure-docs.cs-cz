@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 902f3628235cc8a4524ddc4dd8a5327592fe47e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/22/2020
+ms.openlocfilehash: 8f170d541ec314020702ab53606eed4d660cea9e
+ms.sourcegitcommit: 666303748238dfdf9da30d49d89b915af73b0468
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282819"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85130802"
 ---
 # <a name="query-types-and-composition-in-azure-cognitive-search"></a>Typy dotazů a jejich složení v Azure Kognitivní hledání
 
-V Azure Kognitivní hledání je dotaz kompletní specifikací operace Round-Trip. Parametry v žádosti poskytují kritéria shody pro hledání dokumentů v indexu, která pole se mají zahrnout nebo vyloučit, pokyny pro spuštění předané modulu a direktivy pro tvarování odpovědi. Neurčeno`search=*`(), dotaz se spustí pro všechna hledaná pole jako operace fulltextového vyhledávání a vrátí sadu výsledků bez skóre v libovolném pořadí.
+V Azure Kognitivní hledání je dotaz kompletní specifikací operace Round-Trip. V žádosti jsou k dispozici parametry, které poskytují pokyny k provedení modulu, a také parametry, které tvarující odpověď vrací. Neurčeno ( `search=*` ), bez kritérií shody a použití hodnot null nebo výchozích parametrů, dotaz se spustí pro všechna hledaná pole jako operace fulltextového vyhledávání a vrátí sadu výsledků bez skóre v libovolném pořadí.
 
-Následující příklad je reprezentativní dotaz vytvořený v [REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents). Tento příklad cílí na [index ukázky hotelů](search-get-started-portal.md) a obsahuje společné parametry.
+Následující příklad je reprezentativní dotaz vytvořený v [REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents). Tento příklad cílí na [index ukázky hotelů](search-get-started-portal.md) a obsahuje společné parametry, které vám pomohou získat představu o tom, co dotaz vypadá.
 
 ```
 {
@@ -35,25 +35,33 @@ Následující příklad je reprezentativní dotaz vytvořený v [REST API](http
 
 + **`queryType`** Nastaví analyzátor, což je buď [výchozí jednoduchý analyzátor dotazů](search-query-simple-examples.md) (optimální pro fulltextové vyhledávání), nebo [kompletní analyzátor dotazů Lucene](search-query-lucene-examples.md) , který se používá pro pokročilé konstrukce dotazů, jako jsou regulární výrazy, vyhledávání blízkosti, přibližná a zástupné vyhledávání, pro pojmenování několika.
 
-+ **`search`** poskytuje kritéria shody, obvykle text, ale často spolu s logickými operátory. Jednou samostatnou *pojmem jsou dotazy* . Citace – uzavřené dotazy s více částmi jsou *klíčové fráze* dotazů. Hledání může být nedefinované, jako v **`search=*`**, ale pravděpodobněji se skládá z pojmů, frází a operátorů, které jsou podobné tomu, co se zobrazuje v příkladu.
++ **`search`** poskytuje kritéria shody, obvykle celé podmínky nebo fráze, ale často spolu s logickými operátory. Jednou samostatnou *pojmem jsou dotazy* . Citace – uzavřené dotazy s více částmi jsou dotazy na *fráze* . Hledání může být nedefinované, jako v **`search=*`** , ale bez kritérií, která by se měla shodovat, se sada výsledků skládá z libovolných vybraných dokumentů.
 
 + **`searchFields`** omezuje provádění dotazů na konkrétní pole. Každé pole, které je s atributy *prohledávatelné* ve schématu indexu, je kandidátem pro tento parametr.
 
-Odpovědi jsou také ve tvaru podle parametrů, které zahrnete do dotazu. V příkladu se sada výsledků skládá z polí uvedených v **`select`** příkazu. V příkazu $select lze použít pouze pole, která jsou označena jako *dá* se načíst. V tomto dotazu se **`top`** navíc vrátí jenom 10 přístupů a při **`count`** tom se dozvíte, kolik dokumentů se celkově shoduje, což může být víc, než se vrátí. V tomto dotazu jsou řádky seřazené podle hodnocení v sestupném pořadí.
+Odpovědi jsou také ve tvaru podle parametrů, které zahrnete do dotazu:
+
++ **`select`** Určuje, která pole se mají vrátit v odpovědi. V příkazu SELECT lze použít pouze pole *, která jsou označena jako* načístelné v indexu.
+
++ **`top`** Vrátí zadaný počet nejlépe vyhovujících dokumentů. V tomto příkladu se vrátí jenom 10 přístupů. Pro stránku výsledků můžete použít horní a přeskočení (není zobrazeno).
+
++ **`count`** oznamuje, kolik dokumentů v celém indexu se shoduje se souhrnem, což může být víc, než se vrátí. 
+
++ **`orderby`** se používá, pokud chcete výsledky seřadit podle hodnoty, jako je například hodnocení nebo umístění. V opačném případě se ve výchozím nastavení použije hodnocení relevance k zařazení výsledků.
 
 V Azure Kognitivní hledání je provádění dotazů vždy na jednom indexu a je ověřeno pomocí klíče rozhraní API, který je v požadavku k dispozici. V části REST jsou v hlavičkách žádostí k dispozici obě.
 
 ### <a name="how-to-run-this-query"></a>Jak spustit tento dotaz
 
-Chcete-li spustit tento dotaz, použijte [Průzkumníka aplikace Search a ukázkový index hotelů](search-get-started-portal.md). 
+Před zápisem kódu můžete pomocí nástrojů dotazů zjistit syntaxi a experimentovat s různými parametry. Nejrychlejší přístup je integrovaný nástroj portál, který je v [Průzkumníkovi vyhledávání](search-explorer.md).
 
-Tento řetězec dotazu můžete vložit do panelu hledání v Průzkumníkovi:`search=+"New York" +restaurant&searchFields=Description, Address/City, Tags&$select=HotelId, HotelName, Description, Rating, Address/City, Tags&$top=10&$orderby=Rating desc&$count=true`
+Pokud jste postupovali podle tohoto rychlého startu a [vytvořili ukázkový index hotelů](search-get-started-portal.md), můžete vložit tento řetězec dotazu do panelu hledání v Průzkumníkovi a spustit tak první dotaz:`search=+"New York" +restaurant&searchFields=Description, Address/City, Tags&$select=HotelId, HotelName, Description, Rating, Address/City, Tags&$top=10&$orderby=Rating desc&$count=true`
 
 ## <a name="how-query-operations-are-enabled-by-the-index"></a>Jak index povoluje operace dotazů
 
 Návrh indexu a návrh dotazu jsou úzce spojeny v Azure Kognitivní hledání. Základní fakt, jak předem zjistit, je, že *schéma indexu*s atributy v jednotlivých polích určuje druh dotazu, který můžete sestavit. 
 
-Atributy indexu v poli nastavily povolené operace – určuje, jestli je pole možné *Prohledávat* v indexu, *získat ve výsledcích* , *seřaditelné*, *filtrovatelné*a tak dále. V příkladu řetězce dotazu funguje pouze `"$orderby": "Rating"` to, protože pole hodnocení je ve schématu indexu označeno jako *seřaditelné* . 
+Atributy indexu v poli nastavily povolené operace – určuje, jestli je pole možné *Prohledávat* v indexu, *získat ve výsledcích* , *seřaditelné*, *filtrovatelné*a tak dále. V příkladu řetězce dotazu `"$orderby": "Rating"` funguje pouze to, protože pole hodnocení je ve schématu indexu označeno jako *seřaditelné* . 
 
 ![Definice indexu pro ukázku hotelu](./media/search-query-overview/hotel-sample-index-definition.png "Definice indexu pro ukázku hotelu")
 
@@ -80,7 +88,7 @@ Všechny ostatní parametry hledání jsou volitelné. Úplný seznam atributů 
 
 Následující tabulka uvádí rozhraní API a postupy založené na nástrojích pro odesílání dotazů.
 
-| Metodologie | Popis |
+| Metodologie | Description |
 |-------------|-------------|
 | [Průzkumník vyhledávání (portál)](search-explorer.md) | Poskytuje panel hledání a možnosti pro indexování a výběry verzí rozhraní API. Výsledky se vrátí jako dokumenty JSON. Doporučuje se pro zkoumání, testování a ověřování. <br/>[Další informace](search-get-started-portal.md#query-index) | 
 | [Post nebo jiné nástroje REST](search-get-started-postman.md) | Nástroje pro testování webu jsou vynikající volbou pro formulování volání REST. REST API podporuje všechny možné operace v Azure Kognitivní hledání. V tomto článku se dozvíte, jak nastavit hlavičku a text požadavku HTTP pro odesílání požadavků do Azure Kognitivní hledání.  |
@@ -91,9 +99,9 @@ Následující tabulka uvádí rozhraní API a postupy založené na nástrojíc
 
 Azure Kognitivní hledání je umístěný na Apache Lucene a nabízí možnost volby mezi dvěma analyzátory dotazů pro zpracování typických a specializovaných dotazů. Požadavky využívající jednoduchý analyzátor jsou formulovány pomocí [jednoduché syntaxe dotazu](query-simple-syntax.md), která je vybrána jako výchozí pro rychlost a efektivitu v textových dotazech bezplatného formuláře. Tato syntaxe podporuje řadu běžných operátorů hledání, včetně operátorů a, nebo, NOT, fráze, přípony a priority.
 
-[Úplná syntaxe dotazů Lucene](query-Lucene-syntax.md#bkmk_syntax), která je povolená, `queryType=full` když přidáváte žádost, zveřejňuje široce přijatý a exprese dotazový jazyk vyvinutý jako součást [Apache Lucene](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html). Úplná syntaxe rozšiřuje jednoduchou syntaxi. Každý dotaz, který zapíšete pro jednoduchou syntaxi, se spustí s úplným analyzátorem Lucene. 
+[Úplná syntaxe dotazů Lucene](query-Lucene-syntax.md#bkmk_syntax), která je povolená, když přidáváte `queryType=full` žádost, zveřejňuje široce přijatý a exprese dotazový jazyk vyvinutý jako součást [Apache Lucene](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html). Úplná syntaxe rozšiřuje jednoduchou syntaxi. Každý dotaz, který zapíšete pro jednoduchou syntaxi, se spustí s úplným analyzátorem Lucene. 
 
-Následující příklady ilustrují bod: stejný dotaz, ale s jiným nastavením dotazu, poskytují různé výsledky. V prvním dotazu je `^3` potom `historic` považován za součást hledaného termínu. Výsledek nejvyšší úrovně pro tento dotaz je "Marquis Plaza & sady", jejichž popis má *oceánu* .
+Následující příklady ilustrují bod: stejný dotaz, ale s jiným nastavením dotazu, poskytují různé výsledky. V prvním dotazu `^3` je potom považován za `historic` součást hledaného termínu. Výsledek nejvyšší úrovně pro tento dotaz je "Marquis Plaza & sady", jejichž popis má *oceánu* .
 
 ```
 queryType=simple&search=ocean historic^3&searchFields=Description, Tags&$select=HotelId, HotelName, Tags, Description&$count=true
@@ -113,7 +121,7 @@ Azure Kognitivní hledání podporuje širokou škálu typů dotazů.
 
 | Typ dotazu | Využití | Příklady a další informace |
 |------------|--------|-------------------------------|
-| Hledání textu bezplatného formuláře | Vyhledávací parametr a buď analyzátor| Fulltextové vyhledávání vyhledává jeden nebo více výrazů ve všech *prohledávatelných* polích v indexu a funguje tak, jak byste očekávali, že vyhledávací stroj, jako je Google nebo Bing, funguje. Příkladem v úvodu je fulltextové vyhledávání.<br/><br/>Fulltextové vyhledávání odkazuje na analýzu textu pomocí standardního analyzátoru Lucene (ve výchozím nastavení), aby se snížila velikost písmen, jako je "a". Můžete přepsat výchozí pomocí [analyzátorů](index-add-language-analyzers.md#language-analyzer-list) , které nejsou v angličtině, nebo [specializované nezávislá analyzátory jazyka](index-add-custom-analyzers.md#AnalyzerTable) , které upraví analýzu textu. Příkladem je [klíčové slovo](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) , které zachází s celým obsahem pole jako s jedním tokenem. To je užitečné pro data, jako jsou kódy PSČ, ID a některé názvy produktů. | 
+| Hledání textu bezplatného formuláře | Vyhledávací parametr a buď analyzátor| Fulltextové vyhledávání vyhledává jeden nebo více výrazů ve všech *prohledávatelných* polích v indexu a funguje tak, jak byste očekávali, že vyhledávací stroj, jako je Google nebo Bing, funguje. Příkladem v úvodu je fulltextové vyhledávání.<br/><br/>Fulltextové vyhledávání: nastala lexikální analýza pomocí standardního analyzátoru Lucene (ve výchozím nastavení), aby se snížila velikost písmen, jako je "a". Můžete přepsat výchozí pomocí [analyzátorů](index-add-language-analyzers.md#language-analyzer-list) , které nejsou v angličtině, nebo [specializované nezávislá analyzátory jazyka](index-add-custom-analyzers.md#AnalyzerTable) , které upraví lexikální analýzu. Příkladem je [klíčové slovo](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) , které zachází s celým obsahem pole jako s jedním tokenem. To je užitečné pro data, jako jsou kódy PSČ, ID a některé názvy produktů. | 
 | Filtrované hledání | [Výraz filtru OData](query-odata-filter-orderby-syntax.md) a buď analyzátor | Filtrovat dotazy vyhodnotit logický výraz nad všemi *filtrovanými* poli v indexu. Na rozdíl od hledání dotaz filtru odpovídá přesnému obsahu pole, včetně rozlišování velkých a malých písmen v polích řetězců. Dalším rozdílem je, že dotazy filtru jsou vyjádřené v syntaxi OData. <br/>[Příklad výrazu filtru](search-query-simple-examples.md#example-3-filter-queries) |
 | Geografické vyhledávání | [Typ EDM. GeographyPoint](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) pro pole, výraz filtru a buď analyzátor | Souřadnice uložené v poli s EDM. GeographyPoint se používají pro ovládací prvky hledání v blízkosti nebo mapování na základě map. <br/>[Příklad geografického hledání](search-query-simple-examples.md#example-5-geo-search)|
 | Hledání rozsahu | výraz filtru a jednoduchý analyzátor | V Azure Kognitivní hledání jsou dotazy Range sestaveny pomocí parametru Filter. <br/>[Příklad filtru rozsahu](search-query-simple-examples.md#example-4-range-filters) | 
@@ -122,7 +130,7 @@ Azure Kognitivní hledání podporuje širokou škálu typů dotazů.
 | [hledání blízkosti](query-lucene-syntax.md#bkmk_proximity) | Parametr Search a úplný analyzátor | Vyhledá v dokumentu skoro stejné výrazy. <br/>[Příklad hledání blízkosti](search-query-lucene-examples.md#example-4-proximity-search) |
 | [zvyšování termínů](query-lucene-syntax.md#bkmk_termboost) | Parametr Search a úplný analyzátor | Rozhodne dokument větší, pokud obsahuje zvýšený termín vzhledem k ostatním, které ne. <br/>[Příklad zvyšování skóre termínu](search-query-lucene-examples.md#example-5-term-boosting) |
 | [hledání regulárních výrazů](query-lucene-syntax.md#bkmk_regex) | Parametr Search a úplný analyzátor | Odpovídá na základě obsahu regulárního výrazu. <br/>[Příklad regulárního výrazu](search-query-lucene-examples.md#example-6-regex) |
-|  [zástupné znaky nebo hledání předpon](query-lucene-syntax.md#bkmk_wildcard) | Parametr Search a úplný analyzátor | Odpovídá v závislosti na předponě a vlnovce (`~`) nebo jednom`?`znaku (). <br/>[Příklad hledání pomocí zástupných znaků](search-query-lucene-examples.md#example-7-wildcard-search) |
+|  [zástupné znaky nebo hledání předpon](query-lucene-syntax.md#bkmk_wildcard) | Parametr Search a úplný analyzátor | Odpovídá v závislosti na předponě a vlnovce () `~` nebo jednom znaku ( `?` ). <br/>[Příklad hledání pomocí zástupných znaků](search-query-lucene-examples.md#example-7-wildcard-search) |
 
 ## <a name="manage-search-results"></a>Správa výsledků hledání 
 
@@ -141,21 +149,21 @@ V některých případech se jedná o neočekávanou látku a nikoli strukturu v
 
 + Změňte **`searchMode=any`** (výchozí) na **`searchMode=all`** tak, aby vyžadovala shodu u všech kritérií místo některého z kritérií. To platí zejména při zahrnutí logických operátorů do dotazu.
 
-+ Změňte způsob dotazování v případě, že je nutné zadat text nebo lexikální analýzu, ale typ dotazu vylučuje lingvistické zpracování. V fulltextovém vyhledávání, textu nebo lexikální analýze je automatických oprav pro chyby pravopisu, wordových formulářů v množném čísle a dokonce i na nepravidelných operacích a podstatných případech. Pro některé dotazy, jako je například přibližné nebo zástupné vyhledávání, není analýza textu součástí kanálu analýzy dotazů. V některých případech byly regulární výrazy použity jako alternativní řešení. 
++ Změňte způsob dotazování v případě, že je nutné zadat text nebo lexikální analýzu, ale typ dotazu vylučuje lingvistické zpracování. V fulltextovém vyhledávání, textu nebo lexikální analýze je automatických oprav pro chyby pravopisu, wordových formulářů v množném čísle a dokonce i na nepravidelných operacích a podstatných případech. Pro některé dotazy, jako je například přibližné nebo zástupné vyhledávání, lexikální analýza není součástí kanálu analýzy dotazů. V některých případech byly regulární výrazy použity jako alternativní řešení. 
 
 ### <a name="paging-results"></a>Výsledky stránkování
-Azure Kognitivní hledání usnadňuje implementaci stránkování výsledků hledání. Pomocí parametrů **`top`** a **`skip`** můžete plynule vydávat žádosti o vyhledávání, které vám umožní získat celkovou sadu výsledků hledání v spravovatelných, seřazených podmnožinách, které umožňují správné postupy uživatelského rozhraní pro hledání. Při získávání těchto menších podmnožin výsledků můžete také získat počet dokumentů v úplné sadě výsledků vyhledávání.
+Azure Kognitivní hledání usnadňuje implementaci stránkování výsledků hledání. Pomocí **`top`** **`skip`** parametrů a můžete plynule vydávat žádosti o vyhledávání, které vám umožní získat celkovou sadu výsledků hledání v spravovatelných, seřazených podmnožinách, které umožňují správné postupy uživatelského rozhraní pro hledání. Při získávání těchto menších podmnožin výsledků můžete také získat počet dokumentů v úplné sadě výsledků vyhledávání.
 
 Další informace o výsledcích hledání stránkování najdete v článku [jak výsledky hledání stránky v Azure kognitivní hledání](search-pagination-page-layout.md).
 
 ### <a name="ordering-results"></a>Řazení výsledků
 Při přijímání výsledků vyhledávacího dotazu můžete požádat, aby služba Azure Kognitivní hledání mohla sloužit k výsledkům seřazeným podle hodnot v konkrétním poli. Ve výchozím nastavení služba Azure Kognitivní hledání řadí výsledky hledání na základě pořadí hledání v jednotlivých dokumentech, které je odvozeno od [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf).
 
-Pokud chcete, aby služba Azure Kognitivní hledání vracela výsledky seřazené podle jiné hodnoty než skóre vyhledávání, můžete použít parametr **`orderby`** Search. Můžete zadat hodnotu **`orderby`** parametru pro zahrnutí názvů polí a volání [** `geo.distance()` funkce**](query-odata-filter-orderby-syntax.md) pro geoprostorové hodnoty. Každý výraz může následovat za `asc` účelem indikace, že výsledky jsou požadovány ve vzestupném pořadí **`desc`** a označují, že výsledky jsou požadovány v sestupném pořadí. Ve výchozím nastavení se používá vzestupné pořadí.
+Pokud chcete, aby služba Azure Kognitivní hledání vracela výsledky seřazené podle jiné hodnoty než skóre vyhledávání, můžete použít **`orderby`** parametr Search. Můžete zadat hodnotu **`orderby`** parametru pro zahrnutí názvů polí a volání [** `geo.distance()` funkce**](query-odata-filter-orderby-syntax.md) pro geoprostorové hodnoty. Každý výraz může následovat za `asc` účelem indikace, že výsledky jsou požadovány ve vzestupném pořadí a **`desc`** označují, že výsledky jsou požadovány v sestupném pořadí. Ve výchozím nastavení se používá vzestupné pořadí.
 
 
 ### <a name="hit-highlighting"></a>Zvýrazňování položek
-V Azure kognitivní hledání zvýraznění přesné části výsledků hledání, které odpovídají hledanému dotazu, je snadné pomocí parametrů **`highlight`**, **`highlightPreTag`** a. **`highlightPostTag`** Můžete určit, která *vyhledávací* pole by měla mít zvýrazněný text a zároveň zadat přesné řetězcové značky, které se připojí k začátku a konci odpovídajícího textu, který Azure kognitivní hledání vrátí.
+V Azure Kognitivní hledání zvýraznění přesné části výsledků hledání, které odpovídají hledanému dotazu, je snadné pomocí **`highlight`** **`highlightPreTag`** parametrů, a **`highlightPostTag`** . Můžete určit, která *vyhledávací* pole by měla mít zvýrazněný text a zároveň zadat přesné řetězcové značky, které se připojí k začátku a konci odpovídajícího textu, který Azure kognitivní hledání vrátí.
 
 ## <a name="see-also"></a>Viz také
 

@@ -3,12 +3,12 @@ title: Přihlašovat Azure Notebooks Preview
 description: Nakonfigurujte svůj uživatelský účet pro Azure Notebooks pomocí účet Microsoft nebo pracovního/školního účtu.
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 9401a9e483f3f8db5af827f53937cb0f01b27a28
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2a19803ec0a621b981fa9198766c58376ba50534
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75646292"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85125834"
 ---
 # <a name="your-user-account-for-azure-notebooks-preview"></a>Váš uživatelský účet pro Azure Notebooks Preview
 
@@ -53,7 +53,7 @@ Aby bylo možné povolit přístup, musí nadřazený prvek provést následují
 
 ## <a name="work-or-school-accounts"></a>Pracovní nebo školní účty
 
-Správce organizace vytvoří pracovní nebo školní účet, který členům organizace umožní přístup ke cloudovým službám Microsoftu, jako je například Office 365, a také jako účet pro přihlášení do systému Windows na počítači připojeném k doméně. Pracovní nebo školní účet obvykle používá e-mailovou adresu organizace, například any-user@contoso.com.
+Správce organizace vytvoří pracovní nebo školní účet, který členům organizace umožní přístup ke cloudovým službám Microsoftu, jako je například Microsoft 365, a také jako účet pro přihlášení do Windows na počítači připojeném k doméně. Pracovní nebo školní účet obvykle používá e-mailovou adresu organizace, například any-user@contoso.com .
 
 Přihlášení k Azure Notebooks pomocí pracovního nebo školního účtu může vyžadovat souhlas správce, protože Azure Notebooks shromažďuje nebo používá (ale nezveřejňuje) informace, jako je e-mailová adresa účtu a informace o prohlížeči uživatele. (Data prohlížeče se používají k optimalizaci funkcí v souladu s oblíbeným využitím.)
 

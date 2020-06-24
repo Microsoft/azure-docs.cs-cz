@@ -11,12 +11,12 @@ ms.date: 07/18/2018
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: f1f6f4a6a1d48a0f409d5e5aba644a26653aa7df
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 2e1167c92dccdfa7600a4827c0081647c190d7d4
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726056"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85252130"
 ---
 # <a name="control-access-to-iot-hub"></a>Řízení přístupu k IoT Hubu
 
@@ -60,7 +60,7 @@ Například v typickém řešení IoT:
 > [!NOTE]
 > Podrobné informace najdete v tématu [oprávnění](#iot-hub-permissions) .
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Ověřování
 
 Azure IoT Hub udělí přístup koncovým bodům, když ověří token podle zásad sdíleného přístupu a bezpečnostních přihlašovacích údajů v registru identit.
 
@@ -137,7 +137,7 @@ Token zabezpečení má následující formát:
 
 Tady jsou očekávané hodnoty:
 
-| Hodnota | Popis |
+| Hodnota | Description |
 | --- | --- |
 | označení |Řetězec pro podpis HMAC-SHA256 ve formátu: `{URL-encoded-resourceURI} + "\n" + expiry` . **Důležité**: klíč se dekóduje z formátu Base64 a používá se jako klíč k provedení výpočtu HMAC-SHA256. |
 | resourceUri |Předpona URI (podle segmentu) koncových bodů, ke kterým se dá dostat s tímto tokenem, počínaje názvem hostitele centra IoT (bez protokolu). Například `myHub.azure-devices.net/devices/device1`. |
@@ -147,7 +147,7 @@ Tady jsou očekávané hodnoty:
 
 **Poznámka k předponě**: PŘEDPONa identifikátoru URI je vypočítána segmentem a nikoli znakem. Například `/a/b` je prefix pro `/a/b/c` , ale ne pro `/a/bc` .
 
-Následující fragment kódu Node. js ukazuje funkci nazvanou **generateSasToken** , která vypočítá token ze vstupů `resourceUri, signingKey, policyName, expiresInMins` . Další části podrobně popisují, jak inicializovat různé vstupy pro různé případy použití tokenu.
+Následující fragment Node.js ukazuje funkci nazvanou **generateSasToken** , která vypočítá token ze vstupů `resourceUri, signingKey, policyName, expiresInMins` . Další části podrobně popisují, jak inicializovat různé vstupy pro různé případy použití tokenu.
 
 ```javascript
 var generateSasToken = function(resourceUri, signingKey, policyName, expiresInMins) {
@@ -198,11 +198,6 @@ def generate_sas_token(uri, key, policy_name, expiry=3600):
     return 'SharedAccessSignature ' + parse.urlencode(rawtoken)
 ```
 
-Níže jsou uvedené pokyny k instalaci požadovaných součástí.
-
-[!INCLUDE [Iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
-
-
 Funkce v jazyce C# pro vygenerování tokenu zabezpečení je:
 
 ```csharp
@@ -235,7 +230,6 @@ public static string generateSasToken(string resourceUri, string key, string pol
 
 ```
 
-
 > [!NOTE]
 > Vzhledem k tomu, že je doba platnosti tokenu ověřená na IoT Hubch počítačích, musí být posun na hodinách počítače, který generuje token, minimální.
 
@@ -266,7 +260,7 @@ Například token vytvořený pro přístup ke všem funkcím zařízení by mě
 * žádný název zásad,
 * čas vypršení platnosti.
 
-Příklad využívající předchozí funkci Node. js by byl:
+Příkladem použití předchozí funkce Node.js by byl:
 
 ```javascript
 var endpoint ="myhub.azure-devices.net/devices/device1";
@@ -300,7 +294,7 @@ Například služba tokenů pomocí předem vytvořených zásad sdíleného př
 * Název zásady: `device` ,
 * čas vypršení platnosti.
 
-Příklad využívající předchozí funkci Node. js by byl:
+Příkladem použití předchozí funkce Node.js by byl:
 
 ```javascript
 var endpoint ="myhub.azure-devices.net/devices/device1";

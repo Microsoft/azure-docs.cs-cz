@@ -4,15 +4,15 @@ description: Tento článek vás provede kroky pro vytváření a zřizování s
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: cherylmc
-ms.openlocfilehash: 05602538f206032d924b39a7dd8f4325c48a5224
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9cad8a157121c0ccb53674301572b02410e030cc
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74931375"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736233"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-classic"></a>Vytvoření a úprava partnerského vztahu pro okruh ExpressRoute (Classic)
 > [!div class="op_single_selector"]

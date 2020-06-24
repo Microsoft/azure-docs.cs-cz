@@ -4,29 +4,29 @@ description: Vytvořit, zřídit, ověřit, aktualizovat, odstranit a zrušit z�
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: ab44d5358154c17622eef68205ac2326e81377a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b3a0166a5ffb05cff6a38984549db45dbe71d8d7
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75770964"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736352"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-powershell"></a>Vytvoření a úprava okruhu ExpressRoute pomocí PowerShellu
 > [!div class="op_single_selector"]
 > * [portál Azure](expressroute-howto-circuit-portal-resource-manager.md)
-> * [Prostředí](expressroute-howto-circuit-arm.md)
+> * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
-> * [Šablona Azure Resource Manager](expressroute-howto-circuit-resource-manager-template.md)
+> * [Šablona Azure Resource Manageru](expressroute-howto-circuit-resource-manager-template.md)
 > * [Video – Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell (Classic)](expressroute-howto-circuit-classic.md)
 >
 
 Tento článek vám pomůže vytvořit okruh ExpressRoute pomocí rutin prostředí PowerShell a modelu nasazení Azure Resource Manager. Můžete také kontrolovat stav, aktualizovat, odstranit nebo zrušit zřízení okruhu.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Než začnete, Projděte si [požadavky](expressroute-prerequisites.md) a [pracovní postupy](expressroute-workflows.md) před zahájením konfigurace.
 
@@ -52,7 +52,7 @@ Get-AzExpressRouteServiceProvider
 
 Zkontrolujte, jestli je v seznamu uveden poskytovatel připojení. Poznamenejte si následující informace, které později budete potřebovat při vytváření okruhu:
 
-* Název
+* Name
 * PeeringLocations
 * BandwidthsOffered
 

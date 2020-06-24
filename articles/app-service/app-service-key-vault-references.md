@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: dd0a03ea76d517486bb9bda6d9628fb529166dd8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6ce11e806c514aa4a2074d120cb64ecdce222528
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81453723"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84735604"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Použití Key Vault odkazů pro App Service a Azure Functions
 
@@ -35,19 +35,23 @@ Aby bylo možné číst tajné kódy z Key Vault, je nutné vytvořit trezor a u
 
 ## <a name="reference-syntax"></a>Referenční syntaxe
 
-Odkaz na Key Vault je ve formátu `@Microsoft.KeyVault({referenceString})`, kde `{referenceString}` je nahrazen jednou z následujících možností:
+Odkaz na Key Vault je ve formátu `@Microsoft.KeyVault({referenceString})` , kde `{referenceString}` je nahrazen jednou z následujících možností:
 
 > [!div class="mx-tdBreakAll"]
-> | Řetězec odkazu                                                            | Popis                                                                                                                                                                                 |
+> | Řetězec odkazu                                                            | Description                                                                                                                                                                                 |
 > |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | SecretUri =_SecretUri_                                                       | **SecretUri** by měl být úplný identifikátor URI datové roviny tajného klíče v Key Vault, včetně verze, např.https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
 > | Trezor =_trezor_; Tajné heslo =_tajné heslo_ Verzetajnéhoklíče =_verzetajnéhoklíče_ | Název **trezoru** by měl být název vašeho prostředku Key Vault. Název **tajného** kódu by měl být název cílového tajného klíče. **Verzetajnéhoklíče** by měla být verze tajného klíče, který se má použít. |
 
-Například kompletní odkaz s verzí by vypadal takto:
+> [!NOTE] 
+> Aktuálně jsou požadovány verze. Při střídání tajných kódů bude nutné aktualizovat verzi v konfiguraci aplikace.
+
+Například kompletní odkaz by vypadal jako následující:
 
 ```
 @Microsoft.KeyVault(SecretUri=https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931)
 ```
+
 Máte k dispozici i další možnosti:
 
 ```
@@ -172,7 +176,7 @@ Příklad psuedo-Template pro aplikaci Function App může vypadat takto:
 ```
 
 > [!NOTE] 
-> V tomto příkladu je nasazení správy zdrojů závislé na nastavení aplikace. To je obvykle nebezpečné chování, protože se aktualizace nastavení aplikace chová asynchronně. Protože však jsme zahrnuli nastavení `WEBSITE_ENABLE_SYNC_UPDATE_SITE` aplikace, aktualizace je synchronní. To znamená, že nasazení správy zdrojů bude zahájeno až po úplné aktualizaci nastavení aplikace.
+> V tomto příkladu je nasazení správy zdrojů závislé na nastavení aplikace. To je obvykle nebezpečné chování, protože se aktualizace nastavení aplikace chová asynchronně. Protože však jsme zahrnuli `WEBSITE_ENABLE_SYNC_UPDATE_SITE` nastavení aplikace, aktualizace je synchronní. To znamená, že nasazení správy zdrojů bude zahájeno až po úplné aktualizaci nastavení aplikace.
 
 ## <a name="troubleshooting-key-vault-references"></a>Řešení potíží s Key Vaultmi odkazy
 

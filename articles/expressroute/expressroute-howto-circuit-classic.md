@@ -4,15 +4,15 @@ description: Tento článek vás provede kroky pro kontrolu stavu, aktualizaci n
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/05/2019
 ms.author: cherylmc
-ms.openlocfilehash: e421a534b04f74d2a2eb0bc06aeffa52684ae17a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2f2aac6dd7e073634d4114d33fae6bebd51fe176
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74931966"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736318"
 ---
 # <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>Úprava okruhu ExpressRoute pomocí prostředí PowerShell (Classic)
 
@@ -20,7 +20,7 @@ ms.locfileid: "74931966"
 > * [portál Azure](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
-> * [Šablona Azure Resource Manager](expressroute-howto-circuit-resource-manager-template.md)
+> * [Šablona Azure Resource Manageru](expressroute-howto-circuit-resource-manager-template.md)
 > * [Video – Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell (Classic)](expressroute-howto-circuit-classic.md)
 >
@@ -33,7 +33,7 @@ Tento článek vás provede kroky pro kontrolu stavu, aktualizaci nebo odstraně
 
 [!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 [!INCLUDE [classic powershell install instructions](../../includes/expressroute-poweshell-classic-install-include.md)]
 

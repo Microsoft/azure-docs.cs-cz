@@ -4,15 +4,15 @@ description: Tento článek vás provede kroky pro vytváření a zřizování s
 services: expressroute
 author: jaredr80
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/13/2019
 ms.author: jaredro
-ms.openlocfilehash: 2c28df35eec862afb5b0078ca7693898e9b58533
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ab20ae00fd9f275d21bc818e07bdc868944ee689
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79264840"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84735264"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-powershell"></a>Vytvoření a úprava partnerského vztahu pro okruh ExpressRoute pomocí prostředí PowerShell
 
@@ -20,7 +20,7 @@ Tento článek vám pomůže vytvořit a spravovat konfiguraci směrování pro 
 
 > [!div class="op_single_selector"]
 > * [portál Azure](expressroute-howto-routing-portal-resource-manager.md)
-> * [Prostředí](expressroute-howto-routing-arm.md)
+> * [PowerShell](expressroute-howto-routing-arm.md)
 > * [Azure CLI](howto-routing-cli.md)
 > * [Veřejné partnerské vztahy](about-public-peering.md)
 > * [Video – privátní partnerské vztahy](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
@@ -183,7 +183,7 @@ Tato část vám pomůže vytvořit, získat, aktualizovat a odstranit konfigura
    Install-Module Az
    ```
 
-   Importujte všechny moduly AZ.\* modules v rozsahu známé sémantické verze.
+   Importujte všechna rozhraní AZ. \* moduly v rozsahu známé sémantické verze.
 
    ```azurepowershell-interactive
    Import-Module Az

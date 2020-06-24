@@ -2,21 +2,21 @@
 title: Plánování automatického zřizování uživatelů pro Azure Active Directory
 description: Pokyny k plánování a provádění automatického zřizování uživatelů
 services: active-directory
-author: martincoetzer
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/17/2019
-ms.author: martinco
+ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 4f391a2fce669c2684ac5001e3659247adfeb4f6
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: dd5248996661be6d4ace81afd7ab942ab70eb4ff
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593535"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84781629"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Naplánování nasazení automatického zřizování uživatelů
 
@@ -42,7 +42,7 @@ Mezi klíčové výhody povolení automatického zřizování uživatelů patř�
 
 * **Snižte náklady**. Automatické zřizování uživatelů snižuje náklady tím, že se vyhne neefektivitám a lidským chybám přidruženým k ručnímu zřizování. Omezuje nutnost vlastních řešení pro zřizování uživatelů, skriptů a protokolů auditu.
 
-### <a name="licensing"></a>Licencování
+### <a name="licensing"></a>Licensing
 
 Služba Azure AD poskytuje samoobslužnou integraci jakékoli aplikace pomocí šablon poskytovaných v nabídce Galerie aplikací. Úplný seznam licenčních požadavků najdete na [stránce licencování Azure AD](https://azure.microsoft.com/pricing/details/active-directory/).
 
@@ -217,7 +217,7 @@ Pokud chcete snížit problémy po nasazení, zvažte následující:
 
 * Aplikace mohou mít určitá omezení nebo požadavky, které je potřeba splnit, aby zřizování uživatelů fungovalo správně. Například časová rezerva zkrátí hodnoty pro určité atributy. Přečtěte si o [automatických kurzech zřizování uživatelů](../saas-apps/tutorial-list.md) specifických pro jednotlivé aplikace.
 
-* Potvrďte konzistenci schémat mezi zdrojovým a cílovým systémem. Mezi běžné problémy patří atributy, jako je hlavní název uživatele nebo e-mail, se neshodují. Například hlavní název uživatele ve službě Azure AD nastavený *john_smith@contoso.com* jako a v aplikaci je *jsmith@contoso.com*. Další informace najdete v referenčních informacích o [schématu uživatelů a skupin](../app-provisioning/use-scim-to-provision-users-and-groups.md).
+* Potvrďte konzistenci schémat mezi zdrojovým a cílovým systémem. Mezi běžné problémy patří atributy, jako je hlavní název uživatele nebo e-mail, se neshodují. Například hlavní název uživatele ve službě Azure AD nastavený jako *john_smith@contoso.com* a v aplikaci je *jsmith@contoso.com* . Další informace najdete v referenčních informacích o [schématu uživatelů a skupin](../app-provisioning/use-scim-to-provision-users-and-groups.md).
 
 ## <a name="plan-testing-and-security"></a>Plánování testování a zabezpečení
 

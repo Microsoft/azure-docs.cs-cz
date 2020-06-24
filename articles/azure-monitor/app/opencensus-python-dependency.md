@@ -6,12 +6,12 @@ author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.custom: tracking-python
-ms.openlocfilehash: 4d9f4475edb9d2f44fe51549dd0dc701b638bf8e
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: d12db3ab046d115b60b67a9c22bf4e885cd0ef02
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84553967"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84782564"
 ---
 # <a name="track-dependencies-with-opencensus-python"></a>Sledování závislostí pomocí OpenCensus Pythonu
 
@@ -84,6 +84,9 @@ conn.close()
 ## <a name="dependencies-with-django-integration"></a>Závislosti s integrací "Django"
 
 Sledujte své odchozí požadavky Django s `django` integrací OpenCensus.
+
+> [!NOTE]
+> Pouze odchozí požadavky Django, které jsou sledovány, jsou volání do databáze. Požadavky na Django aplikaci najdete v tématu [příchozí požadavky](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python-request#tracking-django-applications).
 
 Stáhněte si a nainstalujte `opencensus-ext-django` z [PyPI](https://pypi.org/project/opencensus-ext-django/) a přidejte následující řádek do `MIDDLEWARE` oddílu v souboru Django `settings.py` .
 

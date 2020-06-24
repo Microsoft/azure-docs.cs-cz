@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: f5c93e35b2a9124ac6d480b3719608ee3b4484a5
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 681b81fa7f6ce74f7e48eb518a2c951e94c4b00d
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84554824"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84789528"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrace vaší stávající infrastruktury NPS se službou Multi-Factor Authentication
 
@@ -165,7 +165,7 @@ Pomocí těchto kroků si můžete spustit testovací účet:
 
 1. [Stáhněte rozšíření serveru NPS](https://aka.ms/npsmfa) z webu Microsoft Download Center.
 2. Zkopírujte binární soubor do serveru NPS (Network Policy Server), který chcete konfigurovat.
-3. Spusťte soubor *Setup. exe* a postupujte podle pokynů k instalaci. Pokud dojde k chybám, dvakrát ověřte, zda byly dvě knihovny z části požadavků úspěšně nainstalovány.
+3. Spusťte *setup.exe* a postupujte podle pokynů k instalaci. Pokud dojde k chybám, dvakrát ověřte, zda byly dvě knihovny z části požadavků úspěšně nainstalovány.
 
 #### <a name="upgrade-the-nps-extension"></a>Upgrade rozšíření serveru NPS
 
@@ -190,11 +190,20 @@ Pokud nechcete používat vlastní certifikáty (místo certifikátů podepsaný
 1. Spusťte prostředí Windows PowerShell jako správce.
 2. Změňte adresáře.
 
-   `cd "C:\Program Files\Microsoft\AzureMfa\Config"`
+   ```powershell
+   cd "C:\Program Files\Microsoft\AzureMfa\Config"
+   ```
 
 3. Spusťte PowerShellový skript vytvořený instalačním programem.
 
-   `.\AzureMfaNpsExtnConfigSetup.ps1`
+   > [!IMPORTANT]
+   > Pro zákazníky, kteří používají Azure Government nebo cloudy Azure Čína 21Vianet, nejprve upravte `Connect-MsolService` rutiny ve skriptu *AzureMfaNpsExtnConfigSetup.ps1* tak, aby zahrnovaly parametry *AzureEnvironment* pro požadovaný Cloud. Zadejte například *-AzureEnvironment USGovernment* nebo *-AzureEnvironment AzureChinaCloud*.
+   >
+   > Další informace najdete v tématu [Reference k parametrům Connect-MsolService](/powershell/module/msonline/connect-msolservice#parameters).
+
+   ```powershell
+   .\AzureMfaNpsExtnConfigSetup.ps1
+   ```
 
 4. Přihlaste se k Azure AD jako správce.
 5. PowerShell zobrazí výzvu k zadání ID tenanta. Použijte identifikátor GUID ID adresáře, který jste zkopírovali z Azure Portal v části požadavky.
@@ -205,22 +214,30 @@ Opakujte tyto kroky na všech dalších serverech NPS, které chcete nastavit pr
 Pokud uplynula platnost předchozího certifikátu počítače a vygeneroval se nový certifikát, měli byste odstranit všechny certifikáty s vypršenou platností. Máte-li certifikáty s vypršenou platností, můžete způsobit problémy s počátkem rozšíření serveru NPS
 
 > [!NOTE]
-> Pokud místo generování certifikátů pomocí skriptu PowerShell použijete vlastní certifikáty, ujistěte se, že jsou zarovnané na konvence vytváření názvů NPS. Název subjektu musí být **CN = \<TenantID\> , OU = rozšíření Microsoft NPS**. 
+> Pokud místo generování certifikátů pomocí skriptu PowerShell použijete vlastní certifikáty, ujistěte se, že jsou zarovnané na konvence vytváření názvů NPS. Název subjektu musí být **CN = \<TenantID\> , OU = rozšíření Microsoft NPS**.
 
-### <a name="microsoft-azure-government-additional-steps"></a>Microsoft Azure Government dalších kroků
+### <a name="microsoft-azure-government-or-azure-china-21vianet-additional-steps"></a>Microsoft Azure Government nebo Azure Čína 21Vianet – další kroky
 
-Pro zákazníky, kteří používají Azure Government Cloud, jsou na každém serveru NPS potřeba tyto další kroky konfigurace.
+Pro zákazníky, kteří používají Azure Government nebo cloudy Azure Čína 21Vianet, jsou na každém serveru NPS potřeba tyto další kroky konfigurace.
 
 > [!IMPORTANT]
-> Tato nastavení registru nakonfigurujte jenom v případě, že jste zákazníkem Azure Government.
+> Tato nastavení registru nakonfigurujte jenom v případě, že jste zákazník Azure Government nebo Azure Čína 21Vianet.
 
-1. Pokud jste zákazník Azure Government, otevřete **Editor registru** na serveru NPS.
-1. Přejděte na adresu `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa`. Nastavte následující hodnoty klíče:
+1. Pokud jste zákazníkem Azure Government nebo Azure Čína 21Vianet, otevřete **Editor registru** na serveru NPS.
+1. Přejděte na adresu `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa`.
+1. Pro Azure Government zákazníky nastavte následující hodnoty klíče:
 
     | Klíč registru       | Hodnota |
     |--------------------|-----------------------------------|
     | AZURE_MFA_HOSTNAME | adnotifications.windowsazure.us   |
     | STS_URL            | https://login.microsoftonline.us/ |
+
+1. Pro zákazníky Azure Čína 21Vianet nastavte následující klíčové hodnoty:
+
+    | Klíč registru       | Hodnota |
+    |--------------------|-----------------------------------|
+    | AZURE_MFA_HOSTNAME | adnotifications.windowsazure.cn   |
+    | STS_URL            | https://login.chinacloudapi.cn/   |
 
 1. Opakujte předchozí dva kroky a nastavte hodnoty klíče registru pro každý server NPS.
 1. Restartujte službu NPS pro každý server NPS.
@@ -263,13 +280,13 @@ Pokud máte uživatele, kteří nejsou zaregistrovaní pro MFA, můžete určit,
 
 Můžete zvolit vytvoření tohoto klíče a jeho nastavení na hodnotu NEPRAVDA, pokud se vaši uživatelé chtějí zaregistrovat a nemusí se ještě registrovat pro Azure MFA. Vzhledem k tomu, že nastavení klíče umožňuje uživatelům, kteří nejsou zaregistrovaní pro MFA, přihlásit se, měli byste tento klíč před zahájením provozu odebrat.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 ### <a name="nps-extension-health-check-script"></a>Skript kontroly stavu rozšíření serveru NPS
 
 Následující skript je k dispozici k provedení základních kroků kontroly stavu při řešení potíží s rozšířením NPS.
 
-[MFA_NPS_Troubleshooter. ps1](https://docs.microsoft.com/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/)
+[MFA_NPS_Troubleshooter.ps1](https://docs.microsoft.com/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/)
 
 ---
 
@@ -277,7 +294,7 @@ Následující skript je k dispozici k provedení základních kroků kontroly s
 
 Vyhledejte certifikát podepsaný svým držitelem vytvořeného instalačním programem v úložišti certifikátů a zkontrolujte, zda má privátní klíč oprávnění udělená **síťové službě**uživatele. Certifikát má název subjektu **CN \<tenantid\> , OU = rozšíření Microsoft NPS** .
 
-Certifikáty podepsané svým držitelem generované skriptem *AzureMfaNpsExtnConfigSetup. ps1* mají také životnost po dobu dvou let. Při ověřování, zda je certifikát nainstalován, byste měli také ověřit, zda nevypršela platnost certifikátu.
+Certifikáty podepsané svým držitelem generované skriptem *AzureMfaNpsExtnConfigSetup.ps1* mají taky dobu platnosti dvou let. Při ověřování, zda je certifikát nainstalován, byste měli také ověřit, zda nevypršela platnost certifikátu.
 
 ---
 
@@ -285,7 +302,7 @@ Certifikáty podepsané svým držitelem generované skriptem *AzureMfaNpsExtnCo
 
 Otevřete příkazový řádek PowerShellu a spusťte následující příkazy:
 
-``` PowerShell
+```powershell
 import-module MSOnline
 Connect-MsolService
 Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b09b8cd720" -ReturnKeyValues 1
@@ -295,7 +312,7 @@ Tyto příkazy vytisknou všechny certifikáty, které v relaci PowerShellu při
 
 Následující příkaz vytvoří soubor s názvem "npscertificate" na jednotce "C:" ve formátu. cer.
 
-``` PowerShell
+```powershell
 import-module MSOnline
 Connect-MsolService
 Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b09b8cd720" -ReturnKeyValues 1 | select -ExpandProperty "value" | out-file c:\npscertificate.cer

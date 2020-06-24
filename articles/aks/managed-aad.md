@@ -4,24 +4,24 @@ description: Naučte se používat Azure AD ve službě Azure Kubernetes Service
 services: container-service
 manager: gwallace
 ms.topic: article
-ms.date: 05/11/2020
-ms.openlocfilehash: 67f5f707ad2971551e3c9623dd5c07ad880afcf2
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/04/2020
+ms.openlocfilehash: 8d446d82550a6bc790d162ee944b0753979b6546
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83211142"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84782666"
 ---
-# <a name="integrate-azure-ad-in-azure-kubernetes-service-preview"></a>Integrace služby Azure AD ve službě Azure Kubernetes (Preview)
+# <a name="integrate-aks-managed-azure-ad-preview"></a>Integrace služby Azure AD spravované AKS (Preview)
 
 > [!Note]
-> Stávající clustery AKS s integrací AAD (Azure Active Directory) neovlivní nové prostředí AAD spravované AKS.
+> Stávající clustery AKS (Azure Kubernetes Service) s integrací služby Azure Active Directory (Azure AD) neovlivní nové prostředí Azure AD spravované v AKS.
 
-Integrace Azure AD s AKSem spravovaným službou AAD je navržená tak, aby zjednodušila integrační prostředí Azure AD, kde uživatelé předtím museli vytvořit klientskou aplikaci, serverovou aplikaci a požadovali, aby tenant služby Azure AD udělil oprávnění ke čtení adresáře. V nové verzi poskytovatel prostředků AKS spravuje klientské a serverové aplikace za vás.
+Integrace Azure AD s AKS spravovaná Azure AD je navržená tak, aby zjednodušila prostředí integrace služby Azure AD, kde uživatelé předtím museli vytvořit klientskou aplikaci, serverovou aplikaci a požadovali, aby tenant služby Azure AD udělil oprávnění ke čtení adresáře. V nové verzi poskytovatel prostředků AKS spravuje klientské a serverové aplikace za vás.
 
 ## <a name="limitations"></a>Omezení
 
-* V současné době nemůžete upgradovat existující cluster AKS AAD integrovaný na nové prostředí AAD spravované AKS.
+* V současné době nemůžete upgradovat stávající cluster AKS Azure AD na nové prostředí Azure AD spravované AKS.
 
 > [!IMPORTANT]
 > Funkce AKS ve verzi Preview jsou k dispozici na samoobslužné službě, na základě souhlasu. Verze Preview jsou k dispozici "tak jak jsou" a "jako dostupné" a jsou vyloučeny ze smluv o úrovni služeb a omezené záruky. AKS verze Preview jsou částečně pokryté zákaznickou podporou na základě nejlepších úsilí. V takovém případě tyto funkce nejsou určeny pro použití v produkčním prostředí. Další informace najdete v následujících článcích podpory:
@@ -29,7 +29,9 @@ Integrace Azure AD s AKSem spravovaným službou AAD je navržená tak, aby zjed
 > - [Zásady podpory AKS](support-policies.md)
 > - [Nejčastější dotazy k podpoře Azure](faq.md)
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
+
+* Vyhledejte ID tenanta účtu Azure tak, že přejdete na Azure Portal a vyberete Azure Active Directory > vlastnosti > ID adresáře.
 
 > [!Important]
 > Je nutné použít Kubectl s minimální verzí 1,18.
@@ -52,7 +54,7 @@ az extension update --name aks-preview
 az extension list
 ```
 
-K instalaci kubectl použijte následující:
+K instalaci kubectl použijte následující příkazy:
 
 ```azurecli
 sudo az aks install-cli
@@ -79,37 +81,64 @@ Pokud se stav zobrazuje jako zaregistrované, aktualizujte registraci `Microsoft
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
 ```
+## <a name="azure-ad-authentication-overview"></a>Přehled ověřování Azure AD
+
+Správci clusteru můžou nakonfigurovat řízení přístupu na základě role (RBAC) Kubernetes na základě identity uživatele nebo členství ve skupině adresáře. Ověřování Azure AD je k dispozici pro clustery AKS s OpenID Connect. OpenID Connect je vrstva identity postavená nad protokolem OAuth 2,0. Další informace o OpenID připojení najdete v dokumentaci k [otevřenému ID Connect][open-id-connect].
+
+V rámci clusteru Kubernetes se ověřování pomocí tokenu Webhooku používá k ověření ověřovacích tokenů. Ověřování tokenu Webhooku je nakonfigurované a spravované jako součást clusteru AKS.
+
+## <a name="webhook-and-api-server"></a>Webhook a Server API
+
+:::image type="content" source="media/aad-integration/auth-flow.png" alt-text="Tok ověřování serveru Webhook a API":::
+
+Jak je znázorněno na obrázku výše, Server rozhraní API volá server Webhooku AKS a provede následující kroky:
+
+1. Klientská aplikace Azure AD se používá v kubectl k přihlášení uživatelů pomocí [toku udělení autorizace zařízení OAuth 2,0](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-device-code).
+2. Azure AD poskytuje access_token, id_token a refresh_token.
+3. Uživatel vytvoří požadavek na kubectl s access_token z kubeconfig.
+4. Kubectl odesílá access_token do APIServer.
+5. Server rozhraní API je nakonfigurovaný se serverem Webhooku ověřování a provede ověření.
+6. Server Webhooku ověřování potvrdí, že je podpis JSON Web Token platný, kontrolou veřejného podpisového klíče Azure AD.
+7. Serverová aplikace používá k dotazování členství přihlášeného uživatele ze služby MS Graph API uživateli zadané přihlašovací údaje.
+8. Do APIServer se pošle odpověď s informacemi o uživateli, jako je například deklarace identity přístupového tokenu (UPN) hlavního názvu uživatele (UPN), a členství uživatele ve skupině na základě ID objektu.
+9. Rozhraní API provede rozhodnutí o autorizaci na základě role Kubernetes nebo RoleBinding.
+10. Po ověření Server API vrátí odpověď na kubectl.
+11. Kubectl poskytuje zpětnou vazbu uživateli.
+
 
 ## <a name="create-an-aks-cluster-with-azure-ad-enabled"></a>Vytvoření clusteru AKS s povolenou službou Azure AD
 
-Cluster AKS teď můžete vytvořit pomocí následujících příkazů rozhraní příkazového řádku.
+Pomocí následujících příkazů rozhraní příkazového řádku vytvořte cluster AKS.
 
-Nejdřív vytvořte skupinu prostředků Azure:
+Vytvořte skupinu prostředků Azure:
 
 ```azurecli-interactive
 # Create an Azure resource group
 az group create --name myResourceGroup --location centralus
 ```
 
-Pak vytvořte cluster AKS:
+Můžete použít existující skupinu Azure AD nebo vytvořit novou. Budete potřebovat ID objektu pro vaši skupinu Azure AD.
 
 ```azurecli-interactive
-az aks create -g MyResourceGroup -n MyManagedCluster --enable-aad
+# List existing groups in the directory
+az ad group list
 ```
-Výše uvedený příkaz vytvoří cluster AKS se třemi uzly, ale uživatel, který cluster vytvořil, ve výchozím nastavení není členem skupiny, která má přístup k tomuto clusteru. Tento uživatel musí vytvořit skupinu Azure AD, přidat ji jako člena skupiny a pak aktualizovat cluster, jak je uvedeno níže. Postupujte podle [pokynů.](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal)
 
-Po vytvoření skupiny a přidání sebe (a dalších) jako člena můžete cluster aktualizovat pomocí skupiny Azure AD pomocí následujícího příkazu.
+K vytvoření nové skupiny Azure AD pro správce clusteru použijte následující příkaz:
 
 ```azurecli-interactive
-az aks update -g MyResourceGroup -n MyManagedCluster [--aad-admin-group-object-ids <id>] [--aad-tenant-id <id>]
+# Create an Azure AD group
+az ad group create --display-name MyDisplay --mail-nickname MyDisplay
 ```
-Případně, pokud nejprve vytvoříte skupinu a přidáte členy, můžete skupinu Azure AD povolit při vytváření pomocí následujícího příkazu.
+
+Vytvoření clusteru AKS a povolení přístupu pro správu pro skupinu Azure AD
 
 ```azurecli-interactive
+# Create an AKS-managed Azure AD cluster
 az aks create -g MyResourceGroup -n MyManagedCluster --enable-aad [--aad-admin-group-object-ids <id>] [--aad-tenant-id <id>]
 ```
 
-Úspěšné vytvoření clusteru AAD spravovaného AKS má následující oddíl v těle odpovědi.
+Úspěšné vytvoření clusteru Azure AD spravovaného AKS má následující část v těle odpovědi.
 ```
 "Azure ADProfile": {
     "adminGroupObjectIds": null,
@@ -124,12 +153,17 @@ az aks create -g MyResourceGroup -n MyManagedCluster --enable-aad [--aad-admin-g
 Cluster se vytvoří během několika minut.
 
 ## <a name="access-an-azure-ad-enabled-cluster"></a>Přístup ke clusteru s podporou Azure AD
-Získání přihlašovacích údajů správce pro přístup ke clusteru:
 
+K provedení následujících kroků budete potřebovat integrovanou roli [uživatele clusteru Azure Kubernetes Service](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#azure-kubernetes-service-cluster-user-role) .
+
+Získat přihlašovací údaje uživatele pro přístup ke clusteru:
+ 
 ```azurecli-interactive
-az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster --admin
+ az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster
 ```
-Teď k zobrazení uzlů v clusteru použijte příkaz kubectl Get Nodes:
+Pokud se chcete přihlásit, postupujte podle pokynů.
+
+K zobrazení uzlů v clusteru použijte příkaz kubectl Get Nodes:
 
 ```azurecli-interactive
 kubectl get nodes
@@ -139,22 +173,45 @@ aks-nodepool1-15306047-0   Ready    agent   102m   v1.15.10
 aks-nodepool1-15306047-1   Ready    agent   102m   v1.15.10
 aks-nodepool1-15306047-2   Ready    agent   102m   v1.15.10
 ```
+Nakonfigurujte [Access Control na základě rolí (RBAC)](https://review.docs.microsoft.com/azure/aks/azure-ad-rbac?branch=pr-en-us-117564) a nakonfigurujte další skupiny zabezpečení pro clustery.
 
-Získání přihlašovacích údajů uživatele pro přístup ke clusteru:
- 
+## <a name="troubleshooting-access-issues-with-azure-ad"></a>Řešení potíží s přístupem k Azure AD
+
+> [!Important]
+> Následující kroky popisují normální ověřování skupiny služby Azure AD. Používejte je pouze v naléhavém případě.
+
+Pokud trvale zablokujete přístup k platné skupině Azure AD s přístupem ke clusteru, můžete k němu získat přihlašovací údaje správce, a to přímo.
+
+K provedení těchto kroků budete potřebovat přístup k předdefinované roli [Správce clusteru služby Azure Kubernetes](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#azure-kubernetes-service-cluster-admin-role) .
+
 ```azurecli-interactive
- az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster
+az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster --admin
 ```
-Pokud se chcete přihlásit, postupujte podle pokynů.
 
-Dostanete se: **musíte se přihlásit k serveru (Neautorizováno)** .
+## <a name="non-interactive-login-with-kubelogin"></a>Neinteraktivní přihlášení pomocí kubelogin
 
-Uživatel uvedený výše získá chybu, protože uživatel není součástí skupiny, která má přístup ke clusteru.
+Existují některé neinteraktivní scénáře, jako jsou kanály průběžné integrace, které nejsou aktuálně k dispozici v kubectl. [Kubelogin](https://github.com/Azure/kubelogin) můžete použít pro přístup ke clusteru v neinteraktivních scénářích.
 
 ## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si o [Access Control na základě rolí Azure AD][azure-ad-rbac].
 * Pomocí [kubelogin](https://github.com/Azure/kubelogin) můžete získat přístup k funkcím pro ověřování Azure, které nejsou dostupné v kubectl.
+* Pomocí [šablon Azure Resource Manager (ARM)][aks-arm-template] můžete vytvářet clustery s podporou Azure AD s povolenou správou AKS.
+
+<!-- LINKS - external -->
+[kubernetes-webhook]:https://kubernetes.io/docs/reference/access-authn-authz/authentication/#webhook-token-authentication
+[kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
+[aks-arm-template]: https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters
 
 <!-- LINKS - Internal -->
 [azure-ad-rbac]: azure-ad-rbac.md
+[az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
+[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
+[az-group-create]: /cli/azure/group#az-group-create
+[open-id-connect]:../active-directory/develop/v2-protocols-oidc.md
+[az-ad-user-show]: /cli/azure/ad/user#az-ad-user-show
+[rbac-authorization]: concepts-identity.md#role-based-access-controls-rbac
+[operator-best-practices-identity]: operator-best-practices-identity.md
+[azure-ad-rbac]: azure-ad-rbac.md
+[azure-ad-cli]: azure-ad-integration-cli.md
+

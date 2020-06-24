@@ -2,14 +2,14 @@
 title: Koncepty – sítě v Azure Kubernetes Services (AKS)
 description: Přečtěte si o sítích ve službě Azure Kubernetes Service (AKS), včetně kubenet a Azure CNI, řadičů pro příjem dat, nástrojů pro vyrovnávání zatížení a statických IP adres.
 ms.topic: conceptual
-ms.date: 02/28/2019
+ms.date: 06/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 51773a46b77cb1e9a89b9c85a5f62c4a6b7af3be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ae1c2b95a948f2344119af234539b6fab4edaaac
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82146063"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84789493"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Koncepty sítě pro aplikace ve službě Azure Kubernetes Service (AKS)
 
@@ -129,6 +129,8 @@ Když vytvoříte službu typu Vyrovnávání zatížení, vytvoří se základn
 
 V AKS můžete vytvořit prostředek příchozího přenosu dat pomocí nějakého typu NGINX nebo použít funkci směrování aplikace HTTP AKS. Když zapnete směrování aplikace HTTP pro cluster AKS, platforma Azure vytvoří kontroler příchozího přenosu dat a *externí řadič DNS* . Při vytváření nových prostředků příchozího přenosu v Kubernetes se požadované záznamy DNS vytvoří v zóně DNS specifické pro clustery. Další informace najdete v tématu [nasazení směrování aplikace http][aks-http-routing].
 
+Doplněk Application Gateway AGIC () umožňuje zákazníkům AKS využít Application Gateway nativní Nástroj pro vyrovnávání zatížení na úrovni 7 Azure úrovně 7 k zveřejnění cloudového softwaru na Internet. AGIC monitoruje cluster Kubernetes, na kterém je hostovaný, a nepřetržitě aktualizuje Application Gateway, aby se vybrané služby zobrazovaly na internetu. Další informace o doplňku AGIC pro AKS najdete v tématu [co je Application Gateway řadič pro příchozí přenosy?][agic-overview]
+
 Další běžnou funkcí příchozího přenosu dat je ukončení SSL/TLS. U rozsáhlých webových aplikací, které jsou k dispozici prostřednictvím protokolu HTTPS, může být ukončení protokolu TLS zpracováno prostředkem příchozího přenosu dat, nikoli v rámci samotné aplikace. Pokud chcete zajistit automatické generování a konfiguraci certifikace TLS, můžete nakonfigurovat prostředek příchozího přenosu dat tak, aby používal zprostředkovatele, jako je například zašifrování. Další informace o konfiguraci kontroleru NGINX příchozího přenosu dat pomocí šifry najdete v tématu příchozí [a TLS][aks-ingress-tls].
 
 Můžete taky nakonfigurovat svůj kontroler příchozího přenosu dat, aby se v požadavcích na kontejnery v clusteru AKS zachovala zdrojová IP adresa klienta. Když je požadavek klienta směrován do kontejneru v clusteru AKS prostřednictvím vašeho kontroleru příchozího přenosu dat, původní zdrojová IP adresa této žádosti nebude k dispozici pro cílový kontejner. Když povolíte *zachování IP adresy zdrojového klienta*, je zdrojová IP adresa pro klienta k dispozici v hlavičce žádosti v části *X-předáno-pro*. Pokud používáte zachování IP adresy zdrojového klienta v řadiči příchozího přenosu dat, nemůžete použít průchozí protokol TLS. U jiných služeb, jako je třeba typ *Vyrovnávání zatížení* sítě, můžete použít předávání IP adres klienta a předávací protokol TLS.
@@ -180,6 +182,7 @@ Další informace o základních konceptech Kubernetes a AKS najdete v následuj
 [aks-concepts-scale]: concepts-scale.md
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-identity]: concepts-identity.md
+[agic-overview]: ../application-gateway/ingress-controller-overview.md
 [use-network-policies]: use-network-policies.md
 [operator-best-practices-network]: operator-best-practices-network.md
 [support-policies]: support-policies.md
