@@ -6,16 +6,16 @@ ms.service: automation
 ms.subservice: process-automation
 author: mgoedtel
 ms.author: magoedte
-ms.date: 06/03/2020
+ms.date: 06/12/2020
 ms.topic: conceptual
 manager: carmonm
 ms.custom: references_regions
-ms.openlocfilehash: 1ccf87bfd387182af269670abf1d86833854834d
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: a8b5f14147ee748f5d32d794f51d5437eeddfb51
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331623"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261184"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>Podporované oblasti pro propojený pracovní prostor Log Analytics
 
@@ -30,26 +30,25 @@ V následující tabulce jsou uvedena podporovaná mapování:
 |**USA**||
 |EastUS<sup>1</sup>|EastUS2|
 |WestUS2|WestUS2|
-|WestCentralUS<sup>2</sup>|WestCentralUS<sup>2</sup>|
+|WestCentralUS|WestCentralUS|
 |**Kanada**||
 |CanadaCentral|CanadaCentral|
 |**Asie a Tichomoří**||
 |AustraliaSoutheast|AustraliaSoutheast|
 |SoutheastAsia|SoutheastAsia|
 |CentralIndia|CentralIndia|
-|ChinaEast2<sup>3</sup>|ChinaEast2|
+|ChinaEast2<sup>2</sup>|ChinaEast2|
 |JapanEast|JapanEast|
 |**Evropa**||
 |UKSouth|UKSouth|
 |WestEurope|WestEurope|
 |**US Gov**||
 |USGovVirginia|USGovVirginia|
+|USGovArizona<sup>2</sup>|USGovArizona|
 
 <sup>1</sup> mapování EastUS pro Log Analytics pracovní prostory na účty Automation není přesné mapování oblastí na oblast, ale je to správné mapování.
 
-<sup>2</sup> v důsledku omezení kapacity není oblast dostupná, když vytváříte nové prostředky. To zahrnuje účty Automation a pracovní prostory Log Analytics. Dříve existující propojené prostředky v oblasti by však měly fungovat i nadále.
-
-<sup>3</sup> v Azure Čína je podporovaná jenom Update Management a další funkce, jako je Change Tracking a inventář, nejsou v tuto chvíli dostupné. 
+<sup>2</sup> v této oblasti je podporovaná jenom Update Management a další funkce, jako je Change Tracking a inventář, nejsou v tuto chvíli k dispozici.
 
 ## <a name="unlink-a-workspace"></a>Zrušit propojení pracovního prostoru
 

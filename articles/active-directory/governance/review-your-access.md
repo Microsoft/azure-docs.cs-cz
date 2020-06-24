@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 04/30/2020
+ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0de10534cb00c66ad914b2c64ac2547b0e3fe03b
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 33d946c47a17bb537c7644937547ad479b4637e5
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611055"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85077920"
 ---
 # <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>Kontrola přístupu pro vlastní skupiny nebo aplikace v prohlídekch služby Azure AD
 
@@ -33,7 +33,7 @@ Tento článek popisuje, jak zkontrolovat vlastní přístup ke skupině nebo ap
 Prvním krokem k provedení kontroly přístupu je vyhledání a otevření kontroly přístupu.
 
 >[!IMPORTANT]
-> Při přijímání e-mailu může dojít k prodlevám a v některých případech může trvat až 24 hodin. Seznam azure-noreply@microsoft.com povolených adres, abyste měli jistotu, že přijímáte všechny e-maily.
+> Při přijímání e-mailu může dojít k prodlevám a v některých případech může trvat až 24 hodin. Seznam povolených adres azure-noreply@microsoft.com , abyste měli jistotu, že přijímáte všechny e-maily.
 
 1. Vyhledejte e-mail od Microsoftu, který vás vyzve ke kontrole přístupu. Tady je příklad e-mailu pro kontrolu přístupu ke skupině.
 
@@ -43,7 +43,7 @@ Prvním krokem k provedení kontroly přístupu je vyhledání a otevření kont
 
 Pokud e-maily nemáte, můžete najít své nedokončené kontroly přístupu pomocí následujících kroků.
 
-1. Přihlaste se k portálu moje aplikace [https://myapps.microsoft.com](https://myapps.microsoft.com)na adrese.
+1. Přihlaste se k portálu moje aplikace na adrese [https://myapps.microsoft.com](https://myapps.microsoft.com) .
 
     ![Portál moje aplikace seznam aplikací, ke kterým máte oprávnění](./media/review-your-access/myapps-access-panel.png)
 
@@ -88,7 +88,7 @@ Můžete vyzkoušet nové prostředí s aktualizovaným uživatelským rozhraní
 
 ### <a name="my-apps-portal"></a>Portál moje aplikace
 
-1. Přihlaste se k portálu moje aplikace [https://myapps.microsoft.com](https://myapps.microsoft.com)na adrese.
+1. Přihlaste se k portálu moje aplikace na adrese [https://myapps.microsoft.com](https://myapps.microsoft.com) .
 
     ![Portál moje aplikace seznam aplikací, ke kterým máte oprávnění](./media/review-your-access/myapps-access-panel.png)
 
@@ -103,10 +103,10 @@ Můžete vyzkoušet nové prostředí s aktualizovaným uživatelským rozhraní
 
 4. Pokračovat v části **provede kontrolu přístupu** .
 
-### <a name="email"></a>E-mailu
+### <a name="email"></a>E-mail
 
 >[!IMPORTANT]
-> Při přijímání e-mailu může dojít k prodlevám a v některých případech může trvat až 24 hodin. Seznam azure-noreply@microsoft.com povolených adres, abyste měli jistotu, že přijímáte všechny e-maily.
+> Při přijímání e-mailu může dojít k prodlevám a v některých případech může trvat až 24 hodin. Seznam povolených adres azure-noreply@microsoft.com , abyste měli jistotu, že přijímáte všechny e-maily.
 
 1. Vyhledejte e-mail od Microsoftu, který žádá o kontrolu přístupu. Níže vidíte příklad e-mailové zprávy:
 

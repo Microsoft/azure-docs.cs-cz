@@ -3,15 +3,15 @@ title: Vytvoření kontejnerů Azure Cosmos s velkým klíčem oddílu
 description: Naučte se, jak vytvořit kontejner ve Azure Cosmos DB s velkým klíčem oddílu pomocí Azure Portal a různých sad SDK.
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: 3b0a3387fe34a0e1c15109aec877c0654fc1a5b0
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 853d3fa79436d9af0119aada86d283f9970d4ef2
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82870006"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262799"
 ---
 # <a name="create-containers-with-large-partition-key"></a>Vytváření kontejnerů s velkým klíčem oddílu
 
@@ -23,7 +23,7 @@ Klíče s velkými oddíly se podporují pomocí funkce Rozšířené verze funk
 
 Pokud chcete vytvořit velký klíč oddílu, když vytvoříte nový kontejner pomocí Azure Portal, podívejte se, jestli **je klíč oddílu můj oddíl větší než 100 bajtů** . Zrušte zaškrtnutí políčka, pokud nepotřebujete klíče velkých oddílů, nebo pokud máte aplikace spuštěné v sadách SDK verze starší než 1,18.
 
-![Vytváření velkých klíčů oddílů pomocí Azure Portal](./media/large-partition-keys/large-partition-key-with-portal.png)
+:::image type="content" source="./media/large-partition-keys/large-partition-key-with-portal.png" alt-text="Vytváření velkých klíčů oddílů pomocí Azure Portal":::
 
 ## <a name="create-a-large-partition-key-powershell"></a>Vytvoření klíče s velkým oddílem (PowerShell)
 
@@ -72,7 +72,7 @@ V následujících minimálních verzích sad SDK jsou podporovány klíče s ve
 |.Net     |    1,18     |
 |Synchronizace Java     |   2.4.0      |
 |Java Async   |  2.5.0        |
-| REST API | verze je `x-ms-version` vyšší `2017-05-03` než pomocí hlavičky Request.|
+| REST API | verze je vyšší než pomocí `2017-05-03` `x-ms-version` hlavičky Request.|
 | Šablona Resource Manageru | verze 2 pomocí `"version":2` vlastnosti v rámci `partitionKey` objektu. |
 
 V současné době nelze v nástroji Power BI a Azure Logic Apps použít kontejnery s velkým klíčem oddílu. Z těchto aplikací můžete použít kontejnery bez klíče oddílu.
@@ -80,6 +80,6 @@ V současné době nelze v nástroji Power BI a Azure Logic Apps použít kontej
 ## <a name="next-steps"></a>Další kroky
 
 * [Dělení ve službě Azure Cosmos DB](partitioning-overview.md)
-* [Jednotky žádosti v Azure Cosmos DB](request-units.md)
+* [Jednotky žádostí ve službě Azure Cosmos DB](request-units.md)
 * [Zřízení propustnosti u kontejnerů a databází](set-throughput.md)
 * [Práce s účtem Azure Cosmos](account-overview.md)

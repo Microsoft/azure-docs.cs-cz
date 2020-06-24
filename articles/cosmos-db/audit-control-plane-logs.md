@@ -3,15 +3,15 @@ title: Postup při auditování operací roviny ovládacího prvku Azure Cosmos 
 description: Naučte se auditovat operace roviny ovládacího prvku, jako je například přidání oblasti, aktualizace propustnosti, převzetí služeb při selhání oblasti, přidání virtuální sítě atd. v Azure Cosmos DB
 author: SnehaGunda
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/23/2020
 ms.author: sngun
-ms.openlocfilehash: a5df7866f7897109dbd7a0ea8a52b857ab671875
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: cb6a27c0f03b7c0c41d8f323609df612363cfd9e
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735347"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262646"
 ---
 # <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>Postup při auditování operací roviny ovládacího prvku Azure Cosmos DB
 
@@ -29,7 +29,7 @@ Následuje několik ukázkových scénářů, ve kterých je užitečné objedn�
 
 Před auditem operací řízení roviny v Azure Cosmos DB zakažte na svém účtu přístup k zápisu metadat na základě klíčů. Pokud je zakázaný přístup pro zápis metadat založených na klíčích, klienti připojující se k účtu Azure Cosmos prostřednictvím klíčů účtu nemají přístup k účtu. Přístup pro zápis můžete zakázat nastavením `disableKeyBasedMetadataWriteAccess` vlastnosti na hodnotu true. Po nastavení této vlastnosti se můžou změny libovolného prostředku vyskytnout od uživatele, který má správnou roli řízení přístupu na základě role (RBAC) a přihlašovací údaje. Další informace o tom, jak tuto vlastnost nastavit, najdete v článku [prevence změn ze sad SDK](role-based-access-control.md#preventing-changes-from-cosmos-sdk) . 
 
-Když je `disableKeyBasedMetadataWriteAccess` Tato funkce zapnutá, klienti na bázi sady SDK spouštějí operace vytvořit nebo aktualizovat, protože se vrátí chyba *"post" na prostředku "ContainerNameorDatabaseName Azure Cosmos DB"* . Musíte zapnout přístup k takovým operacím pro váš účet nebo provádět operace vytvoření/aktualizace prostřednictvím Azure Resource Manager, Azure CLI nebo Azure PowerShellu. Pokud chcete přejít zpátky, nastavte disableKeyBasedMetadataWriteAccess na **hodnotu false** pomocí rozhraní příkazového řádku Azure, jak je popsané v článku [prevence změn ze sady Cosmos SDK](role-based-access-control.md#preventing-changes-from-cosmos-sdk) . Nezapomeňte změnit hodnotu `disableKeyBasedMetadataWriteAccess` na false namísto true.
+`disableKeyBasedMetadataWriteAccess`Když je tato funkce zapnutá, klienti na bázi sady SDK spouštějí operace vytvořit nebo aktualizovat, protože se vrátí chyba *"post" na prostředku "ContainerNameorDatabaseName Azure Cosmos DB"* . Musíte zapnout přístup k takovým operacím pro váš účet nebo provádět operace vytvoření/aktualizace prostřednictvím Azure Resource Manager, Azure CLI nebo Azure PowerShellu. Pokud chcete přejít zpátky, nastavte disableKeyBasedMetadataWriteAccess na **hodnotu false** pomocí rozhraní příkazového řádku Azure, jak je popsané v článku [prevence změn ze sady Cosmos SDK](role-based-access-control.md#preventing-changes-from-cosmos-sdk) . Nezapomeňte změnit hodnotu `disableKeyBasedMetadataWriteAccess` na false namísto true.
 
 Při vypnutí přístupu k zápisu metadat Vezměte v úvahu následující body:
 
@@ -51,7 +51,7 @@ Chcete-li povolit protokolování na operace roviny ovládacího prvku, použijt
 
 Protokoly můžete také ukládat do centra událostí v účtu úložiště nebo v datovém proudu. Tento článek ukazuje, jak odesílat protokoly do Log Analytics a pak je dotazovat. Po povolení bude trvat několik minut, než se diagnostické protokoly projeví. Všechny operace roviny ovládacího prvku provedené po tomto bodu je možné sledovat. Následující snímek obrazovky ukazuje, jak povolit protokoly roviny ovládacího prvku:
 
-![Povolit protokolování požadavků na řídicí rovinu](./media/audit-control-plane-logs/enable-control-plane-requests-logs.png)
+:::image type="content" source="./media/audit-control-plane-logs/enable-control-plane-requests-logs.png" alt-text="Povolit protokolování požadavků na řídicí rovinu":::
 
 ## <a name="view-the-control-plane-operations"></a>Zobrazit operace roviny ovládacího prvku
 
@@ -69,17 +69,17 @@ Po zapnutí protokolování použijte následující postup ke sledování opera
 
 Když se u účtu Azure Cosmos změní úroveň konzistence, zachytí následující snímky obrazovky.
 
-![Řízení protokolů roviny při přidání virtuální sítě](./media/audit-control-plane-logs/add-ip-filter-logs.png)
+:::image type="content" source="./media/audit-control-plane-logs/add-ip-filter-logs.png" alt-text="Řízení protokolů roviny při přidání virtuální sítě":::
 
 Po aktualizaci propustnosti tabulky Cassandra se zaznamenávají následující snímky obrazovky:
 
-![Řízení protokolů roviny při aktualizaci propustnosti](./media/audit-control-plane-logs/throughput-update-logs.png)
+:::image type="content" source="./media/audit-control-plane-logs/throughput-update-logs.png" alt-text="Řízení protokolů roviny při aktualizaci propustnosti":::
 
 ## <a name="identify-the-identity-associated-to-a-specific-operation"></a>Identifikace identity přidružené k určité operaci
 
 Pokud chcete ladit další, můžete určit konkrétní operace v **protokolu aktivit** pomocí ID aktivity nebo časového razítka operace. Časové razítko se používá pro některé klienty Správce prostředků, kde ID aktivity není explicitně předáno. Protokol aktivit obsahuje podrobné informace o identitě, se kterou byla operace iniciována. Následující snímek obrazovky ukazuje, jak použít ID aktivity a najít k němu přidružené operace v protokolu aktivit:
 
-![Použijte ID aktivity a najděte operace.](./media/audit-control-plane-logs/find-operations-with-activity-id.png)
+:::image type="content" source="./media/audit-control-plane-logs/find-operations-with-activity-id.png" alt-text="Použijte ID aktivity a najděte operace.":::
 
 ## <a name="control-plane-operations-for-azure-cosmos-account"></a>Řízení operací roviny pro účet Azure Cosmos
 
@@ -147,7 +147,7 @@ Pro operace specifické pro rozhraní API je operace pojmenována s následujíc
 * ApiKind + ApiKindResourceType + typem operace OperationType + spustit/dokončit
 * ApiKind + ApiKindResourceType + "propustnost" + typem operace OperationType + spustit/dokončit
 
-**Případě** 
+**Příklad** 
 
 * CassandraKeyspacesUpdateStart, CassandraKeyspacesUpdateComplete
 * CassandraKeyspacesThroughputUpdateStart, CassandraKeyspacesThroughputUpdateComplete

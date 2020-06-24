@@ -4,16 +4,16 @@ description: Tento článek obsahuje přehled možností indexování Azure Cosm
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
-ms.topic: conceptual
-ms.date: 04/03/2020
+ms.topic: how-to
+ms.date: 06/16/2020
 author: timsander1
 ms.author: tisande
-ms.openlocfilehash: fd602f88acf26e821e57e0a844f543aac08dad0d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e0b14eefcc0b484c92faf1148ae2972f51b04d31
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81732707"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85260691"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Správa indexování v rozhraní Azure Cosmos DB API pro MongoDB
 
@@ -21,7 +21,7 @@ Rozhraní API pro Azure Cosmos DB MongoDB využívá základní možnosti správ
 
 ## <a name="indexing-for-mongodb-server-version-36"></a>Indexování pro MongoDB Server verze 3,6
 
-Rozhraní Azure Cosmos DB API pro MongoDB Server verze 3,6 automaticky indexuje `_id` pole, které nejde vyřadit. Automaticky vynutila jedinečnost `_id` pole na horizontálních oddílů klíč.
+Rozhraní Azure Cosmos DB API pro MongoDB Server verze 3,6 automaticky indexuje `_id` pole, které nejde vyřadit. Automaticky vynutila jedinečnost `_id` pole na horizontálních oddílů klíč. V rozhraní Azure Cosmos DB API pro MongoDB, horizontálního dělení a indexování jsou oddělené koncepty. Nemusíte indexovat svůj horizontálních oddílů klíč. Pokud se ale u všech dalších vlastností v dokumentu jedná o společný filtr v dotazech, doporučujeme indexovat klíč horizontálních oddílů.
 
 Chcete-li indexovat další pole, použijte příkazy pro správu indexů MongoDB. Stejně jako v Azure Cosmos DB MongoDB rozhraní API pro MongoDB automaticky indexuje `_id` pole. Tato výchozí zásada indexování se liší od Azure Cosmos DB rozhraní SQL API, které ve výchozím nastavení indexuje všechna pole.
 
@@ -31,7 +31,7 @@ Chcete-li použít řazení pro dotaz, je nutné vytvořit index pro pole použi
 
 ### <a name="single-field"></a>Jedno pole
 
-Můžete vytvořit indexy pro každé jedno pole. Pořadí řazení indexu jednoho pole nezáleží. Následující příkaz vytvoří index v poli `name`:
+Můžete vytvořit indexy pro každé jedno pole. Pořadí řazení indexu jednoho pole nezáleží. Následující příkaz vytvoří index v poli `name` :
 
 `db.coll.createIndex({name:1})`
 
@@ -41,7 +41,7 @@ Jeden dotaz používá více indexů s jedním polem, kde je k dispozici. Pro ka
 
 Rozhraní API pro Azure Cosmos DB pro MongoDB podporuje složené indexy pro účty, které používají síťový protokol verze 3,6. Do složeného indexu můžete zahrnout až osm polí. Na rozdíl od MongoDB byste měli vytvořit složený index pouze v případě, že je nutné dotaz efektivně seřadit ve více polích najednou. Pro dotazy s více filtry, které není nutné řadit, je třeba vytvořit více indexů jednoho pole namísto jednoho složeného indexu.
 
-Následující příkaz vytvoří složený index pro pole `name` a: `age`
+Následující příkaz vytvoří složený index pro pole `name` a `age` :
 
 `db.coll.createIndex({name:1,age:1})`
 
@@ -63,7 +63,7 @@ Azure Cosmos DB vytváří indexy multikey k indexování obsahu uloženého v p
 
 ### <a name="geospatial-indexes"></a>Geoprostorové indexy
 
-Mnohé geoprostorové operátory budou využívat geoprostorové indexy. V současné době Azure Cosmos DB rozhraní API pro MongoDB `2dsphere` podporuje indexy. Rozhraní API zatím nepodporuje `2d` indexy.
+Mnohé geoprostorové operátory budou využívat geoprostorové indexy. V současné době Azure Cosmos DB rozhraní API pro MongoDB podporuje `2dsphere` indexy. Rozhraní API zatím nepodporuje `2d` indexy.
 
 Tady je příklad vytvoření geoprostorového indexu v `location` poli:
 
@@ -72,6 +72,98 @@ Tady je příklad vytvoření geoprostorového indexu v `location` poli:
 ### <a name="text-indexes"></a>Indexy textu
 
 Rozhraní API pro MongoDB Azure Cosmos DB v současné době nepodporuje textové indexy. Pro dotazy na hledání textu v řetězcích byste měli použít službu [Azure kognitivní hledání](https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb) Integration s Azure Cosmos DB.
+
+## <a name="wildcard-indexes"></a>Indexy zástupných znaků
+
+Pro podporu dotazů na neznámá pole můžete použít indexy se zástupnými znaky. Představte si, že máte kolekci, která obsahuje data o rodinách.
+
+Tady je část ukázkového dokumentu v této kolekci:
+
+```json
+  "children": [
+     {
+         "firstName": "Henriette Thaulow",
+         "grade": "5"
+     }
+  ]
+```
+
+Tady je další příklad, tentokrát s mírně odlišnou sadou vlastností v `children` :
+
+```json
+  "children": [
+      {
+        "familyName": "Merriam",
+        "givenName": "Jesse",
+        "pets": [
+            { "givenName": "Goofy" },
+            { "givenName": "Shadow" }
+      },
+      {
+        "familyName": "Merriam",
+        "givenName": "John",
+      }
+  ]
+```
+
+V této kolekci můžou dokumenty mít mnoho různých vlastností. Pokud jste chtěli indexovat všechna data v poli `children` , máte dvě možnosti: vytvořit samostatné indexy pro každou jednotlivou vlastnost nebo vytvořit jeden index zástupného znaku pro celé `children` pole.
+
+### <a name="create-a-wildcard-index"></a>Vytvoření indexu zástupných znaků
+
+Následující příkaz vytvoří index zástupného znaku u všech vlastností v rámci `children` :
+
+`db.coll.createIndex({"children.$**" : 1})`
+
+Na **rozdíl od MongoDB můžou indexy zástupných znaků podporovat více polí v predikátech dotazů**. Pokud použijete jeden index zástupného znaku namísto vytvoření samostatného indexu pro každou vlastnost, nebudete mít rozdíl ve výkonu dotazů.
+
+Pomocí syntaxe zástupných znaků můžete vytvořit následující typy indexů:
+
+- Jedno pole
+- Geoprostorové
+
+### <a name="indexing-all-properties"></a>Indexování všech vlastností
+
+Tady je postup, jak můžete vytvořit index zástupného znaku u všech polí:
+
+`db.coll.createIndex( { "$**" : 1 } )`
+
+Při zahájení vývoje může být užitečné vytvořit index zástupného znaku pro všechna pole. Jelikož jsou v dokumentu indexovány další vlastnosti, zvýší se poplatek za zápis a aktualizaci dokumentu na jednotku žádosti (RU). Proto pokud máte zatížení náročné na zápis, měli byste se rozhodnout pro použití zástupných indexů na jednotlivé cesty indexů.
+
+### <a name="limitations"></a>Omezení
+
+Indexy zástupných znaků nepodporují žádné z následujících typů indexů nebo vlastností:
+
+- Kombinovanou
+- Hodnota TTL
+- Jedinečná
+
+Na **rozdíl od MongoDB**v rozhraní API služby Azure Cosmos DB pro MongoDB **nemůžete** použít indexy zástupných znaků pro:
+
+- Vytvoření indexu zástupných znaků, který obsahuje více konkrétních polí
+
+`db.coll.createIndex(
+    { "$**" : 1 },
+    { "wildcardProjection " :
+        {
+           "children.givenName" : 1,
+           "children.grade" : 1
+        }
+    }
+)`
+
+- Vytvoření zástupného znaku, který vylučuje více konkrétních polí
+
+`db.coll.createIndex(
+    { "$**" : 1 },
+    { "wildcardProjection" :
+        {
+           "children.givenName" : 0,
+           "children.grade" : 0
+        }
+    }
+)`
+
+Alternativně můžete vytvořit více indexů zástupných znaků.
 
 ## <a name="index-properties"></a>Vlastnosti indexu
 
@@ -84,7 +176,7 @@ Následující operace jsou běžné pro účty, které obsluhují síťový pro
 > [!IMPORTANT]
 > Jedinečné indexy lze vytvořit pouze v případě, že je kolekce prázdná (neobsahuje žádné dokumenty).
 
-Následující příkaz vytvoří jedinečný index v poli `student_id`:
+Následující příkaz vytvoří jedinečný index v poli `student_id` :
 
 ```shell
 globaldb:PRIMARY> db.coll.createIndex( { "student_id" : 1 }, {unique:true} )
@@ -99,7 +191,7 @@ globaldb:PRIMARY> db.coll.createIndex( { "student_id" : 1 }, {unique:true} )
 
 Pro kolekce horizontálně dělené je nutné zadat klíč horizontálních oddílů (partition) pro vytvoření jedinečného indexu. Jinými slovy, všechny jedinečné indexy u horizontálně dělené kolekce jsou složené indexy, ve kterých je jedno z polí klíčem oddílu.
 
-Následující příkazy ```coll``` vytvoří kolekci horizontálně dělené (klíč horizontálních oddílů je ```university```) s jedinečným indexem pro pole `student_id` a: `university`
+Následující příkazy vytvoří kolekci horizontálně dělené ```coll``` (klíč horizontálních oddílů je ```university``` ) s jedinečným indexem pro pole `student_id` a `university` :
 
 ```shell
 globaldb:PRIMARY> db.runCommand({shardCollection: db.coll._fullName, key: { university: "hashed"}});
@@ -118,7 +210,7 @@ globaldb:PRIMARY> db.coll.createIndex( { "student_id" : 1, "university" : 1 }, {
 }
 ```
 
-V předchozím příkladu vynechá ```"university":1``` klauzule vynechání chybové zprávy s následující zprávou:
+V předchozím příkladu vynechá klauzule vynechání ```"university":1``` chybové zprávy s následující zprávou:
 
 ```"cannot create unique index over {student_id : 1.0} with shard key pattern { university : 1.0 }"```
 
@@ -139,7 +231,7 @@ Předchozí příkaz odstraní všechny dokumenty v ```db.coll``` kolekci, kter�
 
 ## <a name="track-index-progress"></a>Sledovat průběh indexu
 
-Rozhraní Azure Cosmos DB API pro MongoDB verze 3,6 podporuje `currentOp()` příkaz ke sledování průběhu indexování instance databáze. Tento příkaz vrátí dokument, který obsahuje informace o probíhajících operacích instance databáze. Pomocí `currentOp` příkazu můžete sledovat všechny probíhající operace v nativním MongoDB. V rozhraní Azure Cosmos DB API pro MongoDB tento příkaz podporuje pouze sledování operace indexu.
+Rozhraní Azure Cosmos DB API pro MongoDB verze 3,6 podporuje `currentOp()` příkaz ke sledování průběhu indexování instance databáze. Tento příkaz vrátí dokument, který obsahuje informace o probíhajících operacích instance databáze. Pomocí příkazu můžete `currentOp` sledovat všechny probíhající operace v nativním MongoDB. V rozhraní Azure Cosmos DB API pro MongoDB tento příkaz podporuje pouze sledování operace indexu.
 
 Tady je několik příkladů, které ukazují, jak pomocí `currentOp` příkazu sledovat průběh indexu:
 
@@ -230,7 +322,7 @@ Když přidáte nový index, budou dotazy okamžitě používat index. To znamen
 
 ## <a name="migrate-collections-with-indexes"></a>Migrace kolekcí s indexy
 
-V současné době je možné vytvořit jedinečné indexy pouze v případě, že kolekce neobsahuje žádné dokumenty. Oblíbené nástroje pro migraci MongoDB se po importu dat pokoušejí vytvořit jedinečné indexy. Pokud chcete tento problém obejít, můžete ručně vytvořit odpovídající kolekce a jedinečné indexy místo toho, aby se mohl nástroj pro migraci vyzkoušet. (Toto chování můžete dosáhnout pro ```mongorestore``` pomocí `--noIndexRestore` příznaku v příkazovém řádku.)
+V současné době je možné vytvořit jedinečné indexy pouze v případě, že kolekce neobsahuje žádné dokumenty. Oblíbené nástroje pro migraci MongoDB se po importu dat pokoušejí vytvořit jedinečné indexy. Pokud chcete tento problém obejít, můžete ručně vytvořit odpovídající kolekce a jedinečné indexy místo toho, aby se mohl nástroj pro migraci vyzkoušet. (Toto chování můžete dosáhnout pro pomocí ```mongorestore``` `--noIndexRestore` příznaku v příkazovém řádku.)
 
 ## <a name="indexing-for-mongodb-version-32"></a>Indexování pro MongoDB verze 3,2
 
@@ -240,7 +332,7 @@ Pokud používáte verzi 3,2, Tato část popisuje klíčové rozdíly ve verzi 
 
 ### <a name="dropping-default-indexes-version-32"></a>Vyřazení výchozích indexů (verze 3,2)
 
-Na rozdíl od verze 3,6 rozhraní API Azure Cosmos DB rozhraní API pro MongoDB, verze 3,2 ve výchozím nastavení indexuje každou vlastnost. K vyřazení těchto výchozích indexů pro kolekci (```coll```) můžete použít následující příkaz:
+Na rozdíl od verze 3,6 rozhraní API Azure Cosmos DB rozhraní API pro MongoDB, verze 3,2 ve výchozím nastavení indexuje každou vlastnost. K vyřazení těchto výchozích indexů pro kolekci () můžete použít následující příkaz ```coll``` :
 
 ```JavaScript
 > db.coll.dropIndexes()
@@ -253,7 +345,12 @@ Po vyřazení výchozích indexů můžete přidat další indexy, stejně jako 
 
 Složené indexy obsahují odkazy na více polí dokumentu. Pokud chcete vytvořit složený index, upgradujte na verzi 3,6 podáním [žádosti o podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
+### <a name="wildcard-indexes-version-32"></a>Indexy zástupných znaků (verze 3,2)
+
+Pokud chcete vytvořit index zástupného znaku, upgradujte na verzi 3,6 podáním žádosti o [podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+
 ## <a name="next-steps"></a>Další kroky
 
 * [Indexování ve službě Azure Cosmos DB](../cosmos-db/index-policy.md)
 * [Automatické vypršení platnosti dat v Azure Cosmos DB s časem až Live](../cosmos-db/time-to-live.md)
+* Další informace o vztahu mezi vytvářením oddílů a indexováním najdete v článku postup [dotazování na kontejner Azure Cosmos](how-to-query-container.md) .

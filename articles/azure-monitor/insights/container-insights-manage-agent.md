@@ -2,13 +2,13 @@
 title: Jak spravovat agenta Azure Monitor for Containers | Microsoft Docs
 description: Tento článek popisuje, jak spravovat nejběžnější úlohy údržby pomocí kontejnerového Log Analyticsho agenta používaného Azure Monitor for Containers.
 ms.topic: conceptual
-ms.date: 05/12/2020
-ms.openlocfilehash: ce014d27c6acc473c4a435dfed4757fb0884f4fe
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 06/15/2020
+ms.openlocfilehash: ca0fa88cf27db15d45a2c855a1af351764c48fde
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652190"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887501"
 ---
 # <a name="how-to-manage-the-azure-monitor-for-containers-agent"></a>Správa Azure Monitor pro agenta kontejnerů
 
@@ -68,7 +68,7 @@ $ helm upgrade --name myrelease-1 \
 --set omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterName=<my_prod_cluster> incubator/azuremonitor-containers
 ```
 
-Pokud je pracovní prostor Log Analytics v Azure Čína, spusťte následující příkaz:
+Pokud je pracovní prostor Log Analytics v Azure Čína 21Vianet, spusťte následující příkaz:
 
 ```
 $ helm upgrade --name myrelease-1 \
@@ -93,6 +93,20 @@ Proveďte následující kroky k upgradu agenta v clusteru Kubernetes běžící
 ```
 $ helm upgrade --name myrelease-1 \
 --set omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterId=<azureAroV4ResourceId> incubator/azuremonitor-containers
+```
+
+### <a name="upgrade-agent-on-azure-arc-enabled-kubernetes"></a>Upgrade agenta na Kubernetes s povoleným rozšířením Azure ARC
+
+Provedením následujícího příkazu Upgradujte agenta v clusteru Kubernetes s povoleným ARC Azure bez koncového bodu proxy serveru.
+
+```
+$ helm upgrade --install azmon-containers-release-1  –set omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterId=<resourceIdOfAzureArcK8sCluster>
+```
+
+Provedením následujícího příkazu Upgradujte agenta, když je zadaný koncový bod proxy serveru. Další informace o koncovém bodu proxy serveru najdete v tématu [Konfigurace koncového bodu proxy serveru](container-insights-enable-arc-enabled-clusters.md#configure-proxy-endpoint).
+
+```
+helm upgrade –name azmon-containers-release-1 –set omsagent.proxy=<proxyEndpoint>,omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterId=<resourceIdOfAzureArcK8sCluster>
 ```
 
 ## <a name="how-to-disable-environment-variable-collection-on-a-container"></a>Postup zakázání shromažďování proměnných prostředí v kontejneru

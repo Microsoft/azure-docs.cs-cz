@@ -4,16 +4,16 @@ description: Tato stránka poskytuje pokyny k získání tabulek ARP pro okruh E
 services: expressroute
 author: charwen
 ms.service: expressroute
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 01/30/2017
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: b31e9eb852c69d5f02eb855e319d2a4901942994
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 87067f5720ef821571e897e934413c3baed86ff4
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80618521"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84727173"
 ---
 # <a name="getting-arp-tables-in-the-resource-manager-deployment-model"></a>Získání tabulek protokolu ARP v modelu nasazení Správce prostředků
 > [!div class="op_single_selector"]
@@ -154,7 +154,7 @@ Pokud se vyskytnou problémy s místním připojením nebo poskytovatelem připo
        --- ----------------- ---------  ----------    
          0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
 
-– nebo –
+nebo
        
        Age InterfaceProperty IpAddress  MacAddress    
        --- ----------------- ---------  ----------   

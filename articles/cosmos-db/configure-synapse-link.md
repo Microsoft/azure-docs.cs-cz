@@ -3,15 +3,15 @@ title: Konfigurace a použití odkazu na Azure synapse pro Azure Cosmos DB (Prev
 description: Naučte se, jak povolit synapse odkaz pro účty Azure Cosmos, vytvořit kontejner s povoleným analytickým úložištěm, připojit databázi Azure Cosmos k pracovnímu prostoru synapse a spustit dotazy.
 author: SriChintala
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: srchi
-ms.openlocfilehash: e1e43579782e204dae027b1771b9013a72843489
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: d2a10d064bed3e2e2e798d16ce72ccf55c965f8d
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84456568"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262034"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>Konfigurace a použití odkazu na Azure synapse pro Azure Cosmos DB (Preview)
 
@@ -40,11 +40,11 @@ Pomocí následujících kroků spusťte analytické dotazy s odkazem na synapse
 
 1. V seznamu funkcí vyberte **odkaz synapse** .
 
-   ![Najít funkci synapse Link Preview](./media/configure-synapse-link/find-synapse-link-feature.png)
+   :::image type="content" source="./media/configure-synapse-link/find-synapse-link-feature.png" alt-text="Najít funkci synapse Link Preview":::
 
 1. V dalším kroku se zobrazí výzva, abyste na svém účtu povolili odkaz na synapse. Vyberte Povolit.
 
-   ![Povolit funkci synapse Link](./media/configure-synapse-link/enable-synapse-link-feature.png)
+   :::image type="content" source="./media/configure-synapse-link/enable-synapse-link-feature.png" alt-text="Povolit funkci synapse Link":::
 
 1. Váš účet teď povolil použití odkazu synapse. Další informace najdete v tématu Vytvoření kontejnerů s povoleným analytickým úložištěm pro automatické zahájení replikace provozních dat z transakčního úložiště do analytického úložiště.
 
@@ -67,7 +67,7 @@ Analytické úložiště můžete zapnout v kontejneru Azure Cosmos při vytvá�
 
 1. Vyberte **Nový kontejner** a zadejte název své databáze, kontejneru, klíče oddílu a propustnosti. Zapněte možnost **analytické úložiště** . Po povolení analytického úložiště se vytvoří kontejner s `AnalyicalTTL` vlastností nastavenou na výchozí hodnotu-1 (nekonečné uchovávání). Toto analytické úložiště uchovává všechny historické verze záznamů.
 
-   ![Zapnout službu analytické úložiště pro Azure Cosmos Container](./media/configure-synapse-link/create-container-analytical-store.png)
+   :::image type="content" source="./media/configure-synapse-link/create-container-analytical-store.png" alt-text="Zapnout službu analytické úložiště pro Azure Cosmos Container":::
 
 1. Pokud jste na tomto účtu dříve nepovolili odkaz na synapse, zobrazí se výzva k tomu, abyste to učinili, protože je to předpoklad pro vytvoření kontejneru s povoleným analytickým úložištěm. Po zobrazení výzvy vyberte **Povolit odkaz na synapse**.
 
@@ -142,7 +142,7 @@ container = client.CreateContainer(db['_self'], container_definition, options)
 
 ### <a name="update-the-analytical-store-time-to-live"></a><a id="update-analytical-ttl"></a>Aktualizace doby analytického úložiště na Live
 
-Po povolení analytického úložiště s určitou hodnotou TTL ji můžete později aktualizovat na jinou platnou hodnotu. Tuto hodnotu můžete aktualizovat pomocí Azure Portal nebo sad SDK. Informace o různých možnostech konfigurace analytického standardu TTL najdete v článku věnovaném [hodnotám analytického TTL](analytical-store-introduction.md#analytical-ttl) .
+Po povolení analytického úložiště s konkrétní hodnotou TTL můžete tuto hodnotu později aktualizovat na jinou platnou hodnotu. Tuto hodnotu můžete aktualizovat pomocí webu Azure Portal nebo sad SDK. Informace o různých možnostech konfigurace analytického standardu TTL najdete v článku věnovaném [hodnotám analytického TTL](analytical-store-introduction.md#analytical-ttl) .
 
 #### <a name="azure-portal"></a>portál Azure
 

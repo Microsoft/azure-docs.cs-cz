@@ -2,7 +2,7 @@
 title: Konfigurace veřejného koncového bodu – spravovaná instance Azure SQL
 description: Zjistěte, jak nakonfigurovat veřejný koncový bod pro spravovanou instanci Azure SQL.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: security
 ms.custom: sqldbrb=1
 ms.topic: conceptual
@@ -10,12 +10,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, carlrab
 ms.date: 05/07/2019
-ms.openlocfilehash: a6d4ea22d3b05b14ce0d3e63912ea8bb7a432e57
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 1c2dd3f93abf6418b99bf28d11f2df254b024971
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310151"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708621"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-managed-instance"></a>Konfigurace veřejného koncového bodu ve spravované instanci Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -45,7 +45,7 @@ Vzhledem k citlivosti dat, která jsou ve spravované instanci, je konfigurace p
 1. V nastavení **zabezpečení** vyberte kartu **virtuální síť** .
 1. Na stránce konfigurace virtuální sítě vyberte **Povolit** a potom kliknutím na ikonu **Uložit** aktualizujte konfiguraci.
 
-![mi-VNet-config. png](./media/public-endpoint-configure/mi-vnet-config.png)
+![mi-vnet-config.png](./media/public-endpoint-configure/mi-vnet-config.png)
 
 ## <a name="enabling-public-endpoint-for-a-managed-instance-using-powershell"></a>Povolení veřejného koncového bodu pro spravovanou instanci pomocí prostředí PowerShell
 
@@ -84,11 +84,11 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 
 1. Pokud je stránka konfigurace spravované instance stále otevřená, přejděte na kartu **Přehled** . v opačném případě se vraťte k prostředku **spravované instance SQL** . Vyberte odkaz **virtuální síť/podsíť** , který vás přesměruje na stránku konfigurace virtuální sítě.
 
-    ![mi-Overview. png](./media/public-endpoint-configure/mi-overview.png)
+    ![mi-overview.png](./media/public-endpoint-configure/mi-overview.png)
 
 1. Vyberte kartu **podsítě** v levém podokně Konfigurace vaší virtuální sítě a poznamenejte si **skupinu zabezpečení** pro spravovanou instanci.
 
-    ![mi-VNet-Subnet. png](./media/public-endpoint-configure/mi-vnet-subnet.png)
+    ![mi-vnet-subnet.png](./media/public-endpoint-configure/mi-vnet-subnet.png)
 
 1. Vraťte se do skupiny prostředků, která obsahuje vaši spravovanou instanci. Měl by se zobrazit název **skupiny zabezpečení sítě** , který jste si poznamenali výše. Vyberte název, který chcete přejít na stránku konfigurace skupiny zabezpečení sítě.
 
@@ -104,7 +104,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
     |**Akce**     |Povolit         |Povolit příchozí provoz do spravované instance prostřednictvím veřejného koncového bodu |
     |**Priorita**     |1300         |Ujistěte se, že toto pravidlo má vyšší prioritu než pravidlo **deny_all_inbound** . |
 
-    ![mi-NSG-Rules. png](./media/public-endpoint-configure/mi-nsg-rules.png)
+    ![mi-nsg-rules.png](./media/public-endpoint-configure/mi-nsg-rules.png)
 
     > [!NOTE]
     > Port 3342 se používá pro připojení veřejného koncového bodu ke spravované instanci a v tomto okamžiku jej nelze změnit.
@@ -114,7 +114,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 1. Přejděte na stránku konfigurace spravované instance, která je povolená pro veřejný koncový bod. V části konfigurace **Nastavení** vyberte kartu **připojovací řetězce** .
 1. Všimněte si, že název hostitele veřejného koncového bodu se nachází ve formátu <mi_name>. **Public**. <dns_zone>. Database.Windows.NET a port používaný pro připojení je 3342.
 
-    ![mi-Public-Endpoint-Conn-String. png](./media/public-endpoint-configure/mi-public-endpoint-conn-string.png)
+    ![mi-public-endpoint-conn-string.png](./media/public-endpoint-configure/mi-public-endpoint-conn-string.png)
 
 ## <a name="next-steps"></a>Další kroky
 

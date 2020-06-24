@@ -4,15 +4,15 @@ description: Naučte se modelovat databázi grafu pomocí rozhraní Azure Cosmos
 author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: lbosq
-ms.openlocfilehash: dc9a5616aa2bb1f7e09045b9cfe4f4d7e9c69be2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ea3aab76c8d7eaad46ae1c20f6ddb4547b25b5b7
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78898327"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261813"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Modelování dat grafu pro Azure Cosmos DB rozhraní Gremlin API
 
@@ -73,11 +73,11 @@ Jednou z běžných Pitfall je mapovat vlastnosti jedné entity jako samostatné
 
 * **Vlastnosti založené na vrcholu**: v tomto přístupu entita používá tři samostatné vrcholy a dva hrany k popsání jejích vlastností. I když tento přístup může snížit redundanci, zvyšuje složitost modelu. Zvýšení složitosti modelu může mít za následek přidání latence, složitosti dotazu a výpočetních nákladů. Tento model může také prezentovat problémy při dělení.
 
-![Model entity s vrcholy pro vlastnosti](./media/graph-modeling/graph-modeling-1.png)
+:::image type="content" source="./media/graph-modeling/graph-modeling-1.png" alt-text="Model entity s vrcholy pro vlastnosti" border="false":::
 
 * **Vrcholy vložené vlastností**: Tento přístup využívá výhod seznamu párů klíč-hodnota, který představuje všechny vlastnosti entity uvnitř vrcholu. Tento přístup poskytuje nižší složitost modelu, což vede k jednodušším dotazům a efektivnějším procházeníům.
 
-![Model entity s vrcholy pro vlastnosti](./media/graph-modeling/graph-modeling-2.png)
+:::image type="content" source="./media/graph-modeling/graph-modeling-2.png" alt-text="Model entity s vrcholy pro vlastnosti" border="false":::
 
 > [!NOTE]
 > Výše uvedené příklady znázorňují zjednodušený model grafu pro zobrazení porovnání dvou způsobů dělení vlastností entit.
@@ -90,11 +90,11 @@ Existují však situace, kdy odkazování na vlastnost může poskytovat výhody
 
 Po modelování vrcholů lze přidat okraje k označení vztahů mezi nimi. První aspekt, který je nutné vyhodnotit, je **Směr vztahu**. 
 
-Při použití funkce `out()` or `outE()` mají objekty Edge výchozí směr, který následuje po průchodu. Použití tohoto přirozeného směru vede k efektivní operaci, protože všechny vrcholy jsou uloženy spolu s jejich odchozími okraji. 
+Při použití funkce or mají objekty Edge výchozí směr, který následuje po průchodu `out()` `outE()` . Použití tohoto přirozeného směru vede k efektivní operaci, protože všechny vrcholy jsou uloženy spolu s jejich odchozími okraji. 
 
 Procházení v opačném směru hrany na okraji ale pomocí `in()` funkce vždy způsobí dotaz na více oddílů. Přečtěte si další informace o [dělení grafu](graph-partitioning.md). Pokud je potřeba nepřetržitě procházet pomocí `in()` funkce, doporučujeme přidat hrany v obou směrech.
 
-Můžete určit směr okraje pomocí predikátů `.to()` nebo `.from()` v kroku `.addE()` Gremlin. Nebo pomocí [knihovny hromadných prováděcích modulů pro rozhraní Gremlin API](bulk-executor-graph-dotnet.md).
+Můžete určit směr okraje pomocí `.to()` `.from()` predikátů nebo v `.addE()` kroku Gremlin. Nebo pomocí [knihovny hromadných prováděcích modulů pro rozhraní Gremlin API](bulk-executor-graph-dotnet.md).
 
 > [!NOTE]
 > Objekty Edge mají ve výchozím nastavení směr.
@@ -105,7 +105,7 @@ Použití popisků popisných vztahů může zlepšit efektivitu operací řeše
 * Použijte neobecné výrazy k označení vztahu.
 * Přidružte popisek zdrojového vrcholu k popisku cílového vrcholu s názvem relace.
 
-![Příklady popisků vztahů.](./media/graph-modeling/graph-modeling-3.png)
+:::image type="content" source="./media/graph-modeling/graph-modeling-3.png" alt-text="Příklady popisků vztahů." border="false":::
 
 Přesnější popisek, který bude používat k filtrování okrajů, lepší. Toto rozhodnutí může mít výrazný dopad i na náklady na dotaz. Náklady na dotaz můžete kdykoli vyhodnotit [pomocí kroku executionProfile](graph-execution-profile.md).
 

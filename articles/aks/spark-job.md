@@ -6,16 +6,16 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: 2e399c1a7b0f9bbc2aac375fe8af969a2b9e0e48
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 962d0d6dd51bb30f5df9ca0b609acf932777ebcf
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80877623"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887527"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>Spouštění úloh Apache Spark v AKS
 
-[Apache Spark][apache-spark] je rychlý modul pro zpracování velkých objemů dat. Od [verze Spark 2.3.0][spark-latest-release]Apache Spark podporuje nativní integraci s clustery Kubernetes. Služba Azure Kubernetes Service (AKS) je spravované prostředí Kubernetes běžící v Azure. Tento dokument popisuje přípravu a spouštění úloh Apache Spark v clusteru služby Azure Kubernetes (AKS).
+[Apache Spark][apache-spark] je rychlý modul pro zpracování velkých objemů dat. Od [verze Spark 2.3.0][spark-kubernetes-earliest-version]Apache Spark podporuje nativní integraci s clustery Kubernetes. Služba Azure Kubernetes Service (AKS) je spravované prostředí Kubernetes běžící v Azure. Tento dokument popisuje přípravu a spouštění úloh Apache Spark v clusteru služby Azure Kubernetes (AKS).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -25,12 +25,13 @@ K provedení kroků v tomto článku budete potřebovat následující.
 * Účet [Docker Hub][docker-hub] nebo [Azure Container Registry][acr-create].
 * Rozhraní příkazového řádku Azure je [nainstalované][azure-cli] ve vývojovém systému.
 * V systému je nainstalovaný [JDK 8][java-install] .
+* [Apache Maven][maven-install] je nainstalovaná ve vašem systému.
 * SBT ([Nástroj pro vytváření Scala][sbt-install]) je nainstalovaný na vašem systému.
 * Nástroje příkazového řádku Git nainstalované ve vašem systému.
 
 ## <a name="create-an-aks-cluster"></a>Vytvoření clusteru AKS
 
-Spark se používá pro zpracování velkých objemů dat a vyžaduje, aby uzly Kubernetes splňovaly požadavky na prostředky Sparku. `Standard_D3_v2` Pro uzly služby Azure KUBERNETES (AKS) doporučujeme minimální velikost.
+Spark se používá pro zpracování velkých objemů dat a vyžaduje, aby uzly Kubernetes splňovaly požadavky na prostředky Sparku. `Standard_D3_v2`Pro uzly služby Azure Kubernetes (AKS) doporučujeme minimální velikost.
 
 Pokud potřebujete cluster AKS, který splňuje toto minimální doporučení, spusťte následující příkazy.
 
@@ -46,7 +47,7 @@ Vytvořte instanční objekt pro cluster. Po vytvoření budete pro další př�
 az ad sp create-for-rbac --name SparkSP
 ```
 
-Vytvořte cluster AKS s uzly, které mají velikost `Standard_D3_v2`, a hodnoty appId a Password předané jako parametry služby-Principal a Client-Secret.
+Vytvořte cluster AKS s uzly, které mají velikost `Standard_D3_v2` , a hodnoty appId a Password předané jako parametry služby-Principal a Client-Secret.
 
 ```azurecli
 az aks create --resource-group mySparkCluster --name mySparkCluster --node-vm-size Standard_D3_v2 --generate-ssh-keys --service-principal <APPID> --client-secret <PASSWORD>
@@ -77,7 +78,7 @@ cd spark
 sparkdir=$(pwd)
 ```
 
-Pokud máte nainstalované více verzí JDK, nastavte `JAVA_HOME` pro aktuální relaci použití verze 8.
+Pokud máte nainstalované více verzí JDK, nastavte pro `JAVA_HOME` aktuální relaci použití verze 8.
 
 ```bash
 export JAVA_HOME=`/usr/libexec/java_home -d 64 -v "1.8*"`
@@ -224,7 +225,7 @@ kubectl create serviceaccount spark
 kubectl create clusterrolebinding spark-role --clusterrole=edit --serviceaccount=default:spark --namespace=default
 ```
 
-Odešlete úlohu pomocí `spark-submit`.
+Odešlete úlohu pomocí `spark-submit` .
 
 ```bash
 ./bin/spark-submit \
@@ -252,13 +253,13 @@ spark-pi-2232778d0f663768ab27edc35cb73040-exec-2   0/1       Init:0/1   0       
 spark-pi-2232778d0f663768ab27edc35cb73040-exec-3   0/1       Init:0/1   0          4s
 ```
 
-I když je úloha spuštěná, můžete taky získat přístup k uživatelskému rozhraní Spark. V druhé relaci terminálu použijte `kubectl port-forward` příkaz, který poskytuje přístup k uživatelskému rozhraní Spark.
+I když je úloha spuštěná, můžete taky získat přístup k uživatelskému rozhraní Spark. V druhé relaci terminálu použijte příkaz, který `kubectl port-forward` poskytuje přístup k uživatelskému rozhraní Spark.
 
 ```bash
 kubectl port-forward spark-pi-2232778d0f663768ab27edc35cb73040-driver 4040:4040
 ```
 
-Pokud chcete získat přístup k uživatelskému rozhraní `127.0.0.1:4040` Spark, otevřete adresu v prohlížeči.
+Pokud chcete získat přístup k uživatelskému rozhraní Spark, otevřete adresu `127.0.0.1:4040` v prohlížeči.
 
 ![ROZHRANÍ Spark](media/aks-spark-job/spark-ui.png)
 
@@ -293,7 +294,7 @@ Pi is roughly 3.152155760778804
 
 V předchozím příkladu se soubor JAR Spark nahrál do služby Azure Storage. Další možností je zabalit soubor JAR do vlastních imagí Docker.
 
-Provedete to tak, `dockerfile` že vyhledáte image Sparku umístěnou v `$sparkdir/resource-managers/kubernetes/docker/src/main/dockerfiles/spark/` adresáři. Přidejte `ADD` příkaz pro úlohu `jar` Spark mezi `WORKDIR` deklaracemi a. `ENTRYPOINT`
+Provedete to tak, že vyhledáte `dockerfile` Image Sparku umístěnou v `$sparkdir/resource-managers/kubernetes/docker/src/main/dockerfiles/spark/` adresáři. Přidejte `ADD` příkaz pro úlohu Spark `jar` mezi `WORKDIR` `ENTRYPOINT` deklaracemi a.
 
 Aktualizujte cestu jar na umístění `SparkPi-assembly-0.1.0-SNAPSHOT.jar` souboru ve vývojovém systému. Můžete také použít vlastní soubor JAR.
 
@@ -312,7 +313,7 @@ Sestavte a nahrajte Image pomocí zahrnutých skriptů Spark.
 ./bin/docker-image-tool.sh -r <your container repository name> -t <tag> push
 ```
 
-Při spuštění úlohy místo označení vzdálené adresy URL jar lze `local://` schéma použít s cestou k souboru jar v imagi Docker.
+Při spuštění úlohy místo označení vzdálené adresy URL jar `local://` lze schéma použít s cestou k souboru jar v imagi Docker.
 
 ```bash
 ./bin/spark-submit \
@@ -340,9 +341,10 @@ Další podrobnosti najdete v dokumentaci k Sparku.
 [apache-spark]: https://spark.apache.org/
 [docker-hub]: https://docs.docker.com/docker-hub/
 [java-install]: https://aka.ms/azure-jdks
+[maven-install]: https://maven.apache.org/install.html
 [sbt-install]: https://www.scala-sbt.org/1.0/docs/Setup.html
 [spark-docs]: https://spark.apache.org/docs/latest/running-on-kubernetes.html
-[spark-latest-release]: https://spark.apache.org/releases/spark-release-2-3-0.html
+[spark-kubernetes-earliest-version]: https://spark.apache.org/releases/spark-release-2-3-0.html
 [spark-quickstart]: https://spark.apache.org/docs/latest/quick-start.html
 
 

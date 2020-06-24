@@ -13,11 +13,11 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b0faaf0394bddc2e443afc194bbd0ecef72625f9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79240923"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84690944"
 ---
 # <a name="quickstart-add-a-guest-user-with-powershell"></a>Rychlý Start: Přidání uživatele typu host pomocí PowerShellu
 
@@ -75,7 +75,7 @@ Po zobrazení výzvy zadejte své přihlašovací údaje.
 
 ## <a name="send-an-invitation"></a>Odeslání pozvánky
 
-1. Pokud chcete poslat pozvánku na testovací e-mailový účet, spusťte následující příkaz PowerShellu (nahraďte **"písku"** a **\@písku Fabrikam.com** názvem vašeho testovacího e-mailového účtu a e-mailovou adresou): 
+1. Pokud chcete poslat pozvánku na testovací e-mailový účet, spusťte následující příkaz PowerShellu (nahraďte **"písku"** a **písku \@ fabrikam.com** názvem vašeho testovacího e-mailového účtu a e-mailovou adresou): 
 
    ```powershell
    New-AzureADMSInvitation -InvitedUserDisplayName "Sanda" -InvitedUserEmailAddress sanda@fabrikam.com -InviteRedirectURL https://myapps.microsoft.com -SendInvitationMessage $true
@@ -91,7 +91,7 @@ Po zobrazení výzvy zadejte své přihlašovací údaje.
    ```powershell
    Get-AzureADUser -Filter "UserType eq 'Guest'"
    ```
-3. Zkontrolujte výstup, abyste se ujistili, že je uvedený uživatel, který jste pozvali, a hlavní název uživatele (UPN) ve formátu *EmailAddress*#EXT #\@*doména*. Například *sanda_fabrikam. com # ext #\@contoso.onmicrosoft.com*, kde contoso.onmicrosoft.com je organizace, ze které jste pozvánky odeslali.
+3. Zkontrolujte výstup, abyste se ujistili, že je uvedený uživatel, který jste pozvali, a hlavní název uživatele (UPN) ve formátu *emailaddress*#EXT # \@ *doména*. Například *sanda_fabrikam. com # ext # \@ contoso.onmicrosoft.com*, kde contoso.onmicrosoft.com je organizace, ze které jste pozvánky odeslali.
 
    ![Výstup PowerShellu zobrazující přidaného uživatele typu host](media/quickstart-invite-powershell/powershell-guest-user-added.png)
 

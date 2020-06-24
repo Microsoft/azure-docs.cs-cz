@@ -3,15 +3,15 @@ title: Migrace aplikace z Amazon DynamoDB na Azure Cosmos DB
 description: Přečtěte si, jak migrovat aplikaci .NET z DynamoDB Amazon na Azure Cosmos DB
 author: manishmsfte
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/29/2020
 ms.author: mansha
-ms.openlocfilehash: b30ebf7dae1d43b5f841677f98831fc4817a9b5a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: cfdeda8ac3957da272ab4c47fb93930c826d55aa
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664890"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261864"
 ---
 # <a name="migrate-your-application-from-amazon-dynamodb-to-azure-cosmos-db"></a>Migrace aplikace z Amazon DynamoDB na Azure Cosmos DB
 
@@ -23,8 +23,8 @@ Níže jsou uvedené klíčové rozdíly mezi Azure Cosmos DB a DynamoDB:
 
 |  DynamoDB | Azure Cosmos DB  |
 |---|---|
-|Neuvedeno|  databáze |
-|Tabulka      |  Kolekce |
+|Nelze použít|  databáze |
+|Table      |  Kolekce |
 |  Položka |  Dokument |
 |Atribut|Pole|
 |Sekundární index|Sekundární index|

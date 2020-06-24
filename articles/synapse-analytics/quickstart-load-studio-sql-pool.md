@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 05/06/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 96e79fdfeed5b56a4e0a33229f419f439b20b04c
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 4ae13dc51b4621dc3d8be39049dcade87c105cbc
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124438"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262612"
 ---
 # <a name="bulk-loading-with-synapse-sql"></a>Hromadné načítání pomocí synapse SQL
 
@@ -28,7 +28,7 @@ Teď můžete snadno hromadně načíst data pomocí fondů SQL, a to jednoduše
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Musíte mít přístup k pracovnímu prostoru, který má alespoň roli RBAC úložiště dat objektů BLOB úložiště pro účet ADLS Gen2.
+- Tento průvodce vygeneruje příkaz COPY, který používá předávací průchod AAD pro authentcation. Váš [uživatel AAD musí mít přístup](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples#d-azure-active-directory-authentication-aad) k pracovnímu prostoru s alespoň rolí RBAC úložiště dat objektů BLOB úložiště pro účet adls Gen2.
 
 - Pokud vytváříte novou tabulku, do které se načítají, musíte mít požadovaná [oprávnění pro použití příkazu Kopírovat](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#permissions) a oprávnění k vytváření tabulek.
 

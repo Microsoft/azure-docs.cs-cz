@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 260811c4ae15b45de6f7bc1b22e3ed6dcea44259
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8f8df703030220f2c5a79bdb34e3ffbac8ee84a0
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277905"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84762118"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Výkon a škálování v Durable Functions (Azure Functions)
 
@@ -28,7 +28,7 @@ Je-li nutné spustit instanci orchestrace, jsou do paměti načteny příslušn�
 
 Tabulka **Instances** je další Azure Storage tabulka, která obsahuje stavy všech orchestrací a instancí entit v rámci centra úloh. Při vytváření instancí se do této tabulky přidají nové řádky. Klíč oddílu této tabulky je ID instance orchestrace nebo klíč entity a klíč řádku je pevná konstanta. Existuje jeden řádek na orchestraci nebo instanci entity.
 
-Tato tabulka slouží k uspokojení požadavků na dotazování instance z `GetStatusAsync` rozhraní API (.NET `getStatus` ) a (JavaScript) a také pro [dotaz na stavový protokol HTTP API](durable-functions-http-api.md#get-instance-status). Je trvale konzistentní s obsahem výše zmíněné tabulky **Historie** . Použití samostatné Azure Storage tabulky k efektivnímu uspokojení operací dotazů na instance tímto způsobem je ovlivněno [vzorem CQRS (Command and Query Responsibility segregation) (CQRS)](https://docs.microsoft.com/azure/architecture/patterns/cqrs).
+Tato tabulka slouží k uspokojení požadavků na dotazování instance z `GetStatusAsync` rozhraní API (.NET) a `getStatus` (JavaScript) a také pro [dotaz na stavový protokol HTTP API](durable-functions-http-api.md#get-instance-status). Je trvale konzistentní s obsahem výše zmíněné tabulky **Historie** . Použití samostatné Azure Storage tabulky k efektivnímu uspokojení operací dotazů na instance tímto způsobem je ovlivněno [vzorem CQRS (Command and Query Responsibility segregation) (CQRS)](https://docs.microsoft.com/azure/architecture/patterns/cqrs).
 
 ## <a name="internal-queue-triggers"></a>Interní triggery front
 
@@ -36,7 +36,7 @@ Funkce a funkce nástroje Orchestrator jsou spouštěny interními frontami v ce
 
 ### <a name="the-work-item-queue"></a>Fronta pracovních položek
 
-K dispozici je jedna fronta pracovních položek na každé centrum úloh v Durable Functions. Jedná se o základní frontu, která se chová podobně jako `queueTrigger` jakákoli jiná fronta v Azure Functions. Tato fronta se používá k aktivaci bezstavových *funkcí aktivity* tím, že v jednom okamžiku odřadí jedinou zprávu. Každá z těchto zpráv obsahuje vstupy funkcí aktivity a další metadata, jako je například funkce, kterou je třeba provést. Když Durable Functions aplikace škáluje na více virtuálních počítačů, všechny tyto virtuální počítače budou chtít získat práci z fronty pracovních položek.
+K dispozici je jedna fronta pracovních položek na každé centrum úloh v Durable Functions. Jedná se o základní frontu, která se chová podobně jako jakákoli jiná `queueTrigger` fronta v Azure Functions. Tato fronta se používá k aktivaci bezstavových *funkcí aktivity* tím, že v jednom okamžiku odřadí jedinou zprávu. Každá z těchto zpráv obsahuje vstupy funkcí aktivity a další metadata, jako je například funkce, kterou je třeba provést. Když Durable Functions aplikace škáluje na více virtuálních počítačů, všechny tyto virtuální počítače budou chtít získat práci z fronty pracovních položek.
 
 ### <a name="control-queues"></a>Počet front ovládacích prvků:
 
@@ -48,14 +48,21 @@ K dispozici je více *řídicích front* pro každé centrum úloh v Durable Fun
 
 Rozšíření odolné úlohy implementuje náhodný exponenciální algoritmus pro snížení vlivu nečinnosti na transakční dotaz na náklady transakce úložiště. Po nalezení zprávy modul runtime hned vyhledá jinou zprávu; Pokud se nenajde žádná zpráva, počká na určitou dobu, než se zkusí znovu. Po následných neúspěšných pokusech o získání zprávy fronty se doba čekání zvětšuje, dokud nedosáhne maximální čekací doby, která má výchozí hodnotu 30 sekund.
 
-Maximální zpoždění cyklického dotazování lze konfigurovat prostřednictvím `maxQueuePollingInterval` vlastnosti v [souboru Host. JSON](../functions-host-json.md#durabletask). Nastavení této vlastnosti na vyšší hodnotu může mít za následek vyšší latence při zpracování zpráv. Vyšší latence by se měly očekávat jenom po období nečinnosti. Nastavení této vlastnosti na nižší hodnotu může mít za následek vyšší náklady na úložiště kvůli zvýšeným transakcím úložiště.
+Maximální zpoždění cyklického dotazování lze konfigurovat prostřednictvím `maxQueuePollingInterval` vlastnosti v [host.jsv souboru](../functions-host-json.md#durabletask). Nastavení této vlastnosti na vyšší hodnotu může mít za následek vyšší latence při zpracování zpráv. Vyšší latence by se měly očekávat jenom po období nečinnosti. Nastavení této vlastnosti na nižší hodnotu může mít za následek vyšší náklady na úložiště kvůli zvýšeným transakcím úložiště.
 
 > [!NOTE]
 > Při spuštění v rámci plánů Azure Functions a Premium se [kontroler Azure Functions Scale](../functions-scale.md#how-the-consumption-and-premium-plans-work) bude dotazovat každý ovládací prvek a frontu pracovních položek každých 10 sekund. Toto další cyklické dotazování je nezbytné k určení, kdy se mají aktivovat instance aplikace Function App a provádět rozhodování o škálování. V době psaní je tento 10 sekundový interval konstantní a nedá se nakonfigurovat.
 
+### <a name="orchestration-start-delays"></a>Zpoždění zahájení orchestrace
+Instance orchestrace se spouští vložením `ExecutionStarted` zprávy do jedné z front ovládacích prvků centra úloh. Za určitých podmínek můžete sledovat prodlevy s více sekundami mezi tím, kdy je naplánováno spuštění Orchestrace a kdy je ve skutečnosti spuštěna. Během tohoto časového intervalu zůstane instance orchestrace ve `Pending` stavu. Existují dva možné příčiny tohoto zpoždění:
+
+1. **Fronty nevyřízených ovládacích prvků**: Pokud řídicí fronta pro tuto instanci obsahuje velký počet zpráv, může trvat nějakou dobu, než se `ExecutionStarted` zpráva přijme a zpracuje modulem runtime. Zprávy nevyřízených položek se mohou vyskytnout, pokud orchestrace zpracovává velké množství událostí současně. Mezi události, které patří do fronty řízení, patří události zahájení orchestrace, dokončování aktivit, trvalá časovače, ukončení a externí události. Pokud tato prodleva nastane za normálních okolností, zvažte vytvoření nového centra úloh s větším počtem oddílů. Konfigurace více oddílů způsobí, že modul runtime vytvoří více řídicích front pro distribuci zatížení.
+
+2. **Zpoždění při cyklickém dotazování**: Další běžnou příčinu zpoždění orchestrace je [dřív popsané chování při cyklickém dotazování pro kontrolní fronty](#queue-polling). Tato prodleva se však očekává pouze při horizontálním navýšení kapacity aplikace na dvě nebo více instancí. Pokud existuje jenom jedna instance aplikace nebo pokud instance aplikace, která spouští orchestraci, je taky stejná jako instance, která se dotazuje na cílovou frontu ovládacích prvků, neproběhne zpoždění cyklického dotazování fronty. Zpoždění cyklického dotazování se dá snížit aktualizací **host.jsna** nastavení, jak je popsáno výše.
+
 ## <a name="storage-account-selection"></a>Výběr účtu úložiště
 
-Fronty, tabulky a objekty blob používané nástrojem Durable Functions jsou vytvořeny v nakonfigurovaném Azure Storagem účtu. Účet, který se má použít, se dá `durableTask/storageProvider/connectionStringName` zadat pomocí nastavení `durableTask/azureStorageConnectionStringName` (nebo nastavení v Durable Functions 1. x) v souboru **Host. JSON** .
+Fronty, tabulky a objekty blob používané nástrojem Durable Functions jsou vytvořeny v nakonfigurovaném Azure Storagem účtu. Účet, který se má použít, se dá zadat pomocí `durableTask/storageProvider/connectionStringName` nastavení (nebo `durableTask/azureStorageConnectionStringName` nastavení v Durable Functions 1. x) v **host.jsv** souboru.
 
 ### <a name="durable-functions-2x"></a>Durable Functions 2. x
 
@@ -83,11 +90,11 @@ Fronty, tabulky a objekty blob používané nástrojem Durable Functions jsou vy
 }
 ```
 
-Pokud není zadaný, použije se `AzureWebJobsStorage` výchozí účet úložiště. Pro úlohy citlivé na výkon se ale doporučuje nakonfigurovat účet úložiště, který není výchozí. Durable Functions používá Azure Storage silně a používání vyhrazeného účtu úložiště izoluje Durable Functions využití úložiště od interního využití hostitelem Azure Functions.
+Pokud není zadaný, použije se výchozí `AzureWebJobsStorage` účet úložiště. Pro úlohy citlivé na výkon se ale doporučuje nakonfigurovat účet úložiště, který není výchozí. Durable Functions používá Azure Storage silně a používání vyhrazeného účtu úložiště izoluje Durable Functions využití úložiště od interního využití hostitelem Azure Functions.
 
 ## <a name="orchestrator-scale-out"></a>Škálování na více instancí Orchestrator
 
-Funkce aktivity jsou bezstavové a automaticky se škálují s přidáním virtuálních počítačů. Funkce a entity nástroje Orchestrator jsou naopak *rozdělené do oddílů* v jedné nebo několika řídicích frontách. Počet front řízení je definován v souboru **Host. JSON** . Následující ukázkový fragment kódu Host. JSON nastaví `durableTask/storageProvider/partitionCount` vlastnost (nebo `durableTask/partitionCount` v Durable Functions 1. x) na. `3`
+Funkce aktivity jsou bezstavové a automaticky se škálují s přidáním virtuálních počítačů. Funkce a entity nástroje Orchestrator jsou naopak *rozdělené do oddílů* v jedné nebo několika řídicích frontách. Počet front řízení je definován v **host.jsv** souboru. Následující příklad host.jsve fragmentu kódu nastaví `durableTask/storageProvider/partitionCount` vlastnost (nebo `durableTask/partitionCount` v Durable Functions 1. x) na `3` .
 
 ### <a name="durable-functions-2x"></a>Durable Functions 2. x
 
@@ -150,7 +157,7 @@ Funkce entit jsou také spouštěny v jednom vlákně a operace jsou zpracováv�
 
 Azure Functions podporuje souběžné provádění více funkcí v rámci jedné instance aplikace. Toto souběžné provádění pomáhá zvýšit paralelismus a minimalizuje počet "studených startů", na které bude Typická aplikace v průběhu času docházet. Vysoká souběžnost však může vyčerpat systémové prostředky pro virtuální počítače, například Síťová připojení nebo dostupná paměť. V závislosti na potřebách aplikace Function App může být nutné omezit souběžnost na jednotlivé instance, aby nedocházelo k možnosti vycházet z paměti v situacích s vysokým zatížením.
 
-Omezení souběžnosti funkcí Activity, Orchestrator a entity je možné nakonfigurovat v souboru **Host. JSON** . Příslušná nastavení jsou `durableTask/maxConcurrentActivityFunctions` pro funkce aktivity a `durableTask/maxConcurrentOrchestratorFunctions` pro funkce Orchestrator i entity.
+Omezení souběžnosti funkcí Activity, Orchestrator a entity je možné nakonfigurovat v **host.jsv** souboru. Příslušná nastavení jsou `durableTask/maxConcurrentActivityFunctions` pro funkce aktivity a `durableTask/maxConcurrentOrchestratorFunctions` pro funkce Orchestrator i entity.
 
 ### <a name="functions-20"></a>Funkce 2,0
 
@@ -185,7 +192,7 @@ V předchozím příkladu může být v jednom virtuálním počítači souběž
 
 Rozšířené relace jsou nastavení, které udržuje Orchestrace a entity v paměti, i když dokončí zpracování zpráv. Typický efekt povolení rozšířených relací se snižuje v/v proti účtu Azure Storage a celkově lepší propustnost.
 
-Rozšířené relace můžete povolit nastavením `durableTask/extendedSessionsEnabled` na `true` v souboru **Host. JSON** . `durableTask/extendedSessionIdleTimeoutInSeconds` Nastavení lze použít k určení, jak dlouho bude nečinná relace uchovávána v paměti:
+Můžete povolit rozšířené relace nastavením `durableTask/extendedSessionsEnabled` na `true` v **host.jsv** souboru. `durableTask/extendedSessionIdleTimeoutInSeconds`Nastavení lze použít k určení, jak dlouho bude nečinná relace uchovávána v paměti:
 
 **Funkce 2,0**
 ```json
@@ -214,7 +221,7 @@ Existují dva potenciální downsides tohoto nastavení, které je potřeba mít
 1. Došlo k celkovému nárůstu využití paměti aplikace Function App.
 2. Může dojít k celkovému snížení propustnosti v případě, že existuje mnoho souběžných, krátkodobých nebo nenáročnéch spuštění funkcí Orchestrator nebo entity.
 
-Příklad: Pokud `durableTask/extendedSessionIdleTimeoutInSeconds` je nastavené na 30 sekund, pak krátká nestálá funkce Orchestrator nebo entity, která se provede za méně než 1 sekundou, zabírá paměť po dobu 30 sekund. Také se počítá oproti výše `durableTask/maxConcurrentOrchestratorFunctions` uvedené kvótě, která potenciálně brání spuštění dalších funkcí Orchestrator nebo entity.
+Příklad: Pokud `durableTask/extendedSessionIdleTimeoutInSeconds` je nastavené na 30 sekund, pak krátká nestálá funkce Orchestrator nebo entity, která se provede za méně než 1 sekundou, zabírá paměť po dobu 30 sekund. Také se počítá oproti `durableTask/maxConcurrentOrchestratorFunctions` výše uvedené kvótě, která potenciálně brání spuštění dalších funkcí Orchestrator nebo entity.
 
 Konkrétní účinky rozšířených relací na nástroje Orchestrator a funkce entit jsou popsány v následujících částech.
 

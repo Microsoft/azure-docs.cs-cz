@@ -4,12 +4,12 @@ description: Naučte se přizpůsobit funkci ověřování a autorizace v App Se
 ms.topic: article
 ms.date: 10/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: d57b196bf95ebdf31bc459ad4b9d718fd32ca495
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6efa5461fab9faf3ce1599a01540cf314b34281b
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79280830"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85205641"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Rozšířené použití ověřování a autorizace v Azure App Service
 
@@ -33,9 +33,9 @@ Nejprve na stránce **ověřování/autorizace** v Azure Portal nakonfigurujte k
 
 V **akci, která se má provést, když se žádost neověřuje**, vyberte možnost **povoluje anonymní žádosti (bez akce)**.
 
-Na přihlašovací stránce nebo v navigačním panelu nebo jakémkoli jiném umístění aplikace přidejte odkaz pro přihlášení ke každému poskytovateli, který jste povolili (`/.auth/login/<provider>`). Příklad:
+Na přihlašovací stránce nebo v navigačním panelu nebo jakémkoli jiném umístění aplikace přidejte odkaz pro přihlášení ke každému poskytovateli, který jste povolili ( `/.auth/login/<provider>` ). Příklad:
 
-```HTML
+```html
 <a href="/.auth/login/aad">Log in with Azure AD</a>
 <a href="/.auth/login/microsoftaccount">Log in with Microsoft Account</a>
 <a href="/.auth/login/facebook">Log in with Facebook</a>
@@ -45,9 +45,9 @@ Na přihlašovací stránce nebo v navigačním panelu nebo jakémkoli jiném um
 
 Když uživatel klikne na jeden z odkazů, otevře se příslušná přihlašovací stránka pro přihlášení uživatele.
 
-Pokud chcete přesměrovat uživatele po přihlášení na vlastní adresu URL, použijte parametr řetězce `post_login_redirect_url` dotazu (Nezaměňujte ho pomocí identifikátoru URI přesměrování v konfiguraci zprostředkovatele identity). Chcete-li například procházet uživatele `/Home/Index` po přihlášení, použijte následující kód HTML:
+Pokud chcete přesměrovat uživatele po přihlášení na vlastní adresu URL, použijte `post_login_redirect_url` parametr řetězce dotazu (Nezaměňujte ho pomocí identifikátoru URI přesměrování v konfiguraci zprostředkovatele identity). Chcete-li například procházet uživatele `/Home/Index` po přihlášení, použijte následující kód HTML:
 
-```HTML
+```html
 <a href="/.auth/login/<provider>?post_login_redirect_url=/Home/Index">Log in</a>
 ```
 
@@ -69,13 +69,13 @@ Formát tokenu se mírně liší v závislosti na poskytovateli. Podrobnosti naj
 | Hodnota poskytovatele | Vyžadováno v textu žádosti | Komentáře |
 |-|-|-|
 | `aad` | `{"access_token":"<access_token>"}` | |
-| `microsoftaccount` | `{"access_token":"<token>"}` | `expires_in` Vlastnost je nepovinná. <br/>Při žádosti o token ze služby Live Services vždy vyžádat `wl.basic` rozsah. |
-| `google` | `{"id_token":"<id_token>"}` | `authorization_code` Vlastnost je nepovinná. Je-li tento parametr zadán, může být také případně doplněn `redirect_uri` vlastností. |
+| `microsoftaccount` | `{"access_token":"<token>"}` | `expires_in`Vlastnost je nepovinná. <br/>Při žádosti o token ze služby Live Services vždy vyžádat `wl.basic` rozsah. |
+| `google` | `{"id_token":"<id_token>"}` | `authorization_code`Vlastnost je nepovinná. Je-li tento parametr zadán, může být také případně doplněn `redirect_uri` vlastností. |
 | `facebook`| `{"access_token":"<user_access_token>"}` | Použijte platný [přístupový token uživatele](https://developers.facebook.com/docs/facebook-login/access-tokens) z Facebooku. |
 | `twitter` | `{"access_token":"<access_token>", "access_token_secret":"<acces_token_secret>"}` | |
 | | | |
 
-V případě úspěšného ověření tokenu poskytovatele vrátí rozhraní API text `authenticationToken` v odpovědi, který je vaším tokenem relace. 
+V případě úspěšného ověření tokenu poskytovatele vrátí rozhraní API `authenticationToken` text v odpovědi, který je vaším tokenem relace. 
 
 ```json
 {
@@ -95,7 +95,7 @@ X-ZUMO-AUTH: <authenticationToken_value>
 
 ## <a name="sign-out-of-a-session"></a>Odhlásit se z relace
 
-Uživatelé můžou zahájit odhlášení odesláním `GET` žádosti do `/.auth/logout` koncového bodu aplikace. `GET` Požadavek provede následující akce:
+Uživatelé můžou zahájit odhlášení odesláním `GET` žádosti do `/.auth/logout` koncového bodu aplikace. `GET`Požadavek provede následující akce:
 
 - Vymaže soubory cookie ověřování z aktuální relace.
 - Odstraní tokeny aktuálního uživatele z úložiště tokenů.
@@ -103,17 +103,17 @@ Uživatelé můžou zahájit odhlášení odesláním `GET` žádosti do `/.auth
 
 Tady je jednoduchý odkaz na odhlášení z webové stránky:
 
-```HTML
+```html
 <a href="/.auth/logout">Sign out</a>
 ```
 
-Ve výchozím nastavení se při úspěšném odhlášení přesměruje klient na adresu URL `/.auth/logout/done`. Stránku přesměrování po odhlášení můžete změnit přidáním parametru `post_logout_redirect_uri` dotazu. Příklad:
+Ve výchozím nastavení se při úspěšném odhlášení přesměruje klient na adresu URL `/.auth/logout/done` . Stránku přesměrování po odhlášení můžete změnit přidáním `post_logout_redirect_uri` parametru dotazu. Příklad:
 
 ```
 GET /.auth/logout?post_logout_redirect_uri=/index.html
 ```
 
-Doporučuje se [kódovat](https://wikipedia.org/wiki/Percent-encoding) hodnotu `post_logout_redirect_uri`.
+Doporučuje se [kódovat](https://wikipedia.org/wiki/Percent-encoding) hodnotu `post_logout_redirect_uri` .
 
 Při použití plně kvalifikovaných adres URL musí být adresa URL buď hostovaná ve stejné doméně, nebo nakonfigurovaná jako povolená externí adresa URL pro přesměrování vaší aplikace. V následujícím příkladu pro přesměrování na `https://myexternalurl.com` , který není hostovaný ve stejné doméně:
 
@@ -129,9 +129,9 @@ az webapp auth update --name <app_name> --resource-group <group_name> --allowed-
 
 ## <a name="preserve-url-fragments"></a>Zachovat fragmenty adresy URL
 
-Až se uživatelé přihlásí do aplikace, obvykle chtějí být přesměrováni na stejnou část stejné stránky, jako je například `/wiki/Main_Page#SectionZ`. Protože se ale [Fragmenty adresy URL](https://wikipedia.org/wiki/Fragment_identifier) (například `#SectionZ`) nikdy neodesílají na server, po dokončení přihlášení OAuth a přesměrování zpátky do vaší aplikace se ve výchozím nastavení nezachovají. Uživatelé pak dostanou optimální prostředí, když potřebují znovu přejít k požadovanému kotvu. Toto omezení se vztahuje na všechna řešení ověřování na straně serveru.
+Až se uživatelé přihlásí do aplikace, obvykle chtějí být přesměrováni na stejnou část stejné stránky, jako je například `/wiki/Main_Page#SectionZ` . Protože se ale [Fragmenty adresy URL](https://wikipedia.org/wiki/Fragment_identifier) (například `#SectionZ` ) nikdy neodesílají na server, po dokončení přihlášení OAuth a přesměrování zpátky do vaší aplikace se ve výchozím nastavení nezachovají. Uživatelé pak dostanou optimální prostředí, když potřebují znovu přejít k požadovanému kotvu. Toto omezení se vztahuje na všechna řešení ověřování na straně serveru.
 
-V App Service ověřování můžete zachovat fragmenty adresy URL v rámci přihlášení OAuth. To provedete tak, že nastavíte `WEBSITE_AUTH_PRESERVE_URL_FRAGMENT` nastavení `true`aplikace s názvem na. Můžete to provést v [Azure Portal](https://portal.azure.com)nebo stačí spustit následující příkaz v [Azure Cloud Shell](../cloud-shell/quickstart.md):
+V App Service ověřování můžete zachovat fragmenty adresy URL v rámci přihlášení OAuth. To provedete tak, že nastavíte nastavení aplikace `WEBSITE_AUTH_PRESERVE_URL_FRAGMENT` s názvem na `true` . Můžete to provést v [Azure Portal](https://portal.azure.com)nebo stačí spustit následující příkaz v [Azure Cloud Shell](../cloud-shell/quickstart.md):
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app_name> --resource-group <group_name> --settings WEBSITE_AUTH_PRESERVE_URL_FRAGMENT="true"
@@ -146,7 +146,7 @@ App Service předá do vaší aplikace deklarace identity uživatelů pomocí sp
 
 Kód, který je napsán v libovolném jazyce nebo v rozhraní, může získat informace, které potřebuje z těchto hlaviček. Pro aplikace ASP.NET 4,6 se **ClaimsPrincipal** automaticky nastaví s příslušnými hodnotami. ASP.NET Core ale neposkytuje middleware ověřování, který se integruje s deklaracemi identity uživatelů App Service. Alternativní řešení najdete v tématu [MaximeRouiller. Azure. AppService. EasyAuth](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth).
 
-Vaše aplikace může také získat další podrobnosti o ověřeném uživateli voláním `/.auth/me`. Sady SDK Mobile Apps serveru poskytují pomocné metody pro práci s těmito daty. Další informace najdete v tématu [Jak používat sadu azure Mobile Apps Node. js SDK](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-getidentity)a [pracovat s back-end serverem .net pro Azure Mobile Apps](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#user-info).
+Vaše aplikace může také získat další podrobnosti o ověřeném uživateli voláním `/.auth/me` . Sady SDK Mobile Apps serveru poskytují pomocné metody pro práci s těmito daty. Další informace najdete v tématu [Jak používat sadu azure Mobile Apps Node.js SDK a jak](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-getidentity) [pracovat se serverem back-end .NET sdk pro Azure Mobile Apps](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#user-info).
 
 ## <a name="retrieve-tokens-in-app-code"></a>Načtení tokenů v kódu aplikace
 
@@ -161,24 +161,24 @@ Z kódu serveru jsou tokeny specifické pro poskytovatele vloženy do hlavičky 
 | Twitter | `X-MS-TOKEN-TWITTER-ACCESS-TOKEN` <br/> `X-MS-TOKEN-TWITTER-ACCESS-TOKEN-SECRET` |
 |||
 
-Z kódu klienta (například mobilní aplikace nebo JavaScript v prohlížeči) odešle požadavek HTTP `GET` na. `/.auth/me` Vrácený kód JSON má tokeny specifické pro poskytovatele.
+Z kódu klienta (například mobilní aplikace nebo JavaScript v prohlížeči) odešle `GET` požadavek HTTP na `/.auth/me` . Vrácený kód JSON má tokeny specifické pro poskytovatele.
 
 > [!NOTE]
 > Přístupové tokeny slouží k přístupu k prostředkům poskytovatele, takže jsou k dispozici pouze v případě, že poskytovatele nakonfigurujete pomocí tajného klíče klienta. Informace o tom, jak získat aktualizační tokeny, najdete v tématu aktualizace přístupových tokenů.
 
 ## <a name="refresh-identity-provider-tokens"></a>Aktualizovat tokeny zprostředkovatele identity
 
-Když vyprší platnost přístupového tokenu poskytovatele (ne [tokenu relace](#extend-session-token-expiration-grace-period)), budete muset uživatele před opětovným použitím tohoto tokenu znovu ověřit. Vypršení platnosti tokenu se můžete vyhnout `GET` provedením volání `/.auth/refresh` koncového bodu aplikace. Při volání App Service automaticky aktualizuje přístupové tokeny v úložišti tokenů pro ověřeného uživatele. Následné žádosti o tokeny pomocí kódu vaší aplikace získají aktualizované tokeny. Aby ale aktualizace tokenu fungovala, musí úložiště tokenů obsahovat [aktualizační tokeny](https://auth0.com/learn/refresh-tokens/) pro vašeho poskytovatele. Způsob získání aktualizačních tokenů je popsán u každého poskytovatele, ale následující seznam je stručným shrnutím:
+Když vyprší platnost přístupového tokenu poskytovatele (ne [tokenu relace](#extend-session-token-expiration-grace-period)), budete muset uživatele před opětovným použitím tohoto tokenu znovu ověřit. Vypršení platnosti tokenu se můžete vyhnout provedením `GET` volání `/.auth/refresh` koncového bodu aplikace. Při volání App Service automaticky aktualizuje přístupové tokeny v úložišti tokenů pro ověřeného uživatele. Následné žádosti o tokeny pomocí kódu vaší aplikace získají aktualizované tokeny. Aby ale aktualizace tokenu fungovala, musí úložiště tokenů obsahovat [aktualizační tokeny](https://auth0.com/learn/refresh-tokens/) pro vašeho poskytovatele. Způsob získání aktualizačních tokenů je popsán u každého poskytovatele, ale následující seznam je stručným shrnutím:
 
-- **Google**: připojí k `access_type=offline` volání `/.auth/login/google` rozhraní API parametr řetězce dotazu. Pokud používáte sadu Mobile Apps SDK, můžete do jednoho z `LogicAsync` přetížení přidat parametr (viz [aktualizace tokenů Google](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)).
+- **Google**: připojí `access_type=offline` k `/.auth/login/google` volání rozhraní API parametr řetězce dotazu. Pokud používáte sadu Mobile Apps SDK, můžete do jednoho z přetížení přidat parametr `LogicAsync` (viz [aktualizace tokenů Google](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)).
 - **Facebook**: neposkytuje aktualizační tokeny. Do vypršení platnosti tokenů po dobu 60 dnů (viz [doba ukončení a rozšíření přístupových tokenů Facebook](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)).
 - **Twitter**: přístupové tokeny neprošly (viz [Nejčastější dotazy k Twitteru OAuth](https://developer.twitter.com/en/docs/basics/authentication/FAQ)).
 - **Účet Microsoft**: při [konfiguraci nastavení ověřování účtu Microsoft](configure-authentication-provider-microsoft.md)vyberte `wl.offline_access` obor.
-- **Azure Active Directory**: v [https://resources.azure.com](https://resources.azure.com)nástroji proveďte následující kroky:
+- **Azure Active Directory**: v nástroji [https://resources.azure.com](https://resources.azure.com) proveďte následující kroky:
     1. V horní části stránky vyberte možnost **čtení/zápis**.
-    2. V levém prohlížeči přejděte na **předplatná** > **_\<\_název_** >   >  **config** > **authsettings****resourceGroups** >  > předplatného resourceGroups  >  > **_\<název\_skupiny\_prostředků>_** **poskytovatelé** > **Microsoft. Web****sites****_\<\_název>_** config authsettings. 
+    2. V levém prohlížeči přejděte na **odběry** > * *_ \<subscription\_name_** > **resourceGroups** > * *_ \<resource\_group\_name> _* * > **poskytovatelé**  >  **společnosti Microsoft.**  >  **weby** > * *_ \<app\_name> _ * * > **config**  >  **authsettings**. 
     3. Klikněte na **Upravit**.
-    4. Upravte následující vlastnost. Nahraďte _ \<ID aplikace\_>_ kódem Azure Active Directory ID aplikace služby, ke které chcete získat přístup.
+    4. Upravte následující vlastnost. Nahraďte _\<app\_id>_ Azure Active Directory ID aplikace služby, ke které chcete získat přístup.
 
         ```json
         "additionalLoginParams": ["response_type=code id_token", "resource=<app_id>"]
@@ -190,7 +190,7 @@ Po nakonfigurování zprostředkovatele můžete [Najít obnovovací token a ča
 
 Pokud chcete přístupový token kdykoli aktualizovat, stačí volat `/.auth/refresh` v libovolném jazyce. Následující fragment kódu používá jQuery k aktualizaci přístupových tokenů z JavaScriptového klienta.
 
-```JavaScript
+```javascript
 function refreshTokens() {
   let refreshUrl = "/.auth/refresh";
   $.ajax(refreshUrl) .done(function() {
@@ -205,7 +205,7 @@ Pokud uživatel Odvolá oprávnění udělená vaší aplikaci, volání `/.auth
 
 ## <a name="extend-session-token-expiration-grace-period"></a>Doba odkladu pro prodloužení platnosti tokenu relace
 
-Platnost ověřené relace vyprší po 8 hodinách. Po vypršení platnosti ověřené relace je ve výchozím nastavení k dispozici období odkladu 72 hodin. V rámci této lhůty odkladu je dovoleno aktualizovat token relace pomocí App Service bez opětovného ověření uživatele. Můžete zavolat `/.auth/refresh` pouze v případě, že je token relace neplatný a nemusíte sledovat vypršení platnosti tokenu sami. Po uplynutí doby 72 hodin se uživatel musí znovu přihlásit, aby získal platný token relace.
+Platnost ověřené relace vyprší po 8 hodinách. Po vypršení platnosti ověřené relace je ve výchozím nastavení k dispozici období odkladu 72 hodin. V rámci této lhůty odkladu je dovoleno aktualizovat token relace pomocí App Service bez opětovného ověření uživatele. Můžete zavolat pouze `/.auth/refresh` v případě, že je token relace neplatný a nemusíte sledovat vypršení platnosti tokenu sami. Po uplynutí doby 72 hodin se uživatel musí znovu přihlásit, aby získal platný token relace.
 
 Pokud pro vás není dostatek času 72 hodin, můžete toto okno vypršení platnosti zvětšit. Prodloužení platnosti po dlouhou dobu může mít významný vliv na zabezpečení (například při nevracení nebo odcizení ověřovacího tokenu). Proto byste měli ponechat výchozí 72 hodiny nebo nastavit dobu rozšíření na nejmenší hodnotu.
 
@@ -221,20 +221,20 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 ## <a name="limit-the-domain-of-sign-in-accounts"></a>Omezení domény přihlašovacích účtů
 
-Účet Microsoft i Azure Active Directory vám umožňují přihlašovat se z více domén. Například účet Microsoft umožňuje účty _Outlook.com_, _Live.com_a _hotmail.com_ . Azure AD povoluje pro přihlašovací účty libovolný počet vlastních domén. Můžete ale chtít zrychlit uživatele přímo na přihlašovací stránku služby Azure AD, která je označená `contoso.com`značkou (například). Chcete-li navrhnout název domény přihlašovacích účtů, postupujte podle těchto kroků.
+Účet Microsoft i Azure Active Directory vám umožňují přihlašovat se z více domén. Například účet Microsoft umožňuje účty _Outlook.com_, _Live.com_a _hotmail.com_ . Azure AD povoluje pro přihlašovací účty libovolný počet vlastních domén. Můžete ale chtít zrychlit uživatele přímo na přihlašovací stránku služby Azure AD, která je označená značkou (například `contoso.com` ). Chcete-li navrhnout název domény přihlašovacích účtů, postupujte podle těchto kroků.
 
-V [https://resources.azure.com](https://resources.azure.com)přejděte na **předplatná** > **_\<název\__** > předplatného**resourceGroups** > **_\<\_název skupiny\_prostředků>_** >   >  **config** **providers** >  > **authsettings****_\<poskytovatelé\_ _****Microsoft. Web****sites** > název>config authsettings.  >  
+V [https://resources.azure.com](https://resources.azure.com) přejděte na **odběry** > * *_ \<subscription\_name_** > **resourceGroups** > * *_* \<resource\_group\_name> _* > **poskytovatelé**  >  **společnosti Microsoft.**  >  **weby** > * *_ \<app\_name> _ * * > **config**  >  **authsettings**. 
 
-Klikněte na tlačítko **Upravit**, upravte následující vlastnost a pak klikněte na tlačítko **Vložit**. Nezapomeňte nahradit _ \<název domény\_>_ doménou, kterou chcete.
+Klikněte na tlačítko **Upravit**, upravte následující vlastnost a pak klikněte na tlačítko **Vložit**. Nezapomeňte nahradit _\<domain\_name>_ doménou, kterou chcete.
 
 ```json
 "additionalLoginParams": ["domain_hint=<domain_name>"]
 ```
 
-Toto nastavení připojí parametr řetězce `domain_hint` dotazu k adrese URL pro přesměrování přihlášení. 
+Toto nastavení připojí `domain_hint` parametr řetězce dotazu k adrese URL pro přesměrování přihlášení. 
 
 > [!IMPORTANT]
-> Klient může po přijetí adresy URL pro přesměrování odebrat `domain_hint` parametr a pak se přihlásit k jiné doméně. Takže když je tato funkce užitečná, není to funkce zabezpečení.
+> Klient může `domain_hint` po přijetí adresy URL pro přesměrování odebrat parametr a pak se přihlásit k jiné doméně. Takže když je tato funkce užitečná, není to funkce zabezpečení.
 >
 
 ## <a name="authorize-or-deny-users"></a>Autorizovat nebo Odepřít uživatele
@@ -247,13 +247,13 @@ I když App Service postará o nejjednodušší případ autorizace (tj. odmítn
 
 ### <a name="server-level-windows-apps-only"></a>Úroveň serveru (jenom aplikace pro Windows)
 
-U jakékoli aplikace pro Windows můžete definovat chování ověřování webového serveru IIS úpravou souboru *Web. config* . Aplikace pro Linux nepoužívají službu IIS a nelze je konfigurovat pomocí *souboru Web. config*.
+V případě jakékoli aplikace pro Windows můžete definovat chování webového serveru služby IIS, a to úpravou souboru *Web.config* . Aplikace pro Linux nepoužívají službu IIS a nelze je konfigurovat prostřednictvím *Web.config*.
 
 1. Přejít na`https://<app-name>.scm.azurewebsites.net/DebugConsole`
 
-1. V Průzkumníkovi prohlížeče souborů App Service přejděte na *lokalitu/wwwroot*. Pokud soubor *Web. config* neexistuje, vytvořte jej výběrem možnosti **+**  >  **nový soubor**. 
+1. V Průzkumníkovi prohlížeče souborů App Service přejděte na *lokalitu/wwwroot*. Pokud *Web.config* neexistuje, vytvořte ho výběrem možnosti **+**  >  **nový soubor**. 
 
-1. Vyberte tužku pro *Web. config* a upravte ji. Přidejte následující konfigurační kód a klikněte na **Uložit**. Pokud soubor *Web. config* již existuje, stačí přidat `<authorization>` element s vše v něm. Přidejte účty, které chcete v `<allow>` elementu použít.
+1. Vyberte tužku pro *Web.config* a upravte ji. Přidejte následující konfigurační kód a klikněte na **Uložit**. Pokud *Web.config* již existuje, stačí přidat `<authorization>` prvek se všemi. Přidejte účty, které chcete v `<allow>` elementu použít.
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -281,5 +281,5 @@ Pokud žádná z ostatních úrovní neposkytne autorizaci, kterou potřebujete,
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Kurz: ověřování a autorizace uživatelů koncovým kurzem (Windows)](app-service-web-tutorial-auth-aad.md)
-> [: ověření a autorizace uživatelů](containers/tutorial-auth-aad.md) v konečném cíli (Linux)
+> [Kurz: ověřování a autorizace uživatelů v konečném cíli (Windows)](app-service-web-tutorial-auth-aad.md) 
+>  [Kurz: ověřování a autorizace uživatelů v konečném cíli (Linux)](containers/tutorial-auth-aad.md)

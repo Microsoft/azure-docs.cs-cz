@@ -3,20 +3,20 @@ title: Registrace a použití uložených procedur, triggerů a uživatelsky def
 description: Naučte se registrovat a volat uložené procedury, triggery a uživatelsky definované funkce pomocí sad Azure Cosmos DB SDK.
 author: timsander1
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 05/07/2020
+ms.topic: how-to
+ms.date: 06/16/2020
 ms.author: tisande
 ms.custom: tracking-python
-ms.openlocfilehash: ea34ec3bd601b784afd5bf0286768bbf5f92d040
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 747878a4fa9e6ad43f7eeb507f0cd7a070c6d743
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84553033"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262901"
 ---
 # <a name="how-to-register-and-use-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Postup registrace a používání uložených procedur, triggerů a funkcí definovaných uživatelem ve službě Azure Cosmos DB
 
-Rozhraní SQL API ve službě Azure Cosmos DB podporuje registraci a vyvolávání uložených procedur, triggerů a funkcí definovaných uživatelem napsaných v JavaScriptu. K registraci a vyvolání uložených procedur můžete použít sady SDK rozhraní API [.NET](sql-api-sdk-dotnet.md), [.NET Core](sql-api-sdk-dotnet-core.md), [Java](sql-api-sdk-java.md), [JavaScript](sql-api-sdk-node.md), [Node. js](sql-api-sdk-node.md)nebo [Python](sql-api-sdk-python.md) . Po definování jednoho nebo více uložených procedur, triggerů a uživatelsky definovaných funkcí je můžete načíst a zobrazit v [Azure Portal](https://portal.azure.com/) pomocí Průzkumník dat.
+Rozhraní SQL API ve službě Azure Cosmos DB podporuje registraci a vyvolávání uložených procedur, triggerů a funkcí definovaných uživatelem napsaných v JavaScriptu. K registraci a vyvolání uložených procedur můžete použít sady SDK rozhraní SQL API [.NET](sql-api-sdk-dotnet.md), [.NET Core](sql-api-sdk-dotnet-core.md), [Java](sql-api-sdk-java.md), [JavaScript](sql-api-sdk-node.md), [Node.js](sql-api-sdk-node.md)nebo [Python](sql-api-sdk-python.md) . Po definování jednoho nebo více uložených procedur, triggerů a uživatelsky definovaných funkcí je můžete načíst a zobrazit v [Azure Portal](https://portal.azure.com/) pomocí Průzkumník dat.
 
 ## <a name="how-to-run-stored-procedures"></a><a id="stored-procedures"></a>Spuštění uložených procedur
 
@@ -32,7 +32,7 @@ Následující příklady ukazují, jak registrovat a volat uloženou proceduru 
 Následující příklad ukazuje, jak zaregistrovat uloženou proceduru pomocí sady .NET SDK v2:
 
 ```csharp
-string storedProcedureId = "spCreateToDoItem";
+string storedProcedureId = "spCreateToDoItems";
 StoredProcedure newStoredProcedure = new StoredProcedure
    {
        Id = storedProcedureId,
@@ -46,17 +46,25 @@ StoredProcedure createdStoredProcedure = response.Resource;
 Následující kód ukazuje, jak volat uloženou proceduru pomocí sady .NET SDK v2:
 
 ```csharp
-dynamic newItem = new
+dynamic[] newItems = new dynamic[]
 {
-    category = "Personal",
-    name = "Groceries",
-    description = "Pick up strawberries",
-    isComplete = false
+    new {
+        category = "Personal",
+        name = "Groceries",
+        description = "Pick up strawberries",
+        isComplete = false
+    },
+    new {
+        category = "Personal",
+        name = "Doctor",
+        description = "Make appointment for check up",
+        isComplete = false
+    }
 };
 
 Uri uri = UriFactory.CreateStoredProcedureUri("myDatabase", "myContainer", "spCreateToDoItem");
 RequestOptions options = new RequestOptions { PartitionKey = new PartitionKey("Personal") };
-var result = await client.ExecuteStoredProcedureAsync<string>(uri, options, newItem);
+var result = await client.ExecuteStoredProcedureAsync<string>(uri, options, new[] { newItems });
 ```
 
 ### <a name="stored-procedures---net-sdk-v3"></a>Uložené procedury – .NET SDK V3
@@ -64,10 +72,11 @@ var result = await client.ExecuteStoredProcedureAsync<string>(uri, options, newI
 Následující příklad ukazuje, jak zaregistrovat uloženou proceduru pomocí sady .NET SDK V3:
 
 ```csharp
-StoredProcedureResponse storedProcedureResponse = await client.GetContainer("database", "container").Scripts.CreateStoredProcedureAsync(new StoredProcedureProperties
+string storedProcedureId = "spCreateToDoItems";
+StoredProcedureResponse storedProcedureResponse = await client.GetContainer("myDatabase", "myContainer").Scripts.CreateStoredProcedureAsync(new StoredProcedureProperties
 {
-    Id = "spCreateToDoItem",
-    Body = File.ReadAllText(@"..\js\spCreateToDoItem.js")
+    Id = storedProcedureId,
+    Body = File.ReadAllText($@"..\js\{storedProcedureId}.js")
 });
 ```
 
@@ -81,10 +90,16 @@ dynamic[] newItems = new dynamic[]
         name = "Groceries",
         description = "Pick up strawberries",
         isComplete = false
+    },
+    new {
+        category = "Personal",
+        name = "Doctor",
+        description = "Make appointment for check up",
+        isComplete = false
     }
 };
 
-var result = await client.GetContainer("database", "container").Scripts.ExecuteStoredProcedureAsync<string>("spCreateToDoItem", new PartitionKey("Personal"), newItems);
+var result = await client.GetContainer("database", "container").Scripts.ExecuteStoredProcedureAsync<string>("spCreateToDoItem", new PartitionKey("Personal"), new[] { newItems });
 ```
 
 ### <a name="stored-procedures---java-sdk"></a>Uložené procedury – Java SDK
@@ -95,8 +110,8 @@ Následující příklad ukazuje, jak registrovat uloženou proceduru pomocí sa
 String containerLink = String.format("/dbs/%s/colls/%s", "myDatabase", "myContainer");
 StoredProcedure newStoredProcedure = new StoredProcedure(
     "{" +
-        "  'id':'spCreateToDoItem'," +
-        "  'body':" + new String(Files.readAllBytes(Paths.get("..\\js\\spCreateToDoItem.js"))) +
+        "  'id':'spCreateToDoItems'," +
+        "  'body':" + new String(Files.readAllBytes(Paths.get("..\\js\\spCreateToDoItems.js"))) +
     "}");
 //toBlocking() blocks the thread until the operation is complete and is used only for demo.  
 StoredProcedure createdStoredProcedure = asyncClient.createStoredProcedure(containerLink, newStoredProcedure, null)
@@ -107,8 +122,10 @@ Následující kód ukazuje, jak zavolat uloženou proceduru pomocí sady Java S
 
 ```java
 String containerLink = String.format("/dbs/%s/colls/%s", "myDatabase", "myContainer");
-String sprocLink = String.format("%s/sprocs/%s", containerLink, "spCreateToDoItem");
+String sprocLink = String.format("%s/sprocs/%s", containerLink, "spCreateToDoItems");
 final CountDownLatch successfulCompletionLatch = new CountDownLatch(1);
+
+List<ToDoItem> ToDoItems = new ArrayList<ToDoItem>();
 
 class ToDoItem {
     public String category;
@@ -123,10 +140,19 @@ newItem.name = "Groceries";
 newItem.description = "Pick up strawberries";
 newItem.isComplete = false;
 
+ToDoItems.add(newItem)
+
+newItem.category = "Personal";
+newItem.name = "Doctor";
+newItem.description = "Make appointment for check up";
+newItem.isComplete = false;
+
+ToDoItems.add(newItem)
+
 RequestOptions requestOptions = new RequestOptions();
 requestOptions.setPartitionKey(new PartitionKey("Personal"));
 
-Object[] storedProcedureArgs = new Object[] { newItem };
+Object[] storedProcedureArgs = new Object[] { ToDoItems };
 asyncClient.executeStoredProcedure(sprocLink, requestOptions, storedProcedureArgs)
     .subscribe(storedProcedureResponse -> {
         String storedProcResultAsString = storedProcedureResponse.getResponseAsString();
@@ -147,7 +173,7 @@ Následující příklad ukazuje, jak registrovat uloženou proceduru pomocí sa
 
 ```javascript
 const container = client.database("myDatabase").container("myContainer");
-const sprocId = "spCreateToDoItem";
+const sprocId = "spCreateToDoItems";
 await container.scripts.storedProcedures.create({
     id: sprocId,
     body: require(`../js/${sprocId}`)
@@ -164,7 +190,7 @@ const newItem = [{
     isComplete: false
 }];
 const container = client.database("myDatabase").container("myContainer");
-const sprocId = "spCreateToDoItem";
+const sprocId = "spCreateToDoItems";
 const {body: result} = await container.scripts.storedProcedure(sprocId).execute(newItem, {partitionKey: newItem[0].category});
 ```
 
@@ -173,11 +199,11 @@ const {body: result} = await container.scripts.storedProcedure(sprocId).execute(
 Následující příklad ukazuje, jak registrovat uloženou proceduru pomocí sady Python SDK
 
 ```python
-with open('../js/spCreateToDoItem.js') as file:
+with open('../js/spCreateToDoItems.js') as file:
     file_contents = file.read()
 container_link = 'dbs/myDatabase/colls/myContainer'
 sproc_definition = {
-    'id': 'spCreateToDoItem',
+    'id': 'spCreateToDoItems',
     'serverScript': file_contents,
 }
 sproc = client.CreateStoredProcedure(container_link, sproc_definition)
@@ -186,7 +212,7 @@ sproc = client.CreateStoredProcedure(container_link, sproc_definition)
 Následující kód ukazuje, jak volat uloženou proceduru pomocí sady Python SDK
 
 ```python
-sproc_link = 'dbs/myDatabase/colls/myContainer/sprocs/spCreateToDoItem'
+sproc_link = 'dbs/myDatabase/colls/myContainer/sprocs/spCreateToDoItems'
 new_item = [{
     'category':'Personal',
     'name':'Groceries',

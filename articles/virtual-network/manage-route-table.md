@@ -7,23 +7,23 @@ documentationcenter: na
 author: KumudD
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: kumud
-ms.openlocfilehash: b30c912319104726069ae98920f0bc825d7358cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e694f29bb6f8e7c78c36ad2b8ee90d507529444f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82182850"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708259"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Vytvoření, změna nebo odstranění směrovací tabulky
 
 Azure automaticky směruje provoz mezi podsítěmi Azure, virtuálními sítěmi a místními sítěmi. Pokud chcete změnit některý z výchozích směrování Azure, provedete to tak, že vytvoříte směrovací tabulku. Pokud s směrováním ve virtuálních sítích začínáte, můžete se o něm dozvědět víc v tématu [směrování provozu virtuální sítě](virtual-networks-udr-overview.md) nebo v tomto [kurzu](tutorial-create-route-table-portal.md).
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Pokud ho nemáte, nastavte účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Pak před zahájením kroků v jakékoli části tohoto článku dokončete jednu z těchto úloh:
 
@@ -52,7 +52,7 @@ Existuje omezení počtu směrovacích tabulek, které můžete vytvořit pro ka
     1. Zadejte **název** směrovací tabulky.
     1. Vyberte své **předplatné**.
     1. Zvolte existující **skupinu prostředků** nebo vyberte **vytvořit novou** a vytvořte novou skupinu prostředků.
-    1. Zvolte **Umístění**.
+    1. Vyberte **umístění**.
     1. Pokud plánujete přidružit směrovací tabulku k podsíti ve virtuální síti, která je připojená k vaší místní síti prostřednictvím brány VPN, a nechcete rozšířit vaše místní trasy na síťová rozhraní v podsíti, nastavte **šíření trasy brány virtuální sítě** na **zakázané**.
 
 1. Vyberte **vytvořit** a vytvořte novou směrovací tabulku.
@@ -186,7 +186,7 @@ Existuje omezení, kolik tras na směrovací tabulce může vytvořit pro každ�
 
 1. V seznamu směrovací tabulka Vyberte směrovací tabulku, do které chcete přidat trasu.
 
-1. Na řádku nabídek směrovací tabulky vyberte **trasy** > **Přidat**.
+1. Na řádku nabídek směrovací tabulky vyberte **trasy**  >  **Přidat**.
 
 1. Zadejte jedinečný **název trasy** trasy v tabulce směrování.
 
@@ -333,7 +333,7 @@ Po krátkém čekání vám Azure ukáže typ dalšího segmentu směrování a 
 
 Aby bylo možné provádět úlohy s směrovacími tabulkami a trasami, musí být váš účet přiřazen k [roli Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) nebo k [vlastní roli](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , která je přiřazená k příslušným akcím uvedeným v následující tabulce:
 
-| Akce                                                          |   Název                                                  |
+| Akce                                                          |   Name                                                  |
 |--------------------------------------------------------------   |   -------------------------------------------           |
 | Microsoft. Network/routeTables/Read                              |   Čtení směrovací tabulky                                    |
 | Microsoft. Network/routeTables/Write                             |   Vytvoří nebo aktualizuje směrovací tabulku.                        |

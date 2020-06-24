@@ -3,24 +3,24 @@ title: Problémy s konfigurací jednotného přihlašování k heslům pro aplik
 description: Běžné problémy, ke kterým dochází při konfiguraci jednotného přihlašování k heslům (SSO) pro vlastní aplikace, které nejsou v galerii aplikací Azure AD.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: celested
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed8bafe7f5bc28cf37205107f8ab6dd5cdb4907c
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: 9620a6ad584f20a0956e6a29c89609d79832f4d2
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74274137"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763444"
 ---
 # <a name="problems-configuring-password-single-sign-on-for-a-non-gallery-application"></a>Problémy s konfigurací jednotného přihlašování k heslům pro aplikaci mimo galerii
 
@@ -96,7 +96,7 @@ Pokud chcete pro aplikaci nakonfigurovat jednotné přihlašování na základě
 
 9. Zadejte **přihlašovací adresu URL**, což je stránka, kde uživatelé zadají své uživatelské jméno a heslo, aby se mohli přihlásit. Ujistěte se *, že jsou na stránce zobrazena přihlašovací pole pro adresu URL, kterou zadáte*.
 
-10. Vyberte **Konfigurovat * &lt;nastavení&gt; * jednotného přihlašování pro heslo AppName**.
+10. Vyberte **Konfigurovat nastavení jednotného přihlašování pro heslo * &lt; AppName &gt; * **.
 
 11. Vyberte možnost **ručně zjišťovat přihlašovací pole**.
 
@@ -140,7 +140,7 @@ Pokud se setkáte s některým z těchto problémů, proveďte následující ak
 
 - Zkuste znovu zpracovat proces ručního zachycení. Ujistěte se, že červené značky jsou nad správnými poli.
 
-- Pokud se zdá, že proces ručního zachytávání přestane reagovat nebo stránka pro přihlášení nereaguje, zkuste proces ručního zachytávání zopakovat. Tentokrát ale po dokončení procesu stiskněte klávesu F12 a otevřete konzolu pro vývojáře v prohlížeči. Vyberte kartu **Konzola** . zadejte **window. Location = "*&lt;přihlašovací adresa URL, kterou jste zadali při konfiguraci aplikace&gt;***, a potom stiskněte klávesu ENTER. Tím se vynutí přesměrování stránky, které ukončí proces zachytávání a uloží pole, která byla zachycena.
+- Pokud se zdá, že proces ručního zachytávání přestane reagovat nebo stránka pro přihlášení nereaguje, zkuste proces ručního zachytávání zopakovat. Tentokrát ale po dokončení procesu stiskněte klávesu F12 a otevřete konzolu pro vývojáře v prohlížeči. Vyberte kartu **Konzola** . zadejte **window. Location = "* &lt; přihlašovací adresa URL, kterou jste zadali při konfiguraci aplikace &gt; ***, a potom stiskněte klávesu ENTER. Tím se vynutí přesměrování stránky, které ukončí proces zachytávání a uloží pole, která byla zachycena.
 
 ### <a name="contact-support"></a>Kontaktování podpory
 
@@ -219,7 +219,7 @@ Následující informace popisují, co jednotlivé položky oznámení znamenaj�
 
 - **Hlavní název uživatele (UPN)**: uživatel, který operaci spustil.
 
-    Příklad: *tperkins\@f128.info*
+    Příklad: *tperkins \@ f128.info*
 
 - **ID tenanta**: jedinečné ID tenanta, kterého je uživatel, který spustil operaci, členem.
 
@@ -245,7 +245,7 @@ Následující informace popisují, co jednotlivé položky oznámení znamenaj�
 
 - **Podrobnosti**: podrobný popis toho, co se stalo v důsledku operace.
 
-    Příklad: *interní adresa URL<https://bing.com/>' ' je neplatná, protože je již používána.*
+    Příklad: *interní adresa URL ' <https://bing.com/> ' je neplatná, protože je již používána.*
 
 - **Chyba kopírování**: umožňuje vybrat **ikonu kopírování** napravo od textového pole **Kopírovat chybu** a Kopírovat podrobnosti oznámení, které vám pomůžou s podporou.
 

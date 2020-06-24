@@ -3,15 +3,15 @@ title: Dotazování kontejnerů ve službě Azure Cosmos DB
 description: Naučte se dotazovat kontejnery v Azure Cosmos DB pomocí dotazů v oddílu a mezi oddíly.
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 3/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 299980b67caaea85fbfb40cb1a30ee50fa32d0f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 08ac95fe2a6b3e01d6bbcf96b120426f12f4e21c
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80131400"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261252"
 ---
 # <a name="query-an-azure-cosmos-container"></a>Dotazování kontejneru Azure Cosmos
 
@@ -21,13 +21,13 @@ Tento článek vysvětluje, jak zadat dotaz na kontejner (kolekci, graf nebo tab
 
 Pokud má dotaz dotaz na data z kontejnerů, je-li v dotazu zadán filtr klíčů oddílu, Azure Cosmos DB automaticky optimalizuje dotaz. Směruje dotaz na [fyzické oddíly](partition-data.md#physical-partitions) , které odpovídají hodnotám klíče oddílu zadaným ve filtru.
 
-Například zvažte následující dotaz s filtrem rovnosti na `DeviceId`. Pokud tento dotaz spustíte na kontejneru rozděleném na `DeviceId`oddíly, tento dotaz se vyfiltruje na jeden fyzický oddíl.
+Například zvažte následující dotaz s filtrem rovnosti na `DeviceId` . Pokud tento dotaz spustíte na kontejneru rozděleném na oddíly `DeviceId` , tento dotaz se vyfiltruje na jeden fyzický oddíl.
 
 ```sql
     SELECT * FROM c WHERE c.DeviceId = 'XMS-0001'
 ```
 
-Stejně jako v předchozím příkladu tento dotaz bude také filtrovat na jeden oddíl. Přidání dalšího filtru `Location` se nezmění:
+Stejně jako v předchozím příkladu tento dotaz bude také filtrovat na jeden oddíl. Přidání dalšího filtru se `Location` nezmění:
 
 ```sql
     SELECT * FROM c WHERE c.DeviceId = 'XMS-0001' AND c.Location = 'Seattle'
@@ -41,7 +41,7 @@ Tady je dotaz, který má pro klíč oddílu Filtr rozsahu a nebude vymezen na j
 
 ## <a name="cross-partition-query"></a>Dotazování napříč oddíly
 
-Následující dotaz nemá filtr na klíč oddílu (`DeviceId`). Proto musí být ventilátor na všechny fyzické oddíly, kde se spouští s indexem každého oddílu:
+Následující dotaz nemá filtr na klíč oddílu ( `DeviceId` ). Proto musí být ventilátor na všechny fyzické oddíly, kde se spouští s indexem každého oddílu:
 
 ```sql
     SELECT * FROM c WHERE c.Location = 'Seattle`
@@ -57,7 +57,7 @@ Sady Azure Cosmos DB SDK 1.9.0 a novější podporují možnosti paralelního pr
 
 Paralelní provádění dotazů můžete spravovat laděním následujících parametrů:
 
-- **MaxConcurrency**: nastaví maximální počet současných síťových připojení k oddílům kontejneru. Pokud nastavíte tuto vlastnost na `-1`, sada SDK bude spravovat stupeň paralelismu. Pokud je `MaxConcurrency` nastavena na `0`, je k oddílům kontejneru jediné síťové připojení.
+- **MaxConcurrency**: nastaví maximální počet současných síťových připojení k oddílům kontejneru. Pokud nastavíte tuto vlastnost na `-1` , sada SDK bude spravovat stupeň paralelismu. Pokud je  `MaxConcurrency` nastavena na `0` , je k oddílům kontejneru jediné síťové připojení.
 
 - **MaxBufferedItemCount:** Vyvažuje latenci dotazů a využití paměti na straně klienta. Pokud je tato možnost vynechána nebo chcete-li ji nastavit na hodnotu-1, sada SDK spravuje počet položek ukládaných do vyrovnávací paměti během paralelního provádění dotazů.
 

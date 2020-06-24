@@ -2,25 +2,25 @@
 title: Plánování nasazení přístupového panelu Azure Active Directory
 description: Pokyny k nasazení přístupového panelu Azure Active Directory
 services: active-directory
-author: barbaraselden
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/27/2019
-ms.author: baselden
+ms.author: kenwith
 ms.reviewer: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04d8b6c6d40aa81bf56baed59f90417f2147fa56
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aeffcfc919a6aeeae61ed79286d613d72c6b183c
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76897073"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84761166"
 ---
 # <a name="plan-an-azure-active-directory-access-panel-deployment"></a>Plánování nasazení přístupového panelu Azure Active Directory
 
@@ -81,7 +81,7 @@ Před zahájením tohoto projektu dokončete následující předpoklady:
 
 Následující tabulka popisuje klíčové případy použití pro nasazení přístupového panelu:
 
-| Oblast| Popis |
+| Oblast| Description |
 | - | - |
 | Access| Portál přístupového panelu je přístupný z firemních i osobních zařízení v podnikové síti. |
 |Access | Portál přístupového panelu je přístupný z firemních zařízení mimo podnikovou síť. |
@@ -215,7 +215,7 @@ Prohlížeč chráněný zásadami Intune (Microsoft Edge nebo Intune Managed Br
 
 ## <a name="plan-your-my-apps-deployment"></a>Plánování nasazení mých aplikací
 
-Základem přístupového panelu je spouštěč aplikací Moje aplikace, ke kterým uživatelé přistupují [https://myapps.microsoft.com](https://myapps.microsoft.com/). Stránky Moje aplikace přidávají uživatelům jediné místo pro zahájení práce a nastanou k potřebným aplikacím. Tady uživatelé vyhledají seznam všech aplikací, ke kterým mají přístup s jednotným přihlašováním. 
+Základem přístupového panelu je spouštěč aplikací Moje aplikace, ke kterým uživatelé přistupují [https://myapps.microsoft.com](https://myapps.microsoft.com/) . Stránky Moje aplikace přidávají uživatelům jediné místo pro zahájení práce a nastanou k potřebným aplikacím. Tady uživatelé vyhledají seznam všech aplikací, ke kterým mají přístup s jednotným přihlašováním. 
 
 ![Snímek obrazovky s panelem aplikace](media/access-panel-deployment-plan/ap-dp-app-launcher.png)
 
@@ -338,11 +338,11 @@ K provedení požadované úlohy v Azure Active Directory byste měli použít r
 
 | Osoby| Role| Role Azure AD  |
 | - | -| -|
-| Správce helpdesku| Podpora vrstvy 1| Žádná |
+| Správce helpdesku| Podpora vrstvy 1| Žádné |
 | Správce identit| Konfigurace a ladění v případě problémů ovlivňujících službu Azure AD| Globální správce |
-| Správce aplikace| Ověření identity uživatele v aplikaci, konfigurace u uživatelů s oprávněním| Žádná |
+| Správce aplikace| Ověření identity uživatele v aplikaci, konfigurace u uživatelů s oprávněním| Žádné |
 | Správci infrastruktury| Vlastník změna certifikátu| Globální správce |
-| Vlastník/účastník společnosti| Ověření identity uživatele v aplikaci, konfigurace u uživatelů s oprávněním| Žádná |
+| Vlastník/účastník společnosti| Ověření identity uživatele v aplikaci, konfigurace u uživatelů s oprávněním| Žádné |
 
 Pomocí [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) můžete spravovat své role, abyste měli k dispozici další auditování, řízení a kontrolu přístupu pro uživatele s oprávněními k adresáři.
 

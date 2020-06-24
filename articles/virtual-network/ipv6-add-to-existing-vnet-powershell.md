@@ -5,20 +5,20 @@ description: Tento článek ukazuje, jak nasadit adresy IPv6 do existující apl
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: c733538a4e730a95008a8ec1e4d50c20d6ce24ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 82c8b71c154336cf59610d8f0b99e70eccee266f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80420767"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84688547"
 ---
 # <a name="upgrade-an-ipv4-application-to-ipv6-in-azure-virtual-network---powershell"></a>Upgrade aplikace IPv4 na IPv6 ve službě Azure Virtual Network – PowerShell
 

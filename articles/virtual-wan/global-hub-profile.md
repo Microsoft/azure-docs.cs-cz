@@ -4,15 +4,15 @@ description: Seznamte se s automatizovaným škálovatelným připojením mezi v
 services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 4/20/2020
 ms.author: alzam
-ms.openlocfilehash: b63bb861f4df087f852bb1bf599d32100d063f7e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: be2ea92ddbcce7c1e0ab5ba7d172cda0e05984fa
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81733189"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753380"
 ---
 # <a name="download-a-global-or-hub-based-profile-for-user-vpn-clients"></a>Stáhnout globální profil nebo profil založený na centru pro klienty VPN uživatelů
 

@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/11/2018
 ms.author: allensu
-ms.openlocfilehash: a0df9cecc4ccd09db3f6b07fa6fd4c5283753aa2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1521d08ef9d431bbe8b3fd3a578297d440ed56b3
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260203"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887215"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-query-strings---standard-tier"></a>Řízení chování při ukládání Azure CDN do mezipaměti pomocí řetězců dotazů – úroveň Standard
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.locfileid: "81260203"
 > 
 
 ## <a name="overview"></a>Přehled
-Pomocí služby Azure Content Delivery Network (CDN) můžete řídit ukládání souborů do mezipaměti pro webový požadavek, který obsahuje řetězec dotazu. V rámci webové žádosti s řetězcem dotazu je řetězec dotazu ta část požadavku, která se vyskytuje po otazníku (?). Řetězec dotazu může obsahovat jednu nebo více párů klíč-hodnota, ve kterých je název pole a jeho hodnota oddělená symbolem rovná se (=). Jednotlivé páry klíč-hodnota jsou oddělené znakem ampersand (&). Například http:\//www.contoso.com/content.mov?field1=value1&pole2 = hodnota2. Pokud je v řetězci dotazu požadavku více než jedna dvojice klíč-hodnota, nezáleží na jejich pořadí. 
+Pomocí služby Azure Content Delivery Network (CDN) můžete řídit ukládání souborů do mezipaměti pro webový požadavek, který obsahuje řetězec dotazu. V rámci webové žádosti s řetězcem dotazu je řetězec dotazu ta část požadavku, která se vyskytuje po otazníku (?). Řetězec dotazu může obsahovat jednu nebo více párů klíč-hodnota, ve kterých je název pole a jeho hodnota oddělená symbolem rovná se (=). Jednotlivé páry klíč-hodnota jsou oddělené znakem ampersand (&). Například http: \/ /www.contoso.com/content.mov?field1=value1&pole2 = hodnota2. Pokud je v řetězci dotazu požadavku více než jedna dvojice klíč-hodnota, nezáleží na jejich pořadí. 
 
 > [!IMPORTANT]
 > Produkty Azure CDN Standard a Premium poskytují stejné funkce pro ukládání řetězců dotazů do mezipaměti, ale uživatelské rozhraní se liší. Tento článek popisuje rozhraní pro **Azure CDN Standard od Microsoftu**, **Azure CDN Standard od Akamai** a **Azure CDN Standard od Verizon**. Pro ukládání řetězců dotazů do mezipaměti s **Azure CDN Premium z Verizon**najdete informace v tématu [řízení Azure CDN ukládání do mezipaměti pomocí řetězců dotazů – úroveň Premium](cdn-query-string-premium.md).

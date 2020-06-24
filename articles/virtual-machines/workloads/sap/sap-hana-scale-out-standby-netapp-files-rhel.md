@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/24/2020
+ms.date: 06/15/2020
 ms.author: radeltch
-ms.openlocfilehash: 4c86d7c84ba5d7692e010ad95f258b67aa7dcfac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9c7b3d58f1ca58c75c31254b03965e7d3707487b
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82147647"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84809505"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-red-hat-enterprise-linux"></a>Nasazení SAP HANA systému se škálováním na více systémů s pohotovostním uzlem na virtuálních počítačích Azure pomocí Azure NetApp Files v Red Hat Enterprise Linux 
 
@@ -46,7 +46,7 @@ ms.locfileid: "82147647"
 [1900823]:https://launchpad.support.sap.com/#/notes/1900823
 [2292690]:https://launchpad.support.sap.com/#/notes/2292690
 [2455582]:https://launchpad.support.sap.com/#/notes/2455582
-[2593824]:https://launchpad.support.sap.com/#/notes/2455582
+[2593824]:https://launchpad.support.sap.com/#/notes/2593824
 [2009879]:https://launchpad.support.sap.com/#/notes/2009879
 
 [sap-swcenter]:https://support.sap.com/en/my-support/software-downloads.html
@@ -94,7 +94,7 @@ Než začnete, přečtěte si následující poznámky a dokumenty SAP:
 Jednou z metod pro dosažení vysoké dostupnosti HANA je konfigurace automatického převzetí služeb při selhání hostitele. Chcete-li konfigurovat automatické převzetí služeb při selhání hostitele, přidejte jeden nebo více virtuálních počítačů do systému HANA a nakonfigurujte je jako pohotovostní uzly. Když aktivní uzel neproběhne úspěšně, převezme pohotovostní uzel automaticky. V předkládaných konfiguracích s virtuálními počítači Azure dosáhnete automatického převzetí služeb při selhání pomocí [systému souborů NFS na Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction/).  
 
 > [!NOTE]
-> Pohotovostní uzel potřebuje přístup ke všem svazkům databáze. Svazky HANA musí být připojené jako názvů NFSv4 svazky. Vylepšený mechanizmus zapůjčení na základě zapůjčení souborů v protokolu názvů NFSv4 se `I/O` používá k monitorování zón. 
+> Pohotovostní uzel potřebuje přístup ke všem svazkům databáze. Svazky HANA musí být připojené jako názvů NFSv4 svazky. Vylepšený mechanizmus zapůjčení na základě zapůjčení souborů v protokolu názvů NFSv4 se používá k `I/O` monitorování zón. 
 
 > [!IMPORTANT]
 > Chcete-li vytvořit podporovanou konfiguraci, je nutné nasadit svazky dat HANA a protokolů jako svazky NFSv 4.1 a připojit je pomocí protokolu NFSv 4.1. Konfigurace automatického převzetí služeb při selhání hostitele HANA s pohotovostním uzlem není v NFSv3 podporovaná.
@@ -213,14 +213,14 @@ Nejprve je třeba vytvořit svazky Azure NetApp Files. Pak proveďte následují
 1. Nasaďte virtuální počítače. 
 1. Vytvořte další síťová rozhraní a připojte síťová rozhraní k odpovídajícím virtuálním počítačům.  
 
-   Každý virtuální počítač má tři síťová rozhraní, která odpovídají třem podsítím virtuální sítě Azure (`client` `storage` a `hana`). 
+   Každý virtuální počítač má tři síťová rozhraní, která odpovídají třem podsítím virtuální sítě Azure ( `client` `storage` a `hana` ). 
 
    Další informace najdete v tématu [Vytvoření virtuálního počítače se systémem Linux v Azure s několika síťovými kartami](https://docs.microsoft.com/azure/virtual-machines/linux/multiple-nics).  
 
 > [!IMPORTANT]
 > U SAP HANA úloh je nízká latence kritická. Abyste dosáhli nízké latence, spolupracujte s vaším zástupcem Microsoftu, abyste zajistili, že virtuální počítače a Azure NetApp Files svazky budou nasazeny v těsné blízkosti. Při [připojování nového SAP HANA systému](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxjSlHBUxkJBjmARn57skvdUQlJaV0ZBOE1PUkhOVk40WjZZQVJXRzI2RC4u) , který používá Azure NetApp Files SAP HANA, odešlete potřebné informace. 
  
-V dalších pokynech se předpokládá, že jste už vytvořili skupinu prostředků, virtuální síť Azure a tři podsítě virtuální sítě Azure: `client` `storage` a. `hana` Když nasadíte virtuální počítače, vyberte podsíť klienta, aby bylo síťové rozhraní klienta primárním rozhraním virtuálních počítačů. Budete taky muset nakonfigurovat explicitní trasu k Azure NetApp Files delegované podsíti přes bránu podsítě úložiště. 
+V dalších pokynech se předpokládá, že jste už vytvořili skupinu prostředků, virtuální síť Azure a tři podsítě virtuální sítě Azure: `client` `storage` a `hana` . Když nasadíte virtuální počítače, vyberte podsíť klienta, aby bylo síťové rozhraní klienta primárním rozhraním virtuálních počítačů. Budete taky muset nakonfigurovat explicitní trasu k Azure NetApp Files delegované podsíti přes bránu podsítě úložiště. 
 
 > [!IMPORTANT]
 > Ujistěte se, že operační systém, který vyberete, je SAP – certifikováno pro SAP HANA na specifických typech virtuálních počítačů, které používáte. Seznam SAP HANA certifikovaných typů virtuálních počítačů a verzí operačních systémů pro tyto typy najdete na webu [SAP HANA Certified IaaS Platforms](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) . Kliknutím na podrobnosti o typu tohoto virtuálního počítače získáte úplný seznam SAP HANA podporovaných verzí operačního systému pro daný typ.  
@@ -237,9 +237,9 @@ V dalších pokynech se předpokládá, že jste už vytvořili skupinu prostře
 
    Když nasadíte virtuální počítače, název síťového rozhraní se vygeneruje automaticky. V těchto pokynech pro zjednodušení budeme odkazovat na automaticky generovaná síťová rozhraní, která jsou připojená k podsíti virtuální sítě Azure Client, jako **hanadb1-Client**, **hanadb2-Client**a **hanadb3-Client**. 
 
-3. Vytvořte tři síťová rozhraní, jednu pro každý virtuální počítač, pro podsíť `storage` virtuální sítě (v tomto příkladu **hanadb1-Storage**, **hanadb2-Storage**a **hanadb3-Storage**).  
+3. Vytvořte tři síťová rozhraní, jednu pro každý virtuální počítač, pro `storage` podsíť virtuální sítě (v tomto příkladu **hanadb1-Storage**, **hanadb2-Storage**a **hanadb3-Storage**).  
 
-4. Vytvořte tři síťová rozhraní, jednu pro každý virtuální počítač, pro podsíť `hana` virtuální sítě (v tomto příkladu **hanadb1-Hana**, **hanadb2-Hana**a **hanadb3-Hana**).  
+4. Vytvořte tři síťová rozhraní, jednu pro každý virtuální počítač, pro `hana` podsíť virtuální sítě (v tomto příkladu **hanadb1-Hana**, **hanadb2-Hana**a **hanadb3-Hana**).  
 
 5. Připojte nově vytvořená virtuální síťová rozhraní k odpovídajícím virtuálním počítačům pomocí následujících kroků:  
 
@@ -249,19 +249,19 @@ V dalších pokynech se předpokládá, že jste už vytvořili skupinu prostře
 
     c. V podokně **Přehled** vyberte možnost zastavit, čímž **zrušíte** přidělení virtuálního počítače.  
 
-    d. Vyberte **sítě**a pak připojte síťové rozhraní. V rozevíracím seznamu **připojit síťové rozhraní** vyberte již vytvořená síťová rozhraní pro podsítě `storage` a. `hana`  
+    d. Vyberte **sítě**a pak připojte síťové rozhraní. V rozevíracím seznamu **připojit síťové rozhraní** vyberte již vytvořená síťová rozhraní pro `storage` `hana` podsítě a.  
     
     e. Vyberte **Uložit**. 
  
     f. Opakujte kroky b až e pro zbývající virtuální počítače (v našem příkladu **hanadb2** a **hanadb3**).
  
-    g. Virtuální počítače teď ponechte v zastaveném stavu. V dalším kroku povolíte [urychlené síťové služby](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) pro všechna nově připojená síťová rozhraní.  
+    například Virtuální počítače teď ponechte v zastaveném stavu. V dalším kroku povolíte [urychlené síťové služby](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) pro všechna nově připojená síťová rozhraní.  
 
 6. Pomocí následujících kroků povolte akcelerované sítě pro další síťová rozhraní `storage` pro `hana` podsítě a:  
 
     a. Otevřete [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/) v [Azure Portal](https://portal.azure.com/#home).  
 
-    b. Spusťte následující příkazy, aby bylo možné zrychlit sítě pro další síťová rozhraní, která jsou připojena k podsítím `storage` a. `hana`  
+    b. Spusťte následující příkazy, aby bylo možné zrychlit sítě pro další síťová rozhraní, která jsou připojena k `storage` `hana` podsítím a.  
 
     <pre><code>
     az network nic update --id /subscriptions/<b>your subscription</b>/resourceGroups/<b>your resource group</b>/providers/Microsoft.Network/networkInterfaces/<b>hanadb1-storage</b> --accelerated-networking true
@@ -290,7 +290,7 @@ Pokyny v dalších částech jsou předem opraveny s jednou z následujících �
 
 Pomocí následujících kroků nakonfigurujte a připravte operační systém:
 
-1. **[A]** Udržujte hostitelské soubory na virtuálních počítačích. Zahrnout položky pro všechny podsítě Do `/etc/hosts` tohoto příkladu byly přidány následující položky.  
+1. **[A]** Udržujte hostitelské soubory na virtuálních počítačích. Zahrnout položky pro všechny podsítě Do tohoto příkladu byly přidány následující položky `/etc/hosts` .  
 
     <pre><code>
     # Storage
@@ -309,8 +309,8 @@ Pomocí následujících kroků nakonfigurujte a připravte operační systém:
 
 3. **[A]** přidejte síťovou trasu, aby komunikace se Azure NetApp Filesa prochází přes síťové rozhraní úložiště.  
 
-   V tomto příkladu se použije `Networkmanager` ke konfiguraci další síťové trasy. V následujících pokynech se předpokládá, že síťové rozhraní `eth1`úložiště je.  
-   Nejprve určete název připojení zařízení `eth1`. V tomto příkladu je `eth1` `Wired connection 1`název připojení zařízení.  
+   V tomto příkladu se použije `Networkmanager` ke konfiguraci další síťové trasy. V následujících pokynech se předpokládá, že síťové rozhraní úložiště je `eth1` .  
+   Nejprve určete název připojení zařízení `eth1` . V tomto příkladu je název připojení zařízení `eth1` `Wired connection 1` .  
 
     <pre><code>
     # Execute as root
@@ -321,7 +321,7 @@ Pomocí následujících kroků nakonfigurujte a připravte operační systém:
     #Wired connection 1  4b0789d1-6146-32eb-83a1-94d61f8d60a7  ethernet  eth1
     </code></pre>
 
-   Potom nakonfigurujte další trasu na Azure NetApp Files delegovanou síť prostřednictvím `eth1`.  
+   Potom nakonfigurujte další trasu na Azure NetApp Files delegovanou síť prostřednictvím `eth1` .  
 
     <pre><code>
     # Add the following route 
@@ -379,10 +379,10 @@ Pomocí následujících kroků nakonfigurujte a připravte operační systém:
 
 6. **[A]** Red Hat pro konfiguraci Hana.
 
-    Nakonfigurujte RHEL podle popisu v tématu SAP Note [2292690], [2455582], [2593824] a <https://access.redhat.com/solutions/2447641>.
+    Nakonfigurujte RHEL podle popisu v tématu SAP Note [2292690], [2455582], [2593824] a <https://access.redhat.com/solutions/2447641> .
 
     > [!NOTE]
-    > Při instalaci HANA 2,0 SP04 budete muset nainstalovat balíček `compat-sap-c++-7` , jak je popsáno v tématu SAP Note [2593824], než budete moct nainstalovat SAP HANA. 
+    > Při instalaci HANA 2,0 SP04 budete muset nainstalovat balíček `compat-sap-c++-7` , jak je popsáno v tématu SAP note [2593824], než budete moct nainstalovat SAP HANA. 
 
 ## <a name="mount-the-azure-netapp-files-volumes"></a>Připojení Azure NetApp Filesch svazků
 
@@ -416,7 +416,7 @@ Pomocí následujících kroků nakonfigurujte a připravte operační systém:
 3. **[A]** ověřte nastavení domény NFS. Ujistěte se, že je doména nakonfigurovaná jako výchozí doména Azure NetApp Files, tj. **`defaultv4iddomain.com`** a mapování je nastavené na **nikdo**.  
 
     > [!IMPORTANT]
-    > Ujistěte se, že jste na virtuálním `/etc/idmapd.conf` počítači nastavili doménu systému souborů NFS, aby odpovídala **`defaultv4iddomain.com`** výchozí konfiguraci domény v Azure NetApp Files:. Pokud dojde k neshodě mezi konfigurací domény v klientovi NFS (tj. virtuálním počítačem) a serverem NFS, tj. konfigurací Azure NetApp, pak se budou zobrazovat oprávnění k souborům na svazcích Azure NetApp, které jsou připojené k virtuálním počítačům `nobody`.  
+    > Ujistěte se, že jste na virtuálním počítači nastavili doménu systému souborů NFS, `/etc/idmapd.conf` aby odpovídala výchozí konfiguraci domény v Azure NetApp Files: **`defaultv4iddomain.com`** . Pokud dojde k neshodě mezi konfigurací domény v klientovi NFS (tj. virtuálním počítačem) a serverem NFS, tj. konfigurací Azure NetApp, pak se budou zobrazovat oprávnění k souborům na svazcích Azure NetApp, které jsou připojené k virtuálním počítačům `nobody` .  
 
     <pre><code>
     sudo cat /etc/idmapd.conf
@@ -428,7 +428,7 @@ Pomocí následujících kroků nakonfigurujte a připravte operační systém:
     Nobody-Group = <b>nobody</b>
     </code></pre>
 
-4. **[A]** ověřte `nfs4_disable_idmapping`. Měl by být nastaven na **Y**. Pokud chcete vytvořit adresářovou strukturu `nfs4_disable_idmapping` , kde se nachází, spusťte příkaz Mount. V/sys/modules nebudete moct ručně vytvořit adresář, protože přístup je vyhrazený pro jádro nebo ovladače.  
+4. **[A]** ověřte `nfs4_disable_idmapping` . Měl by být nastaven na **Y**. Pokud chcete vytvořit adresářovou strukturu `nfs4_disable_idmapping` , kde se nachází, spusťte příkaz Mount. V/sys/modules nebudete moct ručně vytvořit adresář, protože přístup je vyhrazený pro jádro nebo ovladače.  
 
     <pre><code>
     # Check nfs4_disable_idmapping 
@@ -442,7 +442,7 @@ Pomocí následujících kroků nakonfigurujte a připravte operační systém:
     echo "options nfs nfs4_disable_idmapping=Y" >> /etc/modprobe.d/nfs.conf
     </code></pre>
 
-   Další podrobnosti o tom, jak změnit `nfs4_disable_idmapping` parametr, https://access.redhat.com/solutions/1749883naleznete v tématu.
+   Další podrobnosti o tom, jak změnit `nfs4_disable_idmapping` parametr, naleznete v tématu https://access.redhat.com/solutions/1749883 .
 
 6. **[A]** připojte sdílené svazky Azure NetApp Files.  
 
@@ -587,9 +587,9 @@ V tomto příkladu pro nasazení SAP HANA v konfiguraci škálování na více i
      * Chcete **pokračovat (a/n)**: ověřit souhrn a pokud vše vypadá dobře, zadejte **y** .
 
 
-2. **[1]** ověřit Global. ini  
+2. **[1]** ověřit global.ini  
 
-   Zobrazte Global. ini a ujistěte se, že je nastavená konfigurace pro interní SAP HANA komunikace mezi uzly. Ověřte část **komunikace** . Měl by mít adresní prostor pro `hana` podsíť a `listeninterface` měl by být nastaven na. `.internal` Ověřte část **internal_hostname_resolution** . Měl by mít IP adresy pro virtuální počítače HANA, které patří do `hana` podsítě.  
+   Zobrazte global.ini a ujistěte se, že je nastavená konfigurace pro interní SAP HANA komunikace mezi uzly. Ověřte část **komunikace** . Měl by mít adresní prostor pro `hana` podsíť a `listeninterface` měl by být nastaven na `.internal` . Ověřte část **internal_hostname_resolution** . Měl by mít IP adresy pro virtuální počítače HANA, které patří do `hana` podsítě.  
 
    <pre><code>
     sudo cat /usr/sap/<b>HN1</b>/SYS/global/hdb/custom/config/global.ini
@@ -604,7 +604,7 @@ V tomto příkladu pro nasazení SAP HANA v konfiguraci škálování na více i
     <b>10.9.2.6</b> = <b>hanadb3</b>
    </code></pre>
 
-3. **[1]** přidejte mapování hostitele, aby se zajistilo, že se IP adresy klientů použijí pro komunikaci klientů. Přidejte oddíl `public_host_resolution`a přidejte odpovídající IP adresy z klientské podsítě.  
+3. **[1]** přidejte mapování hostitele, aby se zajistilo, že se IP adresy klientů použijí pro komunikaci klientů. Přidejte oddíl `public_host_resolution` a přidejte odpovídající IP adresy z klientské podsítě.  
 
    <pre><code>
     sudo vi /usr/sap/HN1/SYS/global/hdb/custom/config/global.ini
@@ -706,20 +706,20 @@ V tomto příkladu pro nasazení SAP HANA v konfiguraci škálování na více i
 6. Pokud chcete optimalizovat SAP HANA pro základní úložiště Azure NetApp Files, nastavte následující parametry SAP HANA:
 
    - `max_parallel_io_requests` **128**
-   - `async_read_submit` **on**
-   - `async_write_submit_active` **on**
+   - `async_read_submit`**zapnuto**
+   - `async_write_submit_active`**zapnuto**
    - `async_write_submit_blocks`**vše**
 
    Další informace najdete v tématu [NetApp aplikace SAP na Microsoft Azure pomocí Azure NetApp Files][anf-sap-applications-azure]. 
 
-   Počínaje systémy SAP HANA 2,0 můžete nastavit parametry v `global.ini`. Další informace najdete v tématu SAP Note [1999930](https://launchpad.support.sap.com/#/notes/1999930).  
+   Počínaje systémy SAP HANA 2,0 můžete nastavit parametry v `global.ini` . Další informace najdete v tématu SAP Note [1999930](https://launchpad.support.sap.com/#/notes/1999930).  
    
    Pro systémy SAP HANA 1,0 a novější verze SPS12 a novější lze tyto parametry nastavit během instalace, jak je popsáno v tématu SAP Note [2267798](https://launchpad.support.sap.com/#/notes/2267798).  
 
 7. Úložiště, které používá Azure NetApp Files, má omezení velikosti souboru na 16 terabajtů (TB). SAP HANA nemá implicitně informace o omezení úložiště a při dosažení limitu velikosti souboru 16 TB nebude automaticky vytvářet nový datový soubor. Jak SAP HANA se pokusí zvětšit soubor nad rámec 16 TB, tento pokus bude mít za následek chyby a nakonec v případě havárie serveru indexu. 
 
    > [!IMPORTANT]
-   > Chcete-li zabránit SAP HANA pokusit se o zvětšení datových souborů nad rámec [velikosti 16 TB](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-resource-limits) subsystému úložiště, nastavte v `global.ini`nástroji následující parametry.  
+   > Chcete-li zabránit SAP HANA pokusit se o zvětšení datových souborů nad rámec [velikosti 16 TB](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-resource-limits) subsystému úložiště, nastavte v nástroji následující parametry `global.ini` .  
    > - datavolume_striping = true
    > - datavolume_striping_size_gb = 15000 Další informace najdete v tématu SAP Note [2400005](https://launchpad.support.sap.com/#/notes/2400005).
    > Upozorňujeme na SAP Note [2631285](https://launchpad.support.sap.com/#/notes/2631285). 
@@ -780,7 +780,7 @@ V tomto příkladu pro nasazení SAP HANA v konfiguraci škálování na více i
    </code></pre>
 
    > [!IMPORTANT]
-   > Když se uzel vyskytne v jádře jádra, vyhněte se prodlevám `kernel.panic` při převzetí služeb při selhání SAP HANA nastavením na 20 sekund na *všech* virtuálních počítačích Hana. Konfigurace se provádí v `/etc/sysctl`. Změny aktivujete restartováním virtuálních počítačů. Pokud se tato změna neprovede, převzetí služeb při selhání může trvat 10 nebo více minut, než se uzel dostaná v případě nouzového jádra.  
+   > Když se uzel vyskytne v jádře jádra, vyhněte se prodlevám při převzetí služeb při selhání SAP HANA nastavením `kernel.panic` na 20 sekund na *všech* virtuálních počítačích Hana. Konfigurace se provádí v `/etc/sysctl` . Změny aktivujete restartováním virtuálních počítačů. Pokud se tato změna neprovede, převzetí služeb při selhání může trvat 10 nebo více minut, než se uzel dostaná v případě nouzového jádra.  
 
 2. Pomocí následujícího postupu ukončete názvový server:
 

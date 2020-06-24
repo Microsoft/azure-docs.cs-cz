@@ -7,17 +7,17 @@ author: KumudD
 manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: mnayak
-ms.openlocfilehash: 5d56b276e44a1dbdffb66270e04763ea729628ef
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 7db8dcc87606e5c58ddac8f609d1538989af5ed7
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597594"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84689295"
 ---
 # <a name="configure-routing-preference-for-a-public-ip-address-using-the-azure-portal"></a>Konfigurace předvolby směrování pro veřejnou IP adresu pomocí Azure Portal
 
@@ -28,7 +28,7 @@ V tomto článku se dozvíte, jak nakonfigurovat předvolby směrování prostř
 * Azure Kubernetes Service (AKS)
 * Internetový nástroj pro vyrovnávání zatížení
 * Application Gateway
-* Azure Firewall
+* Brána Azure Firewall
 
 Ve výchozím nastavení je předvolby směrování pro veřejnou IP adresu nastavená na globální síť Microsoft pro všechny služby Azure a může být přidružená k jakékoli službě Azure.
 
@@ -45,7 +45,7 @@ Register-AzProviderFeature -FeatureName AllowRoutingPreferenceFeature -ProviderN
 ```
 
 ## <a name="create-a-public-ip-address-with-a-routing-preference"></a>Vytvoření veřejné IP adresy s prioritou směrování
-1. Přihlaste se k [portálu Azure Portal](https://preview.portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://preview.portal.azure.com/).
 2. Vyberte **Vytvořit prostředek**. 
 3. Do vyhledávacího pole zadejte *veřejnou IP adresu*.
 3. Ve výsledcích hledání vyberte **Veřejná IP adresa**. Potom na stránce **Veřejná IP adresa** vyberte **vytvořit**.

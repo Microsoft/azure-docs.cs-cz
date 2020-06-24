@@ -6,21 +6,21 @@ ms.author: sivethe
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/26/2019
-ms.openlocfilehash: 579767a0d535605a2316c35bd413a75474b5a3de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: afdbd1c44170344be6edee8b8b2ee38c9853f81c
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80410000"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263071"
 ---
 # <a name="how-to-globally-distribute-reads-using-azure-cosmos-dbs-api-for-mongodb"></a>Jak globálně distribuovat čtení pomocí rozhraní Azure Cosmos DB API pro MongoDB
 
 V tomto článku se dozvíte, jak globálně distribuovat operace čtení s nastavením [předvoleb čtení MongoDB](https://docs.mongodb.com/manual/core/read-preference/) pomocí rozhraní API Azure Cosmos DB pro MongoDB.
 
 ## <a name="prerequisites"></a>Požadavky 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete. 
 [!INCLUDE [cosmos-db-emulator-mongodb](../../includes/cosmos-db-emulator-mongodb.md)]
 
 Pokyny k použití Azure Portal k nastavení účtu Cosmos s globální distribucí a připojení k němu najdete v tomto článku [rychlý Start](tutorial-global-distribution-mongodb.md) .
@@ -51,7 +51,7 @@ cd mean
 npm install
 node index.js
 ```
-Aplikace se pokusí připojit ke zdroji MongoDB a dojde k chybě, protože připojovací řetězec je neplatný. Pokud chcete aktualizovat připojovací řetězec `url`, postupujte podle kroků v souboru Readme. Aktualizujte `readFromRegion` také oblast pro čtení v účtu Cosmos. Následující pokyny jsou uvedené v ukázce NodeJS:
+Aplikace se pokusí připojit ke zdroji MongoDB a dojde k chybě, protože připojovací řetězec je neplatný. Pokud chcete aktualizovat připojovací řetězec, postupujte podle kroků v souboru READme `url` . Aktualizujte také `readFromRegion` oblast pro čtení v účtu Cosmos. Následující pokyny jsou uvedené v ukázce NodeJS:
 
 ```
 * Next, substitute the `url`, `readFromRegion` in App.Config with your Cosmos account's values. 
@@ -136,7 +136,7 @@ Přečtěte si odpovídající vzorová úložiště aplikací pro jiné platfor
 
 ## <a name="read-using-tags"></a>Čtení pomocí značek
 
-Kromě režimu předvolby čtení umožňuje protokol MongoDB použití značek k přímému čtení operací. V rozhraní API Cosmos DB pro MongoDB je `region` značka standardně zahrnutá jako součást `isMaster` odpovědi:
+Kromě režimu předvolby čtení umožňuje protokol MongoDB použití značek k přímému čtení operací. V rozhraní API Cosmos DB pro MongoDB `region` je značka standardně zahrnutá jako součást `isMaster` odpovědi:
 
 ```json
 "tags": {

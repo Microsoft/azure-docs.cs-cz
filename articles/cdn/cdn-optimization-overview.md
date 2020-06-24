@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: allensu
-ms.openlocfilehash: 473636dc95d96ea348a42ec0f1090029bf3a7728
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0255d7f47c8f9c63a2943830fa323a2e11994a9e
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260430"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887557"
 ---
 # <a name="optimize-azure-cdn-for-the-type-of-content-delivery"></a>Optimalizuje Azure CDN pro typ doručování obsahu.
 
@@ -45,7 +45,7 @@ Tento článek obsahuje přehled různých funkcí optimalizace a jejich použit
 
 * [Obecné doručování webu](#general-web-delivery). Tato optimalizace se používá také pro streamování médií a stahování velkých souborů.
 
-* [Akcelerace dynamického webu](#dynamic-site-acceleration) 
+* [Akcelerace dynamických webů](#dynamic-site-acceleration) 
 
 
 **Azure CDN Standard z profilů Akamai** podporují následující optimalizace:
@@ -58,7 +58,7 @@ Tento článek obsahuje přehled různých funkcí optimalizace a jejich použit
 
 * [Stažení velkých souborů](#large-file-download)
 
-* [Akcelerace dynamického webu](#dynamic-site-acceleration) 
+* [Akcelerace dynamických webů](#dynamic-site-acceleration) 
 
 Microsoft doporučuje otestovat variace výkonu mezi různými poskytovateli a vybrat optimálního poskytovatele pro vaše doručení.
 

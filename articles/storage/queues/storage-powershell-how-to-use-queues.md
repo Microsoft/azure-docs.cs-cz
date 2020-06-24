@@ -7,13 +7,13 @@ ms.date: 05/15/2019
 ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
-ms.reviewer: cbrooks
-ms.openlocfilehash: 0b3276d77bc7277d6e05e0dec1319906fb69ca4c
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.reviewer: dineshm
+ms.openlocfilehash: 8a3de37f6442900f600f3c6a3efaf75141d151bd
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465282"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808994"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Provádění operací Azure Queue Storage s využitím Azure PowerShellu
 

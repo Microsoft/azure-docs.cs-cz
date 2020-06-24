@@ -2,22 +2,22 @@
 title: Monitorujte normalizované RU/s pro kontejner Azure Cosmos nebo účet.
 description: Naučte se monitorovat využití normalizované jednotky žádostí o operaci v Azure Cosmos DB. Vlastníci Azure Cosmos DB účtu můžou pochopit, které operace spotřebovávají více jednotek žádostí.
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 author: kanshiG
 ms.author: govindk
 ms.date: 05/10/2020
-ms.openlocfilehash: 23001bdaab0732dbeb088ebadefa90a27e622b19
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 7a7428d3445d1d5846618bfd84c47121dc9a4bc1
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83118805"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262748"
 ---
 # <a name="how-to-monitor-normalized-rus-for-an-azure-cosmos-container-or-an-account"></a>Jak monitorovat normalizovaná RU/s pro kontejner Azure Cosmos nebo účet
 
 Azure Monitor pro Azure Cosmos DB poskytuje zobrazení metrik pro monitorování vašeho účtu a vytváření řídicích panelů. Metriky Azure Cosmos DB jsou ve výchozím nastavení shromažďovány, takže tato funkce nevyžaduje explicitní povolení ani konfiguraci.
 
-**Normalizovaná metrika spotřeby ru** se používá k zobrazení, jak dobře nasycených jsou repliky WRT na spotřebu jednotek požadavků napříč rozsahy klíčů oddílu. Azure Cosmos DB distribuuje propustnost rovnoměrně napříč všemi fyzickými oddíly. Tato metrika poskytuje za sekundu zobrazení maximálního využití propustnosti v rámci sady replik. Pokud při použití této metriky vidíte vysoké procento využití jednotek požadavků, měli byste zvýšit propustnost tak, aby splňovala potřeby vašich úloh.
+**Normalizovaná** metrika použití ru se používá k zobrazení, jak dobře nasycené repliky se týkají spotřeby jednotek požadavků v rozsahu klíče oddílu. Azure Cosmos DB distribuuje propustnost rovnoměrně napříč všemi fyzickými oddíly. Tato metrika poskytuje za sekundu zobrazení maximálního využití propustnosti v rámci sady replik. Pokud při použití této metriky vidíte vysoké procento využití jednotek požadavků, měli byste zvýšit propustnost tak, aby splňovala potřeby vašich úloh.
 
 ## <a name="what-to-expect-and-do-when-normalized-rus-is-higher"></a>Co očekávat a když je normalizované RU/s vyšší
 
@@ -33,21 +33,21 @@ Pokud je nepřetržitá špička z 100% normalizované spotřeby RU/s nebo blíz
 
 ## <a name="view-the-normalized-request-unit-consumption-metric"></a>Zobrazení normalizované metriky spotřeby jednotek požadavků
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 2. V levém navigačním panelu vyberte **monitor** a vyberte **metriky**.
 
-   ![Podokno metrik v Azure Monitor](./media/monitor-normalized-request-units/monitor-metrics-blade.png)
+   :::image type="content" source="./media/monitor-normalized-request-units/monitor-metrics-blade.png" alt-text="Podokno metrik v Azure Monitor":::
 
 3. V podokně **metriky** > **Vyberte prostředek** > zvolte požadované **předplatné**a **skupinu prostředků**. Jako **typ prostředku**vyberte **Azure Cosmos DB účty**, zvolte jeden ze stávajících účtů Azure Cosmos a pak vyberte **použít**.
 
-   ![Volba účtu Azure Cosmos k zobrazení metrik](./media/monitor-normalized-request-units/select-cosmos-db-account.png)
+   :::image type="content" source="./media/monitor-normalized-request-units/select-cosmos-db-account.png" alt-text="Volba účtu Azure Cosmos k zobrazení metrik":::
 
 4. Dále můžete vybrat metriku ze seznamu dostupných metrik. Můžete vybrat metriky specifické pro jednotky žádosti, úložiště, latenci, dostupnost, Cassandra a další. Podrobné informace o všech dostupných metrikách v tomto seznamu najdete v článku [metriky podle kategorií](monitor-cosmos-db-reference.md) . V tomto příkladu vybereme normalizovanou metriku s **využitím ru** a **Maximum** jako hodnotu agregace.
 
    Kromě těchto podrobností můžete také vybrat **časový rozsah** a **časovou členitost** metrik. V poli Max (maximum) si můžete zobrazit metriky za posledních 30 dní.  Po použití filtru se v závislosti na vašem filtru zobrazí graf.
 
-   ![Vyberte metriku z Azure Portal](./media/monitor-normalized-request-units/normalized-request-unit-usage-metric.png)
+   :::image type="content" source="./media/monitor-normalized-request-units/normalized-request-unit-usage-metric.png" alt-text="Vyberte metriku z Azure Portal":::
 
 ### <a name="filters-for-normalized-request-unit-consumption"></a>Filtry normalizované spotřeby jednotek požadavků
 
@@ -57,7 +57,7 @@ Metriky můžete seskupit pomocí možnosti **použít rozdělení** .
 
 Normalizovaná metrika spotřeby jednotek žádostí pro každý kontejner se zobrazí, jak je znázorněno na následujícím obrázku:
 
-![Použít filtry na normalizovanou metriku spotřeby jednotek požadavků](./media/monitor-normalized-request-units/normalized-request-unit-usage-filters.png)
+:::image type="content" source="./media/monitor-normalized-request-units/normalized-request-unit-usage-filters.png" alt-text="Použít filtry na normalizovanou metriku spotřeby jednotek požadavků":::
 
 ## <a name="next-steps"></a>Další kroky
 

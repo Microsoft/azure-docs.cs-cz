@@ -4,15 +4,15 @@ description: V tomto článku se dozvíte, jak upgradovat interní Load Balancer
 services: load-balancer
 author: irenehua
 ms.service: load-balancer
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 960897abca67bf2a43c4c056b8dfa8cce0119faa
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 801f57c8d5b67e31bd6b3ac25d845dc2e13e365c
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871583"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84809321"
 ---
 # <a name="upgrade-azure-internal-load-balancer--no-outbound-connection-required"></a>Upgradovat interní Load Balancer Azure – nevyžaduje se žádné odchozí připojení.
 [Azure Standard Load Balancer](load-balancer-overview.md) nabízí bohatou sadu funkcí a vysokou dostupnost prostřednictvím redundance zóny. Další informace o Load Balancer SKU najdete v tématu [srovnávací tabulka](https://docs.microsoft.com/azure/load-balancer/skus#skus).
@@ -56,7 +56,7 @@ V závislosti na nastaveních a preferencích místního prostředí PowerShellu
 * Pokud nemáte nainstalované moduly AZ pro Azure nebo si nejste připustili odinstalaci modulů AZ pro Azure, nejlepší možností je použít `Install-Script` možnost ke spuštění skriptu.
 * Pokud potřebujete zachovat moduly Azure AZ, nejlepším řešením je stáhnout skript a spustit ho přímo.
 
-Pokud chcete zjistit, jestli máte nainstalované moduly Azure AZ, spusťte `Get-InstalledModule -Name az`. Pokud nevidíte žádné nainstalované moduly AZ, můžete použít `Install-Script` metodu.
+Pokud chcete zjistit, jestli máte nainstalované moduly Azure AZ, spusťte `Get-InstalledModule -Name az` . Pokud nevidíte žádné nainstalované moduly AZ, můžete použít `Install-Script` metodu.
 
 ### <a name="install-using-the-install-script-method"></a>Instalace pomocí metody install-Script
 
@@ -76,7 +76,7 @@ Spuštění skriptu:
 
 1. Slouží `Connect-AzAccount` k připojení k Azure.
 
-1. Pomocí `Import-Module Az` nástroje importujte moduly AZ.
+1. Pomocí nástroje `Import-Module Az` importujte moduly AZ.
 
 1. Projděte si požadované parametry:
 
@@ -86,7 +86,7 @@ Spuštění skriptu:
    * **newLBName: [String]: Required** – jedná se o název Standard Load Balancer, který se má vytvořit.
 1. Spusťte skript s použitím příslušných parametrů. Dokončení může trvat pět až 7 minut.
 
-    **Případě**
+    **Příklad**
 
    ```azurepowershell
    AzureILBUpgrade.ps1 -rgName "test_InternalUpgrade_rg" -oldLBName "LBForInternal" -newlocation "centralus" -newLbName "LBForUpgrade"
@@ -104,7 +104,7 @@ Ano, migruje provoz. Pokud byste chtěli migrovat provoz osobně, použijte [Ten
 
 ### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>Narazili jsme na některé problémy s použitím tohoto skriptu. Jak získám pomoc?
   
-Můžete odeslat e-mail slbupgradesupport@microsoft.com, otevřít případ podpory s podporou Azure nebo obojí.
+Můžete odeslat e-mail slbupgradesupport@microsoft.com , otevřít případ podpory s podporou Azure nebo obojí.
 
 ## <a name="next-steps"></a>Další kroky
 

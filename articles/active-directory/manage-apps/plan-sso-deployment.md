@@ -2,23 +2,23 @@
 title: Plánování nasazení s jednotným přihlašováním Azure Active Directory
 description: Průvodce vám pomůže s plánováním, nasazením a správou jednotného přihlašování ve vaší organizaci.
 services: active-directory
-author: jeevansd
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/22/2019
-ms.author: baselden
+ms.author: kenwith
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 4b5836ffe721aa3e329651c3709ce64344363728
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 2a2691935cb38c20e20b6a776acfe70cc458a6ed
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83197870"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763070"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Plánování nasazení jednotného přihlašování
 
@@ -32,7 +32,7 @@ Mnoho organizací spoléhá na aplikace typu software jako služba (SaaS), jako 
 
 Azure Marketplace má více než 3000 aplikací s předem integrovanými připojeními SSO, což usnadňuje jejich integraci ve vašem tenantovi.
 
-## <a name="licensing"></a>Licencování
+## <a name="licensing"></a>Licensing
 
 - **Licencování Azure AD** – jednotné přihlašování pro předem integrované aplikace SaaS je zdarma. Nicméně počet objektů ve vašem adresáři a funkce, které chcete nasadit, můžou vyžadovat další licence. Úplný seznam licenčních požadavků najdete v tématu [Azure Active Directory ceny](https://azure.microsoft.com/pricing/details/active-directory/).
 - **Licencování aplikací** – k uspokojení vašich obchodních potřeb budete potřebovat příslušné licence pro aplikace SaaS. Spolupracujte s vlastníkem aplikace a zjistěte, jestli uživatelé přiřazení k aplikaci mají příslušné licence pro své role v rámci aplikace. Pokud Azure AD spravuje Automatické zřizování na základě rolí, role přiřazené v Azure AD musí odpovídat počtu licencí vlastněných v rámci aplikace. Nesprávný počet licencí vlastněných v aplikaci může vést k chybám během zřizování nebo aktualizace uživatele.
@@ -273,7 +273,7 @@ Při správě přístupu k prostředkům doporučujeme zvolit přístup s větš
 
 Doporučujeme nastavit regulární tempo, ve kterém si prohlédnete různé aspekty zabezpečení aplikací SaaS a provádíte jakékoli případné nápravné akce.
 
-### <a name="troubleshooting"></a>Odstraňování potíží
+### <a name="troubleshooting"></a>Poradce při potížích
 
 Následující odkazy představují scénáře řešení potíží. Možná budete chtít vytvořit konkrétní vodítko pro pracovníky podpory, kteří budou tyto scénáře v podniku, a postup, jak je opravit.
 

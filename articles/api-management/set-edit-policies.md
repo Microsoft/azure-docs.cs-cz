@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: apimpm
-ms.openlocfilehash: 2df57477ae5270405a1774b7a4f04ed185fea396
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 5670be6d4c45644ac8318702822c37ed82a81caa
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "70071707"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85205743"
 ---
 # <a name="how-to-set-or-edit-azure-api-management-policies"></a>Postup při nastavení nebo úpravě zásad služby Azure API Management
 
@@ -38,10 +38,10 @@ Chcete-li nastavit nebo upravit zásadu, postupujte podle následujících krok�
 4. Vyberte některé z rozhraní API, která jste předtím naimportovali.
 5. Vyberte kartu **Návrh**.
 6. Vyberte operaci, na kterou chcete zásadu použít. Pokud chcete zásadu použít pro všechny operace, vyberte **všechny operace**.
-7. V části **</>** **příchozí zpracování** nebo **zpracování odchozího zpracování** vyberte ikonu (Editor kódu).
+7. **</>** V části **příchozí zpracování** nebo **zpracování odchozího zpracování** vyberte ikonu (Editor kódu).
 8. Vložte požadovaný kód zásad do některého z příslušných bloků.
 
-    ```XML
+    ```xml
     <policies>
         <inbound>
             <base />

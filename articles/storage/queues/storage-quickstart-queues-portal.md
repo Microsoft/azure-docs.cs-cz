@@ -7,13 +7,13 @@ ms.date: 03/06/2019
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.reviewer: cbrooks
-ms.openlocfilehash: 2876d2a680aa41372557a9f04c1d6a5eed56b8ae
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.reviewer: dineshm
+ms.openlocfilehash: af3f812c8018f059f26c29cd373714e4ab3c8a49
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74269249"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808972"
 ---
 # <a name="quickstart-create-a-queue-and-add-a-message-with-the-azure-portal"></a>Rychlý Start: vytvoření fronty a přidání zprávy s Azure Portal
 

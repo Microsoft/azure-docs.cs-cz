@@ -3,15 +3,15 @@ title: Povolit poznámkové bloky v účtu Azure Cosmos DB (Preview)
 description: Integrované poznámkové bloky Azure Cosmos DB umožňují analyzovat a vizualizovat data v rámci portálu. Tento článek popisuje, jak povolit tuto funkci pro účty Cosmos.
 author: deborahc
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/22/2019
 ms.author: dech
-ms.openlocfilehash: dcec310db43baa513b2d574d03f3f35dee3f773b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4c485bf6b9eb34e68e399c24e51286428f47586f
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76768023"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261898"
 ---
 # <a name="enable-notebooks-for-azure-cosmos-db-accounts-preview"></a>Povolit poznámkové bloky pro účty Azure Cosmos DB (Preview)
 
@@ -21,30 +21,35 @@ ms.locfileid: "76768023"
 Integrované poznámkové bloky Jupyter v Azure Cosmos DB umožňují analyzovat a vizualizovat data z Azure Portal. Tento článek popisuje, jak tuto funkci povolit pro váš účet služby Azure Cosmos DB.
 
 ## <a name="enable-notebooks-in-a-new-cosmos-account"></a>Povolit poznámkové bloky v novém účtu Cosmos
-1. Přihlaste se k [Azure Portal](https://portal.azure.com/).
-1. Vyberte **vytvořit** > **databáze** > prostředků**Azure Cosmos DB**.
+
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Vyberte **vytvořit**  >  **databáze**prostředků  >  **Azure Cosmos DB**.
 1. Na stránce **vytvořit Azure Cosmos DB účet** vyberte **poznámkové bloky**. 
  
-    ![Možnost výběru poznámkových bloků v Azure Cosmos DB vytvořit okno](media/enable-notebooks/create-new-account-with-notebooks.png)
+    :::image type="content" source="media/enable-notebooks/create-new-account-with-notebooks.png" alt-text="Možnost výběru poznámkových bloků v Azure Cosmos DB vytvořit okno":::
+
 1. Vyberte **Zkontrolovat a vytvořit**. Můžete přeskočit možnost **síť** a **značky** . 
 1. Zkontrolujte nastavení účtu a pak vyberte **vytvořit**. Vytvoření účtu trvá několik minut. Počkejte, než se na stránce portálu zobrazí **dokončené vaše nasazení**. 
 
-    ![Podokno Oznámení portálu Azure Portal](media/enable-notebooks/create-new-account-with-notebooks-complete.png)
-1. Vyberte **Přejít k prostředku** a přejdete na stránku Azure Cosmos DB účet. 
+   :::image type="content" source="media/enable-notebooks/create-new-account-with-notebooks-complete.png" alt-text="Podokno Oznámení portálu Azure Portal":::
 
-    ![Stránka Azure Cosmos DB účtu](../../includes/media/cosmos-db-create-dbaccount/azure-cosmos-db-account-created-3.png)
+1. Vyberte **Přejít k prostředku** a přejdete na stránku Azure Cosmos DB účet.
+
+   :::image type="content" source="../../includes/media/cosmos-db-create-dbaccount/azure-cosmos-db-account-created-3.png" alt-text="Stránka Azure Cosmos DB účtu":::
 
 1. Přejděte do podokna **Průzkumník dat** . Nyní byste měli vidět pracovní prostor poznámkových bloků.
 
-    ![Nový pracovní prostor pro poznámkové bloky Azure Cosmos DB](media/enable-notebooks/new-notebooks-workspace.png)
+    :::image type="content" source="media/enable-notebooks/new-notebooks-workspace.png" alt-text="Nový pracovní prostor pro poznámkové bloky Azure Cosmos DB":::
 
 ## <a name="enable-notebooks-in-an-existing-cosmos-account"></a>Povolení poznámkových bloků v existujícím účtu Cosmos
+
 Poznámkové bloky můžete také povolit u stávajících účtů. Tento krok je potřeba provést jenom jednou pro každý účet.
 
 1. Přejděte do podokna **Průzkumník dat** v účtu Cosmos.
 1. Vyberte **Povolit poznámkové bloky**.
 
-    ![Vytvořit nový pracovní prostor poznámkových bloků v Průzkumník dat](media/enable-notebooks/enable-notebooks-workspace.png)
+    :::image type="content" source="media/enable-notebooks/enable-notebooks-workspace.png" alt-text="Vytvořit nový pracovní prostor poznámkových bloků v Průzkumník dat":::
+
 1. Tím se zobrazí výzva k vytvoření nového pracovního prostoru poznámkových bloků. Vyberte **Dokončit instalaci.**
 1. Váš účet teď má povolený používání poznámkových bloků!
 
@@ -54,18 +59,18 @@ Pokud chcete ověřit, jestli můžete použít poznámkové bloky, vyberte v č
 
 V tomto příkladu použijeme **soubor GettingStarted. ipynb**. 
 
-![Zobrazit Poznámkový blok soubor GettingStarted. ipynb](media/enable-notebooks/select-getting-started-notebook.png)
+:::image type="content" source="media/enable-notebooks/select-getting-started-notebook.png" alt-text="Zobrazit Poznámkový blok soubor GettingStarted. ipynb":::
 
 Spuštění poznámkového bloku:
 1. Vyberte první buňku kódu, která obsahuje kód Pythonu. 
 1. Vyberte **Spustit** , aby se buňka spustila. Tuto buňku můžete také spustit **stisknutím SHIFT + ENTER** .
 1. Obnovte podokno prostředků, aby se zobrazila vytvořená databáze a kontejner.
 
-    ![Spuštění poznámkového bloku Začínáme](media/enable-notebooks/run-first-notebook-cell.png)
+    :::image type="content" source="media/enable-notebooks/run-first-notebook-cell.png" alt-text="Spuštění poznámkového bloku Začínáme":::
 
 Můžete také vybrat **Nový Poznámkový blok** pro vytvoření nového poznámkového bloku nebo nahrát existující soubor poznámkového bloku (. ipynb) tak, že v nabídce **Moje poznámkové bloky** vyberete **nahrát soubor** . 
 
-![Vytvoření nebo nahrání nového poznámkového bloku](media/enable-notebooks/create-or-upload-new-notebook.png)
+:::image type="content" source="media/enable-notebooks/create-or-upload-new-notebook.png" alt-text="Vytvoření nebo nahrání nového poznámkového bloku":::
 
 ## <a name="next-steps"></a>Další kroky
 

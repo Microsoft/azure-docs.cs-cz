@@ -3,8 +3,8 @@ title: Nasazení rozšíření přístupového panelu Azure pro IE pomocí objek
 description: Použití zásad skupiny k nasazení doplňku Internet Exploreru pro portál moje aplikace
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.devlang: na
@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/08/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71c342ede77349b3f6c22093e5877ad5f5ce6549
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: 94c434a2892060acfdd56c496a31e41597c21357
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "67807685"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763427"
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>Postupy: nasazení rozšíření přístupového panelu pro Internet Explorer pomocí zásad skupiny
 
@@ -44,12 +44,12 @@ Nejdřív je nutné umístit instalační balíček do síťového umístění, 
 
     ![Otevřené soubory a služby úložiště](./media/deploy-access-panel-browser-extension/files-services.png)
 
-1. Přejít na kartu **sdílené složky** . Pak klikněte na **úlohy** > **Nová sdílená složka...**
+1. Přejít na kartu **sdílené složky** . Pak klikněte na **úlohy**  >  **Nová sdílená složka...**
 
     ![Snímek obrazovky s informacemi o tom, kde najít novou sdílenou složku z obrazovky úlohy](./media/deploy-access-panel-browser-extension/shares.png)
 
 1. Dokončete **Průvodce vytvořením sdílené složky** a nastavte oprávnění, aby bylo zajištěno, že bude možné k němu přicházet z počítačů uživatelů. [Přečtěte si další informace o sdílených složkách.](https://technet.microsoft.com/library/cc753175.aspx)
-1. Stažení následujícího balíčku Microsoft Instalační služba systému Windows (soubor. msi): [přístupového panelu přípona. msi](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)
+1. Stáhněte si následující balíček Microsoft Instalační služba systému Windows (soubor. msi): [přístupový Panel Extension.msi](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)
 1. Zkopírujte instalační balíček do požadovaného umístění ve sdílené složce.
 
     ![Zkopírujte soubor. msi do sdílené složky.](./media/deploy-access-panel-browser-extension/copy-package.png)
@@ -59,14 +59,14 @@ Nejdřív je nutné umístit instalační balíček do síťového umístění, 
 ## <a name="step-2-create-the-group-policy-object"></a>Krok 2: vytvoření objektu zásad skupiny
 
 1. Přihlaste se k serveru, který je hostitelem instalace aplikace Active Directory Domain Services (služba AD DS).
-1. V správce serveru přejdete na **nástroje** > **Zásady skupiny Správa**.
+1. V správce serveru přejdete na **nástroje**  >  **Zásady skupiny Správa**.
 
     ![Přejít na nástroje > Zásady skupiny Management](./media/deploy-access-panel-browser-extension/tools-gpm.png)
 
 1. V levém podokně okna **správy Zásady skupiny** zobrazte hierarchii organizační jednotky (OU) a určete, ve kterém oboru byste chtěli zásady skupiny použít. Například se můžete rozhodnout vybrat malou organizační jednotku, která se má pro testování nasadit na několik uživatelů, nebo můžete vybrat organizační jednotku nejvyšší úrovně pro nasazení do celé organizace.
 
    > [!NOTE]
-   > Pokud chcete vytvořit nebo upravit organizační jednotky (OU), přepněte zpět na správce serveru a přejděte na **nástroje** > **Uživatelé a počítače služby Active Directory**.
+   > Pokud chcete vytvořit nebo upravit organizační jednotky (OU), přepněte zpět na správce serveru a přejděte na **nástroje**  >  **Uživatelé a počítače služby Active Directory**.
 
 1. Po výběru organizační jednotky klikněte na ni pravým tlačítkem myši a vyberte **vytvořit objekt zásad skupiny v této doméně a propojit jej sem...**
 
@@ -83,7 +83,7 @@ Nejdřív je nutné umístit instalační balíček do síťového umístění, 
    * `Computer Configuration/Policies/Software Settings/`
    * `User Configuration/Policies/Software Settings/`
 
-1. Klikněte pravým tlačítkem na **Instalace softwaru**a pak vyberte **Nový** > **balíček...**
+1. Klikněte pravým tlačítkem na **Instalace softwaru**a pak vyberte **Nový**  >  **balíček...**
 1. Přejděte do sdílené složky, která obsahuje instalační balíček z [kroku 1: vytvořte distribuční bod](#step-1-create-the-distribution-point), vyberte soubor. msi a klikněte na tlačítko **otevřít**.
 
    > [!IMPORTANT]

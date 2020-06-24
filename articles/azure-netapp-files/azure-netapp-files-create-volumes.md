@@ -15,21 +15,21 @@ ms.topic: conceptual
 ms.date: 12/01/2019
 ms.author: b-juche
 ms.openlocfilehash: 9e8817f802ca1d73ca0f6bfa2b32b1b14b37d7da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79274083"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84691777"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Vytvoření svazku NFS pro Azure NetApp Files
 
 Azure NetApp Files podporuje systém souborů NFS (NFSv3 a NFSv 4.1) a svazky SMBv3. Spotřeba kapacity svazku se počítá proti zřízené kapacitě příslušného fondu. V tomto článku se dozvíte, jak vytvořit svazek NFS. Pokud chcete vytvořit svazek SMB, přečtěte si téma [vytvoření svazku SMB pro Azure NetApp Files](azure-netapp-files-create-volumes-smb.md). 
 
-## <a name="before-you-begin"></a>Před zahájením 
+## <a name="before-you-begin"></a>Než začnete 
 Musíte mít už nastavený fond kapacity.   
 [Nastavení fondu kapacity](azure-netapp-files-set-up-capacity-pool.md)   
 Podsíť musí být delegovaná na Azure NetApp Files.  
-[Delegování podsítě do Azure NetApp Files](azure-netapp-files-delegate-subnet.md)
+[Delegování podsítě na službu Azure NetApp Files](azure-netapp-files-delegate-subnet.md)
 
 ## <a name="considerations"></a>Požadavky 
 
@@ -65,7 +65,7 @@ Podsíť musí být delegovaná na Azure NetApp Files.
 
         Název svazku musí být v rámci každého fondu kapacity jedinečný. Musí mít aspoň tři znaky dlouhé. Můžete použít jakékoli alfanumerické znaky.   
 
-        Název svazku nelze `default` použít.
+        `default`Název svazku nelze použít.
 
     * **Fond kapacit**  
         Zadejte fond kapacit, ve kterém chcete vytvořit svazek.
@@ -113,7 +113,7 @@ Podsíť musí být delegovaná na Azure NetApp Files.
 ## <a name="next-steps"></a>Další kroky  
 
 * [Konfigurace výchozí domény NFSv4.1 pro Azure NetApp Files](azure-netapp-files-configure-nfsv41-domain.md)
-* [Připojování nebo odpojování svazku pro virtuální počítače s Windows nebo Linuxem](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
+* [Připojení nebo odpojení svazku pro virtuální počítače s Windows nebo Linuxem](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [Konfigurace zásad exportu pro svazek NFS](azure-netapp-files-configure-export-policy.md)
-* [Omezení prostředků pro Azure NetApp Files](azure-netapp-files-resource-limits.md)
+* [Omezení prostředků pro službu Azure NetApp Files](azure-netapp-files-resource-limits.md)
 * [Informace o integraci virtuální sítě pro služby Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)

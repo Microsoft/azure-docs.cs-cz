@@ -4,15 +4,15 @@ description: Tento dokument poskytuje techniky optimalizace po migraci z MongoDB
 author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/20/2020
 ms.author: lbosq
-ms.openlocfilehash: ce33651aae64d0a90264dde6da64b4044c6ce132
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 055604c399aa1641e823f24af499102bfff3ed0e
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80063617"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263088"
 ---
 # <a name="post-migration-optimization-steps-when-using-azure-cosmos-dbs-api-for-mongodb"></a>Kroky optimalizace po migraci při použití rozhraní API Azure Cosmos DB pro MongoDB
 
@@ -35,7 +35,7 @@ V tomto průvodci se naučíte:
 2. Z [Azure Portal](https://www.portal.azure.com/)v levém podokně otevřete nabídku **všechny prostředky** a vyhledejte účet Azure Cosmos DB, na který jste migrovali svá data.
 3. Otevřete okno **připojovací řetězec** . Pravé podokno obsahuje všechny informace, které potřebujete pro úspěšné připojení ke svému účtu.
 4. Použijte informace o připojení v konfiguraci vaší aplikace (nebo na jiných relevantních místech), aby odrážely Azure Cosmos DB rozhraní API pro připojení MongoDB ve vaší aplikaci.
-![Připojovací řetězec](./media/mongodb-post-migration/connection-string.png)
+:::image type="content" source="./media/mongodb-post-migration/connection-string.png" alt-text="Připojovací řetězec":::
 
 Další podrobnosti najdete na stránce [připojení aplikace MongoDB k Azure Cosmos DB](connect-mongodb-account.md) .
 
@@ -68,4 +68,4 @@ Většina uživatelů opouští úroveň konzistence ve výchozím nastavení ko
 * [Vypršení platnosti dat s využitím rozhraní API služby Azure Cosmos DB pro MongoDB](mongodb-time-to-live.md).
 * [Úrovně konzistence v Azure Cosmos DB](consistency-levels.md)
 * [Indexování ve službě Azure Cosmos DB](index-overview.md)
-* [Jednotky žádosti v Azure Cosmos DB](request-units.md)
+* [Jednotky žádostí ve službě Azure Cosmos DB](request-units.md)

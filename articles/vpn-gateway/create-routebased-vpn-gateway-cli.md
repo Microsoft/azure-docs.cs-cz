@@ -4,21 +4,21 @@ description: Rychlé informace o tom, jak vytvořit VPN Gateway pomocí rozhran�
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/04/2018
 ms.author: cherylmc
-ms.openlocfilehash: 121790fce220874babedf67cd72471caa7e92ae6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0cb03f827c8174932f235ec8ea327225da76ef4f
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80241089"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987696"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-cli"></a>Vytvoření brány sítě VPN založené na trasách pomocí rozhraní příkazového řádku
 
 Tento článek vám pomůže rychle vytvořit bránu Azure VPN Gateway založenou na směrování pomocí Azure CLI. Brána sítě VPN se používá při vytváření připojení VPN k místní síti. K připojení virtuální sítě můžete použít taky bránu VPN.
 
-Kroky v tomto článku vytvoří virtuální síť, podsíť, podsíť brány a bránu VPN založenou na směrování (bránu virtuální sítě). Brána virtuální sítě může vytvořit několik než 45 minut. Po dokončení vytváření brány můžete vytvořit připojení. Tyto kroky vyžadují předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Kroky v tomto článku vytvoří virtuální síť, podsíť, podsíť brány a bránu VPN založenou na směrování (bránu virtuální sítě). Brána virtuální sítě může vytvořit několik než 45 minut. Po dokončení vytváření brány můžete vytvořit připojení. Tyto kroky vyžadují předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -74,7 +74,7 @@ az network public-ip create \
 
 Vytvořte bránu VPN pomocí příkazu [az network vnet-gateway create](/cli/azure/group).
 
-Pokud tento příkaz spustíte pomocí `--no-wait` parametru, nezobrazí se žádná zpětná vazba ani výstup. `--no-wait` Parametr umožňuje vytvořit bránu na pozadí. Neznamená to, že se Brána VPN vytvoří hned.
+Pokud tento příkaz spustíte pomocí `--no-wait` parametru, nezobrazí se žádná zpětná vazba ani výstup. `--no-wait`Parametr umožňuje vytvořit bránu na pozadí. Neznamená to, že se Brána VPN vytvoří hned.
 
 ```azurecli-interactive
 az network vnet-gateway create \

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.date: 09/10/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 1d393055b0ac62198bd5a7239b2b92b7aeff62e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a9b2e8148586ec58ea6a7a033099e726920857b6
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82145355"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987933"
 ---
 # <a name="url-path-based-routing-overview"></a>Přehled směrování na základě cest URL
 
@@ -24,7 +24,7 @@ V následujícím příkladu služba Application Gateway obsluhuje provoz pro co
 
 ![imageURLroute](./media/application-gateway-url-route-overview/figure1.png)
 
-Požadavky na http\://contoso.com/video/* jsou směrovány do videofondserveru a http\://contoso.com/images/* jsou směrovány do obrazkyfondserveru. Pokud nevyhovuje žádný vzor cesty, vybere se VychoziFondServeru.
+Požadavky na http \: //contoso.com/video/* jsou směrovány do videofondserveru a http \: //contoso.com/images/* jsou směrovány do obrazkyfondserveru. Pokud nevyhovuje žádný vzor cesty, vybere se VychoziFondServeru.
 
 > [!IMPORTANT]
 > V případě SKU V1 se pravidla zpracovávají v pořadí, v jakém jsou uvedena na portálu. Pokud je základní naslouchací proces uveden jako první a odpovídá příchozímu požadavku, požadavek se zpracuje tímto naslouchacím procesem. V případě SKU verze V2 mají přesné shody vyšší prioritu. Před konfigurací základního naslouchacího procesu se ale důrazně doporučuje nakonfigurovat nejprve naslouchací procesy pro více webů. Tím se zajistí směrování provozu do správného back-endu.
@@ -75,7 +75,7 @@ Pravidla cesty rozlišují malá a velká písmena.
 |V1 – vzor cesty  |Je podporováno?  |
 |---------|---------|
 |`/images/*`     |ano|
-|`/images*`     |ne|
+|`/images*`     |ano|
 |`/images/*.jpg`     |ne|
 |`/*.jpg`     |ne|
 |`/Repos/*/Comments/*`     |ne|

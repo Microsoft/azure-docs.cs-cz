@@ -4,15 +4,15 @@ description: Naučte se, jak vytvořit živý řídicí panel počasí v Power B
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: aac89de936ae709ac825391eb0515e7f36a457a6
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: eda3ee3e9e170469ffb0b9b0e1d7dede181fe3f0
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465792"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262000"
 ---
 # <a name="create-a-real-time-dashboard-using-azure-cosmos-db-and-power-bi"></a>Vytvoření řídicího panelu v reálném čase pomocí Azure Cosmos DB a Power BI
 
@@ -53,11 +53,11 @@ Nastavte kanál pro příjem dat, který načte [data o počasí](https://catalo
 
 1. **Připojte účet Azure Cosmos k Power BI** – otevřete Power BI Desktop a pomocí konektoru Azure Cosmos DB vyberte správnou databázi a kontejner.
 
-   ![Konektor Power BI pro Azure Cosmos DB](./media/create-real-time-weather-dashboard-powerbi/cosmosdb-powerbi-connector.png)
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/cosmosdb-powerbi-connector.png" alt-text="Konektor Power BI pro Azure Cosmos DB":::
 
 1. **Konfigurovat přírůstkovou aktualizaci** – při konfiguraci přírůstkové aktualizace pro datovou sadu použijte postup v článku [přírůstková aktualizace s Power BI](/power-bi/service-premium-incremental-refresh) . Přidejte parametry **RangeStart** a **RangeEnd** , jak je znázorněno na následujícím snímku obrazovky:
 
-   ![Konfigurovat parametry rozsahu](./media/create-real-time-weather-dashboard-powerbi/configure-range-parameters.png)
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/configure-range-parameters.png" alt-text="Konfigurovat parametry rozsahu":::
 
    Vzhledem k tomu, že datová sada obsahuje sloupec data, který je v textovém formátu, parametry **RangeStart** a **RangeEnd** by měly být transformovány, aby bylo možné použít následující filtr. V podokně **Rozšířený editor** Upravte dotaz přidáním následujícího textu pro filtrování řádků na základě parametrů RangeStart a RangeEnd:
 
@@ -77,13 +77,13 @@ Nastavte kanál pro příjem dat, který načte [data o počasí](https://catalo
 
 1. **Definujte zásadu aktualizace** – Definujte zásadu aktualizace tak, že přejdete na kartu **přírůstková aktualizace** v **místní** nabídce pro tabulku. Nastavte zásady aktualizace tak, aby se aktualizovaly **každý den** , a uložte data posledních měsíců.
 
-   ![Definovat zásadu aktualizace](./media/create-real-time-weather-dashboard-powerbi/define-refresh-policy.png)
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/define-refresh-policy.png" alt-text="Definovat zásadu aktualizace":::
 
    Ignorujte upozornění oznamující, že *dotaz M nelze považovat za přeložený*. Konektory Azure Cosmos DB přeloží dotazy filtru.
 
 1. **Načtěte data a generujte sestavy** – pomocí dat, která jste načetli dříve, vytvořte grafy pro hlášení teploty a vodních srážek.
 
-   ![Načtení dat a generování sestavy](./media/create-real-time-weather-dashboard-powerbi/load-data-generate-report.png)
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/load-data-generate-report.png" alt-text="Načtení dat a generování sestavy":::
 
 1. **Publikování sestavy pro Power BI Premium** – protože přírůstková aktualizace je funkcí jenom pro prémii, dialog publikování umožňuje pouze výběr pracovního prostoru na kapacitě Premium. První aktualizace může trvat déle, protože se importují historická data. Další aktualizační data jsou mnohem rychlejší, protože používají přírůstkovou aktualizaci.
 
@@ -100,19 +100,19 @@ Nastavte kanál pro příjem dat, který načte [data o počasí](https://catalo
 
 1. **Vytvoření nového Analysis Services tabulkového projektu v aplikaci Visual Studio**  -   [Nainstalujte nástroje SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017) a vytvořte Analysis Services tabulkový projekt v aplikaci Visual Studio.
 
-   ![Vytvořit Azure Analysis Services projekt](./media/create-real-time-weather-dashboard-powerbi/create-analysis-services-project.png)
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/create-analysis-services-project.png" alt-text="Vytvořit Azure Analysis Services projekt":::
 
    Vyberte instanci **integrovaného pracovního prostoru** a nastavte úroveň kompatibility na **SQL Server 2017/Azure Analysis Services (1400)** .
 
-   ![Návrhář tabulkových modelů Azure Analysis Services](./media/create-real-time-weather-dashboard-powerbi/tabular-model-designer.png)
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/tabular-model-designer.png" alt-text="Návrhář tabulkových modelů Azure Analysis Services":::
 
 1. **Přidejte Azure Cosmos DB zdroj dat** – přejděte do části **modely**Data Sources ( >  **Data Sources**  >  **nový zdroj dat** ) a přidejte Azure Cosmos DB zdroj dat, jak je znázorněno na následujícím snímku obrazovky:
 
-   ![Přidat Cosmos DB zdroj dat](./media/create-real-time-weather-dashboard-powerbi/add-data-source.png)
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/add-data-source.png" alt-text="Přidat Cosmos DB zdroj dat":::
 
    Připojte se k Azure Cosmos DB zadáním **identifikátoru URI účtu**, **názvu databáze**a **názvu kontejneru**. Teď můžete vidět data z kontejneru Azure Cosmos, která se importují do Power BI.
 
-   ![Náhled Azure Cosmos DB dat](./media/create-real-time-weather-dashboard-powerbi/preview-cosmosdb-data.png)
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/preview-cosmosdb-data.png" alt-text="Náhled Azure Cosmos DB dat":::
 
 1. **Vytvoření modelu Analysis Services** – otevřete Editor dotazů a proveďte potřebné operace pro optimalizaci načtené datové sady:
 
@@ -142,7 +142,7 @@ Nastavte kanál pro příjem dat, který načte [data o počasí](https://catalo
 
 1. **Vytvoření oddílů Azure Analysis** – vytvořte oddíly v Azure Analysis Services, abyste mohli datovou sadu rozdělit na logické oddíly, které se dají aktualizovat nezávisle a v různých frekvencích. V tomto příkladu vytvoříte dva oddíly, které by tuto datovou sadu rozdělily na data nejaktuálnějšího měsíce a všechno ostatní.
 
-   ![Vytváření oddílů služby Analysis Services](./media/create-real-time-weather-dashboard-powerbi/create-analysis-services-partitions.png)
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/create-analysis-services-partitions.png" alt-text="Vytváření oddílů služby Analysis Services":::
 
    V Azure Analysis Services vytvořte následující dva oddíly:
 
@@ -151,20 +151,19 @@ Nastavte kanál pro příjem dat, který načte [data o počasí](https://catalo
 
 1. **Nasaďte model do Azure Analysis Server** – klikněte pravým tlačítkem na projekt Azure Analysis Services a vyberte **nasadit**. Přidejte název serveru v podokně **Vlastnosti serveru nasazení** .
 
-   ![Nasazení Azure Analysis Services modelu](./media/create-real-time-weather-dashboard-powerbi/analysis-services-deploy-model.png)
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/analysis-services-deploy-model.png" alt-text="Nasazení Azure Analysis Services modelu":::
 
-1. **Konfigurace aktualizací oddílů a sloučení** – Azure Analysis Services umožňuje nezávislé zpracování oddílů. Vzhledem k tomu, že chceme, aby se oddíl **nejnovějšího měsíce** průběžně aktualizoval s nejnovějšími daty, nastavte interval aktualizace na 5 minut. Není nutné aktualizovat data v historických oddílech. Kromě toho musíte napsat nějaký kód pro konsolidaci posledního měsíce oddílu do historického oddílu a vytvořit nový oddíl poslední měsíc.
-
+1. **Konfigurace aktualizací oddílů a sloučení** – Azure Analysis Services umožňuje nezávislé zpracování oddílů. Vzhledem k tomu, že chceme, aby se oddíl **nejnovějšího měsíce** průběžně aktualizoval s nejnovějšími daty, nastavte interval aktualizace na 5 minut. Data můžete aktualizovat pomocí [REST API](../analysis-services/analysis-services-async-refresh.md), [Azure Automation](../analysis-services/analysis-services-refresh-azure-automation.md)nebo [Aplikace logiky](../analysis-services/analysis-services-refresh-logic-app.md). Není nutné aktualizovat data v historických oddílech. Kromě toho musíte napsat nějaký kód pro konsolidaci posledního měsíce oddílu do historického oddílu a vytvořit nový oddíl poslední měsíc.
 
 ## <a name="connect-power-bi-to-analysis-services"></a>Připojit Power BI k Analysis Services
 
 1. **Připojte se k Azure Analysis Server pomocí konektoru Azure Analysis Services Database** – vyberte **živý režim** a připojte se k instanci Azure Analysis Services, jak je znázorněno na následujícím snímku obrazovky:
 
-   ![Získat data z Azure Analysis Services](./media/create-real-time-weather-dashboard-powerbi/analysis-services-get-data.png)
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/analysis-services-get-data.png" alt-text="Získat data z Azure Analysis Services":::
 
 1. **Načtěte data a generujte sestavy** – pomocí dat, která jste načetli dříve, vytvořte grafy pro hlášení teploty a vodních srážek. Vzhledem k tomu, že vytváříte živé připojení, dotazy by se měly provádět na datech v modelu Azure Analysis Services, který jste nasadili v předchozím kroku. Grafy teploty budou aktualizovány do pěti minut po načtení nových dat do Azure Cosmos DB.
 
-   ![Načtení dat a generování sestav](./media/create-real-time-weather-dashboard-powerbi/load-data-generate-report.png)
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/load-data-generate-report.png" alt-text="Načtení dat a generování sestav":::
 
 ## <a name="next-steps"></a>Další kroky
 

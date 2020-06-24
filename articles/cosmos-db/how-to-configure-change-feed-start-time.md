@@ -3,15 +3,15 @@ title: Jak nakonfigurovat čas spuštění procesoru změny kanálu – Azure Co
 description: Zjistěte, jak nakonfigurovat procesor změn kanálu tak, aby začal číst z konkrétní datum a čas.
 author: ealsur
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/13/2019
 ms.author: maquaran
-ms.openlocfilehash: 600556a06d3f58c4d2ec79a49fdee5e8e04d4036
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d3d9af1b8cbda3f0fa2ff4650fef4602f7812f79
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77586270"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261711"
 ---
 # <a name="how-to-configure-the-change-feed-processor-start-time"></a>Jak nakonfigurovat počáteční čas procesoru změny kanálu
 
@@ -23,7 +23,7 @@ Když se procesor pro změnu kanálu poprvé spustí, inicializuje kontejner zap
 
 ## <a name="reading-from-a-previous-date-and-time"></a>Čtení z předchozího data a času
 
-Je možné inicializovat procesor změn, aby bylo možné číst změny od **určitého data a času**, a to předáním instance `DateTime` do rozšíření `WithStartTime` tvůrce:
+Je možné inicializovat procesor změn, aby bylo možné číst změny od **určitého data a času**, a to předáním instance do `DateTime` `WithStartTime` rozšíření tvůrce:
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=TimeInitialization)]
 
@@ -31,7 +31,7 @@ Procesor změnového kanálu se inicializuje pro konkrétní datum a čas a zač
 
 ## <a name="reading-from-the-beginning"></a>Čtení od začátku
 
-V jiných scénářích, jako jsou migrace dat nebo analýza celé historie kontejneru, musíme načíst kanál změn od **začátku životnosti tohoto kontejneru**. K tomu můžeme použít `WithStartTime` rozšíření tvůrce, ale předáním `DateTime.MinValue.ToUniversalTime()`, což vygeneruje reprezentaci UTC minimální `DateTime` hodnoty, například:
+V jiných scénářích, jako jsou migrace dat nebo analýza celé historie kontejneru, musíme načíst kanál změn od **začátku životnosti tohoto kontejneru**. K tomu můžeme použít `WithStartTime` rozšíření tvůrce, ale předáním `DateTime.MinValue.ToUniversalTime()` , což vygeneruje reprezentaci UTC minimální `DateTime` hodnoty, například:
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartFromBeginningInitialization)]
 

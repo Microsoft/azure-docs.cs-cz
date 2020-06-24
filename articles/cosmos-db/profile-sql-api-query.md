@@ -4,15 +4,15 @@ description: Naučte se, jak načíst metriky spouštění dotazů SQL a Profilo
 author: ginamr
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: girobins
-ms.openlocfilehash: 48b9a67de5c870a187ee008bd97265760ca6c341
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8bec102064d6269964cb917d745af206acf948ad
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "70998369"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262544"
 ---
 # <a name="get-sql-query-execution-metrics-and-analyze-query-performance-using-net-sdk"></a>Získat metriky spouštění dotazů SQL a analyzovat výkon dotazů pomocí sady .NET SDK
 
@@ -22,7 +22,7 @@ Tento článek ukazuje, jak Profilovat výkon dotazů SQL na Azure Cosmos DB. Ta
 
 Všechna přetížení pro [DocumentClient. CreateDocumentQuery](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentquery.aspx) přebírají volitelný parametr [FeedOptions](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.aspx) . Tato možnost umožňuje vyladit a parametrizovanit provádění dotazů. 
 
-Chcete-li shromáždit metriky spuštění dotazu SQL, je nutné nastavit parametr [PopulateQueryMetrics](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.populatequerymetrics.aspx#P:Microsoft.Azure.Documents.Client.FeedOptions.PopulateQueryMetrics) v [FeedOptions](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.aspx) na `true`. Nastavením `PopulateQueryMetrics` na hodnotu true se nastaví tak, `FeedResponse` aby obsahovala relevantní. `QueryMetrics` 
+Chcete-li shromáždit metriky spuštění dotazu SQL, je nutné nastavit parametr [PopulateQueryMetrics](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.populatequerymetrics.aspx#P:Microsoft.Azure.Documents.Client.FeedOptions.PopulateQueryMetrics) v [FeedOptions](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.aspx) na `true` . Nastavením `PopulateQueryMetrics` na hodnotu true se nastaví tak, aby `FeedResponse` obsahovala relevantní `QueryMetrics` . 
 
 ## <a name="get-query-metrics-with-asdocumentquery"></a>Získat metriky dotazů pomocí AsDocumentQuery ()
 Následující ukázka kódu ukazuje, jak načíst metriky při použití metody [AsDocumentQuery ()](https://msdn.microsoft.com/library/microsoft.azure.documents.linq.documentqueryable.asdocumentquery.aspx) :
@@ -62,7 +62,7 @@ while (documentQuery.HasMoreResults)
 ```
 ## <a name="aggregating-querymetrics"></a>Agregace QueryMetrics
 
-V předchozí části si všimněte, že existuje více volání metody [ExecuteNextAsync](https://msdn.microsoft.com/library/azure/dn850294.aspx) . Každé volání vrátilo `FeedResponse` objekt, který má slovník `QueryMetrics`; jednu pro každé pokračování dotazu. Následující příklad ukazuje, jak je agregovat `QueryMetrics` pomocí LINQ:
+V předchozí části si všimněte, že existuje více volání metody [ExecuteNextAsync](https://msdn.microsoft.com/library/azure/dn850294.aspx) . Každé volání vrátilo `FeedResponse` objekt, který má slovník typu `QueryMetrics` ; jeden pro každé pokračování dotazu. Následující příklad ukazuje, jak je agregovat `QueryMetrics` pomocí LINQ:
 
 ```csharp
 List<QueryMetrics> queryMetricsList = new List<QueryMetrics>();
@@ -115,7 +115,7 @@ foreach(IGrouping<string, KeyValuePair<string, QueryMetrics>> grouping in groupe
 
 ## <a name="linq-on-documentquery"></a>LINQ na DocumentQuery
 
-Můžete také získat dotaz `FeedResponse` z dotazu LINQ pomocí `AsDocumentQuery()` metody:
+Můžete také získat `FeedResponse` dotaz z dotazu LINQ pomocí `AsDocumentQuery()` metody:
 
 ```csharp
 IDocumentQuery<Document> linqQuery = client.CreateDocumentQuery(collection.SelfLink, feedOptions)
@@ -129,7 +129,7 @@ IReadOnlyDictionary<string, QueryMetrics> queryMetrics = feedResponse.QueryMetri
 
 ## <a name="expensive-queries"></a>Nákladné dotazy
 
-Můžete zachytit jednotky žádostí spotřebované jednotlivými dotazy a prozkoumat nákladné dotazy nebo dotazy, které využívají vysokou propustnost. Poplatek za žádost můžete získat pomocí vlastnosti [RequestCharge](https://msdn.microsoft.com/library/azure/dn948712.aspx) v `FeedResponse`. Další informace o tom, jak získat poplatek za požadavek pomocí Azure Portal a různých sad SDK, najdete v článku [vyhledání poplatků za jednotku žádosti](find-request-unit-charge.md) .
+Můžete zachytit jednotky žádostí spotřebované jednotlivými dotazy a prozkoumat nákladné dotazy nebo dotazy, které využívají vysokou propustnost. Poplatek za žádost můžete získat pomocí vlastnosti [RequestCharge](https://msdn.microsoft.com/library/azure/dn948712.aspx) v `FeedResponse` . Další informace o tom, jak získat poplatek za požadavek pomocí Azure Portal a různých sad SDK, najdete v článku [vyhledání poplatků za jednotku žádosti](find-request-unit-charge.md) .
 
 ```csharp
 string query = "SELECT * FROM c";
@@ -221,7 +221,7 @@ Total Query Execution Time               :        4,500.34 milliseconds
 
 To znamená, že dotaz byl spuštěn na 4,5 sekund (a byl to pouze jeden pokračování).
 
-Chcete-li optimalizovat tento příklad dotazu, vyhněte se použití HORNÍho pole ve filtru. Místo toho se při vytváření nebo aktualizaci dokumentů musí `c.description` hodnoty vkládat do všech velkých písmen. Dotaz pak bude: 
+Chcete-li optimalizovat tento příklad dotazu, vyhněte se použití HORNÍho pole ve filtru. Místo toho se při vytváření nebo aktualizaci dokumentů `c.description` musí hodnoty vkládat do všech velkých písmen. Dotaz pak bude: 
 
 ```sql
 SELECT VALUE c.description 
@@ -233,7 +233,7 @@ Tento dotaz je nyní možné zpracovat z indexu.
 
 Další informace o ladění výkonu dotazů najdete v článku o [výkonu dotazů ladění](https://docs.microsoft.com/azure/cosmos-db/documentdb-sql-query-metrics) .
 
-## <a name="references"></a><a id="References"></a>Odkazy
+## <a name="references"></a><a id="References"></a>Reference
 
 - [Azure Cosmos DB specifikace SQL](https://go.microsoft.com/fwlink/p/?LinkID=510612)
 - [ANSI SQL 2011](https://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681)

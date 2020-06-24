@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40266f1b340ebe0ab665c576ff3be0e62ba7c705
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 7feb69b2ea53794b780a983ed8ab4ba5874ac022
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798278"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85260844"
 ---
 # <a name="enable-combined-security-information-registration-in-azure-active-directory"></a>Povolit registraci kombinovaných informací o zabezpečení v Azure Active Directory
 
@@ -48,6 +48,9 @@ Pokud jste v Internet Exploreru nakonfigurovali seznam přiřazení lokality k z
 ## <a name="conditional-access-policies-for-combined-registration"></a>Zásady podmíněného přístupu pro kombinovanou registraci
 
 Zabezpečení, kdy a jak se uživatelé registrují pro Azure Multi-Factor Authentication a Samoobslužné resetování hesla, je teď možné u uživatelských akcí v zásadách podmíněného přístupu. Tato funkce je k dispozici organizacím, u kterých je povolena [funkce kombinovaná registrace](../authentication/concept-registration-mfa-sspr-combined.md). Tato funkce může být povolená v organizacích, kde se chtějí uživatelé zaregistrovat pro Azure Multi-Factor Authentication a SSPR z centrálního umístění, jako je důvěryhodné síťové umístění při registraci lidských zdrojů.
+
+> [!NOTE]
+> Tato zásada platí pouze v případě, že uživatel přistupuje k kombinované registrační stránce. Tato zásada nevynutila registraci MFA, když uživatel přistupuje k jiným aplikacím. Zásadu registrace MFA můžete vytvořit pomocí [Azure Identity Protection – nakonfigurujte zásady vícefaktorového ověřování](../identity-protection/howto-identity-protection-configure-mfa-policy.md).
 
 Další informace o vytváření důvěryhodných umístění v podmíněném přístupu najdete v článku [co je podmínka umístění v Azure Active Directory podmíněný přístup?](../conditional-access/location-condition.md#named-locations)
 

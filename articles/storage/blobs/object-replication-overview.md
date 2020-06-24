@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/28/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: efb873f8e66c3ab71b5b7345d776629fbe603af3
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 2d8d4c369cef8bf996628e8c89a424f04dcdbe71
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193421"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888068"
 ---
 # <a name="object-replication-for-block-blobs-preview"></a>Replikace objektů pro objekty blob bloku (Preview)
 
@@ -44,7 +44,7 @@ Po nakonfigurování replikace objektů Azure Storage pravidelně kontrolovat ka
 
 Při konfiguraci replikace objektů se na zdrojovém účtu a cílovém účtu vytvoří zásada replikace prostřednictvím poskytovatele prostředků Azure Storage. Zásady replikace se identifikují podle ID zásad. Aby mohla replikace probíhat, musí mít zásady na zdrojovém a cílovém účtu stejné ID zásad.
 
-Účet úložiště může sloužit jako zdrojový účet pro až dva cílové účty. Zdrojové a cílové účty můžou být v různých oblastech. Můžete nakonfigurovat samostatné zásady replikace pro replikaci dat do každého cílového účtu.
+Účet úložiště může sloužit jako zdrojový účet pro až dva cílové účty. A cílový účet pravděpodobně nemá více než dva zdrojové účty. Zdrojové a cílové účty se můžou nacházet v různých oblastech. Můžete nakonfigurovat samostatné zásady replikace pro replikaci dat do každého cílového účtu.
 
 ### <a name="replication-rules"></a>Pravidla replikace
 
@@ -54,7 +54,7 @@ Když vytvoříte pravidlo replikace, zkopírují se ve výchozím nastavení je
 
 Můžete také zadat jeden nebo více filtrů jako součást pravidla replikace pro filtrování objektů blob bloku podle předpony. Když zadáte předponu, zkopírují se do cílového kontejneru jenom objekty blob odpovídající této předponě ve zdrojovém kontejneru.
 
-Zdrojové a cílové kontejnery musí existovat, aby bylo možné je zadat v pravidle. Po vytvoření zásady replikace bude cílový kontejner jen pro čtení. Jakékoli pokusy o zápis do cílového kontejneru selžou s kódem chyby 409 (konflikt). Můžete ale zavolat operaci [nastavit vrstvu objektů BLOB](/rest/api/storageservices/set-blob-tier) u objektu BLOB v cílovém kontejneru a přesunout ho do archivní úrovně. Další informace o archivní úrovni najdete v tématu [Azure Blob Storage: horká, studená a archivní úroveň přístupu](storage-blob-storage-tiers.md#archive-access-tier).
+Zdrojové a cílové kontejnery musí existovat, aby bylo možné je zadat v pravidle. Po vytvoření zásad replikace bude cílový kontejner jen pro čtení. Jakékoli pokusy o zápis do cílového kontejneru selžou s kódem chyby 409 (Konflikt). Můžete ale zavolat operaci [nastavit vrstvu objektů BLOB](/rest/api/storageservices/set-blob-tier) u objektu BLOB v cílovém kontejneru a přesunout ho do archivní úrovně. Další informace o archivní úrovni najdete v tématu [Azure Blob Storage: horká, studená a archivní úroveň přístupu](storage-blob-storage-tiers.md#archive-access-tier).
 
 ## <a name="about-the-preview"></a>O verzi Preview
 
@@ -71,10 +71,10 @@ Během období Preview se replikace dat mezi účty úložiště nevztahují na 
 > [!IMPORTANT]
 > Verze Preview replikace objektů je určena pouze pro neprodukční použití. Smlouvy o úrovni produkčních služeb (SLA) nejsou aktuálně k dispozici.
 
-### <a name="prerequisites-for-object-replication"></a>Předpoklady pro replikaci objektů
+### <a name="prerequisites-for-object-replication"></a>Požadavky na replikaci objektů
 
 Replikace objektů vyžaduje, aby byly povolené následující funkce Azure Storage: 
-- [Změnit kanál](storage-blob-change-feed.md)
+- [Změna kanálu](storage-blob-change-feed.md)
 - [Správa verzí](versioning-overview.md)
 
 Před konfigurací replikace objektů povolte příslušné požadavky. Ve zdrojovém účtu musí být povolený kanál změn a na zdrojovém i cílovém účtu musí být povolená Správa verzí objektů BLOB. Další informace o povolení těchto funkcí najdete v těchto článcích:

@@ -3,22 +3,22 @@ title: Diagnostika a řešení potíží při používání sady .NET SDK služb
 description: K identifikaci, diagnostice a řešení potíží s Azure Cosmos DB při použití sady .NET SDK použijte funkce, jako je protokolování na straně klienta a další nástroje třetích stran.
 author: anfeldma-ms
 ms.service: cosmos-db
-ms.date: 05/06/2020
+ms.date: 06/16/2020
 ms.author: anfeldma
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: c0f40b3c79c16046ef61e89cad72c714346d2674
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: b24c0b045bc7d894496a59eda00f0e8835ea6a8d
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84672625"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887367"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Diagnostika a řešení potíží při používání sady .NET SDK služby Azure Cosmos DB
 
 > [!div class="op_single_selector"]
-> * [Java SDK v4](troubleshoot-java-sdk-v4-sql.md)
+> * [Sada Java SDK v4](troubleshoot-java-sdk-v4-sql.md)
 > * [Sada Async Java SDK v2](troubleshoot-java-async-sdk.md)
 > * [.NET](troubleshoot-dot-net-sdk.md)
 > 
@@ -113,9 +113,11 @@ Pokud se vám zobrazila následující chybová zpráva 401: "podpis MAC nalezen
 
 1. Klíč se otočí a nedodržuje [osvědčené postupy](secure-access-to-data.md#key-rotation). To je obvykle případ. Cosmos DB střídání klíčů účtu může trvat několik sekund, než je možné dny v závislosti na velikosti účtu Cosmos DB.
    1. 401 signatura MAC se krátce po rotaci klíčů a nakonec zastaví bez jakýchkoli změn. 
-2. Klíč je nesprávně nakonfigurovaný v aplikaci, takže se klíč neshoduje s účtem.
+1. Klíč je nesprávně nakonfigurovaný v aplikaci, takže se klíč neshoduje s účtem.
    1. 401 problém s podpisem MAC bude konzistentní a stane se pro všechna volání.
-3. Existuje konflikt časování s vytvořením kontejneru. Instance aplikace se pokouší o přístup k kontejneru před dokončením vytváření kontejneru. Nejběžnější scénář pro tuto situaci, pokud je aplikace spuštěná a kontejner se odstraní a znovu vytvoří se stejným názvem, i když je aplikace spuštěná. Sada SDK se pokusí použít nový kontejner, ale vytvoření kontejneru stále probíhá, takže nemá klíče.
+1. Aplikace používá [klíče jen pro čtení](secure-access-to-data.md#master-keys) pro operace zápisu.
+   1. 401 k problémům s podpisem MAC se stane jenom v případě, že aplikace provede požadavky na zápis, ale žádosti o čtení budou úspěšné.
+1. Existuje konflikt časování s vytvořením kontejneru. Instance aplikace se pokouší o přístup k kontejneru před dokončením vytváření kontejneru. Nejběžnější scénář pro tuto situaci, pokud je aplikace spuštěná a kontejner se odstraní a znovu vytvoří se stejným názvem, i když je aplikace spuštěná. Sada SDK se pokusí použít nový kontejner, ale vytvoření kontejneru stále probíhá, takže nemá klíče.
    1. 401 problém s podpisem MAC se krátce po vytvoření kontejneru zobrazuje a k tomu dojde, jenom dokud se nedokončí vytváření kontejneru.
  
  ### <a name="http-error-400-the-size-of-the-request-headers-is-too-long"></a>Chyba protokolu HTTP 400. Velikost hlaviček požadavku je příliš dlouhá.

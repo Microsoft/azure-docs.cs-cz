@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 01153317b49e4543f10faa517bce7bcc01ce22d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79269728"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708327"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>Použití dynamického šifrování AES-128 a služby doručování klíčů
 > [!div class="op_single_selector"]
@@ -159,7 +159,7 @@ Klient musí z souboru manifestu extrahovat adresu URL (která obsahuje také ho
 
 V případě HLS je kořenový manifest rozdělen do souborů segmentů. 
 
-Kořenový manifest je například: http:\//test001.Origin.MediaServices.Windows.NET/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ISM/manifest (Format = M3U8-AAPL). Obsahuje seznam názvů souborů segmentů.
+Kořenový manifest je například: http: \/ /test001.Origin.MediaServices.Windows.NET/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ISM/manifest (Format = M3U8-AAPL). Obsahuje seznam názvů souborů segmentů.
 
     . . . 
     #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=630133,RESOLUTION=424x240,CODECS="avc1.4d4015,mp4a.40.2",AUDIO="audio"
@@ -168,7 +168,7 @@ Kořenový manifest je například: http:\//test001.Origin.MediaServices.Windows
     QualityLevels(842459)/Manifest(video,format=m3u8-aapl)
     …
 
-Pokud otevřete jeden ze souborů segmentů v textovém editoru (například http:\//test001.Origin.MediaServices.Windows.NET/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ISM/QualityLevels (514369)/manifest (video, Format = M3U8-AAPL), obsahuje #EXT-X-Key, který indikuje, že soubor je zašifrovaný.
+Pokud otevřete jeden ze souborů segmentů v textovém editoru (například http: \/ /test001.Origin.MediaServices.Windows.NET/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ISM/QualityLevels (514369)/manifest (video, Format = M3U8-AAPL), obsahuje #EXT-X-Key, který indikuje, že soubor je zašifrovaný.
 
     #EXTM3U
     #EXT-X-VERSION:4
@@ -237,16 +237,16 @@ Následující kód ukazuje, jak odeslat žádost službě doručování klíč�
 
 ### <a name="create-and-configure-a-visual-studio-project"></a>Vytvoření a konfigurace projektu Visual Studia
 
-1. Nastavte vývojové prostředí a naplňte soubor App. config informacemi o připojení, jak je popsáno v tématu [Media Services vývoj pomocí .NET](media-services-dotnet-how-to-use.md).
+1. Nastavte vývojové prostředí a naplňte soubor app.config o informace o připojení, jak je popsáno v [Media Services vývoj pomocí .NET](media-services-dotnet-how-to-use.md).
 
-2. Přidejte následující prvky do appSettings, jak je definováno v souboru App. config:
+2. Přidejte následující prvky do appSettings, jak je definováno v souboru app.config:
 
     ```xml
     <add key="Issuer" value="http://testissuer.com"/>
     <add key="Audience" value="urn:test"/>
     ```
 
-### <a name="example"></a><a id="example"></a>Případě
+### <a name="example"></a><a id="example"></a>Příklad
 
 Přepište kód v souboru Program.cs kódem zobrazeným v této části.
  

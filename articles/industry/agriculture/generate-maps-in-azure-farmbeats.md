@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 92228c691c323bc0b9621dfc7413d86c5c2669e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79271769"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84709058"
 ---
 # <a name="generate-maps"></a>Generování map
 
@@ -26,7 +26,7 @@ Mapa umístění snímače FarmBeats vám pomůže se umísťováním senzorů v
 
 Tato mapa je odvozena segmentací zápoje, jak se v průběhu roku zobrazilo více kalendářních dat. I holé a budovy jsou součástí zápojeu. Můžete odebrat senzory, které na tomto místě nepotřebujete. Tato mapa je určena pro doprovodné materiály a na základě vlastních znalostí můžete změnit polohu a čísla mírně. Přidáním senzorů nedojde k navýšení vlhkosti v půdě heatmapu, ale existuje možnost zhoršení přesnosti heatmapu, pokud je číslo snímače omezené.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Před pokusem o vygenerování mapy umístění senzoru splňovat následující požadavky:
 
@@ -51,7 +51,7 @@ Tato část podrobně popisuje postupy pro vytváření map umístění senzorů
 > [!NOTE]
 > Mapu umístění senzoru můžete iniciovat na stránce **mapy** nebo z rozevírací nabídky **Generovat mapy přesnosti** na stránce s **podrobnostmi o farmě** .
 
-Postupujte následovně.
+Postupujte takto:
 
 1. Na domovské stránce přejděte na **mapy** z levé navigační nabídky.
 2. Vyberte **vytvořit mapy**a v rozevírací nabídce vyberte **umístění snímače** .
@@ -75,7 +75,7 @@ Postupujte následovně.
 
 ### <a name="view-and-download-a-sensor-placement-map"></a>Zobrazení a stažení mapy umístění senzoru
 
-Postupujte následovně.
+Postupujte takto:
 
 1. Na domovské stránce přejděte na **mapy** z levé navigační nabídky.
 
@@ -110,7 +110,7 @@ FarmBeats poskytuje možnost generovat NDVI, Enhanced vegetativní index (EVI) a
 
 ## <a name="create-a-satellite-indices-map"></a>Vytvoření mapy satelitních indexů
 
-Postupujte následovně.
+Postupujte takto:
 
 1. Na domovské stránce přejděte na **mapy** z levé navigační nabídky.
 2. Vyberte **vytvořit mapy**a v rozevírací nabídce vyberte **satelitové indexy** .
@@ -136,7 +136,7 @@ Postupujte následovně.
 
 ### <a name="view-and-download-a-map"></a>Zobrazení a stažení mapy
 
-Postupujte následovně.
+Postupujte takto:
 
 1. Na domovské stránce přejděte na **mapy** z levé navigační nabídky.
 
@@ -163,7 +163,7 @@ Postupujte následovně.
 
 Vlhkost v půdě je voda, která je držena v prostorech mezi částicemi v půdě.Heatmapu vlhkosti půdy vám pomůže pochopit data o vlhkosti půdy v libovolné hloubce ve vaší farmě s vysokým rozlišením. Pro vygenerování přesného a použitelného heatmapu vlhkosti v půdě je nutné použít jednotné nasazení snímačů. Všechny senzory musí být od stejného poskytovatele. Různí poskytovatelé mají rozdíly ve způsobu měření vlhkosti půdy spolu s rozdíly v kalibraci. Heatmapu se generuje pro konkrétní hloubku pomocí senzorů nasazených v této hloubce.
 
-### <a name="before-you-begin"></a>Před zahájením
+### <a name="before-you-begin"></a>Než začnete
 
 Před pokusem o vygenerování heatmapu vlhkosti v půdě splnění následujících požadavků:
 
@@ -175,7 +175,7 @@ Před pokusem o vygenerování heatmapu vlhkosti v půdě splnění následujíc
 
 ## <a name="create-a-soil-moisture-heatmap"></a>Vytvoření heatmapu vlhkosti půdy
 
-Postupujte následovně.
+Postupujte takto:
 
 1. Na domovské stránce přejděte na **mapy** z levé navigační nabídky a zobrazte stránku **mapy** .
 2. Vyberte **vytvořit mapy**a z rozevírací nabídky vyberte **vlhkost v půdě** .
@@ -203,7 +203,7 @@ Pokud chcete najít míru senzoru, přečtěte si **snímače**a vyberte jakýko
 
 ### <a name="view-and-download-a-map"></a>Zobrazení a stažení mapy
 
-Postupujte následovně.
+Postupujte takto:
 
 1. Na domovské stránce přejděte na **mapy** z levé navigační nabídky.
 

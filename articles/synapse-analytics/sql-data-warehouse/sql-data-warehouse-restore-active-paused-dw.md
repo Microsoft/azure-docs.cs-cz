@@ -6,17 +6,17 @@ author: anumjs
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 1d092baacd202bdb4d0bbe98f4119621c9d916b4
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: fab00848f6541f6f6eb386168c5bae76e822856a
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020247"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85205199"
 ---
 # <a name="restore-an-existing-sql-pool"></a>Obnovit existující fond SQL
 
@@ -26,7 +26,7 @@ V tomto článku se dozvíte, jak obnovit existující fond SQL ve službě Azur
 
 **Ověřte svoji kapacitu DTU.** Každý fond je hostovaný [logickým SQL serverem](../../azure-sql/database/logical-servers.md) (například MyServer.Database.Windows.NET), který má výchozí kvótu DTU. Ověřte, že server má pro obnovenou databázi dostatečný počet zbývajících kvót DTU. Informace o tom, jak vypočítat potřebné DTU nebo požádat o více DTU, najdete v tématu [vyžádání změny kvóty DTU](sql-data-warehouse-get-started-create-support-ticket.md).
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 1. Nezapomeňte [nainstalovat Azure PowerShell](/powershell/azure/overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 2. Máte existující bod obnovení, ze kterého chcete obnovit. Pokud chcete vytvořit nové obnovení, přečtěte si [kurz vytvoření nového bodu obnovení definovaného uživatelem](sql-data-warehouse-restore-points.md).
@@ -90,7 +90,7 @@ $RestoredDatabase.status
 
 ## <a name="restore-an-existing-sql-pool-through-the-azure-portal"></a>Obnovte stávající fond SQL prostřednictvím Azure Portal
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Přejděte do fondu SQL, ze kterého chcete obnovit.
 3. V horní části okna Přehled vyberte **obnovit**.
 

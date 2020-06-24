@@ -4,16 +4,16 @@ description: Naučte se monitorovat výkon a dostupnost Azure Cosmos DB.
 author: bwren
 services: cosmos-db
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/20/2020
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.openlocfilehash: a31636e4e56ddeb9f48cd8c955dc4415dacdc178
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 0d675bd53eac728918c951b1db0dae0188f75df1
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234920"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262782"
 ---
 # <a name="monitoring-azure-cosmos-db"></a>Azure Cosmos DB monitorování
 
@@ -27,11 +27,11 @@ Data můžete monitorovat pomocí metrik na straně klienta a serveru. Při pou�
 
 * **Monitorování pomocí diagnostických protokolů v Azure monitor:** Můžete monitorovat protokoly svého účtu Azure Cosmos a vytvářet řídicí panely z Azure Monitor. Telemetrie, jako jsou události a trasování, ke kterým dochází při druhé členitosti, se ukládají jako protokoly. Například pokud se propustnost kontejneru změní, vlastnosti účtu Cosmos se změní tyto události jsou zachyceny v rámci protokolů. Tyto protokoly můžete analyzovat spuštěním dotazů na shromážděná data. Další informace najdete v části [Analýza dat protokolu](#analyze-log-data) v tomto článku.
 
-* **Monitorování prostřednictvím kódu programu pomocí sad SDK:** Účet Azure Cosmos můžete sledovat programově pomocí sad .NET, Java, Python, Node. js SDK a hlaviček v REST API. Další informace najdete v části [monitorování Azure Cosmos DB programově](#monitor-cosmosdb-programmatically) v tomto článku.
+* **Monitorování prostřednictvím kódu programu pomocí sad SDK:** Účet Azure Cosmos můžete sledovat programově pomocí rozhraní .NET, Java, Pythonu Node.js SDK a hlaviček v REST API. Další informace najdete v části [monitorování Azure Cosmos DB programově](#monitor-cosmosdb-programmatically) v tomto článku.
 
 Následující obrázek ukazuje různé možnosti, které jsou k dispozici pro monitorování Azure Cosmos DB účtu prostřednictvím Azure Portal:
 
-![Možnosti monitorování dostupné v Azure Portal](media/monitor-cosmos-db/monitoring-options-portal.png)
+:::image type="content" source="media/monitor-cosmos-db/monitoring-options-portal.png" alt-text="Možnosti monitorování dostupné v Azure Portal" border="false":::
 
 Při použití Azure Cosmos DB můžete na straně klienta shromažďovat podrobnosti o požadavcích na požadavky, ID aktivity, informace o výjimce/zásobníku, stav HTTP/dílčí stavový kód, diagnostický řetězec pro ladění všech problémů, ke kterým může dojít. Tyto informace se vyžadují i v případě, že se potřebujete obrátit na tým podpory Azure Cosmos DB.  
 
@@ -62,7 +62,7 @@ Azure Cosmos DB shromažďuje stejné typy dat monitorování jako jiné prostř
 
 Stránka **Přehled** v Azure Portal pro každou databázi Azure Cosmos obsahuje stručný přehled využití databáze, včetně jejich žádosti a hodinového využití fakturace. Tyto informace jsou užitečné, ale k dispozici je jen malé množství dat monitorování. Některá z těchto dat jsou shromažďována automaticky a k dispozici pro analýzu, jakmile vytvoříte databázi, zatímco můžete povolit další shromažďování dat s určitou konfigurací.
 
-![Stránka Přehled](media/monitor-cosmos-db/overview-page.png)
+:::image type="content" source="media/monitor-cosmos-db/overview-page.png" alt-text="Stránka Přehled":::
 
 ## <a name="analyzing-metric-data"></a><a id="analyze-metric-data"></a>Analýza dat metriky
 
@@ -82,27 +82,27 @@ Metriky pro Azure Cosmos DB můžete analyzovat pomocí metrik z jiných služeb
 
 1. V levém navigačním panelu vyberte **monitor** a vyberte **metriky**.
 
-   ![Podokno metrik v Azure Monitor](./media/monitor-cosmos-db/monitor-metrics-blade.png)
+   :::image type="content" source="./media/monitor-cosmos-db/monitor-metrics-blade.png" alt-text="Podokno metrik v Azure Monitor":::
 
 1. V podokně **metriky** > **Vyberte prostředek** > zvolte požadované **předplatné**a **skupinu prostředků**. Jako **typ prostředku**vyberte **Azure Cosmos DB účty**, zvolte jeden ze stávajících účtů Azure Cosmos a pak vyberte **použít**.
 
-   ![Vyberte účet Cosmos DB, pro který chcete zobrazit metriky.](./media/monitor-cosmos-db/select-cosmosdb-account.png)
+   :::image type="content" source="./media/monitor-cosmos-db/select-cosmosdb-account.png" alt-text="Vyberte účet Cosmos DB, pro který chcete zobrazit metriky.":::
 
 1. Dále můžete vybrat metriku ze seznamu dostupných metrik. Můžete vybrat metriky specifické pro jednotky žádosti, úložiště, latenci, dostupnost, Cassandra a další. Podrobné informace o všech dostupných metrikách v tomto seznamu najdete v článku [metriky podle kategorií](monitor-cosmos-db-reference.md) . V tomto příkladu vybereme **jednotky žádosti** a jako hodnotu agregace určíte **průměr** .
 
    Kromě těchto podrobností můžete také vybrat **časový rozsah** a **časovou členitost** metrik. V poli Max (maximum) si můžete zobrazit metriky za posledních 30 dní.  Po použití filtru se v závislosti na vašem filtru zobrazí graf. Pro vybrané období můžete zobrazit průměrný počet spotřebovaných jednotek žádostí za minutu.  
 
-   ![Vyberte metriku z Azure Portal](./media/monitor-cosmos-db/metric-types.png)
+   :::image type="content" source="./media/monitor-cosmos-db/metric-types.png" alt-text="Vyberte metriku z Azure Portal":::
 
 ### <a name="add-filters-to-metrics"></a>Přidání filtrů do metrik
 
 Můžete také filtrovat metriky a graf zobrazený podle konkrétního typu **CollectionName**, **DatabaseName**, **typem operace OperationType**, **region**a **StatusCode**. Chcete-li filtrovat metriky, vyberte možnost **Přidat filtr** a zvolte požadovanou vlastnost, například **typem operace OperationType** , a vyberte hodnotu, jako je například **dotaz**. V grafu se pak zobrazí jednotky žádosti spotřebované pro operaci dotazování pro vybrané období. Operace provedené prostřednictvím uložené procedury nejsou protokolovány, takže nejsou k dispozici v rámci metriky typem operace OperationType.
 
-![Přidejte filtr pro výběr členitosti metriky.](./media/monitor-cosmos-db/add-metrics-filter.png)
+:::image type="content" source="./media/monitor-cosmos-db/add-metrics-filter.png" alt-text="Přidejte filtr pro výběr členitosti metriky.":::
 
 Metriky můžete seskupit pomocí možnosti **použít rozdělení** . Například můžete seskupit jednotky žádostí na typ operace a zobrazit graf pro všechny operace najednou, jak je znázorněno na následujícím obrázku:
 
-![Přidat použít dělicí filtr](./media/monitor-cosmos-db/apply-metrics-splitting.png)
+:::image type="content" source="./media/monitor-cosmos-db/apply-metrics-splitting.png" alt-text="Přidat použít dělicí filtr":::
 
 ## <a name="analyzing-log-data"></a><a id="analyze-log-data"></a>Analýza dat protokolu
 

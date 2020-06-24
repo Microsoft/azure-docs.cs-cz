@@ -3,8 +3,8 @@ title: Správa federačních certifikátů ve službě Azure AD | Microsoft Docs
 description: Naučte se přizpůsobit datum vypršení platnosti federačních certifikátů a postup obnovení certifikátů, jejichž platnost brzy vyprší.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de60dc5095ce4ab4d0219a388c445b08f544e1f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1731d5ea5d8db9ea1c5855a32d2daca0387c0bf5
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77159025"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763206"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Správa certifikátů pro federované jednotné přihlašování v Azure Active Directory
 
@@ -30,7 +30,7 @@ Tento článek je relevantní jenom pro aplikace, které jsou nakonfigurované t
 
 ## <a name="auto-generated-certificate-for-gallery-and-non-gallery-applications"></a>Automaticky vygenerovaný certifikát pro galerie a aplikace mimo galerii
 
-Když přidáte novou aplikaci z galerie a nakonfigurujete přihlášení založené na SAML (tím, že na stránce Přehled aplikace vyberete **jednotné přihlašování** > pomocí**SAML** ), Azure AD vygeneruje certifikát pro aplikaci, která je platná po dobu tří let. Pokud chcete stáhnout aktivní certifikát jako soubor certifikátu zabezpečení (**. cer**), vraťte se na tuto stránku (**přihlášení založené na SAML**) a vyberte odkaz ke stažení v záhlaví **podpisového certifikátu SAML** . Můžete si vybrat mezi nezpracovaným (binárním) certifikátem nebo certifikátem Base64 (základní text s kódováním Base 64). V případě aplikací galerie se v této části můžou zobrazit také odkazy na stažení certifikátu jako federační metadata XML (soubor **. XML** ) v závislosti na požadavku aplikace.
+Když přidáte novou aplikaci z galerie a nakonfigurujete přihlášení založené na SAML (tím, že na stránce Přehled aplikace vyberete **jednotné přihlašování**pomocí  >  **SAML** ), Azure AD vygeneruje certifikát pro aplikaci, která je platná po dobu tří let. Pokud chcete stáhnout aktivní certifikát jako soubor certifikátu zabezpečení (**. cer**), vraťte se na tuto stránku (**přihlášení založené na SAML**) a vyberte odkaz ke stažení v záhlaví **podpisového certifikátu SAML** . Můžete si vybrat mezi nezpracovaným (binárním) certifikátem nebo certifikátem Base64 (základní text s kódováním Base 64). V případě aplikací galerie se v této části můžou zobrazit také odkazy na stažení certifikátu jako federační metadata XML (soubor **. XML** ) v závislosti na požadavku aplikace.
 
 ![Možnosti stažení aktivního podpisového certifikátu SAML](./media/manage-certificates-for-federated-single-sign-on/active-certificate-download-options.png)
 
@@ -90,7 +90,7 @@ Azure AD pošle e-mailové oznámení 60, 30 a 7 dní před vypršením platnost
 1. Pro každou e-mailovou adresu, kterou chcete odstranit, vyberte ikonu **Odstranit** (může uvolnění paměti) vedle e-mailové adresy.
 1. Vyberte **Uložit**.
 
-Obdržíte e-mail s oznámením aadnotification@microsoft.comod. Pokud chcete e-mailem zabránit v umístění spamu, přidejte tento e-mail do kontaktů.
+Obdržíte e-mail s oznámením od aadnotification@microsoft.com . Pokud chcete e-mailem zabránit v umístění spamu, přidejte tento e-mail do kontaktů.
 
 ## <a name="renew-a-certificate-that-will-soon-expire"></a>Prodloužit platnost certifikátu, který brzo vyprší
 
@@ -109,6 +109,6 @@ Pokud se brzo vyprší platnost certifikátu, můžete ho obnovit pomocí postup
 ## <a name="related-articles"></a>Související články
 
 - [Kurzy integrace aplikací SaaS s Azure Active Directory](../saas-apps/tutorial-list.md)
-- [Správa aplikací pomocí služby Azure Active Directory](what-is-application-management.md)
+- [Správa aplikací pomocí Azure Active Directory](what-is-application-management.md)
 - [Jednotné přihlašování k aplikacím v Azure Active Directory](what-is-single-sign-on.md)
-- [Ladění jednotného přihlašování založeného na SAML pro aplikace v Azure Active Directory](../azuread-dev/howto-v1-debug-saml-sso-issues.md)
+- [Ladění jednotného přihlašování k aplikacím v Azure Active Directory založeného na SAML](../azuread-dev/howto-v1-debug-saml-sso-issues.md)

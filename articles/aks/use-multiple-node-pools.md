@@ -4,12 +4,12 @@ description: Naučte se vytvářet a spravovat fondy více uzlů pro cluster ve 
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: d6616c3de86e3115e13c60f9d1b484366a368899
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: dc420f5d453cf7d0bb19dd5db45ca2ae98be2902
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84658372"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887750"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Vytvoření a Správa fondů více uzlů pro cluster ve službě Azure Kubernetes (AKS)
 
@@ -42,7 +42,7 @@ Při vytváření a správě clusterů AKS, které podporují více fondů uzlů
 > [!Important]
 > Pokud pro cluster AKS spustíte jeden fond uzlů systému v produkčním prostředí, doporučujeme pro fond uzlů použít aspoň tři uzly.
 
-Začněte tím, že vytvoříte cluster AKS s jedním fondem uzlů. Následující příklad používá příkaz [AZ Group Create][az-group-create] k vytvoření skupiny prostředků s názvem *myResourceGroup* v oblasti *eastus* . Pomocí příkazu [AZ AKS Create][az-aks-create] se pak vytvoří cluster AKS s názvem *myAKSCluster* . A *--Kubernetes-verze* *1.15.7* se používá k zobrazení způsobu aktualizace fondu uzlů v následujícím kroku. Můžete zadat libovolnou [podporovanou verzi Kubernetes][supported-versions].
+Začněte tím, že vytvoříte cluster AKS s jedním fondem uzlů. Následující příklad používá příkaz [AZ Group Create][az-group-create] k vytvoření skupiny prostředků s názvem *myResourceGroup* v oblasti *eastus* . Pomocí příkazu [AZ AKS Create][az-aks-create] se pak vytvoří cluster AKS s názvem *myAKSCluster* .
 
 > [!NOTE]
 > SKU nástroje Load Balancer úrovně *Basic* není při použití více fondů uzlů **podporována** . Ve výchozím nastavení se clustery AKS s využitím služby Load Balancer *úrovně Standard* (SKU) z Azure CLI a Azure Portal.
@@ -58,7 +58,6 @@ az aks create \
     --vm-set-type VirtualMachineScaleSets \
     --node-count 2 \
     --generate-ssh-keys \
-    --kubernetes-version 1.15.7 \
     --load-balancer-sku standard
 ```
 
@@ -82,8 +81,7 @@ az aks nodepool add \
     --resource-group myResourceGroup \
     --cluster-name myAKSCluster \
     --name mynodepool \
-    --node-count 3 \
-    --kubernetes-version 1.15.5
+    --node-count 3
 ```
 
 > [!NOTE]
@@ -104,7 +102,7 @@ Následující příklad výstupu ukazuje, že *mynodepool* byl úspěšně vytv
     "count": 3,
     ...
     "name": "mynodepool",
-    "orchestratorVersion": "1.15.5",
+    "orchestratorVersion": "1.15.7",
     ...
     "vmSize": "Standard_DS2_v2",
     ...
@@ -144,7 +142,6 @@ az aks nodepool add \
     --cluster-name myAKSCluster \
     --name mynodepool \
     --node-count 3 \
-    --kubernetes-version 1.15.5
     --vnet-subnet-id <YOUR_SUBNET_RESOURCE_ID>
 ```
 
@@ -153,25 +150,29 @@ az aks nodepool add \
 > [!NOTE]
 > Operace upgradu a škálování na clusteru nebo ve fondu uzlů se nemůžou vyskytovat současně, pokud se k chybě vrátí. Místo toho musí být každý typ operace dokončen u cílového prostředku před dalším požadavkem na stejný prostředek. Další informace najdete v našem [Průvodci odstraňováním potíží](https://aka.ms/aks-pending-upgrade).
 
-V případě, že byl cluster AKS původně vytvořen v prvním kroku, `--kubernetes-version` byl zadán parametr *1.15.7* . Tím se nastaví verze Kubernetes pro rovinu ovládacího prvku i pro výchozí fond uzlů. Příkazy v této části vysvětlují, jak upgradovat jeden konkrétní fond uzlů.
-
-Vztah mezi upgradem verze Kubernetes roviny ovládacího prvku a fondem uzlů je vysvětlen v [níže uvedené části](#upgrade-a-cluster-control-plane-with-multiple-node-pools).
+Příkazy v této části vysvětlují, jak upgradovat jeden konkrétní fond uzlů. Vztah mezi upgradem verze Kubernetes roviny ovládacího prvku a fondem uzlů je vysvětlen v [níže uvedené části](#upgrade-a-cluster-control-plane-with-multiple-node-pools).
 
 > [!NOTE]
 > Verze bitové kopie operačního systému fondu uzlů je svázána s verzí Kubernetes clusteru. Po upgradu clusteru budete dostávat jenom upgrady imagí operačního systému.
 
-Vzhledem k tomu, že v tomto příkladu existují dva fondy uzlů, je pro upgrade fondu uzlů nutné použít příkaz [AZ AKS nodepool upgrade][az-aks-nodepool-upgrade] . Pojďme upgradovat *mynodepool* na Kubernetes *1.15.7*. Pomocí příkazu [AZ AKS nodepool upgrade][az-aks-nodepool-upgrade] provedete upgrade fondu uzlů, jak je znázorněno v následujícím příkladu:
+Vzhledem k tomu, že v tomto příkladu existují dva fondy uzlů, je pro upgrade fondu uzlů nutné použít příkaz [AZ AKS nodepool upgrade][az-aks-nodepool-upgrade] . Pokud chcete zobrazit dostupné upgrady, použijte [příkaz AZ AKS Get-Upgrades][az-aks-get-upgrades] .
+
+```azurecli-interactive
+az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
+```
+
+Pojďme upgradovat na *mynodepool*. Pomocí příkazu [AZ AKS nodepool upgrade][az-aks-nodepool-upgrade] provedete upgrade fondu uzlů, jak je znázorněno v následujícím příkladu:
 
 ```azurecli-interactive
 az aks nodepool upgrade \
     --resource-group myResourceGroup \
     --cluster-name myAKSCluster \
     --name mynodepool \
-    --kubernetes-version 1.15.7 \
+    --kubernetes-version KUBERNETES_VERSION \
     --no-wait
 ```
 
-Seznam stavů fondů uzlů znovu vypište pomocí příkazu [AZ AKS Node Pool list][az-aks-nodepool-list] . Následující příklad ukazuje, že *mynodepool* je ve stavu *upgradu* na *1.15.7*:
+Seznam stavů fondů uzlů znovu vypište pomocí příkazu [AZ AKS Node Pool list][az-aks-nodepool-list] . Následující příklad ukazuje, že *mynodepool* je ve stavu *upgradu* na *KUBERNETES_VERSION*:
 
 ```azurecli
 az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -184,7 +185,7 @@ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
     "count": 3,
     ...
     "name": "mynodepool",
-    "orchestratorVersion": "1.15.7",
+    "orchestratorVersion": "KUBERNETES_VERSION",
     ...
     "provisioningState": "Upgrading",
     ...
@@ -824,6 +825,7 @@ Informace o vytváření a používání fondů uzlů kontejnerů Windows server
 [aks-windows]: windows-container-cli.md
 [az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [az-aks-create]: /cli/azure/aks#az-aks-create
+[az-aks-get-upgrades]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-upgrades
 [az-aks-nodepool-add]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-add
 [az-aks-nodepool-list]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-list
 [az-aks-nodepool-update]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-update

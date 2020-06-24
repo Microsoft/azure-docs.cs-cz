@@ -16,12 +16,12 @@ ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3636b88b14cf7e76e4fb023434316e7ee31ded04
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d2d8117e00b5da47dd489983f5fe1494cf814e07
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71336826"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84886150"
 ---
 # <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Azure AD Connect: když máte stávajícího tenanta
 Většina témat pro použití Azure AD Connect předpokládá, že začnete s novým tenant Azure AD a neexistují žádní uživatelé ani jiné objekty. Ale pokud jste spustili klienta Azure AD, naplnili ho uživateli a dalšími objekty a teď chcete použít připojit, bude toto téma pro vás.
@@ -34,7 +34,7 @@ Můžete spravovat některé uživatele místně i v cloudu. Běžným scénář
 Pokud jste začali spravovat uživatele ve službě Azure AD, které jsou také v místní službě AD a později chcete použít možnost připojit, je potřeba vzít v úvahu ještě nějaké další aspekty.
 
 ## <a name="sync-with-existing-users-in-azure-ad"></a>Synchronizace se stávajícími uživateli v Azure AD
-Když nainstalujete Azure AD Connect a začnete synchronizovat, služba synchronizace Azure AD (v Azure AD) provede kontrolu každého nového objektu a pokusí se najít existující objekt, který se má shodovat. Pro tento proces se používají tři atributy: **userPrincipalName**, **proxyAddresses**a **sourceAnchor**/**immutableID**. Shoda v atributech **userPrincipalName** a **proxyAddresses** se označuje jako **příčasná shoda**. Shoda na **sourceAnchor** se označuje jako **těžká shoda**. Pro atribut **proxyAddresses** se pro vyhodnocení používá jenom hodnota s **SMTP:**, která je primární e-mailová adresa.
+Když nainstalujete Azure AD Connect a začnete synchronizovat, služba synchronizace Azure AD (v Azure AD) provede kontrolu každého nového objektu a pokusí se najít existující objekt, který se má shodovat. Pro tento proces se používají tři atributy: **userPrincipalName**, **proxyAddresses**a **sourceAnchor** / **immutableID**. Shoda v atributech **userPrincipalName** a **proxyAddresses** se označuje jako **příčasná shoda**. Shoda na **sourceAnchor** se označuje jako **těžká shoda**. Pro atribut **proxyAddresses** se pro vyhodnocení používá jenom hodnota s **SMTP:**, která je primární e-mailová adresa.
 
 Shoda se vyhodnocuje jenom pro nové objekty, které pocházejí z připojení. Pokud změníte existující objekt tak, aby odpovídal jakémukoli z těchto atributů, zobrazí se místo toho chyba.
 

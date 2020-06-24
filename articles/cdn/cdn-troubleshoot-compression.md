@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: aff2dadee365fcdc7e14070714aa1d2cbba901ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5c56564ee6f07c5d208ea5d3089a2c96fd8bbc33
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79476419"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888701"
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>Poradce při potížích s kompresí souborů CDN
 Tento článek vám pomůže při řešení potíží s [kompresí souborů CDN](cdn-improve-performance.md).
@@ -30,7 +30,7 @@ Pokud potřebujete další podrobnější informace v jakémkoli bodě tohoto č
 Komprese pro koncový bod je povolená, ale soubory se vrací nekomprimované.
 
 > [!TIP]
-> Chcete-li zjistit, zda jsou soubory vraceny zkomprimované, je třeba použít nástroj, jako je [Fiddler](https://www.telerik.com/fiddler) nebo [vývojářské nástroje](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)v prohlížeči.  Ověřte hlavičky odpovědí HTTP vrácené obsahem CDN uloženým v mezipaměti.  Pokud je `Content-Encoding` hlavička s názvem s hodnotou **gzip**, **bzip2**nebo **Deflate**, obsah se komprimuje.
+> Chcete-li zjistit, zda jsou soubory vraceny zkomprimované, je třeba použít nástroj, jako je [Fiddler](https://www.telerik.com/fiddler) nebo [vývojářské nástroje](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)v prohlížeči.  Ověřte hlavičky odpovědí HTTP vrácené obsahem CDN uloženým v mezipaměti.  Pokud je hlavička s názvem `Content-Encoding` s hodnotou **gzip**, **bzip2**nebo **Deflate**, obsah se komprimuje.
 > 
 > ![Hlavička Content-Encoding](./media/cdn-troubleshoot-compression/cdn-content-header.png)
 > 
@@ -53,7 +53,7 @@ Existuje několik možných příčin, mezi které patří:
 ### <a name="verify-the-request"></a>Ověření žádosti
 Nejdřív byste měli provést rychlou správnosti kontrolu na žádosti.  Pomocí [vývojářských nástrojů](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/) v prohlížeči můžete zobrazit požadavky, které se provedou.
 
-* Ověřte, že se požadavek posílá na adresu URL vašeho koncového bodu, `<endpointname>.azureedge.net`a ne na váš původ.
+* Ověřte, že se požadavek posílá na adresu URL vašeho koncového bodu, `<endpointname>.azureedge.net` a ne na váš původ.
 * Ověřte, že požadavek obsahuje hlavičku **Accept-Encoding** a že hodnota pro tuto hlavičku obsahuje **gzip**, **Deflate**nebo **bzip2**.
 
 > [!NOTE]

@@ -4,17 +4,17 @@ description: P2S VPN můžete použít pro připojení k virtuální síti pomoc
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/07/2020
 ms.author: alzam
-ms.openlocfilehash: 7bc28a03476e773325d14808e1c7ac99103b2d5d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b16ee1e55d0b3fa22f348c10d0dd7bfb06ec500c
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80879441"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987723"
 ---
-# <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>Konfigurace klienta VPN pro připojení protokolu P2S OpenVPN: ověřování Azure AD
+# <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>Konfigurace klienta VPN pro připojení typu point-to-site přes protokol OpenVPN: Ověřování Azure AD
 
 Tento článek vám pomůže nakonfigurovat klienta VPN pro připojení k virtuální síti pomocí sítě VPN typu Point-to-site a ověřování Azure Active Directory. Než se budete moct připojit a ověřit pomocí Azure AD, musíte nejdřív nakonfigurovat tenanta Azure AD. Další informace najdete v tématu [Konfigurace tenanta Azure AD](openvpn-azure-ad-tenant.md).
 
@@ -158,7 +158,7 @@ Tyto kroky vám pomůžou nakonfigurovat připojení pro automatické připojen�
 
 ### <a name="how-do-i-add-dns-suffixes-to-the-vpn-client"></a>Návody přidat do klienta VPN přípony DNS?
 
-Můžete upravit stažený soubor XML profilu a přidat ** \<dnssuffixes>\<dnssufix> \</dnssufix>\</dnssuffixes>** značky.
+Můžete upravit stažený soubor XML profilu a přidat ** \<dnssuffixes> \<dnssufix> \</dnssufix> \</dnssuffixes> ** značky.
 
 ```
 <azvpnprofile>
@@ -176,7 +176,7 @@ Můžete upravit stažený soubor XML profilu a přidat ** \<dnssuffixes>\<dnssu
 
 ### <a name="how-do-i-add-custom-dns-servers-to-the-vpn-client"></a>Návody do klienta VPN přidat vlastní servery DNS?
 
-Můžete upravit stažený soubor XML profilu a přidat ** \<dnsservers>\<serveru DNS> \</DNSServer>\</dnsservers>** značky.
+Můžete upravit stažený soubor XML profilu a přidat ** \<dnsservers> \<dnsserver> \</dnsserver> \</dnsservers> ** značky.
 
 ```
 <azvpnprofile>
@@ -192,12 +192,12 @@ Můžete upravit stažený soubor XML profilu a přidat ** \<dnsservers>\<server
 ```
 
 > [!NOTE]
-> Klient služby Azure AD OpenVPN využívá položky tabulky zásad překladu názvů DNS (NRPT), což znamená, že servery DNS nebudou uvedené ve výstupu `ipconfig /all`. Pokud chcete potvrdit nastavení používané v rámci služby DNS, podívejte se prosím do rutiny [Get-DnsClientNrptPolicy](https://docs.microsoft.com/powershell/module/dnsclient/get-dnsclientnrptpolicy?view=win10-ps) v PowerShellu.
+> Klient služby Azure AD OpenVPN využívá položky tabulky zásad překladu názvů DNS (NRPT), což znamená, že servery DNS nebudou uvedené ve výstupu `ipconfig /all` . Pokud chcete potvrdit nastavení používané v rámci služby DNS, podívejte se prosím do rutiny [Get-DnsClientNrptPolicy](https://docs.microsoft.com/powershell/module/dnsclient/get-dnsclientnrptpolicy?view=win10-ps) v PowerShellu.
 >
 
 ### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>Návody přidat vlastní trasy k klientovi VPN?
 
-Můžete upravit stažený soubor XML profilu a přidat ** \<includeroutes>\<trasu>\<cílovou>\<masku> \</Destination>\</Mask>\</Route>\</includeroutes>** Tags
+Můžete upravit stažený soubor XML profilu a přidat ** \<includeroutes> \<route> \<destination> \<mask> \</destination> \</mask> \</route> \</includeroutes> ** značky.
 
 ```
 <azvpnprofile>
@@ -215,7 +215,7 @@ Můžete upravit stažený soubor XML profilu a přidat ** \<includeroutes>\<tra
 
 ### <a name="how-do-i-block-exclude-routes-from-the-vpn-client"></a>Návody (vyloučit) trasy blokování z klienta VPN?
 
-Můžete upravit stažený soubor XML profilu a přidat ** \<excluderoutes>\<trasu>\<cílovou>\<masku> \</Destination>\</Mask>\</Route>\</excluderoutes>** Tags
+Můžete upravit stažený soubor XML profilu a přidat ** \<excluderoutes> \<route> \<destination> \<mask> \</destination> \</mask> \</route> \</excluderoutes> ** značky.
 
 ```
 <azvpnprofile>
@@ -233,7 +233,7 @@ Můžete upravit stažený soubor XML profilu a přidat ** \<excluderoutes>\<tra
 
 ### <a name="can-i-import-the-profile-from-a-command-line-prompt"></a>Můžu importovat profil z příkazového řádku?
 
-Profil můžete importovat z příkazového řádku tak, že umístíte stažený soubor **azurevpnconfig. XML** do složky **%USERPROFILE%\appdata\local\packages\microsoft. AzureVpn_8wekyb3d8bbwe \localstate** a spustíte následující příkaz:
+Profil můžete importovat z příkazového řádku tak, že do složky **%userprofile%\appdata\local\packages\microsoft. AzureVpn_8wekyb3d8bbwe \localstate** umístíte stažený soubor **azurevpnconfig.xml** a spustíte následující příkaz:
 
 ```
 azurevpn -i azurevpnconfig.xml 

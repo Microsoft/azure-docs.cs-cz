@@ -5,21 +5,21 @@ ms.topic: conceptual
 ms.date: 05/14/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 9c292246f947e4d3a364f79b31fe7a1deebd33d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79275695"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84691947"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Kanály telemetrie v Application Insights
 
-Kanály telemetrie jsou nedílnou součástí [sad Azure Application Insights SDK](../../azure-monitor/app/app-insights-overview.md). Spravují ukládání do vyrovnávací paměti a přenos telemetrie do služby Application Insights. Verze sady SDK pro .NET a .NET Core mají dva vestavěné kanály telemetrie: `InMemoryChannel` a. `ServerTelemetryChannel` Tento článek podrobně popisuje jednotlivé kanály, včetně postupu přizpůsobení chování kanálu.
+Kanály telemetrie jsou nedílnou součástí [sad Azure Application Insights SDK](../../azure-monitor/app/app-insights-overview.md). Spravují ukládání do vyrovnávací paměti a přenos telemetrie do služby Application Insights. Verze sady SDK pro .NET a .NET Core mají dva vestavěné kanály telemetrie: `InMemoryChannel` a `ServerTelemetryChannel` . Tento článek podrobně popisuje jednotlivé kanály, včetně postupu přizpůsobení chování kanálu.
 
 ## <a name="what-are-telemetry-channels"></a>Co jsou kanály telemetrie?
 
 Kanály telemetrie jsou zodpovědné za ukládání položek telemetrie do vyrovnávací paměti a jejich posílání do služby Application Insights, kde jsou uložené pro dotazování a analýzu. Kanál telemetrie je libovolná třída, která implementuje [`Microsoft.ApplicationInsights.ITelemetryChannel`](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.channel.itelemetrychannel?view=azure-dotnet) rozhraní.
 
-`Send(ITelemetry item)` Metoda kanálu telemetrie se volá po volání všech inicializátorů telemetrie a procesorů telemetrie. Všechny položky vynechané procesorem telemetrie tak nedosáhnou kanálu. `Send()`obvykle neodesílá položky do back-endu okamžitě. Obvykle je ukládá do vyrovnávací paměti a odesílá je v dávkách za účelem efektivního přenosu.
+`Send(ITelemetry item)`Metoda kanálu telemetrie se volá po volání všech inicializátorů telemetrie a procesorů telemetrie. Všechny položky vynechané procesorem telemetrie tak nedosáhnou kanálu. `Send()`obvykle neodesílá položky do back-endu okamžitě. Obvykle je ukládá do vyrovnávací paměti a odesílá je v dávkách za účelem efektivního přenosu.
 
 [Live Metrics Stream](live-stream.md) má také vlastní kanál, který využívá živé streamování telemetrie. Tento kanál je nezávislý na běžném kanálu telemetrie a tento dokument se na něj nevztahuje.
 
@@ -31,19 +31,19 @@ Sady SDK Application Insights .NET a .NET Core jsou dodávány se dvěma integro
 
     Tento kanál je součástí většího balíčku NuGet Microsoft. ApplicationInsights a je výchozím kanálem, který sada SDK používá, když nic jiného není nakonfigurované.
 
-* `ServerTelemetryChannel`: Pokročilejší kanál, který má zásady opakování a možnost ukládat data na místní disk. Tento kanál pokusy o odeslání telemetrie, pokud dojde k přechodným chybám. Tento kanál taky využívá úložiště na místním disku k udržení položek na disku během výpadků sítě nebo svazků s vysokými telemetriemi. Z důvodu těchto mechanismů opakování a místního diskového úložiště se tento kanál považuje za spolehlivější a doporučuje se pro všechny produkční scénáře. Tento kanál je výchozím nastavením pro [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) a [ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) aplikace, které jsou nakonfigurované podle oficiální dokumentace. Tento kanál je optimalizovaný pro scénáře serveru s dlouhotrvajícími procesy. [`Flush()`](#which-channel-should-i-use) Metoda, která je implementovaná tímto kanálem, není synchronní.
+* `ServerTelemetryChannel`: Pokročilejší kanál, který má zásady opakování a možnost ukládat data na místní disk. Tento kanál pokusy o odeslání telemetrie, pokud dojde k přechodným chybám. Tento kanál taky využívá úložiště na místním disku k udržení položek na disku během výpadků sítě nebo svazků s vysokými telemetriemi. Z důvodu těchto mechanismů opakování a místního diskového úložiště se tento kanál považuje za spolehlivější a doporučuje se pro všechny produkční scénáře. Tento kanál je výchozím nastavením pro [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) a [ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) aplikace, které jsou nakonfigurované podle oficiální dokumentace. Tento kanál je optimalizovaný pro scénáře serveru s dlouhotrvajícími procesy. [`Flush()`](#which-channel-should-i-use)Metoda, která je implementovaná tímto kanálem, není synchronní.
 
     Tento kanál se dodává jako balíček NuGet Microsoft. ApplicationInsights. WindowsServer. TelemetryChannel a automaticky se získá, když použijete balíček NuGet Microsoft. ApplicationInsights. Web nebo Microsoft. ApplicationInsights. AspNetCore.
 
 ## <a name="configure-a-telemetry-channel"></a>Konfigurace kanálu telemetrie
 
-Kanál telemetrie nakonfigurujete nastavením na aktivní konfiguraci telemetrie. V případě aplikací ASP.NET zahrnuje konfigurace nastavení instance kanálu telemetrie na `TelemetryConfiguration.Active`nebo úpravou. `ApplicationInsights.config` Pro ASP.NET Core aplikace konfigurace zahrnuje přidání kanálu do kontejneru vkládání závislostí.
+Kanál telemetrie nakonfigurujete nastavením na aktivní konfiguraci telemetrie. V případě aplikací ASP.NET zahrnuje konfigurace nastavení instance kanálu telemetrie na `TelemetryConfiguration.Active` nebo úpravou `ApplicationInsights.config` . Pro ASP.NET Core aplikace konfigurace zahrnuje přidání kanálu do kontejneru vkládání závislostí.
 
-V následujících částech jsou uvedeny příklady konfigurace `StorageFolder` nastavení kanálu v různých typech aplikací. `StorageFolder`je pouze jedním z konfigurovatelných nastavení. Úplný seznam nastavení konfigurace najdete v [části nastavení](telemetry-channels.md#configurable-settings-in-channels) dále v tomto článku.
+V následujících částech jsou uvedeny příklady konfigurace `StorageFolder` Nastavení kanálu v různých typech aplikací. `StorageFolder`je pouze jedním z konfigurovatelných nastavení. Úplný seznam nastavení konfigurace najdete v [části nastavení](telemetry-channels.md#configurable-settings-in-channels) dále v tomto článku.
 
-### <a name="configuration-by-using-applicationinsightsconfig-for-aspnet-applications"></a>Konfigurace pomocí ApplicationInsights. config pro aplikace ASP.NET
+### <a name="configuration-by-using-applicationinsightsconfig-for-aspnet-applications"></a>Konfigurace pomocí ApplicationInsights.config pro aplikace ASP.NET
 
-V následující části [souboru ApplicationInsights. config](configuration-with-applicationinsights-config.md) se zobrazuje `ServerTelemetryChannel` kanál nakonfigurovaný s `StorageFolder` nastavením na vlastní umístění:
+V následující části [ApplicationInsights.config](configuration-with-applicationinsights-config.md) se zobrazuje `ServerTelemetryChannel` kanál nakonfigurovaný s `StorageFolder` nastavením na vlastní umístění:
 
 ```xml
     <TelemetrySinks>
@@ -76,7 +76,7 @@ protected void Application_Start()
 
 ### <a name="configuration-in-code-for-aspnet-core-applications"></a>Konfigurace v kódu pro aplikace ASP.NET Core
 
-Upravte `ConfigureServices` metodu třídy, jak `Startup.cs` je znázorněno zde:
+Upravte `ConfigureServices` metodu `Startup.cs` třídy, jak je znázorněno zde:
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
@@ -110,7 +110,7 @@ TelemetryConfiguration.Active.TelemetryChannel = serverTelemetryChannel;
 
 `ServerTelemetryChannel`ukládá položky přicházející do vyrovnávací paměti. Položky jsou serializovány, komprimovány a uloženy do `Transmission` instance jednou za 30 sekund, nebo když byly položky 500 uloženy do vyrovnávací paměti. Jedna `Transmission` instance obsahuje až 500 položek a představuje dávku telemetrie, která se pošle přes jedno volání https do služby Application Insights.
 
-Ve výchozím nastavení lze současně odeslat maximálně `Transmission` 10 instancí. Pokud se telemetrie dorazí za rychlejší, nebo pokud je síť nebo Application Insights back-end pomalé, `Transmission` instance se ukládají do paměti. Výchozí kapacita této `Transmission` vyrovnávací paměti je 5 MB. Po překročení kapacity v paměti se `Transmission` instance ukládají na místní disk až do limitu 50 MB. `Transmission`instance se ukládají na místní disk, i když dojde k problémům se sítí. Pouze ty položky, které jsou uloženy na místním disku, budou mít při selhání aplikace. Odesílají se při každém spuštění aplikace.
+Ve výchozím nastavení `Transmission` lze současně odeslat maximálně 10 instancí. Pokud se telemetrie dorazí za rychlejší, nebo pokud je síť nebo Application Insights back-end pomalé, `Transmission` instance se ukládají do paměti. Výchozí kapacita této `Transmission` vyrovnávací paměti je 5 MB. Po překročení kapacity v paměti se `Transmission` instance ukládají na místní disk až do limitu 50 MB. `Transmission`instance se ukládají na místní disk, i když dojde k problémům se sítí. Pouze ty položky, které jsou uloženy na místním disku, budou mít při selhání aplikace. Odesílají se při každém spuštění aplikace.
 
 ## <a name="configurable-settings-in-channels"></a>Konfigurovatelná nastavení v kanálech
 
@@ -120,7 +120,7 @@ Ve výchozím nastavení lze současně odeslat maximálně `Transmission` 10 in
 
 * [ServerTelemetryChannel](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/BASE/src/ServerTelemetryChannel/ServerTelemetryChannel.cs)
 
-Tady jsou nejčastěji používaná nastavení pro `ServerTelemetryChannel`:
+Tady jsou nejčastěji používaná nastavení pro `ServerTelemetryChannel` :
 
 1. `MaxTransmissionBufferCapacity`: Maximální množství paměti (v bajtech), které kanál používá pro přenos vyrovnávací paměti v paměti. Po dosažení této kapacity se nové položky ukládají přímo na místní disk. Výchozí hodnota je 5 MB. Nastavení vyšší hodnoty vede k menšímu využití disku, ale mějte na paměti, že pokud dojde k chybě aplikace, ztratí se položky v paměti.
 
@@ -130,9 +130,9 @@ Tady jsou nejčastěji používaná nastavení pro `ServerTelemetryChannel`:
 
 ## <a name="which-channel-should-i-use"></a>Který kanál mám použít?
 
-`ServerTelemetryChannel`se doporučuje pro většinu produkčních scénářů, které zahrnují dlouhotrvající aplikace. `Flush()` Metoda implementovaná `ServerTelemetryChannel` není synchronní a zároveň nezaručuje posílání všech položek, které čekají na vyřízení z paměti nebo disku. Pokud použijete tento kanál ve scénářích, kdy se má aplikace vypnout, doporučujeme, abyste po volání `Flush()`zavedli nějaké zpoždění. Přesné množství prodlevy, které možná budete potřebovat, není předvídatelné. Závisí na faktorech, jako je počet položek `Transmission` nebo instancí v paměti, kolik je na disku, kolik se přenáší do back-endu a zda je kanál uprostřed exponenciálních scénářů regrese.
+`ServerTelemetryChannel`se doporučuje pro většinu produkčních scénářů, které zahrnují dlouhotrvající aplikace. `Flush()`Metoda implementovaná `ServerTelemetryChannel` není synchronní a zároveň nezaručuje posílání všech položek, které čekají na vyřízení z paměti nebo disku. Pokud použijete tento kanál ve scénářích, kdy se má aplikace vypnout, doporučujeme, abyste po volání zavedli nějaké zpoždění `Flush()` . Přesné množství prodlevy, které možná budete potřebovat, není předvídatelné. Závisí na faktorech, jako je počet položek nebo `Transmission` instancí v paměti, kolik je na disku, kolik se přenáší do back-endu a zda je kanál uprostřed exponenciálních scénářů regrese.
 
-Pokud potřebujete provést synchronní vyprázdnění, doporučujeme použít `InMemoryChannel`.
+Pokud potřebujete provést synchronní vyprázdnění, doporučujeme použít `InMemoryChannel` .
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 

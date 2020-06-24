@@ -3,15 +3,15 @@ title: Zápis uložených procedur, triggerů a UDF v Azure Cosmos DB
 description: Naučte se definovat uložené procedury, triggery a uživatelsky definované funkce v Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 05/07/2020
+ms.topic: how-to
+ms.date: 06/16/2020
 ms.author: tisande
-ms.openlocfilehash: 3c0ac8ac419b3cdd2b154974d3ccbcce6896e847
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: e9ebd8de956437273246d08821fc87838089a256
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982288"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262867"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Postup zápisu uložených procedur, triggerů a uživatelsky definovaných funkcí v Azure Cosmos DB
 
@@ -52,21 +52,42 @@ Když vytvoříte položku pomocí uložené procedury, položka se vloží do k
 
 Uložená procedura také obsahuje parametr pro nastavení popisu, jedná se o logickou hodnotu. Pokud je parametr nastaven na hodnotu true a popis chybí, uložená procedura vyvolá výjimku. V opačném případě bude zbývající uložená procedura nadále běžet.
 
-Následující Ukázková procedura používá jako vstup novou položku Azure Cosmos, vloží ji do kontejneru Azure Cosmos a vrátí ID nově vytvořené položky. V tomto příkladu používáme ukázku ToDoList z rychlého startu rozhraní [SQL API pro rychlé](create-sql-api-dotnet.md) zprovoznění.
+Následující příklad uložená procedura převezme pole nových položek Azure Cosmos jako vstup, vloží ho do kontejneru Azure Cosmos a vrátí počet vložených položek. V tomto příkladu používáme ukázku ToDoList z rychlého startu rozhraní [SQL API pro rychlé](create-sql-api-dotnet.md) zprovoznění.
 
 ```javascript
-function createToDoItem(itemToCreate) {
+function createToDoItems(items) {
+    var collection = getContext().getCollection();
+    var collectionLink = collection.getSelfLink();
+    var count = 0;
 
-    var context = getContext();
-    var container = context.getCollection();
+    if (!items) throw new Error("The array is undefined or null.");
 
-    var accepted = container.createDocument(container.getSelfLink(),
-        itemToCreate,
-        function (err, itemCreated) {
-            if (err) throw new Error('Error' + err.message);
-            context.getResponse().setBody(itemCreated.id)
-        });
-    if (!accepted) return;
+    var numItems = items.length;
+
+    if (numItems == 0) {
+        getContext().getResponse().setBody(0);
+        return;
+    }
+
+    tryCreate(items[count], callback);
+
+    function tryCreate(item, callback) {
+        var options = { disableAutomaticIdGeneration: false };
+
+        var isAccepted = collection.createDocument(collectionLink, item, options, callback);
+
+        if (!isAccepted) getContext().getResponse().setBody(count);
+    }
+
+    function callback(err, item, options) {
+        if (err) throw err;
+        count++;
+        if (count >= numItems) {
+            getContext().getResponse().setBody(count);
+        } else {
+            tryCreate(items[count], callback);
+        }
+    }
 }
 ```
 
@@ -262,7 +283,7 @@ function async_sample() {
 
 Azure Cosmos DB podporuje před triggery a po triggerech. Před změnou položky databáze se spustí předběžné triggery před úpravou položky databáze a následnými triggery.
 
-### <a name="pre-triggers"></a><a id="pre-triggers"></a>Triggery před akcí
+### <a name="pre-triggers"></a><a id="pre-triggers"></a>Předběžné triggery
 
 Následující příklad ukazuje, jak se používá předaktivační událost k ověření vlastností položky Azure Cosmos, která se vytváří. V tomto příkladu používáme ukázku ToDoList z rozhraní [SQL API pro rychlé](create-sql-api-dotnet.md)zprovoznění, abyste přidali vlastnost časového razítka k nově přidané položce, pokud neobsahuje jednu.
 
@@ -291,7 +312,7 @@ Pokud jsou triggery registrovány, můžete zadat operace, se kterými může b�
 
 Příklady, jak registrovat a volat předběžnou aktivační událost, najdete v článcích [před triggerem](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) a [po triggerech](how-to-use-stored-procedures-triggers-udfs.md#post-triggers) . 
 
-### <a name="post-triggers"></a><a id="post-triggers"></a>Triggery po akci
+### <a name="post-triggers"></a><a id="post-triggers"></a>Po triggerech
 
 Následující příklad ukazuje po triggeru. Tato aktivační událost se dotazuje na položku metadat a aktualizuje ji s podrobnostmi o nově vytvořené položce.
 
@@ -364,7 +385,7 @@ function tax(income) {
 
 Příklady, jak registrovat a používat uživatelsky definovanou funkci, najdete [v tématu použití uživatelsky definovaných funkcí v Azure Cosmos DB](how-to-use-stored-procedures-triggers-udfs.md#udfs) článku.
 
-## <a name="logging"></a>Protokolování 
+## <a name="logging"></a>protokolování 
 
 Při použití uložené procedury, triggerů nebo uživatelsky definovaných funkcí můžete pomocí příkazu zaprotokolovat kroky `console.log()` . Tento příkaz zachová řetězec pro ladění, pokud `EnableScriptLogging` je nastaven na hodnotu true, jak je znázorněno v následujícím příkladu:
 

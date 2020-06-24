@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.subservice: ''
-ms.openlocfilehash: 95345ba864d498190186e1a366c8551be97c33f5
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 47c504d9359779294c4690059d1958614d863e58
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299632"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85260878"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Použití privátního odkazu Azure k bezpečnému připojení sítí k Azure Monitor
 
@@ -229,6 +229,10 @@ Pokud chcete, aby mohl agent Log Analytics stahovat balíčky řešení, přidej
 |Veřejný partnerský vztah Azure     | scadvisor.blob.core.windows.net         | 443 | Odchozí
 |Azure Government | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  Odchozí
 |Azure (Čína) 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Odchozí
+
+### <a name="browser-dns-settings"></a>Nastavení DNS prohlížeče
+
+Pokud se připojujete k prostředkům Azure Monitor prostřednictvím privátního propojení, musí provoz na tento prostředek projít privátním koncovým bodem, který je ve vaší síti nakonfigurovaný. Pokud chcete povolit privátní koncový bod, aktualizujte nastavení DNS tak, jak je vysvětleno v tématu [připojení k privátnímu koncovému bodu](#connect-to-a-private-endpoint). Některé prohlížeče používají vlastní nastavení DNS místo těch, která jste nastavili. Prohlížeč se může pokusit připojit k Azure Monitor veřejných koncových bodů a obejít zcela soukromý odkaz. Ověřte, že nastavení prohlížeče nepřepisuje ani neukládá do mezipaměti staré nastavení DNS. 
 
 ## <a name="next-steps"></a>Další kroky
 

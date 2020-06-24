@@ -10,17 +10,17 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/16/2019
 ms.author: genli
-ms.openlocfilehash: 941b6ac86941824351f83592998e8735e3eb8ee5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8c439113907c2eb28c41aed3c21c1d27398d5207
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75780364"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987077"
 ---
 # <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>Integrujte ověřování RADIUS brány Azure VPN Gateway se serverem NPS pro Multi-Factor Authentication 
 
@@ -65,13 +65,13 @@ Aby bylo možné vícefaktorové ověřování povolit, musí být uživatelé v
 
     ![Obrázek o rozšířených nastaveních klienta RADIUS](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client2.png)
 
-4. Přejděte na **zásady** > **sítě**zásady, dvakrát klikněte na **připojení k zásadě serveru Microsoft Routing and Remote Access** , vyberte **udělit přístup**a pak klikněte na **OK**.
+4. Přejděte na **zásady**  >  **sítě**zásady, dvakrát klikněte na **připojení k zásadě serveru Microsoft Routing and Remote Access** , vyberte **udělit přístup**a pak klikněte na **OK**.
 
 ### <a name="step-3-configure-the-virtual-network-gateway"></a>Krok 3 konfigurace brány virtuální sítě
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com).
 2. Otevřete bránu virtuální sítě, kterou jste vytvořili. Ujistěte se, že typ brány je nastavený na **VPN** a že je typ sítě VPN **založený na směrování**.
-3. Klikněte na položku > **nastavit** **konfiguraci lokality**nyní a potom zadejte následující nastavení:
+3. Klikněte na položku nastavit **konfiguraci lokality**  >  **nyní**a potom zadejte následující nastavení:
 
     - **Fond adres**: zadejte podsíť brány, kterou jste vytvořili v kroku 1.
     - **Typ ověřování**: vyberte **ověřování RADIUS**.

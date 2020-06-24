@@ -6,21 +6,21 @@ author: luisbosquez
 manager: kfile
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/27/2019
 ms.author: lbosq
-ms.openlocfilehash: 5705ef4fb6aa895009d554617c968543cc3fcd63
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: faacaf6700b14ba068d5cf0a48ea851f562e2302
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75441856"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261796"
 ---
 # <a name="how-to-use-the-execution-profile-step-to-evaluate-your-gremlin-queries"></a>Vyhodnocování dotazů Gremlin s využitím kroku profilu spuštění
 
 Tento článek obsahuje přehled použití kroku profilu spuštění pro grafové databáze rozhraní Gremlin API služby Azure Cosmos DB. Tento krok poskytuje relevantní informace pro účely řešení potíží a optimalizace dotazů a je kompatibilní se všemi dotazy Gremlin, které je možné spustit pro účet rozhraní Gremlin API služby Cosmos DB.
 
-Chcete-li použít tento krok, stačí `executionProfile()` na konci dotazu Gremlin připojit volání funkce. **Dotaz Gremlin se** spustí a výsledek operace vrátí objekt odpovědi JSON s profilem spuštění dotazu.
+Chcete-li použít tento krok, stačí na `executionProfile()` konci dotazu Gremlin připojit volání funkce. **Dotaz Gremlin se** spustí a výsledek operace vrátí objekt odpovědi JSON s profilem spuštění dotazu.
 
 Příklad:
 
@@ -134,7 +134,7 @@ V následujícím příkladu je zobrazený příklad výstupu s poznámkami, kte
 ```
 
 > [!NOTE]
-> Krok executionProfile spustí dotaz Gremlin. To zahrnuje kroky `addV` nebo `addE`, které budou mít za následek vytvoření a budou potvrzovat změny zadané v dotazu. V důsledku toho budou také účtovány jednotky žádostí vygenerované dotazem Gremlin.
+> Krok executionProfile spustí dotaz Gremlin. To zahrnuje `addV` kroky nebo `addE` , které budou mít za následek vytvoření a budou potvrzovat změny zadané v dotazu. V důsledku toho budou také účtovány jednotky žádostí vygenerované dotazem Gremlin.
 
 ## <a name="execution-profile-response-objects"></a>Objekty odezvy profilu spuštění
 
@@ -149,19 +149,19 @@ Odezva funkce executionProfile () bude vracet hierarchii objektů JSON s násled
     - `time`: Množství času v milisekundách, které daný operátor trval.
     - `annotations`: Obsahuje další informace, které jsou specifické pro operátor, který byl proveden.
     - `annotations.percentTime`: Procento celkové doby, kterou trvalo spuštění konkrétního operátoru.
-    - `counts`: Počet objektů vrácených z vrstvy úložiště tímto operátorem. Tato hodnota je obsažena `counts.resultCount` v skalární hodnotě v rámci.
+    - `counts`: Počet objektů vrácených z vrstvy úložiště tímto operátorem. Tato hodnota je obsažena v `counts.resultCount` skalární hodnotě v rámci.
     - `storeOps`: Představuje operaci úložiště, která může být rozložená na jeden nebo více oddílů.
     - `storeOps.fanoutFactor`: Představuje počet oddílů, které tato konkrétní operace úložiště získala.
     - `storeOps.count`: Představuje počet výsledků, které tato operace úložiště vrátila.
     - `storeOps.size`: Představuje velikost výsledku dané operace úložiště v bajtech.
 
-Cosmos DB – operátor běhu Gremlin|Popis
+Cosmos DB – operátor běhu Gremlin|Description
 ---|---
 `GetVertices`| Tento krok získá predikátové sady objektů z trvalé vrstvy. 
 `GetEdges`| Tento krok získá hrany sousedící se sadou vrcholů. Tento krok může mít za následek jednu nebo více operací úložiště.
 `GetNeighborVertices`| Tento krok získá vrcholy, které jsou propojeny se sadou hran. Okraje obsahují klíče oddílu a ID pro jejich zdrojové i cílové vrcholy.
-`Coalesce`| Tento krok se používá pro vyhodnocení dvou operací při každém spuštění `coalesce()` Gremlin kroku.
-`CartesianProductOperator`| Tento krok vypočítá kartézském produkt mezi dvěma datovými sadami. Obvykle prováděna vždy, když `to()` jsou `from()` použity predikáty nebo.
+`Coalesce`| Tento krok se používá pro vyhodnocení dvou operací při každém `coalesce()` spuštění Gremlin kroku.
+`CartesianProductOperator`| Tento krok vypočítá kartézském produkt mezi dvěma datovými sadami. Obvykle prováděna vždy, když `to()` jsou použity predikáty nebo `from()` .
 `ConstantSourceOperator`| Tento krok vypočítá výraz pro vytvoření konstantní hodnoty v důsledku.
 `ProjectOperator`| Tento krok připraví a zaserializace odpověď pomocí výsledku předchozích operací.
 `ProjectAggregation`| Tento krok připraví a serializace odpověď na agregační operaci.
@@ -219,11 +219,11 @@ Z **rozděleného grafu**Předpokládejme následující odpověď profilu spuš
 ```
 
 Z nich je možné provést následující závěry:
-- Dotaz je jednoduché vyhledávání ID, protože příkaz Gremlin se řídí vzorem `g.V('id')`.
+- Dotaz je jednoduché vyhledávání ID, protože příkaz Gremlin se řídí vzorem `g.V('id')` .
 - Z hlediska `time` metriky je latence tohoto dotazu vysoká, protože se jedná o [více než 10ms pro jednu operaci čtení z bodu](https://docs.microsoft.com/azure/cosmos-db/introduction#guaranteed-low-latency-at-99th-percentile-worldwide).
-- `storeOps` Pokud se do objektu podíváme, vidíte, `fanoutFactor` že je `5`to, což znamená, že tato operace získala [5 oddílů](https://docs.microsoft.com/azure/cosmos-db/partition-data) .
+- Pokud se do objektu podíváme, vidíte, `storeOps` že `fanoutFactor` je to `5` , což znamená, že tato operace získala [5 oddílů](https://docs.microsoft.com/azure/cosmos-db/partition-data) .
 
-V závěru této analýzy můžeme určit, že první dotaz přistupuje k více oddílům, než je potřeba. Dá se to vyřešit zadáním klíče rozdělení do dotazu jako predikátu. To bude mít za následek menší latenci a méně nákladů na dotaz. Přečtěte si další informace o [dělení grafu](graph-partitioning.md). Optimální dotaz by byl `g.V('tt0093640').has('partitionKey', 't1001')`.
+V závěru této analýzy můžeme určit, že první dotaz přistupuje k více oddílům, než je potřeba. Dá se to vyřešit zadáním klíče rozdělení do dotazu jako predikátu. To bude mít za následek menší latenci a méně nákladů na dotaz. Přečtěte si další informace o [dělení grafu](graph-partitioning.md). Optimální dotaz by byl `g.V('tt0093640').has('partitionKey', 't1001')` .
 
 ### <a name="unfiltered-query-patterns"></a>Nefiltrované vzory dotazů
 
@@ -306,7 +306,7 @@ Tento první dotaz načte všechny vrcholy s popiskem `tweet` a pak získá jeji
 ]
 ```
 
-Všimněte si, že profil stejného dotazu, ale teď s dodatečným filtrem `has('lang', 'en')`, před prozkoumáním sousedících vrcholů:
+Všimněte si, že profil stejného dotazu, ale teď s dodatečným filtrem, `has('lang', 'en')` před prozkoumáním sousedících vrcholů:
 
 ```json
 [
@@ -384,8 +384,8 @@ Všimněte si, že profil stejného dotazu, ale teď s dodatečným filtrem `has
 ```
 
 Tyto dva dotazy dosáhly stejného výsledku, ale první z nich bude vyžadovat více jednotek požadavků, protože před dotazem sousedících položek je potřeba iterovat větší počáteční datovou sadu. Indikátory tohoto chování můžeme zobrazit při porovnávání následujících parametrů z obou odpovědí:
-- `metrics[0].time` Hodnota je vyšší v první odpovědi, což znamená, že tento jeden krok trvá déle, než se vyřeší.
-- `metrics[0].counts.resultsCount` Hodnota je vyšší i v první reakci, což znamená, že počáteční pracovní datová sada byla větší.
+- `metrics[0].time`Hodnota je vyšší v první odpovědi, což znamená, že tento jeden krok trvá déle, než se vyřeší.
+- `metrics[0].counts.resultsCount`Hodnota je vyšší i v první reakci, což znamená, že počáteční pracovní datová sada byla větší.
 
 ## <a name="next-steps"></a>Další kroky
 * Přečtěte si o [podporovaných funkcích Gremlin](gremlin-support.md) v Azure Cosmos DB. 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/07/2020
 ms.author: allensu
-ms.openlocfilehash: 6deb5714a43d61f5ceb793757d49bd099f09f2b7
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 2c16c40ba7ed97f933516811432c3d4768bd0c62
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82977636"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888496"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Load Balancer úrovně Standard a zóny dostupnosti
 
@@ -50,7 +50,9 @@ Jedna IP adresa front-endu bude zachována při selhání zóny. Front-end IP ad
 
 IP adresa front-endu je souběžně obsluhována několika nezávislými nasazeními infrastruktury v několika zónách dostupnosti. Jakékoli opakované pokusy nebo opětovné vytvoření budou úspěšné v jiných zónách, které nejsou ovlivněny selháním zóny. 
 
-:::image type="content" source="./media/az-zonal/zone-redundant-lb-1.svg" alt-text="Zóna redundantní" border="true":::
+<p align="center">
+  <img src="./media/az-zonal/zone-redundant-lb-1.svg" width="512" title="Virtual Network NAT">
+</p>
 
 *Obrázek: redundantní služba Vyrovnávání zatížení zóny*
 
@@ -60,7 +62,12 @@ Můžete zvolit, aby front-end byl zaručen pro jednu zónu, která se nazývá 
 
 Kromě toho se podporuje použití oblastí front-endu přímo pro koncové body s vyrovnáváním zatížení v rámci každé zóny. Tuto konfiguraci můžete použít k vystavení koncovým bodům pro vyrovnávání zatížení zóny pro samostatné monitorování každé zóny. U veřejných koncových bodů je můžete integrovat s produktem pro vyrovnávání zatížení DNS, jako je [Traffic Manager](../traffic-manager/traffic-manager-overview.md) , a používat jeden název DNS.
 
-:::image type="content" source="./media/az-zonal/zonal-lb-1.svg" alt-text="Zóna redundantní" border="true":::
+
+<p align="center">
+  <img src="./media/az-zonal/zonal-lb-1.svg" width="512" title="Virtual Network NAT">
+</p>
+
+*Obrázek: oblast redundantního nástroje pro vyrovnávání zatížení*
 
 Pokud chcete tyto koncepty (zóny redundantní a oblasti pro stejný back-end) kombinovat, Projděte si téma [více front-endu pro Azure Load Balancer](load-balancer-multivip-overview.md).
 

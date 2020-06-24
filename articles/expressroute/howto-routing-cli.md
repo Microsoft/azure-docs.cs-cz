@@ -4,16 +4,16 @@ description: Tento článek vám pomůže vytvořit a zřídit privátní a veř
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/24/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 91a1b6cc877b31fbcef638e34d3147d3377ce85c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cbde41bd79409255e1ebf5145548ea260ac8581d
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79476113"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84727037"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-cli"></a>Vytvoření a úprava partnerského vztahu pro okruh ExpressRoute pomocí rozhraní příkazového řádku
 
@@ -21,7 +21,7 @@ Tento článek vám pomůže vytvořit a spravovat konfiguraci směrování/part
 
 > [!div class="op_single_selector"]
 > * [portál Azure](expressroute-howto-routing-portal-resource-manager.md)
-> * [Prostředí](expressroute-howto-routing-arm.md)
+> * [PowerShell](expressroute-howto-routing-arm.md)
 > * [Azure CLI](howto-routing-cli.md)
 > * [Veřejné partnerské vztahy](about-public-peering.md)
 > * [Video – privátní partnerské vztahy](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)

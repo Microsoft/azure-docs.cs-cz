@@ -8,25 +8,25 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c5a483ff7a5a93a6908538fd237cb4cf2dacec6
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 0d0d83d3b981968949d558cb7ee5672094b00555
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582668"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84727326"
 ---
 # <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>Příklady PowerShellu a grafu pro licencování na základě skupin ve službě Azure AD
 
 Plná funkčnost pro licencování na základě skupin je dostupná prostřednictvím [Azure Portal](https://portal.azure.com)a aktuálně je PowerShell a podpora Microsoft Graph omezená jenom na operace jen pro čtení. Existují však některé užitečné úlohy, které lze provést pomocí stávajících [rutin prostředí PowerShell pro MSOnline](https://docs.microsoft.com/powershell/msonline/v1/azureactivedirectory) a Microsoft Graph. V tomto dokumentu najdete příklady toho, co je možné.
 
 > [!NOTE]
-> Než začnete používat rutiny, ujistěte se, že jste nejdřív připojili k vaší organizaci spuštěním `Connect-MsolService`  rutiny.
+> Než začnete používat rutiny, ujistěte se, že jste nejdřív připojili k vaší organizaci spuštěním `Connect-MsolService`   rutiny.
 
 > [!WARNING]
 > Tento kód je k dispozici jako příklad pro demonstrační účely. Pokud máte v úmyslu použít ho ve svém prostředí, zvažte jeho první testování v malém měřítku nebo v samostatné testovací organizaci. Možná budete muset upravit kód tak, aby splňoval konkrétní potřeby vašeho prostředí.
@@ -617,7 +617,7 @@ UserId                               OperationResult
 aadbe4da-c4b5-4d84-800a-9400f31d7371 User has no direct license to remove. Skipping.
 ```
 > [!NOTE]
-> Aktualizujte hodnoty proměnných `$skuId` a `$groupId`  zacílení na odebrání přímých licencí podle testovacího prostředí před spuštěním výše uvedeného skriptu. 
+> Aktualizujte hodnoty proměnných `$skuId` a `$groupId`   zacílení na odebrání přímých licencí podle testovacího prostředí před spuštěním výše uvedeného skriptu. 
 
 ## <a name="next-steps"></a>Další kroky
 

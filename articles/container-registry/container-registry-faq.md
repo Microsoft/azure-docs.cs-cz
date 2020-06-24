@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: sajaya
-ms.openlocfilehash: 005c035468a4225f96e8ef69b2ef31a82bf7eedb
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 0a455ef911d28306b30bed2fbb00edea198181dd
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682827"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85205420"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Nejčastější dotazy týkající se Azure Container Registry
 
@@ -220,7 +220,7 @@ ACR podporuje [vlastní role](container-registry-roles.md) , které poskytují r
   az role assignment create --scope resource_id --role AcrPull --assignee user@example.com
   ```
 
-  Nebo přiřaďte roli k principu služby, který identifikuje jeho ID aplikace:
+  Nebo přiřaďte roli k instančnímu objektu identifikovanému jeho ID aplikace:
 
   ```azurecli
   az role assignment create --scope resource_id --role AcrPull --assignee 00000000-0000-0000-0000-000000000000
@@ -313,7 +313,7 @@ unauthorized: authentication required
 ```
 
 Řešení této chyby:
-1. Přidejte možnost `--signature-verification=false` do konfiguračního souboru démona Docker `/etc/sysconfig/docker` . Například:
+1. Přidejte možnost `--signature-verification=false` do konfiguračního souboru démona Docker `/etc/sysconfig/docker` . Příklad:
    
    `OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'`
    
@@ -438,6 +438,7 @@ Tady je několik scénářů, ve kterých může být operace zakázaná:
 * Klasické Registry už nejsou podporované. Upgradujte prosím na podporovanou [úroveň služby](https://aka.ms/acr/skus) pomocí [AZ acr Update](https://docs.microsoft.com/cli/azure/acr?view=azure-cli-latest#az-acr-update) nebo Azure Portal.
 * Bitová kopie nebo úložiště je možná zamčené, aby se nemohlo odstranit ani aktualizovat. Aktuální atributy můžete zobrazit pomocí příkazu [AZ ACR show úložištì](https://docs.microsoft.com/azure/container-registry/container-registry-image-lock) .
 * Pokud je obrázek v karanténě, některé operace jsou zakázané. Přečtěte si další informace o [karanténě](https://github.com/Azure/acr/tree/master/docs/preview/quarantine).
+* Je možné, že váš registr dosáhl svého [limitu úložiště](container-registry-skus.md#service-tier-features-and-limits).
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>Návody shromažďovat trasování http ve Windows?
 
@@ -493,7 +494,7 @@ V tuto chvíli nepodporujeme GitLab pro aktivační události zdroje.
 
 | Služba Git | Zdrojový kontext | Ruční sestavení | Automatické sestavení prostřednictvím aktivační události potvrzení |
 |---|---|---|---|
-| GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | Ano | Ano |
+| GitHubu | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | Ano | Ano |
 | Azure Repos | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` | Ano | Ano |
 | GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | Ano | Ne |
 | BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | Ano | Ne |

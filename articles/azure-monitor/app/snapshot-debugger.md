@@ -5,14 +5,14 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.reviewer: cweining
 ms.openlocfilehash: 18f43ba90157d71ec9488b6858fa9f41b2ee42a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79275760"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84692015"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Ladicí snímky pro výjimky v aplikacích .NET
-Pokud dojde k výjimce, můžete automaticky shromáždit snímek ladění z živé webové aplikace. Snímek zobrazuje stav zdrojového kódu a proměnných v okamžiku, kdy byla vyvolána výjimka. Snapshot Debugger v [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) monitorují telemetrii výjimek z vaší webové aplikace. Shromažďuje snímky na vašich vyvolané výjimce, takže budete mít k dispozici informace potřebné k diagnostice problémů v produkčním prostředí. Zahrňte do aplikace [balíček NuGet pro kolektor snímků](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) a volitelně nakonfigurujte parametry kolekce v [souboru ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md). Snímky se zobrazí na [výjimkách](../../azure-monitor/app/asp-net-exceptions.md) na portálu Application Insights.
+Pokud dojde k výjimce, můžete automaticky shromáždit snímek ladění z živé webové aplikace. Snímek zobrazuje stav zdrojového kódu a proměnných v okamžiku, kdy byla vyvolána výjimka. Snapshot Debugger v [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) monitorují telemetrii výjimek z vaší webové aplikace. Shromažďuje snímky na vašich vyvolané výjimce, takže budete mít k dispozici informace potřebné k diagnostice problémů v produkčním prostředí. Zahrňte do aplikace [balíček NuGet pro kolektor snímků](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) a volitelně nakonfigurujte parametry kolekce v [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md). Snímky se zobrazí na [výjimkách](../../azure-monitor/app/asp-net-exceptions.md) na portálu Application Insights.
 
 Snímky ladění můžete zobrazit na portálu a podívat se do zásobníku volání a zkontrolovat proměnné v každém rámci zásobníku volání. Chcete-li získat výkonnější možnosti ladění pomocí zdrojového kódu, otevřete snímky v aplikaci Visual Studio 2019 Enterprise. V sadě Visual Studio můžete také [nastavit snímkovací body pro interaktivní pořizování snímků](https://aka.ms/snappoint) bez čekání na výjimku.
 
@@ -43,10 +43,10 @@ Přístup k snímkům je chráněn řízením přístupu na základě role (RBAC
 > [!NOTE]
 > Vlastníci a přispěvatelé tuto roli automaticky nemají. Pokud chtějí snímky zobrazit, musí se do této role přidat sami.
 
-Vlastníci předplatného `Application Insights Snapshot Debugger` by měli přiřadit roli uživatelům, kteří budou kontrolovat snímky. Tato role se dá přiřadit jednotlivým uživatelům nebo skupinám podle vlastníků předplatného pro cílový Application Insights prostředek nebo jeho skupinu prostředků nebo předplatné.
+Vlastníci předplatného by měli přiřadit `Application Insights Snapshot Debugger` roli uživatelům, kteří budou kontrolovat snímky. Tato role se dá přiřadit jednotlivým uživatelům nebo skupinám podle vlastníků předplatného pro cílový Application Insights prostředek nebo jeho skupinu prostředků nebo předplatné.
 
 1. V Azure Portal přejděte na prostředek Application Insights.
-1. Klikněte na **Řízení přístupu (IAM)**.
+1. Klikněte na **Řízení přístupu (IAM)** .
 1. Klikněte na tlačítko **+ Přidat přiřazení role** .
 1. V rozevíracím seznamu **role** vyberte **Application Insights Snapshot Debugger** .
 1. Vyhledejte a zadejte jméno uživatele, kterého chcete přidat.
@@ -108,13 +108,13 @@ Výchozí doba uchovávání dat je 15 dní. Pro každou instanci Application In
 
 ### <a name="publish-symbols"></a>Publikovat symboly
 Snapshot Debugger vyžaduje, aby soubory symbolů na provozním serveru dekódují proměnné a poskytovaly prostředí ladění v aplikaci Visual Studio.
-Verze 15,2 (nebo vyšší) sady Visual Studio 2017 publikuje ve výchozím nastavení symboly pro sestavení vydaných verzí při publikování do App Service. V předchozích verzích musíte do souboru publikačního profilu `.pubxml` přidat následující řádek, aby se symboly publikovaly v režimu vydání:
+Verze 15,2 (nebo vyšší) sady Visual Studio 2017 publikuje ve výchozím nastavení symboly pro sestavení vydaných verzí při publikování do App Service. V předchozích verzích musíte do souboru publikačního profilu přidat následující řádek, `.pubxml` aby se symboly publikovaly v režimu vydání:
 
 ```xml
     <ExcludeGeneratedDebugSymbol>False</ExcludeGeneratedDebugSymbol>
 ```
 
-U výpočetních a dalších typů Azure se ujistěte, že se soubory symbolů nacházejí ve stejné složce hlavní aplikace. dll (obvykle `wwwroot/bin`) nebo jsou k dispozici na aktuální cestě.
+U výpočetních a dalších typů Azure se ujistěte, že se soubory symbolů nacházejí ve stejné složce hlavní aplikace. dll (obvykle `wwwroot/bin` ) nebo jsou k dispozici na aktuální cestě.
 
 > [!NOTE]
 > Další informace o různých možnostech symbolu, které jsou k dispozici, najdete v dokumentaci k sadě [Visual Studio](https://docs.microsoft.com/visualstudio/ide/reference/advanced-build-settings-dialog-box-csharp?view=vs-2019#output

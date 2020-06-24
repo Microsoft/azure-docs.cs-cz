@@ -3,15 +3,15 @@ title: Škálování Azure Cosmos DB podle plánu pomocí Azure Functions časov
 description: Naučte se škálovat změny v propustnosti v Azure Cosmos DB pomocí PowerShellu a Azure Functions.
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: 68ba40ea212c061fa5c8bbddc47ea0dfc6d8caa4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9f538b02e81d885e22a6417d7c1f139c22635b0d
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75935165"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262476"
 ---
 # <a name="scale-azure-cosmos-db-throughput-by-using-azure-functions-timer-trigger"></a>Škálování Azure Cosmos DB propustnosti pomocí triggeru časovače Azure Functions
 
@@ -21,7 +21,7 @@ Propustnost můžete nastavit prostřednictvím [šablon Azure Resource Manager]
 
 ## <a name="throughput-scheduler-sample-project"></a>Ukázkový projekt plánovače propustnosti
 
-Pro zjednodušení procesu škálování Azure Cosmos DB podle plánu jsme vytvořili ukázkový projekt s názvem [Plánovač propustnosti Azure Cosmos](https://github.com/Azure-Samples/azure-cosmos-throughput-scheduler). Tento projekt je Azure Functions aplikace se dvěma aktivačními událostmi časovače – "ScaleUpTrigger" a "ScaleDownTrigger". Aktivační události spouštějí skript prostředí PowerShell, který nastaví propustnost každého prostředku podle definice v `resources.json` souboru v každé aktivační události. ScaleUpTrigger je nakonfigurována tak, aby běžela v rozmezí času UTC, a ScaleDownTrigger je nakonfigurován tak, aby běžel v 6. UTC a tyto časy lze snadno `function.json` aktualizovat v rámci souboru pro každou Trigger.
+Pro zjednodušení procesu škálování Azure Cosmos DB podle plánu jsme vytvořili ukázkový projekt s názvem [Plánovač propustnosti Azure Cosmos](https://github.com/Azure-Samples/azure-cosmos-throughput-scheduler). Tento projekt je Azure Functions aplikace se dvěma aktivačními událostmi časovače – "ScaleUpTrigger" a "ScaleDownTrigger". Aktivační události spouštějí skript prostředí PowerShell, který nastaví propustnost každého prostředku podle definice v `resources.json` souboru v každé aktivační události. ScaleUpTrigger je nakonfigurována tak, aby běžela v rozmezí času UTC, a ScaleDownTrigger je nakonfigurován tak, aby běžel v 6. UTC a tyto časy lze snadno aktualizovat v rámci `function.json` souboru pro každou Trigger.
 
 Tento projekt můžete klonovat místně, upravit ho a zadat Azure Cosmos DB prostředky pro horizontální navýšení a snížení kapacity a plán, který se má spustit. Později je můžete nasadit do předplatného Azure a zabezpečit ho pomocí identity spravované služby s oprávněními [Access Control na základě rolí](role-based-access-control.md) (RBAC) s rolí "Azure Cosmos DB operator" k nastavení propustnosti pro účty Azure Cosmos.
 

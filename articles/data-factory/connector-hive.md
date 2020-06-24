@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 3720d917d71fa4e8c5a14bb60fdc7c405be4bfdb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 587cdd54f09be2761026c25ccd80fb67d3eb6bb0
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81410455"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987057"
 ---
 # <a name="copy-data-from-hive-using-azure-data-factory"></a>Kopírování dat z podregistru pomocí Azure Data Factory 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -48,14 +48,14 @@ Následující části obsahují podrobné informace o vlastnostech, které se p
 
 Pro propojenou službu podregistru jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type musí být nastavená na: **podregistr** . | Ano |
+| typ | Vlastnost Type musí být nastavená na: **podregistr** . | Ano |
 | host | IP adresa nebo název hostitele serveru pro podregistr, oddělený znakem '; ' pro více hostitelů (pouze v případě, že je povoleno serviceDiscoveryMode).  | Ano |
 | port | Port TCP, který server podregistru používá k naslouchání klientským připojením. Pokud se připojíte k Azure HDInsights, zadejte port jako 443. | Ano |
 | serverType | Typ serveru podregistru <br/>Povolené hodnoty jsou: **HiveServer1**, **HiveServer2**, **HiveThriftServer** | Ne |
 | thriftTransportProtocol | Transportní protokol, který se má použít ve vrstvě Thrift. <br/>Povolené hodnoty jsou: **Binary**, **SASL**, **http** . | Ne |
-| authenticationType | Metoda ověřování pro přístup k serveru podregistru <br/>Povolené hodnoty jsou: **anonymní**, **username**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Ano |
+| authenticationType | Metoda ověřování pro přístup k serveru podregistru <br/>Povolené hodnoty jsou: **anonymní**, **username**, **UsernameAndPassword**, **WindowsAzureHDInsightService**. Ověřování protokolem Kerberos se teď nepodporuje. | Ano |
 | serviceDiscoveryMode | true pro indikaci použití služby ZooKeeper, NEPRAVDA.  | Ne |
 | zooKeeperNameSpace | Obor názvů na ZooKeeper, do kterého se přidají uzly pro podregistr Server 2  | Ne |
 | useNativeQuery | Určuje, zda ovladač používá nativní dotazy HiveQL, nebo je převede do ekvivalentního formátu v HiveQL.  | Ne |
@@ -96,14 +96,14 @@ Pro propojenou službu podregistru jsou podporovány následující vlastnosti:
 
 Chcete-li kopírovat data z podregistru, nastavte vlastnost Type datové sady na **HiveObject**. Podporovány jsou následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type datové sady musí být nastavená na: **HiveObject** . | Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na: **HiveObject** . | Ano |
 | XSD | Název schématu. |Ne (Pokud je zadáno "dotaz" ve zdroji aktivity)  |
 | tabulka | Název tabulky |Ne (Pokud je zadáno "dotaz" ve zdroji aktivity)  |
-| tableName | Název tabulky včetně části schématu Tato vlastnost je podporována z důvodu zpětné kompatibility. Pro nové úlohy použijte `schema` a. `table` | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
+| tableName | Název tabulky včetně části schématu Tato vlastnost je podporována z důvodu zpětné kompatibility. Pro nové úlohy použijte `schema` a `table` . | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 
-**Případě**
+**Příklad**
 
 ```json
 {
@@ -128,10 +128,10 @@ Chcete-li kopírovat data z podregistru, nastavte vlastnost Type datové sady na
 
 Chcete-li kopírovat data z podregistru, nastavte typ zdroje v aktivitě kopírování na **HiveSource**. V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **HiveSource** . | Ano |
-| query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM MyTable"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **HiveSource** . | Ano |
+| query | Pro čtení dat použijte vlastní dotaz SQL. Příklad: `"SELECT * FROM MyTable"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
 **Případě**
 

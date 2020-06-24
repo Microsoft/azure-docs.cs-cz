@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: adf0d72763e0cb1892d64c68a6dce05abbf6f582
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc869a8ab905275c8082c4fd375f8f6d6d48d97e
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81311666"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85205454"
 ---
 # <a name="understanding-the-local-configuration-file-c-agent"></a>Principy místního konfiguračního souboru (agent C#)
 
@@ -30,9 +30,9 @@ Agent zabezpečení čte konfigurační soubor jednou při spuštění agenta. K
 
 Agent zabezpečení v jazyce C# používá více konfiguračních souborů:
 
-- **General. config** – konfigurace související s agenty.
-- **Ověřování. config** – konfigurace související s ověřováním (včetně podrobností ověřování).
-- **SecurityIotInterface. config** – konfigurace související s IoT
+- Konfigurace vztahující se k agentům **General.config** .
+- **Authentication.config** – konfigurace související s ověřováním (včetně podrobností ověřování).
+- **SecurityIotInterface.config** – konfigurace související s IoT
 
 Konfigurační soubory obsahují výchozí konfiguraci. Konfigurace ověřování se naplní během instalace agenta a změny konfiguračního souboru se provedou při restartování agenta.
 
@@ -40,17 +40,17 @@ Konfigurační soubory obsahují výchozí konfiguraci. Konfigurace ověřován�
 
 Pro Linux:
 
-- Konfigurační soubory operačního systému jsou umístěny v `/var/ASCIoTAgent`.
+- Konfigurační soubory operačního systému jsou umístěny v `/var/ASCIoTAgent` .
 
 Ve Windows:
 
 - Konfigurační soubory operačního systému se nacházejí v adresáři agenta zabezpečení.
 
-### <a name="generalconfig-configurations"></a>Obecné konfigurace. config
+### <a name="generalconfig-configurations"></a>Konfigurace General.config
 
 | Název konfigurace | Možné hodnoty | Podrobnosti |
 |:-----------|:---------------|:--------|
-| ID agenta | GUID | Jedinečný identifikátor agenta |
+| ID agenta | Identifikátor GUID | Jedinečný identifikátor agenta |
 | readRemoteConfigurationTimeout | TimeSpan | Časové období načítání vzdálené konfigurace z IoT Hub. Pokud Agent nemůže v zadaném čase načíst konfiguraci, bude časový limit operace vypršel.|
 | schedulerInterval | TimeSpan | Interval interního plánovače. |
 | producerInterval | TimeSpan | Interval pracovního procesu producenta události |
@@ -62,9 +62,9 @@ Ve Windows:
 | logFilePath | Cesta k souboru | Pokud > vypnuto, protokoly se zapisují do tohoto souboru. |
 | defaultEventPriority | "Vysoká", "nízká", "off" | Výchozí priorita události |
 
-### <a name="generalconfig-example"></a>Příklad General. config
+### <a name="generalconfig-example"></a>Příklad General.config
 
-```XML
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <General>
   <add key="agentId" value="da00006c-dae9-4273-9abc-bcb7b7b4a987" />
@@ -81,7 +81,7 @@ Ve Windows:
 </General>
 ```
 
-### <a name="authenticationconfig"></a>Ověřování. config
+### <a name="authenticationconfig"></a>Authentication.config
 
 | Název konfigurace | Možné hodnoty | Podrobnosti |
 |:-----------|:---------------|:--------|
@@ -89,16 +89,16 @@ Ve Windows:
 | deviceId | řetězec | ID zařízení (registrované v Azure IoT Hub) || schedulerInterval | Řetězec TimeSpan | Interval interního plánovače. |
 | gatewayHostname | řetězec | Název hostitele služby Azure IoT Hub. Obvykle <>. azure-devices.net |
 | filePath | řetězec – cesta k souboru | Cesta k souboru, který obsahuje tajný klíč ověřování.|
-| type | "SymmetricKey", "SelfSignedCertificate" | Tajný klíč uživatele pro ověřování. Pokud je tajný klíč uživatele symetrický klíč, vyberte *SymmetricKey* . Pokud je tajný kód certifikát podepsaný svým držitelem, vyberte *certifikát podepsaný držitelem* . |
+| typ | "SymmetricKey", "SelfSignedCertificate" | Tajný klíč uživatele pro ověřování. Pokud je tajný klíč uživatele symetrický klíč, vyberte *SymmetricKey* . Pokud je tajný kód certifikát podepsaný svým držitelem, vyberte *certifikát podepsaný držitelem* . |
 | identity | "DPS", "Module", "Device" | Ověřování identity – DPS Pokud se provádí ověření prostřednictvím DPS, modul, pokud se provádí ověřování pomocí přihlašovacích údajů modulu, nebo zařízení, pokud se provádí ověřování pomocí přihlašovacích údajů k zařízení.
 | certificateLocationKind |  "Místní_soubor", "Store" | Místní_soubor Pokud je certifikát uložen v souboru, uloží se, pokud se certifikát nachází v úložišti certifikátů. |
 | idScope | řetězec | Rozsah ID v DPS |
 | registrationId | řetězec  | ID registrace zařízení DPS. |
 |
 
-### <a name="authenticationconfig-example"></a>Příklad ověřování. config
+### <a name="authenticationconfig-example"></a>Příklad Authentication.config
 
-```XML
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <Authentication>
   <add key="moduleName" value="azureiotsecurity"/>
@@ -113,16 +113,16 @@ Ve Windows:
 </Authentication>
 ```
 
-### <a name="securityiotinterfaceconfig"></a>SecurityIotInterface. config
+### <a name="securityiotinterfaceconfig"></a>SecurityIotInterface.config
 
 | Název konfigurace | Možné hodnoty | Podrobnosti |
 |:-----------|:---------------|:--------|
 | transportType | "Ampq" "MQTT" | IoT Hub typ přenosu. |
 |
 
-### <a name="securityiotinterfaceconfig-example"></a>Příklad SecurityIotInterface. config
+### <a name="securityiotinterfaceconfig-example"></a>Příklad SecurityIotInterface.config
 
-```XML
+```xml
 <ExternalInterface>
   <add key="facadeType"  value="Microsoft.Azure.Security.IoT.Agent.Common.SecurityIoTHubInterface, Security.Common" />
   <add key="transportType" value="Amqp"/>

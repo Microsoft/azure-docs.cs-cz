@@ -1,7 +1,7 @@
 ---
-title: Jednotné přihlašování (MSAL. js) | Azure
+title: Jednotné přihlašování (MSAL.js) | Azure
 titleSuffix: Microsoft identity platform
-description: Přečtěte si o vytváření prostředí jednotného přihlašování pomocí knihovny Microsoft Authentication Library pro JavaScript (MSAL. js).
+description: Naučte se vytvářet prostředí jednotného přihlašování pomocí knihovny Microsoft Authentication Library pro JavaScript (MSAL.js).
 services: active-directory
 author: navyasric
 manager: CelesteDG
@@ -14,23 +14,23 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 8080d4cf4c3f0091f7837b3fccead5474c42db55
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79262851"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84690774"
 ---
 # <a name="single-sign-on-with-msaljs"></a>Jednotné přihlašování s využitím MSAL.js
 
 Jednotné přihlašování (SSO) umožňuje uživatelům zadat přihlašovací údaje jednou pro přihlášení a navázat relaci, která se dá znovu použít napříč více aplikacemi, aniž by se musela znovu ověřit. Tím se uživatelům poskytne bezproblémové prostředí a zkracuje opakované výzvy k zadání přihlašovacích údajů.
 
-Azure AD poskytuje možnostem jednotného přihlašování pro aplikace nastavením souboru cookie relace při prvním ověření uživatele. Knihovna MSAL. js umožňuje aplikacím využívat tyto možnosti několika způsoby.
+Azure AD poskytuje možnostem jednotného přihlašování pro aplikace nastavením souboru cookie relace při prvním ověření uživatele. Knihovna MSAL.js umožňuje aplikacím využívat tyto možnosti několika způsoby.
 
 ## <a name="sso-between-browser-tabs"></a>Jednotné přihlašování mezi kartami prohlížeče
 
-Když je vaše aplikace otevřená na více kartách a nejdřív se přihlásíte na jednu kartu, uživatel se na dalších kartách přihlásí i bez výzvy. MSAL. js ukládá do mezipaměti token ID pro uživatele v prohlížeči `localStorage` a bude uživatele přihlašovat do aplikace na ostatních otevřených kartách.
+Když je vaše aplikace otevřená na více kartách a nejdřív se přihlásíte na jednu kartu, uživatel se na dalších kartách přihlásí i bez výzvy. MSAL.js ukládá do mezipaměti token ID pro uživatele v prohlížeči `localStorage` a přihlásí uživatele do aplikace na ostatních otevřených kartách.
 
-Ve výchozím nastavení používá `sessionStorage` MSAL. js, což neumožňuje sdílení relace mezi kartami. K získání jednotného přihlašování mezi kartami nezapomeňte nastavit v souboru `cacheLocation` MSAL. js, `localStorage` jak je znázorněno níže.
+Ve výchozím nastavení MSAL.js používá, `sessionStorage` což neumožňuje sdílení relace mezi kartami. K získání jednotného přihlašování mezi kartami se ujistěte, že jste nastavili `cacheLocation` v MSAL.js na `localStorage` , jak je uvedeno níže.
 
 ```javascript
 const config = {
@@ -47,15 +47,15 @@ const myMSALObj = new UserAgentApplication(config);
 
 ## <a name="sso-between-apps"></a>Jednotné přihlašování mezi aplikacemi
 
-Po ověření uživatele se v doméně Azure AD v prohlížeči nastaví soubor cookie relace. MSAL. js spoléhá na tento soubor cookie relace a poskytuje jednotné přihlašování pro uživatele mezi různými aplikacemi. MSAL. js také ukládá do mezipaměti tokeny ID a přístupové tokeny uživatele v úložišti prohlížeče na aplikační doménu. V důsledku toho se chování jednotného přihlašování liší v různých případech:  
+Po ověření uživatele se v doméně Azure AD v prohlížeči nastaví soubor cookie relace. MSAL.js spoléhá na tento soubor cookie relace k poskytnutí jednotného přihlašování pro uživatele mezi různými aplikacemi. MSAL.js také ukládá do mezipaměti tokeny ID a přístupové tokeny uživatele v úložišti prohlížeče na aplikační doménu. V důsledku toho se chování jednotného přihlašování liší v různých případech:  
 
 ### <a name="applications-on-the-same-domain"></a>Aplikace ve stejné doméně
 
-Když se aplikace hostují ve stejné doméně, uživatel se může přihlásit k aplikaci jednou a pak je ověřit i v ostatních aplikacích bez výzvy. MSAL. js využívá tokeny v mezipaměti pro uživatele v doméně k zajištění jednotného přihlašování.
+Když se aplikace hostují ve stejné doméně, uživatel se může přihlásit k aplikaci jednou a pak je ověřit i v ostatních aplikacích bez výzvy. MSAL.js využívá tokeny v mezipaměti pro uživatele v doméně k zajištění jednotného přihlašování.
 
 ### <a name="applications-on-different-domain"></a>Aplikace v jiné doméně
 
-Pokud jsou aplikace hostovány v různých doménách, tokeny v mezipaměti v doméně A nelze pro MSAL. js v doméně B použít.
+Když se aplikace hostují v různých doménách, k tokenům uloženým v mezipaměti v doméně A nelze přistupovat MSAL.js v doméně B.
 
 To znamená, že když se uživatelé přihlásili v doméně A chtějí přejít k aplikaci v doméně B, budou přesměrováni nebo vyzváni na stránce Azure AD. Vzhledem k tomu, že Azure AD stále obsahuje soubor cookie uživatelské relace, přihlásí se uživateli a nebude muset přihlašovací údaje znovu zadávat. Pokud má uživatel v relaci s Azure AD víc uživatelských účtů, zobrazí se uživateli výzva k výběru příslušného účtu pro přihlášení.
 
@@ -65,7 +65,7 @@ V některých případech má aplikace přístup k kontextu ověřování uživa
 
 **Použití ID relace (SID)**
 
-ID relace je [volitelná deklarace identity](active-directory-optional-claims.md) , která se dá nakonfigurovat v tokenech ID. Tato deklarace umožňuje aplikaci identifikovat relaci Azure AD uživatele nezávisle na názvu nebo uživatelském účtu uživatele. Do `acquireTokenSilent` volání můžete předat identifikátor SID v parametrech požadavku. To umožní službě Azure AD obejít výběr účtu. Identifikátor SID je svázán se souborem cookie relace a nebude mezi kontexty prohlížeče.
+ID relace je [volitelná deklarace identity](active-directory-optional-claims.md) , která se dá nakonfigurovat v tokenech ID. Tato deklarace umožňuje aplikaci identifikovat relaci Azure AD uživatele nezávisle na názvu nebo uživatelském účtu uživatele. Do volání můžete předat identifikátor SID v parametrech požadavku `acquireTokenSilent` . To umožní službě Azure AD obejít výběr účtu. Identifikátor SID je svázán se souborem cookie relace a nebude mezi kontexty prohlížeče.
 
 ```javascript
 var request = {
@@ -82,12 +82,12 @@ userAgentApplication.acquireTokenSilent(request).then(function(response) {
 ```
 
 > [!Note]
-> Identifikátor SID lze použít pouze s požadavky na tiché ověření `acquireTokenSilent` provedené voláním v MSAL. js.
+> Identifikátor SID lze použít pouze s požadavky na tiché ověření provedené `acquireTokenSilent` voláním MSAL.js.
 Postup pro konfiguraci volitelných deklarací v manifestu aplikace najdete [tady](active-directory-optional-claims.md).
 
 **Použití pomocného parametru přihlášení**
 
-Pokud nemáte nakonfigurovanou deklaraci SID nebo potřebujete obejít výzvu k výběru účtu při volání interaktivního ověřování `login_hint` , můžete to udělat tak, že v parametrech žádosti zadáte a volitelně `domain_hint` také `extraQueryParameters` jako v interaktivních metodách MSAL.`loginPopup`js `loginRedirect`( `acquireTokenPopup` , `acquireTokenRedirect`a). Příklad:
+Pokud nemáte nakonfigurovanou deklaraci SID nebo potřebujete obejít výzvu k výběru účtu při volání interaktivního ověřování, můžete to udělat tak, že `login_hint` v parametrech žádosti zadáte a volitelně také `domain_hint` jako `extraQueryParameters` v MSAL.js interaktivní metody ( `loginPopup` , `loginRedirect` a `acquireTokenPopup` `acquireTokenRedirect` ). Příklad:
 
 ```javascript
 var request = {
@@ -103,24 +103,24 @@ Hodnoty pro login_hint a domain_hint můžete získat tak, že si přečtete dek
 
 * **loginHint** by měl být nastaven na `preferred_username` deklaraci identity v tokenu ID.
 
-* **domain_hint** se musí předávat jenom při použití autority/běžné. Pomocný parametr domény je určený ID tenanta (TID).  Pokud je `tid` deklarace identity v tokenu `9188040d-6c67-4c5b-b112-36a304b66dad` ID příjemcem. V opačném případě se jedná o organizace.
+* **domain_hint** se musí předávat jenom při použití autority/běžné. Pomocný parametr domény je určený ID tenanta (TID).  Pokud je `tid` deklarace identity v tokenu ID `9188040d-6c67-4c5b-b112-36a304b66dad` příjemcem. V opačném případě se jedná o organizace.
 
 Další informace o hodnotách pomocného parametru přihlašovacích údajů a doméně najdete [tady](v2-oauth2-implicit-grant-flow.md) .
 
 > [!Note]
 > Nelze předávat identifikátory SID a login_hint současně. Výsledkem bude chybná odpověď.
 
-## <a name="sso-without-msaljs-login"></a>Jednotné přihlašování bez přihlášení MSAL. js
+## <a name="sso-without-msaljs-login"></a>Jednotné přihlašování bez MSAL.jsho přihlášení
 
-V návrhu MSAL. js vyžaduje, aby byla volána metoda přihlášení, aby bylo možné vytvořit kontext uživatele před získáním tokenů pro rozhraní API. Vzhledem k tomu, že metody přihlášení jsou interaktivní, uživatel uvidí výzvu.
+MSAL.js vyžaduje, aby před získáním tokenů pro rozhraní API byla volána metoda přihlašování, aby navázala kontext uživatele. Vzhledem k tomu, že metody přihlášení jsou interaktivní, uživatel uvidí výzvu.
 
-Existují určité případy, kdy aplikace mají přístup k kontextu nebo identifikátoru ID ověřeného uživatele prostřednictvím ověřování iniciované v jiné aplikaci a chtějí pomocí jednotného přihlašování získat tokeny bez předchozího přihlášení přes MSAL. js.
+Existují určité případy, kdy aplikace mají přístup k kontextu nebo ID ověřeného uživatele prostřednictvím ověřování iniciované v jiné aplikaci a chtějí pomocí jednotného přihlašování získat tokeny bez prvního přihlášení prostřednictvím MSAL.js.
 
 Příklad: uživatel je přihlášený k nadřazené webové aplikaci, která hostuje jinou aplikaci JavaScriptu spuštěnou jako doplněk nebo modul plug-in.
 
 Možnosti jednotného přihlašování v tomto scénáři můžete dosáhnout následujícím způsobem:
 
-Předejte `sid` , pokud je k `login_hint` dispozici `domain_hint`(nebo volitelně) jako parametry žádosti pro volání `acquireTokenSilent` MSAL. js, následujícím způsobem:
+Předejte rozhraní, `sid` Pokud je k dispozici (nebo `login_hint` volitelně `domain_hint` ) jako parametry žádosti pro MSAL.js `acquireTokenSilent` volání, následovně:
 
 ```javascript
 var request = {
@@ -137,11 +137,11 @@ userAgentApplication.acquireTokenSilent(request).then(function(response) {
 });
 ```
 
-## <a name="sso-in-adaljs-to-msaljs-update"></a>Jednotné přihlašování v ADAL. js na MSAL. js – aktualizace
+## <a name="sso-in-adaljs-to-msaljs-update"></a>Jednotné přihlašování v ADAL.js pro MSAL.js aktualizace
 
-MSAL. js přináší ve scénářích ověřování Azure AD paritu funkcí ADAL. js. Aby bylo možné provést migraci ze ADAL. js na MSAL. js snadno a vyhnout se uživatelům, aby se znovu přihlásili, knihovna přečte token ID představující relaci uživatele v mezipaměti ADAL. js a hladce se přihlásí uživateli v MSAL. js.  
+MSAL.js přináší paritu funkcí ADAL.js pro scénáře ověřování Azure AD. Aby migrace z ADAL.js MSAL.js snadná a nemusela se uživatelům zobrazit výzva k opětovnému přihlášení, knihovna přečte token ID představující relaci uživatele v ADAL.js mezipaměti a hladce se přihlásí uživatele v MSAL.js.  
 
-Pokud chcete využít výhod jednotného přihlašování (SSO) při aktualizaci z ADAL. js, budete muset zajistit, aby knihovny používaly `localStorage` pro ukládání tokenů do mezipaměti. `cacheLocation` Nastavte na `localStorage` v konfiguraci MSAL. js i ADAL. js následujícím způsobem:
+Pokud chcete při aktualizaci z ADAL.js využít výhod jednotného přihlašování (SSO), budete muset zajistit, aby se knihovny používaly `localStorage` pro ukládání tokenů do mezipaměti. Nastavte na `cacheLocation` Jak `localStorage` v MSAL.js, tak v konfiguraci ADAL.js při inicializaci následujícím způsobem:
 
 
 ```javascript
@@ -167,7 +167,7 @@ const config = {
 const myMSALObj = new UserAgentApplication(config);
 ```
 
-Po nakonfigurování bude MSAL. js moci číst stav uložený v mezipaměti ověřeného uživatele v ADAL. js a použít ho k poskytnutí jednotného přihlašování v MSAL. js.
+Po nakonfigurování MSAL.js bude moci číst stav uložený v mezipaměti ověřeného uživatele v ADAL.js a použít ho k poskytnutí jednotného přihlašování v MSAL.js.
 
 ## <a name="next-steps"></a>Další kroky
 

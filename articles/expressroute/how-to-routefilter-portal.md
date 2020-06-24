@@ -4,20 +4,20 @@ description: Tento článek popisuje, jak nakonfigurovat filtry tras pro partner
 services: expressroute
 author: charwen
 ms.service: expressroute
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/01/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: f2be9b4e7152c61885b1a41e94ebd328059d437b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 54674be0010bd062cfe6263db4167a24805a9e5a
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80618551"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84727122"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>Nakonfigurujte filtry tras pro partnerský vztah Microsoftu: Azure Portal
 > [!div class="op_single_selector"]
-> * [Portál Azure](how-to-routefilter-portal.md)
+> * [Azure Portal](how-to-routefilter-portal.md)
 > * [Azure PowerShell](how-to-routefilter-powershell.md)
 > * [Azure CLI](how-to-routefilter-cli.md)
 > 
@@ -26,7 +26,7 @@ Filtry tras představují způsob, jak spotřebovat dílčí sadu podporovaných
 
 Služby Office 365 jako Exchange Online, SharePoint Online a Skype pro firmy a služby Azure, jako jsou Storage a SQL DB, jsou přístupné prostřednictvím partnerského vztahu Microsoftu. Při konfiguraci partnerského vztahu Microsoftu v okruhu ExpressRoute jsou všechny předpony související s těmito službami inzerovány prostřednictvím vytvořených relací protokolu BGP. Ke každé předponě je připojená hodnota komunity protokolu BGP, která identifikuje službu nabízenou prostřednictvím dané předpony. Seznam hodnot komunity protokolu BGP a služeb, na které se mapují, najdete v tématu [komunity protokolu BGP](expressroute-routing.md#bgp).
 
-Pokud budete potřebovat připojení ke všem službám, je prostřednictvím protokolu BGP inzerován velký počet předpon. Tím se významně zvyšuje velikost směrovacích tabulek udržovaných směrovači v rámci vaší sítě. Pokud máte v úmyslu využívat jenom podmnožinu služeb nabízených partnerským vztahem Microsoftu, můžete zmenšit velikost směrovacích tabulek dvěma způsoby. Můžete:
+Pokud budete potřebovat připojení ke všem službám, je prostřednictvím protokolu BGP inzerován velký počet předpon. Tím se významně zvyšuje velikost směrovacích tabulek udržovaných směrovači v rámci vaší sítě. Pokud máte v úmyslu využívat jenom podmnožinu služeb nabízených partnerským vztahem Microsoftu, můžete zmenšit velikost směrovacích tabulek dvěma způsoby. Další možnosti:
 
 - Odfiltrujte nechtěné předpony pomocí filtrů směrování v komunitách protokolu BGP. Jedná se o standardní postupy sítě, které se běžně používají v mnoha sítích.
 
@@ -60,7 +60,7 @@ Abyste se mohli úspěšně připojit ke službám prostřednictvím partnerské
 
 -  Filtr tras musíte připojit k okruhu ExpressRoute.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Než začnete s konfigurací, ujistěte se, že splňujete následující kritéria:
 
@@ -86,7 +86,7 @@ Vytvořte seznam [hodnot komunity protokolu BGP](expressroute-routing.md#bgp) , 
 Filtr tras může mít pouze jedno pravidlo a pravidlo musí být typu Allow. Toto pravidlo může obsahovat seznam hodnot komunity protokolu BGP přidružených k tomuto pravidlu.
 
 ### <a name="1-create-a-route-filter"></a>1. Vytvoření filtru tras
-Můžete vytvořit filtr tras výběrem možnosti vytvořit nový prostředek. Klikněte na **vytvořit prostředek** > **sítě** > **RouteFilter**, jak je znázorněno na následujícím obrázku:
+Můžete vytvořit filtr tras výběrem možnosti vytvořit nový prostředek. Klikněte na **vytvořit prostředek**  >  **sítě**  >  **RouteFilter**, jak je znázorněno na následujícím obrázku:
 
 ![Vytvoření filtru tras](./media/how-to-routefilter-portal/CreateRouteFilter1.png)
 

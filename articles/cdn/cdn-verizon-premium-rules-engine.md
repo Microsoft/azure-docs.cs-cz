@@ -4,15 +4,15 @@ description: Modul pravidel umožňuje přizpůsobit, jak jsou požadavky HTTP z
 services: cdn
 author: asudbring
 ms.service: azure-cdn
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/31/2019
 ms.author: allensu
-ms.openlocfilehash: 2e5e4265f30631f8e68d8f9e7156ea578ae85e7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3c61407b2a0c9d0423d1f856101400771e27d846
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81253471"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887421"
 ---
 # <a name="override-http-behavior-using-the-azure-cdn-from-verizon-premium-rules-engine"></a>Přepsat chování HTTP pomocí Azure CDN z modulu pravidel Verizon Premium
 
@@ -40,7 +40,7 @@ Chcete-li získat přístup k modulu pravidel, je nutné nejprve vybrat možnost
 
     ![Modul pravidel pro DSA](./media/cdn-rules-engine/cdn-dsa-rules-engine.png)
 
-## <a name="tutorial"></a>Tutoriál
+## <a name="tutorial"></a>Kurz
 
 1. Na stránce **profil CDN** vyberte **Spravovat**.
    
@@ -80,7 +80,7 @@ Chcete-li získat přístup k modulu pravidel, je nutné nejprve vybrat možnost
    > [!NOTE]
    > V rozevíracím seznamu je k dispozici více funkcí. Pokud chcete získat informace o aktuálně vybrané funkci, vyberte modrou informační ikonu vlevo.
    >
-   > Pro **vynucení interního maximálního stáří**se v `Cache-Control` případě `Expires` , že hraniční uzel CDN aktualizuje Asset z původního zdroje, přepíše a hlavičky assetu se přepíšou. V tomto příkladu hraniční uzel CDN uloží Asset do mezipaměti po dobu 300 sekund nebo 5 minut, než se aktivuje ze svého původu.
+   > Pro **vynucení interního maximálního stáří**se v `Cache-Control` případě, že `Expires` hraniční uzel CDN aktualizuje Asset z původního zdroje, přepíše a hlavičky assetu se přepíšou. V tomto příkladu hraniční uzel CDN uloží Asset do mezipaměti po dobu 300 sekund nebo 5 minut, než se aktivuje ze svého původu.
    >
    > Podrobný seznam funkcí najdete v tématu [funkce stroje pravidel](cdn-verizon-premium-rules-engine-reference-features.md).
    >

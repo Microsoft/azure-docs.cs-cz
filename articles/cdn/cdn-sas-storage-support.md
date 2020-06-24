@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/21/2018
 ms.author: allensu
-ms.openlocfilehash: c2580aa4ee22996c1bf0fe5c86064a6543450071
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c1deffe36df081908294d3c7fe58a17c8a454687
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260169"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887039"
 ---
 # <a name="using-azure-cdn-with-sas"></a>Použití Azure CDN s SAS
 
@@ -86,8 +86,8 @@ Tato možnost je dostupná jenom pro **Azure CDN Premium ze profilů Verizon** .
    ```
    $1?sv=2017-07-29&ss=b&srt=c&sp=r&se=2027-12-19T17:35:58Z&st=2017-12-19T09:35:58Z&spr=https&sig=kquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
    ```
-   ![Pravidlo pro přepsání adresy URL CDN –](./media/cdn-sas-storage-support/cdn-url-rewrite-rule.png)
-   ![levé pravidlo pro přepsání adresy URL pro CDN – vpravo](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-4.png)
+   ![Pravidlo pro přepsání adresy URL CDN – levé ](./media/cdn-sas-storage-support/cdn-url-rewrite-rule.png)
+    ![ pravidlo pro přepsání adresy URL pro CDN – vpravo](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-4.png)
 
 2. Jakmile se nové pravidlo stane aktivním, může kdokoli získat přístup k souborům v zadaném kontejneru na koncovém bodu CDN bez ohledu na to, jestli v adrese URL používá token SAS. Tady je formát:`https://<endpoint hostname>.azureedge.net/<container>/<file>`
  
@@ -124,8 +124,8 @@ Pokud chcete použít Azure CDN ověřování pomocí tokenu zabezpečení, mus�
    ```
    $1&sv=2017-07-29&ss=b&srt=c&sp=r&se=2027-12-19T17:35:58Z&st=2017-12-19T09:35:58Z&spr=https&sig=kquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
    ```
-   ![Pravidlo pro přepsání adresy URL CDN –](./media/cdn-sas-storage-support/cdn-url-rewrite-rule.png)
-   ![levé pravidlo pro přepsání adresy URL pro CDN – vpravo](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-4.png)
+   ![Pravidlo pro přepsání adresy URL CDN – levé ](./media/cdn-sas-storage-support/cdn-url-rewrite-rule.png)
+    ![ pravidlo pro přepsání adresy URL pro CDN – vpravo](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-4.png)
 
 3. Pokud provedete obnovení SAS, ujistěte se, že aktualizujete pravidlo pro přepsání adresy URL novým tokenem SAS. 
 
@@ -133,7 +133,7 @@ Pokud chcete použít Azure CDN ověřování pomocí tokenu zabezpečení, mus�
 
 Vzhledem k tomu, že parametry SAS nejsou Azure CDN k dispozici, Azure CDN nemohou změnit jejich chování při doručování na základě nich. Omezení definovaných parametrů se vztahují pouze na požadavky, které Azure CDN provede na zdrojovém serveru, a ne pro žádosti od klienta do Azure CDN. Toto rozlišení je důležité vzít v úvahu při nastavování parametrů SAS. Pokud jsou tyto rozšířené možnosti požadovány a používáte [možnost 3](#option-3-using-cdn-security-token-authentication-with-a-rewrite-rule), nastavte příslušná omezení pro Azure CDN token zabezpečení.
 
-| Název parametru SAS | Popis |
+| Název parametru SAS | Description |
 | --- | --- |
 | Spustit | Čas, kdy Azure CDN může začít přistupovat k souboru objektu BLOB. Pokud chcete, aby byl Asset k dispozici okamžitě, vyberte čas od času naklonění (když se hodinový signál dorazí v různou dobu pro různé komponenty). |
 | End | Čas, po jehož uplynutí Azure CDN nemůže získat přístup k souboru objektu BLOB. Soubory dříve uložených v mezipaměti v Azure CDN jsou stále přístupné. Chcete-li řídit čas vypršení platnosti souboru, buď nastavte vhodný čas vypršení platnosti v Azure CDN tokenu zabezpečení, nebo vyprázdnte Asset. |

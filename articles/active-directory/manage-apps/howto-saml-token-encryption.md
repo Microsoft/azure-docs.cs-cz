@@ -3,9 +3,8 @@ title: Šifrování tokenu SAML v Azure Active Directory
 description: Přečtěte si, jak nakonfigurovat Azure Active Directory šifrování tokenu SAML.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
-editor: ''
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -13,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/13/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: paulgarn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0082d841faf22745e609d38444f4a97553b3c867
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 779d1b73f45f9be5b4bd00d546987b7c1e0b6a43
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79365862"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763342"
 ---
 # <a name="how-to-configure-azure-ad-saml-token-encryption"></a>Postupy: Konfigurace šifrování tokenů SAML v Azure AD
 
@@ -87,7 +86,7 @@ Veřejný certifikát můžete přidat do konfigurace aplikace v rámci Azure Po
 
 ## <a name="configure-saml-token-encryption-using-graph-api-powershell-or-app-manifest"></a>Konfigurace šifrování tokenu SAML pomocí Graph API, PowerShellu nebo manifestu aplikace
 
-Šifrovací certifikáty se ukládají v aplikačním objektu v Azure AD se značkou `encrypt` použití. Můžete nakonfigurovat několik šifrovacích certifikátů a tu, která je aktivní pro šifrování tokenů, je identifikována `tokenEncryptionKeyID` atributem.
+Šifrovací certifikáty se ukládají v aplikačním objektu v Azure AD se `encrypt` značkou použití. Můžete nakonfigurovat několik šifrovacích certifikátů a tu, která je aktivní pro šifrování tokenů, je identifikována `tokenEncryptionKeyID` atributem.
 
 K nakonfigurování šifrování tokenů pomocí rozhraní Microsoft Graph API nebo prostředí PowerShell budete potřebovat ID objektu aplikace. Tuto hodnotu můžete najít programově nebo na stránce **vlastností** aplikace v Azure Portal a zaznamenání hodnoty **ID objektu** .
 

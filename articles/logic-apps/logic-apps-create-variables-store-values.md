@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 55984082a6b287e9f7cdca005a24ef3c18032491
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 02e9426c7fc537a43fadddb5e2c34fd9c311d69b
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75456692"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753254"
 ---
 # <a name="store-and-manage-values-by-using-variables-in-azure-logic-apps"></a>Ukládání a Správa hodnot pomocí proměnných v Azure Logic Apps
 
@@ -22,7 +22,7 @@ Můžete vytvořit proměnné pro datové typy, jako je celé číslo, float, Bo
 * Získá nebo odkázat na hodnotu proměnné.
 * Zvyšte nebo snižte proměnnou pomocí konstantní hodnoty, označované také jako *zvýšení* a *snížení*.
 * Přiřaďte proměnné jinou hodnotu.
-* Vloží nebo *připojí* hodnotu proměnné jako poslední čas v řetězci nebo poli.
+* Vložte nebo *přidejte* hodnotu proměnné jako poslední položku v řetězci nebo poli.
 
 Proměnné existují a jsou globální jenom v instanci aplikace logiky, která je vytvořila. Také se chovají v rámci všech iterací smyčky v instanci aplikace logiky. Když odkazujete na proměnnou, použijte název proměnné jako token, nikoli název akce, což je obvyklý způsob, jak odkazovat na výstupy akce.
 
@@ -57,9 +57,9 @@ Můžete vytvořit proměnnou a deklarovat její datový typ a počáteční hod
 
      ![Přidání akce](./media/logic-apps-create-variables-store-values/add-action.png)
 
-   * Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku připojení, aby se zobrazilo znaménko plus (**+**). Vyberte znaménko plus a pak vyberte **přidat akci**.
+   * Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku připojení, aby se zobrazilo znaménko plus ( **+** ). Vyberte znaménko plus a pak vyberte **přidat akci**.
 
-1. V části **zvolit akci**zadejte `variables` do vyhledávacího pole jako filtr. V seznamu akce vyberte možnost **inicializovat proměnnou**.
+1. V části **zvolit akci**zadejte do vyhledávacího pole `variables` jako filtr. V seznamu akce vyberte možnost **inicializovat proměnnou**.
 
    ![Vybrat akci](./media/logic-apps-create-variables-store-values/select-initialize-variable-action.png)
 
@@ -69,7 +69,7 @@ Můžete vytvořit proměnnou a deklarovat její datový typ a počáteční hod
    |----------|----------|-------|--------------|
    | **Název** | Ano | <*název proměnné*> | Název proměnné, která se má zvýšit |
    | **Typ** | Ano | <*typ proměnné*> | Datový typ proměnné |
-   | **Osa** | Ne | <*počáteční hodnota*> | Počáteční hodnota proměnné <p><p>**Tip**: Pokud je to volitelné, nastavte tuto hodnotu jako osvědčený postup, abyste vždy znali počáteční hodnotu pro vaši proměnnou. |
+   | **Hodnota** | Ne | <*počáteční hodnota*> | Počáteční hodnota proměnné <p><p>**Tip**: Pokud je to volitelné, nastavte tuto hodnotu jako osvědčený postup, abyste vždy znali počáteční hodnotu pro vaši proměnnou. |
    |||||
 
    Příklad:
@@ -179,7 +179,7 @@ Tady jsou příklady pro některé jiné typy proměnných:
 
 Pro načtení nebo odkazování na obsah proměnné můžete použít také [funkci Variables ()](../logic-apps/workflow-definition-language-functions-reference.md#variables) v návrháři aplikace logiky a v editoru zobrazení kódu. Při odkazování na proměnnou použijte název proměnné jako token, nikoli název akce, což je obvyklý způsob, jak odkazovat na výstupy akce.
 
-Například tento výraz získá položky z proměnné pole [vytvořené dříve v tomto článku](#append-value) pomocí `variables()` funkce. `string()` Funkce vrátí obsah proměnné ve formátu řetězce:`"1, 2, 3, red"`
+Například tento výraz získá položky z proměnné pole [vytvořené dříve v tomto článku](#append-value) pomocí `variables()` funkce. `string()`Funkce vrátí obsah proměnné ve formátu řetězce:`"1, 2, 3, red"`
 
 ```json
 @{string(variables('myArrayVariable'))}
@@ -208,7 +208,7 @@ Pokud chcete proměnnou *zvýšit nebo zvýšit na konstantní* hodnotu, přidej
    | Vlastnost | Požaduje se | Hodnota |  Popis |
    |----------|----------|-------|--------------|
    | **Název** | Ano | <*název proměnné*> | Název proměnné, která se má zvýšit |
-   | **Osa** | Ne | <*přírůstek-hodnota*> | Hodnota použitá pro zvýšení proměnné. Výchozí hodnota je jedna. <p><p>**Tip**: Pokud je to volitelné, nastavte tuto hodnotu jako osvědčený postup, abyste vždy znali konkrétní hodnotu pro zvýšení vaší proměnné. |
+   | **Hodnota** | Ne | <*přírůstek-hodnota*> | Hodnota použitá pro zvýšení proměnné. Výchozí hodnota je jedna. <p><p>**Tip**: Pokud je to volitelné, nastavte tuto hodnotu jako osvědčený postup, abyste vždy znali konkrétní hodnotu pro zvýšení vaší proměnné. |
    ||||
 
    Příklad:
@@ -247,7 +247,7 @@ Proměnné se běžně používají pro počítání počtu spuštění smyčky.
 
    ![Kontrolovat a zahrnovat přílohy](./media/logic-apps-create-variables-store-values/check-include-attachments.png)
 
-1. Přidejte akci [ **inicializovat proměnnou** ](#create-variable). Vytvořte celočíselnou proměnnou s `Count` názvem, která má nulovou počáteční hodnotu.
+1. Přidejte akci [ **inicializovat proměnnou** ](#create-variable). Vytvořte celočíselnou proměnnou s názvem `Count` , která má nulovou počáteční hodnotu.
 
    ![Přidat akci pro "inicializovat proměnnou"](./media/logic-apps-create-variables-store-values/initialize-variable.png)
 
@@ -329,7 +329,7 @@ Tady jsou vlastnosti pro akci **snížení proměnné** :
 | Vlastnost | Požaduje se | Hodnota |  Popis |
 |----------|----------|-------|--------------|
 | **Název** | Ano | <*název proměnné*> | Název proměnné, která se má snížit | 
-| **Osa** | Ne | <*přírůstek-hodnota*> | Hodnota pro snížení proměnné Výchozí hodnota je jedna. <p><p>**Tip**: Pokud je to volitelné, nastavte tuto hodnotu jako osvědčený postup, abyste vždy znali určitou hodnotu pro snížení vaší proměnné. |
+| **Hodnota** | Ne | <*přírůstek-hodnota*> | Hodnota pro snížení proměnné Výchozí hodnota je jedna. <p><p>**Tip**: Pokud je to volitelné, nastavte tuto hodnotu jako osvědčený postup, abyste vždy znali určitou hodnotu pro snížení vaší proměnné. |
 ||||| 
 
 Pokud přepnete z návrháře do editoru zobrazení kódu, je zde způsob, jakým se akce **snížení proměnné** zobrazí v definici aplikace logiky, která je ve formátu JSON.
@@ -362,7 +362,7 @@ Tady jsou vlastnosti pro akci **nastavit proměnnou** :
 | Vlastnost | Požaduje se | Hodnota |  Popis |
 |----------|----------|-------|--------------|
 | **Název** | Ano | <*název proměnné*> | Název proměnné, která se má změnit |
-| **Osa** | Ano | <*Nová hodnota*> | Hodnota, kterou chcete přiřadit k proměnné. Oba typy musí mít stejný datový typ. |
+| **Hodnota** | Ano | <*Nová hodnota*> | Hodnota, kterou chcete přiřadit k proměnné. Oba typy musí mít stejný datový typ. |
 ||||| 
 
 > [!NOTE]
@@ -374,7 +374,7 @@ Tady jsou vlastnosti pro akci **nastavit proměnnou** :
 >
 > 3. Přetáhněte jezdec **stupeň paralelismu** na **1**.
 
-Pokud přepnete z návrháře do editoru zobrazení kódu, je zde způsob, jakým se akce **nastavit proměnnou** zobrazí v definici aplikace logiky, která je ve formátu JSON. Tento příklad změní aktuální `Count` hodnotu proměnné na jinou hodnotu.
+Pokud přepnete z návrháře do editoru zobrazení kódu, je zde způsob, jakým se akce **nastavit proměnnou** zobrazí v definici aplikace logiky, která je ve formátu JSON. Tento příklad změní `Count` aktuální hodnotu proměnné na jinou hodnotu.
 
 ```json
 "actions": {
@@ -420,7 +420,7 @@ Tady jsou vlastnosti pro akce **připojit k...** :
 | Vlastnost | Požaduje se | Hodnota |  Popis |
 |----------|----------|-------|--------------|
 | **Název** | Ano | <*název proměnné*> | Název proměnné, která se má změnit |
-| **Osa** | Ano | <*hodnota připojení*> | Hodnota, kterou chcete připojit, což může mít libovolný typ |
+| **Hodnota** | Ano | <*hodnota připojení*> | Hodnota, kterou chcete připojit, což může mít libovolný typ |
 |||||
 
 Pokud přepnete z návrháře do editoru zobrazení kódu, je zde způsob, jakým se akce **připojit k proměnné pole** zobrazí v definici aplikace logiky, která je ve formátu JSON. Tento příklad vytvoří proměnnou pole a přidá další hodnotu jako poslední položku v poli. Váš výsledek je aktualizovaná proměnná, která obsahuje toto pole:`[1,2,3,"red"]`

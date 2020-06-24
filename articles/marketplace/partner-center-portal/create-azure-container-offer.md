@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 538baee092ea6e11469f7d0331cc1b89eaf9a161
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: cd0c8961cff15385249222986e5fb90ee75e3559
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84672710"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887329"
 ---
 # <a name="create-an-azure-container-offer"></a>Vytvoření nabídky kontejneru Azure
 
@@ -48,7 +48,7 @@ Vyberte **vytvořit** pro vygenerování nabídky a pokračování.
 
 Na stránce **Přehled nabídky** se zobrazuje vizuální reprezentace kroků požadovaných k publikování této nabídky (dokončené i nadcházející) a o tom, jak dlouho by měly být jednotlivé kroky dokončeny.
 
-Tato stránka zobrazuje různé odkazy na základě aktuálního stavu nabídky. Například:
+Tato stránka zobrazuje různé odkazy na základě aktuálního stavu nabídky. Příklad:
 
 - Pokud je nabídka nabídkou konceptu a [odstranění konceptu](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)
 - Pokud je nabídka živá, [přestanou prodávat nabídku](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan) .
@@ -144,7 +144,7 @@ Krátký popis vaší nabídky Může to být až 100 znaků dlouhé a použív�
 
 Podrobnější popis vaší nabídky. Může to být až 256 znaků dlouhé a používá se ve výsledcích hledání na webu Marketplace.
 
-### <a name="description"></a>Popis
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -276,20 +276,20 @@ Do pole **název plánu** zadejte název pro tento plán. Zákazníci uvidí ten
 
 Na této kartě můžete vybrat cloudy, ve kterých je plán k dispozici. Vaše odpovědi na této kartě mají vliv na to, která pole se zobrazí na jiných kartách.
 
-#### <a name="cloud-availability"></a>Dostupnost cloudu
+#### <a name="azure-regions"></a>Oblast Azure
 
 Všechny plány pro nabídky Azure Container jsou automaticky dostupné v **globálním Azure**.  Váš plán můžou používat zákazníci ve všech globálních oblastech Azure, které využívají komerční tržiště. Podrobnosti najdete v tématu [geografická dostupnost a podpora měny](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies).
 
-Vyberte možnost [**Cloud Azure Government**](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) , aby se vaše řešení zobrazilo tady. Toto je Cloud komunity státní správy s řízeným přístupem pro zákazníky ze federálních, státních a místních nebo samosprávné vládních úřadů USA a partnerů, kteří jim mají nárok na jejich obsluhu. Jako vydavatel zodpovídáte za řízení dodržování předpisů, míry zabezpečení a osvědčené postupy pro tuto komunitu cloudu. Azure Government používá fyzicky izolovaná datová centra a sítě (jenom v USA).
+Pokud chcete, aby se vaše řešení zobrazilo tady, vyberte možnost [**Azure Government**](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) . Toto je Cloud komunity státní správy s řízeným přístupem pro zákazníky ze federálních, státních a místních nebo samosprávné vládních úřadů USA a partnerů, kteří jim mají nárok na jejich obsluhu. Jako vydavatel zodpovídáte za řízení dodržování předpisů, míry zabezpečení a osvědčené postupy pro tuto komunitu cloudu. Azure Government používá fyzicky izolovaná datová centra a sítě (jenom v USA).
 
 Před [publikováním](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners) Azure Government, otestujte a potvrďte své řešení v rámci této oblasti, protože výsledky se můžou lišit. Pokud chcete své řešení vytvořit a otestovat, vyžádejte si zkušební účet z [Microsoft Azure Government zkušební verze](https://azure.microsoft.com/global-infrastructure/government/request/).
 
 > [!NOTE]
-> Po publikování a dostupnosti plánu v konkrétním cloudu nemůžete tento Cloud odebrat.
+> Po publikování a dostupnosti plánu v konkrétní oblasti už tuto oblast nemůžete odebrat.
 
-#### <a name="azure-government-cloud-certifications"></a>Azure Government certifikace cloudu
+#### <a name="azure-government-certifications"></a>Azure Government certifikace
 
-Tato možnost se dá zobrazit jenom v případě, že je v **cloudové dostupnosti**vybraná možnost **Azure Government Cloud** .
+Tato možnost se dá zobrazit jenom v případě, že je v **cloudové dostupnosti**vybraná možnost **Azure Government** .
 
 Služba Azure Government Services zpracovává data, která se vztahují na určité předpisy a požadavky státní správy. Příklad: FedRAMP, NIST 800,171 (DIB), ITAR, finanční úřad 1075, DoD – L4 a CJIS.
 
@@ -331,7 +331,7 @@ Pokud chcete publikovat publikovanou nabídku, aby ji zákazníci nemohli vyhled
 
 Toto pole se používá, když:
 
-- Tato nabídka je určena k použití nepřímo při odkazování na jinou aplikaci.
+- Nabídka je určena k použití nepřímo při odkazování prostřednictvím jiné aplikace.
 - Nabídka by se neměla koupit samostatně.
 - Plán byl použit pro počáteční testování a již není relevantní.
 - Plán byl použit pro dočasné nebo sezónní nabídky a již by neměl být nabídnut.

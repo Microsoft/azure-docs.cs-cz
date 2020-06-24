@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: b8a65d4ae6aaac78e642c851a66b745a940fa0ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dc1599fc0c2f8c55c709ab674c10dd53c8d8dc04
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67593901"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887706"
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>Analýza výkonu hraničního uzlu v Microsoft Azure CDN
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
@@ -84,7 +84,7 @@ Tento řídicí panel se skládá z těchto:
   * Snížené provozní náklady.
 * Vylepšená akcelerace doručování dat, protože další požadavky budou obsluhovány přímo ze sítě CDN.
 
-| Pole | Popis |
+| Pole | Description |
 | --- | --- |
 | Efektivita mezipaměti |Určuje procento přenesených dat, která byla obsluhována z mezipaměti. Tato metrika měří, když byla verze požadovaného obsahu v mezipaměti doručována přímo z sítě CDN (hraniční servery) žadatelům (například ve webovém prohlížeči). |
 | Rychlost volání |Označuje procento požadavků, které byly obsluhovány z mezipaměti. Tato metrika měří, když byla verze požadovaného obsahu v mezipaměti doručována přímo z sítě CDN (hraniční servery) žadateli (například webový prohlížeč). |
@@ -102,7 +102,7 @@ Tento řídicí panel se skládá z těchto:
 > 
 > 
 
-| Pole | Popis |
+| Pole | Description |
 | --- | --- |
 | Ave bajty z |Označuje průměrný počet přenesených bajtů pro každý požadavek, který je poskytován od sítě CDN (hraniční servery) žadateli (například webový prohlížeč). |
 | Žádná četnost bajtů konfigurace mezipaměti |Označuje procento provozu poskytovaného ze sítě CDN (hraniční servery) žadateli (například webový prohlížeč), který nebude uložen do mezipaměti z důvodu funkce vynechat mezipaměť. |
@@ -114,7 +114,7 @@ Tento řídicí panel se skládá z těchto:
 #### <a name="performance-metrics"></a>Metriky výkonu
 Účelem těchto metrik je sledovat celkový výkon sítě CDN pro váš provoz.
 
-| Pole | Popis |
+| Pole | Description |
 | --- | --- |
 | Přenosová rychlost |Určuje průměrnou rychlost přenosu obsahu z CDN do žadatele. |
 | Doba trvání |Označuje průměrný čas (v milisekundách), který trvalo doručení assetu žadateli (například webový prohlížeč). |
@@ -126,7 +126,7 @@ Tento řídicí panel se skládá z těchto:
 #### <a name="secure-traffic-metrics"></a>Metriky zabezpečeného provozu
 Účelem těchto metrik je sledovat výkon sítě CDN pro přenosy přes protokol HTTPS.
 
-| Pole | Popis |
+| Pole | Description |
 | --- | --- |
 | Efektivita zabezpečené mezipaměti |Označuje procento přenesených dat pro požadavky HTTPS, které byly obsluhovány z mezipaměti. Tato metrika měří, když byla verze požadovaného obsahu v mezipaměti doručována přímo z sítě CDN (hraniční servery) do žadatelů (například webový prohlížeč) prostřednictvím protokolu HTTPS. |
 | Rychlost zabezpečeného přenosu |Určuje průměrnou rychlost, s jakou byl obsah přenesen ze sítě CDN (hraniční servery) na žadatele (např. webové servery) prostřednictvím protokolu HTTPS. |
@@ -134,7 +134,7 @@ Tento řídicí panel se skládá z těchto:
 | Zabezpečené přístupy |Označuje počet požadavků HTTPS na obsah CDN. |
 | Zabezpečené bajty odchozích bajtů |Označuje počet přenosů HTTPS (v bajtech), které byly doručeny ze sítě CDN (hraniční servery) žadateli (například webový prohlížeč). |
 
-## <a name="reports"></a>Sestavy
+## <a name="reports"></a>sestavy
 Každá sestava v tomto modulu obsahuje graf a statistiku využití šířky pásma a provozu pro různé typy metrik (například stavové kódy HTTP, stavové kódy mezipaměti, adresa URL požadavku atd.). Tyto informace se dají využít k hlubšímu zvyšování způsobu poskytování obsahu klientům a k doladění chování CDN, aby se zlepšil výkon při doručování dat.
 
 ### <a name="accessing-the-edge-performance-reports"></a>Přístup k sestavám výkonnosti Edge
@@ -171,7 +171,7 @@ Každá sestava v tomto modulu obsahuje graf a statistiku využití šířky pá
 | Uživatelský agent |Obsahuje pruhový graf, který zobrazuje prvních 10 uživatelských agentů k vyžádání obsahu prostřednictvím našeho CDN. Uživatelský agent je typicky webový prohlížeč, přehrávač médií nebo prohlížeč mobilních telefonů. Statistika pro nejčastější uživatelské agenty 100 se zobrazuje přímo pod tímto grafem. |
 | Odkazujících serverů |Obsahuje pruhový graf, který zobrazuje horních 10 odkazujících na obsah, který je k dispozici prostřednictvím naší sítě CDN. Odkazujícím objektem je obvykle adresa URL webové stránky nebo prostředku, který odkazuje na váš obsah. Podrobné informace jsou uvedené pod grafem pro hlavní servery 100. |
 | Typy komprese |Obsahuje prstencový graf, který rozděluje požadované prostředky podle toho, zda byly komprimovány našimi hraničními servery. Procento komprimovaných prostředků je rozděleno podle použitého typu komprese. Podrobné informace jsou uvedeny pod grafem pro každý typ a stav komprese. |
-| Typy souborů |Obsahuje pruhový graf, který zobrazuje prvních 10 typů souborů, které byly vyžádány prostřednictvím našeho CDN pro váš účet. Pro účely této sestavy je typ souboru definovaný příponou názvu souboru prostředku a typem \[internetového média (např. HTML text/HTML\],. htm \[text/HTML\],. aspx \[text/HTML\]atd.). Podrobné informace jsou uvedené pod grafem pro nejvyšší 100 typy souborů. |
+| Typy souborů |Obsahuje pruhový graf, který zobrazuje prvních 10 typů souborů, které byly vyžádány prostřednictvím našeho CDN pro váš účet. Pro účely této sestavy je typ souboru definovaný příponou názvu souboru prostředku a typem internetového média (např. HTML \[ text/HTML \] ,. htm \[ text/HTML \] ,. aspx \[ text/HTML \] atd.). Podrobné informace jsou uvedené pod grafem pro nejvyšší 100 typy souborů. |
 | Jedinečné soubory |Obsahuje graf, který zobrazuje celkový počet jedinečných prostředků, které byly vyžádány v určitém dni určitého dne v zadaném časovém období. |
 | Souhrn ověření tokenu |Obsahuje výsečový graf, který poskytuje rychlý přehled o tom, zda byly požadované prostředky chráněny ověřováním na základě tokenu. Chráněné prostředky se v grafu zobrazí podle výsledků jejich pokusů o ověření. |
 | Podrobnosti zamítnutí ověření tokenu |Obsahuje pruhový graf, který umožňuje zobrazit prvních 10 požadavků, které byly zamítnuty z důvodu ověřování založeného na tokenech. |

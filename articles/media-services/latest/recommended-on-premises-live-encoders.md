@@ -9,14 +9,14 @@ ms.author: johndeu
 ms.date: 04/16/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 0676b6b183c64dcd0fb15b87de48a4afed3a0011
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 53d68a18c5904b8b7e2f6145ae26221e99395a82
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641809"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84749934"
 ---
-# <a name="tested-on-premises-live-streaming-encoders"></a>Testování místních kodérů živého streamování
+# <a name="verified-on-premises-live-streaming-encoders"></a>Ověřená místní kodéry živého streamování
 
 V Azure Media Services [živá událost](https://docs.microsoft.com/rest/api/media/liveevents) (kanál) představuje kanál pro zpracování obsahu živého streamování. Živá událost přijímá živé vstupní proudy jedním ze dvou způsobů.
 
@@ -29,7 +29,7 @@ V Azure Media Services [živá událost](https://docs.microsoft.com/rest/api/med
  
 * On-premises Live Encoder pošle datový proud s jednou přenosovou rychlostí do živé události, která má povoleno provádět kódování v reálném čase pomocí Media Services v jednom z následujících formátů: RTMP nebo Smooth Streaming (fragmentovaný MP4). Živá událost pak provede živé kódování příchozího datového proudu s jednou přenosovou rychlostí do datového proudu s více přenosovými rychlostmi (adaptivní).
 
-Tento článek popisuje testování místních kodérů živého streamování. Pokyny, jak ověřit váš místní kodér v reálném čase, najdete v tématu [ověření místního kodéru](become-on-premises-encoder-partner.md) .
+Tento článek popisuje ověřené místní kodéry živého streamování. Ověřování se provádí prostřednictvím samoobslužného ověření od dodavatele nebo ověření zákazníka. Microsoft Azure Media Services neprovádí úplné nebo přísné testování jednotlivých kodérů a při aktualizacích se neustále znovu neověřuje. Pokyny, jak ověřit váš místní kodér v reálném čase, najdete v tématu [ověření místního kodéru](become-on-premises-encoder-partner.md) .
 
 Podrobné informace o živém kódování pomocí Media Services najdete v tématu [živé streamování s Media Services V3](live-streaming-overview.md).
 
@@ -39,33 +39,38 @@ Kodéry musí podporovat protokol TLS 1,2 při použití protokolů HTTPS nebo R
 
 ## <a name="live-encoders-that-output-rtmp"></a>Živé kodéry, které mají výstup RTMP
 
-Služba Media Services doporučuje používat jeden z následujících kodérů pro kódování v reálném čase, které mají RTMP jako výstup. Podporovaná schémata URL jsou `rtmp://` nebo `rtmps://`.
+Služba Media Services doporučuje používat jeden z následujících kodérů pro kódování v reálném čase, které mají RTMP jako výstup. Podporovaná schémata URL jsou `rtmp://` nebo `rtmps://` .
 
 Při streamování přes RTMP zkontrolujte nastavení brány firewall nebo proxy serveru, aby se zajistilo, že jsou otevřené odchozí porty TCP 1935 a 1936.<br/><br/>
 Při streamování přes RTMPS zkontrolujte nastavení brány firewall nebo proxy serveru, aby se zajistilo, že jsou otevřené odchozí porty TCP 2935 a 2936.
 
 > [!NOTE]
-> Kodéry musí podporovat protokol TLS 1,2 při použití protokolů RTMP.
+> Kodéry musí podporovat protokol TLS 1,2 při použití protokolů RTMPs.
 
 - Adobe Flash Media Live Encoder 3.2
+- [Blackmagic ATEM Mini a ATEM Mini PRO](https://www.blackmagicdesign.com/products/atemmini)
 - [Cambria Live 4,3](https://www.capellasystems.net/products/cambria-live/)
 - Element-Live (verze 2.14.15 a vyšší)
+- [FFmpeg](https://www.ffmpeg.org)
+- [GoPro](https://gopro.com/help/articles/block/getting-started-with-live-streaming) Hero 7 a Hero 8
 - Haivision KB
 - Haivision Makito X HEVC
+- [Restream.io](https://restream.io/)
 - OBS Studio
-- Switcher Studio (iOS)
+- [Streamlabs OBS](https://streamlabs.com/)
+- [Switcher Studio (iOS)](https://www.switcherstudio.com/)
 - Wirecast (verze 13.0.2 nebo vyšší) z důvodu požadavku TLS 1,2)
-- Wirecast S-Stream (podporuje se jenom RTMP)
+- Wirecast S-Stream (podporuje se jenom RTMP. Nepodporují se žádné RTMP v důsledku nedostatku TLS 1.2 +).
 - Teradek Slice 756
 - VMIX
 - xStream
-- [FFmpeg](https://www.ffmpeg.org)
-- [GoPro](https://gopro.com/help/articles/block/getting-started-with-live-streaming) Hero 7 a Hero 8
-- [Restream.io](https://restream.io/)
 
-## <a name="live-encoders-that-output-fragmented-mp4"></a>Živé kodéry, jejichž výstupem je fragment MP4
+> [!WARNING]
+> Výše uvedený seznam kodérů je pouze seznam doporučení. Společnost Microsoft netestuje nebo neověřuje kodéry na základě nepřetržitého provozu a aktualizace nebo zásadní změny mohou být zavedeny pomocí dodavatelů kodéru nebo open source projektů, které by mohly přerušit kompatibilitu. 
 
-Media Services doporučuje použít jeden z následujících živých kodérů, které mají s více přenosovými rychlostmi Smooth Streaming (fragmentované MP4) jako výstup. Podporovaná schémata URL jsou `http://` nebo `https://`.
+## <a name="live-encoders-that-output-fragmented-mp4-smooth-streaming-ingest"></a>Živé kodéry, které zapsaly fragmenty MP4 (Smooth Streaming ingestování)
+
+Media Services doporučuje použít jeden z následujících živých kodérů, které mají s více přenosovými rychlostmi Smooth Streaming (fragmentované MP4) jako výstup. Podporovaná schémata URL jsou `http://` nebo `https://` .
 
 > [!NOTE]
 > Kodéry musí podporovat protokol TLS 1,2 při použití protokolů HTTPS.
@@ -74,12 +79,15 @@ Media Services doporučuje použít jeden z následujících živých kodérů, 
 - Cisco Digital Media Encoder 2200
 - Element-Live (verze 2.14.15 a vyšší z důvodu požadavku TLS 1,2)
 - Envivio 4Caster C4 Gen III 
+- [FFmpeg](https://www.ffmpeg.org)
 - Představte si Communications Selenio MCP3
 - Media Excel Hero Live a Hero 4K (UHD/HEVC)
-- [FFmpeg](https://www.ffmpeg.org)
 
 > [!TIP]
 >  Pokud vytváříte streamování živých událostí v několika jazycích (například jedna anglická zvuková stopa a jedna Španělská zvuková stopa), můžete toho dosáhnout pomocí Media Encoder Live kodéru nakonfigurovaného tak, aby odesílal živý kanál do předávací živé události.
+
+> [!WARNING]
+> Výše uvedený seznam kodérů je pouze seznam doporučení. Společnost Microsoft netestuje ani neověřuje kodéry na základě neustálého spuštění a podpora nebo chyby mohou být zavedeny pomocí dodavatelů kodéru nebo open source projektů, které přeruší kompatibilitu. 
 
 ## <a name="configuring-on-premises-live-encoder-settings"></a>Konfigurace nastavení místního kodéru pro Live Encoder
 
@@ -95,8 +103,10 @@ Aby bylo možné přehrávat obsah, musí být k dispozici zvukový a obrazový 
 - Při určování požadavků na šířku pásma Zdvojnásobte přenosové rychlosti streamování. I když není povinné, toto jednoduché pravidlo pomáhá zmírnit dopad zahlcení sítě.
 - Při používání softwarových kodérů zavřete všechny nepotřebné programy.
 - Změna konfigurace kodéru po zahájení práce má na událost negativní vliv. Změny konfigurace můžou způsobit, že dojde k nestabilitě události. 
+- Vždy otestujte a ověřte novější verze kodéru softwaru, aby se zajistila kompatibilita s Azure Media Services. Společnost Microsoft neověřuje znovu kodéry v tomto seznamu a většina ověřování provádí výrobci softwaru přímo jako "samy Certifikac".
 - Ujistěte se, že máte k nastavení události dostatek času. Pro vysoce škálovatelné události doporučujeme spustit nastavení hodinu před událostí.
-- Použijte výstup videa H. 264 a zvukový kodek AAC.
+- Použijte výstup videa H. 264 a zvukový kodek AAC-LC.
+- Platí pro podporovaná rozlišení a kmitočty snímků pro typ živé události, které vysíláte (například 60fps je aktuálně zamítnutá).
 - Zajistěte, aby existoval klíčový snímek nebo skupinu GOP dočasné zarovnání napříč kvalitou videa.
 - Ujistěte se, že pro každou kvalitu videa existuje jedinečný název datového proudu.
 - Pro optimální výkon adaptivní přenosové rychlosti doporučujeme použít striktní kódování CBR.

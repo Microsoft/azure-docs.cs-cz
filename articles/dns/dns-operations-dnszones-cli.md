@@ -4,27 +4,25 @@ description: Můžete spravovat zóny DNS pomocí rozhraní příkazového řád
 services: dns
 documentationcenter: na
 author: rohinkoul
-manager: timlt
-ms.assetid: 8ab63bc4-5135-4ed8-8c0b-5f0712b9afed
 ms.service: dns
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2017
 ms.author: rohink
-ms.openlocfilehash: 413c2ab3ee04249c2bb52bf42ca6a31a58fb9082
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 30b0d6ab3ff9fa96e33154907e329c28b7ae7e63
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76936930"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84709075"
 ---
 # <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli"></a>Správa Zóny DNS v Azure DNS pomocí Azure CLI
 
 > [!div class="op_single_selector"]
-> * [Portál](dns-operations-dnszones-portal.md)
-> * [Prostředí](dns-operations-dnszones.md)
+> * [Azure Portal](dns-operations-dnszones-portal.md)
+> * [PowerShell](dns-operations-dnszones.md)
 > * [Azure CLI](dns-operations-dnszones-cli.md)
 
 
@@ -38,7 +36,7 @@ V této příručce se konkrétně zabývá veřejné zóny DNS. Informace o pou
 
 ## <a name="set-up-azure-cli-for-azure-dns"></a>Nastavení rozhraní příkazového řádku Azure pro Azure DNS
 
-### <a name="before-you-begin"></a>Před zahájením
+### <a name="before-you-begin"></a>Než začnete
 
 Před zahájením konfigurace ověřte, zda máte následující.
 
@@ -86,7 +84,7 @@ az group create --name myresourcegroup --location "West US"
 
 ## <a name="getting-help"></a>Získání nápovědy
 
-Všechny příkazy rozhraní příkazového řádku Azure, které `az network dns`se týkají Azure DNS začínají na. K dispozici pro každý příkaz můžete použít `--help` možnost (krátký tvar `-h`).  Příklad:
+Všechny příkazy rozhraní příkazového řádku Azure, které se týkají Azure DNS začínají na `az network dns` . K dispozici pro každý příkaz můžete použít `--help` možnost (krátký tvar `-h` ).  Příklad:
 
 ```azurecli
 az network dns --help
@@ -106,7 +104,7 @@ az network dns zone create --resource-group MyResourceGroup --name contoso.com
 
 ### <a name="to-create-a-dns-zone-with-tags"></a>Vytvoření zóny DNS pomocí značek
 
-Následující příklad ukazuje, jak vytvořit zónu DNS se dvěma [Azure Resource Manager značkami](dns-zones-records.md#tags) *Project = demo* a *ENV = test*pomocí `--tags` parametru (krátký tvar `-t`):
+Následující příklad ukazuje, jak vytvořit zónu DNS se dvěma [Azure Resource Manager značkami](dns-zones-records.md#tags) *Project = demo* a *ENV = test*pomocí `--tags` parametru (krátký tvar `-t` ):
 
 ```azurecli
 az network dns zone create --resource-group MyResourceGroup --name contoso.com --tags "project=demo" "env=test"
@@ -114,7 +112,7 @@ az network dns zone create --resource-group MyResourceGroup --name contoso.com -
 
 ## <a name="get-a-dns-zone"></a>Získání zóny DNS
 
-K načtení zóny DNS použijte `az network dns zone show`. Nápovědu získáte příkazem `az network dns zone show --help`.
+K načtení zóny DNS použijte `az network dns zone show` . Nápovědu získáte příkazem `az network dns zone show --help`.
 
 Následující příklad vrátí zónu DNS *contoso.com* a přidružená data ze skupiny prostředků *MyResourceGroup*. 
 

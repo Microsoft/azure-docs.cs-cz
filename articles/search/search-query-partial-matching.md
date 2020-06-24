@@ -7,44 +7,47 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/09/2020
-ms.openlocfilehash: 05ff56c904fc48a1041ad40f00110a8ff0fd01f1
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.date: 06/23/2020
+ms.openlocfilehash: d562931b7578935a4544dfd953ff2de74a5350a6
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82592039"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85260980"
 ---
 # <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>Částečné vyhledávání a vzory s použitím speciálních znaků (zástupné znaky, regulární výrazy, vzory)
 
-*Částečný pojem hledání* odkazuje na dotazy skládající se z fragmentů termínů, kde místo celého období může být pouze počáteční, prostřední nebo konec slova (někdy označované jako předpony, vpony nebo dotazy na přípony). *Vzor* může být kombinací fragmentů, často se speciálními znaky, jako jsou pomlčky nebo lomítka, která jsou součástí řetězce dotazu. Běžné použití – případy zahrnují dotazování na části telefonního čísla, adresy URL, osob nebo kódů produktů nebo složených slov.
+*Částečný pojem hledání* odkazuje na dotazy skládající se z fragmentů termínů, kde místo celého období může být pouze počáteční, prostřední nebo konec slova (někdy označované jako předpony, vpony nebo dotazy na přípony). Částečné hledání může zahrnovat kombinaci fragmentů, často se speciálními znaky, jako jsou pomlčky nebo lomítka, která jsou součástí řetězce dotazu. Běžné použití – případy zahrnují části telefonního čísla, adresy URL, kódy nebo složená slova se slovem.
 
-Částečné a vzorové vyhledávání můžou být problematické, pokud index nemá žádné výrazy v očekávaném formátu. Během [lexikální analytické fáze](search-lucene-query-architecture.md#stage-2-lexical-analysis) indexování (za předpokladu výchozího standardního analyzátoru) jsou ignorovány speciální znaky, jsou odděleny a složené řetězce a prázdné znaky jsou odstraněny. všechny, které můžou způsobit selhání dotazů vzorů, pokud se nenajde žádná shoda. Například telefonní `+1 (425) 703-6214` číslo (s tokeny jako `"1"`, `"425"`, `"703"`, `"6214"`) se v `"3-62"` dotazu nezobrazí, protože daný obsah v indexu skutečně neexistuje. 
+Částečné hledání a řetězce dotazů, které obsahují speciální znaky, mohou být problematické, pokud index nemá tokeny v očekávaném formátu. Během [lexikální analytické fáze](search-lucene-query-architecture.md#stage-2-lexical-analysis) indexování (za předpokladu výchozího analyzátoru Standard) se speciální znaky zahodí, jsou rozdělená i složená slova a prázdné znaky. všechny, které můžou způsobit neúspěch dotazů, pokud se nenajde shoda. Například telefonní číslo `+1 (425) 703-6214` (s tokeny jako `"1"` , `"425"` , `"703"` ,) se v dotazu nezobrazí, `"6214"` `"3-62"` protože daný obsah v indexu skutečně neexistuje. 
 
-Řešením je vyvolat analyzátor, který v případě potřeby zachová úplný řetězec, včetně mezer a speciálních znaků, takže se můžete porovnávat na částečné výrazy a vzory. Vytvoření dalšího pole pro nedotčený řetězec a použití analyzátoru pro zachování obsahu je základem řešení.
+Řešením je vyvolat analyzátor během indexování, který zachová úplný řetězec, včetně mezer a speciálních znaků v případě potřeby, abyste mohli do řetězce dotazu vložit mezery a znaky. Podobně s úplným řetězcem, který není založen na menších částech, umožňuje porovnávání vzorů pro "začíná na" nebo "končí" dotazy, kde vzorek, který zadáte, lze vyhodnotit proti termínu, který není transformován lexikální analýzou. Vytvoření dalšího pole pro nepoškozený řetězec a použití analyzátoru pro zachování obsahu, který vygeneruje úplné tokeny, je řešení pro porovnávání vzorů i pro porovnávání řetězců dotazů, které obsahují speciální znaky.
 
 > [!TIP]
-> Znáte rozhraní API pro post a REST? [Stáhněte si kolekci příklady dotazů](https://github.com/Azure-Samples/azure-search-postman-samples/) pro dotaz na částečné výrazy a speciální znaky popsané v tomto článku.
+> Pokud jste obeznámeni s rozhraními API pro odesílání a REST, [Stáhněte si kolekci příklady dotazů](https://github.com/Azure-Samples/azure-search-postman-samples/) pro dotaz na částečné výrazy a speciální znaky popsané v tomto článku.
 
-## <a name="what-is-partial-search-in-azure-cognitive-search"></a>Co je částečné vyhledávání v Azure Kognitivní hledání
+## <a name="what-is-partial-term-search-in-azure-cognitive-search"></a>Co je částečné vyhledávání v Azure Kognitivní hledání
 
-V Azure Kognitivní hledání je v těchto formulářích k dispozici částečné vyhledávání a vzor:
+Azure Kognitivní hledání hledá v indexu celé tokeny a nenalezne shodu s částečným termínem, pokud nezadáte zástupné symboly zástupných znaků ( `*` a `?` ), nebo tento dotaz naformátujete jako regulární výraz. Částečné výrazy jsou určeny pomocí těchto technik:
 
-+ [Hledání předpon](query-simple-syntax.md#prefix-search), například `search=cap*`, odpovídá na "Waterfront DIČ" nebo "Gaccho kapitálu". Pro hledání předpon můžete použít jednoduchou syntaxi dotazu nebo úplnou syntaxi dotazu Lucene.
++ [Dotazy regulárních výrazů](query-lucene-syntax.md#bkmk_regex) můžou být libovolný regulární výraz, který je platný v rámci Apache Lucene. 
 
-+ [Hledání pomocí zástupných znaků](query-lucene-syntax.md#bkmk_wildcard) nebo [regulární výrazy](query-lucene-syntax.md#bkmk_regex) , které hledají vzor nebo části vloženého řetězce. Zástupné znaky a regulární výrazy vyžadují úplnou syntaxi Lucene. Dotazy přípon a index jsou formulovány jako regulární výrazy.
++ [Operátory zástupných znaků s porovnáváním předpon](query-simple-syntax.md#prefix-search) odkazují na všeobecně rozpoznaný vzor, který zahrnuje začátek období, následované `*` `?` operátory nebo příponou přípony, jako je například `search=cap*` porovnávání "Waterfront DIČ" nebo "Gaccho kapitálu". Shoda předpony je podporována v jednoduché i úplné syntaxi dotazů Lucene.
 
-  Mezi příklady částečného hledání výrazu patří následující. Pro dotaz na příponu, který je dán termínem "alfanumerický", byste měli vyhledat shodu`search=/.*numeric.*/`pomocí zástupného znaku (). V případě částečného výrazu, který obsahuje vnitřní znaky, jako je například fragment adresy URL, může být nutné přidat řídicí znaky. Ve formátu JSON `/` je lomítko uvozeno zpětným lomítkem `\`. V takovém `search=/.*microsoft.com\/azure\/.*/` případě je syntaxe FRAGMENTU adresy URL "Microsoft.com/Azure/".
++ [Zástupný znak s vpony a příponou](query-lucene-syntax.md#bkmk_wildcard) , které jsou `*` `?` uvnitř nebo na začátku výrazu, a vyžaduje syntaxi regulárního výrazu (kde výraz je uzavřený s lomítky). Například řetězec dotazu ( `search=/.*numeric*./` ) vrátí výsledky typu "alfanumerický" a "alfanumerické" jako přípona a vpony shody.
 
-Jak je uvedeno výše, vyžaduje, aby index obsahoval řetězce ve formátu, který přispívá k porovnávání vzorů, které standardní analyzátor neposkytuje. Podle kroků v tomto článku můžete zajistit, aby potřebný obsah pro podporu těchto scénářů existoval.
+V případě částečného nebo vzorového vyhledávání a několika dalších formulářů dotazů, jako je hledání přibližných výsledků, se analyzátory nepoužívají v době dotazu. Pro tyto formuláře dotazů, které analyzátor detekuje přítomnost operátorů a oddělovačů, je řetězec dotazu předán modulu bez lexikální analýzy. Pro tyto formuláře dotazů se analyzátor zadaný v poli ignoruje.
+
+> [!NOTE]
+> Pokud částečný řetězec dotazu obsahuje znaky, například lomítka v fragmentu adresy URL, může být nutné přidat řídicí znaky. Ve formátu JSON je lomítko `/` uvozeno zpětným lomítkem `\` . V takovém případě `search=/.*microsoft.com\/azure\/.*/` je syntaxe fragmentu adresy URL "Microsoft.com/Azure/".
 
 ## <a name="solving-partialpattern-search-problems"></a>Řešení problémů s částečným nebo vzorovým hledáním
 
-Pokud potřebujete hledat fragmenty nebo vzory nebo speciální znaky, můžete přepsat výchozí analyzátor vlastním analyzátorem, který funguje v rámci jednodušších pravidel tokenizace, a zachovat celý řetězec. Krok zpět, přístup vypadá takto:
+Pokud potřebujete hledat fragmenty nebo vzory nebo speciální znaky, můžete přepsat výchozí analyzátor vlastním analyzátorem, který funguje v rámci jednodušších pravidel pro tokenizace, a zachovat celý řetězec v indexu. Krok zpět, přístup vypadá takto:
 
-+ Definovat pole pro uložení nepůvodní verze řetězce (za předpokladu, že chcete analyzovat a neanalyzovaný text)
-+ Vyberte předdefinovaný analyzátor nebo definujte vlastní analyzátor pro výstup nezměněného řetězce bez analýzy.
-+ Přiřazení vlastního analyzátoru k poli
++ Definovat pole pro uložení nepůvodní verze řetězce (za předpokladu, že chcete analyzovat a neanalyzovaný text v době dotazu)
++ Vyhodnotit a vybrat mezi různými analyzátory, které generují tokeny na správné úrovni členitosti
++ Přiřaďte analyzátor k poli.
 + Sestavení a otestování indexu
 
 > [!TIP]
@@ -52,7 +55,7 @@ Pokud potřebujete hledat fragmenty nebo vzory nebo speciální znaky, můžete 
 
 ## <a name="duplicate-fields-for-different-scenarios"></a>Duplicitní pole pro různé scénáře
 
-Analyzátory jsou přiřazeny pro každé pole, což znamená, že můžete v indexu vytvořit pole, která se optimalizují pro různé scénáře. Konkrétně můžete definovat "featureCode" a "featureCodeRegex" pro podporu normálního fulltextového vyhledávání na prvním a rozšířené porovnávání vzorů na druhé straně.
+Analyzátory určují, jak jsou v indexu vyraženy výrazy. Vzhledem k tomu, že analyzátory jsou přiřazeny pro každé pole, můžete v indexu vytvořit pole pro optimalizaci pro různé scénáře. Můžete například definovat "featureCode" a "featureCodeRegex" pro podporu normálního fulltextového vyhledávání na prvním a rozšířené porovnávání vzorů na druhé straně. Analyzátory přiřazené ke každému poli určují, jak se obsah každého pole v indexu používá jako token.  
 
 ```json
 {
@@ -84,9 +87,9 @@ Při výběru analyzátoru, který vytváří úplné tokeny, jsou běžné mož
 
 Pokud používáte nástroj pro testování webového rozhraní API, jako je například post, můžete přidat [volání nástroje Test Analyzer REST](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) pro kontrolu výstupu s vydanými tokeny.
 
-Musíte mít existující index, se kterým chcete pracovat. V případě existujícího indexu a pole obsahujícího pomlčky nebo částečné výrazy můžete vyzkoušet různé analyzátory nad konkrétními podmínkami a zjistit, jaké tokeny jsou vydávané.  
+Abyste mohli pracovat s, musíte mít naplněný index. V případě existujícího indexu a pole obsahujícího pomlčky nebo částečné výrazy můžete vyzkoušet různé analyzátory nad konkrétními podmínkami a zjistit, jaké tokeny jsou vydávané.  
 
-1. Podívejte se na standardní analyzátor a zjistěte, jak se ve výchozím nastavení používají výrazy.
+1. Nejdřív zkontrolujte standardní analyzátor a podívejte se, jak se ve výchozím nastavení používají výrazy.
 
    ```json
    {
@@ -95,7 +98,7 @@ Musíte mít existující index, se kterým chcete pracovat. V případě existu
    }
     ```
 
-1. Vyhodnoťte odpověď, abyste viděli, jak je text v indexu vyhodnocený jako token. Všimněte si, jak je každý výraz nižší – použita a rozčleněný.
+1. Vyhodnoťte odpověď, abyste viděli, jak je text v indexu vyhodnocený jako token. Všimněte si, jak je každý výraz nižší – použita a rozčleněný. Tento dokument ve výsledcích vrátí jenom dotazy, které se shodují s těmito tokeny. Dotaz, který obsahuje "10-a", se nezdaří.
 
     ```json
     {
@@ -121,7 +124,7 @@ Musíte mít existující index, se kterým chcete pracovat. V případě existu
         ]
     }
     ```
-1. Upravte požadavek na použití analyzátoru `whitespace` nebo `keyword` :
+1. Nyní upravte žádost o použití `whitespace` `keyword` analyzátoru nebo:
 
     ```json
     {
@@ -130,7 +133,7 @@ Musíte mít existující index, se kterým chcete pracovat. V případě existu
     }
     ```
 
-1. Nyní se odpověď skládá z jediného tokenu, horních použita, s pomlčkami zachované jako součást řetězce. Pokud potřebujete vyhledávat vzor nebo částečný termín, stroj dotazů má teď základ pro vyhledání shody.
+1. Nyní se odpověď skládá z jediného tokenu, horních použita, s pomlčkami zachované jako součást řetězce. Pokud potřebujete vyhledat vzor nebo částečný výraz, jako je "10-ani", stroj dotazů nyní obsahuje základ pro nalezení shody.
 
 
     ```json
@@ -147,7 +150,7 @@ Musíte mít existující index, se kterým chcete pracovat. V případě existu
     }
     ```
 > [!Important]
-> Počítejte s tím, že analyzátory dotazů často v rámci vyhledávacího výrazu při sestavování stromu dotazů často malými písmeny. Pokud používáte analyzátor, který nerozlišuje malá a velká písmena a nezískáváte očekávané výsledky, může to být důvod. Řešením je přidání filtru s malým případem tokenu, jak je popsáno níže v části "použití vlastních analyzátorů".
+> Počítejte s tím, že analyzátory dotazů často v rámci vyhledávacího výrazu při sestavování stromu dotazů často malými písmeny. Pokud používáte analyzátor, který při indexování nerozlišuje malá a velká písmena, nezískáváte očekávané výsledky, může to být důvod. Řešením je přidání filtru s malým případem tokenu, jak je popsáno níže v části "použití vlastních analyzátorů".
 
 ## <a name="configure-an-analyzer"></a>Konfigurace analyzátoru
  
@@ -211,7 +214,7 @@ Následující příklad znázorňuje vlastní analyzátor, který poskytuje kl�
 ```
 
 > [!NOTE]
-> `keyword_v2` Provádějících tokenizaci a `lowercase` filtr tokenu jsou známy v systému a používají výchozí konfigurace, což je důvod, proč je můžete na ně odkazovat podle názvu, aniž byste je museli definovat jako první.
+> `keyword_v2`Provádějících tokenizaci a `lowercase` Filtr tokenu jsou známy v systému a používají výchozí konfigurace, což je důvod, proč je můžete na ně odkazovat podle názvu, aniž byste je museli definovat jako první.
 
 ## <a name="build-and-test"></a>Sestavení a otestování
 
@@ -229,17 +232,17 @@ Předchozí části vysvětlely logiku. Tato část popisuje každé rozhraní A
 
 + [Hledání v dokumentech](https://docs.microsoft.com/rest/api/searchservice/search-documents) vysvětluje, jak vytvořit požadavek na dotaz pomocí [jednoduché](query-simple-syntax.md) syntaxe nebo [úplné syntaxe Lucene](query-lucene-syntax.md) pro zástupné znaky a regulární výrazy.
 
-  U částečných dotazů, jako je například dotazování "3-6214" k vyhledání shody na "+ 1 (425) 703-6214", můžete použít jednoduchou syntaxi: `search=3-6214&queryType=simple`.
+  U částečných dotazů, jako je například dotazování "3-6214" k vyhledání shody na "+ 1 (425) 703-6214", můžete použít jednoduchou syntaxi: `search=3-6214&queryType=simple` .
 
   U dotazů vpony a přípon, jako je například dotazování "num" nebo "numeric" k vyhledání shody na "alfanumerické", použijte úplnou syntaxi Lucene a regulární výraz:`search=/.*num.*/&queryType=full`
 
-## <a name="tips-and-best-practices"></a>Tipy a osvědčené postupy
-
-### <a name="tune-query-performance"></a>Ladění výkonu dotazů
+## <a name="tune-query-performance"></a>Ladění výkonu dotazů
 
 Pokud implementujete doporučenou konfiguraci, která zahrnuje keyword_v2 provádějících tokenizaci a filtr tokenů menšího případu, můžete si všimnout snížení výkonu dotazů kvůli dalšímu zpracování filtru tokenů u stávajících tokenů ve vašem indexu. 
 
-Následující příklad přidá [EdgeNGramTokenFilter](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/ngram/EdgeNGramTokenizer.html) , aby bylo možné porovnávat předpony rychleji. Pro kombinace znaků 2-25, které obsahují znaky, jsou vygenerovány další tokeny: (nikoli pouze MS, MSF, MSFT, MSFT/, MSFT/S, MSFT/Čt, MSFT/SQL). Jak si představím, další tokenizace je výsledkem většího indexu.
+Následující příklad přidá [EdgeNGramTokenFilter](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/ngram/EdgeNGramTokenizer.html) , aby bylo možné porovnávat předpony rychleji. Pro kombinace znaků 2-25, které obsahují znaky, jsou vygenerovány další tokeny: (nikoli pouze MS, MSF, MSFT, MSFT/, MSFT/S, MSFT/Čt, MSFT/SQL). 
+
+Jak si představím, další tokenizace je výsledkem většího indexu. Pokud máte dostatečnou kapacitu pro přizpůsobení většího indexu, může se jednat o lepší řešení tohoto přístupu s jeho rychlejší dobou odezvy.
 
 ```json
 {
@@ -276,20 +279,6 @@ Následující příklad přidá [EdgeNGramTokenFilter](https://lucene.apache.or
   "side": "front"
   }
 ]
-```
-
-### <a name="use-different-analyzers-for-indexing-and-query-processing"></a>Použití různých analyzátorů pro indexování a zpracování dotazů
-
-Analyzátory jsou volány během indexování a při provádění dotazu. Je běžné použít stejný analyzátor pro obojí, ale můžete pro každou úlohu nakonfigurovat vlastní analyzátory. Přepsání analyzátoru jsou uvedena v [definici indexu](https://docs.microsoft.com/rest/api/searchservice/create-index) v `analyzers` oddílu a následně odkazována na konkrétní pole. 
-
-Když se vlastní analýza vyžaduje jenom při indexování, můžete použít vlastní analyzátor pro jenom indexování a pokračovat v používání standardního analyzátoru Lucene (nebo jiného analyzátoru) pro dotazy.
-
-Chcete-li určit analýzu konkrétní role, můžete nastavit vlastnosti pro každé pole, nastavení `indexAnalyzer` a `searchAnalyzer` místo výchozí `analyzer` vlastnosti.
-
-```json
-"name": "featureCode",
-"indexAnalyzer":"my_customanalyzer",
-"searchAnalyzer":"standard",
 ```
 
 ## <a name="next-steps"></a>Další kroky
