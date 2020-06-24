@@ -3,16 +3,16 @@ title: Analýza nákladů na Azure s využitím aplikace Power BI
 description: Tento článek vysvětluje, jak nainstalovat a používat aplikaci Power BI Azure Cost Management.
 author: bandersmsft
 ms.author: banders
-ms.date: 04/15/2020
+ms.date: 06/16/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
-ms.openlocfilehash: 050df590827b94888c44826ac6391ff79ada1cfc
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 53340c72a6456b24b52cff6d7eda9d4a34db6564
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81461595"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888207"
 ---
 # <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>Analýza nákladů pomocí aplikace Power BI Azure Cost Management pro smlouvy Enterprise (EA)
 
@@ -127,6 +127,27 @@ Podrobnosti o tom, jak používat tuto sestavu, najdete v části [Pokrytí virt
 ## <a name="troubleshoot-problems"></a>Poradce při potížích
 
 Pokud máte problémy s aplikací Power BI, mohou vám při řešení potíží pomoci následující informace.
+
+### <a name="error-processing-the-data-in-the-dataset"></a>Chyba při zpracování dat v datové sadě
+
+Může se zobrazit chyba typu:
+
+```
+There was an error when processing the data in the dataset.
+Data source error: {"error":{"code":"ModelRefresh_ShortMessage_ProcessingError","pbi.error":{"code":"ModelRefresh_ShortMessage_ProcessingError","parameters":{},"details":[{"code":"Message","detail":{"type":1,"value":"We cannot convert the value \"Required Field: 'Enr...\" to type List."}}],"exceptionCulprit":1}}} Table: <TableName>.
+```
+
+Místo `<TableName>` se zobrazí název tabulky.
+
+#### <a name="cause"></a>Příčina
+
+Výchozí hodnota **rozsahu** pro `Enrollment Number` se změnila v rámci připojení ke Cost Managementu.
+
+#### <a name="solution"></a>Řešení
+
+Znovu se připojte ke Cost Managementu a nastavte hodnotu **rozsahu** na `Enrollment Number`. Nezadávejte registrační číslo vaší organizace. Místo toho zadejte `Enrollment Number` přesně tak, jak se zobrazuje na následujícím obrázku.
+
+![Zadání informací o registraci EA](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png)  
 
 ### <a name="budgetamount-error"></a>Chyba BudgetAmount
 

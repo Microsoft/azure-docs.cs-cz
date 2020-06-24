@@ -5,18 +5,18 @@ author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 06/11/2020
 ms.author: banders
-ms.openlocfilehash: da16e0898f08e1cca602ca5927bce82ed32353fe
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 379f7a0ef60020566de9edfcafb0809d1955cac8
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437864"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84752139"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>Získání vlastnictví fakturace předplatných Azure pro vlastní účet se smlouvou MPA
 
-Aby bylo možné nabídnout jednu konsolidovanou fakturu za spravované služby a využití Azure, poskytovatel CSP (Cloud Solution Provider) může převzít vlastnictví fakturace předplatných Azure od svých zákazníků se smlouvou Direct Enterprise (EA).
+Aby bylo možné nabídnout jednu kombinovanou fakturu za spravované služby a využití Azure, poskytovatel CSP (Cloud Solution Provider) může převzít vlastnictví fakturace předplatných Azure od svých zákazníků se smlouvou Direct Enterprise (EA).
 
 Tato funkce je k dispozici pouze pro partnery CSP s přímým vyúčtováním a certifikací [Azure Expert MSP](https://partner.microsoft.com/membership/azure-expert-msp). Vztahují se na ni zásady správného řízení a zásady Azure a u určitých zákazníků může vyžadovat přezkoumání a schválení.
 
@@ -26,57 +26,40 @@ Tento článek se týká fakturačních účtů pro smlouvu s partnerem Microsof
 
 ## <a name="prerequisites"></a>Požadavky
 
-1. Navažte se zákazníkem [vztah na úrovni prodejce](https://docs.microsoft.com/partner-center/request-a-relationship-with-a-customer). Projděte si [přehled regionální autorizace CSP](https://docs.microsoft.com/partner-center/regional-authorization-overview) a zajistěte, aby tenanti zákazníka i partnera byli ve stejné autorizované oblasti.  
-
-2. [Ověřte, že zákazník přijal smlouvu se zákazníkem Microsoftu](https://docs.microsoft.com/partner-center/confirm-customer-agreement).
-
-3. Nastavte pro zákazníka [plán Azure](https://docs.microsoft.com/partner-center/purchase-azure-plan). Pokud zákazník nakupuje přes několik prodejců, je potřeba nastavit plán Azure pro každou kombinaci zákazníka a prodejce.
+1. Navažte se zákazníkem [vztah na úrovni prodejce](https://docs.microsoft.com/partner-center/request-a-relationship-with-a-customer). Projděte si [přehled regionální autorizace CSP](https://docs.microsoft.com/partner-center/regional-authorization-overview) a zajistěte, aby tenanti zákazníka i partnera byli ve stejné autorizované oblasti.
+1. [Ověřte, že zákazník přijal smlouvu se zákazníkem Microsoftu](https://docs.microsoft.com/partner-center/confirm-customer-agreement).
+1. Nastavte pro zákazníka [plán Azure](https://docs.microsoft.com/partner-center/purchase-azure-plan). Pokud zákazník nakupuje přes několik prodejců, je potřeba nastavit plán Azure pro každou kombinaci zákazníka a prodejce.
 
 ## <a name="request-billing-ownership"></a>Podání žádosti o vlastnictví fakturace
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí přihlašovacích údajů agenta správy CSP.
-
-2. Vyhledejte **Cost Management a fakturace**.
-
-   ![Snímek obrazovky znázorňující hledání položky Správa nákladů a fakturace na webu Azure Portal](./media/mpa-request-ownership/search-cmb.png)
-
-3. Na levé straně vyberte **Zákazníci** a pak v seznamu vyberte zákazníka.
-
-   ![Snímek obrazovky znázorňující výběr zákazníků](./media/mpa-request-ownership/mpa-select-customers.png)        
-
-4. Vlevo dole vyberte **Žádosti o převod** a pak vyberte **Přidat novou žádost**.
-
-   ![Snímek obrazovky znázorňující výběr možnosti Žádosti o převod](./media/mpa-request-ownership/mpa-select-transfer-requests.png)
-
-5. Zadejte e-mailovou adresu uživatele v organizaci zákazníka, který obdrží žádost o převod. Tento uživatel musí být vlastníkem účtu ve smlouvě Enterprise. Vyberte možnost **Poslat žádost o převod**.
-
-   ![Snímek obrazovky znázorňující výběr možnosti Poslat žádost o převod](./media/mpa-request-ownership/mpa-send-transfer-requests.png)
-
-6. Tento uživatel obdrží e-mail s pokyny ke kontrole vaší žádosti o převod.
-
-   ![Snímek obrazovky znázorňující e-mail pro kontrolu žádosti o převod](./media/mpa-request-ownership/mpa-review-transfer-request-email.png)
-
-7. Uživatel může žádost o převod schválit tím, že vybere odkaz v e-mailu a bude postupovat podle zobrazených pokynů.
-
-    ![Snímek obrazovky znázorňující e-mail pro kontrolu žádosti o převod](./media/mpa-request-ownership/mpa-review-transfer-request.png)
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí přihlašovacích údajů agenta správy CSP v tenantovi CSP.
+1. Vyhledejte **Cost Management a fakturace**.  
+    ![Screenshot znázorňující hledání položky Správa nákladů a fakturace na webu Azure Portal](./media/mpa-request-ownership/search-cmb.png)
+1. Na levé straně vyberte **Zákazníci** a pak v seznamu vyberte zákazníka.  
+    [![Screenshot znázorňující výběr zákazníků](./media/mpa-request-ownership/mpa-select-customers.png)](./media/mpa-request-ownership/mpa-select-customers.png#lightbox)
+1. Vlevo dole vyberte **Žádosti o převod** a pak vyberte **Přidat novou žádost**.  
+    [![Screenshot znázorňující výběr možnosti Žádosti o převod](./media/mpa-request-ownership/mpa-select-transfer-requests.png)](./media/mpa-request-ownership/mpa-select-transfer-requests.png#lightbox)
+1. Zadejte e-mailovou adresu uživatele v organizaci zákazníka, který obdrží žádost o převod. Tento uživatel musí být vlastníkem účtu ve smlouvě Enterprise. Vyberte možnost **Poslat žádost o převod**.  
+    [![Screenshot znázorňující výběr možnosti Poslat žádost o převod](./media/mpa-request-ownership/mpa-send-transfer-requests.png)](./media/mpa-request-ownership/mpa-send-transfer-requests.png#lightbox)
+1. Tento uživatel obdrží e-mail s pokyny ke kontrole vaší žádosti o převod.  
+    ![Snímek obrazovky znázorňující e-mail pro kontrolu žádosti o převod](./media/mpa-request-ownership/mpa-review-transfer-request-email.png)
+1. Uživatel může žádost o převod schválit tím, že vybere odkaz v e-mailu a bude postupovat podle zobrazených pokynů.  
+    [![Screenshot obrazovky znázorňující e-mail pro kontrolu žádosti o převod](./media/mpa-request-ownership/review-transfer-requests.png)](./media/mpa-request-ownership/review-transfer-requests.png#lightbox) Uživatel může vybrat fakturační účet, ze kterého chce převést produkty Azure. Po jeho výběru se zobrazí produkty, které je možné převést. **Poznámka:** Zablokovaná předplatná nejde převést a zobrazují se v seznamu Produkty Azure, které se nedají převést. Po dokončení výběru produktů Azure, které se mají převést, vyberte **Ověřit**.
+1. V oblasti pro **výsledek ověření převodu** se zobrazí dopad produktů Azure, které se budou převádět. Možné stavy:
+    * **Úspěšně dokončeno:** Ověření pro tento produkt Azure prošlo a produkt je možné převést.
+    * **Upozornění:** Pro vybraný produkt Azure bylo vydáno upozornění. Přestože je možné tento produkt převést, bude to mít určitý dopad, o kterém by uživatel měl vědět pro případ, že by chtěl provést nějaké zmírňující akce. Příklad: Převáděné předplatné Azure s výhodou využívá RI. Po dokončení převodu už předplatné nebude tuto výhodu mít. Pro zajištění maximálních úspor zajistěte přidružení RI k jinému předplatnému, které může využívat jeho výhody. Uživatel se také může rozhodnout přejít zpátky na stránku výběru a zrušit výběr tohoto předplatného Azure.
+    * **Failed:** Vybraný produkt Azure nejde převést kvůli chybě. Pokud uživatel chce převést ostatní vybrané produkty Azure, musí přejít zpátky na stránku výběru a zrušit výběr tohoto produktu.  
+    ![Screenshot zobrazující prostředí ověřování](./media/mpa-request-ownership/validate-transfer-request.png)
 
 ## <a name="check-the-transfer-request-status"></a>Kontrola stavu žádosti o převod
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-
-2. Vyhledejte **Cost Management a fakturace**.
-
-   ![Snímek obrazovky znázorňující hledání položky Správa nákladů a fakturace na webu Azure Portal](./media/mpa-request-ownership/billing-search-cost-management-billing.png)
-
-3. Na levé straně vyberte **Zákazníci**.
-
-   ![Snímek obrazovky znázorňující výběr zákazníků](./media/mpa-request-ownership/mpa-select-customers.png)
-
-4. V seznamu vyberte zákazníka, za kterého jste odeslali žádost o převod.
-
-5. Vlevo dole vyberte **Žádosti o převod**. Zobrazí se stránka žádostí o převod, která obsahuje následující informace:
-
-    ![Snímek obrazovky znázorňující seznam žádostí o převod](./media/mpa-request-ownership/mpa-select-transfer-requests-for-status.png)
+1. Vyhledejte **Cost Management a fakturace**.  
+    ![Screenshot znázorňující hledání položky Správa nákladů a fakturace na webu Azure Portal](./media/mpa-request-ownership/billing-search-cost-management-billing.png)
+1. Na levé straně vyberte **Zákazníci**.  
+    [![Screenshot znázorňující výběr zákazníků](./media/mpa-request-ownership/mpa-select-customers.png)](./media/mpa-request-ownership/mpa-select-customers.png#lightbox)
+1. V seznamu vyberte zákazníka, za kterého jste odeslali žádost o převod.
+1. Vlevo dole vyberte **Žádosti o převod**. Zobrazí se stránka žádostí o převod, která obsahuje následující informace: [![Screenshot znázorňující seznam žádostí o převod](./media/mpa-request-ownership/mpa-select-transfer-requests-for-status.png)](./media/mpa-request-ownership/mpa-select-transfer-requests-for-status.png#lightbox)
 
    |Sloupec|Definice|
    |---------|---------|
@@ -97,7 +80,7 @@ Tento článek se týká fakturačních účtů pro smlouvu s partnerem Microsof
    |Zrušeno|Žádost o převod byla zrušena některým z uživatelů, kteří k ní mají přístup.|
    |Odmítnuto|Žádost o převod byla uživatelem zamítnuta.|
 
-6. Výběrem žádosti o převod zobrazte její podrobnosti. Zobrazí se stránka s podrobnostmi o převodu, která obsahuje následující informace: ![Snímek obrazovky znázorňující seznam převedených předplatných](./media/mpa-request-ownership/mpa-transfer-completed.png)
+1. Výběrem žádosti o převod zobrazte její podrobnosti. Zobrazí se stránka s podrobnostmi o převodu, která obsahuje následující informace: [![Screenshot znázorňující seznam převedených předplatných](./media/mpa-request-ownership/mpa-transfer-completed.png)](./media/mpa-request-ownership/mpa-transfer-completed.png#lightbox)
 
    |Sloupec  |Definice|
    |---------|---------|
@@ -112,10 +95,10 @@ Tento článek se týká fakturačních účtů pro smlouvu s partnerem Microsof
 
 O vlastnictví fakturace můžete požádat pro níže uvedené typy předplatných.
 
-- [Enterprise pro vývoj/testování](https://azure.microsoft.com/offers/ms-azr-0148p/)\*
-- [Smlouva Microsoft Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)
+* [Enterprise pro vývoj/testování](https://azure.microsoft.com/offers/ms-azr-0148p/)\*
+* [Smlouva Microsoft Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)
 
-\* Předplatné pro vývoj/testování se musí nejprve prostřednictvím lístku podpory převést na nabídku EA Enterprise. Po převodu se bude předplatné Enterprise pro vývoj/testování účtovat pomocí sazeb za průběžné platby. Žádné slevy nabízené prostřednictvím nabídky Enterprise pro vývoj/testování v rámci smlouvy EA zákazníka nebudou partnerovi CSP k dispozici.
+\* Předplatné pro vývoj/testování musíte nejdřív prostřednictvím lístku podpory převést na nabídku EA Enterprise. Po převodu se bude předplatné Enterprise pro vývoj/testování účtovat pomocí sazeb za průběžné platby. Žádné slevy nabízené prostřednictvím nabídky Enterprise pro vývoj/testování v rámci smlouvy EA zákazníka nebudou partnerovi CSP k dispozici.
 
 ## <a name="additional-information"></a>Další informace
 
@@ -139,13 +122,13 @@ Produkty z Azure Marketplace dostupné pro předplatná spravovaná poskytovatel
 
 ### <a name="azure-reservations-transfer"></a>Přenos rezervací Azure
 
-Rezervace Azure se s předplatným automaticky nepřevádí. Buď si můžete rezervace v EA nechat pro jiná předplatná, nebo [rezervace zrušte](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations) a partner si je může znovu koupit v CSP. 
+Rezervace Azure se s předplatným automaticky nepřevádí. Buď si můžete rezervace v EA nechat pro jiná předplatná, nebo [rezervace zrušte](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations) a partner si je může znovu koupit v CSP.
 
 ### <a name="access-to-azure-services"></a>Přístup ke službám Azure
 
-Převod nebude mít vliv na přístup stávajících uživatelů, skupin nebo instančních objektů přidělených pomocí [Azure RBAC (řízení přístupu na základě role)](../../role-based-access-control/overview.md). Partner k předplatným nezíská nový přístup RBAC.  
+Převod nebude mít vliv na přístup stávajících uživatelů, skupin nebo instančních objektů přidělených pomocí [Azure RBAC (řízení přístupu na základě role)](../../role-based-access-control/overview.md). Partner k předplatným nezíská nový přístup RBAC.
 
-Pokud partneři chtějí získat přístup k předplatným, měli by se spojit se zákazníkem.  Aby partneři mohli vytvářet lístky podpory, musí získat přístup k funkci [AOBO (Admin on Behalf Of)](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) nebo ke službě [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/concepts/cloud-solution-provider).
+Pokud partneři chtějí získat přístup k předplatným, měli by se spojit se zákazníkem. Aby partneři mohli vytvářet lístky podpory, musí získat přístup k funkci [AOBO (Admin on Behalf Of)](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) nebo ke službě [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/concepts/cloud-solution-provider).
 
 ### <a name="azure-support-plan"></a>plán podpory Azure
 
@@ -168,12 +151,13 @@ Produkty SaaS se společně s předplatným nepřevádí. Pokud chcete vlastnict
 Některé žádosti zákazníků o převod můžou kvůli povaze aktuální struktury podnikové registrace zákazníka vyžadovat další proces kontrolu ze strany Microsoftu. Partnerům se zobrazí oznámení o takových požadavcích při pokusu o odeslání pozvánky uživatelům. Partneři musí během tohoto procesu kontroly spolupracovat se svým manažerem pro partnerský vývoj a se zákaznickým týmem zákazníka.
 
 ### <a name="azure-subscription-directory"></a>Adresář předplatných Azure
+
 Adresář převáděných předplatných Azure musí odpovídat adresáři zákazníka vybranému při navazování vztahu CSP.
 
 Pokud se tyto dva adresáře neshodují, předplatná není možné převést. Musíte buď navázat nový vztah se zákazníkem na úrovni prodejce CSP výběrem adresáře příslušných předplatných Azure, nebo změnit adresář předplatných Azure tak, aby odpovídal adresáři vztahu CSP se zákazníkem. Další informace najdete v tématu [Přidružení existujícího předplatného k adresáři Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-how-subscriptions-associated-directory#to-associate-an-existing-subscription-to-your-azure-ad-directory).
 
-
 ## <a name="check-access-to-a-microsoft-partner-agreement"></a>Kontrola přístupu ke smlouvě s partnerem Microsoftu
+
 [!INCLUDE [billing-check-mpa](../../../includes/billing-check-mpa.md)]
 
 ## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktování podpory
@@ -182,6 +166,5 @@ Pokud potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#bl
 
 ## <a name="next-steps"></a>Další kroky
 
-- Vlastnictví fakturace předplatných Azure se převede na vás. Poplatky za tato předplatná můžete sledovat na webu [Azure Portal](https://portal.azure.com).
-
-- Pokud chcete získat přístup k převedeným předplatným Azure, spojte se se zákazníkem. [Správa přístupu k prostředkům Azure pomocí řízení přístupu na základě role](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+* Vlastnictví fakturace předplatných Azure se převede na vás. Poplatky za tato předplatná můžete sledovat na webu [Azure Portal](https://portal.azure.com).
+* Pokud chcete získat přístup k převedeným předplatným Azure, spojte se se zákazníkem. [Správa přístupu k prostředkům Azure pomocí řízení přístupu na základě role](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)

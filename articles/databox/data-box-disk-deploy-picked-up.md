@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: bfac12c6ef278072c6bb44d55dc12926fe906e6f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 07c86ca016d3e38359cbe8ba61d67f109c42edb0
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747682"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84944963"
 ---
 ::: zone target="docs"
 
@@ -159,7 +159,7 @@ V případě potřeby můžete kontaktovat podporu společnosti Quantium Solutio
 
 ### <a name="in-self-managed"></a>[V případě svépomoci](#tab/in-selfmanaged)
 
-Pokud používáte Data Box Disk v Japonsku, Singapuru, Koreji a Západní Evropě a při vytváření objednávky jste vybrali možnost Expedice řízená svépomocí, postupujte podle těchto pokynů. 
+Pokud používáte Data Box Disk v Japonsku, Singapuru, Koreji, Západní Evropě nebo Indii a při vytváření objednávky jste vybrali možnost samoobslužné expedice, postupujte podle těchto pokynů. 
 
 1. Na webu Azure Portal přejděte do okna **Přehled** pro vaši objednávku. Projděte si pokyny zobrazené po výběru **Naplánovat vyzvednutí**. Měl by se zobrazit autorizační kód, který se používá při předávání objednávky.
 

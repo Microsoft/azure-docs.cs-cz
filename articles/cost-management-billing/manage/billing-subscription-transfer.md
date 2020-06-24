@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8f259ba9c7da3d7c37ed3eb63c63d17b74f7fbdd
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 633f406d042ce5b8ddde5b28022bdb33fdd70377
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745841"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052152"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Převod vlastnictví fakturace předplatného Azure na jiný účet
 
@@ -100,7 +100,7 @@ Pokud jste přijali vlastnictví fakturace předplatného Azure, doporučujeme v
 
 ## <a name="supported-subscription-types"></a>Podporované typy předplatného
 
-Převod předplatného na webu Azure Portal je k dispozici pro níže uvedené typy předplatného. V současné době se převod nepodporuje pro [bezplatné zkušební verze](https://azure.microsoft.com/offers/ms-azr-0044p/) nebo předplatná [systému Azure v rámci licenčního programu Open (AIO)](https://azure.microsoft.com/offers/ms-azr-0111p/). Alternativní řešení najdete v článku [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../../azure-resource-manager/management/move-resource-group-and-subscription.md). Pokud chcete převést další předplatná, jako je například [Sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/) nebo plány podpory, [obraťte se na podporu Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+Převod předplatného na webu Azure Portal je k dispozici pro níže uvedené typy předplatného. V současné době se převod nepodporuje pro [bezplatné zkušební verze](https://azure.microsoft.com/offers/ms-azr-0044p/) nebo předplatná [systému Azure v rámci licenčního programu Open (AIO)](https://azure.microsoft.com/offers/ms-azr-0111p/). Alternativní řešení najdete v článku [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../../azure-resource-manager/management/move-resource-group-and-subscription.md). Pokud chcete převést další předplatná, jako jsou plány podpory, [obraťte se na podporu Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 - [Smlouva Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)\*
 - [Microsoft Partner Network](https://azure.microsoft.com/offers/ms-azr-0025p/)  

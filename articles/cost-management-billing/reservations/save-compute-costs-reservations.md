@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: banders
-ms.openlocfilehash: b41435cb0b337edc2d73820c75da847913326315
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 3f124e94398e53e3ab8ff7eb4b054d252129128b
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84015977"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986992"
 ---
 # <a name="what-are-azure-reservations"></a>Co jsou rezervace Azure?
 
@@ -127,6 +127,7 @@ Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https
 - Další informace o rezervacích pro plány služby:
     - [Virtuální počítače se službou Azure Reserved VM Instances](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
     - [Prostředky Azure Cosmos DB s rezervovanou kapacitou služby Azure Cosmos DB](../../cosmos-db/cosmos-db-reserved-capacity.md)
-    - [Výpočetní prostředky SQL Database s rezervovanou kapacitou služby Azure SQL Database](../../azure-sql/database/reserved-capacity-overview.md) Další informace o rezervacích pro plány softwaru:
+    - [Výpočetní prostředky SQL Database s rezervovanou kapacitou služby Azure SQL Database](../../azure-sql/database/reserved-capacity-overview.md)
+    - [Prostředky Azure Cache for Redis s rezervovanou kapacitou služby Azure Cache for Redis](../../azure-cache-for-redis/cache-reserved-pricing.md) Další informace o rezervacích pro softwarové plány:
     - [Plány softwaru Red Hat z rezervací Azure](../../virtual-machines/linux/prepay-rhel-software-charges.md)
     - [Plány softwaru SUSE z rezervací Azure](../../virtual-machines/linux/prepay-suse-software-charges.md)

@@ -6,14 +6,14 @@ ms.author: banders
 tags: azure-resource-manager
 ms.service: cost-management-billing
 ms.topic: quickstart
-ms.date: 04/22/2020
+ms.date: 06/10/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: 88dd1dc99f32d0539718c0f71206176cbfc16eec
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: dc37039d6777a77f9de247808329930f1621ee82
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83830306"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84686405"
 ---
 # <a name="quickstart-create-a-budget-with-an-azure-resource-manager-template"></a>Rychlý start: Vytvoření rozpočtu pomocí šablony Azure Resource Manageru
 
@@ -74,7 +74,7 @@ V této šabloně je definovaný jeden prostředek Azure:
     * **Prahová hodnota:** Zadejte prahovou hodnotu pro oznámení. Oznámení se odešle, když náklady překročí tuto prahovou hodnotu. Je to vždycky procentuální údaj a musí být v rozmezí od 0 do 1000.
     * **Kontaktní e-maily:** Zadejte seznam e-mailových adres, na které se má odeslat oznámení při překročení prahové hodnoty rozpočtu. Očekávaný formát je `["user1@domain.com","user2@domain.com"]`.
     * **Kontaktní role:** Zadejte seznam kontaktních rolí, na které se má odeslat oznámení při překročení prahové hodnoty rozpočtu. Výchozí hodnoty jsou Vlastník, Přispěvatel a Čtenář. Očekávaný formát je `["Owner","Contributor","Reader"]`.
-    * **Kontaktní skupiny:** Zadejte seznam skupin akcí, na které se má odeslat oznámení při překročení prahové hodnoty rozpočtu. Je možné zadat pole řetězců. Očekávaný formát je `["Action Group Name1","Action Group Name2"]`. Pokud nechcete používat skupiny akcí, zadejte `[]`.
+    * **Kontaktní skupiny:** Zadejte seznam ID prostředků skupin akcí (ve formě kompletních identifikátorů URI prostředků), na které se má odeslat oznámení při překročení prahové hodnoty rozpočtu. Je možné zadat pole řetězců. Očekávaný formát je `["action group resource ID1","action group resource ID2"]`. Pokud nechcete používat skupiny akcí, zadejte `[]`.
     * **Filtr prostředků:** Zadejte seznam filtrů pro prostředky. Očekávaný formát je `["Resource Filter Name1","Resource Filter Name2"]`. Pokud nechcete použít filtr, zadejte `[]`. Pokud zadáte filtr prostředků, musíte také zadat hodnoty **filtrů měřičů**.
     * **Filtr měřičů:** Zadejte seznam filtrů pro měřiče. Pro rozpočty kategorie **Využití** je to povinné. Očekávaný formát je `["Meter Filter Name1","Meter Filter Name2"]`. Pokud jste nezadali **filtr prostředků**, zadejte `[]`.
     * **Souhlasím s podmínkami a ujednáními uvedenými nahoře:** Toto políčko zaškrtněte.

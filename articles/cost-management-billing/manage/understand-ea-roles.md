@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.author: banders
-ms.openlocfilehash: 15c686e0d33d7341d16097f32e1c69077c319a12
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: e38271b3a56894380ca5456146a7ab36fb09e08c
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84295299"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678014"
 ---
 # <a name="managing-azure-enterprise-roles"></a>Správa rolí Azure Enterprise
 
@@ -27,6 +27,10 @@ Zákazníci Azure se smlouvou Enterprise (EA) můžou přiřazovat pět různýc
 <sup>1</sup> V této roli bude příjemce faktury za smlouvu Enterprise.
 
 <sup>2</sup> Fakturační kontakt nejde změnit ani přidat na webu Azure EA Portal a přidá se do registrace EA podle toho, který uživatel je nastavený jako fakturační kontakt na úrovni smlouvy. Případnou změnu fakturačního kontaktu je potřeba prostřednictvím partnera / softwarového poradce vyžádat z regionálního operačního centra.
+
+První správce registrace, který je nastavený během zřizování registrace, určuje typ ověřování pro účet fakturačního kontaktu. Fakturační kontakt po přidání na EA Portal jako správce jen pro čtení dostává ověřování pomocí účtu Microsoft. 
+
+Pokud je například jako původní typ ověřování nastavený typ Smíšený, EA se přidá jako účet Microsoft a fakturační kontakt bude mít oprávnění správce EA jen pro čtení. Pokud správce EA neschválí pro stávající fakturační kontakt nechválí ověřování pomocí účtu Microsoft, může správce EA dotčeného uživatele odstranit a požádat zákazníka, aby tohoto uživatele přidal znovu jako správce jen pro čtení s nastavením Pracovní nebo školní účet na úrovni registrace na webu EA Portal.
 
 Tyto role jsou specifické pro správu smluv Azure Enterprise a doplňují předdefinované role, pomocí kterých Azure řídí přístup k prostředkům. Další informace najdete v tématu [Předdefinované role pro prostředky Azure](../../role-based-access-control/built-in-roles.md).
 

@@ -5,97 +5,68 @@ author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 05/01/2020
+ms.date: 06/12/2020
 ms.author: banders
-ms.openlocfilehash: 3aaf2a949d5b3e6670e7885adea4579ac2802428
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: bbc4ed254d0b193d7cf328b95fc9dffbfcced380
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692326"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753418"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-accounts"></a>Získání vlastnictví fakturace předplatných Azure od ostatních účtů
 
 Převzetí vlastnictví předplatných Azure může být vhodné, pokud stávající vlastník fakturace odchází ze společnosti, nebo pokud chcete předplatná hradit ze svého fakturačního účtu. Po převzetí vlastnictví se odpovědnosti spojené s fakturací předplatných převedou na váš účet.
 
-Tento článek se týká fakturačních účtů smluv se zákazníkem Microsoftu. [Ověřte si, jestli máte přístup ke smlouvě se zákazníkem Microsoftu](#check-for-access).
+Tento článek se týká fakturačního účtu smlouvy se zákazníky Microsoftu. [Ověřte si, jestli máte přístup ke smlouvě se zákazníkem Microsoftu](#check-for-access).
 
 Pokud chcete požádat o vlastnictví fakturace, musíte být **vlastníkem oddílu faktur** nebo **přispěvatelem oddílu faktur**. Podrobnosti najdete v části [Role a úlohy související s oddíly faktur](understand-mca-roles.md#invoice-section-roles-and-tasks).
 
 ## <a name="request-billing-ownership"></a>Podání žádosti o vlastnictví fakturace
 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com) jako vlastník nebo přispěvatel oddílu faktury pro fakturační účet spojený se smlouvou se zákazníkem Microsoftu.
-
-2. Vyhledejte **Cost Management a fakturace**.
-
-    ![Snímek obrazovky znázorňující hledání položky Správa nákladů a fakturace na webu Azure Portal](./media/mca-request-billing-ownership/billing-search-cost-management-billing.png)
-
-3. Na stránce s rozsahy fakturace vyberte fakturační účet, který se má použít k platbě za využití předplatných. Tento fakturační účet by měl být typu **Smlouva se zákazníkem Microsoftu**.
-
-    ![Snímek obrazovky znázorňující hledání položky Cost Management a fakturace](./media/mca-request-billing-ownership/list-of-scopes.png)
-
+1. Vyhledejte **Cost Management a fakturace**.  
+    ![Screenshot znázorňující hledání položky Správa nákladů a fakturace na webu Azure Portal](./media/mca-request-billing-ownership/billing-search-cost-management-billing.png)
+1. Na stránce s rozsahy fakturace vyberte fakturační účet, který se má použít k platbě za využití předplatných. Tento fakturační účet by měl být typu **Smlouva se zákazníkem Microsoftu**.  
+    [![Screenshot zachycující hledání položky Cost Management a fakturace na portálu](./media/mca-request-billing-ownership/list-of-scopes.png)](./media/mca-request-billing-ownership/list-of-scopes.png#lightbox)
     > [!NOTE]
-    >
     > Azure Portal si pamatuje poslední rozsah fakturace, který jste využili, a tento rozsah se zobrazí, když na stránku Správa nákladů a fakturace vrátíte příště. Pokud jste stránku Správa nákladů a fakturace navštívili dřív, stránka s rozsahy fakturace se vám nezobrazí. Pokud ano, zkontrolujte, že jste ve [správném rozsahu](#check-for-access). Pokud ne, [přepněte rozsah](view-all-accounts.md#switch-billing-scope-in-the-azure-portal) a vyberte fakturační účet pro smlouvu se zákazníkem Microsoftu.
-
-4. Na levé straně vyberte **Fakturační profily**.
-
-    ![Snímek obrazovky znázorňující výběr fakturačních profilů](./media/mca-request-billing-ownership/mca-select-profiles.png)     
-
+1. Na levé straně vyberte **Fakturační profily**.  
+    [![Screenshot znázorňující výběr fakturačních profilů](./media/mca-request-billing-ownership/mca-select-profiles.png)](./media/mca-request-billing-ownership/mca-select-profiles.png#lightbox)
     > [!Note]
-    >
     > Pokud se vám fakturační profily nezobrazují, nejste ve správném rozsahu fakturace. Musíte vybrat fakturační účet pro smlouvu se zákazníkem Microsoftu a potom vybrat Fakturační profily. Informace o postupu při změně rozsahu najdete v tématu věnovaném [přepínání rozsahů fakturace na webu Azure Portal](view-all-accounts.md#switch-billing-scope-in-the-azure-portal).
-
-5. V seznamu vyberte **fakturační profil**. Jakmile převezmete vlastnictví předplatných, jejich využití se bude účtovat na tento fakturační profil.
-
-6. Na levé straně vyberte **Oddíly faktury**.
-
-    ![Snímek obrazovky znázorňující výběr možnosti Oddíly faktury](./media/mca-request-billing-ownership/mca-select-invoice-sections.png)   
-
-7. V seznamu vyberte oddíl faktury. Jakmile převezmete vlastnictví předplatných, jejich využití se přiřadí k tomuto oddílu faktury fakturačního profilu.
-
-8. Vlevo dole vyberte **Žádosti o převod** a pak vyberte **Přidat novou žádost**.
-
-    ![Snímek obrazovky znázorňující výběr možnosti Žádosti o převod](./media/mca-request-billing-ownership/mca-select-transfer-requests.png)
-
-9. Zadejte e-mailovou adresu uživatele, o jehož vlastnictví fakturace žádáte. Uživatel musí být správcem účtu pro fakturační účet programu služby Microsoft Online, nebo vlastníkem účtu souvisejícího se smlouvou Enterprise. Další informace najdete v tématu věnovaném [zobrazení fakturačních účtů na webu Azure Portal](view-all-accounts.md). Vyberte možnost **Poslat žádost o převod**.
-
-    ![Snímek obrazovky znázorňující výběr možnosti Poslat žádost o převod](./media/mca-request-billing-ownership/mca-send-transfer-requests.png)
-
-10. Tento uživatel obdrží e-mail s pokyny ke kontrole vaší žádosti o převod.
-
+1. V seznamu vyberte **fakturační profil**. Jakmile převezmete vlastnictví předplatných, jejich využití se bude účtovat na tento fakturační profil.
+1. Na levé straně vyberte **Oddíly faktury**.  
+    [![Screenshot znázorňující výběr možnosti Oddíly faktury](./media/mca-request-billing-ownership/mca-select-invoice-sections.png)](./media/mca-request-billing-ownership/mca-select-invoice-sections.png#lightbox)   
+1. V seznamu vyberte oddíl faktury. Jakmile převezmete vlastnictví předplatných, jejich využití se přiřadí k tomuto oddílu faktury fakturačního profilu.
+1. Vlevo dole vyberte **Žádosti o převod** a pak vyberte **Přidat novou žádost**.  
+    [![Screenshot znázorňující výběr možnosti Žádosti o převod](./media/mca-request-billing-ownership/mca-select-transfer-requests.png)](./media/mca-request-billing-ownership/mca-select-transfer-requests.png#lightbox)
+1. Zadejte e-mailovou adresu uživatele, o jehož vlastnictví fakturace žádáte. Uživatel musí být správcem účtu pro fakturační účet programu služby Microsoft Online, nebo vlastníkem účtu souvisejícího se smlouvou Enterprise. Další informace najdete v tématu věnovaném [zobrazení fakturačních účtů na webu Azure Portal](view-all-accounts.md). Vyberte možnost **Poslat žádost o převod**.  
+    [![Screenshot znázorňující výběr možnosti Poslat žádost o převod](./media/mca-request-billing-ownership/mca-send-transfer-requests.png)](./media/mca-request-billing-ownership/mca-send-transfer-requests.png#lightbox)
+1. Tento uživatel obdrží e-mail s pokyny ke kontrole vaší žádosti o převod.  
     ![Snímek obrazovky znázorňující e-mail pro kontrolu žádosti o převod](./media/mca-request-billing-ownership/mca-review-transfer-request-email.png)
-
-11. Uživatel může žádost o převod schválit tím, že vybere odkaz v e-mailu a bude postupovat podle zobrazených pokynů.
-
-    ![Snímek obrazovky znázorňující e-mail pro kontrolu žádosti o převod](./media/mca-request-billing-ownership/mca-review-transfer-request.png)
+1. Uživatel může žádost o převod schválit tím, že vybere odkaz v e-mailu a bude postupovat podle zobrazených pokynů.
+    [![Screenshot obrazovky znázorňující e-mail pro kontrolu žádosti o převod](./media/mca-request-billing-ownership/review-transfer-requests.png)](./media/mca-request-billing-ownership/review-transfer-requests.png#lightbox) Uživatel může vybrat fakturační účet, ze kterého chce převést produkty Azure. Po jeho výběru se zobrazí produkty, které je možné převést. **Poznámka:** Zablokovaná předplatná nejde převést a zobrazují se v seznamu Produkty Azure, které se nedají převést. Po dokončení výběru produktů Azure, které se mají převést, vyberte **Ověřit**.
+1. V oblasti pro **výsledek ověření převodu** se zobrazí dopad produktů Azure, které se budou převádět. Možné stavy:
+    * **Úspěšně dokončeno:** Ověření pro tento produkt Azure prošlo a produkt je možné převést.
+    * **Upozornění:** Pro vybraný produkt Azure bylo vydáno upozornění. Přestože je možné tento produkt převést, bude to mít určitý dopad, o kterém by uživatel měl vědět pro případ, že by chtěl provést nějaké zmírňující akce. Příklad: Převáděné předplatné Azure s výhodou využívá RI. Po dokončení převodu už předplatné nebude tuto výhodu mít. Pro zajištění maximálních úspor zajistěte přidružení RI k jinému předplatnému, které může využívat jeho výhody. Uživatel se také může rozhodnout přejít zpátky na stránku výběru a zrušit výběr tohoto předplatného Azure.
+    * **Failed:** Vybraný produkt Azure nejde převést kvůli chybě. Pokud uživatel chce převést ostatní vybrané produkty Azure, musí přejít zpátky na stránku výběru a zrušit výběr tohoto produktu.  
+    ![Screenshot zobrazující prostředí ověřování](./media/mca-request-billing-ownership/validate-transfer-request.png)
 
 ## <a name="check-the-transfer-request-status"></a>Kontrola stavu žádosti o převod
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-
-2. Vyhledejte **Cost Management a fakturace**.
-
-    ![Snímek obrazovky znázorňující hledání položky Správa nákladů a fakturace na webu Azure Portal](./media/mca-request-billing-ownership/billing-search-cost-management-billing.png)
-
-3. Na stránce s fakturačními rozsahy vyberte fakturační účet, pro který se odeslala žádost o převod.
-
-4. Na levé straně vyberte **Fakturační profily**.
-
-    ![Snímek obrazovky znázorňující výběr fakturačních profilů](./media/mca-request-billing-ownership/mca-select-profiles.png)     
-
-5. Vyberte **fakturační profil**, pro který se odeslala žádost o převod.
-
-6. Na levé straně vyberte **Oddíly faktury**.
-
-    ![Snímek obrazovky znázorňující výběr možnosti Oddíly faktury](./media/mca-request-billing-ownership/mca-select-invoice-sections.png)   
-
-7. V seznamu vyberte oddíl faktury, pro který se odeslala žádost o převod.
-
-8. Vlevo dole vyberte **Žádosti o převod**. Zobrazí se stránka žádostí o převod, která obsahuje následující informace:
-
-    ![Snímek obrazovky znázorňující seznam žádostí o převod](./media/mca-request-billing-ownership/mca-select-transfer-requests-for-status.png)
-
+1. Vyhledejte **Cost Management a fakturace**.  
+    ![Screenshot znázorňující hledání položky Správa nákladů a fakturace na webu Azure Portal](./media/mca-request-billing-ownership/billing-search-cost-management-billing.png)
+1. Na stránce s fakturačními rozsahy vyberte fakturační účet, pro který se odeslala žádost o převod.
+1. Na levé straně vyberte **Fakturační profily**.  
+    [![Screenshot znázorňující výběr fakturačních profilů](./media/mca-request-billing-ownership/mca-select-profiles.png)](./media/mca-request-billing-ownership/mca-select-profiles.png#lightbox)
+1. Vyberte **fakturační profil**, pro který se odeslala žádost o převod.
+1. Na levé straně vyberte **Oddíly faktury**.  
+    [![Screenshot znázorňující výběr možnosti Oddíly faktury](./media/mca-request-billing-ownership/mca-select-invoice-sections.png)](./media/mca-request-billing-ownership/mca-select-invoice-sections.png#lightbox)   
+1. V seznamu vyberte oddíl faktury, pro který se odeslala žádost o převod.
+1. Vlevo dole vyberte **Žádosti o převod**. Zobrazí se stránka žádostí o převod, která obsahuje následující informace:  
+    [![Screenshot znázorňující seznam žádostí o převod](./media/mca-request-billing-ownership/mca-select-transfer-requests-for-status.png)](./media/mca-request-billing-ownership/mca-select-transfer-requests-for-status.png#lightbox)
    |Sloupec|Definice|
    |---------|---------|
    |Datum žádosti|Datum odeslání žádosti o převod|
@@ -115,9 +86,8 @@ Pokud chcete požádat o vlastnictví fakturace, musíte být **vlastníkem odd�
    |Zrušeno|Žádost o převod byla zrušena některým z uživatelů, kteří k ní mají přístup.|
    |Odmítnuto|Žádost o převod byla uživatelem zamítnuta.|
 
-9. Výběrem žádosti o převod zobrazte její podrobnosti. Zobrazí se stránka s podrobnostmi o převodu, která obsahuje následující informace:
-
-    ![Snímek obrazovky znázorňující seznam převedených předplatných](./media/mca-request-billing-ownership/mca-transfer-completed.png)
+1. Výběrem žádosti o převod zobrazte její podrobnosti. Zobrazí se stránka s podrobnostmi o převodu, která obsahuje následující informace:  
+    [![Screenshot znázorňující seznam převedených předplatných](./media/mca-request-billing-ownership/mca-transfer-completed.png)](./media/mca-request-billing-ownership/mca-transfer-completed.png#lightbox)
 
    |Sloupec  |Definice|
    |---------|---------|
@@ -142,6 +112,7 @@ O vlastnictví fakturace můžete požádat pro níže uvedené typy předplatn�
 - [Plán Microsoft Azure](https://azure.microsoft.com/offers/ms-azr-0017g/)\*\*
 - [Sponzorovaná nabídka Microsoft Azure](https://azure.microsoft.com/offers/ms-azr-0036p/)\*
 - [Smlouva Microsoft Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)
+- [Smlouva se zákazníkem Microsoftu](https://azure.microsoft.com/pricing/purchase-options/microsoft-customer-agreement/)
 - [Microsoft Partner Network](https://azure.microsoft.com/offers/ms-azr-0025p/)\*
 - [MSDN Platforms](https://azure.microsoft.com/offers/ms-azr-0062p/)\*
 - [Předplatitelé sady Visual Studio Enterprise (BizSpark)](https://azure.microsoft.com/offers/ms-azr-0064p/)\*
@@ -153,7 +124,6 @@ O vlastnictví fakturace můžete požádat pro níže uvedené typy předplatn�
 \* Po převodu nebude mít nový účet k dispozici žádný kredit, který předplatné obsahovalo.
 
 \*\* Podporuje se jen u předplatných v účtech vytvořených během registrace na webu Azure.
-
 
 ## <a name="additional-information"></a>Další informace
 
@@ -177,7 +147,7 @@ Produkty na Azure Marketplace se převádí společně s příslušnými předpl
 
 ### <a name="azure-reservations-transfer"></a>Přenos rezervací Azure
 
-Pokud převádíte předplatná smlouvy Enterprise (EA), rezervace Azure se automaticky nepřesouvají s předplatnými. Pokud je chcete přesunout, [obraťte se na podporu Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+Pokud převádíte předplatná smlouvy Enterprise (EA) nebo Smlouvy se zákazníkem Microsoftu, rezervace Azure se automaticky nepřesouvají s předplatnými. Pokud je chcete přesunout, [obraťte se na podporu Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ### <a name="access-to-azure-services"></a>Přístup ke službám Azure
 

@@ -7,12 +7,12 @@ ms.date: 06/01/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 16f89fa99c9619e3956a089763ece1b96aff4480
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 5c26af74a392e3e6d3bb5557960b81604de7cdf3
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298121"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807800"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Faktury za smlouvu Azure Enterprise
 
@@ -224,7 +224,7 @@ Následující tabulka ukazuje mapování geografických oblastí a oblastí pro
 | Zóna 2 | Asie a Tichomoří – východ <br> Asie a Tichomoří – jihovýchod <br> Japonsko – východ <br> Japonsko – západ <br> Austrálie – východ <br> Austrálie – jihovýchod | Asie a Tichomoří <br> Japonsko <br> Latinská Amerika <br> Střední východ / Afrika <br> Austrálie – východ <br> Austrálie – jihovýchod |
 | Zóna 3 | Brazílie – jih |   |
 
-Za výchozí přenos dat mezi službami hostovanými ve stejném datacentru se neúčtují žádné poplatky. Jedná se například o Office 365 a Azure.
+Za výchozí přenos dat mezi službami hostovanými ve stejném datacentru se neúčtují žádné poplatky. Například Microsoft 365 a Azure.
 
 ### <a name="monetary-commitment-and-unbilled-usage"></a>Peněžní závazek a nefakturované použití
 
