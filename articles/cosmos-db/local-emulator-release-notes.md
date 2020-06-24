@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: milismsft
 ms.author: adrianmi
 ms.date: 06/20/2019
-ms.openlocfilehash: 6dad625bbbcb8279e83ac42e1492c251d5b0299c
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: ab31daafe496f1aaad2bbc8075b2514d9e57e997
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747010"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84687170"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Emulátor Azure Cosmos – poznámky k verzi a informace ke stažení
 
@@ -24,7 +24,11 @@ Tento článek obsahuje poznámky k verzi emulátoru Azure Cosmos se seznamem ak
 |**Stažení MSI**|[Stažení softwaru společnosti Microsoft](https://aka.ms/cosmosdb-emulator)|
 |**Začínáme**|[Místní vývoj pomocí emulátoru Azure Cosmos](local-emulator.md)|
 
-## <a name="release-notes"></a>Zpráva k vydání verze
+## <a name="release-notes"></a>Poznámky k verzi
+
+### <a name="2111"></a>2.11.1
+
+- Tato verze opravuje několik chyb souvisejících s emulátorem Průzkumník dat. V některých případech při použití emulátoru Průzkumník dat přes webový prohlížeč se nemůže připojit ke koncovému bodu emulátoru Cosmos a všechny související akce, jako je vytvoření databáze nebo kontejneru, budou mít chybu. Druhý opravený problém souvisí s vytvořením položky ze souboru JSON pomocí akce Průzkumník dat nahrávání.
 
 ### <a name="2110"></a>2.11.0
 

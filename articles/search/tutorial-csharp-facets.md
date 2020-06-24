@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 02/10/2020
-ms.openlocfilehash: bc25ba6d95fe58a80c90881c6ad60cdb8801cce4
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.date: 06/20/2020
+ms.openlocfilehash: 7d91348b727c1c43f010ec9f60ae9abd33978ce8
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780585"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85257512"
 ---
 # <a name="tutorial-add-faceted-navigation-using-the-net-sdk"></a>Kurz: Přidání naomezující navigace pomocí sady .NET SDK
 
@@ -109,7 +109,7 @@ Potřebujeme, aby kontroler předal seznam omezujících vlastností do zobrazen
 
 Ovladač Home vyžaduje jednu novou akci, **omezující vlastnost**a aktualizace svého existujícího **indexu** a akcí **stránky** a také aktualizace metody **RunQueryAsync** .
 
-1. Otevřete soubor domovského kontroleru a přidejte příkaz **using** , chcete-li povolit konstrukci **řetězce&lt;&gt; seznamu** .
+1. Otevřete soubor domovského kontroleru a přidejte příkaz **using** , chcete-li povolit konstrukci ** &lt; &gt; řetězce seznamu** .
 
     ```cs
     using System.Collections.Generic;
@@ -344,7 +344,7 @@ Zobrazení bude vyžadovat některé významné změny.
     }
     ```
 
-2. Pro zobrazení uspořádáme výstup do tabulky, aby se seznam omezujících vlastností na levé straně vyrovnal a výsledky na pravé straně. Otevřete soubor index. cshtml. Nahraďte celý obsah značek těla textu &lt;&gt; HTML následujícím kódem.
+2. Pro zobrazení uspořádáme výstup do tabulky, aby se seznam omezujících vlastností na levé straně vyrovnal a výsledky na pravé straně. Otevřete soubor index. cshtml. Nahraďte celý obsah &lt; značek těla textu HTML &gt; následujícím kódem.
 
     ```cs
     <body>

@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.date: 06/18/2020
 ms.author: aahi
 ms.custom: subject-armqs
-ms.openlocfilehash: 9b2091c7acd42d4c967ec5baef82d970344f9231
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 30e3f901d9feca07902e20c87f4fbf5b6979a11b
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85081573"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85299479"
 ---
-# <a name="create-a-cognitive-services-resource-using-an-azure-resource-manager-template"></a>Vytvoření prostředku Cognitive Services pomocí šablony Azure Resource Manager
+# <a name="quickstart-create-a-cognitive-services-resource-using-an-arm-template"></a>Rychlý Start: vytvoření prostředku Cognitive Services pomocí šablony ARM
 
 Pomocí tohoto článku můžete vytvořit a nasadit prostředek Cognitive Services pomocí šablony Azure Resource Manager (ARM). Tento prostředek s více službami vám umožní:
 * Přístup k více Cognitive Servicesům Azure s jedním klíčem a koncovým bodem.
@@ -24,23 +24,24 @@ Pomocí tohoto článku můžete vytvořit a nasadit prostředek Cognitive Servi
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
+Pokud vaše prostředí splňuje požadavky a Vy jste obeznámeni s používáním šablon ARM, vyberte tlačítko **nasadit do Azure** . Šablona se otevře v Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky 
+[![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cognitive-services-universalkey%2Fazuredeploy.json)
 
-* Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
+## <a name="prerequisites"></a>Požadavky
 
-## <a name="create-a-cognitive-services-resource"></a>Vytvoření prostředku služeb Cognitive Services
+* Pokud nemáte předplatné Azure, [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services).
 
-### <a name="review-the-template"></a>Kontrola šablony
+## <a name="review-the-template"></a>Kontrola šablony
 
-Šablona použitá v tomto rychlém startu je ze [šablon ARM pro Azure Starter](https://azure.microsoft.com/resources/templates/101-cognitive-services-universalkey/).
+Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-cognitive-services-universalkey/).
 
 :::code language="json" source="~/quickstart-templates/101-cognitive-services-universalkey/azuredeploy.json" highlight="27-41":::
 
 V této šabloně je definovaný jeden prostředek Azure:
 * [Microsoft. cognitiveservices Account/Accounts](https://docs.microsoft.com/azure/templates/microsoft.cognitiveservices/accounts): vytvoří prostředek Cognitive Services.
 
-### <a name="deploy-the-template"></a>Nasazení šablony
+## <a name="deploy-the-template"></a>Nasazení šablony
 
 # <a name="azure-portal"></a>[portál Azure](#tab/portal)
 
@@ -50,7 +51,7 @@ V této šabloně je definovaný jeden prostředek Azure:
 
 2. Zadejte následující hodnoty.
     
-    |Hodnota  |Popis  |
+    |Hodnota  |Description  |
     |---------|---------|
     | **Předplatné** | Vyberte předplatné služby Azure. |
     | **Skupina prostředků** | Vyberte **vytvořit nový**, zadejte jedinečný název skupiny prostředků a pak klikněte na **OK**. |
@@ -63,7 +64,6 @@ V této šabloně je definovaný jeden prostředek Azure:
 
 3. Vyberte **Zkontrolovat a vytvořit** a potom **Vytvořit**. Po úspěšném nasazení prostředku se zvýrazní tlačítko **Přejít na prostředek** .
 
-    
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/CLI)
 
@@ -97,7 +97,7 @@ Po dokončení nasazení budete moci kliknout na tlačítko **Přejít k prostř
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/CLI)
 
-Pomocí Azure CLI spusťte následující skript a zadejte název skupiny prostředků, kterou jste předtím vytvořili. 
+Pomocí Azure CLI spusťte následující skript a zadejte název skupiny prostředků, kterou jste předtím vytvořili.
 
 ```azurecli-interactive
 echo "Enter the resource group where the Cognitive Services resource exists:" &&

@@ -2,7 +2,7 @@
 title: Konfigurace transakční replikace mezi spravovanou instancí Azure SQL a SQL Server
 description: Kurz, ve kterém se konfiguruje replikace mezi spravovanou instancí vydavatele, distributorem spravované instance a předplatitelem SQL Server na virtuálním počítači Azure spolu s potřebnými síťovými součástmi, jako jsou privátní zóny DNS a partnerské vztahy VPN.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: security
 ms.custom: sqldbrb=1
 ms.topic: tutorial
@@ -10,12 +10,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 11/21/2019
-ms.openlocfilehash: a34ac27459a84048ac5fc9ef10f6f55def6cec78
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 8a6f21d6b02d555456bb70a16b353e5cdbd52fd4
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84221325"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708514"
 ---
 # <a name="tutorial-configure-transactional-replication-between-azure-sql-managed-instance-and-sql-server"></a>Kurz: Konfigurace transakční replikace mezi spravovanou instancí Azure SQL a SQL Server
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -142,7 +142,7 @@ Privátní zóna DNS umožňuje směrování DNS mezi spravovanými instancemi a
 
 ### <a name="create-a-private-dns-zone"></a>Vytvoření privátní zóny DNS
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Pokud chcete vytvořit nový prostředek Azure, vyberte **vytvořit prostředek** .
 1. Hledat `private dns zone` na Azure Marketplace.
 1. Zvolte prostředek **zóny privátní DNS** publikovaný Microsoftem a pak vyberte **vytvořit** a vytvořte zónu DNS.

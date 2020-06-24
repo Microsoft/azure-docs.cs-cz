@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 02/28/2020
-ms.openlocfilehash: cab996eb7c0bfccf31ed49294c6aa4b3e8cefc8f
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.date: 06/23/2020
+ms.openlocfilehash: cf0c2c75b795fcca347439714e163d4022b79fa4
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780755"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261014"
 ---
 # <a name="tutorial-index-azure-sql-data-using-the-net-sdk"></a>Kurz: indexování dat SQL Azure pomocí sady .NET SDK
 
 Konfigurace [indexeru](search-indexer-overview.md) pro extrakci prohledávatelných dat ze služby Azure SQL Database a jejich odeslání do indexu vyhledávání v Azure kognitivní hledání. 
 
-Tento kurz používá jazyk C# a [sadu .NET SDK](https://aka.ms/search-sdk) k provádění následujících úloh:
+Tento kurz používá jazyk C# a [sadu .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) k provádění následujících úloh:
 
 > [!div class="checklist"]
 > * Vytvoření zdroje dat, který se připojuje k Azure SQL Database
@@ -27,7 +27,7 @@ Tento kurz používá jazyk C# a [sadu .NET SDK](https://aka.ms/search-sdk) k pr
 > * Spuštění indexeru pro načtení dat do indexu
 > * Dotazování indexu jako ověřovacího kroku
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -78,7 +78,7 @@ Pokud máte existující prostředek Azure SQL Database, můžete do něj přida
     SELECT * FROM Hotels
     ```
 
-1. Zkopírujte připojovací řetězec ADO.NET pro databázi. V části **Nastavení** > **připojovacích řetězců**zkopírujte připojovací řetězec ADO.NET podobně jako v následujícím příkladu.
+1. Zkopírujte připojovací řetězec ADO.NET pro databázi. V části **Nastavení**  >  **připojovacích řetězců**zkopírujte připojovací řetězec ADO.NET podobně jako v následujícím příkladu.
 
     ```sql
     Server=tcp:{your_dbname}.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
@@ -96,7 +96,7 @@ Volání rozhraní API vyžadují adresu URL služby a přístupový klíč. Vyh
 
 1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
 
-1. V části **Nastavení** > **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
+1. V části **Nastavení**  >  **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
 
    ![Získání koncového bodu HTTP a přístupového klíče](media/search-get-started-postman/get-url-key.png "Získání koncového bodu HTTP a přístupového klíče")
 
@@ -104,11 +104,11 @@ Volání rozhraní API vyžadují adresu URL služby a přístupový klíč. Vyh
 
 1. Spusťte Visual Studio a otevřete **DotNetHowToIndexers. sln**.
 
-1. V Průzkumník řešení otevřete **appSettings. JSON** a poskytněte informace o připojení.
+1. V Průzkumník řešení otevřete **appsettings.js** a zadejte informace o připojení.
 
-1. `searchServiceName`Pokud je úplná adresa URL "https://my-demo-service.search.windows.net", název služby, který se má poskytnout, je "Moje ukázka-služba".
+1. `searchServiceName`Pokud je úplná adresa URL " https://my-demo-service.search.windows.net ", název služby, který se má poskytnout, je "Moje ukázka-služba".
 
-1. Pro `AzureSqlConnectionString`je formát řetězce podobný tomuto:`"Server=tcp:{your_dbname}.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"`
+1. Pro je `AzureSqlConnectionString` formát řetězce podobný tomuto:`"Server=tcp:{your_dbname}.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"`
 
     ```json
     {

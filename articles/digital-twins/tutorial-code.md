@@ -1,5 +1,5 @@
 ---
-title: Nakódování klientské aplikace
+title: Kódování klientské aplikace
 titleSuffix: Azure Digital Twins
 description: Kurz pro zápis minimálního kódu pro klientskou aplikaci pomocí sady .NET (C#) SDK.
 author: cschormann
@@ -7,14 +7,17 @@ ms.author: cschorm
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 7e057d6d973eedd3ac53fd7b2ea228470e9123d7
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: 170901f3410c85ab53a306529053e611b36fa8ec
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84613366"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298391"
 ---
 # <a name="coding-with-the-azure-digital-twins-apis"></a>Kódování pomocí rozhraní API digitálních vláken Azure
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Pro vývojáře, kteří pracují s digitálními podmnožinami Azure, je běžné, že napíší klientskou aplikaci pro komunikaci s její instancí služby Azure Digital Working. Tento kurz zaměřený na vývojáře poskytuje Úvod do programování služby Azure Digital prokážely pomocí [klientské knihovny Azure IoT Digital vláken pro .NET (C#)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). Provede vás vytvořením kroku klientské aplikace konzoly C# od začátku.
 
@@ -99,8 +102,8 @@ První věc, kterou bude vaše aplikace muset udělat, je ověřování vůči s
 
 Aby bylo možné ověřit, potřebujete tři části informací:
 * *ID adresáře (tenanta)* pro vaše předplatné
-* *ID aplikace (klienta)* vytvořené při předchozím nastavení instance služby
-* *Název hostitele* instance služby
+* *ID aplikace (klienta)* vytvořené při nastavování instance služby Azure Digital provláknas dříve
+* *Název hostitele* instance digitálního vlákna Azure
 
 >[!TIP]
 > Pokud neznáte *ID adresáře (tenant)*, můžete ho získat spuštěním tohoto příkazu v [Azure Cloud Shell](https://shell.azure.com):
@@ -148,7 +151,7 @@ Digitální vlákna Azure nemá žádný vnitřní slovník domény. Typy prvků
 
 Prvním krokem při vytváření řešení digitálních vláken Azure je definování alespoň jednoho modelu v souboru DTDL.
 
-V adresáři, ve kterém jste vytvořili projekt, vytvořte nový soubor *. JSON* s názvem *SampleModel. JSON*. Vložte do následujícího textu souboru: 
+V adresáři, ve kterém jste vytvořili projekt, vytvořte nový soubor *. JSON* s názvem *SampleModel.jsv*. Vložte do následujícího textu souboru: 
 
 ```json
 {
@@ -174,7 +177,7 @@ V adresáři, ve kterém jste vytvořili projekt, vytvořte nový soubor *. JSON
 > Pokud pro tento kurz používáte sadu Visual Studio, možná budete chtít vybrat nově vytvořený soubor JSON a nastavit vlastnost *Kopírovat do výstupního adresáře* v inspektoru vlastností na hodnotu *Kopírovat, pokud* je vždycky novější nebo *Kopírovat*. To umožní aplikaci Visual Studio najít soubor JSON s výchozí cestou při spuštění programu s klávesou **F5** během zbývající části kurzu.
 
 > [!TIP] 
-> Je k dispozici [Ukázka validátoru](https://github.com/Azure-Samples/DTDL-Validator) jazyka nezávislá DTDL, kterou můžete použít ke kontrole modelu dokumentů, abyste měli jistotu, že je DTDL platný. Je postaven na knihovně analyzátoru DTDL, kterou si můžete přečíst v tématu [Postupy: analýza a ověření modelů](how-to-use-parser.md).
+> Je k dispozici [Ukázka validátoru](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) jazyka nezávislá DTDL, kterou můžete použít ke kontrole modelu dokumentů, abyste měli jistotu, že je DTDL platný. Je postaven na knihovně analyzátoru DTDL, kterou si můžete přečíst v tématu [Postupy: analýza a ověření modelů](how-to-use-parser.md).
 
 Dále přidejte další kód do *program.cs* , abyste nahráli model, který jste právě vytvořili, do instance digitálního vlákna Azure.
 
@@ -216,8 +219,7 @@ V příkazovém okně spusťte program s tímto příkazem:
 ```cmd/sh
 dotnet run
 ```
-
-Všimnete si, že v tuto chvíli není k dispozici žádný výstup indikující, že volání bylo úspěšné. 
+"Nahrání modelu" se ve výstupu vytiskne, ale ještě neexistuje žádný výstup k označení toho, jestli se modely úspěšně nahrály.
 
 Pokud chcete přidat příkaz Print, který určuje, jestli se modely skutečně odesílají úspěšně, přidejte za předchozí část následující kód:
 
@@ -291,24 +293,19 @@ using System.Text.Json;
 Pak na konec metody přidejte následující kód, `Main` který vytvoří a inicializuje tři digitální vlákna na základě tohoto modelu.
 
 ```csharp
-// Initialize twin metadata
-var meta = new Dictionary<string, object>
-{
-    { "$model", "dtmi:com:contoso:SampleModel;1" },
-};
-// Initialize the twin properties
-var initData = new Dictionary<string, object>
-{
-    { "$metadata", meta },
-    { "data", "Hello World!" }
-};
+// Initialize twin data
+BasicDigitalTwin twinData = new BasicDigitalTwin();
+twinData.Metadata.ModelId = "dtmi:com:contoso:SampleModel;1";
+twinData.CustomProperties.Add("data", $"Hello World!");
+
 string prefix="sampleTwin-";
 for(int i=0; i<3; i++) {
     try {
-        await client.CreateDigitalTwinAsync($"{prefix}{i}", JsonSerializer.Serialize(initData));
+        twinData.Id = $"{prefix}{i}";
+        await client.CreateDigitalTwinAsync($"{prefix}{i}", JsonSerializer.Serialize(twinData));
         Console.WriteLine($"Created twin: {prefix}{i}");
     } catch(RequestFailedException rex) {
-        Console.WriteLine($"Create twin: {rex.Status}:{rex.Message}");  
+        Console.WriteLine($"Create twin error: {rex.Status}:{rex.Message}");  
     }
 }
 ```
@@ -449,6 +446,7 @@ namespace minimal
             var typeList = new List<string>();
             string dtdl = File.ReadAllText("SampleModel.json");
             typeList.Add(dtdl);
+
             // Upload the model to the service
             try {
                 await client.CreateModelsAsync(typeList);
@@ -462,21 +460,16 @@ namespace minimal
                 Console.WriteLine($"Type name: {md.DisplayName}: {md.Id}");
             }
 
-            // Initialize twin metadata
-            var meta = new Dictionary<string, object>
-            {
-                { "$model", "dtmi:com:contoso:SampleModel;1" },
-            };
-            // Initialize the twin properties
-            var initData = new Dictionary<string, object>
-            {
-                { "$metadata", meta },
-                { "data", "Hello World!" }
-            };
+            // Initialize twin data
+            BasicDigitalTwin twinData = new BasicDigitalTwin();
+            twinData.Metadata.ModelId = "dtmi:com:contoso:SampleModel;1";
+            twinData.CustomProperties.Add("data", $"Hello World!");
+    
             string prefix="sampleTwin-";
             for(int i=0; i<3; i++) {
                 try {
-                    await client.CreateDigitalTwinAsync($"{prefix}{i}", JsonSerializer.Serialize(initData));
+                    twinData.Id = $"{prefix}{i}";
+                    await client.CreateDigitalTwinAsync($"{prefix}{i}", JsonSerializer.Serialize(twinData));
                     Console.WriteLine($"Created twin: {prefix}{i}");
                 } catch(RequestFailedException rex) {
                     Console.WriteLine($"Create twin error: {rex.Status}:{rex.Message}");  

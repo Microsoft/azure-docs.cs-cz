@@ -1,5 +1,5 @@
 ---
-title: 'Kurz – Apache Spark pro Azure synapse Analytics: definice úlohy Apache Spark pro synapse'
+title: 'Kurz: vytvoření definice úlohy Apache Spark v synapse studiu'
 description: Kurz – použití analýzy Azure Synapse k vytvoření definic úloh Spark a jejich odeslání do Apache Spark pro fond Azure synapse Analytics.
 author: hrasheed-msft
 ms.author: jejiang
@@ -7,171 +7,187 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
+ms.subservice: ''
 ms.date: 04/15/2020
-ms.openlocfilehash: 5fc9dffaa73d195c842381b6682a00e9834c0fe7
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 3311a9a92cc5e63a6fa20e4dd0d2af00fdacc95c
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587931"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194480"
 ---
-# <a name="tutorial-use-azure-synapse-analytics-to-create-apache-spark-job-definitions-for-synapse-spark-pools"></a>Kurz: použití analýzy Azure Synapse k vytváření definicí úloh Apache Spark pro fondy synapse Spark
+# <a name="tutorial-create-apache-spark-job-definition-in-synapse-studio"></a>Kurz: vytvoření definice úlohy Apache Spark v synapse studiu
 
-Tento kurz ukazuje, jak pomocí analýzy Azure synapse vytvořit definice úloh Spark a pak je odeslat do fondu synapse Spark. Modul plug-in můžete použít několika způsoby:
+Tento kurz ukazuje, jak pomocí Azure synapse studia vytvořit definice úloh Apache Spark a pak je odeslat do fondu Apache Spark.
 
-* Vývoj a odeslání definice úlohy Sparku ve fondu synapse Spark.
-* Zobrazit podrobnosti o úloze po odeslání.
+Tento kurz se zabývá následujícími úkony:
 
-V tomto kurzu:
-
-> [!div class="checklist"]
->
-> * Vývoj a odeslání definice úlohy Sparku ve fondu synapse Spark.
-> * Zobrazit podrobnosti o úloze po odeslání.
+* Vytvoření definice úlohy Apache Spark pro PySpark (Python)
+* Vytvoření definice úlohy Apache Spark pro Spark (Scala)
+* Vytvoření definice úlohy Apache Spark pro .NET Spark (C#)
+* Odeslání definice úlohy Apache Spark jako úlohy služby Batch
+* Přidání definice úlohy Apache Spark do kanálu
 
 ## <a name="prerequisites"></a>Požadavky
 
+Než začnete s tímto kurzem, ujistěte se, že splňujete následující požadavky:
+
 * Pracovní prostor analýzy Azure synapse. Pokyny najdete v tématu [Vytvoření pracovního prostoru Azure synapse Analytics](../../machine-learning/how-to-manage-workspace.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#create-a-workspace).
+* Fond Apache Spark
+* ADLS Gen2 účet úložiště. Musíte být vlastníkem dat objektu BLOB úložiště ADLS Gen2 systému souborů, se kterým chcete pracovat. Pokud ne, budete muset oprávnění přidat ručně.
 
-## <a name="get-started"></a>Začínáme
+## <a name="create-an-apache-spark-job-definition-for-pyspark-python"></a>Vytvoření definice úlohy Apache Spark pro PySpark (Python)
 
-Před odesláním definice úlohy Sparku musíte být vlastníkem dat objektu BLOB úložiště, se kterým chcete pracovat, se systémem ADLS Gen2. Pokud ne, budete muset oprávnění přidat ručně.
+V této části vytvoříte definici úlohy Apache Spark pro PySpark (Python).
 
-### <a name="scenario-1-add-permission"></a>Scénář 1: Přidání oprávnění
+1. Otevřete [Azure synapse Studio](https://web.azuresynapse.net/).
 
-1. Otevřete [Microsoft Azure](https://ms.portal.azure.com)a pak otevřete účet úložiště.
+2. Můžete přejít na [ukázkové soubory pro vytvoření Apache Spark definice úloh](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Python) a stáhnout **WORDCOUNT. jar** a **shakespear.txt**. Pak tyto soubory nahrajte do Azure Storage: klikněte na **data**, vyberte **účty úložiště**a nahrajte související soubory do adls Gen2 systému souborů. Tento krok přeskočte, pokud už máte soubory ve službě Azure Storage. 
 
-2. Klikněte na **kontejnery**a pak vytvořte **systém souborů**. Tento kurz používá oblast `sparkjob`.
+     ![nahrát soubor Pythonu](./media/apache-spark-job-definitions/upload-python-file.png)
 
-    ![Kliknutím na tlačítko Odeslat odešlete definici úlohy Spark.](./media/apache-spark-job-definitions/open-azure-container.png)
+3. Klikněte na **vytvořit** centrum, v levém podokně vyberte **Definice úloh Spark** a klikněte na. Uzel akce vedle **definice úlohy Spark**a pak v místní nabídce vyberte **Nová definice úlohy Spark** .
 
-    ![Dialogové okno pro odeslání Sparku](./media/apache-spark-job-definitions/create-new-filesystem.png)
+     ![vytvořit novou definici pro Python](./media/apache-spark-job-definitions/create-new-definition.png)
 
-3. Otevřete `sparkjob` , klikněte na **Access Control (IAM)** a pak klikněte na **Přidat** a vyberte **Přidat přiřazení role**.
+4. V rozevíracím seznamu jazyk v hlavním okně Definice úlohy Apache Spark vyberte **PySpark (Python)** .
 
-    ![Kliknutím na tlačítko Odeslat odešlete definici úlohy Spark.](./media/apache-spark-job-definitions/add-role-assignment-01.png)
+5. Vyplňte informace pro Apache Spark definice úlohy. Můžete zkopírovat ukázkové informace.
 
-    ![Kliknutím na tlačítko Odeslat odešlete definici úlohy Spark.](./media/apache-spark-job-definitions/add-role-assignment-02.png)
+     |  Vlastnost   | Popis   |  
+     | ----- | ----- |  
+     |Název definice úlohy| Zadejte název definice úlohy Apache Spark. Tento název se dá kdykoli aktualizovat, dokud nebude publikovaný. Vzorku`job definition sample`|
+     |Soubor hlavní definice| Hlavní soubor, který se používá pro úlohu. Vyberte ze svého úložiště soubor PY. Můžete vybrat **Odeslat soubor** a nahrát ho do účtu úložiště. Vzorku`abfss://azureportaldeploy@storageaccountname.dfs.core.windows.net/synapse/workspaces/workspace name/batchjobs/python/fileexists.py`|
+     |Argumenty příkazového řádku| Nepovinné argumenty úlohy. Vzorku`shakespeare.txt`|
+     |Referenční soubory| Další soubory používané pro reference v hlavním definičním souboru. Můžete vybrat **Odeslat soubor** a nahrát ho do účtu úložiště. Vzorku`abfss://azureportaldeploy@storageaccountname.dfs.core.windows.net/synapse/workspaces/workspace name/batchjobs/python/shakespeare.txt`|
+     |Fond Spark| Úloha se odešle do vybraného fondu Apache Spark.|
+     |Verze Sparku| Verze Apache Spark, kterou fond Apache Spark používá|
+     |Prováděcí moduly| Počet prováděcích modulů, které se mají udělit v zadaném fondu Apache Spark pro úlohu.|
+     |Velikost prováděcího modulu| Počet jader a paměti, které se mají použít pro vykonavatele zadané v zadaném fondu Apache Spark pro úlohu.|  
+     |Velikost ovladače| Počet jader a paměti, které se mají použít pro ovladač zadaný v zadaném fondu Apache Spark pro úlohu.|
 
-4. Klikněte na **přiřazení rolí**, zadejte uživatelské jméno a pak ověřte roli uživatele.
+     ![Nastavení hodnoty definice úlohy Spark pro Python](./media/apache-spark-job-definitions/create-py-definition.png)
 
-    ![Kliknutím na tlačítko Odeslat odešlete definici úlohy Spark.](./media/apache-spark-job-definitions/verify-user-role.png)
+6. Vyberte **publikovat** a uložte definici úlohy Apache Spark.
 
-### <a name="scenario-2-prepare-folder-structure"></a>Scénář 2: Příprava struktury složek
+     ![publikovat definici py](./media/apache-spark-job-definitions/publish-py-definition.png)
 
-Před odesláním definice úlohy Sparku jedna úloha potřebuje udělat nahrávání souborů do ADLS Gen2 a příprava struktury složek tam. V synapse studiu používáme k ukládání souborů uzel úložiště.
+## <a name="create-an-apache-spark-job-definition-for-apache-sparkscala"></a>Vytvoření definice úlohy Apache Spark pro Apache Spark (Scala)
 
-1. Otevřete [Azure synapse Analytics](https://web.azuresynapse.net/).
+V této části vytvoříte definici úlohy Apache Spark pro Apache Spark (Scala).
 
-2. Klikněte na **data**, vyberte **účty úložiště**a nahrajte příslušné soubory do adls Gen2 systému souborů. Podporujeme Scala, Java, .NET a Python. V tomto kurzu se používá příklad na obrázku jako ukázka, kde můžete změnit strukturu projektu, jak chcete.
+ 1. Otevřete [Azure synapse Studio](https://web.azuresynapse.net/).
 
-    ![Nastavení hodnoty definice úlohy Spark](./media/apache-spark-job-definitions/prepare-project-structure.png)
+ 2. Můžete přejít na [ukázkové soubory pro vytvoření Apache Spark definice úloh](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Scala) a stáhnout **WORDCOUNT. jar** a **shakespear.txt**. Pak tyto soubory nahrajte do Azure Storage: klikněte na **data**, vyberte **účty úložiště**a nahrajte související soubory do adls Gen2 systému souborů. Tento krok přeskočte, pokud už máte soubory ve službě Azure Storage. 
+ 
+     ![Příprava struktury Scala](./media/apache-spark-job-definitions/prepare-scala-structure.png)
 
-## <a name="create-a-spark-job-definition"></a>Vytvoření definice úlohy Spark
+ 3. Klikněte na **vytvořit** centrum, v levém podokně vyberte **Definice úloh Spark** a klikněte na. Uzel akce vedle **definice úlohy Spark**a pak v místní nabídce vyberte **Nová definice úlohy Spark** .
+     ![vytvořit novou definici pro Scala](./media/apache-spark-job-definitions/create-new-definition.png)
 
-1. Otevřete [Azure synapse Analytics](https://web.azuresynapse.net/)a vyberte **vývoj**.
+ 4. V rozevíracím seznamu jazyk v hlavním okně Definice úlohy Apache Spark vyberte **Spark (Scala)** .
 
-2. V levém podokně vyberte **Definice úloh Spark** .
+ 5. Vyplňte informace pro Apache Spark definice úlohy. Můžete zkopírovat ukázkové informace.
 
-3. Klikněte na uzel **Akce** napravo od položky "Definice úloh Spark".
+     |  Vlastnost   | Popis   |  
+     | ----- | ----- |  
+     |Název definice úlohy| Zadejte název definice úlohy Apache Spark. Tento název se dá kdykoli aktualizovat, dokud nebude publikovaný. Vzorku`job definition sample`|
+     |Soubor hlavní definice| Hlavní soubor, který se používá pro úlohu. Vyberte ze svého úložiště soubor JAR. Můžete vybrat **Odeslat soubor** a nahrát ho do účtu úložiště. Vzorku`abfss://sparkjob@storageaccountname.dfs.core.windows.net/scala/wordcount/wordcount.jar`|
+     |Název hlavní třídy| Plně kvalifikovaný identifikátor nebo hlavní třída, která je v hlavním definičním souboru. Vzorku`WordCount`|
+     |Argumenty příkazového řádku| Nepovinné argumenty úlohy. Vzorku`abfss://sparkjob@storageaccountname.dfs.core.windows.net/scala/wordcount/shakespeare.txt abfss://sparkjob@storageaccountname.dfs.core.windows.net/scala/wordcount/result`|
+     |Referenční soubory| Další soubory používané pro reference v hlavním definičním souboru. Můžete vybrat **Odeslat soubor** a nahrát ho do účtu úložiště.|
+     |Fond Spark| Úloha se odešle do vybraného fondu Apache Spark.|
+     |Verze Sparku| Verze Apache Spark, kterou fond Apache Spark používá|
+     |Prováděcí moduly| Počet prováděcích modulů, které se mají udělit v zadaném fondu Apache Spark pro úlohu.|  
+     |Velikost prováděcího modulu| Počet jader a paměti, které se mají použít pro vykonavatele zadané v zadaném fondu Apache Spark pro úlohu.|
+     |Velikost ovladače| Počet jader a paměti, které se mají použít pro ovladač zadaný v zadaném fondu Apache Spark pro úlohu.|
 
-     ![Vytvořit novou definici úlohy Spark](./media/apache-spark-job-definitions/create-new-definition-01.png)
+     ![Nastavte hodnotu definice úlohy Spark pro Scala.](./media/apache-spark-job-definitions/create-scala-definition.png)
 
-4. V rozevíracím seznamu **Akce** vyberte **Nová definice úlohy Spark** .
+ 6. Vyberte **publikovat** a uložte definici úlohy Apache Spark.
 
-     ![Vytvořit novou definici úlohy Spark](./media/apache-spark-job-definitions/create-new-definition-02.png)
+     ![publikování definice Scala](./media/apache-spark-job-definitions/publish-scala-definition.png)
 
-5. V okně Nová definice úlohy Spark vyberte jazyk a potom zadejte následující informace:  
 
-   * Vyberte **jazyk** jako **Spark (Scala)**.
+## <a name="create-an-apache-spark-job-definition-for-net-sparkc"></a>Vytvoření definice úlohy Apache Spark pro .NET Spark (C#)
 
-    |  Vlastnost   | Popis   |  
-    | ----- | ----- |  
-    |Název definice úlohy| Zadejte název definice úlohy Spark.  Tento kurz používá oblast `job definition sample`. Tento název se dá kdykoli aktualizovat, dokud nebude publikovaný.|  
-    |Soubor hlavní definice| Hlavní soubor, který se používá pro úlohu. Vyberte ze svého úložiště soubor JAR. Můžete vybrat **Odeslat soubor** a nahrát ho do účtu úložiště. |
-    |Název hlavní třídy| Plně kvalifikovaný identifikátor nebo hlavní třída, která je v hlavním definičním souboru.|
-    |Argumenty příkazového řádku| Nepovinné argumenty úlohy.|
-    |Referenční soubory| Další soubory používané pro reference v hlavním definičním souboru. Můžete vybrat **Odeslat soubor** a nahrát ho do účtu úložiště.|
-    |Fond Spark| Úloha se odešle do vybraného fondu Spark.|
-    |Verze Sparku| Verze Sparku, kterou používá fond Spark.|
-    |Prováděcí moduly| Počet prováděcích modulů, které se mají v zadaném fondu Spark pro úlohu udělit|
-    |Velikost prováděcího modulu| Počet jader a paměti, které se mají použít pro vykonavatele zadané v zadaném fondu Spark pro úlohu.|  
-    |Velikost ovladače| Počet jader a paměti, které se mají použít pro ovladač zadaný v zadaném fondu Spark pro úlohu.|
+V této části vytvoříte definici úlohy Apache Spark pro .NET Spark (C#).
+ 1. Otevřete [Azure synapse Studio](https://web.azuresynapse.net/).
 
-    ![Nastavení hodnoty definice úlohy Spark](./media/apache-spark-job-definitions/create-scala-definition.png)
+ 2. Můžete přejít na [ukázkové soubory pro vytvoření Apache Spark definice úloh](https://github.com/Azure-Samples/Synapse/tree/master/Spark/DotNET) a stáhnout **wordcount.zip** a **shakespear.txt**. Pak tyto soubory nahrajte do Azure Storage: klikněte na **data**, vyberte **účty úložiště**a nahrajte související soubory do adls Gen2 systému souborů. Tento krok přeskočte, pokud už máte soubory ve službě Azure Storage. 
 
-   * Vyberte **jazyk** jako **PySpark (Python)**.
+     ![Příprava struktury dotnet](./media/apache-spark-job-definitions/prepare-scala-structure.png)
 
-    |  Vlastnost   | Popis   |  
-    | ----- | ----- |  
-    |Název definice úlohy| Zadejte název definice úlohy Spark.  Tento kurz používá oblast `job definition sample`. Tento název se dá kdykoli aktualizovat, dokud nebude publikovaný.|  
-    |Soubor hlavní definice| Hlavní soubor, který se používá pro úlohu. Vyberte ze svého úložiště soubor PY. Můžete vybrat **Odeslat soubor** a nahrát ho do účtu úložiště.|
-    |Argumenty příkazového řádku| Nepovinné argumenty úlohy.|
-    |Referenční soubory| Další soubory používané pro reference v hlavním definičním souboru. Můžete vybrat **Odeslat soubor** a nahrát ho do účtu úložiště.|
-    |Fond Spark| Úloha se odešle do vybraného fondu Spark.|
-    |Verze Sparku| Verze Sparku, kterou používá fond Spark.|
-    |Prováděcí moduly| Počet prováděcích modulů, které se mají v zadaném fondu Spark pro úlohu udělit|
-    |Velikost prováděcího modulu| Počet jader a paměti, které se mají použít pro vykonavatele zadané v zadaném fondu Spark pro úlohu.|  
-    |Velikost ovladače| Počet jader a paměti, které se mají použít pro ovladač zadaný v zadaném fondu Spark pro úlohu.|
+ 3. Klikněte na **vytvořit** centrum, v levém podokně vyberte **Definice úloh Spark** a klikněte na. Uzel akce vedle **definice úlohy Spark**a pak v místní nabídce vyberte **Nová definice úlohy Spark** .
 
-    ![Nastavení hodnoty definice úlohy Spark](./media/apache-spark-job-definitions/create-py-definition.png)
+     ![vytvořit novou definici pro dotnet](./media/apache-spark-job-definitions/create-new-definition.png)
 
-   * Vyberte **jazyk** jako **.NET Spark (C#/f #)**.
+ 4. V rozevíracím seznamu jazyk v hlavním okně Definice úlohy Apache Spark vyberte **.NET Spark (C#/f #)** .
 
-    |  Vlastnost   | Popis   |  
-    | ----- | ----- |  
-    |Název definice úlohy| Zadejte název definice úlohy Spark.  Tento kurz používá oblast `job definition sample`. Tento název se dá kdykoli aktualizovat, dokud nebude publikovaný.|  
-    |Soubor hlavní definice| Hlavní soubor, který se používá pro úlohu. Vyberte soubor ZIP, který obsahuje vaši aplikaci .NET for Spark (tj. hlavní spustitelný soubor, knihovny DLL obsahující uživatelsky definované funkce a další požadované soubory) ze svého úložiště. Můžete vybrat **Odeslat soubor** a nahrát ho do účtu úložiště.|
-    |Hlavní spustitelný soubor| Hlavní spustitelný soubor v hlavní definici souboru ZIP.|
-    |Argumenty příkazového řádku| Nepovinné argumenty úlohy.|
-    |Referenční soubory| Další soubory, které jsou potřeba pro pracovní uzly pro spuštění aplikace .NET pro Spark, která není zahrnutá do hlavní definice souboru ZIP (to znamená závislých jar, dalších uživatelsky definovaných funkcí DLL a dalších konfiguračních souborů). Můžete vybrat **Odeslat soubor** a nahrát ho do účtu úložiště.|
-    |Fond Spark| Úloha se odešle do vybraného fondu Spark.|
-    |Verze Sparku| Verze Sparku, kterou používá fond Spark.|
-    |Prováděcí moduly| Počet prováděcích modulů, které se mají v zadaném fondu Spark pro úlohu udělit|
-    |Velikost prováděcího modulu| Počet jader a paměti, které se mají použít pro vykonavatele zadané v zadaném fondu Spark pro úlohu.|  
-    |Velikost ovladače| Počet jader a paměti, které se mají použít pro ovladač zadaný v zadaném fondu Spark pro úlohu.|
+ 5. Vyplňte informace pro Apache Spark definice úlohy. Můžete zkopírovat ukázkové informace.
+     |  Vlastnost   | Popis   |  
+     | ----- | ----- |  
+     |Název definice úlohy| Zadejte název definice úlohy Apache Spark. Tento název se dá kdykoli aktualizovat, dokud nebude publikovaný. Vzorku`job definition sample`|
+     |Soubor hlavní definice| Hlavní soubor, který se používá pro úlohu. Vyberte soubor ZIP, který obsahuje vaši aplikaci .NET for Apache Spark (tj. hlavní spustitelný soubor, knihovny DLL obsahující uživatelsky definované funkce a další požadované soubory) ze svého úložiště. Můžete vybrat **Odeslat soubor** a nahrát ho do účtu úložiště. Vzorku`abfss://sparkjob@storageaccountname.dfs.core.windows.net/dotnet/wordcount/wordcount.zip`|
+     |Hlavní spustitelný soubor| Hlavní spustitelný soubor v hlavní definici souboru ZIP. Vzorku`WordCount`|
+     |Argumenty příkazového řádku| Nepovinné argumenty úlohy. Vzorku`abfss://sparkjob@storageaccountname.dfs.core.windows.net/dotnet/wordcount/shakespeare.txt abfss://sparkjob@storageaccountname.dfs.core.windows.net/dotnet/wordcount/result`|
+     |Referenční soubory| Další soubory, které jsou vyžadovány pracovními uzly pro spuštění aplikace .NET pro Apache Spark aplikaci, která není obsažena v hlavní definici souboru ZIP (to znamená, že závisí na jar, dalších uživatelsky definovaných funkcí DLL a dalších konfiguračních souborech). Můžete vybrat **Odeslat soubor** a nahrát ho do účtu úložiště.|
+     |Fond Spark| Úloha se odešle do vybraného fondu Apache Spark.|
+     |Verze Sparku| Verze Apache Spark, kterou fond Apache Spark používá|
+     |Prováděcí moduly| Počet prováděcích modulů, které se mají udělit v zadaném fondu Apache Spark pro úlohu.|  
+     |Velikost prováděcího modulu| Počet jader a paměti, které se mají použít pro vykonavatele zadané v zadaném fondu Apache Spark pro úlohu.|
+     |Velikost ovladače| Počet jader a paměti, které se mají použít pro ovladač zadaný v zadaném fondu Apache Spark pro úlohu.|
 
-    ![Nastavení hodnoty definice úlohy Spark](./media/apache-spark-job-definitions/create-net-definition.png)
+     ![Nastavení hodnoty definice úlohy Sparku pro dotnet](./media/apache-spark-job-definitions/create-net-definition.png)
 
-6. Vyberte **publikovat** a uložte definici úlohy Spark.
+ 6. Vyberte **publikovat** a uložte definici úlohy Apache Spark.
 
-    ![Publikování definice úlohy Sparku](./media/apache-spark-job-definitions/publish-net-definition.png)
+      ![publikovat definici dotnet](./media/apache-spark-job-definitions/publish-net-definition.png)
 
-## <a name="submit-a-spark-job-definition"></a>Odeslání definice úlohy Sparku
+## <a name="submit-an-apache-spark-job-definition-as-a-batch-job"></a>Odeslání definice úlohy Apache Spark jako úlohy služby Batch
 
-Po vytvoření definice úlohy Spark ji můžete odeslat do fondu synapse Spark. Před vyzkoušením ukázek v této části se ujistěte, že jste prošli kroky v části **Začínáme** .
+Po vytvoření Apache Spark definice úlohy ji můžete odeslat do fondu Apache Spark. Ujistěte se, že jste vlastníkem dat objektu BLOB úložiště ADLS Gen2 systém souborů, se kterým chcete pracovat. Pokud ne, budete muset oprávnění přidat ručně.
 
-### <a name="scenario-1-submit-spark-job-definition"></a>Scénář 1: odeslání definice úlohy Spark
-
-1. Kliknutím otevřete okno Definice úlohy Spark.
+### <a name="scenario-1-submit-apache-spark-job-definition"></a>Scénář 1: odeslání definice úlohy Apache Spark
+ 1. Kliknutím otevřete okno Definice úlohy Apache Spark.
 
       ![Otevření definice úlohy Spark k odeslání ](./media/apache-spark-job-definitions/open-spark-definition.png)
 
-2. Kliknutím na ikonu **Odeslat** odešlete projekt do vybraného fondu Spark. Kliknutím na kartu **Adresa URL monitorování Spark** si můžete prohlédnout LogQuery aplikace Spark.
+ 2. Kliknutím na ikonu **Odeslat** odešlete projekt do vybraného fondu Apache Spark. Kliknutím na kartu **Adresa URL monitorování Spark** můžete zobrazit LogQuery aplikace Apache Spark.
 
     ![Kliknutím na tlačítko Odeslat odešlete definici úlohy Spark.](./media/apache-spark-job-definitions/submit-spark-definition.png)
 
     ![Dialogové okno pro odeslání Sparku](./media/apache-spark-job-definitions/submit-definition-result.png)
 
-### <a name="scenario-2-view-spark-job-running-progress"></a>Scénář 2: zobrazení průběhu spuštěné úlohy Spark
+### <a name="scenario-2-view-apache-spark-job-running-progress"></a>Scénář 2: zobrazení průběhu úlohy Apache Spark běhu
 
-1. Klikněte na **monitorování**a pak vyberte možnost **aplikace Spark** . Můžete najít odeslanou aplikaci Spark.
+ 1. Klikněte na **monitorování**a pak vyberte možnost **aplikace Spark** . Můžete najít odeslanou aplikaci Apache Spark.
 
-    ![Zobrazit aplikaci Spark](./media/apache-spark-job-definitions/view-spark-application.png)
+     ![Zobrazit aplikaci Spark](./media/apache-spark-job-definitions/view-spark-application.png)
 
-2. Pak klikněte na tlačítko aplikace Spark, zobrazí se okno **LogQuery** . Průběh provádění úlohy můžete zobrazit z **LogQuery**.
-
-    ![Zobrazit LogQuery aplikace Spark](./media/apache-spark-job-definitions/view-job-log-query.png)
+ 2. Pak klikněte na Apache Spark aplikace, zobrazí se okno **LogQuery** . Průběh provádění úlohy můžete zobrazit z **LogQuery**.
+     
+     ![Zobrazit LogQuery aplikace Spark](./media/apache-spark-job-definitions/view-job-log-query.png)
 
 ### <a name="scenario-3-check-output-file"></a>Scénář 3: zkontrolování výstupního souboru
 
  1. Klikněte na **data**a pak vyberte **účty úložiště**. Po úspěšném spuštění můžete přejít do úložiště ADLS Gen2 a vygeneruje se výstupy kontroly.
 
-    ![Zobrazit výstupní soubor](./media/apache-spark-job-definitions/view-output-file.png)
+     ![Zobrazit výstupní soubor](./media/apache-spark-job-definitions/view-output-file.png)
+
+## <a name="add-an-apache-spark-job-definition-into-pipeline"></a>Přidání definice úlohy Apache Spark do kanálu
+
+V této části přidáte do kanálu definici úlohy Apache Spark.
+
+ 1. Otevřete existující definici úlohy Apache Spark.
+
+ 2. Klikněte na ikonu v pravém horním rohu definice úlohy Apache Spark, vyberte **existující kanál**nebo **Nový kanál**. Další informace najdete na stránce kanálu.
+
+     ![Přidat do kanálu](./media/apache-spark-job-definitions/add-to-pipeline01.png)
+
+     ![Přidat do kanálu](./media/apache-spark-job-definitions/add-to-pipeline02.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Tento kurz ukazuje, jak pomocí služby Azure synapse Analytics vytvořit definice úloh Spark a pak je odeslat do fondu synapse Spark. Dále můžete pomocí služby Azure synapse Analytics vytvářet Power BI datové sady a spravovat Power BI data. 
+Tento kurz ukazuje, jak pomocí Azure synapse studia vytvořit definice úloh Apache Spark a pak je odeslat do fondu Apache Spark. Dále můžete pomocí Azure synapse studia vytvářet Power BI datové sady a spravovat Power BI data.
 
-- [Připojení k datům v Power BI Desktopu](https://docs.microsoft.com/power-bi/desktop-quickstart-connect-to-data)
-- [Vizualizace pomocí Power BI](../sql-data-warehouse/sql-data-warehouse-get-started-visualize-with-power-bi.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)

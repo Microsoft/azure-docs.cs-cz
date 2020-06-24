@@ -7,11 +7,11 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.openlocfilehash: bfe1d1aeeac55039acf0c7eb295001277be9cd2e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79239207"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84693069"
 ---
 # <a name="tutorial-create-the-azure-fxt-edge-filer-cluster"></a>Kurz: Vytvoření clusteru Azure FXT Edge souborového
 
@@ -103,7 +103,7 @@ Chcete-li zkontrolovat připojení k síti, zkontrolujte, zda jsou indikátory L
 
 Když se uzel spustí, požádá o IP adresu. Pokud je připojený k serveru DHCP, přijme IP adresu poskytovanou protokolem DHCP. (Tato IP adresa je dočasná. Při vytváření clusteru se změní.)
 
-Pokud není připojen k serveru DHCP nebo neobdrží odpověď, uzel použije Bonjour software k nastavení IP adresy přiřazené svým držitelem ve formě 169,254. \*. \*. Na jedné ze síťových karet uzlu byste ale měli nastavit dočasnou statickou IP adresu, než ji použijete k vytvoření clusteru. Pokyny jsou součástí tohoto staršího dokumentu. aktualizované informace získáte od služby a podpory společnosti Microsoft: [Příloha a: nastavení statické IP adresy v uzlu FXT](https://azure.github.io/Avere/legacy/create_cluster/4_8/html/static_ip.html)
+Pokud není připojen k serveru DHCP nebo neobdrží odpověď, uzel použije Bonjour software k nastavení IP adresy přiřazené svým držitelem ve formě 169,254.. \* \* . Na jedné ze síťových karet uzlu byste ale měli nastavit dočasnou statickou IP adresu, než ji použijete k vytvoření clusteru. Pokyny jsou součástí tohoto staršího dokumentu. aktualizované informace získáte od služby a podpory společnosti Microsoft: [Příloha a: nastavení statické IP adresy v uzlu FXT](https://azure.github.io/Avere/legacy/create_cluster/4_8/html/static_ip.html)
 
 ### <a name="find-the-ip-address"></a>Najít IP adresu
 
@@ -115,7 +115,7 @@ Po přihlášení je potřeba určit IP adresu uzlu.
 
 Pomocí příkazu `ifconfig` Zobrazte adresy přiřazené tomuto systému.
 
-Příkaz `ifconfig | grep -B5 inet` například vyhledá porty pomocí internetových adres a pro zobrazení identifikátoru portu poskytne pět řádků kontextu.
+Příkaz například `ifconfig | grep -B5 inet` vyhledá porty pomocí internetových adres a pro zobrazení identifikátoru portu poskytne pět řádků kontextu.
 
 Zapište všechny IP adresy zobrazené v sestavě ifconfig. Adresy uvedené s názvy portů jako e0a nebo e0b jsou dobré možnosti. Nepoužívejte žádné IP adresy uvedené v názvech E7 *, protože tyto názvy se používají jenom pro porty služby iDRAC/IPMI.  
 
@@ -167,16 +167,16 @@ V horní části vyplňte základní informace pro nový cluster.
   * Může obsahovat písmena, číslice a znaky spojovníku (-) a podtržítka (_). 
   * Nesmí obsahovat další interpunkční znaménka ani speciální znaky.
   
-  Tento název můžete později změnit na stránce konfigurace **Cluster** > **obecného nastavení** clusteru. (Další informace o nastaveních clusteru najdete v tématu [Průvodce konfigurací clusteru](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/ops_conf_index.html), který není součástí této sady dokumentace.)
+  Tento název můžete později změnit na **Cluster**  >  stránce konfigurace**obecného nastavení** clusteru. (Další informace o nastaveních clusteru najdete v tématu [Průvodce konfigurací clusteru](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/ops_conf_index.html), který není součástí této sady dokumentace.)
 
   > [!NOTE] 
   > Název clusteru se používá k identifikaci systémových informací nahraných pro podporu monitorování nebo řešení potíží, takže je vhodné zahrnout název vaší společnosti.
 
-* **Heslo správce** – nastavte heslo pro výchozího uživatele s právy pro `admin`správu,.
+* **Heslo správce** – nastavte heslo pro výchozího uživatele s právy pro správu, `admin` .
   
-  Pro každou osobu, která spravuje cluster, byste měli nastavit jednotlivé uživatelské účty, ale uživatele `admin`nemůžete odebrat. Přihlaste `admin` se jako v případě, že potřebujete vytvořit další uživatele.
+  Pro každou osobu, která spravuje cluster, byste měli nastavit jednotlivé uživatelské účty, ale uživatele nemůžete odebrat `admin` . Přihlaste se jako v `admin` případě, že potřebujete vytvořit další uživatele.
  
-  Heslo `admin` můžete změnit na stránce nastavení**uživatelů** pro **správu** > v ovládacím panelu clusteru. Podrobnosti najdete v dokumentaci pro **uživatele** v [Průvodci konfigurací clusteru](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_users.html).
+  Heslo můžete změnit na `admin` stránce nastavení uživatelů pro **správu**  >  **Users** v ovládacím panelu clusteru. Podrobnosti najdete v dokumentaci pro **uživatele** v [Průvodci konfigurací clusteru](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_users.html).
 
 <!-- to do: update "legacy" URLs when docs are ported to Microsoft site -->
 
@@ -204,7 +204,7 @@ Nastavení v části **Správa** jsou pro síť, která poskytuje přístup spr�
 
 * **IP adresa pro správu** – zadejte IP adresu, kterou budete používat pro přístup k ovládacímu panelu clusteru. Tato adresa bude uplatněna v primárním uzlu clusteru, ale automaticky se přesune na uzel v pořádku, pokud původní primární uzel nebude k dispozici.
 
-  Většina clusterů používá jenom jednu IP adresu pro správu. Pokud potřebujete více než jedno, můžete je přidat po vytvoření clusteru pomocí stránky nastavení**sítě pro správu** **clusteru** > . Další informace najdete v [Průvodci konfigurací clusteru](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_admin_network.html).
+  Většina clusterů používá jenom jednu IP adresu pro správu. Pokud potřebujete více než jedno, můžete je přidat po vytvoření clusteru pomocí **Cluster**  >  stránky nastavení**sítě pro správu** clusteru. Další informace najdete v [Průvodci konfigurací clusteru](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_admin_network.html).
 
 * Síťová **Maska** – zadejte síťovou masku pro síť pro správu.
 
@@ -212,7 +212,7 @@ Nastavení v části **Správa** jsou pro síť, která poskytuje přístup spr�
 
 * **Značka VLAN (volitelné)** – Pokud váš cluster používá značky VLAN, zadejte značku pro síť pro správu.
 
-  Další nastavení sítě VLAN jsou nakonfigurovaná na stránce nastavení**sítě VLAN** pro **clustery** > . Další informace najdete v tématu [práce s](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/network_overview.html#vlan-overview) virtuálními sítěmi a [sítí VLAN >](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_vlan.html) v Průvodci konfigurací clusteru.
+  Další nastavení sítě VLAN jsou nakonfigurovaná **Cluster**na  >  stránce nastavení**sítě VLAN** pro clustery. Další informace najdete v tématu [práce s](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/network_overview.html#vlan-overview) virtuálními sítěmi a [sítí VLAN >](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_vlan.html) v Průvodci konfigurací clusteru.
 
 * **MTU** – v případě potřeby upravte maximální přenosovou jednotku (MTU) pro síť pro správu vašeho clusteru.
 
@@ -226,7 +226,7 @@ Nastavení sítě clusteru se vztahuje na přenosy mezi uzly clusteru a mezi uzl
 
 * **První IP** adresa a **Poslední IP** adresa – zadejte IP adresy definující rozsah, který se má použít pro interní komunikaci s clustery. Zde používané IP adresy musí být souvislé a nepřiřazované protokolem DHCP.
 
-  Po vytvoření clusteru můžete přidat další IP adresy. Použijte stránku nastavení**sítě** clusterového clusteru ([dokumentace Průvodce konfigurací clusteru](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cluster_networks.html#gui-cluster-networks)). **Cluster** > 
+  Po vytvoření clusteru můžete přidat další IP adresy. Použijte stránku nastavení sítě **clusterového**  >  **clusteru** ([dokumentace Průvodce konfigurací clusteru](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cluster_networks.html#gui-cluster-networks)).
 
   Hodnota v poli **počet IP adres v rozsahu** se vypočítá a automaticky se zobrazí.
 
@@ -282,7 +282,7 @@ Po vytvoření clusteru budete muset přizpůsobit jeho konfiguraci pro vaši s�
 
 K nastavení nového clusteru použijte webové rozhraní ovládacích panelů. Použijte odkaz z obrazovky stavu vytvoření clusteru nebo přejděte na IP adresu pro správu, kterou jste v clusteru nastavili.
 
-Přihlaste se k webovému rozhraní pomocí `admin` uživatelského jména a hesla, které jste nastavili při vytváření clusteru.
+Přihlaste se k webovému rozhraní pomocí uživatelského jména `admin` a hesla, které jste nastavili při vytváření clusteru.
 
 ![webový prohlížeč zobrazující pole přihlášení ovládacích panelů](media/fxt-cluster-create/admin-login.png)
 
@@ -371,7 +371,7 @@ Cluster Azure FXT Edge souborového může automaticky nahrávat údaje o podpo�
 
 Chcete-li nastavit odesílání podpory, postupujte podle těchto kroků.
 
-1. Přejděte na stránku nastavení**podpory** **clusteru** > . Přijměte zásady ochrany osobních údajů. 
+1. Přejděte na **Cluster**  >  stránku nastavení**podpory** clusteru. Přijměte zásady ochrany osobních údajů. 
 
    ![Snímek obrazovky s tlačítkem pro ovládací panely a automaticky otevírané okno s tlačítkem potvrdit pro přijetí zásad ochrany osobních údajů](media/fxt-cluster-create/fxt-privacy-policy.png)
 

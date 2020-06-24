@@ -2,18 +2,19 @@
 title: Kurz – Azure Toolkit for IntelliJ (aplikace Spark)
 description: Kurz – použití Azure Toolkit for IntelliJ k vývoji aplikací Spark, které jsou napsané v Scala a jejich odeslání do fondu Apache Spark (Preview).
 services: synapse-analytics
-author: v-jiche
-ms.author: v-jiche
+author: hrasheed-msft
+ms.author: jejiang
 ms.reviewer: jrasnick, carlrab
 ms.service: synapse-analytics
 ms.topic: tutorial
+ms.subservice: spark
 ms.date: 04/15/2020
-ms.openlocfilehash: 3971d49befd228c111b1a8da5fce44e25abfaa65
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: cd180996434463959cd6f40a115902db358a3091
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84657832"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194930"
 ---
 # <a name="tutorial-create-an-apache-spark-applications-with-intellij-using-a-synapse-workspace"></a>Kurz: vytvoření Apache Sparkch aplikací pomocí IntelliJ pomocí pracovního prostoru synapse
 
@@ -146,7 +147,7 @@ Po vytvoření aplikace v Scala můžete tuto aplikaci spustit vzdáleně.
     |Argumenty příkazového řádku|V případě potřeby můžete zadat argumenty oddělené mezerou pro hlavní třídu.|
     |Odkazované jar a odkazované soubory|Můžete zadat cesty pro odkazované jar a soubory, pokud existují. Můžete také procházet soubory ve virtuálním systému souborů Azure, který v současné době podporuje jenom cluster ADLS Gen2. Další informace: [Apache Spark konfiguraci](https://spark.apache.org/docs/latest/configuration.html#runtime-environment) a [Postup nahrání prostředků do clusteru](../../storage/blobs/storage-quickstart-blobs-storage-explorer.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).|
     |Úložiště nahrávání úlohy|Rozbalením zobrazíte další možnosti.|
-    |Typ úložiště|Vyberte **použít Azure Blob k nahrání** z rozevíracího seznamu.|
+    |Typ úložiště|Vyberte **použít Azure Blob k nahrání** nebo **použití výchozího účtu úložiště clusteru k nahrání** z rozevíracího seznamu.|
     |Účet úložiště|Zadejte svůj účet úložiště.|
     |Klíč úložiště|Zadejte svůj klíč úložiště.|
     |Kontejner úložiště|Po zadání **účtu úložiště** a **klíče úložiště** vyberte z rozevíracího seznamu svůj kontejner úložiště.|
@@ -250,6 +251,7 @@ Podporuje se jenom na IntelliJ 2018,2 a 2018,3.
 
     |Vlastnost |Hodnota |
     |----|----|
+    |Název hlavní třídy| Vyberte název hlavní třídy.| 
     |Fondy Spark|Vyberte fondy Spark, na kterých chcete aplikaci spustit.|
     ||
 

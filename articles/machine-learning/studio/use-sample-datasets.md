@@ -5,17 +5,17 @@ description: Popisy datových sad použitých v ukázkových modelech, které js
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: sample
 author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: 9bdf1cd8832d311a71276fa18d407a5b4dd98d24
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 0ecce4db01217bc182687818af365dff334e7d10
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84115494"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84705895"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio-classic"></a>Použití ukázkových datových sad v Azure Machine Learning Studio (klasický)
 
@@ -142,7 +142,7 @@ Datová sada obsahuje další informace pro každou podezřelou oblast obrazu na
 <tr>
   <td>Sdílená datová sada CRM</td>
   <td>
-Tato data pocházejí z konference KDD (<a href="http://www.sigkdd.org/site/2009/files/orange_small_train.data.zip">orange_small_train. data. zip</a>) s 2009.
+Tato data pocházejí z konference KDDu pro předpověď vztahů se zákazníky 2009 (<a href="http://www.sigkdd.org/site/2009/files/orange_small_train.data.zip">orange_small_train.data.zip</a>).
 <p></p>
 Datová sada obsahuje zákazníky 50 tis z francouzské telekomunikační společnosti oranžová. Každý zákazník má 230 funkcí Anonyme, 190 z nich je numerická a 40 jsou kategorií. Funkce jsou velmi zhuštěné.
   </td>
@@ -359,48 +359,48 @@ Upozorňujeme, že některé společnosti nemohly najít článek, takže počet
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/direct_marketing.csv">direct_marketing. csv</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/direct_marketing.csv">direct_marketing.csv</a></td>
   <td>
 Datová sada obsahuje zákaznická data a údaje o jejich reakci na přímou poštovní kampaň. Každý řádek představuje zákazníka. Datová sada obsahuje devět funkcí demografických údajů uživatele a minulého chování a tři sloupce popisků (Přejít, převod a výdaje).  Návštěva je binární sloupec, který indikuje, že zákazník navštívil po marketingové kampani. Konverze znamená, že zákazník si koupil nějakého nějakého. Útrata je množství, které bylo stráveno.  Datovou sadu vystavila služba Kevin Hillstrom pro MineThatDatay e-mailové analýzy a pro dolování dat.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_test.csv">lyrl2004_tokens_test. csv</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_test.csv">lyrl2004_tokens_test.csv</a></td>
   <td>
 Funkce příkladů testů v datové sadě RCV1-v2 pro zprávy Reuters Datová sada obsahuje články 781K News spolu s jejich ID (první sloupec datové sady). Každý článek má tokeny, stopworded a lemmatizátor. Datová sada byla zpřístupněna prostřednictvím David. D. Lewis.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_train.csv">lyrl2004_tokens_train. csv</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_train.csv">lyrl2004_tokens_train.csv</a></td>
   <td>
 Příklady výukových příkladů v datové sadě RCV1-v2 pro zprávy Reuters Datová sada obsahuje články 23K News spolu s jejich ID (první sloupec datové sady). Každý článek má tokeny, stopworded a lemmatizátor. Datová sada byla zpřístupněna prostřednictvím David. D. Lewis.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection. csv</a><br></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection.csv</a><br></td>
   <td>
-Datová sada z konference KDD konvičku 1999 a soutěž nástrojů pro dolování dat (<a href="https://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html">kddcup99. html</a>)
+Datová sada z konference KDDu 1999 pro zjišťování znalostí a dolování dat (<a href="https://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html">kddcup99.html</a>).
 <p></p>
-Datová sada byla stažena a uložena v úložišti objektů BLOB v Azure (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection. csv</a>) a zahrnuje školicí a testovací datové sady. Datová sada školení má přibližně 126K řádky a 43 sloupců, včetně popisků. Tři sloupce jsou součástí informací popisku a 40 sloupců, které obsahují číselné a řetězcové a kategorií funkce, jsou k dispozici pro školení modelu. Testovací data obsahují přibližně 22.5 K testovacím příkladům se stejnými sloupci 43 jako v školicích datech.
+Datová sada byla stažena a uložena v úložišti objektů BLOB v Azure (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection.csv</a>) a zahrnuje školení a testování datových sad. Datová sada školení má přibližně 126K řádky a 43 sloupců, včetně popisků. Tři sloupce jsou součástí informací popisku a 40 sloupců, které obsahují číselné a řetězcové a kategorií funkce, jsou k dispozici pro školení modelu. Testovací data obsahují přibližně 22.5 K testovacím příkladům se stejnými sloupci 43 jako v školicích datech.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/rcv1-v2.topics.qrels.csv">rcv1-v2. témats. qrels. csv</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/rcv1-v2.topics.qrels.csv">rcv1-v2.topics.qrels.csv</a></td>
   <td>
 Přiřazení témat pro články s příspěvky v datové sadě RCV1-v2 pro zprávy Reuters Článek s příspěvky lze přiřadit několika tématům. Formát každého řádku je " &lt; název tématu &gt; &lt; dokumentu ID &gt; 1". Datová sada obsahuje 2,6 M přiřazení tématu. Datová sada byla zpřístupněna prostřednictvím David. D. Lewis.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance. txt</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a></td>
   <td>
-Tato data pocházejí z konference KDDu pro testování výkonu studenta 2010 (<a href="https://www.kdd.org/kdd-cup/view/kdd-cup-2010-student-performance-evaluation">vyhodnocení výkonu studenta</a>). Použitá data jsou Algebra_2008_2009 sada školení (razítko, J. NICULESCU-Mizil, A., Ritter, S., Gordon, G.J., & Koedinger, K.R. (2010). Algebraický I 2008-2009. Datová sada výzvy z konference KDD 2010 – výzva k dolování dat vzdělávání. Najdete ho na adrese <a href="https://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads. jsp</a>.
+Tato data pocházejí z konference KDDu pro testování výkonu studenta 2010 (<a href="https://www.kdd.org/kdd-cup/view/kdd-cup-2010-student-performance-evaluation">vyhodnocení výkonu studenta</a>). Použitá data jsou Algebra_2008_2009 sada školení (razítko, J. NICULESCU-Mizil, A., Ritter, S., Gordon, G.J., & Koedinger, K.R. (2010). Algebraický I 2008-2009. Datová sada výzvy z konference KDD 2010 – výzva k dolování dat vzdělávání. Najdete ho na adrese <a href="https://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads.jsp</a>.
 <p></p>
-Datová sada byla stažena a uložena v úložišti objektů BLOB v Azure (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance. txt</a>) a obsahuje soubory protokolu ze systému student výukovými. Dodávané funkce zahrnují ID problému a jeho stručný popis, ID studenta, časové razítko a počet pokusů o vydaný studenta před vyřešením problému správným způsobem. Původní datová sada má 8,9 M záznamů; Tato datová sada byla vyrozdělena do vzorků na první 100 tisíc řádky. Datová sada má 23 sloupců oddělených tabulátorem různých typů: číselná, kategorií a timestamp.
+Datová sada byla stažena a uložena v úložišti objektů BLOB v Azure (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a>) a obsahuje soubory protokolu ze systému student výukovými. Dodávané funkce zahrnují ID problému a jeho stručný popis, ID studenta, časové razítko a počet pokusů o vydaný studenta před vyřešením problému správným způsobem. Původní datová sada má 8,9 M záznamů; Tato datová sada byla vyrozdělena do vzorků na první 100 tisíc řádky. Datová sada má 23 sloupců oddělených tabulátorem různých typů: číselná, kategorií a timestamp.
   </td>
 </tr>
 

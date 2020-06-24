@@ -9,11 +9,11 @@ ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 5bd9f5316f8b8799633de8c0c84c61424c0e4f4a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79238899"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84699613"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Spuštění postupu zotavení po havárii do Azure
 
@@ -69,7 +69,7 @@ Když spustíte testovací převzetí služeb při selhání, stane se následuj
 
 Spusťte testovací převzetí služeb při selhání následujícím způsobem:
 
-1. V **Nastavení** > **replikované položky**klikněte na virtuální počítač > **+ testovací převzetí služeb při selhání**.
+1. V **Nastavení**  >  **replikované položky**klikněte na virtuální počítač > **+ testovací převzetí služeb při selhání**.
 2. Pro účely tohoto kurzu vyberte **Nejnovější zpracovaný** bod obnovení. Tím se převezmou služby při selhání virtuálního počítače k nejnovějšímu dostupnému bodu v čase. Zobrazí se časové razítko. Tato možnost neztrácí žádný čas zpracováním dat, takže poskytuje nízkou plánovanou dobu obnovení (RTO).
 3. V části **Testovací převzetí služeb při selhání** vyberte cílovou síť Azure, ke které se virtuální počítače Azure po převzetí služeb při selhání připojí.
 4. Kliknutím na **OK** zahajte převzetí služeb při selhání. Průběh můžete sledovat kliknutím na virtuální počítač, které otevře jeho vlastnosti. Případně můžete kliknout na úlohu **Testovací převzetí služeb při selhání** v části název_trezoru > **Nastavení** > **Úlohy** >
@@ -87,6 +87,6 @@ Pokud se chcete po převzetí služeb při selhání připojit k virtuálním po
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Spuštění převzetí služeb při selhání a navrácení služeb po obnovení pro virtuální počítače](vmware-azure-tutorial-failover-failback.md)
-> VMware spusťte převzetí služeb při selhání a navrácení služeb po obnovení pro virtuální
-> [počítače](physical-to-azure-failover-failback.md) [Hyper-V](hyper-v-azure-failover-failback-tutorial.md).
+> [Spuštění převzetí služeb při selhání a navrácení služeb po obnovení virtuálních počítačů VMware](vmware-azure-tutorial-failover-failback.md) 
+>  [Spuštění převzetí služeb při selhání a navrácení služeb po obnovení pro virtuální počítače](hyper-v-azure-failover-failback-tutorial.md) 
+>  [Spuštění převzetí služeb při selhání a navrácení služeb po obnovení pro fyzické počítače](physical-to-azure-failover-failback.md)

@@ -4,7 +4,6 @@ description: V tomto kurzu se dozvíte, jak nakonfigurovat metodu směrování p
 services: traffic-manager
 documentationcenter: ''
 author: rohinkoul
-manager: kumudD
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: tutorial
@@ -12,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: rohink
-ms.openlocfilehash: ca223a19ff7ddeae95878f941f3cf295664e62b4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2c541f8318bd7e75de7526e6b7a9e3a32462782d
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76938732"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84706745"
 ---
 # <a name="tutorial-configure-priority-traffic-routing-method-in-traffic-manager"></a>Kurz: Konfigurace metody směrování provozu priority v Traffic Manager
 
@@ -34,7 +33,7 @@ Běžným vzorem pro převzetí služeb při selhání je odeslání provozu do 
     1. V části **nastavení metody směrování provozu**ověřte, že je metoda směrování provozu **Priorita**. Pokud tomu tak není, v rozevíracím seznamu klikněte na možnost **Priorita** .
     2. **Nastavení monitorování koncového bodu** nastavte u všech koncových bodů v tomto profilu stejným způsobem:
         1. Vyberte odpovídající **protokol**a zadejte číslo **portu** . 
-        2. Jako **cestu** zadejte lomítko */*. Chcete-li monitorovat koncové body, je nutné zadat cestu a název souboru. Lomítko "/" je platná položka relativní cesty a předpokládá, že se soubor nachází v kořenovém adresáři (výchozí).
+        2. Jako **cestu** zadejte lomítko */* . Chcete-li monitorovat koncové body, je nutné zadat cestu a název souboru. Lomítko "/" je platná položka relativní cesty a předpokládá, že se soubor nachází v kořenovém adresáři (výchozí).
         3. V horní části stránky klikněte na **Uložit**.
 5. V části **Nastavení** klikněte na **koncové body**.
 6. V okně **koncové body** Zkontrolujte pořadí priority pro koncové body. Když vyberete metodu směrování přenosů **priority** , pořadí vybraných koncových bodů. Ověřte pořadí priorit koncových bodů.  Primární koncový bod je nahoře. Dvakrát ověřte pořadí, ve kterém je zobrazeno. všechny požadavky budou směrovány do prvního koncového bodu a pokud Traffic Manager zjistí, že není v pořádku, přenos dat automaticky převezme další koncový bod. 

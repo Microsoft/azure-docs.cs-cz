@@ -1,11 +1,11 @@
 ---
-title: 'Rychlý Start: Vytvoření brány NAT – Azure CLI'
+title: 'Kurz: Vytvoření brány NAT – Azure CLI'
 titlesuffix: Azure Virtual Network NAT
 description: V tomto rychlém startu se dozvíte, jak vytvořit bránu NAT pomocí Azure CLI.
 services: virtual-network
 documentationcenter: na
 author: asudbring
-manager: KumundD
+manager: KumudD
 Customer intent: I want to create a NAT gateway for outbound connectivity for my virtual network.
 ms.service: virtual-network
 ms.subservice: nat
@@ -14,16 +14,16 @@ ms.topic: tutorial
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: dcc3eda4c19e8d15040feb31d2a45922035c6cb0
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 016e187c2ae41958b9527b88b06517b5f5544c7b
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84341520"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707901"
 ---
-# <a name="quickstart-create-a-nat-gateway-using-azure-cli"></a>Rychlý Start: Vytvoření brány NAT pomocí Azure CLI
+# <a name="tutorial-create-a-nat-gateway-using-azure-cli"></a>Kurz: Vytvoření brány NAT pomocí Azure CLI
 
-V tomto rychlém startu se dozvíte, jak používat službu Azure Virtual Network NAT. Vytvoříte bránu NAT pro poskytování odchozího připojení pro virtuální počítač v Azure. 
+V tomto kurzu se dozvíte, jak používat službu Azure Virtual Network NAT. Vytvoříte bránu NAT pro poskytování odchozího připojení pro virtuální počítač v Azure. 
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]

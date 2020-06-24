@@ -2,7 +2,7 @@
 title: Migrace SQL Server uživatelů a skupin systému Windows do spravované instance SQL pomocí T-SQL
 description: Přečtěte si, jak migrovat uživatele a skupiny Windows v instanci SQL Server do spravované instance Azure SQL.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: security
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.topic: tutorial
@@ -10,12 +10,12 @@ author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 10/30/2019
-ms.openlocfilehash: a050e38f037ee0ed2741cfa2e509e21fa9e1151d
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: f2dd34ab7c6ee5be26836e4abb86960605ee44ee
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310219"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708645"
 ---
 # <a name="tutorial-migrate-windows-users-and-groups-in-a-sql-server-instance-to-azure-sql-managed-instance-using-t-sql-ddl-syntax"></a>Kurz: Migrace uživatelů a skupin systému Windows v instanci SQL Server do spravované instance Azure SQL pomocí syntaxe jazyka T-SQL DDL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

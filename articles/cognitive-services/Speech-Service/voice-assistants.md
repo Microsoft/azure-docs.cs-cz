@@ -10,41 +10,42 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: 9219c9a72ce9e1cfba3504b0b8e16ade77f8a5e5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 18a9de8a2eaa2364e89e831db8dab5cbbb061c10
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79369892"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85299241"
 ---
 # <a name="what-is-a-voice-assistant"></a>Co je hlasový asistent?
 
 Hlasový asistent využívající službu Speech umožňuje vývojářům vytvářet pro své aplikace a prostředí přirozené rozhraní pro konverzaci podobné člověku.
 
-Služba hlasového asistenta poskytuje rychlou a spolehlivou interakci mezi zařízením a implementací pomocníka, která používá (1) kanál pro přímý přenos řeči platformy bot nebo (2) službu Integrated Custom Command (Preview) Service pro dokončení úkolu.
-
-Aplikace se připojují ke službě hlasového asistenta pomocí sady Speech Software Development Kit (SDK).
-
-   ![Koncepční diagram toku služby orchestrace hlasového asistenta](media/voice-assistants/overview.png "Tok hlasového asistenta")
+Služba hlasového asistenta poskytuje rychlou a spolehlivou interakci mezi zařízením a implementací pomocníka, která používá buď (1) [přímý hlasový hlas](direct-line-speech.md) (prostřednictvím Azure bot Service) pro přidání možností hlasu vašim robotyám, nebo (2) vlastních příkazů pro scénáře hlasových příkazů.
 
 ## <a name="choosing-an-assistant-solution"></a>Výběr řešení pomocníka
 
-Prvním krokem k vytvoření hlasového asistenta je rozhodování o tom, co by mělo dělat. Služba rozpoznávání řeči poskytuje více a doplňková řešení pro vytváření interakcí pomocníka. Bez ohledu na to, jestli chcete mít flexibilitu a univerzálnost, které poskytuje kanál pro přímý přístup k [přímému line](direct-line-speech.md) rozhraní bot Framework, nebo jednoduché [vlastní příkazy (Preview)](custom-commands.md) pro jednoduché scénáře, můžete začít tím, že vyberete správné nástroje.
+Prvním krokem k vytvoření hlasového asistenta je rozhodování o tom, co by mělo dělat. Služba rozpoznávání řeči poskytuje více a doplňková řešení pro vytváření interakcí pomocníka. Do flexibilního a flexibilního robota vytvořeného pomocí Azure Bot Service s kanálem [Direct line Speech](direct-line-speech.md) můžete přidat hlas a možnosti hlasu a využít jednoduchost vytváření [vlastních příkazů](custom-commands.md) pro jednoduché scénáře hlasových příkazů.
 
 | Jestli chceš... | Pak zvažte... | Například... |
 |-------------------|------------------|----------------|
-|Nedokončená konverzace s robustními integrací dovedností a úplným řízením nasazení | Kanál s [přímým přístupem](direct-line-speech.md) k rozhraní robot Framework | <ul><li>"Potřebuji přejít na Seattle"</li><li>"Jaký druh pizza můžu objednat?"</li></ul>
-|Příkazy a ovládací prvky nebo konverzace orientované na úlohy se zjednodušeným vytvářením a hostováním | [Vlastní příkazy (Preview)](custom-commands.md) | <ul><li>"Zapnout režijní světlo"</li><li>"Udělejte si 5 stupňů zahřívání"</ul>
+|Nedokončená konverzace s robustními integrací dovedností a úplným řízením nasazení | Azure Bot Service robot s [přímým line Speech](direct-line-speech.md) Channel | <ul><li>"Potřebuji přejít na Seattle"</li><li>"Jaký druh pizza můžu objednat?"</li></ul>
+|Hlasové příkazy nebo jednoduché konverzace orientované na úlohy se zjednodušeným vytvářením a hostováním | [Vlastní příkazy](custom-commands.md) | <ul><li>"Zapnout režijní světlo"</li><li>"Udělejte si 5 stupňů zahřívání"</li><li>Další ukázky [k dispozici](https://speech.microsoft.com/customcommands)</li></ul>
 
 Pokud si zatím nejste jistí, co byste chtěli zvládnout, doporučujeme vám jako nejlepší výchozí volbu použít [přímý vstup hlasu](direct-line-speech.md) . Nabízí integraci s bohatou sadou nástrojů a pomůcek pro vytváření obsahu, jako je [řešení Virtual Assistant a podniková šablona](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview) a [Služba QnA maker](https://docs.microsoft.com/azure/cognitive-services/QnAMaker/Overview/overview) pro vytváření běžných vzorů a používání stávajících zdrojů znalostí.
 
-[Vlastní příkazy (Preview)](custom-commands.md) poskytují zjednodušené vývojové a hostující prostředí, které je specifické pro scénáře příkazů a ovládacích prvků v přirozeném jazyce.
+[Vlastní příkazy](custom-commands.md) usnadňují vytváření bohatě bohatých aplikací pro hlasové příkazy optimalizovaných pro prostředí s prvními interakcemi hlasu. Poskytuje jednotné prostředí pro vytváření, automatický hostující model a poměrně nižší složitost, což vám pomůže soustředit se na vytváření nejlepšího řešení pro scénáře hlasových příkazů.
 
    ![Porovnání řešení pomocníka](media/voice-assistants/assistant-solution-comparison.png "Porovnání řešení pomocníka")
 
+
+## <a name="reference-architecture-for-building-a-voice-assistant-using-the-speech-sdk"></a>Referenční architektura pro sestavování hlasového asistenta pomocí sady Speech SDK
+
+   ![Koncepční diagram toku služby orchestrace hlasového asistenta](media/voice-assistants/overview.png "Tok hlasového asistenta")
+
 ## <a name="core-features"></a>Základní funkce
 
-Bez ohledu na to, jestli pro vytvoření interakce asistenta zvolíte možnost [přímé line Speech](direct-line-speech.md) nebo [vlastní příkazy (Preview)](custom-commands.md) , můžete použít bohatou sadu funkcí přizpůsobení a přizpůsobit svůj asistent na svou značku, produkt a osobnost.
+Bez ohledu na to, jestli pro vytváření pomocných asistentů zvolíte [přímé line řeč](direct-line-speech.md) nebo [vlastní příkazy](custom-commands.md) , můžete použít bohatou sadu funkcí přizpůsobení a přizpůsobit svůj asistent na svou značku, produkt a osobnost.
 
 | Kategorie | Funkce |
 |----------|----------|
@@ -56,38 +57,31 @@ Bez ohledu na to, jestli pro vytvoření interakce asistenta zvolíte možnost [
 
 Nabízíme rychlé starty, které jsou navržené tak, aby běžely kód za méně než 10 minut. Tato tabulka obsahuje seznam rychlých startů hlasového asistenta uspořádaných podle jazyka.
 
-| Rychlý start | Platforma | API – referenční informace |
-|------------|----------|---------------|
-| C#, UWP | Windows | [Procházet](https://aka.ms/csspeech/csharpref) |
-| Java | Windows, macOS, Linux | [Procházet](https://aka.ms/csspeech/javaref) |
-| Java | Android | [Procházet](https://aka.ms/csspeech/javaref) |
+* [Rychlý Start: Vytvoření vlastního hlasového asistenta pomocí přímého Lineového rozpoznávání](quickstarts/voice-assistants.md)
+* [Rychlý Start: sestavení aplikace hlasových příkazů pomocí vlastních příkazů](quickstart-custom-commands-application.md)
 
-## <a name="sample-code"></a>Ukázka kódu
+## <a name="sample-code-and-tutorials"></a>Ukázka kódu a kurzů
 
 Vzorový kód pro vytvoření hlasového asistenta je k dispozici na GitHubu. Tyto ukázky zahrnují klientskou aplikaci pro připojení k vašemu asistentovi v několika oblíbených programovacích jazycích.
 
-* [Ukázky hlasového asistenta (SDK)](https://aka.ms/csspeech/samples)
-* [Kurz: hlas – povolení pomocníka se sadou Speech SDK, C #](tutorial-voice-enable-your-bot-speech-sdk.md)
-
-## <a name="tutorial"></a>Tutoriál
-
-Kurz o tom, jak [pomocí hlasu Povolit asistenta pomocí sady Speech SDK a přímého kanálu pro rozpoznávání řeči](tutorial-voice-enable-your-bot-speech-sdk.md).
+* [Ukázky hlasového asistenta na GitHubu](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant)
+* [Kurz: hlasový asistent, který vychází z Azure Bot Service pomocí sady C# Speech SDK](tutorial-voice-enable-your-bot-speech-sdk.md)
+* [Kurz: Vytvoření vlastní aplikace s příkazy pomocí jednoduchých hlasových příkazů](how-to-custom-commands-create-application-with-simple-commands.md)
 
 ## <a name="customization"></a>Přizpůsobení
 
-Hlasové asistenti sestavené pomocí služby Speech Service mohou využívat celou škálu možností přizpůsobení, které jsou k dispozici pro [Převod řeči na text](speech-to-text.md), [Převod textu na řeč](text-to-speech.md)a [vlastní výběr klíčového slova](speech-devices-sdk-create-kws.md).
+Hlasové asistenti sestavené pomocí služby Azure Speech Services můžou využívat celou řadu možností přizpůsobení.
+
+* [Custom Speech](how-to-custom-speech.md)
+* [Vlastní hlas](how-to-custom-voice.md)
+* [Vlastní klíčové slovo](custom-keyword-overview.md)
 
 > [!NOTE]
-> Možnosti přizpůsobení se liší podle jazyka nebo národního prostředí (viz [podporované jazyky](supported-languages.md)).
-
-## <a name="reference-docs"></a>Referenční dokumenty
-
-* [Speech SDK](speech-sdk-reference.md)
-* [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
+> Možnosti přizpůsobení se liší podle jazyka nebo národního prostředí (viz [podporované jazyky](language-support.md)).
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Získejte zdarma klíč předplatného služby Speech](get-started.md)
-* [Získat sadu Speech SDK](speech-sdk.md)
-* [Další informace o vlastních příkazech (Preview)](custom-commands.md)
+* [Další informace o vlastních příkazech](custom-commands.md)
 * [Další informace o funkci Direct line Speech](direct-line-speech.md)
+* [Získat sadu Speech SDK](speech-sdk.md)

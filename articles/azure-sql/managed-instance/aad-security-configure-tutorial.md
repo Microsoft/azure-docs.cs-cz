@@ -2,7 +2,7 @@
 title: Zabezpečení spravované instance SQL pomocí objektů zabezpečení serveru Azure AD (přihlášení)
 description: Seznamte se s technikami a funkcemi pro zabezpečení spravované instance Azure SQL a používání objektů zabezpečení serveru Azure AD (přihlášení).
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: security
 ms.custom: sqldbrb=1
 ms.topic: tutorial
@@ -10,12 +10,12 @@ author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 11/06/2019
-ms.openlocfilehash: 5152f78b428008d3f9a76264f2253167e6c5a138
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 05103052308b6dbf1314348f7d45abc9cba79827
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219811"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84706424"
 ---
 # <a name="tutorial-security-in-azure-sql-managed-instance-using-azure-ad-server-principals-logins"></a>Kurz: zabezpečení ve spravované instanci Azure SQL pomocí objektů zabezpečení serveru Azure AD (přihlášení)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -104,7 +104,7 @@ Příklady připojení ke spravované instanci SQL najdete v následujících č
     GO
     ```
 
-    ![Native-Login. png](./media/aad-security-configure-tutorial/native-login.png)
+    ![native-login.png](./media/aad-security-configure-tutorial/native-login.png)
 
 Další informace najdete v tématu [Vytvoření přihlašovacích](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)údajů.
 
@@ -153,13 +153,13 @@ Po vytvoření objektu zabezpečení serveru Azure AD (přihlášení) a jeho `s
    - Active Directory – heslo
    - Integrovaná se službou Active Directory </br>
 
-     ![SSMS-Login-prompt. png](./media/aad-security-configure-tutorial/ssms-login-prompt.png)
+     ![ssms-login-prompt.png](./media/aad-security-configure-tutorial/ssms-login-prompt.png)
 
      Další informace najdete v tématu [univerzální ověřování (podpora SSMS pro Multi-Factor Authentication)](../database/authentication-mfa-ssms-overview.md).
 
 1. Vyberte **Active Directory – univerzální s podporou vícefaktorového ověřování**. Tím se zobrazí okno přihlášení Multi-Factor Authentication. Přihlaste se pomocí svého hesla služby Azure AD.
 
-    ![MFA-Login-prompt. png](./media/aad-security-configure-tutorial/mfa-login-prompt.png)
+    ![mfa-login-prompt.png](./media/aad-security-configure-tutorial/mfa-login-prompt.png)
 
 1. V SSMS **Průzkumník objektů**klikněte pravým tlačítkem na server a vyberte **Nový dotaz**.
 1. V okně dotazu použijte k vytvoření přihlašovacího jména pro jiný účet služby Azure AD následující syntaxi:
@@ -222,7 +222,7 @@ Autorizace pro jednotlivé databáze funguje v podstatě stejným způsobem jako
 
 Teď, když jsme vytvořili databázi s názvem **MyMITestDB**a přihlašovací jméno, které má jenom výchozí oprávnění, je dalším krokem vytvoření uživatele z tohoto přihlašovacího jména. V tuto chvíli se přihlašovací jméno může připojit ke spravované instanci a zobrazit všechny databáze, ale nemůže s databázemi pracovat. Pokud se přihlásíte pomocí účtu Azure AD, který má výchozí oprávnění, a pokusíte se rozšířit nově vytvořenou databázi, zobrazí se následující chyba:
 
-![SSMS-DB-not-Accessible. png](./media/aad-security-configure-tutorial/ssms-db-not-accessible.png)
+![ssms-db-not-accessible.png](./media/aad-security-configure-tutorial/ssms-db-not-accessible.png)
 
 Další informace o udělení oprávnění databáze najdete v tématu [Začínáme s oprávněním databázového stroje](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions).
 
@@ -326,7 +326,7 @@ Aby mohl uživatel zobrazit data v databázi, můžeme uživatelům poskytnout r
 1. Vytvořte nové připojení ke spravované instanci pomocí uživatele, který byl přidán do `db_datareader` role.
 1. Rozbalením databáze v **Průzkumník objektů** zobrazíte tabulku.
 
-    ![SSMS-test-Table. png](./media/aad-security-configure-tutorial/ssms-test-table.png)
+    ![ssms-test-table.png](./media/aad-security-configure-tutorial/ssms-test-table.png)
 
 1. Otevřete nové okno dotazu a spusťte následující příkaz SELECT:
 
@@ -337,7 +337,7 @@ Aby mohl uživatel zobrazit data v databázi, můžeme uživatelům poskytnout r
 
     Je možné zobrazit data z tabulky? Měli byste vidět vracené sloupce.
 
-    ![SSMS-test-Table-Query. png](./media/aad-security-configure-tutorial/ssms-test-table-query.png)
+    ![ssms-test-table-query.png](./media/aad-security-configure-tutorial/ssms-test-table-query.png)
 
 ## <a name="impersonate-azure-ad-server-level-principals-logins"></a>Zosobnění objektů zabezpečení na úrovni serveru Azure AD (přihlášení)
 

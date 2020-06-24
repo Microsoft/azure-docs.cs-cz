@@ -4,12 +4,12 @@ description: Naučte se migrovat vlastní kontejner Windows do Azure App Service
 ms.topic: tutorial
 ms.date: 10/22/2019
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 74cb88bc1ace87155a35163ca8f9d3d6c4242ae0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8e755c5b9a57eb66fc47364fb2fcdcbe30c2d09e
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80046620"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85205618"
 ---
 # <a name="migrate-an-aspnet-app-to-azure-app-service-using-a-windows-container-preview"></a>Migrace aplikace ASP.NET do služby Azure App Service pomocí kontejneru Windows (verze Preview)
 
@@ -25,8 +25,8 @@ Pro absolvování tohoto kurzu potřebujete:
 - <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Nainstalujte Docker for Windows</a>.
 - <a href="https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">Přepnout Docker na spouštění kontejnerů Windows</a>.
 - <a href="https://www.visualstudio.com/downloads/" target="_blank">Nainstalujte Visual Studio 2019</a> s pracovními procesy pro **vývoj ASP.NET a web** a **vývoj pro Azure** . Pokud jste již nainstalovali Visual Studio 2019:
-    - Po **kliknutí na** > tlačítko**Vyhledat aktualizace**nainstalujte nejnovější aktualizace v aplikaci Visual Studio.
-    - Přidejte úlohy do sady Visual Studio tak, že kliknete na **nástroje** > **získat nástroje a funkce**.
+    - Po **kliknutí na**tlačítko  >  **Vyhledat aktualizace**nainstalujte nejnovější aktualizace v aplikaci Visual Studio.
+    - Přidejte úlohy do sady Visual Studio tak, že kliknete na **nástroje**  >  **získat nástroje a funkce**.
 
 ## <a name="set-up-the-app-locally"></a>Místní nastavení aplikace
 
@@ -61,7 +61,7 @@ V Průzkumníku řešení klikněte pravým tlačítkem na projekt **CustomFontS
 
 ![Dialogové okno Nový projekt ASP.NET](media/app-service-web-tutorial-windows-containers-custom-fonts/enable-container-orchestration.png)
 
-Vyberte **Docker Compose** > **OK**.
+Vyberte **Docker Compose**  >  **OK**.
 
 Projekt je teď nastavený tak, aby běžel v kontejneru Windows. Do projektu **CustomFontSample** se přidá soubor _Dockerfile_ a projekt **docker-compose** se přidá do řešení. 
 
@@ -69,13 +69,13 @@ V Průzkumníku řešení otevřete soubor **Dockerfile**.
 
 Musíte použít [podporovanou nadřazenou image](app-service-web-get-started-windows-container.md#use-a-different-parent-image). Nadřazenou image změníte tak, že řádek `FROM` nahradíte následujícím kódem:
 
-```Dockerfile
+```dockerfile
 FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.2-windowsservercore-ltsc2019
 ```
 
 Na konec souboru přidejte následující řádek a pak tento soubor uložte:
 
-```Dockerfile
+```dockerfile
 RUN ${source:-obj/Docker/publish/InstallFont.ps1}
 ```
 
@@ -97,7 +97,7 @@ V Průzkumníku řešení klikněte pravým tlačítkem na projekt **CustomFontS
 
 ### <a name="create-registry-and-publish"></a>Vytvoření registru a publikování
 
-V Průvodci publikováním vyberte **Container Registry** > **vytvořit nové Azure Container Registry** > **publikovat**.
+V Průvodci publikováním vyberte **Container Registry**  >  **vytvořit nové Azure Container Registry**  >  **publikovat**.
 
 ![Dialogové okno Nový projekt ASP.NET](media/app-service-web-tutorial-windows-containers-custom-fonts/create-registry.png)
 
@@ -115,7 +115,7 @@ Nakonfigurujte nový registr kontejneru podle navržených hodnot v následujíc
 | ----------------- | ------------ | ----|
 |**Předpona DNS**| Ponechejte vygenerovaný název registru nebo ho změňte na jiný jedinečný název. |  |
 |**Skupina prostředků**| Klikněte na **Nový**, zadejte **myResourceGroup** a klikněte na **OK**. |  |
-|**SKLADOVÉ**| Základní | [Cenové úrovně](https://azure.microsoft.com/pricing/details/container-registry/)|
+|**SKU**| Basic | [Cenové úrovně](https://azure.microsoft.com/pricing/details/container-registry/)|
 |**Umístění registru**| Západní Evropa | |
 
 ![Konfigurace Azure Container Registry](./media/app-service-web-tutorial-windows-containers-custom-fonts/configure-registry.png)
@@ -128,7 +128,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 ## <a name="create-a-web-app"></a>Vytvoření webové aplikace
 
-V nabídce vlevo vyberte **vytvořit prostředek** > **Web** > **Web App for Containers**.
+V nabídce vlevo vyberte **vytvořit prostředek**  >  **Web**  >  **Web App for Containers**.
 
 ### <a name="configure-app-basics"></a>Konfigurace základních informací o aplikaci
 
@@ -181,11 +181,11 @@ Počkejte pár minut a zkuste to znovu, dokud se nedostanete na domovskou strán
 
 ![](media/app-service-web-tutorial-windows-containers-custom-fonts/app-running.png)
 
-**Blahopřejeme!** Migrovali jste aplikaci ASP.NET do služby Azure App Service v kontejneru Windows.
+**Gratulujeme!** Migrovali jste aplikaci ASP.NET do služby Azure App Service v kontejneru Windows.
 
 ## <a name="see-container-start-up-logs"></a>Zobrazení protokolů spuštění kontejneru
 
-Načtení kontejneru s Windows může nějakou dobu trvat. Pokud chcete zobrazit průběh, přejděte na následující adresu URL nahrazením * \<>název aplikace* názvem vaší aplikace.
+Načtení kontejneru s Windows může nějakou dobu trvat. Pokud chcete zobrazit průběh, přejděte na následující adresu URL nahrazením *\<app-name>* názvem vaší aplikace.
 ```
 https://<app-name>.scm.azurewebsites.net/api/logstream
 ```
@@ -201,4 +201,3 @@ Streamované protokoly vypadají přibližně takto:
 14/09/2018 23:18:03.823 INFO - Site: fonts-win-container - Container ready
 14/09/2018 23:18:03.823 INFO - Site: fonts-win-container - Container start-up and configuration completed successfully
 ```
-

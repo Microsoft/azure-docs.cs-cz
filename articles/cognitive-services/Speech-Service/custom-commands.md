@@ -1,7 +1,7 @@
 ---
-title: Vlastní příkazy (Preview) – služba Speech
+title: Vlastní příkazy – služba pro rozpoznávání řeči
 titleSuffix: Azure Cognitive Services
-description: Přehled funkcí, možností a omezení pro vlastní příkazy (Preview), řešení pro vytváření hlasových aplikací.
+description: Přehled funkcí, možností a omezení pro vlastní příkazy, řešení pro vytváření hlasových aplikací.
 services: cognitive-services
 author: trrwilson
 manager: nitinme
@@ -10,46 +10,49 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: 3c02e823202aa848a4de94885276835899562e4b
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 9954e4fe739c055a00c2e3bc52b73200a7824a43
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266011"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85299105"
 ---
-# <a name="what-is-custom-commands-preview"></a>Co jsou vlastní příkazy (Preview)?
+# <a name="what-is-custom-commands"></a>Co jsou vlastní příkazy?
 
 Hlasové aplikace, jako jsou [hlasové asistenti](voice-assistants.md) , naslouchají uživatelům a probírají akci v reakci, často se domluví zpět. Používají [Převod řeči na text](speech-to-text.md) k přepisovat řeči uživatele a pak provádějí akci s použitím přirozeného jazyka pro porozumění textu. Tato akce často zahrnuje mluvený výstup z pomocníka generovaného [převodem textu na řeč](text-to-speech.md). Zařízení se připojují k asistentům pomocí objektu sady Speech SDK `DialogServiceConnector` .
 
-**Vlastní příkazy (Preview)** jsou zjednodušené řešení pro vytváření hlasových aplikací. Poskytuje jednotné prostředí pro vytváření, automatický hostující model a relativně nižší složitost a další možnosti, jako je například [přímý line Speech](direct-line-speech.md). Toto zjednodušení ale přináší omezení flexibility. Vlastní příkazy (Preview) jsou proto nejvhodnější pro dokončování úkolů nebo pro scénáře příkazů a řízení. Je obzvláště vhodná pro Internet věcí (IoT) a bezobslužná zařízení.
+**Vlastní příkazy** usnadňují vytváření bohatě bohatých aplikací pro hlasové příkazy optimalizovaných pro prostředí s prvními interakcemi hlasu. Poskytuje jednotné prostředí pro vytváření, automatický hostující model a poměrně nižší složitost, což vám pomůže soustředit se na vytváření nejlepšího řešení pro scénáře hlasových příkazů.
 
-Pro komplexní interakci s konverzací a integraci s dalšími řešeními, jako je [řešení Virtual Assistant a podniková šablona](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview) , doporučujeme používat přímý hlasový vstup.
+Vlastní příkazy jsou nejvhodnější pro dokončování úkolů nebo pro scénáře příkazů a řízení, zejména pro zařízení Internet věcí (IoT), okolí a bezobslužná zařízení. Mezi příklady patří řešení pro pohostinství, maloobchodní prodej a automobilový průmysl, což vám umožní vytvořit pro hosty nejlepší prostředí řízená hlasem, spravovat inventář v úložišti a řídit funkce v klecích při přesunu.
 
-Dobré kandidáty pro vlastní příkazy (Preview) mají pevný slovník s dobře definovanými sadami proměnných. Například úlohy pro domovskou automatizaci, jako je řízení termostatu, jsou ideální.
+> [!TIP]
+> Podívejte se na naše ukázky ukázek na naší úvodní stránce na adrese [https://speech.microsoft.com/customcommands](https://speech.microsoft.com/customcommands) .
+
+Pokud vás zajímá vytváření složitých konverzačních aplikací, doporučujeme vyzkoušet si rozhraní robota pomocí [řešení Virtual Assistant](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview). Můžete přidat hlas do libovolného robota bot bot pomocí přímého Lineového rozpoznávání.
+
+Dobré kandidáty pro vlastní příkazy mají pevný slovník s dobře definovanými sadami proměnných. Například úlohy pro domovskou automatizaci, jako je řízení termostatu, jsou ideální.
 
    ![Příklady scénářů dokončování úkolů](media/voice-assistants/task-completion-examples.png "Příklady dokončení úkolu")
 
-## <a name="getting-started-with-custom-commands-preview"></a>Začínáme s vlastními příkazy (Preview)
+## <a name="getting-started-with-custom-commands"></a>Začínáme s vlastními příkazy
 
-Prvním krokem pro použití vlastních příkazů (Preview) k vytvoření hlasové aplikace je [získání klíče předplatného pro rozpoznávání řeči](get-started.md) a přístup k vlastnímu tvůrci příkazů (Preview) v [studiu řeči](https://speech.microsoft.com). Odtud můžete vytvořit novou vlastní aplikaci (Preview) a publikovat ji, po které může aplikace na zařízení komunikovat pomocí sady Speech SDK.
+Naším cílem s vlastními příkazy je snížit zátěžové zatížení, abyste se seznámili se všemi různými technologiemi a mohli se soustředit na sestavování aplikací hlasových příkazů. První krok pro použití vlastních příkazů k <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">vytvoření prostředku <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Speech </a>. Pomocí sady Speech SDK můžete vytvořit aplikaci Custom Commands v sadě Speech Studio a publikovat ji. poté může aplikace v zařízení s ní komunikovat.
 
-   ![Vytváření toku pro vlastní příkazy (Preview)](media/voice-assistants/custom-commands-flow.png "Tok pro vytváření vlastních příkazů (ve verzi Preview)")
+#### <a name="authoring-flow-for-custom-commands"></a>Vytváření toku pro vlastní příkazy
+   ![Vytváření toku pro vlastní příkazy](media/voice-assistants/custom-commands-flow.png "Tok vytváření vlastních příkazů")
 
-Nabízíme rychlé starty, které jsou navržené tak, aby běžely kód za méně než 10 minut.
+Postupujte podle našeho rychlého startu, aby vaše první aplikace vlastních příkazů běžela kód za méně než 10 minut.
 
-* [Vytvoření vlastní aplikace (Preview)](quickstart-custom-speech-commands-create-new.md)
-* [Vytvoření vlastních příkazů (ve verzi Preview) s parametry](quickstart-custom-speech-commands-create-parameters.md)
-* [Připojení k aplikaci Custom Commands (Preview) pomocí sady Speech SDK, C #](quickstart-custom-speech-commands-speech-sdk.md)
+* [Vytvoření hlasového asistenta pomocí vlastních příkazů](quickstart-custom-commands-application.md)
 
-Až budete s rychlým startem hotovi, Prozkoumejte naše postupy.
+Až budete s rychlým startem hotovi, Prozkoumejte naše příručky, kde najdete podrobné kroky pro návrh, vývoj, ladění, nasazení a integraci vlastní aplikace příkazů.
 
-- [Přidat ověření do vlastních parametrů příkazu](./how-to-custom-speech-commands-validations.md)
-- [Plnění příkazů v klientovi pomocí sady Speech SDK](./how-to-custom-speech-commands-fulfill-sdk.md)
-- [Přidání potvrzení k vlastnímu příkazu](./how-to-custom-speech-commands-confirmations.md)
-- [Přidání korekce v jednom kroku k vlastnímu příkazu](./how-to-custom-speech-commands-one-step-correction.md)
+## <a name="building-voice-assistants-with-custom-commands"></a>Vytváření hlasových asistentů pomocí vlastních příkazů
+> [!VIDEO https://www.youtube.com/embed/1zr0umHGFyc]
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Získejte zdarma klíč předplatného služby Speech](get-started.md)
-* [Pokud si chcete vyzkoušet vlastní příkazy, přejdete do sady Speech Studio.](https://speech.microsoft.com)
+* [Ukázky najdete v našem úložišti hlasových asistentů na GitHubu.](https://aka.ms/speech/cc-samples)
+* [Pokud si chcete vyzkoušet vlastní příkazy, přejdete do sady Speech Studio.](https://speech.microsoft.com/customcommands)
 * [Získat sadu Speech SDK](speech-sdk.md)
