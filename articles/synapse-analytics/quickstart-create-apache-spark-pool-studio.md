@@ -5,16 +5,16 @@ services: synapse-analytics
 author: julieMSFT
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
+ms.subservice: spark
 ms.date: 3/19/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 01b85f937516f24aeb50f76c71c89bc47e52abf0
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c945e56aa0b6f851f54cf7679276558190b4bc10
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83666430"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194951"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-preview-using-synapse-studio"></a>Rychlý Start: Vytvoření fondu Apache Spark (ve verzi Preview) pomocí synapse studia
 
@@ -43,7 +43,7 @@ Přihlaste se k [Azure Portal](https://portal.azure.com/)
 1. V seznamu pracovních prostorů zadejte název (nebo část názvu) pracovního prostoru, který chcete otevřít. V tomto příkladu použijeme pracovní prostor s názvem **contosoanalytics**.
 ![Seznam pracovních prostorů synapse filtrovaných k zobrazení těch, které obsahují název contoso.](media/quickstart-create-sql-pool/create-sql-pool-00b.png)
 
-## <a name="launch-synapse-studio"></a>Spustit synapse Studio 
+## <a name="launch-synapse-studio"></a>Spuštění funkce Synapse Studio 
 
 1. V přehledu pracovního prostoru vyberte **Spustit synapse Studio** a otevřete tak umístění, kde se vytvoří fond Apache Spark. Zadejte název služby nebo název prostředku přímo do panelu hledání.
 ![Azure Portal synapse pracovní prostor – Přehled s zvýrazněnou možností spustit synapse Studio.](media/quickstart-create-apache-spark-pool/create-spark-pool-studio-20.png)

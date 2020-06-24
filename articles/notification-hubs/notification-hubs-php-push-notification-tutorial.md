@@ -5,8 +5,6 @@ services: notification-hubs
 documentationcenter: ''
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: 0156f994-96d0-4878-b07b-49b7be4fd856
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: php
@@ -16,12 +14,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 9a77a9d9c8b2d71197089f66d81e07d56c780e11
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1c4bf0569d6e2e595eb03c85abba7224b25b1864
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76263842"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255445"
 ---
 # <a name="how-to-use-notification-hubs-from-php"></a>Použití Notification Hubs z PHP
 
@@ -32,7 +30,7 @@ Ke všem funkcím Notification Hubs můžete přistupovat z back-endu Java/PHP/R
 V tomto tématu si ukážeme, jak:
 
 * Vytvoření klienta REST pro funkce Notification Hubs v PHP;
-* Použijte úvodní [kurz](notification-hubs-ios-apple-push-notification-apns-get-started.md) pro vaši mobilní platformu a implementujte část back-endu v php.
+* Postupujte podle pokynů pro [Posílání nabízených oznámení do aplikací pro iOS, které využívají Azure Notification Hubs](ios-sdk-get-started.md) pro vaši mobilní platformu, a implementaci části back-endu v php.
 
 ## <a name="client-interface"></a>Rozhraní klienta
 
@@ -55,7 +53,7 @@ Odeslání nativního oznámení iOS:
 
 ## <a name="implementation"></a>Implementace
 
-Pokud jste to ještě neučinili, postupujte podle [kurzu Začínáme] až do poslední části, kde je nutné implementovat back-end.
+Pokud jste to ještě neučinili, postupujte podle návodu [Začínáme] až do poslední části, kde je nutné implementovat back-end.
 Také Pokud chcete použít kód z [ukázky obálky php REST] a přejít přímo k části [dokončení kurzu](#complete-tutorial) .
 
 Všechny podrobnosti o implementaci úplné obálky REST najdete na [webu MSDN](https://msdn.microsoft.com/library/dn530746.aspx). V této části popíšeme implementaci PHP hlavních kroků potřebných pro přístup k Notification Hubs koncovým bodům REST:
@@ -222,7 +220,7 @@ Výše uvedené metody odesílají požadavek HTTP POST do `/messages` koncovéh
 
 Nyní můžete kurz Začínáme dokončit odesláním oznámení z back-endu PHP.
 
-Inicializujte klienta Notification Hubs (nahraďte připojovací řetězec a název centra podle pokynů v [kurzu Začínáme]):
+Inicializujte klienta Notification Hubs (nahraďte připojovací řetězec a název centra podle pokynů v [Úvodní kurz]):
 
     ```php
     $hub = new NotificationHub("connection string", "hubname");
@@ -291,4 +289,5 @@ V tomto tématu jsme ukázali, jak vytvořit jednoduchého klienta Java REST pro
 Další informace najdete v tématu také [středisko pro vývojáře PHP](https://azure.microsoft.com/develop/php/).
 
 [Ukázka obálky PHP REST]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-php
-[Kurz Začínáme]: https://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
+[Posílání nabízených oznámení do aplikací pro iOS pomocí Azure Notification Hubs](ios-sdk-get-started.md))
+

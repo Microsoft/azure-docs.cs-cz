@@ -3,16 +3,16 @@ title: Používejte integrované příkazy a funkce poznámkového bloku v Azure
 description: Naučte se používat integrované příkazy a funkce k provádění běžných operací pomocí integrovaných poznámkových bloků jazyka C# Azure Cosmos DB.
 author: deborahc
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: dech
 ms.custom: tracking-python
-ms.openlocfilehash: 46420aeb635bd4cd7b84698b7eb5d522177b443a
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: d9d48e825adeecd54375ce13c612d4a0c6eaaa18
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561764"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263411"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-c-notebooks-preview"></a>Používejte integrované příkazy a funkce poznámkového bloku v Azure Cosmos DB poznámkových blocích C# (Preview).
 
@@ -115,14 +115,14 @@ K filtrování a vizualizaci kolekce položek můžete použít vestavěný [nte
 
 Například v příkladu *GetingStarted_Csharp. ipynb* můžeme vyfiltrovat proměnnou s naším výsledkem, a ``telemetryEvents`` . Celou ukázku najdete v [poznámkovém bloku GettingStarted_Csharp. ipynb](https://github.com/Azure-Samples/cosmos-notebooks/blob/master/CSharp_quickstarts/GettingStarted_CSharp.ipynb) . 
 
-![Buňka dotazu CSharp](media/use-notebook-features-and-commands/csharp-query-cell.png)
+:::image type="content" source="media/use-notebook-features-and-commands/csharp-query-cell.png" alt-text="Buňka dotazu CSharp":::
 
-![Průzkumník dat nteract](media/use-notebook-features-and-commands/csharp-nteract-built-in-chart.png)
+:::image type="content" source="media/use-notebook-features-and-commands/csharp-nteract-built-in-chart.png" alt-text="Průzkumník dat nteract":::
 
 ## <a name="use-built-in-dictionary-viewer"></a>Použít vestavěný prohlížeč slovníku
 K zobrazení proměnné můžete použít vestavěný prohlížeč slovníku. V buňce vložte proměnnou, kterou chcete vizualizovat, do posledního řádku, který se automaticky zobrazí při spuštění buňky.
 
-![Vestavěný prohlížeč slovníku](media/use-notebook-features-and-commands/csharp-built-in-dictionary-viewer.png)
+:::image type="content" source="media/use-notebook-features-and-commands/csharp-built-in-dictionary-viewer.png" alt-text="Vestavěný prohlížeč slovníku":::
 
 ## <a name="upload-json-items-to-a-container"></a>Nahrání položek JSON do kontejneru
 Pomocí ``%%upload`` příkazu Magic můžete nahrávat data ze souboru JSON do zadaného kontejneru Azure Cosmos. Následující příkaz slouží k nahrání položek:
@@ -160,7 +160,7 @@ Nahraďte ``{notebookName}`` názvem poznámkového bloku, který chcete spustit
 ## <a name="reset-notebooks-workspace"></a>Resetovat pracovní prostor poznámkových bloků
 Pokud chcete resetovat pracovní prostor poznámkových bloků na výchozí nastavení, na panelu příkazů vyberte **resetovat pracovní prostor** . Tím se odeberou všechny vlastní nainstalované balíčky a restartuje se server Jupyter. Vaše poznámkové bloky, soubory a prostředky Azure Cosmos nebudou ovlivněny.  
 
-![Resetovat pracovní prostor poznámkových bloků](media/use-notebook-features-and-commands/reset-workspace.png)
+:::image type="content" source="media/use-notebook-features-and-commands/reset-workspace.png" alt-text="Resetovat pracovní prostor poznámkových bloků":::
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 05/21/2019
 ms.author: cawa
 ms.openlocfilehash: 56c20c995a95058b5039b7268c7b7b1426e900fa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79244391"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298119"
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer"></a>Správa prostředků služby Azure Blob Storage pomocí Průzkumníka služby Storage
 
@@ -188,7 +188,7 @@ Následující postup ukazuje, jak spravovat objekty BLOB (a složky) v rámci k
         ![Možnosti nahrání souborů][16]
      3. Zadejte typ **typu objektu BLOB**. Další informace najdete v tématu [vytvoření kontejneru](storage/blobs/storage-quickstart-blobs-dotnet.md#create-a-container) .
      4. Volitelně můžete zadat cílovou složku, do které budou odesílány vybrané soubory. Pokud cílová složka neexistuje, vytvoří se.
-     5. Vyberte **nahrát**.
+     5. Vyberte **Nahrát**.
    * **Nahrání složky do kontejneru objektů BLOB**
 
      1. Na panelu nástrojů v hlavním podokně vyberte **Nahrát** a pak v rozevírací nabídce vyberte **Nahrát složku**.
@@ -199,7 +199,7 @@ Následující postup ukazuje, jak spravovat objekty BLOB (a složky) v rámci k
         ![Možnosti nahrání složky][18]
      3. Zadejte typ **typu objektu BLOB**. Další informace najdete v tématu [vytvoření kontejneru](storage/blobs/storage-quickstart-blobs-dotnet.md#create-a-container) .
      4. Volitelně můžete zadat cílovou složku, do které se obsah vybrané složky nahraje. Pokud cílová složka neexistuje, vytvoří se.
-     5. Vyberte **nahrát**.
+     5. Vyberte **Nahrát**.
    * **Stažení objektu blob do místního počítače**
 
      1. Vyberte objekt blob, který chcete stáhnout.

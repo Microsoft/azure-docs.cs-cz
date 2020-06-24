@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a26f6c5e69ca083335580a0368459e062de3941e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5c66ccb8ae9db46ca8e94d9c73e9c61b64119dd0
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78187657"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85201782"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>Ukázky JavaScriptu pro použití v Azure Active Directory B2C
 
@@ -47,10 +47,10 @@ Tento článek popisuje, jak můžete změnit vlastní zásady a povolit spoušt
 
 Spuštění skriptu můžete povolit přidáním elementu **ScriptExecution** do elementu [RelyingParty](relyingparty.md) .
 
-1. Otevřete vlastní soubor zásad. Například *SignUpOrSignin. XML*.
+1. Otevřete vlastní soubor zásad. Například *SignUpOrSignin.xml*.
 2. Přidejte element **ScriptExecution** do **UserJourneyBehaviors** elementu **RelyingParty**:
 
-    ```XML
+    ```xml
     <RelyingParty>
       <DefaultUserJourney ReferenceId="B2CSignUpOrSignInWithPassword" />
       <UserJourneyBehaviors>

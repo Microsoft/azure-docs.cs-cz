@@ -4,15 +4,15 @@ description: Přečtěte si, jak můžete integrovat Azure Application Gateway s
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: conceptual
 ms.date: 4/25/2019
 ms.author: victorh
-ms.openlocfilehash: 780f2774cb37e3d6d43ed5137c29119c0f63fd0a
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: a214dae7c80cbc520fc6aff5a492466a77261167
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82743694"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255360"
 ---
 # <a name="tls-termination-with-key-vault-certificates"></a>Ukončení protokolu TLS s certifikáty Key Vault
 
@@ -52,7 +52,7 @@ Application Gateway integrace s Key Vault vyžaduje proces konfigurace se třemi
    > [!NOTE]
    > Pokud službu Application Gateway nasadíte přes šablonu ARM, ať už pomocí Azure CLI nebo PowerShellu, nebo přes aplikaci Azure nasazenou z Azure Portal, certifikát SSL je uložený v trezoru klíčů jako soubor PFX s kódováním base64. Musíte dokončit kroky v části [použití Azure Key Vault k předání hodnoty zabezpečeného parametru během nasazování](../azure-resource-manager/templates/key-vault-parameter.md). 
    >
-   > Je zvláště důležité nastavit `enabledForTemplateDeployment` na. `true` Certifikát může být neheslem nebo může obsahovat heslo. V případě certifikátu s heslem následující příklad ukazuje možnou konfiguraci pro `sslCertificates` položku v `properties` konfiguraci šablony ARM pro bránu App Gateway. Hodnoty `appGatewaySSLCertificateData` a `appGatewaySSLCertificatePassword` jsou vyhledány z trezoru klíčů, jak je popsáno v části [referenční tajné klíče s dynamickým ID](../azure-resource-manager/templates/key-vault-parameter.md#reference-secrets-with-dynamic-id). Pokud chcete zjistit, jak `parameters('secretName')` se vyhledávání děje, postupujte podle odkazů zpět z. Pokud certifikát není bez hesla, vynechejte `password` položku.
+   > Je zvláště důležité nastavit `enabledForTemplateDeployment` na `true` . Certifikát může být neheslem nebo může obsahovat heslo. V případě certifikátu s heslem následující příklad ukazuje možnou konfiguraci pro `sslCertificates` položku v `properties` konfiguraci šablony ARM pro bránu App Gateway. Hodnoty `appGatewaySSLCertificateData` a `appGatewaySSLCertificatePassword` jsou vyhledány z trezoru klíčů, jak je popsáno v části [referenční tajné klíče s dynamickým ID](../azure-resource-manager/templates/key-vault-parameter.md#reference-secrets-with-dynamic-id). Pokud `parameters('secretName')` chcete zjistit, jak se vyhledávání děje, postupujte podle odkazů zpět z. Pokud certifikát není bez hesla, vynechejte `password` položku.
    >   
    > ```
    > "sslCertificates": [

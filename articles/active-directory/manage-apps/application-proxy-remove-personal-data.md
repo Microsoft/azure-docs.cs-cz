@@ -2,25 +2,25 @@
 title: Odebrat osobní data – Proxy aplikací služby Azure Active Directory
 description: Odebrat osobní data z konektorů nainstalovaných na zařízeních pro Proxy aplikací služby Azure Active Directory.
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/21/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe97956d99bd5c677e499b532ef85a1bb4d324ef
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: e78efd71943332e8a40e5b44b6b78f88e516649a
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74275411"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84759959"
 ---
 # <a name="remove-personal-data-for-azure-active-directory-application-proxy"></a>Odebrat osobní data pro Proxy aplikací služby Azure Active Directory
 
@@ -52,7 +52,7 @@ Pomocí následujících částí můžete odebrat osobní data z protokolů ud�
 
 ### <a name="view-or-export-specific-data"></a>Zobrazit nebo exportovat konkrétní data
 
-Chcete-li zobrazit nebo exportovat konkrétní data, vyhledejte související položky v každém z protokolů událostí konektoru. Protokoly jsou umístěny na adrese `C:\ProgramData\Microsoft\Microsoft AAD Application Proxy Connector\Trace`.
+Chcete-li zobrazit nebo exportovat konkrétní data, vyhledejte související položky v každém z protokolů událostí konektoru. Protokoly jsou umístěny na adrese `C:\ProgramData\Microsoft\Microsoft AAD Application Proxy Connector\Trace` .
 
 Vzhledem k tomu, že protokoly jsou textové soubory, můžete pomocí nástroje [findstr](https://docs.microsoft.com/windows-server/administration/windows-commands/findstr) vyhledat textové položky týkající se uživatele.  
 
@@ -75,7 +75,7 @@ Odstranění konkrétních dat:
 
 ### <a name="turn-off-connector-logs"></a>Vypnout protokoly konektorů
 
-Jedna z možností, jak zajistit, aby protokoly konektoru neobsahují osobní údaje, je vypnutí generování protokolu vypnuté. Chcete-li zastavit generování protokolů konektoru, odeberte následující zvýrazněný řádek z `C:\Program Files\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config`.
+Jedna z možností, jak zajistit, aby protokoly konektoru neobsahují osobní údaje, je vypnutí generování protokolu vypnuté. Chcete-li zastavit generování protokolů konektoru, odeberte následující zvýrazněný řádek z `C:\Program Files\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config` .
 
 ![Zobrazuje fragment kódu se zvýrazněným kódem, který se má odebrat.](./media/application-proxy-remove-personal-data/01.png)
 

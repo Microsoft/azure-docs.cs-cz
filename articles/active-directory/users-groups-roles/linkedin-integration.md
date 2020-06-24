@@ -7,18 +7,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: faa80bf09113786e35a6ce98157f18639e30d210
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 1c5058e24ee0817ebcc6c5761f7b9e22d1a14203
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582644"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84727190"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>Integrace připojení k účtu LinkedIn v Azure Active Directory
 
@@ -40,7 +40,7 @@ Uživatelům ve vaší organizaci můžete dovolit přístup k jejich připojen�
 Připojení k účtu LinkedIn můžete povolit jenom pro uživatele, kterým chcete mít přístup, od celé organizace až po vybrané uživatele ve vaší organizaci.
 
 1. Přihlaste se k [centru pro správu Azure AD](https://aad.portal.azure.com/) pomocí účtu, který je globálním správcem pro organizaci Azure AD.
-1. Vyberte **Uživatelé**.
+1. Vyberte možnost **Uživatelé**.
 1. Na stránce **Uživatelé** vyberte **nastavení uživatele**.
 1. V části **připojení k účtu LinkedInu**Umožněte uživatelům připojit své účty pro přístup k jejich připojením LinkedIn v některých aplikacích Microsoftu. Žádná data nejsou sdílená, dokud uživatel nesouhlasí připojit své účty.
 
@@ -91,10 +91,10 @@ Pokud chcete použít skupinu z kroku 2 jako vybranou skupinu v nastavení přip
 1. Stažení [souborů šablon pro správu Office 2016 (ADMX/ADML)](https://www.microsoft.com/download/details.aspx?id=49030)
 1. Extrahujte soubory **ADMX** a zkopírujte je do svého centrálního úložiště.
 1. Otevřete Správu zásad skupiny.
-1. Vytvořte objekt Zásady skupiny s následujícím nastavením: **Konfigurace** > uživatele**šablony pro správu** > **systém Microsoft Office 2016** > **různé** > **Zobrazit funkce LinkedInu v aplikacích Office**.
+1. Vytvořte objekt Zásady skupiny s následujícím nastavením: **Konfigurace uživatele**  >  **šablony pro správu**  >  **systém Microsoft Office 2016**  >  **různé**  >  **Zobrazit funkce LinkedInu v aplikacích Office**.
 1. Vyberte možnost **povoleno** nebo **zakázáno**.
   
-   Stav | Účinek
+   Stav | Efekt
    ------ | ------
    **Enabled** (Povoleno) | Nastavení **Zobrazit funkce LinkedInu v aplikacích Office** v možnostech Office 2016 je povolené. Uživatelé ve vaší organizaci můžou používat funkce LinkedInu v aplikacích Office 2016.
    **Disabled** (Zakázáno) | Nastavení **Zobrazit funkce LinkedInu v aplikacích Office** v možnostech Office 2016 je zakázané a koncoví uživatelé toto nastavení nemůžou změnit. Uživatelé ve vaší organizaci nemůžou ve svých aplikacích Office 2016 používat funkce LinkedIn.

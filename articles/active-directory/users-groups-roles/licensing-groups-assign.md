@@ -7,7 +7,7 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.date: 04/29/2020
@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9c61bbc794438c34a4bda27c8048ac0b21f9fc1
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 0524e8756e86771ab555eaa853e3955fe69c8549
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582704"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84727649"
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>Přiřazení licencí uživatelům podle členství ve skupině v Azure Active Directory
 
@@ -59,7 +59,7 @@ Když přiřadíte licence ke skupině, Azure AD zpracuje všechny stávající 
 
 ## <a name="step-2-verify-that-the-initial-assignment-has-finished"></a>Krok 2: ověření dokončení počátečního přiřazení
 
-1. Přejít na **Azure Active Directory** > **skupiny**. Vyberte skupinu, ke které byly licence přiřazeny.
+1. Přejít na **Azure Active Directory**  >  **skupiny**. Vyberte skupinu, ke které byly licence přiřazeny.
 
 1. Na stránce skupina vyberte **licence**. To vám umožní rychle potvrdit, jestli jsou licence plně přiřazené k uživatelům, a pokud dojde k chybám, které potřebujete najít. K dispozici jsou následující informace:
 
@@ -71,17 +71,17 @@ Když přiřadíte licence ke skupině, Azure AD zpracuje všechny stávající 
 
    ![chyby licencování a stav licence](./media/licensing-groups-assign/assignment-errors.png)
 
-1. Podrobnější informace o zpracování licencí najdete v části **Azure Active Directory** > **Uživatelé a skupiny skupiny** > *názvy* > **protokolů auditu**. Podívejte se na následující činnosti:
+1. Podrobnější informace o zpracování licencí najdete v části **Azure Active Directory**  >  **Uživatelé a skupiny skupiny**  >  *názvy*  >  **protokolů auditu**. Podívejte se na následující činnosti:
 
-   - Aktivita: `Start applying group based license to users`. Tato část se zaznamená do protokolu, když systém vybere změnu přiřazení licence ve skupině a začne ji používat pro všechny členy. Obsahuje informace o změně, která byla provedena.
+   - Aktivita: `Start applying group based license to users` . Tato část se zaznamená do protokolu, když systém vybere změnu přiřazení licence ve skupině a začne ji používat pro všechny členy. Obsahuje informace o změně, která byla provedena.
 
-   - Aktivita: `Finish applying group based license to users`. Tato část se zaznamená do okamžiku, kdy systém dokončí zpracování všech uživatelů ve skupině. Obsahuje souhrn toho, kolik uživatelů bylo úspěšně zpracováno a kolik uživatelů nebylo možné přiřadit licence skupin.
+   - Aktivita: `Finish applying group based license to users` . Tato část se zaznamená do okamžiku, kdy systém dokončí zpracování všech uživatelů ve skupině. Obsahuje souhrn toho, kolik uživatelů bylo úspěšně zpracováno a kolik uživatelů nebylo možné přiřadit licence skupin.
 
    V [této části](licensing-group-advanced.md#use-audit-logs-to-monitor-group-based-licensing-activity) najdete další informace o tom, jak můžete pomocí protokolů auditu analyzovat změny provedené licencováním na základě skupin.
 
 ## <a name="step-3-check-for-license-problems-and-resolve-them"></a>Krok 3: vyhledání problémů s licencí a jejich řešení
 
-1. Přejít na **Azure Active Directory** > **skupiny**a vyhledat skupinu, ke které byly licence přiřazené.
+1. Přejít na **Azure Active Directory**  >  **skupiny**a vyhledat skupinu, ke které byly licence přiřazené.
 1. Na stránce skupina vyberte **licence**. Oznámení v horní části stránky ukazuje, že je k dispozici 10 uživatelů, kterým nebylo možné přiřazovat licence. Otevřete ho a zobrazí se seznam všech uživatelů v chybovém stavu licencování této skupiny.
 1. Sloupec **nezdařené přiřazení** nám oznamuje, že se k uživatelům nepovedlo přiřadit licence k licenci. Sloupec **nejvyšší příčiny selhání** obsahuje příčinu selhání. V tomto případě se jedná o **konfliktní plány služeb**.
 

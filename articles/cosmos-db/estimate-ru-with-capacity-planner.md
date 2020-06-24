@@ -3,15 +3,15 @@ title: Odhad nákladů pomocí plánovače kapacity Azure Cosmos DB
 description: Plánovač kapacity Azure Cosmos DB umožňuje odhadnout propustnost (RU/s) požadované a náklady na vaše zatížení. Tento článek popisuje, jak používat novou verzi plánovače kapacity k odhadu propustnosti a potřebných nákladů.
 author: deborahc
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/30/2019
 ms.author: dech
-ms.openlocfilehash: f10ace47f774e31b586f7736f5fb8e5dfea0c948
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 6a30535ac3aaa90dc3553f6901a83ab300546fb5
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "68707627"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261847"
 ---
 # <a name="estimate-rus-using-the-azure-cosmos-db-capacity-planner"></a>Odhad RU/s pomocí plánovače kapacity Azure Cosmos DB
 
@@ -23,7 +23,7 @@ Plánovač kapacity se dá použít ve dvou režimech.
 
 |**Mode**  |**Popis**  |
 |---------|---------|
-|Základní|Poskytuje rychlý, vysoce na vysoké úrovni RU/s a odhad nákladů. Tento režim předpokládá výchozí nastavení Azure Cosmos DB pro indexování zásad, konzistence a dalších parametrů. <br/><br/>Základní režim můžete použít pro rychlý odhad na nejvyšší úrovni při vyhodnocování potenciálního zatížení pro spuštění na Azure Cosmos DB.|
+|Basic|Poskytuje rychlý, vysoce na vysoké úrovni RU/s a odhad nákladů. Tento režim předpokládá výchozí nastavení Azure Cosmos DB pro indexování zásad, konzistence a dalších parametrů. <br/><br/>Základní režim můžete použít pro rychlý odhad na nejvyšší úrovni při vyhodnocování potenciálního zatížení pro spuštění na Azure Cosmos DB.|
 |Upřesnit|Poskytuje podrobnější informace o RU/s a odhad nákladů s možností optimalizace dalších nastavení – zásad indexování, úrovně konzistence a dalších parametrů, které mají vliv na náklady a propustnost. <br/><br/>Pokročilý režim použijte při odhadování RU/s pro nový projekt nebo chcete podrobnější odhad. |
 
 
@@ -41,7 +41,7 @@ Pokud chcete získat rychlý odhad vašich úloh pomocí režimu Basic, přejdě
 
 Po vyplnění požadovaných podrobností vyberte **Vypočítat**. Karta **odhad nákladů** zobrazuje celkové náklady na úložiště a zřízenou propustnost. Kliknutím na odkaz **Zobrazit podrobnosti** na této kartě můžete získat rozpis propustnosti požadované pro požadavky na čtení a zápis. Pokaždé, když změníte hodnotu libovolného pole, vyberte **Vypočítat** a přepočítejte odhadované náklady. 
 
-![Základní režim plánovače kapacity](./media/estimate-ru-with-capacity-planner/basic-mode.png)
+:::image type="content" source="./media/estimate-ru-with-capacity-planner/basic-mode.png" alt-text="Základní režim plánovače kapacity":::
 
 ## <a name="estimate-provisioned-throughput-and-cost-using-advanced-mode"></a>Odhad zajištěné propustnosti a nákladů pomocí rozšířeného režimu
 
@@ -62,7 +62,7 @@ Po přihlášení uvidíte další pole v porovnání s poli v základním reži
 
 K stažení souboru CSV obsahujícího aktuální odhad můžete použít také tlačítko **Uložit odhad** . 
 
-![Rozšířený režim plánovače kapacity](./media/estimate-ru-with-capacity-planner/advanced-mode.png)
+:::image type="content" source="./media/estimate-ru-with-capacity-planner/advanced-mode.png" alt-text="Rozšířený režim plánovače kapacity":::
 
 Ceny uvedené v Plánovači kapacity Azure Cosmos DB jsou odhadované na základě sazeb za veřejné ceny pro propustnost a úložiště. Všechny ceny jsou uvedeny v amerických dolarech. Pokud chcete zobrazit všechny sazby podle oblasti, přečtěte si [stránku s cenami Azure Cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/) .  
 
@@ -70,7 +70,7 @@ Ceny uvedené v Plánovači kapacity Azure Cosmos DB jsou odhadované na základ
 
 Kalkulačka kapacity Azure Cosmos předpokládá čtení bodů (čtení jedné položky, třeba dokumentu, podle ID a hodnoty klíče oddílu) a zápisy pro úlohu. Pokud chcete odhadnout propustnost potřebnou pro dotazy, spusťte dotaz na zástupce datové sady v kontejneru Cosmos a [Získejte poplatek za ru](find-request-unit-charge.md). Vynásobte poplatek za RU počtem dotazů, které předpokládáte za běhu za sekundu, abyste získali celkové požadavky na RU/s. 
 
-Například pokud vaše úloha vyžaduje dotaz, ``SELECT * FROM c WHERE c.id = 'Alice'`` který běží 100 krát za sekundu, a poplatek za dotaz je 10 ru, budete pro poskytování těchto požadavků potřebovat 100 dotaz/s * 10 ru/query = 1000 ru/s. Přidejte tyto RU/s na RU/s potřebné pro jakékoli čtení nebo zápisy, které se ve vašem zatížení děje.
+Například pokud vaše úloha vyžaduje dotaz, ``SELECT * FROM c WHERE c.id = 'Alice'`` který běží 100 krát za sekundu, a poplatek za dotaz je 10 ru, budete pro poskytování těchto požadavků potřebovat 100 dotaz/s * 10 ru/Query = 1000 ru/s. Přidejte tyto RU/s na RU/s potřebné pro jakékoli čtení nebo zápisy, které se ve vašem zatížení děje.
 
 ## <a name="next-steps"></a>Další kroky
 

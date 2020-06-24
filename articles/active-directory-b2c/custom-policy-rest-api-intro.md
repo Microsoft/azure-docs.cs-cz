@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b308e5d74f1a87ea1cebed26f602780307c77d35
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: 41db591b8abdaaa58461b2782d93f7aa745cfdc6
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84447913"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202530"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-custom-policy"></a>Integrace REST APIch výměn deklarací identity do vlastních zásad Azure AD B2C
 
@@ -131,7 +131,7 @@ Výstupní deklarace by měly vypadat takto:
 </OutputClaims>
 ```
 
-## <a name="security-considerations"></a>Důležité informace o zabezpečení
+## <a name="security-considerations"></a>Aspekty zabezpečení
 
 Je nutné chránit svůj koncový bod REST API tak, aby s ním mohli komunikovat pouze ověření klienti. REST API musí používat koncový bod HTTPS. Nastavte metadata AuthenticationType na jednu z následujících metod ověřování:
 
@@ -145,7 +145,7 @@ Vaše REST API může být založené na jakékoli platformě a napsané v jaké
 ## <a name="localize-the-rest-api"></a>Lokalizovat REST API
 V technickém profilu RESTful můžete chtít odeslat jazyk/národní prostředí aktuální relace a v případě potřeby vyvolat lokalizovanou chybovou zprávu. Pomocí [překladače deklarací identity](claim-resolver-overview.md)můžete odeslat kontextovou deklaraci identity, jako je například uživatelský jazyk. Následující příklad ukazuje RESTful technický profil, který demonstruje tento scénář.
 
-```XML
+```xml
 <TechnicalProfile Id="REST-ValidateUserData">
   <DisplayName>Validate user input data</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -165,7 +165,7 @@ V technickém profilu RESTful můžete chtít odeslat jazyk/národní prostřed�
 
 ## <a name="handling-error-messages"></a>Manipulace s chybovými zprávami
 
-Vaše REST API může potřebovat vrátit chybovou zprávu, například "uživatel nebyl nalezen v systému CRM". Pokud dojde k chybě, REST API by měla vracet chybovou zprávu HTTP 409 (kód stavu odpovědi na konflikt). Další informace najdete v tématu [RESTful Technical Profile](restful-technical-profile.md#returning-error-message).
+Vaše REST API může potřebovat vrátit chybovou zprávu, například "uživatel nebyl nalezen v systému CRM". Pokud dojde k chybě, REST API by měla vracet chybovou zprávu HTTP 409 (kód stavu odpovědi na konflikt). Další informace najdete v tématu [RESTful Technical Profile](restful-technical-profile.md#returning-validation-error-message).
 
 Toho lze dosáhnout pouze voláním REST API Technical Profile z technického profilu ověření. To umožňuje uživateli opravovat data na stránce a znovu spustit ověřování po odeslání stránky.
 

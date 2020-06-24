@@ -4,12 +4,12 @@ description: Vysvětlení, jak vyvíjet funkce pomocí Pythonu
 ms.topic: article
 ms.date: 12/13/2019
 ms.custom: tracking-python
-ms.openlocfilehash: 1d9289b6304a9c9e93afeddd98b3a229dae91797
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 26da89628360783e4507c83c3aeaddfc2b0510b7
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84660596"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84730743"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Příručka pro vývojáře Azure Functions Pythonu
 
@@ -251,7 +251,7 @@ def main(req):
 
 K dispozici jsou další metody protokolování, které umožňují zapisovat do konzoly na různých úrovních trasování:
 
-| Metoda                 | Popis                                |
+| Metoda                 | Description                                |
 | ---------------------- | ------------------------------------------ |
 | **`critical(_message_)`**   | Zapíše zprávu s KRITICKou úrovní na kořenovém protokolovacím nástroji.  |
 | **`error(_message_)`**   | Zapíše zprávu s CHYBou úrovně v kořenovém protokolovacím nástroji.    |
@@ -263,7 +263,7 @@ Další informace o protokolování najdete v tématu [monitorování Azure Func
 
 ## <a name="http-trigger-and-bindings"></a>Aktivační procedura HTTP a vazby
 
-Aktivační událost HTTP je definována v souboru Function. Jan. `name`Vazba musí odpovídat pojmenovanému parametru ve funkci.
+Aktivační událost HTTP je definována v function.jsv souboru. `name`Vazba musí odpovídat pojmenovanému parametru ve funkci.
 V předchozích příkladech se používá název vazby `req` . Tento parametr je objekt [HttpRequest] a je vrácen objekt [HttpResponse] .
 
 Z objektu [HttpRequest] můžete získat hlavičky žádosti, parametry dotazu, parametry směrování a tělo zprávy.
@@ -338,7 +338,7 @@ FUNCTIONS_WORKER_PROCESS_COUNT se vztahuje na každého hostitele, který funkce
 
 Chcete-li získat kontext vyvolání funkce během provádění, zahrňte [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python) do jejího podpisu argument.
 
-Například:
+Příklad:
 
 ```python
 import azure.functions
@@ -650,11 +650,11 @@ Funkce Python Worker vyžaduje konkrétní sadu knihoven. Tyto knihovny můžete
 
 ### <a name="azure-functions-python-library"></a>Azure Functions knihovna Pythonu
 
-Každá aktualizace pro Python Worker zahrnuje novou verzi [Azure Functions knihovny Python (Azure. Functions)](https://github.com/Azure/azure-functions-python-library). Verze běhové knihovny je opravena v Azure a nemůže být přepsána requirements.txt. `azure-functions`Položka v requirements.txt je určena pouze pro linting a povědomí o zákaznících.
+Každá aktualizace pro Python Worker zahrnuje novou verzi [Azure Functions knihovny Python (Azure. Functions)](https://github.com/Azure/azure-functions-python-library). Tento přístup usnadňuje průběžnou aktualizaci aplikací funkcí Pythonu, protože každá aktualizace je zpětně kompatibilní. Seznam verzí této knihovny najdete v části [Azure-Functions PyPI](https://pypi.org/project/azure-functions/#history).
 
-Důvodem takového rozhodnutí je snadné průběžné aktualizace v aplikacích Azure Functions Python. Aktualizace knihovny Pythonu by neměla mít žádné informace o zákaznících, protože každá aktualizace je zpětně kompatibilní. Seznam verzí knihovny najdete v části [Azure-Functions PyPI](https://pypi.org/project/azure-functions/#history).
+Verze běhové knihovny je opravena v Azure a nemůže být přepsána requirements.txt. `azure-functions`Položka v requirements.txt je určena pouze pro linting a povědomí o zákaznících. 
 
-Vlastní verzi knihovny funkcí Pythonu v modulu runtime můžete sledovat pomocí následujícího řádku:
+Použijte následující kód ke sledování skutečné verze knihovny funkcí Pythonu v modulu runtime:
 
 ```python
 getattr(azure.functions, '__version__', '< 1.2.1')
@@ -663,6 +663,7 @@ getattr(azure.functions, '__version__', '< 1.2.1')
 ### <a name="runtime-system-libraries"></a>Běhové systémové knihovny
 
 Pokud chcete zobrazit seznam předinstalovaných systémových knihoven v Python Worker image Docker, postupujte prosím podle následujících odkazů:
+
 |  Modul runtime Functions  | Verze Debian | Verze Pythonu |
 |------------|------------|------------|
 | Verze 2. x | Roztažení  | [Python 3,6](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python37/python37.Dockerfile) |

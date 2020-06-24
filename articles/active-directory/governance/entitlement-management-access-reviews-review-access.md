@@ -10,18 +10,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 11/01/2019
+ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99de022b7259b33baab3aa825673a8f85e932bff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0d4de2ac3ee74d60eb532bd469b20523fa937db0
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78968747"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85078566"
 ---
 # <a name="review-access-of-an-access-package-in-azure-ad-entitlement-management"></a>Kontrola přístupu k balíčku přístupu v Azure AD – Správa nároků
 
@@ -47,7 +47,7 @@ K vyhledání a otevření kontroly přístupu použijte následující postup:
 
 1. Kliknutím na odkaz **Kontrola přístupu uživatele** otevřete kontrolu přístupu. 
 
-1. Pokud nemáte e-mail, můžete najít své nedokončené kontroly přístupu, a to tak, že přejdete přímo na https://myaccess.microsoft.com.  (Pro státní správu USA použijte `https://myaccess.microsoft.us` místo toho.)
+1. Pokud nemáte e-mail, můžete najít své nedokončené kontroly přístupu, a to tak, že přejdete přímo na https://myaccess.microsoft.com .  (Pro státní správu USA použijte `https://myaccess.microsoft.us` místo toho.)
 
 1. Kliknutím na kontroly **přístupu** na levém navigačním panelu zobrazte seznam nedokončených revizí přístupu, které jste vám přiřadili.
     

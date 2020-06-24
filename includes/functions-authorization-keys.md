@@ -4,14 +4,18 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 05/06/2020
 ms.author: glenga
-ms.openlocfilehash: 926434d7110877e234888682cb6c946afe3ae685
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 046bd8fcbb8fab50269c8d35da0956bdc63f2304
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648941"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298595"
 ---
 Funkce umožňují používat klíče k tomu, aby během vývoje měly přístup k koncovým bodům funkce HTTP. Pokud není úroveň přístupu HTTP u funkce aktivované protokolem HTTP nastavená na `anonymous` , požadavky musí v žádosti zahrnovat přístupový klíč rozhraní API. 
+
+Zatímco klíče poskytují výchozí mechanismus zabezpečení, možná budete chtít zvážit další možnosti zabezpečení koncového bodu HTTP v produkčním prostředí. Obvykle není dobrým zvykem distribuovat sdílený tajný klíč ve veřejných aplikacích. Pokud je vaše funkce volána z veřejného klienta, je vhodné zvážit implementaci jiného mechanismu Secrity. Další informace najdete v tématu [zabezpečení koncového bodu http v produkčním prostředí](../articles/azure-functions/functions-bindings-http-webhook-trigger.md#secure-an-http-endpoint-in-production).
+
+Při obnovování hodnot klíčů funkce je nutné ručně znovu distribuovat aktualizované hodnoty klíčů všem klientům, kteří volají vaši funkci.  
 
 #### <a name="authorization-scopes-function-level"></a>Obory autorizace (na úrovni funkcí)
 

@@ -8,7 +8,7 @@ author: curtand
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.date: 11/08/2019
@@ -16,18 +16,18 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf2f04e1728f94c89bddcc31c287cc017a79020f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 47546ae5ae964d1ed915ee42b1a2cafec58a805a
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74025903"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84727632"
 ---
 # <a name="change-license-assignments-for-a-user-or-group-in-azure-active-directory"></a>Změna přiřazení licencí pro uživatele nebo skupinu v Azure Active Directory
 
 Tento článek popisuje, jak přesunout uživatele a skupiny mezi plány licencí služby v Azure Active Directory (Azure AD). Cílem přístupu ke službě Azure AD je zajistit, aby během změny licence nedošlo ke ztrátě služeb nebo dat. Uživatelé by měli přepínat mezi službami bez problémů. Kroky pro přiřazení licenčního plánu v tomto článku popisují změnu uživatele nebo skupiny v Office 365 E1 na Office 365 E3, ale postup platí pro všechny plány licencí. Když aktualizujete přiřazení licencí pro uživatele nebo skupinu, provedou se odebrání přiřazení licencí a nové přiřazení, aby uživatelé během změn licencí neztratili přístup ke svým službám ani neviděli konflikty licencí mezi plány.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Před aktualizací přiřazení licencí je důležité ověřit, jestli jsou některé předpoklady splněné pro všechny uživatele nebo skupiny, které se mají aktualizovat. Pokud tyto předpoklady nejsou pravdivé pro všechny uživatele ve skupině, může se u některých z nich tato migrace nezdařila. V důsledku toho mohou někteří uživatelé ztratit přístup ke službám nebo datům. Zajistěte, aby:
 
@@ -46,7 +46,7 @@ Před aktualizací přiřazení licencí je důležité ověřit, jestli jsou n�
 Pokud vidíte, že některá zaškrtávací políčka nejsou k dispozici, na stránce **aktualizace přiřazení licencí** se zobrazí služby, které nelze změnit, protože jsou zděděny z licence skupiny.
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí účtu správce licencí ve vaší organizaci Azure AD.
-1. Vyberte **Azure Active Directory** > **Uživatelé**a potom otevřete stránku **profil** pro uživatele.
+1. Vyberte **Azure Active Directory**  >  **Uživatelé**a potom otevřete stránku **profil** pro uživatele.
 1. Vyberte **licence**.
 1. Vyberte **přiřazení** pro úpravu přiřazení licence pro uživatele nebo skupinu. Na stránce **přiřazení** můžete vyřešit konflikty přiřazení licencí.
 1. Zaškrtněte políčko pro Office 366 E3 a ujistěte se, že je vybrána možnost minimálně všechny služby E1, které jsou přiřazeny uživateli.
@@ -61,7 +61,7 @@ Azure AD použije nové licence a současně odebere staré licence, aby bylo mo
 ## <a name="change-group-license-assignments"></a>Změna přiřazení licencí skupin
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí účtu správce licencí ve vaší organizaci Azure AD.
-1. Vyberte **Azure Active Directory** > **skupiny**a potom otevřete stránku **Přehled** pro skupinu.
+1. Vyberte **Azure Active Directory**  >  **skupiny**a potom otevřete stránku **Přehled** pro skupinu.
 1. Vyberte **licence**.
 1. Vyberte příkaz **přiřazení** pro úpravu přiřazení licence pro uživatele nebo skupinu.
 1. Zaškrtněte políčko pro Office 366 E3. Aby se zachovala kontinuita provozu, ujistěte se, že jste vybrali všechny služby E1, které jsou už k tomuto uživateli přiřazené.

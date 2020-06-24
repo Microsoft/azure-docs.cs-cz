@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5b3af812b2b78c276b5345b9b19226e6e1dba80b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2040d4521f655a0043987f2363e520abcc6c5d3a
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78185756"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85203170"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Přizpůsobení jazyka v Azure Active Directory B2C
 
@@ -23,7 +23,7 @@ Přizpůsobení jazyka v Azure Active Directory B2C (Azure AD B2C) umožňuje, a
 
 ## <a name="how-language-customization-works"></a>Jak funguje přizpůsobení jazyka
 
-Pomocí vlastního nastavení jazyka můžete vybrat jazyky, ve kterých je tok uživatele k dispozici. Po povolení funkce můžete zadat parametr `ui_locales`řetězce dotazu, z vaší aplikace. Když zavoláte Azure AD B2C, vaše stránka je přeložena do národního prostředí, které jste uvedli. Tento typ konfigurace poskytuje plnou kontrolu nad jazyky v uživatelském toku a ignoruje nastavení jazyka v prohlížeči zákazníka.
+Pomocí vlastního nastavení jazyka můžete vybrat jazyky, ve kterých je tok uživatele k dispozici. Po povolení funkce můžete zadat parametr řetězce dotazu, `ui_locales` z vaší aplikace. Když zavoláte Azure AD B2C, vaše stránka je přeložena do národního prostředí, které jste uvedli. Tento typ konfigurace poskytuje plnou kontrolu nad jazyky v uživatelském toku a ignoruje nastavení jazyka v prohlížeči zákazníka.
 
 Možná nebudete potřebovat tuto úroveň kontroly nad jazyky, které zákazník uvidí. Pokud neposkytnete `ui_locales` parametr, zkušenost zákazníka je vydiktována nastavením prohlížeče. Můžete si i nadále řídit, na které jazyky se má tok uživatele přeložit, a to tak, že ho přidáte jako podporovaný jazyk. Pokud je prohlížeč zákazníka nastavený tak, aby zobrazoval jazyk, který nechcete podporovat, zobrazí se místo toho jazyk, který jste vybrali jako výchozí v podporovaných jazykových verzích.
 
@@ -47,7 +47,7 @@ Když v toku uživatele povolíte přizpůsobení jazyka, můžete řídit jazyk
 
 ## <a name="select-which-languages-in-your-user-flow-are-enabled"></a>Vyberte jazyky, ve kterých je tok uživatele povolený.
 
-Povolte sadu jazyků pro váš uživatelský tok, který se bude překládat na v případě, že ho prohlížeč `ui_locales` požaduje bez parametru.
+Povolte sadu jazyků pro váš uživatelský tok, který se bude překládat na v případě, že ho prohlížeč požaduje bez `ui_locales` parametru.
 
 1. Ujistěte se, že tok uživatele má povolené přizpůsobení jazyka z předchozích pokynů.
 1. Na stránce **jazyky** toku uživatele vyberte jazyk, který chcete podporovat.
@@ -74,17 +74,17 @@ Tyto kroky poskytují soubor JSON, který můžete použít k zahájení úprav 
 1. Otevřete soubor JSON stažený z předchozích pokynů v editoru JSON.
 1. Vyhledejte prvek, který chcete změnit. Můžete vyhledat `StringId` řetězec, který hledáte, nebo vyhledat `Value` atribut, který chcete změnit.
 1. Aktualizujte `Value` atribut tak, co chcete zobrazit.
-1. Pro každý řetězec, který chcete změnit, změňte `Override` na. `true`
+1. Pro každý řetězec, který chcete změnit, změňte `Override` na `true` .
 1. Uložte soubor a nahrajte změny. (Ovládací prvek nahrávání můžete najít na stejném místě, kam jste stáhli soubor JSON.)
 
 > [!IMPORTANT]
-> Pokud potřebujete přepsat řetězec, ujistěte se, že jste nastavili `Override` hodnotu na `true`. Pokud se hodnota nezmění, bude položka ignorována.
+> Pokud potřebujete přepsat řetězec, ujistěte se, že jste nastavili `Override` hodnotu na `true` . Pokud se hodnota nezmění, bude položka ignorována.
 
 ### <a name="change-extension-attributes"></a>Změnit atributy rozšíření
 
 Pokud chcete změnit řetězec pro vlastní atribut uživatele nebo ho chcete přidat k formátu JSON, je v následujícím formátu:
 
-```JSON
+```json
 {
   "LocalizedStrings": [
     {
@@ -104,9 +104,9 @@ Nahraďte `<ExtensionAttributeValue>` novým řetězcem, který se má zobrazit.
 
 ### <a name="provide-a-list-of-values-by-using-localizedcollections"></a>Zadání seznamu hodnot pomocí LocalizedCollections
 
-Pokud chcete poskytnout seznam sad hodnot pro odpovědi, je nutné vytvořit `LocalizedCollections` atribut. `LocalizedCollections`je pole `Name` a `Value` páry. Pořadí položek bude zobrazeno v pořadí. Chcete- `LocalizedCollections`li přidat, použijte následující formát:
+Pokud chcete poskytnout seznam sad hodnot pro odpovědi, je nutné vytvořit `LocalizedCollections` atribut. `LocalizedCollections`je pole `Name` a `Value` páry. Pořadí položek bude zobrazeno v pořadí. Chcete-li přidat `LocalizedCollections` , použijte následující formát:
 
-```JSON
+```json
 {
   "LocalizedStrings": [...],
   "LocalizedCollections": [{
@@ -128,7 +128,7 @@ Pokud chcete poskytnout seznam sad hodnot pro odpovědi, je nutné vytvořit `Lo
 }
 ```
 
-* `ElementId`je atributem uživatele, na `LocalizedCollections` který je tento atribut odpovědí.
+* `ElementId`je atributem uživatele, `LocalizedCollections` na který je tento atribut odpovědí.
 * `Name`je hodnota, která se zobrazí uživateli.
 * `Value`je to, co se v deklaraci identity vrátí, když je tato možnost vybraná.
 
@@ -145,15 +145,15 @@ Změny se uloží do toku uživatele automaticky.
 
 ## <a name="customize-the-page-ui-by-using-language-customization"></a>Přizpůsobení uživatelského rozhraní stránky pomocí přizpůsobení jazyka
 
-Obsah HTML můžete lokalizovat dvěma způsoby. Jedním ze způsobů je zapnout [přizpůsobení jazyka](user-flow-language-customization.md). Povolením této funkce umožníte Azure AD B2C přeslat parametr `ui-locales`OpenID Connect do svého koncového bodu. Server obsahu může tento parametr použít k poskytování přizpůsobených stránek HTML, které jsou specifické pro konkrétní jazyk.
+Obsah HTML můžete lokalizovat dvěma způsoby. Jedním ze způsobů je zapnout [přizpůsobení jazyka](user-flow-language-customization.md). Povolením této funkce umožníte Azure AD B2C přeslat parametr OpenID Connect `ui-locales` do svého koncového bodu. Server obsahu může tento parametr použít k poskytování přizpůsobených stránek HTML, které jsou specifické pro konkrétní jazyk.
 
-Alternativně můžete vyžádat obsah z různých míst na základě používaného národního prostředí. V rámci koncového bodu s povoleným CORS můžete nastavit strukturu složky pro hostování obsahu pro konkrétní jazyky. Pokud použijete zástupnou hodnotu `{Culture:RFC5646}`, zavoláte tu správnou. Předpokládejme například, že se jedná o vlastní identifikátor URI stránky:
+Alternativně můžete vyžádat obsah z různých míst na základě používaného národního prostředí. V rámci koncového bodu s povoleným CORS můžete nastavit strukturu složky pro hostování obsahu pro konkrétní jazyky. Pokud použijete zástupnou hodnotu, zavoláte tu správnou `{Culture:RFC5646}` . Předpokládejme například, že se jedná o vlastní identifikátor URI stránky:
 
 ```
 https://wingtiptoysb2c.blob.core.windows.net/{Culture:RFC5646}/wingtip/unified.html
 ```
 
-Můžete načíst stránku v `fr`. Když stránka vyžádá obsah HTML a CSS, stáhne se z:
+Můžete načíst stránku v `fr` . Když stránka vyžádá obsah HTML a CSS, stáhne se z:
 
 ```
 https://wingtiptoysb2c.blob.core.windows.net/fr/wingtip/unified.html
@@ -191,7 +191,7 @@ Microsoft v současnosti neposkytuje podporu pro jazyky se zápisem zprava dolev
 
 ### <a name="social-identity-provider-translations"></a>Překlady zprostředkovatele sociálních identit
 
-Microsoft poskytuje parametr `ui_locales` OIDC pro přihlášení přes sociální sítě. Někteří poskytovatelé sociálních identit, včetně Facebooku a Google, je nedodržují.
+Microsoft poskytuje `ui_locales` parametr OIDC pro přihlášení přes sociální sítě. Někteří poskytovatelé sociálních identit, včetně Facebooku a Google, je nedodržují.
 
 ### <a name="browser-behavior"></a>Chování prohlížeče
 
@@ -221,7 +221,7 @@ Azure AD B2C zahrnuje podporu pro následující jazyky. Jazyky toku uživatelů
 | Gudžarátština              | Gu            | ![ano](./media/user-flow-language-customization/yes.png) | ![ne](./media/user-flow-language-customization/no.png) |
 | Hebrejština                | uvede            | ![ne](./media/user-flow-language-customization/no.png) | ![ano](./media/user-flow-language-customization/yes.png) |
 | Hindština                 | Ahoj            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Chorvatština              | hr            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
+| Chorvatština              | hod            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
 | Maďarština             | hu            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
 | Indonéština            | id            | ![ne](./media/user-flow-language-customization/no.png) | ![ano](./media/user-flow-language-customization/yes.png) |
 | Italština               | její            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/05/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 25e62e7c6865f91daa242a33a0f491f8015be41a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 688bf4526ad287955231358ab0b64036e5480713
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80672523"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85201425"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>Sledovat chování uživatele v Azure Active Directory B2C pomocí Application Insights
 
@@ -59,7 +59,7 @@ Pokud používáte Application Insights s Azure AD B2C, stačí vytvořit prost�
 
 Deklarace identity poskytuje dočasné úložiště dat během provádění zásad Azure AD B2C. [Schéma deklarací identity](claimsschema.md) je místo, kde deklarujete deklarace identity.
 
-1. Otevřete soubor rozšíření vaší zásady. Například <em> `SocialAndLocalAccounts/` </em>.
+1. Otevřete soubor rozšíření vaší zásady. Například <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em> .
 1. Vyhledejte element [BuildingBlocks](buildingblocks.md) . Pokud element neexistuje, přidejte jej.
 1. Vyhledejte element [ClaimsSchema](claimsschema.md) . Pokud element neexistuje, přidejte jej.
 1. Do prvku **ClaimsSchema** přidejte následující deklarace identity. 
@@ -111,7 +111,7 @@ Technické profily lze považovat za funkce v architektuře prostředí identity
 | AppInsights – UserSignUp | Zaznamenává `UserSignUp` událost, když uživatel aktivuje možnost registrace v cestě pro registraci a přihlašování. |
 | AppInsights – SignInComplete | Zaznamenává `SignInComplete` událost po úspěšném dokončení ověřování, když byl token odeslán do aplikace předávající strany. |
 
-Přidejte profily do souboru *TrustFrameworkExtensions. XML* z úvodní sady. Přidejte tyto prvky do prvku **ClaimsProviders** :
+Přidejte profily do souboru *TrustFrameworkExtensions.xml* z úvodní sady. Přidejte tyto prvky do prvku **ClaimsProviders** :
 
 ```xml
 <ClaimsProvider>
@@ -171,14 +171,14 @@ Pokud `AppInsights-SignInRequest` chcete sledovat, že byla přijata žádost o 
 
 ```xml
 <!-- Track that we have received a sign in request -->
-<OrchestrationStep Order="1" Type="ClaimsExchange">
+<OrchestrationStep Order="2" Type="ClaimsExchange">
   <ClaimsExchanges>
     <ClaimsExchange Id="TrackSignInRequest" TechnicalProfileReferenceId="AppInsights-SignInRequest" />
   </ClaimsExchanges>
 </OrchestrationStep>
 ```
 
-Bezprostředně *před* krokem `SendClaims` orchestrace přidejte nový krok, který bude volat `AppInsights-UserSignup`. Aktivuje se, když uživatel vybere tlačítko pro registraci v cestě k registraci nebo přihlašování.
+Bezprostředně *před* `SendClaims` krokem orchestrace přidejte nový krok, který bude volat `AppInsights-UserSignup` . Aktivuje se, když uživatel vybere tlačítko pro registraci v cestě k registraci nebo přihlašování.
 
 ```xml
 <!-- Handles the user clicking the sign up link in the local account sign in page -->
@@ -200,7 +200,7 @@ Bezprostředně *před* krokem `SendClaims` orchestrace přidejte nový krok, kt
 </OrchestrationStep>
 ```
 
-Hned po kroku `SendClaims` orchestrace zavolejte `AppInsights-SignInComplete`. V tomto kroku se zobrazuje úspěšně dokončená cesta.
+Hned po `SendClaims` kroku orchestrace zavolejte `AppInsights-SignInComplete` . V tomto kroku se zobrazuje úspěšně dokončená cesta.
 
 ```xml
 <!-- Track that we have successfully sent a token -->
@@ -217,10 +217,10 @@ Hned po kroku `SendClaims` orchestrace zavolejte `AppInsights-SignInComplete`. V
 
 ## <a name="upload-your-file-run-the-policy-and-view-events"></a>Nahrání souboru, spuštění zásad a zobrazení událostí
 
-Uložte a nahrajte soubor *TrustFrameworkExtensions. XML* . Pak zavolejte zásadu předávající strany z vaší aplikace nebo použijte **Spustit nyní** v Azure Portal. V sekundách jsou vaše události k dispozici v Application Insights.
+Uložte a odešlete soubor *TrustFrameworkExtensions.xml* . Pak zavolejte zásadu předávající strany z vaší aplikace nebo použijte **Spustit nyní** v Azure Portal. V sekundách jsou vaše události k dispozici v Application Insights.
 
 1. Otevřete prostředek **Application Insights** ve vašem tenantovi Azure Active Directory.
-2. Vyberte **Usage** > **události**využití.
+2. Vyberte **Usage**  >  **události**využití.
 3. Nastaví **During** se během **poslední hodiny** a **do** **3 minut**.  Pro zobrazení výsledků může být nutné vybrat možnost **aktualizovat** .
 
 ![VYUŽITÍ Application Insights – události Blase](./media/analytics-with-application-insights/app-ins-graphic.png)
@@ -230,10 +230,10 @@ Uložte a nahrajte soubor *TrustFrameworkExtensions. XML* . Pak zavolejte zásad
 Přidejte do cesty uživatele typy deklarací identity a události, aby vyhovovaly vašim potřebám. Můžete použít [překladače deklarací identity](claim-resolver-overview.md) nebo jakýkoli typ deklarace identity, přidat deklarace identity přidáním prvku **vstupní deklarace identity** do události Application Insights nebo do AppInsights-Common Technical Profile.
 
 - **ClaimTypeReferenceId** je odkaz na typ deklarace identity.
-- **PartnerClaimType** je název vlastnosti, která se zobrazuje v Azure Insights. Použijte syntaxi `{property:NAME}`, kde `NAME` je do události přidána vlastnost.
+- **PartnerClaimType** je název vlastnosti, která se zobrazuje v Azure Insights. Použijte syntaxi `{property:NAME}` , kde je do `NAME` události přidána vlastnost.
 - **DefaultValue** používá libovolnou řetězcovou hodnotu nebo překladač deklarací identity.
 
-```XML
+```xml
 <InputClaim ClaimTypeReferenceId="app_session" PartnerClaimType="{property:app_session}" DefaultValue="{OAUTH-KV:app_session}" />
 <InputClaim ClaimTypeReferenceId="loyalty_number" PartnerClaimType="{property:loyalty_number}" DefaultValue="{OAUTH-KV:loyalty_number}" />
 <InputClaim ClaimTypeReferenceId="language" PartnerClaimType="{property:language}" DefaultValue="{Culture:RFC5646}" />

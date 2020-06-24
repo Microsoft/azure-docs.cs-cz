@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.author: laobri
 author: lobrien
 manager: cgronlun
-ms.date: 04/28/2020
+ms.date: 06/15/2020
 ms.custom: tracking-python
-ms.openlocfilehash: b9b4f505e7d3bdfec4bb689dcb8e08c82111ba1e
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: f162aca8c30d890ecf662a88fb5f2182edb14c9e
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558457"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298238"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Použití automatizovaného ML v kanálu Azure Machine Learning v Pythonu
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -69,7 +69,7 @@ if not 'titanic_ds' in ws.datasets.keys() :
 titanic_ds = Dataset.get_by_name(ws, 'titanic_ds')
 ```
 
-Kód se nejprve přihlásí k pracovnímu prostoru Azure Machine Learning definovanému v **souboru config. JSON** (vysvětlení najdete v tématu [kurz: Začínáme s vytvářením prvního experimentu ml pomocí sady Python SDK](tutorial-1st-experiment-sdk-setup.md)). Pokud již není datová sada s názvem `'titanic_ds'` registrována, pak ji vytvoří. Kód stáhne data ve formátu CSV z webu, používá je k vytvoření instance `TabularDataset` a a pak tuto datovou sadu zaregistruje v pracovním prostoru. Nakonec funkce `Dataset.get_by_name()` přiřadí `Dataset` k `titanic_ds` . 
+Kód se nejprve přihlásí k pracovnímu prostoru Azure Machine Learning definovanému v **config.js** (vysvětlení najdete v tématu [kurz: Začínáme s vytvářením prvního experimentu ml v sadě Python SDK](tutorial-1st-experiment-sdk-setup.md)). Pokud již není datová sada s názvem `'titanic_ds'` registrována, pak ji vytvoří. Kód stáhne data ve formátu CSV z webu, používá je k vytvoření instance `TabularDataset` a a pak tuto datovou sadu zaregistruje v pracovním prostoru. Nakonec funkce `Dataset.get_by_name()` přiřadí `Dataset` k `titanic_ds` . 
 
 ### <a name="configure-your-storage-and-compute-target"></a>Konfigurace úložiště a cíle výpočtů
 
@@ -111,18 +111,27 @@ V dalším kroku se ujistěte, že se na vzdáleném cvičení spouští všechn
 ```python
 from azureml.core.runconfig import RunConfiguration
 from azureml.core.conda_dependencies import CondaDependencies
+from azureml.core import Environment 
 
 aml_run_config = RunConfiguration()
 # Use just-specified compute target ("cpu-cluster")
 aml_run_config.target = compute_target
-aml_run_config.environment.python.user_managed_dependencies = False
 
-# Add some packages relied on by data prep step
-aml_run_config.environment.python.conda_dependencies = CondaDependencies.create(
-    conda_packages=['pandas','scikit-learn'], 
-    pip_packages=['azureml-sdk[automl,explain]', 'azureml-dataprep[fuse,pandas]'], 
-    pin_sdk_version=False)
+USE_CURATED_ENV = True
+if USE_CURATED_ENV :
+    curated_environment = Environment.get(workspace=ws, name="AzureML-Tutorial")
+    aml_run_config.environment = curated_environment
+else:
+    aml_run_config.environment.python.user_managed_dependencies = False
+    
+    # Add some packages relied on by data prep step
+    aml_run_config.environment.python.conda_dependencies = CondaDependencies.create(
+        conda_packages=['pandas','scikit-learn'], 
+        pip_packages=['azureml-sdk[automl,explain]', 'azureml-dataprep[fuse,pandas]'], 
+        pin_sdk_version=False)
 ```
+
+Výše uvedený kód ukazuje dvě možnosti pro zpracování závislostí. Jak je uvedeno v `USE_CURATED_ENV = True` , je Konfigurace založená na spravovaném prostředí. Prebakedá prostředí jsou "" s běžnými nezávislými knihovnami a můžou být výrazně rychlejší pro uvedení do online režimu. Ve spravovaném prostředí jsou předem připravené image Docker v [Microsoft Container Registry](https://hub.docker.com/publishers/microsoftowner). Cesta, která se bere v případě, že se změní, `USE_CURATED_ENV` se `False` zobrazí jako způsob explicitního nastavení závislostí. V takovém scénáři se vytvoří nová vlastní image Docker, která se zaregistruje v Azure Container Registry v rámci vaší skupiny prostředků (viz [Úvod do registrů kontejnerů privátního Docker v Azure](https://docs.microsoft.com/azure/container-registry/container-registry-intro)). Sestavení a registrace tohoto obrázku může trvat několik minut. 
 
 ## <a name="prepare-data-for-automated-machine-learning"></a>Příprava dat pro automatizované Machine Learning
 

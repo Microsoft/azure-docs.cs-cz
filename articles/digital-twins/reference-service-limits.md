@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: article
 ms.service: digital-twins
-ms.openlocfilehash: 4497e1222904b1dad5fbeccd942854443e756ed5
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: 7847964d77e5dc09d2e09f207c47f9504c48e1db
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84612842"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84729196"
 ---
 # <a name="service-limits-in-public-preview"></a>Omezení služby ve verzi Public Preview
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Toto jsou omezení služeb digitálních vláken Azure v rámci verze Public Preview.
 
@@ -29,18 +32,18 @@ Následující tabulka uvádí funkční omezení digitálních vláken Azure v 
 
 | Oblast | Schopnost | Omezení | Měnitelný? |
 | --- | --- | --- | --- |
-| Prostředek Azure | Počet instancí digitálních vláken Azure v oblasti v rámci předplatného | 10 | Yes |
-| Digitální vlákna | Počet vláken v instanci digitálních vláken Azure | 200 000 | Yes |
-| Směrování | Počet koncových bodů pro jednu instanci digitálních vláken Azure | 6 | No |
-| Směrování | Počet tras pro jednu instanci digitálních vláken Azure | 6 | Yes |
-| Modely | Počet modelů v rámci jedné instance digitálního vlákna Azure | 10 000 | Yes |
-| Modely | Počet modelů, které se dají nahrát v jednom volání rozhraní API | 250 | No |
-| Modely | Počet položek vrácených na jednu stránku | 100 | No |
-| Dotaz | Počet položek vrácených na jednu stránku | 100 | No |
+| Prostředek Azure | Počet instancí digitálních vláken Azure v oblasti v rámci předplatného | 10 | Ano |
+| Digitální vlákna | Počet vláken v instanci digitálních vláken Azure | 200 000 | Ano |
+| Směrování | Počet koncových bodů pro jednu instanci digitálních vláken Azure | 6 | Ne |
+| Směrování | Počet tras pro jednu instanci digitálních vláken Azure | 6 | Ano |
+| Modely | Počet modelů v rámci jedné instance digitálního vlákna Azure | 10 000 | Ano |
+| Modely | Počet modelů, které se dají nahrát v jednom volání rozhraní API | 250 | Ne |
+| Modely | Počet položek vrácených na jednu stránku | 100 | Ne |
+| Dotaz | Počet položek vrácených na jednu stránku | 100 | Ne |
 | Dotaz | Počet `AND`  /  `OR` výrazů v dotazu | 50 | Ano |
 | Dotaz | Počet položek pole v `IN`  /  `NOT IN` klauzuli | 50 | Ano |
 | Dotaz | Počet znaků v dotazu | 8 000 | Ano |
-| Dotaz | Počet `JOINS` v dotazu | 1 | Yes |
+| Dotaz | Počet `JOINS` v dotazu | 1 | Ano |
 
 ## <a name="rate-limits"></a>Omezení rychlosti
 
@@ -48,11 +51,11 @@ Tato tabulka odráží omezení přenosové rychlosti různých rozhraní API.
 
 | Rozhraní API | Schopnost | Omezení | Měnitelný? |
 | --- | --- | --- | --- |
-| Rozhraní API modelů | Počet požadavků za sekundu | 100 | Yes |
-| Rozhraní API pro digitální vlákna | Počet požadavků za sekundu | 1 000 | Yes |
-| Rozhraní API pro dotazy | Počet požadavků za sekundu | 500 | Yes |
-| Rozhraní API pro dotazy | Jednotky dotazů za sekundu | 4 000 | Yes |
-| Rozhraní API pro trasy událostí | Počet požadavků za sekundu | 100 | Yes |
+| Rozhraní API modelů | Počet požadavků za sekundu | 100 | Ano |
+| Rozhraní API pro digitální vlákna | Počet požadavků za sekundu | 1 000 | Ano |
+| Rozhraní API pro dotazy | Počet požadavků za sekundu | 500 | Ano |
+| Rozhraní API pro dotazy | Jednotky dotazů za sekundu | 4 000 | Ano |
+| Rozhraní API pro trasy událostí | Počet požadavků za sekundu | 100 | Ano |
 
 ## <a name="other-limits"></a>Další omezení
 

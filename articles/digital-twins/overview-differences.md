@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 8a69e0bfe172d2cc7a291ee51ffa73ae7b484731
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: 30a4e375bc05d939358b54b279228e1696b17e66
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84613636"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84729332"
 ---
 # <a name="how-is-the-new-azure-digital-twins-different-from-the-previous-version-2018"></a>Jak se nové digitální vlákna Azure liší od předchozí verze (2018)?
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 První veřejná verze Preview digitálních vláken Azure byla vydaná v říjnu 2018. I když se základní koncepty z této předchozí verze přenesly do nové služby ve verzi Public Preview, mnoho z rozhraní a podrobnosti implementace se změnily, aby služba byla pružnější a přístupná. Tyto změny byly motivovány názory zákazníků.
 

@@ -3,15 +3,15 @@ title: Šablony Správce prostředků pro rozhraní Azure Cosmos DB API pro Mong
 description: K vytvoření a konfiguraci Azure Cosmos DB API pro MongoDB použijte šablony Azure Resource Manager.
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: mjbrown
-ms.openlocfilehash: 1fe2c96e3c469e41e12d64f27a6a3b3d16a1174d
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: b35f78385b85a7514db4d69a0f209c37e3af0d7f
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684776"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262374"
 ---
 # <a name="manage-azure-cosmos-db-mongodb-api-resources-using-azure-resource-manager-templates"></a>Správa Azure Cosmos DBch prostředků rozhraní API MongoDB pomocí šablon Azure Resource Manager
 

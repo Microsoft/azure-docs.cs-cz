@@ -4,15 +4,15 @@ description: Tento článek poskytuje ukázkovou konfiguraci pro připojení za�
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/19/2018
 ms.author: yushwang
-ms.openlocfilehash: 96e5c26ea7b5f1baa33fd8830491ee3aa1e60221
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ec370ca3aa8d89111dcb4737701c7ea58cd48195
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75778078"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986089"
 ---
 # <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>Ukázková konfigurace: zařízení Cisco ASA (IKEv2/bez BGP)
 Tento článek poskytuje ukázkové konfigurace pro připojení zařízení se zařízením s bránou Cisco Adaptive Security (ASA) do bran Azure VPN Gateway. Tento příklad se vztahuje na zařízení Cisco ASA, na kterých běží IKEv2 bez Border Gateway Protocol (BGP). 
@@ -53,7 +53,7 @@ Podrobné pokyny k sestavování konfigurací Azure najdete v tématu [Nastaven�
 ### <a name="virtual-network-and-vpn-gateway-information"></a>Informace o virtuální síti a bráně VPN
 Tato část obsahuje seznam parametrů pro ukázku.
 
-| **Ukazatele**                | **Osa**                    |
+| **Parametr**                | **Hodnota**                    |
 | ---                          | ---                          |
 | Předpony adres virtuální sítě        | 10.11.0.0/16<br>10.12.0.0/16 |
 | IP adresa brány VPN Azure         | Azure_Gateway_Public_IP      |
@@ -70,7 +70,7 @@ Tato část obsahuje seznam parametrů pro ukázku.
 ### <a name="ipsecike-policy-and-parameters"></a>Zásady a parametry protokolu IPsec/IKE
 V následující tabulce jsou uvedeny algoritmy a parametry protokolu IPsec/IKE používané v ukázce. Podívejte se na specifikace zařízení VPN a ověřte algoritmy, které jsou podporované pro modely zařízení VPN a verze firmwaru.
 
-| **IPsec/IKEv2**  | **Osa**                            |
+| **IPsec/IKEv2**  | **Hodnota**                            |
 | ---              | ---                                  |
 | Šifrování protokolem IKEv2 | AES256                               |
 | Integrita protokolu IKEv2  | SHA384                               |
@@ -287,7 +287,7 @@ Pro účely ladění použijte následující příkazy ASA:
     debug crypto ikev2 platform <level>
     debug crypto ikev2 protocol <level>
     ```
-    `debug` Příkazy mohou generovat významný výstup v konzole nástroje.
+    `debug`Příkazy mohou generovat významný výstup v konzole nástroje.
 
 * Zobrazit aktuální konfigurace na zařízení:
     ```

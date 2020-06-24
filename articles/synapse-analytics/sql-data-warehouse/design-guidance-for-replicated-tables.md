@@ -6,17 +6,17 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/19/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 6f3418d73496ae25782b57a43e3357dc0bc7131a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 8328750849f5466c8754499694a41615776ff3da
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660036"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85201697"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-synapse-sql-pool"></a>Pokyny k návrhu pro použití replikovaných tabulek ve fondu SQL synapse
 
@@ -126,7 +126,7 @@ Znovu jsme vytvořili `DimDate` a `DimSalesTerritory` jako replikované tabulky 
 
 Fond SQL implementuje replikovanou tabulku udržováním hlavní verze tabulky. Zkopíruje hlavní verzi do první distribuční databáze na každém výpočetním uzlu. Pokud dojde ke změně, je nejprve aktualizována hlavní verze a pak se znovu sestaví tabulky na každém výpočetním uzlu. Nové sestavení replikované tabulky zahrnuje kopírování tabulky do každého výpočetního uzlu a následné sestavení indexů.  Například replikovaná tabulka na DW2000c má 5 kopií dat.  Hlavní kopii a úplnou kopii na každém výpočetním uzlu.  Všechna data jsou uložená v distribučních databázích. Fond SQL používá tento model k podpoře rychlejších příkazů pro úpravu dat a flexibilních operací škálování.
 
-Opětovné sestavení jsou požadována po:
+Asynchronní opětovná sestavení se spouštějí prvním dotazem na replikovanou tabulku po:
 
 - Data se načítají nebo upravují.
 - Instance SQL synapse se škáluje na jinou úroveň.

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2c351f8a95110a32c53c68c5eb6095918578bc5b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b978e6335aaf6927fe070285f2255910b31b7ffa
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78189170"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202615"
 ---
 # <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurace změny hesla pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -30,9 +30,9 @@ Proveďte kroky v části Začínáme [s vlastními zásadami v Active Directory
 
 ## <a name="add-the-elements"></a>Přidat elementy
 
-1. Otevřete soubor *TrustframeworkExtensions. XML* a přidejte následující element **ClaimType** s identifikátorem `oldPassword` do prvku [ClaimsSchema](claimsschema.md) :
+1. Otevřete soubor *TrustframeworkExtensions.xml* a přidejte následující element **ClaimType** s identifikátorem `oldPassword` do prvku [ClaimsSchema](claimsschema.md) :
 
-    ```XML
+    ```xml
     <BuildingBlocks>
       <ClaimsSchema>
         <ClaimType Id="oldPassword">
@@ -47,7 +47,7 @@ Proveďte kroky v části Začínáme [s vlastními zásadami v Active Directory
 
 2. Element [ClaimsProvider](claimsproviders.md) obsahuje technický profil, který uživatele ověřuje. Do prvku **ClaimsProviders** přidejte následující zprostředkovatele deklarací identity:
 
-    ```XML
+    ```xml
     <ClaimsProviders>
       <ClaimsProvider>
         <DisplayName>Local Account SignIn</DisplayName>
@@ -123,9 +123,9 @@ Proveďte kroky v části Začínáme [s vlastními zásadami v Active Directory
 
     Nahraďte `IdentityExperienceFrameworkAppId` ID aplikace IdentityExperienceFramework, kterou jste vytvořili v kurzu požadavků. Nahraďte `ProxyIdentityExperienceFrameworkAppId` ID aplikace aplikace ProxyIdentityExperienceFramework, kterou jste ještě vytvořili.
 
-3. Element [UserJourney](userjourneys.md) definuje cestu, kterou uživatel provede při interakci s aplikací. Přidejte element **userjourney** , pokud neexistuje s **UserJourney** identifikovaným jako `PasswordChange`:
+3. Element [UserJourney](userjourneys.md) definuje cestu, kterou uživatel provede při interakci s aplikací. Přidejte element **userjourney** , pokud neexistuje s **UserJourney** identifikovaným jako `PasswordChange` :
 
-    ```XML
+    ```xml
     <UserJourneys>
       <UserJourney Id="PasswordChange">
         <OrchestrationSteps>
@@ -151,17 +151,17 @@ Proveďte kroky v části Začínáme [s vlastními zásadami v Active Directory
     </UserJourneys>
     ```
 
-4. Uložte soubor zásad *TrustFrameworkExtensions. XML* .
-5. Zkopírujte soubor *ProfileEdit. XML* , který jste stáhli pomocí úvodní sady, a pojmenujte ho *ProfileEditPasswordChange. XML*.
+4. Uložte soubor zásad *TrustFrameworkExtensions.xml* .
+5. Zkopírujte soubor *ProfileEdit.xml* , který jste stáhli pomocí úvodní sady, a pojmenujte ho *ProfileEditPasswordChange.xml*.
 6. Otevřete nový soubor a aktualizujte atribut **PolicyId** o jedinečnou hodnotu. Tato hodnota je název vaší zásady. Například *B2C_1A_profile_edit_password_change*.
-7. Upravte atribut **ReferenceId** v `<DefaultUserJourney>` nástroji tak, aby odpovídal ID nové cesty uživatele, kterou jste vytvořili. Například *PasswordChange*.
+7. Upravte atribut **ReferenceId** v nástroji `<DefaultUserJourney>` tak, aby odpovídal ID nové cesty uživatele, kterou jste vytvořili. Například *PasswordChange*.
 8. Uložte provedené změny.
 
 Ukázkovou zásadu najdete [tady](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/password-change).
 
 ## <a name="test-your-policy"></a>Testování zásad
 
-Při testování aplikací v Azure AD B2C může být užitečné, aby byl token Azure AD B2C vrácen `https://jwt.ms` , aby bylo možné zkontrolovat deklarace identity v ní.
+Při testování aplikací v Azure AD B2C může být užitečné, aby byl token Azure AD B2C vrácen, aby bylo možné `https://jwt.ms` zkontrolovat deklarace identity v ní.
 
 ### <a name="upload-the-files"></a>Nahrání souborů
 
@@ -170,14 +170,14 @@ Při testování aplikací v Azure AD B2C může být užitečné, aby byl token
 3. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 4. Vyberte **architekturu prostředí identity**.
 5. Na stránce vlastní zásady klikněte na **nahrát zásadu**.
-6. Vyberte **přepsat zásadu, pokud existuje**, a pak vyhledejte a vyberte soubor *TrustframeworkExtensions. XML* .
+6. Vyberte **přepsat zásadu, pokud existuje**, a pak vyhledejte a vyberte soubor *TrustframeworkExtensions.xml* .
 7. Klikněte na **Odeslat**.
-8. Opakujte kroky 5 až 7 pro soubor předávající strany, například *ProfileEditPasswordChange. XML*.
+8. Opakujte kroky 5 až 7 pro soubor předávající strany, například *ProfileEditPasswordChange.xml*.
 
 ### <a name="run-the-policy"></a>Spustit zásadu
 
 1. Otevřete zásadu, kterou jste změnili. Například *B2C_1A_profile_edit_password_change*.
-2. V případě **aplikace**vyberte svou aplikaci, kterou jste předtím zaregistrovali. Pro zobrazení tokenu by se měla zobrazit `https://jwt.ms` **Adresa URL odpovědi** .
+2. V případě **aplikace**vyberte svou aplikaci, kterou jste předtím zaregistrovali. Pro zobrazení tokenu by se měla zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
 3. Klikněte na **Spustit**. Přihlaste se pomocí acouunt, který jste vytvořili dříve. Nyní byste měli mít možnost změnit heslo.
 
 ## <a name="next-steps"></a>Další kroky

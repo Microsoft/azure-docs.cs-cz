@@ -3,15 +3,15 @@ title: Konfigurace a Správa času do provozu v Azure Cosmos DB
 description: Naučte se, jak nakonfigurovat a spravovat dobu provozu na kontejneru a položku v Azure Cosmos DB
 author: anfeldma-ms
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/27/2020
 ms.author: anfeldma
-ms.openlocfilehash: 11f5615d44cef4b6717dc9fe2004a64cf2f800ba
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: bbddcb8627c78544d603e1ea3ca33bc410419da1
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124121"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263618"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Konfigurace času na živé v Azure Cosmos DB
 
@@ -34,7 +34,7 @@ Pomocí následujících kroků můžete povolit dobu provozu na kontejneru bez 
    * Vyberte **zapnuto (žádné výchozí)** nebo **Vyberte a nastavte** hodnotu TTL.
    * Kliknutím na **Uložit** uložte změny.
 
-   ![Konfigurace času na živé v Azure Portal](./media/how-to-time-to-live/how-to-time-to-live-portal.png)
+   :::image type="content" source="./media/how-to-time-to-live/how-to-time-to-live-portal.png" alt-text="Konfigurace času na živé v Azure Portal":::
 
 * Pokud má DefaultTimeToLive hodnotu null, váš čas do živého provozu je vypnutý.
 * Pokud je DefaultTimeToLive-1, je nastavení Time to Live zapnuté (žádné výchozí).
@@ -53,7 +53,7 @@ Pokud chcete vytvořit nebo povolit hodnotu TTL u kontejneru, přečtěte si té
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
-.NET SDK v2 (Microsoft. Azure. DocumentDB)
+.NET SDK v2 (Microsoft.Azure.DocumentDB)
 
 ```csharp
 // Create a new container with TTL enabled and without any expiration value
@@ -119,7 +119,7 @@ Chcete-li nastavit hodnotu TTL (Time to Live) na kontejneru, je nutné zadat nen
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
-.NET SDK v2 (Microsoft. Azure. DocumentDB)
+.NET SDK v2 (Microsoft.Azure.DocumentDB)
 
 ```csharp
 // Create a new container with TTL enabled and a 90 day expiration
@@ -201,7 +201,7 @@ Kromě nastavení výchozí hodnoty TTL (Time to Live) na kontejneru můžete na
 
 * Pokud je hodnota TTL na úrovni kontejneru zakázaná, bude pole TTL u této položky ignorováno, dokud nebude hodnota TTL znovu povolena v kontejneru.
 
-### <a name="azure-portal"></a><a id="portal-set-ttl-item"></a>Azure Portal
+### <a name="azure-portal"></a><a id="portal-set-ttl-item"></a>portál Azure
 
 Chcete-li povolit dobu provozu na položce, použijte následující postup:
 
@@ -353,7 +353,7 @@ SalesOrder salesOrder = new SalesOrder(
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
-.NET SDK v2 (Microsoft. Azure. DocumentDB)
+.NET SDK v2 (Microsoft.Azure.DocumentDB)
 
 ```csharp
 // This examples leverages the Sales Order class above.
@@ -427,7 +427,7 @@ Pokud je u položky nastavená možnost čas na Live a už nechcete, aby tato po
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
-.NET SDK v2 (Microsoft. Azure. DocumentDB)
+.NET SDK v2 (Microsoft.Azure.DocumentDB)
 
 ```csharp
 // This examples leverages the Sales Order class above.
@@ -502,7 +502,7 @@ Chcete-li zakázat dobu provozu na kontejneru a zastavit proces na pozadí, aby 
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
-.NET SDK v2 (Microsoft. Azure. DocumentDB)
+.NET SDK v2 (Microsoft.Azure.DocumentDB)
 
 ```csharp
 // Get the container, update DefaultTimeToLive to null

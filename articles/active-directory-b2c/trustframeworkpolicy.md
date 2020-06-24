@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 01/31/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c964a7bde0b7db9357c73fc79d2df3170075fcc1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 29eddbcfb7c0da98e5438f968dd3976b77a44680
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78186382"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85203091"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -23,7 +23,7 @@ ms.locfileid: "78186382"
 
 Vlastní zásady jsou reprezentovány jako jeden nebo více souborů ve formátu XML, které na sebe navzájem odkazují v hierarchickém řetězu. Prvky XML definují prvky zásad, například schéma deklarací identity, transformace deklarací identity, definice obsahu, zprostředkovatele deklarací, technické profily, cesty uživatelů a kroky orchestrace. Jednotlivé soubory zásad se definují v rámci souboru zásad na nejvyšší úrovni v **TrustFrameworkPolicy** elementu.
 
-```XML
+```xml
 <TrustFrameworkPolicy
   xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
   xmlns:xsd="https://www.w3.org/2001/XMLSchema"
@@ -38,15 +38,15 @@ Vlastní zásady jsou reprezentovány jako jeden nebo více souborů ve formátu
 
 Element **TrustFrameworkPolicy** obsahuje následující atributy:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Povinné | Popis |
 |---------- | -------- | ----------- |
 | PolicySchemaVersion | Ano | Verze schématu, která se má použít ke spuštění zásad. Hodnota musí být`0.3.0.0` |
 | TenantObjectId | Ne | Jedinečný identifikátor objektu klienta Azure Active Directory B2C (Azure AD B2C). |
 | TenantId | Ano | Jedinečný identifikátor tenanta, ke kterému patří tato zásada |
 | PolicyId | Ano | Jedinečný identifikátor pro zásady Tento identifikátor musí být předponou *B2C_1A_* |
 | PublicPolicyUri | Ano | Identifikátor URI pro zásadu, která je kombinací ID tenanta a ID zásad. |
-| DeploymentMode | Ne | Možné hodnoty: `Production`, nebo `Development`. `Production` je výchozí možnost. Tato vlastnost slouží k ladění zásad. Další informace najdete v tématu [shromažďování protokolů](troubleshoot-with-application-insights.md). |
-| UserJourneyRecorderEndpoint | Ne | Koncový bod, který se používá **DeploymentMode** , pokud je DeploymentMode `Development`nastaveno na. Hodnota musí být `urn:journeyrecorder:applicationinsights`. Další informace najdete v tématu [shromažďování protokolů](troubleshoot-with-application-insights.md). |
+| DeploymentMode | Ne | Možné hodnoty: `Production` , nebo `Development` . `Production` je výchozí možnost. Tato vlastnost slouží k ladění zásad. Další informace najdete v tématu [shromažďování protokolů](troubleshoot-with-application-insights.md). |
+| UserJourneyRecorderEndpoint | Ne | Koncový bod, který se používá, pokud je **DeploymentMode** nastaveno na `Development` . Hodnota musí být `urn:journeyrecorder:applicationinsights` . Další informace najdete v tématu [shromažďování protokolů](troubleshoot-with-application-insights.md). |
 
 
 Následující příklad ukazuje, jak zadat element **TrustFrameworkPolicy** :
@@ -88,7 +88,7 @@ Aby bylo možné dědit zásadu z jiné zásady, musí být deklarován element 
 
 Element **BasePolicy** obsahuje následující prvky:
 
-| Prvek | Výskytů | Popis |
+| Prvek | Výskytů | Description |
 | ------- | ----------- | --------|
 | TenantId | 1:1 | Identifikátor vašeho tenanta Azure AD B2C. |
 | PolicyId | 1:1 | Identifikátor nadřazené zásady |
@@ -122,7 +122,7 @@ V souboru zásad RP zadáte element **DefaultUserJourney** , který odkazuje na 
 
 Zásada B2C_1A_signup_signin:
 
-```XML
+```xml
 <RelyingParty>
   <DefaultUserJourney ReferenceId="SignUpOrSignIn">
   ...
@@ -130,7 +130,7 @@ Zásada B2C_1A_signup_signin:
 
 B2C_1A_TrustFrameWorkBase nebo B2C_1A_TrustFrameworkExtensionPolicy:
 
-```XML
+```xml
 <UserJourneys>
   <UserJourney Id="SignUpOrSignIn">
   ...
