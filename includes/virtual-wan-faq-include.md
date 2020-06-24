@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/24/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 827a2d6dc8a3622c17cdbcdfb179a3ea0f434f6f
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 01ed6d836e5d6bfe139e4a21a0ff6a9708c261d3
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83006476"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84977918"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Musí mít uživatel k používání Azure Virtual WAN rozbočovač a paprsek se zařízeními SD-WAN/VPN?
 
@@ -32,7 +32,7 @@ Každá brána má dvě instance, k rozdělení dojde, aby každá instance brá
 Existují dvě možnosti, jak přidat servery DNS pro klienty P2S.
 
 1. Otevřete lístek podpory u Microsoftu a přidejte své servery DNS do centra.
-2. Nebo pokud používáte klienta Azure VPN pro Windows 10, můžete před jeho importem upravit stažený soubor XML s profilem a přidat ** \<dnsservers>\<serveru DNS> \</DNSServer>\</dnsservers>** značky.
+2. Nebo pokud používáte klienta Azure VPN pro Windows 10, můžete změnit stažený soubor XML profilu a přidat ** \<dnsservers> \<dnsserver> \</dnsserver> \</dnsservers> ** značky před jeho importem.
 
 ```
 <azvpnprofile>
@@ -135,7 +135,7 @@ Ano. Prohlédněte si stránku s [cenami](https://azure.microsoft.com/pricing/de
 
 ### <a name="how-do-new-partners-that-are-not-listed-in-your-launch-partner-list-get-onboarded"></a>Jak se onboardují noví partneři, kteří nejsou uvedení ve vašem seznamu partnerů pro spouštění?
 
-Všechna rozhraní API Virtual WAN jsou otevřená rozhraní API. Můžete si projít dokumentaci a vyhodnotit technickou proveditelnost. Pokud máte nějaké dotazy, pošlete e-mail na azurevirtualwan@microsoft.comadresu. Ideální partner je takový, pro jehož zařízení se dá zřídit připojení IKEv1 nebo IKEv2 protokolu IPSec.
+Všechna rozhraní API Virtual WAN jsou otevřená rozhraní API. Můžete si projít dokumentaci a vyhodnotit technickou proveditelnost. Pokud máte nějaké dotazy, pošlete e-mail na adresu azurevirtualwan@microsoft.com . Ideální partner je takový, pro jehož zařízení se dá zřídit připojení IKEv1 nebo IKEv2 protokolu IPSec.
 
 ### <a name="what-if-a-device-i-am-using-is-not-in-the-virtual-wan-partner-list-can-i-still-use-it-to-connect-to-azure-virtual-wan-vpn"></a>Co když zařízení, které používám, není v seznamu partnerů virtuální sítě WAN? Můžu ho I nadále používat pro připojení k síti VPN Azure Virtual WAN?
 
@@ -212,9 +212,14 @@ Virtuální rozbočovač může rozšířit získanou výchozí trasu na připoj
 ### <a name="how-does-the-virtual-hub-in-a-virtual-wan-select-the-best-path-for-a-route-from-multiple-hubs"></a>Jak virtuální rozbočovač ve virtuální síti WAN vybere nejlepší cestu pro trasu z více Center
 
 Pokud virtuální rozbočovač zjistí stejnou trasu z několika vzdálených rozbočovačů, pořadí, ve kterém se rozhodne, je následující.
-1) Směrování trasy a) síťové trasy – předpony virtuální sítě se přímo učí pomocí bran služby Virtual hub b) trasy centra (staticky nakonfigurované trasy) c) protokol BGP d) InterHub trasy.
-2)  Metrika tras: virtuální síť WAN upřednostňuje ExpressRoute přes VPN. Partnerský uzel ExpressRoute má ve srovnání s partnerským vztahem VPN vyšší váhu.
-3)  JAKO délka cesty
+1. Nejdelší shoda předpony
+2. Místní trasy přes interhub
+3. Statické trasy přes protokol BGP
+4. ExpressRoute (ER) prostřednictvím sítě VPN
+5. JAKO délka cesty
+
+Přenos mezi ER a ER je vždy prostřednictvím globálního dosahu, protože pokud požadavek pochází přes ER v jednom centru a ve vzdáleném rozbočovači jsou VPN a ER, síť VPN se upřednostňuje přes ER ze vzdáleného rozbočovače, aby se dosáhlo koncového bodu připojeného přes VPN nebo ER ve vzdáleném centru.
+
 
 ### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>Je podpora protokolu IPv6 ve virtuální síti WAN podporovaná?
 

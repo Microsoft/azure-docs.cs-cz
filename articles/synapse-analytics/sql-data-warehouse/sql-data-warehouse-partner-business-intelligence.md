@@ -6,24 +6,24 @@ author: mabasile-MSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 23e3ccff11dc33858249565d3ad8396b19dd87c6
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: e529e398b90050bf654c702ec34686bdc173c9e5
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83698889"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85299326"
 ---
 # <a name="azure-synapse-analytics-business-intelligence-partners"></a>Azure synapse Analytics business intelligence partneři
 
 K vytvoření kompletního řešení datového skladu pomocí synapse fondu SQL v rámci Azure synapse si můžete vybrat ze široké škály špičkových nástrojů.  Tento článek popisuje partnerské společnosti Microsoftu s využitím oficiálních řešení business intelligence (BI), která podporují Azure SQL Data Warehouse.
 
 ## <a name="our-business-intelligence-partners"></a>Naši business intelligence partneři
-| Partner | Popis | Odkaz na web/produkt |
+| Partner | Description | Odkaz na web/produkt |
 | ------- | ----------- | -------------------- |
 | ![Birst](./media/sql-data-warehouse-partner-business-intelligence/birst_logo.png) |**Birst**<br>Birst připojuje celou organizaci prostřednictvím sítě nedostanou virtualizovaných instancí BI na nejvyšší úrovni sdílených běžných analytických prostředků.|[Stránka produktu](https://www.birst.com/)<br> |
 | ![ClearStory data](./media/sql-data-warehouse-partner-business-intelligence/clearstory_data_logo.png) |**Data ClearStory (průběžné obchodní přehledy)**<br>ClearStory data umožňují rychlou analýzu napříč různými daty uloženými ve fondu synapse SQL. Integrovaná platforma založená na Sparku a analytické aplikace v ClearStory, přístup k datům a jejich sladění pro různorodé datové sady. Umožňují rychlý průzkum v rámci spolupráce, který podporuje firemní uživatele při získávání rychlých přehledů. |[Stránka produktu](https://www.clearstorydata.com/product/continuous-insights/)<br> |
@@ -44,6 +44,6 @@ K vytvoření kompletního řešení datového skladu pomocí synapse fondu SQL 
 <!--https://img.youtube.com/vi/0b8sPW2UHrU/0.jpg-->
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o některých našich partnerech najdete v tématu [partneři pro integraci dat](sql-data-warehouse-partner-data-integration.md) a [Správa dat partneři](sql-data-warehouse-partner-data-management.md).
+Další informace o některých našich partnerech najdete v tématech [partneři pro integraci dat](sql-data-warehouse-partner-data-integration.md), [Správa dat partneři](sql-data-warehouse-partner-data-management.md) a [partneři Machine Learning a AI](sql-data-warehouse-partner-machine-learning-ai.md).
 
  

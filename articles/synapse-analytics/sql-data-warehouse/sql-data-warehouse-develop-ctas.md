@@ -6,17 +6,17 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/26/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seoapril2019, azure-synapse
-ms.openlocfilehash: 8e1b75dfc6a979956ff4a2868027bb769bf7c4ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a6550ff9bc3a7cec3d9c50b6c60a02ef1af851f5
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80633548"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213478"
 ---
 # <a name="create-table-as-select-ctas"></a>CREATE TABLE JAKO SELECT (CTAS)
 
@@ -59,9 +59,9 @@ FROM    [dbo].[FactInternetSales];
 
 ## <a name="use-ctas-to-copy-a-table"></a>Kopírování tabulky pomocí CTAS
 
-Jedním z nejběžnějších použití CTAS je vytvoření kopie tabulky, aby bylo možné změnit DDL. Řekněme, že jste původně vytvořili tabulku jako `ROUND_ROBIN`a teď ji chcete změnit na tabulku distribuovanou na sloupci. CTAS je způsob, jakým byste změnili distribuční sloupec. CTAS můžete použít také ke změně dělení, indexování nebo typů sloupců.
+Jedním z nejběžnějších použití CTAS je vytvoření kopie tabulky, aby bylo možné změnit DDL. Řekněme, že jste původně vytvořili tabulku jako `ROUND_ROBIN` a teď ji chcete změnit na tabulku distribuovanou na sloupci. CTAS je způsob, jakým byste změnili distribuční sloupec. CTAS můžete použít také ke změně dělení, indexování nebo typů sloupců.
 
-Řekněme `ROUND_ROBIN`, že jste tuto tabulku vytvořili pomocí výchozího typu distribuce, a ne zadáním distribučního sloupce v `CREATE TABLE`.
+Řekněme, že jste tuto tabulku vytvořili pomocí výchozího typu distribuce `ROUND_ROBIN` , a ne zadáním distribučního sloupce v `CREATE TABLE` .
 
 ```sql
 CREATE TABLE FactInternetSales
@@ -91,7 +91,7 @@ CREATE TABLE FactInternetSales
     CustomerPONumber nvarchar(25));
 ```
 
-Nyní chcete vytvořit novou kopii této tabulky s `Clustered Columnstore Index`, aby bylo možné využít výkon clusterovaných tabulek columnstore. Tuto tabulku také chcete distribuovat `ProductKey`, protože očekáváte spojení s tímto sloupcem a chcete se vyhnout přesunu dat během spojení. `ProductKey` Nakonec také budete chtít přidat rozdělení do `OrderDateKey`oddílů, abyste mohli rychle odstranit stará data vyřazením starých oddílů. Tady je příkaz CTAS, který zkopíruje starou tabulku do nové tabulky.
+Nyní chcete vytvořit novou kopii této tabulky s `Clustered Columnstore Index` , aby bylo možné využít výkon clusterovaných tabulek columnstore. Tuto tabulku také chcete distribuovat `ProductKey` , protože očekáváte spojení s tímto sloupcem a chcete se vyhnout přesunu dat během spojení `ProductKey` . Nakonec také budete chtít přidat rozdělení do oddílů `OrderDateKey` , abyste mohli rychle odstranit stará data vyřazením starých oddílů. Tady je příkaz CTAS, který zkopíruje starou tabulku do nové tabulky.
 
 ```sql
 CREATE TABLE FactInternetSales_new
@@ -208,7 +208,7 @@ DROP TABLE CTAS_acs;
 
 ## <a name="ansi-join-replacement-for-delete-statements"></a>Nahrazení spojení ANSI pro příkazy DELETE
 
-Někdy nejlepší přístup k odstranění dat je použití CTAS, zejména pro `DELETE` příkazy, které používají SYNTAXI spojení ANSI. Důvodem je to, že synapse SQL nepodporuje spojení ANSI v `FROM` klauzuli `DELETE` příkazu. Místo odstranění dat vyberte data, která chcete zachovat.
+Někdy nejlepší přístup k odstranění dat je použití CTAS, zejména pro `DELETE` příkazy, které používají syntaxi spojení ANSI. Důvodem je to, že synapse SQL nepodporuje spojení ANSI v `FROM` klauzuli `DELETE` příkazu. Místo odstranění dat vyberte data, která chcete zachovat.
 
 Následuje příklad převedený `DELETE` příkaz:
 
@@ -232,9 +232,9 @@ RENAME OBJECT dbo.DimProduct_upsert TO DimProduct;
 
 ## <a name="replace-merge-statements"></a>Nahradit příkazy sloučení
 
-Slučovací příkazy můžete nahradit alespoň částečně pomocí CTAS. Můžete zkombinovat `INSERT` a `UPDATE` do jediného příkazu. Všechny odstraněné záznamy by se měly `SELECT` omezit z příkazu, aby se vynechal z výsledků.
+Slučovací příkazy můžete nahradit alespoň částečně pomocí CTAS. Můžete zkombinovat `INSERT` a `UPDATE` do jediného příkazu. Všechny odstraněné záznamy by se měly omezit z `SELECT` příkazu, aby se vynechal z výsledků.
 
-Následující příklad je pro `UPSERT`:
+Následující příklad je pro `UPSERT` :
 
 ```sql
 CREATE TABLE dbo.[DimProduct_upsert]
@@ -387,7 +387,7 @@ FROM [stg].[source]
 OPTION (LABEL = 'CTAS : Partition IN table : Create');
 ```
 
-Dotaz by měl být dokonale správný. K tomuto problému dochází při pokusu o provedení přepínače oddílu. Definice tabulek se neshodují. Chcete-li, aby definice tabulek odpovídaly, upravte CTAS a `ISNULL` Přidejte funkci pro zachování atributu s hodnotou null sloupce.
+Dotaz by měl být dokonale správný. K tomuto problému dochází při pokusu o provedení přepínače oddílu. Definice tabulek se neshodují. Chcete-li, aby definice tabulek odpovídaly, upravte CTAS a přidejte `ISNULL` funkci pro zachování atributu s hodnotou null sloupce.
 
 ```sql
 CREATE TABLE [dbo].[Sales_in]

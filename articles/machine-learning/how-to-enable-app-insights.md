@@ -11,12 +11,12 @@ ms.author: larryfr
 author: blackmist
 ms.date: 06/09/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 30b6412ed5a8462b1ce0d8351e9e86a16b2082da
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: d28cd3b1d8722970505eb313bd8e80589ce9ff87
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84670034"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743502"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>Monitorování a shromažďování dat z koncových bodů webové služby ML
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -45,7 +45,7 @@ Kromě shromažďování výstupních dat a odpovědí koncového bodu můžete 
 ## <a name="web-service-metadata-and-response-data"></a>Metadata a data odpovědi webové služby
 
 > [!IMPORTANT]
-> Azure Application Insights jenom zapisuje jenom datové části až 64 KB. Pokud je dosaženo tohoto limitu, budou protokolovány pouze nejaktuálnější výstupy modelu. 
+> Azure Application Insights jenom zapisuje jenom datové části až 64 KB. Pokud je dosaženo tohoto limitu, může dojít k chybám, jako je například nedostatek paměti, nebo nemůžete zaznamenat žádné informace.
 
 Chcete-li protokolovat informace o požadavku na webovou službu, přidejte `print` do souboru Score.py příkazy. Každý `print` příkaz má za následek jednu položku v tabulce trasování v Application Insights v rámci zprávy `STDOUT` . Obsah `print` příkazu bude obsažen v části `customDimensions` a potom `Contents` v tabulce trasování. Pokud vytisknete řetězec JSON, vytvoří hierarchickou strukturu dat ve výstupu trasování v části `Contents` .
 
@@ -76,7 +76,7 @@ Pokud chcete protokolovat vlastní trasování, postupujte podle standardního p
 1. Chcete-li odesílat data do Application Insights při odvozování, aktualizujte soubor bodování přidáním příkazů Print. Chcete-li protokolovat složitější informace, jako jsou například data žádosti a odpověď, strukturu JSON. Následující příklad souboru score.py protokoluje čas inicializace modelu, vstup a výstup během odvození a čas výskytu chyby:
 
     > [!IMPORTANT]
-    > Azure Application Insights jenom zapisuje jenom datové části až 64 KB. Pokud je dosaženo tohoto limitu, budou protokolovány pouze nejaktuálnější výstupy modelu. Pokud jsou data, která chcete protokolovat, větší než 64 KB, měli byste ji místo toho ukládat do úložiště objektů BLOB pomocí informací v části [shromažďování dat pro modely v produkčním](how-to-enable-data-collection.md)prostředí.
+    > Azure Application Insights jenom zapisuje jenom datové části až 64 KB. Pokud je dosaženo tohoto limitu, může se zobrazit chyba, například nedostatek paměti, nebo nemusí být protokolovány žádné informace. Pokud jsou data, která chcete protokolovat, větší než 64 KB, měli byste ji místo toho ukládat do úložiště objektů BLOB pomocí informací v části [shromažďování dat pro modely v produkčním](how-to-enable-data-collection.md)prostředí.
     
     ```python
     import pickle

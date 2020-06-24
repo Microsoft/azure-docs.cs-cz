@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 7815b8180c29b66b12eddbff88e4728b6784be66
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 51df588b1ccd41bf05d8851f00399b61292b0736
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84672761"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214093"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>Vytvoření nabídky Dynamics 365 for Customer Engagement a PowerApps
 
@@ -26,7 +26,7 @@ Než začnete, [Vytvořte si účet komerčního tržiště v partnerském centr
 2. V nabídce vlevo – navigace vyberte **obchodní Marketplace**  >  **Přehled**.
 3. Na stránce Přehled vyberte **+ Nová nabídka**  >  **Dynamics 365 pro zákaznickou zapojení & PowerApps**.
 
-    ![Znázorňuje levou navigační nabídku.](./media/new-offer-dynamics-365-cepa.png)
+    ![Znázorňuje levou navigační nabídku.](./media/new-offer-dynamics-365-customer-engagement-powerapps.png)
 
 > [!NOTE]
 > Po publikování nabídky se úpravy provedené v partnerském centru zobrazí pouze v prodejní místa po opětovném publikování nabídky. Nezapomeňte po provedení změn vždy znovu publikovat.
@@ -60,7 +60,7 @@ Seznamte se svým zákazníkům zdarma tím, že zadáte platnou adresu URL (po�
 
 #### <a name="free-trial-listing"></a>Bezplatná zkušební verze (výpis)
 
-Seznamte se s vaší nabídkou pro zákazníky s odkazem na bezplatnou zkušební verzi tím, že zadáte platnou adresu URL (počínaje *protokolem HTTP* nebo *https*), kde můžou získat zkušební verzi.  Například, `https://contoso.com/trial/my-app`. Nabídka pro výpis bezplatných zkušebních verzí se vytváří, spravuje a konfiguruje pomocí vaší služby a nemá předplatné spravované Microsoftem.
+Seznamte se s vaší nabídkou pro zákazníky s odkazem na bezplatnou zkušební verzi tím, že zadáte platnou adresu URL (od `http` nebo `https` ), kde můžou získat zkušební verzi.  Například, `https://contoso.com/trial/my-app`. Nabídka pro výpis bezplatných zkušebních verzí se vytváří, spravuje a konfiguruje pomocí vaší služby a nemá předplatné spravované Microsoftem.
 
 > [!NOTE]
 > Tokeny, které vaše aplikace získá prostřednictvím zkušebního připojení, se dají použít jenom k získání informací o uživateli prostřednictvím Azure Active Directory (Azure AD) k automatizaci vytváření účtů ve vaší aplikaci. Pro ověřování pomocí tohoto tokenu se nepodporují účty Microsoft.
@@ -139,15 +139,30 @@ Tady můžete zadat podrobnosti o Marketplace pro každý jazyk/trh, jako je nap
 > [!NOTE]
 > Obsah seznamu nabídek (například popis, dokumenty, snímky obrazovky a podmínky použití) nemusí být v angličtině, pokud popis nabídky začíná frází "Tato aplikace je k dispozici pouze v [jazykovém jazyce, který není v angličtině]." Je také přijatelné poskytnout *užitečnou adresu URL pro odkaz* k poskytnutí obsahu v jiném jazyce, než který je použit v obsahu nabídky.
 
+Tady je příklad toho, jak se zobrazují informace o nabídce v Microsoft AppSource (uvedené ceny jsou například jenom pro účely a nejsou určené k tomu, aby odrážely skutečné náklady):
+
+:::image type="content" source="media/example-azure-marketplace-d365-customer-engagement.png" alt-text="Ukazuje, jak se tato nabídka zobrazuje v Microsoft AppSource.":::
+
+#### <a name="call-out-descriptions"></a>Popisy volání
+
+1. Logo
+2. Produkty
+3. Kategorie
+4. Adresa podpory (odkaz)
+5. Adresa Podmínky použití (odkaz)
+6. Název nabídky
+7. Description
+8. Snímky obrazovky a videa
+
 ### <a name="name"></a>Name
 
-Název, který sem zadáte, se zákazníkům zobrazí jako název seznamu nabídek. Toto pole se předem vyplní textem, který jste zadali jako **alias nabídky** při vytváření nabídky, ale tuto hodnotu můžete změnit. Tento název může být ochranných známek (a může obsahovat symboly ochranných známek a autorských práv). Název nesmí být delší než 50 znaků a nesmí obsahovat žádné emoji.
+Název, který sem zadáte, se zákazníkům zobrazí jako název seznamu nabídek. Toto pole je předem vyplněno textem, který jste zadali pro možnost **alias nabídky** při vytváření nabídky, ale můžete tuto hodnotu změnit. Tento název může být ochranných známek (a může obsahovat symboly ochranných známek a autorských práv). Název nesmí být delší než 50 znaků a nesmí obsahovat žádné emoji.
 
 ### <a name="short-description"></a>Krátký popis
 
 Zadejte krátký popis vaší nabídky, maximálně 100 znaků. Tento popis se dá použít ve výsledcích hledání na webu Marketplace.
 
-### <a name="description"></a>Popis
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 

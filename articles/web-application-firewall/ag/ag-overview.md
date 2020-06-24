@@ -8,18 +8,18 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: overview
-ms.openlocfilehash: 45e7e59f72fcda983053314c0b11ff56de8a72e8
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 0631bc0e3e83564b2d77d4f67b418780d933215e
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747763"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212900"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Firewall webových aplikací Azure v Azure Application Gateway
 
 Firewall webových aplikací Azure (WAF) v Azure Application Gateway poskytuje centralizovanou ochranu webových aplikací před běžnými zneužitími a chybami zabezpečení. Webové aplikace jsou stále více zaměřené na škodlivé útoky, které využívají často známá ohrožení zabezpečení. Vkládání SQL a skriptování mezi weby patří mezi nejběžnější útoky.
 
-WAF on Application Gateway vychází ze [základní sady pravidel (počítačový systém)](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3,1, 3,0 nebo 2.2.9 z otevřeného projektu webové aplikace Security (OWASP). WAF se automaticky aktualizuje, aby zahrnovala ochranu proti novým chybám zabezpečení bez nutnosti další konfigurace. 
+WAF on Application Gateway vychází ze [základní sady pravidel (počítačový systém)](https://owasp.org/www-project-modsecurity-core-rule-set/) 3,1, 3,0 nebo 2.2.9 z otevřeného projektu webové aplikace Security (OWASP). WAF se automaticky aktualizuje, aby zahrnovala ochranu proti novým chybám zabezpečení bez nutnosti další konfigurace. 
 
 Všechny níže uvedené funkce WAF existují v zásadách WAF. Můžete vytvořit více zásad a můžete je přidružit k Application Gateway, jednotlivým posluchačům nebo k pravidlům směrování na základě cesty na Application Gateway. Tímto způsobem můžete v případě potřeby mít v případě potřeby samostatné zásady pro každou lokalitu za vaším Application Gateway. Další informace o zásadách WAF najdete v tématu [Vytvoření zásady WAF](create-waf-policy-ag.md).
 
@@ -160,7 +160,7 @@ S integrovaným sešitem událostí brány firewall Azure WAF můžete získat p
 
 ![Sentinel](../media/ag-overview/sentinel.png)
 
-#### <a name="logging"></a>Protokolování
+#### <a name="logging"></a>protokolování
 
 Application Gateway WAF poskytuje podrobné hlášení o každé zjištěné hrozbě. Protokolování je integrované s protokoly Azure Diagnostics. Výstrahy se zaznamenávají ve formátu. JSON. Tyto protokoly je možné integrovat s [protokoly Azure monitor](../../azure-monitor/insights/azure-networking-analytics.md).
 

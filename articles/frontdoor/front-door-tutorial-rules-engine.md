@@ -1,23 +1,23 @@
 ---
-title: Přední dvířka Azure | Microsoft Docs
-description: Tento článek obsahuje přehled služby Azure Front Door. Zjistěte, zda se jedná o správnou volbu pro síťový provoz vyrovnávání zatížení pro vaši aplikaci.
+title: Konfigurace modulu pravidel – přední dvířka Azure
+description: Tento článek popisuje, jak nakonfigurovat moduly pravidel pro přední dveře Azure.
 services: frontdoor
 documentationcenter: ''
 author: megan-beatty
 editor: ''
 ms.service: frontdoor
 ms.devlang: na
-ms.topic: overview
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
 ms.author: mebeatty
-ms.openlocfilehash: 4574597c0b93f2985953bfbc815cca220ecc4f28
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: ed54f26f37617d420fae1aaf3f51853b0439a349
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82515598"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743554"
 ---
 # <a name="configure-your-rules-engine"></a>Konfigurace modulu pravidel 
 
@@ -34,7 +34,7 @@ ms.locfileid: "82515598"
 
 3. Klikněte na **Přidat pravidlo** a vytvořte své první pravidlo. Potom kliknutím na **Přidat podmínku** nebo **přidat akci** můžete pravidlo definovat. 
     
-    *Poznámka*
+    *Poznámky:*
     - Pokud chcete odstranit podmínku nebo akci z pravidla, můžete použít odpadkový koš na pravé straně konkrétní podmínky nebo akce.
     - Pokud chcete vytvořit pravidlo, které platí pro veškerý příchozí provoz, nezadávejte žádné podmínky. 
     - Chcete-li zastavit vyhodnocení pravidel po splnění první podmínky shody, klikněte na **zastavit vyhodnocování pravidla**. 
@@ -45,7 +45,7 @@ ms.locfileid: "82515598"
 
 5. Po vytvoření jednoho nebo více pravidel stiskněte **Uložit**. Tato akce vytvoří konfiguraci modulu pravidel. 
 
-6. Po vytvoření jedné nebo více konfigurací přidružte konfiguraci modulu pravidel k pravidlu směrování. V případě, že je možné použít jednu konfiguraci pro mnoho pravidel směrování, pravidlo směrování může obsahovat pouze jednu konfiguraci modulu pravidel. Přidružení provedete tak, že přejdete do okna > **pravidla směrování**na **přední dveře**. Vyberte pravidlo směrování, do kterého chcete přidat konfiguraci modulu pravidel, přejít do > **Konfigurace modulu pravidla** **podrobností o směrování**a vyberte konfiguraci, kterou chcete přidružit. 
+6. Po vytvoření jedné nebo více konfigurací přidružte konfiguraci modulu pravidel k pravidlu směrování. V případě, že je možné použít jednu konfiguraci pro mnoho pravidel směrování, pravidlo směrování může obsahovat pouze jednu konfiguraci modulu pravidel. Přidružení provedete tak, že přejdete do **okna**  >  **pravidla směrování**na přední dveře. Vyberte pravidlo směrování, do kterého chcete přidat konfiguraci modulu pravidel, přejít do konfigurace modulu pravidla **podrobností o směrování**  >  **Rules engine configuration**a vyberte konfiguraci, kterou chcete přidružit. 
 
 ![vyhledat modul pravidel](./media/front-door-rules-engine/rules-engine-tutorial-5.png)
 

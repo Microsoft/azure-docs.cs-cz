@@ -12,12 +12,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 17c0e02aa091d1271967b5a238f71123cc7aeede
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 4c6904cfa2a7a3c3281da9a930fd59e8d511ac89
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84322665"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85249274"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>Nový DBA v cloudu – Správa Azure SQL Database po migraci
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -65,7 +65,7 @@ Nevytváříte zálohy na Azure SQL Database a je to proto, že je nemusíte mí
 
 |Úroveň služeb|Doba uchování ve dnech|
 |---|:---:|
-|Základní|7|
+|Basic|7|
 |Standard|35|
 |Premium|35|
 |||
@@ -133,7 +133,7 @@ Pravidla brány firewall můžete vytvořit na úrovni serveru nebo na úrovni d
 
 #### <a name="service-endpoints"></a>Koncové body služby
 
-Ve výchozím nastavení je vaše databáze SQL nakonfigurovaná na "umožňuje službám Azure přístup k serveru" – to znamená, že se každý virtuální počítač v Azure může pokusit připojit k vaší databázi. Tyto pokusy se stále musí ověřit. Pokud ale nechcete, aby vaše databáze byla dostupná pro jakékoli IP adresy Azure, můžete zakázat možnost Povolit službám Azure přístup k serveru. Kromě toho můžete nakonfigurovat [koncové body služby virtuální](vnet-service-endpoint-rule-overview.md)sítě.
+Ve výchozím nastavení je vaše databáze nakonfigurovaná na "umožňuje službám Azure přístup k serveru" – to znamená, že se každý virtuální počítač v Azure může pokusit připojit k vaší databázi. Tyto pokusy se stále musí ověřit. Pokud ale nechcete, aby vaše databáze byla dostupná pro jakékoli IP adresy Azure, můžete zakázat možnost Povolit službám Azure přístup k serveru. Kromě toho můžete nakonfigurovat [koncové body služby virtuální](vnet-service-endpoint-rule-overview.md)sítě.
 
 Koncové body služby (SE) umožňují zveřejnit důležité prostředky Azure jenom pro vaši vlastní privátní virtuální síť v Azure. Tím byste v podstatě vyloučili veřejný přístup k vašim prostředkům. Provoz mezi vaší virtuální sítí do Azure zůstane v páteřní síti Azure. Bez SE vám nedostalo směrování paketů vynucené tunelování. Vaše virtuální síť vynutí internetový provoz do vaší organizace a provoz služeb Azure tak, aby přešel přes stejnou trasu. S koncovými body služby je můžete optimalizovat, protože tok paketů je přímo z vaší virtuální sítě do služby v páteřní síti Azure.
 
@@ -259,7 +259,7 @@ Tuto analýzu můžete zobrazit také v části poradce.
 
 V SQL Database můžete využít inteligentní přehledy platformy, abyste mohli monitorovat výkon a odpovídajícím způsobem ho optimalizovat. Využití výkonu a prostředků v SQL Database můžete monitorovat pomocí následujících metod:
 
-#### <a name="azure-portal"></a>Portál Azure Portal
+#### <a name="azure-portal"></a>portál Azure
 
 Azure Portal zobrazuje využití databáze tak, že se vybere databáze a klikne na graf v podokně Přehled. Graf můžete upravit tak, aby zobrazoval více metrik, včetně procenta využití procesoru, procenta DTU, procentuální hodnoty v/v, procentu relací a procenta velikosti databáze.
 
@@ -285,7 +285,7 @@ Můžete zadat dotaz na zobrazení dynamické správy [Sys. dm_db_resource_stats
 
 ### <a name="i-am-noticing-performance-issues-how-does-my-sql-database-troubleshooting-methodology-differ-from-sql-server"></a>Všímáte problémy s výkonem: jak se SQL Database metodologie řešení potíží liší od SQL Server
 
-Hlavní část technik řešení potíží, kterou byste použili pro diagnostiku problémů s výkonem dotazů a databází, zůstávají stejné. Poté, co všechny stejné stroje SQL Database vykonávají Cloud. Azure SQL Database platforem ale vytvořila v "Intelligence". Může vám pomoct vyřešit a diagnostikovat problémy s výkonem ještě snadněji. Může také provádět některé z těchto opravných akcí vaším jménem a v některých případech aktivně opravovat – automaticky.
+Hlavní část technik řešení potíží, kterou byste použili pro diagnostiku problémů s výkonem dotazů a databází, zůstávají stejné. Poté, co všechny stejné databázové stroje vyvykonávají výkon cloudu. Azure SQL Database platforem ale vytvořila v "Intelligence". Může vám pomoct vyřešit a diagnostikovat problémy s výkonem ještě snadněji. Může také provádět některé z těchto opravných akcí vaším jménem a v některých případech aktivně opravovat – automaticky.
 
 Váš přístup k problémům s výkonem se může významně využít při použití inteligentních funkcí, jako jsou [Query Performance Insight (QPI)](query-performance-insight-use.md) a [Database Advisor](database-advisor-implement-performance-recommendations.md) ve spojení, takže rozdíl v metodologii se v tomto ohledu liší – už nemusíte provádět ruční práci na základě základních podrobností, které vám můžou pomoct vyřešit problém. Platforma za vás funguje. Jeden příklad, který je QPI. Pomocí QPI můžete procházet vše až na úroveň dotazu a podívat se na historické trendy a zjistit, kdy se dotaz přesně vrátí. Database Advisor poskytuje doporučení pro věci, které vám mohou pomoci zlepšit celkový výkon v obecných případech – chybějící indexy, vyřazování indexů, parametrizace dotazů atd.
 
@@ -301,7 +301,7 @@ SQL Database nabízí různé úrovně služeb Basic, Standard a Premium. Na ka�
 
 |**Úroveň služby**|**Běžné scénáře použití**|
 |---|---|
-|**Základní**|Aplikace s uživateli několik a databází, které nemají vysoké požadavky na souběžnost, škálování a výkon. |
+|**Basic**|Aplikace s uživateli několik a databází, které nemají vysoké požadavky na souběžnost, škálování a výkon. |
 |**Standard**|Aplikace se značnými požadavky na souběžnost, škálování a výkon, které jsou v případě požadavků s nízkým až středním vstupem/výstupem. |
 |**Premium**|Aplikace s velkým počtem souběžných uživatelů, vysokým PROCESORem/pamětí a vysokými nároky na vstupně-výstupní operace. Vysoká úroveň souběžnosti, vysoké propustnosti a aplikace citlivé na latenci můžou využívat úrovně Premium. |
 |||

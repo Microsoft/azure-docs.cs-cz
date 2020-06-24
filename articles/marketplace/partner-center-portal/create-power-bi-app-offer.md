@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 16b44b3a4496e98f8b6b643bf76aa5aa7ce593c6
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 6ddf3db422a192b82b8d67e8e532a9ae0030d6f7
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849089"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212512"
 ---
 # <a name="create-a-power-bi-app-for-microsoft-appsource"></a>Vytvoření aplikace Power BI pro Microsoft AppSource
 
@@ -26,7 +26,7 @@ Než začnete, [Vytvořte si účet komerčního tržiště v partnerském centr
 2. V nabídce vlevo – navigace vyberte **obchodní Marketplace**  >  **Přehled**.
 3. Na stránce Přehled vyberte **+ Nová nabídka**  >  **Power BI aplikace služby**.
 
-   ![Znázorňuje levou navigační nabídku.](./media/new-offer-pbi-app.png)
+   ![Znázorňuje levou navigační nabídku.](./media/new-offer-power-bi-app.png)
 
 > [!NOTE]
 > Po publikování nabídky se úpravy provedené v partnerském centru zobrazí pouze v prodejní místa po opětovném publikování nabídky. Nezapomeňte po provedení změn vždy znovu publikovat.
@@ -145,6 +145,24 @@ Definujte podrobnosti o Marketplace (například název nabídky, popis a obráz
 > [!NOTE]
 > Podrobnosti nabídky nejsou v anglickém jazyce nutné, pokud popis nabídky začíná frází "Tato aplikace je k dispozici pouze v [jazykovém jazyce, který není v angličtině]." Také je v pořádku poskytnutí užitečného odkazu na nabídku obsahu v jazyce, který se liší od toho, který se používá v seznamu nabídek.
 
+Tady je příklad toho, jak se zobrazují informace o nabídce v Microsoft AppSource (uvedené ceny jsou například jenom pro účely a nejsou určené k tomu, aby odrážely skutečné náklady):
+
+:::image type="content" source="media/example-power-bi-app.png" alt-text="Ukazuje, jak se tato nabídka zobrazuje v Microsoft AppSource.":::
+
+#### <a name="call-out-descriptions"></a>Popisy volání
+
+1. Logo
+2. Produkty
+3. Kategorie
+4. Odvětví
+5. Adresa podpory (odkaz)
+6. Podmínky použití
+7. Zásady ochrany osobních údajů
+8. Název nabídky
+9. Souhrn
+10. Description
+11. Snímky obrazovky a videa
+
 ### <a name="name"></a>Name
 
 Název, který zde zadáte, se zobrazí jako název vaší nabídky. Toto pole je předem vyplněno textem, který jste zadali do pole **alias nabídky** při vytváření nabídky. Tento název můžete později změnit.
@@ -159,7 +177,7 @@ Název:
 
 Zadejte krátký popis vaší nabídky. Může to být až 100 znaků dlouhé a používá se ve výsledcích hledání na webu Marketplace.
 
-### <a name="description"></a>Popis
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -199,14 +217,14 @@ Poskytněte aspoň jeden a až tři související marketingové dokumenty ve for
 
 ### <a name="marketplace-images"></a>Image Marketplace
 
-Poskytněte loga a obrázky, které se mají použít s vaší nabídkou. Všechny obrázky musí být ve formátu. png. Rozmazaný obraz se odmítne.
+Poskytněte loga a obrázky, které se mají použít s vaší nabídkou. Všechny obrázky musí být ve formátu PNG. Rozmazaný obraz se odmítne.
 
 >[!NOTE]
->Pokud máte problém s nahráváním souborů, ujistěte se, že vaše místní síť neblokuje https://upload.xboxlive.com službu používanou partnerským centrem.
+>Pokud máte problém s nahráváním souborů, ujistěte se, že vaše místní síť neblokuje `https://upload.xboxlive.com` službu používanou partnerským centrem.
 
 #### <a name="store-logos"></a>Ukládat loga
 
-Zadejte soubory. png pro logo vaší nabídky ve dvou velikostech v pixelech:
+Zadejte soubory PNG pro logo vaší nabídky ve dvou velikostech v pixelech:
 - **Malé** (48 x 48)
 - **Velký** (216 x 216)
 
@@ -214,11 +232,11 @@ Obě loga jsou povinná a používají se na různých místech v seznamu Market
 
 #### <a name="screenshots"></a>Screenshoty
 
-Přidejte alespoň jeden a až pět snímků obrazovky, které ukazují, jak vaše nabídka funguje. Každá velikost musí být 1280 × 720 pixelů a ve formátu. png.
+Přidejte alespoň jeden a až pět snímků obrazovky, které ukazují, jak vaše nabídka funguje. Každá velikost musí být 1280 × 720 pixelů a ve formátu PNG.
 
 #### <a name="videos-optional"></a>Videa (volitelné)
 
-Přidejte až pět videí, která předvádí vaši nabídku. Zadejte název videa, jeho webovou adresu a miniaturu. obrázek obrázku o velikosti videa na 1280 × 720 pixelů.
+Přidejte až pět videí, která předvádí vaši nabídku. Zadejte název videa, jeho webovou adresu a miniaturu obrázku PNG ve velikosti 1280 × 720 pixelů.
 
 #### <a name="additional-marketplace-listing-resources"></a>Další prostředky pro výpis Marketplace
 

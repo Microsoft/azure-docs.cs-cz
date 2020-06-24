@@ -4,23 +4,23 @@ description: Jak nainstalovat a nastavit modul prostředí PowerShell pro virtu�
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9224b361adff8bfc53ca2f31dccb2519591dc7e5
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 67276f7dedccc20fb768e717c237d04aa4b4a1cf
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021802"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212747"
 ---
 # <a name="set-up-the-powershell-module-for-windows-virtual-desktop"></a>Nastavení modulu PowerShell pro virtuální plochu Windows
 
 >[!IMPORTANT]
 >Tento obsah se vztahuje na jarní 2020 aktualizaci s Azure Resource Manager objekty virtuálních klientů Windows.
 >
-> V současnosti je ve verzi Public Preview na jaře 2020 aktualizace virtuálních počítačů s Windows. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučujeme ji používat pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. 
+> V současnosti je ve verzi Public Preview na jaře 2020 aktualizace virtuálních počítačů s Windows. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučujeme ji používat pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Modul PowerShellu virtuálního počítače s Windows je integrovaný do modulu Azure PowerShell. V tomto článku se dozvíte, jak nastavit modul PowerShellu, abyste mohli spouštět rutiny pro virtuální počítače s Windows.

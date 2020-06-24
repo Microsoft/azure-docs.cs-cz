@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 903881a1d15c1f043e381f50e5b69d661cd08192
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d5c0878a5999f1d7d716d8caaf9f3fffa5e401dc
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80476441"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84982342"
 ---
 # <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>Jak vztahy důvěryhodnosti fungují pro doménové struktury prostředků v Azure Active Directory Domain Services
 
@@ -70,7 +70,7 @@ Vztah důvěryhodnosti doménové struktury je možné vytvořit jenom mezi koř
 
 Následující diagram znázorňuje dva samostatné vztahy důvěryhodnosti doménové struktury mezi třemi služba AD DS doménovou strukturou v jedné organizaci.
 
-![Diagram vztahů důvěryhodnosti doménové struktury v rámci jedné organizace](./media/concepts-forest-trust/forest-trusts.png)
+![Diagram vztahů důvěryhodnosti doménové struktury v rámci jedné organizace](./media/concepts-forest-trust/forest-trusts-diagram.png)
 
 Tato příklad konfigurace poskytuje následující přístup:
 
@@ -162,7 +162,7 @@ Když se pracovní stanice v jedné doménové struktuře pokusí získat přís
 
 Následující diagram a kroky poskytují podrobný popis procesu ověřování protokolu Kerberos, který se používá, když se počítače se systémem Windows pokusí získat přístup k prostředkům z počítače umístěného v jiné doménové struktuře.
 
-![Diagram procesu Kerberos přes vztah důvěryhodnosti doménové struktury](media/concepts-forest-trust/kerberos-over-forest-trust-process.png)
+![Diagram procesu Kerberos přes vztah důvěryhodnosti doménové struktury](media/concepts-forest-trust/kerberos-over-forest-trust-process-diagram.png)
 
 1. *Uživatel1* se přihlásí k *Workstation1* pomocí přihlašovacích údajů z domény *Europe.tailspintoys.com* . Uživatel se pak pokusí získat přístup ke sdílenému prostředku ve složce *Server1* umístěné v doménové struktuře *USA.wingtiptoys.com* .
 
@@ -276,7 +276,7 @@ Správci můžou *domény a vztahy důvěryhodnosti služby Active Directory*pou
 
 Další informace o doménových strukturách prostředků najdete v tématu [jak vztahy důvěryhodnosti doménové struktury fungují v Azure služba AD DS?][concepts-trust]
 
-Pokud chcete začít s vytvářením spravované domény Azure služba AD DS pomocí doménové struktury prostředků, přečtěte si téma [Vytvoření a konfigurace spravované domény azure služba AD DS][tutorial-create-advanced]. Pak můžete [vytvořit odchozí vztah důvěryhodnosti doménové struktury k místní doméně (Preview)][create-forest-trust].
+Informace o vytváření spravované domény pomocí doménové struktury prostředků najdete v tématu [Vytvoření a konfigurace spravované domény Azure služba AD DS][tutorial-create-advanced]. Pak můžete [vytvořit odchozí vztah důvěryhodnosti doménové struktury k místní doméně (Preview)][create-forest-trust].
 
 <!-- LINKS - INTERNAL -->
 [concepts-trust]: concepts-forest-trust.md

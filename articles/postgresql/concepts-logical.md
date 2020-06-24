@@ -5,19 +5,21 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/09/2020
-ms.openlocfilehash: ef7c5644ad8ec1e3816f20d4e5db9ad7d39a4609
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.date: 06/22/2020
+ms.openlocfilehash: 363c003a915763a7ab1165c2e0d8f945bc3dd510
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84634559"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213682"
 ---
 # <a name="logical-decoding"></a>Logické dekódování
  
 [Logické dekódování v PostgreSQL](https://www.postgresql.org/docs/current/logicaldecoding.html) umožňuje streamovat změny dat na externí příjemce. Logické dekódování se používá v oblíbených případech pro streamování událostí a Change Data Capture.
 
-Logické dekódování používá výstupní modul plug-in pro převod protokolu Postgres (WAL) na zápis do čitelného formátu. Azure Database for PostgreSQL poskytuje dva výstupní moduly plug-in: [test_decoding](https://www.postgresql.org/docs/current/test-decoding.html) a [wal2json](https://github.com/eulerto/wal2json).
+Logické dekódování používá výstupní modul plug-in pro převod protokolu Postgres (WAL) na zápis do čitelného formátu. Azure Database for PostgreSQL poskytuje výstupní moduly plug-in [wal2json](https://github.com/eulerto/wal2json), [test_decoding](https://www.postgresql.org/docs/current/test-decoding.html) a pgoutput. pgoutput je k dispozici prostřednictvím Postgres z Postgres verze 10 a.
+
+Přehled toho, jak funguje logické dekódování Postgres, [najdete na našem blogu](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/change-data-capture-in-postgres-how-to-use-logical-decoding-and/ba-p/1396421). 
 
 > [!NOTE]
 > Logické dekódování je ve verzi Public Preview na serveru Azure Database for PostgreSQL-Single.
@@ -77,7 +79,7 @@ V následujícím příkladu používáme rozhraní SQL s modulem plug-in wal2js
    SELECT * FROM pg_create_logical_replication_slot('test_slot', 'wal2json');
    ```
  
-2. Vydejte příkazy SQL. Například:
+2. Vydejte příkazy SQL. Příklad:
    ```SQL
    CREATE TABLE a_table (
       id varchar(40) NOT NULL,

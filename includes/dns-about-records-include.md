@@ -13,9 +13,9 @@ ms.locfileid: "73832057"
 ---
 ### <a name="record-names"></a>Názvy záznamů
 
-V Azure DNS se záznamy zadávají pomocí relativních názvů. *Plně kvalifikovaný* název domény (FQDN) obsahuje název zóny, zatímco *relativní* název ne. Například relativní název `www` záznamu v zóně `contoso.com` poskytuje plně kvalifikovaný název `www.contoso.com`záznamu.
+V Azure DNS se záznamy zadávají pomocí relativních názvů. *Plně kvalifikovaný* název domény (FQDN) obsahuje název zóny, zatímco *relativní* název ne. Například relativní název záznamu `www` v zóně `contoso.com` poskytuje plně kvalifikovaný název záznamu `www.contoso.com` .
 
-Záznam**** „vrcholu“ je záznam DNS v kořeni (nebo „vrcholu“) zóny DNS. Například v zóně `contoso.com`DNS má záznam vrcholu také plně kvalifikovaný název `contoso.com` (Toto se někdy označuje jako *holé* domény).  Podle konvence, relativní název '\@' slouží k reprezentaci záznamů vrcholů.
+Záznam**** „vrcholu“ je záznam DNS v kořeni (nebo „vrcholu“) zóny DNS. Například v zóně DNS `contoso.com` má záznam vrcholu také plně kvalifikovaný název `contoso.com` (Toto se někdy označuje jako *holé* domény).  Podle konvence, relativní název ' \@ ' slouží k reprezentaci záznamů vrcholů.
 
 ### <a name="record-types"></a>Typy záznamů
 

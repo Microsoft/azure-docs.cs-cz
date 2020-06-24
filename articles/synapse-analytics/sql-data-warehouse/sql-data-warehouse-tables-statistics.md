@@ -6,17 +6,17 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6f2af87cf5cef1b5a80bc16d962fba579b4ff309
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3684b9b87dce24ba7ac1a9b672f7fd6dd446ab46
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80985860"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213903"
 ---
 # <a name="table-statistics-in-synapse-sql-pool"></a>Statistiky tabulek v synapse fondu SQL
 
@@ -156,7 +156,7 @@ Následující principy GUID jsou k dispozici pro aktualizaci statistik:
 - Zaměřte se na sloupce účastnící se klauzulí JOIN, GROUP BY, ORDER BY a DISTINCT.
 - Zvažte možnost aktualizovat sloupce vzestupného klíče, například data transakcí častěji, protože tyto hodnoty nebudou zahrnuty v histogramu statistiky.
 - Zvažte možnost aktualizace statických distribučních sloupců méně často.
-- Nezapomeňte, že každý objekt statistiky se aktualizuje v sekvenci. Pouhá `UPDATE STATISTICS <TABLE_NAME>` implementace není vždy ideální, zejména pro nejrůznější tabulky s velkým množstvím objektů statistiky.
+- Nezapomeňte, že každý objekt statistiky se aktualizuje v sekvenci. Pouhá implementace `UPDATE STATISTICS <TABLE_NAME>` není vždy ideální, zejména pro nejrůznější tabulky s velkým množstvím objektů statistiky.
 
 Další informace najdete v tématu [odhad mohutnosti](/sql/relational-databases/performance/cardinality-estimation-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
@@ -236,13 +236,13 @@ Chcete-li vytvořit objekt statistiky s více sloupci, použijte předchozí př
 > [!NOTE]
 > Histogram, který se používá k odhadu počtu řádků ve výsledku dotazu, je k dispozici pouze pro první sloupec uvedený v definici objektu statistice.
 
-V tomto příkladu je histogram v *kategorii produktu\_*. Statistiky mezi sloupci se počítají podle *kategorií produktů\_* a *sub_category produktů\_*:
+V tomto příkladu je histogram v * \_ kategorii produktu*. Statistiky mezi sloupci se počítají podle * \_ kategorií produktů* a * \_ sub_category produktů*:
 
 ```sql
 CREATE STATISTICS stats_2cols ON table1 (product_category, product_sub_category) WHERE product_category > '2000101' AND product_category < '20001231' WITH SAMPLE = 50 PERCENT;
 ```
 
-Vzhledem k tomu, že existuje korelace mezi *kategorií produktů\_* a *\_\_podkategoriím produktu*, může být objekt statistiky s více sloupci užitečný, pokud jsou k těmto sloupcům přistupovaly ve stejnou dobu.
+Vzhledem k tomu, že existuje korelace mezi * \_ kategorií produktů* a * \_ \_ podkategoriím produktu*, může být objekt statistiky s více sloupci užitečný, pokud jsou k těmto sloupcům přistupovaly ve stejnou dobu.
 
 ### <a name="create-statistics-on-all-columns-in-a-table"></a>Vytvořit statistiku pro všechny sloupce v tabulce
 
@@ -430,7 +430,7 @@ K dispozici je několik systémových zobrazení a funkcí, které můžete pou�
 
 Tato systémová zobrazení obsahují informace o statistice:
 
-| Zobrazení katalogu | Popis |
+| Zobrazení katalogu | Description |
 |:--- |:--- |
 | [sys. Columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Jeden řádek pro každý sloupec. |
 | [sys. Objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Jeden řádek pro každý objekt v databázi. |
@@ -444,7 +444,7 @@ Tato systémová zobrazení obsahují informace o statistice:
 
 Tyto systémové funkce jsou užitečné pro práci s statistikami:
 
-| Systémová funkce | Popis |
+| Systémová funkce | Description |
 |:--- |:--- |
 | [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Datum poslední aktualizace objektu statistiky |
 | [PŘÍKAZ DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Souhrnná úroveň a podrobné informace o distribuci hodnot, které přirozuměl objektům statistiky. |
@@ -493,7 +493,7 @@ AND     st.[user_created] = 1
 
 Příkaz DBCC SHOW_STATISTICS () zobrazuje data uchovávaná v rámci objektu statistiky. Tato data jsou dodávána se třemi částmi:
 
-- Hlavička
+- Záhlaví
 - Vektor hustoty
 - Histogram
 

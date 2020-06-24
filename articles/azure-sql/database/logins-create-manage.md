@@ -13,12 +13,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/23/2020
-ms.openlocfilehash: e56b526dff9e18f19275cb248fd6955dd680324f
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: ebd55151a4b1656ec1187117b7c4b6da9d37e161
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84605094"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298460"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Autorizace přístupu k databázi SQL Database, spravované instanci SQL a Azure synapse Analytics
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -91,7 +91,7 @@ V tuto chvíli je váš server nebo spravovaná instance nakonfigurovaný jenom 
 
   - V hlavní databázi vytvořte další přihlášení SQL.
   - Vytvořte uživatelský účet v hlavní databázi přidružené k tomuto novému přihlášení.
-  - Přidejte uživatelský účet do role, do `dbmanager` `loginmanager` role nebo do obou v `master` databázi pomocí příkazu [ALTER Server role](https://docs.microsoft.com/sql/t-sql/statements/alter-server-role-transact-sql) (pro Azure synapse použijte příkaz [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) ).
+  - Přidejte uživatelský účet do role, do `dbmanager` `loginmanager` role nebo do obou v `master` databázi pomocí příkazu [ALTER role](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql) (pro Azure synapse použijte příkaz [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) ).
 
   > [!NOTE]
   > `dbmanager``loginmanager`role **a se** nevztahují k nasazením spravovaných instancí SQL.
@@ -155,7 +155,7 @@ Po vytvoření uživatelského účtu v databázi, a to buď na základě přihl
 
 Efektivní správa přístupu používá oprávnění přiřazená skupinám zabezpečení služby Active Directory a pevné nebo vlastní role místo pro jednotlivé uživatele.
 
-- Při použití ověřování Azure Active Directory vložte Azure Active Directory uživatele do skupiny zabezpečení Azure Active Directory. Pro tuto skupinu vytvořte uživatele databáze s omezením. Jeden nebo více uživatelů databáze umístěte do vlastní databázové role s konkrétními oprávněními, která jsou vhodná pro danou skupinu uživatelů.
+- Při použití ověřování Azure Active Directory vložte Azure Active Directory uživatele do skupiny zabezpečení Azure Active Directory. Pro tuto skupinu vytvořte uživatele databáze s omezením. Přidejte jednoho nebo více uživatelů databáze jako člena do vlastních nebo předdefinovaných databázových rolí s konkrétními oprávněními, která jsou pro danou skupinu uživatelů vhodná.
 
 - Při použití ověřování SQL vytvořte v databázi uživatele databáze s omezením. Jeden nebo více uživatelů databáze umístěte do vlastní databázové role s konkrétními oprávněními, která jsou vhodná pro danou skupinu uživatelů.
 

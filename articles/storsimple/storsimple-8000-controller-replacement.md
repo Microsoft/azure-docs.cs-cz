@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: dd2f6fcc9b2f5d716566e91e89487969613d1005
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267921"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84704331"
 ---
 # <a name="replace-a-controller-module-on-your-storsimple-device"></a>Výměna modulu Controller na zařízení StorSimple
 ## <a name="overview"></a>Přehled
@@ -31,7 +31,7 @@ V tomto kurzu se dozvíte, jak odebrat a nahradit jeden nebo oba moduly řadiče
 > Aby nedošlo k poškození zařízení StorSimple, vysuňte kontroler, dokud se indikátory LED nezobrazuje jako jedna z následujících možností:
 > 
 > * Všechna světla jsou VYPNUTa.
-> * Dioda LED ![3, zelená](./media/storsimple-controller-replacement/HCS_GreenCheckIcon.png)ikona kontroly ![a červená křížová ikona](./media/storsimple-controller-replacement/HCS_RedCrossIcon.png) jsou blikající a indikátor LED 0 a dioda 7 je **zapnutá**.
+> * Dioda LED 3, ![ zelená ikona kontroly ](./media/storsimple-controller-replacement/HCS_GreenCheckIcon.png) a ![ červená křížová ikona ](./media/storsimple-controller-replacement/HCS_RedCrossIcon.png) jsou blikající a indikátor LED 0 a dioda 7 je **zapnutá**.
 
 
 V následující tabulce jsou uvedeny podporované scénáře nahrazení řadiče.
@@ -90,7 +90,7 @@ Pokud jeden z řadičů v zařízení Microsoft Azure StorSimple neprojde, prove
    
     **Obrázek 1** Back-StorSimple zařízení
    
-   | Popisek | Popis |
+   | Popisek | Description |
    |:--- |:--- |
    | 1 |PCM 0 |
    | 2 |PCM 1 |
@@ -105,7 +105,7 @@ Pokud jeden z řadičů v zařízení Microsoft Azure StorSimple neprojde, prove
 > [!NOTE]
 > Pokud zařízení sledujete prostřednictvím konzoly sériového portu, může se při obnovování z náhradní procedury Zobrazit více restartování. Po zadání nabídky konzoly sériového portu se zobrazí informace o tom, že byla náhrada dokončena. Pokud se nabídka neobjeví během dvou hodin od spuštění nahrazení řadičem, kontaktujte prosím [Podpora Microsoftu](storsimple-8000-contact-microsoft-support.md).
 >
-> Od aktualizace Update 4 můžete k monitorování stavu procesu nahrazení `Get-HCSControllerReplacementStatus` řadiče použít také rutinu v rozhraní Windows PowerShell zařízení.
+> Od aktualizace Update 4 můžete `Get-HCSControllerReplacementStatus` k monitorování stavu procesu nahrazení řadiče použít také rutinu v rozhraní Windows PowerShell zařízení.
 > 
 
 ## <a name="replace-both-controllers"></a>Výměna obou řadičů
@@ -195,7 +195,7 @@ Pomocí následujícího postupu nainstalujete modul kontroleru dodaný výrobce
    > [!NOTE]
    > Může trvat až 5 minut, než se kontroler a indikátor LED aktivuje.
   
-5. Pokud chcete ověřit, jestli je nahrazení úspěšné, přejděte v Azure Portal do svého zařízení a pak přejděte na **monitor** > **stav hardwaru**a ujistěte se, že je řadič 0 i řadič 1 v pořádku (stav je zelený).
+5. Pokud chcete ověřit, jestli je nahrazení úspěšné, přejděte v Azure Portal do svého zařízení a pak přejděte na **monitor**  >  **stav hardwaru**a ujistěte se, že je řadič 0 i řadič 1 v pořádku (stav je zelený).
 
 ## <a name="identify-the-active-controller-on-your-device"></a>Identifikujte aktivní kontroler v zařízení
 Existuje mnoho situací, jako je například registrace zařízení za provozu nebo náhrada řadiče, které vyžadují, abyste našli aktivní kontroler na zařízení StorSimple. Aktivní kontroler zpracovává všechny síťové firmware a síťové operace. Aktivní kontroler můžete identifikovat pomocí kterékoli z následujících metod:
@@ -207,7 +207,7 @@ Existuje mnoho situací, jako je například registrace zařízení za provozu n
 Jednotlivé postupy jsou popsány dále.
 
 ### <a name="use-the-azure-portal-to-identify-the-active-controller"></a>K identifikaci aktivního kontroleru použijte Azure Portal.
-V Azure Portal přejděte do zařízení a pak **Sledujte** > **stav hardwaru**a přejděte do části **řadiče** . Tady můžete ověřit, který kontroler je aktivní.
+V Azure Portal přejděte do zařízení a pak **Sledujte**  >  **stav hardwaru**a přejděte do části **řadiče** . Tady můžete ověřit, který kontroler je aktivní.
 
 ![Identifikujte aktivní kontroler v Azure Portal](./media/storsimple-controller-replacement/IC752072.png)
 
@@ -231,7 +231,7 @@ Pokud je tento indikátor LED blikat, je kontroler aktivní a druhý kontroler j
 
 **Obrázek 8** Back of the Primary skříň s datovými porty a monitorováním diody LED
 
-| Popisek | Popis |
+| Popisek | Description |
 |:--- |:--- |
 | 1-6 |DATA 0 – 5 síťových portů |
 | 7 |Indikátor Blue |

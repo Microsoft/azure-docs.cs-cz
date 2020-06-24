@@ -7,13 +7,13 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 98ea416305f080850d85498f74693eb2d45b0944
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/17/2020
+ms.openlocfilehash: f713eb71d375a3388c4b238656355595354b9806
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77162340"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84982012"
 ---
 #   <a name="text-merge-cognitive-skill"></a>Dovednost pro vnímání textu sloučení
 
@@ -29,10 +29,10 @@ Microsoft. dovednosti. text. MergeSkill
 
 U parametrů se rozlišují malá a velká písmena.
 
-| Název parametru     | Popis |
+| Název parametru     | Description |
 |--------------------|-------------|
-| insertPreTag  | Řetězec, který má být zahrnut před každým vložením. Výchozí hodnota je `" "`. Chcete-li vynechat místo, nastavte hodnotu na `""`.  |
-| insertPostTag | Řetězec, který má být zahrnut po každém vložení. Výchozí hodnota je `" "`. Chcete-li vynechat místo, nastavte hodnotu na `""`.  |
+| `insertPreTag`    | Řetězec, který má být zahrnut před každým vložením. Výchozí hodnota je `" "`. Chcete-li vynechat místo, nastavte hodnotu na `""` .  |
+| `insertPostTag`   | Řetězec, který má být zahrnut po každém vložení. Výchozí hodnota je `" "`. Chcete-li vynechat místo, nastavte hodnotu na `""` .  |
 
 
 ##  <a name="sample-input"></a>Vzorový vstup
@@ -55,7 +55,7 @@ Dokument JSON, který poskytuje použitelný vstup pro tuto dovednost, může b�
 ```
 
 ##  <a name="sample-output"></a>Ukázkový výstup
-Tento příklad ukazuje výstup předchozí vstupní hodnoty za předpokladu, že je *insertPreTag* nastaven na `" "`hodnotu a *insertPostTag* je nastaven na `""`hodnotu. 
+Tento příklad ukazuje výstup předchozí vstupní hodnoty za předpokladu, že je *insertPreTag* nastaven na hodnotu `" "` a *insertPostTag* je nastaven na hodnotu `""` . 
 
 ```json
 {
@@ -108,18 +108,22 @@ Následující příklad dovednosti používá dovednost optického rozpoznává
       "insertPostTag": " ",
       "inputs": [
         {
-          "name":"text", "source": "/document/content"
+          "name":"text", 
+          "source": "/document/content"
         },
         {
-          "name": "itemsToInsert", "source": "/document/normalized_images/*/text"
+          "name": "itemsToInsert", 
+          "source": "/document/normalized_images/*/text"
         },
         {
-          "name":"offsets", "source": "/document/normalized_images/*/contentOffset" 
+          "name":"offsets", 
+          "source": "/document/normalized_images/*/contentOffset" 
         }
       ],
       "outputs": [
         {
-          "name": "mergedText", "targetName" : "merged_text"
+          "name": "mergedText", 
+          "targetName" : "merged_text"
         }
       ]
     }

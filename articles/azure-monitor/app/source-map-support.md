@@ -4,18 +4,18 @@ description: Naučte se nahrávat zdrojová mapování do vlastního kontejneru 
 ms.topic: conceptual
 author: markwolff
 ms.author: marwolff
-ms.date: 03/04/2020
-ms.openlocfilehash: 4b452b31338760a8f53eed54420319101836bc00
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: d5f01bb3034ab060227230071a21284177840e83
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79474879"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85249733"
 ---
 # <a name="source-map-support-for-javascript-applications"></a>Podpora zdrojového mapování pro aplikace JavaScriptu
 
 Application Insights podporuje nahrávání zdrojových map do vlastního kontejneru objektů BLOB v účtu úložiště.
-Zdrojové mapy lze použít k zrušení minifikace zásobníků volání, které byly nalezeny na stránce Podrobnosti o koncové transakci. Jakákoliv výjimka, kterou posílá [sada JavaScript SDK][ApplicationInsights-JS] nebo [sada Node. js SDK][ApplicationInsights-Node.js] , může být unminified se zdrojovými mapami.
+Zdrojové mapy lze použít k zrušení minifikace zásobníků volání, které byly nalezeny na stránce Podrobnosti o koncové transakci. Jakoukoli výjimku odeslanou sadou [JavaScript SDK][ApplicationInsights-JS] nebo sadou [Node.js SDK][ApplicationInsights-Node.js] lze unminified se zdrojovými mapami.
 
 ![Zrušení minifikace zásobníku volání propojením s účtem úložiště](./media/source-map-support/details-unminify.gif)
 
@@ -24,14 +24,16 @@ Zdrojové mapy lze použít k zrušení minifikace zásobníků volání, které
 Pokud již máte existující účet úložiště nebo kontejner objektů blob, můžete tento krok přeskočit.
 
 1. [Vytvoření nového účtu úložiště][create storage account]
-2. [Vytvořte kontejner objektů BLOB][create blob container] v účtu úložiště. Nezapomeňte nastavit úroveň veřejného přístupu na `Private`, abyste zajistili, že vaše zdrojová mapování nejsou veřejně přístupná.
+2. [Vytvořte kontejner objektů BLOB][create blob container] v účtu úložiště. Nezapomeňte nastavit úroveň veřejného přístupu na `Private` , abyste zajistili, že vaše zdrojová mapování nejsou veřejně přístupná.
 
 > [!div class="mx-imgBorder"]
 >![Úroveň přístupu ke kontejneru musí být nastavená na Private.](./media/source-map-support/container-access-level.png)
 
 ## <a name="push-your-source-maps-to-your-blob-container"></a>Vložení zdrojových map do kontejneru objektů BLOB
 
-Svůj kanál průběžného nasazování byste měli integrovat do svého účtu úložiště tak, že ho nakonfigurujete tak, aby automaticky odesílal vaše zdrojové mapy do nakonfigurovaného kontejneru objektů BLOB Zdrojové mapy byste neměli nahrávat do podsložky v kontejneru objektů BLOB. v současné době se zdrojové mapování načte jenom z kořenové složky.
+Svůj kanál průběžného nasazování byste měli integrovat do svého účtu úložiště tak, že ho nakonfigurujete tak, aby automaticky odesílal vaše zdrojové mapy do nakonfigurovaného kontejneru objektů BLOB
+
+Zdrojové mapy je možné odeslat do kontejneru Blob Storage se stejnou strukturou složek, kterou byly zkompilovány & nasazeny pomocí nástroje. Běžným případem použití je vytvoření předpony složky pro nasazení s jeho verzí, např. `1.2.3/static/js/main.js` . Při unminifying prostřednictvím kontejneru objektů blob Azure s názvem se `sourcemaps` pokusí načíst zdrojové mapování umístěné na adrese `sourcemaps/1.2.3/static/js/main.js.map` .
 
 ### <a name="upload-source-maps-via-azure-pipelines-recommended"></a>Nahrát zdrojová mapování přes Azure Pipelines (doporučeno)
 
@@ -62,7 +64,7 @@ Pokud chcete nakonfigurovat nebo změnit účet úložiště nebo kontejner obje
 > [!div class="mx-imgBorder"]
 > ![Překonfigurujte vybraný kontejner Azure Blob tak, že přejdete na okno Vlastnosti.](./media/source-map-support/reconfigure.png)
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 ### <a name="required-role-based-access-control-rbac-settings-on-your-blob-container"></a>Požadované nastavení řízení přístupu na základě role (RBAC) na kontejneru objektů BLOB
 
@@ -74,7 +76,7 @@ Každý uživatel na portálu, který tuto funkci používá, musí být aspoň 
 ### <a name="source-map-not-found"></a>Mapování zdrojového kódu se nenašlo.
 
 1. Ověřte, jestli se odpovídající zdrojová mapa nahrála do správného kontejneru objektů BLOB.
-2. Ověřte, zda je zdrojový soubor mapování pojmenován po souboru JavaScriptu, na který je namapován, s `.map`příponou.
+2. Ověřte, zda je zdrojový soubor mapování pojmenován po souboru JavaScriptu, na který je namapován, s příponou `.map` .
     - Vyhledá třeba `/static/js/main.4e2ca5fa.chunk.js` objekt BLOB s názvem`main.4e2ca5fa.chunk.js.map`
 3. Zkontrolujte konzolu prohlížeče a zjistěte, jestli se nějaké chyby protokolují. Zahrňte do libovolného lístku podpory.
 

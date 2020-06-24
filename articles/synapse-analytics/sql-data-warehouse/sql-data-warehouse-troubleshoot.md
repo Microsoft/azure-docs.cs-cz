@@ -6,17 +6,17 @@ author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 02/04/2019
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 6f697cf205af9bdfaadfe20e123bcf0b4935c90f
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: b2ae3aa77383888c320ed58e03e73b2e306feeba
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83829983"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213767"
 ---
 # <a name="troubleshooting-synapse-sql-in-azure-synapse-analytics"></a>Řešení potíží s synapse SQL ve službě Azure synapse Analytics
 
@@ -36,7 +36,7 @@ V tomto článku jsou uvedené běžné problémy s odstraňováním problémů 
 
 | Problém                                                        | Řešení                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Průzkumník objektů Visual studia nemá žádné uživatele Azure AD.           | Jde o známý problém.  Alternativním řešením je zobrazit uživatele v zobrazení [Sys. database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  Další informace o použití Azure Active Directory s fondem SQL synapse najdete v tématu [ověřování do Azure synapse](sql-data-warehouse-authentication.md) . |
+| Průzkumník objektů Visual studia nemá žádné uživatele Azure AD.           | Jedná se o známý problém.  Alternativním řešením je zobrazit uživatele v zobrazení [Sys. database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  Další informace o použití Azure Active Directory s fondem SQL synapse najdete v tématu [ověřování do Azure synapse](sql-data-warehouse-authentication.md) . |
 | Ruční skriptování, použití Průvodce skriptováním nebo připojení prostřednictvím SSMS je pomalé, nereaguje nebo produkuje chyby. | Zajistěte, aby byl uživatel vytvořen v hlavní databázi. V možnostech skriptování se ujistěte také, že je edice stroje nastavená na Microsoft Azure SQL Data Warehouse Edition a typ modulu je "Microsoft Azure SQL Database". |
 | Generování skriptů v SSMS se nezdařilo                               | Generování skriptu pro synapse fond SQL se nepovede, pokud je možnost "vygenerovat skript pro závislé objekty" nastavená na hodnotu "true". Alternativním řešením je, že uživatelé musí ručně přejít na **nástroje-> možnosti->Průzkumník objektů systému SQL Server – > vygenerovat skript pro závislé možnosti a nastavit na hodnotu NEPRAVDA** . |
 

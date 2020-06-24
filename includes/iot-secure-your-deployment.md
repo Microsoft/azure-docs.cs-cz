@@ -51,9 +51,9 @@ Každý IoT Hub má [registr identit](../articles/iot-hub/iot-hub-devguide-ident
 
 [IoT Hub podporuje protokoly, jako jsou MQTT, AMQP a http](../articles//iot-hub/iot-hub-devguide-security.md). Každý z těchto protokolů používá tokeny zabezpečení ze zařízení IoT pro IoT Hub odlišně:
 
-* AMQP: SASL PLAIN a AMQP zabezpečení založené na deklaracích`{policyName}@sas.root.{iothubName}` identity (s tokeny na úrovni IoT Hub). `{deviceId}` s tokeny v oboru zařízení).
+* AMQP: SASL PLAIN a AMQP zabezpečení založené na deklaracích identity ( `{policyName}@sas.root.{iothubName}` s tokeny na úrovni IoT Hub `{deviceId}` ) s tokeny v oboru zařízení).
 
-* MQTT `{deviceId}` : pomocí `{ClientId}` `{IoThubhostname}/{deviceId}` pole pro zadání **uživatelského jména** a tokenu SAS v poli **heslo** připojte paket.
+* MQTT: pomocí pole pro `{deviceId}` `{ClientId}` `{IoThubhostname}/{deviceId}` **zadání** **uživatelského jména** a tokenu SAS v poli heslo Připojte paket.
 
 * HTTP: platný token je v hlavičce autorizační žádosti.
 
@@ -73,7 +73,7 @@ Tok zřizování zařízení vysoké úrovně:
 
 ### <a name="root-certificate-on-device"></a>Kořenový certifikát na zařízení
 
-Při vytváření zabezpečeného připojení TLS s IoT Hub se zařízení IoT ověřuje IoT Hub pomocí kořenového certifikátu, který je součástí sady SDK pro zařízení. Pro klientskou sadu SDK pro c je certifikát umístěný pod složkou "\\certifikáty\\c" v kořenovém adresáři úložiště. I když jsou tyto kořenové certifikáty dlouhodobé, můžou pořád vypršet nebo odvolat. Pokud neexistuje žádný způsob, jak aktualizovat certifikát na zařízení, nemusí být zařízení následně možné připojit se k IoT Hub (nebo jiné cloudové službě). Když je zařízení IoT efektivně nasazené, může se jednat o způsob, jak tento certifikát aktualizovat, protože toto riziko bude zmírnit.
+Při vytváření zabezpečeného připojení TLS s IoT Hub se zařízení IoT ověřuje IoT Hub pomocí kořenového certifikátu, který je součástí sady SDK pro zařízení. Pro klientskou sadu SDK pro C je certifikát umístěný pod složkou " \\ \\ certifikáty c" v kořenovém adresáři úložiště. I když jsou tyto kořenové certifikáty dlouhodobé, můžou pořád vypršet nebo odvolat. Pokud neexistuje žádný způsob, jak aktualizovat certifikát na zařízení, nemusí být zařízení následně možné připojit se k IoT Hub (nebo jiné cloudové službě). Když je zařízení IoT efektivně nasazené, může se jednat o způsob, jak tento certifikát aktualizovat, protože toto riziko bude zmírnit.
 
 ## <a name="securing-the-connection"></a>Zabezpečení připojení
 
@@ -91,7 +91,7 @@ Azure IoT Hub umožňuje definici [zásad řízení přístupu](../articles/iot-
 
 * **DeviceConnect**. Udělí přístup k koncovým bodům orientovaným na zařízení. Například uděluje oprávnění odesílat zprávy ze zařízení do cloudu a přijímat zprávy z cloudu na zařízení. Tato oprávnění používají zařízení.
 
-Existují dva způsoby, jak získat **DeviceConnect** oprávnění pomocí IoT Hub s [tokeny zabezpečení](../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app): pomocí klíče identity zařízení nebo sdíleného přístupového klíče. Kromě toho je důležité si uvědomit, že všechny funkce dostupné ze zařízení jsou zpřístupněny návrhem u koncových `/devices/{deviceId}`bodů s předponou.
+Existují dva způsoby, jak získat **DeviceConnect** oprávnění pomocí IoT Hub s [tokeny zabezpečení](../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app): pomocí klíče identity zařízení nebo sdíleného přístupového klíče. Kromě toho je důležité si uvědomit, že všechny funkce dostupné ze zařízení jsou zpřístupněny návrhem u koncových bodů s předponou `/devices/{deviceId}` .
 
 [Součásti služby mohou generovat pouze tokeny zabezpečení](../articles/iot-hub/iot-hub-devguide-security.md#use-security-tokens-from-service-components) pomocí zásad sdíleného přístupu udělujících příslušná oprávnění.
 
@@ -103,7 +103,7 @@ Data ingestovaná službou Azure IoT Hub můžou využívat nejrůznější slu�
 
 * [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/): zpracování datových proudů v reálném čase v cloudu, které vám umožní rychle vyvíjet a nasazovat řešení s nízkými náklady, abyste mohli získat přehled o zařízeních, senzorech, infrastruktuře a aplikacích v reálném čase. Data z této plně spravované služby se můžou škálovat na libovolný svazek a přitom pořád dosahovat vysoké propustnosti, nízké latence a odolnosti.
 
-* [Azure App Services](https://azure.microsoft.com/services/app-service/): cloudová platforma pro vytváření výkonných webových a mobilních aplikací, které se připojují k datům kdekoli; v cloudu nebo v místním prostředí. Vytvářejte poutavé mobilní aplikace pro iOS, Android a Windows. Integraci s vaším softwarem jako služby (SaaS) a podnikovými aplikacemi s okamžitým připojením k desítkám cloudových služeb a podnikových aplikací. Kód ve vašem oblíbeném jazyce a integrovaném vývojovém prostředí (.NET, Node. js, PHP, Python nebo Java) vám umožní vytvářet webové aplikace a rozhraní API rychleji než kdy dřív.
+* [Azure App Services](https://azure.microsoft.com/services/app-service/): cloudová platforma pro vytváření výkonných webových a mobilních aplikací, které se připojují k datům kdekoli; v cloudu nebo v místním prostředí. Vytvářejte poutavé mobilní aplikace pro iOS, Android a Windows. Integraci s vaším softwarem jako služby (SaaS) a podnikovými aplikacemi s okamžitým připojením k desítkám cloudových služeb a podnikových aplikací. Kód ve vašem oblíbeném jazyce a integrovaném vývojovém prostředí (.NET, Node.js, PHP, Python nebo Java) vám umožní vytvářet webové aplikace a rozhraní API rychleji než kdy dřív.
 
 * [Logic Apps](https://azure.microsoft.com/services/app-service/logic/): funkce Logic Apps Azure App Service pomáhá integrovat vaše řešení IoT do stávajících obchodních systémů a automatizovat pracovní postupy. Logic Apps umožňuje vývojářům navrhovat pracovní postupy, které začínají triggerem, a pak provádět řadu kroků – pravidla a akce, které používají výkonné konektory pro integraci s vašimi podnikovými procesy. Logic Apps nabízí předem dostupné možnosti připojení k rozsáhlému ekosystému SaaS, cloudových a místních aplikací.
 

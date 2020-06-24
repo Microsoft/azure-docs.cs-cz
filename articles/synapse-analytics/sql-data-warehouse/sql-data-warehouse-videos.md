@@ -6,17 +6,17 @@ author: anumjs
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 02/15/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 0ac17579a1afedc3391b20f336ea9563b1c2d8f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0515827ab2d93c76ea91e95c2d53a44273b5633b
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80350134"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213784"
 ---
 # <a name="azure-synapse-analytics---sql-pool-videos"></a>Azure synapse Analytics – videa o fondech SQL
 

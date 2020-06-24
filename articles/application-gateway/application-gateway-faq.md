@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 7b90748ae29a98038d96e5e3a827413637a98d47
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: 578d674a197936c6222d4520893fdb1afa00161e
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84668232"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84981972"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Nejčastější dotazy týkající se Application Gateway
 
@@ -73,7 +73,13 @@ V případě SKU verze V2 otevřete prostředek veřejné IP adresy a vyberte **
 
 *Časový limit zachování* určuje, jak dlouho Application Gateway čekat, než klient pošle další požadavek HTTP na trvalé připojení, než ho znovu použije nebo zavře. *Časový limit nečinnosti protokolu TCP* určuje, jak dlouho zůstane připojení TCP otevřené v případě žádné aktivity. 
 
-*Časový limit udržování* připojení v SKU Application Gateway v1 je 120 sekund a v SKU v2 je 75 sekund. *Časový limit nečinnosti TCP* je výchozí 4 minuty na front-endové virtuální IP adrese (VIP) verze V1 i v2 Application Gateway. Tyto hodnoty nemůžete změnit.
+*Časový limit udržování* připojení v SKU Application Gateway v1 je 120 sekund a v SKU v2 je 75 sekund. *Časový limit nečinnosti TCP* je výchozí 4 minuty na front-endové virtuální IP adrese (VIP) verze V1 i v2 Application Gateway. Můžete nakonfigurovat hodnotu časového limitu nečinnosti TCP v bránách V1 a v2, aby byly kdekoli mezi 4 minutami a 30 minutami. Pro aplikační brány v1 i v2 budete muset přejít na veřejnou IP adresu Application Gateway a změnit časový limit nečinnosti TCP v okně Konfigurace veřejné IP adresy na portálu. Můžete nastavit hodnotu časového limitu nečinnosti protokolu TCP veřejné IP adresy prostřednictvím PowerShellu spuštěním následujících příkazů: 
+
+```azurepowershell-interactive
+$publicIP = Get-AzPublicIpAddress -Name MyPublicIP -ResourceGroupName MyResourceGroup
+$publicIP.IdleTimeoutInMinutes = "15"
+Set-AzPublicIpAddress -PublicIpAddress $publicIP
+```
 
 ### <a name="does-the-ip-or-dns-name-change-over-the-lifetime-of-the-application-gateway"></a>Mění se IP adresa nebo název DNS po celou dobu životnosti služby Application Gateway?
 

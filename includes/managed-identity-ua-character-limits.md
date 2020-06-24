@@ -16,4 +16,4 @@ ms.lasthandoff: 04/29/2020
 ms.locfileid: "67175173"
 ---
 > [!IMPORTANT]
-> Při vytváření identit přiřazených uživateli jsou podporovány pouze alfanumerické znaky (0-9, a-z, A-Z), podtržítko\_() a spojovník (-). Kromě toho by měl mít název minimálně 3 znaky a musí být delší než 128 znaků, aby přiřazení k virtuálnímu počítači/VMSS správně fungovalo. Vraťte se sem a přečtěte si nové informace. Další informace najdete v tématu [Nejčastější dotazy a známé problémy](/azure/active-directory/managed-service-identity/known-issues).
+> Při vytváření identit přiřazených uživateli jsou podporovány pouze alfanumerické znaky (0-9, a-z, A-Z), podtržítko ( \_ ) a spojovník (-). Kromě toho by měl mít název minimálně 3 znaky a musí být delší než 128 znaků, aby přiřazení k virtuálnímu počítači/VMSS správně fungovalo. Vraťte se sem a přečtěte si nové informace. Další informace najdete v tématu [Nejčastější dotazy a známé problémy](/azure/active-directory/managed-service-identity/known-issues).

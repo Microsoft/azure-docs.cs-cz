@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
 ms.date: 01/07/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b8aef68e0f61e6ca995fc2bb362d59aba73ead2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b0a5a20498ccd0a133c6e02d366af690acf2665e
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78329496"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84742262"
 ---
 # <a name="view-audit-history-for-azure-ad-roles-in-privileged-identity-management"></a>Zobrazit historii auditu pro role Azure AD v Privileged Identity Management
 
@@ -88,9 +88,9 @@ Pomocí těchto kroků zobrazíte historii auditu pro role Azure AD.
 
     V dolní části stránky se zobrazí tabulka s informacemi o každé akci v dostupné historii auditu. Sloupce mají následující význam:
 
-    | Sloupec | Popis |
+    | Sloupec | Description |
     | --- | --- |
-    | Time | Při výskytu akce. |
+    | Čas | Při výskytu akce. |
     | Requestor | Uživatel, který požádal o aktivaci nebo změnu role Pokud je hodnota **systémem Azure**, podívejte se na historii auditu Azure, kde najdete další informace. |
     | Akce | Akce prováděné žadatelem. Akce mohou zahrnovat přiřazení, zrušení přiřazení, aktivace, deaktivace nebo AddedOutsidePIM. |
     | Člen | Uživatel, který se aktivuje nebo přiřadí k roli. |

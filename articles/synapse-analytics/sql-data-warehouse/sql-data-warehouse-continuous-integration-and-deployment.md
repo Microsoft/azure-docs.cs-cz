@@ -1,28 +1,28 @@
 ---
-title: Průběžná integrace a nasazování
+title: Průběžná integrace a nasazování
 description: DevOps možnosti databáze na podnikové úrovni pro datové sklady s integrovanou podporou pro průběžnou integraci a nasazování pomocí Azure Pipelines.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: how-to
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 14c3dde4a86e36a4015a319e608ab8543302932f
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 725e8165f8a7bdb654f61d7257867a2d0bf17110
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791285"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213563"
 ---
 # <a name="continuous-integration-and-deployment-for-data-warehousing"></a>Průběžná integrace a nasazování pro datové sklady
 
 V tomto jednoduchém kurzu se naučíte integrovat projekt databáze SSDT (SQL Server Data Tools) do Azure DevOps a využít Azure Pipelines k nastavení průběžné integrace a nasazování. Tento kurz je druhým krokem při sestavování kanálu průběžné integrace a nasazování pro datové sklady.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 - Projděte si [kurz integrace správy zdrojového kódu](sql-data-warehouse-source-control-integration.md)
 
@@ -50,7 +50,7 @@ V tomto okamžiku máte jednoduché prostředí, kde jakékoli vrácení se změ
 
       ![Úloha nasazení](./media/sql-data-warehouse-continuous-integration-and-deployment/4-deployment-task.png "Úloha nasazení")
 
-2. Pokud používáte samoobslužného agenta, ujistěte se, že jste nastavili proměnnou prostředí tak, aby pro SQL Data Warehouse používala správný soubor SqlPackage. exe. Cesta by měla vypadat přibližně takto:
+2. Pokud používáte samoobslužného agenta, ujistěte se, že jste nastavili proměnnou prostředí tak, aby používala správný SqlPackage.exe pro SQL Data Warehouse. Cesta by měla vypadat přibližně takto:
 
       ![Proměnná prostředí](./media/sql-data-warehouse-continuous-integration-and-deployment/5-environment-variable-preview.png "Proměnná prostředí")
 

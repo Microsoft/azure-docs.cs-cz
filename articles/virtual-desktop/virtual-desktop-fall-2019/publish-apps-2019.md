@@ -4,16 +4,16 @@ description: Publikování integrovaných aplikací ve virtuálním počítači 
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a02bf514ff76f5528bc46f0a60642163c9278ebf
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 7a453ef44a1ede86290f4130a6147eaaad09fa97
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82615133"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214141"
 ---
 # <a name="publish-built-in-apps-in-windows-virtual-desktop"></a>Publikování integrovaných aplikací ve virtuálním počítači s Windows
 
@@ -29,13 +29,13 @@ Publikování předdefinované aplikace:
 1. Připojte se k jednomu z virtuálních počítačů ve fondu hostitelů.
 2. Postupujte podle pokynů v [tomto článku](/powershell/module/appx/get-appxpackage?view=win10-ps/)a získejte **PackageFamilyName** aplikace, kterou chcete publikovat.
 3. Nakonec spusťte následující rutinu s `<PackageFamilyName>` nahrazeným **PackageFamilyName** , které jste našli v předchozím kroku:
-   
+
    ```powershell
    New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -FriendlyName <remoteappname> -FilePath "shell:appsFolder\<PackageFamilyName>!App"
    ```
 
 >[!NOTE]
-> Virtuální plocha Windows podporuje jenom publikování aplikací s umístěními pro instalaci, `C:\Program Files\Windows Apps`která začínají na.
+> Virtuální plocha Windows podporuje jenom publikování aplikací s umístěními pro instalaci, která začínají na `C:\Program Files\Windows Apps` .
 
 ## <a name="update-app-icons"></a>Aktualizovat ikony aplikace
 
@@ -46,7 +46,7 @@ Po publikování aplikace bude mít výchozí ikonu aplikace pro Windows namíst
 Proces, který používáte k publikování Microsoft Edge, se trochu liší od procesu publikování pro jiné aplikace. Pokud chcete publikovat Microsoft Edge s výchozí domovskou stránkou, spusťte tuto rutinu:
 
 ```powershell
-New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -FriendlyName <remoteappname> -FilePath "shell:Appsfolder\Microsoft.MicrosoftEdge_8wekyb3d8bbwe!MicrosoftEdge" 
+New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -FriendlyName <remoteappname> -FilePath "shell:Appsfolder\Microsoft.MicrosoftEdge_8wekyb3d8bbwe!MicrosoftEdge"
 ```
 
 ## <a name="next-steps"></a>Další kroky

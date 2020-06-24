@@ -7,12 +7,12 @@ author: danimir
 ms.author: danil
 ms.date: 02/21/2020
 ms.reviewer: carlrab
-ms.openlocfilehash: 80c03661970ec218dd8b36664ecb67623068ac5d
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: d1f8a30145cc0d61f110c0f47459a4f1db03325b
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116555"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85249410"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Monitorování Azure SQL Database pomocí Azure SQL Analytics (Preview)
 
@@ -58,11 +58,11 @@ Následující tabulka obsahuje přehled podporovaných možností pro dvě verz
 
 Pomocí postupu popsaného v tématu [přidání Azure monitor řešení z galerie řešení](../../azure-monitor/insights/solutions.md) přidejte Azure SQL Analytics (Preview) do pracovního prostoru Log Analytics.
 
-### <a name="configure-azure-sql-databases-to-stream-diagnostics-telemetry"></a>Konfigurace databází Azure SQL pro streamování diagnostiky diagnostiky
+### <a name="configure-azure-sql-database-to-stream-diagnostics-telemetry"></a>Konfigurace Azure SQL Database ke streamování diagnostiky diagnostiky
 
 Po vytvoření Azure SQL Analytics řešení ve vašem pracovním prostoru musíte **nakonfigurovat každý** prostředek, který chcete monitorovat, aby se jeho diagnostická telemetrie mohla Azure SQL Analytics vysílat. Postupujte podle podrobných pokynů na této stránce:
 
-- Povolte Azure Diagnostics služby Azure SQL Database, abyste mohli [streamovat diagnostiku diagnostiky do Azure SQL Analytics](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md).
+- Povolí Azure Diagnostics pro vaši databázi [streamovat telemetrii diagnostiky do Azure SQL Analytics](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md).
 
 Na výše uvedené stránce najdete taky pokyny, jak povolit podporu monitorování více předplatných Azure z jednoho Azure SQL Analytics pracovního prostoru jako jediného podokna skla.
 

@@ -14,10 +14,10 @@ ms.locfileid: "75468626"
 ### <a name="azure-storage-linked-service"></a>Propojená služba Azure Storage
 **Propojená služba Azure Storage** umožňuje propojit účet Azure Storage s objektem pro vytváření dat Azure pomocí **klíče účtu**, který poskytuje datovou továrnu s globálním přístupem k Azure Storage. Následující tabulka uvádí popis pro prvky JSON specifické pro Azure Storage propojenou službu.
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type |Vlastnost Type musí být nastavená na: **AzureStorage** . |Ano |
-| připojovací řetězec |Zadejte informace potřebné pro připojení k úložišti Azure pro vlastnost connectionString. |Ano |
+| typ |Vlastnost Type musí být nastavená na: **AzureStorage** . |Yes |
+| připojovací řetězec |Zadejte informace potřebné pro připojení k úložišti Azure pro vlastnost connectionString. |Yes |
 
 Informace o tom, jak načíst přístupové klíče účtu úložiště, najdete v tématu [Správa přístupových](../articles/storage/common/storage-account-keys-manage.md)klíčů účtu úložiště.
 
@@ -47,10 +47,10 @@ Sdílený přístupový podpis (SAS) poskytuje delegovaný přístup k prostřed
 
 Propojená služba Azure Storage SAS umožňuje propojit účet Azure Storage s datovou továrnou Azure pomocí sdíleného přístupového podpisu (SAS). Poskytuje datovou továrnu s omezeným/časově vázaným přístupem ke všem/konkrétním prostředkům (objektům blob nebo kontejneru) v úložišti. Následující tabulka uvádí popis pro prvky JSON specifické pro Azure Storage propojenou službu SAS. 
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type |Vlastnost Type musí být nastavená na: **AzureStorageSas** . |Ano |
-| sasUri |Zadejte identifikátor URI sdíleného přístupového podpisu k prostředkům Azure Storage, jako je například objekt blob, kontejner nebo tabulka.  |Ano |
+| typ |Vlastnost Type musí být nastavená na: **AzureStorageSas** . |Yes |
+| sasUri |Zadejte identifikátor URI sdíleného přístupového podpisu k prostředkům Azure Storage, jako je například objekt blob, kontejner nebo tabulka.  |Yes |
 
 **Případě**
 

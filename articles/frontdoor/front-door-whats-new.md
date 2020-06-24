@@ -1,23 +1,23 @@
 ---
-title: Přední dvířka Azure | Microsoft Docs
-description: Tento článek obsahuje přehled služby Azure Front Door. Zjistěte, zda se jedná o správnou volbu pro síťový provoz vyrovnávání zatížení pro vaši aplikaci.
+title: Novinky ve službě Azure Front Door
+description: Přečtěte si, co je nového v frontách Azure.
 services: frontdoor
 documentationcenter: ''
 author: megan-beatty
 editor: ''
 ms.service: frontdoor
 ms.devlang: na
-ms.topic: overview
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
 ms.author: mebeatty
-ms.openlocfilehash: 009891d16d3acf5db2e344bcc2c917ecee9eed5b
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: f76e54d698e30cb2b8f929050264a3afaec36562
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82515584"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743469"
 ---
 # <a name="whats-new-in-azure-front-door"></a>Co je nového v Azure front-dveří?
 
@@ -30,7 +30,7 @@ Přední dveře Azure se aktualizují průběžně. V tomto článku najdete inf
 
 ## <a name="new-features"></a>Nové funkce
 
-|Funkce  |Popis  |Datum přidání  |
+|Funkce  |Description  |Datum přidání  |
 |---------|---------|---------|
 | Modul pravidel (Preview) | Přizpůsobení způsobu zpracování požadavků HTTP na hraničních zařízeních. Další informace najdete v tématu [Přehled modulu pravidel](front-door-rules-engine.md). |Duben 2020 |
 

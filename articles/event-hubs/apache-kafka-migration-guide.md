@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/01/2020
+ms.date: 06/23/2020
 ms.author: shvija
-ms.openlocfilehash: 32b08e565b86af8f6373c9848211646128bb346d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f3f5e7ab5ca0d47d18c802dadbcac902ed12e147
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81677353"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85299394"
 ---
 # <a name="migrate-to-azure-event-hubs-for-apache-kafka-ecosystems"></a>Migrace na Azure Event Hubs pro Apache Kafka ekosystémy
 Azure Event Hubs zpřístupňuje koncový bod Apache Kafka, který umožňuje připojení k Event Hubs pomocí protokolu Kafka. Díky minimálním změnám v existující aplikaci Kafka se můžete připojit k Azure Event Hubs a těžit výhody ekosystému Azure. Event Hubs Kafka Support [Apache Kafka verze 1,0](https://kafka.apache.org/10/documentation.html) a novější.
@@ -25,7 +25,7 @@ Azure Event Hubs zpřístupňuje koncový bod Apache Kafka, který umožňuje p�
 ## <a name="pre-migration"></a>Před migrací 
 
 ### <a name="create-an-azure-account"></a>Vytvoření účtu Azure
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio), ještě než začnete.
 
 ### <a name="create-an-event-hubs-namespace"></a>Vytvoření oboru názvů služby Event Hubs
 Pokud chcete vytvořit obor názvů Event Hubs a centrum událostí, postupujte podle podrobných pokynů v článku [vytvoření centra událostí](event-hubs-create.md) . 
@@ -38,15 +38,15 @@ Možná budete potřebovat plně kvalifikovaný název domény, který odkazuje 
 
 `Endpoint=sb://`**`mynamespace.servicebus.windows.net`**`/;SharedAccessKeyName=XXXXXX;SharedAccessKey=XXXXXX`
 
-Pokud je váš obor názvů Event Hubs nasazený v neveřejném cloudu, může se název domény lišit (například \*. ServiceBus.chinacloudapi.cn, \*. ServiceBus.usgovcloudapi.NET nebo \*. ServiceBus.cloudapi.de).
+Pokud je váš obor názvů Event Hubs nasazený v neveřejném cloudu, může se název domény lišit (například \* . ServiceBus.chinacloudapi.cn, \* . ServiceBus.usgovcloudapi.NET nebo \* . ServiceBus.cloudapi.de).
 
 ## <a name="migration"></a>Migrace 
 
 ### <a name="update-your-kafka-client-configuration"></a>Aktualizace konfigurace klienta Kafka
 
-Pokud se chcete připojit k centru událostí s povoleným Kafka, budete muset aktualizovat konfiguraci klientů Kafka. Pokud se vám nedaří najít svoji svoji práci, zkuste vyhledat `bootstrap.servers` , kde je ve vaší aplikaci nastavená.
+Pokud se chcete připojit k centru událostí s povoleným Kafka, budete muset aktualizovat konfiguraci klientů Kafka. Pokud se vám nedaří najít svoji svoji práci, zkuste vyhledat, kde `bootstrap.servers` je ve vaší aplikaci nastavená.
 
-Vložte následující konfigurace všude, kde je to ve vaší aplikaci smysl. Nezapomeňte aktualizovat hodnoty `bootstrap.servers` a a `sasl.jaas.config` nasměrovat klienta na Event Hubs koncový bod Kafka se správným ověřováním. 
+Vložte následující konfigurace všude, kde je to ve vaší aplikaci smysl. Nezapomeňte aktualizovat `bootstrap.servers` hodnoty a a `sasl.jaas.config` nasměrovat klienta na Event Hubs koncový bod Kafka se správným ověřováním. 
 
 ```
 bootstrap.servers={MYNAMESPACE}.servicebus.windows.net:9093

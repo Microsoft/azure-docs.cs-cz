@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 04/24/2020
-ms.openlocfilehash: ede385670dec6629cc3e75a9d09c0ceb14362bdc
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.date: 06/11/2020
+ms.openlocfilehash: 7d631698f7c00a838f28d55b6b26055e686d27db
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84119389"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976995"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Konektory pro Azure Logic Apps
 
@@ -106,7 +106,7 @@ Logic Apps poskytuje integrované akce pro spuštění vlastního kódu v pracov
 
 |   |   |   |   |
 |---|---|---|---|
-| [![Ikona rozhraní API ][azure-functions-icon]<br> **Azure Functions**][azure-functions-doc] | Volejte Azure Functions, které spouštějí vlastní fragmenty kódu (C# nebo Node. js) z vašich aplikací logiky. | [![Ikona rozhraní API – ][inline-code-icon]<br> **vložený kód**][inline-code-doc] | Přidejte a spusťte fragmenty kódu JavaScriptu z vašich aplikací logiky. |
+| [![Ikona rozhraní API ][azure-functions-icon]<br> **Azure Functions**][azure-functions-doc] | Volejte Azure Functions, které spouštějí vlastní fragmenty kódu (C# nebo Node.js) z vašich aplikací logiky. | [![Ikona rozhraní API – ][inline-code-icon]<br> **vložený kód**][inline-code-doc] | Přidejte a spusťte fragmenty kódu JavaScriptu z vašich aplikací logiky. |
 |||||
 
 ### <a name="control-workflow"></a>Pracovní postup ovládacího prvku
@@ -243,6 +243,12 @@ Chcete-li volat rozhraní API, která spouští vlastní kód nebo nejsou k disp
 > Vlastní konektory vytvořené v rámci ISE nefungují s místní bránou dat. Tyto konektory ale můžou přistupovat přímo k místním zdrojům dat, které jsou připojené k virtuální síti Azure hostující rozhraní ISE. Proto Logic Apps v ISE pravděpodobně nepotřebují bránu dat při komunikaci s těmito prostředky.
 >
 > Další informace o vytváření ISEs najdete v tématu [připojení k virtuálním sítím Azure z Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment.md).
+
+<a name="block-connections"></a>
+
+## <a name="block-creating-connections"></a>Blokovat vytváření připojení
+
+Pokud vaše organizace neumožňuje připojení ke konkrétním prostředkům pomocí jejich konektorů v Azure Logic Apps, můžete [zablokovat možnost vytvářet tato připojení](../logic-apps/block-connections-connectors.md) pro konkrétní konektory v pracovních postupech aplikace logiky pomocí [Azure Policy](../governance/policy/overview.md). Další informace najdete v tématu [bloková připojení vytvořená konkrétními konektory v Azure Logic Apps](../logic-apps/block-connections-connectors.md).
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -476,4 +482,3 @@ Chcete-li volat rozhraní API, která spouští vlastní kód nebo nejsou k disp
 [x12-encode-doc]: ../logic-apps/logic-apps-enterprise-integration-X12-encode.md "Kódování zpráv, které používají protokol X12"
 [xml-transform-doc]: ../logic-apps/logic-apps-enterprise-integration-transform.md "Transformovat zprávy XML"
 [xml-validate-doc]: ../logic-apps/logic-apps-enterprise-integration-xml-validation.md "Ověřit zprávy XML"
-

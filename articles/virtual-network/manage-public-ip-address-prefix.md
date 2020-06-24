@@ -8,32 +8,32 @@ author: asudbring
 ms.service: virtual-network
 ms.subservice: ip-services
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/13/2019
 ms.author: allensu
-ms.openlocfilehash: 720496c56cdae69e3b7415ac4d4d05d5796fbff9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4eac4a7ecc6febedd205fcde45ea550dd15a6b93
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82146374"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84703838"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>Vytvoření, změna nebo odstranění předpony veřejné IP adresy
 
 Přečtěte si o předponě veřejných IP adres a o tom, jak je vytvořit, změnit a odstranit. Předpona veřejné IP adresy je souvislý rozsah adres na základě počtu veřejných IP adres, které zadáte. Adresy jsou přiřazeny k vašemu předplatnému. Při vytváření prostředku veřejné IP adresy můžete z předpony přiřadit statickou veřejnou IP adresu a přidružit ji k virtuálním počítačům, nástrojům pro vyrovnávání zatížení nebo jiným prostředkům, aby bylo možné povolit připojení k Internetu. Pokud neznáte předpony veřejných IP adres, přečtěte si téma [Přehled předpon veřejných IP adres](public-ip-address-prefix.md) .
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Před dokončením kroků v jakékoli části tohoto článku proveďte následující úlohy:
 
 - Pokud ještě nemáte účet Azure, zaregistrujte si [bezplatný zkušební účet](https://azure.microsoft.com/free).
-- Pokud používáte portál, otevřete https://portal.azure.coma přihlaste se pomocí svého účtu Azure.
+- Pokud používáte portál, otevřete https://portal.azure.com a přihlaste se pomocí svého účtu Azure.
 - Pokud k dokončení úkolů v tomto článku používáte příkazy prostředí PowerShell, buď spusťte příkazy v [Azure Cloud Shell](https://shell.azure.com/powershell), nebo spuštěním PowerShellu z počítače. Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Tento kurz vyžaduje modul Azure PowerShell verze 1.0.0 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
-- Pokud k dokončení úkolů v tomto článku používáte příkazy rozhraní příkazového řádku Azure (CLI), buď spusťte příkazy v [Azure Cloud Shell](https://shell.azure.com/bash), nebo spuštěním rozhraní příkazového řádku z počítače. Tento kurz vyžaduje Azure CLI verze 2.0.41 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0](/cli/azure/install-azure-cli). Pokud používáte Azure CLI místně, musíte také spustit `az login` , aby se vytvořilo připojení k Azure.
+- Pokud k dokončení úkolů v tomto článku používáte příkazy rozhraní příkazového řádku Azure (CLI), buď spusťte příkazy v [Azure Cloud Shell](https://shell.azure.com/bash), nebo spuštěním rozhraní příkazového řádku z počítače. Tento kurz vyžaduje Azure CLI verze 2.0.41 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0](/cli/azure/install-azure-cli). Pokud používáte Azure CLI místně, musíte také spustit, `az login` aby se vytvořilo připojení k Azure.
 
 Účet, ke kterému se přihlašujete, nebo se k Azure připojíte pomocí nástroje, musí být přiřazen k roli [Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) nebo k [vlastní roli](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , která je přiřazená k příslušným akcím uvedeným v [oprávněních](#permissions).
 
@@ -48,17 +48,17 @@ Předpony veřejných IP adres mají poplatek. Podrobnosti najdete v tématu [ce
 
    |Nastavení|Povinné?|Podrobnosti|
    |---|---|---|
-   |Předplatné|Ano|Musí existovat ve stejném [předplatném](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) jako prostředek, ke kterému chcete přidružit veřejnou IP adresu.|
-   |Skupina prostředků|Ano|Může existovat ve stejné nebo jiné [skupině prostředků](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) jako prostředek, ke kterému chcete přidružit veřejnou IP adresu.|
-   |Název|Ano|Název musí být jedinečný v rámci vybrané skupiny prostředků.|
-   |Oblast|Ano|Musí existovat ve stejné [oblasti](https://azure.microsoft.com/regions)jako veřejné IP adresy, které přiřadíte adresám z rozsahu.|
-   |Velikost předpony|Ano| Velikost potřebné předpony. Výchozí hodnota je/28 nebo 16 IP adres.
+   |Předplatné|Yes|Musí existovat ve stejném [předplatném](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) jako prostředek, ke kterému chcete přidružit veřejnou IP adresu.|
+   |Skupina prostředků|Yes|Může existovat ve stejné nebo jiné [skupině prostředků](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) jako prostředek, ke kterému chcete přidružit veřejnou IP adresu.|
+   |Name|Yes|Název musí být jedinečný v rámci vybrané skupiny prostředků.|
+   |Oblast|Yes|Musí existovat ve stejné [oblasti](https://azure.microsoft.com/regions)jako veřejné IP adresy, které přiřadíte adresám z rozsahu.|
+   |Velikost předpony|Yes| Velikost potřebné předpony. Výchozí hodnota je/28 nebo 16 IP adres.
 
 **Příkazy**
 
 |Nástroj|Příkaz|
 |---|---|
-|CLI|[AZ Network Public-IP prefix Create](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-create)|
+|Rozhraní příkazového řádku|[AZ Network Public-IP prefix Create](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-create)|
 |PowerShell|[New-AzPublicIpPrefix](/powershell/module/az.network/new-azpublicipprefix)|
 
 ## <a name="create-a-static-public-ip-address-from-a-prefix"></a>Vytvoření statické veřejné IP adresy z předpony
@@ -71,15 +71,15 @@ Po vytvoření předpony musíte z předpony vytvořit statické IP adresy. Chce
 
    |Nastavení|Povinné?|Podrobnosti|
    |---|---|---|
-   |Název|Ano|Název veřejné IP adresy musí být v rámci vybrané skupiny prostředků jedinečný.|
-   |Časový limit nečinnosti (minuty)|Ne|Kolik minut má být otevřené připojení TCP nebo HTTP, aniž by se museli spoléhat na to, že klienti odesílají zprávy Keep-Alive. |
-   |Popisek názvu DNS|Ne|Musí být jedinečný v rámci oblasti Azure, ve které jste vytvořili název (mezi všemi předplatnými a všemi zákazníky). Azure automaticky registruje název a IP adresu ve svém DNS, abyste se mohli připojit k prostředku s názvem. Azure připojí k názvu, který zadáte, výchozí podsíť, jako je například *Location.cloudapp.Azure.com* (umístění, kde je vybrané umístění), a vytvoří plně kvalifikovaný název DNS. Další informace najdete v tématu [použití Azure DNS s veřejnou IP adresou Azure](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address).|
+   |Name|Yes|Název veřejné IP adresy musí být v rámci vybrané skupiny prostředků jedinečný.|
+   |Časový limit nečinnosti (minuty)|No|Kolik minut má být otevřené připojení TCP nebo HTTP, aniž by se museli spoléhat na to, že klienti odesílají zprávy Keep-Alive. |
+   |Popisek názvu DNS|No|Musí být jedinečný v rámci oblasti Azure, ve které jste vytvořili název (mezi všemi předplatnými a všemi zákazníky). Azure automaticky registruje název a IP adresu ve svém DNS, abyste se mohli připojit k prostředku s názvem. Azure připojí k názvu, který zadáte, výchozí podsíť, jako je například *Location.cloudapp.Azure.com* (umístění, kde je vybrané umístění), a vytvoří plně kvalifikovaný název DNS. Další informace najdete v tématu [použití Azure DNS s veřejnou IP adresou Azure](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address).|
 
 Alternativně můžete použít příkazy CLI a PS níže s parametry--Public-IP-prefix (CLI) a-PublicIpPrefix (PS) k vytvoření prostředku veřejné IP adresy. 
 
 |Nástroj|Příkaz|
 |---|---|
-|CLI|[az network public-ip create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create)|
+|Rozhraní příkazového řádku|[az network public-ip create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create)|
 |PowerShell|[New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress?view=azps-2.0.0)|
 
 ## <a name="view-or-delete-a-prefix"></a>Zobrazení nebo odstranění předpony
@@ -94,14 +94,14 @@ Alternativně můžete použít příkazy CLI a PS níže s parametry--Public-IP
 
 |Nástroj|Příkaz|
 |---|---|
-|CLI|[AZ Network Public-IP prefix list](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-list) k vypsání veřejných IP adres, [AZ Network Public-IP prefix show](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-show) k zobrazení nastavení; [AZ Network Public-IP prefix Update](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-update) to Update; [AZ Network Public-IP prefix Delete](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-delete) to Delete|
+|Rozhraní příkazového řádku|[AZ Network Public-IP prefix list](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-list) k vypsání veřejných IP adres, [AZ Network Public-IP prefix show](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-show) k zobrazení nastavení; [AZ Network Public-IP prefix Update](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-update) to Update; [AZ Network Public-IP prefix Delete](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-delete) to Delete|
 |PowerShell|[Get-AzPublicIpPrefix](/powershell/module/az.network/get-azpublicipprefix) pro načtení objektu veřejné IP adresy a zobrazení jeho nastavení [nastavte-AzPublicIpPrefix](/powershell/module/az.network/set-azpublicipprefix) na aktualizovat nastavení; [Remove-AzPublicIpPrefix](/powershell/module/az.network/remove-azpublicipprefix) k odstranění|
 
 ## <a name="permissions"></a>Oprávnění
 
 Aby bylo možné provádět úlohy s předponami veřejných IP adres, musí být váš účet přiřazen k roli [Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) nebo k [vlastní](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) roli, která je přiřazena k příslušným akcím uvedeným v následující tabulce:
 
-| Akce                                                            | Název                                                           |
+| Akce                                                            | Name                                                           |
 | ---------                                                         | -------------                                                  |
 | Microsoft. Network/publicIPPrefixes/Read                           | Přečíst předponu veřejné IP adresy                                |
 | Microsoft. Network/publicIPPrefixes/Write                          | Vytvoří nebo aktualizuje předponu veřejné IP adresy.                    |

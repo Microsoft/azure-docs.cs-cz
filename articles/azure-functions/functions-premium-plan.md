@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: dd7f6d0760f2b848435e7c77657e261517d29dd8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d59335c5c4ebd2688097539594f11ea349939eff
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79276904"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298510"
 ---
 # <a name="azure-functions-premium-plan"></a>Plán Azure Functions Premium
 
@@ -61,11 +61,13 @@ Další informace najdete v tématu [integrace aplikace Function App s virtuáln
 
 ### <a name="rapid-elastic-scale"></a>Rychlé Elastické škálování
 
-Další výpočetní instance se automaticky přidají do vaší aplikace pomocí stejné logiky rychlé škálování jako u plánu spotřeby.  Další informace o tom, jak škálování funguje, najdete v tématu [škálování a hostování funkcí](./functions-scale.md#how-the-consumption-and-premium-plans-work).
+Další výpočetní instance se automaticky přidají do vaší aplikace pomocí stejné logiky rychlé škálování jako u plánu spotřeby. Aplikace ve stejném App Service plánu se škálují nezávisle na sobě, a to na základě potřeb jednotlivých aplikací. Aplikace Functions ve stejném App Service naplánují sdílení prostředků virtuálních počítačů, které vám pomůžou snížit náklady, pokud je to možné. Počet aplikací přidružených k virtuálnímu počítači závisí na tom, jaké aplikace a velikost virtuálního počítače.
+
+Další informace o tom, jak škálování funguje, najdete v tématu [škálování a hostování funkcí](./functions-scale.md#how-the-consumption-and-premium-plans-work).
 
 ### <a name="longer-run-duration"></a>Delší doba běhu
 
-Azure Functions v plánu spotřeby se pro jedno spuštění omezí na 10 minut.  V plánu Premium je doba běhu standardně 30 minut, aby se zabránilo provádění. Můžete ale [Upravit konfiguraci Host. JSON](./functions-host-json.md#functiontimeout) , abyste to nezajistili pro aplikace Premium Plan (garantujeme 60 minut).
+Azure Functions v plánu spotřeby se pro jedno spuštění omezí na 10 minut.  V plánu Premium je doba běhu standardně 30 minut, aby se zabránilo provádění. Můžete ale [upravit host.jsv konfiguraci](./functions-host-json.md#functiontimeout) , aby to nebylo pro aplikace Premium Plan (garantované 60 minut) nevázané.
 
 ## <a name="plan-and-sku-settings"></a>Nastavení plánu a SKU
 
@@ -88,7 +90,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 Při vytváření nebo škálování plánu si můžete vybrat mezi třemi velikostmi instancí.  Bude se vám účtovat celkový počet jader a využité paměti za sekundu.  Vaše aplikace se může podle potřeby automaticky škálovat na více instancí.  
 
-|Skladová jednotka (SKU)|Cores|Memory (Paměť)|Storage|
+|SKU|Cores|Memory (Paměť)|Storage|
 |--|--|--|--|
 |EP1|1|3,5 GB|250 GB|
 |EP2|2|7GB|250 GB|
@@ -97,7 +99,7 @@ Při vytváření nebo škálování plánu si můžete vybrat mezi třemi velik
 ### <a name="memory-utilization-considerations"></a>Požadavky na využití paměti
 Spuštění v počítači, který má více paměti, neznamená vždycky, že vaše aplikace Function App bude používat veškerou dostupnou paměť.
 
-Například aplikace funkcí JavaScriptu je omezená na výchozí omezení paměti v Node. js. Pokud chcete zvýšit toto omezení pevné paměti, přidejte nastavení `languageWorkers:node:arguments` aplikace s hodnotou. `--max-old-space-size=<max memory in MB>`
+Například aplikace funkcí JavaScriptu je omezená na výchozí omezení paměti v Node.js. Pokud chcete zvýšit toto omezení pevné paměti, přidejte nastavení aplikace `languageWorkers:node:arguments` s hodnotou `--max-old-space-size=<max memory in MB>` .
 
 ## <a name="region-max-scale-out"></a>Maximální horizontální navýšení kapacity oblasti
 

@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 05/28/2020
-ms.openlocfilehash: 4802e9e6fa2fdd918266d3ddc58b783bdb6bb83e
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 0193e7f7001fb8f63794a379c4d2b8e28abd5c0f
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84258457"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85297864"
 ---
 # <a name="migrate-azure-sql-database-from-the-dtu-based-model-to-the-vcore-based-model"></a>Migrace Azure SQL Database z modelu založeného na DTU do modelu založeného na vCore
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -97,7 +97,7 @@ Kromě počtu virtuální jádra (logických procesorů) a generace hardwaru moh
 - Pro stejnou generaci hardwaru a stejný počet omezení prostředků propustnosti virtuální jádra, IOPS a transakčního protokolu pro databáze vCore jsou často vyšší než pro databáze DTU. U úloh vázaných na vstupně-výstupní operace může být možné snížit počet virtuální jádra v modelu vCore, aby se dosáhlo stejné úrovně výkonu. Omezení prostředků pro DTU a databáze vCore v absolutních hodnotách jsou zpřístupněna v zobrazení [Sys. dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) . Porovnání těchto hodnot mezi databází DTU, která se má migrovat, a databází vCore s využitím přibližně odpovídajícího cíle služby vám pomůže vybrat cíl služby vCore přesněji.
 - Dotaz mapování také vrátí množství paměti na jádro pro migraci databáze DTU nebo elastického fondu a pro každou generaci hardwaru v modelu vCore. Zajištění podobné nebo vyšší celkové paměti po migraci na vCore je důležité pro úlohy, které vyžadují dostatečnou mezipaměť dat velké paměti, aby dosáhly dostatečného výkonu, nebo úlohy, které vyžadují velké množství paměti pro zpracování dotazů. Pro takové úlohy, v závislosti na skutečném výkonu, může být potřeba zvýšit počet virtuální jádra, aby se dosáhlo dostatečně celkového množství paměti.
 - Při volbě cíle služby vCore by se mělo vzít v úvahu [historické využití prostředků](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) databáze DTU. Databáze DTU s konzistentním využitím prostředků procesoru můžou potřebovat méně virtuální jádra než počet vrácený dotazem mapování. Databáze DTU, kde konzistentně vysoké využití procesoru způsobuje nedostatečný výkon úlohy, mohou vyžadovat více virtuální jádra, než je dotaz vrácen.
-- Pokud migrujete databáze s přerušovaným nebo nepředvídatelným vzorcem použití, zvažte použití výpočetní vrstvy bez [serveru](serverless-tier-overview.md) .
+- Pokud migrujete databáze s přerušovaným nebo nepředvídatelným vzorcem použití, zvažte použití výpočetní vrstvy bez [serveru](serverless-tier-overview.md) .  Počítejte s tím, že maximální počet souběžných pracovních procesů (požadavků) v bez serveru je 75% limitu zajištěných pro stejný počet virtuální jádra nakonfigurovaných na stejný počet.  Maximální dostupná velikost paměti v neserveru je navíc 3 GB, což je maximální počet nakonfigurovaných virtuální jádra. například maximální velikost paměti je 120 GB, pokud jsou nakonfigurovány virtuální jádra max. 40.   
 - V modelu vCore se podporovaná maximální velikost databáze může lišit v závislosti na generaci hardwaru. U rozsáhlých databází ověřte Podporované maximální velikosti v modelu vCore pro izolované [databáze](resource-limits-vcore-single-databases.md) a [elastické fondy](resource-limits-vcore-elastic-pools.md).
 - U elastických fondů mají modely [DTU](resource-limits-dtu-elastic-pools.md) a [Vcore](resource-limits-vcore-elastic-pools.md) rozdíly v maximálním podporovaném počtu databází na jeden fond. To je vhodné vzít v úvahu při migraci elastických fondů s mnoha databázemi.
 - Některé generace hardwaru nemusí být k dispozici v každé oblasti. Ověřte dostupnost v části [generování hardwaru](service-tiers-vcore.md#hardware-generations).
@@ -169,12 +169,12 @@ Následující tabulka poskytuje pokyny pro konkrétní scénáře migrace:
 |---|---|---|---|
 |Standard|Obecné účely|Boku|Může migrovat v libovolném pořadí, ale musí zajistit odpovídající velikost vCore, jak je popsáno výše.|
 |Premium|Důležité pro podnikání|Boku|Může migrovat v libovolném pořadí, ale musí zajistit odpovídající velikost vCore, jak je popsáno výše.|
-|Standard|Důležité pro podnikání|Upgrade|Nejprve je třeba migrovat sekundární|
+|Standard|Důležité pro podnikání|Upgradovat|Nejprve je třeba migrovat sekundární|
 |Důležité pro podnikání|Standard|Downgrade|Nejprve je třeba migrovat primární|
 |Premium|Obecné účely|Downgrade|Nejprve je třeba migrovat primární|
-|Obecné účely|Premium|Upgrade|Nejprve je třeba migrovat sekundární|
+|Obecné účely|Premium|Upgradovat|Nejprve je třeba migrovat sekundární|
 |Důležité pro podnikání|Obecné účely|Downgrade|Nejprve je třeba migrovat primární|
-|Obecné účely|Důležité pro podnikání|Upgrade|Nejprve je třeba migrovat sekundární|
+|Obecné účely|Důležité pro podnikání|Upgradovat|Nejprve je třeba migrovat sekundární|
 ||||
 
 ## <a name="migrate-failover-groups"></a>Migrace skupin převzetí služeb při selhání

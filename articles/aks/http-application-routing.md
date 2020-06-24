@@ -6,12 +6,12 @@ author: lachie83
 ms.topic: article
 ms.date: 08/06/2019
 ms.author: laevenso
-ms.openlocfilehash: 6ffc9daaf1b87fc9fb6ebbb0f2787f07282afe5e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 56416b540072359169e4eb6da67f15588fc4daf4
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80632407"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298680"
 ---
 # <a name="http-application-routing"></a>Směrování aplikace HTTP
 
@@ -38,24 +38,25 @@ az aks create --resource-group myResourceGroup --name myAKSCluster --enable-addo
 ```
 
 > [!TIP]
-> Pokud chcete povolit vícenásobné doplňky, poskytněte je jako seznam oddělený čárkami. Pokud chcete například povolit směrování a monitorování aplikací HTTP, použijte formát `--enable-addons http_application_routing,monitoring`.
+> Pokud chcete povolit vícenásobné doplňky, poskytněte je jako seznam oddělený čárkami. Pokud chcete například povolit směrování a monitorování aplikací HTTP, použijte formát `--enable-addons http_application_routing,monitoring` .
 
-V existujícím clusteru AKS můžete taky povolit směrování HTTP pomocí příkazu [AZ AKS Enable-addons][az-aks-enable-addons] . Pokud chcete povolit směrování protokolu HTTP v existujícím clusteru, `--addons` přidejte parametr a zadejte *http_application_routing* , jak je znázorněno v následujícím příkladu:
+V existujícím clusteru AKS můžete taky povolit směrování HTTP pomocí příkazu [AZ AKS Enable-addons][az-aks-enable-addons] . Pokud chcete povolit směrování protokolu HTTP v existujícím clusteru, přidejte `--addons` parametr a zadejte *http_application_routing* , jak je znázorněno v následujícím příkladu:
 
 ```azurecli
 az aks enable-addons --resource-group myResourceGroup --name myAKSCluster --addons http_application_routing
 ```
 
-Po nasazení nebo aktualizaci clusteru použijte příkaz [AZ AKS show][az-aks-show] , který načte název zóny DNS. Tento název je nutný k nasazení aplikací do clusteru AKS.
+Po nasazení nebo aktualizaci clusteru použijte příkaz [AZ AKS show][az-aks-show] , který načte název zóny DNS. 
 
 ```azurecli
 az aks show --resource-group myResourceGroup --name myAKSCluster --query addonProfiles.httpApplicationRouting.config.HTTPApplicationRoutingZoneName -o table
 ```
 
-Výsledek
+Tento název je nutný k nasazení aplikací do clusteru AKS a je zobrazený v následujícím příkladu výstupu:
 
+```console
 9f9c1fe7-21a1-416d-99cd-3543bb92e4c3.eastus.aksapp.io
-
+```
 
 ## <a name="deploy-http-routing-portal"></a>Nasazení směrování HTTP: portál
 
@@ -77,7 +78,6 @@ annotations:
 ```
 
 Vytvořte soubor s názvem **Samples-http-Application-Routing. yaml** a ZKOPÍRUJTE následující YAML. Na řádku 43 aktualizujte `<CLUSTER_SPECIFIC_DNS_ZONE>` pomocí názvu zóny DNS shromážděného v předchozím kroku tohoto článku.
-
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -136,6 +136,12 @@ spec:
 ```
 
 K vytvoření prostředků použijte příkaz [kubectl Apply][kubectl-apply] .
+
+```bash
+kubectl apply -f samples-http-application-routing.yaml
+```
+
+Následující příklad ukazuje vytvořené prostředky:
 
 ```bash
 $ kubectl apply -f samples-http-application-routing.yaml
@@ -262,7 +268,13 @@ I0426 21:51:58.042932       9 controller.go:179] ingress backend successfully re
 
 ## <a name="clean-up"></a>Vyčištění
 
-Odeberte přidružené objekty Kubernetes vytvořené v tomto článku.
+Odeberte přidružené objekty Kubernetes vytvořené v tomto článku pomocí `kubectl delete` .
+
+```bash
+kubectl delete -f samples-http-application-routing.yaml
+```
+
+Ukázkový výstup zobrazuje objekty Kubernetes, které byly odebrány.
 
 ```bash
 $ kubectl delete -f samples-http-application-routing.yaml

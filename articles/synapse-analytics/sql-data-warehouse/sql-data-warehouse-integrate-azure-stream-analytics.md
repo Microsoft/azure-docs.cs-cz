@@ -6,19 +6,19 @@ author: mlee3gsd
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 2/5/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: e281f8a1fb3959256d836134b4c59f5399deb9bd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 90e339ba8454dfdfc3f724ea12932a3e8e5912c2
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80633283"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213342"
 ---
-# <a name="use-azure-stream-analytics-with-azure-synapse-analytics"></a>Použití Azure Stream Analytics se službou Azure synapse Analytics
+# <a name="use-azure-stream-analytics-with-azure-synapse-analytics"></a>Použití Azure Stream Analytics se službou Azure Synapse Analytics
 
 Azure Stream Analytics je plně spravovaná služba, která poskytuje vysoce dostupná a škálovatelná komplexní zpracování událostí přes streamovaná data v cloudu s nízkou latencí. Základní informace najdete v tématu [Úvod do Azure Stream Analytics](../../stream-analytics/stream-analytics-introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). Pak můžete zjistit, jak vytvořit ucelené řešení pomocí Stream Analytics pomocí kurzu Začínáme s [Azure Stream Analytics](../../stream-analytics/stream-analytics-real-time-fraud-detection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) .
 
@@ -36,7 +36,7 @@ V tomto článku se dozvíte, jak používat datový sklad jako výstupní jímk
 
 ## <a name="specify-streaming-output-to-point-to-your-data-warehouse"></a>Zadejte výstup streamování, který odkazuje na datový sklad.
 
-### <a name="step-1"></a>Krok 1
+### <a name="step-1"></a>Step 1
 
 V Azure Portal přejděte na Stream Analytics úlohu a v nabídce **topologie úloh** klikněte na **výstupy** .
 
@@ -102,7 +102,7 @@ WITH (DISTRIBUTION = ROUND_ROBIN)
 
 V úloze Azure Portal for Stream Analytics klikněte na název vaší úlohy.  V podokně ***podrobností výstupu*** klikněte na tlačítko ***test*** .
 
-![Tlačítko Test na výstupu Details](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asatest.png) v případě úspěšného připojení k databázi se zobrazí oznámení na portálu.
+![Tlačítko Test na výstupu details v ](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asatest.png) případě úspěšného připojení k databázi se zobrazí oznámení na portálu.
 
 ### <a name="step-6"></a>Krok 6
 

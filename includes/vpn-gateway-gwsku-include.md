@@ -31,7 +31,7 @@ Při vytváření brány virtuální sítě musíte určit SKU brány, které ch
 
 Nové skladové položky brány VPN zefektivňují sady funkcí nabízené na branách:
 
-| **SKLADOVÉ**| **Funkce**|
+| **SKU**| **Funkce**|
 | ---    | ---         |
 |**Základní** (* *)   | **Síť VPN založená na směrování**: 10 tunelů pro S2S/připojení; žádné ověřování RADIUS pro P2S; žádná IKEv2 pro P2S<br>**Síť VPN založená na zásadách**: (IKEv1): 1 tunelové připojení S2S/připojení; žádné P2S|
 | **Všechny skladové položky Generation1 a Generation2 s výjimkou úrovně Basic** | **Síť VPN založená na směrování**: až 30 tunelů (*), P2S, BGP, aktivní-aktivní, vlastní zásady IPSec/IKE, koexistence EXPRESSROUTE/VPN |
@@ -39,18 +39,18 @@ Nové skladové položky brány VPN zefektivňují sady funkcí nabízené na br
 
 (*) Můžete nakonfigurovat "PolicyBasedTrafficSelectors" pro připojení brány sítě VPN založené na trasách k několika místním zařízením brány firewall na základě zásad. Podrobnosti najdete v tématu věnovaném [připojení bran VPN k několika místním zařízením VPN založeným na zásadách s využitím PowerShellu](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md).
 
-(\*\*) Základní SKU se považuje za starší SKU. Základní skladová položka má určitá omezení funkcí. Nemůžete změnit velikost brány, která používá základní SKU na jednu z nových SKU brány, musíte místo toho přejít na novou SKU, která zahrnuje odstranění a opětovné vytvoření brány VPN.
+( \* \* ) Základní SKU se považuje za starší SKU. Základní skladová položka má určitá omezení funkcí. Nemůžete změnit velikost brány, která používá základní SKU na jednu z nových SKU brány, musíte místo toho přejít na novou SKU, která zahrnuje odstranění a opětovné vytvoření brány VPN.
 
 ###  <a name="gateway-skus---production-vs-dev-test-workloads"></a><a name="workloads"></a>SKU brány – provozní a vývojové a testovací úlohy
 
 Vzhledem k rozdílům ve SLA a sadách funkcí doporučujeme pro produkci vs. vývoj a testování následující SKU:
 
-| **Úloha**                       | **SKU**               |
+| **Úloha**                       | **Skladové položky**               |
 | ---                                | ---                    |
 | **Produkce, kritické úlohy** | Všechny skladové položky Generation1 a Generation2 s výjimkou úrovně Basic |
 | **Vývoj a testování nebo testování konceptu**   | Základní (* *)                 |
 |                                    |                        |
 
-(\*\*) Základní SKU se považuje za starší položku SKU a má omezení funkcí. Před použitím základní SKU ověřte, zda je funkce, kterou potřebujete, podporována.
+( \* \* ) Základní SKU se považuje za starší položku SKU a má omezení funkcí. Před použitím základní SKU ověřte, zda je funkce, kterou potřebujete, podporována.
 
 Pokud používáte staré SKU (starší verze), doporučení pro produkční skladová jednotka jsou standardní a HighPerformance. Informace a pokyny pro staré skladové položky naleznete v tématu [SKU brány (starší verze)](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md).

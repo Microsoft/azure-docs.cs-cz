@@ -6,16 +6,16 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/22/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 558b16fc348728c507af1fa0260a67ccacefed0f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 40a9e5268b7fccc5c01775c10e55eee47f1aaf3d
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416147"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213376"
 ---
 # <a name="use-transactions-in-synapse-sql-pool"></a>Použití transakcí v synapse fondu SQL
 
@@ -47,7 +47,7 @@ V následující tabulce byly provedeny dvě předpoklady:
 | [DWU](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | Cap na distribuci (GB) | Počet distribucí | MAXIMÁLNÍ velikost transakce (GB) | Počet řádků na distribuci | Maximální počet řádků na transakci |
 | --- | --- | --- | --- | --- | --- |
 | DW100c |1 |60 |60 |4 000 000 |240 000 000 |
-| DW200c |1,5 |60 |90 |6 000 000 |360 000 000 |
+| DW200c |1.5 |60 |90 |6 000 000 |360 000 000 |
 | DW300c |2.25 |60 |135 |9 000 000 |540 000 000 |
 | DW400c |3 |60 |180 |12 000 000 |720 000 000 |
 | DW500c. |3,75 |60 |225 |15 000 000 |900 000 000 |
@@ -68,7 +68,7 @@ V následující tabulce byly provedeny dvě předpoklady:
 | [DWU](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | Cap na distribuci (GB) | Počet distribucí | MAXIMÁLNÍ velikost transakce (GB) | Počet řádků na distribuci | Maximální počet řádků na transakci |
 | --- | --- | --- | --- | --- | --- |
 | OD DW100 |1 |60 |60 |4 000 000 |240 000 000 |
-| DW200 |1,5 |60 |90 |6 000 000 |360 000 000 |
+| DW200 |1.5 |60 |90 |6 000 000 |360 000 000 |
 | DW300 |2.25 |60 |135 |9 000 000 |540 000 000 |
 | DW400 |3 |60 |180 |12 000 000 |720 000 000 |
 | DW500 |3,75 |60 |225 |15 000 000 |900 000 000 |

@@ -19,7 +19,7 @@ ms.locfileid: "84231596"
 
 1. V části **vybrat cíl publikování**použijte možnosti publikování uvedené v následující tabulce: 
 
-    | Možnost      | Popis                                |
+    | Možnost      | Description                                |
     | ------------ |  -------------------------------------------------- |
     | **Plán spotřeby Azure Functions** | Vytvořte aplikaci Function App v cloudovém prostředí Azure, které běží v [plánu spotřeby](../articles/azure-functions/functions-scale.md#consumption-plan). Když použijete plán spotřeby, platíte jenom za spuštění vaší aplikace Functions. Jiné plány hostování účtují vyšší náklady. Pokud spustíte v jiném než plánu spotřeby, musíte spravovat [škálování aplikace Function App](../articles/azure-functions/functions-scale.md).| 
     | **Vytvořit nový** | V Azure se vytvoří nová aplikace Function App se souvisejícími prostředky. <br/>Pokud zvolíte **Vybrat existující**, všechny soubory v existující aplikaci Function App v Azure se přepíší soubory z místního projektu. Tuto možnost použijte pouze v případě, že znovu publikujete aktualizace existující aplikace Function App. |

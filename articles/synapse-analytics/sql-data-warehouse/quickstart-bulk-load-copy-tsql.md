@@ -6,17 +6,17 @@ author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
-ms.date: 04/08/2020
+ms.subservice: sql-dw
+ms.date: 06/18/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: d39b3085a802ca0ff745ab1f63f4a8fba966ea48
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f82bedc6ef638714b2641003e8274c2024a86c2e
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81115008"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213002"
 ---
 # <a name="quickstart-bulk-load-data-using-the-copy-statement"></a>Rychlý Start: hromadné načtení dat pomocí příkazu COPY
 
@@ -35,6 +35,34 @@ V tomto rychlém startu budete hromadně načítat data do fondu SQL pomocí jed
 ## <a name="prerequisites"></a>Požadavky
 
 V tomto rychlém startu se předpokládá, že už máte fond SQL. Pokud se fond SQL nevytvořil, použijte rychlý Start pro [Vytvoření a připojení – portál](create-data-warehouse-portal.md) .
+
+## <a name="set-up-the-required-permissions"></a>Nastavte požadovaná oprávnění.
+
+```sql
+-- List the permissions for your user
+select  princ.name
+,       princ.type_desc
+,       perm.permission_name
+,       perm.state_desc
+,       perm.class_desc
+,       object_name(perm.major_id)
+from    sys.database_principals princ
+left join
+        sys.database_permissions perm
+on      perm.grantee_principal_id = princ.principal_id
+where name = '<yourusername>';
+
+--Make sure your user has the permissions to CREATE tables in the [dbo] schema
+GRANT CREATE TABLE TO <yourusername>;
+GRANT ALTER ON SCHEMA::dbo TO <yourusername>;
+
+--Make sure your user has ADMINISTER DATABASE BULK OPERATIONS permissions
+GRANT ADMINISTER DATABASE BULK OPERATIONS TO <yourusername>
+
+--Make sure your user has INSERT permissions on the target table
+GRANT INSERT ON <yourtable> TO <yourusername>
+
+```
 
 ## <a name="create-the-target-table"></a>Vytvoření cílové tabulky
 

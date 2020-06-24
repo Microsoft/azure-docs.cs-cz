@@ -18,7 +18,7 @@ ms.locfileid: "74894367"
 |  | **Megabitů za sekundu** | **Pakety za sekundu** | **Připojení za sekundu** | **Brána sítě VPN a ExpressRoute vedle sebe** | **FastPath** |
 | --- | --- | --- | --- | --- | --- |
 | **Základní SKU (zastaralé)** |500 | Není známo | Není známo |Ne | Ne |
-| **SKU/ErGw1AZ úrovně Standard** |1 000 | 100 000 | 7 000 | Ano | Ne |
-| **SKU s vysokým výkonem/ErGw2AZ** |2 000 | 250 000 | 14 000 | Ano | Ne |
+| **SKU/ErGw1AZ úrovně Standard** |1 000 | 100 000 | 7 000 | Yes | No |
+| **SKU s vysokým výkonem/ErGw2AZ** |2 000 | 250 000 | 14 000 | Yes | No |
 | **Ultra Performance SKU/ErGw3AZ** |10 000 | 1 000 000 | 28 000 | Ano | Ano |
 

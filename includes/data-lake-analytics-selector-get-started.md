@@ -16,7 +16,7 @@ ms.lasthandoff: 04/28/2020
 ms.locfileid: "79474488"
 ---
 > [!div class="op_single_selector"]
-> * [Portál](../articles/data-lake-analytics/data-lake-analytics-get-started-portal.md)
+> * [Azure Portal](../articles/data-lake-analytics/data-lake-analytics-get-started-portal.md)
 > * [PowerShell](../articles/data-lake-analytics/data-lake-analytics-get-started-powershell.md)
 > * [Visual Studio](../articles/data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md)
 > * [Azure CLI](../articles/data-lake-analytics/data-lake-analytics-get-started-cli.md)

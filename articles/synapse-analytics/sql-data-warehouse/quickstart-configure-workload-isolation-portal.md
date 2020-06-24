@@ -6,21 +6,21 @@ author: ronortloff
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 05/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 70ac4942c397e8ca5db2d1b5041d0d9d43ae7222
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 30862a0c16995e143df72f2a243419819941f54e
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82794053"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213036"
 ---
 # <a name="quickstart-configure-synapse-sql-pool-workload-isolation-using-a-workload-group-in-the-azure-portal"></a>Rychlý Start: Konfigurace izolace úloh synapse fondu SQL pomocí skupiny úloh v Azure Portal
 
-V tomto rychlém startu nakonfigurujete [izolaci úloh](sql-data-warehouse-workload-isolation.md) vytvořením skupiny úloh pro rezervaci prostředků.  Pro účely tohoto kurzu vytvoříme skupinu úloh pro volání `DataLoads`načítání dat. Skupina úloh bude rezervovat 20% systémových prostředků.  Díky 20% izolaci pro zatížení dat jsou zaručené prostředky, které jim umožňují vysáhnout SLA.  Po vytvoření skupiny úloh [vytvořte klasifikátor úloh](quickstart-create-a-workload-classifier-portal.md) pro přiřazení dotazů do této skupiny úloh.
+V tomto rychlém startu nakonfigurujete [izolaci úloh](sql-data-warehouse-workload-isolation.md) vytvořením skupiny úloh pro rezervaci prostředků.  Pro účely tohoto kurzu vytvoříme skupinu úloh pro volání načítání dat `DataLoads` . Skupina úloh bude rezervovat 20% systémových prostředků.  Díky 20% izolaci pro zatížení dat jsou zaručené prostředky, které jim umožňují vysáhnout SLA.  Po vytvoření skupiny úloh [vytvořte klasifikátor úloh](quickstart-create-a-workload-classifier-portal.md) pro přiřazení dotazů do této skupiny úloh.
 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
@@ -67,7 +67,7 @@ Po vytvoření skupiny úloh se zobrazí oznámení na portálu.  Prostředky sk
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Pokud chcete odstranit `DataLoads` skupinu úloh vytvořenou v tomto kurzu:
-1. **`...`** Klikněte na napravo od skupiny `DataLoads` úloh.
+1. Klikněte na **`...`** napravo od `DataLoads` skupiny úloh.
 2. Klikněte na **Odstranit skupinu úloh**.
 3. Po zobrazení výzvy k potvrzení odstranění skupiny úloh klikněte na **Ano** .
 4. Klikněte na **Uložit**.
@@ -97,7 +97,7 @@ Pomocí těchto kroků vyčistěte prostředky.
 
 ## <a name="next-steps"></a>Další kroky
 
-Chcete-li `DataLoads` použít skupinu úloh, je nutné vytvořit [třídění úloh](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) , aby bylo možné směrovat požadavky do skupiny úloh.  Pokračujte v kurzu [Vytvoření klasifikátoru úloh](quickstart-create-a-workload-classifier-portal.md) a vytvořte třídění úloh pro `DataLoads`.
+Chcete-li použít `DataLoads` skupinu úloh, je nutné vytvořit [třídění úloh](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) , aby bylo možné směrovat požadavky do skupiny úloh.  Pokračujte v kurzu [Vytvoření klasifikátoru úloh](quickstart-create-a-workload-classifier-portal.md) a vytvořte třídění úloh pro `DataLoads` .
 
 ## <a name="see-also"></a>Viz také
 Podrobnosti o tom, jak monitorovat úlohy pro správu úloh, najdete v článku Jak [Spravovat a monitorovat správu úloh](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md) .

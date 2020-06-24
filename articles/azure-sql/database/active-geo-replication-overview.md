@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 04/28/2020
-ms.openlocfilehash: 051187a7dde7bf0ee04f8323cdecba01760de13d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 5449bb335232d3c7a6f2b97c5cce41a8bd2cf0f4
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046681"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85249750"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>Vytvoření a použití aktivní geografické replikace – Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -251,7 +251,7 @@ Jak je popsáno výše, aktivní geografická replikace se dá spravovat taky pr
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Použití převzetí služeb při selhání nebo FORCE_FAILOVER_ALLOW_DATA_LOSS k přepnutí sekundární databáze na primární pro zahájení převzetí služeb při selhání |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Pomocí odebrat sekundární na serveru ukončete replikaci dat mezi SQL Database a zadanou sekundární databází. |
 | [sys. geo_replication_links](/sql/relational-databases/system-dynamic-management-views/sys-geo-replication-links-azure-sql-database) |Vrátí informace o všech stávajících odkazech replikace pro každou databázi na serveru. |
-| [sys. dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) |Získá čas poslední replikace, prodlevu poslední replikace a další informace o odkazu replikace pro danou databázi SQL. |
+| [sys. dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) |Získá čas poslední replikace, prodlevu poslední replikace a další informace o odkazu replikace pro danou databázi. |
 | [sys. dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) |Zobrazuje stav všech databázových operací, včetně stavu replikačních odkazů. |
 | [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) |způsobí, že aplikace počká, až budou všechny potvrzené transakce replikovány a potvrzeny aktivní sekundární databází. |
 |  | |
@@ -282,8 +282,8 @@ Jak je popsáno výše, aktivní geografická replikace se dá spravovat taky pr
 | [Získat stav databáze pro vytvoření nebo aktualizaci](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Vrátí stav během operace vytvoření. |
 | [Nastavit sekundární databázi jako primární (plánované převzetí služeb při selhání)](https://docs.microsoft.com/rest/api/sql/replicationlinks/failover) |Nastaví, která sekundární databáze je primární databází převzetím služeb při selhání z aktuální primární databáze. **Tato možnost není pro spravovanou instanci SQL podporována.**|
 | [Nastavit sekundární databázi jako primární (neplánované převzetí služeb při selhání)](https://docs.microsoft.com/rest/api/sql/replicationlinks/failoverallowdataloss) |Nastaví, která sekundární databáze je primární databází převzetím služeb při selhání z aktuální primární databáze. Tato operace může způsobit ztrátu dat. **Tato možnost není pro spravovanou instanci SQL podporována.**|
-| [Získat odkaz replikace](https://docs.microsoft.com/rest/api/sql/replicationlinks/get) |Získá konkrétní odkaz replikace pro danou databázi SQL v partnerství geografické replikace. Načte informace viditelné v zobrazení katalogu sys. geo_replication_links. **Tato možnost není pro spravovanou instanci SQL podporována.**|
-| [Odkazy replikace – seznam podle databáze](https://docs.microsoft.com/rest/api/sql/replicationlinks/listbydatabase) | Získá všechny odkazy replikace pro danou databázi SQL v partnerství geografické replikace. Načte informace viditelné v zobrazení katalogu sys. geo_replication_links. |
+| [Získat odkaz replikace](https://docs.microsoft.com/rest/api/sql/replicationlinks/get) |Získá konkrétní odkaz replikace pro danou databázi v rámci partnerství geografické replikace. Načte informace viditelné v zobrazení katalogu sys. geo_replication_links. **Tato možnost není pro spravovanou instanci SQL podporována.**|
+| [Odkazy replikace – seznam podle databáze](https://docs.microsoft.com/rest/api/sql/replicationlinks/listbydatabase) | Získá všechny odkazy replikace pro danou databázi v rámci partnerství geografické replikace. Načte informace viditelné v zobrazení katalogu sys. geo_replication_links. |
 | [Odstranit odkaz replikace](https://docs.microsoft.com/rest/api/sql/replicationlinks/delete) | Odstraní odkaz replikace databáze. Nejde provést během převzetí služeb při selhání. |
 |  | |
 

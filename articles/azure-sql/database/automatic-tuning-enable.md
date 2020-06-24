@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/03/2019
-ms.openlocfilehash: 02a6bba2dd4162a1cd9f05249174c2174a85b931
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a13a873fff8f471f7c82775736a34ef9f74aaea2
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84043685"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743503"
 ---
 # <a name="enable-automatic-tuning-in-the-azure-portal-to-monitor-queries-and-improve-workload-performance"></a>Povolit automatické ladění v Azure Portal pro monitorování dotazů a zlepšení výkonu úloh
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -25,7 +25,6 @@ ms.locfileid: "84043685"
 Azure SQL Database automaticky spravuje datové služby, které průběžně monitorují vaše dotazy a identifikují akci, kterou můžete provést za účelem zvýšení výkonu úloh. Můžete zkontrolovat doporučení a ručně je použít, nebo nechat Azure SQL Database automaticky použít opravné akce – jedná se o **Automatický režim optimalizace**.
 
 Automatické ladění lze povolit na serveru nebo na úrovni databáze prostřednictvím:
-
 
 - [Azure Portal](automatic-tuning-enable.md#azure-portal)
 - [REST API](automatic-tuning-enable.md#rest-api) volání
@@ -42,7 +41,7 @@ Automatické ladění lze povolit na serveru nebo na úrovni databáze prostřed
 Na úrovni serveru můžete zvolit dědění konfigurace automatického ladění z "výchozí hodnoty Azure" nebo Nedědit konfiguraci. Ve výchozím nastavení Azure jsou povolené FORCE_LAST_GOOD_PLAN, CREATE_INDEX je zakázané a DROP_INDEX je zakázaná.
 
 > [!IMPORTANT]
-> Od března 2020 jsou ve výchozím nastavení Azure pro automatické ladění následující:
+> Od března 2020 nové výchozí hodnoty Azure pro automatické ladění jsou následující:
 >
 > - FORCE_LAST_GOOD_PLAN = Enabled, CREATE_INDEX = disabled a DROP_INDEX = Disabled.
 > - Stávající servery bez nakonfigurovaného automatického naladění předvoleb se automaticky nakonfigurují tak, aby ZDĚDILy výchozí hodnoty Azure. To platí pro všechny zákazníky, kteří aktuálně mají nastavení serveru pro automatické ladění v nedefinovaném stavu.

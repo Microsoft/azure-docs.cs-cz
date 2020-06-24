@@ -6,16 +6,16 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 5f10b987fa8783084b14774b9bce5e857f3c59c4
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a32ddf682504bc1e09329efb0803a46c9a9fd03b
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650473"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213869"
 ---
 # <a name="temporary-tables-in-synapse-sql-pool"></a>Dočasné tabulky v synapse fondu SQL
 Tento článek obsahuje základní pokyny k používání dočasných tabulek a zvýrazňuje principy dočasných tabulek úrovně relace. 
@@ -37,7 +37,7 @@ V prostředku fondu SQL nabízí dočasné tabulky přínos pro zvýšení výko
 
 ### <a name="create-a-temporary-table"></a>Vytvoření dočasné tabulky
 
-Dočasné tabulky jsou vytvářeny pomocí předpony názvu tabulky s `#` příponou.  Například:
+Dočasné tabulky jsou vytvářeny pomocí předpony názvu tabulky s `#` příponou.  Příklad:
 
 ```sql
 CREATE TABLE #stats_ddl

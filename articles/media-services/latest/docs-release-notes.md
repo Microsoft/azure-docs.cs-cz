@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: juliako
-ms.openlocfilehash: 8619366580dd77ae12c4c101c183532fec4da04a
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 40a2510fcb6fd5fe51cebc702604e2d09df7b061
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84430833"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84982165"
 ---
 # <a name="azure-media-services-v3-documentation-updates"></a>Aktualizace dokumentace k Azure Media Services V3
 
@@ -24,9 +24,13 @@ ms.locfileid: "84430833"
 
 Tento článek pojednává o nejnovějších aktualizacích dokumentace k Media Services V3.
 
-## <a name="june-2020"></a>Červeně 2020
+## <a name="june-2020"></a>Červen 2020
 
-Verze Preview živé analýzy videí na IoT Edge se stala veřejnou. Podívejte se na podrobnosti v tématu [analýza živých videí v dokumentaci IoT Edge](https://docs.microsoft.com/azure/media-services/live-video-analytics-edge/) .
+* Verze Preview živé analýzy videí na IoT Edge se stala veřejnou. Podívejte se na podrobnosti v tématu [analýza živých videí v dokumentaci IoT Edge](https://docs.microsoft.com/azure/media-services/live-video-analytics-edge/) .
+* Nové rychlé starty:
+
+    * [Použití portálu k nahrávání, kódování a streamování obsahu](manage-assets-quickstart.md)
+    * [Použití portálu k šifrování obsahu](encrypt-content-quickstart.md)
 
 ## <a name="april-2020"></a>Duben 2020
 

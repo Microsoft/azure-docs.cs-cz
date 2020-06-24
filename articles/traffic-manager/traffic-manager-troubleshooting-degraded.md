@@ -7,17 +7,17 @@ author: rohinkoul
 manager: kumudD
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: rohink
-ms.openlocfilehash: 6d720067b619b0d871899f2ac9025a9d8ab24d95
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b0585c755e8dd9a6625a8259dc71ca521f156afb
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82130771"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84704059"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Řešení potíží při sníženém výkonu služby Azure Traffic Manager
 
@@ -35,10 +35,10 @@ Pokud stav Traffic Manager zobrazuje **neaktivní** stav, mohou být oba koncov�
 * Odpověď přesměrování 30krát se považuje za neočekávanou, pokud jste ji nezadali jako platný kód odezvy v [rozsahu očekávaných stavových kódů](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring) vašeho profilu Traffic Manager. Traffic Manager netestuje cíl přesměrování.
 * V případě sond protokolu HTTPs se chyby certifikátů ignorují.
 * Skutečný obsah cesty testu nezáleží na tom, dokud se vrátí 200. Běžným způsobem je zjišťování adresy URL pro nějaký statický obsah, jako je "/favicon.ico". Dynamický obsah, podobně jako stránky ASP, nemusí vždycky vracet 200, i když je aplikace v pořádku.
-* Osvědčeným postupem je nastavit cestu testu na něco, co má dostatek logiky pro zjištění, že je lokalita nahoru nebo dolů. V předchozím příkladu nastavením cesty na "/favicon.ico" otestujete pouze to, že W3wp. exe reaguje. Tato sonda nemusí znamenat, že vaše webová aplikace je v pořádku. Lepší možností je nastavit cestu k nějakému typu, například "/PROBE.aspx", který má logiku k určení stavu webu. Můžete například použít čítače výkonu k využití procesoru nebo změřit počet neúspěšných žádostí. Nebo se můžete pokusit o přístup k prostředkům databáze nebo stavu relace, abyste se ujistili, že webová aplikace funguje.
+* Osvědčeným postupem je nastavit cestu testu na něco, co má dostatek logiky pro zjištění, že je lokalita nahoru nebo dolů. V předchozím příkladu nastavením cesty na "/favicon.ico" otestujete pouze to, zda w3wp.exe reaguje. Tato sonda nemusí znamenat, že vaše webová aplikace je v pořádku. Lepší možností je nastavit cestu k nějakému typu, například "/PROBE.aspx", který má logiku k určení stavu webu. Můžete například použít čítače výkonu k využití procesoru nebo změřit počet neúspěšných žádostí. Nebo se můžete pokusit o přístup k prostředkům databáze nebo stavu relace, abyste se ujistili, že webová aplikace funguje.
 * Pokud dojde ke zhoršení všech koncových bodů v profilu, Traffic Manager zachází se všemi koncovými body jako v pořádku a směruje provoz do všech koncových bodů. Tím zajistíte, že problémy s mechanismem zjišťování nevedou k úplnému výpadku vaší služby.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Chcete-li vyřešit selhání sondy, potřebujete nástroj, který zobrazuje stavový kód HTTP vrácený z adresy URL testu. K dispozici je mnoho nástrojů, které ukazují nezpracované odpovědi HTTP.
 
@@ -48,7 +48,7 @@ Chcete-li vyřešit selhání sondy, potřebujete nástroj, který zobrazuje sta
 
 K zobrazení odpovědí HTTP můžete také použít kartu síť v ladicích nástrojích F12 v Internet Exploreru.
 
-V tomto příkladu chceme zobrazit odpověď z naší adresy URL testu: http:\//watestsdp2008r2.cloudapp.NET:80/PROBE. Následující příklad prostředí PowerShell znázorňuje problém.
+V tomto příkladu chceme zobrazit odpověď z naší adresy URL testu: http: \/ /watestsdp2008r2.cloudapp.NET:80/PROBE. Následující příklad prostředí PowerShell znázorňuje problém.
 
 ```powershell
 Invoke-WebRequest 'http://watestsdp2008r2.cloudapp.net/Probe' -MaximumRedirection 0 -ErrorAction SilentlyContinue | Select-Object StatusCode,StatusDescription

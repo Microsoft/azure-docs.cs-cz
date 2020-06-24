@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 019a03103122d35f6d4bf1b817ddc80f91f4c568
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 4b0f0ed5a36af0890577fcc6fd097698c147c0d6
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220895"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298102"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Co je nového v Azure Active Directory?
 
@@ -40,6 +40,30 @@ Tato stránka se aktualizuje měsíčně, takže ji můžete pravidelně znovu n
 ---
 
 ## <a name="may-2020"></a>Květen 2020
+
+### <a name="retirement-of-properties-in-signins-riskyusers-and-riskdetections-apis"></a>Vyřazení vlastností v rozhraních API nenašla, riskyUsers a riskDetections
+
+**Zadejte:** Plánování změn  
+**Kategorie služby:** Ochrana identity  
+**Schopnost produktu:** Zabezpečení identity & ochrana
+
+V současné době výčtové typy slouží k reprezentaci vlastnosti riskType v rozhraní riskDetections API i v riskyUserHistoryItem (ve verzi Preview). Výčtové typy se používají také pro vlastnost riskEventTypes v rozhraní nenašla API. Po přeposlání budeme tyto vlastnosti zastupovat jako řetězce. 
+
+Zákazníci by měli přejít na vlastnost riskEventType v rozhraní beta riskDetections a riskyUserHistoryItem API a na vlastnost riskEventTypes_v2 v rozhraní beta nenašla API do 9. září 2020. V tomto datu bude vycházet z aktuálních vlastností riskType a riskEventTypes. Další informace najdete [v tématu změny vlastností rizikových událostí a rozhraní API ochrany identity na Microsoft Graph](https://developer.microsoft.com/graph/blogs/changes-to-risk-event-properties-and-identity-protection-apis-on-microsoft-graph/).
+
+--- 
+
+### <a name="deprecation-of-riskeventtypes-property-in-signins-v10-api-on-microsoft-graph"></a>Vyřazení vlastnosti riskEventTypes v rozhraní API nenašla v 1.0 v Microsoft Graph
+
+**Zadejte:** Plánování změn  
+**Kategorie služby:** Zpravodajský  
+**Schopnost produktu:** Zabezpečení identity & ochrana
+
+Výčtové typy budou přepnuty na typy řetězců při reprezentaci vlastností rizikové události Microsoft Graph září 2020. Kromě ovlivnění rozhraní API verze Preview Tato změna ovlivní také nenašla rozhraní API v produkčním prostředí.
+
+Zavedli jsme novou vlastnost riskEventsTypes_v2 (String) na rozhraní API pro nenašla v 1.0. Aktuální vlastnost riskEventTypes (Enum) vyřadíme 11. června 2022 v souladu s našimi zásadami pro vyřazení z provozu Microsoft Graph. Zákazníci by měli přejít na vlastnost riskEventTypes_v2 v rozhraní nenašla API v 1.0 od 11. června 2022. Další informace najdete v tématu vyřazení [vlastnosti riskEventTypes v rozhraní API nenašla v 1.0 na Microsoft Graph](https://developer.microsoft.com/graph/blogs/deprecation-of-riskeventtypes-property-in-signins-v1-0-api-on-microsoft-graph//).
+
+--- 
 
 ### <a name="upcoming-changes-to-mfa-email-notifications"></a>Nadcházející změny e-mailových oznámení MFA
 
@@ -255,7 +279,7 @@ Ověřování vydavatele (Preview) pomáhá správcům a koncovým uživatelům 
 
 **Zadejte:** Kategorie změněné **služby funkcí:** ověřování **– schopnost produktu:** vývojové prostředí
 
-Vzhledem k tomu, že se v moderních prohlížečích používají [omezení souborů cookie třetích stran](https://docs.microsoft.com/azure/active-directory/develop/reference-third-party-cookies-spas), jako je Safari ITP, bude muset jednostránkové používat tok autorizačního kódu místo implicitního toku pro zachování jednotného přihlašování. MSAL. js v 2. x teď bude podporovat tok autorizačního kódu. V takovém případě odpovídají aktualizace Azure Portal, takže můžete zabezpečené ověřování pomocí hesla zadat jako "Spa" a použít tok kódu ověřování. Pokyny najdete [v tématu rychlý Start: přihlášení uživatelů a získání přístupového tokenu v zabezpečeném kódu v jazyce JavaScript pomocí toku kódu ověřování](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v2-javascript-auth-code).
+Vzhledem k tomu, že se v moderních prohlížečích používají [omezení souborů cookie třetích stran](https://docs.microsoft.com/azure/active-directory/develop/reference-third-party-cookies-spas), jako je Safari ITP, bude muset jednostránkové používat tok autorizačního kódu místo implicitního toku pro zachování jednotného přihlašování. MSAL.js v 2. x teď bude podporovat tok autorizačního kódu. V takovém případě odpovídají aktualizace Azure Portal, takže můžete zabezpečené ověřování pomocí hesla zadat jako "Spa" a použít tok kódu ověřování. Pokyny najdete [v tématu rychlý Start: přihlášení uživatelů a získání přístupového tokenu v zabezpečeném kódu v jazyce JavaScript pomocí toku kódu ověřování](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v2-javascript-auth-code).
 
 ---
 

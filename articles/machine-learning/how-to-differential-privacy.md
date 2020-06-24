@@ -10,12 +10,12 @@ ms.author: slbird
 author: slbird
 ms.reviewer: luquinta
 ms.date: 05/17/2020
-ms.openlocfilehash: 65f395197256132b6b92b234932fd17ec5ba552c
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: b43fd25e77e07b7b64416d8784d47c14fed48ea7
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433205"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84981842"
 ---
 # <a name="use-differential-privacy-in-azure-machine-learning"></a>Použití rozdílových osobních údajů v Azure Machine Learning
 
@@ -24,6 +24,9 @@ ms.locfileid: "84433205"
 Naučte se, jak pomocí balíčků WhiteNoise Pythonu použít pro Azure Machine Learning modelů rozdílové Doporučené postupy ochrany osobních údajů.
 
 Rozdílová ochrana osobních údajů je zlatá standardní definice ochrany osobních údajů. Systémy, které vyhovují této definici ochrany osobních údajů, poskytují silné záruky proti široké škále útoků na obnovu a reidentifikaci dat, včetně útoků nežádoucí osoby, kteří mají pomocné informace. Přečtěte si další informace o [fungování rozdílového soukromí](./concept-differential-privacy.md).
+
+> [!NOTE]
+> Všimněte si, že přejmenováváme sadu nástrojů a zavádíme nové jméno do nadcházejících týdnů. 
 
 ## <a name="prerequisites"></a>Požadavky
 

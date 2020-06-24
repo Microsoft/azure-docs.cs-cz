@@ -6,17 +6,17 @@ documentationcenter: ''
 author: tremansdoerfer
 ms.service: frontdoor
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/06/2020
 ms.author: rimansdo
-ms.openlocfilehash: 3c0b23bc7c25c56953d267e5193a63fe08e35f64
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6f91a98372aa85a52a6013a121235ca354004a84
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664841"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743537"
 ---
 # <a name="quickly-scale-and-protect-a-web-application-using-azure-front-door-and-azure-web-application-firewall-waf"></a>Rychlé škálování a ochrana webové aplikace s využitím front-bran Azure a firewallu webových aplikací Azure (WAF)
 

@@ -2,14 +2,14 @@
 title: Sledování služby Azure blockchain (ABS)
 description: Monitorování služby Azure blockchain prostřednictvím Azure Monitor
 ms.date: 01/08/2020
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: v-umha
-ms.openlocfilehash: 6f2a91a8ffce67d3c4008a7587f2787f6446c341
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9d5b3cb02f6e4cd0804dc7fb15a4eacc8370bb99
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76293245"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214039"
 ---
 # <a name="monitor-azure-blockchain-service-through-azure-monitor"></a>Monitorování služby Azure blockchain prostřednictvím Azure Monitor  
 
@@ -79,7 +79,7 @@ Všechny protokoly prostředků sdílejí společné schéma nejvyšší úrovn�
 V následující tabulce jsou uvedeny vlastnosti pro protokoly proxy serveru Azure blockchain při jejich shromažďování v protokolu Azure Monitor nebo Azure Storage.  
 
 
-| Název vlastnosti  | Popis |
+| Název vlastnosti  | Description |
 |:---|:---|
 | time | Datum a čas (UTC), kdy došlo k operaci. |
 | Prostředku  | Prostředek služby Azure blockchain, pro který jsou protokoly povolené.  |
@@ -89,8 +89,8 @@ V následující tabulce jsou uvedeny vlastnosti pro protokoly proxy serveru Azu
 | NodeLocation  | Oblast Azure, ve které je nasazený člen blockchain.  |
 | BlockchainNodeName  | Název uzlu členu služby Azure blockchain, na kterém je operace prováděna.   |
 | EthMethod  | Metoda, kterou volá podkladový protokol blockchain, může být v kvoru eth_sendTransactions, eth_getBlockByNumber atd.  |
-| Agent  | Uživatelský agent, který funguje jménem uživatele, například webové prohlížeče Mozilla, Edge atd. Příklady těchto hodnot: "Mozilla/5.0 (Linux x64) Node. js/8.16.0 V8/6.2.414.77"  |
-| kód   | Kódy chyb HTTP. 4XX a 5XX jsou obvykle chybové stavy.  |
+| Agent  | Uživatelský agent, který funguje jménem uživatele, například webové prohlížeče Mozilla, Edge atd. Příklady těchto hodnot: "Mozilla/5.0 (Linux x64) node.js/8.16.0 V8/6.2.414.77"  |
+| Kód   | Kódy chyb HTTP. 4XX a 5XX jsou obvykle chybové stavy.  |
 | NodeHost  | Název DNS uzlu   |
 | RequestMethodName | Metoda HTTP s názvem, možné hodnoty jsou zde uvedeny pro možnost vytvořit člena, získat podrobnosti o existujícím členovi, odstranit člena odstranit, opravit člena.   |
 | BlockchainMemberName  | Název členu služby Azure blockchain zadaný uživatelem  |
@@ -105,7 +105,7 @@ V následující tabulce jsou uvedeny vlastnosti pro protokoly proxy serveru Azu
 V následující tabulce jsou uvedeny vlastnosti pro protokoly aplikací Azure blockchain.
 
 
-| Název vlastnosti  | Popis |
+| Název vlastnosti  | Description |
 |:---|:---|
 | time | Datum a čas (UTC), kdy došlo k operaci. |
 | Prostředku  | Prostředek služby Azure blockchain, pro který jsou protokoly povolené.|
@@ -115,7 +115,7 @@ V následující tabulce jsou uvedeny vlastnosti pro protokoly aplikací Azure b
 | NodeLocation  | Oblast Azure, ve které je nasazený člen blockchain.  |
 | BlockchainNodeName  | Název uzlu členu služby Azure blockchain, na kterém je operace prováděna.   |
 | BlockchainMessage    | Toto pole bude obsahovat protokol aplikace blockchain, který představuje jednoduché protokoly dat. Pro ABS – kvorum by mělo mít protokoly kvora. Obsahuje informace o tom, jaký typ záznamu protokolu je to informativní, chyba, upozornění a řetězec, který poskytuje další informace o provedené akci.   |
-| TenantID    | Tenant pro konkrétní oblast služby Azure blockchain. Formát tohoto pole je https://westlake-rp-prod. <region>. cloudapp.Azure.com, kde oblast určuje oblast Azure nasazeného člena.       |
+| TenantID    | Tenant pro konkrétní oblast služby Azure blockchain. Formát tohoto pole je https://westlake-rp-prod . <region> . cloudapp.azure.com WHERE určuje oblast Azure nasazeného člena.       |
 | SourceSystem   | Systém tyto protokoly naplní, v tomto případě je to **Azure**.    |
 
 
@@ -131,7 +131,7 @@ Seznam všech podporovaných Azure Monitor metriky (včetně služby Azure block
 Následující tabulka uvádí seznam blockchain metrik, které se shromažďují pro prostředek člena služby Azure blockchain.
 
 
-| Název metriky | Jednotka  |  Typ agregace| Popis   |
+| Název metriky | Jednotka  |  Typ agregace| Description   |
 |---|---|---|---|
 | Nedokončené transakce   | Počet  |  Průměr | Počet transakcí, které čekají na dolována za účely.   |
 | Zpracované bloky   | Počet  | Součet  |  Počet bloků zpracovaných v každém časovém intervalu. Velikost bloku je v současné době 5 sekund, proto za minutu každý uzel zpracuje 12 bloků a 60 bloků za 5 minut.   |
@@ -143,7 +143,7 @@ Následující tabulka uvádí seznam blockchain metrik, které se shromažďuj�
 V následující tabulce jsou uvedeny různé metriky připojení, které jsou shromažďovány pro prostředek člena služby Azure blockchain. Jedná se o metriky NGINX proxy serveru.
 
 
-| Název metriky | Jednotka  |  Typ agregace| Popis |
+| Název metriky | Jednotka  |  Typ agregace| Description |
 |---|---|---|---|
 | Přijatá připojení   | Počet  |  Součet | Celkový počet přijatých připojení klientů.   |
 | Aktivní připojení  | Počet  | Průměr  |  Aktuální počet aktivních připojení klientů, včetně čekání na připojení.    |
@@ -156,7 +156,7 @@ V následující tabulce jsou uvedeny různé metriky připojení, které jsou s
 V následující tabulce jsou uvedeny metriky výkonu, které jsou shromažďovány pro každý uzel členského prostředku Azure blockchain.  
 
 
-| Název metriky | Jednotka  |  Typ agregace| Popis   |
+| Název metriky | Jednotka  |  Typ agregace| Description   |
 |---|---|---|---|
 | Procento využití procesoru   | Procento  |  Maximum | Procento využití procesoru.     |
 | Bajty čtení v/v   | Kilobajtů   | Součet  |  Součet čtených vstupně-výstupních bajtů ve všech uzlech členského prostředku blockchain      |

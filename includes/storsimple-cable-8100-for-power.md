@@ -25,7 +25,7 @@ ms.locfileid: "67175044"
    
     **Napájení kabelem na zařízení 8100**
    
-   | Popisek | Popis |
+   | Popisek | Description |
    |:--- |:--- |
    | 1 |PCM 0 |
    | 2 |Kontroler 1 |

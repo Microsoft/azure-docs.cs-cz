@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/08/2020
 ms.author: jingwang
-ms.openlocfilehash: 3ed1a952cb640fcd64808ba49e1a0937d71d769f
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 4e7828810a069756d1a0cde55ab47915ad11acc5
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84655635"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85249682"
 ---
 # <a name="monitor-copy-activity"></a>Monitorování aktivity kopírování
 
@@ -50,7 +50,7 @@ Dolní **Podrobnosti a trvání spuštění** popisují klíčové kroky, který
 
 V části výstup **výsledků spuštění aktivity kopírování**  >  **Output** , která se používá k vykreslování zobrazení monitorování uživatelského rozhraní, se také vrátí podrobnosti o spuštění aktivity kopírování a výkonnostní charakteristiky. Následuje úplný seznam vlastností, které mohou být vráceny. Uvidíte jenom vlastnosti, které se vztahují k vašemu scénáři kopírování. Informace o tom, jak programově monitorovat spuštění aktivit prostřednictvím kódu programu, najdete v tématu [programové sledování služby Azure Data Factory](monitor-programmatically.md).
 
-| Název vlastnosti  | Popis | Jednotka ve výstupu |
+| Název vlastnosti  | Description | Jednotka ve výstupu |
 |:--- |:--- |:--- |
 | Čtení z | Skutečné množství dat načtených ze zdroje. | Hodnota Int64, v bajtech |
 | Napsáno | Skutečná připojená Data zapsaná nebo potvrzená do jímky. Velikost může být jiná než `dataRead` velikost, protože souvisí s tím, jak jednotlivé úložiště dat data ukládají. | Hodnota Int64, v bajtech |
@@ -58,8 +58,8 @@ V části výstup **výsledků spuštění aktivity kopírování**  >  **Output
 | filesWritten | Počet souborů zapsaných nebo potvrzených do jímky založené na souborech. | Hodnota Int64 (žádná jednotka) |
 | sourcePeakConnections | Nejvyšší počet souběžných připojení navázaných ke zdrojovému úložišti dat během spuštění aktivity kopírování. | Hodnota Int64 (žádná jednotka) |
 | sinkPeakConnections | Nejvyšší počet souběžných připojení navázaných na úložiště dat jímky během spuštění aktivity kopírování. | Hodnota Int64 (žádná jednotka) |
-| rowsRead | Počet načtených řádků ze zdroje (nelze použít pro binární kopii). | Hodnota Int64 (žádná jednotka) |
-| rowsCopied | Počet řádků zkopírovaných do jímky (neplatí pro binární kopii) | Hodnota Int64 (žádná jednotka) |
+| rowsRead | Počet načtených řádků ze zdroje Tato metrika se nevztahuje na kopírování souborů tak, jak jsou, bez jejich analýzy, například když jsou datové sady typu binární a jímka v binárním formátu nebo jiný typ formátu se shodným nastavením. | Hodnota Int64 (žádná jednotka) |
+| rowsCopied | Počet řádků zkopírovaných do jímky. Tato metrika se nevztahuje na kopírování souborů tak, jak jsou, bez jejich analýzy, například když jsou datové sady typu binární a jímka v binárním formátu nebo jiný typ formátu se shodným nastavením.  | Hodnota Int64 (žádná jednotka) |
 | rowsSkipped | Počet vynechaných nekompatibilních řádků. Můžete povolit přeskočení nekompatibilních řádků nastavením `enableSkipIncompatibleRow` na hodnotu true. | Hodnota Int64 (žádná jednotka) |
 | copyDuration | Doba trvání spuštění kopírování | Hodnota Int32 v sekundách |
 | throughput | Rychlost přenosu dat | Číslo s plovoucí desetinnou čárkou, v KB/s |

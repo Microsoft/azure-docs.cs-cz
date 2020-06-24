@@ -3,24 +3,19 @@ title: Přehled vyhrazených Center událostí – Azure Event Hubs | Microsoft 
 description: Tento článek obsahuje přehled vyhrazených Event Hubs Azure, které nabízí nasazení s jedním tenantům pro centra událostí.
 services: event-hubs
 documentationcenter: na
-author: ShubhaVijayasarathy
-manager: timlt
-editor: ''
+author: spelluru
 ms.assetid: ''
 ms.service: event-hubs
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.custom: seodec18
-ms.date: 12/06/2018
-ms.author: shvija
-ms.openlocfilehash: f67be1d31125b21048deca4d9cafcc76f4ffc3b1
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.date: 06/23/2020
+ms.author: spelluru
+ms.reviewer: shvija
+ms.openlocfilehash: 145fc759b236019630b8942c677dbdd562331e4c
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "72516741"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298731"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Přehled Event Hubs úrovně Dedicated
 
@@ -53,7 +48,7 @@ V nabídce Event Hubs úrovně Dedicated se účtuje pevná měsíční cena s m
 | Funkce | Standard | Vyhrazená |
 | --- |:---:|:---:|
 | Šířka pásma | 20 počet propustnosti (až 40 počet propustnosti) | 20 kapacitní jednotky |
-| Jmenné prostory |  1 | 50 za CU |
+| Obory názvů |  1 | 50 za CU |
 | Event Hubs |  10 na obor názvů | 1000 na obor názvů |
 | Události příchozího přenosu dat | Plaťte za milion událostí | Zahrnuje |
 | Velikost zprávy | 1 000 000 bajtů | 1 000 000 bajtů |

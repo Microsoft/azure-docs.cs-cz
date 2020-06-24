@@ -6,17 +6,17 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/19/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 0139c581e6660622f1ab6db9f407725816377a6d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d7fa9336a7a90ab73d3dc60c6c865ebadfb2af1e
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80633567"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213495"
 ---
 # <a name="optimizing-transactions-in-synapse-sql"></a>Optimalizace transakcí v synapse SQL
 
@@ -85,7 +85,7 @@ Načtení dat do neprázdné tabulky s clusterovaným indexem může často obsa
 
 ## <a name="optimizing-deletes"></a>Optimalizace odstranění
 
-ODSTRANĚNÍ je plně zaprotokolovaná operace.  Pokud potřebujete v tabulce nebo oddílu odstranit velké množství dat, často to znamená, že data, která chcete zachovat, je `SELECT` vhodnější, což je možné spustit jako podobuně zaznamenanou operaci.  Pokud chcete data vybrat, vytvořte novou tabulku pomocí [CTAS](sql-data-warehouse-develop-ctas.md).  Po vytvoření pomocí [Přejmenovat](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) zahodíte starou tabulku s nově vytvořenou tabulkou.
+ODSTRANĚNÍ je plně zaprotokolovaná operace.  Pokud potřebujete v tabulce nebo oddílu odstranit velké množství dat, často to znamená, že `SELECT` data, která chcete zachovat, je vhodnější, což je možné spustit jako podobuně zaznamenanou operaci.  Pokud chcete data vybrat, vytvořte novou tabulku pomocí [CTAS](sql-data-warehouse-develop-ctas.md).  Po vytvoření pomocí [Přejmenovat](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) zahodíte starou tabulku s nově vytvořenou tabulkou.
 
 ```sql
 -- Delete all sales transactions for Promotions except PromotionKey 2.
@@ -410,7 +410,7 @@ END
 Synapse SQL vám umožňuje [pozastavit, obnovit a škálovat](sql-data-warehouse-manage-compute-overview.md) váš fond SQL na vyžádání. Když pozastavíte nebo zmenšíte svůj fond SQL, je důležité pochopit, že jakékoliv transakce v letadle jsou okamžitě ukončeny. způsob vrácení všech otevřených transakcí zpět. Pokud vaše úloha vystavila dlouho probíhající a nedokončená úprava dat před operací pozastavit nebo škálování, bude potřeba tuto práci vrátit zpátky. To může mít vliv na dobu potřebnou k pozastavení nebo škálování fondu SQL.
 
 > [!IMPORTANT]
-> `UPDATE` A `DELETE` jsou plně protokolované operace, takže tyto operace vrácení zpět/opětovného zpracování mohou trvat výrazně déle než ekvivalentní minimální zaznamenání operací.
+> `UPDATE`A `DELETE` jsou plně protokolované operace, takže tyto operace vrácení zpět/opětovného zpracování mohou trvat výrazně déle než ekvivalentní minimální zaznamenání operací.
 
 Nejlepším řešením je umožnit, aby transakce změny letových dat byly dokončeny před tím, než se pozastavily nebo mění velikost fondu SQL. Tento scénář ale nemusí být vždycky praktický. Chcete-li zmírnit riziko dlouhého vrácení zpět, vezměte v úvahu jednu z následujících možností:
 

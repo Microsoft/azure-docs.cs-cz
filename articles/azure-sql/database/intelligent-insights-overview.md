@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 03/10/2020
-ms.openlocfilehash: 133ca6503a2e0fa9ff19fa55cf126b9556b741e0
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.date: 06/12/2020
+ms.openlocfilehash: 937eee69c17d207dc348a25fe2a5e6611480db0f
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344046"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743452"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance-preview"></a>Intelligent Insights používání AI k monitorování a řešení potíží s výkonem databáze (Preview)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -77,6 +77,9 @@ Dostupné možnosti Intelligent Insights jsou:
 | **Stream Insights do Azure SQL Analytics** --Stream insights pro Azure SQL Analytics. | Ano | Ano |
 | **Stream Insights do Azure Event Hubs** -Stream insights pro Event Hubs pro další vlastní integrace. | Ano | Ano |
 | **Stream Insights do Azure Storage** -Stream Insights, které Azure Storage k další analýze a dlouhodobé archivaci. | Ano | Ano |
+
+> [!NOTE]
+> Inteligentní přehledy jsou funkce ve verzi Preview, která není dostupná v následujících oblastech: Západní Evropa, Severní Evropa, Západní USA 1 a Východní USA 1.
 
 ## <a name="configure-the-export-of-the-intelligent-insights-log"></a>Konfigurace exportu protokolu Intelligent Insights
 

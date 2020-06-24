@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 06/22/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: has-adal-ref
-ms.openlocfilehash: 0cda75469edaa183ed6553a431b9ad13b611db7d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: ddb079051414168b125ce2e42e8badd55580f0c5
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201071"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212615"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>Získání tokenu z Azure AD pro autorizaci žádostí z klientské aplikace
 
@@ -58,7 +58,7 @@ Potom udělte aplikaci oprávnění k volání rozhraní API Azure Storage. Tent
 
     ![Snímek obrazovky zobrazující oprávnění pro úložiště](media/storage-auth-aad-app/registered-app-permissions-1.png)
 
-V podokně **oprávnění API** se teď zobrazí, že registrovaná aplikace Azure AD má přístup k oběma Microsoft Graph i Azure Storage. Oprávnění se udělují Microsoft Graph automaticky při první registraci vaší aplikace ve službě Azure AD.
+V podokně **oprávnění rozhraní API** se teď zobrazí, že registrovaná aplikace Azure AD má přístup k rozhraním API Microsoft Graph i Azure Storage. Oprávnění se udělují Microsoft Graph automaticky při první registraci vaší aplikace ve službě Azure AD.
 
 ![Snímek obrazovky zobrazující oprávnění aplikace registrace](media/storage-auth-aad-app/registered-app-permissions-2.png)
 
@@ -213,7 +213,7 @@ private AuthenticationProperties BuildAuthenticationPropertiesForIncrementalCons
 {
     AuthenticationProperties properties = new AuthenticationProperties();
 
-    // Set the scopes, including the scopes that ADAL.NET or MSAL.NET need for the Token cache.
+    // Set the scopes, including the scopes that MSAL.NET needs for the token cache.
     string[] additionalBuildInScopes = new string[] { "openid", "offline_access", "profile" };
     properties.SetParameter<ICollection<string>>(OpenIdConnectParameterNames.Scope,
                                                  scopes.Union(additionalBuildInScopes).ToList());
@@ -245,7 +245,7 @@ Pokud chcete ukázkovou aplikaci spustit, nejdřív ji naklonujte nebo stáhnět
 
 ### <a name="provide-values-in-the-settings-file"></a>Zadejte hodnoty do souboru nastavení.
 
-Dále aktualizujte soubor *appSettings. JSON* vlastními hodnotami následujícím způsobem:
+Dále aktualizujte *appsettings.jsv* souboru vlastními hodnotami, a to následujícím způsobem:
 
 ```json
 {
@@ -284,8 +284,8 @@ CloudBlockBlob blob = new CloudBlockBlob(
 Pokud chcete ukázku spustit, možná budete muset nakonfigurovat tok implicitního udělení pro registraci vaší aplikace. Postupujte následovně:
 
 1. Přejděte k registraci vaší aplikace v Azure Portal.
-1. V části Spravovat vyberte nastavení **ověřování** .
-1. V části **Upřesnit nastavení**v části **implicitní přístup** zaškrtněte políčka pro povolení přístupových tokenů a tokenů ID, jak je znázorněno na následujícím obrázku:
+1. V části **Spravovat** vyberte nastavení **ověřování** .
+1. V části **implicitní grant** zaškrtněte políčko, pokud chcete povolit tokeny ID, jak je znázorněno na následujícím obrázku:
 
     ![Snímek obrazovky ukazující, jak povolit nastavení pro implicitní tok udělení](media/storage-auth-aad-app/enable-implicit-grant-flow.png)
 
@@ -294,13 +294,13 @@ Pokud chcete ukázku spustit, možná budete muset nakonfigurovat tok implicitn�
 Když ukázku spustíte, můžete zjistit, že je potřeba aktualizovat identifikátor URI přesměrování zadaný v registraci aplikace tak, aby používal port *localhost* přiřazený za běhu. Chcete-li aktualizovat identifikátor URI pro přesměrování tak, aby používal přiřazený port, postupujte podle následujících kroků:
 
 1. Přejděte k registraci vaší aplikace v Azure Portal.
-1. V části Spravovat vyberte nastavení **ověřování** .
+1. V části **Spravovat** vyberte nastavení **ověřování** .
 1. V části **identifikátory URI pro přesměrování**upravte port tak, aby odpovídal formátu používanému ukázkovou aplikací, jak je znázorněno na následujícím obrázku:
 
     ![Snímek obrazovky ukazující identifikátory URI přesměrování pro registraci aplikace](media/storage-auth-aad-app/redirect-uri.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o platformě Microsoft identity najdete v tématu [Microsoft Identity Platform](https://docs.microsoft.com/azure/active-directory/develop/).
-- Další informace o rolích RBAC pro Azure Storage najdete v tématu [Správa přístupových práv k datům úložiště pomocí RBAC](storage-auth-aad-rbac.md).
-- Další informace o použití spravovaných identit pro prostředky Azure s Azure Storage najdete v tématu [ověřování přístupu k objektům blob a frontám pomocí Azure Active Directory a spravovaných identit pro prostředky Azure](storage-auth-aad-msi.md).
+- [Microsoft Identity Platform](https://docs.microsoft.com/azure/active-directory/develop/)
+- [Správa přístupových práv k datům úložiště pomocí RBAC](storage-auth-aad-rbac.md)
+- [Ověřování přístupu k objektům blob a frontám pomocí Azure Active Directory a spravovaných identit pro prostředky Azure](storage-auth-aad-msi.md)

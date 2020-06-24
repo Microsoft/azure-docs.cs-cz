@@ -2,18 +2,18 @@
 title: Použití dat služby Azure Blockchain Workbench v Power BI
 description: Zjistěte, jak načíst a zobrazit data z databáze SQL DB služby Azure Blockchain Workbench v Power BI.
 ms.date: 04/22/2020
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: sunri
-ms.openlocfilehash: 4245603fee5b3d24488426c3dc2d026a3c0d7848
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2a5e67a8416c57c1a0cb039733a93608a8919be6
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82082522"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214226"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-microsoft-power-bi"></a>Použití dat služby Azure Blockchain Workbench v Power BI
 
-Microsoft Power BI poskytuje možnost snadno generovat výkonné sestavy z databází SQL DB pomocí Power BI Desktop a pak je publikovat do [https://www.powerbi.com](https://www.powerbi.com).
+Microsoft Power BI poskytuje možnost snadno generovat výkonné sestavy z databází SQL DB pomocí Power BI Desktop a pak je publikovat do [https://www.powerbi.com](https://www.powerbi.com) .
 
 Tento článek obsahuje podrobný návod, jak se připojit k databázi SQL Database služby Azure Blockchain Workbench z Power BI Desktopu, vytvořit sestavu a nasadit ji na stránku powerbi.com.
 

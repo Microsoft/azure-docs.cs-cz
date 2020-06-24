@@ -6,21 +6,21 @@ author: ronortloff
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 05/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 9b67d3205e95fe7cca6cacaab7e82a1a7e71f3f3
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 691cdcb525f8e9e3d1fb914372b9f62366f4bfba
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82794102"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213019"
 ---
 # <a name="quickstart-create-a-synapse-sql-pool-workload-classifier-using-the-azure-portal"></a>Rychlý Start: vytvoření klasifikátoru úloh synapse fondu SQL pomocí Azure Portal
 
-V tomto rychlém startu vytvoříte [klasifikátor úloh](sql-data-warehouse-workload-classification.md) pro přiřazení dotazů ke skupině úloh.  Klasifikátor přiřadí požadavky od uživatele `ELTLogin` SQL do skupiny `DataLoads` úloh.   Postupujte podle kurzu [rychlý Start: Konfigurace izolace úloh](quickstart-configure-workload-isolation-portal.md) a vytvořte `DataLoads` skupinu úloh.  V tomto kurzu se vytvoří klasifikátor úloh s možností WLM_LABEL, aby bylo možné lépe klasifikovat požadavky správně.  Třídění bude také přiřazovat `HIGH` [význam úloh](sql-data-warehouse-workload-importance.md) i pro tyto požadavky.
+V tomto rychlém startu vytvoříte [klasifikátor úloh](sql-data-warehouse-workload-classification.md) pro přiřazení dotazů ke skupině úloh.  Klasifikátor přiřadí požadavky od `ELTLogin` uživatele SQL do `DataLoads` skupiny úloh.   Postupujte podle kurzu [rychlý Start: Konfigurace izolace úloh](quickstart-configure-workload-isolation-portal.md) a vytvořte `DataLoads` skupinu úloh.  V tomto kurzu se vytvoří klasifikátor úloh s možností WLM_LABEL, aby bylo možné lépe klasifikovat požadavky správně.  Třídění bude také přiřazovat `HIGH` [význam úloh](sql-data-warehouse-workload-importance.md) i pro tyto požadavky.
 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
@@ -37,7 +37,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 V tomto rychlém startu se předpokládá, že již máte instanci fondu SQL v synapse SQL a máte kontrolu nad oprávněními databáze. Pokud ho potřebujete vytvořit, postupujte podle pokynů v článku [Vytvoření a připojení – portál](create-data-warehouse-portal.md) a vytvořte datový sklad s názvem **mySampleDataWarehouse**.
 <br><br>
-Skupina `DataLoads` úloh existuje.  Informace o vytvoření skupiny úloh najdete v kurzu [rychlý Start: Konfigurace izolace úloh](quickstart-configure-workload-isolation-portal.md) .
+Skupina úloh `DataLoads` existuje.  Informace o vytvoření skupiny úloh najdete v kurzu [rychlý Start: Konfigurace izolace úloh](quickstart-configure-workload-isolation-portal.md) .
 <br><br>
 >[!IMPORTANT] 
 >Aby bylo možné konfigurovat správu úloh, musí být váš fond SQL online. 
@@ -45,7 +45,7 @@ Skupina `DataLoads` úloh existuje.  Informace o vytvoření skupiny úloh najde
 
 ## <a name="create-a-login-for-eltlogin"></a>Vytvoření přihlašovacích údajů pro ELTLogin
 
-Vytvořte přihlašovací jméno SQL Server ověřování v `master` databázi pomocí [Vytvoření přihlašovacích](/sql/t-sql/statements/create-login-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) údajů `ELTLogin`pro.
+Vytvořte přihlašovací jméno SQL Server ověřování v `master` databázi pomocí [Vytvoření přihlašovacích](/sql/t-sql/statements/create-login-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) údajů pro `ELTLogin` .
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.sql_logins WHERE name = 'ELTLogin')
@@ -57,7 +57,7 @@ END
 
 ## <a name="create-user-and-grant-permissions"></a>Vytvoření uživatele a udělení oprávnění
 
-Po vytvoření přihlášení musí být v databázi vytvořen uživatel.  Pomocí [vytvořit uživatele](/sql/t-sql/statements/create-user-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) vytvořte uživatele `ELTRole` SQL v **mySampleDataWarehouse**.  Vzhledem k tomu, že během tohoto kurzu budeme testovat klasifikaci `ELTLogin` , udělte jim oprávnění k **mySampleDataWarehouse**. 
+Po vytvoření přihlášení musí být v databázi vytvořen uživatel.  Pomocí [vytvořit uživatele](/sql/t-sql/statements/create-user-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) vytvořte uživatele SQL `ELTRole` v **mySampleDataWarehouse**.  Vzhledem k tomu, že během tohoto kurzu budeme testovat klasifikaci, udělte jim `ELTLogin` oprávnění k **mySampleDataWarehouse**. 
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.database_principals WHERE name = 'ELTLogin')
@@ -69,7 +69,7 @@ END
 ```
 
 ## <a name="configure-workload-classification"></a>Konfigurace klasifikace úloh
-Klasifikace umožňuje směrovat požadavky na základě sady pravidel na skupinu úloh.  V `DataLoads` části [rychlý Start: Konfigurace kurzu pro izolaci úloh](quickstart-configure-workload-isolation-portal.md) jsme vytvořili skupinu úloh.  Nyní vytvoříte klasifikátor úloh pro směrování dotazů do skupiny `DataLoads` úloh.
+Klasifikace umožňuje směrovat požadavky na základě sady pravidel na skupinu úloh.  V části [rychlý Start: Konfigurace kurzu pro izolaci úloh](quickstart-configure-workload-isolation-portal.md) jsme vytvořili `DataLoads` skupinu úloh.  Nyní vytvoříte klasifikátor úloh pro směrování dotazů do `DataLoads` skupiny úloh.
 
 
 1.  Na levé straně Azure Portal klikněte na **Azure synapse Analytics (dřív SQL DW)** .
@@ -78,7 +78,7 @@ Klasifikace umožňuje směrovat požadavky na základě sady pravidel na skupin
 
     ![Klikněte na nabídku](./media/quickstart-create-a-workload-classifier-portal/menu.png)
 
-4.  Klikněte na **nastavení & klasifikátory** na pravé straně skupiny `DataLoads` úloh.
+4.  Klikněte na **nastavení & klasifikátory** na pravé straně `DataLoads` skupiny úloh.
 
     ![Kliknutí na Vytvořit](./media/quickstart-create-a-workload-classifier-portal/settings-classifiers.png)
 
@@ -87,9 +87,9 @@ Klasifikace umožňuje směrovat požadavky na základě sady pravidel na skupin
 
     ![Klikněte na tlačítko Přidat.](./media/quickstart-create-a-workload-classifier-portal/add-wc.png)
 
-7.  Jako `ELTLoginDataLoads` **název**zadejte.
+7.  `ELTLoginDataLoads`Jako **název**zadejte.
 8.  Zadejte `ELTLogin` pro **člena**.
-9.  Vyberte `High` možnost pro **důležitost požadavku**.  *Volitelné*, Normální důležitost je výchozí.
+9.  Vyberte možnost `High` pro **důležitost požadavku**.  *Volitelné*, Normální důležitost je výchozí.
 10. Zadejte `fact_loads` pro **popisek**.
 11. Klikněte na tlačítko **Add** (Přidat).
 12. Klikněte na **Uložit**.
@@ -113,7 +113,7 @@ SELECT c.[name], c.group_name, c.importance, cd.classifier_type, cd.classifier_v
   WHERE c.name = 'ELTLoginDataLoads'
 ```
 
-Spusťte následující příkazy pro otestování klasifikace.  Ujistěte se, že jste ``ELTLogin`` připojeni jako a ``Label`` používáte v dotazu.
+Spusťte následující příkazy pro otestování klasifikace.  Ujistěte se, že jste připojeni jako ``ELTLogin`` a používáte ``Label`` v dotazu.
 ```sql
 CREATE TABLE factstaging (ColA int)
 INSERT INTO factstaging VALUES(0)
@@ -127,7 +127,7 @@ SELECT * FROM factstaging
 OPTION (LABEL='fact_loads')
 ```
 
-Ověřte `CREATE TABLE` příkaz klasifikovaný ke skupině `DataLoads` úloh pomocí klasifikátoru `ELTLoginDataLoads` úloh.
+Ověřte `CREATE TABLE` příkaz klasifikovaný ke `DataLoads` skupině úloh pomocí `ELTLoginDataLoads` klasifikátoru úloh.
 ```sql 
 SELECT TOP 1 request_id, classifier_name, group_name, resource_allocation_percentage, submit_time, [status], [label], command 
 FROM sys.dm_pdw_exec_requests 
@@ -139,14 +139,14 @@ ORDER BY submit_time DESC
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Postup odstranění klasifikátoru `ELTLoginDataLoads` úloh vytvořeného v tomto kurzu:
+Postup odstranění `ELTLoginDataLoads` klasifikátoru úloh vytvořeného v tomto kurzu:
 
-1. Na pravé straně skupiny `DataLoads` úloh klikněte na **1 klasifikátor** .
+1. Na pravé straně skupiny úloh klikněte na **1 klasifikátor** `DataLoads` .
 
     ![Klikněte na Odstranit.](./media/quickstart-create-a-workload-classifier-portal/delete-wc.png)
 
 2. Klikněte na **klasifikátory**.
-3. **`...`** Klikněte na tlačítko napravo od klasifikátoru `ELTLoginDataLoads` úloh.
+3. Klikněte na tlačítko **`...`** napravo od `ELTLoginDataLoads` klasifikátoru úloh.
 4. Klikněte na **Odstranit**.
 5. Klikněte na **Uložit**.
 

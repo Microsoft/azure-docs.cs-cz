@@ -63,6 +63,6 @@ az ml service update -n myservice --model-metadata-file modelinfo.json
 > [!TIP]
 > V tomto příkladu se k předání informací o modelu z příkazu k registraci do příkazu Update používá dokument JSON.
 >
-> Chcete-li aktualizovat službu tak, aby používala nový skriptovací skript nebo prostředí, vytvořte [konfigurační soubor odvození](/azure/machine-learning/reference-azure-machine-learning-cli#inference-configuration-schema) a zadejte jej `ic` s parametrem.
+> Chcete-li aktualizovat službu tak, aby používala nový skriptovací skript nebo prostředí, vytvořte [konfigurační soubor odvození](/azure/machine-learning/reference-azure-machine-learning-cli#inference-configuration-schema) a zadejte jej s `ic` parametrem.
 
 Další informace najdete v dokumentaci [AZ ml Service Update](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext-azure-cli-ml-az-ml-service-update) .

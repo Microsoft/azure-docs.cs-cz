@@ -7,17 +7,17 @@ documentationcenter: na
 author: KumudD
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2019
 ms.author: kumud
-ms.openlocfilehash: 6f767abdf8673e3adffc6c4e3748733054ba723d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d2db8eb5b93d84a5ece182fffbca5870762ee89e
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77201862"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84703879"
 ---
 # <a name="add-or-remove-a-subnet-delegation"></a>Přidání nebo odebrání delegování podsítě
 
@@ -33,7 +33,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 V této části vytvoříte virtuální síť a podsíť, které později delegujete na službu Azure.
 
-1. V levé horní části obrazovky vyberte **vytvořit prostředek** > **síť** > **virtuální síť**.
+1. V levé horní části obrazovky vyberte **vytvořit prostředek**  >  **síť**  >  **virtuální síť**.
 1. V nástroji **vytvořit virtuální síť**zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
@@ -50,7 +50,7 @@ V této části vytvoříte virtuální síť a podsíť, které později delegu
 
 ### <a name="permissions"></a>Oprávnění
 
-Pokud jste nevytvořili podsíť, kterou byste chtěli delegovat na službu Azure, budete potřebovat následující oprávnění: `Microsoft.Network/virtualNetworks/subnets/write`.
+Pokud jste nevytvořili podsíť, kterou byste chtěli delegovat na službu Azure, budete potřebovat následující oprávnění: `Microsoft.Network/virtualNetworks/subnets/write` .
 
 Integrovaná role [přispěvatele sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) obsahuje taky potřebná oprávnění.
 
@@ -74,7 +74,7 @@ V této části delegujete podsíť, kterou jste vytvořili v předchozí část
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku Azure CLI místně, musíte použít Azure CLI verze 2.0.28 nebo novější. Pokud chcete najít nainstalovanou verzi, `az --version`spusťte příkaz. Informace o instalaci nebo upgradu najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli) .
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku Azure CLI místně, musíte použít Azure CLI verze 2.0.28 nebo novější. Pokud chcete najít nainstalovanou verzi, spusťte příkaz `az --version` . Informace o instalaci nebo upgradu najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli) .
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 Vytvořte skupinu prostředků pomocí příkazu [az group create](https://docs.microsoft.com/cli/azure/group). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
@@ -103,7 +103,7 @@ Pomocí příkazu [az network vnet create](https://docs.microsoft.com/cli/azure/
 ```
 ### <a name="permissions"></a>Oprávnění
 
-Pokud jste nevytvořili podsíť, kterou byste chtěli delegovat na službu Azure, budete potřebovat následující oprávnění: `Microsoft.Network/virtualNetworks/subnets/write`.
+Pokud jste nevytvořili podsíť, kterou byste chtěli delegovat na službu Azure, budete potřebovat následující oprávnění: `Microsoft.Network/virtualNetworks/subnets/write` .
 
 Integrovaná role [přispěvatele sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) obsahuje taky potřebná oprávnění.
 
@@ -202,7 +202,7 @@ Vytvořte virtuální síť s názvem **myVnet** s podsítí s názvem **mySubne
 ```
 ### <a name="permissions"></a>Oprávnění
 
-Pokud jste nevytvořili podsíť, kterou byste chtěli delegovat na službu Azure, budete potřebovat následující oprávnění: `Microsoft.Network/virtualNetworks/subnets/write`.
+Pokud jste nevytvořili podsíť, kterou byste chtěli delegovat na službu Azure, budete potřebovat následující oprávnění: `Microsoft.Network/virtualNetworks/subnets/write` .
 
 Integrovaná role [přispěvatele sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) obsahuje taky potřebná oprávnění.
 

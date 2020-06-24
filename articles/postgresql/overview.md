@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 11/25/2019
-ms.openlocfilehash: 9ea0610811f6906526afe55d577e04a8decd5f49
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: deb720638e0921762eb9c5800d218c3cfccb7f55
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74481667"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213597"
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>Co je Azure Database for PostgreSQL?
 Azure Database for PostgreSQL je služba relačních databází v cloudu Microsoftu vytvořená pro vývojáře. Vychází z komunitní verze open source databázového stroje [PostgreSQL](https://www.postgresql.org/) a je k dispozici ve dvou možnostech nasazení: jeden server a škálovatelné (Citus).
@@ -52,6 +52,6 @@ Dále podle potřeby zvažte tyto kontaktní body:
 - Pokud nám chcete sdělit svůj názor nebo požádat o nové funkce, využijte nástroj [UserVoice](https://feedback.azure.com/forums/597976-azure-database-for-postgresql).
 
 ## <a name="next-steps"></a>Další kroky
-- Porovnání nákladů a kalkulačky najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/postgresql/) .
+- Porovnání nákladů a kalkulačky najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/postgresql/) . Možnosti nasazení s jedním serverem a Citus () nabízí i předplacené slevy za rezervované instance. Podrobnosti najdete na stránkách s cenami s [jedním serverem](concept-reserved-pricing.md) a [cenami na úrovni](concepts-hyperscale-reserved-pricing.md) služeb.
 - Začněte tím, že vytvoříte první Azure Database for PostgreSQL [jeden server](./quickstart-create-server-database-portal.md) nebo [Citus (škálovatelný)](./quickstart-create-hyperscale-portal.md) .
 - Sestavte svou první aplikaci v jazyce Python, PHP, Ruby, C\#, Java, Node.js: [Knihovny připojení](./concepts-connection-libraries.md)

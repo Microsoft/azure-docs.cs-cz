@@ -6,24 +6,24 @@ author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/20/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 44ce56238140de90145f69e966c94be8572c7749
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f502c93b4df6db83756f3fe9853ac598b40074ef
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81252298"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212696"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-with-azure-powershell"></a>Rychlý Start: pozastavení a obnovení výpočetní kapacity ve fondu synapse SQL pomocí Azure PowerShell
 
 Azure PowerShell můžete použít k pozastavení a obnovení výpočetních prostředků fondu SQL synapse (datový sklad).
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

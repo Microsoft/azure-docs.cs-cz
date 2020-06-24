@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: akjosh
 ms.openlocfilehash: 79991dad96742109817d579b951082d1a30e3951
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253907"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84703991"
 ---
 # <a name="exporting-resource-groups-that-contain-vm-extensions"></a>Exportování skupin prostředků, které obsahují rozšíření virtuálních počítačů
 
@@ -78,7 +78,7 @@ Při exportu skupiny prostředků je vytvořen jeden parametr šablony, který p
 
 Vzhledem k tomu, že každé chráněné nastavení má sadu požadovaných vlastností, je třeba shromáždit seznam těchto vlastností. Každý parametr konfigurace chráněného nastavení najdete ve [schématu Azure Resource Manager na GitHubu](https://raw.githubusercontent.com/Azure/azure-resource-manager-schemas/master/schemas/2015-08-01/Microsoft.Compute.json). Toto schéma obsahuje jenom sady parametrů pro rozšíření uvedená v tomto dokumentu v části Přehled. 
 
-V rámci úložiště schématu vyhledejte v tomto příkladu `IaaSDiagnostics`požadovanou příponu. Po umístění objektu `protectedSettings` rozšíření si poznamenejte každý parametr. V příkladu `IaasDiagnostic` rozšíření jsou `storageAccountName`vyžadovány parametry, `storageAccountKey`a. `storageAccountEndPoint`
+V rámci úložiště schématu vyhledejte v tomto příkladu požadovanou příponu `IaaSDiagnostics` . Po `protectedSettings` umístění objektu rozšíření si poznamenejte každý parametr. V příkladu `IaasDiagnostic` rozšíření jsou vyžadovány parametry `storageAccountName` , `storageAccountKey` a `storageAccountEndPoint` .
 
 ```json
 "protectedSettings": {
@@ -148,9 +148,9 @@ Konečný prostředek rozšíření vypadá podobně jako v následujícím př�
 }
 ```
 
-Pokud používáte parametry šablony k poskytnutí hodnot vlastností, je nutné je vytvořit. Při vytváření parametrů šablony pro hodnoty chráněného nastavení nezapomeňte použít typ `SecureString` parametru, aby byly citlivé hodnoty zabezpečené. Další informace o použití parametrů najdete v tématu [vytváření Azure Resource Manager šablon](../../resource-group-authoring-templates.md).
+Pokud používáte parametry šablony k poskytnutí hodnot vlastností, je nutné je vytvořit. Při vytváření parametrů šablony pro hodnoty chráněného nastavení nezapomeňte použít `SecureString` typ parametru, aby byly citlivé hodnoty zabezpečené. Další informace o použití parametrů najdete v tématu [vytváření Azure Resource Manager šablon](../../resource-group-authoring-templates.md).
 
-V příkladu `IaasDiagnostic` rozšíření se vytvoří následující parametry v oddílu parameters šablony Správce prostředků.
+V příkladu `IaasDiagnostic` rozšíření se vytvoří následující parametry v oddílu Parameters šablony Správce prostředků.
 
 ```json
 "storageAccountName": {

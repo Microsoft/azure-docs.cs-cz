@@ -7,13 +7,13 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/04/2020
-ms.openlocfilehash: 558f7ef250c99d85cb957162b6d098e586bc0fc4
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.date: 06/17/2020
+ms.openlocfilehash: 52aaeb01fef551eee350c6db662c2690ef7b3e78
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433256"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84981944"
 ---
 # <a name="text-split-cognitive-skill"></a>Dovednosti při rozpoznávání rozdělení textu
 
@@ -31,23 +31,23 @@ U parametrů se rozlišují malá a velká písmena.
 
 | Název parametru     | Description |
 |--------------------|-------------|
-| textSplitMode      | Buď "stránky" nebo "věty" | 
-| maximumPageLength | Pokud je textSplitMode nastavené na "stránky", vztahuje se na maximální délka stránky měřená podle `String.Length` . Minimální hodnota je 300.  Pokud je textSplitMode nastavené na "stránky", algoritmus se pokusí rozdělit text na bloky, které mají velikost nejvíce "maximumPageLength". V takovém případě bude algoritmus nejlépe přerušit větu na hranici věty, takže velikost bloku dat může být mírně menší než "maximumPageLength". | 
-| defaultLanguageCode   | volitelné Jeden z následujících kódů jazyka: `da, de, en, es, fi, fr, it, ko, pt` . Výchozí hodnota je angličtina (EN). Několik věcí, které je potřeba vzít v úvahu:<ul><li>Pokud předáte formát LanguageCode-CountryCode, použije se pouze část formátu LanguageCode.</li><li>Pokud jazyk není v předchozím seznamu, rozdělená dovednost rozdělí text na hranice znaků.</li><li>Poskytnutí kódu jazyka je užitečné, abyste se vyhnuli vyjmutí slova na polovinu pro jiné než prázdné jazyky, jako jsou čínština, japonština a korejština.</li><li>Pokud neznáte jazyk (tj. je třeba rozdělit text na [LanguageDetectionSkill](cognitive-search-skill-language-detection.md)), měla by být stačit výchozí angličtina (EN). </li></ul>  |
+| `textSplitMode`    | Buď "stránky" nebo "věty" | 
+| `maximumPageLength` | Pokud je textSplitMode nastavené na "stránky", vztahuje se na maximální délka stránky měřená podle `String.Length` . Minimální hodnota je 300.  Pokud je textSplitMode nastavené na "stránky", algoritmus se pokusí rozdělit text na bloky, které mají velikost nejvíce "maximumPageLength". V takovém případě bude algoritmus nejlépe přerušit větu na hranici věty, takže velikost bloku dat může být mírně menší než "maximumPageLength". | 
+| `defaultLanguageCode` | volitelné Jeden z následujících kódů jazyka: `da, de, en, es, fi, fr, it, ko, pt` . Výchozí hodnota je angličtina (EN). Několik věcí, které je potřeba vzít v úvahu:<ul><li>Pokud předáte formát LanguageCode-CountryCode, použije se pouze část formátu LanguageCode.</li><li>Pokud jazyk není v předchozím seznamu, rozdělená dovednost rozdělí text na hranice znaků.</li><li>Poskytnutí kódu jazyka je užitečné, abyste se vyhnuli vyjmutí slova na polovinu pro jiné než prázdné jazyky, jako jsou čínština, japonština a korejština.</li><li>Pokud neznáte jazyk (tj. je třeba rozdělit text na [LanguageDetectionSkill](cognitive-search-skill-language-detection.md)), měla by být stačit výchozí angličtina (EN). </li></ul>  |
 
 
 ## <a name="skill-inputs"></a>Vstupy dovedností
 
 | Název parametru       | Description      |
 |----------------------|------------------|
-| text  | Text, který se má rozdělit na dílčí řetězec |
-| languageCode  | Volitelné Kód jazyka pro dokument Pokud neznáte jazyk (například potřebujete rozdělit text na vstup do [LanguageDetectionSkill](cognitive-search-skill-language-detection.md)), je možné tento vstup bezpečně odebrat.  |
+| `text`    | Text, který se má rozdělit na dílčí řetězec |
+| `languageCode`    | Volitelné Kód jazyka pro dokument Pokud neznáte jazyk (například potřebujete rozdělit text na vstup do [LanguageDetectionSkill](cognitive-search-skill-language-detection.md)), je možné tento vstup bezpečně odebrat.  |
 
 ## <a name="skill-outputs"></a>Výstupy dovedností 
 
 | Název parametru     | Description |
 |--------------------|-------------|
-| textItems | Pole podřetězců, které byly extrahovány. |
+| `textItems`   | Pole podřetězců, které byly extrahovány. |
 
 
 ##  <a name="sample-definition"></a>Definice vzorku

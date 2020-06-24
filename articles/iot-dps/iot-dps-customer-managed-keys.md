@@ -8,20 +8,21 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 02/24/2020
 ms.author: menchi
-ms.openlocfilehash: b065135715868094b7e248aebfca35f3b55a4c48
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e9b5a549d550f117e080fc64193fbe29658f401d
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77675140"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298221"
 ---
 # <a name="encryption-of-data-at-rest-with-customer-managed-keys-for-device-provisioning-service"></a>Šifrování neaktivních dat pomocí klíčů spravovaných zákazníkem pro službu Device Provisioning
 
 ## <a name="overview"></a>Přehled
 
-Služba Device Provisioning Service (DPS) podporuje šifrování neaktivních dat pomocí klíčů spravovaných zákazníkem (CMK), označovaných také jako funkce Přineste si vlastní klíč (BYOK). DPS zajišťuje Šifrování neaktivních dat a přenosů. Ve výchozím nastavení DPS používá k šifrování dat klíče spravované společností Microsoft. Díky podpoře CMK mají teď zákazníci možnost šifrování neaktivních dat pomocí klíčového šifrovacího klíče spravovaného zákazníky pomocí [Azure Key Vault](https://azure.microsoft.com/services/key-vault/).
+Služba Device Provisioning Service (DPS) podporuje šifrování neaktivních dat pomocí klíčů spravovaných zákazníkem (CMK), označovaných také jako funkce Přineste si vlastní klíč (BYOK). DPS zajišťuje Šifrování neaktivních dat a jejich přenosů, když je napíšete v našich datacentrech, a při přístupu k nim dešifrujeme. Ve výchozím nastavení DPS používá pro šifrování neaktivních dat klíče spravované společností Microsoft. Pomocí CMK můžete získat další vrstvu šifrování na základě výchozího šifrování platformy tím, že vyberete možnost šifrování neaktivních dat pomocí klíčového šifrovacího klíče spravovaného prostřednictvím [Azure Key Vault](https://azure.microsoft.com/services/key-vault/). Získáte tak flexibilitu při vytváření, střídání, zakázání a odvolávání klíčů. Pokud je pro svůj DPS nakonfigurovaný CMK, znamená to, že je povolené dvojité šifrování se dvěma vrstvami ochrany, které aktivně chrání vaše data. 
 
-Tato funkce vyžaduje vytvoření nového DPS v jedné z následujících oblastí: Východní USA, Západní USA 2 nebo Střed USA – jih. Pokud chcete tuto schopnost vyzkoušet, kontaktujte nás prostřednictvím [podpory Microsoftu](https://azure.microsoft.com/support/create-ticket/). Pokud se obrátíte na podporu Microsoftu, sdílejte název vaší společnosti a ID předplatného.
+Tato funkce vyžaduje vytvoření nového DPS. Pokud chcete tuto schopnost vyzkoušet, kontaktujte nás prostřednictvím [podpory Microsoftu](https://azure.microsoft.com/support/create-ticket/). Pokud se obrátíte na podporu Microsoftu, sdílejte název vaší společnosti a ID předplatného.
+
 
 ## <a name="next-steps"></a>Další kroky
 

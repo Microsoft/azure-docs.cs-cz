@@ -8,11 +8,11 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/27/2020
 ms.openlocfilehash: 397e455c8b6a1097e2a32473036e1acd2bbdf2eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267349"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84704178"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Principy a úpravy jednotek streamování
 
@@ -78,7 +78,7 @@ Následující faktory ovlivňují využitou paměť (součást metrik jednotek 
 Spotřebované množství paměti (velikost stavu) pro agregaci v okně není vždy přímo úměrné velikosti okna. Místo toho je využitá paměť úměrná mohutnosti dat nebo počtu skupin v každém časovém intervalu.
 
 
-Například v následujícím dotazu `clusterid` je číslo přidružené k základní mohutnosti dotazu. 
+Například v následujícím dotazu je číslo přidružené k `clusterid` základní mohutnosti dotazu. 
 
    ```sql
    SELECT count(*)
@@ -86,7 +86,7 @@ Například v následujícím dotazu `clusterid` je číslo přidružené k zák
    GROUP BY  clusterid, tumblingwindow (minutes, 5)
    ```
 
-Aby bylo možné zmírnit problémy způsobené vysokou mohutnosti v předchozím dotazu, můžete odesílat události do centra událostí `clusterid`, které je rozdělené do oddílů, a škálovat dotaz tak, že systému umožníte, aby každý vstupní oddíl zpracovával samostatně pomocí **oddílu podle** toho, jak je znázorněno v následujícím příkladu:
+Aby bylo možné zmírnit problémy způsobené vysokou mohutnosti v předchozím dotazu, můžete odesílat události do centra událostí, které je rozdělené do oddílů `clusterid` , a škálovat dotaz tak, že systému umožníte, aby každý vstupní oddíl zpracovával samostatně pomocí **oddílu podle** toho, jak je znázorněno v následujícím příkladu:
 
    ```sql
    SELECT count(*) 
@@ -94,7 +94,7 @@ Aby bylo možné zmírnit problémy způsobené vysokou mohutnosti v předchozí
    GROUP BY PartitionId, clusterid, tumblingwindow (minutes, 5)
    ```
 
-Jakmile je dotaz rozdělený, rozprostře se mezi několik uzlů. V důsledku toho se zmenší počet `clusterid` hodnot přicházejících do jednotlivých uzlů a tím se sníží mohutnost operátoru Group by. 
+Jakmile je dotaz rozdělený, rozprostře se mezi několik uzlů. V důsledku toho `clusterid` se zmenší počet hodnot přicházejících do jednotlivých uzlů a tím se sníží mohutnost operátoru Group by. 
 
 Oddíly centra událostí by měly být rozdělené podle klíče seskupení, aby nedocházelo k nutnosti snižovat krok. Další informace najdete v tématu [přehled Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md). 
 

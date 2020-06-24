@@ -6,21 +6,21 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/30/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: e681e8ad655c31d5078b56b8f1a49cfd7c664533
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 60f2e3f949a4f627839a07137ebaf77518db87a4
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80742632"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213971"
 ---
 # <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>Použití IDENTITY k vytváření náhradních klíčů v synapse fondu SQL
 
-Doporučení a příklady použití vlastnosti IDENTITY k vytváření náhradních klíčů v tabulkách v synapse fondu SQL.
+V tomto článku najdete doporučení a příklady použití vlastnosti IDENTITY k vytváření náhradních klíčů v tabulkách v synapse fondu SQL.
 
 ## <a name="what-is-a-surrogate-key"></a>Co je náhradní klíč
 
@@ -77,11 +77,11 @@ FROM dbo.T1;
 DBCC PDW_SHOWSPACEUSED('dbo.T1');
 ```
 
-V předchozím příkladu byly vyloženo dva řádky v distribuci 1. První řádek má hodnotu náhrady 1 ve sloupci `C1`a druhý řádek má náhradní hodnotu 61. Obě tyto hodnoty byly vygenerovány vlastností IDENTITY. Přidělení hodnot však není souvislé. Toto chování je záměrné.
+V předchozím příkladu byly vyloženo dva řádky v distribuci 1. První řádek má hodnotu náhrady 1 ve sloupci `C1` a druhý řádek má náhradní hodnotu 61. Obě tyto hodnoty byly vygenerovány vlastností IDENTITY. Přidělení hodnot však není souvislé. Toto chování je záměrné.
 
 ### <a name="skewed-data"></a>Zkosená data
 
-Rozsah hodnot datového typu se rovnoměrně rozprostře napříč distribucí. Pokud bude distribuovaná tabulka z rozdělených dat vyčerpána, může být rozsah hodnot dostupných pro datový typ předčasně vyčerpán. Například pokud všechna data skončí v rámci jedné distribuce, pak efektivně má tabulka přístup pouze k sixtieth hodnot datového typu. Z tohoto důvodu je vlastnost IDENTITY omezená jenom na `INT` `BIGINT` datové typy.
+Rozsah hodnot datového typu se rovnoměrně rozprostře napříč distribucí. Pokud bude distribuovaná tabulka z rozdělených dat vyčerpána, může být rozsah hodnot dostupných pro datový typ předčasně vyčerpán. Například pokud všechna data skončí v rámci jedné distribuce, pak efektivně má tabulka přístup pouze k sixtieth hodnot datového typu. Z tohoto důvodu je vlastnost IDENTITY omezená `INT` `BIGINT` jenom na datové typy.
 
 ### <a name="selectinto"></a>Vyberte.. USKLADNĚN
 
@@ -96,7 +96,7 @@ Pokud je jedna z těchto podmínek pravdivá, je sloupec vytvořen bez hodnoty N
 
 ### <a name="create-table-as-select"></a>CREATE TABLE AS SELECT
 
-CREATE TABLE AS SELECT (CTAS) se řídí stejným chováním SQL Server, které je popsané pro možnost vybrat. Uskladněn. V definici sloupce `CREATE TABLE` části příkazu ale nemůžete zadat vlastnost identity. V `SELECT` části CTAS také nemůžete použít funkci identita. K naplnění tabulky je nutné použít `CREATE TABLE` k definování tabulky, za kterou se `INSERT..SELECT` má naplnit.
+CREATE TABLE AS SELECT (CTAS) se řídí stejným chováním SQL Server, které je popsané pro možnost vybrat. Uskladněn. V definici sloupce části příkazu ale nemůžete zadat vlastnost IDENTITY `CREATE TABLE` . V části CTAS také nemůžete použít funkci identita `SELECT` . K naplnění tabulky je nutné použít `CREATE TABLE` k definování tabulky, za kterou se `INSERT..SELECT` má naplnit.
 
 ## <a name="explicitly-inserting-values-into-an-identity-column"></a>Explicitní vkládání hodnot do sloupce IDENTITY
 

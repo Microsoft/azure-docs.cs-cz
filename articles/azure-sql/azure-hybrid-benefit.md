@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/13/2019
-ms.openlocfilehash: fcb1e5f45bc4f8d234952e338052a18d4b03ee0f
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 9d8a973e04618e4223f90ffb9a3004d0fe40bbf7
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344675"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743486"
 ---
 # <a name="azure-hybrid-benefit---azure-sql-database--sql-managed-instance"></a>Zvýhodněné hybridní využití Azure-Azure SQL Database & spravované instance SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -32,7 +32,11 @@ V zřízené výpočetní úrovni v rámci nákupního modelu založeném na vCo
 
 Pomocí Zvýhodněné hybridní využití Azure se můžete rozhodnout platit jenom za základní infrastrukturu Azure, a to pomocí své stávající licence SQL Server pro SQL Server databázového stroje (základní výpočetní prostředky), nebo můžete platit za základní infrastrukturu i pro SQL Serverou licenci (ceny zahrnuté v licenci).
 
-Licenční model můžete vybrat nebo změnit pomocí Azure Portal nebo pomocí některého z následujících rozhraní API:
+Licenční model můžete vybrat nebo změnit v Azure Portal: 
+- Pro nové databáze během vytváření vyberte na kartě **základy** možnost **Konfigurovat databázi** a vyberte možnost úspory peněz.
+- V případě existujících databází vyberte v nabídce **Nastavení** položku **Konfigurovat** a vyberte možnost Uložit peníze.
+
+Můžete také nakonfigurovat novou nebo existující databázi pomocí jednoho z následujících rozhraní API:
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

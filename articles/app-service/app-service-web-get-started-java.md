@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: b07ffe92a5dd0c105188fab55bc679c04f660ed2
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: d8f03d714ab44dc01d9e138a63a89892ead60fe9
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300939"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85249461"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-windows"></a>Rychlý Start: Vytvoření aplikace Java v Azure App Service ve Windows
 
@@ -38,7 +38,7 @@ ms.locfileid: "84300939"
 Spusťte následující příkaz Maven na příkazovém řádku Cloud Shell k vytvoření nové aplikace s názvem `helloworld` :
 
 ```bash
-mvn archetype:generate -DgroupId=example.demo -DartifactId=helloworld -DarchetypeArtifactId=maven-archetype-webapp -Dversion=1.0-SNAPSHOT
+mvn archetype:generate "-DgroupId=example.demo" "-DartifactId=helloworld" "-DarchetypeArtifactId=maven-archetype-webapp" "-Dversion=1.0-SNAPSHOT"
 ```
 
 Pak změňte pracovní adresář na složku projektu:
@@ -49,6 +49,8 @@ cd helloworld
 
 ## <a name="configure-the-maven-plugin"></a>Konfigurace modulu plug-in Maven
 
+Proces nasazení, který Azure App Service, může automaticky vyzvednutí přihlašovacích údajů Azure z Azure CLI. Pokud nemáte nainstalované rozhraní příkazového řádku Azure CLI, modul plug-in Maven vás přihlásí pomocí protokolu OAuth nebo přihlášení zařízení. Pokud potřebujete, Projděte si podrobné informace o [ověřování pomocí modulů plug-in Maven](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication) .
+
 Spuštěním následujícího příkazu Maven na příkazovém řádku můžete nakonfigurovat nasazení, vybrat **2** v operačním **systému Windows** v prvním kroku a pak přijmout výchozí konfigurace stisknutím klávesy **ENTER** , dokud nezískáte výzvu k **potvrzení (Y/N)** , stiskněte klávesu **Y** a konfigurace se provede. 
 
 ```bash
@@ -57,7 +59,7 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
 
 Vzorový proces vypadá takto:
 
-```cmd
+```console
 ~@Azure:~/helloworld$ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
 [INFO] Scanning for projects...
 [INFO]
@@ -177,7 +179,7 @@ Po dokončení nasazení přejděte ve webovém prohlížeči pomocí následuj�
 
 ## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]
-> [Připojení ke službě Azure SQL Database pomocí jazyka Java](/azure/sql-database/sql-database-connect-query-java?toc=%2Fazure%2Fjava%2Ftoc.json)
+> [Připojení k Azure SQL Database pomocí Java](/azure/sql-database/sql-database-connect-query-java?toc=%2Fazure%2Fjava%2Ftoc.json)
 
 > [!div class="nextstepaction"]
 > [Připojení k Azure DB for MySQL pomocí Java](/azure/mysql/connect-java)

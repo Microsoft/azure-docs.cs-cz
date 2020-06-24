@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 04/21/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: ee15c3c41ec2ddaa564011e8fb7d2c90472cc40f
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: aeb3273622b863f04c73561520efe3be6cc6fec2
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84466081"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84804925"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Použití PowerShellu ke správě adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2
 
@@ -83,13 +83,13 @@ $ctx = $storageAccount.Context
 
 ## <a name="create-a-file-system"></a>Vytvoření systému souborů
 
-Systém souborů funguje jako kontejner pro vaše soubory. Můžete ho vytvořit pomocí `New-AzDatalakeGen2FileSystem` rutiny. 
+Systém souborů funguje jako kontejner pro vaše soubory. Můžete ho vytvořit pomocí `New-AzStorageContainer` rutiny. 
 
 Tento příklad vytvoří systém souborů s názvem `my-file-system` .
 
 ```powershell
 $filesystemName = "my-file-system"
-New-AzDatalakeGen2FileSystem -Context $ctx -Name $filesystemName
+New-AzStorageContainer -Context $ctx -Name $filesystemName
 ```
 
 ## <a name="create-a-directory"></a>Vytvoření adresáře
@@ -363,7 +363,7 @@ $Token = $Null
 do
 {
      $items = Get-AzDataLakeGen2ChildItem -Context $ctx -FileSystem $filesystemName -Recurse -ContinuationToken $Token    
-     if($items.Length -le 0) { Break;}
+     if($items.Count -le 0) { Break;}
      $items | Update-AzDataLakeGen2Item -Acl $acl
      $Token = $items[$items.Count -1].ContinuationToken;
 }

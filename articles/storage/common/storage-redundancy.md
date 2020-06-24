@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 06/08/2020
+ms.date: 06/22/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 5bc433615b19b36681796056ff4baf95d080d457
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: 9502194b2020723801469b511f46d3e806290ba5
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84629406"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213988"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage redundance
 
@@ -120,13 +120,15 @@ Informace o cenách najdete v podrobnostech o cenách [objektů BLOB](https://az
 
 ## <a name="read-access-to-data-in-the-secondary-region"></a>Přístup pro čtení k datům v sekundární oblasti
 
-Geograficky redundantní úložiště (s GRS nebo GZRS) replikuje vaše data do jiného fyzického umístění v sekundární oblasti, aby se chránila před oblastními výpadky. Tato data jsou však k dispozici pro čtení pouze v případě, že zákazník nebo společnost Microsoft zahájí převzetí služeb při selhání z primární do sekundární oblasti. Když povolíte přístup pro čtení do sekundární oblasti, budou vaše data dostupná pro čtení, pokud se primární oblast nebude k dispozici. Pro přístup pro čtení do sekundární oblasti povolte geograficky redundantní úložiště s přístupem pro čtení (RA-GRS) nebo geograficky redundantní úložiště s přístupem pro čtení (RA-GZRS).
+Geograficky redundantní úložiště (s GRS nebo GZRS) replikuje vaše data do jiného fyzického umístění v sekundární oblasti, aby se chránila před oblastními výpadky. Tato data jsou však k dispozici pro čtení pouze v případě, že zákazník nebo společnost Microsoft zahájí převzetí služeb při selhání z primární do sekundární oblasti. Když povolíte přístup pro čtení do sekundární oblasti, data je možné kdykoli číst, a to i v případě, že primární oblast nebude k dispozici. Pro přístup pro čtení do sekundární oblasti povolte geograficky redundantní úložiště s přístupem pro čtení (RA-GRS) nebo geograficky redundantní úložiště s přístupem pro čtení (RA-GZRS).
 
 ### <a name="design-your-applications-for-read-access-to-the-secondary"></a>Návrh aplikací pro přístup pro čtení sekundárního
 
-Pokud je váš účet úložiště nakonfigurovaný pro přístup pro čtení do sekundární oblasti, můžete navrhovat aplikace pro bezproblémové přesunutí na čtení dat ze sekundární oblasti, pokud z nějakého důvodu dojde k nedostupnosti primární oblasti. Sekundární oblast je vždy k dispozici pro přístup pro čtení, takže můžete otestovat aplikaci, abyste se ujistili, že se bude číst ze sekundárního v případě výpadku. Další informace o tom, jak navrhovat aplikace pro zajištění vysoké dostupnosti, najdete v tématu [použití geografické redundance k návrhu vysoce dostupných aplikací](geo-redundant-design.md).
+Pokud je váš účet úložiště nakonfigurovaný pro přístup pro čtení do sekundární oblasti, můžete navrhovat aplikace pro bezproblémové přesunutí na čtení dat ze sekundární oblasti, pokud z nějakého důvodu dojde k nedostupnosti primární oblasti. 
 
-Když je povolený přístup pro čtení k sekundárnímu účtu, můžou se vaše data číst ze sekundárního koncového bodu i z primárního koncového bodu pro váš účet úložiště. Sekundární koncový bod připojí příponu *– sekundární* k názvu účtu. Pokud je například primárním koncovým bodem pro úložiště objektů BLOB `myaccount.blob.core.windows.net` , pak je sekundární koncový bod `myaccount-secondary.blob.core.windows.net` . Přístupové klíče účtu pro váš účet úložiště jsou u primárních i sekundárních koncových bodů stejné.
+Sekundární oblast je k dispozici pro přístup pro čtení po povolení RA-GRS nebo RA-GZRS, abyste mohli otestovat svou aplikaci předem, abyste se ujistili, že se v případě výpadku budou správně číst ze sekundárního zařízení. Další informace o tom, jak navrhovat aplikace pro zajištění vysoké dostupnosti, najdete v tématu [použití geografické redundance k návrhu vysoce dostupných aplikací](geo-redundant-design.md).
+
+Když je povolený přístup pro čtení k sekundárnímu, vaše aplikace se dá číst ze sekundárního koncového bodu i z primárního koncového bodu. Sekundární koncový bod připojí příponu *– sekundární* k názvu účtu. Pokud je například primárním koncovým bodem pro úložiště objektů BLOB `myaccount.blob.core.windows.net` , pak je sekundární koncový bod `myaccount-secondary.blob.core.windows.net` . Přístupové klíče účtu pro váš účet úložiště jsou u primárních i sekundárních koncových bodů stejné.
 
 ### <a name="check-the-last-sync-time-property"></a>Kontrola vlastnosti Čas poslední synchronizace
 
@@ -159,7 +161,7 @@ Následující tabulka uvádí, zda jsou vaše data v daném scénáři odolná 
 | Scénář výpadku                                                                                                 | LRS                             | ZRS                              | GRS/RA – GRS                                  | GZRS/RA – GZRS                              |
 | :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
 | Uzel v datovém centru nebude dostupný.                                                                 | Ano                             | Ano                              | Ano                                  | Ano                                 |
-| Nebudete mít k dispozici celé datové centrum (oblast nebo mimo oblast).                                           | No                              | Ano                              | Ano<sup>1</sup>                                  | Yes                                  |
+| Nebudete mít k dispozici celé datové centrum (oblast nebo mimo oblast).                                           | Ne                              | Ano                              | Ano<sup>1</sup>                                  | Ano                                  |
 | V primární oblasti dojde k výpadku v rámci oblasti.                                                                                     | Ne                              | Ne                               | Ano<sup>1</sup>                                  | Ano<sup>1</sup>                                  |
 | Přístup pro čtení do sekundární oblasti je k dispozici, pokud primární oblast nebude k dispozici. | Ne                              | Ne                               | Ano (s RA-GRS)                                   | Ano (s RA-GZRS)                                 |
 

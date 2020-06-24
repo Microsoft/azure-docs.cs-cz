@@ -6,17 +6,17 @@ author: Antvgski
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 780137c8e081917b317656de3caba60dfaea4810
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cb813c9a30b644459f3e586ed4313ca070b5a746
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80633733"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212917"
 ---
 # <a name="quickstart-scale-compute-in-azure-synapse-analytics-using-t-sql"></a>Rychlý Start: škálování výpočetních prostředků ve službě Azure synapse Analytics pomocí T-SQL
 
@@ -24,7 +24,7 @@ ms.locfileid: "80633733"
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Stáhněte a nainstalujte nejnovější verzi aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS).
 
@@ -44,7 +44,7 @@ V této části se pomocí aplikace [SQL Server Management Studio](/sql/ssms/dow
    | ------------ | ------------------ | ------------------------------------------------- |
    | Typ serveru | Databázový stroj | Tato hodnota se vyžaduje. |
    | Název serveru | Plně kvalifikovaný název serveru | Tady je příklad: **mySampleDataWarehouseservername.Database.Windows.NET**. |
-   | Authentication | Ověřování SQL Serveru | Ověřování SQL je jediný typ ověřování, který se v tomto kurzu konfiguruje. |
+   | Ověřování | Ověřování SQL Serveru | Ověřování SQL je jediný typ ověřování, který se v tomto kurzu konfiguruje. |
    | Přihlásit | Účet správce serveru | Jedná se o účet, který jste zadali při vytváření serveru. |
    | Heslo | Heslo pro účet správce serveru | Heslo, které jste zadali při vytváření serveru. |
 
