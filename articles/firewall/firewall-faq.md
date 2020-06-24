@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 06/08/2020
 ms.author: victorh
-ms.openlocfilehash: f8bfc163fbf32a2083b6e9250daaf5ea2629d10a
-ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
+ms.openlocfilehash: cf896f6783cca0a61892c43860328d87ada56a9c
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84509232"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791482"
 ---
 # <a name="azure-firewall-faq"></a>Nejčastější dotazy k Azure Firewall
 
@@ -176,7 +176,7 @@ Počáteční kapacita propustnosti Azure Firewall je 2,5 – 3 GB/s a škálov�
 
 ## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Jak dlouho trvá Azure Firewall k horizontálnímu navýšení kapacity?
 
-Azure Firewall postupně škáluje, když je průměrná propustnost nebo spotřeba procesoru na 60%. Horizontální navýšení kapacity trvá pět až sedm minut. Při testování výkonu se ujistěte, že jste vyzkoušeli aspoň 10 až 15 minut, a inicializujete nová připojení, abyste mohli využít nově vytvořených uzlů brány firewall.
+Azure Firewall postupně škáluje, když je průměrná propustnost nebo spotřeba procesoru na 60%. Horizontální navýšení kapacity trvá pět až sedm minut. Při testování výkonu se ujistěte, že jste otestovali alespoň 10 až 15 minut, a spusťte nová připojení, abyste mohli využít nově vytvořené uzly brány firewall.
 
 ## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>Má Azure Firewall ve výchozím nastavení povolený přístup ke službě Active Directory?
 
@@ -215,3 +215,7 @@ Ano. Další informace najdete v tématu [limity, kvóty a omezení předplatné
 ## <a name="can-i-move-an-ip-group-to-another-resource-group"></a>Můžu přesunout skupinu IP adres do jiné skupiny prostředků?
 
 Ne, přesunutí skupiny IP adres do jiné skupiny prostředků se momentálně nepodporuje.
+
+## <a name="what-is-the-tcp-idle-timeout-for-azure-firewall"></a>Jaký je časový limit nečinnosti protokolu TCP pro Azure Firewall?
+
+Standardní chování síťové brány firewall je, aby bylo zajištěno, že připojení TCP jsou udržována v provozu, a aby je bylo možné okamžitě zavřít, pokud není žádná aktivita. Časový limit nečinnosti Azure Firewall TCP je 4 minuty. Toto nastavení není konfigurovatelné. Pokud je doba nečinnosti delší než hodnota časového limitu, není zaručena údržba relace TCP nebo HTTP. Běžným postupem je používání udržování připojení TCP. Tento postup zachovává aktivní připojení po delší dobu. Další informace najdete v [příkladech rozhraní .NET](https://docs.microsoft.com/dotnet/api/system.net.servicepoint.settcpkeepalive?redirectedfrom=MSDN&view=netcore-3.1#System_Net_ServicePoint_SetTcpKeepAlive_System_Boolean_System_Int32_System_Int32_).

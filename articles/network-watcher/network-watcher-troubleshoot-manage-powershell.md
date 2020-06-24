@@ -7,23 +7,23 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
-ms.openlocfilehash: 0723ddc9b0e2f15d5c8e51c96d51f58f1313493a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1461f7f9811145553da6c200111d4db1f013060e
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78673656"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738681"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-powershell"></a>Řešení potíží s Virtual Network bránou a připojením pomocí Azure Network Watcher PowerShellu
 
 > [!div class="op_single_selector"]
-> - [Portál](diagnose-communication-problem-between-networks.md)
-> - [Prostředí](network-watcher-troubleshoot-manage-powershell.md)
+> - [Azure Portal](diagnose-communication-problem-between-networks.md)
+> - [PowerShell](network-watcher-troubleshoot-manage-powershell.md)
 > - [Azure CLI](network-watcher-troubleshoot-manage-cli.md)
 > - [REST API](network-watcher-troubleshoot-manage-rest.md)
 
@@ -32,7 +32,7 @@ Network Watcher poskytuje řadu možností, které se týkají porozumění sí�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V tomto scénáři se předpokládá, že už jste postupovali podle kroků v části [vytvoření Network Watcher](network-watcher-create.md) k vytvoření Network Watcher.
 
@@ -44,7 +44,7 @@ Seznam podporovaných typů bran najdete v části [podporované typy bran](netw
 
 ## <a name="retrieve-network-watcher"></a>Načíst Network Watcher
 
-Prvním krokem je načtení instance Network Watcher. `$networkWatcher` Proměnná je předána `Start-AzNetworkWatcherResourceTroubleshooting` rutině v kroku 4.
+Prvním krokem je načtení instance Network Watcher. `$networkWatcher`Proměnná je předána `Start-AzNetworkWatcherResourceTroubleshooting` rutině v kroku 4.
 
 ```powershell
 $networkWatcher = Get-AzNetworkWatcher -Location "WestCentralUS" 
@@ -70,10 +70,10 @@ $sc = New-AzStorageContainer -Name logs
 
 ## <a name="run-network-watcher-resource-troubleshooting"></a>Řešení potíží se spuštěním Network Watcher prostředků
 
-Pomocí `Start-AzNetworkWatcherResourceTroubleshooting` rutiny můžete řešit problémy s prostředky. Rutinu předáte objekt Network Watcher, ID připojení nebo Virtual Network bránu, ID účtu úložiště a cestu k uložení výsledků.
+Pomocí rutiny můžete řešit problémy s prostředky `Start-AzNetworkWatcherResourceTroubleshooting` . Rutinu předáte objekt Network Watcher, ID připojení nebo Virtual Network bránu, ID účtu úložiště a cestu k uložení výsledků.
 
 > [!NOTE]
-> `Start-AzNetworkWatcherResourceTroubleshooting` Rutina je dlouho spuštěná a dokončení může trvat několik minut.
+> `Start-AzNetworkWatcherResourceTroubleshooting`Rutina je dlouho spuštěná a dokončení může trvat několik minut.
 
 ```powershell
 Start-AzNetworkWatcherResourceTroubleshooting -NetworkWatcher $networkWatcher -TargetResourceId $connection.Id -StorageId $sa.Id -StoragePath "$($sa.PrimaryEndpoints.Blob)$($sc.name)"

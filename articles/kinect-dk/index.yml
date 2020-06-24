@@ -1,0 +1,82 @@
+### YamlMime:Landing
+title: Dokumentace k sadě Azure Kinect DK
+summary: Azure Kinect DK je vývojářská sada s pokročilými senzory AI, které poskytují sofistikované modely pro počítačové zpracování obrazu a řeči. Kinect obsahuje senzor hloubky, prostorové mikrofonní pole s videokamerou a senzor orientace ve formě malého komplexního zařízení s několika režimy, možnostmi a sadami SDK (Software Development Kit).
+metadata:
+  title: Dokumentace k sadě Azure Kinect DK
+  description: Azure Kinect DK je vývojářská sada s pokročilými senzory AI, které poskytují sofistikované modely pro počítačové zpracování obrazu a řeči. Kinect obsahuje senzor hloubky, prostorové mikrofonní pole s videokamerou a senzor orientace ve formě malého komplexního zařízení s několika režimy, možnostmi a sadami SDK.
+  ms.prod: kinect-dk
+  ms.topic: landing-page
+  author: tesych
+  ms.author: tesych
+  ms.date: 03/11/2020
+  ms.openlocfilehash: f1691507d75d6de630f3c5a48cd59c8cc22b5999
+  ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 03/31/2020
+  ms.locfileid: "85277878"
+landingContent:
+- title: Informace o Azure Kinect DK
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Azure Kinect DK?
+      url: about-azure-kinect-dk.md
+  - linkListType: reference
+    links:
+    - text: Specifikace hardwaru
+      url: hardware-specification.md
+    - text: Systémové požadavky
+      url: system-requirements.md
+- title: Začínáme
+  linkLists:
+  - linkListType: download
+    links:
+    - text: Sada Azure Kinect Sensor SDK
+      url: sensor-sdk-download.md
+    - text: Sada Azure Kinect Body Tracking SDK
+      url: body-sdk-download.md
+  - linkListType: quickstart
+    links:
+    - text: Nastavení sady Azure Kinect DK
+      url: set-up-azure-kinect-dk.md
+    - text: Záznam datových proudů ze snímačů do souboru
+      url: record-sensor-streams-file.md
+    - text: Vytvoření první aplikace pro Azure Kinect
+      url: build-first-app.md
+    - text: Nastavení sady Body Tracking SDK
+      url: body-sdk-setup.md
+    - text: Vytvoření první aplikace pro sledování pohybu těla
+      url: build-first-body-app.md
+- title: Použití sady Sensor SDK
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Vyhledání a otevření zařízení
+      url: find-then-open-device.md
+    - text: Načtení dat obrázku
+      url: about-sensor-sdk.md
+    - text: Přístup k mikrofonu
+      url: access-mics.md
+    - text: Záznam a přehrávání
+      url: record-playback-api.md
+- title: Použití sady Body Tracking SDK
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Získání výsledků sledování pohybu těla
+      url: get-body-tracking-results.md
+    - text: Přístup k datům ve snímku těla
+      url: access-data-body-frame.md
+- title: Referenční informace
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Rozhraní API sady Sensor SDK
+      url: https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/index.html
+    - text: Rozhraní API sady Body Tracking SDK
+      url: https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/index.html
+    - text: Služby zpracování obrazu
+      url: https://azure.microsoft.com/services/cognitive-services/directory/vision/
+    - text: Hlasové služby
+      url: https://docs.microsoft.com/azure/cognitive-services/speech-service/

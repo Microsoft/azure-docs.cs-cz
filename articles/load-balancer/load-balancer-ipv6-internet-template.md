@@ -8,23 +8,23 @@ author: asudbring
 keywords: IPv6, Azure Load Balancer, duální zásobník, veřejná IP adresa, nativní IPv6, mobilní zařízení, IoT
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: eb9703a1944a650f41d76c05d79764f8bdf8cd52
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 65f378f52c464869217084c6f155b9d34c6fc092
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76045446"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84803738"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>Nasazení řešení internetového vyrovnávání zatížení s protokolem IPv6 pomocí šablony
 
 > [!div class="op_single_selector"]
-> * [Prostředí](load-balancer-ipv6-internet-ps.md)
+> * [PowerShell](load-balancer-ipv6-internet-ps.md)
 > * [Azure CLI](load-balancer-ipv6-internet-cli.md)
 > * [Šablona](load-balancer-ipv6-internet-template.md)
 
@@ -115,8 +115,8 @@ Ukázková šablona použitá v tomto článku obsahuje následující proměnn�
 | --- | --- |
 | adminUsername |Zadejte název účtu správce, který se používá pro přihlášení k virtuálním počítačům. |
 | adminPassword |Zadejte heslo pro účet správce, který se používá pro přihlášení k virtuálním počítačům. |
-| dnsNameforIPv4LbIP |Zadejte název hostitele DNS, který chcete přiřadit jako veřejný název nástroje pro vyrovnávání zatížení. Tento název se překládá na veřejnou IPv4 adresu nástroje pro vyrovnávání zatížení. Název musí být malými písmeny a musí odpovídat regulárnímu výrazu: ^ [a-z] [a-Z0{1,61}-9-] [a-Z0-9] $. |
-| dnsNameforIPv6LbIP |Zadejte název hostitele DNS, který chcete přiřadit jako veřejný název nástroje pro vyrovnávání zatížení. Tento název se přeloží na veřejnou IPv6 adresu nástroje pro vyrovnávání zatížení. Název musí být malými písmeny a musí odpovídat regulárnímu výrazu: ^ [a-z] [a-Z0{1,61}-9-] [a-Z0-9] $. Může se jednat o stejný název jako adresa IPv4. Když klient pošle dotaz DNS na tento název, Azure při sdílení názvu vrátí záznamy A i AAAA. |
+| dnsNameforIPv4LbIP |Zadejte název hostitele DNS, který chcete přiřadit jako veřejný název nástroje pro vyrovnávání zatížení. Tento název se překládá na veřejnou IPv4 adresu nástroje pro vyrovnávání zatížení. Název musí být malými písmeny a musí odpovídat regulárnímu výrazu: ^ [a-z] [a-Z0-9-] {1,61} [a-Z0-9] $. |
+| dnsNameforIPv6LbIP |Zadejte název hostitele DNS, který chcete přiřadit jako veřejný název nástroje pro vyrovnávání zatížení. Tento název se přeloží na veřejnou IPv6 adresu nástroje pro vyrovnávání zatížení. Název musí být malými písmeny a musí odpovídat regulárnímu výrazu: ^ [a-z] [a-Z0-9-] {1,61} [a-Z0-9] $. Může se jednat o stejný název jako adresa IPv4. Když klient pošle dotaz DNS na tento název, Azure při sdílení názvu vrátí záznamy A i AAAA. |
 | vmNamePrefix |Zadejte předponu názvu virtuálního počítače. Šablona připojí k názvu číslo (0, 1 atd.), když se vytvoří virtuální počítače. |
 | nicNamePrefix |Zadejte předponu názvu síťového rozhraní. Šablona připojí číslo (0, 1 atd.) k názvu při vytvoření síťových rozhraní. |
 | storageAccountName |Zadejte název existujícího účtu úložiště nebo zadejte název nového, který má šablona vytvořit. |

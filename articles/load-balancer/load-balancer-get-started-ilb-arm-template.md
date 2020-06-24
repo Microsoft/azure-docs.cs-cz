@@ -7,24 +7,24 @@ documentationcenter: na
 author: asudbring
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 0d7cc4d571ddeb0b57fd4f025b8cbf7b204f61e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: eb92e4b7eaacb5b2d18b3c33f6fdf714592bdefc
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79456960"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84803921"
 ---
 # <a name="create-an-internal-load-balancer-using-a-template"></a>Vytvoření interního nástroje pro vyrovnávání zatížení pomocí šablony
 
 > [!div class="op_single_selector"]
-> * [Portál Azure](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)
-> * [Prostředí](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)
+> * [Azure Portal](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)
+> * [PowerShell](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)
 > * [Azure CLI](../load-balancer/load-balancer-get-started-ilb-arm-cli.md)
 > * [Šablona](../load-balancer/load-balancer-get-started-ilb-arm-template.md)
 
@@ -58,7 +58,7 @@ Pokud chcete nasadit šablonu, kterou jste stáhli, pomocí prostředí PowerShe
 Pokud chcete nasadit šablonu pomocí rozhraní příkazového řádku Azure, použijte následující postup.
 
 1. Pokud jste rozhraní příkazového řádku Azure nikdy nepoužívali, přečtěte si téma [instalace a konfigurace rozhraní příkazového řádku Azure](../cli-install-nodejs.md) a postupujte podle pokynů až do chvíle, kdy vyberete svůj účet a předplatné Azure.
-2. [https://shell.azure.com](https://shell.azure.com) V prohlížeči otevřete Cloud Shell. Spuštěním příkazu **azure config mode** přejděte do režimu Resource Manager, jak vidíte níže.
+2. [https://shell.azure.com](https://shell.azure.com)V prohlížeči otevřete Cloud Shell. Spuštěním příkazu **azure config mode** přejděte do režimu Resource Manager, jak vidíte níže.
 
     ```console
     azure config mode arm

@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 06/09/2020
+ms.date: 06/17/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 7e03f8436d432ffb4e20a442261ccf18c57a3934
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: 7b8c6e09616f261c371b010b38d2c0f81376a6f9
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84628164"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84944759"
 ---
 # <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>Zápis auditu do účtu úložiště za virtuální sítí a branou firewall
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -145,6 +145,18 @@ Konfigurace auditu SQL pro zápis událostí do účtu úložiště za virtuáln
 
 - [Vytvořit nebo aktualizovat zásady auditování databáze (set-AzSqlDatabaseAudit)](/powershell/module/az.sql/set-azsqldatabaseaudit)
 - [Vytvořit nebo aktualizovat zásady auditování serveru (set-AzSqlServerAudit)](/powershell/module/az.sql/set-azsqlserveraudit)
+
+## <a name="using-azure-resource-manager-template"></a>Pomocí šablony Azure Resource Manageru
+
+Můžete nakonfigurovat auditování pro zápis událostí databáze na účet úložiště za virtuální sítí a bránou firewall pomocí [Azure Resource Manager](../../azure-resource-manager/management/overview.md) šablony, jak je znázorněno v následujícím příkladu:
+
+> [!IMPORTANT]
+> Aby bylo možné používat účet úložiště za virtuální sítí a bránou firewall, je třeba nastavit parametr **isStorageBehindVnet** na hodnotu true.
+
+- [Nasazení serveru SQL Azure s povoleným auditováním pro zápis protokolů auditu do úložiště objektů BLOB](https://azure.microsoft.com/resources/templates/201-sql-auditing-server-policy-to-blob-storage)
+
+> [!NOTE]
+> Propojená ukázka je na externím veřejném úložišti a je poskytována "tak, jak je", bez záruky a není podporována v rámci žádného programu nebo služby podpory společnosti Microsoft.
 
 ## <a name="next-steps"></a>Další kroky
 

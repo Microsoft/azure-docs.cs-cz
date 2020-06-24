@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
 ms.openlocfilehash: e4525bdc6165e8e736db5f539c764d25250cb248
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258002"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84700881"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure ExpressRoute s Azure Site Recovery
 
@@ -38,7 +38,7 @@ Zajistěte, aby byly splněny také [požadavky na síť](vmware-azure-configura
 V případě, že používáte proxy v místním prostředí a chcete pro provoz replikace použít ExpressRoute, musíte nakonfigurovat seznam obcházení proxy serveru na konfiguračním serveru a procesových serverech. Postupujte následovně:
 
 - Stáhněte si z [tohoto místa](https://aka.ms/PsExec) nástroj PsExec pro přístup k systémovému kontextu uživatele.
-- Spusťte Internet Explorer v kontextu uživatele systému spuštěním následujícího příkazového řádku PsExec-s-i "%programfiles%\Internet Explorer\iexplore.exe".
+- Spusťte aplikaci Internet Explorer v kontextu uživatele systému spuštěním následujícího příkazového řádku PsExec-s-i "%programfiles%\Internet Explorer\iexplore.exe".
 - Přidání nastavení proxy serveru v IE
 - V seznamu vynechat přidejte adresu URL úložiště Azure *. blob.core.windows.net.
 
@@ -46,7 +46,7 @@ Tím se zajistí, že se během komunikace prostřednictvím proxy serveru proch
 
 Po převzetí služeb při selhání virtuálních počítačů nebo serverů do služby Azure Virtual Network můžete k nim přistupovat pomocí [privátního partnerského vztahu](../expressroute/expressroute-circuit-peerings.md#privatepeering). 
 
-Kombinovaný scénář je reprezentován v následujícím diagramu: ![místní – Azure s ExpressRoute](./media/concepts-expressroute-with-site-recovery/site-recovery-with-expressroute.png)
+Kombinovaný scénář je reprezentován v následujícím diagramu: ![ místní – Azure s ExpressRoute](./media/concepts-expressroute-with-site-recovery/site-recovery-with-expressroute.png)
 
 ## <a name="azure-to-azure-replication-with-expressroute"></a>Replikace z Azure do Azure pomocí ExpressRoute
 

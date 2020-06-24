@@ -8,18 +8,18 @@ manager: mtillman
 ms.assetid: 8078f366-a2c4-4fbb-a44b-fc39fd89df81
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/25/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 88cb1e9893e0ca058e57ce12f00747a59248fb19
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 3e4d2dca6817951f2f06a86c4338106f194b7751
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735687"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84790955"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-the-azure-portal"></a>Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal
 
@@ -61,13 +61,13 @@ Když ve službě Azure RBAC udělíte přístup k prostředku Azure, přidáte 
 
 1. Klikněte na konkrétní prostředek pro daný obor.
 
-1. Klikněte na **Řízení přístupu (IAM)**.
+1. Klikněte na **Řízení přístupu (IAM)** .
 
 1. Kliknutím na kartu **přiřazení rolí** zobrazíte přiřazení rolí v tomto oboru.
 
     ![Karta pro řízení přístupu (IAM) a přiřazení rolí](./media/role-assignments-portal/role-assignments.png)
 
-1. Klikněte na **Přidat** > **přiřazení role přidat**.
+1. Klikněte na **Přidat**  >  **přiřazení role přidat**.
 
    Pokud nemáte oprávnění k přiřazování rolí, bude možnost přidat přiřazení role zakázaná.
 
@@ -95,13 +95,13 @@ Pokud chcete, aby uživatel měl správce předplatného Azure, přiřaďte mu r
 
 1. Klikněte na předplatné, ke kterému chcete udělit přístup.
 
-1. Klikněte na **Řízení přístupu (IAM)**.
+1. Klikněte na **Řízení přístupu (IAM)** .
 
 1. Kliknutím na kartu **přiřazení rolí** zobrazíte přiřazení rolí pro toto předplatné.
 
     ![Karta pro řízení přístupu (IAM) a přiřazení rolí](./media/role-assignments-portal/role-assignments.png)
 
-1. Klikněte na **Přidat** > **přiřazení role přidat**.
+1. Klikněte na **Přidat**  >  **přiřazení role přidat**.
 
    Pokud nemáte oprávnění k přiřazování rolí, bude možnost přidat přiřazení role zakázaná.
 
@@ -146,4 +146,4 @@ Pokud v Azure RBAC odeberete přístup z prostředku Azure, odeberete přiřazen
 - [Vypsání přiřazení rolí Azure pomocí Azure Portal](role-assignments-list-portal.md)
 - [Kurz: udělení přístupu uživatele k prostředkům Azure pomocí Azure Portal](quickstart-assign-role-user-portal.md)
 - [Řešení potíží s Azure RBAC](troubleshooting.md)
-- [Uspořádání prostředků pomocí skupin pro správu Azure](../governance/management-groups/overview.md)
+- [Uspořádání prostředků s využitím skupin pro správu Azure](../governance/management-groups/overview.md)

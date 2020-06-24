@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: ebb25d49250b71ab8d948833ac982ef244225539
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: e38ae07aa032e4a828c9188fd78b112f4ff0d397
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84216445"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945388"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Monitorování virtuálních počítačů Azure pomocí Azure Monitor
 Tento článek popisuje, jak pomocí Azure Monitor shromažďovat a analyzovat data monitorování z virtuálních počítačů Azure a udržovat jejich stav. Virtuální počítače je možné monitorovat z hlediska dostupnosti a výkonu pomocí Azure Monitor jako u jakéhokoli [jiného prostředku Azure](monitor-azure-resource.md), ale jsou jedinečné od jiných prostředků, protože potřebujete také monitorovat hostovaný operační systém a systémy a úlohy, které jsou v něm spuštěné. 
@@ -105,9 +105,9 @@ Nainstalujte do Azure Portal rozšíření diagnostiky pro jeden virtuální po�
 Podrobnosti o konfiguraci agentů telegraf na virtuálních počítačích se systémem Linux najdete v tématu [install and Configure telegraf](../platform/collect-custom-metrics-linux-telegraf.md#install-and-configure-telegraf) . Možnost nabídky **nastavení diagnostiky** je dostupná pro Linux, ale umožní vám jenom posílat data do služby Azure Storage.
 
 ### <a name="collect-platform-metrics-and-activity-log"></a>Shromažďování metrik platforem a protokolu aktivit
-Metriky platformy a protokol aktivit shromážděné pro každého hostitele virtuálního počítače můžete zobrazit v Azure Portal. Tato data můžete shromažďovat do stejného Log Analytics pracovního prostoru jako Azure Monitor pro virtuální počítače k jejich analýze s ostatními shromažďovanými daty monitorování pro virtuální počítač. Tato kolekce je nakonfigurována s [nastavením diagnostiky](../platform/diagnostic-settings.md). Shromážděte protokol aktivit s [nastavením diagnostiky pro předplatné](../platform/diagnostic-settings.md#create-diagnostic-settings-in-azure-portal).
+Metriky platformy a protokol aktivit shromážděné pro každého hostitele virtuálního počítače můžete zobrazit v Azure Portal. Tato data můžete shromažďovat do stejného Log Analytics pracovního prostoru jako Azure Monitor pro virtuální počítače k jejich analýze s ostatními shromažďovanými daty monitorování pro virtuální počítač. Tato kolekce je nakonfigurována s [nastavením diagnostiky](../platform/diagnostic-settings.md). Shromážděte protokol aktivit s [nastavením diagnostiky pro předplatné](../platform/diagnostic-settings.md#create-in-azure-portal).
 
-Shromážděte metriky platforem s nastavením diagnostiky pro virtuální počítač. Na rozdíl od jiných prostředků Azure nelze vytvořit nastavení diagnostiky pro virtuální počítač v Azure Portal, ale je nutné použít [jinou metodu](../platform/diagnostic-settings.md#create-diagnostic-settings-using-powershell). Následující příklady znázorňují, jak shromažďovat metriky pro virtuální počítač pomocí PowerShellu i rozhraní příkazového řádku.
+Shromážděte metriky platforem s nastavením diagnostiky pro virtuální počítač. Na rozdíl od jiných prostředků Azure nelze vytvořit nastavení diagnostiky pro virtuální počítač v Azure Portal, ale je nutné použít [jinou metodu](../platform/diagnostic-settings.md#create-using-powershell). Následující příklady znázorňují, jak shromažďovat metriky pro virtuální počítač pomocí PowerShellu i rozhraní příkazového řádku.
 
 ```powershell
 Set-AzDiagnosticSetting -Name vm-diagnostics -ResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.Compute/virtualMachines/my-vm" -Enabled $true -MetricCategory AllMetrics -workspaceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/my-resource-group/providers/microsoft.operationalinsights/workspaces/my-workspace"
@@ -130,7 +130,7 @@ Jakmile nakonfigurujete shromažďování dat monitorování pro virtuální po�
 
 ![Monitorování v Azure Portal](media/monitor-vm-azure/monitor-menu.png)
 
-| Možnost nabídky | Popis |
+| Možnost nabídky | Description |
 |:---|:---|
 | Přehled | Zobrazí [metriky platforem](../platform/data-platform-metrics.md) pro hostitele virtuálního počítače. Pokud chcete s těmito daty pracovat v [Průzkumníkovi metrik](../platform/metrics-getting-started.md), klikněte na graf. |
 | Protokol aktivit | Položky [protokolu aktivit](../platform/activity-log-view.md) filtrované pro aktuální virtuální počítač. |
@@ -148,7 +148,7 @@ Metriky pro virtuální počítače můžete analyzovat otevřením **metrik** z
 
 Virtuální počítače používají tři obory názvů pro metriky:
 
-| Obor názvů | Popis | Požadavek |
+| Obor názvů | Description | Požadavek |
 |:---|:---|:---|
 | Hostitel virtuálního počítače | Metriky hostitele se automaticky shromáždily pro všechny virtuální počítače Azure. Podrobný seznam metrik v [Microsoft. COMPUTE/virtualMachines](../platform/metrics-supported.md#microsoftcomputevirtualmachines). | Shromažďováno automaticky bez nutnosti konfigurace. |
 | Host (klasický) | Omezená sada údajů o výkonu hostovaného operačního systému a aplikace. K dispozici v Průzkumníkovi metrik, ale ne jiné funkce Azure Monitor, jako jsou například výstrahy metriky.  | Bylo nainstalováno [diagnostické rozšíření](../platform/diagnostics-extension-overview.md) . Data se čtou z Azure Storage.  |

@@ -3,15 +3,15 @@ title: Monitorování Azure Storage služeb pomocí Azure Monitor pro úložišt
 description: Tento článek popisuje Azure Monitor funkce úložiště, která správcům úložiště poskytuje rychlý přehled o problémech s výkonem a využitím jejich Azure Storagech účtů.
 ms.subservice: ''
 ms.topic: conceptual
-author: bwren
-ms.author: bwren
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: e69e00eb9db43a76af1d6e541f44f750452cf858
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 7ab7071f504231290f72646e59a30fa855cff6cf
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800060"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84944487"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>Monitorování služby úložiště pomocí Azure Monitor pro úložiště
 
@@ -46,7 +46,7 @@ Z Azure Monitor můžete zobrazit podrobnosti o transakcích, latencích a kapac
 
 Pokud chcete zobrazit využití a dostupnost účtů úložiště ve všech předplatných, proveďte následující kroky.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 2. V Azure Portal v levém podokně vyberte **monitor** a v části **přehledy** vyberte **účty úložiště**.
 
@@ -226,7 +226,9 @@ V tomto příkladu pracujeme se sešitem kapacity účtu úložiště a demonstr
 
 7. Na panelu příkazů vyberte **Uložit jako** a uložte kopii sešitu s vlastními úpravami a potom kliknutím na **hotové úpravy** vraťte do režimu čtení.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
+
+Obecné pokyny k odstraňování potíží najdete v článku věnovaném [řešení problémů](troubleshoot-workbooks.md)na základě vyhrazeného sešitu.
 
 Tato část vám pomůže s diagnostikou a řešením potíží s některými běžnými problémy, se kterými se můžete setkat při používání Azure Monitor pro úložiště. K vyhledání informací týkajících se konkrétního problému použijte níže uvedený seznam.
 
@@ -237,24 +239,6 @@ Chcete-li pomoct řešit problémy související s úložištěm, které identif
 ### <a name="why-can-i-only-see-200-storage-accounts"></a>Proč mohu zobrazit jenom 200 účtů úložiště?
 
 Počet vybraných účtů úložiště má limit 200, bez ohledu na počet vybraných předplatných.
-
-### <a name="what-happens-when-i-click-on-a-recently-pinned-tile-in-the-dashboard"></a>Co se stane po kliknutí na nedávno připnuté dlaždici na řídicím panelu?
-
-* Pokud kliknete kamkoli na dlaždici, přejdete na kartu, ze které se dlaždice připnula. Pokud například připnete graf na kartu Přehled účtu úložiště, pak když na řídicím panelu kliknete na tuto dlaždici, otevře se výchozí zobrazení. když ale připnete graf z vlastního uloženého kopírování, otevře se vaše uložené zobrazení kopie.
-* Ikona filtru v levém horním rohu nadpisu otevře kartu konfigurovat nastavení dlaždic.
-* Ikona elipsy v pravém horním rohu vám poskytne možnosti pro přizpůsobení dat nadpisu, přizpůsobení, aktualizace a odebrání z řídicího panelu.
-
-### <a name="what-happens-when-i-save-a-workbook"></a>Co se stane, když sešit ukládám?
-
-* Když sešit uložíte, můžete vytvořit novou kopii sešitu s úpravami a změnit název. Při uložení se sešit nepřepisuje, aktuální sešit bude vždycky výchozí zobrazení.
-* **Neuložený** sešit je pouze výchozím zobrazením.
-
-
-### <a name="why-dont-i-see-all-my-subscriptions-in-the-portal"></a>Proč na portálu nevidím všechna moje předplatná?
-
-Portál zobrazí data pouze pro vybraná předplatná při spuštění portálu. Pokud chcete změnit, které odběry se mají vybrat, přejděte vpravo nahoře a klikněte na Poznámkový blok s ikonou filtru. Tím se zobrazí karta adresář a předplatná.
-
-![Adresář a předplatné](./media/storage-insights-overview/fqa3.png)
 
 ### <a name="how-to-change-the-coloring-and-threshold-for-availability"></a>Jak změnit barvy a prahovou hodnotu dostupnosti?
 
@@ -273,7 +257,7 @@ V současné době se zobrazují až tři různé typy chyb a zbytek chyb je ses
 
     ![Přejděte na metriky a klikněte na Upravit a potom na transakce, součty.](./media/storage-insights-overview/fqa7.png)
 
-1. Pak změňte počet rozdělení.
+3. Pak změňte počet rozdělení.
 
     ![Vyberte parametry metriky.](./media/storage-insights-overview/fqa7-2.png)
 
@@ -282,37 +266,6 @@ Pokud chcete zobrazit n různých typů chyb, než zadejte splitByLimit jako n +
 ###  <a name="i-saved-my-workbook-while-on-some-storage-account-why-cant-i-find-it-now"></a>Sešit byl uložen v průběhu nějakého účtu úložiště. Proč ho teď nejde najít?
 
 Každý sešit je uložený v účtu úložiště, ve kterém jste ho uložili. Zkuste najít konkrétní účet úložiště, do kterého uživatel sešit uložil. Jinak neexistuje žádný způsob, jak najít konkrétní sešit bez znalosti prostředku (účet úložiště).
-
-### <a name="what-is-time-range"></a>Co je časový rozsah?
-
-Časový rozsah zobrazuje data z určitého časového rámce. Pokud je časový rozsah například 24 hodin, pak se zobrazuje data za posledních 24 hodin.
-
-### <a name="what-is-time-granularity-time-grain"></a>Jaká je časová členitost (časová zrnitost)?
-
-Časová členitost je časový rozdíl mezi dvěma datovými body. Například pokud je časový interval nastaven na 1 sekundu, znamená to, že jsou metriky shromažďovány každou sekundu.
-
-### <a name="what-is-the-time-granularity-once-we-pin-any-part-of-the-workbooks-to-a-dashboard"></a>Jaká je časová prodleva, když připnete do řídicího panelu jakékoli části sešitů?
-
-Výchozí časová členitost je nastavená na automatické, aktuálně se v tuto chvíli nedá změnit.
-
-### <a name="how-do-i-change-the-timespan-time-range-of-the-workbook-step-on-my-dashboard"></a>Návody změnit rozsah TimeSpan/času v kroku sešitu na řídicím panelu?
-
-Ve výchozím nastavení je rozsah TimeSpan/Time na dlaždici řídicího panelu nastavený na 24 hodin. Pokud chcete toto kliknutí změnit na tři tečky vpravo nahoře, vyberte **přizpůsobit data dlaždice**, zaškrtněte políčko Přepsat nastavení času řídicího panelu na úrovni nadpisu a potom vyberte časové rozpětí pomocí rozevírací nabídky.  
-
-![Vyberte tři tečky v pravém horním rohu dlaždice a zvolte možnost přizpůsobit tato data.](./media/storage-insights-overview/fqa-data-settings.png)
-
-![V části konfigurovat nastavení dlaždice vyberte v rozevíracím seznamu časový rozsah TimeSpan/Time.](./media/storage-insights-overview/fqa-timespan.png)
-
-### <a name="how-do-i-change-the-title-of-the-workbook-or-a-workbook-step-i-pinned-to-a-dashboard"></a>Návody změnit název sešitu nebo krok sešitu připnuté na řídicí panel?
-
-Název kroku sešitu nebo sešitu, který je připnuté na řídicí panel, si zachová stejný název, který měl v sešitu. Chcete-li změnit název, je nutné uložit vlastní kopii sešitu. Pak budete moci sešit pojmenovat před tím, než kliknete na tlačítko Uložit.
-
-![Vyberte Uložit v horní části, pokud chcete uložit kopii sešitu a změnit jeho název.](./media/storage-insights-overview/fqa-change-workbook-name.png)
-
-Pokud chcete změnit název kroku v uloženém sešitu, vyberte Upravit v kroku a pak vyberte ozubené kolečko v nastavení.
-
-![Výběrem možnosti upravit v dolní části kroku sešitu otevřete nastavení ](./media/storage-insights-overview/fqa-edit.png)
- ![ v části nastavení vyberte ozubené kolečko, abyste mohli změnit název kroku.](./media/storage-insights-overview/fqa-change-name.png)
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -3,27 +3,27 @@ title: Řešení potíží s proxy aplikací | Microsoft Docs
 description: Popisuje, jak řešit chyby v Azure Proxy aplikací služby AD.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 06/24/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.custom: H1Hack27Feb2017; it-pro
+ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7be9a17bed2a39d16f813332c2d6effc03393264
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 43ac046f3480b08fdc3b8d582d9e724f4b9b93d5
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79244222"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84975431"
 ---
-# <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Řešení problémů s proxy aplikací a chybové zprávy
+# <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Řešení potíží s Proxy aplikací a souvisejícími chybovými zprávami
 
 Při řešení potíží s proxy aplikací doporučujeme začít s kontrolou toku řešení potíží, [laděním problémů konektoru proxy aplikací](application-proxy-debug-connectors.md)a zjištěním, zda jsou konektory proxy aplikací správně nakonfigurovány. Pokud stále dochází k potížím s připojením k aplikaci, postupujte podle pokynů v části řešení potíží s [aplikací proxy při ladění aplikace](application-proxy-debug-apps.md).
 
@@ -31,15 +31,13 @@ Pokud dojde k chybám při přístupu k publikované aplikaci nebo při publikov
 
 * Otevřete konzolu služby systému Windows. Ověřte, že je služba **Microsoft AAD Application proxy Connector** povolená a spuštěná. Můžete se také podívat na stránku vlastnosti služby proxy aplikace, jak je znázorněno na následujícím obrázku:  
   ![Microsoft AAD Application proxy Connector okno Vlastnosti snímku obrazovky](./media/application-proxy-troubleshoot/connectorproperties.png)
-* Otevřete Prohlížeč událostí a vyhledejte události konektoru proxy aplikací v **aplikacích a službách protokoluje** > **správce****konektoru** > **Microsoft** > **AadApplicationProxy** > .
+* Otevřete Prohlížeč událostí a vyhledejte události konektoru proxy aplikací v **aplikacích a službách protokoluje**  >  **Microsoft**  >  **AadApplicationProxy**  >  **správce konektoru**Microsoft AadApplicationProxy  >  **Admin**.
 * V případě potřeby jsou k dispozici podrobnější protokoly [zapnutím protokolů relace konektoru proxy aplikace](application-proxy-connectors.md#under-the-hood).
 
 ## <a name="the-page-is-not-rendered-correctly"></a>Stránka není vykreslena správně
 Můžete mít problémy s vykreslováním aplikace nebo bez nutnosti přijímat konkrétní chybové zprávy. Tato situace může nastat, pokud jste publikovali cestu k článku, ale aplikace vyžaduje obsah, který existuje mimo danou cestu.
 
-Například pokud cestu `https://yourapp/app` publikujete, ale aplikace volá obrázky v `https://yourapp/media`, nebudou vykresleny. Ujistěte se, že jste aplikaci publikovali pomocí cesty nejvyšší úrovně, kterou potřebujete pro zahrnutí veškerého relevantního obsahu. V tomto příkladu by to bylo `http://yourapp/`.
-
-Pokud změníte cestu tak, aby zahrnovala odkazovaný obsah, ale přesto potřebují uživatelé, aby si na cestách pochopili hlubší odkaz, přečtěte si téma nastavení blogového příspěvku [s odkazem na aplikace proxy aplikací na přístupovém panelu Azure AD a ve Spouštěči aplikací Office 365](https://blogs.technet.microsoft.com/applicationproxyblog/2016/04/06/setting-the-right-link-for-application-proxy-applications-in-the-azure-ad-access-panel-and-office-365-app-launcher/).
+Například pokud cestu publikujete, `https://yourapp/app` ale aplikace volá obrázky v `https://yourapp/media` , nebudou vykresleny. Ujistěte se, že jste aplikaci publikovali pomocí cesty nejvyšší úrovně, kterou potřebujete pro zahrnutí veškerého relevantního obsahu. V tomto příkladu by to bylo `http://yourapp/` .
 
 ## <a name="connector-errors"></a>Chyby konektoru
 
@@ -53,8 +51,8 @@ Po nalezení chyby konektoru z protokolu událostí použijte tuto tabulku běž
 | ----- | ----------------- |
 | Nepovedlo se zaregistrovat konektor: Ujistěte se, že jste povolili proxy aplikace v Azure Portál pro správu a jestli jste zadali správné uživatelské jméno a heslo ke službě Active Directory. Chyba: došlo k jedné nebo více chybám. | Pokud jste okno registrace zavřeli bez přihlášení ke službě Azure AD, spusťte znovu Průvodce konektorem a zaregistrujte konektor. <br><br> Pokud se otevře okno registrace a okamžitě se zavře, aniž byste se museli přihlašovat, pravděpodobně se zobrazí tato chyba. K této chybě dojde, pokud je v systému chyba sítě. Ujistěte se, že je možné se připojit z prohlížeče k veřejnému webu a že porty jsou otevřené, jak je uvedeno v části [požadavky proxy aplikací](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment). |
 | V okně registrace se zobrazí chyba vymazat. Nelze pokračovat | Pokud se zobrazí tato chyba a pak se okno zavře, zadali jste nesprávné uživatelské jméno nebo heslo. Zkuste to znovu. |
-| Nepovedlo se zaregistrovat konektor: Ujistěte se, že jste povolili proxy aplikace v Azure Portál pro správu a jestli jste zadali správné uživatelské jméno a heslo ke službě Active Directory. Chyba: ' AADSTS50059: nebyly nalezeny žádné informace identifikující tenanta ani žádné z uvedených přihlašovacích údajů a hledání podle identifikátoru URI instančního objektu. | Snažíte se přihlásit pomocí účtu Microsoft, nikoli domény, která je součástí ID organizace adresáře, ke kterému se pokoušíte získat přístup. Ujistěte se, že je správce součástí stejného názvu domény jako doména klienta, například pokud je doména Azure AD contoso.com, správce by měl být admin@contoso.com. |
-| Nepovedlo se načíst aktuální zásady spouštění pro spouštění skriptů PowerShellu. | Pokud se instalace konektoru nezdařila, zkontrolujte, zda nejsou zakázány zásady spouštění prostředí PowerShell. <br><br>1. Otevřete Editor Zásady skupiny.<br>2. přejděte na **Konfigurace** > **počítače šablony pro správu** > **součásti** > systému Windows**PowerShell** a dvakrát klikněte na **zapnout spuštění skriptu**.<br>3. zásady spouštění lze nastavit na hodnotu **Nenakonfigurováno** nebo **povoleno**. Pokud je nastaveno na **povoleno**, ujistěte se, že je v části Možnosti zásada spouštění nastavena možnost **Povolit místní skripty a vzdálené podepsané skripty** nebo **Povolit všechny skripty**. |
+| Nepovedlo se zaregistrovat konektor: Ujistěte se, že jste povolili proxy aplikace v Azure Portál pro správu a jestli jste zadali správné uživatelské jméno a heslo ke službě Active Directory. Chyba: ' AADSTS50059: nebyly nalezeny žádné informace identifikující tenanta ani žádné z uvedených přihlašovacích údajů a hledání podle identifikátoru URI instančního objektu. | Snažíte se přihlásit pomocí účtu Microsoft, nikoli domény, která je součástí ID organizace adresáře, ke kterému se pokoušíte získat přístup. Ujistěte se, že je správce součástí stejného názvu domény jako doména klienta, například pokud je doména Azure AD contoso.com, správce by měl být admin@contoso.com . |
+| Nepovedlo se načíst aktuální zásady spouštění pro spouštění skriptů PowerShellu. | Pokud se instalace konektoru nezdařila, zkontrolujte, zda nejsou zakázány zásady spouštění prostředí PowerShell. <br><br>1. Otevřete Editor Zásady skupiny.<br>2. přejděte na **Konfigurace počítače**  >  **šablony pro správu**  >  **součásti systému**Windows  >  **PowerShell** a dvakrát klikněte na **zapnout spuštění skriptu**.<br>3. zásady spouštění lze nastavit na hodnotu **Nenakonfigurováno** nebo **povoleno**. Pokud je nastaveno na **povoleno**, ujistěte se, že je v části Možnosti zásada spouštění nastavena možnost **Povolit místní skripty a vzdálené podepsané skripty** nebo **Povolit všechny skripty**. |
 | Konektoru se nepodařilo stáhnout konfiguraci. | Certifikát klienta konektoru, který se používá k ověření, vypršel. Tato situace může nastat i v případě, že máte nainstalovaný konektor za proxy serverem. V takovém případě konektor nemá přístup k Internetu a nebude schopen poskytovat aplikace vzdáleným uživatelům. Obnovte důvěryhodnost ručně pomocí `Register-AppProxyConnector` rutiny ve Windows PowerShellu. Pokud je váš konektor za proxy, je nutné udělit přístup k Internetu účtům konektoru "Network Services" a "Local System". To lze provést tak, že jim udělíte přístup k proxy serveru nebo nastavením pro obejít proxy server. |
 | Nepovedlo se zaregistrovat konektor: Ujistěte se, že jste správcem aplikace služby Active Directory, abyste mohli konektor zaregistrovat. Chyba: byla zamítnuta žádost o registraci. | Alias, se kterým se snažíte přihlásit, není správce v této doméně. Konektor je vždy nainstalován pro adresář, který je vlastníkem domény uživatele. Ujistěte se, že účet správce, ke kterému se pokoušíte přihlásit, má minimálně oprávnění správce aplikace pro tenanta Azure AD. |
 | Konektor se nemohl připojit ke službě kvůli problémům se sítí. Konektor se pokusil o přístup k následující adrese URL. | Konektor se nemůže připojit ke cloudové službě proxy aplikací. K tomu může dojít, pokud máte pravidlo brány firewall blokující připojení. Ujistěte se, že máte povolený přístup ke správným portům a ADRESám URL uvedeným v části [požadavky proxy aplikace](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment). |
@@ -65,7 +63,7 @@ Tato tabulka popisuje nejběžnější chyby, které pocházejí z nastavení a 
 
 | Chyba | Doporučené kroky |
 | ----- | ----------------- |
-| Nepovedlo se načíst aktuální zásady spouštění pro spouštění skriptů PowerShellu. | Pokud se instalace konektoru nezdařila, zkontrolujte, zda není zakázána zásada spouštění prostředí PowerShell.<br><br>1. Otevřete Editor Zásady skupiny.<br>2. přejděte na **Konfigurace** > **počítače šablony pro správu** > **součásti** > systému Windows**PowerShell** a dvakrát klikněte na **zapnout spuštění skriptu**.<br>3. zásady spouštění lze nastavit na hodnotu **Nenakonfigurováno** nebo **povoleno**. Pokud je nastaveno na **povoleno**, ujistěte se, že je v části Možnosti zásada spouštění nastavena možnost **Povolit místní skripty a vzdálené podepsané skripty** nebo **Povolit všechny skripty**. |
+| Nepovedlo se načíst aktuální zásady spouštění pro spouštění skriptů PowerShellu. | Pokud se instalace konektoru nezdařila, zkontrolujte, zda není zakázána zásada spouštění prostředí PowerShell.<br><br>1. Otevřete Editor Zásady skupiny.<br>2. přejděte na **Konfigurace počítače**  >  **šablony pro správu**  >  **součásti systému**Windows  >  **PowerShell** a dvakrát klikněte na **zapnout spuštění skriptu**.<br>3. zásady spouštění lze nastavit na hodnotu **Nenakonfigurováno** nebo **povoleno**. Pokud je nastaveno na **povoleno**, ujistěte se, že je v části Možnosti zásada spouštění nastavena možnost **Povolit místní skripty a vzdálené podepsané skripty** nebo **Povolit všechny skripty**. |
 | 12008 – služba Azure AD překročila maximální počet povolených pokusů o ověření protokolu Kerberos na back-end Server. | Tato chyba může ukazovat na nesprávnou konfiguraci mezi Azure AD a aplikačním serverem back-end nebo na obou počítačích na základě problému s konfigurací data a času. Back-end server odmítl lístek protokolu Kerberos vytvořený službou Azure AD. Ověřte, zda jsou správně nakonfigurovány služby Azure AD a aplikační server back-end. Ujistěte se, že je synchronizovaná konfigurace data a času ve službě Azure AD a na back-end aplikačním serveru. |
 | 13016 – Azure AD nemůže za uživatele načíst lístek protokolu Kerberos, protože v tokenu Edge nebo v přístupovém souboru cookie není k dispozici žádný hlavní název uživatele (UPN). | Došlo k potížím s konfigurací služby STS. Opravte konfiguraci deklarací hlavního názvu uživatele (UPN) v STS. |
 | 13019 – Azure AD nemůže za uživatele načíst lístek protokolu Kerberos z důvodu následující obecné chyby rozhraní API. | Tato událost může ukazovat na nesprávnou konfiguraci mezi službou Azure AD a serverem řadiče domény nebo na obou počítačích na základě problému s konfigurací data a času. Řadič domény odmítl lístek protokolu Kerberos vytvořený službou Azure AD. Ověřte, jestli jsou správně nakonfigurované služby Azure AD a aplikační server back-end, zejména konfigurace hlavního názvu služby (SPN). Ujistěte se, že je služba Azure AD připojená k doméně se stejnou doménou jako řadič domény, aby se zajistilo, že řadič domény vytvoří vztah důvěryhodnosti se službou Azure AD. Ujistěte se, že je synchronizována konfigurace data a času v Azure AD a řadiči domény. |

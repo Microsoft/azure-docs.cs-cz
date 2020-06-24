@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: include
-ms.date: 06/10/2018
+ms.date: 06/23/2020
 ms.author: raynew
 ms.custom: include file
-ms.openlocfilehash: 1aaec104e9130eeef723c6505e04e3317271566b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c8c51d671cd98a606c11a39b6cf489aa288d71b3
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80234236"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85292137"
 ---
 **Požadavky na konfigurační a procesní Server**
 
@@ -42,7 +42,7 @@ IIS | -Žádný předdefinovaný výchozí web <br> -Žádný existující web n
 FIPS (Federal Information Processing Standards) | Nepovolit režim FIPS
 |
 
-## <a name="network-requirements"></a>Síťové požadavky
+## <a name="network-requirements"></a>Požadavky sítě
 
 **Komponenta** | **Požadavek** 
 --- | --- 
@@ -52,15 +52,13 @@ Typ síťové karty | VMXNET3 (Pokud je konfigurační server virtuálním poč�
  |
 **Přístup k Internetu** (server potřebuje přístup k následujícím adresám URL, přímo nebo prostřednictvím proxy serveru):|
 \*.backup.windowsazure.com | Slouží k přenosu replikovaných dat a jejich koordinaci.
-\*.store.core.windows.net | Slouží k přenosu replikovaných dat a jejich koordinaci.
-\*.blob.core.windows.net | Používá se pro přístup k účtu úložiště, který ukládá replikovaná data.
+\*.blob.core.windows.net | Používá se pro přístup k účtu úložiště, který ukládá replikovaná data. Můžete zadat konkrétní adresu URL vašeho účtu úložiště mezipaměti.
 \*.hypervrecoverymanager.windowsazure.com | Slouží k operacím správy replikace a jejich koordinaci.
-https:\//management.azure.com | Slouží k operacím správy replikace a jejich koordinaci. 
-*.services.visualstudio.com | Používá se pro účely telemetrie (volitelné).
+https:\//login.microsoftonline.com | Slouží k operacím správy replikace a jejich koordinaci. 
 time.nist.gov | Používá se ke kontrole časové synchronizace mezi systémovým a globálním časem.
 time.windows.com | Používá se ke kontrole časové synchronizace mezi systémovým a globálním časem.
-| <ul> <li> https:\//login.microsoftonline.com </li><li> https:\//secure.aadcdn.microsoftonline-p.com </li><li> https:\//Login.Live.com </li><li> https:\//Graph.Windows.NET </li><li> https:\//login.windows.net </li><li> https:\//www.Live.com </li><li> https:\//www.Microsoft.com </li></ul> | Instalační program OVF potřebuje přístup k těmto adresám URL. Používají se k řízení přístupu a správě identit pomocí Azure Active Directory.
-https:\//dev.MySQL.com/get/downloads/MySQLInstaller/MySQL-Installer-Community-5.7.20.0.msi  | Pro dokončení stažení MySQL. </br> V několika oblastech může být stahování Přesměrováno na adresu URL CDN. V případě potřeby zkontrolujte, jestli je v případě potřeby také povolená adresa URL CDN.
+| <ul> <li> https:\//management.azure.com </li><li> https:\//secure.aadcdn.microsoftonline-p.com </li><li> https: \/ /Login.Live.com </li><li> https: \/ /Graph.Windows.NET </li><li> https:\//login.windows.net </li><li> *. services.visualstudio.com (volitelné) </li><li> https: \/ /www.Live.com </li><li> https: \/ /www.Microsoft.com </li></ul> | Instalace OVF potřebuje přístup k těmto dalším adresám URL. Používají se k řízení přístupu a správě identit pomocí Azure Active Directory.
+https: \/ /dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi  | Pro dokončení stažení MySQL. </br> V několika oblastech může být stahování Přesměrováno na adresu URL CDN. V případě potřeby zkontrolujte, jestli je v případě potřeby také povolená adresa URL CDN.
 |
 
 ## <a name="required-software"></a>Požadovaný software
@@ -76,7 +74,7 @@ MYSQL | Je potřeba nainstalovat MySQL. Instalaci můžete provést ručně, neb
 Následující tabulka shrnuje požadavky na kapacitu pro konfigurační server. Pokud provádíte replikaci několika virtuálních počítačů VMware, Projděte si téma [požadavky na plánování kapacity](../articles/site-recovery/site-recovery-plan-capacity-vmware.md) a spusťte [nástroj Plánovač nasazení služby Azure Site Recovery](../articles/site-recovery/site-recovery-deployment-planner.md).
 
 
-**VČETNĚ** | **Rezident** | **Disk mezipaměti** | **Frekvence změny dat** | **Replikované počítače**
+**Procesor** | **Memory (Paměť)** | **Disk mezipaměti** | **Frekvence změny dat** | **Replikované počítače**
 --- | --- | --- | --- | ---
 8 vCPU<br/><br/> 2 sokety × 4 jádra \@ 2,5 GHz | 16 GB | 300 GB | 500 GB nebo méně | Počítače s < 100
 12 vCPU<br/><br/> 2 SOCKS * 6 jader \@ 2,5 GHz | 18 GB | 600 GB | 500 GB AŽ 1 TB | 100 až 150 počítačů

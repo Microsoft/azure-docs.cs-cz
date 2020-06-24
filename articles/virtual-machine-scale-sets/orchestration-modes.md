@@ -9,14 +9,17 @@ ms.subservice: management
 ms.date: 10/23/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: cbe080b4c2b6e73ae15fd186589bd43535bfc13d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 54515b347a95b9315ca9ba87568fb2104c3b2b45
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198386"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736998"
 ---
-# <a name="orchestration-mode-preview"></a>Režim orchestrace (Preview)
+# <a name="orchestration-modes-preview"></a>Režimy orchestrace (Preview)
+
+> [!CAUTION]
+> Děkujeme všem, kdo se účastnil v této veřejné verzi Preview. Dokázali jsme získat cennou zpětnou vazbu z naší komunity. Tato verze Preview je nyní **uzavřená** pro všechny nové účastníky, aby bylo možné integrovat zpětnou vazbu. Tento prostor budeme aktualizovat o jakékoli nové informace.
 
 Sady škálování virtuálních počítačů poskytují logické seskupení virtuálních počítačů spravovaných platformou. Pomocí sady škálování můžete vytvořit konfigurační model virtuálních počítačů, automaticky přidat nebo odebrat další instance na základě procesoru nebo zatížení paměti a automaticky upgradovat na nejnovější verzi operačního systému. Sady škálování umožňují vytvářet virtuální počítače pomocí modelu konfigurace virtuálních počítačů, který je k dispozici v době vytváření sady škálování, a sada škálování může spravovat jenom virtuální počítače, které jsou implicitně vytvořené na základě modelu konfigurace.
 
@@ -41,7 +44,7 @@ Sada škálování virtuálních počítačů bude podporovat 2 odlišné režim
 
 |                             | "orchestrationMode": "VM" (VirtualMachine) | "orchestrationMode": "ScaleSetVM" (VirtualMachineScaleSetVM) |
 |-----------------------------|--------------------------------------------|--------------------------------------------------------------|
-| Model konfigurace virtuálních počítačů      | Žádné                                       | Požaduje se |
+| Model konfigurace virtuálních počítačů      | Žádné                                       | Vyžadováno |
 | Přidání nového virtuálního počítače do sady škálování  | Virtuální počítače se při vytvoření virtuálního počítače explicitně přidávají do sady škálování. | Virtuální počítače se implicitně vytvoří a přidají do sady škálování na základě modelu konfigurace virtuálního počítače, počtu instancí a pravidel automatického škálování. | |
 | Odstranění virtuálního počítače                   | Virtuální počítače se musí odstranit jednotlivě, sada škálování se neodstraní, pokud obsahuje nějaké virtuální počítače. | Virtuální počítače se dají odstranit jednotlivě a odstraněním sady škálování se odstraní všechny instance virtuálních počítačů.  |
 | Připojení a odpojení virtuálních počítačů           | Nepodporuje se                              | Nepodporuje se |

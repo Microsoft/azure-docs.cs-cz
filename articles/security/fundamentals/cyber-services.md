@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/14/2019
 ms.author: terrylan
-ms.openlocfilehash: 6242580e3f4199578d663456c14ee160603b372d
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: fa873baa2d2006164536dd26e040ffbf5cdd51cb
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266147"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85123979"
 ---
 # <a name="microsoft-services-in-cybersecurity"></a>Služby Microsoftu v kyberbezpečnosti
 
@@ -38,6 +38,6 @@ Další informace o službách poskytovaných službami Microsoftu:
 * [Rozšířené prostředí pro správu zabezpečení](https://download.microsoft.com/download/A/C/5/AC5D21A6-E04B-4DC4-B1F2-AE060319A4D7/Premier_Support_for_Security/Popis/Enhanced-Security-Admin-Environment-Solution-Datasheet-%5BEN%5D.pdf)
 * [Služby implementace Azure AD](https://download.microsoft.com/download/0/7/F/07FA8BFC-17D5-4F55-AD4F-3A987A7324AA/azure-active-directory-implementation-services-solution-brief.pdf)
 * [Zabezpečení před pohybem na bočním účtu](https://docs.microsoft.com/azure-advanced-threat-protection/use-case-lateral-movement-path)
-* [Reakce na incidenty a obnovení](https://docs.microsoft.com/microsoft-365/compliance/gdpr-breach-microsoft-support-professional-services?view=o365-worldwide#data-protection-incident-response-overview)
+* [Reakce na incidenty a obnovení](/microsoft-365/compliance/gdpr-breach-microsoft-support-professional-services#data-protection-incident-response-overview)
 
 [Přečtěte si další informace](https://aka.ms/cyberserv) o konzultačních službách zabezpečení služeb společnosti Microsoft.

@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 4cb832f8fe11ac2581e97d9cdcc777eaff702ee9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79278191"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84697998"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Diagnostika v Durable Functions v Azure
 
@@ -24,7 +24,7 @@ Azure Functions trvalá přípona také generuje *sledovací události* , které
 
 ### <a name="tracking-data"></a>Sledování dat
 
-Každá událost životního cyklu instance orchestrace způsobí, že se do kolekce **Traces** v Application Insights zapisuje událost sledování. Tato událost obsahuje datovou část **customDimensions** s několika poli.  Všechny názvy polí jsou společně s `prop__`předponou.
+Každá událost životního cyklu instance orchestrace způsobí, že se do kolekce **Traces** v Application Insights zapisuje událost sledování. Tato událost obsahuje datovou část **customDimensions** s několika poli.  Všechny názvy polí jsou společně s předponou `prop__` .
 
 * **hubName**: název centra úloh, ve kterém jsou orchestrace spuštěné.
 * **AppName**: název aplikace Function App. Toto pole je užitečné, pokud máte více aplikací Function App sdílejících stejnou instanci Application Insights.
@@ -44,7 +44,7 @@ Každá událost životního cyklu instance orchestrace způsobí, že se do kol
 * **extensionVersion**: verze rozšíření odolného úkolu. Informace o verzi jsou obzvláště důležitá data při vytváření sestav možných chyb v rozšíření. Dlouhotrvající instance mohou hlásit více verzí, pokud dojde k nějaké aktualizaci, je-li spuštěna.
 * **sequenceNumber**: pořadové číslo provádění události. V kombinaci s časovým razítkem pomáhá seřadit události podle doby spuštění. *Všimněte si, že toto číslo se nastaví na hodnotu nula, pokud se hostitel při spuštění instance restartuje, takže je důležité vždy řadit podle časového razítka a pak sequenceNumber.*
 
-Podrobnosti sledování dat emitovaných do Application Insights lze nakonfigurovat v části `logger` `logging` `host.json` souboru (Functions 1. x) nebo (Functions 2,0).
+Podrobnosti sledování dat emitovaných do Application Insights lze nakonfigurovat v `logger` části souboru (Functions 1. x) nebo `logging` (functions 2,0) `host.json` .
 
 #### <a name="functions-10"></a>Funkce 1,0
 
@@ -74,7 +74,7 @@ Podrobnosti sledování dat emitovaných do Application Insights lze nakonfiguro
 
 Ve výchozím nastavení jsou vygenerovány všechny události sledování bez přehrání. Objem dat se dá snížit nastavením `Host.Triggers.DurableTask` na `"Warning"` nebo `"Error"` v jakém se budou události sledování případu vysílat jenom pro výjimečné situace.
 
-Chcete-li povolit generování podrobných událostí opětovného přehrání orchestrace `LogReplayEvents` , lze nastavit `true` v `host.json` souboru v části `durableTask` tak, jak je znázorněno v následujícím příkladu:
+Chcete-li povolit generování podrobných událostí opětovného přehrání orchestrace, `LogReplayEvents` lze nastavit `true` v souboru v `host.json` části `durableTask` tak, jak je znázorněno v následujícím příkladu:
 
 #### <a name="functions-10"></a>Funkce 1,0
 
@@ -223,7 +223,7 @@ Done!
 > [!NOTE]
 > Mějte na paměti, že zatímco protokoly přidávají volání F1, F2 a F3, jsou tyto funkce *ve skutečnosti* volány pouze při prvním výskytu. Následná volání, ke kterým dojde během opakovaného přehrávání, se přeskočí a výstupy se přehrají do logiky nástroje Orchestrator.
 
-Pokud chcete přihlašovat pouze při neopakovaném spuštění, můžete napsat podmíněný výraz pro protokolování pouze v případě `IsReplaying` , že je. `false` Vezměte v úvahu výše uvedený příklad, ale tentokrát s kontrolami opětovného přehrání.
+Pokud chcete přihlašovat pouze při neopakovaném spuštění, můžete napsat podmíněný výraz pro protokolování pouze v případě, že `IsReplaying` je `false` . Vezměte v úvahu výše uvedený příklad, ale tentokrát s kontrolami opětovného přehrání.
 
 #### <a name="precompiled-c"></a>Předkompilovaná C #
 
@@ -305,11 +305,11 @@ Done!
 ```
 
 > [!NOTE]
-> Předchozí příklady jazyka C# jsou pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` místo. `IDurableOrchestrationContext` Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
+> Předchozí příklady jazyka C# jsou pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` místo `IDurableOrchestrationContext` . Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
 ## <a name="custom-status"></a>Vlastní stav
 
-Vlastní stav orchestrace umožňuje nastavit vlastní hodnotu stavu pro funkci Orchestrator. Tento stav se poskytuje prostřednictvím rozhraní API pro dotazování na stav `IDurableOrchestrationClient.GetStatusAsync` http nebo rozhraní API. Vlastní stav orchestrace umožňuje rozšířené monitorování funkcí nástroje Orchestrator. Například kód funkce nástroje Orchestrator může zahrnovat `IDurableOrchestrationContext.SetCustomStatus` volání pro aktualizaci průběhu dlouhotrvající operace. Klient, jako je například webová stránka nebo jiný externí systém, by se pak mohl pravidelně dotazovat na rozhraní API pro dotazy na stav HTTP a získat tak lepší informace o průběhu. Ukázka použití `IDurableOrchestrationContext.SetCustomStatus` je k dispozici níže:
+Vlastní stav orchestrace umožňuje nastavit vlastní hodnotu stavu pro funkci Orchestrator. Tento stav se poskytuje prostřednictvím rozhraní API pro dotazování na stav HTTP nebo `IDurableOrchestrationClient.GetStatusAsync` rozhraní API. Vlastní stav orchestrace umožňuje rozšířené monitorování funkcí nástroje Orchestrator. Například kód funkce nástroje Orchestrator může zahrnovat `IDurableOrchestrationContext.SetCustomStatus` volání pro aktualizaci průběhu dlouhotrvající operace. Klient, jako je například webová stránka nebo jiný externí systém, by se pak mohl pravidelně dotazovat na rozhraní API pro dotazy na stav HTTP a získat tak lepší informace o průběhu. Ukázka použití `IDurableOrchestrationContext.SetCustomStatus` je k dispozici níže:
 
 ### <a name="precompiled-c"></a>Předkompilovaná C #
 
@@ -328,7 +328,7 @@ public static async Task SetStatusTest([OrchestrationTrigger] IDurableOrchestrat
 ```
 
 > [!NOTE]
-> Předchozí příklad v jazyce C# je pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` místo. `IDurableOrchestrationContext` Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
+> Předchozí příklad v jazyce C# je pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` místo `IDurableOrchestrationContext` . Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
 ### <a name="javascript-functions-20-only"></a>JavaScript (pouze funkce 2,0)
 
@@ -374,12 +374,12 @@ Klienti získají následující odpověď:
 Azure Functions podporuje přímo ladění kódu funkce a tato podpora přenáší do Durable Functions, ať už běží v Azure nebo lokálně. Existuje však několik chování, která je potřeba znát při ladění:
 
 * **Přehrát**znovu: funkce Orchestrator se pravidelně [přehrávají](durable-functions-orchestrations.md#reliability) , když se přijímají nové vstupy. Toto chování znamená, že jediné *logické* spuštění funkce Orchestrator může vést ke stejné zarážce několikrát, zejména pokud je nastaveno na začátku v kódu funkce.
-* **Await**: pokaždé `await` , když se ve funkci Orchestrator narazí, vrátí řízení k trvalému dispečeru rozhraní úloh. Pokud se jedná o první nalezenou konkrétní `await` úlohu, přidružený úkol nebude *nikdy* obnoven. Vzhledem k tomu, že se úloha nikdy neobnoví *, krokování* na await (F10 v aplikaci Visual Studio) není možné. Krokování funguje pouze při opětovném přehrání úkolu.
+* **Await**: pokaždé `await` , když se ve funkci Orchestrator narazí, vrátí řízení k trvalému dispečeru rozhraní úloh. Pokud se jedná o první `await` nalezenou konkrétní úlohu, přidružený úkol nebude *nikdy* obnoven. Vzhledem k tomu, že se úloha nikdy neobnoví *, krokování* na await (F10 v aplikaci Visual Studio) není možné. Krokování funguje pouze při opětovném přehrání úkolu.
 * **Vypršení časových limitů zasílání zpráv**: Durable Functions interně používá zprávy ve frontě k řízení provádění funkcí Orchestrator, Activity a entity. V prostředí s více virtuálními počítači může rozdělení do ladění po dlouhou dobu způsobit, že jiný virtuální počítač tuto zprávu vybere a bude mít za následek duplicitní provádění. Toto chování existuje i u běžných funkcí triggeru fronty, ale je důležité, abyste v tomto kontextu odkazovali, protože fronty představují podrobnosti implementace.
 * **Zastavování a spouštění**: zprávy v trvalých funkcích trvaly mezi relacemi ladění. Pokud zastavíte ladění a ukončíte proces místního hostitele, zatímco je vykonávána trvalá funkce, tato funkce se může v budoucí ladicí relaci znovu spustit automaticky. Toto chování může být matoucí, pokud není očekáváno. Pro zamezení tohoto chování je mazání všech zpráv z [interních front úložiště](durable-functions-perf-and-scale.md#internal-queue-triggers) mezi relacemi ladění jedním způsobem.
 
 > [!TIP]
-> Pokud při nastavování zarážek ve funkcích nástroje Orchestrator chcete provést pouze přerušení při neopakovaném spuštění, můžete nastavit podmíněný bod přerušení, který je rozdělen pouze `IsReplaying` v `false`případě, že je.
+> Pokud při nastavování zarážek ve funkcích nástroje Orchestrator chcete provést pouze přerušení při neopakovaném spuštění, můžete nastavit podmíněný bod přerušení, který je rozdělen pouze v případě, že `IsReplaying` je `false` .
 
 ## <a name="storage"></a>Storage
 

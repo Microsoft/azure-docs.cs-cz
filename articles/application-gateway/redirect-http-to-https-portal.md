@@ -4,15 +4,15 @@ description: Naučte se vytvořit Aplikační bránu s přesměrovaným provozem
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: cd33d23a506bd86b9651af3d4c3bbca01673a7a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dbf4770bf5ac1747d596e6907dbc903ce8c16de9
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81312099"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84804348"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>Vytvoření služby Application Gateway s použitím přesměrování HTTP na HTTPS pomocí Azure Portal
 
@@ -27,11 +27,11 @@ V tomto článku získáte informace o těchto tématech:
 > * Přidat pravidlo naslouchacího procesu a přesměrování
 > * Vytvořit škálovací sadu virtuálních počítačů s výchozím back-endovým fondem
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Tento kurz vyžaduje, aby modul Azure PowerShell verze 1.0.0 nebo novější vytvořil certifikát a nainstaloval službu IIS. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Chcete-li spustit příkazy v tomto kurzu, je nutné spustit `Login-AzAccount` také pro vytvoření připojení k Azure.
+Tento kurz vyžaduje, aby modul Azure PowerShell verze 1.0.0 nebo novější vytvořil certifikát a nainstaloval službu IIS. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Chcete-li spustit příkazy v tomto kurzu, je nutné spustit také `Login-AzAccount` pro vytvoření připojení k Azure.
 
 ## <a name="create-a-self-signed-certificate"></a>Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
 
@@ -126,7 +126,7 @@ Nejprve přidejte naslouchací proces s názvem *MyListener* pro port 80.
 6. V případě **cíle přesměrování**vyberte **naslouchací proces**.
 7. Zajistěte, aby byl **cílový naslouchací proces** nastavený na **appGatewayHttpListener**.
 8. Pro **řetězec dotazu include** a možnost **zahrnout cestu** vyberte *Ano*.
-9. Vyberte **Přidat**.
+9. Vyberte možnost **Přidat**.
 
 ## <a name="create-a-virtual-machine-scale-set"></a>Vytvoření škálovací sady virtuálních počítačů
 

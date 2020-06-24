@@ -4,16 +4,16 @@ description: Tato stránka poskytuje standardizovanou metodu testování výkonu
 services: expressroute
 author: tracsman
 ms.service: expressroute
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 12/20/2017
 ms.author: jonor
 ms.custom: seodec18
-ms.openlocfilehash: bb68919fba731caa32dcca3f4c991b8881afc6f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5390915436d38939b83a1599f8fb564cfbd11bdb
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74869642"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738239"
 ---
 # <a name="troubleshooting-network-performance"></a>Řešení potíží s výkonem sítě
 ## <a name="overview"></a>Přehled
@@ -53,7 +53,7 @@ V předchozím diagramu je úplně vlevo vaše podniková síť. V závislosti n
 
 Vzhledem k složitosti těchto tří různých síťových prostředí je často vhodné začít na okrajích a zkusit Ukázat, kde je výkon dobrý, a kde se snižuje. Tento přístup může přispět k identifikaci problému s doménou směrování těchto tří a pak se zaměřit na řešení potíží v tomto konkrétním prostředí.
 
-## <a name="tools"></a>Nástroje
+## <a name="tools"></a>nástroje
 Většinu problémů se sítí se dá analyzovat a izolovat pomocí základních nástrojů, jako je třeba příkazy traceroute. Je to zřídka, když potřebujete jako analýzu paketů, jako je třeba Nástroj Wireshark, přejít hluboko. Pro pomoc s řešením potíží se vyvinula sada Azure Connectivity Toolkit (AzureCT), která do snadného balíčku tyto nástroje umísťuje. V případě testování výkonu chci použít iPerf a PSPing. iPerf je běžně používaný nástroj a funguje ve většině operačních systémů. iPerf je pro základní testy funkčních zkoušek dobré a je poměrně snadné ho používat. PSPing je nástroj pro použití testu, který vyvinula společnost Sysinternals. PSPing je jednoduchý způsob, jak v jednom snadno používat příkazy protokolu ICMP a TCP s protokolem TCP. Oba tyto nástroje jsou odlehčené a jsou "nainstalují" jednoduše kopírování soubory do adresáře na hostiteli.
 
 Všechny tyto nástroje a metody jsme zabalily do modulu PowerShellu (AzureCT), který můžete nainstalovat a použít.
@@ -97,7 +97,7 @@ Existují tři základní kroky pro použití této sady nástrojů pro testová
 
     Podrobné výsledky testů iPerf a PSPing jsou v jednotlivých textových souborech v adresáři nástrojů AzureCT na adrese "C:\ACTTools.".
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 Pokud test výkonnosti nedává očekávané výsledky, zjistíte, proč by měl být progresivní postup krok za krokem. V případě, že je v cestě k dispozici určitý počet komponent, systematický přístup poskytuje rychlejší cestu k řešení, než je přechod a potenciálně zbytečně provádění stejného testování několikrát.
 
 >[!NOTE]
@@ -146,7 +146,7 @@ Sdílení výsledků testování s vaším poskytovatelem služeb nebo poskytova
 
 Pokud se v Azure rozhodnete, že problém izolujete v co nejpodrobněji, je čas si projít [dokumentaci k síti Azure][Network Docs] a pak Pokud pořád potřebujeme [otevřít lístek podpory][Ticket Link].
 
-## <a name="references"></a>Odkazy
+## <a name="references"></a>Reference
 ### <a name="latencybandwidth-expectations"></a>Očekávání při latenci a šířce pásma
 >[!TIP]
 > Zeměpisná latence (v mílích nebo kilometrech) mezi koncovými body, které testujete, je nejmnohem největší součástí latence. I když se jedná o latenci zařízení (fyzické a virtuální komponenty, počet směrování atd.), je zeměpisně prověřená největší součást celkové latence při obchodování s připojeními WAN. Je také důležité si uvědomit, že vzdálenost v rámci optické dráhy není rovna vzdálenosti lineární nebo silniční mapy. Tato vzdálenost je neuvěřitelně těžko se dostat s přesností. V důsledku toho používáme pro Internet kalkulačku na dálku a víte, že tato metoda je všeobecně nepřesná míra, ale je dostačující pro nastavení Obecné očekávaného očekávání.

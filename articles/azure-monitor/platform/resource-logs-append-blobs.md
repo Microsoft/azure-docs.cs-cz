@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: d30652d4e068cbceb79e6da60b48176b9de64647
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.openlocfilehash: 582e7ea4e954a1aa5ee27314d038601f7e26c61e
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84418768"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84803930"
 ---
-# <a name="prepare-for-format-change-to-azure-monitor-resource-logs-archived-to-a-storage-account"></a>Příprava na změnu formátu Azure Monitor archivované protokoly prostředků do účtu úložiště
+# <a name="format-of-azure-monitor-resource-logs-archived-to-a-storage-account"></a>Formát protokolů Azure Monitorch prostředků archivovaných do účtu úložiště
 
-> [!WARNING]
+> [!NOTE]
 > Pokud odesíláte [protokoly prostředků prostředků Azure nebo metriky do účtu úložiště pomocí nastavení diagnostiky prostředků](./../../azure-monitor/platform/archive-diagnostic-logs.md) nebo [protokolů aktivit v účtu úložiště pomocí profilů protokolů](./../../azure-monitor/platform/archive-activity-log.md), formát dat v účtu úložiště se změní na řádky JSON od 1. listopadu 2018. Níže uvedené pokyny popisují dopad a způsob aktualizace nástrojů pro zpracování nového formátu. 
 >
 > 
@@ -26,7 +26,7 @@ ms.locfileid: "84418768"
 Azure Monitor nabízí možnost, která umožňuje odeslat data diagnostických dat prostředku a protokolu aktivit do účtu služby Azure Storage, Event Hubs oboru názvů nebo do Log Analyticsho pracovního prostoru v Azure Monitor. Aby bylo možné vyřešit potíže s výkonem systému, **1. listopadu 2018 ve 12:00 půlnoci času UTC** bude změněn formát data protokolu odeslání do úložiště objektů BLOB. Pokud máte nástroje, které čtou data z úložiště objektů blob, je potřeba aktualizovat nástroje, abyste pochopili nový formát dat.
 
 * Ve čtvrtek od 1. listopadu 2018 v 12:00 půlnoci UTC se formát objektu BLOB změní na [řádky JSON](http://jsonlines.org/). To znamená, že každý záznam bude oddělený novým řádkem, bez pole vnějších záznamů a žádné čárky mezi záznamy JSON.
-* Formát objektu BLOB se mění pro všechna nastavení diagnostiky ve všech předplatných najednou. První soubor PT1H. JSON vydaný pro 1. listopadu použije tento nový formát. Názvy objektů BLOB a kontejnerů zůstávají stejné.
+* Formát objektu BLOB se mění pro všechna nastavení diagnostiky ve všech předplatných najednou. První PT1H.jsv souboru vydaném pro 1. listopadu použije tento nový formát. Názvy objektů BLOB a kontejnerů zůstávají stejné.
 * Nastavení diagnostiky mezi Now a 1. listopadu 1 nadále vygeneruje data v aktuálním formátu do 1. listopadu.
 * Tato změna proběhne současně ve všech oblastech veřejného cloudu. Tato změna se neprojeví v Microsoft Azure provozovaných v cloudech 21Vianet, Azure Německo nebo Azure Government.
 * Tato změna má vliv na následující typy dat:
@@ -56,7 +56,7 @@ Pokud máte prostředky odesílající data do účtu úložiště pomocí těch
 
 ### <a name="details-of-the-format-change"></a>Podrobnosti změny formátu
 
-Aktuální formát souboru PT1H. JSON ve službě Azure Blob Storage používá pole JSON záznamů. Tady je ukázka souboru protokolu trezoru klíčů nyní:
+Aktuální formát PT1H.jsv souboru v úložišti objektů BLOB v Azure používá pole JSON záznamů. Tady je ukázka souboru protokolu trezoru klíčů nyní:
 
 ```json
 {
@@ -117,7 +117,7 @@ Aktuální formát souboru PT1H. JSON ve službě Azure Blob Storage používá 
 }
 ```
 
-Nový formát používá [řádky JSON](http://jsonlines.org/), kde každá událost je řádek a znak nového řádku indikuje novou událost. V tomto příkladu bude výše uvedený vzor vypadat jako v souboru PT1H. JSON po provedení změny:
+Nový formát používá [řádky JSON](http://jsonlines.org/), kde každá událost je řádek a znak nového řádku indikuje novou událost. V tomto příkladu bude výše uvedený vzor vypadat jako v PT1H.jssouboru po změně:
 
 ```json
 {"time": "2016-01-05T01:32:01.2691226Z","resourceId": "/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CONTOSOGROUP/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/CONTOSOKEYVAULT","operationName": "VaultGet","operationVersion": "2015-06-01","category": "AuditEvent","resultType": "Success","resultSignature": "OK","resultDescription": "","durationMs": "78","callerIpAddress": "104.40.82.76","correlationId": "","identity": {"claim": {"http://schemas.microsoft.com/identity/claims/objectidentifier": "d9da5048-2737-4770-bd64-XXXXXXXXXXXX","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "live.com#username@outlook.com","appid": "1950a258-227b-4e31-a9cf-XXXXXXXXXXXX"}},"properties": {"clientInfo": "azure-resource-manager/2.0","requestUri": "https://control-prod-wus.vaultcore.azure.net/subscriptions/361da5d4-a47a-4c79-afdd-XXXXXXXXXXXX/resourcegroups/contosoresourcegroup/providers/Microsoft.KeyVault/vaults/contosokeyvault?api-version=2015-06-01","id": "https://contosokeyvault.vault.azure.net/","httpStatusCode": 200}}

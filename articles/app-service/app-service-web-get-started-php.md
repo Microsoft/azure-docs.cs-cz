@@ -5,12 +5,12 @@ ms.assetid: 6feac128-c728-4491-8b79-962da9a40788
 ms.topic: quickstart
 ms.date: 05/25/2020
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: d9ee9ac3abd7dada8e87bdf5a4385185933fc4ae
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: dbaf4055da4e526ecf1c431816038f14f52fd887
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847842"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84905999"
 ---
 # <a name="create-a-php-web-app-in-azure"></a>Vytvoření webové aplikace v PHP v Azure
 
@@ -155,7 +155,7 @@ Vzorový kód PHP je spuštěný ve webové aplikaci služby Azure App Service.
 
 ![Ukázková aplikace spuštěná v Azure](media/app-service-web-get-started-php/hello-world-in-browser.png)
 
-**Blahopřejeme!** Nasadili jste svoji první aplikaci v PHP do služby App Service.
+**Gratulujeme!** Nasadili jste svoji první aplikaci v PHP do služby App Service.
 
 ## <a name="update-locally-and-redeploy-the-code"></a>Místní aktualizace a opětovné nasazení kódu
 
@@ -198,3 +198,6 @@ Po dokončení nasazení se vraťte do okna prohlížeče, které se otevřelo v
 
 > [!div class="nextstepaction"]
 > [PHP s MySQL](app-service-web-tutorial-php-mysql.md)
+
+> [!div class="nextstepaction"]
+> [Konfigurace aplikace PHP](configure-language-php.md)

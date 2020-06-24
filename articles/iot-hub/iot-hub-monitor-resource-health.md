@@ -1,20 +1,19 @@
 ---
 title: Monitorujte stav služby Azure IoT Hub | Microsoft Docs
 description: Pomocí Azure Monitor a Azure Resource Health můžete rychle monitorovat IoT Hub a diagnostikovat problémy.
-author: kgremban
-manager: philmea
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 11/11/2019
-ms.author: kgremban
+ms.date: 04/21/2020
+ms.author: robinsh
 ms.custom: amqp
-ms.openlocfilehash: a1d74085090a3e20764d7b6fee84ffca52d5cb74
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d00e3dc5e43eb6978f6835ac4b7d101e4a42a226
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81732431"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84792013"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Monitorování stavu služby Azure IoT Hub a rychlá diagnostika potíží
 
@@ -32,8 +31,6 @@ IoT Hub také nabízí vlastní metriky, které vám pomohou pochopit stav svýc
 ## <a name="use-azure-monitor"></a>Použití Azure Monitoru
 
 Azure Monitor poskytuje diagnostické informace o prostředcích Azure, což znamená, že můžete sledovat operace, které probíhají v rámci služby IoT Hub.
-
-Nastavení diagnostiky Azure Monitor nahrazuje monitorování operací IoT Hub. Pokud aktuálně používáte monitorování provozu, měli byste pracovní postupy migrovat. Další informace najdete v tématu [migrace z monitorování provozu na nastavení diagnostiky](iot-hub-migrate-to-diagnostics-settings.md).
 
 Další informace o konkrétních metrikách a událostech, které Azure Monitor sleduje, najdete v tématu [podporované metriky s Azure monitor](../azure-monitor/platform/metrics-supported.md) a [podporovanými službami, schématy a kategoriemi pro diagnostické protokoly Azure](../azure-monitor/platform/diagnostic-logs-schema.md).
 
@@ -121,11 +118,11 @@ Kategorie operace identity zařízení sleduje chyby, ke kterým dochází při 
 
 #### <a name="routes"></a>Trasy
 
-Kategorie směrování zpráv sleduje chyby, ke kterým došlo během hodnocení směrování zpráv a stavu koncového bodu, jak je uvedeno IoT Hub. Tato kategorie zahrnuje události jako:
+Kategorie [směrování zpráv](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c) sleduje chyby, ke kterým došlo během hodnocení směrování zpráv a stavu koncového bodu, jak je uvedeno IoT Hub. Tato kategorie zahrnuje události jako:
 
 * Pravidlo se vyhodnotí jako nedefinované.
 * IoT Hub označí koncový bod jako mrtvý nebo
-* Jakékoli chyby přijaté z koncového bodu. 
+* Jakékoli chyby přijaté z koncového bodu.
 
 Tato kategorie neobsahuje konkrétní chyby týkající se samotných zpráv (například chyby omezování zařízení), které jsou uvedeny v kategorii telemetrie zařízení.
 
@@ -134,17 +131,24 @@ Tato kategorie neobsahuje konkrétní chyby týkající se samotných zpráv (na
     "records":
     [
         {
-            "time": "UTC timestamp",
-            "resourceId": "Resource Id",
-            "operationName": "endpointUnhealthy",
-            "category": "Routes",
-            "level": "Error",
-            "properties": "{\"deviceId\": \"<deviceId>\",\"endpointName\":\"<endpointName>\",\"messageId\":<messageId>,\"details\":\"<errorDetails>\",\"routeName\": \"<routeName>\"}",
-            "location": "Resource location"
+            "time":"2019-12-12T03:25:14Z",
+            "resourceId":"/SUBSCRIPTIONS/91R34780-3DEC-123A-BE2A-213B5500DFF0/RESOURCEGROUPS/ANON-TEST/PROVIDERS/MICROSOFT.DEVICES/IOTHUBS/ANONHUB1",
+            "operationName":"endpointUnhealthy",
+            "category":"Routes",
+            "level":"Error",
+            "resultType":"403004",
+            "resultDescription":"DeviceMaximumQueueDepthExceeded",
+            "properties":"{\"deviceId\":null,\"endpointName\":\"anon-sb-1\",\"messageId\":null,\"details\":\"DeviceMaximumQueueDepthExceeded\",\"routeName\":null,\"statusCode\":\"403\"}",
+            "location":"westus"
         }
     ]
 }
 ```
+
+Tady jsou další podrobnosti o protokolech diagnostiky směrování:
+
+* [Seznam kódů chyb protokolu diagnostiky směrování](troubleshoot-message-routing.md#diagnostics-error-codes)
+* [Seznam protokolů diagnostiky směrování operationNames](troubleshoot-message-routing.md#diagnostics-operation-names)
 
 #### <a name="device-telemetry"></a>Telemetrie zařízení
 
@@ -315,7 +319,7 @@ Kategorie přímé metody sleduje interakce odpovědí na požadavky odeslané n
 
 Kategorie distribuované trasování sleduje ID korelace pro zprávy, které přenášejí hlavičku kontextu trasování. Aby bylo možné tyto protokoly plně povolit, musí být kód na straně klienta aktualizován pomocí následujících příkazů [analyzovat a diagnostikovat aplikace IoT pomocí IoT Hub distribuované trasování (Preview)](iot-hub-distributed-tracing.md).
 
-Všimněte si `correlationId` , že odpovídá návrhu [kontextu trasování W3C](https://github.com/w3c/trace-context) , kde obsahuje `trace-id` , a také. `span-id`
+Všimněte si, že `correlationId` odpovídá návrhu [kontextu trasování W3C](https://github.com/w3c/trace-context) , kde obsahuje, a `trace-id` také `span-id` .
 
 ##### <a name="iot-hub-d2c-device-to-cloud-logs"></a>Protokoly IoT Hub D2C (zařízení-Cloud)
 
@@ -342,9 +346,9 @@ IoT Hub zaznamenává tento protokol, když se do IoT Hub dorazí zpráva obsahu
 }
 ```
 
-V tomto `durationMs` případě se nepočítá, protože hodiny IoT Hub nemusejí být synchronizované s hodinami zařízení, takže výpočet doby trvání může být zavádějící. Pro zachycení špičky v latenci v rámci zařízení `properties` do cloudu doporučujeme napsat logiku pomocí časových razítek v části.
+V tomto případě `durationMs` se nepočítá, protože hodiny IoT Hub nemusejí být synchronizované s hodinami zařízení, takže výpočet doby trvání může být zavádějící. `properties`Pro zachycení špičky v latenci v rámci zařízení do cloudu doporučujeme napsat logiku pomocí časových razítek v části.
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **messageSize** | Integer | Velikost zprávy typu zařízení-Cloud v bajtech |
 | **deviceId** | Řetězec alfanumerických alfanumerických znaků ASCII | Identita zařízení |
@@ -378,7 +382,7 @@ IoT Hub zaznamenává tento protokol, pokud zpráva obsahující platné vlastno
 
 V `properties` části Tento protokol obsahuje další informace o příchozím přenosu zpráv.
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **isRoutingEnabled** | Řetězec | Hodnota true nebo false označuje, zda je v IoT Hub povoleno směrování zpráv. |
 | **parentSpanId** | Řetězec | [Identifikátor rozsahu](https://w3c.github.io/trace-context/#parent-id) nadřazené zprávy, který by byl trasováním zpráv D2C v tomto případě |
@@ -410,7 +414,7 @@ IoT Hub zaznamenává tento protokol, pokud je povoleno [Směrování](iot-hub-d
 
 V `properties` části Tento protokol obsahuje další informace o příchozím přenosu zpráv.
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **koncový bod** | Řetězec | Název koncového bodu směrování |
 | **endpointType** | Řetězec | Typ koncového bodu směrování |
@@ -543,7 +547,7 @@ Pokud chcete zjistit stav vašich Center IoT, postupujte takto:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-2. Přejděte na **Service Health** > **Resource Health**.
+2. Přejděte na **Service Health**  >  **Resource Health**.
 
 3. V rozevíracích seznamech vyberte své předplatné a pak jako typ prostředku vyberte **IoT Hub** .
 

@@ -5,11 +5,11 @@ ms.topic: article
 ms.date: 02/14/2019
 ms.author: mikhegn
 ms.openlocfilehash: 2a00a352d09562ffe46dc8e6e63a5d4963ac3a3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79127631"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84701145"
 ---
 # <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2019"></a>Postupy: ladění kontejnerů Windows v Azure Service Fabric pomocí sady Visual Studio 2019
 
@@ -27,7 +27,7 @@ Pomocí sady Visual Studio 2019 můžete ladit aplikace .NET v kontejnerech jako
 
 1. Aby bylo možné podporovat překlad DNS mezi kontejnery, budete muset nastavit místní cluster pro vývoj pomocí názvu počítače. Tyto kroky jsou nezbytné také v případě, že chcete adresovat služby prostřednictvím reverzního proxy serveru.
    1. Otevřete PowerShell jako správce.
-   2. Přejděte do složky pro nastavení clusteru sady SDK obvykle `C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup`.
+   2. Přejděte do složky pro nastavení clusteru sady SDK obvykle `C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup` .
    3. Spuštění skriptu`DevClusterSetup.ps1`
 
       ``` PowerShell

@@ -8,17 +8,17 @@ author: damendo
 ms.assetid: 75e6e7c4-b3ba-4173-8815-b00d7d824e11
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: ea506e137d71fc3124a4f93f1e97750a08dd4284
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fb5ae2408c15baee0f37acaacc780f4d198b1521
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76842933"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738052"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Použití zachytávání paketů pro proaktivní monitorování sítě s výstrahami a Azure Functions
 
@@ -68,13 +68,13 @@ Tento scénář provádí následující akce:
 
 Prvním krokem je vytvoření funkce Azure pro zpracování výstrahy a vytvoření zachytávání paketů.
 
-1. V [Azure Portal](https://portal.azure.com)vyberte **vytvořit prostředek** > **Compute** > **Function App**Compute.
+1. V [Azure Portal](https://portal.azure.com)vyberte **vytvořit prostředek**  >  **Compute**  >  **Function App**Compute.
 
     ![Vytvoření aplikace funkcí][1-1]
 
 2. V okně **Function App** zadejte následující hodnoty a pak vyberte **OK** a vytvořte aplikaci:
 
-    |**Nastavení** | **Osa** | **Zobrazí** |
+    |**Nastavení** | **Hodnota** | **Podrobnosti** |
     |---|---|---|
     |**Název aplikace**|PacketCaptureExample|Název aplikace Function App|
     |**Předplatné**|[Vaše předplatné] Předplatné, pro které chcete vytvořit aplikaci Function App.||
@@ -83,11 +83,11 @@ Prvním krokem je vytvoření funkce Azure pro zpracování výstrahy a vytvoře
     |**Umístění**|USA – střed| Oblast, ve které se má vytvořit aplikace Function App|
     |**Účet úložiště**|automaticky generované| Účet úložiště, který Azure Functions potřeby pro účely obecného úložiště.|
 
-3. V okně **aplikací funkcí PacketCaptureExample** vyberte **funkce** > **vlastní funkce** >**+**.
+3. V okně **aplikací funkcí PacketCaptureExample** vyberte **funkce**  >  **vlastní funkce**  > **+** .
 
 4. Vyberte **HttpTrigger-PowerShell**a potom zadejte zbývající informace. Nakonec, pokud chcete vytvořit funkci, vyberte **vytvořit**.
 
-    |**Nastavení** | **Osa** | **Zobrazí** |
+    |**Nastavení** | **Hodnota** | **Podrobnosti** |
     |---|---|---|
     |**Scénář**|Experimentální|Typ scénáře|
     |**Pojmenování funkce**|AlertPacketCapturePowerShell|Název funkce|
@@ -120,7 +120,7 @@ Pokud chcete použít rutiny Network Watcher PowerShellu, nahrajte do aplikace F
 
      ![Složky PowerShellu][functions5]
 
-1. Vyberte možnost >  **nastavení aplikace Function App****Přejít na Editor služby App Service**.
+1. Vyberte možnost **nastavení aplikace Function App**  >  **Přejít na Editor služby App Service**.
 
     ![Nastavení aplikace funkcí][functions2]
 
@@ -148,7 +148,7 @@ Pokud chcete použít rutiny Network Watcher PowerShellu, nahrajte do aplikace F
 
     ![Soubory PowerShellu][functions7]
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Ověřování
 
 Chcete-li použít rutiny prostředí PowerShell, je nutné provést ověření. Ověřování nakonfigurujete v aplikaci Function App. Pokud chcete nakonfigurovat ověřování, musíte nakonfigurovat proměnné prostředí a nahrát do aplikace Function app soubor se zašifrovaným klíčem.
 
@@ -246,7 +246,7 @@ $Encryptedpassword
 
 ### <a name="store-the-environment-variables"></a>Uložení proměnných prostředí
 
-1. Přejít do aplikace Function App. Pak vyberte **funkce nastavení** > aplikace**Konfigurovat nastavení aplikace**.
+1. Přejít do aplikace Function App. Pak vyberte **funkce nastavení aplikace**  >  **Konfigurovat nastavení aplikace**.
 
     ![Konfigurace nastavení aplikace][functions11]
 
@@ -342,7 +342,7 @@ Výstrahy je možné nakonfigurovat tak, aby upozornily na uživatele, když kon
 
 Přejít na existující virtuální počítač a pak přidat pravidlo výstrahy. Podrobnější dokumentaci týkající se konfigurace výstrah najdete v popisu [Vytvoření upozornění v Azure monitor pro služby Azure – Azure Portal](../monitoring-and-diagnostics/insights-alerts-portal.md). V okně **pravidlo výstrahy** zadejte následující hodnoty a pak vyberte **OK**.
 
-  |**Nastavení** | **Osa** | **Zobrazí** |
+  |**Nastavení** | **Hodnota** | **Podrobnosti** |
   |---|---|---|
   |**Název**|TCP_Segments_Sent_Exceeded|Název pravidla výstrahy.|
   |**Popis**|Počet odeslaných segmentů TCP překročení prahové hodnoty|Popis pravidla výstrahy.|
@@ -350,7 +350,7 @@ Přejít na existující virtuální počítač a pak přidat pravidlo výstrahy
   |**Podmínka**|Větší než| Podmínka, která se má použít při vyhodnocování metriky.|
   |**Mezí**|100| Hodnota metriky, která aktivuje výstrahu. Tato hodnota by měla být nastavená na platnou hodnotu pro vaše prostředí.|
   |**Období**|Za posledních pět minut| Určuje období, ve kterém se má hledat prahová hodnota metriky.|
-  |**Webhooku**|[adresa URL Webhooku z aplikace Function app]| Adresa URL Webhooku z aplikace Function App, která byla vytvořena v předchozích krocích.|
+  |**Webhook**|[adresa URL Webhooku z aplikace Function app]| Adresa URL Webhooku z aplikace Function App, která byla vytvořena v předchozích krocích.|
 
 > [!NOTE]
 > Metrika segmentů TCP není ve výchozím nastavení povolena. Další informace o tom, jak povolit další metriky, najdete v tématu [povolení monitorování a diagnostiky](../monitoring-and-diagnostics/insights-how-to-use-diagnostics.md).

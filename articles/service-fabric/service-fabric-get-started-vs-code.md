@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
 ms.openlocfilehash: 17bff459a0399d39c6bfdd772ad16d0b5b2f6771
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258483"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84692594"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Service Fabric pro Visual Studio Code
 
@@ -56,7 +56,7 @@ Pro vývoj pro .NET Core/C# je nutné nainstalovat následující požadavky:
 2. Klikněte na ikonu rozšíření na **panelu aktivity** na levé straně vs Code. Vyhledejte "Service Fabric". Pro rozšíření Service Fabric Reliable Services klikněte na **instalovat** .
 
 ## <a name="commands"></a>Příkazy
-Rozšíření Service Fabric Reliable Services pro VS Code poskytuje mnoho příkazů, které vývojářům pomůžou vytvořit a nasadit Service Fabric projekty. Příkazy lze volat z **palety příkazů** stisknutím klávesy `(Ctrl + Shift + p)`, zadáním názvu příkazu do vstupního panelu a výběrem požadovaného příkazu ze seznamu příkazů. 
+Rozšíření Service Fabric Reliable Services pro VS Code poskytuje mnoho příkazů, které vývojářům pomůžou vytvořit a nasadit Service Fabric projekty. Příkazy lze volat z **palety příkazů** stisknutím klávesy `(Ctrl + Shift + p)` , zadáním názvu příkazu do vstupního panelu a výběrem požadovaného příkazu ze seznamu příkazů. 
 
 * Service Fabric: Vytvoření aplikace 
 * Service Fabric: publikování aplikace 
@@ -87,10 +87,10 @@ Příkaz **Service Fabric: Add Service** přidá novou službu do existující a
 5.  Nová služba se zobrazí v adresáři projektu. 
 
 ### <a name="service-fabric-publish-application"></a>Service Fabric: publikování aplikace
-Příkaz **Service Fabric: Publish aplikace** nasadí vaši aplikaci Service Fabric ve vzdáleném clusteru. Cílový cluster může být buď zabezpečený, nebo nezabezpečený cluster. Pokud v souboru Cloud. JSON nejsou parametry, aplikace se nasadí do místního clusteru.
+Příkaz **Service Fabric: Publish aplikace** nasadí vaši aplikaci Service Fabric ve vzdáleném clusteru. Cílový cluster může být buď zabezpečený, nebo nezabezpečený cluster. Pokud nejsou v Cloud.jsnastaveny parametry, aplikace se nasadí do místního clusteru.
 
-1.  Při prvním sestavení aplikace se v adresáři projektu vygeneruje soubor Cloud. JSON.
-2.  Zadejte hodnoty pro cluster, ke kterému se chcete připojit v souboru Cloud. JSON.
+1.  Při prvním sestavení aplikace se v adresáři projektu vygeneruje Cloud.jsv souboru.
+2.  Zadejte hodnoty pro cluster, ke kterému se chcete připojit, v Cloud.jssouboru.
 3.  Vyberte příkaz **Service Fabric: publikovat aplikaci** .
 4.  Zobrazte cílový cluster s Service Fabric Explorer a ověřte, že je aplikace nainstalovaná. 
 
@@ -98,8 +98,8 @@ Příkaz **Service Fabric: Publish aplikace** nasadí vaši aplikaci Service Fab
 Příkaz **Service Fabric: Deploy Application** nasadí vaši aplikaci Service Fabric do místního clusteru. Před použitím příkazu se ujistěte, že je váš místní cluster spuštěný. 
 
 1. Vyberte **Service Fabric: nasadit aplikaci –** příkaz
-2. Zobrazte místní cluster pomocí Service Fabric Explorer (http:\//localhost: 19080/Explorer) a potvrďte, že je aplikace nainstalovaná. To může nějakou dobu trvat, tedy pacient.
-3. Můžete také použít příkaz **Service Fabric: Publish aplikace** bez parametrů nastavených v souboru Cloud. JSON pro nasazení do místního clusteru.
+2. Zobrazte místní cluster pomocí Service Fabric Explorer (http: \/ /localhost: 19080/Explorer) a potvrďte, že je aplikace nainstalovaná. To může nějakou dobu trvat, tedy pacient.
+3. Můžete také použít příkaz **Service Fabric: Publish aplikace** bez parametrů nastavených v Cloud.jssouboru pro nasazení do místního clusteru.
 
 > [!NOTE]
 > V počítačích s Windows není podporováno nasazení aplikací Java do místního clusteru.

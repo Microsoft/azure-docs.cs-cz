@@ -7,25 +7,25 @@ documentationcenter: na
 author: asudbring
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.custom: se0dec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 4bf74986462ecb2659505f8a1261b9b24aba3fee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5a896d3fbe2d191473b10655ccb19c5759762131
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74077005"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84803638"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>Vyrovnávání zatížení u více konfigurací protokolu IP pomocí Azure Portal
 
 > [!div class="op_single_selector"]
-> * [Portál](load-balancer-multiple-ip.md)
+> * [Azure Portal](load-balancer-multiple-ip.md)
 > * [PowerShell](load-balancer-multiple-ip-powershell.md)
-> * [CLI](load-balancer-multiple-ip-cli.md)
+> * [Rozhraní příkazového řádku](load-balancer-multiple-ip-cli.md)
 
 
 V tomto článku vám ukážeme, jak používat Azure Load Balancer s více IP adresami na sekundárním řadiči síťového rozhraní (NIC). Následující diagram znázorňuje náš scénář:
@@ -62,7 +62,7 @@ Provedením následujících kroků dosáhnete scénáře popsaného v tomto čl
 
 Pro každý virtuální počítač ve vaší virtuální síti přidejte konfiguraci protokolu IP pro sekundární síťovou kartu:  
 
-1. Přejděte k Azure Portal: https://portal.azure.com. Přihlaste se pomocí svého účtu Azure.
+1. Přejděte k Azure Portal: https://portal.azure.com . Přihlaste se pomocí svého účtu Azure.
 
 2. V levém horním rohu obrazovky vyberte ikonu **skupiny prostředků** . Pak vyberte skupinu prostředků, ve které se vaše virtuální počítače nacházejí (například **contosofabrikam**). V podokně **skupiny prostředků** se zobrazí všechny prostředky a síťové karty pro virtuální počítače.
 
@@ -86,9 +86,9 @@ Po dokončení druhé konfigurace protokolu IP pro sekundární síťovou kartu 
 
 Vytvořte Nástroj pro vyrovnávání zatížení pro konfiguraci:
 
-1. Přejděte k Azure Portal: https://portal.azure.com. Přihlaste se pomocí svého účtu Azure.
+1. Přejděte k Azure Portal: https://portal.azure.com . Přihlaste se pomocí svého účtu Azure.
 
-2. V levém horním rohu obrazovky vyberte **vytvořit prostředek** > **síť** > **Load Balancer**. V dalším kroku vyberte **vytvořit**.
+2. V levém horním rohu obrazovky vyberte **vytvořit prostředek**  >  **síť**  >  **Load Balancer**. V dalším kroku vyberte **vytvořit**.
 
 3. V části **vytvořit nástroj pro vyrovnávání zatížení**zadejte název nástroje pro vyrovnávání zatížení. V tomto scénáři používáme název **mylb**.
 

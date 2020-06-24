@@ -4,11 +4,11 @@ description: Popisuje ověření přístupu klienta ke clusteru Service Fabric a
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.openlocfilehash: a1f4abbabe428a09492efefca4a8da9801b9f68d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258574"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84701215"
 ---
 # <a name="connect-to-a-secure-cluster"></a>Připojení k zabezpečenému clusteru
 
@@ -20,7 +20,7 @@ Když se klient připojí k uzlu Service Fabric clusteru, může být klient ov�
 
 Existuje několik různých způsobů, jak se připojit k zabezpečenému clusteru pomocí rozhraní příkazového řádku Service Fabric (sfctl). Pokud k ověřování používáte klientský certifikát, podrobnosti o certifikátu musí odpovídat certifikátu nasazenému do uzlů clusteru. Pokud váš certifikát má certifikační autority (CA), musíte taky zadat důvěryhodné certifikační autority.
 
-Pomocí `sfctl cluster select` příkazu se můžete připojit ke clusteru.
+Pomocí příkazu se můžete připojit ke clusteru `sfctl cluster select` .
 
 Klientské certifikáty lze zadat dvěma různými způsoby, buď jako certifikát, jako dvojici klíčů, nebo jako jeden soubor PFX. Pro soubory PEM chráněné heslem se zobrazí výzva k automatickému zadání hesla. Pokud jste certifikát klienta získali jako soubor PFX, nejprve převeďte soubor PFX na soubor PEM pomocí následujícího příkazu. 
 
@@ -44,7 +44,7 @@ Chcete-li zadat certifikát, dvojici klíčů `--cert` použijte `--key` argumen
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --cert ./client.crt --key ./keyfile.key
 ```
 
-Někdy certifikáty, které se používají k zabezpečení testovacích nebo vývojových clusterů, selžou při ověřování certifikátů. Pokud chcete obejít ověření certifikátu, `--no-verify` zadejte možnost. Příklad:
+Někdy certifikáty, které se používají k zabezpečení testovacích nebo vývojových clusterů, selžou při ověřování certifikátů. Pokud chcete obejít ověření certifikátu, zadejte `--no-verify` možnost. Příklad:
 
 > [!WARNING]
 > Nepoužívejte `no-verify` možnost při připojování k produkčním Service Fabric clusterům.

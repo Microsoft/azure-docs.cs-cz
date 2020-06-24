@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: troubleshooting
 ms.date: 11/04/2019
 ms.author: brendm
-ms.openlocfilehash: 5dcdb03a6d4ec4f448108dbd771a44f362aa7f20
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: db5363c5d8adaf29e2c460d9ce36afa2d29ae8e7
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76277579"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791652"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Řešení běžných problémů s jarním cloudem v Azure
 
@@ -35,7 +35,7 @@ Vazby služby můžou také způsobit chyby spuštění aplikace. K dotazování
 
 > "Java. SQL. SQLException: hodnota časového pásma serveru ' koordinovaný světový čas ' není rozpoznána nebo představuje více než jedno časové pásmo."
 
-Tuto chybu opravíte tak, že přejdete `server parameters` na instanci MySQL a změníte `time_zone` hodnotu ze *systému* na *+ 0:00*.
+Tuto chybu opravíte tak, že přejdete na `server parameters` instanci MySQL a změníte `time_zone` hodnotu ze *systému* na *+ 0:00*.
 
 
 ### <a name="my-application-crashes-or-throws-an-unexpected-error"></a>Aplikace se chybově ukončí nebo vyvolá neočekávanou chybu
@@ -111,7 +111,7 @@ Ale pokud se pokusíte nastavit instanci služby jarní cloudovou službu Azure 
 
 Pokud chcete nastavit instanci služby jarní cloudovou službu Azure pomocí šablony Správce prostředků, nejdřív se seznamte s [pochopením struktury a syntaxe šablon Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates).
 
-Název instance služby jarní cloudová služba Azure se použije pro vyžádání názvu subdomény v rámci `azureapps.io`, takže pokud je název v konfliktu s existujícím názvem, instalace selže. Další podrobnosti najdete v protokolech aktivit.
+Název instance služby jarní cloudová služba Azure se použije pro vyžádání názvu subdomény v rámci `azureapps.io` , takže pokud je název v konfliktu s existujícím názvem, instalace selže. Další podrobnosti najdete v protokolech aktivit.
 
 ### <a name="i-cant-deploy-a-jar-package"></a>Nemůžu nasadit balíček JAR
 
@@ -160,7 +160,7 @@ Proměnné prostředí informují cloudové cloudové rozhraní Azure, které za
 
 1. Přejděte do části `https://<your application test endpoint>/actuator/health` (Soubor > Nový > Jiné).  
     - Podobná odpověď `{"status":"UP"}` označuje, že byl koncový bod povolen.
-    - Pokud je odpověď záporná, zahrňte do souboru *pom. XML* následující závislost:
+    - Pokud je odpověď záporná, zahrňte do souboru *POM.xml* následující závislost:
 
         ```xml
             <dependency>
@@ -169,7 +169,7 @@ Proměnné prostředí informují cloudové cloudové rozhraní Azure, které za
             </dependency>
         ```
 
-1. V případě povoleného koncového bodu pohánějícího spouštěcího modulu je potřeba přejít na Azure Portal a vyhledat stránku konfigurace aplikace.  Přidejte proměnnou prostředí s názvem `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE` a hodnotou. `*` 
+1. V případě povoleného koncového bodu pohánějícího spouštěcího modulu je potřeba přejít na Azure Portal a vyhledat stránku konfigurace aplikace.  Přidejte proměnnou prostředí s názvem `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE` a hodnotou `*` . 
 
 1. Restartujte aplikaci.
 
@@ -189,16 +189,18 @@ Proměnné prostředí informují cloudové cloudové rozhraní Azure, které za
     }
     ```
 
-Vyhledejte podřízený uzel s názvem `systemEnvironment`.  Tento uzel obsahuje proměnné prostředí vaší aplikace.
+Vyhledejte podřízený uzel s názvem `systemEnvironment` .  Tento uzel obsahuje proměnné prostředí vaší aplikace.
 
 > [!IMPORTANT]
-> Nezapomeňte zrušit vystavení proměnných prostředí před tím, než aplikaci zpřístupníte veřejnosti.  Přejít na Azure Portal, vyhledat stránku konfigurace aplikace a odstranit tuto proměnnou prostředí: `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE`
+> Nezapomeňte zrušit vystavení proměnných prostředí před tím, než aplikaci zpřístupníte veřejnosti.  Přejít na Azure Portal, vyhledat stránku konfigurace aplikace a odstranit tuto proměnnou `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE` prostředí:
 
 ### <a name="i-cant-find-metrics-or-logs-for-my-application"></a>Nemůžu najít metriky nebo protokoly pro moji aplikaci
 
 Pokud chcete zajistit, aby byly stavy aplikace _spuštěné_ a _aktuální_, otevřete **správu aplikací** .
 
-Pokud vidíte metriky z _JVM_ , ale žádné metriky z _Tomcat_, zkontrolujte, zda je `spring-boot-actuator` závislost povolena v balíčku aplikace a zda byla úspěšně dokončena.
+Zkontrolujte, jestli je v balíčku aplikace povolená možnost počasí _JMX_ . Tato funkce se dá povolit s vlastností konfigurace `spring.jmx.enabled=true` .  
+
+Zkontrolujte `spring-boot-actuator` , zda je závislost povolena v balíčku aplikace a zda je úspěšně spuštěná.
 
 ```xml
 <dependency>

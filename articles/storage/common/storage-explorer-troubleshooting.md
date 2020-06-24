@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: db36033ea524603416f16db27f40d5eefb8bf613
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a49e5fbe9eac689b630a0f3b443729faf29cdb0d
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80437108"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84974513"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Průvodce odstraňováním potíží s Průzkumník služby Azure Storage
 
@@ -48,7 +48,7 @@ Musíte mít přiřazenou aspoň jednu roli, která uděluje přístup ke čten�
 
 Azure Storage má dvě vrstvy přístupu: _správu_ a _data_. K předplatným a účtům úložiště se dostanete prostřednictvím vrstvy správy. K kontejnerům, objektům blob a dalším datovým prostředkům se dostanete přes datovou vrstvu. Pokud například chcete získat seznam účtů úložiště z Azure, odešlete žádost do koncového bodu správy. Pokud chcete v účtu vytvořit seznam kontejnerů objektů blob, odešlete požadavek na příslušný koncový bod služby.
 
-Role RBAC můžou obsahovat oprávnění pro správu nebo přístup k datové vrstvě. Role čtenář například uděluje přístup jen pro čtení k prostředkům vrstvy správy.
+Role RBAC vám můžou udělit oprávnění pro správu nebo přístup k datové vrstvě. Role čtenář například uděluje přístup jen pro čtení k prostředkům vrstvy správy.
 
 Výhradně řečeno, role čtenářů neposkytuje žádná oprávnění k datové vrstvě a není nutná pro přístup k datové vrstvě.
 
@@ -58,7 +58,14 @@ Pokud nemáte roli, která uděluje žádná oprávnění vrstvy správy, Průzk
 
 ### <a name="what-if-i-cant-get-the-management-layer-permissions-i-need-from-my-administrator"></a>Co když mi nejde získat oprávnění pro vrstvu správy, které potřebuji od správce?
 
-Pro tento problém momentálně nepoužíváme řešení související s RBAC. Jako alternativní řešení si můžete vyžádat identifikátor URI SAS, který se [připojí k vašemu prostředku](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri).
+Pokud chcete získat přístup k kontejnerům nebo frontám objektů blob, můžete k těmto prostředkům připojit pomocí vašich přihlašovacích údajů Azure.
+
+1. Otevřete dialogové okno připojit.
+2. Vyberte Přidat prostředek prostřednictvím Azure Active Directory (Azure AD). Klikněte na Další.
+3. Vyberte uživatelský účet a tenanta přidružený k prostředku, ke kterému se připojujete. Klikněte na Další.
+4. Vyberte typ prostředku, zadejte adresu URL prostředku a zadejte jedinečný zobrazovaný název pro připojení. Klikněte na Další. Klikněte na Připojit.
+
+U jiných typů prostředků momentálně nepoužíváme řešení související s RBAC. Jako alternativní řešení si můžete vyžádat identifikátor URI SAS, který se [připojí k vašemu prostředku](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri).
 
 ### <a name="recommended-built-in-rbac-roles"></a>Doporučené předdefinované role RBAC
 
@@ -75,13 +82,13 @@ K dispozici je několik integrovaných rolí RBAC, které mohou poskytnout oprá
 
 K chybám certifikátu obvykle dochází v jedné z následujících situací:
 
-- Aplikace je propojená pomocí _transparentního proxy_serveru, což znamená, že server (například server vaší společnosti) zachycuje provoz https, dešifruje ho a pak ho šifruje pomocí certifikátu podepsaného svým držitelem.
+- Aplikace je propojená pomocí _transparentního proxy serveru_. To znamená, že server (například server vaší společnosti) zachycuje provoz HTTPS, dešifruje ho a pak ho šifruje pomocí certifikátu podepsaného svým držitelem.
 - Máte spuštěnou aplikaci, která vkládá certifikát TLS/SSL podepsaný svým držitelem do zpráv HTTPS, které obdržíte. Mezi aplikace, které vkládají certifikáty, patří software pro kontrolu antivirového a síťového provozu.
 
 Když Průzkumník služby Storage uvidí certifikát podepsaný svým držitelem nebo nedůvěryhodný, už nebude vědět, jestli se přijatá zpráva HTTPS změnila. Pokud máte kopii certifikátu podepsaného svým držitelem, můžete mu dát Průzkumník služby Storage, aby mu důvěřovali pomocí následujících kroků:
 
 1. Získejte kopii certifikátu X. 509 (. cer) s kódováním Base-64.
-2. Přejít na **Upravit** > **certifikáty** > SSL**Import certifikátů**a potom pomocí nástroje pro výběr souborů vyhledejte, vyberte a otevřete soubor. cer.
+2. Přejít na **Upravit**  >  **certifikáty SSL**  >  **Import certifikátů**a potom pomocí nástroje pro výběr souborů vyhledejte, vyberte a otevřete soubor. cer.
 
 K tomuto problému může dojít také v případě, že existuje více certifikátů (root a zprostředkující). Chcete-li tuto chybu opravit, je nutné přidat oba certifikáty.
 
@@ -91,12 +98,12 @@ Pokud si nejste jistí, odkud certifikát pochází, postupujte podle těchto kr
     * [Windows](https://slproweb.com/products/Win32OpenSSL.html): všechny verze světla by měly být dostatečné.
     * Mac a Linux: měla by být součástí vašeho operačního systému.
 2. Spusťte OpenSSL.
-    * Windows: otevřete instalační adresář, vyberte **/bin/** a dvakrát klikněte na **OpenSSL. exe**.
+    * Windows: otevřete instalační adresář, vyberte **/bin/** a potom poklikejte na **openssl.exe**.
     * Mac a Linux: Spusťte `openssl` z terminálu.
 3. Spusťte `s_client -showcerts -connect microsoft.com:443`.
-4. Vyhledejte certifikáty podepsané svým držitelem. Pokud si nejste jistí, které certifikáty jsou podepsané svým držitelem, poznamenejte si, `("s:")` jestli je `("i:")` předmět a vydavatel stejné.
+4. Vyhledejte certifikáty podepsané svým držitelem. Pokud si nejste jistí, které certifikáty jsou podepsané svým držitelem, poznamenejte si, jestli je předmět `("s:")` a vydavatel `("i:")` stejné.
 5. Když najdete certifikáty podepsané svým držitelem, můžete pro každý z nich zkopírovat a vložit všechno z (a včetně `-----BEGIN CERTIFICATE-----` ) `-----END CERTIFICATE-----` do nového souboru. cer.
-6. Otevřete Průzkumník služby Storage a pokračujte v **úpravách** > **certifikátů** > SSL**Import certifikátů**. Pak pomocí nástroje pro výběr souborů vyhledejte, vyberte a otevřete soubory. CER, které jste vytvořili.
+6. Otevřete Průzkumník služby Storage a pokračujte v **úpravách**  >  **certifikátů SSL**  >  **Import certifikátů**. Pak pomocí nástroje pro výběr souborů vyhledejte, vyberte a otevřete soubory. CER, které jste vytvořili.
 
 Pokud nemůžete najít žádné certifikáty podepsané svým držitelem pomocí následujících kroků, kontaktujte nás prostřednictvím nástroje pro zpětnou vazbu. Můžete také otevřít Průzkumník služby Storage z příkazového řádku pomocí `--ignore-certificate-errors` příznaku. Po otevření s tímto příznakem Průzkumník služby Storage ignoruje chyby certifikátu.
 
@@ -106,7 +113,7 @@ Pokud nemůžete najít žádné certifikáty podepsané svým držitelem pomoc�
 
 Prázdné přihlašovací dialogová okna se nejčastěji vyskytují, když Active Directory Federation Services (AD FS) (AD FS) vyzývá Průzkumník služby Storage k provedení přesměrování, které nepodporuje elektronicky. Pokud chcete tento problém obejít, můžete zkusit použít tok kódu zařízení pro přihlášení. Postup je následující:
 
-1. Na levém svislém panelu nástrojů otevřete **Nastavení**. Na panelu nastavení přejdete na přihlášení **aplikace** > **Sign in**. Povolit **používání přihlášení k toku kódu zařízení**
+1. Na levém svislém panelu nástrojů otevřete **Nastavení**. Na panelu nastavení přejdete na přihlášení **aplikace**  >  **Sign in**. Povolit **používání přihlášení k toku kódu zařízení**
 2. Otevřete dialogové okno **připojit** (buď prostřednictvím ikony plug-in na levé straně, nebo vyberte **Přidat účet** na panelu účet).
 3. Vyberte prostředí, ke kterému se chcete přihlásit.
 4. Vyberte **Přihlásit se**.
@@ -122,7 +129,7 @@ Pokud se nemůžete přihlásit k účtu, který chcete použít, protože váš
 Pokud jste ve smyčce opakovaného ověřování nebo jste změnili hlavní název uživatele (UPN) jednoho z vašich účtů, postupujte takto:
 
 1. Odeberte všechny účty a pak Průzkumník služby Storage zavřete.
-2. Odstraňte. IdentityService složku z počítače. Ve Windows se složka nachází na adrese `C:\users\<username>\AppData\Local`. V případě systémů Mac a Linux můžete složku najít v kořenovém adresáři adresáře uživatele.
+2. Odstraňte. IdentityService složku z počítače. Ve Windows se složka nachází na adrese `C:\users\<username>\AppData\Local` . V případě systémů Mac a Linux můžete složku najít v kořenovém adresáři adresáře uživatele.
 3. Pokud používáte systém Mac nebo Linux, budete také muset odstranit položku Microsoft. Developer. IdentityService z úložiště klíčů operačního systému. V počítači Mac je úložiště *klíčů aplikací GNOME* . V systému Linux se aplikace obvykle nazývá _Správce klíčů_, ale název se může lišit v závislosti na vaší distribuci.
 
 ### <a name="conditional-access"></a>Podmíněný přístup
@@ -231,7 +238,7 @@ Pokud vidíte klíče účtu, založte problém do GitHubu, abychom vám mohli p
 
 Pokud se zobrazí tato chybová zpráva, když se pokusíte přidat vlastní připojení, může dojít k poškození dat připojení uložených v místním Správci přihlašovacích údajů. Pokud chcete tento problém obejít, zkuste odstranit vaše poškozená místní připojení a pak je znovu přidat:
 
-1. Spusťte Průzkumník služby Storage. V nabídce přejděte na příkaz **help** > **Toggle vývojářské nástroje**.
+1. Spusťte Průzkumník služby Storage. V nabídce přejděte na příkaz **help**  >  **Toggle vývojářské nástroje**.
 2. V otevřeném okně na kartě **aplikace** přejdete do **místního úložiště** (levé straně) > **File://**.
 3. V závislosti na typu připojení, se kterým máte potíže, vyhledejte jeho klíč a zkopírujte jeho hodnotu do textového editoru. Hodnota je pole vlastních názvů připojení, například následující:
     * Účty úložiště
@@ -245,7 +252,7 @@ Pokud se zobrazí tato chybová zpráva, když se pokusíte přidat vlastní př
         * `StorageExplorer_CustomConnections_Queues_v1`
     * Tabulky
         * `StorageExplorer_CustomConnections_Tables_v1`
-4. Po uložení aktuálních názvů připojení nastavte hodnotu v Vývojářské nástroje na `[]`.
+4. Po uložení aktuálních názvů připojení nastavte hodnotu v Vývojářské nástroje na `[]` .
 
 Pokud chcete zachovat nepoškozená připojení, můžete pomocí následujících kroků vyhledat poškozená připojení. Pokud si nejste vědomi, že ztratíte všechna existující připojení, můžete tyto kroky přeskočit a podle pokynů pro konkrétní platformu vymazat data o připojení.
 
@@ -259,13 +266,13 @@ Po prozatím všech připojeních, u všech názvů připojení, která nejsou p
 
 1. V nabídce **Start** vyhledejte **Správce přihlašovacích údajů** a otevřete ho.
 2. Přejít na **přihlašovací údaje systému Windows**.
-3. V části **Obecné přihlašovací údaje**vyhledejte položky, které mají `<connection_type_key>/<corrupted_connection_name>` klíč (například `StorageExplorer_CustomConnections_Accounts_v1/account1`).
+3. V části **Obecné přihlašovací údaje**vyhledejte položky, které mají `<connection_type_key>/<corrupted_connection_name>` klíč (například `StorageExplorer_CustomConnections_Accounts_v1/account1` ).
 4. Odstraňte tyto položky a přidejte připojení znovu.
 
 # <a name="macos"></a>[macOS](#tab/macOS)
 
 1. Otevřete Spotlight (Command + mezerník) a vyhledejte **přístup k řetězci klíčů**.
-2. Vyhledejte položky, které mají `<connection_type_key>/<corrupted_connection_name>` klíč (například `StorageExplorer_CustomConnections_Accounts_v1/account1`).
+2. Vyhledejte položky, které mají `<connection_type_key>/<corrupted_connection_name>` klíč (například `StorageExplorer_CustomConnections_Accounts_v1/account1` ).
 3. Odstraňte tyto položky a přidejte připojení znovu.
 
 # <a name="linux"></a>[Linux](#tab/Linux)
@@ -273,7 +280,7 @@ Po prozatím všech připojeních, u všech názvů připojení, která nejsou p
 Správa místních přihlašovacích údajů se liší v závislosti na distribuci systému Linux. Pokud vaše distribuce systému Linux neposkytuje integrovaný nástroj grafického uživatelského rozhraní pro správu místních přihlašovacích údajů, můžete nainstalovat nástroj třetí strany pro správu místních přihlašovacích údajů. Můžete například použít Open source nástroj [Seahorse](https://wiki.gnome.org/Apps/Seahorse/)pro správu místních přihlašovacích údajů pro Linux.
 
 1. Otevřete nástroj pro správu místních přihlašovacích údajů a vyhledejte uložená pověření.
-2. Vyhledejte položky, které mají `<connection_type_key>/<corrupted_connection_name>` klíč (například `StorageExplorer_CustomConnections_Accounts_v1/account1`).
+2. Vyhledejte položky, které mají `<connection_type_key>/<corrupted_connection_name>` klíč (například `StorageExplorer_CustomConnections_Accounts_v1/account1` ).
 3. Odstraňte tyto položky a přidejte připojení znovu.
 ---
 
@@ -290,12 +297,14 @@ Pokud se připojujete ke službě prostřednictvím adresy URL SAS a dochází k
 Pokud omylem připojíte neplatnou adresu URL SAS a teď se nedá odpojit, postupujte podle těchto kroků:
 
 1. Když spouštíte Průzkumník služby Storage, otevřete Vývojářské nástroje okně stisknutím klávesy F12.
-2. Na kartě **aplikace** vyberte **místní úložiště** > **File://** ve stromu vlevo.
-3. Vyhledejte klíč přidružený k typu služby problematického identifikátoru URI SAS. Pokud je například špatný identifikátor URI SAS pro kontejner objektů blob, vyhledejte klíč s názvem `StorageExplorer_AddStorageServiceSAS_v1_blob`.
+2. Na kartě **aplikace** vyberte **místní úložiště**  >  **File://** ve stromu vlevo.
+3. Vyhledejte klíč přidružený k typu služby problematického identifikátoru URI SAS. Pokud je například špatný identifikátor URI SAS pro kontejner objektů blob, vyhledejte klíč s názvem `StorageExplorer_AddStorageServiceSAS_v1_blob` .
 4. Hodnota klíče by měla být pole JSON. Najděte objekt přidružený k chybnému identifikátoru URI a odstraňte ho.
 5. Stisknutím kombinace kláves CTRL + R znovu načtěte Průzkumník služby Storage.
 
 ## <a name="linux-dependencies"></a>Závislosti Linux
+
+### <a name="snap"></a>Moduly snap
 
 Průzkumník služby Storage 1.10.0 a novější je k dispozici jako modul snap z obchodu s modulem snap-in. Modul snap-in Průzkumník služby Storage automaticky nainstaluje všechny závislosti a aktualizuje se, až bude k dispozici nová verze modulu snap-in. Instalace modulu snap-in Průzkumník služby Storage je doporučovanou metodou instalace.
 
@@ -305,64 +314,83 @@ Průzkumník služby Storage vyžaduje použití Správce hesel, ke kterému se 
 snap connect storage-explorer:password-manager-service :password-manager-service
 ```
 
+### <a name="targz-file"></a>Soubor. tar. gz
+
 Aplikaci můžete také stáhnout jako soubor. tar. gz, ale budete muset nainstalovat závislosti ručně.
 
-> [!IMPORTANT]
-> Průzkumník služby Storage, jak je uvedeno v souborech. tar. gz, jsou podporovány pouze pro distribuce Ubuntu. Jiné distribuce nebyly ověřeny a mohou vyžadovat alternativní nebo další balíčky.
+Průzkumník služby Storage, jak je uvedeno v souborech. tar. gz, jsou podporovány pouze v následujících verzích Ubuntu. Průzkumník služby Storage mohou fungovat i na dalších distribucích systému Linux, ale nejsou oficiálně podporovány.
 
-Tyto balíčky jsou nejběžnějšími požadavky na Průzkumník služby Storage v systému Linux:
+- Ubuntu 20,04 x64
+- Ubuntu 18,04 x64
+- Ubuntu 16,04 x64
 
-* [Modul runtime .NET Core 2,2](/dotnet/core/install/dependencies?tabs=netcore22&pivots=os-linux)
-* `libgconf-2-4`
-* `libgnome-keyring0` nebo `libgnome-keyring-dev`
-* `libgnome-keyring-common`
+Průzkumník služby Storage vyžaduje, aby bylo v systému nainstalované rozhraní .NET Core. Doporučujeme .NET Core 2,1, ale Průzkumník služby Storage budou fungovat i s 2,2.
 
 > [!NOTE]
-> Průzkumník služby Storage verze 1.7.0 a starší vyžadují .NET Core 2,0. Pokud máte nainstalovanou novější verzi .NET Core, budete muset [opravit Průzkumník služby Storage](#patching-storage-explorer-for-newer-versions-of-net-core). Pokud používáte Průzkumník služby Storage 1.8.0 nebo novější, měli byste být schopni použít až .NET Core 2,2. Verze nad rámec 2,2 se neověřily, aby v tuto chvíli fungovaly.
+> Průzkumník služby Storage verze 1.7.0 a starší vyžadují .NET Core 2,0. Pokud máte nainstalovanou novější verzi .NET Core, budete muset [opravit Průzkumník služby Storage](#patching-storage-explorer-for-newer-versions-of-net-core). Pokud používáte Průzkumník služby Storage 1.8.0 nebo novější, potřebujete alespoň .NET Core 2,1.
 
-# <a name="ubuntu-1904"></a>[Ubuntu 19.04](#tab/1904)
+# <a name="ubuntu-2004"></a>[Ubuntu 20.04](#tab/2004)
 
-1. Stáhněte si Průzkumník služby Storage.
-2. Nainstalujte [modul runtime .NET Core](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu19-04/runtime-current).
-3. Spusťte následující příkaz:
+1. Stáhněte soubor Průzkumník služby Storage. tar. gz.
+2. Instalace [modulu runtime .NET Core](https://docs.microsoft.com/dotnet/core/install/linux):
    ```bash
-   sudo apt-get install libgconf-2-4 libgnome-keyring0
+   wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
+     dpkg -i packages-microsoft-prod.deb; \
+     sudo apt-get update; \
+     sudo apt-get install -y apt-transport-https && \
+     sudo apt-get update && \
+     sudo apt-get install -y dotnet-runtime-2.1
    ```
 
 # <a name="ubuntu-1804"></a>[Ubuntu 18.04](#tab/1804)
 
-1. Stáhněte si Průzkumník služby Storage.
-2. Nainstalujte [modul runtime .NET Core](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu18-04/runtime-current).
-3. Spusťte následující příkaz:
+1. Stáhněte soubor Průzkumník služby Storage. tar. gz.
+2. Instalace [modulu runtime .NET Core](https://docs.microsoft.com/dotnet/core/install/linux):
    ```bash
-   sudo apt-get install libgconf-2-4 libgnome-keyring-common libgnome-keyring0
+   wget https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
+     dpkg -i packages-microsoft-prod.deb; \
+     sudo apt-get update; \
+     sudo apt-get install -y apt-transport-https && \
+     sudo apt-get update && \
+     sudo apt-get install -y dotnet-runtime-2.1
    ```
 
 # <a name="ubuntu-1604"></a>[Ubuntu 16.04](#tab/1604)
 
-1. Stáhněte si Průzkumník služby Storage.
-2. Nainstalujte [modul runtime .NET Core](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu16-04/runtime-current).
-3. Spusťte následující příkaz:
+1. Stáhněte soubor Průzkumník služby Storage. tar. gz.
+2. Instalace [modulu runtime .NET Core](https://docs.microsoft.com/dotnet/core/install/linux):
    ```bash
-   sudo apt install libgnome-keyring-dev
-   ```
-
-# <a name="ubuntu-1404"></a>[Ubuntu 14.04](#tab/1404)
-
-1. Stáhněte si Průzkumník služby Storage.
-2. Nainstalujte [modul runtime .NET Core](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu14-04/runtime-current).
-3. Spusťte následující příkaz:
-   ```bash
-   sudo apt install libgnome-keyring-dev
+   wget https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
+     dpkg -i packages-microsoft-prod.deb; \
+     sudo apt-get update; \
+     sudo apt-get install -y apt-transport-https && \
+     sudo apt-get update && \
+     sudo apt-get install -y dotnet-runtime-2.1
    ```
 ---
+
+Mnoho knihoven potřebných v Průzkumník služby Storage přináší předinstalované standardní instalace Ubuntu v kanonickém stavu. Pro vlastní prostředí můžou chybět některé z těchto knihoven. Pokud máte problémy se spouštěním Průzkumník služby Storage, doporučujeme, abyste se ujistili, že jsou v systému nainstalované následující balíčky:
+
+- iproute2
+- libasound2
+- libatm1
+- libgconf2-4
+- libnspr4
+- libnss3
+- libpulse0
+- libsecret-1-0
+- libx11-xcb1
+- libxss1
+- libxtables11
+- libxtst6
+- xdg-util
 
 ### <a name="patching-storage-explorer-for-newer-versions-of-net-core"></a>Oprava Průzkumník služby Storage pro novější verze .NET Core
 
 Pro Průzkumník služby Storage 1.7.0 nebo starší možná budete muset opravit verzi rozhraní .NET Core, kterou používá Průzkumník služby Storage:
 
 1. Stáhněte si 1.5.43 verze StreamJsonRpc [z NuGet](https://www.nuget.org/packages/StreamJsonRpc/1.5.43). Vyhledejte odkaz Stáhnout balíček na pravé straně stránky.
-2. Po stažení balíčku změňte jeho příponu z `.nupkg` na. `.zip`
+2. Po stažení balíčku změňte jeho příponu z `.nupkg` na `.zip` .
 3. Rozbalíte balíček.
 4. Otevřete `streamjsonrpc.1.5.43/lib/netstandard1.1/` složku.
 5. Zkopírujte `StreamJsonRpc.dll` do následujících umístění ve složce Průzkumník služby Storage:

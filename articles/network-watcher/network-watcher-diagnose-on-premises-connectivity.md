@@ -8,17 +8,17 @@ author: damendo
 ms.assetid: aeffbf3d-fd19-4d61-831d-a7114f7534f9
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 835b3a69e779b536961110b674ae67f4e8c13ce0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 632a1eb7b7ac53bd3d7df3f2722d6e53277c7926
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76845064"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738749"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>Diagnostika místního připojení prostřednictvím bran VPN
 
@@ -59,22 +59,22 @@ Tyto problémy je obtížné řešit a hlavní příčiny jsou často neintuitiv
 
 ## <a name="troubleshooting-using-azure-network-watcher"></a>Řešení potíží s používáním Azure Network Watcher
 
-Chcete-li diagnostikovat připojení, připojte se k Azure PowerShell `Start-AzNetworkWatcherResourceTroubleshooting` a spusťte rutinu. Podrobnosti o používání této rutiny najdete v tématu [řešení potíží s Virtual Network bránou a připojením – PowerShell](network-watcher-troubleshoot-manage-powershell.md). Dokončení této rutiny může trvat až několik minut.
+Chcete-li diagnostikovat připojení, připojte se k Azure PowerShell a spusťte `Start-AzNetworkWatcherResourceTroubleshooting` rutinu. Podrobnosti o používání této rutiny najdete v tématu [řešení potíží s Virtual Network bránou a připojením – PowerShell](network-watcher-troubleshoot-manage-powershell.md). Dokončení této rutiny může trvat až několik minut.
 
 Po dokončení rutiny můžete přejít do umístění úložiště určeného v rutině a získat podrobné informace o problémech a protokolech. Azure Network Watcher vytvoří složku zip, která obsahuje následující soubory protokolu:
 
 ![1][1]
 
-Otevřete soubor s názvem IKEErrors. txt a zobrazí se následující chyba s informacemi o potížích s nastavením místní služby IKE chybné konfigurace.
+Otevřete soubor s názvem IKEErrors.txt a zobrazí se následující chyba s informacemi o potížích s nastavením místní IKE na chybné konfiguraci.
 
 ```
 Error: On-premises device rejected Quick Mode settings. Check values.
      based on log : Peer sent NO_PROPOSAL_CHOSEN notify
 ```
 
-Můžete získat podrobné informace o chybě Scrubbed-wfpdiag. txt, jak je v tomto případě zmínka o tom, že `ERROR_IPSEC_IKE_POLICY_MATCH` vedoucí k připojení nepracuje správně.
+Můžete získat podrobné informace z Scrubbed-wfpdiag.txt o chybě, protože v tomto případě uvádí, že v takovém případě by to `ERROR_IPSEC_IKE_POLICY_MATCH` vedlo k nesprávnému fungování připojení.
 
-Další běžnou chybnou konfigurací je zadání nesprávných sdílených klíčů. Pokud v předchozím příkladu jste určili jiné sdílené klíče, zobrazí se v IKEErrors. txt následující chyba: `Error: Authentication failed. Check shared key`.
+Další běžnou chybnou konfigurací je zadání nesprávných sdílených klíčů. Pokud v předchozím příkladu jste určili jiné sdílené klíče, IKEErrors.txt zobrazí následující chybu: `Error: Authentication failed. Check shared key` .
 
 Funkce řešení potíží s Azure Network Watcher umožňuje diagnostikovat a řešit potíže s VPN Gateway a připojení s jednoduchou rutinou PowerShellu. V současné době podporujeme diagnostiku následujících podmínek a pracujeme na přidávání dalších podmínek.
 
@@ -106,7 +106,7 @@ Funkce řešení potíží s Azure Network Watcher umožňuje diagnostikovat a �
 | ConnectionIsMarkedDisconnected | Připojení je označeno jako odpojeno. |Ne|
 | ConnectionNotConfiguredOnGateway | V podkladové službě není nakonfigurované připojení. | Ano |
 | ConnectionMarkedStandby | Podkladová služba je označena jako pohotovostní.| Ano|
-| Authentication | Neshoda s předsdíleným klíčem. | Ano|
+| Ověřování | Neshoda s předsdíleným klíčem. | Ano|
 | PeerReachability | Partnerská brána není dostupná. | Ano|
 | IkePolicyMismatch | Partnerská brána má zásady IKE, které Azure nepodporuje. | Ano|
 | Chyba WfpParse | Při analýze protokolu WFP došlo k chybě. |Ano|

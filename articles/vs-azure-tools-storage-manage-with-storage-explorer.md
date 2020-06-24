@@ -8,12 +8,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/08/2019
 ms.author: cawa
-ms.openlocfilehash: 11166d5578b90fe6ec936389bcd173c4c26b4852
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: f588ed6d35f3f8882d546b78ff833d62f33ac0a4
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171238"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84975261"
 ---
 # <a name="get-started-with-storage-explorer"></a>Začínáme s Průzkumníkem služby Storage
 
@@ -31,7 +31,7 @@ Průzkumník služby Storage podporují následující verze Windows:
 
 * Windows 10 (doporučeno)
 * Windows 8
-* Windows 7
+* Windows 7
 
 Pro všechny verze Windows Průzkumník služby Storage vyžaduje minimálně .NET Framework 4.7.2.
 
@@ -55,9 +55,9 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 
 Průzkumník služby Storage je k dispozici také jako soubor *. tar. gz* download. Závislosti je nutné nainstalovat ručně. Následující distribuce podpory Linux *. tar. gz* instalace:
 
+* Ubuntu 20,04 x64
 * Ubuntu 18,04 x64
 * Ubuntu 16,04 x64
-* Ubuntu 14,04 x64
 
 Instalace *. tar. gz* může fungovat na dalších distribucích, ale oficiálně se podporují jenom ty, které jsou uvedené.
 

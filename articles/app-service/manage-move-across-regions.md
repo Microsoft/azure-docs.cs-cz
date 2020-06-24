@@ -4,18 +4,18 @@ description: Přečtěte si, jak přesunout App Service prostředky z jedné obl
 ms.topic: how-to
 ms.date: 02/27/2020
 ms.custom: subject-moving-resources
-ms.openlocfilehash: 7e68f12ce062831ad361c88345188aca61922c4c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c19c18e8d9980b75acd9790dba712fbb6b2a4b1d
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77925706"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945473"
 ---
 # <a name="move-an-app-service-app-to-another-region"></a>Přesunutí aplikace App Service do jiné oblasti
 
 Tento článek popisuje, jak přesunout prostředky App Service do jiné oblasti Azure. Prostředky můžete přesunout do jiné oblasti z řady důvodů. Například pro využití nové oblasti Azure, k nasazení funkcí nebo služeb dostupných pouze v konkrétních oblastech, pro splnění požadavků na požadavky na interní zásady a zásady správného řízení nebo v reakci na požadavky na plánování kapacity.
 
-Prostředky App Service jsou specifické pro oblast a nelze je přesouvat mezi oblastmi. Musíte vytvořit kopii stávajících prostředků App Service v cílové oblasti, přesunout obsah do nové aplikace. Pokud vaše zdrojová aplikace používá vlastní doménu, můžete ji po dokončení [migrovat do nové aplikace v cílové oblasti](manage-custom-dns-migrate-domain.md) .
+Prostředky App Service jsou specifické pro oblast a nelze je přesouvat mezi oblastmi. Musíte vytvořit kopii stávajících prostředků App Service v cílové oblasti a pak přesunout obsah do nové aplikace. Pokud vaše zdrojová aplikace používá vlastní doménu, můžete ji po dokončení [migrovat do nové aplikace v cílové oblasti](manage-custom-dns-migrate-domain.md) .
 
 Pro snazší kopírování vaší aplikace můžete [naklonovat jednotlivé App Service aplikace](app-service-web-app-cloning.md) do plánu App Service v jiné oblasti, ale mají [omezení](app-service-web-app-cloning.md#current-restrictions), zejména v případě, že nepodporují aplikace pro Linux.
 
@@ -46,7 +46,7 @@ Některé prostředky, jako jsou importované certifikáty nebo hybridní připo
 1. [Vytvořte zálohu zdrojové aplikace](manage-backup.md).
 1. [Vytvořte aplikaci v novém plánu App Service v cílové oblasti](app-service-plan-manage.md#create-an-app-service-plan).
 2. [Obnovení zálohy v cílové aplikaci](web-sites-restore.md)
-2. Pokud používáte vlastní doménu, `awverify.` [vytvořte ji bez přerušení v cílové aplikaci](manage-custom-dns-migrate-domain.md#bind-the-domain-name-preemptively) a [Povolte doménu v cílové aplikaci](manage-custom-dns-migrate-domain.md#enable-the-domain-for-your-app).
+2. Pokud používáte vlastní doménu, [vytvořte ji bez přerušení v cílové aplikaci](manage-custom-dns-migrate-domain.md#bind-the-domain-name-preemptively) `awverify.` a [Povolte doménu v cílové aplikaci](manage-custom-dns-migrate-domain.md#enable-the-domain-for-your-app).
 3. Nakonfigurujte vše ostatní v cílové aplikaci tak, aby byla stejná jako zdrojová aplikace a ověřte svou konfiguraci.
 4. Až budete připraveni, aby vlastní doména odkazovala na cílovou aplikaci, [přemapujte název domény](manage-custom-dns-migrate-domain.md#remap-the-active-dns-name).
 

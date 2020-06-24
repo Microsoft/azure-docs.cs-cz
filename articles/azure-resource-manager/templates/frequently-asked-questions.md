@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/30/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 380e65d3f3d659d8fa6f339a9dfd45263f711541
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: fb4bac00c4d971e7b056c18fe609d77b077dbcbb
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84325898"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85296861"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>Nejčastější dotazy týkající se šablon ARM
 
@@ -100,7 +100,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se šabl
 
 * **Budete nabízet Nástroj pro převod šablon JSON na nový jazyk šablony?**
 
-  Yes.
+  Ano.
 
 ## <a name="template-specs"></a>Specifikace šablony
 
@@ -128,7 +128,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se šabl
 
 * **Můžu pořád používat rozšíření vlastních skriptů a konfiguraci požadovaného stavu (DSC)?**
 
-  Tyto možnosti jsou stále k dispozici a nebyly změněny. Skripty nasazení jsou navržené tak, aby prováděly akce, které nesouvisí s hostem virtuálního počítače. Pokud potřebujete spustit skript v hostitelském operačním systému virtuálního počítače, bude lepší volbou přípona skriptu zákazníka nebo DSC. Skripty nasazení ale mají výhody, jako je například nastavení trvání časového limitu.
+  Tyto možnosti jsou stále k dispozici a nebyly změněny. Skripty nasazení jsou navržené tak, aby prováděly akce, které nesouvisí s hostem virtuálního počítače. Pokud potřebujete spustit skript v hostitelském operačním systému virtuálního počítače, bude lepší volbou rozšíření vlastních skriptů nebo DSC. Skripty nasazení ale mají výhody, jako je například nastavení trvání časového limitu.
 
 * **Jsou v Azure Government podporovány skripty nasazení?**
 
@@ -182,7 +182,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se šabl
 
 * **Můžu do Azure Pipelines integrovat šablony ARM?**
 
-  Yes. Vysvětlení používání šablon a kanálů najdete v tématu [kurz: průběžná integrace šablon Azure Resource Manager s Azure Pipelines](deployment-tutorial-pipeline.md) a [integrace šablon ARM s Azure Pipelines](add-template-to-azure-pipelines.md).
+  Ano. Vysvětlení používání šablon a kanálů najdete v tématu [kurz: průběžná integrace šablon Azure Resource Manager s Azure Pipelines](deployment-tutorial-pipeline.md) a [integrace šablon ARM s Azure Pipelines](add-template-to-azure-pipelines.md).
 
 * **Můžu k nasazení šablony použít akce GitHubu?**
 

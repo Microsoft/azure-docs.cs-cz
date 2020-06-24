@@ -1,19 +1,19 @@
 ---
 title: Přidat analyzátory jazyka do polí řetězců
 titleSuffix: Azure Cognitive Search
-description: Vícejazyčná analýza textu pro jiné než anglické dotazy a indexy v Azure Kognitivní hledání.
+description: Vícejazyčná lexikální analýza pro jiné než anglické dotazy a indexy v Azure Kognitivní hledání.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/05/2020
-ms.openlocfilehash: 3bb8de76fbf425abc1643633393e5f296b50b386
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 8f0909ee1cdce1e6180b91a30b2e9b281098c826
+ms.sourcegitcommit: 666303748238dfdf9da30d49d89b915af73b0468
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84555195"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85130547"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Přidání analyzátorů jazyka do polí řetězců v indexu Azure Kognitivní hledání
 
@@ -129,7 +129,7 @@ Další informace o vlastnostech indexu najdete v tématu [Create index &#40;Azu
 
  Všechny analyzátory s názvy popsanými pomocí **Lucene** jsou napájené z [analyzátorů jazyka Apache Lucene](https://lucene.apache.org/core/6_6_1/core/overview-summary.html ).
 
-## <a name="see-also"></a>Viz také:  
+## <a name="see-also"></a>Viz také  
 
 + [Vytvoření indexu &#40;Azure Kognitivní hledání REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  
 

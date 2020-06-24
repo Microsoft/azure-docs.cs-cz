@@ -4,12 +4,12 @@ description: Informace o tom, jaké porty a adresy se vyžadují k řízení odc
 services: container-service
 ms.topic: article
 ms.date: 03/10/2020
-ms.openlocfilehash: 724d270b5ea18dbbd30ff2587e8bea5ee126a9ec
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 88be26bb22cf539309ce67716101d7386d9d0513
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84264405"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945558"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Řízení přenosů dat pro uzly clusteru ve službě Azure Kubernetes (AKS)
 
@@ -20,7 +20,7 @@ Tento článek podrobně popisuje, které síťové porty a plně kvalifikované
 > [!IMPORTANT]
 > Tento dokument popisuje pouze to, jak uzamknout provoz opustí AKS podsíť. AKS nemá žádné požadavky na příchozí přenosy.  Blokování provozu interní podsítě pomocí skupin zabezpečení sítě (skupin zabezpečení sítě) a brány firewall se nepodporuje. K řízení a blokování provozu v rámci clusteru použijte [zásady sítě][network-policy].
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.66 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
 
@@ -173,7 +173,7 @@ Pro použití fondů uzlů na bázi Windows serveru jsou potřeba následující
 | FQDN                                    | Port      | Použití      |
 |-----------------------------------------|-----------|----------|
 | onegetcdn.azureedge.net, winlayers.blob.core.windows.net, winlayers.cdn.mscr.io, go.microsoft.com | HTTPS: 443 | Instalace binárních souborů souvisejících s Windows |
-| mp.microsoft.com, www <span></span> . msftconnecttest.com, ctldl.windowsupdate.com | HTTP: 80 | Instalace binárních souborů souvisejících s Windows |
+| *. mp.microsoft.com, www <span></span> . msftconnecttest.com, ctldl.windowsupdate.com | HTTP: 80 | Instalace binárních souborů souvisejících s Windows |
 | kms.core.windows.net | TCP: 1688 | Instalace binárních souborů souvisejících s Windows |
 
 ## <a name="next-steps"></a>Další kroky

@@ -10,17 +10,17 @@ ms.service: role-based-access-control
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/01/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 58e7a46633b7bbdd6074fa7e511569ff9e2aebdf
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: ac5c19866a164bbc927d23495e9d6ec9a1ef6bfe
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996596"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84790700"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Řešení potíží s Azure RBAC
 
@@ -51,19 +51,19 @@ $ras.Count
 
 ## <a name="problems-with-azure-role-assignments"></a>Problémy s přiřazením rolí Azure
 
-- Pokud nemůžete přidat přiřazení role v Azure Portal v **řízení přístupu (IAM)** , protože možnost **Přidat** > **přiřazení role přidání** je zakázaná nebo se zobrazí chyba oprávnění "klient s ID objektu nemá autorizaci k provedení akce", ověřte, že jste aktuálně přihlášení pomocí uživatele, kterému je přiřazena role s `Microsoft.Authorization/roleAssignments/write` oprávněním, jako je [vlastník](built-in-roles.md#owner) nebo [Správce přístupu uživatele](built-in-roles.md#user-access-administrator) v oboru, ke kterému se snažíte přiřadit roli.
+- Pokud nemůžete přidat přiřazení role v Azure Portal v **řízení přístupu (IAM)** , protože možnost **Přidat**  >  **přiřazení role přidání** je zakázaná nebo se zobrazí chyba oprávnění "klient s ID objektu nemá autorizaci k provedení akce", ověřte, že jste aktuálně přihlášení pomocí uživatele, kterému je přiřazena role s oprávněním, jako je `Microsoft.Authorization/roleAssignments/write` [vlastník](built-in-roles.md#owner) nebo [Správce přístupu uživatele](built-in-roles.md#user-access-administrator) v oboru, ke kterému se snažíte přiřadit roli.
 
 ## <a name="problems-with-custom-roles"></a>Potíže s vlastními rolemi
 
 - Pokud potřebujete postup, jak vytvořit vlastní roli, přečtěte si kurzy k vlastním rolím pomocí [Azure Portal](custom-roles-portal.md) (aktuálně ve verzi Preview), [Azure PowerShell](tutorial-custom-role-powershell.md)nebo rozhraní příkazového [řádku Azure CLI](tutorial-custom-role-cli.md).
-- Pokud nemůžete aktualizovat existující vlastní roli, ověřte, že jste aktuálně přihlášeni jako uživatel, kterému je přiřazena role s `Microsoft.Authorization/roleDefinition/write` oprávněním, jako je [vlastník](built-in-roles.md#owner) nebo [Správce přístupu uživatelů](built-in-roles.md#user-access-administrator).
+- Pokud nemůžete aktualizovat existující vlastní roli, ověřte, že jste aktuálně přihlášeni jako uživatel, kterému je přiřazena role s oprávněním, jako je `Microsoft.Authorization/roleDefinition/write` [vlastník](built-in-roles.md#owner) nebo [Správce přístupu uživatelů](built-in-roles.md#user-access-administrator).
 - Pokud se vám nedaří odstranit vlastní roli a zobrazuje se chybová zpráva Na roli odkazují stávající přiřazení rolí (kód: RoleDefinitionHasAssignments), znamená to, že vlastní roli stále používají některá přiřazení rolí. Odeberte tato přiřazení rolí a zkuste vlastní roli odstranit znovu.
 - Pokud se při pokusu o vytvoření nové vlastní role zobrazí chybová zpráva Došlo k překročení limitu definic rolí. Při pokusu o vytvoření nové vlastní role se nedají vytvářet žádné další definice rolí (kód: RoleDefinitionLimitExceeded). Odstraňte všechny vlastní role, které se nepoužívají. Azure podporuje v adresáři až **5000** vlastních rolí. (Pro Azure Německo a Azure Čína 21Vianet je limit 2000 vlastních rolí.)
 - Pokud se zobrazí chybová zpráva podobná "klient má oprávnění k provedení akce" Microsoft. Authorization/roleDefinitions/Write "v oboru"/Subscriptions/{SubscriptionId} ", ale propojený odběr nebyl nalezen" při pokusu o aktualizaci vlastní role ověřte, zda byly v adresáři odstraněny nejméně jeden přizpůsobený [Rozsah](role-definitions.md#assignablescopes) . Pokud se obor odstranil, vytvořte lístek podpory, protože v současné době není k dispozici žádné samoobslužné řešení.
 
 ## <a name="custom-roles-and-management-groups"></a>Vlastní role a skupiny pro správu
 
-- V `AssignableScopes` rámci vlastní role můžete definovat jenom jednu skupinu pro správu. Přidání skupiny pro správu do `AssignableScopes` je aktuálně ve verzi Preview.
+- V rámci vlastní role můžete definovat jenom jednu skupinu pro správu `AssignableScopes` . Přidání skupiny pro správu do `AssignableScopes` je aktuálně ve verzi Preview.
 - Vlastní role se `DataActions` nedají přiřadit v oboru skupiny pro správu.
 - Azure Resource Manager neověřuje existenci skupiny pro správu v oboru přiřazení definice role.
 - Další informace o vlastních rolích a skupinách pro správu najdete v tématu [uspořádání prostředků pomocí skupin pro správu Azure](../governance/management-groups/overview.md#custom-rbac-role-definition-and-assignment).
@@ -112,7 +112,7 @@ ObjectType         : Unknown
 CanDelegate        : False
 ```
 
-Podobně platí, že pokud toto přiřazení role vypíšete pomocí Azure CLI, může se `principalName`zobrazit prázdná. Například [AZ role Assignment list](/cli/azure/role/assignment#az-role-assignment-list) vrátí přiřazení role, které je podobné následujícímu výstupu:
+Podobně platí, že pokud toto přiřazení role vypíšete pomocí Azure CLI, může se zobrazit prázdná `principalName` . Například [AZ role Assignment list](/cli/azure/role/assignment#az-role-assignment-list) vrátí přiřazení role, které je podobné následujícímu výstupu:
 
 ```
 {
@@ -153,7 +153,7 @@ PS C:\> Remove-AzRoleAssignment -ObjectId 33333333-3333-3333-3333-333333333333 -
 
 Azure Resource Manager někdy ukládá do mezipaměti konfigurace a data pro zlepšení výkonu. Když přidáváte nebo odebíráte přiřazení rolí, může trvat až 30 minut, než se změny projeví. Pokud používáte Azure Portal, Azure PowerShell nebo rozhraní příkazového řádku Azure, můžete vynutit aktualizaci změn přiřazení role odhlášením a přihlášením. Pokud provádíte změny přiřazení rolí pomocí REST API volání, můžete vynutit aktualizaci pomocí aktualizace přístupového tokenu.
 
-Pokud přidáváte nebo odebíráte přiřazení role v oboru skupiny pro správu a role má `DataActions`, nemusí být přístup k rovině dat aktualizován po dobu několika hodin. To platí jenom pro rozsah skupiny pro správu a rovinu dat.
+Pokud přidáváte nebo odebíráte přiřazení role v oboru skupiny pro správu a role má `DataActions` , nemusí být přístup k rovině dat aktualizován po dobu několika hodin. To platí jenom pro rozsah skupiny pro správu a rovinu dat.
 
 ## <a name="web-app-features-that-require-write-access"></a>Funkce webové aplikace, které vyžadují přístup pro zápis
 

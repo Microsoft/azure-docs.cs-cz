@@ -4,19 +4,19 @@ description: Přečtěte si, jak provést řízené ověřování hybridního p�
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/28/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f43db805ccbb7d4e546c51bbe39350f4bbba2efb
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 66b216e5e511d2d80378ee7e2d124dccbc7abcb7
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "80049980"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85252708"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>Řízené ověřování hybridního připojení k Azure AD
 
@@ -42,7 +42,7 @@ Chcete-li upravit objekty spojovacího bodu služby ve službě AD, použijte Ed
 
 1. Spusťte aplikaci **ADSI Edit** Desktop z nástroje a pracovní stanice pro správu nebo řadič domény jako správce podnikové sítě.
 1. Připojte se k **názvovému kontextu konfigurace** vaší domény.
-1. Přejděte na **CN = Configuration, DC = contoso, DC = com** > **CN = Services** > **CN = Device Registration Configuration** .
+1. Přejděte na **CN = Configuration, DC = contoso, DC = com**  >  **CN = Services**  >  **CN = Device Registration Configuration** .
 1. Klikněte pravým tlačítkem na listový objekt **CN = 62a0ff2e-97B9-4513-943F-0d221bd30080** a vyberte **vlastnosti** .
    1. V okně **Editor atributů** vyberte **klíčová slova** a klikněte na **Upravit** .
    1. Vyberte hodnoty **azureADId** a **azureADName** (jeden po druhém) a klikněte na **Odebrat** .
@@ -55,24 +55,24 @@ Pomocí následujícího příkladu vytvořte objekt Zásady skupiny (GPO), kter
 
 1. Otevřete konzolu pro správu Zásady skupiny a vytvořte nový objekt Zásady skupiny ve vaší doméně.
    1. Zadejte název nově vytvořeného objektu zásad skupiny (například ClientSideSCP).
-1. Upravte objekt zásad skupiny a vyhledejte následující cestu:**Předvolby** >  **Konfigurace** > počítače Windows**registr**  > **nastavení systému Windows**
-1. Klikněte pravým tlačítkem na registr a vyberte možnost **Nová** > **položka registru** .
+1. Upravte objekt zásad skupiny a vyhledejte následující cestu: **Předvolby konfigurace počítače**  >  **Preferences**  >  **Windows registr nastavení systému Windows**  >  **Registry**
+1. Klikněte pravým tlačítkem na registr a vyberte možnost **Nová**  >  **položka registru** .
    1. Na kartě **Obecné** nakonfigurujte následující
       1. Akce: **aktualizace**
       1. Podregistr: **HKEY_LOCAL_MACHINE**
       1. Cesta ke klíči: **SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ\AAD**
       1. Název hodnoty: **TenantId**
       1. Typ hodnoty: **REG_SZ**
-      1. Value data: identifikátor GUID nebo **ID adresáře** vaší instance služby Azure AD (Tato hodnota se nachází v **Azure Portal** > **Azure Active Directory** > **vlastností** > **ID adresáře**)
+      1. Value data: identifikátor GUID nebo **ID adresáře** vaší instance služby Azure AD (Tato hodnota se nachází v **Azure Portal**  >  **Azure Active Directory**  >  **vlastností**  >  **ID adresáře**)
    1. Klikněte na tlačítko **OK**.
-1. Klikněte pravým tlačítkem na registr a vyberte možnost **Nová** > **položka registru** .
+1. Klikněte pravým tlačítkem na registr a vyberte možnost **Nová**  >  **položka registru** .
    1. Na kartě **Obecné** nakonfigurujte následující
       1. Akce: **aktualizace**
       1. Podregistr: **HKEY_LOCAL_MACHINE**
       1. Cesta ke klíči: **SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ\AAD**
       1. Název hodnoty: **tenant**
       1. Typ hodnoty: **REG_SZ**
-      1. Údaj hodnoty: ověřený **název domény** , pokud používáte federované prostředí, například AD FS. Pokud například používáte spravované prostředí, `contoso.onmicrosoft.com` váš ověřený **název domény** nebo název domény onmicrosoft.com.
+      1. Údaj hodnoty: ověřený **název domény** , pokud používáte federované prostředí, například AD FS. Pokud například používáte spravované prostředí, váš ověřený **název domény** nebo název domény onmicrosoft.com. `contoso.onmicrosoft.com`
    1. Klikněte na tlačítko **OK**.
 1. Zavřít editor nově vytvořeného objektu zásad skupiny
 1. Propojení nově vytvořeného objektu zásad skupiny s požadovanými organizačními jednotkami, které patří počítačům připojeným k doméně, které patří k vašemu řízenému naplnění

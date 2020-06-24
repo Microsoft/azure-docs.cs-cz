@@ -6,17 +6,17 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: damendo
-ms.openlocfilehash: 47d927f9f17580767526ec6683e819256fc5e994
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ffbf37730d5064edcd067c3383fe18c342a2b053
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77619917"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738494"
 ---
 # <a name="read-nsg-flow-logs"></a>Čtení protokolů toku NSG
 
@@ -96,7 +96,7 @@ $CloudBlockBlob = Get-NSGFlowLogCloudBlockBlob -subscriptionId "yourSubscription
 $blockList = Get-NSGFlowLogBlockList -CloudBlockBlob $CloudBlockBlob
 ```
 
-`$blockList` Proměnná vrátí seznam bloků v objektu BLOB. Každý objekt blob bloku obsahuje minimálně dva bloky.  První blok má délku `12` bajtů, tento blok obsahuje levou hranatou závorku protokolu JSON. Druhý blok je uzavírací závorka a má délku `2` bajtů.  Jak vidíte, následující příklad protokolu obsahuje sedm záznamů, přičemž každá z nich je jednotlivá položka. Všechny nové položky v protokolu jsou přidány do konce přímo před konečným blokem.
+`$blockList`Proměnná vrátí seznam bloků v objektu BLOB. Každý objekt blob bloku obsahuje minimálně dva bloky.  První blok má délku `12` bajtů, tento blok obsahuje levou hranatou závorku protokolu JSON. Druhý blok je uzavírací závorka a má délku `2` bajtů.  Jak vidíte, následující příklad protokolu obsahuje sedm záznamů, přičemž každá z nich je jednotlivá položka. Všechny nové položky v protokolu jsou přidány do konce přímo před konečným blokem.
 
 ```
 Name                                         Length Committed
@@ -114,7 +114,7 @@ ZjAyZTliYWE3OTI1YWZmYjFmMWI0MjJhNzMxZTI4MDM=      2      True
 
 ## <a name="read-the-block-blob"></a>Čtení objektu blob bloku
 
-Dál je potřeba načíst `$blocklist` proměnnou, aby se data načetla. V tomto příkladu procházíme seznamu blokovaných, přečetli jsme z každého bloku bajty a vyplníte je v poli. K načtení dat použijte metodu [DownloadRangeToByteArray](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadrangetobytearray) .
+Dál je potřeba `$blocklist` načíst proměnnou, aby se data načetla. V tomto příkladu procházíme seznamu blokovaných, přečetli jsme z každého bloku bajty a vyplníte je v poli. K načtení dat použijte metodu [DownloadRangeToByteArray](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadrangetobytearray) .
 
 ```powershell
 function Get-NSGFlowLogReadBlock  {
@@ -158,7 +158,7 @@ function Get-NSGFlowLogReadBlock  {
 $valuearray = Get-NSGFlowLogReadBlock -blockList $blockList -CloudBlockBlob $CloudBlockBlob
 ```
 
-Nyní `$valuearray` pole obsahuje hodnotu řetězce každého bloku. Chcete-li ověřit položku, Získejte druhý k poslední hodnotě z pole spuštěním `$valuearray[$valuearray.Length-2]`. Poslední hodnotu nechcete, protože se jedná o pravou závorku.
+Nyní `$valuearray` pole obsahuje hodnotu řetězce každého bloku. Chcete-li ověřit položku, Získejte druhý k poslední hodnotě z pole spuštěním `$valuearray[$valuearray.Length-2]` . Poslední hodnotu nechcete, protože se jedná o pravou závorku.
 
 Výsledky této hodnoty jsou uvedeny v následujícím příkladu:
 

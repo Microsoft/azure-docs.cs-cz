@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 16aac5c765c36c49919685ee58e8034786ddf1ae
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 208f0d73b4c8bb11adc9c73796ebc6a622f5ed50
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83797361"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118164"
 ---
 # <a name="introduction-to-the-azure-cosmos-db-etcd-api-preview"></a>Úvod do rozhraní API pro Azure Cosmos DB etcd (Preview)
 
@@ -31,7 +31,7 @@ Azure Cosmos DB implementuje protokol etcd verze 3 a umožňuje serverům rozhra
 
 Následující diagram znázorňuje komponenty clusteru Kubernetes. Server API na hlavním serveru používá Azure Cosmos DB rozhraní API etcd namísto lokálně nainstalovaných etcd. 
 
-![Azure Cosmos DB implementace etcd drátového protokolu](./media/etcd-api-introduction/etcd-api-wire-protocol.png)
+:::image type="content" source="./media/etcd-api-introduction/etcd-api-wire-protocol.png" alt-text="Azure Cosmos DB implementace etcd drátového protokolu" border="false":::
 
 ## <a name="key-benefits"></a>Klíčové výhody
 

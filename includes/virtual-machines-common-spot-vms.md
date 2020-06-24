@@ -4,15 +4,15 @@ description: zahrnout soubor
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 10/23/2019
+ms.date: 06/15/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: e7dbac1f4fad940b817befa3a45447cf7367c28c
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 64433f3233e249059c1c2d180a03e0a221924f15
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84317442"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84793683"
 ---
 Použití přímých virtuálních počítačů vám umožní využít výhod naší nevyužité kapacity s významnou úsporou nákladů. V jakémkoli okamžiku, kdy Azure potřebuje kapacitu zpátky, vyřadí infrastruktura Azure virtuální počítače na místě. Proto jsou virtuální počítače Skvělé pro úlohy, které mohou zpracovávat přerušení, jako jsou úlohy dávkového zpracování, vývojové a testovací prostředí, velké výpočetní úlohy a další.
 
@@ -43,9 +43,22 @@ Následující velikosti virtuálních počítačů nejsou podporované pro virt
  - Řady B-Series
  - Propagační verze libovolné velikosti (například Dv2, NV, NC, H – propagační velikosti)
 
-Virtuální počítače na místě nemůžou používat dočasné disky s operačním systémem.
-
 Virtuální počítače s přímým použitím se dají nasadit do jakékoli oblasti, kromě Microsoft Azure Čína 21Vianet.
+
+Některé kanály předplatného se nepodporují:
+
+<a name="channel"></a>
+
+| Kanály Azure               | Dostupnost virtuálních počítačů Azure       |
+|------------------------------|-----------------------------------|
+| Smlouva Enterprise         | Ano                               |
+| Pay As You Go                | Ano                               |
+| Poskytovatel cloudových služeb (CSP) | [Obraťte se na svého partnera.](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
+| Výhody                     | Není k dispozici                     |
+| Financovan                    | Není k dispozici                     |
+| Bezplatná zkušební verze                   | Není k dispozici                     |
+
+
 
 ## <a name="pricing"></a>Ceny
 
@@ -75,23 +88,6 @@ S proměnnými cenami máte možnost nastavit maximální cenu v USD (USD), kter
 **Otázka:** Můžu požádat o další kvótu na místě?
 
 **A:** Ano, žádost budete moci odeslat, abyste zvýšili kvótu pro virtuální počítače pomocí [procesu žádosti o standardní kvótu](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests).
-
-
-**Otázka:** Jaké kanály podporují přímé virtuální počítače?
-
-**A:** V následující tabulce najdete informace o dostupnosti virtuálních počítačů.
-
-<a name="channel"></a>
-
-| Kanály Azure               | Dostupnost virtuálních počítačů Azure       |
-|------------------------------|-----------------------------------|
-| Smlouva Enterprise         | Ano                               |
-| Pay As You Go                | Ano                               |
-| Poskytovatel cloudových služeb (CSP) | [Obraťte se na svého partnera.](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
-| Smlouva se zákazníkem Microsoftu | Ano                               |
-| Výhody                     | Není k dispozici                     |
-| Financovan                    | Ano                               |
-| Bezplatná zkušební verze                   | Není k dispozici                     |
 
 
 **Otázka:** Kde můžu publikovat otázky?

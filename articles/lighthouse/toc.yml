@@ -69,6 +69,8 @@
         - name: 'Nasazení zásady, která se dá napravit'
           displayName: 'deployIfNotExists, modify, managed identities, managed identity'
           href: ./how-to/deploy-policy-remediation.md
+    - name: Integrace Azure Sentinelu
+      href: ./how-to/manage-sentinel-workspaces.md
     - name: Akce zákazníka
       items:
         - name: Zobrazení a správa poskytovatelů služeb

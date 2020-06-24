@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 07/08/2019
 ms.author: cshoe
 ms.openlocfilehash: 1688fe848beb62731391bf4399a0dabec5265320
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277515"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84697336"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Registrovat rozšíření vazby Azure Functions
 
@@ -33,7 +33,7 @@ Následující tabulka uvádí, kdy a jak registrovat vazby.
 
 ## <a name="extension-bundles-for-local-development"></a><a name="extension-bundles"></a>Sady rozšíření pro místní vývoj
 
-Sady rozšíření jsou technologie nasazení, která umožňuje přidat do aplikace Function App kompatibilní sadu funkcí pro vazby. Předdefinovaná sada rozšíření se přidá při sestavování aplikace. Balíčky rozšíření definované v sadě prostředků jsou vzájemně kompatibilní, což pomáhá vyhnout se konfliktům mezi balíčky. V souboru Host. JSON aplikace se povolují balíčky rozšíření.  
+Sady rozšíření jsou technologie nasazení, která umožňuje přidat do aplikace Function App kompatibilní sadu funkcí pro vazby. Předdefinovaná sada rozšíření se přidá při sestavování aplikace. Balíčky rozšíření definované v sadě prostředků jsou vzájemně kompatibilní, což pomáhá vyhnout se konfliktům mezi balíčky. Balíčky rozšíření povolíte v host.jsaplikace v souboru.  
 
 Můžete použít sady rozšíření s verzí 2. x a novějšími verzemi modulu runtime Functions. Při vývoji místně se ujistěte, že používáte nejnovější verzi [Azure Functions Core Tools](functions-run-local.md#v2).
 
@@ -41,13 +41,13 @@ Balíčky rozšíření můžete použít pro místní vývoj pomocí Azure Func
 
 Pokud nepoužíváte sady rozšíření, musíte před instalací rozšíření vazby nainstalovat na svůj místní počítač sadu SDK .NET Core 2. x. Sady rozšíření odstraňují tento požadavek pro místní vývoj. 
 
-Chcete-li použít sady rozšíření, aktualizujte soubor *Host. JSON* tak, aby obsahoval následující `extensionBundle`položku pro:
+Pokud chcete použít sady rozšíření, aktualizujte *host.jsv* souboru tak, aby obsahovaly následující položku pro `extensionBundle` :
  
 [!INCLUDE [functions-extension-bundles-json](../../includes/functions-extension-bundles-json.md)]
 
 <a name="local-csharp"></a>
 
-## <a name="c-class-library-with-visual-studio"></a><a name="vs"></a>Knihovna\# tříd C se sadou Visual Studio
+## <a name="c-class-library-with-visual-studio"></a><a name="vs"></a>\#Knihovna tříd C se sadou Visual Studio
 
 V **aplikaci Visual Studio**můžete balíčky nainstalovat z konzoly Správce balíčků pomocí příkazu [Install-Package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) , jak je znázorněno v následujícím příkladu:
 
@@ -57,7 +57,7 @@ Install-Package Microsoft.Azure.WebJobs.Extensions.ServiceBus -Version <TARGET_V
 
 Název balíčku, který se používá pro danou vazbu, je uveden v referenčním článku pro tuto vazbu. Příklad naleznete v [části Packages tématu Service Bus reference Binding](functions-bindings-service-bus.md#functions-1x).
 
-V `<TARGET_VERSION>` příkladu nahraďte konkrétní verzí balíčku, třeba `3.0.0-beta5`. Platné verze jsou uvedeny na jednotlivých stránkách balíčku na adrese [NuGet.org](https://nuget.org). Hlavní verze, které odpovídají funkcím runtime 1. x nebo 2. x, jsou uvedeny v referenčním článku pro vazbu.
+`<TARGET_VERSION>`V příkladu nahraďte konkrétní verzí balíčku, třeba `3.0.0-beta5` . Platné verze jsou uvedeny na jednotlivých stránkách balíčku na adrese [NuGet.org](https://nuget.org). Hlavní verze, které odpovídají funkcím runtime 1. x nebo 2. x, jsou uvedeny v referenčním článku pro vazbu.
 
 Pokud používáte `Install-Package` pro odkazování na vazbu, nemusíte používat [sady rozšíření](#extension-bundles). Tento přístup je specifický pro knihovny tříd sestavené v aplikaci Visual Studio.
 
@@ -73,7 +73,7 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.<BINDING_TYPE_NAME> --vers
 
 Nahraďte `<BINDING_TYPE_NAME>` názvem balíčku, který obsahuje vazbu, kterou potřebujete. Požadovaný odkaz na vazbu můžete najít v [seznamu podporovaných vazeb](./functions-triggers-bindings.md#supported-bindings).
 
-V `<TARGET_VERSION>` příkladu nahraďte konkrétní verzí balíčku, třeba `3.0.0-beta5`. Platné verze jsou uvedeny na jednotlivých stránkách balíčku na adrese [NuGet.org](https://nuget.org). Hlavní verze, které odpovídají funkcím runtime 1. x nebo 2. x, jsou uvedeny v referenčním článku pro vazbu.
+`<TARGET_VERSION>`V příkladu nahraďte konkrétní verzí balíčku, třeba `3.0.0-beta5` . Platné verze jsou uvedeny na jednotlivých stránkách balíčku na adrese [NuGet.org](https://nuget.org). Hlavní verze, které odpovídají funkcím runtime 1. x nebo 2. x, jsou uvedeny v referenčním článku pro vazbu.
 
 ## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]

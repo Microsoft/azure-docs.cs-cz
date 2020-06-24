@@ -1,17 +1,17 @@
 ---
 title: Vytváření výstrah metrik pro protokoly v Azure Monitor
 description: Kurz týkající se vytváření upozornění na metriky téměř v reálném čase u oblíbených dat Log Analytics.
-author: yanivlavi
-ms.author: yalavi
+author: harelbr
+ms.author: harelbr
 ms.topic: conceptual
-ms.date: 09/17/2018
+ms.date: 06/17/2020
 ms.subservice: alerts
-ms.openlocfilehash: 6b21f228858954292e7a3bc5561d5e86fcfaaf41
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4c9998488013ce89b17a30a6c3948a02407d06bb
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80055185"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945320"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Vytváření upozornění na metriky pro protokoly v Azure Monitor
 
@@ -19,7 +19,7 @@ ms.locfileid: "80055185"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Azure Monitor podporuje [Typ výstrahy metriky](../../azure-monitor/platform/alerts-metric-near-real-time.md) , který má oproti [klasickým výstrahám](../../azure-monitor/platform/alerts-classic-portal.md)výhody. K dispozici jsou metriky pro [velký seznam služeb Azure](../../azure-monitor/platform/metrics-supported.md). Tento článek vysvětluje použití podmnožiny (tj.) pro prostředek – `Microsoft.OperationalInsights/workspaces`.
+Azure Monitor podporuje [Typ výstrahy metriky](../../azure-monitor/platform/alerts-metric-near-real-time.md) , který má oproti [klasickým výstrahám](../../azure-monitor/platform/alerts-classic-portal.md)výhody. K dispozici jsou metriky pro [velký seznam služeb Azure](../../azure-monitor/platform/metrics-supported.md). Tento článek vysvětluje použití podmnožiny (tj.) pro prostředek – `Microsoft.OperationalInsights/workspaces` .
 
 Výstrahy metriky můžete použít u oblíbených protokolů Log Analytics extrahovaných jako metriky v rámci metriky od protokolů, včetně prostředků v Azure nebo v místním prostředí. Podporovaná řešení Log Analytics jsou uvedená níže:
 
@@ -163,7 +163,7 @@ Aby bylo možné dosáhnout stejné hodnoty, může se použít vzor Azure Resou
             "type": "string",
             "minLength": 1,
             "metadata": {
-                "description": "Full Resource ID of the resource emitting the metric that will be used for the comparison. For example /subscriptions/00000000-0000-0000-0000-0000-00000000/resourceGroups/ResourceGroupName/providers/Microsoft.compute/virtualMachines/VM_xyz"
+                "description": "Full Resource ID of the resource emitting the metric that will be used for the comparison. For example: /subscriptions/00000000-0000-0000-0000-0000-00000000/resourceGroups/ResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/workspaceName"
             }
         },
         "metricName": {
@@ -299,7 +299,7 @@ Aby bylo možné dosáhnout stejné hodnoty, může se použít vzor Azure Resou
 }
 ```
 
-Řekněme, že výše uvedený kód JSON je uložený jako metricfromLogsAlertStatic. JSON – potom ho můžete spojit s parametrem JSON pro vytvoření založeného na šablonách prostředků. Ukázkový parametr soubor JSON je uveden níže:
+Řekněme, že výše uvedený kód JSON je uložený jako metricfromLogsAlertStatic.jsna a pak může být spojený s parametrem souboru JSON pro vytvoření založeného na šablonách prostředků. Ukázkový parametr soubor JSON je uveden níže:
 
 ```json
 {
@@ -355,7 +355,7 @@ Aby bylo možné dosáhnout stejné hodnoty, může se použít vzor Azure Resou
 }
 ```
 
-Za předpokladu, že výše uvedený soubor parametrů je uložen jako metricfromLogsAlertStatic. Parameters. JSON; pak může jeden vytvořit upozornění metriky pro protokoly pomocí [šablony prostředků pro vytvoření v Azure Portal](../../azure-resource-manager/templates/deploy-portal.md).
+Za předpokladu, že se výše uvedený soubor parametrů uloží jako metricfromLogsAlertStatic.parameters.js. pak může jeden vytvořit upozornění metriky pro protokoly pomocí [šablony prostředků pro vytvoření v Azure Portal](../../azure-resource-manager/templates/deploy-portal.md).
 
 Případně může použít i příkaz Azure PowerShell níže:
 
@@ -452,7 +452,7 @@ Aby bylo možné dosáhnout stejného počtu, může použít následující ša
             "type": "string",
             "minLength": 1,
             "metadata": {
-                "description": "Full Resource ID of the resource emitting the metric that will be used for the comparison. For example /subscriptions/00000000-0000-0000-0000-0000-00000000/resourceGroups/ResourceGroupName/providers/Microsoft.compute/virtualMachines/VM_xyz"
+                "description": "Full Resource ID of the resource emitting the metric that will be used for the comparison. For example: /subscriptions/00000000-0000-0000-0000-0000-00000000/resourceGroups/ResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/workspaceName"
             }
         },
         "metricName": {
@@ -609,7 +609,7 @@ Aby bylo možné dosáhnout stejného počtu, může použít následující ša
 }
 ```
 
-Řekněme, že výše uvedený kód JSON je uložený jako metricfromLogsAlertDynamic. JSON – potom ho můžete spojit s parametrem JSON pro vytvoření založeného na šablonách prostředků. Ukázkový parametr soubor JSON je uveden níže:
+Řekněme, že výše uvedený kód JSON je uložený jako metricfromLogsAlertDynamic.jsna a pak může být spojený s parametrem souboru JSON pro vytvoření založeného na šablonách prostředků. Ukázkový parametr soubor JSON je uveden níže:
 
 ```json
 {
@@ -671,7 +671,7 @@ Aby bylo možné dosáhnout stejného počtu, může použít následující ša
 }
 ```
 
-Za předpokladu, že výše uvedený soubor parametrů je uložen jako metricfromLogsAlertDynamic. Parameters. JSON; pak může jeden vytvořit upozornění metriky pro protokoly pomocí [šablony prostředků pro vytvoření v Azure Portal](../../azure-resource-manager/templates/deploy-portal.md).
+Za předpokladu, že se výše uvedený soubor parametrů uloží jako metricfromLogsAlertDynamic.parameters.js. pak může jeden vytvořit upozornění metriky pro protokoly pomocí [šablony prostředků pro vytvoření v Azure Portal](../../azure-resource-manager/templates/deploy-portal.md).
 
 Případně může použít i příkaz Azure PowerShell níže:
 

@@ -8,28 +8,30 @@ ms.topic: include
 ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 0dd6618bdee8e6810d414d4b04b16a1e0a9c90ed
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e6c4b07d01a4992e22107cb7d524646f439c37c6
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67175483"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84905863"
 ---
-Můžete přistupovat k protokolům konzoly generovaným zevnitř kontejneru. Nejprve zapněte protokolování kontejneru spuštěním následujícího příkazu v Cloud Shell:
+Chcete-li získat přístup k protokolům konzoly generovaným zevnitř kódu aplikace v App Service, zapněte protokolování diagnostiky spuštěním následujícího příkazu v [Cloud Shell](https://shell.azure.com):
 
 ```azurecli-interactive
-az webapp log config --name <app-name> --resource-group myResourceGroup --docker-container-logging filesystem
+az webapp log config --resource-group <resource-group-name> --name <app-name> --application-logging true --level Verbose
 ```
 
-Jakmile je protokolování kontejneru zapnuté, spusťte následující příkaz, který zobrazí datový proud protokolu:
+Možné hodnoty pro `--level` jsou: `Error` , `Warning` , a `Info` `Verbose` . Každá další úroveň zahrnuje předchozí úroveň. Například: `Error` obsahuje pouze chybové zprávy a `Verbose` obsahuje všechny zprávy.
+
+Jakmile bude zapnuté diagnostické protokolování, spusťte následující příkaz, který zobrazí datový proud protokolu:
 
 ```azurecli-interactive
-az webapp log tail --name <app-name> --resource-group myResourceGroup
+az webapp log tail --resource-group <resource-group-name> --name <app-name>
 ```
 
 Pokud nevidíte protokoly konzoly okamžitě, podívejte se znovu za 30 sekund.
 
 > [!NOTE]
-> Soubory protokolu můžete také zkontrolovat v prohlížeči na adrese `https://<app-name>.scm.azurewebsites.net/api/logs/docker`.
+> Soubory protokolu můžete také zkontrolovat v prohlížeči na adrese `https://<app-name>.scm.azurewebsites.net/api/logs/docker` .
 
-Pokud chcete streamování protokolů kdykoli zastavit, zadejte `Ctrl` + `C`.
+Pokud chcete streamování protokolů kdykoli zastavit, zadejte `Ctrl` + `C` .
