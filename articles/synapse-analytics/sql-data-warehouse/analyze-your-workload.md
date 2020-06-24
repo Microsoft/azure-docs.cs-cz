@@ -6,21 +6,21 @@ author: ronortloff
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 6a38fe65b4aedf4f594531f5e9cd8cf9b5dfaac7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c547263be8c61d75491d1517b58c03b6365ef929
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80631239"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85208395"
 ---
 # <a name="analyze-your-workload-in-azure-synapse-analytics"></a>Analýza úloh v Azure synapse Analytics
 
-Techniky analýzy úloh SQL synapse ve službě Azure synapse Analytics.
+Techniky analýzy úloh SQL synapse ve službě Azure synapse Analytics. 
 
 ## <a name="resource-classes"></a>Třídy prostředků
 
@@ -41,7 +41,7 @@ FROM    sys.dm_pdw_exec_requests r
 ;
 ```
 
-Role správy úloh je možné zobrazit pomocí `sys.database_principals`.
+Role správy úloh je možné zobrazit pomocí `sys.database_principals` .
 
 ```sql
 SELECT  ro.[name]           AS [db_role_name]
@@ -70,7 +70,7 @@ Synapse SQL má následující typy čekání:
 * **DmsConcurrencyResourceType**: čeká v důsledku operací přesunu dat.
 * **BackupConcurrencyResourceType**: Tento počkat indikuje, že se databáze zálohuje. Maximální hodnota pro tento typ prostředku je 1. Pokud je v jednom okamžiku požadováno více záloh, fronta ostatní. Obecně doporučujeme minimální dobu mezi po sobě jdoucí snímky po dobu 10 minut.
 
-`sys.dm_pdw_waits` DMV lze použít k zobrazení prostředků, na které požadavek čeká.
+`sys.dm_pdw_waits`DMV lze použít k zobrazení prostředků, na které požadavek čeká.
 
 ```sql
 SELECT  w.[wait_id]
@@ -107,7 +107,7 @@ WHERE    w.[session_id] <> SESSION_ID()
 ;
 ```
 
-`sys.dm_pdw_resource_waits` DMV zobrazuje informace o čekání pro daný dotaz. Doba čekání prostředku měří čas na zadání prostředků. Doba čekání signálu je doba potřebná k tomu, aby základní SQL servery naplánovaly dotaz na procesor.
+`sys.dm_pdw_resource_waits`DMV zobrazuje informace o čekání pro daný dotaz. Doba čekání prostředku měří čas na zadání prostředků. Doba čekání signálu je doba potřebná k tomu, aby základní SQL servery naplánovaly dotaz na procesor.
 
 ```sql
 SELECT  [session_id]
@@ -137,7 +137,7 @@ AND     [session_id]     <> session_id()
 ;
 ```
 
-DMV `sys.dm_pdw_wait_stats` se dá použít k historické analýze trendů čekání.
+`sys.dm_pdw_wait_stats`DMV se dá použít k historické analýze trendů čekání.
 
 ```sql
 SELECT   w.[pdw_node_id]
@@ -153,4 +153,4 @@ FROM    sys.dm_pdw_wait_stats w
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o správě uživatelů a zabezpečení databáze najdete v tématu [zabezpečení databáze v synapse SQL](sql-data-warehouse-overview-manage-security.md). Další informace o tom, jak můžou větší třídy prostředků zlepšit kvalitu clusterovaných indexů columnstore, najdete v tématu [sestavení indexů pro zlepšení kvality segmentů](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).
+Další informace o správě uživatelů a zabezpečení databáze najdete v tématu [zabezpečení databáze v synapse SQL](sql-data-warehouse-overview-manage-security.md). Další informace o tom, jak můžou větší třídy prostředků zlepšit kvalitu clusterového indexu columnstore, najdete v tématu [sestavení indexů pro zlepšení kvality segmentů](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).

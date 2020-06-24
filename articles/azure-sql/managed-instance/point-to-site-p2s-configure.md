@@ -3,7 +3,7 @@ title: Konfigurace připojení Point-to-site pomocí SSMS
 titleSuffix: Azure SQL Managed Instance
 description: Připojte se ke spravované instanci Azure SQL pomocí SQL Server Management Studio (SSMS) pomocí připojení typu Point-to-Site z místního klientského počítače.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova, jovanpop
 ms.date: 03/13/2019
-ms.openlocfilehash: debe32bc39840573620bba5280b6e05b94f3edb6
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 7b9c9fc6259656af77bf1ba1b95ccf190cbd85da
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220919"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708620"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-azure-sql-managed-instance-from-on-premises"></a>Rychlý Start: Konfigurace připojení typu Point-to-site k spravované instanci Azure SQL z místního prostředí
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -71,7 +71,7 @@ Tento rychlý start:
 
     ![Stáhnout klienta VPN](./media/point-to-site-p2s-configure/download-vpn-client.png)  
 4. V místním klientském počítači rozbalte soubory ze souboru zip a pak otevřete složku s extrahované soubory.
-5. Otevřete složku **WindowsAmd64** a otevřete soubor **VpnClientSetupAmd64. exe** .
+5. Otevřete složku **WindowsAmd64** a otevřete soubor **VpnClientSetupAmd64.exe** .
 6. Pokud se zobrazí zpráva o **počítači chráněná systémem Windows** , klikněte na tlačítko **Další informace** a pak klikněte na tlačítko **Spustit**.
 
     ![Nainstalovat klienta VPN](./media/point-to-site-p2s-configure/vpn-client-defender.png)

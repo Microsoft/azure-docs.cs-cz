@@ -4,22 +4,22 @@ description: Postup připojení klasického virtuální sítěu k Správce prost
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/24/2019
 ms.author: cherylmc
-ms.openlocfilehash: 5e64cb2db2bd16a881334779a1c6f1ef19296da2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 231fbe3a30cc9507ebb9b401bd2fe07a451c59a9
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77152019"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987676"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Propojení virtuálních sítí z různých modelů nasazení pomocí portálu
 
 V tomto článku se dozvíte, jak připojit klasický virtuální sítě k Správce prostředků virtuální sítě, abyste umožnili vzájemné komunikaci prostředků umístěných v různých modelech nasazení. Postup v tomto článku primárně používá Azure Portal, ale tuto konfiguraci můžete také vytvořit pomocí prostředí PowerShell tak, že ho vyberete v tomto seznamu.
 
 > [!div class="op_single_selector"]
-> * [Portál](vpn-gateway-connect-different-deployment-models-portal.md)
+> * [Azure Portal](vpn-gateway-connect-different-deployment-models-portal.md)
 > * [PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
 > 
 > 
@@ -28,7 +28,7 @@ Připojení klasické virtuální sítě k virtuální síti Správce prostředk
 
 Pokud ještě nemáte bránu virtuální sítě a nechcete ji vytvořit, možná budete chtít místo toho připojit virtuální sítě pomocí partnerského vztahu VNet. Partnerské vztahy virtuálních sítí nepoužívají bránu VPN. Další informace najdete v tématu [Partnerské vztahy virtuálních sítí](../virtual-network/virtual-network-peering-overview.md).
 
-### <a name="before-you-begin"></a><a name="before"></a>Před zahájením
+### <a name="before-you-begin"></a><a name="before"></a>Než začnete
 
 
 
@@ -84,7 +84,7 @@ V následující tabulce je uveden příklad, jak jsou definovány příklady vi
 
 V této části vytvoříte klasickou virtuální síť, místní síť (místní lokalitu) a bránu virtuální sítě. Snímky obrazovek slouží jen jako příklady. Nezapomeňte hodnoty nahradit vlastními, nebo použijte [ukázkové](#values) hodnoty.
 
-### <a name="1-create-a-classic-vnet"></a>1. <a name="classicvnet"> </a>vytvoření virtuální sítě Classic
+### <a name="1-create-a-classic-vnet"></a>1. <a name="classicvnet"></a> vytvoření virtuální sítě Classic
 
 Pokud nemáte klasickou virtuální síť a spouštíte tyto kroky jako cvičení, můžete vytvořit virtuální síť pomocí [tohoto článku](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) a výše uvedené [Příklady](#values) hodnot nastavení.
 
@@ -96,7 +96,7 @@ Pokud již máte virtuální síť s bránou sítě VPN, ověřte, zda je brána
 4. Vyhledejte ' Virtual Network ' ze seznamu vrácených a kliknutím na něj otevřete stránku Virtual Network. 
 5. Na stránce virtuální síť vyberte Classic a vytvořte klasickou virtuální síť. Pokud zde použijete výchozí nastavení, budete místo toho mít k disSprávce prostředků virtuální síť.
 
-### <a name="2-configure-the-local-site"></a>2. <a name="local"> </a>konfigurace místní lokality
+### <a name="2-configure-the-local-site"></a>2. <a name="local"></a> Konfigurace místní lokality
 
 1. Přejděte na **všechny prostředky** a vyhledejte v seznamu **ClassicVNet** .
 2. Klikněte na **Brána** v části **Nastavení** v nabídce a pak kliknutím na banner vytvořte bránu.
@@ -207,7 +207,7 @@ V těchto krocích nakonfigurujete připojení z Správce prostředků VNet na k
 2. Klikněte na **Konfigurace** a ověřte, jestli je hodnota IP adresa bránou sítě VPN pro klasickou virtuální síť. V případě potřeby aktualizujte a pak klikněte na **Uložit**. Stránku zavřete.
 3. V části **všechny prostředky**klikněte na bránu místní sítě.
 4. Kliknutím na **připojení** otevřete stránku připojení.
-5. Na stránce **připojení** klikněte **+** na Přidat připojení.
+5. Na stránce **připojení** klikněte na **+** Přidat připojení.
 6. Na stránce **Přidat připojení zadejte** název připojení. Například ' RMtoClassic '.
 7. **Site-to-site** je již na této stránce vybrán.
 8. Vyberte bránu virtuální sítě, kterou chcete přidružit k tomuto webu.

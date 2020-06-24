@@ -4,15 +4,15 @@ description: Tento článek poskytuje přehled konfigurací partnerských zaří
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/20/2017
 ms.author: yushwang
-ms.openlocfilehash: b914afaa6725920078da309981bcda5bb765e155
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 00291373ae1e30eca2fdf5f9435fc2201a492e40
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79279400"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84988071"
 ---
 # <a name="overview-of-partner-vpn-device-configurations"></a>Přehled konfigurací partnerských zařízení sítě VPN
 Tento článek poskytuje přehled konfigurace místních zařízení VPN pro připojení ke službě Azure VPN Gateway. Ukázková instalace Azure Virtual Network a brány VPN se používá k zobrazení způsobu připojení k různým konfiguracím místních zařízení VPN pomocí stejných parametrů.
@@ -32,7 +32,7 @@ Podrobné pokyny k nastavení jediného tunelu VPN najdete v tématu [Konfigurac
 ### <a name="connection-parameters"></a>Parametry připojení
 V této části jsou uvedeny parametry pro příklady, které jsou popsány v předchozích částech.
 
-| **Ukazatele**                | **Osa**                    |
+| **Parametr**                | **Hodnota**                    |
 | ---                          | ---                          |
 | Předpony adres virtuální sítě        | 10.11.0.0/16<br>10.12.0.0/16 |
 | IP adresa brány VPN Azure         | Azure VPN Gateway IP         |

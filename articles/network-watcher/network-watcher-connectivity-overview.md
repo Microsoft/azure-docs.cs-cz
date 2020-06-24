@@ -12,18 +12,18 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: damendo
 ms.openlocfilehash: cae3072a3468b232e95d7c1949948b71059695ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79283274"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708939"
 ---
 # <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Úvod k řešení potíží s připojením v Azure Network Watcher
 
 Funkce řešení potíží s připojením Network Watcher poskytuje možnost kontrolovat přímé připojení TCP z virtuálního počítače k virtuálnímu počítači (VM), plně kvalifikovanému názvu domény (FQDN), identifikátoru URI nebo adrese IPv4. Scénáře sítě jsou složité, jsou implementované pomocí skupin zabezpečení sítě, bran firewall, tras definovaných uživatelem a prostředků poskytovaných Azure. Složité konfigurace usnadňují řešení potíží s připojením náročné. Network Watcher pomáhá zkrátit dobu, po kterou můžete najít a zjistit problémy s připojením. Vrácené výsledky mohou poskytnout přehled o tom, zda je problém s připojením způsoben platformou nebo problémem s konfigurací uživatele. Připojení se dá zkontrolovat pomocí [PowerShellu](network-watcher-connectivity-powershell.md), rozhraní příkazového [řádku Azure](network-watcher-connectivity-cli.md)a [REST API](network-watcher-connectivity-rest.md).
 
 > [!IMPORTANT]
-> Řešení potíží s připojením vyžaduje, aby virtuální počítač, ze `AzureNetworkWatcherExtension` kterého řešení řešíte, byl nainstalován rozšíření virtuálního počítače. Pokud chcete nainstalovat rozšíření na virtuální počítač s Windows, přejděte na web [azure Network Watcher Agent Virtual Machine Extension for Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) a pro Linux VM, navštivte [rozšíření Azure Network Watcher Agent Virtual Machine pro Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). V cílovém koncovém bodě není rozšíření vyžadováno.
+> Řešení potíží s připojením vyžaduje, aby virtuální počítač, ze kterého řešení řešíte, byl `AzureNetworkWatcherExtension` nainstalován rozšíření virtuálního počítače. Pokud chcete nainstalovat rozšíření na virtuální počítač s Windows, přejděte na web [azure Network Watcher Agent Virtual Machine Extension for Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) a pro Linux VM, navštivte [rozšíření Azure Network Watcher Agent Virtual Machine pro Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). V cílovém koncovém bodě není rozšíření vyžadováno.
 
 ## <a name="response"></a>Odpověď
 
@@ -46,7 +46,7 @@ V následující tabulce jsou uvedeny vlastnosti vrácené při dokončení ře�
 |Směrování []. Chyba | Kolekce problémů, které byly zjištěny během kontroly tohoto směrování. Pokud nebyly zjištěny žádné problémy, hodnota je prázdná.|
 |Směrování []. Problémy []. Zdroji | U aktuálního směrování, kde došlo k problému. Možné hodnoty:<br/> **Příchozí** – problém je na odkazu z předchozího směrování na aktuální segment směrování.<br/>**Odchozí** – problém je na propojení od aktuálního směrování k dalšímu segmentu směrování.<br/>**Místní** problém je na aktuálním směrování.|
 |Směrování []. Problémy []. Závažnost | Závažnost problému byla zjištěna. Možné hodnoty jsou **Error** a **Warning**. |
-|Směrování []. Problémy []. Textový |Typ problému byl nalezen. Možné hodnoty: <br/>**VČETNĚ**<br/>**Rezident**<br/>**GuestFirewall**<br/>**DnsResolution**<br/>**NetworkSecurityRule**<br/>**UserDefinedRoute** |
+|Směrování []. Problémy []. Textový |Typ problému byl nalezen. Možné hodnoty: <br/>**Procesor**<br/>**Memory (Paměť)**<br/>**GuestFirewall**<br/>**DnsResolution**<br/>**NetworkSecurityRule**<br/>**UserDefinedRoute** |
 |Směrování []. Problémy []. Souvislost |Podrobnosti o zjištěném problému.|
 |Směrování []. Problémy []. Context []. klíč |Klíč vrácené dvojice klíč-hodnota|
 |Směrování []. Problémy []. Context []. hodnota |Hodnota dvojice klíč hodnota, která se vrátila|
@@ -72,7 +72,7 @@ Následuje příklad problému nalezeného na směrování.
 
 Řešení potíží s připojením vrátí typy chyb připojení. Následující tabulka obsahuje seznam aktuálních vrácených typů selhání.
 
-|Typ  |Popis  |
+|Typ  |Description  |
 |---------|---------|
 |Procesor     | Vysoké využití procesoru.       |
 |Memory (Paměť)     | Vysoké využití paměti.       |

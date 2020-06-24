@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 05/23/2019
 ms.author: juliako
 ms.openlocfilehash: fdf29924da31db0347938df89e698cb258c2336b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79251463"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708293"
 ---
 # <a name="filters"></a>Filtry
 
@@ -47,7 +47,7 @@ V závislosti na vašem scénáři se rozhodujete, jaký typ filtru je vhodněj�
 
 Pomocí následujících vlastností popíšete filtry. 
 
-|Název|Popis|
+|Name|Description|
 |---|---|
 |firstQuality|První přenosová rychlost filtru.|
 |presentationTimeRange|Časový rozsah prezentace. Tato vlastnost se používá pro filtrování počátečních a koncových bodů, délky okna prezentace a živé počáteční pozice. <br/>Další informace najdete v tématu [PresentationTimeRange](#presentationtimerange).|
@@ -57,7 +57,7 @@ Pomocí následujících vlastností popíšete filtry.
 
 Tuto vlastnost použijte s **filtry assetů**. Nedoporučuje se nastavovat vlastnost s **filtry účtu**.
 
-|Název|Popis|
+|Name|Description|
 |---|---|
 |**endTimestamp**|Platí pro video na vyžádání (VoD).<br/>V případě prezentace živého streamování se netichě ignoruje a použije se při ukončení prezentace a datový proud se VoD.<br/>Jedná se o dlouhou hodnotu, která představuje absolutní koncový bod prezentace, zaokrouhlený na nejbližší další skupinu GOP Start. Jednotka je časové měřítko, takže endTimestamp 1800000000 bude trvat 3 minuty.<br/>Pomocí startTimestamp a endTimestamp ořízněte fragmenty, které budou v seznamu testů (manifest).<br/>Například startTimestamp = 40000000 a endTimestamp = 100000000 pomocí výchozí časové osy vygeneruje seznam testů, který obsahuje fragmenty ze 4 sekund a 10 sekund z prezentace VoD. Pokud fragment přechází na hranici, bude v manifestu obsažen celý fragment.|
 |**forceEndTimestamp**|Platí jenom pro živé streamování.<br/>Určuje, zda musí být přítomna vlastnost endTimestamp. Pokud je nastaveno na true, musí se zadat endTimestamp nebo se vrátí špatný kód žádosti.<br/>Povolené hodnoty: false, true.|
@@ -72,7 +72,7 @@ V závislosti na tom, které stopy streamu (živé streamování nebo video na v
 
 Filtrovat podmínky vlastností sledování popisují typy sledování, hodnoty (popsané v následující tabulce) a operace (EQUAL, NotEqual). 
 
-|Název|Popis|
+|Name|Description|
 |---|---|
 |**Rychlostí**|Použijte přenosovou rychlost stopy pro filtrování.<br/><br/>Doporučená hodnota je rozsah přenosové rychlosti v bitech za sekundu. Například "0-2427000".<br/><br/>Poznámka: když můžete použít určitou hodnotu přenosové rychlosti, třeba 250000 (bity za sekundu), tento přístup se nedoporučuje, protože přesné přenosové rychlosti můžou kolísat od jednoho Assetu k druhému.|
 |**FourCC**|Použijte hodnotu FourCC stopy pro filtrování.<br/><br/>Hodnota je prvním prvkem formátu kodeků, jak je uvedeno v [dokumentu RFC 6381](https://tools.ietf.org/html/rfc6381). V současné době jsou podporovány následující kodeky: <br/>Video: "avc1", "hev1", "hvc1"<br/>Pro zvuk: "mp4a", "ES-3"<br/><br/>Chcete-li určit hodnoty FourCC pro stopy v Assetu, Získejte a prověřte soubor manifestu.|

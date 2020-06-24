@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 4/21/2020
-ms.openlocfilehash: 20d8e46d6fa6b031c809d629a6af41e8e682bcef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/10/2020
+ms.openlocfilehash: 703879ab2dba59327b9224781eb93ee106ae10d8
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82025080"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707963"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-portal"></a>Jak vytvořit a spravovat repliky pro čtení v Azure Database for MariaDB pomocí Azure Portal
 
@@ -26,9 +26,12 @@ V tomto článku se naučíte, jak vytvořit a spravovat repliky pro čtení ve 
 
 ## <a name="create-a-read-replica"></a>Vytvoření repliky pro čtení
 
+> [!IMPORTANT]
+> Když vytvoříte repliku pro hlavní server, který nemá žádné existující repliky, hlavní počítač se nejprve restartuje a připraví se pro replikaci. Vezměte v úvahu a udělejte tyto operace v době mimo špičku.
+
 Server repliky pro čtení se dá vytvořit pomocí následujících kroků:
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 2. Vyberte existující server Azure Database for MariaDB, který chcete použít jako hlavní server. Tato akce otevře stránku s **přehledem** .
 

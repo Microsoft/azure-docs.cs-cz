@@ -6,18 +6,18 @@ author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/19/2020
 ms.author: jrasnick
 ms.reviewer: igorstan, carlrab
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: b0a783ad5db86ca783ff1cebceec8d77ab528047
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a4da74c01f732f3a62d29847d5f61934dede9778
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687922"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85208089"
 ---
 # <a name="column-level-security"></a>Zabezpečení na úrovni sloupců
 
@@ -32,7 +32,7 @@ Můžete implementovat zabezpečení na úrovni sloupce pomocí příkazu [grant
 
 ![specifikaci](./media/column-level-security/cls.png)
 
-## <a name="syntax"></a>Syntaxe
+## <a name="syntax"></a>Syntax
 
 ```syntaxsql
 GRANT <permission> [ ,...n ] ON

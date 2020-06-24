@@ -8,17 +8,17 @@ author: asudbring
 ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: allensu
-ms.openlocfilehash: 69d324647af014a5122c404929c104a9077d5f13
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9e9a74690108c0e089e99f9cd7f0f62e7a7d1778
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74225308"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84809149"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-using-azure-cli"></a>Vyrovnávání zatížení u více konfigurací IP pomocí Azure CLI
 
@@ -71,7 +71,7 @@ Chcete-li dosáhnout scénáře popsaného v tomto článku, proveďte následuj
     az network lb frontend-ip create --resource-group contosofabrikam --lb-name mylb --public-ip-name PublicIp2 --name fabrkamfe
     ```
 
-8. Vytvořte své fondy back-end adres – *contosopool* a *fabrikampool*, [test](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json) - *http*a vaše pravidla vyrovnávání zatížení – *HTTPc* a *HTTPf*:
+8. Vytvořte své fondy back-end adres – *contosopool* a *fabrikampool*, [test](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json)  -  *http*a vaše pravidla vyrovnávání zatížení – *HTTPc* a *HTTPf*:
 
     ```azurecli
     az network lb address-pool create --resource-group contosofabrikam --lb-name mylb --name contosopool

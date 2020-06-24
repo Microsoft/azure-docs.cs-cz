@@ -4,15 +4,15 @@ description: Tento článek vám pomůže připojit bránu virtuální sítě Az
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: cherylmc
-ms.openlocfilehash: 688183bc07aa14d5e5df182d7de0897cec93f0b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ca5880f76ffd3a85d4b3cec8e01f58ae5c024a58
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80066235"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84749701"
 ---
 # <a name="connect-a-vpn-gateway-virtual-network-gateway-to-virtual-wan"></a>Připojit VPN Gateway (bránu virtuální sítě) k virtuální síti WAN
 
@@ -20,11 +20,11 @@ Tento článek vám pomůže nastavit připojení z Azure VPN Gateway (bránu vi
 
 Aby nedošlo k nejasnostem mezi dvěma funkcemi, vytvoříme bránu s názvem funkce, na kterou odkazujeme. Například VPN Gateway bránu virtuální sítě a bránu VPN Virtual WAN.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Než začnete, vytvořte následující prostředky:
 
-Informace o službě Azure Virtual WAN
+Azure Virtual WAN
 
 * [Vytvořte virtuální síť WAN](virtual-wan-site-to-site-portal.md#openvwan).
 * [Vytvořte centrum](virtual-wan-site-to-site-portal.md#hub). Virtuální rozbočovač obsahuje virtuální síť WAN VPN Gateway.

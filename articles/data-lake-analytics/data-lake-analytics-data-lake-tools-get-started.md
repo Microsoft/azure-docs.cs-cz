@@ -10,11 +10,11 @@ ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.openlocfilehash: dacce0d4f40f077b5da6221000192a4398da99e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260342"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707782"
 ---
 # <a name="develop-u-sql-scripts-by-using-data-lake-tools-for-visual-studio"></a>Vývoj skriptů U-SQL pomocí nástrojů Data Lake pro Visual Studio
 
@@ -55,11 +55,11 @@ Tento kurz vyžaduje, aby byly nainstalované Nástroje Data Lake pro Visual Stu
 
 1. Otevřete sadu Visual Studio.
 
-1. Otevřete **Průzkumník serveru** výběrem možnosti **Zobrazit** > **Průzkumník serveru**.
+1. Otevřete **Průzkumník serveru** výběrem možnosti **Zobrazit**  >  **Průzkumník serveru**.
 
 1. Klikněte pravým tlačítkem na **Azure**a pak vyberte **připojit k Microsoft Azure předplatnému**. Při **přihlašování ke svému účtu**postupujte podle pokynů.
 
-1. V **Průzkumník serveru**vyberte **Azure** > **Data Lake Analytics**. Zobrazí se seznam vašich účtů Data Lake Analytics.
+1. V **Průzkumník serveru**vyberte **Azure**  >  **Data Lake Analytics**. Zobrazí se seznam vašich účtů Data Lake Analytics.
 
 ## <a name="write-your-first-u-sql-script"></a>Napsání prvního skriptu U-SQL
 
@@ -82,7 +82,7 @@ OUTPUT @a
 
 ## <a name="submit-a-data-lake-analytics-job"></a>Odeslání úlohy Data Lake Analytics
 
-1. V aplikaci Visual Studio vyberte **soubor** > **Nový** > **projekt**.
+1. V aplikaci Visual Studio vyberte **soubor**  >  **Nový**  >  **projekt**.
 
 1. Vyberte typ **projektu U-SQL** a pak vyberte **Další**. V **konfiguraci nového projektu**vyberte **vytvořit**.
 
@@ -112,7 +112,7 @@ Pokud chcete zobrazit nejnovější stav úlohy a aktualizovat obrazovku, vybert
 
 ## <a name="check-job-status"></a>Kontrola stavu úlohy
 
-1. V **Průzkumník serveru**vyberte **Azure** > **Data Lake Analytics**.
+1. V **Průzkumník serveru**vyberte **Azure**  >  **Data Lake Analytics**.
 
 1. Rozbalte název účtu Data Lake Analytics.
 

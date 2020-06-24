@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6feed11fcfc597658f3ec148b5dd18bb7e3f8f83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253543"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84690740"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>Řešení potíží se synchronizace hodnot hash hesel pomocí synchronizace Azure AD Connect
 
@@ -60,7 +60,7 @@ Pomocí úlohy řešení potíží můžete zjistit, proč nejsou synchronizová
 
 1. Na serveru Azure AD Connect otevřete novou relaci prostředí Windows PowerShell s možností **Spustit jako správce** .
 
-2. Spusťte `Set-ExecutionPolicy RemoteSigned` nebo `Set-ExecutionPolicy Unrestricted`.
+2. Spusťte `Set-ExecutionPolicy RemoteSigned` nebo `Set-ExecutionPolicy Unrestricted` .
 
 3. Spusťte Průvodce Azure AD Connect.
 
@@ -143,7 +143,7 @@ Pomocí úlohy řešení potíží můžete určit, proč jeden objekt nesynchro
 
 1. Na serveru Azure AD Connect otevřete novou relaci prostředí Windows PowerShell s možností **Spustit jako správce** .
 
-2. Spusťte `Set-ExecutionPolicy RemoteSigned` nebo `Set-ExecutionPolicy Unrestricted`.
+2. Spusťte `Set-ExecutionPolicy RemoteSigned` nebo `Set-ExecutionPolicy Unrestricted` .
 
 3. Spusťte Průvodce Azure AD Connect.
 
@@ -196,7 +196,7 @@ Ve výchozím nastavení Azure AD Connect ukládá výsledky pokusů o synchroni
 Pomocí `Invoke-ADSyncDiagnostics` rutiny můžete zjistit, proč nejsou synchronizována žádná hesla.
 
 > [!NOTE]
-> `Invoke-ADSyncDiagnostics` Rutina je k dispozici pouze pro Azure AD Connect verze 1.1.524.0 nebo novější.
+> `Invoke-ADSyncDiagnostics`Rutina je k dispozici pouze pro Azure AD Connect verze 1.1.524.0 nebo novější.
 
 ### <a name="run-the-diagnostics-cmdlet"></a>Spuštění diagnostické rutiny
 
@@ -204,7 +204,7 @@ Pomocí `Invoke-ADSyncDiagnostics` rutiny můžete zjistit, proč nejsou synchro
 
 1. Na serveru Azure AD Connect otevřete novou relaci prostředí Windows PowerShell s možností **Spustit jako správce** .
 
-2. Spusťte `Set-ExecutionPolicy RemoteSigned` nebo `Set-ExecutionPolicy Unrestricted`.
+2. Spusťte `Set-ExecutionPolicy RemoteSigned` nebo `Set-ExecutionPolicy Unrestricted` .
 
 3. Spusťte `Import-Module ADSyncDiagnostics`.
 
@@ -217,7 +217,7 @@ Pomocí `Invoke-ADSyncDiagnostics` rutiny můžete zjistit, proč nejsou synchro
 Pomocí `Invoke-ADSyncDiagnostics` rutiny můžete určit, proč jeden objekt nesynchronizuje hesla.
 
 > [!NOTE]
-> `Invoke-ADSyncDiagnostics` Rutina je k dispozici pouze pro Azure AD Connect verze 1.1.524.0 nebo novější.
+> `Invoke-ADSyncDiagnostics`Rutina je k dispozici pouze pro Azure AD Connect verze 1.1.524.0 nebo novější.
 
 ### <a name="run-the-diagnostics-cmdlet"></a>Spuštění diagnostické rutiny
 
@@ -225,7 +225,7 @@ Pomocí `Invoke-ADSyncDiagnostics` rutiny můžete určit, proč jeden objekt ne
 
 1. Na serveru Azure AD Connect otevřete novou relaci prostředí Windows PowerShell s možností **Spustit jako správce** .
 
-2. Spusťte `Set-ExecutionPolicy RemoteSigned` nebo `Set-ExecutionPolicy Unrestricted`.
+2. Spusťte `Set-ExecutionPolicy RemoteSigned` nebo `Set-ExecutionPolicy Unrestricted` .
 
 3. Spusťte `Import-Module ADSyncDiagnostics`.
 
@@ -323,7 +323,7 @@ Můžete snadno řešit potíže se synchronizací hodnot hash hesel tak, že zk
 
     f. Najděte hledaného uživatele a kliknutím na **vlastnosti** zobrazíte všechny atributy. Pokud uživatel není ve výsledku hledání, ověřte [pravidla filtrování](how-to-connect-sync-configure-filtering.md) a ujistěte se, že jste spustili příkaz [použít a ověřit změny](how-to-connect-sync-configure-filtering.md#apply-and-verify-changes) pro uživatele, který se zobrazí v okně připojit.
 
-    g. Pokud chcete zobrazit podrobnosti o synchronizaci hesel pro daný objekt za minulý týden, klikněte na **protokol**.  
+    například Pokud chcete zobrazit podrobnosti o synchronizaci hesel pro daný objekt za minulý týden, klikněte na **protokol**.  
 
     ![Podrobnosti protokolu objektů](./media/tshoot-connect-password-hash-synchronization/csobjectlog.png)  
 

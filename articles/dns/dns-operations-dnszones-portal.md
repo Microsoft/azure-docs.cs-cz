@@ -4,27 +4,26 @@ description: Zóny DNS můžete spravovat pomocí Azure Portal. Tento článek p
 services: dns
 documentationcenter: na
 author: rohinkoul
-manager: timlt
 ms.service: dns
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2017
 ms.author: rohink
-ms.openlocfilehash: 002f210048c18c6dd99dfb5981bacce8666ee563
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9b6cac64d2e3def673f6d7c27e80bd64eead9e97
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76936789"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84689159"
 ---
 # <a name="how-to-manage-dns-zones-in-the-azure-portal"></a>Správa Zóny DNS v Azure Portal
 
 > [!div class="op_single_selector"]
-> * [Portál](dns-operations-dnszones-portal.md)
-> * [Prostředí](dns-operations-dnszones.md)
-> * [Azure Classic CLI](dns-operations-dnszones-cli-nodejs.md)
+> * [Azure Portal](dns-operations-dnszones-portal.md)
+> * [PowerShell](dns-operations-dnszones.md)
+> * [Rozhraní příkazového řádku Azure Classic](dns-operations-dnszones-cli-nodejs.md)
 > * [Azure CLI](dns-operations-dnszones-cli.md)
 
 V tomto článku se dozvíte, jak spravovat zóny DNS pomocí Azure Portal. Zóny DNS můžete spravovat i pomocí [Azure CLI](dns-operations-dnszones-cli.md) pro různé platformy nebo Azure [PowerShellu](dns-operations-dnszones.md).
@@ -39,7 +38,7 @@ V tomto článku se dozvíte, jak spravovat zóny DNS pomocí Azure Portal. Zón
 4. V okně **Vytvořit zónu DNS** zadejte následující hodnoty a pak klikněte na **Vytvořit**:
 
 
-   | **Nastavení** | **Osa** | **Zobrazí** |
+   | **Nastavení** | **Hodnota** | **Podrobnosti** |
    |---|---|---|
    |**Název**|contoso.com|Název zóny DNS|
    |**Předplatné**|[Vaše předplatné]|Vyberte předplatné, ve kterém chcete vytvořit zónu DNS.|
@@ -51,7 +50,7 @@ V tomto článku se dozvíte, jak spravovat zóny DNS pomocí Azure Portal. Zón
 
 ## <a name="list-dns-zones"></a>Výpis zón DNS
 
-V Azure Portal přejděte na **Další služby** > **síťové** > **zóny DNS**. Každá zóna DNS je vlastním prostředkem a v tomto zobrazení se zobrazí informace, jako je například počet sad záznamů a názvové servery. **NÁZVOVÉ servery** sloupce nejsou ve výchozím zobrazení. Pokud ho chcete přidat, klikněte na **sloupce**, vyberte **Názvové servery**a potom klikněte na **Hotovo**.
+V Azure Portal přejděte na **Další služby**  >  **síťové**  >  **zóny DNS**. Každá zóna DNS je vlastním prostředkem a v tomto zobrazení se zobrazí informace, jako je například počet sad záznamů a názvové servery. **NÁZVOVÉ servery** sloupce nejsou ve výchozím zobrazení. Pokud ho chcete přidat, klikněte na **sloupce**, vyberte **Názvové servery**a potom klikněte na **Hotovo**.
 
 ![výpis zón DNS](./media/dns-operations-dnszones-portal/listzones.png)
 

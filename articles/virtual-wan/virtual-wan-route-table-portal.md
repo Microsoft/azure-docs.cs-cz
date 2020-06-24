@@ -4,16 +4,16 @@ description: Tabulka směrování virtuálních rozbočovačů sítě WAN pro ř
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/05/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a route table using the portal.
-ms.openlocfilehash: 740a2174933e37e2737de0daa56e4b1670ecf55f
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: b22b751880cda91734ce0c322b19702e0ac9840d
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773164"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84752965"
 ---
 # <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>Vytvoření směrovací tabulky pro virtuální síť WAN pro síťová virtuální zařízení: Azure Portal
 
@@ -21,7 +21,7 @@ V tomto článku se dozvíte, jak řídit provoz z větve (místní lokality) p�
 
 ![Diagram virtuální sítě WAN](./media/virtual-wan-route-table/vwanroute.png)
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Ověřte, že splňujete následující kritéria:
 
@@ -34,7 +34,7 @@ Ověřte, že splňujete následující kritéria:
     *  Virtuální síť síťové virtuální zařízení může mít připojenu jednu nebo více virtuálních sítí. V tomto článku odkazujeme na virtuální síť síťové virtuální zařízení jako na "nepřímý virtuální síť rozbočovače". Tyto virtuální sítě se dají připojit k virtuální síti síťové virtuální zařízení pomocí partnerského vztahu virtuálních sítí. Odkazy partnerských vztahů virtuálních sítí jsou znázorněny pomocí černých šipek na výše uvedeném obrázku mezi virtuální sítí VNet 1, VNet 2 a síťové virtuální zařízení VNet.
 *  Vytvořili jste dvě virtuální sítě. Budou použity jako paprskový virtuální sítě.
 
-    * Adresní prostory virtuální sítě jsou: VNet1:10.0.2.0/24 a VNet2:10.0.3.0/24. Pokud potřebujete informace o tom, jak vytvořit virtuální síť, přečtěte si téma [vytvoření virtuální sítě](../virtual-network/quick-create-portal.md).
+    * Adresní prostory virtuální sítě jsou: VNet1:10.0.2.0/24 a VNet2:10.0.3.0/24. Pokud potřebujete informace o tom, jak vytvořit virtuální síť, přečtěte si téma [vytvoření virtuální sítě](../virtual-network/quick-create-portal.md). Zajistěte, aby v VNET1 a 2 odkazovaly na síťové virtuální ZAŘÍZENÍu UDR.
 
     * Zajistěte, aby v žádném z virtuální sítě neexistovaly žádné brány virtuální sítě.
 

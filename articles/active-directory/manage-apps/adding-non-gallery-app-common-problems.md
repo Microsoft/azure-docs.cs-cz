@@ -3,24 +3,24 @@ title: Problém při přidávání aplikace mimo galerii | Microsoft Docs
 description: Pochopení běžných potíží, které lidé čelí při přidávání vlastních aplikací mimo galerii
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 09/11/2018
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38a9ef04389318d3588649117c930ff6efa3fe4e
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: ce103ca6c958b0524d753da25c2a79aadfb7c8b3
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "65784480"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84760282"
 ---
 # <a name="problem-adding-a-non-gallery-application"></a>Problém při přidávání aplikace mimo galerii
 
@@ -96,7 +96,7 @@ Další podrobnosti o oznámeních najdete v následujících popisech.
 
 - **UPN** – uživatel, který operaci provedl
 
-  *  Příklad – **tperkins\@f128.info**
+  *  Příklad – **tperkins \@ f128.info**
 
 - **ID tenanta** – jedinečné ID tenanta, kterého byl uživatel, který provedl operaci, členem
 
@@ -122,7 +122,7 @@ Další podrobnosti o oznámeních najdete v následujících popisech.
 
 - **Podrobnosti** – podrobný popis toho, co se stalo v důsledku operace
 
-  *  Příklad – **interní adresa `https://bing.com/` URL je neplatná, protože se už používá** .
+  *  Příklad – **interní adresa URL `https://bing.com/` je neplatná, protože se už používá** .
 
 - **Chyba kopírování** – kliknutím na **ikonu Kopírovat** napravo od textového pole **Kopírovat chybu** zkopírujte všechny podrobnosti oznámení, které chcete sdílet s podporou nebo skupinou produktů. 
 - engineer (technik)

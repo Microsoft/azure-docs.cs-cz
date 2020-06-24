@@ -1,18 +1,18 @@
 ---
 title: NC-Series – Azure Virtual Machines
 description: Specifikace pro virtuální počítače řady NC-Series.
-author: vikancha
+author: vikancha-MSFT
 ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 3464c2cd99f2d3ec27fe2bb9e30b984e13988740
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 9df68d76c9a06a8391c301fa13b6a0d1ac6529a2
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84672234"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84726646"
 ---
 # <a name="nc-series"></a>Řada NC
 

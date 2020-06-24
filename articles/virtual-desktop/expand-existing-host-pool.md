@@ -4,23 +4,23 @@ description: Postup rozšíření stávajícího fondu hostitelů s novými host
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8a60d34c73eed5d71599a90e463138186e21fdf7
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 07394fb2d33aaacdc8e47bc2d1809854c0c8ca1b
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84677895"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85209347"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Rozšíření existujícího fondu hostitelů s novými hostiteli relací
 
 >[!IMPORTANT]
 >Tento obsah se vztahuje na jarní 2020 aktualizaci s Azure Resource Manager objekty virtuálních klientů Windows. Pokud používáte virtuální plochu Windows na verzi 2019 bez Azure Resource Manager objektů, přečtěte si [Tento článek](./virtual-desktop-fall-2019/expand-existing-host-pool-2019.md).
 >
-> V současnosti je ve verzi Public Preview na jaře 2020 aktualizace virtuálních počítačů s Windows. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučujeme ji používat pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. 
+> V současnosti je ve verzi Public Preview na jaře 2020 aktualizace virtuálních počítačů s Windows. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučujeme ji používat pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Při vyčerpání využití v rámci fondu hostitelů možná budete muset rozšířit svůj stávající fond hostitelů o nové hostitele relací, aby bylo možné nové zatížení zpracovat.
@@ -57,12 +57,12 @@ Rozšíření fondu hostitelů přidáním virtuálních počítačů:
 6. Ignorujte kartu základy a místo toho vyberte kartu **Podrobnosti o virtuálním počítači** . Tady můžete zobrazit a upravit podrobnosti o virtuálním počítači, který chcete přidat do fondu hostitelů.
 
 7. Vyberte skupinu prostředků, ve které chcete vytvořit virtuální počítače, a pak vyberte oblast. Můžete zvolit aktuální oblast, kterou používáte, nebo novou oblast.
-   
+
 8. Zadejte počet hostitelů relací, které chcete přidat do fondu hostitelů, do **počtu virtuálních počítačů**. Pokud například rozšíříte fond hostitelů o pět hostitelů, zadejte **5**.
-   
+
     >[!NOTE]
     >Velikost ani bitovou kopii virtuálních počítačů nemůžete upravit, protože je důležité zajistit, aby všechny virtuální počítače ve fondu hostitelů měly stejnou velikost.
-    
+
 9. Pro **informace o virtuální síti**vyberte virtuální síť a podsíť, ke kterým chcete virtuální počítače připojit. Můžete vybrat stejnou virtuální síť, kterou existující počítače používají, nebo vybrat jiný, který je vhodnější pro oblast vybranou v kroku 7.
 
 10. Pro **účet správce**zadejte uživatelské jméno a heslo domény služby Active Directory přidružené k virtuální síti, kterou jste vybrali. Tyto přihlašovací údaje se použijí pro připojení virtuálních počítačů k virtuální síti.
@@ -70,9 +70,9 @@ Rozšíření fondu hostitelů přidáním virtuálních počítačů:
       >[!NOTE]
       >Zajistěte, aby názvy správců splňovaly informace, které jsou zde uvedeny. A že na účtu není povolený žádný MFA.
 
-11. Vyberte kartu **značka** , pokud máte jakékoli značky, pomocí kterých chcete seskupit virtuální počítače. V opačném případě tuto kartu přeskočte. 
+11. Vyberte kartu **značka** , pokud máte jakékoli značky, pomocí kterých chcete seskupit virtuální počítače. V opačném případě tuto kartu přeskočte.
 
-12. Vyberte kartu **Revize + vytvořit** . Zkontrolujte volby a pokud vše vypadá dobře, vyberte **vytvořit**. 
+12. Vyberte kartu **Revize + vytvořit** . Zkontrolujte volby a pokud vše vypadá dobře, vyberte **vytvořit**.
 
 ## <a name="next-steps"></a>Další kroky
 

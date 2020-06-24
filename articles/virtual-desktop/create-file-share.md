@@ -4,16 +4,16 @@ description: Nastavte kontejner profilu FSLogix ve sdílené složce Azure ve st
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 4723c2a8fa66e4ed2c4b40975179d7d4d2b281d6
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: 7fca57bd517296711ada2f714d523bfa0709337c
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84484658"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85208378"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>Vytvoření kontejneru profilu se soubory Azure a služba AD DS
 
@@ -43,7 +43,7 @@ Nastavení účtu úložiště:
     - Zadejte jedinečný název účtu úložiště.
     - Pro **umístění**doporučujeme vybrat stejné umístění jako fond hostitelů virtuálních počítačů s Windows.
     - **Výkon** – vyberte **Standard**. (V závislosti na požadavcích na IOPS. Další informace najdete v tématu [Možnosti úložiště pro kontejnery profilů FSLogix ve virtuálním počítači s Windows](store-fslogix-profile.md).)
-    - Jako **typ účtu**vyberte **StorageV2** nebo **úložiště**.
+    - Jako **typ účtu**vyberte **StorageV2** nebo **úložiště** (k dispozici, jenom pokud je úroveň výkonu Premium).
     - V případě **replikace**vyberte **místně redundantní úložiště (LRS)**.
 
 5. Až budete hotovi, vyberte **zkontrolovat + vytvořit**a pak vybrat **vytvořit**.
@@ -78,7 +78,7 @@ V dalším kroku budete muset povolit ověřování služby Active Directory (AD
 
 ## <a name="assign-azure-rbac-permissions-to-windows-virtual-desktop-users"></a>Přiřazení oprávnění Azure RBAC uživatelům pro virtuální počítače s Windows
 
-Všem uživatelům, kteří musí mít v účtu úložiště uložené profily FSLogix, musí mít přiřazenou roli Přispěvatel sdílené složky SMB pro data souborů úložiště. 
+Všem uživatelům, kteří musí mít v účtu úložiště uložené profily FSLogix, musí mít přiřazenou roli Přispěvatel sdílené složky SMB pro data souborů úložiště.
 
 Uživatelé přihlášeni k hostitelům relace virtuálních počítačů s Windows potřebují přístupová oprávnění pro přístup ke sdílené složce souborů. Udělení přístupu ke sdílené složce Azure zahrnuje konfiguraci oprávnění na úrovni sdílené složky i na úrovni NTFS, podobně jako tradiční sdílená složka systému Windows.
 
@@ -98,7 +98,7 @@ Přiřazení oprávnění řízení přístupu na základě role (RBAC):
 4. Vyberte **Přidat přiřazení role**.
 
 5. Na kartě **Přidat přiřazení role** vyberte **úložiště souborová data SMB sdílet oprávnění Přispěvatel** pro účet správce.
-   
+
      Pokud chcete přiřadit oprávnění uživatele k profilům FSLogix, postupujte podle těchto pokynů. Když se ale dostanete ke kroku 5, vyberte místo toho možnost **soubor úložiště SMB sdílení** .
 
 6. Vyberte **Uložit**.
@@ -126,7 +126,7 @@ Tady je postup, jak získat cestu UNC:
 
 5. Po zkopírování identifikátoru URI proveďte následující kroky a změňte je na cestu UNC:
 
-    - Odebrat `https://`
+    - Odebrat `https://` a nahradit za`\\`
     - Místo lomítka nahraďte zpětným `/` lomítkem `\` .
     - Přidejte název sdílené složky, kterou jste vytvořili v části [Vytvoření sdílené složky Azure](#create-an-azure-file-share) , na konec názvu UNC.
 
@@ -157,7 +157,7 @@ Konfigurace oprávnění systému souborů NTFS:
      ```
 
 3. Spuštěním následující rutiny zkontrolujte přístupová oprávnění ke sdílené složce Azure:
-    
+
     ```powershell
     icacls <mounted-drive-letter>:
     ```
@@ -167,7 +167,7 @@ Konfigurace oprávnění systému souborů NTFS:
     Pro *uživatele NT AUTHORITY\Authenticated Users* a *BUILTIN\Users* mají ve výchozím nastavení určitá oprávnění. Tato výchozí oprávnění umožňují těmto uživatelům číst kontejnery profilů jiných uživatelů. Oprávnění popsaná v tématu [Konfigurace oprávnění pro úložiště pro použití s kontejnery profilů a kontejnery Office](/fslogix/fslogix-storage-config-ht) ale neumožňují uživatelům číst kontejnery profilů pro všechny ostatní.
 
 4. Spuštěním následujících rutin umožníte uživatelům virtuálních počítačů s Windows vytvářet vlastní kontejnery profilů a zablokovat přístup ke svému kontejneru profilů z jiných uživatelů.
-     
+
      ```powershell
      icacls <mounted-drive-letter>: /grant <user-email>:(M)
      icacls <mounted-drive-letter>: /grant "Creator Owner":(OI)(CI)(IO)(M)
@@ -187,7 +187,7 @@ Konfigurace oprávnění systému souborů NTFS:
      icacls <mounted-drive-letter>: /remove "Builtin\Users"
      ```
 
-5. Vyberte **Apply** (Použít).
+5. Vyberte **Použít**.
 
 ## <a name="configure-fslogix-on-session-host-vms"></a>Konfigurace FSLogix na virtuálních počítačích hostitele relací
 

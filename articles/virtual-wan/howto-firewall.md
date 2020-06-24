@@ -5,21 +5,21 @@ description: Postup konfigurace Azure Firewall ve virtuálním centru WAN
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/21/2020
 ms.author: cherylmc
-ms.openlocfilehash: 01e703b0e1062e38095358565260addbd07351f1
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: f20ed76a72eecce59a7b8795a42b033230a2f7e0
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83801559"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753693"
 ---
 # <a name="configure-azure-firewall-in-a-virtual-wan-hub"></a>Konfigurace Azure Firewall ve virtuálním centru WAN
 
 **Zabezpečené centrum** je Azure Virtual WAN hub s Azure firewall. Tento článek vás provede jednotlivými kroky, jak převést virtuální rozbočovač WAN na zabezpečený rozbočovač tím, že nainstalujete Azure Firewall přímo ze stránek portálu Azure Virtual WAN.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V krocích v tomto článku se předpokládá, že jste už nasadili virtuální síť WAN s jedním nebo více rozbočovači.
 

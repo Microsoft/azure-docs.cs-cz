@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 10/25/2019
 ms.author: victorh
-ms.openlocfilehash: 4bca41effc4e9834f8c76308556facb0681717cd
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: a84e48c7fbb6d63a4bf8946b66bd35f354643ccb
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82888880"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753603"
 ---
 # <a name="resource-logs-for-azure-web-application-firewall"></a>Protokoly prostředků pro Firewall webových aplikací Azure
 
@@ -42,11 +42,11 @@ Protokoly můžete ukládat třemi způsoby:
 
 Protokolování aktivit je u každého prostředku Správce prostředků povolené automaticky. Chcete-li začít shromažďovat data dostupná prostřednictvím těchto protokolů, je nutné povolit protokolování přístupu a výkonu. Chcete-li povolit protokolování, použijte následující postup:
 
-1. Poznamenejte si ID prostředku účtu úložiště, kam se data protokolu ukládají. Tato hodnota má formát: /subscriptions/\<ID předplatného\>/resourceGroups/\<název skupiny prostředků\>/providers/Microsoft.Storage/storageAccounts/\<název účtu úložiště\>. Můžete použít libovolný účet úložiště z vašeho předplatného. Tuto informaci najdete pomocí webu Azure Portal
+1. Poznamenejte si ID prostředku účtu úložiště, kam se data protokolu ukládají. Tato hodnota je ve formátu:/subscriptions/ \<subscriptionId\> /ResourceGroups/ \<resource group name\> /providers/Microsoft.Storage/storageAccounts/ \<storage account name\> . Můžete použít libovolný účet úložiště z vašeho předplatného. Tuto informaci najdete pomocí webu Azure Portal
 
     ![Portál: ID prostředku pro účet úložiště](../media/web-application-firewall-logs/diagnostics1.png)
 
-2. Poznamenejte si ID prostředku brány Application Gateway, pro které je povolené protokolování. Tato hodnota má formát:\</Subscriptions/SubscriptionId\>/ResourceGroups/\<název\>skupiny prostředků/Providers/Microsoft.Network/applicationGateways/\<název\>aplikační brány. Tuto informaci najdete pomocí webu Azure Portal.
+2. Poznamenejte si ID prostředku brány Application Gateway, pro které je povolené protokolování. Tato hodnota je ve formátu:/subscriptions/ \<subscriptionId\> /ResourceGroups/ \<resource group name\> /providers/Microsoft.Network/applicationGateways/ \<application gateway name\> . Tuto informaci najdete pomocí webu Azure Portal.
 
     ![Portál: ID prostředku pro aplikační bránu](../media/web-application-firewall-logs/diagnostics2.png)
 
@@ -87,7 +87,7 @@ Azure ve výchozím nastavení generuje protokol aktivit. Protokoly se uchováva
 
 Protokol přístupu se vygeneruje jenom v případě, že jste ho povolili na každé instanci Application Gateway, jak je popsáno v předchozích krocích. Data se ukládají do účtu úložiště, který jste zadali při povolování protokolování. Každý přístup k Application Gateway je protokolován ve formátu JSON, jak je znázorněno v následujícím příkladu pro V1:
 
-|Hodnota  |Popis  |
+|Hodnota  |Description  |
 |---------|---------|
 |instanceId     | Application Gateway instance, která zpracovala požadavek.        |
 |IP adresa klienta     | Původní IP adresa pro požadavek.        |
@@ -108,7 +108,7 @@ Protokol přístupu se vygeneruje jenom v případě, že jste ho povolili na ka
 {
     "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/PEERINGTEST/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",
     "operationName": "ApplicationGatewayAccess",
-    "time": "2017-04-26T19:27:38Z",
+    "timestamp": "2017-04-26T19:27:38Z",
     "category": "ApplicationGatewayAccessLog",
     "properties": {
         "instanceId": "ApplicationGatewayRole_IN_0",
@@ -131,7 +131,7 @@ Protokol přístupu se vygeneruje jenom v případě, že jste ho povolili na ka
 ```
 V případě Application Gateway a WAF v2 se v protokolech zobrazí další informace:
 
-|Hodnota  |Popis  |
+|Hodnota  |Description  |
 |---------|---------|
 |instanceId     | Application Gateway instance, která zpracovala požadavek.        |
 |IP adresa klienta     | Původní IP adresa pro požadavek.        |
@@ -185,7 +185,7 @@ V případě Application Gateway a WAF v2 se v protokolech zobrazí další info
 Protokol výkonu je vygenerován pouze v případě, že jste jej povolili na každé instanci Application Gateway, jak je popsáno v předchozích krocích. Data se ukládají do účtu úložiště, který jste zadali při povolování protokolování. Data protokolu výkonu se generují v intervalu 1 minuty. Je k dispozici pouze pro SKU v1. Pro SKU v2 použijte [metriky](../../application-gateway/application-gateway-metrics.md) pro data výkonu. Zaprotokolují se následující data:
 
 
-|Hodnota  |Popis  |
+|Hodnota  |Description  |
 |---------|---------|
 |instanceId     |  Instance Application Gateway, pro kterou se generují údaje o výkonu. Pro aplikační bránu s více instancemi je k dispozici jeden řádek na instanci.        |
 |healthyHostCount     | Počet v nefunkčních hostitelích ve fondu back-end.        |
@@ -222,7 +222,7 @@ Protokol výkonu je vygenerován pouze v případě, že jste jej povolili na ka
 Protokol brány firewall je vygenerován pouze v případě, že jste jej povolili pro každou bránu aplikace, jak je popsáno v předchozích krocích. Tento protokol také vyžaduje, aby byla na aplikační bráně nakonfigurovaná brána firewall webových aplikací. Data se ukládají do účtu úložiště, který jste zadali při povolování protokolování. Zaprotokolují se následující data:
 
 
-|Hodnota  |Popis  |
+|Hodnota  |Description  |
 |---------|---------|
 |instanceId     | Instance Application Gateway, pro kterou se generují data brány firewall. Pro aplikační bránu s více instancemi je k dispozici jeden řádek na instanci.         |
 |IP adresa klienta     |   Původní IP adresa pro požadavek.      |

@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 08/15/2019
 ms.author: cherylmc
 ms.openlocfilehash: 9c5e6d5aca51bd560a46837ba47de86362665773
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79279387"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84687782"
 ---
 # <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>Práce s SKU brány virtuální sítě (zastaralé SKU)
 
@@ -47,7 +47,7 @@ Resize-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -GatewaySku HighPerfor
 
 Můžete také změnit velikost brány v Azure Portal.
 
-### <a name="classic"></a><a name="classicresize"></a>Classic
+### <a name="classic"></a><a name="classicresize"></a>Klasický
 
 Chcete-li změnit velikost brány pro model nasazení Classic, je nutné použít rutiny prostředí PowerShell pro správu služeb. Použijte následující příkaz:
 

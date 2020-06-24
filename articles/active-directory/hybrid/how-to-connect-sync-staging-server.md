@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bc88640cdff4f716902a80bb149913b961d40ae3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261018"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84690621"
 ---
 # <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect: přípravný Server a zotavení po havárii
 U serveru v pracovním režimu můžete změnit konfiguraci a zobrazit náhled změn před tím, než provedete server aktivní. Umožňuje taky spustit úplnou synchronizaci a úplnou synchronizaci a ověřit, jestli jsou všechny změny očekávané, než provedete tyto změny v produkčním prostředí.
@@ -73,19 +73,19 @@ Teď máte připravené změny v exportu do Azure AD a místní služby AD (Poku
 
 #### <a name="verify"></a>Ověřit
 1. Spuštění příkazového řádku a přechod na`%ProgramFiles%\Microsoft Azure AD Sync\bin`
-2. Run ( `csexport "Name of Connector" %temp%\export.xml /f:x` spustit): název konektoru najdete ve službě synchronizace. Má název podobný řetězci "contoso.com – AAD" pro Azure AD.
-3. Spustit: `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` máte soubor v souboru% temp% s názvem export. csv, který lze prozkoumat v aplikaci Microsoft Excel. Tento soubor obsahuje všechny změny, které mají být exportovány.
+2. Run (spustit): `csexport "Name of Connector" %temp%\export.xml /f:x` název konektoru najdete ve službě synchronizace. Má název podobný řetězci "contoso.com – AAD" pro Azure AD.
+3. Spustit: `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` máte soubor v% Temp% s názvem export.csv, který lze prozkoumat v aplikaci Microsoft Excel. Tento soubor obsahuje všechny změny, které mají být exportovány.
 4. Proveďte nezbytné změny dat nebo konfigurace a spusťte tyto kroky znovu (import a synchronizace a ověření), dokud se neočekávají změny, které se chystá exportovat.
 
-**Princip exportu souboru. csv** Většina souboru je zřejmá. Některé zkratky pro pochopení obsahu:
+**Princip souboru export.csv** Většina souboru je zřejmá. Některé zkratky pro pochopení obsahu:
 * OMODT – typ změny objektu. Určuje, zda je operace na úrovni objektu Add, Update nebo DELETE.
 * AMODT – typ změny atributu Určuje, zda je operace na úrovni atributu přidat, aktualizovat nebo odstranit.
 
-**Načíst společné identifikátory** Soubor export. csv obsahuje všechny změny, které mají být exportovány. Každý řádek odpovídá změně objektu v prostoru konektoru a objekt je identifikován atributem DN. Atribut DN je jedinečný identifikátor přiřazený objektu v prostoru konektoru. Máte-li k analýze mnoho řádků a změn v souboru export. csv, může být obtížné zjistit, které objekty se tyto změny týkají, na základě samotného atributu DN. Pro zjednodušení procesu analýzy změn použijte skript prostředí PowerShell csanalyzer. ps1. Skript načte běžné identifikátory (například DisplayName, userPrincipalName) objektů. Postup použití skriptu:
-1. Zkopírujte skript PowerShellu z části [CSAnalyzer](#appendix-csanalyzer) do souboru s názvem `csanalyzer.ps1`.
+**Načíst společné identifikátory** Soubor export.csv obsahuje všechny změny, které mají být exportovány. Každý řádek odpovídá změně objektu v prostoru konektoru a objekt je identifikován atributem DN. Atribut DN je jedinečný identifikátor přiřazený objektu v prostoru konektoru. Pokud máte v export.csv k analýze mnoho řádků nebo změn, může být obtížné zjistit, které objekty se tyto změny týkají, na základě samotného atributu DN. K zjednodušení procesu analýzy změn použijte skript prostředí PowerShell csanalyzer.ps1. Skript načte běžné identifikátory (například DisplayName, userPrincipalName) objektů. Postup použití skriptu:
+1. Zkopírujte skript PowerShellu z části [CSAnalyzer](#appendix-csanalyzer) do souboru s názvem `csanalyzer.ps1` .
 2. Otevřete okno PowerShellu a přejděte do složky, ve které jste vytvořili PowerShellový skript.
 3. Spusťte `.\csanalyzer.ps1 -xmltoimport %temp%\export.xml`.
-4. Teď máte soubor s názvem **processedusers1. csv** , který se dá prozkoumat v Microsoft Excelu. Všimněte si, že soubor poskytuje mapování z atributu DN na společné identifikátory (například DisplayName a userPrincipalName). V současné době nezahrnuje změny atributů, které mají být exportovány.
+4. Nyní máte soubor s názvem **processedusers1.csv** , který lze prozkoumat v aplikaci Microsoft Excel. Všimněte si, že soubor poskytuje mapování z atributu DN na společné identifikátory (například DisplayName a userPrincipalName). V současné době nezahrnuje změny atributů, které mají být exportovány.
 
 #### <a name="switch-active-server"></a>Přepnout aktivní server
 1. Na aktuálně aktivním serveru buď vypněte Server (DirSync/FIM/Azure AD Sync), takže se neexportuje do služby Azure AD ani nenastaví v pracovním režimu (Azure AD Connect).

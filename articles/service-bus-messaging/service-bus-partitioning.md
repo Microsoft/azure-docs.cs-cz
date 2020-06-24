@@ -7,14 +7,14 @@ manager: timlt
 editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 02/06/2020
+ms.date: 06/17/2020
 ms.author: aschhab
-ms.openlocfilehash: 671368993acb43c0d55eca73119effa934e3cff8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ff216cba76a0b6eecd4879b9ce3aefc131161b9d
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260940"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987759"
 ---
 # <a name="partitioned-queues-and-topics"></a>Dělené fronty a témata
 
@@ -30,6 +30,8 @@ Možnost dělení v žádné existující frontě nebo tématu není možné zm�
 Každá dělená fronta nebo téma se skládá z několika oddílů. Každý oddíl je uložený v jiném úložišti pro zasílání zpráv a zpracovávaný jiným zprostředkovatelem zpráv. Po odeslání zprávy do dělené fronty nebo tématu Service Bus přiřadí zprávu k jednomu z oddílů. Výběr se provádí náhodně Service Bus nebo pomocí klíče oddílu, který může odesílatel zadat.
 
 Když chce klient přijmout zprávu z dělené fronty nebo z předplatného oddílu, Service Bus zadá dotaz na všechny oddíly pro zprávy a vrátí první zprávu získanou z úložišť zpráv do přijímače. Service Bus ukládá do mezipaměti ostatní zprávy a vrátí je, když obdrží další žádosti o přijetí. Přijímající klient neví o dělení; chování v dělené frontě nebo tématu s klientským přístupem (například čtení, dokončování, odložení, nedoručené zprávy, předběžné načítání) je stejné jako chování běžné entity.
+
+Operace prohlížet v nerozdělené entitě vždycky vrátí nejstarší zprávu, ale ne na dělenou entitu. Místo toho vrátí nejstarší zprávu v jednom z oddílů, u kterých zprostředkovatel zpráv odpověděl jako první. V rámci všech oddílů není nijak zaručeno, že vrácená zpráva je nejstarší. 
 
 Při odesílání zprávy do dělené fronty nebo tématu se neúčtují žádné další náklady.
 

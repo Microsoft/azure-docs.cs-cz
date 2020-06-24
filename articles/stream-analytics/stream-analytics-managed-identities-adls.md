@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: seodec18
 ms.openlocfilehash: 01741ea56b9e6f55c1393e88fc7991d410c33119
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254375"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84712373"
 ---
 # <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities"></a>Ověření Stream Analytics pro Azure Data Lake Storage Gen1 pomocí spravovaných identit
 
@@ -66,7 +66,7 @@ Tento článek ukazuje tři způsoby, jak povolit spravovanou identitu pro úloh
 
 ## <a name="stream-analytics-tools-for-visual-studio"></a>Stream Analytics nástroje pro Visual Studio
 
-1. V souboru JobConfig. JSON nastavte **použít identitu přiřazenou systémem** na **hodnotu true**.
+1. V JobConfig.jsna serveru nastavte **použít identitu přiřazenou systémem** na **hodnotu true**.
 
    ![Stream Analytics spravované identity konfigurace úlohy](./media/stream-analytics-managed-identities-adls/adls-mi-jobconfig-vs.png)
 
@@ -166,7 +166,7 @@ Tento článek ukazuje tři způsoby, jak povolit spravovanou identitu pro úloh
 
    **PrincipalId** je ID objektu instančního objektu a je uveden na obrazovce portálu po vytvoření instančního objektu. Pokud jste vytvořili úlohu pomocí nasazení šablony Správce prostředků, ID objektu je uvedeno v vlastnosti identita odpovědi úlohy.
 
-   **Případě**
+   **Příklad**
 
    ```powershell
    PS > Set-AzDataLakeStoreItemAclEntry -AccountName "adlsmsidemo" -Path / -AceType

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 4/21/2020
-ms.openlocfilehash: c5062bce572fbeda4143902ae6a04b31b9a89754
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/10/2020
+ms.openlocfilehash: ddcfea684a22c9ad06197086b3e74700df755da1
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82025046"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707987"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-cli-and-rest-api"></a>Vytvoření a Správa replik pro čtení v Azure Database for MariaDB pomocí rozhraní příkazového řádku Azure a REST API
 
@@ -30,21 +30,24 @@ Repliky pro čtení můžete vytvořit a spravovat pomocí rozhraní příkazov�
 
 ### <a name="create-a-read-replica"></a>Vytvoření repliky pro čtení
 
+> [!IMPORTANT]
+> Když vytvoříte repliku pro hlavní server, který nemá žádné existující repliky, hlavní počítač se nejprve restartuje a připraví se pro replikaci. Vezměte v úvahu a udělejte tyto operace v době mimo špičku.
+
 Server repliky pro čtení se dá vytvořit pomocí následujícího příkazu:
 
 ```azurecli-interactive
 az mariadb server replica create --name mydemoreplicaserver --source-server mydemoserver --resource-group myresourcegroup
 ```
 
-`az mariadb server replica create` Příkaz vyžaduje následující parametry:
+`az mariadb server replica create`Příkaz vyžaduje následující parametry:
 
-| Nastavení | Příklad hodnoty | Popis  |
+| Nastavení | Příklad hodnoty | Description  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  Skupina prostředků, do které se vytvoří server repliky.  |
-| jméno | mydemoreplicaserver | Název nového serveru repliky, který se vytvoří. |
+| name | mydemoreplicaserver | Název nového serveru repliky, který se vytvoří. |
 | source-server | mydemoserver | Název nebo ID existujícího hlavního serveru, ze kterého se má replikovat. |
 
-Chcete-li vytvořit repliku čtení ve více oblastech `--location` , použijte parametr. 
+Chcete-li vytvořit repliku čtení ve více oblastech, použijte `--location` parametr. 
 
 Níže uvedený příklad rozhraní příkazového řádku vytvoří repliku v Západní USA.
 
@@ -66,9 +69,9 @@ Chcete-li zobrazit všechny repliky pro daný hlavní server, spusťte následuj
 az mariadb server replica list --server-name mydemoserver --resource-group myresourcegroup
 ```
 
-`az mariadb server replica list` Příkaz vyžaduje následující parametry:
+`az mariadb server replica list`Příkaz vyžaduje následující parametry:
 
-| Nastavení | Příklad hodnoty | Popis  |
+| Nastavení | Příklad hodnoty | Description  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  Skupina prostředků, do které se vytvoří server repliky.  |
 | název-serveru | mydemoserver | Název nebo ID hlavního serveru. |
@@ -84,12 +87,12 @@ Replikaci na server repliky pro čtení lze zastavit pomocí následujícího p�
 az mariadb server replica stop --name mydemoreplicaserver --resource-group myresourcegroup
 ```
 
-`az mariadb server replica stop` Příkaz vyžaduje následující parametry:
+`az mariadb server replica stop`Příkaz vyžaduje následující parametry:
 
-| Nastavení | Příklad hodnoty | Popis  |
+| Nastavení | Příklad hodnoty | Description  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  Skupina prostředků, ve které existuje server repliky.  |
-| jméno | mydemoreplicaserver | Název serveru repliky, na kterém má být replikace zastavena. |
+| name | mydemoreplicaserver | Název serveru repliky, na kterém má být replikace zastavena. |
 
 ### <a name="delete-a-replica-server"></a>Odstranění serveru repliky
 

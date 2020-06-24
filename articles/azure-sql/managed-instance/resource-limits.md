@@ -3,7 +3,7 @@ title: Omezení prostředků
 titleSuffix: Azure SQL Managed Instance
 description: Tento článek poskytuje přehled omezení prostředků pro spravovanou instanci Azure SQL.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 02/25/2020
-ms.openlocfilehash: 8007966482ba5f046a918ddfc02025e06fadc8d6
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 85d347c45e1ca2cd39c7504e44bd3ea063f788d6
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324177"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708413"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Přehled omezení prostředků spravované instance Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -65,7 +65,7 @@ Služba SQL Managed instance má dvě úrovně služeb: [pro obecné účely](..
 > [!Important]
 > Úroveň služby Pro důležité obchodní informace Service poskytuje další integrovanou kopii spravované instance SQL (sekundární replika), kterou je možné použít pro úlohu určenou jen pro čtení. Pokud můžete oddělit dotazy pro čtení a zápis a dotazy jen pro čtení a analýzu nebo vytváření sestav, získáte dvojnásobek virtuální jádra a paměti za stejnou cenu. Sekundární replika může prodlevu pár sekund za primární instancí, aby bylo možné přesměrovat úlohy vytváření sestav a analýzy, které nepotřebují přesný aktuální stav dat. V následující tabulce jsou **dotazy jen pro čtení** . Jedná se o dotazy, které se spouštějí u sekundární repliky.
 
-| **Příznak** | **Pro obecné účely** | **Pro důležité obchodní informace** |
+| **Funkce** | **Pro obecné účely** | **Pro důležité obchodní informace** |
 | --- | --- | --- |
 | Počet virtuálních jader\* | COMPUTE GEN4 –: 8, 16, 24<br/>Gen5:4, 8, 16, 24, 32, 40, 64, 80 | COMPUTE GEN4 –: 8, 16, 24 <br/> Gen5:4, 8, 16, 24, 32, 40, 64, 80 <br/>\*Stejný počet virtuální jádra je vyhrazen pro dotazy jen pro čtení. |
 | Maximální velikost paměti | COMPUTE GEN4 –: 56 GB-168 GB (7GB/vCore)<br/>Gen5:20,4 GB-408 GB (5.1 GB/vCore)<br/>Přidejte další virtuální jádra, abyste získali více paměti. | COMPUTE GEN4 –: 56 GB-168 GB (7GB/vCore)<br/>Gen5:20,4 GB-408 GB (5.1 GB/vCore) pro dotazy pro čtení i zápis<br/>+ dalších 20,4 GB až 408 GB (5.1 GB/vCore) pro dotazy jen pro čtení.<br/>Přidejte další virtuální jádra, abyste získali více paměti. |

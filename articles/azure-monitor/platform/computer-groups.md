@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 02/05/2019
 ms.openlocfilehash: a005b6cec811b8a584123dc4c8abab77766961e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79274772"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84689006"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Skupiny počítačů v Azure Monitor dotazy protokolu
 Skupiny počítačů v Azure Monitor umožňují oborovat [dotazy protokolu](../log-query/log-query-overview.md) na konkrétní sadu počítačů.  Každá skupina se naplní počítači pomocí dotazu, který definujete, nebo importováním skupin z různých zdrojů.  Pokud je skupina zahrnutá v dotazu protokolu, výsledky jsou omezené na záznamy, které odpovídají počítačům ve skupině.
@@ -21,7 +21,7 @@ Skupiny počítačů v Azure Monitor umožňují oborovat [dotazy protokolu](../
 ## <a name="creating-a-computer-group"></a>Vytvoření skupiny počítačů
 Skupinu počítačů můžete v Azure Monitor vytvořit pomocí kterékoli z metod v následující tabulce.  Podrobnosti o jednotlivých metodách jsou k dispozici v následujících částech. 
 
-| Metoda | Popis |
+| Metoda | Description |
 |:--- |:--- |
 | Dotaz protokolu |Vytvořte dotaz protokolu, který vrátí seznam počítačů. |
 | Rozhraní API pro prohledávání protokolů |Pomocí rozhraní API pro prohledání protokolu můžete programově vytvořit skupinu počítačů na základě výsledků dotazu protokolu. |
@@ -32,7 +32,7 @@ Skupinu počítačů můžete v Azure Monitor vytvořit pomocí kterékoli z met
 ### <a name="log-query"></a>Dotaz protokolu
 Skupiny počítačů vytvořené z dotazu protokolu obsahují všechny počítače, které jsou vráceny vámi definovaným dotazem.  Tento dotaz se spustí pokaždé, když se použije skupina počítačů, takže se projeví všechny změny od vytvoření skupiny.  
 
-Můžete použít libovolný dotaz pro skupinu počítačů, ale musí vrátit jinou sadu počítačů pomocí `distinct Computer`.  Následuje typický příklad dotazu, který můžete použít jako skupinu počítačů.
+Můžete použít libovolný dotaz pro skupinu počítačů, ale musí vrátit jinou sadu počítačů pomocí `distinct Computer` .  Následuje typický příklad dotazu, který můžete použít jako skupinu počítačů.
 
     Heartbeat | where Computer contains "srv" | distinct Computer
 
@@ -48,7 +48,7 @@ Následující tabulka popisuje vlastnosti, které definují skupinu počítač�
 
 | Vlastnost | Popis |
 |:---|:---|
-| Název   | Název dotazu, který se má zobrazit na portálu |
+| Name   | Název dotazu, který se má zobrazit na portálu |
 | Alias funkce | Jedinečný alias, který slouží k identifikaci skupiny počítačů v dotazu. |
 | Kategorie       | Kategorie pro uspořádání dotazů na portálu |
 
@@ -127,7 +127,7 @@ V pracovním prostoru Log Analytics se vytvoří záznam pro každé členství 
 | `GroupFullName` |Úplná cesta ke skupině včetně zdrojového a zdrojového názvu |
 | `GroupSource` |Zdroj, ze kterého se skupina shromáždila. <br><br>ActiveDirectory<br>WSUS<br>WSUSClientTargeting |
 | `GroupSourceName` |Název zdroje, ze kterého se skupina shromáždila.  V případě služby Active Directory se jedná o název domény. |
-| `ManagementGroupName` |Název skupiny pro správu agentů SCOM.  Pro jiné agenty to je AOI-\<ID pracovního prostoru.\> |
+| `ManagementGroupName` |Název skupiny pro správu agentů SCOM.  Pro jiné agenty je to AOI-\<workspace ID\> |
 | `TimeGenerated` |Datum a čas, kdy byla skupina počítačů vytvořena nebo aktualizována. |
 
 ## <a name="next-steps"></a>Další kroky

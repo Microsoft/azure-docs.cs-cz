@@ -3,12 +3,12 @@ title: Dokončení zotavení po havárii virtuálních počítačů
 description: Tento článek ukazuje, jak dokončit zotavení po havárii virtuálních počítačů pomocí funkce AVS
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: 5fdfc252486d94fcc22ebba9705fa5e259539921
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.openlocfilehash: 5ccaa009c8e3e059597636a8bb78cc3bd255fe68
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84148153"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84749956"
 ---
 # <a name="complete-a-disaster-recovery-of-virtual-machines-using-azure-vmware-solution"></a>Dokončení zotavení po havárii virtuálních počítačů pomocí řešení Azure VMware
 

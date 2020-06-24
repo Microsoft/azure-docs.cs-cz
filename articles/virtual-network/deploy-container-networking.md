@@ -10,18 +10,18 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: 704f08bc4a41eb52789f8f28675332892d72a500
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7cae4b579a933c03ec3a08a00ef032c57d15093f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80475136"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710010"
 ---
 # <a name="deploy-the-azure-virtual-network-container-network-interface-plug-in"></a>Nasazení modulu plug-in rozhraní CNI sítě Azure Virtual Network
 
@@ -31,7 +31,7 @@ Modul plug-in rozhraní CNI sítě Azure Virtual Network se instaluje na virtuá
 
 V modulu ACS-Engine se cluster Kubernetes nasadí pomocí šablony Azure Resource Manageru. Konfigurace clusteru se zadává v souboru JSON, který se předá nástroji při generování šablony. Podrobnosti k úplnému výčtu podporovaných nastavení clusteru včetně jejich popisu najdete v tématu [Modul služby Microsoft Azure Container Service – definice clusteru](https://github.com/Azure/acs-engine/blob/master/docs/clusterdefinition.md). Modul plug-in je výchozí síťový plug-in pro clustery vytvářené pomocí modulu ACS-Engine. Při konfiguraci modulu plug-in jsou důležitá následující nastavení konfigurace sítě:
 
-  | Nastavení                              | Popis                                                                                                           |
+  | Nastavení                              | Description                                                                                                           |
   |--------------------------------------|------------------------------------------------------------------------------------------------------                 |
   | firstConsecutiveStaticIP             | IP adresa přidělená k hlavnímu uzlu. Jedná se o povinné nastavení.                                     |
   | clusterSubnet v části kubernetesConfig | Blok CIDR podsítě virtuální sítě, kde je cluster nasazen a odkud se přidělují IP adresy jednotlivým kontejnerům Pod.   |
@@ -168,8 +168,8 @@ Konfigurační soubor sítě CNI je popsán ve formátu JSON. Ve výchozím nast
 
 Stáhněte modul plug-in z portálu [GitHub](https://github.com/Azure/azure-container-networking/releases). Vyhledejte nejnovější verzi pro platformu, kterou používáte:
 
-- **Linux**: [azure-vnet-cni-linux-amd64-\<č. verze\>.tgz](https://github.com/Azure/azure-container-networking/releases/download/v1.0.12-rc3/azure-vnet-cni-linux-amd64-v1.0.12-rc3.tgz)
-- **Windows**: [azure-vnet-cni-windows-amd64-\<č. verze\>.zip](https://github.com/Azure/azure-container-networking/releases/download/v1.0.12-rc3/azure-vnet-cni-windows-amd64-v1.0.12-rc3.zip)
+- **Linux**: [Azure-VNET-CNI-Linux-amd64- \<version no.\> . tgz](https://github.com/Azure/azure-container-networking/releases/download/v1.0.12-rc3/azure-vnet-cni-linux-amd64-v1.0.12-rc3.tgz)
+- **Windows**: [Azure-VNET-CNI-Windows-amd64- \<version no.\> . zip](https://github.com/Azure/azure-container-networking/releases/download/v1.0.12-rc3/azure-vnet-cni-windows-amd64-v1.0.12-rc3.zip)
 
 Zkopírujte do svého počítače instalační skript pro [Linux](https://github.com/Azure/azure-container-networking/blob/master/scripts/install-cni-plugin.sh) nebo [Windows](https://github.com/Azure/azure-container-networking/blob/master/scripts/Install-CniPlugin.ps1). Uložte skript v počítači do adresáře `scripts` a soubor pojmenujte `install-cni-plugin.sh` (Linux) nebo `install-cni-plugin.ps1` (Windows). K instalaci modulu plug-in spusťte příslušný skript pro vaši platformu a zadejte při tom verzi plug-inu, který používáte. Můžete tak zadat například *v1.0.12 rc3*:
 

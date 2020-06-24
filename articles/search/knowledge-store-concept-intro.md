@@ -1,5 +1,5 @@
 ---
-title: Úvod do znalostní báze Knowledge Store (Preview)
+title: Koncepty znalostní báze Knowledge Store (Preview)
 titleSuffix: Azure Cognitive Search
 description: Posílání obohacených dokumentů na Azure Storage, kde můžete zobrazit, změnit tvar a využívat obohacené dokumenty v Azure Kognitivní hledání a v jiných aplikacích. Tato funkce je ve verzi Public Preview.
 author: HeidiSteen
@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/05/2020
-ms.openlocfilehash: 20819bc6ec091eddf5d65b1c0d7aa57c821b2fc1
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: a8f7aa18598dba41b33ea4964bd2967a8c2670ac
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858794"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84752992"
 ---
-# <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Seznámení s znalostními obchody v Azure Kognitivní hledání
+# <a name="knowledge-store-in-azure-cognitive-search"></a>Znalostní báze ve službě Azure Kognitivní hledání
 
 > [!IMPORTANT] 
 > Znalostní databáze je aktuálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API verze 2019-05-06-Preview](search-api-preview.md) poskytuje funkce ve verzi Preview. V současné době je omezená podpora portálu a žádná podpora sady .NET SDK.
@@ -77,19 +77,19 @@ Projekce lze nakloubovat jako tabulky, objekty nebo soubory.
 
 Typ projekce, kterou zadáte v této struktuře, určuje typ úložiště používaný službou Knowledge Store.
 
-+ Tabulka úložiště se používá při definování `tables`. Definujte projekci tabulky, když potřebujete struktury tabulkového vytváření sestav pro vstupy do analytických nástrojů nebo exportovat jako datové snímky do jiných úložišť dat. Můžete zadat vícenásobné `tables` pro získání podmnožiny nebo průřezu obohacených dokumentů. V rámci stejné skupiny projekce jsou vztahy mezi tabulkami zachované, takže můžete pracovat se všemi nimi.
++ Tabulka úložiště se používá při definování `tables` . Definujte projekci tabulky, když potřebujete struktury tabulkového vytváření sestav pro vstupy do analytických nástrojů nebo exportovat jako datové snímky do jiných úložišť dat. Můžete zadat vícenásobné `tables` pro získání podmnožiny nebo průřezu obohacených dokumentů. V rámci stejné skupiny projekce jsou vztahy mezi tabulkami zachované, takže můžete pracovat se všemi nimi.
 
-+ Úložiště objektů BLOB se používá při definování `objects` nebo `files`. Fyzická reprezentace prvku `object` je hierarchická struktura JSON, která představuje obohacený dokument. A `file` je obrázek extrahovaný z dokumentu, který se přenese beze změny do úložiště objektů BLOB.
++ Úložiště objektů BLOB se používá při definování `objects` nebo `files` . Fyzická reprezentace prvku `object` je hierarchická struktura JSON, která představuje obohacený dokument. A `file` je obrázek extrahovaný z dokumentu, který se přenese beze změny do úložiště objektů BLOB.
 
-Jeden objekt projekce obsahuje jednu sadu `tables`, `objects`, `files`a pro mnoho scénářů může vytvoření jedné projekce stačit. 
+Jeden objekt projekce obsahuje jednu sadu `tables` ,, a `objects` `files` pro mnoho scénářů může vytvoření jedné projekce stačit. 
 
-`table` - `object` - `file` Je ale možné vytvořit několik sad projekce a můžete to udělat, pokud chcete použít různé datové vztahy. V rámci sady se data vztahují, za předpokladu, že tyto relace existují a lze je zjistit. Pokud vytvoříte další sady, dokumenty v každé skupině se nikdy netýkají. Příkladem použití více skupin projekce může být, pokud chcete, aby se stejná data mohla zajímat pro použití s vaším online systémem, a je potřeba, aby se stejná data mohla vystupovat v kanálu pro datové vědy, který je reprezentován jiným způsobem.
+Je ale možné vytvořit několik sad `table` - `object` - `file` projekce a můžete to udělat, pokud chcete použít různé datové vztahy. V rámci sady se data vztahují, za předpokladu, že tyto relace existují a lze je zjistit. Pokud vytvoříte další sady, dokumenty v každé skupině se nikdy netýkají. Příkladem použití více skupin projekce může být, pokud chcete, aby se stejná data mohla zajímat pro použití s vaším online systémem, a je potřeba, aby se stejná data mohla vystupovat v kanálu pro datové vědy, který je reprezentován jiným způsobem.
 
 ## <a name="requirements"></a>Požadavky 
 
 [Azure Storage](https://docs.microsoft.com/azure/storage/) se vyžaduje. Poskytuje fyzické úložiště. Můžete použít úložiště objektů blob, tabulkové úložiště nebo obojí. Úložiště objektů BLOB se používá pro nedotčené rozšířené dokumenty, většinou když výstup probíhá na navazující procesy. Table Storage je pro řezy obohacených dokumentů, které se běžně používají k analýze a vytváření sestav.
 
-[Dovednosti](cognitive-search-working-with-skillsets.md) je povinný. Obsahuje `knowledgeStore` definici a určuje strukturu a složení obohaceného dokumentu. Nemůžete vytvořit úložiště znalostí pomocí prázdného dovednosti. Musíte mít aspoň jednu dovednost v dovednosti.
+[Dovednosti](cognitive-search-working-with-skillsets.md) je povinný. Obsahuje definici a `knowledgeStore` určuje strukturu a složení obohaceného dokumentu. Nemůžete vytvořit úložiště znalostí pomocí prázdného dovednosti. Musíte mít aspoň jednu dovednost v dovednosti.
 
 [Indexer](search-indexer-overview.md) je povinný. Dovednosti je vyvolán indexerem, který řídí spuštění. Indexery jsou dodávány s vlastní sadou požadavků a atributů. Některé z těchto atributů mají přímý vliv na znalostní bázi Knowledge Store:
 
@@ -103,7 +103,7 @@ Jeden objekt projekce obsahuje jednu sadu `tables`, `objects`, `files`a pro mnoh
 
 ## <a name="how-to-create-a-knowledge-store"></a>Postup vytvoření úložiště znalostí
 
-K vytvoření úložiště Knowledge Store použijte portál nebo verzi Preview REST API (`api-version=2019-05-06-Preview`).
+K vytvoření úložiště Knowledge Store použijte portál nebo verzi Preview REST API ( `api-version=2019-05-06-Preview` ).
 
 ### <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
@@ -139,7 +139,7 @@ Jakmile rozšíření existují v úložišti, můžete použít jakýkoli nást
 
 <a name="kstore-rest-api"></a>
 
-## <a name="api-reference"></a>API – referenční informace
+## <a name="api-reference"></a>referenční dokumentace k rozhraní API
 
 REST API verze `2019-05-06-Preview` poskytuje znalostní bázi s dalšími definicemi na dovednosti. Kromě odkazu najdete informace o tom, jak volat rozhraní API, v tématu [Vytvoření úložiště znalostí pomocí služby post](knowledge-store-create-rest.md) .
 

@@ -3,22 +3,23 @@ title: Použití fondů systémových uzlů ve službě Azure Kubernetes Service
 description: Naučte se vytvářet a spravovat fondy systémových uzlů ve službě Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: article
-ms.date: 04/28/2020
-ms.openlocfilehash: 85cc699d6ef8c632663775e91f2b5cad6ca7a7b6
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/18/2020
+ms.author: mlearned
+ms.openlocfilehash: 9b6270f81e7af8bd508d29510698e6cf9a5a2010
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125243"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052646"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>Správa fondů systémových uzlů ve službě Azure Kubernetes Service (AKS)
 
-Ve službě Azure Kubernetes Service (AKS) jsou uzly stejné konfigurace seskupeny dohromady do *fondů uzlů*. Fondy uzlů obsahují základní virtuální počítače, na kterých běží vaše aplikace. Fondy systémových uzlů a fondy uživatelských uzlů jsou dva různé režimy fondu uzlů pro clustery AKS. Fondy systémových uzlů slouží jako primární účel hostování důležitých systémových lusků, jako jsou například CoreDNS a tunnelfront. Fondy uživatelských uzlů slouží jako primární účel hostování aplikace. V případě, že chcete mít v clusteru AKS jenom jeden fond, je ale možné naplánovat použití lusků na uzlech systému. Každý cluster AKS musí obsahovat alespoň jeden fond uzlů systému s alespoň jedním uzlem. 
+Ve službě Azure Kubernetes Service (AKS) jsou uzly stejné konfigurace seskupeny dohromady do *fondů uzlů*. Fondy uzlů obsahují základní virtuální počítače, na kterých běží vaše aplikace. Fondy systémových uzlů a fondy uživatelských uzlů jsou dva různé režimy fondu uzlů pro clustery AKS. Fondy systémových uzlů slouží jako primární účel hostování důležitých systémových lusků, jako jsou například CoreDNS a tunnelfront. Fondy uživatelských uzlů slouží jako primární účel hostování aplikace. V případě, že chcete mít v clusteru AKS jenom jeden fond, je ale možné naplánovat použití lusků na uzlech systému. Každý cluster AKS musí obsahovat alespoň jeden fond uzlů systému s alespoň jedním uzlem.
 
 > [!Important]
 > Pokud pro cluster AKS spustíte jeden fond uzlů systému v produkčním prostředí, doporučujeme pro fond uzlů použít aspoň tři uzly.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 * Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.3.1 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
 
@@ -29,7 +30,7 @@ Při vytváření a správě clusterů AKS, které podporují fondy systémovýc
 * Podívejte se [na téma kvóty, omezení velikosti virtuálních počítačů a dostupnost oblasti ve službě Azure Kubernetes Service (AKS)][quotas-skus-regions].
 * Cluster AKS musí být sestavený s virtuálním počítačem Scale Sets jako typ virtuálního počítače.
 * Název fondu uzlů může obsahovat jenom malé alfanumerické znaky a musí začínat malým písmenem. U fondů uzlů se systémem Linux musí být délka v rozmezí od 1 do 12 znaků. U fondů uzlů Windows musí mít délka 1 až 6 znaků.
-* Pro nastavení režimu fondu uzlů musí být použita verze rozhraní API 2020-03-01 nebo vyšší.
+* Pro nastavení režimu fondu uzlů musí být použita verze rozhraní API 2020-03-01 nebo vyšší. Clustery vytvořené ve verzích rozhraní API starších než 2020-03-01 obsahují pouze fondy uživatelských uzlů, ale mohou být migrovány do skupiny systémových uzlů pomocí následujících [kroků aktualizace režimu fondu](#update-existing-cluster-system-and-user-node-pools).
 * Režim fondu uzlů je povinná vlastnost, která musí být explicitně nastavena při použití šablon ARM nebo přímých volání rozhraní API.
 
 ## <a name="system-and-user-node-pools"></a>Fondy systémových a uživatelských uzlů
@@ -115,7 +116,10 @@ Režim **systému** typů je definován pro fondy systémových uzlů a režim t
 }
 ```
 
-## <a name="update-system-and-user-node-pools"></a>Aktualizace fondů systémových a uživatelských uzlů
+## <a name="update-existing-cluster-system-and-user-node-pools"></a>Aktualizace existujícího systému clusterů a fondů uživatelských uzlů
+
+> [!NOTE]
+> Pro nastavení režimu fondu systémových uzlů musí být použita verze rozhraní API 2020-03-01 nebo vyšší. Clustery vytvořené ve verzích rozhraní API starších než 2020-03-01 obsahují v důsledku toho pouze fondy uživatelských uzlů. Chcete-li získat funkce fondu uzlů systému a výhody ve starších clusterech, aktualizujte režim stávajících fondů uzlů pomocí následujících příkazů v nejnovější verzi Azure CLI.
 
 Můžete změnit režimy fondů systémových i uživatelských uzlů. Fond uzlů systému můžete změnit na fond uživatelů pouze v případě, že v clusteru AKS již existuje jiný fond uzlů systému.
 

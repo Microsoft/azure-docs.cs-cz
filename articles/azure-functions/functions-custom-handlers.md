@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.author: cshoe
 ms.date: 3/18/2020
 ms.topic: article
-ms.openlocfilehash: f0b738f394c4a544ddb31e25b4570890ccfa9235
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: cdbb5bbde1e5efef9bef992a62a54f1525a16df7
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995849"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052571"
 ---
 # <a name="azure-functions-custom-handlers-preview"></a>Azure Functions vlastní obslužné rutiny (Preview)
 
@@ -37,14 +37,14 @@ Následující diagram znázorňuje vztah mezi hostitelem funkcí a webovým ser
 - Webový server spustí jednotlivé funkce a vrátí [datovou část odpovědi](#response-payload) na hostitele Functions.
 - Služby Functions hostují odpověď jako výstupní datovou vazbu k cíli.
 
-Aplikace Azure Functions implementovaná jako vlastní obslužná rutina musí nakonfigurovat soubory *Host. JSON* a *Function. JSON* podle několika konvencí.
+Azure Functions aplikace implementovaná jako vlastní obslužná rutina musí nakonfigurovat *host.jsna* souborech a *function.jsna* souborech podle několika konvencí.
 
 ## <a name="application-structure"></a>Struktura aplikace
 
 K implementaci vlastní obslužné rutiny potřebujete následující aspekty aplikace:
 
-- Soubor *Host. JSON* v kořenovém adresáři vaší aplikace
-- Soubor *Function. JSON* pro každou funkci (uvnitř složky, která odpovídá názvu funkce)
+- *host.jsv* souboru v kořenovém adresáři vaší aplikace
+- *function.js* souboru pro jednotlivé funkce (uvnitř složky, která odpovídá názvu funkce)
 - Příkaz, skript nebo spustitelný soubor, který spouští webový server
 
 Následující diagram ukazuje, jak tyto soubory vypadají v systému souborů pro funkci s názvem "Order".
@@ -58,9 +58,9 @@ Následující diagram ukazuje, jak tyto soubory vypadají v systému souborů p
 
 ### <a name="configuration"></a>Konfigurace
 
-Aplikace je nakonfigurována prostřednictvím souboru *Host. JSON* . Tento soubor oznamuje hostiteli Functions, kam odesílají požadavky, ukázáním na webový server schopný zpracovávat události HTTP.
+Aplikace je nakonfigurována prostřednictvím *host.jsv* souboru. Tento soubor oznamuje hostiteli Functions, kam odesílají požadavky, ukázáním na webový server schopný zpracovávat události HTTP.
 
-Vlastní obslužná rutina je definována konfigurací souboru *Host. JSON* s podrobnostmi o tom, jak spustit webový server pomocí `httpWorker` oddílu.
+Vlastní obslužná rutina je definována konfigurací *host.jsv* souboru s podrobnostmi o tom, jak spustit webový server prostřednictvím `httpWorker` části.
 
 ```json
 {
@@ -75,7 +75,7 @@ Vlastní obslužná rutina je definována konfigurací souboru *Host. JSON* s po
 
 `httpWorker`Oddíl odkazuje na cíl definovaný v `defaultExecutablePath` . Cíl spuštění může být buď příkaz, spustitelný soubor nebo soubor, kde je webový server implementován.
 
-Pro skriptované aplikace `defaultExecutablePath` odkazují na modul runtime skriptovacího jazyka a `defaultWorkerPath` odkazuje na umístění souboru skriptu. Následující příklad ukazuje, jak je aplikace JavaScriptu v Node. js nakonfigurovaná jako vlastní obslužná rutina.
+Pro skriptované aplikace `defaultExecutablePath` odkazují na modul runtime skriptovacího jazyka a `defaultWorkerPath` odkazuje na umístění souboru skriptu. Následující příklad ukazuje, jak je aplikace JavaScriptu v Node.js nakonfigurovaná jako vlastní obslužná rutina.
 
 ```json
 {
@@ -107,15 +107,15 @@ Argumenty můžete předat také pomocí `arguments` pole:
 Argumenty jsou nezbytné pro mnoho nastavení ladění. Další podrobnosti najdete v části [ladění](#debugging) .
 
 > [!NOTE]
-> Soubor *Host. JSON* musí být ve struktuře adresáře na stejné úrovni jako běžící webový server. Některé jazyky a sady nástrojů nemusí ve výchozím nastavení umístit tento soubor do kořenového adresáře aplikace.
+> *host.jsv* souboru musí být ve struktuře adresáře na stejné úrovni jako běžící webový server. Některé jazyky a sady nástrojů nemusí ve výchozím nastavení umístit tento soubor do kořenového adresáře aplikace.
 
 #### <a name="bindings-support"></a>Podpora vazeb
 
-Standardní triggery spolu se vstupními a výstupními vazbami jsou k dispozici odkazem na [sady rozšíření](./functions-bindings-register.md) v souboru *Host. JSON* .
+Standardní triggery spolu se vstupními a výstupními vazbami jsou k dispozici odkazem na [sady rozšíření](./functions-bindings-register.md) ve vašem *host.jsv* souboru.
 
 ### <a name="function-metadata"></a>Metadata funkce
 
-Při použití s vlastní obslužnou rutinou se obsah *Function. JSON* nijak neliší od toho, jak byste definovali funkci v jakémkoli jiném kontextu. Jediným požadavkem je, že soubory *Function. JSON* musí být ve složce s názvem, aby odpovídaly názvu funkce.
+Při použití s vlastní obslužnou rutinou se *function.js* obsahu neliší od toho, jak byste definovali funkci v jakémkoli jiném kontextu. Jediným požadavkem je, že *function.js* souborů musí být ve složce s názvem, aby odpovídala názvu funkce.
 
 ### <a name="request-payload"></a>Datová část požadavku
 
@@ -125,11 +125,11 @@ Všechny ostatní typy funkcí, které zahrnují vstupní, výstupní vazby nebo
 
 Následující kód představuje ukázkovou datovou část požadavku. Datová část obsahuje strukturu JSON se dvěma členy: `Data` a `Metadata` .
 
-`Data`Člen obsahuje klíče, které odpovídají vstupům a názvům triggerů, jak jsou definovány v poli Bindings v souboru *Function. JSON* .
+`Data`Člen obsahuje klíče, které odpovídají vstupům a názvům triggerů, jak jsou definovány v poli vazeb v *function.jsv* souboru.
 
 `Metadata`Člen zahrnuje [metadata generovaná ze zdroje události](./functions-bindings-expressions-patterns.md#trigger-metadata).
 
-S ohledem na vazby definované v následujícím souboru *Function. JSON* :
+S ohledem na vazby definované v následujících *function.js* souboru:
 
 ```json
 {
@@ -181,18 +181,18 @@ Podle konvencí jsou odpovědi na funkce naformátované jako páry klíč/hodno
 
 | <nobr>Klíč datové části</nobr>   | Datový typ | Poznámky                                                      |
 | ------------- | --------- | ------------------------------------------------------------ |
-| `Outputs`     | JSON      | Uchovává hodnoty odpovědí definované `bindings` polem *Function. JSON* .<br /><br />Pokud je například funkce nakonfigurovaná s výstupní vazbou úložiště objektů BLOB s názvem "blob", pak `Outputs` obsahuje klíč s názvem `blob` , který je nastavený na hodnotu objektu BLOB. |
+| `Outputs`     | JSON      | Uchovává hodnoty odpovědí definované `bindings` polem, které *function.jsv* souboru.<br /><br />Pokud je například funkce nakonfigurovaná s výstupní vazbou úložiště objektů BLOB s názvem "blob", pak `Outputs` obsahuje klíč s názvem `blob` , který je nastavený na hodnotu objektu BLOB. |
 | `Logs`        | pole     | Zprávy se zobrazí v protokolech vyvolání funkcí.<br /><br />Při spuštění v Azure se zprávy zobrazí v Application Insights. |
-| `ReturnValue` | řetězec    | Slouží k poskytnutí odpovědi, pokud je výstup nakonfigurován jako `$return` v souboru *Function. JSON* . |
+| `ReturnValue` | řetězec    | Slouží k poskytnutí odpovědi, pokud je výstup nakonfigurován jako `$return` v *function.js* v souboru. |
 
 Podívejte se na [Příklad pro vzorovou datovou část](#bindings-implementation).
 
 ## <a name="examples"></a>Příklady
 
-Vlastní obslužné rutiny se dají implementovat v jakémkoli jazyce, který podporuje události HTTP. I když Azure Functions [plně podporuje jazyk JavaScript a Node. js](./functions-reference-node.md), následující příklady ukazují, jak implementovat vlastní obslužnou rutinu pomocí JavaScriptu v Node. js pro účely instrukcí.
+Vlastní obslužné rutiny se dají implementovat v jakémkoli jazyce, který podporuje události HTTP. I když Azure Functions [plně podporuje JavaScript a Node.js](./functions-reference-node.md), následující příklady ukazují, jak implementovat vlastní obslužnou rutinu pomocí javascriptu v Node.js pro účely instrukcí.
 
 > [!TIP]
-> Když se naučíte, jak implementovat vlastní obslužnou rutinu v jiných jazycích, tady uvedené příklady založené na Node. js mohou být užitečné také v případě, že jste chtěli spustit aplikaci Functions v nepodporované verzi Node. js.
+> I když se naučíte, jak implementovat vlastní obslužnou rutinu v jiných jazycích, uvedené příklady založené na Node.js můžou být užitečné také v případě, že jste chtěli spustit aplikaci Functions v nepodporované verzi Node.js.
 
 ## <a name="http-only-function"></a>Funkce pouze HTTP
 
@@ -213,7 +213,7 @@ content-type: application/json
 
 ### <a name="implementation"></a>Implementace
 
-Ve složce s názvem *http*se v souboru *Function. JSON* NAkonfiguruje funkce aktivované protokolem HTTP.
+Ve složce s názvem *http*nakonfiguruje *function.jsv* souboru funkce aktivované protokolem HTTP.
 
 ```json
 {
@@ -235,7 +235,7 @@ Ve složce s názvem *http*se v souboru *Function. JSON* NAkonfiguruje funkce ak
 
 Funkce je nakonfigurována tak, aby přijímala `GET` požadavky i i `POST` Výsledná hodnota je poskytnuta prostřednictvím argumentu s názvem `res` .
 
-V kořenovém adresáři aplikace je soubor *Host. JSON* nakonfigurovaný tak, aby spouštěl Node. js a odkazoval na `server.js` soubor.
+V kořenovém adresáři aplikace je *host.js* pro soubor nakonfigurovaný tak, aby běžel Node.js a odkazoval na `server.js` soubor.
 
 ```json
 {
@@ -249,7 +249,7 @@ V kořenovém adresáři aplikace je soubor *Host. JSON* nakonfigurovaný tak, a
 }
 ```
 
-Soubor souborového *serveru. js* implementuje webový server a funkci http.
+Soubor *server.js* souboru implementuje webový server a funkci http.
 
 ```javascript
 const express = require("express");
@@ -302,7 +302,7 @@ content-type: application/json
 
 ### <a name="implementation"></a>Implementace
 
-Ve složce s názvem *Order*se v souboru *Function. JSON* NAkonfiguruje funkce aktivované protokolem HTTP.
+Ve složce s názvem *order*function.jsse *v* souboru NAkonfiguruje funkce aktivované protokolem HTTP.
 
 ```json
 {
@@ -333,7 +333,7 @@ Ve složce s názvem *Order*se v souboru *Function. JSON* NAkonfiguruje funkce a
 
 Tato funkce je definovaná jako [funkce aktivovaná protokolem HTTP](./functions-bindings-http-webhook-trigger.md) , která vrátí [odpověď HTTP](./functions-bindings-http-webhook-output.md) a vytvoří výstup zprávy [úložiště fronty](./functions-bindings-storage-queue-output.md) .
 
-V kořenovém adresáři aplikace je soubor *Host. JSON* nakonfigurovaný tak, aby spouštěl Node. js a odkazoval na `server.js` soubor.
+V kořenovém adresáři aplikace je *host.js* pro soubor nakonfigurovaný tak, aby běžel Node.js a odkazoval na `server.js` soubor.
 
 ```json
 {
@@ -347,7 +347,7 @@ V kořenovém adresáři aplikace je soubor *Host. JSON* nakonfigurovaný tak, a
 }
 ```
 
-Soubor souborového *serveru. js* implementuje webový server a funkci http.
+Soubor *server.js* souboru implementuje webový server a funkci http.
 
 ```javascript
 const express = require("express");
@@ -388,7 +388,7 @@ Po `POST` odeslání požadavků do této funkce jsou data zveřejněna prostře
 - Text žádosti je k dispozici prostřednictvím`req.body`
 - Data odeslaná do funkce jsou k dispozici prostřednictvím`req.body.Data.req.Body`
 
-Odpověď funkce je formátována na dvojici klíč/hodnota, kde `Outputs` člen obsahuje hodnotu JSON, kde klíče odpovídají výstupům, jak jsou definovány v souboru *Function. JSON* .
+Odpověď funkce je formátována na dvojici klíč/hodnota, kde `Outputs` člen obsahuje hodnotu JSON, kde klíče odpovídají výstupům, jak jsou definovány v *function.jsv* souboru.
 
 Když je nastavení `message` rovno zprávě, která byla součástí z požadavku, a `res` k očekávané odpovědi HTTP, tato funkce vypíše zprávu do Queue Storage a vrátí odpověď HTTP.
 
@@ -396,7 +396,7 @@ Když je nastavení `message` rovno zprávě, která byla součástí z požadav
 
 Chcete-li ladit vlastní aplikaci obslužné rutiny Functions, je nutné přidat argumenty, které jsou vhodné pro jazyk a modul runtime pro povolení ladění.
 
-Například chcete-li ladit aplikaci Node. js, `--inspect` příznak je předán jako argument v souboru *Host. JSON* .
+Například pro ladění aplikace Node.js `--inspect` je příznak předán jako argument v *host.js* v souboru.
 
 ```json
 {
@@ -412,7 +412,7 @@ Například chcete-li ladit aplikaci Node. js, `--inspect` příznak je předán
 ```
 
 > [!NOTE]
-> Konfigurace ladění je součástí souboru *Host. JSON* , což znamená, že před nasazením do produkčního prostředí možná budete muset některé argumenty odebrat.
+> Konfigurace ladění je součástí *host.jsv* souboru. to znamená, že před nasazením do produkčního prostředí možná budete muset některé argumenty odebrat.
 
 Pomocí této konfigurace můžete spustit hostitelský proces funkce pomocí následujícího příkazu:
 
@@ -424,9 +424,9 @@ Po spuštění procesu můžete připojit ladicí program a zarážky volání.
 
 ### <a name="visual-studio-code"></a>Visual Studio Code
 
-V následujícím příkladu je Ukázková konfigurace, která předvádí, jak můžete nastavit soubor *Launch. JSON* pro připojení aplikace k ladicímu programu Visual Studio Code.
+Následující příklad je Ukázková konfigurace, která předvádí, jak můžete nastavit *launch.js* pro připojení aplikace k ladicímu programu Visual Studio Code.
 
-Tento příklad je pro Node. js, takže možná budete muset změnit tento příklad pro jiné jazyky nebo moduly runtime.
+Tento příklad je určen pro Node.js, takže možná budete muset změnit tento příklad pro jiné jazyky nebo moduly runtime.
 
 ```json
 {
@@ -447,9 +447,14 @@ Tento příklad je pro Node. js, takže možná budete muset změnit tento pří
 
 Vlastní obslužnou rutinu lze nasadit téměř každou možnost hostování Azure Functions (viz [omezení](#restrictions)). Pokud vaše obslužná rutina vyžaduje vlastní závislosti (například modul runtime jazyka), může být nutné použít [vlastní kontejner](./functions-create-function-linux-custom-image.md).
 
+K nasazení vlastní aplikace obslužných rutin pomocí Azure Functions Core Tools spusťte následující příkaz.
+
+```bash
+func azure functionapp publish $functionAppName --no-build --force
+```
+
 ## <a name="restrictions"></a>Omezení
 
-- Vlastní obslužné rutiny nejsou podporované v plánech spotřeby Linux.
 - Webový server musí být spuštěn do 60 sekund.
 
 ## <a name="samples"></a>ukázky

@@ -3,7 +3,7 @@ title: Transakční replikace
 titleSuffix: Azure SQL Managed Instance
 description: Přečtěte si o použití SQL Server transakční replikace se spravovanou instancí Azure SQL.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: data-movement
 ms.custom: sqldbrb=1
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 04/20/2020
-ms.openlocfilehash: e23b772c6f57a2649d626e879d404e76ab2ab380
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 2163a6e47767f6ce990526c7ececb7b4b554bf4e
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219346"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708493"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance"></a>Transakční replikace se spravovanou instancí Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

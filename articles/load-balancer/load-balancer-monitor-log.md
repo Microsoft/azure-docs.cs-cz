@@ -7,18 +7,18 @@ documentationcenter: na
 author: asudbring
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: 7563eb4d22048021886925f6864e3616bed83a75
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 1c8acd2d8055359288608f7bd2e5f54f8c4f6cc3
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858763"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84809196"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>Protokoly služby Azure Monitor pro veřejný Load Balancer úrovně Basic
 
@@ -38,9 +38,9 @@ Protokolování aktivit je u každého prostředku Správce prostředků povolen
 Přihlaste se k webu [Azure Portal](https://portal.azure.com). Pokud ještě nemáte Nástroj pro vyrovnávání zatížení, vytvořte před pokračováním [Nástroj pro vyrovnávání zatížení](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal) .
 
 1. Na portálu klikněte na **skupiny prostředků**.
-2. Vyberte ** \<Resource-Group-Name>** , kde je váš nástroj pro vyrovnávání zatížení.
+2. Vyberte **\<resource-group-name>** , kde je nástroj pro vyrovnávání zatížení.
 3. Vyberte svůj nástroj pro vyrovnávání zatížení.
-4. Vyberte **monitorování** > **nastavení diagnostiky**.
+4. Vyberte **monitorování**  >  **nastavení diagnostiky**.
 5. V podokně **nastavení diagnostiky** v části **nastavení diagnostiky**vyberte **+ Přidat nastavení diagnostiky**.
 6. V podokně vytvoření **nastavení diagnostiky** do pole **název** zadejte **myLBDiagnostics** .
 7. Pro **nastavení diagnostiky**máte tři možnosti.  Můžete zvolit jednu, dvě nebo všechny tři a nakonfigurovat každou z vašich požadavků:

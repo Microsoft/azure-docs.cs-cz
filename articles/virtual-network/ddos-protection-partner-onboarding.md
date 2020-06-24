@@ -5,15 +5,15 @@ ms.service: virtual-network
 documentationcenter: na
 author: anupamvi
 mms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/28/2020
 ms.author: kumud
-ms.openlocfilehash: 39cb2f90b49725c78746df69505fad7160e1db92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8136ea2a567ac823f03941ebd4a67bed043ada07
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76849679"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84689347"
 ---
 # <a name="partnering-with-azure-ddos-protection-standard"></a>Partnerství s Azure DDoS Protection standardem
 Tento článek popisuje možnosti partnerských serverů, které jsou povolené standardem Azure DDoS Protection. Tento článek je navržený tak, aby pomohla manažerům produktu a obchodním vývojářům pochopení investičních cest a poskytoval přehled o propozicích partnerských funkcí.
@@ -80,7 +80,7 @@ Pro partnery, kteří konfigurují integraci s Azure DDoS Protection Standard, j
 - [Reference k rozhraní API Azure DDoS Protection](https://docs.microsoft.com/rest/api/virtualnetwork/ddosprotectionplans)
 - [Reference k rozhraní API virtuální sítě Azure](https://docs.microsoft.com/rest/api/virtualnetwork/virtualnetworks)
 
-### <a name="get-help"></a>Podpora
+### <a name="get-help"></a>Získání pomoci
 
 - Pokud máte dotazy týkající se integrace aplikací, služeb nebo produktů s Azure DDoS Protectionm standardem, je třeba se obrátit na [komunitu zabezpečení Azure](https://techcommunity.microsoft.com/t5/security-identity/bd-p/Azure-Security).
 - Sledujte diskuzi o [Stack Overflow](https://stackoverflow.com/tags/azure-ddos/).

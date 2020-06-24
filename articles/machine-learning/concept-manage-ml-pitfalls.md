@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 04/09/2020
-ms.openlocfilehash: e1191c01ce3f62f34c351cefd29a5e40aa68bfd3
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: e9e809eb805e891fdf70a85d42eebc3e17da8902
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658393"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85210180"
 ---
 # <a name="prevent-overfitting-and-imbalanced-data-with-automated-machine-learning"></a>Ochrana před přeložením a nevyváženými daty pomocí automatizovaného strojového učení
 
@@ -79,11 +79,9 @@ Automatizované ML také implementuje explicitní **omezení složitosti modelu*
 
 Nevyvážená data se běžně nacházejí v datech pro scénáře klasifikace Machine Learning a odkazují na data, která obsahují neúměrný poměr pozorování v každé třídě. Tato nerovnováha může vést k falešně vnímanému kladnému účinku přesnosti modelu, protože vstupní data mají posun směrem k jedné třídě, což vede k vyškolený model k napodobení tohoto posunu. 
 
-Vzhledem k tomu, že algoritmy klasifikace jsou obvykle vyhodnocovány přesností, je kontrola přesnosti modelu dobrým způsobem, jak zjistit, zda byla ovlivněna nevyváženými daty. Má velmi vysokou přesnost nebo velmi nízkou přesnost pro určité třídy?
-
 Automatizované spuštění ML navíc generuje následující grafy automaticky, což vám pomůže pochopit správnost klasifikací modelu a identifikovat modely, které mohou ovlivnit data, která jsou potenciálně ovlivněná nevyváženými daty.
 
-Graf| Popis
+Graf| Description
 ---|---
 [Nejasná matice](how-to-understand-automated-ml.md#confusion-matrix)| Vyhodnotí správně klasifikované popisky proti skutečným popiskům dat. 
 [Přesnost – odvolání](how-to-understand-automated-ml.md#precision-recall-chart)| Vyhodnotí poměr správných popisků oproti poměru nalezených instancí popisků dat. 
@@ -91,17 +89,19 @@ Graf| Popis
 
 ## <a name="handle-imbalanced-data"></a>Zpracovat nevyvážená data 
 
-V rámci svého cíle zjednodušit pracovní postup strojového učení mají automatizované funkce ML integrované možnosti, které vám pomůžou se zabývat nevyváženými daty, jako je například, 
+V rámci svého cíle zjednodušit pracovní postup strojového učení mají **automatizované funkce ml integrované možnosti** , které vám pomůžou se zabývat nevyváženými daty, jako je například, 
 
-- **Sloupec váhy**: automatizovaná ml podporuje jako vstup vážený sloupec, což způsobuje, že řádky v datech mají být vyšší nebo nižší, což může způsobit větší nebo menší "důležité" třídy.
+- **Sloupec váhy**: automatizovaná ml podporuje sloupec vah jako vstup, což způsobuje, že řádky v datech se mají navýšit nebo snížit, což lze použít k tomu, aby byla třída větší nebo menší "důležitá".
 
 - Algoritmy používané automatizovanou ML dokáže správně zvládnout nerovnováhu až 20:1, což znamená, že nejběžnější třída může mít 20 krát více řádků v datech než nejméně společná třída.
 
-Následující techniky jsou další možnosti pro zpracování nevyvážených dat mimo automatizované ML. 
+- Využijte metriku výkonu, která se bude lépe dopracovat s nevyváženými daty. Například AUC_weighted je primární metrika, která vypočítá příspěvek každé třídy na základě relativního počtu vzorků představujících tuto třídu, proto je větší odolnost proti nevyrovnanosti.
+
+Následující techniky jsou další možnosti pro zpracování nevyvážených dat **mimo automatizované ml**. 
 
 - Převzorkování na dokonce i nevyrovnanost třídy, a to buď pomocí vzorkování menších tříd, nebo dolů vyvzorkováním větších tříd. Tyto metody vyžadují, aby byly zkušenosti se zpracováním a analýzou.
 
-- Využijte metriku výkonu, která se bude lépe dopracovat s nevyváženými daty. Například skóre F1 je vážený průměr přesnosti a odvolání. Míry přesnosti – přesnost přesného třídění – nízká přesnost označuje vysoký počet falešně pozitivních hodnot--, zatímco při odvolání měření úplnosti klasifikátoru udává vysoký počet falešně negativních hodnot. 
+- Zkontrolujte metriky výkonu pro nevyvážená data. Například skóre F1 je vážený průměr přesnosti a odvolání. Míry přesnosti – přesnost přesného třídění – nízká přesnost označuje vysoký počet falešně pozitivních hodnot--, zatímco při odvolání měření úplnosti klasifikátoru udává vysoký počet falešně negativních hodnot.
 
 ## <a name="next-steps"></a>Další kroky
 

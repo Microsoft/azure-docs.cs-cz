@@ -5,12 +5,12 @@ description: Zjistěte, jak dynamicky vytvořit trvalý svazek s disky Azure ve 
 services: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.openlocfilehash: 9ac41b1738d1691f6547f508d1a38dec89b0bb79
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 44741452f95995327914978bbfd5b0a49566faa5
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208138"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84751362"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Dynamické vytvoření a použití trvalého svazku s disky Azure ve službě Azure Kubernetes Service (AKS)
 
@@ -21,11 +21,11 @@ Trvalý svazek představuje část úložiště, která byla zřízena pro použ
 
 Další informace o Kubernetes svazcích najdete v tématu [Možnosti úložiště pro aplikace v AKS][concepts-storage].
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V tomto článku se předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
 
-Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.59 nebo novější. Verzi `az --version` zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
+Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.59 nebo novější.  `az --version`Verzi zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
 
 ## <a name="built-in-storage-classes"></a>Předdefinované třídy úložiště
 
@@ -38,7 +38,11 @@ Každý cluster AKS obsahuje dvě předem vytvořené třídy úložiště, kter
 * Třída úložiště *Managed-Premium* zřídí disk Azure úrovně Premium.
     * Disky Premium jsou založené na vysoce výkonných discích SSD s nízkou latencí. Jsou ideální pro virtuální počítače s produkčními úlohami. Pokud uzly AKS v clusteru používají Storage úrovně Premium, vyberte třídu *Managed-Premium* .
     
-Tyto výchozí třídy úložiště neumožňují aktualizovat velikost svazku po jeho vytvoření. Chcete-li tuto funkci povolit, přidejte řádek *allowVolumeExpansion: true* do jedné z výchozích tříd úložiště nebo vytvořte vlastní třídu úložiště. Existující třídu úložiště můžete upravit pomocí `kubectl edit sc` příkazu. Další informace o třídách úložiště a vytváření vlastních najdete v tématu [Možnosti úložiště pro aplikace v AKS][storage-class-concepts].
+Pokud používáte jednu z výchozích tříd úložiště, nemůžete po vytvoření třídy úložiště aktualizovat velikost svazku. Aby bylo možné aktualizovat velikost svazku po vytvoření třídy úložiště, přidejte řádek `allowVolumeExpansion: true` do jedné z výchozích tříd úložiště, nebo můžete vytvořit vlastní třídu úložiště. Existující třídu úložiště můžete upravit pomocí `kubectl edit sc` příkazu. 
+
+Pokud například chcete použít disk o velikosti 4 TiB, musíte vytvořit třídu úložiště, která definuje, `cachingmode: None` protože [ukládání disku do mezipaměti není podporováno pro disky 4 TIB a větší](../virtual-machines/windows/premium-storage-performance.md#disk-caching).
+
+Další informace o třídách úložiště a vytváření vlastních tříd úložiště najdete v tématu [Možnosti úložiště pro aplikace v AKS][storage-class-concepts].
 
 Pomocí příkazu [kubectl Get SC][kubectl-get] zobrazte předem vytvořené třídy úložiště. Následující příklad ukazuje třídy úložiště před vytvořením dostupné v rámci clusteru AKS:
 
@@ -57,7 +61,7 @@ managed-premium     kubernetes.io/azure-disk   1h
 
 Deklarace identity trvalého svazku (PVC) se používá k automatickému zřízení úložiště na základě třídy úložiště. V takovém případě může virtuální okruh použít jednu z předem vytvořených tříd úložiště k vytvoření spravovaného disku Azure úrovně Standard nebo Premium.
 
-Vytvořte soubor s názvem `azure-premium.yaml`a zkopírujte ho do následujícího manifestu. Deklarace identity vyžádá disk s `azure-managed-disk` názvem, který má velikost *5 GB* přístup *ReadWriteOnce* . Třída úložiště *Managed-Premium* je zadaná jako třída úložiště.
+Vytvořte soubor s názvem `azure-premium.yaml` a zkopírujte ho do následujícího manifestu. Deklarace identity vyžádá disk s názvem `azure-managed-disk` , který má velikost *5 GB* přístup *ReadWriteOnce* . Třída úložiště *Managed-Premium* je zadaná jako třída úložiště.
 
 ```yaml
 apiVersion: v1
@@ -74,7 +78,7 @@ spec:
 ```
 
 > [!TIP]
-> Pokud chcete vytvořit disk, který využívá úložiště úrovně Standard `storageClassName: default` , použijte místo *spravovaného na Premium*.
+> Pokud chcete vytvořit disk, který využívá úložiště úrovně Standard, použijte `storageClassName: default` místo *spravovaného na Premium*.
 
 Pomocí příkazu [kubectl Apply][kubectl-apply] vytvořte deklaraci trvalého svazku a zadejte soubor *Azure-Premium. yaml* :
 
@@ -86,9 +90,9 @@ persistentvolumeclaim/azure-managed-disk created
 
 ## <a name="use-the-persistent-volume"></a>Použití trvalého svazku
 
-Po vytvoření deklarace identity trvalého svazku a úspěšném zřízení disku je možné vytvořit pod s přístupem k disku. Následující manifest vytvoří základní NGINX pod, který používá deklaraci trvalého svazku s názvem *Azure-Managed-disk* k připojení disku Azure v cestě `/mnt/azure`. V případě kontejnerů Windows serveru určete *mountPath* pomocí konvence cesty Windows, třeba *:*.
+Po vytvoření deklarace identity trvalého svazku a úspěšném zřízení disku je možné vytvořit pod s přístupem k disku. Následující manifest vytvoří základní NGINX pod, který používá deklaraci trvalého svazku s názvem *Azure-Managed-disk* k připojení disku Azure v cestě `/mnt/azure` . V případě kontejnerů Windows serveru určete *mountPath* pomocí konvence cesty Windows, třeba *:*.
 
-Vytvořte soubor s názvem `azure-pvc-disk.yaml`a zkopírujte ho do následujícího manifestu.
+Vytvořte soubor s názvem `azure-pvc-disk.yaml` a zkopírujte ho do následujícího manifestu.
 
 ```yaml
 kind: Pod
@@ -123,7 +127,7 @@ $ kubectl apply -f azure-pvc-disk.yaml
 pod/mypod created
 ```
 
-Teď máte spuštěný pod diskem Azure připojeným k `/mnt/azure` adresáři. Tato konfigurace se může zobrazit při kontrole pod tím `kubectl describe pod mypod`, jak je znázorněno v následujícím zhuštěném příkladu:
+Teď máte spuštěný pod diskem Azure připojeným k `/mnt/azure` adresáři. Tato konfigurace se může zobrazit při kontrole pod tím `kubectl describe pod mypod` , jak je znázorněno v následujícím zhuštěném příkladu:
 
 ```console
 $ kubectl describe pod mypod

@@ -10,11 +10,11 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 10/18/2018
 ms.openlocfilehash: 72261989b7cee9d2251eb18b36431ec807b0e874
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79273004"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84686014"
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Rychlý Start pro PowerShell v Azure Cloud Shell
 
@@ -88,7 +88,7 @@ MyResourceGroup         MyVM2       eastus   Standard_DS2_v2_Promo  Windows    S
 
 ### <a name="allresources-view"></a>Zobrazení AllResources
 
-Zadejte `dir` do `AllResources` pole adresář, aby se zobrazily prostředky Azure.
+Zadejte do pole `dir` `AllResources` adresář, aby se zobrazily prostředky Azure.
 
 ```azurepowershell-interactive
 PS Azure:\MySubscriptionName> dir AllResources
@@ -114,13 +114,13 @@ TestVm2   westus     Succeeded         Standard_DS1_v2 WindowsServer 2016-Datace
 ```
 
 > [!NOTE]
-> Můžete si všimnout, že při psaní `dir`podruhé je Cloud Shell možné zobrazit položky mnohem rychleji.
+> Můžete si všimnout, že při psaní podruhé `dir` je Cloud Shell možné zobrazit položky mnohem rychleji.
 > Je to proto, že podřízené položky jsou ukládány do mezipaměti v paměti pro lepší činnost koncového uživatele.
 Můžete ale kdykoli použít `dir -Force` k získání nových dat.
 
 ### <a name="navigate-storage-resources"></a>Navigace v prostředcích úložiště
 
-Když do `StorageAccounts` adresáře zadáte, můžete snadno procházet všechny prostředky úložiště.
+Když do adresáře zadáte `StorageAccounts` , můžete snadno procházet všechny prostředky úložiště.
 
 ```azurepowershell-interactive
 PS Azure:\MySubscriptionName\StorageAccounts\MyStorageAccountName\Files> dir
@@ -176,14 +176,14 @@ TestVm10   MyResourceGroup2   eastus    Standard_DS1_v2 Windows           mytest
  > [!WARNING]
  > Přečtěte si prosím [řešení potíží se vzdálenou správou virtuálních počítačů Azure](troubleshooting.md#troubleshooting-remote-management-of-azure-vms).
 
-  Za předpokladu, že máte virtuální počítač, MyVM1, `Invoke-AzVMCommand` využijeme k vyvolání bloku skriptu PowerShellu na vzdáleném počítači.
+  Za předpokladu, že máte virtuální počítač, MyVM1, využijeme `Invoke-AzVMCommand` k vyvolání bloku skriptu PowerShellu na vzdáleném počítači.
 
   ```azurepowershell-interactive
   Enable-AzVMPSRemoting -Name MyVM1 -ResourceGroupname MyResourceGroup
   Invoke-AzVMCommand -Name MyVM1 -ResourceGroupName MyResourceGroup -Scriptblock {Get-ComputerInfo} -Credential (Get-Credential)
   ```
 
-  Můžete také nejprve přejít do adresáře VirtualMachines a spustit `Invoke-AzVMCommand` ho následujícím způsobem.
+  Můžete také nejprve přejít do adresáře VirtualMachines a spustit ho `Invoke-AzVMCommand` následujícím způsobem.
 
   ```azurepowershell-interactive
   PS Azure:\> cd MySubscriptionName\ResourceGroups\MyResourceGroup\Microsoft.Compute\virtualMachines
@@ -254,15 +254,15 @@ mywebapp3       Running  MyResourceGroup3   {mywebapp3.azurewebsites.net...   So
 
 ## <a name="ssh"></a>SSH
 
-Chcete-li provést ověření na serverech nebo virtuálních počítačích pomocí protokolu SSH, vygenerujte dvojici klíčů veřejného a privátního klíče `authorized_keys` v Cloud Shell a publikujte veřejný klíč `/home/user/.ssh/authorized_keys`na vzdáleném počítači, například.
+Chcete-li provést ověření na serverech nebo virtuálních počítačích pomocí protokolu SSH, vygenerujte dvojici klíčů veřejného a privátního klíče v Cloud Shell a publikujte veřejný klíč na `authorized_keys` vzdáleném počítači, například `/home/user/.ssh/authorized_keys` .
 
 > [!NOTE]
-> Privátní veřejné klíče SSH můžete vytvořit pomocí a publikovat `ssh-keygen` je `$env:USERPROFILE\.ssh` v nástroji v Cloud Shell.
+> Privátní veřejné klíče SSH můžete vytvořit pomocí `ssh-keygen` a publikovat je `$env:USERPROFILE\.ssh` v nástroji v Cloud Shell.
 
 ### <a name="using-ssh"></a>Použití SSH
 
 Pokud chcete vytvořit novou konfiguraci virtuálního počítače pomocí rutin [Azure PowerShell, postupujte](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-powershell) podle pokynů.
-Než zahájíte `New-AzVM` volání do nasazení, přidejte do konfigurace virtuálního počítače veřejný klíč SSH.
+Než zahájíte volání do `New-AzVM` nasazení, přidejte do konfigurace virtuálního počítače veřejný klíč SSH.
 Nově vytvořený virtuální počítač bude obsahovat veřejný klíč v `~\.ssh\authorized_keys` umístění, čímž se k virtuálnímu počítači zapíná relace SSH bez přihlašovacích údajů.
 
 ```azurepowershell-interactive
@@ -284,9 +284,9 @@ ssh azureuser@MyVM.Domain.Com
 
 ## <a name="list-available-commands"></a>Zobrazit dostupné příkazy
 
-V `Azure` části jednotka zadejte `Get-AzCommand` , aby se získaly příkazy Azure specifické pro kontext.
+V části `Azure` jednotka zadejte, `Get-AzCommand` aby se získaly příkazy Azure specifické pro kontext.
 
-Případně můžete k získání dostupných příkazů `Get-Command *az* -Module Az.*` Azure vždycky použít.
+Případně můžete k `Get-Command *az* -Module Az.*` Získání dostupných příkazů Azure vždycky použít.
 
 ## <a name="install-custom-modules"></a>Nainstalovat vlastní moduly
 
@@ -308,7 +308,7 @@ Get-Help Get-AzVM
 
 ## <a name="use-azure-files-to-store-your-data"></a>Použití souborů Azure k ukládání dat
 
-Můžete vytvořit skript, říkáte `helloworld.ps1`ho a uložte ho do souboru, `clouddrive` abyste ho mohli použít napříč relacemi prostředí.
+Můžete vytvořit skript, říkáte `helloworld.ps1` ho a uložte ho do souboru, `clouddrive` abyste ho mohli použít napříč relacemi prostředí.
 
 ```azurepowershell-interactive
 cd $HOME\clouddrive
@@ -325,8 +325,8 @@ Když použijete PowerShell v Cloud Shell, `helloworld.ps1` soubor bude existova
 
 ## <a name="use-custom-profile"></a>Použít vlastní profil
 
-Prostředí PowerShell můžete přizpůsobit vytvořením profilů PowerShellu – `profile.ps1` (nebo `Microsoft.PowerShell_profile.ps1`).
-Uložte ji pod `$profile.CurrentUserAllHosts` (nebo `$profile.CurrentUserAllHosts`), aby se mohla načíst do každého PowerShellu v Cloud Shell relace.
+Prostředí PowerShell můžete přizpůsobit vytvořením profilů PowerShellu – `profile.ps1` (nebo `Microsoft.PowerShell_profile.ps1` ).
+Uložte ji pod `$profile.CurrentUserAllHosts` (nebo `$profile.CurrentUserAllHosts` ), aby se mohla načíst do každého PowerShellu v Cloud Shell relace.
 
 Informace o tom, jak vytvořit profil, najdete v tématu [o profilech][profile].
 

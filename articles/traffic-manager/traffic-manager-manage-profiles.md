@@ -7,17 +7,17 @@ author: rohinkoul
 ms.service: traffic-manager
 manager: twooley
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/10/2017
 ms.author: rohink
-ms.openlocfilehash: adfe7d117d2329832a5b5e9e782a9029a682ff3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9da534642bc2e48878667d262309037963fcdc62
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76938612"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711574"
 ---
 # <a name="manage-an-azure-traffic-manager-profile"></a>Správa profilu Azure Traffic Manageru
 
@@ -30,7 +30,7 @@ Profil Traffic Manageru můžete vytvořit pomocí webu Azure Portal. Po vytvoř
 ### <a name="to-create-a-traffic-manager-profile"></a>Vytvoření profilu Traffic Manageru
 
 1. V prohlížeči se přihlaste k webu [Azure Portal](https://portal.azure.com). Pokud ještě účet nemáte, můžete si zaregistrovat [zkušební verzi na měsíc zdarma](https://azure.microsoft.com/free/). 
-2. Klikněte na **vytvořit prostředek** > **sítě** > **Traffic Manager profil** > **vytvořit**.
+2. Klikněte na **vytvořit prostředek**  >  **sítě**  >  **Traffic Manager profil**  >  **vytvořit**.
 4. Část **Vytvořit profil služby Traffic Manager** vyplňte následovně:
     1. Do pole **Název** zadejte název profilu. Tento název musí být jedinečný v rámci zóny trafficmanager.net a ve výsledcích názvu DNS `<name>`, trafficmanager.net.
     2. Jakou **Metodu směrování** vyberte **Priorita**.
@@ -50,14 +50,14 @@ Existující profil můžete zakázat, aby Traffic Manager neodkazoval požadavk
 2. Nasměrování provozu do koncových bodů prostřednictvím nastavení profilu Traffic Manageru se zastaví.
 3. V prohlížeči se přihlaste k webu [Azure Portal](https://portal.azure.com).
 2. Na panelu hledání na portálu vyhledejte název **profilu služby Traffic Manager**, který chcete upravit, a pak na tento profil služby Traffic Manager klikněte v zobrazených výsledcích.
-3. Klikněte na **Přehled** > **Zakázat**.
+3. Klikněte na **Přehled**  >  **Zakázat**.
 4. Potvrďte zakázání profilu služby Traffic Manager.
 
 ### <a name="to-enable-a-profile"></a>Povolení profilu
 
 1. V prohlížeči se přihlaste k webu [Azure Portal](https://portal.azure.com).
 2. Na panelu hledání na portálu vyhledejte název **profilu služby Traffic Manager**, který chcete upravit, a pak na tento profil služby Traffic Manager klikněte v zobrazených výsledcích.
-3. Klikněte na **Přehled** > **Povolit**.
+3. Klikněte na **Přehled**  >  **Povolit**.
 1. Pokud používáte vlastní název domény, vytvořte si na internetovém serveru DNS záznam prostředku DNS, který bude odkazovat na název domény ve vašem profilu Traffic Manageru.
 2. Provoz se směruje do příslušných koncových bodů.
 
@@ -65,7 +65,7 @@ Existující profil můžete zakázat, aby Traffic Manager neodkazoval požadavk
 
 1. Ověřte, že záznam prostředku DNS na vašem serveru DNS pro internet již nepoužívá záznam prostředku CNAME, který odkazuje na název domény pro váš profil Traffic Manageru.
 2. Na panelu hledání na portálu vyhledejte název **profilu služby Traffic Manager**, který chcete upravit, a pak na tento profil služby Traffic Manager klikněte v zobrazených výsledcích.
-3. Klikněte na **Přehled** > **Odstranit**.
+3. Klikněte na **Přehled**  >  **Odstranit**.
 4. Potvrďte odstranění profilu služby Traffic Manager.
 
 ## <a name="next-steps"></a>Další kroky

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: a64908eb639a44c6bc9d742e84ebb4d01082d49d
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 7d32e4100d00a4ecff9f8bd5017d8bc5ab74105e
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847918"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84752439"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Vytvoření nabídky virtuálních počítačů Azure na Azure Marketplace
 
@@ -31,7 +31,7 @@ Když publikujete své nabídky na Azure Marketplace, můžete:
 - Získejte vysoce kvalitní zájemce z těchto tržišť.
 - Získejte služby, které jsou povýšené na prodejní a prodejní týmy pole Microsoftu.
 
-### <a name="before-you-begin"></a>Před zahájením
+### <a name="before-you-begin"></a>Než začnete
 
 Pokud jste to ještě neudělali, Projděte si [příručku pro publikování nabídek virtuálních počítačů](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines) a materiál tohoto virtuálního počítače Azure:
 
@@ -63,7 +63,7 @@ Váš technický tým by měl mít základní znalosti a praktické znalosti ná
 2. V levém podokně vyberte přehled **komerčního tržiště**  >  **Overview**.
 3. Na stránce **Přehled** vyberte **Nový nabídka**  >  **virtuální počítač Azure**.
 
-    ![Snímek obrazovky s možnostmi levého podokna v nabídce a tlačítkem Nová nabídka](./media/new-offer-azure-vm.png)
+    ![Snímek obrazovky s možnostmi levého podokna v nabídce a tlačítkem Nová nabídka](./media/new-offer-azure-virtual-machine.png)
 
 > [!NOTE]
 > Po publikování vaší nabídky se všechny úpravy, které provedete v partnerském centru, zobrazí Azure Marketplace až po opětovném publikování nabídky. Nezapomeňte vždy znovu publikovat nabídku po provedení změn.
@@ -171,7 +171,7 @@ Zákazníkům musíte poskytnout podmínky nabídky a ujednání. Máte dvě mo�
 Na stránce **seznam nabídek** můžete definovat podrobnosti nabídky, jako je název nabídky, popis, odkazy a kontakty.
 
 > [!NOTE]
-> Vaše nabídka obsahu, jako je popis, dokumenty, snímky obrazovky a podmínky použití, nemusí být v angličtině, pokud popis nabídky začíná frází "Tato aplikace je k dispozici pouze v jazyce, který není v \< angličtině>." Můžete také zadat adresu URL pro odkaz na web, který nabízí obsah v jiném jazyce, než který je použit v obsahu nabídky.
+> Vaše nabídka obsahu, jako je popis, dokumenty, snímky obrazovky a podmínky použití, nemusí být v angličtině, pokud popis nabídky začíná frází "Tato aplikace je k dispozici pouze v nástroji \<non-English language> ." Můžete také zadat adresu URL pro odkaz na web, který nabízí obsah v jiném jazyce, než který je použit v obsahu nabídky.
 
 ### <a name="marketplace-details"></a>Podrobnosti Marketplace
 
@@ -191,7 +191,7 @@ Zadejte krátký popis vaší nabídky, který se zobrazí ve výsledcích hled�
 
 Zadejte delší popis nabídky, která se zobrazí ve výsledcích hledání Azure Marketplace. Může obsahovat až 256 znaků.
 
-#### <a name="description"></a>Popis
+#### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -223,7 +223,7 @@ Poskytněte kontaktní informace partnerům Microsoftu, kteří se použijí, kd
 
 - Name
 - E-mail
-- Telefon
+- Rozložení
 
 ### <a name="engineering-contact"></a>Technický kontakt
 
@@ -231,14 +231,14 @@ Poskytněte kontaktní informace Microsoftu pro použití v případě problém�
 
 - Name
 - E-mail
-- Telefon
+- Rozložení
 
 ### <a name="azure-marketplace-media"></a>Azure Marketplace média
 
 Poskytněte loga a obrázky, které se mají použít s vaší nabídkou. Všechny obrázky musí být ve formátu PNG. Rozmazaný obraz způsobí odmítnutí odeslání.
 
->[!Note]
->Pokud máte problém s nahráváním souborů, ujistěte se, že vaše místní síť neblokuje *https://upload.xboxlive.com* službu, kterou používá Partnerské centrum.
+>[!NOTE]
+>Pokud máte problém s nahráváním souborů, ujistěte se, že vaše místní síť neblokuje https://upload.xboxlive.com službu, kterou používá Partnerské centrum.
 
 #### <a name="azure-marketplace-logos"></a>Loga Azure Marketplace
 
@@ -514,32 +514,73 @@ Tato stránka obsahuje také odkazy, které vám pomůžou s touto nabídkou pra
 
 ## <a name="marketplace-examples"></a>Příklady Marketplace
 
-Následující příklady znázorňují, jak se nabídka zobrazuje na Azure Marketplace.
+Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Marketplace:
 
-### <a name="azure-marketplace-offer-details"></a>Podrobnosti nabídky Azure Marketplace
+:::image type="content" source="media/example-azure-marketplace-virtual-machine-offer.png" alt-text="Ukazuje, jak se tato nabídka zobrazuje v Azure Marketplace.":::
 
-![Příklad stránky s podrobnostmi nabídky Azure Marketplace](media/avm-create1.png)
+#### <a name="call-out-descriptions"></a>Popisy volání
 
-### <a name="azure-marketplace-search-results"></a>Azure Marketplace výsledků hledání
+1. Velké logo
+2. Price
+3. Kategorie
+4. podmínky a ujednání
+5. Adresa zásad ochrany osobních údajů (odkaz)
+6. Název nabídky
+7. Description
+8. Užitečné odkazy
+9. Snímky obrazovky a videa
 
-![Příklad stránky podrobností hledání Azure Marketplace](media/avm-create2.png)
+<br>Tady je příklad toho, jak se zobrazují informace nabídky ve výsledcích hledání Azure Marketplace:
 
-### <a name="azure-marketplace-plan-details"></a>Podrobnosti o plánu Azure Marketplace
+:::image type="content" source="media/example-azure-marketplace-virtual-machine-search-results.png" alt-text="Ukazuje, jak se tato nabídka zobrazuje ve výsledcích hledání Azure Marketplace.":::
 
-![Příklad stránky s podrobnostmi plánu Azure Marketplace](media/avm-create3.png)
+#### <a name="call-out-descriptions"></a>Popisy volání
 
-### <a name="azure-portal-offer-details"></a>Podrobnosti nabídky Azure Portal
+1. Malé logo
+2. Název nabídky
+3. Souhrn výsledků hledání
+4. Zkušební verze
 
-![Příklad stránky s podrobnostmi nabídky Azure Portal](media/avm-create4.png)
+<br>Tady je příklad Azure Marketplace podrobnosti o plánu:
 
-### <a name="azure-portal-search-results"></a>Azure Portal výsledků hledání
+:::image type="content" source="media/example-azure-marketplace-virtual-machine-plan-details.png" alt-text="Ukazuje podrobnosti o Azure Marketplace plánu.":::
 
-![Příklad stránky výsledků hledání Azure Portal](media/avm-create5.png)
+#### <a name="call-out-descriptions"></a>Popisy volání
 
-### <a name="azure-portal-plan-details"></a>Podrobnosti o plánu Azure Portal
+1. Název a souhrn plánu
+2. Doporučené velikosti virtuálních počítačů
+3. Ceny plánu
 
-![Příklad stránky s podrobnostmi plánu Azure Portal](media/avm-create6.png)
+<br>Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Portal:
 
-## <a name="next-steps"></a>Další kroky
+:::image type="content" source="media/example-azure-portal-virtual-machine-offer.png" alt-text="Ukazuje, jak se tato nabídka zobrazuje v Azure Portal.":::
+
+#### <a name="call-out-descriptions"></a>Popisy volání
+
+1. Name
+2. Description
+3. Užitečné odkazy
+4. Snímky obrazovky a videa
+
+<br>Tady je příklad toho, jak se ve výsledcích hledání Azure Portal zobrazí informace o nabídce:
+
+:::image type="content" source="media/example-azure-portal-virtual-machine-search-results.png" alt-text="Ukazuje, jak se tato nabídka zobrazuje ve výsledcích hledání Azure Portal.":::
+
+#### <a name="call-out-descriptions"></a>Popisy volání
+
+1. Malé logo
+2. Název nabídky
+3. Souhrn výsledků hledání
+
+<br>Tady je příklad podrobností plánu Azure Portal:
+
+:::image type="content" source="media/example-azure-portal-virtual-machine-plan-details.png" alt-text="Ukazuje podrobnosti o Azure Portal plánu.":::
+
+#### <a name="call-out-descriptions"></a>Popisy volání
+
+1. Název plánu
+2. Popis plánu
+
+## <a name="next-step"></a>Další krok
 
 - [Aktualizace stávající nabídky na komerčním webu Marketplace](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)

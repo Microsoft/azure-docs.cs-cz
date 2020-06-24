@@ -4,15 +4,15 @@ description: Postup inzerce vlastních tras do klientů Point-to-site
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/11/2019
 ms.author: cherylmc
-ms.openlocfilehash: 3588755e2aab1c84d443e917eca8c7fca280b49a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ad007514e48ea751257884ba6e9ccb3965442d36
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756895"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987582"
 ---
 # <a name="advertise-custom-routes-for-p2s-vpn-clients"></a>Inzerovat vlastní trasy pro klienty VPN P2S
 
@@ -22,7 +22,7 @@ Je možné, že budete chtít inzerovat vlastní trasy všem klientům VPN typu 
 
 ## <a name="to-advertise-custom-routes"></a>Inzerování vlastních tras
 
-K inzerování vlastních tras použijte `Set-AzVirtualNetworkGateway cmdlet`. Následující příklad ukazuje, jak inzerovat protokol IP pro [tabulky účtu úložiště contoso](https://contoso.table.core.windows.net).
+K inzerování vlastních tras použijte `Set-AzVirtualNetworkGateway cmdlet` . Následující příklad ukazuje, jak inzerovat protokol IP pro [tabulky účtu úložiště contoso](https://contoso.table.core.windows.net).
 
 1. Proveďte test *contoso.Table.Core.Windows.NET* a poznamenejte si IP adresu. Příklad:
 

@@ -3,7 +3,7 @@ title: Nasazení spravované instance SQL do fondu instancí
 titleSuffix: Azure SQL Managed Instance
 description: Tento článek popisuje, jak vytvořit a spravovat fondy spravované instance Azure SQL (Preview).
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 569b1fd964665e3efec87adebd5f9a76de01f381
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 1461ba4ae0bea61b3a220c22144a31eade6cdf04
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84659648"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708798"
 ---
 # <a name="deploy-azure-sql-managed-instance-to-an-instance-pool"></a>Nasazení spravované instance Azure SQL do fondu instancí
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -30,11 +30,11 @@ V následující tabulce jsou uvedeny dostupné operace týkající se fondů in
 
 |Příkaz|portál Azure|PowerShell|
 |:---|:---|:---|
-|Vytvoření fondu instancí|No|Yes|
-|Aktualizace fondu instancí (omezený počet vlastností)|No |Yes |
-|Ověření využití fondu instancí a vlastností|No|Yes |
-|Odstranění fondu instancí|No|Yes|
-|Vytvoření spravované instance v rámci fondu instancí|No|Yes|
+|Vytvoření fondu instancí|Ne|Ano|
+|Aktualizace fondu instancí (omezený počet vlastností)|Ne |Ano |
+|Ověření využití fondu instancí a vlastností|Ne|Ano |
+|Odstranění fondu instancí|Ne|Ano|
+|Vytvoření spravované instance v rámci fondu instancí|Ne|Ano|
 |Aktualizace využití prostředků pro spravovanou instanci|Ano |Ano|
 |Zkontroluje využití a vlastnosti spravované instance.|Ano|Ano|
 |Odstranění spravované instance z fondu|Ano|Ano|
@@ -43,7 +43,7 @@ V následující tabulce jsou uvedeny dostupné operace týkající se fondů in
 
 Dostupné [Příkazy prostředí PowerShell](https://docs.microsoft.com/powershell/module/az.sql/):
 
-|Rutina |Popis |
+|Rutina |Description |
 |:---|:---|
 |[New-AzSqlInstancePool](/powershell/module/az.sql/new-azsqlinstancepool/) | Vytvoří fond spravovaných instancí SQL. |
 |[Get-AzSqlInstancePool](/powershell/module/az.sql/get-azsqlinstancepool/) | Vrátí informace o fondu instancí. |

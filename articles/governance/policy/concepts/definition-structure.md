@@ -1,21 +1,21 @@
 ---
 title: Podrobnosti struktury definice zásad
 description: Popisuje způsob, jakým se používají definice zásad k navázání konvencí pro prostředky Azure ve vaší organizaci.
-ms.date: 05/11/2020
+ms.date: 06/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: de9b3c5242f361c9f0cf7128a5ec32c0e7dce428
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: a70534f91584f72ad81b71913c48062e51a324d3
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84205020"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052734"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
 Azure Policy stanoví konvence pro prostředky. Definice zásad popisují [podmínky](#conditions) dodržování předpisů prostředků a efekt, který se má provést, pokud je splněna podmínka. Podmínka porovnává [pole](#fields) vlastností prostředku s požadovanou hodnotou. K polím vlastností prostředku se dostanete pomocí [aliasů](#aliases). Pole vlastností prostředku je buď pole s jednou hodnotou, nebo [pole](#understanding-the--alias) s více hodnotami. Vyhodnocení podmínky se liší u polí.
 Přečtěte si další informace o [podmínkách](#conditions).
 
-Definováním konvencí můžete řídit náklady a snadněji spravovat prostředky. Můžete například určit, že jsou povoleny pouze určité typy virtuálních počítačů. Nebo můžete vyžadovat, aby všechny prostředky měly konkrétní značku. Zásady se dědí ze všech podřízených prostředků. Pokud se zásada použije pro skupinu prostředků, vztahuje se na všechny prostředky v této skupině prostředků.
+Definováním konvencí můžete řídit náklady a snadněji spravovat prostředky. Můžete například určit, že jsou povoleny pouze určité typy virtuálních počítačů. Nebo můžete vyžadovat, aby prostředky měly konkrétní značku. Přiřazení zásad se dědí prostřednictvím podřízených prostředků. Pokud se pro skupinu prostředků použije přiřazení zásady, vztahuje se na všechny prostředky v této skupině prostředků.
 
 Schéma definice zásad najdete tady:[https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json)
 
@@ -37,7 +37,7 @@ Například následující JSON zobrazuje zásadu, která omezuje, kde jsou pros
     "properties": {
         "displayName": "Allowed locations",
         "description": "This policy enables you to restrict the locations your organization can specify when deploying resources.",
-        "mode": "all",
+        "mode": "Indexed",
         "metadata": {
             "version": "1.0.0",
             "category": "Locations"
@@ -91,7 +91,7 @@ I když nelze nastavit vlastnost **typu** , existují tři hodnoty, které jsou 
 
 ### <a name="resource-manager-modes"></a>Správce prostředků režimy
 
-**Režim** určuje, které typy prostředků se budou vyhodnocovat pro zásady. Podporované režimy:
+**Režim** určuje, které typy prostředků se vyhodnotí pro definici zásady. Podporované režimy:
 
 - `all`: vyhodnotit skupiny prostředků, předplatná a všechny typy prostředků
 - `indexed`: vyhodnotit jenom typy prostředků, které podporují značky a umístění.
@@ -106,8 +106,8 @@ Ve většině případů doporučujeme nastavit **režim** na `all` . Všechny d
 
 V současné době jsou podporovány následující režimy poskytovatele prostředků ve verzi Preview:
 
-- `Microsoft.ContainerService.Data`pro správu pravidel kontroleru přístupu pro [službu Azure Kubernetes](../../../aks/intro-kubernetes.md). Zásady, které používají tento režim poskytovatele prostředků, **musí** používat [EnforceRegoPolicy](./effects.md#enforceregopolicy) efekt. Tento režim je _zastaralý_.
-- `Microsoft.Kubernetes.Data`pro správu clusterů Kubernetes v systému Azure nebo mimo něj. Zásady, které používají tento režim poskytovatele prostředků, **musí** používat [EnforceOPAConstraint](./effects.md#enforceopaconstraint) efekt.
+- `Microsoft.ContainerService.Data`pro správu pravidel kontroleru přístupu pro [službu Azure Kubernetes](../../../aks/intro-kubernetes.md). Definice používající tento režim poskytovatele prostředků **musí** používat efekt [EnforceRegoPolicy](./effects.md#enforceregopolicy) . Tento režim je _zastaralý_.
+- `Microsoft.Kubernetes.Data`pro správu clusterů Kubernetes v systému Azure nebo mimo něj. Definice používající tento režim poskytovatele prostředků používají účinky _audit_, _Deny_a _disabled_. Použití efektu [EnforceOPAConstraint](./effects.md#enforceopaconstraint) se _už nepoužívá_.
 - `Microsoft.KeyVault.Data`pro správu trezorů a certifikátů v [Azure Key Vault](../../../key-vault/general/overview.md).
 
 > [!NOTE]
@@ -207,7 +207,7 @@ Při vytváření iniciativy nebo zásad je nutné zadat umístění definice. U
 Pokud je umístění definice:
 
 - Zásadu můžou přiřadit jenom prostředky v rámci daného **předplatného** .
-- Zásadu můžou přiřadit jenom prostředky v rámci podřízených skupin **pro správu a** podřízených předplatných. Pokud plánujete použít definici zásady pro několik předplatných, umístění musí být skupina pro správu, která obsahuje tyto odběry.
+- Zásadu můžou přiřadit jenom prostředky v rámci podřízených skupin **pro správu a** podřízených předplatných. Pokud plánujete použít definici zásady pro několik předplatných, umístění musí být skupina pro správu, která obsahuje předplatné.
 
 ## <a name="policy-rule"></a>Pravidlo zásad
 
@@ -283,11 +283,11 @@ Pro **méně**, **lessOrEquals**, **větší**a **greaterOrEquals**, pokud typ v
 Při použití podmínek **Like** a **notLike** zadáte v hodnotě zástupný znak `*` .
 Hodnota by neměla mít více než jeden zástupný znak `*` .
 
-Při použití podmínek **Match** a **notMatch** zadejte, `#` aby odpovídaly číslici, `?` pro písmeno, `.` aby odpovídaly jakémukoli znaku a jakémukoliv jinému znaku, aby odpovídaly tomuto skutečnému znaku. Při **porovnávání** a **notMatch** se rozlišují velká a malá písmena. všechny ostatní podmínky, které vyhodnocují _StringValue_ , rozlišují malá a velká písmena. Alternativy nerozlišující velká a malá písmena jsou k dispozici v **matchInsensitively** a **notMatchInsensitively**.
+Při použití podmínek **Match** a **notMatch** zadejte, `#` aby odpovídaly číslici, `?` pro písmeno, `.` aby odpovídaly jakémukoli znaku a jakémukoliv jinému znaku, aby odpovídaly tomuto skutečnému znaku. Zatímco **Match** a **notMatch** rozlišují velká a malá písmena, všechny ostatní podmínky, které vyhodnocují _StringValue_ , rozlišují malá a velká písmena. Alternativy nerozlišující velká a malá písmena jsou k dispozici v **matchInsensitively** a **notMatchInsensitively**.
 
 V hodnotě pole ** \[ \* \] alias** pole je každý prvek v poli vyhodnocen individuálně pomocí logických prvků **a** mezi prvky. Další informace najdete v tématu [vyhodnocení \[ \* \] aliasu](../how-to/author-policies-for-arrays.md#evaluating-the--alias).
 
-### <a name="fields"></a>Fields (Pole)
+### <a name="fields"></a>Pole
 
 Podmínky jsou tvořeny pomocí polí. Pole odpovídá vlastnostem v datové části požadavku prostředku a popisuje stav prostředku.
 
@@ -432,7 +432,7 @@ S revidovaným pravidlem zásad `if()` před tím, než **name** se pokusíte z�
 
 ### <a name="count"></a>Počet
 
-Podmínky, které počítají, kolik členů pole v datové části prostředků, které odpovídají výrazu podmínky, mohou být tvořeny pomocí výrazu **Count** . Běžné scénáře kontrolují, jestli alespoň jedno z ', ' přesně jedno z ', ' vše z ' nebo ' žádné z ', které členové pole splní. funkce **Count** vyhodnocuje každého člena pole [ \[ \* \] aliasu](#understanding-the--alias) pro výraz podmínky a sečte _skutečný_ výsledek, který je pak porovnán s operátorem výrazu. Výrazy **Count** můžou být do jedné definice **policyRule** přidané až třikrát.
+Podmínky, které počítají, kolik členů pole v datové části prostředků, které odpovídají výrazu podmínky, mohou být tvořeny pomocí výrazu **Count** . Běžné scénáře kontrolují, jestli alespoň jedno z ', ' přesně jedno z ', ' vše z ' nebo ' žádné z ', které členové pole splní. funkce **Count** vyhodnocuje každého člena pole [ \[ \* \] aliasu](#understanding-the--alias) pro výraz podmínky a sečte _skutečný_ výsledek, který je pak porovnán s operátorem výrazu. Výrazy **Count** můžou být do jedné definice **policyRule** přidány až třikrát.
 
 Struktura výrazu **Count** je:
 
@@ -451,7 +451,7 @@ Struktura výrazu **Count** je:
 Pro **počet**se používají tyto vlastnosti:
 
 - **Count. Field** (Required): obsahuje cestu k poli a musí se jednat o alias pole. Pokud pole chybí, je výraz vyhodnocen jako _nepravdivý_ bez zvážení výrazu podmínky.
-- **Count. Where** (volitelné): výraz podmínky, který má individuálně vyhodnotit každého člena pole [ \[ \* \] aliasu](#understanding-the--alias) **Count. Field**. Pokud tato vlastnost není zadána, jsou všechny členy pole s cestou pole vyhodnoceny na _hodnotu true_. V této vlastnosti lze použít jakoukoli [podmínku](../concepts/definition-structure.md#conditions) .
+- **Count. Where** (volitelné): výraz podmínky, který má individuálně vyhodnotit každého člena pole [ \[ \* \] aliasu](#understanding-the--alias) **Count. Field**. Pokud tato vlastnost není k dispozici, jsou všechny členy pole s cestou pole vyhodnoceny na _hodnotu true_. V této vlastnosti lze použít jakoukoli [podmínku](../concepts/definition-structure.md#conditions) .
   [Logické operátory](#logical-operators) lze použít uvnitř této vlastnosti k vytvoření složitých požadavků na vyhodnocení.
 - **\<condition\>**(povinné): hodnota je porovnána s počtem položek, které splnily výraz **Count. Where** podmínky. Měla by se použít číselná [Podmínka](../concepts/definition-structure.md#conditions) .
 
@@ -570,7 +570,7 @@ Příklad 7: Ověřte, že aspoň jeden člen pole odpovídá více vlastnostem 
 }
 ```
 
-### <a name="effect"></a>Účinek
+### <a name="effect"></a>Efekt
 
 Azure Policy podporuje následující typy účinku:
 
@@ -605,7 +605,7 @@ Pro použití v rámci pravidla zásad jsou k dispozici všechny [funkce šablon
 
 Tato funkce je k dispozici pro použití v pravidle zásad, ale liší se od použití v šabloně Azure Resource Manager:
 
-- `utcNow()`Na rozdíl od šablony Správce prostředků lze použít mimo defaultValue.
+- `utcNow()`Na rozdíl od šablony Správce prostředků lze tuto vlastnost použít mimo vlastnost _DefaultValue_.
   - Vrátí řetězec, který je nastaven na aktuální datum a čas ve formátu Universal ISO 8601 DateTime yyyy-MM-ddTHH: mm: ss. fffffffZ.
 
 Následující funkce jsou dostupné jenom v pravidlech zásad:
@@ -619,7 +619,7 @@ Následující funkce jsou dostupné jenom v pravidlech zásad:
   - `field`se primárně používá s **AuditIfNotExists** a **DeployIfNotExists** pro odkazování na pole v prostředku, který je vyhodnocován. Příklad tohoto použití lze zobrazit v [DeployIfNotExists příkladu](effects.md#deployifnotexists-example).
 - `requestContext().apiVersion`
   - Vrátí verzi rozhraní API žádosti, která aktivovala vyhodnocování zásad (například: `2019-09-01` ).
-    Toto bude verze rozhraní API, která se použila v požadavku PUT/PATCH k vyhodnocení při vytváření nebo aktualizaci prostředku. Nejnovější verze rozhraní API se vždycky používá během hodnocení dodržování předpisů u stávajících prostředků.
+    Tato hodnota je verze rozhraní API, která se použila v požadavku PUT/PATCH k vyhodnocení při vytváření nebo aktualizaci prostředku. Nejnovější verze rozhraní API se vždycky používá během hodnocení dodržování předpisů u stávajících prostředků.
   
 #### <a name="policy-function-example"></a>Příklad funkce zásad
 

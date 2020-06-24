@@ -5,15 +5,15 @@ services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: a354f8031c26ca86876dc6f3a2092610226cc84b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e93bae91827b2807ef577d7659924a5d37454fa4
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75834570"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987111"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Konfigurace připojení brány VPN typu VNet-to-VNet pomocí Azure CLI
 
@@ -23,7 +23,7 @@ Postupy v tomto článku se týkají modelu nasazení Resource Manager a použí
 
 > [!div class="op_single_selector"]
 > * [portál Azure](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
-> * [Prostředí](vpn-gateway-vnet-vnet-rm-ps.md)
+> * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Azure CLI](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [Azure Portal (Classic)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
 > * [Propojení různých modelů nasazení – Azure Portal](vpn-gateway-connect-different-deployment-models-portal.md)
@@ -78,7 +78,7 @@ Pro toto cvičení můžete konfigurace kombinovat nebo prostě vybrat tu, se kt
 
 ## <a name="connect-vnets-that-are-in-the-same-subscription"></a><a name="samesub"></a>Propojení virtuálních sítí patřících ke stejnému předplatnému
 
-### <a name="before-you-begin"></a>Před zahájením
+### <a name="before-you-begin"></a>Než začnete
 
 Než začnete, nainstalujte si nejnovější verzi příkazů rozhraní příkazového řádku (2.0 nebo novější). Informace o instalaci příkazů rozhraní příkazového řádku najdete v tématu [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
@@ -292,7 +292,7 @@ Při vytváření dalších připojení je důležité ověřit, že se adresní
 
 ### <a name="step-7---create-and-configure-testvnet5"></a><a name="TestVNet5"></a>Krok 7: Vytvoření a konfigurace virtuální sítě TestVNet5
 
-Tento krok je třeba provést v rámci nového předplatného (předplatné 5). Tuto část může provést správce v organizaci, která je vlastníkem druhého předplatného. K přepínání mezi předplatnými použijte `az account list --all` k vypsání předplatných, která `az account set --subscription <subscriptionID>` jsou k dispozici pro váš účet, a pak použijte k přepnutí na předplatné, které chcete použít.
+Tento krok je třeba provést v rámci nového předplatného (předplatné 5). Tuto část může provést správce v organizaci, která je vlastníkem druhého předplatného. K přepínání mezi předplatnými použijte `az account list --all` k vypsání předplatných, která jsou k dispozici pro váš účet, a pak použijte `az account set --subscription <subscriptionID>` k přepnutí na předplatné, které chcete použít.
 
 1. Ujistěte se, že jste připojeni k předplatnému 5, a pak vytvořte skupinu prostředků.
 
@@ -331,7 +331,7 @@ Tento krok je třeba provést v rámci nového předplatného (předplatné 5). 
 
 ### <a name="step-8---create-the-connections"></a><a name="connections5"></a>Krok 8: Vytvoření připojení
 
-Vzhledem k tomu, že brány patří do různých předplatných, je tento krok rozdělený do dvou relací rozhraní příkazového řádku označených jako **[Předplatné 1]** a **[Předplatné 5]**. K přepínání mezi předplatnými použijte `az account list --all` k vypsání předplatných, která `az account set --subscription <subscriptionID>` jsou k dispozici pro váš účet, a pak použijte k přepnutí na předplatné, které chcete použít.
+Vzhledem k tomu, že brány patří do různých předplatných, je tento krok rozdělený do dvou relací rozhraní příkazového řádku označených jako **[Předplatné 1]** a **[Předplatné 5]**. K přepínání mezi předplatnými použijte `az account list --all` k vypsání předplatných, která jsou k dispozici pro váš účet, a pak použijte `az account set --subscription <subscriptionID>` k přepnutí na předplatné, které chcete použít.
 
 1. **[Předplatné 1]** Přihlaste a připojte se k předplatnému 1. Spusťte následující příkaz a z výstupu získejte název a ID brány:
 

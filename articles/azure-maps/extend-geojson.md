@@ -9,11 +9,11 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: 98db10f0fc7a417f39d4bb00e77af6bdea034a03
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79276397"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84687493"
 ---
 # <a name="extended-geojson-geometries"></a>Rozšířená geometriía pro injson
 
@@ -27,7 +27,7 @@ Azure Maps poskytuje seznam výkonných rozhraní API pro vyhledávání uvnitř
 * MultiPoint
 * MultiPolygon
 * Vyberte
-* Postupně
+* Mnohoúhelník
 
 Některá Azure Maps rozhraní API akceptují geometrií, která nejsou součástí [specifikace pro injson][1]. Například [vyhledávání uvnitř geometrie](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry) API přijímá kružnice a mnohoúhelníky.
 
@@ -35,21 +35,21 @@ Tento článek poskytuje podrobné vysvětlení způsobu, jakým Azure Maps roz�
 
 ## <a name="circle"></a>Kruh
 
-`Circle` Geometrie není podporována [specifikací biojson][1]. K reprezentaci `GeoJSON Point Feature` kruhu slouží objekt.
+`Circle`Geometrie není podporována [specifikací biojson][1]. `GeoJSON Point Feature`K reprezentaci kruhu slouží objekt.
 
-`Circle` Geometrie reprezentovaná pomocí `GeoJSON Feature` objektu __musí__ obsahovat následující souřadnice a vlastnosti:
+`Circle`Geometrie reprezentovaná pomocí `GeoJSON Feature` objektu __musí__ obsahovat následující souřadnice a vlastnosti:
 
 - Střed
 
     Střed kružnice je reprezentován pomocí `GeoJSON Point` objektu.
 
-- Poloměr
+- RADIUS
 
-    Kruh `radius` je reprezentován pomocí `GeoJSON Feature`vlastností. Hodnota poloměru je v _metrech_ a musí být typu `double`.
+    Kruh `radius` je reprezentován pomocí `GeoJSON Feature` vlastností. Hodnota poloměru je v _metrech_ a musí být typu `double` .
 
 - Podtyp
 
-    Geometrie kruhu musí také obsahovat `subType` vlastnost. Tato vlastnost musí být součástí `GeoJSON Feature`vlastností a její hodnota by měla být _Circle_ .
+    Geometrie kruhu musí také obsahovat `subType` vlastnost. Tato vlastnost musí být součástí `GeoJSON Feature` vlastností a její hodnota by měla být _Circle_ .
 
 #### <a name="example"></a>Příklad
 
@@ -71,9 +71,9 @@ Tady je postup, jak znázornit kruh pomocí `GeoJSON Feature` objektu. Prostřed
 
 ## <a name="rectangle"></a>Obdélník
 
-`Rectangle` Geometrie není podporována [specifikací biojson][1]. K reprezentaci `GeoJSON Polygon Feature` obdélníku používáme objekt. Rozšíření Rectangle je primárně používáno modulem nástrojů pro kreslení sady web SDK.
+`Rectangle`Geometrie není podporována [specifikací biojson][1]. `GeoJSON Polygon Feature`K reprezentaci obdélníku používáme objekt. Rozšíření Rectangle je primárně používáno modulem nástrojů pro kreslení sady web SDK.
 
-`Rectangle` Geometrie reprezentovaná pomocí `GeoJSON Polygon Feature` objektu __musí__ obsahovat následující souřadnice a vlastnosti:
+`Rectangle`Geometrie reprezentovaná pomocí `GeoJSON Polygon Feature` objektu __musí__ obsahovat následující souřadnice a vlastnosti:
 
 - Roh
 
@@ -81,7 +81,7 @@ Tady je postup, jak znázornit kruh pomocí `GeoJSON Feature` objektu. Prostřed
 
 - Podtyp
 
-    Geometrie obdélníku musí také obsahovat `subType` vlastnost. Tato vlastnost musí být součástí `GeoJSON Feature`vlastností a její hodnota by měla být _Rectangle_ .
+    Geometrie obdélníku musí také obsahovat `subType` vlastnost. Tato vlastnost musí být součástí `GeoJSON Feature` vlastností a její hodnota by měla být _Rectangle_ .
 
 ### <a name="example"></a>Příklad
 

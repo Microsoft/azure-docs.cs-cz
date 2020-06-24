@@ -1,5 +1,5 @@
 ---
-title: Seznámení s rozšířením AI
+title: Koncepce obohacení AI
 titleSuffix: Azure Cognitive Search
 description: Extrakce obsahu, zpracování přirozeného jazyka (NLP) a zpracování obrazu slouží k vytváření prohledávatelných obsahu ve službě Azure Kognitivní hledání indexy s předem definovanými dovednostmi a vlastními algoritmy AI.
 manager: nitinme
@@ -7,17 +7,21 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/24/2020
-ms.openlocfilehash: cdff42c6ff0cadb5ce4b3d7fc469d648349d1e88
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.date: 06/18/2020
+ms.openlocfilehash: 196562d376b8268ecf47f8133a5b1c8a122c38c5
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84265195"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052274"
 ---
-# <a name="getting-started-with-ai-enrichment"></a>Začínáme s obohacením AI
+# <a name="ai-enrichment-in-azure-cognitive-search"></a>Obohacení AI v Azure Kognitivní hledání
 
-Rozšíření AI je schopnost indexování Kognitivní hledání v Azure, která se používá k extrakci textu z obrázků, objektů BLOB a dalších nestrukturovaných zdrojů dat. Obohacení a extrakce usnadňují hledání obsahu v [indexu](search-what-is-an-index.md) nebo v [úložišti znalostí](knowledge-store-concept-intro.md). Extrakce a obohacení jsou implementovány pomocí *dovedností rozpoznávání* připojených k kanálu indexování. K rozpoznávání dovedností integrovaných do služby patří do těchto kategorií: 
+Obohacení AI je rozšíření [indexerů](search-indexer-overview.md) , která se dají použít k extrakci textu z obrázků, objektů BLOB a dalších nestrukturovaných zdrojů dat. Obohacení a extrakce usnadňují hledání obsahu ve výstupních objektech indexeru, a to buď pomocí [indexu hledání](search-what-is-an-index.md) , nebo z [úložiště znalostí](knowledge-store-concept-intro.md). 
+
+Extrakce a obohacení jsou implementovány pomocí *dovedností rozpoznávání* připojených k kanálu řízenému indexerem. Pomocí integrovaných dovedností z Microsoftu nebo můžete vložit externí zpracování do [*vlastní dovednosti*](cognitive-search-create-custom-skill-example.md) , kterou vytvoříte. Příkladem vlastní dovednosti může být modul vlastních entit nebo třídění dokumentů cílící na konkrétní doménu, jako je finance, vědecké publikace nebo lékařství.
+
+Mezi integrované dovednosti patří tyto kategorie: 
 
 + Mezi dovednosti při **zpracování přirozeného jazyka** patří [rozpoznávání entit](cognitive-search-skill-entity-recognition.md), rozpoznávání [jazyka](cognitive-search-skill-language-detection.md), [extrakce klíčových frází](cognitive-search-skill-keyphrases.md), manipulace s textem, [detekce mínění](cognitive-search-skill-sentiment.md)a [zjišťování PII](cognitive-search-skill-pii-detection.md). S těmito dovednostmi jsou nestrukturované texty namapované jako prohledávatelný a filtrovatelné pole v indexu.
 
@@ -25,9 +29,9 @@ Rozšíření AI je schopnost indexování Kognitivní hledání v Azure, která
 
 ![Diagram kanálu obohacení](./media/cognitive-search-intro/cogsearch-architecture.png "Přehled kanálu obohacení")
 
-Zkušenosti s rozpoznáváním v Azure Kognitivní hledání jsou založené na předem vyškolených modelech strojového učení v rozhraní API služeb Cognitive Services: [počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/) a [Analýza textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview). 
+Integrované dovednosti v Azure Kognitivní hledání jsou založené na předem vyškolených modelech strojového učení v rozhraní API služeb Cognitive Services: [počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/) a [Analýza textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview). Prostředek Cognitive Services můžete připojit, pokud chcete během zpracování obsahu tyto prostředky využít.
 
-Během fáze příjmu dat se použije přirozený jazyk a zpracování obrazu s výsledky, které se stanou součástí kompozice dokumentu v prohledávatelných indexech v Azure Kognitivní hledání. Data se nastavují jako datová sada Azure a pak se provedou prostřednictvím kanálu indexování s použitím libovolných [integrovaných dovedností](cognitive-search-predefined-skills.md) , které potřebujete. Architektura je rozšiřitelná, takže pokud nejsou integrované dovednosti dostatečné, můžete vytvořit a připojit [vlastní dovednosti](cognitive-search-create-custom-skill-example.md) pro integraci vlastního zpracování. Příkladem může být modul vlastních entit nebo třídění dokumentů cílící na konkrétní doménu, jako je finance, vědecké publikace nebo lékařství.
+Během fáze příjmu dat se použije přirozený jazyk a zpracování obrazu s výsledky, které se stanou součástí kompozice dokumentu v prohledávatelných indexech v Azure Kognitivní hledání. Data se nastavují jako datová sada Azure a pak se provedou prostřednictvím kanálu indexování s použitím libovolných [integrovaných dovedností](cognitive-search-predefined-skills.md) , které potřebujete.  
 
 ## <a name="when-to-use-ai-enrichment"></a>Kdy použít obohacení AI
 
@@ -55,8 +59,7 @@ Kromě toho můžete zvážit přidání vlastní dovednosti, pokud máte otevř
 
 Vlastní dovednosti můžou podporovat složitější scénáře, jako je rozpoznávání formulářů nebo detekce vlastních entit pomocí modelu, který zadáte a zabalíte do [vlastního webového rozhraní s dovednostmi](cognitive-search-custom-skill-interface.md). Mezi vlastní dovednosti patří i [Nástroj pro rozpoznávání formulářů](/azure/cognitive-services/form-recognizer/overview), integraci [rozhraní API Bingu pro vyhledávání entit](https://docs.microsoft.com/azure/search/cognitive-search-create-custom-skill-example)a [rozpoznávání vlastních entit](https://github.com/Microsoft/SkillsExtractorCognitiveSearch).
 
-
-## <a name="steps-in-an-enrichment-pipeline"></a>Kroky v kanálu rozšíření
+<a name="enrichment-steps">Počet kroků v kanálu rozšíření</a>
 
 Kanál pro rozšíření je založený na [*indexerech*](search-indexer-overview.md). Indexery naplní index založený na mapování polí mezi indexem a zdrojem dat pro trhliny dokumentů. Dovednosti, teď připojené k indexerům, zachytit a rozšířit dokumenty podle definovaných dovednostiů. Po indexování můžete k obsahu přistupovat pomocí požadavků na hledání prostřednictvím všech [typů dotazů podporovaných službou Azure kognitivní hledání](search-query-overview.md).  Pokud s indexery začínáte, Tato část vás provede jednotlivými kroky.
 

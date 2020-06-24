@@ -4,21 +4,21 @@ description: Připojte virtuální síť v jiné oblasti k virtuálnímu rozboč
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/04/2019
 ms.author: cherylmc
-ms.openlocfilehash: 340472f84d2dd2c4f46d180992745a57e8ad1884
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78c06ec1d93dcda5d171099943c287a9e4f43bc1
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73588223"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84750566"
 ---
 # <a name="configure-global-vnet-peering-cross-region-vnet-for-virtual-wan"></a>Konfigurace globálního partnerského vztahu virtuálních sítí (VNet mezi oblastmi) pro virtuální síť WAN
 
 Virtuální síť můžete připojit v jiné oblasti k virtuálnímu rozbočovači WAN.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Ověřte, že splňujete následující kritéria:
 
@@ -27,7 +27,7 @@ Ověřte, že splňujete následující kritéria:
 
 ## <a name="register-this-feature"></a><a name="register"></a>Registrace této funkce
 
-Pro tuto funkci se můžete zaregistrovat pomocí PowerShellu. Pokud v následujícím příkladu vyberete "vyzkoušet si", cloudové prostředí Azure se otevře a nebudete muset místně nainstalovat rutiny PowerShellu do vašeho počítače. V případě potřeby můžete změnit odběry pomocí rutiny Select-AzSubscription-SubscriptionId <subid>.
+Pro tuto funkci se můžete zaregistrovat pomocí PowerShellu. Pokud v následujícím příkladu vyberete "vyzkoušet si", cloudové prostředí Azure se otevře a nebudete muset místně nainstalovat rutiny PowerShellu do vašeho počítače. V případě potřeby můžete změnit odběry pomocí rutiny Select-AzSubscription-SubscriptionId <subid> .
 
 ```azurepowershell-interactive
 Register-AzProviderFeature -FeatureName AllowCortexGlobalVnetPeering -ProviderNamespace Microsoft.Network

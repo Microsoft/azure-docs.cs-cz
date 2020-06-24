@@ -2,14 +2,14 @@
 title: Správa členů konsorcia služeb Azure blockchain – PowerShell
 description: Naučte se spravovat členy konsorcia služeb Azure blockchain pomocí Azure PowerShell.
 ms.date: 10/14/2019
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: zeyadr
-ms.openlocfilehash: e819dd39481b58d446384a5e2253c548ce0c267c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d40e55f177bda9edb40383b6e2c61c32633cd005
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77505977"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85211336"
 ---
 # <a name="manage-consortium-members-in-azure-blockchain-service-using-powershell"></a>Správa členů konsorcia ve službě Azure blockchain pomocí PowerShellu
 
@@ -55,7 +55,7 @@ $MemberAccount = Import-Web3Account -ManagedAccountAddress '<Member account addr
 $ContractConnection = Import-ConsortiumManagementContracts -RootContractAddress '<RootContract address>' -Web3Client $Connection
 ```
 
-Nahraďte * \<\> heslo členského účtu* heslem členského účtu, který jste použili při vytváření člena.
+Nahraďte *\<Member account password\>* heslem členského účtu, který jste použili při vytváření člena.
 
 Vyhledejte další hodnoty v Azure Portal:
 
@@ -64,14 +64,14 @@ Vyhledejte další hodnoty v Azure Portal:
 
     ![Přehled členů](./media/manage-consortium-powershell/member-overview.png)
 
-    Nahraďte * \<členský\> účet* a * \<adresu\> RootContract* hodnotami z portálu.
+    *\<Member account\>* Hodnoty a nahraďte *\<RootContract address\>* hodnotami z portálu.
 
 1. V poli adresa koncového bodu vyberte **uzly transakce**a pak vyberte **Výchozí uzel transakce**. Výchozí uzel má stejný název jako člen blockchain.
 1. Vyberte **připojovací řetězce**.
 
     ![Připojovací řetězce](./media/manage-consortium-powershell/connection-strings.png)
 
-    Nahraďte * \<adresu\> koncového bodu* hodnotou z **https (přístupová klávesa 1)** nebo **https (přístupový klíč 2)**.
+    Nahraďte *\<Endpoint address\>* hodnotou z **https (přístupová klávesa 1)** nebo **https (přístupový klíč 2)**.
 
 ## <a name="manage-the-network-and-smart-contracts"></a>Správa sítě a inteligentních kontraktů
 
@@ -83,7 +83,7 @@ Pomocí této rutiny se můžete připojit ke inteligentním smlouvám správy k
 
 `Import-ConsortiumManagementContracts -RootContractAddress <String> -Web3Client <IClient>`
 
-| Parametr | Popis | Požaduje se |
+| Parametr | Popis | Vyžadováno |
 |-----------|-------------|:--------:|
 | RootContractAddress | Adresa kořenového kontraktu inteligentních kontraktů správy konsorcia | Ano |
 | Web3Client | Objekt Web3Client získaný z New-Web3Connection | Ano |
@@ -100,7 +100,7 @@ Pomocí této rutiny můžete vytvořit objekt, který bude obsahovat informace 
 
 `Import-Web3Account -ManagedAccountAddress <String> -ManagedAccountPassword <String>`
 
-| Parametr | Popis | Požaduje se |
+| Parametr | Popis | Vyžadováno |
 |-----------|-------------|:--------:|
 | ManagedAccountAddress | Adresa členského účtu blockchain | Ano |
 | ManagedAccountPassword | Heslo pro adresu účtu | Ano |
@@ -117,7 +117,7 @@ Tuto rutinu použijte k navázání připojení ke koncovému bodu RPC uzlu tran
 
 `New-Web3Connection [-RemoteRPCEndpoint <String>]`
 
-| Parametr | Popis | Požaduje se |
+| Parametr | Popis | Vyžadováno |
 |-----------|-------------|:--------:|
 | RemoteRPCEndpoint | Adresa koncového bodu člena blockchain | Ano |
 
@@ -137,9 +137,9 @@ Pomocí této rutiny můžete získat podrobnosti o členovi nebo seznam členů
 
 `Get-BlockchainMember [[-Name] <String>] -Members <IContract> -Web3Client <IClient>`
 
-| Parametr | Popis | Požaduje se |
+| Parametr | Popis | Vyžadováno |
 |-----------|-------------|:--------:|
-| Název | Název člena služby blockchain, o kterém chcete načíst podrobnosti. Při zadání názvu vrátí podrobnosti člena. Pokud je název vynechán, vrátí seznam všech členů konsorcia. | Ne |
+| Name | Název člena služby blockchain, o kterém chcete načíst podrobnosti. Při zadání názvu vrátí podrobnosti člena. Pokud je název vynechán, vrátí seznam všech členů konsorcia. | Ne |
 | Členové | Objekt Members získaný z import-ConsortiumManagementContracts | Ano |
 | Web3Client | Objekt Web3Client získaný z New-Web3Connection | Ano |
 
@@ -168,9 +168,9 @@ Pomocí této rutiny můžete odebrat člena blockchain.
 
 `Remove-BlockchainMember -Name <String> -Members <IContract> -Web3Account <IAccount> -Web3Client <IClient>`
 
-| Parametr | Popis | Požaduje se |
+| Parametr | Popis | Vyžadováno |
 |-----------|-------------|:--------:|
-| Název | Název člena, který se má odebrat | Ano |
+| Name | Název člena, který se má odebrat | Ano |
 | Členové | Objekt Members získaný z import-ConsortiumManagementContracts | Ano |
 | Web3Account | Objekt Web3Account získaný z importu-Web3Account | Ano |
 | Web3Client | Objekt Web3Client získaný z New-Web3Connection | Ano |
@@ -194,9 +194,9 @@ Set-BlockchainMember -Name <String> [-DisplayName <String>] [-AccountAddress <St
  -Members <IContract> -Web3Account <IAccount> -Web3Client <IClient>
 ```
 
-| Parametr | Popis | Požaduje se |
+| Parametr | Popis | Vyžadováno |
 |-----------|-------------|:--------:|
-| Název | Název členu blockchain | Ano |
+| Name | Název členu blockchain | Ano |
 | DisplayName | Nové zobrazované jméno | Ne |
 | AccountAddress | Adresa účtu | Ne |
 | Členové | Objekt Members získaný z import-ConsortiumManagementContracts | Ano |
@@ -224,7 +224,7 @@ New-BlockchainMemberInvitation -SubscriptionId <String> -Role <String> -Members 
  -Web3Account <IAccount> -Web3Client <IClient>
 ```
 
-| Parametr | Popis | Požaduje se |
+| Parametr | Popis | Vyžadováno |
 |-----------|-------------|:--------:|
 | SubscriptionId | ID předplatného Azure člena, který chcete pozvat | Ano |
 | Role | Role konsorcia Hodnoty mohou být ADMIN nebo USER. Správce je role správce konsorcia. UŽIVATEL je role člena konsorcia. | Ano |
@@ -246,7 +246,7 @@ Pomocí této rutiny můžete načíst nebo vypsat stav pozvánky člena konsorc
 
 `Get-BlockchainMemberInvitation [[-SubscriptionId] <String>] -Members <IContract> -Web3Client <IClient>`
 
-| Parametr | Popis | Požaduje se |
+| Parametr | Popis | Vyžadováno |
 |-----------|-------------|:--------:|
 | SubscriptionId | ID předplatného Azure, které má člen pozvat. Pokud je zadané ID předplatného, vrátí Podrobnosti pozvánky ID předplatného. Pokud je ID předplatného vynecháno, vrátí seznam všech pozvání členů. | Ne |
 | Členové | Objekt Members získaný z import-ConsortiumManagementContracts | Ano |
@@ -277,7 +277,7 @@ Remove-BlockchainMemberInvitation -SubscriptionId <String> -Members <IContract> 
  -Web3Client <IClient>
 ```
 
-| Parametr | Popis | Požaduje se |
+| Parametr | Popis | Vyžadováno |
 |-----------|-------------|:--------:|
 | SubscriptionId | ID předplatného Azure člena, který se má odvolat | Ano |
 | Členové | Objekt Members získaný z import-ConsortiumManagementContracts | Ano |
@@ -301,7 +301,7 @@ Set-BlockchainMemberInvitation -SubscriptionId <String> -Role <String> -Members 
  -Web3Account <IAccount> -Web3Client <IClient>
 ```
 
-| Parametr | Popis | Požaduje se |
+| Parametr | Popis | Vyžadováno |
 |-----------|-------------|:--------:|
 | SubscriptionId | ID předplatného Azure člena, který chcete pozvat | Ano |
 | Role | Nová role konsorcia pro pozvánku Hodnotou může být **uživatel** nebo **správce**. | Ano |

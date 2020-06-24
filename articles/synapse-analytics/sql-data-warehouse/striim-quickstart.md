@@ -6,17 +6,17 @@ author: mlee3gsd
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 10/12/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e963d62df8d2c416726852ee3d46daf1cd22936e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 945bcd03bc3bf13517836e7a5624bd5142782183
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80349942"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85208548"
 ---
 # <a name="striim-azure-sql-dw-marketplace-offering-install-guide"></a>Průvodce instalací nabídky Striim Azure SQL DW Marketplace
 
@@ -30,7 +30,7 @@ Konfigurace virtuálního počítače s Striim pomocí zadaných vlastností, kt
 
 ![Konfigurace Striim][configure]
 
-Po nasazení klikněte v Azure Portal \<na název virtuálního počítače>-masternode, klikněte na připojit a zkopírujte přihlašovací údaje pomocí místního účtu virtuálního počítače. 
+Po nasazení klikněte na \<VM Name> masternode v Azure Portal, klikněte na připojit a zkopírujte přihlašovací údaje pomocí místního účtu VM. 
 
 ![Připojení Striim k SQL Data Warehouse][connect]
 
@@ -56,7 +56,7 @@ Spusťte následující příkazy pro přesunutí souboru jar JDBC do adresáře
 
 ![Spuštění clusteru Striim][start-striim]
 
-Teď otevřete oblíbený prohlížeč a přejděte na \<název DNS>:9080
+Teď otevřete oblíbený prohlížeč a přejděte na \<DNS Name> : 9080
 
 ![Přejít na přihlašovací obrazovku][navigate]
 

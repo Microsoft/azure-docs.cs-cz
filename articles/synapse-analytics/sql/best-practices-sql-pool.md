@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 345794eead05a4ff5e5d1396df78878d2693f405
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 5ad2867ffdea512348002d03ec742af42b535b31
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834981"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84750210"
 ---
 # <a name="best-practices-for-sql-pools-in-azure-synapse-analytics"></a>Osvědčené postupy pro fondy SQL ve službě Azure synapse Analytics
 
@@ -59,7 +59,7 @@ Fond SQL podporuje načítání a export dat prostřednictvím několika nástro
 
 Chcete-li maximalizovat propustnost při použití textových souborů gzip, rozdělte soubory do 60 nebo více souborů, čímž maximalizujete paralelismus zátěže. Pro rychlejší celkovou propustnost zvažte souběžné načítání dat. Další informace o tématech souvisejících s touto částí najdete v následujících článcích:
 
-- [Načtení dat](data-loading-overview.md)
+- [Načtení dat](../sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [Průvodce používáním funkce PolyBase](data-loading-best-practices.md)
 - [Modely a strategie načítání Azure SQL fondu](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-loading-patterns-and-strategies/)
 - [Načtení dat pomocí Azure Data Factory](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)

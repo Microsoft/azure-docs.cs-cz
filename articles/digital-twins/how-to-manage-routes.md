@@ -7,14 +7,17 @@ ms.author: cschorm
 ms.date: 3/17/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a6549f4436fe1bd6a7ab27d942621ccaaf93cff7
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: cf18d8ef391115da5e1c8fcab235c30e96287f5b
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84612939"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84725677"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins"></a>Správa koncových bodů a tras v digitálních prozdvojeních Azure
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 V případě digitálních vláken Azure můžete směrovat [oznámení událostí](how-to-interpret-event-data.md) do služeb pro příjem dat nebo se připojit k výpočetním prostředkům. K tomu je potřeba nejdřív nastavit **koncové body** , které můžou přijímat události, a potom [**trasy událostí**](concepts-route-events.md) , které určují, které události generované pomocí digitálních vláken Azure se doručí do těch koncových bodů.
 
@@ -138,7 +141,7 @@ Pokud chcete přidat filtr, můžete použít požadavek PUT na *https://{YourHo
 
 Tady jsou podporované filtry tras.
 
-| Název filtru | Popis | Filtrovat schéma | Podporované hodnoty | 
+| Název filtru | Description | Filtrovat schéma | Podporované hodnoty | 
 | --- | --- | --- | --- |
 | Typ | [Typ toku událostí](./concepts-route-events.md#types-of-event-messages) prostřednictvím vaší digitální instance | `"filter" : "type = '<eventType>'"` | `Microsoft.DigitalTwins.Twin.Create` <br> `Microsoft.DigitalTwins.Twin.Delete` <br> `Microsoft.DigitalTwins.Twin.Update`<br>`Microsoft.DigitalTwins.Edge.Create`<br>`Microsoft.DigitalTwins.Edge.Update`<br> `Microsoft.DigitalTwins.Edge.Delete` <br> `microsoft.iot.telemetry`  |
 | Zdroj | Název instance digitálního vlákna Azure | `"filter" : "source = '<hostname>'"`|  **Pro oznámení:**`<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net` <br> **Pro telemetrii:**`<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net/ digitaltwins/<twinId>`|

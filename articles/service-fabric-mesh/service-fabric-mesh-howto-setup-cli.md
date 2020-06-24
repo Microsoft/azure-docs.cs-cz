@@ -6,18 +6,18 @@ ms.author: dekapur
 ms.date: 11/28/2018
 ms.topic: conceptual
 ms.openlocfilehash: 0fb65ceeabca9331130083f8ec5b3fe8acce13b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259185"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707936"
 ---
 # <a name="set-up-service-fabric-mesh-cli"></a>Nastavení rozhraní příkazového řádku služby Service Fabric Mesh
 K nasazení a správě prostředků v místním počítači a v síti Azure Service Fabric je nutná Service Fabric rozhraní příkazového řádku (CLI). Tady je postup, jak ho nastavit.
 
 Existují tři typy rozhraní příkazového řádku, které lze použít a které jsou shrnuty v následující tabulce.
 
-| Modul CLI | Cílové prostředí |  Popis | 
+| Modul CLI | Cílové prostředí |  Description | 
 |---|---|---|
 | AZ Mesh | Síť Azure Service Fabric | Primární rozhraní příkazového řádku, které umožňuje nasazovat aplikace a spravovat prostředky v prostředí sítě Azure Service Fabric. 
 | sfctl | Místní clustery | Service Fabric CLI, který umožňuje nasazení a testování prostředků Service Fabric na místních clusterech.  
@@ -58,7 +58,7 @@ Aby bylo možné používat rozhraní příkazového řádku Maven, musí být n
 
 Rozhraní příkazového řádku Maven pro Service Fabric je stále ve verzi Preview. 
 
-Pokud chcete použít modul plug-in Maven v aplikaci Maven Java, přidejte do souboru pom. XML následující fragment kódu:
+Pokud chcete použít modul plug-in Maven v aplikaci Maven Java, přidejte do souboru pom.xml následující fragment kódu:
 
 ```XML
 <project>

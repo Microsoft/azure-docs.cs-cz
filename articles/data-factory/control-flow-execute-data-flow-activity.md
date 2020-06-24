@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.author: makromer
 ms.date: 04/30/2020
-ms.openlocfilehash: a2e80b9320509144456663672ac5ae03f522459a
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 1004f7fcc8ff93a170b724a6d8b1c2216b9c39b8
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735381"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84726958"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Aktivita toku dat v Azure Data Factory
 
@@ -22,7 +22,7 @@ ms.locfileid: "82735381"
 
 Aktivitu toku dat můžete použít k transformaci a přesunutí dat prostřednictvím mapování toků dat. Pokud s toky dat začínáte, přečtěte si téma [mapování toku dat – přehled](concepts-data-flow-overview.md)
 
-## <a name="syntax"></a>Syntaxe
+## <a name="syntax"></a>Syntax
 
 ```json
 {
@@ -54,12 +54,12 @@ Aktivitu toku dat můžete použít k transformaci a přesunutí dat prostředni
 
 ## <a name="type-properties"></a>Vlastnosti typu
 
-Vlastnost | Popis | Povolené hodnoty | Požaduje se
+Vlastnost | Popis | Povolené hodnoty | Vyžadováno
 -------- | ----------- | -------------- | --------
 toku dat | Odkaz na prováděný tok dat | DataFlowReference | Ano
-integrationRuntime | Výpočetní prostředí, na kterém se tok dat spouští. Pokud není zadaný, použije se automatické řešení Azure Integration runtime. Podporovány jsou pouze prostředí Integration runtime oblasti automatické řešení. | IntegrationRuntimeReference | No
-Compute. coreCount | Počet jader používaných v clusteru Spark. Dá se zadat jenom v případě, že se používá prostředí Azure Integration runtime pro automatické rozpoznávání. | 8, 16, 32, 48, 80, 144, 272 | No
-Compute. computeType | Typ výpočetní služby použitý v clusteru Spark. Dá se zadat jenom v případě, že se používá prostředí Azure Integration runtime pro automatické rozpoznávání. | "Obecné", "ComputeOptimized", "MemoryOptimized" | No
+integrationRuntime | Výpočetní prostředí, na kterém se tok dat spouští. Pokud není zadaný, použije se automatické řešení Azure Integration runtime. | IntegrationRuntimeReference | Ne
+Compute. coreCount | Počet jader používaných v clusteru Spark. Dá se zadat jenom v případě, že se používá prostředí Azure Integration runtime pro automatické rozpoznávání. | 8, 16, 32, 48, 80, 144, 272 | Ne
+Compute. computeType | Typ výpočetní služby použitý v clusteru Spark. Dá se zadat jenom v případě, že se používá prostředí Azure Integration runtime pro automatické rozpoznávání. | "Obecné", "ComputeOptimized", "MemoryOptimized" | Ne
 Příprava. linkedService | Pokud používáte zdroj dat nebo jímku SQL DW, účet úložiště, který se používá pro základní fázování | LinkedServiceReference | Pouze v případě, že tok dat čte nebo zapisuje do SQL datového skladu
 Příprava. folderPath | Pokud používáte zdroj dat nebo jímku SQL DW, cesta ke složce v účtu BLOB Storage se používá pro základní fázování. | Řetězec | Pouze v případě, že tok dat čte nebo zapisuje do SQL datového skladu
 
@@ -75,7 +75,7 @@ Vlastnosti základního počtu a výpočetního typu se dají nastavit dynamicky
 
 ### <a name="data-flow-integration-runtime"></a>Prostředí Integration runtime toku dat
 
-Vyberte, který Integration Runtime se má použít pro spuštění aktivity toku dat. Ve výchozím nastavení používá Data Factory k automatickému vyřešení prostředí Azure Integration runtime se čtyřmi jádry pracovního procesu a bez TTL (Time to Live). Tento IR má pro výpočetní typ pro obecné účely a běží ve stejné oblasti jako vaše továrna. Můžete vytvářet vlastní prostředí Azure Integration runtime, která definují konkrétní oblasti, výpočetní typ, počty jader a hodnotu TTL pro spuštění aktivity toku dat. V tuto chvíli se v aktivitě toku dat podporují jenom prostředí Integration runtime oblasti – automatické řešení.
+Vyberte, který Integration Runtime se má použít pro spuštění aktivity toku dat. Ve výchozím nastavení používá Data Factory k automatickému vyřešení prostředí Azure Integration runtime se čtyřmi jádry pracovního procesu a bez TTL (Time to Live). Tento IR má pro výpočetní typ pro obecné účely a běží ve stejné oblasti jako vaše továrna. Můžete vytvářet vlastní prostředí Azure Integration runtime, která definují konkrétní oblasti, výpočetní typ, počty jader a hodnotu TTL pro spuštění aktivity toku dat.
 
 V případě spuštění kanálu je cluster clusterem úloh, který trvá několik minut, než se spustí spuštění. Pokud není zadána hodnota TTL, je při každém spuštění kanálu vyžadován tento čas spuštění. Zadáte-li hodnotu TTL, zůstane aktivní fond clusterů aktivní po dobu zadanou po posledním spuštění, což bude mít za následek kratší dobu spouštění. Například pokud máte hodnotu TTL 60 minut a za každou hodinu spustíte tok dat, fond clusterů zůstane aktivní. Další informace najdete v tématu [prostředí Azure Integration runtime](concepts-integration-runtime.md).
 
@@ -148,9 +148,9 @@ Aktivita toku dat výstupuje metriky týkající se počtu řádků zapsaných d
 }
 ```
 
-Pokud například chcete získat počet řádků zapsaných do jímky s názvem ' sink1 ' v aktivitě s názvem ' dataflowActivity ', použijte `@activity('dataflowActivity').output.runStatus.metrics.sink1.rowsWritten`.
+Pokud například chcete získat počet řádků zapsaných do jímky s názvem ' sink1 ' v aktivitě s názvem ' dataflowActivity ', použijte `@activity('dataflowActivity').output.runStatus.metrics.sink1.rowsWritten` .
 
-Chcete-li získat počet řádků načtených ze zdroje s názvem ' source1 ', který byl použit v této jímky `@activity('dataflowActivity').output.runStatus.metrics.sink1.sources.source1.rowsRead`, použijte.
+Chcete-li získat počet řádků načtených ze zdroje s názvem ' source1 ', který byl použit v této jímky, použijte `@activity('dataflowActivity').output.runStatus.metrics.sink1.sources.source1.rowsRead` .
 
 > [!NOTE]
 > Pokud má jímka zapsána nula řádků, nebude zobrazena v metrikách. Existenci lze ověřit pomocí `contains` funkce. Například zkontroluje, `contains(activity('dataflowActivity').output.runStatus.metrics, 'sink1')` zda byly do sink1 zapsány nějaké řádky.
@@ -164,5 +164,5 @@ Viz aktivity toku řízení podporované Data Factory:
 - [Aktivita For Each](control-flow-for-each-activity.md)
 - [Aktivita získání metadat](control-flow-get-metadata-activity.md)
 - [Aktivita vyhledávání](control-flow-lookup-activity.md)
-- [Aktivita webu](control-flow-web-activity.md)
+- [Webová aktivita](control-flow-web-activity.md)
 - [Aktivita Until](control-flow-until-activity.md)

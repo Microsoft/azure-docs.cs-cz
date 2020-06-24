@@ -2,8 +2,8 @@
 title: Ověření zabezpečení portů v integrované bráně firewall
 description: Přečtěte si, jak ověřit integrovanou ochranu brány firewall ve spravované instanci Azure SQL.
 services: sql-database
-ms.service: sql-database
-ms.subservice: managed-instance
+ms.service: sql-managed-instance
+ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab
 ms.date: 12/04/2018
-ms.openlocfilehash: 561aba31bfd1cc37173f3ee41625ba3687f5e657
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 1d2fffabba3615394bdf96ed487177bf21f3ecec
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84660914"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708701"
 ---
 # <a name="verify-the-azure-sql-managed-instance-built-in-firewall"></a>Ověřte vestavěnou bránu firewall Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

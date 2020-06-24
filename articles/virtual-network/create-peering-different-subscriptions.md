@@ -4,20 +4,20 @@ titlesuffix: Azure Virtual Network
 description: Naučte se, jak vytvořit partnerský vztah virtuální sítě mezi virtuálními sítěmi vytvořenými prostřednictvím Správce prostředků, které existují v různých předplatných Azure ve stejném nebo jiném tenantovi Azure Active Directory.
 services: virtual-network
 documentationcenter: ''
-author: anavinahar
+author: KumudD
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/09/2019
-ms.author: anavin
-ms.openlocfilehash: 242115ae454340fd0a8439b7b3c79b713409acc2
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.author: kumud
+ms.openlocfilehash: 26d82d4381649bc86950b1898c5c5351a97ec697
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774481"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84688768"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions-and-azure-active-directory-tenants"></a>Vytvoření partnerského vztahu virtuální sítě – Správce prostředků, různých předplatných a klientů Azure Active Directory
 
@@ -246,7 +246,7 @@ V tomto kurzu se pro každé předplatné používá jiný účet. Pokud použí
 ## <a name="create-peering---resource-manager-template"></a><a name="template"></a>Vytvoření partnerského vztahu – šablona Správce prostředků
 
 1. Pokud chcete vytvořit virtuální síť a přiřadit příslušná [oprávnění](virtual-network-manage-peering.md#permissions), proveďte kroky v částech [portál](#portal), [Azure CLI](#cli)nebo [PowerShell](#powershell) v tomto článku.
-2. Uložte text, který následuje, do souboru na místním počítači. Nahraďte `<subscription ID>` ID předplatného Usera. Soubor můžete například uložit jako vnetpeeringA. JSON.
+2. Uložte text, který následuje, do souboru na místním počítači. Nahraďte `<subscription ID>` ID předplatného Usera. Soubor můžete uložit jako vnetpeeringA.jsnapříklad.
 
    ```json
    {

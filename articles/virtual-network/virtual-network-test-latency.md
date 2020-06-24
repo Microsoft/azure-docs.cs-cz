@@ -9,25 +9,25 @@ editor: ''
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/29/2019
 ms.author: steveesp
-ms.openlocfilehash: 00efc2754948d53d4f80a6261dbd4041b358185b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 77ea14097538f722569acb5a0371674776aac8e5
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74896359"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84687799"
 ---
 # <a name="test-vm-network-latency"></a>Test latence sítě virtuálních počítačů
 
-Abyste dosáhli nejpřesnější výsledků, změřte latenci sítě virtuálních počítačů Azure pomocí nástroje, který je pro tento úkol navržený. Veřejně dostupné nástroje, jako je SockPerf (pro Linux) a latte. exe (pro Windows), můžou izolovat a měřit latenci sítě s výjimkou jiných typů latence, jako je například latence aplikace. Tyto nástroje se zaměřují na druh síťového provozu, který má vliv na výkon aplikace (konkrétně přenosový protokol TCP] a přenos UDP (User Datagram Protocol)). 
+Abyste dosáhli nejpřesnější výsledků, změřte latenci sítě virtuálních počítačů Azure pomocí nástroje, který je pro tento úkol navržený. Veřejně dostupné nástroje, jako je SockPerf (pro Linux) a latte.exe (pro Windows), můžou izolovat a měřit latenci sítě s výjimkou jiných typů latence, jako je například latence aplikace. Tyto nástroje se zaměřují na druh síťového provozu, který má vliv na výkon aplikace (konkrétně přenosový protokol TCP] a přenos UDP (User Datagram Protocol)). 
 
 Další běžné nástroje pro připojení, jako je třeba test, můžou měřit latenci, ale jejich výsledky nemusí představovat síťový provoz, který se používá v reálných úlohách. Důvodem je, že většina těchto nástrojů využívá protokol ICMP (Internet Control Message Protocol), který může být zpracován odlišně od provozu aplikace a jehož výsledky se nemusí vztahovat na úlohy, které používají protokoly TCP a UDP. 
 
-V případě přesného testování latence sítě protokolů používaných většinou aplikací SockPerf (pro Linux) a latte. exe (pro Windows) se vyprodukuje nejrelevantnější výsledky. Tento článek se týká obou těchto nástrojů.
+Pro přesné testování latence sítě protokolů používaných většinou aplikací SockPerf (pro Linux) a latte.exe (pro Windows) se vydávají nejrelevantnější výsledky. Tento článek se týká obou těchto nástrojů.
 
 ## <a name="overview"></a>Přehled
 
@@ -45,7 +45,7 @@ Tento postup můžete použít k měření latence sítě mezi dvěma virtuáln�
 ### <a name="tools-for-testing"></a>Nástroje pro testování
 Pro měření latence máte dvě různé možnosti nástrojů:
 
-* Pro systémy Windows: [latte. exe (Windows)](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b)
+* Pro systémy Windows: [latte.exe (Windows)](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b)
 * Pro počítače se systémem Linux: [SockPerf (Linux)](https://github.com/mellanox/sockperf)
 
 Pomocí těchto nástrojů pomůžete zajistit, že se měří jenom doba doručení datových částí TCP nebo UDP, a ne protokol ICMP (příkazového testu) nebo jiné typy paketů, které nepoužívá aplikace a neovlivní jejich výkon.
@@ -69,29 +69,29 @@ Při analýze výsledků testů Pamatujte na následující doporučení:
 
 ## <a name="test-vms-that-are-running-windows"></a>Testovací virtuální počítače se systémem Windows
 
-### <a name="get-latteexe-onto-the-vms"></a>Získání latte. exe na virtuální počítače
+### <a name="get-latteexe-onto-the-vms"></a>Získat latte.exe na virtuální počítače
 
-Stáhněte si [nejnovější verzi nástroje latte. exe](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b).
+Stáhněte si [nejnovější verzi latte.exe](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b).
 
-Zvažte umístění latte. exe do samostatné složky, jako je například *c:\Tools*.
+Zvažte vložení latte.exe do samostatné složky, jako je například *c:\Tools*.
 
-### <a name="allow-latteexe-through-windows-defender-firewall"></a>Povolení latte. exe přes firewall v programu Windows Defender
+### <a name="allow-latteexe-through-windows-defender-firewall"></a>Povolení latte.exe prostřednictvím firewallu v programu Windows Defender
 
-Na *přijímači*vytvořte pravidlo povolení v bráně firewall v programu Windows Defender, které umožní doručení provozu latte. exe. Je nejjednodušší povolit celý program latte. exe podle názvu, nikoli povolit příchozí porty TCP.
+Na *přijímači*vytvořte pravidlo povolení v bráně firewall v programu Windows Defender, které umožní doručení latte.exe provozu. Je nejjednodušší povolit celý latte.exe program podle názvu, nikoli povolit příchozí porty TCP.
 
-Spuštěním následujícího příkazu povolte latte. exe pomocí brány firewall v programu Windows Defender:
+Povolte latte.exe pomocí brány firewall v programu Windows Defender spuštěním následujícího příkazu:
 
 ```cmd
 netsh advfirewall firewall add rule program=<path>\latte.exe name="Latte" protocol=any dir=in action=allow enable=yes profile=ANY
 ```
 
-Pokud jste například zkopírovali latte. exe do složky *c:\Tools* , bude to příkaz:
+Pokud jste například zkopírovali latte.exe do složky *c:\Tools* , bude to příkaz:
 
 `netsh advfirewall firewall add rule program=c:\tools\latte.exe name="Latte" protocol=any dir=in action=allow enable=yes profile=ANY`
 
 ### <a name="run-latency-tests"></a>Testy latence spuštění
 
-* Na *přijímači*spusťte latte. exe (spusťte ho z okna cmd, nikoli z PowerShellu):
+* Na *přijímači*spusťte latte.exe (spusťte ho z okna cmd, nikoli z PowerShellu):
 
     ```cmd
     latte -a <Receiver IP address>:<port> -i <iterations>
@@ -105,13 +105,13 @@ Pokud jste například zkopírovali latte. exe do složky *c:\Tools* , bude to p
 
     `latte -a 10.0.0.4:5005 -i 65100`
 
-* Na *odesilateli*spusťte latte. exe (spusťte ho z okna cmd, nikoli z PowerShellu):
+* Na *odesilateli*spusťte latte.exe (spusťte ho z okna cmd, nikoli z PowerShellu):
 
     ```cmd
     latte -c -a <Receiver IP address>:<port> -i <iterations>
     ```
 
-    Výsledný příkaz je stejný jako na přijímači s výjimkou přidání&nbsp;*-c* k označení toho, že se jedná o *klienta*nebo *odesílateli*:
+    Výsledný příkaz je stejný jako na přijímači s výjimkou přidání &nbsp; *-c* k označení toho, že se jedná o *klienta*nebo *odesílateli*:
 
     `latte -c -a 10.0.0.4:5005 -i 65100`
 

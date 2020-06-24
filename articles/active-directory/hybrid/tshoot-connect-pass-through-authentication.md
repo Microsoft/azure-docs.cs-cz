@@ -16,12 +16,12 @@ ms.date: 4/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae83cea866367fa6a6596caa683d0287bea96c29
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: f297cec0e5f88461d61b14974b57992f847f6e1c
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "60456125"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85051985"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Řešení potíží s předávacím ověřováním služby Azure Active Directory
 
@@ -44,7 +44,7 @@ Ujistěte se, že je ve vašem tenantovi stále **povolená** funkce předávac�
 
 Pokud se uživatel nemůže přihlásit pomocí předávacího ověřování, může se na obrazovce přihlášení k Azure AD zobrazit jedna z následujících uživatelských chyb: 
 
-|Chyba|Popis|Řešení
+|Chyba|Description|Řešení
 | --- | --- | ---
 |AADSTS80001|Nelze se připojit ke službě Active Directory|Zajistěte, aby byly servery agenta členy stejné doménové struktury služby AD, jako uživatelé, jejichž hesla je potřeba ověřit, a že se můžou připojit ke službě Active Directory.  
 |AADSTS8002|Došlo k vypršení časového limitu při připojování ke službě Active Directory|Zkontrolujte, jestli je k dispozici služba Active Directory a reaguje na žádosti od agentů.
@@ -52,13 +52,40 @@ Pokud se uživatel nemůže přihlásit pomocí předávacího ověřování, m�
 |AADSTS80005|Ověřování zjistilo nepředvídatelné WebException|Přechodná chyba. Opakujte požadavek. Pokud se i nadále nedaří, obraťte se na podporu Microsoftu.
 |AADSTS80007|Při komunikaci se službou Active Directory došlo k chybě.|Další informace naleznete v protokolech agenta a ověřte, zda služba Active Directory pracuje podle očekávání.
 
+### <a name="users-get-invalid-usernamepassword-error"></a>Uživatelé získají neplatné uživatelské jméno nebo heslo. 
+
+K tomu může dojít, když je místní uživatelské jméno (UPN) uživatele jiné než uživatelské jméno uživatele v cloudu.
+
+Chcete-li ověřit, že se jedná o problém, nejprve otestujte správné fungování agenta předávacího ověřování:
+
+
+1. Vytvořte testovací účet.  
+2. Importujte modul PowerShell na počítači agenta:
+ 
+ ```powershell
+ Import-Module "C:\Program Files\Microsoft Azure AD Connect Authentication  Agent\Modules\PassthroughAuthPSModule\PassthroughAuthPSModule.psd1"
+ ```
+3. Spusťte příkaz vyvolat PowerShell: 
+
+ ```powershell
+ Invoke-PassthroughAuthOnPremLogonTroubleshooter 
+ ``` 
+4. Když se zobrazí výzva k zadání přihlašovacích údajů, zadejte stejné uživatelské jméno a heslo, které se použijí k přihlášení k nástroji ( https://login.microsoftonline.com) .
+
+Pokud se zobrazí stejná chyba uživatelského jména a hesla, znamená to, že agent předávacího ověřování funguje správně a problém může být, že místní hlavní název uživatele (UPN) není směrovatelný. Další informace najdete v tématu [Konfigurace alternativního přihlašovacího ID]( https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id#:~:text=%20Configuring%20Alternate%20Login%20ID,See%20Also.%20%20More).
+
+
+
+
+
+
 ### <a name="sign-in-failure-reasons-on-the-azure-active-directory-admin-center-needs-premium-license"></a>Důvody neúspěšného přihlášení v centru pro správu Azure Active Directory (potřebuje licenci Premium)
 
 Pokud má tenant přidruženou licenci Azure AD Premium, můžete se také podívat na [sestavu aktivita přihlášení](../reports-monitoring/concept-sign-ins.md) v [centru pro správu Azure Active Directory](https://aad.portal.azure.com/).
 
 ![Centrum pro správu Azure Active Directory – sestava přihlášení](./media/tshoot-connect-pass-through-authentication/pta4.png)
 
-Přejděte na **Azure Active Directory** -> **přihlášení** v [centru pro správu Azure Active Directory](https://aad.portal.azure.com/) a klikněte na přihlašovací aktivitu konkrétního uživatele. Vyhledejte pole **kód chyby přihlášení** . Namapujte hodnotu tohoto pole na důvod selhání a rozlišení pomocí následující tabulky:
+Přejděte na **Azure Active Directory**  ->  **přihlášení** v [centru pro správu Azure Active Directory](https://aad.portal.azure.com/) a klikněte na přihlašovací aktivitu konkrétního uživatele. Vyhledejte pole **kód chyby přihlášení** . Namapujte hodnotu tohoto pole na důvod selhání a rozlišení pomocí následující tabulky:
 
 |Kód chyby přihlášení|Důvod neúspěšného přihlášení|Řešení
 | --- | --- | ---
@@ -123,7 +150,7 @@ V závislosti na typu problému, který budete možná potřebovat, je nutné na
 
 ### <a name="azure-ad-connect-logs"></a>Protokoly Azure AD Connect
 
-Chyby související s instalací najdete v protokolech Azure AD Connect v **protokolu%ProgramData%\AADConnect\trace-\*. log**.
+Chyby související s instalací najdete v protokolech Azure AD Connect v **protokolu%ProgramData%\AADConnect\trace- \* . log**.
 
 ### <a name="authentication-agent-event-logs"></a>Protokoly událostí agenta ověřování
 
@@ -133,7 +160,7 @@ Pro podrobnou analýzu Povolte protokol "session" (klikněte pravým tlačítkem
 
 ### <a name="detailed-trace-logs"></a>Podrobné protokoly trasování
 
-Pokud chcete řešit chyby při přihlašování uživatelů, vyhledejte protokoly trasování v **%ProgramData%\MICROSOFT\AZURE AD Connect Authentication\\Agent\Trace**. Mezi tyto protokoly patří důvody, proč přihlášení konkrétního uživatele neuspělo pomocí funkce předávacího ověřování. Tyto chyby jsou také namapovány na důvody neúspěšného přihlášení, které jsou uvedeny v předchozí tabulce důvodů neúspěšných přihlášení. Následuje příklad položky protokolu:
+Pokud chcete řešit chyby při přihlašování uživatelů, vyhledejte protokoly trasování v **%ProgramData%\MICROSOFT\AZURE AD Connect Authentication \\ Agent\Trace**. Mezi tyto protokoly patří důvody, proč přihlášení konkrétního uživatele neuspělo pomocí funkce předávacího ověřování. Tyto chyby jsou také namapovány na důvody neúspěšného přihlášení, které jsou uvedeny v předchozí tabulce důvodů neúspěšných přihlášení. Následuje příklad položky protokolu:
 
 ```
     AzureADConnectAuthenticationAgentService.exe Error: 0 : Passthrough Authentication request failed. RequestId: 'df63f4a4-68b9-44ae-8d81-6ad2d844d84e'. Reason: '1328'.

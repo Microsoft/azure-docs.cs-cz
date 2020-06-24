@@ -13,11 +13,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: b23be9901df7ca435f412d9f49e1a7ad88382ade
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281649"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711914"
 ---
 # <a name="move-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>Přesun dat ze služby Amazon Simple Storage pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -62,7 +62,7 @@ Následující části obsahují podrobné informace o vlastnostech JSON, které
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 Propojená služba propojuje úložiště dat s datovou továrnou. Vytvoříte propojenou službu typu **AwsAccessKey** a propojíte úložiště dat Amazon S3 s datovou továrnou. Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou službu Amazon S3 (AwsAccessKey).
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
 | accessKeyID |ID tajného přístupového klíče |řetězec |Ano |
 | secretAccessKey |Tajný přístupový klíč sám o sobě. |Šifrovaný tajný řetězec |Ano |
@@ -71,7 +71,7 @@ Propojená služba propojuje úložiště dat s datovou továrnou. Vytvoříte p
 >Tento konektor vyžaduje ke kopírování dat z Amazon S3 přístupové klíče pro účet IAM. [Dočasné přihlašovací údaje zabezpečení](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) nejsou podporovány.
 >
 
-Zde naleznete příklad:
+Tady je příklad:
 
 ```json
 {
@@ -91,12 +91,12 @@ Pokud chcete určit datovou sadu, která bude představovat vstupní data ve slu
 
 Oddíly, jako jsou struktura, dostupnost a zásady, jsou podobné pro všechny typy datových sad (například SQL Database, Azure Blob a Azure Table). Oddíl **typeProperties** se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti dat. Oddíl **typeProperties** pro datovou sadu typu **AmazonS3** (která zahrnuje datovou sadu Amazon S3) má následující vlastnosti:
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
 | interval intervalu |Název intervalu S3. |Řetězec |Ano |
-| key |Klíč objektu S3. |Řetězec |Ne |
+| Klíč |Klíč objektu S3. |Řetězec |Ne |
 | směr |Prefix pro klíč objektu S3 Jsou vybrány objekty, jejichž klíče začínají touto předponou. Platí pouze v případě, že klíč je prázdný. |Řetězec |Ne |
-| version |Verze objektu S3, pokud je povolená Správa verzí S3 |Řetězec |Ne |
+| verze |Verze objektu S3, pokud je povolená Správa verzí S3 |Řetězec |Ne |
 | formát | Podporovány jsou následující typy formátu: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. V části formát nastavte vlastnost **typ** na jednu z těchto hodnot. Další informace najdete v oddílech [Formát textu](data-factory-supported-file-and-compression-formats.md#text-format), [formát JSON](data-factory-supported-file-and-compression-formats.md#json-format), [Formát Avro](data-factory-supported-file-and-compression-formats.md#avro-format), formát [ORC](data-factory-supported-file-and-compression-formats.md#orc-format)a formát [Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) . <br><br> Pokud chcete kopírovat soubory mezi úložišti na základě souborů (binární kopie), přeskočte oddíl formát v definicích vstupní i výstupní datové sady. | |Ne |
 | komprese | Zadejte typ a úroveň komprese dat. Podporované typy jsou: **gzip**, **Deflate**, **bzip2**a **ZipDeflate**. Podporované úrovně jsou: **optimální** a **nejrychlejší**. Další informace naleznete v tématu [formáty souborů a komprese v Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). | |Ne |
 
@@ -172,7 +172,7 @@ Můžete to samé udělat pro vlastnost **prefix** datové sady Amazon S3. Sezna
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 Úplný seznam oddílů a vlastností dostupných pro definování aktivit najdete v tématu [vytváření kanálů](data-factory-create-pipelines.md). Pro všechny typy aktivit jsou k dispozici vlastnosti, jako je název, popis, vstupní a výstupní tabulka a zásady. Vlastnosti, které jsou k dispozici v části **typeProperties** v aktivitě, se liší podle typu aktivity. U aktivity kopírování se vlastnosti liší v závislosti na typech zdrojů a jímky. Pokud je zdroj v aktivitě kopírování typu **FileSystemSource** (který zahrnuje Amazon S3), je v části **typeProperties** k dispozici následující vlastnost:
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
 | zahrnout |Určuje, jestli se mají rekurzivně zobrazovat objekty S3 v rámci adresáře. |true nebo false |Ne |
 

@@ -1,5 +1,5 @@
 ---
-title: Správa zdvojeného modelu
+title: Správa modelu dvojčat
 titleSuffix: Azure Digital Twins
 description: Podívejte se, jak vytvořit, upravit a odstranit model v rámci digitálních vláken Azure.
 author: baanders
@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 195f5f8d820ff43aed73fc0a46dcccccef43ae66
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: 6c023ff8419a41353e0c8aff70d04c5b9fcb27a4
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84612925"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84725643"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Správa modelů digitálních vláken Azure
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Můžete spravovat [modely](concepts-models.md) , které vaše instance digitálního vlákna Azure ví o používání [**rozhraní DigitalTwinsModels API**](how-to-use-apis-sdks.md), [sady SDK pro .NET (C#)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)nebo [digitálních vláken Azure](how-to-use-cli.md). 
 
@@ -109,7 +112,7 @@ foreach (string fileName in dtdlFiles)
 client.CreateModels(dtdlStrings);
 ```
 
-Soubory modelu mohou obsahovat více než jeden model. V takovém případě musí být modely umístěny do pole JSON. Například:
+Soubory modelu mohou obsahovat více než jeden model. V takovém případě musí být modely umístěny do pole JSON. Příklad:
 
 ```json
 [

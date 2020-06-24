@@ -4,11 +4,11 @@ description: Tento článek shrnuje Azure Backup podporu při zálohování poč
 ms.date: 08/30/2019
 ms.topic: conceptual
 ms.openlocfilehash: 6085bc647c06b5907282460a2d8706b8549e1bc2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79247862"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84709874"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Matice podpory pro zálohování s agentem Microsoft Azure Recovery Services (MARS)
 
@@ -27,7 +27,7 @@ Azure Backup používá agenta MARS k zálohování dat z místních počítač�
 
 Možnosti zálohování závisí na tom, kde je agent nainstalovaný. Další informace najdete v tématu [architektura Azure Backup pomocí agenta Mars](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders). Informace o architektuře zálohování MABS a DPM najdete v tématu [zálohování do DPM nebo MABS](backup-architecture.md#architecture-back-up-to-dpmmabs). Viz také [požadavky](backup-support-matrix-mabs-dpm.md) na architekturu zálohování.
 
-**Instalace** | **Zobrazí**
+**Instalace** | **Podrobnosti**
 --- | ---
 Stáhnout nejnovějšího agenta MARS | Nejnovější verzi agenta si můžete stáhnout z trezoru nebo [si ho stáhnout přímo](https://aka.ms/azurebackup_agent).
 Instalace přímo na počítač | Agenta MARS můžete nainstalovat přímo na místní Windows Server nebo na virtuální počítač s Windows, na kterém běží některý z [podporovaných operačních systémů](https://docs.microsoft.com/azure/backup/backup-support-matrix-mabs-dpm#supported-mabs-and-dpm-operating-systems).
@@ -41,12 +41,12 @@ Instalace na záložní server | Když nastavíte DPM nebo MABS pro zálohován�
 
 Když použijete agenta MARS k zálohování dat, agent pořizuje snímek dat a uloží ho do složky místní mezipaměti předtím, než odešle data do Azure. Složka cache (Scratch) má několik požadavků:
 
-**Mezipaměť** | **Zobrazí**
+**Mezipaměť** | **Podrobnosti**
 --- | ---
 Velikost |  Volné místo ve složce mezipaměti by mělo být alespoň 5 až 10 procent celkové velikosti zálohovaných dat.
 Umístění | Složka mezipaměti musí být uložená místně na počítači, který se zálohuje, a musí být online. Složka mezipaměti by neměla být ve sdílené síťové složce, na vyměnitelném médiu nebo na svazku offline.
 Složka | Složka mezipaměti by neměla být zašifrovaná na svazku s odstraněnými duplicitními daty nebo v komprimované složce, která je zhuštěná, nebo má bod rozboru.
-Změny umístění | Umístění mezipaměti můžete změnit zastavením zálohovacího stroje (`net stop bengine`) a zkopírováním složky mezipaměti do nové jednotky. (Zajistěte, aby na nové jednotce bylo dost místa.) Pak aktualizujte dvě položky registru v části **HKLM\SOFTWARE\Microsoft\Windows Azure Backup** (**config/ScratchLocation** a **config/CloudBackupProvider/ScratchLocation**) na nové místo a restartujte modul.
+Změny umístění | Umístění mezipaměti můžete změnit zastavením zálohovacího stroje ( `net stop bengine` ) a zkopírováním složky mezipaměti do nové jednotky. (Zajistěte, aby na nové jednotce bylo dost místa.) Pak aktualizujte dvě položky registru v části **HKLM\SOFTWARE\Microsoft\Windows Azure Backup** (**config/ScratchLocation** a **config/CloudBackupProvider/ScratchLocation**) na nové místo a restartujte modul.
 
 ## <a name="networking-and-access-support"></a>Podpora sítí a přístupu
 
@@ -92,7 +92,7 @@ Další informace najdete v tématu [požadavky na směrování ExpressRoute](ht
 
 ### <a name="throttling-support"></a>Podpora omezování
 
-**Funkce** | **Zobrazí**
+**Funkce** | **Podrobnosti**
 --- | ---
 Řízení šířky pásma | Podporuje se. V agentovi MARS upravte šířku pásma pomocí **možnosti změnit vlastnosti** .
 Omezení sítě | Není k dispozici pro zálohované počítače se systémem Windows Server 2008 R2, Windows Server 2008 SP2 nebo Windows 7.
@@ -116,7 +116,7 @@ Windows 8.1 (Enterprise, pro)| Ano |Ne | Ověřte odpovídající verzi serveru 
 Windows 8 (Enterprise, pro) | Ano | Ne | Ověřte odpovídající verzi serveru pro software/modul požadavky.
 Windows Server 2016 (Standard, Datacenter, Essentials) | Ano | Ano | – .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0
 Windows Server 2012 R2 (Standard, Datacenter, Foundation, Essentials) | Ano | Ano | – .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0
-Windows Server 2012 (Standard, Datacenter, základ) | Ano | Ano |– .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0 <br> – Údržba a správa bitových kopií (DISM. exe)
+Windows Server 2012 (Standard, Datacenter, základ) | Ano | Ano |– .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0 <br> – Údržba a Správa imagí nasazení (DISM.exe)
 Windows Storage Server 2016/2012 R2/2012 (Standard, pracovní skupina) | Ano | Ne | – .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0
 Windows Server 2019 (Standard, Datacenter, Essentials) | Ano | Ano | – .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0
 
@@ -133,8 +133,8 @@ U místních nebo hostovaných prostředí, kde nemůžete upgradovat operační
 | **Operační systém**                                       | **Soubory/složky** | **Stav systému** | **Požadavky na software/modul**                           |
 | ------------------------------------------------------------ | ----------------- | ------------------ | ------------------------------------------------------------ |
 | Windows 7 (Ultimate, Enterprise, pro, Home Premium/Basic, Starter) | Ano               | Ne                 | Ověřte odpovídající verzi serveru pro software/modul požadavky. |
-| Windows Server 2008 R2 (Standard, Enterprise, Datacenter, základ) | Ano               | Ano                | – .NET 3,5, .NET 4,5 <br>  – Windows PowerShell <br>  -Kompatibilní Microsoft VC + + Redistributable <br>  – Microsoft Management Console (MMC) 3,0 <br>  – Údržba a správa bitových kopií (DISM. exe) |
-| Windows Server 2008 SP2 (Standard, Datacenter, základ)  | Ano               | Ne                 | – .NET 3,5, .NET 4,5 <br>  – Windows PowerShell <br>  -Kompatibilní Microsoft VC + + Redistributable <br>  – Microsoft Management Console (MMC) 3,0 <br>  – Údržba a správa bitových kopií (DISM. exe) <br>  – Virtual Server 2005 Base + KB KB948515 |
+| Windows Server 2008 R2 (Standard, Enterprise, Datacenter, základ) | Ano               | Ano                | – .NET 3,5, .NET 4,5 <br>  – Windows PowerShell <br>  -Kompatibilní Microsoft VC + + Redistributable <br>  – Microsoft Management Console (MMC) 3,0 <br>  – Údržba a Správa imagí nasazení (DISM.exe) |
+| Windows Server 2008 SP2 (Standard, Datacenter, základ)  | Ano               | Ne                 | – .NET 3,5, .NET 4,5 <br>  – Windows PowerShell <br>  -Kompatibilní Microsoft VC + + Redistributable <br>  – Microsoft Management Console (MMC) 3,0 <br>  – Údržba a Správa imagí nasazení (DISM.exe) <br>  – Virtual Server 2005 Base + KB KB948515 |
 
 ## <a name="backup-limits"></a>Omezení zálohování
 
@@ -148,7 +148,7 @@ Windows Server 2012 nebo novější |54 400 GB
 Windows Server 2008 R2 SP1 |1 700 GB
 Windows Server 2008 SP2| 1 700 GB
 Windows 8 nebo novější| 54 400 GB
-Windows 7| 1 700 GB
+Windows 7| 1 700 GB
 
 ### <a name="other-limitations"></a>Další omezení
 
@@ -174,7 +174,7 @@ Složky s povoleným Replikace DFS | Není podporováno.
 
 ## <a name="supported-drives-or-volumes-for-backup"></a>Podporované jednotky nebo svazky pro zálohování
 
-**Jednotka/svazek** | **Podpora** | **Zobrazí**
+**Jednotka/svazek** | **Podpora** | **Podrobnosti**
 --- | --- | ---
 Svazky jen pro čtení| Nepodporuje se | Služba Stínová kopie svazku (VSS) funguje pouze v případě, že svazek je zapisovatelný.
 Offline svazky| Nepodporuje se |Služba Stínová kopie svazku funguje jenom v případě, že je svazek online.

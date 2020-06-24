@@ -5,18 +5,18 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: conceptual
-ms.date: 06/07/2020
+ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: b8ff58e830d9ca992db4461ee5c75659120c89c1
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: 34535cda82ba039ace98b6055e8f7096c5454fda
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84629586"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207868"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>Třetí část: Konfigurace oprávnění adresářů a souborů přes SMB 
 
-Než začnete s tímto článkem, ujistěte se, že jste dokončili předchozí článek [přiřazení oprávnění na úrovni sdílení k identitě](storage-files-identity-ad-ds-assign-permissions.md). Aby bylo zajištěno, že jsou zavedena oprávnění na úrovni sdílené složky.
+Než začnete s tímto článkem, ujistěte se, že jste dokončili předchozí článek, [přiřaďte identitě oprávnění na úrovni sdílené složky](storage-files-identity-ad-ds-assign-permissions.md) a ujistěte se, že jsou nastavená vaše oprávnění na úrovni sdílené složky.
 
 Po přiřazení oprávnění na úrovni sdílení s funkcí RBAC musíte nakonfigurovat správné seznamy ACL pro systém Windows na úrovni kořenového adresáře, adresáře nebo souboru, aby bylo možné využít podrobné řízení přístupu. Oprávnění na úrovni sdílené složky RBAC si můžete představit jako gatekeeper na vysoké úrovni, který určuje, jestli uživatel může ke sdílené složce přistupovat. I když seznamy ACL systému Windows fungují na podrobnější úrovni, aby bylo možné určit, které operace může uživatel provádět na úrovni adresáře nebo souboru. Oprávnění na úrovni sdílené složky a souboru nebo adresáře se vynutily, když se uživatel pokusí o přístup k souboru nebo adresáři, takže pokud mezi nimi existuje rozdíl, použije se jenom ta, která je jenom nejpřísnější. Například pokud má uživatel přístup pro čtení a zápis na úrovni souboru, ale přečte se jenom na úrovni sdílení, pak ho můžou číst jenom. Totéž by platilo, pokud bylo obrácené a uživatel měl přístup pro čtení a zápis na úrovni sdílené složky, ale jenom číst na úrovni souboru, ale může ho jenom číst.
 
@@ -73,7 +73,7 @@ Pomocí Průzkumníka souborů Windows udělte úplným oprávněním všem adre
 1. V okně příkazového řádku pro přidání nových uživatelů zadejte cílové uživatelské jméno, kterému chcete udělit oprávnění, do pole **Zadejte názvy objektů k výběru** a vyberte možnost **kontrolovat názvy** a vyhledejte úplný název UPN cílového uživatele.
 1.    Vyberte **OK**.
 1.    Na kartě **zabezpečení** vyberte všechna oprávnění, která chcete novému uživateli udělit.
-1.    Vyberte **Apply** (Použít).
+1.    Vyberte **Použít**.
 
 ### <a name="configure-windows-acls-with-icacls"></a>Konfigurace seznamů ACL pro Windows pomocí icacls
 

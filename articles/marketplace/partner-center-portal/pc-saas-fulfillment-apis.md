@@ -5,31 +5,55 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 05/18/2020
 ms.author: dsindona
-ms.openlocfilehash: ba1b158bc529b148a8e3138d122c13ead19e073e
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 70515ca04e870fa435f8e9f46122a8e0dcb9b588
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858087"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84691352"
 ---
 # <a name="saas-fulfillment-apis-in-microsoft-commercial-marketplace"></a>Rozhraní API pro plnění SaaS na komerčním webu Microsoft Marketplace
 
-Rozhraní API pro plnění SaaS umožňují nezávislým dodavatelům softwaru integrovat své aplikace SaaS do Microsoft AppSource a Azure Marketplace. Tato rozhraní API umožňují aplikacím ISV zapojit se do všech kanálů s povoleným obchodováním: přímé, partner – LED (prodejce) a indikátor LED v poli. Jsou vyžadovány k vypsání SaaS nabídek v režimu s podporou transakcí v Microsoft AppSource a Azure Marketplace.
+Rozhraní API pro splnění SaaS umožňují vydavatelům, kteří se označují také jako nezávislí výrobci softwaru (ISV), publikovat a prodávat své SaaS aplikace v Microsoft AppSource, Azure Marketplace a Azure Portal. Tato rozhraní API umožňují aplikacím ISV zapojit se do všech kanálů s povoleným obchodováním: přímé, partner – LED (prodejce) a indikátor LED v poli.  Integrace s těmito rozhraními API je požadavek na vytvoření a publikování SaaS nabídky v partnerském centru.
 
-> [!WARNING]
-> Aktuální verze tohoto rozhraní API je verze 2, která by se měla používat pro všechny nové nabídky SaaS.  Verze 1 rozhraní API je zastaralá a udržuje se tak, aby podporovala stávající nabídky.
+Nezávislí výrobci softwaru musí implementovat následující toky API přidáním do jejich kódu služby SaaS, aby zachovaly stejný stav předplatného pro nezávislé výrobce softwaru i společnost Microsoft:
 
-## <a name="business-model-support"></a>Podpora obchodního modelu
+* Tok úvodní stránky: Společnost Microsoft oznámí vydavateli, že nabídka SaaS byla zakoupena zákazníkem na webu Marketplace.
+* Tok aktivace: Vydavatel oznamuje společnosti Microsoft, že nově koupený účet SaaS byl nakonfigurován na straně vydavatele.
+* Aktualizovat tok: Změna zakoupeného plánu nebo počet zakoupených stanic.
+* Pozastavit a obnovit tok: pozastavení zakoupené nabídky SaaS v případě, že platební metoda zákazníka již není platná. Po vyřešení problému s metodou platby je možné nabídku pozastavené nabídky obnovit.
+* Toky Webhooku: Microsoft pošle vydavateli informace o změnách předplatného SaaS a zrušení aktivované zákazníkem ze strany Microsoftu.
 
-Toto rozhraní API podporuje následující funkce obchodního modelu; Můžeš:
+Pro zrušení zakoupeného předplatného SaaS je integrace volitelná, protože ji zákazník může provést na straně Microsoftu.
 
-* Zadejte pro nabídku více plánů. Tyto plány mají různé funkce a můžou být cenově odlišné.
-* Poskytněte nabídku pro jednotlivé weby nebo model fakturace podle uživatele.
-* Poskytněte možnosti fakturace na měsíc a roční (placené předem).
-* Poskytněte zákazníkům soukromé ceny na základě sjednané obchodní smlouvy.
+Správná integrace s rozhraními API pro plnění SaaS jsou zásadní pro zajištění, že
 
+* koncovým zákazníkům, kteří si zakoupili nabídku SaaS vydavatele, se společnost Microsoft účtuje správně.
+* koncoví zákazníci získávají správné uživatelské prostředí při nákupu, konfiguraci, používání a správě předplatných SaaS zakoupených na webu Marketplace.
+
+Tato rozhraní API umožňují, aby se nabídky vydavatele účastnily všech kanálů s povoleným obchodováním:
+
+* přímé
+* partner – LED (prodejce, CSP)
+* Indikátor LED pole
+
+Ve scénáři prodejce (CSP) si poskytovatel CSP koupí nabídku SaaS jménem koncového zákazníka. Očekává se, že zákazník použije nabídku SaaS, ale CSP je entita, která provede následující:
+
+* fakturace zákazníka
+* Změna plánů předplatného/objemu koupených sedadel
+* rušení předplatných
+
+Vydavatel není vyžadován pro implementaci jakýchkoli toků volání rozhraní API v tomto scénáři jinak.
+
+Další informace o CSP najdete v tématu https://partner.microsoft.com/en-us/licensing .
+
+>[!Warning]
+>Aktuální verze tohoto rozhraní API je verze 2, která by se měla používat pro všechny nové nabídky SaaS. Verze 1 rozhraní API je zastaralá a udržuje se tak, aby podporovala stávající nabídky.
+
+>[!Note]
+>Rozhraní API pro plnění SaaS jsou určena pouze pro volání ze služby back-endu vydavatele. Integrace s rozhraními API přímo z webové stránky vydavatele není podporována. Měl by se použít jenom tok ověřování služby na službu.
 
 ## <a name="next-steps"></a>Další kroky
 

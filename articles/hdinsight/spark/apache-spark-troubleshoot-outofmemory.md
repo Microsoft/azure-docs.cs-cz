@@ -8,11 +8,11 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/15/2019
 ms.openlocfilehash: 31cdef281b1cb26d01a4690c815e3d3621e2c053
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79271964"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84709041"
 ---
 # <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>OutOfMemoryError výjimky pro Apache Spark ve službě Azure HDInsight
 
@@ -122,7 +122,7 @@ To můžete provést v uživatelském rozhraní prohlížeče Ambari, a to tak, 
 
 ![Oddíl Advanced spark2-ENV](./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image01.png)
 
-Přidejte následující vlastnost pro změnu paměti serveru Spark historie z 1G na 4G: `SPARK_DAEMON_MEMORY=4g`.
+Přidejte následující vlastnost pro změnu paměti serveru Spark historie z 1G na 4G: `SPARK_DAEMON_MEMORY=4g` .
 
 ![Spark – vlastnost](./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image02.png)
 
@@ -239,7 +239,7 @@ Všechny položky odstraňte pomocí kroků popsaných níže.
 1. Počkejte, než se výše uvedený příkaz dokončí, a kurzorem vraťte výzvu a pak restartujte službu Livy z Ambari, která by měla být úspěšná.
 
 > [!NOTE]
-> `DELETE`relace Livy po dokončení jejího provádění. Relace Livy Batch se neodstraní automaticky hned po dokončení aplikace Spark, což je záměrné. Relace Livy je entita vytvořená požadavkem POST proti serveru Livy REST. K `DELETE` odstranění této entity je potřeba volání. Nebo bychom měli počkat na navázání GC.
+> `DELETE`relace Livy po dokončení jejího provádění. Relace Livy Batch se neodstraní automaticky hned po dokončení aplikace Spark, což je záměrné. Relace Livy je entita vytvořená požadavkem POST proti serveru Livy REST. `DELETE`K odstranění této entity je potřeba volání. Nebo bychom měli počkat na navázání GC.
 
 ---
 
@@ -253,6 +253,6 @@ Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, p�
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
-* Připojte se [@AzureSupport](https://twitter.com/azuresupport) k oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
+* Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
 
 * Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

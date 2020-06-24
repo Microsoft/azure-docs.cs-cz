@@ -4,11 +4,11 @@ description: Azure Service Fabric přijímá formát Docker Compose, který usna
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: f84dd0ecb7a4002182c8455bfd86354d794a6f7c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282455"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84691284"
 ---
 # <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Podpora nasazení Docker Compose ve službě Azure Service Fabric (Preview)
 
@@ -24,7 +24,7 @@ Chcete-li použít tuto verzi Preview, vytvořte cluster s verzí 5,7 nebo vyš�
 
 ## <a name="deploy-a-docker-compose-file-on-service-fabric"></a>Nasazení souboru Docker Compose v Service Fabric
 
-Následující příkazy vytvoří aplikaci Service Fabric (s názvem `fabric:/TestContainerApp`), kterou můžete monitorovat a spravovat stejně jako jakoukoli jinou aplikaci Service Fabric. Pro dotazy na stav můžete použít zadaný název aplikace.
+Následující příkazy vytvoří aplikaci Service Fabric (s názvem `fabric:/TestContainerApp` ), kterou můžete monitorovat a spravovat stejně jako jakoukoli jinou aplikaci Service Fabric. Pro dotazy na stav můžete použít zadaný název aplikace.
 Service Fabric rozpoznává "Deployment" jako identifikátor nasazení vytváření.
 
 ### <a name="use-powershell"></a>Použití prostředí PowerShell
@@ -137,7 +137,7 @@ V části porty zadejte protokol HTTP nebo https, který bude použit pro naslou
 
 Pokud název služby, který zadáte ve vytvořeném souboru, je plně kvalifikovaný název domény (tj. obsahuje tečku [.]), název DNS zaregistrovaný Service Fabric je `<ServiceName>` (včetně tečky). V takovém případě se každý segment cesty v názvu aplikace stane názvem domény v názvu DNS služby, přičemž první segment cesty se stane popiskem domény nejvyšší úrovně.
 
-Například pokud je `fabric:/SampleApp/MyComposeApp`zadaný název aplikace, `<ServiceName>.MyComposeApp.SampleApp` bude registrovaný název DNS.
+Například pokud je zadaný název aplikace `fabric:/SampleApp/MyComposeApp` , bude `<ServiceName>.MyComposeApp.SampleApp` registrovaný název DNS.
 
 ## <a name="compose-deployment-instance-definition-versus-service-fabric-app-model-type-definition"></a>Sestavování nasazení (definice instance) versus Service Fabric aplikačního modelu (definice typu)
 

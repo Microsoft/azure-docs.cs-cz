@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/15/2020
 ms.author: apimpm
-ms.openlocfilehash: 8c9257c50320497a11a6cd1dbfdd1c709e2d9800
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: ecbd4d97bb092ccbdb286e4865bf04e770ca9473
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84658429"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207885"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Přehled portálu pro vývojáře Azure API Management
 
@@ -169,7 +169,7 @@ Starší portály vyžadovaly oprávnění `Microsoft.ApiManagement/service/gets
 
 K vytvoření role s požadovaným oprávněním můžete použít následující skript prostředí PowerShell. Nezapomeňte změnit `<subscription-id>` parametr. 
 
-```PowerShell
+```powershell
 #New Portals Admin Role 
 Import-Module Az 
 Connect-AzAccount 
@@ -187,7 +187,7 @@ New-AzRoleDefinition -Role $customRole
  
 Jakmile je role vytvořená, dá se jim udělit libovolný uživatel z části **Access Control (IAM)** v Azure Portal. Přiřazení této role uživateli přiřadí oprávnění v oboru služby. Uživatel bude moci generovat tokeny SAS jménem *libovolného* uživatele ve službě. Minimálně tuto roli je potřeba přiřadit Správci služby. Následující příkaz prostředí PowerShell ukazuje, jak přiřadit roli uživateli `user1` na nejnižší úrovni, aby se zabránilo udělení zbytečných oprávnění uživateli: 
 
-```PowerShell
+```powershell
 New-AzRoleAssignment -SignInName "user1@contoso.com" -RoleDefinitionName "APIM New Portal Admin" -Scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>/users/1" 
 ```
 
@@ -208,7 +208,7 @@ Selhání volání může být způsobeno také certifikátem TLS/SSL, který je
 | Apple Safari                | Ano<sup>1</sup> |
 | Google Chrome               | Ano<sup>1</sup> |
 | Microsoft Edge              | Ano<sup>1</sup> |
-| Microsoft Internet Explorer | No              |
+| Microsoft Internet Explorer | Ne              |
 | Mozilla Firefox             | Ano<sup>1</sup> |
 
  <small><sup>1</sup> podporuje se v obou nejnovějších produkčních verzích.</small>

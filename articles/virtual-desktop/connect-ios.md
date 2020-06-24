@@ -4,16 +4,16 @@ description: Jak se připojit k virtuálnímu počítači s Windows pomocí klie
 services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/08/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 4239f5271e4df282cf667b4bf1eff5f55f6f6323
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 6fa3a120788bf6b196409491584e068609b65e60
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611700"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85209050"
 ---
 # <a name="connect-with-the-ios-client"></a>Připojení s klientem iOS
 
@@ -22,7 +22,7 @@ ms.locfileid: "82611700"
 >[!IMPORTANT]
 >Tento obsah se vztahuje na jarní 2020 aktualizaci s Azure Resource Manager objekty virtuálních klientů Windows. Pokud používáte virtuální plochu Windows na verzi 2019 bez Azure Resource Manager objektů, přečtěte si [Tento článek](./virtual-desktop-fall-2019/connect-ios-2019.md).
 >
-> V současnosti je ve verzi Public Preview na jaře 2020 aktualizace virtuálních počítačů s Windows. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučujeme ji používat pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. 
+> V současnosti je ve verzi Public Preview na jaře 2020 aktualizace virtuálních počítačů s Windows. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučujeme ji používat pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Pomocí našeho klienta ke stažení můžete získat přístup k prostředkům virtuálních klientů Windows ze zařízení s iOS. V této příručce se dozvíte, jak nastavit klienta iOS.
@@ -37,9 +37,9 @@ Přihlaste se k odběru informačního kanálu, který poskytuje správce, aby z
 
 Přihlášení k odběru informačního kanálu:
 
-1. V centru připojení klepněte **+** na a potom klepněte na **Přidat pracovní prostor**.
+1. V centru připojení klepněte na **+** a potom klepněte na **Přidat pracovní prostor**.
 2. Do pole **Adresa URL informačního kanálu** zadejte adresu URL informačního kanálu. Adresa URL informačního kanálu může být buď adresa URL, nebo e-mailová adresa.
-   - Pokud použijete adresu URL, použijte tu, kterou vám správce poskytl. Obvykle je <https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery>adresa URL.
+   - Pokud použijete adresu URL, použijte tu, kterou vám správce poskytl. Obvykle je adresa URL <https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery> .
    - Pokud chcete používat e-mail, zadejte svou e-mailovou adresu. To klientovi oznamuje, aby vyhledal adresu URL přidruženou k vaší e-mailové adrese, pokud váš správce nakonfiguroval server tímto způsobem.
 3. Klepněte na **Další**.
 4. Po zobrazení výzvy zadejte své přihlašovací údaje.

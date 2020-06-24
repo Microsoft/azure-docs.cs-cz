@@ -18,11 +18,11 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ae932191c7b76590ea217386dfd729add5566f87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261044"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84690723"
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>Používání konektorů s Azure AD Connect synchronizace Service Manager
 
@@ -31,13 +31,13 @@ ms.locfileid: "79261044"
 Karta konektory slouží ke správě všech systémů, ke kterým je synchronizační modul připojen.
 
 ## <a name="connector-actions"></a>Akce konektoru
-| Akce | Poznámka |
+| Akce | Komentář |
 | --- | --- |
 | Vytvořit |Nepoužívat. Pro připojení k dalším doménovým strukturám služby AD použijte Průvodce instalací nástroje. |
 | Vlastnosti |Používá se pro filtrování domén a organizačních jednotek. |
 | [Odstranit](#delete) |Slouží k odstranění dat v prostoru konektoru nebo k odstranění připojení k doménové struktuře. |
 | [Konfigurovat profily spuštění](#configure-run-profiles) |S výjimkou filtrování domén není tady nic konfigurovat. Tuto akci můžete použít k zobrazení již nakonfigurovaných profilů spuštění. |
-| Spusťte |Slouží ke spuštění jednorázového spuštění profilu. |
+| Spustit |Slouží ke spuštění jednorázového spuštění profilu. |
 | Zastavit |Zastaví konektor, který aktuálně používá profil. |
 | Exportovat konektor |Nepoužívat. |
 | Import konektoru |Nepoužívat. |
@@ -88,7 +88,7 @@ Chcete-li tento problém vyřešit, aktualizujte služba AD DS uživatelský ú�
 5. V místním dialogovém okně vyberte připojit k doménové struktuře služby Active Directory:
 6. Název doménové struktury označuje odpovídající místní službu AD.
 7. Uživatelské jméno indikuje služba AD DS účet, který se používá k synchronizaci.
-8. Zadejte nové heslo účtu služba AD DS v textovém poli ![hesla Azure AD Connect Nástroj pro synchronizaci šifrovacího klíče.](./media/how-to-connect-sync-service-manager-ui-connectors/key6.png)
+8. Zadejte nové heslo účtu služba AD DS v textovém poli hesla ![ Azure AD Connect Nástroj pro synchronizaci šifrovacího klíče.](./media/how-to-connect-sync-service-manager-ui-connectors/key6.png)
 9. Kliknutím na tlačítko OK uložte nové heslo a restartujte synchronizační službu, aby se odebralo staré heslo z mezipaměti paměti.
 
 

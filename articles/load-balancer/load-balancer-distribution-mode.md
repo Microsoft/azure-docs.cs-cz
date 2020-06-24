@@ -7,18 +7,18 @@ documentationcenter: na
 author: asudbring
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/19/2019
 ms.author: allensu
-ms.openlocfilehash: 5c50186692438be5d0922cd329c28e665310e5c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c5dfcc84530597fc41c547a78478dcee4a4ad803
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77023527"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808497"
 ---
 # <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>Konfigurace režimu distribuce pro Azure Load Balancer
 
@@ -114,7 +114,7 @@ Pomocí těchto nastavení načtěte konfiguraci distribučního režimu nástro
     IdleTimeoutInMinutes : 15
     LoadBalancerDistribution : sourceIP
 
-Pokud prvek `LoadBalancerDistribution` není k dispozici, Azure Load Balancer používá výchozí algoritmus pět-řazené kolekce členů.
+Pokud `LoadBalancerDistribution` prvek není k dispozici, Azure Load Balancer používá výchozí algoritmus pět-řazené kolekce členů.
 
 ### <a name="configure-distribution-mode-on-load-balanced-endpoint-set"></a>Konfigurace distribučního režimu pro sadu koncových bodů s vyrovnáváním zatížení
 
@@ -156,7 +156,7 @@ Následující příklad ukazuje, jak změnit konfiguraci distribučního režim
 
 Pro změnu existující konfigurace nasazení použijte model nasazení Azure Classic. Přidejte `x-ms-version` hlavičku a nastavte hodnotu na verze 2014-09-01 nebo novější.
 
-#### <a name="request"></a>Request
+#### <a name="request"></a>Žádost
 
     POST https://management.core.windows.net/<subscription-id>/services/hostedservices/<cloudservice-name>/deployments/<deployment-name>?comp=UpdateLbSet   x-ms-version: 2014-09-01
     Content-Type: application/xml

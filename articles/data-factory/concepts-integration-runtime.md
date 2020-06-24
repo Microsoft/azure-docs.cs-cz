@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/26/2020
-ms.openlocfilehash: 81061f9f20e325d6f392c76c5e2801527abc9e2b
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 8b3dba7996b098ec398c9fe94705c18190b30ba6
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344998"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753569"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Prostředí Integration Runtime v Azure Data Factory 
 
@@ -58,8 +58,8 @@ Následující diagram znázorňuje, jak se dají různá prostředí Integratio
 Prostředí Azure Integration runtime může:
 
 - Spouštění toků dat v Azure 
-- Spouštění aktivity kopírování mezi úložišti dat v cloudu.
-- Probíhá odesílání následujících transformačních aktivit ve veřejné síti: datacihly/aktivity jar/jar/Python, aktivita v rámci prostředí HDInsight, aktivita prasete v HDInsight, aktivita pro MapReduce HDInsight, aktivita HDInsight Spark, aktivita pro zpracování dat v HDInsight, aktivita Machine Learning streamování ve službě HDInsight, aktivita Data Lake Analytics Machine Learning spouštění v prostředí .NET, vlastní aktivita aktivity na webu, aktivita vyhledávání a aktivita získat metadata.
+- Spustit aktivitu kopírování mezi úložišti cloudových dat
+- Odeslání následujících transformačních aktivit ve veřejné síti: datacihly/aktivita jar/jar/Python, aktivita v rámci prostředí HDInsight, aktivita prasete HDInsight, aktivita pro MapReduce HDInsight, aktivita HDInsight Spark, aktivita pro streamování HDInsight, aktivita streamování ve službě HDInsight Machine Learning, aktivita Machine Learning spouštění v prostředí .NET, vlastní aktivita aktivity Data Lake Analytics prostředků, aktivita pro hledání dat
 
 ### <a name="azure-ir-network-environment"></a>Síťové prostředí Azure IR
 

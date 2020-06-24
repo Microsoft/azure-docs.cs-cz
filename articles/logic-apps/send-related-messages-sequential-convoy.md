@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: apseth, divswa, logicappspm
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: f2a5ad78ecf4bf02e84b9bf2e37fea13c708e072
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: bd6b05489d13f835de4dce2aa3d885132285efca
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84143097"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987615"
 ---
 # <a name="send-related-messages-in-order-by-using-a-sequential-convoy-in-azure-logic-apps-with-azure-service-bus"></a>Odeslání souvisejících zpráv v pořadí pomocí sekvenčního convoyu v Azure Logic Apps s Azure Service Bus
 
@@ -27,7 +27,7 @@ V tomto článku se dozvíte, jak vytvořit aplikaci logiky, která tento model 
 
 * Čtení a zpracování všech zpráv ze stejné relace ve frontě během aktuálního spuštění pracovního postupu.
 
-Chcete-li zkontrolovat soubor JSON této šablony, přečtěte si [GitHub: Service-Bus-Sessions. JSON](https://github.com/Azure/logicapps/blob/master/templates/service-bus-sessions.json).
+Chcete-li zkontrolovat soubor JSON této šablony, přečtěte si [GitHub: service-bus-sessions.json](https://github.com/Azure/logicapps/blob/master/templates/service-bus-sessions.json).
 
 Další informace najdete v tématu [sekvenční convoy vzor – vzory návrhu cloudu architektury Azure](https://docs.microsoft.com/azure/architecture/patterns/sequential-convoy).
 
@@ -47,7 +47,7 @@ Další informace najdete v tématu [sekvenční convoy vzor – vzory návrhu c
 
 Pokud si nejste jistí, jestli má aplikace logiky oprávnění pro přístup k vašemu oboru názvů Service Bus, potvrďte tato oprávnění.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyhledejte a vyberte svůj *obor názvů*Service Bus.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyhledejte a vyberte svůj *obor názvů*Service Bus.
 
 1. V nabídce obor názvů v části **Nastavení**vyberte **zásady sdíleného přístupu**. V části **deklarace identity**ověřte, že máte oprávnění ke **správě** tohoto oboru názvů.
 
@@ -117,7 +117,7 @@ Tady je pracovní postup nejvyšší úrovně v rámci **korelačního doručov�
 
 ![Pracovní postup nejvyšší úrovně šablony](./media/send-related-messages-sequential-convoy/template-top-level-flow.png)
 
-| Name | Popis |
+| Name | Description |
 |------|-------------|
 | **`When a message is received in a queue (peek-lock)`** | V závislosti na zadaném opakování Tato aktivační událost Service Bus zkontroluje všechny zprávy ve frontě Service Bus. Pokud ve frontě existuje zpráva, aktivuje se Trigger, který vytvoří a spustí instanci pracovního postupu. <p><p>Pojem *Náhled – zámek* znamená, že Trigger odesílá požadavek na načtení zprávy z fronty. Pokud zpráva existuje, aktivační událost tuto zprávu načte a zamkne, aby se v této zprávě nedošlo k žádnému dalšímu zpracování, dokud nevyprší doba platnosti zámku. Podrobnosti získáte [inicializací relace](#initialize-session). |
 | **`Init isDone`** | Tato [Akce **inicializovat proměnnou** ](../logic-apps/logic-apps-create-variables-store-values.md#initialize-variable) vytvoří logickou proměnnou, která je nastavena na `false` a označuje, že jsou splněny následující podmínky: <p><p>-V relaci nejsou k dispozici žádné další zprávy, které by bylo možné číst. <br>– Zámek relace již není nutné obnovit, aby bylo možné dokončit aktuální instanci pracovního postupu. <p><p>Podrobnosti najdete v tématu [inicializace relace](#initialize-session). |
@@ -133,7 +133,7 @@ Tady je tok nejvyšší úrovně v `Try` [akci oboru](../logic-apps/logic-apps-c
 
 ![Pracovní postup akce "Try" oboru](./media/send-related-messages-sequential-convoy/try-scope-action.png)
 
-| Name | Popis |
+| Name | Description |
 |------|-------------|
 | **`Send initial message to topic`** | Tuto akci můžete nahradit jakoukoliv akcí, kterou chcete zpracovat první zprávu z relace ve frontě. ID relace určuje relaci. <p><p>Pro tuto šablonu Service Bus akce odešle první zprávu do Service Bus tématu. Podrobnosti najdete v tématu [zpracování úvodní zprávy](#handle-initial-message). |
 | (paralelní větev) | Tato [Akce paralelní větve](../logic-apps/logic-apps-control-flow-branches.md) vytvoří dvě cesty: <p><p>-Větvi #1: pokračuje ve zpracování zprávy. Další informace najdete v tématu [větev #1: dokončení počáteční zprávy ve frontě](#complete-initial-message). <p><p>-Větvi #2: Pokud se něco nepovede, ponecháte zprávu a vydáte k vyzvednutí další spuštění triggeru. Další informace najdete v tématu [větev #2: opuštění počáteční zprávy z fronty](#abandon-initial-message). <p><p>Obě cesty se připojí později v **relaci ukončení ve frontě a akce úspěšné** , které jsou popsané v dalším řádku. |
@@ -144,7 +144,7 @@ Tady je tok nejvyšší úrovně v `Try` [akci oboru](../logic-apps/logic-apps-c
 
 #### <a name="branch-1-complete-initial-message-in-queue"></a>#1 větve: dokončení počáteční zprávy ve frontě
 
-| Name | Popis |
+| Name | Description |
 |------|-------------|
 | `Complete initial message in queue` | Tato akce Service Bus označí úspěšné načtení zprávy jako dokončenou a odebere zprávu z fronty, aby se zabránilo rezpracování. Podrobnosti najdete v tématu [zpracování úvodní zprávy](#handle-initial-message). |
 | `While there are more messages for the session in the queue` | To, [ **dokud** smyčka](../logic-apps/logic-apps-control-flow-loops.md#until-loop) nadále nezíská zprávy, zatímco existují zprávy nebo dokud neuplyne jedna hodina. Další informace o akcích v této smyčce najdete v části, [zatímco pro relaci ve frontě existuje více zpráv](#while-more-messages-for-session). |
@@ -168,7 +168,7 @@ Tady je tok nejvyšší úrovně v `Catch` akci oboru při sbalení podrobností
 
 ![Pracovní postup akce oboru catch](./media/send-related-messages-sequential-convoy/catch-scope-action.png)
 
-| Name | Popis |
+| Name | Description |
 |------|-------------|
 | **`Close a session in a queue and fail`** | Tato akce Service Bus zavře relaci ve frontě, aby zámek relace zůstal otevřený. Podrobnosti najdete v tématu [uzavření relace ve frontě a selhání](#close-session-fail). |
 | **`Find failure msg from 'Try' block`** | Tato [Akce **pole filtru** ](../logic-apps/logic-apps-perform-data-operations.md#filter-array-action) vytvoří pole ze vstupů a výstupů ze všech akcí v `Try` oboru na základě zadaných kritérií. V tomto případě tato akce vrátí výstupy z akcí, které byly výsledkem `Failed` stavu. Podrobnosti najdete v tématu [vyhledání zprávy o selhání z bloku try](#find-failure-message). |
@@ -193,7 +193,7 @@ Pokud chcete zadat hodnoty pro aktivační událost a akce v rámci **korelačn�
   > [!NOTE]
   > Zpočátku je interval dotazování nastavený na tři minuty, aby aplikace logiky neběžela častěji, než očekáváte, a výsledkem jsou neočekávané poplatky za fakturaci. V ideálním případě nastavte interval a četnost na 30 sekund, aby se aplikace logiky spustila hned po přijetí zprávy.
 
-  | Vlastnost | Vyžadováno pro tento scénář | Hodnota | Popis |
+  | Vlastnost | Vyžadováno pro tento scénář | Hodnota | Description |
   |----------|----------------------------|-------|-------------|
   | **Název fronty** | Ano | <*název fronty*> | Název pro dříve vytvořenou frontu Service Bus. V tomto příkladu se používá "Fabrikam-Service-Bus-Queue". |
   | **Typ fronty** | Ano | **Hlavní** | Vaše primární Service Bus fronta |
@@ -249,7 +249,7 @@ Tato akce [ **dokud** smyčka](../logic-apps/logic-apps-control-flow-loops.md#un
 1. V Service Bus akci **získat další zprávy z relace**, zadejte název pro vaši frontu Service Bus. V opačném případě ponechte všechny ostatní výchozí hodnoty vlastností v akci.
 
    > [!NOTE]
-   > Ve výchozím nastavení je maximální počet zpráv nastaven na hodnotu `175` , ale toto omezení je ovlivněno vlastností velikost zprávy a maximální velikost zprávy v Service Bus. V současné době je toto omezení 256 pro Standard a 1 MB pro Premium.
+   > Ve výchozím nastavení je maximální počet zpráv nastaven na hodnotu `175` , ale toto omezení je ovlivněno vlastností velikost zprávy a maximální velikost zprávy v Service Bus. Další informace najdete v tématu [velikost zprávy pro frontu](../service-bus-messaging/service-bus-quotas.md).
 
    ![Service Bus akce – "získat další zprávy z relace"](./media/send-related-messages-sequential-convoy/get-additional-messages-from-session.png)
 

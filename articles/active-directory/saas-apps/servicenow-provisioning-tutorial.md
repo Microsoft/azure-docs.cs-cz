@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: e3d4ca6f8e67f069bffcd27563d7f32b55f6591e
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: da62efff5db5c71b087657b0eec93f8dd4702665
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780515"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84751501"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>Kurz: Konfigurace ServiceNow pro Automatické zřizování uživatelů
 
@@ -54,12 +54,19 @@ Scénář popsaný v tomto kurzu předpokládá, že už máte následující po
 
 1. Identifikujte název instance ServiceNow. Název instance najdete v adrese URL, kterou používáte pro přístup k ServiceNow. V následujícím příkladu je název instance dev35214.
 
-![Instance ServiceNow](media/servicenow-provisioning-tutorial/servicenow_instance.png)
+   ![Instance ServiceNow](media/servicenow-provisioning-tutorial/servicenow_instance.png)
 
-    
 2. Získejte přihlašovací údaje pro správce v ServiceNow. Přejděte do profilu uživatele v ServiceNow a ověřte, jestli má uživatel roli správce. 
 
-![Role správce ServiceNow](media/servicenow-provisioning-tutorial/servicenow-admin-role.png)
+   ![Role správce ServiceNow](media/servicenow-provisioning-tutorial/servicenow-admin-role.png)
+
+3. Zkontrolujte, jestli jsou v ServiceNow **zakázaná** tato nastavení:
+
+   1. Vybrat **System Security**  >  **nastavení vysokého zabezpečení**zabezpečení systému  >  **vyžaduje základní ověřování pro příchozí požadavky schématu**.
+   2. Vybrat **Vlastnosti systému**  >  **webové služby**  >  **vyžadují základní autorizaci pro příchozí požadavky SOAP**.
+     
+   > [!IMPORTANT]
+   > Pokud je toto nastavení *povolené*, modul zřizování nebude při komunikaci s ServiceNowem komunikovat.
 
 ## <a name="step-3-add-servicenow-from-the-azure-ad-application-gallery"></a>Krok 3. Přidání ServiceNow z Galerie aplikací Azure AD
 
@@ -80,7 +87,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-servicenow-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro ServiceNow ve službě Azure AD:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
@@ -142,6 +149,14 @@ Jakmile nakonfigurujete zřizování, použijte k monitorování nasazení tyto 
 * **EntryJoiningPropertyValueIsMissing:** Zkontrolujte [mapování atributů](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) k identifikaci odpovídajícího atributu. Tato hodnota musí být k dispozici u uživatele nebo skupiny, které se pokoušíte zřídit. 
 * Přečtěte si [rozhraní SERVICENOW SOAP API](https://docs.servicenow.com/bundle/newyork-application-development/page/integrate/web-services-apis/reference/r_DirectWebServiceAPIFunctions.html) , abyste pochopili všechny požadavky nebo omezení (například formát pro určení kódu země pro uživatele).
 * Požadavky zřizování se ve výchozím nastavení odesílají do https://{název-instance}. Service-Now. com/{Table-Name}. Pokud potřebujete vlastní adresu URL tenanta, můžete v poli název instance zadat celou adresu URL.
+* **ServiceNowInstanceInvalid** 
+  
+  `Details: Your ServiceNow instance name appears to be invalid.  Please provide a current ServiceNow administrative user name and          password along with the name of a valid ServiceNow instance.`                                                              
+
+   Tato chyba označuje problém komunikující s instancí ServiceNow. Dvakrát zkontrolujte, jestli jsou v ServiceNow *zakázaná* tato nastavení:
+   
+   1. Vybrat **System Security**  >  **nastavení vysokého zabezpečení**zabezpečení systému  >  **vyžaduje základní ověřování pro příchozí požadavky schématu**.
+   2. Vybrat **Vlastnosti systému**  >  **webové služby**  >  **vyžadují základní autorizaci pro příchozí požadavky SOAP**.
 
 ## <a name="additional-resources"></a>Další zdroje
 

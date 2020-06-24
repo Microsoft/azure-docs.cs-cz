@@ -8,18 +8,18 @@ author: asudbring
 manager: kumudD
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 8e79f4c791d0252c719846da3aa8024b0e622dca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a96e22ee8d2f9565ae676574e263beae96b5c1f2
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80477017"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84809411"
 ---
 # <a name="load-balancer-health-probes"></a>Sondy stavu Load Balanceru
 
@@ -118,7 +118,7 @@ Následující příklad ukazuje, jak můžete vyjádřit tento druh konfigurace
       },
 ```
 
-### <a name="http--https-probe"></a><a name="httpprobe"></a><a name="httpsprobe"></a> Test http/https
+### <a name="http--https-probe"></a><a name="httpprobe"></a><a name="httpsprobe"></a>Test http/https
 
 >[!NOTE]
 >Test HTTPS je dostupný jenom pro [Standard Load Balancer](load-balancer-standard-overview.md).
@@ -130,7 +130,7 @@ Sondy HTTP/HTTPS můžete také využít k implementaci vlastní logiky k odebr�
 > [!NOTE] 
 > Test HTTPS vyžaduje použití certifikátů založených na minimální hodnotě hash signatury SHA256 v celém řetězci.
 
-Pokud používáte Cloud Services a máte webové role, které používají W3wp. exe, můžete také dosáhnout automatického monitorování vašeho webu. Chyby ve vašem kódu webu vrátí do testu nástroje pro vyrovnávání zatížení stav, který není 200.
+Pokud používáte Cloud Services a máte webové role, které používají w3wp.exe, dosáhnete také automatického monitorování vašeho webu. Chyby ve vašem kódu webu vrátí do testu nástroje pro vyrovnávání zatížení stav, který není 200.
 
 Test HTTP/HTTPS se nezdařil v těchto případech:
 * Koncový bod testu vrátí jiný kód odpovědi HTTP než 200 (například 403, 404 nebo 500). Tím se okamžitě označí sonda stavu. 
@@ -175,7 +175,7 @@ Pokud Agent hosta přestane reagovat pomocí protokolu HTTP 200 OK, nástroj pro
 
 Pokud Agent hosta odpoví HTTP 200, nástroj pro vyrovnávání zatížení odešle nové toky do této instance znovu.
 
-Při použití webové role kód webu obvykle běží v souboru w3wp. exe, který není monitorován pomocí prostředků infrastruktury Azure nebo hostovaného agenta. Selhání v W3wp. exe (například odpovědi HTTP 500) nejsou hlášeny agentovi hosta. V důsledku toho nástroj pro vyrovnávání zatížení nepřevezme tuto instanci mimo rotaci.
+Při použití webové role se kód webu obvykle spouští v w3wp.exe, který není monitorován pomocí prostředků infrastruktury Azure nebo hostovaného agenta. Selhání v w3wp.exe (například odpovědi HTTP 500) nejsou hlášeny agentovi hosta. V důsledku toho nástroj pro vyrovnávání zatížení nepřevezme tuto instanci mimo rotaci.
 
 <a name="health"></a>
 ## <a name="probe-up-behavior"></a><a name="probehealth"></a>Chování testu
