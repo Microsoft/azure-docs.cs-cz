@@ -4,19 +4,19 @@ description: Nastavení správy pro Enterprise State Roaming
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: troubleshooting
+ms.topic: reference
 ms.date: 02/12/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdffbc3a140bd13dcd6d352db8c192803d39b03e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ab24b3113f9dc69b8f3907037e228ba212a03106
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78672370"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85252929"
 ---
 # <a name="group-policy-and-mdm-settings"></a>Nastavení Zásady skupiny a MDM
 
@@ -32,7 +32,7 @@ V následujících tabulkách jsou popsána nastavení zásad, která jsou k dis
 
 Nastavení zásad MDM se vztahuje na systémy Windows 10 a Windows 10 Mobile.  Podpora Windows 10 Mobile existuje jenom pro účet Microsoft roamingu prostřednictvím účtu OneDrive uživatele. Podrobnosti o tom, jaká zařízení jsou podporovaná pro synchronizaci na základě služby Azure AD, najdete v tématu [zařízení a koncové body](enterprise-state-roaming-windows-settings-reference.md) .
 
-| Název | Popis |
+| Name | Description |
 | --- | --- |
 | Umožňuje připojení k účtu Microsoft. |Umožňuje uživatelům ověřování pomocí účet Microsoft na zařízení. |
 | Povolí synchronizaci mých nastavení. |Umožňuje uživatelům roaming nastavení systému Windows a dat aplikací. Zakázáním těchto zásad se zakáže synchronizace i zálohování na mobilních zařízeních. |
@@ -43,7 +43,7 @@ Nastavení zásad skupiny platí pro zařízení s Windows 10, která jsou přip
 
 Tato nastavení se nacházejí v:`Computer Configuration > Administrative Templates > Windows Components > Sync your settings` 
 
-| Název | Popis |
+| Name | Description |
 | --- | --- |
 | Účty: blokovat účty Microsoft |Nastavení této zásady zabrání uživatelům v přidávání nových účtů Microsoft na tento počítač. |
 | Nesynchronizovat |Brání uživatelům v roamingu nastavení Windows a dat aplikací. |

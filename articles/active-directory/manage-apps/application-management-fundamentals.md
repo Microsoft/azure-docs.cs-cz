@@ -3,27 +3,28 @@ title: 'Správa aplikací: osvědčené postupy a doporučení | Microsoft Docs'
 description: Naučte se osvědčené postupy a doporučení pro správu aplikací v Azure Active Directory. Přečtěte si, jak používat Automatické zřizování a publikování místních aplikací pomocí proxy aplikací.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 editor: ''
 ms.assetid: ''
 ms.service: active-directory
 ms.devlang: na
-ms.topic: reference
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/13/2019
 ms.subservice: app-mgmt
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6534efb6fcd07ee3b9f3979cabf2feb77496a8b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c633f6d311d052b9f9388a38b17c6459aec4b6cc
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74085288"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84760265"
 ---
 # <a name="application-management-best-practices"></a>Osvědčené postupy pro správu aplikací
+
 Tento článek obsahuje doporučení a osvědčené postupy pro správu aplikací v Azure Active Directory (Azure AD), použití automatického zřizování a publikování místních aplikací pomocí proxy aplikací.
 
 ## <a name="cloud-app-and-single-sign-on-recommendations"></a>Doporučení pro cloudovou aplikaci a jednotné přihlašování

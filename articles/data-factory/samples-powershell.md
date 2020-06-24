@@ -10,12 +10,12 @@ manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 01/16/2018
-ms.openlocfilehash: 709ceb465594c566349cf9ea5bfed7db73c9a0cf
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: c640adb0758c8dfd9dcdae3e26fd023afd5499f7
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194755"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85252266"
 ---
 # <a name="azure-powershell-samples-for-azure-data-factory"></a>Ukázky Azure PowerShell pro Azure Data Factory
 
@@ -28,7 +28,7 @@ Následující tabulka obsahuje odkazy na ukázkové Azure PowerShell skripty pr
 |**Kopírování dat**||
 |[Kopírování objektů BLOB ze složky do jiné složky v Azure Blob Storage](scripts/copy-azure-blob-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tento skript PowerShellu kopíruje objekty blob ze složky v Azure Blob Storage do jiné složky ve stejném Blob Storage. |
 |[Kopírování dat z SQL Server do Azure Blob Storage](scripts/hybrid-copy-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tento skript PowerShellu kopíruje data z databáze SQL Server do úložiště objektů BLOB v Azure. |
-|[Hromadná kopie](scripts/bulk-copy-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tento ukázkový skript PowerShellu kopíruje data z několika tabulek ve službě Azure SQL Database do služby Azure SQL Data Warehouse. |
+|[Hromadná kopie](scripts/bulk-copy-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tento ukázkový skript PowerShellu kopíruje data z několika tabulek v databázi v Azure SQL Database do služby Azure SQL Data Warehouse. |
 |[Přírůstková kopie](scripts/incremental-copy-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tento ukázkový skript PowerShellu načte jenom nové nebo aktualizované záznamy ze zdrojového úložiště dat do úložiště dat jímky po počáteční úplné kopii dat ze zdroje do jímky. |
 |**Transformace dat**||
 |[Transformace dat pomocí clusteru Spark](scripts/transform-data-spark-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tento skript PowerShellu transformuje data spuštěním programu v clusteru Spark. |

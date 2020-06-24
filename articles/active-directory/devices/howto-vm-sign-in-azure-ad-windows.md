@@ -4,7 +4,7 @@ description: Přihlášení do Azure AD s virtuálním počítačem Azure s Wind
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/29/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4abc2dee6b83820169173d965d53381ead9f4d0b
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 700e8f2ae29ad41ceaecf58c3ffde4a27725c25c
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194018"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85252793"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Přihlášení k virtuálnímu počítači s Windows v Azure pomocí ověřování Azure Active Directory (Preview)
 
@@ -34,7 +34,7 @@ K přihlášení k virtuálním počítačům s Windows v Azure přinášíme sp
 - Už nemusíte spravovat účty místních správců.
 - Azure RBAC vám umožňuje udělit odpovídající přístup k virtuálním počítačům podle potřeby a odebrat je, když už nepotřebujete.
 - Než povolíte přístup k virtuálnímu počítači, podmíněný přístup Azure AD může vynutil další požadavky, jako třeba: 
-   - Vícefaktorové ověřování
+   - Ověřování pomocí služby Multi-Factor Authentication
    - Kontroly rizika přihlašování
 - Automatizujte a škálujte připojení Azure AD k virtuálním počítačům Azure s Windows, které jsou součástí nasazení infrastruktury virtuálních klientských počítačů.
 

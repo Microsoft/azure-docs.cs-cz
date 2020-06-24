@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 05/18/2020
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: febd5d1e49a87f0846aba2aaa976e170ee31fab8
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: c1801c1b26742661987ea822a3cb1479f40ec059
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84432335"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84751281"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Připojení hybridních počítačů k Azure z Azure Portal
 
@@ -40,6 +40,7 @@ Skript pro automatizaci stahování a instalace a navázání připojení pomoc�
 
     >[!NOTE]
     >Azure ARC pro servery (Preview) podporuje jenom tyto oblasti:
+    >- EastUS
     >- WestUS2
     >- WestEurope
     >- SoutheastAsia
@@ -58,7 +59,7 @@ Skript pro automatizaci stahování a instalace a navázání připojení pomoc�
 
 ### <a name="install-manually"></a>Ruční instalace
 
-Agenta připojeného počítače můžete nainstalovat ručně spuštěním balíčku Instalační služba systému Windows *AzureConnectedMachineAgent. msi*. Nejnovější verzi [balíčku Windows agent Instalační služba systému Windows](https://aka.ms/AzureConnectedMachineAgent) můžete stáhnout z webu služby Stažení softwaru. 
+Agenta připojeného počítače můžete nainstalovat ručně spuštěním balíčku Instalační služba systému Windows *AzureConnectedMachineAgent.msi*. Nejnovější verzi [balíčku Windows agent Instalační služba systému Windows](https://aka.ms/AzureConnectedMachineAgent) můžete stáhnout z webu služby Stažení softwaru. 
 
 > [!NOTE]
 > * Chcete-li nainstalovat nebo odinstalovat agenta, je nutné mít oprávnění *správce* .

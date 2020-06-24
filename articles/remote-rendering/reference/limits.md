@@ -5,12 +5,12 @@ author: erscorms
 ms.author: erscor
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: c35930a93751cc82c3145d414a2a09b3a1e90c53
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 17f98f452764abdc8458cdc38661d464ecb0a60d
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84659839"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808549"
 ---
 # <a name="limitations"></a>Omezení
 
@@ -26,9 +26,10 @@ Množství funkcí má velikost, počet nebo jiná omezení.
 * Celkem přípustných objektů jednoho typu (entita, CutPlaneComponent atd.): 16 777 215.
 * Celkový povolený počet aktivních vyjmutých ploch: 8.
 
-## <a name="materials"></a>Materiály
+## <a name="geometry"></a>Geometrie
 
 * Celkový počet povolených materiálů v prostředku: 65 535.
+* Maximální rozměr jedné textury: 16 384 × 16 384. Větší zdrojové textury se škálují podle procesu převodu.
 
 ## <a name="overall-number-of-polygons"></a>Celkový počet mnohoúhelníků
 
@@ -39,6 +40,7 @@ Povolený počet mnohoúhelníků pro všechny načtené modely závisí na veli
 |standardní| 20 000 000 |
 |nárok| bez omezení |
 
+Podrobnější informace o tomto omezení najdete v části věnované [velikosti virtuálního počítače](../reference/vm-sizes.md) .
 
 ## <a name="platform-limitations"></a>Omezení platformy
 

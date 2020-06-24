@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/08/2020
-ms.openlocfilehash: a023599cb026a62aee034846dd390cda730d5df4
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 8891c65707822abeb2bcca52280d9b56dc725e4f
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84660283"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251985"
 ---
 # <a name="load-data-into-azure-synapse-analytics-by-using-azure-data-factory"></a>Načtení dat do služby Azure synapse Analytics pomocí Azure Data Factory
 
@@ -42,7 +42,7 @@ V tomto článku se dozvíte, jak pomocí nástroje Data Factory Kopírování d
 
 * Předplatné Azure: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 * Azure synapse Analytics: datový sklad obsahuje data, která se kopírují z databáze SQL. Pokud nemáte Azure synapse Analytics, přečtěte si pokyny v tématu [Vytvoření služby Azure synapse Analytics](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md).
-* Azure SQL Database: v tomto kurzu se kopírují data z Azure SQL Database s ukázkovými daty Adventure Works LT. SQL Database můžete vytvořit podle pokynů v tématu [Vytvoření databáze SQL Azure](../azure-sql/database/single-database-create-quickstart.md).
+* Azure SQL Database: v tomto kurzu se zkopírují data z ukázkové datové sady Adventure Works LT v Azure SQL Database. Tuto ukázkovou databázi můžete v SQL Database vytvořit podle pokynů v části [vytvoření ukázkové databáze v Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md).
 * Účet úložiště Azure: Azure Storage se používá jako _pracovní_ objekt BLOB v operaci hromadného kopírování. Pokud účet úložiště Azure nemáte, přečtěte si pokyny v tématu [Vytvoření účtu úložiště](../storage/common/storage-account-create.md).
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny

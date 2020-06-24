@@ -58,6 +58,10 @@
       href: network-best-practices.md
     - name: DDoS Protection
       href: ddos-best-practices.md
+    - name: Visící záznam DNS a převzetí subdomény
+      href: subdomain-takeover.md
+    - name: Standardní hodnoty zabezpečení pro DDoS Protection
+      href: ddos-protection-security-baseline.md
     - name: Zabezpečení hybridní síťové architektury
       href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
 - name: Zabezpečení IaaS
@@ -94,6 +98,8 @@
       href: 'https://docs.microsoft.com/azure/storage/common/storage-security-guide?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
     - name: Customer Lockbox
       href: customer-lockbox-overview.md
+    - name: Standardní hodnoty zabezpečení pro Customer Lockbox
+      href: customer-lockbox-security-baseline.md
 - name: Aplikace
   items:
     - name: PaaS
@@ -139,3 +145,5 @@
       href: event-support-ticket.md
     - name: Testování průniku
       href: pen-testing.md
+    - name: Domény Azure
+      href: azure-domains.md

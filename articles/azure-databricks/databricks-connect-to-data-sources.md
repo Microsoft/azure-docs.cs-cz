@@ -9,12 +9,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/21/2018
 ms.author: mamccrea
-ms.openlocfilehash: 79a821a4c8fe4cb2d048f0dcb0a6e091462a1779
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2b6d234c3845c220fd63c24db5bdbdae0f7c63fd
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80548788"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255071"
 ---
 # <a name="connect-to-data-sources-from-azure-databricks"></a>Připojení ke zdrojům dat z Azure Databricks
 
@@ -28,14 +28,14 @@ Tento článek obsahuje odkazy na všechny různé zdroje dat v Azure, které se
 
 Následující seznam poskytuje zdroje dat v Azure, které můžete použít s Azure Databricks. Úplný seznam zdrojů dat, které lze použít s Azure Databricks, najdete v tématu [zdroje dat pro Azure Databricks](/azure/databricks/data/data-sources/index).
 
-- [Databáze SQL Azure](/azure/databricks/data/data-sources/sql-databases)
+- [Azure SQL Database](/azure/databricks/data/data-sources/sql-databases)
 
-    Tento odkaz poskytuje rozhraní API dataframe pro připojení k databázím SQL pomocí JDBC a způsob řízení paralelismu pro čtení prostřednictvím rozhraní JDBC. V tomto tématu najdete podrobné příklady použití rozhraní Scala API se zkrácenými příklady Pythonu a Spark SQL na konci.
+    Tento odkaz poskytuje rozhraní dataframe API pro připojení k SQL Database pomocí JDBC a způsob řízení paralelismu pro čtení prostřednictvím rozhraní JDBC. V tomto tématu najdete podrobné příklady použití rozhraní Scala API se zkrácenými příklady Pythonu a Spark SQL na konci.
 - [Azure Data Lake Storage](/azure/databricks/data/data-sources/azure/azure-datalake-gen2)
 
     Tento odkaz poskytuje příklady použití Azure Active Directory instančního objektu k ověřování pomocí Azure Data Lake Storage. Poskytuje také pokyny pro přístup k datům v Azure Data Lake Storage z Azure Databricks.
 
-- [Blob Storage Azure](/azure/databricks/data/data-sources/azure/azure-storage)
+- [Azure Blob Storage](/azure/databricks/data/data-sources/azure/azure-storage)
 
     Tento odkaz poskytuje příklady, jak přímo získat přístup k Azure Blob Storage z Azure Databricks pomocí přístupového klíče nebo SAS pro daný kontejner. Odkaz taky poskytuje informace o tom, jak získat přístup k Azure Blob Storage z Azure Databricks pomocí rozhraní RDD API.
 

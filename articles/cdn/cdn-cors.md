@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 169de21b6dbdafaaeff64e315daa104f3b6faadd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 63919d7770746025189f3d6e578919b2fc2799c3
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74278101"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84884914"
 ---
 # <a name="using-azure-cdn-with-cors"></a>Použití Azure CDN s CORS
 ## <a name="what-is-cors"></a>Co je CORS?
@@ -30,7 +30,7 @@ Existují dva typy požadavků CORS, *jednoduchých požadavků* a *složitých 
 
 ### <a name="for-simple-requests"></a>Pro jednoduché požadavky:
 
-1. Prohlížeč odešle požadavek CORS s další hlavičkou **původní** žádosti protokolu HTTP. Hodnota tohoto záhlaví je zdrojem, který sloužil nadřazenou stránku, která je definována jako kombinace *protokolu,* *domény* a *portu.*  Když se stránka z https\://www.contoso.com pokusí získat přístup k datům uživatele v Fabrikam.com původu, pošle se následující Hlavička požadavku na Fabrikam.com:
+1. Prohlížeč odešle požadavek CORS s další hlavičkou **původní** žádosti protokolu HTTP. Hodnota tohoto záhlaví je zdrojem, který sloužil nadřazenou stránku, která je definována jako kombinace *protokolu,* *domény* a *portu.*  Když se stránka z https \: //www.contoso.com pokusí získat přístup k datům uživatele v Fabrikam.com původu, pošle se následující Hlavička požadavku na Fabrikam.com:
 
    `Origin: https://www.contoso.com`
 
@@ -48,7 +48,7 @@ Existují dva typy požadavků CORS, *jednoduchých požadavků* a *složitých 
 
 ### <a name="for-complex-requests"></a>Pro komplexní požadavky:
 
-Komplexní požadavek je požadavek CORS, ve kterém se před odesláním skutečné žádosti CORS vyžaduje, aby se v prohlížeči poslal *požadavek na kontrolu před výstupem* (tj. Předběžný test). Požadavek na předběžné kontroly požádá o oprávnění serveru, pokud může pokračovat původní žádost CORS, `OPTIONS` a je požadavek na stejnou adresu URL.
+Komplexní požadavek je požadavek CORS, ve kterém se před odesláním skutečné žádosti CORS vyžaduje, aby se v prohlížeči poslal *požadavek na kontrolu před výstupem* (tj. Předběžný test). Požadavek na předběžné kontroly požádá o oprávnění serveru, pokud může pokračovat původní žádost CORS, a je `OPTIONS` požadavek na stejnou adresu URL.
 
 > [!TIP]
 > Další podrobnosti o tocích CORS a běžných nástrah najdete v [Průvodci CORS pro rozhraní REST API](https://www.moesif.com/blog/technical/cors/Authoritative-Guide-to-CORS-Cross-Origin-Resource-Sharing-for-REST-APIs/).

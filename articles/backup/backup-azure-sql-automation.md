@@ -4,12 +4,12 @@ description: Zálohujte a obnovte databáze SQL ve virtuálních počítačích 
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 21c8ea5ff50cc78b60ccb3b09c953b184757f3c9
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 862455175497fe5496c7eea459c32772074671ff
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84246981"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255139"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>Zálohování a obnovení databází SQL ve virtuálních počítačích Azure pomocí PowerShellu
 
@@ -499,7 +499,7 @@ Pokud se výstup ztratí nebo pokud chcete získat příslušné ID úlohy, [Zí
 
 ### <a name="change-policy-for-backup-items"></a>Změnit zásady pro zálohované položky
 
-Uživatel může buď upravit existující zásady, nebo změnit zásadu zálohované položky z Policy1 na Policy2. Chcete-li přepnout zásady pro zálohovanou položku, načtěte příslušné zásady a zálohujte položku a použijte příkaz [Enable-AzRecoveryServices](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) s položkou Backup jako parametr.
+Uživatel může změnit zásadu zálohované položky z Policy1 na Policy2. Chcete-li přepnout zásady pro zálohovanou položku, načtěte příslušné zásady a zálohujte položku a použijte příkaz [Enable-AzRecoveryServices](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) s položkou Backup jako parametr.
 
 ```powershell
 $TargetPol1 = Get-AzRecoveryServicesBackupProtectionPolicy -Name <PolicyName>
@@ -513,6 +513,19 @@ Příkaz čeká na dokončení zálohování konfigurace a vrátí následujíc�
 WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
 ------------     ---------            ------               ---------                 -------                   -----
 master           ConfigureBackup      Completed            3/18/2019 8:00:21 PM      3/18/2019 8:02:16 PM      654e8aa2-4096-402b-b5a9-e5e71a496c4e
+```
+
+### <a name="edit-an-existing-backup-policy"></a>Upravit existující zásady zálohování
+
+Pokud chcete upravit existující zásady, použijte příkaz [set-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy?view=azps-3.8.0) .
+
+```powershell
+Set-AzRecoveryServicesBackupProtectionPolicy -Policy $Pol -SchedulePolicy $SchPol -RetentionPolicy $RetPol
+```
+Po uplynutí určité doby Projděte úlohy zálohování a sledujte případné chyby. V takovém případě je potřeba problémy vyřešit. Pak znovu spusťte příkaz Upravit zásadu s parametrem **FixForInconsistentItems** a zkuste znovu upravit zásady u všech zálohovaných položek, pro které se operace dřív nezdařila.
+
+```powershell
+Set-AzRecoveryServicesBackupProtectionPolicy -Policy $Pol -FixForInconsistentItems
 ```
 
 ### <a name="re-register-sql-vms"></a>Znovu zaregistrovat virtuální počítače SQL
@@ -597,4 +610,4 @@ Předpokládejme například, že SQL AG má dva uzly: SQL-Server-0 a SQL-Server
 
 SQL-Server-0, SQL Server-1 bude při [výpisu zálohovacích kontejnerů](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupContainer?view=azps-1.5.0)v seznamu obsahovat také "AzureVMAppContainer".
 
-Stačí načíst příslušnou databázi SQL, abyste [mohli povolit zálohování](#configuring-backup) a [rutiny](#restore-sql-dbs) [pro zálohování na vyžádání](#on-demand-backup) a obnovení pro PS byly identické.
+Stačí načíst příslušnou databázi, abyste [mohli povolit zálohování](#configuring-backup) a [rutiny](#restore-sql-dbs) [pro zálohování na vyžádání](#on-demand-backup) a obnovení pro PS byly identické.

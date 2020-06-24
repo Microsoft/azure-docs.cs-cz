@@ -3,15 +3,15 @@ title: Přesunutí interních Load Balancer Azure do jiné oblasti Azure pomocí
 description: Pomocí šablony Azure Resource Manager můžete přesunout interní Load Balancer Azure z jedné oblasti Azure do jiné pomocí Azure PowerShell
 author: asudbring
 ms.service: load-balancer
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: f8e431124155fe23853fe61e985fe4db522c3f77
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 63083c4bd058c63e21a40f2d245312a3f010b696
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75644269"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808362"
 ---
 # <a name="move-azure-internal-load-balancer-to-another-region-using-powershell"></a>Přesunutí interních Load Balancer Azure do jiné oblasti pomocí prostředí PowerShell
 
@@ -60,7 +60,7 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceVNETID -IncludeParameterDefaultValue
    ```
 
-4. Stažený soubor se pojmenuje po vytvoření skupiny prostředků, ze které byl prostředek exportován.  Vyhledejte soubor, který byl exportován z příkazu s názvem ** \<Resource-Group-Name>. JSON** a otevřete jej v editoru podle vlastního výběru:
+4. Stažený soubor se pojmenuje po vytvoření skupiny prostředků, ze které byl prostředek exportován.  Vyhledejte soubor, který byl exportován z příkazu s názvem ** \<resource-group-name> . JSON** , a otevřete jej v editoru podle vlastního výběru:
    
    ```azurepowershell
    notepad.exe <source-resource-group-name>.json
@@ -105,9 +105,9 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
     Get-AzLocation | format-table
     
     ```
-8.  Můžete také změnit další parametry v souboru ** \<Resource-Group-Name>. JSON** , pokud zvolíte možnost a jsou nepovinné v závislosti na vašich požadavcích:
+8.  Můžete také změnit další parametry v souboru ** \<resource-group-name> . JSON** , pokud zvolíte možnost a jsou nepovinné v závislosti na vašich požadavcích:
 
-    * **Adresní prostor** – adresní prostor virtuální sítě se dá před uložením změnit úpravou části addressSpace **prostředků** > **addressSpace** a změnou vlastnosti **addressPrefixes** v souboru ** \<Resource-Group-Name>. JSON** :
+    * **Adresní prostor** – adresní prostor virtuální sítě je možné změnit před uložením úpravou části addressSpace **prostředků**  >  **addressSpace** a změnou vlastnosti **addressPrefixes** v souboru ** \<resource-group-name> . JSON** :
 
         ```json
                 "resources": [
@@ -127,7 +127,7 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
 
         ```
 
-    * **Podsíť** – název podsítě a adresní prostor podsítě je možné změnit nebo přidat tak, že upravíte část **podsítě** v souboru ** \<Resource-Group-Name>. JSON** . Název podsítě lze změnit změnou vlastnosti **název** . Adresní prostor podsítě lze změnit změnou vlastnosti **addressPrefix** v souboru ** \<Resource-Group-Name>. JSON** :
+    * **Podsíť** – název podsítě a adresní prostor podsítě lze změnit nebo přidat k úpravou části **podsítě** souboru ** \<resource-group-name> . JSON** . Název podsítě lze změnit změnou vlastnosti **název** . Adresní prostor podsítě lze změnit změnou vlastnosti **addressPrefix** v souboru ** \<resource-group-name> . JSON** :
 
         ```json
                 "subnets": [
@@ -158,7 +158,7 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
                 ]
         ```
 
-         Chcete-li změnit předponu adresy v souboru ** \<Resource-Group-Name>. JSON** , je nutné ji upravit na dvou místech, v výše uvedeném oddílu a v níže uvedené části **typ** .  Změňte vlastnost **addressPrefix** tak, aby odpovídala hodnotě výše:
+         Chcete-li změnit předponu adresy, je třeba v souboru ** \<resource-group-name> . JSON** upravit na dvou místech, v části uvedené výše a v níže uvedené části **typ** .  Změňte vlastnost **addressPrefix** tak, aby odpovídala hodnotě výše:
 
         ```json
          "type": "Microsoft.Network/virtualNetworks/subnets",
@@ -194,7 +194,7 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
          ]
         ```
 
-9.  Uložte soubor ** \<Resource-Group-Name>. JSON** .
+9.  Uložte soubor ** \<resource-group-name> . JSON** .
 
 10. Vytvoření skupiny prostředků v cílové oblasti pro nasazení cílové virtuální sítě pomocí [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0)
     
@@ -202,7 +202,7 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
     
-11. Do skupiny prostředků vytvořené v předchozím kroku nasaďte upravený ** \<soubor Resource-Group-Name>. JSON** pomocí [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0):
+11. Nasaďte upravený soubor ** \<resource-group-name> . JSON** do skupiny prostředků vytvořené v předchozím kroku pomocí [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0):
 
     ```azurepowershell-interactive
 
@@ -241,7 +241,7 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
    ```azurepowershell-interactive
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceIntLBID -IncludeParameterDefaultValue
    ```
-4. Stažený soubor se pojmenuje po vytvoření skupiny prostředků, ze které byl prostředek exportován.  Vyhledejte soubor, který byl exportován z příkazu s názvem ** \<Resource-Group-Name>. JSON** a otevřete jej v editoru podle vlastního výběru:
+4. Stažený soubor se pojmenuje po vytvoření skupiny prostředků, ze které byl prostředek exportován.  Vyhledejte soubor, který byl exportován z příkazu s názvem ** \<resource-group-name> . JSON** , a otevřete jej v editoru podle vlastního výběru:
    
    ```azurepowershell
    notepad.exe <source-resource-group-name>.json
@@ -263,7 +263,7 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
              }
     ```
  
-6. Pokud chcete upravit hodnotu cílové virtuální sítě, která se přesunula výše, musíte nejdřív získat ID prostředku a pak ho zkopírovat a vložit do souboru ** \<Resource-Group-Name>. JSON** .  K získání ID použijte [příkaz Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0):
+6. Pokud chcete upravit hodnotu cílové virtuální sítě, která se přesunula výše, musíte nejdřív získat ID prostředku a pak ho zkopírovat a vložit do souboru ** \<resource-group-name> . JSON** .  K získání ID použijte [příkaz Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0):
    
    ```azurepowershell-interactive
     $targetVNETID = (Get-AzVirtualNetwork -Name <target-vnet-name> -ResourceGroupName <target-resource-group-name>).Id
@@ -275,7 +275,7 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
     /subscriptions/7668d659-17fc-4ffd-85ba-9de61fe977e8/resourceGroups/myResourceGroupVNET-Move/providers/Microsoft.Network/virtualNetworks/myVNET2-Move
     ```
 
-7.  Do souboru ** \<Resource-Group-Name>. JSON** vložte **ID prostředku** z proměnné místo vlastnosti **DefaultValue** ve druhém parametru pro ID cílové virtuální sítě, nezapomeňte uzavřít cestu do uvozovek:
+7.  V souboru ** \<resource-group-name> . JSON** vložte **ID prostředku** z proměnné místo parametru **DefaultValue** ve druhém parametru pro ID cílové virtuální sítě, nezapomeňte uzavřít cestu do uvozovek:
    
     ```json
          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -291,7 +291,7 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
              }
     ```
 
-8. Chcete-li upravit cílovou oblast, kde bude přesunuta konfigurace interního nástroje pro vyrovnávání zatížení, změňte vlastnost **umístění** v části **prostředky** v souboru ** \<Resource-Group-Name>. JSON** :
+8. Chcete-li upravit cílovou oblast, kde bude přesunuta konfigurace interního nástroje pro vyrovnávání zatížení, změňte vlastnost **umístění** v části **prostředky** v souboru ** \<resource-group-name> . JSON** :
 
     ```json
         "resources": [
@@ -315,7 +315,7 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
     ```
 12. Můžete také změnit jiné parametry v šabloně, pokud zvolíte možnost a jsou nepovinné v závislosti na vašich požadavcích:
     
-    * **SKU** -SKU interního nástroje pro vyrovnávání zatížení v konfiguraci z úrovně Standard na Basic nebo Basic na standard změňte změnou vlastnosti**název** **SKU** > v souboru ** \<Resource-Group-Name>. JSON** :
+    * **SKU** -SKU interního nástroje pro vyrovnávání zatížení v konfiguraci z úrovně Standard na Basic nebo Basic na standard změňte změnou **sku**  >  vlastnosti**název** SKU v souboru ** \<resource-group-name> . JSON** :
 
         ```json
         "resources": [
@@ -331,7 +331,7 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
         ```
       Další informace o rozdílech mezi nástroji pro vyrovnávání zatížení Basic a Standard SKU najdete v tématu [Přehled služby Azure Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) .
 
-    * **Pravidla vyrovnávání zatížení** – můžete přidat nebo odebrat pravidla vyrovnávání zatížení v konfiguraci přidáním nebo odebráním položek do části **loadBalancingRules** souboru ** \<Resource-Group-Name>. JSON** :
+    * **Pravidla vyrovnávání zatížení** – v konfiguraci můžete přidat nebo odebrat pravidla vyrovnávání zatížení přidáním nebo odebráním položek do oddílu **loadBalancingRules** souboru ** \<resource-group-name> . JSON** :
 
         ```json
         "loadBalancingRules": [
@@ -363,7 +363,7 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
         ```
        Další informace o pravidlech vyrovnávání zatížení najdete v tématu [co je Azure Load Balancer?](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)
 
-    * **Sondy** – pro nástroj pro vyrovnávání zatížení v konfiguraci můžete přidat nebo odebrat testy tak, že přidáte nebo odeberete položky v části **sondy** souboru ** \<Resource-Group-Name>. JSON** :
+    * **Sondy** – pro nástroj pro vyrovnávání zatížení v konfiguraci můžete přidat nebo odebrat test tak, že do části **sondy** v souboru ** \<resource-group-name> . JSON** přidáte nebo odeberete položky.
 
         ```json
         "probes": [
@@ -383,7 +383,7 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
         ```
        Další informace o sondách stavu Azure Load Balancer najdete v tématu [Load Balancer sondy stavu](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview) .
 
-    * **Příchozí pravidla NAT** – pravidla příchozího překladu adres (NAT) pro nástroj pro vyrovnávání zatížení můžete přidat nebo odebrat tak, že přidáte nebo odeberete položky v části **inboundNatRules** souboru ** \<Resource-Group-Name>. JSON** :
+    * **Příchozí pravidla NAT** – pravidla příchozího překladu adres (NAT) pro nástroj pro vyrovnávání zatížení můžete přidat nebo odebrat tak, že do části **inboundNatRules** souboru ** \<resource-group-name> . JSON** přidáte nebo odeberete položky.
 
         ```json
         "inboundNatRules": [
@@ -405,7 +405,7 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
                     }
                 ]
         ```
-        Aby bylo možné doplnit nebo odebrat pravidlo příchozího překladu adres (NAT), musí být pravidlo přítomno nebo odebráno jako vlastnost **typu** na konci souboru ** \<Resource-Group-Name>. JSON** :
+        Aby bylo možné dokončit přidání nebo odebrání pravidla příchozího překladu adres (NAT), musí být pravidlo přítomno nebo odebráno jako vlastnost **typu** na konci souboru ** \<resource-group-name> . JSON** :
 
         ```json
         {
@@ -431,14 +431,14 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
         ```
         Další informace o příchozích pravidlech NAT najdete v tématu [co je Azure Load Balancer?](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)
     
-13. Uložte soubor ** \<Resource-Group-Name>. JSON** .
+13. Uložte soubor ** \<resource-group-name> . JSON** .
     
 10. Vytvořte nebo skupinu prostředků v cílové oblasti pro cílový interní nástroj pro vyrovnávání zatížení, který se má nasadit pomocí [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0). V rámci tohoto procesu je možné znovu použít stávající skupinu prostředků z výše uvedeného:
     
     ```azurepowershell-interactive
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
-11. Do skupiny prostředků vytvořené v předchozím kroku nasaďte upravený ** \<soubor Resource-Group-Name>. JSON** pomocí [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0):
+11. Nasaďte upravený soubor ** \<resource-group-name> . JSON** do skupiny prostředků vytvořené v předchozím kroku pomocí [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0):
 
     ```azurepowershell-interactive
 

@@ -56,10 +56,10 @@ Aktivitu toku dat můžete použít k transformaci a přesunutí dat prostředni
 
 Vlastnost | Popis | Povolené hodnoty | Vyžadováno
 -------- | ----------- | -------------- | --------
-toku dat | Odkaz na prováděný tok dat | DataFlowReference | Ano
-integrationRuntime | Výpočetní prostředí, na kterém se tok dat spouští. Pokud není zadaný, použije se automatické řešení Azure Integration runtime. | IntegrationRuntimeReference | Ne
-Compute. coreCount | Počet jader používaných v clusteru Spark. Dá se zadat jenom v případě, že se používá prostředí Azure Integration runtime pro automatické rozpoznávání. | 8, 16, 32, 48, 80, 144, 272 | Ne
-Compute. computeType | Typ výpočetní služby použitý v clusteru Spark. Dá se zadat jenom v případě, že se používá prostředí Azure Integration runtime pro automatické rozpoznávání. | "Obecné", "ComputeOptimized", "MemoryOptimized" | Ne
+toku dat | Odkaz na prováděný tok dat | DataFlowReference | Yes
+integrationRuntime | Výpočetní prostředí, na kterém se tok dat spouští. Pokud není zadaný, použije se automatické řešení Azure Integration runtime. | IntegrationRuntimeReference | No
+Compute. coreCount | Počet jader používaných v clusteru Spark. Dá se zadat jenom v případě, že se používá prostředí Azure Integration runtime pro automatické rozpoznávání. | 8, 16, 32, 48, 80, 144, 272 | No
+Compute. computeType | Typ výpočetní služby použitý v clusteru Spark. Dá se zadat jenom v případě, že se používá prostředí Azure Integration runtime pro automatické rozpoznávání. | "Obecné", "ComputeOptimized", "MemoryOptimized" | No
 Příprava. linkedService | Pokud používáte zdroj dat nebo jímku SQL DW, účet úložiště, který se používá pro základní fázování | LinkedServiceReference | Pouze v případě, že tok dat čte nebo zapisuje do SQL datového skladu
 Příprava. folderPath | Pokud používáte zdroj dat nebo jímku SQL DW, cesta ke složce v účtu BLOB Storage se používá pro základní fázování. | Řetězec | Pouze v případě, že tok dat čte nebo zapisuje do SQL datového skladu
 

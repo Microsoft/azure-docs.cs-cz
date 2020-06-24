@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
-ms.date: 11/19/2019
-ms.openlocfilehash: c3f843de6eaa621ecdd04c5a3418dc0d620f841e
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.date: 06/10/2020
+ms.openlocfilehash: eac5814eb977a01135ad2fcd9551b3475673dbca
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343383"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84691726"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>Omezení prostředků pro Azure SQL Database a Azure synapse Analytics Server
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -53,13 +53,13 @@ V případě velikostí úložiště prostředků pro izolované databáze se v 
 
 ## <a name="what-happens-when-database-resource-limits-are-reached"></a>Co se stane, když se dosáhnou omezení prostředků databáze
 
-### <a name="compute-dtus-and-edtus--vcores"></a>COMPUTE (DTU a eDTU/virtuální jádra)
+### <a name="compute-cpu"></a>Výpočetní procesor
 
-V případě, že využití výpočetních databází (měřené od DTU a eDTU nebo virtuální jádra) bude vysoké, zvýšení latence dotazu a dotazy mohou dokonce i vyprší časový limit. Za těchto podmínek můžou být dotazy ve službě zařazené do fronty a k dispozici jsou prostředky pro spuštění, protože prostředky budou bezplatné.
+Když je využití výpočetního procesoru databází vysoké, zvyšuje se latence dotazu a dotazy můžou dokonce zamezit i vypršení časového limitu. Za těchto podmínek můžou být dotazy ve službě zařazené do fronty a k dispozici jsou prostředky pro spuštění, protože prostředky budou bezplatné.
 Pokud se setkáte s vysokým využitím výpočetních prostředků, zahrnují možnosti zmírnění:
 
 - Zvýšením výpočetní velikosti databáze nebo elastického fondu poskytnete databázi s více výpočetními prostředky. Viz téma [škálování prostředků jedné databáze](single-database-scale.md) a [škálování prostředků elastického fondu](elastic-pool-scale.md).
-- Optimalizace dotazů pro snížení využití prostředků každého dotazu. Další informace najdete v tématu [ladění a hinty dotazů](performance-guidance.md#query-tuning-and-hinting).
+- Optimalizace dotazů pro snížení využití prostředků procesoru u každého dotazu. Další informace najdete v tématu [ladění a hinty dotazů](performance-guidance.md#query-tuning-and-hinting).
 
 ### <a name="storage"></a>Storage
 
@@ -82,7 +82,28 @@ Pokud se setkáte s vysokým využitím relace nebo pracovního procesu, zahrnuj
 - Zmenšení nastavení [MAXDOP](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option#Guidelines) (maximální úroveň paralelismu).
 - Optimalizace úlohy dotazů za účelem snížení počtu výskytů a trvání blokování dotazů.
 
-### <a name="resource-consumption-by-user-workloads-and-internal-processes"></a>Spotřeba prostředků podle uživatelských zatížení a interních procesů
+### <a name="memory"></a>Memory (Paměť)
+
+Na rozdíl od jiných prostředků (procesor, pracovní procesy, úložiště), které dosáhnou limitu paměti, nemá negativně vliv na výkon dotazů a nezpůsobuje chyby a selhání. Jak je podrobně popsáno v [Průvodci architekturou správy paměti](https://docs.microsoft.com/sql/relational-databases/memory-management-architecture-guide), SQL Server databázový stroj často používá veškerou dostupnou paměť, podle návrhu. Paměť se primárně používá pro ukládání dat do mezipaměti, aby nedocházelo k dražšímu přístupu k úložišti. Vyšší využití paměti proto obvykle zlepšuje výkon dotazů z důvodu rychlejšího čtení z paměti, nikoli pomalejšího čtení z úložiště.
+
+Po spuštění databázového stroje, protože zatížení začne číst data ze služby Storage, databázový stroj agresivní data do paměti ukládá do mezipaměti. Po počátečním období rozkladu je běžné a očekávané, že se zobrazí `avg_memory_usage_percent` sloupce a `avg_instance_memory_percent` v [Sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) , které se mají zavřít nebo se mají rovnat 100%, zejména pro databáze, které nejsou nečinné a které se plně nevejdou do paměti.
+
+Kromě mezipaměti dat se paměť používá v jiných součástech databázového stroje. Když je pro paměť k dispozici poptávka a veškerá dostupná paměť byla využívána mezipamětí dat, databázový stroj bude dynamicky zmenšovat velikost mezipaměti dat, aby byla dostupná paměť pro jiné komponenty, a dynamicky rozšiřují mezipaměť dat, když ostatní součásti uvolní paměť.
+
+Ve výjimečných případech může dostatečně náročné zatížení způsobit nedostatek paměti, což by vedlo k chybám způsobeným nedostatkem paměti. K tomu může dojít na jakékoli úrovni využití paměti mezi 0% a 100%. K tomu dochází s větším množstvím výpočetních velikostí, které mají poměrně menší limity paměti, a/nebo s úlohami, které využívají více paměti pro zpracování dotazů, jako jsou například [husté elastické fondy](elastic-pool-resource-management.md).
+
+Při zjištění chyb při nedostatku paměti patří mezi ně i tyto možnosti:
+- Zvýšení úrovně služby nebo výpočetní velikosti databáze nebo elastického fondu. Viz téma [škálování prostředků jedné databáze](single-database-scale.md) a [škálování prostředků elastického fondu](elastic-pool-scale.md).
+- Optimalizace dotazů a konfigurací za účelem snížení využití paměti. Společná řešení jsou popsaná v následující tabulce.
+
+|Řešení|Description|
+| :----- | :----- |
+|Snížení velikosti paměti pro udělení|Další informace o grantech paměti najdete v příspěvku na blogu [principy SQL Server paměti pro přidělení](https://techcommunity.microsoft.com/t5/sql-server/understanding-sql-server-memory-grant/ba-p/383595) . Běžným řešením pro zamezení nadměrného množství paměti je udržování [statistik](https://docs.microsoft.com/sql/relational-databases/statistics/statistics) v aktuálním stavu. Výsledkem je přesnější odhad spotřeby paměti modulem dotazu, což vyloučí nenutně náročné nároky na paměť.</br></br>V databázích využívajících úroveň kompatibility 140 a novější může databázový stroj automaticky upravovat velikost přidělené paměti pomocí [zpětné vazby přidělení paměti v režimu dávky](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?view=sql-server-ver15#batch-mode-memory-grant-feedback). Databázový stroj v databázích využívajících úroveň kompatibility 150 a novější používá [zpětnou vazbu přidělení paměti v režimu řádků](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?view=sql-server-ver15#row-mode-memory-grant-feedback)pro další běžné dotazy v režimu řádků. Tato vestavěná funkce pomáhá předejít chybám způsobeným nedostatkem paměti z důvodu zbytečného udělení vysoké velikosti paměti.|
+|Zmenšení velikosti mezipaměti plánu dotazů|Databázový stroj ukládá do mezipaměti plány dotazů v paměti, aby nedocházelo k kompilování plánu dotazů pro každé spuštění dotazu. Aby nedocházelo k dispozici determinističtější mezipaměti plánů dotazů, které jsou způsobené plány ukládání do mezipaměti, které se používají jenom jednou, povolte konfiguraci OPTIMIZE_FOR_AD_HOC_WORKLOADS v [oboru databáze](https://docs.microsoft.com/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql).|
+|Zmenšení velikosti paměti zámku|Databázový stroj používá paměť pro [zámky](https://docs.microsoft.com/sql/relational-databases/sql-server-transaction-locking-and-row-versioning-guide#Lock_Engine). Pokud je to možné, vyhněte se velkým transakcím, které mohou získat velký počet zámků a způsobit vysoké využití paměti.|
+
+
+## <a name="resource-consumption-by-user-workloads-and-internal-processes"></a>Spotřeba prostředků podle uživatelských zatížení a interních procesů
 
 Spotřeba CPU a paměti podle uživatelských zatížení v každé databázi je hlášena v zobrazeních [Sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database?view=azuresqldb-current) a [Sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database?view=azuresqldb-current) ve `avg_cpu_percent` sloupcích a `avg_memory_usage_percent` . Pro elastické fondy se spotřeba prostředků na úrovni fondu hlásí v zobrazení [Sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) . Spotřeba procesoru uživatele je také hlášena prostřednictvím `cpu_percent` Azure monitor metriky pro izolované [databáze](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserversdatabases) a [elastické fondy](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools) na úrovni fondu.
 

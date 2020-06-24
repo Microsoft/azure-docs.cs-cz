@@ -305,13 +305,13 @@ Content-type: application/json
 
 | Parametr                                           | Povinné | Popis                                                                                                                                                            |
 | --------------------------------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| userPrincipalName (Hlavní název uživatele)                                   | Ano      | Dá se vygenerovat tak, že se převezme deklarace, která se `email_address` pošle do rozhraní API, nahradí se `@` znak za `_` a předá ho do `#EXT@<tenant-name>.onmicrosoft.com` . |
-| accountEnabled                                      | Ano      | Musí být nastaven na hodnotu `true` .                                                                                                                                                 |
-| pošta                                                | Ano      | Ekvivalent k `email_address` deklaraci identity odeslané do rozhraní API.                                                                                                               |
-| userType                                            | Ano      | Musí být `Guest` . Určí tohoto uživatele jako uživatel typu Host.                                                                                                                 |
-| nebyly                                          | Ano      | Informace o federované identitě.                                                                                                                                    |
-| \<otherBuiltInAttribute>                            | Ne       | Jiné předdefinované atributy jako `displayName` , `city` a další. Názvy parametrů jsou stejné jako parametry odesílané konektorem rozhraní API.                            |
-| \<extension\_\{extensions-app-id}\_CustomAttribute> | Ne       | Vlastní atributy uživatele Názvy parametrů jsou stejné jako parametry odesílané konektorem rozhraní API.                                                            |
+| userPrincipalName (Hlavní název uživatele)                                   | Yes      | Dá se vygenerovat tak, že se převezme deklarace, která se `email_address` pošle do rozhraní API, nahradí se `@` znak za `_` a předá ho do `#EXT@<tenant-name>.onmicrosoft.com` . |
+| accountEnabled                                      | Yes      | Musí být nastaven na hodnotu `true` .                                                                                                                                                 |
+| pošta                                                | Yes      | Ekvivalent k `email_address` deklaraci identity odeslané do rozhraní API.                                                                                                               |
+| userType                                            | Yes      | Musí být `Guest` . Určí tohoto uživatele jako uživatel typu Host.                                                                                                                 |
+| nebyly                                          | Yes      | Informace o federované identitě.                                                                                                                                    |
+| \<otherBuiltInAttribute>                            | No       | Jiné předdefinované atributy jako `displayName` , `city` a další. Názvy parametrů jsou stejné jako parametry odesílané konektorem rozhraní API.                            |
+| \<extension\_\{extensions-app-id}\_CustomAttribute> | No       | Vlastní atributy uživatele Názvy parametrů jsou stejné jako parametry odesílané konektorem rozhraní API.                                                            |
 
 ### <a name="for-a-federated-azure-active-directory-user"></a>Pro uživatele federovaného Azure Active Directory
 

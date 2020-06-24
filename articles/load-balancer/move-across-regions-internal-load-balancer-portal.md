@@ -3,15 +3,15 @@ title: Přesunout interní Load Balancer Azure do jiné oblasti Azure pomocí Az
 description: Pomocí šablony Azure Resource Manager můžete přesunout interní Load Balancer Azure z jedné oblasti Azure do jiné pomocí Azure Portal
 author: asudbring
 ms.service: load-balancer
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/18/2019
 ms.author: allensu
-ms.openlocfilehash: f23923b9d847ef393ebd609eb5fbba530b1a07d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: eb3605249578b15d67bdd9764490d61812b21c18
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75638802"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808441"
 ---
 # <a name="move-azure-internal-load-balancer-to-another-region-using-the-azure-portal"></a>Přesunout interní Load Balancer Azure do jiné oblasti pomocí Azure Portal
 
@@ -43,11 +43,11 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
 
 ### <a name="export-the-virtual-network-template-and-deploy-from-the-azure-portal"></a>Exportujte šablonu virtuální sítě a nasaďte ji z Azure Portal
 
-1. Přihlaste se ke**skupinám prostředků** [Azure Portal](https://portal.azure.com) > .
+1. Přihlaste [Azure portal](https://portal.azure.com)se ke  >  **skupinám prostředků**Azure Portal.
 2. Vyhledejte skupinu prostředků, která obsahuje zdrojovou virtuální síť, a klikněte na ni.
-3. Vyberte > **Nastavení** > **Exportovat šablonu**.
+3. Vyberte > **Nastavení**  >  **Exportovat šablonu**.
 4. V okně **Exportovat šablonu** vyberte **nasadit** .
-5. Kliknutím na **šablonu** > **Upravit parametry** otevřete soubor **Parameters. JSON** v online editoru.
+5. Kliknutím na **šablonu**  >  **Upravit parametry** otevřete **parameters.js** v souboru v online editoru.
 6. Chcete-li upravit parametr názvu virtuální sítě, změňte vlastnost **Value** v části **parametry**:
 
     ```json
@@ -65,7 +65,7 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
 
 8. V Editoru klikněte na **Uložit** .
 
-9. Kliknutím na **Šablona** > **Upravit šablonu** otevřete soubor **template. JSON** v online editoru.
+9. Kliknutím na **šablonu**  >  **Upravit šablonu** otevřete **template.js** v souboru v online editoru.
 
 10. Pokud chcete upravit cílovou oblast, kam se virtuální síť přesune, změňte vlastnost **umístění** v části prostředky:
 
@@ -87,11 +87,11 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
 
     ```
 
-11. Pokud chcete získat kódy umístění oblastí, přečtěte si téma [umístění Azure](https://azure.microsoft.com/global-infrastructure/locations/).  Kód oblasti je název oblasti bez mezer, **střed USA** = **centralus**.
+11. Pokud chcete získat kódy umístění oblastí, přečtěte si téma [umístění Azure](https://azure.microsoft.com/global-infrastructure/locations/).  Kód oblasti je název oblasti bez mezer, **střed USA**  =  **centralus**.
 
-12. Můžete také změnit další parametry v souboru **template. JSON** , pokud zvolíte možnost a jsou nepovinné v závislosti na vašich požadavcích:
+12. V případě, že zvolíte možnost a jsou nepovinné v závislosti na vašich požadavcích, můžete také změnit jiné parametry v **template.jsv** souboru.
 
-    * **Adresní prostor** – adresní prostor virtuální sítě je možné změnit před uložením úpravou části addressSpace **prostředků** > **addressSpace** a změnou vlastnosti **addressPrefixes** v souboru **template. JSON** :
+    * **Adresní prostor** – adresní prostor virtuální sítě je možné změnit před uložením úpravou části addressSpace **prostředků**  >  **addressSpace** a změnou vlastnosti **addressPrefixes** v **template.js** souboru:
 
         ```json
                 "resources": [
@@ -111,7 +111,7 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
 
         ```
 
-    * **Podsíť** – název podsítě a adresní prostor podsítě lze změnit nebo přidat k úpravou části **podsítě** souboru **template. JSON** . Název podsítě lze změnit změnou vlastnosti **název** . Adresní prostor podsítě lze změnit změnou vlastnosti **addressPrefix** v souboru **template. JSON** :
+    * **Podsíť** – název podsítě a adresní prostor podsítě lze změnit nebo přidat k úpravou části **podsítě** v **template.jsv** souboru. Název podsítě lze změnit změnou vlastnosti **název** . Adresní prostor podsítě lze změnit změnou vlastnosti **addressPrefix** v **template.js** souboru:
 
         ```json
                 "subnets": [
@@ -142,7 +142,7 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
                 ]
         ```
 
-         Chcete-li změnit předponu adresy v souboru **template. JSON** , je nutné ji upravit na dvou místech, v části uvedené výše a v níže uvedené části **typ** .  Změňte vlastnost **addressPrefix** tak, aby odpovídala hodnotě výše:
+         Pokud chcete změnit předponu adresy, musí být v **template.js** v souboru upravena na dvou místech, výše uvedenou část a níže uvedený oddíl **typ** .  Změňte vlastnost **addressPrefix** tak, aby odpovídala hodnotě výše:
 
         ```json
          "type": "Microsoft.Network/virtualNetworks/subnets",
@@ -180,11 +180,11 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
 
 13. V online Editoru klikněte na **Uložit** .
 
-14. Klikněte na **základy** > **předplatné** a vyberte předplatné, ve kterém bude cílová síť VNet nasazená.
+14. Klikněte na **základy**  >  **předplatné** a vyberte předplatné, ve kterém bude cílová síť VNet nasazená.
 
-15. Klikněte na **základy** > **Skupina prostředků** a vyberte skupinu prostředků, do které se nasadí Cílová síť VNET.  Kliknutím na **vytvořit novou** můžete vytvořit novou skupinu prostředků pro cílovou síť VNET.  Ujistěte se, že název není stejný jako zdrojová skupina prostředků stávající virtuální sítě.
+15. Klikněte na **základy**  >  **Skupina prostředků** a vyberte skupinu prostředků, do které se nasadí Cílová síť VNET.  Kliknutím na **vytvořit novou** můžete vytvořit novou skupinu prostředků pro cílovou síť VNET.  Ujistěte se, že název není stejný jako zdrojová skupina prostředků stávající virtuální sítě.
 
-16. Ověření **základních** > **umístění** je nastaveno na cílové umístění, ve kterém chcete virtuální síť nasadit.
+16. Ověření **základních**  >  **umístění** je nastaveno na cílové umístění, ve kterém chcete virtuální síť nasadit.
 
 17. V části **Nastavení** ověřte, že se název shoduje s názvem, který jste zadali v editoru parametrů výše.
 
@@ -194,11 +194,11 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
 
 ### <a name="export-the-internal-load-balancer-template-and-deploy-from-azure-powershell"></a>Exportujte šablonu interního nástroje pro vyrovnávání zatížení a nasaďte ji z Azure PowerShell
 
-1. Přihlaste se ke**skupinám prostředků** [Azure Portal](https://portal.azure.com) > .
+1. Přihlaste [Azure portal](https://portal.azure.com)se ke  >  **skupinám prostředků**Azure Portal.
 2. Vyhledejte skupinu prostředků, která obsahuje zdrojový interní nástroj pro vyrovnávání zatížení, a klikněte na ni.
-3. Vyberte > **Nastavení** > **Exportovat šablonu**.
+3. Vyberte > **Nastavení**  >  **Exportovat šablonu**.
 4. V okně **Exportovat šablonu** vyberte **nasadit** .
-5. Kliknutím na **šablonu** > **Upravit parametry** otevřete soubor **Parameters. JSON** v online editoru.
+5. Kliknutím na **šablonu**  >  **Upravit parametry** otevřete **parameters.js** v souboru v online editoru.
 
 6. Chcete-li upravit parametr názvu interního nástroje pro vyrovnávání zatížení, změňte vlastnost **DefaultValue** zdrojového interního nástroje pro vyrovnávání zatížení na název cílového interního nástroje pro vyrovnávání zatížení, ujistěte se, že je název v uvozovkách:
 
@@ -216,11 +216,11 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
              }
     ```
 
-6. Pokud chcete upravit hodnotu cílové virtuální sítě, která se přesunula výše, musíte nejdřív získat ID prostředku a pak ho zkopírovat a vložit do souboru **Parameters. JSON** . Získání ID:
+6. Pokud chcete upravit hodnotu cílové virtuální sítě, která se přesunula výše, musíte nejdřív získat ID prostředku a pak ho zkopírovat a vložit do **parameters.js** do souboru. Získání ID:
 
-    1. Přihlaste se k [Azure Portal](https://portal.azure.com) > **skupinám prostředků** na jiné kartě nebo okně prohlížeče.
+    1. Přihlaste se k [Azure Portal](https://portal.azure.com)  >  **skupinám prostředků** na jiné kartě nebo okně prohlížeče.
     2. Vyhledejte cílovou skupinu prostředků, která obsahuje přesunutou virtuální síť z výše uvedených kroků, a klikněte na ni.
-    3. Vyberte > **Settings** > **vlastnosti**nastavení.
+    3. Vyberte > **Settings**  >  **vlastnosti**nastavení.
     4. V okně vpravo zvýrazněte **ID prostředku** a zkopírujte ho do schránky.  Případně můžete kliknout na tlačítko **Kopírovat do schránky** napravo od cesty k **ID prostředku** .
     5. Vložte ID prostředku do vlastnosti **DefaultValue** v editoru **úprav parametrů** otevřeném v jiném okně nebo na kartě prohlížeče:
 
@@ -239,8 +239,8 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
         ```
     6. V online Editoru klikněte na **Uložit** .
 
-7. Kliknutím na **Šablona** > **Upravit šablonu** otevřete soubor **template. JSON** v online editoru.
-8. Chcete-li upravit cílovou oblast, kde bude přesunuta konfigurace interního nástroje pro vyrovnávání zatížení, změňte vlastnost **umístění** v části **prostředky** v souboru **template. JSON** :
+7. Kliknutím na **šablonu**  >  **Upravit šablonu** otevřete **template.js** v souboru v online editoru.
+8. Chcete-li upravit cílovou oblast, kde bude přesunuta konfigurace interního nástroje pro vyrovnávání zatížení, změňte vlastnost **Location** v části **prostředky** v **template.js** souboru:
 
     ```json
         "resources": [
@@ -255,11 +255,11 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
                 },
     ```
 
-9.  Pokud chcete získat kódy umístění oblastí, přečtěte si téma [umístění Azure](https://azure.microsoft.com/global-infrastructure/locations/).  Kód oblasti je název oblasti bez mezer, **střed USA** = **centralus**.
+9.  Pokud chcete získat kódy umístění oblastí, přečtěte si téma [umístění Azure](https://azure.microsoft.com/global-infrastructure/locations/).  Kód oblasti je název oblasti bez mezer, **střed USA**  =  **centralus**.
 
 10. Můžete také změnit jiné parametry v šabloně, pokud zvolíte možnost a jsou nepovinné v závislosti na vašich požadavcích:
 
-    * **SKU** -SKU interního nástroje pro vyrovnávání zatížení v konfiguraci z úrovně Standard na Basic nebo Basic na standard změňte změnou vlastnosti**název** **SKU** > v souboru **template. JSON** :
+    * **SKU** -SKU interního nástroje pro vyrovnávání zatížení můžete změnit v konfiguraci z úrovně Standard na Basic nebo Basic na standard změnou **sku**  >  vlastnosti**název** SKU v **template.jsv** souboru:
 
         ```json
         "resources": [
@@ -275,7 +275,7 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
         ```
       Další informace o rozdílech mezi nástroji pro vyrovnávání zatížení Basic a Standard SKU najdete v tématu [Přehled služby Azure Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) .
 
-    * **Pravidla vyrovnávání zatížení** – můžete přidat nebo odebrat pravidla vyrovnávání zatížení v konfiguraci přidáním nebo odebráním položek do oddílu **loadBalancingRules** souboru **template. JSON** :
+    * **Pravidla vyrovnávání zatížení** – můžete přidat nebo odebrat pravidla vyrovnávání zatížení v konfiguraci přidáním nebo odebráním položek do části **loadBalancingRules** **template.js** souboru:
 
         ```json
         "loadBalancingRules": [
@@ -307,7 +307,7 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
         ```
        Další informace o pravidlech vyrovnávání zatížení najdete v tématu [co je Azure Load Balancer?](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)
 
-    * **Sondy** – pro nástroj pro vyrovnávání zatížení v konfiguraci můžete přidat nebo odebrat test tak, že do části **sondy** v souboru **template. JSON** přidáte nebo odeberete položky.
+    * **Sondy** – pro nástroj pro vyrovnávání zatížení můžete v konfiguraci přidat nebo odebrat test, a to přidáním nebo odebráním položek do části **sondy** **template.jsv** souboru:
 
         ```json
         "probes": [
@@ -327,7 +327,7 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
         ```
        Další informace o sondách stavu Azure Load Balancer najdete v tématu [Load Balancer sondy stavu](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview) .
 
-    * **Pravidla příchozího překladu adres (NAT)** – můžete přidat nebo odebrat příchozí pravidla NAT pro nástroj pro vyrovnávání zatížení přidáním nebo odebráním položek do oddílu **inboundNatRules** souboru **template. JSON** :
+    * **Příchozí pravidla NAT** – pravidla příchozího překladu adres (NAT) pro nástroj pro vyrovnávání zatížení můžete přidat nebo odebrat zadáním nebo odebráním položek do části **inboundNatRules** **template.jsv** souboru:
 
         ```json
         "inboundNatRules": [
@@ -349,7 +349,7 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
                     }
                 ]
         ```
-        Aby bylo možné dokončit přidání nebo odebrání pravidla příchozího překladu adres (NAT), musí být pravidlo přítomno nebo odebráno jako vlastnost **typu** na konci souboru **template. JSON** :
+        Aby bylo možné doplnit nebo odebrat pravidlo příchozího překladu adres (NAT), musí být pravidlo přítomno nebo odebráno jako vlastnost **typu** na konci **template.js** souboru:
 
         ```json
         {
@@ -377,11 +377,11 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
 
 12. V online Editoru klikněte na **Uložit** .
 
-13. Kliknutím na položku **základní** > **předplatné** zvolíte předplatné, ve kterém bude nasazený cílový interní nástroj pro vyrovnávání zatížení.
+13. Kliknutím na položku **základní**  >  **předplatné** zvolíte předplatné, ve kterém bude nasazený cílový interní nástroj pro vyrovnávání zatížení.
 
-15. Klikněte na **základy** > **Skupina prostředků** a vyberte skupinu prostředků, ve které bude nasazený cílový Nástroj pro vyrovnávání zatížení.  Kliknutím na **vytvořit novou** můžete vytvořit novou skupinu prostředků pro cílový interní nástroj pro vyrovnávání zatížení nebo vybrat existující skupinu prostředků vytvořenou výše pro virtuální síť.  Ujistěte se, že název není stejný jako zdrojová skupina prostředků stávajícího zdrojového interního nástroje pro vyrovnávání zatížení.
+15. Klikněte na **základy**  >  **Skupina prostředků** a vyberte skupinu prostředků, ve které bude nasazený cílový Nástroj pro vyrovnávání zatížení.  Kliknutím na **vytvořit novou** můžete vytvořit novou skupinu prostředků pro cílový interní nástroj pro vyrovnávání zatížení nebo vybrat existující skupinu prostředků vytvořenou výše pro virtuální síť.  Ujistěte se, že název není stejný jako zdrojová skupina prostředků stávajícího zdrojového interního nástroje pro vyrovnávání zatížení.
 
-16. Ověření **základních** > **umístění** je nastaveno na cílové umístění, kam chcete nasadit nástroj pro vyrovnávání zatížení interního nástroje pro vyrovnávání zatížení.
+16. Ověření **základních**  >  **umístění** je nastaveno na cílové umístění, kam chcete nasadit nástroj pro vyrovnávání zatížení interního nástroje pro vyrovnávání zatížení.
 
 17. V části **Nastavení** ověřte, že se název shoduje s názvem, který jste zadali v editoru parametrů výše.  Ověřte, že ID prostředků se naplní pro všechny virtuální sítě v konfiguraci.
 

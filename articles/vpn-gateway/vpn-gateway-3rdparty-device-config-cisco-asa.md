@@ -27,7 +27,7 @@ Tento článek poskytuje ukázkové konfigurace pro připojení zařízení se z
 | Testovaný model           | ASA 5505                          |
 | Testovaná verze         | 9,2                               |
 | Verze protokolu IKE            | IKEv2                             |
-| Protokol BGP                    | Ne                                |
+| Protokol BGP                    | No                                |
 | Typ brány VPN Azure | Brána sítě VPN založená na trasách           |
 |                        |                                   |
 

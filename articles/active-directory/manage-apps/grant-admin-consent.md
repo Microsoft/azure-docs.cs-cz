@@ -2,24 +2,24 @@
 title: Udělení souhlasu správce pro celé tenanta aplikaci – Azure AD
 description: Naučte se, jak udělit aplikaci souhlas v celé klientovi, aby se koncovým uživatelům při přihlašování k aplikaci nezobrazovaly žádné výzvy k souhlasu.
 services: active-directory
-author: psignoret
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/04/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c515fef4997720435c64bd5f3ae7b18f8921fc5d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d31f03d8e6138829bbf57003b504f68f5c2315b2
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75480915"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763359"
 ---
-# <a name="grant-tenant-wide-admin-consent-to-an-application"></a>Udělení souhlasu správce na úrovni tenanta pro aplikaci
+# <a name="grant-tenant-wide-admin-consent-to-an-application"></a>Udělení souhlasu správce v rámci celého tenanta aplikaci
 
 Naučte se, jak zjednodušit uživatelské prostředí tím, že aplikaci udělíte souhlas správce pro celé tenanta. Tento článek popisuje různé způsoby, jak toho dosáhnout. Metody se vztahují na všechny koncové uživatele v tenantovi Azure Active Directory (Azure AD).
 
@@ -80,7 +80,7 @@ Jako vždy pečlivě zkontrolujte oprávnění, která aplikace požaduje, před
 
 ## <a name="next-steps"></a>Další kroky
 
-[Konfigurace způsobu souhlasu koncových uživatelů s aplikacemi](configure-user-consent.md)
+[Konfigurace způsobu vyjadřování souhlasu koncových uživatelů s aplikacemi](configure-user-consent.md)
 
 [Konfigurace pracovního postupu pro vyjádření souhlasu správce](configure-admin-consent-workflow.md)
 

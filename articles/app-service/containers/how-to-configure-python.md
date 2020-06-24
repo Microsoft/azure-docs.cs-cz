@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 03/28/2019
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, tracking-python
-ms.openlocfilehash: 96f7684176df35e9ac085dd2d7a0c576b7266883
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 94398c90f820b0e08ea8d4f0a492d96ba8039631
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84553259"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84905612"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Konfigurace aplikace pro Linux v Pythonu pro Azure App Service
 
@@ -175,13 +175,13 @@ Oblíbená webová rozhraní umožňují přístup k `X-Forwarded-*` informacím
 
 ## <a name="access-diagnostic-logs"></a>Přístup k diagnostickým protokolům
 
-[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-linux-no-h.md)]
 
 ## <a name="open-ssh-session-in-browser"></a>Otevřít relaci SSH v prohlížeči
 
 [!INCLUDE [Open SSH session in browser](../../../includes/app-service-web-ssh-connect-builtin-no-h.md)]
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 - **Výchozí aplikaci uvidíte po nasazení kódu vlastní aplikace.** Výchozí aplikace se zobrazí, protože buď nemáte nasazený kód aplikace App Service, nebo App Service se nepovedlo najít kód vaší aplikace a místo toho se spustila výchozí aplikace.
 - Restartujte službu App Service, počkejte 15-20 sekund a znovu zkontrolujte aplikaci.

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/03/2020
-ms.openlocfilehash: 2625e1f55c0b7e7df44da6c1f36e024911577d63
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 3c4252f926163b00d3b4f4bf4a26373988017ac1
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84457265"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255001"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperškálování úrovně služby
 
@@ -171,7 +171,7 @@ Pokud potřebujete obnovit databázi v prostředí Azure SQL Database do jiné o
 Azure SQL Database úroveň škálování je dostupná ve všech oblastech, ale ve výchozím nastavení povolená je dostupná v následujících oblastech uvedených níže.
 Pokud chcete vytvořit databázi s škálovatelným škálováním v oblasti, která není uvedená jako podporovaná, můžete odeslat požadavek na registraci prostřednictvím Azure Portal. Pokyny najdete v tématu [zvýšení kvóty žádostí o Azure SQL Database](quota-increase-request.md) . Při odesílání vaší žádosti postupujte podle následujících pokynů:
 
-- Použijte typ kvóty databáze SQL pro [přístup k oblasti](quota-increase-request.md#region) .
+- Použijte typ kvóty SQL Database [přístupu k oblasti](quota-increase-request.md#region) .
 - V části Podrobnosti o textu přidejte SKU COMPUTE a celkový počet jader včetně čitelných replik.
 - Zadejte také odhadované TB.
 
@@ -218,8 +218,8 @@ Jedná se o aktuální omezení úrovně služby škálování na úrovni služe
 
 | Problém | Description |
 | :---- | :--------- |
-| Podokno Správa zálohování serveru nezobrazuje databáze s škálovatelným škálováním, které se budou filtrovat ze zobrazení.  | Vlastní škálování má samostatnou metodu pro správu záloh a jako takové dlouhodobé uchovávání se nevztahují nastavení uchovávání záloh v čase. Proto se databáze s škálovatelným škálováním nezobrazí v podokně Správa zálohování.|
-| Obnovení k určitému bodu v čase | Nemůžete obnovit databázi s neškálovatelným škálováním jako databázi s škálovatelnými škálováními a databázi s měřítkem ve formátu. V případě databáze bez škálování na úrovni služby, která byla migrována do škálování, změnou její úrovně služeb, obnovení do bodu v čase před migrací a v rámci doby uchovávání záloh databáze je možné [programově](recovery-using-backups.md#programmatically-performing-recovery-by-using-automated-backups). Obnovená databáze nebude škálovatelná. |
+| Podokno Správa zálohování serveru nezobrazuje databáze s škálovatelnými škálováními. Budou filtrovány ze zobrazení.  | Škálování má samostatnou metodu pro správu záloh, takže nastavení dlouhodobého uchovávání a nastavení uchovávání záloh na určitém místě v čase se nevztahují. Proto se databáze s škálovatelným škálováním nezobrazí v podokně Správa zálohování.|
+| Obnovení k určitému bodu v čase | Nemůžete obnovit databázi s neškálovatelným škálováním jako databázi s škálovatelnými škálováními a databázi s měřítkem ve formátu. V případě databáze bez škálování na úrovni služby, která byla migrována do škálování, změnou její úrovně služeb, obnovení do bodu v čase před migrací a v rámci doby uchovávání záloh databáze je možné [programově](recovery-using-backups.md#programmatic-recovery-using-automated-backups). Obnovená databáze nebude škálovatelná. |
 | Pokud má databáze minimálně jeden datový soubor větší než 1 TB, migrace se nezdařila | V některých případech je možné tento problém obejít tak, že velké soubory zmenšíte na méně než 1 TB. Pokud migrujete databázi používanou během procesu migrace, ujistěte se, že žádný soubor nezíská větší velikost než 1 TB. Pomocí následujícího dotazu určete velikost databázových souborů. `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | Spravovaná instance SQL | Spravovaná instance Azure SQL se v současné době nepodporuje u databází s podporou škálování na více instancí. |
 | Elastické fondy |  Elastické fondy se v současné době nepodporují s měřítkem.|

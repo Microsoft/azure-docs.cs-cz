@@ -40,19 +40,19 @@ Následující tabulka ilustruje akce, které mohou provádět uživatelé v ka�
 | **Akce, které mohou uživatelé v této roli provádět** | **Uživatel DevTest Labs** | **Vlastník** | **Přispěvatel** |
 | --- | --- | --- | --- |
 | **Úlohy testovacího prostředí** | | | |
-| Přidání uživatelů do testovacího prostředí |Ne |Ano |Ne |
-| Aktualizovat nastavení nákladů |Ne |Ano |Ano |
+| Přidání uživatelů do testovacího prostředí |No |Yes |Ne |
+| Aktualizovat nastavení nákladů |No |Ano |Ano |
 | **Základní úlohy virtuálních počítačů** | | | |
-| Přidání a odebrání vlastních imagí |Ne |Ano |Ano |
+| Přidání a odebrání vlastních imagí |No |Ano |Ano |
 | Přidávání, aktualizace a odstraňování vzorců |Ano |Ano |Ano |
-| Seznam povolených Azure Marketplace imagí |Ne |Ano |Ano |
+| Seznam povolených Azure Marketplace imagí |No |Ano |Ano |
 | **Úlohy virtuálních počítačů** | | | |
 | Vytvoření virtuálních počítačů |Ano |Ano |Ano |
 | Spuštění, zastavení a odstranění virtuálních počítačů |Jenom virtuální počítače vytvořené uživatelem |Ano |Ano |
-| Aktualizace zásad virtuálních počítačů |Ne |Ano |Ano |
+| Aktualizace zásad virtuálních počítačů |No |Ano |Ano |
 | Přidání/odebrání datových disků do/z virtuálních počítačů |Jenom virtuální počítače vytvořené uživatelem |Ano |Ano |
 | **Úlohy artefaktů** | | | |
-| Přidání a odebrání úložišť artefaktů |Ne |Ano |Ano |
+| Přidání a odebrání úložišť artefaktů |No |Ano |Ano |
 | Použít artefakty |Ano |Ano |Ano |
 
 > [!NOTE]

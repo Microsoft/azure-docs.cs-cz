@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 0b630c746932696d51455653a6e6db8869f04863
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 668406bb90e1f1e064adf01d7dbab42923fe30aa
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657144"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84789272"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Příprava pružinové aplikace Java pro nasazení v jarním cloudu Azure
 
@@ -103,7 +103,7 @@ Jarní spouštěcí verze | Jarní cloudová verze | Verze cloudu pro Azure jař
 2.1 | Střední verze | 2.1
 2,2 | Hoxton. RELEASE | 2,2
 
-Do souboru pom. xml přidejte jednu z následujících závislostí. Vyberte závislost, jejíž verze cloudu pro Azure jaře se shoduje s vaší vlastní.
+Do souboru pom.xml zahrňte jednu z následujících závislostí. Vyberte závislost, jejíž verze cloudu pro Azure jaře se shoduje s vaší vlastní.
 
 ### <a name="dependency-for-azure-spring-cloud-version-21"></a>Závislost pro Azure jaře Cloud verze 2,1
 
@@ -135,7 +135,7 @@ Pokud chcete pro distribuované trasování povolit integrované funkce Azure ja
 
 ### <a name="service-registry"></a>Registr služby
 
-Pokud chcete použít spravovanou službu Azure Service Registry, zahrňte `spring-cloud-starter-netflix-eureka-client` závislost do souboru pom. XML, jak je znázorněno zde:
+Pokud chcete použít spravovanou službu Azure Service Registry, zahrňte `spring-cloud-starter-netflix-eureka-client` závislost do souboru pom.xml, jak je znázorněno zde:
 
 ```xml
     <dependency>
@@ -174,7 +174,7 @@ public class GatewayApplication {
 
 ### <a name="distributed-configuration"></a>Distribuovaná konfigurace
 
-Pokud chcete povolit distribuovanou konfiguraci, zahrňte `spring-cloud-config-client` do části závislosti v souboru pom. XML následující závislost:
+Pokud chcete povolit distribuovanou konfiguraci, zahrňte `spring-cloud-config-client` do části závislosti v souboru pom.xml následující závislost:
 
 ```xml
 <dependency>
@@ -188,7 +188,7 @@ Pokud chcete povolit distribuovanou konfiguraci, zahrňte `spring-cloud-config-c
 
 ### <a name="metrics"></a>Metriky
 
-Zahrňte `spring-boot-starter-actuator` závislost do části závislosti v souboru pom. XML, jak je znázorněno zde:
+Zahrňte `spring-boot-starter-actuator` závislost do oddílu závislosti v souboru pom.xml, jak je znázorněno zde:
 
 ```xml
 <dependency>
@@ -199,9 +199,12 @@ Zahrňte `spring-boot-starter-actuator` závislost do části závislosti v soub
 
  Metriky jsou pravidelně načítány z koncových bodů JMX. Metriky můžete vizualizovat pomocí Azure Portal.
 
+ > [!WARNING]
+ > Zadejte prosím `spring.jmx.enabled=true` vlastnost Configuration. V opačném případě se metriky nedají vizuálně vyAzure Portal.
+
 ### <a name="distributed-tracing"></a>Distribuované trasování
 
-Zahrňte následující `spring-cloud-starter-sleuth` a `spring-cloud-starter-zipkin` závislosti do části závislosti v souboru pom. XML:
+`spring-cloud-starter-sleuth` `spring-cloud-starter-zipkin` Do oddílu závislosti v souboru pom.xml zahrňte následující a závislosti:
 
 ```xml
 <dependency>

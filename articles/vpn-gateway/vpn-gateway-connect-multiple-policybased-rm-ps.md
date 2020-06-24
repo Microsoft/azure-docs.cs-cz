@@ -4,15 +4,15 @@ description: Nakonfigurujte bránu VPN založenou na směrováních Azure na ně
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/26/2020
 ms.author: yushwang
-ms.openlocfilehash: 687c33e50a986cf8af08d0201fe0159a79cf02a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a8a4ba7ea3de9140d79856fad9d5d0bc42cf4c51
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80123320"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84984614"
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>Připojení bran Azure VPN k několika místním zařízením VPN založeným na zásadách pomocí PowerShellu
 
@@ -38,7 +38,7 @@ V současné době podporuje Azure oba režimy bran sítě VPN: brány sítě VP
 
 |                          | **PolicyBased VPN Gateway** | **RouteBased VPN Gateway**       |**RouteBased VPN Gateway**                          |
 | ---                      | ---                         | ---                              |---                                                 |
-| **SKU brány Azure**    | Základní                       | Základní                            | VpnGw1, VpnGw2, VpnGw3, VpnGw4, VpnGw5  |
+| **SKU brány Azure**    | Basic                       | Basic                            | VpnGw1, VpnGw2, VpnGw3, VpnGw4, VpnGw5  |
 | **Verze protokolu IKE**          | IKEv1                       | IKEv2                            | IKEv1 a IKEv2                         |
 | **Počet. Připojení S2S** | **1**                       | 10                               | 30                     |
 |                          |                             |                                  |                                                    |
@@ -68,7 +68,7 @@ Pracovní postup pro povolení tohoto připojení:
 3. Zásadu použijte při vytváření připojení S2S nebo VNet-to-VNet a pro připojení **Povolte selektory přenosu dat založených na zásadách** .
 4. Pokud je připojení již vytvořeno, můžete zásady použít nebo aktualizovat pro existující připojení.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 * Ověřte, že máte předplatné Azure. Pokud ještě nemáte předplatné Azure, můžete si aktivovat [výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/pricing/free-trial).
 

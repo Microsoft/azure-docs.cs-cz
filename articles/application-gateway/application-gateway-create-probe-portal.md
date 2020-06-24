@@ -5,15 +5,15 @@ description: Zjistěte, jak vytvořit vlastní test pro Application Gateway pomo
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 15daf47a1cb44635932311e60b3690af9ff58677
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bc599eef349c2d65483de18b0cc8c04c5c2e53ad
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74074612"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808224"
 ---
 # <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>Vytvoření vlastního testu pro Application Gateway pomocí portálu
 
@@ -24,7 +24,7 @@ ms.locfileid: "74074612"
 
 V tomto článku přidáte pomocí Azure Portal vlastní sondu stavu do existující aplikační brány. Pomocí sond stavu Azure Application Gateway monitoruje stav prostředků ve fondu back-end.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Pokud ještě nemáte Aplikační bránu, přečtěte si téma [vytvoření Application Gateway](application-gateway-create-gateway-portal.md) a vytvořte tak Aplikační bránu, se kterou chcete pracovat.
 
@@ -44,13 +44,13 @@ Testy se konfigurují v procesu se dvěma kroky prostřednictvím portálu. Prvn
 
 4. Na stránce **Přidat sondu stavu** vyplňte požadované informace pro test a po dokončení vyberte **OK**.
 
-   |**Nastavení** | **Osa** | **Zobrazí**|
+   |**Nastavení** | **Hodnota** | **Podrobnosti**|
    |---|---|---|
    |**Název**|customProbe|Tato hodnota je popisný název, který je dán pro sondu, která je přístupná na portálu.|
-   |**Protokol**|HTTP nebo HTTPS | Protokol, který sonda stavu používá. |
+   |**Protocol (Protokol)**|HTTP nebo HTTPS | Protokol, který sonda stavu používá. |
    |**Hostitel**|t contoso.com|Tato hodnota je název virtuálního hostitele (liší se od názvu hostitele virtuálního počítače) běžícího na aplikačním serveru. Sonda se posílá do (protokol)://(název hostitele):(portu z httpsetting)/urlPath.  To platí v případě, že je na Application Gateway nakonfigurovaný vícenásobný Web. Pokud je Application Gateway nakonfigurované pro jednu lokalitu, zadejte "127.0.0.1".|
    |**Vyberte název hostitele z nastavení HTTP back-endu.**|Ano nebo Ne|Nastaví hlavičku *hostitele* v testu na název hostitele back-endu prostředku v back-endové skupině přidružené k nastavení HTTP, ke kterému je tento test přidružen. Speciálně vyžadované v případě back-endu s více klienty, jako je například Azure App Service. [Další informace](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address)|
-   |**Cesta**|nebo jiná cesta|Zbytek úplné adresy URL pro vlastní test paměti. Platná cesta začíná znakem/. Pro výchozí cestu http:\//contoso.com stačí použít '/'. |
+   |**Cesta**|nebo jiná cesta|Zbytek úplné adresy URL pro vlastní test paměti. Platná cesta začíná znakem/. Pro výchozí cestu http: \/ /contoso.com stačí použít '/'. |
    |**Interval (s)**|30|Jak často je sonda spuštěná, aby kontrolovala stav. Nedoporučuje se nastavit méně než 30 sekund.|
    |**Časový limit (sekundy)**|30|Doba, po kterou sonda čeká před vypršením časového limitu. Pokud v tomto časovém limitu neobdrží platná odpověď, sonda je označena jako neúspěšná. Interval časového limitu musí být dostatečně vysoký, aby bylo možné provést volání http, aby bylo zajištěno, že je stránka stavu back-endu k dispozici. Všimněte si, že hodnota časového limitu by neměla být větší než hodnota intervalu použitá v tomto nastavení testu nebo hodnota časový limit požadavku v nastavení HTTP, které bude přidruženo k této sondě.|
 |**Prahová hodnota pro poškozený stav**|3|Počet po sobě jdoucích neúspěšných pokusů, které se mají považovat za chybné. Prahová hodnota může být nastavena na 1 nebo více.|
@@ -93,13 +93,13 @@ Testy se konfigurují v procesu se dvěma kroky prostřednictvím portálu. Prvn
 
 4. V okně **Přidat sondu stavu** vyplňte požadované informace pro test a po dokončení vyberte **OK**.
 
-   |**Nastavení** | **Osa** | **Zobrazí**|
+   |**Nastavení** | **Hodnota** | **Podrobnosti**|
    |---|---|---|
    |**Název**|customProbe|Tato hodnota je popisný název, který je dán pro sondu, která je přístupná na portálu.|
-   |**Protokol**|HTTP nebo HTTPS | Protokol, který sonda stavu používá. |
+   |**Protocol (Protokol)**|HTTP nebo HTTPS | Protokol, který sonda stavu používá. |
    |**Hostitel**|t contoso.com|Tato hodnota je název virtuálního hostitele (liší se od názvu hostitele virtuálního počítače) běžícího na aplikačním serveru. Sonda se posílá do (protokol)://(název hostitele):(portu z httpsetting)/urlPath.  To platí v případě, že je na Application Gateway nakonfigurovaný vícenásobný Web. Pokud je Application Gateway nakonfigurované pro jednu lokalitu, zadejte "127.0.0.1".|
    |**Vyberte název hostitele z nastavení HTTP back-endu.**|Ano nebo Ne|Nastaví hlavičku *hostitele* v testu na název hostitele back-endu prostředku v back-endové skupině přidružené k nastavení HTTP, ke kterému je tento test přidružen. Speciálně vyžadované v případě back-endu s více klienty, jako je například Azure App Service. [Další informace](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address)|
-   |**Cesta**|nebo jiná cesta|Zbytek úplné adresy URL pro vlastní test paměti. Platná cesta začíná znakem/. Pro výchozí cestu http:\//contoso.com stačí použít '/'. |
+   |**Cesta**|nebo jiná cesta|Zbytek úplné adresy URL pro vlastní test paměti. Platná cesta začíná znakem/. Pro výchozí cestu http: \/ /contoso.com stačí použít '/'. |
    |**Interval (s)**|30|Jak často je sonda spuštěná, aby kontrolovala stav. Nedoporučuje se nastavit méně než 30 sekund.|
    |**Časový limit (sekundy)**|30|Doba, po kterou sonda čeká před vypršením časového limitu. Pokud v tomto časovém limitu neobdrží platná odpověď, sonda je označena jako neúspěšná. Interval časového limitu musí být dostatečně vysoký, aby bylo možné provést volání http, aby bylo zajištěno, že je stránka stavu back-endu k dispozici. Všimněte si, že hodnota časového limitu by neměla být větší než hodnota intervalu použitá v tomto nastavení testu nebo hodnota časový limit požadavku v nastavení HTTP, které bude přidruženo k této sondě.|
 |**Prahová hodnota pro poškozený stav**|3|Počet po sobě jdoucích neúspěšných pokusů, které se mají považovat za chybné. Prahová hodnota může být nastavena na 1 nebo více.|

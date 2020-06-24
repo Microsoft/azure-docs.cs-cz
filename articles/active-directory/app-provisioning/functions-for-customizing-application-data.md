@@ -2,20 +2,20 @@
 title: Zapsat výrazy pro mapování atributů v Azure Active Directory
 description: Naučte se používat mapování výrazů k transformaci hodnot atributů do přijatelného formátu při automatizovaném zřizování objektů aplikací SaaS v Azure Active Directory.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/05/2020
-ms.author: mimart
-ms.openlocfilehash: c8573f9151ac59178b19bbf354da43990405b3e0
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.author: kenwith
+ms.openlocfilehash: 47f0502226e4227c6b94920da6f040004beb41f1
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593688"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84781663"
 ---
 # <a name="how-to-write-expressions-for-attribute-mappings-in-azure-ad"></a>Postupy: zápis výrazů pro mapování atributů v Azure AD
 
@@ -26,18 +26,18 @@ Při konfiguraci zřizování pro aplikaci SaaS je jedním z typů mapování at
 Syntaxe výrazů pro mapování atributů je Reminiscent funkcí jazyk Visual Basic for Application (VBA).
 
 * Celý výraz musí být definován z funkcí Functions, který se skládá z názvu následovaného argumenty v závorkách: <br>
-  *Functions (`<<argument 1>>`,`<<argument N>>`)*
-* Do sebe můžete vnořovat funkce. Příklad: <br> *FunctionOne (FunctionTwo (`<<argument1>>`))*
+  *Functions ( `<<argument 1>>` , `<<argument N>>` )*
+* Do sebe můžete vnořovat funkce. Příklad: <br> *FunctionOne (FunctionTwo ( `<<argument1>>` ))*
 * Do funkcí můžete předat tři různé typy argumentů:
   
   1. Atributy, které musí být uzavřeny do hranatých závorek. Příklad: [attributeName]
   2. Řetězcové konstanty, které musí být uzavřeny do dvojitých uvozovek. Například: "USA"
-  3. Další funkce. Příklad: FunctionOne (`<<argument1>>`, FunctionTwo (`<<argument2>>`))
-* Pro řetězcové konstanty, pokud v řetězci potřebujete zpětné lomítko (\) nebo uvozovky ("), musí být uvozen znakem zpětného lomítka (\). Příklad: "název společnosti: \\" contoso\\""
+  3. Další funkce. Příklad: FunctionOne ( `<<argument1>>` , FunctionTwo ( `<<argument2>>` ))
+* Pro řetězcové konstanty, pokud v řetězci potřebujete zpětné lomítko (\) nebo uvozovky ("), musí být uvozen znakem zpětného lomítka (\). Příklad: "název společnosti: \\ " contoso \\ ""
 
 ## <a name="list-of-functions"></a>Seznam funkcí
 
-[Append](#append) &nbsp; [Item](#item) [Left](#left) [IsPresent](#ispresent) [IsString](#isstring) [BitAnd](#bitand) &nbsp; [CBool](#cbool) &nbsp; [IsNullOrEmpty](#isnullorempty) [NormalizeDiacritics](#normalizediacritics) [Not](#not) [SelectUniqueValue](#selectuniquevalue) [ConvertToUTF8Hex](#converttoutf8hex) [RemoveDuplicates](#removeduplicates) [IsNull](#isnull) [Coalesce](#coalesce) &nbsp; [InStr](#instr) [CStr](#cstr) [Guid](#guid) [Count](#count) [DateFromNum](#datefromnum) [IIF](#iif) [ConvertToBase64](#converttobase64) &nbsp; [Join](#join) [FormatDateTime](#formatdatetime) [Replace](#replace) [Mid](#mid) BitAnd &nbsp; CBool COALESCE ConvertToBase64 ConvertToUTF8Hex Count CStr DateFromNum FormatDateTime &nbsp; GUID IIF InStr IsNull IsNullOrEmpty &nbsp; . Join &nbsp; Mid Mid &nbsp; NormalizeDiacritics not &nbsp; RemoveDuplicates –&nbsp; Replace&nbsp; SelectUniqueValue &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [ToLower](#tolower) [SingleAppRoleAssignment](#singleapproleassignment) &nbsp; [Switch](#switch) [StripSpaces](#stripspaces) [ToUpper](#toupper) [Split](#split) [Word](#word) SingleAppRoleAssignment &nbsp; rozdělit StripSpaces Switch&nbsp; ToUpper – slovo&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+[Append](#append) &nbsp; &nbsp; Připojit &nbsp; &nbsp; [BitAnd](#bitand) &nbsp; &nbsp; BitAnd &nbsp; &nbsp; [CBool](#cbool) &nbsp; &nbsp; CBool &nbsp; &nbsp; [Coalesce](#coalesce) &nbsp; &nbsp; COALESCE &nbsp; &nbsp; [ConvertToBase64](#converttobase64) &nbsp; &nbsp; ConvertToBase64 &nbsp; &nbsp; [ConvertToUTF8Hex](#converttoutf8hex) &nbsp; &nbsp; ConvertToUTF8Hex &nbsp; &nbsp; [Count](#count) &nbsp; &nbsp; Počet &nbsp; &nbsp; [CStr](#cstr) &nbsp; &nbsp; CStr &nbsp; &nbsp; [DateFromNum](#datefromnum) &nbsp; [FormatDateTime](#formatdatetime) &nbsp; &nbsp; FormatDateTime &nbsp; &nbsp; [Identifikátor](#guid) &nbsp; &nbsp; GUID &nbsp; &nbsp; [IIF](#iif) &nbsp; &nbsp; IIf &nbsp; &nbsp; [InStr](#instr) &nbsp; &nbsp; InStr &nbsp; &nbsp; [IsNull](#isnull) &nbsp; &nbsp; IsNull &nbsp; &nbsp; [IsNullOrEmpty](#isnullorempty) &nbsp; &nbsp; IsNullOrEmpty &nbsp; &nbsp; K [dispozici](#ispresent) &nbsp; &nbsp; &nbsp; &nbsp; [IsString](#isstring) &nbsp; &nbsp; Řetězec &nbsp; &nbsp; [Item](#item) &nbsp; &nbsp; Položka &nbsp; &nbsp; [Připojit](#join) &nbsp; &nbsp; se &nbsp; &nbsp; [Left](#left) &nbsp; &nbsp; Vlevo &nbsp; &nbsp; [Mid](#mid) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [NormalizeDiacritics](#normalizediacritics) [Not](#not) &nbsp; &nbsp; &nbsp; &nbsp; [RemoveDuplicates –](#removeduplicates) &nbsp; &nbsp; &nbsp; &nbsp; [Replace](#replace) &nbsp; &nbsp; &nbsp; &nbsp; [SelectUniqueValue](#selectuniquevalue) &nbsp; &nbsp; &nbsp; &nbsp; [SingleAppRoleAssignment](#singleapproleassignment) &nbsp; &nbsp; &nbsp; &nbsp; [rozdělit](#split) &nbsp; &nbsp; &nbsp; &nbsp; [StripSpaces](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [Switch](#switch) &nbsp; &nbsp; &nbsp; &nbsp; [ToLower](#tolower) &nbsp; &nbsp; &nbsp; &nbsp; [ToUpper](#toupper) &nbsp; &nbsp; &nbsp; &nbsp; [Word](#word)
 
 ---
 ### <a name="append"></a>Připojit
@@ -50,8 +50,8 @@ Syntaxe výrazů pro mapování atributů je Reminiscent funkcí jazyk Visual Ba
 
 | Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
-| **Zdrojová** |Požaduje se |Řetězec |Obvykle název atributu ze zdrojového objektu. |
-| **auditování** |Požaduje se |Řetězec |Řetězec, který chcete připojit ke konci zdrojové hodnoty. |
+| **Zdrojová** |Vyžadováno |Řetězec |Obvykle název atributu ze zdrojového objektu. |
+| **auditování** |Vyžadováno |Řetězec |Řetězec, který chcete připojit ke konci zdrojové hodnoty. |
 
 ---
 ### <a name="bitand"></a>BitAnd
@@ -68,8 +68,8 @@ Jinými slovy, vrátí 0 ve všech případech s výjimkou toho, že odpovídaj�
 
 | Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
-| **Hodnota1** |Požaduje se |num |Číselná hodnota, která by měla být AND'ed s hodnota2|
-| **Argument** |Požaduje se |num |Číselná hodnota, která má být AND'ed s hodnota1|
+| **Hodnota1** |Vyžadováno |num |Číselná hodnota, která by měla být AND'ed s hodnota2|
+| **Argument** |Vyžadováno |num |Číselná hodnota, která má být AND'ed s hodnota1|
 
 **Případě**<br>
 BitAnd (&HF, &HF7)                                                                                
@@ -85,7 +85,7 @@ BitAnd (&HF, &HF7)
 
 | Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
-| **vyjádření** |Požaduje se | výraz | Libovolný platný výraz |
+| **vyjádření** |Vyžadováno | expression | Libovolný platný výraz |
 
 **Případě**<br>
 CBool ([attribute1] = [attribute2])                                                                    
@@ -101,8 +101,8 @@ Vrátí hodnotu true, pokud mají oba atributy stejnou hodnotu.
 
 | Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
-| **source1 ... sourceN** | Požaduje se | Řetězec |Povinný, proměnlivý počet opakování. Obvykle název atributu ze zdrojového objektu. |
-| **Hodnot** | Nepovinné | Řetězec | Výchozí hodnota, která se má použít, pokud jsou všechny zdrojové hodnoty NULL. Může být prázdný řetězec ("").
+| **source1 ... sourceN** | Vyžadováno | Řetězec |Povinný, proměnlivý počet opakování. Obvykle název atributu ze zdrojového objektu. |
+| **Hodnot** | Volitelné | Řetězec | Výchozí hodnota, která se má použít, pokud jsou všechny zdrojové hodnoty NULL. Může být prázdný řetězec ("").
 
 ---
 ### <a name="converttobase64"></a>ConvertToBase64
@@ -114,7 +114,7 @@ Vrátí hodnotu true, pokud mají oba atributy stejnou hodnotu.
 
 | Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
-| **Zdrojová** |Požaduje se |Řetězec |Řetězec, který má být převeden na základní 64|
+| **Zdrojová** |Vyžadováno |Řetězec |Řetězec, který má být převeden na základní 64|
 
 **Případě**<br>
 ConvertToBase64 ("Hello World!")                                                                                                        
@@ -130,7 +130,7 @@ Vrátí "SABlAGwAbABvACAAdwBvAHIAbABkACEA"
 
 | Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
-| **Zdrojová** |Požaduje se |Řetězec |Řetězec, který se má převést na UTF8 hex|
+| **Zdrojová** |Vyžadováno |Řetězec |Řetězec, který se má převést na UTF8 hex|
 
 **Případě**<br>
 ConvertToUTF8Hex ("Hello World!")                                                                                                         
@@ -146,7 +146,7 @@ Vrátí 48656C6C6F20776F726C6421
 
 | Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
-| **přidělen** |Požaduje se |– atribut |Vícehodnotový atribut, který bude obsahovat elementy počítané|
+| **přidělen** |Vyžadováno |– atribut |Vícehodnotový atribut, který bude obsahovat elementy počítané|
 
 ---
 ### <a name="cstr"></a>CStr
@@ -158,7 +158,7 @@ Vrátí 48656C6C6F20776F726C6421
 
 | Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
-| **osa** |Požaduje se | Číselná, referenční nebo logická hodnota | Může to být číselná hodnota, odkazový atribut nebo logická hodnota. |
+| **osa** |Vyžadováno | Číselná, referenční nebo logická hodnota | Může to být číselná hodnota, odkazový atribut nebo logická hodnota. |
 
 **Případě**<br>
 CStr ([DN])                                                            
@@ -174,7 +174,7 @@ Vrátí "CN = Jan, DC = contoso, DC = com"
 
 | Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
-| **osa** |Požaduje se | Datum | Datum reklamy, které má být převedeno na typ DateTime |
+| **osa** |Vyžadováno | Datum | Datum reklamy, které má být převedeno na typ DateTime |
 
 **Případě**<br>
 DateFromNum([lastLogonTimestamp])                                                                                                   
@@ -191,9 +191,9 @@ Vrátí hodnotu DateTime představující 2012-01-01 23:00:00.
 
 | Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
-| **Zdrojová** |Požaduje se |Řetězec |Obvykle název atributu ze zdrojového objektu. |
-| **inputFormat** |Požaduje se |Řetězec |Byl očekáván formát zdrojové hodnoty. Podporované formáty naleznete v tématu [https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx). |
-| **outputFormat** |Požaduje se |Řetězec |Formát data výstupu. |
+| **Zdrojová** |Vyžadováno |Řetězec |Obvykle název atributu ze zdrojového objektu. |
+| **inputFormat** |Vyžadováno |Řetězec |Byl očekáván formát zdrojové hodnoty. Podporované formáty naleznete v tématu [https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx) . |
+| **outputFormat** |Vyžadováno |Řetězec |Formát data výstupu. |
 
 ---
 ### <a name="guid"></a>Identifikátor GUID
@@ -211,9 +211,9 @@ Vrátí hodnotu DateTime představující 2012-01-01 23:00:00.
 
 | Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
-| **pomocné** |Požaduje se |Proměnná nebo výraz |Libovolná hodnota nebo výraz, který lze vyhodnotit na hodnotu true nebo false. |
-| **valueIfTrue** |Požaduje se |Proměnná nebo řetězec | Pokud je podmínka vyhodnocena jako true, vrácená hodnota. |
-| **valueIfFalse** |Požaduje se |Proměnná nebo řetězec |Pokud je podmínka vyhodnocena jako false, vrácená hodnota.|
+| **pomocné** |Vyžadováno |Proměnná nebo výraz |Libovolná hodnota nebo výraz, který lze vyhodnotit na hodnotu true nebo false. |
+| **valueIfTrue** |Vyžadováno |Proměnná nebo řetězec | Pokud je podmínka vyhodnocena jako true, vrácená hodnota. |
+| **valueIfFalse** |Vyžadováno |Proměnná nebo řetězec |Pokud je podmínka vyhodnocena jako false, vrácená hodnota.|
 
 **Případě**<br>
 IIF ([Country] = "USA"; [Country]; [Department])
@@ -228,10 +228,10 @@ IIF ([Country] = "USA"; [Country]; [Department])
 
 | Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
-| **Hodnota1** |Požaduje se |Řetězec |Řetězec, který má být prohledán |
-| **Argument** |Požaduje se |Řetězec |Řetězec, který se má najít |
-| **Čína** |Nepovinné |Integer |Počáteční pozice pro vyhledání podřetězce|
-| **compareType** |Nepovinné |Výčet |Může být vbTextCompare nebo vbBinaryCompare |
+| **Hodnota1** |Vyžadováno |Řetězec |Řetězec, který má být prohledán |
+| **Argument** |Vyžadováno |Řetězec |Řetězec, který se má najít |
+| **Čína** |Volitelné |Integer |Počáteční pozice pro vyhledání podřetězce|
+| **compareType** |Volitelné |Výčet |Může být vbTextCompare nebo vbBinaryCompare |
 
 **Případě**<br>
 InStr ("Rychlá hnědá Fox", "Rychlá")                                                                             
@@ -250,7 +250,7 @@ Vyhodnotí na 7
 
 | Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
-| **vyjádření** |Požaduje se |výraz |Výraz, který se má vyhodnotit |
+| **vyjádření** |Vyžadováno |expression |Výraz, který se má vyhodnotit |
 
 **Případě**<br>
 IsNull ([DisplayName])                                                                                                
@@ -267,7 +267,7 @@ Inverzní část této funkce je pojmenována jako.
 
 | Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
-| **vyjádření** |Požaduje se |výraz |Výraz, který se má vyhodnotit |
+| **vyjádření** |Vyžadováno |expression |Výraz, který se má vyhodnotit |
 
 **Případě**<br>
 IsNullOrEmpty ([DisplayName])                                               
@@ -283,7 +283,7 @@ Vrátí hodnotu true, pokud atribut není přítomen, nebo je prázdný řetěze
 
 | Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
-| **vyjádření** |Požaduje se |výraz |Výraz, který se má vyhodnotit |
+| **vyjádření** |Vyžadováno |expression |Výraz, který se má vyhodnotit |
 
 **Případě**<br>
 Switch (přítomen ([directManager]); [directManager]; ([skiplevelManager]); [skiplevelManager]; ([režisér]); [Director])
@@ -298,7 +298,7 @@ Switch (přítomen ([directManager]); [directManager]; ([skiplevelManager]); [sk
 
 | Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
-| **vyjádření** |Požaduje se |výraz |Výraz, který se má vyhodnotit |
+| **vyjádření** |Vyžadováno |expression |Výraz, který se má vyhodnotit |
 
 ---
 ### <a name="item"></a>Položka
@@ -310,8 +310,8 @@ Switch (přítomen ([directManager]); [directManager]; ([skiplevelManager]); [sk
 
 | Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
-| **přidělen** |Požaduje se |Atribut |Vícehodnotový atribut, který má být prohledán |
-| **indexovacím** |Požaduje se |Integer | Index položky v řetězci s více hodnotami|
+| **přidělen** |Vyžadováno |Atribut |Vícehodnotový atribut, který má být prohledán |
+| **indexovacím** |Vyžadováno |Integer | Index položky v řetězci s více hodnotami|
 
 **Případě**<br>
 Item ([proxyAddresses]; 1)
@@ -328,7 +328,7 @@ Pokud je jednou ze zdrojových hodnot atribut s více hodnotami, pak se všechny
 
 | Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
-| **oddělování** |Požaduje se |Řetězec |Řetězec, který se používá k oddělení zdrojových hodnot při zřetězení do jednoho řetězce. Může být "", pokud není vyžadován oddělovač. |
+| **oddělování** |Vyžadováno |Řetězec |Řetězec, který se používá k oddělení zdrojových hodnot při zřetězení do jednoho řetězce. Může být "", pokud není vyžadován oddělovač. |
 | **source1 ... sourceN** |Povinný, proměnlivý počet pokusů |Řetězec |Řetězcové hodnoty, které se mají spojit dohromady. |
 
 ---
@@ -344,8 +344,8 @@ Pokud řetězec obsahuje méně znaků než číslo zadané v numChars, vrátí 
 
 | Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
-| **Řetězec** |Požaduje se |Atribut | Řetězec, ze kterého se mají vracet znaky |
-| **NumChars** |Požaduje se |Integer | Číslo určující počet znaků, které mají být vráceny od začátku (vlevo) řetězce|
+| **Řetězec** |Vyžadováno |Atribut | Řetězec, ze kterého se mají vracet znaky |
+| **NumChars** |Vyžadováno |Integer | Číslo určující počet znaků, které mají být vráceny od začátku (vlevo) řetězce|
 
 **Případě**<br>
 Vlevo ("Jan Novák"; 3)                                                            
@@ -361,9 +361,9 @@ Vrátí "Joh"
 
 | Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
-| **Zdrojová** |Požaduje se |Řetězec |Obvykle název atributu. |
-| **Čína** |Požaduje se |celé číslo |Index ve **zdrojovém** řetězci, ve kterém by měl být spuštěný dílčí řetězec První znak v řetězci bude mít index 1, druhý znak bude mít index 2 atd. |
-| **časový** |Požaduje se |celé číslo |Délka podřetězce Pokud délka končí mimo **zdrojový** řetězec, funkce vrátí podřetězec z **počátečního** indexu do konce **zdrojového** řetězce. |
+| **Zdrojová** |Vyžadováno |Řetězec |Obvykle název atributu. |
+| **Čína** |Vyžadováno |celé číslo |Index ve **zdrojovém** řetězci, ve kterém by měl být spuštěný dílčí řetězec První znak v řetězci bude mít index 1, druhý znak bude mít index 2 atd. |
+| **časový** |Vyžadováno |celé číslo |Délka podřetězce Pokud délka končí mimo **zdrojový** řetězec, funkce vrátí podřetězec z **počátečního** indexu do konce **zdrojového** řetězce. |
 
 ---
 ### <a name="normalizediacritics"></a>NormalizeDiacritics
@@ -375,7 +375,7 @@ Vrátí "Joh"
 
 | Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
-| **Zdrojová** |Požaduje se |Řetězec | Obvykle se jedná o křestní jméno nebo název atributu příjmení. |
+| **Zdrojová** |Vyžadováno |Řetězec | Obvykle se jedná o křestní jméno nebo název atributu příjmení. |
 
 ---
 ### <a name="not"></a>Not
@@ -387,7 +387,7 @@ Vrátí "Joh"
 
 | Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
-| **Zdrojová** |Požaduje se |Logický řetězec |Očekávané **zdrojové** hodnoty jsou "true" nebo "false". |
+| **Zdrojová** |Vyžadováno |Logický řetězec |Očekávané **zdrojové** hodnoty jsou "true" nebo "false". |
 
 ---
 ### <a name="numfromdate"></a>NumFromDate
@@ -399,7 +399,7 @@ Vrátí "Joh"
 
 | Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
-| **osa** |Požaduje se | Řetězec | Řetězec data a času v podporovaném formátu. Podporované formáty naleznete v tématu https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx. |
+| **osa** |Vyžadováno | Řetězec | Řetězec data a času v podporovaném formátu. Podporované formáty naleznete v tématu https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx . |
 
 **Případě**<br>
 * Příklad pracovního dne <br>
@@ -421,7 +421,7 @@ Vrátí "Joh"
 
 | Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
-| **přidělen** |Požaduje se |Vícehodnotový atribut |Vícehodnotový atribut, který bude mít odebrané duplicity|
+| **přidělen** |Vyžadováno |Vícehodnotový atribut |Vícehodnotový atribut, který bude mít odebrané duplicity|
 
 **Případě**<br>
 RemoveDuplicates – ([proxyAddresses])                                                                                                       
@@ -455,13 +455,13 @@ Nahradí hodnoty v rámci řetězce. Funguje různě v závislosti na zadaných 
 
 | Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
-| **Zdrojová** |Požaduje se |Řetězec |Obvykle název atributu ze **zdrojového** objektu. |
-| **oldValue** |Nepovinné |Řetězec |Hodnota, která má být nahrazena ve **zdroji** nebo **šabloně**. |
-| **Vzor Regex** |Nepovinné |Řetězec |Vzor regulárního výrazu pro hodnotu, která má být nahrazena **zdrojem**. Nebo, pokud se používá **replacementPropertyName** , vzorek pro extrakci hodnoty z **replacementPropertyName**. |
-| **regexGroupName** |Nepovinné |Řetězec |Název skupiny uvnitř **vzor Regex** Jenom v případě, že se používá **replacementPropertyName** , extrahujeme hodnotu této skupiny jako **replacementValue** z **replacementPropertyName**. |
-| **replacementValue** |Nepovinné |Řetězec |Nová hodnota, kterou chcete nahradit starou. |
-| **replacementAttributeName** |Nepovinné |Řetězec |Název atributu, který se má použít k nahrazení hodnoty |
-| **vzhledu** |Nepovinné |Řetězec |Když se zadá hodnota **šablony** , budeme v šabloně Hledat text **OldValue** a nahradit ho **zdrojovou** hodnotou. |
+| **Zdrojová** |Vyžadováno |Řetězec |Obvykle název atributu ze **zdrojového** objektu. |
+| **oldValue** |Volitelné |Řetězec |Hodnota, která má být nahrazena ve **zdroji** nebo **šabloně**. |
+| **Vzor Regex** |Volitelné |Řetězec |Vzor regulárního výrazu pro hodnotu, která má být nahrazena **zdrojem**. Nebo, pokud se používá **replacementPropertyName** , vzorek pro extrakci hodnoty z **replacementPropertyName**. |
+| **regexGroupName** |Volitelné |Řetězec |Název skupiny uvnitř **vzor Regex** Jenom v případě, že se používá **replacementPropertyName** , extrahujeme hodnotu této skupiny jako **replacementValue** z **replacementPropertyName**. |
+| **replacementValue** |Volitelné |Řetězec |Nová hodnota, kterou chcete nahradit starou. |
+| **replacementAttributeName** |Volitelné |Řetězec |Název atributu, který se má použít k nahrazení hodnoty |
+| **vzhledu** |Volitelné |Řetězec |Když se zadá hodnota **šablony** , budeme v šabloně Hledat text **OldValue** a nahradit ho **zdrojovou** hodnotou. |
 
 ---
 ### <a name="selectuniquevalue"></a>SelectUniqueValue
@@ -493,7 +493,7 @@ Nahradí hodnoty v rámci řetězce. Funguje různě v závislosti na zadaných 
 
 | Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
-| **AppRoleAssignments** |Požaduje se |Řetězec |objekt **[appRoleAssignments]** . |
+| **AppRoleAssignments** |Vyžadováno |Řetězec |objekt **[appRoleAssignments]** . |
 
 ---
 ### <a name="split"></a>Rozdělení
@@ -505,8 +505,8 @@ Nahradí hodnoty v rámci řetězce. Funguje různě v závislosti na zadaných 
 
 | Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
-| **Zdrojová** |Požaduje se |Řetězec |**zdrojová** hodnota, která se má aktualizovat |
-| **oddělovač** |Požaduje se |Řetězec |Určuje znak, který bude použit k rozdělení řetězce (například: ","). |
+| **Zdrojová** |Vyžadováno |Řetězec |**zdrojová** hodnota, která se má aktualizovat |
+| **oddělovač** |Vyžadováno |Řetězec |Určuje znak, který bude použit k rozdělení řetězce (například: ","). |
 
 ---
 ### <a name="stripspaces"></a>StripSpaces
@@ -518,7 +518,7 @@ Nahradí hodnoty v rámci řetězce. Funguje různě v závislosti na zadaných 
 
 | Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
-| **Zdrojová** |Požaduje se |Řetězec |**zdrojová** hodnota, která se má aktualizovat |
+| **Zdrojová** |Vyžadováno |Řetězec |**zdrojová** hodnota, která se má aktualizovat |
 
 ---
 ### <a name="switch"></a>Přepínač
@@ -530,10 +530,10 @@ Nahradí hodnoty v rámci řetězce. Funguje různě v závislosti na zadaných 
 
 | Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
-| **Zdrojová** |Požaduje se |Řetězec |**Zdrojová** hodnota, která se má aktualizovat |
-| **Hodnot** |Nepovinné |Řetězec |Výchozí hodnota, která se má použít, pokud zdroj neodpovídá žádným klíčům Může být prázdný řetězec (""). |
-| **zkrat** |Požaduje se |Řetězec |**Klíč** pro porovnání **zdrojové** hodnoty s. |
-| **osa** |Požaduje se |Řetězec |Nahrazující hodnota pro **zdroj** , který odpovídá klíči. |
+| **Zdrojová** |Vyžadováno |Řetězec |**Zdrojová** hodnota, která se má aktualizovat |
+| **Hodnot** |Volitelné |Řetězec |Výchozí hodnota, která se má použít, pokud zdroj neodpovídá žádným klíčům Může být prázdný řetězec (""). |
+| **zkrat** |Vyžadováno |Řetězec |**Klíč** pro porovnání **zdrojové** hodnoty s. |
+| **osa** |Vyžadováno |Řetězec |Nahrazující hodnota pro **zdroj** , který odpovídá klíči. |
 
 ---
 ### <a name="tolower"></a>ToLower
@@ -545,8 +545,8 @@ Nahradí hodnoty v rámci řetězce. Funguje různě v závislosti na zadaných 
 
 | Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
-| **Zdrojová** |Požaduje se |Řetězec |Obvykle název atributu ze zdrojového objektu |
-| **jazykových** |Nepovinné |Řetězec |Formát pro název jazykové verze založený na RFC 4646 je *languagecode2-Country/regioncode2*, kde *languagecode2* je kód jazyka dvou písmen a *země/regioncode2* je kód subjazykové verze se dvěma písmeny. Mezi příklady patří ja-JP pro japonštinu (Japonsko) a EN-US pro angličtinu (USA). V případech, kdy kód jazyka se dvěma písmeny není k dispozici, je použit kód o třech písmenech odvozený z ISO 639-2.|
+| **Zdrojová** |Vyžadováno |Řetězec |Obvykle název atributu ze zdrojového objektu |
+| **jazykových** |Volitelné |Řetězec |Formát pro název jazykové verze založený na RFC 4646 je *languagecode2-Country/regioncode2*, kde *languagecode2* je kód jazyka dvou písmen a *země/regioncode2* je kód subjazykové verze se dvěma písmeny. Mezi příklady patří ja-JP pro japonštinu (Japonsko) a EN-US pro angličtinu (USA). V případech, kdy kód jazyka se dvěma písmeny není k dispozici, je použit kód o třech písmenech odvozený z ISO 639-2.|
 
 ---
 ### <a name="toupper"></a>ToUpper
@@ -558,8 +558,8 @@ Nahradí hodnoty v rámci řetězce. Funguje různě v závislosti na zadaných 
 
 | Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
-| **Zdrojová** |Požaduje se |Řetězec |Obvykle název atributu ze zdrojového objektu. |
-| **jazykových** |Nepovinné |Řetězec |Formát pro název jazykové verze založený na RFC 4646 je *languagecode2-Country/regioncode2*, kde *languagecode2* je kód jazyka dvou písmen a *země/regioncode2* je kód subjazykové verze se dvěma písmeny. Mezi příklady patří ja-JP pro japonštinu (Japonsko) a EN-US pro angličtinu (USA). V případech, kdy kód jazyka se dvěma písmeny není k dispozici, je použit kód o třech písmenech odvozený z ISO 639-2.|
+| **Zdrojová** |Vyžadováno |Řetězec |Obvykle název atributu ze zdrojového objektu. |
+| **jazykových** |Volitelné |Řetězec |Formát pro název jazykové verze založený na RFC 4646 je *languagecode2-Country/regioncode2*, kde *languagecode2* je kód jazyka dvou písmen a *země/regioncode2* je kód subjazykové verze se dvěma písmeny. Mezi příklady patří ja-JP pro japonštinu (Japonsko) a EN-US pro angličtinu (USA). V případech, kdy kód jazyka se dvěma písmeny není k dispozici, je použit kód o třech písmenech odvozený z ISO 639-2.|
 
 ---
 ### <a name="word"></a>Word
@@ -575,9 +575,9 @@ Pokud řetězec obsahuje méně než čísla slov nebo řetězec neobsahuje žá
 
 | Name | Požadováno/opakování | Typ | Poznámky |
 | --- | --- | --- | --- |
-| **Řetězec** |Požaduje se |Vícehodnotový atribut |Řetězec, ze kterého se má vrátit slovo|
-| **WordNumber** |Požaduje se | Integer | Číslo určující, které číslo slova se má vrátit|
-| **oddělovače** |Požaduje se |Řetězec| Řetězec představující oddělovače, které se mají použít k identifikaci slov|
+| **Řetězec** |Vyžadováno |Vícehodnotový atribut |Řetězec, ze kterého se má vrátit slovo|
+| **WordNumber** |Vyžadováno | Integer | Číslo určující, které číslo slova se má vrátit|
+| **oddělovače** |Vyžadováno |Řetězec| Řetězec představující oddělovače, které se mají použít k identifikaci slov|
 
 **Případě**<br>
 Word ("Rychlá hnědá Fox", 3, "")                                                                                       
@@ -598,7 +598,7 @@ Pokud je doména například "contoso.com", můžete použít následující vý
 
 **Vzorový vstup/výstup:** <br>
 
-* **Vstup** (pošta): "john.doe@contoso.com"
+* **Vstup** (pošta): " john.doe@contoso.com "
 * **Výstup**: Jan. Chvojková
 
 ### <a name="append-constant-suffix-to-user-name"></a>Připojit konstantní příponu k uživatelskému jménu
@@ -609,8 +609,8 @@ Pokud používáte izolovaný prostor Salesforce, možná budete muset před syn
 
 **Vzorový vstup/výstup:** <br>
 
-* **Vstup**: (userPrincipalName): "John.Doe@contoso.com"
-* **Výstup**: "John.Doe@contoso.com.test"
+* **Vstup**: (userPrincipalName): " John.Doe@contoso.com "
+* **Výstup**: " John.Doe@contoso.com.test "
 
 ### <a name="generate-user-alias-by-concatenating-parts-of-first-and-last-name"></a>Generovat alias uživatele zřetězením částí jména a příjmení
 Alias uživatele musíte vygenerovat zadáním prvních 3 písmen křestního jména uživatele a prvních 5 písmen příjmení uživatele.
@@ -693,7 +693,7 @@ V následujícím příkladu je hodnota hlavního názvu uživatele generována 
 
 * **Vstup** (PreferredFirstName): "Jan"
 * **Vstup** (PreferredLastName): "Smith"
-* **Výstup**: "john.smith@contoso.com"
+* **Výstup**: " john.smith@contoso.com "
 
 ### <a name="generate-unique-value-for-userprincipalname-upn-attribute"></a>Generovat jedinečnou hodnotu pro atribut userPrincipalName (UPN)
 Na základě křestního jména a jména uživatele a jména a příjmení je potřeba vygenerovat hodnotu pro atribut hlavního názvu uživatele (UPN) a před přiřazením hodnoty k atributu hlavního názvu uživatele vyhledat jeho jedinečnost v cílovém adresáři služby AD.
@@ -710,9 +710,9 @@ Na základě křestního jména a jména uživatele a jména a příjmení je po
 
 * **Vstup** (PreferredFirstName): "Jan"
 * **Vstup** (PreferredLastName): "Smith"
-* **Výstup**: "John.Smith@contoso.com", pokud hodnota John.Smith@contoso.com hlavního názvu uživatele (UPN) ještě v adresáři neexistuje
-* **Výstup**: "J.Smith@contoso.com", pokud v adresáři John.Smith@contoso.com již existuje hodnota hlavního názvu uživatele (UPN).
-* **Výstup**: "Jo.Smith@contoso.com", pokud výše uvedené dvě hodnoty UPN v adresáři již existují
+* **Výstup**: " John.Smith@contoso.com ", pokud hodnota hlavního názvu uživatele (UPN) John.Smith@contoso.com ještě v adresáři neexistuje
+* **Výstup**: " J.Smith@contoso.com ", pokud John.Smith@contoso.com v adresáři již existuje hodnota hlavního názvu uživatele (UPN).
+* **Výstup**: " Jo.Smith@contoso.com ", pokud výše uvedené dvě hodnoty UPN v adresáři již existují
 
 ### <a name="flow-mail-value-if-not-null-otherwise-flow-userprincipalname"></a>Hodnota pro poštu flowu, pokud není NULL, jinak Flow userPrincipalName
 Chcete-li, aby se atribut mail nacházel, je-li k dispozici. Pokud není, chcete místo toho Flow použít hodnotu userPrincipalName.
@@ -723,8 +723,8 @@ Chcete-li, aby se atribut mail nacházel, je-li k dispozici. Pokud není, chcete
 **Vzorový vstup/výstup:** <br>
 
 * **Vstup** (mail): null
-* **Vstup** (userPrincipalName): "John.Doe@contoso.com"
-* **Výstup**: "John.Doe@contoso.com"
+* **Vstup** (userPrincipalName): " John.Doe@contoso.com "
+* **Výstup**: " John.Doe@contoso.com "
 
 ## <a name="related-articles"></a>Související články
 * [Automatizace zřizování a rušení zřizování uživatelů pro aplikace SaaS](../app-provisioning/user-provisioning.md)

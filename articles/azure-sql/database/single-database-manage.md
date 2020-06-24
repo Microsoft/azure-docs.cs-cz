@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 0f348ea67583d10dae2ebc548a48b7e74b66a958
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 43e28774625db0217dde1227bad160ba87750c8c
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343342"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254986"
 ---
 # <a name="create-and-manage-servers-and-single-databases-in-azure-sql-database"></a>Vytváření a Správa serverů a samostatných databází v Azure SQL Database
 
@@ -43,7 +43,7 @@ Pokud chcete vytvořit jednu Azure SQL Database pomocí [Azure Portal](https://p
 
 ## <a name="manage-an-existing-server"></a>Správa existujícího serveru
 
-Pokud chcete spravovat existující server, přejděte na server pomocí různých metod – například z konkrétní stránky SQL Database, na stránce **servery SQL** nebo na stránku **všechny prostředky** .
+Pokud chcete spravovat existující server, přejděte na server pomocí různých metod – například na stránce konkrétní databáze, na stránce **servery SQL** nebo na stránce **všechny prostředky** .
 
 Pokud chcete spravovat existující databázi, přejděte na stránku **databáze SQL** a vyberte databázi, kterou chcete spravovat. Následující snímek obrazovky ukazuje, jak začít s nastavením brány firewall na úrovni serveru pro databázi ze stránky **Přehled** pro databázi.
 

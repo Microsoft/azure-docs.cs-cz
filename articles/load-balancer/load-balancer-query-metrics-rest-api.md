@@ -7,15 +7,15 @@ author: asudbring
 manager: KumudD
 ms.service: load-balancer
 ms.custom: REST, seodec18
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: allensu
-ms.openlocfilehash: 760ec8a945ab88b63dde2de75f5354818facf4f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3b5aedb20bc7a8d2aa6f3aa3d8691a71af4cd3a2
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74225246"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808371"
 ---
 # <a name="get-load-balancer-usage-metrics-using-the-rest-api"></a>Získat Load Balancer metriky využití pomocí REST API
 
@@ -42,14 +42,14 @@ Jsou vyžadovány následující hlavičky:
 
 ### <a name="uri-parameters"></a>Parametry identifikátoru URI
 
-| Název | Popis |
+| Name | Description |
 | :--- | :---------- |
 | subscriptionId | ID předplatného, které identifikuje předplatné Azure. Pokud máte více předplatných, přečtěte si téma [práce s více předplatnými](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). |
 | resourceGroupName | Název skupiny prostředků, která obsahuje prostředek. Tuto hodnotu můžete získat z rozhraní Azure Resource Manager API, CLI nebo na portálu. |
 | loadBalancerName | Název Azure Load Balancer. |
 | názvy metrik | Čárkami oddělený seznam platných [metrik Load Balancer](/azure/load-balancer/load-balancer-standard-diagnostics). |
-| verze-api | Verze rozhraní API, která se má použít pro požadavek<br /><br /> Tento dokument popisuje verzi `2018-01-01`rozhraní API, která je součástí výše uvedené adresy URL.  |
-| timespan | Časové rozpětí dotazu. Jedná se o řetězec s následujícím formátem `startDateTime_ISO/endDateTime_ISO`. Tento volitelný parametr je nastaven tak, aby v příkladu vrátil data o hodnotě dne. |
+| verze-api | Verze rozhraní API, která se má použít pro požadavek<br /><br /> Tento dokument popisuje verzi rozhraní API `2018-01-01` , která je součástí výše uvedené adresy URL.  |
+| timespan | Časové rozpětí dotazu. Jedná se o řetězec s následujícím formátem `startDateTime_ISO/endDateTime_ISO` . Tento volitelný parametr je nastaven tak, aby v příkladu vrátil data o hodnotě dne. |
 | &nbsp; | &nbsp; |
 
 ### <a name="request-body"></a>Text požadavku

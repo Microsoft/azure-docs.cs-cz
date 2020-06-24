@@ -2,22 +2,22 @@
 title: Povolení jednotného přihlašování pro aplikaci s více tenanty
 description: Pokyny pro nezávislé výrobce softwaru při integraci s Azure Active Directory
 services: active-directory
-author: barbaraselden
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/22/2019
-ms.author: baselden
+ms.author: kenwith
 ms.reviewer: jeeds
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c89a83ade6305579e700afb86f0b9e3aca2695e
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: 26fa2b82b89c7b9ce1e05062718f2c4d0c93197c
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "67795184"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763274"
 ---
 # <a name="enable-single-sign-on-for-your-multi-tenant-application"></a>Povolení jednotného přihlašování pro aplikaci s více klienty  
 

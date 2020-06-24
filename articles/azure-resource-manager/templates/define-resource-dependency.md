@@ -3,16 +3,16 @@ title: Nastavení pořadí nasazení pro prostředky
 description: V této části najdete popis postupu při nastavování jednoho prostředku v závislosti na jiném prostředku během nasazování, aby bylo zajištěno nasazení prostředků ve správném pořadí.
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.openlocfilehash: 764b718416e1185f56c7eb6b8335792a5822f212
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 84cea915565ec6ac9872681e1d4173abacb46ac4
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535464"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255207"
 ---
 # <a name="define-the-order-for-deploying-resources-in-arm-templates"></a>Definování pořadí nasazení prostředků v šablonách ARM
 
-Při nasazování prostředku možná budete muset před jeho nasazením zajistit, aby existovaly další prostředky. Před nasazením databáze SQL potřebujete například SQL Server. Tuto relaci definujete tak, že označíte jeden prostředek jako závislý na jiném prostředku. Můžete definovat závislost pomocí elementu **dependsOn** nebo pomocí **referenční** funkce.
+Při nasazování prostředku možná budete muset před jeho nasazením zajistit, aby existovaly další prostředky. Před nasazením databáze potřebujete například logický SQL Server. Tuto relaci definujete tak, že označíte jeden prostředek jako závislý na jiném prostředku. Můžete definovat závislost pomocí elementu **dependsOn** nebo pomocí **referenční** funkce.
 
 Resource Manager vyhodnocuje závislosti mezi prostředky a provádí nasazení v závislém pořadí. Pokud na sobě prostředky nezávisí, Resource Manager je nasadí paralelně. Stačí definovat závislosti pro prostředky, které jsou nasazeny ve stejné šabloně.
 
@@ -59,7 +59,7 @@ Vlastnost Resources umožňuje určit podřízené prostředky, které se vztahu
 
 Každý nadřazený prostředek přijímá pouze určité typy prostředků jako podřízené prostředky. Přijaté typy prostředků jsou zadány ve [schématu šablony](https://github.com/Azure/azure-resource-manager-schemas) nadřazeného prostředku. Název podřízeného prostředku obsahuje název nadřazeného typu prostředku, jako je například **Microsoft. Web/Sites/config** a **Microsoft. Web/Sites/Extensions** , jak podřízené prostředky **Microsoft. Web/Sites**.
 
-Následující příklad ukazuje SQL Server a SQL Database. Všimněte si, že explicitní závislost je definovaná mezi databází SQL a SQL serverem, i když je databáze podřízená serveru.
+Následující příklad ukazuje logický SQL Server a databázi. Všimněte si, že explicitní závislost je definovaná mezi databází a serverem, a to i v případě, že je databáze podřízená serveru.
 
 ```json
 "resources": [

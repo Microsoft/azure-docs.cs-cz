@@ -4,19 +4,19 @@ description: Naučte se, jak nasadit zabezpečené pracovní stanice spravované
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d02b0299b6267fdd9d880d5bc0fe8c93d0edadc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c5fe1bf294c34afc2f7e0e0aa911dc05597ab9df
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78672608"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85252776"
 ---
 # <a name="deploy-a-secure-azure-managed-workstation"></a>Nasazení zabezpečené pracovní stanice spravované v Azure
 
@@ -35,7 +35,7 @@ Před nasazením řešení vyberte profil. V nasazení můžete použít více p
 | Spravovaná v Intune | Ano | Ano | Ano | Ano | Ano | Ano |
 | Zařízení – zaregistrované v Azure AD | Ano |  |  |  |  | |   |
 | Zařízení – připojeno k Azure AD |   | Ano | Ano | Ano | Ano | Ano |
-| Použité standardní hodnoty zabezpečení Intune |   | Ano <br> Rozšíření | Ano <br> (HighSecurity) | Ano <br> (NCSC) | Ano <br> Psán | Není k dispozici |
+| Použité standardní hodnoty zabezpečení Intune |   | Ano <br> Rozšíření | Ano <br> (HighSecurity) | Ano <br> (NCSC) | Ano <br> Psán | NA |
 | Hardware splňuje zabezpečené standardy pro Windows 10. |   | Ano | Ano | Ano | Ano | Ano |
 | Povolené ATP programu Microsoft Defender |   | Ano  | Ano | Ano | Ano | Ano |
 | Odebrání oprávnění správce |   |   | Ano  | Ano | Ano | Ano |
@@ -63,19 +63,19 @@ Vyžadovat službu Multi-Factor Authentication alespoň pro správce. Pokyny k i
 
 ### <a name="azure-ad-users-and-groups"></a>Uživatelé a skupiny Azure AD
 
-1. V Azure Portal přejděte na **Azure Active Directory** > **Uživatelé** > **Nový uživatel**.
+1. V Azure Portal přejděte na **Azure Active Directory**  >  **Uživatelé**  >  **Nový uživatel**.
 1. Postupujte podle kroků v [kurzu Vytvoření uživatele](/Intune/quickstart-create-user)a vytvořte Správce zařízení.
 1. Zadejte:
 
    * **Název** – zabezpečený Správce pracovní stanice
    * **Uživatelské jméno** - `secure-ws-admin@identityitpro.com`
-   * **Role** - adresáře s**omezeným oprávněním správce** a vyberte roli **správce Intune** .
+   * **Role adresáře**  -  **Správce s omezenými** oprávněními a vyberte roli **správce Intune** .
 
 1. Vyberte **Vytvořit**.
 
 V dalším kroku vytvoříte dvě skupiny: uživatelé pracovní stanice a zařízení pracovní stanice.
 
-Z Azure Portal přejděte na **Azure Active Directory** > **skupiny** > **Nová skupina**.
+Z Azure Portal přejděte na **Azure Active Directory**  >  **skupiny**  >  **Nová skupina**.
 
 1. Pro skupinu uživatelé pracovní stanice možná budete chtít nakonfigurovat [licencování na základě skupin](../users-groups-roles/licensing-groups-assign.md) pro automatizaci zřizování licencí pro uživatele.
 1. Pro skupinu uživatelé pracovní stanice zadejte:
@@ -101,21 +101,21 @@ Z Azure Portal přejděte na **Azure Active Directory** > **skupiny** > **Nová 
 
 Nakonfigurujte nastavení zařízení ve službě Active Directory tak, aby skupina zabezpečení pro správu mohla připojovat zařízení k vaší doméně. Konfigurace tohoto nastavení z Azure Portal:
 
-1. Přejít na **Azure Active Directory** > **zařízení** > **nastavení zařízení**.
+1. Přejít na **Azure Active Directory**  >  **zařízení**  >  **nastavení zařízení**.
 1. Zvolte možnost **vybrané** v části **Uživatelé můžou připojovat zařízení do Azure AD**a pak vybrat skupinu "zabezpečená pracovní stanice uživatelů".
 
 #### <a name="removal-of-local-admin-rights"></a>Odebrání oprávnění místního správce
 
 Tato metoda vyžaduje, aby uživatelé virtuálních počítačů s VIP, DevOps a zabezpečenými pracovními stanicemi nemají na svých počítačích žádná práva správce. Konfigurace tohoto nastavení z Azure Portal:
 
-1. Přejít na **Azure Active Directory** > **zařízení** > **nastavení zařízení**.
+1. Přejít na **Azure Active Directory**  >  **zařízení**  >  **nastavení zařízení**.
 1. **V zařízeních připojených k Azure AD**vyberte **žádné** v rámci dalších místních správců.
 
 #### <a name="require-multi-factor-authentication-to-join-devices"></a>Vyžadovat službu Multi-Factor Authentication pro připojení zařízení
 
 Další posílení procesu připojení zařízení do služby Azure AD:
 
-1. Přejít na **Azure Active Directory** > **zařízení** > **nastavení zařízení**.
+1. Přejít na **Azure Active Directory**  >  **zařízení**  >  **nastavení zařízení**.
 1. Pokud chcete připojit zařízení **, vyberte v** části **vyžadovat vícefaktorové ověřování službu Multi-Factor auth**.
 1. Vyberte **Uložit**.
 
@@ -123,7 +123,7 @@ Další posílení procesu připojení zařízení do služby Azure AD:
 
 Z Azure Portal:
 
-1. Přejděte do**Microsoft Intune** **Azure Active Directory** > **mobility (MDM a mam)** > .
+1. Přejděte do **Microsoft Intune Azure Active Directory**  >  **mobility (MDM a mam)**  >  **Microsoft Intune**.
 1. Změňte nastavení **oboru uživatele MDM** na **vše**.
 1. Vyberte **Uložit**.
 
@@ -143,7 +143,7 @@ Aby se zajistilo, že zařízení jsou před použitím plně nakonfigurovaná, 
 
 Z **Azure Portal**:
 
-1. Přejít na **Microsoft Intune** > **registrace** > **Windows enrollment** > zařízení – > **výchozí****Nastavení****Stránka** > registrace registrace zařízení Windows – stav
+1. Přejít na **Microsoft Intune**  >  **registrace zařízení**–  >  **Windows enrollment**  >  **Enrollment Status Page**  >  **výchozí**  >  **Nastavení**stránka registrace registrace zařízení Windows – stav
 1. Nastavte **Zobrazit průběh instalace profilu aplikace** na **Ano**.
 1. Nastavte **blokování použití zařízení, dokud nebudou všechny aplikace a profily nainstalované** na **Ano**.
 
@@ -153,7 +153,7 @@ Po vytvoření skupiny zařízení je nutné vytvořit profil nasazení pro konf
 
 V Intune Azure Portal:
 
-1. Vyberte **registrace** > zařízení > **profily nasazení****registrace** > Windows**vytvořit profil**.
+1. Vyberte **registrace zařízení**  >  **Windows enrollment**  >  **profily nasazení**registrace Windows  >  **vytvořit profil**.
 1. Zadejte:
 
    * Název – **profil nasazení zabezpečené pracovní stanice**.
@@ -171,7 +171,7 @@ V Intune Azure Portal:
    * Vyberte značku oboru, pokud jste ji předem nakonfigurovali.
 
 1. Vyberte **Další**.
-1. Vyberte **přiřazení** > **přiřadit k** > **vybraným skupinám**. V **možnosti vybrat skupiny, které se mají zahrnout**, vyberte **zabezpečené pracovní stanice**.
+1. Vyberte **přiřazení**  >  **přiřadit k**  >  **vybraným skupinám**. V **možnosti vybrat skupiny, které se mají zahrnout**, vyberte **zabezpečené pracovní stanice**.
 1. Vyberte **Další**.
 1. Vyberte **Vytvořit** a vytvořte profil. Profil nasazení Autopilotu je teď možné přiřazovat zařízením.
 
@@ -185,7 +185,7 @@ Tento návod doporučuje vytvořit nový aktualizační kanál a změnit násled
 
 Na webu Azure Portal:
 
-1. Přejít na **Microsoft Intune** > **aktualizace** > softwaru**aktualizační kanály Windows 10**.
+1. Přejít na **Microsoft Intune**  >  **aktualizace softwaru**  >  **aktualizační kanály Windows 10**.
 1. Zadejte:
 
    * Název – **aktualizace pro pracovní stanice spravované službou Azure**
@@ -211,11 +211,11 @@ Ochrana ATP a Microsoft Intune v programu Windows Defender vzájemně spolupracu
 
 Pokud chcete nakonfigurovat integraci ochrany ATP v programu Windows Defender a Intune, přečtěte si Azure Portal.
 
-1. Přejděte na **Microsoft Intune** > **dodržování předpisů** > pro zařízení v**programu Windows Defender ATP**.
+1. Přejděte na **Microsoft Intune**  >  **dodržování předpisů pro zařízení**v  >  **programu Windows Defender ATP**.
 1. V kroku 1 v části **Konfigurace ochrany ATP v programu Windows Defender**vyberte možnost **připojit ATP v programu windows Defender k Microsoft Intune v Security Center Windows Defenderu**.
 1. V Centru zabezpečení v programu Windows Defender:
 
-   1. Vyberte **Nastavení** > **Rozšířené funkce**.
+   1. Vyberte **Nastavení**  >  **Rozšířené funkce**.
    1. Pro **Microsoft Intune připojení**vyberte **zapnuto**.
    1. Vyberte **Uložit předvolby**.
 
@@ -234,20 +234,20 @@ Aby bylo možné úspěšně dokončit posílení zabezpečení řešení, Stáh
 | Nízká úroveň zabezpečení | – | – |
 | Rozšířené zabezpečení | https://aka.ms/securedworkstationgit | Enhanced-Workstation-Windows10-(1809). ps1 |
 | Vysoké zabezpečení | https://aka.ms/securedworkstationgit | HighSecurityWorkstation-Windows10-(1809). ps1 |
-| Specializovaná | https://github.com/pelarsen/IntunePowerShellAutomation | DeviceConfiguration_NCSC-Windows10 (1803) SecurityBaseline. ps1 |
+| Specializovaná | https://github.com/pelarsen/IntunePowerShellAutomation | DeviceConfiguration_NCSC – Windows10 (1803) SecurityBaseline.ps1 |
 | Specializované dodržování předpisů * | https://aka.ms/securedworkstationgit | DeviceCompliance_NCSC-Windows10 (1803). ps1 |
-| Psán | https://aka.ms/securedworkstationgit | Secure-Workstation-Windows10-(1809)-SecurityBaseline. ps1 |
+| Psán | https://aka.ms/securedworkstationgit | Secure-Workstation-Windows10-(1809) -SecurityBaseline.ps1 |
 
 \*Specializované dodržování předpisů je skript, který vynutil specializovanou konfiguraci poskytnutou v NCSC Windows10 SecurityBaseline.
 
 Po úspěšném spuštění skriptu můžete v Intune dělat aktualizace profilů a zásad. Skripty pro rozšířené a zabezpečené profily vytvářejí zásady a profily, ale musíte je přiřadit ke skupině zařízení **zabezpečených pracovních stanic** .
 
-* Tady najdete profily konfigurace zařízení Intune vytvořené skripty: **Azure Portal** > **Microsoft Intune** > **konfiguračních** > **profilů**zařízení.
-* Tady najdete zásady dodržování předpisů zařízením Intune, které vytvořily skripty: **Azure Portal** > **Microsoft Intune** >  > **zásady****dodržování předpisů zařízením**.
+* Tady najdete profily konfigurace zařízení Intune vytvořené skripty: **Azure Portal**  >  **Microsoft Intune**  >  **konfiguračních**  >  **profilů**zařízení.
+* Tady najdete zásady dodržování předpisů zařízením Intune, které vytvořily skripty: **Azure Portal**  >  **Microsoft Intune**  >  **zásady dodržování předpisů zařízením**  >  **Policies**.
 
 Chcete-li zkontrolovat změny provedené skripty, můžete exportovat profily. Tímto způsobem můžete určit další posílení zabezpečení, které může být vyžadováno, jak je uvedeno v [dokumentaci k SECCON](/windows/security/threat-protection/windows-security-configuration-framework/windows-security-configuration-framework).
 
-Spusťte skript `DeviceConfiguration_Export.ps1` pro export dat Intune z [úložiště DeviceConfiguration GiuHub](https://github.com/microsoftgraph/powershell-intune-samples/tree/master/DeviceConfiguration) a exportujte všechny aktuální profily Intune.
+Spusťte skript pro export dat Intune `DeviceConfiguration_Export.ps1` z [úložiště DeviceConfiguration GiuHub](https://github.com/microsoftgraph/powershell-intune-samples/tree/master/DeviceConfiguration) a exportujte všechny aktuální profily Intune.
 
 ## <a name="additional-configurations-and-hardening-to-consider"></a>Další konfigurace a posílení zabezpečení pro zvážení
 
@@ -287,11 +287,11 @@ V některých situacích jsou v zabezpečené pracovní stanici vyžadovány apl
 
 1. Stáhněte si balíček Chrome instalačního programu offline [pro Windows 64-bit](https://cloud.google.com/chrome-enterprise/browser/download/).
 1. Extrahujte soubory a poznamenejte si umístění `GoogleChromeStandaloneEnterprise64.msi` souboru.
-1. V **Azure Portal** přejděte do **Microsoft Intune** > **Client apps** > **aplikace** > klienta aplikace**Přidat**.
+1. V **Azure Portal** přejděte do **Microsoft Intune**  >  **Client apps**  >  **aplikace**klienta aplikace  >  **Přidat**.
 1. V části **Typ aplikace**vyberte **obchodní**.
 1. V části **soubor balíčku aplikace**vyberte `GoogleChromeStandaloneEnterprise64.msi` soubor z extrahovaného umístění a vyberte **OK**.
 1. V části **informace o aplikaci**zadejte popis a vydavatele. Vyberte **OK**.
-1. Vyberte **Přidat**.
+1. Vyberte možnost **Přidat**.
 1. Na kartě **přiřazení** vyberte **dostupné pro zaregistrovaná zařízení** v části **Typ přiřazení**.
 1. V části **zahrnuté skupiny**přidejte skupinu **zabezpečených pracovních stanic** .
 1. Vyberte **OK**a pak vyberte **Uložit**.
@@ -313,15 +313,15 @@ Azure AD nabízí možnost spravovat a omezovat, kdo a co má přístup k portá
 > [!NOTE]
 > Budete muset vytvořit skupinu uživatelů a začlenit svého naléhavého uživatele, který může obejít zásady podmíněného přístupu. V našem příkladu máme skupinu zabezpečení s názvem **Nouzový BreakGlass**
 
-1. Přejděte do **Azure Portal** > **Microsoft Intune** > **podmíněný přístup – zásady** > **nové zásady**.
+1. Přejděte do **Azure Portal**  >  **Microsoft Intune**  >  **podmíněný přístup – zásady**  >  **nové zásady**.
 1. Zadejte **název** zásady.
-1. Vybrat **uživatele a skupiny** > –**Vybrat uživatele a skupiny** 
-1. Vyberte možnost **Zahrnout** > **role adresáře** > zvolte role > globální správce, správce privilegovaných rolí, správce privilegovaného ověřování, správce zabezpečení, správce dodržování předpisů, správce podmíněného přístupu, správce aplikace, správce cloudových aplikací, Správce služby Intune.
+1. Vybrat **uživatele a skupiny**–  >  **Vybrat uživatele a skupiny** 
+1. Vyberte možnost **Zahrnout**  >  **role adresáře** > zvolte role > globální správce, správce privilegovaných rolí, správce privilegovaného ověřování, správce zabezpečení, správce dodržování předpisů, správce podmíněného přístupu, správce aplikace, správce cloudových aplikací, Správce služby Intune.
 1. Vyberte možnost **vyloučit** > zvolte **uživatele a skupiny** > vyberte **Vybrat vyloučené uživatele** > vyberte svou **Nouzový BreakGlass** skupinu.
 1. Vyberte **cloudové aplikace nebo akce** > vybrat **všechny cloudové aplikace** .
 1. Vyberte **podmínky** > vyberte **platformy zařízení** > zvolte konfigurovat **Ano** > vyberte **Vybrat platformy zařízení** zvolte **Windows**
 1. Vyberte **řízení přístupu** > vyberte **udělit přístup** **Ano** > zvolte **vyžadovat, aby zařízení bylo označené jako vyhovující**. 
-1. Vyberte **Povolit zásadu** > **na**
+1. Vyberte **Povolit zásadu**  >  **na**
  
 Tato sada zásad zajistí, že správci musí používat kompatibilní zařízení s Windows, které je nastavené službou Intune, a rozšířená. 
 
@@ -333,17 +333,17 @@ PowerShell můžete také použít k rozšiřování možností správy hostitel
 
 Možná budete muset nastavit některé vlastní ovládací prvky a nastavení na zabezpečených pracovních stanicích. Tento příklad změní pozadí pracovní stanice pomocí schopnosti prostředí PowerShell snadno identifikovat zařízení jako připravenou a zabezpečenou pracovní stanici.
 
-Skript [SetDesktopBackground. ps1](https://gallery.technet.microsoft.com/scriptcenter/Set-Desktop-Image-using-5430c9fb/) z skriptovacího centra Microsoftu umožňuje, aby systém Windows při spuštění načetl tento [bezplatný a obecný obrázek na pozadí](https://i.imgur.com/OAJ28zO.png) .
+Skript [SetDesktopBackground.ps1](https://gallery.technet.microsoft.com/scriptcenter/Set-Desktop-Image-using-5430c9fb/) z skriptovacího centra Microsoftu umožňuje, aby systém Windows při spuštění načetl tento [bezplatný a obecný obrázek na pozadí](https://i.imgur.com/OAJ28zO.png) .
 
 1. Stáhněte si skript do místního zařízení.
 1. Aktualizujte customerXXXX a umístění pro stahování obrázku pozadí. V našem příkladu nahrazujeme customerXXXX na pozadí.
-1. Přejděte do části **Azure Portal** > **Microsoft Intune** > **Konfigurace** > zařízení > **skripty PowerShellu****Přidat**.
+1. Přejděte do části **Azure Portal**  >  **Microsoft Intune**  >  **Konfigurace zařízení**  >  **skripty PowerShellu**  >  **Přidat**.
 1. Zadejte **název** skriptu a zadejte **umístění skriptu**.
 1. Vyberte **Konfigurovat**.
    1. Nastavte **Spustit tento skript pomocí přihlašovacích údajů přihlášeného** k **Ano**.
    1. Vyberte **OK**.
 1. Vyberte **Vytvořit**.
-1. Vyberte **přiřazení** > **Vybrat skupiny**.
+1. Vyberte **přiřazení**  >  **Vybrat skupiny**.
    1. Přidejte **zabezpečené pracovní stanice**skupiny zabezpečení.
    1. Vyberte **Uložit**.
 
@@ -351,19 +351,19 @@ Skript [SetDesktopBackground. ps1](https://gallery.technet.microsoft.com/scriptc
 
 1. K registraci zařízení potřebujete následující informace:
    * **Sériové číslo** – našlo se na skříni zařízení.
-   * **ID produktu Windows** – v části **systém** > **v nabídce** nastavení systému Windows se našel.
+   * **ID produktu Windows** – v části **systém**  >  **v** nabídce nastavení systému Windows se našel.
    * Pomocí rutiny [Get-WindowsAutoPilotInfo](https://aka.ms/Autopilotshell) můžete získat soubor hash CSV se všemi požadovanými informacemi pro registraci zařízení.
    
      Spusťte `Get-WindowsAutoPilotInfo – outputfile device1.csv` pro výstup informací jako soubor CSV, který můžete naimportovat do Intune.
 
      > [!NOTE]
-     > Tento skript vyžaduje zvýšená oprávnění. Spouští se jako vzdálený podpis. `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned` Příkaz umožňuje, aby byl skript správně spuštěn.
+     > Tento skript vyžaduje zvýšená oprávnění. Spouští se jako vzdálený podpis. `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned`Příkaz umožňuje, aby byl skript správně spuštěn.
 
    * Tyto informace můžete získat tak, že se přihlásíte k zařízení s Windows 10 verze 1809 nebo vyšší. Tyto informace může poskytnout i prodejce hardwaru.
-1. V **Azure Portal**můžete přejít na **Microsoft Intune** > **registrace zařízení registrace** > zařízení s**Windows** > **– spravovat zařízení s Windows autopilotem**.
+1. V **Azure Portal**můžete přejít na **Microsoft Intune**  >  **registrace zařízení registrace**zařízení  >  s**Windows**  >  **– spravovat zařízení s Windows autopilotem**.
 1. Vyberte **importovat** a zvolte soubor CSV.
 1. Přidejte zařízení do skupiny zabezpečení **zabezpečených pracovních stanic** .
-1. V zařízení s Windows 10, které chcete nakonfigurovat, nastavte**obnovení** > zabezpečení na **Windows Settings** > **Update &**.
+1. V zařízení s Windows 10, které chcete nakonfigurovat, nastavte obnovení zabezpečení na **Windows Settings**  >  **Update &**  >  **Recovery**.
    1. V části **resetovat tento počítač** **vyberte Začínáme.**
    1. Podle pokynů obnovte a znovu nakonfigurujte zařízení pomocí nakonfigurovaných zásad profilu a dodržování předpisů.
 
@@ -424,26 +424,26 @@ Nasazení agenta MMA pomocí skriptu PowerShellu pro Intune
 
 1. Stáhněte si instalační [skript do místního zařízení](https://aka.ms/securedworkstationgit).
 1. Aktualizace parametrů **$WorkSpaceID** a **$WorkSpaceKey**
-1. Přejděte do části **Azure Portal** > **Microsoft Intune** > **Konfigurace** > zařízení > **skripty PowerShellu****Přidat**.
+1. Přejděte do části **Azure Portal**  >  **Microsoft Intune**  >  **Konfigurace zařízení**  >  **skripty PowerShellu**  >  **Přidat**.
 1. Zadejte **název** skriptu a zadejte **umístění skriptu**.
 1. Vyberte **Konfigurovat**.
    1. Nastavte **Spustit tento skript pomocí přihlašovacích údajů přihlášeného** k **Ano**.
    1. Vyberte **OK**.
 1. Vyberte **Vytvořit**.
-1. Vyberte **přiřazení** > **Vybrat skupiny**.
+1. Vyberte **přiřazení**  >  **Vybrat skupiny**.
    1. Přidejte **zabezpečené pracovní stanice**skupiny zabezpečení.
    1. Vyberte **Uložit**.
 
 Dál musíte nastavit Log Analytics pro příjem nových protokolů.
 1. V **Azure Portal**klikněte na **pracovní prostor Log Analytics** > vybrat-' zabezpečené monitorování pracovní stanice '
-1. Výběr **rozšířených** > **dat** > nastavení**protokoly událostí systému Windows**
+1. Výběr **rozšířených**  >  **dat**nastavení  >  **protokoly událostí systému Windows**
 1. V **části shromažďovat události z následujících protokolů událostí** 
 1. Zadejte:
    * ' Microsoft-Windows-AppLocker/EXE a DLL ' > zrušit výběr **informativní**
    * Microsoft-Windows-AppLocker/MSI a skript > nevybranými **informacemi**
    * Microsoft-Windows-AppLocker/zabalená aplikace-nasazení > zrušit výběr **informativní**
    * Microsoft-Windows-AppLocker/zabalená aplikace-spuštění > zrušit výběr **informativní**
-1. Vybrat **Uložit**
+1. Vyberte **Uložit**.
 
 Protokolování aplikace bude k dispozici ve vybraném pracovním prostoru Log Analytics.
 

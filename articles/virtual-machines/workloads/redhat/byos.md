@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/10/2020
+ms.date: 06/10/2020
 ms.author: alsin
-ms.openlocfilehash: 9ab578b4b688c02c9150dfb23fce53fbb82df405
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: af541faaf9529cec81c60cb1a879161d66e34a7e
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273167"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84694378"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Red Hat Enterprise Linux ve službě Azure na základě vlastních předplatných zlatých imagí
 
@@ -52,7 +52,7 @@ Po dokončení kroků povolení přístupu do cloudu ověří Red Hat nárok na 
 
 ## <a name="use-the-red-hat-gold-images-from-the-azure-portal"></a>Použití imagí Red Hat Gold z Azure Portal
 
-1. Jakmile vaše předplatné Azure získá přístup k obrázkům Red Hat Gold, můžete je vyhledat v [Azure Portal](https://portal.azure.com). Přejděte na **vytvořit prostředek** > **Zobrazit vše**.
+1. Jakmile vaše předplatné Azure získá přístup k obrázkům Red Hat Gold, můžete je vyhledat v [Azure Portal](https://portal.azure.com). Přejděte na **vytvořit prostředek**  >  **Zobrazit vše**.
 
 1. V horní části stránky uvidíte, že máte soukromé nabídky.
 
@@ -96,7 +96,7 @@ Následující pokyny vás provedou procesem prvotního nasazení pro virtuáln�
 
     OR
 
-    az vm image terms accept --urn RedHat:rhel-byos:rhel-lvm8:8.0.20190620
+    az vm image terms accept --urn redhat:rhel-byos:rhel-lvm8:8.0.20190620
     ```
 
     >[!NOTE]
@@ -108,16 +108,19 @@ Následující pokyny vás provedou procesem prvotního nasazení pro virtuáln�
     az vm create -n <VM name> -g <resource group name> --image <image urn> --validate
 
     # Example:
-    az vm create -n rhel-byos-vm -g rhel-byos-group --image RedHat:rhel-byos:rhel-lvm75:7.5.20190620
+    az vm create -n rhel-byos-vm -g rhel-byos-group --image redhat:rhel-byos:rhel-lvm8:latest --validate
     ```
 
 1. Zřiďte virtuální počítač spuštěním stejného příkazu, jak je znázorněno v předchozím příkladu bez `--validate` argumentu.
 
     ```azurecli
-    az vm create -n <VM name> -g <resource group name> --image <image urn> --validate
+    az vm create -n <VM name> -g <resource group name> --image <image urn>
+
+    # Example:
+    az vm create -n rhel-byos-vm -g rhel-byos-group --image redhat:rhel-byos:rhel-lvm8:latest
     ```
 
-1. Připojte se k VIRTUÁLNÍmu počítači přes SSH a ověřte, jestli máte neoprávněnou image. Chcete-li provést tento krok `sudo yum repolist`, spusťte příkaz. Pro RHEL 8 použijte `sudo dnf repolist`. Výstup vás vyzve k použití Správce předplatného k registraci virtuálního počítače pomocí Red Hat.
+1. Připojte se k VIRTUÁLNÍmu počítači přes SSH a ověřte, jestli máte neoprávněnou image. Chcete-li provést tento krok, spusťte příkaz `sudo yum repolist` . Pro RHEL 8 použijte `sudo dnf repolist` . Výstup vás vyzve k použití Správce předplatného k registraci virtuálního počítače pomocí Red Hat.
 
 >[!NOTE]
 >V RHEL 8 `dnf` a `yum` jsou zaměnitelné. Další informace najdete v příručce pro [správce RHEL 8](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/packaging_and_distributing_software/index).
@@ -135,7 +138,7 @@ Následující skript je příkladem. Podle konfigurace podle vlastního výběr
     # Define user name and blank password
     $securePassword = ConvertTo-SecureString 'TestPassword1!' -AsPlainText -Force
     $cred = New-Object System.Management.Automation.PSCredential("azureuser",$securePassword)
-    Get-AzureRmMarketplaceTerms -Publisher RedHat -Product rhel-byos -Name rhel-lvm75 | SetAzureRmMarketplaceTerms -Accept
+    Get-AzureRmMarketplaceTerms -Publisher redhat -Product rhel-byos -Name rhel-lvm75 | SetAzureRmMarketplaceTerms -Accept
 
     # Create a resource group
     New-AzureRmResourceGroup -Name $resourceGroup -Location $location

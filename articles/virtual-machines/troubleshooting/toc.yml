@@ -91,6 +91,8 @@
           href: troubleshoot-reboot-loop.md
         - name: Zablokování v aktualizaci Windows
           href: troubleshoot-stuck-updating-boot-error.md
+        - name: Neočekávané restartování nebo chyba
+          href: troubleshoot-unexpected-restart-error-during-vm-boot.md
         - name: Spuštění virtuálního počítače je zablokované
           href: troubleshoot-vm-boot-configure-update.md
         - name: Virtuální počítač nejde spustit kvůli Správci spouštění systému Windows

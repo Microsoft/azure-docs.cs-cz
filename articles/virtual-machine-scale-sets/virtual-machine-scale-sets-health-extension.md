@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.date: 05/06/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 4710d03c4d5b2f2679a0d6b65f38ec584f9a056c
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: a38a715b45ab4d0810862ef4d016e4187ea507ab
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124104"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84783040"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>Použití rozšíření Stav aplikace se škálovacími sadami virtuálních počítačů
 Monitorování stavu vaší aplikace je důležitým signálem pro správu a upgrade nasazení. Azure Virtual Machine Scale Sets poskytují podporu pro průběžné [upgrady](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) včetně [automatických upgradů BITOVÝCH kopií operačního systému](virtual-machine-scale-sets-automatic-upgrade.md), které jsou závislé na monitorování stavu jednotlivých instancí při upgradu vašeho nasazení. Pomocí rozšíření Health můžete také monitorovat stav aplikací každé instance v sadě škálování a provádět opravy instancí pomocí [automatických oprav instancí](virtual-machine-scale-sets-automatic-instance-repairs.md).
@@ -154,7 +154,7 @@ az vmss extension set \
   --vmss-name <myVMScaleSet> \
   --settings ./extension.json
 ```
-Obsah souboru extension. JSON.
+extension.jsobsahu souboru.
 
 ```json
 {
@@ -165,7 +165,7 @@ Obsah souboru extension. JSON.
 ```
 
 
-## <a name="troubleshoot"></a>Odstraňování potíží
+## <a name="troubleshoot"></a>Řešení potíží
 Výstup spuštění rozšíření se protokoluje do souborů, které se nacházejí v následujících adresářích:
 
 ```Windows
@@ -173,7 +173,8 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.ManagedServices.ApplicationHealthWindows\
 ```
 
 ```Linux
-/var/lib/waagent/apphealth
+/var/lib/waagent/Microsoft.ManagedServices.ApplicationHealthLinux-<extension_version>/status
+/var/log/azure/applicationhealth-extension
 ```
 
 Protokoly také pravidelně zaznamenávají stav aplikace.

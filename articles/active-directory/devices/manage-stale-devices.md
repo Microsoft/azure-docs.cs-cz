@@ -4,19 +4,19 @@ description: Přečtěte si, jak z databáze registrovaných zařízení z Azure
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/28/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fdc011a39c5526e6a2577ab1b21567bbe64ffcc6
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 292ba1d52b107acd164408767747e5a33cb0c67d
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82788871"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85252691"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Postupy: Správa zastaralých zařízení v Azure AD
 

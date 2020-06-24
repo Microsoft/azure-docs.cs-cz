@@ -102,7 +102,7 @@
       href: monitor-container-security.md
     - name: Ochrana serverů pomocí služby Microsoft Defender ATP
       href: security-center-wdatp.md
-    - name: Použití pokročilého zabezpečení dat pro SQL na virtuálních počítačích Azure
+    - name: Použití pokročilého zabezpečení dat pro počítače s SQL
       href: security-center-iaas-advanced-data.md
     - name: Použití služby App Service k ochraně aplikací
       href: security-center-app-services.md

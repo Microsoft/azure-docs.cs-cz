@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: f222cdd315b79503b1bdea032f495c71df4682b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 33dafaff396ce378dfa9eab0158e1b2fd9c10da6
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281987"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84770488"
 ---
 # <a name="connect-to-azure-vms-after-failover-from-on-premises"></a>Připojení k virtuálním počítačům Azure po převzetí služeb při selhání z místního prostředí 
 
@@ -149,11 +149,21 @@ Před převzetím služeb při selhání zadejte nastavení sítě a IP adresu p
 
 ## <a name="get-new-ip-addresses"></a>Získat nové IP adresy
 
-V tomto scénáři po převzetí služeb při selhání Získá virtuální počítač Azure novou IP adresu. Aktualizace DNS pro aktualizaci záznamů pro počítače, u kterých došlo k převzetí služeb při selhání, aby odkazovaly na IP adresu virtuálního počítače Azure.
+V tomto scénáři po převzetí služeb při selhání Získá virtuální počítač Azure novou IP adresu. Pokud chcete nastavit novou IP adresu pro virtuální počítač vytvořený po převzetí služeb při selhání, můžete postupovat podle následujících kroků:
 
+1. Přejít na **replikované položky**.
+2. Vyberte požadovaný virtuální počítač Azure.
+3. Vyberte **výpočty a síť** a vyberte **Upravit**.
 
+     ![Přizpůsobení síťových konfigurací převzetí služeb při selhání](media/azure-to-azure-customize-networking/edit-networking-properties.png)
+
+4. Pokud chcete aktualizovat nastavení sítě převzetí služeb při selhání, vyberte **Upravit** pro síťovou kartu, kterou chcete nakonfigurovat. Na další stránce, která se otevře, zadejte odpovídající předem vytvořenou IP adresu v části testovací převzetí služeb při selhání a umístění pro převzetí služeb při selhání.
+
+    ![Úprava konfigurace síťové karty](media/azure-to-azure-customize-networking/nic-drilldown.png)
+
+5. Vyberte **OK**.
+
+Site Recovery teď budou dodržovat tato nastavení a zajistěte, aby se virtuální počítač při převzetí služeb při selhání připojil k vybranému prostředku přes odpovídající IP adresa, pokud je k dispozici v rozsahu cílových IP adres. V tomto scénáři není nutné převzetí služeb při selhání celé podsíti. K aktualizaci záznamů pro převzetí služeb při selhání počítače, aby odkazovala na novou IP adresu virtuálního počítače, bude nutné aktualizovat DNS.
 
 ## <a name="next-steps"></a>Další kroky
 [Přečtěte si o](site-recovery-active-directory.md) replikaci místní služby Active Directory a DNS do Azure.
-
-
