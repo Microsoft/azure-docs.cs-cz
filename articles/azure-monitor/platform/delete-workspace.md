@@ -104,7 +104,7 @@ Pracovní prostor a všechna jeho data se po operaci obnovení vrátí zpět. Ř
 > [!NOTE]
 > * Po opětovném vytvoření pracovního prostoru během období obnovitelného odstranění se zobrazí informace o tom, že tento název pracovního prostoru se už používá. 
  
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 K odstranění pracovního prostoru musíte mít aspoň *Log Analytics oprávnění přispěvatele* .<br>
 Pokud se zobrazí chybová zpráva *Tento název pracovního prostoru se už používá nebo je v* *konfliktu* při vytváření pracovního prostoru, může to být od:
 * Název pracovního prostoru není dostupný a používá ho někdo ve vaší organizaci, nebo jiný zákazník.

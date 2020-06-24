@@ -1,0 +1,61 @@
+---
+title: Pochopení sdílených IP adres v Azure DevTest Labs | Microsoft Docs
+description: Přečtěte si, jak Azure DevTest Labs používá sdílené IP adresy k minimalizaci veřejných IP adres potřebných pro přístup k virtuálním počítačům v testovacím prostředí.
+services: devtest-lab,virtual-machines,lab-services
+documentationcenter: na
+author: spelluru
+manager: femila
+ms.assetid: ''
+ms.service: lab-services
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 05/12/2019
+ms.author: spelluru
+ms.openlocfilehash: f7c9feedddab1aea031cb3a8879e868aae04df00
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84896785"
+---
+# <a name="understand-shared-ip-addresses-in-azure-devtest-labs"></a>Pochopení sdílených IP adres v Azure DevTest Labs
+
+Azure DevTest Labs umožňuje testovacím počítačům sdílet stejnou veřejnou IP adresu, aby se minimalizoval počet veřejných IP adres potřebných pro přístup k jednotlivým virtuálním počítačům testovacího prostředí.  Tento článek popisuje, jak fungují sdílené IP adresy a jejich související možnosti konfigurace.
+
+## <a name="shared-ip-setting"></a>Nastavení sdílených IP adres
+
+Když vytváříte testovací prostředí, vytvoří se v podsíti virtuální sítě.  Ve výchozím nastavení je tato podsíť vytvořená s **možnost Povolit sdílenou veřejnou IP adresu** nastavenou na *Ano*.  Tato konfigurace vytvoří jednu veřejnou IP adresu pro celou podsíť.  Další informace o konfiguraci virtuálních sítí a podsítí najdete v tématu [Konfigurace virtuální sítě v Azure DevTest Labs](devtest-lab-configure-vnet.md).
+
+![Nová podsíť testovacího prostředí](media/devtest-lab-shared-ip/lab-subnet.png)
+
+U stávajících cvičení můžete tuto možnost povolit tak, že vyberete **Konfigurace a zásady > virtuální sítě**. Pak ze seznamu vyberte virtuální síť a pro vybranou podsíť zvolte **Povolit sdílenou veřejnou IP adresu** . Tuto možnost můžete v jakémkoli testovacím prostředí zakázat i v případě, že nechcete sdílet veřejnou IP adresu mezi testovacími počítači.
+
+Všechny virtuální počítače vytvořené v tomto testovacím prostředí ve výchozím nastavení používají sdílenou IP adresu.  Při vytváření virtuálního počítače se toto nastavení dá pozorovat na stránce **Upřesnit nastavení** v části **Konfigurace IP adresy**.
+
+![Nový virtuální počítač](media/devtest-lab-shared-ip/new-vm.png)
+
+- **Sdílená:** Všechny virtuální počítače vytvořené jako **sdílené** jsou umístěné do jedné skupiny prostředků (RG). K tomuto RG je přiřazena jedna IP adresa a všechny virtuální počítače v RG budou tuto IP adresu používat.
+- **Veřejné:** Každý virtuální počítač, který vytvoříte, má svoji vlastní IP adresu a vytvoří se ve vlastní skupině prostředků.
+- **Privátní:** Každý virtuální počítač, který vytvoříte, používá privátní IP adresu. K tomuto virtuálnímu počítači se nemůžete připojit přímo z Internetu pomocí vzdálené plochy.
+
+Pokaždé, když se do podsítě přidá virtuální počítač se zapnutou sdílenou IP adresou, DevTest Labs automaticky přidá virtuální počítač do nástroje pro vyrovnávání zatížení a přiřadí číslo portu TCP na veřejné IP adrese, které se přesměruje na port RDP na virtuálním počítači.  
+
+## <a name="using-the-shared-ip"></a>Pomocí sdílené IP adresy
+
+- **Uživatelé systému Linux:** SSH k virtuálnímu počítači pomocí IP adresy nebo plně kvalifikovaného názvu domény následovaný dvojtečkou a portem. Například na následujícím obrázku je adresa RDP pro připojení k virtuálnímu počítači `mydevtestlab597975021002.eastus.cloudapp.azure.com:50661` .
+
+  ![Příklad virtuálního počítače](media/devtest-lab-shared-ip/vm-info.png)
+
+- **Uživatelé systému Windows:** Výběrem tlačítka **připojit** na Azure Portal Stáhněte předem NAKONFIGUROVANÝ soubor RDP a přejděte k virtuálnímu počítači.
+
+## <a name="next-steps"></a>Další kroky
+
+* [Definování zásad testovacího prostředí v Azure DevTest Labs](devtest-lab-set-lab-policy.md)
+* [Konfigurace virtuální sítě v Azure DevTest Labs](devtest-lab-configure-vnet.md)
+
+
+
+
+

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: 22d1b6e2344256b52cfdbc48720a680a770a4216
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2d2cd98a9af75b5f3a6ca084dbfd4c144e06643d
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77132173"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84733785"
 ---
 # <a name="troubleshoot-secure-ldap-connectivity-issues-to-an-azure-active-directory-domain-services-managed-domain"></a>Řešení potíží s zabezpečeným připojením LDAP do spravované domény Azure Active Directory Domain Services
 
@@ -26,18 +26,18 @@ Tento článek vám pomůže řešit problémy s zabezpečeným přístupem LDAP
 
 ## <a name="common-connection-issues"></a>Běžné problémy s připojením
 
-Pokud máte potíže s připojením k spravované doméně Azure služba AD DS pomocí protokolu Secure LDAP, přečtěte si následující postup pro řešení potíží. Po každém kroku řešení potíží se znovu pokuste připojit k spravované doméně Azure služba AD DS:
+Pokud máte potíže s připojením k spravované doméně Azure služba AD DS pomocí protokolu Secure LDAP, přečtěte si následující postup pro řešení potíží. Po každém kroku řešení potíží se znovu pokuste připojit ke spravované doméně:
 
 * Řetěz vystavitele certifikátu zabezpečeného protokolu LDAP musí být v klientovi důvěryhodný. Kořenovou certifikační autoritu (CA) můžete přidat do úložiště důvěryhodných kořenových certifikátů na klientovi a vytvořit tak vztah důvěryhodnosti.
     * Nezapomeňte [exportovat a použít certifikát pro klientské počítače][client-cert].
 * Ověřte, že certifikát zabezpečeného protokolu LDAP pro spravovanou doménu má název DNS v *předmětu* nebo v atributu *alternativní názvy subjektu* .
     * Zkontrolujte [požadavky na certifikát zabezpečení LDAP][certs-prereqs] a v případě potřeby vytvořte náhradní certifikát.
-* Ověřte, jestli se klient LDAP, třeba *Ldp. exe* , připojí ke koncovému bodu zabezpečeného LDAP pomocí názvu DNS, ne IP adresy.
-    * Certifikát, který se používá pro spravovanou doménu Azure služba AD DS, neobsahuje IP adresy služby, jenom názvy DNS.
-* Ověřte název DNS, ke kterému se klient LDAP připojuje. Musí se překládat na veřejnou IP adresu pro zabezpečený protokol LDAP ve spravované doméně Azure služba AD DS.
+* Ověřte, jestli se klient LDAP, například *ldp.exe* , připojí ke koncovému bodu zabezpečeného LDAP pomocí názvu DNS, ne IP adresy.
+    * Certifikát používaný pro spravovanou doménu neobsahuje IP adresy služby, jenom názvy DNS.
+* Ověřte název DNS, ke kterému se klient LDAP připojuje. Musí se překládat na veřejnou IP adresu pro zabezpečený protokol LDAP ve spravované doméně.
     * Pokud se název DNS přeloží na interní IP adresu, aktualizujte záznam DNS tak, aby se přeložil na externí IP adresu.
 * V případě externího připojení musí skupina zabezpečení sítě obsahovat pravidlo, které umožňuje přenos z Internetu na port TCP 636.
-    * Pokud se můžete připojit ke spravované doméně Azure služba AD DS pomocí zabezpečeného LDAP z prostředků, které jsou přímo připojené k virtuální síti, ale ne externím připojením, ujistěte se, že jste [vytvořili pravidlo skupiny zabezpečení sítě, které povoluje zabezpečený provoz protokolu LDAP][ldaps-nsg].
+    * Pokud se ke spravované doméně můžete připojit pomocí zabezpečeného LDAP z prostředků přímo připojených k virtuální síti, ale ne externích připojení, ujistěte se, že jste [vytvořili pravidlo skupiny zabezpečení sítě, které povoluje zabezpečený provoz protokolu LDAP][ldaps-nsg].
 
 ## <a name="next-steps"></a>Další kroky
 

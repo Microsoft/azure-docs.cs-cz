@@ -1,5 +1,5 @@
 ---
-title: Pomocí nastavení diagnostiky Shromážděte metriky a protokoly platforem a v Azure.
+title: Vytvoření nastavení diagnostiky pro odesílání protokolů a metrik platforem do různých umístění
 description: Pomocí nastavení diagnostiky můžete posílat metriky a protokoly platformy Azure Monitor do protokolů Azure Monitor, úložiště Azure nebo Azure Event Hubs.
 author: bwren
 ms.author: bwren
@@ -7,21 +7,18 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: 46dd7949dde1890035053a7a985f2f1d921e141e
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: a037eddb13645036fcbe501ecba33923733b6d03
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266657"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84944368"
 ---
-# <a name="create-diagnostic-setting-to-collect-resource-logs-and-metrics-in-azure"></a>Vytvoření nastavení diagnostiky pro shromažďování protokolů a metrik prostředků v Azure
-
-[Protokoly platforem](platform-logs-overview.md) v Azure, včetně protokolů aktivit Azure a protokolů prostředků, poskytují podrobné informace o diagnostice a auditování pro prostředky Azure a platformu Azure, na které jsou závislé. [Metriky platformy](data-platform-metrics.md) se ve výchozím nastavení shromažďují a obvykle se ukládají do databáze Azure monitor metrik.
-
-Tento článek poskytuje podrobné informace o vytváření a konfiguraci nastavení diagnostiky pro odesílání metrik platforem a protokolů platforem do různých umístění.
+# <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Vytvoření nastavení diagnostiky pro odesílání protokolů a metrik platforem do různých umístění
+[Protokoly platforem](platform-logs-overview.md) v Azure, včetně protokolů aktivit Azure a protokolů prostředků, poskytují podrobné informace o diagnostice a auditování pro prostředky Azure a platformu Azure, na které jsou závislé. [Metriky platformy](data-platform-metrics.md) se ve výchozím nastavení shromažďují a obvykle se ukládají do databáze Azure monitor metrik. Tento článek poskytuje podrobné informace o vytváření a konfiguraci nastavení diagnostiky pro odesílání metrik platforem a protokolů platforem do různých umístění.
 
 > [!IMPORTANT]
-> Před vytvořením nastavení diagnostiky ke shromáždění protokolu aktivit byste nejdřív měli zakázat všechny starší konfigurace. Podrobnosti najdete v tématu [shromáždění protokolu aktivit Azure se staršími nastaveními](diagnostic-settings-legacy.md) .
+> Před vytvořením nastavení diagnostiky pro protokol aktivit byste nejdřív měli zakázat všechny starší konfigurace. Podrobnosti naleznete v tématu [starší metody kolekce](activity-log.md#legacy-collection-methods) .
 
 Každý prostředek Azure vyžaduje vlastní nastavení diagnostiky, které definuje následující kritéria:
 
@@ -31,7 +28,7 @@ Každý prostředek Azure vyžaduje vlastní nastavení diagnostiky, které defi
 Jedno diagnostické nastavení může definovat více než jedno z cílů. Pokud chcete odesílat data do více než jednoho konkrétního cílového typu (například dvou různých Log Analytics pracovních prostorů), vytvořte více nastavení. Každý prostředek může mít až 5 nastavení diagnostiky.
 
 > [!NOTE]
-> [Metriky platformy](metrics-supported.md) se shromažďují automaticky, aby se [Azure monitor metriky](data-platform-metrics.md). Nastavení diagnostiky lze použít ke shromáždění metrik pro určité služby Azure do protokolů Azure Monitor pro analýzu s ostatními daty monitorování pomocí [dotazů protokolu](../log-query/log-query-overview.md) s určitými omezeními. 
+> [Metriky platformy](metrics-supported.md) se odesílají automaticky, aby se [Azure monitor metriky](data-platform-metrics.md). Nastavení diagnostiky se dá použít k posílání metrik pro určité služby Azure do protokolů Azure Monitor pro analýzu s dalšími daty monitorování pomocí [dotazů protokolu](../log-query/log-query-overview.md) s určitými omezeními. 
 >  
 >  
 > Odesílání vícedimenzionálních metrik přes nastavení diagnostiky se v současné době nepodporuje. Metriky s dimenzemi se exportují jako ploché jednodimenzionální metriky agregované napříč hodnotami dimenzí. *Například*: metrika ' IOReadBytes ' na blockchain lze prozkoumat a vytvořit graf na úrovni jednotlivých uzlů. Při exportu pomocí nastavení diagnostiky ale vyexportovaná metrika představuje všechny bajty čtení pro všechny uzly. Kromě interních omezení nejsou všechny metriky exportovatelné do Azure Monitor protokolů/Log Analytics. Další informace najdete v [seznamu exportovatelné metriky](metrics-supported-export-diagnostic-settings.md). 
@@ -39,17 +36,43 @@ Jedno diagnostické nastavení může definovat více než jedno z cílů. Pokud
 >  
 > Pokud chcete získat tato omezení pro konkrétní metriky, doporučujeme je ručně extrahovat pomocí [metrik REST API](https://docs.microsoft.com/rest/api/monitor/metrics/list) a importovat je do protokolů Azure monitor pomocí [rozhraní API pro Azure monitor kolektor dat](data-collector-api.md).  
 
+
 ## <a name="destinations"></a>Cíle
 
 Protokoly a metriky platformy je možné odeslat do cílových umístění v následující tabulce. Podrobnosti o odesílání dat do tohoto cíle získáte podle každého odkazu v následující tabulce.
 
-| Cíl | Popis |
+| Cíl | Description |
 |:---|:---|
-| [Pracovní prostor služby Log Analytics](resource-logs-collect-workspace.md) | Shromažďování protokolů a metrik do pracovního prostoru Log Analytics umožňuje jejich analýzu s dalšími daty monitorování shromážděnými pomocí Azure Monitor pomocí výkonných dotazů protokolu a také k využití dalších Azure Monitorch funkcí, jako jsou výstrahy a vizualizace. |
-| [Centra událostí](resource-logs-stream-event-hubs.md) | Odesílání protokolů a metrik do Event Hubs umožňuje streamování dat do externích systémů, jako jsou systémů Siem třetích stran a další řešení Log Analytics. |
-| [Účet úložiště Azure](resource-logs-collect-storage.md) | Archivace protokolů a metrik do účtu služby Azure Storage je užitečná pro audit, statickou analýzu nebo zálohování. V porovnání s protokoly Azure Monitor a pracovním prostorem Log Analytics je úložiště Azure levnější a protokoly se můžou uchovávat po neomezenou dobu. |
+| [Pracovní prostor služby Log Analytics](#log-analytics-workspace) | Odesílání protokolů a metrik do Log Analyticsového pracovního prostoru vám umožní je analyzovat s dalšími daty monitorování shromážděnými pomocí Azure Monitor pomocí výkonných dotazů protokolu a také využívat jiné Azure Monitor funkce, jako jsou výstrahy a vizualizace. |
+| [Centra událostí](#event-hub) | Odesílání protokolů a metrik do Event Hubs umožňuje streamování dat do externích systémů, jako jsou systémů Siem třetích stran a další řešení Log Analytics. |
+| [Účet úložiště Azure](#azure-storage) | Archivace protokolů a metrik do účtu služby Azure Storage je užitečná pro audit, statickou analýzu nebo zálohování. V porovnání s protokoly Azure Monitor a pracovním prostorem Log Analytics je úložiště Azure levnější a protokoly se můžou uchovávat po neomezenou dobu. |
 
-## <a name="create-diagnostic-settings-in-azure-portal"></a>Vytvoření nastavení diagnostiky na webu Azure Portal
+
+## <a name="prerequisites"></a>Požadavky
+Všechna cílová umístění pro nastavení diagnostiky musí být vytvořena s požadovanými oprávněními. V níže uvedených částech najdete požadavky na požadované součásti pro jednotlivé cíle.
+
+### <a name="log-analytics-workspace"></a>Pracovní prostor služby Log Analytics
+[Vytvořte nový pracovní prostor](../learn/quick-create-workspace.md) , pokud ho ještě nemáte. Pracovní prostor nemusí být ve stejném předplatném jako prostředek odesílající protokoly, pokud uživatel, který konfiguruje nastavení, má odpovídající přístup RBAC k oběma předplatným.
+
+### <a name="event-hub"></a>Centrum událostí
+[Vytvořte centrum událostí](../../event-hubs/event-hubs-create.md) , pokud ho ještě nemáte. Obor názvů Event Hubs nemusí být ve stejném předplatném, jako je předplatné, které vysílá protokoly, pokud uživatel, který nastavení nakonfiguruje, má odpovídající přístup RBAC k oběma předplatným a oba odběry jsou ve stejném tenantovi AAD.
+
+Zásady sdíleného přístupu pro obor názvů definují oprávnění, která má mechanismus streamování. Streamování do Event Hubs vyžaduje oprávnění spravovat, odesílat a naslouchat. Zásady sdíleného přístupu můžete vytvořit nebo upravit na Azure Portal na kartě konfigurovat pro svůj obor názvů Event Hubs. Chcete-li aktualizovat nastavení diagnostiky tak, aby zahrnovalo streamování, musíte mít oprávnění ListKey k tomuto autorizačnímu pravidlu Event Hubs. 
+
+
+### <a name="azure-storage"></a>Azure Storage
+[Vytvořte účet úložiště Azure](../../storage/common/storage-account-create.md) , pokud ho ještě nemáte. Účet úložiště nemusí být ve stejném předplatném jako prostředek odesílající protokoly, pokud uživatel, který konfiguruje nastavení, má odpovídající přístup RBAC k oběma předplatným.
+
+Neměli byste používat existující účet úložiště, který obsahuje jiná, nemonitorovaná data, která jsou v něm uložená, abyste mohli lépe řídit přístup k datům. Pokud společně archivujte protokoly aktivit a protokoly prostředků, můžete použít stejný účet úložiště, abyste zachovali všechna data monitorování v centrálním umístění.
+
+Pokud chcete odesílat data do neměnných úložišť, nastavte pro účet úložiště neměnné zásady, jak je popsáno v tématu [nastavení a Správa zásad neměnnosti pro úložiště objektů BLOB](../../storage/blobs/storage-blob-immutability-policies-manage.md). Musíte postupovat podle všech kroků v tomto článku, včetně povolení chráněných připojených objektů BLOB pro zápis.
+
+> [!NOTE]
+> Účty Azure Data Lake Storage Gen2 se v současné době nepodporují jaké cíl pro nastavení diagnostiky, přestože na webu Azure Portal můžou být uvedené jako platná možnost.
+
+
+
+## <a name="create-in-azure-portal"></a>Vytvoření na webu Azure Portal
 
 Nastavení diagnostiky můžete nakonfigurovat v Azure Portal, a to buď z nabídky Azure Monitor, nebo z nabídky pro daný prostředek.
 
@@ -116,7 +139,7 @@ Nastavení diagnostiky můžete nakonfigurovat v Azure Portal, a to buď z nabí
 
 Po chvíli se nové nastavení objeví v seznamu nastavení tohoto prostředku a protokoly se streamují do zadaných cílů, protože se generují nová data události. Může trvat až 15 minut, než se událost vygeneruje, a když [se zobrazí v pracovním prostoru Log Analytics](data-ingestion-time.md).
 
-## <a name="create-diagnostic-settings-using-powershell"></a>Vytvoření nastavení diagnostiky pomocí PowerShellu
+## <a name="create-using-powershell"></a>Vytvoření s použitím PowerShellu
 
 Pomocí rutiny [set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) vytvořte nastavení diagnostiky s [Azure PowerShell](powershell-quickstart-samples.md). Popis jeho parametrů naleznete v dokumentaci k této rutině.
 
@@ -129,7 +152,7 @@ Následuje příklad rutiny prostředí PowerShell pro vytvoření nastavení di
 Set-AzDiagnosticSetting -Name KeyVault-Diagnostics -ResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault -Category AuditEvent -MetricCategory AllMetrics -Enabled $true -StorageAccountId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount -WorkspaceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/myworkspace  -EventHubAuthorizationRuleId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhub/authorizationrules/RootManageSharedAccessKey
 ```
 
-## <a name="create-diagnostic-settings-using-azure-cli"></a>Vytvoření nastavení diagnostiky pomocí Azure CLI
+## <a name="create-using-azure-cli"></a>Vytvoření pomocí Azure CLI
 
 Pomocí příkazu [AZ monitor Diagnostic-Settings Create](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create) vytvořte nastavení diagnostiky pomocí [Azure CLI](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest). Popis jeho parametrů naleznete v dokumentaci k tomuto příkazu.
 
@@ -149,13 +172,15 @@ az monitor diagnostic-settings create  \
 --event-hub-rule /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhub/authorizationrules/RootManageSharedAccessKey
 ```
 
-## <a name="configure-diagnostic-settings-using-rest-api"></a>Konfigurace nastavení diagnostiky pomocí REST API
+## <a name="create-using-resource-manager-template"></a>Vytvoření pomocí šablony Správce prostředků
+V tématu [Správce prostředků ukázek šablon pro nastavení diagnostiky v Azure monitor](../samples/resource-manager-diagnostic-settings.md) můžete vytvořit nebo aktualizovat nastavení diagnostiky se šablonou správce prostředků.
 
+## <a name="create-using-rest-api"></a>Vytvoření s použitím REST API
 Pokud chcete vytvořit nebo aktualizovat nastavení diagnostiky pomocí [REST API Azure monitor](https://docs.microsoft.com/rest/api/monitor/), přečtěte si téma [nastavení diagnostiky](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings) .
 
-## <a name="configure-diagnostic-settings-using-resource-manager-template"></a>Konfigurace nastavení diagnostiky pomocí šablony Správce prostředků
+## <a name="create-using-azure-policy"></a>Vytvořit pomocí Azure Policy
+Vzhledem k tomu, že pro každý prostředek Azure je třeba vytvořit diagnostické nastavení, Azure Policy lze použít k automatickému vytvoření nastavení diagnostiky při vytvoření každého prostředku. Podrobnosti najdete v tématu [nasazení Azure monitor ve velkém rozsahu pomocí Azure Policy](deploy-scale.md) .
 
-V tématu [Vytvoření nastavení diagnostiky v Azure monitor pomocí šablony Správce prostředků](diagnostic-settings-template.md) můžete vytvořit nebo aktualizovat nastavení diagnostiky pomocí šablony Správce prostředků.
 
 ## <a name="next-steps"></a>Další kroky
 

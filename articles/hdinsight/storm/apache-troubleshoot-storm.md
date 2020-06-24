@@ -10,11 +10,11 @@ ms.topic: troubleshooting
 ms.date: 11/08/2019
 ms.custom: seodec18
 ms.openlocfilehash: b51b2c21fd9256c93f6947386a48336af2b75d88
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79271925"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84700361"
 ---
 # <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>Řešení potíží s Apache Storm pomocí Azure HDInsight
 
@@ -46,9 +46,9 @@ Když vyvíjíte topologie, které se čtou z Azure Event Hubs pomocí souboru S
 
 Data kontrolního bodu pro posuny se ukládají do centra událostí Spout v ZooKeeper ve dvou kořenových cestách:
 
-- Kontrolní body netransakčního Spout jsou uloženy v `/eventhubspout`.
+- Kontrolní body netransakčního Spout jsou uloženy v `/eventhubspout` .
 
-- Data kontrolního bodu transakčního Spout `/transactional`se ukládají v.
+- Data kontrolního bodu transakčního Spout se ukládají v `/transactional` .
 
 ### <a name="how-to-restore"></a>Postup obnovení
 
@@ -65,7 +65,7 @@ Příkaz pro export zapíše metadata do cesty Apache Hadoop systém souborů DF
 #### <a name="export-offset-metadata"></a>Exportovat metadata posunutí
 
 1. Pomocí SSH můžete přejít do clusteru ZooKeeper v clusteru, ze kterého se musí exportovat posun kontrolního bodu.
-2. Spusťte následující příkaz (po aktualizaci řetězce verze HDP) exportujte data posunutí ZooKeeper na cestu `/stormmetadta/zkdata` HDFS:
+2. Spusťte následující příkaz (po aktualizaci řetězce verze HDP) exportujte data posunutí ZooKeeper na `/stormmetadta/zkdata` cestu HDFS:
 
     ```apache
     java -cp ./*:/etc/hadoop/conf/*:/usr/hdp/2.5.1.0-56/hadoop/*:/usr/hdp/2.5.1.0-56/hadoop/lib/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/lib/*:/etc/failover-controller/conf/*:/etc/hadoop/* com.microsoft.storm.zkdatatool.ZkdataImporter export /eventhubspout /stormmetadata/zkdata
@@ -74,7 +74,7 @@ Příkaz pro export zapíše metadata do cesty Apache Hadoop systém souborů DF
 #### <a name="import-offset-metadata"></a>Importovat metadata posunutí
 
 1. Pomocí SSH můžete přejít do clusteru ZooKeeper v clusteru, ze kterého se musí naimportovat posun kontrolního bodu.
-2. Spusťte následující příkaz (po aktualizaci řetězce verze HDP) importujte ZooKeeper posunutí data z cesty `/stormmetadata/zkdata` HDFS na server Zookeeper v cílovém clusteru:
+2. Spusťte následující příkaz (po aktualizaci řetězce verze HDP) importujte ZooKeeper posunutí data z cesty HDFS `/stormmetadata/zkdata` na server Zookeeper v cílovém clusteru:
 
     ```apache
     java -cp ./*:/etc/hadoop/conf/*:/usr/hdp/2.5.1.0-56/hadoop/*:/usr/hdp/2.5.1.0-56/hadoop/lib/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/lib/*:/etc/failover-controller/conf/*:/etc/hadoop/* com.microsoft.storm.zkdatatool.ZkdataImporter import /eventhubspout /home/sshadmin/zkdata
@@ -91,9 +91,9 @@ Příkaz pro export zapíše metadata do cesty Apache Hadoop systém souborů DF
 
 ## <a name="how-do-i-locate-storm-binaries-on-a-cluster"></a>Návody najít binární soubory s více podmnožinami v clusteru?
 
-Binární soubory pro aktuální HDP zásobník jsou v `/usr/hdp/current/storm-client`. Umístění je stejné pro hlavní uzly i pro pracovní uzly.
+Binární soubory pro aktuální HDP zásobník jsou v `/usr/hdp/current/storm-client` . Umístění je stejné pro hlavní uzly i pro pracovní uzly.
 
-Pro konkrétní verze HDP v/usr/HDP může existovat více binárních souborů (například `/usr/hdp/2.5.0.1233/storm`). `/usr/hdp/current/storm-client` Složka je symlinked na nejnovější verzi, která je spuštěna v clusteru.
+Pro konkrétní verze HDP v/usr/HDP může existovat více binárních souborů (například `/usr/hdp/2.5.0.1233/storm` ). `/usr/hdp/current/storm-client`Složka je symlinked na nejnovější verzi, která je spuštěna v clusteru.
 
 Další informace najdete v tématu [připojení ke clusteru HDInsight pomocí SSH](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) a [Apache Storm](https://storm.apache.org/).
 
@@ -157,13 +157,13 @@ Identifikujte konfigurační soubory [Apache log4j 2](https://logging.apache.org
 
 ### <a name="on-head-nodes"></a>U hlavních uzlů
 
-Konfigurace Nimbus Log4J je čtena z `/usr/hdp/\<HDP version>/storm/log4j2/cluster.xml`.
+Konfigurace Nimbus Log4J je čtena z `/usr/hdp/\<HDP version>/storm/log4j2/cluster.xml` .
 
 ### <a name="on-worker-nodes"></a>V pracovních uzlech
 
-Konfigurace Log4J správce je načítána z `/usr/hdp/\<HDP version>/storm/log4j2/cluster.xml`.
+Konfigurace Log4J správce je načítána z `/usr/hdp/\<HDP version>/storm/log4j2/cluster.xml` .
 
-Konfigurační soubor Work Log4J je načten z `/usr/hdp/\<HDP version>/storm/log4j2/worker.xml`.
+Konfigurační soubor Work Log4J je načten z `/usr/hdp/\<HDP version>/storm/log4j2/worker.xml` .
 
 4.6`/usr/hdp/2.6.0.2-76/storm/log4j2/cluster.xml`
 `/usr/hdp/2.6.0.2-76/storm/log4j2/worker.xml`
@@ -172,9 +172,9 @@ Konfigurační soubor Work Log4J je načten z `/usr/hdp/\<HDP version>/storm/log
 
 ## <a name="not-a-leader-exception"></a>Není výjimkou vedoucího procesu.
 
-Při odesílání topologie může uživatel obdržet chybovou zprávu podobnou této: `Topology submission exception, cause not a leader, the current leader is NimbusInfo`.
+Při odesílání topologie může uživatel obdržet chybovou zprávu podobnou této: `Topology submission exception, cause not a leader, the current leader is NimbusInfo` .
 
-Aby uživatel mohl řešení vyřešit, může být potřeba, aby si museli pořídit lístek, aby se uzly restartovaly nebo restartovaly. Další informace najdete v tématu [https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html](https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html).
+Aby uživatel mohl řešení vyřešit, může být potřeba, aby si museli pořídit lístek, aby se uzly restartovaly nebo restartovaly. Další informace najdete na webu [https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html](https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html).
 
 ---
 
@@ -184,6 +184,6 @@ Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, p�
 
 - Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
-- Připojte se [@AzureSupport](https://twitter.com/azuresupport) k oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
+- Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
 
 - Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

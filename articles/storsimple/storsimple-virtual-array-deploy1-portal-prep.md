@@ -9,11 +9,11 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 7f2c7a6f9c1146627f81dc20386c59a91724b245
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254531"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84698950"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>Nasazení StorSimple Virtual Array – Příprava Azure Portal
 
@@ -127,7 +127,7 @@ Na webu [Azure Portal](https://portal.azure.com/) proveďte následující kroky
 
 #### <a name="to-get-the-virtual-array-image"></a>Získání obrázku virtuálního pole
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com/). 
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/). 
 2. V Azure Portal klikněte na **procházet > Správce zařízení StorSimple**.
 3. Vyberte existující službu StorSimple Device Manager. V okně **StorSimple Device Manager** klikněte na **rychlé zprovoznění**. 
 4. Klikněte na odkaz odpovídající imagi, kterou chcete stáhnout z webu Microsoft Download Center. Soubory imagí mají velikost přibližně 4,8 GB.

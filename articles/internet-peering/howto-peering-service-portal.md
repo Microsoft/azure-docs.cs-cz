@@ -5,15 +5,15 @@ description: Povolení služby Azure peering Service v přímém partnerském vz
 services: internet-peering
 author: derekolo
 ms.service: internet-peering
-ms.topic: article
+ms.topic: how-to
 ms.date: 3/18/2020
 ms.author: derekol
-ms.openlocfilehash: 625a17e5acff00f78c5a19725653eec629936f87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a52e6038b622c004dc0d133394cd4f53600b2935
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687059"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84700038"
 ---
 # <a name="enable-azure-peering-service-on-a-direct-peering-by-using-the-azure-portal"></a>Povolení služby Azure peering Service v přímém partnerském vztahu pomocí Azure Portal
 
@@ -21,7 +21,7 @@ Tento článek popisuje, jak povolit [službu Azure peering Service](overview-pe
 
 Pokud budete chtít, můžete tuto příručku dokončit pomocí [PowerShellu](howto-peering-service-powershell.md).
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 * Před zahájením konfigurace si přečtěte [předpoklady](prerequisites.md) .
 * V předplatném vyberte přímý partnerský vztah, pro který chcete povolit službu peering Service. Pokud ho nemáte, buď převeďte starší verzi přímého partnerského vztahu, nebo vytvořte nový přímý partnerský vztah:
     * Pokud chcete převést starší verzi přímého partnerského vztahu, postupujte podle pokynů v tématu [Převod starší verze přímého partnerského vztahu na prostředek Azure pomocí portálu](howto-legacy-direct-portal.md).

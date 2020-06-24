@@ -4,16 +4,16 @@ description: Přečtěte si, jak nahrát VHD na spravovaný disk Azure a zkopír
 services: virtual-machines,storage
 author: roygara
 ms.author: rogarana
-ms.date: 03/27/2020
+ms.date: 06/15/2020
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 2802907d9e3ddb1c09c2f94074a977d00d191a84
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 259b46d21cee4c1106e1d307eeb325a4c430613f
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84658810"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945626"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-cli"></a>Nahrání virtuálního pevného disku do Azure nebo zkopírování spravovaného disku do jiné oblasti – Azure CLI
 
@@ -47,6 +47,9 @@ Než budete moct vytvořit prázdný standardní pevný disk pro nahrávání, b
 Vytvořte prázdný standardní pevný disk pro nahrávání zadáním parametru **--for-upload** a parametru **--Upload-Size-bytes** v rutině [Create disku](/cli/azure/disk#az-disk-create) :
 
 Nahraďte `<yourdiskname>` `<yourresourcegroupname>` `<yourregion>` hodnotu hodnotou dle vašeho výběru. `--upload-size-bytes`Parametr obsahuje ukázkovou hodnotu `34359738880` , nahraďte ji hodnotou, která je pro vás vhodná.
+
+> [!TIP]
+> Pokud vytváříte disk s operačním systémem, přidejte do nástroje--Hyper-v-Generation <yourGeneration> `az disk create` .
 
 ```azurecli
 az disk create -n <yourdiskname> -g <yourresourcegroupname> -l <yourregion> --for-upload --upload-size-bytes 34359738880 --sku standard_lrs
@@ -100,6 +103,9 @@ Následující skript to provede za vás, což je postup podobný dříve popsan
 > Pokud zadáváte velikost disku v bajtech spravovaného disku z Azure, musíte přidat posun 512. Je to proto, že Azure při vracení velikosti disku vynechá zápatí. Pokud to neuděláte, kopie se nezdaří. Následující skript to pro vás už dělá.
 
 Nahraďte `<sourceResourceGroupHere>` `<sourceDiskNameHere>` hodnotu,, `<targetDiskNameHere>` , `<targetResourceGroupHere>` a `<yourTargetLocationHere>` (příkladem hodnoty Location by se uswest2) hodnotami a spuštěním následujícího skriptu zkopírujte spravovaný disk.
+
+> [!TIP]
+> Pokud vytváříte disk s operačním systémem, přidejte do nástroje--Hyper-v-Generation <yourGeneration> `az disk create` .
 
 ```azurecli
 sourceDiskName = <sourceDiskNameHere>

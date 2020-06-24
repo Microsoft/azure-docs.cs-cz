@@ -13,12 +13,12 @@ ms.date: 09/12/2019
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
-ms.openlocfilehash: 9e35ba5a3f3705a52e80262da9bbfbfda489bf83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1a4f98b3c569147699432aa4bdcdd44b0b16b3af
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80050376"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85297439"
 ---
 # <a name="android-microsoft-authentication-library-configuration-file"></a>Konfigurační soubor knihovny Microsoft Authentication Library pro Android
 
@@ -30,14 +30,14 @@ Tento článek vám pomůže porozumět různým nastavením konfiguračního so
 
 ### <a name="general-settings"></a>Obecná nastavení
 
-| Vlastnost | Typ dat | Požaduje se | Poznámky |
+| Vlastnost | Typ dat | Vyžadováno | Poznámky |
 |-----------|------------|-------------|-------|
 | `client_id` | Řetězec | Ano | ID klienta vaší aplikace ze stránky pro [registraci aplikace](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) |
 | `redirect_uri`   | Řetězec | Ano | Identifikátor URI pro přesměrování vaší aplikace ze [stránky pro registraci aplikace](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) |
-| `authorities` | Seznam\<> autority | Ne | Seznam úřadů, které vaše aplikace potřebuje |
-| `authorization_user_agent` | AuthorizationAgent (Enum) | Ne | Možné hodnoty: `DEFAULT`, `BROWSER`,`WEBVIEW` |
+| `authorities` | Seznamu\<Authority> | Ne | Seznam úřadů, které vaše aplikace potřebuje |
+| `authorization_user_agent` | AuthorizationAgent (Enum) | Ne | Možné hodnoty: `DEFAULT` , `BROWSER` ,`WEBVIEW` |
 | `http` | HttpConfiguration | Ne | Konfigurace `HttpUrlConnection` `connect_timeout` a`read_timeout` |
-| `logging` | LoggingConfiguration | Ne | Určuje úroveň podrobností protokolování. Mezi volitelné konfigurace patří `pii_enabled`:, který přijímá logickou hodnotu, `log_level`a, která `ERROR`přijímá `WARNING`, `INFO`, nebo `VERBOSE`. |
+| `logging` | LoggingConfiguration | Ne | Určuje úroveň podrobností protokolování. Mezi volitelné konfigurace patří: `pii_enabled` , který přijímá logickou hodnotu, a `log_level` , která přijímá `ERROR` , `WARNING` , `INFO` nebo `VERBOSE` . |
 
 ### <a name="client_id"></a>client_id
 
@@ -49,7 +49,7 @@ Identifikátor URI přesměrování, který jste zaregistrovali při registraci 
 
 ### <a name="authorities"></a>autority
 
-Seznam autorit, které jsou známé a důvěryhodné pro vás. Kromě zde uvedených autorit se MSAL také dotazování Microsoftu na získání seznamu cloudů a autorit známých Microsoftu. V tomto seznamu autorit určete typ autority a jakékoli další volitelné parametry `"audience"`, například, které by měly být zarovnány s cílovou skupinou vaší aplikace na základě registrace vaší aplikace. Následuje příklad seznamu autorit:
+Seznam autorit, které jsou známé a důvěryhodné pro vás. Kromě zde uvedených autorit se MSAL také dotazování Microsoftu na získání seznamu cloudů a autorit známých Microsoftu. V tomto seznamu autorit určete typ autority a jakékoli další volitelné parametry `"audience"` , například, které by měly být zarovnány s cílovou skupinou vaší aplikace na základě registrace vaší aplikace. Následuje příklad seznamu autorit:
 
 ```javascript
 // Example AzureAD and Personal Microsoft Account
@@ -101,19 +101,19 @@ Seznam autorit, které jsou známé a důvěryhodné pro vás. Kromě zde uveden
 
 #### <a name="authority-properties"></a>Vlastnosti autority
 
-| Vlastnost | Datový typ  | Požaduje se | Poznámky |
+| Vlastnost | Datový typ  | Vyžadováno | Poznámky |
 |-----------|-------------|-----------|--------|
-| `type` | Řetězec | Ano | Zrcadlí cílovou skupinu nebo typ účtu, na které vaše aplikace cílí. Možné hodnoty: `AAD`,`B2C` |
-| `audience` | Objekt | Ne | Platí pouze v případě typu`AAD`Type =. Určuje identitu, na kterou aplikace cílí. Použití hodnoty z registrace vaší aplikace |
-| `authority_url` | Řetězec | Ano | Vyžadováno pouze v případě typu`B2C`Type =. Určuje adresu URL nebo zásadu pro autoritu, kterou by měla vaše aplikace používat.  |
+| `type` | Řetězec | Ano | Zrcadlí cílovou skupinu nebo typ účtu, na které vaše aplikace cílí. Možné hodnoty: `AAD` ,`B2C` |
+| `audience` | Objekt | Ne | Platí pouze v případě typu Type = `AAD` . Určuje identitu, na kterou aplikace cílí. Použití hodnoty z registrace vaší aplikace |
+| `authority_url` | Řetězec | Ano | Vyžadováno pouze v případě typu Type = `B2C` . Určuje adresu URL nebo zásadu pro autoritu, kterou by měla vaše aplikace používat.  |
 | `default` | Boolean | Ano | Je- `"default":true` li zadán jeden nebo více autorit, je vyžadován jeden. |
 
 #### <a name="audience-properties"></a>Vlastnosti cílové skupiny
 
-| Vlastnost | Typ dat  | Požaduje se | Poznámky |
+| Vlastnost | Typ dat  | Vyžadováno | Poznámky |
 |-----------|-------------|------------|-------|
-| `type` | Řetězec | Ano | Určuje cílovou skupinu, kterou chce vaše aplikace cílit. Možné hodnoty: `AzureADandPersonalMicrosoftAccount`, `PersonalMicrosoftAccount`, `AzureADMultipleOrgs`,`AzureADMyOrg` |
-| `tenant_id` | Řetězec | Ano | Vyžadováno pouze v `"type":"AzureADMyOrg"`případě. Volitelné pro jiné `type` hodnoty. Může to být doména tenanta `contoso.com`, například, nebo ID tenanta, například `72f988bf-86f1-41af-91ab-2d7cd011db46`). |
+| `type` | Řetězec | Ano | Určuje cílovou skupinu, kterou chce vaše aplikace cílit. Možné hodnoty: `AzureADandPersonalMicrosoftAccount` , `PersonalMicrosoftAccount` , `AzureADMultipleOrgs` ,`AzureADMyOrg` |
+| `tenant_id` | Řetězec | Ano | Vyžadováno pouze v případě `"type":"AzureADMyOrg"` . Volitelné pro jiné `type` hodnoty. Může to být doména tenanta `contoso.com` , například, nebo ID tenanta, například). `72f988bf-86f1-41af-91ab-2d7cd011db46` |
 
 ### <a name="authorization_user_agent"></a>authorization_user_agent
 
@@ -126,19 +126,19 @@ Možné hodnoty:
 
 ### <a name="multiple_clouds_supported"></a>multiple_clouds_supported
 
-U klientů, kteří podporují více národních cloudů `true`, zadejte. Platforma Microsoft identity se pak automaticky přesměruje na správný národní Cloud během autorizace a uplatnění tokenu. Národní Cloud přihlášeného účtu můžete určit prověřením autority přidruženého k `AuthenticationResult`. Všimněte si, `AuthenticationResult` že neposkytuje národní adresu koncového bodu specifického pro Cloud, pro kterou požadujete token.
+U klientů, kteří podporují více národních cloudů, zadejte `true` . Platforma Microsoft identity se pak automaticky přesměruje na správný národní Cloud během autorizace a uplatnění tokenu. Národní Cloud přihlášeného účtu můžete určit prověřením autority přidruženého k `AuthenticationResult` . Všimněte si, že `AuthenticationResult` neposkytuje národní adresu koncového bodu specifického pro Cloud, pro kterou požadujete token.
 
 ### <a name="broker_redirect_uri_registered"></a>broker_redirect_uri_registered
 
-Logická hodnota, která označuje, zda používáte identifikátor URI přesměrování kompatibilního se zprostředkovatelem Microsoft Identity Broker. Nastavte na `false` , pokud nechcete zprostředkovatele používat v rámci vaší aplikace.
+Logická hodnota, která označuje, zda používáte identifikátor URI přesměrování kompatibilního se zprostředkovatelem Microsoft Identity Broker. Nastavte na, `false` Pokud nechcete zprostředkovatele používat v rámci vaší aplikace.
 
-Pokud používáte autoritu AAD s cílovou skupinou nastavenou na `"MicrosoftPersonalAccount"`, zprostředkovatel se nepoužije.
+Pokud používáte autoritu AAD s cílovou skupinou nastavenou na `"MicrosoftPersonalAccount"` , zprostředkovatel se nepoužije.
 
 ### <a name="http"></a>HTTP
 
 Nakonfigurujte globální nastavení pro vypršení časových limitů protokolu HTTP, například:
 
-| Vlastnost | Datový typ | Požaduje se | Poznámky |
+| Vlastnost | Datový typ | Vyžadováno | Poznámky |
 | ---------|-----------|------------|--------|
 | `connect_timeout` | int | Ne | Čas v milisekundách |
 | `read_timeout` | int | Ne | Čas v milisekundách |
@@ -147,10 +147,10 @@ Nakonfigurujte globální nastavení pro vypršení časových limitů protokolu
 
 Následující globální nastavení slouží k protokolování:
 
-| Vlastnost | Typ dat  | Požaduje se | Poznámky |
+| Vlastnost | Typ dat  | Vyžadováno | Poznámky |
 | ----------|-------------|-----------|---------|
 | `pii_enabled`  | Boolean | Ne | Bez ohledu na to, jestli se mají posílat osobní údaje |
-| `log_level`   | Boolean | Ne | Které zprávy protokolu mají být ve výstupu |
+| `log_level`   | řetězec | No | Které zprávy protokolu mají být ve výstupu. Mezi podporované úrovně protokolu patří `ERROR` , `WARNING` , `INFO` a `VERBOSE` . |
 | `logcat_enabled` | Boolean | Ne | Bez ohledu na to, zda se má kromě rozhraní protokolování nakládat do log Cat |
 
 ### <a name="account_mode"></a>account_mode
@@ -340,8 +340,8 @@ Následující příklad znázorňuje základní konfiguraci, která určuje ID 
 
 ## <a name="how-to-use-a-configuration-file"></a>Použití konfiguračního souboru
 
-1. Vytvořte konfigurační soubor. V `res/raw/auth_config.json`nástroji doporučujeme vytvořit vlastní konfigurační soubor. Můžete ho ale umístit kamkoli tam, kde chcete.
-2. Sdělte MSAL, kde můžete hledat vaši konfiguraci při vytváření `PublicClientApplication`. Příklad:
+1. Vytvořte konfigurační soubor. V nástroji doporučujeme vytvořit vlastní konfigurační soubor `res/raw/auth_config.json` . Můžete ho ale umístit kamkoli tam, kde chcete.
+2. Sdělte MSAL, kde můžete hledat vaši konfiguraci při vytváření `PublicClientApplication` . Příklad:
 
    ```java
    //On Worker Thread

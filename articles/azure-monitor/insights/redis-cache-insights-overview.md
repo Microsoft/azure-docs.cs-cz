@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/21/2020
-ms.openlocfilehash: d892c58413803ff65fbd8ca8b25a61bc5ffeb26f
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 469b402c694bcfae5a826c03ea35dbef2c365148
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847357"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945405"
 ---
 # <a name="explore-azure-monitor-for-azure-cache-for-redis-preview"></a>Prozkoumejte Azure Monitor pro Azure cache pro Redis (Preview)
 
@@ -44,7 +44,7 @@ Tato funkce nevyžaduje, abyste povolili nebo nenakonfigurovali cokoli. Ve vých
 
 Pokud chcete zobrazit využití a výkon účtů úložiště napříč všemi vašimi předplatnými, proveďte následující kroky:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. Vyhledejte **monitorování**a vyberte **monitorování**.
 
@@ -179,6 +179,10 @@ Sešity se ukládají v rámci skupiny prostředků v části **Mé sestavy** ne
 Až uložíte vlastní sešit, otevřete ho tak, že přejdete do galerie sešitů.
 
 ![Panel příkazů se zvýrazněnou galerií](./media/cosmosdb-insights-overview/gallery.png)
+
+## <a name="troubleshooting"></a>Poradce při potížích
+
+Pokyny k řešení potíží najdete v článku věnovaném [řešení potíží](troubleshoot-workbooks.md)s vyhrazenými sešity na základě sešitu.
 
 ## <a name="next-steps"></a>Další kroky
 

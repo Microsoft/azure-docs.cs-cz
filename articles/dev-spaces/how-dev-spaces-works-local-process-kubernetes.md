@@ -1,18 +1,18 @@
 ---
-title: Jak místní proces s Kubernetes funguje
+title: Jak funguje místní proces s Kubernetes
 services: azure-dev-spaces
 ms.date: 06/02/2020
 ms.topic: conceptual
 description: Popisuje procesy pro připojení vašeho vývojového počítače ke clusteru Kubernetes pomocí místního procesu s Kubernetes.
 keywords: Místní proces pomocí Kubernetes, Azure Dev Spaces, vývojových prostorů, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers
-ms.openlocfilehash: 443783eb7f5359318cf8efbec8b6466a80fa1e85
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: dd126fc55a86b1de115239a31e5adb7b1d264846
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84316597"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84974394"
 ---
-# <a name="how-local-process-with-kubernetes-works"></a>Jak místní proces s Kubernetes funguje
+# <a name="how-local-process-with-kubernetes-works"></a>Jak funguje místní proces s Kubernetes
 
 Místní proces s Kubernetes umožňuje spouštět a ladit kód na vašem vývojovém počítači, ale stále je připojený ke svému clusteru Kubernetes se zbytkem vaší aplikace nebo služeb. Například pokud máte rozsáhlou architekturu mikroslužeb s mnoha vzájemně závislými službami a databázemi, může být obtížné replikovat tyto závislosti na vašem vývojovém počítači. Kromě toho může být při vytváření a nasazování kódu do clusteru Kubernetes pro každou změnu kódu během vývoje ve vnitřní smyčce pomalý, časově náročný a obtížný použití s ladicím programem.
 
@@ -42,6 +42,15 @@ Po navázání připojení ke clusteru můžete spustit a ladit kód nativně ve
 ## <a name="diagnostics-and-logging"></a>Diagnostika a protokolování
 
 Při použití místního procesu s Kubernetes pro připojení ke clusteru se diagnostické protokoly z vašeho clusteru protokolují do [dočasného adresáře][azds-tmp-dir]vašeho vývojového počítače. Pomocí Visual Studio Code můžete k tisku aktuálních proměnných prostředí a záznamů DNS z clusteru použít taky příkaz *Zobrazit diagnostické informace* .
+
+## <a name="limitations"></a>Omezení
+
+Místní proces s Kubernetes má následující omezení:
+
+* Místní proces s Kubernetes přesměruje provoz pro jednu službu do vašeho vývojového počítače. Místní proces se Kubernetes nejde použít k přesměrování několika služeb současně.
+* Služba musí být za účelem připojení k této službě zajištěna jedním pod. Nemůžete se připojit ke službě s více lusky, jako je třeba služba s replikami.
+* Objekt pod může mít v takovém případě pouze jeden kontejner spuštěný pro místní proces s Kubernetes pro úspěšné připojení. Místní proces s Kubernetes se nemůže připojit ke službám s lusky, které mají další kontejnery, jako jsou například kontejnery na postranní vozíky vložené pomocí sítí služby.
+* Místní proces s Kubernetes potřebuje zvýšená oprávnění ke spuštění ve vývojovém počítači, aby bylo možné upravit soubor hostitelů.
 
 ## <a name="next-steps"></a>Další kroky
 

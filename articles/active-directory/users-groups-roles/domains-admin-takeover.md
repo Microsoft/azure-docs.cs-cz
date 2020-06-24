@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36c7bb426a329a54f333b76e028b884204543014
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 0cd2de0929b22dda6e566316c4eda966d8d62e24
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582976"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84732646"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Přebírat nespravovaný adresář jako správce v Azure Active Directory
 
@@ -28,9 +28,9 @@ Tento článek popisuje dva způsoby, jak převzít název domény DNS v nesprav
 ## <a name="decide-how-you-want-to-take-over-an-unmanaged-directory"></a>Rozhodněte, jak chcete převzít nespravovaný adresář
 Během procesu převzetí správce můžete vlastnictví prokázat způsobem popsaným v tématu [Přidání vlastního názvu domény do Azure AD](../fundamentals/add-custom-domain.md). Další části popisují prostředí pro správu podrobněji, ale tady je shrnutí:
 
-* Když provedete [interní převzetí správce](#internal-admin-takeover) nespravovaného adresáře Azure, přidáte se jako globální správce tohoto nespravovaného adresáře. Do žádného jiného adresáře, který spravujete, se nemigrují žádní uživatelé, domény ani plány služeb.
+* Když provedete ["interní" převzetí správce](#internal-admin-takeover) nespravovaného adresáře Azure, přidáte ho jako globální správce nespravovaného adresáře. Do žádného jiného adresáře, který spravujete, se nebudou migrovat žádní uživatelé, domény ani plány služeb.
 
-* Když provedete [externí převzetí správce](#external-admin-takeover) nespravovaného adresáře Azure, přidáte název domény DNS nespravovaného adresáře do svého spravovaného adresáře Azure. Když přidáte název domény, ve vašem spravovaném adresáři Azure se vytvoří mapování uživatelů na prostředky, aby uživatelé měli i nadále přístup ke službám bez přerušení. 
+* Když provedete ["externí" převzetí správce](#external-admin-takeover) nespravovaného adresáře Azure, přidáte název domény DNS nespravovaného adresáře do spravovaného adresáře Azure. Když přidáte název domény, ve vašem spravovaném adresáři Azure se vytvoří mapování uživatelů na prostředky, aby uživatelé měli i nadále přístup ke službám bez přerušení. 
 
 ## <a name="internal-admin-takeover"></a>Převzetí interního správce
 
@@ -38,7 +38,7 @@ Některé produkty, které zahrnují SharePoint a OneDrive, jako je například 
 
 1. Vytvořte uživatelský kontext v nespravované organizaci pomocí registrace Power BI. Pro pohodlí například tyto kroky předpokládají tuto cestu.
 
-2. Otevřete [Power BI web](https://powerbi.com) a vyberte **začít zdarma**. Zadejte uživatelský účet, který používá název domény pro organizaci. například `admin@fourthcoffee.xyz`. Po zadání v ověřovacím kódu si v e-mailu ověřte potvrzovací kód.
+2. Otevřete [Power BI web](https://powerbi.com) a vyberte **začít zdarma**. Zadejte uživatelský účet, který používá název domény pro organizaci. například `admin@fourthcoffee.xyz` . Po zadání v ověřovacím kódu si v e-mailu ověřte potvrzovací kód.
 
 3. V e-mailu s potvrzením od Power BI vyberte **Ano, to jsem já**.
 
@@ -57,13 +57,13 @@ Po dokončení předchozích kroků teď jste globálním správcem čtvrté ká
 ### <a name="adding-the-domain-name-to-a-managed-organization-in-azure-ad"></a>Přidání názvu domény do spravované organizace ve službě Azure AD
 
 1. Otevřete [Centrum pro správu Microsoft 365](https://admin.microsoft.com).
-2. Vyberte kartu **Uživatelé** a vytvořte nový uživatelský účet s názvem, jako je například *Uživatel\@fourthcoffeexyz.onmicrosoft.com* , který nepoužívá vlastní název domény. 
+2. Vyberte kartu **Uživatelé** a vytvořte nový uživatelský účet s názvem, jako je například *Uživatel \@ fourthcoffeexyz.onmicrosoft.com* , který nepoužívá vlastní název domény. 
 3. Ujistěte se, že nový uživatelský účet má pro organizaci Azure AD oprávnění globálního správce.
 4. Otevřete kartu **domény** v centru pro správu Microsoft 365, vyberte název domény a vyberte **Odebrat**. 
   
    ![odebrat název domény z Office 365](./media/domains-admin-takeover/remove-domain-from-o365.png)
   
-5. Pokud máte v sadě Office 365 nějaké uživatele nebo skupiny, které odkazují na odebraný název domény, musí být přejmenovány do domény. onmicrosoft.com. Pokud vynutíte odstranění názvu domény, všichni uživatelé budou automaticky přejmenováni v tomto příkladu *na\@fourthcoffeexyz.onmicrosoft.com uživatele*.
+5. Pokud máte v sadě Office 365 nějaké uživatele nebo skupiny, které odkazují na odebraný název domény, musí být přejmenovány do domény. onmicrosoft.com. Pokud vynutíte odstranění názvu domény, všichni uživatelé budou automaticky přejmenováni v tomto příkladu *na \@ fourthcoffeexyz.onmicrosoft.com uživatele*.
   
 6. Přihlaste se k [centru pro správu Azure AD](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) pomocí účtu, který je globálním správcem pro organizaci Azure AD.
   
@@ -72,7 +72,7 @@ Po dokončení předchozích kroků teď jste globálním správcem čtvrté ká
    ![Doména ověřena jako přidaná do Azure AD](./media/domains-admin-takeover/add-domain-to-azure-ad.png)
   
 > [!NOTE]
-> Všichni uživatelé Power BI nebo služby Azure Rights Management, kteří mají licence přiřazené v organizaci Office 365, musí uložit své řídicí panely, pokud je název domény odebraný. Musí se přihlásit pomocí uživatelského jména, jako je *například\@uživatel fourthcoffeexyz.onmicrosoft.com* *, nikoli\@User fourthcoffee. xyz*.
+> Všichni uživatelé Power BI nebo služby Azure Rights Management, kteří mají licence přiřazené v organizaci Office 365, musí uložit své řídicí panely, pokud je název domény odebraný. Musí se přihlásit pomocí uživatelského jména, jako je například *uživatel \@ fourthcoffeexyz.onmicrosoft.com* *, nikoli User \@ fourthcoffee. xyz*.
 
 ## <a name="external-admin-takeover"></a>Převzetí externích správců
 

@@ -36,6 +36,8 @@
       items:
         - name: Jak funguje MFA
           href: concept-mfa-howitworks.md
+        - name: Výzvy a životnost relací
+          href: concepts-azure-multi-factor-authentication-prompts-session-lifetime.md
         - name: Rezidence dat
           href: concept-mfa-data-residency.md
         - name: Licence

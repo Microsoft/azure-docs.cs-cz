@@ -5,15 +5,15 @@ description: Převod starší verze přímého partnerského vztahu na prostřed
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 159e15a6be59991fba574e72dcaf2ed740fb10c2
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 496774f034c861131624b552b1acefca9f399ea8
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83846119"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84700259"
 ---
 # <a name="convert-a-legacy-direct-peering-to-an-azure-resource-by-using-the-azure-portal"></a>Převod starší verze přímého partnerského vztahu na prostředek Azure pomocí Azure Portal
 
@@ -21,7 +21,7 @@ Tento článek popisuje, jak převést stávající starší verzi přímého pa
 
 Pokud budete chtít, můžete tuto příručku dokončit pomocí [PowerShellu](howto-legacy-direct-powershell.md).
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 * Před zahájením konfigurace si Projděte návod [požadavky](prerequisites.md) a [přímý partnerský vztah](walkthrough-direct-all.md) .
 
 

@@ -2,8 +2,8 @@
 title: Co je spravovaná instance Azure SQL?
 description: Přečtěte si, jak Azure Managed instance poskytuje téměř 100% kompatibilitu s nejnovějším databázovým strojem SQL Server (Enterprise Edition).
 services: sql-database
-ms.service: sql-database
-ms.subservice: managed-instance
+ms.service: sql-managed-instance
+ms.subservice: operations
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 04/02/2020
-ms.openlocfilehash: 2f7422d01b2058cafed33c9d10118f78d35727df
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: db476d32d3b087e86329f8ed40446caf122c0a00
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84337780"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84944793"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Co je spravovaná instance Azure SQL?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -50,7 +50,7 @@ Spravovaná instance SQL kombinuje nejlepší funkce, které jsou k dispozici v 
 
 Klíčové funkce spravované instance SQL jsou uvedené v následující tabulce:
 
-|Příznak | Description|
+|Funkce | Description|
 |---|---|
 | Verze SQL Server/Build | Databázový stroj SQL Server (nejnovější stabilní) |
 | Spravované automatizované zálohy | Ano |
@@ -165,12 +165,12 @@ V následující tabulce najdete souhrn operací a typických celkových dob trv
 
 ### <a name="instance-availability-during-management-operations"></a>Dostupnost instance během operací správy
 
-Spravovaná instance SQL není během operací nasazení a odstraňování dostupná pro klientské aplikace.
-
-Spravovaná instance SQL je k dispozici během operací aktualizace, s výjimkou krátkého výpadku způsobeného převzetím služeb při selhání, ke kterému dochází na konci aktualizace. Obvykle trvá až 10 sekund i v případě přerušených dlouhotrvajících transakcí díky [urychlenému obnovení databáze](../accelerated-database-recovery.md).
+Spravovaná instance SQL **je k dispozici během operací aktualizace**, s výjimkou krátkého výpadku způsobeného převzetím služeb při selhání, ke kterému dochází na konci aktualizace. Obvykle trvá až 10 sekund i v případě přerušených dlouhotrvajících transakcí díky [urychlenému obnovení databáze](../accelerated-database-recovery.md).
 
 > [!IMPORTANT]
 > Nedoporučujeme škálovat výpočetní výkon nebo úložiště spravované instance SQL Azure nebo změnit úroveň služby současně s dlouhotrvajícími transakcemi (import dat, úlohy zpracování dat, opětovné sestavení indexu atd.). Převzetí služeb při selhání databáze, které bude provedeno na konci operace zruší všechny probíhající transakce.
+
+Spravovaná instance SQL není během operací nasazení a odstraňování dostupná pro klientské aplikace.
 
 ### <a name="management-operations-cross-impact"></a>Operace správy – mezi důsledky
 
