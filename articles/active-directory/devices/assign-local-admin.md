@@ -4,19 +4,19 @@ description: Přečtěte si, jak přiřadit role Azure do místní skupiny Sprá
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/28/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc1812d955590ec0c7372e1311c9d69f93b9957c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4285c7d8cd6c9feee84eaae3c49ffd1f21d5df27
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80128884"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253082"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Jak spravovat místní skupinu Administrators na zařízeních připojených k Azure AD
 
@@ -26,7 +26,7 @@ Tento článek vysvětluje, jak funguje aktualizace členství a jak je můžete
 
 ## <a name="how-it-works"></a>Jak to funguje
 
-Když připojíte zařízení s Windows ke službě Azure AD pomocí služby Azure AD JOIN, Azure AD přidá do místní skupiny Administrators v zařízení následující zásady zabezpečení:
+Když připojíte zařízení s Windows ke službě Azure AD pomocí služby Azure AD JOIN, Azure AD přidá do místní skupiny Administrators na zařízení tyto objekty zabezpečení:
 
 - Role globálního správce služby Azure AD
 - Role Správce zařízení Azure AD 
@@ -79,7 +79,7 @@ Od verze **Windows 10 1709** můžete tuto úlohu provést z **Nastavení-> úč
  
 Kromě toho můžete přidat uživatele také pomocí příkazového řádku:
 
-- Pokud jsou vaši uživatelé klienta synchronizováni z místní služby Active Directory, použijte `net localgroup administrators /add "Contoso\username"`.
+- Pokud jsou vaši uživatelé klienta synchronizováni z místní služby Active Directory, použijte `net localgroup administrators /add "Contoso\username"` .
 - Pokud jsou vaši uživatelé tenanta vytvořeni ve službě Azure AD, použijte`net localgroup administrators /add "AzureAD\UserUpn"`
 
 ## <a name="considerations"></a>Požadavky 

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 4/29/2020
-ms.openlocfilehash: 9ac85299311c1fd233988c6472d6325934dd42dd
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.date: 6/10/2020
+ms.openlocfilehash: eff70d193674877b3b9453319197b60569399968
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614535"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707051"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-powershell"></a>Jak vytvářet a spravovat repliky pro čtení v Azure Database for MySQL pomocí prostředí PowerShell
 
@@ -29,7 +29,7 @@ K dokončení tohoto průvodce budete potřebovat:
 - [Server Azure Database for MySQL](quickstart-create-mysql-server-database-using-azure-powershell.md)
 
 > [!IMPORTANT]
-> I když je modul PowerShell AZ. MySql ve verzi Preview, musíte ho nainstalovat samostatně z modulu AZ PowerShellu pomocí následujícího příkazu: `Install-Module -Name Az.MySql -AllowPrerelease`.
+> I když je modul PowerShell AZ. MySql ve verzi Preview, musíte ho nainstalovat samostatně z modulu AZ PowerShellu pomocí následujícího příkazu: `Install-Module -Name Az.MySql -AllowPrerelease` .
 > Jakmile je modul PowerShellu AZ. MySql všeobecně dostupný, bude součástí budoucna k budoucímu AZ PowerShell Release releases a k dispozici nativně z Azure Cloud Shell.
 
 Pokud se rozhodnete použít prostředí PowerShell místně, připojte se k účtu Azure pomocí rutiny [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount) .
@@ -41,6 +41,9 @@ Pokud se rozhodnete použít prostředí PowerShell místně, připojte se k ú�
 
 ### <a name="create-a-read-replica"></a>Vytvoření repliky pro čtení
 
+> [!IMPORTANT]
+> Když vytvoříte repliku pro hlavní server, který nemá žádné existující repliky, hlavní počítač se nejprve restartuje a připraví se pro replikaci. Vezměte v úvahu a udělejte tyto operace v době mimo špičku.
+
 Server repliky pro čtení se dá vytvořit pomocí následujícího příkazu:
 
 ```azurepowershell-interactive
@@ -48,9 +51,9 @@ Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
   New-AzMySqlServerReplica -Name mydemoreplicaserver -ResourceGroupName myresourcegroup
 ```
 
-`New-AzMySqlServerReplica` Příkaz vyžaduje následující parametry:
+`New-AzMySqlServerReplica`Příkaz vyžaduje následující parametry:
 
-| Nastavení | Příklad hodnoty | Popis  |
+| Nastavení | Příklad hodnoty | Description  |
 | --- | --- | --- |
 | ResourceGroupName |  myresourcegroup |  Skupina prostředků, ve které se vytvoří server repliky.  |
 | Name | mydemoreplicaserver | Název nového serveru repliky, který se vytvoří. |
@@ -77,9 +80,9 @@ Chcete-li zobrazit všechny repliky pro daný hlavní server, spusťte následuj
 Get-AzMySqlReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
 ```
 
-`Get-AzMySqlReplica` Příkaz vyžaduje následující parametry:
+`Get-AzMySqlReplica`Příkaz vyžaduje následující parametry:
 
-| Nastavení | Příklad hodnoty | Popis  |
+| Nastavení | Příklad hodnoty | Description  |
 | --- | --- | --- |
 | ResourceGroupName |  myresourcegroup |  Skupina prostředků, do které se vytvoří server repliky.  |
 | ServerName | mydemoserver | Název nebo ID hlavního serveru. |

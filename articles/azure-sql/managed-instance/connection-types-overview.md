@@ -3,19 +3,19 @@ title: Typy připojení
 titleSuffix: Azure SQL Managed Instance
 description: Další informace o typech připojení spravované instance SQL Azure
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: operations
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto
 ms.date: 10/07/2019
-ms.openlocfilehash: 347f9522bacc768265027f1a2070ac4605ade158
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 153f338a49a24d1cb9eb71c068effcfd20bd2ffe
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84655682"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84706269"
 ---
 # <a name="azure-sql-managed-instance-connection-types"></a>Typy připojení spravované instance SQL Azure
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

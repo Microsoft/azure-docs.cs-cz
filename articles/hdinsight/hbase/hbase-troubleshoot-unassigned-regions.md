@@ -8,11 +8,11 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/16/2019
 ms.openlocfilehash: 85aeafb2c4461b50d399e40d9abff2ac04b677c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79272757"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707646"
 ---
 # <a name="issues-with-region-servers-in-azure-hdinsight"></a>Problémy se servery oblastí ve službě Azure HDInsight
 
@@ -42,7 +42,7 @@ Opravte přiřazení. Podle následujících kroků přeneste nepřiřazené obl
 
 1. Spusťte `hbase zkcli` příkaz pro připojení k prostředí Zookeeper Shell.
 
-1. Spusťte `rmr /hbase/regions-in-transition` příkaz `rmr /hbase-unsecure/regions-in-transition` nebo.
+1. Spusťte `rmr /hbase/regions-in-transition` `rmr /hbase-unsecure/regions-in-transition` příkaz nebo.
 
 1. Ukončete prostředí Zookeeper pomocí `exit` příkazu.
 
@@ -62,7 +62,7 @@ Servery oblasti se nedaří spustit.
 
 Několik rozdělených adresářů WAL
 
-1. Získat seznam aktuálních WALs: `hadoop fs -ls -R /hbase/WALs/ > /tmp/wals.out`.
+1. Získat seznam aktuálních WALs: `hadoop fs -ls -R /hbase/WALs/ > /tmp/wals.out` .
 
 1. Zkontrolujte `wals.out` soubor. Pokud je k dispozici příliš mnoho rozdělených adresářů (počínaje oddělovači), server oblasti se pravděpodobně nedaří kvůli těmto adresářům.
 
@@ -72,11 +72,11 @@ Několik rozdělených adresářů WAL
 
 1. Spusťte `hadoop fs -ls -R /hbase/WALs/ > /tmp/wals.out` , abyste získali nový seznam WALs.
 
-1. Přesuňte rozdělené adresáře * na dočasnou složku, `splitWAL`a odstraňte složky s oddělovači (*).
+1. Přesuňte rozdělené adresáře * na dočasnou složku, `splitWAL` a odstraňte složky s oddělovači (*).
 
 1. Spusťte `hbase zkcli` příkaz pro připojení k prostředí Zookeeper Shell.
 
-1. Provést `rmr /hbase-unsecure/splitWAL`.
+1. Provést `rmr /hbase-unsecure/splitWAL` .
 
 1. Restartujte službu HBA.
 
@@ -86,6 +86,6 @@ Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, p�
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
-* Připojte se [@AzureSupport](https://twitter.com/azuresupport) k oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
+* Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
 
 * Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

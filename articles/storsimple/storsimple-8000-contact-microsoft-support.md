@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 99de3a6fbbbb1c4324df1712a5e24fd334ca4977
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254986"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84706966"
 ---
 # <a name="contact-microsoft-support"></a>Kontaktovat podporu Microsoftu
 
@@ -103,7 +103,7 @@ Chcete-li spustit relaci podpory, proveďte následující kroky:
 7. Uložte tento řetězec a odešlete ho do e-mailové zprávy na podpora Microsoftu.
 
 > [!IMPORTANT]
-> Přístup k podpoře můžete zakázat spuštěním `Disable-HcsSupportAccess`. Zařízení StorSimple se taky pokusí zakázat přístup k podpoře 8 hodin po zahájení relace. Osvědčeným postupem je změnit přihlašovací údaje zařízení StorSimple po zahájení relace podpory.
+> Přístup k podpoře můžete zakázat spuštěním `Disable-HcsSupportAccess` . Zařízení StorSimple se taky pokusí zakázat přístup k podpoře 8 hodin po zahájení relace. Osvědčeným postupem je změnit přihlašovací údaje zařízení StorSimple po zahájení relace podpory.
 
 
 ## <a name="next-steps"></a>Další kroky

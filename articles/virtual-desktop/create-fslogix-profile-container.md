@@ -4,16 +4,16 @@ description: Postup vytvoření kontejneru profilu FSLogix pomocí Azure NetApp 
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9210787c674e825c8728e3b79e261b184fbc42fa
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: 968e753cb8bf4376d2082d5238004c291b8f0938
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84484639"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85211937"
 ---
 # <a name="create-a-profile-container-with-azure-netapp-files-and-ad-ds"></a>Vytvoření kontejneru profilu pomocí Azure NetApp Files a služba AD DS
 
@@ -87,7 +87,7 @@ Abyste mohli začít, musíte nastavit účet Azure NetApp Files.
 
 ## <a name="create-a-capacity-pool"></a>Vytvoření fondu kapacity
 
-Pak vytvořte nový fond kapacity: 
+Pak vytvořte nový fond kapacity:
 
 1. Přejděte do nabídky Azure NetApp Files a vyberte svůj nový účet.
 2. V nabídce účtu v části služba úložiště vyberte **fondy kapacit** .
@@ -158,7 +158,7 @@ Tato část je založená na [vytvoření kontejneru profilu pro fond hostitelů
 
 2. Extrahování staženého souboru.
 
-3. V souboru, přejdete na **x64**  >  **releases** a spusťte **FSLogixAppsSetup. exe**. Otevře se nabídka instalace.
+3. V souboru, přejdete na **verze x64**  >  **Releases** a spusťte **FSLogixAppsSetup.exe**. Otevře se nabídka instalace.
 
 4.  Pokud máte kód Product Key, zadejte ho do textového pole kód Product Key.
 

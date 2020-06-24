@@ -4,20 +4,19 @@ description: Tento článek vysvětluje, jak nakonfigurovat Traffic Manager pro 
 services: traffic-manager
 documentationcenter: ''
 author: rohinkoul
-manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: rohink
-ms.openlocfilehash: daf7d09916d276130e337f7acea738228ee23707
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ac6d20acf32be9678818483e5929dee225501b1
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76938781"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84706813"
 ---
 # <a name="configure-multivalue-routing-method-in-traffic-manager"></a>Konfigurace metody směrování s více hodnotami v Traffic Manager
 
@@ -38,7 +37,7 @@ Vytvořte skupinu prostředků pro profil Traffic Manager.
 ## <a name="create-a-traffic-manager-profile"></a>Vytvoření profilu Traffic Manageru
 Vytvořte profil Traffic Manager, který směruje provoz uživatele odesláním do koncového bodu s nejnižší latencí.
 
-1. V levém horním rohu obrazovky vyberte **vytvořit prostředek** > **sítě** > **Traffic Manager profil** > **vytvořit**.
+1. V levém horním rohu obrazovky vyberte **vytvořit prostředek**  >  **sítě**  >  **Traffic Manager profil**  >  **vytvořit**.
 2. V části **vytvořit Traffic Manager profil**zadejte nebo vyberte následující informace, u zbývajících nastavení přijměte výchozí hodnoty a pak vyberte **vytvořit**:
     
     | Nastavení                 | Hodnota                                              |
@@ -63,7 +62,7 @@ Přidejte dvě IP adresy jako externí koncové body do profilu vícehodnotovéh
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
     | Typ                    | Externí koncový bod                                   |
-    | Název           | myEndpoint1                                        |
+    | Name           | myEndpoint1                                        |
     | Plně kvalifikovaný název domény (FQDN) nebo IP adresa           | Zadejte veřejnou IP adresu koncového bodu, který chcete přidat do tohoto profilu Traffic Manager.                         |
     |        |           |
 

@@ -4,19 +4,19 @@ description: Naučte se, jak zadávat dotazy na Microsoft Graph detekce rizik a 
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.topic: reference
+ms.topic: how-to
 ms.date: 10/18/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6fd62ccab4d6e32b23835d280732797e133ada8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 54b78526ea1409f22b000aed8b20db90dfc9d143
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78671626"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253558"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Začínáme s Azure Active Directory Identity Protection a Microsoft Graph
 
@@ -72,7 +72,7 @@ Než začnete, budete potřebovat:
 
    1. Jako **typ**vyberte **Webová aplikace nebo webové rozhraní API**.
 
-   1. Do textového pole **přihlašovací adresa URL** zadejte `http://localhost`.
+   1. Do textového pole **přihlašovací adresa URL** zadejte `http://localhost` .
 
    1. Klikněte na **Vytvořit**.
 1. Stránku **Nastavení** otevřete tak, že v seznamu aplikace kliknete na nově vytvořenou registraci aplikace. 
@@ -143,8 +143,8 @@ K ověření odešlete požadavek post `https://login.microsoft.com` s následuj
 
 - grant_type: "**client_credentials**"
 - partner`https://graph.microsoft.com`
-- client_id: \<ID klienta\>
-- client_secret: \<váš klíč\>
+- client_id:\<your client ID\>
+- client_secret:\<your key\>
 
 V případě úspěchu tato akce vrátí ověřovací token.  
 Chcete-li volat rozhraní API, vytvořte hlavičku s následujícím parametrem:

@@ -8,17 +8,17 @@ author: KumudD
 manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/14/2019
 ms.author: kumud
-ms.openlocfilehash: fdf726fd31e8b92a04a1c136eb5cd7110e0c6d5a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 67bc7994d2628790e84d3b3752f894a36486ca86
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72333362"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707510"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-using-standard-internal-load-balancer-in-azure---powershell-preview"></a>Nasazení duální aplikace s protokolem IPv6 pomocí standardních interních Load Balancer v Azure – PowerShell (Preview)
 
@@ -38,9 +38,9 @@ Postup vytvoření interního Load Balancer podporujícího protokol IPv6 je sko
 ```
 
 Změny, které provedou výše uvedené konfigurace front-endu interního nástroje pro vyrovnávání zatížení, jsou:
-- `PrivateIpAddressVersion` Je zadaný jako IPv6.
-- `-PublicIpAddress` Argument byl buď vynechán, nebo nahrazen parametrem `-PrivateIpAddress`. Všimněte si, že soukromá adresa musí být v rozsahu ADRESního prostoru podsítě, ve kterém bude nasazen interní nástroj pro vyrovnávání zatížení. Pokud je parametr `-PrivateIpAddress` static vynechán, bude v podsíti, ve které je nasazen interní nástroj pro vyrovnávání zatížení, vybrána další bezplatná adresa IPv6.
-- Podsíť duálního zásobníku, ve které bude nasazen interní nástroj pro vyrovnávání zatížení, je určena `-Subnet` buď `-SubnetId` pomocí argumentů, nebo.
+- `PrivateIpAddressVersion`Je zadaný jako IPv6.
+- `-PublicIpAddress`Argument byl buď vynechán, nebo nahrazen parametrem `-PrivateIpAddress` . Všimněte si, že soukromá adresa musí být v rozsahu ADRESního prostoru podsítě, ve kterém bude nasazen interní nástroj pro vyrovnávání zatížení. Pokud `-PrivateIpAddress` je parametr static vynechán, bude v podsíti, ve které je nasazen interní nástroj pro vyrovnávání zatížení, vybrána další bezplatná adresa IPv6.
+- Podsíť duálního zásobníku, ve které bude nasazen interní nástroj pro vyrovnávání zatížení, je určena buď pomocí `-Subnet` argumentů, nebo `-SubnetId` .
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

@@ -2,25 +2,21 @@
 title: Osvědčené postupy pro šablony
 description: Popisuje doporučené přístupy k vytváření Azure Resource Manager šablon. Nabízí návrhy, aby se předešlo běžným problémům při používání šablon.
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 870636d6457d842c89f261c2537644c17a335294
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/09/2020
+ms.openlocfilehash: c00a3a1162ffec4ce89c43ef2f76796fb5943438
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80156408"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254085"
 ---
 # <a name="arm-template-best-practices"></a>Osvědčené postupy pro šablonu ARM
 
-Tento článek obsahuje doporučení, jak vytvořit šablonu Azure Resource Manager (ARM). Tato doporučení vám pomůžou vyhnout se běžným problémům při použití šablony ARM k nasazení řešení.
-
-Doporučení k řízení předplatných Azure najdete v tématu základní [uživatelské rozhraní Azure: zásady správného řízení předplatného](/azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=%2Fen-us%2Fazure%2Fazure-resource-manager%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json).
-
-Doporučení k vytváření šablon, které fungují ve všech cloudových prostředích Azure, najdete v tématu [vývoj šablon Azure Resource Manager pro konzistenci cloudu](templates-cloud-consistency.md).
+V tomto článku se dozvíte, jak používat Doporučené postupy při sestavování šablony ARM. Tato doporučení vám pomůžou vyhnout se běžným problémům při použití šablony ARM k nasazení řešení.
 
 ## <a name="template-limits"></a>Omezení šablon
 
-Omezte velikost šablony na 4 MB a každý soubor parametrů na 64 KB. Limit velikosti 4 MB se vztahuje na konečný stav šablony po rozbalení pomocí iterativních definic prostředků a hodnot proměnných a parametrů. 
+Omezte velikost šablony na 4 MB a každý soubor parametrů na 64 KB. Limit velikosti 4 MB se vztahuje na konečný stav šablony po rozbalení pomocí iterativních definic prostředků a hodnot proměnných a parametrů.
 
 Máte také omezení:
 
@@ -120,7 +116,7 @@ Informace v této části mohou být užitečné při práci s [parametry](templ
 
 ### <a name="location-recommendations-for-parameters"></a>Doporučení pro umístění parametrů
 
-* Pomocí parametru zadejte umístění pro prostředky a nastavte výchozí hodnotu na `resourceGroup().location`. Zadání parametru Location umožňuje uživatelům šablony určit umístění, ke kterému mají oprávnění k nasazení.
+* Pomocí parametru zadejte umístění pro prostředky a nastavte výchozí hodnotu na `resourceGroup().location` . Zadání parametru Location umožňuje uživatelům šablony určit umístění, ke kterému mají oprávnění k nasazení.
 
    ```json
    "parameters": {
@@ -236,7 +232,7 @@ Následující informace můžou být užitečné při práci s [prostředky](te
    * [Povolení externího přístupu k VIRTUÁLNÍmu počítači pomocí PowerShellu](../../virtual-machines/windows/nsg-quickstart-powershell.md)
    * [Povolení externího přístupu k VIRTUÁLNÍmu počítači se systémem Linux pomocí Azure CLI](../../virtual-machines/virtual-machines-linux-nsg-quickstart.md)
 
-* Vlastnost **domainNameLabel** pro veřejné IP adresy musí být jedinečná. Hodnota **domainNameLabel** musí mít délku 3 až 63 znaků a musí následovat po pravidlech určených tímto regulárním výrazem: `^[a-z][a-z0-9-]{1,61}[a-z0-9]$`. Vzhledem k tomu, že funkce **uniqueString** generuje řetězec o délce 13 znaků, parametr **dnsPrefixString** je omezen na 50 znaků:
+* Vlastnost **domainNameLabel** pro veřejné IP adresy musí být jedinečná. Hodnota **domainNameLabel** musí mít délku 3 až 63 znaků a musí následovat po pravidlech určených tímto regulárním výrazem: `^[a-z][a-z0-9-]{1,61}[a-z0-9]$` . Vzhledem k tomu, že funkce **uniqueString** generuje řetězec o délce 13 znaků, parametr **dnsPrefixString** je omezen na 50 znaků:
 
    ```json
    "parameters": {
@@ -275,7 +271,12 @@ Následující informace můžou být užitečné při práci s [prostředky](te
    > [!NOTE]
    > Aby se zajistilo šifrování tajných klíčů při jejich předávání jako parametrů virtuálním počítačům a rozšířením, použijte vlastnost **protectedSettings** relevantních rozšíření.
    > 
-   > 
+
+## <a name="use-test-toolkit"></a>Použít sadu testů
+
+Sada nástrojů pro test šablon ARM je skript, který kontroluje, jestli vaše šablona používá Doporučené postupy. Pokud vaše šablona není kompatibilní s doporučenými postupy, vrátí seznam upozornění s navrhovanými změnami. Sada testů vám může pomáhat s postupem implementace osvědčených postupů ve vaší šabloně.
+
+Po dokončení šablony spusťte sadu nástrojů test Toolkit, abyste viděli, zda existují způsoby, jak můžete zlepšit její implementaci. Další informace najdete v tématu [Sada nástrojů pro test šablon ARM](test-toolkit.md).
 
 ## <a name="next-steps"></a>Další kroky
 

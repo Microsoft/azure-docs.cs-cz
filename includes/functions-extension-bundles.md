@@ -13,7 +13,7 @@ ms.locfileid: "68639133"
 ---
 Nejjednodušší způsob, jak nainstalovat rozšíření vazby, je povolit [sady rozšíření](../articles/azure-functions/functions-bindings-register.md#extension-bundles). Pokud povolíte sady, automaticky se nainstaluje předdefinovaná sada balíčků rozšíření.
 
-Pokud chcete povolit sady rozšíření, otevřete soubor host. JSON a aktualizujte jeho obsah tak, aby odpovídal následujícímu kódu:
+Pokud chcete povolit sady rozšíření, otevřete host.jsv souboru a aktualizujte jeho obsah tak, aby odpovídal následujícímu kódu:
 
 ```json
 {

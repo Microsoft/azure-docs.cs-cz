@@ -13,11 +13,11 @@ ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
 ms.openlocfilehash: 8046e4f42db50db15c840a13b95ae1f3620a8c7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79266920"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84703787"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>Při pokusu o připojení k virtuálnímu počítači Azure přes Vzdálenou plochu dojde k vnitřní chybě
 
@@ -59,7 +59,7 @@ Připojte se ke [konzole sériového prostředí a otevřete instanci PowerShell
 ) , zda je port 8080 používán jinými aplikacemi:
 
         Netstat -anob |more
-2. Pokud TermService. exe používá port 8080, pokračujte na krok 2. Pokud jiná služba nebo jiná aplikace než TermService. exe používá port 8080, postupujte podle následujících kroků:
+2. Pokud Termservice.exe používá port 8080, pokračujte na krok 2. Pokud je na portu 8080 jiná služba nebo jiná aplikace než Termservice.exe, použijte následující postup:
 
     1. Zastavte službu pro aplikaci, která používá službu 3389:
 

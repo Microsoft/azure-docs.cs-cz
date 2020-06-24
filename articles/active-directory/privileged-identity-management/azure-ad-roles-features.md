@@ -9,19 +9,19 @@ ms.assetid: ''
 ms.service: active-directory
 ms.subservice: pim
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5d63577cbdbdf18cb17618bdb5c9e3b5de0e44a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 501efaf2e9e97f37521daa770e6c760cc794fa36
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79245977"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84742857"
 ---
 # <a name="management-capabilities-for-azure-ad-roles-in-privileged-identity-management"></a>Možnosti správy pro role Azure AD v Privileged Identity Management
 
@@ -56,9 +56,9 @@ Akce iniciované uživatelem vyžadují schválení od správce globálního spr
 
 ## <a name="api-changes"></a>Změny rozhraní API
 
-Když zákazníci mají aktualizovanou verzi, která je zahrnutá ve své organizaci Azure AD, existující rozhraní Graph API přestane fungovat. Abyste mohli použít [Graph API pro role prostředků Azure](https://docs.microsoft.com/graph/api/resources/privilegedidentitymanagement-resources?view=graph-rest-beta), musíte přejít. Pokud chcete spravovat role Azure AD pomocí tohoto rozhraní API `/azureResources` , `/aadroles` Proměňte ho v signatuře a použijte ID adresáře pro `resourceId`.
+Když zákazníci mají aktualizovanou verzi, která je zahrnutá ve své organizaci Azure AD, existující rozhraní Graph API přestane fungovat. Abyste mohli použít [Graph API pro role prostředků Azure](https://docs.microsoft.com/graph/api/resources/privilegedidentitymanagement-resources?view=graph-rest-beta), musíte přejít. Pokud chcete spravovat role Azure AD pomocí tohoto rozhraní API, Proměňte ho `/azureResources` `/aadroles` v signatuře a použijte ID adresáře pro `resourceId` .
 
-Snažili jsme se co nejlépe kontaktovat všem zákazníkům, kteří používají předchozí rozhraní API, a informovat o této změně ještě před časem. Pokud se vaše organizace Azure AD přesunula na novou verzi a pořád závisí na starém rozhraní API, obraťte se na tým na adrese pim_preview@microsoft.com.
+Snažili jsme se co nejlépe kontaktovat všem zákazníkům, kteří používají předchozí rozhraní API, a informovat o této změně ještě před časem. Pokud se vaše organizace Azure AD přesunula na novou verzi a pořád závisí na starém rozhraní API, obraťte se na tým na adrese pim_preview@microsoft.com .
 
 ## <a name="powershell-change"></a>Změna prostředí PowerShell
 

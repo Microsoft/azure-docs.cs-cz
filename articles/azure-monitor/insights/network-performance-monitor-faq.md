@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 443e4b44633e949dd9bd55df1ec7d18ca93d6e04
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4c672caaedd3e5cc591659f24c73f54f399c73de
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79096229"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85193999"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Nejčastější dotazy k řešení Network Performance Monitor
 
@@ -54,11 +54,11 @@ Můžete získat další podrobnosti o relativních výhodách [jednotlivých pr
 ### <a name="how-can-i-configure-a-node-to-support-monitoring-using-tcp-protocol"></a>Jak můžu nakonfigurovat uzel pro podporu monitorování pomocí protokolu TCP?
 Pro uzel, který podporuje monitorování pomocí protokolu TCP: 
 * Ujistěte se, že platforma Node je Windows Server (2008 SP1 nebo novější).
-* Na uzlu spusťte skript prostředí PowerShell [EnableRules. ps1](https://aka.ms/npmpowershellscript) . Další podrobnosti najdete v [pokynech](../../azure-monitor/insights/network-performance-monitor.md#configure-log-analytics-agents-for-monitoring) .
+* Spusťte [EnableRules.ps1](https://aka.ms/npmpowershellscript) skriptu PowerShellu na uzlu. Další podrobnosti najdete v [pokynech](../../azure-monitor/insights/network-performance-monitor.md#configure-log-analytics-agents-for-monitoring) .
 
 
 ### <a name="how-can-i-change-the-tcp-port-being-used-by-npm-for-monitoring"></a>Jak můžu změnit port TCP používaný službou NPM ke sledování?
-Port TCP, který používá NPM pro monitorování, můžete změnit spuštěním skriptu [EnableRules. ps1](https://aka.ms/npmpowershellscript) . Je nutné zadat číslo portu, který chcete použít jako parametr. Chcete-li například povolit TCP na portu 8060, spusťte `EnableRules.ps1 8060`příkaz. Ujistěte se, že používáte stejný port TCP na všech uzlech, které jsou používány pro monitorování.
+Port TCP, který používá NPM k monitorování, můžete změnit spuštěním skriptu [EnableRules.ps1](https://aka.ms/npmpowershellscript) . Je nutné zadat číslo portu, který chcete použít jako parametr. Chcete-li například povolit TCP na portu 8060, spusťte příkaz `EnableRules.ps1 8060` . Ujistěte se, že používáte stejný port TCP na všech uzlech, které jsou používány pro monitorování.
 
 Skript nakonfiguruje pouze místní bránu firewall systému Windows. Pokud máte pravidla brány firewall sítě nebo skupiny zabezpečení sítě (NSG), ujistěte se, že povolují provoz určený pro port TCP používaný v NPM.
 
@@ -149,19 +149,19 @@ Pro informace o úrovni partnerského vztahu MS použijte níže uvedený dotaz 
 
     NetworkMonitoring 
      | where SubType == "ERMSPeeringUtilization"
-     | project  CircuitName,PeeringName,PrimaryBytesInPerSecond,PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
+     | project  CircuitName,PeeringName,BitsInPerSecond,BitsOutPerSecond 
     
 Informace o úrovni privátního partnerského vztahu najdete níže uvedeným dotazem v hledání v protokolu.
 
     NetworkMonitoring 
      | where SubType == "ERVNetConnectionUtilization"
-     | project  CircuitName,PeeringName,PrimaryBytesInPerSecond,PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
+     | project  CircuitName,PeeringName,BitsInPerSecond,BitsOutPerSecond
   
 Pro informace o úrovni okruhu použijte níže uvedený dotaz v hledání v protokolu
 
     NetworkMonitoring 
         | where SubType == "ERCircuitTotalUtilization"
-        | project CircuitName, PrimaryBytesInPerSecond, PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
+        | project CircuitName, BitsInPerSecond, BitsOutPerSecond
 
 ### <a name="which-regions-are-supported-for-npms-performance-monitor"></a>Které oblasti jsou podporovány pro monitor výkonu NPM?
 NPM může monitorovat propojení mezi sítěmi v jakékoli části světa, od pracovního prostoru hostovaného v některé z [podporovaných oblastí](../../azure-monitor/insights/network-performance-monitor.md#supported-regions) .
@@ -213,7 +213,7 @@ K tomu může dojít, pokud hostitelská brána firewall nebo zprostředkující
 * Pokud chcete ověřit, jestli zprostředkující síťová brána firewall nebo Azure NSG neblokuje komunikaci na požadovaném portu, použijte nástroj PsPing třetí strany pomocí následujících pokynů:
   * Nástroj psping je k dispozici ke stažení [zde](https://technet.microsoft.com/sysinternals/psping.aspx) . 
   * Spusťte následující příkaz ze zdrojového uzlu.
-    * psping-n 15 \<cílový uzel IPAddress\>:p ORTNUMBER ve výchozím nastavení npm používá port 8084. V případě, že jste je explicitně změnili pomocí skriptu EnableRules. ps1, zadejte vlastní číslo portu, které používáte). Toto je příkaz k odeslání z Azure Machine do místního počítače.
+    * psping-n 15 \<destination node IPAddress\> :P Ortnumber ve výchozím nastavení npm používá port 8084. V případě, že jste to explicitně změnili pomocí skriptu EnableRules.ps1, zadejte vlastní číslo portu, které používáte). Toto je příkaz k odeslání z Azure Machine do místního počítače.
 * Ověřte, zda jsou příkazy if-Tests úspěšné. Pokud ne, znamená to, že zprostředkující síťová brána firewall nebo Azure NSG blokuje provoz na tomto portu.
 * Nyní spusťte příkaz z cílového uzlu na IP adresu zdrojového uzlu.
 
@@ -222,7 +222,7 @@ K tomu může dojít, pokud hostitelská brána firewall nebo zprostředkující
 Jelikož síťové cesty mezi A a B můžou být odlišné od síťových cest mezi B a a, může být zjištěna jiná hodnota pro ztrátu a latenci.
 
 ### <a name="why-are-all-my-expressroute-circuits-and-peering-connections-not-being-discovered"></a>Proč se všechny moje okruhy ExpressRoute a připojení partnerských vztahů neobjevují?
-NPM nyní zjišťuje okruhy ExpressRoute a připojení partnerských vztahů ve všech předplatných, ke kterým má uživatel přístup. Vyberte všechna předplatná, kde jsou připojené prostředky Express Route, a povolte monitorování každého zjištěného prostředku. NPM vyhledá objekty připojení při zjišťování privátního partnerského vztahu, zkontrolujte prosím, jestli je virtuální síť přidružená k partnerskému vztahu.
+NPM nyní zjišťuje okruhy ExpressRoute a připojení partnerských vztahů ve všech předplatných, ke kterým má uživatel přístup. Vyberte všechna předplatná, kde jsou připojené prostředky Express Route, a povolte monitorování každého zjištěného prostředku. NPM vyhledá objekty připojení při zjišťování privátního partnerského vztahu, zkontrolujte prosím, jestli je virtuální síť přidružená k partnerskému vztahu. NPM nedetekuje okruhy a partnerské vztahy, které jsou v jiném tenantovi, z pracovního prostoru Log Analytics.
 
 ### <a name="the-er-monitor-capability-has-a-diagnostic-message-traffic-is-not-passing-through-any-circuit-what-does-that-mean"></a>Funkce monitoru ER má diagnostickou zprávu "přenos neprojde žádným okruhem". Co to znamená?
 
@@ -233,6 +233,12 @@ K tomu může dojít v následujícím případě:
 * Okruh ER je mimo provoz.
 * Filtry tras jsou nakonfigurovány tak, aby měly přednost jiným trasám (například připojení VPN nebo jinému okruhu ExpressRoute) prostřednictvím zamýšleného okruhu ExpressRoute. 
 * Místní a uzly Azure zvolené pro monitorování okruhu ExpressRoute v konfiguraci monitorování, neexistují vzájemně propojeny přes zamýšlený okruh ExpressRoute. Ujistěte se, že jste vybrali správné uzly, které mají vzájemnou konektivitu přes okruh ExpressRoute, který chcete monitorovat.
+
+### <a name="why-does-expressroute-monitor-report-my-circuitpeering-as-unhealthy-when-it-is-available-and-passing-data"></a>Proč nástroj ExpressRoute monitor hlásí, že je můj okruh/partnerský vztah ve stavu není v pořádku, pokud je k dispozici a předávání dat.
+ExpressRoute monitor porovnává hodnoty výkonu sítě (ztráty, latence a využití šířky pásma) hlášené agenty/službou a hodnotami prahové hodnoty nastavené během konfigurace. U okruhu, pokud je nahlášená využití šířky pásma větší než prahová hodnota nastavená v konfiguraci, je okruh označený jako není v pořádku. U partnerských vztahů, pokud je nahlášená ztráta, latence nebo využití šířky pásma větší než prahová hodnota nastavená v konfiguraci, je partnerský vztah označen jako není v pořádku. NPM nevyužívá metriky ani žádnou jinou formu dat do deicde stavu.
+
+### <a name="why-does-expressroute-monitorbandwidth-utilisation-report-a-value-differrent-from-metrics-bits-inout"></a>Proč služba využití ExpressRoute Monitor'bandwidth nahlásí hodnotu jinou z metriky v/v.
+V případě monitorování ExpressRoute je šířka pásma utiliation průměrem příchozí a odchozí šířky pásma za posledních 20 minut, které se vyjadřují v bitech za sekundu. V případě metriky Express Route je bitová/výstupní data za minutu datových bodů. Vnitřně použitá datová sada pro obojí je stejná, ale agregace valies mezi NPM a ER metrikami. Pro podrobné a rychlé výstrahy monitorování a rychlých výstrah doporučujeme nastavit výstrahy přímo na metrikách ER.
 
 ### <a name="while-configuring-monitoring-of-my-expressroute-circuit-the-azure-nodes-are-not-being-detected"></a>Při konfiguraci monitorování okruhu ExpressRoute se uzly Azure nezjišťují.
 K tomu může dojít, pokud jsou uzly Azure připojené prostřednictvím Operations Manager. Funkce monitorování ExpressRoute podporuje jenom uzly Azure, které jsou připojené jako přímí agenti.
@@ -263,7 +269,7 @@ K tomu může dojít, pokud cílová služba není webová aplikace, ale test je
 Proces NPM je nakonfigurován tak, aby se zastavil, pokud využívá více než 5% prostředků hostitelského procesoru. K tomu je potřeba zajistit, aby se uzly používaly pro běžné úlohy, aniž by to mělo vliv na výkon.
 
 ### <a name="does-npm-edit-firewall-rules-for-monitoring"></a>Upravuje NPM pravidla brány firewall pro monitorování?
-NPM na uzlech, na kterých je spuštěný skript prostředí PowerShell EnableRules. ps1, vytvoří jenom místní pravidlo brány Windows Firewall, které agentům umožní vytvářet připojení TCP mezi sebou na zadaném portu. Řešení nemění pravidla brány firewall sítě ani skupiny zabezpečení sítě (NSG).
+NPM na uzlech EnableRules.ps1, na kterých je spuštěný skript PowerShellu, vytvoří jenom místní pravidlo brány Windows Firewall, které agentům umožní vytvářet připojení TCP mezi sebou na zadaném portu. Řešení nemění pravidla brány firewall sítě ani skupiny zabezpečení sítě (NSG).
 
 ### <a name="how-can-i-check-the-health-of-the-nodes-being-used-for-monitoring"></a>Jak můžu ověřit stav uzlů používaných k monitorování?
 Stav uzlů používaných k monitorování můžete zobrazit z následujícího zobrazení: Network Performance Monitor-> konfigurace > uzlů. Pokud uzel není v pořádku, můžete zobrazit podrobnosti o chybě a provést navrhovanou akci.

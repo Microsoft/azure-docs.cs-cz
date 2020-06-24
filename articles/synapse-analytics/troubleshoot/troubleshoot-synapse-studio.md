@@ -4,15 +4,16 @@ description: Řešení potíží s Azure synapse Studio
 author: julieMSFT
 ms.service: synapse-analytics
 ms.topic: conceptual
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: ede38317762e5aac5562c9bb3494713c3edacc69
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 20978a6389c790575fa26258c4468f891af733ff
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81431316"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85211455"
 ---
 # <a name="azure-synapse-studio-preview-troubleshooting"></a>Řešení potíží s Azure synapse Studio (Preview)
 
@@ -90,7 +91,7 @@ Při nahlášení problému můžete případně pořídit snímek obrazovky s k
 
 ![Vývojář – nástroj – Konzola](media/troubleshooting-synapse-studio/developer-tool-console.png)
 
-Pokud připojujete snímky obrazovky, zadejte čas (nebo odhadovaný časový rozsah), kdy jste snímky obrazovky pořídili. Při hledání problému nám pomůže.
+Pokud přidáváte snímky obrazovky, zadejte čas (nebo odhadovaný časový rozsah), kdy jste pořídili snímky obrazovky. Při hledání problému nám pomůže.
 
 Některé prohlížeče podporují zobrazování časových razítek na kartě konzola. V případě chromového okraje/Chromu otevřete dialog "nastavení" v "Vývojářské nástroje" a na kartě Předvolby zrušte "Zobrazit časová razítka".
 
@@ -99,4 +100,4 @@ Některé prohlížeče podporují zobrazování časových razítek na kartě k
 ![Zobrazit časové razítko](media/troubleshooting-synapse-studio/show-time-stamp.png)
 
 ## <a name="next-steps"></a>Další kroky
-Pokud vám předchozí kroky nepomohly vyřešit problém s [vytvořením lístku podpory](../../sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+Pokud předchozí kroky nepomohly vyřešit váš problém [Vytvoření lístku podpory](../../sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)

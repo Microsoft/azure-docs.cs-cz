@@ -9,14 +9,14 @@ editor: cgronlun
 ms.assetid: c54d41e1-0300-46ef-bbfc-d6f7dca85086
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/15/2017
-ms.openlocfilehash: 45acac646fece808065d12081bdc28eff92a1b79
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 71516641ab5110511d58f7e453759271aff9885a
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84119333"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84705827"
 ---
 # <a name="enable-logging-for-azure-machine-learning-studio-classic-web-services"></a>Povolit protokolování pro webové služby Azure Machine Learning Studio (Classic)
 
@@ -52,7 +52,7 @@ Protokolování se povoluje na portálu [Web Services pro Azure Machine Learning
 
    2. V části **Blob Service** klikněte na **Kontejnery**.
 
-   3. Pokud kontejner **ml-Diagnostics** neexistuje, klikněte na **+ kontejner**, udělte kontejneru název "ml-Diagnostics" a vyberte **typ přístupu** jako "blob". Klikněte na tlačítko **OK**.
+   3. Pokud kontejner **ml-Diagnostics** neexistuje, klikněte na **+ kontejner**, udělte kontejneru název "ml-Diagnostics" a vyberte **typ přístupu** jako "blob". Klikněte na **OK**.
 
       ![Vytvořit nový kontejner pro uložení diagnostických protokolů](./media/web-services-logging/create-ml-diagnostics-container.png)
 

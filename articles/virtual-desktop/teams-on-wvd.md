@@ -4,16 +4,16 @@ description: Jak používat Microsoft Teams na virtuálním počítači s Window
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8b065a79abe4a4f5c23e28be111b09e51e5e6484
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: 0b2ef8a944af9f80dd65ce75869bcf4e3156c63f
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84667042"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254901"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Použití Microsoft Teams na virtuálním počítači s Windows
 
@@ -42,7 +42,7 @@ V této části se dozvíte, jak nainstalovat desktopovou aplikaci Teams na Wind
 
 ### <a name="prepare-your-image-for-teams"></a>Příprava image pro týmy
 
-Pokud chcete povolit týmy pro instalaci na počítač, nastavte na hostiteli následující klíč registru:
+Pokud chcete povolit optimalizaci médií pro týmy, nastavte na hostiteli následující klíč registru:
 
 1. V nabídce Start spusťte program **Regedit** jako správce. Přejděte na **HKEY_LOCAL_MACHINE \software\microsoft\teams**.
 2. Pro klíč Teams vytvořte následující hodnotu:
@@ -57,29 +57,39 @@ Nainstalujte do image virtuálního počítače [službu WebSocket](https://quer
 
 ### <a name="install-microsoft-teams"></a>Instalace Microsoft Teams
 
-Aplikaci Teams Desktop můžete nasadit pomocí instalace pro jednotlivé počítače. Instalace Microsoft Teams do prostředí virtuálních počítačů s Windows:
+Aplikaci Teams Desktop můžete nasadit pomocí instalace pro jednotlivé počítače nebo uživatele. Instalace Microsoft Teams do prostředí virtuálních počítačů s Windows:
 
 1. Stáhněte [balíček MSI Teams](/microsoftteams/teams-for-vdi#deploy-the-teams-desktop-app-to-the-vm/) , který odpovídá vašemu prostředí. Doporučujeme použít 64 instalačního programu na 64 operačním systému.
 
       > [!NOTE]
       > Optimalizace médií pro Microsoft Teams vyžaduje týmy aplikace pro stolní počítače verze 1.3.00.4461 nebo novější.
 
-2. Spuštěním tohoto příkazu nainstalujete MSI na hostitelský virtuální počítač.
+2. Spusťte jeden z následujících příkazů k instalaci MSI na hostitelský virtuální počítač:
 
-      ```console
-      msiexec /i <path_to_msi> /l*v <install_logfile_name> ALLUSER=1 ALLUSERS=1
-      ```
+    - Instalace vázaná na uživatele
 
-      Tím se nainstalují týmy do složky Program Files (x86) v operačním systému 64 a do složky Program Files v 32 operačním systému. V tuto chvíli je instalace zlaté image dokončená. Instalace týmů na počítač se vyžaduje pro netrvalá nastavení.
+        ```powershell
+        msiexec /i <path_to_msi> /l*v <install_logfile_name> ALLUSERS=1
+        ```
 
-      Při příštím otevření týmů v relaci budete požádáni o zadání vašich přihlašovacích údajů.
+        Tento proces je výchozí instalací, která nainstaluje týmy do složky uživatele **% data%** . Týmy nebudou správně fungovat s instalací pro jednotlivé uživatele při netrvalé instalaci.
 
-      > [!NOTE]
-      > Uživatelé a správci nemůžou v současné době přihlášení zakázat automatické spuštění pro týmy.
+    - Instalace vázaná na počítač
 
-      Pokud chcete odinstalovat MSI z hostitelského virtuálního počítače, spusťte tento příkaz:
+        ```powershell
+        msiexec /i <path_to_msi> /l*v <install_logfile_name> ALLUSER=1 ALLUSERS=1
+        ```
 
-      ```console
+        Tím se nainstalují týmy do složky Program Files (x86) v operačním systému 64 a do složky Program Files v 32 operačním systému. V tuto chvíli je instalace zlaté image dokončená. Instalace týmů na počítač se vyžaduje pro netrvalá nastavení.
+
+        Při příštím otevření týmů v relaci budete požádáni o zadání vašich přihlašovacích údajů.
+
+        > [!NOTE]
+        > Uživatelé a správci nemůžou v současné době přihlášení zakázat automatické spuštění pro týmy.
+
+3. Pokud chcete odinstalovat MSI z hostitelského virtuálního počítače, spusťte tento příkaz:
+
+      ```powershell
       msiexec /passive /x <msi_name> /l*v <uninstall_logfile_name>
       ```
 
@@ -137,7 +147,7 @@ Pokud narazíte na problémy s voláními a schůzkami, Shromážděte protokoly
 
 ## <a name="contact-microsoft-teams-support"></a>Kontaktujte podporu Microsoft Teams
 
-Pokud chcete kontaktovat podporu Microsoft teams, otevřete [Centrum pro správu Microsoft 365](https://docs.microsoft.com/microsoft-365/admin/contact-support-for-business-products?view=o365-worldwide&tabs=online).
+Pokud chcete kontaktovat podporu Microsoft teams, otevřete [Centrum pro správu Microsoft 365](/microsoft-365/admin/contact-support-for-business-products).
 
 ## <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>Přizpůsobení vlastností protokol RDP (Remote Desktop Protocol) pro fond hostitelů
 
@@ -145,7 +155,7 @@ Přizpůsobení vlastností protokol RDP (Remote Desktop Protocol) (RDP) fondu h
 
 Povolení přesměrování zařízení není nutné při použití týmů s optimalizací médií. Pokud používáte týmy bez optimalizace médií, nastavte následující vlastnosti protokolu RDP tak, aby umožňovaly přesměrování mikrofonu a kamery:
 
-- `audiocapturemode:i:1`povolí záznam zvuku z místních zařízení a aplikací redirets audio ve vzdálené relaci.
+- `audiocapturemode:i:1`povolí záznam zvuku z místního zařízení a přesměruje zvukové aplikace ve vzdálené relaci.
 - `audiomode:i:0`přehrává zvuk na místním počítači.
 - `camerastoredirect:s:*`přesměruje všechny kamery.
 

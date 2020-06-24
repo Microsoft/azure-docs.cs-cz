@@ -4,15 +4,16 @@ description: Článek s vysvětlením spravovaných privátních koncových bod�
 author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: overview
+ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: dc748260c6e71eaaa469defb227d5cc2748a1345
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ac62b1706749c4708d804dd2102ad3f2a7132a16
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83645309"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85193647"
 ---
 # <a name="synapse-managed-private-endpoints-preview"></a>Spravované privátní koncové body synapse (Preview)
 
@@ -48,7 +49,7 @@ Když se vytvoří pracovní prostor, vytvoří Azure synapse dva spravované pr
 
 Tyto dva spravované privátní koncové body jsou uvedené v Azure synapse studiu. V levém navigačním panelu vyberte **Spravovat** a potom v nástroji Studio vyberte **spravované virtuální sítě** .
 
-Spravovaný privátní koncový bod, který cílí na fond SQL, se nazývá *synapse-WS-SQL--název \< pracovního prostoru \> * a ta, která cílí na SQL na vyžádání, se nazývá *synapse-WS-sqlOnDemand \< \> --Workspace*.
+Spravovaný privátní koncový bod, který cílí na fond SQL, se nazývá *synapse-WS- \<workspacename\> SQL--* a ta, která cílí na SQL na vyžádání, se nazývá *synapse-WS \<workspacename\> -sqlOnDemand--*.
 ![Spravované soukromé koncové body pro fond SQL a SQL na vyžádání](./media/synapse-workspace-managed-private-endpoints/managed-pe-for-sql-1.png)
 
 Při vytváření pracovního prostoru Azure synapse se automaticky vytvoří tyto dva spravované privátní koncové body. Neúčtují se vám poplatky za tyto dva spravované privátní koncové body.

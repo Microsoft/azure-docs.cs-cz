@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 01/31/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: df06c4c55941f4424d6b90d2846af17bf055b2e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: df5755c585d99333bf0c64ca08705309b4d4fc58
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80885459"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253116"
 ---
 # <a name="scenario-daemon-application-that-calls-web-apis"></a>Scénář: aplikace démona, která volá webová rozhraní API
 
@@ -38,7 +38,7 @@ Tady je několik příkladů případů použití pro aplikace démona:
 - Aplikace klasické pracovní plochy (například služby systému Windows v procesech Windows nebo démon na platformě Linux), které provádějí dávkové úlohy nebo služby operačního systému běžící na pozadí
 - Webová rozhraní API, která potřebují manipulovat s adresáři, ne konkrétními uživateli
 
-Existují další běžné případy, kdy aplikace bez démona používají přihlašovací údaje klienta: i když jednají jménem uživatelů, potřebují pro technické důvody přístup k webovému rozhraní API nebo prostředku v rámci vlastní identity. Příkladem je přístup k tajným klíčům v Azure Key Vault nebo databázi SQL Azure pro mezipaměť.
+Existují další běžné případy, kdy aplikace bez démona používají přihlašovací údaje klienta: i když jednají jménem uživatelů, potřebují pro technické důvody přístup k webovému rozhraní API nebo prostředku v rámci vlastní identity. Příkladem je přístup k tajným klíčům v Azure Key Vault nebo Azure SQL Database mezipaměti.
 
 Aplikace, které získají token pro vlastní identity:
 

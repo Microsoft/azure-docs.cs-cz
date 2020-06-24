@@ -4,19 +4,19 @@ description: Zjistěte, jak můžete pochopit dopad zásad podmíněného přís
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
-ms.date: 02/25/2020
+ms.topic: conceptual
+ms.date: 06/22/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc87b434664ba12cefeb233972e749f631d8a2b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 30d9ca806a7ddaf7d6ba657d8224d312a6aae33b
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77620691"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253133"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Řešení potíží pomocí nástroje What If v podmíněném přístupu
 
@@ -40,7 +40,7 @@ V **nástroji what if podmíněného přístupu**musíte nejprve nakonfigurovat 
      
 V dalším kroku můžete iniciovat spuštění simulace, které vyhodnotí vaše nastavení. Pouze zásady, které jsou povoleny, jsou součástí zkušebního běhu.
 
-Po dokončení vyhodnocení nástroj vygeneruje sestavu ovlivněných zásad.
+Po dokončení vyhodnocení nástroj vygeneruje sestavu ovlivněných zásad. Pokud chcete získat další informace o zásadách podmíněného přístupu, [přehledy podmíněného přístupu a vytváření sestav](howto-conditional-access-insights-reporting.md) můžou poskytnout další podrobnosti o zásadách v režimu pouze sestavy a aktuálně povolených zásadách.
 
 ## <a name="running-the-tool"></a>Spuštění nástroje
 
@@ -104,6 +104,5 @@ V seznamu zásad, které se nevztahují na uživatele, můžete najít také dů
 
 ## <a name="next-steps"></a>Další kroky
 
-- Pokud chcete zjistit, jak nakonfigurovat zásady podmíněného přístupu, přečtěte si téma [vyžádání MFA pro konkrétní aplikace s Azure Active Directory podmíněný přístup](app-based-mfa.md).
-- Pokud jste připraveni ke konfiguraci zásad podmíněného přístupu pro vaše prostředí, přečtěte si [osvědčené postupy pro podmíněný přístup v Azure Active Directory](best-practices.md). 
-- Pokud chcete migrovat klasické zásady, přečtěte si téma [migrace klasických zásad v Azure Portal](policy-migration.md)  
+- Další informace o aplikaci zásad podmíněného přístupu najdete v režimu pouze sestavy s použitím [přehledů a vytváření sestav podmíněného přístupu](howto-conditional-access-insights-reporting.md).
+- Pokud jste připraveni ke konfiguraci zásad podmíněného přístupu pro vaše prostředí, přečtěte si téma [společné zásady podmíněného přístupu](concept-conditional-access-policy-common.md). 

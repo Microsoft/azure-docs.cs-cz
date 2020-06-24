@@ -52,4 +52,4 @@ ms.locfileid: "67174721"
 
     ![Souhrn](./media/site-recovery-add-configuration-server/combined-wiz10.png)
 
-Po dokončení registrace se server zobrazí v okně **Nastavení** > **servery** v trezoru.
+Po dokončení registrace se server zobrazí v okně **Nastavení**  >  **servery** v trezoru.

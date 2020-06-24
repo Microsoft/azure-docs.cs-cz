@@ -5,15 +5,15 @@ description: Naučte se, jak vytvořit vlastní test pro Application Gateway pom
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: f720a94d3467ce15ea5d58a8ece6de2a669f6258
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1a244cd17ecf1f6165936d86791f9b2e320666c2
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81312590"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807159"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>Vytvoření vlastního testu pro Azure Application Gateway pomocí prostředí PowerShell pro Azure Resource Manager
 
@@ -77,7 +77,7 @@ $subnet = $vnet.Subnets[0]
 
 ### <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>Vytvoření veřejné IP adresy pro front-end konfiguraci
 
-Vytvořte prostředek veřejné IP adresy **publicIP01** ve skupině prostředků **appgw-rg** pro oblast USA – západ. V tomto příkladu se používá veřejná IP adresa pro front-end IP adresu aplikační brány.  Služba Application Gateway vyžaduje, aby veřejná IP adresa měla dynamicky vytvořený název DNS, `-DomainNameLabel` takže nejde zadat během vytváření veřejné IP adresy.
+Vytvořte prostředek veřejné IP adresy **publicIP01** ve skupině prostředků **appgw-rg** pro oblast USA – západ. V tomto příkladu se používá veřejná IP adresa pro front-end IP adresu aplikační brány.  Služba Application Gateway vyžaduje, aby veřejná IP adresa měla dynamicky vytvořený název DNS, takže `-DomainNameLabel` nejde zadat během vytváření veřejné IP adresy.
 
 ```powershell
 $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name publicIP01 -Location 'West US' -AllocationMethod Dynamic

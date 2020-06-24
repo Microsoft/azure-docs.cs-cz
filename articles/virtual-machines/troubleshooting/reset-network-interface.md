@@ -13,11 +13,11 @@ ms.topic: troubleshooting
 ms.date: 11/16/2018
 ms.author: genli
 ms.openlocfilehash: a8bd12d98b76d5848753987c4f7bcb76d4e2266d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250072"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84706592"
 ---
 # <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>Jak resetovat síťové rozhraní pro virtuální počítač Azure s Windows 
 
@@ -117,7 +117,7 @@ K resetování síťového rozhraní použijte tento postup:
 Po provedení vzdálené plochy k počítači je nutné odstranit staré síťové karty, aby nedocházelo k potenciálním potížím:
 
 1.  Spusťte Správce zařízení.
-2.  Vyberte **Zobrazit** > **Zobrazit skrytá zařízení**.
+2.  Vyberte **Zobrazit**  >  **Zobrazit skrytá zařízení**.
 3.  Vyberte **síťové adaptéry**. 
 4.  Vyhledejte adaptéry s názvem Microsoft Hyper-V síťový adaptér.
 5.  Může se zobrazit nedostupný adaptér, který je šedý. Klikněte pravým tlačítkem na adaptér a pak vyberte odinstalovat.

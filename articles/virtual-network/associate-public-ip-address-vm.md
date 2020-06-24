@@ -8,17 +8,17 @@ author: asudbring
 ms.service: virtual-network
 ms.subservice: ip-services
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: allensu
-ms.openlocfilehash: 2170a4d5f66cf6d1f699ae943f2a80b1b8127e39
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cc09cec1e6df9ec671fa98ae35562a639dce4cd8
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82146586"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707612"
 ---
 # <a name="associate-a-public-ip-address-to-a-virtual-machine"></a>Přidružení veřejné IP adresy k virtuálnímu počítači
 
@@ -64,7 +64,7 @@ K virtuálnímu počítači můžete přidružit veřejnou IP adresu pomocí [Az
 
 Nainstalujte rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)nebo použijte Azure Cloud Shell. Služba Azure Cloud Shell je volně dostupné prostředí Bash, které můžete spustit přímo z portálu Azure Portal. Má předinstalované rozhraní Azure CLI, které je nakonfigurované pro použití s vaším účtem. V následujících příkazech rozhraní příkazového řádku vyberte tlačítko **vyzkoušet** . Výběrem možnosti **vyzkoušet** vyvoláte Cloud Shell, pomocí které se můžete přihlásit ke svému účtu Azure.
 
-1. Pokud používáte rozhraní příkazového řádku místně v bash, přihlaste `az login`se k Azure pomocí.
+1. Pokud používáte rozhraní příkazového řádku místně v bash, přihlaste se k Azure pomocí `az login` .
 2. Veřejná IP adresa je přidružená ke konfiguraci protokolu IP síťového rozhraní připojeného k virtuálnímu počítači. Pomocí příkazu [AZ Network nic-IP-config Update](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-update) PŘIDRUŽTE veřejnou IP adresu ke konfiguraci protokolu IP. Následující příklad přidruží existující veřejnou IP adresu s názvem *myVMPublicIP* k konfiguraci protokolu IP s názvem *ipconfigmyVM* stávajícího síťového rozhraní s názvem *myVMVMNic* , které existuje ve skupině prostředků s názvem *myResourceGroup*.
   
    ```azurecli-interactive
@@ -119,7 +119,7 @@ Nainstalujte rozhraní příkazového [řádku Azure](/cli/azure/install-azure-c
 
 Nainstalujte [PowerShell](/powershell/azure/install-az-ps)nebo použijte Azure Cloud Shell. Služba Azure Cloud Shell je volně dostupné prostředí, které můžete spustit přímo z portálu Azure Portal. Má předinstalované prostředí PowerShell a je nakonfigurováno pro použití s vaším účtem. V následujících příkazech PowerShellu vyberte tlačítko **vyzkoušet** . Výběrem možnosti **vyzkoušet** vyvoláte Cloud Shell, pomocí které se můžete přihlásit ke svému účtu Azure.
 
-1. Pokud používáte PowerShell místně, přihlaste se k `Connect-AzAccount`Azure pomocí.
+1. Pokud používáte PowerShell místně, přihlaste se k Azure pomocí `Connect-AzAccount` .
 2. Veřejná IP adresa je přidružená ke konfiguraci protokolu IP síťového rozhraní připojeného k virtuálnímu počítači. K získání virtuální sítě a podsítě, ve které je síťové rozhraní, použijte příkazy [Get-AzVirtualNetwork](/powershell/module/Az.Network/Get-AzVirtualNetwork) a [Get-AzVirtualNetworkSubnetConfig](/powershell/module/Az.Network/Get-AzVirtualNetworkSubnetConfig) . Pak použijte příkaz [Get-AzNetworkInterface](/powershell/module/Az.Network/Get-AzNetworkInterface) k získání síťového rozhraní a příkazu [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) k získání existující veřejné IP adresy. Pak pomocí příkazu [set-AzNetworkInterfaceIpConfig](/powershell/module/Az.Network/Set-AzNetworkInterfaceIpConfig) PŘIDRUŽTE veřejnou IP adresu ke konfiguraci protokolu IP a příkazu [set-AzNetworkInterface](/powershell/module/Az.Network/Set-AzNetworkInterface) pro zápis nové konfigurace IP adresy do síťového rozhraní.
 
    Následující příklad přidruží existující veřejnou IP adresu s názvem *myVMPublicIP* k konfiguraci protokolu IP s názvem *ipconfigmyVM* stávajícího síťového rozhraní s názvem *myVMVMNic* , které existuje v podsíti s názvem *myVMSubnet* ve virtuální síti s názvem *myVMVNet*. Všechny prostředky jsou ve skupině prostředků s názvem *myResourceGroup*.

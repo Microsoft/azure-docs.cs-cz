@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 15a2d6ae5d8b80468ffcdd00d60b1f36843ed677
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281064"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707153"
 ---
 # <a name="data-factory-scheduling-and-execution"></a>Plánování a provádění Data Factory
 > [!NOTE]
@@ -25,7 +25,7 @@ ms.locfileid: "79281064"
 Tento článek vysvětluje aspekty plánování a spouštění aplikačního modelu služby Azure Data Factory. V tomto článku se předpokládá, že rozumíte základům Data Factory konceptů aplikačního modelu, včetně aktivit, kanálů, propojených služeb a datových sad. Základní koncepty Azure Data Factory najdete v následujících článcích:
 
 * [Úvodní informace k Data Factory](data-factory-introduction.md)
-* [Kanály](data-factory-create-pipelines.md)
+* [Pipelines](data-factory-create-pipelines.md)
 * [Datové sady](data-factory-create-datasets.md) 
 
 ## <a name="start-and-end-times-of-pipeline"></a>Počáteční a koncové časy kanálu
@@ -61,7 +61,7 @@ Aktivita v kanálu Data Factory může mít nula nebo více vstupních **datový
 
 **Frekvence** v části **dostupnost** Určuje časovou jednotku. Povolené hodnoty četnosti jsou: minuty, hodina, den, týden a měsíc. Vlastnost **interval** v oddílu Availability určuje násobitel pro frekvenci. Příklad: Pokud je frekvence nastavená na den a interval je nastaven na hodnotu 1 pro výstupní datovou sadu, budou výstupní data vyprodukována každý den. Pokud zadáte frekvenci jako minutu, doporučujeme nastavit interval na ne méně než 15. 
 
-V následujícím příkladu jsou vstupní data dostupná každou hodinu a výstupní data se vytvářejí každou hodinu (`"frequency": "Hour", "interval": 1`). 
+V následujícím příkladu jsou vstupní data dostupná každou hodinu a výstupní data se vytvářejí každou hodinu ( `"frequency": "Hour", "interval": 1` ). 
 
 **Vstupní datová sada:** 
 
@@ -182,16 +182,16 @@ V části dostupnost definice datové sady jste viděli použití vlastností č
 ### <a name="dataset-availability"></a>Dostupnost datové sady 
 Následující tabulka obsahuje popis vlastností, které můžete použít v části **dostupnost** :
 
-| Vlastnost | Popis | Požaduje se | Výchozí |
+| Vlastnost | Popis | Vyžadováno | Výchozí |
 | --- | --- | --- | --- |
-| frequency |Určuje časovou jednotku pro produkci řezu datové sady.<br/><br/><b>Podporovaná frekvence</b>: minuta, hodina, den, týden, měsíc |Ano |Není k dispozici |
-| interval |Určuje násobitel pro frekvenci.<br/><br/>Frekvence x interval určuje, jak často se řez vytvoří.<br/><br/>Pokud potřebujete datovou sadu rozdělit na každou hodinu, nastavte <b>četnost</b> na <b>hodinu</b>a <b>interval</b> na <b>1</b>.<br/><br/><b>Poznámka</b>: Pokud zadáte frekvenci jako minutu, doporučujeme nastavit interval na ne méně než 15. |Ano |Není k dispozici |
-|  – styl |Určuje, zda má být řez vytvořen na začátku nebo konci intervalu.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>Pokud je frekvence nastavená na month (měsíc) a Style je nastavená na EndOfInterval, řez se vytvoří během posledního dne v měsíci. Pokud je styl nastaven na StartOfInterval, řez se vytvoří první den v měsíci.<br/><br/>Pokud je frekvence nastavená na den a styl je nastavený na EndOfInterval, řez se vytvoří za poslední hodinu dne.<br/><br/>Pokud je frekvence nastavená na Hour (hodina) a Style je nastavená na EndOfInterval, řez se vytvoří na konci hodiny. Například pro řez v období 1 PM – 2 se vytvoří řez na 2 ODP. |Ne |EndOfInterval |
-| anchorDateTime |Definuje absolutní pozici v čase využívané schedulerem k výpočtu hranic řezu datové sady. <br/><br/><b>Poznámka</b>: Pokud AnchorDateTime obsahuje části s daty, které jsou lépe podrobnější než frekvence, budou podrobnější části ignorovány. <br/><br/>Například pokud je <b>interval</b> <b>každou hodinu</b> (četnost: hodina a interval: 1) a <b>AnchorDateTime</b> obsahuje <b>minuty a sekundy</b>, budou části <b>minut a sekund</b> AnchorDateTime ignorovány. |Ne |01/01/0001 |
-| posun |Časový interval, podle kterého se posune začátek a konec všech řezů datové sady <br/><br/><b>Poznámka</b>: Pokud jsou zadány oba anchorDateTime i offset, výsledkem je kombinovaný posun. |Ne |Není k dispozici |
+| frequency |Určuje časovou jednotku pro produkci řezu datové sady.<br/><br/><b>Podporovaná frekvence</b>: minuta, hodina, den, týden, měsíc |Yes |NA |
+| interval |Určuje násobitel pro frekvenci.<br/><br/>Frekvence x interval určuje, jak často se řez vytvoří.<br/><br/>Pokud potřebujete datovou sadu rozdělit na každou hodinu, nastavte <b>četnost</b> na <b>hodinu</b>a <b>interval</b> na <b>1</b>.<br/><br/><b>Poznámka</b>: Pokud zadáte frekvenci jako minutu, doporučujeme nastavit interval na ne méně než 15. |Yes |NA |
+| style |Určuje, zda má být řez vytvořen na začátku nebo konci intervalu.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>Pokud je frekvence nastavená na month (měsíc) a Style je nastavená na EndOfInterval, řez se vytvoří během posledního dne v měsíci. Pokud je styl nastaven na StartOfInterval, řez se vytvoří první den v měsíci.<br/><br/>Pokud je frekvence nastavená na den a styl je nastavený na EndOfInterval, řez se vytvoří za poslední hodinu dne.<br/><br/>Pokud je frekvence nastavená na Hour (hodina) a Style je nastavená na EndOfInterval, řez se vytvoří na konci hodiny. Například pro řez v období 1 PM – 2 se vytvoří řez na 2 ODP. |No |EndOfInterval |
+| anchorDateTime |Definuje absolutní pozici v čase využívané schedulerem k výpočtu hranic řezu datové sady. <br/><br/><b>Poznámka</b>: Pokud AnchorDateTime obsahuje části s daty, které jsou lépe podrobnější než frekvence, budou podrobnější části ignorovány. <br/><br/>Například pokud je <b>interval</b> <b>každou hodinu</b> (četnost: hodina a interval: 1) a <b>AnchorDateTime</b> obsahuje <b>minuty a sekundy</b>, budou části <b>minut a sekund</b> AnchorDateTime ignorovány. |No |01/01/0001 |
+| posun |Časový interval, podle kterého se posune začátek a konec všech řezů datové sady <br/><br/><b>Poznámka</b>: Pokud jsou zadány oba anchorDateTime i offset, výsledkem je kombinovaný posun. |No |NA |
 
 ### <a name="offset-example"></a>Příklad posunutí
-Ve výchozím nastavení se pro`"frequency": "Day", "interval": 1`každý den () řezy začnou začínat časem UTC (půlnoc). Pokud chcete, aby byl čas zahájení nastavený na hodnotu 6 času UTC, nastavte posun, jak je znázorněno v následujícím fragmentu kódu: 
+Ve výchozím nastavení se pro každý den ( `"frequency": "Day", "interval": 1` ) řezy začnou začínat časem UTC (půlnoc). Pokud chcete, aby byl čas zahájení nastavený na hodnotu 6 času UTC, nastavte posun, jak je znázorněno v následujícím fragmentu kódu: 
 
 ```json
 "availability":
@@ -202,7 +202,7 @@ Ve výchozím nastavení se pro`"frequency": "Day", "interval": 1`každý den ()
 }
 ```
 ### <a name="anchordatetime-example"></a>Příklad anchorDateTime
-V následujícím příkladu se datová sada vytvoří jednou za 23 hodin. První řez začíná v čase určeném parametrem anchorDateTime, který je nastaven na `2017-04-19T08:00:00` hodnotu (čas UTC).
+V následujícím příkladu se datová sada vytvoří jednou za 23 hodin. První řez začíná v čase určeném parametrem anchorDateTime, který je nastaven na hodnotu `2017-04-19T08:00:00` (čas UTC).
 
 ```json
 "availability":    
@@ -214,7 +214,7 @@ V následujícím příkladu se datová sada vytvoří jednou za 23 hodin. Prvn�
 ```
 
 ### <a name="offsetstyle-example"></a>Příklad posunutí/stylu
-Následující datová sada je měsíční datová sada a je vytvořena na 3. v každém měsíci v 8:00.`3.08:00:00`():
+Následující datová sada je měsíční datová sada a je vytvořena na 3. v každém měsíci v 8:00 `3.08:00:00` . ():
 
 ```json
 "availability": {
@@ -230,10 +230,10 @@ Datová sada může mít definované zásady ověřování, které určují, jak
 
 Oddíl **Policy** v definici datové sady definuje kritéria nebo podmínku, kterou musí řezy datové sady splňovat. Následující tabulka obsahuje popis vlastností, které můžete použít v části **Policy (zásady** ):
 
-| Název zásady | Popis | Použito pro | Požaduje se | Výchozí |
+| Název zásady | Description | Použito pro | Vyžadováno | Výchozí |
 | --- | --- | --- | --- | --- |
-| minimumSizeMB | Ověří, jestli data v **objektu blob Azure** splňují požadavky na minimální velikost (v megabajtech). |Azure Blob |Ne |Není k dispozici |
-| minimumRows | Ověří, jestli data v **databázi SQL Azure** nebo **tabulce Azure** obsahují minimální počet řádků. |<ul><li>Azure SQL Database</li><li>Tabulka Azure</li></ul> |Ne |Není k dispozici |
+| minimumSizeMB | Ověří, jestli data v **objektu blob Azure** splňují požadavky na minimální velikost (v megabajtech). |Azure Blob |No |NA |
+| minimumRows | Ověří, jestli data v **databázi SQL Azure** nebo **tabulce Azure** obsahují minimální počet řádků. |<ul><li>Azure SQL Database</li><li>Tabulka Azure</li></ul> |No |NA |
 
 #### <a name="examples"></a>Příklady
 **minimumSizeMB:**
@@ -266,7 +266,7 @@ Další informace o těchto vlastnostech a příkladech najdete v článku o [vy
 ## <a name="activity-policies"></a>Zásady aktivit
 Zásady ovlivňují chování aktivity za běhu, konkrétně při zpracování řezu tabulky. Podrobnosti jsou uvedeny v následující tabulce.
 
-| Vlastnost | Povolené hodnoty | Výchozí hodnota | Popis |
+| Vlastnost | Povolené hodnoty | Výchozí hodnota | Description |
 | --- | --- | --- | --- |
 | souběžnost |Integer <br/><br/>Maximální hodnota: 10 |1 |Počet souběžných spuštění aktivity.<br/><br/>Určuje počet paralelních spuštění aktivit, ke kterým může dojít v různých řezech. Například pokud aktivita potřebuje projít velkou sadou dostupných dat, větší hodnota souběžnosti zrychluje zpracování dat. |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |Určuje pořadí datových řezů, které jsou zpracovávány.<br/><br/>Například pokud máte 2 řezy (jedna se děje na 16:00 a druhý na 17:00), a obě jsou vyřízeny. Pokud nastavíte executionPriorityOrder na NewestFirst, řez se nejprve zpracuje v 5 odp. Podobně pokud nastavíte executionPriorityORder na OldestFIrst, bude zpracován řez ve 4 PM. |

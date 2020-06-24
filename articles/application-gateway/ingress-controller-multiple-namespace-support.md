@@ -4,15 +4,15 @@ description: Tento článek poskytuje informace o tom, jak povolit podporu více
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 83650e7cf46ec1dede5f25e32114d6469bab24be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2c519792bcf9251f926d305c9611320a18b7c346
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79279920"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84806992"
 ---
 # <a name="enable-multiple-namespace-support-in-an-aks-cluster-with-application-gateway-ingress-controller"></a>Povolení podpory více oborů názvů v clusteru AKS s Application Gatewaym řadičem příchozího přenosu dat
 
@@ -28,7 +28,7 @@ Povolení podpory více oborů názvů:
 1. Upravte soubor [Helm-config. yaml](#sample-helm-config-file) jedním z následujících způsobů:
    - odstraní `watchNamespace` klíč úplně z [Helm-config. yaml](#sample-helm-config-file) -AGIC bude sledovat všechny obory názvů.
    - Nastavte `watchNamespace` na prázdný řetězec – AGIC bude sledovat všechny obory názvů.
-   - Přidání více oborů názvů oddělených čárkou`watchNamespace: default,secondNamespace`() – AGIC budou tyto obory názvů dodržovat výhradně.
+   - Přidání více oborů názvů oddělených čárkou ( `watchNamespace: default,secondNamespace` ) – AGIC budou tyto obory názvů dodržovat výhradně.
 2. použít změny šablony Helm s:`helm install -f helm-config.yaml application-gateway-kubernetes-ingress/ingress-azure`
 
 Po nasazení s možností sledovat více oborů názvů bude AGIC:
@@ -44,7 +44,7 @@ V horní části hierarchie – **naslouchací procesy** (IP adresa, port a host
 
 Na dalších cestách, fondech back-endu, nastavení HTTP a certifikáty TLS může vytvořit jenom jeden obor názvů a duplikáty se odeberou.
 
-Představte si třeba následující duplicitní obory názvů `staging` příchozích prostředků příchozího přenosu dat a `production` pro: `www.contoso.com`
+Představte si třeba následující duplicitní obory názvů příchozích prostředků příchozího přenosu dat `staging` a `production` pro `www.contoso.com` :
 ```yaml
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -81,7 +81,7 @@ spec:
               servicePort: 80
 ```
 
-I když dva prostředky příchozího přenosu dat pro `www.contoso.com` přesměrování na příslušné obory názvů Kubernetes, může provoz obsluhovat jenom jeden back-end. AGIC by pro jeden z prostředků vytvořila konfiguraci podle "prvního přidávaného" prvního přidávaného ". Pokud jsou dva příchozí prostředky vytvářeny současně, bude mít přednost ta, která byla dříve v abecedě. Z výše uvedeného příkladu budeme moct vytvořit nastavení pro `production` příchozí přenos dat. Application Gateway budou konfigurovány s následujícími prostředky:
+I když dva prostředky příchozího přenosu dat pro `www.contoso.com` přesměrování na příslušné obory názvů Kubernetes, může provoz obsluhovat jenom jeden back-end. AGIC by pro jeden z prostředků vytvořila konfiguraci podle "prvního přidávaného" prvního přidávaného ". Pokud jsou dva příchozí prostředky vytvářeny současně, bude mít přednost ta, která byla dříve v abecedě. Z výše uvedeného příkladu budeme moct vytvořit nastavení pro příchozí přenos dat `production` . Application Gateway budou konfigurovány s následujícími prostředky:
 
   - Služby`fl-www.contoso.com-80`
   - Pravidlo směrování:`rr-www.contoso.com-80`
@@ -89,15 +89,15 @@ I když dva prostředky příchozího přenosu dat pro `www.contoso.com` přesm�
   - Nastavení HTTP:`bp-production-contoso-web-service-80-80-websocket-ingress`
   - Sonda stavu:`pb-production-contoso-web-service-80-websocket-ingress`
 
-Všimněte si, že kromě pravidla *naslouchacího procesu* a *Směrování*vytvářené Application Gateway prostředky zahrnují název oboru názvů (`production`), pro který byly vytvořeny.
+Všimněte si, že kromě *pravidla* *naslouchacího procesu* a směrování vytvářené Application Gateway prostředky zahrnují název oboru názvů ( `production` ), pro který byly vytvořeny.
 
-Pokud jsou tyto dva prostředky příchozího přenosu do clusteru AKS v různých okamžicích v čase, je možné, že AGIC skončí v situaci, kdy překonfiguruje Application Gateway a přesměruje provoz z `namespace-B` na. `namespace-A`
+Pokud jsou tyto dva prostředky příchozího přenosu do clusteru AKS v různých okamžicích v čase, je možné, že AGIC skončí v situaci, kdy překonfiguruje Application Gateway a přesměruje provoz z `namespace-B` na `namespace-A` .
 
-Pokud jste například přidali `staging` jako první, AGIC nakonfiguruje Application Gateway pro směrování provozu do přípravného back-endu. V pozdější fázi zavedení `production` příchozího přenosu dat Application Gateway do `production` back-endu AGIC způsobí, že se služba restartuje. tím se zahájí směrování provozu do back-endového fondu.
+Pokud jste například přidali jako `staging` první, AGIC nakonfiguruje Application Gateway pro směrování provozu do přípravného back-endu. V pozdější fázi zavedení `production` příchozího přenosu dat Application Gateway do back-endu AGIC způsobí, že se služba restartuje. tím se zahájí směrování provozu do `production` back-endového fondu.
 
 ## <a name="restrict-access-to-namespaces"></a>Omezení přístupu k oborům názvů
 Ve výchozím nastavení AGIC nakonfiguruje Application Gateway na základě poznámení s poznámkami v rámci libovolného oboru názvů. Chcete-li toto chování omezit, máte následující možnosti:
-  - Omezte obory názvů tak, že explicitním definováním oborů názvů `watchNamespace` AGIC by měl sledovat klíč YAML v [Helm-config. yaml](#sample-helm-config-file)
+  - Omezte obory názvů tak, že explicitním definováním oborů názvů AGIC by měl sledovat `watchNamespace` klíč YAML v [Helm-config. yaml](#sample-helm-config-file)
   - použití [role/RoleBinding](https://docs.microsoft.com/azure/aks/azure-ad-rbac) k omezení AGIC na konkrétní obory názvů
 
 ## <a name="sample-helm-config-file"></a>Ukázkový konfigurační soubor Helm

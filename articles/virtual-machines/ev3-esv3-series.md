@@ -7,20 +7,20 @@ ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 0121f73da911a9346fd1f142d98246709631a742
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 9fcb714e68548b95ed6d32bb16fb08c43ff0e5fa
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84678099"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707629"
 ---
 # <a name="ev3-and-esv3-series"></a>Řada Ev3 a Esv3
 
-Funkce Ev3 a Esv3-Series je Intel® Xeon® 8171M 2,1 GHz (Skylake) nebo procesory Intel® Xeon® E5-2673 V4 2,3 GHz (Broadwell) v konfiguraci s více vlákny, které poskytují lepší polohu pro většinu úloh pro obecné účely a přinášejí Ev3 do sblížení s virtuálními počítači pro obecné účely většiny ostatních cloudů.  Paměť se rozšířila (od 7 GiB/vCPU do 8 GiB/vCPU), zatímco limity disku a sítě se přizpůsobily na základě počtu jader, aby se přerovnaly k přechodu na vlákno. Ev3 je následná velikost virtuálních počítačů s vysokou pamětí pro řady D/Dv2.
+Ev3 a Esv3-Series běží na Intel® Xeon® Platinum 8272CL (Cascade Lake), nebo Intel® Xeon® 8171M 2,1 GHz (Skylake), nebo procesor Intel® Xeon® E5-2673 V4 2,3 GHz (Broadwell) v konfiguraci s více vlákny, poskytuje lepší hodnotu pro většinu úloh pro obecné účely a přináší Ev3 do sblížení s virtuálními počítači pro obecné účely většiny ostatních cloudů.  Paměť se rozšířila (od 7 GiB/vCPU do 8 GiB/vCPU), zatímco limity disku a sítě se přizpůsobily na základě počtu jader, aby se přerovnaly k přechodu na vlákno. Ev3 je následná velikost virtuálních počítačů s vysokou pamětí pro řady D/Dv2.
 
 ## <a name="ev3-series"></a>Ev3-series
 
-Instance Ev3-Series jsou založené na funkci Intel® Xeon® 8171M 2,1 GHz (Skylake) nebo procesor Intel® Xeon® E5-2673 V4 2,3 GHz (Broadwell) a technologie Intel Turbo pro zvýšení úrovně 2,0. Instance Ev3-series jsou ideální pro podnikové aplikace s vysokými nároky na paměť.
+Instance Ev3-Series běží na Intel® Xeon® Platinum 8272CL (Cascade Lake), Intel® Xeon® 8171M 2,1 GHz (Skylake) nebo procesory Intel® Xeon® E5-2673 V4 2,3 GHz (Broadwell) a funkce technologie Intel Turbo pro zvýšení úrovně 2,0. Instance Ev3-series jsou ideální pro podnikové aplikace s vysokými nároky na paměť.
 
 Úložiště datových disků se účtuje nezávisle na virtuálních počítačích. Pokud chcete použít disky Premium Storage, použijte velikosti ESv3. Měřiče cen a účtování pro velikosti ESv3 jsou stejné jako pro Ev3-series.
 
@@ -54,7 +54,7 @@ jsou k dispozici <sup>1</sup> omezené základní velikosti.
 
 ## <a name="esv3-series"></a>Esv3-Series
 
-Instance Esv3-Series jsou založené na funkci Intel® Xeon® 8171M 2,1 GHz (Skylake) nebo procesor Intel® Xeon® E5-2673 V4 2,3 GHz (Broadwell), 2,0 technologie Intel Turbo pro zvýšení úrovně a využívat Premium Storage. Instance Esv3-Series jsou ideální pro podnikové aplikace náročné na paměť.
+Instance Esv3-Series běží na procesorech Intel® Xeon® Platinum 8272CL (Cascade Lake), Intel® Xeon® 8171M 2,1 GHz (Skylake) nebo procesor Intel® Xeon® E5-2673 V4 2,3 GHz (Broadwell), funkce Intel Turbo pro zvýšení úrovně 2,0 a používat Premium Storage. Instance Esv3-Series jsou ideální pro podnikové aplikace náročné na paměť.
 
 Funkce virtuálního počítače Esv3-Series Intel® technologie Hyper-Threading.
 

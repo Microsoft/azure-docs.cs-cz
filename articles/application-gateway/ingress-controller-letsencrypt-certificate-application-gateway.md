@@ -4,15 +4,15 @@ description: Tento článek poskytuje informace o tom, jak získat certifikát z
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 92e9747865f1a0910c8bae4001cc597ae9ea3da6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: df8722e8160538daa1535711092790dbb2405097
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73957974"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807038"
 ---
 # <a name="use-certificates-with-letsencryptorg-on-application-gateway-for-aks-clusters"></a>Použití certifikátů s LetsEncrypt.org na Application Gateway pro clustery AKS
 
@@ -22,7 +22,7 @@ Použijte následující postup a nainstalujte si [Správce certifikátů](https
 
 1. Graf Helm
 
-    Spusťte následující skript pro instalaci grafu `cert-manager` Helm. Tato akce:
+    Spusťte následující skript pro instalaci `cert-manager` grafu Helm. Tato akce:
 
     - Vytvoření nového `cert-manager` oboru názvů na AKS
     - Vytvořte následující CRDs: Certificate, Challenge, ClusterIssuer, Issuer, Order.
@@ -58,9 +58,9 @@ Použijte následující postup a nainstalujte si [Správce certifikátů](https
 
     Vytvořte `ClusterIssuer` prostředek. To vyžaduje, `cert-manager` aby reprezentuje `Lets Encrypt` certifikační autoritu, ve které se budou nacházet podepsané certifikáty.
 
-    Pomocí `ClusterIssuer` prostředku certifikátů bez oboru názvů vystaví správce certifikátů certifikáty, které lze spotřebovat z více oborů názvů. `Let’s Encrypt`pomocí ACME protokolu ověří, zda máte pod kontrolou daný název domény a vystavení certifikátu. Další podrobnosti o konfiguraci `ClusterIssuer` vlastností [najdete tady](https://docs.cert-manager.io/en/latest/tasks/issuers/index.html). `ClusterIssuer`vyzve `cert-manager` k vystavování certifikátů pomocí `Lets Encrypt` přípravného prostředí, které se používá pro testování (kořenový certifikát, který není přítomen v úložištích prohlížeče nebo klientů).
+    Pomocí prostředku certifikátů bez oboru názvů `ClusterIssuer` vystaví správce certifikátů certifikáty, které lze spotřebovat z více oborů názvů. `Let’s Encrypt`pomocí ACME protokolu ověří, zda máte pod kontrolou daný název domény a vystavení certifikátu. Další podrobnosti o konfiguraci `ClusterIssuer` vlastností [najdete tady](https://docs.cert-manager.io/en/latest/tasks/issuers/index.html). `ClusterIssuer`vyzve `cert-manager` k vystavování certifikátů pomocí `Lets Encrypt` přípravného prostředí, které se používá pro testování (kořenový certifikát, který není přítomen v úložištích prohlížeče nebo klientů).
 
-    Výchozí typ výzvy v YAML níže je `http01`. Další výzvy jsou zdokumentovány na [typech letsencrypt.org-Challenge](https://letsencrypt.org/docs/challenge-types/)
+    Výchozí typ výzvy v YAML níže je `http01` . Další výzvy jsou zdokumentovány na [typech letsencrypt.org-Challenge](https://letsencrypt.org/docs/challenge-types/)
 
     > [!IMPORTANT] 
     > Aktualizace `<YOUR.EMAIL@ADDRESS>` v YAML níže
@@ -95,10 +95,10 @@ Použijte následující postup a nainstalujte si [Správce certifikátů](https
 
 3. Nasazení aplikace
 
-    Vytvořte prostředek příchozího přenosu dat, který `guestbook` vystaví aplikaci pomocí Application Gateway s nástrojem umožňuje šifrovat certifikát.
+    Vytvořte prostředek příchozího přenosu dat, který vystaví `guestbook` aplikaci pomocí Application Gateway s nástrojem umožňuje šifrovat certifikát.
 
-    Ujistěte se, že Application Gateway má veřejnou front-end IP adresu s názvem DNS (buď pomocí `azure.com` výchozí domény, nebo zřídí `Azure DNS Zone` službu a přiřadíte vlastní doménu).
-    Poznamenejte si `certmanager.k8s.io/cluster-issuer: letsencrypt-staging`anotaci, která instruuje správce certifikátů, aby zpracoval tento označený prostředek příchozího přenosu dat.
+    Ujistěte se, že Application Gateway má veřejnou front-end IP adresu s názvem DNS (buď pomocí výchozí `azure.com` domény, nebo zřídí `Azure DNS Zone` službu a přiřadíte vlastní doménu).
+    Poznamenejte si anotaci `certmanager.k8s.io/cluster-issuer: letsencrypt-staging` , která instruuje správce certifikátů, aby zpracoval tento označený prostředek příchozího přenosu dat.
 
     > [!IMPORTANT] 
     > Aktualizujte `<PLACEHOLDERS.COM>` v YAML níže s vaší vlastní doménou (nebo Application Gateway One, například "KH-AKS-Ingress.westeurope.cloudapp.Azure.com").
@@ -127,15 +127,15 @@ Použijte následující postup a nainstalujte si [Správce certifikátů](https
     EOF
     ```
 
-    Po několika sekundách získáte přístup ke `guestbook` službě prostřednictvím adresy URL Application Gateway HTTPS pomocí automaticky vydaného **přípravného** `Lets Encrypt` certifikátu.
-    Prohlížeč vás může upozorňovat na neplatnou certifikační autoritu. Pracovní certifikát vystavil `CN=Fake LE Intermediate X1`. Označuje, že systém fungoval podle očekávání a že jste připravení na produkční certifikát.
+    Po několika sekundách získáte přístup ke `guestbook` službě prostřednictvím adresy url Application Gateway HTTPS pomocí automaticky vydaného **přípravného** `Lets Encrypt` certifikátu.
+    Prohlížeč vás může upozorňovat na neplatnou certifikační autoritu. Pracovní certifikát vystavil `CN=Fake LE Intermediate X1` . Označuje, že systém fungoval podle očekávání a že jste připravení na produkční certifikát.
 
 4. Provozní certifikát
 
     Po úspěšném dokončení instalace můžete přepnout na produkční server, který je k instalaci:
     1. Nahraďte pracovní poznámku u svého prostředku příchozího přenosu pomocí:`certmanager.k8s.io/cluster-issuer: letsencrypt-prod`
-    1. Odstraňte stávající pracovní `ClusterIssuer` postup, který jste vytvořili v předchozím kroku, a vytvořte nový tak, že nahradíte Acme Server z ClusterIssuer YAML výše.`https://acme-v02.api.letsencrypt.org/directory`
+    1. Odstraňte stávající pracovní `ClusterIssuer` postup, který jste vytvořili v předchozím kroku, a vytvořte nový tak, že nahradíte Acme Server z CLUSTERISSUER YAML výše.`https://acme-v02.api.letsencrypt.org/directory`
 
 5. Vypršení platnosti a obnovení certifikátu
 
-    Před vypršením platnosti `Lets Encrypt` certifikátu `cert-manager` bude certifikát automaticky aktualizovat v úložišti tajného kódu Kubernetes. V tomto okamžiku Application Gateway řadič příchozího přenosu dat použije aktualizovaný tajný klíč odkazovaný v prostředcích příchozího přenosu dat, který používá ke konfiguraci Application Gateway.
+    Před `Lets Encrypt` vypršením platnosti certifikátu `cert-manager` bude certifikát automaticky aktualizovat v úložišti tajného kódu Kubernetes. V tomto okamžiku Application Gateway řadič příchozího přenosu dat použije aktualizovaný tajný klíč odkazovaný v prostředcích příchozího přenosu dat, který používá ke konfiguraci Application Gateway.

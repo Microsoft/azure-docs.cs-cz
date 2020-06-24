@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 83cb62efd98615b7eda7f52ebafe95dedc282355
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 0204a2873b288dcb2082dbd5c9c984d29fa6d456
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930450"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254918"
 ---
 # <a name="updating-azure-machine-learning-models-using-update-resource-activity"></a>Aktualizace modelů Azure Machine Learning pomocí aktivity aktualizovat prostředek
 
@@ -47,18 +47,18 @@ Prediktivní modely v experimentech s hodnocením Azure ML v průběhu času mus
 Následující tabulka popisuje webové služby použité v tomto příkladu.  Podrobnosti najdete v tématu [přeučení modelů Machine Learning Studio (Classic)](../../machine-learning/studio/retrain-machine-learning-model.md) .
 
 - **Školení webové služby** – přijímá školicí data a vytváří školené modely. Výstupem rekurze je soubor. ilearner v úložišti objektů BLOB v Azure. **Výchozím koncovým bodem** se automaticky vytvoří při publikování experimentu školení jako webové služby. Můžete vytvořit další koncové body, ale v příkladu se používá pouze výchozí koncový bod.
-- **Webová služba bodování** – přijímá příklady neoznačených dat a zpřístupňuje předpovědi. Výstup předpovědi může mít různé formuláře, jako je například soubor. csv nebo řádky ve službě Azure SQL Database v závislosti na konfiguraci experimentu. Výchozí koncový bod je automaticky vytvořen při publikování prediktivního experimentu jako webové služby. 
+- **Webová služba bodování** – přijímá příklady neoznačených dat a zpřístupňuje předpovědi. Výstup předpovědi může mít různé formuláře, jako je například soubor. csv nebo řádky v Azure SQL Database v závislosti na konfiguraci experimentu. Výchozí koncový bod je automaticky vytvořen při publikování prediktivního experimentu jako webové služby. 
 
 Následující obrázek znázorňuje vztah mezi školicími a vyhodnocovacími koncovými body v Azure ML.
 
-![Webové služby](./media/data-factory-azure-ml-batch-execution-activity/web-services.png)
+![webové služby](./media/data-factory-azure-ml-batch-execution-activity/web-services.png)
 
 **Webovou službu školení** můžete vyvolat pomocí **aktivity provádění dávky Azure ml**. Vyvolání webové služby školení je stejné jako volání webové služby Azure ML (webová služba bodování) pro data bodování. Předchozí části obsahují podrobnosti o tom, jak vyvolat webovou službu Azure ML z Azure Data Factoryho kanálu. 
 
 **Webovou službu bodování** můžete vyvolat pomocí **aktivity prostředku aktualizace služby Azure ml** a aktualizovat webovou službu pomocí nově vyučeného modelu. V následujících příkladech jsou uvedeny definice propojených služeb: 
 
 ## <a name="scoring-web-service-is-a-classic-web-service"></a>Webová služba bodování je klasický Web Service.
-Pokud webová služba bodování je **klasický web**, vytvořte druhý **nevýchozí a aktualizovatelný koncový bod** pomocí Azure Portal. Postup najdete v článku [Vytvoření koncových bodů](../../machine-learning/machine-learning-create-endpoint.md) . Po vytvoření nevýchozího koncového bodu s možností aktualizace proveďte následující kroky:
+Pokud webová služba bodování je **klasický web**, vytvořte druhý **nevýchozí a aktualizovatelný koncový bod** pomocí Azure Portal. Postup najdete v článku [Vytvoření koncových bodů](../../machine-learning/studio/create-endpoint.md) . Po vytvoření nevýchozího koncového bodu s možností aktualizace proveďte následující kroky:
 
 * Kliknutím na **DÁVKOVÉ spuštění** Získejte hodnotu identifikátoru URI pro vlastnost **mlEndpoint** JSON.
 * Kliknutím na odkaz **aktualizovat prostředek** získáte hodnotu identifikátoru URI pro vlastnost **updateResourceEndpoint** JSON. Klíč rozhraní API se nachází na samotné stránce koncového bodu (v pravém dolním rohu).

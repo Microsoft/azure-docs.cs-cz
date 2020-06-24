@@ -4,15 +4,15 @@ description: Tento článek popisuje, jak nakonfigurovat komponenty služby Azur
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/24/2020
 ms.author: absha
-ms.openlocfilehash: bd6f04ca7e24e380ad657f967284704ad613375a
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 1e3ef1133628f0470ee92237abf20d3bb0a9e21a
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996393"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254663"
 ---
 # <a name="application-gateway-configuration-overview"></a>Přehled konfigurace Application Gateway
 
@@ -307,7 +307,7 @@ Všimněte si, že výchozí název souboru cookie spřažení je *ApplicationGa
 
 ### <a name="connection-draining"></a>Vyprázdnění připojení
 
-Vyprazdňování připojení pomáhá řádně odebrat členy fondu back-end během plánovaných aktualizací služby. Toto nastavení můžete použít pro všechny členy fondu back-end během vytváření pravidla. Zajišťuje, aby všechny odregistrované instance back-end fondu nadále udržovaly stávající připojení a poskytovaly žádosti o konfigurovatelný časový limit a nedostaly žádné nové žádosti nebo připojení. Jedinou výjimkou jsou požadavky vázané na zrušení registrace instancí z důvodu spřažení relace spravované bránou a budou nadále předány do odregistrování instancí. Vyprazdňování připojení se vztahuje na instance back-endu, které jsou explicitně odebrány z fondu back-end.
+Vyprazdňování připojení pomáhá řádně odebrat členy fondu back-end během plánovaných aktualizací služby. Toto nastavení můžete použít pro všechny členy fondu back-end tím, že v nastavení HTTP povolíte vyprazdňování připojení. Zajišťuje, aby všechny odregistrované instance back-end fondu nadále udržovaly stávající připojení a poskytovaly žádosti o konfigurovatelný časový limit a nedostaly žádné nové žádosti nebo připojení. Jedinou výjimkou jsou požadavky vázané na zrušení registrace instancí z důvodu spřažení relace spravované bránou a budou nadále předány do odregistrování instancí. Vyprazdňování připojení se vztahuje na instance back-endu, které jsou explicitně odebrány z fondu back-end.
 
 ### <a name="protocol"></a>Protocol (Protokol)
 

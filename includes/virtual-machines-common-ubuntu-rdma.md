@@ -28,7 +28,7 @@ ms.locfileid: "67671209"
    OS.UpdateRdmaDriver=y
    ```
 
-3. V souboru/etc/Security/Limits.conf přidejte nebo změňte následující nastavení paměti v KB. Pro úpravu tohoto souboru potřebujete root Access. Pro účely testování můžete nastavit memlock na neomezené. Například: `<User or group name>   hard    memlock   unlimited`.
+3. V souboru/etc/Security/Limits.conf přidejte nebo změňte následující nastavení paměti v KB. Pro úpravu tohoto souboru potřebujete root Access. Pro účely testování můžete nastavit memlock na neomezené. Příklad: `<User or group name>   hard    memlock   unlimited`.
 
    ```
    <User or group name> hard    memlock <memory required for your application in KB>

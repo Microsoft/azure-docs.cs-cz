@@ -9,11 +9,11 @@ ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: cynthn
 ms.openlocfilehash: ecbff4beadd9d10a8489c89cc322c0bb67ec5f40
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267180"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84706677"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Vytvoření virtuálního počítače se systémem Linux v Azure s několika síťovými kartami
 
@@ -79,7 +79,7 @@ az network nic create \
 ```
 
 ## <a name="create-a-vm-and-attach-the-nics"></a>Vytvoření virtuálního počítače a připojení síťových karet
-Když vytváříte virtuální počítač, zadejte síťové karty, pomocí `--nics`kterých jste vytvořili. Při výběru velikosti virtuálního počítače se také musíte postarat. Existují omezení pro celkový počet síťových adaptérů, které můžete přidat do virtuálního počítače. Přečtěte si víc o [velikostech virtuálních počítačů se systémem Linux](sizes.md).
+Když vytváříte virtuální počítač, zadejte síťové karty, pomocí kterých jste vytvořili `--nics` . Při výběru velikosti virtuálního počítače se také musíte postarat. Existují omezení pro celkový počet síťových adaptérů, které můžete přidat do virtuálního počítače. Přečtěte si víc o [velikostech virtuálních počítačů se systémem Linux](sizes.md).
 
 Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm). Následující příklad vytvoří virtuální počítač s názvem *myVM*:
 
@@ -169,7 +169,7 @@ Azure Resource Manager šablony používají k definování vašeho prostředí 
 
 Přečtěte si další informace o [vytváření více instancí pomocí *kopírování*](../../resource-group-create-multiple.md). 
 
-Můžete také použít a `copyIndex()` k názvu prostředku připojit číslo, což vám umožní vytvořit `myNic1`, `myNic2`atd. Následující příklad ukazuje, jak připojit hodnotu indexu:
+Můžete také použít a `copyIndex()` k názvu prostředku připojit číslo, což vám umožní vytvořit `myNic1` , `myNic2` atd. Následující příklad ukazuje, jak připojit hodnotu indexu:
 
 ```json
 "name": "[concat('myNic', copyIndex())]", 
@@ -222,7 +222,7 @@ Pro odesílání do nebo ze sekundárního síťového rozhraní je nutné ručn
 
 Při přidávání trasy k operačnímu systému je adresa brány *1* , pro každou podsíť, ve které se síťové rozhraní nachází. Například pokud se síťovému rozhraní přiřadí adresa *10.0.2.4*, brána, kterou zadáte pro trasu, je *10.0.2.1*. Můžete definovat konkrétní síť pro cíl trasy nebo určit cíl *0.0.0.0*, pokud chcete, aby veškerý provoz rozhraní procházel zadanou bránou. Bránu pro každou podsíť spravuje virtuální síť.
 
-Po přidání trasy pro sekundární rozhraní ověřte, že je trasa ve vaší směrovací tabulce s `route -n`. Následující příklad výstupu je pro směrovací tabulku, která má dvě síťová rozhraní přidaná k virtuálnímu počítači v tomto článku:
+Po přidání trasy pro sekundární rozhraní ověřte, že je trasa ve vaší směrovací tabulce s `route -n` . Následující příklad výstupu je pro směrovací tabulku, která má dvě síťová rozhraní přidaná k virtuálnímu počítači v tomto článku:
 
 ```bash
 Kernel IP routing table

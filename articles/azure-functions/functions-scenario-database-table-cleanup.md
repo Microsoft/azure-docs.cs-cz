@@ -4,12 +4,12 @@ description: Použijte Azure Functions k naplánování úlohy, která se připo
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: 18e310559cb0b88aac53b1020172847968616f97
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 974d9da9bb5782672603f1ae8c58742941899a14
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020332"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254272"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Připojení k Azure SQL Database pomocí Azure Functions
 
@@ -21,15 +21,15 @@ Pokud se jedná o vaše první prostředí při práci s funkcemi jazyka C#, mě
 
 + Dokončete kroky v článku [Vytvoření první funkce pomocí sady Visual Studio](functions-create-your-first-function-visual-studio.md) k vytvoření místní aplikace Function App, která cílí na verzi 2. x nebo novější verzi modulu runtime. Projekt musíte také publikovat do aplikace Function App v Azure.
 
-+ Tento článek ukazuje příkaz Transact-SQL, který provede operaci hromadného vyčištění v tabulce **SalesOrderHeader** v ukázkové databázi AdventureWorksLT. Chcete-li vytvořit ukázkovou databázi AdventureWorksLT, proveďte kroky v článku [Vytvoření databáze SQL Azure v Azure Portal](../azure-sql/database/single-database-create-quickstart.md).
++ Tento článek ukazuje příkaz Transact-SQL, který provede operaci hromadného vyčištění v tabulce **SalesOrderHeader** v ukázkové databázi AdventureWorksLT. Chcete-li vytvořit ukázkovou databázi AdventureWorksLT, proveďte kroky v článku [Vytvoření databáze v Azure SQL Database pomocí Azure Portal](../azure-sql/database/single-database-create-quickstart.md).
 
 + Je nutné přidat [pravidlo brány firewall na úrovni serveru](../sql-database/sql-database-get-started-portal-firewall.md) pro veřejnou IP adresu počítače, který používáte pro účely tohoto rychlého startu. Toto pravidlo je vyžadováno, aby bylo možné získat přístup k instanci SQL Database z místního počítače.  
 
 ## <a name="get-connection-information"></a>Získání informací o připojení
 
-Pro databázi, kterou jste vytvořili po dokončení [vytváření databáze SQL Azure](../azure-sql/database/single-database-create-quickstart.md), musíte získat připojovací řetězec v Azure Portal.
+Pro databázi, kterou jste vytvořili po dokončení [vytváření databáze v Azure SQL Database pomocí Azure Portal](../azure-sql/database/single-database-create-quickstart.md), je třeba získat připojovací řetězec.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 1. V nabídce na levé straně vyberte **databáze SQL** a na stránce **databáze SQL** vyberte svou databázi.
 
@@ -51,11 +51,11 @@ Je potřeba, abyste aplikaci publikovali už dřív v Azure. Pokud jste to ješt
 
     ![Přidat nastavení připojovacího řetězce SQL](./media/functions-scenario-database-table-cleanup/functions-app-service-settings-connection-string.png)
 
-    Připojovací řetězce se ukládají v Azure jako šifrované (**vzdálené**). Aby nedocházelo k únikům tajných kódů, je třeba soubor projektu Local. Settings. JSON (**místní**) vyloučit ze správy zdrojového kódu, jako je například pomocí souboru. gitignore.
+    Připojovací řetězce se ukládají v Azure jako šifrované (**vzdálené**). Aby nedocházelo k únikům tajných kódů, je třeba vyřadit local.settings.jssouboru projektu (**místní**) ze správy zdrojového kódu, jako například pomocí souboru. gitignore.
 
 ## <a name="add-the-sqlclient-package-to-the-project"></a>Přidat do projektu balíček SqlClient
 
-Musíte přidat balíček NuGet, který obsahuje knihovnu SqlClient. Tato knihovna přístupu k datům je nutná pro připojení k databázi SQL.
+Musíte přidat balíček NuGet, který obsahuje knihovnu SqlClient. Tato knihovna pro přístup k datům je nutná pro připojení k SQL Database.
 
 1. Otevřete svůj projekt místní aplikace Function App v aplikaci Visual Studio 2019.
 

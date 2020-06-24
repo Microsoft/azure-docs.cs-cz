@@ -22,7 +22,7 @@ Centrum obsahuje bránu. Po vytvoření centra se vám bude centrum účtovat i 
 3. Na stránce **vytvořit virtuální rozbočovač** vyplňte následující pole:
 
    * Umístění
-   * Název
+   * Name
    * Privátní adresní prostor centra
 
 Vytvořte centrum kliknutím na **Potvrdit**. Kliknutím na **aktualizovat** zobrazíte centrum na stránce **centra** .

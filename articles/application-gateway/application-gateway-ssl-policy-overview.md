@@ -4,15 +4,15 @@ description: Naučte se konfigurovat zásady TLS pro Azure Application Gateway a
 services: application gateway
 author: amsriva
 ms.service: application-gateway
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/16/2019
 ms.author: amsriva
-ms.openlocfilehash: 871cb930e867002d8af1e7755de27d4873327543
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 16c6dd28d47573c2ad5b0d5a331b0dc48e7aacef
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80257372"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253626"
 ---
 # <a name="application-gateway-tls-policy-overview"></a>Přehled zásad Application Gateway TLS
 

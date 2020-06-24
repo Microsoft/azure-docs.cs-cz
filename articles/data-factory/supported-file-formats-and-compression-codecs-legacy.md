@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
-ms.openlocfilehash: b1f11a1ff25117c07e61475e7e83fc0c170cd552
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a19f81fab525b44f0b55244281930977e0e1f476
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414653"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254612"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory-legacy"></a>Podporované formáty souborů a kompresní kodeky v Azure Data Factory (starší verze)
 
@@ -32,7 +32,7 @@ ms.locfileid: "81414653"
 
 Pokud chcete číst z textového souboru nebo zapisovat do textového souboru, nastavte `type` vlastnost v `format` části datové sady na **TextFormat**. Můžete také zadat následující **nepovinné** vlastnosti v oddílu `format`. Postup konfigurace najdete v části [Příklad typu TextFormat](#textformat-example).
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
 | columnDelimiter |Znak, který slouží k oddělení sloupců v souboru. Můžete uvažovat o použití zřídka netisknutelného znaku, který ve vašich datech možná neexistuje. Zadejte například "\u0001", který představuje začátek záhlaví (SOH). |Je povolený jenom jeden znak. **Výchozí** hodnota je **čárka (,)**. <br/><br/>Chcete-li použít znak Unicode, přečtěte si text [znaků Unicode](https://en.wikipedia.org/wiki/List_of_Unicode_characters) a získejte pro něj odpovídající kód. |Ne |
 | rowDelimiter |Znak, který slouží k oddělení řádků v souboru. |Je povolený jenom jeden znak. **Výchozí** hodnotou pro čtení může být libovolná z těchto hodnot: **[\r\n, \r, \n]** a pro zápis hodnota **\r\n**. |Ne |
@@ -88,7 +88,7 @@ Pokud chcete **Importovat/exportovat soubor JSON tak, jak je do nebo z Azure Cos
 
 Chcete-li analyzovat soubory JSON nebo zapsat data ve formátu JSON, nastavte `type` vlastnost v `format` oddílu na **JsonFormat**. Můžete také zadat následující **nepovinné** vlastnosti v oddílu `format`. Postup konfigurace najdete v části [Příklad typu JsonFormat](#jsonformat-example).
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 | --- | --- | --- |
 | filePattern |Určete vzor dat uložených v jednotlivých souborech JSON. Povolené hodnoty jsou **setOfObjects** a **arrayOfObjects**. **Výchozí hodnota** je **setOfObjects**. Podrobné informace o těchto vzorech najdete v tématu [Vzory souborů JSON](#json-file-patterns). |Ne |
 | jsonNodeReference | Pokud chcete iterovat a extrahovat data z objektů uvnitř pole se stejným vzorem, zadejte pro toto pole cestu JSON. Tato vlastnost je podporována pouze při kopírování dat **ze** souborů JSON. | Ne |
@@ -97,7 +97,7 @@ Chcete-li analyzovat soubory JSON nebo zapsat data ve formátu JSON, nastavte `t
 | nestingSeparator |Znak, který se používá k oddělení úrovní vnoření. Výchozí hodnota je tečka (.). |Ne |
 
 >[!NOTE]
->Pro případ křížového použití dat v poli do více řádků (například případ 1-> Sample 2 v [příkladech JsonFormat](#jsonformat-example)) můžete zvolit pouze rozšíření jednoho pole pomocí vlastnosti `jsonNodeReference`.
+>Pro případ křížového použití dat v poli do více řádků (například případ 1-> Sample 2 v [příkladech JsonFormat](#jsonformat-example)) můžete zvolit pouze rozšíření jednoho pole pomocí vlastnosti `jsonNodeReference` .
 
 ### <a name="json-file-patterns"></a>Vzory souborů JSON
 
@@ -231,7 +231,7 @@ a chcete ho zkopírovat do tabulky Azure SQL v následujícím formátu a přito
 Vstupní datová sada typu **JsonFormat** je definovaná následujícím způsobem (částečná definice obsahující jenom relevantní části). A konkrétně:
 
 - Oddíl `structure` definuje vlastní názvy sloupců a odpovídající datový typ při převodu do tabulkového formátu. Pokud mapování sloupců není potřeba, je tento oddíl **nepovinný**. Další informace najdete v tématu [mapování sloupců zdrojové datové sady na cílové sloupce datové sady](copy-activity-schema-and-type-mapping.md).
-- `jsonPathDefinition` určuje cestu JSON pro jednotlivé sloupce a udává, odkud se mají extrahovat data. Chcete-li kopírovat data z pole, lze `array[x].property` použít k extrakci hodnoty dané vlastnosti z `xth` objektu nebo můžete použít `array[*].property` k vyhledání hodnoty z libovolného objektu, který tuto vlastnost obsahuje.
+- `jsonPathDefinition` určuje cestu JSON pro jednotlivé sloupce a udává, odkud se mají extrahovat data. Chcete-li kopírovat data z pole, lze použít `array[x].property` k extrakci hodnoty dané vlastnosti z `xth` objektu nebo můžete použít `array[*].property` k vyhledání hodnoty z libovolného objektu, který tuto vlastnost obsahuje.
 
 ```json
 "properties": {
@@ -306,8 +306,8 @@ a chcete ho zkopírovat do tabulky Azure SQL v následujícím formátu a přito
 Vstupní datová sada typu **JsonFormat** je definovaná následujícím způsobem (částečná definice obsahující jenom relevantní části). A konkrétně:
 
 - Oddíl `structure` definuje vlastní názvy sloupců a odpovídající datový typ při převodu do tabulkového formátu. Pokud mapování sloupců není potřeba, je tento oddíl **nepovinný**. Další informace najdete v tématu [mapování sloupců zdrojové datové sady na cílové sloupce datové sady](copy-activity-schema-and-type-mapping.md).
-- `jsonNodeReference`Určuje, že se mají iterovat a extrahovat data z objektů se stejným vzorem v **poli Array** `orderlines`.
-- `jsonPathDefinition` určuje cestu JSON pro jednotlivé sloupce a udává, odkud se mají extrahovat data. V tomto příkladu `ordernumber` `orderdate`,, a `city` jsou pod kořenovým objektem s cestou JSON začínající `$.`, zatímco `order_pd` a `order_price` jsou definovány s cestou odvozenou z prvku pole bez `$.`.
+- `jsonNodeReference`Určuje, že se mají iterovat a extrahovat data z objektů se stejným vzorem v **poli Array** `orderlines` .
+- `jsonPathDefinition` určuje cestu JSON pro jednotlivé sloupce a udává, odkud se mají extrahovat data. V tomto příkladu, `ordernumber` , `orderdate` a `city` jsou pod kořenovým objektem s cestou JSON začínající `$.` , zatímco `order_pd` a `order_price` jsou definovány s cestou odvozenou z prvku pole bez `$.` .
 
 ```json
 "properties": {
@@ -429,17 +429,17 @@ Je třeba počítat s následujícím:
 > [!IMPORTANT]
 > Pro kopii, která je oprávněná pro místní hostování Integration Runtime například mezi místními a cloudovým úložištěm dat, pokud soubory Parquet nekopírujete **tak, jak jsou**, je nutné na počítač IR nainstalovat **64-bit JRE 8 (Java Runtime Environment) nebo OpenJDK** . Další podrobnosti najdete v následujícím článku.
 
-Pro kopírování běžící v prostředí IR v místním prostředí s Parquet serializací/deserializace vyhledá ADF modul runtime Java tím, že se nejprve *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* zkontroluje registr pro JRE, pokud se nenajde, druhá kontroluje proměnnou *`JAVA_HOME`* systému pro OpenJDK.
+Pro kopírování běžící v prostředí IR v místním prostředí s Parquet serializací/deserializace vyhledá ADF modul runtime Java tím, že se nejprve zkontroluje registr *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* pro JRE, pokud se nenajde, druhá kontroluje proměnnou systému *`JAVA_HOME`* pro OpenJDK.
 
 - **Použití JRE**: 64-bit IR vyžaduje 64-bit JRE. Můžete ho najít [tady](https://go.microsoft.com/fwlink/?LinkId=808605).
-- **Použití OpenJDK**: podporuje se od verze IR 3,13. Zabalit soubor JVM. dll se všemi ostatními požadovanými sestaveními OpenJDK do místního počítače IR a nastavte proměnnou prostředí systému JAVA_HOME odpovídajícím způsobem.
+- **Použití OpenJDK**: podporuje se od verze IR 3,13. Zabalit jvm.dll se všemi ostatními požadovanými sestaveními OpenJDK do místně hostovaného počítače IR a nastavit proměnnou prostředí systému JAVA_HOME odpovídajícím způsobem.
 
 >[!TIP]
->Pokud kopírujete data do nebo z formátu Parquet pomocí Integration Runtime v místním prostředí a omylem zaznamenáte chybu při vyvolání Java, zpráva: **Java. lang. OutOfMemoryError: prostor haldy Java**", můžete přidat proměnnou `_JAVA_OPTIONS` prostředí v počítači, který je hostitelem prostředí IR v místním prostředí, a upravit tak minimální/maximální velikost haldy pro JVM, abyste mohli takovou kopii provést, a pak znovu spustit kanál.
+>Pokud kopírujete data do nebo z formátu Parquet pomocí Integration Runtime v místním prostředí a omylem zaznamenáte chybu při vyvolání Java, zpráva: **Java. lang. OutOfMemoryError: prostor haldy Java**", můžete přidat proměnnou prostředí `_JAVA_OPTIONS` v počítači, který je hostitelem prostředí IR v místním prostředí, a upravit tak minimální/maximální velikost haldy pro JVM, abyste mohli takovou kopii provést, a pak znovu spustit kanál.
 
 ![Nastavení velikosti haldy JVM v místním prostředí IR](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
 
-Příklad: nastavte proměnnou `_JAVA_OPTIONS` s hodnotou `-Xms256m -Xmx16g`. Příznak `Xms` Určuje počáteční fond přidělení paměti pro prostředí Java Virtual Machine (JVM), zatímco `Xmx` určuje maximální fond přidělení paměti. To znamená, že JVM bude spuštěn s `Xms` velikostí paměti a bude moci využít maximální `Xmx` množství paměti. Ve výchozím nastavení ADF používá minimální 64 MB a maximální 1G.
+Příklad: nastavte proměnnou `_JAVA_OPTIONS` s hodnotou `-Xms256m -Xmx16g` . Příznak `Xms` Určuje počáteční fond přidělení paměti pro prostředí Java Virtual Machine (JVM), zatímco `Xmx` Určuje maximální fond přidělení paměti. To znamená, že JVM bude spuštěn s `Xms` velikostí paměti a bude moci využít maximální `Xmx` množství paměti. Ve výchozím nastavení ADF používá minimální 64 MB a maximální 1G.
 
 ### <a name="data-type-mapping-for-parquet-files"></a>Mapování datových typů pro soubory Parquet
 
@@ -454,16 +454,16 @@ Příklad: nastavte proměnnou `_JAVA_OPTIONS` s hodnotou `-Xms256m -Xmx16g`. P�
 | UInt32 | Int64 | UInt32 | Int64 |
 | Int64 | Int64 | Int64 | Int64 |
 | UInt64 | Int64/binární | UInt64 | Desetinné číslo |
-| Single | Plovoucí desetinná čárka | – | – |
+| Jeden | Float | – | – |
 | Double | Double | – | – |
-| Desetinné číslo | binární | Desetinné číslo | Desetinné číslo |
-| Řetězec | binární | UTF | UTF |
+| Desetinné číslo | Binární | Desetinné číslo | Desetinné číslo |
+| Řetězec | Binární | UTF | UTF |
 | DateTime | Int96 | – | – |
 | TimeSpan | Int96 | – | – |
 | DateTimeOffset | Int96 | – | – |
-| ByteArray | binární | – | – |
-| Identifikátor GUID | binární | UTF | UTF |
-| Char | binární | UTF | UTF |
+| ByteArray | Binární | – | – |
+| Identifikátor GUID | Binární | UTF | UTF |
+| Char | Binární | UTF | UTF |
 | CharArray | Nepodporuje se | – | – |
 
 ## <a name="orc-format-legacy"></a><a name="orc-format"></a>Formát ORC (starší verze)
@@ -489,10 +489,10 @@ Je třeba počítat s následujícím:
 > [!IMPORTANT]
 > Pro kopii, která je oprávněná pro místní hostování Integration Runtime například mezi místními a cloudovým úložištěm dat, pokud soubory ORC nekopírujete **tak, jak jsou**, je nutné na počítač IR nainstalovat **64-bit JRE 8 (Java Runtime Environment) nebo OpenJDK** . Další podrobnosti najdete v následujícím článku.
 
-Pro kopírování běžící v prostředí IR v místním prostředí s ORC serializací/deserializace vyhledá ADF modul runtime Java tím, že se nejprve *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* zkontroluje registr pro JRE, pokud se nenajde, druhá kontroluje proměnnou *`JAVA_HOME`* systému pro OpenJDK.
+Pro kopírování běžící v prostředí IR v místním prostředí s ORC serializací/deserializace vyhledá ADF modul runtime Java tím, že se nejprve zkontroluje registr *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* pro JRE, pokud se nenajde, druhá kontroluje proměnnou systému *`JAVA_HOME`* pro OpenJDK.
 
 - **Použití JRE**: 64-bit IR vyžaduje 64-bit JRE. Můžete ho najít [tady](https://go.microsoft.com/fwlink/?LinkId=808605).
-- **Použití OpenJDK**: podporuje se od verze IR 3,13. Zabalit soubor JVM. dll se všemi ostatními požadovanými sestaveními OpenJDK do místního počítače IR a nastavte proměnnou prostředí systému JAVA_HOME odpovídajícím způsobem.
+- **Použití OpenJDK**: podporuje se od verze IR 3,13. Zabalit jvm.dll se všemi ostatními požadovanými sestaveními OpenJDK do místně hostovaného počítače IR a nastavit proměnnou prostředí systému JAVA_HOME odpovídajícím způsobem.
 
 ### <a name="data-type-mapping-for-orc-files"></a>Mapování datových typů pro soubory ORC
 
@@ -507,14 +507,14 @@ Pro kopírování běžící v prostředí IR v místním prostředí s ORC seri
 | UInt32 | Dlouhou |
 | Int64 | Dlouhou |
 | UInt64 | Řetězec |
-| Single | Plovoucí desetinná čárka |
+| Jeden | Float |
 | Double | Double |
 | Desetinné číslo | Desetinné číslo |
 | Řetězec | Řetězec |
 | DateTime | Časové razítko |
 | DateTimeOffset | Časové razítko |
 | TimeSpan | Časové razítko |
-| ByteArray | binární |
+| ByteArray | Binární |
 | Identifikátor GUID | Řetězec |
 | Char | Char (1) |
 
@@ -540,12 +540,12 @@ Je třeba počítat s následujícím:
 
 ## <a name="compression-support-legacy"></a><a name="compression-support"></a>Podpora komprese (starší verze)
 
-Azure Data Factory v průběhu kopírování podporuje komprimaci a dekomprimaci dat. Když ve vstupní `compression` datové sadě zadáte vlastnost, aktivita kopírování načte komprimovaná data ze zdroje a dekomprimuje je. a když zadáte vlastnost do výstupní datové sady, komprimace aktivity kopírování pak zapíše data do jímky. Tady je několik ukázkových scénářů:
+Azure Data Factory v průběhu kopírování podporuje komprimaci a dekomprimaci dat. Když zadáte `compression` vlastnost ve vstupní datové sadě, aktivita kopírování přečte komprimovaná data ze zdroje a dekomprimuje je. když zadáte vlastnost do výstupní datové sady, komprimace aktivity kopírování pak zapíše data do jímky. Tady je několik ukázkových scénářů:
 
-* Načte komprimovaná data GZIP z objektu blob Azure, dekomprimuje je a zapisuje výsledná data do služby Azure SQL Database. Nadefinujete vstupní datovou sadu Azure Blob `compression` `type` s vlastností jako gzip.
-* Načtěte data z textového souboru z místního systému souborů, Zkomprimujte ho pomocí formátu GZip a zapište komprimovaná data do objektu blob Azure. Nadefinujete výstupní datovou sadu Azure Blob `compression` `type` s vlastností jako gzip.
-* Přečtěte si soubor. zip ze serveru FTP, dekomprimujte ho, aby se soubory dostaly do všech souborů, a Azure Data Lake Store. Nadefinujete vstupní datovou sadu FTP `compression` `type` s vlastností jako ZipDeflate.
-* Přečtěte si komprimovaná data z objektu blob Azure, dekomprimujete je, Zkomprimujte je pomocí BZIP2 a zapište výsledná data do objektu blob Azure. Definujete vstupní datovou sadu Azure Blob `compression` `type` s nastavením na gzip a výstupní datovou `compression` `type` sadu s nastavením na bzip2.
+* Načte komprimovaná data GZIP z objektu blob Azure, dekomprimuje je a zapíše data výsledků do Azure SQL Database. Nadefinujete vstupní datovou sadu Azure Blob s `compression` `type` vlastností jako gzip.
+* Načtěte data z textového souboru z místního systému souborů, Zkomprimujte ho pomocí formátu GZip a zapište komprimovaná data do objektu blob Azure. Nadefinujete výstupní datovou sadu Azure Blob s `compression` `type` vlastností jako gzip.
+* Přečtěte si soubor. zip ze serveru FTP, dekomprimujte ho, aby se soubory dostaly do všech souborů, a Azure Data Lake Store. Nadefinujete vstupní datovou sadu FTP s `compression` `type` vlastností jako ZipDeflate.
+* Přečtěte si komprimovaná data z objektu blob Azure, dekomprimujete je, Zkomprimujte je pomocí BZIP2 a zapište výsledná data do objektu blob Azure. Definujete vstupní datovou sadu Azure Blob s `compression` `type` nastavením na gzip a výstupní datovou sadu s `compression` `type` nastavením na bzip2.
 
 Chcete-li určit kompresi pro datovou sadu, použijte vlastnost **Compression** v datové sadě JSON jako v následujícím příkladu:
 
@@ -575,7 +575,7 @@ Chcete-li určit kompresi pro datovou sadu, použijte vlastnost **Compression** 
 
 Oddíl **Compression** má dvě vlastnosti:
 
-* **Typ:** Kompresní kodek, který může být **gzip**, **Deflate**, **bzip2**nebo **ZipDeflate**. Poznámka: při použití aktivity kopírování k dekompresi souborů ZipDeflate a zápisu do úložiště dat jímky založeného na souborech se soubory extrahují do složky: `<path specified in dataset>/<folder named as source zip file>/`.
+* **Typ:** Kompresní kodek, který může být **gzip**, **Deflate**, **bzip2**nebo **ZipDeflate**. Poznámka: při použití aktivity kopírování k dekompresi souborů ZipDeflate a zápisu do úložiště dat jímky založeného na souborech se soubory extrahují do složky: `<path specified in dataset>/<folder named as source zip file>/` .
 * **Level (úroveň):** kompresní poměr, který může být **optimální** nebo **nejrychlejší**.
 
   * **Nejrychlejší:** Kompresní operace by se měla dokončit co nejrychleji, a to i v případě, že výsledný soubor není optimálně komprimován.

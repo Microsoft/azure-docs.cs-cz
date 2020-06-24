@@ -5,16 +5,16 @@ description: Použití osvědčených postupů pro správu životního cyklu apl
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.date: 10/27/2016
-ms.openlocfilehash: 4e70467d0ef956802e1ab7f416da7c2cbec37c58
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 2eb5f3acc07f04ba2102ea25fbad89d73514444a
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84115570"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84705912"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio-classic"></a>Správa životního cyklu aplikací v Azure Machine Learning Studio (Classic)
 

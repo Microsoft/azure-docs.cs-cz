@@ -2,14 +2,14 @@
 title: Použití dat služby Azure Blockchain Workbench v Microsoft Excelu
 description: Naučte se, jak načíst a zobrazit Azure blockchain Workbench Preview data SQL DB v Microsoft Excelu.
 ms.date: 09/05/2019
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: mmercuri
-ms.openlocfilehash: a84858ead83782cc9b6ef1b1d7f905172600fb8a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4dd941abdded6a93510f4a71119769cd73855bcc
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74326049"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253541"
 ---
 # <a name="view-azure-blockchain-workbench-data-with-microsoft-excel"></a>Zobrazení dat služby Azure Blockchain Workbench v Microsoft Excelu
 
@@ -27,7 +27,7 @@ Postup připojení k databázi Blockchain Workbench:
 2. Na kartě **Data** zvolte **Načíst data**.
 3. Vyberte **Z Azure** a potom vyberte **Ze služby Azure SQL Database**.
 
-   ![Připojení k databázi Azure SQL](./media/data-excel/connect-sql-db.png)
+   ![Připojení k Azure SQL Database](./media/data-excel/connect-sql-db.png)
 
 4. V dialogovém okně **Databáze SQL Serveru**:
 

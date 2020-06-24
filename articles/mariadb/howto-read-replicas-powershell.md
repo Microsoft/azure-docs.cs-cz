@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 5/26/2020
-ms.openlocfilehash: 4854518d77ca3eb0c978a0ca3462535e17ad3fcd
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 6/10/2020
+ms.openlocfilehash: 0280d69dc552b776457ff28d19968f6494a846ee
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84052029"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707941"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-powershell"></a>Jak vytvářet a spravovat repliky pro čtení v Azure Database for MariaDB pomocí prostředí PowerShell
 
@@ -40,6 +40,9 @@ Pokud se rozhodnete použít prostředí PowerShell místně, připojte se k ú�
 > Funkce replika čtení je k dispozici pouze pro Azure Database for MariaDB servery v cenové úrovni optimalizované pro Pro obecné účely nebo paměť. Ujistěte se, že je hlavní server v jedné z těchto cenových úrovní.
 
 ### <a name="create-a-read-replica"></a>Vytvoření repliky pro čtení
+
+> [!IMPORTANT]
+> Když vytvoříte repliku pro hlavní server, který nemá žádné existující repliky, hlavní počítač se nejprve restartuje a připraví se pro replikaci. Vezměte v úvahu a udělejte tyto operace v době mimo špičku.
 
 Server repliky pro čtení se dá vytvořit pomocí následujícího příkazu:
 

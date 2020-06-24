@@ -13,12 +13,12 @@ ms.date: 10/06/2018
 ms.reviewer: martincoetzer
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5518d516848ba7c006827faa41ff76bbca35d0c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8e0b641cb05b25486bd1b11c2d313898d694f8c2
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76897052"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253490"
 ---
 # <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>Faktory ovlivňující výkon nástroje Azure AD Connect
 
@@ -143,7 +143,7 @@ Organizace můžou zabránit určitým atributům v toku do služby Azure AD, al
 
 ## <a name="azure-ad-connect-dependency-factors"></a>Azure AD Connect faktory závislosti
 
-Výkon Azure AD Connect je závislý na výkonu připojených adresářů, které importuje a exportuje do nástroje. Například velikost služby Active Directory, kterou potřebuje k importu, nebo latenci sítě pro službu Azure AD. SQL Database, kterou zřizovací stroj používá, také ovlivňuje celkový výkon cyklu synchronizace.
+Výkon Azure AD Connect je závislý na výkonu připojených adresářů, které importuje a exportuje do nástroje. Například velikost služby Active Directory, kterou potřebuje k importu, nebo latenci sítě pro službu Azure AD. Databáze SQL, kterou zřizovací stroj používá, má také dopad na celkový výkon cyklu synchronizace.
 
 ### <a name="active-directory-factors"></a>Faktory služby Active Directory
 
@@ -172,7 +172,7 @@ Velikost zdrojové topologie služby Active Directory bude mít vliv na výkon S
 
 - Organizace s více než 100 000 uživateli můžou snížit latenci sítě tak, že společně vyhledávají SQL Database a zřizovací modul na stejném serveru.
 - Vzhledem k požadavkům na vysoký počet vstupně-výstupních operací a výstupu (v/v) procesu synchronizace použijte jednotky SSD (Solid-State Drive) pro databázi SQL zřizovacího modulu, pokud to není možné, zvažte konfigurace RAID 0 nebo RAID 1.
-- Neprovádějte úplnou synchronizaci předem sálu; způsobuje zbytečné změny a pomalejší doby odezvy.
+- Neprovádějte úplnou synchronizaci bez přerušení. způsobuje zbytečné změny a pomalejší doby odezvy.
 
 ## <a name="conclusion"></a>Závěr
 

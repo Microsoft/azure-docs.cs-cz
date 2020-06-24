@@ -8,22 +8,22 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: makromer
-ms.openlocfilehash: 8225143bb75118620b45c2520bb62ea30501a617
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3f8ac2d1434019548b01d8468015a543d89d0fba
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81732686"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254408"
 ---
 # <a name="handle-sql-truncation-error-rows-in-data-factory-mapping-data-flows"></a>Zpracování řádků chyb zkracování SQL v Data Factory datových toků mapování
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Běžným scénářem v Data Factory při použití toků mapování dat je zápis transformovaných dat do databáze SQL Azure. V tomto scénáři je běžný chybový stav, který je třeba zabránit proti, možné zkrátit sloupec. Pomocí těchto kroků můžete zadat protokolování sloupců, které se nevejdou do sloupce cílového řetězce, což umožňuje, aby tok dat v těchto scénářích pokračoval.
+Běžným scénářem v Data Factory při použití toků dat mapování je psaní transformovaných dat do databáze v Azure SQL Database. V tomto scénáři je běžný chybový stav, který je třeba zabránit proti, možné zkrátit sloupec. Pomocí těchto kroků můžete zadat protokolování sloupců, které se nevejdou do sloupce cílového řetězce, což umožňuje, aby tok dat v těchto scénářích pokračoval.
 
 ## <a name="scenario"></a>Scénář
 
-1. Máme cílovou tabulku Azure SQL Database, která má ```nvarchar(5)``` sloupec s názvem "Name".
+1. Máme cílovou databázovou tabulku, která má ```nvarchar(5)``` sloupec s názvem "název".
 
 2. V našem toku dat chceme namapovat názvy filmů z naší jímky do cílového sloupce "název".
 
@@ -42,7 +42,7 @@ V tomto videu se seznámíte s příkladem logiky zpracování řádků chyb př
 
 2. Tato transformace podmíněného rozdělení definuje maximální délku "title" na pět. Libovolný řádek, který je menší nebo roven pěti, bude přecházet do ```GoodRows``` datového proudu. Libovolný řádek, který je větší než pět, přejde do ```BadRows``` datového proudu.
 
-3. Teď potřebujeme protokolovat řádky, které selhaly. Přidejte do ```BadRows``` datového proudu transformaci jímky pro protokolování. Tady budeme "automaticky namapovat" všechna pole, aby bylo protokolování kompletního záznamu transakce. Toto je výstup souboru CSV s oddělovači do jednoho souboru v Blob Storage. Zavoláme soubor protokolu "badrows. csv".
+3. Teď potřebujeme protokolovat řádky, které selhaly. Přidejte do datového proudu transformaci jímky ```BadRows``` pro protokolování. Tady budeme "automaticky namapovat" všechna pole, aby bylo protokolování kompletního záznamu transakce. Toto je výstup souboru CSV s oddělovači do jednoho souboru v Blob Storage. Zavoláme soubor protokolu "badrows.csv".
 
     ![Chybné řádky](media/data-flow/error3.png)
     

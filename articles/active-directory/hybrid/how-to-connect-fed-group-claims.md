@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: 6a89c5e3fb84f797d9ad7f81626fb7185ce3e076
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: bd9a8366e64d41efac509a1cd611abbff774fe3f
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854138"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85193477"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory"></a>Konfigurace deklarací identity skupin pro aplikace s Azure Active Directory
 
@@ -222,6 +222,6 @@ Chcete-li generovat názvy skupin, které mají být vráceny ve formátu netbio
 
 ## <a name="next-steps"></a>Další kroky
 
-[Přiřazení uživatele nebo skupiny k podnikové aplikaci](../../active-directory/manage-apps/assign-user-or-group-access-portal.md)
-
-[Konfigurace deklarací identity rolí](../../active-directory/develop/active-directory-enterprise-app-role-management.md)
+- [Přidejte autorizaci pomocí skupin & deklarace identity skupin do webové aplikace ASP.NET Core (ukázka kódu).](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/5-WebApp-AuthZ/5-2-Groups/README.md)
+- [Přiřazení uživatele nebo skupiny k podnikové aplikaci](../../active-directory/manage-apps/assign-user-or-group-access-portal.md)
+- [Konfigurace deklarací identity rolí](../../active-directory/develop/active-directory-enterprise-app-role-management.md)

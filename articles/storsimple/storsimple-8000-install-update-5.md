@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 11/13/2017
 ms.author: alkohli
 ms.openlocfilehash: d86e77ef0148c0fac3dfa31153364de153b094ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267882"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84704368"
 ---
 # <a name="install-update-5-on-your-storsimple-device"></a>Instalace aktualizace Update 5 na zařízení StorSimple
 
@@ -76,28 +76,28 @@ Metoda opravy hotfix zahrnuje následující tři kroky:
 
 Je nutné stáhnout a nainstalovat následující opravy hotfix v předepsaném pořadí a v navrhovaných složkách:
 
-| Objednání | KB | Popis | Typ aktualizace | Čas instalace |Nainstalovat do složky|
+| Objednání | KB | Description | Typ aktualizace | Čas instalace |Nainstalovat do složky|
 | --- | --- | --- | --- | --- | --- |
-| 1. |KB4037264 |Aktualizace softwaru<br> Stažení _HcsSoftwareUpdate. exe_ a _CisMSDAgent. exe_ |Regular <br></br>Bez přerušení |~ 25 minut |FirstOrderUpdate|
+| 1. |KB4037264 |Aktualizace softwaru<br> Stáhnout _HcsSoftwareUpdate.exe_ i _CisMSDAgent.exe_ |Regular <br></br>Bez přerušení |~ 25 minut |FirstOrderUpdate|
 
 Pokud aktualizujete ze zařízení se systémem Update 4, budete muset kumulativní aktualizace operačního systému instalovat jenom jako aktualizace pro druhé objednávky.
 
-| Objednání | KB | Popis | Typ aktualizace | Čas instalace |Nainstalovat do složky|
+| Objednání | KB | Description | Typ aktualizace | Čas instalace |Nainstalovat do složky|
 | --- | --- | --- | --- | --- | --- |
 | 2a. |KB4025336 |Balíček kumulativních aktualizací operačního systému <br> Stáhnout verzi Windows Serveru 2012 R2 |Regular <br></br>Bez přerušení |- |SecondOrderUpdate|
 
 Při instalaci ze zařízení se systémem Update 3 nebo starší verze nainstalujte kromě kumulativních aktualizací následující:
 
-| Objednání | KB | Popis | Typ aktualizace | Čas instalace |Nainstalovat do složky|
+| Objednání | KB | Description | Typ aktualizace | Čas instalace |Nainstalovat do složky|
 | --- | --- | --- | --- | --- | --- |
 | 2b. |KB4011841 <br> KB4011842 |Ovladače LSI a aktualizace firmwaru <br> Aktualizace firmwaru USM (verze 3,38) |Regular <br></br>Bez přerušení |~ 3 hodiny <br> (zahrnuje 2A. + 2B. + 2C.)|SecondOrderUpdate|
 | 2C. |KB3139398 <br> KB3142030 <br> KB3108381 <br> KB3153704 <br> KB3174644 <br> KB3139914   |Balíček aktualizace zabezpečení operačního systému <br> Stáhnout verzi Windows Serveru 2012 R2 |Regular <br></br>Bez přerušení |- |SecondOrderUpdate|
 | dvojrozměrné. |KB3146621 <br> KB3103616 <br> KB3121261 <br> KB3123538 |Balíček aktualizací operačního systému <br> Stáhnout verzi Windows Serveru 2012 R2 |Regular <br></br>Bez přerušení |- |SecondOrderUpdate|
 
 
-Je také možné, že budete muset nainstalovat aktualizace firmwaru disku nad všemi aktualizacemi, které jsou uvedeny v předchozích tabulkách. Spuštěním `Get-HcsFirmwareVersion` rutiny můžete ověřit, zda potřebujete aktualizace firmwaru disku. Pokud používáte tyto `XMGJ`verze firmwaru:, `XGEG`, `KZ50`, `F6C2`, `VR08`, `N003`, `0107`, pak tyto aktualizace nemusíte instalovat.
+Je také možné, že budete muset nainstalovat aktualizace firmwaru disku nad všemi aktualizacemi, které jsou uvedeny v předchozích tabulkách. Spuštěním rutiny můžete ověřit, zda potřebujete aktualizace firmwaru disku `Get-HcsFirmwareVersion` . Pokud používáte tyto verze firmwaru: `XMGJ` , `XGEG` , `KZ50` , `F6C2` , `VR08` , `N003` , `0107` , pak tyto aktualizace nemusíte instalovat.
 
-| Objednání | KB | Popis | Typ aktualizace | Čas instalace | Nainstalovat do složky|
+| Objednání | KB | Description | Typ aktualizace | Čas instalace | Nainstalovat do složky|
 | --- | --- | --- | --- | --- | --- |
 | 3. |KB4037263 |Firmware disku |Údržba <br></br>Rušivé |~ 30 minut | ThirdOrderUpdate |
 

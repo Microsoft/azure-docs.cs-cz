@@ -12,7 +12,7 @@ ms.lasthandoff: 04/26/2020
 ms.locfileid: "67175093"
 ---
 > [!div class="op_single_selector"]
-> * [Portál](../articles/media-services/previous/media-services-portal-configure-content-key-auth-policy.md)
+> * [Azure Portal](../articles/media-services/previous/media-services-portal-configure-content-key-auth-policy.md)
 > * [.NET](../articles/media-services/previous/media-services-dotnet-configure-content-key-auth-policy.md)
 > * [REST API](../articles/media-services/previous/media-services-rest-configure-content-key-auth-policy.md)
 > * [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)

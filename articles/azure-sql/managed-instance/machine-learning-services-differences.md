@@ -2,7 +2,7 @@
 title: Klíčové rozdíly pro Machine Learning Services (Preview)
 description: Toto téma popisuje klíčové rozdíly mezi Machine Learning Services ve službě Azure SQL Managed instance a SQL Server Machine Learning Services.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: machine-learning
 ms.custom: ''
 ms.devlang: ''
@@ -12,12 +12,12 @@ ms.author: garye
 ms.reviewer: carlrab, davidph
 manager: cgronlun
 ms.date: 05/27/2020
-ms.openlocfilehash: 02211a09df2d2744119ea8fbe6f0ecaa63dba020
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: da97938736e7a3719da9d280e60e6a636b86e0e5
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045106"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254744"
 ---
 # <a name="key-differences-between-machine-learning-services-in-azure-sql-managed-instance-and-sql-server"></a>Klíčové rozdíly mezi Machine Learning Services ve službě Azure SQL Managed instance a SQL Server
 
@@ -48,7 +48,7 @@ Machine Learning Services ve spravované instanci SQL a SQL Server podporují [a
   | Spravovaná instance SQL | 3.7.1  | bodu |
   | SQL Server           | bodu  | body |
 
-- Není nutné konfigurovat `external scripts enabled` prostřednictvím `sp_configure` . Po [zaregistrování](machine-learning-services-overview.md#signup) verze Preview je pro vaši databázi SQL povolené Machine Learning.
+- Není nutné konfigurovat `external scripts enabled` prostřednictvím `sp_configure` . Po [zaregistrování](machine-learning-services-overview.md#signup) verze Preview je Machine Learning povolený pro spravovanou instanci Azure SQL.
 
 ## <a name="packages"></a>Balíčky
 
@@ -59,8 +59,8 @@ Správa balíčku Pythonu a R funguje odlišně mezi spravovanými instancemi SQ
 
 Další informace o správě balíčků Python a R najdete v těchto tématech:
 
-- [Získat informace o balíčku Pythonu](https://docs.microsoft.com/sql/machine-learning/package-management/python-package-information?context=azure/sql-database/context/ml-context&view=sql-server-ver15)
-- [Získat informace o balíčku R](https://docs.microsoft.com/sql/machine-learning/package-management/r-package-information?context=azure/sql-database/context/ml-context&view=sql-server-ver15)
+- [Získání informací o balíčku Pythonu](https://docs.microsoft.com/sql/machine-learning/package-management/python-package-information?context=azure/sql-database/context/ml-context&view=sql-server-ver15)
+- [Získání informací o balíčku jazyka R](https://docs.microsoft.com/sql/machine-learning/package-management/r-package-information?context=azure/sql-database/context/ml-context&view=sql-server-ver15)
 
 ## <a name="resource-governance"></a>Zásady správného řízení prostředků
 

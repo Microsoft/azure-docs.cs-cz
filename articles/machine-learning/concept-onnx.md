@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: prasantp
 author: prasanthpul
-ms.date: 08/15/2019
+ms.date: 06/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: 98aebb4733c2aa2a6d0b0217f1f437bcea1992e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 09b1fa31ff8f93ea86a80092b43d071df6cd74e9
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79270170"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85211778"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX a Azure Machine Learning: vytváření a zrychlení modelů ML
 
@@ -24,23 +24,27 @@ Naučte se používat [Open neuronové Network Exchange](https://onnx.ai) (ONNX)
 
 Optimalizace modelů strojového učení pro odvození (nebo vyhodnocování modelů) je obtížné, protože je potřeba ladit model a odvozenou knihovnu a využít tak většinu hardwarových funkcí. Pokud chcete získat optimální výkon na různých druzích platforem (Cloud, Edge, CPU/GPU atd.), bude problém velmi tvrdý. vzhledem k tomu, že každý z nich má různé možnosti a charakteristiky Složitost se zvyšuje, pokud máte modely z nejrůznějších architektur, které potřebují běžet na různých platformách. Optimalizace všech různých kombinací rozhraní a hardwaru je velmi časově náročná. Řešení, které se má ve vašem preferovaném rozhraní naučit jednou a spustit kdekoli na cloudu nebo na hraničních zařízeních. Zde je místo, kde ONNX přichází.
 
-Společnost Microsoft a komunitní partneři vytvořili ONNX jako open standard pro reprezentaci modelů strojového učení. Modely z [mnoha platforem](https://onnx.ai/supported-tools) , jako jsou TensorFlow, PyTorch, SciKit-učení, Keras, chainer, MXNET a MATLAB, se dají exportovat nebo převést na standardní formát ONNX. Jakmile jsou modely ve formátu ONNX, dají se spouštět na různých platformách a zařízeních.
+Společnost Microsoft a komunitní partneři vytvořili ONNX jako open standard pro reprezentaci modelů strojového učení. Modely z [mnoha platforem](https://onnx.ai/supported-tools) , jako jsou TensorFlow, PyTorch, SciKit-učení, Keras, chainer, MXNET, MATLAB a SparkML, se dají exportovat nebo převést na standardní formát ONNX. Jakmile jsou modely ve formátu ONNX, dají se spouštět na různých platformách a zařízeních.
 
-[ONNX runtime](https://github.com/Microsoft/onnxruntime) je vysoce výkonný modul odvození pro nasazení modelů ONNX do produkčního prostředí. Je optimalizovaný pro Cloud i Edge a funguje v systémech Linux, Windows a Mac. Napsaný v jazyce C++ obsahuje také rozhraní API jazyka C, Python a C#. ONNX runtime poskytuje podporu pro veškerou specifikaci ONNX-ML a integruje se s akcelerátory na jiném hardwaru, jako je například TensorRT na grafickém rozhraní NVidia.
+[ONNX runtime](https://onnxruntime.ai) je vysoce výkonný modul odvození pro nasazení modelů ONNX do produkčního prostředí. Je optimalizovaný pro Cloud i Edge a funguje v systémech Linux, Windows a Mac. Napsaný v jazyce C++ obsahuje také rozhraní API jazyka C, Python, C#, Java a JavaScriptu (Node.js) pro použití v různých prostředích. ONNX runtime podporuje modely DNN a tradiční ML a integruje se s akcelerátory na jiném hardwaru, jako je TensorRT v GPU GPU, OpenVINO na procesorech Intel, DirectML ve Windows a dalších. Pomocí modulu runtime ONNX můžete využívat rozsáhlé Optimalizace produkčních funkcí, testování a průběžná vylepšení.
 
-Modul runtime ONNX se používá ve vysoce škálovatelných službách Microsoftu, jako je Bing, Office a Cognitive Services. Zvýšení výkonu závisí na několika faktorech, ale tyto služby společnosti Microsoft viděli __průměrně dvojnásobný výkon na procesoru__. Modul runtime ONNX se používá také jako součást Windows ML na stovkách milionů zařízení. Modul runtime lze použít s Azure Machine Learning. Pomocí modulu runtime ONNX můžete využívat rozsáhlé Optimalizace produkčních funkcí, testování a průběžná vylepšení.
+ONNX runtime se používá v vysoce škálovatelných službách Microsoftu, jako je Bing, Office a Azure Cognitive Services. Zvýšení výkonu závisí na několika faktorech, ale tyto služby společnosti Microsoft viděli __průměrně dvojnásobný výkon na procesoru__. Kromě Azure Machine Learning služeb běží modul runtime ONNX také v dalších produktech, které podporují Machine Learning úlohy, včetně:
++ Windows: modul runtime je integrovaný do Windows jako součást [windows Machine Learning](https://docs.microsoft.com/windows/ai/windows-ml/) a běží na stovkách milionů zařízení. 
++ Produktová řada Azure SQL: Spusťte nativní hodnocení dat ve [službě Azure SQL Edge](https://docs.microsoft.com/azure/azure-sql-edge/onnx-overview) a [spravované instanci Azure SQL](https://docs.microsoft.com/azure/azure-sql/managed-instance/machine-learning-services-overview).
++ ML.NET: [spouštějte modely ONNX v ml.NET](https://docs.microsoft.com/dotnet/machine-learning/tutorials/object-detection-onnx).
+
 
 [![ONNX Flow diagram znázorňující školení, převaděče a nasazení](./media/concept-onnx/onnx.png)](././media/concept-onnx/onnx.png#lightbox)
 
 ## <a name="get-onnx-models"></a>Získání modelů ONNX
 
 Modely ONNX můžete získat několika způsoby:
-+ Výuka nového modelu ONNX v Azure Machine Learning (podívejte se na příklady na konci tohoto článku)
++ Výuka nového modelu ONNX v Azure Machine Learning (podívejte se na příklady na konci tohoto článku) nebo pomocí [automatických funkcí Machine Learning](concept-automated-ml.md#automl--onnx)
 + Převést existující model z jiného formátu na ONNX (viz [kurzy](https://github.com/onnx/tutorials)) 
-+ Získejte předem vyškolený model ONNX z [modelu ONNX](https://github.com/onnx/models) (viz příklady v dolní části tohoto článku).
++ Získání předem připraveného modelu ONNX z modelu ONNX ve službě | [zoologického](https://github.com/onnx/models) navýšení
 + Generování přizpůsobeného modelu ONNX ze [služby Azure Custom Vision](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/) 
 
-Mnoho modelů, včetně klasifikace obrázků, detekce objektů a zpracování textu, lze znázornit jako ONNX modely. Některé modely ale nemusí být možné úspěšně převést. Pokud narazíte na tuto situaci, uveďte problém na GitHubu příslušného převaděče, který jste použili. Existující model formátu můžete dál používat, dokud se problém nevyřeší.
+Mnoho modelů, včetně klasifikace obrázků, detekce objektů a zpracování textu, lze znázornit jako ONNX modely. Pokud narazíte na problém s modelem, který nelze úspěšně převést, uveďte problém na GitHubu příslušného převaděče, který jste použili. Existující model formátu můžete dál používat, dokud se problém nevyřeší.
 
 ## <a name="deploy-onnx-models-in-azure"></a>Nasazení modelů ONNX v Azure
 
@@ -69,7 +73,7 @@ first_input_name = session.get_inputs()[0].name
 first_output_name = session.get_outputs()[0].name
 ```
 
-Chcete-li odvozovat svůj model `run` , použijte a předejte seznam výstupů, které chcete vrátit (ponechte prázdné, pokud chcete všechny) a mapu vstupních hodnot. Výsledkem je seznam výstupů.  
+Chcete-li odvozovat svůj model, použijte `run` a předejte seznam výstupů, které chcete vrátit (ponechte prázdné, pokud chcete všechny) a mapu vstupních hodnot. Výsledkem je seznam výstupů.  
 ```python
 results = session.run(["output1", "output2"], {
                       "input1": indata1, "input2": indata2})
@@ -79,18 +83,20 @@ results = session.run([], {"input1": indata1, "input2": indata2})
 Kompletní referenční informace k rozhraní Python API najdete v [referenčních dokumentech ONNX za běhu](https://aka.ms/onnxruntime-python).    
 
 ## <a name="examples"></a>Příklady
-
-Příklady poznámkových bloků, které vytvářejí a nasazují modely ONNX, najdete v tématu [How to-use-AzureML/Deployment/Onnx](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx) .
+Příklady poznámkových bloků Pythonu, které vytvářejí a nasazují modely ONNX, najdete v tématu [How to-use-AzureML/Deployment/Onnx](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx) .
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 
+Ukázky pro použití v jiných jazycích najdete v [GitHubu ONNX runtime](https://github.com/microsoft/onnxruntime/tree/master/samples).
+
 ## <a name="more-info"></a>Další informace
 
-Další informace o ONNX nebo přispívání do projektu:
+Další informace o **ONNX** nebo přispívání do projektu:
 + [Web projektu ONNX](https://onnx.ai)
 + [ONNX kód na GitHubu](https://github.com/onnx/onnx)
 
-Další informace o modulu runtime ONNX nebo o přispívání do projektu:
+Další informace o **modulu runtime ONNX** nebo o přispívání do projektu:
++ [Web projektu modulu runtime ONNX](https://onnxruntime.ai)
 + [Úložiště GitHub pro ONNX runtime](https://github.com/Microsoft/onnxruntime)
 
 

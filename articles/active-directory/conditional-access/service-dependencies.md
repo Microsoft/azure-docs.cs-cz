@@ -4,19 +4,19 @@ description: Přečtěte si, jak se v Azure Active Directory podmíněný přís
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a108c952c4f1f9b8298e57c8fd94c767bb065f00
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 00b23a845002f5a92128917d81fdadf5a647d798
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82981769"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253184"
 ---
 # <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Jaké jsou závislosti služby v Azure Active Directory podmíněný přístup? 
 

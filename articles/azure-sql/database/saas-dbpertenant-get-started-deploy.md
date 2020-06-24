@@ -11,19 +11,20 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: d94f7219c5a29de9a707aa9ae4ed25ac4b2bf03e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 15a623068c46109b95ce9a9300348d29f95610a3
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84042978"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254306"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>Nasaďte a prozkoumejte aplikaci víceklientské SaaS, která používá model databáze na tenanta s Azure SQL Database
+
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 V tomto kurzu nasadíte a prozkoumáte aplikaci Wingtip Tickets SaaS Database-per-tenant (Wingtip). Aplikace používá model databáze pro jednotlivé klienty k ukládání dat více tenantů. Aplikace je navržená tak, aby předvedla funkce Azure SQL Database, které zjednodušují způsob povolení scénářů SaaS.
 
-Pět minut po výběru **nasazení do Azure**máte víceklientské aplikace SaaS. Aplikace obsahuje SQL Database, která běží v cloudu. Aplikace se nasazuje se třemi ukázkovými klienty, z nichž každá má svou vlastní databázi. Všechny databáze jsou nasazeny do elastického fondu SQL. Aplikace se nasadí do vašeho předplatného Azure. Máte plný přístup, abyste mohli prozkoumat jednotlivé komponenty aplikace a pracovat s nimi. Zdrojový kód C# aplikace a skripty pro správu jsou k dispozici v [úložišti GitHub WingtipTicketsSaaS-DbPerTenant][github-wingtip-dpt].
+Pět minut po výběru **nasazení do Azure**máte víceklientské aplikace SaaS. Aplikace obsahuje databázi, která běží v Azure SQL Database. Aplikace se nasazuje se třemi ukázkovými klienty, z nichž každá má svou vlastní databázi. Všechny databáze jsou nasazeny do elastického fondu SQL. Aplikace se nasadí do vašeho předplatného Azure. Máte plný přístup, abyste mohli prozkoumat jednotlivé komponenty aplikace a pracovat s nimi. Zdrojový kód C# aplikace a skripty pro správu jsou k dispozici v [úložišti GitHub WingtipTicketsSaaS-DbPerTenant][github-wingtip-dpt].
 
 V tomto kurzu se dozvíte:
 
@@ -87,7 +88,7 @@ Při nasazení aplikace Stáhněte zdrojový kód a skripty pro správu.
 1. Přejděte do [úložiště GitHub WingtipTicketsSaaS-DbPerTenant][github-wingtip-dpt].
 1. Vyberte **Clone or download** (Naklonovat nebo stáhnout).
 1. Vyberte **Stáhnout ZIP**a pak soubor uložte.
-1. Klikněte pravým tlačítkem na soubor **WingtipTicketsSaaS-DbPerTenant-Master. zip** a pak vyberte **vlastnosti**.
+1. Klikněte pravým tlačítkem na soubor **WingtipTicketsSaaS-DbPerTenant-master.zip** a pak vyberte **vlastnosti**.
 1. Na kartě **Obecné** vyberte **odblokovat**  >  **použít**.
 1. Vyberte **OK**a extrahujte soubory.
 
@@ -107,7 +108,7 @@ Na tyto hodnoty se odkazuje skoro každý skript.
 
 Aplikace prezentuje místa, která hostují události. Mezi typy míst patří kosálye, klub nápadný a sportovní klub. V Lístkech Wingtip jsou místa registrována jako klienti. Cílem je, aby měl klient místo snadný způsob, jak vypisovat události a prodávat lístky svým zákazníkům. Každé místo získá přizpůsobený web k vypsání svých událostí a k prodeji lístků.
 
-Interně v aplikaci každý tenant Získá databázi SQL nasazenou do elastického fondu SQL.
+Interně v aplikaci každý tenant Získá databázi nasazenou do elastického fondu.
 
 Stránka centra centrálních **událostí** obsahuje seznam odkazů na klienty v nasazení.
 
@@ -153,7 +154,7 @@ Teď, když je aplikace nasazená, Pojďme ji převést na práci.
 
 Skript prostředí PowerShell *demo-LoadGenerator* spustí úlohy, které běží na všech databázích tenanta. Reálné zatížení mnoha aplikací SaaS je občas a nepředvídatelné. Pro simulaci tohoto typu zatížení generátor generuje zátěž s náhodnými špičkami nebo nárůsty aktivity v každém tenantovi. Shluky se vyskytují v náhodných intervalech. Vzorek zatížení trvá několik minut. Než začnete monitorovat zatížení, počkejte, než se spustí generátor aspoň tři nebo čtyři minuty.
 
-1. V prostředí PowerShell ISE otevřete... \\ Výukové moduly \\ nástroje \\ skript*demo-LoadGenerator. ps1* .
+1. V prostředí PowerShell ISE otevřete... \\ Výukové moduly \\ nástroje \\ *Demo-LoadGenerator.ps1* skriptem.
 2. Stisknutím klávesy F5 spusťte skript a spusťte generátor zátěže. Pro nyní ponechte výchozí hodnoty parametrů.
 3. Přihlaste se ke svému účtu Azure a v případě potřeby vyberte předplatné, které chcete použít.
 
@@ -167,17 +168,17 @@ Pokud chcete řídit a monitorovat úlohy na pozadí, použijte následující r
 - `Receive-Job`
 - `Stop-Job`
 
-### <a name="demo-loadgeneratorps1-actions"></a>Akce Demo-LoadGenerator. ps1
+### <a name="demo-loadgeneratorps1-actions"></a>Demo-LoadGenerator.ps1 akce
 
-*Demo-LoadGenerator. ps1* napodobuje aktivní úlohu transakcí zákazníků. Následující kroky popisují sekvenci akcí, které *demo-LoadGenerator. ps1* iniciuje:
+*Demo-LoadGenerator.ps1* napodobuje aktivní úlohu transakcí zákazníků. Následující kroky popisují posloupnost akcí, které *Demo-LoadGenerator.ps1* iniciují:
 
-1. *Demo-LoadGenerator. ps1* spustí *LoadGenerator. ps1* v popředí.
+1. *Demo-LoadGenerator.ps1* spustí *LoadGenerator.ps1* v popředí.
 
     - Soubory. ps1 jsou uložené v části složky výukové moduly \\ \\ .
 
-2. *LoadGenerator. ps1* projde všemi databázemi tenanta v katalogu.
+2. *LoadGenerator.ps1* smyčky přes všechny databáze tenantů v katalogu.
 
-3. *LoadGenerator. ps1* spustí úlohu PowerShellu na pozadí pro každou databázi tenanta:
+3. *LoadGenerator.ps1* spustí úlohu PowerShellu na pozadí pro každou databázi tenanta:
 
     - Ve výchozím nastavení se úlohy na pozadí spouštějí po 120 minut.
     - Každá úloha způsobuje zatížení na základě procesoru v jedné databázi tenanta spuštěním *sp_CpuLoadGenerator*. Intenzita a doba trvání zatížení se liší v závislosti na `$DemoScenario` .
@@ -199,7 +200,7 @@ Než budete pokračovat v další části, ponechte generátor zatížení spuš
 Počáteční nasazení vytvoří tři ukázkové klienty. Nyní vytvoříte dalšího tenanta, abyste viděli dopad na nasazenou aplikaci. Pracovní postup pro zřízení nových tenantů v aplikaci Wingtip je vysvětlen v [kurzu zřízení a katalog](saas-dbpertenant-provision-and-catalog.md). V této fázi vytvoříte nového tenanta, který trvá méně než jednu minutu.
 
 1. Otevřete nový PowerShellový ISE.
-2. Otevřít... \\ Learning Modules\Provision a Catalog \\ *demo-ProvisionAndCatalog. ps1*.
+2. Otevřít... \\ Výukové Modules\Provision a katalogové \\ *Demo-ProvisionAndCatalog.ps1*.
 3. Pokud chcete skript spustit, stiskněte klávesu F5. Pro nyní ponechte výchozí hodnoty.
 
    > [!NOTE]
@@ -239,7 +240,7 @@ Teď, když jste spustili zatížení pro kolekci tenantů, si podívejme na ně
 
 ## <a name="monitor-the-pool"></a>Monitorování fondu
 
-Až *LoadGenerator. ps1* běží po dobu několika minut, měli byste k dispozici dostatek dat, abyste mohli začít s prohlížením některých možností monitorování. Tyto funkce jsou integrované do fondů a databází.
+Až se *LoadGenerator.ps1* spustí několik minut, měli byste k dispozici dostatek dat, abyste mohli začít s prohlížením některých možností monitorování. Tyto funkce jsou integrované do fondů a databází.
 
 Přejděte na server **tenants1-DPT- &lt; User &gt; **a vyberte **Pool1** pro zobrazení využití prostředků pro fond. V následujících grafech byl generátor zatížení spuštěn po jednu hodinu.
 

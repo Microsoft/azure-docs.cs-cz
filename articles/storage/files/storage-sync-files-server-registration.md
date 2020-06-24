@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2656716560b981481273c3032fc0c7b1a06be8a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1972ecc249e44bb99e4e9c903a7e097e8d304938
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79255090"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253881"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>Správa registrovaných serverů pomocí Azure File Sync
 Synchronizace souborů Azure umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Dělá to tak, že transformuje servery Windows na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS) a můžete mít libovolný počet mezipamětí po celém světě.
@@ -35,7 +35,7 @@ Pokud chcete zaregistrovat server se službou synchronizace úložiště, musít
 * Ujistěte se, že je na vašem serveru nainstalovaný modul Azure PowerShell. Pokud je váš server členem clusteru s podporou převzetí služeb při selhání, bude každý uzel v clusteru vyžadovat modul AZ Module. Další podrobnosti o tom, jak nainstalovat modul AZ Module, najdete v tématu [install and configure Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 
     > [!Note]  
-    > K registraci nebo zrušení registrace serveru doporučujeme použít nejnovější verzi modulu AZ PowerShell. Pokud je na tomto serveru dřív nainstalovaná sada AZ Package (a verze PowerShellu na tomto serveru je 5. * nebo vyšší), můžete k aktualizaci tohoto `Update-Module` balíčku použít rutinu. 
+    > K registraci nebo zrušení registrace serveru doporučujeme použít nejnovější verzi modulu AZ PowerShell. Pokud je na tomto serveru dřív nainstalovaná sada AZ Package (a verze PowerShellu na tomto serveru je 5. * nebo vyšší), můžete `Update-Module` k aktualizaci tohoto balíčku použít rutinu. 
 * Pokud ve svém prostředí používáte proxy server sítě, nakonfigurujte nastavení proxy serveru tak, aby agent synchronizace mohl využívat.
     1. Určení IP adresy a čísla portu proxy serveru
     2. Upravte tyto dva soubory:
@@ -76,10 +76,7 @@ Předtím, než se server dá použít jako *koncový bod serveru* ve *skupině 
 > Pokud je server členem clusteru s podporou převzetí služeb při selhání, musí být agent Azure File Sync nainstalovaný na všech uzlech v clusteru.
 
 #### <a name="register-the-server-using-the-server-registration-ui"></a>Registrace serveru pomocí uživatelského rozhraní pro registraci serveru
-> [!Important]  
-> Odběry Cloud Solution Provider (CSP) nemohou používat uživatelské rozhraní pro registraci serveru. Místo toho použijte PowerShell (pod touto částí).
-
-1. Pokud se uživatelské rozhraní pro registraci serveru nespouštělo hned po dokončení instalace agenta Azure File Sync, můžete ho spustit ručně spuštěním příkazu `C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe`.
+1. Pokud se uživatelské rozhraní pro registraci serveru nespouštělo hned po dokončení instalace agenta Azure File Sync, můžete ho spustit ručně spuštěním příkazu `C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe` .
 2. Pro přístup k předplatnému Azure klikněte na *Přihlásit* se. 
 
     ![Otevření dialogového okna registračního uživatelského rozhraní serveru](media/storage-sync-files-server-registration/server-registration-ui-1.png)
@@ -96,7 +93,7 @@ Předtím, než se server dá použít jako *koncový bod serveru* ve *skupině 
 > Pokud je server členem clusteru s podporou převzetí služeb při selhání, musí každý server spustit registraci serveru. Po zobrazení registrovaných serverů na webu Azure Portal Azure File Sync automaticky rozpoznává každý uzel jako člena stejného clusteru s podporou převzetí služeb při selhání a odpovídajícím způsobem seskupuje jejich dohromady.
 
 #### <a name="register-the-server-with-powershell"></a>Registrace serveru pomocí PowerShellu
-Můžete taky provést registraci serveru přes PowerShell. Toto je jediný podporovaný způsob registrace serveru pro odběry CSP (Cloud Solution Provider):
+Můžete taky provést registraci serveru přes PowerShell. 
 
 ```powershell
 Register-AzStorageSyncServer -ResourceGroupName "<your-resource-group-name>" -StorageSyncServiceName "<your-storage-sync-service-name>"
@@ -161,7 +158,7 @@ Vzhledem k tomu, že Azure File Sync bude jenom zřídka jediná služba běží
 Využití sítě Azure File Sync můžete omezit pomocí `StorageSyncNetworkLimit` rutin.
 
 > [!Note]  
-> Omezení sítě se nevztahují na přistup k vrstvenému souboru nebo se použije Rutina Invoke-StorageSyncFileRecall.
+> Omezení sítě se nevztahují, když je k vrstvenému souboru přistupoval.
 
 Můžete například vytvořit nové omezení omezení, abyste zajistili, že Azure File Sync nepoužívá více než 10 MB/s v rozmezí od 9 do 9:00 do 5 hodin (17:00h) během pracovního týdne: 
 
@@ -176,7 +173,7 @@ Omezení můžete zobrazit pomocí následující rutiny:
 Get-StorageSyncNetworkLimit # assumes StorageSync.Management.ServerCmdlets.dll is imported
 ```
 
-Pokud chcete odebrat omezení sítě, `Remove-StorageSyncNetworkLimit`použijte. Například následující příkaz odebere všechna omezení sítě:
+Pokud chcete odebrat omezení sítě, použijte `Remove-StorageSyncNetworkLimit` . Například následující příkaz odebere všechna omezení sítě:
 
 ```powershell
 Get-StorageSyncNetworkLimit | ForEach-Object { Remove-StorageSyncNetworkLimit -Id $_.Id } # assumes StorageSync.Management.ServerCmdlets.dll is imported

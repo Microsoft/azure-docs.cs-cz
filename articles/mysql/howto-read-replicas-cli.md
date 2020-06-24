@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: ed57003c7a9a5a1a9d87aa2e8934af8c48b1d819
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/10/2020
+ms.openlocfilehash: d772e98032a29a93527359335a13d7b37e020e50
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80063334"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84706949"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-cli-and-rest-api"></a>Vytvoření a Správa replik pro čtení v Azure Database for MySQL pomocí rozhraní příkazového řádku Azure a REST API
 
@@ -30,21 +30,24 @@ Repliky pro čtení můžete vytvořit a spravovat pomocí rozhraní příkazov�
 
 ### <a name="create-a-read-replica"></a>Vytvoření repliky pro čtení
 
+> [!IMPORTANT]
+> Když vytvoříte repliku pro hlavní server, který nemá žádné existující repliky, hlavní počítač se nejprve restartuje a připraví se pro replikaci. Vezměte v úvahu a udělejte tyto operace v době mimo špičku.
+
 Server repliky pro čtení se dá vytvořit pomocí následujícího příkazu:
 
 ```azurecli-interactive
 az mysql server replica create --name mydemoreplicaserver --source-server mydemoserver --resource-group myresourcegroup
 ```
 
-`az mysql server replica create` Příkaz vyžaduje následující parametry:
+`az mysql server replica create`Příkaz vyžaduje následující parametry:
 
-| Nastavení | Příklad hodnoty | Popis  |
+| Nastavení | Příklad hodnoty | Description  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  Skupina prostředků, do které se vytvoří server repliky.  |
-| jméno | mydemoreplicaserver | Název nového serveru repliky, který se vytvoří. |
+| name | mydemoreplicaserver | Název nového serveru repliky, který se vytvoří. |
 | source-server | mydemoserver | Název nebo ID existujícího hlavního serveru, ze kterého se má replikovat. |
 
-Chcete-li vytvořit repliku čtení ve více oblastech `--location` , použijte parametr. Níže uvedený příklad rozhraní příkazového řádku vytvoří repliku v Západní USA.
+Chcete-li vytvořit repliku čtení ve více oblastech, použijte `--location` parametr. Níže uvedený příklad rozhraní příkazového řádku vytvoří repliku v Západní USA.
 
 ```azurecli-interactive
 az mysql server replica create --name mydemoreplicaserver --source-server mydemoserver --resource-group myresourcegroup --location westus
@@ -65,9 +68,9 @@ Chcete-li zobrazit všechny repliky pro daný hlavní server, spusťte následuj
 az mysql server replica list --server-name mydemoserver --resource-group myresourcegroup
 ```
 
-`az mysql server replica list` Příkaz vyžaduje následující parametry:
+`az mysql server replica list`Příkaz vyžaduje následující parametry:
 
-| Nastavení | Příklad hodnoty | Popis  |
+| Nastavení | Příklad hodnoty | Description  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  Skupina prostředků, do které se vytvoří server repliky.  |
 | název-serveru | mydemoserver | Název nebo ID hlavního serveru. |
@@ -83,12 +86,12 @@ Replikaci na server repliky pro čtení lze zastavit pomocí následujícího p�
 az mysql server replica stop --name mydemoreplicaserver --resource-group myresourcegroup
 ```
 
-`az mysql server replica stop` Příkaz vyžaduje následující parametry:
+`az mysql server replica stop`Příkaz vyžaduje následující parametry:
 
-| Nastavení | Příklad hodnoty | Popis  |
+| Nastavení | Příklad hodnoty | Description  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  Skupina prostředků, ve které existuje server repliky.  |
-| jméno | mydemoreplicaserver | Název serveru repliky, na kterém má být replikace zastavena. |
+| name | mydemoreplicaserver | Název serveru repliky, na kterém má být replikace zastavena. |
 
 ### <a name="delete-a-replica-server"></a>Odstranění serveru repliky
 

@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: sawinark
-ms.openlocfilehash: 9309f431a820b800e652d7fa8afcea8f03a46062
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 95f29331c723e584cdecdd27a714f22377dfd26d
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84114529"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253575"
 ---
 # <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>Spuštění balíčku SSIS pomocí aktivity Uložená procedura ve službě Azure Data Factory
 
@@ -80,7 +80,7 @@ V tomto kroku použijete uživatelské rozhraní Data Factory k vytvoření kan�
 2. Na panelu nástrojů **aktivity** rozbalte **Obecné**a přetáhněte aktivitu **uložená procedura** na plochu návrháře kanálu. 
 
     ![Aktivita uložené procedury přetažení](./media/how-to-invoke-ssis-package-stored-procedure-activity/drag-drop-sproc-activity.png)
-3. V okně vlastnosti aktivity uložená procedura přepněte na kartu **účet SQL** a klikněte na **+ Nový**. Vytvoříte připojení ke službě Azure SQL Database, která je hostitelem katalogu SSIS (databáze SSIDB). 
+3. V okně vlastnosti aktivity uložená procedura přepněte na kartu **účet SQL** a klikněte na **+ Nový**. V Azure SQL Database, který je hostitelem katalogu SSIS (SSIDB Database), vytvoříte připojení k databázi. 
    
     ![Tlačítko Nová propojená služba](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-linked-service-button.png)
 4. V okně **Nová propojená služba** proveďte následující kroky: 
@@ -196,9 +196,9 @@ Je třeba počítat s následujícím:
 * Pokud chcete zobrazit seznam oblastí Azure, ve kterých je služba Data Factory aktuálně dostupná, na následující stránce vyberte oblasti, které vás zajímají, pak rozbalte **Analýza** a vyhledejte **Data Factory:**[Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
 
 ### <a name="create-an-azure-sql-database-linked-service"></a>Vytvoření propojené služby Azure SQL Database
-Vytvořte propojenou službu, která propojí vaši službu Azure SQL Database, která je hostitelem katalogu SSIS, s datovou továrnou. Data Factory používá k připojení k databázi SSISDB informace v této propojené službě a spustí uloženou proceduru pro spuštění balíčku SSIS. 
+Vytvořte propojenou službu, která propojí vaši databázi, která je hostitelem katalogu SSIS, s datovou továrnou. Data Factory používá k připojení k databázi SSISDB informace v této propojené službě a spustí uloženou proceduru pro spuštění balíčku SSIS. 
 
-1. Ve složce **C:\ADF\RunSSISPackage** vytvořte soubor JSON s názvem **AzureSqlDatabaseLinkedService. JSON** s následujícím obsahem: 
+1. Ve složce **C:\ADF\RunSSISPackage** vytvořte soubor JSON s názvem **AzureSqlDatabaseLinkedService.js** s následujícím obsahem: 
 
     > [!IMPORTANT]
     > &lt; &gt; &lt; &gt; &lt; Před uložením souboru položky servername, username a password nahraďte &gt; hodnotami vaší Azure SQL Database.
@@ -226,7 +226,7 @@ Vytvořte propojenou službu, která propojí vaši službu Azure SQL Database, 
 ### <a name="create-a-pipeline-with-stored-procedure-activity"></a>Vytvoření kanálu s aktivitou uložených procedur 
 V tomto kroku vytvoříte kanál s aktivitou uložené procedury. Tato aktivita vyvolá uloženou proceduru sp_executesql pro spuštění balíčku SSIS. 
 
-1. Ve složce **C:\ADF\RunSSISPackage** vytvořte soubor JSON s názvem **RunSSISPackagePipeline. JSON** s následujícím obsahem:
+1. Ve složce **C:\ADF\RunSSISPackage** vytvořte soubor JSON s názvem **RunSSISPackagePipeline.js** s následujícím obsahem:
 
     > [!IMPORTANT]
     > &lt; &gt; Před uložením souboru nahraďte název složky, &lt; název projektu &gt; , &lt; název balíčku &gt; názvy složky, projektu a balíčku v katalogu SSIS. 
@@ -305,7 +305,7 @@ while ($True) {
 ### <a name="create-a-trigger"></a>Vytvoření triggeru
 V předchozím kroku jste vyvolali kanál na vyžádání. Můžete také vytvořit aktivační proceduru Schedule pro spuštění kanálu podle plánu (každou hodinu, každý den atd.).
 
-1. Ve složce **C:\ADF\RunSSISPackage** vytvořte soubor JSON s názvem **MyTrigger. JSON** s následujícím obsahem: 
+1. Ve složce **C:\ADF\RunSSISPackage** vytvořte soubor JSON s názvem **MyTrigger.js** s následujícím obsahem: 
 
     ```json
     {

@@ -3,15 +3,15 @@ title: Export do SQL z Azure Application Insights | Microsoft Docs
 description: Průběžně exportujte Application Insights data do SQL pomocí Stream Analytics.
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: e67365038b9a481bc0cacf079e5d197cc3139a5f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 811d86c0a9b8e55f548046402885e2ec5967c477
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81536909"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254680"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Návod: Export do jazyka SQL z Application Insights pomocí Stream Analytics
-Tento článek popisuje, jak přesunout data telemetrie z [azure Application Insights][start] do databáze SQL Azure pomocí [průběžného exportu][export] a [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). 
+Tento článek popisuje, jak přesunout data telemetrie z [Azure Application Insights][start] do Azure SQL Database pomocí [průběžného exportu][export] a [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). 
 
 Průběžný export přesune data telemetrie do Azure Storage ve formátu JSON. Objekty JSON analyzujeme pomocí Azure Stream Analytics a vytvoří řádky v tabulce databáze.
 
@@ -220,7 +220,7 @@ Jako výstup vyberte SQL.
 
 ![Ve službě Stream Analytics vyberte výstupy.](./media/code-sample-export-sql-stream-analytics/SA006.png)
 
-Zadejte databázi SQL.
+Zadejte databázi.
 
 ![Vyplňte podrobnosti vaší databáze.](./media/code-sample-export-sql-stream-analytics/SA007.png)
 

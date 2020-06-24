@@ -10,21 +10,22 @@ ms.author: sstein
 ms.reviewer: genemi
 ms.date: 11/14/2019
 ms.custom: sqldbrb=2
-ms.openlocfilehash: 1d384bf4919589675dd6947fcb083585ebaf7e18
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: b099158261de55c829ab2b89a2f994b35b3e50d4
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344590"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254034"
 ---
-# <a name="application-development-overview---sql-database--sql-managed-instance"></a>Přehled vývoje aplikací – SQL Database & spravované instance SQL 
+# <a name="application-development-overview---sql-database--sql-managed-instance"></a>Přehled vývoje aplikací – SQL Database & spravované instance SQL
+
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
 Tento článek vás provede základními informacemi, které by měl vývojář znát při psaní kódu pro připojení k vaší databázi v Azure. Tento článek se týká Azure SQL Database a spravované instance Azure SQL.
 
 ## <a name="language-and-platform"></a>Jazyk a platforma
 
-K připojení a dotazování Azure SQL Database můžete použít různé [programovací jazyky a platformy](connect-query-content-reference-guide.md) . Můžete najít [ukázkové aplikace](https://azure.microsoft.com/resources/samples/?service=sql-database&sort=0) , které můžete použít pro připojení k databázi SQL Azure.
+K připojení a dotazování Azure SQL Database můžete použít různé [programovací jazyky a platformy](connect-query-content-reference-guide.md) . Můžete najít [ukázkové aplikace](https://azure.microsoft.com/resources/samples/?service=sql-database&sort=0) , které můžete použít pro připojení k databázi.
 
 Můžete využít Open Source nástroje, jako je [Cheetah](https://github.com/wunderlist/cheetah), [SQL-CLI](https://www.npmjs.com/package/sql-cli), [vs Code](https://code.visualstudio.com/). Kromě toho Azure SQL Database pracuje s nástroji Microsoftu jako [Visual Studio](https://www.visualstudio.com/downloads/) a [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx). Můžete také využít Azure Portal, PowerShell a rozhraní REST API, které vám pomůžou získat další produktivitu.
 
@@ -44,7 +45,7 @@ Nepoužívejte dlouhotrvající transakce, protože jakákoli infrastruktura neb
 
 ## <a name="resiliency"></a>Odolnost
 
-Azure SQL Database je cloudová služba, ve které byste mohli očekávat přechodné chyby, ke kterým dochází v základní infrastruktuře nebo v komunikaci mezi entitami cloudu. I když je Azure SQL Database odolná proti chybám přenosných infrastruktur, může to mít vliv na vaše připojení. Pokud při připojování k SQL Database dojde k přechodné chybě, váš kód by měl [zavolat znovu](troubleshoot-common-connectivity-issues.md). Doporučujeme, aby logika opakování použila omezení rychlosti logiku, aby nedošlo k zahlcení databáze SQL s více klienty, které se opakují současně. Logika opakování závisí na [chybových zprávách pro SQL Database klientských programů](troubleshoot-common-errors-issues.md).
+Azure SQL Database je cloudová služba, ve které byste mohli očekávat přechodné chyby, ke kterým dochází v základní infrastruktuře nebo v komunikaci mezi entitami cloudu. I když je Azure SQL Database odolná proti chybám přenosných infrastruktur, může to mít vliv na vaše připojení. Pokud při připojování k SQL Database dojde k přechodné chybě, váš kód by měl [zavolat znovu](troubleshoot-common-connectivity-issues.md). Doporučujeme, aby logika opakování použila omezení rychlosti logiku, aby nedošlo k zahlcení služby vícenásobným pokusem o spuštění více klientů současně. Logika opakování závisí na [chybových zprávách pro SQL Database klientských programů](troubleshoot-common-errors-issues.md).
 
 Další informace o přípravě na plánované události údržby v Azure SQL Database najdete v tématu [plánování událostí údržby Azure v Azure SQL Database](planned-maintenance.md).
 

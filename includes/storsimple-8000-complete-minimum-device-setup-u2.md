@@ -36,7 +36,7 @@ ms.locfileid: "67175058"
 
             ![Rutina Test-HcsmConnection zobrazující směrovatelné IP adresy](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig3.png)
 
-1. Klikněte na tlačítko **OK**. Spustí se konfigurace zařízení. Po dokončení konfigurace zařízení se zobrazí oznámení. Stav zařízení v okně **Zařízení** se změní na **Online**.
+1. Klikněte na **OK**. Spustí se konfigurace zařízení. Po dokončení konfigurace zařízení se zobrazí oznámení. Stav zařízení v okně **Zařízení** se změní na **Online**.
 
     ![Síťová rozhraní pro minimální instalaci zařízení StorSimple](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig4.png)
 

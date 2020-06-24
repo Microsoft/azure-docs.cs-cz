@@ -4,15 +4,15 @@ description: Zjistěte, jak vytvořit vlastní test pro Application Gateway pomo
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: 0ba3e9ae7b5075d1f5457cb2960423ad1c737e94
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3a555fff758fdd1f4ddff60c7828a3e44af008ce
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81312558"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807291"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>Vytvoření vlastní sondy pro Azure Application Gateway (Classic) pomocí prostředí PowerShell
 
@@ -136,32 +136,32 @@ Následující příklad ukazuje, jak použít konfigurační soubor k nastaven�
 > [!IMPORTANT]
 > Položka protokolu Http nebo Https rozlišuje velká a malá písmena.
 
-Přidá se nová sonda \<\> položky konfigurace, ve které se nakonfigurují vlastní sondy.
+Přidala se nová položka konfigurace \<Probe\> , která konfiguruje vlastní sondy.
 
 Konfigurační parametry jsou:
 
 |Parametr|Popis|
 |---|---|
 |**Název** |Referenční název pro vlastní test paměti |
-| **Protokol** | Použitý protokol (možné hodnoty jsou HTTP nebo HTTPS).|
-| **Hostitel** a **cesta** | Dokončete cestu adresy URL vyvolanou aplikační bránou a určete stav instance. Například pokud máte webovou stránku http:\//contoso.com/, pak se vlastní sonda dá nakonfigurovat pro http:\//contoso.com/Path/custompath.htm, aby testy testů měly úspěšnou odpověď HTTP.|
+| **Protocol (Protokol)** | Použitý protokol (možné hodnoty jsou HTTP nebo HTTPS).|
+| **Hostitel** a **cesta** | Dokončete cestu adresy URL vyvolanou aplikační bránou a určete stav instance. Například pokud máte webovou stránku http: \/ /contoso.com/, pak se vlastní test paměti dá nakonfigurovat na http: \/ /contoso.com/Path/custompath.htm, aby testy testů měly ÚSPĚŠNOU odpověď HTTP.|
 | **Doba** | Nakonfiguruje kontrolu intervalu sondy v sekundách.|
-| **Prodlev** | Definuje časový limit testu pro kontrolu odezvy protokolu HTTP.|
+| **Časový limit** | Definuje časový limit testu pro kontrolu odezvy protokolu HTTP.|
 | **UnhealthyThreshold** | Počet neúspěšných odpovědí HTTP nutných k označení back-endové instance jako *chybného*.|
 
-Na název sondy se odkazuje v konfiguraci \<BackendHttpSettings\> , která přiřadí, který fond back-end používá vlastní nastavení sondy.
+V konfiguraci je odkazováno na název sondy, \<BackendHttpSettings\> které přiřadí, který fond back-end používá vlastní nastavení sondy.
 
 ## <a name="add-a-custom-probe-to-an-existing-application-gateway"></a>Přidání vlastního testu do existující služby Application Gateway
 
 Změna aktuální konfigurace služby Application Gateway vyžaduje tři kroky: Získejte aktuální konfigurační soubor XML, upravte ho tak, aby měl vlastní test paměti, a nakonfigurujte Aplikační bránu pomocí nového nastavení XML.
 
-1. Získejte soubor XML pomocí `Get-AzureApplicationGatewayConfig`. Tato rutina exportuje konfigurační soubor XML, který se má upravit, aby se přidalo nastavení sondy.
+1. Získejte soubor XML pomocí `Get-AzureApplicationGatewayConfig` . Tato rutina exportuje konfigurační soubor XML, který se má upravit, aby se přidalo nastavení sondy.
 
    ```powershell
    Get-AzureApplicationGatewayConfig -Name "<application gateway name>" -Exporttofile "<path to file>"
    ```
 
-1. Otevřete soubor XML v textovém editoru. Přidejte `<probe>` oddíl za `<frontendport>`.
+1. Otevřete soubor XML v textovém editoru. Přidejte `<probe>` oddíl za `<frontendport>` .
 
    ```xml
    <Probes>
@@ -192,7 +192,7 @@ Změna aktuální konfigurace služby Application Gateway vyžaduje tři kroky: 
 
    Uložte soubor XML.
 
-1. Aktualizujte konfiguraci aplikační brány novým souborem XML pomocí `Set-AzureApplicationGatewayConfig`. Tato rutina aktualizuje Aplikační bránu s novou konfigurací.
+1. Aktualizujte konfiguraci aplikační brány novým souborem XML pomocí `Set-AzureApplicationGatewayConfig` . Tato rutina aktualizuje Aplikační bránu s novou konfigurací.
 
 ```powershell
 Set-AzureApplicationGatewayConfig -Name "<application gateway name>" -Configfile "<path to file>"

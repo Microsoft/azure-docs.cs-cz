@@ -3,7 +3,7 @@ title: Konfigurace připojení virtuálního počítače Azure
 titleSuffix: Azure SQL Managed Instance
 description: Připojte se ke spravované instanci Azure SQL pomocí SQL Server Management Studio z virtuálního počítače Azure.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, srbozovi, bonova
 ms.date: 02/18/2019
-ms.openlocfilehash: 9cfb8d2f9c7a04c519674856ca0e5603e0f9f782
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 76c4e2c5052e70c4c6cb8ff631151a5e6fc544e5
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219754"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84706354"
 ---
 # <a name="quickstart-configure-an-azure-vm-to-connect-to-azure-sql-managed-instance"></a>Rychlý Start: konfigurace virtuálního počítače Azure pro připojení ke spravované instanci Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -53,10 +53,10 @@ Následující kroky vytvoří novou podsíť ve virtuální síti spravované i
    | ---------------- | ----------------- | ----------- |
    | **Název** | Libovolné platné jméno|Platné názvy najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming).|
    | **Rozsah adres (blok CIDR)** | Platný rozsah | Výchozí hodnota je pro tento rychlý Start vhodná.|
-   | **Skupina zabezpečení sítě** | Žádná | Výchozí hodnota je pro tento rychlý Start vhodná.|
-   | **Tabulka směrování** | Žádná | Výchozí hodnota je pro tento rychlý Start vhodná.|
+   | **Skupina zabezpečení sítě** | Žádné | Výchozí hodnota je pro tento rychlý Start vhodná.|
+   | **Tabulka směrování** | Žádné | Výchozí hodnota je pro tento rychlý Start vhodná.|
    | **Koncové body služby** | Vybráno: 0 | Výchozí hodnota je pro tento rychlý Start vhodná.|
-   | **Delegování podsítě** | Žádná | Výchozí hodnota je pro tento rychlý Start vhodná.|
+   | **Delegování podsítě** | Žádné | Výchozí hodnota je pro tento rychlý Start vhodná.|
 
    ![Nová podsíť spravované instance SQL pro virtuální počítač klienta](./media/connect-vm-instance-configure/new-subnet.png)
 

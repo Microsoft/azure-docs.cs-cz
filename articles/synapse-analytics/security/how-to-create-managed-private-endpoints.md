@@ -4,15 +4,16 @@ description: Tento článek vás seznámí s postupem vytvoření spravovaného 
 author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: how-to
+ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: d6a0a84050cb8f1b3ad0c04aa66c5b3797282f2e
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: c6f0054364e5bbfb80fc4c1b9db6a4c15f365a81
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983223"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85193885"
 ---
 # <a name="create-a-managed-private-endpoint-to-your-data-source-preview"></a>Vytvoření spravovaného privátního koncového bodu ke zdroji dat (Preview)
 

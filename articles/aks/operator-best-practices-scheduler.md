@@ -5,11 +5,11 @@ services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.openlocfilehash: cccc476a944b28d24c53a947e434d465c94f94ee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79126574"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84704739"
 ---
 # <a name="best-practices-for-basic-scheduler-features-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro základní funkce plánovače ve službě Azure Kubernetes Service (AKS)
 
@@ -77,7 +77,7 @@ Nedobrovolné výpadky je možné zmírnit použitím několika replik v rámci 
 
 Pokud je třeba upgradovat cluster nebo aktualizovat šablonu nasazení, Plánovač Kubernetes zajistí, aby se další lusky naplánovaly na jiných uzlech, než můžou pokračovat události dobrovolného přerušení. Plánovač počká před restartováním uzlu, dokud se neúspěšně naplánuje definovaný počet lusků na jiných uzlech v clusteru.
 
-Pojďme se podívat na příklad sady replik s pěti lusky, které používají NGINX. V luskech sady replik se přiřadí popisek `app: nginx-frontend`. Během dobrovolné události přerušení, jako je například upgrade clusteru, chcete zajistit, aby běžely alespoň tři lusky. Následující manifest YAML pro objekt *PodDisruptionBudget* definuje tyto požadavky:
+Pojďme se podívat na příklad sady replik s pěti lusky, které používají NGINX. V luskech sady replik se přiřadí popisek `app: nginx-frontend` . Během dobrovolné události přerušení, jako je například upgrade clusteru, chcete zajistit, aby běžely alespoň tři lusky. Následující manifest YAML pro objekt *PodDisruptionBudget* definuje tyto požadavky:
 
 ```yaml
 apiVersion: policy/v1beta1
@@ -119,7 +119,7 @@ Další informace o použití rozpočtů přerušení v systému najdete v téma
 
 ## <a name="regularly-check-for-cluster-issues-with-kube-advisor"></a>Pravidelně zjišťovat problémy s clustery pomocí Kube-Advisoru
 
-**Doprovodné materiály k osvědčeným postupům** – pravidelně spouštějte `kube-advisor` nejnovější verzi nástroje open source a zjistěte problémy v clusteru. Pokud použijete kvóty prostředků v existujícím clusteru AKS, spusťte `kube-advisor` nejprve rutiny, které nemají požadavky na prostředky a definované limity.
+**Doprovodné materiály k osvědčeným postupům** – pravidelně spouštějte nejnovější verzi `kube-advisor` nástroje open source a zjistěte problémy v clusteru. Pokud použijete kvóty prostředků v existujícím clusteru AKS, spusťte `kube-advisor` nejprve rutiny, které nemají požadavky na prostředky a definované limity.
 
 Nástroj [Kube-Advisor][kube-advisor] je přidružený AKS open source projekt, který vyhledává cluster Kubernetes a oznamuje nalezené problémy. Jednou z užitečných kontrol je identifikovat lusky, které nemají požadavky na prostředky a omezení.
 

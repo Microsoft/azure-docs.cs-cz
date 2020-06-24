@@ -12,11 +12,11 @@ ms.workload: infrastructure
 ms.date: 03/05/2020
 ms.author: kumud
 ms.openlocfilehash: 1a1593566b8bdb72f322d64c1ee99c7018f49329
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79240069"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707408"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-portal"></a>Rychlý start: Vytvoření virtuální sítě pomocí webu Azure Portal
 
@@ -32,7 +32,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
-1. V nabídce webu Azure Portal vyberte **Vytvořit prostředek**. Z Azure Marketplace vyberte **síť** > **virtuální síť**.
+1. V nabídce webu Azure Portal vyberte **Vytvořit prostředek**. Z Azure Marketplace vyberte **síť**  >  **virtuální síť**.
 
 1. V nástroji **vytvořit virtuální síť**zadejte nebo vyberte tyto informace:
 
@@ -40,7 +40,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com).
     | ------- | ----- |
     | Předplatné | Vyberte své předplatné.|
     | Skupina prostředků | Vyberte **vytvořit nový**, zadejte *myResourceGroup*a pak vyberte **OK**. |
-    | Název | Zadejte *myVirtualNetwork*. |
+    | Name | Zadejte *myVirtualNetwork*. |
     | Umístění | Vyberte **USA – východ**.|
 
 1. Vyberte **Další: IP adresy**a pro **adresní prostor IPv4**zadejte *10.1.0.0/16*.
@@ -59,7 +59,7 @@ Vytvořte ve virtuální síti dva virtuální počítače:
 
 1. V nabídce webu Azure Portal vyberte **Vytvořit prostředek**.
 
-1. V Azure Marketplace vyberte **COMPUTE** > **Windows Server 2019 Datacenter**. Vyberte **Vytvořit**.
+1. V Azure Marketplace vyberte **COMPUTE**  >  **Windows Server 2019 Datacenter**. Vyberte **Vytvořit**.
 
 1. V nástroji **vytvořit virtuální počítač základy**zadejte nebo vyberte tyto informace:
 
@@ -144,7 +144,7 @@ Po vytvoření *myVm1*se připojte k Internetu.
 1. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače.
 
     > [!NOTE]
-    > Možná budete muset vybrat **Další volby** > **použít jiný účet**a zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače.
+    > Možná budete muset vybrat **Další volby**  >  **použít jiný účet**a zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače.
 
 1. Vyberte **OK**.
 
@@ -171,7 +171,7 @@ Po vytvoření *myVm1*se připojte k Internetu.
     Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
     ```
 
-    Služba `ping` se nezdařila, protože `ping` používá protokol ICMP (Internet Control Message Protocol). Standardně není ICMP povolený přes bránu Windows Firewall.
+    `ping`Služba se nezdařila, protože `ping` používá protokol ICMP (Internet Control Message Protocol). Standardně není ICMP povolený přes bránu Windows Firewall.
 
 1. Pokud chcete, aby se v pozdějším kroku *myVm2* příkaz Test *myVm1* , zadejte tento příkaz:
 

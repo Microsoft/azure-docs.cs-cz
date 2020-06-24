@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 01/14/2019
-ms.openlocfilehash: 4c0ae83a0ed3a7f9fc550af2d64d5fcd1f42c998
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 609b5903d02e9265e211cf25606ae3852e03e913
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324658"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254017"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-databases-in-azure-sql-database-and-sql-server"></a>Kurz: nastavení Synchronizace dat SQL mezi databázemi v Azure SQL Database a SQL Server
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -36,18 +36,18 @@ Příklady prostředí PowerShell týkající se konfigurace Synchronizace dat S
 
 1. Přejít na [Azure Portal](https://portal.azure.com) a vyhledat svou databázi v SQL Database. Vyhledejte a vyberte **databáze SQL**.
 
-    ![Vyhledejte databáze SQL, portál Microsoft Azure](./media/sql-data-sync-sql-server-configure/search-for-sql-databases.png)
+    ![Vyhledejte databáze portál Microsoft Azure](./media/sql-data-sync-sql-server-configure/search-for-sql-databases.png)
 
 1. Vyberte databázi, kterou chcete použít jako databázi centra pro synchronizaci dat.
 
-    ![Vyberte ze seznamu SQL Database portál Microsoft Azure](./media/sql-data-sync-sql-server-configure/select-sql-database.png)
+    ![V seznamu databáze vyberte portál Microsoft Azure](./media/sql-data-sync-sql-server-configure/select-sql-database.png)
 
     > [!NOTE]
     > Databáze centra je centrální koncový bod synchronizační topologie, ve kterém má skupina synchronizace více koncových bodů databáze. Všechny ostatní členské databáze s koncovými body ve skupině synchronizace se synchronizují s databází centra.
 
 1. V nabídce **databáze SQL** pro vybranou databázi vyberte možnost **synchronizovat s ostatními databázemi**.
 
-    ![Synchronizace s ostatními databázemi, SQL Database, portál Microsoft Azure](./media/sql-data-sync-sql-server-configure/sync-to-other-databases.png)
+    ![Synchronizace s ostatními databázemi portál Microsoft Azure](./media/sql-data-sync-sql-server-configure/sync-to-other-databases.png)
 
 1. Na stránce **synchronizovat s ostatními databázemi** vyberte **Nová skupina synchronizace**. Otevře se stránka **Nová skupina synchronizace** s zvýrazněnou možností **vytvořit skupinu synchronizace (krok 1)** .
 
@@ -171,7 +171,7 @@ Po vytvoření a nasazení nových členů skupiny synchronizace se na stránce 
 
     ![Ruční synchronizace](./media/sql-data-sync-sql-server-configure/datasync-sync.png)
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 **Jak často může synchronizace dat synchronizovat moje data?**
 

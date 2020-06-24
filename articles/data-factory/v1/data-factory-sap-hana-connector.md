@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 361b98a1cde8ee5dee99a370b46d8fc8e0f5af28
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265815"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707136"
 ---
 # <a name="move-data-from-sap-hana-using-azure-data-factory"></a>Přesun dat z SAP HANA pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -57,14 +57,14 @@ Následující části obsahují podrobné informace o vlastnostech JSON, které
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 Následující tabulka uvádí popis pro prvky JSON specifické pro SAP HANA propojenou službu.
 
-Vlastnost | Popis | Povolené hodnoty | Požaduje se
+Vlastnost | Popis | Povolené hodnoty | Vyžadováno
 -------- | ----------- | -------------- | --------
-server | Název serveru, na kterém se nachází instance SAP HANA. Pokud váš server používá přizpůsobený port, zadejte `server:port`. | řetězec | Ano
+server | Název serveru, na kterém se nachází instance SAP HANA. Pokud váš server používá přizpůsobený port, zadejte `server:port` . | řetězec | Ano
 authenticationType | Typ ověřování. | . "Basic" nebo "Windows" | Ano 
 uživatelské jméno | Jméno uživatele, který má přístup k serveru SAP | řetězec | Ano
 heslo | Heslo pro tohoto uživatele. | řetězec | Ano
 gatewayName | Název brány, kterou by služba Data Factory měla použít pro připojení k místní instanci SAP HANA | řetězec | Ano
-encryptedCredential | Šifrovaný řetězec přihlašovacích údajů. | řetězec | Ne
+encryptedCredential | Šifrovaný řetězec přihlašovacích údajů. | řetězec | No
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 Úplný seznam sekcí & vlastností dostupných pro definování datových sad naleznete v článku [vytvoření datových sad](data-factory-create-datasets.md) . Oddíly, jako je například struktura, dostupnost a zásada pro datovou sadu JSON, jsou podobné pro všechny typy datových sad (Azure SQL, Azure Blob, tabulka Azure atd.).
@@ -79,7 +79,7 @@ V takovém případě se vlastnosti dostupné v části **typeProperties** v akt
 
 Pokud je zdroj v aktivitě kopírování typu **RelationalSource** (který zahrnuje SAP HANA), jsou v oddílu typeProperties k dispozici následující vlastnosti:
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
 | query | Určuje dotaz SQL pro čtení dat z instance SAP HANA. | Dotaz SQL. | Ano |
 
@@ -287,8 +287,8 @@ TINYINT | Byte
 SMALLINT | Int16
 INT | Int32
 BIGINT | Int64
-REÁLNÉ | Single
-KLEPAT | Single
+REÁLNÉ | Jeden
+KLEPAT | Jeden
 NOTACI | Desetinné číslo
 DATOVÉHO | Byte
 VARCHAR | Řetězec

@@ -4,17 +4,17 @@ description: Tento kurz programovacího jazyka R vám umožní začít s Azure M
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 2c481fc2f435695b4b99b86411a2fcca27e97ab4
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: b2bd75750670a83409b0f5b8839144e55ef2c4d0
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117864"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84706277"
 ---
 # <a name="get-started-with-azure-machine-learning-studio-classic-in-r"></a>Začínáme s Azure Machine Learning Studio (Classic) v R
 
@@ -141,7 +141,7 @@ V této části se dozvíte, jak získat data do a z modulu [spuštění skriptu
 
 #### <a name="load-the-dataset"></a><a id="loading"></a>Načíst datovou sadu
 
-Začneme tak, že načteme soubor **csdairydata. csv** do Azure Machine Learning Studio (Classic).
+Začneme tak, že soubor **csdairydata.csv** načteme do Azure Machine Learning Studio (Classic).
 
 1. Spusťte prostředí Azure Machine Learning Studio (Classic).
 1. V levém dolním rohu obrazovky vyberte **+ Nový** a vyberte **datová sada**.
@@ -156,11 +156,11 @@ Teď, když máme nějaká data v Machine Learning Studio (Classic), musíme vyt
 
 1. V levém dolním rohu vyberte **+ Nový** a vyberte **experiment**a pak **prázdný experiment**.
 1. Experiment můžete pojmenovat tak, že vyberete a upravíte v horní části stránky název experimentu, který jste **vytvořili...** . Například změna na **analýzu mléčných mléka certifikační autority**.
-1. Na levé straně stránky experimentu rozbalte **uložené datové sady**a pak **Moje datové sady**. Měl by se zobrazit soubor **cadairydata. csv** , který jste nahráli dříve.
-1. Přetáhněte **datovou sadu csdairydata. csv** do experimentu.
+1. Na levé straně stránky experimentu rozbalte **uložené datové sady**a pak **Moje datové sady**. Měl by se zobrazit **cadairydata.csv** , který jste nahráli dříve.
+1. Přetáhněte **datovou saducsdairydata.csv** do experimentu.
 1. Do pole **Hledat položky experimentu** v horní části levého podokna zadejte [Execute Script script][execute-r-script]. V seznamu hledání se zobrazí modul.
 1. Přetáhněte na paletu modul [spuštění skriptu jazyka R][execute-r-script] .  
-1. Připojte výstup **datové sady csdairydata. csv** k levému vstupu (**DataSet1.**) [skriptu Execute jazyka R][execute-r-script].
+1. Připojte výstup **csdairydata.csv datové sady** ke vstupu úplně vlevo (**DataSet1.**) [skriptu Execute jazyka R][execute-r-script].
 1. **Nezapomeňte vybrat Save (Uložit).**  
 
 V tomto okamžiku by experiment měl vypadat přibližně jako obrázek 3.
@@ -171,11 +171,11 @@ V tomto okamžiku by experiment měl vypadat přibližně jako obrázek 3.
 
 #### <a name="check-on-the-data"></a>Kontrolovat data
 
-Pojďme se podívat na data, která jsme načetli do našeho experimentu. V experimentu vyberte výstup **datové sady cadairydata. csv** a vyberte **vizualizovat**. Mělo by se zobrazit něco jako obrázek 4.  
+Pojďme se podívat na data, která jsme načetli do našeho experimentu. V experimentu vyberte výstup **cadairydata.csv datové sady** a vyberte **vizualizovat**. Mělo by se zobrazit něco jako obrázek 4.  
 
-![Souhrn datové sady cadairydata. csv](./media/r-quickstart/fig4.png)
+![Shrnutí cadairydata.csv datové sady](./media/r-quickstart/fig4.png)
 
-*Obrázek 4. Souhrn datové sady cadairydata. csv*
+*Obrázek 4. Souhrn cadairydata.csv datové sady.*
 
 V tomto zobrazení se zobrazí spousta užitečných informací. Můžeme zobrazit prvních několik řádků této datové sady. Když vybereme sloupec, v části Statistika se zobrazí další informace o sloupci. Například řádek typ funkce zobrazuje, jaké typy dat Azure Machine Learning Studio (Classic) přiřazené sloupci. Rychlý vzhled je dobrý správnosti před zahájením provádění všech závažných prací.
 

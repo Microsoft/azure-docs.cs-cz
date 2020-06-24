@@ -13,11 +13,11 @@ ms.date: 11/19/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: e1735c2d2ed107f7ec65d68a6826267ee83a93f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281389"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707374"
 ---
 # <a name="move-data-from-odbc-data-stores-using-azure-data-factory"></a>Přesun dat z úložišť dat ODBC pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -64,15 +64,15 @@ Následující části obsahují podrobné informace o vlastnostech JSON, které
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou službu ODBC.
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 | --- | --- | --- |
-| type |Vlastnost Type musí být nastavená na: **OnPremisesOdbc** . |Ano |
-| připojovací řetězec |Část připojovacího řetězce bez přístupu k přístupu a volitelné šifrované přihlašovací údaje. Podívejte se na příklady v následujících oddílech. <br/><br/>Můžete zadat připojovací řetězec se vzorem, jako `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"`je, nebo použít systémový název DSN (název zdroje dat), který jste nastavili na `"DSN=<name of the DSN>;"` počítači brány s nástrojem (pro odpovídající část přihlašovací údaje v propojené službě). |Ano |
-| pověření |Část přístupového pověření v připojovacím řetězci, kterou jste zadali ve formátu hodnoty vlastnosti specifické pro ovladač. Příklad: `"Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;"`. |Ne |
-| authenticationType |Typ ověřování, který se používá pro připojení k úložišti dat ODBC. Možné hodnoty jsou: Anonymous a Basic. |Ano |
-| userName |Pokud používáte základní ověřování, zadejte uživatelské jméno. |Ne |
-| heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ne |
-| gatewayName |Název brány, kterou by služba Data Factory měla použít pro připojení k úložišti dat ODBC. |Ano |
+| typ |Vlastnost Type musí být nastavená na: **OnPremisesOdbc** . |Yes |
+| připojovací řetězec |Část připojovacího řetězce bez přístupu k přístupu a volitelné šifrované přihlašovací údaje. Podívejte se na příklady v následujících oddílech. <br/><br/>Můžete zadat připojovací řetězec se vzorem, jako je `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"` , nebo použít systémový název DSN (název zdroje dat), který jste nastavili na počítači brány s nástrojem `"DSN=<name of the DSN>;"` (pro odpovídající část přihlašovací údaje v propojené službě). |Yes |
+| pověření |Část přístupového pověření v připojovacím řetězci, kterou jste zadali ve formátu hodnoty vlastnosti specifické pro ovladač. Příklad: `"Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;"`. |No |
+| authenticationType |Typ ověřování, který se používá pro připojení k úložišti dat ODBC. Možné hodnoty jsou: Anonymous a Basic. |Yes |
+| userName |Pokud používáte základní ověřování, zadejte uživatelské jméno. |No |
+| heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |No |
+| gatewayName |Název brány, kterou by služba Data Factory měla použít pro připojení k úložišti dat ODBC. |Yes |
 
 ### <a name="using-basic-authentication"></a>Použití základního ověřování
 
@@ -136,9 +136,9 @@ Přihlašovací údaje můžete šifrovat pomocí rutiny [New-AzDataFactoryEncry
 
 Oddíl **typeProperties** se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti dat. Oddíl typeProperties pro datovou sadu **relačních** objektů typu (která zahrnuje datovou sadu ODBC) má následující vlastnosti.
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 | --- | --- | --- |
-| tableName |Název tabulky v úložišti dat rozhraní ODBC. |Ano |
+| tableName |Název tabulky v úložišti dat rozhraní ODBC. |Yes |
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 Úplný seznam sekcí & vlastností dostupných pro definování aktivit najdete v článku [vytvoření kanálů](data-factory-create-pipelines.md) . Pro všechny typy aktivit jsou k dispozici vlastnosti, jako je název, popis, vstupní a výstupní tabulka a zásady.
@@ -147,9 +147,9 @@ Vlastnosti, které jsou k dispozici v části **typeProperties** aktivity, se li
 
 Pokud je zdroj v aktivitě kopírování typu **RelationalSource** (který zahrnuje rozhraní ODBC), jsou v části typeProperties k dispozici následující vlastnosti:
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
-| query |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu SQL. Příklad: SELECT * FROM MyTable. |Ano |
+| query |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu SQL. Příklad: SELECT * FROM MyTable. |Yes |
 
 
 ## <a name="json-example-copy-data-from-odbc-data-store-to-azure-blob"></a>Příklad JSON: kopírování dat z úložiště dat ODBC do Azure Blob

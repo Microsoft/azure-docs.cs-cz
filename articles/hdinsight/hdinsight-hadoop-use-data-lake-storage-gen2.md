@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: cd41c162d44320fc19af904118f202423e68e96a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4a9a3aaecc854ddb710f19bcb3d455c63b3a8bef
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195345"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84706167"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Použití služby Azure Data Lake Storage Gen2 s clustery Azure HDInsight
 
@@ -100,7 +100,7 @@ Přiřaďte spravovanou identitu k roli **vlastníka dat objektů BLOB úložiš
 
 Můžete [stáhnout ukázkový soubor šablony](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/hdinsight-adls-gen2-template.json) a [stáhnout ukázkový soubor parametrů](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/parameters.json). Než použijete šablonu a fragment kódu Azure CLI níže, nahraďte následující zástupné symboly jejich správnými hodnotami:
 
-| Zástupný symbol | Popis |
+| Zástupný symbol | Description |
 |---|---|
 | `<SUBSCRIPTION_ID>` | ID vašeho předplatného Azure |
 | `<RESOURCEGROUPNAME>` | Skupina prostředků, ve které chcete vytvořit nový cluster a účet úložiště. |
@@ -167,9 +167,9 @@ Další informace o oprávněních k souborům pomocí seznamů řízení přís
 
 Schopnost clusteru HDInsight přistupovat k souborům v Data Lake Storage Gen2 je řízena prostřednictvím spravovaných identit. Spravovaná identita je identita registrovaná v Azure Active Directory (Azure AD), jejíž přihlašovací údaje jsou spravované v Azure. U spravovaných identit nemusíte registrovat instanční objekty ve službě Azure AD. Nebo Udržujte přihlašovací údaje, jako jsou certifikáty.
 
-Služby Azure mají dva typy spravovaných identit: přiřazeno systémem a přiřazeno uživateli. HDInsight používá pro přístup k Data Lake Storage Gen2 spravované identity přiřazené uživatelem. A `user-assigned managed identity` vytvoří se jako samostatný prostředek Azure. Prostřednictvím procesu vytvoření Azure vytvoří identitu v tenantovi Azure AD důvěryhodném pro použité předplatné. Po vytvoření identity je možné ji přiřadit k jedné nebo několika instancím služeb Azure.
+Služby Azure mají dva typy spravovaných identit: přiřazeno systémem a přiřazeno uživateli. HDInsight používá pro přístup k Data Lake Storage Gen2 spravované identity přiřazené uživatelem. A vytvoří `user-assigned managed identity` se jako samostatný prostředek Azure. Prostřednictvím procesu vytvoření Azure vytvoří identitu v tenantovi Azure AD důvěryhodném pro použité předplatné. Po vytvoření identity je možné ji přiřadit k jedné nebo několika instancím služeb Azure.
 
-Životní cyklus identity přiřazené uživatelem se spravuje nezávisle na životním cyklu instancí služeb Azure, ke kterým je přiřazená. Další informace o spravovaných identitách najdete v tématu [Jak fungují spravované identity prostředků Azure?](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work).
+Životní cyklus identity přiřazené uživatelem se spravuje nezávisle na životním cyklu instancí služeb Azure, ke kterým je přiřazená. Další informace o spravovaných identitách najdete v tématu [co jsou spravované identity pro prostředky Azure?](../active-directory/managed-identities-azure-resources/overview.md).
 
 ### <a name="how-do-i-set-permissions-for-azure-ad-users-to-query-data-in-data-lake-storage-gen2-by-using-hive-or-other-services"></a>Návody nastavení oprávnění pro uživatele Azure AD k dotazování na data v Data Lake Storage Gen2 pomocí podregistru nebo jiných služeb?
 

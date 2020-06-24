@@ -4,11 +4,11 @@ description: Popisuje, jak vyřešit chyby registrace poskytovatele prostředků
 ms.topic: troubleshooting
 ms.date: 02/15/2019
 ms.openlocfilehash: a9182be53cc91240a62ab201efc53d674f7cf427
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79273771"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84706524"
 ---
 # <a name="resolve-errors-for-resource-provider-registration"></a>Řešení chyb s registrací poskytovatele prostředků
 
@@ -79,7 +79,7 @@ Pokud chcete získat podporované verze rozhraní API pro konkrétní typ prost�
 
 ## <a name="solution-2---azure-cli"></a>Řešení 2 – Azure CLI
 
-Chcete-li zjistit, zda je poskytovatel zaregistrován, `az provider list` použijte příkaz.
+Chcete-li zjistit, zda je poskytovatel zaregistrován, použijte `az provider list` příkaz.
 
 ```azurecli-interactive
 az provider list

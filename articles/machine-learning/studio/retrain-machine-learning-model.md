@@ -5,21 +5,19 @@ description: Naučte se aktualizovat webovou službu tak, aby používala nově 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/14/2019
-ms.openlocfilehash: 218c1c98a2ed775ae86c1657156991879708cc7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 601717ce487f8564ed2d431db9b31a3b43fcee75
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79217939"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84706082"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>Přeučení a nasazení modelu strojového učení
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Rekurze je jedním ze způsobů, jak zajistit, aby modely strojového učení byly přesné a založené na nejdůležitějších dostupných datech. Tento článek ukazuje, jak převádět a nasazovat model strojového učení jako novou webovou službu v nástroji Studio (Classic). Pokud chcete přeškolit klasickou webovou službu, Projděte si [článek s postupem.](retrain-classic-web-service.md)
 
@@ -61,14 +59,14 @@ V tomto příkladu používáme jazyk C# k vytvoření opětovného školení ap
 
 K volání rozhraní API pro přeškolení použijte následující postup:
 
-1. Vytvoření konzolové aplikace v jazyce C# v aplikaci Visual Studio: **Nová** > **aplikace Project** > **Visual C#** > **Windows Classic Desktop** > **Console (.NET Framework)**.
+1. Vytvoření konzolové aplikace v jazyce C# v aplikaci Visual Studio: **Nová**aplikace  >  **Project**  >  **Visual C#**  >  **Windows Classic Desktop**  >  **Console (.NET Framework)**.
 1. Přihlaste se k portálu Machine Learning Web Services.
 1. Klikněte na webovou službu, se kterou právě pracujete.
 1. Klikněte na možnost **spotřebovat**.
 1. V dolní části stránky **využívání** klikněte v části **vzorový kód** na **Batch**.
 1. Zkopírujte ukázkový kód C# pro spuštění dávky a vložte ho do souboru Program.cs. Ujistěte se, že obor názvů zůstane nedotčený.
 
-Přidejte balíček NuGet Microsoft. AspNet. WebApi. Client, jak je uvedeno v komentářích. Chcete-li přidat odkaz na soubor Microsoft. WindowsAzure. Storage. dll, je možné, že bude nutné nainstalovat [klientskou knihovnu pro Azure Storage Services](https://www.nuget.org/packages/WindowsAzure.Storage).
+Přidejte balíček NuGet Microsoft. AspNet. WebApi. Client, jak je uvedeno v komentářích. Chcete-li přidat odkaz na Microsoft.WindowsAzure.Storage.dll, může být nutné nainstalovat [klientskou knihovnu pro služby Azure Storage](https://www.nuget.org/packages/WindowsAzure.Storage).
 
 Na následujícím snímku obrazovky vidíte stránku **spotřebovat** na portálu Azure Machine Learning Web Services.
 
@@ -84,7 +82,7 @@ V části **informace o základní spotřebě** **stránky využívání** Najd�
 
 ### <a name="update-the-azure-storage-information"></a>Aktualizace informací o Azure Storage
 
-Vzorový kód BES nahraje soubor z místního disku (například "C:\temp\CensusInput.csv") na Azure Storage, zpracuje ho a zapíše výsledky zpět do Azure Storage.
+Vzorový kód BES nahraje soubor z místního disku (například "C:\temp\CensusInput.csv") pro Azure Storage, zpracuje ho a zapíše výsledky zpět do Azure Storage.
 
 1. Přihlášení k webu Azure Portal
 1. V levém navigačním sloupci klikněte na **Další služby**, vyhledejte **účty úložiště**a vyberte je.
@@ -104,7 +102,7 @@ Také je nutné zajistit, aby byl vstupní soubor k dispozici v umístění, kte
 
 ### <a name="specify-the-output-location"></a>Zadejte umístění výstupu
 
-Pokud zadáte umístění výstupu v datové části požadavku, Přípona souboru určeného v *RelativeLocation* musí být zadána jako `ilearner`.
+Pokud zadáte umístění výstupu v datové části požadavku, Přípona souboru určeného v *RelativeLocation* musí být zadána jako `ilearner` .
 
     Outputs = new Dictionary<string, AzureBlobDataReference>() {
         {
