@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 19e4c61ba930bb9b127e2401174bcea3fd240dce
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 57417a80ea83005c01b6f2a17206d46e6c049719
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82234200"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85112774"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Dělení a horizontální škálování ve službě Azure Cosmos DB
 
@@ -19,11 +19,11 @@ Tento článek vysvětluje vztah mezi logickými a fyzickými oddíly. Popisuje 
 
 ## <a name="logical-partitions"></a>Logické oddíly
 
-Logický oddíl obsahuje sadu položek, které mají stejný klíč oddílu. Například v kontejneru, který obsahuje data o výživě potravin, všechny položky obsahují `foodGroup` vlastnost. Můžete použít `foodGroup` jako klíč oddílu pro kontejner. Skupiny položek, které mají specifické hodnoty pro `foodGroup`, například `Beef Products``Baked Products`, a `Sausages and Luncheon Meats`, tvoří rozdílné logické oddíly. Nemusíte si dělat starosti s odstraněním logického oddílu, pokud jsou podkladová data odstraněna.
+Logický oddíl obsahuje sadu položek, které mají stejný klíč oddílu. Například v kontejneru, který obsahuje data o výživě potravin, všechny položky obsahují `foodGroup` vlastnost. Můžete použít `foodGroup` jako klíč oddílu pro kontejner. Skupiny položek, které mají specifické hodnoty pro `foodGroup` , například, `Beef Products` `Baked Products` a `Sausages and Luncheon Meats` , tvoří rozdílné logické oddíly. Nemusíte si dělat starosti s odstraněním logického oddílu, pokud jsou podkladová data odstraněna.
 
 Logický oddíl také definuje rozsah databázových transakcí. Položky v rámci logického oddílu lze aktualizovat pomocí [transakce s izolací snímku](database-transactions-optimistic-concurrency.md). Při přidání nových položek do kontejneru jsou nové logické oddíly transparentně vytvořeny systémem.
 
-Počet logických oddílů ve vašem kontejneru není nijak omezený. Každý logický oddíl může ukládat až 20 GB dat. Dobrá volba klíče oddílu má široké spektrum možných hodnot. Například v kontejneru, kde všechny položky obsahují `foodGroup`vlastnost, data v rámci `Beef Products` logického oddílu mohou růst až 20 GB. [Výběr klíče oddílu](partitioning-overview.md#choose-partitionkey) s široké škálou možných hodnot zajistí, že kontejner bude schopný škálovat.
+Počet logických oddílů ve vašem kontejneru není nijak omezený. Každý logický oddíl může ukládat až 20 GB dat. Dobrá volba klíče oddílu má široké spektrum možných hodnot. Například v kontejneru, kde všechny položky obsahují `foodGroup` vlastnost, data v rámci `Beef Products` logického oddílu mohou růst až 20 GB. [Výběr klíče oddílu](partitioning-overview.md#choose-partitionkey) s široké škálou možných hodnot zajistí, že kontejner bude schopný škálovat.
 
 ## <a name="physical-partitions"></a>Fyzické oddíly
 
@@ -40,11 +40,11 @@ Propustnost zřízená pro kontejner je rozdělená rovnoměrně mezi fyzické o
 
 Fyzické oddíly kontejneru můžete zobrazit v části **úložiště** v okně **metriky** Azure Portal:
 
-[![Zobrazení počtu fyzických oddílů](./media/partition-data/view-partitions-zoomed-out.png)](./media/partition-data/view-partitions-zoomed-in.png#lightbox)
+:::image type="content" source="./media/partition-data/view-partitions-zoomed-out.png" alt-text="Zobrazení počtu fyzických oddílů" lightbox="./media/partition-data/view-partitions-zoomed-in.png" ::: 
 
-V tomto příkladu kontejneru, který jsme vybrali `/foodGroup` jako náš klíč oddílu, každý ze tří obdélníků představuje fyzický oddíl. V imagi je **Rozsah klíčů oddílu** stejný jako fyzický oddíl. Vybraný fyzický oddíl obsahuje tři logické oddíly: `Beef Products`, `Vegetable and Vegetable Products`a. `Soups, Sauces, and Gravies`
+V tomto příkladu kontejneru, který jsme vybrali `/foodGroup` jako náš klíč oddílu, každý ze tří obdélníků představuje fyzický oddíl. V imagi je **Rozsah klíčů oddílu** stejný jako fyzický oddíl. Vybraný fyzický oddíl obsahuje tři logické oddíly: `Beef Products` , a `Vegetable and Vegetable Products` `Soups, Sauces, and Gravies` .
 
-Pokud zřizujeme propustnost 18 000 jednotek žádostí za sekundu (RU/s), pak každý ze tří fyzických oddílů může využít 1/3 celkové zřízené propustnosti. V rámci vybraného fyzického oddílu klíče `Beef Products` `Vegetable and Vegetable Products`logických oddílů, a `Soups, Sauces, and Gravies` mohou společně shromažďovat, využijte ru/s fyzického oddílu 6 000. Vzhledem k tomu, že zajištěná propustnost je rovnoměrně rozdělená napříč fyzickými oddíly kontejneru, je důležité zvolit klíč oddílu, který rovnoměrně distribuuje spotřebu propustnosti, a to [výběrem správného logického klíče oddílu](partitioning-overview.md#choose-partitionkey). Pokud zvolíte klíč oddílu, který rovnoměrně distribuuje spotřebu propustnosti napříč logickými oddíly, zajistíte rovnováhu propustnosti mezi fyzickými oddíly.
+Pokud zřizujeme propustnost 18 000 jednotek žádostí za sekundu (RU/s), pak každý ze tří fyzických oddílů může využít 1/3 celkové zřízené propustnosti. V rámci vybraného fyzického oddílu klíče logických oddílů `Beef Products` , `Vegetable and Vegetable Products` a `Soups, Sauces, and Gravies` mohou společně shromažďovat, využijte ru/s fyzického oddílu 6 000. Vzhledem k tomu, že zajištěná propustnost je rovnoměrně rozdělená napříč fyzickými oddíly kontejneru, je důležité zvolit klíč oddílu, který rovnoměrně distribuuje spotřebu propustnosti, a to [výběrem správného logického klíče oddílu](partitioning-overview.md#choose-partitionkey). Pokud zvolíte klíč oddílu, který rovnoměrně distribuuje spotřebu propustnosti napříč logickými oddíly, zajistíte rovnováhu propustnosti mezi fyzickými oddíly.
 
 ## <a name="replica-sets"></a>Sady replik
 
@@ -54,7 +54,7 @@ Většina malých Cosmos kontejnerů vyžaduje jenom jeden fyzický oddíl, ale 
 
 Následující obrázek ukazuje, jak jsou logické oddíly namapovány na fyzické oddíly distribuované globálně:
 
-![Obrázek, který ukazuje Azure Cosmos DB dělení](./media/partition-data/logical-partitions.png)
+:::image type="content" source="./media/partition-data/logical-partitions.png" alt-text="Obrázek, který ukazuje Azure Cosmos DB dělení" border="false":::
 
 ## <a name="next-steps"></a>Další kroky
 

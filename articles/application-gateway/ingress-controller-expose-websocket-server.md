@@ -4,15 +4,15 @@ description: Tento článek poskytuje informace o tom, jak vystavit Server WebSo
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 1f068c9d98a827afd16da01bdc40cbb6ca5dc465
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 68d4ff7e4617136e4c58ce672f34de56e46f0229
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79297828"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207783"
 ---
 # <a name="expose-a-websocket-server-to-application-gateway"></a>Vystavení serveru WebSocket pro Application Gateway
 
@@ -78,7 +78,7 @@ spec:
 Vzhledem k tomu, že jsou splněné všechny požadavky a máte Application Gateway řízený Kubernetes příchozím voláním ve vaší AKS, by výše uvedené nasazení vedlo k vystavení serveru WebSockets na portu 80 veřejné IP adresy vašeho Application Gateway a `ws.contoso.com` doméně.
 
 Následující příkaz složeného testu vyzkouší nasazení serveru WebSocket:
-```sh
+```shell
 curl -i -N -H "Connection: Upgrade" \
         -H "Upgrade: websocket" \
         -H "Origin: http://localhost" \
@@ -91,7 +91,7 @@ curl -i -N -H "Connection: Upgrade" \
 ## <a name="websocket-health-probes"></a>Sondy stavu protokolu WebSocket
 
 Pokud vaše nasazení explicitně nedefinuje testy stavu, Application Gateway by se pokusila získat na koncovém bodu serveru WebSocket požadavek HTTP.
-V závislosti na implementaci serveru ([tady je něco, co se vám líbí](https://github.com/gorilla/websocket/blob/master/examples/chat/main.go)) může být nutné zadat záhlaví konkrétního protokolu WebSocket (`Sec-Websocket-Version` např.).
-Vzhledem k tomu, že Application Gateway nepřidává hlavičky protokolu WebSocket, odpověď testu stavu Application Gateway ze serveru WebSocket bude pravděpodobně `400 Bad Request`.
+V závislosti na implementaci serveru ([tady je něco, co se vám líbí](https://github.com/gorilla/websocket/blob/master/examples/chat/main.go)) může být nutné zadat záhlaví konkrétního protokolu WebSocket (např `Sec-Websocket-Version` .).
+Vzhledem k tomu, že Application Gateway nepřidává hlavičky protokolu WebSocket, odpověď testu stavu Application Gateway ze serveru WebSocket bude pravděpodobně `400 Bad Request` .
 V důsledku toho Application Gateway označí lusky jako chybné, což způsobí, že se bude `502 Bad Gateway` pro uživatele serveru WebSocket považovat za.
-Aby k tomu nedocházelo, možná budete muset přidat obslužnou rutinu HTTP GET pro kontrolu stavu na váš`/health` Server (například, který `200 OK`vrátí).
+Aby k tomu nedocházelo, možná budete muset přidat obslužnou rutinu HTTP GET pro kontrolu stavu na váš server ( `/health` například, který vrátí `200 OK` ).

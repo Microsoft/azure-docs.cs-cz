@@ -3,15 +3,15 @@ title: Jak používat Azure Kubernetes s Azure Cosmos DB
 description: Naučte se, jak spustit cluster Kubernetes v Azure, který používá Azure Cosmos DB (Preview).
 author: SnehaGunda
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: sngun
-ms.openlocfilehash: 9dbbc914580d8d80a3f9b7d730574e24b44827c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e7e1480d00280fc567a69556f25db8ffab800f70
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "70093731"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262629"
 ---
 # <a name="how-to-use-azure-kubernetes-with-azure-cosmos-db-preview"></a>Jak používat Azure Kubernetes s Azure Cosmos DB (Preview)
 
@@ -33,7 +33,7 @@ Další informace o rozhraní etcd API v Azure Cosmos DB najdete v článku [Př
 
    Modul Azure Kubernetes Engine (**AKS-Engine**) generuje šablony Azure Resource Manager pro clustery Kubernetes v Azure. Vstup do AKS-Engine je definiční soubor clusteru, který popisuje požadovaný cluster, včetně nástroje Orchestrator, features a agentů. Struktura vstupních souborů je podobná veřejnému rozhraní API pro službu Azure Kubernetes.
 
-1. Rozhraní etcd API v Azure Cosmos DB je momentálně ve verzi Preview. Zaregistrujte se a použijte verzi Preview na https://aka.ms/cosmosetcdapi-signupadrese:. Po odeslání formuláře se vašemu předplatnému bude používat rozhraní etcd API služby Azure Cosmos. 
+1. Rozhraní etcd API v Azure Cosmos DB je momentálně ve verzi Preview. Zaregistrujte se a použijte verzi Preview na adrese: https://aka.ms/cosmosetcdapi-signup . Po odeslání formuláře se vašemu předplatnému bude používat rozhraní etcd API služby Azure Cosmos. 
 
 ## <a name="deploy-the-cluster-with-azure-cosmos-db"></a>Nasazení clusteru s Azure Cosmos DB
 
@@ -80,7 +80,7 @@ Další informace o rozhraní etcd API v Azure Cosmos DB najdete v článku [Př
    cd "\aks-engine-v0.36.3-windows-amd64\aks-engine-v0.36.3-windows-amd64"
    ```
 
-1. Otevřete textový editor podle vlastního výběru a definujte šablonu Správce prostředků, která nasadí cluster Azure Kubernetes pomocí rozhraní API Azure Cosmos DB etcd. Zkopírujte následující definici JSON do textového editoru a soubor uložte jako `apiModel.json`:
+1. Otevřete textový editor podle vlastního výběru a definujte šablonu Správce prostředků, která nasadí cluster Azure Kubernetes pomocí rozhraní API Azure Cosmos DB etcd. Zkopírujte následující definici JSON do textového editoru a soubor uložte jako `apiModel.json` :
 
    ```json
 
@@ -140,7 +140,7 @@ Další informace o rozhraní etcd API v Azure Cosmos DB najdete v článku [Př
    Modul Azure Kubernetes využívá definici clusteru, která popisuje požadovaný tvar, velikost a konfiguraci Azure Kubernetes. V rámci definice clusteru je možné povolit několik funkcí. V tomto příkladu budete používat následující parametry:
 
    * **ID předplatného:** ID předplatného Azure, které má povolené Azure Cosmos DB rozhraní API etcd
-   * **ID klienta:** Identifikátor appId objektu služby `appId` V kroku 4 se vrátil jako výstup.
+   * **ID klienta:** Identifikátor appId objektu služby `appId`V kroku 4 se vrátil jako výstup.
    * **Tajný kód klienta:** Heslo objektu služby nebo náhodně generované heslo. Tato hodnota byla vrácena jako výstup v parametru Password v kroku 4. 
    * **pole dnsprefix:** Název DNS jedinečné pro oblast. Tato hodnota bude tvořit část názvu hostitele (příklad hodnot je-myprod1, fázování).
    * **umístění:**  Umístění, do kterého se má cluster nasadit, momentálně se podporuje jenom "centralus".

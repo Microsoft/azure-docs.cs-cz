@@ -3,16 +3,16 @@ title: Definování jedinečných klíčů pro kontejner Azure Cosmos
 description: Naučte se definovat jedinečné klíče pro kontejner Azure Cosmos pomocí Azure Portal, PowerShellu, .NET, Java a různých dalších sad SDK.
 author: ThomasWeiss
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: thweiss
 ms.custom: tracking-python
-ms.openlocfilehash: bb1fc927b52f9b59c1a71cdc4369bdea428f4586
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 056cd77104fe73f19588f3d13e11dc06fd93c3f6
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561142"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261541"
 ---
 # <a name="define-unique-keys-for-an-azure-cosmos-container"></a>Definování jedinečných klíčů pro kontejner Azure Cosmos
 
@@ -34,7 +34,7 @@ Tento článek nabízí různé způsoby definování [jedinečných klíčů](u
 
 1. V případě potřeby přidejte více jedinečných klíčových položek kliknutím na **+ přidat jedinečný klíč** .
 
-    ![Snímek obrazovky s jedinečnou položkou omezení klíčů v Azure Portal](./media/how-to-define-unique-keys/unique-keys-portal.png)
+    :::image type="content" source="./media/how-to-define-unique-keys/unique-keys-portal.png" alt-text="Snímek obrazovky s jedinečnou položkou omezení klíčů v Azure Portal":::
 
 ## <a name="use-powershell"></a>Použití PowerShellu
 
@@ -117,9 +117,9 @@ container.setUniqueKeyPolicy(uniqueKeyPolicy);
 client.createCollection(String.format("/dbs/%s", "database"), container, null);
 ```
 
-## <a name="use-the-nodejs-sdk"></a>Použití sady Node. js SDK
+## <a name="use-the-nodejs-sdk"></a>Použití sady Node.js SDK
 
-Při vytváření nového kontejneru pomocí [sady Node. js SDK](https://www.npmjs.com/package/@azure/cosmos) `UniqueKeyPolicy` lze objekt použít k definování jedinečných omezení klíčů.
+Při vytváření nového kontejneru pomocí [sadyNode.js SDK](https://www.npmjs.com/package/@azure/cosmos)se `UniqueKeyPolicy` dá objekt použít k definování jedinečných omezení klíčů.
 
 ```javascript
 client.database('database').containers.create({

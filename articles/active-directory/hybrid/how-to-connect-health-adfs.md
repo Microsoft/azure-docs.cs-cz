@@ -19,11 +19,11 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bbd1ad6178e0120bf8414fc424b79254e306d2c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261564"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84692168"
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>Sledování služby AD FS pomocí služby Azure AD Connect Health
 Následující dokumentace se věnuje sledování infrastruktury služby AD FS ve službě Azure AD Connect Health. Informace o monitorování Azure AD Connect (synchronizace) s Azure AD Connect Health najdete v tématu [použití Azure AD Connect Health ke synchronizaci](how-to-connect-health-sync.md). Další informace o sledování Active Directory Domain Services pomocí Azure AD Connect Health najdete v tématu [použití Azure AD Connect Health s služba AD DS](how-to-connect-health-adds.md).
@@ -51,7 +51,7 @@ Pokud chcete vybrat další metriky, určit časový rozsah nebo změnit seskupe
 
 |Seskupit podle | Co seskupení znamená a proč je užitečné? |
 | --- | --- |
-| Všechny | Zobrazí celkový počet požadavků zpracovaných všemi servery AD FS.|
+| Vše | Zobrazí celkový počet požadavků zpracovaných všemi servery AD FS.|
 | Aplikace | Seskupí celkový počet požadavků podle cílové přijímající strany. Toto seskupení vás seznámí s procentem celkového provozu, které jednotlivé aplikace přijímají. |
 |  Server |Seskupí celkový počet požadavků podle serveru, který požadavek zpracoval. Toto seskupení vás seznámí s distribucí zatížení celkového provozu.
 | Připojení k pracovišti |Seskupí celkový počet požadavků podle toho, jestli přicházejí ze zařízení, která jsou připojená k pracovišti (známá). Toto seskupení vás seznámí s tím, jestli se k vašim prostředkům přistupuje pomocí zařízení, které infrastruktura identity nezná. |
@@ -72,7 +72,7 @@ Pokud chcete vybrat další metriky, určit časový rozsah nebo změnit seskupe
 
 |Seskupit podle | Co seskupení znamená a proč je užitečné? |
 | --- | --- |
-|Všechny |Tato metrika poskytuje průměrný počet uživatelů, kteří používají službu FS ve vybraném časovém intervalu. Uživatelé nejsou seskupení. <br>Průměr závisí na vybraném časovém intervalu. |
+|Vše |Tato metrika poskytuje průměrný počet uživatelů, kteří používají službu FS ve vybraném časovém intervalu. Uživatelé nejsou seskupení. <br>Průměr závisí na vybraném časovém intervalu. |
 | Aplikace |Seskupí průměrný počet uživatelů podle cílové aplikace (přijímající strany). Toto seskupení vás seznámí s počtem uživatelů používajících jednotlivé aplikace. |
 
 ## <a name="performance-monitoring-for-ad-fs"></a>Sledování výkonu služby AD FS
@@ -108,7 +108,7 @@ Graf obsahuje následující informace:
 
 Sestava obsahuje následující informace:
 
-| Položky sestavy | Popis |
+| Položky sestavy | Description |
 | --- | --- |
 | ID uživatele |Zobrazuje použité ID uživatele. Tato hodnota odpovídá hodnotě zadané uživatelem, což je v některých případech nesprávné ID uživatele, které bylo použito. |
 | Neúspěšné pokusy |Zobrazuje celkový počet neúspěšných pokusů s konkrétním ID uživatele. Tabulka je řazená podle největšího počtu neúspěšných pokusů v sestupném pořadí. |

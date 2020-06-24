@@ -3,15 +3,15 @@ title: Použití aplikace Azure Cosmos DB Explorer ke správě dat
 description: Azure Cosmos DB Explorer je samostatné webové rozhraní, které umožňuje zobrazit a spravovat data uložená v Azure Cosmos DB.
 author: deborahc
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: dech
-ms.openlocfilehash: 57ba647ade45928f03cd7fb2b037642d5e4d52cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 918f5a4a572f5518e5ae1b08db3d88d559571ed7
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79096815"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261881"
 ---
 # <a name="work-with-data-using-azure-cosmos-explorer"></a>Práce s daty s využitím průzkumníka Azure Cosmos 
 
@@ -29,7 +29,7 @@ Azure Cosmos DB Explorer je samostatné webové rozhraní, které umožňuje zob
 
 2. V části **všechny prostředky**vyhledejte a přejděte na účet Azure Cosmos DB, vyberte klíče a zkopírujte **primární připojovací řetězec**.  
 
-3. Přejít na https://cosmos.azure.com/, vložte připojovací řetězec a vyberte **připojit**. Pomocí připojovacího řetězce můžete získat přístup k Průzkumníku Azure Cosmos DB bez jakýchkoli časových omezení.  
+3. Přejít na https://cosmos.azure.com/ , vložte připojovací řetězec a vyberte **připojit**. Pomocí připojovacího řetězce můžete získat přístup k Průzkumníku Azure Cosmos DB bez jakýchkoli časových omezení.  
 
    Pokud chcete jiným uživatelům poskytnout dočasný přístup k vašemu Azure Cosmos DB účtu, můžete k tomu použít adresy URL pro čtení i zápis a přístup pro čtení. 
 
@@ -41,7 +41,7 @@ Azure Cosmos DB Explorer je samostatné webové rozhraní, které umožňuje zob
 
    Vyberte typ přístupu, se kterým chcete účet otevřít, a klikněte na **otevřít**. Po otevření Průzkumníka je prostředí stejné jako při použití karty Průzkumník dat v Azure Portal.   
 
-   ![Otevřít Azure Cosmos DB Explorer](./media/data-explorer/open-data-explorer-with-access-url.png)
+   :::image type="content" source="./media/data-explorer/open-data-explorer-with-access-url.png" alt-text="Otevřít Azure Cosmos DB Explorer":::
 
 ## <a name="known-issues"></a>Známé problémy
 

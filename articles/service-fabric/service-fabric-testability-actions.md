@@ -6,18 +6,18 @@ ms.topic: conceptual
 ms.date: 06/07/2017
 ms.author: motanv
 ms.openlocfilehash: 4bdb00eec38addc0c9f88eba8b73185ec5721277
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282039"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84692576"
 ---
 # <a name="testability-actions"></a>Testovací akce
 Pro simulaci nespolehlivé infrastruktury vám Azure Service Fabric poskytne vývojářům možnosti simulovat různé chyby reálného světa a přechody do stavu. Jsou přístupné jako akce testování. Akce jsou rozhraní API na nízké úrovni, která způsobují konkrétní vkládání chyb, přechod stavu nebo ověřování. Kombinací těchto akcí můžete napsat komplexní testovací scénáře pro vaše služby.
 
 Service Fabric poskytuje některé běžné testovací scénáře složené z těchto akcí. Důrazně doporučujeme, abyste využili tyto integrované scénáře, které pečlivě vybraly k testování běžných přechodů mezi stavy a případů selhání. Nicméně akce lze použít k vytvoření vlastních testovacích scénářů, pokud chcete přidat pokrytí pro scénáře, které ještě nejsou zahrnuté v předdefinovaných scénářích nebo které jsou vlastní, přizpůsobené pro vaši aplikaci.
 
-Implementace v jazyce C# pro akce jsou k dispozici v sestavení System. Fabric. dll. Modul PowerShellu pro System Fabric se nachází v sestavení Microsoft. ServiceFabric. PowerShell. dll. V rámci instalace modulu runtime je nainstalovaný modul ServiceFabric PowerShell, který umožňuje snadné použití.
+Implementace jazyka C# pro akce jsou nalezeny v sestavení System.Fabric.dll. Modul PowerShellu pro System Fabric se nachází v sestavení Microsoft.ServiceFabric.Powershell.dll. V rámci instalace modulu runtime je nainstalovaný modul ServiceFabric PowerShell, který umožňuje snadné použití.
 
 ## <a name="graceful-vs-ungraceful-fault-actions"></a>Řádné a nedarované akce při selhání
 Testovací akce jsou klasifikovány do dvou hlavních sad:
@@ -28,9 +28,9 @@ Testovací akce jsou klasifikovány do dvou hlavních sad:
 Pro lepší ověřování kvality spouštějte úlohy služby a podniku při vypínání různých řádných a nedarovaných chyb. Nedarované chyby způsobují scénáře, kdy se proces služby náhle ukončí v průběhu některých pracovních postupů. Tím se otestuje cesta pro obnovení po obnovení repliky služby pomocí Service Fabric. To vám pomůže zajistit konzistenci dat a to, jestli se stav služby udržuje správně po selhání. Druhá sada selhání (plynulé selhání) testuje, že služba správně reaguje na repliky, které se pohybují Service Fabric. Tento test zpracovává zrušení v metodě RunAsync. Služba musí ověřit, zda je nastaven token zrušení, správně uložit svůj stav a ukončit metodu RunAsync.
 
 ## <a name="testability-actions-list"></a>Seznam akcí testování
-| Akce | Popis | Spravované rozhraní API | Rutina PowerShellu | Řádné/nedarované chyby |
+| Akce | Description | Spravované rozhraní API | Rutina PowerShellu | Řádné/nedarované chyby |
 | --- | --- | --- | --- | --- |
-| CleanTestState |Odebere všechny stavy testu z clusteru v případě chybného vypnutí ovladače testu. |CleanTestStateAsync |Remove-ServiceFabricTestState |Neuvedeno |
+| CleanTestState |Odebere všechny stavy testu z clusteru v případě chybného vypnutí ovladače testu. |CleanTestStateAsync |Remove-ServiceFabricTestState |Nelze použít |
 | InvokeDataLoss |Vydělí ztrátu dat na oddíl služby. |InvokeDataLossAsync |Invoke-ServiceFabricPartitionDataLoss |Snížen |
 | InvokeQuorumLoss |Vloží daný stavovou službu do ztráty kvora. |InvokeQuorumLossAsync |Invoke – ServiceFabricQuorumLoss |Snížen |
 | Operace moveprimary |Přesune zadanou primární repliku stavové služby do zadaného uzlu clusteru. |MovePrimaryAsync |Move-ServiceFabricPrimaryReplica |Snížen |
@@ -40,13 +40,13 @@ Pro lepší ověřování kvality spouštějte úlohy služby a podniku při vyp
 | RestartNode |Simuluje selhání uzlu clusteru Service Fabric restartováním uzlu. |RestartNodeAsync |Restart – ServiceFabricNode |Nestandardním |
 | RestartPartition |Simuluje scénář Datacenter nedostupnosti nebo cluster nedostupnosti restartováním některých nebo všech replik oddílu. |RestartPartitionAsync |Restart-ServiceFabricPartition |Snížen |
 | RestartReplica |Simuluje selhání repliky restartováním trvalé repliky v clusteru, zavřením repliky a jejím opětovným otevřením. |RestartReplicaAsync |Restart – ServiceFabricReplica |Snížen |
-| StartNode |Spustí uzel v clusteru, který je již zastaven. |StartNodeAsync |Start-ServiceFabricNode |Neuvedeno |
+| StartNode |Spustí uzel v clusteru, který je již zastaven. |StartNodeAsync |Start-ServiceFabricNode |Nelze použít |
 | Příkaz stopnode |Simuluje selhání uzlu zastavením uzlu v clusteru. Uzel zůstane v nefunkčním případě volání StartNode. |StopNodeAsync |Stop-ServiceFabricNode |Nestandardním |
-| ValidateApplication |Ověří dostupnost a stav všech služeb Service Fabric v rámci aplikace, obvykle po vystavení nějaké chyby do systému. |ValidateApplicationAsync |Test – ServiceFabricApplication |Neuvedeno |
-| ValidateService |Ověří dostupnost a stav služby Service Fabric, obvykle po vystavení nějaké chybě systému. |ValidateServiceAsync |Test – ServiceFabricService |Neuvedeno |
+| ValidateApplication |Ověří dostupnost a stav všech služeb Service Fabric v rámci aplikace, obvykle po vystavení nějaké chyby do systému. |ValidateApplicationAsync |Test – ServiceFabricApplication |Nelze použít |
+| ValidateService |Ověří dostupnost a stav služby Service Fabric, obvykle po vystavení nějaké chybě systému. |ValidateServiceAsync |Test – ServiceFabricService |Nelze použít |
 
 ## <a name="running-a-testability-action-using-powershell"></a>Spuštění akce testování pomocí prostředí PowerShell
-V tomto kurzu se dozvíte, jak spustit akci testování pomocí prostředí PowerShell. Naučíte se, jak spustit akci testování v místním clusteru (s jedním box) nebo v clusteru Azure. Microsoft. Fabric. PowerShell. dll--modul Service Fabric PowerShellu – je nainstalován automaticky při instalaci nástroje Microsoft Service Fabric MSI. Modul se načte automaticky, když otevřete příkazový řádek PowerShellu.
+V tomto kurzu se dozvíte, jak spustit akci testování pomocí prostředí PowerShell. Naučíte se, jak spustit akci testování v místním clusteru (s jedním box) nebo v clusteru Azure. Microsoft.Fabric.Powershell.dll – modul Service Fabric PowerShellu – se nainstaluje automaticky při instalaci Microsoft Service Fabric MSI. Modul se načte automaticky, když otevřete příkazový řádek PowerShellu.
 
 Segmenty kurzu:
 
@@ -75,7 +75,7 @@ Connect-ServiceFabricCluster $connection
 Restart-ServiceFabricNode -NodeName $nodeName -CompletionMode DoNotVerify
 ```
 
-**Restart-ServiceFabricNode** by se měl použít k restartování uzlu Service Fabric v clusteru. Tím se zastaví proces Fabric. exe, ve kterém se restartuje všechny repliky systémové služby a uživatele hostované v tomto uzlu. Použití tohoto rozhraní API k otestování vaší služby pomáhá odhalit chyby po cestách obnovení převzetí služeb při selhání. Pomáhá simulovat selhání uzlu v clusteru.
+**Restart-ServiceFabricNode** by se měl použít k restartování uzlu Service Fabric v clusteru. Tím se zastaví proces Fabric.exe, čímž se restartuje všechny repliky systémové služby a služby uživatele hostované v tomto uzlu. Použití tohoto rozhraní API k otestování vaší služby pomáhá odhalit chyby po cestách obnovení převzetí služeb při selhání. Pomáhá simulovat selhání uzlu v clusteru.
 
 Na následujícím snímku obrazovky vidíte v akci příkaz k **restartování-ServiceFabricNode** testování.
 

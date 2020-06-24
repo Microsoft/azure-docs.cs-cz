@@ -5,23 +5,23 @@ services: azure-portal
 author: mgblythe
 ms.author: mblythe
 ms.date: 01/21/2020
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: af0c72f0bc5dd8f3a3cbae7b82b1ac56447cbb08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7b3cc088a87731d2a118a4fe5183831e4d1bd6cc
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77133297"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763971"
 ---
-# <a name="recover-a-deleted-dashboard-in-the-azure-portal"></a>Obnovení odstraněných řídicích panelů v Azure Portal
+# <a name="recover-a-deleted-dashboard-in-the-azure-portal"></a>Obnovení odstraněného řídicího panelu na webu Azure Portal
 
 Pokud se nacházíte ve veřejném cloudu Azure a odstraníte _publikovaný_ řídicí panel v Azure Portal, můžete tento řídicí panel obnovit do 14 dnů od odstranění. Pokud se nacházíte v cloudu pro státní správu Azure nebo pokud řídicí panel není publikovaný, nemůžete ho obnovit a musíte ho znovu sestavit. Další informace o publikování řídicího panelu najdete v tématu [publikování řídicího](azure-portal-dashboard-share-access.md#publish-dashboard)panelu. Pomocí těchto kroků obnovíte publikovaný řídicí panel:
 
 1. V nabídce Azure Portal vyberte **skupiny prostředků**a pak vyberte skupinu prostředků, do které jste řídicí panel publikovali (ve výchozím nastavení se jmenuje **řídicí panely**).
 
-1. V části **Protokol aktivit**rozbalte operaci **Odstranit řídicí panel** . Vyberte kartu **historie změn** a pak vyberte ** \<odstraněný prostředek\>**.
+1. V části **Protokol aktivit**rozbalte operaci **Odstranit řídicí panel** . Vyberte kartu **historie změn** a pak vyberte **\<deleted resource\>** .
 
     ![Snímek obrazovky s kartou Change History](media/recover-shared-deleted-dashboard/change-history-tab.png)
 

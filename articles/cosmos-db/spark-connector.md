@@ -3,15 +3,15 @@ title: Připojit Apache Spark k Azure Cosmos DB
 description: Seznamte se s Azure Cosmos DB konektor Spark, který umožňuje připojení Apache Spark k Azure Cosmos DB.
 author: tknandu
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: ramkris
-ms.openlocfilehash: 7d5befdfde693becdd7e5f3f638e8d524081ad1b
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: f576da01a7d80559419376f1629c0765074065da
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84456995"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262221"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Urychlení analýz velkých objemů dat pomocí Apache Spark pro Azure Cosmos DB konektor
 
@@ -31,7 +31,7 @@ Můžete použít konektor s [Azure Databricks](https://azure.microsoft.com/serv
 > Pro Cosmos DB rozhraní API Cassandra použijte [konektor Cassandra Spark](https://github.com/datastax/spark-cassandra-connector).
 >
 
-## <a name="quickstart"></a>Rychlý start
+## <a name="quickstart"></a>Rychlé zprovoznění
 
 * Postupujte podle kroků v [části Začínáme se sadou Java SDK](sql-api-async-java-get-started.md) a nastavte účet Cosmos DB a naplňte data.
 * Postupujte podle kroků v [Azure Databricks Začínáme](/azure/azure-databricks/quickstart-create-databricks-workspace-portal) s nastavením pracovního prostoru Azure Databricks a clusteru.
@@ -292,7 +292,7 @@ Na wikiwebu máme další informace, `azure-cosmosdb-spark` [wiki](https://githu
 * [Nastavení konektoru Spark to Cosmos DB](https://github.com/Azure/azure-documentdb-spark/wiki/Spark-to-Cosmos-DB-Connector-Setup) (probíhá)
 * [Konfigurace Power BI přímý dotaz na Azure Cosmos DB prostřednictvím Apache Spark (HDI)](https://github.com/Azure/azure-cosmosdb-spark/wiki/Configuring-Power-BI-Direct-Query-to-Azure-Cosmos-DB-via-Apache-Spark-(HDI))
 
-### <a name="troubleshooting"></a>Řešení potíží
+### <a name="troubleshooting"></a>Poradce při potížích
 
 * [Použití agregací Cosmos DB](https://github.com/Azure/azure-documentdb-spark/wiki/Troubleshooting:-Using-Cosmos-DB-Aggregates)
 * [Známé problémy](https://github.com/Azure/azure-cosmosdb-spark/wiki/Known-Issues)

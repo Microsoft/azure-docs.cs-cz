@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: ef511c203caa11aad4dea1047c982158810c4038
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fba6943adb18675bc804a3881042fe9d68f5b331
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80982119"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85114737"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---overview"></a>Globální distribuce dat pomocí Azure Cosmos DB – přehled.
 
@@ -23,7 +23,7 @@ Své databáze můžete nakonfigurovat tak, aby byly globálně distribuované a
 
 Pomocí Azure Cosmos DB můžete kdykoli přidat nebo odebrat oblasti přidružené k vašemu účtu. Pro přidání nebo odebrání oblasti není nutné aplikaci pozastavit ani znovu nasadit. I nadále bude mít vysoce dostupný čas v důsledku možností více domovských stránek, které služba nativně poskytuje.
 
-![Vysoce dostupná topologie nasazení](./media/distribute-data-globally/deployment-topology.png)
+:::image type="content" source="./media/distribute-data-globally/deployment-topology.png" alt-text="Vysoce dostupná topologie nasazení" border="false":::
 
 ## <a name="key-benefits-of-global-distribution"></a>Klíčové výhody globální distribuce
 

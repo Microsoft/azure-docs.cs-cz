@@ -3,15 +3,15 @@ title: Šablony Správce prostředků pro rozhraní API pro Azure Cosmos DB Grem
 description: Pomocí Azure Resource Manager šablon můžete vytvořit a nakonfigurovat rozhraní API pro Azure Cosmos DB Gremlin.
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: mjbrown
-ms.openlocfilehash: 0f807213d68e2731e784198f8ce968cdea9b3957
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 71f98e0ea9b5ca3a0c20c3977530d5235a4d6ccf
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684814"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262402"
 ---
 # <a name="manage-azure-cosmos-db-gremlin-api-resources-using-azure-resource-manager-templates"></a>Správa Azure Cosmos DBch prostředků rozhraní API Gremlin pomocí šablon Azure Resource Manager
 

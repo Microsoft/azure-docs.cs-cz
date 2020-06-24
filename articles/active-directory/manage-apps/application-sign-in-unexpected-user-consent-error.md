@@ -3,25 +3,25 @@ title: Neočekávaná chyba při provádění souhlasu s aplikací | Microsoft D
 description: Popisuje chyby, ke kterým může dojít během procesu souhlasu s aplikací a o tom, co s nimi můžete dělat.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea14e02920cf7ba6c5e0a7b415cb92137c915576
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e2a7709cf0522727257025b2dddc495b20fe8448
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80519711"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763750"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>Neočekávaná chyba při provádění souhlasu s aplikací
 
@@ -32,35 +32,35 @@ Mnoho aplikací, které jsou integrovány s Azure Active Directory, vyžaduje op
 Aby mohl uživatel udělit souhlas s oprávněními, které aplikace vyžaduje, musí být splněny určité podmínky. Nejsou-li tyto podmínky splněny, může dojít k následujícím chybám.
 
 ## <a name="requesting-not-authorized-permissions-error"></a>Požaduje se chyba neautorizované oprávnění.
-* **AADSTS90093:** &lt;clientAppDisplayName&gt; požaduje jedno nebo více oprávnění, která nemáte oprávnění k udělení. Obraťte se na správce, který může tuto aplikaci vyjádřit vaším jménem.
-* **AADSTS90094:** &lt;clientAppDisplayName&gt; potřebuje oprávnění pro přístup k prostředkům ve vaší organizaci, které může udělit jenom správce. Please ask an admin to grant permission to this app before you can use it. (Test udělení souhlasu vyžaduje ve vaší organizaci pro přístup k prostředkům oprávnění, které může udělit pouze správce. Než budete moct tuto aplikaci použít, požádejte správce o udělení oprávnění.)
+* **AADSTS90093:** &lt; clientAppDisplayName &gt; požaduje jedno nebo více oprávnění, která nemáte autorizaci udělit. Obraťte se na správce, který může tuto aplikaci vyjádřit vaším jménem.
+* **AADSTS90094:** &lt; clientAppDisplayName &gt; potřebuje oprávnění pro přístup k prostředkům ve vaší organizaci, které může udělit jenom správce. Please ask an admin to grant permission to this app before you can use it. (Test udělení souhlasu vyžaduje ve vaší organizaci pro přístup k prostředkům oprávnění, které může udělit pouze správce. Než budete moct tuto aplikaci použít, požádejte správce o udělení oprávnění.)
 
 K této chybě dochází, když se uživatel, který není správcem společnosti, pokusí použít aplikaci požadující oprávnění, která může udělit jenom správce. Tuto chybu může vyřešit správce, který uděluje přístup k aplikaci jménem své organizace.
 
 K této chybě může dojít také v případě, že uživatel brání v souhlasu s aplikací kvůli tomu, že je žádost o oprávnění riskantní. V takovém případě se událost auditu bude protokolovat jako kategorie "ApplicationManagement", typ aktivity "souhlas s aplikací" a důvod stavu "riziková aplikace zjištěná".
 
 ## <a name="policy-prevents-granting-permissions-error"></a>Zásada zabraňuje udělení oprávnění k chybě.
-* **AADSTS90093:** Správce &lt;tenantDisplayName&gt; nastavil zásadu, která vám zabrání v udělení &lt;názvu aplikace&gt; oprávnění, která požaduje. Kontaktujte správce &lt;tenantDisplayName&gt;, který vám může udělit oprávnění k této aplikaci vaším jménem.
+* **AADSTS90093:** Správce &lt; tenantDisplayName &gt; nastavil zásadu, která vám zabrání v udělení &lt; názvu aplikace oprávnění, která &gt; požaduje. Kontaktujte správce &lt; tenantDisplayName &gt; , který vám může udělit oprávnění k této aplikaci vaším jménem.
 
 K této chybě dojde, když správce společnosti vypne možnost souhlasu uživatelů s aplikacemi, pak se uživatel bez oprávnění správce pokusí použít aplikaci, která vyžaduje souhlas. Tuto chybu může vyřešit správce, který uděluje přístup k aplikaci jménem své organizace.
 
 ## <a name="intermittent-problem-error"></a>Chyba přerušovaného problému
-* **AADSTS90090:** Vypadá to, že při procesu přihlašování došlo k přerušovanému problému se záznamem oprávnění, která jste se &lt;pokusili udělit clientAppDisplayName&gt;. Zkuste to znovu později.
+* **AADSTS90090:** Vypadá to, že při procesu přihlašování došlo k přerušovanému problému se záznamem oprávnění, která jste se pokusili udělit &lt; clientAppDisplayName &gt; . Zkuste to znovu později.
 
 Tato chyba znamená, že došlo k občasnému problému na straně služby. Dá se vyřešit opakovaným pokusem o vyjádření souhlasu s aplikací.
 
 ## <a name="resource-not-available-error"></a>Chyba prostředku není k dispozici
-* **AADSTS65005:** Aplikace &lt;clientAppDisplayName&gt; požadovala oprávnění pro přístup k resourceAppDisplayName &lt;&gt; prostředku, který není k dispozici. 
+* **AADSTS65005:** Aplikace &lt; clientAppDisplayName &gt; požadovala oprávnění pro přístup k &lt; resourceAppDisplayName prostředku &gt; , který není k dispozici. 
 
 Obraťte se na vývojáře aplikace.
 
 ##  <a name="resource-not-available-in-tenant-error"></a>Prostředek není k dispozici v chybě tenanta.
-* **AADSTS65005:** &lt;clientAppDisplayName&gt; žádá o přístup k &lt;prostředku resourceAppDisplayName&gt; , který není k dispozici ve vaší &lt;organizaci&gt;tenantDisplayName. 
+* **AADSTS65005:** &lt; clientAppDisplayName &gt; žádá o přístup k resourceAppDisplayName prostředků &lt; &gt; , který není k dispozici ve vaší organizaci &lt; tenantDisplayName &gt; . 
 
-Zajistěte, aby byl tento prostředek k dispozici &lt;,&gt;nebo se obraťte na správce služby tenantDisplayName.
+Zajistěte, aby byl tento prostředek k dispozici, nebo se obraťte na správce služby &lt; tenantDisplayName &gt; .
 
 ## <a name="permissions-mismatch-error"></a>Chyba neshody oprávnění
-* **AADSTS65005:** Aplikace požádala o souhlas s přístupem &lt;k&gt;resourceAppDisplayName prostředků. Tato žádost se nezdařila, protože neodpovídá tomu, jak byla aplikace předem nakonfigurovaná během registrace aplikace. Obraťte se na dodavatele aplikace. * *
+* **AADSTS65005:** Aplikace požádala o souhlas s přístupem k &lt; resourceAppDisplayName prostředků &gt; . Tato žádost se nezdařila, protože neodpovídá tomu, jak byla aplikace předem nakonfigurovaná během registrace aplikace. Obraťte se na dodavatele aplikace. * *
 
 K těmto chybám dochází, když aplikace, se kterou se uživatel snaží souhlasit, požaduje oprávnění k přístupu k aplikaci prostředků, kterou nelze najít v adresáři organizace (tenant). K této situaci může dojít z několika důvodů:
 

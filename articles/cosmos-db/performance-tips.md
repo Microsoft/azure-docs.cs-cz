@@ -3,22 +3,22 @@ title: Tipy pro Azure Cosmos DB výkonu pro .NET SDK v2
 description: Seznamte se s možnostmi konfigurace klienta pro zlepšení Azure Cosmos DB výkonu sady .NET v2 SDK.
 author: SnehaGunda
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 06/04/2020
+ms.topic: how-to
+ms.date: 06/16/2020
 ms.author: sngun
-ms.openlocfilehash: 07ca4674c1b8dafc9c02ff8fdf82de330862de73
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: fce6cd441214cff4c76b05f8a2b6cb630613a66f
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84674019"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263428"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Tipy ke zvýšení výkonu pro Azure Cosmos DB a .NET SDK v2
 
 > [!div class="op_single_selector"]
 > * [.NET SDK V3](performance-tips-dotnet-sdk-v3-sql.md)
-> * [.NET SDK v2](performance-tips.md)
-> * [Java SDK v4](performance-tips-java-sdk-v4-sql.md)
+> * [Sada .NET SDK v2](performance-tips.md)
+> * [Sada Java SDK v4](performance-tips-java-sdk-v4-sql.md)
 > * [Sada Async Java SDK v2](performance-tips-async-java.md)
 > * [Sada Sync Java SDK v2](performance-tips-java.md)
 
@@ -93,8 +93,8 @@ Azure Cosmos DB nabízí jednoduchý a otevřený programovací model RESTful p�
 V sadě Microsoft.Azure.DocumentDB SDK nakonfigurujete režim připojení během vytváření `DocumentClient` instance pomocí `ConnectionPolicy` parametru. Použijete-li přímý režim, můžete také nastavit `Protocol` pomocí `ConnectionPolicy` parametru.
 
 ```csharp
-var serviceEndpoint = new Uri("https://contoso.documents.net");
-var authKey = "your authKey from the Azure portal";
+Uri serviceEndpoint = new Uri("https://contoso.documents.net");
+string authKey = "your authKey from the Azure portal";
 DocumentClient client = new DocumentClient(serviceEndpoint, authKey,
 new ConnectionPolicy
 {
@@ -105,7 +105,18 @@ new ConnectionPolicy
 
 Protože je protokol TCP podporován pouze v přímém režimu, pokud používáte režim brány, protokol HTTPS se vždy používá ke komunikaci s bránou a `Protocol` hodnota v `ConnectionPolicy` je ignorována.
 
-![Zásady připojení Azure Cosmos DB](./media/performance-tips/connection-policy.png)
+:::image type="content" source="./media/performance-tips/connection-policy.png" alt-text="Zásady připojení Azure Cosmos DB" border="false":::
+
+**Vyčerpání dočasných portů**
+
+Pokud se na instancích zobrazí velký objem připojení nebo vysoké využití portů, ověřte nejprve, zda jsou klientské instance typu singleton. Jinými slovy, instance klientů by měly být pro celou dobu života aplikace jedinečné.
+
+Při spuštění v protokolu TCP se klient optimalizuje kvůli latenci pomocí dlouhotrvajících připojení na rozdíl od protokolu HTTPS, který ukončí připojení po 2 minutách nečinnosti.
+
+Ve scénářích, kde máte zhuštěný přístup a pokud si všimnete vyššího počtu připojení v porovnání s přístupem k režimu brány, můžete:
+
+* Nakonfigurujte vlastnost [ConnectionPolicy. PortReuseMode](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.portreusemode) na `PrivatePortPool` (platí pro rozhraní Framework Version>= 4.6.1 a .net Core verze >= 2,0): Tato vlastnost umožňuje, aby sada SDK používala malý fond dočasných portů pro různé Azure Cosmos DB cílové koncové body.
+* Nakonfigurujte vlastnost [ConnectionPolicy. IdleConnectionTimeout](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.idletcpconnectiontimeout) musí být větší než nebo rovna 10 minutám. Doporučené hodnoty jsou mezi 20 minutami a 24 hodinami.
 
 **Zavolejte OpenAsync, aby se zamezilo latenci při spuštění prvního požadavku.**
 
@@ -121,7 +132,8 @@ Ve výchozím nastavení má první požadavek větší latenci, protože potře
 
 Pokud je to možné, umístěte všechny aplikace, které volají Azure Cosmos DB ve stejné oblasti jako databáze Azure Cosmos DB. Toto je přibližné porovnání: volání Azure Cosmos DB v rámci stejné oblasti se dokončila v rozmezí od 1 do 2 MS, ale latence mezi západním a východním pobřežím USA je větší než 50 ms. Tato latence se může lišit od požadavku na vyžádání v závislosti na trasách, kterou požadavek prochází z klienta na hranici datacentra Azure. Nejnižší možnou latenci získáte tak, že zajistíte, aby se volající aplikace nacházela ve stejné oblasti Azure jako koncový bod zřízené Azure Cosmos DB. Seznam oblastí, které jsou k dispozici, najdete v tématu [oblasti Azure](https://azure.microsoft.com/regions/#services).
 
-![Zásady ](./media/performance-tips/same-region.png) připojení Azure Cosmos DB<a id="increase-threads"></a>
+:::image type="content" source="./media/performance-tips/same-region.png" alt-text="Zásady připojení Azure Cosmos DB" border="false":::
+   <a id="increase-threads"></a>
 
 **Zvýšení počtu vláken/úloh**
 
@@ -196,7 +208,7 @@ Chcete-li snížit počet síťových přenosů potřebných k načtení všech 
 > [!NOTE] 
 > `maxItemCount`Vlastnost by se neměla používat jenom pro stránkování. Jeho hlavním použitím je zvýšit výkon dotazů omezením maximálního počtu položek vrácených na jednu stránku.  
 
-Velikost stránky můžete nastavit také pomocí dostupných Azure Cosmos DB sad SDK. Vlastnost [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) v `FeedOptions` umožňuje nastavit maximální počet položek, které mají být vráceny v rámci operace výčtu. Když `maxItemCount` je nastavená hodnota-1, sada SDK automaticky vyhledá optimální hodnotu v závislosti na velikosti dokumentu. Například:
+Velikost stránky můžete nastavit také pomocí dostupných Azure Cosmos DB sad SDK. Vlastnost [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) v `FeedOptions` umožňuje nastavit maximální počet položek, které mají být vráceny v rámci operace výčtu. Když `maxItemCount` je nastavená hodnota-1, sada SDK automaticky vyhledá optimální hodnotu v závislosti na velikosti dokumentu. Příklad:
     
 ```csharp
 IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollection.SelfLink, "SELECT p.Author FROM Pages p WHERE p.Title = 'About Seattle'", new FeedOptions { MaxItemCount = 1000 });

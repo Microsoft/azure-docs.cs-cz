@@ -3,15 +3,15 @@ title: Omezení přístupu uživatelů k datovým operacím pouze pomocí Azure 
 description: Přečtěte si, jak omezit přístup k operacím s daty jenom pomocí Azure Cosmos DB
 author: voellm
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/9/2019
 ms.author: tvoellm
-ms.openlocfilehash: 03cad9e4c3752b5f35be785a6280bf18aaa14860
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 88899dc697839b16c2b0cd24ac9233f87da26b41
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74980371"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261218"
 ---
 # <a name="restrict-user-access-to-data-operations-only"></a>Omezení přístupu uživatelů jenom na datové operace
 
@@ -19,7 +19,9 @@ V Azure Cosmos DB existují dva způsoby, jak ověřit interakce s databázovou 
 - použití identity Azure Active Directory při interakci s Azure Portal,
 - použití [klíčů](secure-access-to-data.md#master-keys) Azure Cosmos DB nebo [tokenů prostředků](secure-access-to-data.md#resource-tokens) při vydávání volání z rozhraní API a sad SDK.
 
-Každá metoda ověřování poskytuje přístup k různým sadám operací s nějakým překrytím ![: rozdělení operací na typ ověřování.](./media/how-to-restrict-user-data/operations.png)
+Každá metoda ověřování poskytuje přístup k různým sadám operací s nějakým překrytím:
+
+:::image type="content" source="./media/how-to-restrict-user-data/operations.png" alt-text="Rozdělení operací na typ ověřování" border="false":::
 
 V některých scénářích můžete chtít, aby někteří uživatelé vaší organizace mohli provádět operace s daty (které jsou požadavky CRUD a dotazy). To je obvykle případ pro vývojáře, kteří nepotřebují vytvářet ani odstraňovat prostředky, nebo měnit zřízenou propustnost kontejnerů, na kterých pracují.
 
@@ -33,10 +35,10 @@ Další části tohoto článku ukazují, jak provést tyto kroky.
 > Aby bylo možné spustit příkazy v dalších částech, je nutné nainstalovat Azure PowerShell modulu 3.0.0 nebo novějším a také [roli vlastníka Azure](../role-based-access-control/built-in-roles.md#owner) v předplatném, které chcete upravit.
 
 V skriptech PowerShell v dalších částech nahraďte následující zástupné symboly hodnotami, které jsou specifické pro vaše prostředí:
-- `$MySubscriptionId`– ID předplatného, které obsahuje účet Azure Cosmos, u kterého chcete omezit oprávnění. Například: `e5c8766a-eeb0-40e8-af56-0eb142ebf78e`.
-- `$MyResourceGroupName`– Skupina prostředků obsahující účet Azure Cosmos. Například: `myresourcegroup`.
-- `$MyAzureCosmosDBAccountName`– Název vašeho účtu Azure Cosmos. Například: `mycosmosdbsaccount`.
-- `$MyUserName`– Přihlášení (username@domain) uživatele, pro kterého chcete omezit přístup. Například: `cosmosdbuser@contoso.com`.
+- `$MySubscriptionId`– ID předplatného, které obsahuje účet Azure Cosmos, u kterého chcete omezit oprávnění. Příklad: `e5c8766a-eeb0-40e8-af56-0eb142ebf78e`.
+- `$MyResourceGroupName`– Skupina prostředků obsahující účet Azure Cosmos. Příklad: `myresourcegroup`.
+- `$MyAzureCosmosDBAccountName`– Název vašeho účtu Azure Cosmos. Příklad: `mycosmosdbsaccount`.
+- `$MyUserName`– Přihlášení ( username@domain ) uživatele, pro kterého chcete omezit přístup. Příklad: `cosmosdbuser@contoso.com`.
 
 ## <a name="select-your-azure-subscription"></a>Vyberte své předplatné Azure.
 
@@ -49,7 +51,7 @@ Select-AzSubscription $MySubscriptionId
 
 ## <a name="create-the-custom-azure-active-directory-role"></a>Vytvoření vlastní role Azure Active Directory
 
-Následující skript vytvoří přiřazení role Azure Active Directory s přístupem pouze ke klíčům pro účty Azure Cosmos. Role je založena na [vlastních rolích prostředků Azure](../role-based-access-control/custom-roles.md) a [podrobných akcích pro Azure Cosmos DB](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb). Tyto role a akce jsou součástí oboru názvů `Microsoft.DocumentDB` Azure Active Directory.
+Následující skript vytvoří přiřazení role Azure Active Directory s přístupem pouze ke klíčům pro účty Azure Cosmos. Role je založena na [vlastních rolích prostředků Azure](../role-based-access-control/custom-roles.md) a [podrobných akcích pro Azure Cosmos DB](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb). Tyto role a akce jsou součástí `Microsoft.DocumentDB` oboru názvů Azure Active Directory.
 
 1. Nejprve vytvořte dokument JSON s názvem `AzureCosmosKeyOnlyAccess.json` s následujícím obsahem:
 

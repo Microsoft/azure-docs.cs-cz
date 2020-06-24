@@ -5,16 +5,16 @@ services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: how-to
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 7a8c9083ecbadbf63cf0ac65dc1803b478e939fe
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 5d02736e9cb0a612e434dc5a79a73d7a62785728
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873393"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207647"
 ---
 # <a name="query-json-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Dotazování souborů JSON pomocí SQL na vyžádání (Preview) ve službě Azure synapse Analytics
 
@@ -46,7 +46,7 @@ Následující část obsahuje ukázkové skripty pro čtení souborů JSON. Sou
 
 ## <a name="read-json-files"></a>Čtení souborů JSON
 
-Chcete-li zpracovat soubory JSON pomocí JSON_VALUE a [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), je nutné načíst soubor JSON z úložiště jako jeden sloupec. Následující skript přečte soubor *Book1. JSON* jako jeden sloupec:
+Chcete-li zpracovat soubory JSON pomocí JSON_VALUE a [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), je nutné načíst soubor JSON z úložiště jako jeden sloupec. Následující skript přečte *book1.jsv* souboru jako jeden sloupec:
 
 ```sql
 SELECT

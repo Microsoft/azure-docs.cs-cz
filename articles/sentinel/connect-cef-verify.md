@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2020
 ms.author: yelevin
-ms.openlocfilehash: 6b91e36ee09aa855c119add2c0eb268cf8b97393
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 07a6b84569fe0356267440e38b31ac738b2659d6
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81731820"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85260827"
 ---
 # <a name="step-3-validate-connectivity"></a>Krok 3: ověření připojení
 
@@ -76,7 +76,7 @@ Ověřovací skript provede následující kontroly:
 
     - Konfigurační soubor:`/etc/rsyslog.d/security-config-omsagent.conf`
 
-            :rawmsg, regex, "CEF\|ASA" ~
+            :rawmsg, regex, "CEF"|"ASA"
             *.* @@127.0.0.1:25226
 
 1. Kontroluje, zda démon procesu Syslog přijímá data na portu 514.

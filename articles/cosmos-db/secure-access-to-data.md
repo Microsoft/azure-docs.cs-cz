@@ -6,12 +6,12 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: f62ad6952170f22fe0f94a792a137f991a0e5026
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 70c7ae006c2ce7b91e1e47e12d9880ab48d42c76
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208716"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85116464"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Zabezpečený přístup k datům ve službě Azure Cosmos DB
 
@@ -53,7 +53,7 @@ Proces otáčení hlavního klíče je jednoduchý.
 4. Ověří, jestli má nový primární klíč fungovat u všech prostředků. Proces střídání klíčů může v závislosti na velikosti Cosmos DB účtu trvat od méně než minuty až po hodiny.
 5. Nahraďte sekundární klíč novým primárním klíčem.
 
-![Rotace hlavního klíče v Azure Portal-demonstruje zabezpečení databáze NoSQL](./media/secure-access-to-data/nosql-database-security-master-key-rotate-workflow.png)
+:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-rotate-workflow.png" alt-text="Rotace hlavního klíče v Azure Portal-demonstruje zabezpečení databáze NoSQL" border="false":::
 
 ### <a name="code-sample-to-use-a-master-key"></a>Ukázka kódu pro použití hlavního klíče
 
@@ -97,9 +97,9 @@ Tady je typický vzor návrhu, který umožňuje vyžádat, vygenerovat a doruč
 7. Aplikace pro telefon může i nadále používat token prostředku k přímému přístupu k prostředkům Cosmos DB s oprávněními definovanými tokenem prostředku a v intervalu povoleném tokenem prostředku.
 8. Po vypršení platnosti tokenu prostředku obdrží další požadavky 401 neoprávněnou výjimku.  V tuto chvíli aplikace pro telefon znovu naváže identitu a požádá o nový token prostředku.
 
-    ![Pracovní postup Azure Cosmos DB tokenů prostředků](./media/secure-access-to-data/resourcekeyworkflow.png)
+    :::image type="content" source="./media/secure-access-to-data/resourcekeyworkflow.png" alt-text="Pracovní postup Azure Cosmos DB tokenů prostředků" border="false":::
 
-Generování a Správa tokenů prostředků jsou zpracovávány nativními klientskými knihovnami Cosmos DB; Pokud však použijete REST, je nutné vytvořit hlavičky žádosti nebo ověřování. Další informace o vytváření ověřovacích hlaviček pro REST naleznete v tématu [Access Control v Cosmos DBch prostředcích](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources) nebo ve zdrojovém kódu pro naši sadu [.NET SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos/src/AuthorizationHelper.cs) nebo [Node. js SDK](https://github.com/Azure/azure-cosmos-js/blob/master/src/auth.ts).
+Generování a Správa tokenů prostředků jsou zpracovávány nativními klientskými knihovnami Cosmos DB; Pokud však použijete REST, je nutné vytvořit hlavičky žádosti nebo ověřování. Další informace o vytváření ověřovacích hlaviček pro REST najdete v tématu [Access Control v Cosmos DBch prostředcích](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources) nebo ve zdrojovém kódu pro naši sadu [.NET SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos/src/AuthorizationHelper.cs) nebo [sadu SDKNode.js SDK](https://github.com/Azure/azure-cosmos-js/blob/master/src/auth.ts).
 
 Příklad služby střední vrstvy, která se používá ke generování tokenů prostředků nebo jejich zprostředkovateli, najdete v [aplikaci ResourceTokenBroker](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers).
 

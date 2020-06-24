@@ -6,14 +6,14 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: a0058bf309e0ff4fbe687731d676e907d1c3fd82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3378b442c80758c4a5dca02b33f92ba3823f33ed
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79246588"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85113647"
 ---
-# <a name="request-units-in-azure-cosmos-db"></a>Jednotky žádosti v Azure Cosmos DB
+# <a name="request-units-in-azure-cosmos-db"></a>Jednotky žádostí ve službě Azure Cosmos DB
 
 V případě služby Azure Cosmos DB platíte po hodinách za zřízenou propustnost a spotřebované úložiště. Propustnost je potřeba zřídit, aby se zajistilo, že databáze Azure Cosmos bude mít vždy k dispozici dostatek systémových prostředků. K uspokojení nebo překročení [Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)potřebujete dostatek prostředků.
 
@@ -25,7 +25,7 @@ Náklady na čtení 1kB položky jsou 1 jednotka žádosti (neboli 1 RU). Pro ul
 
 Následující obrázek znázorňuje základní myšlenku jednotek RU:
 
-![Databázové operace spotřebovávají jednotky žádosti](./media/request-units/request-units.png)
+:::image type="content" source="./media/request-units/request-units.png" alt-text="Databázové operace spotřebovávají jednotky žádosti" border="false":::
 
 Aby bylo možné spravovat a plánovat kapacitu, Azure Cosmos DB zajišťuje, že je počet RU pro konkrétní databázovou operaci nad danou datovou sadou deterministický. Pokud chcete sledovat počet RU spotřebovaných jakoukoli databázovou operací, můžete prozkoumat hlavičku odpovědi. Když rozumíte [faktorům, které mají vliv na poplatky za ru](request-units.md#request-unit-considerations) a požadavky na propustnost vaší aplikace, můžete efektivně spouštět náklady na aplikace.
 

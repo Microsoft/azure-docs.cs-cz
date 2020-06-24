@@ -3,15 +3,15 @@ title: Migrace z knihovny Change feed Processor do sady Azure Cosmos DB .NET V3 
 description: Přečtěte si, jak migrovat aplikaci z použití knihovny Change feed Processor na sadu Azure Cosmos DB SDK v3.
 author: ealsur
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 9570a8512e3437b12ecce2ef0c708a74a8806482
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9640800bb53fe2fd5b27cb6e232e09c72158f8da
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588879"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261405"
 ---
 # <a name="migrate-from-the-change-feed-processor-library-to-the-azure-cosmos-db-net-v3-sdk"></a>Migrace z knihovny Change feed Processor do sady Azure Cosmos DB .NET V3 SDK
 
@@ -22,9 +22,9 @@ Tento článek popisuje nezbytné kroky pro migraci kódu existující aplikace,
 Sada .NET V3 SDK obsahuje několik zásadních změn, následující jsou klíčové kroky pro migraci aplikace:
 
 1. Převeďte `DocumentCollectionInfo` instance na `Container` odkazy pro kontejnery monitorované a zapůjčení.
-1. Vlastní nastavení, která `WithProcessorOptions` by se měla použít, `WithLeaseConfiguration` by `WithPollInterval` se měla aktualizovat `WithStartTime` , aby se používaly `WithMaxItems` intervaly [pro čas spuštění](how-to-configure-change-feed-start-time.md)a definovaly maximální počet položek.
-1. Nastavte `processorName` on `GetChangeFeedProcessorBuilder` tak, aby odpovídal hodnotě nakonfigurované `ChangeFeedProcessorOptions.LeasePrefix`na, nebo `string.Empty` použijte jinak.
-1. Změny již nejsou dodávány jako `IReadOnlyList<Document>`místo, `IReadOnlyCollection<T>` kde `T` je typ, který je třeba definovat, již neexistuje žádná základní třída Item.
+1. Vlastní nastavení, která `WithProcessorOptions` by se měla použít, by se měla aktualizovat, aby se používaly `WithLeaseConfiguration` `WithPollInterval` intervaly `WithStartTime` [pro čas spuštění](how-to-configure-change-feed-start-time.md)a `WithMaxItems` definovaly maximální počet položek.
+1. Nastavte `processorName` on `GetChangeFeedProcessorBuilder` tak, aby odpovídal hodnotě nakonfigurované na `ChangeFeedProcessorOptions.LeasePrefix` , nebo použijte `string.Empty` jinak.
+1. Změny již nejsou dodávány jako místo, `IReadOnlyList<Document>` `IReadOnlyCollection<T>` kde `T` je typ, který je třeba definovat, již neexistuje žádná základní třída Item.
 1. Pro zpracování změn už nebudete potřebovat implementaci, místo toho musíte [definovat delegáta](change-feed-processor.md#implementing-the-change-feed-processor). Delegát může být statická funkce nebo, pokud potřebujete zachovat stav napříč prováděním, můžete vytvořit vlastní třídu a předat metodu instance jako delegáta.
 
 Například pokud původní kód pro sestavení procesoru Change feed, vypadá takto:

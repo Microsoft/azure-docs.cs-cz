@@ -3,12 +3,12 @@ title: Zařízení Azure Migrate
 description: Poskytuje přehled zařízení Azure Migrate používaných při posuzování a migraci serveru.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 8d385e956aaa2888d72d711571fa8e7cb91da772
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: a57ca67c89078143eba42d94e8d96e004200041a
+ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84323803"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85106568"
 ---
 # <a name="azure-migrate-appliance"></a>Zařízení Azure Migrate
 
@@ -47,8 +47,8 @@ Následující tabulka shrnuje požadavky na zařízení Azure Migrate pro VMwar
 **Podporované nasazení** | Nasaďte jako virtuální počítač VMware pomocí šablony vajíček.<br/><br/> Nasaďte jako virtuální počítač VMware nebo fyzický počítač pomocí instalačního skriptu PowerShellu.
 **Podpora projektu** |  Zařízení může být přidruženo k jednomu projektu. <br/> K jednomu projektu může být přidružen libovolný počet zařízení.<br/> 
 **Omezení zjišťování** | Zařízení může na vCenter Server zjistit až 10 000 virtuálních počítačů VMware.<br/> Zařízení se může připojit k jednomu vCenter Server.
-**Šablona vajíček** | Stáhněte si z portálu nebo z https://aka.ms/migrate/appliance/vmware .<br/><br/> Velikost ke stažení je 11,2 GB.<br/><br/> Stažená šablona zařízení je součástí zkušební licence Windows Server 2016, která je platná po dobu 180 dnů. Pokud se zkušební období blíží vypršení platnosti, doporučujeme, abyste si stáhli a nasadili nové zařízení nebo aktivovali licenci k operačnímu systému virtuálního počítače zařízení.
-**Skript prostředí PowerShell** | [Stažení](https://go.microsoft.com/fwlink/?linkid=2105112)skriptu.<br/><br/> 
+**Šablona vajíček** | Stáhněte si z portálu nebo z https://aka.ms/migrate/appliance/vmware .<br/><br/> Velikost ke stažení je 10,9 GB.<br/><br/> Stažená šablona zařízení je součástí zkušební licence Windows Server 2016, která je platná po dobu 180 dnů. Pokud se zkušební období blíží vypršení platnosti, doporučujeme, abyste si stáhli a nasadili nové zařízení nebo aktivovali licenci k operačnímu systému virtuálního počítače zařízení.
+**Skript prostředí PowerShell** | Informace najdete v tomto [článku](https://docs.microsoft.com/azure/migrate/deploy-appliance-script#set-up-the-appliance-for-vmware).<br/><br/> 
 **Software a hardware** |  Zařízení by mělo běžet na počítači s Windows serverem 2016, 32-GB RAM, 8 vCPU, kolem 80 GB diskového úložiště a externím virtuálním přepínačem.<br/> Zařízení vyžaduje přístup k Internetu, a to buď přímo, nebo prostřednictvím proxy serveru.<br/><br/> Pokud spustíte zařízení na virtuálním počítači VMware, budete potřebovat dostatek prostředků na vCenter Server k přidělení virtuálního počítače, který splňuje požadavky.<br/><br/> Pokud zařízení spouštíte na fyzickém počítači, ujistěte se, že je spuštěný systém Windows Server 2016 a splňuje požadavky na hardware.
 **Požadavky VMware** | Pokud zařízení nasadíte jako virtuální počítač VMware, musí být nasazen na hostiteli ESXi se spuštěnou verzí 5,5 nebo novější.<br/><br/> vCenter Server se spouští 5,5, 6,0, 6,5 nebo 6,7.
 **VDDK (migrace bez agenta)** | Pokud zařízení nasadíte jako virtuální počítač VMware a máte spuštěnou migraci bez agenta, musí být na virtuálním počítači zařízení nainstalovaná VMware vSphere VDDK.
@@ -68,8 +68,8 @@ Následující tabulka shrnuje požadavky na zařízení Azure Migrate pro VMwar
 **Podpora projektu** |  Zařízení může být přidruženo k jednomu projektu. <br/> K jednomu projektu může být přidružen libovolný počet zařízení.<br/> 
 **Omezení zjišťování** | Zařízení může zjistit až 5000 virtuálních počítačů Hyper-V.<br/> Zařízení se může připojit k až 300 hostitelům Hyper-V.
 **Šablona VHD** | Složka zip, včetně VHD. Stáhněte si z portálu nebo z https://aka.ms/migrate/appliance/hyperv .<br/><br/> Velikost ke stažení je 10 GB.<br/><br/> Stažená šablona zařízení je součástí zkušební licence Windows Server 2016, která je platná po dobu 180 dnů. Pokud se zkušební období blíží vypršení platnosti, doporučujeme, abyste si stáhli a nasadili nové zařízení nebo aktivovali licenci k operačnímu systému virtuálního počítače zařízení.
-**Skript prostředí PowerShell** | [Stažení](https://go.microsoft.com/fwlink/?linkid=2105112)skriptu.<br/><br/> 
-**Software a hardware***   |  Zařízení by mělo běžet na počítači s Windows serverem 2016, 32-GB RAM, 8 vCPU, kolem 80 GB diskového úložiště a externím virtuálním přepínačem.<br/> Zařízení potřebuje statickou nebo dynamickou IP adresu a vyžaduje přístup k Internetu, a to buď přímo, nebo prostřednictvím proxy serveru.<br/><br/> Pokud zařízení spouštíte jako virtuální počítač Hyper-V, budete potřebovat dostatek prostředků na hostiteli Hyper-V, abyste mohli přidělit 16 GB paměti RAM, 8 vCPU, přibližně 80 GB úložného prostoru a externí přepínač pro virtuální počítač zařízení.<br/><br/> Pokud zařízení spouštíte na fyzickém počítači, ujistěte se, že je spuštěný systém Windows Server 2016 a splňuje požadavky na hardware. 
+**Skript prostředí PowerShell** | Informace najdete v tomto [článku](https://docs.microsoft.com/azure/migrate/deploy-appliance-script#set-up-the-appliance-for-hyper-v).<br/><br/> 
+**Software a hardware***   |  Zařízení by mělo běžet na počítači s Windows serverem 2016, 16 GB paměti RAM, 8 vCPU, přibližně 80 GB diskového úložiště a externím virtuálním přepínačem.<br/> Zařízení potřebuje statickou nebo dynamickou IP adresu a vyžaduje přístup k Internetu, a to buď přímo, nebo prostřednictvím proxy serveru.<br/><br/> Pokud zařízení spouštíte jako virtuální počítač Hyper-V, budete potřebovat dostatek prostředků na hostiteli Hyper-V, abyste mohli přidělit 16 GB paměti RAM, 8 vCPU, přibližně 80 GB úložného prostoru a externí přepínač pro virtuální počítač zařízení.<br/><br/> Pokud zařízení spouštíte na fyzickém počítači, ujistěte se, že je spuštěný systém Windows Server 2016 a splňuje požadavky na hardware. 
 **Požadavky technologie Hyper-V** | Pokud nasadíte zařízení se šablonou VHD, virtuální počítač zařízení, který poskytuje Azure Migrate, je Hyper-V VM verze 5,0.<br/><br/> Na hostiteli Hyper-V musí běžet Windows Server 2012 R2 nebo novější. 
 **Hodnota hash – VHD** | [Ověřte](tutorial-assess-hyper-v.md#verify-security) hodnoty hash šablony VHD.
 **Hodnota hash – skript prostředí PowerShell** | [Ověřte](deploy-appliance-script.md#verify-file-security) hodnoty hash skriptu PowerShellu.
@@ -83,9 +83,9 @@ Následující tabulka shrnuje požadavky na zařízení Azure Migrate pro VMwar
 **Součásti zařízení** | Zařízení má následující součásti: <br/><br/> - **Aplikace pro správu**: Toto je webová aplikace pro vstup uživatele během nasazování zařízení. Používá se při posuzování počítačů pro migraci do Azure.<br/> - **Agent zjišťování**: Agent shromáždí data konfigurace počítače. Používá se při posuzování počítačů pro migraci do Azure.<br/>- **Agent hodnocení**: Agent shromažďuje údaje o výkonu. Používá se při posuzování počítačů pro migraci do Azure.<br/>- **Služba automatické aktualizace**: aktualizuje součásti zařízení (spouští se každých 24 hodin).
 **Podporované nasazení** | Nasaďte jako vyhrazený fyzický počítač nebo virtuální počítač pomocí instalačního skriptu PowerShellu. Skript je k dispozici ke stažení na portálu.
 **Podpora projektu** |  Zařízení může být přidruženo k jednomu projektu. <br/> K jednomu projektu může být přidružen libovolný počet zařízení.<br/> 
-**Omezení zjišťování** | Zařízení může zjistit až 250 fyzických serverů.
-**Skript prostředí PowerShell** | Stáhněte si skript (AzureMigrateInstaller. ps1) do složky zip z portálu. [Přečtěte si další informace](tutorial-assess-physical.md#set-up-the-appliance). Případně [si přímo Stáhněte](https://go.microsoft.com/fwlink/?linkid=2105112).<br/><br/> Velikost ke stažení je 59,7 MB.
-**Software a hardware** |  Zařízení by mělo běžet na počítači s Windows serverem 2016, 32-GB RAM, 8 vCPU, kolem 80 GB diskového úložiště a externím virtuálním přepínačem.<br/> Zařízení potřebuje statickou nebo dynamickou IP adresu a vyžaduje přístup k Internetu, a to buď přímo, nebo prostřednictvím proxy serveru.<br/><br/> Pokud zařízení spouštíte na fyzickém počítači, ujistěte se, že je spuštěný systém Windows Server 2016 a splňuje požadavky na hardware.<br/> Spuštění zařízení na počítači s Windows serverem 2019 se nepodporuje.
+**Omezení zjišťování** | Zařízení může zjistit až 1000 fyzických serverů.
+**Skript prostředí PowerShell** | Stáhněte si skript (AzureMigrateInstaller.ps1) ve složce zip na portálu. [Přečtěte si další informace](tutorial-assess-physical.md#set-up-the-appliance). Případně [si přímo Stáhněte](https://go.microsoft.com/fwlink/?linkid=2105112).<br/><br/> Velikost ke stažení je 63,1 MB.
+**Software a hardware** |  Zařízení by mělo běžet na počítači s Windows serverem 2016, 16 GB paměti RAM, 8 vCPU, přibližně 80 GB diskového úložiště a externím virtuálním přepínačem.<br/> Zařízení potřebuje statickou nebo dynamickou IP adresu a vyžaduje přístup k Internetu, a to buď přímo, nebo prostřednictvím proxy serveru.<br/><br/> Pokud zařízení spouštíte na fyzickém počítači, ujistěte se, že je spuštěný systém Windows Server 2016 a splňuje požadavky na hardware.<br/> Spuštění zařízení na počítači s Windows serverem 2019 se nepodporuje.
 **Hodnota hash** | [Ověřte](deploy-appliance-script.md#verify-file-security) hodnoty hash skriptu PowerShellu.
 
 ## <a name="url-access"></a>Přístup URL
@@ -98,7 +98,7 @@ Zařízení Azure Migrate potřebuje připojení k Internetu.
 
 ### <a name="public-cloud-urls"></a>Adresy URL veřejného cloudu
 
-**URL** | **Zobrazí**  
+**URL** | **Podrobnosti**  
 --- | --- |
 *.portal.azure.com  | Přejděte na Azure Portal.
 *.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com | Přihlaste se ke svému předplatnému Azure.
@@ -115,7 +115,7 @@ download.microsoft.com/download | Povolí stahování ze služby Stažení softw
 
 ### <a name="government-cloud-urls"></a>Adresy URL cloudu pro státní správu
 
-**URL** | **Zobrazí**  
+**URL** | **Podrobnosti**  
 --- | --- |
 *. portal.azure.us  | Přejděte na Azure Portal.
 graph.windows.net | Přihlaste se ke svému předplatnému Azure.
@@ -148,18 +148,18 @@ Tady je úplný seznam metadat virtuálních počítačů VMware, které zaříz
 **ÚDAJŮ** | **OBJEKTŮ**
 --- | --- 
 **Podrobnosti o počítači** | 
-ID virtuálního počítače | síť. Config. InstanceUuid 
-název virtuálního počítače | síť. Config.Name
+ID virtuálního počítače | vm.Config. InstanceUuid 
+název virtuálního počítače | vm.Config. Jméno
 ID vCenter Server | VMwareClient. instance. UUID
-Popis virtuálního počítače | síť. Summary. config. Annotation
+Popis virtuálního počítače | vm.Summary.Config. Poznámky
 Název licenčního produktu | síť. Client. ServiceContent. about. LicenseProductName
 Typ operačního systému | síť. SummaryConfig.GuestFullName
-Typ spouštění | síť. Config. firmware
-Počet jader | síť. Config. hardware. NumCPU
-Paměť (MB) | síť. Config. hardware. MemoryMB
-Počet disků | síť. Config. hardware. Device. ToList – (). FindAll (x = > je VirtualDisk). Count
-Seznam velikostí disků | síť. Config. hardware. Device. ToList – (). FindAll (x = > je VirtualDisk)
-Seznam síťových adaptérů | síť. Config. hardware. Device. ToList – (). FindAll (x = > je VirtualEthernet). Count
+Typ spouštění | vm.Config. Firmwar
+Počet jader | vm.Config. Hardware. NumCPU
+Paměť (MB) | vm.Config. Hardware. MemoryMB
+Počet disků | vm.Config. Hardware. Device. ToList – (). FindAll (x => je VirtualDisk). Count
+Seznam velikostí disků | vm.Config. Hardware. Device. ToList – (). FindAll (x => je VirtualDisk)
+Seznam síťových adaptérů | vm.Config. Hardware. Device. ToList – (). FindAll (x => je VirtualEthernet). Count
 Využití procesoru | CPU. Usage. Average
 Využití paměti |mem. Usage. Average
 **Podrobnosti o jednotlivých discích** | 
@@ -505,8 +505,8 @@ Chcete-li se vrátit do ovládacích panelů, postupujte takto:
 
 Pokud používáte starší verzi nějaké součásti, musíte službu odinstalovat a ručně aktualizovat na nejnovější verzi.
 
-1. Pokud chcete vyhledat nejnovější verze služby zařízení, [Stáhněte](https://aka.ms/latestapplianceservices) si soubor LatestComponents. JSON.
-2.    Po stažení otevřete soubor LatestComponents. JSON v programu Poznámkový blok.
+1. Chcete-li vyhledat nejnovější verze služby zařízení, [stáhněte](https://aka.ms/latestapplianceservices) LatestComponents.jsv souboru.
+2.    Po stažení otevřete LatestComponents.jsv souboru poznámkového bloku.
 3. Vyhledejte nejnovější verzi služby v souboru a odkaz pro stažení. Příklad:
 
     "Name": "ASRMigrationWebApp"; "DownloadLink": " https://download.microsoft.com/download/f/3/4/f34b2eb9-cc8d-4978-9ffb-17321ad9b7ed/MicrosoftAzureApplianceConfigurationManager.msi ", "Version": "6.0.211.2", "Md5Hash": "e00a742acc35e78a64a6a81e75469b84"
@@ -514,7 +514,7 @@ Pokud používáte starší verzi nějaké součásti, musíte službu odinstalo
 4.    Stáhněte si nejnovější verzi zastaralé služby pomocí odkazu ke stažení v souboru.
 5. Po stažení spusťte následující příkaz v okně příkazového řádku správce, abyste ověřili integritu staženého souboru MSI.
 
-    ``` C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm] ```Příklad: C: \> certutil-HashFile C:\USERS\PUBLIC\DOWNLOADS\MICROSOFTAZUREAPPLIANCECONFIGURATIONMANAGER.msi MD5
+    ``` C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm] ```Příklad: C: \> certutil-HashFile C:\Users\public\downloads\MicrosoftAzureApplianceConfigurationManager.MSI MD5
 
 5. Ověřte, že výstup příkazu odpovídá položce hodnoty hash pro službu v souboru (například hodnota hash MD5 výše).
 6. Nyní spusťte instalační službu MSI a nainstalujte ji. Je to tichá instalace a po dokončení se okno instalace zavře.

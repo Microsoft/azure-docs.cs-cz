@@ -6,17 +6,17 @@ author: ronortloff
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 31533eefbfae63e0eb4049d2eabaf6b853340636
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 4f46ed1890bb62acc92eea28c55bf9abd6153e8b
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83590243"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85208684"
 ---
 # <a name="azure-synapse-analytics--workload-management-portal-monitoring"></a>Analýza Azure synapse Analytics – úlohy Portál pro správu monitorování
 
@@ -26,7 +26,7 @@ Existují dvě různé kategorie metrik skupin úloh, které jsou k dispozici pr
 
 ## <a name="workload-management-metric-definitions"></a>Definice metrik správy úloh
 
-|Název metriky                    |Popis  |Typ agregace |
+|Název metriky                    |Description  |Typ agregace |
 |-------------------------------|-------------|-----------------|
 |Procento efektivního Cap prostředku | *Procentuální hodnota efektivního* limitu prostředků je pevně nastavená procentuální hodnota z prostředků, které skupina úloh zpřístupní, přičemž vezme v úvahu *efektivní minimální procento prostředků* přidělených pro jiné skupiny úloh. Metrika *procenta efektivního limitu prostředků* je nakonfigurovaná pomocí `CAP_PERCENTAGE_RESOURCE` parametru v SYNTAXI [vytvořit skupinu úloh](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .  Platné hodnoty jsou popsány zde.<br><br>Pokud je například `DataLoads` vytvořená skupina úloh s `CAP_PERCENTAGE_RESOURCE` = 100 a je vytvořena jiná skupina úloh s platným minimálním procentem 25%, je *procento prostředku efektivního limitu* pro `DataLoads` skupinu úloh 75%.<br><br>*Procentuální hodnota prostředku efektivního Cap* určuje horní mez souběžnosti (a tudíž potenciální propustnost), kterou může skupina úloh dosáhnout.  Pokud je potřeba další propustnost, než je aktuálně hlášena metrikou *procentuální hodnoty efektivního snížení kapacity prostředku* , zvětšete `CAP_PERCENTAGE_RESOURCE` , snižte `MIN_PERCENTAGE_RESOURCE` počet ostatních skupin úloh nebo nahorizontální navýšení kapacity instance, aby bylo možné přidat další prostředky.  Snížení úrovně `REQUEST_MIN_RESOURCE_GRANT_PERCENT` může zvýšit souběžnost, ale nemusí zvyšovat celkovou propustnost.| Min, AVG, Max |
 |Efektivní minimální procento prostředků |*Platný* minimální procento prostředků je minimální procento rezervovaných a izolovaných prostředků pro skupinu úloh, které berou v úvahu minimum úrovně služby.  Metrika platných minimálních procentuálních hodnot prostředků je nakonfigurovaná pomocí `MIN_PERCENTAGE_RESOURCE` parametru v syntaxi [vytvořit skupinu úloh](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .  Platné hodnoty jsou popsány [zde](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#effective-values).<br><br>Pokud chcete monitorovat celkovou izolaci úloh nakonfigurovanou v systému, použijte typ agregace Sum, pokud je tato metrika nefiltrovaná, a nerozdělujte.<br><br>*Hodnota platné minimální procento prostředků* určuje dolní mez garantované souběžnosti (a tak zaručenou propustnost), kterou může skupina úloh dosáhnout.  Pokud jsou požadovány další garantované prostředky, které jsou aktuálně hlášeny v *hodnotě efektivní minimální* metriky prostředku, zvyšte `MIN_PERCENTAGE_RESOURCE` parametr nakonfigurovaný pro skupinu úloh.  Snížení úrovně `REQUEST_MIN_RESOURCE_GRANT_PERCENT` může zvýšit souběžnost, ale nemusí zvyšovat celkovou propustnost. |Min, AVG, Max|
@@ -59,7 +59,7 @@ Následující graf je nakonfigurován následujícím způsobem:<br>
 Metrika 1: *efektivní minimální procento prostředků* (průměrná agregace, `blue line` )<br>
 Metrika 2: *přidělení skupiny úloh podle systému v procentech* (průměrná agregace, `purple line` )<br>
 Filtr: [skupina úloh] =`wgPriority`<br>
-![underutilized-WG. png ](./media/sql-data-warehouse-workload-management-portal-monitor/underutilized-wg.png) graf znázorňuje, že s 25% izolací úlohy se v průměru používá jenom 10%.  V takovém případě `MIN_PERCENTAGE_RESOURCE` může být hodnota parametru snížena na 10 nebo 15 a umožní jiným úlohám v systému využívat prostředky.
+![underutilized-wg.png](./media/sql-data-warehouse-workload-management-portal-monitor/underutilized-wg.png) grafu znázorňuje, že s 25% izolací úloh se v průměru používá jenom 10%.  V takovém případě `MIN_PERCENTAGE_RESOURCE` může být hodnota parametru snížena na 10 nebo 15 a umožní jiným úlohám v systému využívat prostředky.
 
 ### <a name="workload-group-bottleneck"></a>Kritické místo skupiny úloh
 

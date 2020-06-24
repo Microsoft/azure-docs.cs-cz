@@ -5,16 +5,16 @@ services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: ca60b7c12ec7e7a5e04202e377c345055ce1090c
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 79206ffb51b41c3d7e671bb37353548b47190f6b
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83736003"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85206458"
 ---
 # <a name="create-and-use-views-in-sql-on-demand-preview-using-azure-synapse-analytics"></a>Vytváření a používání zobrazení v SQL na vyžádání (ve verzi Preview) pomocí Azure synapse Analytics
 
@@ -26,7 +26,7 @@ Prvním krokem je vytvoření databáze, ve které se zobrazení vytvoří, a in
 
 ## <a name="create-a-view"></a>Vytvoření zobrazení
 
-Zobrazení můžete vytvořit stejným způsobem jako běžné SQL Server zobrazení. Následující dotaz vytvoří zobrazení, které načte soubor *naplnění. csv* .
+Zobrazení můžete vytvořit stejným způsobem jako běžné SQL Server zobrazení. Následující dotaz vytvoří zobrazení, které čte soubor *population.csv* .
 
 > [!NOTE]
 > Změňte první řádek v dotazu, tj., [mydbname], takže používáte databázi, kterou jste vytvořili.

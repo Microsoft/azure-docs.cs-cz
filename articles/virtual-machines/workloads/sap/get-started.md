@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/10/2020
+ms.date: 06/22/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bfe61c7e461d6598277aa9b38eafc16194b08bf1
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: f79eabd960238b52c146d89af8aef050aab427c3
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84672115"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207171"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Použití Azure k hostování a spouštění scénářů pro úlohy SAP
 
@@ -112,6 +112,8 @@ Informace o integraci služeb Azure do komponent SAP najdete v těchto tématech
 
 ## <a name="change-log"></a>Protokol změn
 
+- 06/22/2020: Přidejte kroky instalace pro nové rozšíření virtuálních počítačů pro SAP do [Průvodce nasazením](deployment-guide.md) .
+- 06/16/2020: Změna [připojení veřejných koncových bodů pro virtuální počítače s využitím Azure Standard interního nástroje ve scénářích SAP ha](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections) pro přidání odkazu do dokumentace k infrastruktuře veřejných cloudů SUSE 101 
 - 06/10/2020: přidání nových HLI SKU do [dostupných SKU pro](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-available-skus) [architekturu úložiště HLI a SAP Hana (velké instance)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-storage-architecture)
 - 05/21/2020: Změna [Nastavení Pacemaker v SLES v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) a [Nastavení Pacemaker v RHEL v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) pro přidání odkazu na [připojení k veřejnému koncovému bodu pro virtuální počítače pomocí Azure Standard interního nástroje ve scénářích SAP ha](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)  
 - 05/19/2020: přidejte důležitou zprávu, která nepoužívá skupinu kořenových svazků při použití LVM pro svazky související se službou HANA v [SAP HANA konfiguracích úložiště virtuálních počítačů Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) .

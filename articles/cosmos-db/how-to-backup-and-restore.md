@@ -3,16 +3,16 @@ title: Postup obnovení dat Azure Cosmos DB ze zálohy
 description: Tento článek popisuje, jak obnovit Azure Cosmos DB data ze zálohy, jak kontaktovat podporu Azure za účelem obnovení dat, kroky, které je potřeba provést po obnovení dat.
 author: kanshiG
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/01/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 19ca835ca8211202cd358ac2ec3695675183a372
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 1a0075f9b4fc3ff919d4db4bd440a5435d711c83
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "70240767"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261728"
 ---
 # <a name="restore-data-from-a-backup-in-azure-cosmos-db"></a>Obnovení dat ze zálohy v Azure Cosmos DB 
 
@@ -43,11 +43,11 @@ Pokud dojde k poškození dat a pokud se dokumenty v rámci kontejneru upravují
 
 Následující snímek obrazovky ukazuje, jak vytvořit žádost o podporu pro kontejner (kolekce/graf/tabulka) pro obnovení dat pomocí Azure Portal. Zadejte další podrobnosti, jako je například typ dat, účel obnovení, čas odstranění dat, který nám pomůžete určit prioritu žádosti.
 
-![Vytvoření žádosti o podporu zálohování pomocí Azure Portal](./media/how-to-backup-and-restore/backup-support-request-portal.png)
+:::image type="content" source="./media/how-to-backup-and-restore/backup-support-request-portal.png" alt-text="Vytvoření žádosti o podporu zálohování pomocí Azure Portal":::
 
 ## <a name="post-restore-actions"></a>Akce po obnovení
 
-Po obnovení dat se zobrazí oznámení o názvu nového účtu (obvykle ve formátu `<original-name>-restored1`) a času, kdy byl účet obnoven. Obnovený účet bude mít stejnou zřízenou propustnost, zásady indexování a je ve stejné oblasti jako původní účet. Obnovený účet může zobrazit uživatel, který je správcem předplatného nebo spolusprávce.
+Po obnovení dat se zobrazí oznámení o názvu nového účtu (obvykle ve formátu `<original-name>-restored1` ) a času, kdy byl účet obnoven. Obnovený účet bude mít stejnou zřízenou propustnost, zásady indexování a je ve stejné oblasti jako původní účet. Obnovený účet může zobrazit uživatel, který je správcem předplatného nebo spolusprávce.
 
 Po obnovení dat byste měli zkontrolovat a ověřit data v obnoveném účtu a ujistit se, že obsahuje verzi, kterou očekáváte. Pokud vše vypadá dobře, měli byste migrovat data zpátky na původní účet pomocí [Azure Cosmos DB změnit informační kanál](change-feed.md) nebo [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md).
 

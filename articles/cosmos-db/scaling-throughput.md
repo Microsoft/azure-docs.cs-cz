@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 440f23afcd08326261be30432ad1f0ecb16f55fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4cc8f2c90e74b5b3ab6df3169df0524f1134b66e
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74873501"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85113598"
 ---
 # <a name="globally-scale-provisioned-throughput"></a>Globální škálování zřízené propustnosti 
 
 V Azure Cosmos DB je zajištěná propustnost reprezentovaná jako jednotka žádosti za sekundu (RU/s nebo ru ve formě plural). Ru změřte náklady na operace čtení i zápisu na kontejneru Cosmos, jak je znázorněno na následujícím obrázku:
 
-![Jednotky žádostí](./media/scaling-throughput/request-unit-charge-of-read-and-write-operations.png)
+:::image type="content" source="./media/scaling-throughput/request-unit-charge-of-read-and-write-operations.png" alt-text="Jednotky žádosti" border="false":::
 
 Ru můžete zřídit v kontejneru Cosmos nebo v databázi Cosmos. Ru zřízené na kontejneru jsou k dispozici výhradně pro operace prováděné na daném kontejneru. Ru zřízené v databázi se sdílí mezi všemi kontejnery v této databázi (s výjimkou všech kontejnerů se exkluzivně přiřazeným ru).
 

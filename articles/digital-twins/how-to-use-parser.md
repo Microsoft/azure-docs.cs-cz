@@ -1,5 +1,5 @@
 ---
-title: Analyzovat a ověřit modely
+title: Parsování a ověření modelů
 titleSuffix: Azure Digital Twins
 description: Naučte se používat knihovnu analyzátorů k analýze DTDL modelů.
 author: cschormann
@@ -7,14 +7,17 @@ ms.author: cschorm
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6346c1d2adca697649ebe879b97766672a23ae29
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: cc6451d9be6c125d1b01bc5bb33fd553ce789f31
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84613065"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263190"
 ---
 # <a name="dtdl-client-side-parser-library"></a>Knihovna analyzátorů DTDL na straně klienta
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 [Modely](concepts-models.md) v digitálních prostředníkech Azure jsou definované pomocí jazyka DTDL (Digital nenáročné definice) založené na formátu JSON. V případech, kdy je užitečné analyzovat vaše modely, je v NuGet.org k dispozici knihovna analýzy DTDL jako knihovna na straně klienta: [Microsoft. Azure. DigitalTwins. Parser](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/).
 
@@ -39,7 +42,7 @@ Mezi schopnosti analyzátoru patří:
 
 ## <a name="use-the-dtdl-validator-sample"></a>Použití ukázky validátoru DTDL
 
-K dispozici je ukázkový kód, který může ověřit modelové dokumenty a ujistit se, že je DTDL platný. Je postavená na knihovně analyzátorů DTDL a je to Language-nezávislá. Najdete ho tady: [Ukázka validátoru DTDL](https://github.com/Azure-Samples/DTDL-Validator).
+K dispozici je ukázkový kód, který může ověřit modelové dokumenty a ujistit se, že je DTDL platný. Je postavená na knihovně analyzátorů DTDL a je to Language-nezávislá. Najdete ho tady: [Ukázka validátoru DTDL](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator).
 
 Ukázku validátoru lze použít jako nástroj příkazového řádku k ověření stromu adresářů souborů DTDL. Poskytuje také interaktivní režim. Zdrojový kód ukazuje příklady použití knihovny analyzátoru.
 

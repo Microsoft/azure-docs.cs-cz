@@ -3,17 +3,17 @@ title: Podpora Azure Table Storage v Azure Cosmos DB
 description: Přečtěte si, jak Azure Cosmos DB tabulek rozhraní API pro tabulky a Azure Storage vzájemně spolupracují, sdílením stejného datového modelu tabulky a operací.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
-ms.topic: overview
+ms.topic: how-to
 ms.date: 05/21/2020
 author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
-ms.openlocfilehash: 6f10763f6906f67a3378d54df0574060294ef87d
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 28c58251d9a30b3bae9d958c32c4d6a71f86aaae
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800396"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263207"
 ---
 # <a name="developing-with-azure-cosmos-db-table-api-and-azure-table-storage"></a>Vývoj pomocí rozhraní Table API služby Azure Cosmos DB a úložištěm tabulek Azure
 
@@ -31,7 +31,7 @@ Rozhraní Table API služby Azure Cosmos DB a úložiště tabulek Azure sdílej
 
 * [Java SDK](table-sdk-java.md): tato sada Azure Storage SDK umožňuje připojení k účtům Azure Cosmos DB pomocí rozhraní API pro tabulky.
 
-* [SDK pro Node. js](table-sdk-nodejs.md): tato sada Azure Storage SDK umožňuje připojení k účtům Azure Cosmos DB pomocí rozhraní API pro tabulky.
+* [Node.js SDK](table-sdk-nodejs.md): tato sada Azure Storage SDK umožňuje připojení k Azure Cosmos DB účtům pomocí rozhraní API pro tabulky.
 
 
 Další informace o práci s rozhraním Table API jsou dostupné v článku s [častými dotazy o vývoji pomocí rozhraní Table API](table-api-faq.md).
@@ -43,7 +43,7 @@ Další informace o práci s rozhraním Table API jsou dostupné v článku s [�
 - [Microsoft. Azure. Storage. blob](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/), [Microsoft. Azure. Storage. File](https://www.nuget.org/packages/Microsoft.Azure.Storage.File/), [Microsoft. Azure. Storage. Queue](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/)a [Microsoft. Azure. Storage. Common](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/) Library vám umožní pracovat se službou Azure Table Storage. Pokud používáte rozhraní API pro tabulky v Azure Cosmos DB, můžete místo toho použít knihovnu [Microsoft. Azure. CosmosDB. Table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table/) .
 - [Python SDK](https://github.com/Azure/azure-cosmos-table-python). Sada SDK Azure Cosmos DB SDK pro Python podporuje službu Table Storage (protože rozhraní API pro tabulky Azure Table Storage a Cosmos DB mají stejné funkce, které se dají využít, a s úsilím factorize naší vývojové prostředí SDK doporučujeme použít tuto sadu SDK).
 - [Sada Azure Storage SDK pro jazyk Java](https://github.com/azure/azure-storage-java). Tato sada Azure Storage SDK poskytuje klientskou knihovnu v Javě pro využití úložiště tabulek Azure.
-- [SDK pro Node. js](https://github.com/Azure/azure-storage-node) Tato sada SDK nabízí balíček Node.js a javascriptovou klientskou knihovnu kompatibilní s prohlížečem pro využití služby tabulky úložiště.
+- [Node.js SDK](https://github.com/Azure/azure-storage-node). Tato sada SDK nabízí balíček Node.js a javascriptovou klientskou knihovnu kompatibilní s prohlížečem pro využití služby tabulky úložiště.
 - [Modul PowerShellu AzureRmStorageTable](https://www.powershellgallery.com/packages/AzureRmStorageTable). Tento modul PowerShellu obsahuje rutiny pro práci s tabulkami úložiště.
 - [Klientská knihovna Azure Storage pro jazyk C++](https://github.com/Azure/azure-storage-cpp/). Tato knihovna umožňuje vývoj aplikací pro Azure Storage.
 - [Klientská knihovna tabulky úložiště Azure pro jazyk Ruby](https://github.com/azure/azure-storage-ruby/tree/master/table). Tento projekt poskytuje balíček Ruby, který usnadňuje přístup ke službám tabulky úložiště Azure.

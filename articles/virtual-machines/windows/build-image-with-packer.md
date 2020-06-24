@@ -8,17 +8,17 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 02/22/2019
 ms.author: cynthn
-ms.openlocfilehash: 4180f62e589ef79227d8e60ca19661e1c65f0097
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 219685b1f82cea3e85a6d45023e913141345e685
+ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773317"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85106522"
 ---
 # <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Použití balíčku k vytváření imagí virtuálních počítačů s Windows v Azure
 Každý virtuální počítač (VM) v Azure se vytvoří z image, která definuje distribuci Windows a verzi operačního systému. Obrázky můžou zahrnovat předem nainstalované aplikace a konfigurace. Azure Marketplace poskytuje mnoho prvních a imagí jiných výrobců pro většinu běžných prostředí operačního systému a aplikací, nebo můžete vytvořit vlastní image přizpůsobené vašim potřebám. Tento článek podrobně popisuje, jak používat open source [sadu](https://www.packer.io/) nástrojů k definování a vytváření vlastních imagí v Azure.
 
-Tento článek byl naposledy testován na 2/21/2019 pomocí [rutiny AZ PowerShell Module](https://docs.microsoft.com/powershell/azure/install-az-ps) verze 1.3.0 a [Pack](https://www.packer.io/docs/install/index.html) verze 1.3.4.
+Tento článek byl naposledy testován na 2/21/2019 pomocí [rutiny AZ PowerShell Module](https://docs.microsoft.com/powershell/azure/install-az-ps) verze 1.3.0 a [Pack](https://www.packer.io/docs/install) verze 1.3.4.
 
 > [!NOTE]
 > Azure teď má službu, Azure image Builder (Preview) pro definování a vytváření vlastních imagí. Azure image Builder je postavená na balíčku, takže můžete s ním dokonce používat i existující skripty sestavovatele prostředí pro vytváření balíčků. Informace o tom, jak začít s Azure image Builder, najdete v tématu [Vytvoření virtuálního počítače s Windows pomocí Azure image Builder](image-builder.md).
@@ -64,7 +64,7 @@ Get-AzSubscription
 ## <a name="define-packer-template"></a>Definovat šablonu balíčku
 K sestavení imagí vytvoříte šablonu jako soubor JSON. V šabloně definujete sestavení a zřizování, které provádějí vlastní proces sestavení. Balírna má [Tvůrce pro Azure](https://www.packer.io/docs/builders/azure.html) , který umožňuje definovat prostředky Azure, například přihlašovací údaje instančního objektu vytvořené v předchozím kroku.
 
-Vytvořte soubor s názvem *Windows. JSON* a vložte následující obsah. Zadejte vlastní hodnoty pro následující:
+Vytvořte soubor s názvem *windows.js* a vložte následující obsah. Zadejte vlastní hodnoty pro následující:
 
 | Parametr                           | Kde získat |
 |-------------------------------------|----------------------------------------------------|

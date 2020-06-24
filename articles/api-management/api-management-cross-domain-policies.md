@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
 ms.openlocfilehash: b72abf4e208c57987375a105865046f194460058
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265984"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84690315"
 ---
 # <a name="api-management-cross-domain-policies"></a>Zásady pro API Management napříč doménami
 V tomto tématu najdete referenční informace pro následující zásady API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady v API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -53,7 +53,7 @@ Použijte `cross-domain` zásady, aby rozhraní API bylo dostupné z klientů za
 
 ### <a name="elements"></a>Elementy
 
-|Název|Popis|Požaduje se|
+|Name|Description|Vyžadováno|
 |----------|-----------------|--------------|
 |mezi doménami|Kořenový element. Podřízené elementy musí odpovídat [specifikaci souboru zásad pro Adobe více domén](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html).|Ano|
 
@@ -88,7 +88,7 @@ CORS umožňuje prohlížeči a serveru spolupracovat a určit, jestli se mají 
 ```
 
 ### <a name="example"></a>Příklad
-Tento příklad ukazuje, jak podporovat žádosti o předběžné lety, jako jsou ty s vlastními záhlavími nebo metodami, které jsou jiné než GET a POST. Pro podporu vlastních hlaviček a dalších příkazů HTTP použijte oddíly `allowed-methods` a `allowed-headers` , jak je znázorněno v následujícím příkladu.
+Tento příklad ukazuje, jak podporovat žádosti o předběžné lety, jako jsou ty s vlastními záhlavími nebo metodami, které jsou jiné než GET a POST. Pro podporu vlastních hlaviček a dalších příkazů HTTP použijte `allowed-methods` oddíly a, `allowed-headers` jak je znázorněno v následujícím příkladu.
 
 ```xml
 <cors allow-credentials="true">
@@ -122,23 +122,23 @@ Tento příklad ukazuje, jak podporovat žádosti o předběžné lety, jako jso
 
 ### <a name="elements"></a>Elementy
 
-|Název|Popis|Požaduje se|Výchozí|
+|Name|Description|Vyžadováno|Výchozí|
 |----------|-----------------|--------------|-------------|
 |CORS|Kořenový element.|Ano|–|
-|povolené – počátek|Obsahuje `origin` prvky, které popisují povolené zdroje pro požadavky mezi doménami. `allowed-origins`může obsahovat jeden `origin` prvek, který určuje `*` , že má být povolen libovolný původ, nebo jeden `origin` či více prvků, které obsahují identifikátor URI.|Ano|–|
+|povolené – počátek|Obsahuje `origin` prvky, které popisují povolené zdroje pro požadavky mezi doménami. `allowed-origins`může obsahovat jeden `origin` prvek, který určuje, že `*` má být povolen libovolný původ, nebo jeden či více `origin` prvků, které obsahují identifikátor URI.|Ano|–|
 |origin (zdroj)|Hodnota může být buď `*` tak, aby povolovala všechny zdroje, nebo identifikátor URI, který určuje jeden počátek. Identifikátor URI musí obsahovat schéma, hostitele a port.|Ano|Pokud je port v identifikátoru URI vynechán, použije se port 80 pro protokol HTTP a port 443 pro protokol HTTPS.|
 |povolené – metody|Tento prvek je vyžadován, pokud jsou povoleny jiné metody než GET nebo POST. Obsahuje `method` prvky, které určují podporované příkazy HTTP. Hodnota `*` označuje všechny metody.|Ne|Pokud tato část není k dispozici, jsou podporovány GET a POST.|
-|method|Určuje příkaz HTTP.|Pokud je `allowed-methods` oddíl `method` přítomen, je vyžadován alespoň jeden prvek.|–|
+|method|Určuje příkaz HTTP.|`method`Pokud je oddíl přítomen, je vyžadován alespoň jeden prvek `allowed-methods` .|–|
 |povoleno – hlavičky|Tento prvek obsahuje `header` prvky, které určují názvy hlaviček, které mohou být zahrnuty v žádosti.|Ne|–|
-|vystavení – hlavičky|Tento prvek obsahuje `header` prvky, které určují názvy hlaviček, které budou přístupné pro klienta.|Ne|–|
-|záhlaví|Určuje název záhlaví.|V `allowed-headers` nebo `expose-headers` je `header` -li oddíl přítomen, je požadován alespoň jeden prvek.|–|
+|vystavení – hlavičky|Tento prvek obsahuje `header` prvky, které určují názvy hlaviček, které budou přístupné pro klienta.|Ne|Není k dispozici|
+|header|Určuje název záhlaví.|`header`V nebo je- `allowed-headers` li oddíl přítomen, je požadován alespoň jeden prvek `expose-headers` .|–|
 
 ### <a name="attributes"></a>Atributy
 
-|Název|Popis|Požaduje se|Výchozí|
+|Name|Description|Vyžadováno|Výchozí|
 |----------|-----------------|--------------|-------------|
-|povolení – pověření|`Access-Control-Allow-Credentials` Záhlaví v odpovědi na kontrolu před výstupem bude nastaveno na hodnotu tohoto atributu a bude mít vliv na schopnost klienta odesílat přihlašovací údaje v rámci požadavků mezi doménami.|Ne|false (nepravda)|
-|Kontrola před výstupem – výsledek – maximum – stáří|`Access-Control-Max-Age` Záhlaví v odpovědi na kontrolu před výstupem bude nastaveno na hodnotu tohoto atributu a bude mít vliv na schopnost uživatelského agenta ukládat do mezipaměti před letem.|Ne|0|
+|povolení – pověření|`Access-Control-Allow-Credentials`Záhlaví v odpovědi na kontrolu před výstupem bude nastaveno na hodnotu tohoto atributu a bude mít vliv na schopnost klienta odesílat přihlašovací údaje v rámci požadavků mezi doménami.|Ne|false (nepravda)|
+|Kontrola před výstupem – výsledek – maximum – stáří|`Access-Control-Max-Age`Záhlaví v odpovědi na kontrolu před výstupem bude nastaveno na hodnotu tohoto atributu a bude mít vliv na schopnost uživatelského agenta ukládat do mezipaměti před letem.|Ne|0|
 
 ### <a name="usage"></a>Využití
 Tyto zásady se dají použít v následujících [oddílech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zásad.
@@ -147,7 +147,7 @@ Tyto zásady se dají použít v následujících [oddílech](https://azure.micr
 - **Obory zásad:** všechny rozsahy
 
 ## <a name="jsonp"></a><a name="JSONP"></a>JSONP
-`jsonp` Zásada přidá JSON s podporou odsazení formátu (JSONP) k operaci nebo rozhraní API, aby bylo možné v klientech založených na prohlížeči JavaScript umožňovat mezidoménová volání. JSONP je metoda, která se používá v programech JavaScript k vyžádání dat ze serveru v jiné doméně. JSONP obchází omezení vyžadované většinou webových prohlížečů, kde musí být přístup k webovým stránkám ve stejné doméně.
+`jsonp`Zásada přidá JSON s podporou odsazení formátu (JSONP) k operaci nebo rozhraní API, aby bylo možné v klientech založených na prohlížeči JavaScript umožňovat mezidoménová volání. JSONP je metoda, která se používá v programech JavaScript k vyžádání dat ze serveru v jiné doméně. JSONP obchází omezení vyžadované většinou webových prohlížečů, kde musí být přístup k webovým stránkám ve stejné doméně.
 
 ### <a name="policy-statement"></a>Prohlášení o zásadách
 
@@ -163,17 +163,17 @@ Tyto zásady se dají použít v následujících [oddílech](https://azure.micr
 
 Pokud zavoláte metodu bez parametru zpětného volání? ' c = XXX vrátí se do obyčejného formátu JSON (bez obálky volání funkce).
 
-Pokud přidáte parametr `?cb=XXX` zpětného volání, vrátí výsledek JSONP a zabalí původní výsledky JSON kolem funkce zpětného volání, jako např.`XYZ('<json result goes here>');`
+Pokud přidáte parametr zpětného volání, `?cb=XXX` vrátí výsledek JSONP a zabalí původní výsledky JSON kolem funkce zpětného volání, jako např.`XYZ('<json result goes here>');`
 
 ### <a name="elements"></a>Elementy
 
-|Název|Popis|Požaduje se|
+|Name|Description|Vyžadováno|
 |----------|-----------------|--------------|
 |JSONP|Kořenový element.|Ano|
 
 ### <a name="attributes"></a>Atributy
 
-|Název|Popis|Požaduje se|Výchozí|
+|Name|Description|Vyžadováno|Výchozí|
 |----------|-----------------|--------------|-------------|
 |zpětné volání – parametr-Name|Funkce jazyka JavaScript mezi doménami začíná předponou s plně kvalifikovaným názvem domény, kde se nachází funkce.|Ano|–|
 

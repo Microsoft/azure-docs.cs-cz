@@ -13,19 +13,19 @@ ms.topic: overview
 ms.custom: mvc, seodec18
 ms.date: 12/07/2018
 ms.author: mbaldwin
-ms.openlocfilehash: fc7d4caecb2ca3d35d7b1b8d0cd5f9ff380d7674
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 80a215363a319b9ee082bd6c5e5f8004fc5b715b
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310100"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85209568"
 ---
-# <a name="troubleshooting"></a>Řešení potíží
+# <a name="troubleshooting"></a>Poradce při potížích
 
 Vyhrazená služba HSM v Azure má dvě odlišné charakteristiky. Za prvé, registraci a nasazení v Azure zařízení HSM se svými základními síťovými součástmi. Za druhé se konfigurace zařízení HSM připravuje pro použití nebo integraci s danými úlohami nebo aplikacemi. I když se zařízení HSM Thales Luna Network v Azure shodují, protože byste si koupili přímo od Thales, je fakt, že se jedná o prostředek v Azure, vytváří několik jedinečných důležitých informací. Tyto informace a případné Doporučené postupy pro řešení potíží a osvědčené postupy jsou popsané tady, abyste zajistili vysokou viditelnost a přístup k důležitým informacím. Po použití služby jsou konečné informace k dispozici prostřednictvím žádostí o podporu přímo od společnosti Microsoft nebo Thales. 
 
 > [!NOTE]
-> Je potřeba si uvědomit, že před provedením jakékoli konfigurace na nově nasazeném zařízení HSM by se měla aktualizovat všechny relevantní opravy. Konkrétní požadovaná oprava je [KB0019789](https://supportportal.gemalto.com/csm?id=kb_article_view&sys_kb_id=19a81c8bdb9a1fc8d298728dae96197d&sysparm_article=KB0019789) na portálu podpory Thales, který řeší problém se zablokem restartování.
+> Je potřeba si uvědomit, že před provedením jakékoli konfigurace na nově nasazeném zařízení HSM by se měla aktualizovat všechny relevantní opravy. Konkrétní požadovaná oprava je [KB0019789](https://supportportal.gemalto.com/csm?id=kb_article_view&sys_kb_id=19a81c8bdb9a1fc8d298728dae96197d&sysparm_article=KB0019789) na portálu podpory Thales, který řeší problém, při kterém systém přestane reagovat během restartování.
 
 ## <a name="hsm-registration"></a>Registrace HSM
 
@@ -120,7 +120,7 @@ Při konfiguraci sítě v rámci modulu HARDWAROVÉho zabezpečení buďte opatr
 
 ### <a name="hsm-device-reboot"></a>Restartování zařízení HSM
 
-Některé změny konfigurace vyžadují, aby byl modul hardwarového zabezpečení (HSM) nebo restartován z elektrického počítače. Testování modulu HARDWAROVÉho zabezpečení v Azure bylo zjištěno, že v některých případech může restartování přestat reagovat. Denásobení je, že žádost o podporu musí být vytvořena v Azure Portal požadujícím pevný restart, což může trvat až 48 hodin, než se dokončí ruční zpracování v datovém centru Azure.  Abyste se vyhnuli této situaci, ujistěte se, že jste nasadili opravu restartování dostupnou přímo z Thales. Další informace najdete v tématu [KB0019789](https://supportportal.gemalto.com/csm?sys_kb_id=d66911e2db4ffbc0d298728dae9619b0&id=kb_article_view&sysparm_rank=1&sysparm_tsqueryId=d568c35bdb9a4850d6b31f3b4b96199e&sysparm_article=KB0019789) v tématu Thales Luna Network HSM 7,2 downloads pro doporučenou opravu pro problém se započetím restartování. (Poznámka: budete muset být registrováni na portálu podpory Thales ke stažení).
+Některé změny konfigurace vyžadují, aby byl modul hardwarového zabezpečení (HSM) nebo restartován z elektrického počítače. Testování modulu HARDWAROVÉho zabezpečení v Azure bylo zjištěno, že v některých případech může restartování přestat reagovat. Denásobení je, že žádost o podporu musí být vytvořena v Azure Portal požadujícím pevný restart, což může trvat až 48 hodin, než se dokončí ruční zpracování v datovém centru Azure.  Abyste se vyhnuli této situaci, ujistěte se, že jste nasadili opravu restartování dostupnou přímo z Thales. Přečtěte si [KB0019789](https://supportportal.gemalto.com/csm?sys_kb_id=d66911e2db4ffbc0d298728dae9619b0&id=kb_article_view&sysparm_rank=1&sysparm_tsqueryId=d568c35bdb9a4850d6b31f3b4b96199e&sysparm_article=KB0019789) v tématu Thales Luna Network HSM 7,2 downloads pro doporučenou opravu pro problém, při kterém systém přestane reagovat během restartování (Poznámka: budete muset být registrováni na portálu podpory Thales ke stažení).
 
 ### <a name="ntls-certificates-out-of-sync"></a>Nesynchronizované certifikáty NTLS
 Klient může přijít o připojení ke HARDWAROVÉmu zabezpečení, pokud vyprší platnost certifikátu nebo byl přepsán prostřednictvím aktualizací konfigurace. Konfigurace klienta Certificate Exchange by se měla znovu použít s každým modulem HSM.

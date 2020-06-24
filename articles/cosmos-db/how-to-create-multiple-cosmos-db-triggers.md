@@ -3,21 +3,21 @@ title: Vytvoření více nezávislých triggerů Azure Functions pro Cosmos DB
 description: Naučte se konfigurovat více nezávislých Azure Functions triggerů, které Cosmos DB k vytváření architektur řízených událostmi.
 author: ealsur
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 32b680acdee29bf97a0e132fee93d5fee3377245
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 695513bb572f5931ee1f0fa54a330cfa0574fc21
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77604938"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261592"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>Vytvoření více triggerů Azure Functions pro Cosmos DB
 
 Tento článek popisuje, jak nakonfigurovat několik triggerů služby Azure Functions pro službu Cosmos DB tak, aby fungovaly paralelně a nezávisle reagovaly na změny.
 
-![Funkce založené na událostech bez serveru, které pracují s triggerem Azure Functions pro Cosmos DB a sdílení kontejneru zapůjčení](./media/change-feed-functions/multi-trigger.png)
+:::image type="content" source="./media/change-feed-functions/multi-trigger.png" alt-text="Funkce založené na událostech bez serveru, které pracují s triggerem Azure Functions pro Cosmos DB a sdílení kontejneru zapůjčení" border="false":::
 
 ## <a name="event-based-architecture-requirements"></a>Požadavky na architekturu založené na událostech
 
@@ -38,7 +38,7 @@ Cílem tohoto článku je provést druhou možnost.
 
 ## <a name="configuring-a-shared-leases-container"></a>Konfigurace kontejneru sdílených zapůjčení
 
-Chcete-li konfigurovat kontejner Shared Leases, je nutné, aby při triggerech byly `LeaseCollectionPrefix` přidány pouze dodatečné konfigurace, pokud používáte jazyk JavaScript nebo [attribute](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md) `leaseCollectionPrefix` atribut, pokud používáte jazyk JavaScript. [attribute](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#attributes-and-annotations) Hodnota atributu by měla být logickým popisovačem toho, co konkrétní Trigger spouští.
+Chcete-li konfigurovat kontejner Shared Leases, je nutné, aby při triggerech byly přidány pouze dodatečné konfigurace, `LeaseCollectionPrefix` Pokud používáte jazyk JavaScript nebo atribut [, pokud používáte](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#attributes-and-annotations) `leaseCollectionPrefix` [attribute](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md) jazyk JavaScript. Hodnota atributu by měla být logickým popisovačem toho, co konkrétní Trigger spouští.
 
 Například pokud máte tři triggery: jednu, která odesílá e-maily, jednu, která má agregaci pro vytvoření materializované zobrazení, a jeden, který odesílá změny do jiného úložiště, pro pozdější analýzu můžete přiřadit `LeaseCollectionPrefix` "e-maily" prvnímu "materializované" druhé "a" analytické "třetí straně.
 

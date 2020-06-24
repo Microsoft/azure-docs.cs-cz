@@ -3,15 +3,15 @@ title: Kurz Power BI pro konektor Azure Cosmos DB
 description: Tento Power BI kurz použijte k importu JSON, vytvoření sestav přehledné a vizualizaci dat pomocí konektoru Azure Cosmos DB a Power BI.
 author: SnehaGunda
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: 1dbdd428a54ebf38c7b880bb9530935c0f748226
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 89d7e46563182bf7808eb118f4526571c631fa23
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69616815"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262510"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Vizualizace dat služby Azure Cosmos DB s využitím konektoru Power BI
 
@@ -46,7 +46,7 @@ Než budete postupovat podle pokynů v tomto Power BI kurzu, ujistěte se, že m
 
       * **Propustnost kolekce:** 1000 
 
-Pokud chcete sestavy sdílet v PowerBI.com, musíte mít účet v PowerBI.com.  Další informace o Power BI a Power BI Pro najdete v tématu [https://powerbi.microsoft.com/pricing](https://powerbi.microsoft.com/pricing).
+Pokud chcete sestavy sdílet v PowerBI.com, musíte mít účet v PowerBI.com.  Další informace o Power BI a Power BI Pro najdete v tématu [https://powerbi.microsoft.com/pricing](https://powerbi.microsoft.com/pricing) .
 
 ## <a name="lets-get-started"></a>Pojďme začít
 V tomto kurzu si představte, že jste Geologist studiu Volcanoes po celém světě. Data Volcano jsou uložená v účtu Azure Cosmos DB a formát dokumentu JSON je následující:
@@ -120,7 +120,7 @@ Načtete data Volcano z účtu Azure Cosmos DB a vizualizujete data v interaktiv
     ![Kurz Power BI pro Azure Cosmos DB Power BI spojnici konektoru](./media/powerbi-visualize/power_bi_connector_pbiresultflattenlist.png)
 7. Chcete-li sloučit pole souřadnic, vytvořte **vlastní sloupec** s názvem latlong.  Vyberte pás karet **Přidat sloupec** a klikněte na **vlastní sloupec**.  Zobrazí se okno **vlastní sloupec** .
 8. Zadejte název nového sloupce, např. LatLong.
-9. Potom zadejte vlastní vzorec pro nový sloupec.  V našem příkladu budeme zřetězit hodnoty zeměpisné šířky a délky oddělené čárkou, jak je znázorněno v následujícím vzorci: `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})`. Klikněte na tlačítko **OK**.
+9. Potom zadejte vlastní vzorec pro nový sloupec.  V našem příkladu budeme zřetězit hodnoty zeměpisné šířky a délky oddělené čárkou, jak je znázorněno v následujícím vzorci: `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})` . Klikněte na **OK**.
    
     Další informace o výrazech data Analysis Expressions (DAX), včetně funkcí DAX, najdete [v Power BI Desktop základy jazyka DAX](https://docs.microsoft.com/power-bi/desktop-quickstart-learn-dax-basics).
    
@@ -132,7 +132,7 @@ Načtete data Volcano z účtu Azure Cosmos DB a vizualizujete data v interaktiv
     
     Pokud se zobrazí chyba v novém sloupci, ujistěte se, že použité kroky v části nastavení dotazu odpovídají následujícímu obrázku:
     
-    ![Použité kroky by měly být zdroj, navigace, rozbalený dokument, rozšířený dokument. umístění, přidané vlastní](./media/powerbi-visualize/power-bi-applied-steps.png)
+    :::image type="content" source="./media/powerbi-visualize/power-bi-applied-steps.png" alt-text="Použité kroky by měly být zdroj, navigace, rozbalený dokument, rozšířený dokument. umístění, přidané vlastní":::
     
     Pokud se vaše kroky liší, odstraňte nadbytečné kroky a zkuste vlastní sloupec přidat znovu. 
 
@@ -179,11 +179,11 @@ Teď, když máte sestavu, ji můžete sdílet na PowerBI.com
 
 Při publikování sestavy z Power BI Desktop do PowerBI.com vygeneruje **sestavu** a **datovou sadu** v tenantovi PowerBI.com. Například po publikování sestavy s názvem **PowerBITutorial** do PowerBI.com se zobrazí PowerBITutorial v oddílech **sestav** a **datových sad** v PowerBI.com.
 
-   ![Snímek obrazovky s novou sestavou a datovou sadou v PowerBI.com](./media/powerbi-visualize/powerbi-reports-datasets.png)
+   :::image type="content" source="./media/powerbi-visualize/powerbi-reports-datasets.png" alt-text="Snímek obrazovky s novou sestavou a datovou sadou v PowerBI.com":::
 
 Řídicí panel můžete vytvořit tak, že v sestavě PowerBI.com kliknete na tlačítko **připnout živou stránku** .
 
-   ![Snímek obrazovky s novou sestavou a datovou sadou v PowerBI.com](./media/powerbi-visualize/power-bi-pin-live-tile.png)
+   :::image type="content" source="./media/powerbi-visualize/power-bi-pin-live-tile.png" alt-text="Snímek obrazovky s novou sestavou a datovou sadou v PowerBI.com":::
 
 Pak postupujte podle pokynů v tématu [připnutí dlaždice ze sestavy](https://powerbi.microsoft.com/documentation/powerbi-service-pin-a-tile-to-a-dashboard-from-a-report/#pin-a-tile-from-a-report) a vytvořte nový řídicí panel. 
 
@@ -194,13 +194,13 @@ There are two ways to refresh data, ad hoc and scheduled.
 
 For an ad hoc refresh, simply click on the eclipses (…) by the **Dataset**, e.g. PowerBITutorial. You should see a list of actions including **Refresh Now**. Click **Refresh Now** to refresh the data.
 
-![Screenshot of Refresh Now in PowerBI.com](./media/powerbi-visualize/power-bi-refresh-now.png)
+:::image type="content" source="./media/powerbi-visualize/power-bi-refresh-now.png" alt-text="Screenshot of Refresh Now in PowerBI.com":::
 
 For a scheduled refresh, do the following.
 
 1. Click **Schedule Refresh** in the action list. 
 
-    ![Screenshot of the Schedule Refresh in PowerBI.com](./media/powerbi-visualize/power-bi-schedule-refresh.png)
+    :::image type="content" source="./media/powerbi-visualize/power-bi-schedule-refresh.png" alt-text="Screenshot of the Schedule Refresh in PowerBI.com":::
 2. In the **Settings** page, expand **Data source credentials**. 
 3. Click on **Edit credentials**. 
    

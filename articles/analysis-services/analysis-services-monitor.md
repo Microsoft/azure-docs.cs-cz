@@ -8,11 +8,11 @@ ms.date: 03/04/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: aaa3a6d128fe7dd466f6f60ab515f05fa38ba63b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79252802"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84690372"
 ---
 # <a name="monitor-server-metrics"></a>Monitorování metrik serveru
 
@@ -37,7 +37,7 @@ Chcete-li provádět podrobnější diagnostiku, sledovat výkon a identifikovat
 
 Pomocí této tabulky můžete určit, které metriky jsou pro váš scénář monitorování nejvhodnější. Ve stejném grafu se dají zobrazit jenom metriky stejné jednotky.
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|
 |---|---|---|---|---|
 |CommandPoolJobQueueLength|Délka fronty úloh fondu příkazů|Počet|Průměr|Počet úloh ve frontě fondu vláken příkazů|
 |CurrentConnections|Připojení: aktuální připojení|Počet|Průměr|Aktuální počet navázaných připojení klientů.|

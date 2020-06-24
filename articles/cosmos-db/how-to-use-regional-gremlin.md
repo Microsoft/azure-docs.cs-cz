@@ -5,14 +5,14 @@ author: luisbosquez
 ms.author: lbosq
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/09/2019
-ms.openlocfilehash: 7aa1e0aa6bbbee9d40eb0d48318a8e2908a75f9d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4880fa5bdccdc6416962e2f7e6da395f3db7be44
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78897865"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263591"
 ---
 # <a name="regional-endpoints-for-azure-cosmos-db-graph-account"></a>Regionální koncové body pro účet Azure Cosmos DB Graph
 Databáze Azure Cosmos DB Graph je [globálně distribuovaná](distribute-data-globally.md) , takže aplikace můžou používat víc koncových bodů pro čtení. Aplikace, které potřebují oprávnění k zápisu ve více umístěních, by měly umožňovat použití [více hlavních](how-to-multi-master.md) možností.
@@ -43,7 +43,7 @@ Záznam CNAME globálního databázového účtu vždy odkazuje na platnou oblas
 
 Nejjednodušší způsob, jak získat seznam oblastí pro účet Azure Cosmos DB Graph, je okno Přehled v Azure Portal. Bude fungovat pro aplikace, které často nemění oblasti, nebo mají způsob, jak seznam aktualizovat prostřednictvím konfigurace aplikace.
 
-![Načtení oblastí účtu Cosmos DB Graph z portálu](./media/how-to-use-regional-gremlin/get-end-point-portal.png )
+:::image type="content" source="./media/how-to-use-regional-gremlin/get-end-point-portal.png " alt-text="Načtení oblastí účtu Cosmos DB Graph z portálu":::
 
 Níže uvedený příklad ukazuje obecné principy přístupu k místnímu Gremlin koncovému bodu. Aplikace by měla zvážit počet oblastí pro odeslání provozu do a počet odpovídajících klientů Gremlin a jejich vytvoření.
 

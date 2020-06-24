@@ -4,15 +4,15 @@ description: Naučte se, jak instrumentovat a ladit výkon dotazů SQL pro žád
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
-ms.openlocfilehash: ae1773ec1d470b9cff2efb00c200427b7b4c2fb4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5183591133b6892f6f57db45cf1936851784a45a
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69614815"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262051"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Ladění výkonu dotazů pomocí služby Azure Cosmos DB
 
@@ -32,13 +32,13 @@ Stručný přehled dělení: definujete klíč oddílu, například City, který
 Když vydáte dotaz pro Azure Cosmos DB, sada SDK provede tyto logické kroky:
 
 * Rozanalyzujte dotaz SQL a určete plán spouštění dotazů. 
-* Pokud dotaz obsahuje filtr na klíč oddílu, například `SELECT * FROM c WHERE c.city = "Seattle"`, je směrován do jednoho oddílu. Pokud dotaz nemá filtr na klíč oddílu, je spuštěn ve všech oddílech a výsledky jsou sloučeny na straně klienta.
+* Pokud dotaz obsahuje filtr na klíč oddílu, například `SELECT * FROM c WHERE c.city = "Seattle"` , je směrován do jednoho oddílu. Pokud dotaz nemá filtr na klíč oddílu, je spuštěn ve všech oddílech a výsledky jsou sloučeny na straně klienta.
 * Dotaz se spustí v rámci každého oddílu v řadě nebo paralelně na základě konfigurace klienta. V rámci každého oddílu může dotaz udělat jednu nebo více zpátečních cest v závislosti na složitosti dotazu, nakonfigurované velikosti stránky a zřízené propustnosti kolekce. Každé spuštění vrátí počet [jednotek žádostí](request-units.md) spotřebovaných provedením dotazu a volitelně také statistiku provádění dotazů. 
-* Sada SDK provede Shrnutí výsledků dotazu napříč oddíly. Například pokud dotaz zahrnuje pořadí v různých oddílech, pak jsou výsledky z jednotlivých oddílů sloučeny, aby vracely výsledky globálně seřazeného pořadí. Pokud je dotaz agregací, například `COUNT`počty z jednotlivých oddílů jsou shrnuty, aby vznikl celkový počet.
+* Sada SDK provede Shrnutí výsledků dotazu napříč oddíly. Například pokud dotaz zahrnuje pořadí v různých oddílech, pak jsou výsledky z jednotlivých oddílů sloučeny, aby vracely výsledky globálně seřazeného pořadí. Pokud je dotaz agregací, například `COUNT` počty z jednotlivých oddílů jsou shrnuty, aby vznikl celkový počet.
 
 Sady SDK poskytují různé možnosti pro provádění dotazů. Například v rozhraní .NET jsou tyto možnosti k dispozici ve `FeedOptions` třídě. Následující tabulka popisuje tyto možnosti a jejich dopad na dobu provádění dotazu. 
 
-| Možnost | Popis |
+| Možnost | Description |
 | ------ | ----------- |
 | `EnableCrossPartitionQuery` | Musí být nastaven na hodnotu true pro všechny dotazy, které je třeba provést v rámci více než jednoho oddílu. Toto je explicitní příznak, který vám umožní zajistit, aby v době vývoje byly kompromisy v výkonu. |
 | `EnableScanInQuery` | Je nutné nastavit na hodnotu true, pokud jste se vyhlásili z indexování, ale chcete spustit dotaz i v rámci kontroly. Dá se použít jenom v případě, že indexování pro požadovanou cestu filtru je zakázané. | 
@@ -49,7 +49,7 @@ Sady SDK poskytují různé možnosti pro provádění dotazů. Například v ro
 | `RequestContinuation` | Můžete pokračovat v provádění dotazu předáním neprůhledného tokenu pokračování vráceného jakýmkoli dotazem. Token pokračování zapouzdřuje veškerý stav potřebný k provedení dotazu. |
 | `ResponseContinuationTokenLimitInKb` | Můžete omezit maximální velikost tokenu pokračování vráceného serverem. Může být nutné nastavit tuto možnost, pokud má hostitel aplikace omezení velikosti hlavičky odpovědi. Toto nastavení může zvýšit celkovou dobu trvání a ru spotřebované pro dotaz.  |
 
-Řekněme například, že se podíváme na klíč oddílu požadovaný v kolekci s `/city` klíčovým oddílem a zřízeným 100 000 ru/s propustností. Tento dotaz vyžádáte `CreateDocumentQuery<T>` pomocí rozhraní .NET, například takto:
+Řekněme například, že se podíváme na klíč oddílu požadovaný v kolekci s `/city` klíčovým oddílem a zřízeným 100 000 ru/s propustností. Tento dotaz vyžádáte pomocí `CreateDocumentQuery<T>` rozhraní .NET, například takto:
 
 ```cs
 IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
@@ -93,7 +93,7 @@ Expect: 100-continue
 {"query":"SELECT * FROM c WHERE c.city = 'Seattle'"}
 ```
 
-Každá stránka pro spuštění dotazu odpovídá REST API `POST` s `Accept: application/query+json` hlavičkou a dotazem SQL v těle. Každý dotaz vytvoří jednu nebo více zpátečních cest k serveru s `x-ms-continuation` tokenem, který vrací mezi klientem a serverem, aby obnovil provádění. Možnosti konfigurace v nástroji FeedOptions jsou předány na server v podobě hlaviček požadavku. Například `MaxItemCount` odpovídá `x-ms-max-item-count`. 
+Každá stránka pro spuštění dotazu odpovídá REST API `POST` s `Accept: application/query+json` hlavičkou a dotazem SQL v těle. Každý dotaz vytvoří jednu nebo více zpátečních cest k serveru s `x-ms-continuation` tokenem, který vrací mezi klientem a serverem, aby obnovil provádění. Možnosti konfigurace v nástroji FeedOptions jsou předány na server v podobě hlaviček požadavku. Například `MaxItemCount` odpovídá `x-ms-max-item-count` . 
 
 Požadavek vrátí následující (zkrácené pro odpověď čitelnosti):
 
@@ -124,11 +124,11 @@ Date: Tue, 27 Jun 2017 21:59:49 GMT
 
 Hlavičky odpovědí na klíč vrácené z dotazu zahrnují následující:
 
-| Možnost | Popis |
+| Možnost | Description |
 | ------ | ----------- |
-| `x-ms-item-count` | Počet položek vrácených v odpovědi. Tato možnost závisí na zadaném `x-ms-max-item-count`počtu položek, které se mohou vejít do maximální velikosti datové části odpovědi, zřízené propustnosti a času provádění dotazu. |  
+| `x-ms-item-count` | Počet položek vrácených v odpovědi. Tato možnost závisí na zadaném `x-ms-max-item-count` počtu položek, které se mohou vejít do maximální velikosti datové části odpovědi, zřízené propustnosti a času provádění dotazu. |  
 | `x-ms-continuation:` | Token pokračování pro pokračování v provádění dotazu, pokud jsou k dispozici další výsledky. | 
-| `x-ms-documentdb-query-metrics` | Statistika dotazu pro provedení. Toto je oddělený řetězec, který obsahuje statistiku času stráveného v různých fázích provádění dotazů. Vráceno `x-ms-documentdb-populatequerymetrics` , pokud je `True`nastaveno na. | 
+| `x-ms-documentdb-query-metrics` | Statistika dotazu pro provedení. Toto je oddělený řetězec, který obsahuje statistiku času stráveného v různých fázích provádění dotazů. Vráceno `x-ms-documentdb-populatequerymetrics` , pokud je nastaveno na `True` . | 
 | `x-ms-request-charge` | Počet [jednotek žádostí](request-units.md) spotřebovaných dotazem. | 
 
 Podrobnosti o hlavičkách a možnostech žádosti o REST API najdete v tématu [dotazování na prostředky pomocí REST API](https://docs.microsoft.com/rest/api/cosmos-db/querying-cosmosdb-resources-using-the-rest-api).
@@ -182,7 +182,7 @@ IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
 ```
 
 #### <a name="max-degree-of-parallelism"></a>Maximální stupeň paralelismu
-V `MaxDegreeOfParallelism` případě dotazů můžete vyladit a identifikovat nejlepší konfigurace pro vaši aplikaci, zejména pokud provádíte dotazy mezi oddíly (bez filtru na hodnotu klíče oddílu). `MaxDegreeOfParallelism`Určuje maximální počet paralelních úloh, tj. maximální počet oddílů, které mají být navštíveny paralelně. 
+V případě dotazů můžete vyladit `MaxDegreeOfParallelism` a identifikovat nejlepší konfigurace pro vaši aplikaci, zejména pokud provádíte dotazy mezi oddíly (bez filtru na hodnotu klíče oddílu). `MaxDegreeOfParallelism`Určuje maximální počet paralelních úloh, tj. maximální počet oddílů, které mají být navštíveny paralelně. 
 
 ```cs
 IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
@@ -211,7 +211,7 @@ Poznámky k verzi sady SDK a podrobnosti o implementovaných třídách a metod�
 ### <a name="network-latency"></a>Latence sítě
 Jak nastavit globální distribuci a připojit se k nejbližší oblasti, najdete v tématu [Azure Cosmos DB globální distribuce](tutorial-global-distribution-sql-api.md) . Latence sítě má významný dopad na výkon dotazů, pokud potřebujete udělat více přenosových cest nebo načíst velkou sadu výsledků dotazu. 
 
-Oddíl metriky spouštění dotazů vysvětluje, jak načíst dobu provádění dotazů ( `totalExecutionTimeInMs`), takže můžete rozlišovat čas strávený při provádění dotazů a čas strávený při přenosu v síti.
+Oddíl metriky spouštění dotazů vysvětluje, jak načíst dobu provádění dotazů ( `totalExecutionTimeInMs` ), takže můžete rozlišovat čas strávený při provádění dotazů a čas strávený při přenosu v síti.
 
 ### <a name="indexing-policy"></a>Zásady indexování
 Viz téma [Konfigurace zásad indexování](index-policy.md) pro cesty, druhy a režimy indexování a to, jak ovlivňují provádění dotazů. Ve výchozím nastavení zásada indexování používá indexování algoritmu hash pro řetězce, které jsou platné pro dotazy na rovnost, ale ne pro dotaz na rozsah nebo řazení podle dotazů. Pokud pro řetězce potřebujete dotazy na rozsah, doporučujeme zadat typ indexu rozsahu pro všechny řetězce. 
@@ -219,7 +219,7 @@ Viz téma [Konfigurace zásad indexování](index-policy.md) pro cesty, druhy a 
 Ve výchozím nastavení Azure Cosmos DB použije automatické indexování na všechna data. V případě scénářů vkládání s vysokým výkonem zvažte možnost vyloučení cest, protože se tím sníží náklady na RU za každou operaci vložení. 
 
 ## <a name="query-execution-metrics"></a>Metriky spuštění dotazu
-Podrobné metriky pro provádění dotazů můžete získat předáním volitelné `x-ms-documentdb-populatequerymetrics` hlavičky (`FeedOptions.PopulateQueryMetrics` v sadě .NET SDK). Hodnota vrácená v `x-ms-documentdb-query-metrics` má následující páry klíč-hodnota, které jsou určeny pro pokročilé řešení potíží s prováděním dotazů. 
+Podrobné metriky pro provádění dotazů můžete získat předáním volitelné `x-ms-documentdb-populatequerymetrics` hlavičky ( `FeedOptions.PopulateQueryMetrics` v sadě .NET SDK). Hodnota vrácená v `x-ms-documentdb-query-metrics` má následující páry klíč-hodnota, které jsou určeny pro pokročilé řešení potíží s prováděním dotazů. 
 
 ```cs
 IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
@@ -237,7 +237,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 ```
 
-| Metrika | Jednotka | Popis | 
+| Metrika | Jednotka | Description | 
 | ------ | -----| ----------- |
 | `totalExecutionTimeInMs` | milisekundy | Čas provedení dotazu | 
 | `queryCompileTimeInMs` | milisekundy | Čas kompilace dotazu  | 
@@ -255,20 +255,20 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 | `writeOutputTimeInMs` | milisekundy | Doba provádění dotazu v milisekundách | 
 | `indexUtilizationRatio` | poměr (<= 1) | Poměr počtu dokumentů odpovídajících filtru na počet načtených dokumentů  | 
 
-Klientské sady SDK mohou interně provádět dotazy v rámci jednotlivých oddílů. Klient provede více než jedno volání na oddíl, pokud celkový výsledek překročí `x-ms-max-item-count`, pokud dotaz překračuje zřízenou propustnost pro oddíl, nebo pokud datová část dotazu dosáhne maximální velikosti na stránce nebo pokud dotaz dosáhne časového limitu přiděleného systému. Každé částečné spuštění dotazu vrátí `x-ms-documentdb-query-metrics` pro tuto stránku. 
+Klientské sady SDK mohou interně provádět dotazy v rámci jednotlivých oddílů. Klient provede více než jedno volání na oddíl, pokud celkový výsledek překročí `x-ms-max-item-count` , pokud dotaz překračuje zřízenou propustnost pro oddíl, nebo pokud datová část dotazu dosáhne maximální velikosti na stránce nebo pokud dotaz dosáhne časového limitu přiděleného systému. Každé částečné spuštění dotazu vrátí `x-ms-documentdb-query-metrics` pro tuto stránku. 
 
 Tady je několik ukázkových dotazů a postup interpretace některých metrik vrácených spuštěním dotazu: 
 
-| Dotaz | Ukázková metrika | Popis | 
+| Dotaz | Ukázková metrika | Description | 
 | ------ | -----| ----------- |
 | `SELECT TOP 100 * FROM c` | `"RetrievedDocumentCount": 101` | Počet načtených dokumentů je 100 + 1, aby se shodovala s horní klauzulí. Čas dotazu se většinou stráví v `WriteOutputTime` a `DocumentLoadTime` vzhledem k tomu, že se jedná o kontrolu. | 
 | `SELECT TOP 500 * FROM c` | `"RetrievedDocumentCount": 501` | RetrievedDocumentCount je teď vyšší (500 + 1 tak, aby odpovídalo horní klauzuli). | 
-| `SELECT * FROM c WHERE c.N = 55` | `"IndexLookupTime": "00:00:00.0009500"` | Přibližně 0,9 MS vychází z IndexLookupTime pro vyhledávání klíčů, protože se jedná o vyhledávání v `/N/?`indexu. | 
-| `SELECT * FROM c WHERE c.N > 55` | `"IndexLookupTime": "00:00:00.0017700"` | Ještě více času (1,7 MS) strávených IndexLookupTime nad kontrolou rozsahu, protože se jedná o vyhledávání v `/N/?`indexu. | 
-| `SELECT TOP 500 c.N FROM c` | `"IndexLookupTime": "00:00:00.0017700"` | Stejný čas strávený `DocumentLoadTime` na předchozích dotazech, ale `WriteOutputTime` nižší, protože probíhá projekce pouze jedné vlastnosti. | 
-| `SELECT TOP 500 udf.toPercent(c.N) FROM c` | `"UserDefinedFunctionExecutionTime": "00:00:00.2136500"` | Přibližně 213 MS se stráví `UserDefinedFunctionExecutionTime` spouštěním systému souborů UDF na každé hodnotě `c.N`. |
-| `SELECT TOP 500 c.Name FROM c WHERE STARTSWITH(c.Name, 'Den')` | `"IndexLookupTime": "00:00:00.0006400", "SystemFunctionExecutionTime": "00:00:00.0074100"` | Přibližně v `IndexLookupTime` systému `/Name/?`je vyčerpáno 0,6 MS. Většina času provedení dotazu (~ 7 MS) v `SystemFunctionExecutionTime`. |
-| `SELECT TOP 500 c.Name FROM c WHERE STARTSWITH(LOWER(c.Name), 'den')` | `"IndexLookupTime": "00:00:00", "RetrievedDocumentCount": 2491,  "OutputDocumentCount": 500` | Dotaz je proveden jako kontrola, protože používá `LOWER`a je vráceno 500 z 2491 načtených dokumentů. |
+| `SELECT * FROM c WHERE c.N = 55` | `"IndexLookupTime": "00:00:00.0009500"` | Přibližně 0,9 MS vychází z IndexLookupTime pro vyhledávání klíčů, protože se jedná o vyhledávání v indexu `/N/?` . | 
+| `SELECT * FROM c WHERE c.N > 55` | `"IndexLookupTime": "00:00:00.0017700"` | Ještě více času (1,7 MS) strávených IndexLookupTime nad kontrolou rozsahu, protože se jedná o vyhledávání v indexu `/N/?` . | 
+| `SELECT TOP 500 c.N FROM c` | `"IndexLookupTime": "00:00:00.0017700"` | Stejný čas strávený na `DocumentLoadTime` předchozích dotazech, ale nižší, `WriteOutputTime` protože probíhá projekce pouze jedné vlastnosti. | 
+| `SELECT TOP 500 udf.toPercent(c.N) FROM c` | `"UserDefinedFunctionExecutionTime": "00:00:00.2136500"` | Přibližně 213 MS se stráví `UserDefinedFunctionExecutionTime` spouštěním systému souborů UDF na každé hodnotě `c.N` . |
+| `SELECT TOP 500 c.Name FROM c WHERE STARTSWITH(c.Name, 'Den')` | `"IndexLookupTime": "00:00:00.0006400", "SystemFunctionExecutionTime": "00:00:00.0074100"` | Přibližně v systému je vyčerpáno 0,6 MS `IndexLookupTime` `/Name/?` . Většina času provedení dotazu (~ 7 MS) v `SystemFunctionExecutionTime` . |
+| `SELECT TOP 500 c.Name FROM c WHERE STARTSWITH(LOWER(c.Name), 'den')` | `"IndexLookupTime": "00:00:00", "RetrievedDocumentCount": 2491,  "OutputDocumentCount": 500` | Dotaz je proveden jako kontrola, protože používá `LOWER` a je vráceno 500 z 2491 načtených dokumentů. |
 
 
 ## <a name="next-steps"></a>Další kroky

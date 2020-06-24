@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/28/2020
 ms.author: sngun
-ms.openlocfilehash: 45c1f9b5425b7e826776dc0f52681c67846bfdc5
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 2c9af8c0839b56d5512bb17776182b3515a7d544
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84218175"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85115291"
 ---
 # <a name="quickstart-build-a-table-api-app-with-net-sdk-and-azure-cosmos-db"></a>Rychlý Start: Vytvoření aplikace rozhraní API pro tabulky pomocí sady .NET SDK a Azure Cosmos DB 
 
@@ -73,7 +73,7 @@ Teď naklonujeme aplikaci Table z GitHubu, nastavíme připojovací řetězec a
 
 1. V sadě Visual Studio z nabídky **Soubor** zvolte **Otevřít** a pak **Projekt nebo řešení**. 
 
-   ![Otevření řešení](media/create-table-dotnet/azure-cosmosdb-open-solution.png) 
+   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-open-solution.png" alt-text="Otevření řešení"::: 
 
 2. Přejděte do složky, do které jste naklonováni ukázkovou aplikaci, a otevřete soubor TableStorage. sln.
 
@@ -103,9 +103,9 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
 
 1. Na webu [Azure Portal](https://portal.azure.com/) klikněte na **Připojovací řetězec**. Pomocí tlačítka pro kopírování na pravé straně okna zkopírujte **PRIMÁRNÍ PŘIPOJOVACÍ ŘETĚZEC**.
 
-   ![Zobrazení a zkopírování PRIMÁRNÍHO PŘIPOJOVACÍHO ŘETĚZCE v podokně Připojovací řetězec](./media/create-table-dotnet/connection-string.png)
+   :::image type="content" source="./media/create-table-dotnet/connection-string.png" alt-text="Zobrazení a zkopírování PRIMÁRNÍHO PŘIPOJOVACÍHO ŘETĚZCE v podokně Připojovací řetězec":::
 
-2. V aplikaci Visual Studio otevřete soubor **Settings. JSON** . 
+2. V aplikaci Visual Studio otevřete **Settings.jsv** souboru. 
 
 3. Vložte **primární připojovací řetězec** z portálu do hodnoty StorageConnectionString. Řetězec vložte do uvozovek.
 
@@ -115,7 +115,7 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
    }
    ```
 
-4. Stisknutím kombinace kláves CTRL + S uložte soubor **Settings. JSON** .
+4. Stisknutím kombinace kláves CTRL + S uložte **Settings.jsdo** souboru.
 
 Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné ke komunikaci s Azure Cosmos DB. 
 
@@ -123,27 +123,27 @@ Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné k
 
 1. V aplikaci Visual Studio klikněte pravým tlačítkem na projekt **CosmosTableSamples** v **Průzkumník řešení** a pak klikněte na **Spravovat balíčky NuGet**. 
 
-   ![Správa balíčků NuGet](media/create-table-dotnet/azure-cosmosdb-manage-nuget.png)
+   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-manage-nuget.png" alt-text="Správa balíčků NuGet":::
 
 2. Do pole **Procházet** NuGet zadejte Microsoft. Azure. Cosmos. Table. Vyhledá se klientská knihovna rozhraní Cosmos DB Table API. Všimněte si, že tato knihovna je aktuálně dostupná pro .NET Framework a .NET Standard. 
    
-   ![Karta Procházet NuGet](media/create-table-dotnet/azure-cosmosdb-nuget-browse.png)
+   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-nuget-browse.png" alt-text="Karta Procházet NuGet":::
 
 3. Kliknutím na **nainstalovat** nainstalujte knihovnu **Microsoft. Azure. Cosmos. Table** . Tím se nainstaluje balíček rozhraní Azure Cosmos DB Table API a všechny závislosti.
 
 4. Když spustíte celou aplikaci, ukázková data se vloží do entity tabulky a odstraní se na konci, takže se žádná data nevloží, pokud spustíte celou ukázku. Můžete však vložit některé zarážky k zobrazení dat. Otevřete soubor BasicSamples.cs a klikněte pravým tlačítkem na řádek 52, vyberte **zarážku**a pak vyberte **Vložit zarážku**. Vložte další zarážku na řádku 55.
 
-   ![Přidání zarážky](media/create-table-dotnet/azure-cosmosdb-breakpoint.png) 
+   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-breakpoint.png" alt-text="Přidání zarážky"::: 
 
 5. Stisknutím klávesy F5 spusťte aplikaci. V okně konzoly se zobrazí název nové databáze tabulek (v tomto případě demoa13b1) v Azure Cosmos DB. 
     
-   ![Výstup konzoly](media/create-table-dotnet/azure-cosmosdb-console.png)
+   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-console.png" alt-text="Výstup konzoly":::
 
    Až se dostanete k první zarážce, přejděte zpět do Průzkumníku dat na webu Azure Portal. Klikněte na tlačítko **Aktualizovat**, rozbalte tabulku demo* a klikněte na **Entity**. Na kartě **Entity** na pravé straně se zobrazí nově přidaná entita pro Waltera Harpa. Všimněte si, že telefonní číslo nové entity je 425-555-0101.
 
-   ![Nová entita](media/create-table-dotnet/azure-cosmosdb-entity.png)
+   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-entity.png" alt-text="Nová entita":::
     
-   Pokud se zobrazí chyba, která říká, že soubor. JSON nelze najít při spuštění projektu, můžete ho vyřešit přidáním následující položky XML do nastavení projektu. Klikněte pravým tlačítkem na CosmosTableSamples, vyberte Upravit CosmosTableSamples. csproj a přidejte následující položku: 
+   Pokud se zobrazí chybová zpráva oznamující, že při spuštění projektu nelze najít Settings.jspro soubor, můžete ho vyřešit přidáním následující položky XML do nastavení projektu. Klikněte pravým tlačítkem na CosmosTableSamples, vyberte Upravit CosmosTableSamples. csproj a přidejte následující položku: 
 
    ```csharp
      <ItemGroup>

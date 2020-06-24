@@ -4,16 +4,16 @@ description: Automatické škálování hostitelů relací virtuálních počít
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f659a40cbb9e3ef2d0e7fe4e527518a76507d5ee
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: f3a82665f197301fe81c448dd18181f0602bdbef
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745708"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85209789"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>Škálování hostitelů relací pomocí Azure Automation
 
@@ -33,14 +33,14 @@ Sestavy problémů pro nástroj pro škálování se momentálně zpracovávají
 Nástroj pro škálování nabízí možnost automatizace s nízkými náklady pro zákazníky, kteří chtějí optimalizovat náklady na virtuální počítače hostitele relace.
 
 Nástroj pro škálování můžete použít k těmto akcím:
- 
+
 - Naplánujte, aby se virtuální počítače spouštěly a zastavily na základě špičky a špičky v pracovní době.
 - Horizontální navýšení kapacity virtuálních počítačů na základě počtu relací na jádro procesoru.
 - Škálování virtuálních počítačů v době mimo špičku ponechte minimální počet spuštěných virtuálních počítačů hostitele relace.
 
 Nástroj pro škálování používá kombinaci Azure Automation PowerShellových runbooků, webhooků a Azure Logic Apps k fungování. Když se nástroj spustí, Azure Logic Apps volá Webhook, aby se spouštěl Azure Automation Runbook. Sada Runbook potom vytvoří úlohu.
 
-Během špičky využívání úlohy zkontroluje aktuální počet relací a kapacitu virtuálního počítače aktuálně spuštěného hostitele relace pro každý fond hostitelů. Tyto informace používá k výpočtu, jestli virtuální počítače hostitele spuštěné relace můžou podporovat existující relace na základě parametru *SessionThresholdPerCPU* definovaného pro soubor **createazurelogicapp. ps1** . Pokud virtuální počítače hostitele relace nepodporují existující relace, spustí úloha další virtuální počítače hostitele relace ve fondu hostitelů.
+Během špičky využívání úlohy zkontroluje aktuální počet relací a kapacitu virtuálního počítače aktuálně spuštěného hostitele relace pro každý fond hostitelů. Tyto informace používá k výpočtu, jestli virtuální počítače hostitele spuštěné relace můžou podporovat existující relace na základě parametru *SessionThresholdPerCPU* definovaného pro soubor **createazurelogicapp.ps1** . Pokud virtuální počítače hostitele relace nepodporují existující relace, spustí úloha další virtuální počítače hostitele relace ve fondu hostitelů.
 
 >[!NOTE]
 >*SessionThresholdPerCPU* neomezuje počet relací na virtuálním počítači. Tento parametr určuje, zda je nutné spustit nové virtuální počítače pro vyrovnávání zatížení připojení. Pokud chcete omezit počet relací, musíte podle pokynů [set-RdsHostPool](/powershell/module/windowsvirtualdesktop/set-rdshostpool/) nakonfigurovat parametr *MaxSessionLimit* odpovídajícím způsobem.
@@ -67,7 +67,7 @@ Než začnete s nastavením nástroje pro škálování, ujistěte se, že máte
 - Virtuální počítače fondu hostitele relace nakonfigurované a zaregistrované ve službě Virtual Desktop systému Windows
 - Uživatel s [přístupem Přispěvatel](../../role-based-access-control/role-assignments-portal.md) v předplatném Azure
 
-Počítač, který použijete k nasazení nástroje, musí mít: 
+Počítač, který použijete k nasazení nástroje, musí mít:
 
 - Windows PowerShell 5,1 nebo novější
 - Microsoft AZ PowerShell Module
@@ -162,7 +162,7 @@ Nakonec budete muset vytvořit aplikaci logiky Azure a nastavit plán spouštěn
      Login-AzAccount
      ```
 
-3. Spuštěním následující rutiny Stáhněte soubor skriptu createazurelogicapp. ps1 na svém místním počítači.
+3. Spuštěním následující rutiny Stáhněte soubor skriptu createazurelogicapp.ps1 do místního počítače.
 
      ```powershell
      Set-Location -Path "c:\temp"
@@ -180,21 +180,21 @@ Nakonec budete muset vytvořit aplikaci logiky Azure a nastavit plán spouštěn
 
      ```powershell
      $aadTenantId = (Get-AzContext).Tenant.Id
-     
+
      $azureSubscription = Get-AzSubscription | Out-GridView -PassThru -Title "Select your Azure Subscription"
      Select-AzSubscription -Subscription $azureSubscription.Id
      $subscriptionId = $azureSubscription.Id
-     
+
      $resourceGroup = Get-AzResourceGroup | Out-GridView -PassThru -Title "Select the resource group for the new Azure Logic App"
      $resourceGroupName = $resourceGroup.ResourceGroupName
      $location = $resourceGroup.Location
-     
+
      $wvdTenant = Get-RdsTenant | Out-GridView -PassThru -Title "Select your WVD tenant"
      $tenantName = $wvdTenant.TenantName
-     
+
      $wvdHostpool = Get-RdsHostPool -TenantName $wvdTenant.TenantName | Out-GridView -PassThru -Title "Select the host pool you'd like to scale"
      $hostPoolName = $wvdHostpool.HostPoolName
-     
+
      $recurrenceInterval = Read-Host -Prompt "Enter how often you'd like the job to run in minutes, e.g. '15'"
      $beginPeakTime = Read-Host -Prompt "Enter the start time for peak hours in local time, e.g. 9:00"
      $endPeakTime = Read-Host -Prompt "Enter the end time for peak hours in local time, e.g. 18:00"
@@ -204,12 +204,12 @@ Nakonec budete muset vytvořit aplikaci logiky Azure a nastavit plán spouštěn
      $limitSecondsToForceLogOffUser = Read-Host -Prompt "Enter the number of seconds to wait before automatically signing out users. If set to 0, users will be signed out immediately"
      $logOffMessageTitle = Read-Host -Prompt "Enter the title of the message sent to the user before they are forced to sign out"
      $logOffMessageBody = Read-Host -Prompt "Enter the body of the message sent to the user before they are forced to sign out"
-     
+
      $automationAccount = Get-AzAutomationAccount -ResourceGroupName $resourceGroup.ResourceGroupName | Out-GridView -PassThru
      $automationAccountName = $automationAccount.AutomationAccountName
      $automationAccountConnection = Get-AzAutomationConnection -ResourceGroupName $resourceGroup.ResourceGroupName -AutomationAccountName $automationAccount.AutomationAccountName | Out-GridView -PassThru -Title "Select the Azure RunAs connection asset"
      $connectionAssetName = $automationAccountConnection.Name
-     
+
      $webHookURI = Read-Host -Prompt "Enter the URI of the WebHook returned by when you created the Azure Automation Account"
      $maintenanceTagName = Read-Host -Prompt "Enter the name of the Tag associated with VMs you don't want to be managed by this scaling tool"
 

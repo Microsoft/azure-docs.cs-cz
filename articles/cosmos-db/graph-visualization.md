@@ -5,14 +5,14 @@ author: luisbosquez
 ms.author: lbosq
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/02/2019
-ms.openlocfilehash: 1cabe57a0e7f2869a30973c8bbc8b4b38f664d81
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9999dad15cd02577eda85c15b67b98780a27b4a8
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75500020"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261779"
 ---
 # <a name="visualize-graph-data-stored-in-azure-cosmos-db-gremlin-api-with-data-visualization-solutions"></a>Vizualizace dat grafu uložených v Azure Cosmos DB rozhraní API Gremlin pomocí řešení pro vizualizaci dat
 
@@ -20,17 +20,17 @@ Data uložená v Azure Cosmos DB rozhraní API Gremlin můžete vizualizovat pom
 
 ## <a name="linkurious-enterprise"></a>Linkurious Enterprise
 
-![Logo Linkurious](./media/graph-visualization/linkurious-logo.jpg)
+:::image type="content" source="./media/graph-visualization/linkurious-logo.jpg" alt-text="Logo Linkurious" border="false":::
 
 [Linkurious Enterprise](https://linkurio.us/product/) používá technologii grafů a vizualizaci dat k zapnutí komplexních datových sad v interaktivních vizuálních sítích. Platforma se připojuje k vašim zdrojům dat a umožňuje prověřování plynule přecházet mezi miliardami entit a vztahů. Výsledkem je nová možnost detekce podezřelých vztahů bez Juggling dotazů nebo tabulek.
 
 Interaktivní rozhraní Linkurious Enterprise nabízí snadný způsob, jak prozkoumat složitá data. Můžete vyhledat konkrétní entity, rozšířit připojení a získat skryté vztahy a použít rozložení podle vašeho výběru na rozplétání složité sítě. Linkurious Enterprise je teď kompatibilní s rozhraním API pro Azure Cosmos DB Gremlin. Je vhodný pro ucelené scénáře vizualizace grafů a podporuje funkce pro čtení a zápis z uživatelského rozhraní. Pomocí Azure Cosmos DB můžete požádat o [ukázku Linkurious](https://linkurio.us/contact/)
 
-![Ukázka Linkurious](./media/graph-visualization/linkurious-demo.gif)
+:::image type="content" source="./media/graph-visualization/linkurious-demo.gif" alt-text="Ukázka Linkurious" border="false":::
 
 ## <a name="cambridge-intelligence"></a>Cambridge Intelligence
 
-![Logo Cambridge Intelligence](./media/graph-visualization/ci-logo.png)
+:::image type="content" source="./media/graph-visualization/ci-logo.png" alt-text="Logo Cambridge Intelligence" border="false":::
 
 Sady nástrojů pro vizualizaci grafu [Cambridge Intelligence](https://cambridge-intelligence.com/products/) teď podporují Azure Cosmos DB. Azure Cosmos DB podporují následující dvě sady nástrojů pro vizualizaci:
 
@@ -38,11 +38,11 @@ Sady nástrojů pro vizualizaci grafu [Cambridge Intelligence](https://cambridge
 
 - [Změna grafu pro reakce vývojářů](https://cambridge-intelligence.com/regraph/)
 
-![Ukázka Cambridge Intelligence](./media/graph-visualization/ci-demo-2.gif)
+:::image type="content" source="./media/graph-visualization/ci-demo-2.gif" alt-text="Ukázka Cambridge Intelligence" border="false":::
 
 Tyto sady nástrojů vám umožňují navrhovat vysoce výkonné vizualizace grafů a analytické aplikace pro váš případ použití. Využívají výkonné vykreslování WebGL (Web Graphics Library) a pečlivě vytvořený kód, který uživatelům poskytuje rychlé a přehledné vizualizace. Tyto nástroje jsou kompatibilní s libovolným prohlížečem, zařízením, serverem nebo databází a jsou popsány podrobnými kurzy, plně dokumentovanými rozhraními API a interaktivními ukázkami.
 
-![Ukázka Cambridge Intelligence](./media/graph-visualization/ci-demo-1.gif)
+:::image type="content" source="./media/graph-visualization/ci-demo-1.gif" alt-text="Ukázka Cambridge Intelligence" border="false":::
 
 
 ## <a name="next-steps"></a>Další kroky

@@ -11,12 +11,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 03/06/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9763cc0d93e6731bb42bcc55f9d8bf9463e2b0dd
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: eaa78637a2a88c1fceddf5b7ac9cd928ed8a444a
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434677"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261473"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Správa přístupu k pracovnímu prostoru Azure Machine Learning
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,7 +29,7 @@ Azure Machine Learning pracovní prostor je prostředek Azure. Podobně jako u j
 
 | Role | Úroveň přístupu |
 | --- | --- |
-| **Čtenář** | Akce jen pro čtení v pracovním prostoru. Čtenáři můžou vypisovat a zobrazovat prostředky v pracovním prostoru, ale nemůžou tyto prostředky vytvářet ani aktualizovat. |
+| **Čtenář** | Akce jen pro čtení v pracovním prostoru. Čtenáři můžou v pracovním prostoru vypisovat a zobrazovat prostředky (včetně přihlašovacích údajů [úložiště dat](how-to-access-data.md) ), ale nemůžou tyto prostředky vytvářet ani aktualizovat. |
 | **Přispěvatel** | Zobrazení, vytvoření, úprava nebo odstranění prostředků (kde je k dispozici) v pracovním prostoru. Přispěvatelé můžou například vytvořit experiment, vytvořit nebo připojit výpočetní cluster, odeslat běh a nasadit webovou službu. |
 | **Vlastník** | Úplný přístup k pracovnímu prostoru, včetně možnosti zobrazit, vytvořit, upravit nebo odstranit (kde se vztahují) prostředky v pracovním prostoru. Kromě toho můžete změnit přiřazení rolí. |
 
@@ -58,6 +58,9 @@ Toto `user` pole je e-mailová adresa stávajícího uživatele v instanci Azure
 ```azurecli-interactive 
 az ml workspace share -w my_workspace -g my_resource_group --role Contributor --user jdoe@contoson.com
 ```
+
+> [!NOTE]
+> příkaz AZ ml sdílení pracovního prostoru nefunguje pro federovaný účet Azure Active Directory B2B. Místo příkazu použijte prosím portál uživatelského rozhraní Azure.
 
 ## <a name="create-custom-role"></a>Vytvoření vlastní role
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: maquaran
-ms.openlocfilehash: 8428e417f5f86edca77edae6ca4b7ef84e5ff425
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b121d7f5f1ad626f80a03ebe6cd47a932c209672
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73827303"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85116429"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Spolupráce s Azure Cosmos DB
 
@@ -25,7 +25,7 @@ Jak tedy ukládáte tato data a kde?
 
 Je možné, že máte zkušenosti s databázemi SQL nebo máte pojem [relační modelování dat](https://en.wikipedia.org/wiki/Relational_model). Můžete začít kreslit něco, jak je znázorněno níže:
 
-![Diagram znázorňující relativní relační model](./media/social-media-apps/social-media-apps-sql.png)
+:::image type="content" source="./media/social-media-apps/social-media-apps-sql.png" alt-text="Diagram znázorňující relativní relační model" border="false":::
 
 Dokonale normalizovaná a velmi poměrně datová struktura... To se neškáluje.
 
@@ -157,7 +157,7 @@ Pojďme získat informace o uživateli jako příklad:
 
 Když si tyto informace prohlížíte, můžete rychle zjistit, které z nich jsou důležité a které nejsou, takže se vytvoří "žebřík":
 
-![Diagram vzoru žebříku](./media/social-media-apps/social-media-apps-ladder.png)
+:::image type="content" source="./media/social-media-apps/social-media-apps-ladder.png" alt-text="Diagram vzoru žebříku" border="false":::
 
 Nejmenší krok se nazývá UserChunk, minimální část informací, která identifikuje uživatele a používá se pro duplikaci dat. Zmenšením velikosti duplicitních dat na jenom informace, které se zobrazí, snížíte tak možnost obrovských aktualizací.
 
@@ -188,7 +188,7 @@ A příspěvek by vypadal jako:
         }
     }
 
-Když dojde k úpravě, kde je ovlivněn atribut bloku dat, můžete snadno najít ovlivněné dokumenty. Stačí použít dotazy, které odkazují na indexované atributy, jako například `SELECT * FROM posts p WHERE p.createdBy.id == "edited_user_id"`, a poté aktualizovat bloky dat.
+Když dojde k úpravě, kde je ovlivněn atribut bloku dat, můžete snadno najít ovlivněné dokumenty. Stačí použít dotazy, které odkazují na indexované atributy, jako například `SELECT * FROM posts p WHERE p.createdBy.id == "edited_user_id"` , a poté aktualizovat bloky dat.
 
 ## <a name="the-search-box"></a>Vyhledávací pole
 
@@ -230,7 +230,7 @@ Cosmos DB spustí vaše dotazy (včetně [agregací](https://azure.microsoft.com
 
 V čase budete nakonec růst provozu a spotřebu prostředků (měřené v [ru](request-units.md)nebo jednotkách žádosti) se zvýší. Při zvětšování uživatelské základny budete číst a zapisovat častěji. Uživatelskou základnu začne vytvářet a číst další obsah. Schopnost **škálování propustnosti** je proto důležitá. Zvýšení ru je snadné. Můžete to udělat několika kliknutími na Azure Portal nebo vyvoláním [příkazů prostřednictvím rozhraní API](https://docs.microsoft.com/rest/api/cosmos-db/replace-an-offer).
 
-![Škálování a definování klíče oddílu](./media/social-media-apps/social-media-apps-scaling.png)
+:::image type="content" source="./media/social-media-apps/social-media-apps-scaling.png" alt-text="Škálování a definování klíče oddílu":::
 
 Co se stane, když všechno pořád ještě lepší? Předpokládejme, že uživatelé z jiné oblasti, země nebo kontinentu si vyvšimli vaši platformu a začnou ji používat. Co Skvělé neočekávaně!
 
@@ -240,13 +240,13 @@ Cosmos DB umožňuje globálně a transparentně [replikovat data](../cosmos-db/
 
 Při globální replikaci dat je potřeba zajistit, aby ji vaši klienti mohli využít. Pokud používáte webový front-end nebo přístup k rozhraním API z mobilních klientů, můžete nasadit [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) a klonovat Azure App Service ve všech požadovaných oblastech pomocí konfigurace výkonu pro podporu vašeho rozšířeného globálního pokrytí. Když klienti přistupují k front-endu nebo rozhraním API, budou přesměrováni na nejbližší App Service, která se zase připojí k místní replice Cosmos DB.
 
-![Přidání globálního pokrytí na sociální platformu](./media/social-media-apps/social-media-apps-global-replicate.png)
+:::image type="content" source="./media/social-media-apps/social-media-apps-global-replicate.png" alt-text="Přidání globálního pokrytí na sociální platformu" border="false":::
 
 ## <a name="conclusion"></a>Závěr
 
 Tento článek se podrobněji přenese do alternativních možností vytváření sociálních sítí, které jsou zcela v Azure, s nižšími náklady. poskytuje výsledky tím, že povzbudí použití řešení úložiště s více vrstvami a distribuce dat s názvem "žebřík".
 
-![Diagram interakce mezi službami Azure pro sociální sítě](./media/social-media-apps/social-media-apps-azure-solution.png)
+:::image type="content" source="./media/social-media-apps/social-media-apps-azure-solution.png" alt-text="Diagram interakce mezi službami Azure pro sociální sítě" border="false":::
 
 Pravdy je, že pro tento druh scénářů není k dispozici žádná stříbrné odrážka. Jedná se o synergii vytvořenou kombinací skvělých služeb, které nám umožňují sestavovat Skvělé prostředí: rychlost a volnost Azure Cosmos DB poskytování Skvělé sociální aplikace, inteligentních řešení pro vyhledávání, jako je Azure Kognitivní hledání, flexibility Azure App Services pro hostování nenezávislách aplikací pro jazyky, ale výkonné procesy na pozadí a rozšiřitelné Azure Storage a Azure SQL Database pro ukládání velkých objemů dat a analytické síly počítačů Azure Naučte se vytvářet poznatky a inteligentní informace, které vám poskytnou zpětnou vazbu vašim procesům a pomáhají zajistit správnému obsahu správným uživatelům.
 

@@ -4,16 +4,16 @@ description: Jak se připojit k virtuálnímu počítači s Windows pomocí klie
 services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/08/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ca54c60d424722d31d195d10eb15751a2ec6c0eb
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: f2b4696886c898eec5895c4ccb59347cf2a49f03
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612907"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85208990"
 ---
 # <a name="connect-with-the-macos-client"></a>Připojení s klientem macOS
 
@@ -22,14 +22,14 @@ ms.locfileid: "82612907"
 >[!IMPORTANT]
 >Tento obsah se vztahuje na jarní 2020 aktualizaci s Azure Resource Manager objekty virtuálních klientů Windows. Pokud používáte virtuální plochu Windows na verzi 2019 bez Azure Resource Manager objektů, přečtěte si [Tento článek](./virtual-desktop-fall-2019/connect-macos-2019.md).
 >
-> V současnosti je ve verzi Public Preview na jaře 2020 aktualizace virtuálních počítačů s Windows. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučujeme ji používat pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. 
+> V současnosti je ve verzi Public Preview na jaře 2020 aktualizace virtuálních počítačů s Windows. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučujeme ji používat pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 K prostředkům virtuálních klientů s Windows můžete přistupovat ze svých zařízení macOS pomocí našeho klienta ke stažení. V této příručce se dozvíte, jak nastavit klienta.
 
 ## <a name="install-the-client"></a>Instalace klienta
 
-Začněte tím, že [si stáhnete](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12) a nainstalujete klienta na zařízení MacOS.
+Začněte tím, že [si stáhnete](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12)   a nainstalujete klienta na zařízení MacOS.
 
 ## <a name="subscribe-to-a-feed"></a>Přihlášení k odběru informačního kanálu
 
@@ -39,9 +39,9 @@ Přihlášení k odběru informačního kanálu:
 
 1. Na hlavní stránce vyberte **Přidat pracovní prostor** pro připojení ke službě a načtení prostředků.
 2. Zadejte adresu URL informačního kanálu. Může se jednat o adresu URL nebo e-mailovou adresu:
-   - Pokud použijete adresu URL, použijte tu, kterou vám správce poskytl. Obvykle je <https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery>adresa URL.
+   - Pokud použijete adresu URL, použijte tu, kterou vám správce poskytl. Obvykle je adresa URL <https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery> .
    - Pokud chcete používat e-mail, zadejte svou e-mailovou adresu. To klientovi oznamuje, aby vyhledal adresu URL přidruženou k vaší e-mailové adrese, pokud váš správce nakonfiguroval server tímto způsobem.
-3. Vyberte **Přidat**.
+3. Vyberte možnost **Přidat**.
 4. Po zobrazení výzvy se přihlaste pomocí svého uživatelského účtu.
 
 Po přihlášení by se měl zobrazit seznam dostupných prostředků.

@@ -6,17 +6,17 @@ author: mlee3gsd
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 02/19/2019
 ms.author: martinle
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 701f2ac7b7cbba113ead5a6d3e465a4e0c37e024
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 1177551b698bb2e295a71f6cd4a132411d1c5bea
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84015686"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85210690"
 ---
 # <a name="optimize-performance-by-upgrading-azure-synapse-analytics-sql-pool"></a>Optimalizace výkonu pomocí upgradu fondu SQL Azure synapse Analytics
 
@@ -31,7 +31,7 @@ Nyní můžete bez problémů upgradovat na úroveň Gen2 optimalizované pro v�
 > [!IMPORTANT]
 > Tento upgrade platí pro výpočetní optimalizované fondy SQL Gen1 úrovně v [podporovaných oblastech](gen2-migration-schedule.md#automated-schedule-and-region-availability-table).
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 1. Ověřte, jestli je vaše [oblast](gen2-migration-schedule.md#automated-schedule-and-region-availability-table) podporovaná na migraci Gen1 na Gen2. Poznamenejte si data automatické migrace. Aby nedocházelo ke konfliktům automatizovaného procesu, naplánujte ruční migraci před počátečním datem automatizovaného procesu.
 2. Pokud jste v oblasti, která ještě není podporovaná, pokračujte v kontrole oblasti, která se má přidat nebo [upgradovat, pomocí obnovení](#upgrade-from-an-azure-geographical-region-using-restore-through-the-azure-portal) do podporované oblasti.
@@ -61,11 +61,11 @@ Nyní můžete bez problémů upgradovat na úroveň Gen2 optimalizované pro v�
 - Migrace z Gen1 do Gen2 prostřednictvím Azure Portal je trvalá. Neexistuje proces pro návrat do Gen1.
 - Aby bylo možné migrovat na Gen2, musí být spuštěný fond SQL.
 
-### <a name="before-you-begin"></a>Před zahájením
+### <a name="before-you-begin"></a>Než začnete
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-- Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+- Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 - Ujistěte se, že je fond SQL spuštěný – musí se migrovat na Gen2
 
 ### <a name="powershell-upgrade-commands"></a>Příkazy upgradu PowerShellu
@@ -182,7 +182,7 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
 
 ## <a name="create-a-user-defined-restore-point-using-the-azure-portal"></a>Vytvoření bodu obnovení definovaného uživatelem pomocí Azure Portal
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 2. Přejděte do fondu SQL, pro který chcete vytvořit bod obnovení pro.
 
@@ -196,7 +196,7 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
 
 ## <a name="restore-an-active-or-paused-database-using-the-azure-portal"></a>Obnovení aktivní nebo pozastavené databáze pomocí Azure Portal
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Přejděte do fondu SQL, ze kterého chcete obnovit.
 3. V horní části přehledu vyberte **obnovit**.
 

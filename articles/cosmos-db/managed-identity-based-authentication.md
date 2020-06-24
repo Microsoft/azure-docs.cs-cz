@@ -3,16 +3,16 @@ title: Použití spravované identity přiřazené systémem pro přístup k Azu
 description: Přečtěte si, jak nakonfigurovat spravovanou identitu přiřazenou systémem Azure Active Directory (Azure AD) pro přístup k klíčům z Azure Cosmos DB.
 author: j-patrick
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
-ms.openlocfilehash: 8136ad7a1fe29bc3394e959c10aafc52988c0a23
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b277ae91dbdd747aba012d6e7302ed6cba61d938
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641249"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262263"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>Použití spravovaných identit přiřazených systémem pro přístup k Azure Cosmos DB datům
 
@@ -28,19 +28,19 @@ V tomto kroku přiřadíte aplikaci Function App spravovanou identitu přiřazen
 
 1. V [Azure Portal](https://portal.azure.com/)otevřete podokno **funkce Azure** a přejdete do aplikace Function App. 
 
-1. Otevřete kartu > **Identita** **funkcí platformy**: 
+1. Otevřete kartu **Identita funkcí platformy**  >  **Identity** : 
 
-   ![Snímek obrazovky znázorňující funkce platformy a možnosti identity pro aplikaci Function App](./media/managed-identity-based-authentication/identity-tab-selection.png)
+   :::image type="content" source="./media/managed-identity-based-authentication/identity-tab-selection.png" alt-text="Snímek obrazovky znázorňující funkce platformy a možnosti identity pro aplikaci Function App":::
 
 1. Na kartě **Identita** **zapněte** **stav** identity systému a vyberte **Uložit**. Podokno **Identita** by mělo vypadat takto:  
 
-   ![Snímek obrazovky zobrazující stav identity systému nastaven na zapnuto](./media/managed-identity-based-authentication/identity-tab-system-managed-on.png)
+   :::image type="content" source="./media/managed-identity-based-authentication/identity-tab-system-managed-on.png" alt-text="Snímek obrazovky zobrazující stav identity systému nastaven na zapnuto":::
 
 ## <a name="grant-access-to-your-azure-cosmos-account"></a>Udělení přístupu k účtu Azure Cosmos
 
 V tomto kroku přiřadíte roli spravované identitě přiřazené k systému aplikace Function App. Azure Cosmos DB má několik předdefinovaných rolí, které můžete přiřadit ke spravované identitě. Pro toto řešení použijete tyto dvě role:
 
-|Předdefinovaná role  |Popis  |
+|Předdefinovaná role  |Description  |
 |---------|---------|
 |[Přispěvatel účtu DocumentDB](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|Může spravovat účty Azure Cosmos DB. Umožňuje načtení klíčů pro čtení i zápis. |
 |[Čtečka účtů Cosmos DB](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Může číst data Azure Cosmos DB účtu. Umožňuje načtení klíčů pro čtení. |
@@ -55,19 +55,19 @@ V tomto scénáři načte aplikace Functions teplotu Aquarium a pak tato data za
 
 1. Přihlaste se k Azure Portal a přejít na účet Azure Cosmos DB. Otevřete podokno **řízení přístupu (IAM)** a pak kartu **přiřazení rolí** :
 
-   ![Snímek obrazovky znázorňující podokno řízení přístupu a kartu přiřazení rolí](./media/managed-identity-based-authentication/cosmos-db-iam-tab.png)
+   :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab.png" alt-text="Snímek obrazovky znázorňující podokno řízení přístupu a kartu přiřazení rolí":::
 
-1. Vyberte **+ Přidat** > **Přidání přiřazení role**.
+1. Vyberte **+ Přidat** > **Přidat přiřazení role**.
 
 1. Otevře se panel **přiřazení role přidat** napravo:
 
-   ![Snímek obrazovky s podoknem přiřazení role přidání](./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane.png)
+   :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane.png" alt-text="Snímek obrazovky s podoknem přiřazení role přidání":::
 
    * **Role**: vyberte **Přispěvatel účtu DocumentDB** .
    * **Přiřadit přístup k**: v podčásti **Vybrat spravovanou identitu přiřazenou systémem** vyberte **Function App**.
    * **Vyberte**: v předplatném se naplní všechny aplikace Function App, které mají **identitu spravovaného systému**. V takovém případě vyberte aplikaci funkcí **FishTankTemperatureService** : 
 
-      ![Snímek obrazovky s podoknem přiřazení role přidání, které se naplní příklady](./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png)
+      :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png" alt-text="Snímek obrazovky s podoknem přiřazení role přidání, které se naplní příklady":::
 
 1. Po výběru aplikace Function App vyberte **Save (Uložit**).
 

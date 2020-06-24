@@ -3,15 +3,15 @@ title: Výpočetní databáze bez serveru s Azure Cosmos DB a Azure Functions
 description: Přečtěte si, jak Azure Cosmos DB a Azure Functions můžete použít společně k vytváření aplikací založených na událostech řízených serverem bez serveru.
 author: SnehaGunda
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: sngun
-ms.openlocfilehash: 079c246f87bb8294f3c7ad6dea3391f5c67ba0ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d6399da204ba930fad2dd3656d27a807a83b1b13
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80985248"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263256"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Výpočetní databáze bez serveru s využitím Azure Cosmos DB a Azure Functions
 
@@ -33,7 +33,7 @@ Azure Cosmos DB a Azure Functions vám umožní integrovat databáze a aplikace 
 
 Následující diagram znázorňuje každou z těchto tří integrací: 
 
-![Způsob integrace Azure Cosmos DB a Azure Functions](./media/serverless-computing-database/cosmos-db-azure-functions-integration.png)
+:::image type="content" source="./media/serverless-computing-database/cosmos-db-azure-functions-integration.png" alt-text="Způsob integrace Azure Cosmos DB a Azure Functions" border="false":::
 
 Aktivační událost Azure Functions, vstupní vazba a výstupní vazba pro Azure Cosmos DB lze použít v následujících kombinacích:
 
@@ -61,7 +61,7 @@ V implementacích IoT můžete funkci vyvolat, když se na připojeném automobi
 
 Následující obrázek ukazuje kód napsaný v Azure Portal pro tuto aktivační událost.
 
-![Vytvoření triggeru Azure Functions pro Cosmos DB v Azure Portal](./media/serverless-computing-database/cosmos-db-trigger-portal.png)
+:::image type="content" source="./media/serverless-computing-database/cosmos-db-trigger-portal.png" alt-text="Vytvoření triggeru Azure Functions pro Cosmos DB v Azure Portal":::
 
 ### <a name="financial-use-case---timer-trigger-and-input-binding"></a>Případ finančního použití – aktivační událost časovače a vstupní vazba
 
@@ -75,13 +75,13 @@ V případě finančních implementací můžete funkci vyvolat, když zůstatek
 
 Následující obrázky znázorňují kód v Azure Portal pro tento scénář.
 
-![Soubor index. js pro aktivační událost časovače pro finanční scénář](./media/serverless-computing-database/cosmos-db-functions-financial-trigger.png)
+:::image type="content" source="./media/serverless-computing-database/cosmos-db-functions-financial-trigger.png" alt-text="SouborIndex.js pro aktivační událost časovače pro finanční scénář":::
 
-![Spuštění souboru. csx pro aktivační událost časovače pro finanční scénář](./media/serverless-computing-database/azure-function-cosmos-db-trigger-run.png)
+:::image type="content" source="./media/serverless-computing-database/azure-function-cosmos-db-trigger-run.png" alt-text="Spuštění souboru. csx pro aktivační událost časovače pro finanční scénář":::
 
 ### <a name="gaming-use-case---azure-functions-trigger-and-output-binding-for-cosmos-db"></a>Případ herního případu použití – aktivační událost Azure Functions a výstupní vazba pro Cosmos DB 
 
-Při vytvoření nového uživatele můžete v herních prostředích vyhledat další uživatele, kteří je můžou znát pomocí [Azure Cosmos DB rozhraní Gremlin API](graph-introduction.md). Pak můžete výsledky zapsat do [Azure Cosmos DB SQL Database] pro snadné načtení.
+Při vytvoření nového uživatele můžete v herních prostředích vyhledat další uživatele, kteří je můžou znát pomocí [Azure Cosmos DB rozhraní Gremlin API](graph-introduction.md). Pak můžete výsledky zapsat do [Azure Cosmos DB nebo databáze SQL]() pro snadné načtení.
 
 **Implementace:** Použití triggeru Azure Functions a výstupní vazby pro Cosmos DB
 

@@ -3,12 +3,12 @@ title: Resource Manager a klasické nasazení
 description: Popisuje rozdíly mezi modelem nasazení Resource Manager a modelem nasazení Classic (neboli Service Management).
 ms.topic: conceptual
 ms.date: 02/06/2020
-ms.openlocfilehash: 85691d562f2b58cdced3264de11f3dd29a7ca168
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a2deddfff595feee429aa1be942e2f4651700f54
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77064508"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763784"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Nasazení Azure Resource Manager vs. Classic: Vysvětlení modelů nasazení a stavu prostředků
 
@@ -78,6 +78,8 @@ Následující diagram znázorňuje výpočetní prostředky, prostředky sítě
 
 ![Architektura Resource Manageru](./media/deployment-models/arm_arch3.png)
 
+SRP: poskytovatel prostředků úložiště, CRP: zprostředkovatel prostředků služby COMPUTE, NRP: poskytovatel síťových prostředků
+
 Všimněte si následujících vztahů mezi prostředky:
 
 * Všechny prostředky existují v rámci skupiny prostředků.
@@ -99,7 +101,7 @@ Toto jsou jednotlivé komponenty a jejich vztahy v případě modelu nasazení C
 
 Následující tabulka popisuje změny v interakci poskytovatelů výpočetních prostředků, síťových prostředků a prostředků úložiště:
 
-| Položka | Classic | Resource Manager |
+| Položka | Klasický | Resource Manager |
 | --- | --- | --- |
 | Cloudová služba pro službu Virtual Machines |Cloudová služba byla kontejnerem pro uložení virtuálních počítačů, která vyžadovala dostupnost z platformy a vyrovnávání zatížení. |Cloudová služba už není objektem vyžadovaným pro vytvoření virtuálního počítače pomocí nového modelu. |
 | Virtuální sítě |Virtuální síť je pro virtuální počítač volitelná. Pokud je tato virtuální síť zahrnutá, nejde ji nasadit s Správce prostředků. |Virtuální počítač vyžaduje virtuální síť nasazenou pomocí Resource Manageru. |
@@ -111,7 +113,7 @@ Následující tabulka popisuje změny v interakci poskytovatelů výpočetních
 | Vyhrazená IP adresa |IP adresu můžete v Azure vyhradit a přidružit ji ke cloudové službě, abyste zajistili, že IP adresa zůstane dynamická. |Veřejnou IP adresu můžete vytvořit ve statickém režimu a bude nabízet stejné funkce jako vyhrazená IP adresa. |
 | Veřejná IP adresa (PIP) na virtuální počítač |Veřejné IP adresy se dají k virtuálnímu počítači přiřadit i přímo. |Veřejná IP adresa je prostředek vystavený poskytovatelem Microsoft.Network. Veřejná IP adresa může být statická (vyhrazená) nebo dynamická. |
 | Koncové body |Vstupní koncové body je třeba konfigurovat na virtuálním počítači, aby se pro určité porty staly otevřeným připojením. Jeden z běžných režimů připojení k virtuálním počítačům se provádí nastavením vstupní koncových bodů. |Příchozí pravidla NAT můžete konfigurovat na nástrojích pro vyrovnávání zatížení, abyste dosáhli stejné možnosti povolování koncových bodů na konkrétních portech za účelem připojení k virtuálním počítačům. |
-| Název DNS |Cloudová služba by získala implicitní, globálně jedinečný název DNS. Například: `mycoffeeshop.cloudapp.net`. |Názvy DNS jsou volitelné parametry, které můžete nastavit na prostředku veřejné IP adresy. Plně kvalifikovaný název je v následujícím formátu – `<domainlabel>.<region>.cloudapp.azure.com`. |
+| Název DNS |Cloudová služba by získala implicitní, globálně jedinečný název DNS. Příklad: `mycoffeeshop.cloudapp.net`. |Názvy DNS jsou volitelné parametry, které můžete nastavit na prostředku veřejné IP adresy. Plně kvalifikovaný název je v následujícím formátu – `<domainlabel>.<region>.cloudapp.azure.com`. |
 | Síťová rozhraní |Primární a sekundární síťové rozhraní a jeho vlastnosti byly definované jako síťová konfigurace virtuálního počítače. |Síťové rozhraní je prostředek vystavený poskytovatelem Microsoft.Network. Životní cyklus síťového rozhraní není svázaný s virtuálním počítačem. Odkazuje na přiřazenou IP adresu virtuálního počítače (povinné), podsíť virtuální sítě pro daný virtuální počítač (povinné) a skupinu zabezpečení sítě (volitelné). |
 
 Informace o připojení virtuálních sítí z různých modelů nasazení najdete v článku [Připojení virtuálních sítí z různých modelů nasazení na portálu](../../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md).

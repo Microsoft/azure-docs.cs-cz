@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: dech
-ms.openlocfilehash: b8c4fd3804bfa02b86f62912641eb936ff8cd15e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 94022b9959b6a7f2bc30e31f918f2f5a916ccd8c
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664428"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85116804"
 ---
 # <a name="how-to-choose-between-standard-manual-and-autoscale-provisioned-throughput"></a>Jak vybrat standardní (ruční) a zajištěné propustnosti v rámci automatického škálování 
 
@@ -26,7 +26,7 @@ Při použití zřízené propustnosti nastavíte propustnost měřenou v jednot
 
 V následující tabulce je uvedeno porovnání na vysoké úrovni mezi standardem (ručním) a AutoScale.
 
-|Popis|Standardní (ruční)|Automatické škálování|
+|Description|Standardní (ruční)|Automatické škálování|
 |-------------|------|-------|
 |Nejlépe vhodné pro|Úlohy se stabilním nebo předvídatelným provozem|Úlohy s proměnným nebo nepředvídatelným provozem. Viz [případy použití automatického škálování](provision-throughput-autoscale.md#use-cases-of-autoscale).|
 |Jak to funguje|V průběhu času zřizujete nastavenou velikost RU/s `T` , pokud je ručně nezměníte. Každou sekundu můžete použít `T` propustnost až ru/s. <br/><br/>Pokud například nastavíte standardní (ruční) 400 RU/s, propustnost zůstane v 400 RU/s.|Nastavíte nejvyšší nebo maximální RU/s, `Tmax` které nechcete, aby systém překročil. Systém automaticky škáluje propustnost `T` tak, aby `0.1* Tmax <= T <= Tmax` . <br/><br/>Pokud například nastavíte automatické škálování maximum RU/s z 4000 RU/s, systém bude škálovat mezi 400-4000 RU/s.|
@@ -61,7 +61,7 @@ Po výběru typu propustnosti v průběhu času byste měli monitorovat svoji ap
 
 Pokud používáte automatické škálování, použijte Azure Monitor k zobrazení maximálního množství RU/s poskytovaného pro automatické škálování (**maximální propustnost automatického škálování**) a ru/s, na který je systém aktuálně škálovatelný (**zřízená propustnost**). Níže je uveden příklad proměnné nebo nepředvídatelné úlohy pomocí automatického škálování. Všimněte si, že pokud nedochází k žádným přenosům, systém škáluje RU/s na minimum z 10% maximálního RU/s, což je v tomto případě 5000 RU/s a 50 000 RU/s. 
 
-![Příklad úlohy pomocí automatického škálování](media/how-to-choose-offer/autoscale-metrics-azure-monitor.png)
+:::image type="content" source="media/how-to-choose-offer/autoscale-metrics-azure-monitor.png" alt-text="Příklad úlohy pomocí automatického škálování":::
 
 > [!NOTE]
 > Když použijete standardní (ruční) zřízené propustnost, metrika **zřízené propustnosti** odkazuje na to, co jste nastavili jako uživatel. Když použijete propustnost automatického škálování, tato metrika odkazuje na RU/s. systém je aktuálně škálovat na.

@@ -3,21 +3,21 @@ title: Sdílení prostředků mezi zdroji (CORS) v Azure Cosmos DB
 description: Tento článek popisuje, jak v Azure Cosmos DB nakonfigurovat sdílení prostředků mezi zdroji (CORS) pomocí šablon Azure Portal a Azure Resource Manager.
 author: deborahc
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/11/2019
 ms.author: dech
-ms.openlocfilehash: 7a487cb10965a379a0a418efaa061be88c5d10dd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 331b78737000a51b09d393160f07150f81058412
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77082988"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261643"
 ---
 # <a name="configure-cross-origin-resource-sharing-cors"></a>Konfigurace sdílení prostředků mezi zdroji (CORS)
 
 Sdílení prostředků mezi zdroji (CORS) je funkce HTTP, která umožňuje webové aplikaci spuštěné v jedné doméně přistupovat k prostředkům v jiné doméně. Webové prohlížeče implementují omezení zabezpečení označované jako zásady stejného původu, které brání webové stránce v volání rozhraní API v jiné doméně. CORS ale poskytuje zabezpečený způsob, jak, aby zdrojová doména mohla volat rozhraní API v jiné doméně. Rozhraní API Core (SQL) v Azure Cosmos DB teď podporuje sdílení prostředků mezi zdroji (CORS) pomocí hlavičky "allowedOrigins". Po povolení podpory CORS pro váš účet Azure Cosmos se vyhodnotí jenom ověřené požadavky, které určují, jestli jsou povolené podle pravidel, která jste zadali.
 
-Nastavení sdílení prostředků mezi zdroji (CORS) můžete nakonfigurovat z Azure Portal nebo ze Azure Resource Manager šablony. Pro účty Cosmos využívající rozhraní API Core (SQL) Azure Cosmos DB podporuje knihovnu JavaScriptu, která funguje v obou prostředích Node. js i v prohlížeči. Tato knihovna teď může využít podporu CORS při použití režimu brány. Pro použití této funkce není nutná žádná konfigurace na straně klienta. Díky podpoře CORS můžou prostředky z prohlížeče získat přímý přístup k Azure Cosmos DB prostřednictvím [knihovny JavaScriptu](https://www.npmjs.com/package/@azure/cosmos) nebo přímo z [REST API](https://docs.microsoft.com/rest/api/cosmos-db/) pro jednoduché operace.
+Nastavení sdílení prostředků mezi zdroji (CORS) můžete nakonfigurovat z Azure Portal nebo ze Azure Resource Manager šablony. Pro účty Cosmos využívající rozhraní API Core (SQL) Azure Cosmos DB podporuje knihovnu JavaScriptu, která funguje v prostředích založeném na Node.js a prohlížeči. Tato knihovna teď může využít podporu CORS při použití režimu brány. Pro použití této funkce není nutná žádná konfigurace na straně klienta. Díky podpoře CORS můžou prostředky z prohlížeče získat přímý přístup k Azure Cosmos DB prostřednictvím [knihovny JavaScriptu](https://www.npmjs.com/package/@azure/cosmos) nebo přímo z [REST API](https://docs.microsoft.com/rest/api/cosmos-db/) pro jednoduché operace.
 
 > [!NOTE]
 > Podpora CORS je platná a podporovaná pro rozhraní API pro Azure Cosmos DB Core (SQL). Neplatí pro rozhraní Azure Cosmos DB API pro Cassandra, Gremlin nebo MongoDB, protože tyto protokoly nepoužívají pro komunikaci mezi klientem a serverem protokol HTTP.
@@ -28,12 +28,12 @@ Pomocí následujících kroků můžete povolit sdílení prostředků mezi zdr
 
 1. Přejděte k účtu služby Azure Cosmos DB. Otevřete okno **CORS** .
 
-2. Zadejte čárkami oddělený seznam počátek, který může provádět volání mezi zdroji Azure Cosmos DB účtu. Například `https://www.mydomain.com` `https://mydomain.com`,, `https://api.mydomain.com`. Můžete také použít zástupný znak\*"" pro povolení všech původu a vybrat **Odeslat**. 
+2. Zadejte čárkami oddělený seznam počátek, který může provádět volání mezi zdroji Azure Cosmos DB účtu. Například,, `https://www.mydomain.com` `https://mydomain.com` `https://api.mydomain.com` . Můžete také použít zástupný znak \* "" pro povolení všech původu a vybrat **Odeslat**. 
 
    > [!NOTE]
    > V současné době nemůžete použít zástupné znaky jako součást názvu domény. Například `https://*.mydomain.net` formát není dosud podporován. 
 
-   ![Povolení sdílení prostředků mezi zdroji pomocí Azure Portal](./media/how-to-configure-cross-origin-resource-sharing/enable-cross-origin-resource-sharing-using-azure-portal.png)
+   :::image type="content" source="./media/how-to-configure-cross-origin-resource-sharing/enable-cross-origin-resource-sharing-using-azure-portal.png" alt-text="Povolení sdílení prostředků mezi zdroji pomocí Azure Portal":::
 
 ## <a name="enable-cors-support-from-resource-manager-template"></a>Povolit podporu CORS z šablony Správce prostředků
 
@@ -61,7 +61,7 @@ Pokud chcete povolit CORS pomocí šablony Správce prostředků, přidejte do j
 
 ## <a name="using-the-azure-cosmos-db-javascript-library-from-a-browser"></a>Použití knihovny Azure Cosmos DB JavaScript z prohlížeče
 
-V současné době má knihovna Azure Cosmos DB JavaScript pouze verzi CommonJS knihovny dodávané s jejím balíčkem. Chcete-li použít tuto knihovnu z prohlížeče, je nutné pomocí nástroje, jako je například kumulativní nebo Webpack, vytvořit knihovnu kompatibilní s prohlížečem. Některé knihovny Node. js by měly mít pro ně prohlížeč. Následuje příklad konfiguračního souboru sady, který má potřebná nastavení.
+V současné době má knihovna Azure Cosmos DB JavaScript pouze verzi CommonJS knihovny dodávané s jejím balíčkem. Chcete-li použít tuto knihovnu z prohlížeče, je nutné pomocí nástroje, jako je například kumulativní nebo Webpack, vytvořit knihovnu kompatibilní s prohlížečem. Některé knihovny Node.js by pro ně měly mít podobu prohlížeče. Následuje příklad konfiguračního souboru sady, který má potřebná nastavení.
 
 ```javascript
 const path = require("path");

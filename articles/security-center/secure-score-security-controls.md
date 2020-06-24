@@ -11,22 +11,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/21/2020
+ms.date: 06/15/2020
 ms.author: memildin
-ms.openlocfilehash: 81c14da762e0ff92305456aa89f06949c7039868
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: 46b78ca6f385f62d265210b41e634bbbd9a2041c
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84629276"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262714"
 ---
-# <a name="enhanced-secure-score-preview-in-azure-security-center"></a>Rozšířené zabezpečené skóre (Preview) v Azure Security Center
+# <a name="enhanced-secure-score-in-azure-security-center"></a>Rozšířené zabezpečené skóre v Azure Security Center
 
 ## <a name="introduction-to-secure-score"></a>Úvod do zabezpečeného skóre
 
 Azure Security Center má dva hlavní cíle: a pomůže vám pochopit aktuální situaci v zabezpečení a pomáhat vám efektivně a efektivně zlepšit zabezpečení. Ústřední aspekt Security Center, který vám umožňuje dosáhnout těchto cílů, je bezpečné skóre.
 
-Security Center průběžně vyhodnocuje vaše prostředky, odběry a organizace pro problémy se zabezpečením. Pak agreguje všechna zjištění do jediného skóre, abyste na první pohled mohli sdělit aktuální situaci zabezpečení: čím vyšší je skóre, tím se sníží zjištěná úroveň rizika. Pomocí skóre můžete sledovat úsilí a projekty zabezpečení ve vaší organizaci. 
+Security Center průběžně vyhodnocuje vaše prostředky, odběry a organizace pro problémy se zabezpečením. Pak agreguje všechna zjištění do jediného skóre, abyste na první pohled mohli sdělit aktuální situaci zabezpečení: čím vyšší je skóre, tím se sníží zjištěná úroveň rizika.
 
 Stránka zabezpečeného skóre Security Center zahrnuje:
 
@@ -38,19 +38,32 @@ Stránka zabezpečeného skóre Security Center zahrnuje:
 
     Pokud chcete hned zjistit, jak dobře vaše organizace zabezpečuje jednotlivé plochy pro útok, Projděte si skóre pro jednotlivé ovládací prvky zabezpečení.
 
-    Další informace najdete v tématu [jak se vypočítává zabezpečené skóre](secure-score-security-controls.md#how-the-secure-score-is-calculated) . 
+    Další informace najdete v tématu [jak se počítá vaše zabezpečené skóre](secure-score-security-controls.md#how-your-secure-score-is-calculated) níže. 
 
 
 >[!TIP]
 > Dřívější verze Security Center v úrovni doporučení přijaly body: když opravíte doporučení pro jeden prostředek, zlepší se vaše zabezpečené skóre. V dnešní době se vaše skóre zlepšuje jenom v případě, že opravíte *všechna* doporučení pro jeden prostředek v rámci ovládacího prvku. Takže se vaše skóre zvyšuje jenom v případě, že jste vylepšili zabezpečení prostředku.
-> I když je tato rozšířená verze stále ve verzi Preview, je k dispozici předchozí prostředí zabezpečeného skóre, které je k dispozici jako možnost z webu Azure Portal. 
 
 
-## <a name="locating-your-secure-score"></a>Vyhledání zabezpečeného skóre
+## <a name="accessing-your-secure-score"></a>Přístup k zabezpečenému skóre
 
-Security Center zobrazuje vaše skóre v dobrém prostředí: je to první věc zobrazená na stránce Přehled. Pokud kliknete na stránku vyhrazeného zabezpečeného skóre, zobrazí se skóre, které je rozdělené podle předplatného. Kliknutím na jedno předplatné zobrazíte podrobný seznam doporučení s upřednostněním a potenciální dopad, který by oprava na skóre předplatného.
+Celkové výsledky zabezpečení a také skóre na předplatné můžete najít prostřednictvím Azure Portal nebo programově s Azure Security Center REST API.
 
-## <a name="how-the-secure-score-is-calculated"></a>Jak se počítá zabezpečené skóre 
+### <a name="getting-your-secure-score-from-the-portal"></a>Načítají se vaše zabezpečené skóre z portálu.
+
+Security Center zobrazuje vaše skóre na portálu na portálu: první věc zobrazená na stránce Přehled. Pokud kliknete na stránku vyhrazeného zabezpečeného skóre, zobrazí se skóre, které je rozdělené podle předplatného. Kliknutím na jedno předplatné zobrazíte podrobný seznam doporučení s upřednostněním a potenciální dopad, který by oprava na skóre předplatného.
+
+![Celkové bezpečné skóre, jak je znázorněno na portálu](media/secure-score-security-controls/single-secure-score-via-ui.png)
+
+### <a name="getting-your-secure-score-from-the-rest-api"></a>Získání zabezpečeného skóre z REST API
+
+K vašemu skóre můžete přistupovat prostřednictvím [rozhraní API pro zabezpečené skóre](https://docs.microsoft.com/rest/api/securitycenter/securescores/) (aktuálně ve verzi Preview). Metody rozhraní API poskytují flexibilitu pro dotazování na data a vytváření vlastních mechanismů generování sestav v rámci vašich zabezpečených výsledků v průběhu času. Můžete například použít rozhraní API pro **zabezpečení skóre** k získání skóre pro konkrétní předplatné. Kromě toho můžete použít rozhraní API **ovládacích prvků bezpečného řízení skóre** k vypsání ovládacích prvků zabezpečení a aktuálního skóre vašich předplatných.
+
+![Načtení jediného zabezpečeného skóre přes rozhraní API](media/secure-score-security-controls/single-secure-score-via-api.png)
+
+Příklady nástrojů postavených na rozhraní API pro zajištění skóre najdete v části [bezpečné skóre naší komunity GitHubu](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score). 
+
+## <a name="how-your-secure-score-is-calculated"></a>Jak se počítá vaše zabezpečené skóre 
 
 Na stránce doporučení se jasně zobrazuje příspěvek každého řízení bezpečnosti k celkovému zabezpečenému skóre.
 
@@ -71,7 +84,7 @@ Maximální skóre tohoto ovládacího prvku, použít aktualizace systému, je 
 
 ### <a name="calculations---understanding-your-score"></a>Výpočty – princip skóre
 
-|Metric|Vzorec a příklad|
+|Metrika|Vzorec a příklad|
 |-|-|
 |**Aktuální skóre ovládacího prvku zabezpečení**|<br>![Rovnice pro výpočet aktuálního skóre ovládacího prvku zabezpečení](media/secure-score-security-controls/security-control-scoring-equation.png)<br><br>Každé individuální řízení zabezpečení přispívá ke skóre zabezpečení. Každý prostředek, na který má vliv doporučení v rámci ovládacího prvku, přispívá k aktuálnímu skóre ovládacího prvku. Aktuální skóre pro každý ovládací prvek je míra stavu prostředků *v rámci* ovládacího prvku.<br>![Popisy tlačítek znázorňující hodnoty použité při výpočtu aktuálního skóre ovládacího prvku zabezpečení](media/secure-score-security-controls/security-control-scoring-tooltips.png)<br>V tomto příkladu je maximální skóre 6 děleno 78, protože to je součet zdravých a špatných prostředků.<br>6/78 = 0,0769<br>Vynásobení tohoto počtu zdravých prostředků (4) má za následek aktuální skóre:<br>0,0769 * 4 = **0,31**<br><br>|
 |**Bezpečnostní skóre**<br>Jedno předplatné|<br>![Rovnice pro výpočet aktuálního zabezpečeného skóre](media/secure-score-security-controls/secure-score-equation.png)<br><br>![Zabezpečené skóre jednotného předplatného se všemi povolenými ovládacími prvky](media/secure-score-security-controls/secure-score-example-single-sub.png)<br>V tomto příkladu je k dispozici jedno předplatné se všemi dostupnými ovládacími prvky zabezpečení (potenciální maximální skóre 60 bodů). Skóre zobrazuje 28 bodů z možného 60 a zbývající 32 body se projeví v hodnotách "potenciálního nárůstu" v rámci ovládacích prvků zabezpečení.<br>![Seznam ovládacích prvků a možné zvýšení skóre](media/secure-score-security-controls/secure-score-example-single-sub-recs.png)|
@@ -84,6 +97,7 @@ Pokud chcete vylepšit vaše zabezpečené skóre, napravte doporučení zabezpe
 
 >[!IMPORTANT]
 > Bezpečnostní skóre mají dopad jenom na integrovaná doporučení.
+
 
 ## <a name="security-controls-and-their-recommendations"></a>Ovládací prvky zabezpečení a jejich doporučení
 
@@ -110,7 +124,7 @@ Následující tabulka uvádí ovládací prvky zabezpečení v Azure Security C
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Použít aktualizace systému (maximální skóre 6)</p></strong>Aktualizace systému poskytují organizacím možnost udržet provozní efektivitu, snižovat zranitelnosti zabezpečení a poskytovat stabilnější prostředí pro koncové uživatele. Pokud aktualizace nepoužijete, zůstanou neopravená ohrožení zabezpečení a výsledky v prostředích, která jsou náchylná k útokům. Tyto chyby zabezpečení je možné zneužít a vést k úniku dat, exfiltrace dat, ransomwarem a zneužití prostředků. Pokud chcete nasadit aktualizace systému, můžete pomocí <a href="https://docs.microsoft.com/azure/automation/automation-update-management">Update Management řešení spravovat opravy a aktualizace</a> virtuálních počítačů. Správa aktualizací je proces řízení nasazení a údržby vydaných verzí softwaru.</td>
-    <td class="tg-lboi"; width=55%>-Problémy se stavem agenta monitorování by se měly vyřešit na vašich počítačích.<br>-Agent monitorování by měl být nainstalovaný na Virtual Machine Scale Sets<br>-Agent monitorování by měl být nainstalovaný na vašich počítačích.<br>-Verze operačního systému by se měla aktualizovat pro vaše role cloudové služby.<br>-Musí být nainstalované aktualizace systému ve virtuálních počítačích Virtual Machine Scale Sets.<br>-Do vašich počítačů by se měly nainstalovat aktualizace systému<br>-Počítače by měly být restartovány, aby bylo možné použít aktualizace systému<br>-Služby Kubernetes by se měly upgradovat na nezranitelnou Kubernetes verzi.<br>-Agent monitorování by měl být nainstalovaný na virtuálních počítačích</td>
+    <td class="tg-lboi"; width=55%>-Problémy se stavem agenta monitorování by se měly vyřešit na vašich počítačích.<br>-Agent monitorování by měl být nainstalovaný na Virtual Machine Scale Sets<br>-Agent monitorování by měl být nainstalovaný na vašich počítačích.<br>-Verze operačního systému by se měla aktualizovat pro vaše role cloudové služby.<br>-Musí být nainstalované aktualizace systému ve virtuálních počítačích Virtual Machine Scale Sets.<br>-Do vašich počítačů by se měly nainstalovat aktualizace systému<br>-Počítače by měly být restartovány, aby bylo možné použít aktualizace systému<br>-Služby Kubernetes by se měly upgradovat na nezranitelnou Kubernetes verzi.<br>-Agent monitorování by měl být nainstalovaný na virtuálních počítačích<br>-Agent Log Analytics musí být nainstalovaný na počítačích se systémem Windows Azure ARC (Preview).<br>-Agent Log Analytics musí být nainstalovaný na počítačích se systémem Linux (Preview).</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Náprava ohrožení zabezpečení (maximální skóre 6)</p></strong>Ohrožení zabezpečení je slabé stránky, které může útočník pro hrozby využít k zabezpečení důvěrnosti, dostupnosti nebo integrity prostředku. <a href="https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/next-gen-threat-and-vuln-mgt">Správa slabých míst</a> snižuje expozici organizace, posílení oblasti koncového bodu, zvyšuje odolnost organizace a snižuje prostor pro útoky na prostředky. Správa hrozeb a ohrožení zabezpečení poskytuje přehled o chybných konfiguracích softwaru a zabezpečení a poskytuje doporučení pro zmírnění rizik.</td>
@@ -130,7 +144,7 @@ Následující tabulka uvádí ovládací prvky zabezpečení v Azure Security C
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Opravit konfigurace zabezpečení (maximální skóre 4)</p></strong>Nesprávně nakonfigurované prostředky IT mají vyšší riziko útoku. Základní akce posílení zabezpečení jsou často zapomenuté při nasazení prostředků a musí být splněné termíny. Nezabezpečené konfigurace zabezpečení můžou být na jakékoli úrovni infrastruktury: od operačních systémů a síťových zařízení až po cloudové prostředky.<br>Azure Security Center průběžně porovnává konfiguraci vašich prostředků s požadavky v oborových normách, nařízeních a srovnávacích testech. Když jste nakonfigurovali relevantní "balíčky dodržování předpisů" (standardy a směrné plány), které jsou v souladu s vaší organizací, budou mít všechny mezery doporučení zabezpečení, která zahrnují CCEID a vysvětlení potenciálního dopadu na zabezpečení.<br>Běžně používané balíčky jsou <a href="https://docs.microsoft.com/azure/security/benchmarks/introduction">Azure Security test</a> a <a href="https://www.cisecurity.org/benchmark/azure/">CI Microsoft Azure 1.1.0 Foundation – testování verze</a></td>
-    <td class="tg-lboi"; width=55%>-Zásady zabezpečení by měly být definované v Kubernetes Services<br>-Ohrožení zabezpečení v konfiguraci zabezpečení kontejneru by mělo být opraveno<br>-Ohrožení zabezpečení v konfiguraci zabezpečení na vašich počítačích by mělo být opraveno<br>-V konfiguraci zabezpečení v rámci sady škálování virtuálních počítačů by se měly napravit ohrožení zabezpečení.<br>-Agent monitorování by měl být nainstalovaný na virtuálních počítačích<br>-Agent monitorování by měl být nainstalovaný na vašich počítačích.<br>-Agent monitorování by měl být nainstalovaný na Virtual Machine Scale Sets<br>-Problémy se stavem agenta monitorování by se měly vyřešit na vašich počítačích.</td>
+    <td class="tg-lboi"; width=55%>-Zásady zabezpečení by měly být definované v Kubernetes Services<br>-Ohrožení zabezpečení v konfiguraci zabezpečení kontejneru by mělo být opraveno<br>-Ohrožení zabezpečení v konfiguraci zabezpečení na vašich počítačích by mělo být opraveno<br>-V konfiguraci zabezpečení v rámci sady škálování virtuálních počítačů by se měly napravit ohrožení zabezpečení.<br>-Agent monitorování by měl být nainstalovaný na virtuálních počítačích<br>-Agent monitorování by měl být nainstalovaný na vašich počítačích.<br>-Agent Log Analytics musí být nainstalovaný na počítačích se systémem Windows Azure ARC (Preview).<br>-Agent Log Analytics musí být nainstalovaný na počítačích se systémem Linux (Preview).<br>-Agent monitorování by měl být nainstalovaný na Virtual Machine Scale Sets<br>-Problémy se stavem agenta monitorování by se měly vyřešit na vašich počítačích.</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Omezit neautorizovaný přístup k síti (maximální skóre 4)</p></strong>Koncové body v rámci organizace poskytují přímé připojení z vaší virtuální sítě k podporovaným službám Azure. Virtuální počítače v podsíti můžou komunikovat se všemi prostředky. Pokud chcete omezit komunikaci s prostředky v rámci jedné podsítě a z nich, vytvořte skupinu zabezpečení sítě a přidružte ji k podsíti. Organizace můžou omezit a chránit před neoprávněným provozem vytvořením příchozích a odchozích pravidel.</td>
@@ -138,7 +152,7 @@ Následující tabulka uvádí ovládací prvky zabezpečení v Azure Security C
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Použít adaptivní řízení aplikací (maximální skóre 3)</p></strong>Adaptivní řízení aplikací (AAC) je inteligentní, automatizované a ucelené řešení, které umožňuje řídit, které aplikace se můžou spouštět na počítačích Azure a mimo Azure. Pomáhá také posílit zabezpečení vašich počítačů proti malwaru.<br>Security Center využívá Machine Learning k vytvoření seznamu povolených aplikací se známým zabezpečením pro skupinu počítačů.<br>Tento inovativní přístup k povolenému přidávání aplikací přináší výhody zabezpečení bez složitosti správy.<br>AAC je zvláště relevantní pro účelově sestavené servery, které potřebují spouštět konkrétní sadu aplikací.</td>
-    <td class="tg-lboi"; width=55%>-Na virtuálních počítačích by měly být povolené Adaptivní řízení aplikací.<br>-Agent monitorování by měl být nainstalovaný na virtuálních počítačích<br>-Agent monitorování by měl být nainstalovaný na vašich počítačích.<br>-Problémy se stavem agenta monitorování by se měly vyřešit na vašich počítačích.</td>
+    <td class="tg-lboi"; width=55%>-Na virtuálních počítačích by měly být povolené Adaptivní řízení aplikací.<br>-Agent monitorování by měl být nainstalovaný na virtuálních počítačích<br>-Agent monitorování by měl být nainstalovaný na vašich počítačích.<br>-Agent Log Analytics musí být nainstalovaný na počítačích se systémem Windows Azure ARC (Preview).<br>-Agent Log Analytics musí být nainstalovaný na počítačích se systémem Linux (Preview).<br>-Problémy se stavem agenta monitorování by se měly vyřešit na vašich počítačích.</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Použít klasifikaci dat (max. skóre 2)</p></strong>Klasifikace dat vaší organizace podle citlivosti a dopadu na firmu vám umožní určit data a přiřazovat k nim hodnoty a poskytovat strategii a základ pro zásady správného řízení.<br><a href="https://docs.microsoft.com/azure/information-protection/what-is-information-protection">Azure Information Protection</a> může pomáhat s klasifikací dat. Pomocí zásad šifrování, identity a autorizace chrání data a omezuje přístup k datům. Některé klasifikace, které Microsoft používá, jsou jiné než obchodní, veřejné, obecné, důvěrné a vysoce důvěrné.</td>
@@ -150,7 +164,7 @@ Následující tabulka uvádí ovládací prvky zabezpečení v Azure Security C
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Povolit službu Endpoint Protection (max. skóre 2)</p></strong>Aby bylo zajištěno, že jsou koncové body chráněny před malwarem, senzory chování shromažďují a zpracovávají data z operačních systémů koncových bodů a odesílají tato data do privátního cloudu pro účely analýzy. Analýza zabezpečení využívá pro velké objemy dat, strojové učení a další zdroje k doporučení reakcí na hrozby. Například ATP v <a href="https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection">programu Microsoft Defender</a> používá analýzu hrozeb k identifikaci metod útoku a generování výstrah zabezpečení.<br>Security Center podporuje následující řešení ochrany koncových bodů: Windows Defender, System Center Endpoint Protection, Trend Micro, Symantec v 12.1.1.1100, McAfee v10 za účelem pro Windows, McAfee v10 za účelem pro Linux a Sophos v9 pro Linux. Pokud Security Center zjistí některá z těchto řešení, doporučení k instalaci Endpoint Protection se už nezobrazí.</td>
-    <td class="tg-lboi"; width=55%>-V sadách škálování virtuálních počítačů by se měla opravit selhání stavu ochrany koncového bodu Endpoint Protection<br>-Na vašich počítačích by se měly vyřešit problémy stavu aplikace Endpoint Protection.<br>-Řešení ochrany koncových bodů by se mělo nainstalovat na Virtual Machine Scale Sets.<br>-Nainstalovat řešení Endpoint Protection na virtuálních počítačích<br>-Problémy se stavem agenta monitorování by se měly vyřešit na vašich počítačích.<br>-Agent monitorování by měl být nainstalovaný na Virtual Machine Scale Sets<br>-Agent monitorování by měl být nainstalovaný na vašich počítačích.<br>-Agent monitorování by měl být nainstalovaný na virtuálních počítačích<br>-Instalace řešení Endpoint Protection na počítačích</td>
+    <td class="tg-lboi"; width=55%>-V sadách škálování virtuálních počítačů by se měla opravit selhání stavu ochrany koncového bodu Endpoint Protection<br>-Na vašich počítačích by se měly vyřešit problémy stavu aplikace Endpoint Protection.<br>-Řešení ochrany koncových bodů by se mělo nainstalovat na Virtual Machine Scale Sets.<br>-Nainstalovat řešení Endpoint Protection na virtuálních počítačích<br>-Problémy se stavem agenta monitorování by se měly vyřešit na vašich počítačích.<br>-Agent monitorování by měl být nainstalovaný na Virtual Machine Scale Sets<br>-Agent monitorování by měl být nainstalovaný na vašich počítačích.<br>-Agent monitorování by měl být nainstalovaný na virtuálních počítačích<br>-Agent Log Analytics musí být nainstalovaný na počítačích se systémem Windows Azure ARC (Preview).<br>-Agent Log Analytics musí být nainstalovaný na počítačích se systémem Linux (Preview).<br>-Instalace řešení Endpoint Protection na počítačích</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Povolit auditování a protokolování (max. skóre 1)</p></strong>Protokolování dat poskytuje přehledy o minulých problémech a zabraňuje potenciálním možnostem, může zlepšit výkon aplikace a umožňuje automatizovat akce, které by jinak byly ruční.<br>- <strong>Protokoly řízení a správy</strong> poskytují informace o operacích <a href="https://docs.microsoft.com/azure/azure-resource-manager/management/overview">Azure Resource Manager</a> .<br>- <strong>Protokoly roviny dat</strong> poskytují informace o událostech vyvolaných v rámci využití prostředků Azure.<br>- <strong>Zpracované události</strong> poskytují informace o analyzovaných událostech a výstrahách, které byly zpracovány.</td>
@@ -158,7 +172,7 @@ Následující tabulka uvádí ovládací prvky zabezpečení v Azure Security C
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Implementovat osvědčené postupy zabezpečení (maximální skóre 0)</p></strong>Mezi moderní postupy zabezpečení se předpokládá porušení sítě v hraniční síti. Z tohoto důvodu se řada osvědčených postupů v tomto ovládacím prvku zaměřuje na správu identit.<br>Ztráta klíčů a přihlašovacích údajů je běžný problém. <a href="https://docs.microsoft.com/azure/key-vault/key-vault-overview">Azure Key Vault</a> chránit klíče a tajné kódy šifrováním klíčů, souborů PFX a hesel.<br>Virtuální privátní sítě (VPN) představují zabezpečený způsob přístupu k virtuálním počítačům. Pokud sítě VPN nejsou k dispozici, používejte složitá přístupová hesla a dvojúrovňové ověřování, jako je například <a href="https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks">Azure Multi-Factor Authentication</a>. Dvojúrovňové ověřování zabraňuje slabým místům, které jsou podstatné při spoléhání jenom na uživatelská jména a hesla.<br>Použití silného ověřování a autorizačních platforem je další osvědčené postupy. Použití federovaných identit umožňuje organizacím delegovat správu autorizovaných identit. To je důležité i v případě, že se zaměstnanci ukončí a jejich přístup je potřeba odvolat.</td>
-    <td class="tg-lboi"; width=55%>-Pro vaše předplatné by se mělo určit maximálně 3 vlastníci.<br>-Z vašeho předplatného by se měly odebrat externí účty s oprávněním ke čtení.<br>-Pro účty s oprávněním ke čtení vašeho předplatného by se měla povolit vícefaktorové ověřování.<br>-Přístup k účtům úložiště pomocí brány firewall a konfigurací virtuální sítě by měl být omezený.<br>-Všechna autorizační pravidla s výjimkou RootManageSharedAccessKey by měla být odebrána z oboru názvů centra událostí.<br>-Pro SQL servery by se měl zřídit správce Azure Active Directory.<br>-Autorizační pravidla v instanci centra událostí by měla být definovaná.<br>-Účty úložiště by se měly migrovat na nové prostředky Azure Resource Manager.<br>-Virtuální počítače by se měly migrovat na nové prostředky Azure Resource Manager.<br>-Pokročilá nastavení zabezpečení dat pro SQL Database by měla obsahovat e-mailovou adresu pro příjem výstrah zabezpečení.<br>-Na spravovaných instancích by mělo být povolené rozšířené zabezpečení dat<br>-V rozšířených nastaveních zabezpečení dat spravované instance SQL by se měly povolit všechny rozšířené typy ochrany před hrozbami.<br>-E-mailová oznámení správcům a vlastníkům předplatného by měla být povolená v nastavení SQL Server Advanced Data Security<br>-V rozšířených nastaveních zabezpečení dat SQL serveru by se měly nastavit rozšířené typy ochrany před internetovými útoky na ALL.<br>-Podsítě by měly být přidružené ke skupině zabezpečení sítě.<br>-Všechny typy rozšířené ochrany před hrozbami by měly být povolené v SQL Database pokročilé nastavení zabezpečení dat pro váš server.<br>-Tisk Měla by být povolená ochrana před zneužitím systému Windows <br>-Tisk Měl by být nainstalovaný agent konfigurace hosta.</td>
+    <td class="tg-lboi"; width=55%>-Pro vaše předplatné by se mělo určit maximálně 3 vlastníci.<br>-Z vašeho předplatného by se měly odebrat externí účty s oprávněním ke čtení.<br>-Pro účty s oprávněním ke čtení vašeho předplatného by se měla povolit vícefaktorové ověřování.<br>-Přístup k účtům úložiště pomocí brány firewall a konfigurací virtuální sítě by měl být omezený.<br>-Všechna autorizační pravidla s výjimkou RootManageSharedAccessKey by měla být odebrána z oboru názvů centra událostí.<br>-Pro SQL servery by se měl zřídit správce Azure Active Directory.<br>-Autorizační pravidla v instanci centra událostí by měla být definovaná.<br>-Účty úložiště by se měly migrovat na nové prostředky Azure Resource Manager.<br>-Virtuální počítače by se měly migrovat na nové prostředky Azure Resource Manager.<br>-Pokročilá nastavení zabezpečení dat pro SQL Database by měla obsahovat e-mailovou adresu pro příjem výstrah zabezpečení.<br>-Na spravovaných instancích by mělo být povolené rozšířené zabezpečení dat<br>-V rozšířených nastaveních zabezpečení dat spravované instance SQL by se měly povolit všechny rozšířené typy ochrany před hrozbami.<br>-E-mailová oznámení správcům a vlastníkům předplatného by měla být povolená v nastavení SQL Server Advanced Data Security<br>-V rozšířených nastaveních zabezpečení dat SQL serveru by se měly nastavit rozšířené typy ochrany před internetovými útoky na ALL.<br>-Podsítě by měly být přidružené ke skupině zabezpečení sítě.<br>-Všechny typy rozšířené ochrany před hrozbami by měly být povolené v SQL Database pokročilé nastavení zabezpečení dat pro váš server.<br>-Tisk Měla by být povolená ochrana před zneužitím systému Windows <br>-Tisk Měl by být nainstalovaný agent konfigurace hosta.<br>-Virtuální počítače, které nejsou přístupné z Internetu, by měly být chráněné pomocí skupin zabezpečení sítě</td>
   </tr>
 </tbody>
 </table>
@@ -172,13 +186,13 @@ Následující tabulka uvádí ovládací prvky zabezpečení v Azure Security C
 ## <a name="secure-score-faq"></a>Nejčastější dotazy k zabezpečení skóre
 
 ### <a name="why-has-my-secure-score-gone-down"></a>Proč je moje zabezpečené skóre pryč?
-Security Center se přepnulo na zvýšené zabezpečené skóre (aktuálně ve verzi Preview), které zahrnuje změny ve způsobu výpočtu skóre. Nyní je třeba vyřešit všechna doporučení pro určitý prostředek, aby bylo možné body přijímat. Skóre se také změní na škálu 0-10.
+Security Center přešly do zvýšeného zabezpečeného skóre, které zahrnuje změny ve způsobu výpočtu skóre. Nyní je třeba vyřešit všechna doporučení pro určitý prostředek, aby bylo možné body přijímat. Skóre se také změní na škálu 0-10.
 
 ### <a name="if-i-address-only-three-out-of-four-recommendations-in-a-security-control-will-my-secure-score-change"></a>Pokud v ovládacím prvku zabezpečení řeším jenom tři doporučení ze čtyř, bude se můj bezpečnostní skóre měnit?
 Ne. Nemění se, dokud neopravíte všechna doporučení pro jeden prostředek. Chcete-li získat maximální skóre pro ovládací prvek, je nutné opravit všechna doporučení pro všechny prostředky.
 
 ### <a name="is-the-previous-experience-of-the-secure-score-still-available"></a>Je stále k dispozici předchozí prostředí zabezpečeného skóre? 
-Ano. V době, kdy se budou spouštět vedle sebe, aby se přechod usnadnil. Očekává se, že předchozí model bude v čase rozložený. 
+Ne. V době, kdy se nacházely souběžně, aby se přechod usnadnil. Předchozí model je nyní zastaralý. 
 
 ### <a name="if-a-recommendation-isnt-applicable-to-me-and-i-disable-it-in-the-policy-will-my-security-control-be-fulfilled-and-my-secure-score-updated"></a>Pokud doporučení neplatí pro mě a je v zásadách zakázané, bude řízení zabezpečení splněné a mé zabezpečené skóre se aktualizovalo?
 Ano. Doporučujeme zakázat doporučení, pokud jsou ve vašem prostředí nepoužitá. Pokyny, jak zakázat konkrétní doporučení, najdete v tématu [zakázání zásad zabezpečení](https://docs.microsoft.com/azure/security-center/tutorial-security-policy#disable-security-policies).

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/03/2020
 ms.author: tisande
-ms.openlocfilehash: cd96f440c4e8c971d1f1473f667d31e60edef137
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: b06a8737c1ceb538417f966a989ccb39069f4d4c
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82839197"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85116294"
 ---
 # <a name="index-geospatial-data-with-azure-cosmos-db"></a>Indexování geoprostorových dat pomocí Azure Cosmos DB
 
@@ -34,13 +34,13 @@ V Azure Portal můžete přepínat mezi **zeměpisným** a **geometrickým** typ
 
 Tady je postup nastavení **geoprostorové konfigurace** v **Průzkumník dat** v rámci Azure Portal:
 
-![Nastavení geoprostorové konfigurace](./media/sql-query-geospatial-index/geospatial-configuration.png)
+:::image type="content" source="./media/sql-query-geospatial-index/geospatial-configuration.png" alt-text="Nastavení geoprostorové konfigurace":::
 
-Můžete také upravit `geospatialConfig` v sadě .NET SDK pro úpravu **geoprostorové konfigurace**:
+Můžete také upravit v sadě `geospatialConfig` .NET SDK pro úpravu **geoprostorové konfigurace**:
 
-Pokud není zadaný, `geospatialConfig` použije se jako výchozí zeměpisný datový typ. Když upravíte `geospatialConfig`, všechna existující geoprostorové data v kontejneru se Přeindexují.
+Pokud není zadaný, `geospatialConfig` použije se jako výchozí zeměpisný datový typ. Když upravíte `geospatialConfig` , všechna existující geoprostorové data v kontejneru se Přeindexují.
 
-Tady je příklad pro úpravu geoprostorového datového typu na `geometry` nastavením `geospatialConfig` vlastnosti a přidání **boundingBox**:
+Tady je příklad pro úpravu geoprostorového datového typu na nastavením `geometry` `geospatialConfig` vlastnosti a přidání **boundingBox**:
 
 ```csharp
     //Retrieve the container's details
@@ -107,7 +107,7 @@ Následující fragment kódu JSON ukazuje zásadu indexování s povoleným pro
 
 ## <a name="geometry-data-indexing-examples"></a>Příklady indexování dat geometrie
 
-S datovým typem **geometrie** , podobně jako zeměpisný datový typ, je nutné zadat relevantní cesty a typy k indexování. Kromě toho je nutné zadat také `boundingBox` v rámci zásad indexování, abyste označili požadovanou oblast, která má být pro danou cestu indexována. Každá geoprostorové cesta vyžaduje svoji vlastní`boundingBox`.
+S datovým typem **geometrie** , podobně jako zeměpisný datový typ, je nutné zadat relevantní cesty a typy k indexování. Kromě toho je nutné zadat také `boundingBox` v rámci zásad indexování, abyste označili požadovanou oblast, která má být pro danou cestu indexována. Každá geoprostorové cesta vyžaduje svoji vlastní `boundingBox` .
 
 Ohraničovací rámeček se skládá z následujících vlastností:
 
@@ -120,7 +120,7 @@ Ohraničovací rámeček je povinný, protože geometrická data zabírají rovi
 
 Vytvořte ohraničující rámeček, který obsahuje všechny (nebo většinu) vašich dat. Prostorové indexy budou moci využívat pouze operace vypočítané na objektech, které jsou zcela uvnitř ohraničujícího pole. Zvětšení rámečku, než je potřeba, bude mít negativní dopad na výkon dotazů.
 
-Tady je příklad zásady indexování, **která indexuje** data s **geospatialConfig** nastavenou `geometry`na:
+Tady je příklad zásady indexování, **která indexuje** data s **geospatialConfig** nastavenou na `geometry` :
 
 ```json
  {
@@ -159,7 +159,7 @@ Tady je příklad zásady indexování, **která indexuje** data s **geospatialC
 Výše uvedené zásady indexování mají **boundingBox** (-10, 10) souřadnic x a (-20, 20) souřadnic y. Kontejner s výše uvedenými zásadami indexování bude indexovat všechny body, mnohoúhelníky, více mnohoúhelníky a LineStrings, které jsou zcela v rámci této oblasti.
 
 > [!NOTE]
-> Pokud se pokusíte přidat zásadu indexování s **boundingBox** do kontejneru s `geography` datovým typem, dojde k selhání. Před přidáním BoundingBox byste měli upravit **geospatialConfig** kontejneru. **boundingBox** `geometry` Můžete přidat data a upravit zbývající část zásad indexování (například cesty a typy) před nebo po výběru geoprostorového datového typu pro kontejner.
+> Pokud se pokusíte přidat zásadu indexování s **boundingBox** do kontejneru s `geography` datovým typem, dojde k selhání. Před přidáním BoundingBox byste měli upravit **geospatialConfig** kontejneru `geometry` . **boundingBox** Můžete přidat data a upravit zbývající část zásad indexování (například cesty a typy) před nebo po výběru geoprostorového datového typu pro kontejner.
 
 ## <a name="next-steps"></a>Další kroky
 

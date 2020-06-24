@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: mjbrown
-ms.openlocfilehash: 8a0ef4c5abcd4c4137a878adf6a7fff9e80c2764
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a0c8b984801a0db2af648b0711d95de34bc9386f
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273507"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85114805"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Zabezpečení ve službě Azure Cosmos DB – Přehled
 
@@ -25,7 +25,7 @@ Tento článek popisuje osvědčené postupy zabezpečení databází a klíčov
 
 Zabezpečení dat je sdílená odpovědnost mezi vámi, zákazníkem a vaším poskytovatelem databáze. V závislosti na tom, jaký poskytovatel databáze si zvolíte, se může změnit množství zodpovědnosti, které je třeba provést. Pokud zvolíte místní řešení, musíte poskytnout vše od ochrany koncových bodů až po fyzické zabezpečení vašeho hardwaru – což není jednoduchý úkol. Pokud zvolíte poskytovatele cloudové databáze PaaS, jako je například Azure Cosmos DB, vaše oblast obav se podstatně zmenší. Následující obrázek, který se vypůjčil ze [sdílených odpovědností Microsoftu za Cloud Computing](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91) , ukazuje, jak se vaše zodpovědnost sníží s poskytovatelem PaaS, jako Azure Cosmos DB.
 
-![Zodpovědnost za zákazníky a poskytovatele databáze](./media/database-security/nosql-database-security-responsibilities.png)
+:::image type="content" source="./media/database-security/nosql-database-security-responsibilities.png" alt-text="Zodpovědnost za zákazníky a poskytovatele databáze":::
 
 Předchozí diagram ukazuje komponenty cloudového zabezpečení na vysoké úrovni, ale jaké položky si musíte zabývat konkrétně pro vaše databázové řešení? A jak můžete porovnat řešení mezi sebou?
 
@@ -73,13 +73,13 @@ Pojďme se na každou z nich dig podrobněji.
 |Reakce na útoky|Po kontaktování podpory Azure za účelem nahlášení potenciálního útoku se aktivuje proces reakce na případ 5 kroků. Cílem procesu 5 kroků je obnovit normální zabezpečení a provoz služeb co nejrychleji po zjištění problému a spuštění šetření.<br><br>Další informace najdete v [Microsoft Azure odpovědi na zabezpečení v cloudu](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91).|
 |Geografické oplocení|Azure Cosmos DB zajišťuje zásady správného řízení dat pro oblasti svrchovan (například Německo, Čína, US Gov).|
 |Chráněná zařízení|Data v Azure Cosmos DB se ukládají na SSD v chráněných datových centrech Azure.<br><br>Další informace najdete v [globálním datacentru Microsoftu](https://www.microsoft.com/en-us/cloud-platform/global-datacenters) .|
-|Šifrování HTTPS/SSL/TLS|Všechna připojení k Azure Cosmos DB podporují protokol HTTPS. Azure Cosmos DB podporuje také protokol TLS 1,2.<br>Je možné vyhovět minimální verzi TLS na straně serveru. Pokud to chcete udělat, kontaktujte [azurecosmosdbtls@service.microsoft.com](mailto:azurecosmosdbtls@service.microsoft.com)prosím.|
+|Šifrování HTTPS/SSL/TLS|Všechna připojení k Azure Cosmos DB podporují protokol HTTPS. Azure Cosmos DB podporuje také protokol TLS 1,2.<br>Je možné vyhovět minimální verzi TLS na straně serveru. Pokud to chcete udělat, kontaktujte prosím [azurecosmosdbtls@service.microsoft.com](mailto:azurecosmosdbtls@service.microsoft.com) .|
 |Šifrování v klidovém stavu|Všechna data uložená v Azure Cosmos DB jsou v klidovém stavu šifrovaná. Další informace najdete v [Azure Cosmos DB šifrování v klidovém umístění](./database-encryption-at-rest.md) .|
 |Opravené servery|Jako spravovaná databáze Azure Cosmos DB eliminuje nutnost spravovat a opravovat servery, které jsou pro vás hotové, automaticky.|
 |Účty pro správu se silnými hesly|Je těžké se domnívat, že tento požadavek potřebujeme, ale na rozdíl od některých z našich konkurence není možné mít účet správce bez hesla v Azure Cosmos DB.<br><br> Zabezpečení prostřednictvím ověřování TLS a tajného klíče HMAC je ve výchozím nastavení vloženými.|
 |Certifikace zabezpečení a ochrany dat| Nejaktuálnější seznam certifikací najdete na celkovém [webu dodržování předpisů Azure](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings) a v nejnovějším [dokumentu o dodržování předpisů Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) všemi certifikacemi (vyhledejte Cosmos). Další informace najdete v tématu 25. dubna 2018 post [Azure #CosmosDB: Secure, Private, splňující předpisy, která zahrnuje SOC 1/2 Type 2, HITRUST, PCI DSS Level 1, ISO 27001, HIPAA, FedRAMP High a spoustu dalších.
 
-Následující snímek obrazovky ukazuje, jak můžete pomocí protokolu auditu a protokolů aktivit monitorovat svůj účet: ![protokoly aktivit pro Azure Cosmos DB](./media/database-security/nosql-database-security-application-logging.png)
+Následující snímek obrazovky ukazuje, jak můžete pomocí protokolu auditu a protokolů aktivit monitorovat svůj účet: :::image type="content" source="./media/database-security/nosql-database-security-application-logging.png" alt-text="protokoly aktivit pro Azure Cosmos DB":::
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -3,15 +3,15 @@ title: Migrace kontejnerů Azure Cosmos, které nejsou rozdělené na oddíly, d
 description: Naučte se migrovat všechny existující nerozdělitelné kontejnery do dělených kontejnerů.
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: 742ef62895f3ef64e8fa22ab21d2947bee57776b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 619ec7e5510f9d3a5a17dcd5961fbd2182674df4
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77623357"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263479"
 ---
 # <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>Migrace kontejnerů mimo oddíly na dělené kontejnery
 
@@ -38,7 +38,7 @@ Pro podporu migrace Azure Cosmos DB poskytuje klíč oddílu definovaný systém
 }
 ```
 
-Po migraci kontejneru můžete vytvořit dokumenty naplněním `_partitionKey` vlastnosti spolu s dalšími vlastnostmi dokumentu. `_partitionKey` Vlastnost představuje klíč oddílu vašich dokumentů.
+Po migraci kontejneru můžete vytvořit dokumenty naplněním `_partitionKey` vlastnosti spolu s dalšími vlastnostmi dokumentu. `_partitionKey`Vlastnost představuje klíč oddílu vašich dokumentů.
 
 Výběr správného klíče oddílu je důležitý pro optimální využití zajištěné propustnosti. Další informace najdete v článku [Jak zvolit klíč oddílu](partitioning-overview.md) .
 
@@ -95,7 +95,7 @@ ItemResponse<DeviceInformationItem> readResponse =
                       
 ## <a name="migrate-the-documents"></a>Migrace dokumentů
 
-I když je definice kontejneru Vylepšená pomocí vlastnosti klíče oddílu, dokumenty v kontejneru se automaticky nemigrují. To znamená, že cesta k vlastnosti `/_partitionKey` klíče systémového oddílu není automaticky přidána do stávajících dokumentů. Existující dokumenty je potřeba znovu rozdělit na oddíly, které se vytvořily bez klíče oddílu, a pak je v dokumentech znovu napíšete pomocí `_partitionKey` vlastnosti.
+I když je definice kontejneru Vylepšená pomocí vlastnosti klíče oddílu, dokumenty v kontejneru se automaticky nemigrují. To znamená, že cesta k vlastnosti klíče systémového oddílu není `/_partitionKey` automaticky přidána do stávajících dokumentů. Existující dokumenty je potřeba znovu rozdělit na oddíly, které se vytvořily bez klíče oddílu, a pak je v dokumentech znovu napíšete pomocí `_partitionKey` Vlastnosti.
 
 ## <a name="access-documents-that-dont-have-a-partition-key"></a>Přístup k dokumentům, které nemají klíč oddílu
 
@@ -122,14 +122,14 @@ Pokud je migrovaný kontejner využíván nejnovější verzí sady SDK a vy za�
 
 **Dotazování na počet položek, které byly vloženy bez klíče oddílu pomocí sady V3 SDK, může zahrnovat vyšší propustnost.**
 
-Pokud se dotazuje ze sady V3 SDK pro položky, které jsou vloženy pomocí sady v2 SDK, nebo položky vložené pomocí sady V3 SDK s `PartitionKey.None` parametrem, dotaz Count může spotřebovat více ru/s, `PartitionKey.None` Pokud je parametr zadán v FeedOptions. Nemusíte-li vkládat žádné `PartitionKey.None` další položky s klíčem oddílu, doporučujeme tento parametr nezadávat.
+Pokud se dotazuje ze sady V3 SDK pro položky, které jsou vloženy pomocí sady v2 SDK, nebo položky vložené pomocí sady V3 SDK s `PartitionKey.None` parametrem, dotaz Count může spotřebovat více ru/s, pokud `PartitionKey.None` je parametr zadán v FeedOptions. Nemusíte- `PartitionKey.None` li vkládat žádné další položky s klíčem oddílu, doporučujeme tento parametr nezadávat.
 
-Pokud jsou nové položky vloženy s různými hodnotami pro klíč oddílu, dotazování na takové počty položek předáním příslušného klíče v `FeedOptions` nástroji nebudou mít žádné problémy. Pokud se po vložení nových dokumentů s klíčem oddílu budete potřebovat dotazovat jenom počet dokumentů bez hodnoty klíče oddílu, může se dotaz znovu zvýšit RU/s, podobně jako u běžných dělených kolekcí.
+Pokud jsou nové položky vloženy s různými hodnotami pro klíč oddílu, dotazování na takové počty položek předáním příslušného klíče v nástroji `FeedOptions` nebudou mít žádné problémy. Pokud se po vložení nových dokumentů s klíčem oddílu budete potřebovat dotazovat jenom počet dokumentů bez hodnoty klíče oddílu, může se dotaz znovu zvýšit RU/s, podobně jako u běžných dělených kolekcí.
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Dělení ve službě Azure Cosmos DB](partitioning-overview.md)
-* [Jednotky žádosti v Azure Cosmos DB](request-units.md)
+* [Jednotky žádostí ve službě Azure Cosmos DB](request-units.md)
 * [Zřízení propustnosti u kontejnerů a databází](set-throughput.md)
 * [Práce s účtem Azure Cosmos](account-overview.md)
 

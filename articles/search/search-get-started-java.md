@@ -8,27 +8,27 @@ ms.author: heidist
 ms.devlang: java
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 02/25/2020
-ms.openlocfilehash: 0b07e934625b09e7f6249dc00865465147f6f0ba
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/23/2020
+ms.openlocfilehash: 3539349560b159f5c4f39387fe0eed0c5bbf6606
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77624022"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261031"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-java-using-rest-apis"></a>Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání v jazyce Java pomocí rozhraní REST API
 > [!div class="op_single_selector"]
 > * [JavaScript](search-get-started-nodejs.md)
-> * [R #](search-get-started-dotnet.md)
+> * [C#](search-get-started-dotnet.md)
 > * [Java](search-get-started-java.md)
-> * [Portál](search-get-started-portal.md)
+> * [Azure Portal](search-get-started-portal.md)
 > * [PowerShell](search-create-index-rest-api.md)
 > * [Python](search-get-started-python.md)
 > * [Postman](search-get-started-postman.md)
 
 Vytvořte konzolovou aplikaci Java, která vytvoří, načte a dotazuje index vyhledávání pomocí [IntelliJ](https://www.jetbrains.com/idea/), [Java 11 SDK](/java/azure/jdk/?view=azure-java-stable)a [REST API Azure kognitivní hledání](/rest/api/searchservice/). Tento článek poskytuje podrobné pokyny k vytvoření aplikace. Případně můžete [Stáhnout a spustit kompletní aplikaci](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -48,7 +48,7 @@ Volání služby vyžaduje koncový bod adresy URL a přístupový klíč pro ka
 
 1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
 
-2. V části **Nastavení** > **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
+2. V části **Nastavení**  >  **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
 
    Vytvořte také klíč dotazu. Osvědčeným postupem je vystavovat požadavky na dotazy s přístupem jen pro čtení.
 
@@ -68,18 +68,18 @@ Začněte otevřením NÁPADu IntelliJ a nastavením nového projektu.
 
     ![Vytvoření projektu Maven](media/search-get-started-java/java-quickstart-create-new-maven-project.png) 
 
-1. Pro ID **skupiny** a **ArtifactId**zadejte `AzureSearchQuickstart`.
+1. Pro ID **skupiny** a **ArtifactId**zadejte `AzureSearchQuickstart` .
 1. Přijměte zbývající výchozí hodnoty pro otevření projektu.
 
 ### <a name="specify-maven-dependencies"></a>Zadat závislosti Maven
 
-1. Vyberte **File** > **Nastavení**souboru.
-1. V okně **Nastavení** vyberte **sestavení, spouštění,** > **nástroje** > sestavení nasazení**Maven** > **Import**.
-1. Zaškrtněte políčko **importovat projekty Maven automaticky** a kliknutím na tlačítko **OK** okno zavřete. Moduly plug-in Maven a další závislosti se teď automaticky synchronizují při aktualizaci souboru pom. XML v dalším kroku.
+1. Vyberte **File**  >  **Nastavení**souboru.
+1. V okně **Nastavení** vyberte **sestavení, spouštění,**  >  **Nástroje sestavení**nasazení  >  **Maven**  >  **Import**.
+1. Zaškrtněte políčko **importovat projekty Maven automaticky** a kliknutím na tlačítko **OK** okno zavřete. Moduly plug-in Maven a další závislosti se teď automaticky synchronizují při aktualizaci souboru pom.xml v dalším kroku.
 
     ![Možnosti importu Maven v nastavení IntelliJ](media/search-get-started-java/java-quickstart-settings-import-maven-auto.png)
 
-1. Otevřete soubor pom. XML a nahraďte jeho obsah následujícími podrobnostmi konfigurace Maven. Patří sem odkazy na [modul plug-in exec Maven](https://www.mojohaus.org/exec-maven-plugin/) a [rozhraní API rozhraní JSON](https://javadoc.io/doc/org.glassfish/javax.json/1.0.2) .
+1. Otevřete soubor pom.xml a nahraďte jeho obsah následujícími podrobnostmi konfigurace Maven. Patří sem odkazy na [modul plug-in exec Maven](https://www.mojohaus.org/exec-maven-plugin/) a [rozhraní API rozhraní JSON](https://javadoc.io/doc/org.glassfish/javax.json/1.0.2) .
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>
@@ -132,10 +132,10 @@ Začněte otevřením NÁPADu IntelliJ a nastavením nového projektu.
 
 ### <a name="set-up-the-project-structure"></a>Nastavení struktury projektu
 
-1. Vyberte **Souborová** > **struktura projektu**.
+1. Vyberte **Souborová**  >  **struktura projektu**.
 1. Vyberte **moduly**a rozbalte zdrojový strom pro přístup k obsahu `src`  >   `main` složky.
-1. `src` `java` Ve složce `app` přidejte složky `service` a.  >   `main`  >  Provedete to tak, `java` že vyberete složku, stisknete ALT + INSERT a pak zadáte název složky.
-1. `src` `resources` Ve složce `app` přidejte složky `service` a.  >   `main`  >
+1. Ve `src`  >   `main`  >  `java` složce přidejte `app` `service` složky a. Provedete to tak, že vyberete `java` složku, stisknete ALT + INSERT a pak zadáte název složky.
+1. Ve `src`  >   `main`  > `resources` složce přidejte `app` `service` složky a.
 
     Až skončíte, strom projektu by měl vypadat podobně jako na následujícím obrázku.
 
@@ -145,9 +145,9 @@ Začněte otevřením NÁPADu IntelliJ a nastavením nového projektu.
 
 ### <a name="add-azure-cognitive-search-service-information"></a>Přidání informací o službě Azure Kognitivní hledání
 
-1. V okně **projektu** rozbalte `src`  >   `main`  > `resources`  >  `app` zdrojový strom pro přístup ke složce a přidejte `config.properties` soubor. Provedete to tak, `app` že vyberete složku, stisknete ALT + INSERT, vyberete **soubor**a pak zadáte název souboru.
+1. V okně **projektu** rozbalte zdrojový strom pro přístup ke `src`  >   `main`  > `resources`  >  `app` složce a přidejte `config.properties` soubor. Provedete to tak, že vyberete `app` složku, stisknete ALT + INSERT, vyberete **soubor**a pak zadáte název souboru.
 
-1. Zkopírujte následující nastavení do nového souboru a nahraďte `<YOUR-SEARCH-SERVICE-NAME>`je, `<YOUR-ADMIN-KEY>`a `<YOUR-QUERY-KEY>` pomocí názvu služby a klíčů. Pokud je `https://mydemo.search.windows.net`koncový bod služby, název služby by byl "mydemo".
+1. Zkopírujte následující nastavení do nového souboru a nahraďte `<YOUR-SEARCH-SERVICE-NAME>` je, `<YOUR-ADMIN-KEY>` a `<YOUR-QUERY-KEY>` pomocí názvu služby a klíčů. Pokud je koncový bod služby `https://mydemo.search.windows.net` , název služby by byl "mydemo".
 
     ```java
         SearchServiceName=<YOUR-SEARCH-SERVICE-NAME>
@@ -159,7 +159,7 @@ Začněte otevřením NÁPADu IntelliJ a nastavením nového projektu.
 
 ### <a name="add-the-main-method"></a>Přidat metodu Main
 
-1. `src`  >   `App` Ve složce `app` přidejte třídu. `main`  >  `java`  >  Provedete to tak, `app` že vyberete složku, stisknete ALT + INSERT, vyberete **třídu Java**a pak zadáte název třídy.
+1. Ve `src`  >   `main`  >  `java`  >  `app` složce přidejte `App` třídu. Provedete to tak, že vyberete `app` složku, stisknete ALT + INSERT, vyberete **třídu Java**a pak zadáte název třídy.
 1. Otevřete `App` třídu a nahraďte obsah následujícím kódem. Tento kód obsahuje `main` metodu. 
 
     Nekomentovaný kód přečte parametry vyhledávací služby a použije je k vytvoření instance klienta služby Search Service. Kód klienta služby Search se přidá do další části.
@@ -258,7 +258,7 @@ Začněte otevřením NÁPADu IntelliJ a nastavením nového projektu.
 
 ### <a name="add-the-http-operations"></a>Přidat operace HTTP
 
-1. `src`  >   `SearchServiceClient` Ve složce `service` přidejte třídu. `main`  >  `java`  >  Provedete to tak, `service` že vyberete složku, stisknete ALT + INSERT, vyberete **třídu Java**a pak zadáte název třídy.
+1. Ve `src`  >   `main`  >  `java`  >  `service` složce přidejte `SearchServiceClient` třídu. Provedete to tak, že vyberete `service` složku, stisknete ALT + INSERT, vyberete **třídu Java**a pak zadáte název třídy.
 1. Otevřete `SearchServiceClient` třídu a nahraďte obsah následujícím kódem. Tento kód poskytuje operace HTTP vyžadované k použití REST API Azure Kognitivní hledání. Další metody pro vytvoření indexu, nahrání dokumentů a dotazování indexu budou přidány v pozdější části.
 
     ```java
@@ -375,7 +375,7 @@ Začněte otevřením NÁPADu IntelliJ a nastavením nového projektu.
     ![Adresářová struktura projektu](media/search-get-started-java/java-quickstart-basic-code-tree-plus-classes.png)
 
 1. Otevřete okno nástroje **Maven** a proveďte tento cíl Maven: `verify exec:java` 
- ![spusťte Maven cíl: ověřit exec: Java](media/search-get-started-java/java-quickstart-execute-maven-goal.png)
+ ![ Spusťte Maven cíl: ověřit exec: Java](media/search-get-started-java/java-quickstart-execute-maven-goal.png)
 
 Po dokončení zpracování vyhledejte zprávu o úspěchu sestavení následovaný nulou (0) ukončovacím kódem.
 
@@ -383,7 +383,7 @@ Po dokončení zpracování vyhledejte zprávu o úspěchu sestavení následova
 
 Definice indexu hotelů obsahuje jednoduchá pole a jedno komplexní pole. Příkladem jednoduchého pole jsou "hotely" nebo "Description". Pole adresa je komplexní pole, protože obsahuje podpole, jako je například ulice a město. V tomto rychlém startu je definice indexu určena pomocí formátu JSON.
 
-1. V okně **projektu** rozbalte `src`  >   `main`  > `resources`  >  `service` zdrojový strom pro přístup ke složce a přidejte `index.json` soubor. Provedete to tak, `app` že vyberete složku, stisknete ALT + INSERT, vyberete **soubor**a pak zadáte název souboru.
+1. V okně **projektu** rozbalte zdrojový strom pro přístup ke `src`  >   `main`  > `resources`  >  `service` složce a přidejte `index.json` soubor. Provedete to tak, že vyberete `app` složku, stisknete ALT + INSERT, vyberete **soubor**a pak zadáte název souboru.
 
 1. Otevřete `index.json` soubor a vložte následující definici indexu.
 
@@ -512,9 +512,9 @@ Definice indexu hotelů obsahuje jednoduchá pole a jedno komplexní pole. Pří
 
     Název indexu bude "hotely-rychlý Start". Atributy polí indexu určují, jak lze v aplikaci vyhledat indexovaná data. Například `IsSearchable` atribut musí být přiřazen každému poli, které by mělo být zahrnuto do fulltextového vyhledávání. Další informace o atributech naleznete v tématu [kolekce polí a atributy polí](search-what-is-an-index.md#fields-collection).
     
-    `Description` Pole v tomto indexu používá volitelnou `analyzer` vlastnost k přepsání výchozího analyzátoru jazyka Lucene. Toto `Description_fr` pole používá analyzátor `fr.lucene` Lucene pro francouzštinu, protože ukládá francouzský text. `Description` Používá volitelnou jazykovou analyzátoru Microsoft en. Lucene. Další informace o analyzátorech najdete v tématu [analyzátory pro zpracování textu v Azure kognitivní hledání](search-analyzers.md).
+    `Description`Pole v tomto indexu používá volitelnou `analyzer` vlastnost k přepsání výchozího analyzátoru jazyka Lucene. Toto `Description_fr` pole používá analyzátor Lucene pro francouzštinu, `fr.lucene` protože ukládá francouzský text. Používá `Description` volitelnou jazykovou analyzátoru Microsoft en. Lucene. Další informace o analyzátorech najdete v tématu [analyzátory pro zpracování textu v Azure kognitivní hledání](search-analyzers.md).
 
-1. Do `SearchServiceClient` třídy přidejte následující kód. Tyto metody sestavují adresy URL služby Azure Kognitivní hledání REST, které vytvářejí a odstraňují index a které určují, jestli index existuje. Metody také vytvářejí požadavek protokolu HTTP.
+1. Do třídy přidejte následující kód `SearchServiceClient` . Tyto metody sestavují adresy URL služby Azure Kognitivní hledání REST, které vytvářejí a odstraňují index a které určují, jestli index existuje. Metody také vytvářejí požadavek protokolu HTTP.
 
     ```java
     public boolean indexExists() throws IOException, InterruptedException {
@@ -554,7 +554,7 @@ Definice indexu hotelů obsahuje jednoduchá pole a jedno komplexní pole. Pří
     }
     ```
 
-1. Odkomentujte následující kód ve `App` třídě. Tento kód odstraní index "hotely-rychlé spuštění", pokud existuje, a vytvoří nový index na základě definice indexu v souboru index. JSON. 
+1. Odkomentujte následující kód ve `App` třídě. Tento kód odstraní index "hotely-rychlé spuštění", pokud existuje, a vytvoří nový index na základě definice indexu v souboru "index.jsna". 
 
     Po požadavku na vytvoření indexu je vloženo pozastavení s jednou sekundou. Tím se zajistí, že se index vytvoří před odesláním dokumentů.
 
@@ -570,7 +570,7 @@ Definice indexu hotelů obsahuje jednoduchá pole a jedno komplexní pole. Pří
     
 ## <a name="2---load-documents"></a>2. načtení dokumentů
 
-1. V okně **projektu** rozbalte `src`  >   `main`  > `resources`  >  `service` zdrojový strom pro přístup ke složce a přidejte `hotels.json` soubor. Provedete to tak, `app` že vyberete složku, stisknete ALT + INSERT, vyberete **soubor**a pak zadáte název souboru.
+1. V okně **projektu** rozbalte zdrojový strom pro přístup ke `src`  >   `main`  > `resources`  >  `service` složce a přidejte `hotels.json` soubor. Provedete to tak, že vyberete `app` složku, stisknete ALT + INSERT, vyberete **soubor**a pak zadáte název souboru.
 1. Do souboru vložte následující hotelové dokumenty.
 
     ```json
@@ -656,7 +656,7 @@ Definice indexu hotelů obsahuje jednoduchá pole a jedno komplexní pole. Pří
     }
     ```
 
-1. Do `SearchServiceClient` třídy vložte následující kód. Tento kód vytvoří adresu URL služby REST pro nahrání hotelových dokumentů do indexu a pak provede požadavek HTTP POST.
+1. Do třídy vložte následující kód `SearchServiceClient` . Tento kód vytvoří adresu URL služby REST pro nahrání hotelových dokumentů do indexu a pak provede požadavek HTTP POST.
 
     ```java
     public boolean uploadDocuments(String documentsFile) throws IOException, InterruptedException {
@@ -675,7 +675,7 @@ Definice indexu hotelů obsahuje jednoduchá pole a jedno komplexní pole. Pří
     }
     ```
 
-1. Odkomentujte následující kód ve `App` třídě. Tento kód nahraje dokumenty do indexu v "hotely. JSON".
+1. Odkomentujte následující kód ve `App` třídě. Tento kód nahraje dokumenty v "hotels.json" do indexu.
 
     ```java
     client.uploadDocuments("/service/hotels.json");
@@ -694,11 +694,11 @@ Definice indexu hotelů obsahuje jednoduchá pole a jedno komplexní pole. Pří
 
 Teď, když jste načetli dokumenty hotelů, můžete vytvořit vyhledávací dotazy pro přístup k datům hotelů.
 
-1. Do `SearchServiceClient` třídy přidejte následující kód. Tento kód sestaví adresy URL služby Azure Kognitivní hledání REST pro hledání indexovaných dat a vytiskne výsledky hledání.
+1. Do třídy přidejte následující kód `SearchServiceClient` . Tento kód sestaví adresy URL služby Azure Kognitivní hledání REST pro hledání indexovaných dat a vytiskne výsledky hledání.
 
-    `SearchOptions` Třída a `createSearchOptions` metoda vám umožní určit podmnožinu dostupných možností dotazu REST API kognitivní hledání Azure. Další informace o možnostech dotazů REST API najdete v tématu [Search Documents (Azure Kognitivní hledání REST API)](/rest/api/searchservice/search-documents).
+    `SearchOptions`Třída a `createSearchOptions` Metoda vám umožní určit podmnožinu dostupných možností dotazu REST API kognitivní hledání Azure. Další informace o možnostech dotazů REST API najdete v tématu [Search Documents (Azure Kognitivní hledání REST API)](/rest/api/searchservice/search-documents).
 
-    `SearchPlus` Metoda vytvoří adresu URL vyhledávacího dotazu, provede požadavek hledání a pak výsledky vytiskne do konzoly. 
+    `SearchPlus`Metoda vytvoří adresu URL vyhledávacího dotazu, provede požadavek hledání a pak výsledky vytiskne do konzoly. 
 
     ```java
     public SearchOptions createSearchOptions() { return new SearchOptions();}

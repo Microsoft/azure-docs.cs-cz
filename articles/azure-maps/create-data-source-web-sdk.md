@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen
-ms.openlocfilehash: 1675d63fd3a65beda46042f4a78535bb4e066e62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7c23e659463364c5e1a497ead138abb4c696627a
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77190234"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207494"
 ---
 # <a name="create-a-data-source"></a>Vytvoření zdroje dat
 
@@ -22,11 +22,52 @@ Sada Azure Maps Web SDK ukládá data do zdrojů dat. Použití zdrojů dat opti
 
 **Zdroj dat pro injson**
 
-Načtení zdroje dat založeného na bázi standardu JSON a uložení dat `DataSource` místně pomocí třídy. Data typu injson lze ručně vytvořit nebo vytvořit pomocí tříd pomocníka v oboru názvů [Atlas. data](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data) . `DataSource` Třída poskytuje funkce pro import místních nebo vzdálených souborů injson. Vzdálené soubory typu injson musí být hostované na koncovém bodu s povoleným CORs. `DataSource` Třída poskytuje funkce pro data bodu clusteringu. A data lze snadno přidat, odebrat a aktualizovat pomocí `DataSource` třídy.
+Načtení zdroje dat založeného na bázi standardu JSON a uložení dat místně pomocí `DataSource` třídy. Data typu injson lze ručně vytvořit nebo vytvořit pomocí tříd pomocníka v oboru názvů [Atlas. data](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data) . `DataSource`Třída poskytuje funkce pro import místních nebo vzdálených souborů injson. Vzdálené soubory typu injson musí být hostované na koncovém bodu s povoleným CORs. `DataSource`Třída poskytuje funkce pro data bodu clusteringu. A data lze snadno přidat, odebrat a aktualizovat pomocí `DataSource` třídy. Následující kód ukazuje, jak lze vytvořit data v Azure Maps.
 
+```Javascript
+//Create raw GeoJSON object.
+var rawGeoJson = {
+     "type": "Feature",
+     "geometry": {
+         "type": "Point",
+         "coordinates": [-100, 45]
+     },
+     "properties": {
+         "custom-property": "value"
+     }
+};
+
+//Create GeoJSON using helper classes (less error prone).
+var geoJsonClass = new atlas.data.Feature(new atlas.data.Point([-100, 45]), {
+    "custom-property": "value"
+}); 
+```
+
+Po vytvoření se zdroje dat dají přidat do mapy prostřednictvím `map.sources` vlastnosti, která je [SourceManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.sourcemanager). Následující kód ukazuje, jak vytvořit `DataSource` a přidat ho do mapy.
+
+```javascript
+//Create a data source and add it to the map.
+var dataSource = new atlas.source.DataSource();
+map.sources.add(dataSource);
+```
+
+Následující kód ukazuje různé způsoby, jak mohou být data typu injson přidána do `DataSource` .
+
+```Javascript
+//GeoJsonData in the following code can be a single or array of GeoJSON features or geometries, a GeoJSON feature colleciton, or a single or array of atlas.Shape objects.
+
+//Add geoJSON object to data source. 
+dataSource.add(geoJsonData);
+
+//Load geoJSON data from URL. URL should be on a CORs enabled endpoint.
+dataSource.importDataFromUrl(geoJsonUrl);
+
+//Overwrite all data in data source.
+dataSource.setShapes(geoJsonData);
+```
 
 > [!TIP]
-> Řekněme, že chcete přepsat všechna data v `DataSource`. Pokud provedete volání funkcí `clear` then `add` , mapa může znovu vykreslovat dvakrát, což může způsobit trochu zpoždění. Místo toho použijte `setShapes` funkci, která odebere a nahradí všechna data ve zdroji dat a aktivuje pouze jedno opakované vykreslování mapy.
+> Řekněme, že chcete přepsat všechna data v `DataSource` . Pokud provedete volání `clear` funkcí then `add` , mapa může znovu vykreslovat dvakrát, což může způsobit trochu zpoždění. Místo toho použijte `setShapes` funkci, která odebere a nahradí všechna data ve zdroji dat a aktivuje pouze jedno opakované vykreslování mapy.
 
 **Zdroj vektorové dlaždice**
 
@@ -37,15 +78,7 @@ Zdroj vektorové dlaždice popisuje, jak přistupovat k vrstvě vektorové dlaž
  - Změna stylu dat ve vektorových mapách nepotřebuje stahovat data znovu, protože nový styl lze použít na straně klienta. Naopak změna stylu vrstvy rastrového dlaždice obvykle vyžaduje načtení dlaždic ze serveru a následné použití nového stylu.
  - Vzhledem k tomu, že data jsou doručena v vektorovém formátu, je pro přípravu dat vyžadováno méně zpracování na straně serveru. V důsledku toho je možné novější data zpřístupnit rychleji.
 
-Všechny vrstvy, které používají vektorový zdroj, musí `sourceLayer` určovat hodnotu.
-
-Po vytvoření se zdroje dat dají přidat do mapy prostřednictvím `map.sources` vlastnosti, která je [SourceManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.sourcemanager). Následující kód ukazuje, jak vytvořit `DataSource` a přidat ho do mapy.
-
-```javascript
-//Create a data source and add it to the map.
-var dataSource = new atlas.source.DataSource();
-map.sources.add(dataSource);
-```
+Všechny vrstvy, které používají vektorový zdroj, musí určovat `sourceLayer` hodnotu.
 
 Azure Maps dodržuje [specifikaci vektorové dlaždice Mapbox](https://github.com/mapbox/vector-tile-spec), což je otevřený standard.
 

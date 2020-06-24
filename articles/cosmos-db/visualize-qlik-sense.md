@@ -4,15 +4,15 @@ description: Tento článek popisuje kroky potřebné k připojení Azure Cosmos
 ms.service: cosmos-db
 author: SnehaGunda
 ms.author: sngun
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 3a955060eb5f19544860c1c97abe1577084bef24
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 986db85ddbf741dc459625dbd763b9cbbba1c429
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67985549"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263343"
 ---
 # <a name="connect-qlik-sense-to-azure-cosmos-db-and-visualize-your-data"></a>Připojte Qlik smysl pro Azure Cosmos DB a vizualizaci dat
 
@@ -54,7 +54,7 @@ Než budete postupovat podle pokynů v tomto článku, ujistěte se, že máte p
 
 1. Otevřete Qlik smysl a vyberte **vytvořit novou aplikaci**. Zadejte název vaší aplikace a vyberte **vytvořit**.
 
-   ![Vytvoření nové aplikace pro rozpoznávání Qlik](./media/visualize-qlik-sense/create-new-qlik-sense-app.png)
+   :::image type="content" source="./media/visualize-qlik-sense/create-new-qlik-sense-app.png" alt-text="Vytvoření nové aplikace pro rozpoznávání Qlik":::
 
 2. Po úspěšném vytvoření nové aplikace vyberte **otevřít aplikaci** a zvolte možnost **Přidat data ze souborů a dalších zdrojů**. 
 
@@ -62,15 +62,15 @@ Než budete postupovat podle pokynů v tomto článku, ujistěte se, že máte p
 
 4. Přepněte na **uživatelské DSN** a vyberte připojení ODBC, které jste vytvořili dříve. Zadejte název připojení a vyberte **vytvořit**. 
 
-   ![Vytvoření nového připojení](./media/visualize-qlik-sense/create-new-connection.png)
+   :::image type="content" source="./media/visualize-qlik-sense/create-new-connection.png" alt-text="Vytvoření nového připojení":::
 
 5. Po vytvoření připojení můžete zvolit databázi, kolekci, ve které se nachází data hry, a pak je zobrazíte ve verzi Preview.
 
-   ![Zvolit databázi a kolekci](./media/visualize-qlik-sense/choose-database-and-collection.png) 
+   :::image type="content" source="./media/visualize-qlik-sense/choose-database-and-collection.png" alt-text="Zvolit databázi a kolekci"::: 
 
 6. V dalším kroku vyberte **Přidat data** , aby se data načetla do Qlik. Po načtení dat do Qlikového rozpoznávání můžete vygenerovat přehledy a provádět analýzy dat. Můžete buď použít přehledy nebo sestavit vlastní aplikaci a prozkoumat si prodejní hry. Následující obrázek ukazuje 
 
-   ![Vizualizace dat](./media/visualize-qlik-sense/visualize-data.png)
+   :::image type="content" source="./media/visualize-qlik-sense/visualize-data.png" alt-text="Vizualizace dat":::
 
 ### <a name="limitations-when-connecting-with-odbc"></a>Omezení při připojování pomocí rozhraní ODBC 
 

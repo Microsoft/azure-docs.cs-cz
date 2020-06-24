@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ef127d120b32f5344bce0f68d79f48401087f0ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79263995"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84691057"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>Eliminace špatných hesel v rámci organizace
 
@@ -111,7 +111,7 @@ Normalizace má dvě části.  Nejprve se všechna velká písmena změní na ma
 | '$'  | jeho |
 | '\@'  | určitého |
 
-Příklad: Předpokládejme, že heslo "prázdné" je zakázáno a uživatel se pokusí změnit heslo na "Bl@nK". I kdyžBl@nknení výslovně zakázaná, proces normalizace toto heslo převede na "prázdné", což je zakázané heslo.
+Příklad: Předpokládejme, že heslo "prázdné" je zakázáno a uživatel se pokusí změnit heslo na " Bl@nK ". I když Bl@nk není výslovně zakázaná, proces normalizace toto heslo převede na "prázdné", což je zakázané heslo.
 
 ### <a name="step-2-check-if-password-is-considered-banned"></a>Krok 2: ověření, jestli se heslo považuje za zakázané
 
@@ -147,7 +147,7 @@ Po normalizaci se toto heslo bude "contosoblank12". Odpovídající proces zjist
 
 [contoso] + [prázdné] + [1] + [2] = 4 body vzhledem k tomu, že toto heslo je pod pěti (5) body, bude odmítnuto.
 
-Příklad: uživatel změní heslo na "ContoS0Bl@nkf9!".
+Příklad: uživatel změní heslo na " ContoS0Bl@nkf9 !".
 
 Po normalizaci se toto heslo bude "contosoblankf9!". Odpovídající proces zjistí, že toto heslo obsahuje dvě zakázaná hesla: contoso a prázdné. Toto heslo pak předané skóre:
 

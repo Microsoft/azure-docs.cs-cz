@@ -5,14 +5,14 @@ author: luisbosquez
 ms.author: lbosq
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/06/2019
-ms.openlocfilehash: 42f3c7f3351bddab429489dccf28587549d76e18
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 45bfba5b0ab25aa9930719f136428ccc0df5014d
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78897852"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263557"
 ---
 # <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>Použití Azure Cosmos DBch tokenů prostředků v sadě SDK pro Gremlin
 
@@ -24,13 +24,13 @@ Sada Apache TinkerPop Gremlin SDK nemá rozhraní API, které by bylo možné po
 
 Hierarchie objektového modelu nad tokeny prostředků je znázorněná v následujícím přehledu:
 
-- **Azure Cosmos DB účet** – entita nejvyšší úrovně, která má k sobě PŘIDRUŽENOU službu DNS (například `contoso.gremlin.cosmos.azure.com`).
+- **Azure Cosmos DB účet** – entita nejvyšší úrovně, která má k sobě PŘIDRUŽENOU službu DNS (například `contoso.gremlin.cosmos.azure.com` ).
   - **Azure Cosmos DB databáze**
     - **Uživatel**
       - **Oprávnění**
         - **Token** – vlastnost objektu oprávnění, která označuje, které akce jsou povoleny nebo odepřeny.
 
-Token prostředku používá následující formát: `"type=resource&ver=1&sig=<base64 string>;<base64 string>;"`. Tento řetězec je neprůhledný pro klienty a měl by se používat tak, jak je, bez úprav nebo výkladu.
+Token prostředku používá následující formát: `"type=resource&ver=1&sig=<base64 string>;<base64 string>;"` . Tento řetězec je neprůhledný pro klienty a měl by se používat tak, jak je, bez úprav nebo výkladu.
 
 ```csharp
 // Notice that document client is created against .NET SDK endpoint, rather than Gremlin.

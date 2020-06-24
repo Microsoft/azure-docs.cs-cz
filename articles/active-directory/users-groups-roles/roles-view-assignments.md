@@ -7,18 +7,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f04bd7788a9cc9657e14aedfb153182d6e53eb95
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 20e566a450768fca81e29692f7c8d2da3ccf5201
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259705"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84731558"
 ---
 # <a name="view-custom-role-assignments-in-azure-active-directory"></a>Zobrazení přiřazení vlastních rolí v Azure Active Directory
 
@@ -31,7 +31,7 @@ Tento článek popisuje, jak zobrazit vlastní role, které jste přiřadili v A
 
 Tento postup popisuje zobrazení přiřazení role s rozsahem v rámci organizace.
 
-1. Přihlaste se do  [centra pro správu Azure AD](https://aad.portal.azure.com)pomocí oprávnění správce privilegované role nebo globální správce v organizaci Azure AD.
+1. Přihlaste se do [centra pro správu Azure AD](https://aad.portal.azure.com)   pomocí oprávnění správce privilegované role nebo globální správce v organizaci Azure AD.
 1. Vyberte **Azure Active Directory**, vyberte **role a správci**a pak vyberte roli, kterou chcete otevřít, a zobrazte její vlastnosti.
 1. Vyberte **přiřazení** a zobrazte přiřazení pro danou roli.
 
@@ -104,7 +104,7 @@ HTTP/1.1 200 OK
 
 Tato část popisuje zobrazení přiřazení role s oborem jedné aplikace. Tato funkce je aktuálně ve verzi Public Preview.
 
-1. Přihlaste se do  [centra pro správu Azure AD](https://aad.portal.azure.com)pomocí oprávnění správce privilegované role nebo globální správce v organizaci Azure AD.
+1. Přihlaste se do [centra pro správu Azure AD](https://aad.portal.azure.com)   pomocí oprávnění správce privilegované role nebo globální správce v organizaci Azure AD.
 1. Vyberte **Registrace aplikací**a pak vyberte registraci aplikace a zobrazte její vlastnosti. Možná budete muset vybrat **všechny aplikace** , abyste viděli úplný seznam registrací aplikací ve vaší organizaci Azure AD.
 
     ![Vytvoření nebo úprava registrací aplikací ze stránky Registrace aplikací](./media/roles-create-custom/appreg-all-apps.png)

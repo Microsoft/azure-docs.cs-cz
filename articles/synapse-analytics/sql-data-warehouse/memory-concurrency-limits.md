@@ -6,17 +6,17 @@ author: ronortloff
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: cd2511dcbf2e387a6f324742219b81c927b534af
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 443ac9ee1c2f05cf90e866793449220d71e37b89
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83636390"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85210657"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-synapse-analytics"></a>Omezení paměti a souběžnosti pro Azure synapse Analytics
 
@@ -68,11 +68,11 @@ V rámci zavedení [skupin úloh](sql-data-warehouse-workload-isolation.md)už k
 |DW2500c|48|2 %|
 |DW3000c|64|1,5%|
 |DW5000c|64|1,5%|
-|DW6000c|128|0,75%|
-|DW7500c|128|0,75%|
-|DW10000c|128|0,75%|
-|DW15000c|128|0,75%|
-|DW30000c|128|0,75%|
+|DW6000c|128|0,75 %|
+|DW7500c|128|0,75 %|
+|DW10000c|128|0,75 %|
+|DW15000c|128|0,75 %|
+|DW30000c|128|0,75 %|
 ||||
 
 ## <a name="concurrency-maximums-for-resource-classes"></a>Maximální počet souběžnosti pro třídy prostředků

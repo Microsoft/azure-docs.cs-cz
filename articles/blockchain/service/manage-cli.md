@@ -2,20 +2,20 @@
 title: Správa služby Azure blockchain pomocí Azure CLI
 description: Jak spravovat službu Azure blockchain pomocí Azure CLI
 ms.date: 11/22/2019
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: janders
-ms.openlocfilehash: ac75be644877905c1517395c1c789b1ea16fd49c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc00bedee5ff55033a1d65c6d5d6bfa766f0f01e
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74455581"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85208157"
 ---
 # <a name="manage-azure-blockchain-service-using-azure-cli"></a>Správa služby Azure blockchain pomocí Azure CLI
 
 Kromě Azure Portal můžete použít rozhraní příkazového řádku Azure ke správě členů blockchain a uzlů transakcí pro službu Azure blockchain.
 
-Ujistěte se, že máte nainstalované nejnovější rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) a přihlásili jste se k `az login`účtu Azure v nástroji.
+Ujistěte se, že máte nainstalované nejnovější rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) a přihlásili jste se k účtu Azure v nástroji `az login` .
 
 V následujících příkladech nahraďte příklady `<parameter names>` vlastními hodnotami.
 
@@ -37,7 +37,7 @@ az resource create \
 | **Skupina prostředků** | Název skupiny prostředků, kde se vytvářejí prostředky služby Azure blockchain. |
 | **Jméno** | Jedinečný název, který identifikuje svého člena blockchain služby Azure blockchain. Název se používá pro adresu veřejného koncového bodu. Například, `myblockchainmember.blockchain.azure.com`. |
 | **oblasti** | Oblast Azure, ve které je vytvořen člen blockchain. Například, `eastus`. Vyberte umístění co nejblíže vašim uživatelům nebo vašim dalším aplikacím Azure. |
-| **heslo** | Heslo k členskému účtu. Heslo pro členský účet se používá k ověření veřejného koncového bodu člena blockchain pomocí základního ověřování. Heslo musí splňovat tři z následujících čtyř požadavků: délka musí být v rozmezí 12 & 72 znaků, 1 malé písmeno, 1 velké písmeno, 1 číslo a 1 speciální znak, který není znak # (#), procenta (%), čárka (,), hvězdička (*), znaková uvozovka (\`), dvojité uvozovky ("), jednoduché uvozovky ('), spojovníky (-) a semicolumn (;)|
+| **heslo** | Heslo k členskému účtu. Heslo pro členský účet se používá k ověření veřejného koncového bodu člena blockchain pomocí základního ověřování. Heslo musí splňovat tři z následujících čtyř požadavků: délka musí být v rozmezí 12 & 72 znaků, 1 malé písmeno, 1 velké písmeno, 1 číslo a 1 speciální znak, který není znak # (#), procenta (%), čárka (,), hvězdička (*), znaková uvozovka ( \` ), dvojité uvozovky ("), jednoduché uvozovky ('), spojovníky (-) a semicolumn (;)|
 | **protokol** | Verze Public Preview podporuje kvorum. |
 | **konsorci** | Název konsorcia, která se má připojit nebo vytvořit |
 | **consortiumManagementAccountPassword** | Heslo pro správu konsorcia. Heslo se používá pro připojení k konsorciu. |
@@ -63,7 +63,7 @@ az resource update \
 |---------|-------------|
 | **Skupina prostředků** | Název skupiny prostředků, kde se vytvářejí prostředky služby Azure blockchain. |
 | **Jméno** | Název, který identifikuje člena služby Azure blockchain. |
-| **heslo** | Heslo k členskému účtu. Heslo musí splňovat tři z následujících čtyř požadavků: délka musí být v rozmezí 12 & 72 znaků, 1 malé písmeno, 1 velké písmeno, 1 číslo a 1 speciální znak, který není znak čísla (#), procenta (%), čárka (,), hvězdička (*), znaková uvozovka (\`), dvojité uvozovky ("), jednoduché uvozovky ('), pomlčky (-) a středník (;) |
+| **heslo** | Heslo k členskému účtu. Heslo musí splňovat tři z následujících čtyř požadavků: délka musí být v rozmezí 12 & 72 znaků, 1 malé písmeno, 1 velké písmeno, 1 číslo a 1 speciální znak, který není znak čísla (#), procenta (%), čárka (,), hvězdička (*), znaková uvozovka ( \` ), dvojité uvozovky ("), jednoduché uvozovky ('), pomlčky (-) a středník (;) |
 
 ## <a name="create-transaction-node"></a>Vytvořit uzel transakce
 
@@ -83,7 +83,7 @@ az resource create \
 | **Skupina prostředků** | Název skupiny prostředků, kde se vytvářejí prostředky služby Azure blockchain. |
 | **Jméno** | Název členu blockchain služby Azure blockchain, který obsahuje také název nového transakčního uzlu. |
 | **oblasti** | Oblast Azure, ve které je vytvořen člen blockchain. Například, `eastus`. Vyberte umístění co nejblíže vašim uživatelům nebo vašim dalším aplikacím Azure. |
-| **heslo** | Heslo uzlu transakce. Heslo musí splňovat tři z následujících čtyř požadavků: délka musí být v rozmezí 12 & 72 znaků, 1 malé písmeno, 1 velké písmeno, 1 číslo a 1 speciální znak, který není znak čísla (#), procenta (%), čárka (,), hvězdička (*), znaková uvozovka (\`), dvojité uvozovky ("), jednoduché uvozovky ('), pomlčky (-) a středník (;) |
+| **heslo** | Heslo uzlu transakce. Heslo musí splňovat tři z následujících čtyř požadavků: délka musí být v rozmezí 12 & 72 znaků, 1 malé písmeno, 1 velké písmeno, 1 číslo a 1 speciální znak, který není znak čísla (#), procenta (%), čárka (,), hvězdička (*), znaková uvozovka ( \` ), dvojité uvozovky ("), jednoduché uvozovky ('), pomlčky (-) a středník (;) |
 | **ruleName** | Název pravidla povoleného rozsahu IP adres. Volitelný parametr pro pravidla brány firewall. |
 | **startIpAddress** | Začátek rozsahu IP adres pro seznam povolených. Volitelný parametr pro pravidla brány firewall. |
 | **endIpAddress** | Konec rozsahu IP adres pro seznam povolených. Volitelný parametr pro pravidla brány firewall.|
@@ -104,7 +104,7 @@ az resource update \
 |---------|-------------|
 | **Skupina prostředků** | Název skupiny prostředků, ve které existují prostředky služby Azure blockchain. |
 | **Jméno** | Název členu blockchain služby Azure blockchain, který obsahuje také název nového transakčního uzlu. |
-| **heslo** | Heslo uzlu transakce. Heslo musí splňovat tři z následujících čtyř požadavků: délka musí být v rozmezí 12 & 72 znaků, 1 malé písmeno, 1 velké písmeno, 1 číslo a 1 speciální znak, který není znak čísla (#), procenta (%), čárka (,), hvězdička (*), znaková uvozovka (\`), dvojité uvozovky ("), jednoduché uvozovky ('), pomlčky (-) a středník (;) |
+| **heslo** | Heslo uzlu transakce. Heslo musí splňovat tři z následujících čtyř požadavků: délka musí být v rozmezí 12 & 72 znaků, 1 malé písmeno, 1 velké písmeno, 1 číslo a 1 speciální znak, který není znak čísla (#), procenta (%), čárka (,), hvězdička (*), znaková uvozovka ( \` ), dvojité uvozovky ("), jednoduché uvozovky ('), pomlčky (-) a středník (;) |
 
 ## <a name="change-consortium-management-account-password"></a>Změnit heslo účtu správy konsorcia
 
@@ -123,7 +123,7 @@ az resource update \
 |---------|-------------|
 | **Skupina prostředků** | Název skupiny prostředků, kde se vytvářejí prostředky služby Azure blockchain. |
 | **Jméno** | Název, který identifikuje člena služby Azure blockchain. |
-| **consortiumManagementAccountPassword** | Heslo účtu správy konsorcia. Heslo musí splňovat tři z následujících čtyř požadavků: délka musí být v rozmezí 12 & 72 znaků, 1 malé písmeno, 1 velké písmeno, 1 číslo a 1 speciální znak, který není znak čísla (#), procenta (%), čárka (,), hvězdička (*), znaková uvozovka (\`), dvojité uvozovky ("), jednoduché uvozovky ('), pomlčky (-) a středník (;) |
+| **consortiumManagementAccountPassword** | Heslo účtu správy konsorcia. Heslo musí splňovat tři z následujících čtyř požadavků: délka musí být v rozmezí 12 & 72 znaků, 1 malé písmeno, 1 velké písmeno, 1 číslo a 1 speciální znak, který není znak čísla (#), procenta (%), čárka (,), hvězdička (*), znaková uvozovka ( \` ), dvojité uvozovky ("), jednoduché uvozovky ('), pomlčky (-) a středník (;) |
   
 ## <a name="update-firewall-rules"></a>Aktualizovat pravidla brány firewall
 
@@ -178,7 +178,7 @@ az resource invoke-action \
 |---------|-------------|
 | **Skupina prostředků** | Název skupiny prostředků, ve které existují prostředky služby Azure blockchain. |
 | **Jméno** | Název členu blockchain služby Azure blockchain, který obsahuje také název nového transakčního uzlu. |
-| **Klíče** | Nahraďte \<hodnotu\> key2 buď klíč1 nebo. |
+| **Klíče** | Nahraďte \<keyValue\> buď klíč1 nebo key2. |
 
 ## <a name="delete-a-transaction-node"></a>Odstraní uzel transakce.
 

@@ -6,19 +6,19 @@ author: curtand
 ms.author: curtand
 manager: mtillman
 ms.date: 04/27/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca30d5b050a34000fa7c6465356aba206aeaa8e4
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 3fc393279aaa6b293c2eb29099be45385ad08d9a
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203337"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84731492"
 ---
 # <a name="bulk-delete-users-in-azure-active-directory"></a>Hromadné odstranění uživatelů v Azure Active Directory
 
@@ -35,7 +35,7 @@ Stáhněte si a vyplňte šablonu sdíleného svazku clusteru, abyste mohli úsp
 Řádky ve stažené šabloně CSV jsou následující:
 
 - **Číslo verze**: první řádek obsahující číslo verze musí být zahrnut do souboru CSV pro nahrávání.
-- **Záhlaví sloupců**: formát záhlaví sloupců je &lt; *název* &gt; položky [PropertyName] &lt; *povinný nebo prázdný*&gt;. Například, `User name [userPrincipalName] Required`. Některé starší verze šablony mohou mít drobné variace.
+- **Záhlaví sloupců**: formát záhlaví sloupců je &lt; *název položky* &gt; [PropertyName] &lt; *povinný nebo prázdný* &gt; . Například, `User name [userPrincipalName] Required`. Některé starší verze šablony mohou mít drobné variace.
 - **Řádek příklady**: v šabloně jsme zahrnuli řádek příkladů přípustných hodnot pro každý sloupec. Řádek příklady musíte odebrat a nahradit ho vlastními položkami.
 
 ### <a name="additional-guidance"></a>Další doprovodné materiály
@@ -48,7 +48,7 @@ Stáhněte si a vyplňte šablonu sdíleného svazku clusteru, abyste mohli úsp
 ## <a name="to-bulk-delete-users"></a>Hromadné odstranění uživatelů
 
 1. [Přihlaste se ke svojí organizaci Azure AD](https://aad.portal.azure.com) pomocí účtu, který je správcem uživatele v organizaci.
-1. V Azure AD vyberte **Uživatelé** > **hromadného odstranění**.
+1. V Azure AD vyberte **Uživatelé**  >  **hromadného odstranění**.
 1. Na stránce **hromadné odstranění uživatele** vyberte **Stáhnout** pro příjem platného souboru CSV vlastností uživatele.
 
    ![Vyberte místní soubor CSV, ve kterém chcete vypsat uživatele, které chcete odstranit.](./media/users-bulk-delete/bulk-delete.png)
@@ -76,7 +76,7 @@ V dalším kroku se můžete podívat, že uživatelé, které jste odstranili, 
 
 1. Přihlaste se k Azure Portal pomocí účtu, který je správcem uživatele v organizaci.
 1. V navigačním podokně vyberte **Azure Active Directory**.
-1. V části **Spravovat** vyberte **Uživatele**.
+1. V části **Spravovat** vyberte **Uživatelé**.
 1. V části **Zobrazit**vyberte možnost **Všichni uživatelé** a ověřte, že uživatelé, které jste odstranili, již nejsou uvedeni.
 
 ### <a name="verify-deleted-users-with-powershell"></a>Ověření odstraněných uživatelů pomocí PowerShellu

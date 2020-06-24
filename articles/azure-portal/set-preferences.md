@@ -6,15 +6,15 @@ keywords: nastavení, časový limit, jazyk, oblast
 author: mgblythe
 ms.author: mblythe
 ms.date: 12/19/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: a3f51c356f4476782bb830b2702a8fe87c79235c
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: d4c675ab18a7a9231229ce0c7de9a7450dc1baa8
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84308060"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763954"
 ---
 # <a name="set-your-azure-portal-preferences"></a>Nastavení předvoleb pro Azure Portal
 
@@ -29,7 +29,7 @@ Výchozí nastavení Azure Portal můžete změnit tak, aby splňovalo vaše vla
 
 ## <a name="change-general-portal-settings"></a>Změnit obecné nastavení portálu
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. V záhlaví globální stránky vyberte **Nastavení** .
 
     ![Snímek obrazovky zobrazující ikony záhlaví globálních stránek s zvýrazněným nastavením](./media/set-preferences/header-settings.png)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 022942778b714d5d66ce6eeb2c29351b11c66e40
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 79b6d7f84cd54979421357efa94c5c6de38fb4f1
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996240"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261388"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>Nejčastější dotazy týkající se shromažďování dat, agentů a pracovních prostorů
 
@@ -27,7 +27,7 @@ Security Center shromažďuje data z virtuálních počítačů Azure, sady šk�
 
 ## <a name="am-i-billed-for-azure-monitor-logs-on-the-workspaces-created-by-security-center"></a>Účtují se mi Azure Monitor protokoly v pracovních prostorech vytvořených pomocí Security Center?
 
-No. Pracovní prostory vytvořené pomocí Security Center, i když jsou nakonfigurované pro Azure Monitor protokolů za uzel, se neúčtují Azure Monitor poplatky. Security Center fakturace je vždycky založená na vašich Security Center zásadách zabezpečení a řešeních, která jsou nainstalovaná v pracovním prostoru:
+Ne. Pracovní prostory vytvořené pomocí Security Center, i když jsou nakonfigurované pro Azure Monitor protokolů za uzel, se neúčtují Azure Monitor poplatky. Security Center fakturace je vždycky založená na vašich Security Center zásadách zabezpečení a řešeních, která jsou nainstalovaná v pracovním prostoru:
 
 - **Úroveň Free** – Security Center ve výchozím pracovním prostoru povolí řešení ' SecurityCenterFree '. Za bezplatnou úroveň se vám nebude účtovat.
 
@@ -39,6 +39,25 @@ Další informace o cenách najdete v tématu [Security Center ceny](https://azu
 > Cenová úroveň Log Analytics pracovních prostorů vytvořených pomocí Security Center nemá vliv na Security Centerou fakturaci.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+
+## <a name="what-is-the-log-analytics-agent"></a>Co je agent Log Analytics?
+
+Pokud chcete monitorovat ohrožení zabezpečení a hrozby, Azure Security Center závisí na [agentu Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent) – to je stejný agent, kterého používá služba Azure monitor. 
+
+Agent se někdy označuje jako Microsoft Monitoring Agent (nebo "MMA"). 
+
+Agent shromažďuje různé podrobnosti konfigurace a protokoly událostí související se zabezpečením z připojených počítačů a pak zkopíruje data do vašeho pracovního prostoru Log Analytics pro další analýzu. Příklady takových dat: typ a verze operačního systému, protokoly operačního systému (protokoly událostí systému Windows), spuštěné procesy, název počítače, IP adresy a přihlášený uživatel.
+
+Zajistěte, aby počítače používaly jeden z podporovaných operačních systémů pro agenta, jak je popsáno na následujících stránkách:
+
+* [Agent Log Analytics pro podporované operační systémy Windows](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)
+
+* [Agent Log Analytics pro podporované operační systémy Linux](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)
+
+Přečtěte si další informace o [datech shromažďovaných agentem Log Analytics](security-center-enable-data-collection.md).
+
+
 
 
 ## <a name="what-qualifies-a-vm-for-automatic-provisioning-of-the-log-analytics-agent-installation"></a>Jaké jsou virtuální počítače pro Automatické zřizování instalace agenta Log Analytics?
@@ -240,7 +259,7 @@ Když Security Center detekuje podezřelou aktivitu na virtuálním počítači,
 
 ## <a name="will-security-center-work-using-an-oms-gateway"></a>Bude Security Center pracovat s bránou OMS?
 
-Yes. Azure Security Center využívá Azure Monitor ke shromažďování dat z virtuálních počítačů a serverů Azure pomocí agenta Log Analytics.
+Ano. Azure Security Center využívá Azure Monitor ke shromažďování dat z virtuálních počítačů a serverů Azure pomocí agenta Log Analytics.
 Ke shromáždění dat se musí každý virtuální počítač a Server připojit k Internetu pomocí protokolu HTTPS. Připojení může být přímo, pomocí proxy serveru nebo pomocí [brány OMS](../azure-monitor/platform/gateway.md).
 
 

@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 03/25/2020
-ms.openlocfilehash: 5577a9847ff405397c553028a6dfdf2df80d03fd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 065fd166fb2ce82a3338322d55ef1ee5886ac56b
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80371842"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85210367"
 ---
 # <a name="azure-machine-learning-vs-machine-learning-studio-classic"></a>Azure Machine Learning vs Machine Learning Studio (Classic)
 
@@ -29,7 +29,7 @@ Následující tabulka shrnuje některé hlavní rozdíly mezi Azure Machine Lea
 
 | | Machine Learning Studio (Classic) | Azure Machine Learning |
 |---| --- | --- |
-| Rozhraní přetažení | Podporuje se | Podporované – [návrhář Azure Machine Learning (Preview)](concept-designer.md) | 
+| Rozhraní přetažení | Podporuje se | Podporované – [návrhář Azure Machine Learning (Preview)](concept-designer.md) <br/>(Vyžaduje pracovní prostor Enterprise) | 
 | Experiment | Škálovatelné (limit pro školicí data z 10 GB) | Škálování s cílem výpočetního prostředí |
 | Školení výpočetních cílů | Proprietární výpočetní cíl, jenom podpora procesoru | Široké spektrum přizpůsobitelných [výpočetních cílů](concept-compute-target.md#train). Zahrnuje podporu GPU a procesoru. | 
 | Cíle výpočtů nasazení | Speciální formát webové služby, není přizpůsobitelný | Široké škály přizpůsobitelných [výpočetních cílů nasazení](concept-compute-target.md#deploy). Zahrnuje podporu GPU a procesoru. |

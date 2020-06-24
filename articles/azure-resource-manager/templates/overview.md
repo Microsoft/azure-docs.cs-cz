@@ -2,13 +2,13 @@
 title: Přehled šablon
 description: V této části najdete popis výhod používání šablon Azure Resource Manager pro nasazení prostředků.
 ms.topic: conceptual
-ms.date: 04/06/2020
-ms.openlocfilehash: b3b5fb383ac89d0968a437f35aab656afa1913f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/22/2020
+ms.openlocfilehash: 4cdd0751feea6a3ade7183311831c7ed2b0f1b70
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82086330"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85210214"
 ---
 # <a name="what-are-arm-templates"></a>Co je šablona ARM?
 
@@ -129,3 +129,4 @@ Informace o vnořených šablonách najdete v tématu [Použití propojených š
 * Podrobný kurz, který vás provede procesem vytvoření šablony, najdete v tématu [kurz: vytvoření a nasazení první šablony ARM](template-tutorial-create-first-template.md).
 * Informace o vlastnostech v souborech šablon naleznete v tématu [pochopení struktury a syntaxe šablon ARM](template-syntax.md).
 * Další informace o exportu šablon najdete v tématu [rychlý Start: vytvoření a nasazení šablon ARM pomocí Azure Portal](quickstart-create-templates-use-the-portal.md).
+* Odpovědi na běžné otázky najdete v tématu [Nejčastější dotazy k šablonám ARM](frequently-asked-questions.md).

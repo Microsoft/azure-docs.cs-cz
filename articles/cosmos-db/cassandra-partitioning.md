@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 2f62af434a49d11cdc1acfc4a09b5bffbd69140b
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 566be788066db54f827bb4d6e46f0d832755ce26
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84316702"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85115667"
 ---
 # <a name="partitioning-in-azure-cosmos-db-cassandra-api"></a>Vytváření oddílů v Azure Cosmos DB rozhraní API Cassandra
 
@@ -53,7 +53,7 @@ CREATE TABLE uprofile.user (
 
 V tomto návrhu jsme definovali `id` pole jako primární klíč. Primární klíč funguje jako identifikátor záznamu v tabulce a používá se také jako klíč oddílu v Azure Cosmos DB. Pokud je primární klíč definovaný dříve popsaným způsobem, bude v každém oddílu jenom jeden záznam. Výsledkem bude naprosto horizontální a škálovatelná distribuce při zápisu dat do databáze a je ideální pro případy použití vyhledávání klíč-hodnota. Aplikace by měla při každém čtení dat z tabulky poskytnout primární klíč, aby se maximalizoval výkon při čtení. 
 
-![partitions](./media/cassandra-partitioning/cassandra-partitioning.png)
+:::image type="content" source="./media/cassandra-partitioning/cassandra-partitioning.png" alt-text="disk" border="false":::
 
 
 ## <a name="compound-primary-key"></a>Složený primární klíč
@@ -83,11 +83,11 @@ insert into uprofile.user (user, id, message) values ('theo', 2, 'hello again');
 
 Po vrácení dat se data seřadí podle klíče clusteringu, jak je očekáváno v Apache Cassandra:
 
-![partitions](./media/cassandra-partitioning/select-from-pk.png)
+:::image type="content" source="./media/cassandra-partitioning/select-from-pk.png" alt-text="disk":::
 
 S datovým modelem tímto způsobem lze každému oddílu přiřadit více záznamů seskupených podle uživatele. Proto můžeme vystavit dotaz, který je efektivně směrován `partition key` (v tomto případě `user` ) a získá všechny zprávy pro daného uživatele. 
 
-![partitions](./media/cassandra-partitioning/cassandra-partitioning2.png)
+:::image type="content" source="./media/cassandra-partitioning/cassandra-partitioning2.png" alt-text="disk" border="false":::
 
 
 ## <a name="composite-partition-key"></a>Klíč složeného oddílu
