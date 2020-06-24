@@ -3,25 +3,25 @@ title: Konfigurace jednotného přihlašování (SSO) vaší aplikace Azure Mark
 description: Postup pro konfiguraci jednotného přihlašování (SSO) pro vaši aplikaci na Azure Marketplace.
 services: active-directory
 documentationCenter: na
-author: jeevansd
-manager: mtillman
-ms.reviewer: celested
+author: kenwith
+manager: celestedg
+ms.reviewer: kenwith
 ms.assetid: e0416991-4b5d-4b18-89bb-91b6070ed3ba
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 06/11/2019
-ms.author: jeedes
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a83d27af4fd783b95c53ef3a9169cb72bfc29d34
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3c7e72718e13106b9d895921a2335f1525a7b88c
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67872427"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763121"
 ---
 # <a name="one-click-app-configuration-of-single-sign-on"></a>Konfigurace aplikace jedním kliknutím jednotného přihlašování
 
@@ -59,7 +59,7 @@ Funkce jednotného přihlašování jedním kliknutím je určená ke konfigurac
 
    ![Nainstalovat zabezpečené přihlašovací rozšíření prohlížeče mých aplikací](./media/one-click-sso-tutorial/install-myappssecure-extension.png)
 
-6. Po přidání rozšíření do prohlížeče vyberte ** \<nastavit název\>aplikace**. Až budete přesměrováni na portál pro správu aplikací, přihlaste se jako správce.
+6. Po přidání rozšíření do prohlížeče vyberte možnost **instalace \<Application Name\> **. Až budete přesměrováni na portál pro správu aplikací, přihlaste se jako správce.
 
    ![Nastavit název aplikace](./media/one-click-sso-tutorial/setup-sso.png)
 
@@ -82,7 +82,7 @@ Funkce jednotného přihlašování jedním kliknutím je určená ke konfigurac
 
 11. Můžete vybrat **test** pro otestování jednotného přihlašování.
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 * [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
 * [Jaké jsou rozšíření prohlížeče pro zabezpečené přihlašování k aplikacím?](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access)

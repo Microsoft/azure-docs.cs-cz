@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 252b3b3ecf2de24410d046473ee2cfd2215254a9
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: ff4a2b9cb66013900b5b9969a4281d1a20d9c122
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198223"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736437"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Kurz: Vytvoření a správa škálovací sady virtuálních počítačů pomocí Azure CLI
 Škálovací sada virtuálních počítačů umožňuje nasadit a spravovat sadu identických virtuálních počítačů s automatickým škálováním. V průběhu životního cyklu škálovací sady virtuálních počítačů možná budete potřebovat spustit jednu nebo více úloh správy. Co se v tomto kurzu naučíte:
@@ -167,6 +167,9 @@ CentOS   OpenLogic   7.3   OpenLogic:CentOS:7.3:7.3.20170925   7.3.20170925
 
 Pokud chcete nasadit škálovací sadu používající konkrétní image, použijte hodnotu ve sloupci *Urn*. Při zadávání image můžete její číslo verze nahradit klíčovým slovem *latest*. To zajistí, aby se vybrala nejnovější verze dané distribuce. V následujícím příkladu pomocí argumentu `--image` určíme nejnovější verzi image CentOS 7.3.
 
+> [!IMPORTANT]
+> Doporučujeme použít *nejnovější* verzi image. Pokud chcete použít nejnovější verzi image dostupnou v době nasazení, zadejte ' nejnovější '. Poznámka: i když použijete možnost nejnovější, image virtuálního počítače se po nasazení automaticky neaktualizuje, i když bude k dispozici nová verze.
+
 Vzhledem k tomu, že vytvoření a konfigurace všech prostředků škálovací sady a instancí virtuálních počítačů trvá několik minut, následující škálovací sadu nasazovat nemusíte:
 
 ```azurecli-interactive
@@ -185,7 +188,7 @@ Velikost instance virtuálního počítače neboli *skladová položka* určuje 
 ### <a name="vm-instance-sizes"></a>Velikosti instancí virtuálních počítačů
 V následující tabulce jsou běžné velikosti virtuálních počítačů rozdělené podle způsobů použití.
 
-| Typ                     | Běžné velikosti           |    Popis       |
+| Typ                     | Běžné velikosti           |    Description       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Obecné účely](../virtual-machines/linux/sizes-general.md)         |Dsv3, Dv3, DSv2, Dv2, DS, D, Av2, A0-7| Vyvážený poměr procesorů k paměti. Ideální pro vývoj nebo testování a pro malé až střední řešení aplikací a dat.  |
 | [Optimalizované z hlediska výpočetních služeb](../virtual-machines/linux/sizes-compute.md)   | Fs, F             | Vysoký poměr procesorů k paměti. Vhodné pro aplikace se středním provozem, síťová zařízení a dávkové procesy.        |

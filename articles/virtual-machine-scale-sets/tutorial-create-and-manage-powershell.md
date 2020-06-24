@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 05/18/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 2e9c027a927d4aba9c174db8dfc5a72f0cc4f214
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 43816c815c206da7e3fec197e54e9e7889c6de47
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195178"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84735349"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Kurz: Vytvoření a správa škálovací sady virtuálních počítačů pomocí Azure PowerShellu
 
@@ -27,7 +27,7 @@ ms.locfileid: "83195178"
 > * Ruční škálování škálovací sady
 > * Provádění běžných úloh správy škálovací sady
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
@@ -191,6 +191,8 @@ New-AzVmss `
   -Credential $cred
 ```
 
+> [!IMPORTANT]
+> Doporučujeme použít *nejnovější* verzi image. Pokud chcete použít nejnovější verzi image dostupnou v době nasazení, zadejte ' nejnovější '. Poznámka: i když použijete možnost nejnovější, image virtuálního počítače se po nasazení automaticky neaktualizuje, i když bude k dispozici nová verze.
 
 ## <a name="understand-vm-instance-sizes"></a>Vysvětlení velikostí instancí virtuálních počítačů
 Velikost instance virtuálního počítače neboli *skladová položka* určuje množství výpočetních prostředků, jako jsou procesor, grafický procesor a paměť, které jsou pro instanci virtuálního počítače k dispozici. Velikost instancí virtuálních počítačů ve škálovací sadě je třeba správně určit podle očekávané pracovní zátěže.
@@ -198,7 +200,7 @@ Velikost instance virtuálního počítače neboli *skladová položka* určuje 
 ### <a name="vm-instance-sizes"></a>Velikosti instancí virtuálních počítačů
 V následující tabulce jsou běžné velikosti virtuálních počítačů rozdělené podle způsobů použití.
 
-| Typ                     | Běžné velikosti           |    Popis       |
+| Typ                     | Běžné velikosti           |    Description       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Obecné účely](../virtual-machines/windows/sizes-general.md)         |Dsv3, Dv3, DSv2, Dv2, DS, D, Av2, A0-7| Vyvážený poměr procesorů k paměti. Ideální pro vývoj nebo testování a pro malé až střední řešení aplikací a dat.  |
 | [Optimalizované z hlediska výpočetních služeb](../virtual-machines/windows/sizes-compute.md)   | Fs, F             | Vysoký poměr procesorů k paměti. Vhodné pro aplikace se středním provozem, síťová zařízení a dávkové procesy.        |

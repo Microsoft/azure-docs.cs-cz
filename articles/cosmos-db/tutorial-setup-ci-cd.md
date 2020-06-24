@@ -3,16 +3,16 @@ title: Nastavení kanálu CI/CD pomocí úlohy sestavení emulátoru Azure Cosmo
 description: Kurz týkající se nastavení pracovního postupu sestavení a verzí v Azure DevOps pomocí úlohy sestavení emulátoru služby Cosmos DB
 author: deborahc
 ms.service: cosmos-db
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 01/28/2020
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 521d5d8d587b39cf573dedc37ea9f6fd53646e66
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 77cf98cae943b8652e20ed48fd41ed717d1e4fc5
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80410956"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262119"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Nastavení kanálu CI/CD pomocí úlohy sestavení emulátoru služby Azure Cosmos DB v Azure DevOps
 
@@ -20,7 +20,7 @@ Emulátor služby Azure Cosmos DB zajistí místní prostředí, které emuluje 
 
 Úloha sestavení emulátoru služby Azure Cosmos DB pro Azure DevOps vám umožňuje provádět stejné úlohy v prostředí CI. Pomocí úlohy sestavení můžete spouštět testy emulátoru jako součást vašich pracovních postupů sestavení a verzí. Úloha se spustí v kontejneru Dockeru s už spuštěným emulátorem a poskytuje koncový bod, který lze použít zbývající částí definice sestavení. Můžete vytvořit a spustit tolik instancí emulátoru, kolik potřebujete, každá z nich poběží v samostatném kontejneru. 
 
-Tento článek ukazuje, jak v Azure DevOps nastavit kanál CI pro aplikaci ASP.NET, která ke spouštění testů používá úlohu sestavení emulátoru služby Cosmos DB. Podobný přístup můžete použít k nastavení kanálu CI pro aplikaci Node. js nebo Python. 
+Tento článek ukazuje, jak v Azure DevOps nastavit kanál CI pro aplikaci ASP.NET, která ke spouštění testů používá úlohu sestavení emulátoru služby Cosmos DB. Podobný přístup můžete použít k nastavení kanálu CI pro Node.js nebo aplikaci v Pythonu. 
 
 ## <a name="install-the-emulator-build-task"></a>Instalace úlohy sestavení emulátoru
 
@@ -50,7 +50,7 @@ Když je teď rozšíření nainstalované, přihlaste se ke svému účtu Azure
 3. Nakonec vyberte požadovanou šablonu pro kanál sestavení. V tomto kurzu vybereme šablonu **ASP.NET**. Nyní máte kanál sestavení, který můžete nastavit tak, aby používal úlohu sestavení emulátoru Azure Cosmos DB. 
 
 > [!NOTE]
-> Fond agentů, který se má vybrat pro tuto CI, by měl mít Docker for Windows nainstalováno, pokud se instalace neprovádí ručně v předchozí úloze jako součást CI. Výběr fondů agentů najdete v článku [hostované agenti Microsoftu](https://docs.microsoft.com/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml) . Doporučujeme začít s `Hosted VS2017`.
+> Fond agentů, který se má vybrat pro tuto CI, by měl mít Docker for Windows nainstalováno, pokud se instalace neprovádí ručně v předchozí úloze jako součást CI. Výběr fondů agentů najdete v článku [hostované agenti Microsoftu](https://docs.microsoft.com/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml) . Doporučujeme začít s `Hosted VS2017` .
 
 Emulátor Azure Cosmos DB v tuto chvíli nepodporuje hostovaný fond agentů VS2019. Emulátor se ale už dodává s nainstalovaným VS2019 a použijete ho spuštěním emulátoru s následujícími rutinami PowerShellu. Pokud narazíte na problémy při používání VS2019, získáte nápovědu ke týmu [Azure DevOps](https://developercommunity.visualstudio.com/spaces/21/index.html) :
 
@@ -178,4 +178,4 @@ Pokud nastavujete kanál CI/CD pomocí úlohy YAML, můžete definovat úlohu YA
 
 Pokud se chcete dozvědět další informace o použití emulátoru pro místní vývoj a testování, přečtěte si článek o [použití emulátoru služby Azure Cosmos DB pro místní vývoj a testování](https://docs.microsoft.com/azure/cosmos-db/local-emulator).
 
-Export certifikátů protokolu TLS/SSL emulátoru najdete v tématu [export certifikátů emulátoru Azure Cosmos DB pro použití v jazycích Java, Python a Node. js](https://docs.microsoft.com/azure/cosmos-db/local-emulator-export-ssl-certificates) .
+Export certifikátů TLS/SSL pomocí emulátoru najdete v tématu [export certifikátů emulátoru Azure Cosmos DB pro použití v jazycích Java, Python a Node.js](https://docs.microsoft.com/azure/cosmos-db/local-emulator-export-ssl-certificates)

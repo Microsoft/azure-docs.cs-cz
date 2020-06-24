@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 03/25/2020
+ms.date: 06/19/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fe6c857e5b0c2f48f27c167c177dbf1f4651986
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e99b860f4f75e142a8df09bb538ebee3f2eac6d3
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80384105"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85297473"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s ServiceNow
 
@@ -125,11 +125,11 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele s názvem B. Simon ve Azure Portal.
 
-1. V levém podokně Azure Portal vyberte **Azure Active Directory** > **Uživatelé** > **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte **Azure Active Directory**  >  **Uživatelé**  >  **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
-   1. Jako **název**zadejte `B.Simon`.  
-   1. Do pole username@companydomain.extension **uživatelské jméno**zadejte. Například, `B.Simon@contoso.com`.
+   1. Jako **název**zadejte `B.Simon` .  
+   1. Do pole **uživatelské jméno**zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Vyberte možnost **Zobrazit heslo**a pak zapište hodnotu zobrazenou v poli **heslo** .
    1. Vyberte **Vytvořit**.
 
@@ -137,13 +137,13 @@ V této části vytvoříte testovacího uživatele s názvem B. Simon ve Azure 
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k ServiceNow.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace** > **všechny aplikace**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**  >  **všechny aplikace**.
 1. V seznamu aplikace vyberte **ServiceNow**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
    ![Snímek obrazovky s oddílem spravovat se zvýrazněnými uživateli a skupinami](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**. V dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny**.
+1. Vyberte možnost **Přidat uživatele**. V dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny**.
 
     ![Snímek obrazovky uživatelů a skupin se zvýrazněnou možností přidat uživatele](common/add-assign-user.png)
 
@@ -268,11 +268,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
                * Zkopírujte hodnotu **domovské stránky ServiceNow** a vložte ji do **přihlašovací adresy URL** v části **ServiceNow Basic SAML konfigurace** Azure Portal.
 
                   > [!NOTE]
-                  > Domovská stránka instance ServiceNow je zřetězením **adresy URL vašeho tenanta ServiceNow** a **/navpage.do** (například:`https://fabrikam.service-now.com/navpage.do`).
+                  > Domovská stránka instance ServiceNow je zřetězením **adresy URL vašeho tenanta ServiceNow** a **/navpage.do** (například: `https://fabrikam.service-now.com/navpage.do` ).
 
               * Zkopírujte hodnotu **ID nebo vystavitele entity** a vložte **ji do části** **ServiceNow Basic konfigurace SAML** v Azure Portal.
 
-              * Potvrďte, že **zásada NameId** je `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified` nastavená na hodnotu. 
+              * Potvrďte, že **zásada NameId** je nastavená na `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified` hodnotu. 
 
          1. Přejděte dolů k části **certifikát X. 509** a vyberte **Upravit**.
 
@@ -332,16 +332,16 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
         * Zkopírujte hodnotu **domovské stránky ServiceNow** . Vložte ho do **přihlašovací adresy URL** v části **ServiceNow Basic SAML konfigurace** Azure Portal.
 
             > [!NOTE]
-            > Domovská stránka instance ServiceNow je zřetězením **adresy URL vašeho tenanta ServiceNow** a **/navpage.do** (například:`https://fabrikam.service-now.com/navpage.do`).
+            > Domovská stránka instance ServiceNow je zřetězením **adresy URL vašeho tenanta ServiceNow** a **/navpage.do** (například: `https://fabrikam.service-now.com/navpage.do` ).
 
         * Zkopírujte hodnotu **ID nebo vystavitele entity** . Vloží ho do **identifikátoru** v části **SERVICENOW Basic konfigurace SAML** v Azure Portal.
 
-        * Potvrďte, že **zásada NameId** je `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified` nastavená na hodnotu.
+        * Potvrďte, že **zásada NameId** je nastavená na `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified` hodnotu.
 
         * Vyberte **Upřesnit**. Do **pole uživatelské pole**zadejte **e-mail**.
 
             > [!NOTE]
-            > Službu Azure AD můžete nakonfigurovat tak, aby vygenerovala buď ID uživatele Azure AD (hlavní název uživatele), nebo e-mailovou adresu jako jedinečný identifikátor v tokenu SAML. Provedete to tak, že v Azure Portal zadáte v části**jednotné přihlašování** **atributy** >  **ServiceNow** > a namapujete požadované pole na atribut **NameIdentifier** . Hodnota uložená pro vybraný atribut ve službě Azure AD (například hlavní název uživatele) se musí shodovat s hodnotou uloženou v ServiceNow pro zadané pole (například user_name).
+            > Službu Azure AD můžete nakonfigurovat tak, aby vygenerovala buď ID uživatele Azure AD (hlavní název uživatele), nebo e-mailovou adresu jako jedinečný identifikátor v tokenu SAML. Provedete to tak, **ServiceNow**že v Azure Portal zadáte v  >  **Attributes**  >  části**jednotné přihlašování** atributy ServiceNow a namapujete požadované pole na atribut **NameIdentifier** . Hodnota uložená pro vybraný atribut ve službě Azure AD (například hlavní název uživatele) se musí shodovat s hodnotou uloženou v ServiceNow pro zadané pole (například user_name).
 
         * V pravém horním rohu stránky vyberte **Test připojení** .
 
@@ -425,7 +425,7 @@ Cílem této části je vytvořit uživatele s názvem B. Simon v ServiceNow. Se
 
     b. V případě **zásad NameId**zadejte **název urn: Oasis: names: TC: SAML: 1.1: NameId-Format: unspecifikovan**.
 
-    c. Pro **metodu AuthnContextClassRef**zadejte `http://schemas.microsoft.com/ws/2008/06/identity/authenticationmethod/password`.
+    c. Pro **metodu AuthnContextClassRef**zadejte `http://schemas.microsoft.com/ws/2008/06/identity/authenticationmethod/password` .
 
     d. Pro **Vytvoření AuthnContextClass**ho přepněte na vypnuto (Nevybráno).
 
@@ -436,7 +436,7 @@ Cílem této části je vytvořit uživatele s názvem B. Simon v ServiceNow. Se
     a. Pro **domovskou stránku ServiceNow**zadejte adresu URL domovské stránky instance ServiceNow.
 
     > [!NOTE]
-    > Domovská stránka instance ServiceNow je zřetězením **adresy URL vašeho tenanta ServiceNow** a **/navpage.do** (například: `https://fabrikam.service-now.com/navpage.do`).
+    > Domovská stránka instance ServiceNow je zřetězením **adresy URL vašeho tenanta ServiceNow** a **/navpage.do** (například: `https://fabrikam.service-now.com/navpage.do` ).
 
     b. Jako **ID entity/vystavitele**zadejte adresu URL vašeho tenanta ServiceNow.
 
@@ -447,7 +447,7 @@ Cílem této části je vytvořit uživatele s názvem B. Simon v ServiceNow. Se
     e. Do **pole uživatelské pole**zadejte **e-mail**.
 
     > [!NOTE]
-    > Službu Azure AD můžete nakonfigurovat tak, aby vygenerovala buď ID uživatele Azure AD (hlavní název uživatele), nebo e-mailovou adresu jako jedinečný identifikátor v tokenu SAML. Provedete to tak, že v Azure Portal zadáte v části**jednotné přihlašování** **atributy** >  **ServiceNow** > a namapujete požadované pole na atribut **NameIdentifier** . Hodnota uložená pro vybraný atribut ve službě Azure AD (například hlavní název uživatele) se musí shodovat s hodnotou uloženou v ServiceNow pro zadané pole (například user_name).
+    > Službu Azure AD můžete nakonfigurovat tak, aby vygenerovala buď ID uživatele Azure AD (hlavní název uživatele), nebo e-mailovou adresu jako jedinečný identifikátor v tokenu SAML. Provedete to tak, **ServiceNow**že v Azure Portal zadáte v  >  **Attributes**  >  části**jednotné přihlašování** atributy ServiceNow a namapujete požadované pole na atribut **NameIdentifier** . Hodnota uložená pro vybraný atribut ve službě Azure AD (například hlavní název uživatele) se musí shodovat s hodnotou uloženou v ServiceNow pro zadané pole (například user_name).
 
     f. Vyberte **Uložit**.
 
@@ -471,7 +471,7 @@ Když na přístupovém panelu vyberete dlaždici ServiceNow, měli byste se aut
 
     ![Snímek obrazovky s přihlašovací stránkou s zvýrazněnou možností použít externí přihlášení](./media/servicenow-tutorial/test01.png)
 
-    *  Zadejte **uživatelské jméno**, B.simon@contoso.comnapříklad.
+    *  Zadejte **uživatelské jméno**, například B.simon@contoso.com .
 
     *  Vyberte **použít externí přihlášení**. Budete přesměrováni na stránku služby Azure AD, abyste se přihlásili.
 

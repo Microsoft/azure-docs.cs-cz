@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: sample
 ms.date: 09/05/2019
 ms.author: iainfou
-ms.openlocfilehash: e99ad2d53bc26b4e13a34097baaec929058a61a0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9dbb8a6011b4f2aebc73df7d37e6f43e7f27b747
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654806"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734516"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>Povolení Azure Active Directory Domain Services pomocí prostředí PowerShell
 
@@ -51,7 +51,7 @@ Pomocí rutiny [New-AzureADServicePrincipal][New-AzureADServicePrincipal] vytvo�
 New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
 ```
 
-Nyní vytvořte skupinu Azure AD s názvem *AAD DC Administrators*. Uživatelům přidaným do této skupiny se pak udělí oprávnění k provádění úloh správy ve spravované doméně Azure služba AD DS.
+Nyní vytvořte skupinu Azure AD s názvem *AAD DC Administrators*. Uživatelům přidaným do této skupiny se pak udělí oprávnění k provádění úloh správy ve spravované doméně.
 
 Pomocí rutiny [New-AzureADGroup][New-AzureADGroup] vytvořte skupinu *správců řadiče domény AAD* :
 
@@ -64,7 +64,7 @@ New-AzureADGroup -DisplayName "AAD DC Administrators" `
 
 Když je vytvořená skupina *AAD DC Administrators* , přidejte uživatele do skupiny pomocí rutiny [Add-AzureADGroupMember][Add-AzureADGroupMember] . Nejprve pomocí rutiny [Get-][Get-AzureADUser] [AzureADGroup][Get-AzureADGroup] Získejte ID objektu skupiny *AAD DC Administrators* a pak ID objektu požadovaného uživatele.
 
-V následujícím příkladu je ID objektu uživatele pro účet s hlavním názvem uživatele (UPN) `admin@aaddscontoso.onmicrosoft.com`. Nahraďte tento uživatelský účet uživatelským jménem uživatele, kterého chcete přidat do skupiny *správců řadiče domény AAD* :
+V následujícím příkladu je ID objektu uživatele pro účet s hlavním názvem uživatele (UPN) `admin@aaddscontoso.onmicrosoft.com` . Nahraďte tento uživatelský účet uživatelským jménem uživatele, kterého chcete přidat do skupiny *správců řadiče domény AAD* :
 
 ```powershell
 # First, retrieve the object ID of the newly created 'AAD DC Administrators' group.
@@ -126,9 +126,9 @@ $Vnet= New-AzVirtualNetwork `
   -Subnet $AaddsSubnet,$WorkloadSubnet
 ```
 
-## <a name="create-an-azure-ad-ds-managed-domain"></a>Vytvoření spravované domény Azure služba AD DS
+## <a name="create-a-managed-domain"></a>Vytvoření spravované domény
 
-Nyní vytvoříme Azure služba AD DS spravovanou doménu. Nastavte ID vašeho předplatného Azure a potom zadejte název spravované domény, třeba *aaddscontoso.com*. ID vašeho předplatného můžete získat pomocí rutiny [Get-AzSubscription][Get-AzSubscription] .
+Nyní vytvoříme spravovanou doménu. Nastavte ID vašeho předplatného Azure a potom zadejte název spravované domény, třeba *aaddscontoso.com*. ID vašeho předplatného můžete získat pomocí rutiny [Get-AzSubscription][Get-AzSubscription] .
 
 Pokud zvolíte oblast, která podporuje Zóny dostupnosti, prostředky Azure služba AD DS se rozdělují mezi zóny, aby se mohla zvýšit redundance.
 
@@ -148,14 +148,14 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
   -Force -Verbose
 ```
 
-Vytvoření prostředku a vrácení řízení do příkazového řádku PowerShellu trvá několik minut. Spravovaná doména Azure služba AD DS je nadále zřízena na pozadí a může trvat až hodinu, než se nasazení dokončí. Na stránce s **přehledem** pro spravovanou doménu Azure služba AD DS se Azure Portal v rámci této fáze nasazení zobrazuje aktuální stav.
+Vytvoření prostředku a vrácení řízení do příkazového řádku PowerShellu trvá několik minut. Spravovaná doména je nadále zřízena na pozadí a může trvat až hodinu, než se nasazení dokončí. V Azure Portal zobrazuje stránka **Přehled** pro spravovanou doménu aktuální stav v rámci této fáze nasazení.
 
-Když Azure Portal ukáže, že se dokončilo zřizování spravované domény Azure služba AD DS, je nutné provést následující úkoly:
+Když Azure Portal ukáže, že se dokončilo zřizování spravované domény, musí se dokončit následující úkoly:
 
 * Aktualizujte nastavení DNS pro virtuální síť, aby virtuální počítače mohly najít spravovanou doménu pro připojení k doméně nebo ověřování.
-    * Pokud chcete nakonfigurovat DNS, vyberte na portálu spravovanou doménu Azure služba AD DS. V okně **Přehled** se zobrazí výzva k automatické konfiguraci těchto nastavení DNS.
-* Pokud jste vytvořili spravovanou doménu Azure služba AD DS v oblasti, která podporuje Zóny dostupnosti, vytvořte skupinu zabezpečení sítě, která bude omezovat provoz ve virtuální síti pro spravovanou doménu Azure služba AD DS. Vytvoří se standardní nástroj pro vyrovnávání zatížení Azure, který vyžaduje, aby se tato pravidla mohla umístit. Tato skupina zabezpečení sítě zabezpečuje službu Azure služba AD DS a je potřeba, aby správně fungovala spravovaná doména.
-    * Pokud chcete vytvořit skupinu zabezpečení sítě a požadovaná pravidla, vyberte na portálu spravovanou doménu Azure služba AD DS. V okně **Přehled** se zobrazí výzva k automatickému vytvoření a konfiguraci skupiny zabezpečení sítě.
+    * Pokud chcete nakonfigurovat DNS, vyberte spravovanou doménu na portálu. V okně **Přehled** se zobrazí výzva k automatické konfiguraci těchto nastavení DNS.
+* Pokud jste vytvořili spravovanou doménu v oblasti, která podporuje Zóny dostupnosti, vytvořte skupinu zabezpečení sítě, která bude omezovat provoz ve virtuální síti pro spravovanou doménu. Vytvoří se standardní nástroj pro vyrovnávání zatížení Azure, který vyžaduje, aby se tato pravidla mohla umístit. Tato skupina zabezpečení sítě zabezpečuje službu Azure služba AD DS a je potřeba, aby správně fungovala spravovaná doména.
+    * Pokud chcete vytvořit skupinu zabezpečení sítě a požadovaná pravidla, vyberte spravovanou doménu na portálu. V okně **Přehled** se zobrazí výzva k automatickému vytvoření a konfiguraci skupiny zabezpečení sítě.
 * [Povolte synchronizaci hesel Azure AD Domain Services](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) tak, aby se koncoví uživatelé mohli přihlásit ke spravované doméně pomocí svých podnikových přihlašovacích údajů.
 
 ## <a name="complete-powershell-script"></a>Dokončení skriptu PowerShellu
@@ -235,19 +235,19 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
   -Force -Verbose
 ```
 
-Vytvoření prostředku a vrácení řízení do příkazového řádku PowerShellu trvá několik minut. Spravovaná doména Azure služba AD DS je nadále zřízena na pozadí a může trvat až hodinu, než se nasazení dokončí. Na stránce s **přehledem** pro spravovanou doménu Azure služba AD DS se Azure Portal v rámci této fáze nasazení zobrazuje aktuální stav.
+Vytvoření prostředku a vrácení řízení do příkazového řádku PowerShellu trvá několik minut. Spravovaná doména je nadále zřízena na pozadí a může trvat až hodinu, než se nasazení dokončí. V Azure Portal zobrazuje stránka **Přehled** pro spravovanou doménu aktuální stav v rámci této fáze nasazení.
 
-Když Azure Portal ukáže, že se dokončilo zřizování spravované domény Azure služba AD DS, je nutné provést následující úkoly:
+Když Azure Portal ukáže, že se dokončilo zřizování spravované domény, musí se dokončit následující úkoly:
 
 * Aktualizujte nastavení DNS pro virtuální síť, aby virtuální počítače mohly najít spravovanou doménu pro připojení k doméně nebo ověřování.
-    * Pokud chcete nakonfigurovat DNS, vyberte na portálu spravovanou doménu Azure služba AD DS. V okně **Přehled** se zobrazí výzva k automatické konfiguraci těchto nastavení DNS.
-* Pokud jste vytvořili spravovanou doménu Azure služba AD DS v oblasti, která podporuje Zóny dostupnosti, vytvořte skupinu zabezpečení sítě, která bude omezovat provoz ve virtuální síti pro spravovanou doménu Azure služba AD DS. Vytvoří se standardní nástroj pro vyrovnávání zatížení Azure, který vyžaduje, aby se tato pravidla mohla umístit. Tato skupina zabezpečení sítě zabezpečuje službu Azure služba AD DS a je potřeba, aby správně fungovala spravovaná doména.
-    * Pokud chcete vytvořit skupinu zabezpečení sítě a požadovaná pravidla, vyberte na portálu spravovanou doménu Azure služba AD DS. V okně **Přehled** se zobrazí výzva k automatickému vytvoření a konfiguraci skupiny zabezpečení sítě.
+    * Pokud chcete nakonfigurovat DNS, vyberte spravovanou doménu na portálu. V okně **Přehled** se zobrazí výzva k automatické konfiguraci těchto nastavení DNS.
+* Pokud jste vytvořili spravovanou doménu v oblasti, která podporuje Zóny dostupnosti, vytvořte skupinu zabezpečení sítě, která bude omezovat provoz ve virtuální síti pro spravovanou doménu. Vytvoří se standardní nástroj pro vyrovnávání zatížení Azure, který vyžaduje, aby se tato pravidla mohla umístit. Tato skupina zabezpečení sítě zabezpečuje službu Azure služba AD DS a je potřeba, aby správně fungovala spravovaná doména.
+    * Pokud chcete vytvořit skupinu zabezpečení sítě a požadovaná pravidla, vyberte spravovanou doménu na portálu. V okně **Přehled** se zobrazí výzva k automatickému vytvoření a konfiguraci skupiny zabezpečení sítě.
 * [Povolte synchronizaci hesel Azure AD Domain Services](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) tak, aby se koncoví uživatelé mohli přihlásit ke spravované doméně pomocí svých podnikových přihlašovacích údajů.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete zobrazit spravovanou doménu Azure služba AD DS v akci, můžete k [doméně připojit virtuální počítač s Windows][windows-join], [nakonfigurovat zabezpečený protokol LDAP][tutorial-ldaps]a [nakonfigurovat synchronizaci hodnot hash hesel][tutorial-phs].
+Pokud chcete spravovanou doménu zobrazit v akci, můžete se [připojit k virtuálnímu počítači s Windows][windows-join], [nakonfigurovat zabezpečený protokol LDAP][tutorial-ldaps]a [nakonfigurovat synchronizaci hodnot hash hesel][tutorial-phs].
 
 <!-- INTERNAL LINKS -->
 [windows-join]: join-windows-vm.md

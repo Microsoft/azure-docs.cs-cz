@@ -1,92 +1,98 @@
 ---
-title: Kurz nahrávání videa na základě událostí do cloudu a přehrávání z cloudu – Azure
-description: V tomto kurzu se naučíte používat živé analýzy videí na IoT Edge k provádění nahrávání videa na základě událostí do cloudu a přehrávání z cloudu.
+title: Kurz pro nahrávání a přehrávání videa založeného na událostech z cloudového kurzu – Azure
+description: V tomto kurzu se naučíte používat Azure Live video Analytics na Azure IoT Edge k nahrání záznamu videa založeného na událostech do cloudu a jeho přehrání z cloudu.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 7ff8502688e2b507b8a576c177948f29c2248be4
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 938bae28b1a523e23ea9f8f1ba79bbe6c487d5db
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84456602"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84765195"
 ---
-# <a name="tutorial-event-based-video-recording-to-cloud-and-playback-from-cloud"></a>Kurz: nahrávání videa založeného na událostech do cloudu a přehrávání z cloudu
+# <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Kurz: nahrávání videa založeného na událostech do cloudu a přehrávání z cloudu
 
-V tomto kurzu se naučíte, jak pomocí živé analýzy videí v IoT Edge selektivně nahrávat části živého zdroje videí do Media Services v cloudu. Tento případ použití se v tomto kurzu označuje jako [záznam videa na základě událostí](event-based-video-recording-concept.md) (EVR). K tomuto účelu použijete model AI detekce objektů pro hledání objektů ve videu a záznam videoklipů pouze v případě, že je zjištěn určitý typ objektu. Naučíte se také, jak přehrávat zaznamenané video klipy pomocí Media Services. To je užitečné pro celou řadu scénářů, kdy je potřeba uchovat archiv videoklipů, které vás zajímají.
+V tomto kurzu se naučíte používat Azure Live video Analytics na Azure IoT Edge k selektivnímu nahrávání částí zdroje živého videa do Azure Media Services v cloudu. Tento případ použití se v tomto kurzu označuje jako [záznam videa založený na událostech](event-based-video-recording-concept.md) (EVR). Chcete-li zaznamenat části živého videa, použijte model AI pro detekci objektů pro hledání objektů ve videu a záznamu videoklipů pouze v případě, že je zjištěn určitý typ objektu. Naučíte se také, jak přehrát nahrané video klipy pomocí Media Services. Tato možnost je užitečná pro celou řadu scénářů, kdy je potřeba uchovat archiv videoklipů, které vás zajímají. 
+
+V tomto kurzu provedete následující:
 
 > [!div class="checklist"]
-> * Nastavení relevantních prostředků
-> * Projděte si kód, který provádí EVR
-> * Spuštění ukázkového kódu
+> * Nastavte příslušné prostředky.
+> * Projděte si kód, který provádí EVR.
+> * Spusťte vzorový kód.
 > * Prohlédněte si výsledky a podívejte se na video.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="suggested-pre-reading"></a>Navrhované před čtením  
 
-Doporučujeme si přečíst následující stránky dokumentace.
+Než začnete, přečtěte si tyto články:
 
 * [Přehled živé analýzy videí na IoT Edge](overview.md)
 * [Živá analýza videí na IoT Edge terminologii](terminology.md)
 * [Koncepty Media graphu](media-graph-concept.md) 
 * [Nahrávání videa na základě událostí](event-based-video-recording-concept.md)
 * [Kurz: vývoj modulu IoT Edge](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux)
-* [Postup úpravy nasazení. *. template. JSON](https://github.com/microsoft/vscode-azure-iot-edge/wiki/How-to-edit-deployment.*.template.json)
+* [Postup úpravy nasazení. * .template.js](https://github.com/microsoft/vscode-azure-iot-edge/wiki/How-to-edit-deployment.*.template.json)
 * Oddíl, [jak deklarovat trasy v manifestu nasazení IoT Edge](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes)
 
 ## <a name="prerequisites"></a>Požadavky
 
-Předpoklady pro tento kurz jsou následující:
+Předpoklady pro tento kurz:
 
-* [Visual Studio Code](https://code.visualstudio.com/) ve vývojovém počítači pomocí rozšíření [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) a rozšíření [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) .
+* [Visual Studio Code](https://code.visualstudio.com/) ve vývojovém počítači pomocí [nástrojů Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) a rozšíření [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) .
 
     > [!TIP]
-    > Může se zobrazit výzva k instalaci Docker. Tuto výzvu můžete ignorovat.
+    > Může se zobrazit výzva k instalaci Docker. Ignorovat tuto výzvu.
 * [Sada SDK .NET Core 3,1](https://dotnet.microsoft.com/download/dotnet-core/thank-you/sdk-3.1.201-windows-x64-installer) na vašem vývojovém počítači.
-* Dokončení [skriptu nastavení prostředků Live video Analytics](https://github.com/Azure/live-video-analytics/tree/master/edge/setup) a [nastavení prostředí](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/detect-motion-emit-events-quickstart?branch=release-preview-media-services-lva#set-up-the-environment)
+* Dokončete [skript nastavení prostředků nástroje Live video Analytics](https://github.com/Azure/live-video-analytics/tree/master/edge/setup)a [nastavte prostředí](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/detect-motion-emit-events-quickstart?branch=release-preview-media-services-lva#set-up-the-environment) .
 
-Na konci výše uvedeného postupu budete mít k dispozici určité prostředky Azure nasazené v rámci předplatného Azure, včetně těchto:
+Na konci tohoto postupu budete mít v předplatném Azure nasazené relevantní prostředky Azure:
 
-* IoT Hub
-* Účet úložiště
+* Azure IoT Hub
+* Účet služby Azure Storage
 * Účet Azure Media Services
 * Virtuální počítač Linux v Azure s nainstalovaným [modulem runtime IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)
 
 ## <a name="concepts"></a>Koncepty
 
-Nahrávání videa založeného na událostech (EVR) se týká procesu nahrávání videa aktivovaného událostí. Tato událost může být vygenerována ze zpracování samotného grafického signálu (například při zjištění přesunu objektu ve videu) nebo z nezávislého zdroje (například otevření dvířek). Případně můžete spustit záznam pouze v případě, že služba Inferencing zjistí, že došlo k určité události.  V tomto kurzu použijete video o vozidlech, která se pohybují na dálnici, a zaznamenání videoklipů při zjištění nákladní části.
+Nahrávání videa založeného na událostech odkazuje na proces nahrávání videa aktivovaného událostí. Tato událost může být vygenerována:
+- Zpracování samotného hlasového signálu, například při zjištění pohybujícího se objektu ve videu.
+- Nezávislý zdroj, například otevření dveří. 
+
+Případně můžete spustit záznam pouze v případě, že služba Inferencing zjistí, že došlo k určité události. V tomto kurzu použijete video o vozidlech pohybujících se na dálnici a zaznamenání videoklipů pokaždé, když se zjistí nákladní vůz.
 
 ![Graf médií](./media/event-based-video-recording-tutorial/overview.png)
 
-Diagram výše je obrazové znázornění [mediálního grafu](media-graph-concept.md) a dalších modulů, které doplní požadovaný scénář. Jsou zapojené čtyři IoT Edge moduly:
+Diagram je obrazové znázornění [mediálního grafu](media-graph-concept.md) a dalších modulů, které provádějí požadovaný scénář. Jsou zapojené čtyři IoT Edge moduly:
 
 * Live video Analytics v modulu IoT Edge.
-* Modul Edge, který spouští model AI za koncovým bodem HTTP. Tento modul AI používá model [YOLOv3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) , který umožňuje detekci mnoha typů objektů.
-* Vlastní modul pro počítání a filtrování objektů (v diagramu výše, na které se říká čítač objektu), který sestavíte a nasadíte v tomto kurzu.
+* Modul Edge, který spouští model AI za koncovým bodem HTTP. Tento modul AI používá model [Yolo V3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) , který dokáže detekovat mnoho typů objektů.
+* Vlastní modul pro počítání a filtrování objektů, který se označuje jako čítač objektu v diagramu. Sestavíte čítač objektu a nasadíte ho v tomto kurzu.
 * [Modul simulátoru RTSP](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) pro simulaci kamery RTSP.
     
-    Jak znázorňuje diagram, budete v mediálním grafu používat [zdrojový uzel RTSP](media-graph-concept.md#rtsp-source) k zachycení simulovaného živého videa (provozu na dálnici) a odeslání tohoto videa na dvě cesty.
+Jak znázorňuje diagram, použijete v mediálním grafu [zdrojový uzel RTSP](media-graph-concept.md#rtsp-source) k zachycení simulovaného živého videa na dálnici a odeslání tohoto videa na dvě cesty:
 
-* První cesta je uzel [procesoru filtru frekvence snímků](media-graph-concept.md#frame-rate-filter-processor) , který zapisuje snímky videa na zadané (zmenšené) snímkové rychlosti snímků. Tyto video snímky jsou odesílány do uzlu rozšíření HTTP, který pak přenáší snímky (jako obrázky) do modulu AI (YOLO V3 – což je detektor objektu) a přijímá výsledky – což budou objekty (vozidla v provozu) zjištěné modelem. Uzel rozšíření HTTP pak tyto výsledky publikuje prostřednictvím uzlu jímky zpráv IoT Hub do centra IoT Edge.
-* Modul čítače objektu je nastaven tak, aby přijímal zprávy z centra IoT Edge – což zahrnuje výsledky detekce objektu (vozidla v provozu). Kontroluje, zda tyto zprávy hledají objekty určitého typu (konfigurovány prostřednictvím nastavení). Když takový objekt najde, tento modul pošle zprávu do centra IoT Edge. Zprávy o nalezených objektech se pak přesměrují do zdrojového uzlu IoT Hub v mediálním grafu. Po přijetí takového hlášení IoT Hub zdrojový uzel v mediálním grafu aktivuje uzel [procesoru brány signálu](media-graph-concept.md#signal-gate-processor) , což způsobí, že se druhý otevře v nakonfigurovaném časovém intervalu. Video prochází bránou do uzlu jímka assetu za tuto dobu. Tato část živého streamu se pak zaznamená prostřednictvím uzlu [jímky assetu](media-graph-concept.md#asset-sink) k [assetu](terminology.md#asset) ve vašem účtu Azure Media Service.
+* První cesta je uzel [procesoru filtru frekvence snímků](media-graph-concept.md#frame-rate-filter-processor) , který zapisuje snímky videa na zadané (zmenšené) snímkové rychlosti snímků. Tyto snímky videa se odesílají do uzlu rozšíření HTTP. Uzel pak přenáší snímky jako obrázky do modulu AI YOLO v3, což je objektový detektor. Uzel obdrží výsledky, což jsou objekty (vozidla v provozu) zjištěné modelem. Uzel rozšíření HTTP pak tyto výsledky publikuje prostřednictvím uzlu jímky zpráv IoT Hub do centra IoT Edge.
+* Modul objectCounter je nastavený tak, aby přijímal zprávy z centra IoT Edge, které zahrnuje výsledky detekce objektu (vozidla v provozu). Modul tyto zprávy zkontroluje a vyhledá objekty určitého typu, které byly nakonfigurovány prostřednictvím nastavení. Když takový objekt najde, tento modul pošle zprávu do centra IoT Edge. Zprávy o nalezených objektech se pak přesměrují do zdrojového uzlu IoT Hub v mediálním grafu. Po přijetí takové zprávy IoT Hub zdrojový uzel v mediálním grafu aktivuje uzel [procesoru brány signálu](media-graph-concept.md#signal-gate-processor) . Uzel procesoru brány signálu se pak otevře po nakonfigurované době. Video prochází bránou do uzlu jímka assetu za tuto dobu. Tato část živého streamu se pak prostřednictvím uzlu [jímka assetu](media-graph-concept.md#asset-sink) zaznamená do [assetu](terminology.md#asset) v účtu Azure Media Services.
 
 ## <a name="set-up-your-development-environment"></a>Nastavení vývojového prostředí
 
-Než začnete, ověřte, že jste v části [požadavky](#prerequisites)dokončili 3 odrážky. Po dokončení skriptu nastavení prostředků kliknutím na složené závorky vystavte strukturu složky. Zobrazí se několik souborů vytvořených v adresáři ~/clouddrive/lva-Sample.
+Než začnete, ověřte, že jste dokončili třetí odrážku v části [požadavky](#prerequisites). Po dokončení skriptu pro nastavení prostředků vyberte složené závorky, které budou vystavovat strukturu složek. Zobrazí se několik souborů vytvořených v adresáři ~/clouddrive/lva-Sample.
 
 ![Nastavení aplikace](./media/quickstarts/clouddrive.png)
 
-V tomto kurzu jsou důležité tyto:
+Z zájmu tohoto kurzu jsou soubory:
 
-* ~/clouddrive/lva-Sample/Edge-Deployment/.env – obsahuje vlastnosti, které Visual Studio Code používá k nasazení modulů do hraničního zařízení.
-* ~/clouddrive/lva-Sample/AppSetting.JSON-používá se Visual Studio Code pro spuštění ukázkového kódu.
+* **~/clouddrive/lva-Sample/Edge-Deployment/.env**: obsahuje vlastnosti, které Visual Studio Code používá k nasazení modulů do hraničního zařízení.
+* **~/clouddrive/lva-sample/appsetting.json**: používá Visual Studio Code ke spuštění ukázkového kódu.
 
-Tyto soubory budete potřebovat pro následující kroky.
+Budete potřebovat soubory pro tyto kroky.
 
-1. Naklonujte úložiště sem https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp .
+1. Naklonujte úložiště z odkazu na GitHub https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp .
 1. Spusťte Visual Studio Code a otevřete složku, do které jste stáhli úložiště.
-1. V Visual Studio Code přejděte do složky src/Cloud-to-Device-Console-App a vytvořte soubor s názvem appSettings. JSON. Tento soubor bude obsahovat nastavení potřebná ke spuštění programu.
-1. Zkopírujte obsah ze souboru ~/clouddrive/lva-Sample/appSettings.JSON. Text by měl vypadat takto:
+1. V Visual Studio Code přejděte do složky src/Cloud-to-Device-Console-App-Device-Console-Device-Console-a vytvořte soubor s názvem **appsettings.js**. Tento soubor obsahuje nastavení potřebná ke spuštění programu.
+1. Kopírovat obsah z souboru ~/clouddrive/lva-Sample/appsettings.js. Text by měl vypadat takto:
 
     ```
     {  
@@ -98,7 +104,7 @@ Tyto soubory budete potřebovat pro následující kroky.
 
     Připojovací řetězec IoT Hub umožňuje používat Visual Studio Code k posílání příkazů do hraničních modulů přes Azure IoT Hub.
     
-1. Potom přejděte do složky "src/Edge" a vytvořte soubor s názvem ". env".
+1. Potom přejděte do složky src/Edge a vytvořte soubor s názvem **. env**.
 1. Zkopírujte obsah ze souboru ~/clouddrive/lva-Sample/.env. Text by měl vypadat takto:
 
     ```
@@ -118,20 +124,20 @@ Tyto soubory budete potřebovat pro následující kroky.
 
 ## <a name="examine-the-template-file"></a>Kontrola souboru šablony 
 
-V předchozím kroku jste spustili Visual Studio Code a otevřeli složku obsahující vzorový kód.
+V předchozím kroku jste začali Visual Studio Code a otevřeli složku, která obsahuje vzorový kód.
 
-V Visual Studio Code přejděte na "src/Edge". Zobrazí se soubor. ENV, který jste vytvořili, a také několik souborů šablon nasazení. Tato šablona definuje, které hraniční moduly budete nasazovat do hraničního zařízení (virtuální počítač Azure Linux). Soubor. env obsahuje hodnoty pro proměnné, které se používají v těchto šablonách, například přihlašovací údaje služby Media Service.
+V Visual Studio Code přejděte na src/Edge. Zobrazí se soubor. ENV, který jste vytvořili, a několik souborů šablon nasazení. Tato šablona definuje, které moduly Edge nasadíte do hraničního zařízení (virtuální počítač Azure Linux). Soubor. env obsahuje hodnoty pro proměnné používané v těchto šablonách, například přihlašovací údaje Media Services.
 
-Otevřete "src/Edge/Deployment. objectCounter. template. JSON". Všimněte si, že v části "moduly" jsou čtyři položky, které odpovídají položkám uvedeným výše (v části věnované koncepcím):
+Otevřete src/Edge/deployment.objectCounter.template.jsna. V části **modulů** jsou čtyři položky, které odpovídají položkám uvedeným v předchozích částech "koncepty":
 
-* lvaEdge – Toto je Live video Analytics v modulu IoT Edge.
-* yolov3 – jedná se o modul AI sestavený pomocí modelu YOLO v3.
-* rtspsim – simulátor RTSP
-* objectCounter – jedná se o modul, který hledá konkrétní objekty ve výsledcích z yolov3
+* **lvaEdge**: Toto je Live video Analytics v modulu IoT Edge.
+* **yolov3**: Jedná se o modul AI sestavený pomocí modelu Yolo v3.
+* **rtspsim**: Toto je simulátor RTSP.
+* **objectCounter**: Jedná se o modul, který hledá konkrétní objekty ve výsledcích z yolov3.
 
-Pro modul objectCounter se podívejte na řetězec ($ {MODULes. objectCounter}), který se používá pro hodnotu Image – to je založené na [kurzu](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux) vývoje IoT Edgeho modulu. Visual Studio Code automaticky rozpozná, že kód pro modul čítače objektu je pod položkou "src/Edge/modules/objectCounter". 
+Pro modul objectCounter se podívejte na řetězec ($ {MODULes. objectCounter}), který se používá pro hodnotu image. Vychází z [kurzu](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux) vývoje IoT Edge modulu. Visual Studio Code automaticky rozpozná, že kód pro modul objectCounter je pod položkou src/Edge/Module/objectCounter. 
 
-Přečtěte si [Tento](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes) oddíl, jak deklarovat trasy v manifestu nasazení IoT Edge a pak zkontrolujte trasy v souboru JSON šablony. Všimněte si, jak:
+Přečtěte si [Tento oddíl](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes) , jak deklarovat trasy v manifestu nasazení IoT Edge. Pak zkontrolujte trasy v souboru JSON šablony. Všimněte si, jak:
 
 * LVAToObjectCounter se používá k odesílání konkrétních událostí do konkrétního koncového bodu v modulu objectCounter.
 * ObjectCounterToLVA se používá k odeslání události triggeru do konkrétního koncového bodu (který by měl být IoT Hub zdrojový uzel) v modulu lvaEdge.
@@ -142,53 +148,53 @@ Přečtěte si [Tento](https://docs.microsoft.com/azure/iot-edge/module-composit
 
 ## <a name="generate-and-deploy-the-iot-edge-deployment-manifest"></a>Generování a nasazení manifestu nasazení IoT Edge 
 
-Manifest nasazení definuje, které moduly jsou nasazeny do hraničního zařízení, a nastavení konfigurace pro tyto moduly. Pomocí těchto kroků vygenerujte manifest ze souboru šablony a potom ho nasaďte do hraničního zařízení.
+Manifest nasazení definuje, které moduly jsou nasazeny do hraničního zařízení a nastavení konfigurace pro tyto moduly. Pomocí těchto kroků vygenerujte manifest ze souboru šablony a potom ho nasaďte do hraničního zařízení.
 
-Pomocí Visual Studio Code postupujte podle [těchto](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux#build-and-push-your-solution) pokynů pro přihlášení do Docker a "Build and push IoT Edge řešení", ale pro tento krok použijte src/Edge/Deployment. objectCounter. template. JSON.
+Pomocí Visual Studio Code se přihlaste k Docker podle [těchto pokynů](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux#build-and-push-your-solution) . Pak vyberte **sestavení a nabízená IoT Edge řešení**. Pro tento krok použijte src/Edge/deployment.objectCounter.template.js.
 
 ![Sestavování a nabízených IoT Edge řešení](./media/event-based-video-recording-tutorial/build-push.png)
 
-Tím se sestaví modul objectCounter pro počítání objektů a nahrajte image do vašeho Azure Container Registry (ACR).
+Tato akce vytvoří modul objectCounter pro počítání objektů a vloží image do vašeho Azure Container Registry.
 
 * Ověřte, zda máte proměnné prostředí CONTAINER_REGISTRY_USERNAME_myacr a CONTAINER_REGISTRY_PASSWORD_myacr definovány v souboru. env.
 
-Výše uvedený krok vytvoří manifest nasazení IoT Edge v souboru src/Edge/config/Deployment. objectCounter. amd64. JSON. Klikněte na soubor pravým tlačítkem a klikněte na vytvořit nasazení pro jedno zařízení.
+Tento krok vytvoří manifest nasazení IoT Edge v umístění src/Edge/config/deployment.objectCounter.amd64.jsna. Klikněte pravým tlačítkem na daný soubor a vyberte **vytvořit nasazení pro jedno zařízení**.
 
 ![Vytvoření nasazení pro jedno zařízení](./media/quickstarts/create-deployment-single-device.png)
 
-Pokud se jedná o první kurz s živým analýzou videa na IoT Edge, Visual Studio Code vás vyzve k zadání připojovacího řetězce IoTHub. Můžete ho zkopírovat ze souboru appSettings. JSON.
+Pokud se jedná o váš první kurz se službou Live video Analytics na IoT Edge, Visual Studio Code vás vyzve k zadání připojovacího řetězce IoT Hub. Můžete ho zkopírovat z appsettings.jsv souboru.
 
-V dalším kroku Visual Studio Code požádat o výběr zařízení služby IoT Hub. Vyberte zařízení IoT Edge (mělo by se jednat o "lva-Sample-Device").
+Dále Visual Studio Code požádá o výběr zařízení IoT Hub. Vyberte zařízení IoT Edge, které by mělo být lva-Sample-Device.
 
 V této fázi se spustilo nasazení hraničních modulů do zařízení IoT Edge.
-V přibližně 30 sekundách aktualizujte IoT Hub Azure v levém dolním rohu Visual Studio Code a měli byste vidět, že jsou nasazené 4 moduly (Poznamenejte si znovu tyto názvy: lvaEdge, rtspsim, yolov3 a objectCounter).
+Během přibližně 30 sekund aktualizujte IoT Hub Azure v části vlevo dole v Visual Studio Code. Měli byste vidět, že jsou nasazené čtyři moduly s názvem lvaEdge, rtspsim, yolov3 a objectCounter.
 
-![4 nasazené moduly](./media/event-based-video-recording-tutorial/iot-hub.png)
+![Nasazené čtyři moduly](./media/event-based-video-recording-tutorial/iot-hub.png)
 
 ## <a name="prepare-for-monitoring-events"></a>Příprava na monitorování událostí
 
-Pokud chcete zobrazit události z modulu čítače objektů a ze služby Live video Analytics v modulu IoT Edge, postupujte takto:
+Pokud se chcete podívat na události z modulu objectCounter a ve službě Live video Analytics v modulu IoT Edge, postupujte podle následujících kroků:
 
-1. Otevřete podokno Průzkumník v Visual Studio Code a vyhledejte Azure IoT Hub v levém dolním rohu.
-1. Rozbalte uzel zařízení.
-1. Pravým tlačítkem clink na lva-Sample-Device a zvolte možnost **Spustit sledování integrovaného monitorování událostí**.
+1. Otevřete podokno Průzkumník v Visual Studio Code a hledejte **Azure IoT Hub** v levém dolním rohu.
+1. Rozbalte uzel **zařízení** .
+1. Klikněte pravým tlačítkem myši na soubor lva-Sample-Device a vyberte možnost **Spustit sledování integrovaného koncového bodu události**.
 
-![Spustit sledování vestavěného koncového bodu události](./media/quickstarts/start-monitoring-iothub-events.png)
+   ![Spustit sledování vestavěného koncového bodu události](./media/quickstarts/start-monitoring-iothub-events.png)
 
 ## <a name="run-the-program"></a>Spuštění programu
 
-1. Visual Studio Code přejděte do části src/Cloud-to-Device-Console-App/Operations. JSON.
+1. V Visual Studio Code v nástroji použijte src/Cloud-to-Device-Console-App/operations.js.
 
-1. Pod uzlem GraphTopologySet upravte následující položky:
+1. V uzlu **GraphTopologySet** upravte následující položky:
 
     `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json"`
     
-1. Potom v části uzly GraphInstanceSet a GraphTopologyDelete upravte,
+1. Dále v uzlech **GraphInstanceSet** a **GraphTopologyDelete** upravte:
 
     `"topologyName" : "EVRtoAssetsOnObjDetect"`
-1. Spusťte ladicí relaci (stiskněte klávesu F5). Začnete zobrazovat některé zprávy, které se vytisknou v okně terminálu.
+1. Spusťte ladicí relaci výběrem F5. V okně **terminálu** se zobrazí zprávy, které se vytisknou.
 
-1. Operace Operations. JSON se spustí s voláními GraphTopologyList a GraphInstanceList. Pokud jste vyčistili prostředky po předchozích rychlých startech nebo kurzech, vrátí tato akce prázdné seznamy a potom se pozastaví, abyste mohli stisknout Enter, například níže:
+1. operations.jsv souboru začíná s voláními GraphTopologyList a GraphInstanceList. Pokud jste vyčistili prostředky po předchozích rychlých startech nebo kurzech, tato akce vrátí prázdné seznamy a pozastaví se, abyste vybrali možnost **zadat**, jak je znázorněno níže:
 
     ```
     --------------------------------------------------------------------------
@@ -205,9 +211,10 @@ Pokud chcete zobrazit události z modulu čítače objektů a ze služby Live vi
     Executing operation WaitForInput
     Press Enter to continue
     ```
-    1. Po stisknutí klávesy ENTER v okně terminálu budou provedeny další sady přímých volání metody.
-     * Volání GraphTopologySet pomocí topologyUrl výše.
-     * Volání GraphInstanceSet s použitím následujícího textu.
+
+1. Po výběru **ENTER** v okně **terminálu** se provede další sada přímých volání metody:
+   * Volání GraphTopologySet pomocí předchozího topologyUrlu
+   * Volání GraphInstanceSet pomocí následujícího textu
      
         ```
         {
@@ -234,33 +241,33 @@ Pokud chcete zobrazit události z modulu čítače objektů a ze služby Live vi
         }
         ```
     
-     * Volání GraphInstanceActivate ke spuštění instance grafu a spuštění toku videa
-     * Druhé volání GraphInstanceList k zobrazení, že instance grafu je ve stavu spuštěno.
+   * Volání GraphInstanceActivate ke spuštění instance grafu a zahájení toku videa
+   * Druhé volání GraphInstanceList k zobrazení, že instance grafu je ve stavu spuštěno.
      
-1. Výstup v okně terminálu se teď pozastaví na příkazovém řádku pro pokračování stisknutím klávesy ENTER. V tuto chvíli nespustí "Enter". Můžete se posunout nahoru a podívat se na datové části odezvy JSON pro přímé metody, které jste vyvolali.
+1. Výstup v okně **terminálu** se nyní pozastaví **stisknutím klávesy ENTER a zobrazí se výzva k pokračování** . V tuto chvíli nevybírejte **ENTER** . Posuňte se nahoru, abyste viděli datové části odpovědi JSON pro přímé metody, které jste vyvolali.
 
-1. Pokud teď přepnete do okna výstup v Visual Studio Code, zobrazí se zprávy, které se odesílají do IoT Hubu, a to pomocí nástroje Live video Analytics v modulu IoT Edge.
+1. Pokud teď přepnete do okna **výstup** v Visual Studio Code, zobrazí se zprávy odesílané do IoT Hub pomocí nástroje Live video Analytics v modulu IoT Edge.
 
-     * Tyto zprávy jsou popsány v následující části.
+   Tyto zprávy jsou popsány v následující části.
      
-1. Instance grafu se dál spustí a zaznamená video – simulátor RTSP bude pokračovat ve vytváření smyček zdrojového videa. Zkontrolujte zprávy popsané v níže uvedené části a potom zastavte instanci, vraťte se do okna terminálu a stiskněte klávesu ENTER. Pro vyčištění prostředků se provedla další řada volání:
+1. Instance grafu pokračuje v běhu a zaznamená video. Simulátor RTSP zachovává smyčku zdrojového videa. Zkontrolujte zprávy, jak je popsáno v následující části. Pak můžete instanci zastavit, přejít zpátky do okna **terminálu** a vybrat **ENTER**. K vyčištění prostředků se provede další řada volání pomocí:
 
-     * Volání GraphInstanceDeactivate k deaktivaci instance grafu
-     * Volání GraphInstanceDelete pro odstranění instance
-     * Volání GraphTopologyDelete k odstranění topologie
-     * Konečné volání GraphTopologyList k zobrazení, že seznam je nyní prázdný
+   * Volání GraphInstanceDeactivate k deaktivaci instance grafu.
+   * Volání GraphInstanceDelete pro odstranění instance.
+   * Volání GraphTopologyDelete k odstranění topologie.
+   * Konečné volání GraphTopologyList k zobrazení, že seznam je nyní prázdný.
 
 ## <a name="interpret-the-results"></a>Interpretace výsledků 
 
-Když spustíte graf Media Graph, Live video Analytics v modulu IoT Edge odešle určité diagnostické a provozní události do centra IoT Edge. Tyto události jsou zprávy, které se zobrazí v okně výstup Visual Studio Code, který obsahuje oddíl "tělo" a "applicationProperties". Informace o tom, co tyto oddíly představuje, najdete v tématu [Vytvoření a čtení zpráv IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct).
+Když spustíte graf Media Graph, Live video Analytics v modulu IoT Edge odešle určité diagnostické a provozní události do centra IoT Edge. Tyto události jsou zprávy, které se zobrazí v okně **výstup** Visual Studio Code. Obsahují oddíl tělo a oddíl applicationProperties. Informace o tom, co tyto oddíly představuje, najdete v tématu [Vytvoření a čtení zpráv IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct).
 
-Ve zprávách níže jsou vlastnosti aplikace a obsah těla definovány modulem Live video Analytics.
+V následujících zprávách jsou vlastnosti aplikace a obsah těla definovány modulem Live video Analytics.
 
-## <a name="diagnostic-events"></a>Diagnostické události
+## <a name="diagnostics-events"></a>Diagnostické události
 
 ### <a name="mediasessionestablished-event"></a>Událost MediaSessionEstablished 
 
-Po vytvoření instance mediálního grafu se zdrojový uzel RTSP pokusí připojit k serveru RTSP běžícímu na kontejneru simulátoru RTSP. V případě úspěchu se tato událost vytiskne. Všimněte si, že typ události je Microsoft. Media. MediaGraph. Diagnostics. MediaSessionEstablished.
+Po vytvoření instance mediálního grafu se zdrojový uzel RTSP pokusí připojit k serveru RTSP běžícímu na kontejneru simulátoru RTSP. V případě úspěchu se tato událost vytiskne. Typ události je Microsoft. Media. MediaGraph. Diagnostics. MediaSessionEstablished.
 
 ```
 [IoTHubMonitor] [5:53:17 PM] Message received from [lva-sample-device/lvaEdge]:
@@ -279,20 +286,16 @@ Po vytvoření instance mediálního grafu se zdrojový uzel RTSP pokusí připo
 ```
 
 
-* Zpráva je diagnostická událost MediaSessionEstablished, která indikuje, že uzel zdroje RTSP (předmět) byl schopný navázat spojení s simulátorem RTSP a zahájit příjem (simulovaného) živého kanálu.
-
-* "Subject" v applicationProperties odkazuje na uzel v topologii grafu, ze které byla zpráva generována. V tomto případě zpráva pochází ze zdrojového uzlu RTSP.
-
-* eventType v applicationProperties značí, že se jedná o diagnostickou událost.
-
-* "čas události" označuje čas, kdy došlo k události, což je čas, kdy se spustilo video přenos dat (soubor MKV) do modulu jako živý datový proud.
-
-* "tělo" obsahuje data o diagnostické události, což je v tomto případě podrobnosti o [SDP](https://en.wikipedia.org/wiki/Session_Description_Protocol) .
+* Zpráva je událost diagnostiky (MediaSessionEstablished). Indikuje, že zdrojový uzel RTSP (předmět) navázal spojení s simulátorem RTSP a začal přijímat (simulované) živé kanály.
+* Oddíl Subject v applicationProperties odkazuje na uzel v topologii grafu, ze kterého byla zpráva vygenerována. V tomto případě zpráva pochází ze zdrojového uzlu RTSP.
+* Oddíl eventType v applicationProperties označuje, že se jedná o diagnostickou událost.
+* Část čas události označuje čas, kdy došlo k události. To je čas, kdy video (soubor MKV) začalo dorazit do modulu jako živý datový proud.
+* Oddíl Text obsahuje data o diagnostické události, která je v tomto případě podrobnostmi o [SDP](https://en.wikipedia.org/wiki/Session_Description_Protocol) .
 
 
 ## <a name="operational-events"></a>Provozní události
 
-Jakmile se mediální graf spustí po nějakou dobu, nakonec získáte událost z modulu objektu Counter. 
+Jakmile se mediální graf spustí po nějakou dobu, nakonec získáte událost z modulu objectCounter. 
 
 ```
 [IoTHubMonitor] [5:53:44 PM] Message received from [lva-sample-device/objectCounter]:
@@ -306,13 +309,13 @@ Jakmile se mediální graf spustí po nějakou dobu, nakonec získáte událost 
 }
 ```
 
-ApplicationProperties obsahuje čas události, což je čas, kdy modul počítadla objektu zjistil, že výsledky z modulu YOLO V3 obsahují objekty Interest (nákladní automobily).
+Část applicationProperties obsahuje dobu události. To je čas, kdy se v modulu objectCounter zjistilo, že výsledky z modulu yolov3 obsahují objekty zájmu.
 
 Můžou se zobrazit další informace o těchto událostech, když se ve videu zjistí další nákladní automobily.
 
 ### <a name="recordingstarted-event"></a>Událost RecordingStarted
 
-Skoro hned po čítači objektu odešle událost, zobrazí se událost typu Microsoft. Media. Graph. Operational. RecordingStarted
+Skoro hned po čítači objektu odešle událost se zobrazí událost typu Microsoft. Media. Graph. Operational. RecordingStarted:
 
 ```
 [IoTHubMonitor] [5:53:46 PM] Message received from [lva-sample-device/lvaEdge]:
@@ -331,11 +334,11 @@ Skoro hned po čítači objektu odešle událost, zobrazí se událost typu Micr
 }
 ```
 
-"Subject" v applicationProperties odkazuje na uzel jímky assetu v grafu, který vygeneroval tuto zprávu. Tělo obsahuje informace o umístění výstupu, což je v tomto případě název assetu služby Azure Media Service, do kterého se nahraje video. Tuto hodnotu byste si měli poznamenat.
+Oddíl Subject v applicationProperties odkazuje na uzel jímky assetu v grafu, který vygeneroval tuto zprávu. Oddíl Text obsahuje informace o umístění výstupu. V tomto případě se jedná o název prostředku Azure Media Services, do kterého se nahraje video. Tuto hodnotu si poznamenejte.
 
 ### <a name="recordingavailable-event"></a>Událost RecordingAvailable
 
-Když uzel jímka assetu nahrál video do assetu, vygeneruje tuto událost typu Microsoft. Media. Graph. Operational. RecordingAvailable
+Když uzel jímka assetu nahrál video do assetu, vygeneruje tuto událost typu Microsoft. Media. Graph. Operational. RecordingAvailable:
 
 ```
 [IoTHubMonitor] [5:54:15 PM] Message received from [lva-sample-device/lvaEdge]:
@@ -354,11 +357,11 @@ Když uzel jímka assetu nahrál video do assetu, vygeneruje tuto událost typu 
 }
 ```
 
-Tato událost označuje, že do Assetu byly zapsány dostatečné údaje, aby si hráči/klienti mohli zahájit přehrávání videa. "Subject" v applicationProperties odkazuje na uzel AssetSink v grafu, který vygeneroval tuto zprávu. Tělo obsahuje informace o umístění výstupu, což je v tomto případě název Assetu služby Azure Media Service, do kterého se nahraje video.
+Tato událost označuje, že do assetu se zapsala dostatečná data pro aktéry nebo klienty, aby si mohli začít přehrávat video. Oddíl Subject v applicationProperties odkazuje na uzel AssetSink v grafu, který vygeneroval tuto zprávu. Oddíl Text obsahuje informace o umístění výstupu. V tomto případě se jedná o název prostředku Azure Media Services, do kterého se nahraje video.
 
 ### <a name="recordingstopped-event"></a>Událost RecordingStopped
 
-Pokud prohlížíte nastavení aktivace (maximumActivationTime) pro uzel procesoru brány signálu v [topologii](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json), uvidíte, že je tato brána nastavená tak, aby se zavřela po 30 sekundách od odeslání videa. Přibližně 30 sekund po události RecordingStarted by se měla zobrazit událost typu Microsoft. Media. Graph. Operation. RecordingStopped, která indikuje, že uzel jímky assetu zastavil záznam videa do assetu.
+Pokud prohlížíte nastavení aktivace (maximumActivationTime) pro uzel procesoru brány signálu v [topologii](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json), uvidíte, že je tato brána nastavená tak, aby se zavřela po 30 sekundách odeslání videa prostřednictvím. Přibližně 30 sekund po události RecordingStarted by se měla zobrazit událost typu Microsoft. Media. Graph. Operational. RecordingStopped. Tato událost označuje, že uzel jímky assetu zastavil nahrávání videa do assetu.
 
 ```
 [IoTHubMonitor] [5:54:15 PM] Message received from [lva-sample-device/lvaEdge]:
@@ -377,37 +380,37 @@ Pokud prohlížíte nastavení aktivace (maximumActivationTime) pro uzel proceso
 }
 ```
 
-Tato událost označuje, že záznam byl zastaven. "Subject" v applicationProperties odkazuje na uzel AssetSink v grafu, který vygeneroval tuto zprávu. Tělo obsahuje informace o umístění výstupu, což je v tomto případě název assetu služby Azure Media Service, do kterého se nahraje video.
+Tato událost označuje, že záznam byl zastaven. Oddíl Subject v applicationProperties odkazuje na uzel AssetSink v grafu, který vygeneroval tuto zprávu. Oddíl Text obsahuje informace o umístění výstupu. V tomto případě se jedná o název prostředku Azure Media Services, do kterého se nahraje video.
 
 ## <a name="media-services-asset"></a>Prostředek Media Services  
 
 Můžete prozkoumávat Media Services Asset, který byl vytvořen grafem, přihlášením k Azure Portal a zobrazením videa.
 
 1. Otevřete webový prohlížeč a přejdete na [Azure Portal](https://portal.azure.com/). Zadejte přihlašovací údaje pro přihlášení k portálu. Výchozím zobrazením je váš řídicí panel služby.
-1. Vyhledejte účet Media Services mezi prostředky, které máte ve svém předplatném, a otevřete okno účtu.
-1. V seznamu Media Services klikněte na Assety.
+1. Vyhledejte účet Media Services mezi prostředky, které máte ve svém předplatném. Otevřete podokno účet.
+1. V seznamu **Media Services** vyberte **assety** .
 
     ![Prostředky](./media/continuous-video-recording-tutorial/assets.png)
-1. Zobrazí se Asset s názvem sampleAssetFromEVR-LVAEdge-{DateTime} – jedná se o název, který byl zadán ve vlastnosti outputLocation události RecordingStarted. AssetNamePattern v topologii určuje, jak se tento název vygeneroval.
-1. Klikněte na prostředek.
-1. Na stránce Podrobnosti o aktivech klikněte na odkaz **vytvořit nový** pod textovým polem Adresa URL streamování.
+1. Najdete seznam prostředků s názvem sampleAssetFromEVR-LVAEdge-{DateTime}. Toto je název, který jste zadali ve vlastnosti outputLocation události RecordingStarted. AssetNamePattern v topologii určuje, jak se tento název vygeneroval.
+1. Vyberte asset.
+1. Na stránce Podrobnosti o aktivech vyberte **vytvořit novou** v poli **Adresa URL streamování** .
 
     ![Nový prostředek](./media/continuous-video-recording-tutorial/new-asset.png)
 
-1. V průvodci, který se otevře, přijměte výchozí možnosti a stiskněte tlačítko Přidat. Další informace najdete v tématu [přehrávání videa](video-playback-concept.md).
+1. V průvodci, který se otevře, přijměte výchozí možnosti a vyberte **Přidat**. Další informace najdete v tématu [přehrávání videa](video-playback-concept.md).
 
     > [!TIP]
     > Ujistěte se, že [koncový bod streamování běží](../latest/streaming-endpoint-concept.md).
-1. Přehrávač by měl načíst video a měli byste být schopni **spustit přehrávání** a zobrazit ho.
+1. Přehrávač by měl načíst video. Vyberte **Přehrát** a zobrazte ho.
 
 > [!NOTE]
-> Vzhledem k tomu, že zdroj videa byl kontejner simulující kanál kamery, časová razítka ve videu souvisejí s tím, že jste aktivovali instanci grafu, a když ji deaktivujete. Pokud používáte ovládací prvky přehrávání integrované v kurzu [nahrávání více dní](playback-multi-day-recordings-tutorial.md) , můžete zobrazit časová razítka na obrazovce zobrazená na obrazovce.
+> Vzhledem k tomu, že zdroj videa byl kontejner simulující kanál kamery, časová razítka ve videu souvisí s tím, že jste aktivovali instanci grafu a když ji deaktivujete. Pokud používáte ovládací prvky pro přehrávání, které jsou integrované v kurzu [přehrávání více dní](playback-multi-day-recordings-tutorial.md) , můžete zobrazit časová razítka na obrazovce, která se zobrazí na obrazovce.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud máte v úmyslu vyzkoušet ostatní kurzy, měli byste se přidržet k vytvořeným prostředkům. V opačném případě přejděte do Azure Portal, přejděte do skupin prostředků, vyberte skupinu prostředků, pod kterou jste spustili tento kurz, a odstraňte skupinu prostředků.
+Pokud máte v úmyslu vyzkoušet ostatní kurzy, přihlaste se k prostředkům, které jste vytvořili. V opačném případě přejděte do Azure Portal, přejděte do skupin prostředků, vyberte skupinu prostředků, pod kterou jste spustili tento kurz, a odstraňte skupinu prostředků.
 
 ## <a name="next-steps"></a>Další kroky
 
 * Místo používání simulátoru RTSP použijte [fotoaparát IP](https://en.wikipedia.org/wiki/IP_camera) s podporou pro RTSP. V případě, že hledáte zařízení, která jsou v souladu s profily G, S nebo T, můžete vyhledat kamery s podporou protokolu RTSP na [stránce ONVIF – vyhovujících produktů](https://www.onvif.org/conformant-products/) .
-* Použijte zařízení AMD64 nebo x64 Linux (vs. pomocí virtuálního počítače Azure Linux). Toto zařízení musí být ve stejné síti jako kamera IP. Můžete postupovat podle pokynů v tématu [Instalace modulu runtime Azure IoT Edge v systému Linux](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) a potom postupujte podle pokynů v části [nasazení prvního IoT Edge modulu do](https://docs.microsoft.com/azure/iot-edge/quickstart-linux) rychlého startu zařízení s nástrojem Virtual Linux a zaregistrovat zařízení ve službě Azure IoT Hub.
+* Použijte zařízení AMD64 nebo x64 Linux (vs. pomocí virtuálního počítače Azure Linux). Toto zařízení musí být ve stejné síti jako kamera IP. Postupujte podle pokynů v části [Instalace modulu runtime Azure IoT Edge v systému Linux](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux). Pak postupujte podle pokynů v tématu [nasazení prvního IoT Edge modulu do](https://docs.microsoft.com/azure/iot-edge/quickstart-linux) rychlého startu zařízení s nástrojem Virtual Linux a zaregistrujte zařízení ve službě Azure IoT Hub.

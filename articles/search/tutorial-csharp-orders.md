@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 02/10/2020
-ms.openlocfilehash: 699b3e5b7e51e12ec0bf39ec0c9045dd3a27a6fd
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.date: 06/20/2020
+ms.openlocfilehash: 552f974b99b9430d82596a5a25265bb916cb4e25
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780602"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262187"
 ---
 # <a name="tutorial-order-search-results-using-the-net-sdk"></a>Kurz: seřazení výsledků hledání pomocí sady .NET SDK
 
@@ -128,7 +128,7 @@ Není nutné upravovat žádné modely, aby bylo možné řazení povolit. Zobra
     Select = new[] { "HotelName", "Description", "Rating"},
     ```
 
-5. Otevřete zobrazení (index. cshtml) a nahraďte smyčku vykreslování (**&lt;!--zobrazit data hotelu.--&gt;**) pomocí následujícího kódu.
+5. Otevřete zobrazení (index. cshtml) a nahraďte smyčku vykreslování (** &lt; !--Zobrazit data hotelu.-- &gt; **) pomocí následujícího kódu.
 
     ```cs
                 <!-- Show the hotel data. -->
@@ -461,7 +461,7 @@ Pro zobrazení výsledků na základě zeměpisné vzdálenosti je potřeba něk
 
 4. Nyní je třeba tyto koncepce spojit dohromady. Tyto fragmenty kódu jsou nicméně až do našeho kurzu, takže sestavení aplikace založené na mapě je ponecháno jako cvičení pro čtenáře. Pokud chcete tento příklad dále použít, zvažte buď zadání názvu města s poloměrem, nebo vyhledání bodu na mapě a výběr poloměru. Další informace o těchto možnostech najdete v následujících zdrojích informací:
 
-* [Dokumentace k Azure Maps](https://docs.microsoft.com/azure/azure-maps/)
+* [Dokumentace ke službě Azure Maps](https://docs.microsoft.com/azure/azure-maps/)
 * [Najít adresu pomocí služby Azure Maps Search Service](https://docs.microsoft.com/azure/azure-maps/how-to-search-for-address)
 
 ## <a name="order-results-based-on-a-scoring-profile"></a>Seřazení výsledků na základě profilu vyhodnocování
@@ -544,7 +544,7 @@ Pojďme se podívat na tři příklady profilů vyhodnocování a vzít v úvahu
 
 ### <a name="add-code-to-the-view-to-compare-profiles"></a>Přidání kódu do zobrazení pro porovnání profilů
 
-1. Otevřete soubor index. cshtml a oddíl &lt;text&gt; nahraďte následujícím kódem.
+1. Otevřete soubor index. cshtml a oddíl Text nahraďte &lt; &gt; následujícím kódem.
 
     ```cs
     <body>

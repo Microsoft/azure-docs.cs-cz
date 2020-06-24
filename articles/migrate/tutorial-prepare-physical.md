@@ -4,12 +4,12 @@ description: Přečtěte si, jak připravit na posouzení/migraci fyzických ser
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: b7bde5df943a35bfcf08ace3b454a26dae8c1d89
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: ed648458416bacb091212bb569a27ecdf13fe8ee
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901412"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84771270"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>Příprava na posouzení a migraci fyzických serverů do Azure
 
@@ -28,18 +28,18 @@ Tento kurz je první v řadě, kde se dozvíte, jak vyhodnotit fyzické servery 
 > Kurzy vám ukážou nejjednodušší cestu nasazení pro scénář, abyste mohli rychle nastavit zkušební verzi. Kurzy používají výchozí možnosti, pokud je to možné, a nezobrazují všechna možná nastavení a cesty. Podrobné pokyny najdete v tématu Postupy pro vyhodnocování fyzických serverů.
 
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/pricing/free-trial/), ještě než začnete.
 
 
 ## <a name="prepare-azure-for-server-assessment"></a>Příprava Azure na server Assessment
 
 Nastavte Azure pro práci s Azure Migrate. 
 
-**Úkol** | **Zobrazí** 
+**Úkol** | **Podrobnosti** 
 --- | --- 
 **Vytvoření projektu Azure Migrate** | Váš účet Azure potřebuje k vytvoření projektu oprávnění přispěvatele nebo vlastníka. 
-**Registrovat poskytovatele prostředků (jenom posouzení)** | Azure Migrate využívá odlehčené Azure Migrate zařízení ke zjišťování a vyhodnocení počítačů pomocí Azure Migrate: posouzení serveru.<br/><br/> Při registraci zařízení se poskytovatelé prostředků zaregistrovali u předplatného, které jste zvolili v zařízení. [Další informace](migrate-appliance-architecture.md#appliance-registration).<br/><br/> Pokud chcete zaregistrovat poskytovatele prostředků, potřebujete roli přispěvatel nebo Owner v předplatném.
-**Vytvoření aplikace Azure AD (jenom posouzení)** | Při registraci zařízení Azure Migrate vytvoří aplikaci Azure Active Directory (Azure AD), která se používá ke komunikaci mezi agenty běžícími na zařízení s příslušnými službami běžícími na Azure. [Další informace](migrate-appliance-architecture.md#appliance-registration).<br/><br/> Potřebujete oprávnění k vytváření aplikací Azure AD (dostupných v rámci role vývojář aplikace).
+**Registrovat poskytovatele prostředků (jenom posouzení)** | Azure Migrate využívá odlehčené Azure Migrate zařízení ke zjišťování a vyhodnocení počítačů pomocí Azure Migrate: posouzení serveru.<br/><br/> Při registraci zařízení se poskytovatelé prostředků zaregistrovali u předplatného, které jste zvolili v zařízení. [Přečtěte si další informace](migrate-appliance-architecture.md#appliance-registration).<br/><br/> Pokud chcete zaregistrovat poskytovatele prostředků, potřebujete roli přispěvatel nebo Owner v předplatném.
+**Vytvoření aplikace Azure AD (jenom posouzení)** | Při registraci zařízení Azure Migrate vytvoří aplikaci Azure Active Directory (Azure AD), která se používá ke komunikaci mezi agenty běžícími na zařízení s příslušnými službami běžícími na Azure. [Přečtěte si další informace](migrate-appliance-architecture.md#appliance-registration).<br/><br/> Potřebujete oprávnění k vytváření aplikací Azure AD (dostupných v rámci role vývojář aplikace).
 
 
 ### <a name="assign-permissions-to-create-project"></a>Přiřadit oprávnění k vytvoření projektu 
@@ -69,24 +69,24 @@ Můžete přiřadit oprávnění pro Azure Migrate vytvoření aplikace Azure AD
 
 Tenant nebo globální správce může udělit oprávnění následujícím způsobem:
 
-1. V Azure AD by měl tenant nebo globální správce přejít na **Azure Active Directory** > **Users** > **uživatelských nastavení**uživatelů.
+1. V Azure AD by měl tenant nebo globální správce přejít na **Azure Active Directory**  >  **Users**  >  **uživatelských nastavení**uživatelů.
 2. Správce by měl nastavit **Registrace aplikací** **Ano**.
 
     ![Oprávnění služby Azure AD](./media/tutorial-prepare-hyper-v/aad.png)
 
 > [!NOTE]
-> Toto je výchozí nastavení, které není citlivé. [Další informace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance).
+> Toto je výchozí nastavení, které není citlivé. [Přečtěte si další informace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance).
 
 #### <a name="assign-application-developer-role"></a>Přiřazení role vývojáře aplikace
 
-Tenant/globální správce může přiřadit roli vývojář aplikace k účtu. [Další informace](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal).
+Tenant/globální správce může přiřadit roli vývojář aplikace k účtu. [Přečtěte si další informace](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal).
 
 
 ## <a name="prepare-azure-for-physical-server-migration"></a>Příprava migrace pro Azure na fyzické servery
 
 Připravte Azure na migraci fyzických serverů pomocí migrace serveru.
 
-**Úkol** | **Zobrazí**
+**Úkol** | **Podrobnosti**
 --- | ---
 **Vytvoření projektu Azure Migrate** | Váš účet Azure potřebuje k vytvoření projektu oprávnění přispěvatele nebo vlastníka.
 **Ověření oprávnění pro účet Azure** | Váš účet Azure potřebuje oprávnění k vytvoření virtuálního počítače a zápis na spravovaný disk Azure.
@@ -138,7 +138,7 @@ Před nastavením zařízení Azure Migrate a zahájením posouzení v dalším 
 
 Azure Migrate potřebuje oprávnění ke zjišťování místních serverů.
 
-- **Windows:** Nastavte místní uživatelský účet na všech serverech Windows, které chcete zahrnout do zjišťování. Uživatelský účet musí být přidán do následujících skupin: – Uživatelé vzdálené správy – Performance Monitor Users-Performance Log Users
+- **Windows:** Musíte být správcem domény nebo místním správcem na všech serverech Windows, které chcete zjišťovat. Uživatelský účet by měl být přidán do těchto skupin: Uživatelé vzdálené správy, sledování výkonu a uživatelé protokolu výkonu.
 - **Linux:** Na serverech se systémem Linux, které chcete zjistit, potřebujete kořenový účet.
 
 ## <a name="prepare-for-physical-server-migration"></a>Příprava na migraci fyzického serveru
@@ -148,12 +148,14 @@ Projděte si požadavky na migraci fyzických serverů.
 > [!NOTE]
 > Při migraci fyzických počítačů Azure Migrate: Migrace serveru používá stejnou architekturu replikace jako zotavení po havárii na základě agenta ve službě Azure Site Recovery a některé součásti sdílejí stejný základ kódu. Část obsahu může odkazovat na dokumentaci Site Recovery.
 
-- [Zkontrolujte](migrate-support-matrix-physical-migration.md#physical-server-requirements) požadavky na fyzický server pro migraci.
-- Azure Migrate: Migrace serveru používá replikační Server pro migraci fyzického serveru:
+1. [Zkontrolujte](migrate-support-matrix-physical-migration.md#physical-server-requirements) požadavky na fyzický server pro migraci.
+2. Azure Migrate: Migrace serveru používá replikační Server pro migraci fyzického serveru:
     - [Projděte si](migrate-replication-appliance.md#appliance-requirements) požadavky na nasazení pro zařízení replikace a [Možnosti](migrate-replication-appliance.md#mysql-installation) pro instalaci MySQL na zařízení.
     - Zkontrolujte [adresy URL Azure](migrate-appliance.md#url-access) vyžadované pro zařízení replikace pro přístup k veřejným a státním cloudům.
     - Projděte si [port] (migrace-replikace-zařízení. MD # port-přístup) požadavky na přístup pro zařízení replikace.
-
+3. Před migrací do Azure jsou na virtuálních počítačích potřeba nějaké změny.
+    - Před zahájením migrace je důležité tyto změny provést. Pokud před provedením změny migrujete virtuální počítač, nemusí se virtuální počítač spustit v Azure.
+    - Zkontrolujte změny v [systému Windows](prepare-for-migration.md#windows-machines) a [Linux](prepare-for-migration.md#linux-machines) , které je třeba provést.
 
 
 

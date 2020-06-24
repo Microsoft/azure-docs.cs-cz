@@ -1,18 +1,18 @@
 ---
 title: Vytvoření a Správa Azure Cosmos DB pomocí prostředí PowerShell
-description: Použijte Azure PowerShell ke správě účtů, databází, kontejnerů a propustnosti Azure Cosmos.
+description: Využijte Azure PowerShell správu účtů, databází, kontejnerů a propustnosti Azure Cosmos.
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: how-to
 ms.date: 05/13/2020
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 0ae3ff54e1060255913d8155b297c5d412ce345f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 494c5f0c3d7d0a4c8a388ce06143795fe5f12f20
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656288"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262255"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>Správa prostředků rozhraní SQL API Azure Cosmos DB pomocí PowerShellu
 
@@ -25,7 +25,7 @@ Pro správu Azure Cosmos DB pro různé platformy můžete použít `Az` `Az.Cos
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="getting-started"></a>začínáme
+## <a name="getting-started"></a>Začínáme
 
 Postupujte podle pokynů v tématu [instalace a konfigurace Azure PowerShell][powershell-install-configure] pro instalaci a přihlášení ke svému účtu Azure v prostředí PowerShell.
 
@@ -44,6 +44,7 @@ Následující části demonstrují, jak spravovat účet Azure Cosmos, včetně
 * [Výpis připojovacích řetězců pro účet Azure Cosmos](#list-connection-strings)
 * [Úprava priority převzetí služeb při selhání pro účet Azure Cosmos](#modify-failover-priority)
 * [Aktivace ručního převzetí služeb při selhání pro účet Azure Cosmos](#trigger-manual-failover)
+* [Vypsat zámky prostředků na Azure Cosmos DB účtu](#list-account-locks)
 
 ### <a name="create-an-azure-cosmos-account"></a><a id="create-account"></a>Vytvoření účtu Azure Cosmos
 
@@ -327,6 +328,21 @@ Update-AzCosmosDBAccountFailoverPriority `
     -FailoverPolicy $locations
 ```
 
+### <a name="list-resource-locks-on-an-azure-cosmos-db-account"></a><a id="list-account-locks"></a>Vypsat zámky prostředků na Azure Cosmos DB účtu
+
+Zámky prostředků se dají umístit na prostředky Azure Cosmos DB, včetně databází a kolekcí. Následující příklad ukazuje, jak zobrazit seznam všech zámků prostředků Azure na účtu Azure Cosmos DB.
+
+```azurepowershell-interactive
+$resourceGroupName = "myResourceGroup"
+$resourceTypeAccount = "Microsoft.DocumentDB/databaseAccounts"
+$accountName = "mycosmosaccount"
+
+Get-AzResourceLock `
+    -ResourceGroupName $resourceGroupName `
+    -ResourceType $resourceTypeAccount `
+    -ResourceName $accountName
+```
+
 ## <a name="azure-cosmos-db-database"></a>Azure Cosmos DB databáze
 
 Následující části demonstrují, jak spravovat databázi Azure Cosmos DB, včetně:
@@ -337,6 +353,8 @@ Následující části demonstrují, jak spravovat databázi Azure Cosmos DB, v�
 * [Výpis všech Azure Cosmos DB databází v účtu](#list-db)
 * [Získat jednu Azure Cosmos DB databázi](#get-db)
 * [Odstranění databáze Azure Cosmos DB](#delete-db)
+* [Vytvoření zámku prostředku na Azure Cosmos DB databázi, aby se zabránilo odstranění](#create-db-lock)
+* [Odebrání zámku prostředku na Azure Cosmos DB databázi](#remove-db-lock)
 
 ### <a name="create-an-azure-cosmos-db-database"></a><a id="create-db"></a>Vytvoření databáze Azure Cosmos DB
 
@@ -416,6 +434,42 @@ Remove-AzCosmosDBSqlDatabase `
     -Name $databaseName
 ```
 
+### <a name="create-a-resource-lock-on-an-azure-cosmos-db-database-to-prevent-delete"></a><a id="create-db-lock"></a>Vytvoření zámku prostředku na Azure Cosmos DB databázi, aby se zabránilo odstranění
+
+```azurepowershell-interactive
+$resourceGroupName = "myResourceGroup"
+$resourceType = "Microsoft.DocumentDB/databaseAccounts/sqlDatabases"
+$accountName = "mycosmosaccount"
+$databaseName = "myDatabase"
+$resourceName = "$accountName/$databaseName"
+$lockName = "myResourceLock"
+$lockLevel = "CanNotDelete"
+
+New-AzResourceLock `
+    -ResourceGroupName $resourceGroupName `
+    -ResourceType $resourceType `
+    -ResourceName $resourceName `
+    -LockName $lockName `
+    -LockLevel $lockLevel
+```
+
+### <a name="remove-a-resource-lock-on-an-azure-cosmos-db-database"></a><a id="remove-db-lock"></a>Odebrání zámku prostředku na Azure Cosmos DB databázi
+
+```azurepowershell-interactive
+$resourceGroupName = "myResourceGroup"
+$resourceType = "Microsoft.DocumentDB/databaseAccounts/sqlDatabases"
+$accountName = "mycosmosaccount"
+$databaseName = "myDatabase"
+$resourceName = "$accountName/$databaseName"
+$lockName = "myResourceLock"
+
+Remove-AzResourceLock `
+    -ResourceGroupName $resourceGroupName `
+    -ResourceType $resourceType `
+    -ResourceName $resourceName `
+    -LockName $lockName
+```
+
 ## <a name="azure-cosmos-db-container"></a>Azure Cosmos DB kontejner
 
 Následující části ukazují, jak spravovat Azure Cosmos DB kontejner, včetně:
@@ -430,6 +484,8 @@ Následující části ukazují, jak spravovat Azure Cosmos DB kontejner, včetn
 * [Vypsat všechny kontejnery Azure Cosmos DB v databázi](#list-containers)
 * [Získání jednoho Azure Cosmos DB kontejneru v databázi](#get-container)
 * [Odstranění kontejneru Azure Cosmos DB](#delete-container)
+* [Vytvoření zámku prostředku na kontejneru Azure Cosmos DB, aby se zabránilo odstranění](#create-container-lock)
+* [Odebrání zámku prostředků na Azure Cosmos DB kontejneru](#remove-container-lock)
 
 ### <a name="create-an-azure-cosmos-db-container"></a><a id="create-container"></a>Vytvoření kontejneru Azure Cosmos DB
 
@@ -667,6 +723,43 @@ Remove-AzCosmosDBSqlContainer `
     -AccountName $accountName `
     -DatabaseName $databaseName `
     -Name $containerName
+```
+### <a name="create-a-resource-lock-on-an-azure-cosmos-db-container-to-prevent-delete"></a><a id="create-container-lock"></a>Vytvoření zámku prostředku na kontejneru Azure Cosmos DB, aby se zabránilo odstranění
+
+```azurepowershell-interactive
+$resourceGroupName = "myResourceGroup"
+$resourceType = "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers"
+$accountName = "mycosmosaccount"
+$databaseName = "myDatabase"
+$containerName = "myContainer"
+$resourceName = "$accountName/$databaseName/$containerName"
+$lockName = "myResourceLock"
+$lockLevel = "CanNotDelete"
+
+New-AzResourceLock `
+    -ResourceGroupName $resourceGroupName `
+    -ResourceType $resourceType `
+    -ResourceName $resourceName `
+    -LockName $lockName `
+    -LockLevel $lockLevel
+```
+
+### <a name="remove-a-resource-lock-on-an-azure-cosmos-db-container"></a><a id="remove-container-lock"></a>Odebrání zámku prostředků na Azure Cosmos DB kontejneru
+
+```azurepowershell-interactive
+$resourceGroupName = "myResourceGroup"
+$resourceType = "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers"
+$accountName = "mycosmosaccount"
+$databaseName = "myDatabase"
+$containerName = "myContainer"
+$resourceName = "$accountName/$databaseName/$containerName"
+$lockName = "myResourceLock"
+
+Remove-AzResourceLock `
+    -ResourceGroupName $resourceGroupName `
+    -ResourceType $resourceType `
+    -ResourceName $resourceName `
+    -LockName $lockName
 ```
 
 ## <a name="next-steps"></a>Další kroky

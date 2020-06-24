@@ -7,13 +7,13 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 12/30/2019
-ms.openlocfilehash: 478a7e03b432006b429c96e03307fd8e494c88ff
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/23/2020
+ms.openlocfilehash: f030fc81ab33ecd0531040662346e1ed44f5d17c
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77472311"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263020"
 ---
 # <a name="create-a-knowledge-store-using-rest-and-postman"></a>Vytvoření úložiště znalostí pomocí REST a předzálohovacího
 
@@ -26,7 +26,7 @@ V tomto článku použijete rozhraní REST API k ingestování, indexování a p
 
 Po vytvoření znalostní báze můžete získat informace o tom, jak získat přístup k znalostnímu obchodu pomocí [Průzkumník služby Storage](knowledge-store-view-storage-explorer.md) nebo [Power BI](knowledge-store-connect-power-bi.md).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 > [!TIP]
 > Pro tento článek doporučujeme [publikovat desktopovou aplikaci](https://www.getpostman.com/) . [Zdrojový kód](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/knowledge-store) tohoto článku obsahuje kolekci post obsahující všechny požadavky. 
@@ -37,7 +37,7 @@ Tento rychlý Start používá pro AI Azure Kognitivní hledání, Azure Blob St
 
 Vzhledem k tomu, že je zatížení tak malé, Cognitive Services na pozadí po dobu, po kterou se zajišťují bezplatné zpracování až 20 transakcí denně. Vzhledem k tomu, že je datová sada tak malá, můžete přeskočit vytvoření nebo připojení prostředku Cognitive Services.
 
-1. [Stáhněte soubor HotelReviews_Free. csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?sp=r&st=2019-11-04T01:23:53Z&se=2025-11-04T16:00:00Z&spr=https&sv=2019-02-02&sr=b&sig=siQgWOnI%2FDamhwOgxmj11qwBqqtKMaztQKFNqWx00AY%3D). Tato data jsou data recenze pro hotely uložená v souboru CSV (pocházející z Kaggle.com) a obsahují 19 kusů zpětné vazby od zákazníků k jednomu hotelu. 
+1. [Stáhněte si HotelReviews_Free.csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?sp=r&st=2019-11-04T01:23:53Z&se=2025-11-04T16:00:00Z&spr=https&sv=2019-02-02&sr=b&sig=siQgWOnI%2FDamhwOgxmj11qwBqqtKMaztQKFNqWx00AY%3D). Tato data jsou data recenze pro hotely uložená v souboru CSV (pocházející z Kaggle.com) a obsahují 19 kusů zpětné vazby od zákazníků k jednomu hotelu. 
 
 1. [Vytvořte si účet Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) nebo v rámci aktuálního předplatného [Najděte existující účet](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) . Použijete službu Azure Storage pro import nezpracovaného obsahu a úložiště Knowledge v konečném výsledku.
 
@@ -49,7 +49,7 @@ Vzhledem k tomu, že je zatížení tak malé, Cognitive Services na pozadí po 
 
     ![Nahrajte data](media/knowledge-store-create-portal/upload-command-bar.png "Nahrajte recenze hotelu.")
 
-1. Vyberte soubor **HotelReviews-Free. csv** , který jste stáhli v prvním kroku.
+1. Vyberte soubor **HotelReviews-Free.csv** , který jste si stáhli v prvním kroku.
 
     ![Vytvoření kontejneru objektů blob Azure](media/knowledge-store-create-portal/hotel-reviews-blob-container.png "Vytvoření kontejneru objektů blob Azure")
 
@@ -64,16 +64,16 @@ Nainstalujte a nastavte post.
 ### <a name="download-and-install-postman"></a>Stáhnout a nainstalovat post
 
 1. Stáhněte [zdrojový kód kolekce po](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json).
-1. Vyberte **File** > **importovat** soubor a importujte zdrojový kód do metody post.
+1. Vyberte **File**  >  **importovat** soubor a importujte zdrojový kód do metody post.
 1. Vyberte kartu **kolekce** a pak klikněte na tlačítko **...** (tři tečky).
 1. Vyberte **Upravit**. 
    
    ![Pozálohovací aplikace ukazující navigaci](media/knowledge-store-create-rest/postman-edit-menu.png "Přejít do nabídky upravit v poli post")
 1. V dialogovém okně **Upravit** vyberte kartu **proměnné** . 
 
-Na kartě **proměnné** můžete přidat hodnoty, které účtují swapy při každém výskytu konkrétní proměnné uvnitř dvojitých složených závorek. Například metoda post nahradí symbol `{{admin-key}}` aktuální hodnotou, pro `admin-key`kterou jste nastavili. Po nahrazení se provede náhrada v adresách URL, hlavičkách, textu žádosti atd. 
+Na kartě **proměnné** můžete přidat hodnoty, které účtují swapy při každém výskytu konkrétní proměnné uvnitř dvojitých složených závorek. Například metoda post nahradí symbol `{{admin-key}}` aktuální hodnotou, pro kterou jste nastavili `admin-key` . Po nahrazení se provede náhrada v adresách URL, hlavičkách, textu žádosti atd. 
 
-Pokud chcete získat hodnotu pro `admin-key`, přejděte do služby Azure kognitivní hledání a vyberte kartu **klíče** . Změňte `search-service-name` hodnoty a `storage-account-name` na hodnoty, které jste zvolili v části [vytvořit služby](#create-services-and-load-data). Nastavte `storage-connection-string` pomocí hodnoty na kartě **přístupové klíče** účtu úložiště. Pro ostatní hodnoty můžete ponechat výchozí hodnoty.
+Pokud chcete získat hodnotu pro `admin-key` , přejděte do služby Azure kognitivní hledání a vyberte kartu **klíče** . Změňte `search-service-name` `storage-account-name` hodnoty a na hodnoty, které jste zvolili v části [vytvořit služby](#create-services-and-load-data). Nastavte `storage-connection-string` pomocí hodnoty na kartě **přístupové klíče** účtu úložiště. Pro ostatní hodnoty můžete ponechat výchozí hodnoty.
 
 ![Karta proměnné aplikace po odeslání](media/knowledge-store-create-rest/postman-variables-window.png "Okno pro proměnné post")
 
@@ -85,10 +85,10 @@ Pokud chcete získat hodnotu pro `admin-key`, přejděte do služby Azure kognit
 | `datasource-name` | Ponechte jako **hotelové recenze – DS**. | 
 | `indexer-name` | Ponechte jako **hotelové recenze – IXR**. | 
 | `index-name` | Ponechte jako **hotelové recenze – IX**. | 
-| `search-service-name` | Název služby Azure Kognitivní hledání. Adresa URL je `https://{{search-service-name}}.search.windows.net`. | 
+| `search-service-name` | Název služby Azure Kognitivní hledání. Adresa URL je `https://{{search-service-name}}.search.windows.net` . | 
 | `skillset-name` | Ponechte jako **hotelové recenze – SS**. | 
 | `storage-account-name` | Název účtu úložiště. | 
-| `storage-connection-string` | V účtu úložiště na kartě **přístupové klíče** vyberte**připojovací řetězec** **klíč1** > . | 
+| `storage-connection-string` | V účtu úložiště na kartě **přístupové klíče** vyberte **key1**  >  **připojovací řetězec**klíč1. | 
 | `storage-container-name` | Ponechte jako **hotelové recenze**. | 
 
 ### <a name="review-the-request-collection-in-postman"></a>Kontrola kolekce požadavků v poli pro odeslání
@@ -100,7 +100,7 @@ Při vytváření znalostní báze musíte vydat čtyři požadavky HTTP:
 - **Put – požadavek na vytvoření dovednosti**: dovednosti určuje rozšíření, která se aplikují na vaše data a strukturu znalostní databáze.
 - **Vložit požadavek na vytvoření indexeru**: když spustíte indexer, načte data, použije dovednosti a výsledky uloží. Tuto žádost musíte spustit jako poslední.
 
-[Zdrojový kód](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json) obsahuje kolekci post, která obsahuje čtyři požadavky. Chcete-li vydat žádosti, vyberte v poli post kartu žádosti. Pak přidejte `api-key` záhlaví a `Content-Type` žádosti. Nastavte hodnotu `api-key` na `{{admin-key}}`. Nastavte hodnotu `Content-type` na `application/json`. 
+[Zdrojový kód](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json) obsahuje kolekci post, která obsahuje čtyři požadavky. Chcete-li vydat žádosti, vyberte v poli post kartu žádosti. Pak přidejte `api-key` záhlaví a `Content-Type` žádosti. Nastavte hodnotu `api-key` na `{{admin-key}}` . Nastavte hodnotu `Content-type` na `application/json` . 
 
 ![Snímek obrazovky znázorňující rozhraní post 's Headers](media/knowledge-store-create-rest/postman-headers-ui.png)
 
@@ -110,9 +110,9 @@ Při vytváření znalostní báze musíte vydat čtyři požadavky HTTP:
 
 ## <a name="create-an-azure-cognitive-search-index"></a>Vytvoření indexu Azure Cognitive Search
 
-Vytvořte index služby Azure Kognitivní hledání, který bude reprezentovat data, která vás zajímají při hledání, filtrování a používání vylepšení. Vytvořte index vydáním žádosti o vložení do `https://{{search-service-name}}.search.windows.net/indexes/{{index-name}}?api-version={{api-version}}`. Metoda post nahradí symboly, které jsou uzavřeny ve složených závorkách ( `{{search-service-name}}`například `{{index-name}}`, a `{{api-version}}`), hodnotami, které jste nastavili v [konfiguraci post](#configure-postman). Pokud používáte jiný nástroj k vystavení příkazů REST, je nutné tyto proměnné nahradit sami.
+Vytvořte index služby Azure Kognitivní hledání, který bude reprezentovat data, která vás zajímají při hledání, filtrování a používání vylepšení. Vytvořte index vydáním žádosti o vložení do `https://{{search-service-name}}.search.windows.net/indexes/{{index-name}}?api-version={{api-version}}` . Metoda post nahradí symboly, které jsou uzavřeny ve složených závorkách (například `{{search-service-name}}` , `{{index-name}}` a `{{api-version}}` ), hodnotami, které jste nastavili v [konfiguraci post](#configure-postman). Pokud používáte jiný nástroj k vystavení příkazů REST, je nutné tyto proměnné nahradit sami.
 
-V těle žádosti nastavte strukturu indexu služby Azure Kognitivní hledání. V části potom po nastavení záhlaví `api-key` a `Content-type` přejít do podokna **tělo** žádosti. Měl by se zobrazit následující kód JSON. Pokud to neuděláte, vyberte **nezpracovaný formát** > **JSON (Application/JSON)** a vložte následující kód jako text:
+V těle žádosti nastavte strukturu indexu služby Azure Kognitivní hledání. V části potom po nastavení `api-key` `Content-type` záhlaví a přejít do podokna **tělo** žádosti. Měl by se zobrazit následující kód JSON. Pokud to neuděláte, vyberte **nezpracovaný formát**  >  **JSON (Application/JSON)** a vložte následující kód jako text:
 
 ```JSON
 {
@@ -149,11 +149,11 @@ V těle žádosti nastavte strukturu indexu služby Azure Kognitivní hledání.
 
 Tato definice indexu je kombinací dat, která se mají prezentovat uživateli (název hotelu, revize obsahu, datum), metadata hledání a data o vylepšení AI (mínění, klíčová fráze a jazyk).
 
-Vyberte **Odeslat** a vydejte požadavek PUT. Měl by se zobrazit stav `201 - Created`. Pokud se zobrazí jiný stav, vyhledejte v podokně **tělo** odpověď JSON, která obsahuje chybovou zprávu. 
+Vyberte **Odeslat** a vydejte požadavek PUT. Měl by se zobrazit stav `201 - Created` . Pokud se zobrazí jiný stav, vyhledejte v podokně **tělo** odpověď JSON, která obsahuje chybovou zprávu. 
 
 ## <a name="create-the-datasource"></a>Vytvoření zdroje dat
 
-Dále připojte službu Azure Kognitivní hledání k datům hotelu uloženým v úložišti objektů BLOB. Chcete-li vytvořit zdroj dat, odešlete požadavek `https://{{search-service-name}}.search.windows.net/datasources?api-version={{api-version}}`post na. Je nutné nastavit záhlaví `api-key` a `Content-Type` , jak je popsáno výše. 
+Dále připojte službu Azure Kognitivní hledání k datům hotelu uloženým v úložišti objektů BLOB. Chcete-li vytvořit zdroj dat, odešlete požadavek POST na `https://{{search-service-name}}.search.windows.net/datasources?api-version={{api-version}}` . Je nutné nastavit `api-key` záhlaví a, `Content-Type` jak je popsáno výše. 
 
 V poli pro odeslání klikněte na požadavek **vytvořit zdroj dat** a pak na podokno **tělo** . Měl by se zobrazit následující kód:
 
@@ -171,11 +171,11 @@ Vyberte **Odeslat** pro vydání žádosti post.
 
 ## <a name="create-the-skillset"></a>Vytvoření dovednosti 
 
-Dalším krokem je zadání dovednosti, které určuje jak vylepšení použít, tak úložiště znalostí, kde se výsledky uloží. V poli pro odeslání vyberte kartu **vytvořit dovednosti** . Tento požadavek odešle do `https://{{search-service-name}}.search.windows.net/skillsets/{{skillset-name}}?api-version={{api-version}}`. Nastavte hlavičky `api-key` a `Content-type` jako dříve. 
+Dalším krokem je zadání dovednosti, které určuje jak vylepšení použít, tak úložiště znalostí, kde se výsledky uloží. V poli pro odeslání vyberte kartu **vytvořit dovednosti** . Tento požadavek odešle do `https://{{search-service-name}}.search.windows.net/skillsets/{{skillset-name}}?api-version={{api-version}}` . Nastavte `api-key` hlavičky a `Content-type` jako dříve. 
 
-Existují dva velké objekty nejvyšší úrovně: `skills` a. `knowledgeStore` Každý objekt uvnitř `skills` objektu je služba rozšíření. Každá služba pro rozšíření má `inputs` a `outputs`. `LanguageDetectionSkill` Obsahuje výstup `targetName` `Language`. Hodnota tohoto uzlu je používána většinou dalších dovedností jako vstup. Zdroj je `document/Language`. Schopnost používat výstup jednoho uzlu jako vstup na jiný je ještě více zjevné v `ShaperSkill`, který určuje, jak se data budou natékat do tabulek ve znalostní bázi Knowledge Store.
+Existují dva velké objekty nejvyšší úrovně: `skills` a `knowledgeStore` . Každý objekt uvnitř `skills` objektu je služba rozšíření. Každá služba pro rozšíření má `inputs` a `outputs` . `LanguageDetectionSkill`Obsahuje výstup `targetName` `Language` . Hodnota tohoto uzlu je používána většinou dalších dovedností jako vstup. Zdroj je `document/Language` . Schopnost používat výstup jednoho uzlu jako vstup na jiný je ještě více zjevné v `ShaperSkill` , který určuje, jak se data budou natékat do tabulek ve znalostní bázi Knowledge Store.
 
-`knowledge_store` Objekt se připojí k účtu úložiště prostřednictvím proměnné `{{storage-connection-string}}` post. `knowledge_store`obsahuje sadu mapování mezi vylepšeným dokumentem a tabulkami a sloupci ve znalostní bázi Knowledge Store. 
+`knowledge_store`Objekt se připojí k účtu úložiště prostřednictvím `{{storage-connection-string}}` proměnné post. `knowledge_store`obsahuje sadu mapování mezi vylepšeným dokumentem a tabulkami a sloupci ve znalostní bázi Knowledge Store. 
 
 Pokud chcete vygenerovat dovednosti, vyberte tlačítko Odeslat v poli pro **odeslání** žádosti:
 
@@ -309,9 +309,9 @@ Pokud chcete vygenerovat dovednosti, vyberte tlačítko Odeslat v poli pro **ode
 
 Posledním krokem je vytvoření indexeru. Indexer načte data a aktivuje dovednosti. V části indexer vyberte požadavek **vytvořit indexer** a pak zkontrolujte text. Definice indexeru odkazuje na několik dalších prostředků, které jste už vytvořili: zdroj dat, index a dovednosti. 
 
-`parameters/configuration` Objekt určuje, jak indexer ingestuje data. V takovém případě se vstupní data nachází v jednom dokumentu, který obsahuje řádek záhlaví a hodnoty oddělené čárkami. Klíč dokumentu je jedinečný identifikátor pro dokument. Před kódováním je klíč dokumentu adresou URL zdrojového dokumentu. Nakonec jsou výstupní hodnoty dovednosti, jako je kód jazyka, mínění a klíčové fráze, namapovány na jejich umístění v dokumentu. I když existuje jedna hodnota pro `Language`, `Sentiment` je použita na každý prvek v poli. `pages` `Keyphrases`je pole, které je také použito pro každý prvek v `pages` poli.
+`parameters/configuration`Objekt určuje, jak indexer ingestuje data. V takovém případě se vstupní data nachází v jednom dokumentu, který obsahuje řádek záhlaví a hodnoty oddělené čárkami. Klíč dokumentu je jedinečný identifikátor pro dokument. Před kódováním je klíč dokumentu adresou URL zdrojového dokumentu. Nakonec jsou výstupní hodnoty dovednosti, jako je kód jazyka, mínění a klíčové fráze, namapovány na jejich umístění v dokumentu. I když existuje jedna hodnota pro `Language` , `Sentiment` je použita na každý prvek v poli `pages` . `Keyphrases`je pole, které je také použito pro každý prvek v `pages` poli.
 
-Po nastavení hlaviček `api-key` a `Content-type` potvrďte, že text požadavku je podobný následujícímu zdrojovému kódu, vyberte **Odeslat** v poli post. Post odešle požadavek PUT na `https://{{search-service-name}}.search.windows.net/indexers/{{indexer-name}}?api-version={{api-version}}`. Azure Kognitivní hledání vytvoří a spustí indexer. 
+Po nastavení `api-key` `Content-type` hlaviček a potvrďte, že text požadavku je podobný následujícímu zdrojovému kódu, vyberte **Odeslat** v poli post. Post odešle požadavek PUT na `https://{{search-service-name}}.search.windows.net/indexers/{{indexer-name}}?api-version={{api-version}}` . Azure Kognitivní hledání vytvoří a spustí indexer. 
 
 ```json
 {

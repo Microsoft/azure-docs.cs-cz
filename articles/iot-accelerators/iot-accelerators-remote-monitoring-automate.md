@@ -10,11 +10,11 @@ ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: 676f1133a516174478a456a97bc467e7770fe6e7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79239515"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84712509"
 ---
 # <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>Kurz: Detekce problémů se zařízeními připojenými k řešení pro monitorování
 
@@ -33,7 +33,7 @@ V tomto kurzu jste:
 > * Úprava existujícího pravidla
 > * Zapnutí a vypnutí pravidel
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 [!INCLUDE [iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
@@ -54,9 +54,9 @@ Pokud chcete vytvořit pravidlo, které generuje upozornění, když tlak v chla
 | Nastavení          | Hodnota                                 |
 | ---------------- | ------------------------------------- |
 | Název pravidla        | Upozornění chladiče                       |
-| Popis      | Tlak v chladiči překročil 150 PSI |
+| Description      | Tlak v chladiči překročil 150 PSI |
 | Skupina zařízení     | Skupina zařízení **Chladiče**             |
-| Výpočet      | Okamžitý                               |
+| Výpočet      | Okamžitě                               |
 | Pole podmínky 1| tlak                              |
 | Operátor podmínky 1 | Větší než                      |
 | Hodnota podmínky 1    | 150                               |
@@ -77,14 +77,14 @@ Pokud chcete vytvořit pravidlo s několika podmínkami, které generuje kritick
 | Nastavení          | Hodnota                                 |
 | ---------------- | ------------------------------------- |
 | Název pravidla        | Kritická vlhkost a teplota chladiče    |
-| Popis      | Úrovně vlhkosti a teploty jsou kritické |
+| Description      | Úrovně vlhkosti a teploty jsou kritické |
 | Skupina zařízení     | Skupina zařízení **Chladiče**             |
 | Výpočet      | Průměr                               |
 | Časové období      | 5                                     |
 | Pole podmínky 1| vlhkost                              |
 | Operátor podmínky 1 | Větší než                      |
 | Hodnota podmínky 1    | 80                                |
-| Úroveň závažnosti  | Kritická                              |
+| Úroveň závažnosti  | Kritické                              |
 
 [![Vytvořit více částí pravidla podmínky 1](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_v2-expanded.png#lightbox)
 

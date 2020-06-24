@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/12/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9804a44a29f4540c28ec4e1eb6927e65af70218c
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: fbfa16223484928dda1004011d2e92295edd8b89
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682964"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85297253"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---admin-ui"></a>Kurz: Azure Active Directory integrace s Palo Alto Networks – uživatelské rozhraní pro správu
 
@@ -106,14 +106,14 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Palo Alt
 
     > V **identifikátoru** je vyžadován port 443 a **Adresa URL odpovědi** , protože tyto hodnoty jsou pevně zakódované do brány firewall Palo Alto. Při odebrání čísla portu dojde k chybě během přihlašování, pokud je odebrán.
 
-1. PureCloud by aplikace Genesys očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů.
+1. Aplikace Palo Alto Networks – uživatelské rozhraní správce sítě očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů.
 
     ![image](common/default-attributes.png)
 
    > [!NOTE]
    > Vzhledem k tomu, že hodnoty atributu jsou pouze příklady, namapujte příslušné hodnoty pro *username* a *adminrole*. K dispozici je jiný volitelný atribut *accessdomain*, který slouží k omezení přístupu správce ke konkrétním virtuálním systémům v bráně firewall.
 
-1. Kromě výše uvedeného aplikace PureCloud podle Genesys očekává, že se v odpovědi SAML vrátí další atributy, které jsou uvedené dál. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
+1. Kromě toho očekává aplikace Palo Alto Networks-admin UI několik atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
     | Name |  Zdrojový atribut|
     | --- | --- |
@@ -188,7 +188,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
     a. Do pole **název profilu** zadejte název (například **uživatelské rozhraní správce AzureAD**).
 
-    b. V části **metadata zprostředkovatele identity**vyberte **Procházet**a vyberte soubor metadata. XML, který jste si stáhli dříve z Azure Portal.
+    b. V části **metadata zprostředkovatele identity**vyberte **Procházet**a vyberte soubor metadata.xml, který jste si stáhli dříve z Azure Portal.
 
     c. Zrušte zaškrtnutí políčka **ověřit certifikát poskytovatele identity** .
 
@@ -241,7 +241,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
     f. Zaškrtněte políčko **vše** nebo vyberte uživatele a skupiny, které se mohou s tímto profilem ověřit.  
     Když se uživatel ověří, brána firewall se shoduje s přidruženým uživatelským jménem nebo skupinou na položkách v tomto seznamu. Pokud nepřidáte položky, nebudete moct ověřovat žádné uživatele.
 
-    g. Vyberte **OK**.
+    například Vyberte **OK**.
 
 13. Pokud chcete správcům povolit použití jednotného přihlašování SAML pomocí Azure **Device**, vyberte  >  **Nastavení**zařízení. V podokně **Nastavení** vyberte kartu **Správa** a potom v části **nastavení ověřování**vyberte tlačítko **Nastavení** (ozubené kolo).
 

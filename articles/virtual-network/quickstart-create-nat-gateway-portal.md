@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: Vytvoření brány NAT – Azure Portal'
+title: 'Kurz: Vytvoření brány NAT – Azure Portal'
 titlesuffix: Azure Virtual Network NAT
 description: V tomto rychlém startu se dozvíte, jak vytvořit bránu NAT pomocí Azure Portal
 services: virtual-network
@@ -15,22 +15,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 38cd4e9e7abdfe2d1548a8388a3f160cf3da1f1a
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 5010dc08b695a0376ace5dde935c63caf0c39633
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84341231"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711404"
 ---
-# <a name="quickstart-create-a-nat-gateway-using-the-azure-portal"></a>Rychlý Start: Vytvoření brány NAT pomocí Azure Portal
+# <a name="tutorial-create-a-nat-gateway-using-the-azure-portal"></a>Kurz: Vytvoření brány NAT pomocí Azure Portal
 
-V tomto rychlém startu se dozvíte, jak používat službu Azure Virtual Network NAT. Vytvoříte bránu NAT pro poskytování odchozího připojení pro virtuální počítač v Azure. 
+V tomto kurzu se dozvíte, jak používat službu Azure Virtual Network NAT. Vytvoříte bránu NAT pro poskytování odchozího připojení pro virtuální počítač v Azure. 
 
 Pokud chcete, můžete tento postup provést pomocí [Azure CLI](quickstart-create-nat-gateway-cli.md), [Azure PowerShell](quickstart-create-nat-gateway-powershell.md)nebo nasadit [šablonu ARM](quickstart-create-nat-gateway-powershell.md) namísto portálu.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 ## <a name="virtual-network-and-parameters"></a>Virtuální síť a parametry
 
@@ -68,7 +68,7 @@ Nyní vytvoříme virtuální počítač pro použití služby NAT. Tento virtu�
 3. Na kartě **sítě** zkontrolujte, že jsou vybrané následující:
    - **Virtuální síť**: **myVnet**
    - **Podsíť**: **mySubnet**
-   - **Veřejná IP adresa** > vyberte **vytvořit novou**.  V okně **vytvořit veřejnou IP adresu** do pole **název** zadejte **MyPublicIPVM** a jako **SKU**vyberte **Standard** .  Klikněte na tlačítko **OK**.
+   - **Veřejná IP adresa** > vyberte **vytvořit novou**.  V okně **vytvořit veřejnou IP adresu** do pole **název** zadejte **MyPublicIPVM** a jako **SKU**vyberte **Standard** .  Klikněte na **OK**.
    - **Skupina zabezpečení sítě síťové karty**: vyberte **základní**.
    - **Veřejné příchozí porty**: vyberte **Povolit vybrané porty**.
    - **Vyberte příchozí porty**: potvrďte, že je zaškrtnuté políčko Potvrdit **SSH** .

@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/18/2019
+ms.date: 06/09/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfc38f63c5b6361122c236543320b91d22faa70a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 01c239c30b24ad110d71c43b31448a0f5b29574b
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72595052"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84762526"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bluejeans-for-azure-ad"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s BlueJeans pro Azure AD
 
@@ -88,10 +87,25 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V části **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<companyname>.bluejeans.com`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<companyname>.bluejeans.com`
+
+    a. Do textového pole **identifikátor (ID entity)** zadejte adresu URL:`http://samlsp.bluejeans.com`
+
+    a. Do textového pole **Adresa URL odpovědi** zadejte adresu URL:`https://bluejeans.com/sso/saml2/`
 
     > [!NOTE]
-    > Hodnota není reálné číslo. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Pokud chcete získat hodnotu, kontaktujte [BlueJeans pro tým podpory klienta Azure AD](https://support.bluejeans.com/contact) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Hodnota přihlašovací adresy URL není reálné číslo. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Pokud chcete získat hodnotu, kontaktujte [BlueJeans pro tým podpory klienta Azure AD](https://support.bluejeans.com/contact) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+
+1. BlueJeans aplikace očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů.
+
+    ![image](common/default-attributes.png)
+
+1. Kromě toho očekává aplikace BlueJeans několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
+
+    | Name |  Zdrojový atribut|
+    | ---------| --------- |
+    | Rozložení | User. telephoneNumber |
+    | title | User. jobtitle |
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
@@ -109,7 +123,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
@@ -135,9 +149,9 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 1. V jiném okně webového prohlížeče se přihlaste k **BlueJeans pro web společnosti Azure AD** jako správce.
 
-2. Přejít na **nastavení \> \> skupiny správců zabezpečení**.
+2. Přejít na ** \> Nastavení skupiny správců \> zabezpečení**.
 
-    ![Správce](./media/bluejeans-tutorial/ic785868.png "Správce")
+    ![Správce](./media/bluejeans-tutorial/ic785868.png "správce")
 
 3. V části **zabezpečení** proveďte následující kroky:
 
@@ -163,9 +177,9 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
     ![Uložit změny](./media/bluejeans-tutorial/ic785874.png "Uložit změny")
 
-    a. Do textového pole **ID uživatele** zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
+    a. Do textového pole **ID uživatele** zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` .
 
-    b. Do textového pole **e-mail** zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
+    b. Do textového pole **e-mail** zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` .
 
     c. Klikněte na **Uložit změny**.
 
@@ -177,9 +191,9 @@ Cílem této části je vytvořit uživatele s názvem B. Simon v BlueJeans pro 
 
 1. Přihlaste se k **BlueJeans pro web společnosti Azure AD** jako správce.
 
-2. Přejít na **správce \> Správa uživatelů \> přidat uživatele**
+2. Přejít na **správce \> Správa uživatelů \> Přidat uživatele**
 
-    ![Správce](./media/bluejeans-tutorial/ic785877.png "Správce")
+    ![Správce](./media/bluejeans-tutorial/ic785877.png "správce")
 
     > [!IMPORTANT]
     > Karta **Přidat uživatele** je k dispozici pouze v případě, že na **kartě SECUTIRY**není zaškrtnuto zaškrtávací políčka **Povolit automatické zřizování** .
@@ -198,9 +212,9 @@ Cílem této části je vytvořit uživatele s názvem B. Simon v BlueJeans pro 
 
     e. Do textového pole **Společnost** zadejte svou společnost.
 
-    f. Do textového pole **e-mailová adresa** zadejte e-maily uživatele jako `b.simon\@contoso.com`.
+    f. Do textového pole **e-mailová adresa** zadejte e-maily uživatele jako `b.simon\@contoso.com` .
 
-    g. V textovém poli **vytvořit BlueJeans pro schůzku služby Azure AD** zadejte ID schůzky.
+    například V textovém poli **vytvořit BlueJeans pro schůzku služby Azure AD** zadejte ID schůzky.
 
     h. Do textového pole **Vybrat heslo moderátora** zadejte heslo.
 
@@ -219,7 +233,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když kliknete na dlaždici BlueJeans for Azure AD na přístupovém panelu, měli byste se automaticky přihlásit ke službě BlueJeans pro Azure AD, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
@@ -228,4 +242,3 @@ Když kliknete na dlaždici BlueJeans for Azure AD na přístupovém panelu, mě
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Vyzkoušejte si BlueJeans pro Azure AD s Azure AD](https://aad.portal.azure.com/)
-

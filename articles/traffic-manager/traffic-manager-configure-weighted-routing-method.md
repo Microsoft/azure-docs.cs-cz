@@ -4,7 +4,6 @@ description: Tento kurz vysvětluje, jak vyrovnávat zatížení provozu pomocí
 services: traffic-manager
 documentationcenter: ''
 author: rohinkoul
-manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: tutorial
@@ -12,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: rohink
-ms.openlocfilehash: 8bdc710b36cae70d29d32333f431b8a9dda154cc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b06df3814661b64f7fa46cd5e3b8f4dea9d51710
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76938715"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711662"
 ---
 # <a name="tutorial-configure-the-weighted-traffic-routing-method-in-traffic-manager"></a>Kurz: Konfigurace metody váženého směrování provozu v Traffic Manager
 
@@ -35,7 +34,7 @@ Běžným způsobem směrování provozu je poskytnutí sady stejných koncovýc
     1. V části **nastavení metody směrování provozu**ověřte, zda je metoda směrování provozu **váže**. Pokud není, klikněte v rozevíracím seznamu na **váže** .
     2. **Nastavení monitorování koncového bodu** nastavte u všech koncových bodů v tomto profilu stejným způsobem:
         1. Vyberte odpovídající **protokol**a zadejte číslo **portu** . 
-        2. Jako **cestu** zadejte lomítko */*. Chcete-li monitorovat koncové body, je nutné zadat cestu a název souboru. Lomítko "/" je platná položka relativní cesty a předpokládá, že se soubor nachází v kořenovém adresáři (výchozí).
+        2. Jako **cestu** zadejte lomítko */* . Chcete-li monitorovat koncové body, je nutné zadat cestu a název souboru. Lomítko "/" je platná položka relativní cesty a předpokládá, že se soubor nachází v kořenovém adresáři (výchozí).
         3. V horní části stránky klikněte na **Uložit**.
 5. Proveďte test změn v konfiguraci následujícím způsobem:
     1.  Na panelu hledání na portálu vyhledejte název profilu Traffic Manager a klikněte na profil Traffic Manager v zobrazených výsledcích.

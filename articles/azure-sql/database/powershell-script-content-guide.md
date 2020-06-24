@@ -1,6 +1,6 @@
 ---
 title: Příklady skriptu Azure PowerShell
-description: Příklady skriptů Azure PowerShell, které vám pomůžou vytvářet a spravovat Azure SQL Database a prostředky spravované instance Azure SQL
+description: Použijte příklady skriptů Azure PowerShell, které vám pomůžou vytvořit a spravovat Azure SQL Database a prostředky spravované instance Azure SQL.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 64f205e335a5724de7f5524921921079bdffc433
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: cb8abf563834e23472589cd65bfe4196131d0138
+ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84659434"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84718542"
 ---
 # <a name="azure-powershell-samples-for-azure-sql-database-and-azure-sql-managed-instance"></a>Ukázky Azure PowerShell pro Azure SQL Database a Azure SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -36,12 +36,12 @@ Následující tabulka obsahuje odkazy na ukázkové skripty Azure PowerShellu p
 |---|---|
 |**Vytváření a konfigurace izolovaných databází a elastických fondů**||
 | [Vytvoření jedné databáze a konfigurace pravidla brány firewall na úrovni serveru](scripts/create-and-configure-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tento skript PowerShellu vytvoří izolovanou databázi a nakonfiguruje pravidlo brány firewall protokolu IP na úrovni serveru. |
-| [Vytváření elastických fondů a přesun databází ve fondu](scripts/move-database-between-elastic-pools-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tento skript PowerShellu vytvoří elastické fondy a přesune databáze ve fondu a změní výpočetní velikosti.|
+| [Vytváření elastických fondů a přesun databází ve fondu](scripts/move-database-between-elastic-pools-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tento skript PowerShell vytvoří elastické fondy, přesune databáze ve fondu a změní výpočetní velikosti.|
 |**Konfigurace geografické replikace a převzetí služeb při selhání**||
-| [Konfigurace a převzetí služeb při selhání izolované databáze s využitím aktivní geografické replikace](scripts/setup-geodr-and-failover-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tento skript PowerShellu nakonfiguruje aktivní geografickou replikaci pro izolovanou databázi a převezme její služby při selhání do sekundární repliky. |
-| [Konfigurace a převzetí služeb při selhání databáze ve fondu s využitím aktivní geografické replikace](scripts/setup-geodr-and-failover-elastic-pool-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tento skript PowerShellu nakonfiguruje aktivní geografickou replikaci pro databázi v elastickém fondu a převezme její služby při selhání do sekundární repliky. |
+| [Konfigurace a převzetí služeb při selhání jedné databáze pomocí aktivní geografické replikace](scripts/setup-geodr-and-failover-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tento skript PowerShellu nakonfiguruje aktivní geografickou replikaci pro izolovanou databázi a převezme její služby při selhání do sekundární repliky. |
+| [Konfigurace a převzetí služeb při selhání databáze ve fondu pomocí aktivní geografické replikace](scripts/setup-geodr-and-failover-elastic-pool-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tento skript PowerShellu nakonfiguruje aktivní geografickou replikaci pro databázi v elastickém fondu a převezme její služby při selhání do sekundární repliky. |
 |**Konfigurace skupiny převzetí služeb při selhání**||
-| [Konfigurace skupiny převzetí služeb při selhání pro izolovanou databázi](scripts/add-database-to-failover-group-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tento skript PowerShellu vytvoří databázi a skupinu převzetí služeb při selhání přidá databázi do skupiny převzetí služeb při selhání a otestuje převzetí služeb při selhání na sekundární server. |
+| [Konfigurace skupiny převzetí služeb při selhání pro izolovanou databázi](scripts/add-database-to-failover-group-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tento skript PowerShellu vytvoří databázi a skupinu převzetí služeb při selhání, přidá databázi do skupiny převzetí služeb při selhání a otestuje převzetí služeb při selhání na sekundární server. |
 | [Konfigurace skupiny převzetí služeb při selhání pro elastický fond](scripts/add-elastic-pool-to-failover-group-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tento skript PowerShellu vytvoří databázi, přidá ji do elastického fondu, přidá elastický fond do skupiny převzetí služeb při selhání a otestuje převzetí služeb při selhání na sekundární server. |
 |**Škálování izolované databáze a elastického fondu**||
 | [Škálování izolované databáze](scripts/monitor-and-scale-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tento skript PowerShellu monitoruje metriky výkonu pro izolovanou databázi, škáluje ji na vyšší výpočetní velikost a vytvoří pravidlo upozornění na jednu z metrik výkonu. |
@@ -50,15 +50,15 @@ Následující tabulka obsahuje odkazy na ukázkové skripty Azure PowerShellu p
 | [Konfigurace auditování a detekce hrozeb](scripts/auditing-threat-detection-powershell-configure.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tento skript PowerShellu nakonfiguruje zásady auditování a detekce hrozeb pro databázi. |
 | **Obnovení, kopírování a import databáze**||
 | [Obnovení databáze](scripts/restore-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tento skript PowerShellu obnoví databázi z geograficky redundantní zálohy a obnoví odstraněnou databázi na nejnovější zálohu. |
-| [Kopírování databáze na nový server](scripts/copy-database-to-new-server-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tento skript PowerShellu vytvoří kopii existující databáze na novém serveru. |
+| [Zkopírování databáze na nový server](scripts/copy-database-to-new-server-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tento skript PowerShellu vytvoří kopii existující databáze na novém serveru. |
 | [Import databáze ze souboru BacPac](scripts/import-from-bacpac-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tento skript PowerShellu importuje databázi do Azure SQL Database ze souboru BacPac. |
 | **Synchronizace dat mezi databázemi**||
-| [Synchronizace dat mezi databázemi SQL](scripts/sql-data-sync-sync-data-between-sql-databases.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tento skript PowerShellu nakonfiguruje synchronizaci dat pro synchronizaci mezi několika databázemi v Azure SQL Database. |
-| [Synchronizace dat mezi SQL Database a SQL Server](scripts/sql-data-sync-sync-data-between-azure-onprem.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tento skript PowerShellu nakonfiguruje synchronizaci dat pro synchronizaci mezi databází v Azure SQL Database a databází SQL Server. |
+| [Synchronizace dat mezi databázemi](scripts/sql-data-sync-sync-data-between-sql-databases.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tento skript PowerShellu nakonfiguruje synchronizaci dat pro synchronizaci mezi několika databázemi v Azure SQL Database. |
+| [Synchronizace dat mezi službou SQL Database a místním SQL Serverem](scripts/sql-data-sync-sync-data-between-azure-onprem.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tento skript PowerShellu nakonfiguruje synchronizaci dat pro synchronizaci mezi databází v Azure SQL Database a místní databází SQL Server. |
 | [Aktualizace schématu synchronizace pro Synchronizaci dat SQL](scripts/update-sync-schema-in-sync-group.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tento skript PowerShellu přidá položky do schématu synchronizace pro Synchronizaci dat nebo je z něj odebere. |
 |||
 
-Přečtěte si další informace o [rozhraní Izolovaná databáze Azure PowerShell API](single-database-manage.md#powershell). 
+Přečtěte si další informace o [rozhraní Azure PowerShell API pro jednu databázi](single-database-manage.md#powershell). 
 
 ## <a name="azure-sql-managed-instance"></a>[Spravovaná instance Azure SQL](#tab/managed-instance)
 
@@ -67,11 +67,11 @@ Následující tabulka obsahuje odkazy na ukázkové Azure PowerShell skripty pr
 | |  |
 |---|---|
 |**Vytvoření a konfigurace spravovaných instancí**||
-| [Vytvoření a Správa spravované instance](../managed-instance/scripts/create-configure-managed-instance-powershell.md) | Tento skript PowerShellu ukazuje, jak vytvořit a spravovat spravovanou instanci pomocí Azure PowerShell |
-| [Vytvoření a Správa spravované instance pomocí šablony Azure Resource Manager](../managed-instance/scripts/create-powershell-azure-resource-manager-template.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tento skript PowerShellu ukazuje, jak vytvořit a spravovat spravovanou instanci pomocí šablony Azure PowerShell a Azure Resource Manager.|
-| [Obnovení databáze do spravované instance v jiné geografické oblasti](../managed-instance/scripts/restore-geo-backup.md) | Tento skript PowerShellu přebírá zálohu jedné databáze a obnoví ji do jiné oblasti. To se označuje jako scénář zotavení po havárii geografického obnovení. |
-| **Konfigurace transparentní šifrování dat (TDE)**||
-| [Správa transparentní šifrování dat ve spravované instanci pomocí vlastního klíče z Azure Key Vault](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tento skript PowerShellu nakonfiguruje transparentní šifrování dat (TDE) ve scénáři Bring Your Own Key pro spravovanou instanci Azure SQL pomocí klíče z Azure Key Vault|
+| [Vytvoření a Správa spravované instance](../managed-instance/scripts/create-configure-managed-instance-powershell.md) | Tento skript PowerShellu ukazuje, jak vytvořit a spravovat spravovanou instanci pomocí Azure PowerShell. |
+| [Vytvoření a Správa spravované instance pomocí šablony Azure Resource Manager](../managed-instance/scripts/create-powershell-azure-resource-manager-template.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tento skript PowerShellu vám ukáže, jak vytvořit a spravovat spravovanou instanci pomocí Azure PowerShell a Azure Resource Manager šabloně.|
+| [Obnovení databáze do spravované instance v jiné geografické oblasti](../managed-instance/scripts/restore-geo-backup.md) | Tento skript PowerShellu vytvoří zálohu jedné databáze a obnoví ji do jiné oblasti. To se označuje jako scénář obnovení po havárii geografického obnovení. |
+| **Konfigurace transparentního šifrování dat**||
+| [Správa transparentního šifrování dat ve spravované instanci pomocí vlastního klíče z Azure Key Vault](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tento skript PowerShellu nakonfiguruje transparentní šifrování dat ve scénáři Bring Your Own Key pro spravovanou instanci Azure SQL pomocí klíče z Azure Key Vault.|
 |**Konfigurace skupiny převzetí služeb při selhání**||
 | [Konfigurace skupiny převzetí služeb při selhání pro spravovanou instanci](../managed-instance/scripts/add-to-failover-group-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tento skript PowerShellu vytvoří dvě spravované instance, přidá je do skupiny převzetí služeb při selhání a pak otestuje převzetí služeb při selhání z primární spravované instance do sekundární spravované instance. |
 |||
@@ -82,4 +82,4 @@ Přečtěte si další informace o [rutinách PowerShellu pro spravovanou instan
 
 ## <a name="additional-resources"></a>Další zdroje
 
-Příklady uvedené na této stránce využívají [rutiny PowerShellu](/powershell/module/az.sql/) pro vytváření a správu prostředků Azure SQL. Další rutiny pro spouštění dotazů a provádění mnoha databázových úloh se nachází v modulu [SQLServer](/powershell/module/sqlserver/) . Další informace najdete v tématu [SQL Server PowerShell](/sql/powershell/sql-server-powershell/).
+Příklady uvedené na této stránce využívají [rutiny PowerShellu](/powershell/module/az.sql/) pro vytváření a správu prostředků Azure SQL. Další rutiny pro spouštění dotazů a provádění mnoha databázových úloh se nacházejí v modulu [SQLServer](/powershell/module/sqlserver/) . Další informace najdete v tématu [SQL Server PowerShell](/sql/powershell/sql-server-powershell/).

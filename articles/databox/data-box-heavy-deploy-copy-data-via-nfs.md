@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 4361cee3d07408c3abb5031d2ab18c15c92c5e0a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79238983"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711251"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-heavy-via-nfs"></a>Kurz: kopírování dat do Azure Data Box Heavy přes systém souborů NFS
 
@@ -33,7 +33,7 @@ Než začnete, ujistěte se, že:
 1. Dokončili jste [kurz: nastavte Azure Data box Heavy](data-box-heavy-deploy-set-up.md).
 2. Dostali jste Data Box Heavy se **doručí**stav objednávky na portálu.
 3. Máte hostitelský počítač, který obsahuje data, která chcete zkopírovat do Data Boxu Heavy. Hostitelský počítač musí splňovat tyto požadavky:
-    - Spusťte [podporovaný operační systém](data-box-heavy-system-requirements.md).
+    - Musí na něm běžet [podporovaný operační systém](data-box-heavy-system-requirements.md).
     - Musí být připojený k vysokorychlostní síti. Největší rychlosti kopírování je možné dosáhnout použitím dvou paralelních připojení 40 GbE (jedno na uzel). Pokud nemáte k dispozici připojení 40 GbE, doporučujeme použít alespoň dvě připojení 10 GbE (jedno na uzel). 
 
 ## <a name="connect-to-data-box-heavy"></a>Připojení k Data Boxu Heavy
@@ -67,7 +67,7 @@ Pokud používáte hostitelský počítač se systémem Linux, proveďte násled
 
     ![Konfigurace přístupu klientů systému souborů NFS 1](media/data-box-deploy-copy-data/nfs-client-access.png)
 
-2. Zadejte IP adresu klienta systému souborů NFS a klikněte na **Přidat**. Opakováním tohoto kroku můžete nakonfigurovat přístup pro více klientů systému souborů NFS. Klikněte na tlačítko **OK**.
+2. Zadejte IP adresu klienta systému souborů NFS a klikněte na **Přidat**. Opakováním tohoto kroku můžete nakonfigurovat přístup pro více klientů systému souborů NFS. Klikněte na **OK**.
 
     ![Konfigurace přístupu klientů systému souborů NFS 2](media/data-box-deploy-copy-data/nfs-client-access2.png)
 
@@ -77,7 +77,7 @@ Pokud používáte hostitelský počítač se systémem Linux, proveďte násled
 
     `sudo mount <Data Box Heavy device IP>:/<NFS share on Data Box Heavy device> <Path to the folder on local Linux computer>`
 
-    Následující příklad ukazuje, jak se připojit přes systém souborů NFS ke sdílené Data Box Heavy. Data Box Heavy IP adresa je `10.161.23.130`sdílená složka `Mystoracct_Blob` připojená k ubuntuVM, přípojnému bodu `/home/databoxheavyubuntuhost/databoxheavy`.
+    Následující příklad ukazuje, jak se připojit přes systém souborů NFS ke sdílené Data Box Heavy. Data Box Heavy IP adresa je `10.161.23.130` sdílená složka `Mystoracct_Blob` připojená k ubuntuVM, přípojnému bodu `/home/databoxheavyubuntuhost/databoxheavy` .
 
     `sudo mount -t nfs 10.161.23.130:/Mystoracct_Blob /home/databoxheavyubuntuhost/databoxheavy`
     
@@ -100,7 +100,7 @@ Až budete připojeni ke sdíleným složkám Data Box Heavy, je dalším krokem
     - V názvu se zachová velká a malá písmena.
     - V souborech se nerozlišují malá a velká písmena.
     
-    Například při kopírování `SampleFile.txt` a `Samplefile.Txt`zachová se v názvu při kopírování do zařízení, ale druhý soubor přepíše první soubor, který se považuje za stejný soubor.
+    Například při kopírování `SampleFile.txt` a `Samplefile.Txt` zachová se v názvu při kopírování do zařízení, ale druhý soubor přepíše první soubor, který se považuje za stejný soubor.
 
 
 Pokud používáte hostitelský počítač s Linuxem, použijte podobný nástroj pro kopírování jako Robocopy. Mezi dostupné alternativy v Linuxu patří [rsync](https://rsync.samba.org/), [FreeFileSync](https://www.freefilesync.org/), [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) nebo [Ultracopier](https://ultracopier.first-world.info/).  

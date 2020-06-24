@@ -7,16 +7,16 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: 44472981e48a7018fcdf55f28d33d0dda9479d44
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: 697fe423d6f112dcd3a03ec739f7e11db3043c53
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84669898"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207817"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>Kurz: publikování webu Hugo ve službě Azure static Web Apps Preview
 
-Tento článek ukazuje, jak vytvořit a nasadit webovou aplikaci v [Hugo](https://gohugo.io/) do [azure Azure static Web Apps](overview.md). Konečný výsledek je nový statický Web Apps Azure s přidruženými akcemi GitHubu, které vám poskytnou kontrolu nad tím, jak je aplikace sestavená a publikovaná.
+Tento článek ukazuje, jak vytvořit a nasadit webovou aplikaci v [Hugo](https://gohugo.io/) do služby [Azure static Web Apps](overview.md). Konečný výsledek je nová statická webová aplikace Azure s přidruženými akcemi GitHubu, která vám umožní řídit, jak je aplikace sestavená a publikovaná.
 
 V tomto kurzu se naučíte:
 

@@ -4,12 +4,12 @@ description: Popisuje, jak vyhodnotit místní virtuální počítače VMware pr
 ms.topic: tutorial
 ms.date: 06/03/2020
 ms.custom: mvc
-ms.openlocfilehash: 87eac5979176fe9a71db15961e4c5f822b56568e
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: 231daff5972e9b2f115df9e6184c43a553f55b83
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331878"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84771304"
 ---
 # <a name="assess-vmware-vms-with-server-assessment"></a>Vyhodnocení virtuálních počítačů VMware (vyhodnocení serveru)
 
@@ -34,7 +34,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 - [Dokončete první kurz](tutorial-prepare-vmware.md) v této sérii. Pokud to neuděláte, pokyny v tomto kurzu nebudou fungovat.
 - Tady je seznam toho, co byste měli udělat v prvním kurzu:
     - [Připravte Azure](tutorial-prepare-vmware.md#prepare-azure) pro práci s Azure Migrate.
-    - [Připravte VMware na posouzení](tutorial-prepare-vmware.md#prepare-for-vmware-vm-assessment) pro posouzení. To zahrnuje kontrolu nastavení VMware a nastavení účtu, který Azure Migrate může použít pro přístup k vCenter Server.
+    - [Připravte VMware na posouzení](tutorial-prepare-vmware.md#prepare-for-assessment) pro posouzení. To zahrnuje kontrolu nastavení VMware a nastavení účtu, který Azure Migrate může použít pro přístup k vCenter Server.
     - [Ověřte](tutorial-prepare-vmware.md#verify-appliance-settings-for-assessment) , co potřebujete k nasazení Azure Migrate zařízení pro vyhodnocení VMware.
 
 ## <a name="set-up-an-azure-migrate-project"></a>Nastavení Azure Migrateho projektu
@@ -99,7 +99,7 @@ Před nasazením ověřte, zda je soubor sady vajíček zabezpečený:
         --- | --- | ---
         VMware (10,9 GB) | [Nejnovější verze](https://aka.ms/migrate/appliance/vmware) | cacbdaef927fe5477fa4e1f494fcb7203cbd6b6ce7402b79f234bc0fe69663dd
 
-    - Pro Azure Goverment:
+    - Pro Azure Government:
     
         **Algoritmus** | **Stáhnout** | **SHA256**
         --- | --- | ---
@@ -170,7 +170,7 @@ Aby bylo možné zjistit konfiguraci a údaje o výkonu virtuálních počítač
 1. V části **zadat vCenter Server podrobnosti**zadejte název (FQDN) nebo IP adresu instance vCenter Server. Můžete ponechat výchozí port nebo zadat vlastní port, na kterém vCenter Server naslouchá.
 2. Do pole **uživatelské jméno** a **heslo**zadejte přihlašovací údaje účtu vCenter Server, které zařízení použije ke zjištění virtuálních počítačů v instanci vCenter Server. 
 
-    - V [předchozím kurzu](tutorial-prepare-vmware.md#set-up-an-account-for-assessment)byste měli mít nastavený účet s požadovanými oprávněními.
+    - V [předchozím kurzu](tutorial-prepare-vmware.md#set-up-permissions-for-assessment)byste měli mít nastavený účet s požadovanými oprávněními.
     - Chcete-li omezit obor zjišťování na konkrétní objekty VMware (vCenter Server datových center, clustery, složku clusterů, hostitele, složku hostitelů nebo jednotlivé virtuální počítače), přečtěte si pokyny v [tomto článku](set-discovery-scope.md) a omezte účet používaný v Azure Migrate.
 
 3. Vyberte **ověřit připojení** a ujistěte se, že se zařízení může připojit k vCenter Server.
@@ -178,7 +178,7 @@ Aby bylo možné zjistit konfiguraci a údaje o výkonu virtuálních počítač
 
     - Přihlašovací údaje můžete volitelně přidat tady, pokud jste vytvořili účet, který se má používat pro [funkci zjišťování aplikací](how-to-discover-applications.md), nebo [funkci analýzy závislostí bez agenta](how-to-create-group-machine-dependencies-agentless.md).
     - Pokud tyto funkce nepoužíváte, můžete toto nastavení přeskočit.
-    - Zkontrolujte přihlašovací údaje potřebné pro [zjišťování aplikací](migrate-support-matrix-vmware.md#application-discovery)nebo pro [analýzu bez agentů](migrate-support-matrix-vmware.md#agentless-dependency-analysis-requirements).
+    - Zkontrolujte přihlašovací údaje potřebné pro [zjišťování aplikací](migrate-support-matrix-vmware.md#application-discovery-requirements)nebo pro [analýzu bez agentů](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless).
 
 5. **Uložením a spuštěním zjišťování vyhajte**zjišťování virtuálních počítačů.
 
@@ -197,7 +197,7 @@ Po zjištění můžete ověřit, že se virtuální počítače zobrazují v Az
 
 Pomocí vyhodnocení Azure Migrate serveru můžete vytvořit dva typy posouzení:
 
-**Posouzení** | **Zobrazí** | **Data**
+**Posouzení** | **Podrobnosti** | **Data**
 --- | --- | ---
 **Na základě výkonu** | Posouzení na základě shromážděných dat o výkonu | **Doporučená velikost virtuálního počítače**: na základě dat využití procesoru a paměti.<br/><br/> **Doporučený typ disku (spravovaný disk Standard nebo Premium)**: na základě vstupně-výstupních operací a propustnosti místních disků.
 **Jako místní** | Posouzení na základě místních velikostí | **Doporučená velikost virtuálního počítače**: v závislosti na velikosti místního virtuálního počítače.<br/><br> **Doporučený typ disku**: na základě nastavení typu úložiště, které jste vybrali pro posouzení.

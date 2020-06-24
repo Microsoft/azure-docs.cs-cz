@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 636f2e6139ad081d1e2fc67462a74cb7e18e3ff0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f532976e80c4284addcf09d81d8a32fd5f6f8827
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80475856"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84733938"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Kurz: Konfigurace zabezpečeného protokolu LDAP pro Azure Active Directory Domain Services spravovanou doménu
 
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte:
 > * Vytvoření digitálního certifikátu pro použití s Azure služba AD DS
 > * Povolit zabezpečený protokol LDAP pro Azure služba AD DS
 > * Konfigurace zabezpečeného protokolu LDAP pro použití přes veřejný Internet
-> * Vytvoření vazby a testování zabezpečeného protokolu LDAP pro spravovanou doménu Azure služba AD DS
+> * Vytvoření vazby a testování zabezpečeného protokolu LDAP pro spravovanou doménu
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -41,21 +41,21 @@ K dokončení tohoto kurzu potřebujete následující prostředky a oprávněn�
 * Tenant Azure Active Directory přidružený k vašemu předplatnému, buď synchronizovaný s místním adresářem, nebo jenom s cloudovým adresářem.
     * V případě potřeby [vytvořte tenanta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure k vašemu účtu][associate-azure-ad-tenant].
 * Ve vašem tenantovi Azure AD je povolená a nakonfigurovaná spravovaná doména Azure Active Directory Domain Services.
-    * V případě potřeby [vytvořte a nakonfigurujte instanci Azure Active Directory Domain Services][create-azure-ad-ds-instance].
-* Nástroj *Ldp. exe* nainstalovaný v počítači.
+    * V případě potřeby [vytvořte a nakonfigurujte Azure Active Directory Domain Services spravovanou doménu][create-azure-ad-ds-instance].
+* V počítači je nainstalovaný nástroj *LDP.exe* .
     * V případě potřeby [nainstalujte nástroje pro vzdálenou správu serveru (RSAT)][rsat] pro *Active Directory Domain Services a protokol LDAP*.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-V tomto kurzu nakonfigurujete zabezpečený protokol LDAP pro spravovanou doménu Azure služba AD DS pomocí Azure Portal. Chcete-li začít, nejprve se přihlaste k [Azure Portal](https://portal.azure.com).
+V tomto kurzu nakonfigurujete zabezpečený protokol LDAP pro spravovanou doménu pomocí Azure Portal. Chcete-li začít, nejprve se přihlaste k [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-a-certificate-for-secure-ldap"></a>Vytvoření certifikátu pro zabezpečený protokol LDAP
 
-Chcete-li použít zabezpečený protokol LDAP, je k šifrování komunikace použit digitální certifikát. Tento digitální certifikát se použije ve spravované doméně Azure služba AD DS a umožňuje nástrojům, jako je *Ldp. exe* , používat zabezpečenou šifrovanou komunikaci při dotazování na data. Existují dva způsoby, jak vytvořit certifikát pro zabezpečený přístup LDAP ke spravované doméně:
+Chcete-li použít zabezpečený protokol LDAP, je k šifrování komunikace použit digitální certifikát. Tento digitální certifikát se použije ve vaší spravované doméně a umožňuje nástrojům, jako je *LDP.exe* při dotazování na data použít zabezpečenou šifrovanou komunikaci. Existují dva způsoby, jak vytvořit certifikát pro zabezpečený přístup LDAP ke spravované doméně:
 
 * Certifikát od veřejné certifikační autority (CA) nebo certifikační autority organizace.
     * Pokud vaše organizace získá certifikáty od veřejné certifikační autority, Získejte certifikát zabezpečeného protokolu LDAP od této veřejné certifikační autority. Pokud ve vaší organizaci používáte certifikační autoritu organizace, Získejte certifikát zabezpečeného protokolu LDAP od certifikační autority organizace.
-    * Veřejná certifikační autorita funguje jenom v případě, že používáte vlastní název DNS ve spravované doméně Azure služba AD DS. Pokud končí název domény DNS vaší spravované domény v *. onmicrosoft.com*, nemůžete vytvořit digitální certifikát pro zabezpečení připojení s touto výchozí doménou. Společnost Microsoft vlastní doménu *. onmicrosoft.com* , takže Veřejná certifikační autorita nevydá certifikát. V tomto scénáři vytvořte certifikát podepsaný svým držitelem a použijte ho ke konfiguraci zabezpečeného protokolu LDAP.
+    * Veřejná certifikační autorita funguje jenom v případě, že používáte vlastní název DNS se spravovanou doménou. Pokud končí název domény DNS vaší spravované domény v *. onmicrosoft.com*, nemůžete vytvořit digitální certifikát pro zabezpečení připojení s touto výchozí doménou. Společnost Microsoft vlastní doménu *. onmicrosoft.com* , takže Veřejná certifikační autorita nevydá certifikát. V tomto scénáři vytvořte certifikát podepsaný svým držitelem a použijte ho ke konfiguraci zabezpečeného protokolu LDAP.
 * Certifikát podepsaný svým držitelem, který vytvoříte sami.
     * Tento přístup je dobrý pro účely testování a je to, co tento kurz ukazuje.
 
@@ -63,7 +63,7 @@ Certifikát, který požadujete nebo vytvoříte, musí splňovat následující
 
 * **Důvěryhodný Vystavitel** – certifikát musí být vydán autoritou, která je důvěryhodná pro počítače připojující se ke spravované doméně pomocí protokolu Secure LDAP. Tímto orgánem může být veřejná certifikační autorita nebo certifikační autorita organizace, které tyto počítače důvěřují.
 * **Doba života** – certifikát musí být platný minimálně v následujících 3-6 měsících. Po vypršení platnosti certifikátu dojde k přerušení přístupu k spravované doméně protokol Secure LDAP.
-* **Název subjektu** – název subjektu v certifikátu musí být vaše spravovaná doména. Pokud má například vaše doména název *aaddscontoso.com*, musí být název subjektu certifikátu **. aaddscontoso.com*.
+* **Název subjektu** – název subjektu v certifikátu musí být vaše spravovaná doména. Pokud je vaše doména například s názvem *aaddscontoso.com*, musí být název subjektu certifikátu **. aaddscontoso.com*.
     * Název DNS nebo alternativní název subjektu certifikátu musí být certifikátem se zástupným znakem, aby zabezpečený protokol LDAP správně fungoval s Azure AD Domain Services. Řadiče domény používají náhodné názvy a je možné je odebrat nebo přidat, abyste zajistili, že služba zůstane dostupná.
 * **Použití klíče** – certifikát musí být nakonfigurovaný pro *digitální podpisy* a *šifrování klíče*.
 * **Účel certifikátu** – certifikát musí být platný pro ověřování serveru TLS.
@@ -71,7 +71,7 @@ Certifikát, který požadujete nebo vytvoříte, musí splňovat následující
 K dispozici je několik nástrojů pro vytvoření certifikátu podepsaného svým držitelem, jako je OpenSSL, nástroj pro vytváření, MakeCert, rutina [New-SelfSignedCertificate][New-SelfSignedCertificate] atd. V tomto kurzu vytvoříme certifikát podepsaný svým držitelem pro zabezpečení LDAP pomocí rutiny [New-SelfSignedCertificate][New-SelfSignedCertificate] . Otevřete okno PowerShellu jako **správce** a spusťte následující příkazy. Nahraďte *$DnsName* PROMĚNNOU názvem DNS použitým vaší vlastní spravovanou doménou, například *aaddscontoso.com*:
 
 ```powershell
-# Define your own DNS name used by your Azure AD DS managed domain
+# Define your own DNS name used by your managed domain
 $dnsName="aaddscontoso.com"
 
 # Get the current date to set a one-year expiration
@@ -101,20 +101,20 @@ Thumbprint                                Subject
 
 Aby bylo možné používat zabezpečený protokol LDAP, je síťový provoz zašifrovaný pomocí infrastruktury veřejných klíčů (PKI).
 
-* **Privátní** klíč se použije ve spravované doméně Azure služba AD DS.
-    * Tento privátní klíč se používá k *dešifrování* zabezpečeného provozu LDAP. Privátní klíč by se měl použít jenom pro spravovanou doménu Azure služba AD DS, a ne široce distribuovaná na klientské počítače.
+* **Privátní** klíč se použije ve spravované doméně.
+    * Tento privátní klíč se používá k *dešifrování* zabezpečeného provozu LDAP. Privátní klíč by měl být použit pouze pro spravovanou doménu a není široce distribuován do klientských počítačů.
     * Certifikát, který obsahuje privátní klíč, používá *. *Formát souboru PFX.
 * **Veřejný** klíč se použije pro klientské počítače.
     * Tento veřejný klíč slouží k *šifrování* zabezpečeného přenosu LDAP. Veřejný klíč lze distribuovat do klientských počítačů.
     * Certifikáty bez privátního klíče používají *. *Formát souboru CER.
 
-Tyto dva klíče, *privátní* a *veřejné* klíče, zajistí, že mezi sebou můžou úspěšně komunikovat jenom příslušné počítače. Pokud používáte veřejnou certifikační autoritu nebo certifikační autoritu organizace, vydáváte certifikát, který obsahuje privátní klíč, a můžete ho použít pro spravovanou doménu Azure služba AD DS. Veřejný klíč by již měl být známý a důvěryhodný pro klientské počítače. V tomto kurzu jste vytvořili certifikát podepsaný svým držitelem s privátním klíčem, takže potřebujete exportovat příslušné privátní a veřejné součásti.
+Tyto dva klíče, *privátní* a *veřejné* klíče, zajistí, že mezi sebou můžou úspěšně komunikovat jenom příslušné počítače. Pokud používáte veřejnou certifikační autoritu nebo certifikační autoritu organizace, vydáváte certifikát, který obsahuje privátní klíč, a můžete ho použít pro spravovanou doménu. Veřejný klíč by již měl být známý a důvěryhodný pro klientské počítače. V tomto kurzu jste vytvořili certifikát podepsaný svým držitelem s privátním klíčem, takže potřebujete exportovat příslušné privátní a veřejné součásti.
 
 ### <a name="export-a-certificate-for-azure-ad-ds"></a>Export certifikátu pro Azure služba AD DS
 
-Než budete moct použít digitální certifikát vytvořený v předchozím kroku s vaší spravovanou doménou Azure služba AD DS, exportujte certifikát do *. *Soubor certifikátu PFX, který obsahuje privátní klíč.
+Předtím, než budete moci použít digitální certifikát vytvořený v předchozím kroku se spravovanou doménou, exportujte certifikát do *. *Soubor certifikátu PFX, který obsahuje privátní klíč.
 
-1. Chcete-li otevřít dialogové okno *Spustit* , vyberte klíče **Windows** + **R** .
+1. Chcete-li otevřít dialogové okno *Spustit* , vyberte klíče **Windows**  +  **R** .
 1. Otevřete konzolu MMC (Microsoft Management Console) tak, že v dialogovém okně *Spustit* zadáte **MMC** a pak vyberete **OK**.
 1. Na příkazovém řádku pro **řízení uživatelských účtů** vyberte **Ano** , aby se MMC spouštěla jako správce.
 1. V nabídce **soubor** vyberte **Přidat nebo odebrat modul snap-in...**
@@ -133,7 +133,7 @@ Než budete moct použít digitální certifikát vytvořený v předchozím kro
 1. Privátní klíč certifikátu musí být exportován. Pokud privátní klíč není zahrnutý v exportovaném certifikátu, akce pro povolení zabezpečeného LDAP pro spravovanou doménu se nezdařila.
 
     Na stránce **exportovat soukromý klíč** vyberte možnost **Ano, exportovat privátní klíč**a potom vyberte možnost **Další**.
-1. Spravované domény Azure služba AD DS podporují jenom *. *Formát souboru certifikátu PFX, který obsahuje privátní klíč. Neexportujte certifikát jako *. *Formát souboru certifikátu CER bez privátního klíče.
+1. Spravované domény podporují jenom *. *Formát souboru certifikátu PFX, který obsahuje privátní klíč. Neexportujte certifikát jako *. *Formát souboru certifikátu CER bez privátního klíče.
 
     Na stránce **Formát souboru pro export** vyberte **Personal Information Exchange-PKCS #12 (. PFX)** jako formát souboru pro exportovaný certifikát. Zaškrtněte políčko *Zahrnout všechny certifikáty na cestě k certifikátu, pokud je to možné*:
 
@@ -141,7 +141,7 @@ Než budete moct použít digitální certifikát vytvořený v předchozím kro
 
 1. Vzhledem k tomu, že tento certifikát slouží k dešifrování dat, byste měli pečlivě řídit přístup. K ochraně použití certifikátu lze použít heslo. Bez správného hesla se certifikát nedá použít na službu.
 
-    Na stránce **zabezpečení** vyberte možnost **heslo** pro ochranu *. *Soubor certifikátu PFX. Zadejte a potvrďte heslo a pak vyberte **Další**. Toto heslo se používá v další části k povolení zabezpečeného protokolu LDAP pro spravovanou doménu Azure služba AD DS.
+    Na stránce **zabezpečení** vyberte možnost **heslo** pro ochranu *. *Soubor certifikátu PFX. Zadejte a potvrďte heslo a pak vyberte **Další**. Toto heslo se používá v další části k povolení zabezpečeného protokolu LDAP pro spravovanou doménu.
 1. Na stránce **soubor k exportu** zadejte název souboru a umístění, kam chcete certifikát exportovat, například *C:\Users\accountname\azure-AD-DS.pfx*. Poznamenejte si heslo a umístění *. Soubor PFX* jako tyto informace by byl nutný v následujících krocích.
 1. Na stránce Kontrola vyberte **Dokončit** a exportujte certifikát do *. *Soubor certifikátu PFX. Po úspěšném exportu certifikátu se zobrazí potvrzovací dialogové okno.
 1. Konzolu MMC nechte otevřenou pro použití v následující části.
@@ -160,7 +160,7 @@ Klientské počítače musí důvěřovat vystaviteli certifikátu zabezpečené
 1. Na stránce **soubor k exportu** zadejte název souboru a umístění, kam chcete certifikát exportovat, například *C:\Users\accountname\azure-AD-DS-Client.cer*.
 1. Na stránce Kontrola vyberte **Dokončit** a exportujte certifikát do *. *Soubor certifikátu CER. Po úspěšném exportu certifikátu se zobrazí potvrzovací dialogové okno.
 
-Rozhraní *. *Soubor certifikátu CER se teď dá distribuovat do klientských počítačů, které potřebují důvěřovat zabezpečenému připojení LDAP k spravované doméně Azure služba AD DS. Pojďme nainstalovat certifikát do místního počítače.
+Rozhraní *. *Soubor certifikátu CER se teď dá distribuovat do klientských počítačů, které potřebují důvěřovat zabezpečenému připojení LDAP ke spravované doméně. Pojďme nainstalovat certifikát do místního počítače.
 
 1. Otevřete Průzkumníka souborů a přejděte do umístění, kam jste uložili soubor *. *Soubor certifikátu CER, například *C:\Users\accountname\azure-AD-DS-Client.cer*.
 1. Pravým tlačítkem myši vyberte *. *Soubor certifikátu CER a pak zvolte **nainstalovat certifikát**.
@@ -174,7 +174,7 @@ Rozhraní *. *Soubor certifikátu CER se teď dá distribuovat do klientských p
 
 ## <a name="enable-secure-ldap-for-azure-ad-ds"></a>Povolit zabezpečený protokol LDAP pro Azure služba AD DS
 
-Pomocí digitálního certifikátu vytvořeného a exportovaného, který obsahuje privátní klíč, a klientského počítače, který je nastavený tak, aby připojení důvěřoval, teď povolte zabezpečený protokol LDAP ve spravované doméně Azure služba AD DS. Pokud chcete povolit zabezpečený protokol LDAP ve spravované doméně Azure služba AD DS, proveďte následující kroky konfigurace:
+Pomocí digitálního certifikátu vytvořeného a exportovaného, který obsahuje privátní klíč, a klientského počítače, který je nastavený tak, aby připojení důvěřoval, teď povolte zabezpečený protokol LDAP ve spravované doméně. Chcete-li povolit zabezpečený protokol LDAP ve spravované doméně, proveďte následující kroky konfigurace:
 
 1. V [Azure Portal](https://portal.azure.com)zadejte *Domain Services* do pole **Hledat prostředky** . Ve výsledcích hledání vyberte **Azure AD Domain Services** .
 1. Vyberte spravovanou doménu, například *aaddscontoso.com*.
@@ -191,7 +191,7 @@ Pomocí digitálního certifikátu vytvořeného a exportovaného, který obsahu
 1. Zadejte **heslo pro dešifrování. Soubor PFX** , který jste nastavili v předchozím kroku, když byl certifikát exportován do *. Soubor PFX* .
 1. Vyberte **Save (Uložit** ) a povolte zabezpečený protokol LDAP.
 
-    ![Povolení zabezpečeného protokolu LDAP pro spravovanou doménu Azure služba AD DS v Azure Portal](./media/tutorial-configure-ldaps/enable-ldaps.png)
+    ![Povolit zabezpečený protokol LDAP pro spravovanou doménu v Azure Portal](./media/tutorial-configure-ldaps/enable-ldaps.png)
 
 Zobrazí se oznámení o tom, že pro spravovanou doménu je nakonfigurovaný zabezpečený protokol LDAP. Dokud nebude tato operace dokončena, nelze změnit další nastavení pro spravovanou doménu.
 
@@ -199,9 +199,9 @@ Povolení zabezpečeného protokolu LDAP pro spravovanou doménu trvá několik 
 
 ## <a name="lock-down-secure-ldap-access-over-the-internet"></a>Uzamknout zabezpečený přístup LDAP přes Internet
 
-Když povolíte zabezpečený přístup pomocí protokolu LDAP přes Internet do spravované domény Azure služba AD DS, vytvoří se bezpečnostní hrozba. Spravovaná doména je dosažitelná z Internetu na portu TCP 636. Doporučuje se omezit přístup ke spravované doméně na konkrétní známé IP adresy vašeho prostředí. Pravidlo skupiny zabezpečení sítě Azure se dá použít k omezení přístupu k zabezpečenému LDAP.
+Když povolíte zabezpečený přístup pomocí protokolu LDAP přes Internet do spravované domény, vytvoří se bezpečnostní hrozba. Spravovaná doména je dosažitelná z Internetu na portu TCP 636. Doporučuje se omezit přístup ke spravované doméně na konkrétní známé IP adresy vašeho prostředí. Pravidlo skupiny zabezpečení sítě Azure se dá použít k omezení přístupu k zabezpečenému LDAP.
 
-Pojďme vytvořit pravidlo, které umožní příchozí zabezpečený přístup LDAP přes port TCP 636 ze zadané sady IP adres. Výchozí pravidlo *denyall* s nižší prioritou se vztahuje na všechny ostatní příchozí přenosy z Internetu, takže jenom zadané adresy se můžou dostihnout do spravované domény Azure služba AD DS pomocí zabezpečeného LDAP.
+Pojďme vytvořit pravidlo, které umožní příchozí zabezpečený přístup LDAP přes port TCP 636 ze zadané sady IP adres. Výchozí pravidlo *denyall* s nižší prioritou se vztahuje na všechny ostatní příchozí přenosy z Internetu, takže se vaše spravovaná doména může dostat jenom přes zabezpečený protokol LDAP.
 
 1. V Azure Portal na levé straně navigace vyberte *skupiny prostředků* .
 1. Zvolte skupinu prostředků, třeba *myResourceGroup*, a pak vyberte skupinu zabezpečení sítě, třeba *aaads-NSG*.
@@ -218,7 +218,7 @@ Pojďme vytvořit pravidlo, které umožní příchozí zabezpečený přístup 
     | Protocol (Protokol)                          | TCP          |
     | Akce                            | Povolit        |
     | Priorita                          | 401          |
-    | Název                              | AllowLDAPS   |
+    | Name                              | AllowLDAPS   |
 
 1. Až budete připraveni, vyberte **Přidat** a uložte a použijte pravidlo.
 
@@ -226,9 +226,9 @@ Pojďme vytvořit pravidlo, které umožní příchozí zabezpečený přístup 
 
 ## <a name="configure-dns-zone-for-external-access"></a>Konfigurace zóny DNS pro externí přístup
 
-Když je přístup přes Internet zabezpečený pomocí protokolu LDAP, aktualizujte zónu DNS tak, aby klientské počítače mohly najít tuto spravovanou doménu. *Protokol Secure LDAP externí IP adresu* najdete na kartě **vlastnosti** spravované domény Azure služba AD DS:
+Když je přístup přes Internet zabezpečený pomocí protokolu LDAP, aktualizujte zónu DNS tak, aby klientské počítače mohly najít tuto spravovanou doménu. *Protokol Secure LDAP externí IP adresu* najdete na kartě **vlastnosti** spravované domény:
 
-![Podívejte se na externí IP adresu zabezpečeného protokolu LDAP pro spravovanou doménu Azure služba AD DS v Azure Portal](./media/tutorial-configure-ldaps/ldaps-external-ip-address.png)
+![Zobrazení externí IP adresy zabezpečeného protokolu LDAP pro spravovanou doménu v Azure Portal](./media/tutorial-configure-ldaps/ldaps-external-ip-address.png)
 
 Nakonfigurujte externího poskytovatele DNS tak, aby vytvořil záznam hostitele, například *LDAPS*, který se bude překládat na tuto externí IP adresu. K místnímu testování na svém počítači můžete vytvořit položku v souboru hostitelů systému Windows. Pokud chcete úspěšně upravit soubor hostitelů na místním počítači, otevřete *Poznámkový blok* jako správce a pak otevřete soubor *C:\WINDOWS\SYSTEM32\DRIVERS\ETC* .
 
@@ -240,27 +240,27 @@ Následující příklad položky DNS, buď s vaším externím poskytovatelem D
 
 ## <a name="test-queries-to-the-managed-domain"></a>Testovat dotazy do spravované domény
 
-K připojení k vaší spravované doméně služba AD DS Azure a k vyhledávání přes LDAP se používá nástroj *Ldp. exe* . Tento nástroj je součástí balíčku Nástroje pro vzdálenou správu serveru (RSAT). Další informace najdete v tématu [instalace nástroje pro vzdálenou správu serveru][rsat].
+Pokud se chcete připojit ke spravované doméně a prohledat ji přes LDAP, použijte nástroj *LDP.exe* . Tento nástroj je součástí balíčku Nástroje pro vzdálenou správu serveru (RSAT). Další informace najdete v tématu [instalace nástroje pro vzdálenou správu serveru][rsat].
 
-1. Spusťte nástroj *Ldp. exe* a připojte se ke spravované doméně. Vyberte **připojení**a pak zvolte **připojit...**.
+1. Otevřete *LDP.exe* a připojte se ke spravované doméně. Vyberte **připojení**a pak zvolte **připojit...**.
 1. Zadejte název domény DNS zabezpečeného LDAP vaší spravované domény, který jste vytvořili v předchozím kroku, například *LDAPS.aaddscontoso.com*. Chcete-li použít zabezpečený protokol LDAP, nastavte **port** na *636*a zaškrtněte políčko pro **protokol SSL**.
 1. Vyberte **OK** a připojte se ke spravované doméně.
 
-V dalším kroku se připojte ke spravované doméně Azure služba AD DS. Uživatelé (a účty služeb) nemůžou provádět jednoduché vazby LDAP, pokud jste v instanci Azure služba AD DS zakázali synchronizaci hodnot hash hesel protokolu NTLM. Další informace o zakázání synchronizace hodnot hash hesel protokolu NTLM najdete v tématu [zabezpečení spravované domény v Azure služba AD DS][secure-domain].
+V dalším kroku se připojte ke spravované doméně. Uživatelé (a účty služeb) nemůžou provádět jednoduché vazby LDAP, pokud jste v spravované doméně zakázali synchronizaci hodnot hash hesel protokolu NTLM. Další informace o zakázání synchronizace hodnot hash hesel protokolu NTLM najdete v tématu [zabezpečení spravované domény][secure-domain].
 
 1. Vyberte možnost nabídky **připojení** a pak zvolte **BIND...**.
 1. Zadejte přihlašovací údaje uživatelského účtu patřícího do skupiny *správců řadiče domény AAD* , například *contosoadmin*. Zadejte heslo uživatelského účtu a pak zadejte svoji doménu, například *aaddscontoso.com*.
 1. Pro **typ vazby**vyberte možnost *BIND s přihlašovacími údaji*.
-1. Vyberte **OK** , aby se navázala vaše Azure služba AD DS spravovaná doména.
+1. Vyberte **OK** , aby se navázala vaše spravovaná doména.
 
-Zobrazení objektů uložených ve spravované doméně Azure služba AD DS:
+Zobrazení objektů uložených ve spravované doméně:
 
 1. Vyberte možnost nabídky **Zobrazit** a pak zvolte možnost **strom**.
 1. Pole *BaseDN* ponechte prázdné a pak vyberte **OK**.
 1. Zvolte kontejner, třeba *uživatele AADDC*, a pak klikněte pravým tlačítkem myši na kontejner a vyberte **Hledat**.
 1. Nechejte předem vyplněná pole nastavena a pak vyberte **Spustit**. Výsledky dotazu se zobrazí v okně na pravé straně, jak je znázorněno v následujícím příkladu výstupu:
 
-    ![Vyhledejte objekty ve spravované doméně Azure služba AD DS pomocí nástroje LDP. exe.](./media/tutorial-configure-ldaps/ldp-query.png)
+    ![Vyhledejte objekty ve spravované doméně pomocí LDP.exe](./media/tutorial-configure-ldaps/ldp-query.png)
 
 Chcete-li přímo zadat dotaz na konkrétní kontejner, můžete v nabídce **zobrazit > stromu** zadat **BaseDN** jako *ou = AADDC Users, DC = AADDSCONTOSO, DC = com* nebo *ou = AADDC Computers, DC = AADDSCONTOSO, DC = com*. Další informace o tom, jak formátovat a vytvářet dotazy, najdete v tématu [základy dotazů LDAP][ldap-query-basics].
 
@@ -280,7 +280,7 @@ V tomto kurzu jste se naučili:
 > * Vytvoření digitálního certifikátu pro použití s Azure služba AD DS
 > * Povolit zabezpečený protokol LDAP pro Azure služba AD DS
 > * Konfigurace zabezpečeného protokolu LDAP pro použití přes veřejný Internet
-> * Vytvoření vazby a testování zabezpečeného protokolu LDAP pro spravovanou doménu Azure služba AD DS
+> * Vytvoření vazby a testování zabezpečeného protokolu LDAP pro spravovanou doménu
 
 > [!div class="nextstepaction"]
 > [Konfigurace synchronizace hodnot hash hesel pro hybridní prostředí Azure AD](tutorial-configure-password-hash-sync.md)

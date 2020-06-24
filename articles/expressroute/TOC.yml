@@ -54,8 +54,12 @@
       href: expressroute-global-reach.md
     - name: Informace o šifrování ExpressRoute
       href: expressroute-about-encryption.md
-    - name: Ovládací prvky zabezpečení
-      href: expressroute-security-controls.md
+    - name: Zabezpečení
+      items:
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
+        - name: Atributy zabezpečení
+          href: expressroute-security-controls.md
     - name: Informace o branách virtuální sítě
       href: expressroute-about-virtual-network-gateways.md
     - name: Připojení Azure k veřejným cloudům
@@ -210,7 +214,7 @@
 - name: Referenční informace
   items:
     - name: Azure PowerShell
-      href: '/powershell/module/az.network#expressroute'
+      href: /powershell/module/az.network#expressroute
     - name: Azure CLI
       href: /cli/azure/network/express-route
     - name: REST

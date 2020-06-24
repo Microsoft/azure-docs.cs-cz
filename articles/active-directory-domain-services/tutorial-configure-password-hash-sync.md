@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: 4bf85a8e38a3cfc46fe4dbaf86639899e7267178
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ee0c6e67dcf0cf5f85734be3ac53a0417e398654
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80676614"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84733700"
 ---
 # <a name="tutorial-enable-password-synchronization-in-azure-active-directory-domain-services-for-hybrid-environments"></a>Kurz: povolení synchronizace hesel v Azure Active Directory Domain Services pro hybridní prostředí
 
@@ -42,7 +42,7 @@ K dokončení tohoto kurzu potřebujete následující zdroje:
     * V případě potřeby [vytvořte tenanta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure k vašemu účtu][associate-azure-ad-tenant].
     * V případě potřeby [povolte Azure AD Connect pro synchronizaci hodnot hash hesel][enable-azure-ad-connect].
 * Ve vašem tenantovi Azure AD je povolená a nakonfigurovaná spravovaná doména Azure Active Directory Domain Services.
-    * V případě potřeby [vytvořte a nakonfigurujte instanci Azure Active Directory Domain Services][create-azure-ad-ds-instance].
+    * V případě potřeby [vytvořte a nakonfigurujte Azure Active Directory Domain Services spravovanou doménu][create-azure-ad-ds-instance].
 
 ## <a name="password-hash-synchronization-using-azure-ad-connect"></a>Synchronizace hodnot hash hesel pomocí Azure AD Connect
 
@@ -71,7 +71,7 @@ Když je služba Azure AD Connect nainstalovaná a nakonfigurovaná pro synchron
     * Konektor Azure AD má název *contoso.onmicrosoft.com-AAD* .
     * Konektor on-premises služba AD DS má název *OnPrem.contoso.com* .
 
-1. Zkopírujte následující skript prostředí PowerShell a vložte ho do počítače s nainstalovaným Azure AD Connect. Skript spustí úplnou synchronizaci hesla, která zahrnuje starší hodnoty hash hesel. Aktualizujte `$azureadConnector` proměnné `$adConnector` a pomocí názvů konektorů z předchozího kroku.
+1. Zkopírujte následující skript prostředí PowerShell a vložte ho do počítače s nainstalovaným Azure AD Connect. Skript spustí úplnou synchronizaci hesla, která zahrnuje starší hodnoty hash hesel. Aktualizujte `$azureadConnector` `$adConnector` proměnné a pomocí názvů konektorů z předchozího kroku.
 
     Spuštěním tohoto skriptu v každé doménové struktuře AD synchronizujete hodnoty hash hesla protokolu NTLM a Kerberos do služby Azure AD.
 
@@ -97,7 +97,7 @@ Když je služba Azure AD Connect nainstalovaná a nakonfigurovaná pro synchron
     Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConnector $azureadConnector -Enable $true
     ```
 
-    V závislosti na velikosti adresáře na základě počtu účtů a skupin může synchronizace hodnot hash starších hesel do služby Azure AD nějakou dobu trvat. Hesla se pak po synchronizaci do Azure AD synchronizují do spravované domény Azure služba AD DS.
+    V závislosti na velikosti adresáře na základě počtu účtů a skupin může synchronizace hodnot hash starších hesel do služby Azure AD nějakou dobu trvat. Hesla se pak po synchronizaci do služby Azure AD synchronizují se spravovanými doménami.
 
 ## <a name="next-steps"></a>Další kroky
 

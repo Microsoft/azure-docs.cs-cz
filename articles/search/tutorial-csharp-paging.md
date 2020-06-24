@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 02/10/2020
-ms.openlocfilehash: 0dce3852d2b0489b373162fe754d745b01bd3074
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.date: 06/20/2020
+ms.openlocfilehash: ad57fe01313957c4f3d23ef44d0e02ad11ab3fa8
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780568"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262170"
 ---
 # <a name="tutorial-add-paging-to-search-results-using-the-net-sdk"></a>Kurz: Přidání stránkování do výsledků hledání pomocí sady .NET SDK
 
@@ -100,7 +100,7 @@ Otevřete základní řešení pro stránku vyhledávání.
 
 ### <a name="add-a-table-of-paging-options-to-the-view"></a>Přidání tabulky možností stránkování do zobrazení
 
-1. Otevřete soubor index. cshtml a přidejte následující kód přímo před uzavírací &lt;značku/body.&gt; Tento nový kód představuje tabulku možností stránkování: první, předchozí, 1, 2, 3, 4, 5, další, poslední.
+1. Otevřete soubor index. cshtml a přidejte následující kód přímo před uzavírací &lt; &gt; značku/body. Tento nový kód představuje tabulku možností stránkování: první, předchozí, 1, 2, 3, 4, 5, další, poslední.
 
     ```cs
     @if (Model != null && Model.pageCount > 1)
@@ -424,7 +424,7 @@ Chcete-li implementovat nekonečné posouvání, začněte s projektem před př
 
 1. Vyhledejte část souboru index. cshtml, který zobrazuje výsledky (začíná na ** @if (model! = null)**).
 
-2. Nahraďte oddíl následujícím kódem. Nový ** &lt;oddíl div&gt; ** je okolo oblasti, která by se měla procházet, a přidá jak atribut **přetečení** , tak i **volání funkce pro posouvání s** názvem "scrolled ()", například.
+2. Nahraďte oddíl následujícím kódem. Nový oddíl ** &lt; div &gt; ** je okolo oblasti, která by se měla procházet, a přidá jak atribut **přetečení** , tak i **volání funkce pro posouvání s** názvem "scrolled ()", například.
 
     ```cs
         @if (Model != null)
@@ -447,7 +447,7 @@ Chcete-li implementovat nekonečné posouvání, začněte s projektem před př
         }
     ```
 
-3. Přímo pod smyčkou, za &lt;značkou&gt; /div přidejte **posunutou** funkci.
+3. Přímo pod smyčkou, za &lt; &gt; značkou/div přidejte **posunutou** funkci.
 
     ```javascript
         <script>
@@ -563,7 +563,7 @@ Existují pouze tři akce, které je třeba odeslat do kontroleru: první spušt
         }
     ```
 
-4. Pokud se vám v **&lt;&gt;řetězci seznamu**zobrazuje chyba syntaxe, přidejte do hlavičky souboru kontroleru následující direktivu **using** .
+4. Pokud se vám v ** &lt; řetězci &gt; seznamu**zobrazuje chyba syntaxe, přidejte do hlavičky souboru kontroleru následující direktivu **using** .
 
     ```cs
     using System.Collections.Generic;
@@ -578,7 +578,7 @@ Nyní vyberte možnost **Spustit bez ladění** (nebo stiskněte klávesu F5).
     ![Nekonečná posouvání prostřednictvím "fondu" výsledků](./media/tutorial-csharp-create-first-app/azure-search-infinite-scroll.png)
 
     > [!Tip]
-    > Aby se zajistilo, že se na první stránce zobrazí posuvník, první stránka výsledků musí mírně překročit výšku oblasti, ve které se zobrazují. V našem příkladu má **box1** výšku 30 pixelů **. box2** má výšku 100 pixelů _a_ spodní okraj 24 pixelů. Každá položka tedy používá 154 pixelů. Tři položky budou zabírat 3 x 154 = 462 pixelů. Aby se zajistilo, že se zobrazí svislý posuvník, musí být výška na zobrazované oblasti nastavená tak, aby byla menší než 462 pixelů, i když 461 funguje. K tomuto problému dochází pouze na první stránce, poté, co se zobrazí posuvník. Řádek, který se má aktualizovat: ** &lt;div ID = "myDiv" Style = "width: 800px; Height: 450px; přetečení-y: Scroll;" proscroll = "scrolled (&gt;)"**.
+    > Aby se zajistilo, že se na první stránce zobrazí posuvník, první stránka výsledků musí mírně překročit výšku oblasti, ve které se zobrazují. V našem příkladu má **box1** výšku 30 pixelů **. box2** má výšku 100 pixelů _a_ spodní okraj 24 pixelů. Každá položka tedy používá 154 pixelů. Tři položky budou zabírat 3 x 154 = 462 pixelů. Aby se zajistilo, že se zobrazí svislý posuvník, musí být výška na zobrazované oblasti nastavená tak, aby byla menší než 462 pixelů, i když 461 funguje. K tomuto problému dochází pouze na první stránce, poté, co se zobrazí posuvník. Řádek, který se má aktualizovat: ** &lt; div ID = "myDiv" Style = "width: 800px; Height: 450px; přetečení-y: Scroll;" proscroll = "scrolled ( &gt; )"**.
 
 2. Posuňte se dolů k dolnímu okraji výsledků. Všimněte si, že všechny informace jsou nyní na jedné stránce zobrazení. Můžete se přesměrovat zpět na začátek, aniž by se aktivovala žádná volání serveru.
 

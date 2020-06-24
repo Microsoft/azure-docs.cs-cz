@@ -3,12 +3,12 @@ title: Kurz – zálohování SAP HANA databází na virtuálních počítačíc
 description: V tomto kurzu se naučíte zálohovat SAP HANA databáze běžící na virtuálním počítači Azure do trezoru služby Azure Backup Recovery Services.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: 52ffc6bf83ff2a2dcc22fd7c5ad8ab1480f9ce50
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.openlocfilehash: 123f27a6e2114ed17cbb5e11b34202c17ba69a2d
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84417289"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84770726"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Kurz: zálohování SAP HANA databází ve virtuálním počítači Azure
 
@@ -29,7 +29,9 @@ V tomto kurzu se dozvíte, jak zálohovat SAP HANA databáze běžící na virtu
 
 Před konfigurací zálohování se ujistěte, že jste provedli následující kroky:
 
+* Identifikujte nebo vytvořte [Recovery Services trezor](backup-sql-server-database-azure-vms.md#create-a-recovery-services-vault) ve stejné oblasti a předplatném jako virtuální počítač s SAP HANA.
 * Umožněte připojení z virtuálního počítače k Internetu, aby bylo možné získat přístup k Azure, jak je popsáno níže v postupu [Nastavení síťového připojení](#set-up-network-connectivity) .
+* Zajistěte, aby celková délka názvu virtuálního počítače SAP HANA serveru a názvu skupiny prostředků překročila 84 znaků pro Azure prostředků Manager (ARM_ virtuálních počítačů (a 77 znaků pro klasické virtuální počítače). Toto omezení je způsobeno tím, že některé znaky jsou vyhrazené službou.
 * Klíč by měl existovat v **hdbuserstore** , který splňuje následující kritéria:
   * Měl by se nacházet ve výchozím **hdbuserstore**. Výchozí je účet, `<sid>adm` pod kterým je nainstalovaná SAP HANA.
   * V případě MDC by měl klíč ukazovat na port SQL **názvový server**. V případě SDC by měl odkazovat na port SQL **INDEXSERVER**
@@ -89,7 +91,7 @@ Vytvoření pravidla pomocí prostředí PowerShell:
 
 Možnosti připojení zahrnují následující výhody a nevýhody:
 
-**Možnost** | **Výhody** | **Nevýhody**
+**Nastavení** | **Výhody** | **Nevýhody**
 --- | --- | ---
 Povoluje rozsahy IP adres. | Žádné další náklady | Složitá Správa, protože se rozsahy IP adres v průběhu času mění <br/><br/> Poskytuje přístup k celé službě Azure, ne jen Azure Storage
 Použití značek služby NSG | Jednodušší Správa jako změny rozsahu se sloučí automaticky. <br/><br/> Žádné další náklady <br/><br/> | Dá se použít jenom s skupin zabezpečení sítě <br/><br/> Poskytuje přístup k celé službě.

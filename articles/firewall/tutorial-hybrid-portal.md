@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 7da5e6fa3c977d309ad028cb446cd411a9d4fbaf
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 5ba9bb723ab7b052440eea2ac509692200b80f6e
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298954"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84750701"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>Kurz: nasazení a konfigurace Azure Firewall v hybridní síti pomocí Azure Portal
 
@@ -54,7 +54,7 @@ Hybridní síť používá model architektury hvězdicové a hvězdicové ke sm�
    Trasy k virtuálním sítím připojeným bránou nebo místním sítím se navíc automaticky rozšíří do směrovacích tabulek pro partnerské virtuální sítě s použitím přenosu brány. Další informace najdete v tématu [Konfigurace přenosu brány VPN pro partnerský vztah virtuálních sítí](../vpn-gateway/vpn-gateway-peering-gateway-transit.md).
 
 - Nastavte **useremotegateways nastavený** při partnerské virtuální síti s rozbočovačem VNet-paprsek. Pokud je nastavená taky **useremotegateways nastavený** a **AllowGatewayTransit** ve vzdáleném partnerském vztahu, virtuální síť paprsků používá pro přenos brány vzdálenou virtuální síť.
-- Chcete-li směrovat přenos podsítě paprsků přes bránu firewall centra, budete potřebovat uživatelem definovanou trasu (UDR), která odkazuje na bránu firewall s možností **šíření trasy brány virtuální sítě** zakázané. Možnost zakázat **šíření tras brány virtuální sítě** zabraňuje distribuci tras do podsítí paprsků. Tím se zabrání tomu, aby se naučily trasy z konfliktu s vaším UDR.
+- Chcete-li směrovat přenos podsítě paprsků přes bránu firewall centra, můžete použít trasu definovanou uživatelem (UDR), která odkazuje na bránu firewall s možností **šíření tras brány virtuální sítě** zakázané. Možnost zakázat **šíření tras brány virtuální sítě** zabraňuje distribuci tras do podsítí paprsků. Tím se zabrání tomu, aby se naučily trasy z konfliktu s vaším UDR. Pokud chcete zajistit, aby **šíření tras brány virtuální sítě** bylo povolené, nezapomeňte v bráně firewall definovat konkrétní trasy pro přepsání těch, které jsou publikované z místního počítače přes protokol BGP.
 - Nakonfigurujte UDR v podsíti brány centra, která odkazuje na IP adresu brány firewall jako na další segment směrování sítí paprsků. V Azure Firewall podsíti se nevyžadují žádné UDR, protože se učí trasy od protokolu BGP.
 
 Postup vytvoření těchto tras najdete v části [Vytvoření pravidel](#create-the-routes) v tomto kurzu.

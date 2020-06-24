@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: tracking-python
-ms.openlocfilehash: 3075ece58b44caa2077855c7ba8fcd9d949c336b
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 12af4c57fd906d687eedfe7c865d36abaa0da18e
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84610878"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85209143"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>Výukový model pro rozpoznávání formulářů s popisky pomocí REST API a Pythonu
 
@@ -50,12 +50,12 @@ Aby bylo možné vytvořit model pomocí popisků dat, budete potřebovat násle
 
 Všechny tyto soubory by měly zabírat stejnou podsložku a musí být v následujícím formátu:
 
-* input_file1. PDF 
-* input_file1. PDF. OCR. JSON
-* input_file1. PDF. labels. JSON 
-* input_file2. PDF 
-* input_file2. PDF. OCR. JSON
-* input_file2. PDF. labels. JSON
+* input_file1.pdf 
+* input_file1.pdf.ocr.jsna
+* input_file1.pdf.labels.jsna 
+* input_file2.pdf 
+* input_file2.pdf.ocr.jsna
+* input_file2.pdf.labels.jsna
 * ...
 
 > [!TIP]
@@ -65,8 +65,8 @@ Všechny tyto soubory by měly zabírat stejnou podsložku a musí být v násle
 
 Chcete-li, aby služba mohla zvážit odpovídající vstupní soubory pro školení s označením, potřebujete soubory výsledků OCR. Chcete-li získat výsledky OCR pro daný zdrojový formulář, postupujte podle následujících kroků:
 
-1. Zavolejte rozhraní API **[analyzovat rozložení](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync)** v kontejneru čtení rozložení se vstupním souborem jako součást textu žádosti. Uloží ID nalezené v hlavičce **operace – umístění** odpovědi.
-1. Pomocí ID operace z předchozího kroku zavolejte rozhraní API **[výsledků získat analýzu rozložení](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeLayoutResult)** .
+1. Zavolejte rozhraní API **[analyzovat rozložení](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeLayoutAsync)** v kontejneru čtení rozložení se vstupním souborem jako součást textu žádosti. Uloží ID nalezené v hlavičce **operace – umístění** odpovědi.
+1. Pomocí ID operace z předchozího kroku zavolejte rozhraní API **[výsledků získat analýzu rozložení](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/GetAnalyzeLayoutResult)** .
 1. Získejte odpověď a zapište obsah do souboru. Pro každý zdrojový formulář by měl mít odpovídající soubor optického rozpoznávání znaků připojený původní název souboru `.ocr.json` . Výstup ve formátu JSON OCR by měl mít následující formát. Úplný příklad najdete v [ukázkovém souboru OCR](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/Invoice_1.pdf.ocr.json) . 
 
     ```json
@@ -197,7 +197,7 @@ Pro každý zdrojový formulář by měl mít odpovídající soubor popisku př
 
 ## <a name="train-a-model-using-labeled-data"></a>Výuka modelu pomocí popiskových dat
 
-Chcete-li vytvořit model s označením dat, zavolejte rozhraní API **[vlastního modelu vlaku](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)** spuštěním následujícího kódu Pythonu. Před spuštěním kódu proveďte tyto změny:
+Chcete-li vytvořit model s označením dat, zavolejte rozhraní API **[vlastního modelu vlaku](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/TrainCustomModelAsync)** spuštěním následujícího kódu Pythonu. Před spuštěním kódu proveďte tyto změny:
 
 1. Nahraďte `<Endpoint>` adresou URL koncového bodu pro prostředek pro rozpoznávání formulářů.
 1. Nahraďte `<SAS URL>` adresou URL sdíleného přístupového podpisu (SAS) kontejneru úložiště objektů BLOB v Azure. Pokud chcete načíst adresu URL SAS, otevřete Průzkumník služby Microsoft Azure Storage, klikněte pravým tlačítkem na svůj kontejner a vyberte **získat sdílený přístupový podpis**. Ujistěte se, že jsou zaškrtnutá oprávnění **číst** a **Zobrazit seznam** , a klikněte na **vytvořit**. Pak zkopírujte hodnotu v části **Adresa URL** . Měla by mít tvar: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` .
@@ -211,7 +211,7 @@ from requests import get, post
 
 # Endpoint URL
 endpoint = r"<Endpoint>"
-post_url = endpoint + r"/formrecognizer/v2.0-preview/custom/models"
+post_url = endpoint + r"/formrecognizer/v2.0/custom/models"
 source = r"<SAS URL>"
 prefix = "<Blob folder name>"
 includeSubFolders = False
@@ -561,4 +561,4 @@ Chápeme, že tento scénář je pro naše zákazníky nezbytný a pracujeme na 
 V tomto rychlém startu jste zjistili, jak pomocí nástroje pro rozpoznávání formulářů REST API s Pythonem naučit model s ručně označenými daty. Dále si přečtěte referenční dokumentaci rozhraní API a prozkoumejte rozhraní API pro rozpoznávání formulářů podrobněji.
 
 > [!div class="nextstepaction"]
-> [Referenční dokumentace REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync)
+> [Referenční dokumentace REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeWithCustomForm)

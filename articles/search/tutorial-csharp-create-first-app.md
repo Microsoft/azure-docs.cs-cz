@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 02/10/2020
-ms.openlocfilehash: a105766b713ce44d800391e2e943f2ac864fa0df
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.date: 06/20/2020
+ms.openlocfilehash: 4c96dfa078ec12e0681574629276c48af2c1760d
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780619"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261456"
 ---
 # <a name="tutorial-create-your-first-search-app-using-the-net-sdk"></a>Kurz: Vytvoření první aplikace pro vyhledávání pomocí sady .NET SDK
 
@@ -81,7 +81,7 @@ Pokud chcete tento projekt vytvořit úplně od začátku, a proto vám pomůže
 
 V této ukázce používáme veřejně dostupná data o hotelu. Tato data jsou libovolná kolekce 50 názvů a popisů fiktivního hotelu vytvořená výhradně pro účely poskytování ukázkových dat. Aby bylo možné získat přístup k těmto datům, je nutné zadat název a klíč pro něj.
 
-1. Otevřete soubor appSettings. JSON v novém projektu a nahraďte výchozí řádky následujícím názvem a klíčem. Zde uvedený klíč rozhraní API není příkladem klíče, je to _přesně_ klíč, který potřebujete pro přístup k datům hotelu. Soubor appSettings. JSON by teď měl vypadat nějak takto.
+1. Otevřete appsettings.jsv souboru v novém projektu a nahraďte výchozí řádky následujícím názvem a klíčem. Zde uvedený klíč rozhraní API není příkladem klíče, je to _přesně_ klíč, který potřebujete pro přístup k datům hotelu. Váš appsettings.jsv souboru by teď měl vypadat takto.
 
     ```cs
     {
@@ -242,7 +242,7 @@ Modely (třídy jazyka C#) se používají ke sdělování dat mezi klientem (zo
     }
     ```
 
-    Tato třída obsahuje vstup uživatele (**prohledávanýtext**) a výstup hledání (**resultList**). Typ výstupu je kritický, **DocumentSearchResult&lt;Hotel&gt;**, protože tento typ přesně odpovídá výsledkům hledání a musíme tento odkaz předat do zobrazení.
+    Tato třída obsahuje vstup uživatele (**prohledávanýtext**) a výstup hledání (**resultList**). Typ výstupu je kritický, **DocumentSearchResult &lt; Hotel &gt; **, protože tento typ přesně odpovídá výsledkům hledání a musíme tento odkaz předat do zobrazení.
 
 
 
@@ -252,7 +252,7 @@ Projekt, který jste vytvořili, bude ve výchozím nastavení vytvářet množs
 
 Odstraňte obsah souboru index. cshtml v celém rozsahu a znovu sestavte soubor v následujících krocích.
 
-1. V zobrazení používáme dvě malé obrázky. Můžete použít vlastní nebo zkopírovat obrázky z projektu GitHubu: Azure-logo. png a Search. png. Tyto dva obrázky by měly být umístěny ve složce **wwwroot/images** .
+1. V zobrazení používáme dvě malé obrázky. Můžete použít vlastní nebo zkopírovat image z projektu GitHub: azure-logo.png a search.png. Tyto dva obrázky by měly být umístěny ve složce **wwwroot/images** .
 
 2. První řádek indexu. cshtml by měl odkazovat na model, který budeme používat ke sdělování dat mezi klientem (zobrazení) a serverem (kontroler), což je **SearchData** model, který jsme vytvořili. Přidejte tento řádek do souboru index. cshtml.
 
@@ -502,7 +502,7 @@ Volání služby Azure Kognitivní hledání je zapouzdřeno v naší metodě **
 
     V této metodě Nejdřív zajistěte zahájení naší konfigurace Azure a pak nastavíme některé parametry hledání. Názvy polí v parametru **Select** odpovídají přesně názvům vlastností v třídě **hotelu** . Je možné ponechat parametr **Select** a v takovém případě jsou vráceny všechny vlastnosti. Nastavení žádného parametru **Select** je neefektivní, pokud se zajímá pouze podmnožina dat. Když zadáte vlastnosti, které vás zajímají, vrátí se jenom tyto vlastnosti.
 
-    Asynchronní volání vyhledávání (**model. resultList = await _indexClient. Documents. SearchAsync&lt;hotelu&gt;(model. prohledávanýtext, Parameters);**) je popis tohoto kurzu a aplikace. Třída **DocumentSearchResult** je zajímavá a dobrý nápad (Pokud je aplikace spuštěná), je nastavit zarážku a použít ladicí program k prohlédnutí obsahu **model. resultList**. Měli byste zjistit, že je intuitivní a poskytuje vám data, která jste si vyžádali, a ne mnohem jinak.
+    Asynchronní volání vyhledávání (**model. resultList = await _indexClient.Documents. SearchAsync &lt; Hotel &gt; (model. prohledávanýtext, Parameters);**) je to, co se týká tohoto kurzu a aplikace. Třída **DocumentSearchResult** je zajímavá a dobrý nápad (Pokud je aplikace spuštěná), je nastavit zarážku a použít ladicí program k prohlédnutí obsahu **model. resultList**. Měli byste zjistit, že je intuitivní a poskytuje vám data, která jste si vyžádali, a ne mnohem jinak.
 
 Nyní pro Moment pravdy.
 

@@ -12,14 +12,14 @@ ms.subservice: nat
 ms.devlang: na
 ms.topic: tutorial
 ms.workload: infrastructure-services
-ms.date: 02/18/2020
+ms.date: 06/11/2020
 ms.author: allensu
-ms.openlocfilehash: b1ca26a63c910861d333f707d13946c5e046f599
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 717a9e9d3cc1dec350d0b4ace54687590f741768
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84340976"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737287"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-azure-cli-and-test-the-nat-service"></a>Kurz: Vytvoření brány NAT pomocí Azure CLI a testování služby NAT
 
@@ -43,6 +43,7 @@ Následující příklad vytvoří skupinu prostředků s názvem **myResourceGr
   az group create \
     --name myResourceGroupNAT \
     --location eastus2
+    
 ```
 
 ## <a name="create-the-nat-gateway"></a>Vytvoření brány NAT
@@ -56,6 +57,7 @@ Pro přístup k veřejnému Internetu potřebujete pro bránu NAT jednu nebo ví
   --resource-group myResourceGroupNAT \
   --name myPublicIPsource \
   --sku standard
+  
 ```
 
 ### <a name="create-a-public-ip-prefix"></a>Vytvoření předpony veřejné IP adresy
@@ -67,6 +69,7 @@ Pomocí brány NAT můžete použít jeden nebo více prostředků veřejné IP 
   --resource-group myResourceGroupNAT \
   --name myPublicIPprefixsource \
   --length 31
+  
 ```
 
 ### <a name="create-a-nat-gateway-resource"></a>Vytvoření prostředku brány NAT
@@ -84,6 +87,7 @@ Vytvořte globální bránu Azure NAT pomocí [AZ Network NAT Gateway Create](ht
     --public-ip-addresses myPublicIPsource \
     --public-ip-prefixes myPublicIPprefixsource \
     --idle-timeout 10       
+    
   ```
 
 V tomto okamžiku je brána NAT funkční a všechny, které chybí, je konfigurace, které podsítě virtuální sítě by měly používat.
@@ -101,11 +105,11 @@ Vytvořte virtuální síť s názvem **myVnetsource** s podsítí s názvem **m
 ```azurecli-interactive
   az network vnet create \
     --resource-group myResourceGroupNAT \
-    --location eastus2 \
     --name myVnetsource \
     --address-prefix 192.168.0.0/16 \
     --subnet-name mySubnetsource \
     --subnet-prefix 192.168.0.0/24
+    
 ```
 
 ### <a name="configure-nat-service-for-source-subnet"></a>Konfigurace služby NAT pro zdrojovou podsíť
@@ -118,6 +122,7 @@ Nakonfigurujte zdrojovou podsíť **mySubnetsource** ve službě Virtual Network
     --vnet-name myVnetsource \
     --name mySubnetsource \
     --nat-gateway myNATgateway
+    
 ```
 
 Veškerý odchozí provoz do internetových cílů teď používá službu překladu adres (NAT).  Není nutné konfigurovat UDR.
@@ -135,6 +140,7 @@ Vytvoříme veřejnou IP adresu, která se použije pro přístup ke zdrojovému
     --resource-group myResourceGroupNAT \
     --name myPublicIPsourceVM \
     --sku standard
+    
 ```
 
 ### <a name="create-an-nsg-for-source-vm"></a>Vytvoření NSG pro zdrojový virtuální počítač
@@ -145,6 +151,7 @@ Vzhledem k tomu, že standardní veřejné IP adresy jsou zabezpečené ve vých
   az network nsg create \
     --resource-group myResourceGroupNAT \
     --name myNSGsource 
+    
 ```
 
 ### <a name="expose-ssh-endpoint-on-source-vm"></a>Zveřejnit koncový bod SSH na zdrojovém virtuálním počítači
@@ -162,6 +169,7 @@ Vytvoříme pravidlo v NSG pro přístup SSH ke zdrojovému virtuálnímu počí
     --protocol tcp \
     --direction inbound \
     --destination-port-ranges 22
+    
 ```
 
 ### <a name="create-nic-for-source-vm"></a>Vytvořit síťovou kartu pro zdrojový virtuální počítač
@@ -176,6 +184,7 @@ Vytvořte síťové rozhraní pomocí [AZ Network nic Create](/cli/azure/network
     --subnet mySubnetsource \
     --public-ip-address myPublicIPSourceVM \
     --network-security-group myNSGsource
+    
 ```
 
 ### <a name="create-a-source-vm"></a>Vytvoření zdrojového virtuálního počítače
@@ -190,6 +199,7 @@ Vytvořte virtuální počítač pomocí [AZ VM Create](/cli/azure/vm#az-vm-crea
     --image UbuntuLTS \
     --generate-ssh-keys \
     --no-wait
+    
 ```
 
 I když se příkaz vrátí hned, může trvat několik minut, než se virtuální počítač nasadí.
@@ -207,11 +217,11 @@ Vytvořte virtuální síť s názvem **myVnetdestination** s podsítí s názve
 ```azurecli-interactive
   az network vnet create \
     --resource-group myResourceGroupNAT \
-    --location westus \
     --name myVnetdestination \
     --address-prefix 192.168.0.0/16 \
     --subnet-name mySubnetdestination \
     --subnet-prefix 192.168.0.0/24
+    
 ```
 
 ### <a name="create-public-ip-for-destination-vm"></a>Vytvoření veřejné IP adresy pro cílový virtuální počítač
@@ -222,8 +232,8 @@ Vytvoříme veřejnou IP adresu, která se použije pro přístup ke zdrojovému
   az network public-ip create \
   --resource-group myResourceGroupNAT \
   --name myPublicIPdestinationVM \
-  --sku standard \
-  --location westus
+  --sku standard
+  
 ```
 
 ### <a name="create-an-nsg-for-destination-vm"></a>Vytvoření NSG pro cílový virtuální počítač
@@ -233,8 +243,8 @@ Standardní veřejné IP adresy jsou "zabezpečené ve výchozím nastavení", b
 ```azurecli-interactive
     az network nsg create \
     --resource-group myResourceGroupNAT \
-    --name myNSGdestination \
-    --location westus
+    --name myNSGdestination
+    
 ```
 
 ### <a name="expose-ssh-endpoint-on-destination-vm"></a>Vystavení koncového bodu SSH na cílovém virtuálním počítači
@@ -252,6 +262,7 @@ Vytvoříme pravidlo v NSG pro přístup SSH k cílovému virtuálnímu počíta
     --protocol tcp \
     --direction inbound \
     --destination-port-ranges 22
+    
 ```
 
 ### <a name="expose-http-endpoint-on-destination-vm"></a>Vystavit koncový bod HTTP na cílovém virtuálním počítači
@@ -269,6 +280,7 @@ Vytvoříme pravidlo v NSG pro přístup HTTP k cílovému virtuálnímu počít
     --protocol tcp \
     --direction inbound \
     --destination-port-ranges 80
+    
 ```
 
 ### <a name="create-nic-for-destination-vm"></a>Vytvořit síťovou kartu pro cílový virtuální počítač
@@ -282,8 +294,8 @@ Vytvořte síťové rozhraní pomocí [AZ Network nic Create](/cli/azure/network
     --vnet-name myVnetdestination \
     --subnet mySubnetdestination \
     --public-ip-address myPublicIPdestinationVM \
-    --network-security-group myNSGdestination \
-    --location westus
+    --network-security-group myNSGdestination
+    
 ```
 
 ### <a name="create-a-destination-vm"></a>Vytvoření cílového virtuálního počítače
@@ -297,8 +309,8 @@ Vytvořte virtuální počítač pomocí [AZ VM Create](/cli/azure/vm#az-vm-crea
     --nics myNicdestination \
     --image UbuntuLTS \
     --generate-ssh-keys \
-    --no-wait \
-    --location westus
+    --no-wait
+    
 ```
 I když se příkaz vrátí hned, může trvat několik minut, než se virtuální počítač nasadí.
 
@@ -312,6 +324,7 @@ Nejdřív musíme zjistit IP adresu cílového virtuálního počítače.  Pokud
     --name myPublicIPdestinationVM \
     --query [ipAddress] \
     --output tsv
+    
 ``` 
 
 >[!IMPORTANT]
@@ -328,16 +341,14 @@ ssh <ip-address-destination>
 Po přihlášení zkopírujte a vložte následující příkazy.  
 
 ```bash
-sudo apt-get -y update && \
-sudo apt-get -y upgrade && \
-sudo apt-get -y dist-upgrade && \
-sudo apt-get -y autoremove && \
-sudo apt-get -y autoclean && \
-sudo apt-get -y install nginx && \
+sudo apt -y update && \
+sudo apt -y upgrade && \
+sudo apt -y install nginx && \
 sudo ln -sf /dev/null /var/log/nginx/access.log && \
 sudo touch /var/www/html/index.html && \
 sudo rm /var/www/html/index.nginx-debian.html && \
 sudo dd if=/dev/zero of=/var/www/html/100k bs=1024 count=100
+
 ```
 
 Tyto příkazy aktualizují váš virtuální počítač, nainstaluje Nginx a vytvoří soubor 100-kilobajtů. Tento soubor se načte ze zdrojového virtuálního počítače pomocí služby NAT.
@@ -354,6 +365,7 @@ Nejdřív musíme zjistit IP adresu zdrojového virtuálního počítače.  Poku
     --name myPublicIPsourceVM \
     --query [ipAddress] \
     --output tsv
+    
 ``` 
 
 >[!IMPORTANT]
@@ -370,12 +382,9 @@ ssh <ip-address-source>
 Zkopírujte a vložte následující příkazy, které se připraví na testování služby překladu adres (NAT).
 
 ```bash
-sudo apt-get -y update && \
-sudo apt-get -y upgrade && \
-sudo apt-get -y dist-upgrade && \
-sudo apt-get -y autoremove && \
-sudo apt-get -y autoclean && \
-sudo apt-get install -y nload golang && \
+sudo apt -y update && \
+sudo apt -y upgrade && \
+sudo apt install -y nload golang && \
 echo 'export GOPATH=${HOME}/go' >> .bashrc && \
 echo 'export PATH=${PATH}:${GOPATH}/bin' >> .bashrc && \
 . ~/.bashrc &&
@@ -411,6 +420,7 @@ Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků a všech
 
 ```azurecli-interactive 
   az group delete --name myResourceGroupNAT
+  
 ```
 
 ## <a name="next-steps"></a>Další kroky

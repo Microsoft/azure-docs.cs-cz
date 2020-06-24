@@ -1,25 +1,25 @@
 ---
-title: 'Kurz: aplikace Node. js s MongoDB'
-description: Naučte se, jak v Azure získat aplikaci Node. js s připojením k databázi MongoDB v Azure (Cosmos DB). STŘEDNÍ. js se používá v tomto kurzu.
+title: 'Kurz: Node.js aplikace pomocí MongoDB'
+description: Naučte se, jak získat aplikaci Node.js v Azure pracovat s připojením k databázi MongoDB v Azure (Cosmos DB). V tomto kurzu se používá MEAN.js.
 ms.assetid: 0b4d7d0e-e984-49a1-a57a-3c0caa955f0e
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 05/04/2017
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 5dd99d9aa7e63066ac4801282e548f2995e57e67
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3a33065674f1acf43e276c5dc9d2a15cca52c9ef
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82085586"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85208055"
 ---
-# <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>Kurz: Vytvoření aplikace Node. js a MongoDB v Azure
+# <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>Kurz: Vytvoření aplikace Node.js a MongoDB v Azure
 
 > [!NOTE]
-> Tento článek nasadí aplikaci do služby App Service ve Windows. Pokud chcete nasadit nástroj na App Service v systému _Linux_, přečtěte si téma [Vytvoření aplikace Node. js a MongoDB v Azure App Service na platformě Linux](./containers/tutorial-nodejs-mongodb-app.md).
+> Tento článek nasadí aplikaci do služby App Service ve Windows. Pokud chcete nasadit nástroj na App Service v systému _Linux_, přečtěte si téma [vytvoření aplikace v Node.js a MongoDB v Azure App Service v systému Linux](./containers/tutorial-nodejs-mongodb-app.md).
 >
 
-Azure App Service  je vysoce škálovatelná služba s automatickými opravami pro hostování webů. V tomto kurzu se dozvíte, jak vytvořit aplikaci Node. js v App Service a připojit ji k databázi MongoDB. Po dokončení budete mít ve službě [Azure App Service](overview.md) spuštěnou aplikaci MEAN (MongoDB, Express, AngularJS a Node.js). Pro zjednodušení používá ukázková [webovou architekturu MEAN.js](https://meanjs.org/).
+Azure App Service  je vysoce škálovatelná služba s automatickými opravami pro hostování webů. V tomto kurzu se dozvíte, jak vytvořit aplikaci Node.js v App Service a připojit ji k databázi MongoDB. Po dokončení budete mít ve službě [Azure App Service](overview.md) spuštěnou aplikaci MEAN (MongoDB, Express, AngularJS a Node.js). Pro zjednodušení používá ukázková [webovou architekturu MEAN.js](https://meanjs.org/).
 
 ![Aplikace MEAN.js spuštěná v rámci služby Azure App Service](./media/app-service-web-tutorial-nodejs-mongodb-app/meanjs-in-azure.png)
 
@@ -89,9 +89,9 @@ Po úplném načtení aplikace se zobrazí zpráva podobná této:
 
 <pre>
 --
-Průměrná. JS – vývojové prostředí
+MEAN.JS – vývojové prostředí
 
-Prostředí: vývojový server: http://0.0.0.0:3000 databáze: verze aplikace MongoDB://localhost/Mean-dev: 0.5.0 střední hodnota. Verze JS: 0.5.0--
+Prostředí: vývojový server: http://0.0.0.0:3000 databáze: MongoDB://localhost/Mean-dev verze aplikace: 0.5.0 MEAN.JS verze: 0.5.0--
 </pre>
 
 V prohlížeči přejděte na `http://localhost:3000`. V horní nabídce klikněte na **Zaregistrovat se** a vytvořte testovacího uživatele. 
@@ -127,7 +127,7 @@ Pro MongoDB tento kurz používá službu [Azure Cosmos DB](/azure/documentdb/).
 
 V Cloud Shell vytvořte účet Cosmos DB pomocí [`az cosmosdb create`](/cli/azure/cosmosdb?view=azure-cli-latest#az-cosmosdb-create) příkazu.
 
-V následujícím příkazu nahraďte zástupný text * \<cosmosdb_name>* jedinečným názvem Cosmos DB. Tento název se používá jako součást koncového bodu služby Cosmos DB (`https://<cosmosdb_name>.documents.azure.com/`), takže musí být jedinečný v rámci všech účtů služby Cosmos DB v Azure. Název smí obsahovat jen malá písmena, číslice a znak spojovníku (-) a musí mít délku 3 až 50 znaků.
+V následujícím příkazu nahraďte zástupný symbol jedinečným názvem Cosmos DB *\<cosmosdb_name>* . Tento název se používá jako součást koncového bodu služby Cosmos DB (`https://<cosmosdb_name>.documents.azure.com/`), takže musí být jedinečný v rámci všech účtů služby Cosmos DB v Azure. Název smí obsahovat jen malá písmena, číslice a znak spojovníku (-) a musí mít délku 3 až 50 znaků.
 
 ```azurecli-interactive
 az cosmosdb create --name <cosmosdb_name> --resource-group myResourceGroup --kind MongoDB
@@ -183,7 +183,7 @@ Zkopírujte hodnotu `primaryMasterKey`. Tyto informace budete potřebovat v dal
 
 V místním úložišti MEAN.js ve složce _config/env/_ vytvořte soubor _local-production.js_. Standardně soubor _.gitignore_ obsahuje konfiguraci, která tento soubor uchovává mimo úložiště. 
 
-Zkopírujte do něj následující kód. Nezapomeňte nahradit tyto dvě * \<cosmosdb_name* zástupné symboly>názvem databáze Cosmos DB a nahradit zástupný symbol * \<primary_master_key>* klíčem, který jste zkopírovali v předchozím kroku.
+Zkopírujte do něj následující kód. Nezapomeňte nahradit tyto dva *\<cosmosdb_name>* zástupné symboly názvem vaší Cosmos DB databáze a zástupný symbol nahraďte *\<primary_master_key>* klíčem, který jste zkopírovali v předchozím kroku.
 
 ```javascript
 module.exports = {
@@ -193,7 +193,7 @@ module.exports = {
 };
 ```
 
-Možnost je požadována z důvodu [požadavků na připojovací řetězec.](../cosmos-db/connect-mongodb-account.md#connection-string-requirements) `ssl=true` 
+`ssl=true`Možnost je požadována z důvodu [požadavků na připojovací řetězec](../cosmos-db/connect-mongodb-account.md#connection-string-requirements). 
 
 Uložte provedené změny.
 
@@ -222,9 +222,9 @@ Po načtení aplikace se ujistěte, že je spuštěná v produkčním prostřed�
 
 <pre>
 --
-Průměrná. JS
+MEAN.JS
 
-Prostředí: provozní server: http://0.0.0.0:8443 databáze: MongoDB://&lt;cosmosdb_name&gt;:&lt;primary_master_key&gt;@&lt;cosmosdb_name&gt;. Documents.Azure.com:10250/Mean?SSL=true&sslverifycertificate = false verze aplikace: 0.5.0 střední hodnota. Verze JS: 0.5.0
+Prostředí: provozní server: http://0.0.0.0:8443 databáze: MongoDB:// &lt; cosmosdb_name &gt; : &lt; primary_master_key &gt; @ &lt; cosmosdb_name &gt; . Documents.Azure.com:10250/Mean?SSL=true&sslverifycertificate = false verze aplikace: 0.5.0 MEAN.JS verze: 0.5.0
 </pre>
 
 V prohlížeči přejděte na `http://localhost:8443`. V horní nabídce klikněte na **Zaregistrovat se** a vytvořte testovacího uživatele. Pokud úspěšně vytvoříte uživatele a přihlásíte se, znamená to, že vaše aplikace zapisuje data do databáze Cosmos DB v Azure. 
@@ -254,7 +254,7 @@ Ve výchozím nastavení projekt MEAN.js uchovává soubor _config/env/local-pro
 
 Nastavení aplikace nastavíte pomocí [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) příkazu v Cloud Shell. 
 
-Následující příklad nakonfiguruje nastavení `MONGODB_URI` aplikace v aplikaci Azure. Nahraďte zástupné symboly * \<APP_NAME>*, * \<cosmosdb_name>* a * \<primary_master_key>* .
+Následující příklad nakonfiguruje `MONGODB_URI` nastavení aplikace v aplikaci Azure. Nahraďte *\<app_name>* *\<cosmosdb_name>* *\<primary_master_key>* zástupné symboly, a.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings MONGODB_URI="mongodb://<cosmosdb_name>:<primary_master_key>@<cosmosdb_name>.documents.azure.com:10250/mean?ssl=true"
@@ -318,7 +318,7 @@ Pokud budete úspěšní a aplikace se automaticky přihlásí k vytvořenému u
 
 Vyberte **Admin > Manage Articles** (Správa > Správa článků) a přidejte několik článků. 
 
-**Blahopřejeme!** Používáte aplikaci Node.js řízenou daty ve službě Azure App Service.
+**Gratulujeme!** Používáte aplikaci Node.js řízenou daty ve službě Azure App Service.
 
 ## <a name="update-data-model-and-redeploy"></a>Aktualizace datového modelu a opětovné nasazení
 
@@ -371,7 +371,7 @@ Otevřete soubor _modules/articles/client/views/view-article.client.view.html_.
 
 Přímo nad uzavírací značku `</section>` přidejte následující řádek, který spolu se zbývajícími daty článku zobrazí i `comment`:
 
-```HTML
+```html
 <p class="lead" ng-bind="vm.article.comment"></p>
 ```
 
@@ -379,7 +379,7 @@ Otevřete soubor _modules/articles/client/views/list-articles.client.view.html_.
 
 Přímo nad uzavírací značku `</a>` přidejte následující řádek, který spolu se zbývajícími daty článku zobrazí i `comment`:
 
-```HTML
+```html
 <p class="list-group-item-text" ng-bind="article.comment"></p>
 ```
 
@@ -387,7 +387,7 @@ Otevřete soubor _modules/articles/client/views/admin/list-articles.client.view.
 
 Uvnitř prvku `<div class="list-group">` a přímo nad uzavírací značku `</a>` přidejte následující řádek, který spolu se zbývajícími daty článku zobrazí i `comment`:
 
-```HTML
+```html
 <p class="list-group-item-text" data-ng-bind="article.comment"></p>
 ```
 
@@ -395,7 +395,7 @@ Otevřete soubor _modules/articles/client/views/admin/form-article.client.view.h
 
 Vyhledejte prvek `<div class="form-group">` obsahující tlačítko pro odeslání, který vypadá přibližně takto:
 
-```HTML
+```html
 <div class="form-group">
   <button type="submit" class="btn btn-default">{{vm.article._id ? 'Update' : 'Create'}}</button>
 </div>
@@ -403,7 +403,7 @@ Vyhledejte prvek `<div class="form-group">` obsahující tlačítko pro odeslán
 
 Přímo nad tuto značku přidejte další prvek `<div class="form-group">`, který lidem umožní upravit pole `comment`. Váš nový prvek by měl vypadat přibližně takto:
 
-```HTML
+```html
 <div class="form-group">
   <label class="control-label" for="comment">Comment</label>
   <textarea name="comment" data-ng-model="vm.article.comment" id="comment" class="form-control" cols="30" rows="10" placeholder="Comment"></textarea>
@@ -446,7 +446,7 @@ git commit -am "added article comment"
 git push azure master
 ```
 
-`git push` Až to bude hotové, přejděte do aplikace Azure a vyzkoušejte nové funkce.
+Až `git push` to bude hotové, přejděte do aplikace Azure a vyzkoušejte nové funkce.
 
 ![Změny modelu a databáze publikované v Azure](media/app-service-web-tutorial-nodejs-mongodb-app/added-comment-field-published.png)
 
@@ -456,7 +456,7 @@ Pokud jste dříve přidali články, můžete je stále zobrazit. Stávající 
 
 Zatímco je vaše aplikace Node.js spuštěná v Azure App Service, můžete směrovat protokoly konzoly do svého terminálu. Tímto způsobem můžete získat stejné diagnostické zprávy, které vám pomůžou ladit chyby aplikace.
 
-Chcete-li spustit streamování protokolů [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-tail) , použijte příkaz v Cloud Shell.
+Chcete-li spustit streamování protokolů, použijte [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-tail) příkaz v Cloud Shell.
 
 ```azurecli-interactive
 az webapp log tail --name <app_name> --resource-group myResourceGroup
@@ -497,3 +497,8 @@ V dalším kurzu se dozvíte, jak namapovat na aplikaci vlastní název DNS.
 
 > [!div class="nextstepaction"] 
 > [Mapování existujícího vlastního názvu DNS na Azure App Service](app-service-web-tutorial-custom-domain.md)
+
+Další zdroje informací:
+
+> [!div class="nextstepaction"]
+> [Konfigurace aplikace Node.js](configure-language-nodejs.md)

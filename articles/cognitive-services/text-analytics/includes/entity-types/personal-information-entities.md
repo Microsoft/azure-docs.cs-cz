@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/30/2020
 ms.author: aahi
-ms.openlocfilehash: 637c2bb1bc37d26dcdf1a169b2f5d20766d0a27f
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: cd17bf6c97cb89984bf407552330fbe9bec36e3f
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84902650"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85292119"
 ---
 > [!NOTE]
 > Ke zjištění `PHI` použijte `domain=phi` parametr a verzi modelu `2020-04-01` nebo novější.
@@ -22,36 +22,36 @@ ms.locfileid: "84902650"
  
 Při odesílání požadavků do koncového bodu se vrátí následující kategorie entit `/v3.1-preview.1/entities/recognition/pii` .
 
-| Kategorie   | Subcategory | Popis                          | Spouští se verze modelu. | Poznámky |
+| Kategorie   | Subcategory | Description                          | Spouští se verze modelu. | Poznámky |
 |------------|-------------|--------------------------------------|------------------------|---|
-| Person (Osoba)     | Není k dispozici         | Jména lidí.  | `2019-10-01`  | Také vrácen s `domain=phi` . |
-| PersonType | Není k dispozici         | Typy úloh nebo role držené osobou. | `2020-02-01` | |
-| PhoneNumber | Není k dispozici | Telefonní čísla (jenom USA a telefonní čísla EU). | `2019-10-01` | Také vrácen s`domain=phi` |
-|Organizace  | Není k dispozici | Společnosti, politické skupiny, hudební pásma, sportovní klub, státní orgány a veřejné organizace.  | `2019-10-01` | Státní příslušníky a náboženství nejsou zahrnuté do tohoto typu entity.  |
+| Person (Osoba)     | –         | Jména lidí.  | `2019-10-01`  | Také vrácen s `domain=phi` . |
+| PersonType | –         | Typy úloh nebo role držené osobou. | `2020-02-01` | |
+| PhoneNumber | – | Telefonní čísla (jenom USA a telefonní čísla EU). | `2019-10-01` | Také vrácen s`domain=phi` |
+|Organizace  | – | Společnosti, politické skupiny, hudební pásma, sportovní klub, státní orgány a veřejné organizace.  | `2019-10-01` | Státní příslušníky a náboženství nejsou zahrnuté do tohoto typu entity.  |
 |Organizace | Lékař | Lékařské společnosti a skupiny. | `2020-04-01` | Také vrácen s `domain=phi` . |
 |Organizace | Burzovní Exchange | Burzovní skupiny Exchange. | `2020-04-01` | Také vrácen s `domain=phi` . |
 | Organizace | Sport | Organizace související s sportem. | `2020-04-01` | Také vrácen s `domain=phi` . |
-| Adresa | Není k dispozici | Úplné poštovní adresy.  | `2020-04-01` | Také vrácen s `domain=phi` . |
-| Evropské unie GPS – souřadnice | Není k dispozici | Souřadnice GPS pro umístění v rámci Evropské unie.  | `2019-10-01` |  |
-| E-mail | Není k dispozici | E-mailové adresy. | `2019-10-01` | Také vrácen s `domain=phi` .   |
-| URL | Není k dispozici | Adresy URL webů. | `2019-10-01` | Také vrácen s `domain=phi` . |
-| IP adresa | Není k dispozici | Síťové IP adresy. | `2019-10-01` | |
-| DateTime | Není k dispozici | Data a denní doba. | `2019-10-01` |  | 
+| Adresa | – | Úplné poštovní adresy.  | `2020-04-01` | Také vrácen s `domain=phi` . |
+| Evropské unie GPS – souřadnice | – | Souřadnice GPS pro umístění v rámci Evropské unie.  | `2019-10-01` |  |
+| E-mail | – | E-mailové adresy. | `2019-10-01` | Také vrácen s `domain=phi` .   |
+| URL | – | Adresy URL webů. | `2019-10-01` | Také vrácen s `domain=phi` . |
+| IP adresa | – | Síťové IP adresy. | `2019-10-01` | |
+| DateTime | – | Data a denní doba. | `2019-10-01` |  | 
 | DateTime | Datum | Kalendářní data kalendáře | `2019-10-01` | Také vrácen s `domain=phi` . |
-| Množství | Není k dispozici | Čísla a číselná množství. | `2019-10-01` |  |
+| Množství | – | Čísla a číselná množství. | `2019-10-01` |  |
 | Množství | Věk | Ve věku. | `2019-10-01` | | |
-| Mezinárodní klasifikace nemocí (ICD – 9-CM) | Není k dispozici | Entity týkající se mezinárodní klasifikace nemocí, deváté revize.   | `2020-04-01` | |
-| Mezinárodní klasifikace nemocí (ICD – 10 – CM) | Není k dispozici | Entity týkající se mezinárodní klasifikace nemocí a desáté revize.    | `2020-04-01` | |
+| Mezinárodní klasifikace nemocí (ICD – 9-CM) | – | Entity týkající se mezinárodní klasifikace nemocí, deváté revize.   | `2020-04-01` | |
+| Mezinárodní klasifikace nemocí (ICD – 10 – CM) | – | Entity týkající se mezinárodní klasifikace nemocí a desáté revize.    | `2020-04-01` | |
 
 ## <a name="azure-information"></a>Informace o Azure
 
 Tato kategorie entit zahrnuje identifikovatelné informace Azure včetně ověřovacích informací a připojovacích řetězců. K dispozici počínaje verzí modelu `2019-10-01` . Nevráceno s `domain=phi` parametrem.
 
-| Subcategory                           | Popis                                                                 |
+| Subcategory                           | Description                                                                 |
 |---------------------------------------|-----------------------------------------------------------------------------|
 | Klíč ověření Azure DocumentDB             | Autorizační klíč pro server Azure DocumentDB                           |
 | Připojovací řetězec databáze Azure IAAS a připojovací řetězec SQL Azure | Připojovací řetězec pro databázi Azure Infrastructure as a Service (IaaS) a připojovací řetězec SQL. |
-| Připojovací řetězec SQL Azure           | Připojovací řetězec pro databázi SQL Azure.                                |
+| Připojovací řetězec SQL Azure           | Připojovací řetězec pro databázi v Azure SQL Database.                                |
 | Připojovací řetězec Azure IoT           | Připojovací řetězec pro Azure Internet věcí (IoT)                        |
 | Heslo pro nastavení publikování v Azure        | Heslo pro nastavení publikování v Azure                                        |
 | Připojovací řetězec Azure Redis Cache   | Připojovací řetězec pro službu Azure cache pro Redis.                             |

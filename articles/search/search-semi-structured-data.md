@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 02/28/2020
-ms.openlocfilehash: ce3b3839319de38020b968ff8db1ee6713b29c47
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/23/2020
+ms.openlocfilehash: 64cb864b50f44f70bb9ceccc9983641970116cc7
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78269981"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261439"
 ---
 # <a name="tutorial-index-json-blobs-from-azure-storage-using-rest"></a>Kurz: indexování objektů BLOB JSON z Azure Storage pomocí REST
 
@@ -27,7 +27,7 @@ V tomto kurzu se používá post a [rozhraní API REST pro vyhledávání](https
 > * Konfigurace a spuštění indexeru pro čtení kontejneru a extrakce vyhledávaného obsahu z úložiště objektů BLOB v Azure
 > * Prohledávání právě vytvořeného indexu
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -40,7 +40,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="download-files"></a>Stažení souborů
 
-[Clinical-Trials-JSON. zip](https://github.com/Azure-Samples/storage-blob-integration-with-cdn-search-hdi/raw/master/clinical-trials-json.zip) obsahuje data použitá v tomto kurzu. Stáhnout a rozbalit tento soubor do vlastní složky. Data pocházejí z [ClinicalTrials.gov](https://clinicaltrials.gov/ct2/results), která jsou pro tento kurz převedená na JSON.
+[Clinical-trials-json.zip](https://github.com/Azure-Samples/storage-blob-integration-with-cdn-search-hdi/raw/master/clinical-trials-json.zip) obsahuje data použitá v tomto kurzu. Stáhnout a rozbalit tento soubor do vlastní složky. Data pocházejí z [ClinicalTrials.gov](https://clinicaltrials.gov/ct2/results), která jsou pro tento kurz převedená na JSON.
 
 ## <a name="1---create-services"></a>1. vytvoření služeb
 
@@ -96,7 +96,7 @@ Volání REST vyžadují pro každý požadavek adresu URL služby a přístupov
 
 1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
 
-1. V části **Nastavení** > **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
+1. V části **Nastavení**  >  **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
 
 ![Získání koncového bodu HTTP a přístupového klíče](media/search-get-started-postman/get-url-key.png "Získání koncového bodu HTTP a přístupového klíče")
 
@@ -112,13 +112,13 @@ V části hlavičky nastavte typ Content-Type na `application/json` a nastavte `
 
   ![Adresa URL a záhlaví žádosti post](media/search-get-started-postman/postman-url.png "Adresa URL a záhlaví žádosti post")
 
-Identifikátory URI musí určovat verzi rozhraní API a každé volání by mělo vrátit **vytvořenou 201**. Obecně dostupná verze API-Version pro použití polí JSON je `2019-05-06`.
+Identifikátory URI musí určovat verzi rozhraní API a každé volání by mělo vrátit **vytvořenou 201**. Obecně dostupná verze API-Version pro použití polí JSON je `2019-05-06` .
 
 ## <a name="3---create-a-data-source"></a>3. vytvoření zdroje dat
 
 [Rozhraní API pro vytvoření zdroje dat](https://docs.microsoft.com/rest/api/searchservice/create-data-source) vytvoří objekt Azure kognitivní hledání, který určuje, jaká data se mají indexovat.
 
-1. Nastavte koncový bod tohoto volání na `https://[service name].search.windows.net/datasources?api-version=2019-05-06`. Nahraďte `[service name]` názvem vaší služby Search. 
+1. Nastavte koncový bod tohoto volání na `https://[service name].search.windows.net/datasources?api-version=2019-05-06` . Nahraďte `[service name]` názvem vaší služby Search. 
 
 1. Zkopírujte následující kód JSON do textu žádosti.
 
@@ -161,7 +161,7 @@ Identifikátory URI musí určovat verzi rozhraní API a každé volání by mě
     
 Druhé volání je [vytvořit index API](https://docs.microsoft.com/rest/api/searchservice/create-index), což vytvoří index služby Azure kognitivní hledání, který ukládá všechna hledaná data. Index určuje všechny parametry a jejich atributy.
 
-1. Nastavte koncový bod tohoto volání na `https://[service name].search.windows.net/indexes?api-version=2019-05-06`. Nahraďte `[service name]` názvem vaší služby Search.
+1. Nastavte koncový bod tohoto volání na `https://[service name].search.windows.net/indexes?api-version=2019-05-06` . Nahraďte `[service name]` názvem vaší služby Search.
 
 1. Zkopírujte následující kód JSON do textu žádosti.
 
@@ -236,7 +236,7 @@ Druhé volání je [vytvořit index API](https://docs.microsoft.com/rest/api/sea
 
 Indexer se připojuje ke zdroji dat, importuje data do cílového vyhledávacího indexu a volitelně poskytuje plán pro automatizaci aktualizace dat. REST API je [vytvořit indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
 
-1. Nastavte identifikátor URI pro toto volání na `https://[service name].search.windows.net/indexers?api-version=2019-05-06`. Nahraďte `[service name]` názvem vaší služby Search.
+1. Nastavte identifikátor URI pro toto volání na `https://[service name].search.windows.net/indexers?api-version=2019-05-06` . Nahraďte `[service name]` názvem vaší služby Search.
 
 1. Zkopírujte následující kód JSON do textu žádosti.
 
@@ -281,7 +281,7 @@ Hledání můžete zahájit hned po načtení prvního dokumentu.
 
 1. Změňte operaci na **Get**.
 
-1. Nastavte identifikátor URI pro toto volání na `https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&api-version=2019-05-06&$count=true`. Nahraďte `[service name]` názvem vaší služby Search.
+1. Nastavte identifikátor URI pro toto volání na `https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&api-version=2019-05-06&$count=true` . Nahraďte `[service name]` názvem vaší služby Search.
 
 1. Odešlete požadavek. Toto je neurčený fulltextový vyhledávací dotaz, který vrací všechna pole, která jsou označena jako načístelné v indexu, spolu s počtem dokumentů. Odpověď by měla vypadat nějak takto:
 
@@ -313,11 +313,11 @@ Hledání můžete zahájit hned po načtení prvního dokumentu.
             . . . 
     ```
 
-1. Přidejte parametr `$select` dotazu pro omezení výsledků na méně polí: `https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&$select=Gender,metadata_storage_size&api-version=2019-05-06&$count=true`.  Pro tento dotaz se 100 dokumentů shodují, ale ve výchozím nastavení Azure Kognitivní hledání vrátí do výsledků pouze 50.
+1. Přidejte `$select` parametr dotazu pro omezení výsledků na méně polí: `https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&$select=Gender,metadata_storage_size&api-version=2019-05-06&$count=true` .  Pro tento dotaz se 100 dokumentů shodují, ale ve výchozím nastavení Azure Kognitivní hledání vrátí do výsledků pouze 50.
 
    ![Parameterizovaný dotaz](media/search-semi-structured-data/lastquery.png "Dotaz Paramterized")
 
-1. Příklad složitějšího dotazu by zahrnoval `$filter=MinimumAge ge 30 and MaximumAge lt 75`, který vrací jenom výsledky, pokud je minimální hodnota parametru větší než nebo rovna 30 a maximální hodnota je menší než 75. Nahraďte `$select` výraz `$filter` výrazem.
+1. Příklad složitějšího dotazu by zahrnoval `$filter=MinimumAge ge 30 and MaximumAge lt 75` , který vrací jenom výsledky, pokud je minimální hodnota parametru větší než nebo rovna 30 a maximální hodnota je menší než 75. Nahraďte `$select` výraz `$filter` výrazem.
 
    ![Prohledávání částečně strukturovaných dat](media/search-semi-structured-data/metadatashort.png)
 

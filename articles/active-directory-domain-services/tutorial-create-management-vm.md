@@ -1,6 +1,6 @@
 ---
 title: Kurz – vytvoření virtuálního počítače pro správu pro Azure Active Directory Domain Services | Microsoft Docs
-description: V tomto kurzu se naučíte, jak vytvořit a nakonfigurovat virtuální počítač s Windows, který používáte ke správě Azure Active Directory Domain Services instance.
+description: V tomto kurzu se naučíte, jak vytvořit a nakonfigurovat virtuální počítač s Windows, který používáte ke správě Azure Active Directory Domain Services spravované domény.
 author: iainfoulds
 manager: daveba
 ms.service: active-directory
@@ -9,23 +9,23 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 09fcf88c6dfe90380f387c6d72c751634f5b1606
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f0b6e66a0d3a78a62fe105a175a7a519d0b37ccd
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80475743"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84733411"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>Kurz: Vytvoření virtuálního počítače pro správu pro konfiguraci a správu spravované domény Azure Active Directory Domain Services
 
-Azure Active Directory Domain Services (služba AD DS) poskytuje spravované doménové služby, jako je připojení k doméně, zásady skupiny, LDAP a ověřování pomocí protokolu Kerberos nebo NTLM, které jsou plně kompatibilní se službou Windows Server Active Directory. Tuto spravovanou doménu spravujete pomocí stejné Nástroje pro vzdálenou správu serveru (RSAT) jako v místní doméně Active Directory Domain Services. Jelikož je Azure služba AD DS spravovaná služba, existují některé úlohy správy, které nemůžete provést, například používání protokolu RDP (Remote Desktop Protocol) pro připojení k řadičům domény.
+Azure Active Directory Domain Services (Azure služba AD DS) poskytuje spravované doménové služby, jako je připojení k doméně, zásady skupiny, LDAP a ověřování pomocí protokolu Kerberos nebo NTLM, které jsou plně kompatibilní se službou Windows Server Active Directory. Tuto spravovanou doménu spravujete pomocí stejné Nástroje pro vzdálenou správu serveru (RSAT) jako v místní doméně Active Directory Domain Services. Jelikož je Azure služba AD DS spravovaná služba, existují některé úlohy správy, které nemůžete provést, například používání protokolu RDP (Remote Desktop Protocol) pro připojení k řadičům domény.
 
 V tomto kurzu se dozvíte, jak vytvořit virtuální počítač s Windows serverem v Azure a nainstalovat požadované nástroje pro správu spravované domény Azure služba AD DS.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Pochopení dostupných úloh správy ve spravované doméně Azure služba AD DS
+> * Pochopení dostupných administrativních úloh ve spravované doméně
 > * Instalace nástrojů pro správu služby Active Directory na virtuální počítač s Windows serverem
 > * Použití Centrum správy služby Active Directory k provádění běžných úloh
 
@@ -40,8 +40,8 @@ K dokončení tohoto kurzu potřebujete následující prostředky a oprávněn�
 * Tenant Azure Active Directory přidružený k vašemu předplatnému, buď synchronizovaný s místním adresářem, nebo jenom s cloudovým adresářem.
     * V případě potřeby [vytvořte tenanta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure k vašemu účtu][associate-azure-ad-tenant].
 * Ve vašem tenantovi Azure AD je povolená a nakonfigurovaná spravovaná doména Azure Active Directory Domain Services.
-    * V případě potřeby si přečtěte první kurz a [vytvořte a nakonfigurujte instanci Azure Active Directory Domain Services][create-azure-ad-ds-instance].
-* Virtuální počítač s Windows serverem, který je připojený k spravované doméně Azure služba AD DS.
+    * V případě potřeby si přečtěte první kurz a [vytvořte a nakonfigurujte Azure Active Directory Domain Services spravovanou doménu][create-azure-ad-ds-instance].
+* Virtuální počítač s Windows serverem, který je připojený ke spravované doméně.
     * V případě potřeby si přečtěte předchozí kurz [a vytvořte virtuální počítač s Windows serverem a připojte ho ke spravované doméně][create-join-windows-vm].
 * Uživatelský účet, který je členem skupiny *správců řadičů domény Azure AD* ve vašem TENANTOVI Azure AD.
 * Hostitel Azure bastionu nasazený ve vaší virtuální síti Azure služba AD DS.
@@ -53,20 +53,20 @@ V tomto kurzu vytvoříte a nakonfigurujete virtuální počítač pro správu p
 
 ## <a name="available-administrative-tasks-in-azure-ad-ds"></a>Dostupné úlohy správy v Azure služba AD DS
 
-Azure služba AD DS poskytuje spravované domény pro vaše uživatele, aplikace a služby, které se mají využívat. Tento postup mění některé dostupné úlohy správy, které můžete provádět, a jaká oprávnění máte ve spravované doméně. Tyto úlohy a oprávnění se můžou lišit od toho, co se setkáte s běžným místním Active Directory Domain Servicesovým prostředím. Nemůžete se také připojit k řadičům domény v spravované doméně Azure služba AD DS pomocí vzdálené plochy.
+Azure služba AD DS poskytuje spravované domény pro vaše uživatele, aplikace a služby, které se mají využívat. Tento postup mění některé dostupné úlohy správy, které můžete provádět, a jaká oprávnění máte ve spravované doméně. Tyto úlohy a oprávnění se můžou lišit od toho, co se setkáte s běžným místním Active Directory Domain Servicesovým prostředím. Nemůžete se také připojit k řadičům domény ve spravované doméně pomocí vzdálené plochy.
 
-### <a name="administrative-tasks-you-can-perform-on-an-azure-ad-ds-managed-domain"></a>Úlohy správy, které můžete provádět ve spravované doméně Azure služba AD DS
+### <a name="administrative-tasks-you-can-perform-on-a-managed-domain"></a>Úlohy správy, které můžete provádět ve spravované doméně
 
-Členům skupiny *Správci AAD DC* se udělují oprávnění na spravované doméně Azure služba AD DS, která umožňuje provádět následující úlohy:
+Členům skupiny *Správci AAD DC* se udělují oprávnění ve spravované doméně, která jim umožňují provádět následující úlohy:
 
 * Nakonfigurujte integrovaný objekt zásad skupiny (GPO) pro *AADDC počítače* a kontejnery *AADDC uživatelů* ve spravované doméně.
 * Správa DNS ve spravované doméně.
 * Vytvořte a spravujte vlastní organizační jednotky (OU) ve spravované doméně.
 * Získání přístupu pro správu k počítačům připojeným ke spravované doméně.
 
-### <a name="administrative-privileges-you-dont-have-on-an-azure-ad-ds-managed-domain"></a>Oprávnění správce, která nemáte ve spravované doméně Azure služba AD DS
+### <a name="administrative-privileges-you-dont-have-on-a-managed-domain"></a>Oprávnění správce, která nemáte ve spravované doméně
 
-Spravovaná doména Azure služba AD DS je uzamčená, takže nemáte oprávnění k provádění určitých úloh správy v doméně. Některé z následujících příkladů jsou úlohy, které nemůžete provést:
+Spravovaná doména je uzamčena, takže nemáte oprávnění k provádění určitých úloh správy v doméně. Některé z následujících příkladů jsou úlohy, které nemůžete provést:
 
 * Rozšíří schéma spravované domény.
 * Připojte se k řadičům domény pro spravovanou doménu pomocí vzdálené plochy.
@@ -75,10 +75,10 @@ Spravovaná doména Azure služba AD DS je uzamčená, takže nemáte oprávněn
 
 ## <a name="sign-in-to-the-windows-server-vm"></a>Přihlaste se k virtuálnímu počítači s Windows serverem
 
-V předchozím kurzu se vytvořil virtuální počítač s Windows serverem a připojil se k spravované doméně Azure služba AD DS. Pojďme k instalaci nástrojů pro správu použít tento virtuální počítač. V případě potřeby [postupujte podle kroků v tomto kurzu a vytvořte virtuální počítač s Windows serverem a připojte se k spravované doméně][create-join-windows-vm].
+V předchozím kurzu se vytvořil virtuální počítač s Windows serverem a připojil se ke spravované doméně. Pojďme k instalaci nástrojů pro správu použít tento virtuální počítač. V případě potřeby [postupujte podle kroků v tomto kurzu a vytvořte virtuální počítač s Windows serverem a připojte se k spravované doméně][create-join-windows-vm].
 
 > [!NOTE]
-> V tomto kurzu použijete virtuální počítač s Windows serverem v Azure, který je připojený k spravované doméně Azure služba AD DS. Můžete také použít klienta Windows, jako je Windows 10, který je připojený ke spravované doméně.
+> V tomto kurzu použijete virtuální počítač s Windows serverem v Azure, který je připojený ke spravované doméně. Můžete také použít klienta Windows, jako je Windows 10, který je připojený ke spravované doméně.
 >
 > Další informace o tom, jak nainstalovat nástroje pro správu na klienta Windows, najdete v tématu [install nástroje pro vzdálenou správu serveru (RSAT)](https://social.technet.microsoft.com/wiki/contents/articles/2202.remote-server-administration-tools-rsat-for-windows-client-and-windows-server-dsforum2wiki.aspx) .
 
@@ -97,7 +97,7 @@ V případě potřeby umožněte webovému prohlížeči otevřít automaticky o
 
 ## <a name="install-active-directory-administrative-tools"></a>Nainstalovat nástroje pro správu služby Active Directory
 
-Spravované domény Azure služba AD DS se spravují pomocí stejných nástrojů pro správu, jako jsou místní služba AD DS prostředí, jako je Centrum správy služby Active Directory (ADAC) nebo AD PowerShell. Tyto nástroje lze nainstalovat jako součást funkce Nástroje pro vzdálenou správu serveru (RSAT) na serveru a v klientských počítačích se systémem Windows Server. Členové skupiny *Správci AAD DC* můžou spravovat spravované domény Azure služba AD DS vzdáleně pomocí těchto nástrojů pro správu služby AD z počítače, který je připojený ke spravované doméně.
+Spravované domény se spravují pomocí stejných nástrojů pro správu, jako jsou místní služba AD DS prostředí, jako je například Centrum správy služby Active Directory (ADAC) nebo AD PowerShell. Tyto nástroje lze nainstalovat jako součást funkce Nástroje pro vzdálenou správu serveru (RSAT) na serveru a v klientských počítačích se systémem Windows Server. Členové skupiny *Správci AAD DC* mohou spravovat spravované domény vzdáleně pomocí těchto nástrojů pro správu služby AD z počítače, který je připojen ke spravované doméně.
 
 Pokud chcete nainstalovat nástroje pro správu služby Active Directory do virtuálního počítače připojeného k doméně, proveďte následující kroky:
 
@@ -118,39 +118,39 @@ Pokud chcete nainstalovat nástroje pro správu služby Active Directory do virt
 
 ## <a name="use-active-directory-administrative-tools"></a>Použití nástrojů pro správu služby Active Directory
 
-S nainstalovanými nástroji pro správu se podívejme, jak je použít ke správě spravované domény Azure služba AD DS. Ujistěte se, že jste přihlášeni k virtuálnímu počítači pomocí uživatelského účtu, který je členem skupiny *AAD DC Administrators* .
+V nainstalovaných nástrojích pro správu se podívejme, jak je používat ke správě spravované domény. Ujistěte se, že jste přihlášeni k virtuálnímu počítači pomocí uživatelského účtu, který je členem skupiny *AAD DC Administrators* .
 
 1. V nabídce **Start** vyberte **Nástroje pro správu systému Windows**. Zobrazí se nástroje pro správu služby AD nainstalované v předchozím kroku.
 
     ![Seznam nástrojů pro správu nainstalovaných na serveru](./media/tutorial-create-management-vm/list-admin-tools.png)
 
 1. Vyberte **Centrum správy služby Active Directory**.
-1. Pokud chcete prozkoumat spravovanou doménu Azure služba AD DS, v levém podokně vyberte název domény, například *aaddscontoso.com*. Dva kontejnery s názvem *počítače AADDC* a *Uživatelé AADDC* jsou v horní části seznamu.
+1. Chcete-li prozkoumat spravovanou doménu, vyberte název domény v levém podokně, například *aaddscontoso.com*. Dva kontejnery s názvem *počítače AADDC* a *Uživatelé AADDC* jsou v horní části seznamu.
 
-    ![Výpis dostupných kontejnerů část spravované domény Azure služba AD DS](./media/tutorial-create-management-vm/active-directory-administrative-center.png)
+    ![Výpis dostupných kontejnerů část spravované domény](./media/tutorial-create-management-vm/active-directory-administrative-center.png)
 
-1. Pokud chcete zobrazit uživatele a skupiny patřící do spravované domény Azure služba AD DS, vyberte kontejner **Uživatelé AADDC** . Uživatelské účty a skupiny z vašeho tenanta Azure AD jsou uvedené v tomto kontejneru.
+1. Pokud chcete zobrazit uživatele a skupiny patřící do spravované domény, vyberte kontejner **AADDC Users** . Uživatelské účty a skupiny z vašeho tenanta Azure AD jsou uvedené v tomto kontejneru.
 
     V následujícím příkladu výstupu se v tomto kontejneru zobrazí uživatelský účet s názvem *Contoso admin* a skupina pro *správce řadiče domény AAD* .
 
     ![Zobrazení seznamu uživatelů domény Azure služba AD DS v Centrum správy služby Active Directory](./media/tutorial-create-management-vm/list-azure-ad-users.png)
 
-1. Pokud chcete zobrazit počítače, které jsou připojené k spravované doméně Azure služba AD DS, vyberte kontejner **počítače AADDC** . V seznamu se zobrazí položka pro aktuální virtuální počítač, například *myVM*. Účty počítačů pro všechny počítače, které jsou připojené ke spravované doméně Azure služba AD DS, se ukládají do kontejneru *AADDC Computers* .
+1. Pokud chcete zobrazit počítače, které jsou připojené ke spravované doméně, vyberte kontejner **AADDC Computers** . V seznamu se zobrazí položka pro aktuální virtuální počítač, například *myVM*. Účty počítačů pro všechny počítače, které jsou připojené ke spravované doméně, se ukládají do kontejneru *AADDC Computers* .
 
-K dispozici jsou běžné Centrum správy služby Active Directory akce, jako je resetování hesla uživatelského účtu nebo Správa členství ve skupinách. Tyto akce fungují jenom pro uživatele a skupiny vytvořené přímo ve spravované doméně Azure služba AD DS. Informace o identitě se synchronizují jenom *z* Azure AD do Azure služba AD DS. Nebudete moct zpátky zapisovat z Azure služba AD DS do Azure AD. Nemůžete měnit hesla ani členství spravované skupiny pro uživatele synchronizované z Azure AD a tyto změny se synchronizují zpátky.
+K dispozici jsou běžné Centrum správy služby Active Directory akce, jako je resetování hesla uživatelského účtu nebo Správa členství ve skupinách. Tyto akce fungují jenom pro uživatele a skupiny vytvořené přímo ve spravované doméně. Informace o identitě se synchronizují jenom *z* Azure AD do Azure služba AD DS. Nebudete moct zpátky zapisovat z Azure služba AD DS do Azure AD. Nemůžete měnit hesla ani členství spravované skupiny pro uživatele synchronizované z Azure AD a tyto změny se synchronizují zpátky.
 
-*Modul služby Active Directory pro prostředí Windows PowerShell*, který je nainstalovaný jako součást nástrojů pro správu, můžete použít také ke správě běžných akcí ve spravované doméně Azure služba AD DS.
+*Modul služby Active Directory pro prostředí Windows PowerShell*, který je nainstalovaný jako součást nástrojů pro správu, můžete použít také ke správě běžných akcí ve spravované doméně.
 
 ## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-> * Pochopení dostupných úloh správy ve spravované doméně Azure služba AD DS
+> * Pochopení dostupných administrativních úloh ve spravované doméně
 > * Instalace nástrojů pro správu služby Active Directory na virtuální počítač s Windows serverem
 > * Použití Centrum správy služby Active Directory k provádění běžných úloh
 
-Pokud chcete bezpečně pracovat se svojí spravovanou doménou Azure služba AD DS, povolte zabezpečený protokol LDAPs (Lightweight Directory Access Protocol).
+Pokud chcete bezpečně pracovat se svojí spravovanou doménou, povolte zabezpečený protokol LDAPs (Lightweight Directory Access Protocol).
 
 > [!div class="nextstepaction"]
 > [Konfigurace zabezpečeného protokolu LDAP pro spravovanou doménu](tutorial-configure-ldaps.md)

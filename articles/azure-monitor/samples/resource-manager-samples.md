@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
 ms.subservice: ''
-ms.openlocfilehash: 2c9287e6f4bda429309dd0041215b271678d03d3
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.openlocfilehash: e71cd5f3989a175f883f3a08b4f55d36a154dcee
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860694"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753476"
 ---
 # <a name="resource-manager-template-samples-for-azure-monitor"></a>Ukázky šablon Správce prostředků pro Azure Monitor
 
@@ -25,7 +25,7 @@ Základní kroky pro použití ukázek:
 2. Upravte parametry vašeho prostředí a uložte ho jako soubor JSON.
 4. Nasaďte šablonu pomocí [libovolné metody nasazení pro správce prostředků šablon](../../azure-resource-manager/templates/deploy-powershell.md). 
 
-Pomocí následujících příkazů můžete například nasadit šablonu a soubor parametrů do předplatného pomocí PowerShellu nebo rozhraní příkazového řádku Azure CLI.
+Pomocí následujících příkazů můžete například nasadit šablonu a soubor parametrů do skupiny prostředků pomocí PowerShellu nebo rozhraní příkazového řádku Azure CLI.
 
 
 ```powershell
@@ -36,7 +36,7 @@ New-AzResourceGroupDeployment -Name AzureMonitorDeployment -ResourceGroupName my
 
 ```azurecli
 az login
-az group deployment create \
+az deployment group create \
     --name AlertDeployment \
     --resource-group ResourceGroupofTargetResource \
     --template-file azure-monitor-deploy.json \

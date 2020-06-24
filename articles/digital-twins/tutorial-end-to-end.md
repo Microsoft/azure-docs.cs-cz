@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: e824641f261fc920dd234ba8d4787fbd8ddffe48
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: f83eb6a0cab8bdf2f26888f895aeac8a8fa796bb
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84613384"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85296980"
 ---
 # <a name="build-out-an-end-to-end-solution"></a>Sestavení kompletního řešení
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 K nastavení kompletního řešení založeného na živých datech z vašeho prostředí můžete propojit instanci digitálních vláken Azure s dalšími službami Azure za účelem správy zařízení a dat.
 
@@ -133,6 +136,8 @@ V podokně *publikovat* , které se otevře zpátky v hlavním okně sady Visual
 > [!NOTE]
 > Může se zobrazit automaticky otevírané okno: :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-7.png" alt-text="publikovat funkci Azure v aplikaci Visual Studio: přihlašovací údaje pro publikování" border="false":::
 > Pokud ano, vyberte **pokus o načtení přihlašovacích údajů z Azure** a **uložte**je.
+>
+> Pokud se zobrazí upozornění, že *vaše verze modulu runtime Functions neodpovídá verzi běžící v Azure*, postupujte podle pokynů pro upgrade na nejnovější verzi modulu runtime Azure Functions. K tomuto problému může dojít, pokud používáte starší verzi sady Visual Studio, než kterou jste doporučili v části *požadavky* na začátku tohoto kurzu.
 
 ### <a name="assign-permissions-to-the-function-app"></a>Přiřazení oprávnění k aplikaci Function App
 

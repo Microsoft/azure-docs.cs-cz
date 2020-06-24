@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: sample
 ms.date: 01/14/2020
 ms.author: iainfou
-ms.openlocfilehash: b44547998b7ed7159e43bcbbfb4b4456d2a232e9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d826a40073d243193f87d90ab80333b491a203b2
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654551"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734211"
 ---
 # <a name="create-an-azure-active-directory-domain-services-managed-domain-using-an-azure-resource-manager-template"></a>Vytvoření spravované domény Azure Active Directory Domain Services pomocí šablony Azure Resource Manager
 
@@ -38,7 +38,7 @@ K dokončení tohoto článku potřebujete tyto prostředky:
 
 ## <a name="dns-naming-requirements"></a>Požadavky na názvy DNS
 
-Když vytváříte instanci Azure služba AD DS, zadáte název DNS. Při volbě tohoto názvu DNS máte nějaké okolnosti:
+Při vytváření spravované domény Azure služba AD DS zadáte název DNS. Při volbě tohoto názvu DNS máte nějaké okolnosti:
 
 * **Název předdefinované domény:** Ve výchozím nastavení se používá integrovaný název domény adresáře (přípona *. onmicrosoft.com* ). Pokud chcete povolit přístup přes Internet k spravované doméně pomocí protokolu Secure LDAP, nemůžete vytvořit digitální certifikát pro zabezpečení připojení s touto výchozí doménou. Společnost Microsoft vlastní doménu *. onmicrosoft.com* , takže certifikační autorita (CA) certifikát nevydá.
 * **Vlastní názvy domén:** Nejběžnějším přístupem je zadat vlastní název domény, obvykle ten, který už vlastníte a který je směrovatelný. Když použijete směrovatelný, vlastní doménu, může provoz správně přesměrovat podle potřeby na podporu vašich aplikací.
@@ -47,7 +47,7 @@ Když vytváříte instanci Azure služba AD DS, zadáte název DNS. Při volbě
 > [!TIP]
 > Pokud vytváříte vlastní název domény, je třeba dbát na stávající obory názvů DNS. Doporučuje se použít název domény oddělený od existujícího prostoru názvů Azure nebo místního DNS.
 >
-> Pokud máte například existující obor názvů DNS *contoso.com*, vytvořte spravovanou doménu Azure služba AD DS s vlastním názvem domény *aaddscontoso.com*. Pokud potřebujete použít zabezpečený protokol LDAP, musíte tento vlastní název domény pro vygenerování požadovaných certifikátů zaregistrovat a vlastnit.
+> Pokud máte například existující obor názvů DNS *contoso.com*, vytvořte spravovanou doménu s vlastním názvem domény *aaddscontoso.com*. Pokud potřebujete použít zabezpečený protokol LDAP, musíte tento vlastní název domény pro vygenerování požadovaných certifikátů zaregistrovat a vlastnit.
 >
 > Možná budete muset vytvořit některé další záznamy DNS pro další služby ve vašem prostředí nebo podmíněné služby DNS pro přeposílání mezi stávajícími obory názvů DNS ve vašem prostředí. Pokud například spustíte webový server, který je hostitelem lokality pomocí kořenového názvu DNS, může dojít ke konfliktům názvů, které vyžadují další položky DNS.
 >
@@ -63,7 +63,7 @@ Platí taky následující omezení názvů DNS:
 
 ## <a name="create-required-azure-ad-resources"></a>Vytvoření požadovaných prostředků Azure AD
 
-Služba Azure služba AD DS vyžaduje instanční objekt a skupinu Azure AD. Tyto prostředky umožňují, aby Azure služba AD DS spravovaná doména synchronizovaná data a definovali, kteří uživatelé mají oprávnění správce ve spravované doméně.
+Služba Azure služba AD DS vyžaduje instanční objekt a skupinu Azure AD. Tyto prostředky umožňují, aby spravovaná doména synchronizoval data, a definovali, kteří uživatelé mají oprávnění správce ve spravované doméně.
 
 Nejdřív Zaregistrujte poskytovatele prostředků Azure AD Domain Services pomocí rutiny [Register-AzResourceProvider][Register-AzResourceProvider] :
 
@@ -77,7 +77,7 @@ Vytvořte instanční objekt služby Azure AD pomocí rutiny [New-AzureADService
 New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
 ```
 
-Nyní pomocí rutiny [New-AzureADGroup][New-AzureADGroup] vytvořte skupinu Azure AD s názvem *AAD DC Administrators* . Uživatelům přidaným do této skupiny se pak udělí oprávnění k provádění úloh správy ve spravované doméně Azure služba AD DS.
+Nyní pomocí rutiny [New-AzureADGroup][New-AzureADGroup] vytvořte skupinu Azure AD s názvem *AAD DC Administrators* . Uživatelům přidaným do této skupiny se pak udělí oprávnění k provádění úloh správy ve spravované doméně.
 
 ```powershell
 New-AzureADGroup -DisplayName "AAD DC Administrators" `
@@ -88,7 +88,7 @@ New-AzureADGroup -DisplayName "AAD DC Administrators" `
 
 Když je vytvořená skupina *AAD DC Administrators* , přidejte uživatele do skupiny pomocí rutiny [Add-AzureADGroupMember][Add-AzureADGroupMember] . Nejprve pomocí rutiny [Get-][Get-AzureADUser] [AzureADGroup][Get-AzureADGroup] Získejte ID objektu skupiny *AAD DC Administrators* a pak ID objektu požadovaného uživatele.
 
-V následujícím příkladu je ID objektu uživatele pro účet s hlavním názvem uživatele (UPN) `admin@aaddscontoso.onmicrosoft.com`. Nahraďte tento uživatelský účet uživatelským jménem uživatele, kterého chcete přidat do skupiny *správců řadiče domény AAD* :
+V následujícím příkladu je ID objektu uživatele pro účet s hlavním názvem uživatele (UPN) `admin@aaddscontoso.onmicrosoft.com` . Nahraďte tento uživatelský účet uživatelským jménem uživatele, kterého chcete přidat do skupiny *správců řadiče domény AAD* :
 
 ```powershell
 # First, retrieve the object ID of the newly created 'AAD DC Administrators' group.
@@ -125,10 +125,10 @@ V rámci definice prostředků Správce prostředků jsou potřeba následujíc�
 |-------------------------|---------|
 | domainName              | Název domény DNS pro spravovanou doménu, který bere v úvahu předchozí body při pojmenovávání předpon a konfliktů. |
 | filteredSync            | Azure služba AD DS umožňuje synchronizovat *všechny* uživatele a skupiny, které jsou dostupné ve službě Azure AD, nebo jenom *vymezenou* synchronizaci jenom konkrétních skupin. Pokud se rozhodnete synchronizovat všechny uživatele a skupiny, nemůžete se později rozhodnout jenom provést synchronizaci s vymezeným oborem.<br /> Další informace o vymezené synchronizaci najdete v tématu [Azure AD Domain Services s vymezeným rozsahem synchronizace][scoped-sync].|
-| notificationSettings    | Pokud se ve spravované doméně služba AD DS Azure generují nějaké výstrahy, můžou se e-mailová oznámení poslat. <br />U těchto oznámení je možné *Povolit* *globální správce* tenanta Azure a členové skupiny *Správci AAD DC* .<br /> V případě potřeby můžete přidat další příjemce pro oznámení, pokud se zobrazí výstrahy, které vyžadují pozornost.|
-| domainConfigurationType | Ve výchozím nastavení je spravovaná doména Azure služba AD DS vytvořená jako doménová struktura *uživatelů* . Tento typ doménové struktury synchronizuje všechny objekty z Azure AD, včetně všech uživatelských účtů vytvořených v místním služba AD DS prostředí. Pro vytvoření doménové struktury uživatele není nutné zadávat hodnotu *domainConfiguration* .<br /> Doménová struktura *prostředků* synchronizuje jenom uživatele a skupiny vytvořené přímo ve službě Azure AD. Doménové struktury prostředků jsou momentálně ve verzi Preview. Nastavte hodnotu na *ResourceTrusting* , aby se vytvořila doménová struktura prostředků.<br />Další informace o doménových strukturách *prostředků* , včetně důvodů, proč je můžete použít a jak vytvořit vztahy důvěryhodnosti doménové struktury s místními služba AD DS doménami, najdete v tématu [Přehled doménových struktur Azure služba AD DS][resource-forests].|
+| notificationSettings    | Pokud se ve spravované doméně generují nějaké výstrahy, můžou se e-mailová oznámení poslat. <br />U těchto oznámení je možné *Povolit* *globální správce* tenanta Azure a členové skupiny *Správci AAD DC* .<br /> V případě potřeby můžete přidat další příjemce pro oznámení, pokud se zobrazí výstrahy, které vyžadují pozornost.|
+| domainConfigurationType | Ve výchozím nastavení je spravovaná doména vytvořena jako doménová struktura *uživatelů* . Tento typ doménové struktury synchronizuje všechny objekty z Azure AD, včetně všech uživatelských účtů vytvořených v místním služba AD DS prostředí. Pro vytvoření doménové struktury uživatele není nutné zadávat hodnotu *domainConfiguration* .<br /> Doménová struktura *prostředků* synchronizuje jenom uživatele a skupiny vytvořené přímo ve službě Azure AD. Doménové struktury prostředků jsou momentálně ve verzi Preview. Nastavte hodnotu na *ResourceTrusting* , aby se vytvořila doménová struktura prostředků.<br />Další informace o doménových strukturách *prostředků* , včetně důvodů, proč je můžete použít a jak vytvořit vztahy důvěryhodnosti doménové struktury s místními služba AD DS doménami, najdete v tématu [Přehled doménových struktur Azure služba AD DS][resource-forests].|
 
-Následující definice zhuštěných parametrů ukazuje, jak jsou tyto hodnoty deklarovány. Uživatelská doménová struktura s názvem *aaddscontoso.com* se vytvoří se všemi uživateli z Azure AD synchronizovanými do spravované domény Azure služba AD DS:
+Následující definice zhuštěných parametrů ukazuje, jak jsou tyto hodnoty deklarovány. Uživatelská doménová struktura s názvem *aaddscontoso.com* se vytvoří se všemi uživateli z Azure AD synchronizovanými do spravované domény:
 
 ```json
 "parameters": {
@@ -149,7 +149,7 @@ Následující definice zhuštěných parametrů ukazuje, jak jsou tyto hodnoty 
 }
 ```
 
-Následující typ prostředku šablony Správce prostředků slouží k definování a vytvoření spravované domény Azure služba AD DS. Virtuální síť Azure a podsíť už musí existovat nebo být vytvořené jako součást šablony Správce prostředků. Doména spravovaná službou Azure služba AD DS je připojená k této podsíti.
+Následující typ prostředku šablony Správce prostředků slouží k definování a vytvoření spravované domény. Virtuální síť Azure a podsíť už musí existovat nebo být vytvořené jako součást šablony Správce prostředků. Spravovaná doména je připojena k této podsíti.
 
 ```json
 "resources": [
@@ -176,7 +176,7 @@ Tyto parametry a typ prostředku lze použít jako součást širší Správce p
 
 ## <a name="create-a-managed-domain-using-sample-template"></a>Vytvoření spravované domény pomocí ukázkové šablony
 
-Následující kompletní Ukázková šablona Správce prostředků vytvoří spravovanou doménu Azure služba AD DS a podporuje pravidla skupiny zabezpečení virtuální sítě, podsítě a sítě. K zabezpečení spravované domény jsou nutná pravidla skupiny zabezpečení sítě a zajišťují, že provoz může správně Flow. Vytvoří se doménová struktura uživatele s názvem DNS *aaddscontoso.com* se všemi uživateli synchronizovanými z Azure AD:
+Následující ukázková šablona Správce prostředků vytvoří spravovanou doménu a podporuje pravidla skupiny zabezpečení virtuální sítě, podsítě a sítě. K zabezpečení spravované domény jsou nutná pravidla skupiny zabezpečení sítě a zajišťují, že provoz může správně Flow. Vytvoří se doménová struktura uživatele s názvem DNS *aaddscontoso.com* se všemi uživateli synchronizovanými z Azure AD:
 
 ```json
 {
@@ -325,17 +325,17 @@ Tuto šablonu můžete nasadit pomocí upřednostňované metody nasazení, jako
 New-AzResourceGroupDeployment -ResourceGroupName "myResourceGroup" -TemplateFile <path-to-template>
 ```
 
-Vytvoření prostředku a vrácení řízení do příkazového řádku PowerShellu trvá několik minut. Spravovaná doména Azure služba AD DS je nadále zřízena na pozadí a může trvat až hodinu, než se nasazení dokončí. Na stránce s **přehledem** pro spravovanou doménu Azure služba AD DS se Azure Portal v rámci této fáze nasazení zobrazuje aktuální stav.
+Vytvoření prostředku a vrácení řízení do příkazového řádku PowerShellu trvá několik minut. Spravovaná doména je nadále zřízena na pozadí a může trvat až hodinu, než se nasazení dokončí. V Azure Portal zobrazuje stránka **Přehled** pro spravovanou doménu aktuální stav v rámci této fáze nasazení.
 
-Když Azure Portal ukáže, že se dokončilo zřizování spravované domény Azure služba AD DS, je nutné provést následující úkoly:
+Když Azure Portal ukáže, že se dokončilo zřizování spravované domény, musí se dokončit následující úkoly:
 
 * Aktualizujte nastavení DNS pro virtuální síť, aby virtuální počítače mohly najít spravovanou doménu pro připojení k doméně nebo ověřování.
-    * Pokud chcete nakonfigurovat DNS, vyberte na portálu spravovanou doménu Azure služba AD DS. V okně **Přehled** se zobrazí výzva k automatické konfiguraci těchto nastavení DNS.
+    * Pokud chcete nakonfigurovat DNS, vyberte spravovanou doménu na portálu. V okně **Přehled** se zobrazí výzva k automatické konfiguraci těchto nastavení DNS.
 * [Povolte synchronizaci hesel Azure AD Domain Services](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) tak, aby se koncoví uživatelé mohli přihlásit ke spravované doméně pomocí svých podnikových přihlašovacích údajů.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete zobrazit spravovanou doménu Azure služba AD DS v akci, můžete k [doméně připojit virtuální počítač s Windows][windows-join], [nakonfigurovat zabezpečený protokol LDAP][tutorial-ldaps]a [nakonfigurovat synchronizaci hodnot hash hesel][tutorial-phs].
+Pokud chcete spravovanou doménu zobrazit v akci, můžete se [připojit k virtuálnímu počítači s Windows][windows-join], [nakonfigurovat zabezpečený protokol LDAP][tutorial-ldaps]a [nakonfigurovat synchronizaci hodnot hash hesel][tutorial-phs].
 
 <!-- INTERNAL LINKS -->
 [windows-join]: join-windows-vm.md

@@ -1,5 +1,5 @@
 ---
-title: Prozkoumejte základy pomocí ukázkové klientské aplikace
+title: Seznámení se základy prostřednictvím ukázkové klientské aplikace
 titleSuffix: Azure Digital Twins
 description: Kurz k prozkoumání sad SDK digitálních vláken Azure s využitím ukázkové aplikace příkazového řádku
 author: baanders
@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 070a65207bc1aa2cf754f3a0dca59f1a2950a339
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: 67b476b2ec6ec0c841639f7aa1d94a0d9d3d3304
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84613546"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262329"
 ---
 # <a name="explore-azure-digital-twins-with-a-sample-client-app"></a>Prozkoumejte digitální vlákna Azure pomocí ukázkové klientské aplikace
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Tento kurz zavádí ukázkovou aplikaci, která implementuje klientskou aplikaci příkazového řádku pro interakci s instancí digitálních vláken Azure. Klientská aplikace je podobná té, kterou jste napsali v [kurzu: Code a klientská aplikace](tutorial-code.md).
 
@@ -44,7 +47,7 @@ Modely jsou podobné třídám v objektově orientovaném programovacím jazyce;
 
 V okně aplikace Visual Studio, kde je otevřen projekt _**AdtE2ESample**_ , použijte podokno *Průzkumník řešení* a přejděte do složky *AdtSampleApp\SampleClientApp\Models* . Tato složka obsahuje ukázkové modely.
 
-Výběrem možnosti *Room. JSON* ho otevřete v okně pro úpravy a změňte ho následujícími způsoby:
+Vyberte možnost *Room.jszapnuto* a otevřete ji v okně pro úpravy a změňte ji následujícími způsoby:
 
 * **Aktualizujte číslo verze**, abyste označili, že poskytujete aktualizovanou verzi tohoto modelu. Provedete to tak, že změníte *1* na konci `@id` hodnoty na *2*. Bude fungovat i číslo větší než aktuální číslo verze.
 * **Upravit vlastnost**. Změňte název `Humidity` vlastnosti na *HumidityLevel* (nebo něco jiného, pokud chcete. Pokud používáte něco jiného než *HumidityLevel*, pamatujte na to, co jste použili, a místo *HumidityLevel* v průběhu tohoto kurzu ho budete používat.
@@ -70,7 +73,7 @@ Výběrem možnosti *Room. JSON* ho otevřete v okně pro úpravy a změňte ho 
 
 Až skončíte, aktualizovaný model by měl vypadat takto:
 
-:::image type="content" source="media/tutorial-command-line-app/room-model.png" alt-text="Upravil (a). JSON s aktualizovaným číslem verze, vlastností HumidityLevel a místností a obsahuje relaci." border="false":::
+:::image type="content" source="media/tutorial-command-line-app/room-model.png" alt-text="Upraveno Room.jss aktualizovaným číslem verze, vlastnostmi HumidityLevel a místností a obsahuje relaci." border="false":::
 
 Před přechodem na. Nezapomeňte soubor uložit.
 
@@ -78,7 +81,7 @@ Před přechodem na. Nezapomeňte soubor uložit.
 > Pokud se chcete pokusit vytvořit vlastní model, můžete vložit kód modelu *Room* do nového souboru, který uložíte s příponou *. JSON* ve složce *AdtSampleApp\SampleClientApp\Models* . Pak se můžete pohybovat s přidáním vlastností a vztahů, které budou představovat cokoli, co byste chtěli. Můžete se také podívat na Další ukázkové modely v této složce, kde najdete nápady.
 
 > [!TIP] 
-> Je k dispozici [Ukázka validátoru](https://github.com/Azure-Samples/DTDL-Validator) jazyka nezávislá DTDL, kterou můžete použít ke kontrole modelu dokumentů, abyste měli jistotu, že je DTDL platný. Je postaven na knihovně analyzátoru DTDL, kterou si můžete přečíst v tématu [Postupy: analýza a ověření modelů](how-to-use-parser.md).
+> Je k dispozici [Ukázka validátoru](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) jazyka nezávislá DTDL, kterou můžete použít ke kontrole modelu dokumentů, abyste měli jistotu, že je DTDL platný. Je postaven na knihovně analyzátoru DTDL, kterou si můžete přečíst v tématu [Postupy: analýza a ověření modelů](how-to-use-parser.md).
 
 ### <a name="get-started-with-the-command-line-app"></a>Začínáme s aplikací příkazového řádku
 
