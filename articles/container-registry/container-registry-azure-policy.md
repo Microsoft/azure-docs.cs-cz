@@ -2,24 +2,21 @@
 title: Dodržování předpisů pomocí Azure Policy
 description: Přiřazení předdefinovaných zásad v Azure Policy pro audit dodržování předpisů ve službě Azure Container Registry
 ms.topic: article
-ms.date: 02/26/2020
-ms.openlocfilehash: a2bfdc18f4bbf16fe8fa6bcbcba7bab18aedabf1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/11/2020
+ms.openlocfilehash: 6101db865749f98f50e04f1fec3b8009089b7908
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82145000"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791890"
 ---
 # <a name="audit-compliance-of-azure-container-registries-using-azure-policy"></a>Audit dodržování předpisů pro služby Azure Container Registry pomocí Azure Policy
 
 [Azure Policy](../governance/policy/overview.md) je služba v Azure, kterou používáte k vytváření, přiřazování a správě zásad. Tyto zásady vynucují na vašich prostředcích různá pravidla a účinky, aby tyto prostředky zůstaly kompatibilní s vašimi firemními standardy a smlouvami o úrovni služeb.
 
-Tento článek představuje předdefinované zásady (Preview) pro Azure Container Registry. Pomocí těchto zásad můžete auditovat nové a stávající registry na dodržování předpisů.
+Tento článek představuje předdefinované zásady pro Azure Container Registry. Pomocí těchto zásad můžete auditovat nové a stávající registry na dodržování předpisů.
 
 Za použití Azure Policy se neúčtují žádné poplatky.
-
-> [!IMPORTANT]
-> Tato funkce je aktuálně ve verzi Preview. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití][terms-of-use]. Některé aspekty této funkce se můžou před zveřejněním změnit.
 
 ## <a name="built-in-policy-definitions"></a>Předdefinované definice zásad
 
@@ -27,7 +24,7 @@ Následující předdefinované definice zásad jsou specifické pro Azure Conta
 
 [!INCLUDE [azure-policy-samples-policies-container-registry](../../includes/policy/samples/bycat/policies-container-registry.md)]
 
-Viz také integrovaná definice zásad sítě: [[Preview] Container Registry by měla používat koncový bod služby virtuální sítě](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc4857be7-912a-4c75-87e6-e30292bcdf78).
+Viz také integrovaná definice zásad sítě: [Container Registry by měl používat koncový bod služby virtuální sítě](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc4857be7-912a-4c75-87e6-e30292bcdf78).
 
 ## <a name="assign-policies"></a>Přiřazování zásad
 
@@ -48,7 +45,10 @@ Pokud prostředek není kompatibilní, existuje mnoho možných důvodů. Chcete
 
 1. Vyberte **všechny služby**a vyhledejte **zásady**.
 1. Vyberte možnost **dodržování předpisů**.
-1. Pomocí filtrů můžete omezit stavy dodržování předpisů nebo vyhledat zásady dodržování ![zásad na portálu.](./media/container-registry-azure-policy/azure-policy-compliance.png)
+1. Použijte filtry k omezení stavu dodržování předpisů nebo k vyhledání zásad.
+
+    ![Dodržování zásad na portálu](./media/container-registry-azure-policy/azure-policy-compliance.png)
+    
 1. Vyberte zásadu pro kontrolu agregovaných podrobností a událostí dodržování předpisů. V případě potřeby vyberte konkrétní registr pro dodržování předpisů pomocí prostředků.
 
 ### <a name="policy-compliance-in-the-azure-cli"></a>Dodržování zásad v rozhraní příkazového řádku Azure
@@ -64,8 +64,8 @@ Ukázkový výstup:
 ```
 Name                                                                                   ID
 -------------------------------------------------------------------------------------  --------------------------------------------------------------------------------------------------------------------------------
-[Preview]: Container Registries should not allow unrestricted network access           /subscriptions/<subscriptionID>/providers/Microsoft.Authorization/policyAssignments/b4faf132dc344b84ba68a441
-[Preview]: Container Registries should be encrypted with a Customer-Managed Key (CMK)  /subscriptions/<subscriptionID>/providers/Microsoft.Authorization/policyAssignments/cce1ed4f38a147ad994ab60a
+Container Registries should not allow unrestricted network access           /subscriptions/<subscriptionID>/providers/Microsoft.Authorization/policyAssignments/b4faf132dc344b84ba68a441
+Container Registries should be encrypted with a Customer-Managed Key (CMK)  /subscriptions/<subscriptionID>/providers/Microsoft.Authorization/policyAssignments/cce1ed4f38a147ad994ab60a
 ```
 
 Pak spusťte příkaz [AZ Policy list](/cli/azure/policy/state#az-policy-state-list) a vraťte stav dodržování předpisů ve formátu JSON pro všechny prostředky v rámci konkrétního ID zásad:
@@ -87,12 +87,8 @@ az policy state list \
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o [definicích](../governance/policy/concepts/definition-structure.md) a [důsledcích](../governance/policy/concepts/effects.md) Azure Policy
+* Přečtěte si další informace o Azure Policy [definice](../governance/policy/concepts/definition-structure.md) a [efekty](../governance/policy/concepts/effects.md).
 
-* Vytvoření [vlastní definice zásady](../governance/policy/tutorials/create-custom-policy-definition.md)
+* Vytvořte [vlastní definici zásad](../governance/policy/tutorials/create-custom-policy-definition.md).
 
-* Další informace o [funkcích zásad správného řízení](../governance/index.yml) v Azure
-
-
-<!-- LINKS - External -->
-[terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
+* Přečtěte si další informace o [funkcích zásad správného řízení](../governance/index.yml) v Azure.

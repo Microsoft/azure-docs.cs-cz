@@ -2,22 +2,22 @@
 title: Správa souhlasu s aplikacemi a vyhodnocení žádostí o souhlas – Azure AD
 description: Naučte se spravovat žádosti o souhlas, když je uživatel zakázaný nebo omezený, a jak vyhodnotit žádost o souhlas správce na úrovni tenanta pro aplikaci.
 services: active-directory
-author: psignoret
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/27/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0451fe18629a572c9b49f14924bfa50293f42a2b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5a725eefd678720f2d9b8763277b02452819155b
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77367847"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763189"
 ---
 # <a name="managing-consent-to-applications-and-evaluating-consent-requests"></a>Správa souhlasu s aplikacemi a vyhodnocení žádostí o souhlas
 
@@ -114,7 +114,7 @@ Další informace, včetně toho, jak zvládnout další složité scénáře, n
 
 [Konfigurace pracovního postupu pro vyjádření souhlasu správce](configure-admin-consent-workflow.md)
 
-[Konfigurace způsobu souhlasu koncových uživatelů s aplikacemi](configure-user-consent.md)
+[Konfigurace způsobu vyjadřování souhlasu koncových uživatelů s aplikacemi](configure-user-consent.md)
 
 [Oprávnění a souhlas na platformě Microsoft identity](../develop/active-directory-v2-scopes.md)
 

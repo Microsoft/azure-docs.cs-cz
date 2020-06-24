@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: ''
 ms.service: role-based-access-control
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 568cb7602d9cb454685ef69e820288bcc68563c4
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: dc2763fd3c203a5b0443299d9824b6ebf61bdc78
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735755"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791074"
 ---
 # <a name="add-or-remove-azure-role-assignments-for-external-guest-users-using-the-azure-portal"></a>Přidání nebo odebrání přiřazení rolí Azure pro externí uživatele typu Host pomocí Azure Portal
 
@@ -51,7 +51,7 @@ Pomocí těchto kroků přidáte uživatele typu Host do adresáře pomocí str�
 
 1. Ujistěte se, že jsou nakonfigurovaná externí nastavení spolupráce vaší organizace, aby bylo možné pozvat hosty. Další informace najdete v tématu [Povolení externí spolupráce B2B a Správa toho, kdo může pozvat hosty](../active-directory/b2b/delegate-invitations.md).
 
-1. V Azure Portal klikněte na **Azure Active Directory** > **Uživatelé** > **Nový uživatel typu Host**.
+1. V Azure Portal klikněte na **Azure Active Directory**  >  **Uživatelé**  >  **Nový uživatel typu Host**.
 
     ![Nová funkce uživatele typu Host v Azure Portal](./media/role-assignments-external-users/invite-guest-user.png)
 
@@ -77,7 +77,7 @@ V Azure RBAC pro udělení přístupu přiřadíte roli. Chcete-li přidat při�
 
 1. Klikněte na konkrétní prostředek.
 
-1. Klikněte na **Řízení přístupu (IAM)**.
+1. Klikněte na **Řízení přístupu (IAM)** .
 
     Následující snímek obrazovky ukazuje příklad okna řízení přístupu (IAM) pro skupinu prostředků. Pokud tady uděláte nějaké změny řízení přístupu, budou platit jenom pro skupinu prostředků.
 
@@ -85,7 +85,7 @@ V Azure RBAC pro udělení přístupu přiřadíte roli. Chcete-li přidat při�
 
 1. Kliknutím na kartu **přiřazení rolí** zobrazíte všechna přiřazení rolí v tomto oboru.
 
-1. Kliknutím na **Přidat** > **Přidat přiřazení role** otevřete podokno přidat přiřazení role.
+1. Kliknutím na **Přidat** > **Přidat přiřazení role** otevřete podokno Přidat přiřazení role.
 
     Pokud nemáte oprávnění k přiřazování rolí, bude možnost přidat přiřazení role zakázaná.
 
@@ -113,11 +113,11 @@ Pokud uživatel typu Host ještě není ve vašem adresáři, můžete uživatel
 
 1. Klikněte na konkrétní prostředek.
 
-1. Klikněte na **Řízení přístupu (IAM)**.
+1. Klikněte na **Řízení přístupu (IAM)** .
 
 1. Kliknutím na kartu **přiřazení rolí** zobrazíte všechna přiřazení rolí v tomto oboru.
 
-1. Kliknutím na **Přidat** > **Přidat přiřazení role** otevřete podokno přidat přiřazení role.
+1. Kliknutím na **Přidat** > **Přidat přiřazení role** otevřete podokno Přidat přiřazení role.
 
     ![Přidat nabídku](./media/role-assignments-external-users/add-menu.png)
 
@@ -161,7 +161,7 @@ Před odebráním uživatele typu host z adresáře byste nejdřív měli odebra
 
 1. Ve zprávě odebrat přiřazení role, která se zobrazí, klikněte na **Ano**.
 
-1. V levém navigačním panelu klikněte na **Azure Active Directory** > **Uživatelé**.
+1. V levém navigačním panelu klikněte na **Azure Active Directory**  >  **Uživatelé**.
 
 1. Klikněte na uživatele typu Host, kterého chcete odebrat.
 

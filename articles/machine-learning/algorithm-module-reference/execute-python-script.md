@@ -9,32 +9,32 @@ ms.topic: reference
 ms.custom: tracking-python
 author: likebupt
 ms.author: keli19
-ms.date: 04/27/2020
-ms.openlocfilehash: d25a738a76c955ee11f091bb0f8861bd21cc9f1d
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.date: 06/16/2020
+ms.openlocfilehash: f64c79a970ec54c07c2934a92a9ca349ea56ca40
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84555867"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84907546"
 ---
 # <a name="execute-python-script-module"></a>Spustit modul Python Script
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
+Tento článek popisuje, jak spustit modul skriptu Pythonu v Návrháři Azure Machine Learning (Preview).
 
-Tento modul použijte ke spuštění kódu Pythonu. Další informace o architektuře a zásadách návrhu Pythonu najdete v [následujícím článku](https://docs.microsoft.com/azure/machine-learning/machine-learning-execute-python-scripts).
+Tento modul použijte ke spuštění kódu Pythonu. Další informace o architektuře a zásadách návrhu Pythonu najdete v [tomto článku](https://docs.microsoft.com/azure/machine-learning/machine-learning-execute-python-scripts).
 
-Pomocí Pythonu můžete provádět úlohy, které aktuálně nejsou podporované existujícími moduly, například:
+Pomocí Pythonu můžete provádět úkoly, které existující moduly nepodporují, například:
 
-+ Vizualizace dat pomocí`matplotlib`
-+ Vytvoření výčtu datových sad a modelů v pracovním prostoru pomocí knihoven Pythonu
-+ Čtení, načítání a manipulace s daty ze zdrojů, které nepodporují modul [Import dat](./import-data.md)
++ Vizualizace dat pomocí `matplotlib` .
++ Použití knihoven Python k zobrazení výčtu datových sad a modelů v pracovním prostoru.
++ Čtení, načítání a manipulace s daty ze zdrojů, které modul [Import dat](./import-data.md) nepodporuje.
 + Spusťte si vlastní kód hloubkového učení. 
 
 
-Azure Machine Learning používá Anaconda distribuci Pythonu, která zahrnuje mnoho běžných nástrojů pro zpracování dat. Verze Anaconda se aktualizuje automaticky. Aktuální verze je:
+Azure Machine Learning používá Anaconda distribuci Pythonu, která zahrnuje mnoho běžných nástrojů pro zpracování dat. Verzi Anaconda aktualizujeme automaticky. Aktuální verze je:
  -  Anaconda 4.5 + distribuce pro Python 3,6 
 
-Předem nainstalované balíčky jsou:
+Předinstalované balíčky jsou:
 -    ADAL = = 1.2.2
 -    ApplicationInsights = = 0.11.9
 -    attrs = = 19.3.0
@@ -145,26 +145,37 @@ Předem nainstalované balíčky jsou:
 -    Werkzeug = = 0.16.1
 -    kolo = = 0.34.2
 
- Pokud chcete nainstalovat další balíčky, které nejsou v seznamu předem nainstalovaných, například *scikit-misc*, přidejte do skriptu následující kód: 
+ Chcete-li nainstalovat balíčky, které nejsou v předinstalovaném seznamu (například *scikit-různé*), přidejte do skriptu následující kód: 
 
  ```python
 import os
 os.system(f"pip install scikit-misc")
 ```
+
+Použijte následující kód k instalaci balíčků pro lepší výkon, zejména pro odvození:
+```python
+import importlib.util
+package_name = 'scikit-misc'
+spec = importlib.util.find_spec(package_name)
+if spec is None:
+    import os
+    os.system(f"pip install scikit-misc")
+```
+
 > [!NOTE]
-> Pokud váš kanál obsahuje více modulů skriptu Pythonu pro spouštění a potřebujete stejné balíčky, které nejsou v seznamu předem nainstalované, nainstalujte balíčky do každého modulu. 
+> Pokud váš kanál obsahuje několik modulů spuštění skriptu Pythonu, které vyžadují balíčky, které nejsou v předinstalovaném seznamu, nainstalujte balíčky v každém modulu.
 
 ## <a name="upload-files"></a>Nahrání souborů
-**Skript spouštějící Python** podporuje nahrávání souborů pomocí [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#upload-file-name--path-or-stream-).
+Modul spuštění skriptu Python podporuje nahrávání souborů pomocí [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#upload-file-name--path-or-stream-).
 
-Následující příklad ukazuje, jak nahrát soubor obrázku do modulu **spouštění skriptu Pythonu** :
+Následující příklad ukazuje, jak nahrát soubor obrázku do modulu spouštění skriptu Pythonu:
 
 ```Python
 
-# The script MUST contain a function named azureml_main
+# The script MUST contain a function named azureml_main,
 # which is the entry point for this module.
 
-# imports up here can be used to
+# Imports up here can be used to
 import pandas as pd
 
 # The entry point function must have two input arguments:
@@ -186,70 +197,70 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
     run.upload_file(f"graphics/{img_file}", img_file)
 
     # Return value must be of a sequence of pandas.DataFrame
-    # E.g.
+    # For example:
     #   -  Single return value: return dataframe1,
     #   -  Two return values: return dataframe1, dataframe2
     return dataframe1,
 }
 ```
 
-Po dokončení spuštění kanálu můžete zobrazit náhled obrázku na pravém panelu modulu.
+Po dokončení spuštění kanálu můžete zobrazit náhled obrázku v pravém panelu modulu.
 
 > [!div class="mx-imgBorder"]
-> ![Nahráno – obrázek](media/module/upload-image-in-python-script.png)
+> ![Náhled nahraného obrázku](media/module/upload-image-in-python-script.png)
 
 ## <a name="how-to-configure-execute-python-script"></a>Jak nakonfigurovat skript spustit v Pythonu
 
-Modul **spuštění skriptu Pythonu** obsahuje ukázkový kód Pythonu, který můžete použít jako výchozí bod. Pokud chcete nakonfigurovat modul **spouštění skriptu Pythonu** , zadáte sadu vstupů a kódů Pythonu, které se spustí v textovém poli **skript Pythonu** .
+Modul spuštění skriptu Pythonu obsahuje ukázkový kód Pythonu, který můžete použít jako výchozí bod. Pokud chcete nakonfigurovat modul spouštění skriptu Pythonu, poskytněte sadu vstupů a kódů Pythonu, které se spustí v textovém poli **skript Pythonu** .
 
 1. Přidejte modul **spuštění skriptu Pythonu** do vašeho kanálu.
 
 2. Přidejte a připojte se k **DataSet1.** datových sad z návrháře, který chcete použít pro vstup. Odkazujte tuto datovou sadu ve skriptu Pythonu jako **DataFrame1**.
 
-    Použití datové sady je volitelné, pokud chcete generovat data pomocí Pythonu, nebo použít kód Pythonu k importu dat přímo do modulu.
+    Použití datové sady je volitelné. Použijte ho, pokud chcete generovat data pomocí Pythonu, nebo použijte kód Pythonu k importu dat přímo do modulu.
 
-    Tento modul podporuje přidání druhé datové sady na **Dataset2**. Odkaz na druhou datovou sadu ve skriptu Pythonu jako DataFrame2.
+    Tento modul podporuje přidání druhé datové sady na **Dataset2**. Odkaz na druhou datovou sadu ve skriptu Pythonu jako **DataFrame2**.
 
-    Datové sady, které jsou uložené v Azure Machine Learning, se automaticky převedou na data **PANDAS** . po načtení do tohoto modulu se snímky načítají.
+    Datové sady uložené v Azure Machine Learning se při načtení s tímto modulem automaticky převedou na datové rámce PANDAS.
 
     ![Spustit vstupní mapu Pythonu](media/module/python-module.png)
 
-4. Pokud chcete zahrnout nové balíčky nebo kód v Pythonu, přidejte do **svazku skriptu**soubor zip, který obsahuje tyto vlastní prostředky. **Sada prostředků skriptu** musí být soubor zip odeslaný do vašeho pracovního prostoru jako datová sada typu souboru. Datovou sadu můžete nahrát na stránce Asset **sady** dat a můžete ji přetáhnout ze seznamu **Moje datové sady** na levém stromu modulu na stránce vytváření návrháře. 
+4. Pokud chcete zahrnout nové balíčky nebo kód Pythonu, přidejte do **sady skriptů**soubor zip, který obsahuje tyto vlastní prostředky. **Sada prostředků skriptu** musí být soubor zip odeslaný do vašeho pracovního prostoru jako datová sada typu souboru. Datovou sadu můžete nahrát na stránce assetu **datových sad** . Modul DataSet můžete přetáhnout ze seznamu **Moje datové sady** v levém stromu modulu na stránce vytváření návrháře. 
 
     Během provádění kanálu lze použít jakýkoli soubor obsažený v odeslaném archivu zip. Pokud archiv obsahuje adresářovou strukturu, struktura se zachová, ale musíte do cesty předřadit adresář **Src** .
 
 5. Do textového pole **skript Pythonu** zadejte nebo vložte platný skript Pythonu.
 
     > [!NOTE]
-    > Při psaní skriptu Buďte velmi opatrní a ujistěte se, že nedochází k žádné chybě syntaxe, jako je například použití nedeklarovaných objektů nebo neimportovaných modulů. Také věnujte zvláštní pozornost seznamu předem nainstalovaných modulů. Pokud chcete importovat moduly, které nejsou v seznamu, nainstalujte odpovídající balíčky do skriptu, například
+    >  Při psaní skriptu buďte opatrní. Ujistěte se, že neexistují žádné chyby syntaxe, jako je například použití nedeklarovaných proměnných nebo neimportované moduly nebo funkce. Věnujte mimořádnou pozornost seznamu předinstalovaných modulů. Pokud chcete importovat moduly, které nejsou uvedené, nainstalujte do skriptu odpovídající balíčky, například:
     >  ``` Python
     > import os
     > os.system(f"pip install scikit-misc")
     > ```
     
-    Textové pole **skriptu Pythonu** se předem vyplní některými pokyny v komentářích a vzorový kód pro přístup k datům a výstup. Tento kód musíte upravit nebo nahradit. Nezapomeňte dodržovat konvence Pythonu týkající se odsazení a používání velkých a malých písmen.
+    Textové pole **skriptu Pythonu** se předem vyplní některými pokyny v komentářích a vzorový kód pro přístup k datům a výstup. Tento kód musíte upravit nebo nahradit. Použijte konvence Pythonu pro odsazení a změnu velikosti písmen:
 
     + Skript musí obsahovat funkci s názvem `azureml_main` jako vstupní bod pro tento modul.
-    + Funkce vstupního bodu musí mít dva vstupní argumenty: `Param<dataframe1>` a `Param<dataframe2>` , a to i v případě, že se tyto argumenty ve skriptu nepoužívají.
-    + Soubory zip připojené k třetímu vstupnímu portu jsou komprimovány a uloženy v adresáři, `.\Script Bundle` který je také přidán do jazyka Python `sys.path` . 
+    + Funkce vstupního bodu musí mít dva vstupní argumenty, `Param<dataframe1>` a `Param<dataframe2>` to i v případě, že se tyto argumenty ve skriptu nepoužívají.
+    + Soubory zip připojené k třetímu vstupnímu portu jsou komprimovány a uloženy v adresáři `.\Script Bundle` , který je také přidán do jazyka Python `sys.path` . 
 
-    Proto pokud váš soubor zip obsahuje `mymodule.py` , importujte ho pomocí `import mymodule` .
+    Pokud soubor s příponou. zip obsahuje `mymodule.py` , naimportujte ho pomocí `import mymodule` .
 
-    + Do návrháře lze vrátit dvě datové sady, které musí být sekvence typu `pandas.DataFrame` . V kódu Pythonu můžete vytvořit další výstupy a zapsat je přímo do služby Azure Storage.
+    Do návrháře lze vrátit dvě datové sady, které musí být sekvence typu `pandas.DataFrame` . V kódu Pythonu můžete vytvořit další výstupy a zapsat je přímo do služby Azure Storage.
 
-6. Odešlete kanál, nebo vyberte modul a klikněte na **Spustit vybraný** , aby se spouštěl jenom skript Pythonu.
+6. Odešlete kanál, nebo vyberte modul a vyberte **Spustit vybrané** , aby se spouštěl jenom skript Pythonu.
 
     Všechna data a kód se načtou do virtuálního počítače a spustí se pomocí zadaného prostředí Pythonu.
 
 ## <a name="results"></a>Výsledky
 
-Výsledky jakýchkoli výpočtů provedených integrovaným kódem Pythonu musí být poskytnuty jako PANDAS. Datový rámec, který je automaticky převeden do formátu datové sady Azure Machine Learning, abyste mohli výsledky použít s jinými moduly v kanálu.
+Výsledky jakýchkoli výpočtů pomocí vloženého kódu Pythonu musí být k dispozici jako `pandas.DataFrame` , který je automaticky převeden do Azure Machine Learningho formátu DataSet. Pak můžete výsledky použít s jinými moduly v kanálu.
 
 Modul vrací dvě datové sady:  
   
-+ **Datová sada výsledků 1**definovaná prvním vráceným pandasm datovým rámcem ve skriptu Pythonu
++ **Datová sada výsledků 1**definovaná prvním vráceným datovým snímkem PANDAS ve skriptu Pythonu.
 
-+ **Výsledná datová sada 2**definovaná druhým vráceným pandasm datovým snímkem ve skriptu Pythonu
++ **Výsledná datová sada 2**definovaná druhým vráceným datovým snímkem PANDAS ve skriptu Pythonu.
 
 
 ## <a name="next-steps"></a>Další kroky

@@ -5,16 +5,16 @@ services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 80414ccd6d5797614dd15bd61af8f37b3d2be05c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 60cbb269693b23b658b8e28f90383814d6657661
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81870362"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194327"
 ---
 # <a name="add-and-manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Přidávání a Správa knihoven pro Apache Spark ve službě Azure synapse Analytics
 
@@ -26,7 +26,7 @@ Balíčky Pythonu se dají přidat na úrovni fondů Spark (Preview) a balíčky
 
 Apache Spark ve službě Azure synapse Analytics má úplnou instalaci Anacondas a další knihovny. Seznam úplných knihoven najdete na stránce [podpora Apache Spark verzí](apache-spark-version-support.md).
 
-Když se spustí instance Sparku, vytvoří se v této instalaci jako základ nové virtuální prostředí. K upgradu virtuálního prostředí se navíc dá použít soubor *. txt s požadavky* (výstup z `pip freeze` příkazu). Balíčky uvedené v tomto souboru pro instalaci nebo upgrade se stáhnou z PyPi v době spuštění clusteru. Tento soubor požadavků se používá při každém vytvoření instance Spark z tohoto fondu Spark.
+Když se spustí instance Sparku, vytvoří se v této instalaci jako základ nové virtuální prostředí. K upgradu virtuálního prostředí se navíc dá použít soubor *requirements.txt* (výstup z `pip freeze` příkazu). Balíčky uvedené v tomto souboru pro instalaci nebo upgrade se stáhnou z PyPi v době spuštění clusteru. Tento soubor požadavků se používá při každém vytvoření instance Spark z tohoto fondu Spark.
 
 > [!IMPORTANT]
 >

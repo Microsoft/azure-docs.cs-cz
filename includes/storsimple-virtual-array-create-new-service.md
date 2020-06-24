@@ -17,7 +17,7 @@ ms.locfileid: "67175194"
 ---
 #### <a name="to-create-a-new-service"></a>Vytvoření nové služby
 
-1.  Pomocí přihlašovacích údajů pro účet Microsoft se přihlaste k Azure Portal na této <https://portal.azure.com/>adrese URL:. Pokud se zařízení nasazuje na portál pro státní správu, přihlaste se:<https://portal.azure.us/>
+1.  Pomocí přihlašovacích údajů pro účet Microsoft se přihlaste k Azure Portal na této adrese URL: <https://portal.azure.com/> . Pokud se zařízení nasazuje na portál pro státní správu, přihlaste se:<https://portal.azure.us/>
 
 2.  V Azure Portal klikněte na **+ vytvořit prostředek** &gt; **úložiště** &gt; **StorSimple virtuální řady**.
 

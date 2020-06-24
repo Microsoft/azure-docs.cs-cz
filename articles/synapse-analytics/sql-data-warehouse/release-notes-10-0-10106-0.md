@@ -4,7 +4,7 @@ description: Poznámky k verzi pro Azure synapse Analytics
 services: synapse-analytics
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 4/30/2020
 author: anumjs
 ms.author: anjangsh
@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: bf74e520340690c3dda71496360e5d9a2fe54ae8
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 6e2247d448807413d425dfec5d572fa895041938
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84115377"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85206814"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Poznámky k verzi služby Azure synapse Analytics
 
@@ -48,9 +48,9 @@ V případě vylepšení nástrojů se ujistěte, že máte ve verzi poznámky k
 |**Izolace úloh (GA)**|[Izolace úloh](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-isolation) je teď všeobecně dostupná.  Prostřednictvím [skupin úloh](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) můžete rezervovat a obsahovat prostředky.  Možnost Konfigurace časových limitů dotazů na zrušení dotazů je také možná.|
 |**Prostředí Portál pro správu úlohy (Preview)**| Uživatelé můžou nakonfigurovat a spravovat svá nastavení správy úloh prostřednictvím Azure Portal.  Možnost konfigurace [skupin úloh](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-create-a-workload-classifier-portal) a [klasifikátorů úloh](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-create-a-workload-classifier-portal) je možná.|
 |**Změna skupiny úloh**|K dispozici je teď možnost použít příkaz [změnit skupinu úloh](https://docs.microsoft.com/sql/t-sql/statements/alter-workload-group-transact-sql?view=azure-sqldw-latest) .  Pomocí příkazu ALTER změňte konfiguraci existující [skupiny úloh](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-isolation).|
-|**Automatické zjišťování schématu pro soubory Parquet pomocí příkazu COPY (Preview)**|[Příkaz Copy](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) teď podporuje detekci automatického schématu při načítání souborů Parquet. Příkaz automaticky detekuje schéma souboru Parquet a před zatížením vytvoří tabulku. Přihlaste se k následujícímu e-mailovému distribučnímu seznamu, abyste získali povolené: sqldwcopypreview@service.microsoft.com . |
-|**Načtení složitých datových typů Parquet pomocí příkazu COPY (Preview)**|[Příkaz Copy](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) teď podporuje načítání složitých typů Parquet. Komplexní typy, jako jsou mapy a seznamy, můžete načíst do řetězcových sloupců.  Přihlaste se k následujícímu e-mailovému distribučnímu seznamu, abyste získali povolené: sqldwcopypreview@service.microsoft.com . |
-|**Automatická komprese detekce souborů Parquet pomocí příkazu COPY**|[Příkaz pro kopírování](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) teď podporuje automatickou detekci kompresní metody pro soubory Parquet.|
+|**Automatické zjišťování schématu pro soubory Parquet pomocí příkazu COPY (Preview)**|[Příkaz Copy](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) teď podporuje detekci automatického schématu při načítání souborů Parquet. Příkaz automaticky detekuje schéma souboru Parquet a před zatížením vytvoří tabulku. Pokud chcete tuto funkci povolit, přečtěte si následující seznam e-mailových distribučních adres: sqldwcopypreview@service.microsoft.com . |
+|**Načtení složitých datových typů Parquet pomocí příkazu COPY (Preview)**|[Příkaz Copy](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) teď podporuje načítání složitých typů Parquet. Komplexní typy, jako jsou mapy a seznamy, můžete načíst do řetězcových sloupců.  Pokud chcete tuto funkci povolit, přečtěte si následující seznam e-mailových distribučních adres: sqldwcopypreview@service.microsoft.com . |
+|**Automatická komprese detekce souborů Parquet pomocí příkazu COPY**|[Příkaz pro kopírování](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) teď podporuje automatickou detekci kompresní metody pro soubory Parquet. Pokud chcete tuto funkci povolit, přečtěte si následující seznam e-mailových distribučních adres: sqldwcopypreview@service.microsoft.com .|
 |**Další doporučení pro zatížení**|Pro synapse SQL jsou nyní k dispozici [doporučení pro načtení](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-concept-recommendations) . Získejte proaktivní oznámení, když byste měli rozdělit soubory pro maximální propustnost, vyhledat svůj účet úložiště společně s vaším fondem SQL nebo zvýšit velikost dávky při použití nástrojů načítání, jako je rozhraní SQLBulkCopy API nebo BCP.|
 |**Aktualizovatelný distribuční sloupec T-SQL (GA)**|Uživatelé teď můžou aktualizovat data uložená v distribučním sloupci. Podrobnosti najdete [v pokynech k návrhu distribuovaných tabulek v synapse fondu SQL](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-distribute) .|
 |**T-SQL Update/Delete z... Spojení (GA)**|Aktualizace a odstranění na základě výsledků spojení s jinou tabulkou jsou nyní k dispozici. Podrobnosti najdete v tématu [aktualizace](https://docs.microsoft.com/sql/t-sql/queries/update-transact-sql?view=azure-sqldw-latest) a [odstranění](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql?view=azure-sqldw-latest) dokumentace.|

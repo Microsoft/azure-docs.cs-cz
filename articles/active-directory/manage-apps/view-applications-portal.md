@@ -3,8 +3,8 @@ title: Rychlý Start – zobrazení klientských aplikací pomocí Azure Active 
 description: V tomto rychlém startu použijte Azure Portal k zobrazení aplikací v tenantovi Azure Active Directory (Azure AD).
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,22 +12,22 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 04/09/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d40e968bb7079d50e3fa18889ae996c9b59c90f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ce3a1a55683b0882984a4986cf59853933954274
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74421818"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763002"
 ---
 # <a name="quickstart-view-your-azure-active-directory-tenant-applications"></a>Rychlý Start: zobrazení klientských aplikací Azure Active Directory
 
 V tomto rychlém startu se pomocí webu Azure Portal zobrazí aplikace v tenantovi Azure Active Directory (Azure AD).
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Abyste viděli výsledky, musí váš tenant Azure AD obsahovat alespoň jednu aplikaci. Informace o přidání aplikace najdete v rychlém startu [Přidání aplikace](add-application-portal.md).
 

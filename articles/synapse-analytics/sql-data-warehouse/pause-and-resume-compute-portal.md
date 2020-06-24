@@ -6,17 +6,17 @@ author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/18/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 55e3d5bf4fb63c35d484e4a764c7eeb2e2484fcf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 25f12d038b2a83688c12d95adefef3d4fb39be43
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80350962"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214464"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-via-the-azure-portal"></a>Rychlý Start: pozastavení a obnovení výpočetní kapacity ve fondu synapse SQL prostřednictvím Azure Portal
 
@@ -26,7 +26,7 @@ Azure Portal můžete použít k pozastavení a obnovení výpočetních prostř
 
 Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Pomocí [Vytvoření a připojení – portál](create-data-warehouse-portal.md) vytvořte fond SQL s názvem **mySampleDataWarehouse**. 
 

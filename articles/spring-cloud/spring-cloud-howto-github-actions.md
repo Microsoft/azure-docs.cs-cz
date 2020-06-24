@@ -6,12 +6,12 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/15/2019
-ms.openlocfilehash: 1a0624c01a3bb75c1a7b07b130345776417cf482
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: e17fa3e99de9f429fa279ba2e5413b60e9084de8
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84484317"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85125698"
 ---
 # <a name="azure-spring-cloud-cicd-with-github-actions"></a>Azure jarní Cloud CI/CD s akcemi GitHubu
 
@@ -21,7 +21,7 @@ Akce GitHubu podporují automatizovaný pracovní postup pro životní cyklus v�
 Tento příklad vyžaduje rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="set-up-github-repository-and-authenticate"></a>Nastavení úložiště GitHub a ověření
-K autorizaci akce přihlášení Azure potřebujete zásady služby Azure. Pokud chcete získat přihlašovací údaje Azure, spusťte na svém místním počítači tyto příkazy:
+K autorizaci akce přihlášení Azure budete potřebovat přihlašovací údaje instančního objektu Azure. Pokud chcete získat přihlašovací údaje Azure, spusťte na svém místním počítači tyto příkazy:
 ```
 az login
 az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID> --sdk-auth 

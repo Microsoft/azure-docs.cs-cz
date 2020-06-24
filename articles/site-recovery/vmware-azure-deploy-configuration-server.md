@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
 ms.openlocfilehash: 5209dab5e0934cc98bb1334a1565cc13998a7d2e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257378"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84704433"
 ---
 # <a name="deploy-a-configuration-server"></a>Nasazení konfiguračního serveru
 
@@ -38,12 +38,12 @@ K registraci konfiguračního serveru pomocí služeb Azure Site Recovery musít
 
 1. Aby uživatel mohl vytvořit aplikaci, musí mít roli vývojář aplikace.
     - Pokud se chcete ověřit, přihlaste se k Azure Portal.</br>
-    - Přejít na **Azure Active Directory** > **rolí a správců**.</br>
+    - Přejít na **Azure Active Directory**  >  **rolí a správců**.</br>
     - Ověřte, zda je role vývojář aplikace přiřazena uživateli. Pokud ne, použijte uživatele s tímto oprávněním nebo se obraťte na [správce, aby oprávnění povolil](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal#assign-roles).
     
 2. Pokud se role vývojáře aplikace nedá přiřadit, ujistěte se, že příznak **Uživatelé můžou registrovat aplikace** nastavené na **hodnotu true** , aby uživatel mohl vytvořit identitu. Povolení těchto oprávnění:
     - Přihlaste se k portálu Azure.
-    - Přejít na **Azure Active Directory** > **nastavení uživatele**.
+    - Přejít na **Azure Active Directory**  >  **nastavení uživatele**.
     - V **App registrations**části registrace aplikací **můžou uživatelé registrovat aplikace**, vyberte **Ano**.
 
       ![AD_application_permission Azure](media/vmware-azure-deploy-configuration-server/AAD_application_permission.png)
@@ -53,7 +53,7 @@ K registraci konfiguračního serveru pomocí služeb Azure Site Recovery musít
 
 ## <a name="download-the-template"></a>Stažení šablony
 
-1. V trezoru pokračujte na **Příprava** > **zdroje**infrastruktury.
+1. V trezoru pokračujte na **Příprava**  >  **zdroje**infrastruktury.
 2. V části **Připravit zdroj** vyberte **+ Konfigurační server**.
 3. V části **Přidat server** zkontrolujte, jestli se v části **Typ serveru** zobrazí **Konfigurační server pro VMware**.
 4. Stáhněte si šablonu vajíček pro konfigurační server.
@@ -78,7 +78,7 @@ K registraci konfiguračního serveru pomocí služeb Azure Site Recovery musít
 7. Na zbývajících stránkách průvodce přijměte výchozí nastavení.
 8. V části **Ready to complete** (Připraveno k dokončení):
 
-    * Pokud chcete nastavit virtuální počítač s výchozím nastavením, vyberte **po** > **dokončení**nasazení možnost zapnout.
+    * Pokud chcete nastavit virtuální počítač s výchozím nastavením, vyberte **po dokončení nasazení možnost zapnout**  >  **Finish**.
     * Pokud chcete přidat další síťové rozhraní, zrušte **po nasazení možnost zapnout**a pak vyberte **Dokončit**. Ve výchozím nastavení se šablona konfiguračního serveru nasadí s jedním síťovým adaptérem. Po nasazení můžete přidat další síťové adaptéry.
 
 > [!IMPORTANT]
@@ -94,7 +94,7 @@ Pokud chcete přidat další síťovou kartu ke konfiguračnímu serveru, přide
 1. V inventáři konzole vSphere Client klikněte pravým tlačítkem na virtuální počítač a vyberte **Edit Settings** (Upravit nastavení).
 2. V části **Hardware** vyberte **Add** (Přidat) > **Ethernet Adapter** (Adaptér sítě Ethernet). Pak vyberte **Další**.
 3. Vyberte typ adaptéru a síť.
-4. Pokud chcete připojit virtuální síťovou kartu, když je virtuální počítač zapnutý, vyberte **připojit se v Power-on**. Pak vyberte **Další** > **Dokončit** > **OK**.
+4. Pokud chcete připojit virtuální síťovou kartu, když je virtuální počítač zapnutý, vyberte **připojit se v Power-on**. Pak vyberte **Další**  >  **Dokončit**  >  **OK**.
 
 ## <a name="register-the-configuration-server-with-azure-site-recovery-services"></a>Registrace konfiguračního serveru pomocí služby Azure Site Recovery Services
 
@@ -129,10 +129,10 @@ Pokud chcete přidat další síťovou kartu ke konfiguračnímu serveru, přide
 
 5. Před pokračováním ověřte, že je v **nastavení ověřit konfiguraci zařízení**nutné ověřit požadavky.
 6. V části **Konfigurace serveru vCenter Server/vSphere ESXi**zadejte plně kvalifikovaný název domény nebo IP adresu serveru vCenter nebo hostitele vSphere, kde se nacházejí virtuální počítače, které chcete replikovat. Zadejte port, na kterém server naslouchá. Zadejte popisný název, který se použije pro server VMware v trezoru.
-7. Zadejte přihlašovací údaje, které bude konfigurační server používat pro připojení k serveru VMware. Služba Site Recovery je použije k automatickému zjištění virtuálních počítačů VMware, které jsou dostupné pro replikaci. Vyberte **Přidat** > **pokračovat**. Přihlašovací údaje, které tady zadáte, se uloží místně.
+7. Zadejte přihlašovací údaje, které bude konfigurační server používat pro připojení k serveru VMware. Služba Site Recovery je použije k automatickému zjištění virtuálních počítačů VMware, které jsou dostupné pro replikaci. Vyberte **Přidat**  >  **pokračovat**. Přihlašovací údaje, které tady zadáte, se uloží místně.
 8. V části **Konfigurovat přihlašovací údaje virtuálního počítače**zadejte uživatelské jméno a heslo virtuálních počítačů, do kterých se během replikace automaticky nainstaluje služba mobility. Pro počítače s **Windows** vyžaduje účet oprávnění místního správce na počítačích, které chcete replikovat. Pro **Linux**zadejte podrobnosti kořenového účtu.
 9. Vyberte **Dokončit konfiguraci** a dokončete registraci.
-10. Po dokončení registrace otevřete Azure Portal a ověřte, že je konfigurační server a server VMware uvedený v **Recovery Services trezoru** > **Správa** > **Site Recovery** > **konfiguračních serverů**infrastruktury.
+10. Po dokončení registrace otevřete Azure Portal a ověřte, že je konfigurační server a server VMware uvedený v **Recovery Services trezoru**  >  **Správa**  >  **Site Recovery**  >  **konfiguračních serverů**infrastruktury.
 
 ## <a name="upgrade-the-configuration-server"></a>Upgrade konfiguračního serveru
 
@@ -175,7 +175,7 @@ Aby nedošlo k přerušení probíhající replikace, ujistěte se, že po regis
     Ne. Neměňte heslo ke konfiguračnímu serveru. Změna hesla přerušuje replikaci chráněných počítačů a vede do kritického stavu.
 * Kde můžu stahovat registrační klíče trezoru?
 
-    V **Recovery Services trezoru**vyberte **Spravovat** > **Site Recovery** > **konfigurační servery**infrastruktury. V části **servery**vyberte **Stáhnout registrační klíč** a Stáhněte si soubor s přihlašovacími údaji trezoru.
+    V **Recovery Services trezoru**vyberte **Spravovat**  >  **Site Recovery**  >  **konfigurační servery**infrastruktury. V části **servery**vyberte **Stáhnout registrační klíč** a Stáhněte si soubor s přihlašovacími údaji trezoru.
 * Můžu naklonovat existující konfigurační server a použít ho k orchestraci replikace?
 
     Ne. Používání klonovaného konfiguračního serveru se nepodporuje. Naklonování procesového serveru se škálováním na více instancí je také nepodporovaný scénář. Klonování Site Recovery komponent má vliv na probíhající replikaci.

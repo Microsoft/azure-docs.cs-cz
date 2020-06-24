@@ -6,17 +6,17 @@ author: ronortloff
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: bcac6af9efd18ef8abeea7d82961fd8f2fe70ba3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 05173790d8efe05851d39121ecfa15186ccb6d3c
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80633755"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212951"
 ---
 # <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>Rychlý Start: vytvoření klasifikátoru úloh pomocí T-SQL
 

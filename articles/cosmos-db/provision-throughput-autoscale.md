@@ -6,12 +6,12 @@ ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: b2efca53ce8d59ca1e050a9c18100b67024f3ba3
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 20b0bcfe5043d4767199c36796fa1123ed779363
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465656"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791142"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-with-autoscale-throughput"></a>Vytvoření kontejnerů a databází Azure Cosmos s využitím propustnosti automatického škálování
 
@@ -57,8 +57,9 @@ Každou hodinu se vám bude účtovat nejvyšší propustnost, `T` kterou systé
 
 Vstupním bodem pro maximální propustnost pro automatické škálování `Tmax` začíná 4000 ru/s, který se škáluje mezi 400-4000 ru/s. Můžete nastavit `Tmax` v přírůstcích po 1000 ru/s a hodnotu kdykoli změnit.  
 
-## <a name="enable-autoscale-on-existing-resources"></a>Povolit automatické škálování u stávajících prostředků ##
-Pomocí [Azure Portal](how-to-provision-autoscale-throughput.md#enable-autoscale-on-existing-database-or-container) můžete povolit automatické škálování existující databáze nebo kontejneru. Můžete kdykoli přepínat mezi zajištěnou propustností automatického škálování a standardní (ruční). Další informace najdete v této [dokumentaci](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work) .
+## <a name="enable-autoscale-on-existing-resources"></a>Povolit automatické škálování u stávajících prostředků
+
+Pomocí [Azure Portal](how-to-provision-autoscale-throughput.md#enable-autoscale-on-existing-database-or-container) můžete povolit automatické škálování existující databáze nebo kontejneru. Můžete kdykoli přepínat mezi zajištěnou propustností automatického škálování a standardní (ruční). Další informace najdete v této [dokumentaci](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work) . V současné době můžete pro všechna rozhraní API použít Azure Portal jenom k povolení automatického škálování u stávajících prostředků.
 
 ## <a name="throughput-and-storage-limits-for-autoscale"></a><a id="autoscale-limits"></a>Omezení propustnosti a úložiště pro automatické škálování
 

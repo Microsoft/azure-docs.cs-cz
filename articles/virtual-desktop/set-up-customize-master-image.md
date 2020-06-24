@@ -4,16 +4,16 @@ description: Postup přípravy, přizpůsobení a nahrání hlavní image virtu�
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: fc6eb22f81279003a5355993db231ffec8e31b7d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 31a2bcdcf7b21999ddf17170b024589204c0e9e5
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611955"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212781"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Příprava a přizpůsobení hlavní image VHD
 
@@ -63,9 +63,9 @@ Convert-VHD –Path c:\test\MY-VM.vhdx –DestinationPath c:\test\MY-NEW-VM.vhd 
 
 ## <a name="software-preparation-and-installation"></a>Příprava softwaru a instalace
 
-V této části se dozvíte, jak připravit a instalovat FSLogix a Windows Defender a také některé základní možnosti konfigurace pro aplikace a registr vašich imagí. 
+V této části se dozvíte, jak připravit a instalovat FSLogix a Windows Defender a také některé základní možnosti konfigurace pro aplikace a registr vašich imagí.
 
-Pokud na svém VIRTUÁLNÍm počítači instalujete Office 365 ProPlus a OneDrive, přejděte k instalaci [Office na hlavní disk VHD](install-office-on-wvd-master-image.md) a postupujte podle pokynů pro instalaci aplikací. Až budete hotovi, vraťte se k tomuto článku.
+Pokud na svém VIRTUÁLNÍm počítači instalujete Microsoft 365 aplikace pro Enterprise a OneDrive, přejděte k [instalaci Office na hlavní disk VHD](install-office-on-wvd-master-image.md) a postupujte podle pokynů pro instalaci aplikací. Až budete hotovi, vraťte se k tomuto článku.
 
 Pokud uživatelé potřebují přístup k určitým aplikacím LOB, doporučujeme je nainstalovat po dokončení pokynů v této části.
 
@@ -87,7 +87,7 @@ Další informace o tom, jak nakonfigurovat Windows Defender pro vyloučení ur�
 
 Zakázání automatických aktualizací prostřednictvím místních Zásady skupiny:
 
-1. Otevřete **Editor místních zásad skupiny\\šablony pro správu\\součásti\\systému Windows Web Windows Update**.
+1. Otevřete **Editor místních zásad skupiny \\ šablony pro správu \\ součásti systému Windows \\ web Windows Update**.
 2. Klikněte pravým tlačítkem na **Konfigurovat Automatické aktualizace** a nastavte ji na **zakázáno**.
 
 Můžete také spustit následující příkaz na příkazovém řádku a zakázat tak automatické aktualizace.
@@ -113,7 +113,7 @@ Postup přesměrování časových pásem:
 1. Na serveru služby Active Directory otevřete **Konzola pro správu zásad skupiny**.
 2. Rozbalíte své domény a Zásady skupiny objekty.
 3. Klikněte pravým tlačítkem myši na **objekt Zásady skupiny** , který jste vytvořili pro nastavení zásad skupiny, a vyberte **Upravit**.
-4. V **Editor pro správu zásad skupiny**přejděte na**zásady** >  **Konfigurace** > počítače**šablony pro správu** > **součásti** > systému Windows**Vzdálená plocha** > **hostitel relace vzdálené plochy** > **zařízení a přesměrování prostředků**.
+4. V **Editor pro správu zásad skupiny**přejděte na zásady **Konfigurace počítače**  >  **Policies**  >  **šablony pro správu**  >  **součásti systému Windows**  >  **Vzdálená plocha**  >  **hostitel relace vzdálené plochy**  >  **zařízení a přesměrování prostředků**.
 5. Povolte nastavení **Povolit přesměrování časového pásma** .
 
 Tento příkaz můžete také spustit v hlavní imagi pro přesměrování časových pásem:
@@ -136,7 +136,7 @@ reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\
 
 ### <a name="include-additional-language-support"></a>Zahrnutí další jazykové podpory
 
-Tento článek nepopisuje, jak nakonfigurovat jazyk a regionální podporu. Další informace najdete v těchto článcích:
+Tento článek nepopisuje, jak nakonfigurovat jazyk a regionální podporu. Další informace najdete v následujících článcích:
 
 - [Přidání jazyků do imagí Windows](/windows-hardware/manufacture/desktop/add-language-packs-to-windows/)
 - [Funkce na vyžádání](/windows-hardware/manufacture/desktop/features-on-demand-v2--capabilities/)

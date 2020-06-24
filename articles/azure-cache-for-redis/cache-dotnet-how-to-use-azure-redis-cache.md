@@ -7,13 +7,13 @@ ms.service: cache
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 03/11/2020
-ms.openlocfilehash: 6384416c2feef3c9a9517bce08374a7667eb5d6b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/18/2020
+ms.openlocfilehash: 9072f057059c66d0030c31e649fda6b6ebe3db9d
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79369042"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117807"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-framework-application"></a>Rychlý Start: použití mezipaměti Azure pro Redis s aplikací .NET Framework
 
@@ -36,7 +36,7 @@ Upravte soubor *TajnéKódyMezipaměti.config* a přidejte do něj následujíc�
 
 ```xml
 <appSettings>
-    <add key="CacheConnection" value="<cache-name>.redis.cache.windows.net,abortConnect=false,ssl=true,password=<access-key>"/>
+    <add key="CacheConnection" value="<cache-name>.redis.cache.windows.net,abortConnect=false,ssl=true,allowAdmin=true,password=<access-key>"/>
 </appSettings>
 ```
 
@@ -47,7 +47,7 @@ Upravte soubor *TajnéKódyMezipaměti.config* a přidejte do něj následujíc�
 
 ## <a name="create-a-console-app"></a>Vytvoření konzolové aplikace
 
-V aplikaci Visual Studio klikněte na **soubor** > **Nový** > **projekt**.
+V aplikaci Visual Studio klikněte na **soubor**  >  **Nový**  >  **projekt**.
 
 Vyberte **Konzolová aplikace (.NET Framework)** a **vedle** konfigurace aplikace. Zadejte **název projektu** a kliknutím na **vytvořit** vytvořte novou konzolovou aplikaci.
 
@@ -57,7 +57,7 @@ Vyberte **Konzolová aplikace (.NET Framework)** a **vedle** konfigurace aplikac
 
 V této části nakonfigurujete konzolovou aplikaci, aby pro .NET používala klienta [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis).
 
-V aplikaci Visual Studio klikněte na **nástroje** > **správce** > balíčků NuGet**Konzola správce balíčků**a spusťte následující příkaz z okna konzoly Správce balíčků.
+V aplikaci Visual Studio klikněte na **nástroje**  >  **Správce balíčků NuGet**  >  **Konzola správce balíčků**a spusťte následující příkaz z okna konzoly Správce balíčků.
 
 ```powershell
 Install-Package StackExchange.Redis
@@ -77,8 +77,7 @@ V sadě Visual Studio otevřete soubor *App.config* a aktualizujte ho tak, aby o
         <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.7.1" />
     </startup>
 
-    <appSettings file="C:\AppSecrets\CacheSecrets.config"></appSettings>  
-
+    <appSettings file="C:\AppSecrets\CacheSecrets.config"></appSettings>
 </configuration>
 ```
 
@@ -98,19 +97,19 @@ Neuchovávejte přihlašovací údaje ve zdrojovém kódu. Pro zjednodušení t�
 V souboru *Program.cs* přidejte k třídě `Program` konzolové aplikace následující členy:
 
 ```csharp
-        private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
-        {
-            string cacheConnection = ConfigurationManager.AppSettings["CacheConnection"].ToString();
-            return ConnectionMultiplexer.Connect(cacheConnection);
-        });
+private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
+{
+    string cacheConnection = ConfigurationManager.AppSettings["CacheConnection"].ToString();
+    return ConnectionMultiplexer.Connect(cacheConnection);
+});
 
-        public static ConnectionMultiplexer Connection
-        {
-            get
-            {
-                return lazyConnection.Value;
-            }
-        }
+public static ConnectionMultiplexer Connection
+{
+    get
+    {
+        return lazyConnection.Value;
+    }
+}
 ```
 
 
@@ -123,40 +122,49 @@ Hodnota *CacheConnection* appSetting se používá k odkazování na připojovac
 Pro proceduru `Main` třídy `Program` konzolové aplikace přidejte následující kód:
 
 ```csharp
-        static void Main(string[] args)
-        {
-            // Connection refers to a property that returns a ConnectionMultiplexer
-            // as shown in the previous example.
-            IDatabase cache = Connection.GetDatabase();
+static void Main(string[] args)
+{
+    // Connection refers to a property that returns a ConnectionMultiplexer
+    // as shown in the previous example.
+    IDatabase cache = Connection.GetDatabase();
 
-            // Perform cache operations using the cache object...
+    // Perform cache operations using the cache object...
 
-            // Simple PING command
-            string cacheCommand = "PING";
-            Console.WriteLine("\nCache command  : " + cacheCommand);
-            Console.WriteLine("Cache response : " + cache.Execute(cacheCommand).ToString());
+    // Simple PING command
+    string cacheCommand = "PING";
+    Console.WriteLine("\nCache command  : " + cacheCommand);
+    Console.WriteLine("Cache response : " + cache.Execute(cacheCommand).ToString());
 
-            // Simple get and put of integral data types into the cache
-            cacheCommand = "GET Message";
-            Console.WriteLine("\nCache command  : " + cacheCommand + " or StringGet()");
-            Console.WriteLine("Cache response : " + cache.StringGet("Message").ToString());
+    // Simple get and put of integral data types into the cache
+    cacheCommand = "GET Message";
+    Console.WriteLine("\nCache command  : " + cacheCommand + " or StringGet()");
+    Console.WriteLine("Cache response : " + cache.StringGet("Message").ToString());
 
-            cacheCommand = "SET Message \"Hello! The cache is working from a .NET console app!\"";
-            Console.WriteLine("\nCache command  : " + cacheCommand + " or StringSet()");
-            Console.WriteLine("Cache response : " + cache.StringSet("Message", "Hello! The cache is working from a .NET console app!").ToString());
+    cacheCommand = "SET Message \"Hello! The cache is working from a .NET console app!\"";
+    Console.WriteLine("\nCache command  : " + cacheCommand + " or StringSet()");
+    Console.WriteLine("Cache response : " + cache.StringSet("Message", "Hello! The cache is working from a .NET console app!").ToString());
 
-            // Demonstrate "SET Message" executed as expected...
-            cacheCommand = "GET Message";
-            Console.WriteLine("\nCache command  : " + cacheCommand + " or StringGet()");
-            Console.WriteLine("Cache response : " + cache.StringGet("Message").ToString());
+    // Demonstrate "SET Message" executed as expected...
+    cacheCommand = "GET Message";
+    Console.WriteLine("\nCache command  : " + cacheCommand + " or StringGet()");
+    Console.WriteLine("Cache response : " + cache.StringGet("Message").ToString());
 
-            // Get the client list, useful to see if connection list is growing...
-            cacheCommand = "CLIENT LIST";
-            Console.WriteLine("\nCache command  : " + cacheCommand);
-            Console.WriteLine("Cache response : \n" + cache.Execute("CLIENT", "LIST").ToString().Replace("id=", "id="));
+    // Get the client list, useful to see if connection list is growing...
+    // Note that this requires the allowAdmin=true
+    cacheCommand = "CLIENT LIST";
+    Console.WriteLine("\nCache command  : " + cacheCommand);
+    var endpoint = (System.Net.DnsEndPoint) Connection.GetEndPoints()[0];
+    var server = Connection.GetServer(endpoint.Host, endpoint.Port);
 
-            lazyConnection.Value.Dispose();
-        }
+    var clients = server.ClientList(); 
+    Console.WriteLine("Cache response :");
+    foreach (var client in clients)
+    {
+        Console.WriteLine(client.Raw);
+    }
+
+    lazyConnection.Value.Dispose();
+}
 ```
 
 Azure cache pro Redis má konfigurovatelný počet databází (výchozí hodnota je 16), který se dá použít k logickému oddělení dat v mezipaměti Azure pro Redis. Kód se připojí k výchozí databázi DB 0. Další informace najdete v tématu [Co jsou databáze Redis?](cache-faq.md#what-are-redis-databases) a [Výchozí konfigurace serveru Redis](cache-configure.md#default-redis-server-configuration).
@@ -178,7 +186,7 @@ Mezipaměť Azure pro Redis může ukládat do mezipaměti objekty .NET i primit
 
 Jeden snadný způsob, jak serializovat objekty, je použít metody serializace `JsonConvert` v balíčku [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/) a serializovat a deserializovat tak objekty do a z formátu JSON. V této části přidáte do mezipaměti objekt .NET.
 
-V aplikaci Visual Studio klikněte na **nástroje** > **správce** > balíčků NuGet**Konzola správce balíčků**a spusťte následující příkaz z okna konzoly Správce balíčků.
+V aplikaci Visual Studio klikněte na **nástroje**  >  **Správce balíčků NuGet**  >  **Konzola správce balíčků**a spusťte následující příkaz z okna konzoly Správce balíčků.
 
 ```powershell
 Install-Package Newtonsoft.Json
@@ -193,35 +201,35 @@ using Newtonsoft.Json;
 Do souboru *Program.cs* přidejte následující definici třídy `Employee`:
 
 ```csharp
-        class Employee
-        {
-            public string Id { get; set; }
-            public string Name { get; set; }
-            public int Age { get; set; }
+class Employee
+{
+    public string Id { get; set; }
+    public string Name { get; set; }
+    public int Age { get; set; }
 
-            public Employee(string EmployeeId, string Name, int Age)
-            {
-                this.Id = EmployeeId;
-                this.Name = Name;
-                this.Age = Age;
-            }
-        }
+    public Employee(string EmployeeId, string Name, int Age)
+    {
+        this.Id = EmployeeId;
+        this.Name = Name;
+        this.Age = Age;
+    }
+}
 ```
 
 Na konec procedury `Main()` a před volání metody `Dispose()` v souboru *Program.cs* přidejte do mezipaměti následující řádky kódu a získejte serializovaný objekt .NET:
 
 ```csharp
-            // Store .NET object to cache
-            Employee e007 = new Employee("007", "Davide Columbo", 100);
-            Console.WriteLine("Cache response from storing Employee .NET object : " + 
-                cache.StringSet("e007", JsonConvert.SerializeObject(e007)));
+    // Store .NET object to cache
+    Employee e007 = new Employee("007", "Davide Columbo", 100);
+    Console.WriteLine("Cache response from storing Employee .NET object : " + 
+    cache.StringSet("e007", JsonConvert.SerializeObject(e007)));
 
-            // Retrieve .NET object from cache
-            Employee e007FromCache = JsonConvert.DeserializeObject<Employee>(cache.StringGet("e007"));
-            Console.WriteLine("Deserialized Employee .NET object :\n");
-            Console.WriteLine("\tEmployee.Name : " + e007FromCache.Name);
-            Console.WriteLine("\tEmployee.Id   : " + e007FromCache.Id);
-            Console.WriteLine("\tEmployee.Age  : " + e007FromCache.Age + "\n");
+    // Retrieve .NET object from cache
+    Employee e007FromCache = JsonConvert.DeserializeObject<Employee>(cache.StringGet("e007"));
+    Console.WriteLine("Deserialized Employee .NET object :\n");
+    Console.WriteLine("\tEmployee.Name : " + e007FromCache.Name);
+    Console.WriteLine("\tEmployee.Id   : " + e007FromCache.Id);
+    Console.WriteLine("\tEmployee.Age  : " + e007FromCache.Age + "\n");
 ```
 
 Stisknutím kombinace kláves **Ctrl+F5** sestavte a spusťte konzolovou aplikaci a otestujte serializaci objektů .NET. 

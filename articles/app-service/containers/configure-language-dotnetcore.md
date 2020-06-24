@@ -3,13 +3,13 @@ title: Konfigurace aplikací pro Linux ASP.NET Core
 description: Naučte se konfigurovat předem sestavený ASP.NET Core kontejner pro vaši aplikaci. Tento článek ukazuje nejběžnější konfigurační úlohy.
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/13/2019
-ms.openlocfilehash: b1d9e59109f5ace25abb9840b48e44ff03d394e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/02/2020
+ms.openlocfilehash: e009f5b1fc656f700b3f0e76dda6e545aed535d2
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78255916"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84905761"
 ---
 # <a name="configure-a-linux-aspnet-core-app-for-azure-app-service"></a>Konfigurace aplikace ASP.NET Core pro Linux pro Azure App Service
 
@@ -43,12 +43,12 @@ az webapp config set --name <app-name> --resource-group <resource-group-name> --
 
 Pokud nasadíte aplikaci s použitím balíčků Git nebo zip se zapnutou možností automatizace sestavení, App Service sestavování kroků automatizace pomocí následujícího postupu:
 
-1. Spusťte vlastní skript `PRE_BUILD_SCRIPT_PATH`, pokud je určen.
+1. Spusťte vlastní skript, pokud je určen `PRE_BUILD_SCRIPT_PATH` .
 1. Spusťte `dotnet restore` pro obnovení závislostí NuGet.
-1. Spusťte `dotnet publish` příkaz pro sestavení binárního souboru pro produkční prostředí.
-1. Spusťte vlastní skript `POST_BUILD_SCRIPT_PATH`, pokud je určen.
+1. Spusťte příkaz `dotnet publish` pro sestavení binárního souboru pro produkční prostředí.
+1. Spusťte vlastní skript, pokud je určen `POST_BUILD_SCRIPT_PATH` .
 
-`PRE_BUILD_COMMAND`a `POST_BUILD_COMMAND` jsou proměnné prostředí, které jsou ve výchozím nastavení prázdné. Chcete-li spustit příkazy před sestavením `PRE_BUILD_COMMAND`, definujte. Chcete-li spustit příkazy po sestavení, `POST_BUILD_COMMAND`definujte.
+`PRE_BUILD_COMMAND`a `POST_BUILD_COMMAND` jsou proměnné prostředí, které jsou ve výchozím nastavení prázdné. Chcete-li spustit příkazy před sestavením, definujte `PRE_BUILD_COMMAND` . Chcete-li spustit příkazy po sestavení, definujte `POST_BUILD_COMMAND` .
 
 Následující příklad určuje dvě proměnné pro řadu příkazů, které jsou odděleny čárkami.
 
@@ -81,8 +81,8 @@ namespace SomeNamespace
     
         public SomeMethod()
         {
-            // retrieve App Service app setting
-            var myAppSetting = _configuration["MySetting"];
+            // retrieve nested App Service app setting
+            var myHierarchicalConfig = _configuration["My:Hierarchical:Config:Data"];
             // retrieve App Service connection string
             var myConnString = _configuration.GetConnectionString("MyDbConnection");
         }
@@ -90,11 +90,18 @@ namespace SomeNamespace
 }
 ```
 
-Pokud nakonfigurujete nastavení aplikace se stejným názvem v App Service a v souboru *appSettings. JSON*, má například hodnota App Service přednost před hodnotou *appSettings. JSON* . Lokální hodnota *appSettings. JSON* vám umožní místní ladění aplikace, ale hodnota App Service umožňuje spustit aplikaci v produktu s nastavením produkčního prostředí. Připojovací řetězce fungují stejným způsobem. Tímto způsobem můžete zachovat tajné klíče aplikace mimo vaše úložiště kódu a přistupovat k odpovídajícím hodnotám beze změny kódu.
+Pokud nakonfigurujete nastavení aplikace se stejným názvem v App Service a v *appsettings.js*, například hodnota App Service má přednost před *appsettings.jsna* hodnotě. Místní *appsettings.js* hodnota umožňuje ladit aplikaci místně, ale hodnota App Service umožňuje spuštění aplikace v produktu s nastavením produkčního prostředí. Připojovací řetězce fungují stejným způsobem. Tímto způsobem můžete zachovat tajné klíče aplikace mimo vaše úložiště kódu a přistupovat k odpovídajícím hodnotám beze změny kódu.
+
+> [!NOTE]
+> Všimněte si, že [Hierarchická konfigurační data](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/#hierarchical-configuration-data) v *appsettings.js* jsou k dispozici pomocí `:` oddělovače standard pro .NET Core. Pokud chcete v App Service přepsat konkrétní hierarchické nastavení konfigurace, v klíči nastavte název nastavení aplikace na stejný formát s oddělovači. v [Cloud Shell](https://shell.azure.com)můžete spustit následující příklad:
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings My:Hierarchical:Config:Data="some value"
+```
 
 ## <a name="get-detailed-exceptions-page"></a>Získat podrobné stránky výjimek
 
-Když aplikace ASP.NET vygeneruje výjimku v ladicím programu sady Visual Studio, prohlížeč zobrazí stránku podrobností o výjimce, ale v App Service tuto stránku nahradila Obecná chyba **HTTP 500** nebo při **zpracování vaší žádosti došlo k chybě.** zpráva. Pokud chcete zobrazit stránku podrobností o výjimce v App Service, `ASPNETCORE_ENVIRONMENT` přidejte do aplikace nastavení aplikace spuštěním následujícího příkazu v <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>.
+Když aplikace ASP.NET vygeneruje výjimku v ladicím programu sady Visual Studio, prohlížeč zobrazí stránku podrobností o výjimce, ale v App Service tuto stránku nahradila Obecná chyba **HTTP 500** nebo při **zpracování vaší žádosti došlo k chybě.** zpráva. Pokud chcete zobrazit stránku podrobností o výjimce v App Service, přidejte do `ASPNETCORE_ENVIRONMENT` aplikace nastavení aplikace spuštěním následujícího příkazu v <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings ASPNETCORE_ENVIRONMENT="Development"
@@ -104,7 +111,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 V App Service dojde k [ukončení protokolu SSL](https://wikipedia.org/wiki/TLS_termination_proxy) v nástrojích pro vyrovnávání zatížení sítě, takže všechny požadavky HTTPS dosáhnou vaší aplikace jako nešifrované požadavky HTTP. Pokud vaše logika aplikace potřebuje zjistit, jestli jsou požadavky uživatele zašifrované, nebo ne, nakonfigurujte v *Startup.cs*middleware pro předávané hlavičky:
 
-- Nakonfigurujte middleware pomocí [ForwardedHeadersOptions](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) k `X-Forwarded-For` přeposílání `X-Forwarded-Proto` hlaviček a `Startup.ConfigureServices`v.
+- Nakonfigurujte middleware pomocí [ForwardedHeadersOptions](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) k přeposílání `X-Forwarded-For` `X-Forwarded-Proto` hlaviček a v `Startup.ConfigureServices` .
 - Přidejte do známých sítí rozsahy privátních IP adres, aby middleware mohl důvěřovat nástroji pro vyrovnávání zatížení App Service.
 - Vyvolat metodu [UseForwardedHeaders](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) v v `Startup.Configure` před voláním jiných middlewarů.
 
@@ -154,7 +161,7 @@ project = <project-name>/<project-name>.csproj
 
 ### <a name="using-app-settings"></a>Použití nastavení aplikace
 
-V <a target="_blank" href="https://shell.azure.com">Azure Cloud Shell</a>přidejte do aplikace App Service nastavení aplikace spuštěním následujícího příkazu CLI. Nahraďte * \<>název aplikace *, * \<název skupiny prostředků>* a * \<>název projektu* příslušnými hodnotami.
+V <a target="_blank" href="https://shell.azure.com">Azure Cloud Shell</a>přidejte do aplikace App Service nastavení aplikace spuštěním následujícího příkazu CLI. Nahraďte *\<app-name>* , *\<resource-group-name>* a *\<project-name>* odpovídajícími hodnotami.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PROJECT="<project-name>/<project-name>.csproj"
@@ -162,7 +169,26 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ## <a name="access-diagnostic-logs"></a>Přístup k diagnostickým protokolům
 
-[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+ASP.NET Core poskytuje [integrovaného zprostředkovatele protokolování pro App Service](https://docs.microsoft.com/aspnet/core/fundamentals/logging/#azure-app-service). V *program.cs* projektu přidejte poskytovatele do aplikace prostřednictvím `ConfigureLogging` metody rozšíření, jak je znázorněno v následujícím příkladu:
+
+```csharp
+public static IHostBuilder CreateHostBuilder(string[] args) =>
+    Host.CreateDefaultBuilder(args)
+        .ConfigureLogging(logging =>
+        {
+            logging.AddAzureWebAppDiagnostics();
+        })
+        .ConfigureWebHostDefaults(webBuilder =>
+        {
+            webBuilder.UseStartup<Startup>();
+        });
+```
+
+Pak můžete nakonfigurovat a vygenerovat protokoly se [standardním vzorem .NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging).
+
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-linux-no-h.md)]
+
+Další informace o řešení potíží s ASP.NET Core aplikacemi v App Service najdete v tématu věnovaném [řešení potíží ASP.NET Core na Azure App Service a IIS](https://docs.microsoft.com/aspnet/core/test/troubleshoot-azure-iis) .
 
 ## <a name="open-ssh-session-in-browser"></a>Otevřít relaci SSH v prohlížeči
 

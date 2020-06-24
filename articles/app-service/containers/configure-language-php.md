@@ -4,12 +4,12 @@ description: Přečtěte si, jak nakonfigurovat předem sestavený kontejner PHP
 ms.devlang: php
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: 9933205095587d9e8e0d8a5641d213f159512450
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 9e4237f1eecb9f6542aac946525ff4583e478c2e
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234938"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84905693"
 ---
 # <a name="configure-a-linux-php-app-for-azure-app-service"></a>Konfigurace aplikace pro Linux PHP pro Azure App Service
 
@@ -104,17 +104,17 @@ if (isset($_SERVER['X-Forwarded-Proto']) && $_SERVER['X-Forwarded-Proto'] === 'h
 
 Oblíbená webová rozhraní umožňují přístup k `X-Forwarded-*` informacím ve standardním vzoru aplikace. V [CodeIgniter](https://codeigniter.com/) [is_https ()](https://github.com/bcit-ci/CodeIgniter/blob/master/system/core/Common.php#L338-L365) ve `X_FORWARDED_PROTO` výchozím nastavení kontroluje hodnotu.
 
-## <a name="customize-phpini-settings"></a>Přizpůsobení nastavení php. ini
+## <a name="customize-phpini-settings"></a>Přizpůsobení nastavení php.ini
 
-Pokud potřebujete provést změny v instalaci PHP, můžete změnit libovolné [direktivy php. ini](https://www.php.net/manual/ini.list.php) pomocí následujících kroků.
+Pokud potřebujete provést změny v instalaci PHP, můžete změnit libovolné [direktivyphp.ini](https://www.php.net/manual/ini.list.php) pomocí následujících kroků.
 
 > [!NOTE]
-> Nejlepším způsobem, jak zobrazit verzi PHP a aktuální konfiguraci *php. ini* , je volat [phpinfo ()](https://www.php.net/manual/function.phpinfo.php) ve vaší aplikaci.
+> Nejlepším způsobem, jak zobrazit verzi PHP a aktuální *php.ini* konfigurace, je volat [phpinfo ()](https://php.net/manual/function.phpinfo.php) ve vaší aplikaci.
 >
 
 ### <a name="customize-non-php_ini_system-directives"></a><a name="Customize-non-PHP_INI_SYSTEM directives"></a>Přizpůsobení – direktivy bez PHP_INI_SYSTEM
 
-Chcete-li přizpůsobit direktivy PHP_INI_USER, PHP_INI_PERDIR a PHP_INI_ALL (viz [direktivy php. ini](https://www.php.net/manual/ini.list.php)), přidejte soubor *. htaccess* do kořenového adresáře aplikace.
+Chcete-li přizpůsobit direktivy PHP_INI_USER, PHP_INI_PERDIR a PHP_INI_ALL (viz [direktivyphp.ini](https://www.php.net/manual/ini.list.php)), přidejte soubor *. htaccess* do kořenového adresáře aplikace.
 
 V souboru *. htaccess* přidejte direktivy pomocí `php_value <directive-name> <value>` syntaxe. Příklad:
 
@@ -134,7 +134,7 @@ Jako alternativu k používání *. htaccess*můžete v aplikaci použít [ini_s
 
 ### <a name="customize-php_ini_system-directives"></a><a name="customize-php_ini_system-directives"></a>Přizpůsobení direktiv PHP_INI_SYSTEM
 
-Pokud chcete přizpůsobit direktivy PHP_INI_SYSTEM (viz [direktivy php. ini](https://www.php.net/manual/ini.list.php)), nemůžete použít přístup *. htaccess* . App Service poskytuje samostatný mechanismus pomocí `PHP_INI_SCAN_DIR` nastavení aplikace.
+Pokud chcete přizpůsobit direktivy PHP_INI_SYSTEM (viz [direktivyphp.ini](https://www.php.net/manual/ini.list.php)), nemůžete použít přístup *. htaccess* . App Service poskytuje samostatný mechanismus pomocí `PHP_INI_SCAN_DIR` nastavení aplikace.
 
 Nejdřív spuštěním následujícího příkazu v [Cloud Shell](https://shell.azure.com) přidejte nastavení aplikace s názvem `PHP_INI_SCAN_DIR` :
 
@@ -142,11 +142,11 @@ Nejdřív spuštěním následujícího příkazu v [Cloud Shell](https://shell.
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PHP_INI_SCAN_DIR="/usr/local/etc/php/conf.d:/home/site/ini"
 ```
 
-`/usr/local/etc/php/conf.d`je výchozí adresář, ve kterém existuje *php. ini* . `/home/site/ini`je vlastní adresář, do kterého přidáte vlastní soubor *. ini* . Hodnoty oddělíte hodnotou `:` .
+`/usr/local/etc/php/conf.d`je výchozí adresář, ve kterém *php.ini* existuje. `/home/site/ini`je vlastní adresář, do kterého přidáte vlastní soubor *. ini* . Hodnoty oddělíte hodnotou `:` .
 
 Přejděte k webové relaci SSH pomocí kontejneru Linux ( `https://<app-name>.scm.azurewebsites.net/webssh/host` ).
 
-Vytvořte adresář s `/home/site` názvem `ini` a pak vytvořte soubor *. ini* v `/home/site/ini` adresáři (například *Settings. ini)* se směrnicemi, které chcete přizpůsobit. Použijte stejnou syntaxi, kterou použijete v souboru *php. ini* . 
+Vytvořte adresář s `/home/site` názvem `ini` a potom v adresáři vytvořte soubor *. ini* `/home/site/ini` (například *settings.ini)* se směrnicemi, které chcete přizpůsobit. Použijte stejnou syntaxi, kterou použijete v souboru *php.ini* . 
 
 > [!TIP]
 > V integrovaných kontejnerech pro Linux v App Service se jako trvalé sdílené úložiště používá */Home* . 
@@ -164,10 +164,10 @@ Aby se změny projevily, restartujte aplikaci.
 
 ## <a name="enable-php-extensions"></a>Povolit rozšíření PHP
 
-Vestavěné instalace PHP obsahují nejběžněji používaná rozšíření. Můžete povolit další rozšíření stejným způsobem, jakým [přizpůsobíte direktivy php. ini](#customize-php_ini_system-directives).
+Vestavěné instalace PHP obsahují nejběžněji používaná rozšíření. Můžete povolit další rozšíření stejným způsobem, jakým [přizpůsobíte direktivy php.ini](#customize-php_ini_system-directives).
 
 > [!NOTE]
-> Nejlepším způsobem, jak zobrazit verzi PHP a aktuální konfiguraci *php. ini* , je volat [phpinfo ()](https://php.net/manual/function.phpinfo.php) ve vaší aplikaci.
+> Nejlepším způsobem, jak zobrazit verzi PHP a aktuální *php.ini* konfigurace, je volat [phpinfo ()](https://php.net/manual/function.phpinfo.php) ve vaší aplikaci.
 >
 
 Pokud chcete povolit další rozšíření, postupujte podle těchto kroků:
@@ -187,7 +187,7 @@ Aby se změny projevily, restartujte aplikaci.
 
 ## <a name="access-diagnostic-logs"></a>Přístup k diagnostickým protokolům
 
-[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-linux-no-h.md)]
 
 ## <a name="open-ssh-session-in-browser"></a>Otevřít relaci SSH v prohlížeči
 
@@ -198,8 +198,8 @@ Aby se změny projevily, restartujte aplikaci.
 Pokud se funkční aplikace v PHP chová odlišně v App Service nebo obsahuje chyby, zkuste následující:
 
 - [Přístup ke streamu protokolů](#access-diagnostic-logs).
-- Otestujte aplikaci místně v provozním režimu. App Service spouští aplikace v Node. js v produkčním režimu, takže je nutné zajistit, aby váš projekt fungoval v provozním režimu místně. Příklad:
-    - V závislosti na vašem *skladatele. JSON*se můžou nainstalovat různé balíčky pro produkční režim ( `require` vs. `require-dev` ).
+- Otestujte aplikaci místně v provozním režimu. App Service spustí vaši aplikaci v produkčním režimu, takže je potřeba zajistit, aby váš projekt fungoval v provozním režimu místně. Příklad:
+    - V závislosti na vaší *composer.js*se můžou v produkčním režimu ( `require` vs.) nainstalovat různé balíčky `require-dev` .
     - Některé webové architektury můžou nasazovat statické soubory odlišně v produkčním režimu.
     - Při spuštění v produkčním režimu mohou některé webové architektury používat vlastní spouštěcí skripty.
 - Spusťte aplikaci v App Service v režimu ladění. Například v [Laravel](https://meanjs.org/)můžete nakonfigurovat aplikaci tak, aby výstupní zprávy ladění v produkčním prostředí nakonfigurovali nastavením [ `APP_DEBUG` aplikace na `true` ](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings).

@@ -1,24 +1,24 @@
 ---
-title: Rychlý Start – Azure Key Vault klientské knihovny pro Node. js (v4)
-description: Naučte se vytvářet, načítat a odstraňovat tajné klíče z trezoru klíčů Azure pomocí klientské knihovny Node. js.
+title: Rychlý Start – Azure Key Vault klientskou knihovnu pro Node.js (v4)
+description: Naučte se vytvářet, načítat a odstraňovat tajné klíče z trezoru klíčů Azure pomocí klientské knihovny Node.js.
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: d21ec8d025070bd748550cdfbc2aca5ae1f55c08
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 21add865818d73937aec241f8f60e20158202348
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983138"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85125289"
 ---
-# <a name="quickstart-azure-key-vault-client-library-for-nodejs-v4"></a>Rychlý Start: Azure Key Vault klientskou knihovnu pro Node. js (v4)
+# <a name="quickstart-azure-key-vault-client-library-for-nodejs-v4"></a>Rychlý Start: Azure Key Vault klientskou knihovnu pro Node.js (v4)
 
-Začněte s klientskou knihovnou Azure Key Vault pro Node. js. Postupujte podle následujících kroků a nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úlohy.
+Začínáme s klientskou knihovnou Azure Key Vault pro Node.js Postupujte podle následujících kroků a nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úlohy.
 
-Azure Key Vault pomáhá chránit kryptografické klíče a tajné klíče používané cloudovými aplikacemi a službami. Pomocí klientské knihovny Key Vault pro Node. js:
+Azure Key Vault pomáhá chránit kryptografické klíče a tajné klíče používané cloudovými aplikacemi a službami. Pomocí klientské knihovny Key Vault Node.js:
 
 - Zvyšte zabezpečení a kontrolu nad klíči a hesly.
 - Vytvářejte a importujte šifrovací klíče během několika minut.
@@ -26,12 +26,12 @@ Azure Key Vault pomáhá chránit kryptografické klíče a tajné klíče použ
 - Zjednodušte a automatizujte úlohy pro certifikáty TLS/SSL.
 - Použijte ověřený HSM úrovně 2 FIPS 140-2.
 
-[Dokumentace k referenční dokumentaci](/javascript/api/overview/azure/key-vault?view=azure-node-latest) | rozhraní API balíček[zdrojového kódu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/keyvault) | [(npm)](https://www.npmjs.com/package/@azure/keyvault-secrets)
+[Referenční dokumentace k](/javascript/api/overview/azure/key-vault?view=azure-node-latest)  |  rozhraní API [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/keyvault)  |  [Balíček (npm)](https://www.npmjs.com/package/@azure/keyvault-secrets)
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Aktuální [Node. js](https://nodejs.org) pro váš operační systém.
+- Aktuální [Node.js](https://nodejs.org) pro váš operační systém.
 - Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest) nebo [Azure PowerShell](/powershell/azure/overview)
 
 V tomto rychlém startu se předpokládá, že používáte rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) v okně terminálu Linux.
@@ -40,7 +40,7 @@ V tomto rychlém startu se předpokládá, že používáte rozhraní příkazov
 
 ### <a name="install-the-package"></a>Instalace balíčku
 
-V okně konzoly nainstalujte Azure Key Vault knihovnu tajných kódů pro Node. js.
+V okně konzoly nainstalujte Azure Key Vault knihovny tajných kódů pro Node.js.
 
 ```console
 npm install @azure/keyvault-secrets
@@ -69,12 +69,12 @@ az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
 
 Nejjednodušší způsob, jak ověřit cloudovou aplikaci, je spravovaná identita. Podrobnosti najdete v tématu [použití spravované identity App Service pro přístup k Azure Key Vault](../general/managed-identity.md) .
 
-V zájmu zjednodušení ale v tomto rychlém startu se vytvoří desktopová aplikace, která vyžaduje použití instančního objektu a zásad řízení přístupu. Vaše zásada služby vyžaduje jedinečný název ve formátu "http://&lt;my-Unique-Service-princip-name&gt;".
+V zájmu zjednodušení ale v tomto rychlém startu se vytvoří desktopová aplikace, která vyžaduje použití instančního objektu a zásad řízení přístupu. Váš instanční objekt vyžaduje jedinečný název ve formátu "http:// &lt; My-Unique-Service-Principal-Name &gt; ".
 
-Vytvořte zásadu služby pomocí příkazu Azure CLI [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) :
+Vytvořte instanční objekt pomocí příkazu Azure CLI [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) :
 
 ```azurecli
-az ad sp create-for-rbac -n "http://&lt;my-unique-service-principle-name&gt;" --sdk-auth
+az ad sp create-for-rbac -n "http://&lt;my-unique-service-principal-name&gt;" --sdk-auth
 ```
 
 Tato operace vrátí řadu párů klíč/hodnota. 
@@ -105,9 +105,9 @@ az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-se
 
 #### <a name="set-environmental-variables"></a>Nastavení proměnných prostředí
 
-Metoda DefaultAzureCredential v naší aplikaci spoléhá na tři proměnné prostředí: `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET`a. `AZURE_TENANT_ID` Nastavte tyto proměnné na hodnoty clientId, clientSecret a tenantId, které jste si poznamenali v kroku [Vytvoření instančního objektu](#create-a-service-principal) pomocí `export VARNAME=VALUE` formátu. (Tato operace nastavuje jenom proměnné pro vaše aktuální prostředí a procesy vytvořené z prostředí. Pokud chcete tyto proměnné do svého prostředí přidat trvale, upravte `/etc/environment ` soubor.) 
+Metoda DefaultAzureCredential v naší aplikaci spoléhá na tři proměnné prostředí: `AZURE_CLIENT_ID` , `AZURE_CLIENT_SECRET` a `AZURE_TENANT_ID` . Nastavte tyto proměnné na hodnoty clientId, clientSecret a tenantId, které jste si poznamenali v kroku [Vytvoření instančního objektu](#create-a-service-principal) pomocí `export VARNAME=VALUE` formátu. (Tato operace nastavuje jenom proměnné pro vaše aktuální prostředí a procesy vytvořené z prostředí. Pokud chcete tyto proměnné do svého prostředí přidat trvale, upravte `/etc/environment ` soubor.) 
 
-Název trezoru klíčů si taky budete muset uložit jako proměnnou prostředí s názvem `KEY_VAULT_NAME`.
+Název trezoru klíčů si taky budete muset uložit jako proměnnou prostředí s názvem `KEY_VAULT_NAME` .
 
 ```console
 export AZURE_CLIENT_ID=<your-clientID>
@@ -121,9 +121,9 @@ export KEY_VAULT_NAME=<your-key-vault-name>
 
 ## <a name="object-model"></a>Objektový model
 
-Klientská knihovna Azure Key Vault pro Node. js umožňuje správu klíčů a souvisejících prostředků, jako jsou certifikáty a tajné klíče. Následující ukázka kódu vám ukáže, jak vytvořit klienta, nastavit tajný klíč, načíst tajný klíč a odstranit tajný klíč.
+Klientská knihovna Azure Key Vault pro Node.js umožňuje správu klíčů a souvisejících prostředků, jako jsou certifikáty a tajné klíče. Následující ukázka kódu vám ukáže, jak vytvořit klienta, nastavit tajný klíč, načíst tajný klíč a odstranit tajný klíč.
 
-Celá Konzolová aplikace je k dispozici na adrese https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app.
+Celá Konzolová aplikace je k dispozici na adrese https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app .
 
 ## <a name="code-examples"></a>Příklady kódu
 
@@ -140,7 +140,7 @@ const { SecretClient } = require("@azure/keyvault-secrets");
 
 Ověřování pro váš Trezor klíčů a vytvoření klienta trezoru klíčů závisí na proměnných prostředí z kroku [nastavit proměnné prostředí](#set-environmental-variables) a [konstruktoru SecretClient](/javascript/api/@azure/keyvault-secrets/secretclient?view=azure-node-latest#secretclient-string--tokencredential--pipelineoptions-). 
 
-Název trezoru klíčů se rozšíří na identifikátor URI trezoru klíčů ve formátu `https://<your-key-vault-name>.vault.azure.net`. 
+Název trezoru klíčů se rozšíří na identifikátor URI trezoru klíčů ve formátu `https://<your-key-vault-name>.vault.azure.net` . 
 
 ```javascript
 const keyVaultName = process.env["KEY_VAULT_NAME"];
@@ -172,7 +172,7 @@ Nyní můžete načíst dříve nastavenou hodnotu pomocí [metody Client. getse
 const retrievedSecret = await client.getSecret(secretName);
  ```
 
-Váš tajný kód se teď uloží `retrievedSecret.value`jako.
+Váš tajný kód se teď uloží jako `retrievedSecret.value` .
 
 ### <a name="delete-a-secret"></a>Odstranění tajného klíče
 

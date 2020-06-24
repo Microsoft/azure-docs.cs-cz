@@ -2,13 +2,13 @@
 title: Vytvoření souboru parametrů
 description: Vytvoří soubor parametrů pro předávání hodnot během nasazování šablony Azure Resource Manager.
 ms.topic: conceptual
-ms.date: 04/20/2020
-ms.openlocfilehash: a9845bbb9e14288a01fb7836db260a2baf484395
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.date: 06/19/2020
+ms.openlocfilehash: 7c03e161c7b3a18020de6a06d356720f5e4c31fd
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873100"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117501"
 ---
 # <a name="create-resource-manager-parameter-file"></a>Vytvořit soubor Správce prostředků parametrů
 
@@ -182,12 +182,18 @@ Následující příklad ukazuje formáty různých typů parametrů.
 }
 ```
 
+## <a name="deploy-template-with-parameter-file"></a>Nasadit šablonu se souborem parametrů
+
+Přečtěte si:
+
+- [Nasazení prostředků pomocí šablon ARM a Azure CLI](./deploy-powershell.md#pass-parameter-values)
+- [Nasazení prostředků pomocí šablon ARM a Azure PowerShell](./deploy-cli.md#parameters)
+
 ## <a name="file-name"></a>Název souboru
 
-Obecná konvence pro pojmenovávání souboru parametrů je přidat **. parametry** do názvu šablony. Například pokud má vaše šablona název **azuredeploy. JSON**, váš soubor parametrů má název **azuredeploy. Parameters. JSON**. Tato konvence pojmenování vám pomůže zobrazit propojení mezi šablonou a parametry.
+Obecná konvence pro pojmenovávání souboru parametrů je přidat **. parametry** do názvu šablony. Například pokud je vaše šablona pojmenována **azuredeploy.jsna**, váš soubor s parametrem má název **azuredeploy.parameters.js**. Tato konvence pojmenování vám pomůže zobrazit propojení mezi šablonou a parametry.
 
-Chcete-li nasadit do různých prostředí, vytvořte více než jeden soubor parametrů. Při pojmenovávání souboru parametru přidejte způsob, jak identifikovat jeho použití. Použijte například **azuredeploy. Parameters-dev. JSON** a **azuredeploy. Parameters-prod. JSON.**
-
+Chcete-li nasadit do různých prostředí, vytvořte více než jeden soubor parametrů. Při pojmenovávání souboru parametru přidejte způsob, jak identifikovat jeho použití. Například použijte **azuredeploy.parameters-dev.json** a **azuredeploy.parameters-prod.json**
 
 ## <a name="parameter-precedence"></a>Priorita parametru
 
@@ -198,6 +204,7 @@ Je možné použít externí soubor parametrů poskytnutím identifikátoru URI 
 ## <a name="parameter-name-conflicts"></a>Konflikty názvů parametrů
 
 Pokud vaše šablona obsahuje parametr se stejným názvem jako jeden z parametrů v příkazu PowerShellu, PowerShell prezentuje parametr z vaší šablony s příponou **FromTemplate**. Například parametr s názvem **ResourceGroupName** v šabloně koliduje s parametrem **ResourceGroupName** v rutině [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) . Budete vyzváni k zadání hodnoty pro **ResourceGroupNameFromTemplate**. Této nejasnostem se můžete vyhnout použitím názvů parametrů, které se nepoužívají pro příkazy nasazení.
+
 
 ## <a name="next-steps"></a>Další kroky
 

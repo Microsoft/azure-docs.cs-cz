@@ -4,12 +4,12 @@ description: Naučte se rychle vytvořit cluster Kubernetes, nasadit aplikaci a 
 services: container-service
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: a89f76344e48d5af8c71c5a674a94767795b41a9
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 74a71bdc4c9aef9a6964f0c9120a902262a50526
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871473"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207137"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-powershell"></a>Rychlý Start: nasazení clusteru služby Azure Kubernetes pomocí prostředí PowerShell
 
@@ -47,7 +47,7 @@ New-AzResourceGroup -Name myResourceGroup -Location eastus
 
 Následující příklad výstupu ukazuje, že skupina prostředků byla úspěšně vytvořena:
 
-```Output
+```plaintext
 ResourceGroupName : myResourceGroup
 Location          : eastus
 ProvisioningState : Succeeded
@@ -92,7 +92,7 @@ Pokud chcete ověřit připojení ke clusteru, použijte příkaz [kubectl get][
 
 Následující příklad výstupu ukazuje jeden uzel vytvořený v předchozích krocích. Ujistěte se, že stav uzlu je **připravený**:
 
-```Output
+```plaintext
 NAME                       STATUS   ROLES   AGE     VERSION
 aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.15.10
 ```
@@ -200,7 +200,7 @@ Nasaďte aplikaci pomocí příkazu [kubectl Apply][kubectl-apply] a zadejte ná
 
 Následující příklad výstupu ukazuje, že se nasazení a služby úspěšně vytvořily:
 
-```Output
+```plaintext
 deployment.apps/azure-vote-back created
 service/azure-vote-back created
 deployment.apps/azure-vote-front created
@@ -220,14 +220,14 @@ Pomocí příkazu [kubectl get service][kubectl-get] s argumentem `--watch` mů�
 
 Zpočátku je **externí IP adresa** pro službu **Azure-hlas-front-end** zobrazená jako **nevyřízená**.
 
-```Output
+```plaintext
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
 azure-vote-front   LoadBalancer   10.0.37.27   <pending>     80:30572/TCP   6s
 ```
 
 Pokud se **IP** adresa změní z **čekání** na skutečnou veřejnou IP adresu, použijte `CTRL-C` k zastavení `kubectl` procesu sledování. Následující příklad výstupu ukazuje platnou veřejnou IP adresu přiřazenou ke službě:
 
-```Output
+```plaintext
 azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 ```
 

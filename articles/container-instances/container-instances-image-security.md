@@ -1,15 +1,15 @@
 ---
-title: Zabezpečení pro instance kontejnerů
+title: Požadavky na zabezpečení pro instance kontejnerů
 description: Doporučení pro zabezpečení imagí a tajných klíčů pro Azure Container Instances a obecné požadavky na zabezpečení pro jakoukoli platformu kontejneru
 ms.topic: article
 ms.date: 01/10/2020
 ms.custom: ''
-ms.openlocfilehash: 87fa28cf9bdb546a5f108284023a9f787645a1fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d339683c8864b85f7ccb1ac3c982f03aa7abf103
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457990"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84907019"
 ---
 # <a name="security-considerations-for-azure-container-instances"></a>Požadavky na zabezpečení pro Azure Container Instances
 
@@ -18,6 +18,9 @@ Tento článek představuje požadavky na zabezpečení při použití Azure Con
 > [!div class="checklist"]
 > * **Doporučení zabezpečení** pro správu imagí a tajných kódů pro Azure Container Instances
 > * **Předpoklady pro ekosystém kontejneru** v celém životním cyklu kontejneru pro libovolnou platformu kontejneru
+
+Komplexní doporučení, která vám pomůžou zlepšit stav zabezpečení nasazení, najdete v tématu základní informace o [zabezpečení Azure pro Container Instances](security-baseline.md).
+
 
 ## <a name="security-recommendations-for-azure-container-instances"></a>Doporučení zabezpečení pro Azure Container Instances
 
@@ -140,6 +143,8 @@ Udržujte přesnou auditový záznam o přístupu pro správu k ekosystému kont
 * Protokoly prostředků pro [Azure Container Instances](container-instances-log-analytics.md) a [Azure Container Registry](../container-registry/container-registry-diagnostics-audit-logs.md)
 
 ## <a name="next-steps"></a>Další kroky
+
+* V tématu [základní informace o zabezpečení Azure pro Container Instances](security-baseline.md) najdete komplexní doporučení, která vám pomůžou vylepšit stav zabezpečení vašeho nasazení.
 
 * Přečtěte si další informace o použití [Azure Security Center](../security-center/container-security.md) pro detekci hrozeb v reálném čase ve vašich kontejnerových prostředích.
 

@@ -8,14 +8,14 @@ ms.topic: reference
 ms.reviewer: jmartens
 ms.author: jordane
 author: jpe316
-ms.date: 03/05/2020
+ms.date: 06/22/2020
 ms.custom: seodec18
-ms.openlocfilehash: d4eb0ec0d3c3becc4fddd5923cd040f3957732bc
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: cd636ed1ff4369360fb5faae02e8095983cad043
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434064"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214515"
 ---
 # <a name="install--use-the-cli-extension-for-azure-machine-learning"></a>Nainstalovat & použít rozšíření CLI pro Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -195,23 +195,7 @@ Následující příkazy ukazují, jak pracovat s datovými sadami v Azure Machi
 
     Informace o formátu souboru JSON, který slouží k definování datové sady, získáte pomocí `az ml dataset register --show-template` .
 
-    Další informace najdete v tématu [AZ ml DataSet Register](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest#ext-azure-cli-ml-az-ml-dataset-archive).
-
-+ Archivace aktivní nebo zastaralé datové sady:
-
-    ```azurecli-interactive
-    az ml dataset archive -n dataset-name
-    ```
-
-    Další informace najdete v tématu [AZ ml DataSet Archive](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest#ext-azure-cli-ml-az-ml-dataset-archive).
-
-+ Zastaralá datová sada:
-
-    ```azurecli-interactive
-    az ml dataset deprecate -d replacement-dataset-id -n dataset-to-deprecate
-    ```
-
-    Další informace najdete v tématu [AZ ml DataSet](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest#ext-azure-cli-ml-az-ml-dataset-archive).
+    Další informace najdete v tématu [AZ ml DataSet Register](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest#ext-azure-cli-ml-az-ml-dataset-register).
 
 + Vypíše všechny datové sady v pracovním prostoru:
 
@@ -219,7 +203,7 @@ Následující příkazy ukazují, jak pracovat s datovými sadami v Azure Machi
     az ml dataset list
     ```
 
-    Další informace najdete v tématu [AZ ml DataSet list](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest#ext-azure-cli-ml-az-ml-dataset-archive).
+    Další informace najdete v tématu [AZ ml DataSet list](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest#ext-azure-cli-ml-az-ml-dataset-list).
 
 + Získat podrobnosti o datové sadě:
 
@@ -227,15 +211,7 @@ Následující příkazy ukazují, jak pracovat s datovými sadami v Azure Machi
     az ml dataset show -n dataset-name
     ```
 
-    Další informace najdete v tématu [AZ ml DataSet show](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest#ext-azure-cli-ml-az-ml-dataset-archive).
-
-+ Znovu aktivovat archivovanou nebo zastaralou datovou sadu:
-
-    ```azurecli-interactive
-    az ml dataset reactivate -n dataset-name
-    ```
-
-    Další informace najdete v části [AZ ml DataSet reactivate](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest#ext-azure-cli-ml-az-ml-dataset-archive).
+    Další informace najdete v tématu [AZ ml DataSet show](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest#ext-azure-cli-ml-az-ml-dataset-show).
 
 + Zrušit registraci datové sady:
 

@@ -1,33 +1,33 @@
 ---
-title: Co jsou důvěryhodné bezpečnostní partneři Azure Firewall Manageru (Preview)
-description: Další informace o důvěryhodných partnerech zabezpečení Azure Firewall Manageru
+title: Co jsou poskytovatelé partnerů zabezpečení Azure Firewall Manageru (Preview)
+description: Další informace o poskytovatelích partnerů zabezpečení Azure Firewall Manageru
 author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 06/15/2020
 ms.author: victorh
-ms.openlocfilehash: b92242ce9086579d0397f78853402cfc08453f68
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3d430deae191fbc9f9ab5bbbc2b83ee4640dd831
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75436775"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791505"
 ---
-# <a name="what-are-trusted-security-partners-preview"></a>Kdo jsou důvěryhodní partneři pro zabezpečení (Preview)?
+# <a name="what-are-security-partner-providers-preview"></a>Co jsou poskytovatelé partnera zabezpečení (Preview)?
 
 > [!IMPORTANT]
 > Tato verze Public Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-*Důvěryhodní partneři zabezpečení (Preview)* v Azure firewall Manageru vám umožní používat vaše známé nabídky zabezpečení jako služby (SECaaS) od jiných výrobců k ochraně internetového přístupu pro vaše uživatele.
+*Poskytovatelé zabezpečení (Preview)* v Azure firewall Manageru vám umožní využít vaše známé nabídky zabezpečení jako služby (SECaaS) od jiných výrobců k ochraně internetového přístupu pro vaše uživatele.
 
 S rychlou konfigurací můžete zabezpečit centrum s podporovaným partnerem zabezpečení a směrovat a filtrovat internetový provoz z virtuálních sítí (virtuální sítě) nebo umístění větví v rámci jedné oblasti. To se provádí pomocí automatizované správy směrování, aniž byste nastavili a spravovali trasy definované uživatelem (udr).
 
 Můžete nasadit zabezpečená centra nakonfigurovaná s partnerem zabezpečení podle vašeho výběru ve více oblastech Azure, abyste získali připojení a zabezpečení pro uživatele kdekoli na celém světě v těchto oblastech. Díky možnosti použít nabídku partnera zabezpečení pro provoz aplikace Internet/SaaS a Azure Firewall privátních přenosů v zabezpečených centrech teď můžete začít sestavovat hraniční zabezpečení v Azure, které je blízko globálně distribuovaných uživatelů a aplikací.
 
-V této verzi Preview jsou podporovaným partnerem zabezpečení **ZScaler** a **iboss**. Podporované oblasti jsou WestCentralUS, NorthCentralUS, WestUS, WestUS2 a EastUS.
+V této verzi Preview jsou podporovaným partnerem zabezpečení **ZScaler**, **Check Point**a **iboss**. Podporované oblasti jsou WestCentralUS, NorthCentralUS, WestUS, WestUS2 a EastUS.
 
-![Důvěryhodní partneři pro zabezpečení](media/trusted-security-partners/trusted-security-partners.png)
+![Poskytovatelé partnerů pro zabezpečení](media/trusted-security-partners/trusted-security-partners.png)
 
 ## <a name="key-scenarios"></a>Klíčové scénáře
 
@@ -80,4 +80,4 @@ Připojení k Office 365 jsou navíc silně šifrovaná pro ochranu osobních ú
 
 ## <a name="next-steps"></a>Další kroky
 
-[Pomocí správce Azure firewall nasaďte důvěryhodnou nabídku zabezpečení v zabezpečeném centru](deploy-trusted-security-partner.md).
+K [nasazení nabídky partnera zabezpečení v zabezpečeném centru použijte nástroj Azure firewall Manager](deploy-trusted-security-partner.md).

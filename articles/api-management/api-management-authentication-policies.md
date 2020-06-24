@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/27/2017
+ms.date: 06/12/2020
 ms.author: apimpm
-ms.openlocfilehash: c9cf77971038a3d7d160180b93594736d3ca6200
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 8a92540ff2c57ff5c1aa827237a7341aecc1592b
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84674223"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84789255"
 ---
 # <a name="api-management-authentication-policies"></a>Zásady ověřování ve službě API Management
 V tomto tématu najdete referenční informace pro následující zásady API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady v API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -48,16 +48,16 @@ V tomto tématu najdete referenční informace pro následující zásady API Ma
 
 ### <a name="elements"></a>Elementy
 
-|Name|Popis|Vyžadováno|
+|Name|Description|Vyžadováno|
 |----------|-----------------|--------------|
-|ověřování – základní|Kořenový element.|Yes|
+|ověřování – základní|Kořenový element.|Ano|
 
 ### <a name="attributes"></a>Atributy
 
-|Name|Popis|Vyžadováno|Výchozí|
+|Name|Description|Vyžadováno|Výchozí|
 |----------|-----------------|--------------|-------------|
-|uživatelské jméno|Určuje uživatelské jméno základního přihlašovacího údaje.|Yes|Není k dispozici|
-|heslo|Určuje heslo základního přihlašovacího údaje.|Yes|Není k dispozici|
+|uživatelské jméno|Určuje uživatelské jméno základního přihlašovacího údaje.|Ano|–|
+|heslo|Určuje heslo základního přihlašovacího údaje.|Ano|–|
 
 ### <a name="usage"></a>Využití
  Tyto zásady se dají použít v následujících [oddílech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zásad.
@@ -97,18 +97,18 @@ V tomto příkladu se klientský certifikát nastaví v zásadách, ale nenačte
 
 ### <a name="elements"></a>Elementy  
   
-|Name|Popis|Vyžadováno|  
+|Name|Description|Vyžadováno|  
 |----------|-----------------|--------------|  
-|ověřování – certifikát|Kořenový element.|Yes|  
+|ověřování – certifikát|Kořenový element.|Ano|  
   
 ### <a name="attributes"></a>Atributy  
   
-|Name|Popis|Vyžadováno|Výchozí|  
+|Name|Description|Vyžadováno|Výchozí|  
 |----------|-----------------|--------------|-------------|  
-|kryptografický|Kryptografický otisk pro klientský certifikát|`thumbprint` `certificate-id` Musí být přítomen buď nebo.|Není k dispozici|
-|ID certifikátu|Název prostředku certifikátu.|`thumbprint` `certificate-id` Musí být přítomen buď nebo.|Není k dispozici|
-|text|Certifikát klienta jako bajtové pole.|No|Není k dispozici|
-|heslo|Heslo pro klientský certifikát.|Používá se, pokud je certifikát určený v nástroji `body` chráněný heslem.|Není k dispozici|
+|kryptografický|Kryptografický otisk pro klientský certifikát|`thumbprint` `certificate-id` Musí být přítomen buď nebo.|–|
+|ID certifikátu|Název prostředku certifikátu.|`thumbprint` `certificate-id` Musí být přítomen buď nebo.|–|
+|text|Certifikát klienta jako bajtové pole.|Ne|–|
+|heslo|Heslo pro klientský certifikát.|Používá se, pokud je certifikát určený v nástroji `body` chráněný heslem.|–|
   
 ### <a name="usage"></a>Využití  
  Tyto zásady se dají použít v následujících [oddílech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zásad.  
@@ -118,12 +118,14 @@ V tomto příkladu se klientský certifikát nastaví v zásadách, ale nenačte
 -   **Obory zásad:** všechny rozsahy  
 
 ##  <a name="authenticate-with-managed-identity"></a><a name="ManagedIdentity"></a>Ověřování pomocí spravované identity  
- Pomocí této `authentication-managed-identity` zásady můžete ověřit pomocí back-end služby pomocí spravované identity služby API Management. Tato zásada v podstatě používá spravovanou identitu k získání přístupového tokenu z Azure Active Directory pro přístup k zadanému prostředku. Po úspěšném získání tokenu zásada nastaví hodnotu tokenu v `Authorization` záhlaví pomocí `Bearer` schématu.
+ Pomocí této `authentication-managed-identity` zásady můžete ověřit službu back-end pomocí spravované identity. Tato zásada v podstatě používá spravovanou identitu k získání přístupového tokenu z Azure Active Directory pro přístup k zadanému prostředku. Po úspěšném získání tokenu zásada nastaví hodnotu tokenu v `Authorization` záhlaví pomocí `Bearer` schématu.
+
+K vyžádání tokenu se dá použít jak identita přiřazená systémem, tak i kterákoli z více uživatelsky přiřazených identit. Pokud není `client-id` zadána identita přiřazená systémem, předpokládá se. Pokud je k `client-id` této identitě přiřazena proměnná, je vyžadována pro tuto identitu uživatele z Azure Active Directory
   
 ### <a name="policy-statement"></a>Prohlášení o zásadách  
   
 ```xml  
-<authentication-managed-identity resource="resource" output-token-variable-name="token-variable" ignore-error="true|false"/>  
+<authentication-managed-identity resource="resource" client-id="clientid of user-assigned identity" output-token-variable-name="token-variable" ignore-error="true|false"/>  
 ```  
   
 ### <a name="example"></a>Příklad  
@@ -172,17 +174,18 @@ V tomto příkladu se klientský certifikát nastaví v zásadách, ale nenačte
 
 ### <a name="elements"></a>Elementy  
   
-|Name|Popis|Vyžadováno|  
+|Name|Description|Vyžadováno|  
 |----------|-----------------|--------------|  
-|ověřování – spravovaná identita |Kořenový element.|Yes|  
+|ověřování – spravovaná identita |Kořenový element.|Ano|  
   
 ### <a name="attributes"></a>Atributy  
   
-|Name|Popis|Vyžadováno|Výchozí|  
+|Name|Description|Vyžadováno|Výchozí|  
 |----------|-----------------|--------------|-------------|  
-|prostředek|Řetězec. ID aplikace cílového webového rozhraní API (zabezpečeného prostředku) v Azure Active Directory.|Yes|Není k dispozici|  
-|výstup-token-proměnná-Name|Řetězec. Název kontextové proměnné, která obdrží hodnotu tokenu jako typ objektu `string` . |No|Není k dispozici|  
-|ignorovat – chyba|Datového. Pokud se nastaví na `true` , kanál zásad se bude dál spouštět i v případě, že se přístupový token nezíská.|No|false (nepravda)|  
+|prostředek|Řetězec. ID aplikace cílového webového rozhraní API (zabezpečeného prostředku) v Azure Active Directory.|Ano|–|
+|ID klienta|Řetězec. ID aplikace identity přiřazené uživatelem v Azure Active Directory.|Ne|Identita přiřazená systémem|
+|výstup-token-proměnná-Name|Řetězec. Název kontextové proměnné, která obdrží hodnotu tokenu jako typ objektu `string` . |Ne|–|  
+|ignorovat – chyba|Datového. Pokud se nastaví na `true` , kanál zásad se bude dál spouštět i v případě, že se přístupový token nezíská.|Ne|false (nepravda)|  
   
 ### <a name="usage"></a>Využití  
  Tyto zásady se dají použít v následujících [oddílech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zásad.  

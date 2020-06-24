@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/28/2020
+ms.date: 06/16/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: cded8fef70e22ffebc412ea37898100cda4bb3df
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: c6358411572de6049a3362cc0e8e26b9cbc82d43
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219021"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84906847"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Správa využití a nákladů pomocí protokolů Azure Monitor
 
@@ -40,7 +40,7 @@ Výchozí ceny pro Log Analytics jsou Model průběžných **plateb** na základ
   
 Kromě modelu průběžných plateb Log Analytics má vrstvy **rezervace kapacity** , které vám umožní ve srovnání s průběžnými platbami ušetřit až 25%. Cena za rezervaci kapacity vám umožní koupit rezervaci od 100 GB za den. Veškeré využití nad úrovní rezervace se bude účtovat podle tarifu průběžných plateb. Úrovně rezervace kapacity mají 31 dnů v období závazku. Během období závazku můžete přejít na úroveň rezervace kapacity vyšší úrovně (která bude restartovala 31. období závazku), ale nemůžete přejít zpět na průběžné platby nebo na nižší úroveň rezervace kapacity až po dokončení období závazku. Faktura za úrovně rezervace kapacity se provádí každý den. [Přečtěte si další informace](https://azure.microsoft.com/pricing/details/monitor/) o cenách Log Analytics s průběžnými platbami a rezervací kapacity. 
 
-Ve všech cenových úrovních se objem dat počítá z řetězcové reprezentace dat, která je připravená k uložení. Některé [vlastnosti společné pro všechny datové typy](https://docs.microsoft.com/azure/azure-monitor/platform/log-standard-properties) nejsou zahrnuté do výpočtu velikosti události, včetně `_ResourceId` , `_ItemId` `_IsBillable` a `_BilledSize` .
+U všech cenových úrovní je velikost dat události počítána z řetězcové reprezentace vlastností, které jsou uloženy v Log Analytics pro tuto událost, bez ohledu na to, zda jsou data odesílána z agenta nebo přidána během procesu příjmu. To zahrnuje všechna [vlastní pole](https://docs.microsoft.com/azure/azure-monitor/platform/custom-fields) , která jsou přidána, když jsou shromažďována data a uložena v Log Analytics. Při výpočtu velikosti události jsou vyloučeny některé vlastnosti společné pro všechny typy dat, včetně některých [log Analyticsch standardních vlastností](https://docs.microsoft.com/azure/azure-monitor/platform/log-standard-properties). To zahrnuje `_ResourceId` , `_ItemId` , `_IsBillable` `_BilledSize` a `Type` . Všechny ostatní vlastnosti uložené v Log Analytics jsou zahrnuté do výpočtu velikosti události. Některé datové typy jsou zcela bezplatné poplatky za příjem dat, například AzureActivity, prezenční signál a typy využití. Chcete-li zjistit, zda byla událost vyloučena z fakturace pro příjem dat, můžete použít `_IsBillable` vlastnost, jak je uvedeno [níže](#data-volume-for-specific-events).
 
 Všimněte si také, že některá řešení, jako je [Azure Security Center](https://azure.microsoft.com/pricing/details/security-center/), [Správa konfigurace a konfigurace](https://azure.microsoft.com/pricing/details/automation/) [Azure](https://azure.microsoft.com/pricing/details/azure-sentinel/) , mají své vlastní cenové modely. 
 
@@ -55,7 +55,6 @@ Existují dva režimy fakturace pro použití v clusteru. Tyto parametry mohou b
 1. **Cluster**: v tomto případě (což je výchozí nastavení) se fakturace pro ingestovaná data provádí na úrovni clusteru. Množství zpracovaných dat z každého pracovního prostoru přidruženého ke clusteru se agreguje za účelem výpočtu denního vyúčtování clusteru. Všimněte si, že přidělení na základě uzlů z [Azure Security Center](https://docs.microsoft.com/azure/security-center/) se aplikují na úrovni pracovního prostoru před touto agregací agregovaných dat napříč všemi pracovními prostory v clusteru. 
 
 2. **Pracovní prostory**: náklady na rezervaci kapacity pro váš cluster se úměrně připočítají k pracovním prostorům v clusteru (po zaúčtování pro přidělení podle uzlu z [Azure Security Center](https://docs.microsoft.com/azure/security-center/) pro každý pracovní prostor.) Pokud je celkový objem dat zpracovaných v pracovním prostoru za den menší než rezervace kapacity, pak se každý pracovní prostor fakturuje za jeho ingestovaná data na základě sazby za nevyužitou kapacitu na GB tím, že je vyúčtováním zlomku kapacity rezervace a nevyužité části rezervace kapacity se účtují do prostředku clusteru. Pokud celkový objem dat, který se během dne ingestuje do pracovního prostoru, je větší než rezervace kapacity, pak se pro každý pracovní prostor účtuje zlomek kapacity na základě jeho zlomku a v každém pracovním prostoru se podílem přijatých dat nad rámec rezervace kapacity. K prostředku clusteru se nic neúčtuje, pokud je celkový objem dat ingestný do pracovního prostoru za den nad rezervací kapacity.
-
 
 V možnostech fakturace clusteru se uchovávání dat účtuje na úrovni pracovního prostoru. Všimněte si, že při vytváření clusteru začíná fakturace clusteru bez ohledu na to, jestli byly pracovní prostory přidružené ke clusteru. Všimněte si také, že pracovní prostory přidružené k clusteru už nemají cenovou úroveň.
 
@@ -192,7 +191,9 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 
 Můžete nakonfigurovat denní limit a omezit každodenní ingestování pro váš pracovní prostor, ale pečlivě používejte, protože by váš cíl neměl mít denní limit.  Jinak ztratíte data zbývajícího dne, což může mít vliv na další služby a řešení Azure, jejichž funkce můžou záviset na dostupnosti dat v pracovním prostoru.  Výsledkem je, že schopnost sledovat a přijímat výstrahy, když jsou ovlivněny stavové stavy prostředků, které podporují IT služby.  Denní limit je určený k použití jako způsob, jak spravovat neočekávané zvýšení objemu dat ze spravovaných prostředků a zůstat v rámci vašeho limitu, nebo pokud chcete omezit neplánované poplatky pro váš pracovní prostor.  
 
-Brzy po dosažení denního limitu se kolekce fakturovatelných datových typů zastaví pro zbytek dne. (Latence vyplývající z použití denního limitu může znamenat, že se limit nepoužije přesně na určenou denní úroveň Cap.) V horní části stránky se zobrazí banner s upozorněním pro vybraný Log Analytics pracovní prostor a událost operace se odešle do tabulky *Operation* v kategorii **LogManagement** . Shromažďování dat se obnoví po uplynutí doby obnovení definované v rámci *denního limitu*. Doporučujeme definovat pravidlo výstrahy na základě této události operace, která je nakonfigurována tak, aby po dosažení denního limitu dat upozornila na oznámení. 
+Každý pracovní prostor má denní limit, který se aplikuje na jinou hodinu dne. Nulová hodina se zobrazí na stránce **denní limit** (viz níže). Tuto hodinu resetování nelze nakonfigurovat. 
+
+Brzy po dosažení denního limitu se kolekce fakturovatelných datových typů zastaví pro zbytek dne. (Latence vyplývající z použití denního limitu znamená, že se limit nepoužívá přesně na určenou denní úroveň limitu.) V horní části stránky se zobrazí banner s upozorněním pro vybraný Log Analytics pracovní prostor a událost operace se odešle do tabulky *Operation* v kategorii **LogManagement** . Shromažďování dat se obnoví po uplynutí doby obnovení definované v rámci *denního limitu*. Doporučujeme definovat pravidlo výstrahy na základě této události operace, která je nakonfigurována tak, aby po dosažení denního limitu dat upozornila na oznámení. 
 
 > [!WARNING]
 > Denní limit nezastaví shromažďování dat z Azure Security Center, s výjimkou pracovních prostorů, ve kterých Azure Security Center byl nainstalován před 19. června 2017. 
@@ -206,10 +207,12 @@ Přečtěte si [Log Analytics využití a odhadované náklady](usage-estimated-
 Následující postup popisuje, jak nakonfigurovat limit pro správu objemu dat, který Log Analytics pracovní prostor ingestovat za den.  
 
 1. V levém podokně vašeho pracovního prostoru vyberte **Využití a odhadované náklady**.
-2. Na stránce **využití a odhadované náklady** pro vybraný pracovní prostor klikněte v horní části stránky na možnost **Správa objemu dat** . 
+2. Na stránce **využití a odhadované náklady** pro vybraný pracovní prostor klikněte v horní části stránky na možnost **datový limit** . 
 3. Denní limit je ve výchozím nastavení **vypnutý** ? klikněte na **zapnout** a pak nastavte limit počtu dat v GB za den.
 
     ![Log Analytics konfiguraci omezení dat](media/manage-cost-storage/set-daily-volume-cap-01.png)
+    
+Denní limit se dá nakonfigurovat přes ARM nastavením `dailyQuotaGb` parametru v části jak je `WorkspaceCapping` popsáno [zde](https://docs.microsoft.com/rest/api/loganalytics/workspaces/createorupdate#workspacecapping). 
 
 ### <a name="alert-when-daily-cap-reached"></a>Výstraha při denním limitu
 
@@ -250,7 +253,7 @@ Heartbeat
 Hodnota získat počet uzlů odesílajících data za posledních 24 hodin používá dotaz: 
 
 ```kusto
-union withsource = tt * 
+union * 
 | where TimeGenerated > ago(24h)
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | where computerName != ""
@@ -260,7 +263,7 @@ union withsource = tt *
 Chcete-li získat seznam uzlů, které odesílají data (a objem dat odesílaných každým), je možné použít následující dotaz:
 
 ```kusto
-union withsource = tt * 
+union * 
 | where TimeGenerated > ago(24h)
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | where computerName != ""
@@ -286,7 +289,7 @@ Event
 | summarize count(), Bytes=sum(_BilledSize) by EventID, bin(TimeGenerated, 1d)
 ``` 
 
-Všimněte si, že klauzule `where IsBillable = true` filtruje datové typy z určitých řešení, pro které se neúčtují žádné poplatky za ingestování. 
+Všimněte si, že klauzule `where _IsBillable = true` filtruje datové typy z určitých řešení, pro které se neúčtují žádné poplatky za ingestování. [Přečtěte si další informace](log-standard-properties.md#_isbillable) o `_IsBillable` .
 
 ### <a name="data-volume-by-solution"></a>Objem dat podle řešení
 
@@ -330,11 +333,12 @@ Usage
 `Usage`Datový typ neobsahuje informace na úrovni počítače. Chcete-li zobrazit **Velikost** zpracovaných dat na jeden počítač, použijte `_BilledSize` [vlastnost](log-standard-properties.md#_billedsize), která poskytuje velikost v bajtech:
 
 ```kusto
-union withsource = tt * 
+union * 
 | where TimeGenerated > ago(24h)
 | where _IsBillable == true 
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
-| summarize BillableDataBytes = sum(_BilledSize) by  computerName | sort by Bytes nulls last
+| summarize BillableDataBytes = sum(_BilledSize) by  computerName 
+| sort by BillableDataBytes nulls last
 ```
 
 `_IsBillable` [Vlastnost](log-standard-properties.md#_isbillable) určuje, jestli se za ingestovaná data účtují poplatky. 
@@ -342,11 +346,12 @@ union withsource = tt *
 Chcete-li zobrazit **počet** fakturovaných událostí zpracovaných na počítač, použijte 
 
 ```kusto
-union withsource = tt * 
+union * 
 | where TimeGenerated > ago(24h)
 | where _IsBillable == true 
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
-| summarize eventCount = count() by computerName  | sort by eventCount nulls last
+| summarize eventCount = count() by computerName  
+| sort by eventCount nulls last
 ```
 
 > [!TIP]
@@ -357,24 +362,40 @@ union withsource = tt *
 Pro data z uzlů hostovaných v Azure můžete získat **Velikost** zpracovaných dat __na jeden počítač__, použít [vlastnost](log-standard-properties.md#_resourceid)_ResourceId, která poskytuje úplnou cestu k prostředku:
 
 ```kusto
-union withsource = tt * 
+union * 
 | where TimeGenerated > ago(24h)
 | where _IsBillable == true 
-| summarize BillableDataBytes = sum(_BilledSize) by _ResourceId | sort by Bytes nulls last
+| summarize BillableDataBytes = sum(_BilledSize) by _ResourceId | sort by BillableDataBytes nulls last
 ```
 
-Pro data z uzlů hostovaných v Azure můžete získat **Velikost** zpracovaných dat __na předplatné Azure__, analyzovat `_ResourceId` vlastnost jako:
+Pro data z uzlů hostovaných v Azure můžete získat **Velikost** přijatých dat __pro každé předplatné Azure__, získat ID předplatného `_ResourceId` jako tuto vlastnost:
 
 ```kusto
-union withsource = tt * 
+union * 
 | where TimeGenerated > ago(24h)
 | where _IsBillable == true 
-| parse tolower(_ResourceId) with "/subscriptions/" subscriptionId "/resourcegroups/" 
-    resourceGroup "/providers/" provider "/" resourceType "/" resourceName   
-| summarize BillableDataBytes = sum(_BilledSize) by subscriptionId | sort by Bytes nulls last
+| summarize BillableDataBytes = sum(_BilledSize) by _ResourceId
+| extend subscriptionId = split(_ResourceId, "/")[2] 
+| summarize BillableDataBytes = sum(BillableDataBytes) by subscriptionId | sort by BillableDataBytes nulls last
 ```
 
-Změnou `subscriptionId` na se `resourceGroup` zobrazí fakturovatelný příjmový objem dat skupinou prostředků Azure. 
+Podobně platí, že pokud chcete získat objem dat podle skupiny prostředků, bude to:
+
+```kusto
+union * 
+| where TimeGenerated > ago(24h)
+| where _IsBillable == true 
+| summarize BillableDataBytes = sum(_BilledSize) by _ResourceId
+| extend resourceGroup = split(_ResourceId, "/")[4] 
+| summarize BillableDataBytes = sum(BillableDataBytes) by resourceGroup | sort by BillableDataBytes nulls last
+```
+
+V případě potřeby můžete také `_ResourceId` plně analyzovat v případě potřeby i.
+
+```Kusto
+| parse tolower(_ResourceId) with "/subscriptions/" subscriptionId "/resourcegroups/" 
+    resourceGroup "/providers/" provider "/" resourceType "/" resourceName   
+```
 
 > [!TIP]
 > Tyto dotazy můžete použít `union  *` zřídka, protože kontroly napříč datovými typy jsou [náročné na prostředky](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane) , které je potřeba provést. Pokud nepotřebujete výsledky v rámci předplatného, skupiny prostředků nebo názvu prostředku, pak dotaz na datový typ použití.
@@ -424,7 +445,7 @@ Mezi návrhy na snížení objemu shromažďovaných protokolů patří:
 Pokud chcete získat seznam počítačů, které se budou fakturovat jako uzly, pokud je pracovní prostor ve starší verzi na cenové úrovni uzlů, hledejte uzly, které odesílají **účtované datové typy** (některé datové typy jsou zdarma). K tomu použijte `_IsBillable` [vlastnost](log-standard-properties.md#_isbillable) a použijte pole s plně kvalifikovaným názvem domény v levém krajním poli. Vrátí počet počítačů s fakturovanými daty za hodinu (což je členitost, při které se uzly počítají a účtují):
 
 ```kusto
-union withsource = tt * 
+union * 
 | where _IsBillable == true 
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | where computerName != ""
@@ -498,7 +519,7 @@ let daysToEvaluate = 7; // Enter number of previous days look at (reduce if the 
 let SecurityDataTypes=dynamic(["SecurityAlert", "SecurityBaseline", "SecurityBaselineSummary", "SecurityDetection", "SecurityEvent", "WindowsFirewall", "MaliciousIPCommunication", "LinuxAuditLog", "SysmonEvent", "ProtectionStatus", "WindowsEvent", "Update", "UpdateSummary"]);
 let StartDate = startofday(datetime_add("Day",-1*daysToEvaluate,now()));
 let EndDate = startofday(now());
-union withsource = tt * 
+union * 
 | where TimeGenerated >= StartDate and TimeGenerated < EndDate
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | where computerName != ""
@@ -542,64 +563,23 @@ Tento dotaz nepředstavuje přesnou replikaci toho, jak se vypočítává využi
 
 ## <a name="create-an-alert-when-data-collection-is-high"></a>Vytvořit výstrahu, když je shromažďování dat vysoké
 
-Tato část popisuje postup vytvoření upozornění v těchto případech:
-- Objem dat překračuje zadanou velikost.
-- Očekává se, že objem dat překročí zadanou velikost.
+V této části se dozvíte, jak vytvořit výstrahu, kterou datový svazek za posledních 24 hodin překročil zadanou velikost pomocí Azure Monitor [výstrahy protokolu](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log). 
 
-Upozornění Azure podporují [upozornění protokolu](alerts-unified-log.md) využívající vyhledávací dotazy. 
-
-Následující dotaz vrátí výsledek, pokud se za posledních 24 hodin shromáždilo více než 100 GB dat:
-
-```kusto
-union withsource = $table Usage 
-| where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true 
-| extend Type = $table | summarize DataGB = sum((Quantity / 1000.)) by Type 
-| where DataGB > 100
-```
-
-Následující dotaz pomocí jednoduchého vzorce předvídá, jestli dojde k odeslání více než 100 GB dat za den: 
-
-```kusto
-union withsource = $table Usage 
-| where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true 
-| extend Type = $table 
-| summarize EstimatedGB = sum(((Quantity * 8) / 1000.)) by Type 
-| where EstimatedGB > 100
-```
-
-Pokud chcete upozornit na jiný objem dat, změňte v dotazech hodnotu 100 na počet GB, na který chcete upozornit.
-
-Pokud chcete být upozorňováni při větším než očekávaném shromažďování dat, postupujte podle kroků popsaných v tématu týkajícím se [vytvoření nového upozornění protokolu](alerts-metric.md).
-
-Při vytváření upozornění pro první dotaz (více než 100 GB dat během 24 hodin) nastavte:  
+Chcete-li upozornit, zda byl objem fakturovatelných dat zobrazený za posledních 24 hodin větší než 50 GB, postupujte podle následujících kroků: 
 
 - **Definujte podmínku upozornění** – Jako cíl prostředku zadejte svůj pracovní prostor služby Log Analytics.
 - **Kritéria upozornění** – Zadejte následující:
    - **Název signálu** – Vyberte **Vlastní prohledávání protokolu**.
-   - **Vyhledávací dotaz** na `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1000.)) by Type | where DataGB > 100`.
+   - **Vyhledávací dotaz** na `Usage | where IsBillable | summarize DataGB = sum(Quantity / 1000.) | where DataGB > 50` . Pokud chcete differetn 
    - **Logika upozornění** je **Založená na** *počtu výsledků* a **Podmínka** je *Větší než***Prahová hodnota***0*.
-   - **Časové období** na *1440* minut a **Frekvenci upozornění** na každých *60* minut, protože se data o využití aktualizují pouze jednou za hodinu.
+   - **Časové období** *1440* minut a **frekvence upozornění** každé *1440* minutesto spustit jednou denně.
 - **Definujte podrobnosti upozornění** – Zadejte následující:
-   - **Název** na *Větší objem dat než 100 GB během 24 hodin*.
+   - **Název** pro *fakturovatelný objem dat větší než 50 GB za 24 hodin*
    - **Závažnost** na *Upozornění*.
 
 Zadejte existující nebo vytvořte novou [Skupinu akcí](action-groups.md), abyste dostali upozornění, když upozornění protokolu splní kritéria.
 
-Při vytváření upozornění pro druhý dotaz (předpověď, že během 24 hodin bude shromážděno více než 100 GB dat) nastavte:
-
-- **Definujte podmínku upozornění** – Jako cíl prostředku zadejte svůj pracovní prostor služby Log Analytics.
-- **Kritéria upozornění** – Zadejte následující:
-   - **Název signálu** – Vyberte **Vlastní prohledávání protokolu**.
-   - **Vyhledávací dotaz** na `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1000.)) by Type | where EstimatedGB > 100`.
-   - **Logika upozornění** je **Založená na** *počtu výsledků* a **Podmínka** je *Větší než***Prahová hodnota***0*.
-   - **Časové období** na *180* minut a **Frekvenci upozornění** na každých *60* minut, protože se data o využití aktualizují pouze jednou za hodinu.
-- **Definujte podrobnosti upozornění** – Zadejte následující:
-   - **Název** na *Očekávaný větší objem dat než 100 GB během 24 hodin*.
-   - **Závažnost** na *Upozornění*.
-
-Zadejte existující nebo vytvořte novou [Skupinu akcí](action-groups.md), abyste dostali upozornění, když upozornění protokolu splní kritéria.
-
-Pokud obdržíte upozornění, pomocí kroků v následující části můžete řešit potíže způsobující větší využití, než se čekalo.
+Když obdržíte výstrahu, postupujte podle kroků uvedených v předchozích částech o postupu při řešení potíží s tím, proč je použití vyšší, než se očekávalo.
 
 ## <a name="data-transfer-charges-using-log-analytics"></a>Poplatky za přenos dat pomocí Log Analytics
 

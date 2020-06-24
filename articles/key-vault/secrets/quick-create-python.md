@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: tracking-python
-ms.openlocfilehash: 783e89d3e1802ae8788a933f493e2a865c03a3ef
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: c8546d159d920fc728f0bf6413d84d7b19bbe09c
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561549"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85125238"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-python"></a>Rychlý Start: Azure Key Vault klientskou knihovnu pro Python
 
@@ -27,7 +27,7 @@ Azure Key Vault pomáhá chránit kryptografické klíče a tajné klíče použ
 - Zjednodušte a automatizujte úlohy pro certifikáty TLS/SSL.
 - Použijte ověřený HSM úrovně 2 FIPS 140-2.
 
-[Referenční dokumentace k](/python/api/overview/azure/key-vault?view=azure-python)  |  rozhraní API [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault)  |  [Balíček (index balíčku Pythonu)](https://pypi.org/project/azure-keyvault/)
+[Referenční dokumentace k](/python/api/overview/azure/keyvault-secrets-readme?view=azure-python)  |  rozhraní API [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault)  |  [Balíček (index balíčku Pythonu)](https://pypi.org/project/azure-keyvault/)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -70,12 +70,12 @@ az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
 
 Nejjednodušší způsob, jak ověřit cloudovou aplikaci v Pythonu, je spravovaná identita; Podrobnosti najdete v tématu [použití spravované identity App Service pro přístup k Azure Key Vault](../general/managed-identity.md) . 
 
-V zájmu zjednodušení ale v tomto rychlém startu se vytvoří desktopová aplikace, která vyžaduje použití instančního objektu a zásad řízení přístupu. Vaše zásada služby vyžaduje jedinečný název ve formátu "http:// &lt; My-Unique-Service-princip-name &gt; ".
+V zájmu zjednodušení ale v tomto rychlém startu se vytvoří desktopová aplikace, která vyžaduje použití instančního objektu a zásad řízení přístupu. Váš instanční objekt vyžaduje jedinečný název ve formátu "http:// &lt; My-Unique-Service-Principal-Name &gt; ".
 
-Vytvořte zásadu služby pomocí příkazu Azure CLI [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) :
+Vytvořte instanční objekt pomocí příkazu Azure CLI [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) :
 
 ```azurecli
-az ad sp create-for-rbac -n "http://&lt;my-unique-service-principle-name&gt;" --sdk-auth
+az ad sp create-for-rbac -n "http://&lt;my-unique-service-principal-name&gt;" --sdk-auth
 ```
 
 Tato operace vrátí řadu párů klíč/hodnota. 

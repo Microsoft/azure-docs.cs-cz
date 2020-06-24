@@ -8,12 +8,12 @@ ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: cb17fe24339ad618229b3456ece15c206f79bdb7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 548ebf5b0d5836383b74326516fbe47b1b25f60f
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76899946"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080184"
 ---
 # <a name="encryption-at-rest-of-content-in-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>Šifrování v klidovém formátu obsahu v Azure Kognitivní hledání používání klíčů spravovaných zákazníkem v Azure Key Vault
 
@@ -38,7 +38,7 @@ V tomto příkladu se používají následující služby.
 
 + Pro úlohy konfigurace se používá [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) nebo [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) .
 
-+ K volání REST API lze použít [post](search-get-started-postman.md), [Azure PowerShell](search-create-index-rest-api.md) a [Azure kognitivní hledání SDK](https://aka.ms/search-sdk-preview) . V tuto chvíli není k dispozici žádná podpora portálu pro šifrování spravované zákazníkem.
++ K volání REST API lze použít [post](search-get-started-postman.md), [Azure POWERSHELL](search-create-index-rest-api.md) a [.NET SDK Preview](https://aka.ms/search-sdk-preview) . V tuto chvíli není k dispozici žádná podpora portálu pro šifrování spravované zákazníkem.
 
 >[!Note]
 > Vzhledem k povaze šifrování s použitím klíčů spravovaných zákazníkem nebude Azure Kognitivní hledání moct načíst vaše data, pokud se odstraní klíč trezoru klíčů Azure. Aby nedošlo ke ztrátě dat způsobenému Key Vault náhodným odstraněním klíčů, **musíte** povolit ochranu před odstraněním a vyprázdněním v Key Vault, aby ji bylo možné použít. Další informace najdete v tématu [Azure Key Vault obnovitelné odstranění](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete).   

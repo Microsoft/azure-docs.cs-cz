@@ -10,12 +10,12 @@ ms.date: 11/22/2019
 ms.author: brendm
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 63fee90be773f61bfef73e21a272192eea5f789c
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 496f519ba5e4eb17060ee35ed86fba45c85336d6
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84167481"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84905727"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Konfigurace linuxové aplikace v jazyce Java pro Azure App Service
 
@@ -44,7 +44,7 @@ Sestavy výkonu, vizualizace provozu a checkups stavu jsou k dispozici pro každ
 
 ### <a name="stream-diagnostic-logs"></a>Streamování diagnostických protokolů
 
-[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-linux-no-h.md)]
 
 Další informace najdete v tématu [protokoly streamování v Cloud Shell](../troubleshoot-diagnostic-logs.md#in-cloud-shell).
 
@@ -280,7 +280,7 @@ V této části se dozvíte, jak připojit aplikace Java nasazené na Azure App 
 ### <a name="configure-new-relic"></a>Konfigurovat nové Relic
 
 1. Vytvoření účtu NewRelic na [NewRelic.com](https://newrelic.com/signup)
-2. Stáhněte si agenta Java ze NewRelic, bude mít název souboru podobný řetězci *NewRelic-Java-x. x. x. zip*.
+2. Stáhněte si agenta Java ze NewRelic, bude mít název souboru podobný *newrelic-java-x.x.x.zip*.
 3. Zkopírujte licenční klíč, budete ho potřebovat ke konfiguraci agenta později.
 4. [Do své instance App Service](app-service-linux-ssh-support.md) a vytvořte nový adresář */Home/site/wwwroot/APM*.
 5. Nahrajte nebalené soubory NewRelic Java do adresáře pod */Home/site/wwwroot/APM*. Soubory pro vašeho agenta by měly být v */Home/site/wwwroot/APM/NewRelic*.
@@ -292,7 +292,7 @@ V této části se dozvíte, jak připojit aplikace Java nasazené na Azure App 
 ### <a name="configure-appdynamics"></a>Konfigurace AppDynamics
 
 1. Vytvoření účtu AppDynamics na [AppDynamics.com](https://www.appdynamics.com/community/register/)
-2. Stáhněte si agenta Java z webu AppDynamics, název souboru bude podobný jako *AppServerAgent-x. x. x. xxxxx. zip*
+2. Stáhněte si agenta Java z webu AppDynamics, název souboru bude podobný *AppServerAgent-x.x.x.xxxxx.zip*
 3. [Do své instance App Service](app-service-linux-ssh-support.md) a vytvořte nový adresář */Home/site/wwwroot/APM*.
 4. Nahrajte soubory agenta Java do adresáře pod */Home/site/wwwroot/APM*. Soubory pro vašeho agenta by měly být v */Home/site/wwwroot/APM/AppDynamics*.
 5. V Azure Portal přejděte do aplikace v App Service a vytvořte nové nastavení aplikace.
@@ -306,7 +306,7 @@ V této části se dozvíte, jak připojit aplikace Java nasazené na Azure App 
 
 ### <a name="starting-jar-apps"></a>Spouštění aplikací JAR
 
-Ve výchozím nastavení App Service očekává, že vaše aplikace JAR bude pojmenována *App. jar*. Pokud tento název obsahuje, bude automaticky spuštěn. Pro uživatele Maven můžete název JAR nastavit tak, že zahrnete `<finalName>app</finalName>` do `<build>` části souboru *pom. XML*. To [samé můžete provést v Gradle](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.bundling.Jar.html#org.gradle.api.tasks.bundling.Jar:archiveFileName) nastavením `archiveFileName` Vlastnosti.
+Ve výchozím nastavení App Service očekává, že vaše aplikace JAR bude pojmenována *App. jar*. Pokud tento název obsahuje, bude automaticky spuštěn. Pro uživatele Maven můžete název JAR nastavit tak, že zahrnete `<finalName>app</finalName>` do `<build>` části *pom.xml*. To [samé můžete provést v Gradle](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.bundling.Jar.html#org.gradle.api.tasks.bundling.Jar:archiveFileName) nastavením `archiveFileName` Vlastnosti.
 
 Pokud chcete pro svůj JAR použít jiný název, musíte zadat také [spouštěcí příkaz](app-service-linux-faq.md#built-in-images) , který SPUSTÍ soubor JAR. Například, `java -jar my-jar-app.jar`. Hodnotu pro spouštěcí příkaz můžete nastavit na portálu v části Konfigurace > Obecné nastavení nebo pomocí nastavení aplikace s názvem `STARTUP_COMMAND` .
 
@@ -327,7 +327,7 @@ App Service Linux směruje příchozí požadavky na port 80, takže vaše aplik
 
 Tyto pokyny platí pro všechna databázová připojení. Zástupné symboly budete muset vyplnit pomocí názvu třídy ovladače zvolené databáze a souboru JAR. Poskytuje se tabulka s názvy tříd a stahování ovladačů pro běžné databáze.
 
-| Databáze   | Název třídy ovladače                             | Ovladač JDBC                                                                      |
+| databáze   | Název třídy ovladače                             | Ovladač JDBC                                                                      |
 |------------|-----------------------------------------------|------------------------------------------------------------------------------------------|
 | PostgreSQL | `org.postgresql.Driver`                        | [Stáhnout](https://jdbc.postgresql.org/download.html)                                    |
 | MySQL      | `com.mysql.jdbc.Driver`                        | [Stáhnout](https://dev.mysql.com/downloads/connector/j/) (vyberte "nezávislé na platformě") |
@@ -350,9 +350,9 @@ Dále určete, zda má být zdroj dat k dispozici pro jednu aplikaci nebo pro v�
 
 #### <a name="application-level-data-sources"></a>Zdroje dat na úrovni aplikace
 
-1. Vytvořte soubor *Context. XML* v adresáři *META-INF/* Directory vašeho projektu. Pokud neexistuje, vytvořte *soubor META-INF nebo* s adresářem.
+1. Vytvořte soubor *context.xml* v adresáři *META-INF nebo* v adresáři vašeho projektu. Pokud neexistuje, vytvořte *soubor META-INF nebo* s adresářem.
 
-2. V *kontextu. XML*přidejte element, `Context` který bude propojit zdroj dat s adresou JNDI. `driverClassName`Zástupný symbol nahraďte názvem třídy vašeho ovladače z tabulky výše.
+2. V *context.xml*přidejte `Context` prvek pro propojení zdroje dat s adresou JNDI. `driverClassName`Zástupný symbol nahraďte názvem třídy vašeho ovladače z tabulky výše.
 
     ```xml
     <Context>
@@ -367,7 +367,7 @@ Dále určete, zda má být zdroj dat k dispozici pro jednu aplikaci nebo pro v�
     </Context>
     ```
 
-3. Aktualizujte *Web. XML* vaší aplikace tak, aby používal zdroj dat ve vaší aplikaci.
+3. Aktualizujte *web.xml* vaší aplikace tak, aby používala zdroj dat ve vaší aplikaci.
 
     ```xml
     <resource-env-ref>
@@ -378,9 +378,9 @@ Dále určete, zda má být zdroj dat k dispozici pro jednu aplikaci nebo pro v�
 
 #### <a name="shared-server-level-resources"></a>Sdílené prostředky na úrovni serveru
 
-Přidání sdíleného zdroje dat na úrovni serveru bude vyžadovat, abyste upravili soubor Server. XML Tomcat. Nejdřív nahrajte [spouštěcí skript](app-service-linux-faq.md#built-in-images) a nastavte cestu ke skriptu v příkazu **Konfigurace**  >  **při spuštění**. Spouštěcí skript můžete nahrát pomocí [FTP](../deploy-ftp.md).
+Přidání sdíleného zdroje dat na úrovni serveru bude vyžadovat, abyste upravili server.xml Tomcat. Nejdřív nahrajte [spouštěcí skript](app-service-linux-faq.md#built-in-images) a nastavte cestu ke skriptu v příkazu **Konfigurace**  >  **při spuštění**. Spouštěcí skript můžete nahrát pomocí [FTP](../deploy-ftp.md).
 
-Spouštěcí skript vytvoří [transformaci XSL](https://www.w3schools.com/xml/xsl_intro.asp) souboru Server. XML a výstup výsledného souboru XML do `/usr/local/tomcat/conf/server.xml` . Spouštěcí skript by měl nainstalovat libxslt přes APK. Soubor XSL a spouštěcí skript je možné nahrávat prostřednictvím FTP. Níže je příklad spouštěcího skriptu.
+Spouštěcí skript vytvoří [transformaci XSL](https://www.w3schools.com/xml/xsl_intro.asp) do souboru server.xml a výstup výsledného souboru XML do `/usr/local/tomcat/conf/server.xml` . Spouštěcí skript by měl nainstalovat libxslt přes APK. Soubor XSL a spouštěcí skript je možné nahrávat prostřednictvím FTP. Níže je příklad spouštěcího skriptu.
 
 ```sh
 # Install libxslt. Also copy the transform file to /home/tomcat/conf/
@@ -390,7 +390,7 @@ apk add --update libxslt
 xsltproc --output /home/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl /usr/local/tomcat/conf/server.xml
 ```
 
-Příklad souboru XSL je uveden níže. Vzorový soubor XSL přidá nový uzel konektoru do serveru Tomcat. XML.
+Příklad souboru XSL je uveden níže. Vzorový soubor XSL přidá nový uzel konektoru do Tomcat server.xml.
 
 ```xml
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
@@ -524,7 +524,7 @@ Pokud chcete používat Tomcat s Redis, musíte aplikaci nakonfigurovat tak, aby
 
     Informace o názvu, portu a přístupu k informacím o Azure Portal najdete v částech **vlastnosti** nebo **přístupové klíče** vaší instance služby.
 
-2. Vytvořte nebo aktualizujte soubor *Src/Main/WebApp/META-INF* vaší aplikace s následujícím obsahem:
+2. Vytvořte nebo aktualizujte soubor *Src/Main/WebApp nebo meta-context.xmlINF* vaší aplikace následujícím obsahem:
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>
@@ -562,7 +562,7 @@ Pokud chcete používat Tomcat s Redis, musíte aplikaci nakonfigurovat tak, aby
 
 7. Přejděte do části **Rozšířená nastavení** instance Redis a nastavte možnost **povoluje přístup pouze přes protokol SSL** **.** Tím umožníte, aby vaše instance App Service komunikovala s mezipamětí Redis prostřednictvím infrastruktury Azure.
 
-8. Aktualizujte `azure-webapp-maven-plugin` konfiguraci v souboru *pom. XML* vaší aplikace tak, aby odkazovala na informace o účtu Redis. Tento soubor používá proměnné prostředí, které jste předtím nastavili, aby byly informace o svém účtu ze zdrojových souborů.
+8. Aktualizujte `azure-webapp-maven-plugin` konfiguraci v souboru *pom.xml* vaší aplikace tak, aby odkazovala na informace o účtu Redis. Tento soubor používá proměnné prostředí, které jste předtím nastavili, aby byly informace o svém účtu ze zdrojových souborů.
 
     V případě potřeby změňte `1.9.1` na aktuální verzi [modulu plug-in Maven pro Azure App Service](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme).
 

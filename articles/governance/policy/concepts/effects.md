@@ -1,14 +1,14 @@
 ---
 title: Vysvětlení fungování efektů
 description: Definice Azure Policy mají různé efekty, které určují, jak je dodržování předpisů spravované a nahlášené.
-ms.date: 05/20/2020
+ms.date: 06/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: f077548f2de06ef35a80aea0e8e33718a18ff229
-ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
+ms.openlocfilehash: 54c2a687c6386c075ef5802826bc60b87b4d3ee4
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84424342"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791414"
 ---
 # <a name="understand-azure-policy-effects"></a>Pochopení Azure Policych efektů
 
@@ -22,22 +22,26 @@ V definici zásad se v současné době podporují tyto efekty:
 - [Odepřít](#deny)
 - [DeployIfNotExists](#deployifnotexists)
 - [Disabled](#disabled) (Zakázáno)
-- [EnforceOPAConstraint](#enforceopaconstraint) (Preview)
-- [EnforceRegoPolicy](#enforceregopolicy) (Preview)
 - [Úprava](#modify)
+
+Následující efekty jsou _zastaralé_:
+
+- [EnforceOPAConstraint](#enforceopaconstraint)
+- [EnforceRegoPolicy](#enforceregopolicy)
+
+> [!IMPORTANT]
+> Místo **EnforceOPAConstraint** nebo **EnforceRegoPolicy** efektů použijte _audit_ a _Odepřít_ v režimu poskytovatele prostředků `Microsoft.Kubernetes.Data` . Předdefinované definice zásad se aktualizovaly. Když se upraví existující přiřazení zásad těchto předdefinovaných definic zásad, musí se parametr _efekt_ změnit na hodnotu v aktualizovaném seznamu _allowedValues_ .
 
 ## <a name="order-of-evaluation"></a>Pořadí vyhodnocení
 
-Požadavky na vytvoření nebo aktualizaci prostředku prostřednictvím Azure Resource Manageru vyhodnotí nejprve služba Azure Policy. Azure Policy vytvoří seznam všech přiřazení, která platí pro daný prostředek, a pak vyhodnotí prostředek proti každé definici. Azure Policy zpracovává několik efektů před předáním požadavku příslušnému poskytovateli prostředků. Tím se zabrání zbytečnému zpracování poskytovatele prostředků, když prostředek nesplňuje navržené ovládací prvky zásad správného řízení Azure Policy.
+Žádosti o vytvoření nebo aktualizaci prostředku se vyhodnocují Azure Policy nejdřív. Azure Policy vytvoří seznam všech přiřazení, která platí pro daný prostředek, a pak vyhodnotí prostředek proti každé definici. V [režimu Správce prostředků](./definition-structure.md#resource-manager-modes)Azure Policy zpracovává několik efektů před předáním požadavku příslušnému poskytovateli prostředků. Toto pořadí zabrání zbytečnému zpracování poskytovatelem prostředků, pokud prostředek nesplňuje navržené ovládací prvky zásad správného řízení Azure Policy. V [režimu poskytovatele](./definition-structure.md#resource-provider-modes)prostředků spravuje poskytovatel prostředků vyhodnocení a výsledek a oznamuje výsledky zpět do Azure Policy.
 
 - Políčko **zakázáno** je zaškrtnuté, abyste zjistili, jestli se má vyhodnotit pravidlo zásad.
-- Pak se vyhodnotí **připojení** a **Úpravy** . Vzhledem k tomu, že může žádost změnit, může dojít k tomu, že se projeví audit nebo odepření z aktivace.
+- Pak se vyhodnotí **připojení** a **Úpravy** . Vzhledem k tomu, že může žádost změnit, může dojít k tomu, že se projeví audit nebo odepření z aktivace. Tyto efekty jsou k dispozici pouze v režimu Správce prostředků.
 - Pak se vyhodnotí **zamítnutí** . Vyhodnocením Deny před auditem je znemožněno dvojí protokolování nepotřebného prostředku.
-- **Audit** se pak vyhodnotí předtím, než se požadavek navrátí do poskytovatele prostředků.
+- **Audit** se vyhodnocuje jako poslední.
 
-Jakmile poskytovatel prostředků vrátí kód úspěšnosti, **AuditIfNotExists** a **DeployIfNotExists** se vyhodnotí a určí, jestli je potřeba další protokolování nebo akce dodržování předpisů.
-
-V současné době není k dispozici žádné pořadí vyhodnocení pro efekty **EnforceOPAConstraint** nebo **EnforceRegoPolicy** .
+Poté, co poskytovatel prostředků vrátí kód úspěšnosti Správce prostředků v **AuditIfNotExists** režimu, vyhodnotí a **DeployIfNotExists** vyhodnotí, jestli je potřeba další protokolování nebo akce dodržování předpisů.
 
 ## <a name="append"></a>Připojit
 
@@ -88,28 +92,50 @@ Příklad 2: dvojice s jedním **polem/hodnotou** pomocí **\[\*\]** [aliasu](de
 }
 ```
 
-
-
-
 ## <a name="audit"></a>Auditování
 
 Audit se používá k vytvoření události upozornění v protokolu aktivit při vyhodnocování nekompatibilního prostředku, ale nezastaví požadavek.
 
 ### <a name="audit-evaluation"></a>Vyhodnocení auditu
 
-Audit je poslední efekt, který při vytváření nebo aktualizaci prostředku kontrolovala Azure Policy. Azure Policy pak odešle prostředek poskytovateli prostředků. Audit funguje stejně jako požadavek prostředku a cyklus vyhodnocení. Azure Policy přidá `Microsoft.Authorization/policies/audit/action` operaci do protokolu aktivit a označí prostředek jako nevyhovující.
+Audit je poslední efekt, který při vytváření nebo aktualizaci prostředku kontrolovala Azure Policy. V režimu Správce prostředků Azure Policy pak odešle prostředek poskytovateli prostředků. Audit funguje stejně jako požadavek prostředku a cyklus vyhodnocení. Azure Policy přidá `Microsoft.Authorization/policies/audit/action` operaci do protokolu aktivit a označí prostředek jako nevyhovující.
 
 ### <a name="audit-properties"></a>Vlastnosti auditu
 
-V podmínce podmínky definice zásad neexistují žádné další vlastnosti, **které by bylo** potřeba použít.
+V případě režimu Správce prostředků nemá efekt auditu žádné další vlastnosti pro použití v **podmínce definice** zásady.
+
+V případě režimu poskytovatele prostředků `Microsoft.Kubernetes.Data` má efekt auditu následující další podvlastnosti **podrobností**.
+
+- **constraintTemplate** (povinné)
+  - Šablona omezení CustomResourceDefinition (CRD), která definuje nová omezení. Šablona definuje logiku Rego, schéma omezení a parametry omezení, které jsou předány prostřednictvím **hodnot** z Azure Policy.
+- **omezení** (povinné)
+  - Implementace šablony omezení CRD. Používá parametry předané prostřednictvím **hodnot** jako `{{ .Values.<valuename> }}` . V příkladu 2 níže jsou tyto hodnoty `{{ .Values.excludedNamespaces }}` a `{{ .Values.allowedContainerImagesRegex }}` .
+- **hodnoty** (volitelné)
+  - Definuje všechny parametry a hodnoty, které se mají předat omezení. Každá hodnota musí existovat v šabloně omezení CRD.
 
 ### <a name="audit-example"></a>Příklad auditu
 
-Příklad: použití efektu auditu.
+Příklad 1: použití efektu auditu pro Správce prostředků režimy.
 
 ```json
 "then": {
     "effect": "audit"
+}
+```
+
+Příklad 2: použití efektu auditu pro režim poskytovatele prostředků v `Microsoft.Kubernetes.Data` . Další informace v **podrobnostech** definují šablonu omezení a CRD pro použití v Kubernetes k omezení povolených imagí kontejneru.
+
+```json
+"then": {
+    "effect": "audit",
+    "details": {
+        "constraintTemplate": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-allowed-images/template.yaml",
+        "constraint": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-allowed-images/constraint.yaml",
+        "values": {
+            "allowedContainerImagesRegex": "[parameters('allowedContainerImagesRegex')]",
+            "excludedNamespaces": "[parameters('excludedNamespaces')]"
+        }
+    }
 }
 ```
 
@@ -125,7 +151,7 @@ AuditIfNotExists se spustí poté, co poskytovatel prostředků zpracuje požada
 
 Vlastnost **Details** AuditIfNotExists efektů má všechny podvlastnosti, které definují související prostředky, které se shodují.
 
-- **Typ** [povinné]
+- **Typ** (povinné)
   - Určuje typ souvisejícího prostředku, který se má shodovat.
   - Pokud **Details. Type** je typ prostředku pod prostředkem podmínky **if** , zásady se dotazují na prostředky tohoto **typu** v rámci oboru vyhodnoceného prostředku. V opačném případě se zásady dotazují ve stejné skupině prostředků jako vyhodnocený prostředek.
 - **Název** (volitelné)
@@ -185,17 +211,26 @@ Odepření se používá k tomu, aby se zabránilo požadavku na prostředek, kt
 
 ### <a name="deny-evaluation"></a>Odepřít vyhodnocení
 
-Při vytváření nebo aktualizaci odpovídajícího prostředku znemožní odepření žádosti, než se pošle poskytovateli prostředků. Požadavek se vrátí jako `403 (Forbidden)` . V portálu je zakázaný možné zobrazit jako stav nasazení, které bylo znemožněno přiřazením zásad.
+Při vytváření nebo aktualizaci odpovídajícího prostředku v režimu Správce prostředků zabrání zamítnutí žádosti před odesláním poskytovateli prostředků. Požadavek se vrátí jako `403 (Forbidden)` . V portálu je zakázaný možné zobrazit jako stav nasazení, které bylo znemožněno přiřazením zásad. Pro režim poskytovatele prostředků spravuje poskytovatel prostředků vyhodnocení prostředku.
 
 Během hodnocení stávajících prostředků se prostředky, které odpovídají definici zásad odepření, označí jako nedodržující předpisy.
 
 ### <a name="deny-properties"></a>Vlastnosti odepření
 
-Nepřístupný efekt nemá žádné další vlastnosti pro použití v **podmínce definice** zásady.
+V případě režimu Správce prostředků nemá efekt odepřít žádné další vlastnosti pro použití v **podmínce definice** zásady.
+
+V případě režimu poskytovatele prostředků `Microsoft.Kubernetes.Data` má efekt odepření následující další podvlastnosti **podrobností**.
+
+- **constraintTemplate** (povinné)
+  - Šablona omezení CustomResourceDefinition (CRD), která definuje nová omezení. Šablona definuje logiku Rego, schéma omezení a parametry omezení, které jsou předány prostřednictvím **hodnot** z Azure Policy.
+- **omezení** (povinné)
+  - Implementace šablony omezení CRD. Používá parametry předané prostřednictvím **hodnot** jako `{{ .Values.<valuename> }}` . V příkladu 2 níže jsou tyto hodnoty `{{ .Values.excludedNamespaces }}` a `{{ .Values.allowedContainerImagesRegex }}` .
+- **hodnoty** (volitelné)
+  - Definuje všechny parametry a hodnoty, které se mají předat omezení. Každá hodnota musí existovat v šabloně omezení CRD.
 
 ### <a name="deny-example"></a>Příklad zamítnutí
 
-Příklad: použití efektu odepřít.
+Příklad 1: použití efektu Odepřít pro režimy Správce prostředků.
 
 ```json
 "then": {
@@ -203,6 +238,21 @@ Příklad: použití efektu odepřít.
 }
 ```
 
+Příklad 2: použití efektu Odepřít pro režim poskytovatele prostředků v `Microsoft.Kubernetes.Data` . Další informace v **podrobnostech** definují šablonu omezení a CRD pro použití v Kubernetes k omezení povolených imagí kontejneru.
+
+```json
+"then": {
+    "effect": "deny",
+    "details": {
+        "constraintTemplate": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-allowed-images/template.yaml",
+        "constraint": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-allowed-images/constraint.yaml",
+        "values": {
+            "allowedContainerImagesRegex": "[parameters('allowedContainerImagesRegex')]",
+            "excludedNamespaces": "[parameters('excludedNamespaces')]"
+        }
+    }
+}
+```
 
 ## <a name="deployifnotexists"></a>DeployIfNotExists
 
@@ -222,7 +272,7 @@ V průběhu zkušebního cyklu jsou definice zásad s DeployIfNotExists účinke
 
 Vlastnost **Details** efektu DeployIfNotExists má všechny podvlastnosti definující související prostředky, které se shodují, a nasazení šablon, které se má spustit.
 
-- **Typ** [povinné]
+- **Typ** (povinné)
   - Určuje typ souvisejícího prostředku, který se má shodovat.
   - Spustí se tak, že se pokusí načíst prostředek pod prostředkem podmínky **if** a pak se dotazuje ve stejné skupině prostředků jako prostředek podmínky **if** .
 - **Název** (volitelné)
@@ -246,14 +296,14 @@ Vlastnost **Details** efektu DeployIfNotExists má všechny podvlastnosti definu
   - Pokud se některý odpovídající související prostředek vyhodnotí jako true, projeví se to jako splněné a neaktivuje se nasazení.
   - Lze použít [Field ()] ke kontrole rovnocennosti s hodnotami v podmínkách **if** .
   - Například lze použít k ověření, zda je nadřazený prostředek (v podmínce **if** ) ve stejném umístění prostředku jako odpovídající související prostředek.
-- **roleDefinitionIds** [povinné]
+- **roleDefinitionIds** (povinné)
   - Tato vlastnost musí zahrnovat pole řetězců, které odpovídají ID role řízení přístupu na základě rolí přístupné pro předplatné. Další informace najdete v tématu [náprava – konfigurace definice zásad](../how-to/remediate-resources.md#configure-policy-definition).
 - **DeploymentScope** (volitelné)
   - Povolené hodnoty jsou _předplatné_ a _zdroj_.
   - Nastaví typ nasazení, které se má aktivovat. _Předplatné_ indikuje [nasazení na úrovni předplatného](../../../azure-resource-manager/templates/deploy-to-subscription.md), skupina _Resource_ označuje nasazení do skupiny prostředků.
   - Při použití nasazení na úrovni předplatného musí být v _nasazení_ zadaná vlastnost _umístění_ .
   - Výchozí hodnota je _Resource_.
-- **Nasazení** [požadováno]
+- **Nasazení** (povinné)
   - Tato vlastnost by měla zahrnovat nasazení úplné šablony, protože by byla předána `Microsoft.Resources/deployments` rozhraní API pro vložení. Další informace najdete v tématu [nasazení REST API](/rest/api/resources/deployments).
 
   > [!NOTE]
@@ -319,13 +369,12 @@ Tento efekt je vhodný pro situace při testování nebo v případě, že defin
 Alternativa k zakázanému efektu je **enforcementMode**, která je nastavená u přiřazení zásady.
 Když **enforcementMode** je enforcementMode _zakázaný_, prostředky se ještě vyhodnocují. Protokolování, jako jsou protokoly aktivit a vliv zásad, se neprojeví. Další informace najdete v tématu věnovaném [přiřazení zásad – režim vynucení](./assignment-structure.md#enforcement-mode).
 
-
 ## <a name="enforceopaconstraint"></a>EnforceOPAConstraint
 
 Tento efekt se používá v _režimu_ definice zásad `Microsoft.Kubernetes.Data` . Používá se k předávání pravidel řízení přístupu na serveru gatekeeper V3 definovaných pomocí [architektury omezení neprů](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework) k [otevření agenta zásad](https://www.openpolicyagent.org/) (neprů) do clusterů Kubernetes v Azure.
 
 > [!NOTE]
-> [Azure Policy pro Kubernetes](./policy-for-kubernetes.md) je ve verzi Preview a podporuje jenom fondy uzlů Linux a předdefinované definice zásad.
+> [Azure Policy pro Kubernetes](./policy-for-kubernetes.md) je ve verzi Preview a podporuje jenom fondy uzlů Linux a předdefinované definice zásad. Předdefinované definice zásad jsou v kategorii **Kubernetes** . Definice zásad omezené verze Preview s **EnforceOPAConstraint** efektem a související kategorií **služby Kubernetes** se _už_nepoužívají. Místo toho použijte _audit_ efektů a _Odepřít_ v režimu poskytovatele prostředků `Microsoft.Kubernetes.Data` .
 
 ### <a name="enforceopaconstraint-evaluation"></a>EnforceOPAConstraint vyhodnocování
 
@@ -336,11 +385,11 @@ Každých 15 minut se dokončila úplná kontrola clusteru a výsledky nahlásil
 
 Vlastnost **Details** EnforceOPAConstraintového efektu má podvlastnosti, které popisují pravidlo pro Admission Control na serveru gatekeeper v3.
 
-- **constraintTemplate** [povinné]
+- **constraintTemplate** (povinné)
   - Šablona omezení CustomResourceDefinition (CRD), která definuje nová omezení. Šablona definuje logiku Rego, schéma omezení a parametry omezení, které jsou předány prostřednictvím **hodnot** z Azure Policy.
-- **omezení** [povinné]
+- **omezení** (povinné)
   - Implementace šablony omezení CRD. Používá parametry předané prostřednictvím **hodnot** jako `{{ .Values.<valuename> }}` . V následujícím příkladu jsou tyto hodnoty `{{ .Values.cpuLimit }}` a `{{ .Values.memoryLimit }}` .
-- **hodnoty** [nepovinné]
+- **hodnoty** (volitelné)
   - Definuje všechny parametry a hodnoty, které se mají předat omezení. Každá hodnota musí existovat v šabloně omezení CRD.
 
 ### <a name="enforceopaconstraint-example"></a>Příklad EnforceOPAConstraint
@@ -381,7 +430,7 @@ Příklad: pravidlo pro Admission Control pro gatekeeper v3, které nastaví ome
 Tento efekt se používá v _režimu_ definice zásad `Microsoft.ContainerService.Data` . Používá se k předávání pravidel řízení přístupu serveru gatekeeper v2 definovaných pomocí [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) k [otevření agenta zásad](https://www.openpolicyagent.org/) (Neprů) ve [službě Azure Kubernetes Service](../../../aks/intro-kubernetes.md).
 
 > [!NOTE]
-> [Azure Policy pro Kubernetes](./policy-for-kubernetes.md) je ve verzi Preview a podporuje jenom fondy uzlů Linux a předdefinované definice zásad. Předdefinované definice zásad jsou v kategorii **Kubernetes** . Definice zásad omezené verze Preview s **EnforceRegoPolicy** efektem a související kategorií **služby Kubernetes** se _už_nepoužívají. Místo toho použijte aktualizovaný [EnforceOPAConstraint](#enforceopaconstraint) efekt.
+> [Azure Policy pro Kubernetes](./policy-for-kubernetes.md) je ve verzi Preview a podporuje jenom fondy uzlů Linux a předdefinované definice zásad. Předdefinované definice zásad jsou v kategorii **Kubernetes** . Definice zásad omezené verze Preview s **EnforceRegoPolicy** efektem a související kategorií **služby Kubernetes** se _už_nepoužívají. Místo toho použijte _audit_ efektů a _Odepřít_ v režimu poskytovatele prostředků `Microsoft.Kubernetes.Data` .
 
 ### <a name="enforceregopolicy-evaluation"></a>EnforceRegoPolicy vyhodnocování
 
@@ -392,11 +441,11 @@ Každých 15 minut se dokončila úplná kontrola clusteru a výsledky nahlásil
 
 Vlastnost **Details** EnforceRegoPolicy efektu má podvlastnosti, které popisují pravidlo pro Admission Control pro rozhraní gatekeeper v2.
 
-- **policyId** [povinné]
+- **policyId** (povinné)
   - K pravidlu Rego Admission Control se předal jedinečný název jako parametr.
-- **zásady** [povinné]
+- **zásada** (povinné)
   - Určuje identifikátor URI pravidla Rego Admission Control.
-- **policyParameters** [nepovinné]
+- **policyParameters** (volitelné)
   - Definuje všechny parametry a hodnoty, které se mají předat zásadám Rego.
 
 ### <a name="enforceregopolicy-example"></a>Příklad EnforceRegoPolicy
@@ -445,15 +494,21 @@ Když se v rámci zkušebního cyklu spustí definice zásady pomocí efektu zm�
 
 Vlastnost **Details** pro efekt úpravy obsahuje všechny podvlastnosti, které definují oprávnění potřebná k nápravě a **operace** používané k přidání, aktualizaci nebo odebrání hodnot značek.
 
-- **roleDefinitionIds** [povinné]
+- **roleDefinitionIds** (povinné)
   - Tato vlastnost musí zahrnovat pole řetězců, které odpovídají ID role řízení přístupu na základě rolí přístupné pro předplatné. Další informace najdete v tématu [náprava – konfigurace definice zásad](../how-to/remediate-resources.md#configure-policy-definition).
   - Definovaná role musí zahrnovat všechny operace udělené roli [přispěvatele](../../../role-based-access-control/built-in-roles.md#contributor) .
-- **operace** [povinné]
+- **conflictEffect** (volitelné)
+  - Určuje, která definice zásad "WINS" v případě, že více než jedna definice zásad upravuje stejnou vlastnost.
+    - U nových nebo aktualizovaných prostředků má přednost definice zásad s _odepřením_ . Definice zásad s _auditem_ přeskočí všechny **operace**. Pokud má _zamítnutí_více než jedna definice zásady, je žádost zamítnuta jako konflikt. Pokud všechny definice zásad mají _audit_, nezpracovávají se žádné **operace** pro konfliktní definice zásad.
+    - V případě existujících prostředků, pokud více než jedna definice zásad má _odepření_, je stav dodržování předpisů _konflikt_. Pokud jeden nebo více definic zásad má _zamítnutí_, každé přiřazení vrátí stav dodržování předpisů jako _nevyhovující_.
+  - Dostupné hodnoty: _audit_, _Deny_, _zakázáno_.
+  - Výchozí hodnota je _Deny_.
+- **operace** (povinné)
   - Pole všech operací značek, které mají být dokončeny na vyhovujících prostředcích.
   - Vlastnosti:
-    - **operace** [povinné]
+    - **operace** (povinné)
       - Definuje akci, která se má provést u odpovídajícího prostředku. Možnosti jsou: _addOrReplace_, _Add_, _Remove_. _Přidat_ se chová podobně jako v efektu [připojit](#append) .
-    - **pole** [povinné]
+    - **pole** (povinné)
       - Značka, která se má přidat, nahradit nebo odebrat. Názvy značek musí splňovat stejné zásady vytváření názvů pro ostatní [pole](./definition-structure.md#fields).
     - **hodnota** (nepovinná)
       - Hodnota, na kterou má být značka nastavena.
@@ -528,6 +583,7 @@ Příklad 2: odebrání `env` značky a přidání `environment` značky nebo n�
         "roleDefinitionIds": [
             "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
         ],
+        "conflictEffect": "deny",
         "operations": [
             {
                 "operation": "Remove",
@@ -542,8 +598,6 @@ Příklad 2: odebrání `env` značky a přidání `environment` značky nebo n�
     }
 }
 ```
-
-
 
 ## <a name="layering-policy-definitions"></a>Definice zásad vrstvení
 

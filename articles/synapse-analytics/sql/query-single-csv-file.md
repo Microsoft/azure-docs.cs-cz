@@ -5,16 +5,16 @@ services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: how-to
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: f264a62428f919fe23797171926ddf63c585c42b
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 628631fb7fddbc07dcb865e3d3badbfb608ad097
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234128"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214447"
 ---
 # <a name="query-csv-files"></a>Dotazování na soubory CSV
 
@@ -179,6 +179,37 @@ WHERE
 
 > [!NOTE]
 > Tento dotaz by se nezdařil, pokud není zadán parametr ESCAPECHAR, protože čárka v "slov, enia" by byla považována za oddělovač polí namísto části názvu země nebo oblasti. "Slov, enia" by se považovat za dva sloupce. Proto bude mít konkrétní řádek jeden sloupec více než ostatní řádky a jeden sloupec je více, než jste definovali v klauzuli WITH.
+
+### <a name="escaping-quoting-characters"></a>Uvozovací znaky citací
+
+Následující dotaz ukazuje, jak číst soubor s řádkem záhlaví s novým řádkem ve stylu UNIX, s oddělovači sloupců a s řídicím znakem dvojitých uvozovek v rámci hodnot. Všimněte si, že se v porovnání s ostatními příklady liší umístění souboru.
+
+Náhled souboru:
+
+![Následující dotaz ukazuje, jak číst soubor s řádkem záhlaví s novým řádkem ve stylu UNIX, s oddělovači sloupců a s řídicím znakem dvojitých uvozovek v rámci hodnot.](./media/query-single-csv-file/population-unix-hdr-escape-quoted.png)
+
+```sql
+SELECT *
+FROM OPENROWSET(
+        BULK 'csv/population-unix-hdr-escape-quoted/population.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
+        FIELDTERMINATOR =',',
+        ROWTERMINATOR = '0x0a',
+        FIRSTROW = 2
+    )
+    WITH (
+        [country_code] VARCHAR (5) COLLATE Latin1_General_BIN2,
+        [country_name] VARCHAR (100) COLLATE Latin1_General_BIN2,
+        [year] smallint,
+        [population] bigint
+    ) AS [r]
+WHERE
+    country_name = 'Slovenia';
+```
+
+> [!NOTE]
+> Znak Quota musí být uvozen jiným znakem pro quotování. Znak quotace se může objevit v rámci hodnoty sloupce jenom v případě, že je hodnota zapouzdřená pomocí znaků quote.
 
 ## <a name="tab-delimited-files"></a>Soubory s hodnotami oddělenými tabulátory
 

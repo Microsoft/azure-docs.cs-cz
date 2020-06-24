@@ -6,17 +6,20 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/23/2019
-ms.openlocfilehash: bfb0a73631564c96a4af745fe9d7540a3a84f9c3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c0f31ddb0e0aeabff06d14d40d254c2577b38b5c
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77655357"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84906798"
 ---
 # <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor-preview"></a>Vytváření vlastních polí v pracovním prostoru Log Analytics v Azure Monitor (Preview)
 
 > [!NOTE]
 > Tento článek popisuje, jak analyzovat textová data v Log Analytics pracovním prostoru při jejich shromažďování. Po shromáždění textu podle pokynů popsaných v tématu [Analýza textových dat v Azure monitor](../log-query/parse-text.md)doporučujeme analyzovat textová data ve filtru dotazu. Nabízí několik výhod používání vlastních polí.
+
+> [!IMPORTANT]
+> Vlastní pole zvyšují množství dat shromažďovaných v pracovním prostoru Log Analytics, což může zvýšit vaše náklady. Podrobnosti najdete v tématu [Správa využití a nákladů pomocí protokolů Azure monitor](manage-cost-storage.md#pricing-model) .
 
 Funkce **vlastní pole** Azure monitor umožňuje rozšíření existujících záznamů v pracovním prostoru Log Analytics přidáním vlastních vyhledávacích polí.  Vlastní pole jsou automaticky vyplněna z dat extrahovaných z jiných vlastností ve stejném záznamu.
 
@@ -50,7 +53,7 @@ Prvním krokem je identifikace záznamů, které získají vlastní pole.  Začn
 ### <a name="step-2---perform-initial-extract"></a>Krok 2 – proveďte počáteční extrakci.
 Jakmile identifikujete záznamy, které budou mít vlastní pole, identifikujte data, která chcete extrahovat.  Log Analytics budou tyto informace používat k identifikaci podobných vzorů v podobných záznamech.  V tomto kroku budete moci ověřit výsledky a poskytnout další podrobnosti, které Log Analytics použít při analýze.
 
-1. Zvýrazněte text v ukázkovém záznamu, který chcete vyplnit vlastní pole.  Pak se zobrazí dialogové okno, kde můžete zadat název a datový typ pro pole a provést počáteční extrakci.  Znaky ** \_CR** budou automaticky připojeny.
+1. Zvýrazněte text v ukázkovém záznamu, který chcete vyplnit vlastní pole.  Pak se zobrazí dialogové okno, kde můžete zadat název a datový typ pro pole a provést počáteční extrakci.  Znaky ** \_ CR** budou automaticky připojeny.
 2. Kliknutím na **extrahovat** proveďte analýzu shromážděných záznamů.  
 3. V sekcích **Souhrn** a **výsledky hledání** se zobrazují výsledky extrakce, abyste mohli zkontrolovat jeho přesnost.  **Souhrn** zobrazuje kritéria sloužící k identifikaci záznamů a počtu identifikovaných hodnot dat.  **Výsledky hledání** obsahují podrobný seznam záznamů, které odpovídají kritériím.
 

@@ -6,17 +6,17 @@ author: ronortloff
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: e7aa0c402878c994aabe4e12d811a99e300d7e67
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 266eebc8322b5fc648180c0524abc973a4b60373
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80743648"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212373"
 ---
 # <a name="azure-synapse-analytics-workload-classification"></a>Klasifikace úloh Azure synapse Analytics
 
@@ -53,7 +53,7 @@ V rámci procesu klasifikace je pro určení, která skupina úloh přiřazena, 
 |WLM_CONTEXT          |8        |
 |START_TIME/END_TIME  |4        |
 
-`membername` Parametr je povinný.  Pokud je však zadaný member uživatel databáze, nikoli databázová role, je váha pro uživatele vyšší, a proto je zvolen klasifikátor.
+`membername`Parametr je povinný.  Pokud je však zadaný member uživatel databáze, nikoli databázová role, je váha pro uživatele vyšší, a proto je zvolen klasifikátor.
 
 Pokud je uživatel členem více rolí s přiřazenými nebo odpovídajícími různými třídami prostředků v několika klasifikátorech, uživateli se udělí nejvyšší přiřazení třídy prostředku.  Toto chování je konzistentní s existujícím chováním přiřazení tříd prostředků.
 

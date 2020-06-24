@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 4/13/2020
-ms.openlocfilehash: d532e1990586d80d675a8ccb247c0c9f7908bb6f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/18/2020
+ms.openlocfilehash: a27bd98b723e6e827ba7d9e155586d336ababc49
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81384165"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100765"
 ---
 # <a name="configure-and-access-audit-logs-in-the-azure-cli"></a>Konfigurace a přístup k protokolům auditu v rozhraní příkazového řádku Azure
 
@@ -29,9 +29,12 @@ Pokud chcete projít tento průvodce, budete potřebovat:
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 > [!IMPORTANT]
-> Tento návod vyžaduje použití Azure CLI verze 2,0 nebo novější. Verzi ověříte tak, že v příkazovém řádku Azure CLI zadáte `az --version`. Informace o instalaci nebo upgradu najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI]( /cli/azure/install-azure-cli).
+> Tento návod vyžaduje použití Azure CLI verze 2,0 nebo novější. Verzi ověříte tak, že v příkazovém řádku Azure CLI zadáte `az --version` . Informace o instalaci nebo upgradu najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="configure-audit-logging"></a>Konfigurace protokolování auditu
+
+>[!NOTE]
+> Doporučujeme pouze protokolovat typy událostí a uživatele požadované pro vaše účely auditování, aby se zajistilo, že výkon serveru nebude velmi ovlivněn.
 
 Povolte a nakonfigurujte protokolování auditu pomocí následujících kroků:
 

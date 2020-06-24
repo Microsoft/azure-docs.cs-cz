@@ -5,21 +5,21 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: include
-ms.date: 05/14/2020
+ms.date: 06/22/2020
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: 4e00b0c46c79dc058d19076a396d055ba1d41b87
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: fe223030b98f95036f01cf69babdeb8a9a84dc2d
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83673522"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85242093"
 ---
 | Prostředek | Omezení |
 | --- | --- |
-| Datová propustnost |30 GB/s<sup>1</sup> |
+| Propustnost dat |30 GB/s<sup>1</sup> |
 |Pravidla|10 000. Všechny typy pravidel jsou kombinované.|
-|Maximální počet pravidel DNAT|298<br>Pokud je protokol pravidla nakonfigurovaný pro TCP i UDP, počítá se jako dvě pravidla.|
+|Maximální počet pravidel DNAT|298 pro jednu veřejnou IP adresu.<br>Všechny další veřejné IP adresy přispívají k dostupným portům SNAT, ale omezují počet dostupných pravidel DNAT. Například dvě veřejné IP adresy umožňují pravidla 297 DNAT. Pokud je protokol pravidla nakonfigurovaný pro TCP i UDP, počítá se jako dvě pravidla.|
 |Minimální velikost AzureFirewallSubnet |za 26|
 |Rozsah portů v pravidlech sítě a aplikace|1 - 65535|
 |Veřejné IP adresy|250 maximum. Všechny veřejné IP adresy se dají použít v pravidlech DNAT a všechny přispívají k dostupným portům SNAT.|

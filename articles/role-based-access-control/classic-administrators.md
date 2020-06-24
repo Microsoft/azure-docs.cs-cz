@@ -8,18 +8,18 @@ manager: mtillman
 ms.assetid: ''
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: cacdeee4512c512b058be96c4fe3a829c2933f06
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 298ec15700537f2368ef33ead267e85f5f22bfd7
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734854"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791788"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Správci předplatného Azure Classic
 
@@ -27,7 +27,7 @@ Microsoft doporučuje spravovat přístup k prostředkům Azure pomocí řízen�
 
 Tento článek popisuje, jak přidat nebo změnit role spolusprávce a správců služeb a jak zobrazit správce účtu.
 
-## <a name="add-a-co-administrator"></a>Přidat spolusprávce
+## <a name="add-a-co-administrator"></a>Přidání spolusprávce
 
 > [!TIP]
 > Spolusprávce musíte přidat jenom v případě, že uživatel potřebuje spravovat nasazení Azure Classic pomocí [modulu Azure Service Management PowerShell](https://docs.microsoft.com/powershell/module/servicemanagement/azure). Pokud uživatel používá ke správě klasických prostředků jenom Azure Portal, nebudete muset pro tohoto uživatele přidat klasického správce.
@@ -38,13 +38,13 @@ Tento článek popisuje, jak přidat nebo změnit role spolusprávce a správců
 
     Spolusprávci lze přiřadit pouze v oboru předplatného.
 
-1. Klikněte na **Řízení přístupu (IAM)**.
+1. Klikněte na **Řízení přístupu (IAM)** .
 
 1. Klikněte na kartu **Classic Administrators** .
 
     ![Snímek obrazovky, který otevírá klasické správce](./media/classic-administrators/classic-administrators.png)
 
-1. Kliknutím na **Přidat** > **Přidat spolusprávce** otevřete podokno přidat spolusprávce.
+1. Kliknutím na **Přidat**  >  **Přidat spolusprávce** otevřete podokno přidat spolusprávce.
 
     Pokud je možnost Přidat spolusprávce zakázaná, nemáte oprávnění.
 
@@ -83,7 +83,7 @@ Informace, které porovnávají uživatele členů a uživatele typu Host, najde
 
 1. Otevřete [Předplatná](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) a vyberte předplatné.
 
-1. Klikněte na **Řízení přístupu (IAM)**.
+1. Klikněte na **Řízení přístupu (IAM)** .
 
 1. Klikněte na kartu **Classic Administrators** .
 
@@ -126,9 +126,9 @@ V každém předplatném Azure může být jen jeden správce služby. Změna sp
 | Účet správce účtu | Může změnit správce služby na jiný účet Microsoft? | Můžete změnit správce služby na účet Azure AD ve stejném adresáři? | Může změnit správce služby na účet Azure AD v jiném adresáři? |
 | --- | --- | --- | --- |
 | Účet Microsoft | Ano | Ne | Ne |
-| Účet Azure AD | Ano | Ano | No |
+| Účet Azure AD | Ano | Ano | Ne |
 
-Pokud je správcem účtu účet Azure AD, můžete změnit správce služby na účet Azure AD ve stejném adresáři, ale ne v jiném adresáři. Například abby@contoso.com může změnit správce služby na bob@contoso.com, ale nemůže změnit správce služby na john@notcontoso.com , pokud john@notcontoso.com nemá přítomnost v adresáři contoso.com.
+Pokud je správcem účtu účet Azure AD, můžete změnit správce služby na účet Azure AD ve stejném adresáři, ale ne v jiném adresáři. Například abby@contoso.com může změnit správce služby na bob@contoso.com , ale nemůže změnit správce služby na, john@notcontoso.com Pokud john@notcontoso.com nemá přítomnost v adresáři contoso.com.
 
 Další informace o účtech Microsoft a účtech Azure AD najdete v tématu [co je Azure Active Directory?](../active-directory/fundamentals/active-directory-whatis.md).
 
@@ -152,4 +152,4 @@ Pomocí těchto kroků zobrazíte správce účtu.
 
 * [Vysvětlení různých rolí](../role-based-access-control/rbac-and-directory-admin-roles.md)
 * [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal](../role-based-access-control/role-assignments-portal.md)
-* [Přidání nebo změna správců předplatného Azure](../cost-management-billing/manage/add-change-subscription-administrator.md)
+* [Přidávání a změna správců předplatného Azure](../cost-management-billing/manage/add-change-subscription-administrator.md)

@@ -2,31 +2,31 @@
 title: Přeskočit odstranění přidaných uživatelů oboru
 description: Přečtěte si, jak potlačit výchozí chování při zrušení zřizování z oboru uživatelů.
 services: active-directory
-author: cmmdesai
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.date: 12/10/2019
-ms.author: chmutali
+ms.author: kenwith
 ms.reviewer: celested
-ms.openlocfilehash: 5f17886736efb87cf44bc54c82ccca794482a093
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 719258933dfadf34b8678bf03ee07ee6cc76e331
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593263"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84789901"
 ---
 # <a name="skip-deletion-of-user-accounts-that-go-out-of-scope"></a>Přeskočit odstranění uživatelských účtů, které přesahují rozsah
 
-Ve výchozím nastavení modul zřizování Azure AD Soft odstraní nebo zakáže uživatele, kteří se nacházejí mimo rozsah. U některých scénářů, jako je například Workday pro příchozí zřizování uživatelů v rámci služby Active Directory, nemusí být toto chování očekávané a pravděpodobně budete chtít přepsat toto výchozí chování.  
+Ve výchozím nastavení modul zřizování Azure AD Soft odstraní nebo zakáže uživatele, kteří se nacházejí mimo rozsah. U některých scénářů, jako je například Workday pro příchozí zřizování uživatele AD, nemusí být toto chování očekávané a pravděpodobně budete chtít přepsat toto výchozí chování.  
 
-V této příručce se dozvíte, jak pomocí rozhraní Microsoft Graph API a Microsoft Graph Průzkumníku API nastavit příznak ***SkipOutOfScopeDeletions*** , který řídí zpracování účtů, které se nacházejí mimo rozsah. 
-* Pokud je ***SkipOutOfScopeDeletions*** nastavené na 0 (NEPRAVDA), pak se účty, které se přestanou z oboru, budou v cíli zakázané.
-* Pokud je ***SkipOutOfScopeDeletions*** nastavené na 1 (true), pak se účty, které se nacházejí mimo rozsah, nebudou v cíli zablokovat, tento příznak se nastaví na úrovni *aplikace pro zřizování* a dá se nakonfigurovat pomocí Graph API. 
+Tento článek popisuje, jak pomocí rozhraní Microsoft Graph API a Microsoft Graph Průzkumníku API nastavit příznak ***SkipOutOfScopeDeletions*** , který řídí zpracování účtů, které se nacházejí mimo rozsah. 
+* Pokud je ***SkipOutOfScopeDeletions*** nastavené na 0 (NEPRAVDA), účty, které se nacházejí mimo rozsah, budou v cíli zakázané.
+* Pokud je ***SkipOutOfScopeDeletions*** nastavené na hodnotu 1 (true), účty, které se nacházejí mimo rozsah, nebudou v cíli zakázány. Tento příznak se nastavuje na úrovni *aplikace pro zřizování* a dá se nakonfigurovat pomocí Graph API. 
 
-Vzhledem k tomu, že se tato konfigurace v tuto konfiguraci používá v rámci *služby Active Directory pro zřizování uživatelů* , následující kroky zahrnují snímky obrazovky aplikace v Workday. To se ale dá použít i u **všech ostatních aplikací** (ServiceNow, Salesforce, Dropbox atd.).
+Vzhledem k tomu, že se tato konfigurace používá v rámci pracovní *doby pro aplikaci zřizování uživatelů služby Active Directory* , následující kroky zahrnují snímky obrazovky aplikace Workday. Nicméně tato konfigurace se dá použít i u *všech ostatních aplikací*, jako jsou ServiceNow, Salesforce a Dropbox.
 
 ## <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>Krok 1: načtení ID objektu zabezpečení zřizování App Service (ID objektu)
 

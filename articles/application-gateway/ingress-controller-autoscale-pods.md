@@ -4,15 +4,15 @@ description: Tento článek poskytuje pokyny, jak škálovat AKS back-endu pomoc
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 1169ed0e9a2b970ee0e30d73ea20c87001b62786
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5e0533a44db269229b2f26fa8d2f2b4f84f4d0b4
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80239446"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85125459"
 ---
 # <a name="autoscale-your-aks-pods-using-application-gateway-metrics-beta"></a>Automatické škálování AKSch lusků pomocí Application Gatewaych metrik (beta verze)
 
@@ -27,7 +27,7 @@ Budeme používat tyto dvě komponenty:
 
 ## <a name="setting-up-azure-kubernetes-metric-adapter"></a>Nastavení adaptéru metriky Azure Kubernetes
 
-1. Nejprve vytvoříme instanční objekt služby Azure AAD a přiřadíte `Monitoring Reader` mu přístup přes skupinu prostředků Application Gateway. 
+1. Nejprve vytvoříme instanční objekt služby Azure AAD a přiřadíte mu `Monitoring Reader` přístup přes skupinu prostředků Application Gateway. 
 
     ```azurecli
         applicationGatewayGroupName="<application-gateway-group-id>"
@@ -39,7 +39,7 @@ Budeme používat tyto dvě komponenty:
 
     ```bash
     kubectl create namespace custom-metrics
-    # use values from service principle created above to create secret
+    # use values from service principal created above to create secret
     kubectl create secret generic azure-k8s-metrics-adapter -n custom-metrics \
         --from-literal=azure-tenant-id=<tenantid> \
         --from-literal=azure-client-id=<clientid> \
@@ -47,7 +47,7 @@ Budeme používat tyto dvě komponenty:
     kubectl apply -f kubectl apply -f https://raw.githubusercontent.com/Azure/azure-k8s-metrics-adapter/master/deploy/adapter.yaml -n custom-metrics
     ```
 
-1. Vytvoříme `ExternalMetric` prostředek s názvem `appgw-request-count-metric`. Tento prostředek instruuje adaptér metriky, aby `AvgRequestCountPerHealthyHost` vystavoval metriku pro `myApplicationGateway` prostředek ve `myResourceGroup` skupině prostředků. Pomocí tohoto `filter` pole můžete cílit na konkrétní back-end fond a nastavení back-endu HTTP v Application Gateway.
+1. Vytvoříme `ExternalMetric` prostředek s názvem `appgw-request-count-metric` . Tento prostředek instruuje adaptér metriky, aby vystavoval `AvgRequestCountPerHealthyHost` metriku pro `myApplicationGateway` prostředek ve `myResourceGroup` skupině prostředků. Pomocí tohoto pole můžete `filter` cílit na konkrétní back-end fond a nastavení back-endu http v Application Gateway.
 
     ```yaml
     apiVersion: azure.com/v1alpha2
@@ -94,7 +94,7 @@ kubectl get --raw "/apis/external.metrics.k8s.io/v1beta1/namespaces/default/appg
 
 Až bude možné vystavit `appgw-request-count-metric` prostřednictvím serveru metrik, můžeme použít [`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler) k horizontálnímu navýšení kapacity cílového nasazení.
 
-V následujícím příkladu budeme cílit na ukázkové nasazení `aspnet`. Až do maximálního počtu `appgw-request-count-metric` `10` lusků nasadíme > 200 na.
+V následujícím příkladu budeme cílit na ukázkové nasazení `aspnet` . Až `appgw-request-count-metric` do maximálního počtu lusků nasadíme > 200 na `10` .
 
 Nahraďte název cílového nasazení a použijte následující konfiguraci automatického škálování:
 ```yaml

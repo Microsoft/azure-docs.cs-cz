@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 4fa3acf0e6cc767aeee4504bbc4df382a75e256b
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: f5f40a615bc5faab6265f42d0728403e2735aa0f
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758754"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791618"
 ---
 # <a name="api-support-in-azure-static-web-apps-preview-with-azure-functions"></a>Podpora rozhraní API ve službě Azure static Web Apps Preview s využitím Azure Functions
 
@@ -20,7 +20,7 @@ Azure static Web Apps poskytuje koncové body rozhraní API bez serveru přes [A
 
 - **Integrované zabezpečení** s přímým přístupem k [ověřování uživatelů a datům autorizace na základě rolí](user-information.md) .
 - **Bezproblémové směrování** , díky kterému bude trasa _rozhraní API_ dostupná webové aplikaci bezpečně, aniž by vyžadovala vlastní pravidla CORS.
-- **Azure Functions** V3 kompatibilní s Node. js 12.
+- **Azure Functions** V3 kompatibilní s Node.js 12.
 - **Aktivační události http** a výstupní vazby.
 
 ## <a name="configuration"></a>Konfigurace
@@ -33,6 +33,7 @@ Azure static Web Apps poskytuje rozhraní API prostřednictvím Azure Functions.
 
 - Předpona trasy rozhraní API musí být _rozhraní API_.
 - Aplikace API Functions musí být v JavaScriptu.
+- Pravidla směrování pro funkce rozhraní API podporují pouze [přesměrování](routes.md#redirects) a [zabezpečení tras s rolemi](routes.md#securing-routes-with-roles).
 - Aktivační události a vazby jsou omezené na [http](../azure-functions/functions-bindings-http-webhook.md).
   - Všechny ostatní [Azure Functions triggery a vazby](../azure-functions/functions-triggers-bindings.md#supported-bindings) s výjimkou výstupních vazeb jsou omezeny.
 - Protokoly jsou k dispozici pouze v případě, že do aplikace Functions přidáte [Application Insights](../azure-functions/functions-monitoring.md) .

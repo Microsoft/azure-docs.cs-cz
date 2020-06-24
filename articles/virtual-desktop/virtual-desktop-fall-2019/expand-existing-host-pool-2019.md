@@ -4,16 +4,16 @@ description: Postup rozšíření stávajícího fondu hostitelů s novými host
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f4313f36a0b250be9646c6658b98f15037374729
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 70ae4a014768976c7dcf81ffadf1066027fa06ad
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82615523"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214277"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Rozšíření existujícího fondu hostitelů s novými hostiteli relací
 
@@ -57,12 +57,12 @@ Zde je postup, jak znovu nasadit šablonu Azure Resource Manager pro rozšířen
      - Pokud jste vytvořili původní fond hostitelů pomocí nabídky Azure Marketplace, vyberte nasazení od služby **RDS. WVD-provision-Host-Pool**.
      - Pokud jste vytvořili původní fond hostitelů pomocí šablony Azure Resource Manager GitHubu, vyberte nasazení s názvem **Microsoft. template**.
 6. Vyberte **znovu nasadit**.
-     
+
      >[!NOTE]
      >Pokud se šablona po výběru **opětovného nasazení**automaticky znovu nespustí, vyberte **šablonu** na panelu na levé straně prohlížeče a pak vyberte **nasadit**.
 
 7. Vyberte skupinu prostředků, která obsahuje virtuální počítače hostitele aktuální relace v existujícím fondu hostitelů.
-     
+
      >[!NOTE]
      >Pokud se zobrazí chyba s informací, že chcete vybrat jinou skupinu prostředků, i když je ta, kterou jste zadali, je správná, vyberte jinou skupinu prostředků a pak vyberte původní skupinu prostředků.
 
@@ -85,7 +85,7 @@ Všechny hodnoty v této části by se měly shodovat s tím, co jste zadali př
 3.    V poli *oblast*vyberte stejnou oblast, ve které se nacházejí existující virtuální počítače hostitele relace fondu hostitelů.
 4.    Do pole *název Hostpool*zadejte název existujícího fondu hostitelů.
 5.    Jako *typ stolního počítače*vyberte typ pracovní plochy, který odpovídá stávajícímu fondu hostitelů.
-6.    U *výchozích uživatelů plochy*zadejte seznam oddělený čárkami všech dalších uživatelů, kteří se chtějí přihlašovat k klientům virtuálních klientů Windows, a získat přístup k ploše po dokončení nabídky Azure Marketplace. Například pokud chcete user3@contoso.com přiřadit a user4@contoso.com přístup, zadejte user3@contoso.com,.user4@contoso.com
+6.    U *výchozích uživatelů plochy*zadejte seznam oddělený čárkami všech dalších uživatelů, kteří se chtějí přihlašovat k klientům virtuálních klientů Windows, a získat přístup k ploše po dokončení nabídky Azure Marketplace. Například pokud chcete přiřadit user3@contoso.com a user4@contoso.com přístup, zadejte user3@contoso.com , user4@contoso.com .
 7.    Vyberte **Další: konfigurace virtuálního počítače**.
 
 >[!NOTE]
@@ -96,7 +96,7 @@ Všechny hodnoty v této části by se měly shodovat s tím, co jste zadali př
 Všechny hodnoty parametrů v této části se musí shodovat s tím, co jste zadali při prvním vytváření virtuálních počítačů hostitelů a hostitele relací, s výjimkou celkového počtu virtuálních počítačů. Počet virtuálních počítačů, které zadáte, bude počet virtuálních počítačů ve fondu rozbalených hostitelů:
 
 1. Vyberte velikost virtuálního počítače, která odpovídá stávajícím virtuálním počítačům hostitele relace.
-    
+
     >[!NOTE]
     >Pokud se konkrétní velikost virtuálního počítače, kterou hledáte, nezobrazuje v selektoru velikosti virtuálního počítače, je to proto, že jsme ho ještě nepřipojili k nástroji Azure Marketplace. Pokud si chcete vyžádat velikost virtuálního počítače, vytvořte žádost nebo nahlaste stávající požadavek ve [fóru Windows Virtual Desktop UserVoice](https://windowsvirtualdesktop.uservoice.com/forums/921118-general).
 

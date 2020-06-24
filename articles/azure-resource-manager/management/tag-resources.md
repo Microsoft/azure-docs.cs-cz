@@ -2,13 +2,13 @@
 title: Označení prostředků, skupin prostředků a předplatných pro logickou organizaci
 description: Ukazuje, jak použít značky k uspořádání prostředků Azure k fakturaci a správě.
 ms.topic: conceptual
-ms.date: 05/06/2020
-ms.openlocfilehash: 9ba7c58f6fa56b8ef2c233a5fe7f8f8e04fe29e1
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.date: 06/15/2020
+ms.openlocfilehash: c06bd5f44f01a98e3a39d0cf404713e0d0546192
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864483"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791924"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Použití značek k uspořádání prostředků Azure a hierarchie správy
 
@@ -31,7 +31,7 @@ Role [přispěvatele](../../role-based-access-control/built-in-roles.md#contribu
 
 ### <a name="apply-tags"></a>Použít značky
 
-Azure PowerShell nabízí dva příkazy pro použití značek- [New-AzTag](/powershell/module/az.resources/new-aztag) a [Update-AzTag](/powershell/module/az.resources/update-aztag). Musíte mít modul AZ. Resources 1.12.0 nebo novější. Verzi můžete ověřit pomocí `Get-Module Az.Resources`. Tento modul můžete nainstalovat nebo [nainstalovat Azure PowerShell](/powershell/azure/install-az-ps) 3.6.1 nebo novějším.
+Azure PowerShell nabízí dva příkazy pro použití značek- [New-AzTag](/powershell/module/az.resources/new-aztag) a [Update-AzTag](/powershell/module/az.resources/update-aztag). Musíte mít modul AZ. Resources 1.12.0 nebo novější. Verzi můžete ověřit pomocí `Get-Module Az.Resources` . Tento modul můžete nainstalovat nebo [nainstalovat Azure PowerShell](/powershell/azure/install-az-ps) 3.6.1 nebo novějším.
 
 **Příkaz New-AzTag** nahradí všechny značky prostředku, skupiny prostředků nebo předplatného. Při volání příkazu předejte ID prostředku entity, kterou chcete označit.
 
@@ -263,7 +263,7 @@ Pokud chcete přidat značku k existujícím značkám ve skupině prostředků,
 az group update -n examplegroup --set tags.'Status'='Approved'
 ```
 
-V současné době Azure CLI nepodporuje použití značek u předplatných.
+V současné době Azure CLI nemá příkaz pro použití značek na předplatná. Pomocí rozhraní příkazového řádku (CLI) ale můžete nasadit šablonu ARM, která tyto značky aplikuje na předplatné. Viz [použití značek pro skupiny prostředků nebo odběry](#apply-tags-to-resource-groups-or-subscriptions).
 
 ### <a name="list-tags"></a>Výpis značek
 
@@ -290,13 +290,13 @@ Výstup tohoto skriptu bude v následujícím formátu:
 
 ### <a name="list-by-tag"></a>Seznam podle značky
 
-Chcete-li získat všechny prostředky, které mají určitou značku a hodnotu, `az resource list`použijte:
+Chcete-li získat všechny prostředky, které mají určitou značku a hodnotu, použijte `az resource list` :
 
 ```azurecli-interactive
 az resource list --tag Dept=Finance
 ```
 
-Chcete-li získat skupiny prostředků s konkrétní značkou, `az group list`použijte:
+Chcete-li získat skupiny prostředků s konkrétní značkou, použijte `az group list` :
 
 ```azurecli-interactive
 az group list --tag Dept=IT
@@ -326,7 +326,7 @@ Můžete označovat prostředky, skupiny prostředků a odběry během nasazová
 
 ### <a name="apply-values"></a>Použít hodnoty
 
-Následující příklad nasadí účet úložiště se třemi značkami. Dvě značky (`Dept` a `Environment`) jsou nastaveny na hodnoty literálu. Jedna značka (`LastDeployed`) je nastavena na parametr, který je výchozím nastavením aktuální datum.
+Následující příklad nasadí účet úložiště se třemi značkami. Dvě značky ( `Dept` a `Environment` ) jsou nastaveny na hodnoty literálu. Jedna značka ( `LastDeployed` ) je nastavena na parametr, který je výchozím nastavením aktuální datum.
 
 ```json
 {
@@ -523,6 +523,8 @@ New-AzSubscriptionDeployment -name tagresourcegroup -Location westus2 -TemplateU
 az deployment sub create --name tagresourcegroup --location westus2 --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/tags.json
 ```
 
+Další informace o nasazeních předplatných najdete v tématu [Vytvoření skupin prostředků a prostředků na úrovni předplatného](../templates/deploy-to-subscription.md).
+
 Následující šablona přidá značky z objektu do skupiny prostředků nebo předplatného.
 
 ```json
@@ -583,12 +585,10 @@ Informace o REST API operacích najdete v [referenčních informacích o faktura
 Na značky se vztahují následující omezení:
 
 * Ne všechny typy prostředků podporují značky. Pokud chcete zjistit, jestli můžete pro typ prostředku použít značku, přečtěte si téma [Podpora značek pro prostředky Azure](tag-support.md).
-* Skupiny pro správu aktuálně nepodporují značky.
 * Každý prostředek, skupina prostředků a předplatné můžou mít maximálně 50 párů název/hodnota značky. Pokud potřebujete použít více značek, než je maximální povolený počet, použijte jako hodnotu značky řetězec JSON. Řetězec JSON může obsahovat mnoho hodnot, které se použijí pro jeden název značky. Skupina prostředků nebo předplatné můžou obsahovat spoustu prostředků, které mají každý z nich 50 páry název/hodnota značky.
 * Název značky je omezen na 512 znaků a hodnota značky je omezena na 256 znaků. Pro účty úložiště je název značky omezen na 128 znaků a hodnota značky je omezena na 256 znaků.
-* Generalizované virtuální počítače nepodporují značky.
 * Značky nelze použít u klasických prostředků, jako je například Cloud Services.
-* Názvy značek nesmí obsahovat tyto znaky: `<`, `>`, `%`, `&`, `\`, `?`,`/`
+* Názvy značek nesmí obsahovat tyto znaky: `<` , `>` , `%` , `&` , `\` , `?` ,`/`
 
    > [!NOTE]
    > V současné době Azure DNS zóny a služby Traffic Manager také nedovolují použití mezer ve značce.

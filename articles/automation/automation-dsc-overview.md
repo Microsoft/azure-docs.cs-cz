@@ -7,19 +7,19 @@ ms.service: automation
 ms.subservice: dsc
 author: mgoedtel
 ms.author: magoedte
-ms.date: 06/03/2020
+ms.date: 06/22/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d2109baf077b1b4c1074cfae9edd0d2b5ef5030d
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: bdb387739be65b761c773ca13b7a407d7aebf738
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84342999"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85206882"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Přehled konfigurace stavu Azure Automation
 
-Konfigurace stavu Azure Automation je služba správy konfigurace Azure, která umožňuje psát, spravovat a kompilovat [Konfigurace](/powershell/scripting/dsc/configurations/configurations) (DSC) prostředí PowerShell pro uzly v jakémkoli cloudovém nebo místním datacentru. Služba také importuje [prostředky DSC](/powershell/scripting/dsc/resources/resources)a přiřazuje konfigurace cílovým uzlům, a to vše v cloudu. Můžete získat přístup k konfiguraci stavu Azure Automation v Azure Portal výběrem **Konfigurace stavu (DSC)** v části **Správa konfigurace**. 
+Konfigurace stavu Azure Automation je služba správy konfigurace Azure, která umožňuje psát, spravovat a kompilovat [Konfigurace](/powershell/scripting/dsc/configurations/configurations) (DSC) prostředí PowerShell pro uzly v jakémkoli cloudovém nebo místním datacentru. Služba také importuje [prostředky DSC](/powershell/scripting/dsc/resources/resources)a přiřazuje konfigurace cílovým uzlům, a to vše v cloudu. Můžete získat přístup k konfiguraci stavu Azure Automation v Azure Portal výběrem **Konfigurace stavu (DSC)** v části **Správa konfigurace**.
 
 Ke správě různých počítačů můžete použít konfiguraci stavu Azure Automation:
 
@@ -53,7 +53,7 @@ Konfigurace stavu Azure Automation přináší stejnou vrstvu správy pro [konfi
 
 Uzly spravované pomocí konfigurace stavu Azure Automation odesílají podrobné údaje o stavu vytváření sestav na integrovaný server vyžádané replikace. Konfiguraci stavu Azure Automation můžete nakonfigurovat tak, aby odesílala tato data do pracovního prostoru Log Analytics. Přečtěte si informace [o konfiguraci stavu Dopředné Azure Automation do protokolů Azure monitor](automation-dsc-diagnostics.md).
 
-## <a name="prerequisites-for-using-azure-automation-state-configuration"></a>Předpoklady pro použití konfigurace stavu Azure Automation
+## <a name="prerequisites"></a>Požadavky
 
 Při použití konfigurace stavu Azure Automation Vezměte v úvahu požadavky v této části.
 
@@ -68,7 +68,7 @@ Pro uzly s Windows se podporují tyto verze:
 - Windows Server 2008 R2 SP1
 - Windows 10
 - Windows 8.1
-- Windows 7
+- Windows 7
 
 >[!NOTE]
 >SKU samostatného produktového [serveru Microsoft Hyper-V](/windows-server/virtualization/hyper-v/hyper-v-server-2016) neobsahuje implementaci DSC. Proto ho nejde spravovat pomocí prostředí PowerShell DSC nebo konfigurace stavu Azure Automation.
@@ -103,36 +103,9 @@ Podpora proxy serveru pro agenta DSC je dostupná ve Windows verze 1809 a nověj
 
 V případě uzlů se systémem Linux agent DSC podporuje proxy a používá `http_proxy` proměnnou k určení adresy URL. Další informace o podpoře proxy serveru najdete v tématu věnovaném [generování DSC metaconfigurations](automation-dsc-onboarding.md#generate-dsc-metaconfigurations).
 
-#### <a name="azure-automation-state-configuration-network-ranges-and-namespace"></a>Azure Automation rozsahy sítě a obor názvů v síti konfigurace stavu
+#### <a name="dns-records-per-region"></a>Záznamy DNS na oblast
 
-Při definování výjimek doporučujeme použít níže uvedené adresy. Pro IP adresy můžete stáhnout [Microsoft Azure rozsahy IP adres datacentra](https://www.microsoft.com/download/details.aspx?id=41653). Tento soubor se aktualizuje týdně a má aktuálně nasazené rozsahy a všechny nadcházející změny rozsahu IP adres.
-
-Pokud máte účet Automation, který je definovaný pro konkrétní oblast, můžete omezit komunikaci s tímto oblastním datacentrem. Následující tabulka uvádí záznam DNS pro jednotlivé oblasti:
-
-| **Oblast** | **Záznam DNS** |
-| --- | --- |
-| USA – středozápad | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
-| USA – středojih |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
-| USA – východ    | eus-jobruntimedata-prod-su1.azure-automation.net</br>eus-agentservice-prod-1.azure-automation.net |
-| USA – východ 2 |eus2-jobruntimedata-prod-su1.azure-automation.net</br>eus2-agentservice-prod-1.azure-automation.net |
-| Střední Kanada |cc-jobruntimedata-prod-su1.azure-automation.net</br>cc-agentservice-prod-1.azure-automation.net |
-| Západní Evropa |we-jobruntimedata-prod-su1.azure-automation.net</br>we-agentservice-prod-1.azure-automation.net |
-| Severní Evropa |ne-jobruntimedata-prod-su1.azure-automation.net</br>ne-agentservice-prod-1.azure-automation.net |
-| Jihovýchodní Asie |sea-jobruntimedata-prod-su1.azure-automation.net</br>sea-agentservice-prod-1.azure-automation.net|
-| Indie – střed |cid-jobruntimedata-prod-su1.azure-automation.net</br>cid-agentservice-prod-1.azure-automation.net |
-| Japonsko – východ |jpe-jobruntimedata-prod-su1.azure-automation.net</br>jpe-agentservice-prod-1.azure-automation.net |
-| Austrálie – jihovýchod |ase-jobruntimedata-prod-su1.azure-automation.net</br>ase-agentservice-prod-1.azure-automation.net |
-| Spojené království – jih | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
-| USA (Gov) – Virginia | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
-
-Seznam IP adres oblastí, nikoli názvy oblastí, si můžete stáhnout ze služby Stažení [softwaru ve službě](https://www.microsoft.com/download/details.aspx?id=41653) stažení softwaru.
-
-> [!NOTE]
-> Soubor XML IP adresy datacentra Azure obsahuje seznam rozsahů IP adres, které se používají v datových centrech Microsoft Azure. Soubor zahrnuje výpočetní prostředky, SQL a rozsahy úložiště.
->
->Aktualizovaný soubor je zveřejněný týdně. Tento soubor odráží aktuálně nasazené rozsahy a všechny nadcházející změny v rozsahu IP adres. Nové rozsahy, které se zobrazí v souboru, se v datových centrech nepoužijí aspoň na jeden týden. Každý týden je vhodné stáhnout nový soubor XML. Pak aktualizujte svůj web tak, aby správně identifikoval služby běžící v Azure. 
-
-Uživatelé Azure ExpressRoute by si měli všimnout, že se tento soubor používá k aktualizaci inzerce protokolu BGP (Border Gateway Protocol) v Azure Space v první týden v měsíci.
+Při definování výjimek doporučujeme použít adresy uvedené v tabulce [záznamů DNS na oblast](how-to/automation-region-dns-records.md) .
 
 ## <a name="next-steps"></a>Další kroky
 

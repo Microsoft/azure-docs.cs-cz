@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 03/05/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 012d183a20e5fdcf39d72813051d745a3f9787a7
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 13ce9204ad09d2ecb4b149cf50696aa73d927314
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560124"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214362"
 ---
 # <a name="troubleshoot-docker-deployment-of-models-with-azure-kubernetes-service-and-azure-container-instances"></a>Řešení potíží s nasazením v Docker modelů pomocí služby Azure Kubernetes a Azure Container Instances 
 
@@ -48,7 +48,7 @@ Doporučený přístup k nasazení modelu je prostřednictvím rozhraní API [mo
 
 Další informace o tomto procesu najdete v úvodu [Správa modelů](concept-model-management-and-deployment.md) .
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Pokud narazíte na problém, je první věc, kterou je potřeba udělat, rozdělte úlohu nasazení (popsanou výše) do jednotlivých kroků k izolaci problému.
 
@@ -277,7 +277,7 @@ Další informace o nastavení `autoscale_target_utilization` , `autoscale_max_r
 
 Stavový kód 504 označuje, že vypršel časový limit žádosti. Výchozí časový limit je 1 minuta.
 
-Časový limit můžete zvýšit nebo se pokusit o urychlení služby úpravou score.py pro odebrání nepotřebných volání. Pokud tyto akce problém nevyřeší, použijte informace v tomto článku k ladění souboru score.py. Kód může být ve stavu neodpovídá nebo nekonečné smyčce.
+Časový limit můžete zvýšit nebo se pokusit o urychlení služby úpravou score.py pro odebrání nepotřebných volání. Pokud tyto akce problém nevyřeší, použijte informace v tomto článku k ladění souboru score.py. Kód může být v nereagující stavu nebo nekonečné smyčce.
 
 ## <a name="advanced-debugging"></a>Pokročilé ladění
 
@@ -300,9 +300,9 @@ Nasazení místních webových služeb vyžaduje pracovní instalaci do dokovac�
 
 1. Pokud chcete nakonfigurovat VS Code ke komunikaci s imagí Docker, vytvořte novou konfiguraci ladění:
 
-    1. Z VS Code vyberte nabídku __ladění__ a pak vyberte __otevřít konfigurace__. Otevře se soubor s názvem __Launch. JSON__ .
+    1. Z VS Code vyberte nabídku __ladění__ a pak vyberte __otevřít konfigurace__. Soubor s názvem __launch.jspři__ otevření.
 
-    1. V souboru __Launch. JSON__ Najděte řádek, který obsahuje `"configurations": [` , a vložte za něj následující text:
+    1. V __launch.jsv__ souboru vyhledejte řádek, který obsahuje `"configurations": [` , a vložte za něj následující text:
 
         ```json
         {
@@ -325,7 +325,7 @@ Nasazení místních webových služeb vyžaduje pracovní instalaci do dokovac�
 
         Tato část se připojuje k kontejneru Docker pomocí portu 5678.
 
-    1. Uložte soubor __Launch. JSON__ .
+    1. Uložte __launch.jsdo__ souboru.
 
 ### <a name="create-an-image-that-includes-ptvsd"></a>Vytvoření image, která zahrnuje PTVSD
 

@@ -9,12 +9,12 @@ ms.topic: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
-ms.openlocfilehash: 9a6e77f630d9a78706a82bdc020dd7fd3eb11230
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 2e84d2f7c1a45f1ef18e5dc32b58d75bb17e2516
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84431413"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213750"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer-preview"></a>Výjimky a kódy chyb pro návrháře (Preview)
 
@@ -22,9 +22,9 @@ Tento článek popisuje chybové zprávy a kódy výjimek v Návrháři Azure Ma
 
 Chybovou zprávu najdete v Návrháři následujícím způsobem:  
 
-- Vyberte modul, který selhal, klikněte na kartu **výstupy + protokoly** , v souboru **70_driver_log. txt** v kategorii **AzureML-logs** najdete podrobný protokol.
+- Vyberte modul, který selhal, klikněte na kartu **výstupy + protokoly** , najdete podrobný protokol v souboru **70_driver_log.txt** v kategorii **AzureML-logs** .
 
-- Pro podrobnou chybu modulu můžete ji v error_info. JSON vrátit do kategorie **module_statistics** .
+- Podrobnou chybu modulu můžete zjistit v error_info.jsv části **module_statistics** kategorie.
 
 Níže jsou uvedené chybové kódy modulů v návrháři.
 
@@ -1515,7 +1515,7 @@ Interní výjimka knihovny
 
 Tato chyba je k dispozici pro zachycení v jiných nezpracovaných chybách interního motoru. Proto se příčina této chyby může lišit v závislosti na modulu, který chybu generoval.  
 
-Pokud chcete získat další pomoc, doporučujeme, abyste si podrobnou zprávu doprovází tuto chybu do fóra Azure Machine Learning společně s popisem scénáře, včetně dat, která se používají jako vstupy. Tato zpětná vazba nám pomůže určit prioritu chyb a zjistit nejdůležitější problémy pro další práci.  
+Pokud chcete získat další pomoc, doporučujeme, abyste si podrobnou zprávu doprovází tuto chybu do [fóra Azure Machine Learning](https://docs.microsoft.com/answers/topics/azure-machine-learning.html)společně s popisem scénáře, včetně dat, která se používají jako vstupy. Tato zpětná vazba nám pomůže určit prioritu chyb a zjistit nejdůležitější problémy pro další práci.  
 
 |Zprávy výjimek|
 |------------------------|

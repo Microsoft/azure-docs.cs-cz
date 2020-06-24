@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c61bea7f3ca1105edfec54501c5f0725a5a10225
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c5ef454871f242adb9de5e5c567c1a76e00478cc
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654114"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84789935"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Integrace infrastruktury Brána vzdálené plochy pomocí rozšíření serveru NPS (Network Policy Server) a Azure AD
 
@@ -130,13 +130,14 @@ V rámci konfigurace rozšíření serveru NPS musíte zadat přihlašovací úd
 
 Nainstalujte rozšíření serveru NPS na server, na kterém je nainstalovaná role NPS (Network Policy and Access Services). Tato funkce funguje jako server RADIUS pro návrh.
 
-> [!Important]
-> Ujistěte se, že na vašem Brána vzdálené plochyovém serveru nenainstalujete rozšíření serveru NPS.
+> [!IMPORTANT]
+> Neinstalujte rozšíření serveru NPS na váš server Brána vzdálené plochy (RDG). Server RDG nepoužívá u svého klienta protokol RADIUS, takže toto rozšíření nemůže interpretovat a provádět MFA.
 >
+> Pokud jsou servery RDG a NPS s rozšířeními NPS různé servery, RDG používá server NPS interně ke komunikaci s ostatními servery NPS a k správné komunikaci používá protokol RADIUS.
 
 1. Stáhněte si [rozšíření serveru NPS](https://aka.ms/npsmfa).
-1. Zkopírujte spustitelný soubor instalačního programu (NpsExtnForAzureMfaInstaller. exe) na server NPS.
-1. Na serveru NPS poklikejte na **NpsExtnForAzureMfaInstaller. exe**. Pokud se zobrazí výzva, klikněte na **Spustit**.
+1. Zkopírujte spustitelný soubor instalačního programu (NpsExtnForAzureMfaInstaller.exe) na server NPS.
+1. Na serveru NPS poklikejte na **NpsExtnForAzureMfaInstaller.exe**. Pokud se zobrazí výzva, klikněte na **Spustit**.
 1. V dialogovém okně rozšíření NPS pro instalaci Azure MFA si přečtěte licenční podmínky pro software, zkontrolujte, že souhlasím **s licenčními podmínkami a ujednáními**, a klikněte na **nainstalovat**.
 1. V dialogovém okně rozšíření serveru NPS pro instalaci Azure MFA klikněte na **Zavřít**.
 
@@ -157,10 +158,10 @@ Pokud chcete používat vlastní certifikáty, musíte k instančnímu objektu v
 Pokud chcete použít skript, zadejte rozšíření s přihlašovacími údaji správce Azure AD a s ID tenanta Azure AD, které jste zkopírovali dříve. Spusťte skript na každém serveru NPS, na který jste nainstalovali rozšíření serveru NPS. Potom udělejte následující:
 
 1. Otevřete příkazový řádek Windows PowerShellu pro správu.
-1. Na příkazovém řádku PowerShellu zadejte `cd 'c:\Program Files\Microsoft\AzureMfa\Config'`a stiskněte klávesu **ENTER**.
-1. Zadejte `.\AzureMfaNpsExtnConfigSetup.ps1`a stiskněte klávesu **ENTER**. Skript zkontroluje, jestli je nainstalovaný modul PowerShellu Azure Active Directory. Pokud není nainstalován, skript nainstaluje modul za vás.
+1. Na příkazovém řádku PowerShellu zadejte `cd 'c:\Program Files\Microsoft\AzureMfa\Config'` a stiskněte klávesu **ENTER**.
+1. Zadejte `.\AzureMfaNpsExtnConfigSetup.ps1` a stiskněte klávesu **ENTER**. Skript zkontroluje, jestli je nainstalovaný modul PowerShellu Azure Active Directory. Pokud není nainstalován, skript nainstaluje modul za vás.
 
-   ![Spuštění AzureMfaNpsExtnConfigSetup. ps1 ve službě Azure AD PowerShell](./media/howto-mfa-nps-extension-rdg/image4.png)
+   ![Spuštění AzureMfaNpsExtnConfigSetup.ps1 ve službě Azure AD PowerShell](./media/howto-mfa-nps-extension-rdg/image4.png)
   
 1. Jakmile skript ověří instalaci modulu PowerShellu, zobrazí se dialogové okno Azure Active Directory modulu PowerShellu. V dialogovém okně zadejte svoje přihlašovací údaje a heslo správce Azure AD a klikněte na **Přihlásit**se.
 
@@ -186,7 +187,7 @@ Zásady autorizace připojení ke vzdálené ploše (RD CAP) určují požadavky
 
 1. Na serveru Brána VP otevřete **Správce serveru**.
 1. V nabídce klikněte na **nástroje**, přejděte na **Vzdálená plocha**a pak klikněte na **Správce brány vzdálené plochy**.
-1. V Správce brány VP klikněte pravým tlačítkem myši na ** \[název\] serveru (místní)** a klikněte na **vlastnosti**.
+1. V Správce brány VP klikněte pravým tlačítkem myši na ** \[ název serveru \] (místní)** a klikněte na **vlastnosti**.
 1. V dialogovém okně Vlastnosti vyberte kartu **úložiště Cap k vzdálené ploše** .
 1. Na kartě úložiště CAP k vzdálené ploše vyberte **centrální server, na kterém běží server NPS**. 
 1. Do pole **Zadejte název nebo IP adresu serveru, na kterém běží server NPS** , zadejte IP adresu nebo název serveru, na který jste nainstalovali rozšíření serveru NPS.
@@ -301,7 +302,7 @@ Odvolá, že server NPS s rozšířením Azure MFA je určené centrální úlo�
 
    ![Volitelně zadejte podmínky připojení](./media/howto-mfa-nps-extension-rdg/image23.png)
 
-1. Klikněte na tlačítko **OK**. Po zobrazení výzvy k zobrazení odpovídajícího tématu nápovědy klikněte na tlačítko **ne**.
+1. Klikněte na **OK**. Po zobrazení výzvy k zobrazení odpovídajícího tématu nápovědy klikněte na tlačítko **ne**.
 1. Ujistěte se, že nové zásady jsou v horní části seznamu, že je tato zásada povolená a že udělí přístup.
 
    ![Přesuňte zásadu na začátek seznamu.](./media/howto-mfa-nps-extension-rdg/image24.png)

@@ -3,17 +3,17 @@ title: Požadavky na balíček pro vykreslování v Azure Maps Creator
 description: Přečtěte si o požadavcích na balíček pro vykreslování k převedení souborů návrhu zařízení na mapování dat pomocí služby konverze Azure Maps.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 6/09/2020
+ms.date: 6/12/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: cb34cb386939fc1160ee5a7db0007cfbf500ccb8
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: c8699ff86573084e3199b096b25dd5d97cce2985
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84660619"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791567"
 ---
 # <a name="drawing-package-requirements"></a>Požadavky balíčku pro kreslení
 
@@ -34,7 +34,7 @@ Glosář termínů používaných v tomto dokumentu.
 | Vrstva | Vrstva DWG AutoCADu.|
 | Úroveň | Oblast budovy se zvýšenou úrovní oprávnění. Například podlaha budovy. |
 | Odkazy XREF  |Soubor ve formátu DWG AutoCADu (. dwg) připojený k primárnímu výkresu jako externí odkaz.  |
-| Příznak | Objekt, který kombinuje geometrii s dalšími informacemi o metadatech. |
+| Funkce | Objekt, který kombinuje geometrii s dalšími informacemi o metadatech. |
 | Třídy funkcí | Běžný podrobný plán pro funkce. Například jednotka je třída funkce a kancelář je funkce. |
 
 ## <a name="drawing-package-structure"></a>Vykreslování struktury balíčku
@@ -169,12 +169,13 @@ Příkladem vrstvy Zonelabel lze zobrazit jako vrstvu ZONELABELS v [ukázkovém 
 
 Složka zip musí obsahovat soubor manifestu na kořenové úrovni adresáře a soubor musí mít název **manifest.js**. Popisuje soubory DWG, aby [Služba konverze Azure Maps](https://docs.microsoft.com/rest/api/maps/conversion) mohla analyzovat svůj obsah. Budou ingestovat pouze soubory identifikované manifestem. Soubory, které jsou ve složce zip, ale nejsou správně uvedeny v manifestu, budou ignorovány.
 
-Cesty k souborům v objektu **buildingLevels** souboru manifestu musí být relativní ke kořenu složky zip. Název souboru DWG se musí přesně shodovat s názvem úrovně zařízení. Například soubor DWG pro úroveň "Basement" by byl "Basement. DWG". Soubor DWG pro úroveň 2 bude pojmenován jako "level_2. DWG". Použijte podtržítko, pokud má název úrovně mezeru. 
+Cesty k souborům v objektu **buildingLevels** souboru manifestu musí být relativní ke kořenu složky zip. Název souboru DWG se musí přesně shodovat s názvem úrovně zařízení. Například soubor DWG pro úroveň "Basement" by byl "Basement. DWG". Soubor DWG pro úroveň 2 bude pojmenován jako "level_2. DWG". Použijte podtržítko, pokud má název úrovně mezeru.
 
 I když jsou k dispozici požadavky při použití objektů manifestu, nejsou všechny objekty požadovány. V následující tabulce jsou uvedeny povinné a volitelné objekty pro verzi 1,1 [služby Azure Maps Conversion](https://docs.microsoft.com/rest/api/maps/conversion).
 
 | Objekt | Povinné | Popis |
 | :----- | :------- | :------- |
+| verze | true |Verze schématu manifestu V současné době je podporována pouze verze 1,1.|
 | directoryInfo | true | Popisuje geografické a kontaktní informace o zařízení. Dá se použít i k vytvoření osnovy geografických a kontaktních údajů pro cestující. |
 | buildingLevels | true | Určuje úrovně budov a soubory, které obsahují návrh úrovní. |
 | informace o mikroodkazech | true | Obsahuje číselné geografické informace pro kreslení zařízení. |
@@ -211,7 +212,7 @@ Další části obsahují podrobnosti o požadavcích na jednotlivé objekty.
 |-----------|------|----------|-------------|
 |levelName    |řetězec    |true |    Název popisné úrovně Například: patra 1, předsálí, modré zaparkování, Basement a tak dále.|
 |řadový | celé číslo |    true | Pořadové číslo se používá k určení svislého pořadí úrovní. Každé zařízení musí mít úroveň s pořadovým číslem 0. |
-|heightAboveFacilityAnchor | numerické |    false (nepravda) |    Výška úrovně nad podlahovou podlahou v metrech |
+|heightAboveFacilityAnchor | numerické | false (nepravda) |    Výška úrovně nad kotvou měřičů |
 | verticalExtent | numerické | false (nepravda) | Patra na výšku (tloušťka) úrovně v měřičích. |
 |filename |    řetězec |    true |    Cesta systému souborů výkresu CAD pro úroveň budovy Musí být relativní ke kořeni souboru ZIP stavebního souboru. |
 
@@ -253,7 +254,7 @@ Další části obsahují podrobnosti o požadavcích na jednotlivé objekty.
 |verticalPenetrationDirection|    řetězec|    false (nepravda)    |Pokud `verticalPenetrationCategory` je definován, Volitelně definujte platný směr cesty. Povolené hodnoty jsou `lowToHigh` , `highToLow` , `both` a `closed` . Výchozí hodnota je `both` .|
 | nonPublic | bool | false (nepravda) | Určuje, zda je jednotka otevřena veřejnému. |
 | isRoutable | bool | false (nepravda) | Když je nastavena na `false` , jednotka nemůže přejít na nebo prostřednictvím. Výchozí hodnota je `true` . |
-| isOpenArea | bool | false (nepravda) | Umožňuje navigaci mezi agenty a zadání jednotky bez nutnosti otevření připojeného k jednotce. Ve výchozím nastavení je tato hodnota nastavena na hodnotu, `true` Pokud jednotka nemá otevřený. |
+| isOpenArea | bool | false (nepravda) | Umožňuje navigaci v agentovi zadat jednotku bez nutnosti otevření připojeného k jednotce. Ve výchozím nastavení je tato hodnota nastavena na hodnotu `true` pro jednotky bez otevřených `false` . pro jednotky s otevřenými.  Ručním nastavením na `isOpenArea` `false` hodnotu u jednotky bez jakýchkoli otevřených výsledků se zobrazí upozornění. Důvodem je to, že výsledná jednotka nebude dosažitelná pomocí navigace v agentovi.|
 
 ### <a name="the-zoneproperties-object"></a>Objekt zoneProperties
 
@@ -265,6 +266,7 @@ Další části obsahují podrobnosti o požadavcích na jednotlivé objekty.
 |categoryName|    řetězec|    false (nepravda)    |Název kategorie Úplný seznam kategorií najdete v tématu [kategorie](https://aka.ms/pa-indoor-spacecategories). |
 |zoneNameAlt|    řetězec|    false (nepravda)    |Alternativní název zóny  |
 |zoneNameSubtitle|    řetězec |    false (nepravda)    |Podnadpis zóny |
+|zoneSetId|    řetězec |    false (nepravda)    | Nastavte ID pro vytvoření vztahu mezi více zónami, aby se mohly dotazovat nebo vybrat jako skupinu. Například zóny, které přesahují více úrovní. |
 
 ### <a name="sample-drawing-package-manifest"></a>Ukázkový manifest balíčku vykreslování
 

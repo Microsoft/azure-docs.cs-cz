@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: bd9d643708515855e81ac6729843388a690b2c45
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 52b97e772897289f0c54c4520da7d7af80f44dc3
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700945"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213705"
 ---
 # <a name="create-a-consulting-service-offer"></a>Vytvoření nabídky konzultačních služeb
 
@@ -109,6 +109,37 @@ Tady definujete podrobnosti nabídky, které se zobrazí na webu Marketplace. To
 
 > [!NOTE]
 > Podrobnosti nabídky nejsou v angličtině, pokud popis nabídky začíná frází, &quot; Tato aplikace je k dispozici pouze v [jazyk bez angličtiny]. &quot; Také je v pořádku poskytnutí užitečného odkazu na nabídku obsahu v jazyce, který se liší od toho, který se používá v podrobnostech seznamu nabídky.
+
+Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Marketplace (uvedené ceny jsou například jenom pro účely a nejsou určené k tomu, aby odrážely skutečné náklady):
+
+:::image type="content" source="media/example-consulting-service-offer.png" alt-text="Ukazuje, jak se tato nabídka zobrazuje v Azure Marketplace.":::
+
+#### <a name="call-out-descriptions"></a>Popisy volání
+
+1. Logo
+2. Price
+3. Oblasti řešení
+4. Odvětví
+5. Název nabídky
+6. Souhrn
+7. Description
+8. Snímky obrazovky a videa
+
+<br>Tady je příklad toho, jak se zobrazují informace o nabídce v Microsoft AppSource (uvedené ceny jsou například jenom pro účely a nejsou určené k tomu, aby odrážely skutečné náklady):
+
+:::image type="content" source="media/example-consulting-service-offer-appsource.png" alt-text="Ukazuje, jak se tato nabídka zobrazuje v Microsoft AppSource.":::
+
+#### <a name="call-out-descriptions"></a>Popisy volání
+
+1. Logo
+2. Price
+3. Produkty
+4. Odvětví
+5. Název nabídky
+6. Souhrn
+7. Description
+8. Snímky obrazovky a videa
+9. Dokumenty
 
 ### <a name="name"></a>Name
 

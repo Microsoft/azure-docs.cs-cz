@@ -5,16 +5,16 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 40d6768b528d132b3d238227098d4340fce37cca
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 5504416d09cf6b3f75d02e29cc93b0278cc42386
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125787"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117127"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Hostování a škálování Azure Functions
 
-Když vytvoříte aplikaci Function App v Azure, musíte zvolit plán hostování pro vaši aplikaci. K dispozici jsou tři plány hostování pro Azure Functions: [plán spotřeby](#consumption-plan), [Plán Premium](#premium-plan)a [vyhrazený plán (App Service)](#app-service-plan).
+Když vytvoříte aplikaci Function App v Azure, musíte zvolit plán hostování pro vaši aplikaci. K dispozici jsou tři základní plány hostování pro Azure Functions: [plán spotřeby](#consumption-plan), [Plán Premium](#premium-plan)a [vyhrazený plán (App Service)](#app-service-plan). Všechny plány hostování jsou obecně dostupné (GA) na virtuálních počítačích se systémy Linux a Windows.
 
 Plán hostování, který zvolíte, bude určovat následující chování:
 
@@ -28,19 +28,7 @@ Plán Premium poskytuje další funkce, jako jsou výpočetní instance Premium,
 
 App Service plán vám umožní využít výhod vyhrazené infrastruktury, kterou spravujete. Vaše aplikace Function App se škáluje na základě událostí, což znamená, že se nikdy neškáluje na nulu. (Vyžaduje, aby byla povolena možnost [vždy](#always-on) zapnuto.)
 
-## <a name="hosting-plan-support"></a>Podpora plánu hostování
-
-Podpora funkcí spadá do následujících dvou kategorií:
-
-* _Všeobecně dostupná (GA)_: plně podporované a schválené pro použití v produkčním prostředí.
-* _Verze Preview_: ještě není plně podporovaná ani schválená pro použití v produkčním prostředí.
-
-Následující tabulka uvádí aktuální úroveň podpory pro tři plány hostování při použití v systému Windows nebo Linux:
-
-| | Plán Consumption | Plán Premium | Vyhrazený plán |
-|-|:----------------:|:------------:|:----------------:|
-| Windows | GA | GA | GA |
-| Linux | GA | GA | GA |
+Podrobné porovnání různých plánů hostování (včetně hostování založeného na Kubernetes) naleznete v [části Porovnání plánů hostování](#hosting-plans-comparison).
 
 ## <a name="consumption-plan"></a>Plán Consumption
 
@@ -68,7 +56,7 @@ Pokud používáte plán Premium, instance Azure Functions hostitele se přidaj�
 * Předvídatelné ceny
 * Přidělování aplikací s vysokou hustotou pro plány s více aplikacemi Function App
 
-Informace o tom, jak můžete tyto možnosti nakonfigurovat, najdete v [dokumentu plánu Azure Functions Premium](functions-premium-plan.md).
+Informace o tom, jak můžete vytvořit aplikaci Function App v plánu Premium, najdete v tématu [plán Azure Functions Premium](functions-premium-plan.md).
 
 Faktura za plán Premium vychází z počtu základních sekund a paměti využitých v případě potřeby a předem zaspotřebovaných instancí, a to místo fakturace za spuštění a využití paměti. Aspoň jedna instance musí být v každém plánu zadarmo. To znamená, že je k dispozici minimální měsíční cena za aktivní plán bez ohledu na počet spuštění. Mějte na paměti, že všechny aplikace Function App v plánu Premium sdílí předem zahříváníelné a aktivní instance.
 
@@ -78,9 +66,7 @@ Vezměte v úvahu plán Azure Functions Premium v následujících situacích:
 * Máte vysoký počet malých spuštění a máte vysoké náklady na spuštění, ale v plánu spotřeby se účtují za méně GB.
 * Budete potřebovat více možností procesoru nebo paměti, než jaké je k dispozici v plánu spotřeby.
 * Váš kód musí běžet delší dobu, než je [Maximální doba spuštění](#timeout) v plánu spotřeby.
-* Vyžadujete funkce, které jsou k dispozici pouze v plánu Premium, například připojení k virtuální síti.
-
-Při spouštění funkcí JavaScriptu na plánu Premium byste měli zvolit instanci, která má méně vCPU. Další informace najdete v tématu [Výběr plánů Premium s jedním jádrem](functions-reference-node.md#considerations-for-javascript-functions).  
+* Vyžadujete funkce, které jsou k dispozici pouze v plánu Premium, například připojení k virtuální síti. 
 
 ## <a name="dedicated-app-service-plan"></a><a name="app-service-plan"></a>Vyhrazený plán (App Service)
 
@@ -98,6 +84,8 @@ S plánem App Service můžete ručně škálovat přidáním dalších instanc�
 Při spouštění funkcí JavaScriptu v plánu App Service byste měli zvolit plán, který má méně vCPU. Další informace najdete v tématu [Výběr plánů App Service s jedním jádrem](functions-reference-node.md#choose-single-vcpu-app-service-plans). 
 <!-- Note: the portal links to this section via fwlink https://go.microsoft.com/fwlink/?linkid=830855 --> 
 
+Spuštění v [App Service Environment](../app-service/environment/intro.md) (pomocného programu) umožňuje plně izolovat vaše funkce a využívat vysoké škálování.
+
 ### <a name="always-on"></a><a name="always-on"></a>Vždy zapnuto
 
 Pokud spustíte v plánu App Service, měli byste povolit nastavení **vždycky zapnuto** , aby aplikace Function App běžela správně. V App Serviceovém plánu se modul runtime Functions po několika minutách nečinnosti neukončí, takže se vaše funkce vystaví jenom triggery HTTP. Always On je k dispozici pouze v plánu App Service. V plánu spotřeby platforma automaticky aktivuje aplikace funkcí.
@@ -105,7 +93,7 @@ Pokud spustíte v plánu App Service, měli byste povolit nastavení **vždycky 
 [!INCLUDE [Timeout Duration section](../../includes/functions-timeout-duration.md)]
 
 
-I když je funkce Always On zapnutá, časový limit spuštění pro jednotlivé funkce se řídí `functionTimeout` nastavením v souboru projektu [Host. JSON](functions-host-json.md#functiontimeout) .
+I při zapnuté funkci Always On je časový limit spuštění pro jednotlivé funkce řízen `functionTimeout` nastavením v [host.js](functions-host-json.md#functiontimeout) v souboru projektu.
 
 ## <a name="determine-the-hosting-plan-of-an-existing-application"></a>Určení plánu hostování existující aplikace
 
@@ -148,6 +136,10 @@ Jednotka škálování pro Azure Functions je aplikace Function App. Při horizo
 
 ![Škálování událostí monitorování řadiče a vytváření instancí](./media/functions-scale/central-listener.png)
 
+### <a name="cold-start"></a>Studený start
+
+Až bude aplikace Function App po určitou dobu nečinná, může tato platforma škálovat počet instancí, na kterých vaše aplikace běží, na nulu. Další požadavek má přidanou latenci škálování od nuly po jeden. Tato latence se označuje jako _studená spuštění_. Počet závislostí, které musí být načteny aplikací Function App, může mít vliv na počáteční čas. Studená Start je více problémů při synchronních operacích, například triggerech HTTP, které musí vracet odpověď. Pokud mají tyto funkce vliv na studená spuštění, zvažte spuštění v plánu Premium nebo ve vyhrazeném plánu s povoleným funkcemi Always On.   
+
 ### <a name="understanding-scaling-behaviors"></a>Principy chování škálování
 
 Škálování se může u různých faktorů lišit a škáluje se různě na základě zvoleného triggeru a jazyka. Existuje několik složitými rozhraními chování škálování, která je potřeba znát:
@@ -162,7 +154,7 @@ Jednotka škálování pro Azure Functions je aplikace Function App. Při horizo
 
 Existuje mnoho aspektů aplikace Function App, které budou mít vliv na to, jak se bude škálovat, včetně konfigurace hostitele, běhového prostředí a efektivity prostředků.  Další informace najdete v [části věnované škálovatelnosti v článku věnovaném důležitým](functions-best-practices.md#scalability-best-practices)informacím o výkonu. Měli byste taky vědět, jak se připojení chovají, jak se vaše aplikace Function škáluje. Další informace najdete v tématu [Správa připojení v Azure Functions](manage-connections.md).
 
-Další informace o škálování v Pythonu a Node. js najdete v tématu [Azure Functions příručka pro vývojáře v Pythonu – škálování a souběžnost](functions-reference-python.md#scaling-and-concurrency) a [Azure Functions průvodce pro vývojáře Node. js – škálování a souběžnost](functions-reference-node.md#scaling-and-concurrency).
+Další informace o škálování v Pythonu a Node.js Azure Functions najdete v tématu [Příručka pro vývojáře v Pythonu – škálování a souběžnost](functions-reference-python.md#scaling-and-concurrency) a [Azure Functions Node.js příručka pro vývojáře – škálování a souběžnost](functions-reference-node.md#scaling-and-concurrency).
 
 ### <a name="billing-model"></a>Model fakturace
 
@@ -175,8 +167,82 @@ Užitečné dotazy a informace o tom, jak pochopit vyúčtování spotřeby, naj
 
 [Azure Functions pricing page]: https://azure.microsoft.com/pricing/details/functions
 
-## <a name="service-limits"></a>Omezení služby
+## <a name="hosting-plans-comparison"></a>Porovnání plánů hostování
 
-Následující tabulka uvádí omezení, která platí pro aplikace Function App při spuštění v různých plánech hostování:
+Následující tabulka porovnání uvádí všechny důležité aspekty, které vám pomůžou s rozhodnutím o Azure Functions výběru plánu hostování aplikací:
+
+### <a name="plan-summary"></a>Souhrn plánu
+| | |
+| --- | --- |  
+|**[Plán Consumption](#consumption-plan)**| Automatické škálování a Plaťte jenom za výpočetní prostředky, když jsou vaše funkce spuštěné. V plánu spotřeby se instance hostitele Functions dynamicky přidávají a odstraňují na základě počtu příchozích událostí.<br/> ✔ Výchozí plán hostování.<br/>Plaťte ✔ jenom v případě, že jsou vaše funkce spuštěné.<br/>✔ horizontálního navýšení kapacity, a to i během období vysokého zatížení.|  
+|**[Plán Premium](#premium-plan)**|Při automatickém škálování na základě poptávky používejte předem zadržené pracovní procesy ke spouštění aplikací bez prodlevy po nečinnosti, spuštění na výkonnějších instancích a připojení k virtuální sítě. Zvažte plán Azure Functions Premium v následujících situacích, kromě všech funkcí plánu App Service: <br/>✔ Vaše aplikace Function App běží nepřetržitě nebo téměř nepřetržitě.<br/>✔ Máte vysoký počet malých spuštění a máte vysoké náklady na spuštění, ale v plánu spotřeby se účtují s malým počtem sekund.<br/>✔ Budete potřebovat více možností procesoru nebo paměti, než jaké poskytuje plán spotřeby.<br/>✔ Váš kód musí běžet delší dobu, než je maximální doba běhu povolená v plánu spotřeby.<br/>✔ Vyžadujete funkce, které jsou k dispozici pouze [schopný v plánu Premium, například připojení k virtuální síti.|  
+|**[Vyhrazený plán](#app-service-plan)**<sup>1</sup>|Spusťte své funkce v rámci plánu App Service v pravidelných App Servicech tarifech. Vhodným způsobem pro dlouhotrvající operace, i když je potřeba více prediktivního škálování a nákladů. Vezměte v úvahu App Service plán v následujících situacích:<br/>✔ Máte existující, nevyužité virtuální počítače, které už používají jiné instance App Service.<br/>✔ Chcete zadat vlastní image, na které se mají spouštět vaše funkce.|  
+|**[Pomocného mechanismu](#app-service-plan)**<sup>1</sup>|App Service Environment (pomocného mechanismu) je funkce App Service, která poskytuje plně izolované a vyhrazené prostředí pro bezpečné spouštění App Service aplikací ve velkém měřítku. Služby ASE jsou vhodné pro úlohy aplikací, které vyžadují: <br/>✔ Velmi vysokého měřítka.<br/>✔ Izolaci a zabezpečení přístupu k síti.<br/>✔ Vysoké využití paměti.|  
+| **[Kubernetes](functions-kubernetes-keda.md)** | Kubernetes poskytuje plně izolované a vyhrazené prostředí běžící nad platformou Kubernetes.  Kubernetes je vhodný pro úlohy aplikací, které vyžadují: <br/>✔ Požadavky na vlastní hardware.<br/>✔ Izolaci a zabezpečení přístupu k síti.<br/>✔ Schopnost spouštět v hybridním nebo multi-cloudovém prostředí.<br/>✔ Běžet společně se stávajícími aplikacemi a službami Kubernetes.|  
+
+<sup>1</sup> Pokud chcete určit omezení pro různé možnosti plánu App Service, přečtěte si [omezení App Service plánu](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits).
+
+### <a name="operating-systemruntime"></a>Operační systém/modul runtime
+
+| | Linux<sup>1</sup><br/>Pouze kód | Systém Windows<sup>2</sup><br/>Pouze kód | Linux<sup>1, 3</sup><br/>Kontejner Docker |
+| --- | --- | --- | --- |
+| **[Plán Consumption](#consumption-plan)** | .NET Core<br/>Node.js<br/>Java<br/>Python | .NET Core<br/>Node.js<br/>Java<br/>PowerShell Core | Bez podpory  |
+| **[Plán Premium](#premium-plan)** | .NET Core<br/>Node.js<br/>Java<br/>Python|.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python  | 
+| **[Vyhrazený plán](#app-service-plan)**<sup>4</sup> | .NET Core<br/>Node.js<br/>Java<br/>Python|.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python |
+| **[Pomocného mechanismu](#app-service-plan)**<sup>4</sup> | .NET Core<br/>Node.js<br/>Java<br/>Python |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core  |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python | 
+| **[Kubernetes](functions-kubernetes-keda.md)** | Není k dispozici | Není k dispozici |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python |
+
+<sup>1</sup> Linux je jediným podporovaným operačním systémem pro zásobník modulu runtime Pythonu.  
+<sup>2</sup> . Systém Windows je jediným podporovaným operačním systémem pro zásobník modulu runtime prostředí PowerShell.   
+<sup>3</sup> . Linux je jediným podporovaným operačním systémem pro kontejnery Docker.
+<sup>4</sup> konkrétní omezení pro různé možnosti plánu App Service najdete v tématu [omezení plánu App Service](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits).
+
+### <a name="scale"></a>Měřítko
+
+| | Horizontální navýšení kapacity | Maximální počet instancí |
+| --- | --- | --- |
+| **[Plán Consumption](#consumption-plan)** | Řízený událost. Horizontální navýšení kapacity, a to i během období vysokého zatížení. Azure Functions infrastruktura škáluje prostředky procesoru a paměti přidáním dalších instancí hostitele Functions na základě počtu událostí, na kterých se spouští jeho funkce. | 200 |
+| **[Plán Premium](#premium-plan)** | Řízený událost. Horizontální navýšení kapacity, a to i během období vysokého zatížení. Azure Functions infrastruktura škáluje prostředky procesoru a paměti přidáním dalších instancí hostitele Functions na základě počtu událostí, na kterých se spouští jeho funkce. |100|
+| **[Vyhrazený plán](#app-service-plan)**<sup>1</sup> | Ruční nebo automatické škálování |10-20|
+| **[Pomocného mechanismu](#app-service-plan)**<sup>1</sup> | Ruční nebo automatické škálování |100 |
+| **[Kubernetes](functions-kubernetes-keda.md)**  | Automatické škálování založené na událostech pro clustery Kubernetes s využitím [keda](https://keda.sh) | Liší se &nbsp; podle &nbsp; clusteru.&nbsp;&nbsp;|
+
+<sup>1</sup> Pokud chcete určit omezení pro různé možnosti plánu App Service, přečtěte si [omezení App Service plánu](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits).
+
+### <a name="cold-start-behavior"></a>Chování studeného startu
+
+|    |    | 
+| -- | -- |
+| **[&nbsp;Plán spotřeby](#consumption-plan)** | Aplikace se můžou po určitou dobu v nečinnosti škálovat na nulu, což znamená, že některé požadavky můžou při spuštění mít další latenci.  Plán spotřeby má několik optimalizací, které vám pomůžou snižovat čas na studený start, včetně přijímání předem zatepléch zástupných funkcí, které už mají spuštěné hostitele funkcí a jazyka. |
+| **[Plán Premium](#premium-plan)** | Trvalé zahřívání instancí, aby nedocházelo k žádnému studenému startu. |
+| **[Vyhrazený plán](#app-service-plan)**<sup>1</sup> | Při spuštění ve vyhrazeném plánu může hostitel služby Functions běžet průběžně, což znamená, že se ve skutečnosti nejedná o problém s studeným startem. |
+| **[Pomocného mechanismu](#app-service-plan)**<sup>1</sup> | Při spuštění ve vyhrazeném plánu může hostitel služby Functions běžet průběžně, což znamená, že se ve skutečnosti nejedná o problém s studeným startem. |
+| **[Kubernetes](functions-kubernetes-keda.md)**  | Závisí na konfiguraci KEDA. Aplikace je možné nakonfigurovat tak, aby vždy běžely a nikdy nezačaly běžet, nebo aby se nakonfigurovali na hodnotu nula, což vede ke studenému startu na nové události. 
+
+<sup>1</sup> Pokud chcete určit omezení pro různé možnosti plánu App Service, přečtěte si [omezení App Service plánu](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits).
+
+### <a name="service-limits"></a>Omezení služby
 
 [!INCLUDE [functions-limits](../../includes/functions-limits.md)]
+
+### <a name="networking-features"></a>Síťové funkce
+
+[!INCLUDE [functions-networking-features](../../includes/functions-networking-features.md)]
+
+### <a name="billing"></a>Fakturace
+
+| | | 
+| --- | --- |
+| **[Plán Consumption](#consumption-plan)** | Platíte jenom za čas, kdy se vaše funkce spouštějí. Fakturace vychází z počtu spuštění, doby spuštění a použité paměti. |
+| **[Plán Premium](#premium-plan)** | Plán Premium je založený na počtu základních sekund a paměti využitých v případě potřeby a předem zahřívání instancí. Alespoň jedna instance v každém plánu musí být zachována v zahřívání. Tento plán poskytuje předvídatelné ceny. |
+| **[Vyhrazený plán](#app-service-plan)**<sup>1</sup> | Totéž platí pro aplikace Function App v plánu App Service, stejně jako u jiných prostředků App Service, jako jsou například webové aplikace.|
+| **[Pomocného mechanismu](#app-service-plan)**<sup>1</sup> | pro pomocného objekt pro řízení se platí paušální měsíční sazba, která platí pro infrastrukturu a která se nemění podle velikosti pomocného mechanismu. Navíc platí, že vCPU plán bude mít cenu za App Service. Všechny aplikace hostované ve službě ASE jsou ve skladové položce s izolovanou cenou. |
+| **[Kubernetes](functions-kubernetes-keda.md)**| Platíte jenom náklady na váš cluster Kubernetes; žádné další fakturace pro funkce. Vaše aplikace Function App funguje v rámci clusteru jako úloha aplikace, stejně jako u běžné aplikace. |
+
+<sup>1</sup> Pokud chcete určit omezení pro různé možnosti plánu App Service, přečtěte si [omezení App Service plánu](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits).
+
+## <a name="next-steps"></a>Další kroky
+
++ [Rychlý Start: vytvoření projektu Azure Functions pomocí Visual Studio Code](functions-create-first-function-vs-code.md)
++ [Technologie nasazení v Azure Functions](functions-deployment-technologies.md) 
++ [Příručka pro vývojáře v Azure Functions](functions-reference.md)

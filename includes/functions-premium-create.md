@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2020
 ms.author: jehollan, glenga
 ms.custom: include file
-ms.openlocfilehash: c53486bf3368039f172c7a13420e2291dd9c9892
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 4dc85988d904fdec72e1e6d92f03582a2a8f1427
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83122635"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85121518"
 ---
 1. V nabídce webu Azure Portal nebo na **domovské stránce** vyberte **Vytvořit prostředek**.
 
@@ -26,9 +26,9 @@ ms.locfileid: "83122635"
     | **Předplatné** | Vaše předplatné | Předplatné, pod kterým je tato nová aplikace Function App vytvořena. |
     | **[Skupina prostředků](../articles/azure-resource-manager/management/overview.md)** |  *myResourceGroup* | Název nové skupiny prostředků, ve které chcete vytvořit aplikaci Function App. |
     | **Název Function App** | Globálně jedinečný název | Název identifikující novou aplikaci Function App. Platné znaky jsou `a-z` (bez rozlišení velkých a malých písmen), `0-9` a `-` .  |
-    |**Publikování**| kód | Možnost publikování souborů kódu nebo kontejneru Docker |
+    |**Publikování**| Kód | Možnost publikování souborů kódu nebo kontejneru Docker |
     | **Zásobník modulu runtime** | Upřednostňovaný jazyk | Vyberte modul runtime, který podporuje váš oblíbený programovací jazyk funkcí. Zvolte **.NET** pro funkce C# a F#. |
-    |**Věřitel**| Upřednostňovaná oblast | Vyberte [oblast](https://azure.microsoft.com/regions/) ve své blízkosti nebo v blízkosti jiných služeb, které vaše funkce využívají. |
+    |**Oblast**| Upřednostňovaná oblast | Vyberte [oblast](https://azure.microsoft.com/regions/) ve své blízkosti nebo v blízkosti jiných služeb, které vaše funkce využívají. |
 
     ![Stránka základy](./media/functions-premium-create/function-app-create-basics.png)
 
@@ -37,8 +37,8 @@ ms.locfileid: "83122635"
     | Nastavení      | Navrhovaná hodnota  | Popis |
     | ------------ | ---------------- | ----------- |
     | **[Účet úložiště](../articles/storage/common/storage-account-create.md)** |  Globálně jedinečný název |  Vytvořte účet úložiště používaný vaší aplikací funkcí. Názvy účtů úložiště musí mít délku 3 až 24 znaků a můžou obsahovat jenom číslice a malá písmena. Můžete použít i existující účet, který musí splňovat [požadavky na účet úložiště](../articles/azure-functions/functions-scale.md#storage-account-requirements). |
-    |**Operační systém**| Preferovaný operační systém | Operační systém je předem vybraný pro vás na základě výběru zásobníku modulu runtime, ale v případě potřeby můžete změnit nastavení. |
-    | **[Plánování](../articles/azure-functions/functions-scale.md)** | Premium | Plán hostování, který určuje způsob přidělování prostředků aplikaci Function App. Vyberte **Premium**a pak vyberte výchozí nastavení pro **plán Windows** a **SKU a velikost**. |
+    |**Operační systém**| Preferovaný operační systém | Operační systém je předem vybraný pro vás na základě výběru zásobníku modulu runtime, ale v případě potřeby můžete změnit nastavení. Python se podporuje jenom na Linux. |
+    | **[Plánování](../articles/azure-functions/functions-scale.md)** | Premium | Plán hostování, který určuje způsob přidělování prostředků aplikaci Function App. Vyberte **Premium**. Ve výchozím nastavení se vytvoří nový plán App Service. Výchozí **SKU a velikost** jsou **EP1**, kde EP představuje _elastickou prémii_. Další informace najdete v [seznamu SKU úrovně Premium](../articles/azure-functions/functions-premium-plan.md#available-instance-skus).<br/>Při spouštění funkcí JavaScriptu na plánu Premium byste měli zvolit instanci, která má méně vCPU. Další informace najdete v tématu [Výběr plánů Premium s jedním jádrem](../articles/azure-functions/functions-reference-node.md#considerations-for-javascript-functions).  |
 
     ![Stránka hostování](./media/functions-premium-create/function-app-premium-create-hosting.png)
 

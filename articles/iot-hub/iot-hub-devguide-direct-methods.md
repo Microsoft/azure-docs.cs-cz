@@ -10,12 +10,12 @@ ms.author: rezas
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 9fb2242f6e3f8ce78a0e5043a53ce3055819725b
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 357fe6f04c79b5ad0cdf569e6716589007f6253b
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583679"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791958"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Vysvětlení a volání přímých metod ze služby IoT Hub
 
@@ -33,7 +33,7 @@ Pokud jste nejistí mezi použitím požadovaných vlastností, přímých metod
 
 ## <a name="method-lifecycle"></a>Životní cyklus metody
 
-V zařízení jsou implementovány přímé metody a mohou vyžadovat nula nebo více vstupů v datové části metody pro správné vytvoření instance. Pomocí identifikátoru URI (`{iot hub}/twins/{device id}/methods/`) s přístupem ke službě jste vyvolali přímou metodu. Zařízení přijímá přímé metody pomocí MQTTho tématu (`$iothub/methods/POST/{method name}/`) nebo prostřednictvím odkazů AMQP (vlastnosti aplikace `IoThub-methodname` a `IoThub-status` ). 
+V zařízení jsou implementovány přímé metody a mohou vyžadovat nula nebo více vstupů v datové části metody pro správné vytvoření instance. Pomocí identifikátoru URI () s přístupem ke službě jste vyvolali přímou metodu `{iot hub}/twins/{device id}/methods/` . Zařízení přijímá přímé metody pomocí MQTTho tématu ( `$iothub/methods/POST/{method name}/` ) nebo prostřednictvím odkazů AMQP ( `IoThub-methodname` `IoThub-status` Vlastnosti aplikace a). 
 
 > [!NOTE]
 > Když na zařízení vyvoláte přímou metodu, názvy vlastností a hodnoty můžou obsahovat jen tisknutelné alfanumerické znaky US-ASCII, s výjimkou jakékoli v následující sadě:``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}``
@@ -41,7 +41,7 @@ V zařízení jsou implementovány přímé metody a mohou vyžadovat nula nebo 
 
 Přímé metody jsou synchronní a buď úspěšné, nebo neúspěšné, po uplynutí časového limitu (výchozí: 30 sekund, nastavitelné v rozmezí 5 až 300 sekund). Přímé metody jsou užitečné v interaktivních scénářích, kde chcete, aby zařízení fungovalo pouze v případě, že je zařízení online a přijímá příkazy. Můžete například zapnout světlo od telefonu. V těchto scénářích se chcete podívat na bezprostřední úspěch nebo neúspěch, aby cloudová služba mohla co nejdříve fungovat s výsledkem. Zařízení může vracet tělo zprávy jako výsledek metody, ale není nutné, aby to metoda provedla. Není zaručeno řazení ani žádná sémantika souběžnosti při voláních metod.
 
-Přímé metody jsou pouze HTTPS ze strany cloudu a MQTT nebo AMQP ze strany zařízení.
+Přímé metody jsou pouze HTTPS ze strany cloudu a HTTPS, MQTT, AMQP, MQTT přes objekty WebSockets nebo AMQP přes objekty WebSocket na straně zařízení.
 
 Datová část pro žádosti o metody a odpovědi je dokument JSON až 128 KB.
 
@@ -91,7 +91,7 @@ Začněte tím, že pomocí [rozšíření Microsoft Azure IoT pro Azure CLI](ht
 az iot hub generate-sas-token -n <iothubName> -du <duration>
 ```
 
-Potom nahraďte hlavičku autorizace nově `iothubName`vytvořeným SharedAccessSignature a pak změňte parametry, `deviceId` `methodName` a `payload` tak, aby odpovídaly vaší implementaci v níže uvedeném příkazu `curl` příkladu.  
+Potom nahraďte hlavičku autorizace nově vytvořeným SharedAccessSignature a pak změňte `iothubName` `deviceId` `methodName` parametry, a tak, `payload` aby odpovídaly vaší implementaci v `curl` níže uvedeném příkazu příkladu.  
 
 ```bash
 curl -X POST \
@@ -123,7 +123,7 @@ Back-endové aplikace obdrží odpověď, která se skládá z následujících 
 * *Stavový kód HTTP*:
   * 200 indikuje úspěšné provedení přímé metody;
   * 404 znamená, že buď ID zařízení není platné, nebo že zařízení nebylo online při volání přímé metody a `connectTimeoutInSeconds` následně (k pochopení hlavní příčiny použijte doplněnou chybovou zprávu);
-  * 504 označuje časový limit brány způsobený tím, že zařízení nereaguje na přímé volání `responseTimeoutInSeconds`metody v rámci.
+  * 504 označuje časový limit brány způsobený tím, že zařízení nereaguje na přímé volání metody v rámci `responseTimeoutInSeconds` .
 
 * *Hlavičky* , které obsahují ETag, ID požadavku, typ obsahu a kódování obsahu.
 
@@ -136,13 +136,13 @@ Back-endové aplikace obdrží odpověď, která se skládá z následujících 
     }
     ```
 
-    `status` A `body` jsou k dispozici v zařízení a slouží k reagování na vlastní stavový kód a/nebo popis zařízení.
+    `status`A `body` jsou k dispozici v zařízení a slouží k reagování na vlastní stavový kód a/nebo popis zařízení.
 
 ### <a name="method-invocation-for-iot-edge-modules"></a>Vyvolání metody pro IoT Edge moduly
 
 Vyvolání přímých metod pomocí ID modulu je podporované v [sadě SDK pro klienta služby IoT v jazyce C#](https://www.nuget.org/packages/Microsoft.Azure.Devices/).
 
-Pro účely tohoto účelu použijte `ServiceClient.InvokeDeviceMethodAsync()` metodu a předejte parametry `deviceId` a `moduleId` jako.
+Pro účely tohoto účelu použijte `ServiceClient.InvokeDeviceMethodAsync()` metodu a předejte `deviceId` `moduleId` parametry a jako.
 
 ## <a name="handle-a-direct-method-on-a-device"></a>Zpracování přímé metody v zařízení
 
@@ -154,7 +154,7 @@ Následující část je určena pro protokol MQTT.
 
 #### <a name="method-invocation"></a>Vyvolání metody
 
-Zařízení dostávají požadavky přímých metod v MQTT tématu: `$iothub/methods/POST/{method name}/?$rid={request id}`. Počet předplatných na zařízení je omezený na 5. Proto se doporučuje neodebírat každou přímo metodu jednotlivě. Místo toho zvažte přihlášení `$iothub/methods/POST/#` a pak filtrování doručených zpráv na základě požadovaných názvů metod.
+Zařízení dostávají požadavky přímých metod v MQTT tématu: `$iothub/methods/POST/{method name}/?$rid={request id}` . Počet předplatných na zařízení je omezený na 5. Proto se doporučuje neodebírat každou přímo metodu jednotlivě. Místo toho zvažte přihlášení `$iothub/methods/POST/#` a pak filtrování doručených zpráv na základě požadovaných názvů metod.
 
 Tělo, které zařízení obdrží, má následující formát:
 
@@ -169,11 +169,11 @@ Požadavky metody jsou QoS 0.
 
 #### <a name="response"></a>Odpověď
 
-Zařízení odesílá odpovědi do `$iothub/methods/res/{status}/?$rid={request id}`, kde:
+Zařízení odesílá odpovědi do `$iothub/methods/res/{status}/?$rid={request id}` , kde:
 
-* `status` Vlastnost je stavem poskytovaných metod, které jsou zadány zařízením.
+* `status`Vlastnost je stavem poskytovaných metod, které jsou zadány zařízením.
 
-* `$rid` Vlastnost je ID žádosti z volání metody přijaté z IoT Hub.
+* `$rid`Vlastnost je ID žádosti z volání metody přijaté z IoT Hub.
 
 Tělo je nastaveno zařízením a může být libovolný stav.
 
@@ -183,25 +183,25 @@ Následující část je určena pro protokol AMQP.
 
 #### <a name="method-invocation"></a>Vyvolání metody
 
-Zařízení přijímá požadavky přímých metod vytvořením odkazu pro příjem na adrese `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound`.
+Zařízení přijímá požadavky přímých metod vytvořením odkazu pro příjem na adrese `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound` .
 
 Zpráva AMQP dorazí na odkaz Receive, který reprezentuje požadavek metody. Obsahuje následující oddíly:
 
 * Vlastnost ID korelace, která obsahuje ID žádosti, která se má zpětně předat odpovídající odezva metody.
 
-* Vlastnost aplikace s názvem `IoThub-methodname`, která obsahuje název volané metody.
+* Vlastnost aplikace s názvem `IoThub-methodname` , která obsahuje název volané metody.
 
 * Tělo zprávy AMQP obsahující datovou část metody jako JSON.
 
 #### <a name="response"></a>Odpověď
 
-Zařízení vytvoří odkaz pro odeslání, který vrátí odpověď metody na adrese `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound`.
+Zařízení vytvoří odkaz pro odeslání, který vrátí odpověď metody na adrese `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound` .
 
 Odpověď metody je vrácena na odesílacím odkazu a je strukturována takto:
 
 * Vlastnost ID korelace, která obsahuje ID žádosti předané ve zprávě požadavku metody.
 
-* Vlastnost aplikace s názvem `IoThub-status`, která obsahuje stav metody dodané uživatelem
+* Vlastnost aplikace s názvem `IoThub-status` , která obsahuje stav metody dodané uživatelem
 
 * Tělo zprávy AMQP obsahující odpověď metody jako JSON.
 

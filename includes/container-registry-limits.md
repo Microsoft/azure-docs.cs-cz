@@ -5,20 +5,21 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: include
-ms.date: 05/18/2020
+ms.date: 06/18/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 19d0be6a032868c6683cd5b6bbfa7f07306171fb
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 643cf8fd400adf06bf61f070947bd78ba7be50eb
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683436"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85242103"
 ---
-| Prostředek | Základní | Standard | Premium |
+| Prostředek | Basic | Standard | Premium |
 |---|---|---|---|
-| Úložiště<sup>1</sup> | 10 GiB | 100 GiB| 500 GiB |
-| Maximální velikost vrstvy obrázku | 200 GiB | 200 GiB | 200 GiB |
+| Zahrnuté úložiště<sup>1</sup> (GIB) | 10 | 100 | 500 |
+| Limit úložiště (TiB) | 20| 20 | 20 |
+| Maximální velikost vrstvy obrázku (GiB) | 200 | 200 | 200 |
 | ReadOps za minutu<sup>2, 3</sup> | 1 000 | 3 000 | 10 000 |
 | WriteOps za minutu<sup>2, 4</sup> | 100 | 500 | 2 000 |
 | Šířka pásma pro stažení<sup>2</sup> MB/s | 30 | 60 | 100 |
@@ -27,15 +28,15 @@ ms.locfileid: "83683436"
 | Geografická replikace | – | – | [Doložen][geo-replication] |
 | Důvěryhodnost obsahu | – | – | [Doložen][content-trust] |
 | Privátní odkaz s privátními koncovými body | – | – | [Doložen][plink] |
-| Přístup k virtuální síti koncového bodu služby | – | – | [Tisk][vnet] |
+| Přístup k virtuální síti koncového bodu služby | – | – | [Preview][vnet] |
 | Klíče spravované zákazníkem | – | – | [Doložen][cmk] |
-| Oprávnění rozsahu úložiště | – | – | [Tisk][token]|
+| Oprávnění rozsahu úložiště | – | – | [Preview][token]|
 | &bull;Klíčov | – | – | 20 000 |
 | &bull;Mapy oboru | – | – | 20 000 |
 | &bull;Mapování úložišť na obor | – | – | 500 |
 
 
-<sup>1</sup> Zadané limity úložiště představují velikost *zahrnutého* úložiště pro jednotlivé úrovně. Za úložiště imagí nad rámec těchto limitů se účtují další denní sazby za GiB. Informace o sazbách najdete v tématu [Azure Container Registry ceny][pricing].
+<sup>1</sup> úložiště zahrnuté do denní sazby pro každou úroveň. V případě dalšího úložiště se vám bude účtovat další denní sazba za GiB, a to až do limitu úložiště. Informace o sazbách najdete v tématu [Azure Container Registry ceny][pricing].
 
 <sup>2</sup>*ReadOps*, *WriteOps*a *Šířka pásma* jsou minimální odhady. Azure Container Registry se snaží zvýšit výkon, protože vyžaduje použití.
 

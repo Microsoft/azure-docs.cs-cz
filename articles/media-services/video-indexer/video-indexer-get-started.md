@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: quickstart
 ms.date: 03/17/2020
 ms.author: juliako
-ms.openlocfilehash: 22b06ce99333750d48d1cb65d9f60779572723b9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f6c3953947e6f7e84f4cf9b565d2f66648b177f7
+ms.sourcegitcommit: 666303748238dfdf9da30d49d89b915af73b0468
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79499627"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85130751"
 ---
 # <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>Rychlý Start: jak se zaregistrovat a nahrát své první video
 
@@ -25,7 +25,7 @@ Při vytváření účtu Video Indexeru můžete zvolit účet bezplatné zkuše
 
 ## <a name="sign-up-for-video-indexer"></a>Registrace k Video Indexeru
 
-Pokud chcete začít s vývojem pomocí Video Indexeru, přejděte na web [Video Indexer](https://www.videoindexer.com) a zaregistrujte se.
+Pokud chcete začít s vývojem pomocí Video Indexeru, přejděte na web [Video Indexer](https://www.videoindexer.ai/) a zaregistrujte se.
 
 > [!NOTE]
 > Po zahájení používání Video Indexer se všechna uložená data a nahraná data zašifrují v klidovém formátu pomocí spravovaného klíče Microsoftu.

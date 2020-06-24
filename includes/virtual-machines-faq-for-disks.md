@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/31/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: de8574cd691c77bb764c7e695db1e7c2f23c5f3a
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 9764d3964a38408493bafe0e9c8ca059b055ca21
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837870"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85242066"
 ---
 Tento článek obsahuje odpovědi na některé nejčastější dotazy týkající se Azure Managed Disks a Azure SSD úrovně Premium disků.
 
@@ -29,7 +29,7 @@ Standardní spravovaný disk vytvořený z disku VHD 80 GB se považuje za dalš
 
 **Jsou nějaké transakční náklady na standard Managed disks?**
 
-Yes. Účtují se vám poplatky za jednotlivé transakce. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/storage).
+Ano. Účtují se vám poplatky za jednotlivé transakce. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/storage).
 
 **U standardního spravovaného disku se mi bude účtovat skutečná velikost dat na disku nebo zajištěná kapacita disku?**
 
@@ -41,15 +41,15 @@ Ceny za spravované disky úrovně Premium jsou stejné jako nespravované prém
 
 **Můžu změnit typ účtu úložiště (Standard nebo Premium) mých spravovaných disků?**
 
-Yes. Typ účtu úložiště vašich spravovaných disků můžete změnit pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure.
+Ano. Typ účtu úložiště vašich spravovaných disků můžete změnit pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure.
 
 **Můžu použít soubor VHD v účtu služby Azure Storage k vytvoření spravovaného disku s jiným předplatným?**
 
-Yes.
+Ano.
 
 **Můžu k vytvoření spravovaného disku v jiné oblasti použít soubor VHD v účtu služby Azure Storage?**
 
-No.
+Ne.
 
 **Existují nějaká omezení škálování pro zákazníky, kteří používají spravované disky?**
 
@@ -57,15 +57,15 @@ Managed Disks eliminuje limity spojené s účty úložiště. Maximální limit
 
 **Je možné virtuální počítače ve skupině dostupnosti sestávat z kombinace spravovaných a nespravovaných disků?**
 
-No. Virtuální počítače ve skupině dostupnosti musí používat buď všechny spravované disky, nebo všechny nespravované disky. Když vytvoříte skupinu dostupnosti, můžete zvolit, který typ disků chcete použít.
+Ne. Virtuální počítače ve skupině dostupnosti musí používat buď všechny spravované disky, nebo všechny nespravované disky. Když vytvoříte skupinu dostupnosti, můžete zvolit, který typ disků chcete použít.
 
 **Je Managed Disks výchozí možnost v Azure Portal?**
 
-Yes.
+Ano.
 
 **Můžu vytvořit prázdný spravovaný disk?**
 
-Yes. Můžete vytvořit prázdný disk. Spravovaný disk se dá vytvořit nezávisle na virtuálním počítači, například bez připojení k virtuálnímu počítači.
+Ano. Můžete vytvořit prázdný disk. Spravovaný disk se dá vytvořit nezávisle na virtuálním počítači, například bez připojení k virtuálnímu počítači.
 
 **Jaký je počet podporovaných domén selhání pro skupinu dostupnosti, která používá Managed Disks?**
 
@@ -97,11 +97,11 @@ Ano, podporují se nespravované i spravované disky. Pro nové úlohy doporuču
 
 **Můžu na stejném virtuálním počítači společně najít nespravované a spravované disky?**
 
-No.
+Ne.
 
 **Když vytvořím disk 128 GB a pak se velikost zvýší na 130 gibibajtech (GiB), bude se mi účtovat další velikost disku (256 GiB)?**
 
-Yes.
+Ano.
 
 **Můžu vytvářet místně redundantní úložiště, geograficky redundantní úložiště a disky spravované úložištěm redundantní zóny?**
 
@@ -109,15 +109,15 @@ Služba Azure Managed Disks aktuálně podporuje jenom místně redundantní dis
 
 **Můžu své spravované disky zmenšit nebo klidnějších?**
 
-No. Tato funkce se momentálně nepodporuje.
+Ne. Tato funkce se momentálně nepodporuje.
 
 **Můžu na svém disku přerušit zapůjčení?**
 
-No. Tato operace se momentálně nepodporuje, protože je k dispozici zapůjčení, aby se zabránilo nechtěnému odstranění při použití disku.
+Ne. Tato operace se momentálně nepodporuje, protože je k dispozici zapůjčení, aby se zabránilo nechtěnému odstranění při použití disku.
 
 **Můžu změnit vlastnost název počítače, když se pro zřízení virtuálního počítače použije specializovaná (nevytvořená pomocí nástroje pro přípravu systému nebo zobecněný) disk s operačním systémem?**
 
-No. Nemůžete aktualizovat vlastnost název počítače. Nový virtuální počítač dědí z nadřazeného virtuálního počítače, který se použil k vytvoření disku operačního systému. 
+Ne. Nemůžete aktualizovat vlastnost název počítače. Nový virtuální počítač dědí z nadřazeného virtuálního počítače, který se použil k vytvoření disku operačního systému. 
 
 **Kde najdu ukázkové Azure Resource Manager šablony pro vytváření virtuálních počítačů se spravovanými disky?**
 * [Seznam šablon pomocí Managed Disks](https://github.com/Azure/azure-quickstart-templates/)
@@ -186,11 +186,11 @@ Odpojte disk ze všech virtuálních počítačů, ke kterým je připojen. Pak 
 
 **Můžete změnit velikost sdíleného disku?**
 
-Yes.
+Ano.
 
 **Můžu povolit akcelerátor zápisu na disku, na kterém jsou taky povolené sdílené disky?**
 
-No.
+Ne.
 
 **Můžu povolit ukládání hostitelů do mezipaměti pro disk, na kterém je povolený sdílený disk?**
 
@@ -240,11 +240,11 @@ Vytvořte spravovaný disk s vlastností [CreateOption](https://docs.microsoft.c
 
 **Můžu k virtuálnímu počítači připojit disk, když je ve stavu nahrávání?**
 
-No.
+Ne.
 
 **Můžu pořídit snímek spravovaných disku ve stavu nahrávání?**
 
-No.
+Ne.
 
 ## <a name="standard-ssd-disks"></a>SSD úrovně Standard disky
 
@@ -286,11 +286,11 @@ Nejsou vyžadovány žádné změny.
 
 **Je automatizovaná migrace stávající sady škálování virtuálních počítačů z nespravovaných disků na Managed Disks podporovaná?**
 
-No. Novou sadu škálování můžete vytvořit pomocí Managed Disks pomocí image ze své staré sady škálování s nespravovanými disky.
+Ne. Novou sadu škálování můžete vytvořit pomocí Managed Disks pomocí image ze své staré sady škálování s nespravovanými disky.
 
 **Můžu před migrací na Managed Disks vytvořit spravovaný disk z snímku objektu blob stránky?**
 
-No. Snímek objektu blob stránky můžete exportovat jako objekt blob stránky a pak vytvořit spravovaný disk z exportovaného objektu blob stránky.
+Ne. Snímek objektu blob stránky můžete exportovat jako objekt blob stránky a pak vytvořit spravovaný disk z exportovaného objektu blob stránky.
 
 **Můžu převzít služby při selhání místních počítačů chráněných Azure Site Recovery k virtuálnímu počítači s Managed Disks?**
 
@@ -298,7 +298,7 @@ Ano, můžete se rozhodnout pro převzetí služeb při selhání virtuálního 
 
 **Je nějaký dopad migrace na virtuální počítače Azure chráněné Azure Site Recovery přes Azure do Azure – replikace?**
 
-No. K dispozici je Azure Site Recovery ochrany Azure do Azure pro virtuální počítače s Managed Disks.
+Ne. K dispozici je Azure Site Recovery ochrany Azure do Azure pro virtuální počítače s Managed Disks.
 
 **Můžu migrovat virtuální počítače s nespravovanými disky, které se nacházejí v účtech úložiště, které jsou nebo byly předtím zašifrované na spravované disky?**
 
@@ -308,11 +308,11 @@ Ano
 
 **Je šifrování na straně serveru ve výchozím nastavení povolené při vytváření spravovaného disku?**
 
-Yes. Managed Disks se šifrují pomocí šifrování na straně serveru s použitím klíčů spravovaných platformou. 
+Ano. Managed Disks se šifrují pomocí šifrování na straně serveru s použitím klíčů spravovaných platformou. 
 
 **Je spouštěcí svazek ve výchozím nastavení zašifrovaný na spravovaném disku?**
 
-Yes. Ve výchozím nastavení jsou všechny spravované disky zašifrované, včetně disku s operačním systémem.
+Ano. Ve výchozím nastavení jsou všechny spravované disky zašifrované, včetně disku s operačním systémem.
 
 **Kdo spravuje šifrovací klíče?**
 
@@ -320,23 +320,23 @@ Spravované klíče platformy jsou spravované Microsoftem. Můžete také použ
 
 **Můžu zakázat šifrování na straně serveru pro moje spravované disky?**
 
-No.
+Ne.
 
 **Je šifrování na straně serveru dostupné jenom v konkrétních oblastech?**
 
-No. Šifrování na straně serveru s klíči spravovanými platformou a zákazníkem jsou k dispozici ve všech oblastech, kde je Managed Disks k dispozici. 
+Ne. Šifrování na straně serveru s klíči spravovanými platformou a zákazníkem jsou k dispozici ve všech oblastech, kde je Managed Disks k dispozici. 
 
 **Podporuje Azure Site Recovery šifrování na straně serveru s klíčem spravovaným zákazníkem pro místní prostředí do Azure a pro scénáře zotavení po havárii z Azure do Azure?**
 
-Yes. 
+Ano. 
 
 **Je možné zálohovat Managed Disks šifrované pomocí šifrování na straně serveru s klíčem spravovaným zákazníkem pomocí služby Azure Backup?**
 
-Yes.
+Ano.
 
 **Jsou spravované snímky a obrázky zašifrované?**
 
-Yes. Všechny spravované snímky a obrázky se zašifrují automaticky. 
+Ano. Všechny spravované snímky a obrázky se zašifrují automaticky. 
 
 **Můžu převést virtuální počítače s nespravovanými disky, které se nacházejí v účtech úložiště, které jsou nebo byly předtím zašifrované na spravované disky?**
 
@@ -344,17 +344,17 @@ Ano
 
 **Bude exportovaný virtuální pevný disk ze spravovaného disku nebo snímku taky zašifrovaný?**
 
-No. Pokud ale exportujete VHD na zašifrovaný účet úložiště ze zašifrovaného spravovaného disku nebo snímku, bude zašifrovaný. 
+Ne. Pokud ale exportujete VHD na zašifrovaný účet úložiště ze zašifrovaného spravovaného disku nebo snímku, bude zašifrovaný. 
 
 ## <a name="premium-disks-managed-and-unmanaged"></a>Disky úrovně Premium: spravované a nespravované
 
 **Pokud virtuální počítač používá řadu velikostí, která podporuje SSD úrovně Premium disky, jako je DSv2, můžu připojit datové disky Premium i Standard?** 
 
-Yes.
+Ano.
 
 **Můžu připojit datové disky Premium i Standard k řadě velikostí, která nepodporuje SSD úrovně Premium disky, jako je D, Dv2, G nebo F Series?**
 
-No. K virtuálním počítačům, které nepoužívají řadu velikostí, která podporuje SSD úrovně Premium disky, můžete připojit pouze standardní datové disky.
+Ne. K virtuálním počítačům, které nepoužívají řadu velikostí, která podporuje SSD úrovně Premium disky, můžete připojit pouze standardní datové disky.
 
 **Když vytvořím datový disk Premium z existujícího virtuálního pevného disku, který byl 80 GB, kolik to bude mít za cenu?**
 
@@ -431,7 +431,7 @@ Můžete pořídit snímky malých disků a pak vytvořit disk pro automatické 
 
 **Můžete změnit velikost stávajícího Managed Disks z velikosti menší než 4 tebibytes (TiB) na nové nově zavedené velikosti disků až do 32 TiB?**
 
-Yes.
+Ano.
 
 **Jaké jsou největší velikosti disků podporované službou Azure Backup a Azure Site Recovery?**
 
@@ -451,7 +451,7 @@ Diskové SKU 8 TiB, 16 TiB a 32 TiB jsou podporované ve všech oblastech v čá
 
 **Podporujeme povolování ukládání hostitelů do mezipaměti u všech velikostí disků?**
 
-Podporujeme ukládání do mezipaměti pro jen pro čtení a čtení a zápis na discích, které jsou menší než 4 TiB. Pro velikosti disků větší než 4 TiB nepodporujeme možnost nastavení ukládání do mezipaměti kromě možnosti žádné. Doporučujeme používat ukládání do mezipaměti pro menší velikosti disků, kde můžete očekávat lepší zvýšení výkonu s daty uloženými v mezipaměti do virtuálního počítače.
+Mezipaměť hostitele (jen pro čtení a zápis) je podporovaná na discích, které jsou menší než 4 TiB. To znamená, že každý disk, který je zřízený až 4095 GiB, může využít výhod ukládání do mezipaměti hostitele. Mezipaměť hostitele není podporována pro velikosti disků větší nebo rovnou 4096 GiB. Například P50 Premium disk zřízený v 4095 GiB může využít výhod ukládání do mezipaměti hostitele a P50 disk zřízený v 4096 GiB nemůže využít ukládání do mezipaměti hostitele. Doporučujeme používat ukládání do mezipaměti pro menší velikosti disků, kde můžete očekávat lepší zvýšení výkonu s daty uloženými v mezipaměti do virtuálního počítače.
 
 ## <a name="what-if-my-question-isnt-answered-here"></a>Co když tady není odpověď na moji otázku?
 

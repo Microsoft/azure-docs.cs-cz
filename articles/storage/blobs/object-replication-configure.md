@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/28/2020
+ms.date: 06/16/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 89a4c934a0245c39f6015a43d9de16db800691d8
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 9cb9f1a33c37487f4bfb1419d45d4e42a862d815
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170626"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888118"
 ---
 # <a name="configure-object-replication-for-block-blobs-preview"></a>Konfigurace replikace objektů pro objekty blob bloku (Preview)
 
@@ -28,7 +28,9 @@ Tento článek popisuje, jak nakonfigurovat replikaci objektů pro svůj účet 
 
 Před konfigurací replikace objektů vytvořte zdrojové a cílové účty úložiště, pokud ještě neexistují. Oba účty musí být účty úložiště pro obecné účely v2. Další informace najdete v tématu [Vytvoření účtu Azure Storage](../common/storage-account-create.md).
 
-Také se ujistěte, že jste zaregistrováni pro následující náhledy funkcí:
+Účet úložiště může sloužit jako zdrojový účet pro až dva cílové účty. A cílový účet pravděpodobně nemá více než dva zdrojové účty. Zdrojové a cílové účty se můžou nacházet v různých oblastech. Můžete nakonfigurovat samostatné zásady replikace pro replikaci dat do každého cílového účtu.
+
+Než začnete, ujistěte se, že jste se zaregistrovali v následujících náhledech funkcí:
 
 - [Replikace objektů (Preview)](object-replication-overview.md)
 - [Správa verzí objektů BLOB (Preview)](versioning-overview.md)
@@ -41,7 +43,7 @@ Před konfigurací replikace objektů v Azure Portal vytvořte zdrojové a cílo
 Chcete-li vytvořit zásadu replikace v Azure Portal, postupujte podle následujících kroků:
 
 1. V Azure Portal přejděte do zdrojového účtu úložiště.
-1. V části **Nastavení**vyberte **replikace objektů**.
+1. V části **BLOB Service**vyberte **replikace objektů**.
 1. Vyberte **nastavit replikaci**.
 1. Vyberte cílové předplatné a účet úložiště.
 1. V části **páry kontejnerů** vyberte zdrojový kontejner ze zdrojového účtu a cílový kontejner z cílového účtu. Na jednu zásadu replikace můžete vytvořit až 10 párů kontejnerů.

@@ -2,21 +2,21 @@
 title: Uživatelé nejsou v mé aplikaci zřízeni.
 description: Jak řešit běžné problémy s tím, jak se uživatelům nezobrazují v aplikaci Galerie Azure AD, kterou jste nakonfigurovali pro zřizování uživatelů pomocí Azure AD
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/20/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: fa47fbba7632077c83dc1d594c7c58c59c869bf7
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: cc3c62da371d66c2aa957974ad6d4472aaf5648e
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594011"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84782275"
 ---
 # <a name="no-users-are-being-provisioned"></a>Neprobíhá zřizování žádných uživatelů 
 >[!NOTE]
@@ -31,7 +31,7 @@ Po nakonfigurování automatického zřizování pro aplikaci (včetně ověřen
   
 Pokud zjistíte, že uživatelé nejsou zřizování, přečtěte si článek [zřizování protokolů (Preview)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) ve službě Azure AD. Vyhledejte položky protokolu pro konkrétního uživatele.
 
-K protokolům zřizování v Azure Portal můžete získat přístup tak, že v části **aktivita** vyberete **Azure Active Directory** &gt; protokoly zřizování **podnikových aplikací** &gt; **(Preview)** . Data zřizování můžete vyhledat na základě jména uživatele nebo identifikátoru v systému zdrojového systému nebo v cílovém systému. Podrobnosti najdete v tématu [zřizování protokolů (Preview)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). 
+K protokolům zřizování v Azure Portal můžete získat přístup tak, že **Azure Active Directory** &gt; v části aktivita vyberete Azure Active Directory protokoly zřizování **podnikových aplikací** &gt; **(Preview)** . **Activity** Data zřizování můžete vyhledat na základě jména uživatele nebo identifikátoru v systému zdrojového systému nebo v cílovém systému. Podrobnosti najdete v tématu [zřizování protokolů (Preview)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). 
 
 Protokoly zřizování zaznamenávají všechny operace prováděné službou zřizování, včetně dotazování Azure AD na přiřazené uživatele v oboru pro zřizování, dotazování cílové aplikace na existenci těchto uživatelů a porovnání uživatelských objektů mezi systémem. Pak na základě porovnání přidejte, aktualizujte nebo zakažte uživatelský účet v cílovém systému.
 
@@ -42,7 +42,7 @@ Níže je uveden seznam obecných oblastí problémů, na které můžete přej�
 - [Zřizování protokolů – uživatelé se přeskočili a nezřídili, i když jsou přiřazeni.](#provisioning-logs-say-users-are-skipped-and-not-provisioned-even-though-they-are-assigned)
 
 ## <a name="provisioning-service-does-not-appear-to-start"></a>Služba zřizování se nezdá spustit
-Pokud nastavíte **stav zřizování** **v části** ** &gt; Azure Active Directory podnikové &gt; \[\] &gt;aplikace Azure Portal název aplikace** . Po dalším opětovném načtení se na této stránce nezobrazují žádné další podrobnosti o stavu, je ale nejspíš, že služba běží, ale ještě nedokončila počáteční cyklus. Zkontrolujte výše popsané **protokoly zřizování (Preview)** , abyste zjistili, jaké operace služba provádí, a pokud dojde k chybám.
+Pokud nastavíte **stav zřizování** **v části** **Azure Active Directory &gt; podnikové aplikace Azure Portal &gt; \[ název aplikace \] &gt; ** . Po dalším opětovném načtení se na této stránce nezobrazují žádné další podrobnosti o stavu, je ale nejspíš, že služba běží, ale ještě nedokončila počáteční cyklus. Zkontrolujte výše popsané **protokoly zřizování (Preview)** , abyste zjistili, jaké operace služba provádí, a pokud dojde k chybám.
 
 >[!NOTE]
 >Počáteční cyklus může trvat až 20 minut až několik hodin, v závislosti na velikosti adresáře Azure AD a počtu uživatelů v oboru pro zřizování. Následná synchronizace po počátečním cyklu, protože služba zřizování ukládá meze, které představují stav obou systémů po počátečním cyklu. Počáteční cyklus vylepšuje výkon následných synchronizací.

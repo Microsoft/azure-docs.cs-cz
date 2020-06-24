@@ -2,14 +2,14 @@
 title: Řešení potíží s Azure blockchain Workbench
 description: Řešení potíží s aplikací Azure blockchain Workbench Preview
 ms.date: 10/14/2019
-ms.topic: article
+ms.topic: troubleshooting
 ms.reviewer: brendal
-ms.openlocfilehash: ef4bce4dfba77aafa9b86c6877c153534b54636e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 20c0f9bdd6f820a73b1ba6660de805268c0d8714
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74324307"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212849"
 ---
 # <a name="azure-blockchain-workbench-preview-troubleshooting"></a>Řešení potíží s Azure blockchain Workbench Preview
 
@@ -42,7 +42,7 @@ collectBlockchainWorkbenchTroubleshooting.ps1 -SubscriptionID "<subscription_id>
 ```
 Skript přijímá následující parametry:
 
-| Parametr  | Popis | Požaduje se |
+| Parametr  | Popis | Vyžadováno |
 |---------|---------|----|
 | SubscriptionID | SubscriptionID pro vytvoření nebo vyhledání všech prostředků. | Ano |
 | ResourceGroupName | Název skupiny prostředků Azure, do které se nasadila aplikace blockchain Workbench | Ano |
@@ -56,7 +56,7 @@ Skript přijímá následující parametry:
 
 Výstupní soubor ZIP obsahuje následující strukturu složek:
 
-| Složka nebo soubor | Popis  |
+| Složka nebo soubor | Description  |
 |---------|---------|
 | \Summary.txt | Souhrn systému |
 | \Metrics\blockchain | Metriky o blockchain |
@@ -66,7 +66,7 @@ Výstupní soubor ZIP obsahuje následující strukturu složek:
 
 Soubor Shrnutí poskytuje snímek celkového stavu aplikace a stavu aplikace. Souhrn obsahuje doporučené akce, nejdůležitější hlavní chyby a metadata o spuštěných službách.
 
-Složka **metriky** obsahuje metriky různých systémových komponent v průběhu času. Například výstupní soubor `\Details\Workbench\apiMetrics.txt` obsahuje souhrn různých kódů odpovědí a dobu odezvy v průběhu období shromažďování. Složka **podrobností** obsahuje podrobné protokoly pro řešení konkrétních problémů s nástrojem Workbench nebo základní blockchainou sítí. `\Details\Workbench\Exceptions.csv` Obsahuje například seznam nejaktuálnějších výjimek, ke kterým došlo v systému, což je užitečné při řešení chyb pomocí inteligentních kontraktů nebo interakcí s blockchain. 
+Složka **metriky** obsahuje metriky různých systémových komponent v průběhu času. Například výstupní soubor `\Details\Workbench\apiMetrics.txt` obsahuje souhrn různých kódů odpovědí a dobu odezvy v průběhu období shromažďování. Složka **podrobností** obsahuje podrobné protokoly pro řešení konkrétních problémů s nástrojem Workbench nebo základní blockchainou sítí. `\Details\Workbench\Exceptions.csv`Obsahuje například seznam nejaktuálnějších výjimek, ke kterým došlo v systému, což je užitečné při řešení chyb pomocí inteligentních kontraktů nebo interakcí s blockchain. 
 
 ## <a name="next-steps"></a>Další kroky
 

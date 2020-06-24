@@ -3,24 +3,19 @@ title: Azure Event Hubs – události odesílání a příjmu pomocí .NET Frame
 description: 'Rychlý Start: Tento článek poskytuje návod pro vytvoření .NET Framework aplikace, která odesílá události do Azure Event Hubs.'
 services: event-hubs
 documentationcenter: ''
-author: ShubhaVijayasarathy
-manager: timlt
-editor: ''
+author: spelluru
 ms.assetid: c4974bd3-2a79-48a1-aa3b-8ee2d6655b28
 ms.service: event-hubs
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
-ms.custom: seodec18
-ms.date: 12/20/2019
-ms.author: shvija
-ms.openlocfilehash: 385430d993afe8b7a0ad57991d3c93eebd46ddcb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/23/2020
+ms.author: spelluru
+ms.reviewer: shvija
+ms.openlocfilehash: 0857bbcd292562e199eec4ec8cb07650f1989ec5
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79240951"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85299088"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-net-framework"></a>Rychlý Start: odeslání událostí do nebo příjem událostí z Azure Event Hubs pomocí .NET Framework
 Azure Event Hubs je platforma pro streamování velkých objemů dat a služba pro ingestování událostí, která je schopná přijmout a zpracovat miliony událostí za sekundu. Služba Event Hubs dokáže zpracovávat a ukládat události, data nebo telemetrické údaje produkované distribuovaným softwarem a zařízeními. Data odeslaná do centra událostí je možné transformovat a uložit pomocí libovolného poskytovatele analýz v reálném čase nebo adaptérů pro dávkové zpracování a ukládání. Podrobnější přehled služby Event Hubs najdete v tématech [Přehled služby Event Hubs](event-hubs-about.md) a [Funkce služby Event Hubs](event-hubs-features.md).

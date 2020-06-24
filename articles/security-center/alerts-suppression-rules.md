@@ -8,14 +8,14 @@ ms.author: memildin
 ms.date: 05/04/2020
 ms.service: security-center
 ms.topic: conceptual
-ms.openlocfilehash: 84b5cd8a59103f60249da861238acb45f8aa2fd5
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 8644a4e7dc8973775d952581bfc57d266c79f1a5
+ms.sourcegitcommit: 666303748238dfdf9da30d49d89b915af73b0468
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871703"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85130785"
 ---
-# <a name="suppressing-alerts-from-azure-security-centers-threat-protection"></a>Potlačení výstrah z ochrany před hrozbami Azure Security Center
+# <a name="suppress-alerts-from-azure-security-centers-threat-protection"></a>Potlačit výstrahy z Azure Security Center ochrany před hrozbami
 
 Tato stránka vysvětluje, jak můžete pomocí pravidel potlačení výstrah potlačit falešně pozitivní nebo jiné nechtěné výstrahy zabezpečení v Azure Security Center.
 
@@ -28,7 +28,7 @@ Tato stránka vysvětluje, jak můžete pomocí pravidel potlačení výstrah po
     - ✔ National/Svrchovan (US Gov, Čína gov, ostatní gov)
 
 
-## <a name="introduction-to-suppression-rules"></a>Seznámení s pravidly potlačení
+## <a name="what-are-suppression-rules"></a>Jaká jsou pravidla pro potlačení?
 
 Součásti ochrany před hrozbami pro Azure Security Center zjišťují hrozby v jakékoli oblasti prostředí a generují výstrahy zabezpečení.
 
@@ -45,7 +45,7 @@ Pravidla potlačení definují kritéria, pro která se mají automaticky odklá
 
 [![Stránka Azure Security Center výstrahy zabezpečení s možnostmi potlačení výstrah](media/alerts-suppression-rules/alerts-screen-with-options.png)](media/alerts-suppression-rules/alerts-screen-with-options.png#lightbox)
 
-## <a name="creating-a-suppression-rule"></a>Vytvoření pravidla potlačení
+## <a name="create-a-suppression-rule"></a>Vytvoření pravidla potlačení
 
 Existuje několik způsobů, jak můžete vytvořit pravidla pro potlačení upozornění na nechtěné zabezpečení:
 
@@ -89,13 +89,13 @@ Postup vytvoření pravidla přímo v Azure Portal:
 
 1. Uložte pravidlo. 
 
-## <a name="editing-suppression-rules"></a>Úprava pravidel potlačení
+## <a name="edit-a-suppression-rules"></a>Úprava pravidel potlačení
 
 Pokud chcete upravit pravidla, která jste vytvořili, použijte stránku pravidla potlačení.
 
 1. Na stránce výstrahy zabezpečení Security Center v horní části stránky vyberte odkaz **pravidla potlačení** .
 
-1. Na stránce Pravidla potlačení se otevře seznam všech dostupných pravidel podle aktuálně vybraných předplatných. 
+1. Otevře se stránka pravidla potlačení se všemi pravidly pro vybraná předplatná.
 
     [![Seznam pravidel potlačení](media/alerts-suppression-rules/suppression-rules-page.png)](media/alerts-suppression-rules/suppression-rules-page.png#lightbox)
 
@@ -103,13 +103,13 @@ Pokud chcete upravit pravidla, která jste vytvořili, použijte stránku pravid
 
 1. Proveďte potřebné změny a vyberte **použít**. 
 
-## <a name="deleting-suppression-rules"></a>Odstraňují se pravidla potlačení.
+## <a name="delete-a-suppression-rule"></a>Odstranění pravidla potlačení
 
 Pokud chcete odstranit jedno nebo více pravidel, která jste vytvořili, použijte stránku pravidla potlačení.
 
 1. Na stránce výstrahy zabezpečení Security Center v horní části stránky vyberte odkaz **pravidla potlačení** .
 
-1. Na stránce Pravidla potlačení se otevře seznam všech dostupných pravidel podle aktuálně vybraných předplatných. 
+1. Otevře se stránka pravidla potlačení se všemi pravidly pro vybraná předplatná.
 
 1. Pokud chcete odstranit jedno pravidlo, otevřete nabídku se třemi tečkami (...) pro pravidlo a vyberte **Odstranit**.
 
@@ -117,7 +117,7 @@ Pokud chcete odstranit jedno nebo více pravidel, která jste vytvořili, použi
 
     ![Odstranění jednoho nebo více pravidel potlačení](media/alerts-suppression-rules/delete-multiple-alerts.png)
 
-## <a name="viewing-alerts-that-have-been-suppressed"></a>Zobrazení výstrah, které byly potlačeny
+## <a name="view-suppressed-alerts"></a>Zobrazit potlačené výstrahy
 
 Budou se vygenerovat i výstrahy, které odpovídají povoleným pravidlům potlačení, ale jejich **stav se nastaví**na zastaveno. Můžete zobrazit stav v Azure Portal, nebo máte přístup k výstrahám zabezpečení Security Center. 
 
@@ -131,7 +131,7 @@ Pomocí filtru Security Center můžete zobrazit výstrahy, které vaše pravidl
    [![Zobrazení odeslaných výstrah](media/alerts-suppression-rules/view-dismissed-alerts.png)](media/alerts-suppression-rules/view-dismissed-alerts.png#lightbox)
 
 
-## <a name="using-the-api-to-create-and-manage-suppression-rules"></a>Vytvoření a Správa pravidel potlačení pomocí rozhraní API
+## <a name="create-and-manage-suppression-rules-with-the-api"></a>Vytváření a Správa pravidel potlačení pomocí rozhraní API
 
 Pravidla pro potlačení výstrah můžete vytvořit, zobrazit nebo odstranit pomocí REST API Security Center. 
 

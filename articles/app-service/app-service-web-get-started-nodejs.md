@@ -1,29 +1,29 @@
 ---
-title: 'Rychlý Start: Vytvoření webové aplikace v Node. js'
-description: Nasaďte první Hello World Node. js do Azure App Service v řádu minut. Nasadíte pomocí Visual Studio Code, což je jedním z mnoha způsobů, jak nasadit do App Service.
+title: 'Rychlý Start: Vytvoření webové aplikace v Node.js'
+description: Nasaďte první Node.js Hello World do Azure App Service v řádu minut. Nasadíte pomocí Visual Studio Code, což je jedním z mnoha způsobů, jak nasadit do App Service.
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.topic: quickstart
 ms.date: 03/04/2020
 ms.custom: mvc, devcenter, seodec18
-ms.openlocfilehash: df1e0809c0122eae593543cd193a6477b03d0938
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 4f08068e0920eb8a9e93fbbf91cb352bb8860fe3
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "82690794"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84905914"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Vytvoření webové aplikace Node.js ve službě Azure 
 
-Začněte s Azure App Service vytvořením aplikace Node. js/Express místně pomocí Visual Studio Code a pak nasazením aplikace do cloudu. Vzhledem k tomu, že používáte bezplatnou App Service úroveň, nebudete mít k dokončení tohoto rychlého startu žádné náklady.
+Začněte s Azure App Service vytvořením aplikace Node.js/Express místně pomocí Visual Studio Code a pak nasazením aplikace do cloudu. Vzhledem k tomu, že používáte bezplatnou App Service úroveň, nebudete mít k dokončení tohoto rychlého startu žádné náklady.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-app-service-extension&mktingSource=vscode-tutorial-app-service-extension).
-- [Node.js a npm](https://nodejs.org) Spusťte příkaz `node --version` a ověřte, zda je Node. js nainstalován.
+- [Node.js a npm](https://nodejs.org) Spusťte příkaz `node --version` a ověřte, zda je nainstalován Node.js.
 - [Visual Studio Code](https://code.visualstudio.com/).
 - [Azure App Service rozšíření](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice) pro Visual Studio Code.
 
-## <a name="clone-and-run-a-local-nodejs-application"></a>Klonování a spuštění místní aplikace Node. js
+## <a name="clone-and-run-a-local-nodejs-application"></a>Klonování a spuštění místní Node.jsové aplikace
 
 1. V místním počítači otevřete terminál a naklonujte ukázkové úložiště:
 
@@ -52,7 +52,7 @@ Začněte s Azure App Service vytvořením aplikace Node. js/Express místně po
 
 ## <a name="deploy-the-app-to-azure"></a>Nasadit aplikaci do Azure
 
-V této části nasadíte aplikaci Node. js do Azure pomocí VS Code a rozšíření Azure App Service.
+V této části nasadíte Node.js aplikaci do Azure pomocí VS Code a rozšíření Azure App Service.
 
 1. V terminálu se ujistěte, že jste ve složce *NodeJS-docs-Hello-World* , a pak spusťte Visual Studio Code s následujícím příkazem:
 
@@ -77,7 +77,7 @@ V této části nasadíte aplikaci Node. js do Azure pomocí VS Code a rozšíř
 
 1. Zadejte globálně jedinečný název vaší webové aplikace a stiskněte klávesu **ENTER**. Název musí být jedinečný ve všech Azure a používat pouze alfanumerické znaky (A-Z, a-z a ' 0-9 ') a spojovníky (-).
 
-1. Pokud se zaměřujete na Linux, po zobrazení výzvy vyberte verzi Node. js. Doporučuje se verze **LTS** .
+1. Pokud cílíte na Linux, po zobrazení výzvy vyberte verzi Node.js. Doporučuje se verze **LTS** .
 
 1. Pokud cílíte na systém Windows, postupujte podle dalších pokynů:
     1. Vyberte **vytvořit novou skupinu prostředků**a potom zadejte název skupiny prostředků, například `AppServiceQS-rg` .
@@ -96,7 +96,7 @@ V této části nasadíte aplikaci Node. js do Azure pomocí VS Code a rozšíř
 
 1. Pokud nasazujete na Linux, vyberte **Procházet web** v příkazovém řádku a po dokončení nasazení si můžete hned nasazenou webovou aplikaci zobrazit. V prohlížeči by se měl zobrazit Hello World!
 
-1. Pokud nasazujete do systému Windows, musíte nejprve nastavit číslo verze Node. js pro webovou aplikaci:
+1. Pokud nasazujete do systému Windows, musíte nejdřív nastavit Node.js číslo verze webové aplikace:
 
     1. V VS Code rozbalte uzel pro novou službu App Service, klikněte pravým tlačítkem myši na **nastavení aplikace**a vyberte **Přidat nové nastavení...**:
 
@@ -155,7 +155,13 @@ Můžete zobrazit výstup protokolu (volání `console.log` ) z aplikace přímo
 
 Blahopřejeme, úspěšně jste dokončili tento rychlý Start.
 
-Pak se podívejte na další rozšíření Azure.
+> [!div class="nextstepaction"]
+> [Kurz: Node.js aplikace pomocí MongoDB](app-service-web-tutorial-nodejs-mongodb-app.md)
+
+> [!div class="nextstepaction"]
+> [Konfigurace aplikace Node.js](configure-language-nodejs.md)
+
+Podívejte se na další rozšíření Azure.
 
 * [Databáze Cosmos](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb)
 * [Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
@@ -164,3 +170,4 @@ Pak se podívejte na další rozšíření Azure.
 * [Nástroje Azure Resource Manager](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
 
 Nebo si je můžete stáhnout instalací sady [Node Pack pro rozšíření Azure](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) Extension Pack.
+

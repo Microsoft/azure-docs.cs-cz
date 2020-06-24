@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
 ms.openlocfilehash: f2b454e812db1eea686f82e92841163f1129b6c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267622"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84694803"
 ---
 # <a name="troubleshoot-storsimple-device-deployment-issues"></a>Řešení potíží s nasazením zařízení StorSimple
 ## <a name="overview"></a>Přehled
@@ -82,7 +82,7 @@ V následujících tabulkách jsou uvedeny běžné chyby, se kterými se může
 ## <a name="errors-during-the-optional-web-proxy-settings"></a>Chyby při nastavení volitelného webového proxy serveru
 | Ne. | Chybová zpráva | Možné příčiny | Doporučená akce |
 | --- | --- | --- | --- |
-| 1 |Invoke-HcsSetupWizard: neplatný parametr (výjimka z HRESULT: 0x80070057) |Jeden z parametrů poskytnutých pro nastavení proxy serveru není platný. |Identifikátor URI není k dispozici ve správném formátu. Použijte následující formát: http://*\<IP adresa nebo plně kvalifikovaný název domény webového proxy server>*:*\<číslo portu TCP>* |
+| 1 |Invoke-HcsSetupWizard: neplatný parametr (výjimka z HRESULT: 0x80070057) |Jeden z parametrů poskytnutých pro nastavení proxy serveru není platný. |Identifikátor URI není k dispozici ve správném formátu. Použijte následující formát: http:// *\<IP address or FQDN of the web proxy server>* :*\<TCP port number>* |
 | 2 |Invoke-HcsSetupWizard: Server RPC není k dispozici (výjimka z HRESULT: 0x800706ba). |Hlavní příčinou je jedna z následujících:<ol><li>Cluster není zapnutý.</li><li>Pasivní kontroler nemůže komunikovat s aktivním řadičem a příkaz se spustí z pasivního kontroleru.</li></ol> |V závislosti na hlavní příčině:<ol><li>[Kontaktujte podpora Microsoftu](storsimple-8000-contact-microsoft-support.md) , abyste se ujistili, že cluster je v clusteru.</li><li>Spusťte příkaz z aktivního řadiče. Pokud chcete spustit příkaz z pasivního kontroleru, budete muset zajistit, aby pasivní řadič mohl komunikovat s aktivním řadičem. Pokud je toto připojení přerušeno, budete muset [kontaktovat podpora Microsoftu](storsimple-8000-contact-microsoft-support.md) .</li></ol> |
 | 3 |Invoke-HcsSetupWizard: RPC – neúspěšné volání (výjimka z HRESULT: 0X800706be) |Cluster je mimo provoz. |[Kontaktujte podpora Microsoftu](storsimple-8000-contact-microsoft-support.md) , abyste se ujistili, že cluster je v clusteru. |
 | 4 |Invoke-HcsSetupWizard: prostředek clusteru se nenašel (výjimka z HRESULT: 0x8007138f). |Prostředek clusteru se nenašel. K tomu může dojít v případě, že instalace nebyla správná. |Možná budete muset zařízení obnovit do výchozího továrního nastavení. Pokud chcete vytvořit prostředek clusteru, obraťte se na [Podpora Microsoftu](storsimple-8000-contact-microsoft-support.md) . |
@@ -139,7 +139,7 @@ K registraci zařízení použijete službu StorSimple Device Manager spuštěno
 | 9 |Upozornění: nepovedlo se aktivovat zařízení. Hesla správce zařízení a StorSimple Snapshot Manager hesla se nezměnila. |Pokud se registrace nepovede, hesla správce zařízení a StorSimple Snapshot Manager se nezmění. | |
 
 ## <a name="tools-for-troubleshooting-storsimple-deployments"></a>Nástroje pro řešení potíží s nasazeními StorSimple
-StorSimple zahrnuje několik nástrojů, které můžete použít k řešení potíží s řešením StorSimple. Mezi ně patří:
+StorSimple zahrnuje několik nástrojů, které můžete použít k řešení potíží s řešením StorSimple. Zde jsou některé z nich:
 
 * Podporuje balíčky a protokoly zařízení.
 * Rutiny navržené speciálně pro řešení potíží.
@@ -173,7 +173,7 @@ K detekci chyb připojení použijte následující rutiny Windows PowerShellu.
 * `Test-Connection`: Pomocí této rutiny můžete ověřit síťové připojení v síti i mimo ni.
 * `Test-HcsmConnection`: Pomocí této rutiny můžete ověřit připojení zařízení, které se úspěšně zaregistrovalo.
 * `Sync-HcsTime`: Tuto rutinu použijte k zobrazení času zařízení a vynucení synchronizace času se serverem NTP.
-* `Enable-HcsPing`a `Disable-HcsPing`: Tyto rutiny použijte, pokud chcete hostitelům dovolit testovat síťová rozhraní na zařízení StorSimple. Ve výchozím nastavení nereagují síťová rozhraní StorSimple na požadavky příkazů k zadání požadavku.
+* `Enable-HcsPing`a `Disable-HcsPing` : Tyto rutiny použijte, pokud chcete hostitelům dovolit testovat síťová rozhraní na zařízení StorSimple. Ve výchozím nastavení nereagují síťová rozhraní StorSimple na požadavky příkazů k zadání požadavku.
 * `Trace-HcsRoute`: Tuto rutinu použijte jako nástroj pro trasování tras. Odesílá pakety do každého směrovače způsobem až do konečného cíle v časovém intervalu a pak vypočítá výsledky na základě paketů vrácených z jednotlivých segmentů. Vzhledem `Trace-HcsRoute` k tomu, že se v jakémkoli směrovači nebo propojení zobrazuje stupeň ztrát paketů, můžete určit, které směrovače nebo odkazy můžou způsobovat problémy se sítí.
 * `Get-HcsRoutingTable`: Pomocí této rutiny můžete zobrazit tabulku směrování místní IP adresy.
 
@@ -181,7 +181,7 @@ K detekci chyb připojení použijte následující rutiny Windows PowerShellu.
 Když nakonfigurujete síťová rozhraní pro nasazení na první zařízení, stav hardwaru není dostupný v uživatelském rozhraní služby StorSimple Device Manager, protože zařízení ještě není zaregistrované ve službě. Kromě toho okno **stav hardwaru** nemusí vždy správně odrážet stav zařízení, zejména v případě, že dochází k problémům, které mají vliv na synchronizaci služby. V těchto situacích můžete použít `Get-NetAdapter` rutinu k určení stavu a stavu síťových rozhraní.
 
 ### <a name="to-see-a-list-of-all-the-network-adapters-on-your-device"></a>Zobrazení seznamu všech síťových adaptérů v zařízení
-1. Spusťte Windows PowerShell pro StorSimple a potom zadejte `Get-NetAdapter`. 
+1. Spusťte Windows PowerShell pro StorSimple a potom zadejte `Get-NetAdapter` . 
 2. Použijte výstup `Get-NetAdapter` rutiny a následující pokyny pro pochopení stavu síťového rozhraní.
    
    * Pokud je rozhraní v pořádku a povoleno, **zobrazí se stav** **ifIndex** .
@@ -491,7 +491,7 @@ Chyba může být způsobena některou z následujících příčin:
 * Nesprávná nastavení brány firewall
 
 ### <a name="to-locate-and-fix-the-device-registration-problem"></a>Vyhledání a oprava potíží s registrací zařízení
-1. Ověřte konfiguraci zařízení: na aktivním řadiči spusťte `Invoke-HcsSetupWizard`příkaz.
+1. Ověřte konfiguraci zařízení: na aktivním řadiči spusťte příkaz `Invoke-HcsSetupWizard` .
    
    > [!NOTE]
    > Průvodce instalací nástroje musí běžet na aktivním řadiči. Pokud chcete ověřit, jestli jste připojení k aktivnímu řadiči, podívejte se na banner prezentovaný v konzole sériového portu. Banner označuje, zda jste připojeni k řadiči 0 nebo řadiči 1 a zda je řadič aktivní nebo pasivní. Další informace najdete [v poznámkách k identifikaci aktivního řadiče na zařízení](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device).

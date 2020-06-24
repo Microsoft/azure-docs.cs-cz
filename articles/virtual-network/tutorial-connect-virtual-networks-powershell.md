@@ -9,18 +9,18 @@ Customer intent: I want to connect two virtual networks so that virtual machines
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: ''
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: caa620c2389bb6e2387636bc262ceb2de99d8e34
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e040938cd0bde127d3ae36819b978ad4e56ded4a
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77201284"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84703430"
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-powershell"></a>Propojení virtuálních sítí s využitím partnerského vztahu virtuálních sítí pomocí PowerShellu
 
@@ -33,7 +33,7 @@ Virtuální sítě můžete mezi sebou propojit s využitím partnerského vztah
 * Nasazení virtuálního počítače do obou virtuálních sítí
 * Komunikace mezi virtuálními počítači
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -129,7 +129,7 @@ Vytvořte v obou virtuálních sítích virtuální počítač, abyste mezi nimi
 
 ### <a name="create-the-first-vm"></a>Vytvoření prvního virtuálního počítače
 
-Vytvořte virtuální počítač pomocí [New-AzVM](/powershell/module/az.compute/new-azvm). Následující příklad vytvoří virtuální počítač s názvem *myVm1* ve virtuální síti *myVirtualNetwork1* . `-AsJob` Možnost vytvoří virtuální počítač na pozadí, takže můžete pokračovat k dalšímu kroku. Po zobrazení výzvy zadejte uživatelské jméno a heslo, pomocí kterých se chcete přihlásit k virtuálnímu počítači.
+Vytvořte virtuální počítač pomocí [New-AzVM](/powershell/module/az.compute/new-azvm). Následující příklad vytvoří virtuální počítač s názvem *myVm1* ve virtuální síti *myVirtualNetwork1* . `-AsJob`Možnost vytvoří virtuální počítač na pozadí, takže můžete pokračovat k dalšímu kroku. Po zobrazení výzvy zadejte uživatelské jméno a heslo, pomocí kterých se chcete přihlásit k virtuálnímu počítači.
 
 ```azurepowershell-interactive
 New-AzVm `

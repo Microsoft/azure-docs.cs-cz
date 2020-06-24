@@ -5,12 +5,12 @@ description: Přečtěte si, jak aktualizovat nebo resetovat přihlašovací úd
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: 8420771e32aa792aa79a07fdf4362ad0d9b45d48
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 914e043e2c0cf39c18480b5ca5e34332398806f4
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81392633"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84905370"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>Aktualizace nebo otočení přihlašovacích údajů pro službu Azure Kubernetes (AKS)
 
@@ -20,9 +20,9 @@ Cluster AKS můžete také [integrovat s Azure Active Directory][aad-integration
 
 Alternativně můžete místo instančního objektu použít spravovanou identitu pro oprávnění. Spravované identity je snazší spravovat než instanční objekty a nevyžadují aktualizace a rotace. Další informace najdete v tématu [použití spravovaných identit](use-managed-identity.md).
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
-Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.65 nebo novější. Verzi `az --version` zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
+Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.65 nebo novější.  `az --version`Verzi zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
 
 ## <a name="update-or-create-a-new-service-principal-for-your-aks-cluster"></a>Aktualizace nebo vytvoření nového instančního objektu pro cluster AKS
 
@@ -33,7 +33,7 @@ Pokud chcete aktualizovat přihlašovací údaje pro cluster AKS, můžete se ro
 
 ### <a name="reset-existing-service-principal-credential"></a>Resetovat existující pověření instančního objektu
 
-Pokud chcete aktualizovat přihlašovací údaje pro existující instanční objekt, Získejte ID objektu služby vašeho clusteru pomocí příkazu [AZ AKS show][az-aks-show] . Následující příklad získá ID pro cluster s názvem *myAKSCluster* ve skupině prostředků *myResourceGroup* . ID instančního objektu se nastaví jako proměnná s názvem *SP_ID* pro použití v dalším příkazu.
+Pokud chcete aktualizovat přihlašovací údaje pro existující instanční objekt, Získejte ID objektu služby vašeho clusteru pomocí příkazu [AZ AKS show][az-aks-show] . Následující příklad získá ID pro cluster s názvem *myAKSCluster* ve skupině prostředků *myResourceGroup* . ID instančního objektu se nastaví jako proměnná s názvem *SP_ID* pro použití v dalším příkazu. Tyto příkazy používají syntaxi bash.
 
 ```azurecli-interactive
 SP_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster \

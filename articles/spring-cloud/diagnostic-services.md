@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
-ms.openlocfilehash: 83b223ab2195516492d55ac85be6e7db0dffbd98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 57850b45820ec259337a8ad5b67bfebfd6762c24
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176783"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84790581"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Analýza protokolů a metrik pomocí nastavení diagnostiky
 
@@ -28,7 +28,7 @@ Vyberte kategorii protokolu a kategorii metrik, které chcete monitorovat.
 
 ## <a name="logs"></a>Protokoly
 
-|Protokol | Popis |
+|Protokol | Description |
 |----|----|
 | **ApplicationConsole** | Protokol konzoly všech zákaznických aplikací. |
 | **SystemLogs** | V současné době se v této kategorii v této kategorii jenom protokoly [jarního cloudového konfiguračního serveru](https://cloud.spring.io/spring-cloud-config/reference/html/#_spring_cloud_config_server) . |
@@ -105,7 +105,7 @@ Existují různé způsoby, jak zobrazit protokoly a metriky, jak je popsáno v 
     | limit 50
     ```
 > [!NOTE]
-> `==`rozlišuje velká a malá písmena `=~` , ale není.
+> `==`rozlišuje velká a malá písmena, ale není `=~` .
 
 Další informace o dotazovacím jazyku, který se používá v Log Analytics, najdete v tématu [Azure monitor protokolování dotazů](../azure-monitor/log-query/query-language.md).
 
@@ -174,3 +174,31 @@ AppPlatformLogsforSpring
 ### <a name="learn-more-about-querying-application-logs"></a>Další informace o dotazování protokolů aplikací
 
 Azure Monitor poskytuje rozsáhlou podporu pro dotazování protokolů aplikací pomocí Log Analytics. Další informace o této službě najdete v tématu [Začínáme s dotazy protokolu v Azure monitor](../azure-monitor/log-query/get-started-queries.md). Další informace o vytváření dotazů k analýze protokolů aplikací najdete v tématu [Přehled dotazů protokolu v Azure monitor](../azure-monitor/log-query/log-query-overview.md).
+
+## <a name="frequently-asked-questions-faq"></a>Nejčastější dotazy
+
+### <a name="how-to-convert-multi-line-java-stack-traces-into-a-single-line"></a>Jak převést víceřádkové trasování Java stacku na jeden řádek?
+
+Je k dispozici alternativní řešení pro převod trasování víceřádkového zásobníku na jeden řádek. Výstup protokolu Java můžete upravit tak, aby přeformátoval zprávy o trasování zásobníku a nahradili znaky nového řádku tokenem. Pokud používáte knihovnu Java Logback Library, můžete přeformátovat zprávy trasování zásobníku přidáním `%replace(%ex){'[\r\n]+', '\\n'}%nopex` následujícím způsobem:
+
+```xml
+<configuration>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>
+                level: %level, message: "%logger{36}: %msg", exceptions: "%replace(%ex){'[\r\n]+', '\\n'}%nopex"%n
+            </pattern>
+        </encoder>
+    </appender>
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+</configuration>
+```
+Pak můžete token nahradit znovu znaky nového řádku v Log Analytics následujícím způsobem:
+
+```sql
+AppPlatformLogsforSpring
+| extend Log = array_strcat(split(Log, '\\n'), '\n')
+```
+Můžete použít stejnou strategii pro jiné knihovny protokolů jazyka Java.

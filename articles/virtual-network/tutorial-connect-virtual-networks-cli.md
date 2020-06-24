@@ -9,18 +9,18 @@ Customer intent: I want to connect two virtual networks so that virtual machines
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: aa2d75173b14e768a207336b54b3dc10a8c3ea5c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b8c226d083c75d50639e7036de938626ca81a5ee
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80235165"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84703445"
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-the-azure-cli"></a>Propojení virtuálních sítí s využitím partnerského vztahu virtuálních sítí pomocí Azure CLI
 
@@ -31,7 +31,7 @@ Virtuální sítě můžete mezi sebou propojit s využitím partnerského vztah
 * Nasazení virtuálního počítače do obou virtuálních sítí
 * Komunikace mezi virtuálními počítači
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -126,7 +126,7 @@ Vytvořte v obou virtuálních sítích virtuální počítač, abyste mezi nimi
 
 ### <a name="create-the-first-vm"></a>Vytvoření prvního virtuálního počítače
 
-Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm). Následující příklad vytvoří virtuální počítač s názvem *myVm1* ve virtuální síti *myVirtualNetwork1* . Pokud ve výchozím umístění klíčů ještě neexistují klíče SSH, příkaz je vytvoří. Chcete-li použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`. `--no-wait` Možnost vytvoří virtuální počítač na pozadí, takže můžete pokračovat k dalšímu kroku.
+Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm). Následující příklad vytvoří virtuální počítač s názvem *myVm1* ve virtuální síti *myVirtualNetwork1* . Pokud ve výchozím umístění klíčů ještě neexistují klíče SSH, příkaz je vytvoří. Chcete-li použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`. `--no-wait`Možnost vytvoří virtuální počítač na pozadí, takže můžete pokračovat k dalšímu kroku.
 
 ```azurecli-interactive
 az vm create \

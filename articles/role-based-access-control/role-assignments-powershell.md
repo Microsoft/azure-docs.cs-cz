@@ -8,18 +8,18 @@ manager: mtillman
 ms.assetid: 9e225dba-9044-4b13-b573-2f30d77925a9
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: db6b38f142254fa1812f34674e6a870629713d7e
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 46aea9ab113a0c75ed24497ee39793d08c4f7165
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735653"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84790887"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-azure-powershell"></a>Přidání nebo odebrání přiřazení rolí Azure pomocí Azure PowerShell
 
@@ -36,7 +36,7 @@ Chcete-li přidat nebo odebrat přiřazení rolí, je nutné mít následující
 
 ## <a name="get-object-ids"></a>Získat ID objektů
 
-Pokud chcete přidat nebo odebrat přiřazení rolí, možná budete muset zadat jedinečné ID objektu. ID má formát: `11111111-1111-1111-1111-111111111111`. ID můžete získat pomocí Azure Portal nebo Azure PowerShell.
+Pokud chcete přidat nebo odebrat přiřazení rolí, možná budete muset zadat jedinečné ID objektu. ID má formát: `11111111-1111-1111-1111-111111111111` . ID můžete získat pomocí Azure Portal nebo Azure PowerShell.
 
 ### <a name="user"></a>Uživatel
 
@@ -112,7 +112,7 @@ K přidání přiřazení role pomocí jedinečného ID role místo názvu role 
 New-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionId <role_id> -ResourceGroupName <resource_group_name>
 ```
 
-Následující příklad přiřadí roli [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor) k *Alain\@uživatele example.com* v oboru skupiny prostředků *Pharma-Sales* . Pokud chcete získat jedinečné ID role, můžete použít [příkaz Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) nebo si přečtěte si [předdefinované role Azure](built-in-roles.md).
+Následující příklad přiřadí roli [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor) k *Alain uživatele \@ example.com* v oboru skupiny prostředků *Pharma-Sales* . Pokud chcete získat jedinečné ID role, můžete použít [příkaz Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) nebo si přečtěte si [předdefinované role Azure](built-in-roles.md).
 
 ```Example
 PS C:\> New-AzRoleAssignment -ObjectId 44444444-4444-4444-4444-444444444444 -RoleDefinitionId 9980e02c-c2be-4d73-94e8-173b1dc7cf3c -Scope /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales
@@ -207,7 +207,7 @@ CanDelegate        : False
 
 Pokud chcete v Azure RBAC odebrat přístup, odeberte přiřazení role pomocí funkce [Remove-AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment).
 
-Následující příklad odebere přiřazení role *Přispěvatel virtuálních počítačů* z uživatele *Alain\@example.com* ve skupině prostředků *Pharma-Sales* :
+Následující příklad odebere přiřazení role *Přispěvatel virtuálních počítačů* z uživatele *Alain \@ example.com* ve skupině prostředků *Pharma-Sales* :
 
 ```Example
 PS C:\> Remove-AzRoleAssignment -SignInName alain@example.com -RoleDefinitionName "Virtual Machine Contributor" -ResourceGroupName pharma-sales
@@ -225,7 +225,7 @@ Následující příklad odebere <role_name> role ze <object_id> v oboru skupiny
 Remove-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionName <role_name> -Scope /providers/Microsoft.Management/managementGroups/<group_id>
 ```
 
-Pokud se zobrazí chybová zpráva: "zadané informace nejsou namapovány na přiřazení role", ujistěte se, že jste zadali také parametry `-Scope` nebo. `-ResourceGroupName` Další informace najdete v tématu [řešení potíží s Azure RBAC](troubleshooting.md#role-assignments-with-identity-not-found).
+Pokud se zobrazí chybová zpráva: "zadané informace nejsou namapovány na přiřazení role", ujistěte se, že jste zadali také `-Scope` `-ResourceGroupName` parametry nebo. Další informace najdete v tématu [řešení potíží s Azure RBAC](troubleshooting.md#role-assignments-with-identity-not-found).
 
 ## <a name="next-steps"></a>Další kroky
 

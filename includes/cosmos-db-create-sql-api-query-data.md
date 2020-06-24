@@ -8,26 +8,26 @@ ms.topic: include
 ms.date: 04/05/2019
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: 408fb2c40e645d9a8b10f1e04d282e134c5489a1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 609b62312329b3a8f9f16d15458a0a47f5eb377f
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80501687"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85115199"
 ---
 K načtení a filtrování dat můžete použít dotazy v Průzkumník dat.
 
-1. V horní části karty **položky** v Průzkumník dat zkontrolujte výchozí dotaz `SELECT * FROM c`. Tento dotaz načte a zobrazí všechny dokumenty z kontejneru seřazené podle ID. 
+1. V horní části karty **položky** v Průzkumník dat zkontrolujte výchozí dotaz `SELECT * FROM c` . Tento dotaz načte a zobrazí všechny dokumenty z kontejneru seřazené podle ID. 
    
-   ![Výchozí dotaz v Průzkumníku dat je „SELECT * FROM c“](./media/cosmos-db-create-sql-api-query-data/azure-cosmosdb-data-explorer-query.png)
+   :::image type="content" source="./media/cosmos-db-create-sql-api-query-data/azure-cosmosdb-data-explorer-query.png" alt-text="Výchozí dotaz v Průzkumník dat je SELECT * FROM c":::
    
-1. Chcete-li změnit dotaz, vyberte možnost **Upravit filtr**, nahraďte výchozí `ORDER BY c._ts DESC`dotaz hodnotou a potom vyberte možnost **použít filtr**.
+1. Chcete-li změnit dotaz, vyberte možnost **Upravit filtr**, nahraďte výchozí dotaz hodnotou `ORDER BY c._ts DESC` a potom vyberte možnost **použít filtr**.
    
-   ![Změna výchozího dotazu přidáním „ORDER BY c._ts DESC“ a kliknutím na Použít filtr](./media/cosmos-db-create-sql-api-query-data/azure-cosmosdb-data-explorer-edit-query.png)
+   :::image type="content" source="./media/cosmos-db-create-sql-api-query-data/azure-cosmosdb-data-explorer-edit-query.png" alt-text="Změna výchozího dotazu přidáním „ORDER BY c._ts DESC“ a kliknutím na Použít filtr":::
 
    Upravený dotaz zobrazuje dokumenty v sestupném pořadí podle jejich časového razítka, takže teď je druhý dokument uvedený jako první. 
    
-   ![Dotaz se změnil na ORDER BY c. _ts DESC a klikněte na použít filtr.](./media/cosmos-db-create-sql-api-query-data/azure-cosmosdb-data-explorer-edited-query.png)
+   :::image type="content" source="./media/cosmos-db-create-sql-api-query-data/azure-cosmosdb-data-explorer-edited-query.png" alt-text="Dotaz se změnil na ORDER BY c. _ts DESC a klikněte na použít filtr.":::
 
 Pokud jste obeznámeni se syntaxí SQL, můžete do pole predikátu dotazu zadat všechny podporované [dotazy SQL](../articles/cosmos-db/sql-api-sql-query.md) . Průzkumník dat můžete použít také k vytváření uložených procedur, UDF a triggerů pro serverovou obchodní logiku. 
 

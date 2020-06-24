@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 9384b974463c963cc130e7ca0d4a9ee815a92e53
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 34f55d628b4e334df4b3e74edfd3c0defbdeaa93
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647717"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85114237"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Vysvětlení informací na faktuře za službu Azure Cosmos DB
 
@@ -73,7 +73,7 @@ Pokud zvýšíte zřízenou propustnost pro kontejner nebo sadu kontejnerů v 9:
 
 * Za měsíc 720 hodin (24 hodin × 30 dní), pokud po dobu 500 hodin zřídila 1 200 propustnost RU/s a 220 zbývající hodin zajištěné propustnosti byl 22 200 RU/s, vaše měsíční faktura vám ukáže: 500 x $0.096/Hour + 220 × $1.776/Hour = $438.72/měsíc.
 
-![Příklad vyhrazené faktury za propustnost](./media/understand-your-bill/bill-example1.png)
+:::image type="content" source="./media/understand-your-bill/bill-example1.png" alt-text="Příklad vyhrazené faktury za propustnost":::
 
 ### <a name="billing-example-containers-with-shared-throughput-mode"></a>Příklad fakturace: kontejnery se sdíleným režimem propustnosti
 
@@ -87,7 +87,7 @@ Pokud zvýšíte zřízenou propustnost pro kontejner nebo sadu kontejnerů v 9:
 
 * Za měsíc 720 hodin, pokud po dobu 300 hodin zřídila 120 propustnost-K RU/s a 420 zbývající hodin zajištěné propustnosti byly 155-K RU/s, bude vaše měsíční vyúčtování obsahovat: 300 x $9.60/Hour + 420 × $12.40/Hour = $2 880 + $5 208 = $8088/měsíc. 
 
-![Příklad sdílené propustnosti na faktuře](./media/understand-your-bill/bill-example2.png)
+:::image type="content" source="./media/understand-your-bill/bill-example2.png" alt-text="Příklad sdílené propustnosti na faktuře":::
 
 ## <a name="billing-examples-with-geo-replication-and-multi-master"></a>Příklady fakturace s geografickou replikací a s více hlavními servery  
 
@@ -177,7 +177,7 @@ Pojďme vzít v úvahu následující příklad, kde máme účet Azure Cosmos s
 
 Vizuálně na následujícím obrázku vidíte změny v celkové zřízené propustnosti během 720 hodin v měsíci: 
 
-![Příklad reálného života](./media/understand-your-bill/bill-example3.png)
+:::image type="content" source="./media/understand-your-bill/bill-example3.png" alt-text="Příklad reálného života":::
 
 Celková fakturovaná částka bude (za za 30 dní/720 hodin za měsíc) se vypočítává takto:
 

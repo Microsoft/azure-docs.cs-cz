@@ -6,18 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/12/2020
-ms.openlocfilehash: 2627cd540efe644315e303337b7dce95a6e2d126
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 4edcb22ed6bd33b1174354cf0cbb9a590e35c207
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832040"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84906883"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Monitorování řešení v Azure Monitor
-
-Monitorování řešení využívajících služby v Azure poskytují další přehled o provozu konkrétní aplikace nebo služby. Tento článek poskytuje stručný přehled řešení monitorování v Azure a podrobnosti o jejich používání a instalaci.
-
-Můžete přidat řešení monitorování Azure Monitor pro všechny aplikace a služby, které používáte. Jsou obvykle k dispozici zdarma, ale shromažďují data, která by mohla vyvolat poplatky za využití. Kromě řešení poskytovaných společností Microsoft můžou partneři a zákazníci [vytvářet řešení pro správu](solutions-creating.md) , která se dají používat ve vlastním prostředí nebo zpřístupnit zákazníkům prostřednictvím komunity.
+Monitorování řešení využívajících služby v Azure k zajištění dalších analýz provozu určité aplikace nebo služby. Tento článek poskytuje stručný přehled řešení monitorování v Azure a podrobnosti o jejich používání a instalaci. Můžete přidat řešení monitorování Azure Monitor pro všechny aplikace a služby, které používáte. Jsou obvykle k dispozici zdarma, ale shromažďují data, která by mohla vyvolat poplatky za využití.
 
 ## <a name="use-monitoring-solutions"></a>Použití řešení monitorování
 

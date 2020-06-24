@@ -12,19 +12,19 @@ ms.custom:
 - mvc
 - mqtt
 - tracking-python
-ms.date: 10/17/2019
-ms.openlocfilehash: 53acb49e5e2be5b8ccf0c131a9219fdcf2baca47
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.date: 06/16/2020
+ms.openlocfilehash: f49f2156a6d0e1b5563145c00007746ef4a1bf51
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84607478"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84904907"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-python"></a>Rychlý Start: odeslání telemetrie ze zařízení do služby IoT Hub a její čtení pomocí back-endové aplikace (Python)
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
-V tomto rychlém startu odešlete telemetrii z aplikace simulovaného zařízení prostřednictvím Azure IoT Hub do back-endové aplikace ke zpracování. IoT Hub je služba Azure, která umožňuje ingestovat velké objemy telemetrických dat ze zařízení IoT do cloudu pro účely uložení nebo zpracování. V tomto rychlém startu se používá předem napsaná aplikace Python k odeslání telemetrie a nástroje CLI ke čtení telemetrie z centra. Před spuštěním těchto dvou aplikací vytvoříte centrum IoT a zaregistrujete v tomto centru zařízení.
+V tomto rychlém startu odešlete telemetrii z aplikace simulovaného zařízení prostřednictvím Azure IoT Hub do back-endové aplikace ke zpracování. IoT Hub je služba Azure, která umožňuje ingestovat velké objemy telemetrických dat ze zařízení IoT do cloudu pro účely uložení nebo zpracování. Tento rychlý Start používá dvě předem napsané aplikace Pythonu: jeden pro odeslání telemetrie a jednu pro přečtení telemetrie z centra. Před spuštěním těchto dvou aplikací vytvoříte centrum IoT a zaregistrujete v tomto centru zařízení.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -80,6 +80,20 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
     Tuto hodnotu použijete později v rychlém startu.
 
+1. K povolení back-endové aplikace pro připojení ke službě IoT Hub a k načtení zpráv budete potřebovat taky _koncový bod kompatibilní s Event Hubs_, _cestu kompatibilní s Event Hubs_a _primární klíč služby_ z vašeho centra IoT. Následující příkazy načtou tyto hodnoty pro centrum IoT:
+
+   **YourIoTHubName**: níže uvedený zástupný symbol nahraďte názvem, který zvolíte pro Centrum IoT.
+
+    ```azurecli-interactive
+    az iot hub show --query properties.eventHubEndpoints.events.endpoint --name {YourIoTHubName}
+
+    az iot hub show --query properties.eventHubEndpoints.events.path --name {YourIoTHubName}
+
+    az iot hub policy show --name service --query primaryKey --hub-name {YourIoTHubName}
+    ```
+
+    Poznamenejte si tyto tři hodnoty, které použijete později v rychlém startu.
+
 ## <a name="send-simulated-telemetry"></a>Odesílání simulovaných telemetrických dat
 
 Aplikace simulovaného zařízení se připojuje ke koncovému bodu vašeho centra IoT pro konkrétní zařízení a odesílá simulovaná telemetrická data o teplotě a vlhkosti vzduchu.
@@ -104,22 +118,40 @@ Aplikace simulovaného zařízení se připojuje ke koncovému bodu vašeho cent
 
     Následující snímek obrazovky ukazuje výstup, zatímco aplikace simulovaného zařízení odesílá telemetrická data do vašeho centra IoT:
 
-    ![Spuštění simulovaného zařízení](media/quickstart-send-telemetry-python/SimulatedDevice.png)
-
+    ![Spuštění simulovaného zařízení](media/quickstart-send-telemetry-python/simulated-device.png)
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Čtení telemetrických dat z centra
 
-Rozšíření IoT Hub CLI se může ve vaší službě IoT Hub připojit ke koncovému bodu **Události** na straně služby. Toto rozšíření přijímá zprávy ze zařízení do cloudu odesílané z vašeho simulovaného zařízení. Back-endová aplikace služby IoT Hub se obvykle spouští v cloudu, aby mohla přijímat a zpracovávat zprávy typu zařízení-cloud.
+Back-endová aplikace se připojí ke koncovému bodu **Events** na straně služby ve vašem centru IoT. Aplikace přijímá zprávy typu zařízení-cloud odeslané ze simulovaného zařízení. Back-endová aplikace služby IoT Hub se obvykle spouští v cloudu, aby mohla přijímat a zpracovávat zprávy typu zařízení-cloud.
 
-Ve službě Azure Cloud Shell spusťte následující příkazy a položku `YourIoTHubName` nahraďte názvem centra IoT:
+> [!NOTE]
+> Následující kroky používají synchronní ukázku **read_device_to_cloud_messages_sync. py**. Můžete provést stejný postup s asynchronní ukázkou, **read_device_to_cloud_messages_async. py**.
 
-```azurecli-interactive
-az iot hub monitor-events --hub-name {YourIoTHubName} --device-id MyPythonDevice 
-```
+1. V jiném okně místního terminálu přejděte do kořenové složky ukázkového projektu Python. Potom přejděte ke složce **iot-hub\Quickstarts\read-d2c-messages**.
 
-Následující snímek obrazovky ukazuje výstup, když rozšíření přijímá telemetrická data odesílaná simulovaným zařízením do centra:
+2. Otevřete soubor **read_device_to_cloud_messages_sync. py** v textovém editoru dle vašeho výběru. Aktualizujte následující proměnné a uložte provedené změny souboru.
 
-![Spuštění back-endové aplikace](media/quickstart-send-telemetry-python/ReadDeviceToCloud.png)
+    | Proměnná | Hodnota |
+    | -------- | ----------- |
+    | `EVENTHUB_COMPATIBLE_ENDPOINT` | Nahraďte hodnotu proměnné pomocí koncového bodu kompatibilního s Event Hubs, který jste si poznamenali dříve. |
+    | `EVENTHUB_COMPATIBLE_PATH`     | Nahraďte hodnotu proměnné cestou kompatibilní s Event Hubs, kterou jste si poznamenali dříve. |
+    | `IOTHUB_SAS_KEY`                | Nahraďte hodnotu proměnné primárním klíčem služby, který jste si poznamenali dříve. |
+
+3. V okně místního terminálu pomocí následujících příkazů nainstalujte požadované knihovny pro back-endovou aplikaci:
+
+    ```cmd/sh
+    pip install azure-eventhub
+    ```
+
+4. Spuštěním následujících příkazů v okně místního terminálu sestavte a spusťte back-endovou aplikaci:
+
+    ```cmd/sh
+    python read_device_to_cloud_messages_sync.py
+    ```
+
+    Následující snímek obrazovky ukazuje výstup, zatímco back-endová aplikace přijímá telemetrická data odeslaná simulovaným zařízením do centra:
+
+    ![Spuštění back-endové aplikace](media/quickstart-send-telemetry-python/read-device-to-cloud.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

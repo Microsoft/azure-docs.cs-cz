@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: 51660fb416aa9850381f515a3a31cc57519094b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fb080858ff6be98846c542844810cf976eb3f264
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "66256982"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117977"
 ---
 # <a name="azure-cosmos-db-query-cheat-sheets"></a>Azure Cosmos DB tahák dotazů
 
@@ -23,12 +23,12 @@ Vyberte si ze stažení velikosti Letter nebo a3.
 
 Pokud se chystáte tisknout na papír ve velikosti Letter (8,5 "x 11"), [Azure Cosmos DB Stáhněte tahák dotaz na velikost písmen](https://go.microsoft.com/fwlink/?LinkId=623215) .
 
-![Azure Cosmos DB dotazování tahák listů – velikost písmen, SQL API, JavaScript, MongoDB, Gremlin a rozhraní API pro tabulky dotazy a funkce](./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-letter.png)
+:::image type="content" source="./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-letter.png" alt-text="Azure Cosmos DB dotazování tahák listů – velikost písmen, SQL API, JavaScript, MongoDB, Gremlin a rozhraní API pro tabulky dotazy a funkce" border="false":::
 
 ## <a name="oversized-cheat-sheets"></a>Tahák tabulky s příliš velikostí
 Pokud chcete tisknout pomocí plotru nebo rozsáhlé tiskárny na papír ve formátu A3 (11,7 "x 16,5"), Stáhněte si [listy tahák dotazů Azure Cosmos DB na velikost a3](https://go.microsoft.com/fwlink/?linkid=870413) .
 
-![Azure Cosmos DB dotazů tahák dotazů – velikost a3, pomocí rozhraní SQL API, JavaScriptu, MongoDB, Gremlin a rozhraní API pro tabulky dotazů a funkcí](./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-a3.png)
+:::image type="content" source="./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-a3.png" alt-text="Azure Cosmos DB dotazů tahák dotazů – velikost a3, pomocí rozhraní SQL API, JavaScriptu, MongoDB, Gremlin a rozhraní API pro tabulky dotazů a funkcí" border="false":::
 
 ## <a name="next-steps"></a>Další kroky
 Další nápovědu k zápisu dotazů naleznete v následujících článcích:

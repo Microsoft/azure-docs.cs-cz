@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 254c912114e3f1c7a495f389bc6a6416cbde7e11
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 301f77d4eba7b1a63dd49de280de252bd9af1956
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77472447"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080483"
 ---
 # <a name="attach-a-cognitive-services-resource-to-a-skillset-in-azure-cognitive-search"></a>Připojení prostředku Cognitive Services k dovednosti v Azure Kognitivní hledání 
 
@@ -29,7 +29,7 @@ Azure Kognitivní hledání má závislost na Cognitive Services, včetně [poč
 
 + Azure Kognitivní hledání využívá klíč prostředků Cognitive Services, který zadáte na dovednosti k fakturaci na obrázek a obohacení textu. Při provádění fakturovatelných dovedností se používá [Cognitive Services cena](https://azure.microsoft.com/pricing/details/cognitive-services/)za průběžné platby.
 
-+ Extrakce imagí je operace Azure Kognitivní hledání, ke které dochází, když se dokumenty před obohacením procházejí. Extrakce obrázků je fakturovatelná. Ceny za extrakci imagí najdete na [stránce s cenami pro Azure kognitivní hledání](https://go.microsoft.com/fwlink/?linkid=2042400).
++ Extrakce imagí je operace Azure Kognitivní hledání, ke které dochází, když se dokumenty před obohacením procházejí. Extrakce obrázků je fakturovatelná. Ceny za extrakci imagí najdete na [stránce s cenami pro Azure kognitivní hledání](https://azure.microsoft.com/pricing/details/search/).
 
 + K extrakci textu dojde také během fráze pro trhliny dokumentu. Není fakturovatelná.
 
@@ -108,7 +108,7 @@ Pokud máte existující dovednosti, můžete ho připojit k novému nebo jiném
 
 ## <a name="attach-cognitive-services-programmatically"></a>Připojit Cognitive Services programově
 
-Při programovém definování dovednosti přidejte do dovednosti `cognitiveServices` oddíl. V této části zahrňte klíč Cognitive Services prostředku, který chcete přidružit k dovednosti. Pamatujte, že prostředek musí být ve stejné oblasti jako prostředek služby Azure Kognitivní hledání. Také zahrňte `@odata.type`a nastavte na `#Microsoft.Azure.Search.CognitiveServicesByKey`.
+Při programovém definování dovednosti přidejte do `cognitiveServices` dovednosti oddíl. V této části zahrňte klíč Cognitive Services prostředku, který chcete přidružit k dovednosti. Pamatujte, že prostředek musí být ve stejné oblasti jako prostředek služby Azure Kognitivní hledání. Také zahrňte `@odata.type` a nastavte na `#Microsoft.Azure.Search.CognitiveServicesByKey` .
 
 Následující příklad ukazuje tento model. Všimněte si `cognitiveServices` oddílu na konci definice.
 

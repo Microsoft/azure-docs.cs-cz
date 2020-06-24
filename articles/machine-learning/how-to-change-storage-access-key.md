@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 03/06/2020
-ms.openlocfilehash: 0444ffd27b3a261268f04f0077cca3116521e6f7
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.date: 06/19/2020
+ms.openlocfilehash: 911fa7d509e756f482b2deefad11e35f9cb5ec01
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84484515"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117943"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>Znovu vygenerovat přístupové klíče účtu úložiště
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -85,7 +85,7 @@ Chcete-li aktualizovat Azure Machine Learning pro použití nového klíče, pou
 
 1. Znovu vygenerujte klíč. Informace o opětovném generování přístupového klíče najdete v tématu [Správa přístupových klíčů účtu úložiště](../storage/common/storage-account-keys-manage.md). Uložte nový klíč.
 
-1. Pokud chcete pracovní prostor aktualizovat tak, aby používal nový klíč, použijte následující postup:
+1. Pracovní prostor Azure Machine Learning automaticky provede synchronizaci nového klíče a začne ho používat po celou hodinu. Pokud chcete přinutit, aby se pracovní prostor automaticky synchronizoval k novému klíči, použijte následující postup:
 
     1. Přihlaste se k předplatnému Azure, které obsahuje váš pracovní prostor, pomocí následujícího příkazu Azure CLI:
 

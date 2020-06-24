@@ -7,17 +7,17 @@ author: asudbring
 manager: KumudD
 ms.service: virtual-network
 ms.subservice: ip-services
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: allensu
-ms.openlocfilehash: a7b1e7471f7850f71596317c7e2c38db367bfd3a
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 03a619a647da247347492076e9fd36414565bf33
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790078"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84703138"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-powershell"></a>Vytvoření virtuálního počítače se statickou veřejnou IP adresou pomocí PowerShellu
 
@@ -29,14 +29,14 @@ Můžete vytvořit virtuální počítač se statickou veřejnou IP adresou. Ve�
 
 Následující kroky můžete provést z místního počítače nebo pomocí Azure Cloud Shell. Pokud chcete použít místní počítač, ujistěte se, že máte [nainstalovanou Azure PowerShell](/powershell/azure/install-az-ps?toc=%2fazure%2fvirtual-network%2ftoc.json). Pokud chcete použít Azure Cloud Shell, vyberte **vyzkoušet** v pravém horním rohu libovolného příkazového řádku, který následuje. Cloud Shell vás přihlásí k Azure.
 
-1. Pokud používáte Cloud Shell, přejděte ke kroku 2. Otevřete relaci příkazu a přihlaste se k `Connect-AzAccount`Azure pomocí.
+1. Pokud používáte Cloud Shell, přejděte ke kroku 2. Otevřete relaci příkazu a přihlaste se k Azure pomocí `Connect-AzAccount` .
 2. Vytvořte skupinu prostředků pomocí příkazu [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) . Následující příklad vytvoří skupinu prostředků v Východní USA oblasti Azure:
 
    ```azurepowershell-interactive
    New-AzResourceGroup -Name myResourceGroup -Location EastUS
    ```
 
-3. Vytvořte virtuální počítač pomocí příkazu [New-AzVM](/powershell/module/az.Compute/New-azVM) . `-AllocationMethod "Static"` Možnost přiřadí virtuálnímu počítači STATICKOU veřejnou IP adresu. Následující příklad vytvoří virtuální počítač s Windows serverem se statickou veřejnou IP adresou SKU s názvem *myPublicIpAddress*. Po zobrazení výzvy zadejte uživatelské jméno a heslo, které se použije jako přihlašovací údaje pro virtuální počítač:
+3. Vytvořte virtuální počítač pomocí příkazu [New-AzVM](/powershell/module/az.Compute/New-azVM) . `-AllocationMethod "Static"`Možnost přiřadí virtuálnímu počítači statickou veřejnou IP adresu. Následující příklad vytvoří virtuální počítač s Windows serverem se statickou veřejnou IP adresou SKU s názvem *myPublicIpAddress*. Po zobrazení výzvy zadejte uživatelské jméno a heslo, které se použije jako přihlašovací údaje pro virtuální počítač:
 
    ```azurepowershell-interactive
    New-AzVm `
