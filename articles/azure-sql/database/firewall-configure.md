@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
-ms.date: 03/18/2019
-ms.openlocfilehash: e9755c8a895dc441fc037a07dd36a1d1c07ce5fa
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.date: 06/17/2020
+ms.openlocfilehash: 19560c3746c67f8eb8ae789b3d6009e8f2fa74d3
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324551"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976808"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Pravidla brány firewall pro Azure SQL Database a Azure synapse
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -83,7 +83,7 @@ V tomto scénáři jsou osvědčené postupy určeny podle vašich potřeb a pro
 
 *Můžu používat kombinaci pravidel brány firewall na úrovni serveru i databáze?*
 
-Yes. Někteří uživatelé, třeba správci, můžou potřebovat pravidla brány firewall IP na úrovni serveru. Jiní uživatelé, například uživatelé databázové aplikace, můžou potřebovat pravidla brány firewall IP na úrovni databáze.
+Ano. Někteří uživatelé, třeba správci, můžou potřebovat pravidla brány firewall IP na úrovni serveru. Jiní uživatelé, například uživatelé databázové aplikace, můžou potřebovat pravidla brány firewall IP na úrovni databáze.
 
 ### <a name="connections-from-the-internet"></a>Připojení z Internetu
 
@@ -102,6 +102,14 @@ Pokud chcete aplikacím hostovaným v Azure povolit připojení k vašemu SQL se
 
 > [!IMPORTANT]
 > Tato možnost nakonfiguruje bránu firewall tak, aby povolovala všechna připojení z Azure, včetně připojení z předplatných jiných zákazníků. Pokud vyberete tuto možnost, ujistěte se, že vaše přihlašovací a uživatelská oprávnění omezují přístup jenom na autorizované uživatele.
+
+## <a name="permissions"></a>Oprávnění
+
+Aby bylo možné vytvářet a spravovat pravidla brány firewall protokolu IP pro SQL Server Azure, budete muset mít jednu z těchto možností:
+
+- v roli [přispěvatel SQL Server](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-server-contributor)
+- v roli [Správce zabezpečení SQL](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager)
+- vlastník prostředku, který obsahuje SQL Server Azure
 
 ## <a name="create-and-manage-ip-firewall-rules"></a>Vytvoření a Správa pravidel brány firewall protokolu IP
 

@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: 2f92c2b800c6d30cc5f365e6d24925a70d3db55a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257924"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84699902"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Nastavení zotavení po havárii do Azure pro místní fyzické servery
 
@@ -98,14 +98,14 @@ Na každém serveru, který chcete replikovat, musí být nainstalovaná služba
 Vyberte, co se má replikovat, a proveďte jejich replikaci do.
 
 1. Klikněte na **Trezory služby Recovery Services** > trezor.
-2. V nabídce prostředek klikněte na **Site Recovery** > **připravit** > **cíl ochrany**infrastruktury.
-3. V **cíli ochrany**vyberte možnost **To Azure** > **nevirtualizovaný/jiný**Azure.
+2. V nabídce prostředek klikněte na **Site Recovery**  >  **připravit**  >  **cíl ochrany**infrastruktury.
+3. V **cíli ochrany**vyberte možnost **To Azure**  >  **nevirtualizovaný/jiný**Azure.
 
 ## <a name="set-up-the-source-environment"></a>Nastavení zdrojového prostředí
 
 Nastavte konfigurační server, zaregistrujte ho v trezoru a vyhledejte virtuální počítače.
 
-1. Klikněte na **Site Recovery** > **připravit** > **zdroj**infrastruktury.
+1. Klikněte na **Site Recovery**  >  **připravit**  >  **zdroj**infrastruktury.
 2. Pokud nemáte konfigurační server, klikněte na **+ konfigurační server**.
 3. V nástroji **Přidat server**ověřte, že se **konfigurační server** zobrazuje v **typu serveru**.
 4. Stáhněte instalační soubor sjednocené instalace Site Recovery.
@@ -136,13 +136,13 @@ Chcete-li nainstalovat konfigurační server, spusťte sjednocené nastavení ja
 
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
-Po dokončení registrace se konfigurační server zobrazí na stránce **Nastavení** > **serverů** v trezoru.
+Po dokončení registrace se konfigurační server zobrazí na stránce **Nastavení**  >  **serverů** v trezoru.
 
 ## <a name="set-up-the-target-environment"></a>Nastavení cílového prostředí
 
 Vyberte a zkontrolujte cílové prostředky.
 
-1. Klikněte na **připravit** > **cíl**infrastruktury a vyberte předplatné Azure, které chcete použít.
+1. Klikněte na **připravit**  >  **cíl**infrastruktury a vyberte předplatné Azure, které chcete použít.
 2. Zadejte cílový model nasazení.
 3. Site Recovery zkontroluje, že máte minimálně jednu kompatibilní síť a účet úložiště Azure.
 
@@ -151,7 +151,7 @@ Vyberte a zkontrolujte cílové prostředky.
 
 ## <a name="create-a-replication-policy"></a>Vytvoření zásady replikace
 
-1. Pokud chcete vytvořit novou zásadu replikace, klikněte **na Site Recovery** > **zásady** > replikace infrastruktury**a zásady replikace**.
+1. Pokud chcete vytvořit novou zásadu replikace, klikněte na **Site Recovery**  >  **Zásady replikace**infrastruktury  >  **a zásady replikace**.
 2. V části **Vytvoření zásad replikace** zadejte název zásady.
 3. V části **Prahová hodnota cíle bodu obnovení** (RPO) zadejte omezení cíle bodu obnovení. Tato hodnota určuje, jak často se budou vytvářet body obnovení dat. Když průběžná replikace překročí tento limit, vygeneruje se upozornění.
 4. V části **Uchování bodu obnovení** zadejte (v hodinách), jak dlouhý je interval uchovávání dat pro jednotlivé body obnovení. Replikované virtuální počítače můžete v rámci okna uchování obnovit do libovolného časového bodu. Pro počítače replikované do úložiště úrovně Premium se podporuje uchování po dobu až 24 hodin. V případě úložiště úrovně Standard je to 72 hodin.
@@ -169,7 +169,7 @@ Povolte replikaci pro každý server.
 - Site Recovery nainstaluje službu mobility, když je povolená replikace.
 - Pokud povolíte replikaci pro server, může trvat 15 minut nebo déle, než se změny projeví a objeví se na portálu.
 
-1. Klikněte na **replikovat** > **zdroj**aplikace.
+1. Klikněte na **replikovat**  >  **zdroj**aplikace.
 2. V části **Zdroj** vyberte konfigurační server.
 3. V **typ počítače**vyberte **fyzické počítače**.
 4. Vyberte procesový Server (konfigurační server). Pak klikněte na **OK**.
@@ -178,12 +178,12 @@ Povolte replikaci pro každý server.
 7. Vyberte síť Azure a podsíť, ke kterým se připojí virtuální počítače Azure, když se po převzetí služeb při selhání vytvoří.
 8. Vyberte **nakonfigurovat pro vybrané počítače**a použijte nastavení sítě pro všechny počítače, které vyberete pro ochranu. Vyberte **Konfigurovat později** a vyberte síť Azure na jeden počítač. 
 9. Na **fyzických počítačích**klikněte na **+ fyzický počítač**. Zadejte název a IP adresu. Vyberte operační systém počítače, který chcete replikovat. Zjištění a vypsání serverů trvá několik minut. 
-10. V části **vlastnosti** > **Konfigurace vlastností**vyberte účet, který bude procesový Server používat k automatické instalaci služby mobility na počítači.
-11. V **Nastavení** > replikace**nakonfigurujte nastavení replikace**a ověřte, jestli je vybraná správná zásada replikace. 
-12. Klikněte na **Povolit replikaci**. Průběh úlohy **Povolení ochrany** můžete sledovat v části **Nastavení** > **úlohy** > **Site Recovery úlohy**. Po spuštění úlohy **Dokončit ochranu** je počítač připravený na převzetí služeb při selhání.
+10. V části **vlastnosti**  >  **Konfigurace vlastností**vyberte účet, který bude procesový Server používat k automatické instalaci služby mobility na počítači.
+11. V **nastavení replikace**  >  **nakonfigurujte nastavení replikace**a ověřte, jestli je vybraná správná zásada replikace. 
+12. Klikněte na **Povolit replikaci**. Průběh úlohy **Povolení ochrany** můžete sledovat v části **Nastavení**  >  **úlohy**  >  **Site Recovery úlohy**. Po spuštění úlohy **Dokončit ochranu** je počítač připravený na převzetí služeb při selhání.
 
 
-Chcete-li monitorovat servery, které jste přidali, můžete zjistit čas poslední zjištěné konfigurace v části **konfigurační servery** > **Poslední kontakt na**. Chcete-li přidat počítače bez čekání na naplánovaný čas zjišťování, zvýrazněte konfigurační server (neklikejte na něj) a klikněte na tlačítko **aktualizovat**.
+Chcete-li monitorovat servery, které jste přidali, můžete zjistit čas poslední zjištěné konfigurace v části **konfigurační servery**  >  **Poslední kontakt na**. Chcete-li přidat počítače bez čekání na naplánovaný čas zjišťování, zvýrazněte konfigurační server (neklikejte na něj) a klikněte na tlačítko **aktualizovat**.
 
 ## <a name="next-steps"></a>Další kroky
 

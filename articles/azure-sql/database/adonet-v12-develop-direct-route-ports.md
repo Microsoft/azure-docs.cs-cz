@@ -7,16 +7,16 @@ ms.subservice: development
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
-author: MightyPen
-ms.author: genemi
-ms.reviewer: sstein
-ms.date: 04/03/2019
-ms.openlocfilehash: 867db23521ea08641f538efe5279408343373336
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+author: stevestein
+ms.author: sstein
+ms.reviewer: genemi
+ms.date: 06/11/2020
+ms.openlocfilehash: 85d8d288a8b2d0f256294b0c8975afc367e6e381
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047892"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736046"
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>Porty nad 1433 pro ADO.NET 4.5
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -52,7 +52,7 @@ Zajistěte, aby byly rozsahy portů 11000-11999 na klientském počítači Azure
 * Konkrétně musí být porty v rozsahu bez jakéhokoli dalšího odchozího blokování.
 * Na VIRTUÁLNÍm počítači Azure řídí **Brána Windows Firewall s pokročilým zabezpečením** nastavení portů.
   
-  * Pomocí [uživatelského rozhraní brány firewall](https://msdn.microsoft.com/library/cc646023.aspx) můžete přidat pravidlo, pro které zadáte protokol **TCP** spolu s rozsahem portů s syntaxí, jako je **11000-11999**.
+  * Pomocí [uživatelského rozhraní brány firewall](/sql/sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access) můžete přidat pravidlo, pro které zadáte protokol **TCP** spolu s rozsahem portů s syntaxí, jako je **11000-11999**.
 
 ## <a name="version-clarifications"></a>Vyjasnění verzí
 
@@ -81,6 +81,6 @@ Tato část vysvětluje monikery, které odkazují na verze produktu. Obsahuje t
 
 * Připojení k Azure SQL Database V12 prostřednictvím přesměrováníhttps://techcommunity.microsoft.com/t5/DataCAT/Connect-to-Azure-SQL-Database-V12-via-Redirection/ba-p/305362
 
-* [Seznam verzí protokolu TDS](https://www.freetds.org/userguide/tdshistory.htm)
+* [Seznam verzí protokolu TDS](https://www.freetds.org/)
 * [Přehled vývoje SQL Database](develop-overview.md)
 * [Azure SQL Database firewall](firewall-configure.md)

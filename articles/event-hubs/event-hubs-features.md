@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: c16dd4345e62fa9e826e657cce9a752186ec1b82
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: bca8ccaf06fb63b9029b93a8c59a6304139c8ff1
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628653"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976876"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Funkce a terminologie ve službě Azure Event Hubs
 
@@ -56,7 +56,7 @@ Služba Event Hubs zajišťuje, aby se všechny události, které sdílejí hodn
 Služba Event Hubs umožňuje podrobnou kontrolu nad zdroji událostí prostřednictvím *zásad zdroje*. Zásady zdroje jsou běhové funkce, které byly navržené pro usnadnění kontroly nad velkým množstvím nezávislých zdrojů událostí. Zásady zdroje poskytují s použitím následujícího mechanismu každému zdroji vlastní identifikátor, který se používá při publikování událostí do centra událostí:
 
 ```http
-//[my namespace].servicebus.windows.net/[event hub name]/publishers/[my publisher name]
+//<my namespace>.servicebus.windows.net/<event hub name>/publishers/<my publisher name>
 ```
 
 Názvy zdrojů není potřeba vytvářet dopředu, při publikování události ale musí odpovídat tokenu SAS, aby se zajistilo, že každý zdroj bude mít nezávislou identitu. Při použití zásad zdroje se každému názvu zdroje nastaví hodnota **PartitionKey** (Klíč oddílu). Aby vše správně fungovalo, musí tyto hodnoty odpovídat.
@@ -85,12 +85,13 @@ V architektuře zpracování datového proudu se každá aplikace pro příjem d
 
 U oddílu na skupinu příjemců může existovat maximálně 5 souběžných čtecích zařízení. doporučuje se ale **, aby v oddílu na skupinu příjemců byl jenom jeden aktivní přijímač**. Každý čtenář v rámci jednoho oddílu obdrží všechny zprávy. Pokud máte na stejném oddílu více čtenářů, budete zpracovávat duplicitní zprávy. To je třeba zpracovat v kódu, který nemusí být triviální. V některých scénářích se ale jedná o platný přístup.
 
+Někteří klienti, kteří nabízejí sady Azure SDK, jsou inteligentní agenti pro zákazníky, kteří automaticky spravují podrobnosti o tom, že každý oddíl má jedno čtecí zařízení a že se z něj čtou všechny oddíly centra událostí. Díky tomu se váš kód může soustředit na zpracování událostí čtených z centra událostí, aby mohl ignorovat mnoho podrobností o těchto oddílech. Další informace najdete v tématu [připojení k oddílu](#connect-to-a-partition).
 
-Následují příklady konvenčního zápisu identifikátoru URI skupiny příjemců:
+Následující příklady znázorňují konvenci identifikátoru URI pro skupinu příjemců:
 
 ```http
-//[my namespace].servicebus.windows.net/[event hub name]/[Consumer Group #1]
-//[my namespace].servicebus.windows.net/[event hub name]/[Consumer Group #2]
+//<my namespace>.servicebus.windows.net/<event hub name>/<Consumer Group #1>
+//<my namespace>.servicebus.windows.net/<event hub name>/<Consumer Group #2>
 ```
 
 Následující obrázek znázorňuje architekturu zpracování datového proudu Event Hubs:
@@ -122,7 +123,12 @@ Všichni Event Hubs spotřebitelé se připojují prostřednictvím relace AMQP 
 
 #### <a name="connect-to-a-partition"></a>Připojení k oddílu
 
-Při přímém připojení k oddílům se obvykle používá mechanismus „pronájmu“, aby se připojení čtenářů ke konkrétním oddílům koordinovala. Díky tomu je možné mít u každého oddílu ve skupině příjemců pouze jednoho aktivního čtenáře. Použití kontrolních bodů, pronájem a správu čtenářů zjednodušuje použití třídy [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) pro klienty .NET. EventProcessorHost je inteligentní agent příjemce.
+Při připojování k oddílům je běžné použití mechanismu leasingu ke koordinaci připojení čtenářů ke konkrétním oddílům. Díky tomu je možné, že každý oddíl ve skupině příjemců má jenom jeden aktivní čtecí modul. Vytváření kontrolních bodů, zapůjčení a Správa čtenářů se zjednodušují pomocí klientů v rámci Event Hubs SDK, které fungují jako inteligentní agenti zákazníků. Jsou to:
+
+- [EventProcessorClient](/dotnet/api/azure.messaging.eventhubs.eventprocessorclient) pro .NET
+- [EventProcessorClient](/java/api/com.azure.messaging.eventhubs.eventprocessorclient) pro jazyk Java
+- [EventHubConsumerClient](/python/api/azure-eventhub/azure.eventhub.aio.eventhubconsumerclient) pro Python
+- [EventHubSoncumerClient](/javascript/api/@azure/event-hubs/eventhubconsumerclient) pro JavaScript/TypeScript
 
 #### <a name="read-events"></a>Čtení událostí
 
@@ -131,7 +137,7 @@ Po otevření připojení a relace AMQP 1.0 u konkrétního oddílu služba Even
 Data události:
 * Posun
 * Pořadové číslo
-* Tělo
+* Text
 * Uživatelské vlastnosti
 * Systémové vlastnosti
 
@@ -142,13 +148,11 @@ Správa posunu je na vás.
 Další informace o službě Event Hubs naleznete pod těmito odkazy:
 
 - Začínáme se službou Event Hubs
-    - [.NET Core](get-started-dotnet-standard-send-v2.md)
+    - [.NET](get-started-dotnet-standard-send-v2.md)
     - [Java](get-started-java-send-v2.md)
     - [Python](get-started-python-send-v2.md)
     - [JavaScript](get-started-java-send-v2.md)
 * [Průvodce programováním pro službu Event Hubs](event-hubs-programming-guide.md)
 * [Dostupnost a konzistence ve službě Event Hubs](event-hubs-availability-and-consistency.md)
 * [Nejčastější dotazy k Event Hubs](event-hubs-faq.md)
-* [Ukázky Event Hubs][]
-
-[Ukázky Event Hubs]: https://github.com/Azure/azure-event-hubs/tree/master/samples
+* [Ukázky Event Hubs](event-hubs-samples.md)

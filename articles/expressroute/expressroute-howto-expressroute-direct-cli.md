@@ -4,15 +4,15 @@ description: Tento článek vám pomůže nakonfigurovat ExpressRoute Direct pom
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/20/2019
 ms.author: cherylmc
-ms.openlocfilehash: dcca1417aec52fb4bf99d5c480d81995154a68b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 343b63f960ccc458b1b1603f924b890366982477
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79481972"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736267"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>Konfigurace ExpressRoute Direct pomocí Azure CLI
 
@@ -276,7 +276,7 @@ Tento postup použijte k provedení testu vrstvy 1. Ujistěte se, že každé p�
    }
    ```
 
-   Stejný postup použijte pro snížení portu pomocí `AdminState = "Disabled"`.
+   Stejný postup použijte pro snížení portu pomocí `AdminState = "Disabled"` .
 
 ## <a name="create-a-circuit"></a><a name="circuit"></a>Vytvoření okruhu
 

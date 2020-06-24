@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 143410f0bf0659161427f4b5391124f53f712972
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: d6aa1fc1e5978f59fc01dd41a89800629fa60ded
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611989"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84735094"
 ---
-# <a name="windows-10-enterprise-multi-session-faq"></a>Nejčastější dotazy k více relacím Windows 10 Enterprise
+# <a name="windows-10-enterprise-multi-session-faq"></a>Nejčastější dotazy k Windows 10 Enterprise pro více relací
 
 Tento článek obsahuje odpovědi na nejčastější dotazy a vysvětluje osvědčené postupy pro více relací Windows 10 Enterprise.
  
@@ -53,7 +53,7 @@ Pro Windows 10 Enterprise s více relacemi se aktuálně podporuje hybridní Azu
  
 ## <a name="where-can-i-find-the-windows-10-enterprise-multi-session-image"></a>Kde najdu image pro Windows 10 Enterprise s více relacemi?
 
-Víc relací Windows 10 Enterprise je v galerii Azure. Pokud ho chcete najít, přejděte na Azure Portal a vyhledejte verzi Windows 10 Enterprise pro virtuální počítače. Pro bitovou kopii integrovanou se sadou Office pro plus navštivte Azure Portal a vyhledejte Microsoft Windows 10 + Office 365 ProPlus.
+Víc relací Windows 10 Enterprise je v galerii Azure. Pokud ho chcete najít, přejděte na Azure Portal a vyhledejte verzi Windows 10 Enterprise pro virtuální počítače. Pro Image integrovanou s Microsoft 365 aplikacemi pro podniky použijte Azure Portal a vyhledejte aplikace **Microsoft Windows 10 + Microsoft 365 pro podniky**.
 
 ## <a name="which-windows-10-enterprise-multi-session-image-should-i-use"></a>Kterou image Windows 10 Enterprise pro více relací mám použít?
 
@@ -92,7 +92,7 @@ Aplikaci Microsoft Store můžete zakázat, abyste se ujistili, že uživatelé 
 Zakázání aplikace pro Store:
 
 1. Vytvoří nový Zásady skupiny.
-2. Vyberte **Konfigurace** > **počítače šablony pro správu** > **součásti systému Windows**.
+2. Vyberte **Konfigurace počítače**  >  **šablony pro správu**  >  **součásti systému Windows**.
 3. Vyberte **Store**.
 4. Vyberte **aplikace pro Store**.
 5. Vyberte **disabled (zakázáno**) a pak vyberte **OK**.

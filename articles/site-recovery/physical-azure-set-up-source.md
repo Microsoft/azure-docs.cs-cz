@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 07/03/2019
 ms.author: ramamill
 ms.openlocfilehash: 902c14211e91a1500c6b50cd790b347e337c4f70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257872"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84699919"
 ---
 # <a name="set-up-the-configuration-server-for-disaster-recovery-of-physical-servers-to-azure"></a>Nastavení konfiguračního serveru pro zotavení po havárii fyzických serverů do Azure
 
@@ -24,7 +24,7 @@ Tento článek popisuje, jak nastavit místní prostředí pro zahájení replik
 Článek předpokládá, že už máte:
 - Recovery Services trezor v [Azure Portal](https://portal.azure.com "portál Azure").
 - Fyzický počítač, na který se má nainstalovat konfigurační server
-- Pokud jste na počítači, na který instalujete konfigurační server, zakázali protokol TLS 1,0, zkontrolujte, zda je povolena možnost TLs 1,2 a zda je na počítači nainstalovaná verze .NET Framework 4,6 nebo novější (se zapnutým silným šifrováním). [Další informace](https://support.microsoft.com/help/4033999/how-to-resolve-azure-site-recovery-agent-issues-after-disabling-tls-1).
+- Pokud jste na počítači, na který instalujete konfigurační server, zakázali protokol TLS 1,0, zkontrolujte, zda je povolena možnost TLs 1,2 a zda je na počítači nainstalovaná verze .NET Framework 4,6 nebo novější (se zapnutým silným šifrováním). [Přečtěte si další informace](https://support.microsoft.com/help/4033999/how-to-resolve-azure-site-recovery-agent-issues-after-disabling-tls-1).
 
 ### <a name="configuration-server-minimum-requirements"></a>Minimální požadavky konfiguračního serveru
 Následující tabulka uvádí minimální požadavky na hardware, software a síť pro konfigurační server.
@@ -36,7 +36,7 @@ Následující tabulka uvádí minimální požadavky na hardware, software a s�
 ## <a name="choose-your-protection-goals"></a>Výběr cílů ochrany
 
 1. V Azure Portal otevřete okno trezory **Recovery Services** a vyberte svůj trezor.
-2. V nabídce **prostředků** trezoru klikněte na **Začínáme** > **Site Recovery** > **Krok 1: Příprava** > na**cíl ochrany**infrastruktury.
+2. V nabídce **prostředků** trezoru klikněte na **Začínáme**  >  **Site Recovery**  >  **Krok 1: Příprava**na  >  **cíl ochrany**infrastruktury.
 
     ![Zvolte cíle.](./media/physical-azure-set-up-source/choose-goals.png)
 3. V **cíli ochrany**vyberte **do Azure** a **nevirtualizovaný/jiný**a pak klikněte na **OK**.
@@ -63,7 +63,7 @@ Následující tabulka uvádí minimální požadavky na hardware, software a s�
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
 > [!NOTE]
-> Konfigurační server lze nainstalovat pomocí příkazového řádku. [Další informace](physical-manage-configuration-server.md#install-from-the-command-line).
+> Konfigurační server lze nainstalovat pomocí příkazového řádku. [Přečtěte si další informace](physical-manage-configuration-server.md#install-from-the-command-line).
 
 
 ## <a name="common-issues"></a>Běžné problémy

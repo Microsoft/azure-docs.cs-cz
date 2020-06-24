@@ -39,7 +39,7 @@ Kategorie **B2C** v protokolech auditu obsahuje následující typy aktivit:
 |Aplikace | Operace vytvoření, čtení, aktualizace a odstranění (CRUD) v aplikacích B2C. |
 |Klíč |Operace CRUD na klíčích uložených v kontejneru klíčů B2C |
 |Prostředek |Operace CRUD u prostředků B2C Například zásady a zprostředkovatelé identity.
-|Ověřování |Ověření přihlašovacích údajů uživatele a vystavení tokenu|
+|Authentication |Ověření přihlašovacích údajů uživatele a vystavení tokenu|
 
 Pro aktivity objektů CRUD uživatele se podívejte do kategorie **základní adresář** .
 

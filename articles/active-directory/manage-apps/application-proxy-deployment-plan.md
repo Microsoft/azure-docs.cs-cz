@@ -3,8 +3,8 @@ title: Plánování nasazení Proxy aplikací služby Azure Active Directory
 description: Komplexní průvodce plánováním nasazení aplikačního proxy serveru v rámci vaší organizace
 services: active-directory
 documentationcenter: azure
-author: barbaraselden
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.author: baselden
-ms.custom: has-adal-ref
-ms.openlocfilehash: 040ad734cdf3b2d382baa55006fbda02fdcf457d
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.author: kenwith
+ms.openlocfilehash: a1cf2b57665cad4dd09639579b42b29a288eeca1
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84169504"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84975567"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Plánování nasazení služby Azure Proxy aplikací služby AD
 
@@ -254,7 +253,7 @@ Načtěte si [jednotné přihlašování k aplikacím ve službě Azure AD](what
 
 ###  <a name="working-with-other-types-of-applications"></a>Práce s jinými typy aplikací
 
-Azure Proxy aplikací služby AD také podporuje aplikace vyvinuté pro použití knihovny Microsoft Authentication Library ([MSAL](https://azure.microsoft.com/blog/start-writing-applications-today-with-the-new-microsoft-authentication-sdks/)). Podporuje nativní klientské aplikace tím, že spotřebovávají vydané tokeny Azure AD obdržené v hlavičkových požadavcích klienta, aby prováděly předběžné ověřování jménem uživatelů.
+Azure Proxy aplikací služby AD také podporuje aplikace vyvinuté pro použití [knihovny Microsoft Authentication Library (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/v2-overview). Podporuje nativní klientské aplikace tím, že spotřebovávají vydané tokeny Azure AD obdržené v hlavičkových požadavcích klienta, aby prováděly předběžné ověřování jménem uživatelů.
 
 Další informace o dostupných konfiguracích proxy aplikací najdete v tématu [publikování nativních a mobilních klientských aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-native-client) a [aplikací založených na deklaracích](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-claims-aware-apps) .
 

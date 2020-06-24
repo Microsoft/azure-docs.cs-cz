@@ -1,18 +1,18 @@
 ---
 title: NCv2-Series – Azure Virtual Machines
 description: Specifikace pro virtuální počítače řady NCv2-Series.
-author: vikancha
+author: vikancha-MSFT
 ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 345a76f2c97d73c24526f3493f84af274876308c
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: b1710d239d1aa6c75c83c23c247e22ab452f7ea9
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84672290"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84735315"
 ---
 # <a name="ncv2-series"></a>Řada NCv2
 

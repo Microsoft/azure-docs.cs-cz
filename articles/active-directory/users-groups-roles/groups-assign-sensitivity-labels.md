@@ -8,18 +8,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/24/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e4dabad5057fda39fe3753c810a85e6aeb55b3a
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 32dad942cf79933b2c44d3bc2d23581ead1238d6
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582951"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84732748"
 ---
 # <a name="assign-sensitivity-labels-to-office-365-groups-in-azure-active-directory-preview"></a>Přiřazení popisků citlivosti skupinám Office 365 v Azure Active Directory (Preview)
 
@@ -68,7 +68,7 @@ Pokud chcete použít publikované popisky na skupiny, musíte ji nejdřív povo
     Set-AzureADDirectorySetting -Id $Setting.Id -DirectorySetting $Setting
     ```
 
-A to je vše. Tuto funkci jste povolili a můžete použít publikované popisky na skupiny.
+A je to! Tuto funkci jste povolili a můžete použít publikované popisky na skupiny.
 
 ## <a name="assign-a-label-to-a-new-group-in-azure-portal"></a>Přiřazení popisku nové skupině v Azure Portal
 

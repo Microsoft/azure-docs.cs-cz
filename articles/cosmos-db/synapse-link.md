@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 709b442fde94d88adc7fe4cce16ee1a50bf06c6b
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 1acb01ceb9747fa833e998bd5501ce8a8a51babb
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83674360"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85119456"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>Co je Azure synapse Link pro Azure Cosmos DB (Preview)?
 
@@ -25,7 +25,7 @@ Pomocí [Azure Cosmos DBho analytického úložiště](analytical-store-introduc
 
 Na následujícím obrázku vidíte integraci Azure Synapseu s využitím Azure Cosmos DB a Azure synapse Analytics: 
 
-![Diagram architektury pro integraci Azure synapse Analytics s Azure Cosmos DB](./media/synapse-link/synapse-analytics-cosmos-db-architecture.png)
+:::image type="content" source="./media/synapse-link/synapse-analytics-cosmos-db-architecture.png" alt-text="Diagram architektury pro integraci Azure synapse Analytics s Azure Cosmos DB" border="false":::
 
 ## <a name="benefits"></a><a id="synapse-link-benefits"></a>Výhodnější
 
@@ -105,7 +105,7 @@ Další informace o podpoře Azure synapse Analytics runtime pro Azure Cosmos DB
 
 Odkaz na synapse se doporučuje v následujících případech:
 
-* Pokud jste zákazníkem Azure Cosmos DB a chcete provozovat analýzy, BI a strojové učení přes vaše provozní data. V takových případech odkaz synapse poskytuje pokročilejší analytické prostředí, aniž by to ovlivnilo zřízenou propustnost transakčního úložiště. Například:
+* Pokud jste zákazníkem Azure Cosmos DB a chcete provozovat analýzy, BI a strojové učení přes vaše provozní data. V takových případech odkaz synapse poskytuje pokročilejší analytické prostředí, aniž by to ovlivnilo zřízenou propustnost transakčního úložiště. Příklad:
 
   * Pokud používáte analýzy nebo BI na vašich Azure Cosmos DB provozních datech přímo pomocí samostatných konektorů ještě dnes, nebo
 
@@ -134,12 +134,12 @@ Model fakturace propojení Azure synapse zahrnuje náklady vzniklé pomocí Azur
 
 Další informace najdete v následujících dokumentech:
 
-* [Přehled analýzy Azure Cosmos DBho úložiště](analytical-store-introduction.md)
+* [Přehled analytického úložiště Azure Cosmos DB](analytical-store-introduction.md)
 
-* [Začínáme s odkazem na Azure synapse pro Azure Cosmos DB](configure-synapse-link.md)
+* [Začínáme s Azure Synapse Linkem pro Azure Cosmos DB](configure-synapse-link.md)
  
-* [Co je podporováno v době běhu Azure synapse Analytics](../synapse-analytics/synapse-link/concept-synapse-link-cosmos-db-support.md)
+* [Co se podporuje v modulu runtime Azure Synapse Analytics](../synapse-analytics/synapse-link/concept-synapse-link-cosmos-db-support.md)
 
-* [Nejčastější dotazy týkající se služby Azure synapse Link pro Azure Cosmos DB](synapse-link-frequently-asked-questions.md)
+* [Nejčastější dotazy k Azure Synapse Linku pro Azure Cosmos DB](synapse-link-frequently-asked-questions.md)
 
-* [Odkaz na Azure synapse pro případy použití Azure Cosmos DB](synapse-link-use-cases.md)
+* [Případy použití Azure Synapse Linku pro Azure Cosmos DB](synapse-link-use-cases.md)

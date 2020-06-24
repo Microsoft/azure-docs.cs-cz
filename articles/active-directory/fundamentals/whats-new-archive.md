@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8fa352d81a6df70634c00978a3db155d5fb0d7e
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: d2242dc3a80287b36554298fa1a15afb894c9ac1
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84217003"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976196"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archivujte, co je nového v Azure Active Directory?
 
@@ -1658,7 +1658,7 @@ Ve schématu auditu se mění následující pole:
 |Název pole|Co se změnilo|Staré hodnoty|Nové hodnoty|
 |----------|------------|----------|----------|
 |Kategorie|Toto bylo pole **název služby** . Teď je to pole **kategorie auditu** . **Název služby** byl přejmenován na pole **loggedByService** .|<ul><li>Zřizování účtů</li><li>Základní adresář</li><li>Samoobslužné resetování hesla</li></ul>|<ul><li>Správa uživatelů</li><li>Správa skupin</li><li>Správa aplikací</li></ul>|
-|targetResources|Zahrnuje **TargetResourceType** na nejvyšší úrovni.|&nbsp;|<ul><li>Zásada</li><li>Aplikace</li><li>Uživatel</li><li>Skupina</li></ul>|
+|targetResources|Zahrnuje **TargetResourceType** na nejvyšší úrovni.|&nbsp;|<ul><li>Zásady</li><li>Aplikace</li><li>Uživatel</li><li>Skupina</li></ul>|
 |loggedByService|Poskytuje název služby, která vygenerovala protokol auditu.|Null|<ul><li>Zřizování účtů</li><li>Základní adresář</li><li>Samoobslužné resetování hesla</li></ul>|
 |Výsledek|Poskytuje výsledek protokolů auditu. Dřív byl tento výčet vyhodnocený, ale nyní zobrazujeme skutečnou hodnotu.|<ul><li>0</li><li>1</li></ul>|<ul><li>Úspěch</li><li>Selhání</li></ul>|
 
@@ -2094,8 +2094,6 @@ Další informace o aplikacích naleznete v tématu [SaaS Application Integratio
 **Zadejte:** Kategorie změněné **služby funkcí:** **schopnost produktu** proxy aplikace: Access Control
 
 Díky naší aktualizaci z OpenID se připojte k protokolu OAuth 2,0 Code pro náš protokol předběžného ověřování, už nemusíte provádět žádnou další konfiguraci, abyste mohli Tableau použít s proxy aplikací. Tato změna protokolu také pomáhá proxy aplikací lépe podporovat moderní aplikace pomocí pouze přesměrování HTTP, která jsou běžně podporována v jazycích JavaScript a HTML.
-
-Další informace o naší nativní podpoře pro Tableau najdete v tématu [Azure proxy aplikací služby AD nyní s nativní podporou Tableau](https://blogs.technet.microsoft.com/applicationproxyblog/2018/08/14/azure-ad-application-proxy-now-with-native-tableau-support).
 
 ---
 
@@ -3022,7 +3020,7 @@ Azure AD Connect je preferovaný nástroj pro synchronizaci dat mezi Azure AD a 
 
 Tato verze obsahuje následující aktualizace a změny:
 
-**Oprava potíží**
+**Opravené problémy**
 
 - Oprava okna časování na úkolech na pozadí pro stránku filtrování oddílů při přechodu na další stránku
 
@@ -3032,7 +3030,7 @@ Tato verze obsahuje následující aktualizace a změny:
 
 - Opravili jsme chybu, kdy se u certifikátů se zástupnými znaky sítě SAN nedaří ověřit kontrolu požadavků.
 
-- Opravili jsme chybu, která způsobí selhání MIIServer. exe během exportu konektoru AAD.
+- Opravili jsme chybu, která způsobuje miiserver.exe chyby během exportu konektoru AAD.
 
 - Opravili jsme chybu, při které se při spuštění do řadiče domény přihlásil špatný pokus o změnu konfigurace pomocí Průvodce AAD Connect.
 

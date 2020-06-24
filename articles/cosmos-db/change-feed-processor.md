@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 584fc48aad6a64f8df54088e6dbfd990e8e112e8
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 4325f75ac8181e088d64e53d3f65e085a09c0224
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655299"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85119405"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Procesor kanálu změn ve službě Azure Cosmos DB
 
@@ -23,19 +23,19 @@ Hlavní výhodou knihovny Change feed Processor je chování odolné proti chyb�
 
 ## <a name="components-of-the-change-feed-processor"></a>Součásti procesoru změny kanálu
 
-Existují čtyři hlavní součásti implementace procesoru Change feed:
+Implementace procesoru kanálu změn zahrnuje čtyři hlavní komponenty:
 
-1. **Monitorovaný kontejner:** Monitorovaný kontejner obsahuje data, ze kterých se generuje kanál změn. Jakékoli vložení a aktualizace monitorovaného kontejneru se projeví v kanálu změn kontejneru.
+1. **Monitorovaný kontejner:** Monitorovaný kontejner obsahuje data, ze kterých se kanál změn generuje. Jakékoli vložení nebo aktualizace v monitorovaném kontejneru se projeví v kanálu změn kontejneru.
 
-1. **Kontejner zapůjčení:** Kontejner zapůjčení funguje jako úložiště stavu a koordinuje zpracování kanálu změn napříč několika procesy. Kontejner zapůjčení může být uložený ve stejném účtu jako monitorovaný kontejner nebo v samostatném účtu.
+1. **Kontejner zapůjčení:** Kontejner zapůjčení funguje jako úložiště stavu a koordinuje zpracování kanálu změn mezi několika pracovními procesy. Kontejner zapůjčení může být uložený ve stejném účtu jako monitorovaný kontejner nebo v samostatném účtu.
 
-1. **Hostitel:** Hostitel je instance aplikace, která používá procesor změn kanálu k naslouchání změnám. Víc instancí se stejnou konfigurací zapůjčení můžete spustit paralelně, ale každá instance by měla mít jiný **název instance**.
+1. **Hostitel:** Hostitel je instance aplikace, která pomocí procesoru kanálu změn naslouchá změnám. Paralelně může být spuštěných více instancí se stejnou konfigurací zapůjčení, ale každá instance musí mít jiný **název instance**.
 
-1. **Delegát:** Delegát je kód, který definuje, co vy, vývojář, chcete dělat s každou dávkou změn, které má procesor Change feed načíst. 
+1. **Delegát:** Delegát je kód, který definuje, co jako vývojář chcete udělat s jednotlivými dávkami změn, které procesor kanálu změn načte. 
 
 Abychom lépe porozuměli tomu, jak tyto čtyři prvky procesoru Change feed fungují společně, Podívejme se na příklad v následujícím diagramu. Monitorovaný kontejner ukládá dokumenty a používá jako klíč oddílu "City". Zjistili jsme, že hodnoty klíčů oddílu jsou distribuované v oblastech, které obsahují položky. Existují dvě instance hostitele a procesor změn kanálu přiřazuje každé instanci různé rozsahy hodnot klíče oddílu, aby bylo možné maximalizovat výpočetní rozdělení. Každý rozsah je čten paralelně a jeho průběh se udržuje odděleně od jiných rozsahů v kontejneru zapůjčení.
 
-![Ukázka změny procesoru kanálu](./media/change-feed-processor/changefeedprocessor.png)
+:::image type="content" source="./media/change-feed-processor/changefeedprocessor.png" alt-text="Ukázka změny procesoru kanálu" border="false":::
 
 ## <a name="implementing-the-change-feed-processor"></a>Implementace procesoru změny kanálu
 
@@ -56,7 +56,7 @@ Volání vám `Build` poskytne instanci procesoru, kterou můžete spustit volá
 
 ## <a name="processing-life-cycle"></a>Životní cyklus zpracování
 
-Normální životní cyklus instance hostitele je:
+Normální životní cyklus instance hostitele je následující:
 
 1. Přečtěte si kanál změn.
 1. Pokud nedošlo k žádným změnám, přejdete do režimu spánku v předdefinovaném čase (dá se přizpůsobit `WithPollInterval` v Tvůrci) a přejdete na #1.
@@ -83,7 +83,7 @@ Jak je uvedeno dříve, v rámci jednotky nasazení můžete mít jednu nebo ví
 
 1. Všechny instance musí mít stejnou konfiguraci kontejneru zapůjčení.
 1. Všechny instance by měly být stejné `processorName` .
-1. Každá instance musí mít jiný název instance ( `WithInstanceName` ).
+1. Každá instance musí mít jiný název instance (`WithInstanceName`).
 
 Pokud platí tyto tři podmínky, bude procesor změn s použitím stejného distribučního algoritmu distribuovat všechna zapůjčení do kontejneru zapůjčení ve všech spuštěných instancích této jednotky nasazení a paralelizovat Compute. Jednu zapůjčenou adresu může vlastnit jenom jedna instance v daném okamžiku, takže maximální počet instancí se rovná počtu zapůjčení.
 

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 113b72ddf7e5d508c8a0b577d4004d4fbd83e8e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267583"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84699103"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8100-device"></a>Rozbalení, připojení k racku a zapojení zařízení StorSimple 8100
 
@@ -27,7 +27,7 @@ Následující kroky poskytují jasné a podrobné pokyny k rozbalení úložné
 ### <a name="prepare-to-unpack-your-device"></a>Příprava na rozbalení zařízení
 Před rozbalením zařízení si přečtěte následující informace.
 
-![Ikona](./media/storsimple-safety/IC740879.png)![upozornění velké váhy ikona](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) **Upozornění!**
+![Ikona upozornění ](./media/storsimple-safety/IC740879.png)![ velké váhy ikona ](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) **Upozornění!**
 
 1. Ujistěte se, že máte k dispozici dvě lidi, abyste mohli spravovat váhu skříně, pokud ji zpracováváte ručně. Plně nakonfigurovaná skříň může vážit až 32 kg (70 kg).
 2. Umístěte krabici na rovný povrch.
@@ -42,7 +42,7 @@ Dále proveďte následující kroky a rozbalte své zařízení.
    
     **Nebalené zobrazení úložného zařízení**
    
-   | Popisek | Popis |
+   | Popisek | Description |
    | --- | --- |
    |   1 |Expediční box |
    |   2 |Spodní pěna |
@@ -83,7 +83,7 @@ Zařízení musí být nainstalované na standardu 19 palců, který obsahuje ob
 2. Ověřte, že lokalita, kde máte v úmyslu nastavit, má standardní sílu napájení z nezávislého zdroje nebo jednotky PDU napájení (AC) s nepřerušitelným zdrojem napájení (UPS).
 3. Ujistěte se, že je na stojanu, ve kterém chcete zařízení připojit, jeden slot 2U.
 
-![Ikona](./media/storsimple-safety/IC740879.png)![upozornění velké váhy ikona](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) **Upozornění!**
+![Ikona upozornění ](./media/storsimple-safety/IC740879.png)![ velké váhy ikona ](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) **Upozornění!**
 
 Ujistěte se, že máte ke správě váhy k dispozici dvě osoby, pokud spouštíte ruční nastavení zařízení. Plně nakonfigurovaná skříň může vážit až 32 kg (70 kg).
 
@@ -104,7 +104,7 @@ K dispozici je sada montážní kolejnice, která se používá pro skříň na 
 
     **Připojení vnitřních vlakových snímků ke stěnám skříně**
    
-    Popisek | Popis
+    Popisek | Description
     ----- | -----------
     1     | M 3x4 tlačítka – šrouby hlav
     2     | Snímky skříní
@@ -118,7 +118,7 @@ K dispozici je sada montážní kolejnice, která se používá pro skříň na 
    
     **Připojení vnějších železničních sestavení k stojanu**
    
-   | Popisek | Popis |
+   | Popisek | Description |
    | --- | --- |
    |   1 |Montážní šroub |
    |   2 |Šroubový prstenec na druhou stranu |
@@ -144,7 +144,7 @@ Pomocí následujících kroků připojte zařízení v racku a použijte přito
    
     **Instalace Cap k přírubám**
    
-   | Popisek | Popis |
+   | Popisek | Description |
    | --- | --- |
    |   1 |Šroub uzávěrky skříně |
 
@@ -184,7 +184,7 @@ Pro podporu tohoto redundantního převzetí služeb při selhání je potřeba 
    
     **Zpět zařízení, které zobrazuje datové porty**
    
-   | Popisek | Popis |
+   | Popisek | Description |
    | --- | --- |
    |   0, 1, 4, 5 |Síťová rozhraní 1 GbE |
    |   2, 3 |Síťová rozhraní 10 GbE |
@@ -195,7 +195,7 @@ Pro podporu tohoto redundantního převzetí služeb při selhání je potřeba 
 
     **Síťové kabely pro vaše zařízení**
 
-   |Popisek | Popis |
+   |Popisek | Description |
    |----- | ----------- |
    | A    | SÍŤ LAN s přístupem k Internetu |
    | B    | Kontroler 0 |

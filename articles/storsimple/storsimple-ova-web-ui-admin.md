@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 12/1/2016
 ms.author: alkohli
 ms.openlocfilehash: 92671206a4171ca838423f55b526191ef30e5c35
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254726"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84699018"
 ---
 # <a name="use-the-web-ui-to-administer-your-storsimple-virtual-array"></a>Správa virtuálního pole StorSimple pomocí webového uživatelského rozhraní
 ![průběh procesu nastavení](./media/storsimple-ova-web-ui-admin/manage4.png)
@@ -40,7 +40,7 @@ Tento článek obsahuje následující návody:
 Pokud jste svůj šifrovací klíč dat služby nastavili a potřebujete ho načíst, proveďte následující kroky v místním webovém uživatelském rozhraní zařízení zaregistrovaného ve vaší službě.
 
 #### <a name="to-get-the-service-data-encryption-key"></a>Získání šifrovacího klíče dat služby
-1. Připojte se k místnímu webovému uživatelskému rozhraní. Přejít na **Configuration** > **Nastavení cloudu**konfigurace.
+1. Připojte se k místnímu webovému uživatelskému rozhraní. Přejít na **Configuration**  >  **Nastavení cloudu**konfigurace.
 2. V dolní části stránky klikněte na **získat šifrovací klíč dat služby**. Zobrazí se klíč. Zkopírujte a uložte tento klíč.
    
     ![získat šifrovací klíč dat služby 1](./media/storsimple-ova-web-ui-admin/image27.png)
@@ -49,7 +49,7 @@ Pokud jste svůj šifrovací klíč dat služby nastavili a potřebujete ho nač
 V některých případech, kdy nakonfigurujete zařízení prostřednictvím místního webového uživatelského rozhraní, může dojít k chybám. Chcete-li diagnostikovat a řešit tyto chyby, můžete spustit diagnostické testy.
 
 #### <a name="to-run-the-diagnostic-tests"></a>Spuštění diagnostických testů
-1. V místním webovém uživatelském rozhraní si přečtěte **Poradce při potížích s** > **diagnostickými testy**.
+1. V místním webovém uživatelském rozhraní si přečtěte **Poradce při potížích s**  >  **diagnostickými testy**.
    
     ![spustit diagnostiku 1](./media/storsimple-ova-web-ui-admin/image29.png)
 2. V dolní části stránky klikněte na **Spustit diagnostické testy**. Tím se zahájí testy pro diagnostiku všech možných problémů se sítí, zařízením, webovým proxy serverem, časem nebo nastavením cloudu. Budete upozorněni na to, že zařízení spouští testy.
@@ -61,7 +61,7 @@ V některých případech, kdy nakonfigurujete zařízení prostřednictvím mí
 Balíček protokolu se skládá ze všech relevantních protokolů, které vám můžou pomoct podpora Microsoftu s řešením potíží s problémy v zařízeních. V této verzi se dá balíček protokolu vygenerovat prostřednictvím místního webového uživatelského rozhraní.
 
 #### <a name="to-generate-the-log-package"></a>Vygenerování balíčku protokolu
-1. V místním webovém uživatelském rozhraní si přečtěte **řešení potíží** > se**systémovými protokoly**.
+1. V místním webovém uživatelském rozhraní si přečtěte **řešení potíží**se  >  **systémovými protokoly**.
    
     ![generovat protokolový balíček 1](./media/storsimple-ova-web-ui-admin/image31.png)
 2. V dolní části stránky klikněte na **vytvořit balíček protokolu**. Vytvoří se balíček systémových protokolů. Tato akce bude trvat několik minut.
@@ -80,7 +80,7 @@ Balíček protokolu se skládá ze všech relevantních protokolů, které vám 
 Virtuální zařízení můžete vypnout nebo restartovat pomocí místního webového uživatelského rozhraní. Doporučujeme, abyste před restartováním převedli svazky nebo sdílené složky do režimu offline na hostiteli a pak na zařízení. Tím se minimalizuje jakákoli možnost poškození dat. 
 
 #### <a name="to-shut-down-your-virtual-device"></a>Vypnutí virtuálního zařízení
-1. V místním webovém uživatelském rozhraní přejdete na **Maintenance** > **nastavení napájení**údržby.
+1. V místním webovém uživatelském rozhraní přejdete na **Maintenance**  >  **nastavení napájení**údržby.
 2. V dolní části stránky klikněte na tlačítko **vypnout**.
    
     ![vypnutí zařízení 1](./media/storsimple-ova-web-ui-admin/image36.png)
@@ -95,7 +95,7 @@ Virtuální zařízení můžete vypnout nebo restartovat pomocí místního web
     Zařízení se teď vypne. Pokud chcete zařízení spustit, budete ho muset udělat přes Správce technologie Hyper-V.
 
 #### <a name="to-restart-your-virtual-device"></a>Restartování virtuálního zařízení
-1. V místním webovém uživatelském rozhraní přejdete na **Maintenance** > **nastavení napájení**údržby.
+1. V místním webovém uživatelském rozhraní přejdete na **Maintenance**  >  **nastavení napájení**údržby.
 2. V dolní části stránky klikněte na **restartovat**.
    
     ![restartování zařízení](./media/storsimple-ova-web-ui-admin/image36.png)

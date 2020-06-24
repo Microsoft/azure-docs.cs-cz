@@ -5,15 +5,15 @@ services: event-hubs
 author: spelluru
 manager: ''
 ms.author: spelluru
-ms.date: 03/31/2020
+ms.date: 06/23/2020
 ms.topic: article
 ms.service: event-hubs
-ms.openlocfilehash: b4d9dc51451a06b2c87ddce78547655b51c6fabd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b7486c251784b345351669bda6f0eb2309977728
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81729628"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85297456"
 ---
 # <a name="apache-kafka-developer-guide-for-azure-event-hubs"></a>Apache Kafka příručka pro vývojáře pro Azure Event Hubs
 Tento článek obsahuje odkazy na články, které popisují integraci vašich Apache Kafkach aplikací s využitím Azure Event Hubs. 
@@ -27,7 +27,7 @@ Rychlé starty najdete na webu GitHub a v této sadě obsahu, které vám pomů�
 ### <a name="quickstarts-in-github"></a>Rychlé starty v GitHubu
 Podívejte se na následující rychlé starty v úložišti **Azure-Event-Center-for-Kafka** : 
 
-| Jazyk nebo architektura klienta | Popis | 
+| Jazyk nebo architektura klienta | Description | 
 | ------------------------- | ----------- | 
 | [.NET](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/dotnet) | <p>V tomto rychlém startu se dozvíte, jak vytvořit a připojit se k Event Hubs koncovému bodu Kafka pomocí ukázkového výrobce a příjemce napsaného v jazyce C# pomocí .NET Core 2,0.</p><p>Tato ukázka vychází z [Apache Kafka klienta .NET](https://github.com/confluentinc/confluent-kafka-dotnet), který se změnil pro použití s Event Hubs pro Kafka.</p> | 
 | [Java](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/java) | V tomto rychlém startu se dozvíte, jak vytvořit a připojit se k Event Hubs koncovému bodu Kafka pomocí ukázkového výrobce a příjemce napsaného v jazyce Java. |
@@ -47,7 +47,7 @@ Přečtěte si rychlý Start: [streamování dat pomocí Event Hubs](event-hubs-
 ### <a name="tutorials-in-github"></a>Kurzy v GitHubu
 Další informace najdete v následujících kurzech na GitHubu:
 
-| Tutoriál | Popis | 
+| Kurz | Description | 
 | ------------------------- | ----------- | 
 | [Akka](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/akka/java) | V tomto kurzu se dozvíte, jak propojit datové proudy Akka s povoleným Kafkam Event Hubs bez změny klientů protokolu nebo spuštěním vlastních clusterů. K dispozici jsou dva samostatné kurzy s použitím programovacích jazyků **Java** a **Scala** . | 
 | [Připojit](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/connect) | Tento dokument vás provede integrací Kafka Connect s Azure Event Hubs a nasazením základních konektorů FileStreamSource a FileStreamSink. I když tyto konektory nejsou určené pro použití v produkčním prostředí, ukazují kompletní scénář Kafka Connect, kde se Azure Event Hubs maskuje jako zprostředkovatel Kafka.| 
@@ -68,7 +68,7 @@ Podívejte se také na kurz: [Apache Kafka procesu pro Event Hubs události pomo
 ## <a name="how-to-guides"></a>Návody
 V naší dokumentaci se podívejte na následující Příručky k návodům:
 
-| Článek | Popis | 
+| Článek | Description | 
 | ------- | ----------- | 
 | [Zrcadlení zprostředkovatele Kafka v centru událostí](event-hubs-kafka-mirror-maker-tutorial.md) | Ukazuje, jak zrcadlit zprostředkovatele Kafka v centru událostí pomocí Kafka nástroje MirrorMaker. |
 | [Připojení Apache Sparku k centru událostí](event-hubs-kafka-spark-tutorial.md) | Provede vás připojením aplikace Spark k Event Hubs pro streamování v reálném čase. |
