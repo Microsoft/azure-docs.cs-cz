@@ -6,7 +6,7 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
-ms.topic: article
+ms.topic: how-to
 ms.subservice: users-groups-roles
 ms.workload: identity
 ms.date: 04/16/2020
@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a4a0dfaeda18b3f68ddc3c7cc7333b8c994d174
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 00ed10ece042446e941832b27c58b0032f852ad9
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684919"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84732255"
 ---
 # <a name="manage-administrative-units-in-azure-active-directory"></a>Správa jednotek pro správu v Azure Active Directory
 
@@ -78,7 +78,7 @@ V Azure AD můžete odebrat jednotku pro správu, kterou už nebudete potřebova
 
 ### <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
-1. V Azure Portal přejdete na**jednotky pro správu** **Azure AD** > . 
+1. V Azure Portal přejdete na **Azure AD**  >  **jednotky pro správu**Azure AD. 
 1. Vyberte jednotku pro správu, kterou chcete odstranit, a pak vyberte **Odstranit**. 
 1. Chcete-li potvrdit, že chcete jednotku pro správu odstranit, vyberte možnost **Ano**. Jednotka pro správu se odstraní.
 

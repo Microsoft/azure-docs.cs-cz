@@ -92,7 +92,7 @@ ms.locfileid: "74260695"
     }
     ```
 
-Všimněte si, `Post` že metoda teď neposílá oznámení informační zprávy. Pošle nezpracované oznámení, které obsahuje jenom ID oznámení, a ne žádný citlivý obsah. Nezapomeňte taky zadat komentář k operaci Odeslat pro platformy, pro které nemáte nakonfigurované přihlašovací údaje v centru oznámení, protože budou mít chyby.
+Všimněte si, že `Post` Metoda teď neposílá oznámení informační zprávy. Pošle nezpracované oznámení, které obsahuje jenom ID oznámení, a ne žádný citlivý obsah. Nezapomeňte taky zadat komentář k operaci Odeslat pro platformy, pro které nemáte nakonfigurované přihlašovací údaje v centru oznámení, protože budou mít chyby.
 
 1. Tuto aplikaci teď znovu nasadíme na web Azure, aby bylo možné ji zpřístupnit ze všech zařízení. Klikněte pravým tlačítkem na projekt **AppBackend** a vyberte **Publikovat**.
 2. Jako cíl publikování vyberte web Azure. Přihlaste se pomocí svého účtu Azure a vyberte existující nebo nový web a poznamenejte si vlastnost **cílová adresa URL** na kartě **připojení** . Na tuto adresu URL budeme odkazovat jako na *koncový bod back-end* později v tomto kurzu. Klikněte na **Publikovat**.

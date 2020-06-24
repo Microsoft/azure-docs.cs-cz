@@ -4,15 +4,15 @@ description: Popisuje klientské knihovny vyžadované pro připojení klientsk�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 06/01/2020
+ms.date: 06/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8c02be378febacc4db0b077a3be69339ff9710a0
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 1bdb9c93e5b5a510e6d89f879f0783fe95910c43
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300905"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976587"
 ---
 # <a name="client-libraries-for-connecting-to-analysis-services"></a>Klientské knihovny pro připojení k Analysis Services
 
@@ -22,19 +22,21 @@ Klientské knihovny jsou nezbytné pro připojení klientských aplikací a nás
 
 |Stáhnout  |Verze produktu  | 
 |---------|---------|
-|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.1.42.26    |
-|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |     15.1.42.26       |
-|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   19.2.0.2    |
-|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    19.2.0.2     |
+|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.1.44.24    |
+|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |     15.1.44.24       |
+|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   19.4.0.2    |
+|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    19.4.0.2     |
 
 ## <a name="amo-and-adomd-nuget-packages"></a>AMO a ADOMD (balíčky NuGet)
 
-ADOMDs Management Objects (AMO) a klientské knihovny jsou k dispozici jako Instalovatelné balíčky z [NuGet.org](https://www.nuget.org/). Analysis Services Místo použití Instalační služba systému Windows doporučujeme migrovat na reference NuGet. 
+ADOMDs Management Objects (AMO) a klientské knihovny jsou k dispozici jako Instalovatelné balíčky z [NuGet.org](https://www.nuget.org/). Analysis Services Místo použití Instalační služba systému Windows doporučujeme migrovat na reference NuGet. Od června 2020 jsou k dispozici i verze Preview balíčků [.NET Core](https://docs.microsoft.com/dotnet/core/about) , které jsou ekvivalentní s klientskými balíčky AMO a ADOMD. Tato verze .NET Core Preview podporuje jenom cloudové servery.
 
 |Balíček  | Verze produktu  | 
 |---------|---------|
-|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    19.2.0.2     |
-|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   19.2.0.2      |
+|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    19.4.0.2     |
+|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   19.4.0.2      |
+|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.NetCore.retail.amd64/19.4.0.2-Preview/)    |    19.4.0.2 (Preview)    | 
+|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.NetCore.retail.amd64/19.4.0.2-Preview/)     |   19.4.0.2 (Preview)      | 
 
 Sestavení balíčků NuGet AssemblyVersion sledují sémantickou verzi: hlavní. Moll. Použita. Odkazy na NuGet načítají očekávanou verzi i v případě, že v mezipaměti GAC je odlišná verze (výsledná z instalace MSI). Oprava se zvyšuje pro každou verzi. Verze AMO a ADOMD jsou udržovány v synchronizaci.
 
@@ -74,7 +76,7 @@ Klientské knihovny pro připojení klienta se liší od zprostředkovatelů dat
   
 1.  Přejděte do části `C:\Program Files\Microsoft Analysis Services\AS OLEDB\` (Soubor > Nový > Jiné). Pokud máte více než jednu složku, vyberte vyšší číslo.
   
-2.  Klikněte pravým tlačítkem na podrobnosti vlastností **MSOLAP. dll**  >  **Properties**  >  **Details**. Pokud název souboru je msolap140. dll, je starší než nejnovější verze a měl by být upgradován.
+2.  Klikněte pravým tlačítkem na **msolap.dll**  >  **Properties**  >  **Podrobnosti**vlastností. Pokud je název souboru msolap140.dll, je starší než nejnovější verze a měl by být upgradován.
     
     ![Podrobnosti klientské knihovny](media/analysis-services-data-providers/aas-msolap-details.png)
     

@@ -58,7 +58,7 @@ ms.locfileid: "80272672"
 
 ### <a name="the-data-model-of-the-schema"></a>Datový model schématu
 
-|Pole|Datový typ|Popis|
+|Pole|Datový typ|Description|
 |----|----|----|
 |**AlertDisplayName**|Řetězec|Zobrazovaný název výstrahy.|
 |**AlertType**|Řetězec|Typ výstrahy Výstrahy stejného typu by měly mít stejnou hodnotu. Toto pole je řetězec s klíčem, který představuje typ výstrahy, nikoli instanci výstrahy. Všechny instance výstrahy ze stejné logiky detekce a analytiky by měly mít stejnou hodnotu jako typ výstrahy.|

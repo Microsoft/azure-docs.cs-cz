@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: a17f27831dd0a674c1d55cde6974aba5e1bfcfc3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8a9382af630d80480e5bec50d629451ebe49bf73
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82105722"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734465"
 ---
 # <a name="secure-remote-access-to-virtual-machines-in-azure-active-directory-domain-services"></a>Zabezpečený vzdálený přístup k virtuálním počítačům v Azure Active Directory Domain Services
 
@@ -41,7 +41,7 @@ K dokončení tohoto článku potřebujete tyto prostředky:
 * Tenant Azure Active Directory přidružený k vašemu předplatnému, buď synchronizovaný s místním adresářem, nebo jenom s cloudovým adresářem.
     * V případě potřeby [vytvořte tenanta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure k vašemu účtu][associate-azure-ad-tenant].
 * Ve vašem tenantovi Azure AD je povolená a nakonfigurovaná spravovaná doména Azure Active Directory Domain Services.
-    * V případě potřeby [vytvořte a nakonfigurujte instanci Azure Active Directory Domain Services][create-azure-ad-ds-instance].
+    * V případě potřeby [vytvořte a nakonfigurujte Azure Active Directory Domain Services spravovanou doménu][create-azure-ad-ds-instance].
 * Podsíť *úloh* vytvořená ve vaší Azure Active Directory Domain Services virtuální síti.
     * V případě potřeby [nakonfigurujte virtuální síť pro Azure Active Directory Domain Services spravovanou doménu][configure-azureadds-vnet].
 * Uživatelský účet, který je členem skupiny *správců řadičů domény Azure AD* ve vašem TENANTOVI Azure AD.
@@ -55,16 +55,16 @@ Navrhované nasazení služby RDS zahrnuje tyto dva virtuální počítače:
 * *RDGVM01* – spustí Server Zprostředkovatel připojení K VP, RD Web Access server a Brána VP server.
 * *RDSHVM01* – spustí server Hostitel relace VP.
 
-Ujistěte se, že jsou virtuální počítače nasazené do podsítě *úloh* služby Azure služba AD DS Virtual Network a pak je připojte k Azure služba AD DS spravované doméně. Další informace najdete v tématu Postup [Vytvoření a připojení virtuálního počítače s Windows serverem k spravované doméně Azure služba AD DS][tutorial-create-join-vm].
+Ujistěte se, že jsou virtuální počítače nasazené do podsítě *úloh* služby Azure služba AD DS Virtual Network a pak je připojte k spravované doméně. Další informace najdete v tématu Postup [Vytvoření a připojení virtuálního počítače s Windows serverem ke spravované doméně][tutorial-create-join-vm].
 
-Nasazení prostředí VP obsahuje několik kroků. Stávající Průvodce nasazením VP se dá použít bez jakýchkoli konkrétních změn, které se dají použít ve spravované doméně Azure služba AD DS:
+Nasazení prostředí VP obsahuje několik kroků. Existující Průvodce nasazením VP se dá použít bez jakýchkoli konkrétních změn, které se mají použít ve spravované doméně:
 
 1. Přihlaste se k virtuálním počítačům vytvořeným pro prostředí VP pomocí účtu, který je součástí skupiny *Azure AD DC Administrators* , například *contosoadmin*.
 1. K vytvoření a konfiguraci služby RDS použijte existující [Průvodce nasazením prostředí vzdálené plochy][deploy-remote-desktop]. Distribuujte součásti serveru služby Vzdálená plocha napříč virtuálními počítači Azure podle potřeby.
     * Specifické pro Azure služba AD DS – Pokud konfigurujete licencování VP, nastavte ho na režim **podle zařízení** , ne **na uživatele** , jak je uvedeno v Průvodci nasazením.
 1. Pokud chcete poskytnout přístup pomocí webového prohlížeče, [nastavte pro své uživatele webového klienta vzdálené plochy][rd-web-client].
 
-Když se Vzdálená plocha nasadí do spravované domény Azure služba AD DS, můžete službu spravovat a používat stejně jako v místní doméně služba AD DS.
+Když je služba Vzdálená plocha nasazená do spravované domény, můžete ji spravovat a používat stejně jako v místní doméně služba AD DS.
 
 ## <a name="deploy-and-configure-nps-and-the-azure-mfa-nps-extension"></a>Nasazení a konfigurace serveru NPS a rozšíření služby NPS pro Azure MFA
 
@@ -76,7 +76,7 @@ Aby bylo možné [používat Azure Multi-Factor Authentication][user-mfa-registr
 
 Pokud chcete integrovat Azure Multi-Factor Authentication do prostředí Azure služba AD DS vzdálené plochy, vytvořte server NPS a nainstalujte rozšíření:
 
-1. Vytvořte další virtuální počítač s Windows serverem 2016 nebo 2019, například *NPSVM01*, který je připojený k podsíti *úloh* v Azure služba AD DS Virtual Network. Připojte virtuální počítač k spravované doméně Azure služba AD DS.
+1. Vytvořte další virtuální počítač s Windows serverem 2016 nebo 2019, například *NPSVM01*, který je připojený k podsíti *úloh* v Azure služba AD DS Virtual Network. Připojte virtuální počítač k spravované doméně.
 1. Přihlaste se k virtuálnímu počítači NPS jako účet, který je součástí skupiny *správců řadičů domény Azure AD* , například *contosoadmin*.
 1. Z **Správce serveru**vyberte **Přidat role a funkce**a pak nainstalujte roli *služby síťové zásady a přístup* .
 1. Pomocí existujícího článku s návody [nainstalujte a nakonfigurujte rozšíření Azure MFA NPS][nps-extension].
@@ -87,9 +87,9 @@ Když je nainstalované rozšíření serveru NPS a Azure Multi-Factor Authentic
 
 Pokud chcete integrovat rozšíření Azure Multi-Factor Authentication NPS, použijte existující článek s postupem, který [integruje vaši Brána vzdálené plochy infrastrukturu pomocí rozšíření NPS (Network Policy Server) a Azure AD][azure-mfa-nps-integration].
 
-Pro integraci se spravovanými doménami Azure služba AD DS je potřeba mít následující další možnosti konfigurace:
+Pro integraci se spravovanou doménou jsou potřeba následující další možnosti konfigurace:
 
-1. [Neregistrujte server NPS ve službě Active Directory][register-nps-ad]. Tento krok se nezdařil ve spravované doméně Azure služba AD DS.
+1. [Neregistrujte server NPS ve službě Active Directory][register-nps-ad]. Tento krok se v spravované doméně nezdařil.
 1. V [kroku 4 ke konfiguraci zásad sítě][create-nps-policy]zaškrtněte políčko pro **ignorování vlastností telefonického připojení uživatelského účtu**.
 1. Pokud používáte Windows Server 2019 pro rozšíření serveru NPS a Azure Multi-Factor Authentication NPS, spusťte následující příkaz, který aktualizuje zabezpečený kanál, aby server NPS mohl správně komunikovat:
 

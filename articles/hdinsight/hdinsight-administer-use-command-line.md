@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/26/2020
 ms.openlocfilehash: 2c6495454e5ba2449d4b3c74a096681f74610813
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79272770"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84699358"
 ---
 # <a name="manage-azure-hdinsight-clusters-using-azure-cli"></a>Správa clusterů Azure HDInsight pomocí rozhraní příkazového řádku Azure
 
@@ -21,7 +21,7 @@ ms.locfileid: "79272770"
 
 Naučte se používat [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) ke správě clusterů Azure HDInsight. Rozhraní příkazového řádku Azure (CLI) je nové víceplatformové prostředí příkazového řádku Microsoftu pro správu prostředků Azure.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -60,7 +60,7 @@ az hdinsight list --resource-group RESOURCE_GROUP_NAME --query "[].{clusterName:
 
 ## <a name="show-cluster"></a>Zobrazit cluster
 
-K zobrazení informací o zadaném clusteru použijte [AZ HDInsight show](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-show) . Níže uvedený příkaz upravte nahrazením `RESOURCE_GROUP_NAME`a příslušnými `CLUSTER_NAME` informacemi a zadáním příkazu:
+K zobrazení informací o zadaném clusteru použijte [AZ HDInsight show](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-show) . Níže uvedený příkaz upravte nahrazením `RESOURCE_GROUP_NAME` a `CLUSTER_NAME` příslušnými informacemi a zadáním příkazu:
 
 ```azurecli-interactive
 az hdinsight show --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME
@@ -68,7 +68,7 @@ az hdinsight show --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME
 
 ## <a name="delete-clusters"></a>Odstranění clusterů
 
-Pomocí [AZ HDInsight Delete](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-delete) odstraňte zadaný cluster. Níže uvedený příkaz upravte nahrazením `RESOURCE_GROUP_NAME`a příslušnými `CLUSTER_NAME` informacemi a zadáním příkazu:
+Pomocí [AZ HDInsight Delete](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-delete) odstraňte zadaný cluster. Níže uvedený příkaz upravte nahrazením `RESOURCE_GROUP_NAME` a `CLUSTER_NAME` příslušnými informacemi a zadáním příkazu:
 
 ```azurecli-interactive
 az hdinsight delete --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME
@@ -82,7 +82,7 @@ az group delete --name RESOURCE_GROUP_NAME
 
 ## <a name="scale-clusters"></a>Škálování clusterů
 
-Pomocí [AZ HDInsight Resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) změňte velikost zadaného clusteru HDInsight na určenou velikost. Úpravou příkazu níže nahraďte `RESOURCE_GROUP_NAME`a `CLUSTER_NAME` příslušné informace. Nahraďte `WORKERNODE_COUNT` požadovaným počtem uzlů pracovního procesu pro váš cluster. Další informace o škálování clusterů najdete v tématu [škálování clusterů HDInsight](./hdinsight-scaling-best-practices.md). Zadejte příkaz:
+Pomocí [AZ HDInsight Resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) změňte velikost zadaného clusteru HDInsight na určenou velikost. Úpravou příkazu níže nahraďte `RESOURCE_GROUP_NAME` a `CLUSTER_NAME` příslušné informace. Nahraďte `WORKERNODE_COUNT` požadovaným počtem uzlů pracovního procesu pro váš cluster. Další informace o škálování clusterů najdete v tématu [škálování clusterů HDInsight](./hdinsight-scaling-best-practices.md). Zadejte příkaz:
 
 ```azurecli-interactive
 az hdinsight resize --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME --workernode-count WORKERNODE_COUNT

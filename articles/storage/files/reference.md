@@ -1,5 +1,5 @@
 ---
-title: Odkazy na úložiště sdílených složek Azure
+title: Referenční informace k úložišti sdílených složek Azure
 description: Vyhledejte Azure Storage Reference k rozhraní API, soubory Readme a balíčky klientské knihovny.
 author: mhopkins-msft
 ms.author: mhopkins
@@ -7,14 +7,14 @@ ms.date: 06/02/2020
 ms.service: storage
 ms.topic: conceptual
 ms.reviewer: ripohane
-ms.openlocfilehash: d995e66c2bf3bc1cb1bd0cd93dfc2a0739ab692b
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: ffe3777882cd857ffb776bbadb41da0fb88d994e
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84346021"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976519"
 ---
-# <a name="azure-file-shares-storage-reference"></a>Odkazy na úložiště sdílených složek Azure
+# <a name="azure-file-shares-storage-reference"></a>Referenční informace k úložišti sdílených složek Azure
 
 Najděte si referenční informace k rozhraní API pro úložiště sdílených složek Azure, balíčky knihoven, soubory Readme a články Začínáme.
 
@@ -66,8 +66,8 @@ Následující tabulka uvádí referenční a ukázkovou dokumentaci pro rozhran
 
 |  Verze  | Referenční dokumentace | Balíček | Rychlé zprovoznění |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12. x | [Klientská knihovna pro V12 sdílené složky Azure pro Python](/python/api/overview/azure/storage-file-share-readme) | [Balíček (PyPI)](https://pypi.org/project/azure-storage-file/12.0.0b4/) | [Příklady](/python/api/overview/azure/storage-file-share-readme#examples) |
-| 2.x | [soubor Azure-Storage-File](/python/api/azure-storage-file/?view=azure-python-previous) | [Balíček (PyPI)](https://pypi.org/project/azure-storage-file/2.1.0/) | [Vývoj pro Soubory Azure pomocí Pythonu](/azure/storage/files/storage-python-how-to-use-file-storage) |
+| 12. x | [Azure Storage klientské knihovny V12 pro Python](/azure/developer/python/sdk/storage/overview?view=storage-py-v12) | [Balíček (PyPI)](https://pypi.org/project/azure-storage-file/12.0.0b4/) | [Příklady](/python/api/overview/azure/storage-file-share-readme#examples) |
+| 2.x | [Azure Storage klientských knihoven v2 pro Python](/azure/developer/python/sdk/storage/overview?view=storage-py-v2) | [Balíček (PyPI)](https://pypi.org/project/azure-storage-file/2.1.0/) | [Vývoj pro Soubory Azure pomocí Pythonu](/azure/storage/files/storage-python-how-to-use-file-storage) |
 
 ## <a name="javascript-client-libraries"></a>JavaScript – klientské knihovny
 
@@ -94,7 +94,7 @@ Následující tabulka uvádí referenční dokumentaci a ukázkovou dokumentaci
 
 Následující seznam obsahuje odkazy na knihovny pro jiné programovací jazyky a platformy.
 
-- [Volat](https://azure.github.io/azure-storage-cpp)
+- [C++](https://azure.github.io/azure-storage-cpp)
 - [Ruby](https://azure.github.io/azure-storage-ruby)
 - [PHP](https://azure.github.io/azure-storage-php/)
 - [iOS](https://azure.github.io/azure-storage-ios/)

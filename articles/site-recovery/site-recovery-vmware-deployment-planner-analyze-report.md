@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/4/2019
 ms.author: mayg
 ms.openlocfilehash: 4dad11e8331064a9df1b1aed561e00b9a9b24017
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257508"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84699188"
 ---
 # <a name="analyze-the-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Analýza sestavy Plánovač nasazení pro zotavení po havárii VMware do Azure
 
@@ -186,7 +186,7 @@ Může nastat situace, kdy víte, že pro účely replikace Site Recovery nemů�
 * 1 025 GB až 2 048 GB je P40.
 * 2 049 GB až 4 095 GB je P50.
 
-Pokud se například charakteristiky zatížení disku umístí do kategorie P20 nebo P30, ale jeho velikost ho mapuje na nižší typ disku služby Premium Storage, nástroj tento virtuální počítač označí jako **Ano**\*. Nástroj také doporučí změnit velikost zdrojového disku tak, aby se vešel do doporučeného typu disku služby Premium Storage, nebo po převzetí služeb při selhání změnit typ cílového disku.
+Pokud se například charakteristiky zatížení disku umístí do kategorie P20 nebo P30, ale jeho velikost ho mapuje na nižší typ disku služby Premium Storage, nástroj tento virtuální počítač označí jako **Ano** \* . Nástroj také doporučí změnit velikost zdrojového disku tak, aby se vešel do doporučeného typu disku služby Premium Storage, nebo po převzetí služeb při selhání změnit typ cílového disku.
 
 **Storage Type** (Typ služby Storage): Standard nebo Premium.
 
@@ -269,7 +269,7 @@ Disk úrovně Premium P10 nebo P15 | 32 kB nebo větší | 8 MB/s | 672 GB na di
 Disk úrovně Premium P20 nebo P30 nebo P40 nebo P50 | 8 kB    | 5 MB/s | 421 GB na disk
 Disk úrovně Premium P20 nebo P30 nebo P40 nebo P50 | 16 kB nebo větší | 20 MB/s | 1684 GB na disk
 
-**Četnost změn dat zdroje** | **Maximální omezení**
+**Četnost změn dat zdroje** | **Maximální limit**
 ---|---
 Četnost změn dat ve špičce napříč všemi disky virtuálního počítače | 54 MB/s
 Maximální četnost změn dat za den s podporou procesového serveru | 2 TB

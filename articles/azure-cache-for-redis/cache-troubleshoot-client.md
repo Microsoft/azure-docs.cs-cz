@@ -7,11 +7,11 @@ ms.service: cache
 ms.topic: troubleshooting
 ms.date: 10/18/2019
 ms.openlocfilehash: ace953fcb278604cb64eef463753f0f2622d3d24
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277944"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84698189"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-client-side-issues"></a>Řešení potíží se službou Azure Cache for Redis na straně klienta
 
@@ -30,7 +30,7 @@ Tlak paměti na klientském počítači vede ke všem druhům problémů s výko
 Rozpoznání zatížení paměti klienta:
 
 - Monitorujte využití paměti na počítači a ujistěte se, že nepřekračuje dostupnou paměť.
-- Monitoruje Čítač `Page Faults/Sec` výkonu klienta. Při běžném provozu má většina systémů chyby stránky. Špičky chyb stránkování, které odpovídají časovým limitům požadavků, mohou označovat tlak na paměť.
+- Monitoruje `Page Faults/Sec` čítač výkonu klienta. Při běžném provozu má většina systémů chyby stránky. Špičky chyb stránkování, které odpovídají časovým limitům požadavků, mohou označovat tlak na paměť.
 
 Vysoký tlak v paměti klienta může být omezen několika způsoby:
 
@@ -39,19 +39,19 @@ Vysoký tlak v paměti klienta může být omezen několika způsoby:
 
 ## <a name="traffic-burst"></a>Nárůst provozu
 
-Shluky přenosů v kombinaci s `ThreadPool` špatným nastavením můžou mít za následek prodlevy při zpracování dat, která už odesílá server Redis, ale zatím se nevyužil na straně klienta.
+Shluky přenosů v kombinaci s špatným `ThreadPool` nastavením můžou mít za následek prodlevy při zpracování dat, která už odesílá server Redis, ale zatím se nevyužil na straně klienta.
 
-Pomocí [příkladu `ThreadPoolLogger` ](https://github.com/JonCole/SampleCode/blob/master/ThreadPoolMonitor/ThreadPoolLogger.cs)Sledujte `ThreadPool` , jak se v průběhu času mění vaše Statistika. K dalšímu zkoumání `TimeoutException` můžete použít zprávy z stackexchange. Redis, podobně jako v následujícím příkladu:
+`ThreadPool`Pomocí [ `ThreadPoolLogger` příkladu ](https://github.com/JonCole/SampleCode/blob/master/ThreadPoolMonitor/ThreadPoolLogger.cs)Sledujte, jak se v průběhu času mění vaše Statistika. `TimeoutException`K dalšímu zkoumání můžete použít zprávy z stackexchange. Redis, podobně jako v následujícím příkladu:
 
     System.TimeoutException: Timeout performing EVAL, inst: 8, mgr: Inactive, queue: 0, qu: 0, qs: 0, qc: 0, wr: 0, wq: 0, in: 64221, ar: 0,
     IOCP: (Busy=6,Free=999,Min=2,Max=1000), WORKER: (Busy=7,Free=8184,Min=2,Max=8191)
 
 V předchozí výjimce je k dispozici několik problémů, které jsou zajímavé:
 
-- Všimněte si, že `IOCP` v části a `WORKER` v oddílu máte `Busy` hodnotu, která je větší než `Min` hodnota. Tento rozdíl znamená, `ThreadPool` že je potřeba upravit nastavení.
-- Můžete také zobrazit `in: 64221`. Tato hodnota označuje, že 64 211 bajtů bylo přijato na soketové vrstvě jádra klienta, ale aplikace ji nečetla. Tento rozdíl obvykle znamená, že vaše aplikace (například StackExchange. Redis) nečte data ze sítě, a to tak rychle, jak ji server posílá.
+- Všimněte si, že v `IOCP` části a v `WORKER` oddílu máte `Busy` hodnotu, která je větší než `Min` hodnota. Tento rozdíl znamená, že je `ThreadPool` potřeba upravit nastavení.
+- Můžete také zobrazit `in: 64221` . Tato hodnota označuje, že 64 211 bajtů bylo přijato na soketové vrstvě jádra klienta, ale aplikace ji nečetla. Tento rozdíl obvykle znamená, že vaše aplikace (například StackExchange. Redis) nečte data ze sítě, a to tak rychle, jak ji server posílá.
 
-Můžete [nakonfigurovat `ThreadPool` nastavení](cache-faq.md#important-details-about-threadpool-growth) , abyste se ujistili, že se váš fond vláken rychle škáluje v rámci shlukových scénářů.
+Můžete [nakonfigurovat `ThreadPool` Nastavení](cache-faq.md#important-details-about-threadpool-growth) , abyste se ujistili, že se váš fond vláken rychle škáluje v rámci shlukových scénářů.
 
 ## <a name="high-client-cpu-usage"></a>Vysoké využití CPU klienta
 

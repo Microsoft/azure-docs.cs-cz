@@ -5,15 +5,15 @@ description: Tento článek popisuje příklady, jak se certifikát TLS/SSL dá 
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
-ms.date: 06/09/2020
+ms.topic: how-to
+ms.date: 06/17/2020
 ms.author: absha
-ms.openlocfilehash: 010ecc234afd745844b5b7868030d3c4e823872f
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: 125da04c9fafe33c7f3de3a5849e4238b3b45d6d
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84628913"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976536"
 ---
 # <a name="create-certificates-to-allow-the-backend-with-azure-application-gateway"></a>Vytvoření certifikátů pro povolení back-endu s Azure Application Gateway
 
@@ -78,7 +78,7 @@ Aby bylo možné v SKU Application Gateway v2 použít instance back-end, je nut
 
 Následující kroky vám pomůžou exportovat soubor. cer pro váš certifikát:
 
-1. Použijte postup 1-9 uvedený v části **Export ověřovacího certifikátu z back-endu certifikátu (pro SKU V1)** výše a exportujte veřejný klíč z back-endu certifikátu.
+1. Pomocí kroků 1-8 uvedených v předchozí části [exportujte certifikát pro ověřování (pro SKU V1)](#export-authentication-certificate-for-v1-sku) a exportujte veřejný klíč z back-endu certifikátu.
 
 2. Po exportu veřejného klíče soubor otevřete.
 

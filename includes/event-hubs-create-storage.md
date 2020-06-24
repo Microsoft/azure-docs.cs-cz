@@ -22,7 +22,7 @@ Event Processor Host je inteligentní agent, který zjednodušuje přijímání 
 
     ![Vytvoření položky nabídky prostředků, portál Microsoft Azure](./media/event-hubs-create-storage/create-resource.png)
 
-2. Vyberte **úložiště** > **účet**úložiště.
+2. Vyberte **úložiště**  >  **účet**úložiště.
    
     ![Vyberte účet úložiště, portál Microsoft Azure](./media/event-hubs-create-storage/select-storage-account.png)
 

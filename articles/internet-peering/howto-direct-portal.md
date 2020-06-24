@@ -5,15 +5,15 @@ description: Vytvoření nebo úprava přímého partnerského vztahu pomocí Az
 services: internet-peering
 author: derekolo
 ms.service: internet-peering
-ms.topic: article
+ms.topic: how-to
 ms.date: 5/19/2020
 ms.author: derekol
-ms.openlocfilehash: 59b9079b500817c31586c0a566082a867d7e7f41
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: e49462612b58163c2ac51b78584761d0d8b8bd06
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683997"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84700561"
 ---
 # <a name="create-or-modify-a-direct-peering-by-using-the-azure-portal"></a>Vytvoření nebo úprava přímého partnerského vztahu pomocí Azure Portal
 
@@ -21,7 +21,7 @@ Tento článek popisuje, jak vytvořit přímý partnerský vztah Microsoftu pro
 
 Pokud budete chtít, můžete tuto příručku dokončit pomocí Azure [PowerShellu](howto-direct-powershell.md).
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 * Před zahájením konfigurace si Projděte návod [požadavky](prerequisites.md) a [přímý partnerský vztah](walkthrough-direct-all.md) .
 * Pokud už máte přímá připojení partnerského vztahu se společností Microsoft, která nejsou převedená na prostředky Azure, přečtěte si téma [Převod starší verze přímého partnerského vztahu na prostředek Azure pomocí portálu](howto-legacy-direct-portal.md).
 

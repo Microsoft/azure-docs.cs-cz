@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9618e02f54fbb2a3b92771761c5fcf700d126b5c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253829"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84698763"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Topologie pro Azure AD Connect
 Tento článek popisuje různé místní a Azure Active Directory (Azure AD) topologie, které používají Azure AD Connect synchronizaci jako klíčové řešení pro integraci. Tento článek zahrnuje podporované i nepodporované konfigurace.
@@ -29,7 +29,7 @@ Tento článek popisuje různé místní a Azure Active Directory (Azure AD) top
 
 Tady je legenda k obrázkům v článku:
 
-| Popis | Symbol |
+| Description | Symbol |
 | --- | --- |
 | Místní doménová struktura služby Active Directory |![Místní doménová struktura služby Active Directory](./media/plan-connect-topologies/LegendAD1.png) |
 | Místní služba Active Directory s filtrovaným importem |![Služba Active Directory s filtrovaným importem](./media/plan-connect-topologies/LegendAD2.png) |

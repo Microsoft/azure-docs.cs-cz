@@ -4,11 +4,11 @@ description: Přečtěte si o odebrání a nasazení aplikací v Azure Service F
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.openlocfilehash: e3fdd194f2949f1246e991968e02b3278f33f7db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282507"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84699834"
 ---
 # <a name="deploy-and-remove-applications-using-powershell"></a>Nasazení a odebrání aplikací pomocí PowerShellu
 
@@ -64,7 +64,7 @@ Pokud chcete balíček aplikace ověřit lokálně, použijte rutinu [test-Servi
 
 Příkaz [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) nahraje balíček aplikace do úložiště imagí clusteru.
 
-Předpokládejme, že sestavíte a zabalíte aplikaci s názvem *MyApplication* v aplikaci Visual Studio 2015. Ve výchozím nastavení je název typu aplikace uvedený v souboru souboru ApplicationManifest. XML "MyApplicationType".  Balíček aplikace, který obsahuje nezbytný manifest aplikace, manifesty služeb a balíčky Code/config/data, se nachází v části *C:\Users\<UserName\>\Documents\Visual Studio 2015 \ Projects\MyApplication\MyApplication\pkg\Debug*. 
+Předpokládejme, že sestavíte a zabalíte aplikaci s názvem *MyApplication* v aplikaci Visual Studio 2015. Ve výchozím nastavení je název typu aplikace uvedený v ApplicationManifest.xml "MyApplicationType".  Balíček aplikace, který obsahuje nezbytný manifest aplikace, manifesty služeb a balíčky Code/config/data, se nachází v části *C:\Users \<username\> \Documents\Visual Studio 2015 \ Projects\MyApplication\MyApplication\pkg\Debug*. 
 
 Následující příkaz vypíše obsah balíčku aplikace:
 
@@ -105,7 +105,7 @@ Vedlejším účinkem je, že registrace a zrušení registrace typu aplikace je
 Pro komprimaci balíčku použijte stejný příkaz [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) . Kompresi lze provést odděleně od nahrávání pomocí `SkipCopy` příznaku nebo spolu s operací nahrávání. Použití komprese u komprimovaného balíčku je no-op.
 K dekomprimaci komprimovaného balíčku použijte stejný příkaz [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) s `UncompressPackage` přepínačem.
 
-Následující rutina zkomprimuje balíček bez jeho zkopírování do úložiště imagí. Balíček teď obsahuje soubory zip pro balíčky `Code` a. `Config` Aplikace a manifesty služby nevyužívají příkaz zip, protože jsou nutné pro mnoho interních operací (například sdílení balíčků, název typu aplikace a extrakci verzí pro určitá ověření). Zipování manifesty by tyto operace neefektivně vedly.
+Následující rutina zkomprimuje balíček bez jeho zkopírování do úložiště imagí. Balíček teď obsahuje soubory zip pro `Code` `Config` balíčky a. Aplikace a manifesty služby nevyužívají příkaz zip, protože jsou nutné pro mnoho interních operací (například sdílení balíčků, název typu aplikace a extrakci verzí pro určitá ověření). Zipování manifesty by tyto operace neefektivně vedly.
 
 ```powershell
 Copy-ServiceFabricApplicationPackage -ApplicationPackagePath $path -CompressPackage -SkipCopy
@@ -191,7 +191,7 @@ Register application type succeeded
 
 ### <a name="register-the-application-package-copied-to-an-external-store"></a>Zaregistrovat balíček aplikace zkopírovaný do externího úložiště
 
-Od verze Service Fabric 6,1 poskytuje zřízení podporu ke stažení balíčku z externího úložiště. Identifikátor URI pro stahování představuje cestu k [ `sfpkg` balíčku aplikace](service-fabric-package-apps.md#create-an-sfpkg) , ze které lze balíček aplikace stáhnout pomocí protokolů HTTP nebo HTTPS. Balíček musí být dříve nahrán do tohoto externího umístění. Identifikátor URI musí umožnit přístup pro čtení, aby Service Fabric mohl soubor stáhnout. `sfpkg` Soubor musí mít příponu ". sfpkg". Operace zřizování by měla zahrnovat informace o typu aplikace, jak se nachází v manifestu aplikace.
+Od verze Service Fabric 6,1 poskytuje zřízení podporu ke stažení balíčku z externího úložiště. Identifikátor URI pro stahování představuje cestu k [ `sfpkg` balíčku aplikace](service-fabric-package-apps.md#create-an-sfpkg) , ze které lze balíček aplikace stáhnout pomocí protokolů HTTP nebo HTTPS. Balíček musí být dříve nahrán do tohoto externího umístění. Identifikátor URI musí umožnit přístup pro čtení, aby Service Fabric mohl soubor stáhnout. `sfpkg`Soubor musí mít příponu ". sfpkg". Operace zřizování by měla zahrnovat informace o typu aplikace, jak se nachází v manifestu aplikace.
 
 ```powershell
 Register-ServiceFabricApplicationType -ApplicationPackageDownloadUri "https://sftestresources.blob.core.windows.net:443/sfpkgholder/MyAppPackage.sfpkg" -ApplicationTypeName MyApp -ApplicationTypeVersion V1 -Async
@@ -312,7 +312,7 @@ Chcete-li zrušit registraci konkrétního typu aplikace, spusťte příkaz [Unr
 Unregister-ServiceFabricApplicationType MyApplicationType 1.0.0
 ```
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 ### <a name="copy-servicefabricapplicationpackage-asks-for-an-imagestoreconnectionstring"></a>Copy-ServiceFabricApplicationPackage žádá o ImageStoreConnectionString
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 42b26911c12b1e7c62444a6fb2ee68720b02a56b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b9770e46e8e52d8644143c9912c98e0f7913db9b
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654609"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734278"
 ---
 # <a name="understand-the-health-states-and-resolve-suspended-domains-in-azure-active-directory-domain-services"></a>Pochopení stavů a řešení pozastavených domén v Azure Active Directory Domain Services
 
@@ -26,20 +26,20 @@ Tento článek vysvětluje, proč jsou spravované domény pozastavené a jak ob
 
 ## <a name="overview-of-managed-domain-states"></a>Přehled stavů spravovaných domén
 
-V životním cyklu spravované domény Azure služba AD DS existují různé stavy, které určují jeho stav. Pokud spravovaná doména nahlásí problém, můžete rychle vyřešit původní příčinu, než se stav zastaví, aby bylo možné pokračovat v degradování.
+V životním cyklu spravované domény existují různé stavy, které určují jeho stav. Pokud spravovaná doména nahlásí problém, můžete rychle vyřešit původní příčinu, než se stav zastaví, aby bylo možné pokračovat v degradování.
 
-![Průběh stavů, které Azure služba AD DS spravovaná doména vyžaduje k pozastavení](media/active-directory-domain-services-suspension/suspension-timeline.PNG)
+![Průběh stavů, které spravovaná doména potřebuje k pozastavení](media/active-directory-domain-services-suspension/suspension-timeline.PNG)
 
-Spravovaná doména Azure služba AD DS může být v jednom z následujících stavů:
+Spravovaná doména může být v jednom z následujících stavů:
 
 * [Spuštěno](#running-state)
 * [Vyžaduje pozornost](#needs-attention-state)
 * [Dočasně blokován.](#suspended-state)
-* [Odstranění](#deleted-state)
+* [Odstraněné](#deleted-state)
 
 ## <a name="running-state"></a>Běžící stav
 
-Spravovaná doména Azure služba AD DS, která je nakonfigurovaná správně a běží bez problémů, je ve stavu *spuštěno* . Toto je požadovaný stav pro spravovanou doménu.
+Spravovaná doména, která je nakonfigurovaná správně a běží bez problémů, je ve stavu *spuštěno* . Toto je požadovaný stav pro spravovanou doménu.
 
 ### <a name="what-to-expect"></a>Co očekávat
 
@@ -50,15 +50,15 @@ Spravovaná doména Azure služba AD DS, která je nakonfigurovaná správně a 
 
 ## <a name="needs-attention-state"></a>Vyžaduje stav pozornosti
 
-Spravovaná doména Azure služba AD DS s jedním nebo více problémy, které je potřeba opravit, je ve stavu *vyžaduje pozornost* . Stránka stav pro spravovanou doménu zobrazuje seznam výstrah a označuje, kde došlo k potížím. Některé výstrahy jsou přechodné a automaticky se vyřeší platformou Azure. Pro jiné výstrahy můžete problém vyřešit pomocí uvedených kroků řešení. Je to kritická výstraha. pro další pomoc s řešením potíží [otevřete žádost o podporu Azure][azure-support] .
+Spravovaná doména s jedním nebo více problémy, které je potřeba opravit, je ve stavu *vyžaduje pozornost* . Stránka stav pro spravovanou doménu zobrazuje seznam výstrah a označuje, kde došlo k potížím. Některé výstrahy jsou přechodné a automaticky se vyřeší platformou Azure. Pro jiné výstrahy můžete problém vyřešit pomocí uvedených kroků řešení. Je to kritická výstraha. pro další pomoc s řešením potíží [otevřete žádost o podporu Azure][azure-support] .
 
 Jedním z příkladů výstrah je, že existuje omezující skupina zabezpečení sítě. V této konfiguraci nemusí být platforma Azure schopná aktualizovat a monitorovat spravovanou doménu. Vygeneruje se výstraha a stav se změní na *vyžaduje pozornost*.
 
-Další informace najdete v tématu [řešení potíží s výstrahami pro spravovanou doménu Azure služba AD DS][resolve-alerts].
+Další informace najdete v tématu [řešení potíží s výstrahami pro spravovanou doménu][resolve-alerts].
 
 ### <a name="what-to-expect"></a>Co očekávat
 
-Pokud je spravovaná doména Azure služba AD DS ve stavu *vyžaduje pozornost* , platforma Azure nemusí být schopná pravidelně monitorovat, opravovat, aktualizovat ani zálohovat data. V některých případech, například s neplatnou konfigurací sítě, mohou být řadiče domény pro spravovanou doménu nedosažitelné.
+Když je spravovaná doména ve stavu " *potřebuje pozornost* ", platforma Azure nemusí být schopná pravidelně monitorovat, opravovat, aktualizovat ani zálohovat data. V některých případech, například s neplatnou konfigurací sítě, mohou být řadiče domény pro spravovanou doménu nedosažitelné.
 
 * Spravovaná doména je ve stavu není v pořádku a průběžné monitorování stavu může skončit až do vyřešení výstrahy.
 * Řadiče domény pro spravovanou doménu nejde opravit ani aktualizovat.
@@ -69,7 +69,7 @@ Pokud je spravovaná doména Azure služba AD DS ve stavu *vyžaduje pozornost* 
 
 ## <a name="suspended-state"></a>Pozastavený stav
 
-Spravovaná doména Azure služba AD DS do **pozastaveného** stavu vstoupí z některého z následujících důvodů:
+Spravovaná doména vstoupí do stavu **pozastaveno** z jednoho z následujících důvodů:
 
 * Jeden nebo více kritických výstrah nebylo v 15 dnech vyřešeno.
     * Kritické výstrahy můžou být způsobené chybnou konfigurací, které blokují přístup k prostředkům, které vyžaduje Azure služba AD DS. Například výstraha [AADDS104: Chyba sítě][alert-nsg] byla nevyřešena více než 15 dní ve spravované doméně.
@@ -79,7 +79,7 @@ Spravované domény jsou pozastavené, když platforma Azure nemůže spravovat,
 
 ### <a name="what-to-expect"></a>Co očekávat
 
-Pokud je spravovaná doména Azure služba AD DS v *pozastaveném* stavu, dojde k následujícímu chování:
+Pokud je spravovaná doména v *pozastaveném* stavu, dojde k následujícímu chování:
 
 * Řadiče domény pro spravovanou doménu jsou nezřízené a nejsou dostupné v rámci virtuální sítě.
 * Protokol Secure LDAP přístup ke spravované doméně přes Internet, pokud je tato možnost povolená, přestane fungovat.
@@ -93,10 +93,10 @@ Na stránce Stav služby Azure služba AD DS v Azure Portal se zobrazí [Upozorn
 
 ### <a name="restore-a-suspended-domain"></a>Obnovení pozastavené domény
 
-Pokud chcete obnovit stav spravované domény Azure služba AD DS, která je v *pozastaveném* stavu, proveďte následující kroky:
+Chcete-li obnovit stav spravované domény, která je v *pozastaveném* stavu, proveďte následující kroky:
 
 1. V Azure Portal vyhledejte a vyberte **Domain Services**.
-1. Ze seznamu vyberte spravovanou doménu Azure služba AD DS, například *aaddscontoso.com*, a pak vyberte **stav**.
+1. Ze seznamu vyberte spravovanou doménu, třeba *aaddscontoso.com*, a pak vyberte **stav**.
 1. V závislosti na příčině pozastavení vyberte výstrahu, jako je například *AADDS503* nebo *AADDS504*.
 1. Vyberte odkaz řešení, který je uveden v upozornění, a postupujte podle kroků k jeho vyřešení.
 
@@ -106,11 +106,11 @@ Po vyřešení upozornění, když je spravovaná doména v *pozastaveném* stav
 
 ## <a name="deleted-state"></a>Odstraněný stav
 
-Pokud má spravovaná doména Azure služba AD DS v *pozastaveném* stavu 15 dní, odstraní se. Tento proces nelze obnovit.
+Pokud spravovaná doména zůstane v *pozastaveném* stavu po dobu 15 dnů, odstraní se. Tento proces nelze obnovit.
 
 ### <a name="what-to-expect"></a>Co očekávat
 
-Když Azure služba AD DS spravovaná doména vstoupí do *odstraněného* stavu, zobrazí se následující chování:
+Když spravovaná doména vstoupí do *odstraněného* stavu, je vidět následující chování:
 
 * Odstraní se všechny prostředky a zálohy pro spravovanou doménu.
 * Nemůžete obnovit spravovanou doménu a potřebujete vytvořit náhradní spravovanou doménu k opakovanému použití Azure služba AD DS.
@@ -118,7 +118,7 @@ Když Azure služba AD DS spravovaná doména vstoupí do *odstraněného* stavu
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete zajistit, aby byla ve vaší službě Azure služba AD DS spravovaná doména v dobrém stavu, a minimalizovat riziko, že se jim pozastaví, zjistěte, jak [vyřešit výstrahy pro spravovanou doménu][resolve-alerts].
+Aby se vaše spravovaná doména v dobrém stavu a minimalizovala rizika, přestala být pozastavena. Přečtěte si, jak [vyřešit výstrahy pro spravovanou doménu][resolve-alerts].
 
 <!-- INTERNAL LINKS -->
 [alert-nsg]: alert-nsg.md

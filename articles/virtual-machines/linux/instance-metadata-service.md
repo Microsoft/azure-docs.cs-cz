@@ -1,5 +1,5 @@
 ---
-title: Instance Metadata Service Azure
+title: Azure Instance Metadata Service
 description: Rozhraní RESTful pro získání informací o výpočetních, síťových a nadcházejících událostech týkajících se virtuálních počítačů.
 services: virtual-machines
 author: KumariSupriya
@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 04/29/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: aa7a076d10bfa28b4ce8dea9776435677c6909d8
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: f638b332eae5cd85e1cb6aae9c6bd8eb4ad44848
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84634315"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84886196"
 ---
 # <a name="azure-instance-metadata-service"></a>Služba metadat instance Azure
 
@@ -177,7 +177,7 @@ Rozhraní API | Výchozí formát dat | Jiné formáty
 /instance | json | text
 /scheduledevents | json | žádné
 
-Pokud chcete získat přístup k nevýchozímu formátu odpovědi, v žádosti určete požadovaný formát jako parametr řetězce dotazu. Například:
+Pokud chcete získat přístup k nevýchozímu formátu odpovědi, v žádosti určete požadovaný formát jako parametr řetězce dotazu. Příklad:
 
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
@@ -224,7 +224,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance"
 
 Metadata Service obsahuje více rozhraní API představujících různé zdroje dat.
 
-Rozhraní API | Popis | Představená verze
+Rozhraní API | Description | Představená verze
 ----|-------------|-----------------------
 /attested | Viz [Attestation data](#attested-data) | 2018-10-01
 /identity | Viz [získání přístupového tokenu](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) . | 2018-02-01
@@ -235,7 +235,7 @@ Rozhraní API | Popis | Představená verze
 
 Rozhraní API instance zpřístupňuje důležitá metadata pro instance virtuálních počítačů, včetně virtuálních počítačů, sítí a úložiště. K následujícím kategoriím lze přistupovat prostřednictvím instance/Compute:
 
-Data | Popis | Představená verze
+Data | Description | Představená verze
 -----|-------------|-----------------------
 azEnvironment | Prostředí Azure, ve kterém je spuštěný virtuální počítač | 2018-10-01
 customData | Tato funkce je momentálně zakázaná. Tuto dokumentaci budeme aktualizovat, jakmile bude k dispozici. | 2019-02-01
@@ -426,7 +426,7 @@ Cloud a hodnoty prostředí Azure jsou uvedené níže.
 
 Síťová metadata jsou součástí rozhraní API instance. V rámci koncového bodu instance/sítě jsou k dispozici následující kategorie sítě.
 
-Data | Popis | Představená verze
+Data | Description | Představená verze
 -----|-------------|-----------------------
 IPv4/privateIpAddress | Místní IPv4 adresa virtuálního počítače | 2017-04-02
 IPv4/publicIpAddress | Veřejná IPv4 adresa virtuálního počítače | 2017-04-02
@@ -494,7 +494,7 @@ Profil úložiště virtuálního počítače je rozdělen do tří kategorií: 
 
 Objekt odkazu na bitovou kopii obsahuje následující informace o imagi operačního systému:
 
-Data    | Popis
+Data    | Description
 --------|-----------------
 id      | ID prostředku
 offer   | Nabídka platformy nebo Image Marketplace
@@ -504,7 +504,7 @@ verze | Verze image platformy nebo webu Marketplace
 
 Objekt disku operačního systému obsahuje následující informace o disku s operačním systémem, který používá virtuální počítač:
 
-Data    | Popis
+Data    | Description
 --------|-----------------
 vyrovnávací | Požadavky na ukládání do mezipaměti
 createOption | Informace o tom, jak byl virtuální počítač vytvořen
@@ -519,7 +519,7 @@ writeAcceleratorEnabled | Bez ohledu na to, jestli je na disku povolená writeAc
 
 Pole datových disků obsahuje seznam datových disků připojených k virtuálnímu počítači. Každý objekt datového disku obsahuje následující informace:
 
-Data    | Popis
+Data    | Description
 --------|-----------------
 vyrovnávací | Požadavky na ukládání do mezipaměti
 createOption | Informace o tom, jak byl virtuální počítač vytvořen
@@ -681,7 +681,7 @@ Hodnota nonce je nepovinný řetězec s deseti číslicemi. Pokud není zadán, 
 Objekt BLOB podpisu je verze dokumentu s podpisem [PKCS7](https://aka.ms/pkcs7) . Obsahuje certifikát použitý k podepsání spolu s podrobnostmi o virtuálním počítači, jako je například vmId, SKU, nonce, subscriptionId, časové razítko pro vytvoření a vypršení platnosti dokumentu a informace o plánu obrázku. Informace o plánu se naplní jenom pro Azure Marketplace image. Certifikát se dá extrahovat z odpovědi a použít k ověření, že odpověď je platná a přichází z Azure.
 Dokument obsahuje následující pole:
 
-Data | Popis
+Data | Description
 -----|------------
 generované | Řetězec, který může být volitelně poskytnutý požadavkem. Pokud nebyla zadána žádná hodnota nonce, použije se aktuální časové razítko UTC.
 rozhraní | [Azure Marketplace plán obrázku](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan). Obsahuje ID plánu (název), obrázek produktu nebo nabídku (produkt) a ID vydavatele (vydavatel).
@@ -710,7 +710,7 @@ openssl pkcs7 -in decodedsignature -inform DER -out sign.pk7
 # Get Public key out of pkc7
 openssl pkcs7 -in decodedsignature -inform DER  -print_certs -out signer.pem
 # Get the intermediate certificate
-wget -q -O intermediate.cer "$(openssl x509 -in signer.pem -text -noout | grep " CA Issuers -" | awk -FURI: '{print $2}')"
+curl -s -o intermediate.cer "$(openssl x509 -in signer.pem -text -noout | grep " CA Issuers -" | awk -FURI: '{print $2}')"
 openssl x509 -inform der -in intermediate.cer -out intermediate.pem
 # Verify the contents
 openssl smime -verify -in sign.pk7 -inform pem -noverify
@@ -811,7 +811,7 @@ Ruby          | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.rb
 
 ## <a name="error-and-debugging"></a>Chyba a ladění
 
-Pokud se nenašel datový prvek nebo dojde k chybnému požadavku, Instance Metadata Service vrátí standardní chyby protokolu HTTP. Například:
+Pokud se nenašel datový prvek nebo dojde k chybnému požadavku, Instance Metadata Service vrátí standardní chyby protokolu HTTP. Příklad:
 
 Stavový kód HTTP | Důvod
 ----------------|-------
@@ -841,6 +841,50 @@ Chyba služby 500     | Zkusit znovu za chvíli
    * V současné době se Tagy pro sady škálování zobrazují jenom na virtuálním počítači při restartování, obnovení Image nebo změně disku na instanci.
 1. Vypršel časový limit žádosti o mé volání služby?
    * Volání metadat je nutné provést z primární IP adresy přiřazené k primární síťové kartě virtuálního počítače. V případě, že jste změnili trasy, musí existovat trasa pro adresu 169.254.169.254/32 v místní směrovací tabulce vašeho virtuálního počítače.
+   * <details>
+        <summary>Ověřuje se tabulka směrování.</summary>
+
+        1. Vypíšete místní směrovací tabulku pomocí příkazu, například `netstat -r` a vyhledejte položku IMDS (např.):
+            ```console
+            ~$ netstat -r
+            Kernel IP routing table
+            Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
+            default         _gateway        0.0.0.0         UG        0 0          0 eth0
+            168.63.129.16   _gateway        255.255.255.255 UGH       0 0          0 eth0
+            169.254.169.254 _gateway        255.255.255.255 UGH       0 0          0 eth0
+            172.16.69.0     0.0.0.0         255.255.255.0   U         0 0          0 eth0
+            ```
+        1. Ověřte, zda trasa existuje pro `169.254.169.254` , a poznamenejte si odpovídající síťové rozhraní (např. `eth0` ).
+        1. Vypíše konfiguraci rozhraní pro odpovídající rozhraní ve směrovací tabulce (Všimněte si, že se může změnit přesný název konfiguračního souboru)
+            ```console
+            ~$ cat /etc/netplan/50-cloud-init.yaml
+            network:
+            ethernets:
+                eth0:
+                    dhcp4: true
+                    dhcp4-overrides:
+                        route-metric: 100
+                    dhcp6: false
+                    match:
+                        macaddress: 00:0d:3a:e4:c7:2e
+                    set-name: eth0
+            version: 2
+            ```
+        1. Pokud používáte dynamickou IP adresu, poznamenejte si adresu MAC. Pokud používáte statickou IP adresu, můžete si uvedené IP adresy nebo adresu MAC poznamenat.
+        1. Potvrďte, že rozhraní odpovídá primární síťové kartě virtuálního počítače a primární IP adrese. Primární síťovou kartu nebo IP adresu najdete na stránce konfigurace sítě na webu Azure Portal nebo jejich vyhledáním [pomocí Azure CLI](https://docs.microsoft.com/cli/azure/vm/nic?view=azure-cli-latest#az-vm-nic-show). Poznamenejte si veřejné a privátní IP adresy (a adresu MAC, pokud používáte rozhraní příkazového řádku). Příklad rozhraní příkazového řádku PowerShellu:
+            ```powershell
+            $ResourceGroup = '<Resource_Group>'
+            $VmName = '<VM_Name>'
+            $NicNames = az vm nic list --resource-group $ResourceGroup --vm-name $VmName | ConvertFrom-Json | Foreach-Object { $_.id.Split('/')[-1] }
+            foreach($NicName in $NicNames)
+            {
+                $Nic = az vm nic show --resource-group $ResourceGroup --vm-name $VmName --nic $NicName | ConvertFrom-Json
+                Write-Host $NicName, $Nic.primary, $Nic.macAddress
+            }
+            # Output: ipexample606 True 00-0D-3A-E4-C7-2E
+            ```
+        1. Pokud se neshodují, aktualizujte směrovací tabulku tak, aby byla primární síťová karta/IP cílem.
+    </details>
 
 ## <a name="support-and-feedback"></a>Podpora a váš názor
 
@@ -856,3 +900,4 @@ Použijte typ problému `Management` a `Instance Metadata Service` jako kategori
 Přečtěte si další informace:
 1. [Získání přístupového tokenu pro virtuální počítač](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md).
 1. [Scheduled Events](scheduled-events.md)
+

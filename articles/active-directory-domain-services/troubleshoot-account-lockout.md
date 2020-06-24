@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 04/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 7d2e22804c06f589c7990bf8f19319b897363a93
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 22743a1e202ac26d95cf4a48cb58b2a2418e9f0c
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80743448"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734177"
 ---
-# <a name="troubleshoot-account-lockout-problems-with-an-azure-ad-domain-services-managed-domain"></a>Řešení problémů s uzamknutím účtu pomocí spravované domény Azure AD Domain Services
+# <a name="troubleshoot-account-lockout-problems-with-an-azure-active-directory-domain-services-managed-domain"></a>Řešení problémů s uzamknutím účtu pomocí spravované domény Azure Active Directory Domain Services
 
-Aby se předešlo opakovaným pokusům o přihlášení, Azure služba AD DS uzamkne účty po definované prahové hodnotě. K uzamčení účtu může dojít i v případě nehody bez incidentu útoku na přihlášení. Pokud třeba uživatel opakovaně zadá nesprávné heslo nebo se služba pokusí použít původní heslo, účet se zamkne.
+Aby nedocházelo k opakovaným pokusům o přihlášení, Azure Active Directory Domain Services (Azure služba AD DS) uzamkne účty po definované prahové hodnotě. K uzamčení účtu může dojít i v případě nehody bez incidentu útoku na přihlášení. Pokud třeba uživatel opakovaně zadá nesprávné heslo nebo se služba pokusí použít původní heslo, účet se zamkne.
 
 V tomto článku najdete informace o tom, proč dochází k uzamčení účtu a jak můžete nakonfigurovat chování a jak zkontrolovat audity zabezpečení pro řešení potíží s událostmi uzamčení.
 
@@ -33,9 +33,9 @@ Výchozí prahové hodnoty pro uzamknutí účtu se konfigurují pomocí jemně 
 
 ### <a name="fine-grained-password-policy"></a>Jemně odstupňované zásady hesel
 
-Jemně odstupňované zásady hesel (FGPPs) umožňují použít specifická omezení pro zásady hesel a uzamčení účtů pro různé uživatele v doméně. Podrobné zásady má vliv jenom na uživatele v rámci spravované domény Azure služba AD DS. Uživatelé cloudu a uživatelé domény synchronizovaný do spravované domény Azure služba AD DS ve službě Azure AD jsou ovlivněné zásadami hesel v rámci Azure služba AD DS. Jejich účty ve službě Azure AD nebo v místním adresáři nejsou ovlivněny.
+Jemně odstupňované zásady hesel (FGPPs) umožňují použít specifická omezení pro zásady hesel a uzamčení účtů pro různé uživatele v doméně. Podrobné zásady má vliv jenom na uživatele ve spravované doméně. Uživatelé cloudu a uživatelé domény synchronizovaný do spravované domény Azure služba AD DS ve službě Azure AD jsou ovlivněné zásadami hesel v rámci Azure služba AD DS. Jejich účty ve službě Azure AD nebo v místním adresáři nejsou ovlivněny.
 
-Zásady se distribuují prostřednictvím přidružení skupiny ve spravované doméně Azure služba AD DS a veškeré změny, které provedete, se uplatní při přihlášení dalšího uživatele. Změna zásad neodemkne uživatelský účet, který je už uzamčený.
+Zásady jsou distribuovány prostřednictvím přidružení skupiny ve spravované doméně a veškeré provedené změny se uplatní při přihlášení dalšího uživatele. Změna zásad neodemkne uživatelský účet, který je už uzamčený.
 
 Další informace o podrobných zásadách pro hesla a rozdílech mezi uživateli vytvořenými přímo v Azure služba AD DS v porovnání se službou Azure AD najdete v tématu [Konfigurace zásad hesel a uzamčení účtů][configure-fgpp].
 
@@ -88,7 +88,7 @@ AADDomainServicesAccountManagement
 
 Další informace o jemně odstupňovaných zásadách pro hesla pro úpravu prahových hodnot uzamčení účtů najdete v tématu [Konfigurace zásad hesel a uzamčení účtů][configure-fgpp].
 
-Pokud stále máte problémy s připojením k VIRTUÁLNÍmu počítači do spravované domény Azure služba AD DS, [Najděte nápovědu a otevřete lístek podpory pro Azure Active Directory][azure-ad-support].
+Pokud stále máte problémy s připojením k VIRTUÁLNÍmu počítači ke spravované doméně, [Najděte nápovědu a otevřete lístek podpory pro Azure Active Directory][azure-ad-support].
 
 <!-- INTERNAL LINKS -->
 [configure-fgpp]: password-policy.md

@@ -5,7 +5,7 @@ services: active-directory
 documentationcenter: ''
 author: curtand
 manager: daveba
-ms.topic: article
+ms.topic: how-to
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.date: 05/08/2020
 ms.author: curtand
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 791f2e9bf825bb0a1d1ce555c9fbd879106213df
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 40d1efd5d5e8dc5fed07bf5b9ab1cfa70927b5cf
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82995830"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84732578"
 ---
 # <a name="manage-your-users-with-my-staff-preview"></a>Správa uživatelů pomocí mých zaměstnanců (Preview)
 
@@ -32,7 +32,7 @@ Ověřování pomocí serveru SMS pro uživatele je funkce verze Public Preview 
 
 Moji zaměstnanci vycházejí z jednotek pro správu (Austrálie), což je kontejner prostředků, které se dají použít k omezení rozsahu administrativního řízení přiřazení role. V části Moji zaměstnanci se k definování podmnožiny uživatelů organizace, jako je například obchod nebo oddělení, používá Austrálie. Potom může být například správce týmu přiřazen k roli, jejíž obor je jeden nebo více jednotek Austrálie. V následujícím příkladu byla uživateli udělena role Správce ověřování a tři jednotky Austrálie jsou oborem role. Další informace o jednotkách správy najdete v tématu [Správa jednotek pro správu v Azure Active Directory](directory-administrative-units.md).
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 K dokončení tohoto článku potřebujete následující prostředky a oprávnění:
 
@@ -54,7 +54,7 @@ K dokončení tohoto článku potřebujete následující prostředky a oprávn�
 Po nakonfigurování jednotky Austrálie můžete tento obor použít pro uživatele, kteří mají přístup k mému zaměstnanci. Přístup k zaměstnancům mají jenom uživatelé, kteří mají přiřazenou roli správce. Pokud chcete povolit Moji zaměstnanci, proveďte následující kroky:
 
 1. Přihlaste se k Azure Portal jako správce uživatele.
-2. Procházením **Azure Active Directory** > **uživatelských nastavení** > uživatelských**funkcí** > **verze Preview spravovat nastavení uživatelských funkcí**.
+2. Procházením **Azure Active Directory**  >  **uživatelských nastavení**uživatelských  >  **funkcí**  >  **verze Preview spravovat nastavení uživatelských funkcí**.
 3. V části **Správci mají přístup k mým pracovníkům**, můžete se rozhodnout povolit pro všechny uživatele, vybrané uživatele nebo žádný přístup uživatelů.
 
 > [!Note]
@@ -80,7 +80,7 @@ Důrazně doporučujeme chránit své pracovníky pomocí [zásad podmíněného
 
 ## <a name="using-my-staff"></a>Používání mých zaměstnanců
 
-Když uživatel přejde na Moji zaměstnanci, zobrazí se názvy [jednotek pro správu](directory-administrative-units.md) , se kterými mají oprávnění správce. V [dokumentaci pro uživatele mých zaměstnanců](../user-help/my-staff-team-manager.md)používáme termín "umístění", ve kterém se odkazuje na jednotky pro správu. Pokud oprávnění správce nemají obor AU, vztahují se oprávnění na celou organizaci. Po povolení mých zaměstnanců můžou uživatelé, kteří mají povolený a přiřazenou roli správce, k němu přistupovat prostřednictvím [https://mystaff.microsoft.com](https://mystaff.microsoft.com). Můžou vybrat AU a zobrazit uživatele v této jednotce AU a vybrat uživatele, který otevře jeho profil.
+Když uživatel přejde na Moji zaměstnanci, zobrazí se názvy [jednotek pro správu](directory-administrative-units.md) , se kterými mají oprávnění správce. V [dokumentaci pro uživatele mých zaměstnanců](../user-help/my-staff-team-manager.md)používáme termín "umístění", ve kterém se odkazuje na jednotky pro správu. Pokud oprávnění správce nemají obor AU, vztahují se oprávnění na celou organizaci. Po povolení mých zaměstnanců můžou uživatelé, kteří mají povolený a přiřazenou roli správce, k němu přistupovat prostřednictvím [https://mystaff.microsoft.com](https://mystaff.microsoft.com) . Můžou vybrat AU a zobrazit uživatele v této jednotce AU a vybrat uživatele, který otevře jeho profil.
 
 ## <a name="reset-a-users-password"></a>Resetování hesla uživatele
 
@@ -90,7 +90,7 @@ Následující role mají oprávnění resetovat heslo uživatele:
 - [Správce privilegovaného ověřování](directory-assign-admin-roles.md#privileged-authentication-administrator)
 - [Globální správce](directory-assign-admin-roles.md#global-administrator--company-administrator)
 - [Správce helpdesku](directory-assign-admin-roles.md#helpdesk-administrator)
-- [Správce uživatele](directory-assign-admin-roles.md#user-administrator)
+- [Správce uživatelů](directory-assign-admin-roles.md#user-administrator)
 - [Správce hesel](directory-assign-admin-roles.md#password-administrator)
 
 V **okně Moji zaměstnanci**otevřete profil uživatele. Vyberte **resetovat heslo**.
@@ -118,7 +118,7 @@ Chcete-li spravovat telefonní číslo uživatele, je nutné přiřadit jednu z 
 - [Správce privilegovaného ověřování](directory-assign-admin-roles.md#privileged-authentication-administrator)
 - [Globální správce](directory-assign-admin-roles.md#global-administrator--company-administrator)
 
-## <a name="search"></a>Search
+## <a name="search"></a>Hledat
 
 V organizaci můžete hledat oddělení Austrálie a uživatele ve vaší organizaci pomocí panelu hledání v části Moji zaměstnanci. Můžete vyhledávat ve všech centrech a uživatelích ve vaší organizaci, ale můžete provádět změny jenom pro uživatele, kteří jsou ve AU, přes který jste měli oprávnění správce.
 
@@ -130,5 +130,5 @@ Protokoly auditu můžete zobrazit pro akce provedené ve složce Moji zaměstna
 
 ## <a name="next-steps"></a>Další kroky
 
-[My Staff user documentation](../user-help/my-staff-team-manager.md)
-[Dokumentace ke správním jednotkám pro](directory-administrative-units.md) uživatele s pracovníky
+Dokumentace pro uživatele [mých zaměstnanců](../user-help/my-staff-team-manager.md) 
+ [Dokumentace ke správním jednotkám](directory-administrative-units.md)

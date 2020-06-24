@@ -9,20 +9,20 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 03/18/2020
 ms.author: iainfou
-ms.openlocfilehash: bdfc7d37d99dc5511f47e33d1848c3f142a9693e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 99b61bdd4318bf7c77ae53cc9b77e66ebd6c098a
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654459"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84733394"
 ---
-# <a name="review-security-audit-events-in-azure-ad-domain-services-using-azure-monitor-workbooks"></a>Kontrola událostí auditu zabezpečení v Azure AD Domain Services používání sešitů Azure Monitor
+# <a name="review-security-audit-events-in-azure-active-directory-domain-services-using-azure-monitor-workbooks"></a>Kontrola událostí auditu zabezpečení v Azure Active Directory Domain Services používání sešitů Azure Monitor
 
 Pokud chcete porozumět stavu vaší Azure Active Directory Domain Services (Azure služba AD DS) spravované domény, můžete povolit události auditu zabezpečení. Tyto události auditu zabezpečení se pak dají zkontrolovat pomocí Azure Monitor sešitů, které kombinují text, analytické dotazy a parametry do propracovaných interaktivních sestav. Azure služba AD DS obsahuje šablony sešitu pro přehled zabezpečení a aktivity účtu, které umožňují dig události auditu a spravovat vaše prostředí.
 
 V tomto článku se dozvíte, jak pomocí Azure Monitor sešity zkontrolovat události auditu zabezpečení v Azure služba AD DS.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 K dokončení tohoto článku potřebujete následující prostředky a oprávnění:
 
@@ -31,7 +31,7 @@ K dokončení tohoto článku potřebujete následující prostředky a oprávn�
 * Tenant Azure Active Directory přidružený k vašemu předplatnému, buď synchronizovaný s místním adresářem, nebo jenom s cloudovým adresářem.
     * V případě potřeby [vytvořte tenanta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure k vašemu účtu][associate-azure-ad-tenant].
 * Ve vašem tenantovi Azure AD je povolená a nakonfigurovaná spravovaná doména Azure Active Directory Domain Services.
-    * V případě potřeby dokončete kurz a [vytvořte a nakonfigurujte instanci Azure Active Directory Domain Services][create-azure-ad-ds-instance].
+    * V případě potřeby dokončete kurz a [vytvořte a nakonfigurujte Azure Active Directory Domain Services spravovanou doménu][create-azure-ad-ds-instance].
 * Povolené události auditu zabezpečení vaší Azure Active Directory Domain Services spravované doméně, které streamují data do pracovního prostoru Log Analytics
     * V případě potřeby [Povolte audity zabezpečení pro Azure Active Directory Domain Services][enable-security-audits].
 

@@ -5,15 +5,15 @@ description: Vytvoření nebo úprava partnerského vztahu Exchange pomocí Powe
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 23c905f148da614c7785b61b76abed191206cd90
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1c0620875e7da4582156080c4a52fd6fbe0e573c
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81678614"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84700242"
 ---
 # <a name="create-or-modify-an-exchange-peering-by-using-powershell"></a>Vytvoření nebo úprava partnerského vztahu Exchange pomocí PowerShellu
 
@@ -21,7 +21,7 @@ Tento článek popisuje, jak vytvořit partnerský vztah Microsoft Exchange pomo
 
 Pokud chcete, můžete tuto příručku dokončit pomocí webu Azure [Portal](howto-exchange-portal.md).
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 * Před zahájením konfigurace si Projděte návod [požadavky](prerequisites.md) a [partnerský vztah Exchange](walkthrough-exchange-all.md) .
 * Pokud už máte partnerské vztahy Exchange s Microsoftem, které se nepřevádějí do prostředků Azure, přečtěte si téma [Převod staršího partnerského vztahu Exchange na prostředek Azure pomocí PowerShellu](howto-legacy-exchange-powershell.md).
 

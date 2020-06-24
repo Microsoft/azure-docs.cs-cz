@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/19/2018
-ms.openlocfilehash: ace818adb4c5157675ac3b1d88f5df2ef61d69ee
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a264e40814952577d3a7db3b36c168dfc396f388
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84042201"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85249140"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>Analýza mezi klienty pomocí extrahovaných dat – více tenantů aplikace
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -90,8 +90,8 @@ K dispozici je často mnoho transakčních horizontálně dělené databází, k
 V následujících krocích nasadíte úložiště analýzy, které se nazývá **tenantanalytics**. Nasadíte také předdefinované tabulky, které jsou vyplněny později v tomto kurzu:
 1. V prostředí PowerShell ISE otevřete *. ..\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1* 
 2. Nastavte ve skriptu $DemoScenario proměnnou tak, aby odpovídala vašemu výběru úložiště analýz. Pro účely učení se doporučuje používat databázi bez columnstore.
-    - Pokud chcete používat SQL Database bez columnstore, nastavte **$DemoScenario**  =  **2** .
-    - Pokud chcete používat SQL Database s columnstore, nastavte **$DemoScenario**  =  **3** .  
+    - Pokud chcete použít SQL Database bez columnstore, nastavte **$DemoScenario**  =  **2** .
+    - Pokud chcete použít SQL Database s columnstore, nastavte **$DemoScenario**  =  **3** .  
 3. Stisknutím klávesy **F5** Spusťte ukázkový skript (který volá skript *Deploy-TenantAnalytics \<XX> . ps1* ), který vytvoří úložiště analýzy tenanta. 
 
 Teď, když jste nasadili aplikaci a vyplnili ji zajímavými daty tenanta, pomocí [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) připojte **tenants1- \<User\> Mt-** a **Catalog- \<User\> Mt-** servery pomocí přihlašovacích údajů = *Developer*, Password = *P \@ ssword1*.

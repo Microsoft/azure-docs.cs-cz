@@ -390,7 +390,7 @@ Dále tuto aplikaci nasadíte na web Azure, aby byla přístupná ze všech zař
 
     ![Dlaždice Microsoft Azure App Service][B15]
 
-3. V okně **Vytvořit plán App Service** vyberte váš účet Azure. Vyberte možnost **změnit typ** > **webové aplikace**. Ponechejte výchozí **Název webové aplikace** a vyberte **Předplatné**, **Skupinu prostředků** a **Plán služby App Service**.
+3. V okně **Vytvořit plán App Service** vyberte váš účet Azure. Vyberte možnost **změnit typ**  >  **webové aplikace**. Ponechejte výchozí **Název webové aplikace** a vyberte **Předplatné**, **Skupinu prostředků** a **Plán služby App Service**.
 
 4. Vyberte **Vytvořit**.
 

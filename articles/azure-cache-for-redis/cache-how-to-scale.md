@@ -7,11 +7,11 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 04/11/2017
 ms.openlocfilehash: 68c668561123aee943f54e6fdcbad7c6450957f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277996"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84698338"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>Jak škálovat Azure cache pro Redis
 Mezipaměť Azure pro Redis má různé nabídky mezipaměti, které poskytují flexibilitu v výběru velikosti a funkcí mezipaměti. Po vytvoření mezipaměti můžete velikost a cenovou úroveň mezipaměti škálovat, pokud se změní požadavky vaší aplikace. V tomto článku se dozvíte, jak škálovat mezipaměť pomocí Azure Portal a nástrojů jako Azure PowerShell a Azure CLI.
@@ -64,19 +64,19 @@ Kromě škálování instancí mezipaměti v Azure Portal můžete škálovat po
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Mezipaměť Azure můžete škálovat pro instance Redis pomocí prostředí PowerShell pomocí rutiny [set-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/set-azrediscache) při změně vlastností `Size`, `Sku`, nebo. `ShardCount` Následující příklad ukazuje, jak škálovat mezipaměť s názvem `myCache` na 2,5 GB mezipaměti. 
+Mezipaměť Azure můžete škálovat pro instance Redis pomocí prostředí PowerShell pomocí rutiny [set-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/set-azrediscache) při `Size` `Sku` změně vlastností,, nebo `ShardCount` . Následující příklad ukazuje, jak škálovat mezipaměť s názvem `myCache` na 2,5 GB mezipaměti. 
 
     Set-AzRedisCache -ResourceGroupName myGroup -Name myCache -Size 2.5GB
 
 Další informace o škálování pomocí PowerShellu najdete v tématu [škálování mezipaměti Azure pro Redis pomocí PowerShellu](cache-how-to-manage-redis-cache-powershell.md#scale).
 
 ### <a name="scale-using-azure-cli"></a>Škálování pomocí Azure CLI
-Pokud chcete škálovat mezipaměť Azure pro instance Redis pomocí rozhraní příkazového řádku Azure `azure rediscache set` , zavolejte příkaz a předejte požadované změny konfigurace, které budou zahrnovat novou velikost, skladovou položku nebo velikost clusteru, v závislosti na požadované operaci škálování.
+Pokud chcete škálovat mezipaměť Azure pro instance Redis pomocí rozhraní příkazového řádku Azure, zavolejte `azure rediscache set` příkaz a předejte požadované změny konfigurace, které budou zahrnovat novou velikost, skladovou položku nebo velikost clusteru, v závislosti na požadované operaci škálování.
 
 Další informace o škálování pomocí Azure CLI najdete v tématu [Změna nastavení stávající mezipaměti Azure pro Redis](cache-manage-cli.md#scale).
 
 ### <a name="scale-using-maml"></a>Škálování pomocí MAML
-Pokud chcete škálovat mezipaměť Azure pro instance Redis pomocí [knihoven pro správu Microsoft Azure (MAML)](https://azure.microsoft.com/updates/management-libraries-for-net-release-announcement/), zavolejte `IRedisOperations.CreateOrUpdate` metodu a předejte novou velikost pro `RedisProperties.SKU.Capacity`.
+Pokud chcete škálovat mezipaměť Azure pro instance Redis pomocí [knihoven pro správu Microsoft Azure (MAML)](https://azure.microsoft.com/updates/management-libraries-for-net-release-announcement/), zavolejte `IRedisOperations.CreateOrUpdate` metodu a předejte novou velikost pro `RedisProperties.SKU.Capacity` .
 
     static void Main(string[] args)
     {
@@ -134,13 +134,13 @@ Ne, název a klíče mezipaměti se během operace škálování nezměnily.
 * Když se **standardní** mezipaměť škáluje na větší velikost nebo úroveň, nebo se mezipaměť **Premium** škáluje na větší velikost, obvykle se zachovají všechna data. Když velikost mezipaměti **úrovně Standard** nebo **Premium** zmenšíte do menší velikosti, může dojít ke ztrátě dat v závislosti na tom, kolik dat je v mezipaměti, které souvisí s novou velikostí při škálování. Pokud dojde ke ztrátě dat při horizontálním navýšení kapacity, klíče se vyloučí pomocí zásad vyřazení [AllKeys-LRU](https://redis.io/topics/lru-cache) . 
 
 ### <a name="is-my-custom-databases-setting-affected-during-scaling"></a>Ovlivňuje toto nastavení vlastní databáze při škálování?
-Pokud jste při vytváření mezipaměti nakonfigurovali vlastní `databases` hodnotu pro toto nastavení, pamatujte na to, že některé cenové úrovně mají různé [limity databáze](cache-configure.md#databases). Tady jsou některé předpoklady při škálování v tomto scénáři:
+Pokud jste při vytváření mezipaměti nakonfigurovali vlastní hodnotu pro toto `databases` nastavení, pamatujte na to, že některé cenové úrovně mají různé [limity databáze](cache-configure.md#databases). Tady jsou některé předpoklady při škálování v tomto scénáři:
 
 * Při škálování na cenovou úroveň s nižším `databases` limitem než má aktuální úroveň:
-  * Pokud používáte výchozí počet `databases`, který je pro všechny cenové úrovně 16, neztratí se žádná data.
+  * Pokud používáte výchozí počet `databases` , který je pro všechny cenové úrovně 16, neztratí se žádná data.
   * Pokud používáte vlastní počet `databases` , který spadá do omezení pro vrstvu, na kterou chcete škálovat, toto `databases` nastavení se zachová a ztratí se žádná data.
   * Pokud používáte vlastní počet `databases` , který překračuje limity nové vrstvy, `databases` nastavení se sníží na limity nové úrovně a ztratí se všechna data v odebraných databázích.
-* Při škálování na cenovou úroveň se stejným nebo vyšším `databases` limitem, než je aktuální vrstva `databases` , se nastavení zachová a ztratí se žádná data.
+* Při škálování na cenovou úroveň se stejným nebo vyšším `databases` limitem, než je aktuální vrstva, `databases` se nastavení zachová a ztratí se žádná data.
 
 I když mají mezipaměť úrovně Standard a Premium dostupnost 99,9%, není k dispozici žádná smlouva SLA pro ztrátu dat.
 

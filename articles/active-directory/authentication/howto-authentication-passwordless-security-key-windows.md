@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b8f5d6aaa96c24eb37eb78d237a489f1d25293c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c84d4f1ca01db07ea432bbf8f9929863a8134cfb
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80653987"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976282"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>Povolení přihlášení k bezpečnostnímu klíči bez hesla pro zařízení s Windows 10 pomocí Azure Active Directory (Preview)
 
@@ -31,16 +31,16 @@ Tento dokument se zaměřuje na povolení ověřování bez hesla založeného n
 
 | Typ zařízení | Připojené k Azure AD | k hybridní službě Azure AD. |
 | --- | --- | --- |
-| [Azure Multi-Factor Authentication](howto-mfa-getstarted.md) | × | × |
-| [Souhrnná registrace informací o zabezpečení ve verzi Preview](concept-registration-mfa-sspr-combined.md) | × | × |
-| Kompatibilní [klíče zabezpečení FIDO2](concept-authentication-passwordless.md#fido2-security-keys) | × | × |
-| Operace WebAuthN vyžaduje Windows 10 verze 1809 nebo vyšší. | × | × |
+| [Azure Multi-Factor Authentication](howto-mfa-getstarted.md) | X | X |
+| [Souhrnná registrace informací o zabezpečení ve verzi Preview](concept-registration-mfa-sspr-combined.md) | X | X |
+| Kompatibilní [klíče zabezpečení FIDO2](concept-authentication-passwordless.md#fido2-security-keys) | X | X |
+| Operace WebAuthN vyžaduje Windows 10 verze 1809 nebo vyšší. | X | X |
 | [Zařízení připojená k Azure AD](../devices/concept-azure-ad-join.md) vyžadují Windows 10 verze 1903 nebo vyšší. | × |   |
-| [Zařízení připojená k hybridní službě Azure AD](../devices/concept-azure-ad-join-hybrid.md) vyžadují Windows 10 Insider Build 18945 nebo vyšší. |   | × |
+| [Zařízení připojená k hybridní službě Azure AD](../devices/concept-azure-ad-join-hybrid.md) vyžadují Windows 10 verze 2004 nebo vyšší. |   | × |
 | Plně opravené řadiče domény se systémem Windows Server 2016/2019. |   | × |
 | [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect) verze 1.4.32.0 nebo novější |   | × |
-| [Microsoft Intune](https://docs.microsoft.com/intune/fundamentals/what-is-intune) (volitelné) | × | × |
-| Zřizovací balíček (volitelné) | × | × |
+| [Microsoft Intune](https://docs.microsoft.com/intune/fundamentals/what-is-intune) (volitelné) | X | X |
+| Zřizovací balíček (volitelné) | X | X |
 | Zásady skupiny (volitelné) |   | × |
 
 ### <a name="unsupported-scenarios"></a>Nepodporované scénáře
@@ -60,7 +60,7 @@ Následující scénáře nejsou podporovány:
 
 Zařízení připojená ke službě Azure AD, která vytváříte za verzi Preview funkce, musí používat Windows 10 verze 1809 nebo vyšší. Nejlepší prostředí je ve Windows 10 verze 1903 nebo vyšší.
 
-Zařízení připojená k hybridní službě Azure AD musí používat Windows 10 Insider Build 18945 nebo novější.
+Hybridní zařízení připojená k Azure AD musí používat Windows 10 verze 2004 nebo novější.
 
 ## <a name="enable-security-keys-for-windows-sign-in"></a>Povolit klíče zabezpečení pro přihlášení k Windows
 
@@ -81,7 +81,7 @@ Organizace se můžou rozhodnout použít jednu nebo více následujících meto
 Pokud chcete povolit použití klíčů zabezpečení pomocí Intune, proveďte následující kroky:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Přejděte na **Microsoft Intune** > **registrace zařízení registrace** > zařízení s**Windows registrace** > **Windows Hello pro firmy** > –**vlastnosti**.
+1. Přejděte na **Microsoft Intune**  >  **registrace zařízení registrace zařízení**s  >  **Windows registrace**  >  **Windows Hello pro firmy**–  >  **vlastnosti**.
 1. V části **Nastavení**nastavte **možnost použít klíče zabezpečení pro přihlášení** a **Povolit**.
 
 Konfigurace klíčů zabezpečení pro přihlášení nezávisí na konfiguraci Windows Hello pro firmy.
@@ -91,7 +91,7 @@ Konfigurace klíčů zabezpečení pro přihlášení nezávisí na konfiguraci 
 Pokud chcete cílit na konkrétní skupiny zařízení a povolit poskytovatele přihlašovacích údajů, použijte následující vlastní nastavení přes Intune:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Přejděte na **Microsoft Intune** > **konfigurační** > **profily** > zařízení**vytvořit profil**.
+1. Přejděte na **Microsoft Intune**  >  **konfigurační**  >  **profily**zařízení  >  **vytvořit profil**.
 1. Nakonfigurujte nový profil s následujícím nastavením:
    - Název: bezpečnostní klíče pro přihlášení k Windows
    - Popis: povolí použití klíčů zabezpečení FIDO během přihlašování Windows.
@@ -111,14 +111,14 @@ Pokud chcete cílit na konkrétní skupiny zařízení a povolit poskytovatele p
 Pro zařízení, která nespravuje služba Intune, je možné nainstalovat zřizovací balíček, který tuto funkci povolí. Aplikaci Windows Configuration Designer můžete nainstalovat z [Microsoft Store](https://www.microsoft.com/p/windows-configuration-designer/9nblggh4tx22). Provedením následujících kroků vytvořte zřizovací balíček:
 
 1. Spusťte Windows Configuration Designer.
-1. Vyberte **soubor** > **Nový projekt**.
+1. Vyberte **soubor**  >  **Nový projekt**.
 1. Dejte vašemu projektu název a poznamenejte si cestu, kde je projekt vytvořený, a pak vyberte **Další**.
 1. Nechejte *zřizovací balíček* vybraný jako **vybraný pracovní postup projektu** a vyberte **Další**.
 1. V části **Zvolte nastavení, které chcete zobrazit a konfigurovat**, vyberte *všechny edice Windows desktopu* a pak vyberte **Další**.
-1. Vyberte **Finish** (Dokončit).
-1. V nově vytvořeném projektu přejděte do >  **nastavení modulu runtime****WindowsHelloForBusiness** > **SecurityKeys** > **UseSecurityKeyForSignIn**.
+1. Vyberte **Dokončit**.
+1. V nově vytvořeném projektu přejděte do **nastavení modulu runtime**  >  **WindowsHelloForBusiness**  >  **SecurityKeys**  >  **UseSecurityKeyForSignIn**.
 1. Nastavte **UseSecurityKeyForSignIn** na *povoleno*.
-1. Vyberte **exportovat** > **zřizovací balíček** .
+1. Vyberte **exportovat**  >  **zřizovací balíček** .
 1. V okně **sestavení** ponechte výchozí nastavení v části **Popis zřizovacího balíčku**a pak vyberte **Další**.
 1. V okně **sestavení** v části **Vybrat podrobnosti zabezpečení pro zřizovací balíček** ponechte výchozí nastavení a vyberte **Další**.
 1. Poznamenejte si nebo změňte cestu v oknech **sestavení** v části **Vyberte místo, kde se má zřizovací balíček uložit** , a vyberte **Další**.
@@ -131,12 +131,12 @@ Pro zařízení, která nespravuje služba Intune, je možné nainstalovat zřiz
 
 ### <a name="enable-with-group-policy"></a>Povolit s Zásady skupiny
 
-Pro **zařízení připojená k hybridní službě Azure AD**můžou organizace nakonfigurovat následující nastavení zásady skupiny, aby se povolilo přihlášení k bezpečnostnímu klíči Fido. Toto nastavení najdete v části **Konfigurace** > **šablony pro správu** > přihlášení k**nástroji** > **Logon** > **zapnout bezpečnostní klíč**:
+Pro **zařízení připojená k hybridní službě Azure AD**můžou organizace nakonfigurovat následující nastavení zásady skupiny, aby se povolilo přihlášení k bezpečnostnímu klíči Fido. Toto nastavení najdete v části **Konfigurace počítače**  >  **šablony pro správu**přihlášení  >  **System**  >  **Logon**  >  **k nástroji zapnout bezpečnostní klíč**:
 
 - Nastavením této zásady na **povoleno** umožňuje uživatelům přihlašovat se pomocí bezpečnostních klíčů.
 - Nastavení této zásady na **zakázáno** nebo **Nenakonfigurováno** zabrání uživatelům v přihlašování pomocí bezpečnostních klíčů.
 
-Toto nastavení Zásady skupiny vyžaduje aktualizovanou verzi šablony `credentialprovider.admx` zásady skupiny. Tato nová šablona je k dispozici v další verzi Windows serveru a ve Windows 10 20H1. Toto nastavení lze spravovat pomocí zařízení s jednou z těchto novějších verzí systému Windows nebo centrálně podle pokynů v tématu Podpora, [jak vytvořit a spravovat centrální úložiště pro Zásady skupiny šablony pro správu ve Windows](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra).
+Toto nastavení Zásady skupiny vyžaduje aktualizovanou verzi `credentialprovider.admx` šablony Zásady skupiny. Tato nová šablona je k dispozici v další verzi Windows serveru a ve Windows 10 20H1. Toto nastavení lze spravovat pomocí zařízení s jednou z těchto novějších verzí systému Windows nebo centrálně podle pokynů v tématu Podpora, [jak vytvořit a spravovat centrální úložiště pro Zásady skupiny šablony pro správu ve Windows](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra).
 
 ## <a name="sign-in-with-fido2-security-key"></a>Přihlaste se pomocí bezpečnostního klíče FIDO2.
 
@@ -147,7 +147,7 @@ V níže uvedeném příkladu již uživatel s názvem Bala Sandhu zřídil svů
 ### <a name="manage-security-key-biometric-pin-or-reset-security-key"></a>Správa klíčového bezpečnostního biometriky, PIN kódu nebo resetování klíče zabezpečení
 
 * Windows 10 verze 1903 nebo vyšší
-   * Uživatelé můžou otevřít **nastavení Windows** na svém zařízení > **Accounts** > **klíč zabezpečení** účty.
+   * Uživatelé můžou otevřít **nastavení Windows** na svém zařízení > **Accounts**  >  **klíč zabezpečení** účty.
    * Uživatelé můžou změnit kód PIN, aktualizovat biometrika nebo obnovit svůj bezpečnostní klíč.
 
 ## <a name="troubleshooting-and-feedback"></a>Řešení potíží a zpětná vazba

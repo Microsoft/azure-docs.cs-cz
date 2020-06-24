@@ -7,15 +7,15 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: normesta
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 9b4accd14785aedee06850d5a79dc9835086306a
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 4b0145514a884c43ef18518cf25a2a78b1fc3aa3
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680368"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84809053"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Kompletní řešení potíží pomocí metrik a protokolování služby Azure Storage, nástrojů AzCopy a Message Analyzer
 
@@ -90,11 +90,11 @@ Nejdřív bude nutné nakonfigurovat Azure Storage protokolování a metriky, ab
 
 ### <a name="configure-net-client-side-logging"></a>Konfigurace protokolování na straně klienta .NET
 
-Chcete-li konfigurovat protokolování na straně klienta pro aplikaci .NET, povolte diagnostiku rozhraní .NET v konfiguračním souboru aplikace (Web. config nebo App. config). Podrobnosti najdete v tématu [protokolování na straně klienta pomocí klientské knihovny pro úložiště .NET](https://msdn.microsoft.com/library/azure/dn782839.aspx) a [protokolování na straně klienta s Microsoft Azure Storage SDK pro jazyk Java](https://msdn.microsoft.com/library/azure/dn782844.aspx) na webu MSDN.
+Chcete-li konfigurovat protokolování na straně klienta pro aplikaci .NET, povolte diagnostiku rozhraní .NET v konfiguračním souboru aplikace (web.config nebo app.config). Podrobnosti najdete v tématu [protokolování na straně klienta pomocí klientské knihovny pro úložiště .NET](https://msdn.microsoft.com/library/azure/dn782839.aspx) a [protokolování na straně klienta s Microsoft Azure Storage SDK pro jazyk Java](https://msdn.microsoft.com/library/azure/dn782844.aspx) na webu MSDN.
 
 Protokol na straně klienta obsahuje podrobné informace o tom, jak klient připraví požadavek a přijímá a zpracovává odpověď.
 
-Klientská knihovna pro úložiště ukládá data protokolu na straně klienta v umístění zadaném v konfiguračním souboru aplikace (Web. config nebo App. config).
+Klientská knihovna pro úložiště ukládá data protokolu na straně klienta v umístění zadaném v konfiguračním souboru aplikace (web.config nebo app.config).
 
 ### <a name="collect-a-network-trace"></a>Shromáždění trasování sítě
 

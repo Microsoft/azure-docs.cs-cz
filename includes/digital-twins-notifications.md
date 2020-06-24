@@ -4,17 +4,16 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 04/02/2020
 ms.author: baanders
-ms.openlocfilehash: f14ea72952fb47f62df1cdf2adbc04423e01231d
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 5e097fa98a6a4ba7c3f41c352e6ba6e2aac6d4f3
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84612967"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85299411"
 ---
 | Typ oznámení | Název zdroje směrování | Vygenerováno z...  |
 | --- | --- | --- |
 | Oznámení o změně digitálního vlákna | Oznámení o změně digitálního vlákna    | jakákoli digitální dvojitá Změna vlastnosti |
 | Oznámení digitálního vlákna na životní cyklus | Oznámení digitálního vlákna na životní cyklus    | jakékoli digitální zdvojené operace CREATE nebo DELETE |
 | Oznámení o změně okraje digitálního vlákna    | Oznámení o změně okraje digitálního vlákna    | Jakákoli změna vztahu digitálního zdvojeného vztahu |
-| Upozornění na změnu digitálního nazdvojeného modelu    | Upozornění na změnu digitálního nazdvojeného modelu    | změnit model (typ vlákna) |
 | Zprávy s digitálním dvojitým Telemetriem|     Zprávy telemetrie | Jakákoli zpráva telemetrie |

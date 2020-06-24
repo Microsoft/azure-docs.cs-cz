@@ -11,14 +11,14 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 581963c94129c36acbd8761d93e369281797fa9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e7b15f79d8b63c13718d309a16eb9b71648699a1
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654722"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734312"
 ---
-# <a name="disable-weak-ciphers-and-password-hash-synchronization-to-secure-an-azure-ad-domain-services-managed-domain"></a>Zakázání slabých šifr a synchronizace hodnot hash hesel k zabezpečení Azure AD Domain Services spravované domény
+# <a name="disable-weak-ciphers-and-password-hash-synchronization-to-secure-an-azure-active-directory-domain-services-managed-domain"></a>Zakázání slabých šifr a synchronizace hodnot hash hesel k zabezpečení Azure Active Directory Domain Services spravované domény
 
 Ve výchozím nastavení umožňuje Azure Active Directory Domain Services (Azure služba AD DS) použití šifr, jako je NTLM V1 a TLS v1. Tato šifra může být pro některé starší aplikace povinná, ale je pokládána za slabá a může být zakázaná, pokud je nepotřebujete. Pokud máte místní hybridní připojení pomocí Azure AD Connect, můžete také zakázat synchronizaci hodnot hash hesel protokolu NTLM.
 
@@ -33,7 +33,7 @@ K dokončení tohoto článku potřebujete tyto prostředky:
 * Tenant Azure Active Directory přidružený k vašemu předplatnému, buď synchronizovaný s místním adresářem, nebo jenom s cloudovým adresářem.
     * V případě potřeby [vytvořte tenanta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure k vašemu účtu][associate-azure-ad-tenant].
 * Ve vašem tenantovi Azure AD je povolená a nakonfigurovaná spravovaná doména Azure Active Directory Domain Services.
-    * V případě potřeby [vytvořte a nakonfigurujte instanci Azure Active Directory Domain Services][create-azure-ad-ds-instance].
+    * V případě potřeby [vytvořte a nakonfigurujte Azure Active Directory Domain Services spravovanou doménu][create-azure-ad-ds-instance].
 * Instalace a konfigurace Azure Powershellu.
     * V případě potřeby postupujte podle pokynů k [instalaci modulu Azure PowerShell a připojte se k předplatnému Azure](/powershell/azure/install-az-ps).
     * Ujistěte se, že se ke svému předplatnému Azure přihlašujete pomocí rutiny [Connect-AzAccount][Connect-AzAccount] .
@@ -67,17 +67,17 @@ Dále definujte *DomainSecuritySettings* a nakonfigurujte následující možnos
 $securitySettings = @{"DomainSecuritySettings"=@{"NtlmV1"="Disabled";"SyncNtlmPasswords"="Disabled";"TlsV1"="Disabled"}}
 ```
 
-Nakonec pomocí rutiny [set-AzResource][Set-AzResource] použijte definované nastavení zabezpečení pro spravovanou doménu Azure služba AD DS. V prvním kroku zadejte prostředek služby Azure služba AD DS a nastavení zabezpečení z předchozího kroku.
+Nakonec pomocí rutiny [set-AzResource][Set-AzResource] použijte definované nastavení zabezpečení pro spravovanou doménu. V prvním kroku zadejte prostředek služby Azure služba AD DS a nastavení zabezpečení z předchozího kroku.
 
 ```powershell
 Set-AzResource -Id $DomainServicesResource.ResourceId -Properties $securitySettings -Verbose -Force
 ```
 
-Pro použití nastavení zabezpečení na spravované doméně Azure služba AD DS trvá chvíli chvilku.
+Použití nastavení zabezpečení pro spravovanou doménu chvíli trvá.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o procesu synchronizace najdete v tématu [jak se objekty a přihlašovací údaje synchronizují ve spravované doméně Azure služba AD DS][synchronization].
+Další informace o procesu synchronizace najdete v tématu [jak se objekty a přihlašovací údaje synchronizují ve spravované doméně][synchronization].
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

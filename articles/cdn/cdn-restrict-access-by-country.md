@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/19/2018
 ms.author: allensu
-ms.openlocfilehash: 7ae7224efdaa281106dfbe2118ab0092c8284c6e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fba1f0b1f8160dece41c312b61cbc8ae9571436d
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260152"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887021"
 ---
 # <a name="restrict-azure-cdn-content-by-countryregion"></a>Omezení obsahu Azure CDN podle země nebo oblasti
 
@@ -42,7 +42,7 @@ Pokud chcete získat přístup k funkci geografického filtrování, vyberte kon
 
 V poli **cesta** zadejte relativní cestu k umístění, do kterého budou mít uživatelé povolený nebo odepřený přístup. 
 
-Můžete použít geografické filtrování pro všechny soubory pomocí lomítka (/) nebo vybrat konkrétní složky zadáním cest k adresářům (například */Pictures/*). Můžete také použít geografické filtrování na jeden soubor (například */Pictures/City.png*). Je povoleno více pravidel; Po zadání pravidla se zobrazí prázdný řádek, kde můžete zadat další pravidlo.
+Můžete použít geografické filtrování pro všechny soubory pomocí lomítka (/) nebo vybrat konkrétní složky zadáním cest k adresářům (například */Pictures/*). Můžete také použít geografické filtrování na jeden soubor (například */pictures/city.png*). Je povoleno více pravidel; Po zadání pravidla se zobrazí prázdný řádek, kde můžete zadat další pravidlo.
 
 Například všechny následující filtry cest adresářů jsou platné:   
 */*                                 
@@ -59,8 +59,8 @@ V seznamu **Akce** vyberte možnost **Povolení** nebo **zablokování**:
 - **Blokovat**: uživatelé ze zadaných zemí nebo oblastí mají odepřený přístup k požadovaným prostředkům z rekurzivní cesty. Pokud pro toto umístění nejsou nakonfigurované žádné možnosti filtrování jiných zemí nebo oblastí, bude přístup povolen všem ostatním uživatelům.
 
 Například pravidlo geografického filtrování pro blokování cesty */Photos/Strasbourg/* filtruje následující soubory:     
-*http\//:\<koncový bod>. azureedge.NET/Photos/Strasbourg/1000.jpg*
-*http\//\<: koncový bod>. azureedge.NET/Photos/Strasbourg/Cathedral/1000.jpg*
+*http: \/ / \<endpoint> . azureedge.NET/Photos/Strasbourg/1000.jpg* 
+ *http: \/ / \<endpoint> . azureedge.NET/Photos/Strasbourg/Cathedral/1000.jpg*
 
 ### <a name="define-the-countriesregions"></a>Definování zemí nebo oblastí
 V seznamu **kódy země** vyberte země nebo oblasti, které chcete pro cestu zablokovat nebo zakázat. 

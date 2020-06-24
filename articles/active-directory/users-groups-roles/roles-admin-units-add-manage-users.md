@@ -6,7 +6,7 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
-ms.topic: article
+ms.topic: how-to
 ms.subservice: users-groups-roles
 ms.workload: identity
 ms.date: 04/16/2020
@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c2c5c083115440e1e4da203f39f2b32734458c3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a57392b0072f6e6bb692ad0a28e6adf87f615eed
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684962"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84732546"
 ---
 # <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>Přidat a spravovat uživatele v jednotce pro správu v Azure Active Directory
 
@@ -96,11 +96,11 @@ Vyberte **jednotky pro správu** na levém panelu, abyste zobrazili seznam jedno
 
 ### <a name="azure-portal"></a>portál Azure
 
-Existují dva způsoby, jak můžete odebrat uživatele z jednotky pro správu. V Azure Portal můžete otevřít profil uživatele tak, že kliknete na uživatelé **Azure AD** > **Users**. Výběrem uživatele otevřete profil uživatele. Vyberte jednotku pro správu, ze které chcete uživatele odebrat, a vyberte možnost **Odebrat z jednotky pro správu**.
+Existují dva způsoby, jak můžete odebrat uživatele z jednotky pro správu. V Azure Portal můžete otevřít profil uživatele tak, že kliknete na uživatelé **Azure AD**  >  **Users**. Výběrem uživatele otevřete profil uživatele. Vyberte jednotku pro správu, ze které chcete uživatele odebrat, a vyberte možnost **Odebrat z jednotky pro správu**.
 
 ![Odebrání uživatele z jednotky pro správu z profilu uživatele](./media/roles-admin-units-add-manage-users/user-remove-admin-units.png)
 
-Uživatele můžete také odebrat v části**jednotky pro správu** **Azure AD** > tak, že vyberete jednotku správy, ze které chcete odebrat uživatele. Vyberte uživatele a vyberte **odebrat člena**.
+Uživatele můžete také odebrat v části **Azure AD**  >  **jednotky pro správu** Azure AD tak, že vyberete jednotku správy, ze které chcete odebrat uživatele. Vyberte uživatele a vyberte **odebrat člena**.
   
 ![Odebrání uživatele na úrovni jednotky pro správu](./media/roles-admin-units-add-manage-users/admin-units-remove-user.png)
 

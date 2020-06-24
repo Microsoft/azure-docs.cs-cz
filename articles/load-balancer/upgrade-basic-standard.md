@@ -4,15 +4,15 @@ description: V tomto článku se dozvíte, jak upgradovat veřejné Load Balance
 services: load-balancer
 author: irenehua
 ms.service: load-balancer
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: f1c85c98b9ea0dcaa6498622a0667bffba080401
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 66c56ae6730043022a0d8bf3c94f7c6ce14d9852
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858387"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84809335"
 ---
 # <a name="upgrade-azure-public-load-balancer"></a>Upgrade veřejné Load Balancer Azure
 [Azure Standard Load Balancer](load-balancer-overview.md) nabízí bohatou sadu funkcí a vysokou dostupnost prostřednictvím redundance zóny. Další informace o Load Balancer SKU najdete v tématu [srovnávací tabulka](https://docs.microsoft.com/azure/load-balancer/skus#skus).
@@ -49,7 +49,7 @@ V závislosti na nastaveních a preferencích místního prostředí PowerShellu
 * Pokud nemáte nainstalované moduly AZ pro Azure nebo si nejste připustili odinstalaci modulů AZ pro Azure, nejlepší možností je použít `Install-Script` možnost ke spuštění skriptu.
 * Pokud potřebujete zachovat moduly Azure AZ, nejlepším řešením je stáhnout skript a spustit ho přímo.
 
-Pokud chcete zjistit, jestli máte nainstalované moduly Azure AZ, spusťte `Get-InstalledModule -Name az`. Pokud nevidíte žádné nainstalované moduly AZ, můžete použít `Install-Script` metodu.
+Pokud chcete zjistit, jestli máte nainstalované moduly Azure AZ, spusťte `Get-InstalledModule -Name az` . Pokud nevidíte žádné nainstalované moduly AZ, můžete použít `Install-Script` metodu.
 
 ### <a name="install-using-the-install-script-method"></a>Instalace pomocí metody install-Script
 
@@ -69,7 +69,7 @@ Spuštění skriptu:
 
 1. Slouží `Connect-AzAccount` k připojení k Azure.
 
-1. Pomocí `Import-Module Az` nástroje importujte moduly AZ.
+1. Pomocí nástroje `Import-Module Az` importujte moduly AZ.
 
 1. Projděte si požadované parametry:
 
@@ -128,7 +128,7 @@ Ne. Azure PowerShell skript migruje pouze konfiguraci. Skutečná migrace provoz
 
 ### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>Narazili jsme na některé problémy s použitím tohoto skriptu. Jak získám pomoc?
   
-Můžete odeslat e-mail slbupgradesupport@microsoft.com, otevřít případ podpory s podporou Azure nebo obojí.
+Můžete odeslat e-mail slbupgradesupport@microsoft.com , otevřít případ podpory s podporou Azure nebo obojí.
 
 ## <a name="next-steps"></a>Další kroky
 

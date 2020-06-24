@@ -5,15 +5,15 @@ description: Vytvoření nebo úprava přímého partnerského vztahu pomocí pr
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 7639499aaef8d479c2552849b2124e709c46fd36
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 076332ac61359bc793615c2f7c9ea0e22c667bcd
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81680796"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84700293"
 ---
 # <a name="create-or-modify-a-direct-peering-by-using-powershell"></a>Vytvoření nebo úprava přímého partnerského vztahu pomocí prostředí PowerShell
 
@@ -21,7 +21,7 @@ Tento článek popisuje, jak vytvořit přímý partnerský vztah Microsoftu pom
 
 Pokud chcete, můžete tuto příručku dokončit pomocí webu Azure [Portal](howto-direct-portal.md).
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 * Před zahájením konfigurace si Projděte návod [požadavky](prerequisites.md) a [přímý partnerský vztah](walkthrough-direct-all.md) .
 * Pokud už máte přímá připojení partnerského vztahu se společností Microsoft, která nejsou převedená na prostředky Azure, přečtěte si téma [Převod starší verze přímého partnerského vztahu na prostředek Azure pomocí PowerShellu](howto-legacy-direct-powershell.md).
 

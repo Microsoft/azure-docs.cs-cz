@@ -4,15 +4,15 @@ description: Připojte klienty Windows a Mac OS X bezpečně k virtuální síti
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: cb9a02532c3651aca544ed946f40bdcff9e9be83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1bdaa2fd1e435e8bf7ff4b17c7f8a15d5bd249d5
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80411776"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987164"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>Konfigurace připojení typu Point-to-site k virtuální síti pomocí ověřování RADIUS: PowerShell
 
@@ -54,7 +54,7 @@ Kromě služby Active Directory se může server RADIUS integrovat i s dalšími
 ![Diagram připojení – RADIUS](./media/point-to-site-how-to-radius-ps/radiusimage.png)
 
 > [!IMPORTANT]
->K místnímu připojení k serveru RADIUS se dá použít jenom připojení VPN typu Site-to-site. Nelze použít připojení ExpressRoute.
+>K místnímu připojení k serveru RADIUS se dá použít jenom připojení VPN typu Site-to-site. Připojení ExpressRoute není možné použít.
 >
 >
 
@@ -109,7 +109,7 @@ Deklarujte proměnné, které chcete použít. Použijte následující příkla
   $GWIPconfName = "gwipconf"
   ```
 
-## <a name="2-create-the-resource-group-vnet-and-public-ip-address"></a>2. <a name="vnet"> </a>vytvoření skupiny prostředků, virtuální sítě a veřejné IP adresy
+## <a name="2-create-the-resource-group-vnet-and-public-ip-address"></a>2. <a name="vnet"></a> Vytvoření skupiny prostředků, virtuální sítě a veřejné IP adresy
 
 Následující kroky vytvoří skupinu prostředků a virtuální síť ve skupině prostředků se třemi podsítěmi. Při nahrazování hodnot je důležité vždycky pojmenovat podsíť brány konkrétně "GatewaySubnet". Pokud ho pojmenovat něco jiného, vytvoření brány se nepovede.
 
@@ -143,7 +143,7 @@ Následující kroky vytvoří skupinu prostředků a virtuální síť ve skupi
    $ipconf = New-AzVirtualNetworkGatewayIpConfig -Name "gwipconf" -Subnet $subnet -PublicIpAddress $pip
    ```
 
-## <a name="3-set-up-your-radius-server"></a>3. <a name="radius"> </a>nastavení serveru protokolu RADIUS
+## <a name="3-set-up-your-radius-server"></a>3. <a name="radius"></a> nastavení serveru protokolu RADIUS
 
 Před vytvořením a konfigurací brány virtuální sítě by měl být server RADIUS správně nakonfigurovaný pro ověřování.
 
@@ -153,12 +153,12 @@ Před vytvořením a konfigurací brány virtuální sítě by měl být server 
 
 Článek [NPS (Network Policy Server)](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) poskytuje pokyny ke konfiguraci serveru NPS (Windows RADIUS Server) pro ověřování domény AD.
 
-## <a name="4-create-the-vpn-gateway"></a>4. <a name="creategw"> </a>vytvoření brány VPN
+## <a name="4-create-the-vpn-gateway"></a>4. <a name="creategw"></a> Vytvoření brány VPN
 
 Nakonfigurujte a vytvořte bránu VPN pro virtuální síť.
 
 * Vlastnost-GatewayType musí mít hodnotu VPN a vlastnost-VpnType musí mít hodnotu RouteBased.
-* Dokončení brány VPN může trvat až 45 minut, v závislosti na vybrané [skladové jednotce](vpn-gateway-about-vpn-gateway-settings.md#gwsku) brány.
+* Dokončení brány VPN může trvat až 45 minut, v závislosti na vybrané [skladové jednotce brány](vpn-gateway-about-vpn-gateway-settings.md#gwsku)   .
 
 ```azurepowershell-interactive
 New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
@@ -166,7 +166,7 @@ New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
 -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1
 ```
 
-## <a name="5-add-the-radius-server-and-client-address-pool"></a>5. <a name="addradius"> </a>přidejte server protokolu RADIUS a fond adres klienta
+## <a name="5-add-the-radius-server-and-client-address-pool"></a>5. <a name="addradius"></a> přidejte server protokolu RADIUS a fond adres klienta
  
 * Parametr-RadiusServer lze zadat podle názvu nebo podle IP adresy. Pokud zadáte název a server se nachází v místním prostředí, brána sítě VPN nemusí být schopná tento název přeložit. Pokud je to tento případ, je vhodnější zadat IP adresu serveru. 
 * RadiusSecret by se měl shodovat s tím, co je nakonfigurováno na serveru protokolu RADIUS.
@@ -223,7 +223,7 @@ New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
     -RadiusServerAddress "10.51.0.15" -RadiusServerSecret $Secure_Secret
     ```
 
-## <a name="6-download-the-vpn-client-configuration-package-and-set-up-the-vpn-client"></a>6. <a name="vpnclient"> </a>Stáhněte si konfigurační balíček klienta VPN a nastavte klienta VPN.
+## <a name="6-download-the-vpn-client-configuration-package-and-set-up-the-vpn-client"></a>6. <a name="vpnclient"></a> Stáhněte si konfigurační balíček klienta VPN a nastavte klienta VPN.
 
 Konfigurace klienta VPN umožňuje zařízením připojit se k virtuální síti přes připojení P2S.Pokud chcete vygenerovat konfigurační balíček klienta VPN a nastavit klienta VPN, přečtěte si téma [Vytvoření konfigurace klienta VPN pro ověřování RADIUS](point-to-site-vpn-client-configuration-radius.md).
 

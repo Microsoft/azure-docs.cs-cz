@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: c30a7b1e6440cf69f7a4858273b365d885e5ec7b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 534d75a5b9009f0febee2746179ab7357a4985e0
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77060415"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84732867"
 ---
 # <a name="tutorial-configure-sap-cloud-platform-identity-authentication-for-automatic-user-provisioning"></a>Kurz: Konfigurace ověřování identity cloudové platformy SAP pro Automatické zřizování uživatelů
 
@@ -58,7 +58,10 @@ Před konfigurací a povolením automatického zřizování uživatelů byste se
 
     ![Konzola pro správu ověřování identity cloudové platformy SAP](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/adminconsole.png)
 
-2.  Vytvořte uživatele s právy pro správu a vyberte uživatele.  
+2.  Kliknutím na tlačítko **+ Přidat** na levém panelu přidejte nového správce do seznamu. Vyberte **Přidat systém** a zadejte název systému.   
+
+> [!NOTE]
+> Uživatel pole v ověřování identity cloudové platformy SAP musí být typu **System**. Vytvoření normálního uživatele správce může vést k *neautorizovaným* chybám při zřizování.   
 
 3.  V části konfigurovat autorizace přepněte na přepínací tlačítko u **možnosti spravovat uživatele** a **Spravovat skupiny**.
 
