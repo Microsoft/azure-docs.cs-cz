@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: 3284db031214dfaa631efa6f9f40e6a069998843
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 6ebd13317940d131facfb36987fb37358260ec05
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84677062"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85119218"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>Předchozí generace velikostí virtuálních počítačů
 
@@ -169,7 +169,7 @@ Velikosti A8-A11 a H-series se také označují jako *náročné na výpočetní
 
 ### <a name="d-series"></a>D-series  
 
-**Doporučení pro novější velikost**: [Dv3-Series](dv3-dsv3-series.md)
+**Doporučení pro novější velikost**: [Dav4-Series](dav4-dasv4-series.md), [dv4-](dv4-dsv4-series.md) Series a [Ddv4-Series](ddv4-ddsv4-series.md)
 
 ACU: 160-250 <sup>1</sup>
 
@@ -190,7 +190,7 @@ Ukládání Premium Storage do mezipaměti: nepodporováno
 
 ### <a name="d-series---memory-optimized"></a>Řady D-Series – optimalizované pro paměť  
 
-**Doporučení pro novější velikost**: [Dv3-Series](dv3-dsv3-series.md)
+**Doporučení pro novější velikost**: [Dav4-Series](dav4-dasv4-series.md), [dv4-](dv4-dsv4-series.md) Series a [Ddv4-Series](ddv4-ddsv4-series.md)
 
 ACU: 160-250 <sup>1</sup>
 
@@ -231,7 +231,7 @@ DC-Series využívá nejnovější generaci procesorů Intel XEON s 2176G s vyu�
 
 ### <a name="ds-series"></a>DS-series  
 
-**Doporučení pro novější velikost**: [Dsv3-Series](dv3-dsv3-series.md)
+**Doporučení pro novější velikost**: [Dasv4-Series](dav4-dasv4-series.md), [Dsv4-](dv4-dsv4-series.md) Series a [Ddsv4-Series](ddv4-ddsv4-series.md)
 
 ACU: 160-250 <sup>1</sup>
 
@@ -252,7 +252,7 @@ Ukládání Premium Storage do mezipaměti: podporováno
 
 ### <a name="ds-series---memory-optimized"></a>DS-Series – optimalizovaná paměť  
 
-**Doporučení pro novější velikost**: [Dsv3-Series](dv3-dsv3-series.md)
+**Doporučení pro novější velikost**: [Dasv4-Series](dav4-dasv4-series.md), [Dsv4-](dv4-dsv4-series.md) Series a [Ddsv4-Series](ddv4-ddsv4-series.md)
 
 ACU: 160-250 <sup>1, 2</sup>
 
@@ -273,6 +273,8 @@ Ukládání Premium Storage do mezipaměti: podporováno
 <br>
 
 ### <a name="ls-series"></a>Řada Ls
+
+**Doporučení pro novější velikost**: [Lsv2-Series](lsv2-series.md)
 
 Řada Ls-series nabízí až 32 virtuálních procesorů a využívá [řadu procesorů Intel® Xeon® E5 v3](https://www.intel.com/content/www/us/en/processors/xeon/xeon-e5-solutions.html). Řada Ls-series má stejný výkon procesoru jako řady G/GS-series a 8 GiB paměti na virtuální procesor.
 
@@ -297,6 +299,8 @@ Maximální propustnost disku dostupná pro virtuální počítače ls-series m�
 
 ### <a name="gs-series"></a>Řady GS
 
+**Doporučení pro novější velikost**: [Easv4-Series](eav4-easv4-series.md), [Esv4-Series](ev4-esv4-series.md), [Edsv4-Series](edv4-edsv4-series.md) a [M-Series](m-series.md)
+
 ACU: 180 – 240 <sup>1</sup>
 
 Premium Storage: podporováno
@@ -320,6 +324,8 @@ jsou k dispozici <sup>3</sup> omezené základní velikosti.
 <br>
 
 ### <a name="g-series"></a>G-series
+
+**Doporučení pro novější velikost**: [Eav4-Series](eav4-easv4-series.md), [Ev4-](ev4-esv4-series.md) Series a [Edv4-](edv4-edsv4-series.md) Series a [M-Series](m-series.md)
 
 ACU: 180–240
 

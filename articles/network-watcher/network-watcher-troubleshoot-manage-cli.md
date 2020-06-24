@@ -7,23 +7,23 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
-ms.openlocfilehash: dc0aa8e6099a7ec017aead2fe0f16e9712e17936
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e2f9ba27410195b187ad7c8ae39c04a66da4c234
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76840719"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738698"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-azure-cli"></a>Řešení potíží s Virtual Network bránou a připojením pomocí Azure Network Watcher Azure CLI
 
 > [!div class="op_single_selector"]
-> - [Portál](diagnose-communication-problem-between-networks.md)
-> - [Prostředí](network-watcher-troubleshoot-manage-powershell.md)
+> - [Azure Portal](diagnose-communication-problem-between-networks.md)
+> - [PowerShell](network-watcher-troubleshoot-manage-powershell.md)
 > - [Azure CLI](network-watcher-troubleshoot-manage-cli.md)
 > - [REST API](network-watcher-troubleshoot-manage-rest.md)
 
@@ -31,7 +31,7 @@ Network Watcher poskytuje řadu možností, které se týkají porozumění sí�
 
 K provedení kroků v tomto článku potřebujete [nainstalovat rozhraní příkazového řádku Azure pro Mac, Linux a Windows (CLI)](/cli/azure/install-azure-cli).
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V tomto scénáři se předpokládá, že už jste postupovali podle kroků v části [vytvoření Network Watcher](network-watcher-create.md) k vytvoření Network Watcher.
 
@@ -79,7 +79,7 @@ az network vpn-connection show --resource-group resourceGroupName --ids vpnConne
 
 ## <a name="run-network-watcher-resource-troubleshooting"></a>Řešení potíží se spuštěním Network Watcher prostředků
 
-Pomocí `az network watcher troubleshooting` rutiny můžete řešit problémy s prostředky. Rutinu předáte skupinu prostředků, název Network Watcher, ID připojení, ID účtu úložiště a cestu k objektu blob, do kterého se uloží výsledky řešení potíží.
+Pomocí rutiny můžete řešit problémy s prostředky `az network watcher troubleshooting` . Rutinu předáte skupinu prostředků, název Network Watcher, ID připojení, ID účtu úložiště a cestu k objektu blob, do kterého se uloží výsledky řešení potíží.
 
 ```azurecli
 az network watcher troubleshooting start --resource-group resourceGroupName --resource resourceName --resource-type {vnetGateway/vpnConnection} --storage-account storageAccountName  --storage-path https://{storageAccountName}.blob.core.windows.net/{containerName}

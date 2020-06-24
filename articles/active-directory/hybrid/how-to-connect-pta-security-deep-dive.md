@@ -15,12 +15,12 @@ ms.date: 05/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8c8d6c1aca81d59b42ceca17ecfb071ee5f13bd
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 4c3d8fdf4467a1a4c932ab6ec8fd6067d2d2ef34
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014362"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85252725"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory předávací ověřování zabezpečení s hloubkovým podrobně
 
@@ -106,7 +106,7 @@ Ověřovací agenti používají následující postup k registraci ve službě 
     - Certifikační autorita se používá jenom funkcí předávacího ověřování. Certifikační autorita se používá pouze k podepisování zástupců oddělení služeb při registraci ověřovacího agenta.
     -  Žádná z ostatních služeb Azure AD tuto certifikační autoritu nepoužívá.
     - Předmět certifikátu (rozlišující název nebo rozlišující název DN) je nastaven na ID tenanta. Tento rozlišující název je identifikátor GUID, který jedinečně identifikuje vašeho tenanta. Tento rozlišující obor je certifikát pro použití jenom s vaším klientem.
-6. Azure AD ukládá veřejný klíč ověřovacího agenta do Azure SQL Database, ke kterému má přístup jenom Azure AD.
+6. Azure AD ukládá veřejný klíč agenta ověřování v databázi v Azure SQL Database, ke které má přístup jenom Azure AD.
 7. Certifikát (vydaný v kroku 5) je uložený na místním serveru v úložišti certifikátů Windows (konkrétně v umístění [CERT_SYSTEM_STORE_LOCAL_MACHINE](https://msdn.microsoft.com/library/windows/desktop/aa388136.aspx#CERT_SYSTEM_STORE_LOCAL_MACHINE) ). Používá ho agent ověřování i aktualizační aplikace.
 
 ### <a name="authentication-agent-initialization"></a>Inicializace ověřovacího agenta
@@ -139,7 +139,7 @@ Předávací ověřování zpracovává požadavek na přihlášení uživatele 
 4. Uživatel zadá své uživatelské jméno do **přihlašovací stránky uživatele** a pak vybere tlačítko **Další** .
 5. Uživatel zadá heslo do **přihlašovací stránky uživatele** a pak vybere tlačítko pro **přihlášení** .
 6. Uživatelské jméno a heslo se odešle do služby Azure AD STS v žádosti POST protokolu HTTPS.
-7. Služba Azure AD STS načte veřejné klíče pro všechny ověřovací agenty zaregistrované ve vašem tenantovi z databáze SQL Azure a zašifruje je pomocí těchto hesel.
+7. Služba Azure AD STS načte veřejné klíče pro všechny ověřovací agenty zaregistrované ve vašem tenantovi z Azure SQL Database a zašifruje je pomocí těchto hesel.
     - Vytvoří "N" šifrované hodnoty hesel pro ověřovací agenty "N" zaregistrované ve vašem tenantovi.
 8. Azure AD STS ukládá žádost o ověření hesla, která se skládá z uživatelského jména a šifrovaných hodnot hesla, do fronty Service Bus specifické pro vašeho tenanta.
 9. Vzhledem k tomu, že inicializované agenti ověřování jsou trvale připojeni k frontě Service Bus, jeden z dostupných ověřovacích agentů načte požadavek na ověření hesla.
@@ -178,7 +178,7 @@ Postup obnovení vztahu důvěryhodnosti ověřovacího agenta s Azure AD:
 6. Pokud platnost existujícího certifikátu vyprší, Azure AD odstraní agenta ověřování ze seznamu registrovaných ověřovacích agentů vašeho tenanta. Globální správce pak musí ručně nainstalovat a zaregistrovat nového ověřovacího agenta.
     - K podepsání certifikátu použijte kořenovou certifikační autoritu služby Azure AD.
     - Nastavte předmět certifikátu (rozlišující název nebo DN) na ID tenanta, identifikátor GUID, který jedinečně identifikuje vašeho tenanta. Obory názvu jsou jenom certifikáty pro vašeho tenanta.
-6. Azure AD ukládá nový veřejný klíč ověřovacího agenta do Azure SQL Database, ke kterému má přístup jenom přístup. Také zruší platnost starého veřejného klíče přidruženého k agentovi ověřování.
+6. Azure AD ukládá nový veřejný klíč ověřovacího agenta do databáze v Azure SQL Database, ke které má přístup jenom. Také zruší platnost starého veřejného klíče přidruženého k agentovi ověřování.
 7. Nový certifikát (vydaný v kroku 5) je pak uložený na serveru v úložišti certifikátů Windows (konkrétně v umístění [CERT_SYSTEM_STORE_CURRENT_USER](https://msdn.microsoft.com/library/windows/desktop/aa388136.aspx#CERT_SYSTEM_STORE_CURRENT_USER) ).
     - Vzhledem k tomu, že se postup obnovení vztahu důvěryhodnosti neprovádí interaktivně (bez přítomnosti globálního správce), agent ověřování již nemá přístup k aktualizaci stávajícího certifikátu v umístění CERT_SYSTEM_STORE_LOCAL_MACHINE. 
     

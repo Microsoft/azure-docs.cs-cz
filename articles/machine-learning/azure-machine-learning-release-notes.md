@@ -2311,7 +2311,7 @@ Podívejte [se na seznam známých problémů](resource-known-issues.md) , kde s
   * Odebrala se logika nadbytečného indexu.
   * Odebral se filtr z rozhraní get_output API.
 
-+ **Pipelines**
++ **Kanály**
   * Přidání kanálu metody. Publish () pro publikování kanálu přímo, aniž by bylo nutné nejprve spustit spuštění.
   * Přidala se metoda PipelineRun. get_pipeline_runs () pro načtení spuštění kanálu, která byla vygenerována z publikovaného kanálu.
 

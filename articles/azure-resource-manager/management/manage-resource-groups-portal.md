@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: jgao
-ms.openlocfilehash: 622c0cb8d58dddcdb13c7dc9412ada3f2e2d93e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0f01da074423a45b30e6c386852e88798e55938b
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80632986"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888801"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Správa Azure Resource Manager skupin prostředků pomocí Azure Portal
 
@@ -25,7 +25,7 @@ Další články o správě skupin prostředků:
 
 ## <a name="what-is-a-resource-group"></a>Co je skupina prostředků
 
-Skupina prostředků je kontejner, který obsahuje související prostředky pro řešení Azure. Skupina prostředků může zahrnovat všechny prostředky pro řešení nebo pouze ty prostředky, které chcete spravovat jako skupinu. Na základě toho, co je pro vaši organizaci nejvhodnější, rozhodnete, jakým způsobem se mají prostředky přidělovat do skupin prostředků. Obecně můžete přidat prostředky, které sdílejí stejný životní cyklus do stejné skupiny prostředků, abyste je mohli snadno nasadit, aktualizovat a odstranit jako skupinu.
+Skupina prostředků je kontejner, který uchovává související prostředky pro řešení Azure. Skupina prostředků může zahrnovat všechny prostředky pro řešení nebo pouze ty prostředky, které chcete spravovat jako skupinu. Na základě toho, co je pro vaši organizaci nejvhodnější, rozhodnete, jakým způsobem se mají prostředky přidělovat do skupin prostředků. Obecně můžete přidat prostředky, které sdílejí stejný životní cyklus do stejné skupiny prostředků, abyste je mohli snadno nasadit, aktualizovat a odstranit jako skupinu.
 
 Skupina prostředků ukládá metadata o prostředcích. Při zadávání umístění skupiny prostředků tedy určujete, kde se tato metadata ukládají. Z důvodu dodržování předpisů může být nutné zajistit, aby se data ukládala v určité oblasti.
 
@@ -36,7 +36,7 @@ Skupina prostředků ukládá metadata o prostředcích. Při zadávání umíst
 2. Výběr **skupin prostředků**
 
     ![Přidat skupinu prostředků](./media/manage-resource-groups-portal/manage-resource-groups-add-group.png)
-3. Vyberte **Přidat**.
+3. Vyberte možnost **Přidat**.
 4. Zadejte následující hodnoty:
 
    - **Předplatné**: Vyberte své předplatné Azure. 
@@ -86,7 +86,7 @@ Prostředky ve skupině můžete přesunout do jiné skupiny prostředků. Dalš
 
 Uzamykání brání jiným uživatelům ve vaší organizaci v neúmyslném odstranění nebo úpravě důležitých prostředků, jako je například předplatné Azure, skupina prostředků nebo prostředek. 
 
-1. Otevřete skupinu prostředků, kterou chcete odstranit.  Viz [otevřít skupiny prostředků](#open-resource-groups).
+1. Otevřete skupinu prostředků, kterou chcete zamknout.  Viz [otevřít skupiny prostředků](#open-resource-groups).
 2. V levém podokně vyberte **zámky**.
 3. Pokud chcete přidat zámek ke skupině prostředků, vyberte **Přidat**.
 4. Zadejte **název zámku**, **Typ zámku**a **poznámky**. Typy zámků zahrnují **jen pro čtení**a **odstranění**.

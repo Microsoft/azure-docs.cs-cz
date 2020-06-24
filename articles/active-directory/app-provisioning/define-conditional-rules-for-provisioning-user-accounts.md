@@ -2,20 +2,20 @@
 title: Zřizování aplikací s filtry oborů | Microsoft Docs
 description: Naučte se používat filtry oborů, abyste zabránili tomu, aby objekty v aplikacích, které podporují automatizované zřizování uživatelů, nebyly zřízené, pokud objekt nesplňuje vaše podnikové požadavky.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/08/2020
-ms.author: mimart
-ms.openlocfilehash: 5ccec4174020d8b6586384a71ffe84fccd753640
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.author: kenwith
+ms.openlocfilehash: 1e858f1141ade52a1872d8a9822f515796d9182c
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84605438"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84781952"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Zřizování aplikací na základě atributů s filtry oborů
 Cílem tohoto článku je vysvětlit, jak používat filtry oborů k definování pravidel založených na atributech, která určují, kteří uživatelé se zřídí do aplikace.
@@ -116,7 +116,7 @@ Filtry oborů se konfigurují jako součást mapování atributů pro jednotliv�
 
 
 ## <a name="common-scoping-filters"></a>Běžné filtry oboru
-| Cílový atribut| Operátor | Hodnota | Popis|
+| Cílový atribut| Operátor | Hodnota | Description|
 |----|----|----|----|
 |userPrincipalName (Hlavní název uživatele)|POROVNÁVÁNÍ REGULÁRNÍCH HODNOT|.\*@domain.com |Všichni uživatelé s userPrincipal, kteří mají doménu, @domain.com budou v oboru pro zřizování.|
 |userPrincipalName (Hlavní název uživatele)|NESHODA S REGULÁRNÍM VÝRAZEM|.\*@domain.com|Všichni uživatelé s userPrincipal, kteří mají doménu, @domain.com budou mimo rozsah zřizování.|

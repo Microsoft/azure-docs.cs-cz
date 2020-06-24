@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 7c93c1f525713a90abd71c30a21401b9d1cfcb9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 25e8be28903d490a7a8c17e16d2beddc44c95c41
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81460898"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84782768"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Čas synchronizace pro virtuální počítače se systémem Linux v Azure
 
@@ -25,10 +25,10 @@ Synchronizace času je důležitá pro korelaci zabezpečení a událostí. Něk
 
 Azure je zajištěn infrastrukturou, na které běží Windows Server 2016. Systém Windows Server 2016 má vylepšené algoritmy používané pro správný čas a podmínky, že se místní hodiny synchronizují s časem UTC.  Funkce přesný čas systému Windows Server 2016 významně vylepšuje, jak služba VMICTimeSync řídí virtuálním počítačům s hostitelem pro přesný čas. Mezi vylepšení patří přesnější počáteční čas při spuštění virtuálního počítače nebo oprava latence pro obnovení virtuálního počítače a přerušení. 
 
->[!NOTE]
->Rychlý přehled služby Systémový čas najdete v tomto [videu s přehledem vysoké úrovně](https://aka.ms/WS2016TimeVideo).
+> [!NOTE]
+> Rychlý přehled služby Systémový čas najdete v tomto [videu s přehledem vysoké úrovně](https://aka.ms/WS2016TimeVideo).
 >
-> Další informace najdete v tématu [přesný čas pro Windows Server 2016](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time). 
+> Další informace najdete v tématu [přesný čas pro Windows Server 2016](/windows-server/networking/windows-time-service/accurate-time). 
 
 ## <a name="overview"></a>Přehled
 
@@ -66,7 +66,7 @@ Ve výchozím nastavení je většina Azure Marketplace imagí pro Linux nakonfi
 
 V novějších distribucích systému Linux služba VMICTimeSync používá protokol PTP (Precision Time Protocol), ale starší distribuce nemusí podporovat PTP a při získávání času od hostitele se vrátí do NTP.
 
-Pokud chcete potvrdit, že `ntpq -p` se NTP synchronizuje správně, spusťte příkaz.
+Pokud chcete potvrdit, že se NTP synchronizuje správně, spusťte `ntpq -p` příkaz.
 
 ### <a name="host-only"></a>Pouze hostitel 
 
@@ -140,9 +140,9 @@ refclock PHC /dev/ptp0 poll 3 dpoll -2 offset 0
 
 Další informace o Ubuntu a NTP najdete v tématu [synchronizace času](https://help.ubuntu.com/lts/serverguide/NTP.html).
 
-Další informace o Red Hat a NTP najdete v tématu [Konfigurace NTP](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/s1-configure_ntp). 
+Další informace o Red Hat a NTP najdete v tématu [Konfigurace NTP](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-configuring_ntp_using_ntpd#s1-Configure_NTP). 
 
-Další informace o Chrony najdete v tématu [použití Chrony](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-using_chrony).
+Další informace o Chrony najdete v tématu [použití Chrony](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-configuring_ntp_using_the_chrony_suite#sect-Using_chrony).
 
 Pokud jsou současně povoleny současně Chrony i TimeSync zdroje, můžete jeden označit jako **upřednostňovaný**, což nastaví druhý zdroj jako zálohu. Vzhledem k tomu, že služby NTP neaktualizují hodiny pro rozsáhlá zkosení s výjimkou po dlouhou dobu, VMICTimeSync obnoví hodiny z pozastavených událostí virtuálního počítače mnohem rychleji než samostatné nástroje založené na NTP.
 
@@ -164,6 +164,6 @@ V SUSE a Ubuntu verzích před 19,10 se synchronizace času konfiguruje pomocí 
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v tématu [přesný čas pro Windows Server 2016](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time).
+Další informace najdete v tématu [přesný čas pro Windows Server 2016](/windows-server/networking/windows-time-service/accurate-time).
 
 

@@ -4,17 +4,17 @@ description: P2S VPN můžete použít pro připojení k virtuální síti pomoc
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/17/2020
 ms.author: alzam
-ms.openlocfilehash: 00db2ed05285a1637414aa1e3adbe3b047ff0568
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8658556c152c815b2846f93235e4049c66a7e354
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641346"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987189"
 ---
-# <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>Vytvoření tenanta Azure Active Directory pro připojení protokolu P2S OpenVPN
+# <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>Vytvoření tenanta Azure Active Directory pro připojení typu point-to-site přes protokol OpenVPN
 
 Při připojování k virtuální síti můžete použít ověřování založené na certifikátech nebo ověřování pomocí protokolu RADIUS. Když ale použijete otevřený protokol sítě VPN, můžete použít i Azure Active Directory ověřování. Tento článek vám pomůže nastavit tenanta Azure AD pro P2S otevřené ověřování VPN.
 
@@ -73,7 +73,7 @@ Postup v [tomto článku](../active-directory/fundamentals/add-users-azure-activ
     https://login-us.microsoftonline.de/common/oauth2/authorize?client_id=538ee9e6-310a-468d-afef-ea97365856a9&response_type=code&redirect_uri=https://portal.microsoftazure.de&nonce=1234&prompt=admin_consent
     ````
 
-    Azure China 21Vianet
+    Azure (Čína) 21Vianet
 
     ```
     https://login.chinacloudapi.cn/common/oauth2/authorize?client_id=49f817b6-84ae-4cc0-928c-73f27289b3aa&response_type=code&redirect_uri=https://portal.azure.cn&nonce=1234&prompt=admin_consent
@@ -85,7 +85,7 @@ Postup v [tomto článku](../active-directory/fundamentals/add-users-azure-activ
 
 6. Po zobrazení výzvy vyberte **přijmout** .
 
-    ![Accept](./media/openvpn-create-azure-ad-tenant/accept.jpg)
+    ![Přijmout](./media/openvpn-create-azure-ad-tenant/accept.jpg)
 
 7. V rámci Azure AD se v **podnikových aplikacích**zobrazí uvedená služba **Azure VPN** .
 
@@ -105,7 +105,7 @@ Postup v [tomto článku](../active-directory/fundamentals/add-users-azure-activ
     ```
 
    > [!NOTE]
-   > Nezapomeňte na konec `AadIssuerUri` hodnoty zahrnout koncové lomítko. V opačném případě se příkaz nezdaří.
+   > Nezapomeňte na konec hodnoty zahrnout koncové lomítko `AadIssuerUri` . V opačném případě se příkaz nezdaří.
 
 10. Vytvořte a Stáhněte si profil spuštěním následujících příkazů. Změňte hodnoty-ResourceGroupName a-Name tak, aby odpovídaly vašemu vlastním.
 
@@ -122,7 +122,7 @@ Postup v [tomto článku](../active-directory/fundamentals/add-users-azure-activ
 
 13. Přejděte do složky unzip "AzureVPN".
 
-14. Poznamenejte si umístění souboru azurevpnconfig. XML. Azurevpnconfig. XML obsahuje nastavení pro připojení VPN a dá se importovat přímo do klientské aplikace Azure VPN. Tento soubor můžete také distribuovat všem uživatelům, kteří se potřebují připojit prostřednictvím e-mailu nebo jiným způsobem. Uživatel bude potřebovat platné přihlašovací údaje Azure AD pro úspěšné připojení.
+14. Poznamenejte si umístění souboru azurevpnconfig.xml. azurevpnconfig.xml obsahuje nastavení pro připojení VPN a dá se importovat přímo do klientské aplikace VPN Azure. Tento soubor můžete také distribuovat všem uživatelům, kteří se potřebují připojit prostřednictvím e-mailu nebo jiným způsobem. Uživatel bude potřebovat platné přihlašovací údaje Azure AD pro úspěšné připojení.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: e7276dcfca6ba033942d62f347ac3a799524cac4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c8cdb75c821f45fe7fcf0f455145beb2b9be2a55
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80519091"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734856"
 ---
 # <a name="azure-active-directory-domain-services-deployment-and-management-for-azure-cloud-solution-providers"></a>Azure Active Directory Domain Services nasazení a správy pro poskytovatele cloudových řešení Azure
 
@@ -78,11 +78,11 @@ Tento model nasazení může být vhodný pro situace, kdy nezávislý výrobce 
 
 Při správě spravované domény v předplatném Azure CSP platí následující důležité informace:
 
-* **Agenti správce CSP můžou zřídit spravovanou doménu pomocí svých přihlašovacích údajů:** Azure služba AD DS podporuje předplatná Azure CSP. Uživatelé patřící do skupiny agenti správce v partnerovi CSP můžou zřídit novou spravovanou doménu Azure služba AD DS.
+* **Agenti správce CSP můžou zřídit spravovanou doménu pomocí svých přihlašovacích údajů:** Azure služba AD DS podporuje předplatná Azure CSP. Uživatelé patřící do skupiny agenti správce v partnerovi CSP mohou zřídit novou spravovanou doménu.
 
 * Poskytovatelé **CSP můžou vytvořit skripty pro vytváření nových spravovaných domén pro zákazníky pomocí prostředí PowerShell:** Podrobnosti najdete v tématu [Jak povolit Azure služba AD DS s využitím PowerShellu](powershell-create-instance.md) .
 
-* **Agenti správce CSP nemohou provádět úlohy probíhající správy ve spravované doméně pomocí svých přihlašovacích údajů:** Uživatelé správců CSP nemůžou provádět běžné úlohy správy v rámci spravované domény pomocí svých přihlašovacích údajů. Tito uživatelé jsou externí pro tenanta Azure AD zákazníka a jejich přihlašovací údaje nejsou k dispozici v tenantovi Azure AD zákazníka. Azure služba AD DS nemá pro tyto uživatele přístup k hodnotám hash hesla protokolu Kerberos a NTLM, takže se uživatele nedají ověřit ve službě Azure služba AD DS spravované domény.
+* **Agenti správce CSP nemohou provádět úlohy probíhající správy ve spravované doméně pomocí svých přihlašovacích údajů:** Uživatelé správců CSP nemůžou provádět běžné úlohy správy v rámci spravované domény pomocí svých přihlašovacích údajů. Tito uživatelé jsou externí pro tenanta Azure AD zákazníka a jejich přihlašovací údaje nejsou k dispozici v tenantovi Azure AD zákazníka. Azure služba AD DS nemá přístup k hodnotám hash hesla protokolu Kerberos a NTLM pro tyto uživatele, takže uživatele nejde na spravovaných doménách ověřit.
 
   > [!WARNING]
   > Aby bylo možné provádět úlohy probíhající správy ve spravované doméně, musíte v adresáři zákazníka vytvořit uživatelský účet.

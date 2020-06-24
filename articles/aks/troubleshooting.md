@@ -3,13 +3,13 @@ title: Řešení běžných problémů se službou Azure Kubernetes
 description: Přečtěte si, jak řešit problémy a řešit běžné problémy při používání služby Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: troubleshooting
-ms.date: 05/16/2020
-ms.openlocfilehash: f9831077d1f2850d39e4ef5e5ba35245f16cd683
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.date: 06/20/2020
+ms.openlocfilehash: 36b3f20b866e7bad1d27f9fa92c02601ec21602c
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83724990"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85125425"
 ---
 # <a name="aks-troubleshooting"></a>Řešení potíží s AKS
 
@@ -46,6 +46,19 @@ V tomto režimu mohou být v případě, že se zablokuje, k dispozici různé d
 
 Další informace o řešení problémů v nástroji najdete v tématu [ladění aplikací](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/#debugging-pods).
 
+## <a name="im-receiving-tcp-timeouts-when-using-kubectl-or-other-third-party-tools-connecting-to-the-api-server"></a>Zobrazuje se `TCP timeouts` při používání `kubectl` nebo jiných nástrojích třetích stran, které se připojují k serveru rozhraní API
+AKS má řídicí plochy vysoké úrovně, které se vertikálně škálují podle počtu jader, aby bylo zajištěno, že jejich cíle na úrovni služby (SLO) a smlouvy o úrovni služeb (SLA). Pokud dochází k vypršení časového limitu připojení, podívejte se na následující:
+
+- **Má vaše příkazy rozhraní API konzistentně vyprší nebo jenom pár?** Pokud je pouze pár, vaše `tunnelfront` pod nebo `aks-link` pod, odpovědná za komunikaci mezi řídicími rovinami node->, nemusí být ve spuštěném stavu. Zajistěte, aby uzly hostující tento uzel nevyužily nebo byly zatíženy. Zvažte jejich přesun do svého vlastního [ `system` fondu uzlů](use-system-pools.md).
+- **Otevřeli jste všechny požadované porty, plně kvalifikované názvy domény a IP adresy, které jsou uvedené na webu [AKS omezit výstupní přenos dokumentů](limit-egress-traffic.md)?** Jinak může dojít k selhání několika volání příkazů.
+- **Vztahuje se na vaši aktuální IP [rozsahy v rámci autorizovaných rozsahů IP adres API](api-server-authorized-ip-ranges.md)?** Pokud tuto funkci používáte a vaše IP adresa není zahrnutá v rozsahu, ve kterém budou volání zablokovaná. 
+- **Máte navrácení volání do serveru API klientem nebo aplikací?** Nezapomeňte použít kukátka místo častých volání Get a, aby vaše aplikace třetích stran neunikla taková volání. Například Chyba v Istio mixer způsobí, že se vytvoří nové připojení serveru rozhraní API, které bude pokaždé, když se tajný klíč přečte interně. Vzhledem k tomu, že k tomuto chování dochází v pravidelných intervalech, Sledujte připojení rychle a nakonec způsobí přetížení serveru rozhraní API bez ohledu na vzor škálování. https://github.com/istio/istio/issues/19481
+- **Máte v nasazeních Helm spoustu verzí?** V tomto scénáři může dojít k tomu, že v případě, že by oba uzly v uzlech používaly příliš mnoho paměti, a také velké množství `configmaps` , což může způsobit zbytečné špičky na serveru rozhraní API. Zvažte konfiguraci `--history-max` na `helm init` a využijte novou Helm 3. Další podrobnosti o těchto problémech: 
+    - https://github.com/helm/helm/issues/4821
+    - https://github.com/helm/helm/issues/3500
+    - https://github.com/helm/helm/issues/4543
+
+
 ## <a name="im-trying-to-enable-role-based-access-control-rbac-on-an-existing-cluster-how-can-i-do-that"></a>V existujícím clusteru se snažím povolit Access Control na základě rolí (RBAC). Jak to můžu udělat?
 
 Povolení řízení přístupu na základě role (RBAC) na existujících clusterech se v tuto chvíli nepodporuje, musí se nastavit při vytváření nových clusterů. Při použití rozhraní příkazového řádku, portálu nebo verze rozhraní API je ve výchozím nastavení povolena RBAC `2020-03-01` .
@@ -53,12 +66,6 @@ Povolení řízení přístupu na základě role (RBAC) na existujících cluste
 ## <a name="i-created-a-cluster-with-rbac-enabled-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>Vytvořili jste cluster s povoleným RBAC a teď jsem na řídicím panelu Kubernetes spousta upozornění. Řídicí panel, který se používá pro práci bez upozornění. Co bych měl/a dělat?
 
 Důvodem upozornění je, že cluster má zapnutou RBAC a přístup k řídicímu panelu je teď ve výchozím nastavení omezený. Obecně platí, že tento přístup je dobrým zvykem, protože výchozí expozicí řídicího panelu všem uživatelům clusteru může vést k bezpečnostním hrozbám. Pokud přesto chcete řídicí panel povolit, postupujte podle kroků v [tomto blogovém příspěvku](https://pascalnaber.wordpress.com/2018/06/17/access-dashboard-on-aks-with-rbac-enabled/).
-
-## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>Nejde se připojit k řídicímu panelu. Co bych měl/a dělat?
-
-Nejjednodušší způsob, jak získat přístup ke službě mimo cluster, je spustit `kubectl proxy` , které požadavky proxy odeslaly na port místního hostitele 8001 na server rozhraní Kubernetes API. Odtud může Server API na vaši službu proxy: `http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/` .
-
-Pokud řídicí panel Kubernetes nevidíte, zkontrolujte, jestli `kube-proxy` je pod `kube-system` oborem názvů spuštěný. Pokud není ve spuštěném stavu, odstraňte ho a restartuje se.
 
 ## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Nemůžu získat protokoly pomocí protokolů kubectl nebo se nemůžu připojit k serveru rozhraní API. Zobrazuje se chyba ze serveru: Chyba při vytáčení back-endu: vytočit TCP... Co bych měl/a dělat?
 
@@ -166,14 +173,14 @@ Ověřte, že vaše nastavení nejsou v konfliktu s žádným z požadovaných n
 
 V Kubernetes verze 1,10 může MountVolume. WaitForAttach selhat s opětovným připojením k disku Azure.
 
-V systému Linux se může zobrazit nesprávná chyba formátu DevicePath. Například:
+V systému Linux se může zobrazit nesprávná chyba formátu DevicePath. Příklad:
 
 ```console
 MountVolume.WaitForAttach failed for volume "pvc-f1562ecb-3e5f-11e8-ab6b-000d3af9f967" : azureDisk - Wait for attach expect device path as a lun number, instead got: /dev/disk/azure/scsi1/lun1 (strconv.Atoi: parsing "/dev/disk/azure/scsi1/lun1": invalid syntax)
   Warning  FailedMount             1m (x10 over 21m)   kubelet, k8s-agentpool-66825246-0  Unable to mount volumes for pod
 ```
 
-Ve Windows se může zobrazit nesprávná chyba na číslo DevicePath (LUN). Například:
+Ve Windows se může zobrazit nesprávná chyba na číslo DevicePath (LUN). Příklad:
 
 ```console
 Warning  FailedMount             1m    kubelet, 15282k8s9010    MountVolume.WaitForAttach failed for volume "disk01" : azureDisk - WaitForAttach failed within timeout node (15282k8s9010) diskId:(andy-mghyb
@@ -220,7 +227,7 @@ spec:
   >[!NOTE]
   > Vzhledem k tomu, že GID a UID jsou ve výchozím nastavení připojeny jako kořen nebo 0. Pokud jsou GID nebo UID nastaveny jako neroot, například 1000, použije Kubernetes `chown` ke změně všech adresářů a souborů v tomto disku. Tato operace může být časově náročná a může způsobit velmi pomalé připojení disku.
 
-* Použijte `chown` v initContainers k nastavení GID a UID. Například:
+* Použijte `chown` v initContainers k nastavení GID a UID. Příklad:
 
 ```yaml
 initContainers:
@@ -379,13 +386,13 @@ Pokud se váš klíč účtu úložiště změnil, může se zobrazit chyba při
 
 Můžete zmírnit ruční aktualizací `azurestorageaccountkey` pole v tajných souborech Azure pomocí klíče účtu úložiště s kódováním base64.
 
-K zakódování klíče účtu úložiště ve formátu base64 můžete použít `base64` . Například:
+K zakódování klíče účtu úložiště ve formátu base64 můžete použít `base64` . Příklad:
 
 ```console
 echo X+ALAAUgMhWHL7QmQ87E1kSfIqLKfgC03Guy7/xk9MyIg2w4Jzqeu60CVw2r/dm6v6E0DWHTnJUEJGVQAoPaBc== | base64
 ```
 
-Pokud chcete aktualizovat svůj tajný soubor Azure, použijte `kubectl edit secret` . Například:
+Pokud chcete aktualizovat svůj tajný soubor Azure, použijte `kubectl edit secret` . Příklad:
 
 ```console
 kubectl edit secret azure-storage-account-{storage-account-name}-secret

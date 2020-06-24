@@ -2,25 +2,25 @@
 title: Běžné scénáře správy aplikací pro Azure Active Directory | Microsoft Docs
 description: Centralizovaná správa aplikací pomocí Azure AD
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 03/02/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1874a2f2cf96aaa905616bddcc6cb83c60c1d279
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 6b81e792d3b3bf491b281e09c00f48a7ad56fa47
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83115604"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763631"
 ---
 # <a name="centralize-application-management-with-azure-ad"></a>Centralizovaná správa aplikací pomocí Azure AD
 
@@ -40,7 +40,7 @@ Hesla, jak Nightmare, tak i bolesti zaměstnanců po celém světě. To je důvo
 
 Žádné další Správa hesla Zabezpečený přístup ke všem prostředkům, které potřebujete, pomocí podnikových přihlašovacích údajů. 
 
-|Funkce  | Popis | Doporučení |
+|Funkce  | Description | Doporučení |
 |---------|---------|---------|
 |Jednotné přihlašování|Federované jednotné přihlašování založené na standardech pomocí důvěryhodných oborových standardů.|Vždy použijte [SAML/OIDC](https://docs.microsoft.com/azure/active-directory/manage-apps/isv-choose-multi-tenant-federation) k povolení jednotného přihlašování, když ji vaše aplikace podporuje.|
 |Přístupový panel|Poskytněte uživatelům jednoduché centrum pro zjišťování a přístup ke všem jejich aplikacím. Umožněte jejich zvýšení produktivity díky funkcím samoobslužné služby, jako je vyžadování přístupu k aplikacím a skupinám nebo Správa přístupu k prostředkům jménem jiných uživatelů.| Po integraci vašich aplikací se službou Azure AD pro jednotné přihlašování nasaďte [přístupový panel](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-deployment-plan) ve vaší organizaci.|
@@ -51,7 +51,7 @@ Hesla, jak Nightmare, tak i bolesti zaměstnanců po celém světě. To je důvo
 Většina aplikací vyžaduje, aby se uživatel před přístupem k potřebným prostředkům zřídil do aplikace. Správa pomocí souborů CSV nebo složitých skriptů může být náročná a těžká. Zákazníci navíc musí zajistit, aby se účty odebraly, pokud by k nim neměl přístup někdo. Pomocí níže uvedených nástrojů můžete automatizovat zřizování a rušení zřizování. 
 
 
-|Funkce  |Popis|Doporučení |
+|Funkce  |Description|Doporučení |
 |---------|---------|---------|
 |Zřizování SCIM|[SCIM](https://aka.ms/SCIMOverview) je osvědčeným postupem automatizace zřizování uživatelů. Do Azure AD se dá integrovat jakákoli aplikace kompatibilní s SCIM. Automatické vytváření, aktualizace a odstraňování uživatelských účtů bez nutnosti uchovávat soubory CSV, vlastní skripty nebo Prem řešení.|Podívejte se na rostoucí seznam [předem integrovaných](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) aplikací v galerii aplikací Azure AD.|
 |Microsoft Graph|Využijte Breath a hloubku dat, která Azure AD potřebuje k rozšíření vaší aplikace s daty, která potřebují.|Využijte [Microsoft Graph](https://developer.microsoft.com/graph/) k získávání dat z celého ekosystému Microsoftu. |
@@ -60,7 +60,7 @@ Většina aplikací vyžaduje, aby se uživatel před přístupem k potřebným 
 ## <a name="scenario-3-secure-your-applications"></a>Scénář 3: zabezpečení aplikací
 Identita je linchpin pro zabezpečení. Pokud dojde k ohrožení identity, neuvěřitelně se obtížně zastaví dominový efekt předtím, než bude příliš pozdě. V průměru po 100 dnech předá organizace, že došlo k ohrožení zabezpečení. Pomocí nástrojů poskytovaných službou Azure AD můžete zlepšit stav zabezpečení vašich aplikací. 
 
-|Funkce  |Popis| Doporučení |
+|Funkce  |Description| Doporučení |
 |---------|---------| ---------|
 |Azure MFA|Azure Multi-Factor Authentication (MFA) je řešení dvoustupňového ověřování od Microsoftu. Pomocí metod ověřování schválených správcem Azure MFA pomáhá chránit přístup k vašim datům a aplikacím a současně splňuje požadavky na jednoduchý proces přihlašování.| [Povolte vícefaktorové ověřování](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/all-your-creds-are-belong-to-us/ba-p/855124) pro vaše uživatele.  |
 |Podmíněný přístup|Pomocí podmíněného přístupu můžete implementovat automatizované rozhodnutí řízení přístupu, která budou mít přístup k vašim cloudovým aplikacím, a to na základě podmínek.| Projděte si [výchozí hodnoty zabezpečení](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults) a [běžné zásady](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-policy-common) používané zákazníky. | 
@@ -69,7 +69,7 @@ Identita je linchpin pro zabezpečení. Pokud dojde k ohrožení identity, neuv�
 ## <a name="scenario-4-govern-access-to-your-applications"></a>Scénář 4: řízení přístupu k vašim aplikacím
 Řízení identit pomáhá organizacím dosáhnout rovnováhy mezi produktivitou – jak rychle může osoba získat přístup k aplikacím, které potřebují, například když se připojí k mojí organizaci? A zabezpečení – jak se má v průběhu času měnit přístup, například kvůli změnám stavu zaměstnanosti této osoby? 
 
-|Funkce  |Popis|Doporučení |
+|Funkce  |Description|Doporučení |
 |---------|---------| ---------|
 |ELM|Správa nároků Azure AD může uživatelům pomáhat i mimo organizaci efektivněji spravovat přístup ke svým aplikacím.| Umožněte nesprávcům spravovat přístup k jejich aplikacím pomocí [přístupových balíčků](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-access-package-first).|
 |Kontroly přístupu|Přístup uživatelů k aplikacím se může pravidelně kontrolovat, aby se zajistilo, že budou mít přístup jenom přípravní lidé.| [Zkontrolujte přístup](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview) k vašim citlivým aplikacím. |
@@ -79,9 +79,9 @@ Identita je linchpin pro zabezpečení. Pokud dojde k ohrožení identity, neuv�
 ## <a name="scenario-5-hybrid-secure-access"></a>Scénář 5: hybridní zabezpečený přístup
 Identita může být pouze vaší řídicí rovinou, pokud může propojit vše napříč cloudem a místními aplikacemi. Využijte nástroje poskytované službou Azure AD a jejími partnery k zabezpečení přístupu k aplikacím založeným na starší verzi ověřování.
 
-|Funkce  |Popis|Doporučení |
+|Funkce  |Description|Doporučení |
 |---------|---------|---------|
-|Proxy soubory aplikace|Dnešní zaměstnanci chtějí být produktivní, ať jsou kdekoli, a to neustále a na jakémkoli zařízení. Potřebují přístup k SaaS aplikacím v cloudu a místních aplikacích. Proxy aplikace služby Azure AD umožňuje tento robustní přístup bez nákladných a složitých virtuálních privátních sítí (zóny DMZ) nebo zón demilitarizovaná ().|Nastavte [vzdálený přístup](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) pro aplikace Prem. |
+|Proxy aplikací|Dnešní zaměstnanci chtějí být produktivní, ať jsou kdekoli, a to neustále a na jakémkoli zařízení. Potřebují přístup k SaaS aplikacím v cloudu a místních aplikacích. Proxy aplikace služby Azure AD umožňuje tento robustní přístup bez nákladných a složitých virtuálních privátních sítí (zóny DMZ) nebo zón demilitarizovaná ().|Nastavte [vzdálený přístup](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) pro aplikace Prem. |
 |F5, Akamai, Zscaler|Pomocí stávajícího síťového adaptéru a řadiče pro doručování můžete snadno chránit starší verze aplikací, které jsou pro vaše obchodní procesy pořád důležité, ale nemůžete je chránit před službou Azure AD. Je možné, že už máte všechno, co potřebujete, abyste mohli začít chránit tyto aplikace.| Používáte Akamai, Citrix, F5 nebo Zscaler? Projděte si naše [předem připravená řešení](https://docs.microsoft.com/azure/active-directory/manage-apps/secure-hybrid-access). | 
 
 ## <a name="related-articles"></a>Související články
@@ -89,6 +89,6 @@ Identita může být pouze vaší řídicí rovinou, pokud může propojit vše 
 - [Správa aplikací](https://docs.microsoft.com/azure/active-directory/manage-apps/index)
 - [Zřizování aplikací](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning)
 - [Hybridní zabezpečený přístup](https://docs.microsoft.com/azure/active-directory/manage-apps/secure-hybrid-access)
-- [Zásady správného řízení identity](https://docs.microsoft.com/azure/active-directory/governance/identity-governance-overview)
-- [Microsoft identity platform](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)
+- [Zásady správného řízení identit](https://docs.microsoft.com/azure/active-directory/governance/identity-governance-overview)
+- [Microsoft Identity Platform](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)
 - [Zabezpečení identity](https://docs.microsoft.com/azure/active-directory/conditional-access/index)

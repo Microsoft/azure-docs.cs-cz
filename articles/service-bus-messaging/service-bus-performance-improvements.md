@@ -10,12 +10,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 03/12/2020
 ms.author: aschhab
-ms.openlocfilehash: 267965ee41280a677050d1676285dda8734bc044
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 40dfa48c9c154aefa68947aa65aa6511a40d7562
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606055"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84803613"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Doporučené postupy pro zlepšení výkonu pomocí zasílání zpráv Service Bus
 
@@ -53,11 +53,11 @@ Další informace o minimální podpoře .NET Standard platforem najdete v téma
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft. Azure. ServiceBus SDK](#tab/net-standard-sdk)
 
-Service Bus klientské objekty, jako jsou implementace [`IQueueClient`][QueueClient] nebo [`IMessageSender`][MessageSender], by měly být registrovány pro vkládání závislostí jako typu Singleton (nebo instance jednou a sdílená). Po odeslání zprávy doporučujeme, abyste nezavřeli továrny zasílání zpráv nebo fronty, témata a předplatná, a pak je znovu vytvoříte při odeslání další zprávy. Při zavírání továrny zasílání zpráv se odstraní připojení ke službě Service Bus a při opětovném vytváření továrny se vytvoří nové připojení. Navázání připojení je náročná operace, kterou se můžete vyhnout opakovanému použití stejného objektu factory a klienta pro více operací. Tyto objekty klienta můžete bezpečně použít pro souběžné asynchronní operace a z více vláken.
+Service Bus klientské objekty, jako jsou implementace [`IQueueClient`][QueueClient] nebo [`IMessageSender`][MessageSender] , by měly být registrovány pro vkládání závislostí jako typu Singleton (nebo instance jednou a sdílená). Po odeslání zprávy doporučujeme, abyste nezavřeli továrny zasílání zpráv nebo fronty, témata a předplatná, a pak je znovu vytvoříte při odeslání další zprávy. Při zavírání továrny zasílání zpráv se odstraní připojení ke službě Service Bus a při opětovném vytváření továrny se vytvoří nové připojení. Navázání připojení je náročná operace, kterou se můžete vyhnout opakovanému použití stejného objektu factory a klienta pro více operací. Tyto objekty klienta můžete bezpečně použít pro souběžné asynchronní operace a z více vláken.
 
 # <a name="windowsazureservicebus-sdk"></a>[WindowsAzure. ServiceBus SDK](#tab/net-framework-sdk)
 
-Service Bus objekty klienta, například `QueueClient` nebo `MessageSender`, jsou vytvořeny prostřednictvím objektu [MessagingFactory][MessagingFactory] , který poskytuje také interní správu připojení. Po odeslání zprávy doporučujeme, abyste nezavřeli továrny zasílání zpráv nebo fronty, témata a předplatná, a pak je znovu vytvoříte při odeslání další zprávy. Při zavírání továrny zasílání zpráv se odstraní připojení ke službě Service Bus a při opětovném vytváření továrny se vytvoří nové připojení. Navázání připojení je náročná operace, kterou se můžete vyhnout opakovanému použití stejného objektu factory a klienta pro více operací. Tyto objekty klienta můžete bezpečně použít pro souběžné asynchronní operace a z více vláken.
+Service Bus objekty klienta, například `QueueClient` nebo `MessageSender` , jsou vytvořeny prostřednictvím objektu [MessagingFactory][MessagingFactory] , který poskytuje také interní správu připojení. Po odeslání zprávy doporučujeme, abyste nezavřeli továrny zasílání zpráv nebo fronty, témata a předplatná, a pak je znovu vytvoříte při odeslání další zprávy. Při zavírání továrny zasílání zpráv se odstraní připojení ke službě Service Bus a při opětovném vytváření továrny se vytvoří nové připojení. Navázání připojení je náročná operace, kterou se můžete vyhnout opakovanému použití stejného objektu factory a klienta pro více operací. Tyto objekty klienta můžete bezpečně použít pro souběžné asynchronní operace a z více vláken.
 
 ---
 
@@ -115,7 +115,7 @@ Následující kód je příkladem asynchronní operace Receive.
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft. Azure. ServiceBus SDK](#tab/net-standard-sdk)
 
-Příklady úplného <a href="https://github.com/Azure/azure-service-bus/blob/master/samples/DotNet/Microsoft.Azure.ServiceBus/SendersReceiversWithQueues" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"> </span>zdrojového kódu </a>najdete v úložišti GitHub:
+Příklady úplného <a href="https://github.com/Azure/azure-service-bus/blob/master/samples/DotNet/Microsoft.Azure.ServiceBus/SendersReceiversWithQueues" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> zdrojového kódu </a>najdete v úložišti GitHub:
 
 ```csharp
 var receiver = new MessageReceiver(connectionString, queueName, ReceiveMode.PeekLock);
@@ -139,11 +139,11 @@ receiver.RegisterMessageHandler(
     });
 ```
 
-Vytvoří `MessageReceiver` se instance objektu s připojovacím řetězcem, názvem fronty a režimem příjmu náhledu. Dále `receiver` instance slouží k registraci obslužné rutiny zprávy.
+`MessageReceiver`Vytvoří se instance objektu s připojovacím řetězcem, názvem fronty a režimem příjmu náhledu. Dále `receiver` instance slouží k registraci obslužné rutiny zprávy.
 
 # <a name="windowsazureservicebus-sdk"></a>[WindowsAzure. ServiceBus SDK](#tab/net-framework-sdk)
 
-Příklady úplného <a href="https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/SendersReceiversWithQueues" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"> </span>zdrojového kódu </a>najdete v úložišti GitHub:
+Příklady úplného <a href="https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/SendersReceiversWithQueues" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> zdrojového kódu </a>najdete v úložišti GitHub:
 
 ```csharp
 var factory = MessagingFactory.CreateFromConnectionString(connectionString);
@@ -163,15 +163,15 @@ receiver.OnMessageAsync(
     });
 ```
 
-`MessagingFactory` Vytvoří `factory` objekt z připojovacího řetězce. S `factory` instancí instance `MessageReceiver` je vytvořena instance. Dále `receiver` instance slouží k registraci obslužné rutiny zpráv.
+`MessagingFactory`Vytvoří `factory` objekt z připojovacího řetězce. S `factory` instancí instance `MessageReceiver` je vytvořena instance. Dále `receiver` instance slouží k registraci obslužné rutiny zpráv.
 
 ---
 
 ## <a name="receive-mode"></a>Režim příjmu
 
-Když vytváříte klienta front nebo odběrů, můžete zadat režim přijímání: *prohlížet a uzamknout* nebo *přijmout a odstranit*. Výchozí režim příjmu je `PeekLock`. Při provozu ve výchozím režimu pošle klient žádost o přijetí zprávy od Service Bus. Jakmile klient obdrží zprávu, pošle požadavek na dokončení zprávy.
+Když vytváříte klienta front nebo odběrů, můžete zadat režim přijímání: *prohlížet a uzamknout* nebo *přijmout a odstranit*. Výchozí režim příjmu je `PeekLock` . Při provozu ve výchozím režimu pošle klient žádost o přijetí zprávy od Service Bus. Jakmile klient obdrží zprávu, pošle požadavek na dokončení zprávy.
 
-Při nastavení režimu příjmu na `ReceiveAndDelete`je oba kroky kombinovány v jednom požadavku. Tyto kroky omezují celkový počet operací a můžou zlepšit celkovou propustnost zpráv. Tento zvýšení výkonu přináší riziko ztráty zpráv.
+Při nastavení režimu příjmu na `ReceiveAndDelete` je oba kroky kombinovány v jednom požadavku. Tyto kroky omezují celkový počet operací a můžou zlepšit celkovou propustnost zpráv. Tento zvýšení výkonu přináší riziko ztráty zpráv.
 
 Service Bus nepodporuje transakce pro operace Receive a DELETE. Kromě toho se vyžaduje sémantika prohlížení zámku pro všechny scénáře, ve kterých bude klient chtít zprávu odložit nebo [nedoručeně](service-bus-dead-letter-queues.md) .
 
@@ -226,7 +226,7 @@ Při vytváření nové fronty, tématu nebo předplatného je ve výchozím nas
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft. Azure. ServiceBus SDK](#tab/net-standard-sdk)
 
-Pokud chcete zakázat přístup pomocí `ManagementClient`dávkového úložiště, budete potřebovat instanci. Vytvořte frontu z popisu fronty, na `EnableBatchedOperations` `false`kterou vlastnost nastavuje.
+Pokud chcete zakázat přístup pomocí dávkového úložiště, budete potřebovat instanci `ManagementClient` . Vytvořte frontu z popisu fronty, `EnableBatchedOperations` na kterou vlastnost nastavuje `false` .
 
 ```csharp
 var queueDescription = new QueueDescription(path)
@@ -243,7 +243,7 @@ Další informace najdete v následujících článcích:
 
 # <a name="windowsazureservicebus-sdk"></a>[WindowsAzure. ServiceBus SDK](#tab/net-framework-sdk)
 
-Pokud chcete zakázat přístup pomocí `NamespaceManager`dávkového úložiště, budete potřebovat instanci. Vytvořte frontu z popisu fronty, na `EnableBatchedOperations` `false`kterou vlastnost nastavuje.
+Pokud chcete zakázat přístup pomocí dávkového úložiště, budete potřebovat instanci `NamespaceManager` . Vytvořte frontu z popisu fronty, `EnableBatchedOperations` na kterou vlastnost nastavuje `false` .
 
 ```csharp
 var queueDescription = new QueueDescription(path)
@@ -264,11 +264,11 @@ Přístup k Batch Storu nemá vliv na počet fakturovaných operací zasílání
 
 ## <a name="prefetching"></a>Předběžné načítání
 
-[Předběžné načítání](service-bus-prefetch.md) umožňuje klientovi fronty nebo předplatného načítat další zprávy ze služby při provádění operace Receive. Klient ukládá tyto zprávy do místní mezipaměti. Velikost mezipaměti je určena vlastnostmi `QueueClient.PrefetchCount` nebo. `SubscriptionClient.PrefetchCount` Každý klient, který umožňuje předběžné navýšení, zachovává svou vlastní mezipaměť. Mezipaměť není sdílená mezi klienty. Pokud klient inicializuje operaci Receive a jeho mezipaměť je prázdná, služba přenáší dávku zpráv. Velikost dávky se rovná velikosti mezipaměti nebo 256 KB, podle toho, která hodnota je menší. Pokud klient zahájí operaci přijetí a mezipaměť obsahuje zprávu, zpráva je pořízena z mezipaměti.
+[Předběžné načítání](service-bus-prefetch.md) umožňuje klientovi fronty nebo předplatného načítat další zprávy ze služby při provádění operace Receive. Klient ukládá tyto zprávy do místní mezipaměti. Velikost mezipaměti je určena `QueueClient.PrefetchCount` `SubscriptionClient.PrefetchCount` vlastnostmi nebo. Každý klient, který umožňuje předběžné navýšení, zachovává svou vlastní mezipaměť. Mezipaměť není sdílená mezi klienty. Pokud klient inicializuje operaci Receive a jeho mezipaměť je prázdná, služba přenáší dávku zpráv. Velikost dávky se rovná velikosti mezipaměti nebo 256 KB, podle toho, která hodnota je menší. Pokud klient zahájí operaci přijetí a mezipaměť obsahuje zprávu, zpráva je pořízena z mezipaměti.
 
 Při předběžném načtení zprávy služba uzamkne přednačtenou zprávu. V případě zámku nemůže být přednačtená zpráva přijata jiným přijímačem. Pokud příjemce nemůže dokončit zprávu před vypršením platnosti zámku, bude zpráva k dispozici ostatním příjemcům. Přednačtená kopie zprávy zůstane v mezipaměti. Přijímač, který využívá kopii v mezipaměti s vypršenou platností, obdrží při pokusu o dokončení této zprávy výjimku. Ve výchozím nastavení vyprší platnost zámku zprávy po 60 sekundách. Tato hodnota se dá prodloužit na 5 minut. Aby nedocházelo k vyčerpání neplatných zpráv, velikost mezipaměti by měla být vždy menší než počet zpráv, které může klient spotřebovat v intervalu časového limitu zámku.
 
-Při použití výchozího zámku vypršení 60 sekund `PrefetchCount` je platná hodnota 20 časů maximálního počtu zpracování všech přijímačů v továrně. Například továrna vytvoří tři přijímače a každý příjemce může zpracovat až 10 zpráv za sekundu. Počet předběžných hodnot by neměl být vyšší než 20 × 3 × 10 = 600. Ve výchozím nastavení `PrefetchCount` je nastavena na hodnotu 0, což znamená, že ze služby nejsou načteny žádné další zprávy.
+Při použití výchozího zámku vypršení 60 sekund je platná hodnota `PrefetchCount` 20 časů maximálního počtu zpracování všech přijímačů v továrně. Například továrna vytvoří tři přijímače a každý příjemce může zpracovat až 10 zpráv za sekundu. Počet předběžných hodnot by neměl být vyšší než 20 × 3 × 10 = 600. Ve výchozím nastavení `PrefetchCount` je nastavena na hodnotu 0, což znamená, že ze služby nejsou načteny žádné další zprávy.
 
 Předběžné načítání zpráv zvyšuje celkovou propustnost pro frontu nebo odběr, protože snižuje celkový počet operací se zprávami nebo se na ně zaznamená výměna zpráv. Načítají se první zpráva, ale bude trvat déle (kvůli zvýšené velikosti zprávy). Přijímání předem načtených zpráv bude rychlejší, protože klient již tyto zprávy stáhl.
 
@@ -297,13 +297,13 @@ Další informace najdete v následujících `PrefetchCount` vlastnostech:
 > [!NOTE]
 > Tato část platí jenom pro sadu SDK WindowsAzure. ServiceBus, protože Microsoft. Azure. ServiceBus SDK nevystavuje dávkové funkce.
 
-I když koncepce předběžného načítání více zpráv má podobnou sémantiku zpracování zpráv v dávce (`ReceiveBatch`), existují některé drobné rozdíly, které je potřeba při jejich využití zapamatovat.
+I když koncepce předběžného načítání více zpráv má podobnou sémantiku zpracování zpráv v dávce ( `ReceiveBatch` ), existují některé drobné rozdíly, které je potřeba při jejich využití zapamatovat.
 
-Předběžné načtení je konfigurace (nebo režim) na klientovi (`QueueClient` a `SubscriptionClient`) a `ReceiveBatch` jedná se o operaci (která má sémantiku požadavku-odpověď).
+Předběžné načtení je konfigurace (nebo režim) na klientovi ( `QueueClient` a `SubscriptionClient` ) a `ReceiveBatch` jedná se o operaci (která má sémantiku požadavku-odpověď).
 
 Při současném použití těchto případů Vezměte v úvahu následující případy:
 
-* Předběžné načtení by mělo být větší než nebo rovno počtu zpráv, ze `ReceiveBatch`kterých očekáváte příjem.
+* Předběžné načtení by mělo být větší než nebo rovno počtu zpráv, ze kterých očekáváte příjem `ReceiveBatch` .
 * Předběžného načtení může být až n/3 krát počet zpracovaných zpráv za sekundu, kde n je výchozí doba trvání zámku.
 
 Existují některé problémy s hladkou metodou (tj. udržování příliš vysokého počtu předběžného načítání), protože to znamená, že je zpráva pevně nastavená na konkrétního příjemce. Doporučujeme, abyste si vyzkoušeli hodnoty předběžného načítání mezi výše uvedenými mezními hodnotami a empirickě Identifikujte, co se vejde.
@@ -317,7 +317,7 @@ Pokud očekávaná zátěž nemůže být zpracována jednou frontou nebo témat
 > [!NOTE]
 > Tato část platí jenom pro sadu SDK WindowsAzure. ServiceBus, protože Microsoft. Azure. ServiceBus SDK tuto funkci nezveřejňuje.
 
-Service Bus má jednu funkci, která se používá specificky pro vývoj, která **by se nikdy neměla používat v produkčních konfiguracích**: [`TopicDescription.EnableFilteringMessagesBeforePublishing`][TopicDescription.EnableFiltering].
+Service Bus má jednu funkci, která se používá specificky pro vývoj, která **by se nikdy neměla používat v produkčních konfiguracích**: [`TopicDescription.EnableFilteringMessagesBeforePublishing`][TopicDescription.EnableFiltering] .
 
 Když jsou do tématu přidána nová pravidla nebo filtry, můžete použít [`TopicDescription.EnableFilteringMessagesBeforePublishing`][TopicDescription.EnableFiltering] k ověření, že nový výraz filtru pracuje podle očekávání.
 
@@ -355,7 +355,7 @@ Cíl: minimalizuje koncovou latenci fronty nebo tématu. Počet odesílatelů a 
 
 Cíl: maximalizuje propustnost fronty nebo tématu s velkým počtem odesílatelů. Každý odesilatel odesílá zprávy se střední sazbou. Počet přijímačů je malý.
 
-Service Bus umožňuje až 1000 souběžných připojení k entitě zasílání zpráv (nebo 5000 pomocí AMQP). Toto omezení se vynutilo na úrovni oboru názvů a fronty/témata/předplatná se omezené omezením počtu souběžných připojení na obor názvů. U front se toto číslo sdílí mezi odesílateli a přijímači. Pokud se pro odesílatele vyžadují všechna připojení 1000, nahraďte frontu tématem a jedním předplatným. Téma přijímá až 1000 souběžných připojení od odesílatelů, zatímco předplatné přijímá další 1000 souběžných připojení od příjemců. Pokud potřebujete více než 1000 současných odesílatelů, odesílají odesílatelé zprávy do protokolu Service Bus přes HTTP.
+Service Bus umožňuje až 1000 souběžných připojení k entitě zasílání zpráv. Toto omezení se vynutilo na úrovni oboru názvů a fronty/témata/předplatná se omezené omezením počtu souběžných připojení na obor názvů. U front se toto číslo sdílí mezi odesílateli a přijímači. Pokud se pro odesílatele vyžadují všechna připojení 1000, nahraďte frontu tématem a jedním předplatným. Téma přijímá až 1000 souběžných připojení od odesílatelů, zatímco předplatné přijímá další 1000 souběžných připojení od příjemců. Pokud potřebujete více než 1000 současných odesílatelů, odesílají odesílatelé zprávy do protokolu Service Bus přes HTTP.
 
 K maximalizaci propustnosti proveďte následující kroky:
 

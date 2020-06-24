@@ -17,7 +17,7 @@ ms.locfileid: "67175486"
 ---
 Aby bylo možné otevřít přímou relaci SSH s vaším kontejnerem, měla by být vaše aplikace spuštěná.
 
-Vložte následující adresu URL do prohlížeče a nahraďte \<název aplikace> názvem vaší aplikace:
+Vložte následující adresu URL do prohlížeče a nahraďte \< název aplikace> názvem vaší aplikace:
 
 ```
 https://<app-name>.scm.azurewebsites.net/webssh/host

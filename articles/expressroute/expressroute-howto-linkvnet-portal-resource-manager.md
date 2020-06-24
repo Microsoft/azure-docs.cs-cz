@@ -4,16 +4,16 @@ description: Připojte virtuální síť k okruhu Azure ExpressRoute. Postup.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 4c7a24ad692086398059d1afd48c8927e9d18582
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a4ed99d69d1c2389e73c215bccfd6112895e791d
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79272913"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737066"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>Připojení virtuální sítě k okruhu ExpressRoute pomocí portálu
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.locfileid: "79272913"
 
 Tento článek vám pomůže vytvořit připojení k propojení virtuální sítě s okruhem Azure ExpressRoute pomocí Azure Portal. Virtuální sítě, které se připojují k okruhu Azure ExpressRoute, můžou být ve stejném předplatném, nebo můžou být součástí jiného předplatného.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 * Než začnete s konfigurací, Projděte si [požadavky,](expressroute-prerequisites.md) [požadavky na směrování](expressroute-routing.md)a [pracovní postupy](expressroute-workflows.md) .
 
@@ -55,7 +55,7 @@ Tento článek vám pomůže vytvořit připojení k propojení virtuální sít
 1. Ujistěte se, že váš okruh ExpressRoute a soukromý partnerský vztah Azure jsou úspěšně nakonfigurované. Postupujte podle pokynů v tématu [vytvoření okruhu ExpressRoute](expressroute-howto-circuit-arm.md) a [Vytvoření a úprava partnerského vztahu pro okruh ExpressRoute](expressroute-howto-routing-arm.md). Okruh ExpressRoute by měl vypadat jako na následujícím obrázku:
 
    [![Snímek obrazovky okruhu ExpressRoute](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1.png "Zobrazit okruh")](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1-exp.png#lightbox)
-2. Teď můžete začít zřizovat připojení a propojit bránu virtuální sítě s okruhem ExpressRoute. Kliknutím na **připojit** > **Přidat** otevřete stránku **Přidat připojení** a pak nakonfigurujte tyto hodnoty.
+2. Teď můžete začít zřizovat připojení a propojit bránu virtuální sítě s okruhem ExpressRoute. Kliknutím na **připojit**  >  **Přidat** otevřete stránku **Přidat připojení** a pak nakonfigurujte tyto hodnoty.
 
    [![Obrázek přidání připojení](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1.png "Obrázek přidání připojení")](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1-exp.png#lightbox)
 3. Po úspěšné konfiguraci připojení se v objektu připojení zobrazí informace o připojení.
@@ -122,7 +122,7 @@ Uživatel okruhu potřebuje ID prostředku a autorizační klíč od vlastníka 
 
    ![Stránka základy](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection3.png)
 5. Na stránce **Nastavení** vyberte **bránu virtuální sítě** a zaškrtněte políčko **uplatnit autorizaci** .
-6. Zadejte **autorizační klíč** a **identifikátor URI rovnocenného okruhu** a zadejte název připojení. Klikněte na tlačítko **OK**. **Identifikátor URI partnerského okruhu** je ID prostředku okruhu ExpressRoute (který najdete v podokně nastavení vlastností okruhu ExpressRoute).
+6. Zadejte **autorizační klíč** a **identifikátor URI rovnocenného okruhu** a zadejte název připojení. Klikněte na **OK**. **Identifikátor URI partnerského okruhu** je ID prostředku okruhu ExpressRoute (který najdete v podokně nastavení vlastností okruhu ExpressRoute).
 
    ![Stránka Nastavení](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection4.png)
 7. Zkontrolujte informace na stránce **Souhrn** a klikněte na tlačítko **OK**.

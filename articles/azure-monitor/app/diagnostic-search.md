@@ -4,11 +4,11 @@ description: Hledání a filtrování nezpracovaných telemetrie odesílaných v
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.openlocfilehash: 8039a55784f63030f330d6c1e2061e99b8b63bbf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79275981"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84695653"
 ---
 # <a name="using-search-in-application-insights"></a>Použití vyhledávání v Application Insights
 
@@ -56,12 +56,12 @@ Otevřete rozevírací nabídku typy událostí a vyberte typy událostí, kter�
 
 Typy událostí:
 
-* **Sledujte** - [diagnostické protokoly](../../azure-monitor/app/asp-net-trace-logs.md) , včetně TrackTrace, log4Net, nLOG a System. Diagnostics. Trace.
+* **Trasování**  -  [Diagnostické protokoly](../../azure-monitor/app/asp-net-trace-logs.md) zahrnující volání TrackTrace, Log4Net, nLOG a System. Diagnostics. Trace.
 * Žádosti **o** požadavky HTTP přijaté serverovou aplikací, včetně stránek, skriptů, obrázků, souborů stylu a dat. Tyto události se používají k vytvoření grafů s přehledem požadavků a odpovědí.
-* **Telemetrie zobrazení** - stránky[odeslané webovým klientem](../../azure-monitor/app/javascript.md), která se používá k vytvoření sestav zobrazení stránky
+* **Zobrazení stránky**  -  [Telemetrie odesílaná webovým klientem](../../azure-monitor/app/javascript.md), která se používá k vytvoření sestav zobrazení stránky
 * **Vlastní událost** – Pokud jste vložili volání do TrackEvent (), aby bylo možné [monitorovat využití](../../azure-monitor/app/api-custom-events-metrics.md), můžete je vyhledat tady.
 * **Výjimka** – nezachycené [výjimky na serveru](../../azure-monitor/app/asp-net-exceptions.md)a ty, které se protokolují pomocí TrackException ().
-* **Dependency** - [Volání závislosti z vaší serverové aplikace](../../azure-monitor/app/asp-net-dependencies.md) do jiných služeb, jako jsou rozhraní REST API nebo databáze, a volání AJAX z [kódu klienta](../../azure-monitor/app/javascript.md).
+* **Závislost**  -  [Volání z vaší serverové aplikace](../../azure-monitor/app/asp-net-dependencies.md) do jiných služeb, jako jsou rozhraní REST API nebo databáze, a volání AJAX z [kódu klienta](../../azure-monitor/app/javascript.md).
 * **Dostupnost** – výsledky [testů dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md).
 
 ## <a name="filter-on-property-values"></a>Filtrovat hodnoty vlastností
@@ -95,11 +95,11 @@ Vyhledejte úplná slova, nikoli podřetězce. Použijte uvozovky k uzavření s
 | Řetězec | *Nenalezeno* | Found |
 | --- | --- | --- |
 | HomeController. about |`home`<br/>`controller`<br/>`out` | `homecontroller`<br/>`about`<br/>`"homecontroller.about"`|
-|Spojené státy|`Uni`<br/>`ted`|`united`<br/>`states`<br/>`united AND states`<br/>`"united states"`
+|USA|`Uni`<br/>`ted`|`united`<br/>`states`<br/>`united AND states`<br/>`"united states"`
 
 Tady jsou hledané výrazy, které můžete použít:
 
-| Ukázkový dotaz | Účinek |
+| Ukázkový dotaz | Efekt |
 | --- | --- |
 | `apple` |Najde všechny události v časovém rozsahu, jehož pole obsahují slovo "Apple". |
 | `apple AND banana` <br/>`apple banana` |Najde události, které obsahují obě slova. Použijte velká písmena "a", nikoli "a". <br/>Krátká forma. |
@@ -148,4 +148,4 @@ Data POST neprotokolují automaticky, ale můžete použít [TrackTrace nebo log
 * [Zápis složitých dotazů do analýz](../../azure-monitor/log-query/get-started-portal.md)
 * [Odeslání protokolů a vlastní telemetrie do Application Insights](../../azure-monitor/app/asp-net-trace-logs.md)
 * [Nastavení testů dostupnosti a odezvy](../../azure-monitor/app/monitor-web-app-availability.md)
-* [Odstraňování potíží](../../azure-monitor/app/troubleshoot-faq.md)
+* [Řešení potíží](../../azure-monitor/app/troubleshoot-faq.md)

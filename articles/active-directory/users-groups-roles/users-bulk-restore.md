@@ -6,19 +6,19 @@ author: curtand
 ms.author: curtand
 manager: mtillman
 ms.date: 04/27/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1db23bb1176a41b4b9bac548b737fbd13fbe82c4
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 2800119f1a88172ea7c329fc53359bf1565a0705
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685257"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84731269"
 ---
 # <a name="bulk-restore-deleted-users-in-azure-active-directory"></a>Hromadné obnovení odstraněných uživatelů v Azure Active Directory
 
@@ -76,7 +76,7 @@ V dalším kroku můžete zjistit, že uživatelé, které jste obnovili, existu
 
 1. [Přihlaste se k centru pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu, který je správcem uživatele v organizaci.
 1. V navigačním podokně vyberte **Azure Active Directory**.
-1. V části **Spravovat** vyberte **Uživatele**.
+1. V části **Spravovat** vyberte **Uživatelé**.
 1. V části **Zobrazit**vyberte možnost **Všichni uživatelé** a ověřte, že jsou v seznamu uvedeni uživatelé, které jste obnovili.
 
 ### <a name="view-users-with-powershell"></a>Zobrazení uživatelů pomocí PowerShellu

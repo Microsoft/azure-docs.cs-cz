@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: femila
-ms.openlocfilehash: a3d67f3b1217aa7ab4c8122ae958685490a2ad34
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 7caa5a99f2d4ebdbe858c78c6e36be17aeb003ba
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559024"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85126072"
 ---
 # <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>Publikovat události do Azure Active Directory chráněných koncových bodů
 
@@ -29,7 +29,7 @@ Začněte vytvořením aplikace Azure AD pro chráněný koncový bod. Viz tří
     
 ## <a name="enable-event-grid-to-use-your-azure-ad-application"></a>Povolení Event Grid používání aplikace Azure AD
 
-K vytvoření principu role a služby ve vaší aplikaci Azure AD použijte níže uvedený skript prostředí PowerShell. Budete potřebovat ID tenanta a ID objektu z vaší aplikace Azure AD:
+K vytvoření role a instančního objektu ve vaší aplikaci Azure AD použijte níže uvedený skript prostředí PowerShell. Budete potřebovat ID tenanta a ID objektu z vaší aplikace Azure AD:
 
    > [!NOTE]
    > Abyste mohli tento skript spustit, musíte být členem [role Správce aplikací Azure AD](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#available-roles) .

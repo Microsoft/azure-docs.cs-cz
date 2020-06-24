@@ -110,12 +110,17 @@
     - name: Vytváření zásad pro vlastnosti pole
       displayName: 'array property, alias, aliases, in, notIn, type, defaultValue'
       href: ./how-to/author-policies-for-arrays.md
-    - name: Vytvoření zásad konfigurace hosta ve Windows
-      displayName: 'powershell, dsc, chef, windows'
-      href: ./how-to/guest-configuration-create.md
-    - name: Vytvoření zásad konfigurace hosta v Linuxu
-      displayName: 'powershell, dsc, chef, linux'
-      href: ./how-to/guest-configuration-create-linux.md
+    - name: Konfigurace hosta
+      items:
+        - name: Vytvoření zásad konfigurace hosta ve Windows
+          displayName: 'powershell, dsc, chef, windows'
+          href: ./how-to/guest-configuration-create.md
+        - name: Vytvoření zásad konfigurace hosta v Linuxu
+          displayName: 'powershell, dsc, chef, linux'
+          href: ./how-to/guest-configuration-create-linux.md
+        - name: Vytvoření zásad konfigurace hosta ze zásad skupiny
+          displayName: 'powershell, dsc, grouppolicy, windows'
+          href: ./how-to/guest-configuration-create-group-policy.md
     - name: Získávání dat dodržování předpisů
       displayName: 'evaluation, scan, summarize, query, events, log analytics'
       href: ./how-to/get-compliance-data.md
@@ -155,9 +160,9 @@
     - name: Azure PowerShell
       items:
         - name: Zásada
-          href: '/powershell/module/az.resources/#policies'
+          href: /powershell/module/az.resources/#policies
         - name: Policy Insights
-          href: '/powershell/module/az.policyinsights#policy_insights'
+          href: /powershell/module/az.policyinsights#policy_insights
         - name: Konfigurace hosta
           href: 'https://www.powershellgallery.com/packages/Az.GuestConfiguration'
     - name: Sada Azure SDK pro .NET

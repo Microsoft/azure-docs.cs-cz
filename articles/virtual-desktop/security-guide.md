@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5330c427088734b049b2cb4f7735ac0099a52b47
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 95f1027f4f5ace6963a38edf0dc028ddca351b7e
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82966672"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736668"
 ---
 # <a name="security-best-practices"></a>Osvědčené postupy zabezpečení
 
@@ -37,10 +37,10 @@ Tady jsou požadavky na zabezpečení, na které zodpovídáte při nasazení vi
 |Operační systém hostitele relace|Ano|
 |Konfigurace nasazení|Ano|
 |Správa sítě|Ano|
-|Rovina řízení virtualizace|No|
-|Fyzičtí hostitelé|No|
-|Fyzická síť|No|
-|Fyzické datacentrum|No|
+|Rovina řízení virtualizace|Ne|
+|Fyzičtí hostitelé|Ne|
+|Fyzická síť|Ne|
+|Fyzické datacentrum|Ne|
 
 Zabezpečení vyžaduje, aby zákazník nezodpovědný za zpracování Microsoftem.
 
@@ -62,7 +62,7 @@ Díky Azure Security Center Standard můžete:
 
 Další informace najdete v tématu připojení [předplatného Azure k Security Center Standard](../security-center/security-center-get-started.md).
 
-### <a name="improve-your-secure-score"></a>Vylepšení zabezpečeného skóre
+### <a name="improve-your-secure-score"></a>Zlepšení bezpečnostního skóre
 
 Bezpečné skóre poskytuje doporučení a Rady pro osvědčené postupy pro zlepšení celkového zabezpečení. Tato doporučení se stanovují podle priorit, aby vám pomohla vybrat, které z nich jsou nejdůležitější, a možnosti rychlé opravy vám pomůžou rychle řešit potenciální slabá místa zabezpečení. Tato doporučení se také aktualizují v průběhu času, takže budete mít k disdnešku nejlepší způsob, jak zajistit zabezpečení vašeho prostředí. Další informace najdete v tématu [vylepšení zabezpečeného skóre v Azure Security Center](../security-center/security-center-secure-score.md).
 

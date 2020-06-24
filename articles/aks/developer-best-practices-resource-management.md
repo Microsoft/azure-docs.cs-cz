@@ -7,12 +7,12 @@ author: zr-msft
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zarhoads
-ms.openlocfilehash: 0052657c947f8a9ff9c9d6aef86ff16d9a22adae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 538db1f2a757dd5216839ac9ac37ad0c06c5e9ea
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80803479"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976061"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro vývojáře aplikací pro správu prostředků ve službě Azure Kubernetes Service (AKS)
 
@@ -23,7 +23,7 @@ Tento článek o osvědčených postupech se zaměřuje na spuštění clusteru 
 > [!div class="checklist"]
 > * Co jsou požadavky a omezení prostředků
 > * Způsoby vývoje a nasazení aplikací s využitím vývojových prostorů a Visual Studio Code
-> * Jak používat `kube-advisor` nástroj ke kontrole problémů s nasazeními
+> * Jak používat `kube-advisor` Nástroj ke kontrole problémů s nasazeními
 
 ## <a name="define-pod-resource-requests-and-limits"></a>Definování požadavků a omezení prostředků pod
 
@@ -76,9 +76,7 @@ Další informace o měřeních a přiřazeních prostředků najdete v tématu 
 
 **Doprovodné materiály k osvědčeným postupům** – vývojové týmy by měly nasadit a LADIT cluster AKS pomocí vývojových prostorů. Tento model vývoje zajišťuje, aby se před nasazením aplikace do produkčního prostředí implementovaly požadavky řízení přístupu na základě role, sítě nebo úložiště.
 
-Při Azure Dev Spaces vyvíjíte, ladíte a testujete aplikace přímo na clusteru AKS. Vývojáři v týmu spolupracují na sestavování a testování v celém životním cyklu aplikace. Můžete dál používat existující nástroje, jako je například Visual Studio nebo Visual Studio Code. Je nainstalované rozšíření pro vývojové prostory, které poskytuje možnost spustit a ladit aplikaci v clusteru AKS:
-
-![Ladění aplikací v clusteru s AKS pomocí vývojových prostorů](media/developer-best-practices-resource-management/dev-spaces-debug.png)
+Při Azure Dev Spaces vyvíjíte, ladíte a testujete aplikace přímo na clusteru AKS. Vývojáři v týmu spolupracují na sestavování a testování v celém životním cyklu aplikace. Můžete dál používat existující nástroje, jako je například Visual Studio nebo Visual Studio Code. Rozšíření je nainstalované pro vývojové prostory, které poskytuje možnost spustit a ladit aplikaci v clusteru AKS.
 
 Tento integrovaný proces vývoje a testování s využitím vývojových prostorů snižuje nutnost místních testovacích prostředí, jako je [minikube][minikube]. Místo toho vyvíjíte a otestujete cluster AKS. Tento cluster může být zabezpečený a izolovaný, jak je uvedeno v předchozí části týkající se použití oborů názvů k logické izolaci clusteru. Až budou vaše aplikace připravené k nasazení v produkčním prostředí, můžete si bez obav nasadit svůj vývoj na skutečný cluster AKS.
 
@@ -94,7 +92,7 @@ Azure Dev Spaces je určený pro použití s aplikacemi, které běží na syst�
 
 ## <a name="regularly-check-for-application-issues-with-kube-advisor"></a>Pravidelně kontrolovat problémy s aplikací pomocí Kube-Advisoru
 
-**Doprovodné materiály k osvědčeným postupům** – pravidelně spouštějte `kube-advisor` nejnovější verzi nástroje open source a zjistěte problémy v clusteru. Pokud použijete kvóty prostředků v existujícím clusteru AKS, spusťte `kube-advisor` nejprve rutiny, které nemají požadavky na prostředky a definované limity.
+**Doprovodné materiály k osvědčeným postupům** – pravidelně spouštějte nejnovější verzi `kube-advisor` nástroje open source a zjistěte problémy v clusteru. Pokud použijete kvóty prostředků v existujícím clusteru AKS, spusťte `kube-advisor` nejprve rutiny, které nemají požadavky na prostředky a definované limity.
 
 Nástroj [Kube-Advisor][kube-advisor] je přidružený AKS open source projekt, který vyhledává cluster Kubernetes a oznamuje nalezené problémy. Jednou z užitečných kontrol je identifikovat lusky, které nemají požadavky na prostředky a omezení.
 
@@ -119,7 +117,7 @@ Chcete-li implementovat některé z těchto doporučených postupů, přečtěte
 
 <!-- INTERNAL LINKS -->
 [aks-kubeadvisor]: kube-advisor-tool.md
-[dev-spaces]: ../dev-spaces/get-started-netcore.md
+[dev-spaces]: ../dev-spaces/how-dev-spaces-works-local-process-kubernetes.md
 [operator-best-practices-isolation]: operator-best-practices-cluster-isolation.md
 [resource-quotas]: operator-best-practices-scheduler.md#enforce-resource-quotas
 [k8s-node-selector]: concepts-clusters-workloads.md#node-selectors

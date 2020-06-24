@@ -28,7 +28,7 @@ Pomocí funkce a můžete `filepath` `filename` vracet názvy souborů nebo cest
 
 Prvním krokem je **Vytvoření databáze** se zdrojem dat, který odkazuje na účet úložiště. Pak inicializujte objekty spuštěním [instalačního skriptu](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) v této databázi. Tento instalační skript vytvoří zdroje dat, přihlašovací údaje v oboru databáze a formáty externích souborů, které jsou použity v těchto ukázkách.
 
-## <a name="functions"></a>Funkce
+## <a name="functions"></a>Functions
 
 ### <a name="filename"></a>Bitmap
 

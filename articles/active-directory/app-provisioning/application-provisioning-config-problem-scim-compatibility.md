@@ -33,10 +33,10 @@ Tento článek popisuje aktuální a minulé problémy se službou zřizování 
 
 | **Problém dodržování předpisů pro SCIM 2,0** |  **Určí?** | **Opravit datum**  |  
 |---|---|---|
-| Azure AD vyžaduje, aby "/SCIM" v kořenu adresy URL koncového bodu SCIM aplikace.  | Ano  |  18. prosince 2018 | 
-| Atributy rozšíření používají tečku "." před názvy atributů namísto dvojtečky ":" Notation. |  Ano  | 18. prosince 2018  | 
-|  Žádosti o opravu atributů s více hodnotami obsahují neplatnou syntaxi filtru cesty. | Ano  |  18. prosince 2018  | 
-|  Žádosti o vytvoření skupiny obsahují neplatný identifikátor URI schématu. | Ano  |  18. prosince 2018  |  
+| Azure AD vyžaduje, aby "/SCIM" v kořenu adresy URL koncového bodu SCIM aplikace.  | Yes  |  18. prosince 2018 | 
+| Atributy rozšíření používají tečku "." před názvy atributů namísto dvojtečky ":" Notation. |  Yes  | 18. prosince 2018  | 
+|  Žádosti o opravu atributů s více hodnotami obsahují neplatnou syntaxi filtru cesty. | Yes  |  18. prosince 2018  | 
+|  Žádosti o vytvoření skupiny obsahují neplatný identifikátor URI schématu. | Yes  |  18. prosince 2018  |  
 
 ## <a name="were-the-services-fixes-described-automatically-applied-to-my-pre-existing-scim-app"></a>Byly opravy služeb popsané automaticky u stávající aplikace SCIM?
 

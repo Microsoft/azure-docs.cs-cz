@@ -8,18 +8,18 @@ manager: mtillman
 ms.assetid: 9e225dba-9044-4b13-b573-2f30d77925a9
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: ffb53bff4e70fbeb80e518fe13aaeaa8b396cfac
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 540da4103c3f7800521407441d645070e1e3e7ca
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734803"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84790207"
 ---
 # <a name="create-or-update-azure-custom-roles-using-azure-powershell"></a>Vytvoření nebo aktualizace vlastních rolí Azure pomocí Azure PowerShell
 
@@ -161,7 +161,7 @@ Start Virtual Machine                          Microsoft.Compute/virtualMachines
 
 ### <a name="create-a-custom-role-with-the-psroledefinition-object"></a>Vytvoření vlastní role s objektem PSRoleDefinition
 
-Když použijete PowerShell k vytvoření vlastní role, můžete jako výchozí bod použít jednu z [předdefinovaných rolí](built-in-roles.md) nebo můžete začít od začátku. První příklad v této části začíná integrovanou rolí a pak ji přizpůsobuje s více oprávněními. Upravte atributy pro přidání `Actions`, `NotActions`nebo `AssignableScopes` , které chcete, a pak změny uložte jako novou roli.
+Když použijete PowerShell k vytvoření vlastní role, můžete jako výchozí bod použít jednu z [předdefinovaných rolí](built-in-roles.md) nebo můžete začít od začátku. První příklad v této části začíná integrovanou rolí a pak ji přizpůsobuje s více oprávněními. Upravte atributy pro přidání `Actions` , nebo, `NotActions` `AssignableScopes` které chcete, a pak změny uložte jako novou roli.
 
 V následujícím příkladu se spustí předdefinovaná role [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor) , aby se vytvořila vlastní role s názvem *operátor virtuálního počítače*. Nová role uděluje přístup ke všem operacím čtení poskytovatele prostředků *Microsoft. COMPUTE*, *Microsoft. Storage*a *Microsoft. Network* a uděluje přístup ke spouštění, restartování a monitorování virtuálních počítačů. Vlastní roli lze použít ve dvou předplatných.
 
@@ -187,7 +187,7 @@ $role.AssignableScopes.Add("/subscriptions/11111111-1111-1111-1111-111111111111"
 New-AzRoleDefinition -Role $role
 ```
 
-Následující příklad ukazuje jiný způsob vytvoření vlastní role *operátoru virtuálního počítače* . Spustí se vytvořením nového `PSRoleDefinition` objektu. Operace akcí jsou zadány v `perms` proměnné a nastaveny na `Actions` vlastnost. `NotActions` Vlastnost je nastavena čtením `NotActions` z předdefinované role [Přispěvatel virtuálního počítače](built-in-roles.md#virtual-machine-contributor) . Vzhledem k tomu, že [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor) nemá žádné `NotActions`, tento řádek není povinný, ale zobrazuje, jak lze informace získat z jiné role.
+Následující příklad ukazuje jiný způsob vytvoření vlastní role *operátoru virtuálního počítače* . Spustí se vytvořením nového `PSRoleDefinition` objektu. Operace akcí jsou zadány v `perms` proměnné a nastaveny na `Actions` vlastnost. `NotActions`Vlastnost je nastavena čtením `NotActions` z předdefinované role [Přispěvatel virtuálního počítače](built-in-roles.md#virtual-machine-contributor) . Vzhledem k tomu, že [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor) nemá žádné `NotActions` , tento řádek není povinný, ale zobrazuje, jak lze informace získat z jiné role.
 
 ```azurepowershell
 $role = [Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition]::new()
@@ -209,7 +209,7 @@ New-AzRoleDefinition -Role $role
 
 ### <a name="create-a-custom-role-with-json-template"></a>Vytvoření vlastní role se šablonou JSON
 
-Šablonu JSON lze použít jako definici zdroje pro vlastní roli. Následující příklad vytvoří vlastní roli, která umožňuje oprávnění ke čtení pro úložiště a výpočetní prostředky, přístup k podpoře a přidání této role do dvou předplatných. Vytvořte nový soubor `C:\CustomRoles\customrole1.json` s následujícím příkladem. ID by mělo být nastavené `null` na počáteční vytvoření role, protože nové ID se generuje automaticky. 
+Šablonu JSON lze použít jako definici zdroje pro vlastní roli. Následující příklad vytvoří vlastní roli, která umožňuje oprávnění ke čtení pro úložiště a výpočetní prostředky, přístup k podpoře a přidání této role do dvou předplatných. Vytvořte nový soubor `C:\CustomRoles\customrole1.json` s následujícím příkladem. ID by mělo být nastavené na `null` počáteční vytvoření role, protože nové ID se generuje automaticky. 
 
 ```json
 {

@@ -11,24 +11,24 @@ Customer intent: I need to diagnose virtual machine (VM) network routing problem
 ms.assetid: ''
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: damendo
 ms.custom: ''
-ms.openlocfilehash: ae139ea7aca7c3896fcd7b0acf2bf6673490a2f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 889db5cdcb1807b859339eaf326e3cec7ea64b84
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80382898"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738800"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-cli"></a>Diagnostika potíží se síťovým směrováním virtuálního počítače – Azure CLI
 
 V tomto článku nasadíte virtuální počítač (VM) a pak zkontrolujete komunikaci s IP adresou a adresou URL. Určíte příčinu selhání komunikace a najdete jeho řešení.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -129,7 +129,7 @@ Vrácený výstup obsahuje následující text:
 },
 ```
 
-Když jste pomocí `az network watcher show-next-hop` příkazu otestovali odchozí komunikaci s 13.107.21.200 při [použití dalšího směrování](#use-next-hop), použila se trasa s **addressPrefix** 0.0.0.0/0 * * ke směrování provozu na adresu, protože žádná jiná trasa ve výstupu neobsahuje adresu. Standardně se všechny adresy, které se nezadaly v předponě adresy jiné trasy, směrují do internetu.
+Když jste `az network watcher show-next-hop` pomocí příkazu otestovali odchozí komunikaci s 13.107.21.200 při [použití dalšího směrování](#use-next-hop), použila se trasa s **addressPrefix** 0.0.0.0/0 * * ke směrování provozu na adresu, protože žádná jiná trasa ve výstupu neobsahuje adresu. Standardně se všechny adresy, které se nezadaly v předponě adresy jiné trasy, směrují do internetu.
 
 Při použití `az network watcher show-next-hop` příkazu k otestování odchozí komunikace k 172.31.0.100 ale výsledek oznamuje, že neexistuje typ dalšího segmentu směrování. V vráceném výstupu se zobrazí také následující text:
 

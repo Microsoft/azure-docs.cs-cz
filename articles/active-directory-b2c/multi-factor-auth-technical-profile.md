@@ -59,10 +59,10 @@ Element **InputClaims** obsahuje seznam deklarací pro odeslání do Azure MFA. 
 
 | ClaimReferenceId | Povinné | Popis |
 | --------- | -------- | ----------- |
-| userPrincipalName (Hlavní název uživatele) | Ano | Identifikátor uživatele, který vlastní telefonní číslo. |
-| phoneNumber | Ano | Telefonní číslo, do kterého se má poslat SMS kód |
-| Společnosti | Ne |Název společnosti v serveru SMS. Pokud není zadaný, použije se název vaší aplikace. |
-| locale | Ne | Národní prostředí serveru SMS. Pokud není zadaný, použije se národní prostředí prohlížeče uživatele. |
+| userPrincipalName (Hlavní název uživatele) | Yes | Identifikátor uživatele, který vlastní telefonní číslo. |
+| phoneNumber | Yes | Telefonní číslo, do kterého se má poslat SMS kód |
+| Společnosti | No |Název společnosti v serveru SMS. Pokud není zadaný, použije se název vaší aplikace. |
+| locale | No | Národní prostředí serveru SMS. Pokud není zadaný, použije se národní prostředí prohlížeče uživatele. |
 
 Element **InputClaimsTransformations** může obsahovat kolekci prvků **InputClaimsTransformation** , které se používají k úpravě vstupních deklarací identity nebo k vygenerování nových dat před odesláním do služby Azure MFA.
 
@@ -76,7 +76,7 @@ Element **OutputClaimsTransformations** může obsahovat kolekci prvků **Output
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Operace | Ano | Musí být **OneWaySMS**.  |
+| Operace | Yes | Musí být **OneWaySMS**.  |
 
 #### <a name="ui-elements"></a>Prvky uživatelského rozhraní
 
@@ -84,10 +84,10 @@ Následující metadata lze použít ke konfiguraci chybových zpráv zobrazený
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| UserMessageIfCouldntSendSms | Ne | Chybová zpráva uživatele, pokud telefonní číslo nepřijímá zprávu SMS. |
-| UserMessageIfInvalidFormat | Ne | Chybová zpráva uživatele v případě, že zadané telefonní číslo není platné telefonní číslo. |
-| UserMessageIfServerError | Ne | Chybová zpráva uživatele v případě, že došlo k vnitřní chybě serveru |
-| UserMessageIfThrottled| Ne | Chybová zpráva uživatele, pokud byl požadavek omezen.|
+| UserMessageIfCouldntSendSms | No | Chybová zpráva uživatele, pokud telefonní číslo nepřijímá zprávu SMS. |
+| UserMessageIfInvalidFormat | No | Chybová zpráva uživatele v případě, že zadané telefonní číslo není platné telefonní číslo. |
+| UserMessageIfServerError | No | Chybová zpráva uživatele v případě, že došlo k vnitřní chybě serveru |
+| UserMessageIfThrottled| No | Chybová zpráva uživatele, pokud byl požadavek omezen.|
 
 ### <a name="example-send-an-sms"></a>Příklad: odeslání serveru SMS
 
@@ -121,8 +121,8 @@ Element **InputClaims** obsahuje seznam deklarací pro odeslání do Azure MFA. 
 
 | ClaimReferenceId | Povinné | Popis |
 | --------- | -------- | ----------- | ----------- |
-| phoneNumber| Ano | Stejné telefonní číslo jako dříve použité k odeslání kódu. Používá se také k vyhledání relace ověřování pro telefon. |
-| verificationCode  | Ano | Ověřovací kód poskytnutý uživatelem, který se má ověřit |
+| phoneNumber| Yes | Stejné telefonní číslo jako dříve použité k odeslání kódu. Používá se také k vyhledání relace ověřování pro telefon. |
+| verificationCode  | Yes | Ověřovací kód poskytnutý uživatelem, který se má ověřit |
 
 Element **InputClaimsTransformations** může obsahovat kolekci prvků **InputClaimsTransformation** , které se používají k úpravě vstupních deklarací identity nebo k vygenerování nových před voláním služby Azure MFA.
 
@@ -136,7 +136,7 @@ Element **OutputClaimsTransformations** může obsahovat kolekci prvků **Output
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Operace | Ano | Je nutné **ověřit** |
+| Operace | Yes | Je nutné **ověřit** |
 
 #### <a name="ui-elements"></a>Prvky uživatelského rozhraní
 
@@ -144,10 +144,10 @@ Následující metadata lze použít ke konfiguraci chybových zpráv zobrazený
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| UserMessageIfMaxAllowedCodeRetryReached| Ne | Chybová zpráva uživatele v případě, že se uživatel pokusil o ověřovací kód příliš mnohokrát. |
-| UserMessageIfServerError | Ne | Chybová zpráva uživatele v případě, že došlo k vnitřní chybě serveru |
-| UserMessageIfThrottled| Ne | Chybová zpráva uživatele, pokud je požadavek omezen.|
-| UserMessageIfWrongCodeEntered| Ne| Chybová zpráva uživatele, je-li kód pro ověření zadán nesprávně.|
+| UserMessageIfMaxAllowedCodeRetryReached| No | Chybová zpráva uživatele v případě, že se uživatel pokusil o ověřovací kód příliš mnohokrát. |
+| UserMessageIfServerError | No | Chybová zpráva uživatele v případě, že došlo k vnitřní chybě serveru |
+| UserMessageIfThrottled| No | Chybová zpráva uživatele, pokud je požadavek omezen.|
+| UserMessageIfWrongCodeEntered| No| Chybová zpráva uživatele, je-li kód pro ověření zadán nesprávně.|
 
 ### <a name="example-verify-a-code"></a>Příklad: ověření kódu
 

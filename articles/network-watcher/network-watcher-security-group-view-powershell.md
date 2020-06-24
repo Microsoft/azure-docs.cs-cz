@@ -7,22 +7,22 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 4cba2c7e25b5f76b0638da1c551514f102247ae0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b87d076c12a40d84dc99ef5b48454afa3f0ffce0
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76840787"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738718"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-powershell"></a>Analýza zabezpečení virtuálního počítače pomocí zobrazení skupiny zabezpečení pomocí prostředí PowerShell
 
 > [!div class="op_single_selector"]
-> - [Prostředí](network-watcher-security-group-view-powershell.md)
+> - [PowerShell](network-watcher-security-group-view-powershell.md)
 > - [Azure CLI](network-watcher-security-group-view-cli.md)
 > - [REST API](network-watcher-security-group-view-rest.md)
 
@@ -31,7 +31,7 @@ Zobrazení skupiny zabezpečení vrací nakonfigurovaná a efektivní pravidla z
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V tomto scénáři spustíte `Get-AzNetworkWatcherSecurityGroupView` rutinu, která načte informace o pravidlu zabezpečení.
 
@@ -51,7 +51,7 @@ $networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network
 
 ## <a name="get-a-vm"></a>Získání virtuálního počítače
 
-Pro spuštění `Get-AzNetworkWatcherSecurityGroupView` rutiny se vyžaduje virtuální počítač. Následující příklad načte objekt virtuálního počítače.
+Pro spuštění rutiny se vyžaduje virtuální počítač `Get-AzNetworkWatcherSecurityGroupView` . Následující příklad načte objekt virtuálního počítače.
 
 ```powershell
 $VM = Get-AzVM -ResourceGroupName testrg -Name testvm1

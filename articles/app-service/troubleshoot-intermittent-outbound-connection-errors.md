@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 03/24/2020
 ms.author: ramakoni
 ms.custom: security-recommendations
-ms.openlocfilehash: 028ddccdb989d35710e387081b08a3b973d75bdc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 704c6b026ab656ce52b34e5ac70ba7e2087ccbcd
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80367548"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85252436"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Řešení chyb občasného odchozího připojení v Azure App Service
 
@@ -62,7 +62,7 @@ Ve výchozím nastavení nejsou připojení pro NodeJS udržována v neaktivním
 Keep-Alive HTTP
 
 * [agentkeepalive](https://www.npmjs.com/package/agentkeepalive)
-* [Dokumentace k Node. js v 13.9.0](https://nodejs.org/api/http.html)
+* [Dokumentace kNode.js v 13.9.0](https://nodejs.org/api/http.html)
 
 #### <a name="java"></a>Java
 
@@ -111,24 +111,24 @@ Pro další prostředí si projděte téma poskytovatel nebo dokumentace pro kon
 
 ### <a name="use-keepalives-to-reset-the-outbound-idle-timeout"></a>Obnovení odchozího nečinného časového limitu pomocí kontroly stavu
 
-* Pro implementaci kontroly zatížení pro aplikace Node. js zkontrolujte, [že moje aplikace Node provádí nadměrné odchozí hovory](https://docs.microsoft.com/azure/app-service/app-service-web-nodejs-best-practices-and-troubleshoot-guide#my-node-application-is-making-excessive-outbound-calls).
+* Pro implementaci režimu kontroly a kontroly pro aplikace Node.js můžete zkontrolovat, [že aplikace uzlů provádí nadměrné odchozí hovory](https://docs.microsoft.com/azure/app-service/app-service-web-nodejs-best-practices-and-troubleshoot-guide#my-node-application-is-making-excessive-outbound-calls).
 
 ### <a name="additional-guidance-specific-to-app-service"></a>Další pokyny, které jsou specifické pro App Service:
 
 * [Zátěžový test](https://docs.microsoft.com/azure/devops/test/load-test/app-service-web-app-performance-test) by měl simulovat reálné celosvětové údaje při ustálené rychlosti krmení. Testování aplikací a funkcí v rámci reálného zatížení dokáže identifikovat a vyřešit problémy s vyčerpáním portů SNAT před časem.
-* Ujistěte se, že back-endové služby můžou odpovědi vracet rychle. Pokud chcete řešit problémy s výkonem Azure SQL Database, přečtěte si téma [řešení potíží s výkonem Azure SQL Database problémy s výkonem Intelligent Insights](https://docs.microsoft.com/azure/sql-database/sql-database-intelligent-insights-troubleshoot-performance#recommended-troubleshooting-flow).
+* Ujistěte se, že back-endové služby můžou odpovědi vracet rychle. Řešení potíží s výkonem pomocí Azure SQL Database najdete v tématu [řešení potíží s Azure SQL Database problémy s výkonem Intelligent Insights](https://docs.microsoft.com/azure/sql-database/sql-database-intelligent-insights-troubleshoot-performance#recommended-troubleshooting-flow).
 * Horizontální navýšení kapacity App Service naplánování na více instancí. Další informace o škálování najdete v tématu horizontální navýšení [kapacity aplikace v Azure App Service](https://docs.microsoft.com/azure/app-service/manage-scale-up). Každá instance pracovního procesu v plánu služby App Service má přidělený počet portů SNAT. Pokud rozšíříte své využití napříč více instancemi, můžete získat využití portu SNAT na instanci níže doporučeným limitem 100 odchozích připojení na jedinečné vzdálené koncové body.
 * Zvažte přesunutí na [App Service Environment (POmocného mechanismu)](https://docs.microsoft.com/azure/app-service/environment/using-an-ase), kde se přiděluje jedna odchozí IP adresa a omezení pro připojení a porty SNAT jsou mnohem vyšší.
 
 Vyloučení odchozích omezení TCP je snazší, protože limity jsou nastaveny podle velikosti pracovního procesu. Můžete si prohlédnout omezení pro [Číselná omezení mezi virtuálními počítači izolovaného prostoru (sandbox) – připojení TCP](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)
 
-|Název omezení|Popis|Malé (a1)|Střední (a2)|Velký (a3)|Izolovaná úroveň (pomocného mechanismu)|
+|Název omezení|Description|Malé (a1)|Střední (a2)|Velký (a3)|Izolovaná úroveň (pomocného mechanismu)|
 |---|---|---|---|---|---|
 |Připojení|Počet připojení napříč celým virtuálním počítačem|1920|3968|8064|16 000|
 
 Aby nedocházelo k odchozím limitům TCP, můžete buď zvětšit velikost vašich pracovních procesů, nebo horizontální horizontální navýšení kapacity.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Pochopení dvou typů omezení odchozího připojení a toho, co vaše aplikace dělá, by mělo usnadnit řešení potíží. Pokud víte, že vaše aplikace provede mnoho volání stejného účtu úložiště, můžete mít podezření na omezení SNAT. Pokud vaše aplikace vytvoří hodně volání koncových bodů po internetu, měli byste se domnívat, že jste dosáhli limitu počtu virtuálních počítačů.
 
@@ -154,13 +154,13 @@ Připojení TCP a porty SNAT přímo nesouvisejí. Rozpoznávání využití př
 * Limit připojení TCP nastane na úrovni instance pracovního procesu. Služba Vyrovnávání zatížení sítě Azure nepoužívá metriku připojení TCP pro omezení portů SNAT.
 * Omezení připojení TCP jsou popsaná v části [Číselná omezení pro různé virtuální počítače izolovaného prostoru (sandbox) – připojení TCP](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)
 
-|Název omezení|Popis|Malé (a1)|Střední (a2)|Velký (a3)|Izolovaná úroveň (pomocného mechanismu)|
+|Název omezení|Description|Malé (a1)|Střední (a2)|Velký (a3)|Izolovaná úroveň (pomocného mechanismu)|
 |---|---|---|---|---|---|
 |Připojení|Počet připojení napříč celým virtuálním počítačem|1920|3968|8064|16 000|
 
 ### <a name="webjobs-and-database-connections"></a>Webové úlohy a databázová připojení
  
-Pokud jsou vyčerpány porty SNAT, kde se webové úlohy nemohou připojit ke službě Azure SQL Database, neexistuje žádná metrika k zobrazení, kolik připojení je otevřeno jednotlivými procesy webové aplikace. Pokud chcete zjistit problematickou webovou úlohu, přejeďte několik webových úloh na jiný App Service plán, abyste zjistili, jestli se situace zlepšila, nebo pokud problém zůstane v jednom z plánů. Opakujte tento postup, dokud nenajdete problematickou úlohu WebJob.
+Pokud jsou vyčerpány porty SNAT, kde se webové úlohy nemohou připojit k SQL Database, neexistuje žádná metrika k zobrazení, kolik připojení je otevřeno jednotlivými procesy webové aplikace. Pokud chcete zjistit problematickou webovou úlohu, přejeďte několik webových úloh na jiný App Service plán, abyste zjistili, jestli se situace zlepšila, nebo pokud problém zůstane v jednom z plánů. Opakujte tento postup, dokud nenajdete problematickou úlohu WebJob.
 
 ### <a name="using-snat-ports-sooner"></a>Používání portů SNAT dříve
 

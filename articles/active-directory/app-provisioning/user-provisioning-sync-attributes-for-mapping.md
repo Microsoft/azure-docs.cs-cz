@@ -2,20 +2,20 @@
 title: Synchronizovat atributy s Azure AD pro mapování
 description: Naučte se synchronizovat atributy z vaší místní služby Active Directory do Azure AD. Při konfiguraci zřizování uživatelů pro aplikace SaaS použijte funkci rozšíření adresáře a přidejte zdrojové atributy, které se ve výchozím nastavení nesynchronizují.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/13/2019
-ms.author: mimart
-ms.openlocfilehash: 4b51d74d188f8f1c99f2075000e8fd91e70a81a4
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.author: kenwith
+ms.openlocfilehash: 00c4dec329456409bc8d5b77dca72f25daf9f5c7
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593144"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84781069"
 ---
 # <a name="sync-an-attribute-from-your-on-premises-active-directory-to-azure-ad-for-provisioning-to-an-application"></a>Synchronizace atributu z místní služby Active Directory do Azure AD kvůli zřizování pro aplikaci
 
@@ -45,7 +45,7 @@ Pokud jsou data potřebná pro zřizování ve službě Active Directory, ale ne
 
 5. Dokončete průvodce Azure AD Connect a umožněte spuštění úplný cyklus synchronizace. Po dokončení cyklu se schéma rozšíří a nové hodnoty se synchronizují mezi místními službami AD a Azure AD.
  
-6. V Azure Portal při [úpravách mapování atributů uživatele](customize-application-attributes.md)bude seznam **zdrojových atributů** nyní obsahovat přidaný atribut ve formátu `<attributename> (extension_<appID>_<attributename>)`. Vyberte atribut a namapujte ho k cílové aplikaci pro zřizování.
+6. V Azure Portal při [úpravách mapování atributů uživatele](customize-application-attributes.md)bude seznam **zdrojových atributů** nyní obsahovat přidaný atribut ve formátu `<attributename> (extension_<appID>_<attributename>)` . Vyberte atribut a namapujte ho k cílové aplikaci pro zřizování.
 
    ![Stránka pro výběr rozšíření adresáře průvodce Azure Active Directory Connect](./media/user-provisioning-sync-attributes-for-mapping/attribute-mapping-extensions.png)
 

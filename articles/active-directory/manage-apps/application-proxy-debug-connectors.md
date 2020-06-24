@@ -2,27 +2,27 @@
 title: Ladit konektory proxy aplikací – Azure Active Directory | Microsoft Docs
 description: Ladění problémů s konektory proxy aplikací služby Azure Active Directory (Azure AD).
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/21/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: c041578932bd33eb0a2d3afc18a35c2c0458dc8b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9254e0ce9f27d95edb01359e53888078c1087381
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72311847"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764649"
 ---
 # <a name="debug-application-proxy-connector-issues"></a>Ladění problémů s konektorem Proxy aplikací 
 
 Tento článek vám pomůže vyřešit problémy s konektory proxy aplikací služby Azure Active Directory (Azure AD). Pokud používáte službu proxy aplikací pro vzdálený přístup k místní webové aplikaci, ale máte potíže s připojením k aplikaci, použijte tento vývojový diagram k ladění problémů konektoru. 
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V tomto článku se předpokládá, že máte nainstalovaný konektor proxy aplikací a máte problém. Při řešení potíží s proxy aplikací doporučujeme začít s tímto tokem řešení potíží, abyste zjistili, jestli jsou konektory proxy aplikací správně nakonfigurované. Pokud stále dochází k potížím s připojením k aplikaci, postupujte podle pokynů v části řešení potíží s [aplikací proxy při ladění aplikace](application-proxy-debug-apps.md).  
 
@@ -32,7 +32,7 @@ Další informace o proxy aplikací a používání jeho konektorů najdete v t�
 - [Vzdálený přístup k místním aplikacím prostřednictvím proxy aplikací](application-proxy.md)
 - [Konektory proxy aplikací](application-proxy-connectors.md)
 - [Instalace a registrace konektoru](application-proxy-add-on-premises-application.md)
-- [Řešení problémů s proxy aplikací a chybové zprávy](application-proxy-troubleshoot.md)
+- [Řešení potíží s Proxy aplikací a souvisejícími chybovými zprávami](application-proxy-troubleshoot.md)
 
 ## <a name="flowchart-for-connector-issues"></a>Vývojový diagram pro problémy s konektorem
 
@@ -40,7 +40,7 @@ Tento vývojový diagram vás provede kroky pro ladění některých častých p
 
 ![Vývojový diagram znázorňující kroky pro ladění konektoru](media/application-proxy-debug-connectors/application-proxy-connector-debugging-flowchart.png)
 
-|  | Akce | Popis | 
+|  | Akce | Description | 
 |---------|---------|---------|
 |1 | Najít skupinu konektorů přiřazenou k aplikaci | Máte pravděpodobně nainstalovaný konektor na více serverech. v takovém případě by se měly konektory [přiřadit ke skupinám konektorů](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups). Další informace o skupinách konektorů najdete v tématu [publikování aplikací v samostatných sítích a umístěních pomocí skupin konektorů](application-proxy-connector-groups.md). |
 |2 | Instalace konektoru a přiřazení skupiny | Pokud nemáte nainstalovaný konektor, přečtěte si téma [instalace a registrace konektoru](application-proxy-add-on-premises-application.md#install-and-register-a-connector).<br></br> Pokud máte problémy s instalací konektoru, přečtěte si téma [problém instalace konektoru](application-proxy-connector-installation-problem.md).<br></br> Pokud konektor není přiřazen ke skupině, přečtěte si téma [přiřazení konektoru ke skupině](application-proxy-connector-groups.md#create-connector-groups).<br></br>Pokud aplikace není přiřazena ke skupině konektorů, přečtěte si téma [přiřazení aplikace do skupiny konektorů](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups).|

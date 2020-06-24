@@ -5,15 +5,15 @@ description: Převedení staršího partnerského vztahu serveru Exchange na pro
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: eedf87548d62e05d4940911ed3dcd821077acb27
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2abd05243f30a32d8fe49f12bf4ee2ad09855002
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686779"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84699987"
 ---
 # <a name="convert-a-legacy-exchange-peering-to-an-azure-resource-by-using-powershell"></a>Převedení staršího partnerského vztahu serveru Exchange na prostředek Azure pomocí PowerShellu
 
@@ -21,7 +21,7 @@ Tento článek popisuje, jak převést existující starší partnerský vztah E
 
 Pokud chcete, můžete tuto příručku dokončit pomocí webu Azure [Portal](howto-legacy-exchange-portal.md).
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 * Před zahájením konfigurace si Projděte návod [požadavky](prerequisites.md) a [partnerský vztah Exchange](walkthrough-exchange-all.md) .
 
 ### <a name="work-with-azure-powershell"></a>Práce s Azure PowerShell

@@ -191,18 +191,18 @@ Pomocí obchodní logiky můžete také volat REST API technický profil, přeps
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| nastavení. operatingMode <sup>1</sup>| Ne | Pro přihlašovací stránku Tato vlastnost řídí chování pole username, jako je například ověřování vstupu a chybové zprávy. Očekávané hodnoty: `Username` nebo `Email` .  |
-| AllowGenerationOfClaimsWithNullValues| Ne| Povoluje generování deklarace identity s hodnotou null. Například v případě, že uživatel nevybere zaškrtávací políčko.|
-| ContentDefinitionReferenceId | Ano | Identifikátor [definice obsahu](contentdefinitions.md) přidruženého k tomuto technickému profilu. |
-| EnforceEmailVerification | Ne | Pro registraci nebo úpravy profilu vynutilo ověřování e-mailů. Možné hodnoty: `true` (výchozí), nebo `false` . |
-| nastavení. retryLimit | Ne | Určuje počet pokusů, kolikrát se uživatel může pokusit zadat data, která jsou zkontrolována na technický profil ověření. Uživatel se například pokusí zaregistrovat pomocí účtu, který už existuje, a pokračuje v tom, dokud nedosáhne limitu.
-| SignUpTarget <sup>1</sup>| Ne | Identifikátor cílového Exchange registrace. Když uživatel klikne na tlačítko pro registraci, Azure AD B2C spustí zadaný identifikátor Exchange. |
-| nastavení. showCancelButton | Ne | Zobrazí tlačítko Storno. Možné hodnoty: `true` (výchozí), nebo`false` |
-| nastavení. showContinueButton | Ne | Zobrazí tlačítko pokračovat. Možné hodnoty: `true` (výchozí), nebo`false` |
-| nastavení. showSignupLink <sup>2</sup>| Ne | Zobrazí tlačítko pro registraci. Možné hodnoty: `true` (výchozí), nebo`false` |
-| nastavení. forgotPasswordLinkLocation <sup>2</sup>| Ne| Zobrazí odkaz zapomenuté heslo. Možné hodnoty: `AfterInput` (výchozí) odkaz se zobrazí v dolní části stránky nebo `None` odebere odkaz zapomenuté heslo.|
-| nastavení. enableRememberMe <sup>2</sup>| Ne| Zobrazí zaškrtávací políčko [zůstat přihlášeni](custom-policy-keep-me-signed-in.md) . Možné hodnoty: `true` , nebo `false` (výchozí). |
-| IncludeClaimResolvingInClaimsHandling  | Ne | Pro vstupní a výstupní deklarace identity určuje, jestli je [řešení deklarací identity](claim-resolver-overview.md) zahrnuté v technickém profilu. Možné hodnoty: `true` , nebo `false`   (výchozí). Pokud chcete použít překladač deklarací identity v technickém profilu, nastavte tuto hodnotu na `true` . |
+| nastavení. operatingMode <sup>1</sup>| No | Pro přihlašovací stránku Tato vlastnost řídí chování pole username, jako je například ověřování vstupu a chybové zprávy. Očekávané hodnoty: `Username` nebo `Email` .  |
+| AllowGenerationOfClaimsWithNullValues| No| Povoluje generování deklarace identity s hodnotou null. Například v případě, že uživatel nevybere zaškrtávací políčko.|
+| ContentDefinitionReferenceId | Yes | Identifikátor [definice obsahu](contentdefinitions.md) přidruženého k tomuto technickému profilu. |
+| EnforceEmailVerification | No | Pro registraci nebo úpravy profilu vynutilo ověřování e-mailů. Možné hodnoty: `true` (výchozí), nebo `false` . |
+| nastavení. retryLimit | No | Určuje počet pokusů, kolikrát se uživatel může pokusit zadat data, která jsou zkontrolována na technický profil ověření. Uživatel se například pokusí zaregistrovat pomocí účtu, který už existuje, a pokračuje v tom, dokud nedosáhne limitu.
+| SignUpTarget <sup>1</sup>| No | Identifikátor cílového Exchange registrace. Když uživatel klikne na tlačítko pro registraci, Azure AD B2C spustí zadaný identifikátor Exchange. |
+| nastavení. showCancelButton | No | Zobrazí tlačítko Storno. Možné hodnoty: `true` (výchozí), nebo`false` |
+| nastavení. showContinueButton | No | Zobrazí tlačítko pokračovat. Možné hodnoty: `true` (výchozí), nebo`false` |
+| nastavení. showSignupLink <sup>2</sup>| No | Zobrazí tlačítko pro registraci. Možné hodnoty: `true` (výchozí), nebo`false` |
+| nastavení. forgotPasswordLinkLocation <sup>2</sup>| No| Zobrazí odkaz zapomenuté heslo. Možné hodnoty: `AfterInput` (výchozí) odkaz se zobrazí v dolní části stránky nebo `None` odebere odkaz zapomenuté heslo.|
+| nastavení. enableRememberMe <sup>2</sup>| No| Zobrazí zaškrtávací políčko [zůstat přihlášeni](custom-policy-keep-me-signed-in.md) . Možné hodnoty: `true` , nebo `false` (výchozí). |
+| IncludeClaimResolvingInClaimsHandling  | No | Pro vstupní a výstupní deklarace identity určuje, jestli je [řešení deklarací identity](claim-resolver-overview.md) zahrnuté v technickém profilu. Možné hodnoty: `true` , nebo `false`   (výchozí). Pokud chcete použít překladač deklarací identity v technickém profilu, nastavte tuto hodnotu na `true` . |
 
 Poznámky:
 1. K dispozici pro [DataUri](contentdefinitions.md#datauri) typ definice obsahu `unifiedssp` nebo `unifiedssd` .

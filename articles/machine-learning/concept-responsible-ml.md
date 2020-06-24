@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
 ms.date: 05/08/2020
-ms.openlocfilehash: acf329092d082b9e9cece451e90e96fc0e24fa5c
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: 17cbf4f7b0ae31b0523a0fbea0c1cae8f83b234b
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84447811"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84982590"
 ---
 # <a name="responsible-machine-learning-ml"></a>Zodpovědné Machine Learning (ML)
 
@@ -60,6 +60,9 @@ Když se data používají k analýze, je důležité, aby data zůstala soukrom
 V tradičních scénářích se nezpracovaná data ukládají do souborů a databází. Když uživatelé analyzují data, obvykle používají nezpracovaná data. To je důležité, protože by mohlo dojít k porušení ochrany osobních údajů jednotlivce. Rozdílové soukromí se snaží s tímto problémem zabývat přidáním "šumu" nebo náhodnosti k datům, aby uživatelé nemohli identifikovat jednotlivé datové body.
 
 Implementace rozdílových privátních systémů je obtížná. [WhiteNoise](https://github.com/opendifferentialprivacy/whitenoise-core) je open source projekt, který obsahuje různé komponenty pro vytváření globálních rozdílných privátních systémů. Další informace o rozdílových zásadách ochrany osobních údajů a projektu WhiteNoise najdete v článku [zachování ochrany osobních údajů pomocí rozdílového soukromí a WhiteNoise](./concept-differential-privacy.md) .
+
+> [!NOTE]
+> Všimněte si, že přejmenováváme sadu nástrojů a zavádíme nové jméno do nadcházejících týdnů. 
 
 ## <a name="document-the-machine-learning-lifecycle-with-datasheets"></a>Zdokumentujte životní cyklus machine learningu pomocí datových listů
 

@@ -11,12 +11,12 @@ ms.date: 06/10/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 9554713e50e7a2ead2e25f274428ad0ecba4934d
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: b7139c458d2cc2a59f4202e9cbc7d48433514f34
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996956"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84792080"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Odkazy-IoT Hub koncové body
 
@@ -85,14 +85,9 @@ IoT Hub aktuálně podporuje následující služby Azure jako další koncové 
 
 Omezení počtu koncových bodů, které můžete přidat, najdete v tématu [kvóty a omezování](iot-hub-devguide-quotas-throttling.md).
 
-Ke zjištění stavu koncových bodů můžete použít REST API [získat stav koncových](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) bodů. Doporučujeme použít [IoT Hub metriky](iot-hub-metrics.md) týkající se latence zprávy směrování k identifikaci a ladění chyb, když je stav koncového bodu v pořádku nebo není v pořádku, protože při použití koncového bodu v jednom z těchto stavů očekáváme, že latence bude vyšší.
+## <a name="endpoint-health"></a>Stav koncového bodu
 
-|Stav|Popis|
-|---|---|
-|v pořádku|Koncový bod přijímá zprávy podle očekávání.|
-|není v pořádku|Koncový bod nepřijímá zprávy podle očekávání a IoT Hub se pokouší odeslat data do tohoto koncového bodu. Stav koncového bodu, který není v pořádku, bude aktualizován na stav v pořádku, když IoT Hub navázala trvalý stav stavu.|
-|Neznámý|IoT Hub nevytvořil připojení ke koncovému bodu. Z tohoto koncového bodu nebyly doručeny ani zamítnuty žádné zprávy.|
-|Zpráva|Koncový bod nepřijímá zprávy, jakmile IoT Hub znovu pokusí odeslat zprávy o zkušebním období.|
+[!INCLUDE [iot-hub-endpoint-health](../../includes/iot-hub-include-endpoint-health.md)]
 
 ## <a name="field-gateways"></a>Brány polí
 

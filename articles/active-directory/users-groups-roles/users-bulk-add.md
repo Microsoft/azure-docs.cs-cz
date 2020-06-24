@@ -6,19 +6,19 @@ author: curtand
 ms.author: curtand
 manager: mtillman
 ms.date: 04/27/2020
-ms.topic: article
+ms.topic: how-to
 ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed8c3563f9a17a30e0d5df5f00c35f34510d6029
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 6a2c9500ecefed02b28c066de80137d8f0882fd5
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848919"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84731498"
 ---
 # <a name="bulk-create-users-in-azure-active-directory"></a>Hromadné vytvoření uživatelů v Azure Active Directory
 
@@ -80,7 +80,7 @@ Potom můžete zjistit, že uživatelé, které jste vytvořili, existují v org
 
 1. [Přihlaste se k centru pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu, který je správcem uživatele v organizaci.
 1. V navigačním podokně vyberte **Azure Active Directory**.
-1. V části **Spravovat** vyberte **Uživatele**.
+1. V části **Spravovat** vyberte **Uživatelé**.
 1. V části **Zobrazit**vyberte možnost **Všichni uživatelé** a ověřte, že jsou uživatelé, které jste vytvořili, uvedeni.
 
 ### <a name="verify-users-with-powershell"></a>Ověření uživatelů pomocí PowerShellu

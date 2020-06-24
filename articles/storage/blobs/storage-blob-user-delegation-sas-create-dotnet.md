@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 12/18/2019
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: fa0754505d887b77cc3d11ebde9c246d4a00eb59
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
+ms.openlocfilehash: d5e8f5e3939ade4e5344ef586a62b6a19082e34e
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82883307"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84809043"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net"></a>Vytvoření SAS pro delegování uživatelů pro kontejner nebo objekt BLOB pomocí .NET
 
@@ -35,7 +35,7 @@ Další informace o tom, jak ověřit pomocí klientské knihovny Azure identity
 
 ## <a name="add-using-directives"></a>Přidání direktiv using
 
-Přidejte následující `using` direktivy do kódu, abyste mohli použít klientské knihovny Azure Identity a Azure Storage.
+Přidejte následující `using` direktivy do kódu, abyste mohli použít klientské knihovny Azure identity a Azure Storage.
 
 ```csharp
 using System;

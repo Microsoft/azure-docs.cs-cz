@@ -4,17 +4,17 @@ description: V tomto článku se dozvíte, jak pomocí Azure Automation a Logic 
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: b8f0c4df2f8e04649bc094f4cc0a64c6eb7bd5b2
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 42f416cf6f297eb54298a10162e7ba28f7acd1bd
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84237196"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738477"
 ---
-# <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>Konfigurace vlastních výstrah pro sledování inzerovaných tras
+# <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>Konfigurace vlastních upozornění pro monitorování inzerovaných tras
 
 Tento článek vám pomůže s použitím Azure Automation a Logic Apps k nepřetržitému monitorování počtu tras inzerovaných z brány ExpressRoute do místních sítí. Monitorování může zabránit zvýšení [limitu trasy 200](expressroute-faqs.md#how-many-prefixes-can-be-advertised-from-a-vnet-to-on-premises-on-expressroute-private-peering).
 
@@ -32,7 +32,7 @@ Nastavení vlastní výstrahy je založené na třech hlavních krocích:
 
 3. Vytvořte aplikaci logiky, která aktivuje účet Automation, a odešle e-mail s upozorněním, pokud je počet větší než prahová hodnota (například 160).
 
-## <a name="before-you-begin"></a><a name="before"></a>Před zahájením
+## <a name="before-you-begin"></a><a name="before"></a>Než začnete
 
 Před zahájením konfigurace ověřte, že splňujete následující kritéria:
 
@@ -102,7 +102,7 @@ Aby bylo možné spouštět rutiny prostředí PowerShell v Azure Automation Run
 
 2. Vyberte **vytvořit** a vytvořte sadu Runbook.
 
-   :::image type="content" source="./media/custom-route-alert-portal/create-runbook-2.png" alt-text="Vyberte vytvořit.":::
+   :::image type="content" source="./media/custom-route-alert-portal/create-runbook-2.png" alt-text="Vyberte Vytvořit.":::
 
 3. Vyberte nově vytvořenou sadu Runbook a pak vyberte **Upravit**.
 
@@ -314,7 +314,7 @@ Aplikace logiky přistupuje k jiným aplikacím, službám a platformě i přes 
 
    :::image type="content" source="./media/custom-route-alert-portal/sign-in.png" alt-text="Přihlásit":::
 
-4. Zadejte **název připojení**, přidejte **ID klienta** (ID aplikace), **tajný klíč klienta**a **ID vašeho tenanta**. Potom vyberte **Create** (Vytvořit).
+4. Zadejte **název připojení**, přidejte **ID klienta** (ID aplikace), **tajný klíč klienta**a **ID vašeho tenanta**. Pak vyberte **vytvořit**.
 
    :::image type="content" source="./media/custom-route-alert-portal/connect-service-principal.png" alt-text="Připojit s instančním objektem":::
 

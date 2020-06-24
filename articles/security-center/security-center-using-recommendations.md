@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2019
 ms.author: memildin
-ms.openlocfilehash: a1034eb47010da2b0e795ee8c79646f06151cac1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8039be7b69444cc32e763e9a1fb074e7dda4a5ba
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77603283"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84783227"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Použití doporučení služby Azure Security Center k vylepšení zabezpečení
 Můžete snížit pravděpodobnost významné události zabezpečení konfigurací zásad zabezpečení a následnou implementací doporučení Azure Security Center. V tomto článku se dozvíte, jak používat zásady zabezpečení a doporučení v Security Center, abyste mohli zmírnit útok na zabezpečení. 
@@ -57,7 +57,7 @@ V rámci každodenních aktivit monitorování se Jan přihlásí k Azure a otev
 
 2. Jan zkontroluje **zabezpečené skóre** , aby získal celkový přehled o tom, jak se přizpůsobuje zabezpečení předplatných a zda je skóre 548.
 
-3. Jan se musí rozhodnout, která doporučení se mají zpracovat jako první. Takže Jan klikne na zabezpečené skóre a začne zpracovávat doporučení na základě toho, kolik IT vylepšuje dopad na jejich [bezpečné skóre](security-center-secure-score.md).
+3. Jan se musí rozhodnout, která doporučení se mají zpracovat jako první. Takže Jan klikne na zabezpečené skóre a začne zpracovávat doporučení na základě toho, kolik IT vylepšuje své [zabezpečené skóre](secure-score-security-controls.md).
 
 4. Vzhledem k tomu, že Jan má spoustu připojených virtuálních počítačů a serverů, se Jan rozhodne soustředit se na **výpočetní výkon a aplikace**.
 

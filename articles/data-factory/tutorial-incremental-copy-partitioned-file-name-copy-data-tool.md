@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 3/17/2020
-ms.openlocfilehash: 6cc089a1efc3f5960a8bca8a36063bb1019bbcc6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/10/2020
+ms.openlocfilehash: 075c8b2670121e7d493d0d99397961155fd0de4b
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81409394"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736559"
 ---
 # <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>Přírůstkové kopírování nových souborů na základě času názvu souboru rozděleného do oddílů pomocí nástroje Kopírování dat
 
@@ -45,7 +45,7 @@ V tomto kurzu budete provádět následující kroky:
 
 Provedením těchto kroků Připravte úložiště objektů BLOB pro tento kurz.
 
-1. Vytvořte kontejner s názvem **source**.  Vytvořte v kontejneru cestu ke složce jako **2020/03/17/03** . Vytvořte prázdný textový soubor a pojmenujte ho jako **Soubor1. txt**. Nahrajte do svého účtu úložiště adresář Soubor1. txt, který je **zdrojem/2020/03/17/03** .  K provedení těchto úloh můžete použít různé nástroje, například [Průzkumníka služby Azure Storage](https://storageexplorer.com/).
+1. Vytvořte kontejner s názvem **source**.  Vytvořte v kontejneru cestu ke složce jako **2020/03/17/03** . Vytvořte prázdný textový soubor a pojmenujte ho jako **file1.txt**. Nahrajte file1.txt do složky Path **source/2020/03/17/03** v účtu úložiště.  K provedení těchto úloh můžete použít různé nástroje, například [Průzkumníka služby Azure Storage](https://storageexplorer.com/).
 
     ![nahrání souborů](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/upload-file.png)
 
@@ -56,7 +56,7 @@ Provedením těchto kroků Připravte úložiště objektů BLOB pro tento kurz.
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
-1. V nabídce vlevo vyberte **vytvořit prostředek** > **data a analýzy** > **Data Factory**:
+1. V nabídce vlevo vyberte **vytvořit prostředek**  >  **data a analýzy**  >  **Data Factory**:
 
    ![Výběr datové továrny v podokně Nový](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -155,16 +155,16 @@ Provedením těchto kroků Připravte úložiště objektů BLOB pro tento kurz.
 
 10. Všimněte si, že je vlevo automaticky vybraná karta **Monitorování**.  Musíte počkat na spuštění kanálu, když se aktivuje automaticky (přibližně po jedné hodině). Po spuštění klikněte na odkaz název kanálu **DeltaCopyFromBlobPipeline** a zobrazte podrobnosti o spuštění aktivity nebo spusťte kanál znovu. Seznam můžete aktualizovat kliknutím na **Aktualizovat**.
 
-    ![Monitorování spuštění kanálu](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs1.png)
-11. Kanál obsahuje pouze jednu aktivitu (aktivita kopírování), takže se zobrazí pouze jedna položka. Upravte šířku sloupce **zdrojových** a **cílových** sloupců (Pokud je potřeba), aby se zobrazily další podrobnosti, můžete zobrazit zdrojový soubor (Soubor1. txt), který se zkopíroval ze *zdroje/2020/03/17/03/* na *cíl/2020/03/17/03/* se stejným názvem souboru. 
+    ![Monitorování spuštění kanálu](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs-1.png)
+11. Kanál obsahuje pouze jednu aktivitu (aktivita kopírování), takže se zobrazí pouze jedna položka. Upravte šířku sloupce **zdrojových** a **cílových** sloupců (Pokud je potřeba), aby se zobrazily další podrobnosti, můžete vidět, že zdrojový soubor (file1.txt) byl zkopírován ze *zdroje/2020/03/17/03/* *cíl/2020/03/17/03/* se stejným názvem souboru. 
 
     ![Monitorování spuštění kanálu](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs2.png)
 
-    Stejný postup můžete také ověřit pomocí Průzkumník služby Azure Storage (https://storageexplorer.com/) k prohledání souborů.
+    Stejný postup můžete také ověřit pomocí Průzkumník služby Azure Storage ( https://storageexplorer.com/) k prohledání souborů.
 
     ![Monitorování spuštění kanálu](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs3.png)
 
-12. Vytvořte další prázdný textový soubor s novým názvem jako **Soubor2. txt**. Nahrajte soubor Soubor2. txt do složky Path **source/2020/03/17/04** v účtu úložiště. K provedení těchto úloh můžete použít různé nástroje, například [Průzkumníka služby Azure Storage](https://storageexplorer.com/).
+12. Vytvořte další prázdný textový soubor s novým názvem jako **file2.txt**. Nahrajte soubor file2.txt do složky Path **source/2020/03/17/04** v účtu úložiště. K provedení těchto úloh můžete použít různé nástroje, například [Průzkumníka služby Azure Storage](https://storageexplorer.com/).
 
     > [!NOTE]
     > Možná víte, že je potřeba vytvořit novou cestu ke složce. Upravte prosím název složky časem UTC.  Pokud je například aktuální čas UTC 4:20 na březen. 17, 2020, můžete vytvořit cestu ke složce jako **zdroj/2020/03/17/04/** podle pravidla **{Year}/{Month}/{Day}/{Hour}/**.
@@ -173,7 +173,7 @@ Provedením těchto kroků Připravte úložiště objektů BLOB pro tento kurz.
 
     ![Monitorování spuštění kanálu](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs5.png)
 
-14. Vyberte nový odkaz **DeltaCopyFromBlobPipeline** pro druhý běh kanálu, pokud je k dispozici, a proveďte stejnou kontrolu podrobností. Uvidíte, že zdrojový soubor (Soubor2. txt) se zkopíroval ze **zdroje/2020/03/17/04/** do **cílového umístění/2020/03/17/04/** se stejným názvem souboru. Stejný postup můžete také ověřit pomocí Průzkumník služby Azure Storage (https://storageexplorer.com/) k prohledání souborů v **cílovém** kontejneru).
+14. Vyberte nový odkaz **DeltaCopyFromBlobPipeline** pro druhý běh kanálu, pokud je k dispozici, a proveďte stejnou kontrolu podrobností. Uvidíte, že zdrojový soubor (file2.txt) se zkopíroval ze **zdroje/2020/03/17/04/** do **cílového umístění/2020/03/17/04/** se stejným názvem souboru. Stejný postup můžete také ověřit pomocí Průzkumník služby Azure Storage ( https://storageexplorer.com/) k prohledání souborů v **cílovém** kontejneru).
 
 
 ## <a name="next-steps"></a>Další kroky

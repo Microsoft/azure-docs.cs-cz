@@ -394,30 +394,64 @@
       items:
         - name: Co je hlasový asistent?
           href: voice-assistants.md
-    - name: Vlastní příkazy (Preview)
+    - name: Vlastní příkazy
       items:
         - name: Co jsou vlastní příkazy?
           href: custom-commands.md
         - name: Rychlé starty
           items:
-            - name: Vytvoření aplikace Vlastní příkazy
-              href: quickstart-custom-speech-commands-create-new.md
-            - name: Vytvoření vlastního příkazu s parametry
-              href: quickstart-custom-speech-commands-create-parameters.md
-            - name: Použití aplikace Vlastní příkazy se službou Vlastní hlas
-              href: quickstart-custom-speech-commands-select-custom-voice.md
-            - name: Použití aplikace Vlastní příkazy se sadou Speech SDK
-              href: quickstart-custom-speech-commands-speech-sdk.md
+            - name: Vytvoření aplikace vlastních příkazů
+              href: quickstart-custom-commands-application.md
         - name: Návody
           items:
-            - name: Splnění příkazů z klienta
-              href: how-to-custom-speech-commands-fulfill-sdk.md
-            - name: Přidání ověření parametrů
-              href: how-to-custom-speech-commands-validations.md
-            - name: Přidání potvrzení
-              href: how-to-custom-speech-commands-confirmations.md
-            - name: Přidání opravy v jednom kroku
-              href: how-to-custom-speech-commands-one-step-correction.md
+            - name: Vývoj
+              items:
+                - name: Vytvoření aplikace s jednoduchými příkazy
+                  href: how-to-custom-commands-create-application-with-simple-commands.md
+                - name: Přidání parametrů do příkazů
+                  href: how-to-custom-commands-add-parameters-to-commands.md
+                - name: Přidání konfigurací do parametrů příkazů
+                  href: how-to-custom-commands-add-parameter-configuration.md
+                - name: Přidání pravidel interakce
+                  href: how-to-custom-commands-add-interaction-rules.md
+                - name: Přidání šablon generování jazyka pro hlasové odpovědi
+                  href: how-to-custom-commands-add-language-generation-templates.md
+            - name: Integrace
+              items:
+                - name: Integrace s klientskou aplikací s využitím sady Speech SDK
+                  href: how-to-custom-commands-setup-speech-sdk.md
+                - name: Odeslání aktivity do klientské aplikace
+                  href: how-to-custom-commands-send-activity-to-client.md
+                - name: Nastavení webových koncových bodů
+                  href: how-to-custom-commands-setup-web-endpoints.md
+            - name: Nasazení
+              items:
+                - name: Průběžné nasazování s využitím Azure DevOps
+                  href: how-to-custom-commands-deploy-cicd.md
+            - name: Test
+              items:
+                - name: Testování aplikace vlastních příkazů
+                  href: how-to-custom-commands-developer-flow-test.md
+            - name: Ladění
+              items:
+                - name: Ladění chyb při vytváření aplikace
+                  href: how-to-custom-commands-debug-build-time.md
+                - name: Ladění chyb při spouštění aplikace
+                  href: how-to-custom-commands-debug-runtime.md
+            - name: Odkazy
+              items:
+                - name: Koncepce vlastních příkazů (Preview)
+                  href: custom-commands-references.md
+        - name: Zdroje a prostředky
+          items:
+            - name: Ukázky vlastních příkazů (GitHub)
+              href: 'https://aka.ms/speech/cc-samples'
+            - name: Ukázky hlasových asistentů (GitHub)
+              href: 'http://aka.ms/speech/va-samples'
+            - name: Nejčastější dotazy k hlasovým asistentům
+              href: faq-voice-assistants.md
+            - name: Speech SDK
+              href: speech-sdk.md
     - name: Direct Line Speech
       items:
         - name: Co je Direct Line Speech?

@@ -1,5 +1,5 @@
 ---
-title: Převést na adresář obrázků
+title: Převod do adresáře obrázků
 titleSuffix: Azure Machine Learning
 description: Naučte se používat modul pro převod dat na image pro převod datové sady na formát adresáře obrázků.
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: dc40e0a644f692b397b1f2107b27b1d940d2b284
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: 41724753df0d529e4c44344e8e975e68ee5eafd6
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84450630"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84904588"
 ---
-# <a name="convert-to-image-directory"></a>Převést na adresář obrázků
+# <a name="convert-to-image-directory"></a>Převod do adresáře obrázků
 
 Tento článek popisuje, jak pomocí modulu příkazového adresáře převést na obrázek převést datovou sadu na datový typ "adresář obrázků", což je standardizovaný formát dat v úkolech souvisejících s obrázky, jako je například klasifikace obrázku v Návrháři Azure Machine Learning (Preview).
 
@@ -28,11 +28,21 @@ Tento článek popisuje, jak pomocí modulu příkazového adresáře převést 
     Podporovány jsou následující formáty datové sady:
 
     - Komprimovaný soubor v těchto rozšířeních:. zip,. tar,. gz,. bz2
-    - Složka obsahující 1 komprimovaný soubor ve výše platných rozšířeních. 
-    - Složka obsahující obrázky.
+    - Složka obsahující obrázky. **Velmi doporučujeme kompresi takových složek nejprve použít komprimovaný soubor jako datovou sadu**.
 
     > [!NOTE]
-    > Kategorie obrázku se dá zaznamenat ve výstupu modulu, pokud je tato datová sada obrázku uspořádaná ve formátu torchvision ImageFolder, další informace najdete v tématu [torchvision DataSets](https://pytorch.org/docs/stable/torchvision/datasets.html#imagefolder) . V opačném případě jsou uloženy pouze obrázky.
+    > Pokud používáte datovou sadu obrázků v dohledovém učení, je popisek povinný.
+    > V případě úlohy klasifikace obrázku může být popisek vygenerován jako obrázek "kategorie" ve výstupu modulu, pokud je tato datová sada obrázku uspořádána ve formátu torchvision ImageFolder. V opačném případě se bez popisku uloží pouze obrázky. Tady je příklad, jak můžete organizovat datovou sadu obrázků a získat popisek, použít kategorii obrázku jako název podsložky. Další informace najdete v tématu [torchvision DataSets](https://pytorch.org/docs/stable/torchvision/datasets.html#imagefolder) .
+    >
+    > ```
+    > root/dog/xxx.png
+    > root/dog/xxy.png
+    > root/dog/xxz.png
+    >
+    > root/cat/123.png
+    > root/cat/nsdf3.png
+    > root/cat/asd932_.png
+    > ```
 
 3.  Odešlete kanál.
 

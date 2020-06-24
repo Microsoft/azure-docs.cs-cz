@@ -4,15 +4,15 @@ description: Tento článek vás provede konfigurací protokolu BGP s bránou Az
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/25/2018
 ms.author: yushwang
-ms.openlocfilehash: 42a07ac00fd8a26918164f6547bf57c2b021d14c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d71e8af607ac15c708ff18a2f2a91e11ed36a987
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75863610"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987741"
 ---
 # <a name="how-to-configure-bgp-on-an-azure-vpn-gateway-by-using-cli"></a>Postup konfigurace protokolu BGP v bráně Azure VPN pomocí rozhraní příkazového řádku
 
@@ -45,7 +45,7 @@ Tato část je nutná před provedením kroků v dalších dvou oddílech konfig
 
 ![Brána BGP](./media/vpn-gateway-bgp-resource-manager-ps/bgp-gateway.png)
 
-### <a name="before-you-begin"></a>Před zahájením
+### <a name="before-you-begin"></a>Než začnete
 
 Nainstalujte nejnovější verzi příkazů rozhraní příkazového řádku (2,0 nebo novější). Informace o instalaci příkazů rozhraní příkazového řádku najdete v tématech [Instalace Azure CLI](/cli/azure/install-azure-cli) a [Začínáme s Azure CLI](/cli/azure/get-started-with-azure-cli).
 
@@ -91,9 +91,9 @@ az network public-ip create -n GWPubIP -g TestBGPRG1 --allocation-method Dynamic
 
 #### <a name="2-create-the-vpn-gateway-with-the-as-number"></a>2. Vytvořte bránu VPN s číslem AS
 
-Vytvořte bránu virtuální sítě pro virtuální síť TestVNet1. Protokol BGP vyžaduje bránu sítě VPN založenou na trasách. K nastavení čísla autonomního systému `-Asn` (ASN) pro virtuální sítě testvnet1 potřebujete také další parametr. Vytvoření brány může trvat až (45 minut). 
+Vytvořte bránu virtuální sítě pro virtuální síť TestVNet1. Protokol BGP vyžaduje bránu sítě VPN založenou na trasách. `-Asn`K nastavení čísla autonomního systému (ASN) pro virtuální sítě testvnet1 potřebujete také další parametr. Vytvoření brány může trvat až (45 minut). 
 
-Pokud tento příkaz spustíte pomocí `--no-wait` parametru, nezobrazí se žádná zpětná vazba ani výstup. `--no-wait` Parametr umožňuje vytvořit bránu na pozadí. Neznamená to, že se Brána VPN vytvoří hned.
+Pokud tento příkaz spustíte pomocí `--no-wait` parametru, nezobrazí se žádná zpětná vazba ani výstup. `--no-wait`Parametr umožňuje vytvořit bránu na pozadí. Neznamená to, že se Brána VPN vytvoří hned.
 
 ```azurecli
 az network vnet-gateway create -n VNet1GW -l eastus --public-ip-address GWPubIP -g TestBGPRG1 --vnet TestVNet1 --gateway-type Vpn --sku HighPerformance --vpn-type RouteBased --asn 65010 --no-wait
@@ -103,7 +103,7 @@ az network vnet-gateway create -n VNet1GW -l eastus --public-ip-address GWPubIP 
 
 Po vytvoření brány je potřeba získat IP adresu partnerského uzlu BGP v bráně Azure VPN. Tato adresa je potřeba ke konfiguraci brány VPN jako partnerského uzlu protokolu BGP pro vaše místní zařízení VPN.
 
-Spusťte následující příkaz a podívejte se `bgpSettings` na oddíl v horní části výstupu:
+Spusťte následující příkaz a podívejte se na `bgpSettings` oddíl v horní části výstupu:
 
 ```azurecli
 az network vnet-gateway list -g TestBGPRG1 
@@ -133,7 +133,7 @@ Toto cvičení pokračuje v sestavování konfigurace zobrazené v diagramu. Nez
 * Minimální předpona, kterou musíte deklarovat pro bránu místní sítě, je adresa hostitele vaší IP adresy partnerského uzlu protokolu BGP na vašem zařízení VPN. V tomto případě je to předpona/32 10.51.255.254/32.
 * Jako připomenutí musíte použít různé čísla ASN protokolu BGP mezi místními sítěmi a virtuální sítí Azure. Pokud jsou stejné, je nutné změnit číslo ASN vaší virtuální sítě, pokud vaše místní zařízení VPN již používají ASN k partnerským uzlům s jinými sousedními uzly protokolu BGP.
 
-Než budete pokračovat, ujistěte se, že jste pro toto cvičení dokončili část [Povolení protokolu BGP pro vaši bránu VPN](#enablebgp) a že jste stále připojeni k předplatnému 1. Všimněte si, že v tomto příkladu vytvoříte novou skupinu prostředků. Všimněte si také dvou dalších parametrů pro bránu místní sítě: `Asn` a. `BgpPeerAddress`
+Než budete pokračovat, ujistěte se, že jste pro toto cvičení dokončili část [Povolení protokolu BGP pro vaši bránu VPN](#enablebgp) a že jste stále připojeni k předplatnému 1. Všimněte si, že v tomto příkladu vytvoříte novou skupinu prostředků. Všimněte si také dvou dalších parametrů pro bránu místní sítě: `Asn` a `BgpPeerAddress` .
 
 ```azurecli
 az group create -n TestBGPRG5 -l eastus2 
@@ -262,7 +262,7 @@ az network vnet-gateway create -n VNet2GW -l westus --public-ip-address GWPubIP2
 
 ### <a name="step-2-connect-the-testvnet1-and-testvnet2-gateways"></a>Krok 2: připojení bran virtuální sítě testvnet1 a TestVNet2
 
-V tomto kroku vytvoříte připojení z virtuální sítě testvnet1 k site5. Chcete-li pro toto připojení povolit protokol BGP, je `--enable-bgp` nutné zadat parametr.
+V tomto kroku vytvoříte připojení z virtuální sítě testvnet1 k site5. Chcete-li pro toto připojení povolit protokol BGP, je nutné zadat `--enable-bgp` parametr.
 
 V následujícím příkladu jsou brány virtuální sítě a brána místní sítě v různých skupinách prostředků. Když jsou brány v různých skupinách prostředků, musíte zadat celé ID prostředku dvou bran, aby se nastavilo připojení mezi virtuálními sítěmi. 
 
