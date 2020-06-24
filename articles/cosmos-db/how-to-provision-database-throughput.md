@@ -3,15 +3,15 @@ title: Zřízení propustnosti databáze ve službě Azure Cosmos DB
 description: Naučte se zřizovat propustnost na úrovni databáze v Azure Cosmos DB pomocí Azure Portal, CLI, PowerShellu a různých dalších sad SDK.
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: cc89c0052097ba9250370334386943ec4107140c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 63f8d408d76cfce86c254ad3840c2f0eefb09fd4
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655321"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263635"
 ---
 # <a name="provision-standard-manual-throughput-on-a-database-in-azure-cosmos-db"></a>Zřizování standardní (ruční) propustnosti databáze v Azure Cosmos DB
 
@@ -21,7 +21,7 @@ Tento článek vysvětluje, jak zřídit standardní (ruční) propustnost v dat
 
 ### <a name="sql-core-api"></a><a id="portal-sql"></a>Rozhraní SQL (Core) API
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 1. [Vytvořte nový účet Azure Cosmos](create-sql-api-dotnet.md#create-account)nebo vyberte existující účet Azure Cosmos.
 
@@ -32,7 +32,7 @@ Tento článek vysvětluje, jak zřídit standardní (ruční) propustnost v dat
    * Zadejte propustnost (například 1000 ru).
    * Vyberte **OK**.
 
-    ![Snímek obrazovky dialogového okna Nová databáze](./media/how-to-provision-database-throughput/provision-database-throughput-portal-all-api.png)
+    :::image type="content" source="./media/how-to-provision-database-throughput/provision-database-throughput-portal-all-api.png" alt-text="Snímek obrazovky dialogového okna Nová databáze":::
 
 ## <a name="provision-throughput-using-azure-cli-or-powershell"></a>Zajištění propustnosti pomocí Azure CLI nebo PowerShellu
 

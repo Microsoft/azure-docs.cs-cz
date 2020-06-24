@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 0aa09ffe5b5dd9dd0f49204495ecdd7179a0f36f
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 2cf997cbe16f7ff4bfe75f90d3797ec97e7d5069
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84660023"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808760"
 ---
 # <a name="troubleshoot"></a>Řešení potíží
 
@@ -105,7 +105,7 @@ Pokud vám tyto dva kroky nepomohly, je nutné zjistit, zda jsou snímky videa p
 
 **Model překračuje limity vybraného virtuálního počítače, konkrétně maximální počet mnohoúhelníků:**
 
-Podívejte se na určitá [omezení velikosti virtuálních počítačů](../reference/limits.md#overall-number-of-polygons).
+Viz [omezení velikosti určitých virtuálních počítačů](../reference/limits.md#overall-number-of-polygons).
 
 **Model není uvnitř frustum kamery:**
 
@@ -146,6 +146,10 @@ Vzdálené vykreslování Azure se zapojte do kanálu vykreslování Unity a pro
 
 ![Ladicí program rámce Unity](./media/troubleshoot-unity-pipeline.png)
 
+## <a name="checkerboard-pattern-is-rendered-after-model-loading"></a>Po načtení modelu se vykresluje šachovnicový vzor.
+
+Pokud vykreslený obrázek vypadá takto: ![ šachovnice ](../reference/media/checkerboard.png) narazí na [omezení mnohoúhelníku pro standardní velikost virtuálního počítače](../reference/vm-sizes.md). Pokud chcete zmírnit, buď přepněte na velikost **virtuálního počítače úrovně Premium** , nebo snižte počet viditelných mnohoúhelníků.
+
 ## <a name="the-rendered-image-in-unity-is-upside-down"></a>Vykreslený obraz v Unity je souběžný
 
 Nezapomeňte postupovat přesně podle [Průvodce nastavením projektu](../tutorials/unity/project-setup.md) . Obrázek na více stranách indikuje, že Unity je nutný k vytvoření cíle vykreslování mimo obrazovku. Toto chování se v současné době nepodporuje a na HoloLens 2 vytváří velký dopad na výkon.
@@ -168,6 +172,10 @@ Při pokusu o kompilaci ukázek Unity (rychlý Start, ShowCaseApp,..) pro HoloLe
     reg.exe ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Advanced Threat Protection" /v groupIds /t REG_SZ /d "Unity”
     ```
     
+### <a name="arm64-builds-for-unity-projects-fail-because-audiopluginmshrtfdll-is-missing"></a>Arm64 sestavení pro projekty Unity selžou, protože chybí AudioPluginMsHRTF.dll
+
+Rozhraní `AudioPluginMsHRTF.dll` pro Arm64 bylo přidáno do balíčku *Windows Mixed reality* *(com. Unity. XR. windowsmr. metro)* ve verzi 3.0.1. Ujistěte se, že máte nainstalovanou verzi 3.0.1 nebo novější prostřednictvím Správce balíčků Unity. V řádku nabídek Unity přejděte do *okna > správce balíčků* a vyhledejte balíček *Windows Mixed reality* .
+
 ## <a name="unstable-holograms"></a>Nestabilní hologramy
 
 V případě, že se vygenerované objekty budou pohybovat spolu s pohyby hlav, může docházet k potížím s fází LSR ( *opožděné reprojekce* ). Pokyny k tomu, jak se tyto situace týkají, najdete v části o [reprojekci v pozdní fázi](../overview/features/late-stage-reprojection.md) .

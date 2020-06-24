@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 12/24/2019
 ms.author: ramamill
 ms.openlocfilehash: 01aef3aca4f6967b1681bff9598c7dd7a24739cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257261"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84692515"
 ---
 # <a name="manage-vmware-vcenter-server"></a>Správa vCenter Server VMware
 
@@ -26,7 +26,7 @@ Požadavky na servery a virtuální počítače vCenter během zotavení po hav�
 Když nastavíte zotavení po havárii pro místní virtuální počítače VMware, Site Recovery potřebuje přístup k hostiteli vCenter Server/vSphere. Procesový Server Site Recovery pak může automaticky zjistit virtuální počítače a v případě potřeby je převzít. Ve výchozím nastavení se procesový Server spouští na Site Recovery konfiguračním serveru. Přidejte účet pro konfigurační server pro připojení k hostiteli vCenter Server/vSphere následujícím způsobem:
 
 1. Přihlaste se ke konfiguračnímu serveru.
-1. Pomocí zástupce na ploše otevřete nástroj konfiguračního serveru (_cspsconfigtool. exe_).
+1. Pomocí zástupce na ploše otevřete nástroj konfiguračního serveru (_cspsconfigtool.exe_).
 1. Na kartě **Spravovat účet** klikněte na **Přidat účet**.
 
    ![Přidat účet](./media/vmware-azure-manage-vcenter/addaccount.png)
@@ -38,7 +38,7 @@ Když nastavíte zotavení po havárii pro místní virtuální počítače VMwa
 
 ### <a name="account-permissions"></a>Oprávnění účtu
 
-|**Úkol** | **Účet** | **Oprávnění** | **Zobrazí**|
+|**Úkol** | **Účet** | **Oprávnění** | **Podrobnosti**|
 |--- | --- | --- | ---|
 |**Zjišťování/migrace virtuálních počítačů (bez navrácení služeb po obnovení)** | Alespoň účet uživatele jen pro čtení. | Objekt datového centra –> Rozšířit na podřízený objekt, role=Read-only | Uživatel přiřazený na úrovni datacentra s přístupem ke všem objektům v datacentru.<br/><br/> Chcete-li omezit přístup, přiřaďte podřízeným objektům (hostitelé vSphere, úložiště dat, virtuální počítače a sítě) roli **bez přístupu** s **podřízeným objektem rozšířit do podřízeného** objektu.|
 |**Replikace/převzetí služeb při selhání** | Alespoň účet uživatele jen pro čtení. | Objekt datového centra –> Rozšířit na podřízený objekt, role=Read-only | Uživatel přiřazený na úrovni datacentra s přístupem ke všem objektům v datacentru.<br/><br/> Chcete-li omezit přístup, přiřaďte k podřízeným objektům (hostitelé vSphere, úložiště dat, virtuální počítače a sítě) roli **bez přístupu** s **podřízeným objektem rozšířit k podřízenému** objektu.<br/><br/> Užitečné pro účely migrace, ale ne pro úplnou replikaci, převzetí služeb při selhání a navrácení služeb po obnovení|
@@ -48,7 +48,7 @@ Když nastavíte zotavení po havárii pro místní virtuální počítače VMwa
 
 Když nakonfigurujete zotavení po havárii pro místní virtuální počítače VMware, přidáte hostitele vCenter Server/vSphere, na kterém zjišťujíte virtuální počítače Site Recovery trezoru následujícím způsobem:
 
-1. V trezoru > **Site Recovery** > **konfiguračních**serverech infrastruktury otevřete konfigurační server.
+1. V trezoru > **Site Recovery**  >  **konfiguračních**serverech infrastruktury otevřete konfigurační server.
 1. Na stránce **Podrobnosti** klikněte na **vCenter**.
 1. V části **Přidat vCenter**zadejte popisný název hostitele vSphere nebo vCenter Server.
 1. Zadejte IP adresu nebo plně kvalifikovaný název domény serveru.
@@ -60,13 +60,13 @@ Když nakonfigurujete zotavení po havárii pro místní virtuální počítače
 V případě potřeby můžete přihlašovací údaje používané pro připojení k hostiteli vCenter Server nebo vSphere upravit následujícím způsobem:
 
 1. Přihlaste se ke konfiguračnímu serveru.
-1. Pomocí zástupce na ploše otevřete nástroj konfiguračního serveru (_cspsconfigtool. exe_).
+1. Pomocí zástupce na ploše otevřete nástroj konfiguračního serveru (_cspsconfigtool.exe_).
 1. Na kartě **Spravovat účet** klikněte na **Přidat účet** .
 
    ![Přidat účet](./media/vmware-azure-manage-vcenter/addaccount.png)
 
 1. Zadejte podrobnosti o novém účtu a klikněte na **OK**. Účet potřebuje oprávnění uvedená v tabulce [oprávnění účtu](#account-permissions) .
-1. V trezoru > **Site Recovery** > **konfiguracích**infrastruktury, otevřete konfigurační server.
+1. V trezoru > **Site Recovery**  >  **konfiguracích**infrastruktury, otevřete konfigurační server.
 1. V **podrobnostech**klikněte na **aktualizovat server**.
 1. Po dokončení úlohy aktualizovat server vyberte vCenter Server.
 1. V části **Souhrn**vyberte nově přidaný účet v **účtu hostitele vCenter Server/vSphere**a klikněte na **Uložit**.
@@ -75,7 +75,7 @@ V případě potřeby můžete přihlašovací údaje používané pro připojen
 
 ## <a name="delete-a-vcenter-server"></a>Odstranit vCenter Server
 
-1. V trezoru > **Site Recovery** > **konfiguracích**infrastruktury, otevřete konfigurační server.
+1. V trezoru > **Site Recovery**  >  **konfiguracích**infrastruktury, otevřete konfigurační server.
 1. Na stránce **Podrobnosti** vyberte Server vCenter.
 1. Klikněte na tlačítko **Odstranit** .
 
@@ -85,7 +85,7 @@ V případě potřeby můžete přihlašovací údaje používané pro připojen
 
 Můžete upravit IP adresu vCenter Server nebo porty používané pro komunikaci mezi serverem a Site Recovery. Ve výchozím nastavení Site Recovery přistupuje k informacím o hostiteli vCenter Server/vSphere prostřednictvím portu 443.
 
-1. V trezoru > **Site Recovery** > **konfiguračním**serveru infrastruktury klikněte na server konfigurace, ke kterému se vCenter Server přidá.
+1. V trezoru > **Site Recovery**  >  **konfiguračním**serveru infrastruktury klikněte na server konfigurace, ke kterému se vCenter Server přidá.
 1. V **vCenter servery**klikněte na vCenter Server, které chcete upravit.
 1. V části **Souhrn**aktualizujte IP adresu a port a změny uložte.
 
@@ -97,7 +97,7 @@ Můžete upravit IP adresu vCenter Server nebo porty používané pro komunikaci
 
 Pokud chcete migrovat všechny virtuální počítače tak, aby používaly nové vCenter Server, stačí aktualizovat IP adresu přiřazenou vCenter Server. Nepřidávejte další účet VMware, protože by to mohlo vést k duplicitním položkám. Aktualizujte adresu následujícím způsobem:
 
-1. V trezoru > **Site Recovery** > **konfiguračním**serveru infrastruktury klikněte na server konfigurace, ke kterému se vCenter Server přidá.
+1. V trezoru > **Site Recovery**  >  **konfiguračním**serveru infrastruktury klikněte na server konfigurace, ke kterému se vCenter Server přidá.
 1. V části **servery vCenter** klikněte na vCenter Server, ze kterého chcete provést migraci.
 1. V části **Souhrn**aktualizujte IP adresu na novou vCenter Server a uložte změny.
 1. Jakmile se IP adresa aktualizuje, Site Recovery začne přijímat informace o zjišťování virtuálních počítačů z nového vCenter Server. To nemá vliv na probíhající aktivity replikace.

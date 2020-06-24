@@ -3,15 +3,15 @@ title: Migrace z knihovny hromadného prováděcího modulu do hromadné podpory
 description: Naučte se migrovat aplikaci z použití knihovny hromadných prováděcích modulů na hromadnou podporu v sadě Azure Cosmos DB SDK v3.
 author: ealsur
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: maquaran
-ms.openlocfilehash: d63b34c118cd719f73abbd6711dcb3ef02a6fb28
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1f204b6d73f121b8f05c807d6be47c36c006f607
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82146290"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261422"
 ---
 # <a name="migrate-from-the-bulk-executor-library-to-the-bulk-support-in-azure-cosmos-db-net-v3-sdk"></a>Migrace z knihovny hromadného prováděcího modulu do hromadné podpory v sadě Azure Cosmos DB .NET V3 SDK
 
@@ -33,7 +33,7 @@ Například pokud je vaším počátečním vstupem seznam položek, kde má ka�
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="Model":::
 
-Pokud chcete hromadné importy (podobně jako v používání BulkExecutor. BulkImportAsync), musíte mít souběžné volání `CreateItemAsync`. Příklad:
+Pokud chcete hromadné importy (podobně jako v používání BulkExecutor. BulkImportAsync), musíte mít souběžné volání `CreateItemAsync` . Příklad:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="BulkImport":::
 
@@ -41,13 +41,13 @@ Chcete-li provést hromadnou *aktualizaci* (podobně jako při použití [BulkEx
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="BulkUpdate":::
 
-A pokud chcete hromadné *odstranění* (podobně jako při použití [BulkExecutor. BulkDeleteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkdeleteasync)), musíte mít souběžné volání `DeleteItemAsync`s klíčem oddílu `id` a každé položky. Příklad:
+A pokud chcete hromadné *odstranění* (podobně jako při použití [BulkExecutor. BulkDeleteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkdeleteasync)), musíte mít souběžné volání `DeleteItemAsync` s `id` klíčem oddílu a každé položky. Příklad:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="BulkDelete":::
 
 ## <a name="capture-task-result-state"></a>Zaznamenat stav výsledku úlohy
 
-V předchozích příkladech kódu jsme vytvořili souběžný seznam úkolů a pro každou z těchto úloh jste `CaptureOperationResponse` volali metodu. Tato metoda je rozšíření, které nám umožňuje udržovat *podobné schéma odpovědi* jako BulkExecutor a zachytit případné chyby a sledovat [využití jednotek žádostí](request-units.md).
+V předchozích příkladech kódu jsme vytvořili souběžný seznam úkolů a `CaptureOperationResponse` pro každou z těchto úloh jste volali metodu. Tato metoda je rozšíření, které nám umožňuje udržovat *podobné schéma odpovědi* jako BulkExecutor a zachytit případné chyby a sledovat [využití jednotek žádostí](request-units.md).
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="CaptureOperationResult":::
 
@@ -61,7 +61,7 @@ Pro sledování rozsahu celého seznamu úkolů používáme tuto pomocnou tří
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="BulkOperationsHelper":::
 
-`ExecuteAsync` Metoda počká, dokud nebudou dokončeny všechny operace, a můžete ji použít například takto:
+`ExecuteAsync`Metoda počká, dokud nebudou dokončeny všechny operace, a můžete ji použít například takto:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="WhenAll":::
 
@@ -71,7 +71,7 @@ Předchozí kód počká, dokud nebudou dokončeny všechny operace, a vypočít
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="ResponseType":::
 
-`BulkOperationResponse` Obsahuje:
+`BulkOperationResponse`Obsahuje:
 
 1. Celková doba, jakou trvalo zpracování seznamu operací prostřednictvím hromadné podpory.
 1. Počet úspěšných operací.
@@ -80,18 +80,18 @@ Předchozí kód počká, dokud nebudou dokončeny všechny operace, a vypočít
 
 ## <a name="retry-configuration"></a>Opakovat konfiguraci
 
-V knihovně hromadných prováděcích knihoven byly [doprovodné](bulk-executor-dot-net.md#bulk-import-data-to-an-azure-cosmos-account) materiály `MaxRetryWaitTimeInSeconds` , `MaxRetryAttemptsOnThrottledRequests` které jsou zmíněny k nastavení a [RetryOptions](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.retryoptions) `0` k delegování řízení do knihovny.
+V knihovně hromadných prováděcích knihoven byly [doprovodné](bulk-executor-dot-net.md#bulk-import-data-to-an-azure-cosmos-account) materiály, které jsou zmíněny k nastavení `MaxRetryWaitTimeInSeconds` a `MaxRetryAttemptsOnThrottledRequests` [RetryOptions](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.retryoptions) k `0` delegování řízení do knihovny.
 
 Pro hromadnou podporu v sadě .NET SDK neexistuje žádné skryté chování. Možnosti opakování můžete nakonfigurovat přímo přes [CosmosClientOptions. MaxRetryAttemptsOnRateLimitedRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.maxretryattemptsonratelimitedrequests) a [CosmosClientOptions. MaxRetryWaitTimeOnRateLimitedRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.maxretrywaittimeonratelimitedrequests).
 
 > [!NOTE]
 > V případech, kdy jsou zřízené jednotky žádosti mnohem nižší než očekávané na základě množství dat, můžete zvážit jejich nastavení na vysoké hodnoty. Hromadná operace bude trvat déle, ale bude mít větší šanci na naprostou úspěch z důvodu vyššího počtu opakovaných pokusů.
 
-## <a name="performance-improvements"></a>Zlepšení výkonu
+## <a name="performance-improvements"></a>Vylepšení výkonu
 
 Stejně jako u jiných operací se sadou .NET SDK používá rozhraní API Stream lepší výkon a zabrání zbytečné serializaci. 
 
-Použití rozhraní API služby Stream je možné pouze v případě, že povaha dat, která používáte, odpovídá datovému proudu bajtů (například datovým proudům souborů). V takových případech `CreateItemStreamAsync`použití metod, `ReplaceItemStreamAsync`nebo `DeleteItemStreamAsync` a práce s `ResponseMessage` (namísto `ItemResponse`) zvyšuje propustnost, kterou je možné dosáhnout.
+Použití rozhraní API služby Stream je možné pouze v případě, že povaha dat, která používáte, odpovídá datovému proudu bajtů (například datovým proudům souborů). V takových případech použití `CreateItemStreamAsync` `ReplaceItemStreamAsync` metod, nebo `DeleteItemStreamAsync` a práce s `ResponseMessage` (namísto `ItemResponse` ) zvyšuje propustnost, kterou je možné dosáhnout.
 
 ## <a name="next-steps"></a>Další kroky
 

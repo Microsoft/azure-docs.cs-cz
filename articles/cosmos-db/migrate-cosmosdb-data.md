@@ -5,14 +5,14 @@ author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/23/2019
-ms.openlocfilehash: 0eabb3c226a444d872e6f3e5c85ae1a9fa377de3
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 1e48b2ff6e469a5f792b64c20631e4bd64fb9fd7
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465758"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263540"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>Migrace stovek terabajtů dat do Azure Cosmos DB 
 
@@ -45,7 +45,7 @@ Vlastní nástroj používá knihovnu hromadného prováděcího modulu a podpor
 Následující obrázek popisuje proces migrace pomocí tohoto vlastního nástroje. Nástroj je spuštěný v sadě virtuálních počítačů a každý virtuální počítač se dotazuje kolekce sledování v Azure Cosmos DB, aby získal zapůjčení na jednom ze zdrojových datových oddílů. Až to uděláte, zdrojový oddíl dat přečte nástroj a ingestuje se do Azure Cosmos DB pomocí knihovny hromadného prováděcího modulu. V dalším kroku se kolekce sledování aktualizuje, aby se zaznamenal průběh přijímání dat a případné chyby. Po zpracování datového oddílu se nástroj pokusí zadat dotaz na další dostupný zdrojový oddíl. I nadále zpracovává další zdrojový oddíl, dokud nebudou všechna data migrována. Zdrojový kód pro nástroj je k dispozici [zde](https://github.com/Azure-Samples/azure-cosmosdb-bulkingestion).  
 
  
-![Nastavení nástroje pro migraci](./media/migrate-cosmosdb-data/migrationsetup.png)
+:::image type="content" source="./media/migrate-cosmosdb-data/migrationsetup.png" alt-text="Nastavení nástroje pro migraci" border="false":::
  
 
  
@@ -145,7 +145,7 @@ Po dokončení migrace můžete ověřit, že je počet dokumentů v Azure Cosmo
 ## <a name="contact-the-azure-cosmos-db-team"></a>Kontaktovat tým Azure Cosmos DB
 I když můžete postupovat podle tohoto průvodce k úspěšné migraci velkých datových sad do Azure Cosmos DB pro velké objemy migrace se doporučuje získat od Azure Cosmos DBho produktového týmu, abyste ověřili modelování dat a obecnou kontrolu architektury. V závislosti na datové sadě a úloze může produktový tým také navrhovat další optimalizace výkonu a nákladů, které by vám mohly platit. Chcete-li kontaktovat tým Azure Cosmos DB pro pomoc s migrací ve velkém rozsahu, můžete otevřít lístek podpory pod typem problému "Obecné poradenství" a "velké (TB +) migrace", jak je uvedeno níže.
 
-![Téma podpory migrace](./media/migrate-cosmosdb-data/supporttopic.png)
+:::image type="content" source="./media/migrate-cosmosdb-data/supporttopic.png" alt-text="Téma podpory migrace":::
 
 
 ## <a name="next-steps"></a>Další kroky

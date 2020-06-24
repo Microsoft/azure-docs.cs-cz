@@ -9,11 +9,11 @@ ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/26/2019
 ms.openlocfilehash: 083ed0001adb5524c124295eb3bc31f4afad99cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79270326"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84691754"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>Vytváření a Správa integračních účtů pro integraci B2B Enterprise v Azure Logic Apps
 
@@ -57,7 +57,7 @@ Pro tuto úlohu můžete použít buď Azure Portal podle kroků v této části
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Název** | Ano | <*Integration-Account-Name*> | Název vašeho účtu pro integraci, který může obsahovat jenom písmena, číslice, spojovníky (`-`), podtržítka`_`(), kulaté závorky`(`( `)`,) a tečky`.`(). V tomto příkladu se používá "Fabrikam-Integration". |
+   | **Název** | Ano | <*Integration-Account-Name*> | Název vašeho účtu pro integraci, který může obsahovat jenom písmena, číslice, spojovníky ( `-` ), podtržítka ( `_` ), kulaté závorky ( `(` , `)` ) a tečky ( `.` ). V tomto příkladu se používá "Fabrikam-Integration". |
    | **Předplatné** | Ano | <*Azure – předplatné – název*> | Název vašeho předplatného Azure |
    | **Skupina prostředků** | Ano | <*Azure-Resource-Group-Name*> | Název [skupiny prostředků Azure](../azure-resource-manager/management/overview.md) , která se má použít pro uspořádání souvisejících prostředků V tomto příkladu vytvořte novou skupinu prostředků s názvem "FabrikamIntegration-RG". |
    | **Cenová úroveň** | Ano | <*úroveň cen*> | Cenová úroveň pro účet pro integraci, kterou můžete později změnit. V tomto příkladu vyberte **Free (zdarma**). Další informace najdete v těchto tématech: <p>- [Logic Apps cenový model](../logic-apps/logic-apps-pricing.md#integration-accounts) <p>- [Omezení Logic Apps a konfigurace](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) <p>- [Ceny Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/) |
@@ -144,7 +144,7 @@ Tuto změnu můžete provést buď pomocí Azure Portal podle kroků v této č�
    az resource update --resource-group {ResourceGroupName} --resource-type Microsoft.Logic/integrationAccounts --name {IntegrationAccountName} --subscription {AzureSubscriptionID} --set sku.name={SkuName}
    ```
   
-   Pokud máte například úroveň Basic, můžete nastavit `skuName` na: `Standard`
+   Pokud máte například úroveň Basic, můžete nastavit `skuName` na `Standard` :
 
    ```azurecli
    az resource update --resource-group FabrikamIntegration-RG --resource-type Microsoft.Logic/integrationAccounts --name Fabrikam-Integration --subscription XXXXXXXXXXXXXXXXX --set sku.name=Standard
@@ -168,7 +168,7 @@ Pokud chcete tuto změnu provést, použijte rozhraní příkazového [řádku A
    az resource update --resource-group <resourceGroupName> --resource-type Microsoft.Logic/integrationAccounts --name <integrationAccountName> --subscription <AzureSubscriptionID> --set sku.name=<skuName>
    ```
   
-   Například pokud máte úroveň Standard, můžete nastavit `skuName` na: `Basic`
+   Například pokud máte úroveň Standard, můžete nastavit `skuName` na `Basic` :
 
    ```azurecli
    az resource update --resource-group FabrikamIntegration-RG --resource-type Microsoft.Logic/integrationAccounts --name Fabrikam-Integration --subscription XXXXXXXXXXXXXXXXX --set sku.name=Basic
@@ -178,7 +178,7 @@ Pokud chcete tuto změnu provést, použijte rozhraní příkazového [řádku A
 
 Pokud chcete aplikaci logiky propojit s jiným účtem pro integraci nebo už nepoužíváte účet pro integraci s vaší aplikací logiky, odstraňte odkaz pomocí Azure Resource Explorer.
 
-1. Otevřete okno prohlížeče a přejít na [Azure Resource Explorer (https://resources.azure.com)](https://resources.azure.com). Přihlaste se pomocí stejných přihlašovacích údajů k účtu Azure.
+1. Otevřete okno prohlížeče a přejít na [Azure Resource Explorer ( https://resources.azure.com) ](https://resources.azure.com). Přihlaste se pomocí stejných přihlašovacích údajů k účtu Azure.
 
    ![Průzkumník prostředků Azure](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer.png)
 

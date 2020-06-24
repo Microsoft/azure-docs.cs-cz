@@ -8,17 +8,17 @@ author: asudbring
 ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: 09d15877088fb6356419a9d31f8bef3164e76029
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 38db681655a839983ebf38e94ec28eb05ed65d1f
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780603"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808578"
 ---
 # <a name="configure-tcp-idle-timeout-settings-for-azure-load-balancer"></a>Nakonfigurujte nastavení časového limitu nečinnosti protokolu TCP pro Azure Load Balancer
 
@@ -59,7 +59,7 @@ Parametr `IdleTimeoutInMinutes` je volitelný. Pokud není nastavené, výchozí
 
 ## <a name="set-the-tcp-timeout-on-a-load-balanced-rule-to-15-minutes"></a>Nastavte časový limit TCP pro pravidlo vyrovnávání zatížení na 15 minut.
 
-Chcete-li nastavit časový limit nečinnosti pro nástroj pro vyrovnávání zatížení, je v pravidle vyrovnávání zatížení nastaven atribut ' IdleTimeoutInMinutes '. Například:
+Chcete-li nastavit časový limit nečinnosti pro nástroj pro vyrovnávání zatížení, je v pravidle vyrovnávání zatížení nastaven atribut ' IdleTimeoutInMinutes '. Příklad:
 
 ```azurepowershell-interactive
 $lb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroup "MyResourceGroup"

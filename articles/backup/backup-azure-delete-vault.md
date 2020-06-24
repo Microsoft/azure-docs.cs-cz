@@ -3,12 +3,12 @@ title: Odstranění trezoru Microsoft Azure Recovery Services
 description: V tomto článku se dozvíte, jak odebrat závislosti a jak odstranit Azure Backup trezoru Recovery Services.
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 07e6a0297d131f4a0b7dc93817d9abcf2ae109d2
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: 946b199119ee9e03ec9348c4e180f8e4c9b9a776
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84447743"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84751868"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Odstranění trezoru Azure Backup Recovery Services
 
@@ -38,7 +38,7 @@ Chcete-li odstranit trezor správně, je nutné postupovat podle kroků v tomto 
 
 - **Krok 1**: zakažte funkci obnovitelného odstranění. Postup zakázání obnovitelného odstranění [najdete tady](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#enabling-and-disabling-soft-delete) .
 
-- **Krok 2**: po zakázání obnovitelného odstranění ověřte, jestli ve stavu Thee Soft Deleted nejsou žádné položky. Pokud jsou položky v tichém odstraněném stavu, je nutné je *undelete* znovu odstranit a *Odstranit* . [Pomocí těchto kroků](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#permanently-deleting-soft-deleted-backup-items) můžete najít obnovitelné položky odstranění a trvale je odstranit.
+- **Krok 2**: po zakázání obnovitelného odstranění ověřte, jestli ve stavu tichého odstranění nejsou žádné položky, které by dřív zbyly. Pokud jsou položky v tichém odstraněném stavu, je nutné je *undelete* znovu odstranit a *Odstranit* . [Pomocí těchto kroků](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#permanently-deleting-soft-deleted-backup-items) můžete najít obnovitelné položky odstranění a trvale je odstranit.
 
 - **Krok 3**: Chcete-li ověřit, zda jsou k dispozici chráněné položky, je nutné zkontrolovat na následujících třech místech:
 

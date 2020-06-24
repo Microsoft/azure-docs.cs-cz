@@ -4,12 +4,12 @@ description: Naučte se rychle vytvořit cluster Kubernetes a nasadit aplikaci v
 services: container-service
 ms.topic: article
 ms.date: 05/26/2020
-ms.openlocfilehash: c0c4849d76676cf165dbb051fbd904c28a98fa3b
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 735869da1432c241927597789f00a0bd2aea63f3
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873571"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207937"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-powershell"></a>Vytvoření kontejneru Windows serveru v clusteru služby Azure Kubernetes (AKS) pomocí PowerShellu
 
@@ -60,7 +60,7 @@ New-AzResourceGroup -Name myResourceGroup -Location eastus
 
 Následující příklad výstupu ukazuje, že skupina prostředků byla úspěšně vytvořena:
 
-```Output
+```plaintext
 ResourceGroupName : myResourceGroup
 Location          : eastus
 ProvisioningState : Succeeded
@@ -119,7 +119,7 @@ kubectl get nodes
 
 Následující příklad výstupu ukazuje všechny uzly v clusteru. Ujistěte se, že stav všech uzlů je **připravený**:
 
-```Output
+```plaintext
 NAME                                STATUS   ROLES   AGE    VERSION
 aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.16.7
 aksnpwin987654                      Ready    agent   108s   v1.16.7
@@ -187,7 +187,7 @@ kubectl apply -f sample.yaml
 
 Následující příklad výstupu ukazuje, že se úspěšně vytvořilo nasazení a služba:
 
-```Output
+```plaintext
 deployment.apps/sample created
 service/sample created
 ```
@@ -205,14 +205,14 @@ kubectl get service sample --watch
 
 Zpočátku je **externí IP adresa** **ukázkové** služby zobrazená jako **čeká na vyřízení**.
 
-```Output
+```plaintext
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
 sample             LoadBalancer   10.0.37.27   <pending>     80:30572/TCP   6s
 ```
 
 Pokud se **IP** adresa změní z **čekání** na skutečnou veřejnou IP adresu, použijte `CTRL-C` k zastavení `kubectl` procesu sledování. Následující příklad výstupu ukazuje platnou veřejnou IP adresu přiřazenou ke službě:
 
-```Output
+```plaintext
 sample  LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 ```
 

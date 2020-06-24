@@ -3,16 +3,16 @@ title: Jak nakonfigurovat vícenásobný hlavní server v Azure Cosmos DB
 description: Naučte se konfigurovat více hlavních pro aplikace pomocí různých sad SDK v Azure Cosmos DB.
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: mjbrown
 ms.custom: tracking-python
-ms.openlocfilehash: 792b0ef3f31bfb9dd26c153d5bb0eeab6ba8baf9
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: a07ab3f65fcdeacf37626ad05d0b95ac3f4e7e64
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84677980"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263664"
 ---
 # <a name="configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>Nakonfigurujte ve svých aplikacích více hlavních serverů, které používají Azure Cosmos DB
 
@@ -21,7 +21,7 @@ Jakmile je účet vytvořený s povoleným více oblastmi zápisu, musíte ve sv
 > [!Note]
 > Účty Cosmos, které jsou zpočátku nakonfigurované s jednou oblastí zápisu, se dají nakonfigurovat na více oblastí zápisu (tj. na vícenásobné hlavní hodnoty) s nulovým časem. Další informace najdete v tématu [Konfigurace oblastí s vícenásobným zápisem](how-to-manage-database-account.md#configure-multiple-write-regions) .
 
-## <a name="net-sdk-v2"></a><a id="netv2"></a>.NET SDK v2
+## <a name="net-sdk-v2"></a><a id="netv2"></a>Sada .NET SDK v2
 
 Pokud chcete v aplikaci povolit více hlavních serverů, nastavte `UseMultipleWriteLocations` na `true` . Nastavte také `SetCurrentLocation` na oblast, ve které se aplikace nasazuje a kam se Azure Cosmos DB replikují:
 

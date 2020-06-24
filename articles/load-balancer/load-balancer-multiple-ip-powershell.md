@@ -7,24 +7,24 @@ documentationcenter: na
 author: asudbring
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 6ac9e362314cc45e6adbdcf1390f70cbe6b05de8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8f1273f1476ea7da03eb44b700519482deac3284
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74075966"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84809177"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-using-powershell"></a>Vyrovnávání zatížení u více konfigurací IP adres pomocí prostředí PowerShell
 
 > [!div class="op_single_selector"]
-> * [Portál](load-balancer-multiple-ip.md)
-> * [CLI](load-balancer-multiple-ip-cli.md)
+> * [Azure Portal](load-balancer-multiple-ip.md)
+> * [Rozhraní příkazového řádku](load-balancer-multiple-ip-cli.md)
 > * [PowerShell](load-balancer-multiple-ip-powershell.md)
 
 

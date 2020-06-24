@@ -1,5 +1,5 @@
 ---
-title: Ukončení oznámení pro instance sady škálování virtuálních počítačů Azure
+title: Oznámení o ukončení pro instance škálovací sady virtuálních počítačů Azure
 description: Naučte se, jak povolit koncová oznámení pro instance sady škálování virtuálních počítačů Azure.
 author: avirishuv
 ms.author: avverma
@@ -9,14 +9,14 @@ ms.subservice: management
 ms.date: 02/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 695fd03d7c1856ad39b7672d826f85bc4c68a99c
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 65fc822250ae8284c9f87af262356730ff1d54c4
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125175"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207511"
 ---
-# <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances"></a>Ukončení oznámení pro instance sady škálování virtuálních počítačů Azure
+# <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances"></a>Oznámení o ukončení pro instance škálovací sady virtuálních počítačů Azure
 Instance sady škálování můžou vyjádřit výslovný souhlas s přijetím oznámení o ukončení instance a nastavením předem definovaného časového limitu prodlevy na operaci ukončení. Oznámení ukončení se odesílá prostřednictvím služby Azure Metadata Service – [Scheduled Events](../virtual-machines/windows/scheduled-events.md), která poskytuje oznámení a zpoždění ovlivněných operací, jako je třeba restartování a opětovné nasazení. Řešení přidá další událost – ukončit – do seznamu Scheduled Events a přidružená prodleva události ukončení bude záviset na limitu zpoždění zadaného uživateli ve svých konfiguracích modelu sady škálování.
 
 Po zaregistrování do funkce nemusí instance sady škálování čekat na vypršení platnosti zadaného časového limitu, než se instance odstraní. Po přijetí oznámení o ukončení se může instance kdykoli odstranit, a to až do vypršení časového limitu ukončení.
@@ -178,7 +178,7 @@ Níže je v textu požadavku POST očekáván kód JSON. Požadavek by měl obsa
 
 Zajistěte, aby každý virtuální počítač v sadě škálování schválil jenom ID události relevantní pouze pro tento virtuální počítač. VIRTUÁLNÍ počítač může získat vlastní název virtuálního počítače [prostřednictvím metadat instance](virtual-machine-scale-sets-instance-ids.md#instance-metadata-vm-name). Tento název má podobu "{Scale-set-Name} _ {instance-ID}" a zobrazí se v části "prostředky" odpovědi na dotaz popsané výše.
 
-Můžete se také podívat na ukázky skriptů pro dotazování a reakci na události pomocí [PowerShellu](../virtual-machines/windows/scheduled-events.md#powershell-sample) a [Pythonu](../virtual-machines/linux/scheduled-events.md#python-sample).
+Můžete se také podívat na ukázky skriptů pro dotazování a reakci na události [Pythonu](../virtual-machines/linux/scheduled-events.md#python-sample).
 
 ## <a name="tips-and-best-practices"></a>Tipy a osvědčené postupy
 -   Ukončit oznámení pouze na operacích DELETE – všechny operace odstranění (ruční odstranění nebo škálování iniciované automaticky v měřítku) vygenerují události ukončení, pokud je vaše sada škálování zapnutá *scheduledEventsProfile* . Jiné operace, jako je restartování, obnovení bitové kopie, opětovné nasazení a zastavení nebo zrušení přidělení, negenerují události ukončení. Pro virtuální počítače s nízkou prioritou nejde povolit oznámení ukončení.

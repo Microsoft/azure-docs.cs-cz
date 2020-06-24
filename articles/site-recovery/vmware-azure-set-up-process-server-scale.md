@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 4/23/2019
 ms.author: ramamill
 ms.openlocfilehash: 1b6084b4e93f3dc17f633f1b8496f9c26e7f576f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257144"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711948"
 ---
 # <a name="scale-with-additional-process-servers"></a>Škálování pomocí dalších procesových serverů
 
@@ -52,9 +52,9 @@ Požadavky na další procesový Server jsou shrnuté v následující tabulce.
 Instalační soubor pro procesový Server si stáhněte následujícím způsobem:
 
 1. Přihlaste se k Azure Portal a přejděte do svého trezoru Recovery Services.
-2. Otevřete **Site Recovery infrastruktury** > **VMware a fyzických počítačů** > **Konfigurace serveru** (v části pro & fyzické počítače VMware).
+2. Otevřete **Site Recovery infrastruktury**  >  **VMware a fyzických počítačů**  >  **Konfigurace serveru** (v části pro & fyzické počítače VMware).
 3. Vyberte konfigurační server pro přechod k podrobnostem o serveru. Pak klikněte na **+ procesový Server**.
-4. V nabídce **Přidat procesový Server** >  **Zvolte, kam chcete procesový Server nasadit**, a vyberte **nasadit místní procesový Server s horizontálním škálováním kapacity**.
+4. V nabídce **Přidat procesový Server**  >   **Zvolte, kam chcete procesový Server nasadit**, a vyberte **nasadit místní procesový Server s horizontálním škálováním kapacity**.
 
    ![Stránka Přidat servery](./media/vmware-azure-set-up-process-server-scale/add-process-server.png)
 1. Klikněte na **stáhnout Microsoft Azure Site Recovery Unified Setup**. Tím se stáhne nejnovější verze instalačního souboru.

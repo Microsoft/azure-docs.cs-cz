@@ -3,17 +3,17 @@ title: Návrh Azure Cosmos DBch tabulek pro škálování a výkon
 description: 'Průvodce návrhem služby Azure Table Storage: škálovatelné a výkonné tabulky v Azure Cosmos DB a v úložišti tabulek v Azure'
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
-ms.topic: conceptual
-ms.date: 05/21/2019
+ms.topic: how-to
+ms.date: 06/19/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: seodec18
-ms.openlocfilehash: 78a38938ad31bb349b7215f0a26dda69f4fec966
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: beb80390bdeacd6775ccfb0b712fe6dd260fbce0
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83651924"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261082"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Průvodce návrhem tabulky Azure Table Storage: škálovatelné a výkonné tabulky
 
@@ -195,12 +195,12 @@ V následujících příkladech se předpokládá, že Table Storage ukládá en
 
 | Název sloupce | Datový typ |
 | --- | --- |
-| `PartitionKey`(Název oddělení) |String |
-| `RowKey`(ID zaměstnance) |String |
-| `FirstName` |String |
-| `LastName` |String |
+| `PartitionKey`(Název oddělení) |Řetězec |
+| `RowKey`(ID zaměstnance) |Řetězec |
+| `FirstName` |Řetězec |
+| `LastName` |Řetězec |
 | `Age` |Integer |
-| `EmailAddress` |String |
+| `EmailAddress` |Řetězec |
 
 Tady jsou některé obecné pokyny pro navrhování dotazů na úložiště tabulek. Syntaxe filtru použitá v následujících příkladech je z tabulkového úložiště REST API. Další informace najdete v tématu věnovaném [dotazování entit](https://msdn.microsoft.com/library/azure/dd179421.aspx).  
 
@@ -630,7 +630,7 @@ Pro tuto možnost použijte entity indexů, které ukládají následující dat
 
 ![Obrázek znázorňující entitu zaměstnance s řetězcem, který obsahuje seznam ID zaměstnanců se stejným posledním jménem][15]
 
-`EmployeeIDs`Vlastnost obsahuje seznam ID zaměstnanců pro zaměstnance s posledním jménem uloženým v `RowKey` .  
+`EmployeeIDs`Vlastnost obsahuje seznam ID zaměstnanců pro zaměstnance s posledním jménem uloženým v `RowKey` a `PartitionKey` .  
 
 EGTs se nedá použít k udržení konzistence, protože entity indexu jsou v samostatném oddílu od entit zaměstnanců. Zajistěte, aby entity indexu byly nakonec konzistentní s entitami zaměstnanců.  
 
@@ -663,7 +663,7 @@ V relační databázi obvykle Normalizujte data pro odstranění duplicit, ke kt
 ![Grafika entity oddělení a entit zaměstnanců][16]
 
 #### <a name="solution"></a>Řešení
-Místo uložení dat ve dvou samostatných entitách denormalizujte data a udržujte kopii podrobností manažera v entitě oddělení. Například:  
+Místo uložení dat ve dvou samostatných entitách denormalizujte data a udržujte kopii podrobností manažera v entitě oddělení. Příklad:  
 
 ![Obrázek denormalizované a kombinované entity oddělení][17]
 

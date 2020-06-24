@@ -9,21 +9,21 @@ ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
 ms.openlocfilehash: 4b402975a151d26e8f335c07930274c156ac52fb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79272367"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84709262"
 ---
 # <a name="migrate-net-solutions-for-windows-based-hdinsight-to-linux-based-hdinsight"></a>Migrace řešení .NET pro HDInsight se systémem Windows na HDInsight se systémem Linux
 
-Clustery HDInsight se systémem Linux používají [monohttps://mono-project.com) (](https://mono-project.com) ke spouštění aplikací .NET). Mono umožňuje používat komponenty .NET, jako jsou aplikace MapReduce, se systémem Linux HDInsight. V tomto dokumentu se dozvíte, jak migrovat řešení .NET vytvořená pro clustery HDInsight se systémem Windows pro práci s mono v HDInsight se systémem Linux.
+Clustery HDInsight se systémem Linux používají [mono https://mono-project.com) (](https://mono-project.com) ke spouštění aplikací .NET). Mono umožňuje používat komponenty .NET, jako jsou aplikace MapReduce, se systémem Linux HDInsight. V tomto dokumentu se dozvíte, jak migrovat řešení .NET vytvořená pro clustery HDInsight se systémem Windows pro práci s mono v HDInsight se systémem Linux.
 
 ## <a name="mono-compatibility-with-net"></a>Kompatibilita mono s .NET
 
 Mono verze 4.2.1 je součástí HDInsight verze 3,6. Další informace o verzi mono, která je součástí služby HDInsight, najdete v tématu [verze komponent HDInsight](hdinsight-component-versioning.md).
 
-Další informace o kompatibilitě mezi mono a .NET naleznete v tématu [Kompatibilita Mono (https://www.mono-project.com/docs/about-mono/compatibility/) ](https://www.mono-project.com/docs/about-mono/compatibility/) dokument.
+Další informace o kompatibilitě mezi mono a .NET naleznete v tématu [Kompatibilita Mono ( https://www.mono-project.com/docs/about-mono/compatibility/) ](https://www.mono-project.com/docs/about-mono/compatibility/) dokument.
 
 > [!IMPORTANT]  
 > Rozhraní SCP.NET je kompatibilní s mono. Další informace o použití SCP.NET s mono naleznete v tématu [použití sady Visual Studio k vývoji topologií C# pro Apache Storm v HDInsight](storm/apache-storm-develop-csharp-visual-studio-topology.md).
@@ -34,15 +34,15 @@ Další informace o kompatibilitě mezi mono a .NET naleznete v tématu [Kompati
 
 1. Nainstalujte [analyzátor přenositelnosti .NET](https://marketplace.visualstudio.com/items?itemName=ConnieYau.NETPortabilityAnalyzer). Během instalace vyberte verzi sady Visual Studio, která se má použít.
 
-2. V aplikaci Visual Studio 2015 vyberte možnost __Analýza__ > __Nastavení analyzátoru přenositelnosti__a ujistěte se, že je v části __mono__ zaškrtnuto políčko __4,5__ .
+2. V aplikaci Visual Studio 2015 vyberte možnost __Analýza__  >  __Nastavení analyzátoru přenositelnosti__a ujistěte se, že je v části __mono__ zaškrtnuto políčko __4,5__ .
 
     ![4,5 pro nastavení analyzátoru se vrátil oddíl mono.](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-settings.png)
 
     Kliknutím na __OK__ uložte konfiguraci.
 
-3. Vyberte možnost __analyzovat__ > __analýzu přenositelnosti sestavení__. Vyberte sestavení, které obsahuje vaše řešení, a pak vyberte __otevřít__ pro zahájení analýzy.
+3. Vyberte možnost __analyzovat__  >  __analýzu přenositelnosti sestavení__. Vyberte sestavení, které obsahuje vaše řešení, a pak vyberte __otevřít__ pro zahájení analýzy.
 
-4. Po dokončení analýzy vyberte __analyzovat__ > __zobrazení sestavy analýzy__. Ve __výsledcích analýzy přenositelnosti__otevřete sestavu výběrem __otevřít sestavu__ .
+4. Po dokončení analýzy vyberte __analyzovat__  >  __zobrazení sestavy analýzy__. Ve __výsledcích analýzy přenositelnosti__otevřete sestavu výběrem __otevřít sestavu__ .
 
     ![Dialogové okno výsledků analyzátoru přenositelnosti](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-results.png)
 
@@ -51,7 +51,7 @@ Další informace o kompatibilitě mezi mono a .NET naleznete v tématu [Kompati
 
 ## <a name="manual-portability-analysis"></a>Analýza ručních přenositelností
 
-Proveďte ruční audit kódu pomocí informací v [přenositelnosti aplikace (https://www.mono-project.com/docs/getting-started/application-portability/) ](https://www.mono-project.com/docs/getting-started/application-portability/) dokument.
+Proveďte ruční audit kódu pomocí informací v [přenositelnosti aplikace ( https://www.mono-project.com/docs/getting-started/application-portability/) ](https://www.mono-project.com/docs/getting-started/application-portability/) dokument.
 
 ## <a name="modify-and-build"></a>Upravit a sestavit
 

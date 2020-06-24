@@ -3,15 +3,15 @@ title: Použití estimatoru Change feed-Azure Cosmos DB
 description: Naučte se používat estimatoru Change feed k analýze průběhu procesoru změny kanálu.
 author: ealsur
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/15/2019
 ms.author: maquaran
-ms.openlocfilehash: 0023f68400b36b9abd3b9d4a789895e79f67aa03
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 90ae7951196d424b59d3780469cb7e01519c51f9
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77585284"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263574"
 ---
 # <a name="use-the-change-feed-estimator"></a>Použít Estimator kanálu změn
 
@@ -35,7 +35,7 @@ Pokud je například procesor pro změnu kanálu definován takto:
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartProcessorEstimator)]
 
-Správný způsob, jak inicializovat Estimator k měření toho, jak by procesor používal `GetChangeFeedEstimatorBuilder` , například:
+Správný způsob, jak inicializovat Estimator k měření toho, jak by procesor používal, `GetChangeFeedEstimatorBuilder` například:
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartEstimator)]
 

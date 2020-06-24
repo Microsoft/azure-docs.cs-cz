@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/13/2020
+ms.date: 06/10/2020
 ms.author: aschhab
-ms.openlocfilehash: 95f8c2a3b47b59bab7df909be43dacdb1f9c58f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 607afa4b8411af9b960a251d5f9d4688d3edeb10
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79479277"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84686898"
 ---
 # <a name="network-security-for-azure-service-bus"></a>Zabezpečení sítě pro Azure Service Bus 
 Tento článek popisuje, jak používat následující funkce zabezpečení pro Azure Service Bus: 
@@ -37,6 +37,9 @@ Pomocí značek služeb můžete definovat řízení přístupu k síti pro [sku
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **ServiceBus** | Azure Service Bus provoz, který využívá úroveň služby Premium. | Odchozí | Ano | Ano |
 
+
+> [!NOTE]
+> Značky služeb můžete použít jenom pro obory názvů úrovně **Premium** . Pokud používáte **standardní** obor názvů, použijte IP adresu, kterou vidíte při spuštění následujícího příkazu: `nslookup <host name for the namespace>` . Příklad: `nslookup contosons.servicebus.windows.net`. 
 
 ## <a name="ip-firewall"></a>Brána firewall protokolu IP 
 Ve výchozím nastavení jsou Service Bus obory názvů přístupné z Internetu, pokud požadavek přichází s platným ověřováním a autorizací. Pomocí brány firewall protokolu IP je můžete omezit na více než jenom na sadu IPv4 adres nebo rozsahů IPv4 adres v [CIDR (směrování mezi doménami bez třídy)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .

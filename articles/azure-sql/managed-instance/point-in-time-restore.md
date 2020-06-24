@@ -3,7 +3,7 @@ title: Obnovení k bodu v čase (PITR)
 titleSuffix: Azure SQL Managed Instance
 description: Obnovte databázi na spravované instanci Azure SQL pro předchozí bod v čase.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: 379d5e59024174c8f6cfbc185b3514287b7d5031
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 407d56c209f64d350906a17c0746b1c43f969d43
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310168"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708631"
 ---
 # <a name="restore-a-database-in-azure-sql-managed-instance-to-a-previous-point-in-time"></a>Obnovení databáze ve spravované instanci Azure SQL k předchozímu bodu v čase
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -46,7 +46,7 @@ Následující tabulka uvádí scénáře obnovení k bodu v čase pro spravovan
 
 |           |Obnovení existující databáze na stejnou instanci spravované instance SQL| Obnovit existující databázi do jiné spravované instance SQL|Obnovit vyřazenou databázi do stejné spravované instance SQL|Obnovit vyřazenou databázi do jiné spravované instance SQL|
 |:----------|:----------|:----------|:----------|:----------|
-|**portál Azure**| Ano|No |Ano|No|
+|**portál Azure**| Ano|No |Ano|Ne|
 |**Azure CLI**|Ano |Ano |Ne|Ne|
 |**PowerShell**| Ano|Ano |Ano|Ano|
 
@@ -56,7 +56,7 @@ Obnovte stávající databázi na stejnou spravovanou instanci SQL pomocí Azure
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 2. Přejít do spravované instance SQL a vybrat databázi, kterou chcete obnovit.
 3. Na stránce databáze vyberte **obnovit** :
 

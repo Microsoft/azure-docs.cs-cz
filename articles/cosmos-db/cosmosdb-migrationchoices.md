@@ -4,14 +4,14 @@ description: Tento dokument popisuje různé možnosti migrace místních nebo c
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/23/2019
-ms.openlocfilehash: 3945048060084874cf9d213aae83c3504312875c
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: a1b8ddba84920d8d3b6871ab404081d3b24c72e1
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465741"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261966"
 ---
 # <a name="options-to-migrate-your-on-premises-or-cloud-data-to-azure-cosmos-db"></a>Možnosti migrace místních nebo cloudových dat na Azure Cosmos DB
 
@@ -31,7 +31,7 @@ Následující faktory určují, jakým způsobem Nástroj pro migraci zvolíte:
 * **Očekávaná doba trvání migrace**: migrace se můžou nakonfigurovat tak, aby se navzájem pomaleji, přírůstkový tempo, který spotřebovává méně propustnosti, nebo může spotřebovat celou propustnost zřízenou v cílovém Azure Cosmos DB kontejneru a dokončit migraci za kratší dobu.
 
 ## <a name="azure-cosmos-db-sql-api"></a>Rozhraní API služby Azure Cosmos DB pro SQL
-|**Typ migrace**|**Řešení**|**Důležité informace**|
+|**Typ migrace**|**Řešení**|**Požadavky**|
 |---------|---------|---------|
 |Offline|[Nástroj pro migraci dat](https://docs.microsoft.com/azure/cosmos-db/import-data)|&bull;Snadné nastavení a podpora více zdrojů <br/>&bull;Nevhodné pro velké datové sady|
 |Offline|[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db)|&bull;Snadné nastavení a podpora více zdrojů <br/>&bull;Využívá knihovnu hromadných prováděcích knihoven Azure Cosmos DB. <br/>&bull;Vhodné pro velké datové sady <br/>&bull;Nedostatek kontrolního bodu – znamená to, že pokud během migrace dojde k problému, budete muset celý proces migrace restartovat.<br/>&bull;Nedostatek fronty nedoručených zpráv – znamená, že několik chybných souborů může zastavit celý proces migrace.|
@@ -42,7 +42,7 @@ Následující faktory určují, jakým způsobem Nástroj pro migraci zvolíte:
 |Online|[Striim](https://docs.microsoft.com/azure/cosmos-db/cosmosdb-sql-api-migrate-data-striim)|&bull;Funguje s velkým množstvím zdrojů, jako je Oracle, DB2, SQL Server <br/>&bull;Snadné sestavování kanálů ETL a poskytuje řídicí panel pro monitorování <br/>&bull;Podporuje větší datové sady <br/>&bull;Vzhledem k tomu, že se jedná o nástroj třetí strany, musí být zakoupen z webu Marketplace a nainstalován v uživatelském prostředí.|
 
 ## <a name="azure-cosmos-db-mongo-api"></a>Rozhraní API pro Azure Cosmos DB Mongo
-|**Typ migrace**|**Řešení**|**Důležité informace**|
+|**Typ migrace**|**Řešení**|**Požadavky**|
 |---------|---------|---------|
 |Offline|[Nástroj pro migraci dat](https://docs.microsoft.com/azure/cosmos-db/import-data)|&bull;Snadné nastavení a podpora více zdrojů <br/>&bull;Nevhodné pro velké datové sady|
 |Offline|[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db)|&bull;Snadné nastavení a podpora více zdrojů <br/>&bull;Využívá knihovnu hromadných prováděcích knihoven Azure Cosmos DB. <br/>&bull;Vhodné pro velké datové sady <br/>&bull;Nedostatečná kontrolní bod znamená, že při migraci by se vyžadovalo restartování celého procesu migrace.<br/>&bull;Nedostatku fronty nedoručených zpráv by znamenalo, že několik chybných souborů může zastavit celý proces migrace. <br/>&bull;Vyžaduje vlastní kód pro zvýšení propustnosti čtení pro určité zdroje dat.|
@@ -50,7 +50,7 @@ Následující faktory určují, jakým způsobem Nástroj pro migraci zvolíte:
 |Online|[Azure Database Migration Service](https://docs.microsoft.com/azure/dms/tutorial-mongodb-cosmos-db-online)|&bull;Využívá knihovnu hromadných prováděcích knihoven Azure Cosmos DB. <br/>&bull;Vhodné pro velké datové sady a postará se o replikaci živých změn <br/>&bull;Funguje jenom s jinými MongoDB zdroji.|
 
 ## <a name="azure-cosmos-db-cassandra-api"></a>API Cassandra v Azure Cosmos DB
-|**Typ migrace**|**Řešení**|**Důležité informace**|
+|**Typ migrace**|**Řešení**|**Požadavky**|
 |---------|---------|---------|
 |Offline|[cqlsh kopírování příkazu](https://docs.microsoft.com/azure/cosmos-db/cassandra-import-data#migrate-data-using-cqlsh-copy-command)|&bull;Snadné nastavení <br/>&bull;Nevhodné pro velké datové sady <br/>&bull;Funguje pouze v případě, že zdrojem je tabulka Cassandra.|
 |Offline|[Kopírovat tabulku pomocí Sparku](https://docs.microsoft.com/azure/cosmos-db/cassandra-import-data#migrate-data-using-spark) |&bull;Může využívat možnosti Sparku k paralelizovat transformaci a ingestování. <br/>&bull;Vyžaduje konfiguraci s vlastní zásadou opakování pro zpracování omezení.|

@@ -2,16 +2,16 @@
 title: Migrace z CouchBase do Azure Cosmos DB SQL API
 description: Podrobné pokyny pro migraci z CouchBase do Azure Cosmos DB SQL API
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: mansha
 author: manishmsfte
-ms.openlocfilehash: 248860ad6963fcd04526f0d94e52d6a6181463c5
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: f7c0cb893f65688145811cbd2a0280c2d232d7a9
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657339"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261915"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>Migrace z CouchBase do Azure Cosmos DB SQL API
 
@@ -109,7 +109,7 @@ Následující části popisují, kdy použít jednotlivé sady SDK. Vezměte v 
 
 Pokud je zatížení, které migrujete, založeno na sadě SDK založených na jarním spuštění, můžete použít následující postup:
 
-1. Přidejte nadřazenou položku do souboru POM. XML:
+1. Přidat nadřazenou položku do souboru POM.xml:
 
    ```java
    <parent>
@@ -120,13 +120,13 @@ Pokud je zatížení, které migrujete, založeno na sadě SDK založených na j
    </parent>
    ```
 
-1. Přidejte vlastnosti do souboru POM. XML:
+1. Přidat vlastnosti do souboru POM.xml:
 
    ```java
    <azure.version>2.1.6</azure.version>
    ```
 
-1. Přidejte závislosti do souboru POM. XML:
+1. Přidat závislosti do souboru POM.xml:
 
    ```java
    <dependency>
@@ -200,7 +200,7 @@ Ve svých dotazech N1QL si můžete všimnout následujících změn:
 
 Použijte asynchronní sadu Java SDK s následujícími kroky:
 
-1. Nakonfigurujte následující závislost na soubor POM. XML:
+1. Nakonfigurujte následující závislost na soubor POM.xml:
 
    ```java
    <!-- https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb -->

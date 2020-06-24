@@ -11,18 +11,18 @@ Customer intent: I want only resources in a virtual network subnet to access an 
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: f2dcc714bc9052dd51f114e24f0b9bd74b87480c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5d08dd2705c69f3fa8f8e0830e487833f7cf96f8
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74186409"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84689329"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>Omezení síťového přístupu k prostředkům PaaS pomocí koncových bodů služby virtuální sítě pomocí Azure CLI
 
@@ -35,7 +35,7 @@ Koncové body služby pro virtuální síť umožňují omezení síťového př
 * Ověření přístupu k prostředku z podsítě
 * Ověření odepření přístupu k prostředku z podsítě a internetu
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -272,7 +272,7 @@ Vytvoření virtuálního počítače trvá několik minut. Po vytvoření si po
 
 ## <a name="confirm-access-to-storage-account"></a>Ověření přístupu k účtu úložiště
 
-Připojte se přes SSH k virtuálnímu počítači *myVmPrivate* . * \<PublicIpAddress>* nahraďte veřejnou IP adresou vašeho virtuálního počítače s *myVmPrivate* .
+Připojte se přes SSH k virtuálnímu počítači *myVmPrivate* . Nahraďte *\<publicIpAddress>* veřejnou IP adresou vašeho virtuálního počítače s *myVmPrivate* .
 
 ```bash 
 ssh <publicIpAddress>
@@ -322,11 +322,11 @@ Pokuste se připojit sdílenou složku Azure k adresáři, který jste vytvořil
 sudo mount --types cifs //storage-account-name>.file.core.windows.net/my-file-share /mnt/MyAzureFileShare --options vers=3.0,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
 ```
 
-Přístup je odepřený a zobrazí se `mount error(13): Permission denied` chyba, protože virtuální počítač *myVmPublic* je nasazený ve *veřejné* podsíti. Podsíť *Public* nemá povolený koncový bod služby pro Azure Storage a účet úložiště umožňuje síťový přístup pouze z podsítě *Private*, a ne z podsítě *Public*.
+Přístup je odepřený a zobrazí se `mount error(13): Permission denied` Chyba, protože virtuální počítač *myVmPublic* je nasazený ve *veřejné* podsíti. Podsíť *Public* nemá povolený koncový bod služby pro Azure Storage a účet úložiště umožňuje síťový přístup pouze z podsítě *Private*, a ne z podsítě *Public*.
 
 Ukončete relaci SSH na virtuálním počítači s *myVmPublic* .
 
-Z počítače se pokuste zobrazit sdílené složky ve vašem účtu úložiště pomocí [AZ Storage Share list](/cli/azure/storage/share?view=azure-cli-latest). `<account-name>` Nahraďte `<account-key>` a názvem účtu úložiště a klíčem z části [Vytvoření účtu úložiště](#create-a-storage-account):
+Z počítače se pokuste zobrazit sdílené složky ve vašem účtu úložiště pomocí [AZ Storage Share list](/cli/azure/storage/share?view=azure-cli-latest). Nahraďte `<account-name>` a `<account-key>` názvem účtu úložiště a klíčem z části [Vytvoření účtu úložiště](#create-a-storage-account):
 
 ```azurecli-interactive
 az storage share list \

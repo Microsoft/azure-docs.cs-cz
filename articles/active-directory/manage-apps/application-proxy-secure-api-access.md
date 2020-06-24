@@ -2,22 +2,21 @@
 title: Přístup k místním rozhraním API pomocí Azure Proxy aplikací služby AD
 description: Proxy aplikace Azure Active Directory umožňuje nativním aplikacím bezpečně přistupovat k rozhraním API a obchodní logikě, které hostuje místní nebo cloudové virtuální počítače.
 services: active-directory
-author: jeevanbisht
-manager: mtillman
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/12/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.custom: has-adal-ref
-ms.openlocfilehash: c3efd94e741124d5e662ac17e9c1daaf66d4c1c5
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: a5db76f0258eb08f6b1f8ed102dc29e26c8d8bb0
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84168805"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85206440"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>Zabezpečený přístup k místním rozhraním API pomocí Azure Proxy aplikací služby AD
 
@@ -35,7 +34,7 @@ Následující diagram ukazuje, jak můžete pomocí Azure Proxy aplikací služ
 
 ![Přístup k rozhraní API pro Azure Proxy aplikací služby AD](./media/application-proxy-secure-api-access/overview-publish-api-app-proxy.png)
 
-Azure Proxy aplikací služby AD tvoří páteřní síť řešení, pracuje jako veřejný koncový bod pro přístup k rozhraní API a poskytuje ověřování a autorizaci. K rozhraním API můžete přistupovat z rozsáhlého pole platforem pomocí knihoven [ADAL](/azure/active-directory/develop/active-directory-authentication-libraries) .
+Azure Proxy aplikací služby AD tvoří páteřní síť řešení, pracuje jako veřejný koncový bod pro přístup k rozhraní API a poskytuje ověřování a autorizaci. K rozhraním API můžete přistupovat z rozsáhlého pole platforem pomocí knihoven [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/active-directory-authentication-libraries) .
 
 Vzhledem k tomu, že služba Azure Proxy aplikací služby AD ověřování a autorizace jsou postaveny na službě Azure AD, můžete použít podmíněný přístup Azure AD a zajistit tak, aby přístup k rozhraním API publikovaným pomocí proxy aplikací mohli jenom důvěryhodná zařízení. Použijte službu Azure AD JOIN nebo službu Azure AD Hybrid připojenou pro stolní počítače a Intune spravovanou pro zařízení. Můžete také využít výhod Azure Active Directory Premium funkcí jako Azure Multi-Factor Authentication a na základě strojového učení – zabezpečení [Azure Identity Protection](/azure/active-directory/active-directory-identityprotection).
 
@@ -137,7 +136,7 @@ Aplikaci AppProxyNativeAppSample jste teď zaregistrovali v Azure Active Directo
 
 ## <a name="configure-the-native-app-code"></a>Konfigurace nativního kódu aplikace
 
-Posledním krokem je konfigurace nativní aplikace. Následující fragment kódu ze souboru *Form1.cs* v ukázkové aplikaci NativeClient způsobí, že knihovna ADAL získá token pro vyžádání volání rozhraní API a připojí ho jako nosič k hlavičce aplikace.
+Posledním krokem je konfigurace nativní aplikace. Následující fragment kódu ze souboru *Form1.cs* v ukázkové aplikaci NativeClient způsobí, že knihovna MSAL získá token pro vyžádání volání rozhraní API a připojí ho jako nosič k hlavičce aplikace.
 
    ```
    // Acquire Access Token from AAD for Proxy Application
@@ -172,7 +171,7 @@ if (authResult != null)
  }
 ```
 
-Pokud chcete nakonfigurovat nativní aplikaci pro připojení k Azure Active Directory a volání proxy aplikace API, aktualizujte zástupné hodnoty v souboru *App. config* ukázkové aplikace NativeClient pomocí hodnot z Azure AD:
+Pokud chcete nakonfigurovat nativní aplikaci pro připojení k Azure Active Directory a volání proxy aplikace API, aktualizujte zástupné hodnoty v souboru *App.config* ukázkové aplikace NativeClient hodnotami z Azure AD:
 
 - Do pole vložte **ID adresáře (tenant)** `<add key="ida:Tenant" value="" />` . Tuto hodnotu (identifikátor GUID) můžete najít a zkopírovat ze stránky **Přehled** některé z vašich aplikací.
 

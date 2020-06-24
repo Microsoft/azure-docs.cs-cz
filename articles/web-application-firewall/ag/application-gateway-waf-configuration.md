@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.date: 02/20/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 7244788bbc7431c7f26363b2852babb72d5697e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ddf631601510e725d77cc391ad41192a47ab0cf1
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77526786"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84752472"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Omezení velikosti a seznamů vyloučení požadavků firewallu webových aplikací
 
@@ -31,7 +31,6 @@ Následující atributy lze přidat do seznamů vyloučení podle názvu. Hodnot
 * Název atributu žádosti (args) se dá přidat jako element vyloučení, třeba:
 
    * Název pole formuláře
-   * Entita XML
    * Entita JSON
    * Argumenty řetězce dotazu adresy URL
 
@@ -82,7 +81,7 @@ $exclusion2 = New-AzApplicationGatewayFirewallExclusionConfig `
    -SelectorMatchOperator "StartsWith" `
    -Selector "user"
 ```
-Takže pokud je adresa `http://www.contoso.com/?user%281%29=fdafdasfda` URL předána do WAF, nevyhodnotí se řetězec **fdafdasfda**, ale přesto bude vyhodnocen uživatel s názvem parametru **%281 %29**. 
+Takže pokud je adresa URL `http://www.contoso.com/?user%281%29=fdafdasfda` předána do WAF, nevyhodnotí se řetězec **fdafdasfda**, ale přesto bude vyhodnocen uživatel s názvem parametru **%281 %29**. 
 
 ## <a name="waf-request-size-limits"></a>Omezení velikosti žádosti WAF
 

@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 07/31/2018
 ms.author: bikang
 ms.openlocfilehash: 7d361d44c349bc7a6e3c041f78d00ad66182fa15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259068"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711030"
 ---
 # <a name="manage-an-azure-service-fabric-application-by-using-azure-service-fabric-cli-sfctl"></a>Správa aplikace Service Fabric Azure pomocí Azure Service Fabric CLI (sfctl)
 
@@ -85,7 +85,7 @@ sfctl application create --app-name fabric:/TestApp --app-type TestAppType --app
 
 `app-name`je název, který chcete použít pro instanci aplikace. Můžete získat další parametry z dříve zřízeného manifestu aplikace.
 
-Název aplikace musí začínat předponou `fabric:/`.
+Název aplikace musí začínat předponou `fabric:/` .
 
 ### <a name="create-services-for-the-new-application"></a>Vytvořit služby pro novou aplikaci
 
@@ -112,7 +112,7 @@ sfctl application health --application-id TestApp
 sfctl service health --service-id TestApp/TestSvc
 ```
 
-Služby a aplikace v pořádku mají `HealthState` hodnotu `Ok`.
+Služby a aplikace v pořádku mají `HealthState` hodnotu `Ok` .
 
 ## <a name="remove-an-existing-application"></a>Odebrání existující aplikace
 
@@ -156,7 +156,7 @@ sfctl application upgrade --app-id TestApp --app-version 2.0.0 --parameters "{\"
 
 Upgrady přepíšou existující parametry s libovolnou nastavenou sadou. Parametry aplikace by měly být v případě potřeby předány jako argumenty příkazu upgrade. Parametry aplikace by měly být kódované jako objekt JSON.
 
-Chcete-li načíst všechny parametry, které byly zadány `sfctl application info` dříve, můžete použít příkaz.
+Chcete-li načíst všechny parametry, které byly zadány dříve, můžete použít `sfctl application info` příkaz.
 
 Když probíhá upgrade aplikace, lze stav získat pomocí `sfctl application upgrade-status` příkazu.
 

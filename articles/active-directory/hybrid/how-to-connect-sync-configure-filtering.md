@@ -17,16 +17,16 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 983699dfbfe3e8fa332da4810d1514a11029077f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261096"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84690894"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Synchronizace Azure AD Connect: Konfigurace filtrování
 Pomocí filtrování můžete určit, které objekty se zobrazí v Azure Active Directory (Azure AD) z místního adresáře. Výchozí konfigurace přebírá všechny objekty ve všech doménách v konfigurovaných doménových strukturách. Obecně platí, že se jedná o doporučenou konfiguraci. Uživatelé, kteří používají úlohy Office 365, jako je Exchange Online a Skype pro firmy, můžou využít kompletní globální seznam adres, aby mohli posílat e-maily a volat všechny. S výchozí konfigurací by měly stejné prostředí jako při místní implementaci Exchange nebo Lyncu.
 
-V některých případech ale potřebujete udělat změny ve výchozí konfiguraci. Zde je několik příkladů:
+V některých případech ale potřebujete udělat změny ve výchozí konfiguraci. Tady je pár příkladů:
 
 * Plánujete používání [topologie adresářů služby Multi-Azure AD](plan-connect-topologies.md#each-object-only-once-in-an-azure-ad-tenant). Pak je nutné použít filtr k řízení, které objekty jsou synchronizovány do konkrétního adresáře služby Azure AD.
 * Spustíte pilotní projekt pro Azure nebo Office 365 a budete chtít jenom podmnožinu uživatelů v Azure AD. V případě malého pilotního projektu není důležité mít úplný globální seznam adres k předvedení funkce.
@@ -61,9 +61,9 @@ Pokud máte více než jednu doménovou strukturu, musíte použít konfigurace 
 Chcete-li zakázat předdefinovaný Plánovač, který spouští cyklus synchronizace každých 30 minut, postupujte podle následujících kroků:
 
 1. Přejít na příkazový řádek PowerShellu.
-2. Spusťte `Set-ADSyncScheduler -SyncCycleEnabled $False` příkaz pro zakázání plánovače.
+2. Spusťte příkaz `Set-ADSyncScheduler -SyncCycleEnabled $False` pro zakázání plánovače.
 3. Proveďte změny popsané v tomto článku.
-4. Spusťte `Set-ADSyncScheduler -SyncCycleEnabled $True` příkaz a znovu povolte Plánovač.
+4. Spusťte příkaz `Set-ADSyncScheduler -SyncCycleEnabled $True` a znovu povolte Plánovač.
 
 **Použijete-li sestavení Azure AD Connect před 1.1.105.0**  
 Pokud chcete zakázat naplánovanou úlohu, která spouští synchronizační cyklus každé tři hodiny, postupujte podle těchto kroků:
@@ -144,7 +144,7 @@ Pokud jste aktualizovali svůj doménový filtr, budete také muset aktualizovat
 3. Pro každý profil upravte **přidané** a **odebrané** domény.
     1. Pro každý z pěti profilů proveďte následující kroky pro každou **přidanou** doménu:
         1. Vyberte profil spuštění a klikněte na **Nový krok**.
-        2. Na stránce **Konfigurovat krok** v rozevírací nabídce **typ** vyberte typ kroku se stejným názvem, jako má profil, který konfigurujete. Pak klikněte na **Další**.  
+        2. Na stránce **Konfigurovat krok** v rozevírací nabídce **typ** vyberte typ kroku se stejným názvem, jako má profil, který konfigurujete. Potom klikněte na **Další**.  
         ![Profily spuštění konektoru 2](./media/how-to-connect-sync-configure-filtering/runprofilesnewstep1.png)  
         3. Na stránce **Konfigurace konektoru** v rozevírací nabídce **oddíl** vyberte název domény, kterou jste přidali do filtru domény.  
         ![Profily spuštění konektoru 3](./media/how-to-connect-sync-configure-filtering/runprofilesnewstep2.png)  
@@ -177,7 +177,7 @@ Chcete-li nakonfigurovat filtrování na základě organizační jednotky, prove
    * Pokud jste povolili funkci zpětného zápisu zařízení, měla by být vybraná organizační jednotka **RegisteredDevices** . Pokud používáte jinou funkci zpětného zápisu, třeba zpětný zápis skupiny, ujistěte se, že jsou tato umístění vybraná.
    * Vyberte všechny ostatní organizační jednotky, kde se nacházejí uživatelé, třídy iNetOrgPerson, skupiny, kontakty a počítače. Na obrázku jsou všechny tyto organizační jednotky umístěny v ManagedObjects organizační jednotce.
    * Pokud používáte filtrování na základě skupin, musí být zahrnutá organizační jednotka, ve které se skupina nachází.
-   * Všimněte si, že můžete nakonfigurovat, jestli se nové organizační jednotky, které se přidají po dokončení konfigurace filtrování, synchronizují nebo nesynchronizují. Podrobnosti naleznete v další části.
+   * Všimněte si, že můžete nakonfigurovat, jestli se nové organizační jednotky, které se přidají po dokončení konfigurace filtrování, synchronizují nebo nesynchronizují. Podrobnosti najdete v následující části.
 7. Až skončíte, zavřete dialogové okno **vlastnosti** kliknutím na **OK**.
 8. Chcete-li dokončit konfiguraci, je nutné spustit **úplný import** a **rozdílovou synchronizaci**. Pokračujte v čtení části [použití a ověření změn](#apply-and-verify-changes).
 
@@ -270,7 +270,7 @@ Pokud potřebujete, můžete vytvořit další pravidla prvního typu, kde v syn
 ### <a name="outbound-filtering"></a>Filtrování odchozích zpráv
 V některých případech je nutné filtrování provádět až poté, co se objekty připojí do úložiště metaverse. Může být třeba zkontrolovat atribut mail z doménové struktury prostředků a atribut userPrincipalName z doménové struktury účtu, abyste zjistili, jestli by měl být objekt synchronizovaný. V těchto případech vytvoříte filtrování na odchozím pravidle.
 
-V tomto příkladu změníte filtrování tak, aby byly synchronizovány pouze uživatelé, kteří mají své e-maily @contoso.com i userPrincipalName končící:
+V tomto příkladu změníte filtrování tak, aby byly synchronizovány pouze uživatelé, kteří mají své e-maily i userPrincipalName končící @contoso.com :
 
 1. Přihlaste se k serveru, na kterém běží Azure AD Connect synchronizace pomocí účtu, který je členem skupiny zabezpečení **ADSyncAdmins** .
 2. Spustí **Editor pravidel synchronizace** z nabídky **Start** .
@@ -278,7 +278,7 @@ V tomto příkladu změníte filtrování tak, aby byly synchronizovány pouze u
 4. V závislosti na používané verzi připojení Najděte buď pravidlo s názvem **out do AAD – připojení uživatele** nebo připojení **k AAD – uživatel SOAInAD**a klikněte na **Upravit**.
 5. V automaticky otevíraném okně odpovězte **Ano** a vytvořte kopii pravidla.
 6. Na stránce **Popis** změňte **prioritu** na nepoužitou hodnotu, například 50.
-7. V levém navigačním panelu klikněte na **Filtr oboru** a pak klikněte na **Přidat klauzuli**. V **atributu**vyberte **Pošta**. V **operátoru**vyberte **ENDSWITH**. Do **hodnoty**zadejte ** \@contoso.com**a pak klikněte na **Přidat klauzuli**. V **atributu**vyberte **userPrincipalName**. V **operátoru**vyberte **ENDSWITH**. Do **hodnoty**zadejte ** \@contoso.com**.
+7. V levém navigačním panelu klikněte na **Filtr oboru** a pak klikněte na **Přidat klauzuli**. V **atributu**vyberte **Pošta**. V **operátoru**vyberte **ENDSWITH**. Do **hodnoty**zadejte ** \@ contoso.com**a pak klikněte na **Přidat klauzuli**. V **atributu**vyberte **userPrincipalName**. V **operátoru**vyberte **ENDSWITH**. Do **hodnoty**zadejte ** \@ contoso.com**.
 8. Klikněte na **Uložit**.
 9. Chcete-li dokončit konfiguraci, je nutné spustit **úplnou synchronizaci**. Pokračujte v čtení části [použití a ověření změn](#apply-and-verify-changes).
 
@@ -298,11 +298,11 @@ Proveďte následující kroky:
 
 Po synchronizaci jsou všechny změny připravené k exportu. Než skutečně provedete změny ve službě Azure AD, budete chtít ověřit, že jsou všechny tyto změny správné.
 
-1. Spusťte příkazový řádek a pokračujte na `%ProgramFiles%\Microsoft Azure AD Sync\bin`.
+1. Spusťte příkazový řádek a pokračujte na `%ProgramFiles%\Microsoft Azure AD Sync\bin` .
 2. Spusťte `csexport "Name of Connector" %temp%\export.xml /f:x`.  
    Název konektoru je v synchronizační službě. Má název podobný řetězci "contoso.com – AAD" pro Azure AD.
 3. Spusťte `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv`.
-4. Nyní máte soubor v souboru% temp% s názvem export. csv, který lze prozkoumat v aplikaci Microsoft Excel. Tento soubor obsahuje všechny změny, které mají být exportovány.
+4. Nyní máte soubor v% Temp% s názvem export.csv, který lze prozkoumat v aplikaci Microsoft Excel. Tento soubor obsahuje všechny změny, které mají být exportovány.
 5. Proveďte potřebné změny dat nebo konfigurace a znovu spusťte tyto kroky (import, synchronizace a ověření), dokud nebudou změny, které se chystáte exportovat, odpovídat na to, co očekáváte.
 
 Až budete spokojeni, exportujte změny do Azure AD.

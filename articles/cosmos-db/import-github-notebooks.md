@@ -4,14 +4,14 @@ description: Naučte se připojit k GitHubu a importovat poznámkové bloky z ú
 author: deborahc
 ms.author: dech
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
-ms.openlocfilehash: 9ce65d316b8236b83435388d2c1883cb9b89b03a
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: d85f020152fa3cadb1d437c125d327f5e895e14e
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83691380"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262884"
 ---
 # <a name="import-notebooks-from-a-github-repo-into-azure-cosmos-db"></a>Import poznámkových bloků z úložiště GitHub do Azure Cosmos DB
 
@@ -29,7 +29,7 @@ Můžete se připojit k vlastním úložištím GitHubu nebo k jiným veřejným
 
 1. Otevře se karta, kde se můžete rozhodnout, že se chcete připojit pouze k **veřejným** úložištím nebo **veřejným a soukromým**úložištím.  Po výběru požadované možnosti vyberte **autorizovat přístup**. Pro Azure Cosmos DB přístupu k úložištím ve vašem účtu GitHub se vyžaduje autorizace.
 
-   ![Autorizovat Azure Cosmos DB k přístupu k úložištím GitHubu](./media/import-github-notebooks/authorize-access-github.png)
+   :::image type="content" source="./media/import-github-notebooks/authorize-access-github.png" alt-text="Autorizovat Azure Cosmos DB k přístupu k úložištím GitHubu":::
 
 1. Budete přesměrováni na webovou stránku "github.com", kde můžete potvrdit autorizaci. Vyberte tlačítko **autorizovat AzureCosmosDBNotebooks** a do příkazového řádku zadejte heslo účtu GitHub.
 
@@ -37,7 +37,7 @@ Můžete se připojit k vlastním úložištím GitHubu nebo k jiným veřejným
 
 1. Jakmile vyberete požadované úložiště, položka úložiště se přesune z oddílu **nepřipnutých úložišť** do **připnutých úložišť** . V případě potřeby můžete také zvolit konkrétní větev úložiště, ze které se mají importovat poznámkové bloky.
 
-   ![Výběr úložiště a větve](./media/import-github-notebooks/choose-repo-branch.png)
+   :::image type="content" source="./media/import-github-notebooks/choose-repo-branch.png" alt-text="Výběr úložiště a větve":::
 
 1. Kliknutím na **tlačítko OK** dokončete operaci importu. Všechny poznámkové bloky dostupné ve vybrané větvi úložiště se importují do svého účtu Azure Cosmos.
 
@@ -53,7 +53,7 @@ Po úpravě existujícího poznámkového bloku vyberte **Save (Uložit**). Otev
 
 V normálním toku GitHub po potvrzení změn se obvykle dokončí změny do vzdáleného. V takovém případě ale možnost potvrzení slouží jako "fázování, potvrzování a" doručování "vašich aktualizací do GitHubu.
 
-![Upravit poznámkové bloky a potvrdit změny do GitHubu](./media/import-github-notebooks/commit-changes-github.png)
+:::image type="content" source="./media/import-github-notebooks/commit-changes-github.png" alt-text="Upravit poznámkové bloky a potvrdit změny do GitHubu":::
 
 ## <a name="next-steps"></a>Další kroky
 

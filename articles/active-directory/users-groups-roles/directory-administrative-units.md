@@ -6,7 +6,7 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
-ms.topic: article
+ms.topic: overview
 ms.subservice: users-groups-roles
 ms.workload: identity
 ms.date: 04/16/2020
@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12101b170066bc52e75f4aa281c6f1c21283c004
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 44a01bb7d2f4aa3d31204d6235e955e82e471d5d
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81406473"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84729043"
 ---
 # <a name="administrative-units-management-in-azure-active-directory-preview"></a>Správa administrativních jednotek v Azure Active Directory (Preview)
 
@@ -72,7 +72,7 @@ Následující tabulka popisuje aktuální podporu scénářů pro správu jedno
 
 ### <a name="administrative-unit-management"></a>Správa jednotek pro správu
 
-Oprávnění |   MS Graph/PowerShell   | Portál Azure AD | Centrum pro správu Microsoftu 365
+Oprávnění |   MS Graph/PowerShell   | Portál Azure AD | Centrum pro správu služby Microsoft 365
 ----------- | ----------------------- | --------------- | -----------------
 Vytváření a odstraňování jednotek pro správu   |    Podporuje se    |   Podporuje se   |    Nepodporuje se
 Přidávání a odebírání členů administrativní jednotky jednotlivě    |   Podporuje se    |   Podporuje se   |    Nepodporuje se
@@ -82,7 +82,7 @@ Dynamické přidávání a odebírání členů AU na základě atributů | Nepo
 
 ### <a name="user-management"></a>Správa uživatelů
 
-Oprávnění |   MS Graph/PowerShell   | Portál Azure AD | Centrum pro správu Microsoftu 365
+Oprávnění |   MS Graph/PowerShell   | Portál Azure AD | Centrum pro správu služby Microsoft 365
 ----------- | ----------------------- | --------------- | -----------------
 Správa vlastností uživatele, hesel a licencí s rozsahem administrativní jednotky   |    Podporuje se     |  Podporuje se   |   Podporuje se
 blokující a odblokování přihlášení uživatelů v oboru jednotky pro správu    |   Podporuje se   |    Podporuje se   |    Podporuje se
@@ -90,7 +90,7 @@ Správa přihlašovacích údajů uživatelského ověřování s rozsahem jedno
 
 ### <a name="group-management"></a>Správa skupin
 
-Oprávnění |   MS Graph/PowerShell   | Portál Azure AD | Centrum pro správu Microsoftu 365
+Oprávnění |   MS Graph/PowerShell   | Portál Azure AD | Centrum pro správu služby Microsoft 365
 ----------- | ----------------------- | --------------- | -----------------
 Správa vlastností skupin a členů s rozsahem jednotky pro správu     |  Podporuje se   |    Podporuje se    |  Nepodporuje se
 Správa licencování skupin pro správu s rozsahem jednotky   |    Podporuje se  |    Podporuje se   |   Nepodporuje se

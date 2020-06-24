@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 4e3e430874f9d5b64f717b6ebb1cacb0eae46b1f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79243949"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84690060"
 ---
 # <a name="user-profile-templates-in-azure-api-management"></a>Šablony profilů uživatelů v Azure API Management
 Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu pro vývojáře pomocí sady šablon, které konfigurují svůj obsah. Pomocí syntaxe [DotLiquid](http://dotliquidmarkup.org/) a editoru podle vlastního výběru, jako je například [DotLiquid pro návrháře](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)a poskytnutá sada lokalizovaných [řetězcových prostředků](api-management-template-resources.md#strings), [prostředků glyfů](api-management-template-resources.md#glyphs)a [ovládacích prvků stránky](api-management-page-controls.md), máte skvělou flexibilitu pro konfiguraci obsahu stránek, jak vidíte, aby byly použity pomocí těchto šablon.  
@@ -105,7 +105,7 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
 > [!NOTE]
 >  Šablony [profil](#Profile), [aplikace](#Applications)a [odběry](#Subscriptions) sdílejí stejný datový model a získají stejná data šablony.  
   
-|Vlastnost|Typ|Popis|  
+|Vlastnost|Typ|Description|  
 |--------------|----------|-----------------|  
 |`firstName`|řetězec|Křestní jméno aktuálního uživatele|  
 |`lastName`|řetězec|Poslední jméno aktuálního uživatele.|  
@@ -326,7 +326,7 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
 > [!NOTE]
 >  Šablony [profil](#Profile), [aplikace](#Applications)a [odběry](#Subscriptions) sdílejí stejný datový model a získají stejná data šablony.  
   
-|Vlastnost|Typ|Popis|  
+|Vlastnost|Typ|Description|  
 |--------------|----------|-----------------|  
 |`firstName`|řetězec|Křestní jméno aktuálního uživatele|  
 |`lastName`|řetězec|Poslední jméno aktuálního uživatele.|  
@@ -489,7 +489,7 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
 > [!NOTE]
 >  Šablony [profil](#Profile), [aplikace](#Applications)a [odběry](#Subscriptions) sdílejí stejný datový model a získají stejná data šablony.  
   
-|Vlastnost|Typ|Popis|  
+|Vlastnost|Typ|Description|  
 |--------------|----------|-----------------|  
 |`firstName`|řetězec|Křestní jméno aktuálního uživatele|  
 |`lastName`|řetězec|Poslední jméno aktuálního uživatele.|  

@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 03/13/2020
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 0df0ba4ce76d249bcb4738b41c94677e061f14ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7f16902a779fdb7c86fb7506711d2bce77ca9d05
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79409847"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84809228"
 ---
 # <a name="determine-which-azure-storage-encryption-key-model-is-in-use-for-the-storage-account"></a>Určete, který Azure Storage model šifrovacího klíče se používá pro účet úložiště.
 
@@ -47,7 +47,7 @@ A na následujícím obrázku vidíte účet úložiště, který je zašifrovan
 
 ![Snímek obrazovky s nastavením šifrovacího klíče v Azure Portal](media/storage-encryption-key-model-get/customer-managed-encryption-key-setting-portal.png)
 
-# <a name="powershell"></a>[Prostředí](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 Pokud chcete ověřit model šifrování pro účet úložiště pomocí PowerShellu, zavolejte příkaz [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) a potom zkontrolujte vlastnost **source** daného účtu.
 
@@ -57,7 +57,7 @@ $account = Get-AzStorageAccount -ResourceGroupName <resource-group> `
 $account.Encryption.KeySource
 ```
 
-Pokud je `Microsoft.Storage`hodnota vlastnosti **zdroje** klíče, pak je účet zašifrovaný pomocí klíčů spravovaných Microsoftem. Pokud je `Microsoft.Keyvault`hodnota vlastnosti **zdroje** , je účet zašifrovaný pomocí klíčů spravovaných zákazníkem.
+Pokud je hodnota vlastnosti **zdroje** `Microsoft.Storage` klíče, pak je účet zašifrovaný pomocí klíčů spravovaných Microsoftem. Pokud je hodnota vlastnosti **zdroje** `Microsoft.Keyvault` , je účet zašifrovaný pomocí klíčů spravovaných zákazníkem.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
@@ -71,11 +71,11 @@ key_source=$(az storage account show \
     --output tsv)
 ```
 
-Pokud je `Microsoft.Storage`hodnota vlastnosti **zdroje** klíče, pak je účet zašifrovaný pomocí klíčů spravovaných Microsoftem. Pokud je `Microsoft.Keyvault`hodnota vlastnosti **zdroje** , je účet zašifrovaný pomocí klíčů spravovaných zákazníkem.
+Pokud je hodnota vlastnosti **zdroje** `Microsoft.Storage` klíče, pak je účet zašifrovaný pomocí klíčů spravovaných Microsoftem. Pokud je hodnota vlastnosti **zdroje** `Microsoft.Keyvault` , je účet zašifrovaný pomocí klíčů spravovaných zákazníkem.
 
 ---
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Azure Storage šifrování dat v klidovém umístění](storage-service-encryption.md)
+- [Šifrování služby Azure Storage pro neaktivní uložená data](storage-service-encryption.md)
 - [Použití klíčů spravovaných zákazníkem se Azure Key Vault ke správě šifrování Azure Storage](encryption-customer-managed-keys.md)

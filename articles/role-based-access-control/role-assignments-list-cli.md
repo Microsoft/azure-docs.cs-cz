@@ -8,18 +8,18 @@ manager: mtillman
 ms.assetid: 3483ee01-8177-49e7-b337-4d5cb14f5e32
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/10/2020
+ms.date: 06/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: f4b635d6867c36b8b0f385320e3720bea41b54d1
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 9087722b54a805a0c217c236263bdcb39e5456e0
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735738"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986242"
 ---
 # <a name="list-azure-role-assignments-using-azure-cli"></a>Vypsání přiřazení rolí Azure pomocí Azure CLI
 
@@ -36,86 +36,129 @@ ms.locfileid: "82735738"
 
 Chcete-li zobrazit seznam přiřazení rolí pro konkrétního uživatele, použijte příkaz [AZ role Assignment list](/cli/azure/role/assignment#az-role-assignment-list):
 
-```azurecli-interactive
-az role assignment list --assignee <assignee>
+```azurecli
+az role assignment list --assignee {assignee}
 ```
 
-Ve výchozím nastavení se zobrazí jenom přiřazení rolí pro aktuální předplatné. Chcete-li zobrazit přiřazení rolí pro aktuální předplatné a níže, přidejte `--all` parametr. Chcete-li zobrazit zděděná přiřazení rolí `--include-inherited` , přidejte parametr.
+Ve výchozím nastavení se zobrazí jenom přiřazení rolí pro aktuální předplatné. Chcete-li zobrazit přiřazení rolí pro aktuální předplatné a níže, přidejte `--all` parametr. Chcete-li zobrazit zděděná přiřazení rolí, přidejte `--include-inherited` parametr.
 
-V následujícím příkladu jsou uvedena přiřazení rolí, která jsou přiřazena přímo uživateli *patlong\@contoso.com* :
+V následujícím příkladu jsou uvedena přiřazení rolí, která jsou přiřazena přímo uživateli *patlong \@ contoso.com* :
 
-```azurecli-interactive
-az role assignment list --all --assignee patlong@contoso.com --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
+```azurecli
+az role assignment list --all --assignee patlong@contoso.com --output json --query '[].{principalName:principalName, roleDefinitionName:roleDefinitionName, scope:scope}'
 ```
 
-```
-{
-  "principalName": "patlong@contoso.com",
-  "roleDefinitionName": "Backup Operator",
-  "scope": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales"
-}
-{
-  "principalName": "patlong@contoso.com",
-  "roleDefinitionName": "Virtual Machine Contributor",
-  "scope": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales"
-}
+```json
+[
+  {
+    "principalName": "patlong@contoso.com",
+    "roleDefinitionName": "Backup Operator",
+    "scope": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales"
+  },
+  {
+    "principalName": "patlong@contoso.com",
+    "roleDefinitionName": "Virtual Machine Contributor",
+    "scope": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales"
+  }
+]
 ```
 
 ## <a name="list-role-assignments-for-a-resource-group"></a>Výpis přiřazení rolí pro skupinu prostředků
 
 Pokud chcete zobrazit seznam přiřazení rolí, která existují v oboru skupiny prostředků, použijte [seznam AZ role Assignment](/cli/azure/role/assignment#az-role-assignment-list):
 
-```azurecli-interactive
-az role assignment list --resource-group <resource_group>
+```azurecli
+az role assignment list --resource-group {resourceGroup}
 ```
 
 V následujícím příkladu jsou uvedena přiřazení rolí pro skupinu prostředků *Pharma-Sales* :
 
-```azurecli-interactive
-az role assignment list --resource-group pharma-sales --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
+```azurecli
+az role assignment list --resource-group pharma-sales --output json --query '[].{principalName:principalName, roleDefinitionName:roleDefinitionName, scope:scope}'
 ```
 
-```
-{
-  "principalName": "patlong@contoso.com",
-  "roleDefinitionName": "Backup Operator",
-  "scope": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales"
-}
-{
-  "principalName": "patlong@contoso.com",
-  "roleDefinitionName": "Virtual Machine Contributor",
-  "scope": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales"
-}
+```json
+[
+  {
+    "principalName": "patlong@contoso.com",
+    "roleDefinitionName": "Backup Operator",
+    "scope": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales"
+  },
+  {
+    "principalName": "patlong@contoso.com",
+    "roleDefinitionName": "Virtual Machine Contributor",
+    "scope": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales"
+  },
+  
+  ...
 
-...
+]
 ```
 
 ## <a name="list-role-assignments-for-a-subscription"></a>Výpis přiřazení rolí pro předplatné
 
 Chcete-li zobrazit seznam všech přiřazení rolí v oboru předplatného, použijte příkaz [AZ role Assignment list](/cli/azure/role/assignment#az-role-assignment-list). Pokud chcete získat ID předplatného, najdete ho v okně **předplatná** v Azure Portal nebo můžete použít příkaz [AZ Account list](/cli/azure/account#az-account-list).
 
-```azurecli-interactive
-az role assignment list --subscription <subscription_name_or_id>
+```azurecli
+az role assignment list --subscription {subscriptionNameOrId}
 ```
 
 Příklad:
 
-```azurecli-interactive
-az role assignment list --subscription 00000000-0000-0000-0000-000000000000 --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
+```azurecli
+az role assignment list --subscription 00000000-0000-0000-0000-000000000000 --output json --query '[].{principalName:principalName, roleDefinitionName:roleDefinitionName, scope:scope}'
+```
+
+```json
+[
+  {
+    "principalName": "admin@contoso.com",
+    "roleDefinitionName": "Owner",
+    "scope": "/subscriptions/00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "principalName": "Subscription Admins",
+    "roleDefinitionName": "Owner",
+    "scope": "/subscriptions/00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "principalName": "alain@contoso.com",
+    "roleDefinitionName": "Reader",
+    "scope": "/subscriptions/00000000-0000-0000-0000-000000000000"
+  },
+
+  ...
+
+]
 ```
 
 ## <a name="list-role-assignments-for-a-management-group"></a>Seznam přiřazení rolí pro skupinu pro správu
 
 Chcete-li zobrazit seznam všech přiřazení rolí v oboru skupiny pro správu, použijte příkaz [AZ role Assignment list](/cli/azure/role/assignment#az-role-assignment-list). Chcete-li získat ID skupiny pro správu, můžete ji najít v okně **skupiny pro správu** v Azure Portal nebo můžete použít [příkaz AZ Account Management-Group list](/cli/azure/account/management-group#az-account-management-group-list).
 
-```azurecli-interactive
-az role assignment list --scope /providers/Microsoft.Management/managementGroups/<group_id>
+```azurecli
+az role assignment list --scope /providers/Microsoft.Management/managementGroups/{groupId}
 ```
 
 Příklad:
 
-```azurecli-interactive
-az role assignment list --scope /providers/Microsoft.Management/managementGroups/marketing-group --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
+```azurecli
+az role assignment list --scope /providers/Microsoft.Management/managementGroups/sales-group --output json --query '[].{principalName:principalName, roleDefinitionName:roleDefinitionName, scope:scope}'
+```
+
+```json
+[
+  {
+    "principalName": "admin@contoso.com",
+    "roleDefinitionName": "Owner",
+    "scope": "/providers/Microsoft.Management/managementGroups/sales-group"
+  },
+  {
+    "principalName": "alain@contoso.com",
+    "roleDefinitionName": "Reader",
+    "scope": "/providers/Microsoft.Management/managementGroups/sales-group"
+  }
+]
 ```
 
 ## <a name="list-role-assignments-for-a-managed-identity"></a>Seznam přiřazení rolí pro spravovanou identitu
@@ -124,22 +167,22 @@ az role assignment list --scope /providers/Microsoft.Management/managementGroups
 
     Pokud chcete získat ID objektu spravované identity přiřazené uživatelem, můžete použít příkaz [AZ AD SP list](/cli/azure/ad/sp#az-ad-sp-list) nebo [AZ identity list](/cli/azure/identity#az-identity-list).
 
-    ```azurecli-interactive
-    az ad sp list --display-name "<name>" --query [].objectId --output tsv
+    ```azurecli
+    az ad sp list --display-name "{name}" --query [].objectId --output tsv
     ```
 
     Pokud chcete získat ID objektu spravované identity přiřazené systémem, můžete použít příkaz [AZ AD SP list](/cli/azure/ad/sp#az-ad-sp-list).
 
-    ```azurecli-interactive
-    az ad sp list --display-name "<vmname>" --query [].objectId --output tsv
+    ```azurecli
+    az ad sp list --display-name "{vmname}" --query [].objectId --output tsv
     ```
 
 1. K vypsání přiřazení rolí použijte příkaz [AZ role Assignment list](/cli/azure/role/assignment#az-role-assignment-list).
 
-    Ve výchozím nastavení se zobrazí jenom přiřazení rolí pro aktuální předplatné. Chcete-li zobrazit přiřazení rolí pro aktuální předplatné a níže, přidejte `--all` parametr. Chcete-li zobrazit zděděná přiřazení rolí `--include-inherited` , přidejte parametr.
+    Ve výchozím nastavení se zobrazí jenom přiřazení rolí pro aktuální předplatné. Chcete-li zobrazit přiřazení rolí pro aktuální předplatné a níže, přidejte `--all` parametr. Chcete-li zobrazit zděděná přiřazení rolí, přidejte `--include-inherited` parametr.
 
-    ```azurecli-interactive
-    az role assignment list --assignee <objectid>
+    ```azurecli
+    az role assignment list --assignee {objectId}
     ```
 
 ## <a name="next-steps"></a>Další kroky

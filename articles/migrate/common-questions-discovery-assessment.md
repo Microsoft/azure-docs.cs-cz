@@ -2,13 +2,13 @@
 title: Dotazy týkající se zjišťování, hodnocení a analýzy závislostí v Azure Migrate
 description: Získejte odpovědi na běžné dotazy týkající se zjišťování, hodnocení a analýzy závislostí v Azure Migrate.
 ms.topic: conceptual
-ms.date: 04/15/2020
-ms.openlocfilehash: cec0f655a5b3c71b58e5d0622e020568bf9aee68
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.date: 06/09/2020
+ms.openlocfilehash: abcc84ae376e165eb0d677694acbd7d42a2efd8c
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84447862"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85079427"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Analýzy zjišťování, hodnocení a závislostí – běžné otázky
 
@@ -27,7 +27,7 @@ Projděte si podporované oblasti pro [veřejný cloud](migrate-support-matrix.m
 
 ## <a name="how-many-vms-can-i-discover-with-an-appliance"></a>Kolik virtuálních počítačů je možné zjistit pomocí zařízení?
 
-Můžete zjistit až 10 000 virtuálních počítačů VMware, až 5 000 virtuálních počítačů Hyper-V a až 250 fyzických serverů pomocí jediného zařízení. Pokud máte více počítačů, přečtěte si o [škálování posouzení technologie Hyper-V](scale-hyper-v-assessment.md), [škálování vyhodnocení VMware](scale-vmware-assessment.md)nebo [škálování posouzení fyzického serveru](scale-physical-assessment.md).
+Můžete zjistit až 10 000 virtuálních počítačů VMware, až 5 000 virtuálních počítačů Hyper-V a až 1000 fyzických serverů pomocí jediného zařízení. Pokud máte více počítačů, přečtěte si o [škálování posouzení technologie Hyper-V](scale-hyper-v-assessment.md), [škálování vyhodnocení VMware](scale-vmware-assessment.md)nebo [škálování posouzení fyzického serveru](scale-physical-assessment.md).
 
 ## <a name="i-cant-see-some-vm-types-in-azure-government"></a>V Azure Government nevidím některé typy virtuálních počítačů.
 
@@ -72,7 +72,7 @@ V případě změny velikosti založené na výkonu Azure Migrate shromažďuje 
 1. Pokud chcete vytvořit datový bod, zařízení vybere nejvyšší hodnotu ze všech ukázek s 20 sekundami.
 1. Zařízení odešle datový bod do Azure.
 
-### <a name="utilization"></a>Vytížen
+### <a name="utilization"></a>Využití
 
 Když v Azure vytvoříte posouzení v závislosti na době trvání a hodnotě percentilu historie výkonu, která je nastavená, Azure Migrate vypočítá efektivní hodnotu využití a pak ji použije ke změně velikosti.
 
@@ -99,7 +99,7 @@ Rozdíly mezi vizualizacemi bez agentů a vizualizací na základě agentů jsou
 
 **Požadavek** | **Bez agenta** | **Založené na agentovi**
 --- | --- | ---
-Podpora | Tato možnost je momentálně ve verzi Preview a je dostupná jenom pro virtuální počítače VMware. [Zkontrolujte](migrate-support-matrix-vmware.md#agentless-dependency-analysis-requirements) podporované operační systémy. | Obecně dostupná (GA).
+Podpora | Tato možnost je momentálně ve verzi Preview a je dostupná jenom pro virtuální počítače VMware. [Zkontrolujte](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) podporované operační systémy. | Obecně dostupná (GA).
 Agent | Není nutné instalovat agenty na počítačích, které chcete křížově kontrolovat. | Agenti, kteří se mají nainstalovat na každý místní počítač, který chcete analyzovat: [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)a [Agent závislostí](https://docs.microsoft.com/azure/azure-monitor/platform/agents-overview#dependency-agent). 
 Požadavky | [Projděte si](concepts-dependency-visualization.md#agentless-analysis) požadavky a požadavky na nasazení. | [Projděte si](concepts-dependency-visualization.md#agent-based-analysis) požadavky a požadavky na nasazení.
 Log Analytics | Nepožadováno. | Azure Migrate používá řešení [Service map](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) v [protokolech Azure monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) pro vizualizaci závislostí. [Přečtěte si další informace](concepts-dependency-visualization.md#agent-based-analysis).
@@ -115,7 +115,7 @@ Ano, [zařízení Azure Migrate](migrate-appliance.md) musí být nasazeno.
 
 ## <a name="do-i-pay-for-dependency-visualization"></a>Platíte za vizualizaci závislostí?
 
-No. Přečtěte si další informace o [cenách Azure Migrate](https://azure.microsoft.com/pricing/details/azure-migrate/).
+Ne. Přečtěte si další informace o [cenách Azure Migrate](https://azure.microsoft.com/pricing/details/azure-migrate/).
 
 ## <a name="what-do-i-install-for-agent-based-dependency-visualization"></a>Co mám nainstalovat pro vizualizaci závislostí založenou na agentech?
 

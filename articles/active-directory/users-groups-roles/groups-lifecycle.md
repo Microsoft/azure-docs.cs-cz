@@ -9,18 +9,18 @@ editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/13/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 562b551bc8a46a45135bf6a9a8e328b4b0e74f98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 182f51a150c2ef944b0104b73c63028e915c1a4a
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80048249"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84728329"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Konfigurace zásad vypršení platnosti pro skupiny Office 365
 
@@ -134,7 +134,7 @@ Tady jsou příklady, jak můžete pomocí rutin PowerShellu nakonfigurovat nast
    Connect-AzureAD
    ```
 
-1. Nakonfigurujte nastavení vypršení platnosti pomocí rutiny New-AzureADMSGroupLifecyclePolicy a nastavte dobu života všech skupin Office 365 v organizaci Azure AD na 365 dnů. Oznámení o obnovení pro skupiny Office 365 bez vlastníků se odešlouemailaddress@contoso.comdo:
+1. Nakonfigurujte nastavení vypršení platnosti pomocí rutiny New-AzureADMSGroupLifecyclePolicy a nastavte dobu života všech skupin Office 365 v organizaci Azure AD na 365 dnů. Oznámení o obnovení pro skupiny Office 365 bez vlastníků se odešlou emailaddress@contoso.com do:
   
    ``` PowerShell
    New-AzureADMSGroupLifecyclePolicy -GroupLifetimeInDays 365 -ManagedGroupTypes All -AlternateNotificationEmails emailaddress@contoso.com
@@ -144,7 +144,7 @@ Tady jsou příklady, jak můžete pomocí rutin PowerShellu nakonfigurovat nast
 
    - ID zásady
    - Doba života všech skupin Office 365 v organizaci Azure AD je nastavená na 365 dnů.
-   - Oznámení o obnovení pro skupiny Office 365 bez vlastníků se odešlouemailaddress@contoso.comdo.
+   - Oznámení o obnovení pro skupiny Office 365 bez vlastníků se odešlou do emailaddress@contoso.com .
   
    ```powershell
    Get-AzureADMSGroupLifecyclePolicy

@@ -4,24 +4,24 @@ description: Seznamte se s možnostmi konfigurace klientů pro zlepšení výkon
 author: anfeldma-ms
 ms.service: cosmos-db
 ms.devlang: java
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: 92b7b1f72cde355f87761807708348b988bcc0a4
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 7efff852c510465f31af4b89ec50da2e597643f4
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84676869"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85260708"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-async-java-sdk-v2"></a>Tipy ke zvýšení výkonu pro Azure Cosmos DB Async Java SDK v2
 
 > [!div class="op_single_selector"]
-> * [Java SDK v4](performance-tips-java-sdk-v4-sql.md)
+> * [Sada Java SDK v4](performance-tips-java-sdk-v4-sql.md)
 > * [Sada Async Java SDK v2](performance-tips-async-java.md)
 > * [Sada Sync Java SDK v2](performance-tips-java.md)
 > * [.NET SDK V3](performance-tips-dotnet-sdk-v3-sql.md)
-> * [.NET SDK v2](performance-tips.md)
+> * [Sada .NET SDK v2](performance-tips.md)
 > 
 
 > [!IMPORTANT]  
@@ -66,7 +66,7 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
 
     Pokud je to možné, umístěte všechny aplikace, které volají Azure Cosmos DB ve stejné oblasti jako databáze Azure Cosmos. V případě přibližného porovnání se volání Azure Cosmos DB v rámci stejné oblasti dokončí v 1-2 MS, ale latence mezi západním a východním pobřežím USA je >50 ms. Tato latence se může lišit od požadavku na vyžádání v závislosti na trasách, kterou požadavek prochází z klienta na hranici datacentra Azure. Nejnižší možná latence se dosahuje tím, že se zaručí, že se volající aplikace nachází ve stejné oblasti Azure jako koncový bod zřízené Azure Cosmos DB. Seznam oblastí, které jsou k dispozici, najdete v tématu [oblasti Azure](https://azure.microsoft.com/regions/#services).
 
-    ![Obrázek zásad Azure Cosmos DBho připojení](./media/performance-tips/same-region.png)
+    :::image type="content" source="./media/performance-tips/same-region.png" alt-text="Obrázek zásad Azure Cosmos DBho připojení" border="false":::
 
 ## <a name="sdk-usage"></a>Využití sady SDK
 * **Nainstalovat nejnovější sadu SDK**
@@ -87,7 +87,7 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
 
     * ***Přehled přímého režimu***
 
-        ![Ilustrace architektury přímého režimu](./media/performance-tips-async-java/rntbdtransportclient.png)
+        :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="Ilustrace architektury přímého režimu" border="false":::
 
         Architektura na straně klienta pracující v přímém režimu umožňuje předvídatelné využití sítě a multiplexější přístup k replikám Azure Cosmos DB. Výše uvedený diagram ukazuje, jak přímý režim směruje požadavky klienta na repliky v Cosmos DB back-endu. Architektura přímého režimu přiděluje až 10 **kanálů** na straně klienta pro repliku databáze. Kanál je připojení TCP předchází vyrovnávací paměť požadavků, což je 30 požadavků hluboko. Kanály patřící do repliky se dynamicky přiřazují podle potřeby **koncového bodu služby**repliky. Když uživatel vydá požadavek v přímém režimu, **TransportClient** směruje požadavek do správného koncového bodu služby na základě klíče oddílu. Vyrovnávací paměti front požadavků se **vyžadují** před koncovým bodem služby.
 

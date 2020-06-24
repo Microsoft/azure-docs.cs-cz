@@ -3,16 +3,16 @@ title: Správa zásad indexování ve službě Azure Cosmos DB
 description: Naučte se spravovat zásady indexování, zahrnout nebo vyloučit vlastnost z indexování, jak definovat indexování pomocí různých sad Azure Cosmos DB SDK.
 author: timsander1
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/28/2020
 ms.author: tisande
 ms.custom: tracking-python
-ms.openlocfilehash: 341c315bfdcb99a2cacb32d8aed892c684c44601
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 8b41a92f16fe7d71c17b6460289db76bf02c62ce
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558893"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261507"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Správa zásad indexování ve službě Azure Cosmos DB
 
@@ -362,7 +362,7 @@ Kontejnery Azure Cosmos ukládají své zásady indexování jako dokument JSON,
 
 1. Po dokončení klikněte na **Uložit**.
 
-![Správa indexování pomocí Azure Portal](./media/how-to-manage-indexing-policy/indexing-policy-portal.png)
+:::image type="content" source="./media/how-to-manage-indexing-policy/indexing-policy-portal.png" alt-text="Správa indexování pomocí Azure Portal":::
 
 ## <a name="use-the-azure-cli"></a>Použití Azure CLI
 
@@ -544,9 +544,9 @@ containerResponse.subscribe(result -> {
 });
 ```
 
-## <a name="use-the-nodejs-sdk"></a>Použití sady Node. js SDK
+## <a name="use-the-nodejs-sdk"></a>Použití sady Node.js SDK
 
-`ContainerDefinition`Rozhraní z [Node. js SDK](https://www.npmjs.com/package/@azure/cosmos) (v [tomto rychlém](create-sql-api-nodejs.md) startu najdete informace o jeho použití) zpřístupňuje `indexingPolicy` vlastnost, která umožňuje změnit `indexingMode` a přidat nebo odebrat `includedPaths` a `excludedPaths` .
+`ContainerDefinition`Rozhraní z [Node.js SDK](https://www.npmjs.com/package/@azure/cosmos) (v [tomto rychlém](create-sql-api-nodejs.md) startu najdete informace o jeho použití) zpřístupňuje `indexingPolicy` vlastnost, která umožňuje změnit `indexingMode` a přidat nebo odebrat `includedPaths` a `excludedPaths` .
 
 Načtení podrobností kontejneru
 

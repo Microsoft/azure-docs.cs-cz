@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8cc085fd27004928babd7df305a4452d1b068f6e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6232ba859c985929c9df0fb5020fb932611bbb40
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72794239"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85079436"
 ---
 # <a name="example-add-synonyms-for-azure-cognitive-search-in-c"></a>Příklad: Přidání synonym pro Azure Kognitivní hledání v jazyce C #
 
@@ -38,7 +38,7 @@ Požadavky kurzu zahrnují tyto položky:
 
 * [Visual Studio](https://www.visualstudio.com/downloads/)
 * [Služba Azure Kognitivní hledání](search-create-service-portal.md)
-* [Knihovna Microsoft.Azure.Search .NET](https://aka.ms/search-sdk)
+* [Knihovna Microsoft.Azure.Search .NET](https://docs.microsoft.com/dotnet/api/overview/azure/search)
 * [Jak používat Azure Kognitivní hledání z aplikace .NET](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
 
 ## <a name="overview"></a>Přehled
@@ -128,7 +128,7 @@ Povolení synonyma je dvoustupňový proces. Nejdřív nadefinujeme a nahrajeme 
 
     serviceClient.SynonymMaps.CreateOrUpdate(synonymMap);
    ```
-   Mapa synonym musí odpovídat opensourcovému standardnímu formátu `solr`. Formát je vysvětlen v tématu [synonyma v Azure kognitivní hledání](search-synonyms.md) v části `Apache Solr synonym format`.
+   Mapa synonym musí odpovídat opensourcovému standardnímu formátu `solr`. Formát je vysvětlen v tématu [synonyma v Azure kognitivní hledání](search-synonyms.md) v části `Apache Solr synonym format` .
 
 2. Nakonfigurujte prohledávatelná pole tak, aby používala mapu synonym v definici indexu. V `EnableSynonymsInHotelsIndex` povolíme synonyma u dvou polí `category` a `tags` nastavením vlastnosti `synonymMaps` na název nově nahrané mapy synonym.
    ```csharp

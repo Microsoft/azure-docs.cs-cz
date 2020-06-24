@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 9/11/2018
 ms.author: dekapur
-ms.openlocfilehash: 6a00b7d1b72d594c08021982b2448de6275414c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 495949d1a4ec927c601f174521c360f51034a2fb
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75610059"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85079355"
 ---
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>Plánování a příprava nasazení samostatného clusteru Service Fabric
 
@@ -22,7 +22,7 @@ Chystáte se vytvořit cluster Service Fabric v počítačích, které vlastnít
 ## <a name="determine-the-number-of-fault-domains-and-upgrade-domains"></a>Určení počtu domén selhání a upgradovacích domén
 [ *Doména* selhání (FD)](service-fabric-cluster-resource-manager-cluster-description.md) je fyzická jednotka selhání a přímo se vztahuje k fyzické infrastruktuře v datových centrech. Doména selhání se skládá z hardwarových komponent (počítačů, přepínačů, sítí a dalších), které sdílejí jediný bod selhání. Přestože neexistuje žádné mapování 1:1 mezi doménami selhání a racky, volně řečeno, každý stojan se může považovat za doménu selhání.
 
-Když v ClusterConfig. JSON zadáte doménami selhání, můžete zvolit název pro každé z těchto FD. Service Fabric podporuje hierarchické doménami selhání, takže můžete v nich odrážet topologii infrastruktury.  Například následující doménami selhání jsou platné:
+Když zadáte doménami selhání v ClusterConfig.jsna, můžete zvolit název pro každé FD. Service Fabric podporuje hierarchické doménami selhání, takže můžete v nich odrážet topologii infrastruktury.  Například následující doménami selhání jsou platné:
 
 * "faultDomain": "FD:/Room1/Rack1/Machine1"
 * "faultDomain": "FD:/FD1"
@@ -32,7 +32,7 @@ Když v ClusterConfig. JSON zadáte doménami selhání, můžete zvolit název 
 
 Nejjednodušší způsob, jak se zamyslet na tyto koncepce, je zvážit doménami selhání jako jednotku neplánovaných selhání a UDs jako jednotka plánované údržby.
 
-Když zadáte UDs v ClusterConfig. JSON, můžete zvolit název pro každý UD. Platné jsou například následující názvy:
+Když zadáte UDs v ClusterConfig.jszapnuto, můžete zvolit název pro každý UD. Platné jsou například následující názvy:
 
 * "upgradeDomain": "UD0"
 * "upgradeDomain": "UD1A"
@@ -51,7 +51,7 @@ Testovací clustery, na kterých běží stavová zatížení, by měly mít tř
 
 ## <a name="prepare-the-machines-that-will-serve-as-nodes"></a>Příprava počítačů, které budou sloužit jako uzly
 
-Tady jsou některé doporučené specifikace pro každý počítač, který chcete přidat do clusteru:
+Tady jsou doporučené specifikace pro počítače ve Service Fabricm clusteru:
 
 * Minimálně 16 GB paměti RAM
 * Minimálně 40 GB volného místa na disku
@@ -61,20 +61,22 @@ Tady jsou některé doporučené specifikace pro každý počítač, který chce
 * Úplná instalace [.NET Framework 4.5.1 nebo vyšší](https://www.microsoft.com/download/details.aspx?id=40773)verze
 * [Windows PowerShell 3.0](https://msdn.microsoft.com/powershell/scripting/install/installing-windows-powershell)
 * [Služba RemoteRegistry](https://technet.microsoft.com/library/cc754820) by měla běžet na všech počítačích
-* Instalační jednotka Service Fabric musí být systém souborů NTFS.
+* **Instalační jednotka Service Fabric musí být systém souborů NTFS.**
+* ** *Protokoly výkonu* služeb systému Windows & výstrahy a *protokol událostí systému Windows* musí [být povoleny](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc755249(v=ws.11))**.
 
-Cluster, který nasazuje a konfiguruje správce clusteru, musí mít na každém z těchto počítačů [oprávnění správce](https://social.technet.microsoft.com/wiki/contents/articles/13436.windows-server-2012-how-to-add-an-account-to-a-local-administrator-group.aspx) . Service Fabric nelze nainstalovat na řadič domény.
+> [!IMPORTANT]
+> Cluster, který nasazuje a konfiguruje správce clusteru, musí mít na každém z těchto počítačů [oprávnění správce](https://social.technet.microsoft.com/wiki/contents/articles/13436.windows-server-2012-how-to-add-an-account-to-a-local-administrator-group.aspx) . Service Fabric nelze nainstalovat na řadič domény.
 
 ## <a name="download-the-service-fabric-standalone-package-for-windows-server"></a>Stažení samostatného balíčku Service Fabric pro Windows Server
 [Stažení odkazu-Service Fabric samostatný balíček – Windows Server](https://go.microsoft.com/fwlink/?LinkId=730690) a rozbalení balíčku, buď na počítač pro nasazení, který není součástí clusteru, nebo na jeden z počítačů, které budou součástí clusteru.
 
 ## <a name="modify-cluster-configuration"></a>Úprava konfigurace clusteru
-Pokud chcete vytvořit samostatný cluster, musíte vytvořit samostatný soubor ClusterConfig. JSON konfigurace clusteru, který popisuje specifikace clusteru. Konfigurační soubor můžete založit na šablonách, které najdete v odkazu níže. <br>
+Pokud chcete vytvořit samostatný cluster, musíte vytvořit samostatnou konfiguraci clusteru ClusterConfig.jsv souboru, která popisuje specifikace clusteru. Konfigurační soubor můžete založit na šablonách, které najdete v odkazu níže. <br>
 [Samostatné konfigurace clusteru](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)
 
 Podrobnosti o oddílech v tomto souboru najdete v tématu [nastavení konfigurace pro samostatný cluster Windows](service-fabric-cluster-manifest.md).
 
-Z balíčku, který jste stáhli, otevřete jeden ze souborů ClusterConfig. JSON a upravte následující nastavení:
+Otevřete některý z ClusterConfig.jssouborů z balíčku, který jste stáhli, a upravte následující nastavení:
 
 | **Nastavení konfigurace** | **Popis** |
 | --- | --- |
@@ -115,21 +117,21 @@ Když správce clusteru nakonfiguruje samostatný cluster Service Fabric, je pot
 
 | **Vyloučené procesy antivirové ochrany** |
 | --- |
-| Fabric. exe |
-| Hostitele fabrichost vrátilo. exe |
-| Služby fabricinstallerservice. exe |
-| FabricSetup. exe |
-| FabricDeployer. exe |
-| ImageBuilder. exe |
-| FabricGateway. exe |
-| Agent fabricdca. exe |
-| FabricFAS. exe |
-| FabricUOS. exe |
-| FabricRM. exe |
-| FileStoreService. exe |
+| Fabric.exe |
+| FabricHost.exe |
+| FabricInstallerService.exe |
+| FabricSetup.exe |
+| FabricDeployer.exe |
+| ImageBuilder.exe |
+| FabricGateway.exe |
+| FabricDCA.exe |
+| FabricFAS.exe |
+| FabricUOS.exe |
+| FabricRM.exe |
+| FileStoreService.exe |
 
 ## <a name="validate-environment-using-testconfiguration-script"></a>Ověřit prostředí pomocí skriptu TestConfiguration
-Skript TestConfiguration. ps1 najdete v samostatném balíčku. Slouží jako Analyzátor osvědčených postupů k ověření některého z výše uvedených kritérií a měla by se používat jako správnosti kontrola k ověření, jestli cluster může být nasazený v daném prostředí. Pokud dojde k nějaké chybě, přečtěte si seznam v části [nastavení prostředí](service-fabric-cluster-standalone-deployment-preparation.md) pro řešení potíží.
+Skript TestConfiguration.ps1 najdete v samostatném balíčku. Slouží jako Analyzátor osvědčených postupů k ověření některého z výše uvedených kritérií a měla by se používat jako správnosti kontrola k ověření, jestli cluster může být nasazený v daném prostředí. Pokud dojde k nějaké chybě, přečtěte si seznam v části [nastavení prostředí](service-fabric-cluster-standalone-deployment-preparation.md) pro řešení potíží.
 
 Tento skript se dá spustit na jakémkoli počítači, který má oprávnění správce ke všem počítačům, které jsou uvedené jako uzly v konfiguračním souboru clusteru. Počítač, ve kterém je tento skript spuštěn, nemusí být součástí clusteru.
 

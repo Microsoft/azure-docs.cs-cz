@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: d6923ab3a2344c8496f314e2f7a23b536a534bca
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 17d135e9b250ba111cf2bd1a91a91d146221d69d
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84457027"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84816633"
 ---
 # <a name="manage-container-properties-and-metadata-with-net"></a>Správa vlastností kontejneru a metadat pomocí .NET
 
@@ -132,4 +132,4 @@ public static async Task ReadContainerMetadataAsync(CloudBlobContainer container
 
 - [Získat operaci vlastností kontejneru](/rest/api/storageservices/get-container-properties)
 - [Operace nastavení metadat kontejneru](/rest/api/storageservices/set-container-metadata)
-- [Získat operaci metadat kontejneru](/rest/api/storageservices/set-container-metadata)
+- [Získat operaci metadat kontejneru](/rest/api/storageservices/get-container-metadata)

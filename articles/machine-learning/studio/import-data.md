@@ -5,17 +5,17 @@ description: Jak importovat data do Azure Machine Learning Studio (Classic) z r�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/01/2019
-ms.openlocfilehash: 10ff7b4f031934f2f7432e53efc3031272574d0e
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: bf8d869582031d5bfa627edabac6a231e9cf8a74
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195317"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711132"
 ---
 # <a name="import-your-training-data-into-azure-machine-learning-studio-classic-from-various-data-sources"></a>Import školicích dat do Azure Machine Learning Studio (Classic) z různých zdrojů dat
 
@@ -44,7 +44,7 @@ V jakémkoli okamžiku experimentu můžete zobrazit nebo stáhnout data vytvoř
 Do experimentu můžete importovat několik datových typů, v závislosti na tom, jaký mechanismus používáte k importu dat a odkud pochází:
 
 * Prostý text (. txt)
-* Hodnoty oddělené čárkami (CSV) s hlavičkou (. csv) nebo bez (. NH. csv)
+* Hodnoty oddělené čárkami (CSV) s hlavičkou (. csv) nebo bez (.nh.csv)
 * Hodnoty oddělené tabulátory (TSV) s hlavičkou (. TSV) nebo bez (. NH. TSV)
 * Excelový soubor
 * Tabulka Azure
@@ -156,7 +156,7 @@ Online zdroje dat, které jsou podporovány, jsou vypsány v následující tabu
 ### <a name="supported-online-data-sources"></a>Podporované online zdroje dat
 Modul **Import dat** Azure Machine Learning Studio (Classic) podporuje následující zdroje dat:
 
-| Zdroj dat | Popis | Parametry |
+| Zdroj dat | Description | Parametry |
 | --- | --- | --- |
 | Webová adresa URL přes HTTP |Čte data v hodnotách oddělených čárkami (CSV), hodnot oddělených tabulátory (TSV), formát souboru relací atributů (ARFF) a podporují formáty vektorových počítačů (SVM-Light) z libovolné webové adresy URL, která používá protokol HTTP. |<b>Adresa URL</b>: Určuje úplný název souboru včetně adresy URL webu a názvu souboru s libovolným rozšířením. <br/><br/><b>Formát dat</b>: Určuje jeden z podporovaných formátů dat: CSV, TSV, arff nebo SVM-Light. Pokud data obsahují řádek záhlaví, slouží k přiřazení názvů sloupců. |
 | Hadoop/HDFS |Načte data z distribuovaného úložiště v Hadoop. Požadovaná data určíte pomocí HiveQL dotazovacího jazyka, který se podobá jazyku SQL. HiveQL lze také použít k agregaci dat a filtrování dat před přidáním dat do studia (Classic). |<b>Dotaz na databázi podregistru</b>: určuje dotaz na podregistr použitý k vygenerování dat.<br/><br/><b>Identifikátor URI serveru HCatalog</b> : zadali jste název vašeho clusteru ve formátu * &lt; název vašeho clusteru &gt; . azurehdinsight.NET.*<br/><br/><b>Název uživatelského účtu Hadoop</b>: Určuje název uživatelského účtu Hadoop, který se používá k zřízení clusteru.<br/><br/><b>Heslo uživatelského účtu Hadoop</b> : Určuje přihlašovací údaje, které se použijí při zřizování clusteru. Další informace najdete v tématu [vytváření clusterů Hadoop ve službě HDInsight](/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters).<br/><br/><b>Umístění výstupních dat</b>: Určuje, jestli jsou data uložená v systému Hadoop Distributed File System (HDFS) nebo v Azure. <br/><ul>Pokud ukládáte výstupní data do HDFS, zadejte identifikátor URI serveru HDFS. (Nezapomeňte použít název clusteru HDInsight bez předpony HTTPS://). <br/><br/>Pokud ukládáte výstupní data do Azure, musíte zadat název účtu úložiště Azure, přístupový klíč úložiště a název kontejneru úložiště.</ul> |

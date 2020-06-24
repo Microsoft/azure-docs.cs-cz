@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: jaredro
-ms.openlocfilehash: 882a94034831b1c710031031918e70bf3581a4a6
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: c9b109fe12b709649adaa05d62b3d1255605986e
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266640"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987298"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – nejčastější dotazy
 
@@ -38,7 +38,7 @@ Podrobnosti o cenách najdete v [podrobnostech](https://azure.microsoft.com/pric
 
 ### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-does-the-vpn-connection-i-purchase-from-my-network-service-provider-have-to-be-the-same-speed"></a>Pokud platíte za okruh ExpressRoute dané šířky pásma, musí mít připojení k síti VPN, které zakoupíte od poskytovatele síťové služby, stejnou rychlost?
 
-No. Připojení k síti VPN libovolné rychlosti můžete koupit od svého poskytovatele služeb. Připojení k Azure je ale omezené na šířku pásma okruhu ExpressRoute, kterou si koupíte.
+Ne. Připojení k síti VPN libovolné rychlosti můžete koupit od svého poskytovatele služeb. Připojení k Azure je ale omezené na šířku pásma okruhu ExpressRoute, kterou si koupíte.
 
 ### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-the-ability-to-burst-up-to-higher-speeds-if-necessary"></a>Pokud platíte za okruh ExpressRoute dané šířky pásma, mám v případě potřeby možnost zvýšit zatížení na vyšší rychlost?
 
@@ -152,7 +152,7 @@ V případě, že jedno z vzájemných připojení selže, připojení k síti n
 
 ### <a name="how-do-i-implement-redundancy-on-private-peering"></a>Návody implementovat redundanci s privátním partnerským vztahem?
 
-Více okruhů ExpressRoute z různých umístění partnerského vztahu může být připojeno ke stejné virtuální síti, aby bylo zajištěno vysoké dostupnosti v případě, že jeden okruh nebude k dispozici. Pak můžete [přiřadit vyšší váhu](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-assign-a-high-weight-to-local-connection) místnímu připojení a upřednostnit konkrétní okruh. Důrazně doporučujeme, aby si zákazníci nastavili aspoň dva okruhy ExpressRoute, aby se předešlo jednomu bodu selhání. 
+Několik okruhů ExpressRoute z různých umístění partnerských vztahů nebo až čtyř připojení ze stejného umístění partnerského vztahu může být připojeno ke stejné virtuální síti, aby se zajistila vysoká dostupnost v případě, že jeden okruh nebude k dispozici. Pak můžete [přiřadit vyšší váhu](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-assign-a-high-weight-to-local-connection) jednomu z místních připojení a preferovat konkrétní okruh. Důrazně doporučujeme, aby si zákazníci nastavili aspoň dva okruhy ExpressRoute, aby se předešlo jednomu bodu selhání. 
 
 V tématu Navrhování pro zajištění vysoké [dostupnosti najdete tady, kde najdete](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute) [Návrh pro zotavení](https://docs.microsoft.com/azure/expressroute/designing-for-disaster-recovery-with-expressroute-privatepeering) po havárii.  
 
@@ -164,7 +164,7 @@ Pro návrh pro zajištění vysoké dostupnosti se podívejte [sem](https://docs
 
 ### <a name="how-do-i-ensure-high-availability-on-a-virtual-network-connected-to-expressroute"></a>Návody zajistěte vysokou dostupnost ve virtuální síti připojené k ExpressRoute?
 
-Vysokou dostupnost můžete dosáhnout propojením okruhů ExpressRoute v různých umístěních partnerských vztahů (například Singapur, Singapur2) do vaší virtuální sítě. Pokud dojde k výpadku jednoho okruhu ExpressRoute, připojení převezme služby při selhání jiným okruhem ExpressRoute. Provoz, který opouští vaši virtuální síť, se ve výchozím nastavení směruje na základě ECMP (EQUAL cost multi-Path Routing). Pomocí váhy připojení můžete upřednostnit jeden okruh na jiný. Další informace najdete v tématu [optimalizace směrování ExpressRoute](expressroute-optimize-routing.md).
+Vysokou dostupnost můžete dosáhnout připojením až čtyř okruhů ExpressRoute ve stejném umístění partnerského vztahu k vaší virtuální síti nebo připojením okruhů ExpressRoute v různých umístěních partnerských vztahů (například Singapur, Singapur2) do vaší virtuální sítě. Pokud dojde k výpadku jednoho okruhu ExpressRoute, připojení převezme služby při selhání jiným okruhem ExpressRoute. Provoz, který opouští vaši virtuální síť, se ve výchozím nastavení směruje na základě ECMP (EQUAL cost multi-Path Routing). Pomocí váhy připojení můžete upřednostnit jeden okruh na jiný. Další informace najdete v tématu [optimalizace směrování ExpressRoute](expressroute-optimize-routing.md).
 
 ### <a name="how-do-i-ensure-that-my-traffic-destined-for-azure-public-services-like-azure-storage-and-azure-sql-on-microsoft-peering-or-public-peering-is-preferred-on-the-expressroute-path"></a>Návody zajistěte, aby byl můj provoz určený pro veřejné služby Azure, jako je Azure Storage a Azure SQL v partnerském vztahu Microsoftu nebo veřejný partnerský vztah, upřednostňován na cestě ExpressRoute?
 
@@ -180,7 +180,7 @@ Pokud poskytovatel služeb může navázat dva virtuální okruhy sítě Etherne
 
 ### <a name="can-i-extend-one-of-my-vlans-to-azure-using-expressroute"></a>Můžu do Azure roztáhnout jednu z těchto sítí VLAN pomocí ExpressRoute?
 
-No. Do Azure nepodporujeme rozšíření pro připojení vrstvy 2.
+Ne. Do Azure nepodporujeme rozšíření pro připojení vrstvy 2.
 
 ### <a name="can-i-have-more-than-one-expressroute-circuit-in-my-subscription"></a>Můžu ve svém předplatném více než jeden okruh ExpressRoute?
 
@@ -195,7 +195,7 @@ Pokud váš poskytovatel služeb nabízí ExpressRoute na obou lokalitách, mů�
 
 ### <a name="can-i-have-multiple-expressroute-circuits-in-the-same-metro-can-i-link-them-to-the-same-virtual-network"></a>Můžu ve stejné metrice více okruhů ExpressRoute? Můžu je propojit se stejnou virtuální sítí?
 
-Ano. Můžete mít více okruhů ExpressRoute se stejným nebo jiným poskytovatelem služeb. Pokud má Metro více umístění partnerských vztahů ExpressRoute a okruhy se vytvářejí v různých umístěních partnerského vztahu, můžete je propojit se stejnou virtuální sítí. Pokud jsou okruhy vytvořeny ve stejném umístění partnerského vztahu, můžete propojit až 4 okruhy se stejnou virtuální sítí.
+Ano. Můžete mít více okruhů ExpressRoute se stejným nebo jiným poskytovatelem služeb. Pokud má Metro více umístění partnerských vztahů ExpressRoute a okruhy se vytvářejí v různých umístěních partnerského vztahu, můžete je propojit se stejnou virtuální sítí. Pokud jsou okruhy vytvořeny ve stejném umístění partnerského vztahu, můžete propojit až čtyři okruhy se stejnou virtuální sítí.
 
 ### <a name="how-do-i-connect-my-virtual-networks-to-an-expressroute-circuit"></a>Návody připojení svých virtuálních sítí k okruhu ExpressRoute
 
@@ -229,7 +229,7 @@ Další informace najdete v tématu [sdílení okruhu ExpressRoute napříč ně
 
 ### <a name="are-virtual-networks-connected-to-the-same-circuit-isolated-from-each-other"></a>Jsou virtuální sítě připojené ke stejnému okruhu izolované od sebe?
 
-No. Z perspektivy směrování jsou všechny virtuální sítě propojené se stejným okruhem ExpressRoute součástí stejné domény směrování a nejsou od sebe vzájemně izolované. Pokud potřebujete izolaci tras, je nutné vytvořit samostatný okruh ExpressRoute.
+Ne. Z perspektivy směrování jsou všechny virtuální sítě propojené se stejným okruhem ExpressRoute součástí stejné domény směrování a nejsou od sebe vzájemně izolované. Pokud potřebujete izolaci tras, je nutné vytvořit samostatný okruh ExpressRoute.
 
 ### <a name="can-i-have-one-virtual-network-connected-to-more-than-one-expressroute-circuit"></a>Můžu mít jednu virtuální síť připojenou k více než jednomu okruhu ExpressRoute?
 
@@ -317,7 +317,7 @@ ExpressRoute Premium můžete zakázat voláním rutiny REST API nebo PowerShell
 
 ### <a name="can-i-pick-and-choose-the-features-i-want-from-the-premium-feature-set"></a>Můžu si vybrat požadované funkce ze sady funkcí Premium?
 
-No. Nemůžete si vybrat tyto funkce. Když zapnete ExpressRoute Premium, povolíme všechny funkce.
+Ne. Nemůžete si vybrat tyto funkce. Když zapnete ExpressRoute Premium, povolíme všechny funkce.
 
 ### <a name="how-much-does-expressroute-premium-cost"></a>Kolik stojí ExpressRoute Premium?
 

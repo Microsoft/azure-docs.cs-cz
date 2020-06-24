@@ -10,18 +10,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 11/01/2019
+ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45da1170705bab1206a98c59e02c7616c25ce502
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6f8037ef1324cb10777511c4c363a62a2edab438
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78967774"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85078415"
 ---
 # <a name="self-review-of-an-access-package-in-azure-ad-entitlement-management"></a>Samoobslužné přezkoumání balíčku přístupu v Azure AD – Správa nároků
 
@@ -37,7 +37,7 @@ Chcete-li provést kontrolu přístupu, je třeba nejprve otevřít kontrolu př
 
 1. Klikněte na odkaz **zkontrolovat přístup** .
 
-1. Pokud neobdržíte e-mail, https://myaccess.microsoft.com můžete také přejít přímo na adresu a vyhledat nevyřízené recenze přístupu.  (Pro státní správu USA použijte `https://myaccess.microsoft.us` místo toho.)
+1. https://myaccess.microsoft.comPokud neobdržíte e-mail, můžete také přejít přímo na adresu a vyhledat nevyřízené recenze přístupu.  (Pro státní správu USA použijte `https://myaccess.microsoft.us` místo toho.)
 
 1. Kliknutím na kontroly **přístupu** na levém navigačním panelu zobrazte seznam nedokončených revizí přístupu, které jste vám přiřadili.
 

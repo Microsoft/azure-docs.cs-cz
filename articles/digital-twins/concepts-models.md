@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 30bf5d3eaa034c033cf32e26c3229a028f036313
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: cacf4c21e92b434aeb73cd76e6dda26508f41d77
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84613135"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261354"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Principy dvojitých modelů v digitálních prozdvojeních Azure
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Klíčovou charakteristikou digitálních vláken Azure je možnost definovat vlastní slovník a vytvořit dvojitou graf v rámci podmínek vaší firmy. Tato funkce je k dispozici prostřednictvím uživatelsky definovaných **modelů**. Modely si můžete představit jako podstatná jména v popisu svého světa. 
 
@@ -109,7 +112,7 @@ Zde je příklad typického modelu, který je napsán jako rozhraní DTDL. Model
 
 Pole modelu jsou:
 
-| Pole | Popis |
+| Pole | Description |
 | --- | --- |
 | `@id` | Identifikátor modelu. Musí být ve formátu `dtmi:<domain>:<unique model identifier>;<model version number>` . |
 | `@type` | Určuje druh informací, které jsou popsány. Pro rozhraní je typ *rozhraní*. |
@@ -197,7 +200,7 @@ Rozhraní rozšíření nemůže změnit žádnou z definic nadřazených rozhra
 
 ## <a name="validating-models"></a>Ověřování modelů
 
-K dispozici je ukázka pro ověřování dokumentů modelu, aby bylo zajištěno, že je DTDL platný. Je postavená na knihovně analyzátorů DTDL a je to Language-nezávislá. Najdete ho tady: [Ukázka validátoru DTDL](https://github.com/Azure-Samples/DTDL-Validator).
+K dispozici je ukázka pro ověřování dokumentů modelu, aby bylo zajištěno, že je DTDL platný. Je postavená na knihovně analyzátorů DTDL a je to Language-nezávislá. Najdete ho tady: [Ukázka validátoru DTDL](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator).
 
 Nebo, další informace o knihovně analyzátoru, včetně příkladu, jak ji použít přímo, naleznete v tématu [Postupy: analýza a ověření modelů](how-to-use-parser.md).
 

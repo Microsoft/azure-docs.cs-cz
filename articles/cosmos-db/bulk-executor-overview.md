@@ -3,20 +3,20 @@ title: Přehled knihovny Bulk Executor pro službu Azure Cosmos DB
 description: Provádějte hromadné operace v Azure Cosmos DB prostřednictvím hromadného importu a rozhraní API hromadné aktualizace nabízené knihovnou hromadného prováděcího modulu.
 author: tknandu
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: af17f9c2ef7eea5eb531327d4df13d5885a49b7e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b2ebe07f5ae2846f48bc5762a49ad018610af73a
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80985588"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85260606"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Přehled knihovny Bulk Executor pro službu Azure Cosmos DB
  
-Azure Cosmos DB je rychlá, flexibilní a globálně distribuovaná databázová služba navržená tak, aby elasticky horizontálně rozšiřovala svou kapacitu za účelem podpory následujících scénářů: 
+Azure Cosmos DB je rychlá, flexibilní a globálně distribuovaná databázová služba navržená tak, aby elasticky škálovala na více instancí za účelem podpory následujících scénářů: 
 
 * Velká propustnost čtení a zápisu (miliony operací za sekundu)  
 * Ukládání velkých objemů (stovky terabajtů nebo ještě více) transakčních a provozních dat s předvídatelnou latencí v řádu milisekund  
@@ -42,7 +42,7 @@ Knihovna Bulk Executor vám pomůže využít tuto obrovskou propustnost a úlo�
 
 Když se Hromadná operace pro import nebo aktualizaci dokumentů aktivuje pomocí dávky entit, zpočátku se převedou do intervalů odpovídajících jejich Azure Cosmos DB rozsahu klíčů oddílu. V rámci každého intervalu, který odpovídá rozsahu klíče oddílu, se rozdělí na Mini dávky a každá z nich se bude chovat jako datová část, která je potvrzena na straně serveru. Knihovna hromadných prováděcích modulů obsahuje integrované optimalizace pro souběžné provádění těchto Mini dávek v rámci i napříč rozsahy klíčů oddílů. Následující obrázek znázorňuje, jak hromadně prováděč dávkuje data do různých klíčů oddílů:  
 
-![Architektura hromadného prováděcího modulu](./media/bulk-executor-overview/bulk-executor-architecture.png)
+:::image type="content" source="./media/bulk-executor-overview/bulk-executor-architecture.png" alt-text="Architektura hromadného prováděcího modulu" :::
 
 Knihovna hromadného prováděcího modulu zajišťuje maximální využití propustnosti přidělené kolekci. Pro každý Azure Cosmos DB rozsah klíčů oddílu používá [mechanismus pro řízení zahlcení ve stylu](https://tools.ietf.org/html/rfc5681) , který umožňuje efektivně zpracovávat omezení a časové limity při četnosti. 
 

@@ -2,14 +2,14 @@
 title: Rychlý Start – vytvoření registru – rozhraní příkazového řádku Azure
 description: Rychle se naučíte, jak vytvořit privátní registr Dockeru pomocí Azure CLI.
 ms.topic: quickstart
-ms.date: 01/22/2019
+ms.date: 06/12/2020
 ms.custom: seodec18, H1Hack27Feb2017, mvc
-ms.openlocfilehash: 888daa53b719151b4362597c7a300e82fe26860e
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 31e917fa306330ca579266e21560d7d42c7f2bc7
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682753"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84752468"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>Rychlý Start: Vytvoření privátního registru kontejnerů pomocí Azure CLI
 
@@ -38,7 +38,8 @@ V tomto rychlém startu vytvoříte *základní* registr, což je výhodná mož
 Pomocí příkazu [az acr create][az-acr-create] vytvořte instanci služby ACR. Název registru musí být jedinečný v rámci Azure a musí obsahovat 5 až 50 alfanumerických znaků. V následujícím příkladu se používá *myContainerRegistry007*. Aktualizujte název na jedinečnou hodnotu.
 
 ```azurecli
-az acr create --resource-group myResourceGroup --name myContainerRegistry007 --sku Basic
+az acr create --resource-group myResourceGroup \
+  --name myContainerRegistry007 --sku Basic
 ```
 
 Po vytvoření registru je výstup podobný tomuto:
@@ -64,14 +65,14 @@ Po vytvoření registru je výstup podobný tomuto:
 }
 ```
 
-Poznamenejte si `loginServer` výstup, který je plně kvalifikovaný název registru (malými písmeny). V celé zbývající části tohoto rychlého startu se položka `<acrName>` používá jako zástupný symbol pro název registru kontejneru.
+Poznamenejte si `loginServer` výstup, který je plně kvalifikovaný název registru (malými písmeny). V celé zbývající části tohoto rychlého startu `<registry-name>` je zástupný symbol pro název registru kontejneru a `<login-server>` je zástupný symbol pro název přihlašovacího serveru registru.
 
 ## <a name="log-in-to-registry"></a>Přihlášení k registru
 
 Před vložením a stažením imagí kontejneru se musíte přihlásit k registru. K tomu použijte příkaz [az acr login][az-acr-login].
 
 ```azurecli
-az acr login --name <acrName>
+az acr login --name <registry-name>
 ```
 
 Příkaz po dokončení vrátí zprávu `Login Succeeded` (Přihlášení bylo úspěšné).
@@ -83,7 +84,7 @@ Příkaz po dokončení vrátí zprávu `Login Succeeded` (Přihlášení bylo �
 Následující příklad vypíše úložiště v registru:
 
 ```azurecli
-az acr repository list --name <acrName> --output table
+az acr repository list --name <registry-name> --output table
 ```
 
 Výstup:
@@ -97,7 +98,7 @@ hello-world
 Následující příklad vypíše značky v úložišti **Hello-World** .
 
 ```azurecli
-az acr repository show-tags --name <acrName> --repository hello-world --output table
+az acr repository show-tags --name <registry-name> --repository hello-world --output table
 ```
 
 Výstup:
@@ -123,7 +124,10 @@ az group delete --name myResourceGroup
 V tomto rychlém startu jste vytvořili Azure Container Registry pomocí Azure CLI, nahráli jste image kontejneru do registru a z registru jste vyžádali a spustili image. Pokračujte Azure Container Registry výukové kurzy, kde najdete hlubší přehled na ACR.
 
 > [!div class="nextstepaction"]
-> [Kurzy Azure Container Registry][container-registry-tutorial-quick-task]
+> [Kurzy Azure Container Registry][container-registry-tutorial-prepare-registry]
+
+> [!div class="nextstepaction"]
+> [Kurzy k Azure Container Registry úlohám][container-registry-tutorial-quick-task]
 
 <!-- LINKS - external -->
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms
@@ -143,3 +147,4 @@ V tomto rychlém startu jste vytvořili Azure Container Registry pomocí Azure C
 [azure-cli]: /cli/azure/install-azure-cli
 [container-registry-tutorial-quick-task]: container-registry-tutorial-quick-task.md
 [container-registry-skus]: container-registry-skus.md
+[container-registry-tutorial-prepare-registry]: container-registry-tutorial-prepare-registry.md

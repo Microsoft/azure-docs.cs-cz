@@ -6,14 +6,14 @@ ms.author: govindk
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/01/2019
-ms.openlocfilehash: cb34ea44c069f067d13a6480531a94a1a515f380
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ffe9167bb155826eea3a1e7994469d378e5925fe
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "70241245"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85260487"
 ---
 # <a name="connect-to-azure-cosmos-db-cassandra-api-from-spark"></a>Připojení k rozhraní API Cassandra služby Azure Cosmos DB ze Sparku
 
@@ -22,7 +22,7 @@ Tento článek je jedním z řady článků o Azure Cosmos DB rozhraní API Cass
 ## <a name="prerequisites"></a>Požadavky
 * [Zřídí účet Azure Cosmos DB rozhraní API Cassandra.](create-cassandra-dotnet.md#create-a-database-account)
 
-* Zajištění výběru prostředí Spark [[Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) | [Azure HDInsight – Spark](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-jupyter-spark-sql) | Ostatní].
+* Zajištění výběru prostředí Spark [[Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)  |  [Azure HDInsight – Spark](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-jupyter-spark-sql) | Ostatní].
 
 ## <a name="dependencies-for-connectivity"></a>Závislosti pro připojení
 * **Konektor Spark pro Cassandra:** Konektor Spark slouží k připojení k Azure Cosmos DB rozhraní API Cassandra.  Identifikujte a používejte verzi konektoru, která se nachází v [Maven Central]( https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector) , která je kompatibilní s verzemi Spark a Scala vašeho prostředí Spark.
@@ -42,13 +42,13 @@ V následující tabulce jsou uvedeny Azure Cosmos DB parametry konfigurace prop
 
 | **Název vlastnosti** | **Výchozí hodnota** | **Popis** |
 |---------|---------|---------|
-| Spark. Cassandra. Output. batch. Size. Rows |  1 |Počet řádků na jednu dávku Nastavte tento parametr na hodnotu 1. Tento parametr slouží k dosažení vyšší propustnosti pro náročné úlohy. |
-| Spark. Cassandra. Connection. connections_per_executor_max  | Žádná | Maximální počet připojení na uzel na jeden prováděcí modul. 10 * n je ekvivalentem 10 připojení na uzel v clusteru Cassandra n-Node. Pokud tedy budete potřebovat 5 připojení na uzel na jeden prováděcí modul pro cluster Cassandra s pěti uzly, měli byste nastavit tuto konfiguraci na 25. Změňte tuto hodnotu na základě stupně paralelismu nebo počtu prováděcích modulů, pro které jsou úlohy Spark nakonfigurované.   |
+| spark.cassandra.output.batch. Size. Rows |  1 |Počet řádků na jednu dávku Nastavte tento parametr na hodnotu 1. Tento parametr slouží k dosažení vyšší propustnosti pro náročné úlohy. |
+| Spark. Cassandra. Connection. connections_per_executor_max  | Žádné | Maximální počet připojení na uzel na jeden prováděcí modul. 10 * n je ekvivalentem 10 připojení na uzel v clusteru Cassandra n-Node. Pokud tedy budete potřebovat 5 připojení na uzel na jeden prováděcí modul pro cluster Cassandra s pěti uzly, měli byste nastavit tuto konfiguraci na 25. Změňte tuto hodnotu na základě stupně paralelismu nebo počtu prováděcích modulů, pro které jsou úlohy Spark nakonfigurované.   |
 | Spark. Cassandra. Output. souběžné. zápisy  |  100 | Definuje počet paralelních zápisů, které mohou být provedeny na vykonavateli. Vzhledem k tomu, že jste nastavili "Batch. Size. Rows" na hodnotu 1, nezapomeňte odpovídajícím způsobem škálovat tuto hodnotu. Tuto hodnotu upravte na základě úrovně paralelismu nebo propustnosti, kterou chcete pro své zatížení dosáhnout. |
 | Spark. Cassandra. souběžné. čtení |  512 | Definuje počet paralelních čtení, ke kterým může dojít na vykonavatel. Změňte tuto hodnotu na základě úrovně paralelismu nebo propustnosti, kterou chcete pro své zatížení dosáhnout.  |
-| Spark. Cassandra. Output. throughput_mb_per_sec  | Žádná | Definuje celkovou propustnost zápisu na vykonavatele. Tento parametr se dá použít jako horní limit pro propustnost úloh Sparku a založit ho na zřízené propustnosti vašeho kontejneru Cosmos.   |
-| Spark. Cassandra. Input. reads_per_sec| Žádná   | Definuje celkovou propustnost čtení na vykonavatele. Tento parametr se dá použít jako horní limit pro propustnost úloh Sparku a založit ho na zřízené propustnosti vašeho kontejneru Cosmos.  |
-| Spark. Cassandra. Output. batch. Grouping. Buffer. Size |  1000  | Definuje počet dávek na jednu úlohu Spark, které mohou být před odesláním do rozhraní API Cassandra uloženy v paměti. |
+| Spark. Cassandra. Output. throughput_mb_per_sec  | Žádné | Definuje celkovou propustnost zápisu na vykonavatele. Tento parametr se dá použít jako horní limit pro propustnost úloh Sparku a založit ho na zřízené propustnosti vašeho kontejneru Cosmos.   |
+| Spark. Cassandra. Input. reads_per_sec| Žádné   | Definuje celkovou propustnost čtení na vykonavatele. Tento parametr se dá použít jako horní limit pro propustnost úloh Sparku a založit ho na zřízené propustnosti vašeho kontejneru Cosmos.  |
+| spark.cassandra.output.batch. Grouping. Buffer. Size |  1000  | Definuje počet dávek na jednu úlohu Spark, které mohou být před odesláním do rozhraní API Cassandra uloženy v paměti. |
 | Spark. Cassandra. Connection. keep_alive_ms | 60000 | Definuje časovou prodlevu, po kterou nejsou k dispozici žádná nepoužívaná připojení. | 
 
 Nastavte propustnost a stupeň paralelismu těchto parametrů na základě zatížení, které očekáváte pro úlohy Spark, a propustnosti, kterou jste zřídili pro váš účet Cosmos DB.
@@ -122,5 +122,5 @@ Následující články ukazují integraci Sparku s Azure Cosmos DB rozhraní AP
 * [Operace čtení](cassandra-spark-read-ops.md)
 * [Operace Upsert](cassandra-spark-upsert-ops.md)
 * [Operace odstranění](cassandra-spark-delete-ops.md)
-* [Agregační operace](cassandra-spark-aggregation-ops.md)
+* [Operace agregace](cassandra-spark-aggregation-ops.md)
 * [Operace kopírování tabulky](cassandra-spark-table-copy-ops.md)

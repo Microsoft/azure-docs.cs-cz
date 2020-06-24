@@ -4,15 +4,15 @@ description: V tomto článku se dozvíte, jak propojit virtuální sítě (virt
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: cherylmc
-ms.openlocfilehash: fdd809bcba703dbd8f9ee1e7c18185fd20e4586f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 133a586612f8a5b864c84400ece63d9ba6ccb150
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79476130"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84729238"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>Připojení virtuální sítě k okruhu ExpressRoute pomocí rozhraní příkazového řádku
 
@@ -20,7 +20,7 @@ Tento článek vám pomůže propojit virtuální sítě (virtuální sítě) se
 
 > [!div class="op_single_selector"]
 > * [portál Azure](expressroute-howto-linkvnet-portal-resource-manager.md)
-> * [Prostředí](expressroute-howto-linkvnet-arm.md)
+> * [PowerShell](expressroute-howto-linkvnet-arm.md)
 > * [Azure CLI](howto-linkvnet-cli.md)
 > * [Video – Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
 > * [PowerShell (Classic)](expressroute-howto-linkvnet-classic.md)
@@ -36,7 +36,7 @@ Tento článek vám pomůže propojit virtuální sítě (virtuální sítě) se
   * Podle pokynů [vytvořte okruh ExpressRoute](howto-circuit-cli.md) a pořiďte okruh povolený vaším poskytovatelem připojení. 
   * Ujistěte se, že máte pro váš okruh nakonfigurovaný privátní partnerský vztah Azure. Pokyny k směrování najdete v článku věnovaném [konfiguraci směrování](howto-routing-cli.md) . 
   * Ujistěte se, že je nakonfigurovaný privátní partnerský vztah Azure. Partnerský vztah protokolu BGP mezi vaší sítí a Microsoftem musí být zapnutý, aby bylo možné povolit kompletní připojení.
-  * Ujistěte se, že máte virtuální síť a že byla vytvořena a plně zřízena Brána virtuální sítě. Podle pokynů [nakonfigurujte bránu virtuální sítě pro ExpressRoute](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli). Nezapomeňte použít `--gateway-type ExpressRoute`.
+  * Ujistěte se, že máte virtuální síť a že byla vytvořena a plně zřízena Brána virtuální sítě. Podle pokynů [nakonfigurujte bránu virtuální sítě pro ExpressRoute](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli). Nezapomeňte použít `--gateway-type ExpressRoute` .
 
 * Na standardní okruh ExpressRoute můžete propojit až 10 virtuálních sítí. Pokud používáte standardní okruh ExpressRoute, musí být všechny virtuální sítě ve stejné geopolitické oblasti. 
 

@@ -5,17 +5,17 @@ description: Sdílení a zjišťování prostředků analýzy a další informac
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 882b52b74603465bd0a55a12fd9ef03f7b625046
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cf483dadb9e27020095329d948698807a14012af
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79204320"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84709024"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Sdílení a zjišťování prostředků v Azure AI Gallery
 
@@ -26,7 +26,7 @@ Galerie má řadu prostředků, které můžete použít k vývoji vlastních an
 
 ## <a name="what-can-i-find-in-the-gallery"></a>Co můžu najít v galerii?
 
-Azure AI Gallery obsahuje řadu různých prostředků, které přispěla společnost Microsoft a členové komunity pro vědu v oblasti dat. Mezi ně patří:
+Azure AI Gallery obsahuje řadu různých prostředků, které přispěla společnost Microsoft a členové komunity pro vědu v oblasti dat. Zde jsou některé z nich:
 
 * **Experimenty** – galerie obsahuje širokou škálu experimentů, které byly vyvinuty v Azure Machine Learning Studio (Classic). Tyto experimenty jsou z rychlých experimentů v rámci konceptu, které ukazují konkrétní technika strojového učení, k plně vyvinutým řešením pro složité problémy strojového učení.
 * **Kurzy** – k dispozici je řada kurzů, které vás provedou pomocí technologií a konceptů strojového učení, případně popisují pokročilé metody řešení různých problémů strojového učení.
@@ -151,9 +151,9 @@ Psaním **kurzu** v galerii, který vysvětluje koncepty strojového učení neb
 
 1. Vyberte **New Item** (Nová položka).
 
-1. Na stránce **Popis** pro **typ položky**vyberte **kurz** nebo **kolekce**. Zadejte název, stručný souhrn, podrobný popis a všechny značky, které by vám mohly pomoci ostatním uživatelům najít váš příspěvek. Pak klikněte na **Další**.
+1. Na stránce **Popis** pro **typ položky**vyberte **kurz** nebo **kolekce**. Zadejte název, stručný souhrn, podrobný popis a všechny značky, které by vám mohly pomoci ostatním uživatelům najít váš příspěvek. Potom klikněte na **Další**.
 
-1. Na stránce **Výběr obrázku** vyberte obrázek, který se zobrazí spolu s vaším příspěvkem. Můžete nahrát vlastní soubor obrázku nebo vybrat uloženou bitovou kopii. Vyberte si obrázek, který může pomoci uživatelům identifikovat obsah a účel vašeho příspěvku. Pak klikněte na **Další**.
+1. Na stránce **Výběr obrázku** vyberte obrázek, který se zobrazí spolu s vaším příspěvkem. Můžete nahrát vlastní soubor obrázku nebo vybrat uloženou bitovou kopii. Vyberte si obrázek, který může pomoci uživatelům identifikovat obsah a účel vašeho příspěvku. Potom klikněte na **Další**.
 
 1. Na stránce **Nastavení** pro **viditelnost**vyberte, jestli je váš příspěvek **veřejný** (kdokoli ho může zobrazit) nebo není v **seznamu** (jenom lidé s přímým odkazem ho můžou zobrazit).
 

@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/12/2018
 ms.author: allensu
-ms.openlocfilehash: c45d0a9195a719d830753a9614cfa7efb6f1c23d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 587a6c4104693e8ccf610a670064832364a166d7
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260271"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887576"
 ---
 # <a name="pre-load-assets-on-an-azure-cdn-endpoint"></a>Předběžné načtení prostředků v koncovém bodu Azure CDN
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
@@ -44,7 +44,7 @@ Tento kurz vás provede předběžným načtením obsahu v mezipaměti na všech
     Otevře se podokno **zatížení** .
    
     ![Podokno zatížení CDN](./media/cdn-preload-endpoint/cdn-load-blade.png)
-4. V poli **cesta k obsahu**zadejte úplnou cestu každého assetu, který chcete načíst (například `/pictures/kitten.png`).
+4. V poli **cesta k obsahu**zadejte úplnou cestu každého assetu, který chcete načíst (například `/pictures/kitten.png` ).
    
    > [!TIP]
    > Po zahájení zadávání textu se zobrazí další textová pole s dalšími **cestami k obsahu** , která vám umožní vytvořit seznam více prostředků. Pokud chcete odstranit assety ze seznamu, vyberte tlačítko se třemi tečkami (...) a pak vyberte **Odstranit**.

@@ -7,13 +7,13 @@ ms.date: 05/08/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
-ms.reviewer: cbrooks
-ms.openlocfilehash: 90a7f37fb82cfea2f3ee44c31f6d3ef0a61c64c0
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.reviewer: dineshm
+ms.openlocfilehash: b0415542d737fa2ab926eb572855dce5ef81690e
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465401"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808832"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>Začínáme s úložištěm Azure Queue pomocí rozhraní .NET
 
@@ -74,7 +74,7 @@ K získání těchto balíčků můžete použít NuGet. Postupujte následovně
 1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt a vyberte možnost **Spravovat balíčky NuGet**.
 1. Vyberte **Procházet** .
 1. Vyhledejte v online režimu "Azure. Storage. Queues" a vyberte **nainstalovat** a nainstalujte tak knihovnu klienta úložiště a její závislosti. Tím se také nainstalují knihovny Azure. Storage. Common a Azure. Core, které jsou závislé na knihovně fronty.
-1. Vyhledejte v online režimu "System. Configuration. ConfigurationManager" a výběrem možnosti **nainstalovat** nainstalujte Configuration Manager.
+1. Hledejte online System.Configuration.ConfigurationManager a vyberte **nainstalovat** a nainstalujte Configuration Manager.
 
 # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
@@ -89,7 +89,7 @@ K získání těchto balíčků můžete použít NuGet. Postupujte následovně
 1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt a vyberte možnost **Spravovat balíčky NuGet**.
 1. Vyberte **Procházet** .
 1. Online vyhledejte "Microsoft. Azure. Storage. Queue" a vyberte **nainstalovat** a nainstalujte tak knihovnu klienta úložiště a její závislosti. Tím se nainstaluje také knihovna Microsoft. Azure. Storage. Common, což je závislost knihovny front.
-1. Online vyhledejte "Microsoft. Azure. ConfigurationManager" a vyberte **nainstalovat** a nainstalujte Configuration Manager Azure.
+1. Hledejte online Microsoft.Azure.ConfigurationManager a vyberte **nainstalovat** a nainstalujte Configuration Manager Azure.
 
 ---
 
@@ -128,7 +128,7 @@ Další informace o připojovacích řetězcích najdete v tématu věnovaném [
 > [!NOTE]
 > Klíč účtu úložiště je podobný kořenovému heslu vašeho účtu úložiště. Vždy klíč účtu úložiště pečlivě chraňte. Nedávejte ho jiným uživatelům, nezakódovávejte ho ani ho neukládejte do souboru ve formátu prostého textu, který je přístupný ostatním uživatelům. Pokud se domníváte, že klíč je ohrožený, vygenerujte ho znovu pomocí webu Azure Portal.
 
-Připojovací řetězec úložiště se nejlépe uchovává v konfiguračním souboru. Pokud chcete nakonfigurovat připojovací řetězec, otevřete soubor *App. config* z Průzkumník řešení v aplikaci Visual Studio. Přidejte obsah níže uvedeného prvku `\<appSettings\>`. Nahraďte *řetězec připojení* hodnotou, kterou jste zkopírovali z účtu úložiště na portálu:
+Připojovací řetězec úložiště se nejlépe uchovává v konfiguračním souboru. Pokud chcete nakonfigurovat připojovací řetězec, otevřete *app.config* soubor z Průzkumník řešení v aplikaci Visual Studio. Přidejte obsah níže uvedeného prvku `\<appSettings\>`. Nahraďte *řetězec připojení* hodnotou, kterou jste zkopírovali z účtu úložiště na portálu:
 
 ```xml
 <configuration>
@@ -495,7 +495,7 @@ Teď, když jste se naučili základy používání služby Queue Storage, podí
 
 - Projděte si referenční dokumentaci ke Službě front, kde najdete úplné podrobnosti o dostupných rozhraních API:
   - [Klientská knihovna pro úložiště – referenční informace pro .NET](https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
-  - [REST API – referenční informace](https://msdn.microsoft.com/library/azure/dd179355)
+  - [Odkaz na REST API](https://msdn.microsoft.com/library/azure/dd179355)
 - Naučte se, jak zjednodušit psaní kódu pro práci s Azure Storage pomocí [sady Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki).
 - Projděte si další průvodce funkcemi, kde najdete další informace o dalších možnostech pro ukládání dat v Azure.
   - [Začínáme s Azure Table Storage pomocí rozhraní .NET](../../cosmos-db/table-storage-how-to-use-dotnet.md) pro ukládání strukturovaných dat

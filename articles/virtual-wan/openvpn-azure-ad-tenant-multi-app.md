@@ -4,24 +4,24 @@ description: P2S VPN můžete použít pro připojení k virtuální síti pomoc
 services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: alzam
-ms.openlocfilehash: af5ff5817ee9ae7e6d7432fe281ecb440bf25b9a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a1471226bcc22373904e65f95d0c07c2d5041f55
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80060714"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84749840"
 ---
-# <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>Vytvoření tenanta Azure Active Directory pro připojení protokolu P2S OpenVPN
+# <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>Vytvoření tenanta Azure Active Directory pro připojení typu point-to-site přes protokol OpenVPN
 
 Při připojování k virtuální síti můžete použít ověřování založené na certifikátech nebo ověřování pomocí protokolu RADIUS. Když ale použijete otevřený protokol sítě VPN, můžete použít i Azure Active Directory ověřování. Pokud chcete, aby se různé skupiny uživatelů připojovaly k různým branám, můžete zaregistrovat několik aplikací ve službě AD a propojit je s různými bránami.
 
 Tento článek vám pomůže nastavit tenanta Azure AD pro ověřování OpenVPN P2S a vytvořit a zaregistrovat víc aplikací v Azure AD, aby se povolil jiný přístup pro různé uživatele a skupiny.
 
 > [!NOTE]
-> Ověřování Azure AD se podporuje jenom pro připojení&reg; protokolu OpenVPN.
+> Ověřování Azure AD se podporuje jenom pro &reg; připojení protokolu OpenVPN.
 >
 
 [!INCLUDE [create](../../includes/openvpn-azure-ad-tenant-multi-app.md)]
@@ -83,14 +83,14 @@ Pomocí profilu sítě VPN nakonfigurujte své klienty.
 
 6. Přejděte do složky unzip "AzureVPN".
 
-7. Poznamenejte si umístění souboru azurevpnconfig. XML. Azurevpnconfig. XML obsahuje nastavení pro připojení VPN a dá se importovat přímo do klientské aplikace Azure VPN. Tento soubor můžete také distribuovat všem uživatelům, kteří se potřebují připojit prostřednictvím e-mailu nebo jiným způsobem. Uživatel bude potřebovat platné přihlašovací údaje Azure AD pro úspěšné připojení.
+7. Poznamenejte si umístění souboru azurevpnconfig.xml. azurevpnconfig.xml obsahuje nastavení pro připojení VPN a dá se importovat přímo do klientské aplikace VPN Azure. Tento soubor můžete také distribuovat všem uživatelům, kteří se potřebují připojit prostřednictvím e-mailu nebo jiným způsobem. Uživatel bude potřebovat platné přihlašovací údaje Azure AD pro úspěšné připojení.
 
 ## <a name="9-configure-user-vpn-clients"></a>9. konfigurace klientů VPN uživatelů
 
 Abyste se mohli připojit, je potřeba stáhnout klienta Azure VPN a importovat profil klienta VPN, který jste stáhli v předchozích krocích v každém počítači, který se chce připojit k virtuální síti.
 
 > [!NOTE]
-> Ověřování Azure AD se podporuje jenom pro připojení&reg; protokolu OpenVPN.
+> Ověřování Azure AD se podporuje jenom pro &reg; připojení protokolu OpenVPN.
 >
 
 #### <a name="to-download-the-azure-vpn-client"></a>Stažení klienta Azure VPN

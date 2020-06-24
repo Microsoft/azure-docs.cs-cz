@@ -7,7 +7,7 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.date: 11/08/2019
@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0af897ca284b1d51867808c2c74496c73e9bdcc3
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: fbdebd8d59034bd16a3199c1304606ccf12ab2c2
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582776"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84727666"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Scénáře, omezení a známé problémy, které používají skupiny pro správu licencování v Azure Active Directory
 
@@ -28,7 +28,7 @@ Následující informace a příklady vám pomůžou získat pokročilejší pri
 
 ## <a name="usage-location"></a>Umístění použití
 
-Některé služby Microsoft nejsou dostupné ve všech umístěních. Předtím, než může být licence přiřazena uživateli, musí správce zadat vlastnost **umístění používání** u uživatele. V [Azure Portal](https://portal.azure.com)můžete určit umístění použití v **Nastavení** **profilu** &gt; **uživatele** &gt; .
+Některé služby Microsoft nejsou dostupné ve všech umístěních. Předtím, než může být licence přiřazena uživateli, musí správce zadat vlastnost **umístění používání** u uživatele. V [Azure Portal](https://portal.azure.com)můžete určit umístění použití v **User** &gt; **Profile** &gt; **Nastavení**profilu uživatele.
 
 Pro přiřazení licence skupiny budou mít všichni uživatelé bez zadaného umístění v adresáři k dispozici umístění adresáře. Pokud máte uživatele ve více umístěních, nezapomeňte se před přidáním uživatelů do skupin s licencemi správně projevit v svých uživatelských zdrojích.
 
@@ -193,7 +193,7 @@ Tento ukázkový výstup ukazuje začátek zpracování, všechny výsledné zm�
 
 Skupinu s přiřazenou aktivní licencí není možné odstranit. Správce může odstranit skupinu, která neposkytuje, aby způsobila odebrání licencí z uživatelů – z tohoto důvodu vyžadujeme, aby se z této skupiny odebraly nejprve všechny licence, aby je bylo možné odstranit.
 
-Při pokusu o odstranění skupiny v Azure Portal se může zobrazit oznámení o chybě, například: odstranění ![skupiny snímku se nezdařilo.](./media/licensing-group-advanced/groupdeletionfailed.png)
+Při pokusu o odstranění skupiny v Azure Portal se může zobrazit oznámení o chybě, například: ![ odstranění skupiny snímku se nezdařilo.](./media/licensing-group-advanced/groupdeletionfailed.png)
 
 Přejděte na kartu **licence** ve skupině a zkontrolujte, jestli jsou přiřazené nějaké licence. Pokud ano, odeberte tyto licence a pokuste se skupinu odstranit znovu.
 

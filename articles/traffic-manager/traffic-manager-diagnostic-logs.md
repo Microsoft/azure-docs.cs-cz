@@ -3,20 +3,19 @@ title: Povolení protokolování prostředků v Azure Traffic Manager
 description: Naučte se, jak povolit protokolování prostředků pro profil Traffic Manager a přistupovat k souborům protokolu, které se vytvoří v důsledku.
 services: traffic-manager
 author: rohinkoul
-manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: rohink
-ms.openlocfilehash: d0ffcffd7d4a4f2072b640ace03ec819aa416d47
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d84c4a9af366e9032604aef5531742eb790bb571
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133906"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711676"
 ---
 # <a name="enable-resource-logging-in-azure-traffic-manager"></a>Povolení protokolování prostředků v Azure Traffic Manager
 
@@ -28,7 +27,7 @@ Protokoly prostředků Azure Traffic Manager můžou poskytnout přehled o chov�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Můžete spustit příkazy, které následují v [Azure Cloud Shell](https://shell.azure.com/powershell), nebo spuštěním PowerShellu z počítače. Azure Cloud Shell je bezplatné interaktivní prostředí. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Pokud spustíte PowerShell z počítače, budete potřebovat modul Azure PowerShell, 1.0.0 nebo novější. Nainstalovanou verzi `Get-Module -ListAvailable Az` můžete najít spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit `Login-AzAccount` pro přihlášení k Azure.
+Můžete spustit příkazy, které následují v [Azure Cloud Shell](https://shell.azure.com/powershell), nebo spuštěním PowerShellu z počítače. Azure Cloud Shell je bezplatné interaktivní prostředí. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Pokud spustíte PowerShell z počítače, budete potřebovat modul Azure PowerShell, 1.0.0 nebo novější. `Get-Module -ListAvailable Az`Nainstalovanou verzi můžete najít spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit `Login-AzAccount` pro přihlášení k Azure.
 
 1. **Načíst profil Traffic Manager:**
 
@@ -58,7 +57,7 @@ Můžete spustit příkazy, které následují v [Azure Cloud Shell](https://she
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 1. Na portálu přejděte na účet Azure Storage.
 2. Na stránce **Přehled** účtu úložiště Azure v části **služby** vyberte **objekty blob**.
-3. V případě **kontejnerů**vyberte **Insights-logs-probehealthstatusevents**a přejděte dolů k souboru PT1H. JSON a kliknutím na **Stáhnout** Stáhněte a uložte kopii tohoto souboru protokolu.
+3. V části **kontejnery**vyberte **Insights-logs-probehealthstatusevents**a přejděte dolů na PT1H.jsv souboru a kliknutím na **Stáhnout** Stáhněte a uložte kopii tohoto souboru protokolu.
 
     ![Přístup k souborům protokolu vašeho profilu Traffic Manager ze služby Blob Storage](./media/traffic-manager-logs/traffic-manager-logs.png)
 
@@ -71,7 +70,7 @@ Následující tabulka obsahuje schéma protokolů specifické pro prostředek p
 
 |||||
 |----|----|---|---|
-|**Název pole**|**Typ pole**|**Definice**|**Případě**|
+|**Název pole**|**Typ pole**|**Definice**|**Příklad**|
 |Koncový bod|Řetězec|Název koncového bodu Traffic Manager, jehož stav se zaznamenává.|*myPrimaryEndpoint*|
 |Status|Řetězec|Stav Traffic Managerho koncového bodu, ve kterém byl zjištěn test. Stav může být buď **nahoru** , nebo **nižší**.|**Nahoru**|
 |||||

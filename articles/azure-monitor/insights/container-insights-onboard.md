@@ -2,13 +2,13 @@
 title: Postup povolení Azure Monitor pro kontejnery | Microsoft Docs
 description: Tento článek popisuje, jak povolíte a nakonfigurujete Azure Monitor pro kontejnery, abyste porozuměli tomu, jak váš kontejner vykonává a jaké byly zjištěny problémy související s výkonem.
 ms.topic: conceptual
-ms.date: 05/28/2020
-ms.openlocfilehash: 0348d580a42d4a522ac05f929c96547a47e831a9
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.date: 06/15/2020
+ms.openlocfilehash: a765c601682eb594d40ba98b8b4ef1853f35fb37
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84147898"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84886009"
 ---
 # <a name="how-to-enable-azure-monitor-for-containers"></a>Postup povolení Azure Monitor pro kontejnery
 
@@ -24,6 +24,8 @@ Tento článek poskytuje přehled možností, které jsou k dispozici pro nastav
 
 - [Red Hat OpenShift](https://docs.openshift.com/container-platform/4.3/welcome/index.html) verze 4. x
 
+- [Kubernetes cluster s povoleným ARC](../../azure-arc/kubernetes/overview.md)
+
 Azure Monitor pro kontejnery lze povolit pro nové nebo jedno nebo více existujících nasazení Kubernetes pomocí následujících podporovaných metod:
 
 - Z Azure Portal, Azure PowerShell nebo pomocí Azure CLI
@@ -38,17 +40,17 @@ Než začnete, ujistěte se, že máte následující:
 
 - **Pracovní prostor služby Log Analytics.**
 
-    Azure Monitor for Containers podporuje pracovní prostor Log Analytics v oblastech uvedených v [produktech Azure podle oblasti](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor).
+   Azure Monitor for Containers podporuje pracovní prostor Log Analytics v oblastech uvedených v [produktech Azure podle oblasti](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor).
 
-    Pracovní prostor můžete vytvořit, když povolíte monitorování nového clusteru AKS nebo necháte prostředí pro připojování vytvořit výchozí pracovní prostor ve výchozí skupině prostředků v rámci předplatného clusteru AKS. Pokud se rozhodnete ho vytvořit sami, můžete ho vytvořit prostřednictvím [Azure Resource Manager](../platform/template-workspace-configuration.md), prostřednictvím [PowerShellu](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)nebo v [Azure Portal](../learn/quick-create-workspace.md). Seznam podporovaných dvojic mapování použitých pro výchozí pracovní prostor najdete v tématu [mapování oblastí pro Azure monitor kontejnerů](container-insights-region-mapping.md).
+   Pracovní prostor můžete vytvořit, když povolíte monitorování nového clusteru AKS nebo necháte prostředí pro připojování vytvořit výchozí pracovní prostor ve výchozí skupině prostředků v rámci předplatného clusteru AKS. Pokud se rozhodnete ho vytvořit sami, můžete ho vytvořit prostřednictvím [Azure Resource Manager](../platform/template-workspace-configuration.md), prostřednictvím [PowerShellu](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)nebo v [Azure Portal](../learn/quick-create-workspace.md). Seznam podporovaných dvojic mapování použitých pro výchozí pracovní prostor najdete v tématu [mapování oblastí pro Azure monitor kontejnerů](container-insights-region-mapping.md).
 
 - Jste členem **role přispěvatel Log Analytics** , abyste povolili monitorování kontejnerů. Další informace o tom, jak řídit přístup k pracovnímu prostoru Log Analytics, najdete v tématu [Správa pracovních prostorů](../platform/manage-access.md).
 
 - Jste členem role **[vlastníka](../../role-based-access-control/built-in-roles.md#owner)** v prostředku clusteru AKS.
 
-[!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
+   [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-* Metriky Prometheus nejsou ve výchozím nastavení shromažďovány. Před [konfigurací agenta](container-insights-prometheus-integration.md) pro jejich shromáždění je důležité si projít [dokumentaci](https://prometheus.io/) k Prometheus, abyste zjistili, co je možné vyřadit a které metody jsou podporované.
+- Metriky Prometheus nejsou ve výchozím nastavení shromažďovány. Před [konfigurací agenta](container-insights-prometheus-integration.md) pro jejich shromáždění je důležité si projít [dokumentaci](https://prometheus.io/) k Prometheus, abyste zjistili, co je možné vyřadit a které metody jsou podporované.
 
 ## <a name="supported-configurations"></a>Podporované konfigurace
 
@@ -63,27 +65,27 @@ Informace v následující tabulce uvádí informace o konfiguraci proxy serveru
 
 |Prostředek agenta|Porty |
 |--------------|------|
-| *.ods.opinsights.azure.com | 443 |  
-| *.oms.opinsights.azure.com | 443 |
-| dc.services.visualstudio.com | 443 |
-| *. monitoring.azure.com | 443 |
-| login.microsoftonline.com | 443 |
+| `*.ods.opinsights.azure.com` | 443 |  
+| `*.oms.opinsights.azure.com` | 443 |
+| `dc.services.visualstudio.com` | 443 |
+| `*.monitoring.azure.com` | 443 |
+| `login.microsoftonline.com` | 443 |
 
-Informace v následující tabulce uvádí informace o konfiguraci proxy serveru a brány firewall pro Azure Čína.
+Informace v následující tabulce uvádí informace o konfiguraci proxy serveru a brány firewall pro Azure Čína 21Vianet.
 
-|Prostředek agenta|Porty |Popis | 
+|Prostředek agenta|Porty |Description | 
 |--------------|------|-------------|
-| *. ods.opinsights.azure.cn | 443 | Přijímání dat |
-| *. oms.opinsights.azure.cn | 443 | Připojování OMS |
-| dc.services.visualstudio.com | 443 | Pro telemetrii agenta pomocí Application Insights veřejného cloudu Azure. |
+| `*.ods.opinsights.azure.cn` | 443 | Přijímání dat |
+| `*.oms.opinsights.azure.cn` | 443 | Připojování OMS |
+| `dc.services.visualstudio.com` | 443 | Pro telemetrii agenta pomocí Application Insights veřejného cloudu Azure. |
 
 Informace v následující tabulce uvádí informace o konfiguraci proxy serveru a brány firewall pro vládu Azure USA.
 
-|Prostředek agenta|Porty |Popis | 
+|Prostředek agenta|Porty |Description | 
 |--------------|------|-------------|
-| *. ods.opinsights.azure.us | 443 | Přijímání dat |
-| *. oms.opinsights.azure.us | 443 | Připojování OMS |
-| dc.services.visualstudio.com | 443 | Pro telemetrii agenta pomocí Application Insights veřejného cloudu Azure. |
+| `*.ods.opinsights.azure.us` | 443 | Přijímání dat |
+| `*.oms.opinsights.azure.us` | 443 | Připojování OMS |
+| `dc.services.visualstudio.com` | 443 | Pro telemetrii agenta pomocí Application Insights veřejného cloudu Azure. |
 
 ## <a name="components"></a>Komponenty
 
@@ -101,18 +103,19 @@ Po vydání nové verze agenta se automaticky upgraduje na spravovaných cluster
 
 Azure Monitor pro kontejnery povolíte pomocí jedné z následujících metod popsaných v následující tabulce.
 
-| Stav nasazení | Metoda | Popis |
+| Stav nasazení | Metoda | Description |
 |------------------|--------|-------------|
-| Nový cluster AKS Kubernetes | [Vytvoření clusteru AKS pomocí Azure CLI](../../aks/kubernetes-walkthrough.md#create-aks-cluster)| Můžete povolit monitorování nového clusteru AKS, který vytvoříte pomocí Azure CLI. |
+| Nový cluster Kubernetes | [Vytvoření clusteru AKS pomocí Azure CLI](../../aks/kubernetes-walkthrough.md#create-aks-cluster)| Můžete povolit monitorování nového clusteru AKS, který vytvoříte pomocí Azure CLI. |
 | | [Vytvoření clusteru AKS pomocí Terraformu](container-insights-enable-new-cluster.md#enable-using-terraform)| Můžete povolit monitorování nového clusteru AKS, který vytvoříte pomocí nástroje Open Source Tool Terraformu. |
 | | [Vytvoření clusteru OpenShift pomocí šablony Azure Resource Manager](container-insights-azure-redhat-setup.md#enable-for-a-new-cluster-using-an-azure-resource-manager-template) | Můžete povolit monitorování nového clusteru OpenShift, který vytvoříte s předem nakonfigurovanou šablonou Azure Resource Manager. |
 | | [Vytvoření clusteru OpenShift pomocí Azure CLI](https://docs.microsoft.com/cli/azure/openshift?view=azure-cli-latest#az-openshift-create) | Monitorování můžete povolit během nasazování nového clusteru OpenShift pomocí Azure CLI. |
-| Existující cluster AKS Kubernetes | [Povolení pro cluster AKS pomocí Azure CLI](container-insights-enable-existing-clusters.md#enable-using-azure-cli) | Můžete povolit monitorování clusteru AKS již nasazeného pomocí Azure CLI. |
+| Existující cluster Kubernetes | [Povolení pro cluster AKS pomocí Azure CLI](container-insights-enable-existing-clusters.md#enable-using-azure-cli) | Můžete povolit monitorování clusteru AKS již nasazeného pomocí Azure CLI. |
 | |[Povolení pro cluster AKS pomocí Terraformu](container-insights-enable-existing-clusters.md#enable-using-terraform) | Monitorování clusteru AKS, který je už nasazený, můžete povolit pomocí Open Source nástroje Terraformu. |
 | | [Povolit pro AKS cluster z Azure Monitor](container-insights-enable-existing-clusters.md#enable-from-azure-monitor-in-the-portal)| Monitorování jednoho nebo více clusterů AKS již nasazených na stránce s více clustery můžete povolit v Azure Monitor. |
 | | [Povolit z clusteru AKS](container-insights-enable-existing-clusters.md#enable-directly-from-aks-cluster-in-the-portal)| Monitorování můžete povolit přímo z clusteru AKS v Azure Portal. |
 | | [Povolení pro AKS cluster pomocí šablony Azure Resource Manager](container-insights-enable-existing-clusters.md#enable-using-an-azure-resource-manager-template)| Můžete povolit monitorování clusteru AKS s předem nakonfigurovanou šablonou Azure Resource Manager. |
 | | [Povolit pro hybridní cluster Kubernetes](container-insights-hybrid-setup.md) | Můžete povolit monitorování AKS modulu hostovaného v Azure Stack nebo pro Kubernetes hostované místně. |
+| | [Povolte cluster Kubernetes s povoleným ARC](container-insights-enable-arc-enabled-clusters.md). | Můžete povolit monitorování clusterů Kubernetes hostovaných mimo Azure, které jsou povolené pomocí ARC Azure. |
 | | [Povolení pro OpenShift cluster pomocí šablony Azure Resource Manager](container-insights-azure-redhat-setup.md#enable-using-an-azure-resource-manager-template) | Můžete povolit monitorování stávajícího clusteru OpenShift s předem nakonfigurovanou šablonou Azure Resource Manager. |
 | | [Povolit pro OpenShift cluster z Azure Monitor](container-insights-azure-redhat-setup.md#from-the-azure-portal) | Monitorování jednoho nebo více clusterů OpenShift již nasazených na stránce s více clustery můžete povolit v Azure Monitor. |
 

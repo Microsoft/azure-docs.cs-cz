@@ -1,17 +1,17 @@
 ---
 title: Vytvoření kontejneru ve službě Azure Cosmos DB
-description: Naučte se, jak vytvořit kontejner v Azure Cosmos DB pomocí Azure Portal, .NET, Java, Pythonu, Node. js a dalších sad SDK.
+description: Naučte se, jak vytvořit kontejner v Azure Cosmos DB pomocí Azure Portal, .NET, Java, Pythonu, Node.js a dalších sad SDK.
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: mjbrown
-ms.openlocfilehash: 809ebe848e38a7c99c96ef44f130da917fb35942
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 02914a9357ef9ccc10763699dc7c84aa98777139
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82161618"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261609"
 ---
 # <a name="create-an-azure-cosmos-container"></a>Vytvoření kontejneru Azure Cosmos
 
@@ -22,7 +22,7 @@ Tento článek popisuje různé způsoby vytvoření kontejneru Azure Cosmos (ko
 
 ## <a name="create-a-container-using-azure-portal"></a>Vytvoření kontejneru pomocí webu Azure Portal
 
-### <a name="sql-api"></a><a id="portal-sql"></a>SQL API
+### <a name="sql-api"></a><a id="portal-sql"></a>ROZHRANÍ SQL API
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
@@ -36,7 +36,7 @@ Tento článek popisuje různé způsoby vytvoření kontejneru Azure Cosmos (ko
    * Zadejte propustnost, která se má zřídit (například 1000 ru).
    * Vyberte **OK**.
 
-    ![Snímek obrazovky s podoknem Průzkumník dat s zvýrazněným novým kontejnerem](./media/how-to-create-container/partitioned-collection-create-sql.png)
+    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-sql.png" alt-text="Snímek obrazovky s podoknem Průzkumník dat s zvýrazněným novým kontejnerem":::
 
 ### <a name="azure-cosmos-db-api-for-mongodb"></a><a id="portal-mongodb"></a>Rozhraní API služby Azure Cosmos DB pro MongoDB
 
@@ -52,7 +52,7 @@ Tento článek popisuje různé způsoby vytvoření kontejneru Azure Cosmos (ko
    * Zadejte propustnost, která se má zřídit (například 1000 ru).
    * Vyberte **OK**.
 
-    ![Snímek obrazovky Azure Cosmos DB API pro MongoDB, dialogové okno Přidat kontejner](./media/how-to-create-container/partitioned-collection-create-mongodb.png)
+    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-mongodb.png" alt-text="Snímek obrazovky Azure Cosmos DB API pro MongoDB, dialogové okno Přidat kontejner":::
 
 ### <a name="cassandra-api"></a><a id="portal-cassandra"></a>Rozhraní Cassandra API
 
@@ -68,7 +68,7 @@ Tento článek popisuje různé způsoby vytvoření kontejneru Azure Cosmos (ko
    * Zadejte propustnost, která se má zřídit (například 1000 ru).
    * Vyberte **OK**.
 
-    ![Snímek obrazovky rozhraní API Cassandra, dialogové okno Přidat tabulku](./media/how-to-create-container/partitioned-collection-create-cassandra.png)
+    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-cassandra.png" alt-text="Snímek obrazovky rozhraní API Cassandra, dialogové okno Přidat tabulku":::
 
 > [!NOTE]
 > V případě rozhraní API Cassandra se jako klíč oddílu používá primární klíč.
@@ -88,7 +88,7 @@ Tento článek popisuje různé způsoby vytvoření kontejneru Azure Cosmos (ko
    * Zadejte propustnost, která se má zřídit (například 1000 ru).
    * Vyberte **OK**.
 
-    ![Snímek obrazovky s rozhraním API Gremlin, dialogové okno Přidat graf](./media/how-to-create-container/partitioned-collection-create-gremlin.png)
+    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-gremlin.png" alt-text="Snímek obrazovky s rozhraním API Gremlin, dialogové okno Přidat graf":::
 
 ### <a name="table-api"></a><a id="portal-table"></a>Rozhraní Table API
 
@@ -102,7 +102,7 @@ Tento článek popisuje různé způsoby vytvoření kontejneru Azure Cosmos (ko
    * Zadejte propustnost, která se má zřídit (například 1000 ru).
    * Vyberte **OK**.
 
-    ![Snímek obrazovky rozhraní API pro tabulky, dialogové okno Přidat tabulku](./media/how-to-create-container/partitioned-collection-create-table.png)
+    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-table.png" alt-text="Snímek obrazovky rozhraní API pro tabulky, dialogové okno Přidat tabulku":::
 
 > [!Note]
 > V případě rozhraní API pro tabulky se klíč oddílu zadává při každém přidání nového řádku.
@@ -170,6 +170,6 @@ session.Execute(CREATE TABLE myKeySpace.myTable(
 ## <a name="next-steps"></a>Další kroky
 
 * [Dělení ve službě Azure Cosmos DB](partitioning-overview.md)
-* [Jednotky žádosti v Azure Cosmos DB](request-units.md)
+* [Jednotky žádostí ve službě Azure Cosmos DB](request-units.md)
 * [Zřízení propustnosti u kontejnerů a databází](set-throughput.md)
 * [Práce s účtem Azure Cosmos](account-overview.md)

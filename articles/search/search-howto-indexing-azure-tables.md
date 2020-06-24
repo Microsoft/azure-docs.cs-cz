@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e8f6c0454497b1cb1d62417e566e9662469c56d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6e32a0a876928e9430f9127299e6b7e657d7743c
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74112996"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85077463"
 ---
 # <a name="how-to-index-tables-from-azure-table-storage-with-azure-cognitive-search"></a>Indexování tabulek z Azure Table Storage pomocí Azure Kognitivní hledání
 
@@ -26,7 +26,7 @@ Indexer služby Azure Table Storage můžete nastavit pomocí těchto prostředk
 
 * [portál Azure](https://ms.portal.azure.com)
 * [REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations) kognitivní hledání Azure
-* Sada Azure Kognitivní hledání [.NET SDK](https://aka.ms/search-sdk)
+* Sada Azure Kognitivní hledání [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)
 
 V tomto příkladu předvádíme tok pomocí REST API. 
 
@@ -37,7 +37,7 @@ Zdroj dat určuje, která data se mají indexovat, přihlašovací údaje potře
 Pro indexování tabulek musí mít zdroj dat následující vlastnosti:
 
 - **název** je jedinečný název zdroje dat v rámci vyhledávací služby.
-- **typ** musí být `azuretable`.
+- **typ** musí být `azuretable` .
 - parametr **přihlašovacích údajů** obsahuje připojovací řetězec účtu úložiště. Podrobnosti najdete v části [zadání přihlašovacích údajů](#Credentials) .
 - **kontejner** nastaví název tabulky a nepovinný dotaz.
     - Zadejte název tabulky pomocí `name` parametru.
@@ -67,7 +67,7 @@ Další informace o rozhraní API Create DataSource najdete v tématu [Create Da
 
 Přihlašovací údaje pro tabulku můžete zadat jedním z těchto způsobů: 
 
-- **Úplný přístup k účtu úložiště s úplným přístupem** `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` : připojovací řetězec můžete z Azure Portal získat tak, že v okně**Nastavení** >  **účtu** > úložiště zadáte**klíče** pro účty úložiště (pro účty Classic) nebo**přístupové klíče** **Nastavení** > (pro účty Azure Resource Manager úložiště).
+- **Úplný přístup k účtu úložiště s úplným přístupem**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` připojovací řetězec můžete z Azure Portal získat tak, že v okně nastavení **účtu úložiště**zadáte  >  **Settings**  >  **klíče** pro účty úložiště (pro účty Classic) nebo **Settings**  >  **přístupové klíče** nastavení (pro účty Azure Resource Manager úložiště).
 - **Připojovací řetězec sdíleného přístupového podpisu účtu úložiště**: `TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl` sdílený přístupový podpis by měl mít oprávnění list a číst na kontejnerech (v tomto případě tabulky) a objekty (řádky tabulky).
 -  **Sdílený přístupový podpis tabulky**: `ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r` sdílený přístupový podpis by měl mít v tabulce oprávnění Query (čtení).
 
@@ -121,19 +121,19 @@ Další informace o definování plánů indexerů najdete v tématu [postup pl�
 V některých případech se názvy polí v existujícím indexu liší od názvů vlastností v tabulce. Mapování polí můžete použít k mapování názvů vlastností z tabulky na názvy polí v indexu vyhledávání. Další informace o mapování polí najdete v tématu [mapování polí služby Azure kognitivní hledání indexeru mostu jako rozdíl mezi zdroji dat a indexy vyhledávání](search-indexer-field-mappings.md).
 
 ## <a name="handle-document-keys"></a>Zpracování klíčů dokumentu
-V Azure Kognitivní hledání klíč dokumentu jednoznačně identifikuje dokument. Každý index vyhledávání musí mít přesně jedno pole klíče typu `Edm.String`. Klíčové pole je vyžadováno pro každý dokument, který je přidán do indexu. (Ve skutečnosti je to jediné povinné pole.)
+V Azure Kognitivní hledání klíč dokumentu jednoznačně identifikuje dokument. Každý index vyhledávání musí mít přesně jedno pole klíče typu `Edm.String` . Klíčové pole je vyžadováno pro každý dokument, který je přidán do indexu. (Ve skutečnosti je to jediné povinné pole.)
 
-Vzhledem k tomu, že řádky tabulky mají složený klíč, Azure Kognitivní hledání generuje syntetické pole s názvem `Key` , které je zřetězení hodnot klíče oddílu a klíče řádku. `PK1` Pokud je například PartitionKey řádku a RowKey je `RK1`, hodnota `Key` pole je. `PK1RK1`
+Vzhledem k tomu, že řádky tabulky mají složený klíč, Azure Kognitivní hledání generuje syntetické pole `Key` s názvem, které je zřetězení hodnot klíče oddílu a klíče řádku. Pokud je například PartitionKey řádku `PK1` a RowKey je `RK1` , `Key` hodnota pole je `PK1RK1` .
 
 > [!NOTE]
-> `Key` Hodnota může obsahovat znaky, které jsou v klíčích dokumentů neplatné, například pomlčky. Pomocí `base64Encode` [funkce mapování polí](search-indexer-field-mappings.md#base64EncodeFunction)můžete pracovat s neplatnými znaky. Pokud to uděláte, nezapomeňte použít kódování Base64 bezpečné pro adresy URL také při předávání klíčů dokumentů ve voláních rozhraní API, jako je Lookup.
+> `Key`Hodnota může obsahovat znaky, které jsou v klíčích dokumentů neplatné, například pomlčky. Pomocí `base64Encode` [funkce mapování polí](search-indexer-field-mappings.md#base64EncodeFunction)můžete pracovat s neplatnými znaky. Pokud to uděláte, nezapomeňte použít kódování Base64 bezpečné pro adresy URL také při předávání klíčů dokumentů ve voláních rozhraní API, jako je Lookup.
 >
 >
 
 ## <a name="incremental-indexing-and-deletion-detection"></a>Přírůstkové indexování a odstraňování duplicit
 Když nastavíte indexer tabulky tak, aby se spouštěl podle plánu, přeindexuje pouze nové nebo aktualizované řádky, které jsou určeny `Timestamp` hodnotou řádku. Nemusíte určovat zásady detekce změn. Přírůstkové indexování je povoleno automaticky.
 
-Chcete-li určit, že některé dokumenty musí být z indexu odebrány, můžete použít strategii obnovitelného odstranění. Místo odstranění řádku přidejte vlastnost, která označuje, že je odstraněna, a nastavte zásady Detekce tichého odstranění pro zdroj dat. Následující zásada například předpokládá, že řádek bude odstraněn, pokud má řádek vlastnost `IsDeleted` s hodnotou: `"true"`
+Chcete-li určit, že některé dokumenty musí být z indexu odebrány, můžete použít strategii obnovitelného odstranění. Místo odstranění řádku přidejte vlastnost, která označuje, že je odstraněna, a nastavte zásady Detekce tichého odstranění pro zdroj dat. Následující zásada například předpokládá, že řádek bude odstraněn, pokud má řádek vlastnost `IsDeleted` s hodnotou `"true"` :
 
     PUT https://[service name].search.windows.net/datasources?api-version=2019-05-06
     Content-Type: application/json
@@ -150,18 +150,18 @@ Chcete-li určit, že některé dokumenty musí být z indexu odebrány, můžet
 <a name="Performance"></a>
 ## <a name="performance-considerations"></a>Otázky výkonu
 
-Ve výchozím nastavení používá Azure Kognitivní hledání následující filtr dotazu: `Timestamp >= HighWaterMarkValue`. Vzhledem k tomu, že tabulky Azure nemají sekundární index `Timestamp` v poli, vyžaduje tento typ dotazu úplnou kontrolu tabulky, a proto je pro velké tabulky pomalé.
+Ve výchozím nastavení používá Azure Kognitivní hledání následující filtr dotazu: `Timestamp >= HighWaterMarkValue` . Vzhledem k tomu, že tabulky Azure nemají sekundární index v `Timestamp` poli, vyžaduje tento typ dotazu úplnou kontrolu tabulky, a proto je pro velké tabulky pomalé.
 
 
 Tady jsou dva možné přístupy pro zlepšení výkonu indexování tabulek. Oba tyto přístupy spoléhají na použití oddílů tabulky: 
 
-- Pokud je možné data přirozeně rozdělit do několika rozsahů oddílů, vytvořte zdroj dat a odpovídající indexer pro každý rozsah oddílů. Každý indexer teď musí zpracovat jenom konkrétní rozsah oddílu, což vede k lepšímu výkonu dotazů. Pokud data, která mají být indexována, mají malý počet pevných oddílů, a to i v případě, že každý indexer provádí kontrolu oddílu. Chcete-li například vytvořit zdroj dat pro zpracování rozsahu oddílu s klíči z `000` na `100`, použijte dotaz podobný tomuto: 
+- Pokud je možné data přirozeně rozdělit do několika rozsahů oddílů, vytvořte zdroj dat a odpovídající indexer pro každý rozsah oddílů. Každý indexer teď musí zpracovat jenom konkrétní rozsah oddílu, což vede k lepšímu výkonu dotazů. Pokud data, která mají být indexována, mají malý počet pevných oddílů, a to i v případě, že každý indexer provádí kontrolu oddílu. Chcete-li například vytvořit zdroj dat pro zpracování rozsahu oddílu s klíči z `000` na `100` , použijte dotaz podobný tomuto: 
     ```
     "container" : { "name" : "my-table", "query" : "PartitionKey ge '000' and PartitionKey lt '100' " }
     ```
 
 - Pokud jsou vaše data rozdělená podle času (například nový oddíl vytvoříte každý den nebo týden), vezměte v úvahu následující postup: 
-    - Použijte dotaz na formulář: `(PartitionKey ge <TimeStamp>) and (other filters)`. 
+    - Použijte dotaz na formulář: `(PartitionKey ge <TimeStamp>) and (other filters)` . 
     - Sledovat průběh indexeru pomocí [rozhraní Get API stavu pro indexer](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)a pravidelně aktualizovat `<TimeStamp>` podmínku dotazu na základě nejnovější úspěšné hodnoty vysokého množství. 
     - Pokud potřebujete s tímto přístupem aktivovat kompletní Reindexování, je potřeba resetovat dotaz DataSource a obnovit indexer. 
 

@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/10/2020
+ms.date: 06/11/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: d55c6b514f6401e60891f0713cb1b4135bb62ab6
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 747acc27a5eaf8551e44a3bf52f55b5a380b73ce
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84675992"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84752636"
 ---
 # <a name="enable-and-manage-point-in-time-restore-for-block-blobs-preview"></a>Povolte a spravujte obnovení k určitému bodu v čase pro objekty blob bloku (Preview).
 
@@ -83,7 +83,7 @@ Get-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
 
 ## <a name="perform-a-restore-operation"></a>Provést operaci obnovení
 
-Chcete-li zahájit operaci obnovení, zavolejte příkaz **Restore-AzStorageBlobRange** a určete bod obnovení jako hodnotu **DateTime** UTC. Můžete zadat lexicographical rozsahy objektů blob, které se mají obnovit, nebo vynecháte rozsah pro obnovení všech objektů BLOB ve všech kontejnerech v účtu úložiště. Pro každou operaci obnovení se podporuje až 10 lexicographical rozsahů. Dokončení operace obnovení může trvat několik minut.
+Chcete-li zahájit operaci obnovení, zavolejte příkaz **Restore-AzStorageBlobRange** a určete bod obnovení jako hodnotu **DateTime** UTC. Můžete zadat lexicographical rozsahy objektů blob, které se mají obnovit, nebo vynecháte rozsah pro obnovení všech objektů BLOB ve všech kontejnerech v účtu úložiště. Pro každou operaci obnovení se podporuje až 10 lexicographical rozsahů. Objekty blob stránky a doplňovací objekty blob nejsou zahrnuté do obnovení. Dokončení operace obnovení může trvat několik minut.
 
 Při zadávání rozsahu objektů blob, které se mají obnovit, pamatujte na následující pravidla:
 
@@ -165,6 +165,15 @@ $job = Restore-AzStorageBlobRange -ResourceGroupName $rgName `
 # Check the state of the job.
 $job.State
 ```
+
+Chcete-li počkat na dokončení operace obnovení po spuštění, zavolejte příkaz [čekací úlohy](/powershell/module/microsoft.powershell.core/wait-job) , jak je znázorněno v následujícím příkladu:
+
+```powershell
+$job | Wait-Job
+```
+
+## <a name="known-issues"></a>Známé problémy
+- Pro podmnožinu obnovení, kde jsou k dispozici doplňovací objekty blob, obnovení se nezdaří. Prozatím prosím neprovádějte obnovení, pokud se v účtu nacházejí doplňovací objekty blob.
 
 ## <a name="next-steps"></a>Další kroky
 

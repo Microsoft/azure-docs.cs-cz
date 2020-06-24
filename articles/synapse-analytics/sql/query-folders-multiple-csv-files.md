@@ -1,22 +1,22 @@
 ---
-title: Složky dotazů a více souborů CSV pomocí SQL na vyžádání (Preview)
+title: Složky dotazů a více souborů pomocí SQL na vyžádání (Preview)
 description: SQL na vyžádání (Preview) podporuje čtení více souborů nebo složek pomocí zástupných znaků, které jsou podobné zástupným znakům používaným v operačním systému Windows.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: how-to
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: cb136fa9a3dc63144d26820b7170250b3598ba77
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 6c61bd420121800ade48de88cbcaadf37343262d
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235415"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207627"
 ---
-# <a name="query-folders-and-multiple-csv-files"></a>Složky dotazů a více souborů CSV  
+# <a name="query-folders-and-multiple-files"></a>Dotazování složek a několika souborů  
 
 V tomto článku se dozvíte, jak napsat dotaz pomocí SQL na vyžádání (ve verzi Preview) ve službě Azure synapse Analytics.
 

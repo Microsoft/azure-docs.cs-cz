@@ -4,16 +4,16 @@ description: Jak nakonfigurovat a nasadit virtuální počítač se systémem Wi
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0cb5b2ee8b8391dc4fcb78cc1d3bd212c44f1803
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: eafe2050f834fdd9aecba492c7121be9c1e121e2
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82615406"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85205998"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Nasazení virtuálního počítače s Windows 7 do Windows Virtual Desktopu
 
@@ -32,28 +32,29 @@ Po dokončení požadovaných součástí jste připraveni ke konfiguraci virtu�
 
 Postup nastavení virtuálního počítače se systémem Windows 7 na virtuálním počítači s Windows:
 
-1. Přihlaste se k Azure Portal a vyhledejte bitovou kopii systému Windows 7 Enterprise nebo nahrajte vlastní přizpůsobenou bitovou kopii systému Windows 7 Enterprise (x64).  
+1. Přihlaste se k Azure Portal a vyhledejte bitovou kopii systému Windows 7 Enterprise nebo nahrajte vlastní přizpůsobenou bitovou kopii systému Windows 7 Enterprise (x64).
 2. Nasaďte jeden nebo několik virtuálních počítačů se systémem Windows 7 Enterprise jako hostitelský operační systém. Zajistěte, aby virtuální počítače povolovaly protokol RDP (Remote Desktop Protocol) (RDP) (port TCP/3389).
-3. Připojte se k hostiteli se systémem Windows 7 pomocí protokolu RDP a proveďte ověření pomocí přihlašovacích údajů, které jste definovali při konfiguraci nasazení. 
+3. Připojte se k hostiteli se systémem Windows 7 pomocí protokolu RDP a proveďte ověření pomocí přihlašovacích údajů, které jste definovali při konfiguraci nasazení.
 4. Přidejte účet, který jste použili při připojování k hostiteli pomocí protokolu RDP, do skupiny Remote Desktop User. Pokud to neuděláte, možná se nebudete moct připojit k virtuálnímu počítači po jeho připojení k doméně služby Active Directory.
 5. Na svém VIRTUÁLNÍm počítači přejdete na web Windows Update.
 6. Nainstalujte všechny aktualizace Windows v důležité kategorii.
 7. Nainstalovat všechny aktualizace systému Windows v nepovinné kategorii (kromě jazykových sad). Tím se nainstaluje aktualizace protokol RDP (Remote Desktop Protocol) 8,0 ([KB2592687](https://www.microsoft.com/download/details.aspx?id=35387)), kterou potřebujete k dokončení těchto pokynů.
-8. Otevřete Editor místních zásad skupiny a přejděte do části **Konfigurace** > **počítače šablony pro správu** > **součásti** > systému Windows**Vzdálená plocha** > **hostitel relace vzdálené plochy** > **vzdálené prostředí relace**.
+8. Otevřete Editor místních zásad skupiny a přejděte do části **Konfigurace počítače**  >  **šablony pro správu**  >  **součásti systému Windows**  >  **Vzdálená plocha**  >  **hostitel relace vzdálené plochy**  >  **vzdálené prostředí relace**.
 9. Povolte zásadu protokol RDP (Remote Desktop Protocol) 8,0.
 10. Připojte tento virtuální počítač k doméně služby Active Directory.
 11. Restartujte virtuální počítač spuštěním následujícího příkazu:
-    
+
      ```cmd
      shutdown /r /t 0
      ```
-    
+
 12. Pokud chcete získat registrační token, postupujte podle pokynů uvedených [tady](/powershell/module/windowsvirtualdesktop/export-rdsregistrationinfo/) .
 13. [Stáhněte si agenta virtuální plochy Windows pro Windows 7](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3JZCm).
 14. [Stáhněte správce agenta virtuálních počítačů s Windows pro Windows 7](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3K2e3).
 15. Spusťte instalační program agenta virtuálních počítačů s Windows a postupujte podle pokynů. Po zobrazení výzvy zadejte registrační klíč, který jste vytvořili v kroku 12.
-16. Spusťte instalační program virtuálních klientů Windows a postupujte podle pokynů.
+16. Otevřete Správce agenta virtuálních počítačů s Windows a postupujte podle pokynů.
 17. Volitelně můžete port TCP/3389 zablokovat, aby se odebral přímý protokol RDP (Remote Desktop Protocol) přístup k virtuálnímu počítači.
+18. Volitelně můžete zkontrolovat, že rozhraní .NET Framework má alespoň 4.7.2 verze. To je obzvláště důležité, pokud vytváříte vlastní image.
 
 ## <a name="next-steps"></a>Další kroky
 

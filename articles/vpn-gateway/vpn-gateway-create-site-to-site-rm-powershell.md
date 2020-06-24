@@ -5,15 +5,15 @@ titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: d1693a6165aa31b221b6901e2e1c8b2955a3dfb3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dd246e4e6a59637c720cbaddf1258b6e01f709b0
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76045697"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986111"
 ---
 # <a name="create-a-vnet-with-a-site-to-site-vpn-connection-using-powershell"></a>Vytvoření virtuální sítě pomocí připojení VPN Site-to-Site s použitím prostředí PowerShell
 
@@ -21,8 +21,8 @@ Tento článek ukazuje, jak pomocí PowerShellu vytvořit připojení brány VPN
 
 > [!div class="op_single_selector"]
 > * [portál Azure](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
-> * [Prostředí](vpn-gateway-create-site-to-site-rm-powershell.md)
-> * [CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
+> * [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
+> * [Rozhraní příkazového řádku](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 > * [Azure Portal (Classic)](vpn-gateway-howto-site-to-site-classic-portal.md)
 > 
 >
@@ -31,7 +31,7 @@ Připojení brány VPN typu Site-to-Site slouží k připojení místní sítě 
 
 ![Diagram připojení VPN Gateway typu Site-to-Site mezi různými místy](./media/vpn-gateway-create-site-to-site-rm-powershell/site-to-site-diagram.png)
 
-## <a name="before-you-begin"></a><a name="before"></a>Před zahájením
+## <a name="before-you-begin"></a><a name="before"></a>Než začnete
 
 Před zahájením konfigurace ověřte, že splňujete následující kritéria:
 
@@ -129,7 +129,7 @@ Postup v této části použijte v případě, že už máte virtuální síť, 
    Set-AzVirtualNetwork -VirtualNetwork $vnet
    ```
 
-## <a name="2-create-the-local-network-gateway"></a>2. <a name="localnet"> </a>vytvořte bránu místní sítě.
+## <a name="2-create-the-local-network-gateway"></a>2. <a name="localnet"></a> vytvořte bránu místní sítě.
 
 Brána místní sítě (LNG) obvykle odkazuje na vaše místní umístění. Nejedná se o stejnou bránu virtuální sítě. Pro toto umístění určíte název, podle kterého na něj bude Azure odkazovat, a pak zadáte IP adresu místního zařízení VPN, ke kterému vytvoříte připojení. Zadáte také předpony IP adres, které se budou přes bránu VPN směrovat do zařízení VPN. Předpony adres, které zadáte, jsou předpony ve vaší místní síti. V případě změny vaší místní sítě můžete tyto předpony snadno aktualizovat.
 

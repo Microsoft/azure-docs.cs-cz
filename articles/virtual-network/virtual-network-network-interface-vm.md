@@ -10,17 +10,17 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: 4169bfb5da5b1ad13bab0eb01397f7c1fb20b11b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 68f8a7086dd164c102e42c99bb8d6ba22b71ad6f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80060328"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710979"
 ---
 # <a name="add-network-interfaces-to-or-remove-network-interfaces-from-virtual-machines"></a>Přidání nebo odebrání síťových rozhraní na virtuálních počítačích
 
@@ -28,7 +28,7 @@ Naučte se, jak přidat existující síťové rozhraní při vytváření virtu
 
 Pokud potřebujete přidat, změnit nebo odebrat IP adresy pro síťové rozhraní, přečtěte si téma [Správa IP adres síťového rozhraní](virtual-network-network-interface-addresses.md). Chcete-li vytvořit, změnit nebo odstranit síťová rozhraní, přečtěte si téma [Správa síťových rozhraní](virtual-network-network-interface.md).
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -52,7 +52,7 @@ Než vytvoříte virtuální počítač, [vytvořte síťové rozhraní](virtual
 
 |Nástroj|Příkaz|
 |---|---|
-|CLI|[az network nic create](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az-network-nic-create)|
+|Rozhraní příkazového řádku|[az network nic create](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az-network-nic-create)|
 |PowerShell|[New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
 ## <a name="add-a-network-interface-to-an-existing-vm"></a>Přidání síťového rozhraní do existujícího virtuálního počítače
@@ -65,14 +65,14 @@ Postup přidání síťového rozhraní k virtuálnímu počítači:
 
 3. Na panelu příkazů virtuálního počítače vyberte **zastavit**a potom v potvrzovacím dialogovém okně klikněte na **OK** . Pak počkejte, než se **stav** virtuálního počítače změní na **Zastaveno (přidělení zrušeno)**.
 
-4. Z panelu nabídky virtuálního počítače vyberte **sítě** > **připojit síťové rozhraní**. Pak v části **Připojit stávající síťové rozhraní**zvolte síťové rozhraní, které se chcete připojit, a vyberte **OK**.
+4. Z panelu nabídky virtuálního počítače vyberte **sítě**  >  **připojit síťové rozhraní**. Pak v části **Připojit stávající síťové rozhraní**zvolte síťové rozhraní, které se chcete připojit, a vyberte **OK**.
 
     >[!NOTE]
     >Síťové rozhraní, které vyberete, nemůže mít povolené urychlení sítě, nemůže mít přiřazenou adresu IPv6 a musí existovat ve stejné virtuální síti se síťovým rozhraním aktuálně připojeným k virtuálnímu počítači.
 
     Pokud nemáte existující síťové rozhraní, musíte ho nejdřív vytvořit. Provedete to tak, že vyberete **vytvořit síťové rozhraní**. Další informace o tom, jak vytvořit síťové rozhraní, najdete v tématu [Vytvoření síťového rozhraní](virtual-network-network-interface.md#create-a-network-interface). Další informace o dalších omezeních při přidávání síťových rozhraní k virtuálním počítačům najdete v tématu věnovaném [omezením](#constraints).
 
-5. V řádku nabídek virtuálního počítače vyberte **Přehled** > **Start** a restartujte virtuální počítač.
+5. V řádku nabídek virtuálního počítače vyberte **Přehled**  >  **Start** a restartujte virtuální počítač.
 
 Nyní můžete nakonfigurovat operační systém virtuálního počítače tak, aby používal více síťových rozhraní správně. Přečtěte si, jak nakonfigurovat [Linux](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) nebo [Windows](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) pro více síťových rozhraní.
 
@@ -80,7 +80,7 @@ Nyní můžete nakonfigurovat operační systém virtuálního počítače tak, 
 
 |Nástroj|Příkaz|
 |---|---|
-|CLI|[AZ VM nic Add](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az-vm-nic-add) (Reference); [podrobný postup](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-a-nic-to-a-vm)|
+|Rozhraní příkazového řádku|[AZ VM nic Add](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az-vm-nic-add) (Reference); [podrobný postup](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-a-nic-to-a-vm)|
 |PowerShell|[Add-AzVMNetworkInterface](/powershell/module/az.compute/add-azvmnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json) (Referenční dokumentace); [podrobný postup](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-a-nic-to-an-existing-vm)|
 
 ## <a name="view-network-interfaces-for-a-vm"></a>Zobrazení síťových rozhraní pro virtuální počítač
@@ -102,7 +102,7 @@ Další informace o nastaveních síťových rozhraní a o tom, jak je změnit, 
 
 |Nástroj|Příkaz|
 |---|---|
-|CLI|[AZ VM nic list](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az-vm-nic-list)|
+|Rozhraní příkazového řádku|[AZ VM nic list](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az-vm-nic-list)|
 |PowerShell|[Get-AzVM](/powershell/module/az.compute/get-azvm?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
 ## <a name="remove-a-network-interface-from-a-vm"></a>Odebrání síťového rozhraní z virtuálního počítače
@@ -115,7 +115,7 @@ Další informace o nastaveních síťových rozhraní a o tom, jak je změnit, 
 
 4. Počkejte, až se **stav** virtuálního počítače změní na **Zastaveno (přidělení zrušeno)**.
 
-5. Z panelu nabídky virtuálního **počítače vyberte** > síť**Odpojit síťové rozhraní**.
+5. Z panelu nabídky virtuálního **počítače vyberte síť**  >  **Odpojit síťové rozhraní**.
 
 6. V dialogovém okně **Odpojit síťové rozhraní** vyberte síťové rozhraní, které se chcete odpojit. Pak vyberte **OK**.
 
@@ -126,7 +126,7 @@ Další informace o nastaveních síťových rozhraní a o tom, jak je změnit, 
 
 |Nástroj|Příkaz|
 |---|---|
-|CLI|[AZ VM nic Remove](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az-vm-nic-remove) (Reference); [podrobný postup](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#remove-a-nic-from-a-vm)|
+|Rozhraní příkazového řádku|[AZ VM nic Remove](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az-vm-nic-remove) (Reference); [podrobný postup](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#remove-a-nic-from-a-vm)|
 |PowerShell|[Remove-AzVMNetworkInterface](/powershell/module/az.compute/remove-azvmnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json) (Referenční dokumentace); [podrobný postup](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#remove-a-nic-from-an-existing-vm)|
 
 ## <a name="constraints"></a>Omezení

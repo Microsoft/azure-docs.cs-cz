@@ -3,15 +3,15 @@ title: Přesuňte skupinu zabezpečení sítě Azure (NSG) do jiné oblasti Azur
 description: Pomocí šablony Azure Resource Manager můžete přesunout skupinu zabezpečení sítě Azure z jedné oblasti Azure do jiné pomocí Azure PowerShell.
 author: asudbring
 ms.service: virtual-network
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/31/2019
 ms.author: allensu
-ms.openlocfilehash: 0cbd8f61cb1b4cb8eae6b30625fb3039ff75adde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 04abc051cec8a6fb38ce6aa8f5347ae06cb8bd1d
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75641464"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84688445"
 ---
 # <a name="move-azure-network-security-group-nsg-to-another-region-using-azure-powershell"></a>Přesuňte skupinu zabezpečení sítě Azure (NSG) do jiné oblasti pomocí Azure PowerShell
 
@@ -61,7 +61,7 @@ Následující kroky ukazují, jak připravit skupinu zabezpečení sítě pro p
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceNSGID -IncludeParameterDefaultValue
    ```
 
-4. Stažený soubor se pojmenuje po vytvoření skupiny prostředků, ze které byl prostředek exportován.  Vyhledejte soubor, který byl exportován z příkazu s názvem ** \<Resource-Group-Name>. JSON** a otevřete jej v editoru podle vlastního výběru:
+4. Stažený soubor se pojmenuje po vytvoření skupiny prostředků, ze které byl prostředek exportován.  Vyhledejte soubor, který byl exportován z příkazu s názvem ** \<resource-group-name> . JSON** , a otevřete jej v editoru podle vlastního výběru:
    
    ```azurepowershell
    notepad <source-resource-group-name>.json
@@ -106,9 +106,9 @@ Následující kroky ukazují, jak připravit skupinu zabezpečení sítě pro p
     Get-AzLocation | format-table
     
     ```
-8. Můžete také změnit další parametry v ** \<názvu Resource-Group-Name>. JSON** , pokud zvolíte možnost a jsou nepovinné v závislosti na vašich požadavcích:
+8. Můžete také změnit další parametry v ** \<resource-group-name> . JSON** , pokud zvolíte možnost a jsou nepovinné v závislosti na vašich požadavcích:
 
-    * **Pravidla zabezpečení** – pravidla, která se nasazují do cílových NSG, můžete upravit přidáním nebo odebráním pravidel do oddílu **securityRules** v souboru ** \<Resource-Group-Name>. JSON** :
+    * **Pravidla zabezpečení** – pravidla, která se nasazují do cílových NSG, můžete upravit přidáním nebo odebráním pravidel do oddílu **securityRules** v souboru ** \<resource-group-name> . JSON** :
 
         ```json
            "resources": [
@@ -144,7 +144,7 @@ Následující kroky ukazují, jak připravit skupinu zabezpečení sítě pro p
             
         ```
 
-        Chcete-li dokončit sčítání nebo odebírání pravidel v cílovém NSG, je nutné také upravit typy vlastních pravidel na konci souboru ** \<Resource-Group-Name>. JSON** ve formátu níže uvedeného příkladu:
+        Chcete-li dokončit sčítání nebo odebírání pravidel v cílovém NSG, je nutné také upravit typy vlastních pravidel na konci souboru ** \<resource-group-name> . JSON** ve formátu níže uvedeného příkladu:
 
         ```json
            {
@@ -171,7 +171,7 @@ Následující kroky ukazují, jak připravit skupinu zabezpečení sítě pro p
             }
         ```
 
-9. Uložte soubor ** \<Resource-Group-Name>. JSON** .
+9. Uložte soubor ** \<resource-group-name> . JSON** .
 
 10. Vytvořte skupinu prostředků v cílové oblasti pro nasazení cílového NSG pomocí [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0):
     
@@ -179,7 +179,7 @@ Následující kroky ukazují, jak připravit skupinu zabezpečení sítě pro p
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
     
-11. Do skupiny prostředků vytvořené v předchozím kroku nasaďte upravený ** \<soubor Resource-Group-Name>. JSON** pomocí [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0):
+11. Nasaďte upravený soubor ** \<resource-group-name> . JSON** do skupiny prostředků vytvořené v předchozím kroku pomocí [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0):
 
     ```azurepowershell-interactive
 

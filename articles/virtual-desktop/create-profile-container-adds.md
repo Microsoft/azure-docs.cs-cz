@@ -4,16 +4,16 @@ description: Tento článek popisuje, jak vytvořit kontejner profilu FSLogix se
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7159eac0e71819fd75abef07cae979d5425fc07c
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: 3348920260b6c256b25d0ff2419cdfd2a00dea35
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84484614"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207307"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-azure-ad-ds"></a>Vytvoření kontejneru profilu se službou Azure Files a Azure služba AD DS
 
@@ -41,7 +41,7 @@ Přidání správce:
 
 ## <a name="set-up-an-azure-storage-account"></a>Nastavení účtu Azure Storage
 
-Teď je čas povolit ověřování Azure služba AD DS přes protokol SMB (Server Message Block). 
+Teď je čas povolit ověřování Azure služba AD DS přes protokol SMB (Server Message Block).
 
 Povolení ověřování:
 
@@ -108,8 +108,8 @@ Získání přístupového klíče účtu úložiště:
     - Nahraďte `<share-name>` názvem sdílené složky, kterou jste vytvořili dříve.
     - Nahraďte `<storage-account-key>` klíčem účtu úložiště z Azure.
 
-    Příklad:  
-  
+    Příklad:
+
      ```cmd
      net use y: \\fsprofile.file.core.windows.net\share HDZQRoFP2BBmoYQ=(truncated)= /user:Azure\fsprofile)
      ```
@@ -124,7 +124,7 @@ Získání přístupového klíče účtu úložiště:
     - Nahraďte `<user-email>` hlavní název uživatele (UPN), který bude používat tento profil pro přístup k virtuálním počítačům hostitele relace.
 
     Příklad:
-     
+
      ```cmd
      icacls y: /grant john.doe@contoso.com:(f)
      ```
@@ -137,7 +137,7 @@ Postup konfigurace kontejneru profilu FSLogix:
 
 1. Přihlaste se k virtuálnímu počítači hostitele relace, který jste nakonfigurovali na začátku tohoto článku, [a pak stáhněte a nainstalujte agenta FSLogix](/fslogix/install-ht/).
 
-2. Rozbalte soubor agenta FSLogix, který jste stáhli, klikněte na **x64**  >  **releases**a pak otevřete **FSLogixAppsSetup. exe**.
+2. Rozbalte stažený soubor agenta FSLogix, klikněte na verze **x64**a  >  **Releases**pak otevřete **FSLogixAppsSetup.exe**.
 
 3. Jakmile se instalační program spustí, vyberte Souhlasím **s licenčními podmínkami a ujednáními.** V případě potřeby zadejte nový klíč.
 
@@ -203,13 +203,13 @@ Přiřazení uživatelů:
 
      ```powershell
      $pool1 = "contoso"
-     
+
      $tenant = "contoso"
-     
+
      $appgroup = "Desktop Application Group"
-     
+
      $user1 = "jane.doe@contoso.com"
-     
+
      Add-RdsAppGroupUser $tenant $pool1 $appgroup $user1
      ```
 

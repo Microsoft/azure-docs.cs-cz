@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: allensu
-ms.openlocfilehash: ebbb0dd059ce2bcf4a3bc260ed6d426d5be09dfe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1946da6a18956b420684f4c2ffe86f35d0084eaf
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260254"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887302"
 ---
 # <a name="purge-an-azure-cdn-endpoint"></a>Vyprázdnit Azure CDN koncový bod
 ## <a name="overview"></a>Přehled
@@ -52,15 +52,15 @@ Tento kurz vás provede vymazáním assetů ze všech hraničních uzlů koncov�
    > 
    > 
 4. Vyberte prostředky, které chcete vymazat z hraničních uzlů.  Pokud chcete vymazat všechny prostředky, klikněte na zaškrtávací políčko **Odstranit vše** .  V opačném případě zadejte cestu každého assetu, který chcete vyprázdnit, do textového pole **cesta** . Následující formáty jsou v cestě podporované.
-    1. **Vyprázdnění jedné adresy URL**: vyprázdnění jednotlivých assetů zadáním úplné adresy URL s příponou nebo bez přípony souboru`/pictures/strasbourg.png`, např.,;`/pictures/strasbourg`
-    2. **Zástupné znaky**:\*hvězdička () se dá použít jako zástupný znak. Vyprázdnit všechny složky, podsložky a soubory v rámci koncového `/*` bodu v cestě nebo vyprázdnit všechny podsložky a soubory v konkrétní složce zadáním složky následovaný `/*`, např..`/pictures/*`  Všimněte si, že Azure CDN v současné době nepodporuje zástupné znaky vyprázdnění z Akamai. 
+    1. **Vyprázdnění jedné adresy URL**: vyprázdnění jednotlivých assetů zadáním úplné adresy URL s příponou nebo bez přípony souboru, např., `/pictures/strasbourg.png` ;`/pictures/strasbourg`
+    2. **Zástupné znaky**: hvězdička ( \* ) se dá použít jako zástupný znak. Vyprázdnit všechny složky, podsložky a soubory v rámci koncového bodu `/*` v cestě nebo vyprázdnit všechny podsložky a soubory v konkrétní složce zadáním složky následovaný `/*` , např. `/pictures/*` .  Všimněte si, že Azure CDN v současné době nepodporuje zástupné znaky vyprázdnění z Akamai. 
     3. **Kořenová doména vyprázdnění**: vyprázdní kořen koncového bodu znakem "/" v cestě.
    
    > [!TIP]
    > Pro vyprázdnění je nutné zadat cesty a musí se jednat o relativní adresu URL, která se vejde do následujícího [regulárního výrazu](/dotnet/standard/base-types/regular-expression-language-quick-reference). **Vyprázdnit všechny** a **zástupné znaky** , které **Azure CDN z Akamai** aktuálně nepodporuje.
    > > Vyprázdnění jedné adresy URL`@"^\/(?>(?:[a-zA-Z0-9-_.%=\(\)\u0020]+\/?)*)$";`  
    > > Řetězec dotazu`@"^(?:\?[-\@_a-zA-Z0-9\/%:;=!,.\+'&\(\)\u0020]*)?$";`  
-   > > Zástupné znaky vyprázdnění `@"^\/(?:[a-zA-Z0-9-_.%=\(\)\u0020]+\/)*\*$";`. 
+   > > Zástupné znaky vyprázdnění `@"^\/(?:[a-zA-Z0-9-_.%=\(\)\u0020]+\/)*\*$";` . 
    > 
    > Další textová pole **cesty** se zobrazí po zadání textu, který vám umožní vytvořit seznam více prostředků.  Assety můžete ze seznamu odstranit kliknutím na tlačítko se třemi tečkami (...).
    > 

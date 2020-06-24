@@ -4,16 +4,16 @@ description: Jak nasadit nástroj pro diagnostiku diagnostiky pro virtuální po
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6635fff957512b601fe0927769e4ea91e9270450
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 0660947907b26e1a86bbd68bb32d1ac5d211b20e
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82615172"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85206049"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>Nasazení diagnostických nástrojů
 
@@ -68,7 +68,7 @@ V této části se dozvíte, jak pomocí PowerShellu vytvořit aplikaci Azure Ac
    ```powershell
    Connect-AzureAD
    ```
-4. Přejít do [úložiště GitHub šablon RDS](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts) a spusťte v PowerShellu skript **CreateADAppRegistrationforDiagnostics. ps1** .
+4. Přejít do [úložiště GitHub šablon RDS](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts) a spustit skript **CreateADAppRegistrationforDiagnostics.ps1** v PowerShellu.
 5.  Když se skript zeptá, že chcete aplikaci pojmenovat, zadejte jedinečný název aplikace.
 
 
@@ -93,7 +93,7 @@ Spuštěním skriptu PowerShellu můžete vytvořit pracovní prostor Log Analyt
 Spuštění skriptu prostředí PowerShell:
 
 1.  Otevřete PowerShell jako správce.
-2.  Přejít do [úložiště GitHub šablon RDS](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts) a spusťte v PowerShellu skript **CreateLogAnalyticsWorkspaceforDiagnostics. ps1** .
+2.  Přejít do [úložiště GitHub šablon RDS](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts) a spustit skript **CreateLogAnalyticsWorkspaceforDiagnostics.ps1** v PowerShellu.
 3. Zadejte následující hodnoty parametrů:
 
     - Pro **ResourceGroupName**zadejte název skupiny prostředků.
@@ -115,13 +115,13 @@ Tady je postup, jak ručně nakonfigurovat Doporučené čítače výkonu:
 1. Otevřete internetový prohlížeč a přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí účtu správce.
 2. V dalším kroku přejdete do části **Log Analytics pracovní prostory** , ve kterých si prohlédnete nakonfigurované čítače výkonu systému Windows.
 3. V části **Nastavení** vyberte **Upřesnit nastavení**.
-4. Potom přejděte do části čítače výkonu **data** > **systému Windows** a přidejte následující čítače:
+4. Potom přejděte do části **Data**  >  **čítače výkonu data systému Windows** a přidejte následující čítače:
 
-    -   Logický disk (\*)\\% volného místa
-    -   Logický disk (C:)\\prům. délka fronty disku
-    -   Paměť (\*)\\dostupné v MB
-    -   Čas procesoru (\*)\\informace o procesoru
-    -   Zpoždění vstupu uživatele na relaci (\*)\\max. zpoždění vstupu
+    -   Logický disk ( \* ) \\ % volného místa
+    -   Logický disk (C:) \\ prům. délka fronty disku
+    -   Paměť ( \* ) \\ dostupné v MB
+    -   \*Čas procesoru () informace o procesoru \\
+    -   Zpoždění vstupu uživatele na relaci ( \* ) \\ Max. zpoždění vstupu
 
 Přečtěte si další informace o čítačích výkonu ve [zdrojích dat výkonu systému Windows a Linux v Azure monitor](/azure/azure-monitor/platform/data-sources-performance-counters).
 
@@ -147,14 +147,14 @@ Abyste se ujistili, že váš pracovní prostor Log Analytics má předkonfiguro
 
 1. V [Azure Portal](https://portal.azure.com/)můžete zkontrolovat nakonfigurované čítače výkonu systému Windows, přejít do **Log Analytics pracovních prostorů** .
 2. V části **Nastavení**vyberte **Upřesnit nastavení**.
-3. Pak přejdete na**čítače výkonu** **data** > Windows.
+3. Pak přejdete na **Data**  >  **čítače výkonu data Windows**.
 4. Ujistěte se, že jsou předem nakonfigurované následující čítače:
 
-   - Logický disk (\*)\\% volné místo: zobrazuje množství volného místa celkového použitelného místa na disku v procentech.
-   - Logický disk (C:)\\prům. délka fronty disku: délka požadavku na přenos disku pro jednotku jazyka C. Hodnota by neměla být větší než 2 pro více než krátkou dobu.
-   - Paměť (\*)\\dostupné v MB: dostupná paměť systému v megabajtech.
-   - Procesor informace o\*procesoru\\() čas procesoru: procentuální hodnota uplynulého času, který procesor stráví spuštěním nečinného vlákna.
-   - Zpoždění vstupu uživatele na relaci (\*)\\max. zpoždění vstupu
+   - Logický disk ( \* ) \\ % volné místo: zobrazuje množství volného místa celkového použitelného místa na disku v procentech.
+   - Logický disk (C:) \\ prům. délka fronty disku: délka požadavku na přenos disku pro jednotku jazyka C. Hodnota by neměla být větší než 2 pro více než krátkou dobu.
+   - Paměť ( \* ) \\ dostupné v MB: dostupná paměť systému v megabajtech.
+   - Procesor informace o procesoru ( \* ) \\ čas procesoru: procentuální hodnota uplynulého času, který procesor stráví spuštěním nečinného vlákna.
+   - Zpoždění vstupu uživatele na relaci ( \* ) \\ Max. zpoždění vstupu
 
 ### <a name="connect-to-vms-in-your-log-analytics-workspace"></a>Připojení k virtuálním počítačům v pracovním prostoru Log Analytics
 
@@ -164,7 +164,7 @@ Aby bylo možné zobrazit stav virtuálních počítačů, musíte povolit Log A
 2. Přejít do pracovního prostoru Log Analytics.
 3. Na levém panelu v části zdroje dat pracovního prostoru vyberte **virtuální počítače**.
 4. Vyberte název virtuálního počítače, ke kterému se chcete připojit.
-5. Vyberte **Connect** (Připojit).
+5. Vyberte **Připojit**.
 
 ## <a name="deploy-the-diagnostics-tool"></a>Nasazení diagnostických nástrojů
 
@@ -193,11 +193,11 @@ Nastavení identifikátoru URI přesměrování:
 4.  Na levém panelu v části spravovat oddíl vyberte **ověřování**.
 5.  Do textového pole **identifikátor URI pro přesměrování** zadejte požadovaný identifikátor URI pro přesměrování a pak v levém horním rohu nabídky vyberte **Save (Uložit** ).
 6. V rozevírací nabídce Typ vyberte **Web** .
-7. Zadejte adresu URL na stránce Přehled aplikace a na konec této stránky přidejte **/Security/SignIn-callback** . Například: `https://<yourappname>.azurewebsites.net/security/signin-callback`.
+7. Zadejte adresu URL na stránce Přehled aplikace a na konec této stránky přidejte **/Security/SignIn-callback** . Příklad: `https://<yourappname>.azurewebsites.net/security/signin-callback`.
 
    ![Stránka s identifikátorem URI pro přesměrování](../media/redirect-uri-page.png)
 
-8. Teď přejděte k prostředkům Azure, vyberte prostředek Azure App Services s názvem, který jste zadali v šabloně, a přejděte na adresu URL, která k němu je přidružená. (Pokud jste například použili název aplikace `contosoapp45`, který jste použili v šabloně, pak je <https://contosoapp45.azurewebsites.net>vaše přidružená adresa URL).
+8. Teď přejděte k prostředkům Azure, vyberte prostředek Azure App Services s názvem, který jste zadali v šabloně, a přejděte na adresu URL, která k němu je přidružená. (Pokud jste například použili název aplikace, který jste použili v šabloně `contosoapp45` , pak je vaše přidružená adresa URL <https://contosoapp45.azurewebsites.net> ).
 9. Přihlaste se pomocí příslušného Azure Active Directory uživatelského účtu.
 10.   Vyberte **Přijmout**.
 
@@ -226,7 +226,7 @@ Aktivity jsou seřazené podle časového razítka nejdříve s poslední aktivi
 
 Aktivity připojení můžou mít víc než jednu chybu. Můžete rozbalit typ aktivity a zobrazit všechny chyby, které uživatel provedl. Vyberte název kódu chyby a otevřete tak dialogové okno, ve kterém se zobrazí další informace.
 
-### <a name="investigate-the-session-host"></a>Prozkoumat hostitele relace 
+### <a name="investigate-the-session-host"></a>Prozkoumat hostitele relace
 
 Ve výsledcích hledání vyhledejte a vyberte hostitele relace, o které chcete získat informace.
 
@@ -242,26 +242,26 @@ Můžete také interagovat s uživateli na hostiteli relace:
 
 ### <a name="windows-performance-counter-thresholds"></a>Prahové hodnoty čítače výkonu systému Windows
 
-- Logický disk (\*)\\% volné místo:
+- Logický disk ( \* ) \\ % volné místo:
 
     - Zobrazí procentuální hodnotu celkového použitelného místa na logickém disku, který je zdarma.
     - Prahová hodnota: méně než 20% je označeno jako není v pořádku.
 
-- Logický disk (C:)\\prům. délka fronty disku:
+- Logický disk (C:) \\ prům. délka fronty disku:
 
     - Představuje systémové podmínky úložiště.
     - Prahová hodnota: vyšší než 5 je označeno jako není v pořádku.
 
-- Paměť (\*)\\k dispozici v MB:
+- Paměť ( \* ) \\ k dispozici v MB:
 
     - Paměť, která je k dispozici pro systém.
     - Prahová hodnota: méně než 500 MB označeno jako chybné.
 
-- Čas procesoru (\*)\\informace o procesoru:
+- Čas procesoru () informace o procesoru \* \\ :
 
     - Prahová hodnota: vyšší než 80% je označena jako stav není v pořádku.
 
-- [Zpoždění vstupu uživatele na relaci (\*)\\maximální prodleva vstupu](/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters/):
+- [Zpoždění vstupu uživatele na relaci ( \* ) \\ maximální prodleva vstupu](/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters/):
 
     - Prahová hodnota: vyšší než 2000 MS je označeno jako není v pořádku.
 

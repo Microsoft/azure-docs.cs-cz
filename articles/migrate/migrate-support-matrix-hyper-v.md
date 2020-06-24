@@ -2,13 +2,13 @@
 title: Podpora pro vyhodnocení technologie Hyper-V v Azure Migrate
 description: Další informace o podpoře pro vyhodnocení technologie Hyper-V s Azure Migrate posouzení serveru
 ms.topic: conceptual
-ms.date: 04/15/2020
-ms.openlocfilehash: 5ba7e74624f719feb6efbb3fb58dd3375250d649
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.date: 06/14/2020
+ms.openlocfilehash: c2df23b1566b4d793f4511499fd82d7912d0520f
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266776"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85051906"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>Matice podpory pro posouzení technologie Hyper-V
 
@@ -19,7 +19,7 @@ Pokud chcete nastavit posouzení virtuálního počítače Hyper-V, vytvořte pr
 
 ## <a name="limitations"></a>Omezení
 
-**Podpora** | **Zobrazí**
+**Podpora** | **Podrobnosti**
 --- | ---
 **Omezení hodnocení** | V jednom [Azure Migrate projektu](migrate-support-matrix.md#azure-migrate-projects)můžete vyhledat a posoudit až 35 000 virtuálních počítačů Hyper-V.
 **Omezení projektu** | V předplatném Azure můžete vytvořit více projektů. Kromě virtuálních počítačů Hyper-V může projekt zahrnovat virtuální počítače VMware a fyzické servery až po omezení pro posouzení jednotlivých.
@@ -32,7 +32,7 @@ Pokud chcete nastavit posouzení virtuálního počítače Hyper-V, vytvořte pr
 
 ## <a name="hyper-v-host-requirements"></a>Požadavky na hostitele Hyper-V
 
-| **Podpora**                | **Zobrazí**               
+| **Podpora**                | **Podrobnosti**               
 | :-------------------       | :------------------- |
 | **Hostitel Hyper-V**       | Hostitel Hyper-V může být samostatný nebo nasazený v clusteru.<br/><br/> Hostitel Hyper-V může používat Windows Server 2019, Windows Server 2016 nebo Windows Server 2012 R2.<br/> Virtuální počítače na hostitelích Hyper-V s Windows Serverem 2012 hodnotit nemůžete.
 | **Oprávnění**           | Na hostiteli Hyper-V potřebujete oprávnění správce. <br/> Pokud nechcete přiřazovat oprávnění správce, vytvořte místní účet nebo uživatelský účet domény a přidejte do těchto skupin uživatelský účet – Uživatelé vzdálené správy, Správci technologie Hyper-V a uživatelé nástroje Performance Monitor. |
@@ -40,9 +40,9 @@ Pokud chcete nastavit posouzení virtuálního počítače Hyper-V, vytvořte pr
 | **Replika technologie Hyper-V**       | Pokud používáte repliku technologie Hyper-V (nebo máte více virtuálních počítačů se stejnými identifikátory virtuálních počítačů) a zjistíte jak původní, tak replikované virtuální počítače pomocí Azure Migrate, hodnocení vygenerované Azure Migrate nemusí být přesné. |
 
 
-## <a name="hyper-v-vm-requirements"></a>Požadavky na virtuální počítače Hyper-V
+## <a name="vm-requirements"></a>Požadavky na virtuální počítače
 
-| **Podpora**                  | **Zobrazí**               
+| **Podpora**                  | **Podrobnosti**               
 | :----------------------------- | :------------------- |
 | **Operační systém** | Pro migraci se dají zhodnotit všechny operační systémy.  |
 | **Služba Integration Services**       | Aby bylo možné zachytit informace o operačním systému, musí být na virtuálních počítačích, které jste vyhodnotili, spuštěny [integrační služby technologie Hyper-v](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/integration-services) . |
@@ -63,13 +63,13 @@ Následující tabulka shrnuje požadavky na porty pro posouzení.
 **Zařízení** | **Připojení**
 --- | ---
 **Náplně** | Příchozí připojení na portu TCP 3389 umožňující připojení ke vzdálené ploše zařízení.<br/><br/> Příchozí připojení na portu 44368 pro vzdálený přístup k aplikaci pro správu zařízení pomocí adresy URL:``` https://<appliance-ip-or-name>:44368 ```<br/><br/> Odchozí připojení na portech 443 (HTTPS), která odesílají metadata zjišťování a výkonu Azure Migrate.
-**Hostitel nebo cluster Hyper-V** | Příchozí připojení na portech WinRM 5985 (HTTP) a 5986 (HTTPS) k vyžádání dat o metadatech a výkonu pro virtuální počítače Hyper-V pomocí relace model CIM (Common Information Model) (CIM).
+**Hostitel nebo cluster Hyper-V** | Příchozí připojení na portu WinRM 5985 (HTTP), které vyžádá data o metadatech a výkonu pro virtuální počítače Hyper-V pomocí relace model CIM (Common Information Model) (CIM).
 
 ## <a name="agent-based-dependency-analysis-requirements"></a>Požadavky na analýzu závislostí na základě agentů
 
 [Analýza závislostí](concepts-dependency-visualization.md) vám pomůže identifikovat závislosti mezi místními počítači, které chcete vyhodnotit a migrovat do Azure. Tabulka shrnuje požadavky na nastavení analýzy závislostí založené na agentech. Technologie Hyper-V aktuálně podporuje vizualizaci závislostí založenou na agentech. 
 
-**Požadavek** | **Zobrazí** 
+**Požadavek** | **Podrobnosti** 
 --- | --- 
 **Před nasazením** | Měli byste mít Azure Migrate projekt, pomocí nástroje pro vyhodnocení serveru přidaný do projektu.<br/><br/>  Vizualizace závislostí nasadíte po nastavení zařízení Azure Migrate pro zjištění vašich místních počítačů.<br/><br/> [Naučte](create-manage-projects.md) se, jak poprvé vytvořit projekt.<br/> [Přečtěte si, jak](how-to-assess.md) přidat nástroj pro vyhodnocení do existujícího projektu.<br/> Přečtěte si, jak nastavit zařízení Azure Migrate pro posouzení [virtuálních počítačů Hyper-V](how-to-set-up-appliance-hyper-v.md).
 **Azure Government** | Vizualizace závislostí není v Azure Government k dispozici.

@@ -7,11 +7,11 @@ ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
 ms.openlocfilehash: 3e41f92f9e41f7a05102e8c0e1c2edb81fa50bf3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79270235"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708038"
 ---
 # <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-azure-logic-apps"></a>Nastavení protokolů Azure Monitor a shromažďování diagnostických dat pro Azure Logic Apps
 
@@ -41,7 +41,7 @@ Log Analytics můžete zapnout, když vytvoříte aplikaci logiky.
 
       Po dokončení tohoto kroku Azure vytvoří aplikaci logiky, která je teď přidružená k vašemu pracovnímu prostoru Log Analytics. Tento krok také automaticky nainstaluje řešení pro správu Logic Apps do svého pracovního prostoru.
 
-1. Až to budete mít, vyberte **Vytvořit**.
+1. Po dokončení vyberte **Vytvořit**.
 
 1. Po spuštění aplikace logiky pro zobrazení spuštění aplikace logiky [pokračujte následujícími kroky](#view-logic-app-runs).
 
@@ -51,7 +51,7 @@ Log Analytics můžete zapnout, když vytvoříte aplikaci logiky.
 
 Pokud jste při vytváření aplikace logiky zapnuli Log Analytics, přeskočte tento krok. V pracovním prostoru Log Analytics už máte nainstalované řešení pro správu Logic Apps.
 
-1. Do vyhledávacího pole [Azure Portal](https://portal.azure.com)zadejte `log analytics workspaces`a potom vyberte **Log Analytics pracovní prostory**.
+1. Do vyhledávacího pole [Azure Portal](https://portal.azure.com)zadejte `log analytics workspaces` a potom vyberte **Log Analytics pracovní prostory**.
 
    ![Vyberte Log Analytics pracovní prostory.](./media/monitor-logic-apps-log-analytics/find-select-log-analytics-workspaces.png)
 
@@ -59,7 +59,7 @@ Pokud jste při vytváření aplikace logiky zapnuli Log Analytics, přeskočte 
 
    ![Vyberte svůj pracovní prostor Log Analytics](./media/monitor-logic-apps-log-analytics/select-log-analytics-workspace.png)
 
-1. V podokně **Přehled** v části Začínáme **s Log Analytics** > **Konfigurace řešení monitorování**vyberte **Zobrazit řešení**.
+1. V podokně **Přehled** v části Začínáme **s Log Analytics**  >  **Konfigurace řešení monitorování**vyberte **Zobrazit řešení**.
 
    ![V podokně s přehledem vyberte možnost Zobrazit řešení.](./media/monitor-logic-apps-log-analytics/log-analytics-workspace.png)
 
@@ -67,7 +67,7 @@ Pokud jste při vytváření aplikace logiky zapnuli Log Analytics, přeskočte 
 
    ![V podokně s přehledem přidejte nové řešení.](./media/monitor-logic-apps-log-analytics/add-logic-apps-management-solution.png)
 
-1. Po otevření **Marketplace** do vyhledávacího pole zadejte `logic apps management`a vyberte **Logic Apps Management**.
+1. Po otevření **Marketplace** do vyhledávacího pole zadejte `logic apps management` a vyberte **Logic Apps Management**.
 
    ![Z Marketplace vyberte Logic Apps Management.](./media/monitor-logic-apps-log-analytics/select-logic-apps-management.png)
 
@@ -91,7 +91,7 @@ Když ukládáte informace o událostech a datech modulu runtime v [protokolech 
 
 1. V [Azure Portal](https://portal.azure.com)vyhledejte a vyberte svou aplikaci logiky.
 
-1. V nabídce aplikace logiky v části **monitorování**vyberte >  **nastavení diagnostiky****Přidat nastavení diagnostiky**.
+1. V nabídce aplikace logiky v části **monitorování**vyberte **nastavení diagnostiky**  >  **Přidat nastavení diagnostiky**.
 
    ![V části monitorování vyberte nastavení diagnostiky > přidat nastavení diagnostiky.](./media/monitor-logic-apps-log-analytics/logic-app-diagnostics.png)
 
@@ -123,7 +123,7 @@ Po spuštění aplikace logiky můžete zobrazit data o těchto spuštěních v 
 
 1. V [Azure Portal](https://portal.azure.com)vyhledejte a otevřete Log Analytics pracovní prostor.
 
-1. V nabídce pracovního prostoru vyberte možnost >  **Přehled pracovního prostoru****Logic Apps Správa**.
+1. V nabídce pracovního prostoru vyberte možnost **Přehled pracovního prostoru**  >  **Logic Apps Správa**.
 
    ![Stav a počet spuštění aplikace logiky](./media/monitor-logic-apps-log-analytics/logic-app-runs-summary.png)
 
@@ -192,11 +192,11 @@ Na základě umístění, kam chcete poslat diagnostická data, se ujistěte, ž
 
 ## <a name="azure-monitor-diagnostics-events"></a>Události diagnostiky Azure Monitor
 
-Každá událost diagnostiky obsahuje podrobnosti o vaší aplikaci logiky a o tom, že událost je například stav, čas spuštění, čas ukončení a tak dále. Chcete-li programově nastavit monitorování, sledování a protokolování, můžete tyto informace použít spolu s [REST API pro Azure Logic Apps](https://docs.microsoft.com/rest/api/logic) a [REST API pro Azure monitor](../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows). Můžete také použít vlastnosti `clientTrackingId` a `trackedProperties` , které se zobrazí v 
+Každá událost diagnostiky obsahuje podrobnosti o vaší aplikaci logiky a o tom, že událost je například stav, čas spuštění, čas ukončení a tak dále. Chcete-li programově nastavit monitorování, sledování a protokolování, můžete tyto informace použít spolu s [REST API pro Azure Logic Apps](https://docs.microsoft.com/rest/api/logic) a [REST API pro Azure monitor](../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows). Můžete také použít `clientTrackingId` `trackedProperties` vlastnosti a, které se zobrazí v 
 
-* `clientTrackingId`: Pokud není zadaný, Azure automaticky vygeneruje toto ID a koreluje události v rámci spuštění aplikace logiky, včetně všech vnořených pracovních postupů, které se volají z aplikace logiky. Toto ID můžete zadat ručně v triggeru tak, že v `x-ms-client-tracking-id` žádosti triggeru předáte hlavičku s hodnotou vlastního ID. Můžete použít Trigger žádosti, Trigger HTTP nebo Trigger Webhooku.
+* `clientTrackingId`: Pokud není zadaný, Azure automaticky vygeneruje toto ID a koreluje události v rámci spuštění aplikace logiky, včetně všech vnořených pracovních postupů, které se volají z aplikace logiky. Toto ID můžete zadat ručně v triggeru tak, že `x-ms-client-tracking-id` v žádosti triggeru předáte hlavičku s hodnotou vlastního ID. Můžete použít Trigger žádosti, Trigger HTTP nebo Trigger Webhooku.
 
-* `trackedProperties`: Chcete-li sledovat vstupy nebo výstupy v diagnostických datech, `trackedProperties` můžete přidat oddíl do akce buď pomocí návrháře aplikace logiky, nebo přímo v definici JSON vaší aplikace logiky. Sledované vlastnosti mohou sledovat pouze vstupy a výstupy jedné akce, ale můžete použít `correlation` vlastnosti událostí ke korelaci mezi akcemi v běhu. Chcete-li sledovat více než jednu vlastnost, jednu nebo více vlastností, `trackedProperties` přidejte část a vlastnosti, které chcete do definice akce.
+* `trackedProperties`: Chcete-li sledovat vstupy nebo výstupy v diagnostických datech, můžete přidat `trackedProperties` oddíl do akce buď pomocí návrháře aplikace logiky, nebo přímo v definici JSON vaší aplikace logiky. Sledované vlastnosti mohou sledovat pouze vstupy a výstupy jedné akce, ale můžete použít `correlation` vlastnosti událostí ke korelaci mezi akcemi v běhu. Chcete-li sledovat více než jednu vlastnost, jednu nebo více vlastností, přidejte `trackedProperties` část a vlastnosti, které chcete do definice akce.
 
   Tady je příklad, který ukazuje, jak definice akce **inicializovat proměnnou** obsahuje sledované vlastnosti z vstupu akce, kde input je pole, nikoli záznam.
 
@@ -243,7 +243,7 @@ Každá událost diagnostiky obsahuje podrobnosti o vaší aplikaci logiky a o t
   }
   ```
 
-Tento příklad ukazuje, jak `ActionCompleted` událost zahrnuje atributy `clientTrackingId` a `trackedProperties` :
+Tento příklad ukazuje, jak `ActionCompleted` událost zahrnuje `clientTrackingId` atributy a `trackedProperties` :
 
 ```json
 {

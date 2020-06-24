@@ -4,11 +4,11 @@ description: Tento článek popisuje, jak můžete zrušit monitorování cluste
 ms.topic: conceptual
 ms.date: 08/19/2019
 ms.openlocfilehash: 618a4d7e10212dd2b042724b1ea11c97920dad57
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79275253"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84691930"
 ---
 # <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-azure-monitor-for-containers"></a>Jak zastavit monitorování služby AKS (Azure Kubernetes Service) pomocí služby Azure Monitor pro kontejnery
 
@@ -37,7 +37,7 @@ Pokud nejste obeznámeni s konceptem nasazení prostředků pomocí šablony, p�
 >Šablona musí být nasazená ve stejné skupině prostředků clusteru. Pokud při použití této šablony vynecháte jiné vlastnosti nebo doplňky, může dojít k jejich odebrání z clusteru. Například *enableRBAC* pro zásady RBAC implementované v clusteru, nebo *aksResourceTagValues* , pokud jsou pro cluster AKS zadány značky.  
 >
 
-Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte nejdřív nainstalovat a používat rozhraní příkazového řádku (CLI). Musíte používat Azure CLI verze 2.0.27 nebo novější. Pro identifikaci vaší verze spusťte `az --version`. Pokud potřebujete nainstalovat nebo upgradovat rozhraní příkazového řádku Azure CLI, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte nejdřív nainstalovat a používat rozhraní příkazového řádku (CLI). Musíte používat Azure CLI verze 2.0.27 nebo novější. Pro identifikaci vaší verze spusťte `az --version` . Pokud potřebujete nainstalovat nebo upgradovat rozhraní příkazového řádku Azure CLI, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ### <a name="create-template"></a>Vytvoření šablony
 
@@ -89,7 +89,7 @@ Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte n
     }
     ```
 
-2. Uložte tento soubor jako **OptOutTemplate. JSON** do místní složky.
+2. Uložte tento soubor jako **OptOutTemplate.js** do místní složky.
 
 3. Do souboru vložte následující syntaxi JSON:
 
@@ -123,7 +123,7 @@ Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte n
 
     Upravte hodnoty pro **aksResourceTagValues** tak, aby odpovídaly existujícím hodnotám značek zadaným pro cluster AKS.
 
-5. Uložte tento soubor jako **OptOutParam. JSON** do místní složky.
+5. Uložte tento soubor jako **OptOutParam.js** do místní složky.
 
 6. Jste připraveni k nasazení této šablony.
 

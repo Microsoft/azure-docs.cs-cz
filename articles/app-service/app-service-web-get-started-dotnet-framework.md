@@ -5,12 +5,12 @@ ms.assetid: 04a1becf-7756-4d4e-92d8-d9471c263d23
 ms.topic: quickstart
 ms.date: 04/21/2020
 ms.custom: mvc, devcenter, seodec18
-ms.openlocfilehash: 056c96807fed7d5acca85635440c8fe4d989c933
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 4f3b9966e1d146479ef6aa57e13cbb4ddadb415f
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82592383"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85205845"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>Vytvoření webové aplikace ASP.NET Framework v Azure
 
@@ -26,8 +26,8 @@ K dokončení tohoto kurzu nainstalujte <a href="https://www.visualstudio.com/do
 
 Pokud jste již nainstalovali Visual Studio 2019:
 
-- Nainstalujte nejnovější aktualizace v aplikaci Visual Studio tak, že vyberete **nápovědu** > vyhledat**aktualizace**.
-- Přidejte úlohy tak, že vyberete **nástroje** > **získat nástroje a funkce**.
+- Nainstalujte nejnovější aktualizace v aplikaci Visual Studio tak, že vyberete **nápovědu**vyhledat  >  **aktualizace**.
+- Přidejte úlohy tak, že vyberete **nástroje**  >  **získat nástroje a funkce**.
 
 ## <a name="create-an-aspnet-web-app"></a>Vytvoření webové aplikace v ASP.NET<a name="create-and-publish-the-web-app"></a>
 
@@ -47,7 +47,7 @@ Pomocí následujících kroků vytvořte webovou aplikaci v ASP.NET:
 
    ![Vytvoření webové aplikace v ASP.NET](./media/app-service-web-get-started-dotnet-framework/select-mvc-template-vs2019.png)
 
-6. V nabídce sady Visual Studio vyberte **ladit** > **Spustit bez ladění** , aby se webová aplikace spouštěla místně.
+6. V nabídce sady Visual Studio vyberte **ladit**  >  **Spustit bez ladění** , aby se webová aplikace spouštěla místně.
 
    ![Místní spuštění aplikace](./media/app-service-web-get-started-dotnet-framework/local-web-app.png)
 
@@ -80,7 +80,7 @@ Pomocí následujících kroků vytvořte webovou aplikaci v ASP.NET:
 
 1. V dialogu **Konfigurovat plán hostování** zadejte hodnoty z následující tabulky a pak vyberte **OK**.
 
-   | Nastavení | Navrhovaná hodnota | Popis |
+   | Nastavení | Navrhovaná hodnota | Description |
    |-|-|-|
    | Plán Hosting| myAppServicePlan | Název plánu služby App Service. |
    | Umístění | Západní Evropa | Datacentrum, které je hostitelem webové aplikace. |
@@ -88,7 +88,7 @@ Pomocí následujících kroků vytvořte webovou aplikaci v ASP.NET:
 
    ![Vytvoření plánu služby App Service](./media/app-service-web-get-started-dotnet-framework/app-service-plan-framework-vs2019.png)
 
-1. Do pole **název**zadejte jedinečný název aplikace, který bude obsahovat pouze platné znaky: `a-z`, `A-Z` `0-9`, a `-`. Můžete přijmout automaticky generovaný jedinečný název. Adresa URL webové aplikace je `http://<app-name>.azurewebsites.net`, kde `<app-name>` je název vaší aplikace.
+1. Do pole **název**zadejte jedinečný název aplikace, který bude obsahovat pouze platné znaky `a-z` :,, `A-Z` `0-9` a `-` . Můžete přijmout automaticky generovaný jedinečný název. Adresa URL webové aplikace je `http://<app-name>.azurewebsites.net`, kde `<app-name>` je název vaší aplikace.
 
 2. Výběrem možnosti **Vytvořit** spustíte vytváření prostředků Azure.
 
@@ -100,17 +100,17 @@ Pomocí následujících kroků vytvořte webovou aplikaci v ASP.NET:
 
     ![Publikovaná webová aplikace ASP.NET v Azure](./media/app-service-web-get-started-dotnet-framework/published-azure-web-app.png)
 
-Název aplikace zadaný ve **App Service vytvořit novou** stránku se používá jako předpona adresy URL ve formátu `http://<app-name>.azurewebsites.net`.
+Název aplikace zadaný ve **App Service vytvořit novou** stránku se používá jako předpona adresy URL ve formátu `http://<app-name>.azurewebsites.net` .
 
-**Blahopřejeme!** Vaše webová aplikace v ASP.NET běží živě v Azure App Service.
+**Gratulujeme!** Vaše webová aplikace v ASP.NET běží živě v Azure App Service.
 
 ## <a name="update-the-app-and-redeploy"></a>Aktualizace a opětovné nasazení aplikace
 
-1. V **Průzkumník řešení**v rámci projektu otevřete **zobrazení** > **Domů** > **index. cshtml**.
+1. V **Průzkumník řešení**v rámci projektu otevřete **zobrazení**  >  **Domů**  >  **index. cshtml**.
 
 1. Najděte HTML značku `<div class="jumbotron">` poblíž začátku a nahraďte celý element následujícím kódem:
 
-   ```HTML
+   ```html
    <div class="jumbotron">
        <h1>ASP.NET in Azure!</h1>
        <p class="lead">This is a simple app that we've built that demonstrates how to deploy a .NET app to Azure App Service.</p>
@@ -145,3 +145,6 @@ Název aplikace zadaný ve **App Service vytvořit novou** stránku se použív�
 
 > [!div class="nextstepaction"]
 > [ASP.NET s databází SQL Database](app-service-web-tutorial-dotnet-sqldatabase.md)
+
+> [!div class="nextstepaction"]
+> [Konfigurace aplikace ASP.NET](configure-language-dotnet-framework.md)

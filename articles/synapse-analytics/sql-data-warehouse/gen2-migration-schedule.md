@@ -9,14 +9,15 @@ manager: craigg
 ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: synapse-analytics
 ms.topic: article
+ms.subservice: sql-dw
 ms.date: 01/21/2020
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 6f2af826473bfd13f8100796a540d41cbedbb037
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 71219abaf6493d6dce03f05ad0e61fb71bff1745
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80631569"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207715"
 ---
 # <a name="upgrade-your-sql-pool-to-gen2"></a>Upgradujte svůj fond SQL na Gen2
 
@@ -33,12 +34,12 @@ Následující tabulka shrnuje podle oblasti v případě, že bude k dispozici 
 
 | **Oblast** | **Nižší Gen2 k dispozici** | **Začátek automatických upgradů** |
 |:--- |:--- |:--- |
-| Kanada – východ |1. června 2020 |Od 1. července 2020 |
+| Kanada – východ |1\. června 2020 |Od 1. července 2020 |
 | Čína – východ |\* |\* |
 | Čína – sever |\* |\* |
 | Německo – střed |\* |\* |
-| Německo – středozápad |K dispozici. |1. května 2020 |
-| Indie – západ |K dispozici. |1. května 2020  |
+| Německo – středozápad |K dispozici |1. května 2020 |
+| Indie – západ |K dispozici |1. května 2020  |
 
 ## <a name="automatic-upgrade-process"></a>Proces automatického upgradu
 

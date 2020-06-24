@@ -3,16 +3,16 @@ title: Testování výkonu a škálování pomocí Azure Cosmos DB
 description: Naučte se, jak provádět testování rozsahu a výkonu pomocí Azure Cosmos DB. Pak můžete vyhodnotit funkčnost Azure Cosmos DB pro vysoce výkonné aplikace.
 author: SnehaGunda
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: fb510c5628913fb3fa37b572c4409aee5d1028ab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b4b2394f48f9bf3ec436cda92e87fd99ad915474
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76313739"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262561"
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Testování výkonu a škálování pomocí Azure Cosmos DB
 
@@ -39,7 +39,7 @@ Nejrychlejší způsob, jak začít, je zkompilovat a spustit ukázku .NET, jak 
 
 **Krok 1:** Stáhněte si projekt z [ukázky Azure Cosmos DB testování výkonu](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)nebo rozvětvete úložiště GitHub.
 
-**Krok 2:** Upravte nastavení pro EndpointUrl, Authorizationkey tak, CollectionThroughput a DocumentTemplate (volitelné) v App. config.
+**Krok 2:** Upravte nastavení pro EndpointUrl, Authorizationkey tak, CollectionThroughput a DocumentTemplate (volitelné) v App.config.
 
 > [!NOTE]
 > Než zřídíte kolekce s vysokou propustností, získáte informace na [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/) za účelem odhadu nákladů na kolekci. VyAzure Cosmos DB služby Storage a propustnost nezávisle na hodinovém základě. Po otestování můžete ušetřit náklady odstraněním nebo snížením propustnosti kontejnerů Azure Cosmos.
@@ -94,7 +94,7 @@ Nejrychlejší způsob, jak začít, je zkompilovat a spustit ukázku .NET, jak 
 Po spuštění aplikace můžete vyzkoušet různé [zásady indexování](index-policy.md) a [úrovně konzistence](consistency-levels.md) a pochopit jejich dopad na propustnost a latenci. Můžete také zkontrolovat zdrojový kód a implementovat podobné konfigurace do vlastních testovacích sad nebo produkčních aplikací.
 
 ## <a name="next-steps"></a>Další kroky
-V tomto článku jsme se podívali na to, jak můžete provádět testování výkonu a škálování pomocí Azure Cosmos DB pomocí konzolové aplikace .NET. Další informace najdete v těchto článcích:
+V tomto článku jsme se podívali na to, jak můžete provádět testování výkonu a škálování pomocí Azure Cosmos DB pomocí konzolové aplikace .NET. Další informace najdete v následujících článcích:
 
 * [Ukázka testování výkonu Azure Cosmos DB](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)
 * [Možnosti konfigurace klienta pro zlepšení výkonu Azure Cosmos DB](performance-tips.md)

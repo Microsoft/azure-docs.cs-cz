@@ -2,13 +2,13 @@
 title: Šablony – funkce – datum
 description: Popisuje funkce, které se použijí v šabloně Azure Resource Manager pro práci s daty.
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: 22bb3c80acb504649e4f5485c4d78dcd04277ec0
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.date: 06/22/2020
+ms.openlocfilehash: e1d9c354c53404bddc31d565b45e608567b218d6
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84677997"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85205165"
 ---
 # <a name="date-functions-for-arm-templates"></a>Funkce data pro šablony ARM
 
@@ -25,11 +25,11 @@ Přidá do základní hodnoty časový interval. Očekává se formát ISO 8601.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požaduje se | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| base | Yes | řetězec | Počáteční hodnota DateTime pro sčítání. Použijte [Formát časového razítka ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). |
-| doba trvání | Yes | řetězec | Hodnota času, která se má přidat do základu Může se jednat o zápornou hodnotu. Použijte [Formát doby trvání ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations). |
-| formát | No | řetězec | Formát výstupu pro výsledek data a času. Pokud není zadaný, použije se formát základní hodnoty. Použijte buď [standardní formátovací řetězce](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [Vlastní řetězce formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). |
+| base | Ano | řetězec | Počáteční hodnota DateTime pro sčítání. Použijte [Formát časového razítka ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). |
+| doba trvání | Ano | řetězec | Hodnota času, která se má přidat do základu Může se jednat o zápornou hodnotu. Použijte [Formát doby trvání ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations). |
+| formát | Ne | řetězec | Formát výstupu pro výsledek data a času. Pokud není zadaný, použije se formát základní hodnoty. Použijte buď [standardní formátovací řetězce](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [Vlastní řetězce formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -142,15 +142,15 @@ Vrátí aktuální hodnotu DateTime (UTC) v zadaném formátu. Pokud není zadá
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požaduje se | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| formát |No |řetězec |Hodnota zakódovaná identifikátorem URI, která má být převedena na řetězec. Použijte buď [standardní formátovací řetězce](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [Vlastní řetězce formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). |
+| formát |Ne |řetězec |Hodnota zakódovaná identifikátorem URI, která má být převedena na řetězec. Použijte buď [standardní formátovací řetězce](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [Vlastní řetězce formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). |
 
 ### <a name="remarks"></a>Poznámky
 
 Tuto funkci lze použít pouze v rámci výrazu pro výchozí hodnotu parametru. Použití této funkce kdekoli jinde v šabloně vrátí chybu. Funkce není povolena v ostatních částech šablony, protože vrací jinou hodnotu pokaždé, když je volána. Nasazení stejné šablony se stejnými parametry by nespolehlivě přineslo stejné výsledky.
 
-Použijete-li [možnost pro opětovné nasazení dřívějšího úspěšného nasazení](rollback-on-error.md)a předchozí nasazení zahrnuje parametr, který používá UtcNow, parametr není znovu vyhodnocen. Místo toho je hodnota parametru z dřívějšího nasazení automaticky znovu použita při nasazení zpět.
+Pokud použijete [možnost vrátit zpět při chybě](rollback-on-error.md) k dřívějšímu úspěšnému nasazení a předchozí nasazení zahrnuje parametr, který používá UtcNow, parametr není znovu vyhodnocen. Místo toho je hodnota parametru z dřívějšího nasazení automaticky znovu použita při nasazení zpět.
 
 Buďte opatrní při opětovném nasazení šablony, která spoléhá na funkci utcNow, na výchozí hodnotu. Když znovu nasadíte a nezadáte hodnotu parametru, funkce se znovu vyhodnotí. Pokud chcete aktualizovat existující prostředek místo vytvoření nového prostředku, předejte hodnotu parametru z dřívějšího nasazení.
 

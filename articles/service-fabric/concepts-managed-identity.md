@@ -4,12 +4,12 @@ description: Seznamte se s používáním spravovaných identit pro Azure s Serv
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
-ms.openlocfilehash: a26f188ed2f5e18bdf775cd1fb21001495ffdc89
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a5c82f49195fc6d790ca4308d78b70106b6cc042
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461442"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710299"
 ---
 # <a name="using-managed-identities-for-azure-with-service-fabric"></a>Použití spravovaných identit pro Azure s Service Fabric
 
@@ -35,7 +35,7 @@ Existují dva typy spravovaných identit:
 - **Spravovaná identita přiřazená systémem** je povolena přímo v instanci služby Azure.  Životní cyklus identity přiřazené systémem je jedinečný pro instanci služby Azure, na které je povolený.
 - **Spravovaná identita přiřazená uživatelem** se vytváří jako samostatný prostředek Azure. Identitu je možné přiřadit k jedné nebo více instancím služby Azure a spravují se odděleně od životních cyklů těchto instancí.
 
-Další informace o rozdílu mezi spravovanými typy identit najdete v tématu [Jak fungují spravované identity prostředků Azure?](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work)
+Další informace o rozdílu mezi spravovanými typy identit najdete v tématu [Jak fungují spravované identity prostředků Azure?](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types).
 
 ## <a name="supported-scenarios-for-service-fabric-applications"></a>Podporované scénáře pro aplikace Service Fabric
 

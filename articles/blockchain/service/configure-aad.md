@@ -2,14 +2,14 @@
 title: Konfigurace přístupu Azure Active Directory – služba Azure blockchain
 description: Jak nakonfigurovat službu Azure blockchain pomocí přístupu Azure Active Directory
 ms.date: 11/22/2019
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: janders
-ms.openlocfilehash: 682ab282036fcd592e66942d08a84cdce46d8915
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 337d01abc51d310d06aeea3427b770132be4824c
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74455873"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85208769"
 ---
 # <a name="how-to-configure-azure-active-directory-access-for-azure-blockchain-service"></a>Jak nakonfigurovat přístup Azure Active Directory ke službě Azure blockchain
 
@@ -63,7 +63,7 @@ Postupujte podle pokynů v části rychlý Start v **souboru Readme** a sestavte
 
 ### <a name="connect-using-an-azure-ad-user-account"></a>Připojení pomocí uživatelského účtu Azure AD
 
-1. Spuštěním následujícího příkazu proveďte ověření pomocí uživatelského účtu Azure AD. \<Nahraďte\> MyAADDirectory doménou služby Azure AD. Například, `yourdomain.onmicrosoft.com`.
+1. Spuštěním následujícího příkazu proveďte ověření pomocí uživatelského účtu Azure AD. Nahraďte \<myAADDirectory\> doménou služby Azure AD. Například, `yourdomain.onmicrosoft.com`.
 
     ```
     connector.exe -remote <myMemberName>.blockchain.azure.com:3200 -method aadauthcode -tenant-id <myAADDirectory> 
@@ -99,7 +99,7 @@ Další informace o tom, jak zaregistrovat aplikaci v Azure AD, najdete v témat
 
 Pro mobilní zařízení nebo textový prohlížeč, kde se nepodporuje místní zobrazení pro ověřování Azure AD, Azure AD vygeneruje jednorázové heslo. Můžete zkopírovat heslo a pokračovat v ověřování Azure AD v jiném prostředí.
 
-Pokud chcete vygenerovat heslo, nahraďte **aadauthcode** řetězcem **aaddevice**. \<Nahraďte\> MyAADDirectory doménou služby Azure AD. Například, `yourdomain.onmicrosoft.com`.
+Pokud chcete vygenerovat heslo, nahraďte **aadauthcode** řetězcem **aaddevice**. Nahraďte \<myAADDirectory\> doménou služby Azure AD. Například, `yourdomain.onmicrosoft.com`.
 
 ```
 connector.exe -remote <myBlockchainEndpoint>  -method aaddevice -tenant-id <myAADDirectory>

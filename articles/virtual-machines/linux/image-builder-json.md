@@ -1,19 +1,19 @@
 ---
 title: Vytvoření šablony Azure image Builder (Preview)
 description: Naučte se, jak vytvořit šablonu pro použití s nástrojem Azure image Builder.
-author: danis
+author: danielsollondon
 ms.author: danis
-ms.date: 03/24/2020
+ms.date: 06/23/2020
 ms.topic: article
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: f567114613f484f0765a6e007c3f0ba97480a968
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 44cafd4ce7e36c34082ff3c5498c5bbc35282221
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779344"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263309"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Verze Preview: Vytvoření šablony Azure image Builder 
 
@@ -29,7 +29,7 @@ Toto je základní formát šablony:
     "tags": {
         "<name": "<value>",
         "<name>": "<value>"
-             }
+     },
     "identity":{},           
     "dependsOn": [], 
     "properties": { 
@@ -88,7 +88,7 @@ Ve výchozím nastavení bude nástroj pro tvorbu obrázků používat virtuáln
 
 ## <a name="osdisksizegb"></a>osDiskSizeGB
 
-Ve výchozím nastavení nemění tvůrce imagí velikost obrázku, ale bude používat velikost ze zdrojové image. Můžete zvětšit velikost disku s operačním systémem (Win a Linux), to je volitelné a hodnota 0 znamená, že zůstane stejná velikost jako zdrojová image. 
+Ve výchozím nastavení nemění tvůrce imagí velikost obrázku, ale bude používat velikost ze zdrojové image. Velikost disku s operačním systémem (Win a Linux) můžete zvětšit **jenom** tak, že je volitelná a hodnota 0 znamená, že zůstane stejná velikost jako zdrojová image. Velikost disku operačního systému se nedá zmenšit na menší než velikost ze zdrojové image.
 
 ```json
  {
@@ -521,7 +521,7 @@ Výstupem obrázku bude prostředek spravované image.
  
 Vlastnosti distribuce:
 - **typ** – managedImage 
-- **imageId** – ID prostředku cílového obrázku, očekávaný formát:/subscriptions/ \< SubscriptionId>/ResourceGroups/ \< destinationResourceGroupName>/Providers/Microsoft.COMPUTE/images/ImageName \<>
+- **imageId** – ID prostředku cílového obrázku, očekávaný formát:/subscriptions/ \<subscriptionId> /resourceGroups/ \<destinationResourceGroupName> /providers/Microsoft.COMPUTE/images/\<imageName>
 - **umístění** – umístění spravované image.  
 - **runOutputName** – jedinečný název pro identifikaci distribuce.  
 - **artifactTags** – volitelné uživatelsky definované páry klíč-hodnota.
@@ -561,7 +561,7 @@ Než budete moct distribuovat do galerie imagí, musíte vytvořit galerii a def
 Distribuovat vlastnosti pro galerie sdílených imagí:
 
 - **typ** – sharedImage  
-- **galleryImageId** – ID Galerie sdílených imagí Formát je:/subscriptions/ \< subscriptionId>/ResourceGroups/ \< resourceGroupName>/providers/microsoft.compute/galleries/ \< sharedImageGalleryName>/images/ \< imageGalleryName>.
+- **galleryImageId** – ID Galerie sdílených imagí Formát je:/subscriptions/ \<subscriptionId> /ResourceGroups/ \<resourceGroupName> /providers/Microsoft.COMPUTE/Galleries/ \<sharedImageGalleryName> /images/ \<imageGalleryName> .
 - **runOutputName** – jedinečný název pro identifikaci distribuce.  
 - **artifactTags** – volitelné uživatelsky definované páry klíč-hodnota.
 - **replicationRegions** – pole oblastí pro replikaci. Jedna z oblastí musí být oblast, ve které je galerie nasazena.

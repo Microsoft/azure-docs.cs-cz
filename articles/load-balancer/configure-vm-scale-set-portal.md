@@ -4,14 +4,14 @@ description: Naučte se konfigurovat sadu škálování virtuálního počítač
 author: asudbring
 ms.author: allensu
 ms.service: load-balancer
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/25/2020
-ms.openlocfilehash: b2a83b226a4b2ddbbd554783de6a2b5c85c92f0a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8e55b2a87813da802ec1b00c610b33da4461c008
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80349725"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84809444"
 ---
 # <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-the-azure-portal"></a>Konfigurace sady škálování virtuálních počítačů pomocí existující Azure Load Balancer pomocí Azure Portal
 
@@ -36,7 +36,7 @@ V této části vytvoříte v Azure Portal sadu škálování virtuálního poč
 > [!NOTE]
 > Následující kroky předpokládají virtuální síť s názvem **myVNet** a služba Azure Load Balancer s názvem **myLoadBalancer** byla dřív nasazená.
 
-1. V levém horním rohu obrazovky klikněte na **vytvořit prostředek** > **COMPUTE** > **Virtual Machine Scale set** nebo ve vyhledávání na webu Marketplace vyhledejte **sadu škálování virtuálního počítače** .
+1. V levém horním rohu obrazovky klikněte na **vytvořit prostředek**  >  **COMPUTE**  >  **Virtual Machine Scale set** nebo ve vyhledávání na webu Marketplace vyhledejte **sadu škálování virtuálního počítače** .
 
 2. Vyberte **Vytvořit**.
 

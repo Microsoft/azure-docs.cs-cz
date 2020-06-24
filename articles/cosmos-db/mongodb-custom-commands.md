@@ -3,15 +3,15 @@ title: Příkazy rozšíření MongoDB pro správu dat v rozhraní API Azure Cos
 description: Tento článek popisuje, jak pomocí příkazů rozšíření MongoDB spravovat data uložená v rozhraní API Azure Cosmos DB pro MongoDB.
 author: LuisBosquez
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/28/2020
 ms.author: lbosq
-ms.openlocfilehash: cf35e7d6fac53f6854ac746769a9672f8cea9605
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 7879793cbbb029468e84b14f8e8eee793cf4c530
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248715"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85260725"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>Použití příkazů rozšíření MongoDB ke správě dat uložených v rozhraní API Azure Cosmos DB pro MongoDB 
 

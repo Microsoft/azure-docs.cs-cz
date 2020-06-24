@@ -7,15 +7,18 @@ ms.author: alkarche
 ms.date: 6/3/2020
 ms.topic: how-to
 ms.service: digital-twins
+ROBOTS: NOINDEX, NOFOLLOW
 ms.reviewer: baanders
-ms.openlocfilehash: cedd91ed0a6bcce01aea8fd56f06f6523c590016
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 4051b5c098b0ce299185a483abf2bdd39bb6c11f
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84680172"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84725813"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>Použití digitálních vláken Azure k aktualizaci mapy vnitřních Azure Maps
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Tento článek vás provede kroky potřebnými k aktualizaci dat, která se zobrazují na *mapě interiéru* pomocí nástroje [Azure Maps](../azure-maps/about-azure-maps.md), pomocí dat digitálních vláken Azure. Služba Azure Digital autoformaes ukládá graf vašich vztahů zařízení IoT a směruje telemetrii do různých koncových bodů a díky tomu představuje ideální službu pro aktualizaci informačních překryvů na mapách.
 

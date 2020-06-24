@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 08/15/2018
 ms.author: alkohli
 ms.openlocfilehash: a987239669e7437a179f5f24034f4dbe45535663
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254739"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711693"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-hardware-components-and-status"></a>Monitorování hardwarových komponent a stavů pomocí služby StorSimple Device Manager
 
@@ -79,7 +79,7 @@ Chcete-li zobrazit stav hardwaru součásti zařízení, proveďte následujíc�
 ## <a name="component-list-for-primary-enclosure-of-storsimple-device"></a>Seznam součástí pro primární skříň zařízení StorSimple
 Následující tabulka popisuje fyzické a logické komponenty obsažené v primární skříni (v 8100 a 8600) místního zařízení StorSimple.
 
-| Součást | Modul | Typ | Umístění | Přimístit jednotky (FRU) pole? | Popis |
+| Součást | Modul | Typ | Umístění | Přimístit jednotky (FRU) pole? | Description |
 | --- | --- | --- | --- | --- | --- |
 | Jednotka ve slotu [0-11] |Diskové jednotky |Fyzické |Shared |Ano |Jeden řádek se zobrazí pro každou jednotku SSD nebo hard jednotky v primární skříni. |
 | Senzor okolní teploty |Skříně |Fyzické |Shared |Ne |Měří teplotu v rámci skříně. |
@@ -120,7 +120,7 @@ Následující tabulka popisuje fyzické a logické komponenty obsažené v prim
 ## <a name="component-list-for-ebod-enclosure-of-storsimple-device"></a>Seznam součástí pro EBOD skříň zařízení StorSimple
 Následující tabulka popisuje fyzické a logické komponenty obsažené v EBOD skříni (k dispozici pouze v modelu 8600) místního zařízení StorSimple.
 
-| Součást | Modul | Typ | Umístění | JEDNOTKA? | Popis |
+| Součást | Modul | Typ | Umístění | JEDNOTKA? | Description |
 | --- | --- | --- | --- | --- | --- |
 | Jednotka ve slotu [0-11] |Diskové jednotky |Fyzické |Shared |Ano |Jeden řádek se zobrazí pro každou jednotku HDD na začátku EBOD skříně. |
 | Senzor okolní teploty |Skříně |Fyzické |Shared |Ne |Měří teplotu v rámci skříně. |

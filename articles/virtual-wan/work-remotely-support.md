@@ -4,15 +4,15 @@ description: Tato stránka popisuje, jak můžete využít Azure Virtual WAN, ab
 services: virtual-wan
 author: reyandap
 ms.service: virtual-wan
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: ce212b5da90906966025674b58884d0e2f5bb064
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc048f3da3156f5e17cfa32479b834b7320a60a2
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80337132"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753770"
 ---
 # <a name="azure-virtual-wan-and-supporting-remote-work"></a>Virtuální síť WAN Azure a podpora vzdálené práce
 
@@ -51,7 +51,7 @@ Základní virtuální síť WAN poskytuje pouze síť Site-to-Site VPN. Aby se 
 
 ## <a name="additional-information"></a><a name="other considerations"></a>Další informace
 
-Virtuální síť WAN podporuje jedno rozbočovače na oblast nebo umístění. Informace o umístění naleznete v článku [virtuální partneři a umístění sítě WAN](virtual-wan-locations-partners.md) . Každé centrum podporuje až 10 000 vzdálených uživatelských připojení, 1 000 připojení k síti, čtyři okruhy ExpressRoute a až 500 Virtual Network připojení. Při horizontálním navýšení kapacity, pokud máte nějaké dotazy, se váhají na to, že vám pošle e-mail odesláním e-mailu azurevirtualwan@microsoft.com. Pokud potřebujete technickou podporu, otevřete lístek podpory z Azure Portal a pomůže vám to.
+Virtuální síť WAN podporuje jedno rozbočovače na oblast nebo umístění. Informace o umístění naleznete v článku [virtuální partneři a umístění sítě WAN](virtual-wan-locations-partners.md) . Každé centrum podporuje až 10 000 vzdálených uživatelských připojení, 1 000 připojení k síti, čtyři okruhy ExpressRoute a až 500 Virtual Network připojení. Při horizontálním navýšení kapacity, pokud máte nějaké dotazy, se váhají na to, že vám pošle e-mail odesláním e-mailu azurevirtualwan@microsoft.com . Pokud potřebujete technickou podporu, otevřete lístek podpory z Azure Portal a pomůže vám to.
 
 ## <a name="faq"></a><a name="faq"></a>Nejčastější dotazy
 

@@ -3,25 +3,25 @@ title: Problémy s přihlášením k aplikaci vytvořené vlastním | Microsoft 
 description: Běžné chyby, které by mohly způsobit, že se nebudete moct přihlásit k aplikaci, kterou jste vyvinuli pomocí Azure AD
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01a424129abf88c18500c96bd1889fc6dcce2ec6
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: cdfc2a39c6bd3b68df7feb978d2548ad67631235
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82890699"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84759126"
 ---
 # <a name="problems-signing-in-to-a-custom-developed-application"></a>Problémy s přihlašováním k aplikaci vytvořené pomocí vlastního vývoje
 
@@ -41,6 +41,6 @@ Došlo k několika chybám, které by mohly způsobit, že se nebudete moct při
 
 [Souhlas a integrace aplikací do Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)<br>
 
-[Oprávnění a souhlas koncového bodu Microsoft Identity Platform](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)<br>
+[Oprávnění a souhlas v koncovém bodu Microsoft Identity Platform](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)<br>
 
 [Azure AD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory>)

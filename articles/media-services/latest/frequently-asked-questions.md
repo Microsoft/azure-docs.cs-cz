@@ -11,18 +11,24 @@ ms.workload: ''
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: juliako
-ms.openlocfilehash: 713acbd098255af2869d7a462c9990f3d7e10bf1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e54944c0c10fb773a4a3141c0d3fb6524f288ae2
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81309187"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987234"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Nejčastější dotazy k Media Services V3
 
 Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Azure Media Services V3.
 
 ## <a name="general"></a>Obecné
+
+### <a name="what-are-the-azure-portal-limitations-for-media-services-v3"></a>Jaká jsou omezení Azure Portal Media Services V3?
+
+[Azure Portal](https://portal.azure.com/) můžete použít ke správě událostí V3 Live, zobrazení zdrojů a úloh v3, získání informací o přístupu k rozhraním API a k šifrování obsahu. <br/>Pro všechny ostatní úlohy správy (například ke správě transformací a úloh nebo analýze obsahu V3) použijte [REST API](https://aka.ms/ams-v3-rest-ref), [CLI](https://aka.ms/ams-v3-cli-ref)nebo jednu z podporovaných [sad SDK](media-services-apis-overview.md#sdks).
+
+Pokud se vaše video dřív nahrálo na účet Media Services pomocí rozhraní Media Services V3 API nebo se obsah vygeneroval na základě živého výstupu, neuvidíte v Azure Portal tlačítka **kódování**, **Analýza**ani **šifrování** . K provedení těchto úloh použijte rozhraní API Media Services V3.  
 
 ### <a name="what-azure-roles-can-perform-actions-on-azure-media-services-resources"></a>Jaké role Azure můžou provádět akce s Azure Media Services prostředky? 
 
@@ -95,7 +101,7 @@ Systémy DRM, jako je PlayReady, Widevine a FairPlay, poskytují další úrove�
 
 Nemusíte používat žádného konkrétního poskytovatele tokenu, jako je Azure Active Directory (Azure AD). Pomocí asymetrického šifrování klíčů můžete vytvořit vlastního zprostředkovatele [JWT](https://jwt.io/) (označovaný jako služba zabezpečeného tokenu nebo STS). Ve vlastní službě STS můžete přidat deklarace identity založené na obchodní logice.
 
-Ujistěte se, že Vystavitel, skupina a deklarace identity se přesně shodují mezi tím, co je v tokenu JWT `ContentKeyPolicyRestriction` , `ContentKeyPolicy`a hodnotou použitou v.
+Ujistěte se, že Vystavitel, skupina a deklarace identity se přesně shodují mezi tím, co je v tokenu JWT, a `ContentKeyPolicyRestriction` hodnotou použitou v `ContentKeyPolicy` .
 
 Další informace najdete v tématu [Ochrana obsahu pomocí Media Services dynamického šifrování](content-protection-overview.md).
 
@@ -140,7 +146,7 @@ Můžete použít naprosto stejný návrh a implementaci, abyste chránili živ�
 Zákazníci se často investovali do farmy licenčních serverů buď ve vlastním datovém centru, nebo v jednom hostovaném poskytovateli služeb DRM. Díky Media Services ochraně obsahu můžete pracovat v hybridním režimu. Obsah je možné hostovat a dynamicky chránit v Media Services a při doručování licencí DRM servery mimo Media Services. V takovém případě zvažte následující změny:
 
 * Služba tokenů zabezpečení musí vydávat tokeny, které jsou přijatelné a můžou je ověřit farmou licenčního serveru. Například licenční servery Widevine, které poskytuje Axinom, vyžadují konkrétní token JWT, který obsahuje zprávu nároku. K vystavení takového tokenu JWT potřebujete službu STS. 
-* V Media Services už nemusíte konfigurovat službu doručování licencí. Při konfiguraci `ContentKeyPolicy`nástroje musíte zadat adresy URL pro získání licence (pro PlayReady, Widevine a Fairplay).
+* V Media Services už nemusíte konfigurovat službu doručování licencí. Při konfiguraci nástroje musíte zadat adresy URL pro získání licence (pro PlayReady, Widevine a FairPlay) `ContentKeyPolicy` .
 
 > [!NOTE]
 > Widevine je služba poskytovaná společností Google a podléhá podmínkám služby a zásad ochrany osobních údajů Google.
@@ -159,7 +165,7 @@ Pro všechny ostatní úlohy správy (například [transformace a úlohy](transf
 
 ### <a name="is-there-an-assetfile-concept-in-v3"></a>Je v v3 koncept AssetFile?
 
-`AssetFile` Koncept se odebral z rozhraní Media Services API a odděluje Media Services od závislosti sady SDK úložiště. Nyní Azure Storage, nikoli Media Services, uchovává informace, které patří do sady Storage SDK. 
+`AssetFile`Koncept se odebral z rozhraní Media Services API a odděluje Media Services od závislosti sady SDK úložiště. Nyní Azure Storage, nikoli Media Services, uchovává informace, které patří do sady Storage SDK. 
 
 Další informace najdete v tématu [migrace na Media Services V3](media-services-v2-vs-v3.md).
 
@@ -191,13 +197,13 @@ Vzhledem k tomu, že sada FPS Server SDK verze 4, tento dokument se sloučil do 
 
 #### <a name="what-is-the-downloadedoffline-file-structure-on-ios-devices"></a>Jaká je struktura souborů ke stažení/offline na zařízeních s iOS?
 
-Stažená struktura souborů na zařízení se systémem iOS vypadá jako na následujícím snímku obrazovky. `_keys` Složka uchovává stažené licence na FPS a jeden soubor úložiště pro každého hostitele licenční služby. `.movpkg` Složka obsahuje zvuk a video obsah. 
+Stažená struktura souborů na zařízení se systémem iOS vypadá jako na následujícím snímku obrazovky. `_keys`Složka uchovává stažené licence na FPS a jeden soubor úložiště pro každého hostitele licenční služby. `.movpkg`Složka obsahuje zvuk a video obsah. 
 
-První složka s názvem, který končí spojovníkem následovaným číslem, obsahuje obsah videa. Číselná hodnota je šířka pásma ve špičce pro verze videa. Druhá složka s názvem, který končí čárkou následovanou 0, obsahuje zvukový obsah. Třetí složka s názvem `Data` obsahuje hlavní seznam skladeb obsahu FPS. Nakonec soubor Boot. XML poskytuje úplný popis obsahu `.movpkg` složky. 
+První složka s názvem, který končí spojovníkem následovaným číslem, obsahuje obsah videa. Číselná hodnota je šířka pásma ve špičce pro verze videa. Druhá složka s názvem, který končí čárkou následovanou 0, obsahuje zvukový obsah. Třetí složka s názvem `Data` obsahuje hlavní seznam skladeb obsahu FPS. Nakonec boot.xml poskytuje úplný popis `.movpkg` obsahu složky. 
 
 ![Struktura offline souborů pro ukázkovou aplikaci FairPlay iOS](media/offline-fairplay-for-ios/offline-fairplay-file-structure.png)
 
-Tady je ukázkový soubor Boot. XML:
+Zde je ukázkový soubor boot.xml:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -233,9 +239,9 @@ Tady je ukázkový soubor Boot. XML:
 
 Vzhledem k tomu, že Media Services V3 umožňuje assetu mít více `StreamingLocator` instancí, můžete mít:
 
-* Jedna `ContentKeyPolicy` instance s `license_type = "persistent"` `ContentKeyPolicyRestriction` deklarací identity na `"persistent"`a `StreamingLocator`.
-* Další `ContentKeyPolicy` instance s `license_type="nonpersistent"` `ContentKeyPolicyRestriction` deklarací identity on `"nonpersistent`a `StreamingLocator`.
-* Dvě `StreamingLocator` instance, které mají `ContentKey` různé hodnoty.
+* Jedna `ContentKeyPolicy` instance s `license_type = "persistent"` `ContentKeyPolicyRestriction` deklarací identity na `"persistent"` a `StreamingLocator` .
+* Další `ContentKeyPolicy` instance s `license_type="nonpersistent"` `ContentKeyPolicyRestriction` deklarací identity on `"nonpersistent` a `StreamingLocator` .
+* Dvě `StreamingLocator` instance, které mají různé `ContentKey` hodnoty.
 
 V závislosti na obchodní logice vlastní služby STS se v tokenu JWT vydávají různé deklarace identity. U tokenu lze získat pouze odpovídající licenci a přehrát lze pouze odpovídající adresu URL.
 
@@ -243,7 +249,7 @@ V závislosti na obchodní logice vlastní služby STS se v tokenu JWT vydávaj�
 
 Přehled architektury DRM společnosti Google "Widevine" definuje tři úrovně zabezpečení. [Dokumentace Azure Media Services v šabloně licence Widevine](widevine-license-template-overview.md) ale popisuje pět úrovní zabezpečení (požadavky na odolnost klienta pro přehrávání). V této části se dozvíte, jak se mapují úrovně zabezpečení.
 
-Obě sady úrovní zabezpečení jsou definované Google Widevine. Rozdíl je v úrovni využití: architektura nebo rozhraní API. V rozhraní API Widevine se používá pět úrovní zabezpečení. `content_key_specs` Objekt, který obsahuje `security_level`, je rekonstruován a předán službě Widevine Global Delivery service pomocí licenční služby Azure Media Services Widevine. Následující tabulka ukazuje mapování mezi dvěma sadami úrovní zabezpečení.
+Obě sady úrovní zabezpečení jsou definované Google Widevine. Rozdíl je v úrovni využití: architektura nebo rozhraní API. V rozhraní API Widevine se používá pět úrovní zabezpečení. `content_key_specs`Objekt, který obsahuje `security_level` , je rekonstruován a předán službě Widevine Global Delivery Service pomocí licenční služby Azure Media Services Widevine. Následující tabulka ukazuje mapování mezi dvěma sadami úrovní zabezpečení.
 
 | **Úrovně zabezpečení definované v architektuře Widevine** |**Úrovně zabezpečení používané v rozhraní Widevine API**|
 |---|---| 

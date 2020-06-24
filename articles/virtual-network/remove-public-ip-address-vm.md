@@ -8,17 +8,17 @@ author: asudbring
 ms.service: virtual-network
 ms.subservice: ip-services
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2019
 ms.author: allensu
-ms.openlocfilehash: f29e29f809faeeb486e5b6b9bacc84a61380a012
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b171699a0c578b3761e58f6e0e977199369864a8
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82144456"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84709959"
 ---
 # <a name="dissociate-a-public-ip-address-from-an-azure-vm"></a>Zrušení přidružení veřejné IP adresy z virtuálního počítače Azure 
 
@@ -44,7 +44,7 @@ Pomocí [Azure Portal](#azure-portal), [rozhraní příkazového řádku](#azure
 
 Nainstalujte rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)nebo použijte Azure Cloud Shell. Služba Azure Cloud Shell je volně dostupné prostředí Bash, které můžete spustit přímo z portálu Azure Portal. Má předinstalované rozhraní Azure CLI, které je nakonfigurované pro použití s vaším účtem. V následujících příkazech rozhraní příkazového řádku vyberte tlačítko **vyzkoušet** . Výběrem možnosti **vyzkoušet** vyvoláte Cloud Shell, pomocí které se můžete přihlásit ke svému účtu Azure.
 
-1. Pokud používáte rozhraní příkazového řádku místně v bash, přihlaste `az login`se k Azure pomocí.
+1. Pokud používáte rozhraní příkazového řádku místně v bash, přihlaste se k Azure pomocí `az login` .
 2. Veřejná IP adresa je přidružená ke konfiguraci protokolu IP síťového rozhraní připojeného k virtuálnímu počítači. Pomocí příkazu [AZ Network nic-IP-config Update](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-update) oddělit veřejnou IP adresu z konfigurace protokolu IP. Následující příklad dissociates veřejnou IP adresu s názvem *myVMPublicIP* z konfigurace protokolu IP s názvem *ipconfigmyVM* existujícího síťového rozhraní s názvem *myVMVMNic* , který je připojen k virtuálnímu počítači s názvem *myVM* ve skupině prostředků s názvem *myResourceGroup*.
   
    ```azurecli-interactive
@@ -86,7 +86,7 @@ Nainstalujte rozhraní příkazového [řádku Azure](/cli/azure/install-azure-c
 
 Nainstalujte [PowerShell](/powershell/azure/install-az-ps)nebo použijte Azure Cloud Shell. Služba Azure Cloud Shell je volně dostupné prostředí, které můžete spustit přímo z portálu Azure Portal. Má předinstalované prostředí PowerShell a je nakonfigurováno pro použití s vaším účtem. V následujících příkazech PowerShellu vyberte tlačítko **vyzkoušet** . Výběrem možnosti **vyzkoušet** vyvoláte Cloud Shell, pomocí které se můžete přihlásit ke svému účtu Azure.
 
-1. Pokud používáte PowerShell místně, přihlaste se k `Connect-AzAccount`Azure pomocí.
+1. Pokud používáte PowerShell místně, přihlaste se k Azure pomocí `Connect-AzAccount` .
 2. Veřejná IP adresa je přidružená ke konfiguraci protokolu IP síťového rozhraní připojeného k virtuálnímu počítači. K získání síťového rozhraní použijte příkaz [Get-AzNetworkInterface](/powershell/module/Az.Network/Get-AzNetworkInterface) . Nastavte hodnotu veřejné IP adresy na null a pak pomocí příkazu [set-AzNetworkInterface](/powershell/module/Az.Network/Set-AzNetworkInterface) zapište novou konfiguraci protokolu IP do síťového rozhraní.
 
    Následující příklad dissociates veřejnou IP adresu s názvem *myVMPublicIP* ze síťového rozhraní s názvem *myVMVMNic* , které je připojeno k virtuálnímu počítači s názvem *myVM*. Všechny prostředky jsou ve skupině prostředků s názvem *myResourceGroup*.

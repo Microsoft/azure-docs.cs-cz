@@ -3,16 +3,16 @@ title: Hostitel reverzních zón zpětného vyhledávání DNS v Azure DNS
 description: Naučte se používat Azure DNS k hostování zón zpětného vyhledávání DNS pro rozsahy IP adres.
 author: rohinkoul
 ms.service: dns
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: rohink
-ms.openlocfilehash: 78fc3428274be5e1998abe9189bea996f15e278c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d6fabd58baf8fb3dc30c2468efd5bdc8179d5f95
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79454257"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84709194"
 ---
 # <a name="host-reverse-dns-lookup-zones-in-azure-dns"></a>Hostitel reverzních zón zpětného vyhledávání DNS v Azure DNS
 
@@ -29,7 +29,7 @@ Tento článek vás provede kroky k vytvoření první zóny a záznamu DNS zpě
 ## <a name="create-a-reverse-lookup-dns-zone"></a>Vytvoření zóny DNS zpětného vyhledávání
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. V nabídce **centra** vyberte **Nový** > **síť**a pak vyberte **zóna DNS**.
+1. V nabídce **centra** vyberte **Nový**  >  **síť**a pak vyberte **zóna DNS**.
 
    ![Výběr zóny DNS](./media/dns-reverse-dns-hosting/figure1.png)
 
@@ -37,14 +37,14 @@ Tento článek vás provede kroky k vytvoření první zóny a záznamu DNS zpě
 
 ### <a name="ipv4"></a>IPv4
 
-Název zóny zpětného vyhledávání IPv4 je založený na rozsahu IP adres, který představuje. Měl by být v následujícím formátu: `<IPv4 network prefix in reverse order>.in-addr.arpa`. Příklady najdete v tématu [Přehled reverzních DNS a podpory v Azure](dns-reverse-dns-overview.md#ipv4).
+Název zóny zpětného vyhledávání IPv4 je založený na rozsahu IP adres, který představuje. Měl by být v následujícím formátu: `<IPv4 network prefix in reverse order>.in-addr.arpa` . Příklady najdete v tématu [Přehled reverzních DNS a podpory v Azure](dns-reverse-dns-overview.md#ipv4).
 
 > [!NOTE]
-> Při vytváření reverzních zón zpětného vyhledávání DNS bez třídy v Azure DNS musíte použít spojovník (`-`) místo lomítka (`/`) v názvu zóny.
+> Při vytváření reverzních zón zpětného vyhledávání DNS bez třídy v Azure DNS musíte použít spojovník ( `-` ) místo lomítka ( `/` ) v názvu zóny.
 >
-> Například pro rozsah IP adres 192.0.2.128/26 musíte jako název zóny použít `128-26.2.0.192.in-addr.arpa` místo. `128/26.2.0.192.in-addr.arpa`
+> Například pro rozsah IP adres 192.0.2.128/26 musíte `128-26.2.0.192.in-addr.arpa` jako název zóny použít místo `128/26.2.0.192.in-addr.arpa` .
 >
-> I když standardy DNS podporují obě metody, Azure DNS nepodporuje názvy zón DNS, které obsahují znak lomítka (`/`).
+> I když standardy DNS podporují obě metody, Azure DNS nepodporuje názvy zón DNS, které obsahují znak lomítka ( `/` ).
 
 Následující příklad ukazuje, jak vytvořit reverzní zónu DNS třídy C s názvem `2.0.192.in-addr.arpa` v Azure DNS prostřednictvím Azure Portal:
 
@@ -74,10 +74,10 @@ az network dns zone create -g MyResourceGroup -n 2.0.192.in-addr.arpa
 
 ### <a name="ipv6"></a>IPv6
 
-Název zóny zpětného vyhledávání IPv6 by měl být v následujícím tvaru: `<IPv6 network prefix in reverse order>.ip6.arpa`.  Příklady najdete v tématu [Přehled reverzních DNS a podpory v Azure](dns-reverse-dns-overview.md#ipv6).
+Název zóny zpětného vyhledávání IPv6 by měl být v následujícím tvaru: `<IPv6 network prefix in reverse order>.ip6.arpa` .  Příklady najdete v tématu [Přehled reverzních DNS a podpory v Azure](dns-reverse-dns-overview.md#ipv6).
 
 
-Následující příklad ukazuje, jak vytvořit zónu zpětného vyhledávání DNS s reverzním `0.0.0.0.d.c.b.a.8.b.d.0.1.0.0.2.ip6.arpa` protokolem IPv6 s názvem v Azure DNS prostřednictvím Azure Portal:
+Následující příklad ukazuje, jak vytvořit zónu zpětného vyhledávání DNS s reverzním protokolem IPv6 s názvem `0.0.0.0.d.c.b.a.8.b.d.0.1.0.0.2.ip6.arpa` v Azure DNS prostřednictvím Azure Portal:
 
  ![Podokno vytvořit zónu DNS s vyplněnými poli](./media/dns-reverse-dns-hosting/figure3.png)
 

@@ -5,21 +5,21 @@ services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: ee789d0a9d06dfe6c5f47c02a5ff9c1637b3f976
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 6cd0b2f31af187d881fe650c0829bb28e353dcbf
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209464"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987629"
 ---
 # <a name="create-a-zone-redundant-virtual-network-gateway-in-azure-availability-zones"></a>Vytvoření brány virtuální sítě redundantní v zóně v Zóny dostupnosti Azure
 
 V Zóny dostupnosti Azure můžete nasadit brány VPN a ExpressRoute. To přináší odolnost proti chybám, škálovatelnost a vyšší dostupnost bran virtuálních sítí. Nasazování bran v rámci Zón dostupnosti Azure fyzicky a logicky odděluje brány v rámci oblasti, přičemž zároveň chrání připojení vaší místní sítě k Azure před výpadky na úrovni zóny. Informace najdete v tématu informace [o branách virtuální sítě redundantních v zóně](about-zone-redundant-vnet-gateways.md) a [o zóny dostupnosti Azure](../availability-zones/az-overview.md).
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 [!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 

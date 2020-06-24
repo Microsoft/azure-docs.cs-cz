@@ -11,18 +11,18 @@ Customer intent: I want to filter network traffic to virtual machines that perfo
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/30/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 72c8b4d57b5064af34665cff1386179e62324938
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b593630d6702f66b1b877c15688b9aea0e227fca
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80235082"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84688242"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-the-azure-cli"></a>Filtrování síťového provozu pomocí skupiny zabezpečení sítě pomocí Azure CLI
 
@@ -33,7 +33,7 @@ Příchozí a odchozí provoz podsítě virtuální sítě můžete filtrovat po
 * Nasazení virtuálních počítačů do podsítě
 * Testování filtrů provozu
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -143,9 +143,9 @@ az network vnet subnet create \
 
 Vytvořte ve virtuální síti dva virtuální počítače, abyste v pozdějším kroku mohli ověřit filtrování provozu. 
 
-Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm). Následující příklad vytvoří virtuální počítač, který bude sloužit jako webový server. Možnost způsobí, že Azure zpřístupní síťové rozhraní, které vytvoří pro virtuální počítač jako člena skupiny zabezpečení aplikací *myAsgWebServers.* `--asgs myAsgWebServers`
+Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm). Následující příklad vytvoří virtuální počítač, který bude sloužit jako webový server. `--asgs myAsgWebServers`Možnost způsobí, že Azure zpřístupní síťové rozhraní, které vytvoří pro virtuální počítač jako člena skupiny zabezpečení aplikací *myAsgWebServers* .
 
-Tato `--nsg ""` možnost je určená k tomu, aby se zabránilo tomu, aby Azure vytvořil výchozí skupinu zabezpečení sítě pro síťové rozhraní, které Azure vytvoří při vytváření virtuálního počítače. Pro zjednodušení tohoto článku se používá heslo. Klíče se obvykle používají v produkčních nasazeních. Pokud používáte klíče, musíte také nakonfigurovat přesměrování agenta SSH pro zbývající kroky. Další informace najdete v dokumentaci ke klientovi SSH. V `<replace-with-your-password>` následujícím příkazu nahraďte heslem, které jste si zvolili.
+Tato `--nsg ""` možnost je určená k tomu, aby se zabránilo tomu, aby Azure vytvořil výchozí skupinu zabezpečení sítě pro síťové rozhraní, které Azure vytvoří při vytváření virtuálního počítače. Pro zjednodušení tohoto článku se používá heslo. Klíče se obvykle používají v produkčních nasazeních. Pokud používáte klíče, musíte také nakonfigurovat přesměrování agenta SSH pro zbývající kroky. Další informace najdete v dokumentaci ke klientovi SSH. `<replace-with-your-password>`V následujícím příkazu nahraďte heslem, které jste si zvolili.
 
 ```azurecli-interactive
 adminPassword="<replace-with-your-password>"
@@ -196,7 +196,7 @@ Vytvoření virtuálního počítače trvá několik minut. Po vytvoření virtu
 
 ## <a name="test-traffic-filters"></a>Testování filtrů provozu
 
-Pomocí následujícího příkazu vytvořte relaci SSH s virtuálním počítačem s *myVmMgmt* . * \<PublicIpAddress>* nahraďte veřejnou IP adresou vašeho virtuálního počítače. V předchozím příkladu je IP adresa *13.90.242.231*.
+Pomocí následujícího příkazu vytvořte relaci SSH s virtuálním počítačem s *myVmMgmt* . Nahraďte *\<publicIpAddress>* veřejnou IP adresou vašeho virtuálního počítače. V předchozím příkladu je IP adresa *13.90.242.231*.
 
 ```bash 
 ssh azureuser@<publicIpAddress>
