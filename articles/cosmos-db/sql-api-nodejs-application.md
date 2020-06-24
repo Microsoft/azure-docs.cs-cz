@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Vytvoření webové aplikace v Node. js pomocí Azure Cosmos DB JavaScript SDK pro správu dat rozhraní SQL API'
-description: Tento kurz k Node. js popisuje, jak pomocí Microsoft Azure Cosmos DB ukládat data a přistupovat k nim z webové aplikace Node. js Express hostované na Web Apps funkce Microsoft Azure App Service.
+title: 'Kurz: Vytvoření webové aplikace v Node.js s využitím sady Azure Cosmos DB JavaScript SDK pro správu dat rozhraní SQL API'
+description: Tento Node.js kurz popisuje, jak pomocí Microsoft Azure Cosmos DB ukládat data a přistupovat k nim z webové aplikace Node.js Express hostované na Web Apps funkce Microsoft Azure App Service.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -8,14 +8,14 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
-ms.openlocfilehash: 9257a87c69e98db1107528551fe9ce0553c50f75
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: b85a70b6d2feba68ed5a766ad05bc6aa22f597f8
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858149"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85114686"
 ---
-# <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>Kurz: Vytvoření webové aplikace Node. js pomocí sady JavaScript SDK pro správu účtu rozhraní SQL API v Azure Cosmos DB 
+# <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>Kurz: vytvoření Node.js webové aplikace pomocí sady JavaScript SDK pro správu účtu rozhraní SQL API v Azure Cosmos DB 
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
@@ -25,9 +25,9 @@ ms.locfileid: "82858149"
 > * [Xamarin](mobile-apps-with-xamarin.md)
 > 
 
-Jako vývojář můžete mít aplikace, které používají data dokumentů NoSQL. K ukládání a přístupu k datům v dokumentu můžete použít účet rozhraní SQL API v Azure Cosmos DB. Tento kurz k Node. js vám ukáže, jak ukládat data a přistupovat k nim z účtu SQL API v Azure Cosmos DB pomocí aplikace Node. js Express, která je hostovaná na Web Apps funkce Microsoft Azure App Service. V tomto kurzu vytvoříte webovou aplikaci (aplikace TODO), která umožňuje vytvářet, načítat a provádět úlohy. Úkoly se ve službě Azure Cosmos DB ukládají jako dokumenty JSON. 
+Jako vývojář můžete mít aplikace, které používají data dokumentů NoSQL. K ukládání a přístupu k datům v dokumentu můžete použít účet rozhraní SQL API v Azure Cosmos DB. V tomto Node.js kurzu se dozvíte, jak ukládat data a přistupovat k nim z účtu rozhraní SQL API v Azure Cosmos DB pomocí aplikace Node.js Express, která je hostovaná na Web Apps funkce Microsoft Azure App Service. V tomto kurzu vytvoříte webovou aplikaci (aplikace TODO), která umožňuje vytvářet, načítat a provádět úlohy. Úkoly se ve službě Azure Cosmos DB ukládají jako dokumenty JSON. 
 
-Tento kurz ukazuje, jak vytvořit účet rozhraní SQL API v Azure Cosmos DB pomocí Azure Portal. Potom sestavíte a spustíte webovou aplikaci, která je vytvořená na základě sady Node. js SDK pro vytvoření databáze a kontejneru, a přidání položek do kontejneru. V tomto kurzu se používá sada JavaScript SDK verze 3,0.
+Tento kurz ukazuje, jak vytvořit účet rozhraní SQL API v Azure Cosmos DB pomocí Azure Portal. Potom sestavíte a spustíte webovou aplikaci, která je postavená na Node.js SDK pro vytvoření databáze a kontejneru a přidání položek do kontejneru. V tomto kurzu se používá sada JavaScript SDK verze 3,0.
 
 Tento kurz se zabývá následujícími úkony:
 
@@ -41,7 +41,7 @@ Tento kurz se zabývá následujícími úkony:
 
 Než budete postupovat podle pokynů v tomto článku, ujistěte se, že máte následující prostředky:
 
-* Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
+* Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete. 
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
@@ -84,7 +84,7 @@ Nyní se naučíme, jak vytvořit základní projekt Node.js Hello World pomocí
 
 1. Pokud si chcete zobrazit novou aplikaci, přejděte v prohlížeči na adresu `http://localhost:3000`.
    
-   ![Výuka Node.js – snímek obrazovky aplikace Hello World v okně prohlížeče](./media/sql-api-nodejs-application/cosmos-db-node-js-express.png)
+   :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-express.png" alt-text="Výuka Node.js – snímek obrazovky aplikace Hello World v okně prohlížeče":::
 
    V okně terminálu pomocí kombinace kláves CTRL + C zastavte aplikaci a kliknutím na tlačítko **y** ukončete úlohu Batch.
 
@@ -92,13 +92,13 @@ Nyní se naučíme, jak vytvořit základní projekt Node.js Hello World pomocí
 
 Soubor **package.json** je jedním ze souborů vytvořených v kořenu projektu. Tento soubor obsahuje seznam dalších modulů, které aplikace Node.js vyžaduje. Až budete tuto aplikaci nasazovat v Azure, tento soubor se použije k vyhodnocení, které moduly se musí v Azure pro podporu vaší aplikace nainstalovat. Pro účely tohoto kurzu nainstalujte další dva balíčky.
 
-1. Nainstalujte modul ** \@Azure/Cosmos** prostřednictvím npm. 
+1. Nainstalujte modul ** \@ Azure/Cosmos** prostřednictvím npm. 
 
    ```bash
    npm install @azure/cosmos
    ```
 
-## <a name="connect-the-nodejs-application-to-azure-cosmos-db"></a><a name="_Toc395783180"></a>Připojení aplikace Node. js k Azure Cosmos DB
+## <a name="connect-the-nodejs-application-to-azure-cosmos-db"></a><a name="_Toc395783180"></a>Připojit aplikaci Node.js k Azure Cosmos DB
 Dokončili jste počáteční nastavení a konfiguraci a teď napíšete kód, který potřebuje aplikace seznamu úkolů ke komunikaci se službou Azure Cosmos DB.
 
 ### <a name="create-the-model"></a>Vytvoření modelu
@@ -106,7 +106,7 @@ Dokončili jste počáteční nastavení a konfiguraci a teď napíšete kód, k
 
 2. V adresáři **models** vytvořte nový soubor s názvem **taskDao.js**. Tento soubor obsahuje kód potřebný k vytvoření databáze a kontejneru. Definuje také metody pro čtení, aktualizaci, vytváření a hledání úloh v Azure Cosmos DB. 
 
-3. Do souboru **taskDao. js** zkopírujte následující kód:
+3. Zkopírujte následující kód do souboru **taskDao.js** :
 
    ```javascript
     // @ts-check
@@ -271,7 +271,7 @@ Dokončili jste počáteční nastavení a konfiguraci a teď napíšete kód, k
    module.exports = config;
    ```
 
-3. V souboru **config. js** aktualizujte hodnoty hostitelů a AUTH_KEY pomocí hodnot, které se nacházejí na stránce klíčů účtu Azure Cosmos DB na [Azure Portal](https://portal.azure.com). 
+3. V souboru **config.js** aktualizujte hodnoty hostitelů a AUTH_KEY pomocí hodnot, které se nacházejí na stránce klíčů účtu Azure Cosmos DB na [Azure Portal](https://portal.azure.com). 
 
 4. Uložte a zavřete soubor **config.js**.
 
@@ -438,7 +438,7 @@ Teď, když jste sestavili aplikaci, ji můžete spustit místně pomocí násle
 
 1. Pokud chcete aplikaci otestovat na místním počítači, spusťte `npm start` v terminálu, aby se spustila vaše aplikace, a pak aktualizujte `http://localhost:3000` stránku prohlížeče. Stránka by teď měla vypadat jako na následujícím snímku obrazovky:
    
-    ![Snímek obrazovky aplikace Seznam úkolů v okně prohlížeče](./media/sql-api-nodejs-application/cosmos-db-node-js-localhost.png)
+    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-localhost.png" alt-text="Snímek obrazovky aplikace Seznam úkolů v okně prohlížeče":::
 
     > [!TIP]
     > Pokud se zobrazí chyba týkající se odložení v souboru layout. Jade nebo index. Jade, ujistěte se, že první dva řádky v obou souborech jsou zarovnané vlevo, bez mezer. Pokud jsou před prvními dvěma řádky mezery, odstraňte je, uložte oba soubory a pak aktualizujte okno prohlížeče. 
@@ -447,7 +447,7 @@ Teď, když jste sestavili aplikaci, ji můžete spustit místně pomocí násle
 
 3. Stránka by se měla aktualizovat, aby se v seznamu úkolů zobrazila nově vytvořená položka.
    
-    ![Snímek obrazovky aplikace s novou položkou v seznamu úkolů](./media/sql-api-nodejs-application/cosmos-db-node-js-added-task.png)
+    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-added-task.png" alt-text="Snímek obrazovky aplikace s novou položkou v seznamu úkolů":::
 
 4. Chcete-li dokončit úkol, zaškrtněte políčko v poli dokončeno a pak vyberte **aktualizovat úkoly**. Vytvořený dokument se aktualizuje a odebere ze zobrazení.
 

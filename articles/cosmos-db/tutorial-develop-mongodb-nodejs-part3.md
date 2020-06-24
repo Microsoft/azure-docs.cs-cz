@@ -10,16 +10,16 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: c9467aef1dd7d28b41c2e05b5f157a158d7377ab
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 64085c55376ec85e20244abb452c2e365aa0aeec
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75444746"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85114380"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---build-the-ui-with-angular"></a>Vytvoření úhlové aplikace s rozhraním API Azure Cosmos DB pro MongoDB – Sestavte uživatelské rozhraní pomocí úhlů.
 
-Tento kurz s více částmi ukazuje, jak vytvořit novou aplikaci napsanou v Node. js s Express a úhlovými a pak ji připojit k [účtu Cosmos nakonfigurovanému pomocí rozhraní API služby Cosmos DB pro MongoDB](mongodb-introduction.md).
+V tomto výukovém kurzu se dozvíte, jak vytvořit novou aplikaci napsanou v Node.js pomocí Expressu a úhlu a pak ji připojit k [účtu Cosmos nakonfigurovanému pomocí rozhraní API Cosmos DB pro MongoDB](mongodb-introduction.md).
 
 Třetí část kurzu vychází z [části 2](tutorial-develop-mongodb-nodejs-part2.md) a zabývá se následujícími úlohami:
 
@@ -51,7 +51,7 @@ Před zahájením této části kurzu se ujistěte, že jste dokončili kroky v 
 
     V okně terminálu se zobrazí potvrzení nových komponent.
 
-    ![Instalace komponenty hero](./media/tutorial-develop-mongodb-nodejs-part3/install-heros-component.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/install-heros-component.png" alt-text="Instalace komponenty hero":::
 
     Podívejme se na vytvořené a nahrané soubory. 
 
@@ -62,7 +62,7 @@ Před zahájením této části kurzu se ujistěte, že jste dokončili kroky v 
 
 4. Ve stejné složce otevřete soubor **app.module.ts** a všimněte si, že na řádku 5 se importovala komponenta `HeroesComponent`, která se také přidala k deklaracím na řádku 10.
 
-    ![Otevření souboru app.module.ts](./media/tutorial-develop-mongodb-nodejs-part3/app-module-file.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/app-module-file.png" alt-text="Otevření souboru app.module.ts":::
 
 5. Přejděte zpět do souboru **heroes.component.html** a zkopírujte do něj tento kód. Element `<div>` je kontejner pro celou stránku. Uvnitř kontejneru je seznam hrdinů, který potřebujeme vytvořit tak, aby se hrdina po kliknutí vybral a bylo možné ho upravit nebo odstranit v uživatelském rozhraní. Dále v kódu HTML máme několik stylů, abyste věděli, který hrdina je vybraný. Je tam také oblast pro úpravy, abyste mohli přidat nového hrdinu nebo upravit existujícího. 
 
@@ -394,7 +394,7 @@ Když teď máme komponentu, jak ji zobrazíme na obrazovce? Pojďme upravit vý
 
 5. Klikněte na výraz `Hero` a Visual Studio Code na levé straně bloku kódu zobrazí ikonu žárovky. 
 
-    ![Žárovka ve Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part3/light-bulb.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/light-bulb.png" alt-text="Žárovka ve Visual Studio Code":::
 
 6. Klikněte na žárovku a pak klikněte na **Importovat Hero z umístění /app/hero**. nebo **Importovat Hero z umístění ./hero**. (Zpráva se mění v závislosti na vašem nastavení.)
 
@@ -490,7 +490,7 @@ Když teď máme komponentu, jak ji zobrazíme na obrazovce? Pojďme upravit vý
 
 3. Nyní otevřete internetový prohlížeč a přejděte na adresu **localhost:3000**, kde se zobrazí místně spuštěná aplikace.
 
-     ![Místně spuštěná aplikace Heroes](./media/tutorial-develop-mongodb-nodejs-part3/azure-cosmos-db-mongodb-mean-app.png)
+     :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/azure-cosmos-db-mongodb-mean-app.png" alt-text="Místně spuštěná aplikace Heroes":::
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: wellsi
-ms.openlocfilehash: 93bedbf4275dacc3ec84e6df9c55e7e9a7b9d632
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: a2fe1c7c1ac8799d615c26fdaee40b92bf3e294b
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780908"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212492"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>Poznámky k verzi: sada Speech SDK pro zařízení
 
@@ -39,10 +39,10 @@ V následujících částech jsou uvedeny změny v posledních verzích.
 
 - Systém Linux ARM je nyní podporován.
 - K dispozici jsou počáteční binární soubory pro [Roobo v2 DDK](https://aka.ms/sdsdk-download-roobov2) (Linux ARM64).
-- Uživatelé systému Windows můžou `AudioConfig.fromDefaultMicrophoneInput()` použít `AudioConfig.fromMicrophoneInput(deviceName)` nebo k určení mikrofonu, který se má použít.
+- Uživatelé systému Windows můžou použít `AudioConfig.fromDefaultMicrophoneInput()` nebo `AudioConfig.fromMicrophoneInput(deviceName)` k určení mikrofonu, který se má použít.
 - Velikost knihovny byla optimalizována.
 - Podpora pro rozpoznávání vícenásobného zapnutí pomocí stejného objektu pro rozpoznávání řeči nebo záměru.
-- Opravte příležitostné zablokování, ke kterému by došlo při zastavování rozpoznávání.
+- Opravte občasné problémy, kdy proces přestal při zastavování rozpoznávání reagovat.
 - Ukázkové aplikace teď obsahují ukázkové účastníky. soubor vlastností, které demonstrují formát souboru.
 - Byla aktualizována součást [sady Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) na verzi 1.7.0. Další informace najdete v [poznámkách k verzi](https://aka.ms/csspeech/whatsnew).
 

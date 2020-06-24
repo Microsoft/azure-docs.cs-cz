@@ -9,14 +9,14 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 05/06/2020
 ms.author: pafarley
-ms.openlocfilehash: c4f4b07c9c1bd144dfbe5c60ff52cdfa4bf899ef
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: fc5eb33c511b7312aca4e9a4678acbe65718f3a7
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85112042"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85242145"
 ---
-[Referenční dokumentace](https://docs.microsoft.com/dotnet/api/overview/azure/formrecognizer?view=azure-dotnet-preview)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/src)  |  [Balíček (NuGet)](https://www.nuget.org/packages/Azure.AI.FormRecognizer)  |  [Ukázky](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md)
+[Referenční dokumentace](https://docs.microsoft.com/dotnet/api/overview/azure/formrecognizer)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/src)  |  [Balíček (NuGet)](https://www.nuget.org/packages/Azure.AI.FormRecognizer)  |  [Ukázky](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -134,7 +134,7 @@ Také budete muset přidat odkazy na adresy URL pro školení a testování dat.
 * Použijte výše uvedenou metodu k získání adresy URL obrázku účtenky nebo použijte poskytnutou adresu URL ukázkového obrázku.
 
 > [!NOTE]
-> Fragmenty kódu v této příručce používají vzdálené formuláře, ke kterým přistupovali pomocí adres URL. Chcete-li místo toho zpracovat dokumenty v místním formuláři, přečtěte si související metody v [referenční dokumentaci](https://docs.microsoft.com/dotnet/api/overview/azure/formrecognizer?view=azure-dotnet-preview).
+> Fragmenty kódu v této příručce používají vzdálené formuláře, ke kterým přistupovali pomocí adres URL. Chcete-li místo toho zpracovat dokumenty v místním formuláři, přečtěte si související metody v [referenční dokumentaci](https://docs.microsoft.com/dotnet/api/overview/azure/formrecognizer).
 
 ```csharp
     string trainingDataUrl = "<SAS-URL-of-your-form-folder-in-blob-storage>";
@@ -530,7 +530,7 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 * [Azure Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Když pracujete s klientskou knihovnou nástroje pro rozpoznávání formulářů Cognitive Services pomocí sady .NET SDK, chyby vrácené službou budou mít za následek `RequestFailedException` . Budou zahrnovat stejný stavový kód protokolu HTTP, který by byl vrácen požadavkem REST API.
 

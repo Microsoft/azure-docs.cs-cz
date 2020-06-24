@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2020
 ms.topic: sample
-ms.openlocfilehash: c45d2fc34ccbab6d813f12563678d036f9f35753
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 831f09ecf7550a847c483fbe1678f1e4c3cecb61
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80891488"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052286"
 ---
 # <a name="example-powershell-scripts"></a>Ukázkové skripty PowerShellu
 
@@ -46,7 +46,7 @@ Chcete-li spustit ukázkové skripty, budete potřebovat instalaci funkcí [Azur
 
 ## <a name="configuration-file"></a>Konfigurační soubor
 
-Vedle `.ps1` souborů `arrconfig.json` je potřeba vyplnit:
+Vedle souborů je `.ps1` `arrconfig.json` potřeba vyplnit:
 
 ```json
 {
@@ -74,36 +74,39 @@ Vedle `.ps1` souborů `arrconfig.json` je potřeba vyplnit:
 ```
 
 > [!CAUTION]
-> Ujistěte se, že jsou v cestě LocalAssetDirectoryPath správně uvozená zpětná lomítka, pomocí dvojitých zpětných lomítek:\\\\a na všech ostatních cestách, jako je inputFolderPath a inputAssetPath, použijte lomítka (/).
+> Ujistěte se, že jsou v cestě LocalAssetDirectoryPath správně uvozená zpětná lomítka, pomocí dvojitých zpětných lomítek: \\ \\ a na všech ostatních cestách, jako je InputFolderPath a inputAssetPath, použijte lomítka (/).
+
+> [!CAUTION]
+> Volitelné hodnoty musí být vyplněny nebo je nutné úplně odebrat klíč a hodnotu. Například pokud nepoužijete `"outputAssetFileName"` parametr, je nutné odstranit celý řádek uvnitř `arrconfig.json` .
 
 ### <a name="accountsettings"></a>accountSettings
 
-Informace `arrAccountId` o `arrAccountKey`a najdete v tématu [Vytvoření účtu vzdáleného vykreslování Azure](../how-tos/create-an-account.md).
-`region` Zobrazí [seznam dostupných oblastí](../reference/regions.md).
+`arrAccountId`Informace o a `arrAccountKey` najdete v tématu [Vytvoření účtu vzdáleného vykreslování Azure](../how-tos/create-an-account.md).
+`region`Zobrazí [seznam dostupných oblastí](../reference/regions.md).
 
 ### <a name="renderingsessionsettings"></a>renderingSessionSettings
 
-Tato struktura musí být vyplněna, pokud chcete spustit **RenderingSession. ps1**.
+Tato struktura musí být vyplněna, pokud chcete spustit **RenderingSession.ps1**.
 
 - **vmSize:** Vybere velikost virtuálního počítače. Vyberte *úroveň Standard* nebo *Premium*. Vypnutí relací vykreslování, když už je nepotřebujete
 - **maxLeaseTime:** Doba, po kterou chcete virtuální počítač zapůjčit. Po vypršení platnosti zapůjčení se vypne. Čas zapůjčení lze později prodloužit (viz níže).
 
 ### <a name="assetconversionsettings"></a>assetConversionSettings
 
-Tato struktura musí být vyplněna, pokud chcete spustit **Conversion. ps1**.
+Tato struktura musí být vyplněna, pokud chcete spustit **Conversion.ps1**.
 
 Podrobnosti najdete v tématu [Příprava účtu Azure Storage](../how-tos/conversion/blob-storage.md#prepare-azure-storage-accounts).
 
-## <a name="script-renderingsessionps1"></a>Skript: RenderingSession. ps1
+## <a name="script-renderingsessionps1"></a>Skript: RenderingSession.ps1
 
 Tento skript slouží k vytváření, dotazování a zastavování relací vykreslování.
 
 > [!IMPORTANT]
-> Ujistěte se, že jste vyplnili oddíly *accountSettings* a *renderingSessionSettings* v ARRConfig. JSON.
+> Ujistěte se, že jste vyplnili části *accountSettings* a *renderingSessionSettings* v arrconfig.jsna.
 
 ### <a name="create-a-rendering-session"></a>Vytvoření relace vykreslování
 
-Normální využití plně vyplněné ARRConfig. JSON:
+Normální použití s plně vyplněným arrconfig.js:
 
 ```PowerShell
 .\RenderingSession.ps1
@@ -164,12 +167,12 @@ V tuto chvíli podporujeme jenom změnu maxLeaseTime relace.
 .\RenderingSession.ps1 -UpdateSession -Id <sessionID> -MaxLeaseTime <hh:mm:ss>
 ```
 
-## <a name="script-conversionps1"></a>Skript: Conversion. ps1
+## <a name="script-conversionps1"></a>Skript: Conversion.ps1
 
 Tento skript slouží k převodu vstupních modelů do formátu runtime specifického pro vzdálené vykreslování Azure.
 
 > [!IMPORTANT]
-> Ujistěte se, že jste vyplnili oddíly *accountSettings* a *assetConversionSettings* v ARRConfig. JSON.
+> Ujistěte se, že jste vyplnili části *accountSettings* a *assetConversionSettings* v arrconfig.jsna.
 
 Skript ukazuje dvě možnosti použití účtů úložiště se službou:
 
@@ -178,7 +181,7 @@ Skript ukazuje dvě možnosti použití účtů úložiště se službou:
 
 ### <a name="linked-storage-account"></a>Propojený účet úložiště
 
-Po úplném vyplňování ARRConfig. JSON a propojení účtu úložiště můžete použít následující příkaz. Odkaz na účet úložiště je popsaný v tématu [Vytvoření účtu](../how-tos/create-an-account.md#link-storage-accounts).
+Po úplném vyplňování arrconfig.jsa propojení účtu úložiště můžete použít následující příkaz. Odkaz na účet úložiště je popsaný v tématu [Vytvoření účtu](../how-tos/create-an-account.md#link-storage-accounts).
 
 Použití propojeného účtu úložiště je preferovaným způsobem, jak používat službu převodu, protože není potřeba generovat sdílené přístupové podpisy.
 

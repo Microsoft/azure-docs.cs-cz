@@ -9,26 +9,26 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: cc81784d4ad3613cf46176912625cf980c44f064
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 91bf2ba0957104b7ccba330f914734a362c3e309
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235053"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255428"
 ---
 # <a name="tutorial-sync-data-from-sql-edge-to-azure-blob-storage-by-using-azure-data-factory"></a>Kurz: synchronizace dat z Edge SQL do úložiště objektů BLOB v Azure pomocí Azure Data Factory
 
 V tomto kurzu použijete Azure Data Factory k přírůstkové synchronizaci dat do služby Azure Blob Storage z tabulky v instanci Azure SQL Edge.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Pokud jste ještě nevytvořili databázi nebo tabulku v nasazení Azure SQL Edge, použijte jednu z těchto metod k jejímu vytvoření:
 
 * K připojení k SQL Edge použijte [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms/) nebo [Azure Data Studio](/sql/azure-data-studio/download/) . Spusťte skript SQL pro vytvoření databáze a tabulky.
-* Vytvořte databázi SQL a tabulku pomocí nástroje [Sqlcmd](/sql/tools/sqlcmd-utility/) pomocí přímého připojení k modulu SQL Edge. Další informace najdete v tématu [připojení k databázovému stroji pomocí nástroje Sqlcmd](/sql/ssms/scripting/sqlcmd-connect-to-the-database-engine/).
-* Pomocí SQLPackage. exe nasaďte soubor balíčku DAC do kontejneru SQL Edge. Tento proces můžete automatizovat zadáním identifikátoru URI souboru SqlPackage jako součást konfigurace požadovaných vlastností modulu. K nasazení balíčku DAC do SQL Edge můžete také přímo použít nástroj klienta SqlPackage. exe.
+* Vytvořte databázi a tabulku pomocí nástroje [Sqlcmd](/sql/tools/sqlcmd-utility/) přímým připojením k modulu SQL Edge. Další informace najdete v tématu [připojení k databázovému stroji pomocí nástroje Sqlcmd](/sql/ssms/scripting/sqlcmd-connect-to-the-database-engine/).
+* Pomocí SQLPackage.exe nasaďte soubor balíčku DAC do kontejneru SQL Edge. Tento proces můžete automatizovat zadáním identifikátoru URI souboru SqlPackage jako součást konfigurace požadovaných vlastností modulu. K nasazení balíčku DAC do SQL Edge můžete také použít přímo Nástroj klienta SqlPackage.exe.
 
-    Informace o tom, jak stáhnout SqlPackage. exe, najdete v tématu [Stažení a instalace SqlPackage](/sql/tools/sqlpackage-download/). Následuje několik ukázkových příkazů pro SqlPackage. exe. Další informace najdete v dokumentaci k SqlPackage. exe.
+    Informace o tom, jak stáhnout SqlPackage.exe, najdete v tématu [Stažení a instalace SqlPackage](/sql/tools/sqlpackage-download/). Následuje několik ukázkových příkazů pro SqlPackage.exe. Další informace najdete v dokumentaci k SqlPackage.exe.
 
     **Vytvoření balíčku DAC**
 
@@ -195,7 +195,7 @@ Pomocí pokynů v [tomto kurzu](../data-factory/quickstart-create-data-factory-p
 
     2. Chcete-li zadat hodnoty parametrů uložené procedury, vyberte možnost **importovat parametr** a zadejte tyto hodnoty parametrů:
 
-    |Název|Typ|Hodnota|
+    |Name|Typ|Hodnota|
     |-----|----|-----|
     |LastModifiedtime|DateTime|@ {Activity (' NewWaterMark '). Output. firstRow. NewWatermarkvalue}|
     |TableName|Řetězec|@ {Activity (' OldWaterMark '). Output. firstRow. TableName}|

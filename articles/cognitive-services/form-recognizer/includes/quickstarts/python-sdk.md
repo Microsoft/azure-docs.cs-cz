@@ -9,14 +9,14 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/15/2020
 ms.author: pafarley
-ms.openlocfilehash: fafb16d1f8c37eab7ebaaeacb3a3e9b218347a04
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: c150d60b05ccd306f055c60d180ee9421b356feb
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85112090"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85242094"
 ---
-[Referenční dokumentace](https://docs.microsoft.com/python/api/overview/azure/formrecognizer?view=azure-python-preview)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/azure/ai/formrecognizer)  |  [Balíček (PyPi)](https://pypi.org/project/azure-ai-formrecognizer/)  |  [Ukázky](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)
+[Referenční dokumentace](https://docs.microsoft.com/python/api/overview/azure/formrecognizer)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/azure/ai/formrecognizer)  |  [Balíček (PyPi)](https://pypi.org/project/azure-ai-formrecognizer/)  |  [Ukázky](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -90,7 +90,7 @@ form_training_client = FormTrainingClient(self.endpoint, AzureKeyCredential(self
 ## <a name="define-variables"></a>Definování proměnných
 
 > [!NOTE]
-> Fragmenty kódu v této příručce používají vzdálené formuláře, ke kterým přistupovali pomocí adres URL. Pokud místo toho chcete zpracovat dokumenty v místním formuláři, přečtěte si související metody v [referenční dokumentaci](https://docs.microsoft.com/python/api/overview/azure/formrecognizer?view=azure-python-preview) a [ukázkách](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples).
+> Fragmenty kódu v této příručce používají vzdálené formuláře, ke kterým přistupovali pomocí adres URL. Pokud místo toho chcete zpracovat dokumenty v místním formuláři, přečtěte si související metody v [referenční dokumentaci](https://docs.microsoft.com/python/api/overview/azure/formrecognizer) a [ukázkách](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples).
 
 Také budete muset přidat odkazy na adresy URL pro školení a testování dat.
 * Pokud chcete načíst adresu URL SAS pro vlastní model data školení, otevřete Průzkumník služby Microsoft Azure Storage, klikněte pravým tlačítkem na svůj kontejner a vyberte **získat sdílený přístupový podpis**. Ujistěte se, že jsou zaškrtnutá oprávnění **číst** a **Zobrazit seznam** , a klikněte na **vytvořit**. Pak zkopírujte hodnotu v části **Adresa URL** . Měla by mít tvar: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` .
@@ -402,13 +402,13 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 * [Azure Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 ### <a name="general"></a>Obecné
 
 Klientská knihovna pro rozpoznávání formulářů vyvolá výjimky definované v [Azure Core](https://aka.ms/azsdk-python-azure-core).
 
-## <a name="logging"></a>Protokolování
+## <a name="logging"></a>protokolování
 
 Tato knihovna používá [standardní knihovnu protokolování](https://docs.python.org/3/library/logging.html) pro protokolování. Základní informace o relacích HTTP (adresy URL, hlavičky atd.) se zaznamenávají na úrovni informací.
 

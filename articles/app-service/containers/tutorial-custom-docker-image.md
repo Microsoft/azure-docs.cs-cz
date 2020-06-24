@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: mvc, seodec18, tracking-python
-ms.openlocfilehash: d9c7b9b296aaf287d185cd3e7544e40d9cdef2f5
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 88ca971986119b3612c79d0bee381d3a0fc9a977
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561109"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84906832"
 ---
 # <a name="tutorial-build-a-custom-image-and-run-in-app-service-from-a-private-registry"></a>Kurz: Vytvoření vlastní image a spuštění v App Service z privátního registru
 
-[App Service](app-service-linux-intro.md) poskytuje integrované image Docker v systému Linux s podporou pro konkrétní verze, například php 7,3 a Node. js 10,14. App Service používá technologii kontejneru Docker k hostování vestavěných imagí a vlastních imagí jako platformy jako služby. V tomto kurzu se naučíte vytvořit vlastní image a spustit ji v App Service. Tento přístup je užitečný v případě, že integrované image nezahrnují váš vybraný jazyk, nebo když vaše aplikace vyžaduje specifickou konfiguraci, kterou neposkytují integrované image.
+[App Service](app-service-linux-intro.md) poskytuje integrované image Docker v systému Linux s podporou pro konkrétní verze, například php 7,3 a Node.js 10,14. App Service používá technologii kontejneru Docker k hostování vestavěných imagí a vlastních imagí jako platformy jako služby. V tomto kurzu se naučíte vytvořit vlastní image a spustit ji v App Service. Tento přístup je užitečný v případě, že integrované image nezahrnují váš vybraný jazyk, nebo když vaše aplikace vyžaduje specifickou konfiguraci, kterou neposkytují integrované image.
 
 V tomto kurzu se naučíte:
 
@@ -236,23 +236,33 @@ Ověřte fungování webové aplikace tím, že do ní přejdete (`http://<app-n
 
 ## <a name="change-web-app-and-redeploy"></a>Změna a opětovné nasazení webové aplikace
 
-V místním úložišti Git otevřete soubor app/templates/app/index.html. Vyhledejte první prvek HTML a změňte ho na:
+V místním úložišti Git otevřete *App/Templates/App/index.html*. Změňte první prvek HTML tak, aby odpovídal následujícímu kódu.
 
-```python
+```html
 <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#">Azure App Service - Updated Here!</a>
-      </div>
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Azure App Service - Updated Here!</a>
     </div>
-  </nav>
+  </div>
+</nav>
 ```
 
-Jakmile upravíte a uložíte soubor Pythonu, musíte znovu sestavit a odeslat novou image Dockeru. Pak restartujte webovou aplikaci, aby se změny projevily. Použijte stejné příkazy jako v dřívějších částech tohoto kurzu. Můžete se podívat, jak [vytvořit image ze souboru Docker](#build-the-image-from-the-docker-file) a [vložit obrázek do Azure Container Registry](#push-image-to-azure-container-registry). Otestujte webovou aplikaci podle pokynů v části [Otestování webové aplikace](#test-the-web-app).
+Po uložení změn znovu sestavte a nahrajte novou image Docker pomocí stejných příkazů, které jste použili dříve v tomto kurzu. Můžete se podívat, jak [vytvořit image ze souboru Docker](#build-the-image-from-the-docker-file) a [vložit obrázek do Azure Container Registry](#push-image-to-azure-container-registry).
+
+Po vložení nové image restartujte webovou aplikaci, aby se změny projevily, a to pomocí následujícího příkazu:
+
+```azurecli-interactive
+az webapp restart --name <app_name> --resource-group myResourceGroup
+```
+
+Nahraďte `<app_name>` konkrétním názvem použitým dříve.
+
+Jakmile se aplikace restartuje, otestujte ji podle pokynů v části [testování webové aplikace](#test-the-web-app).
 
 ## <a name="access-diagnostic-logs"></a>Přístup k diagnostickým protokolům
 
-[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-linux-no-h.md)]
 
 ## <a name="enable-ssh-connections"></a>Povolit připojení SSH
 

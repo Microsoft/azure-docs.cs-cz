@@ -6,16 +6,16 @@ ms.assetid: 055440a9-fff1-49b2-b964-9c95b364e533
 ms.topic: sample
 ms.date: 03/20/2017
 ms.custom: mvc
-ms.openlocfilehash: e050675282d8a7784d31aaf45a564da991ff6e63
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 9086e00e4b6caf89ab249bbf25ca03a6f068ba49
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020026"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85248271"
 ---
-# <a name="connect-an-app-service-app-to-a-sql-database"></a>Připojení aplikace App Service k databázi SQL
+# <a name="connect-an-app-service-app-to-sql-database"></a>Připojení aplikace App Service k SQL Database
 
-V tomto scénáři se naučíte, jak vytvořit databázi SQL Azure a aplikaci App Service. Pak propojíte databázi SQL s aplikací pomocí nastavení aplikace.
+V tomto scénáři se naučíte, jak vytvořit databázi v Azure SQL Database a v App Service aplikaci. Pak budete databázi propojit s aplikací pomocí nastavení aplikace.
 
 V případě potřeby nainstalujte Azure PowerShell podle pokynů uvedených v [příručce k Azure PowerShellu](/powershell/azure/overview) a pak spuštěním rutiny `Connect-AzAccount` vytvořte připojení k Azure.
 
@@ -23,7 +23,7 @@ V případě potřeby nainstalujte Azure PowerShell podle pokynů uvedených v [
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-[!code-azurepowershell-interactive[main](../../../powershell_scripts/app-service/connect-to-sql/connect-to-sql.ps1?highlight=13 "Connect an app to a SQL database")]
+[!code-azurepowershell-interactive[main](../../../powershell_scripts/app-service/connect-to-sql/connect-to-sql.ps1?highlight=13 "Connect an app to SQL Database")]
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení 
 

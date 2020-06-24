@@ -9,14 +9,14 @@ ms.subservice: blobs
 ms.topic: tutorial
 ms.date: 06/10/2020
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.custom: mvc
-ms.openlocfilehash: f77aacbddc5b3dcb5da62e5e87405477d47e7001
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: ac9bf7edf6e3973dd2f1f917d26ac280be4648e3
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84672319"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945643"
 ---
 # <a name="secure-access-to-application-data"></a>Zabezpečený přístup k datům aplikací
 
@@ -135,11 +135,13 @@ Předchozí úloha využívá následující třídy, vlastnosti a metody:
 |[Objekt UriBuilder protokolu](/dotnet/api/system.uribuilder) | [Dotaz](/dotnet/api/system.uribuilder.query) |  |
 |[Seznam](/dotnet/api/system.collections.generic.list-1) | | [Přidat](/dotnet/api/system.collections.generic.list-1.add) |
 
-## <a name="server-side-encryption"></a>Šifrování na straně serveru
+## <a name="azure-storage-encryption"></a>Šifrování služby Azure Storage
 
-[Šifrování služby Azure Storage (SSE)](../common/storage-service-encryption.md) pomáhá chránit a zabezpečit vaše data. SSE šifruje neaktivní uložená data a přitom zpracovává šifrování, dešifrování a správu klíčů. Veškerá data se šifrují pomocí 256bitového [šifrování AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard). To je jedna z nejsilnějších dostupných variant blokového šifrování.
+[Azure Storage šifrování](../common/storage-service-encryption.md) pomáhá chránit a chránit vaše data tím, že šifruje data v klidovém prostředí a zpracovává šifrování a dešifrování. Veškerá data se šifrují pomocí 256bitového [šifrování AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard). To je jedna z nejsilnějších dostupných variant blokového šifrování.
 
-SSE automaticky šifruje data na všech úrovních výkonu (Standard a Premium), ve všech modelech nasazení (Azure Resource Manager a Classic) a ve všech službách Azure Storage (Blob, Queue, Table a File). 
+Můžete zvolit, aby Microsoft spravoval šifrovací klíče, nebo můžete použít vlastní klíče s klíči spravovanými zákazníky pomocí Azure Key Vault. Další informace najdete v tématu [použití klíčů spravovaných zákazníkem a Azure Key Vault ke správě šifrování Azure Storage](../common/encryption-customer-managed-keys.md).
+
+Azure Storage šifrování automaticky šifruje data ve všech úrovních výkonu (Standard a Premium), všechny modely nasazení (Azure Resource Manager a klasické) a všechny Azure Storage služby (objekt blob, fronta, tabulka a soubor).
 
 ## <a name="enable-https-only"></a>Povolení pouze HTTPS
 

@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 9a9c6897937b73786367accc33e985a268907226
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6b446fe83ad37dfe9edbe55fcb1b5b42aa578274
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81258741"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100361"
 ---
 # <a name="transform-and-protect-your-api"></a>Transformace a ochrana vašeho rozhraní API
 
@@ -75,12 +75,12 @@ Původní odpověď by měla vypadat takto:
 2. V horní části obrazovky vyberte kartu **Návrh**.
 3. Vyberte **všechny operace**.
 4. V části **Zpracování odchozích požadavků** klikněte na ikonu **</>**.
-5. Umístěte kurzor do ** &lt;výstupního&gt; ** elementu.
+5. Umístěte kurzor do ** &lt; výstupního &gt; ** elementu.
 6. V pravém okně v části **Zásady transformace** vložte dva fragmenty kódu zásady dvojitým kliknutím na **+ Set HTTP header** (Nastavit hlavičku protokolu HTTP).
 
    ![Zásady](./media/transform-api/transform-api.png)
 
-7. Upravte kód pro ** \<odchozí>** tak, aby vypadal takto:
+7. Upravte **\<outbound>** kód tak, aby vypadal takto:
 
        <set-header name="X-Powered-By" exists-action="delete" />
        <set-header name="X-AspNet-Version" exists-action="delete" />
@@ -112,11 +112,8 @@ Původní odpověď zobrazíte následovně:
 2.  Vyberte **všechny operace**.
 3.  V horní části obrazovky vyberte kartu **Návrh**.
 4.  V části **Zpracování odchozích požadavků** klikněte na ikonu **</>**.
-5.  Umístěte kurzor do elementu ** &lt;&gt; Outbound** a klikněte na tlačítko **Vložit zásadu** v pravém horním rohu.
-6.  V pravém okně v části **Zásady transformace** klikněte na **+ Find and replace string in body** (Najít a nahradit řetězec v těle textu).
-7.  Nahraďte adresu URL upravením kódu **find-and-replace** (v elementu **\<outbound\>**) tak, aby odpovídala bráně služby APIM. Příklad:
-
-        <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
+5.  Umístěte kurzor do elementu ** &lt; odchozího &gt; ** a klikněte na tlačítko **Zobrazit fragmenty** v pravém horním rohu.
+6.  V pravém okně v části **zásady transformace**klikněte na **Maska adresy URL v obsahu**.
 
 ## <a name="protect-an-api-by-adding-rate-limit-policy-throttling"></a>Ochránit rozhraní API přidáním zásady omezování četnosti (omezení využití sítě)
 
@@ -128,9 +125,9 @@ Tato část ukazuje, jak přidat ochranu back-endovému rozhraní API nakonfigur
 2.  Vyberte **všechny operace**.
 3.  V horní části obrazovky vyberte kartu **Návrh**.
 4.  V části **Zpracování na vstupu** klikněte na ikonu **</>**.
-5.  Umístěte kurzor do prvku ** &lt;příchozí&gt; ** .
+5.  Umístěte kurzor do prvku ** &lt; příchozí &gt; ** .
 6.  V pravém okně v části **Zásady omezení přístupu** klikněte na **+ Limit call rate per key** (Omezit četnost volání pro každý klíč).
-7.  Upravte kód **rate-limit-by-key** (v elementu **\<inbound\>**) následovně:
+7.  Upravte kód **sazby-limit-by-Key** (v **\<inbound\>** elementu) na následující kód:
 
         <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
 

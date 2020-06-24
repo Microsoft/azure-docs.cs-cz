@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: fa8bb41684271c7d4ebe90e31ce8019994fc1f41
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9f6049a69b88c85f4e1bdf1c2400866739a6718d
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478751"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84944317"
 ---
 # <a name="azure-service-fabric-security"></a>Zabezpečení služby Azure Service Fabric 
 
@@ -70,7 +70,7 @@ Pokud chcete použít seznam řízení přístupu pro vaše certifikáty pro pro
 
 ## <a name="secure-a-service-fabric-cluster-certificate-by-common-name"></a>Zabezpečení certifikátu Service Fabric clusteru podle běžného názvu
 
-K zabezpečení Service Fabric clusteru pomocí certifikátu `Common Name`použijte vlastnost správce prostředků šablony [certificateCommonNames](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterproperties#certificatecommonnames)následujícím způsobem:
+K zabezpečení Service Fabric clusteru pomocí certifikátu `Common Name` použijte vlastnost správce prostředků šablony [certificateCommonNames](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterproperties#certificatecommonnames)následujícím způsobem:
 
 ```json
 "certificateCommonNames": {
@@ -87,16 +87,16 @@ K zabezpečení Service Fabric clusteru pomocí certifikátu `Common Name`použi
 > [!NOTE]
 > Clustery Service Fabric budou používat první platný certifikát, který nalezne v úložišti certifikátů hostitele. Ve Windows se jedná o certifikát s nejpozdějším datem vypršení platnosti, který odpovídá vašemu společnému názvu a kryptografickému otisku vystavitele.
 
-Domény Azure\<, například * vaše subdomény\>. cloudapp.Azure.com nebo \<subdoméne\>. trafficmanager.NET, jsou vlastněny společností Microsoft. Certifikační autority nebudou vydávat certifikáty pro domény neautorizovaným uživatelům. Většina uživatelů bude muset koupit doménu od registrátora nebo mít oprávnění správce domény, aby certifikační autorita mohla vydat certifikát s tímto běžným názvem.
+Domény Azure, jako jsou například * \<YOUR SUBDOMAIN\> . cloudapp.Azure.com nebo \<YOUR SUBDOMAIN\> . trafficmanager.NET, vlastní společnost Microsoft. Certifikační autority nebudou vydávat certifikáty pro domény neautorizovaným uživatelům. Většina uživatelů bude muset koupit doménu od registrátora nebo mít oprávnění správce domény, aby certifikační autorita mohla vydat certifikát s tímto běžným názvem.
 
 Další podrobnosti o tom, jak nakonfigurovat službu DNS k překladu vaší domény na IP adresu Microsoftu, najdete v tématu Jak nakonfigurovat [Azure DNS pro hostování vaší domény](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns).
 
 > [!NOTE]
 > Po delegování vašich názvových serverů domén na servery Azure DNS zóny přidejte do zóny DNS tyto dva záznamy:
 > - Záznam A pro vrchol domény, který není `Alias record set` na všech IP adresách, které vaše vlastní doména vyřeší.
-> - Záznam C pro poddomény Microsoftu, které jste zřídili, které nejsou `Alias record set`. Můžete například použít Traffic Manager nebo název DNS Load Balancer.
+> - Záznam C pro poddomény Microsoftu, které jste zřídili, které nejsou `Alias record set` . Můžete například použít Traffic Manager nebo název DNS Load Balancer.
 
-Chcete-li aktualizovat portál tak, aby pro Service Fabric clusteru `"managementEndpoint"`zobrazoval vlastní název DNS, aktualizujte následující vlastnosti šablony Správce prostředků Service Fabric clusteru:
+Chcete-li aktualizovat portál tak, aby pro Service Fabric clusteru zobrazoval vlastní název DNS `"managementEndpoint"` , aktualizujte následující vlastnosti šablony Správce prostředků Service Fabric clusteru:
 
 ```json
  "managementEndpoint": "[concat('https://<YOUR CUSTOM DOMAIN>:',parameters('nt0fabricHttpGatewayPort'))]",
@@ -157,7 +157,7 @@ Chcete-li dát vaší aplikaci přístup k tajným klíčům, zahrňte certifik�
 ```
 ## <a name="authenticate-service-fabric-applications-to-azure-resources-using-managed-service-identity-msi"></a>Ověřování aplikací Service Fabric k prostředkům Azure pomocí Identita spravované služby (MSI)
 
-Další informace o spravovaných identitách pro prostředky Azure najdete v tématu [co jsou spravované identity pro prostředky Azure?](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work).
+Další informace o spravovaných identitách pro prostředky Azure najdete v tématu [co jsou spravované identity pro prostředky Azure?](../active-directory/managed-identities-azure-resources/overview.md).
 Clustery Azure Service Fabric se hostují v Virtual Machine Scale Sets, které podporují [Identita spravované služby](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-msi#azure-services-that-support-managed-identities-for-azure-resources).
 Seznam služeb, které se dají použít k ověřování pomocí MSI, najdete v tématu [služby Azure, které podporují ověřování Azure Active Directory](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-msi#azure-services-that-support-azure-ad-authentication).
 
@@ -217,7 +217,12 @@ Doporučujeme [, abyste implementovali standardní standardní konfiguraci, kter
 Tato pravidla brány firewall doplňují vaše povolené odchozí skupiny zabezpečení sítě, které by zahrnovaly ServiceFabric a úložiště jako povolené cíle z vaší virtuální sítě.
 
 ## <a name="tls-12"></a>TLS 1.2
-[TSG](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md)
+
+Microsoft [Azure doporučuje](https://azure.microsoft.com/updates/azuretls12/) všem zákazníkům dokončit migraci na řešení, která podporují TLS (Transport Layer security) 1,2, a zajistěte, aby se standardně používal protokol TLS 1,2.
+
+Služby Azure, včetně [Service Fabric](https://techcommunity.microsoft.com/t5/azure-service-fabric/microsoft-azure-service-fabric-6-3-refresh-release-cu1-notes/ba-p/791493), dokončily technickou práci pro odebrání závislosti na protokolech TLS 1.0/1.1 a poskytují plnou podporu pro zákazníky, kteří chtějí mít nakonfigurované úlohy pro přijímání a iniciování jenom připojení TLS 1,2.
+
+Zákazníci by měli nakonfigurovat své úlohy hostované v Azure a místní aplikace v interakci se službami Azure, aby ve výchozím nastavení používaly protokol TLS 1,2. Tady je postup, jak [nakonfigurovat Service Fabric uzly clusteru a aplikace](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md) pro použití konkrétní verze protokolu TLS.
 
 ## <a name="windows-defender"></a>Windows Defender 
 

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 08/30/2019
+ms.date: 06/16/2020
 ms.author: jmprieur
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1dd0bc589b8290172d18482b36baf30c24d099b4
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0f712dbee6218ce8e012639b82a3a2ee7c177bb3
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83640582"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84904758"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-or-macos-app"></a>Přihlaste se uživatelům a zavolejte Microsoft Graph z aplikace pro iOS nebo macOS.
 
@@ -48,7 +48,7 @@ Tento kurz se týká aplikací pro iOS i macOS. Všimněte si, že některé kro
 
 ## <a name="prerequisites"></a>Požadavky
 
-- K sestavení aplikace v této příručce se vyžaduje XCode verze 11. x nebo vyšší. XCode si můžete stáhnout z [webu iTunes](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12 "Adresa URL pro stažení XCode").
+- K sestavení aplikace v této příručce se vyžaduje XCode verze 11. x nebo vyšší. XCode si můžete stáhnout z [Mac App Storu](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12 "Adresa URL pro stažení XCode").
 - Knihovna Microsoft Authentication Library ([MSAL. Framework](https://github.com/AzureAD/microsoft-authentication-library-for-objc)). Můžete použít Správce závislostí nebo přidat knihovnu ručně. Níže uvedené pokyny vám ukážou, jak.
 
 V tomto kurzu se vytvoří nový projekt. Pokud chcete stáhnout dokončený kurz místo toho, Stáhněte si kód:
@@ -624,9 +624,9 @@ Chcete-li získat aktualizovaný token tiše, přidejte do třídy následujíc�
 
 Jakmile máte token, může ji aplikace v hlavičce HTTP použít k provedení autorizované žádosti na Microsoft Graph:
 
-| klíč záhlaví    | value                 |
+| klíč záhlaví    | hodnota                 |
 | ------------- | --------------------- |
-| Autorizace | \<Přístup k> nosných tokenů |
+| Autorizace | Nosný\<access-token> |
 
 Do třídy přidejte následující kód `ViewController` :
 

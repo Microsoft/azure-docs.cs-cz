@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 3bd9489adaf46e604393fc7059d37443bdd5ec3e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 105ab0c71d9e7e935842550ecdc4c8d2ff2a2d8c
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73489020"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84977905"
 ---
 1. Vyhledejte virtuální síť WAN, kterou jste vytvořili. Na stránce virtuální síť WAN v části **připojení** vyberte **rozbočovače**.
 2. Na stránce centra vyberte **+ nové centrum** a otevřete stránku **vytvořit virtuální rozbočovač** .
@@ -24,8 +24,8 @@ ms.locfileid: "73489020"
     **Podrobnosti o projektu**
 
    * Oblast (dříve označovaná jako umístění)
-   * Název
-   * Privátní adresní prostor centra Minimální adresní prostor je/24 pro vytvoření centra, což znamená, že při vytváření dojde k chybě z rozsahu od/25 do/32.
+   * Name
+   * Privátní adresní prostor centra Minimální adresní prostor je/24 pro vytvoření centra, což znamená, že při vytváření dojde k chybě z rozsahu od/25 do/32. Azure Virtual WAN je spravovaná služba Microsoftu vytvoří ve virtuálním centru příslušné podsítě pro různé brány nebo služby (např. brány VPN, brány ExpressRoute, uživatelské VPN/brány, brány firewall, směrování atd.). Není nutné, aby uživatel explicitně naplánoval adresní prostor podsítě pro služby ve virtuálním rozbočovači, protože společnost Microsoft to dělá jako součást služby.
 4. Vyberte **Další: Site-to-site**.
 
     ![Site-to-Site](./media/virtual-wan-tutorial-hub-include/site-to-site.png "Site-to-Site")

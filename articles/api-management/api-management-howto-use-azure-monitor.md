@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: bee93cf84f4beda0684127102942447630219881
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 989608b9a087599ab73864ae2605fbffcf3221d9
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82128841"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84982046"
 ---
 # <a name="monitor-published-apis"></a>Monitorování publikovaných rozhraní API
 
@@ -43,14 +43,13 @@ Následující video ukazuje, jak pomocí služby Azure Monitor monitorovat slu�
 
 ## <a name="view-metrics-of-your-apis"></a>Zobrazení metrik vašich rozhraní API
 
-API Management každou minutu vysílá metriky, takže vám skoro v reálném čase poskytuje přehled o stavu vašich rozhraní API. Toto je souhrn některých dostupných metrik:
+API Management každou minutu vysílá metriky, takže vám skoro v reálném čase poskytuje přehled o stavu vašich rozhraní API. Níže jsou uvedené dvě nejčastěji používané metriky. Seznam všech dostupných metrik najdete v tématu [podporované metriky](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftapimanagementservice).
 
 * Kapacita: pomáhá při rozhodování o upgradu/downgrade služeb APIM Services. Metrika se generuje každou minutu a odráží kapacitu brány v čase vytvoření sestavy. Její hodnoty se pohybují v rozsahu od 0 do 100 a počítají se na základě prostředků brány, jako je využití procesoru nebo paměti.
-* Celkový počet požadavků brány: počet požadavků rozhraní API za dané období. 
-* Úspěšné požadavky brány: počet požadavků rozhraní API, které obdržely kódy úspěšné odpovědi HTTP včetně kódů 304, 307 a veškerých kódů menších než 301 (například 200).
-* Neúspěšné požadavky brány: počet požadavků rozhraní API, které obdržely kódy chybné odpovědi HTTP včetně kódů 400 a veškerých kódů větších než 500.
-* Neoprávněné požadavky brány: počet požadavků rozhraní API, které obdržely kódy odpovědi HTTP jako 401, 403 a 429.
-* Ostatní požadavky brány: počet požadavků rozhraní API, které obdržely kódy odpovědi HTTP nepatřící do žádné z výše uvedených skupin (například 418).
+* Požadavky: pomáhá analyzovat provoz rozhraní API prostřednictvím služeb APIM Services. Metrika je vygenerována za minutu a oznamuje počet požadavků brány s dimenzemi, včetně kódů odpovědí, umístění, názvu hostitele a chyb. 
+
+> [!IMPORTANT]
+> Následující metriky jsou zastaralé od května 2019 a budou vyřazeny v srpnu 2023: celkový počet požadavků brány, úspěšné požadavky brány, neautorizované žádosti o bránu, neúspěšné požadavky brány, další požadavky brány. Migrujte prosím na metriku požadavků, která poskytuje ekvivalentní funkce.
 
 ![Graf metrik](./media/api-management-azure-monitor/apim-monitor-metrics.png)
 
@@ -60,9 +59,9 @@ Přístup k metrikám:
 
     ![metriky](./media/api-management-azure-monitor/api-management-metrics-blade.png)
 
-1. V rozevíracím seznamu vyberte metriky, které vás zajímají. Například **požadavky**. 
-1. Graf zobrazí celkový počet volání rozhraní API.
-1. Graf lze filtrovat pomocí dimenzí metriky **požadavků** . Klikněte například na **Přidat filtr**, vyberte **kód odpovědi back-endu**a jako hodnotu zadejte 500. Graf teď zobrazuje počet požadavků, které se v back-endu rozhraní API nezdařily.   
+2. V rozevíracím seznamu vyberte metriky, které vás zajímají. Například **požadavky**. 
+3. Graf zobrazí celkový počet volání rozhraní API.
+4. Graf lze filtrovat pomocí dimenzí metriky **požadavků** . Klikněte například na **Přidat filtr**, vyberte **kód odpovědi back-endu**a jako hodnotu zadejte 500. Graf teď zobrazuje počet požadavků, které se v back-endu rozhraní API nezdařily.   
 
 ## <a name="set-up-an-alert-rule-for-unauthorized-request"></a>Nastavení pravidla upozornění při neoprávněných požadavcích
 
@@ -177,7 +176,7 @@ API Management v současné době poskytuje protokoly prostředků (v dávce ka�
 }  
 ```
 
-| Vlastnost  | Typ | Popis |
+| Vlastnost  | Typ | Description |
 | ------------- | ------------- | ------------- |
 | isRequestSuccess | Boolean | Má hodnotu true, pokud se požadavek HTTP dokončil se stavovým kódem odpovědi v rozsahu 2xx nebo 3xx. |
 | time | date-time | Časové razítko, kdy brána spouští zpracování žádosti |
@@ -188,8 +187,8 @@ API Management v současné době poskytuje protokoly prostředků (v dávce ka�
 | correlationId | řetězec | Jedinečný identifikátor požadavku HTTP přiřazený službou API Management. |
 | location | řetězec | Název oblasti Azure, ve které se nachází brána, která požadavek zpracovala. |
 | httpStatusCodeCategory | řetězec | Kategorie stavového kódu odpovědi HTTP: Úspěch (301 nebo nižší, 304 nebo 307), Neautorizováno (401, 403, 429), Chyba (400, 500 až 600), Jiné. |
-| resourceId | řetězec | ID předplatného API Management Resource\</Subscriptions/>/ResourceGroups/\<Resource-Group>/Providers/Microsoft. APIMANAGEMENT/SERVICE/\<název> |
-| properties | objekt | Vlastnosti aktuálního požadavku. |
+| resourceId | řetězec | ID API Management prostředku/SUBSCRIPTIONS/ \<subscription> /RESOURCEGROUPS/ \<resource-group> /providers/Microsoft. APIMANAGEMENT/SERVICE/\<name> |
+| properties | odkazy objektů | Vlastnosti aktuálního požadavku. |
 | method | řetězec | Metoda HTTP příchozího požadavku. |
 | url | řetězec | Adresa URL příchozího požadavku. |
 | clientProtocol | řetězec | Verze protokolu HTTP příchozího požadavku. |
@@ -210,9 +209,9 @@ API Management v současné době poskytuje protokoly prostředků (v dávce ka�
 | userId | řetězec | Identifikátor entity uživatele pro aktuální požadavek. | 
 | apimSubscriptionId | řetězec | Identifikátor entity předplatného pro aktuální požadavek. | 
 | backendId | řetězec | Identifikátor entity back-endu pro aktuální požadavek. | 
-| LastError | objekt | Poslední chyba zpracování požadavku. | 
+| LastError | odkazy objektů | Poslední chyba zpracování požadavku. | 
 | elapsed | celé číslo | Počet milisekund uplynulých mezi okamžikem, kdy brána přijala požadavek, a okamžik, kdy došlo k chybě | 
-| source | řetězec | Název zásady nebo interní obslužné rutiny zpracování, která způsobila chybu. | 
+| source | odkazy řetězců | Název zásady nebo interní obslužné rutiny zpracování, která způsobila chybu. | 
 | scope | řetězec | Obor dokumentu zásad obsahující zásadu, která způsobila chybu. | 
 | section | řetězec | Část dokumentu zásad obsahující zásadu, která způsobila chybu. | 
 | reason | řetězec | Důvod chyby | 

@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: include
 ms.date: 04/10/2020
 ms.custom: include file
-ms.openlocfilehash: e81f584892126a1d79e0d56ecacaa8c202fa81e3
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 2cb07957af996f19bb15853fda81400cd63c8b21
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647700"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85113788"
 ---
 1. V nabídce Azure Portal nebo na **domovské stránce**vyberte **vytvořit prostředek**.
 
@@ -23,11 +23,11 @@ ms.locfileid: "83647700"
 
 1. Na stránce **vytvořit Azure Cosmos DB účet** zadejte základní nastavení pro nový účet Azure Cosmos. 
 
-    |Nastavení|Hodnota|Popis |
+    |Nastavení|Hodnota|Description |
     |---|---|---|
     |Předplatné|Název předplatného|Vyberte předplatné Azure, které chcete použít pro tento účet Azure Cosmos. |
     |Skupina prostředků|Název skupiny prostředků|Vyberte skupinu prostředků nebo vyberte **vytvořit nové**a zadejte jedinečný název nové skupiny prostředků. |
-    |Název účtu|Jedinečný název|Zadejte název, který identifikuje váš účet Azure Cosmos. Vzhledem k tomu, že *Documents.Azure.com* je připojen k názvu, který zadáte k vytvoření identifikátoru URI, použijte jedinečný název.<br><br>Název může obsahovat jenom malá písmena, číslice a znak spojovníku (-). Musí mít délku 3-44 znaků.|
+    |Account Name|Jedinečný název|Zadejte název, který identifikuje váš účet Azure Cosmos. Vzhledem k tomu, že *Documents.Azure.com* je připojen k názvu, který zadáte k vytvoření identifikátoru URI, použijte jedinečný název.<br><br>Název může obsahovat jenom malá písmena, číslice a znak spojovníku (-). Musí mít délku 3-44 znaků.|
     |Rozhraní API|Typ účtu, který se má vytvořit|Vyberte **Core (SQL)** pro vytvoření databáze dokumentů a dotaz pomocí syntaxe SQL. <br><br>Rozhraní API určuje typ účtu, který se má vytvořit. Azure Cosmos DB poskytuje pět rozhraní API: Core (SQL) a MongoDB pro data dokumentů, Gremlin pro data grafu, tabulku Azure a Cassandra. V současné době musíte pro každé rozhraní API vytvořit samostatný účet. <br><br>[Přečtěte si další informace o rozhraní SQL API](../articles/cosmos-db/documentdb-introduction.md).|
     |Použít slevu úrovně Free|Použít nebo nepoužít|U Azure Cosmos DB úrovně Free získáte v účtu první 400 RU/s a 5 GB úložiště zdarma. Přečtěte si další informace o [bezplatné úrovni](https://azure.microsoft.com/pricing/details/cosmos-db/).|
     |Umístění|Oblast nejbližší vašim uživatelům|Vyberte zeměpisné umístění, ve kterém chcete účet služby Azure Cosmos DB hostovat. Použijte umístění, které je nejblíže vašim uživatelům, a poskytněte jim tak nejrychlejší přístup k datům.|
@@ -37,14 +37,14 @@ ms.locfileid: "83647700"
     > [!NOTE]
     > V rámci předplatného Azure můžete mít až jednu úroveň bezplatného Azure Cosmos DB účtu a při vytváření účtu musíte souhlasit. Pokud nevidíte možnost použít slevu úrovně Free, znamená to, že v předplatném už je povolený jiný účet s úrovní Free.
    
-   ![Stránka nového účtu pro službu Azure Cosmos DB](./media/cosmos-db-create-dbaccount/azure-cosmos-db-create-new-account-detail.png)
+   :::image type="content" source="./media/cosmos-db-create-dbaccount/azure-cosmos-db-create-new-account-detail.png" alt-text="Stránka nového účtu pro službu Azure Cosmos DB":::
 
 1. Vyberte **Zkontrolovat a vytvořit**. Můžete přeskočit oddíly **síť** a **značky** .
 
 1. Zkontrolujte nastavení účtu a pak vyberte **vytvořit**. Vytvoření účtu trvá několik minut. Počkejte, než se na stránce portálu zobrazí **dokončené vaše nasazení**. 
 
-    ![Podokno Oznámení portálu Azure Portal](./media/cosmos-db-create-dbaccount/azure-cosmos-db-account-created.png)
+    :::image type="content" source="./media/cosmos-db-create-dbaccount/azure-cosmos-db-account-created.png" alt-text="Podokno Oznámení portálu Azure Portal":::
 
 1. Vyberte **Přejít k prostředku** a přejdete na stránku Azure Cosmos DB účet. 
 
-    ![Stránka Azure Cosmos DB účtu](./media/cosmos-db-create-dbaccount/azure-cosmos-db-account-created-2.png)
+    :::image type="content" source="./media/cosmos-db-create-dbaccount/azure-cosmos-db-account-created-2.png" alt-text="Stránka Azure Cosmos DB účtu":::

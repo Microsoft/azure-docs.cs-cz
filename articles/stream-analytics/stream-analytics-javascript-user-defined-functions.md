@@ -7,13 +7,13 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc
-ms.date: 03/23/2020
-ms.openlocfilehash: 58d750b47f3f6a2bcfbf23399ca249131e7876ae
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/16/2020
+ms.openlocfilehash: c9767942c893017e98e3013f92022f058524e13c
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80235393"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85078994"
 ---
 # <a name="javascript-user-defined-functions-in-azure-stream-analytics"></a>Uživatelem definované funkce jazyka JavaScript v Azure Stream Analytics
  

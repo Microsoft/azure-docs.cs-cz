@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 3de73156618b0f5234cc8049c4ea70385b790388
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: dfcde775780cdb42f9df1d677ff2f2475de92843
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743578"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85115274"
 ---
 # <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>Kurz: vytvoření poznámkového bloku v Azure Cosmos DB pro analýzu a vizualizaci dat
 
@@ -30,7 +30,7 @@ V této části vytvoříte databázi Azure Cosmos, kontejner a naimportujete ma
 
 1. Přejít na kartu **poznámkové bloky** , vyberte `…` vedle do **složky poznámkové bloky** a vytvořte **Nový Poznámkový blok**. Jako výchozí jádro vyberte **Python 3** .
 
-   ![Vytvoření nového poznámkového bloku](./media/create-notebook-visualize-data/create-new-notebook.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/create-new-notebook.png" alt-text="Vytvoření nového poznámkového bloku":::
 
 1. Po vytvoření nového poznámkového bloku ho můžete přejmenovat na něco, jako je **VisualizeRetailData. ipynb.**
 
@@ -49,7 +49,7 @@ V této části vytvoříte databázi Azure Cosmos, kontejner a naimportujete ma
 
    Chcete-li spustit buňku, vyberte `Shift + Enter` nebo vyberte buňku a zvolte možnost **spustit aktivní buňku** na navigačním panelu Průzkumníka dat.
 
-   ![Spustit aktivní buňku](./media/create-notebook-visualize-data/run-active-cell.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/run-active-cell.png" alt-text="Spustit aktivní buňku":::
 
    Databáze a kontejner se vytvoří v aktuálním účtu Azure Cosmos. Kontejner se zřídí s 400 RU/s. Po vytvoření databáze a kontejneru se zobrazí následující výstup. 
 
@@ -60,7 +60,7 @@ V této části vytvoříte databázi Azure Cosmos, kontejner a naimportujete ma
 
    Kartu **data** můžete také aktualizovat a zobrazit nově vytvořené prostředky:
 
-   ![Aktualizujte kartu data, aby se zobrazil nový kontejner.](media/create-notebook-visualize-data/refresh-data-tab.png)
+   :::image type="content" source="media/create-notebook-visualize-data/refresh-data-tab.png" alt-text="Aktualizujte kartu data, aby se zobrazil nový kontejner.":::
 
 1. Dále naimportujete ukázková maloobchodní data do kontejneru Azure Cosmos. Tady je formát položky z maloobchodních dat:
 
@@ -135,7 +135,7 @@ V nové buňce poznámkového bloku spusťte následující kód, který přečt
 df_cosmos.head(10)
 ```
 
-![Spustit dotaz pro získání prvních 10 položek](./media/create-notebook-visualize-data/run-query-get-top10-items.png)
+:::image type="content" source="./media/create-notebook-visualize-data/run-query-get-top10-items.png" alt-text="Spustit dotaz pro získání prvních 10 položek":::
 
 ## <a name="run-queries-and-analyze-your-data"></a>Spouštění dotazů a analýza dat
 
@@ -148,7 +148,7 @@ V této části budete spouštět některé dotazy na načtená data.
    display(df_revenue.head(5))
    ```
 
-   ![Výstup celkového výnosu prodeje](./media/create-notebook-visualize-data/total-sales-revenue-output.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/total-sales-revenue-output.png" alt-text="Výstup celkového výnosu prodeje":::
 
 * **Query2:** Chcete-li získat seznam pěti nejvyšších nakupovaných položek, otevřete novou buňku s poznámkovým blokem a spusťte následující kód:
 
@@ -159,7 +159,7 @@ V této části budete spouštět některé dotazy na načtená data.
    pd.DataFrame(df_cosmos[df_cosmos['Action']=='Purchased'].groupby('Item').size().sort_values(ascending=False).head(5), columns=['Count'])
    ```
 
-   ![Pět hlavních nakupovaných položek](./media/create-notebook-visualize-data/top5-purchased-items.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/top5-purchased-items.png" alt-text="Pět hlavních nakupovaných položek":::
 
 ## <a name="visualize-your-data"></a>Vizualizace dat  
 
@@ -286,7 +286,7 @@ V této části budete spouštět některé dotazy na načtená data.
    show(p)
    ```
 
-   ![Míra převodu nákupu vizualizace](./media/create-notebook-visualize-data/visualize-purchase-conversion-rate.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/visualize-purchase-conversion-rate.png" alt-text="Míra převodu nákupu vizualizace":::
 
 ## <a name="next-steps"></a>Další kroky
 

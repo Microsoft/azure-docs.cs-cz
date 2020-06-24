@@ -5,12 +5,12 @@ ms.devlang: ruby
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 2bc30786ccd0bccfba438fa6e553fdcbbf7fdde1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 92432966808583c28f31e47173dd4c62b5a0e8bb
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82085773"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84906203"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>Vytvoření aplikace Ruby a Postgres v Azure App Service v systému Linux
 
@@ -118,7 +118,7 @@ V tomto kroku vytvoříte v [Azure Database for PostgreSQL](/azure/postgresql/) 
 
 Vytvořte server PostgreSQL pomocí [`az postgres server create`](/cli/azure/postgres/server?view=azure-cli-latest#az-postgres-server-create) příkazu.
 
-Ve Cloud Shell spusťte následující příkaz a nahraďte zástupný symbol jedinečným názvem serveru * \<Postgres-Server-Name>* . Název serveru musí být jedinečný mezi všemi servery v Azure. 
+Ve Cloud Shell spusťte následující příkaz a nahraďte zástupný symbol jedinečným názvem serveru *\<postgres-server-name>* . Název serveru musí být jedinečný mezi všemi servery v Azure. 
 
 ```azurecli-interactive
 az postgres server create --location "West Europe" --resource-group myResourceGroup --name <postgres-server-name> --admin-user adminuser --admin-password My5up3r$tr0ngPa$w0rd! --sku-name GP_Gen4_2
@@ -148,7 +148,7 @@ Po vytvoření serveru Azure Database for PostgreSQL se v Azure CLI zobrazí pod
 
 ### <a name="configure-server-firewall"></a>Konfigurace brány firewall serveru
 
-V Cloud Shell vytvořte pravidlo brány firewall pro server Postgres, abyste mohli klientská připojení pomocí [`az postgres server firewall-rule create`](/cli/azure/postgres/server/firewall-rule?view=azure-cli-latest#az-postgres-server-firewall-rule-create) příkazu. Pokud je jako počáteční i koncová adresa IP nastavená hodnota 0.0.0.0, je brána firewall otevřená jen pro ostatní prostředky Azure. Nahraďte jedinečný název serveru pro zástupný symbol * \<Postgres-Server-Name>* .
+V Cloud Shell vytvořte pravidlo brány firewall pro server Postgres, abyste mohli klientská připojení pomocí [`az postgres server firewall-rule create`](/cli/azure/postgres/server/firewall-rule?view=azure-cli-latest#az-postgres-server-firewall-rule-create) příkazu. Pokud je jako počáteční i koncová adresa IP nastavená hodnota 0.0.0.0, je brána firewall otevřená jen pro ostatní prostředky Azure. Nahraďte zástupný symbol jedinečným názvem serveru *\<postgres-server-name>* .
 
 ```azurecli-interactive
 az postgres server firewall-rule create --resource-group myResourceGroup --server <postgres-server-name> --name AllowAllIps --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
@@ -160,7 +160,7 @@ az postgres server firewall-rule create --resource-group myResourceGroup --serve
 
 ### <a name="connect-to-production-postgres-server-locally"></a>Místní připojení k produkčnímu serveru Postgres
 
-Ve službě Cloud Shell se připojte k serveru Postgres v Azure. Pro zástupné symboly _ &lt;Postgres-Server-Name>_ použijte hodnotu, kterou jste zadali dříve.
+Ve službě Cloud Shell se připojte k serveru Postgres v Azure. Pro zástupné symboly _ &lt; Postgres-Server-Name>_ použijte hodnotu, kterou jste zadali dříve.
 
 ```bash
 psql -U adminuser@<postgres-server-name> -h <postgres-server-name>.postgres.database.azure.com postgres
@@ -295,7 +295,7 @@ V tomto kroku nasadíte aplikaci Rails připojenou k Postgres do služby Azure A
 
 Ve službě App Service můžete nastavit proměnné prostředí jako _nastavení aplikace_ pomocí příkazu [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) v Cloud Shellu.
 
-Následující příkaz Cloud Shellu nakonfiguruje nastavení aplikace `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` a `DB_PASSWORD`. Nahraďte zástupné symboly _ &lt;AppName>_ a _ &lt;Postgres-Server-Name>_.
+Následující příkaz Cloud Shellu nakonfiguruje nastavení aplikace `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` a `DB_PASSWORD`. Nahraďte zástupné symboly _ &lt; AppName>_ a _ &lt; postgres-Server-Name>_.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings DB_HOST="<postgres-server-name>.postgres.database.azure.com" DB_DATABASE="sampledb" DB_USERNAME="railsappuser@<postgres-server-name>" DB_PASSWORD="MyPostgresAzure2017"
@@ -311,7 +311,7 @@ rails secret
 
 Nakonfigurujte proměnné vyžadované produkčním prostředím Rails.
 
-V následujícím příkazu Cloud Shell nahraďte dvě _ &lt;_ zástupné symboly>pro výstup----kolejnice s novým tajným klíčem, který jste vygenerovali v místním terminálu.
+V následujícím příkazu Cloud Shell nahraďte dvě zástupné symboly>pro výstup-- _ &lt; --kolejnice_ s novým tajným klíčem, který jste vygenerovali v místním terminálu.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings RAILS_MASTER_KEY="<output-of-rails-secret>" SECRET_KEY_BASE="<output-of-rails-secret>" RAILS_SERVE_STATIC_FILES="true" ASSETS_PRECOMPILE="true"
@@ -463,7 +463,7 @@ git commit -m "added complete checkbox"
 git push azure master
 ```
 
-`git push` Až to bude hotové, přejděte do aplikace Azure a vyzkoušejte nové funkce.
+Až `git push` to bude hotové, přejděte do aplikace Azure a vyzkoušejte nové funkce.
 
 ![Změny modelu a databáze publikované v Azure](media/tutorial-ruby-postgres-app/complete-checkbox-published.png)
 
@@ -471,7 +471,7 @@ Pokud jste přidali nějaké úkoly, zůstanou v databázi. Aktualizace schémat
 
 ## <a name="stream-diagnostic-logs"></a>Streamování diagnostických protokolů
 
-[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-linux-no-h.md)]
 
 ## <a name="manage-the-azure-app"></a>Správa aplikace Azure
 

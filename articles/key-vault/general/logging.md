@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e9198892f95635add27bcfe9e479d0dd6fe3f08d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b62d69220a931bef8d91a85bcbbaedfbce86110a
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81422589"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85211387"
 ---
 # <a name="azure-key-vault-logging"></a>Protokolování v Azure Key Vaultu
 
@@ -43,7 +43,7 @@ Přehled informací o Key Vault najdete v tématu [co je Azure Key Vault?](overv
 K dokončení tohoto kurzu potřebujete:
 
 * Existující trezor klíčů, který již používáte.  
-* Azure PowerShell minimální verze 1.0.0. Chcete-li nainstalovat Azure PowerShell a přidružit ho ke svému předplatnému Azure, prohlédněte si téma [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview). Pokud jste již nainstalovali Azure PowerShell a neznáte verzi, v konzole Azure PowerShell zadejte `$PSVersionTable.PSVersion`.  
+* Azure PowerShell minimální verze 1.0.0. Chcete-li nainstalovat Azure PowerShell a přidružit ho ke svému předplatnému Azure, prohlédněte si téma [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview). Pokud jste již nainstalovali Azure PowerShell a neznáte verzi, v konzole Azure PowerShell zadejte `$PSVersionTable.PSVersion` .  
 * Dostatečné úložiště v Azure pro vaše protokoly Key Vault.
 
 ## <a name="connect-to-your-key-vault-subscription"></a><a id="connect"></a>Připojení k předplatnému trezoru klíčů
@@ -95,7 +95,7 @@ V [úvodním kurzu](../secrets/quick-create-cli.md)se název trezoru klíčů **
 $kv = Get-AzKeyVault -VaultName 'ContosoKeyVault'
 ```
 
-## <a name="enable-logging"></a><a id="enable"></a>Povolit protokolování
+## <a name="enable-logging-using-azure-powershell"></a><a id="enable"></a>Povolení protokolování pomocí Azure PowerShellu
 
 Pokud chcete povolit protokolování pro Key Vault, použijeme rutinu **set-AzDiagnosticSetting** spolu s proměnnými, které jsme vytvořili pro nový účet úložiště a trezoru klíčů. Také nastavíme příznak **-Enabled** na **$true** a nastavíte kategorii na **AuditEvent** (jediná kategorie pro protokolování Key Vault):
 
@@ -131,6 +131,25 @@ Co je protokolováno:
   * Vytváření, úpravy nebo odstraňování těchto klíčů nebo tajných kódů.
   * Podepisování, ověřování, šifrování, dešifrování, zabalení a rozbalení klíčů, získávání tajných klíčů a zobrazování klíčů a tajných kódů (a jejich verzí).
 * Neověřené požadavky, které skončí odpovědí 401 – Neoprávněno. Příklady jsou požadavky, které nemají nosný token, které jsou poškozené nebo jejichž platnost vypršela, nebo které mají neplatný token.  
+
+## <a name="enable-logging-using-azure-cli"></a>Povolení protokolování pomocí rozhraní příkazového řádku Azure
+
+```azurecli
+az login
+
+az account set --subscription {AZURE SUBSCRIPTION ID}
+
+az provider register -n Microsoft.KeyVault
+
+az monitor diagnostic-settings create  \
+--name KeyVault-Diagnostics \
+--resource /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault \
+--logs    '[{"category": "AuditEvent","enabled": true}]' \
+--metrics '[{"category": "AllMetrics","enabled": true}]' \
+--storage-account /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount \
+--workspace /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/myworkspace \
+--event-hub-rule /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhub/authorizationrules/RootManageSharedAccessKey
+```
 
 ## <a name="access-your-logs"></a><a id="access"></a>Přístup k protokolům
 
@@ -203,7 +222,7 @@ Chcete-li stahovat objekty blob selektivně, použijte zástupné znaky. Příkl
   Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
   ```
 
-* Pokud chcete stáhnout všechny protokoly pro měsíc v lednu 2019, použijte `-Blob '*/year=2019/m=01/*'`:
+* Pokud chcete stáhnout všechny protokoly pro měsíc v lednu 2019, použijte `-Blob '*/year=2019/m=01/*'` :
 
   ```powershell
   Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/year=2016/m=01/*'
@@ -214,15 +233,10 @@ Nyní jste připraveni podívat se, co je v protokolech. Ale předtím, než se 
 * Dotaz na stav nastavení diagnostiky pro prostředek trezoru klíčů provedete pomocí:`Get-AzDiagnosticSetting -ResourceId $kv.ResourceId`
 * Zakázat protokolování pro prostředek trezoru klíčů můžete pomocí:`Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $false -Category AuditEvent`
 
+
 ## <a name="interpret-your-key-vault-logs"></a><a id="interpret"></a>Interpretace protokolů služby Key Vault
 
-Jednotlivé objekty blob jsou uloženy jako text ve formátu JSON blob. Pojďme se podívat na příklad položky protokolu. Spusťte tento příkaz:
-
-```powershell
-Get-AzKeyVault -VaultName 'contosokeyvault'`
-```
-
-Vrátí položku protokolu podobnou této:
+Jednotlivé objekty blob jsou uloženy jako text ve formátu JSON blob. Pojďme se podívat na příklad položky protokolu. 
 
 ```json
     {
@@ -249,7 +263,7 @@ Vrátí položku protokolu podobnou této:
 
 V následující tabulce jsou uvedené názvy a popisy polí:
 
-| Název pole | Popis |
+| Název pole | Description |
 | --- | --- |
 | **interval** |Datum a čas ve standardu UTC. |
 | **Prostředku** |ID prostředku Azure Resource Manager. U protokolů Key Vault se jedná vždy o Key Vault Resource ID. |
@@ -267,15 +281,15 @@ V následující tabulce jsou uvedené názvy a popisy polí:
 
 Hodnoty polí **OperationName** jsou ve formátu *ObjectVerb* . Příklad:
 
-* Všechny operace trezoru klíčů mají `Vault<action>` formát, například `VaultGet` a `VaultCreate`.
-* Všechny operace s klíči mají `Key<action>` formát, například `KeySign` a `KeyList`.
-* Všechny operace tajného kódu `Secret<action>` mají formát, například `SecretGet` a `SecretListVersions`.
+* Všechny operace trezoru klíčů mají `Vault<action>` formát, například `VaultGet` a `VaultCreate` .
+* Všechny operace s klíči mají `Key<action>` formát, například `KeySign` a `KeyList` .
+* Všechny operace tajného kódu mají `Secret<action>` formát, například `SecretGet` a `SecretListVersions` .
 
 Následující tabulka uvádí hodnoty **OperationName** a odpovídající REST API příkazy:
 
 | operationName | REST API – příkaz |
 | --- | --- |
-| **Authentication** |Ověřování prostřednictvím Azure Active Directoryho koncového bodu |
+| **Ověřování** |Ověřování prostřednictvím Azure Active Directoryho koncového bodu |
 | **VaultGet** |[Získání informací o trezoru klíčů](https://msdn.microsoft.com/library/azure/mt620026.aspx) |
 | **VaultPut** |[Vytvoření nebo aktualizace trezoru klíčů](https://msdn.microsoft.com/library/azure/mt620025.aspx) |
 | **VaultDelete** |[Odstranění trezoru klíčů](https://msdn.microsoft.com/library/azure/mt620022.aspx) |

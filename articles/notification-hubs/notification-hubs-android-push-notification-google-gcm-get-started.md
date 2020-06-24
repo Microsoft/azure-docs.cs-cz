@@ -6,8 +6,6 @@ documentationcenter: android
 keywords: nabízená oznámení;nabízené oznámení;nabízené oznámení Android
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: 8268c6ef-af63-433c-b14e-a20b04a0342a
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
@@ -18,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 7e442d85303485ca8800d4bcb31a9afde06d0e69
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 3f2ad007ff0e1012f957c718d125b2e5b2e40964
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82595014"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85249227"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Kurz: nabízená oznámení na zařízení s Androidem pomocí Azure Notification Hubs a Google Cloud Messaging (nepoužívané)
 
@@ -83,7 +81,7 @@ Vaše centrum oznámení je nyní nakonfigurováno pro práci se službou GCM. Z
 1. V nástroji Android Studio spusťte nový projekt Android Studio.
 
    ![Android Studio – nový projekt][13]
-2. Zvolte faktor formuláře **Telefon i tablet** a hodnotu **Minimální SDK**, které chcete podporovat. Pak klikněte na **Další**.
+2. Zvolte faktor formuláře **Telefon i tablet** a hodnotu **Minimální SDK**, které chcete podporovat. Potom klikněte na **Další**.
 
    ![Android Studio – pracovní postup vytvoření projektu][14]
 3. Zvolte možnost **Prázdná aktivita** pro hlavní aktivitu, klikněte na tlačítko **Další** a pak klikněte na tlačítko **Dokončit**.
@@ -110,7 +108,7 @@ Vaše centrum oznámení je nyní nakonfigurováno pro práci se službou GCM. Z
     }
     ```
 
-### <a name="updating-the-projects-androidmanifestxml"></a>Aktualizuje se souboru AndroidManifest. XML projektu.
+### <a name="updating-the-projects-androidmanifestxml"></a>Aktualizace AndroidManifest.xml projektu
 
 1. Aby bylo možné podporovat GCM, implementujte do kódu, který se používá k [získání registračních tokenů](https://developers.google.com/cloud-messaging/) službu naslouchání ID instance. Použijte k tomu [rozhraní API ID instance od Googlu](https://developers.google.com/instance-id/). V tomto kurzu je název třídy `MyInstanceIDService`.
 
@@ -160,7 +158,7 @@ Vaše centrum oznámení je nyní nakonfigurováno pro práci se službou GCM. Z
 
 ### <a name="adding-code"></a>Přidání kódu
 
-1. V zobrazení projektu rozbalte položku **App** > **Src** > **Main** > **Java**. Klikněte pravým tlačítkem na váš balíček ve složce **java**, klikněte na tlačítko **Nový** a pak klikněte na tlačítko **třída jazyka Java**. Přidejte novou třídu s názvem `NotificationSettings`.
+1. V zobrazení projektu rozbalte položku **App**  >  **Src**  >  **Main**  >  **Java**. Klikněte pravým tlačítkem na váš balíček ve složce **java**, klikněte na tlačítko **Nový** a pak klikněte na tlačítko **třída jazyka Java**. Přidejte novou třídu s názvem `NotificationSettings`.
 
     ![Android Studio – nová třída Java][6]
 
@@ -449,7 +447,7 @@ Vaše centrum oznámení je nyní nakonfigurováno pro práci se službou GCM. Z
         }
     }
     ```
-14. V Android Studio na řádku nabídek klikněte na **sestavit znovu** > **sestavit projekt** , abyste se ujistili, že ve vašem kódu nejsou žádné chyby.
+14. V Android Studio na řádku nabídek klikněte na **sestavit znovu**  >  **sestavit projekt** , abyste se ujistili, že ve vašem kódu nejsou žádné chyby.
 
 ## <a name="testing-your-app"></a>Testování vaší aplikace
 
@@ -483,13 +481,13 @@ Příjem nabízených oznámení aplikací můžete otestovat, když je odešlet
 
 Pokud chcete testovat nabízená oznámení uvnitř emulátoru, ověřte, zda bitová kopie emulátoru podporuje úroveň rozhraní Google API, kterou jste zvolili pro vaši aplikaci. Pokud vaše image nepodporuje nativní rozhraní Google API, zobrazí se výjimka **SLUŽBA\_NENÍ\_K DISPOZICI**.
 
-Kromě toho se ujistěte, že jste do svého spuštěného emulátoru v části **Nastavení** > **účty**přidali účet Google. V opačném případě mohou vaše pokusy o registraci s GCM mít za následek výjimku **OVĚŘOVÁNÍ\_SE NEZDAŘILO**.
+Kromě toho se ujistěte, že jste do svého spuštěného emulátoru v části **Nastavení**  >  **účty**přidali účet Google. V opačném případě mohou vaše pokusy o registraci s GCM mít za následek výjimku **OVĚŘOVÁNÍ\_SE NEZDAŘILO**.
 
 ## <a name="optional-send-push-notifications-directly-from-the-app"></a>(Volitelné) Zasílání nabízených oznámení přímo z aplikace
 
 Za normálních okolností byste odesílali oznámení pomocí serveru backend. V některých případech můžete chtít možnost zasílání nabízených oznámení přímo z klientské aplikace. Tato část vysvětluje postup odesílání oznámení z klienta pomocí [API služby REST centra oznámení Azure](https://msdn.microsoft.com/library/azure/dn223264.aspx).
 
-1. V zobrazení projektu Android Studio rozbalte položku **App** > **Src** > **Main** > **res** > **layout**. Otevřete soubor rozložení `activity_main.xml` a klikněte na kartu **Text** pro aktualizaci textového obsahu souboru. Aktualizujte ho pomocí kódu níže, který přidává nové `Button` a `EditText` ovládací prvky pro zasílání zpráv s nabízeným oznámením centra oznámení. Přidejte tento kód v dolní části, těsně před `</RelativeLayout>`.
+1. V zobrazení projektu Android Studio rozbalte položku **App**  >  **Src**  >  **Main**  >  **res**  >  **layout**. Otevřete soubor rozložení `activity_main.xml` a klikněte na kartu **Text** pro aktualizaci textového obsahu souboru. Aktualizujte ho pomocí kódu níže, který přidává nové `Button` a `EditText` ovládací prvky pro zasílání zpráv s nabízeným oznámením centra oznámení. Přidejte tento kód v dolní části, těsně před `</RelativeLayout>`.
 
     ```xml
     <Button
@@ -510,7 +508,7 @@ Za normálních okolností byste odesílali oznámení pomocí serveru backend. 
     android:layout_marginBottom="42dp"
     android:hint="@string/notification_message_hint" />
     ```
-2. V zobrazení projektu Android Studio rozbalte možnost **App** > **Src** > **Main** > **res** > **Values**. Otevřete soubor `strings.xml` a přidejte řetězcové hodnoty, které jsou odkazovány pomocí nového `Button` a `EditText` ovládacími prvky. Na konec souboru (těsně před `</resources>`) přidejte následující řádky.
+2. V zobrazení projektu Android Studio rozbalte možnost **App**  >  **Src**  >  **Main**  >  **res**  >  **Values**. Otevřete soubor `strings.xml` a přidejte řetězcové hodnoty, které jsou odkazovány pomocí nového `Button` a `EditText` ovládacími prvky. Na konec souboru (těsně před `</resources>`) přidejte následující řádky.
 
     ```xml
     <string name="send_button">Send Notification</string>
@@ -746,4 +744,4 @@ V tomto kurzu jste poslali oznámení všem zařízením s Androidem registrovan
 [Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
 [Use Notification Hubs to push notifications to users]: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
-[Portál Azure Portal]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com

@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 69f63615d3c5f10bdcef071e18a7379ecf52338e
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 013f82c33b149d754e059bbc4c9933f917a2555a
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84119307"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85248620"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-visual-studio"></a>Kurz: Vytvoření kanálu s aktivitou kopírování pomocí sady Visual Studio
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ ms.locfileid: "84119307"
 > [!NOTE]
 > Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi této služby, podívejte se na [kurz o aktivitě kopírování](../quickstart-create-data-factory-dot-net.md). 
 
-V tomto článku se naučíte, jak používat Microsoft Visual Studio, abyste vytvořili datovou továrnu s kanálem, který kopíruje data z úložiště objektů blob v Azure do databáze Azure SQL. Pokud s Azure Data Factory začínáte, přečtěte si článek [Seznámení se službou Azure Data Factory](data-factory-introduction.md), než s tímto kurzem začnete.   
+V tomto článku se naučíte, jak pomocí Microsoft Visual Studio vytvořit datovou továrnu s kanálem, který kopíruje data z úložiště objektů BLOB v Azure do Azure SQL Database. Pokud s Azure Data Factory začínáte, přečtěte si článek [Seznámení se službou Azure Data Factory](data-factory-introduction.md), než s tímto kurzem začnete.   
 
 V tomto kurzu vytvoříte kanál s jednou aktivitou: aktivita kopírování. Aktivita kopírování kopíruje data z podporovaného úložiště dat do podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných jako zdroje a jímky najdete v tématu [podporovaná úložiště dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Aktivita používá globálně dostupnou službu, která může kopírovat data mezi různými úložišti dat zabezpečeným, spolehlivým a škálovatelným způsobem. Další informace o aktivitě kopírování najdete v tématu [aktivity přesunu dat](data-factory-data-movement-activities.md).
 
@@ -62,15 +62,15 @@ Zde jsou kroky, které provedete v rámci tohoto kurzu:
     
     Služba AzureStorageLinkedService propojí váš účet služby Azure Storage s datovou továrnou. V rámci [požadavků](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) jste vytvořili kontejner a nahráli data do tohoto účtu úložiště.   
 
-    Služba AzureSqlLinkedService propojí databázi Azure SQL s datovou továrnou. Data kopírovaná z úložiště objektů blob se ukládají do této databáze. V této databázi jste v rámci [požadavků](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) vytvořili tabulku SQL.     
+    AzureSqlLinkedService odkazy Azure SQL Database na datovou továrnu. Data kopírovaná z úložiště objektů blob se ukládají do této databáze. V této databázi jste v rámci [požadavků](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) vytvořili tabulku SQL.     
 2. Vytvořte v datové továrně vstupní a výstupní **datové sady**.  
     
     Propojená služba úložiště Azure určuje připojovací řetězec, který služba Data Factory používá za běhu, aby se připojila k vašemu účtu úložiště Azure. A vstupní datová sada objektu blob určuje kontejner a složku obsahující vstupní data.  
 
-    Podobně také propojená služba Azure SQL Database určuje připojovací řetězec, který služba Data Factory používá za běhu, aby se připojila k vaší databázi Azure SQL. A výstupní datová sada tabulky SQL určuje tabulku v databázi, do které se kopírují data z úložiště objektů blob.
+    Podobně Azure SQL Database propojená služba Určuje připojovací řetězec, který Data Factory služba používá v době běhu pro připojení k Azure SQL Database. A výstupní datová sada tabulky SQL určuje tabulku v databázi, do které se kopírují data z úložiště objektů blob.
 3. Vytvořte v datové továrně **kanál**. V tomto kroku pomocí aktivity kopírování vytvoříte kanál.   
     
-    Aktivita kopírování kopíruje data z objektu blob v úložišti objektů blob v Azure do tabulky v databázi Azure SQL. Aktivitu kopírování můžete v kanálu použít ke kopírování dat z jakéhokoli podporovaného zdroje do jakéhokoli podporovaného cíle. Seznam podporovaných úložišť dat najdete v článku [Aktivity přesunu dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats). 
+    Aktivita kopírování kopíruje data z objektu BLOB v úložišti objektů BLOB v Azure do tabulky v Azure SQL Database. Aktivitu kopírování můžete v kanálu použít ke kopírování dat z jakéhokoli podporovaného zdroje do jakéhokoli podporovaného cíle. Seznam podporovaných úložišť dat najdete v článku [Aktivity přesunu dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats). 
 4. Vytvořte **datovou továrnu** Azure, když nasazujete entity služby Data Factory (propojené služby, datové sady / tabulky a kanály). 
 
 ## <a name="create-visual-studio-project"></a>Vytvoření projektu v sadě Visual Studio
@@ -89,7 +89,7 @@ Proto vytvoříte dvě propojené služby typu: AzureStorage a AzureSqlDatabase
 
 Propojená služba AzureStorage propojí váš účet služby Azure Storage s datovou továrnou. Tento účet úložiště je ten, ve kterém jste v rámci [požadavků](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) vytvořili kontejner a nahráli do něj data.   
 
-Propojená služba Azure SQL propojí databázi Azure SQL s datovou továrnou. Data kopírovaná z úložiště objektů blob se ukládají do této databáze. V této databázi jste v rámci [požadavků](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) vytvořili tabulku emp.
+Odkazy propojených služeb Azure SQL Azure SQL Database k datové továrně. Data kopírovaná z úložiště objektů blob se ukládají do této databáze. V této databázi jste v rámci [požadavků](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) vytvořili tabulku emp.
 
 Propojené služby propojují úložiště dat nebo výpočetní služby s objektem pro vytváření dat Azure. Všechny zdroje a jímky podporované aktivitou kopírování najdete v tématu [podporovaná úložiště dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Seznam výpočetních služeb podporovaných službou Data Factory najdete v tématu [Propojené výpočetní služby](data-factory-compute-linked-services.md). V tomto kurzu žádné výpočetní služby nepoužijete. 
 
@@ -108,18 +108,18 @@ Propojené služby propojují úložiště dat nebo výpočetní služby s objek
 ### <a name="create-the-azure-sql-linked-service"></a>Vytvoření propojené služby Azure SQL
 1. V **Průzkumníku řešení** znovu klikněte pravým tlačítkem myši na uzel **Propojené služby**, přejděte na **Přidat** a klikněte na **Nová položka**. 
 2. Tentokrát vyberte **Propojená služba Azure SQL** a klikněte na **Přidat**. 
-3. V **souboru AzureSqlLinkedService1. JSON**nahraďte `<servername>` ,, `<databasename>` a `<username@servername>` `<password>` názvy vašeho serveru, databáze, uživatelského účtu a hesla.    
+3. V **AzureSqlLinkedService1.jssouborů**nahraďte `<servername>` ,, a `<databasename>` `<username@servername>` `<password>` názvy vašeho serveru, databáze, uživatelského účtu a hesla.    
 4. Uložte soubor **AzureSqlLinkedService1.json**. 
     
     Další informace o těchto vlastnostech JSON najdete v článku [Konektor služby Azure SQL Database](data-factory-azure-sql-connector.md#linked-service-properties).
 
 
 ## <a name="create-datasets"></a>Vytvoření datových sad
-V předchozím kroku jste vytvořili propojené služby, abyste propojili účet úložiště Azure a databázi Azure SQL s datovou továrnou. V tomto kroku nadefinujete dvě datové sady s názvem InputDataset a OutputDataset, které představují vstupní a výstupní data uložená v úložištích dat, na která odkazují služby AzureStorageLinkedService1 a AzureSqlLinkedService1.
+V předchozím kroku jste vytvořili propojené služby, které propojí váš Azure Storage účet a Azure SQL Database k vašemu objektu pro vytváření dat. V tomto kroku nadefinujete dvě datové sady s názvem InputDataset a OutputDataset, které představují vstupní a výstupní data uložená v úložištích dat, na která odkazují služby AzureStorageLinkedService1 a AzureSqlLinkedService1.
 
 Propojená služba úložiště Azure určuje připojovací řetězec, který služba Data Factory používá za běhu, aby se připojila k vašemu účtu úložiště Azure. A vstupní datová sada objektu blob (InputDataset) určuje kontejner a složku obsahující vstupní data.  
 
-Podobně také propojená služba Azure SQL Database určuje připojovací řetězec, který služba Data Factory používá za běhu, aby se připojila k vaší databázi Azure SQL. A výstupní datová sada tabulky SQL (OutputDataset) určuje tabulku v databázi, do které se kopírují data z úložiště objektů blob. 
+Podobně Azure SQL Database propojená služba Určuje připojovací řetězec, který Data Factory služba používá v době běhu pro připojení k Azure SQL Database. A výstupní datová sada tabulky SQL (OutputDataset) určuje tabulku v databázi, do které se kopírují data z úložiště objektů blob. 
 
 ### <a name="create-input-dataset"></a>Vytvoření vstupní datové sady
 V tomto kroku vytvoříte datovou sadu s názvem InputDataset, která odkazuje na soubor blob (emp.txt) v kořenové složce kontejneru objektů blob (adftutorial), který se nachází ve službě Azure Storage reprezentované propojenou službou AzureStorageLinkedService1. Pokud neurčíte hodnotu fileName (nebo ji přeskočíte), data ze všech objektů blob ve vstupní složce se zkopírují do cíle. V tomto kurzu určíte hodnotu fileName. 
@@ -163,7 +163,7 @@ Zde raději použijte termín „tabulky“ než „datové sady“. Tabulka je 
    ``` 
     Následující tabulka obsahuje popis vlastností použitých v tomto fragmentu kódu JSON:
 
-    | Vlastnost | Description |
+    | Vlastnost | Popis |
     |:--- |:--- |
     | typ | Vlastnost type je nastavená na hodnotu **AzureBlob**, protože se data nachází ve službě Azure Blob Storage. |
     | linkedServiceName | Odkazuje na službu **AzureStorageLinkedService**, kterou jste vytvořili předtím. |
@@ -177,7 +177,7 @@ Zde raději použijte termín „tabulky“ než „datové sady“. Tabulka je 
     Další informace o těchto vlastnostech JSON najdete v článku [konektor Azure Blob](data-factory-azure-blob-connector.md#dataset-properties).   
 
 ### <a name="create-output-dataset"></a>Vytvoření výstupní datové sady
-V tomto kroku vytvoříte výstupní datovou sadu s názvem **OutputDataset**. Tato datová sada odkazuje na tabulku SQL v databázi Azure SQL, kterou reprezentuje **AzureSqlLinkedService1**. 
+V tomto kroku vytvoříte výstupní datovou sadu s názvem **OutputDataset**. Tato datová sada odkazuje na tabulku SQL v Azure SQL Database reprezentované **AzureSqlLinkedService1**. 
 
 1. V **Průzkumníku řešení** klikněte opět pravým tlačítkem myši na **Tabulky**, přejděte na **Přidat** a klikněte na **Nová položka**.
 2. V dialogovém okně **Přidat novou položku** vyberte **Azure SQL** a klikněte na **Přidat**. 
@@ -211,9 +211,9 @@ V tomto kroku vytvoříte výstupní datovou sadu s názvem **OutputDataset**. T
     ```
     Následující tabulka obsahuje popis vlastností použitých v tomto fragmentu kódu JSON:
 
-    | Vlastnost | Description |
+    | Vlastnost | Popis |
     |:--- |:--- |
-    | typ | Vlastnost type je nastavena na hodnotu **AzureSqlTable**, protože data se kopírují do tabulky v databázi Azure SQL. |
+    | typ | Vlastnost Type je nastavená na **AzureSqlTable** , protože data se zkopírují do tabulky v Azure SQL Database. |
     | linkedServiceName | Odkazuje na službu **AzureSqlLinkedService**, kterou jste vytvořili předtím. |
     | tableName | Určuje **tabulku**, do které se kopírují data. | 
     | frequency/interval | Frekvence je nastavená na hodnotu **Hour** (hodina) a interval je **1**, což znamená, že výstupní řezy se tvoří **každou hodinu** mezi časy spuštění a ukončení, ne před nebo po této době.  |
@@ -229,7 +229,7 @@ Výstupní datové sady v současné době řídí plán. V tomto kurzu je vý
 
 1. V **Průzkumníku řešení** klikněte pravým tlačítkem myši na **Kanály**, přejděte na **Přidat** a klikněte na **Nová položka**.  
 2. V dialogovém okně **Přidat novou položku** vyberte **Copy Data Pipeline** (Kanál kopírování dat) a klikněte na **Přidat**. 
-3. Nahraďte kód JSON následujícím kódem JSON a uložte soubor **soubor copyactivity1. JSON** .
+3. Nahraďte kód JSON následujícím kódem JSON a uložte **CopyActivity1.jsdo** souboru.
 
    ```json   
     {
@@ -363,12 +363,12 @@ Přejděte na domovskou stránku své datové továrny:
 5. Postupujte podle pokynů v tématu [Monitorování datových sad a kanálu](data-factory-monitor-manage-pipelines.md) k monitorování kanálu a datových sad, které jste vytvořili v tomto kurzu. V současné době Visual Studio monitorování kanálů Data Factory nepodporuje. 
 
 ## <a name="summary"></a>Souhrn
-V tomto kurzu jste vytvořili objekt pro vytváření dat Azure pro zkopírování dat z objektu blob Azure do databáze Azure SQL. Visual Studio jste použili k vytvoření objektu pro vytváření dat, propojených služeb, datových sad a kanálu. Zde jsou základní kroky, které jste v tomto kurzu provedli:  
+V tomto kurzu jste vytvořili objekt pro vytváření dat Azure ke zkopírování dat z objektu blob Azure do Azure SQL Database. Visual Studio jste použili k vytvoření objektu pro vytváření dat, propojených služeb, datových sad a kanálu. Zde jsou základní kroky, které jste v tomto kurzu provedli:  
 
 1. Vytvořili jste **objekt pro vytváření dat** Azure.
 2. Vytvořili jste **propojené služby**:
    1. Propojená služba **Azure Storage** připojující účet úložiště Azure, který obsahuje vstupní data.     
-   2. Propojená služba **Azure SQL** připojující databázi Azure SQL, která obsahuje výstupní data. 
+   2. Propojená služba **Azure SQL** , která propojí vaši databázi, která obsahuje výstupní data. 
 3. Vytvořili jste datové **sady**, které popisují vstupní data a výstupní data pro kanály.
 4. Vytvořili jste **kanál** s **aktivitou kopírování**, která má jako zdroj **BlobSource** a jako jímku **SqlSink**. 
 
@@ -511,7 +511,7 @@ Není vhodné a často je to proti zásadám zabezpečení ukládat citlivá dat
 
 
 ## <a name="next-steps"></a>Další kroky
-V tomto kurzu jste v operaci kopírování použili úložiště objektů blob jako zdrojové úložiště dat a databázi Azure SQL jako cílové úložiště dat. Následující tabulka obsahuje seznam úložišť dat podporovaných jako zdroje a cíle aktivitou kopírování: 
+V tomto kurzu jste jako zdrojové úložiště dat použili službu Azure Blob Storage a v rámci operace kopírování Azure SQL Database jako cílové úložiště dat. Následující tabulka obsahuje seznam úložišť dat podporovaných jako zdroje a cíle aktivitou kopírování: 
 
 [!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]
 

@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 05/12/2020
 ms.custom: designer
-ms.openlocfilehash: f6d684829092d8be97785c46058186f3ca5542b2
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 2fab23e9f765d9ab4908cc4be69d8b747c6856b9
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84119037"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84790530"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Kurz: předpověď ceny automobilu pomocí návrháře (Preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -77,7 +77,7 @@ Pro celý kanál můžete nastavit **výchozí výpočetní cíl** , který vše
     Pokud už máte dostupný cíl výpočtů, můžete ho vybrat ke spuštění tohoto kanálu.
 
     > [!NOTE]
-    > Návrhář může spustit školicí experimenty na Azure Machine Learning výpočetní a Azure Machine Learning cíle výpočetní instance. Ostatní výpočetní cíle se nezobrazí.
+    > Návrhář může spustit školicí experimenty na Azure Machine Learning výpočetní a Azure Machine Learning výpočetní instance, ale nebudou se zobrazovat jiné výpočetní cíle.
 
 1. Zadejte název výpočetního prostředku.
 
@@ -173,7 +173,7 @@ V datové sadě ještě chybí hodnoty po odebrání sloupce **normalizované zt
 
 1. V okně sloupce, které se **mají vyčistit** , rozbalte rozevírací nabídku vedle položky **Zahrnout**. Vybrat, **všechny sloupce**
 
-1. Vybrat **Uložit**
+1. Vyberte **Uložit**.
 
 1. V podokně podrobností modulu napravo od plátna vyberte **Odebrat celý řádek** v **režimu čištění**.
 

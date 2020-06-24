@@ -6,24 +6,22 @@ documentationcenter: android
 keywords: nabízená oznámení, nabízené oznámení, nabízené oznámení android, fcm, firebase cloud messaging
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: 02298560-da61-4bbb-b07c-e79bd520e420
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 09/11/2019
+ms.date: 06/22/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 09/11/2019
-ms.openlocfilehash: 7dbe9faabcb7a46ae3862ac7da6504b6b0407d86
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 244e9d9136705eeef27680d2fa590d283abb6467
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170439"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255462"
 ---
 # <a name="tutorial-send-push-notifications-to-android-devices-using-firebase-sdk-version-06"></a>Kurz: odeslání nabízených oznámení na zařízení s Androidem pomocí sady Firebase SDK verze 0,6
 
@@ -102,7 +100,7 @@ Vaše centrum je teď nakonfigurované tak, aby fungovalo s Firebase cloudovým 
     ![Android SDK Manager – Služby Google Play vybráno](./media/notification-hubs-android-studio-add-google-play-services/google-play-services-selected.png)
 3. Pokud se zobrazí dialogové okno **Potvrdit změnu** , vyberte **OK**. Instalační program součásti nainstaluje požadované součásti. Po instalaci součástí vyberte **Dokončit** .
 4. Kliknutím na **tlačítko OK** zavřete dialogové okno **nastavení pro nové projekty** .  
-1. Otevřete soubor souboru AndroidManifest. XML a přidejte následující značku do značky *aplikace* .
+1. Otevřete soubor AndroidManifest.xml a přidejte následující značku do značky *aplikace* .
 
     ```xml
     <meta-data android:name="com.google.android.gms.version"
@@ -144,7 +142,7 @@ Vaše centrum je teď nakonfigurované tak, aby fungovalo s Firebase cloudovým 
     ```
 3. Vyberte **synchronizovat hned** na panelu nástrojů.
 
-### <a name="update-the-androidmanifestxml-file"></a>Aktualizace souboru souboru AndroidManifest. XML
+### <a name="update-the-androidmanifestxml-file"></a>Aktualizace souboru AndroidManifest.xml
 
 1. Po přijetí registračního tokenu FCM ho použijete k [registraci v Azure Notification Hubs](notification-hubs-push-notification-registration-management.md). Tuto registraci podporujete na pozadí pomocí `IntentService` pojmenovaného `RegistrationIntentService` . Tato služba také aktualizuje registrační token FCM. Vytvoříte také třídu s názvem `FirebaseService` jako podtřídu `FirebaseMessagingService` a přepíšete `onMessageReceived` metodu pro příjem a zpracování oznámení. 
 
@@ -407,7 +405,7 @@ Vaše centrum je teď nakonfigurované tak, aby fungovalo s Firebase cloudovým 
     }
     ```
 
-9. Metoda `ToastNotify` používá ovládání *„Hello World“* `TextView` k trvalému hlášení stavu a oznámení v aplikaci. V rozložení **res**  >  **layout**  >  **activity_main. XML** přidejte následující ID pro tento ovládací prvek.
+9. Metoda `ToastNotify` používá ovládání *„Hello World“* `TextView` k trvalému hlášení stavu a oznámení v aplikaci. V rozložení **res**  >  **rozložení** zdrojů  >  **activity_main.xml** rozložení přidejte následující ID pro tento ovládací prvek.
 
     ```java
     android:id="@+id/text_hello"
@@ -415,7 +413,7 @@ Vaše centrum je teď nakonfigurované tak, aby fungovalo s Firebase cloudovým 
 
     ![Azure Notification Hubs – testovací odeslání](./media/notification-hubs-android-push-notification-google-fcm-get-started/activity-main-xml.png)
 
-10. Dále přidáte podtřídu pro přijímače, který jste definovali v souboru souboru AndroidManifest. XML. Přidejte další novou třídu do projektu s názvem `FirebaseService`.
+10. Dále přidáte podtřídu pro přijímače, který jste definovali v AndroidManifest.xml. Přidejte další novou třídu do projektu s názvem `FirebaseService`.
 
 11. Nad `FirebaseService.java` přidejte následující příkazy pro import:
 
@@ -522,7 +520,7 @@ Vaše centrum je teď nakonfigurované tak, aby fungovalo s Firebase cloudovým 
     }
     ```
 
-13. V Android Studio na řádku nabídek vyberte **sestavit znovu**  >  **sestavit projekt** , abyste se ujistili, že ve vašem kódu nejsou žádné chyby. Pokud se zobrazí chyba týkající se `ic_launcher` ikony, odeberte následující příkaz ze souboru souboru AndroidManifest. XML: 
+13. V Android Studio na řádku nabídek vyberte **sestavit znovu**  >  **sestavit projekt** , abyste se ujistili, že ve vašem kódu nejsou žádné chyby. Pokud se zobrazí chyba týkající se této `ic_launcher` ikony, odeberte z AndroidManifest.xml souboru následující příkaz: 
 
     ```
         android:icon="@mipmap/ic_launcher"
@@ -556,11 +554,13 @@ Nabízená oznámení můžete odesílat z [Azure Portal] provedením následuj�
 [!INCLUDE [notification-hubs-sending-notifications-from-the-portal](../../includes/notification-hubs-sending-notifications-from-the-portal.md)]
 
 ### <a name="run-the-mobile-app-on-emulator"></a>Spustit mobilní aplikaci na emulátoru
+
 Než otestujete nabízená oznámení v emulátoru, ujistěte se, že vaše image emulátoru podporuje úroveň rozhraní Google API, kterou jste zvolili pro vaši aplikaci. Pokud vaše image nepodporuje nativní rozhraní Google API, může být **Služba \_ \_ nedostupná** výjimka.
 
 Také se ujistěte, že jste do svého spuštěného emulátoru v části **Nastavení**  >  **účty**přidali účet Google. V opačném případě se můžou vaše pokusy o registraci v **FCM \_ způsobit výjimku ověřování** .
 
 ## <a name="next-steps"></a>Další kroky
+
 V tomto kurzu jste použili Firebase Cloud Messaging pro vysílání oznámení na všechna zařízení s Androidem, která byla zaregistrovaná ve službě. Pokud se chcete naučit posílat nabízená oznámení jenom určitým zařízením, pokračujte následujícím kurzem:
 
 > [!div class="nextstepaction"]
@@ -573,4 +573,4 @@ V tomto kurzu jste použili Firebase Cloud Messaging pro vysílání oznámení 
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [Referencing a library project]: https://go.microsoft.com/fwlink/?LinkId=389800
 [Notification Hubs Guidance]: notification-hubs-push-notification-overview.md
-[portál Azure]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com

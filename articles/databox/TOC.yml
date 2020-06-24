@@ -46,8 +46,12 @@
                   href: data-box-system-requirements-rest.md
             - name: Pochopení limitů
               href: data-box-limits.md
-            - name: Revize zabezpečení
-              href: data-box-security.md
+            - name: Zabezpečení
+              items:
+                - name: Standardní hodnoty zabezpečení
+                  href: security-baseline.md
+                - name: Revize zabezpečení
+                  href: data-box-security.md
             - name: Nejčastější dotazy
               href: data-box-faq.md
         - name: Postup

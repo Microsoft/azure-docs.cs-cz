@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a6ac2fd0ef3414f5b9d7f6551628264b4724b037
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 8a20d7cb05f4529d5aa8a115b7d1db6e4d812be0
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234332"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100856"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Kurz: Vytvoření fondu hostitelů pomocí Azure Portal
 
@@ -41,7 +41,7 @@ Budete také muset znát následující věci:
 - Kde je zdroj obrázku, který chcete použít. Je to z Galerie Azure nebo se jedná o vlastní image?
 - Vaše přihlašovací údaje k doméně
 
-Ujistěte se také, že jste zaregistrovali poskytovatele prostředků Microsoft. DesktopVirtualization. Pokud jste to ještě neudělali, pokračujte na **odběry** , vyberte název předplatného zpřístupnit ve a pak vyberte **poskytovatelé prostředků Azure**.
+Ujistěte se také, že jste zaregistrovali poskytovatele prostředků Microsoft. DesktopVirtualization. Pokud jste to ještě neudělali, pokračujte na **odběry**, vyberte název vašeho předplatného a potom vyberte **poskytovatelé prostředků Azure**.
 
 Když vytvoříte fond hostitelů virtuálních počítačů s Windows pomocí šablony Azure Resource Manager, můžete vytvořit virtuální počítač z Galerie Azure, spravované bitové kopie nebo nespravované image. Další informace o tom, jak vytvořit image virtuálních počítačů, najdete v tématu [Příprava virtuálního pevného disku (VHD) Windows nebo VHDX pro nahrání do Azure](../virtual-machines/windows/prepare-for-upload-vhd-image.md) a [Vytvoření spravované image zobecněného virtuálního počítače v Azure](../virtual-machines/windows/capture-image-resource.md).
 
@@ -111,7 +111,7 @@ Nastavení virtuálního počítače v rámci procesu nastavení fondu hostitel�
 
     - Pokud zvolíte položku **Galerie**, v rozevírací nabídce vyberte jednu z doporučených imagí:
 
-      - Windows 10 Enterprise s více relacemi verze 1909 a Office 365 plus – Gen 1
+      - Windows 10 Enterprise s více relacemi, verze 1909 a aplikace Microsoft 365 pro podniky – Gen 1
       - Windows 10 Enterprise s více relacemi verze 1909 – Gen 1
       - Windows Server 2019 Datacenter – Gen1
 
@@ -169,7 +169,7 @@ Chcete-li zaregistrovat skupinu desktopových aplikací do pracovního prostoru:
      >[!NOTE]
      >Proces kontroly a vytváření ověření nekontroluje, jestli vaše heslo splňuje standardy zabezpečení, nebo jestli je vaše architektura správná, takže budete muset vyhledat jakékoli problémy s některou z těchto věcí sami. 
 
-5. Zkontrolujte informace o nasazení a ujistěte se, že vše vypadá správně. Až to budete mít, vyberte **Vytvořit**. Tím se spustí proces nasazení, který vytvoří následující objekty:
+5. Zkontrolujte informace o nasazení a ujistěte se, že vše vypadá správně. Po dokončení vyberte **Vytvořit**. Tím se spustí proces nasazení, který vytvoří následující objekty:
 
      - Váš nový fond hostitelů.
      - Skupina desktopových aplikací.

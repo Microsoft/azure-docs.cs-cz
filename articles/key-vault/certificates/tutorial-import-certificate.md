@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: 9496173ee006c6ca3cab557f4e63ec21647ad0fd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: abf7e864398d48742e0cbf99a9a7b7dae56b9c5d
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82105569"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100918"
 ---
 # <a name="tutorial-import-a-certificate-in-azure-key-vault"></a>Kurz: Import certifikátu v Azure Key Vault
 
@@ -26,13 +26,14 @@ V tomto kurzu získáte informace o následujících postupech:
 
 > [!div class="checklist"]
 > * Vytvoření trezoru klíčů
-> * Importujte certifikát do trezoru klíčů pomocí portálu.
-> * Importujte certifikát do trezoru klíčů pomocí rozhraní příkazového řádku.
+> * Importujte certifikát v Key Vault pomocí portálu.
+> * Importujte certifikát v Key Vault pomocí rozhraní příkazového řádku.
+> * Importujte certifikát v Key Vault pomocí PowerShellu.
 
 
 Než začnete, přečtěte si téma [Key Vault Basic koncepty](../general/basic-concepts.md). 
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -66,7 +67,7 @@ V tuto chvíli je váš účet Azure jediným účtem s oprávněním provádět
 Pokud chcete importovat certifikát do trezoru, musíte mít soubor certifikátu PEM nebo PFX, který bude na disku. V tomto případě naimportujeme certifikát s názvem souboru s názvem **ExampleCertificate**.
 
 > [!IMPORTANT]
-> V Azure Key Vault jsou podporované formáty certifikátů: PFX a PEM. 
+> Ve službě Azure Key Vault se podporují certifikáty ve formátu PFX a PEM. 
 > - Formát souboru. pem obsahuje jeden nebo více souborů certifikátu x509.
 > - Formát souboru. PFX je formát archivního souboru pro ukládání několika kryptografických objektů do jednoho souboru, tj. certifikát serveru (vydaný pro vaši doménu), odpovídajícího privátního klíče a volitelně může zahrnovat zprostředkující certifikační autoritu.  
 
@@ -102,7 +103,8 @@ az keyvault certificate import --file
                                [--subscription]
                                [--tags]
 ```
-Další informace o [těchto parametrech](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-import)
+
+Přečtěte si další informace o [parametrech](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-import).
 
 Po importu certifikátu si můžete certifikát zobrazit pomocí [zobrazení certifikátu](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-show) .
 
@@ -116,9 +118,25 @@ az keyvault certificate show [--id]
                              [--version]
 ```
 
-
-
 Nyní jste vytvořili Trezor klíčů, importovali certifikát a zobrazili jste vlastnosti certifikátu.
+
+## <a name="import-a-certificate-using-azure-powershell"></a>Import certifikátu pomocí Azure PowerShell
+
+```
+Import-AzureKeyVaultCertificate
+      [-VaultName] <String>
+      [-Name] <String>
+      -FilePath <String>
+      [-Password <SecureString>]
+      [-Tag <Hashtable>]
+      [-DefaultProfile <IAzureContextContainer>]
+      [-WhatIf]
+      [-Confirm]
+      [<CommonParameters>]
+```
+
+Přečtěte si další informace o [parametrech](https://docs.microsoft.com/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate?view=azurermps-6.13.0).
+
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

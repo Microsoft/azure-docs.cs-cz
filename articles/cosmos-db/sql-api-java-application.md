@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 05/12/2020
 ms.author: anfeldma
-ms.openlocfilehash: 6f8431bfd3be75651f3a08fe9b07fc3902436331
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: d29f97bf421804fb234ce8d86c66c12b01854681
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657291"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85113789"
 ---
 # <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Kurz: Vytvoření webové aplikace v jazyce Java pomocí Azure Cosmos DB a rozhraní SQL API
 
@@ -32,7 +32,7 @@ Tento kurz vývoje webové aplikace Java ukazuje, jak pomocí služby [Microsoft
 
 Tento kurz o aplikaci Java vám ukáže, jak vytvořit webovou aplikaci pro správu úkolů, která umožňuje vytvářet a získávat úkoly a označovat je jako dokončené, jak ilustruje následující obrázek. Každý z úkolů v seznamu se ve službě Azure Cosmos DB ukládá jako dokument JSON.
 
-![Aplikace pro seznam úkolů v jazyce Java](./media/sql-api-java-application/image1.png)
+:::image type="content" source="./media/sql-api-java-application/image1.png" alt-text="Aplikace pro seznam úkolů v jazyce Java":::
 
 > [!TIP]
 > V tomto kurzu vývoje aplikace se předpokládá, že již máte zkušenosti s jazykem Java. Pokud je pro vás Java nebo některý z [požadovaných nástrojů](#Prerequisites) nový, doporučujeme stáhnout úplný ukázkový projekt [todo](https://github.com/Azure-Samples/documentdb-java-todo-app) z GitHubu a postupovat podle [pokynů na konci tohoto článku](#GetProject). Až jej budete mít sestavený, můžete se k tomuto článku vrátit, abyste kódu lépe porozuměli v kontextu projektu.  
@@ -66,7 +66,7 @@ Vytvoření aplikace JSP:
 
 1. Nejdříve začneme vytvořením projektu Java. Spusťte Eclipse, klikněte na **File** (Soubor), pak na **New** (Nový) a nakonec na **Dynamic Web Project** (Dynamický webový projekt). Pokud nevidíte **dynamický webový projekt** uvedený jako dostupný projekt, udělejte toto: klikněte na **soubor**, klikněte na **Nový**, klikněte na **projekt**..., rozbalte **Web**, klikněte na **dynamický webový projekt**a klikněte na **Další**.
    
-    ![Vývoj aplikace Java JSP](./media/sql-api-java-application/image10.png)
+    :::image type="content" source="./media/sql-api-java-application/image10.png" alt-text="Vývoj aplikace Java JSP":::
 
 1. Zadejte název projektu do pole **Project name** (Název projektu), volitelně v rozevírací nabídce **Target Runtime** (Cílový modul runtime) vyberte hodnotu (např. Apache Tomcat v7.0) a klikněte na **Finish** (Dokončit). Pokud vyberete cílový modul runtime, budete moci spouštět projekt místně přes Eclipse.
 
@@ -74,11 +74,11 @@ Vytvoření aplikace JSP:
 
 1. V dialogovém okně **New JSP File** (Nový soubor JSP) pojmenujte soubor **index.jsp**. Nadřazený adresář ponechte na **WebContent**, jak ukazuje následující ilustrace, a klikněte na **Next** (Další).
    
-    ![Vytvoření nového souboru JSP – kurz vývoje aplikace Java](./media/sql-api-java-application/image11.png)
+    :::image type="content" source="./media/sql-api-java-application/image11.png" alt-text="Vytvoření nového souboru JSP – kurz vývoje aplikace Java":::
 
 1. V dialogovém okně **Select JSP Template** (Výběr šablony JSP) vyberte pro účely tohoto kurzu možnost **New JSP File (html)** (Nový soubor JSP (HTML)) a klikněte na **Finish** (Dokončit).
 
-1. Po otevření souboru *index. jsp* v zatmění přidejte text, který se zobrazí **Hello World!** do existujícího elementu `<body>`. Aktualizovaný obsah `<body>` by se měl podobat následujícímu kódu:
+1. Pokud se soubor *index.jsp* otevře v části zatmění, přidejte text, který se zobrazí **Hello World!** do existujícího elementu `<body>`. Aktualizovaný obsah `<body>` by se měl podobat následujícímu kódu:
 
    ```html
    <body>
@@ -86,7 +86,7 @@ Vytvoření aplikace JSP:
    </body>
    ```
 
-1. Uložte soubor *index. jsp* .
+1. Uložte soubor *index.jsp* .
 
 1. Pokud v kroku 2 nastavíte cílový modul runtime, můžete kliknout na **Project** a pomocí příkazu **Run** (Spustit) aplikaci JSP místně spustit:
 
@@ -110,7 +110,7 @@ Nejjednodušším způsobem, jak stáhnout sadu SQL Java SDK a její závislosti
    * Do pole **ID artefaktu** zadejte `azure-cosmos` .
    * Do pole **verze** zadejte `4.0.1-beta.1` .
   
-   Nebo můžete přidat XML závislosti pro ID skupiny a ID artefaktu přímo do souboru *pom. XML* :
+   Nebo můžete přidat XML závislosti pro ID skupiny a ID artefaktu přímo do souboru *pom.xml* :
 
    ```xml
    <dependency>
@@ -120,7 +120,7 @@ Nejjednodušším způsobem, jak stáhnout sadu SQL Java SDK a její závislosti
    </dependency>
    ```
 
-1. Klikněte na **OK** a MAVEN nainstaluje SQL Java SDK nebo uloží soubor pom. XML.
+1. Klikněte na **OK** a Maven nainstaluje sadu SQL Java SDK nebo soubor pom.xml uložte.
 
 ## <a name="use-the-azure-cosmos-db-service-in-your-java-application"></a><a id="UseService"></a>Používání služby Azure Cosmos DB v aplikaci Java
 
@@ -174,7 +174,7 @@ Dále vytvořte servlet pro směrování požadavků HTTP do kontroleru. Vytvoř
 
 Teď, když jsme dokončili zábavné služby, je to vše, co zbývá k vytvoření rychlého uživatelského rozhraní a jeho vedení do vašeho rozhraní DAO.
 
-1. Potřebujete webové uživatelské rozhraní, které se zobrazí uživateli. Pojďme znovu vytvořit *index. jsp* , který jsme vytvořili dříve s následujícím kódem:
+1. Potřebujete webové uživatelské rozhraní, které se zobrazí uživateli. Pojďme znovu zapsat *index.jsp* , kterou jsme vytvořili dříve, pomocí následujícího kódu:
 
    :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/WebContent/index.jsp":::
 
@@ -251,4 +251,4 @@ Všechny ukázky v tomto kurzu jsou součástí projektu [todo](https://github.c
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Vytvoření aplikace Node. js pomocí Azure Cosmos DB](sql-api-nodejs-application.md)
+> [Sestavení aplikace node.js s využitím Azure Cosmos DB](sql-api-nodejs-application.md)
