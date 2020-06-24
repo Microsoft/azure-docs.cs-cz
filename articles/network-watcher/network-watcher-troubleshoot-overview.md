@@ -7,17 +7,17 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
-ms.openlocfilehash: 199b4fc762919c2e3988f477c14d09fc23b0136b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: acb7ff5c0862ceff8c73eaca92cc7000220eca41
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76840685"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738647"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Úvod k řešení potíží s prostředky v Azure Network Watcher
 
@@ -73,7 +73,7 @@ V následujících tabulkách jsou uvedeny různé typy chyb (ID z předchozího
 | ConnectionIsMarkedDisconnected | Připojení je označeno jako odpojené. |Ne|
 | ConnectionNotConfiguredOnGateway | V podkladové službě není nakonfigurované připojení. | Ano |
 | ConnectionMarkedStandby | Podkladová služba je označena jako pohotovostní.| Ano|
-| Authentication | Neshoda předsdíleného klíče | Ano|
+| Ověřování | Neshoda předsdíleného klíče | Ano|
 | PeerReachability | Partnerská brána není dostupná. | Ano|
 | IkePolicyMismatch | Partnerská brána má zásady IKE, které Azure nepodporuje. | Ano|
 | Chyba WfpParse | Při analýze protokolu WFP došlo k chybě. |Ano|
@@ -107,12 +107,12 @@ Po dokončení řešení potíží s prostředkem se soubory protokolu řešení
 
 Pokyny ke stahování souborů z účtů Azure Storage najdete v tématu [Začínáme s úložištěm objektů BLOB v Azure pomocí .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Průzkumník služby Storage se dá použít jiný nástroj. Další informace o Průzkumník služby Storage najdete na následujícím odkazu: [Průzkumník služby Storage](https://storageexplorer.com/)
 
-### <a name="connectionstatstxt"></a>ConnectionStats. txt
+### <a name="connectionstatstxt"></a>ConnectionStats.txt
 
-Soubor **ConnectionStats. txt** obsahuje celkovou statistiku připojení, včetně příchozích a odchozích bajtů, stavu připojení a času, kdy bylo připojení navázáno.
+**ConnectionStats.txt** soubor obsahuje celkovou statistiku připojení, včetně příchozích a odchozích bajtů, stavu připojení a času, kdy bylo připojení navázáno.
 
 > [!NOTE]
-> Pokud volání rozhraní API pro řešení potíží vrátí v pořádku, jediná věc vrácená v souboru ZIP je soubor **ConnectionStats. txt** .
+> Pokud volání rozhraní API pro řešení potíží vrátí v pořádku, jediná věc vrácená v souboru ZIP je soubor **ConnectionStats.txt** .
 
 Obsah tohoto souboru je podobný následujícímu příkladu:
 
@@ -124,19 +124,19 @@ Egress Bytes (Since last connected) : 288 B
 Connected Since : 2/1/2017 8:22:06 PM
 ```
 
-### <a name="cpustatstxt"></a>CPUStats. txt
+### <a name="cpustatstxt"></a>CPUStats.txt
 
-Soubor **CPUStats. txt** obsahuje využití CPU a paměť dostupnou v době testování.  Obsah tohoto souboru je podobný následujícímu příkladu:
+**CPUStats.txt** soubor obsahuje využití CPU a paměť dostupnou v době testování.  Obsah tohoto souboru je podobný následujícímu příkladu:
 
 ```
 Current CPU Usage : 0 % Current Memory Available : 641 MBs
 ```
 
-### <a name="ikeerrorstxt"></a>IKEErrors. txt
+### <a name="ikeerrorstxt"></a>IKEErrors.txt
 
-Soubor **IKEErrors. txt** obsahuje chyby protokolu IKE, které byly zjištěny během monitorování.
+**IKEErrors.txt** soubor obsahuje chyby protokolu IKE, které byly zjištěny během monitorování.
 
-Následující příklad ukazuje obsah souboru IKEErrors. txt. Vaše chyby se můžou lišit v závislosti na problému.
+Následující příklad ukazuje obsah souboru IKEErrors.txt. Vaše chyby se můžou lišit v závislosti na problému.
 
 ```
 Error: Authentication failed. Check shared key. Check crypto. Check lifetimes. 
@@ -145,11 +145,11 @@ Error: On-prem device sent invalid payload.
      based on log : IkeFindPayloadInPacket failed with Windows error 13843(ERROR_IPSEC_IKE_INVALID_PAYLOAD)
 ```
 
-### <a name="scrubbed-wfpdiagtxt"></a>Scrubbed-wfpdiag. txt
+### <a name="scrubbed-wfpdiagtxt"></a>Scrubbed-wfpdiag.txt
 
-Soubor protokolu **Scrubbed-wfpdiag. txt** obsahuje protokol WFP. Tento protokol obsahuje protokolování chyb odkládacího paketu a protokolu IKE/AuthIP.
+Soubor protokolu **Scrubbed-wfpdiag.txt** obsahuje protokol WFP. Tento protokol obsahuje protokolování chyb odkládacího paketu a protokolu IKE/AuthIP.
 
-Následující příklad ukazuje obsah souboru Scrubbed-wfpdiag. txt. V tomto příkladu není sdílený klíč připojení správný, protože ho můžete vidět na třetím řádku zdola. V následujícím příkladu je pouze fragment celého protokolu, protože v závislosti na problému může být protokol zdlouhavý.
+Následující příklad ukazuje obsah souboru Scrubbed-wfpdiag.txt. V tomto příkladu není sdílený klíč připojení správný, protože ho můžete vidět na třetím řádku zdola. V následujícím příkladu je pouze fragment celého protokolu, protože v závislosti na problému může být protokol zdlouhavý.
 
 ```
 ...
@@ -178,11 +178,11 @@ Následující příklad ukazuje obsah souboru Scrubbed-wfpdiag. txt. V tomto p�
 ...
 ```
 
-### <a name="wfpdiagtxtsum"></a>wfpdiag. txt. Sum
+### <a name="wfpdiagtxtsum"></a>wfpdiag.txt. Sum
 
-Soubor **wfpdiag. txt. suma** je protokol zobrazující zpracovávané vyrovnávací paměti a události.
+Soubor **wfpdiag.txt. Sum** je protokol zobrazující zpracovávané vyrovnávací paměti a události.
 
-Následující příklad je obsah souboru wfpdiag. txt. Sum.
+Následující příklad je obsah souboru wfpdiag.txt. Sum.
 ```
 Files Processed:
     C:\Resources\directory\924336c47dd045d5a246c349b8ae57f2.GatewayTenantWorker.DiagnosticsStorage\2017-02-02T17-34-23\wfpdiag.etl

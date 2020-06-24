@@ -10,12 +10,12 @@ ms.service: dms
 ms.workload: data-services
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 8607f1a687f2979c37c67099874288c6c5ead164
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 64fb692c7ef896e643db603a6fbc3948cc4b3a11
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77647489"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84749645"
 ---
 # <a name="what-is-azure-database-migration-service"></a>Co je Azure Database Migration Service?
 
@@ -23,7 +23,7 @@ Azure Database Migration Service je plně spravovaná služba navržená tak, ab
 
 ## <a name="migrate-databases-to-azure-with-familiar-tools"></a>Migrace databází do Azure pomocí známých nástrojů
 
-Azure Database Migration Service integruje některé funkce našich stávajících nástrojů a služeb. Poskytuje zákazníkům komplexní řešení s vysokou dostupností. Služba používá [Data Migration Assistant](https://aka.ms/dma) ke generování hodnotících sestav, které vám poskytnou doporučení, která vás provedou provedením změn požadovaných před migrací. To je vše, co je potřeba k provedení jakékoli nápravy. Až budete připraveni zahájit proces migrace, Azure Database Migration Service provede všechny požadované kroky. Své projekty migrace můžete v klidu spustit a dál je neřešit, protože proces využívá osvědčené postupy podle zkušeností Microsoftu.
+Azure Database Migration Service integruje některé funkce našich stávajících nástrojů a služeb. Poskytuje zákazníkům komplexní řešení s vysokou dostupností. Služba používá [Data Migration Assistant](https://aka.ms/dma) ke generování hodnotících sestav, které vám poskytnou doporučení, která vás provedou provedením změn požadovaných před migrací. To je vše, co je potřeba k provedení jakékoli nápravy. Až budete připraveni zahájit proces migrace, Azure Database Migration Service provede všechny požadované kroky. Své projekty migrace můžete v klidu spustit a dál je neřešit, protože proces využívá osvědčené postupy podle zkušeností Microsoftu. 
 
 > [!NOTE]
 > Použití Azure Database Migration Service k provedení online migrace vyžaduje vytvoření instance založené na cenové úrovni Premium.

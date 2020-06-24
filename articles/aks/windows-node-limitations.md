@@ -5,12 +5,12 @@ description: Přečtěte si o známých omezeních při spouštění fondů uzl�
 services: container-service
 ms.topic: article
 ms.date: 05/28/2020
-ms.openlocfilehash: 89cfb42da4433f17298cf2cb68f1a4b3d8f9e549
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: e03343bc0bf8d2b49d2322573e75fe76cc853e32
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433009"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976604"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Aktuální omezení pro fondy uzlů Windows serveru a úlohy aplikací ve službě Azure Kubernetes Service (AKS)
 
@@ -48,7 +48,7 @@ Clustery AKS s fondy uzlů Windows musí používat síťový model Azure CNI (r
 
 ## <a name="can-i-change-the-max--of-pods-per-node"></a>Můžu změnit maximum. počet lusků na uzel?
 
-Yes. Důsledky a možnosti, které jsou k dispozici, najdete v části [maximální počet lusků][maximum-number-of-pods].
+Ano. Důsledky a možnosti, které jsou k dispozici, najdete v části [maximální počet lusků][maximum-number-of-pods].
 
 ## <a name="how-do-patch-my-windows-nodes"></a>Jak mám opravit uzly Windows?
 
@@ -101,7 +101,7 @@ Podpora skupinových účtů spravované služby (gMSA) není v současné době
 
 ## <a name="can-i-use-azure-monitor-for-containers-with-windows-nodes-and-containers"></a>Můžu použít Azure Monitor pro kontejnery s uzly a kontejnery Windows?
 
-Ano, můžete ale Azure Monitor neshromažďuje protokoly (stdout) z kontejnerů Windows. Můžete se stále připojit k živému streamu protokolů stdout z kontejneru Windows.
+Ano, ale Azure Monitor má sadu [omezení][azure-monitor] pro podporu Windows.
 
 ## <a name="what-if-i-need-a-feature-which-is-not-supported"></a>Co když potřebuji funkci, která není podporovaná?
 
@@ -131,3 +131,4 @@ Pokud chcete začít s kontejnery Windows serveru v AKS, [vytvořte fond uzlů, 
 [nodepool-limitations]: use-multiple-node-pools.md#limitations
 [windows-container-compat]: /virtualization/windowscontainers/deploy-containers/version-compatibility?tabs=windows-server-2019%2Cwindows-10-1909
 [maximum-number-of-pods]: configure-azure-cni.md#maximum-pods-per-node
+[azure-monitor]: ../azure-monitor/insights/container-insights-overview.md#what-does-azure-monitor-for-containers-provide

@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5e2ba749b64a6d44c9aa6b03352910ab24771084
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 51999572dc9ebf7e3a5d537f5e902c50cd473279
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835644"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791227"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Začínáme používat Azure Stream Analytics: zjišťování podvodů v reálném čase
 
@@ -38,7 +38,7 @@ V tomto kurzu simulujete data telefonního hovoru pomocí klientské aplikace, k
 Než začnete, ujistěte se, že jste provedli následující akce:
 
 * Účet Azure.
-* Aplikace generátoru událostí volání ( [TelcoGenerator. zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip)), kterou je možné stáhnout z webu Microsoft Download Center. Rozbalí tento balíček do složky ve vašem počítači. Pokud chcete zobrazit zdrojový kód a spustit aplikaci v ladicím programu, můžete získat zdrojový kód aplikace z [GitHubu](https://aka.ms/azure-stream-analytics-telcogenerator). 
+* Aplikace generátoru událostí volání, [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip), která se dá stáhnout z webu Microsoft Download Center. Rozbalí tento balíček do složky ve vašem počítači. Pokud chcete zobrazit zdrojový kód a spustit aplikaci v ladicím programu, můžete získat zdrojový kód aplikace z [GitHubu](https://aka.ms/azure-stream-analytics-telcogenerator). 
 
     >[!NOTE]
     >Systém Windows může blokovat stažený soubor. zip. Pokud ho nemůžete rozbalit, klikněte pravým tlačítkem na soubor a vyberte **vlastnosti**. Pokud se zobrazí zpráva "Tento soubor pochází z jiného počítače a může být blokovaný pro lepší ochranu tohoto počítače", vyberte možnost **odblokovat** a klikněte na **použít**.
@@ -47,7 +47,7 @@ Pokud chcete prošetřit výsledky úlohy Stream Analytics, budete také potřeb
 
 ## <a name="create-an-azure-event-hubs-to-ingest-events"></a>Vytvoření Event Hubs Azure pro ingestování událostí
 
-Pokud chcete analyzovat datový proud, ingestujte *ho do* Azure. Typický způsob, jak ingestovat data, je použít [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md), který umožňuje ingestovat miliony událostí za sekundu a pak zpracovávat a ukládat informace o událostech. V tomto kurzu vytvoříte centrum událostí a potom budete mít aplikaci generátoru událostí volání poslat data volání do tohoto centra událostí. Další informace o centrech událostí najdete v [dokumentaci k Azure Service Bus](https://docs.microsoft.com/azure/service-bus/).
+Pokud chcete analyzovat datový proud, ingestujte *ho do* Azure. Typický způsob, jak ingestovat data, je použít [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md), který umožňuje ingestovat miliony událostí za sekundu a pak zpracovávat a ukládat informace o událostech. V tomto kurzu vytvoříte centrum událostí a potom budete mít aplikaci generátoru událostí volání poslat data volání do tohoto centra událostí.
 
 >[!NOTE]
 >Podrobnější verzi tohoto postupu najdete v tématu [Vytvoření oboru názvů Event Hubs a centra událostí pomocí Azure Portal](../event-hubs/event-hubs-create.md). 
@@ -123,7 +123,7 @@ Před spuštěním aplikace TelcoGenerator je nutné ji nakonfigurovat tak, aby 
 
 1. V editoru, kam jste zkopírovali připojovací řetězec, si poznamenejte `EntityPath` hodnotu a pak `EntityPath` dvojici odeberte (nezapomeňte odstranit středník, který ho předchází). 
 
-2. Ve složce, ve které jste rozTelcoGeneratori soubor. zip, otevřete soubor telcodatagen. exe. config v editoru. (Existuje více než jeden soubor. config, proto nezapomeňte otevřít ten správný.)
+2. Ve složce, ve které odTelcoGenerator.zipte soubor, otevřete soubor telcodatagen.exe.config v editoru. (Existuje více než jeden soubor. config, proto nezapomeňte otevřít ten správný.)
 
 3. V `<appSettings>` elementu:
 
@@ -162,7 +162,7 @@ Před spuštěním aplikace TelcoGenerator je nutné ji nakonfigurovat tak, aby 
 
 Některá klíčová pole, která budete používat v této aplikaci pro detekci podvodů v reálném čase, jsou následující:
 
-|**Zapisovací**|**Definice**|
+|**Záznam**|**Definice**|
 |----------|--------------|
 |`CallrecTime`|Časové razítko pro počáteční čas volání. |
 |`SwitchNum`|Telefonní ústředna použitá pro spojení volání. V tomto příkladu jsou přepínače řetězce reprezentující zemi nebo oblast původu (USA, Čína, Spojené království, Německo nebo Austrálie). |
@@ -202,7 +202,7 @@ Teď, když máte proud událostí volání, můžete nastavit Stream Analytics 
    |**Nastavení**  |**Navrhovaná hodnota**  |**Popis**  |
    |---------|---------|---------|
    |Alias vstupu  |  CallStream   |  Zadejte název pro identifikaci vstupu úlohy.   |
-   |Předplatné   |  \<Vaše předplatné\> |  Vyberte předplatné Azure, které obsahuje centrum událostí, které jste vytvořili.   |
+   |Předplatné   |  \<Your subscription\> |  Vyberte předplatné Azure, které obsahuje centrum událostí, které jste vytvořili.   |
    |Obor názvů centra událostí  |  ASA-eh-NS – ukázka |  Zadejte název oboru názvů centra událostí.   |
    |Název centra událostí  | ASA-eh-frauddetection-demo | Vyberte název centra událostí.   |
    |Název zásad centra událostí  | ASA – zásady-Správa-ukázka | Vyberte zásadu přístupu, kterou jste vytvořili dříve.   |
@@ -372,7 +372,7 @@ Pokud máte existující účet Blob Storage, můžete ho použít. V tomto kurz
    |**Nastavení**  |**Navrhovaná hodnota**  |**Popis**  |
    |---------|---------|---------|
    |Alias pro výstup  |  CallStream – Podvodnávolání   |  Zadejte název pro identifikaci výstupu úlohy.   |
-   |Předplatné   |  \<Vaše předplatné\> |  Zadejte předplatné Azure vytvořeného účtu úložiště. Účet úložiště můžete využívat v rámci stejného, ale i jiného předplatného. V tomto příkladu se předpokládá, že jste účet vytvořili v rámci stejného předplatného. |
+   |Předplatné   |  \<Your subscription\> |  Zadejte předplatné Azure vytvořeného účtu úložiště. Účet úložiště můžete využívat v rámci stejného, ale i jiného předplatného. V tomto příkladu se předpokládá, že jste účet vytvořili v rámci stejného předplatného. |
    |Účet úložiště  |  asaehstorage |  Zadejte název účtu úložiště, který jste vytvořili. |
    |Kontejner  | ASA-podvodnávolání-demo | Vyberte vytvořit nový a zadejte název kontejneru. |
 
@@ -418,7 +418,7 @@ Pokud jste ale hotovi a nepotřebujete prostředky, které jste vytvořili, mů�
 5. Odstraňte centrum událostí.
 6. Odstraňte obor názvů centra událostí.
 
-## <a name="get-support"></a>Získat podporu
+## <a name="get-support"></a>Získání podpory
 
 Pokud chcete získat další pomoc, zkuste [Azure Stream Analytics na stránce s dotazem pro Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 

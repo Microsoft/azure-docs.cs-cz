@@ -233,7 +233,7 @@ Tento dotaz je nyní možné zpracovat z indexu.
 
 Další informace o ladění výkonu dotazů najdete v článku o [výkonu dotazů ladění](https://docs.microsoft.com/azure/cosmos-db/documentdb-sql-query-metrics) .
 
-## <a name="references"></a><a id="References"></a>Reference
+## <a name="references"></a><a id="References"></a>Odkazy
 
 - [Azure Cosmos DB specifikace SQL](https://go.microsoft.com/fwlink/p/?LinkID=510612)
 - [ANSI SQL 2011](https://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681)

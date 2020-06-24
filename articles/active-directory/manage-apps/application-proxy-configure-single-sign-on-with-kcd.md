@@ -3,25 +3,25 @@ title: Jednotné přihlašování s proxy aplikací | Microsoft Docs
 description: Popisuje, jak zajistit jednotné přihlašování pomocí služby Azure Proxy aplikací služby AD.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/13/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.custom: H1Hack27Feb2017, it-pro
+ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 521982a5cf09e0da9c52bca2fe367432a1d29e57
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 69ac1e70684b2c4396bb15a439edab37a7e45040
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583138"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84975584"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Omezené delegování protokolu Kerberos pro jednotné přihlašování k aplikacím pomocí proxy aplikací
 
@@ -55,9 +55,9 @@ Než začnete s jednotným přihlašováním pro aplikace IWA, ujistěte se, že
 Konfigurace služby Active Directory se liší v závislosti na tom, jestli je konektor proxy aplikací a aplikační server ve stejné doméně, nebo ne.
 
 #### <a name="connector-and-application-server-in-the-same-domain"></a>Konektor a aplikační server ve stejné doméně
-1. Ve službě Active Directory přejdete na **nástroje** > **Uživatelé a počítače**.
+1. Ve službě Active Directory přejdete na **nástroje**  >  **Uživatelé a počítače**.
 2. Vyberte server, na kterém je spuštěný konektor.
-3. Klikněte pravým tlačítkem a vyberte **vlastnosti** > **delegování**.
+3. Klikněte pravým tlačítkem a vyberte **vlastnosti**  >  **delegování**.
 4. Vyberte **Důvěřovat tomuto počítači pro delegování pouze určeným službám**. 
 5. Vyberte možnost pro **použití libovolného protokolu pro ověřování**.
 6. V části **služby, kterým může tento účet prezentovat delegovaná pověření** přidejte hodnotu pro identitu hlavního názvu služby aplikačního serveru. To umožňuje konektoru proxy aplikací zosobnit uživatele v rámci služby AD proti aplikacím definovaným v seznamu.
@@ -66,7 +66,7 @@ Konfigurace služby Active Directory se liší v závislosti na tom, jestli je k
 
 #### <a name="connector-and-application-server-in-different-domains"></a>Konektor a aplikační server v různých doménách
 1. Seznam požadavků pro práci s KCD napříč doménami najdete v tématu [omezené delegování protokolu Kerberos napříč doménami](https://technet.microsoft.com/library/hh831477.aspx).
-2. Pro povolení `principalsallowedtodelegateto` delegování ověřování protokolem Kerberos z proxy aplikace (konektor) použijte vlastnost účtu služby (počítač nebo vyhrazený uživatelský účet) webové aplikace. Aplikační server běží v kontextu `webserviceaccount` a delegování serveru je. `connectorcomputeraccount` Spusťte níže uvedené příkazy na řadiči domény (se spuštěným systémem Windows Server 2012 R2 nebo novějším) v `webserviceaccount`doméně nástroje. Pro oba účty použijte ploché názvy (jiné než UPN).
+2. `principalsallowedtodelegateto`Pro povolení delegování ověřování protokolem Kerberos z proxy aplikace (konektor) použijte vlastnost účtu služby (počítač nebo vyhrazený uživatelský účet) webové aplikace. Aplikační server běží v kontextu `webserviceaccount` a delegování serveru je `connectorcomputeraccount` . Spusťte níže uvedené příkazy na řadiči domény (se spuštěným systémem Windows Server 2012 R2 nebo novějším) v doméně nástroje `webserviceaccount` . Pro oba účty použijte ploché názvy (jiné než UPN).
 
    Pokud `webserviceaccount` je účet počítače, použijte tyto příkazy:
 
@@ -93,7 +93,7 @@ Konfigurace služby Active Directory se liší v závislosti na tom, jestli je k
 2. Jakmile se vaše aplikace objeví v seznamu podnikových aplikací, vyberte ji a klikněte na **jednotné přihlašování**.
 3. Nastavte režim jednotného přihlašování na **integrované ověřování systému Windows**.  
 4. Zadejte **interní hlavní název aplikace** aplikačního serveru. V tomto příkladu je hlavní název služby (SPN) pro naši publikovanou aplikaci http/www. contoso. com. Tento název SPN musí být v seznamu služeb, ke kterým může konektor prezentovat delegovaná pověření. 
-5. Vyberte **delegovanou identitu přihlášení** , kterou má konektor použít jménem uživatelů. Další informace najdete v tématu [práce s různými místními a cloudovou identitou](#working-with-different-on-premises-and-cloud-identities) .
+5. Vyberte **Delegovanou identitu přihlášení**, kterou má konektor používat jménem uživatelů. Další informace najdete v tématu [práce s různými místními a cloudovou identitou](#working-with-different-on-premises-and-cloud-identities) .
 
    ![Rozšířená konfigurace aplikace](./media/application-proxy-configure-single-sign-on-with-kcd/cwap_auth2.png)  
 
@@ -119,8 +119,6 @@ Povolení SPNEGO:
     net stop WAPCSvc & net start WAPCSvc
     ```
 
-Další informace o protokolu Kerberos najdete v tématu [vše, co chcete dozvědět o omezeném delegování protokolu Kerberos (KCD)](https://blogs.technet.microsoft.com/applicationproxyblog/2015/09/21/all-you-want-to-know-about-kerberos-constrained-delegation-kcd).
-
 Aplikace pro jiné než Windows jsou obvykle uživatelská jména nebo názvy účtů SAM místo e-mailových adres domény. Pokud se tato situace vztahuje na vaše aplikace, musíte nakonfigurovat pole delegovaná identita přihlášení, aby se připojily vaše cloudové identity k identitám vaší aplikace. 
 
 ## <a name="working-with-different-on-premises-and-cloud-identities"></a>Práce s různými místními a cloudovou identitou
@@ -128,8 +126,8 @@ Proxy aplikací předpokládá, že uživatelé mají přesně stejnou identitu 
 
 Tato možnost umožňuje mnoha organizacím, které mají různé místní i cloudové identity, přihlašování pomocí jednotného přihlašování z cloudu k místním aplikacím, aniž by uživatelé museli zadávat jiná uživatelská jména a hesla. To zahrnuje organizace, které:
 
-* Mít více domén internějoe@us.contoso.com( joe@eu.contoso.com,) a jednu doménu v cloudu (joe@contoso.com).
-* Název domény, který není směrovatelný, interně (joe@contoso.usa) a v cloudu musí být jiný.
+* Mít více domén interně ( joe@us.contoso.com , joe@eu.contoso.com ) a jednu doménu v cloudu ( joe@contoso.com ).
+* Název domény, který není směrovatelný, interně ( joe@contoso.usa ) a v cloudu musí být jiný.
 * Nepoužívejte názvy domén interně (Jana)
 * Používejte jiné aliasy místně a v cloudu. Například joe-johns@contoso.com vs.joej@contoso.com  
 
@@ -144,8 +142,8 @@ Pokud se použije delegovaná identita přihlášení, hodnota nemusí být jedi
    ![Snímek obrazovky s identifikací uživatelů – rozevírací seznam hlavního názvu uživatele](./media/application-proxy-configure-single-sign-on-with-kcd/app_proxy_sso_diff_id_connect_settings.png)  
 2. V nastavení konfigurace aplikace pro aplikaci, kterou chcete upravit, vyberte **identitu delegovaného přihlášení** , která se má použít:
 
-   * Hlavní název uživatele (například joe@contoso.com)
-   * Alternativní hlavní název uživatele (například joed@contoso.local)
+   * Hlavní název uživatele (například joe@contoso.com )
+   * Alternativní hlavní název uživatele (například joed@contoso.local )
    * Část hlavního názvu uživatele (například Jana) s uživatelským jménem
    * Část uživatelského jména alternativního hlavního názvu uživatele (například joed)
    * Místní název účtu SAM (závisí na konfiguraci řadiče domény)
@@ -158,6 +156,3 @@ V některých případech se ale požadavek úspěšně pošle do back-endu apli
 
 * [Postup konfigurace aplikace proxy aplikací pro použití omezeného delegování protokolu Kerberos](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
 * [Řešení potíží s proxy aplikace](application-proxy-troubleshoot.md)
-
-
-Nejnovější novinky a aktualizace naleznete na [blogu proxy aplikace](https://blogs.technet.com/b/applicationproxyblog/)

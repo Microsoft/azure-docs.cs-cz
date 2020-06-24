@@ -3,35 +3,32 @@ title: Nastavení ověřování
 titleSuffix: Azure Machine Learning
 description: Naučte se, jak nastavit a nakonfigurovat ověřování pro různé prostředky a pracovní postupy v Azure Machine Learning. Existuje několik způsobů, jak nakonfigurovat a používat ověřování v rámci služby, od jednoduchých ověřování založeného na uživatelském rozhraní pro účely vývoje nebo testování, až po úplné Azure Active Directory ověřování instančního objektu.
 services: machine-learning
-author: trevorbye
-ms.author: trbye
-ms.reviewer: trbye
+author: larryfr
+ms.author: larryfr
+ms.reviewer: larryfr
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.date: 12/17/2019
+ms.date: 06/17/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: e6fd2ba9210aa8f133ed08e850e4ded978682988
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: 34641e7a883f6b07fe63595cf5750df2569640f8
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84629240"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84974683"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Nastavení ověřování pro Azure Machine Learning prostředky a pracovní postupy
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-V tomto článku se dozvíte, jak nastavit a nakonfigurovat ověřování pro různé prostředky a pracovní postupy v Azure Machine Learning. Existuje několik způsobů, jak ověřit službu, od jednoduchého ověřování založeného na uživatelském rozhraní pro účely vývoje nebo testování až po úplné Azure Active Directory ověřování instančního objektu. Tento článek také vysvětluje rozdíly v tom, jak funguje ověřování webové služby, a jak ověřit REST API Azure Machine Learning.
+Naučte se ověřovat v pracovním prostoru Azure Machine Learning a modelech nasazených jako webové služby.
 
-V této části se dozvíte, jak provádět následující úlohy:
+Obecně existují dva typy ověřování, které můžete používat s Azure Machine Learning:
 
-* Použít interaktivní ověřování uživatelského rozhraní pro testování a vývoj
-* Nastavení ověřování objektu služby
-* Ověřování ve vašem pracovním prostoru
-* Získat tokeny nosného typu OAuth 2.0 pro Azure Machine Learning REST API
-* Principy ověřování webové služby
+* __Interaktivní__: účet můžete použít v Azure Active Directory k přímému ověření nebo k získání tokenu, který se používá k ověřování. Interaktivní ověřování se používá během experimentů a iterativního vývoje. Nebo kde chcete řídit přístup k prostředkům (například webové službě) na základě jednotlivých uživatelů.
+* __Instanční objekt__: v Azure Active Directory vytvoříte hlavní účet služby a použijete ho k ověření nebo získání tokenu. Instanční objekt se používá v případě, že potřebujete automatizovaný proces ověřování ke službě bez nutnosti zásahu uživatele. Například skript průběžné integrace a nasazení, který na vlaky a testuje model pokaždé, když se kód školení změní. Můžete také použít instanční objekt k získání tokenu pro ověření webové služby, pokud nechcete, aby koncový uživatel služby ověřil. Nebo tam, kde se ověřování koncového uživatele neprovede přímo pomocí Azure Active Directory.
 
-Obecný přehled zabezpečení a ověřování v rámci Azure Machine Learning najdete v [článku o konceptu](concept-enterprise-security.md) .
+Bez ohledu na použitý typ ověřování se používá řízení přístupu na základě role (RBAC) k určení rozsahu úrovně přístupu k prostředkům. Například účet, který se používá k získání přístupového tokenu pro nasazený model, potřebuje jenom přístup pro čtení k pracovnímu prostoru. Další informace o RBAC najdete v tématu [Správa přístupu k pracovnímu prostoru Azure Machine Learning](how-to-assign-roles.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -40,108 +37,124 @@ Obecný přehled zabezpečení a ověřování v rámci Azure Machine Learning n
 
 ## <a name="interactive-authentication"></a>Interaktivní ověřování
 
-Většina příkladů v dokumentaci pro tuto službu používá interaktivní ověřování v poznámkových blocích Jupyter jako jednoduchou metodu pro testování a ukázku. Toto je jednoduchý způsob, jak otestovat, co vytváříte. Existují dvě volání funkcí, která vás automaticky vyzve k vytvoření toku ověřování založeného na uživatelském rozhraní.
+Většina příkladů v dokumentaci a vzorcích používá interaktivní ověřování. Například při použití sady SDK jsou k dispozici dvě volání funkcí, která vás automaticky vyzve k vytvoření toku ověřování založeného na uživatelském rozhraní:
 
-Voláním `from_config()` funkce se vydá výzva.
+* Voláním `from_config()` funkce se vydá výzva.
 
-```python
-from azureml.core import Workspace
-ws = Workspace.from_config()
-```
+    ```python
+    from azureml.core import Workspace
+    ws = Workspace.from_config()
+    ```
 
-`from_config()`Funkce vyhledá soubor JSON, který obsahuje informace o připojení k pracovnímu prostoru. Podrobnosti o připojení lze také zadat explicitně pomocí `Workspace` konstruktoru, který bude také vyzván k interaktivnímu ověření. Obě volání jsou ekvivalentní.
+    `from_config()`Funkce vyhledá soubor JSON, který obsahuje informace o připojení k pracovnímu prostoru.
 
-```python
-ws = Workspace(subscription_id="your-sub-id",
-               resource_group="your-resource-group-id",
-               workspace_name="your-workspace-name"
-              )
-```
+* Použití `Workspace` konstruktoru k poskytnutí informací o předplatném, skupině prostředků a pracovním prostoru se také zobrazí výzva k zadání interaktivního ověřování.
 
-Pokud máte přístup k více klientům, možná budete muset třídu naimportovat a explicitně definovat, který tenant cílíte. Volání konstruktoru pro `InteractiveLoginAuthentication` vás také vyzve k přihlášení podobným voláním uvedeným výše.
-
-```python
-from azureml.core.authentication import InteractiveLoginAuthentication
-interactive_auth = InteractiveLoginAuthentication(tenant_id="your-tenant-id")
-```
-
-I když je to užitečné pro testování a učení, interaktivní ověřování vám pomůže vytvářet automatizované nebo nepracovní postupy. Nastavení ověřování instančního objektu je nejlepším řešením pro automatizované procesy, které používají sadu SDK.
-
-## <a name="set-up-service-principal-authentication"></a>Nastavení ověřování objektu služby
-
-Tento postup je nezbytný pro povolení ověřování, které je odděleno od přihlášení konkrétního uživatele, což vám umožní ověřit Azure Machine Learning Python SDK v automatizovaných pracovních postupech. Ověřování instančního objektu vám taky umožní [ověřit REST API](#azure-machine-learning-rest-api-auth).
+    ```python
+    ws = Workspace(subscription_id="your-sub-id",
+                  resource_group="your-resource-group-id",
+                  workspace_name="your-workspace-name"
+                  )
+    ```
 
 > [!TIP]
-> Instanční objekty musí mít přístup k vašemu pracovnímu prostoru prostřednictvím [řízení přístupu na základě role (RBAC) v Azure](../role-based-access-control/overview.md).
+> Pokud máte přístup k více klientům, možná budete muset třídu naimportovat a explicitně definovat, který tenant cílíte. Volání konstruktoru pro `InteractiveLoginAuthentication` vás také vyzve k přihlášení podobným voláním uvedeným výše.
 >
-> Použití předdefinovaných rolí **vlastníka** nebo **přispěvatele** do vašeho pracovního prostoru umožňuje instančnímu objektu provádět všechny aktivity, jako je například školení modelu, nasazení modelu atd. Další informace o použití rolí najdete v tématu [Správa přístupu k pracovnímu prostoru Azure Machine Learning](how-to-assign-roles.md).
+> ```python
+> from azureml.core.authentication import InteractiveLoginAuthentication
+> interactive_auth = InteractiveLoginAuthentication(tenant_id="your-tenant-id")
+> ```
 
-Pokud chcete nastavit ověřování instančního objektu, nejdřív vytvořte registraci aplikace v Azure Active Directory a potom přiřaďte aplikaci roli. Nejjednodušší způsob, jak toto nastavení dokončit, je [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/) v Azure Portal. Po přihlášení na portál klikněte na `>_` ikonu v pravém horním rohu stránky poblíž jména a otevřete prostředí.
+## <a name="service-principal-authentication"></a>Ověřování instančních objektů
 
-Pokud jste nepoužívali Cloud Shell před účtem Azure, budete muset vytvořit prostředek účtu úložiště pro ukládání souborů, které jsou zapsány. Obecně platí, že tento účet úložiště bude mít zanedbatelné měsíční náklady. Kromě toho nainstalujte rozšíření Machine Learning, pokud jste ho předtím nepoužili pomocí následujícího příkazu.
+Chcete-li použít ověřování instančního objektu (SP), musíte nejprve vytvořit aktualizaci SP a udělit jí přístup k vašemu pracovnímu prostoru. Jak bylo zmíněno dříve, pro řízení přístupu se používá řízení přístupu na základě role (RBAC) Azure, takže musíte také rozhodnout, jaký přístup k této aktualizaci chcete udělit.
 
-```azurecli-interactive
-az extension add -n azure-cli-ml
-```
+> [!IMPORTANT]
+> Při použití instančního objektu udělte mu __minimální přístup vyžadovaný pro úkol__ , ke kterému se používá. Například neudělíte vlastníkovi instančního objektu nebo přístup k přispěvateli, pokud se k němu používá přístup, který čte přístupový token pro nasazení webu.
+>
+> Důvodem pro udělení minimálního přístupu je, že instanční objekt používá k ověření heslo a heslo může být uloženo jako součást skriptu automatizace. Pokud je heslo nedostupné, má minimální přístup vyžadovaný pro konkrétní úkoly minimalizovat škodlivé použití SP.
+
+Nejjednodušší způsob, jak vytvořit SP a udělit přístup k vašemu pracovnímu prostoru, je použití [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). K vytvoření instančního objektu a udělení přístupu k vašemu pracovnímu prostoru použijte následující postup:
 
 > [!NOTE]
-> K provedení následujících kroků musíte být správcem předplatného.
+> K provedení všech těchto kroků musíte být správcem předplatného.
 
-Dále spusťte následující příkaz k vytvoření instančního objektu. V tomto případě se v tomto případě dá v **ml ověřování**název.
+1. Ověření u vašeho předplatného Azure:
 
-```azurecli-interactive
-az ad sp create-for-rbac --sdk-auth --name ml-auth
-```
+    ```azurecli-interactive
+    az login
+    ```
 
-Výstup bude vypadat jako JSON podobný následujícímu. Poznamenejte si `clientId` pole, `clientSecret` a `tenantId` , jak je budete potřebovat pro další kroky v tomto článku.
+    Pokud rozhraní příkazového řádku může spustit výchozí prohlížeč, udělá to a načte přihlašovací stránku. V opačném případě je nutné otevřít prohlížeč a postupovat podle pokynů v příkazovém řádku. Pokyny zahrnují procházení [https://aka.ms/devicelogin](https://aka.ms/devicelogin) a zadávání autorizačního kódu.
 
-```json
-{
-    "clientId": "your-client-id",
-    "clientSecret": "your-client-secret",
-    "subscriptionId": "your-sub-id",
-    "tenantId": "your-tenant-id",
-    "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
-    "resourceManagerEndpointUrl": "https://management.azure.com",
-    "activeDirectoryGraphResourceId": "https://graph.windows.net",
-    "sqlManagementEndpointUrl": "https://management.core.windows.net:5555",
-    "galleryEndpointUrl": "https://gallery.azure.com/",
-    "managementEndpointUrl": "https://management.core.windows.net"
-}
-```
+    [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
-Potom spuštěním následujícího příkazu Získejte podrobné informace o instančním objektu, který jste právě vytvořili, a použijte `clientId` hodnotu uvedenou výše jako vstup `--id` parametru.
+    Další metody ověřování najdete v tématu [přihlášení pomocí Azure CLI](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
 
-```azurecli-interactive
-az ad sp show --id your-client-id
-```
+1. Nainstalujte Azure Machine Learning rozšíření:
 
-Následuje zjednodušený příklad výstupu JSON z příkazu. Poznamenejte si `objectId` pole, jak budete potřebovat jeho hodnotu pro další krok.
+    ```azurecli-interactive
+    az extension add -n azure-cli-ml
+    ```
 
-```json
-{
-    "accountEnabled": "True",
-    "addIns": [],
-    "appDisplayName": "ml-auth",
-    ...
-    ...
-    ...
-    "objectId": "your-sp-object-id",
-    "objectType": "ServicePrincipal"
-}
-```
+1. Vytvoření instančního objektu. V následujícím příkladu se vytvoří SP s názvem **ml-auth** :
 
-Dále pomocí následujícího příkazu přiřaďte k pracovnímu prostoru Machine Learning přístup k hlavnímu objektu služby. Budete potřebovat název vašeho pracovního prostoru a jeho název skupiny prostředků pro `-w` parametry a v `-g` uvedeném pořadí. Pro `--user` parametr použijte `objectId` hodnotu z předchozího kroku. `--role`Parametr vám umožní nastavit roli přístupu pro instanční objekt a obecně budete používat buď **vlastníka** , nebo **přispěvatele**. Oba mají přístup pro zápis ke stávajícím prostředkům, jako jsou výpočetní clustery a úložiště dat, ale můžou tyto prostředky zřídit jenom **vlastník** .
+    ```azurecli-interactive
+    az ad sp create-for-rbac --sdk-auth --name ml-auth
+    ```
 
-```azurecli-interactive
-az ml workspace share -w your-workspace-name -g your-resource-group-name --user your-sp-object-id --role owner
-```
+    Výstup bude vypadat jako JSON podobný následujícímu. Poznamenejte si `clientId` pole, `clientSecret` a `tenantId` , jak je budete potřebovat pro další kroky v tomto článku.
 
-Toto volání nevyprodukuje žádný výstup, ale nyní máte nastaveno ověřování instančního objektu pro váš pracovní prostor.
+    ```json
+    {
+        "clientId": "your-client-id",
+        "clientSecret": "your-client-secret",
+        "subscriptionId": "your-sub-id",
+        "tenantId": "your-tenant-id",
+        "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
+        "resourceManagerEndpointUrl": "https://management.azure.com",
+        "activeDirectoryGraphResourceId": "https://graph.windows.net",
+        "sqlManagementEndpointUrl": "https://management.core.windows.net:5555",
+        "galleryEndpointUrl": "https://gallery.azure.com/",
+        "managementEndpointUrl": "https://management.core.windows.net"
+    }
+    ```
 
-## <a name="authenticate-to-your-workspace"></a>Ověření v pracovním prostoru
+1. Načtěte podrobnosti o instančním objektu pomocí `clientId` hodnoty vrácené v předchozím kroku:
 
-Když teď máte povolený instanční objekt, můžete ho ověřit v sadě SDK bez toho, aby se fyzicky přihlásil jako uživatel. Použijte `ServicePrincipalAuthentication` konstruktor třídy a použijte hodnoty, které jste získali z předchozích kroků jako parametry. `tenant_id`Parametr se mapuje `tenantId` z výše, `service_principal_id` mapuje na `clientId` a `service_principal_password` mapuje na `clientSecret` .
+    ```azurecli-interactive
+    az ad sp show --id your-client-id
+    ```
+
+    Následující kód JSON je zjednodušený příklad výstupu příkazu. Poznamenejte si `objectId` pole, jak budete potřebovat jeho hodnotu pro další krok.
+
+    ```json
+    {
+        "accountEnabled": "True",
+        "addIns": [],
+        "appDisplayName": "ml-auth",
+        ...
+        ...
+        ...
+        "objectId": "your-sp-object-id",
+        "objectType": "ServicePrincipal"
+    }
+    ```
+
+1. Umožněte službě SP přístup k vašemu pracovnímu prostoru Azure Machine Learning. Budete potřebovat název vašeho pracovního prostoru a jeho název skupiny prostředků pro `-w` parametry a v `-g` uvedeném pořadí. Pro `--user` parametr použijte `objectId` hodnotu z předchozího kroku. `--role`Parametr umožňuje nastavit roli přístupu pro instanční objekt. V následujícím příkladu je tato aktualizace přiřazena k roli **vlastníka** . 
+
+    > [!IMPORTANT]
+    > Přístup vlastníka umožňuje instančnímu objektu v pracovním prostoru prakticky jakoukoli operaci. V tomto dokumentu se používá k demonstrování, jak udělit přístup; v produkčním prostředí doporučuje Microsoft udělit instančnímu objektu minimální přístup, který je potřeba k provedení role, pro kterou máte oprávnění. Další informace najdete v tématu [Správa přístupu k pracovnímu prostoru Azure Machine Learning](how-to-assign-roles.md).
+
+    ```azurecli-interactive
+    az ml workspace share -w your-workspace-name -g your-resource-group-name --user your-sp-object-id --role owner
+    ```
+
+    Toto volání nevyprodukuje žádný výstup při úspěchu.
+
+### <a name="use-a-service-principal-from-the-sdk"></a>Použití instančního objektu ze sady SDK
+
+K ověření v pracovním prostoru ze sady SDK pomocí instančního objektu použijte `ServicePrincipalAuthentication` konstruktor třídy. Použijte hodnoty, které jste získali při vytváření poskytovatele služeb jako parametry. `tenant_id`Parametr se mapuje `tenantId` z výše, `service_principal_id` mapuje na `clientId` a `service_principal_password` mapuje na `clientSecret` .
 
 ```python
 from azureml.core.authentication import ServicePrincipalAuthentication
@@ -151,7 +164,7 @@ sp = ServicePrincipalAuthentication(tenant_id="your-tenant-id", # tenantID
                                     service_principal_password="your-client-secret") # clientSecret
 ```
 
-`sp`Proměnná nyní obsahuje objekt ověřování, který používáte přímo v sadě SDK. Obecně je vhodné ukládat ID/tajné klíče použité výše v proměnných prostředí, jak je znázorněno v následujícím kódu.
+`sp`Proměnná nyní obsahuje objekt ověřování, který používáte přímo v sadě SDK. Obecně je vhodné ukládat ID/tajné klíče použité výše v proměnných prostředí, jak je znázorněno v následujícím kódu. Ukládání do proměnných prostředí brání nechtěnému zkontrolování informací do úložiště GitHub.
 
 ```python
 import os
@@ -161,7 +174,7 @@ sp = ServicePrincipalAuthentication(tenant_id=os.environ['AML_TENANT_ID'],
                                     service_principal_password=os.environ['AML_PRINCIPAL_PASS'])
 ```
 
-Pro automatizované pracovní postupy, které běží v Pythonu a používají primárně sadu SDK, můžete použít tento objekt ve většině případů pro vaše ověřování. Následující kód se ověří do vašeho pracovního prostoru pomocí objektu auth, který jste právě vytvořili.
+Pro automatizované pracovní postupy, které běží v Pythonu a používají primárně sadu SDK, můžete použít tento objekt ve většině případů pro vaše ověřování. Následující kód se ověřuje ve vašem pracovním prostoru pomocí objektu auth, který jste vytvořili.
 
 ```python
 from azureml.core import Workspace
@@ -172,16 +185,20 @@ ws = Workspace.get(name="ml-example",
 ws.get_details()
 ```
 
-## <a name="azure-machine-learning-rest-api-auth"></a>Ověřování REST API Azure Machine Learning
+### <a name="use-a-service-principal-from-the-azure-cli"></a>Použití instančního objektu ze služby Azure CLI
 
-Instanční objekt vytvořený v krocích výše se dá použít taky k ověření [REST API](https://docs.microsoft.com/rest/api/azureml/)Azure Machine Learning. Použijete [tok udělení přihlašovacích údajů klienta](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)Azure Active Directory, který umožňuje volání mezi službami pro ověřování bez periferních procesů v automatizovaných pracovních postupech. Příklady jsou implementovány pomocí [knihovny ADAL](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries) v Pythonu a Node. js, ale můžete také použít jakoukoli Open Source knihovnu, která podporuje OpenID Connect 1,0.
+Pro příkazy rozhraní příkazového řádku Azure můžete použít instanční objekt. Další informace najdete v tématu [přihlášení pomocí instančního objektu](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#sign-in-using-a-service-principal).
+
+### <a name="use-a-service-principal-with-the-rest-api-preview"></a>Použití instančního objektu s REST API (Preview)
+
+Instanční objekt se dá použít taky k ověření Azure Machine Learning [REST API](https://docs.microsoft.com/rest/api/azureml/) (Preview). Použijete [tok udělení přihlašovacích údajů klienta](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)Azure Active Directory, který umožňuje volání mezi službami pro ověřování bez periferních procesů v automatizovaných pracovních postupech. Příklady jsou implementovány pomocí [knihovny ADAL](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries) v Pythonu i Node.js, ale můžete také použít jakoukoli Open Source knihovnu, která podporuje OpenID Connect 1,0.
 
 > [!NOTE]
-> MSAL. js je novější knihovna než ADAL, ale ověřování pomocí služby nemůžete použít s přihlašovacími údaji klienta v MSAL. js, protože se primárně jedná o knihovnu na straně klienta určenou pro interaktivní nebo uživatelské ověřování vázané na konkrétního uživatele. Pro vytváření automatizovaných pracovních postupů s REST API doporučujeme použít ADAL, jak vidíte níže.
+> MSAL.js je novější knihovna než ADAL, ale ověřování pomocí služby nemůžete použít s přihlašovacími údaji klienta s MSAL.js, protože se primárně jedná o knihovnu na straně klienta určenou pro interaktivní nebo uživatelské ověřování vázané na konkrétního uživatele. Pro vytváření automatizovaných pracovních postupů s REST API doporučujeme použít ADAL, jak vidíte níže.
 
-### <a name="nodejs"></a>Node.js
+#### <a name="nodejs"></a>Node.js
 
-Pomocí následujících kroků vygenerujte ověřovací token pomocí Node. js. Ve svém prostředí spusťte `npm install adal-node` . Pak použijte své `tenantId` služby, `clientId` a `clientSecret` z instančního objektu, který jste vytvořili v předchozích krocích, jako hodnoty pro vyhovující proměnné v následujícím skriptu.
+Pomocí následujících kroků vygenerujte ověřovací token pomocí Node.js. Ve svém prostředí spusťte `npm install adal-node` . Pak použijte své `tenantId` služby, `clientId` a `clientSecret` z instančního objektu, který jste vytvořili v předchozích krocích, jako hodnoty pro vyhovující proměnné v následujícím skriptu.
 
 ```javascript
 const adal = require('adal-node').AuthenticationContext;
@@ -209,7 +226,7 @@ context.acquireTokenWithClientCredentials(
 );
 ```
 
-Proměnná `tokenResponse` je objekt, který obsahuje token a přidružená metadata, jako je například čas vypršení platnosti. Tokeny jsou platné 1 hodiny a lze je aktualizovat opětovným spuštěním stejného volání pro načtení nového tokenu. Následuje ukázková odpověď.
+Proměnná `tokenResponse` je objekt, který obsahuje token a přidružená metadata, jako je například čas vypršení platnosti. Tokeny jsou platné 1 hodiny a lze je aktualizovat opětovným spuštěním stejného volání pro načtení nového tokenu. Následující fragment kódu je ukázková odpověď.
 
 ```javascript
 {
@@ -226,7 +243,7 @@ Proměnná `tokenResponse` je objekt, který obsahuje token a přidružená meta
 
 Pomocí `accessToken` vlastnosti načtěte ověřovací token. Příklady použití tokenu k volání rozhraní API najdete v [dokumentaci k REST API](https://github.com/microsoft/MLOps/tree/master/examples/AzureML-REST-API) .
 
-### <a name="python"></a>Python
+#### <a name="python"></a>Python
 
 Pomocí následujících kroků vygenerujte ověřovací token pomocí Pythonu. Ve svém prostředí spusťte `pip install adal` . Pak použijte své `tenantId` služby, `clientId` a `clientSecret` z instančního objektu, který jste vytvořili v předchozích krocích, jako hodnoty pro příslušné proměnné v následujícím skriptu.
 
@@ -244,7 +261,7 @@ token_response = auth_context.acquire_token_with_client_credentials("https://man
 print(token_response)
 ```
 
-Proměnná `token_response` je slovník, který obsahuje token a přidružená metadata, jako je například čas vypršení platnosti. Tokeny jsou platné 1 hodiny a lze je aktualizovat opětovným spuštěním stejného volání pro načtení nového tokenu. Následuje ukázková odpověď.
+Proměnná `token_response` je slovník, který obsahuje token a přidružená metadata, jako je například čas vypršení platnosti. Tokeny jsou platné 1 hodiny a lze je aktualizovat opětovným spuštěním stejného volání pro načtení nového tokenu. Následující fragment kódu je ukázková odpověď.
 
 ```python
 {
@@ -263,9 +280,17 @@ Použijte `token_response["accessToken"]` k načtení ověřovacího tokenu. Př
 
 ## <a name="web-service-authentication"></a>Ověřování webové služby
 
-Webové služby v Azure Machine Learning používají jiný vzor ověřování, než je popsáno výše. Nejjednodušší způsob, jak provést ověření pro nasazené webové služby, je použití **ověřování založeného na klíčích**, které generuje statické ověřovací klíče typu nosiče, které není nutné aktualizovat. Pokud potřebujete provést ověření pouze pro nasazenou webovou službu, není nutné nastavovat zásady služby, jak je uvedeno výše.
+Nasazení modelu vytvořená nástrojem Azure Machine Learning poskytují dvě metody ověřování:
 
-Webové služby nasazené ve službě Azure Kubernetes mají ve výchozím nastavení *povolené* ověřování pomocí klíčů. Azure Container Instances nasazené služby mají ve výchozím nastavení *zakázané* ověřování na základě klíčů, ale můžete je povolit nastavením `auth_enabled=True` při vytváření webové služby ACI. Následuje příklad vytvoření konfigurace nasazení ACI s povoleným ověřováním pomocí klíče.
+* **založené na klíčích**: ke ověřování webové služby se používá statický klíč.
+* **založené na tokenech**: z pracovního prostoru se musí získat dočasný token, který se používá k ověření webové služby. Platnost tohoto tokenu vyprší po uplynutí určité doby a je nutné ji aktualizovat, aby bylo možné pokračovat v práci s webovou službou.
+
+    > [!NOTE]
+    > Ověřování založené na tokenech je dostupné jenom při nasazení do služby Azure Kubernetes.
+
+### <a name="key-based-web-service-authentication"></a>Ověřování webové služby na základě klíčů
+
+Webové služby nasazené ve službě Azure Kubernetes Service (AKS) mají ve výchozím nastavení *povolené* ověřování na základě klíčů. Ve výchozím nastavení mají nasazené služby Azure Container Instances (ACI) ověřování na základě klíčů *zakázané* , ale můžete je povolit nastavením `auth_enabled=True` při vytváření webové služby ACI. Následující kód je příkladem vytvoření konfigurace nasazení ACI s povoleným ověřováním pomocí klíče.
 
 ```python
 from azureml.core.webservice import AciWebservice
@@ -299,7 +324,7 @@ aci_service.regen_key("Primary")
 aci_service.regen_key("Secondary")
 ```
 
-Webové služby také podporují ověřování na základě tokenů, ale jenom pro nasazení služby Azure Kubernetes. Další informace o ověřování najdete v tématu [postup](how-to-consume-web-service.md) při využívání webových služeb.
+Další informace o ověřování pro nasazený model najdete v tématu [Vytvoření klienta pro model nasazený jako webovou službu](how-to-consume-web-service.md).
 
 ### <a name="token-based-web-service-authentication"></a>Ověřování webové služby založené na tokenech
 
@@ -307,8 +332,32 @@ Pokud povolíte ověřování pomocí tokenu pro webovou službu, uživatelé mu
 
 * Ověřování tokenu je **ve výchozím nastavení** při nasazení do služby Azure Kubernetes zakázané.
 * Ověřování tokenu se při nasazení do Azure Container Instances **nepodporuje** .
+* Ověřování tokenu **nelze použít současně s ověřováním na základě klíčů**.
 
-K řízení ověřování tokenu použijte `token_auth_enabled` parametr při vytváření nebo aktualizaci nasazení.
+K řízení ověřování tokenu použijte `token_auth_enabled` parametr při vytváření nebo aktualizaci nasazení:
+
+```python
+from azureml.core.webservice import AksWebservice
+from azureml.core.model import Model, InferenceConfig
+
+# Create the config
+aks_config = AksWebservice.deploy_configuration()
+
+#  Enable token auth and disable (key) auth on the webservice
+aks_config = AksWebservice.deploy_configuration(token_auth_enabled=True, auth_enabled=False)
+
+aks_service_name ='aks-service-1'
+
+# deploy the model
+aks_service = Model.deploy(workspace=ws,
+                           name=aks_service_name,
+                           models=[model],
+                           inference_config=inference_config,
+                           deployment_config=aks_config,
+                           deployment_target=aks_target)
+
+aks_service.wait_for_deployment(show_output = True)
+```
 
 Pokud je povoleno ověřování tokenu, můžete použít `get_token` metodu k načtení JSON web token (Jwt) a času vypršení platnosti tokenu:
 
@@ -316,7 +365,7 @@ Pokud je povoleno ověřování tokenu, můžete použít `get_token` metodu k n
 > Pokud k získání tokenu použijete instanční objekt a chcete, aby měl minimální požadovaný přístup k načtení tokenu, přiřaďte ho k roli **čtenáře** pro daný pracovní prostor.
 
 ```python
-token, refresh_by = service.get_token()
+token, refresh_by = aks_service.get_token()
 print(token)
 ```
 

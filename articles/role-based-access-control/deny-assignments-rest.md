@@ -11,16 +11,16 @@ ms.service: role-based-access-control
 ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: dae0352566e6cb4f8ed1384ca12213e2aaa07f9d
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 2f835c270930734bf9963a7c7c3168b873eddaf6
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82733866"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791907"
 ---
 # <a name="list-azure-deny-assignments-using-the-rest-api"></a>Výpis přiřazení odmítnutí Azure pomocí REST API
 
@@ -80,7 +80,7 @@ Chcete-li získat informace o přiřazení zamítnutí, je nutné mít následuj
 1. Nahraďte *{Filter}* podmínkou, kterou chcete použít k filtrování seznamu přiřazení odepřít.
 
     > [!div class="mx-tableFixed"]
-    > | Filtr | Popis |
+    > | Filtr | Description |
     > | --- | --- |
     > | (žádný filtr) | Zobrazí seznam všech přiřazení odepřít v, výše a pod zadaným oborem. |
     > | `$filter=atScope()` | Vypíše odmítnutá přiřazení jenom pro zadaný rozsah a vyšší. Nezahrnuje přiřazení zamítnutí v podoborech. |
@@ -102,7 +102,7 @@ Chcete-li získat informace o přiřazení zamítnutí, je nutné mít následuj
 1. Nahraďte *{Filter}* podmínkou, kterou chcete použít k filtrování seznamu přiřazení odepřít. Je vyžadován filtr.
 
     > [!div class="mx-tableFixed"]
-    > | Filtr | Popis |
+    > | Filtr | Description |
     > | --- | --- |
     > | `$filter=atScope()` | Vypíše přiřazení zamítnutá jenom pro kořenový obor. Nezahrnuje přiřazení zamítnutí v podoborech. |
     > | `$filter=denyAssignmentName+eq+'{deny-assignment-name}'` | Vypíše zamítnutá přiřazení se zadaným názvem. |

@@ -5,12 +5,12 @@ ms.subservice: metrics
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1de3afc380c5c3c82a869de0ff2319b013e26438
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 602d11b20e50ec5ba56d0d9c1762292c07d0b67b
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610883"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945337"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Návod k Azure Monitoring REST API
 
@@ -95,7 +95,7 @@ Pomocí [Azure monitor definice metrik REST API](https://docs.microsoft.com/rest
 
 **Metoda**: Get
 
-**Identifikátor URI požadavku**: https\/\/: Management.Azure.com/Subscriptions/*{SubscriptionId}*/resourceGroups/*{resourceGroupName}*/Providers/*{resourceProviderNamespace}*/*{ResourceType*/}*{resourceName*}/Providers/Microsoft.Insights/metricDefinitions? API-Version =*{apiVersion}*
+**Identifikátor URI požadavku**: https: \/ \/ Management.Azure.com/Subscriptions/*{SubscriptionId}*/resourceGroups/*{resourceGroupName}*/Providers/*{resourceProviderNamespace}* / *{ResourceType*} / *{resourceName*}/Providers/Microsoft.Insights/metricDefinitions? API-Version =*{apiVersion}*
 
 Pokud například chcete načíst definice metriky pro účet Azure Storage, zobrazí se tento požadavek takto:
 
@@ -239,7 +239,7 @@ Pro žádné požadavky na filtrování použijte název ' value ' (ne ' localiz
 
 **Metoda**: Get
 
-**Identifikátor URI požadavku**:\:https//*Management.Azure.com/Subscriptions/{Subscription-ID}*/resourceGroups/*{Resource-Group-Name}*/Providers/*{Resource-Provider-Namespace}*/*{Resource-Type}*/*{Resource-Name}*/Providers/Microsoft.Insights/Metrics? metricnames *= {metric}*&TimeSpan =*{čas_spuštění/čas_ukončení}*&$Filter =*{Filter}*&ResultType = metadata&API-Version =*{apiVersion}*
+**Identifikátor URI požadavku**: \: https//Management.Azure.com/Subscriptions/*{Subscription-ID}*/resourceGroups/*{Resource-Group-Name}*/Providers/*{Resource-Provider-Namespace}* / *{Resource-Type}* / *{Resource-Name}*/Providers/Microsoft.Insights/Metrics? metricnames =*{metric}*&TimeSpan =*{čas_spuštění/čas_ukončení}*&$Filter =*{Filter}*&ResultType = metadata&API-Version =*{apiVersion}*
 
 Chcete-li například načíst seznam hodnot dimenzí, které byly vygenerovány pro metriku ' Transactions ' rozhraní ' API ' Dimension ', přičemž hodnota typu InType = ' primary ' v zadaném časovém rozsahu bude vyžadovat následující:
 
@@ -312,7 +312,7 @@ Pro žádné požadavky na filtrování použijte název ' value ' (ne ' localiz
 
 **Metoda**: Get
 
-**Identifikátor URI požadavku**: https\/:/*Management.Azure.com/Subscriptions/{Subscription-ID}*/resourceGroups/*{Resource-Group-Name}*/Providers/*{Resource-Provider-obor názvů}*/*{Resource-Type}*/*{Resource-Name}*/Providers/Microsoft.Insights/Metrics? metricnames =*{metric}*&TimeSpan =*{čas_spuštění/čas_ukončení}*&$Filter =*{Filter}*&interval =*{timeGrain}*&agregace =*{aggreation}*&API-Version =*{apiVersion}*
+**Identifikátor URI požadavku**: https \/ :/Management.Azure.com/Subscriptions/*{Subscription-ID}*/resourceGroups/*{Resource-Group-Name}*/Providers/*{Resource-Provider-obor názvů}* / *{Resource-Type}* / *{Resource-Name}*/Providers/Microsoft.Insights/Metrics? metricnames =*{metric}*&TimeSpan =*{čas_spuštění/čas_ukončení}*&$Filter =*{Filter}*&interval =*{timeGrain}*&agregace =*{aggreation}*&API-Version =*{apiVersion}*
 
 Například pro načtení horních 3 rozhraní API v sestupných hodnotách podle počtu transakcí během 5 min., kde GeotType byla ' primary ', bude požadavek vypadat takto:
 
@@ -391,7 +391,7 @@ Pomocí [Azure monitor definice metrik REST API](https://msdn.microsoft.com/libr
 
 **Metoda**: Get
 
-**Identifikátor URI požadavku**: https\/\/: Management.Azure.com/Subscriptions/*{SubscriptionId}*/resourceGroups/*{resourceGroupName}*/Providers/*{resourceProviderNamespace}*/*{ResourceType*/}*{resourceName*}/Providers/Microsoft.Insights/metricDefinitions? API-Version =*{apiVersion}*
+**Identifikátor URI požadavku**: https: \/ \/ Management.Azure.com/Subscriptions/*{SubscriptionId}*/resourceGroups/*{resourceGroupName}*/Providers/*{resourceProviderNamespace}* / *{ResourceType*} / *{resourceName*}/Providers/Microsoft.Insights/metricDefinitions? API-Version =*{apiVersion}*
 
 Chcete-li například načíst definice metrik pro aplikaci logiky Azure, zobrazí se tato žádost:
 
@@ -582,7 +582,7 @@ Výsledný text odpovědi JSON by byl podobný následujícímu příkladu:
 Dalším řešením je použití [ARMClient](https://github.com/projectkudu/armclient) na počítači s Windows. ARMClient zpracovává automatické ověřování Azure AD (a výsledný token JWT). Následující kroky popisují použití ARMClient pro načtení dat metriky:
 
 1. Nainstalujte [čokolády](https://chocolatey.org/) a [ARMClient](https://github.com/projectkudu/armclient).
-2. V okně terminálu zadejte *armclient. exe Login*. Zobrazí se výzva, abyste se přihlásili do Azure.
+2. V okně terminálu zadejte *armclient.exe přihlášení*. Zobrazí se výzva, abyste se přihlásili do Azure.
 3. Typ *ARMCLIENT Get [your_resource_id]/Providers/Microsoft.Insights/metricdefinitions? API-Version = 2016-03-01*
 4. Typ *ARMCLIENT Get [your_resource_id]/Providers/Microsoft.Insights/Metrics? API-Version = 2016-09-01*
 
@@ -605,7 +605,7 @@ Následující seznam obsahuje několik příkladů formátů ID prostředků pr
 * **IoT Hub** -/Subscriptions/*{ID předplatného}*/resourceGroups/*{Resource-Group-Name}*/Providers/Microsoft.Devices/IotHubs/*{IoT-Hub-Name}*
 * **Elastický fond SQL** –/Subscriptions/*{ID předplatného}*/resourceGroups/*{Resource-Group-Name}*/Providers/Microsoft.SQL/Servers/*{Pool-DB}*/elasticpools/*{SQL-Pool-Name}*
 * **SQL Database (V12)** -/Subscriptions/*{Subscription-ID}*/resourceGroups/*{Resource-Group-Name}*/Providers/Microsoft.SQL/Servers/*{Server-Name}*/databases/*{Database-Name}*
-* **Service Bus** -/Subscriptions/*{ID předplatného}*/resourceGroups/*{Resource-Group-Name}*/Providers/Microsoft.ServiceBus/*{Namespace}*/*{ServiceBus-Name}*
+* **Service Bus** -/Subscriptions/*{ID předplatného}*/resourceGroups/*{Resource-Group-Name}*/Providers/Microsoft.ServiceBus/*{Namespace}* / *{ServiceBus-Name}*
 * **Virtual Machine Scale Sets** –/Subscriptions/*{Subscription-ID}*/resourceGroups/*{Resource-Group-Name}*/Providers/Microsoft.COMPUTE/virtualMachineScaleSets/*{VM-Name}*
 * **Virtuální počítače** -/Subscriptions/*{Subscription-ID}*/resourceGroups/*{Resource-Group-Name}*/Providers/Microsoft.COMPUTE/virtualMachines/*{VM-Name}*
 * **Event Hubs** -/Subscriptions/*{ID předplatného}*/resourceGroups/*{Resource-Group-Name}*/Providers/Microsoft.EventHub/Namespaces/*{EventHub-Namespace}*
@@ -705,16 +705,30 @@ Výsledek by měl být podobný následujícímu příkladu:
 
 ## <a name="retrieve-activity-log-data"></a>Načte data protokolu aktivit.
 
-Kromě definic metrik a souvisejících hodnot je také možné použít REST API Azure Monitor k získání dalších zajímavých přehledů týkajících se prostředků Azure. Například je možné dotazovat data [protokolu aktivit](https://msdn.microsoft.com/library/azure/dn931934.aspx) . Následující příklad ukazuje použití REST API Azure Monitor k dotazování dat v protokolu aktivit v určitém časovém rozsahu pro předplatné Azure:
+Kromě definic metrik a souvisejících hodnot je také možné použít REST API Azure Monitor k získání dalších zajímavých přehledů týkajících se prostředků Azure. Například je možné dotazovat data [protokolu aktivit](https://msdn.microsoft.com/library/azure/dn931934.aspx) . Následující ukázkové požadavky používají REST API Azure Monitor k dotazování protokolu aktivit.
 
-```powershell
-$apiVersion = "2015-04-01"
-$filter = "eventTimestamp ge '2017-08-18' and eventTimestamp le '2017-08-19'and eventChannels eq 'Admin, Operation'"
-$request = "https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/microsoft.insights/eventtypes/management/values?api-version=${apiVersion}&`$filter=${filter}"
-Invoke-RestMethod -Uri $request `
-    -Headers $authHeader `
-    -Method Get `
-    -Verbose
+Získání protokolů aktivit pomocí filtru:
+
+``` HTTP
+GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '2018-01-21T20:00:00Z' and eventTimestamp le '2018-01-23T20:00:00Z' and resourceGroupName eq 'MSSupportGroup'
+```
+
+Získejte protokoly aktivit pomocí filtru a vyberte:
+
+```HTTP
+GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '2015-01-21T20:00:00Z' and eventTimestamp le '2015-01-23T20:00:00Z' and resourceGroupName eq 'MSSupportGroup'&$select=eventName,id,resourceGroupName,resourceProviderName,operationName,status,eventTimestamp,correlationId,submissionTimestamp,level
+```
+
+Získání protokolů aktivit pomocí výběru:
+
+```HTTP
+GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01&$select=eventName,id,resourceGroupName,resourceProviderName,operationName,status,eventTimestamp,correlationId,submissionTimestamp,level
+```
+
+Získat protokoly aktivit bez filtru nebo vybrat:
+
+```HTTP
+GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01
 ```
 
 ## <a name="next-steps"></a>Další kroky

@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozge
 ms.subservice: common
-ms.openlocfilehash: f5c6125b850062450516e7fc0b19c2e0d5d6f577
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ee37745b35071893ff504c56a4a6883b589f1d0e
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77916060"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84804640"
 ---
 # <a name="call-rest-api-operations-with-shared-key-authorization"></a>Volání REST API operací s autorizací sdíleného klíče
 
@@ -27,7 +27,7 @@ Ukázková aplikace obsahuje seznam kontejnerů objektů BLOB pro účet úloži
 
 - Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/visual-studio-homepage-vs.aspx) s úlohou **vývoj pro Azure** .
 
-- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+- Předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 - Účet úložiště pro obecné účely. Pokud ještě nemáte účet úložiště, přečtěte si téma [Vytvoření účtu úložiště](storage-account-create.md).
 
@@ -65,7 +65,7 @@ Projděte si odkaz na operaci [ListContainers](/rest/api/storageservices/List-Co
 
 **Metoda požadavku**: získat. Tato operace je metoda HTTP, kterou zadáte jako vlastnost objektu Request. Mezi další hodnoty tohoto příkazu patří HEADers, PUT a DELETE v závislosti na rozhraní API, které voláte.
 
-**Identifikátor URI žádosti**: `https://myaccount.blob.core.windows.net/?comp=list`.Identifikátor URI žádosti se vytvoří z koncového bodu `http://myaccount.blob.core.windows.net` účtu úložiště objektů BLOB a řetězce `/?comp=list`prostředků.
+**Identifikátor URI žádosti**: `https://myaccount.blob.core.windows.net/?comp=list` .Identifikátor URI žádosti se vytvoří z koncového bodu účtu úložiště objektů BLOB `http://myaccount.blob.core.windows.net` a řetězce prostředků `/?comp=list` .
 
 [Parametry identifikátoru URI](/rest/api/storageservices/List-Containers2#uri-parameters): existují další parametry dotazu, které lze použít při volání ListContainers. Několik z těchto parametrů je *časovým limitem* pro volání (v sekundách) a *předponou*, která se používá pro filtrování.
 
@@ -102,14 +102,14 @@ Chcete-li vytvořit požadavek, který je objektem zprávy HttpRequestMessage, v
 
 Některé základní informace, které potřebujete:
 
-- Pro ListContainers je `GET` **Metoda** . Tato hodnota je nastavena při vytváření instance žádosti.
-- **Prostředek** je DOTAZOVACÍ část identifikátoru URI, která určuje, které rozhraní API se zavolá, takže hodnota je `/?comp=list`. Jak bylo uvedeno výše, prostředek se nachází na stránce Referenční dokumentace, která zobrazuje informace o [rozhraní ListContainers API](/rest/api/storageservices/List-Containers2).
-- Identifikátor URI je vytvořený vytvořením koncového bodu Blob service pro tento účet úložiště a zřetězením prostředku. Hodnota **identifikátoru URI žádosti** končí `http://contosorest.blob.core.windows.net/?comp=list`.
+- Pro ListContainers je **Metoda** `GET` . Tato hodnota je nastavena při vytváření instance žádosti.
+- **Prostředek** je DOTAZOVACÍ část identifikátoru URI, která určuje, které rozhraní API se zavolá, takže hodnota je `/?comp=list` . Jak bylo uvedeno výše, prostředek se nachází na stránce Referenční dokumentace, která zobrazuje informace o [rozhraní ListContainers API](/rest/api/storageservices/List-Containers2).
+- Identifikátor URI je vytvořený vytvořením koncového bodu Blob service pro tento účet úložiště a zřetězením prostředku. Hodnota **identifikátoru URI žádosti** končí `http://contosorest.blob.core.windows.net/?comp=list` .
 - V případě ListContainers má **částmi** hodnotu null a nejsou k dispozici žádné další **hlavičky**.
 
 Různá rozhraní API mohou mít další parametry, které budou předávat například *ifMatch*. Příklad, kde můžete použít ifMatch, je při volání PutBlob. V takovém případě nastavíte ifMatch na eTag a aktualizuje jenom objekt blob, pokud se značka eTag, kterou zadáte, shoduje s aktuálním eTag objektu BLOB. Pokud někdo jiný aktualizoval objekt BLOB od načtení značky eTag, jejich změna se nepřepisuje.
 
-Nejprve nastavte `uri` a `payload`.
+Nejprve nastavte `uri` a `payload` .
 
 ```csharp
 // Construct the URI. It will look like this:
@@ -130,7 +130,7 @@ using (var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, uri)
 {
 ```
 
-Přidejte hlavičky žádosti pro `x-ms-date` a. `x-ms-version` Toto místo v kódu je také tam, kde přidáte další hlavičky požadavků vyžadované pro volání. V tomto příkladu nejsou k dispozici žádné další hlavičky. Příkladem rozhraní API, které projde do dodatečných hlaviček, je operace nastavení seznamu ACL kontejneru. Toto volání rozhraní API přidá hlavičku s názvem "x-MS-BLOB-Public-Access" a hodnotou úrovně přístupu.
+Přidejte hlavičky žádosti pro `x-ms-date` a `x-ms-version` . Toto místo v kódu je také tam, kde přidáte další hlavičky požadavků vyžadované pro volání. V tomto příkladu nejsou k dispozici žádné další hlavičky. Příkladem rozhraní API, které projde do dodatečných hlaviček, je operace nastavení seznamu ACL kontejneru. Toto volání rozhraní API přidá hlavičku s názvem "x-MS-BLOB-Public-Access" a hodnotou úrovně přístupu.
 
 ```csharp
 // Add the request headers for x-ms-date and x-ms-version.
@@ -308,7 +308,7 @@ Pojďme začít s těmito dvěma kanonickými poli, protože jsou nutné k vytvo
 
 ### <a name="canonicalized-headers"></a>Kanonické hlavičky
 
-Chcete-li vytvořit tuto hodnotu, načtěte hlavičky začínající řetězcem "x-MS-" a seřaďte je a naformátujte je `[key:value\n]` do řetězce instancí, zřetězené do jednoho řetězce. V tomto příkladu budou kanonické hlavičky vypadat takto:
+Chcete-li vytvořit tuto hodnotu, načtěte hlavičky začínající řetězcem "x-MS-" a seřaďte je a naformátujte je do řetězce `[key:value\n]` instancí, zřetězené do jednoho řetězce. V tomto příkladu budou kanonické hlavičky vypadat takto:
 
 ```
 x-ms-date:Fri, 17 Nov 2017 00:44:48 GMT\nx-ms-version:2017-07-29\n
@@ -353,7 +353,7 @@ private static string GetCanonicalizedHeaders(HttpRequestMessage httpRequestMess
 
 ### <a name="canonicalized-resource"></a>Kanonický prostředek
 
-Tato část řetězce podpisu představuje účet úložiště, který cílí na požadavek. Mějte na paměti, že identifikátor `<http://contosorest.blob.core.windows.net/?comp=list>`URI žádosti je s skutečným názvem`contosorest` účtu (v tomto případě). V tomto příkladu se vrátí:
+Tato část řetězce podpisu představuje účet úložiště, který cílí na požadavek. Mějte na paměti, že identifikátor URI žádosti je `<http://contosorest.blob.core.windows.net/?comp=list>` s skutečným názvem účtu ( `contosorest` v tomto případě). V tomto příkladu se vrátí:
 
 ```
 /contosorest/\ncomp:list

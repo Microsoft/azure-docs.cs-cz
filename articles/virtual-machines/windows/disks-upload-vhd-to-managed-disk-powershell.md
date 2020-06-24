@@ -3,17 +3,17 @@ title: Nahrání virtuálního pevného disku do Azure nebo kopírování disku 
 description: Přečtěte si, jak nahrát VHD na spravovaný disk Azure a zkopírovat spravovaný disk do různých oblastí pomocí Azure PowerShell přes přímé nahrávání.
 author: roygara
 ms.author: rogarana
-ms.date: 03/27/2020
+ms.date: 06/15/2020
 ms.topic: how-to
 ms.service: virtual-machines
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 153bbc39ceba52548d667fa4c83d0edc867fcb93
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: d03e911b88e6a7729b0519e74941b47d85a97901
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84660601"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84944623"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-powershell"></a>Nahrání virtuálního pevného disku do Azure nebo zkopírování spravovaného disku do jiné oblasti – Azure PowerShell
 
@@ -47,6 +47,9 @@ Než budete moct vytvořit prázdný standardní pevný disk pro nahrávání, b
 Teď v místním prostředí vytvořte prázdný standardní pevný disk pro nahrávání zadáním nastavení **nahrávání** v parametru **-CreateOption** a také parametru **-UploadSizeInBytes** v rutině [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig?view=azps-1.8.0) . Pak zavolejte [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk?view=azps-1.8.0) a vytvořte disk.
 
 Nahraďte `<yourdiskname>` , `<yourresourcegroupname>` a `<yourregion>` poté spusťte následující příkazy:
+
+> [!TIP]
+> Pokud vytváříte disk s operačním systémem, přidejte-HyperVGeneration <yourGeneration> do `New-AzDiskConfig` .
 
 ```powershell
 $vhdSizeBytes = (Get-Item "<fullFilePathHere>").length
@@ -98,6 +101,9 @@ Následující skript to provede za vás, postup je podobný dříve popsaným k
 > Pokud zadáváte velikost disku v bajtech spravovaného disku z Azure, musíte přidat posun 512. Je to proto, že Azure při vracení velikosti disku vynechá zápatí. Pokud to neuděláte, kopie se nezdaří. Následující skript to pro vás už dělá.
 
 Nahraďte `<sourceResourceGroupHere>` `<sourceDiskNameHere>` hodnotu, `<targetDiskNameHere>` , `<targetResourceGroupHere>` , `<yourOSTypeHere>` a `<yourTargetLocationHere>` (příkladem hodnoty Location by se uswest2) hodnotami a spuštěním následujícího skriptu zkopírujte spravovaný disk.
+
+> [!TIP]
+> Pokud vytváříte disk s operačním systémem, přidejte-HyperVGeneration <yourGeneration> do `New-AzDiskConfig` .
 
 ```powershell
 

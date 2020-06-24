@@ -7,104 +7,179 @@ author: vkurpad
 ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: e8e263d29bc71ac76c374eeda78e5250a0af2095
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.date: 06/15/2020
+ms.openlocfilehash: f1d8715fcadeda5ccd1a98192a70939b0c359c88
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744792"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976672"
 ---
-# <a name="skillset-concepts-and-composition-in-azure-cognitive-search"></a>Dovednosti koncepty a kompozice v Azure Kognitivní hledání
+# <a name="skillset-concepts-in-azure-cognitive-search"></a>Dovednosti koncepty v Azure Kognitivní hledání
 
-Tento článek je určen pro vývojáře, kteří potřebují hlubší porozumění tomu, jak kanál pro rozšíření funguje a předpokládá, že máte koncepční znalosti procesu rozšíření AI. Pokud tento koncept začínáte, začněte na:
-+ [Obohacení AI v Azure Kognitivní hledání](cognitive-search-concept-intro.md)
-+ [Knowledge Store (Preview)](knowledge-store-concept-intro.md)
+Tento článek je určen pro vývojáře, kteří potřebují hlubší porozumění konceptům a sestavování dovednosti a předpokládají, že se proces obohacení AI předpokládá. Pokud s tímto konceptem začínáte, začněte s [rozšířením AI v Azure kognitivní hledání](cognitive-search-concept-intro.md).
 
-## <a name="specify-the-skillset"></a>Zadejte dovednosti
-Dovednosti je opakovaně použitelný prostředek ve službě Azure Kognitivní hledání, který určuje kolekci odborností, která se používá k analýze, transformaci a obohacení textu nebo obrázku při indexování. Vytvořením dovednosti můžete připojit obohacení textu a obrázků ve fázi příjmu dat, extrakci a vytváření nových informací a struktur z nezpracovaného obsahu.
+## <a name="introducing-skillsets"></a>Představujeme dovednosti
 
-Dovednosti má tři vlastnosti:
+Dovednosti je opakovaně použitelný prostředek v Azure Kognitivní hledání, který je připojený k indexeru, a určuje kolekci dovedností, které se používají k analýze, transformaci a obohacení textu nebo obrázku v průběhu indexování. Dovednosti mají vstupy a výstupy a často se výstup jedné dovednosti projeví jako vstup jiného v řetězu nebo sekvenci procesů.
 
-+    ```skills```, neuspořádaná kolekce dovedností, pro kterou platforma Určuje sekvenci provádění na základě vstupů vyžadovaných pro každou dovednost
-+    ```cognitiveServices```, klíč služeb rozpoznávání požadovaných k fakturaci vyvolalo vnímání odbornosti.
-+    ```knowledgeStore```, účet úložiště, ve kterém se budou obohacené dokumenty promítnout
+Dovednosti má tři hlavní vlastnosti:
+
++ `skills`, neuspořádaná kolekce dovedností, pro kterou platforma Určuje sekvenci provádění na základě vstupů vyžadovaných pro každou dovednost.
++ `cognitiveServices`, klíč Cognitive Services prostředku, který provádí zpracování obrázků a textu pro dovednosti, které obsahují integrované dovednosti.
++ `knowledgeStore`, (nepovinný) účet Azure Storage, kde se budou obohacené dokumenty promítnout. Rozšířené dokumenty jsou také využívány vyhledávacími indexy.
+
+Dovednosti jsou vytvořeny ve formátu JSON. Následující příklad je mírně zjednodušená verze tohoto [hotelu-recenze dovednosti](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotelreviews/HotelReviews_skillset.json), která slouží k ilustraci konceptů v tomto článku. 
+
+První dvě dovednosti jsou uvedené níže:
+
++ #1 dovednosti je [dovednost rozdělená na text](cognitive-search-skill-textsplit.md) , která přijímá obsah pole "reviews_text" jako vstup a rozděluje tento obsah na "stránky" na 5000 znaků jako výstup.
++ #2 dovedností je [dovednost mínění pro zjišťování](cognitive-search-skill-sentiment.md) přijímá jako vstup hodnotu stránky a jako výstup vytvoří nové pole s názvem "mínění", které obsahuje výsledky analýzy mínění.
 
 
-
-Dovednosti jsou vytvořeny ve formátu JSON. Pomocí [jazyka Expression](https://docs.microsoft.com/azure/search/cognitive-search-skill-conditional)můžete vytvářet komplexní dovednosti s využitím smyček a [větvení](https://docs.microsoft.com/azure/search/cognitive-search-skill-conditional) . Jazyk výrazů používá zápis cesty k [ukazateli JSON](https://tools.ietf.org/html/rfc6901) s několika úpravami k identifikaci uzlů ve stromu obohacení. Ve ```"/"``` stromové struktuře projde nižší úroveň a ```"*"``` funguje jako operátor for-each v kontextu. Tyto koncepty jsou nejlépe popsané v příkladu. K ilustraci některých konceptů a funkcí si projdeme dovednosti [Sample prohlídek](knowledge-store-connect-powerbi.md) . Pokud se chcete podívat na dovednosti, když jste následovali pracovní postup importu dat, budete muset použít klienta REST API k [získání dovednosti](https://docs.microsoft.com/rest/api/searchservice/get-skillset).
+```json
+{
+    "skills": [
+        {
+            "@odata.type": "#Microsoft.Skills.Text.SplitSkill",
+            "name": "#1",
+            "description": null,
+            "context": "/document/reviews_text",
+            "defaultLanguageCode": "en",
+            "textSplitMode": "pages",
+            "maximumPageLength": 5000,
+            "inputs": [
+                {
+                    "name": "text",
+                    "source": "/document/reviews_text"
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "textItems",
+                    "targetName": "pages"
+                }
+            ]
+        },
+        {
+            "@odata.type": "#Microsoft.Skills.Text.SentimentSkill",
+            "name": "#2",
+            "description": null,
+            "context": "/document/reviews_text/pages/*",
+            "defaultLanguageCode": "en",
+            "inputs": [
+                {
+                    "name": "text",
+                    "source": "/document/reviews_text/pages/*",
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "score",
+                    "targetName": "Sentiment"
+                }
+            ]
+        },
+  "cognitiveServices": null,
+  "knowledgeStore": {  }
+}
+```
+> [!NOTE]
+> Komplexní dovednosti můžete vytvářet pomocí smyček a větvení, a to pomocí [podmíněné dovednosti](cognitive-search-skill-conditional.md) pro vytváření výrazů. Syntaxe je založena na zápisu cesty [ukazatele JSON](https://tools.ietf.org/html/rfc6901) , s několika úpravami k identifikaci uzlů ve stromu obohacení. Ve `"/"` stromové struktuře projde nižší úroveň a `"*"` funguje jako operátor for-each v kontextu. Syntaxe je znázorněna v mnoha příkladech v tomto článku. 
 
 ### <a name="enrichment-tree"></a>Strom obohacení
 
-Abychom představte, jak dovednosti postupně rozšiřuje váš dokument, pojďme začít s tím, jak dokument vypadá před jakýmkoli obohacením. Výstup pro trhliny dokumentů závisí na zdroji dat a na zvoleném režimu analýzy. To je také stav dokumentu, z něhož [mapování polí](search-indexer-field-mappings.md) umožňuje zdrojový obsah při přidávání dat do indexu vyhledávání.
-![Znalostní úložiště v diagramu kanálu](./media/knowledge-store-concept-intro/annotationstore_sans_internalcache.png "Znalostní úložiště v diagramu kanálu")
+V průběhu [kroků v kanálu rozšíření](cognitive-search-concept-intro.md#enrichment-steps)zpracovává zpracování obsahu postupné fáze *dokumentu* , při které se ze zdroje extrahují text a obrázky. Obsah obrázku je pak možné směrovat do dovedností, které určují zpracování obrázků, zatímco textový obsah je zařazený do fronty pro zpracování textu. U zdrojových dokumentů, které obsahují velké množství textu, můžete nastavit *režim analýzy* v indexeru tak, aby se text segmentoval na menší bloky dat, aby bylo možné lépe dosáhnout optimálního zpracování. 
 
-Jakmile je dokument v kanálu obohacení, je reprezentován jako strom obsahu a přidružených rozšíření. Tento strom se vytvoří jako výstup odhalujícího dokumentu. Stromová struktura obohacení umožňuje kanálu obohacení připojit metadata k ještě primitivním datovým typům, nejedná se o platný objekt JSON, ale lze jej převést do platného formátu JSON. Následující tabulka ukazuje stav dokumentu, který se zadává do kanálu rozšíření:
+![Znalostní úložiště v diagramu kanálu](./media/knowledge-store-concept-intro/knowledge-store-concept-intro.svg "Znalostní úložiště v diagramu kanálu")
+
+Jakmile je dokument v kanálu obohacení, je reprezentován jako strom obsahu a přidružených rozšíření. Tento strom se vytvoří jako výstup odhalujícího dokumentu.  Stromová struktura obohacení umožňuje kanálu obohacení připojit metadata k ještě primitivním datovým typům, nejedná se o platný objekt JSON, ale lze jej převést do platného formátu JSON. Následující tabulka ukazuje stav dokumentu, který se zadává do kanálu rozšíření:
 
 |Režim Source\Parsing dat|Výchozí|JSON, řádky JSON & CSV|
 |---|---|---|
 |Blob Storage|/document/content<br>/Document/normalized_images/*<br>…|/document/{key1}<br>/document/{key2}<br>…|
 |SQL|/document/{column1}<br>/document/{column2}<br>…|– |
-|Databáze Cosmos|/document/{key1}<br>/document/{key2}<br>…|–|
+|Cosmos DB|/document/{key1}<br>/document/{key2}<br>…|–|
 
  Při provádění dovedností přidávají nové uzly do stromu obohacení. Tyto nové uzly pak mohou být použity jako vstupy pro dovednosti s využitím pro příjem dat, projekci do obchodu Knowledge Store nebo mapování na pole indexu. Rozšíření nejsou proměnlivá: po vytvoření se uzly nedají upravovat. Vzhledem k tomu, že vaše dovednostiy jsou složitější, takže se strom pro rozšíření, ale ne všechny uzly ve stromu pro rozšíření, nemusí dělat na index nebo na obchod znalostní báze. 
 
 Můžete selektivně zachovat jenom podmnožinu obohacení na index nebo úložiště znalostní báze.
-Ve zbývající části tohoto dokumentu budeme předpokládat, že pracujeme s [ukázkami hotelů](https://docs.microsoft.com/azure/search/knowledge-store-connect-powerbi), ale stejné koncepty platí i pro rozšiřování dokumentů ze všech ostatních zdrojů dat.
 
 ### <a name="context"></a>Kontext
+
 Každá dovednost vyžaduje kontext. Kontext určuje:
-+    Počet, kolikrát se dovednost spustí na základě vybraných uzlů. V případě hodnot kontextu typu kolekce je přidání ```/*``` na konci výsledkem uplatnění dovednosti u každé instance v kolekci. 
-+    Ve stromu obohacení se přidávají výstupy dovedností. Výstupy jsou vždy přidány do stromu jako podřízené objekty uzlu kontextu. 
-+    Tvar vstupů. U kolekcí s více úrovněmi ovlivní nastavení kontextu pro nadřazenou kolekci tvar vstupu pro dovednost. Například pokud máte strom pro obohacení se seznamem zemí nebo oblastí, každý obohacený seznamem stavů, které obsahují seznam PSČ.
+
++ Počet, kolikrát se dovednost spustí na základě vybraných uzlů. V případě hodnot kontextu typu kolekce je přidání `/*` na konci výsledkem uplatnění dovednosti u každé instance v kolekci. 
+
++ Ve stromu obohacení se přidávají výstupy dovedností. Výstupy jsou vždy přidány do stromu jako podřízené objekty uzlu kontextu. 
+
++ Tvar vstupů. U kolekcí s více úrovněmi ovlivní nastavení kontextu pro nadřazenou kolekci tvar vstupu pro dovednost. Například pokud máte strom obohacení se seznamem zemí nebo oblastí, každý obohacený seznamem stavů, které obsahují seznam kódů ZIP.
 
 |Kontext|Vstup|Tvar vstupu|Vyvolání dovedností|
-|---|---|---|---|
-|```/document/countries/*``` |```/document/countries/*/states/*/zipcodes/*``` |Seznam všech PSČ v zemi nebo oblasti |Jednou za zemi nebo oblast |
-|```/document/countries/*/states/*``` |```/document/countries/*/states/*/zipcodes/*``` |Seznam PSČ ve stavu | Jednou za kombinaci země/oblasti a státu|
-
-### <a name="sourcecontext"></a>SourceContext
-
-`sourceContext`Používá se pouze ve vstupech a projekcí [projections](knowledge-store-projection-overview.md)dovedností. Slouží k vytváření víceúrovňových vnořených objektů. Je možné, že budete muset vytvořit nový objekt, který ho buď předáte jako vstup do odbornosti nebo projektu, do znalostní báze Knowledge Store. Uzly obohacení nemusí být platný objekt JSON ve stromu obohacení a odkazující na uzel ve stromové struktuře vrátí tento stav uzlu, když byl vytvořen, pomocí rozšíření, jako jsou vstupy nebo projekce, vyžaduje vytvoření objektu JSON ve správném formátu. `sourceContext`Umožňuje vytvořit hierarchický, anonymní objekt typu, který by vyžadoval více dovedností v případě, že jste používali pouze kontext. Použití `sourceContext` je zobrazeno v následující části. Podívejte se na výstup dovedností, který vygeneroval rozšíření, aby bylo možné zjistit, zda se jedná o platný objekt JSON a nikoli primitivní typ.
-
-### <a name="projections"></a>Projekce
-
-Projekcí je proces výběru uzlů z stromu obohacení pro uložení ve znalostní bázi Store. Projekce jsou vlastní tvary dokumentu (obsah a rozšíření), které mohou být výstupem buď tabulky nebo projekce objektů. Další informace o práci s projekcemi najdete v tématu [práce s projekcemi](knowledge-store-projection-overview.md).
-
-![Možnosti mapování polí](./media/cognitive-search-working-with-skillsets/field-mapping-options.png "Možnosti mapování polí pro kanál pro obohacení")
-
-Diagram výše popisuje selektor, se kterým pracujete, na základě toho, kde se nacházíte v kanálu pro obohacení.
+|-------|-----|--------------|----------------|
+|`/document/countries/*` |`/document/countries/*/states/*/zipcodes/*` |Seznam všech PSČ v zemi nebo oblasti |Jednou za zemi nebo oblast |
+|`/document/countries/*/states/*` |'/Document/countries/*/States/*/ZipCodes/* ' ' |Seznam kódů PSČ ve stavu | Jednou za kombinaci země/oblasti a státu|
 
 ## <a name="generate-enriched-data"></a>Generovat obohacená data 
 
-Teď si projdeme dovednosti a Projděte si kurz, kde můžete postupovat podle [kurzu](knowledge-store-connect-powerbi.md) a vytvořit dovednosti nebo [Zobrazit](https://github.com/Azure-Samples/azure-search-postman-samples/) dovednosti. Budeme se pohlížet na:
+Pomocí [dovednostich recenzí hotelů](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotelreviews/HotelReviews_skillset.json) jako referenčního bodu si projdeme:
 
-* způsob vývoje stromu rozšíření s prováděním jednotlivých dovedností 
-* jak kontext a vstupy pracují k určení, kolikrát se dovednost spustí 
-* Jaký tvar vstupu je založen na kontextu. 
++ Způsob vývoje stromu rozšíření s prováděním jednotlivých dovedností
++ Jak kontext a vstupy pracují k určení, kolikrát se dovednost spustí
++ Jak je tvar vstupu založen na kontextu
 
-Vzhledem k tomu, že pro indexer používáme režim analýzy textu s oddělovači, představuje dokument v rámci procesu rozšíření jeden řádek v souboru CSV.
+"Dokument" v rámci procesu rozšíření představuje jeden řádek (přezkoumání hotelu) ve zdrojovém souboru hotel_reviews.csv.
 
-### <a name="skill-1-split-skill"></a>Dovednost #1: rozdělit dovednost 
+### <a name="skill-1-split-skill"></a>Dovednost #1: rozdělit dovednost
+
+Pokud se zdrojový obsah skládá z velkých bloků textu, je vhodné ho rozdělit na menší součásti, aby byla větší přesnost jazyka, mínění a detekce klíčových frází. K dispozici jsou dvě zrna: stránky a věty. Stránka se skládá z přibližně 5000 znaků.
+
+Dovednost rozdělení textu je obvykle první v dovednosti.
+
+```json
+      "@odata.type": "#Microsoft.Skills.Text.SplitSkill",
+      "name": "#1",
+      "description": null,
+      "context": "/document/reviews_text",
+      "defaultLanguageCode": "en",
+      "textSplitMode": "pages",
+      "maximumPageLength": 5000,
+      "inputs": [
+        {
+          "name": "text",
+          "source": "/document/reviews_text"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "textItems",
+          "targetName": "pages"
+        }
+```
+
+V souvislosti s dovednostmi dovedností se u každého z nich provede `"/document/reviews_text"` rozdělená dovednost `reviews_text` . Výstup dovedností je seznam, ve kterém `reviews_text` je rozdělen do segmentů 5000 znaků. Výstup z rozdělené dovednosti se jmenuje `pages` a přidá se do stromu obohacení. `targetName`Funkce umožňuje přejmenovat výstup dovedností před přidáním do stromu obohacení.
+
+Strom rozkládání teď má nový uzel umístěný pod rámec dovednosti. Tento uzel je k dispozici pro jakékoli mapování dovedností, projekce nebo výstupních polí. Konceptuální struktura vypadá takto:
 
 ![strom obohacení po vytrhlině dokumentu](media/cognitive-search-working-with-skillsets/enrichment-tree-doc-cracking.png "Strom obohacení po prolomení dokumentů a před provedením dovedností")
 
-V souvislosti s dovednostmi dovedností se ```"/document/reviews_text"``` Tato dovednost spustí jednou pro `reviews_text` . Výstup dovedností je seznam, ve kterém `reviews_text` je rozdělen do segmentů 5000 znaků. Výstup z rozdělené dovednosti je pojmenován `pages` a přidán do stromu obohacení. `targetName`Funkce umožňuje přejmenovat výstup dovedností před přidáním do stromu obohacení.
+Kořenový uzel pro všechna rozšíření je `"/document"` . Při práci s indexery objektů BLOB `"/document"` bude uzel mít podřízené uzly `"/document/content"` a `"/document/normalized_images"` . Při práci s daty ve formátu CSV, jak je v tomto příkladu, se názvy sloupců mapují na uzly níže `"/document"` . 
 
-Strom rozkládání teď má nový uzel umístěný pod rámec dovednosti. Tento uzel je k dispozici pro jakékoli mapování dovedností, projekce nebo výstupních polí.
-
-
-Kořenový uzel pro všechna rozšíření je `"/document"` . Při práci s indexery objektů BLOB `"/document"` bude uzel mít podřízené uzly `"/document/content"` a `"/document/normalized_images"` . Při práci s daty ve formátu CSV, jak je v tomto příkladu, se názvy sloupců mapují na uzly níže `"/document"` . Aby bylo možné získat přístup k jakémukoli obohacení rozšíření přidaným do uzlu dovedností, je nutná úplná cesta pro rozšíření. Například pokud chcete použít text z ```pages``` uzlu jako vstup pro jinou dovednost, budete ho muset zadat jako ```"/document/reviews_text/pages/*"``` .
+Aby bylo možné získat přístup k jakémukoli obohacení rozšíření přidaným do uzlu dovedností, je nutná úplná cesta pro rozšíření. Například pokud chcete použít text z ```pages``` uzlu jako vstup pro jinou dovednost, budete ho muset zadat jako ```"/document/reviews_text/pages/*"``` .
  
  ![strom obohacení po #1 dovednosti](media/cognitive-search-working-with-skillsets/enrichment-tree-skill1.png "Strom obohacení po provedení #1 dovednosti")
 
 ### <a name="skill-2-language-detection"></a>Zjišťování jazyka pro dovednost #2
- I když je dovednost detekce jazyka třetí (dovednostní #3) definovaná v dovednosti, jedná se o další dovednost, kterou je potřeba provést. Vzhledem k tomu, že není zablokované vyžadováním jakýchkoli vstupů, spustí se paralelně s předchozí dovedností. Stejně jako rozdělení dovedností, které předcházejí, je pro každý dokument také vyvolána dovednost detekce jazyka. Strom rozrozšíření teď má nový uzel pro jazyk.
+
+Dokumenty recenze pro Hotel zahrnují zpětnou vazbu zákazníků vyjádřenou v několika jazycích. Dovednost detekce jazyka Určuje, který jazyk se používá. Výsledek se pak předává extrakci klíčových frází a detekci mínění, při rozpoznávání mínění a frází zohledňuje jazyk.
+
+I když je dovednost detekce jazyka třetí (dovednostní #3) definovaná v dovednosti, jedná se o další dovednost, kterou je potřeba provést. Vzhledem k tomu, že není zablokované vyžadováním jakýchkoli vstupů, spustí se paralelně s předchozí dovedností. Stejně jako rozdělení dovedností, které předcházejí, je pro každý dokument také vyvolána dovednost detekce jazyka. Strom rozrozšíření teď má nový uzel pro jazyk.
+
  ![strom obohacení po #2 dovednosti](media/cognitive-search-working-with-skillsets/enrichment-tree-skill2.png "Strom obohacení po provedení #2 dovednosti")
  
  ### <a name="skill-3-key-phrases-skill"></a>Dovednost #3: dovednost klíčových frází 
 
-Vzhledem k, že se kontext ```/document/reviews_text/pages/*``` dovedností klíčových frází vyvolá jednou pro každou položku v `pages` kolekci. Výstup z dovednosti bude uzel pod přidruženým prvkem stránky. 
+Vzhledem k, že se kontext `/document/reviews_text/pages/*` dovedností klíčových frází vyvolá jednou pro každou položku v `pages` kolekci. Výstup z dovednosti bude uzel pod přidruženým prvkem stránky. 
 
  Nyní byste měli být schopni se podívat na zbytek dovedností v dovednosti a vizualizovat, jak bude strom rozšíření nadále rostoucí s prováděním jednotlivých dovedností. Některé dovednosti, jako je například dovednost sloučení a kvalifikace Shaper, také vytvářejí nové uzly, ale používají data z existujících uzlů a nevytvářejí čisté nové rozšíření.
 
@@ -112,9 +187,23 @@ Vzhledem k, že se kontext ```/document/reviews_text/pages/*``` dovedností klí
 
 Barvy konektorů ve stromu výše označují, že rozšíření byly vytvořeny různými dovednostmi a uzly budou muset být řešeny individuálně a nebudou součástí objektu vráceného při výběru nadřazeného uzlu.
 
-## <a name="save-enrichments-in-a-knowledge-store"></a>Uložení obohacení ve znalostní bázi Knowledge Store 
+## <a name="save-enrichments"></a>Uložit obohacení
 
-Dovednosti také definují znalostní bázi, ve kterém se vaše obohacené dokumenty dají promítnout jako tabulky nebo objekty. Pro uložení obohacených dat ve znalostní bázi můžete definovat sadu projekce pro obohacený dokument. Další informace o službě Knowledge Store najdete v [článku Přehled znalostní báze](knowledge-store-concept-intro.md) .
+V Azure Kognitivní hledání ukládá indexer výstup, který vytvoří. Jeden z výstupů je vždy [index s možností prohledávání](search-what-is-an-index.md). Zadání indexu je požadavek a když připojíte dovednosti, data ingestovaná indexem zahrnují obsah rozšíření. Výstupy specifických dovedností, jako jsou klíčové fráze nebo mínění, jsou obvykle ingestované do indexu v poli vytvořeném pro tento účel.
+
+V případě potřeby může indexer také odeslat výstup do [úložiště znalostí](knowledge-store-concept-intro.md) pro využití v jiných nástrojích nebo procesech. Znalostní databáze je definována jako součást dovednosti. Jeho definice určuje, jestli jsou obohacené dokumenty probíhají jako tabulky nebo objekty (soubory nebo objekty BLOB). Tabulkové projekce jsou vhodné pro interaktivní analýzu v nástrojích, jako je Power BI, zatímco soubory a objekty BLOB se obvykle používají v datových věd nebo podobných procesech. V této části se dozvíte, jak může složení dovednosti tvarovat tabulky nebo objekty, které chcete projektovat.
+
+### <a name="projections"></a>Projekce
+
+U obsahu, který se zaměřuje na znalostní bázi Knowledge Store, budete chtít zvážit, jak je obsah strukturovaný. *Projekcí* je proces výběru uzlů ze stromu obohacení a vytvoření fyzického výrazu v úložišti znalostí. Projekce jsou vlastní tvary dokumentu (obsah a rozšíření), které mohou být výstupem buď tabulky nebo projekce objektů. Další informace o práci s projekcemi najdete v tématu [práce s projekcemi](knowledge-store-projection-overview.md).
+
+![Možnosti mapování polí](./media/cognitive-search-working-with-skillsets/field-mapping-options.png "Možnosti mapování polí pro kanál pro obohacení")
+
+### <a name="sourcecontext"></a>SourceContext
+
+`sourceContext`Element se používá pouze v dovednostech a v dovednostech. Slouží k vytváření víceúrovňových vnořených objektů. Je možné, že budete muset vytvořit nový objekt, který ho buď předáte jako vstup do odbornosti nebo projektu, do znalostní báze Knowledge Store. Uzly obohacení nemusí být platný objekt JSON ve stromu obohacení a odkazující na uzel ve stromové struktuře vrátí tento stav uzlu, když byl vytvořen, pomocí rozšíření, jako jsou vstupy nebo projekce, vyžaduje vytvoření objektu JSON ve správném formátu. `sourceContext`Umožňuje vytvořit hierarchický, anonymní objekt typu, který by vyžadoval více dovedností v případě, že jste používali pouze kontext. 
+
+Použití `sourceContext` je zobrazeno v následujících příkladech. Podívejte se na výstup dovedností, který vygeneroval rozšíření, aby bylo možné zjistit, zda se jedná o platný objekt JSON a nikoli primitivní typ.
 
 ### <a name="slicing-projections"></a>Projekce na průřezy
 
@@ -122,14 +211,19 @@ Při definování skupiny projekce tabulky lze jeden uzel ve stromu rozšířen�
 
 ### <a name="shaping-projections"></a>Tvarování projekce
 
-Existují dva způsoby, jak definovat projekci. Shaper dovednosti můžete použít k vytvoření nového uzlu, který je kořenovým uzlem pro všechna rozšíření, která procházíte. Pak v projekcích byste měli odkazovat jenom na výstup Shaper dovednosti. V rámci samotné definice projekce můžete také vložit obrazec projekce.
+Existují dva způsoby, jak definovat projekci:
 
-Přístup Shaper je podrobnější než při vložené tvarování, ale zajišťuje, že všechny mutace stromu rozšíření jsou obsaženy v rámci dovedností a že výstupem je objekt, který lze znovu použít. Vložené tvarování vám umožňuje vytvořit tvar, který potřebujete, ale je anonymní objekt a je k dispozici pouze pro projekci, pro kterou je definována. Přístupy lze použít společně nebo samostatně. Dovednosti vytvořená v pracovním postupu na portálu obsahuje obojí. Používá shaperou dovednost pro projektové projekce, ale také používá včleněné tvarování k tomu, aby se v tabulce klíčových frází.
++ Použijte text Shaper dovednost k vytvoření nového uzlu, který je kořenovým uzlem pro všechna obohacená rozšíření. Pak v projekcích byste měli odkazovat jenom na výstup Shaper dovednosti.
+
++ Použijte vložený tvar projekce v rámci samotné definice projekce.
+
+Přístup Shaper je podrobnější než při vložené tvarování, ale zajišťuje, že všechny mutace stromu rozšíření jsou obsaženy v rámci dovedností a že výstupem je objekt, který lze znovu použít. Naproti tomu vložené tvarování umožňuje vytvořit tvar, který potřebujete, ale je anonymní objekt a je k dispozici pouze pro projekci, pro kterou je definována. Přístupy lze použít společně nebo samostatně. Dovednosti vytvořená v pracovním postupu na portálu obsahuje obojí. Používá shaperou dovednost pro projektové projekce, ale také používá včleněné tvarování k tomu, aby se v tabulce klíčových frází.
 
 Chcete-li příklad zvětšit, můžete odebrat vložené tvarování a použít dovednost Shaper k vytvoření nového uzlu pro klíčové fráze. Chcete-li vytvořit tvar vytvořený do tří tabulek, konkrétně, `hotelReviewsDocument` , `hotelReviewsPages` a `hotelReviewsKeyPhrases` , jsou tyto dvě možnosti popsány v následujících částech.
 
+#### <a name="shaper-skill-and-projection"></a>Shaper dovednosti a projekce
 
-#### <a name="shaper-skill-and-projection"></a>Shaper dovednosti a projekce 
+This 
 
 > [!Note]
 > Některé sloupce z tabulky dokumentů byly z tohoto příkladu odebrány pro zkrácení.

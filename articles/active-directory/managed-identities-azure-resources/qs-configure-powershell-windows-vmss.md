@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 755aee312fd0492fd57a82cb7a437b04ebf72987
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: a7dfb964ee985c648c3fc424c5999cc2457634d9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74547272"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84693656"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-virtual-machine-scale-sets-using-powershell"></a>Konfigurace spravovaných identit pro prostředky Azure ve službě Virtual Machine Scale Sets pomocí PowerShellu
 
@@ -36,9 +36,9 @@ V tomto článku se naučíte, jak provádět spravované identity prostředků 
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](overview.md). **Nezapomeňte si projít [rozdíl mezi přiřazenou identitou systému a uživatelem spravované identity](overview.md#how-does-the-managed-identities-for-azure-resources-work)**.
+- Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](overview.md). **Nezapomeňte si projít [rozdíl mezi přiřazenou identitou systému a uživatelem spravované identity](overview.md#managed-identity-types)**.
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
-- K provedení operací správy v tomto článku potřebuje váš účet následující přiřazení řízení přístupu na základě rolí Azure:
+- K provedení operací správy v tomto článku potřebuje váš účet následující přiřazení řízení přístupu na základě role Azure:
 
     > [!NOTE]
     > Nevyžadují se žádné další přiřazení role adresáře Azure AD.
@@ -68,7 +68,7 @@ Vytvoření sady škálování virtuálního počítače s povolenou spravovanou
 
 Pokud potřebujete povolit spravovanou identitu přiřazenou systémem v existující sadě škálování virtuálních počítačů Azure:
 
-1. Přihlaste se k `Connect-AzAccount`Azure pomocí. Použijte účet, který je přidružený k předplatnému Azure, které obsahuje sadu škálování virtuálního počítače. Také se ujistěte, že váš účet patří do role, která vám poskytne oprávnění k zápisu do sady škálování virtuálních počítačů, jako je například "Přispěvatel virtuálního počítače":
+1. Přihlaste se k Azure pomocí `Connect-AzAccount` . Použijte účet, který je přidružený k předplatnému Azure, které obsahuje sadu škálování virtuálního počítače. Také se ujistěte, že váš účet patří do role, která vám poskytne oprávnění k zápisu do sady škálování virtuálních počítačů, jako je například "Přispěvatel virtuálního počítače":
 
    ```powershell
    Connect-AzAccount
@@ -86,7 +86,7 @@ Pokud potřebujete povolit spravovanou identitu přiřazenou systémem v existuj
 
 Pokud máte sadu škálování virtuálního počítače, která už nepotřebuje spravovanou identitu přiřazenou systémem, ale potřebuje spravované identity přiřazené uživatelem, použijte tuto rutinu:
 
-1. Přihlaste se k `Connect-AzAccount`Azure pomocí. Použijte účet, který je přidružený k předplatnému Azure, které obsahuje virtuální počítač. Také se ujistěte, že váš účet patří do role, která vám poskytne oprávnění k zápisu do sady škálování virtuálních počítačů, jako je například "Přispěvatel virtuálního počítače":
+1. Přihlaste se k Azure pomocí `Connect-AzAccount` . Použijte účet, který je přidružený k předplatnému Azure, které obsahuje virtuální počítač. Také se ujistěte, že váš účet patří do role, která vám poskytne oprávnění k zápisu do sady škálování virtuálních počítačů, jako je například "Přispěvatel virtuálního počítače":
 
 2. Spusťte následující rutinu:
 
@@ -112,13 +112,13 @@ Vytvoření nové sady škálování virtuálního počítače s uživatelsky p�
 
 Přiřazení spravované identity přiřazené uživatelem do existující sady škálování virtuálních počítačů Azure:
 
-1. Přihlaste se k `Connect-AzAccount`Azure pomocí. Použijte účet, který je přidružený k předplatnému Azure, které obsahuje sadu škálování virtuálního počítače. Také se ujistěte, že váš účet patří do role, která vám poskytne oprávnění k zápisu do sady škálování virtuálních počítačů, jako je například "Přispěvatel virtuálního počítače":
+1. Přihlaste se k Azure pomocí `Connect-AzAccount` . Použijte účet, který je přidružený k předplatnému Azure, které obsahuje sadu škálování virtuálního počítače. Také se ujistěte, že váš účet patří do role, která vám poskytne oprávnění k zápisu do sady škálování virtuálních počítačů, jako je například "Přispěvatel virtuálního počítače":
 
    ```powershell
    Connect-AzAccount
    ```
 
-2. Nejdřív načtěte vlastnosti sady škálování virtuálního počítače pomocí `Get-AzVM` rutiny. Pak k přiřazení spravované identity přiřazené uživatelem do sady škálování virtuálního počítače použijte přepínač `-IdentityType` a `-IdentityID` v rutině [Update-AzVmss](/powershell/module/az.compute/update-azvmss) . `<RESROURCE GROUP>` `<USER ASSIGNED ID1>`Nahraďte,,, `USER ASSIGNED ID2` , vlastními hodnotami. `<VM NAME>` `<SUBSCRIPTION ID>`
+2. Nejdřív načtěte vlastnosti sady škálování virtuálního počítače pomocí `Get-AzVM` rutiny. Pak k přiřazení spravované identity přiřazené uživatelem do sady škálování virtuálního počítače použijte `-IdentityType` `-IdentityID` přepínač a v rutině [Update-AzVmss](/powershell/module/az.compute/update-azvmss) . Nahraďte,,, `<VM NAME>` `<SUBSCRIPTION ID>` `<RESROURCE GROUP>` `<USER ASSIGNED ID1>` , `USER ASSIGNED ID2` vlastními hodnotami.
 
    [!INCLUDE [ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
@@ -128,7 +128,7 @@ Přiřazení spravované identity přiřazené uživatelem do existující sady 
 
 ### <a name="remove-a-user-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>Odebrání spravované identity přiřazené uživatelem ze sady škálování virtuálních počítačů Azure
 
-Pokud má vaše sada škálování virtuálních počítačů více uživatelsky přiřazených spravovaných identit, můžete všechny kromě poslední odebrat pomocí následujících příkazů. Nezapomeňte nahradit hodnoty parametrů `<RESOURCE GROUP>` a `<VIRTUAL MACHINE SCALE SET NAME>` vlastními hodnotami. `<USER ASSIGNED IDENTITY NAME>` Je vlastnost název spravované identity přiřazené uživatelem, která by měla zůstat v sadě škálování virtuálního počítače. Tyto informace najdete v části Identita sady škálování virtuálních počítačů pomocí `az vmss show`:
+Pokud má vaše sada škálování virtuálních počítačů více uživatelsky přiřazených spravovaných identit, můžete všechny kromě poslední odebrat pomocí následujících příkazů. Nezapomeňte nahradit hodnoty parametrů `<RESOURCE GROUP>` a `<VIRTUAL MACHINE SCALE SET NAME>` vlastními hodnotami. `<USER ASSIGNED IDENTITY NAME>`Je vlastnost název spravované identity přiřazené uživatelem, která by měla zůstat v sadě škálování virtuálního počítače. Tyto informace najdete v části Identita sady škálování virtuálních počítačů pomocí `az vmss show` :
 
 ```powershell
 Update-AzVmss -ResourceGroupName myResourceGroup -Name myVmss -IdentityType UserAssigned -IdentityID "<USER ASSIGNED IDENTITY NAME>"

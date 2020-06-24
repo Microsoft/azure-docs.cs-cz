@@ -1,5 +1,5 @@
 ---
-title: Ověřování
+title: Authentication
 description: Naučte se ověřovat službu Azure synapse Analytics pomocí Azure Active Directory (Azure AD) nebo SQL Server ověřování.
 services: synapse-analytics
 author: julieMSFT

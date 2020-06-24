@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 04/15/2020
 ms.author: gsilva
-ms.openlocfilehash: da7164fbf9148764ef8da0205b147b0fd188de9d
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 2dc7b0447a97cdafc88d2cee4612aba22c1e0eea
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84457248"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84975788"
 ---
 # <a name="create-a-windows-vm-with-accelerated-networking-using-azure-powershell"></a>Vytvoření virtuálního počítače s Windows s akcelerovanými síťovými službami pomocí Azure PowerShell
 
@@ -66,6 +66,10 @@ Akcelerované sítě se podporují na většině účelových a výpočetních i
 Na instancích podporujících multithreading se podporuje akcelerované sítě pro instance virtuálních počítačů se čtyřmi nebo více vCPU. Podporované řady jsou: D/Dsv3, D/Dsv4, E/Esv3, EA/Easv4, Fsv2, Lsv2, MS/MMS a MS/Mmsv2.
 
 Další informace o instancích virtuálních počítačů najdete v tématu [velikosti pro virtuální počítače s Windows v Azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+
+### <a name="custom-images"></a>Vlastní image
+
+Pokud používáte vlastní image a vaše image podporuje akcelerované síťové služby, ujistěte se, že máte požadované ovladače, které pracují s Mellanox ConnectX a ConnectX-4 LX síťových adaptérů v Azure.
 
 ### <a name="regions"></a>Oblasti
 

@@ -1,5 +1,5 @@
 ---
-title: Použití rozhraní API a sad SDK pro digitální vlákna Azure
+title: Použití rozhraní API a sad SDK služby Azure Digital Twins
 titleSuffix: Azure Digital Twins
 description: Podívejte se, jak pracovat s rozhraními API digitálních vláken Azure, včetně přes SDK.
 author: baanders
@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: cbc79458c1fe68b05a40f476c298d5fe94e86871
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: ebac7fb6cf4addaa43367d27a4926a85770dd595
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84629601"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85296130"
 ---
-# <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Použití rozhraní API a sad SDK pro digitální vlákna Azure
+# <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Použití rozhraní API a sad SDK služby Azure Digital Twins
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Digitální vlákna Azure jsou vybavená **rozhraními API řídicí plochy** a **rozhraním API roviny dat** pro správu vaší instance a jejích prvků. Tento článek poskytuje přehled dostupných rozhraní API a metody, jak s nimi interaktivně pracovat. Rozhraní REST API můžete buď použít přímo spolu s jejich přidruženými Swagger, nebo prostřednictvím sady SDK.
 
@@ -26,7 +29,7 @@ Nejaktuálnější verze rozhraní API řídicí plochy pro Public Preview je _*
 
 Chcete-li použít rozhraní API plochy ovládacího prvku:
 * Rozhraní API můžete volat přímo odkazem na nejnovější [složku Swagger](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins). Toto úložiště obsahuje také složku příkladů, které ukazují použití.
-* V tuto chvíli můžete přistupovat k sadám SDK pro rozhraní API ovládacích prvků v [cestách](https://github.com/Azure/azure-sdk-for-go/releases).
+* V současnosti můžete přistupovat k sadám SDK pro rozhraní API ovládacích prvků v [rozhraní .NET (C#)](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/1.0.0-preview.1), [Python](https://pypi.org/project/azure-mgmt-digitaltwins/)nebo [Přejít](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/digitaltwins/mgmt/2020-03-01-preview/digitaltwins).
 
 Rozhraní API rovin ovládacích prvků můžete také využít k interakci s digitálními podčinnostmi Azure pomocí [Azure Portal](https://portal.azure.com) a [CLI](how-to-use-cli.md).
 
@@ -256,6 +259,12 @@ client.UpdateDigitalTwin("myTwin", uou.Serialize());
 ## <a name="general-apisdk-usage-notes"></a>Obecné poznámky k používání rozhraní API/sady SDK
 
 Tato část obsahuje obecné informace o nástroji a pokyny pro používání rozhraní API a sad SDK.
+
+> [!NOTE]
+> Mějte prosím na paměti, že ve verzi Preview nepodporuje digitální vlákna Azure **sdílení prostředků mezi zdroji (CORS)**. Výsledkem je, že pokud voláte REST API z aplikace v prohlížeči, rozhraní [API Management (APIM)](../api-management/api-management-key-concepts.md) nebo konektor [Power Apps](https://docs.microsoft.com/powerapps/powerapps-overview) , může se zobrazit chyba zásad.
+> Chcete-li tuto chybu vyřešit, můžete provést jednu z následujících akcí:
+> * Z zprávy vypruhute hlavičku CORS `Access-Control-Allow-Origin` . Tato hlavička uvádí, zda lze odpověď sdílet. 
+> * Případně můžete vytvořit proxy CORS a zajistit, aby se digitální vlákna Azure REST APIa prostřednictvím něj. 
 
 * Chcete-li použít sadu SDK, vytvořte instanci `DigitalTwinsClient` třídy. Konstruktor vyžaduje přihlašovací údaje, které lze získat pomocí různých metod ověřování v `Azure.Identity` balíčku. Další `Azure.Identity` informace najdete v [dokumentaci k jejímu oboru názvů](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet). 
 * `InteractiveBrowserCredential`Při zahájení práce může být užitečné, ale k dispozici je několik dalších možností, včetně přihlašovacích údajů pro [spravovanou identitu](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet), které pravděpodobně použijete k ověření služby [Azure Functions se službou MSI](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet) proti digitálním vazbám Azure. Další informace o naleznete `InteractiveBrowserCredential` v [dokumentaci třídy](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet).

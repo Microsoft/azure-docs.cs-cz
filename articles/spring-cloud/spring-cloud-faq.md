@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: brendm
-ms.openlocfilehash: 95260d9a15fdc32c9fddccbcf63ae9fa564fd36a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e3c38a67b13a6b5c12767d38ecf2297d2417ebdb
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176766"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808413"
 ---
 # <a name="azure-spring-cloud-faq"></a>Nejčastější dotazy k jarnímu cloudu Azure
 
@@ -24,21 +24,6 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Azure
 Jarní cloud Azure poskytuje platformu jako službu (PaaS) pro aplikace pro jarní cloudové vývojáře. Azure jaře Cloud spravuje infrastrukturu vaší aplikace, takže se můžete soustředit na kód aplikace a obchodní logiku. K základním funkcím integrovaným v Azure jaře cloudu patří Eureka, config server, server registru služby, služba Pivoted Build Service, nasazení s modrou zelenou a další. Tato služba také umožňuje vývojářům navazovat aplikace s jinými službami Azure, jako jsou Azure Cosmos DB, Azure Database for MySQL a Azure cache pro Redis.
 
 Služba Azure jaře Cloud vylepšuje prostředí diagnostiky aplikací pro vývojáře a operátory integrací Azure Monitor, Application Insights a Log Analytics.
-
-### <a name="what-service-plans-does-azure-spring-cloud-offer"></a>Jaké plány služeb nabízí Azure jaře Cloud?
-
-Azure jaře Cloud nabízí v období Preview jeden plán služeb.  Nasazení jarního cloudu obsahuje 16 vCPU jader a 32 gigabajtů (GB) paměti.  Horní mez pro každou instanci mikroslužeb v rámci nasazení je 4 vCPU jádra s 8 GB paměti.
-
-Prostředek | Částka
-------- | -------
-Instance aplikace na jarní aplikaci | 20
-Celkový počet instancí aplikace na jednu instanci cloudové služby Azure na jaře | 500
-Instance služby Azure jaře Cloud Service na oblast na předplatné | 10
-Trvalé svazky | 10 × 50 GBytes
-
-\*Pokud _Chcete tento limit zvýšit, otevřete [lístek podpory](https://azure.microsoft.com/support/faq/)._
-
-Další informace najdete v tématu [Nejčastější dotazy k podpoře Azure](https://azure.microsoft.com/support/faq/).
 
 ### <a name="how-secure-is-azure-spring-cloud"></a>Jak zabezpečená je Azure jarní Cloud?
 
@@ -59,7 +44,10 @@ Při vydání verze Preview má Azure jarní Cloud následující známá omezen
 * `spring.application.name`bude přepsáno názvem aplikace, který se používá k vytvoření jednotlivých aplikací.
 * `server.port`v konfiguračním souboru není povolený z úložiště Git. Přidání do konfiguračního souboru bude nejspíš způsobit, že aplikace nebude dostupná z jiných aplikací nebo z Internetu.
 * Šablony Azure Portal a Azure Resource Manager nepodporují nahrávání balíčků aplikací. Balíčky aplikací můžete nahrát jenom nasazením aplikace přes rozhraní příkazového řádku Azure CLI.
-* Další informace o omezeních kvóty najdete v tématu [Jaké plány služeb nabízí Azure jaře Cloud](#what-service-plans-does-azure-spring-cloud-offer).
+
+### <a name="what-pricing-tiers-are-available"></a>Jaké cenové úrovně jsou k dispozici? 
+Který z nich mám použít a jaká jsou omezení v rámci jednotlivých vrstev?
+* Azure jaře Cloud nabízí dvě cenové úrovně: Basic a Standard. Úroveň Basic je zaměřená na vývoj a testování a vyzkoušení služby Azure Pramenitého cloudu. Úroveň Standard je optimalizovaná tak, aby spouštěla provozní provoz pro obecné účely. Omezení a porovnání na úrovni funkcí najdete v tématu [Podrobnosti o cenách jarního cloudu Azure](https://azure.microsoft.com/pricing/details/spring-cloud/) .
 
 ### <a name="how-can-i-provide-feedback-and-report-issues"></a>Jak můžu sdělit svůj názor a ohlásit problémy?
 

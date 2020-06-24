@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 03/25/2020
-ms.openlocfilehash: 6d00c7d7cc88427a3500b28891ec70bb8a4bbb43
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: a5f01e81564561fe43ef6e55e6e9b3b67d6e1d77
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005206"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945609"
 ---
 # <a name="schedule-and-run-recurring-automated-tasks-processes-and-workflows-with-azure-logic-apps"></a>Plánování a spouštění opakujících se automatizovaných úloh, procesů a pracovních postupů pomocí Azure Logic Apps
 
@@ -52,9 +52,9 @@ Pracovní postup aplikace logiky můžete spustit pomocí triggeru opakování n
 
 Tady jsou rozdíly mezi těmito triggery:
 
-* **Opakování**: pracovní postup se spouští v pravidelných časových intervalech na základě zadaného plánu. Pokud nedojde k opakování, Trigger opakování nezpracovává zmeškané opakování, ale restartuje opakování s dalším naplánovaným intervalem. Můžete zadat datum a čas zahájení i časové pásmo. Pokud vyberete "Day", můžete zadat hodiny dne a minuty hodiny, například každý den v 2:30. Pokud vyberete "Week", můžete také vybrat dny v týdnu, například středa a sobotu. Další informace najdete v tématu [vytváření, plánování a spouštění opakovaných úloh a pracovních postupů s triggerem opakování](../connectors/connectors-native-recurrence.md).
+* **Opakování**: pracovní postup se spouští v pravidelných časových intervalech na základě zadaného plánu. Pokud se opakování nedaří, například kvůli přerušení nebo zakázaným pracovním postupům, aktivační událost opakování nezpracovává zmeškané opakování, ale restartuje opakování s dalším naplánovaným intervalem. Můžete zadat datum a čas zahájení i časové pásmo. Pokud vyberete "Day", můžete zadat hodiny dne a minuty hodiny, například každý den v 2:30. Pokud vyberete "Week", můžete také vybrat dny v týdnu, například středa a sobotu. Další informace najdete v tématu [vytváření, plánování a spouštění opakovaných úloh a pracovních postupů s triggerem opakování](../connectors/connectors-native-recurrence.md).
 
-* **Posuvné okno**: spouští pracovní postup v pravidelných časových intervalech, které zpracovávají data v souvislých blocích. V případě nevracení se aktivační událost posuvných oken vrátí zpět a zpracuje zmeškané opakování. Můžete zadat počáteční datum a čas, časové pásmo a dobu trvání pro zpoždění každého opakování ve vašem pracovním postupu. Tato aktivační událost nepodporuje Pokročilá plánování, například konkrétní hodiny dne, minuty hodiny a dny v týdnu. Další informace najdete v tématu [vytváření, plánování a spouštění opakovaných úloh a pracovních postupů pomocí posuvných triggerů okna](../connectors/connectors-native-sliding-window.md).
+* **Posuvné okno**: spouští pracovní postup v pravidelných časových intervalech, které zpracovávají data v souvislých blocích. Pokud se opakování neobjevují, například kvůli přerušení nebo zakázaným pracovním postupům, přepne se posuvná aktivační událost okna zpátky a zpracuje zmeškané opakování. Můžete zadat počáteční datum a čas, časové pásmo a dobu trvání pro zpoždění každého opakování ve vašem pracovním postupu. Tato aktivační událost nepodporuje Pokročilá plánování, například konkrétní hodiny dne, minuty hodiny a dny v týdnu. Další informace najdete v tématu [vytváření, plánování a spouštění opakovaných úloh a pracovních postupů pomocí posuvných triggerů okna](../connectors/connectors-native-sliding-window.md).
 
 <a name="schedule-actions"></a>
 
@@ -126,7 +126,7 @@ Bez ohledu na to, jak daleko v minulosti zadáte čas zahájení, například 20
 
 Tady jsou různé příklady opakování, které můžete nastavit pro aktivační události, které podporují tyto možnosti:
 
-| Trigger | Opakování | Interval | Frequency | Čas spuštění | V tyto dny | V těchto hodinách | V těchto minutách | Poznámka |
+| Trigger | Opakování | Interval | Frekvence | Čas spuštění | V tyto dny | V těchto hodinách | V těchto minutách | Poznámka |
 |---------|------------|----------|-----------|------------|---------------|----------------|------------------|------|
 | Vzorec <br>Posuvné okno | Spustit každých 15 minut (žádné počáteční datum a čas) | 15 | Minuta | nTato | znemožnit | nTato | nTato | Tento plán se spustí okamžitě a pak vypočítá budoucí opakování na základě posledního času spuštění. |
 | Vzorec <br>Posuvné okno | Spustit každých 15 minut (s počátečním datem a časem) | 15 | Minuta | *StartDate* T*čas_spuštění*Z | znemožnit | nTato | nTato | Tento plán se nespustí *dříve* , než je zadané počáteční datum a čas, a pak vypočítá budoucí opakování na základě posledního času spuštění. |

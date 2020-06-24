@@ -7,29 +7,29 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/02/2017
 ms.author: kumud
-ms.openlocfilehash: f1d4b02731f9e0f22fb1eaba03e55e49f84cd87a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 33a3c41f49833d669fd94ccf1e22afed971e544b
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76845093"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737967"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-rest-api"></a>Řešení potíží s připojením k Azure Network Watcher pomocí Azure REST API
 
 > [!div class="op_single_selector"]
-> - [Portál](network-watcher-connectivity-portal.md)
+> - [Azure Portal](network-watcher-connectivity-portal.md)
 > - [PowerShell](network-watcher-connectivity-powershell.md)
 > - [Azure CLI](network-watcher-connectivity-cli.md)
 > - [Azure REST API](network-watcher-connectivity-rest.md)
 
 Naučte se používat řešení potíží s připojením k ověření, jestli je možné navázat přímé připojení TCP z virtuálního počítače do daného koncového bodu.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V tomto článku se předpokládá, že máte následující zdroje:
 
@@ -37,7 +37,7 @@ V tomto článku se předpokládá, že máte následující zdroje:
 * Virtuální počítače pro řešení potíží s připojeními.
 
 > [!IMPORTANT]
-> Řešení potíží s připojením vyžaduje, aby virtuální počítač, ze `AzureNetworkWatcherExtension` kterého řešení řešíte, byl nainstalován rozšíření virtuálního počítače. Pokud chcete nainstalovat rozšíření na virtuální počítač s Windows, přejděte na web [azure Network Watcher Agent Virtual Machine Extension for Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) a pro Linux VM, navštivte [rozšíření Azure Network Watcher Agent Virtual Machine pro Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). V cílovém koncovém bodě není rozšíření vyžadováno.
+> Řešení potíží s připojením vyžaduje, aby virtuální počítač, ze kterého řešení řešíte, byl `AzureNetworkWatcherExtension` nainstalován rozšíření virtuálního počítače. Pokud chcete nainstalovat rozšíření na virtuální počítač s Windows, přejděte na web [azure Network Watcher Agent Virtual Machine Extension for Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) a pro Linux VM, navštivte [rozšíření Azure Network Watcher Agent Virtual Machine pro Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). V cílovém koncovém bodě není rozšíření vyžadováno.
 
 ## <a name="log-in-with-armclient"></a>Přihlášení pomocí ARMClient
 
@@ -132,7 +132,7 @@ null
 
 ### <a name="response"></a>Odpověď
 
-Následující odpověď je z předchozího příkladu.  V této odpovědi `ConnectionStatus` je **nedosažitelný**. Vidíte, že se nepovedlo úspěšně odeslat všechny sondy. Připojení na virtuálním zařízení se nepovedlo, protože se nakonfiguroval `NetworkSecurityRule` uživatel s názvem **UserRule_Port80**nakonfigurovaný tak, aby blokoval příchozí provoz na portu 80. Tyto informace se dají použít k tomu, aby se nastudovaly problémy s připojením.
+Následující odpověď je z předchozího příkladu.  V této odpovědi `ConnectionStatus` je **nedosažitelný**. Vidíte, že se nepovedlo úspěšně odeslat všechny sondy. Připojení na virtuálním zařízení se nepovedlo, protože se `NetworkSecurityRule` nakonfiguroval uživatel s názvem **UserRule_Port80**nakonfigurovaný tak, aby blokoval příchozí provoz na portu 80. Tyto informace se dají použít k tomu, aby se nastudovaly problémy s připojením.
 
 ```json
 {
@@ -248,7 +248,7 @@ null
 
 ### <a name="response"></a>Odpověď
 
-V následujícím příkladu `connectionStatus` je zobrazen jako **nedosažitelný**. V `hops` podrobnostech vidíte, `issues` že provoz byl zablokován z důvodu. `UserDefinedRoute`
+V následujícím příkladu `connectionStatus` je zobrazen jako **nedosažitelný**. V `hops` podrobnostech vidíte, `issues` že provoz byl zablokován z důvodu `UserDefinedRoute` .
 
 ```json
 {
@@ -344,7 +344,7 @@ null
 
 ### <a name="response"></a>Odpověď
 
-V následující reakci `connectionStatus` vidíte zobrazení jako **dostupné**. Po úspěšném připojení se dodávají hodnoty latence.
+V následující reakci vidíte zobrazení `connectionStatus` jako **dostupné**. Po úspěšném připojení se dodávají hodnoty latence.
 
 ```json
 {

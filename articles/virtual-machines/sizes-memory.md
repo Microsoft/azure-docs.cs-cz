@@ -1,20 +1,26 @@
 ---
 title: Velikosti virtuálních počítačů Azure – paměť | Microsoft Docs
-description: Obsahuje seznam různých velikostí optimalizovaných pro paměť, které jsou dostupné pro virtuální počítače v Azure. Uvádí informace o počtu vCPU, datových discích a síťových rozhraních a propustnosti úložiště a šířce pásma sítě pro velikosti v této sérii.
+description: Obsahuje seznam různých velikostí optimalizovaných pro paměť, které jsou dostupné pro virtuální počítače v Azure. Uvádí informace o počtu vCPU, datových discích a síťových adaptérů a propustnosti úložiště a šířce pásma sítě pro velikosti v této sérii.
+services: virtual-machines
+documentationcenter: ''
 author: mimckitt
+manager: gwallace
+editor: ''
+tags: azure-resource-manager,azure-service-management
 keywords: Izolace virtuálních počítačů, izolovaný virtuální počítač, izolace, izolovaný režim
+ms.assetid: ''
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.devlang: na
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
-ms.openlocfilehash: 6e2486dfeae221e7e3ddadcdcac0d9779d49542c
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 5e920f165232ec79dcced1de632d90f463ff58d9
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84678660"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791465"
 ---
 # <a name="memory-optimized-virtual-machine-sizes"></a>Paměťově optimalizované velikosti virtuálních počítačů
 
@@ -28,7 +34,9 @@ Paměťově optimalizované velikosti virtuálních počítačů nabízejí vyso
 
 - [Ev3 a Esv3-Series](ev3-esv3-series.md) Intel &reg; Xeon &reg; 8171M 2,1 GHz (Skylake) nebo procesor Intel &reg; Xeon &reg; E5-2673 2,3 v4 (Broadwell) v konfiguraci s více vlákny, které poskytují lepší hodnotu pro většinu úloh pro obecné účely a přinášejí Ev3 do sblížení s virtuálními počítači pro obecné účely většiny ostatních cloudů. Paměť se rozšířila (od 7 GiB/vCPU do 8 GiB/vCPU), zatímco limity disku a sítě se přizpůsobily na základě počtu jader, které je možné přesunout do technologie Hyper-Threading. Ev3 je následná velikost virtuálních počítačů s vysokou pamětí pro řady D/Dv2.
 
-- [Edv4 a Edsv4-Series](edv4-edsv4-series.md) běží na 2 generaci &reg; procesorů Intel Xeon &reg; Platinum 8272CL (Cascade Lake), ideální pro extrémně velké databáze nebo jiné aplikace, které využívají vysoké počty vCPU a velké množství paměti. Nabízí veškerou základní rychlost Turbo 3,4 GHz a nabízí [ &reg; technologii Intel Turbo rozbušky 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [ &reg; technologii Intel Hyper-Threading](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) a [Intel &reg; Advanced Vector Extensions 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html). 
+- [Ev4 a Esv4-Series](ev4-esv4-series.md) běží v 2 &reg; . generaci procesorů Intel Xeon &reg; Platinum 8272CL (Cascade Lake) v konfiguraci s více vlákny, jsou ideální pro různé podnikové aplikace náročné na paměť a funkce až 504 GIB paměti RAM. Nabízí technologii [Intel &reg; Turbo rozbušky 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [technologii Intel &reg; Hyper-Threading](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) a [Intel &reg; Advanced Vector Extensions 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html).
+
+- [Edv4 a Edsv4-Series](edv4-edsv4-series.md) běží v 2. generaci &reg; &reg; procesorů Intel Xeon Platinum 8272CL (Cascade Lake), ideální pro extrémně velké databáze nebo jiné aplikace, které využívají vysoké počty vCPU a velké množství paměti. Nabízí veškerou základní rychlost Turbo 3,4 GHz a nabízí [ &reg; technologii Intel Turbo rozbušky 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [ &reg; technologii Intel Hyper-Threading](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) a [Intel &reg; Advanced Vector Extensions 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html).
 
 - [Řada M-Series](m-series.md) nabízí vysoký počet vCPU (až 128 vCPU) a velké množství paměti (až 3,8 TIB). Je to také ideální pro extrémně velké databáze nebo jiné aplikace, které využívají vysoké počty vCPU a velké množství paměti.
 

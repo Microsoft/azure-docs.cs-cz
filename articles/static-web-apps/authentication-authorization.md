@@ -7,24 +7,24 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 1ac1df402c25c0f6e5f07ce8d9631c01c0fa504c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 4c72a80b164e8ca1dd649503dcb968efd92be797
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655263"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85297065"
 ---
-# <a name="authentication-and-authorization-for-azure-static-web-apps-preview"></a>Ověřování a autorizace pro Azure static Web Apps Preview
+# <a name="authentication-and-authorization-for-azure-static-web-apps-preview"></a>Ověřování a autorizace pro službu Azure Static Web Apps ve verzi Preview
 
 Služba Azure static Web Apps zjednodušuje možnosti ověřování tím, že spravuje ověřování s následujícími poskytovateli:
 
 - Azure Active Directory
-- GitHub
+- GitHubu
 - Facebook
 - Google<sup>1</sup>
 - Twitter
 
-[Pozvánky](#invitations) specifické pro poskytovatele přidružuje uživatele k rolím a autorizovaným uživatelům je udělen přístup k [trasám](routes.md) podle pravidel definovaných v souboru _Routes. JSON_ .
+[Pozvánky](#invitations) specifické pro poskytovatele spojují uživatele s rolemi a autorizovanými uživateli je udělen přístup k [trasám](routes.md) podle pravidel definovaných v _routes.jsv_ souboru.
 
 Všichni poskytovatelé ověřování jsou ve výchozím nastavení povoleni. Chcete-li zakázat poskytovatele ověřování, [Zablokujte přístup](#block-an-authorization-provider) pomocí vlastního pravidla směrování.
 
@@ -37,13 +37,13 @@ Každý uživatel, který přistupuje ke statické webové aplikaci, patří k j
 - **anonymní**: všichni uživatelé automaticky patří do _anonymní_ role.
 - **ověřeno**: všichni uživatelé, kteří se přihlásili, patří k _ověřené_ roli.
 
-Kromě předdefinovaných rolí můžete vytvořit nové role, přiřazovat je uživatelům přes pozvánky a odkazovat na ně v souboru _Routes. JSON_ .
+Kromě předdefinovaných rolí můžete vytvořit nové role, přiřazovat je uživatelům přes pozvánky a odkazovat na ně v _routes.jsv_ souboru.
 
 ## <a name="role-management"></a>Správa rolí
 
 ### <a name="add-a-user-to-a-role"></a>Přidání uživatele k roli
 
-Chcete-li přidat uživatele na web, vygenerujete pozvánky, které vám umožní přidružit uživatele k určitým rolím. Role se definují a udržují v souboru _Routes. JSON_ .
+Chcete-li přidat uživatele na web, vygenerujete pozvánky, které vám umožní přidružit uživatele k určitým rolím. Role se definují a udržují v _routes.jsv_ souboru.
 
 <a name="invitations" id="invitations"></a>
 
@@ -57,7 +57,7 @@ Pozvánky jsou specifické pro jednotlivé zprostředkovatele autorizace, takže
 | ---------------------- | ----------------- |
 | Azure Active Directory | e-mailovou adresu     |
 | Facebook               | e-mailovou adresu     |
-| GitHub                 | uživatelské jméno          |
+| GitHubu                 | uživatelské jméno          |
 | Google<sup>1</sup>     | e-mailovou adresu     |
 | Twitter                | uživatelské jméno          |
 
@@ -192,6 +192,10 @@ Pokud chcete poskytovatele zablokovat, můžete vytvořit [pravidla směrování
   "statusCode": "404"
 }
 ```
+
+## <a name="restrictions"></a>Omezení
+
+Obecná omezení a omezení najdete v článku věnovaném [kvótám](quotas.md) .
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -4,25 +4,25 @@ description: V tomto článku se dozvíte, jak směrovat síťový provoz pomoc�
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
+manager: mtillman
 editor: ''
 tags: azure-resource-manager
 Customer intent: I want to route traffic from one subnet, to a different subnet, through a network virtual appliance.
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 5fa94b93e081ab6334c39b848068f50682f5f1f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 70f7bd4443602f6f18be54c5bc4ff038e868e58e
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80235052"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84703345"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-the-azure-cli"></a>Směrování síťového provozu pomocí směrovací tabulky pomocí Azure CLI
 
@@ -36,7 +36,7 @@ Azure ve výchozím nastavení automaticky směruje provoz mezi všemi podsítě
 * Nasazení virtuálních počítačů do různých podsítí
 * Směrování provozu z jedné podsítě do jiné přes síťové virtuální zařízení
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -121,7 +121,7 @@ az network vnet subnet update \
 
 Síťové virtuální zařízení je virtuální počítač, který provádí síťovou funkci, jako je směrování, brána firewall nebo optimalizace sítě WAN.
 
-Vytvořte síťové virtuální zařízení v podsíti *DMZ* pomocí [AZ VM Create](/cli/azure/vm). Když vytvoříte virtuální počítač, Azure ve výchozím nastavení vytvoří a přiřadí veřejné IP adresy k virtuálnímu počítači. `--public-ip-address ""` Parametr dá službě Azure pokyn, aby nevytvořila a přiřadila veřejnou IP adresu virtuálnímu počítači, protože virtuální počítač nemusí být připojený k Internetu. Pokud ve výchozím umístění klíčů ještě neexistují klíče SSH, příkaz je vytvoří. Chcete-li použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`.
+Vytvořte síťové virtuální zařízení v podsíti *DMZ* pomocí [AZ VM Create](/cli/azure/vm). Když vytvoříte virtuální počítač, Azure ve výchozím nastavení vytvoří a přiřadí veřejné IP adresy k virtuálnímu počítači. `--public-ip-address ""`Parametr dá službě Azure pokyn, aby nevytvořila a přiřadila veřejnou IP adresu virtuálnímu počítači, protože virtuální počítač nemusí být připojený k Internetu. Pokud ve výchozím umístění klíčů ještě neexistují klíče SSH, příkaz je vytvoří. Chcete-li použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`.
 
 ```azurecli-interactive
 az vm create \
@@ -162,7 +162,7 @@ Provedení příkazu může trvat až minutu.
 
 Vytvořte ve virtuální síti dva virtuální počítače, abyste mohli ověřit, že provoz z *veřejné* podsítě je směrován do *privátní* podsítě prostřednictvím síťové virtuální zařízení v pozdějším kroku. 
 
-Vytvořte virtuální počítač ve *veřejné* podsíti pomocí [AZ VM Create](/cli/azure/vm). `--no-wait` Parametr umožňuje službě Azure spustit příkaz na pozadí, takže můžete pokračovat k dalšímu příkazu. Pro zjednodušení tohoto článku se používá heslo. Klíče se obvykle používají v produkčních nasazeních. Pokud používáte klíče, musíte také nakonfigurovat předávání agenta SSH. Další informace najdete v dokumentaci ke klientovi SSH. V `<replace-with-your-password>` následujícím příkazu nahraďte heslem, které jste si zvolili.
+Vytvořte virtuální počítač ve *veřejné* podsíti pomocí [AZ VM Create](/cli/azure/vm). `--no-wait`Parametr umožňuje službě Azure spustit příkaz na pozadí, takže můžete pokračovat k dalšímu příkazu. Pro zjednodušení tohoto článku se používá heslo. Klíče se obvykle používají v produkčních nasazeních. Pokud používáte klíče, musíte také nakonfigurovat předávání agenta SSH. Další informace najdete v dokumentaci ke klientovi SSH. `<replace-with-your-password>`V následujícím příkazu nahraďte heslem, které jste si zvolili.
 
 ```azurecli-interactive
 adminPassword="<replace-with-your-password>"
@@ -210,7 +210,7 @@ Poznamenejte si hodnotu **publicIpAddress**. Tato adresa se používá pro pří
 
 ## <a name="route-traffic-through-an-nva"></a>Směrování provozu přes síťové virtuální zařízení
 
-Pomocí následujícího příkazu vytvořte relaci SSH s virtuálním počítačem s *myVmPrivate* . * \<PublicIpAddress>* nahraďte veřejnou IP adresou vašeho virtuálního počítače. V předchozím příkladu je IP adresa *13.90.242.231*.
+Pomocí následujícího příkazu vytvořte relaci SSH s virtuálním počítačem s *myVmPrivate* . Nahraďte *\<publicIpAddress>* veřejnou IP adresou vašeho virtuálního počítače. V předchozím příkladu je IP adresa *13.90.242.231*.
 
 ```bash
 ssh azureuser@<publicIpAddress>

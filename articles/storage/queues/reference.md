@@ -1,5 +1,5 @@
 ---
-title: Reference k Azure Queue Storage
+title: Referenční informace ke službě Azure Queue Storage
 description: Vyhledejte Azure Storage Reference k rozhraní API, soubory Readme a balíčky klientské knihovny.
 author: mhopkins-msft
 ms.author: mhopkins
@@ -8,14 +8,14 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: ripohane
-ms.openlocfilehash: d01fb4d467b34f4093cbeb1346786ad793eede7d
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: fbf20b92edf5d8dce8438731c2812a78e457a402
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84346007"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976655"
 ---
-# <a name="azure-queue-storage-reference"></a>Reference k Azure Queue Storage
+# <a name="azure-queue-storage-reference"></a>Referenční informace ke službě Azure Queue Storage
 
 Vyhledejte Reference k rozhraní API služby Azure Queue Storage, balíčky knihoven, soubory Readme a úvodní články.
 
@@ -67,8 +67,8 @@ Následující tabulka uvádí referenční a ukázkovou dokumentaci pro rozhran
 
 |  Verze  | Referenční dokumentace | Balíček | Rychlé zprovoznění |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12. x | [Klientská knihovna Azure Storage Queues pro Python](/python/api/overview/azure/storage-queue-readme) | [Balíček (PyPI)](https://pypi.org/project/azure-storage-queue/) | [Rychlý Start: Klientská knihovna Azure Queue Storage V12 pro Python](/azure/storage/queues/storage-quickstart-queues-python) |
-| 2.x | [Azure – Storage – fronta](/python/api/azure-storage-queue/?view=azure-python-previous) | [Balíček (PyPI)](https://pypi.org/project/azure-storage-queue/2.1.0/) | [Jak používat Azure Queue Storage v 2.1 z Pythonu](/azure/storage/queues/storage-python-how-to-use-queue-storage) |
+| 12. x | [Azure Storage klientské knihovny V12 pro Python](/azure/developer/python/sdk/storage/overview?view=storage-py-v12) | [Balíček (PyPI)](https://pypi.org/project/azure-storage-queue/) | [Rychlý Start: Klientská knihovna Azure Queue Storage V12 pro Python](/azure/storage/queues/storage-quickstart-queues-python) |
+| 2.x | [Azure Storage klientských knihoven v2 pro Python](/azure/developer/python/sdk/storage/overview?view=storage-py-v2) | [Balíček (PyPI)](https://pypi.org/project/azure-storage-queue/2.1.0/) | [Jak používat Azure Queue Storage v 2.1 z Pythonu](/azure/storage/queues/storage-python-how-to-use-queue-storage) |
 
 ## <a name="javascript-client-libraries"></a>JavaScript – klientské knihovny
 
@@ -77,7 +77,7 @@ Následující tabulka uvádí referenční a ukázkovou dokumentaci pro rozhran
 |  Verze  | Referenční dokumentace | Balíček | Rychlé zprovoznění |
 | :-------: | ----------------------- | ------- | ---------- |
 | 12. x | [Klientská knihovna Azure Storage Queue pro JavaScript](/javascript/api/overview/azure/storage-queue-readme) | [Balíček (npm)](https://www.npmjs.com/package/@azure/storage-queue) | [Rychlý Start: Klientská knihovna Azure Queue Storage V12 pro JavaScript](/azure/storage/queues/storage-quickstart-queues-nodejs) |
-| 10. x | [@azure/storage-queue](/javascript/api/@azure/storage-queue/?view=azure-node-legacy) | [Balíček (npm)](https://www.npmjs.com/package/@azure/storage-queue/v/10.3.0) | [Použití služby Azure Queue k vytváření a odstraňování front z Node. js](/azure/storage/queues/storage-nodejs-how-to-use-queues) |
+| 10. x | [@azure/storage-queue](/javascript/api/@azure/storage-queue/?view=azure-node-legacy) | [Balíček (npm)](https://www.npmjs.com/package/@azure/storage-queue/v/10.3.0) | [Použití služby Azure Queue Service k vytváření a odstraňování front z Node.js](/azure/storage/queues/storage-nodejs-how-to-use-queues) |
 
 ## <a name="rest-apis"></a>Rozhraní REST API
 
@@ -95,7 +95,7 @@ Následující tabulka uvádí referenční a ukázkovou dokumentaci pro rozhran
 
 Následující seznam obsahuje odkazy na knihovny pro jiné programovací jazyky a platformy.
 
-- [Volat](https://azure.github.io/azure-storage-cpp)
+- [C++](https://azure.github.io/azure-storage-cpp)
 - [Ruby](https://azure.github.io/azure-storage-ruby)
 - [PHP](https://azure.github.io/azure-storage-php/)
 - [iOS](https://azure.github.io/azure-storage-ios/)

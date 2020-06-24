@@ -8,18 +8,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: reference
 ms.date: 05/04/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4837b654e5b538dda6f55eae9b15ddf0c5604693
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 3bc1546566e5bb79a207899fab7418480e5cfab0
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299464"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117875"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Role správce podle úlohy správce v Azure Active Directory
 
@@ -38,7 +38,7 @@ Zákaz proxy aplikací | Správce aplikace |
 Stažení služby konektoru | Správce aplikace | 
 Načíst veškerou konfiguraci | Správce aplikace | 
 
-## <a name="b2c"></a>B2C
+## <a name="external-identitiesb2c"></a>Externí identity/B2C
 
 Úkol | Nejnižší privilegovaná role | Další role
 ---- | --------------------- | ----------------
@@ -47,11 +47,11 @@ Vytváření B2Cch aplikací | Globální správce |
 Vytváření podnikových aplikací | Správce cloudové aplikace | Správce aplikace
 Vytváření, čtení, aktualizace a odstraňování zásad B2C | Správce zásad IEF B2C | 
 Vytváření, čtení, aktualizace a odstraňování zprostředkovatelů identity | Správce externích zprostředkovatelů identity | 
-Vytváření, čtení, aktualizace a odstraňování uživatelských toků pro resetování hesel | Správce toku B2C uživatele | 
-Vytváření, čtení, aktualizace a odstraňování uživatelských toků upravujících profily | Správce toku B2C uživatele | 
-Vytváření, čtení, aktualizace a odstraňování toků přihlašování uživatelů | Správce toku B2C uživatele | 
-Vytváření, čtení, aktualizace a odstraňování toku uživatelů při registraci |Správce toku B2C uživatele | 
-Vytváření, čtení, aktualizace a odstraňování atributů uživatele | Správce atributů toku uživatele B2C | 
+Vytváření, čtení, aktualizace a odstraňování uživatelských toků pro resetování hesel | Správce toku externího ID uživatele | 
+Vytváření, čtení, aktualizace a odstraňování uživatelských toků upravujících profily | Správce toku externího ID uživatele | 
+Vytváření, čtení, aktualizace a odstraňování toků přihlašování uživatelů | Správce toku externího ID uživatele | 
+Vytváření, čtení, aktualizace a odstraňování toku uživatelů při registraci |Správce toku externího ID uživatele | 
+Vytváření, čtení, aktualizace a odstraňování atributů uživatele | Správce atributů toku uživatele externího ID | 
 Vytváření, čtení, aktualizace a odstraňování uživatelů | Správce uživatele
 Načíst veškerou konfiguraci | Globální čtenář | 
 Čtení protokolů auditu B2C | Globální čtenář ([Viz dokumentace](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs)) | 
@@ -73,6 +73,14 @@ Načíst veškerou konfiguraci | Čtečky adresářů | Výchozí role uživatel
 Konfigurace vlastností společnosti | Globální správce | 
 
 ## <a name="connect"></a>Připojit
+
+Úkol | Nejnižší privilegovaná role | Další role
+---- | --------------------- | ----------------
+Předávací ověřování | Globální správce  | 
+Načíst veškerou konfiguraci | Globální čtenář | Globální správce  |
+Bezproblémové jednotné přihlašování | Globální správce  | 
+
+## <a name="cloud-provisioning"></a>Zřizování cloudu
 
 Úkol | Nejnižší privilegovaná role | Další role
 ---- | --------------------- | ----------------
@@ -109,7 +117,7 @@ Načíst veškerou konfiguraci | Čtečky adresářů | Výchozí role uživatel
 Úkol | Nejnižší privilegovaná role | Další role
 ---- | --------------------- | ----------------
 Vytvořit instanci Azure AD Domain Services | Globální správce | 
-Provedení všech úloh Azure AD Domain Services | Skupina správců řadičů domény Azure AD ([Viz dokumentace](../../active-directory-domain-services/tutorial-create-management-vm.md#administrative-tasks-you-can-perform-on-an-azure-ad-ds-managed-domain)) | 
+Provedení všech úloh Azure AD Domain Services | Skupina správců řadičů domény Azure AD ([Viz dokumentace](../../active-directory-domain-services/tutorial-create-management-vm.md#administrative-tasks-you-can-perform-on-a-managed-domain)) | 
 Načíst veškerou konfiguraci | Čtečka v předplatném Azure obsahující službu služba AD DS | 
 
 ## <a name="devices"></a>Zařízení
@@ -181,7 +189,7 @@ Načíst veškerou konfiguraci | Čtecí modul zabezpečení |
 Čtení všech detekcí rizik | Čtecí modul zabezpečení | 
 Číst chyby zabezpečení | Čtecí modul zabezpečení | 
 
-## <a name="licenses"></a>Licenses
+## <a name="licenses"></a>Licence
 
 Úkol | Nejnižší privilegovaná role | Další role
 ---- | --------------------- | ----------------
@@ -203,7 +211,7 @@ Vyzkoušet nebo koupit předplatné | Správce fakturace |
 ---- | --------------------- | ----------------
 Čtení protokolů přihlášení | Čtečka sestav | Čtenář zabezpečení, správce zabezpečení
 
-## <a name="multi-factor-authentication"></a>Vícefaktorové ověřování
+## <a name="multi-factor-authentication"></a>Ověřování pomocí služby Multi-Factor Authentication
 
 Úkol | Nejnižší privilegovaná role | Další role
 ---- | --------------------- | ----------------

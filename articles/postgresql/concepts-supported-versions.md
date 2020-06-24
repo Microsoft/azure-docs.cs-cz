@@ -5,14 +5,14 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 06/17/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 61dd98028b7342290984615ea19b561b48aaeadb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 61d9712026daab63a002793adf2e17b9db943f94
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74792232"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976893"
 ---
 # <a name="supported-postgresql-major-versions"></a>Podporované hlavní verze PostgreSQL
 Společnost Microsoft se zaměřuje na podporu n-2 verzí modulu PostgreSQL v Azure Database for PostgreSQLm jediném serveru. Verze by představovaly aktuální hlavní verzi v Azure (n) a dvě předchozí hlavní verze (-2).
@@ -20,16 +20,16 @@ Společnost Microsoft se zaměřuje na podporu n-2 verzí modulu PostgreSQL v Az
 Azure Database for PostgreSQL aktuálně podporuje následující hlavní verze:
 
 ## <a name="postgresql-version-11"></a>PostgreSQL verze 11
-Aktuální dílčí verze je 11,5. Další informace o vylepšeních a opravách v této dílčí verzi najdete v [dokumentaci k PostgreSQL](https://www.postgresql.org/docs/11/static/release-11-5.html) .
+Aktuální dílčí verze je 11,6. Další informace o vylepšeních a opravách v této dílčí verzi najdete v [dokumentaci k PostgreSQL](https://www.postgresql.org/docs/11/static/release-11-6.html) .
 
 ## <a name="postgresql-version-10"></a>PostgreSQL verze 10
-Aktuální dílčí verze je 10,10. Další informace o vylepšeních a opravách v této dílčí verzi najdete v [dokumentaci k PostgreSQL](https://www.postgresql.org/docs/10/static/release-10-10.html) .
+Aktuální dílčí verze je 10,11. Další informace o vylepšeních a opravách v této dílčí verzi najdete v [dokumentaci k PostgreSQL](https://www.postgresql.org/docs/10/static/release-10-11.html) .
 
 ## <a name="postgresql-version-96"></a>PostgreSQL verze 9,6
-Aktuální dílčí verze je 9.6.15. Další informace o vylepšeních a opravách v této dílčí verzi najdete v [dokumentaci k PostgreSQL](https://www.postgresql.org/docs/9.6/static/release-9-6-15.html) .
+Aktuální dílčí verze je 9.6.16. Další informace o vylepšeních a opravách v této dílčí verzi najdete v [dokumentaci k PostgreSQL](https://www.postgresql.org/docs/9.6/static/release-9-6-16.html) .
 
 ## <a name="postgresql-version-95"></a>PostgreSQL verze 9,5
-Aktuální dílčí verze je 9.5.19. Informace o vylepšeních a opravách v této dílčí verzi najdete v [dokumentaci k PostgreSQL](https://www.postgresql.org/docs/9.5/static/release-9-5-19.html) .
+Aktuální dílčí verze je 9.5.20. Informace o vylepšeních a opravách v této dílčí verzi najdete v [dokumentaci k PostgreSQL](https://www.postgresql.org/docs/9.5/static/release-9-5-20.html) .
 
 ## <a name="managing-upgrades"></a>Správa upgradů
 Projekt PostgreSQL pravidelně řeší nahlášené chyby v menších verzích. Azure Database for PostgreSQL automaticky opraví servery s podverzemi v rámci měsíčního nasazení služby. 

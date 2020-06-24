@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/29/2019
 ms.author: memildin
-ms.openlocfilehash: 408b0f020be72b8e6b10dd6c97298afda1b91360
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4d65b43dad80cb130d582132d21e2d10bd8051dc
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79245301"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791380"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Doporučení zabezpečení v Azure Security Center 
 V tomto tématu se dozvíte, jak zobrazit a pochopit doporučení v Azure Security Center, která vám pomůžou chránit vaše prostředky Azure.
@@ -53,7 +53,7 @@ Security Center analyzuje stav zabezpečení vašich prostředků, aby identifik
     Doporučení můžete filtrovat. Pokud chcete vyfiltrovat doporučení, vyberte v okně **doporučení** možnost **Filtr** . Otevře se okno **filtru** a vyberete závažnost a hodnoty stavu, které chcete zobrazit.
 
    * **Doporučení**: doporučení.
-   * **Bezpečný dopad na skóre**: skóre vygenerované Security centerm pomocí doporučení zabezpečení a použití pokročilých algoritmů k určení, jak rozhodující je každé doporučení. Další informace najdete v tématu [zabezpečení výpočtu skóre](security-center-secure-score.md#secure-score-calculation).
+   * **Bezpečný dopad na skóre**: skóre vygenerované Security centerm pomocí doporučení zabezpečení a použití pokročilých algoritmů k určení, jak rozhodující je každé doporučení. Další informace najdete v tématu [zabezpečení výpočtu skóre](secure-score-security-controls.md#how-your-secure-score-is-calculated).
    * **Prostředek**: zobrazí seznam prostředků, na které se vztahuje toto doporučení.
    * **Stavové řádky**: popisuje závažnost tohoto konkrétního doporučení:
        * **Vysoká (červená)**: ohrožení zabezpečení existuje smysluplným prostředkem (jako je aplikace, virtuální počítač nebo skupina zabezpečení sítě) a vyžaduje pozornost.

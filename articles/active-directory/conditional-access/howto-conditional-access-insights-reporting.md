@@ -97,7 +97,7 @@ Zobrazení rozpisu uživatelů nebo přihlášení ke každé z těchto podmíne
 
 Přihlášení konkrétního uživatele můžete prozkoumat také tak, že v dolní části řídicího panelu vyhledáte přihlášení. Dotaz na levé straně zobrazuje nejčastěji uživatele. Když se uživatel vybere, bude dotaz filtrovat vpravo.  
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="why-are-queries-failing-due-to-a-permissions-error"></a>Proč se dotazy nedaří kvůli chybě oprávnění?
 

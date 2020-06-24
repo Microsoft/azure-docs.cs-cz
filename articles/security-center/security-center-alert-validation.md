@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 5146878adf10e452f38fecb115ec40792ffa84f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cf732b92c1a208dd4c312ae442969ef958a021b4
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79139993"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791176"
 ---
 # <a name="alert-validation-eicar-test-file-in-azure-security-center"></a>Ověřování upozornění (testovací soubor EICAR) ve službě Azure Security Center
 Pomocí tohoto dokumentu se naučíte ověřovat, jestli je váš systém správně nakonfigurovaný pro výstrahy služby Azure Security Center.
@@ -37,9 +37,9 @@ Další informace najdete v tématech [výstrahy zabezpečení v Security Center
 
 Po instalaci agenta Security Center do počítače postupujte podle těchto kroků z počítače, ve kterém chcete být napadeným prostředkem výstrahy:
 
-1. Zkopírujte spustitelný soubor (například **Calc. exe**) na plochu počítače nebo do jiného adresáře, který chcete snadno přejmenovat, a přejmenujte ho jako **ASC_AlertTest_662jfi039N. exe**.
+1. Zkopírujte spustitelný soubor (například **calc.exe**) do desktopu počítače nebo do jiného adresáře, který chcete snadno přejmenovat, a přejmenujte ho jako **ASC_AlertTest_662jfi039N.exe**.
 1. Otevřete příkazový řádek a spusťte tento soubor s argumentem (pouze falešný název argumentu), například:```ASC_AlertTest_662jfi039N.exe -foo```
-1. Počkejte 5 až 10 minut a otevřete výstrahy služby Security Center. Měla by se zobrazit výstraha podobná následujícímu [příkladu](#alert-validate) :
+1. Počkejte 5 až 10 minut a otevřete výstrahy služby Security Center. Měla by se zobrazit výstraha.
 
 > [!NOTE]
 > Při kontrole tohoto testovacího upozornění pro systém Windows se ujistěte, že je **povoleno auditování argumentů** pole je **pravdivé**. Pokud je **hodnota false**, je nutné povolit auditování argumentů příkazového řádku. Pokud ho chcete povolit, použijte následující příkaz:
@@ -57,11 +57,7 @@ Po instalaci agenta Security Center do počítače postupujte podle těchto krok
 
     ```./asc_alerttest_662jfi039n testing eicar pipe```
 
-1. Počkejte 5 až 10 minut a otevřete výstrahy služby Security Center. Měla by se zobrazit výstraha podobná následujícímu [příkladu](#alert-validate) :
-
-### <a name="alert-example"></a>Příklad výstrahy<a name="alert-validate"></a>
-
-![Příklad ověření výstrahy](./media/security-center-alert-validation/security-center-alert-validation-fig2.png) 
+1. Počkejte 5 až 10 minut a otevřete výstrahy služby Security Center. Měla by se zobrazit výstraha.
 
 
 ## <a name="validate-alerts-on-kubernetes"></a>Ověřit výstrahy na Kubernetes<a name="validate-kubernetes"></a>

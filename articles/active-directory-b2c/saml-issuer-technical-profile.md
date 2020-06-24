@@ -56,7 +56,7 @@ Prvky **InputClaims**, **OutputClaims**a **PersistClaims** jsou prázdné nebo c
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| IssuerUri | Ne | Název vystavitele, který se zobrazí v odpovědi SAML. Hodnota by měla být stejný název jako nakonfigurovaný v aplikaci předávající strany. |
+| IssuerUri | No | Název vystavitele, který se zobrazí v odpovědi SAML. Hodnota by měla být stejný název jako nakonfigurovaný v aplikaci předávající strany. |
 
 ## <a name="cryptographic-keys"></a>Kryptografické klíče
 
@@ -64,8 +64,8 @@ Element CryptographicKeys obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| MetadataSigning | Ano | Certifikát x509 (sada klíčů RSA), který se použije k podepisování metadat SAML. Azure AD B2C používá tento klíč k podepsání metadat. |
-| SamlMessageSigning| Ano| Zadejte certifikát x509 (sadu klíčů RSA), který se použije k podepisování zpráv SAML. Azure AD B2C používá tento klíč k podepsání `<samlp:Response>` odeslání odpovědi předávající straně.|
+| MetadataSigning | Yes | Certifikát x509 (sada klíčů RSA), který se použije k podepisování metadat SAML. Azure AD B2C používá tento klíč k podepsání metadat. |
+| SamlMessageSigning| Yes| Zadejte certifikát x509 (sadu klíčů RSA), který se použije k podepisování zpráv SAML. Azure AD B2C používá tento klíč k podepsání `<samlp:Response>` odeslání odpovědi předávající straně.|
 
 ## <a name="session-management"></a>Správa relací
 

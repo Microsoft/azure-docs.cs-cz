@@ -48,8 +48,8 @@ Element **zobrazitelné ovládací** prvky obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| ID | Ano | Identifikátor, který se používá pro ovládací prvek zobrazení. Lze na něj [odkazovat](#referencing-display-controls). |
-| UserInterfaceControlType | Ano | Typ ovládacího prvku zobrazení Aktuálně se podporuje [VerificationControl](display-control-verification.md) |
+| ID | Yes | Identifikátor, který se používá pro ovládací prvek zobrazení. Lze na něj [odkazovat](#referencing-display-controls). |
+| UserInterfaceControlType | Yes | Typ ovládacího prvku zobrazení Aktuálně se podporuje [VerificationControl](display-control-verification.md) |
 
 Element **Zobrazit ovládací** prvek obsahuje následující prvky:
 

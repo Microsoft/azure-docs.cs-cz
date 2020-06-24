@@ -5,15 +5,15 @@ description: Tento článek poskytuje pokyny ke konfiguraci zásad TLS na Azure 
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 3804059fdd818f10663d14bde72da2c6773fa53f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3109ada2c905a9f11169a462284d22b9e9604494
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81312677"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808242"
 ---
 # <a name="configure-tls-policy-versions-and-cipher-suites-on-application-gateway"></a>Nakonfigurujte verze zásad TLS a šifrovací sady na Application Gateway
 
@@ -23,7 +23,7 @@ Naučte se konfigurovat verze zásad TLS/SSL a šifrovací sady na Application G
 
 ## <a name="get-available-tls-options"></a>Získat dostupné možnosti TLS
 
-`Get-AzApplicationGatewayAvailableSslOptions` Rutina poskytuje seznam dostupných předem definovaných zásad, dostupných šifrovacích sad a verzí protokolů, které lze konfigurovat. Následující příklad ukazuje příklad výstupu spuštění rutiny.
+`Get-AzApplicationGatewayAvailableSslOptions`Rutina poskytuje seznam dostupných předem definovaných zásad, dostupných šifrovacích sad a verzí protokolů, které lze konfigurovat. Následující příklad ukazuje příklad výstupu spuštění rutiny.
 
 ```
 DefaultPolicy: AppGwSslPolicy20150501
@@ -73,9 +73,9 @@ AvailableProtocols:
 
 ## <a name="list-pre-defined-tls-policies"></a>Vypsat předdefinované zásady TLS
 
-Aplikační brána nabízí tři předdefinované zásady, které se dají použít. `Get-AzApplicationGatewaySslPredefinedPolicy` Rutina tyto zásady načte. Každá zásada má povolené jiné verze protokolu a šifrovací sady. Tyto předdefinované zásady je možné použít k rychlé konfiguraci zásad protokolu TLS ve službě Application Gateway. Ve výchozím nastavení je zvolena možnost **AppGwSslPolicy20150501** , pokud nejsou definovány žádné konkrétní zásady TLS.
+Aplikační brána nabízí tři předdefinované zásady, které se dají použít. `Get-AzApplicationGatewaySslPredefinedPolicy`Rutina tyto zásady načte. Každá zásada má povolené jiné verze protokolu a šifrovací sady. Tyto předdefinované zásady je možné použít k rychlé konfiguraci zásad protokolu TLS ve službě Application Gateway. Ve výchozím nastavení je zvolena možnost **AppGwSslPolicy20150501** , pokud nejsou definovány žádné konkrétní zásady TLS.
 
-Následující výstup je příkladem spuštění `Get-AzApplicationGatewaySslPredefinedPolicy`.
+Následující výstup je příkladem spuštění `Get-AzApplicationGatewaySslPredefinedPolicy` .
 
 ```
 Name: AppGwSslPolicy20150501

@@ -1,14 +1,14 @@
 ---
 title: Přehled zásad Azure
 description: Azure Policy je služba v Azure, pomocí které vytváříte, přiřazujete a spravujete definice zásad ve svém prostředí Azure.
-ms.date: 04/21/2020
+ms.date: 06/17/2020
 ms.topic: overview
-ms.openlocfilehash: 4ec09c8a38e22fc14980422bfe9a80a2bf3edda4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e204a4eeff547877a48789eba6f1b8cac017d08e
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82097366"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84944657"
 ---
 # <a name="what-is-azure-policy"></a>Co je Azure Policy?
 
@@ -145,7 +145,7 @@ Podobně jako parametry zásad pomáhají parametry iniciativ zjednodušit sprá
 
 Jako příklad může posloužit scénář, ve kterém máte definici iniciativy **initiativeC** s definicemi zásad **policyA** a **policyB**, z nichž každá očekává jiný typ parametru:
 
-| Zásada | Název parametru |Typ parametru  |Poznámka |
+| Zásady | Název parametru |Typ parametru  |Poznámka |
 |---|---|---|---|
 | policyA | allowedLocations | pole  |Tento parametr jako hodnotu očekává seznam řetězců, protože typ parametru byl definovaný jako pole. |
 | policyB | allowedSingleLocation |řetězec |Tento parametr jako hodnotu očekává jedno slovo, protože typ parametru byl definovaný jako řetězec. |
@@ -158,6 +158,8 @@ V tomto scénáři máte při definování parametrů iniciativy pro **initiativ
 
 Při vytváření možností hodnot v definici iniciativy nemůžete zadat jinou hodnotu během přiřazení iniciativy, protože není součástí seznamu.
 
+Další informace o strukturách definic iniciativ, přezkoumání [struktury definice iniciativy](./concepts/initiative-definition-structure.md).
+
 ### <a name="assignments"></a>Přiřazení
 
 Přiřazení je definice zásady nebo iniciativa, která se má provést v rámci určitého oboru. Tento rozsah může být v rozsahu od [skupiny pro správu](../management-groups/overview.md) k individuálnímu prostředku. Pojem _oboru_ odkazuje na všechny prostředky, skupiny prostředků, odběry nebo skupiny pro správu, ke kterým je definice přiřazena. Přiřazení jsou děděna všemi podřízenými prostředky. Tento návrh znamená, že definice použitá pro skupinu prostředků se používá taky u prostředků v této skupině prostředků. Z přiřazení však můžete podobor vyloučit.
@@ -166,7 +168,7 @@ Například v oboru předplatného můžete přiřadit definici, která zabraňu
 
 V jiném příkladu můžete chtít přiřadit definici seznamu povolených typů prostředků na úrovni skupiny pro správu. Pak přiřadíte více opravňující zásady (povolení více typů prostředků) pro podřízenou skupinu pro správu nebo dokonce přímo na předplatných. Tento příklad ale nefunguje, protože Azure Policy je explicitní systém odmítnutí. Místo toho je potřeba vyřadit podřízenou skupinu pro správu nebo předplatné z přiřazení na úrovni skupiny pro správu. Pak přiřaďte přísnější definici na úrovni podřízené skupiny pro správu nebo předplatného. Pokud některý z přiřazení povede k odepření prostředku, pak jediným způsobem, jak prostředek povolit, je změnit přiřazení odmítnutí.
 
-Další informace o nastavení přiřazení prostřednictvím portálu najdete v tématu [vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy, v prostředí Azure](assign-policy-portal.md). K dispozici jsou také kroky pro [PowerShell](assign-policy-powershell.md) a [Azure CLI](assign-policy-azurecli.md).
+Další informace o nastavení přiřazení prostřednictvím portálu najdete v tématu [vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy, v prostředí Azure](./assign-policy-portal.md). K dispozici jsou také kroky pro [PowerShell](./assign-policy-powershell.md) a [Azure CLI](./assign-policy-azurecli.md). Informace o struktuře přiřazení najdete v tématu [Struktura přiřazení](./concepts/assignment-structure.md).
 
 ## <a name="maximum-count-of-azure-policy-objects"></a>Maximální počet Azure Policy objektů
 

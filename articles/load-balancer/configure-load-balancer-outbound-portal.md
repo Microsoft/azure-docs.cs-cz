@@ -5,15 +5,15 @@ description: V tomto článku se dozvíte, jak nakonfigurovat pravidla vyrovnáv
 services: load-balancer
 author: asudbring
 ms.service: load-balancer
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/24/2019
 ms.author: allensu
-ms.openlocfilehash: b75f49155991bfc71f788ad88f166c0bec281841
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 30d71333bb29720afd82c7dbbde7126b30a7f6d6
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77590010"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84803685"
 ---
 # <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-by-using-the-azure-portal"></a>Konfigurace vyrovnávání zatížení a odchozích pravidel v Standard Load Balancer pomocí Azure Portal
 
@@ -25,7 +25,7 @@ Každý front-end odkazuje na veřejnou IP adresu. V tomto scénáři se veřejn
 
 Scénář používá dva fondy back-endu: jeden pro příchozí provoz a jeden pro odchozí provoz. Tyto fondy ilustrují schopnost a poskytují flexibilitu pro scénář.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete. 
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -35,17 +35,17 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
 V této části vytvoříte Nástroj pro vyrovnávání zatížení, který bude vyrovnávat zatížení virtuálních počítačů. Můžete vytvořit veřejný Nástroj pro vyrovnávání zatížení nebo interní nástroj pro vyrovnávání zatížení. Při vytváření veřejného nástroje pro vyrovnávání zatížení vytvoříte novou veřejnou IP adresu, která je nakonfigurovaná jako front-end pro nástroj pro vyrovnávání zatížení. Ve výchozím nastavení bude front-end název **LoadBalancerFrontEnd** .
 
-1. V levém horním rohu obrazovky vyberte **vytvořit prostředek** > **síť** > **Load Balancer**.
+1. V levém horním rohu obrazovky vyberte **vytvořit prostředek**  >  **síť**  >  **Load Balancer**.
 2. Na kartě **základy** na stránce **vytvořit nástroj pro vyrovnávání zatížení** zadejte nebo vyberte následující informace:
 
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
     | Předplatné               | Vyberte své předplatné.    |    
     | Skupina prostředků         | Vyberte **vytvořit nový** a do textového pole zadejte **myResourceGroupSLB** .|
-    | Název                   | **myLoadBalancer**                                   |
+    | Name                   | **myLoadBalancer**                                   |
     | Oblast         | Vyberte **Západní Evropa**.                                        |
     | Typ          | Vyberte možnost **veřejné**.                                        |
-    | Skladová jednotka (SKU)           | Vyberte **Standard** nebo **Basic**. Microsoft doporučuje pro produkční úlohy Standard. |
+    | SKU           | Vyberte **Standard** nebo **Basic**. Microsoft doporučuje pro produkční úlohy Standard. |
     | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. Pokud máte existující veřejnou IP adresu, kterou byste chtěli použít, vyberte **použít existující**.  Stávající veřejná IP adresa musí být **standardní** SKU.  Základní veřejné IP adresy nejsou kompatibilní se službou Load Balancer **Standard** SKU.  |
     | Název veřejné IP adresy              | Do textového pole zadejte **myPublicIP** .|
     | Zóna dostupnosti | Chcete-li vytvořit odolný Load Balancer, vyberte **zónu – redundantní** . Pokud chcete vytvořit oblast Load Balancer, vyberte konkrétní zónu z 1, 2 nebo 3. |
@@ -135,7 +135,7 @@ Odchozí pravidla nástroje pro vyrovnávání zatížení konfigurují odchozí
     | Typ IP adresy | Vyberte **IP adresa**.|
     | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. Do pole **Přidat veřejnou IP adresu**zadejte **myPublicIPOutbound**.  Vyberte **OK**. |
 
-4. Vyberte **Přidat**.
+4. Vyberte možnost **Přidat**.
 
 ### <a name="create-an-outbound-backend-pool"></a>Vytvořit odchozí back-end fond
 
@@ -164,7 +164,7 @@ Odchozí pravidla nástroje pro vyrovnávání zatížení konfigurují odchozí
     | Odchozí porty – > zvolit podle | Vybrat **porty na instanci** |
     | Odchozí porty – > porty na instanci | Zadejte **10 000**. |
 
-4. Vyberte **Přidat**.
+4. Vyberte možnost **Přidat**.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
