@@ -3,24 +3,24 @@ title: Nejčastější dotazy k Azure Proxy aplikací služby AD | Microsoft Doc
 description: Přečtěte si odpovědi na nejčastější dotazy k používání služby Azure Proxy aplikací služby AD k publikování interních místních aplikací pro vzdálené uživatele.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 10/03/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: a6efe74008b2271b960f877f5f0f6b2b6b549a8d
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 454412bc20fef1a10a51e027b52b6d54df52e6c0
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583081"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764600"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Nejčastější dotazy k proxy aplikací služby Active Directory (Azure AD)
 
@@ -152,7 +152,7 @@ Ne. Služba Azure Proxy aplikací služby AD je navržená tak, aby spolupracova
 
 ### <a name="does-websocket-support-work-for-applications-other-than-qliksense"></a>Funguje podpora protokolu WebSocket pro jiné aplikace než QlikSense?
 
-V současné době je podpora protokolu WebSocket stále ve verzi Public Preview a nemusí fungovat pro ostatní aplikace. Někteří zákazníci mají při použití protokolu WebSocket v jiných aplikacích smíšenou úspěšnost. Při testování takových scénářů bychom rádi slyšeli vaše výsledky. Pošlete nám prosím svůj názor na aadapfeedback@microsoft.com.
+V současné době je podpora protokolu WebSocket stále ve verzi Public Preview a nemusí fungovat pro ostatní aplikace. Někteří zákazníci mají při použití protokolu WebSocket v jiných aplikacích smíšenou úspěšnost. Při testování takových scénářů bychom rádi slyšeli vaše výsledky. Pošlete nám prosím svůj názor na aadapfeedback@microsoft.com .
 
 Funkce (události protokolu, PowerShell a Vzdálená plocha) v centru pro správu systému Windows (WAC) nebo webový klient vzdálené plochy (HTML5) nefungují v předběžném prostředí Azure Proxy aplikací služby AD.
 

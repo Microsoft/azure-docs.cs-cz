@@ -1,6 +1,6 @@
 ---
-title: Konfigurace spravovaných identit v Azure VMSS pomocí REST – Azure AD
-description: Podrobné pokyny pro konfiguraci systémových a uživatelem přiřazených identit na platformě Azure VMSS pomocí technologie KUDRLINKOU k provádění REST API volání.
+title: Konfigurace spravovaných identit v sadě škálování virtuálních počítačů Azure pomocí REST – Azure AD
+description: Podrobné pokyny pro konfiguraci spravovaných identit systému a uživatelem přiřazených pro sadu škálování virtuálního počítače Azure pomocí technologie KUDRLINKOU k provádění REST API volání.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/25/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dce9894b26d03c351a2209792cc076de91feba54
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ec0744e4a682bd7ef2c9bb6027392eba2bf2322
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253335"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84693647"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-rest-api-calls"></a>Konfigurace spravovaných identit pro prostředky Azure v sadě škálování virtuálních počítačů pomocí REST API volání
 
@@ -35,7 +35,7 @@ V tomto článku se pomocí objektu KUDRLINKOU pro volání Azure Resource Manag
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](overview.md). **Nezapomeňte si projít [rozdíl mezi spravovanou identitou přiřazenou systémem a uživatelem](overview.md#how-does-the-managed-identities-for-azure-resources-work)**.
+- Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](overview.md). **Nezapomeňte si projít [rozdíl mezi spravovanou identitou přiřazenou systémem a uživatelem](overview.md#managed-identity-types)**.
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
 - K provedení operací správy v tomto článku potřebuje váš účet následující přiřazení řízení přístupu na základě rolí Azure:
 
@@ -47,7 +47,7 @@ V tomto článku se pomocí objektu KUDRLINKOU pro volání Azure Resource Manag
     - Role [operátora spravované identity](/azure/role-based-access-control/built-in-roles#managed-identity-operator) pro přiřazení a odebrání uživatelsky přiřazené identity z a do sady škálování virtuálního počítače.
 - Pokud používáte systém Windows, nainstalujte [subsystém Windows pro Linux](https://msdn.microsoft.com/commandline/wsl/about) nebo použijte [Azure Cloud Shell](../../cloud-shell/overview.md) v Azure Portal.
 - Pokud používáte [subsystém Windows pro Linux](https://msdn.microsoft.com/commandline/wsl/about) nebo systém pro [distribuci Linux](/cli/azure/install-azure-cli-apt?view=azure-cli-latest), [nainstalujte místní konzolu Azure CLI](/cli/azure/install-azure-cli).
-- Pokud používáte místní konzolu Azure CLI, přihlaste se k Azure `az login` pomocí účtu, který je přidružený k předplatnému Azure, chcete spravovat systém nebo uživatelsky přiřazené spravované identity.
+- Pokud používáte místní konzolu Azure CLI, přihlaste se k Azure pomocí `az login` účtu, který je přidružený k předplatnému Azure, chcete spravovat systém nebo uživatelsky přiřazené spravované identity.
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
@@ -78,7 +78,7 @@ Chcete-li vytvořit sadu škálování virtuálního počítače s povolenou spr
    az account get-access-token
    ``` 
 
-4. Vytvořte sadu škálování virtuálního počítače pomocí OBLÉ pro volání koncového bodu REST Azure Resource Manager. Následující příklad vytvoří v *myResourceGroup* sadu škálování virtuálního počítače s názvem `"identity":{"type":"SystemAssigned"}` *myVMSS* , která má spravovanou identitu přiřazenou systémem, jak je uvedeno v těle žádosti podle hodnoty. Nahraďte `<ACCESS TOKEN>` hodnotou, kterou jste obdrželi v předchozím kroku, pokud jste požádali o přístupový token nosiče a `<SUBSCRIPTION ID>` hodnotu, která je pro vaše prostředí vhodná.
+4. Vytvořte sadu škálování virtuálního počítače pomocí OBLÉ pro volání koncového bodu REST Azure Resource Manager. Následující příklad vytvoří v *myResourceGroup* sadu škálování virtuálního počítače s názvem *myVMSS* , která má spravovanou identitu přiřazenou systémem, jak je uvedeno v těle žádosti podle hodnoty `"identity":{"type":"SystemAssigned"}` . Nahraďte `<ACCESS TOKEN>` hodnotou, kterou jste obdrželi v předchozím kroku, pokud jste požádali o přístupový token nosiče a hodnotu, která je `<SUBSCRIPTION ID>` pro vaše prostředí vhodná.
 
    ```bash   
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01' -X PUT -d '{"sku":{"tier":"Standard","capacity":3,"name":"Standard_D1_v2"},"location":"eastus","identity":{"type":"SystemAssigned"},"properties":{"overprovision":true,"virtualMachineProfile":{"storageProfile":{"imageReference":{"sku":"2016-Datacenter","publisher":"MicrosoftWindowsServer","version":"latest","offer":"WindowsServer"},"osDisk":{"caching":"ReadWrite","managedDisk":{"storageAccountType":"Standard_LRS"},"createOption":"FromImage"}},"osProfile":{"computerNamePrefix":"myVMSS","adminUsername":"azureuser","adminPassword":"myPassword12"},"networkProfile":{"networkInterfaceConfigurations":[{"name":"myVMSS","properties":{"primary":true,"enableIPForwarding":true,"ipConfigurations":[{"name":"myVMSS","properties":{"subnet":{"id":"/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/mySubnet"}}}]}}]}},"upgradePolicy":{"mode":"Manual"}}}' -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
@@ -95,7 +95,7 @@ Chcete-li vytvořit sadu škálování virtuálního počítače s povolenou spr
    |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
    |*Udělován*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token. | 
 
-   **Text požadavku**
+   **Text žádosti**
 
    ```JSON
     {
@@ -170,10 +170,10 @@ Pokud chcete v existující sadě škálování virtuálního počítače povoli
    az account get-access-token
    ```
 
-2. Použijte následující příkaz, který zavolá Azure Resource Manager koncový bod REST, aby se povolila spravovaná identita přiřazená systémem v sadě škálování virtuálního počítače, jak je identifikovaná v těle žádosti `{"identity":{"type":"SystemAssigned"}` podle hodnoty pro sadu škálování virtuálního počítače s názvem *myVMSS*.  Nahraďte `<ACCESS TOKEN>` hodnotou, kterou jste obdrželi v předchozím kroku, pokud jste požádali o přístupový token nosiče a `<SUBSCRIPTION ID>` hodnotu, která je pro vaše prostředí vhodná.
+2. Použijte následující příkaz, který zavolá Azure Resource Manager koncový bod REST, aby se povolila spravovaná identita přiřazená systémem v sadě škálování virtuálního počítače, jak je identifikovaná v těle žádosti podle hodnoty `{"identity":{"type":"SystemAssigned"}` pro sadu škálování virtuálního počítače s názvem *myVMSS*.  Nahraďte `<ACCESS TOKEN>` hodnotou, kterou jste obdrželi v předchozím kroku, pokud jste požádali o přístupový token nosiče a hodnotu, která je `<SUBSCRIPTION ID>` pro vaše prostředí vhodná.
    
    > [!IMPORTANT]
-   > K tomu, abyste se ujistili, že neodstraníte žádné existující spravované identity přiřazené uživatelem, které jsou přiřazené k sadě škálování virtuálních počítačů, musíte pomocí tohoto příkazu SLOŽENÉho příkazu vytvořit seznam spravovaných identit přiřazených uživateli: `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSS NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"`. Pokud máte ke službě škálování virtuálního počítače přiřazené nějaké spravované identity přiřazené uživatelem, které jsou identifikované v `identity` hodnotě odpovědi, přejděte ke kroku 3, který vám ukáže, jak uchovávat spravované identity přiřazené uživatelem a zároveň povolit spravovanou identitu přiřazenou systémem v sadě škálování virtuálního počítače.
+   > K tomu, abyste se ujistili, že neodstraníte žádné existující spravované identity přiřazené uživatelem, které jsou přiřazené k sadě škálování virtuálních počítačů, musíte pomocí tohoto příkazu SLOŽENÉho příkazu vytvořit seznam spravovaných identit přiřazených uživateli: `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSS NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"` . Pokud máte ke službě škálování virtuálního počítače přiřazené nějaké spravované identity přiřazené uživatelem, které jsou identifikované v `identity` hodnotě odpovědi, přejděte ke kroku 3, který vám ukáže, jak uchovávat spravované identity přiřazené uživatelem a zároveň povolit spravovanou identitu přiřazenou systémem v sadě škálování virtuálního počítače.
 
    ```bash
     curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned"}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -190,7 +190,7 @@ Pokud chcete v existující sadě škálování virtuálního počítače povoli
    |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
    |*Udělován*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token. | 
 
-   **Text požadavku**
+   **Text žádosti**
 
    ```JSON
     {
@@ -202,9 +202,9 @@ Pokud chcete v existující sadě škálování virtuálního počítače povoli
 
 3. Pokud chcete povolit spravovanou identitu přiřazenou systémem v sadě škálování virtuálního počítače s existujícími spravovanými identitami přiřazenými uživatelem, musíte `SystemAssigned` do této `type` hodnoty přidat.  
    
-   Pokud například vaše sada škálování virtuálního počítače obsahuje spravované identity `ID1` přiřazené uživateli, které `ID2` jim byly přiřazeny, a chcete do sady škálování virtuálního počítače přidat spravovanou identitu přiřazenou systémem, použijte následující volání oblé. Hodnoty `<ACCESS TOKEN>` a `<SUBSCRIPTION ID>` nahraďte hodnotami, které jsou vhodné pro vaše prostředí.
+   Pokud například vaše sada škálování virtuálního počítače obsahuje spravované identity přiřazené uživateli, které jim byly `ID1` přiřazeny `ID2` , a chcete do sady škálování virtuálního počítače přidat spravovanou identitu přiřazenou systémem, použijte následující volání oblé. `<ACCESS TOKEN>`Hodnoty a nahraďte `<SUBSCRIPTION ID>` hodnotami, které jsou vhodné pro vaše prostředí.
 
-   Verze `2018-06-01` rozhraní API ukládá uživatelem přiřazené identity do `userAssignedIdentities` hodnoty ve formátu slovníku na rozdíl od `identityIds` hodnoty ve formátu pole používaném ve verzi `2017-12-01`rozhraní API.
+   Verze rozhraní API `2018-06-01` ukládá uživatelem přiřazené identity do `userAssignedIdentities` hodnoty ve formátu slovníku na rozdíl od `identityIds` hodnoty ve formátu pole používaném ve verzi rozhraní API `2017-12-01` .
    
    **ROZHRANÍ API VERZE 2018-06-01**
 
@@ -223,7 +223,7 @@ Pokud chcete v existující sadě škálování virtuálního počítače povoli
    |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
    |*Udělován*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token. |
  
-   **Text požadavku**
+   **Text žádosti**
 
    ```JSON
     {
@@ -257,7 +257,7 @@ Pokud chcete v existující sadě škálování virtuálního počítače povoli
    |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
    |*Udělován*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token. | 
 
-   **Text požadavku**
+   **Text žádosti**
 
    ```JSON
     {
@@ -273,7 +273,7 @@ Pokud chcete v existující sadě škálování virtuálního počítače povoli
 
 ### <a name="disable-system-assigned-managed-identity-from-a-virtual-machine-scale-set"></a>Zakázat spravovanou identitu přiřazenou systémem ze sady škálování virtuálních počítačů
 
-Pokud chcete zakázat identitu přiřazenou systémem u existující sady škálování virtuálních počítačů, musíte získat přístupový token a pak pomocí prvku KUDRLINKOU zavolat koncový bod Správce prostředků REST, který aktualizuje typ identity na `None`.
+Pokud chcete zakázat identitu přiřazenou systémem u existující sady škálování virtuálních počítačů, musíte získat přístupový token a pak pomocí prvku KUDRLINKOU zavolat koncový bod Správce prostředků REST, který aktualizuje typ identity na `None` .
 
 1. Načte přístupový token nosiče, který použijete v dalším kroku v autorizační hlavičce k vytvoření sady škálování virtuálního počítače pomocí spravované identity přiřazené systémem.
 
@@ -281,10 +281,10 @@ Pokud chcete zakázat identitu přiřazenou systémem u existující sady škál
    az account get-access-token
    ```
 
-2. Aktualizujte sadu škálování virtuálního počítače pomocí metody KUDRLINKOU a zavolejte Azure Resource Manager koncovému bodu REST, aby se zakázala spravovaná identita přiřazená systémem.  Následující příklad zakáže spravovanou identitu přiřazenou systémem, jak je identifikovaná v těle žádosti, podle hodnoty `{"identity":{"type":"None"}}` ze sady škálování virtuálního počítače s názvem *myVMSS*.  Nahraďte `<ACCESS TOKEN>` hodnotou, kterou jste obdrželi v předchozím kroku, pokud jste požádali o přístupový token nosiče a `<SUBSCRIPTION ID>` hodnotu, která je pro vaše prostředí vhodná.
+2. Aktualizujte sadu škálování virtuálního počítače pomocí metody KUDRLINKOU a zavolejte Azure Resource Manager koncovému bodu REST, aby se zakázala spravovaná identita přiřazená systémem.  Následující příklad zakáže spravovanou identitu přiřazenou systémem, jak je identifikovaná v těle žádosti, podle hodnoty `{"identity":{"type":"None"}}` ze sady škálování virtuálního počítače s názvem *myVMSS*.  Nahraďte `<ACCESS TOKEN>` hodnotou, kterou jste obdrželi v předchozím kroku, pokud jste požádali o přístupový token nosiče a hodnotu, která je `<SUBSCRIPTION ID>` pro vaše prostředí vhodná.
 
    > [!IMPORTANT]
-   > K tomu, abyste se ujistili, že neodstraníte žádné existující spravované identity přiřazené uživatelem, které jsou přiřazené k sadě škálování virtuálních počítačů, musíte pomocí tohoto příkazu SLOŽENÉho příkazu vytvořit seznam spravovaných identit přiřazených uživateli: `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSS NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"`. Pokud máte k sadě škálování virtuálního počítače přiřazenou spravovanou identitu přiřazenou uživatelem, přejděte ke kroku 3, který vám ukáže, jak zachovat uživatelem přiřazené spravované identity a zároveň odebrat spravovanou identitu přiřazenou systémem ze sady škálování virtuálních počítačů.
+   > K tomu, abyste se ujistili, že neodstraníte žádné existující spravované identity přiřazené uživatelem, které jsou přiřazené k sadě škálování virtuálních počítačů, musíte pomocí tohoto příkazu SLOŽENÉho příkazu vytvořit seznam spravovaných identit přiřazených uživateli: `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSS NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"` . Pokud máte k sadě škálování virtuálního počítače přiřazenou spravovanou identitu přiřazenou uživatelem, přejděte ke kroku 3, který vám ukáže, jak zachovat uživatelem přiřazené spravované identity a zároveň odebrat spravovanou identitu přiřazenou systémem ze sady škálování virtuálních počítačů.
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"None"}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -301,7 +301,7 @@ Pokud chcete zakázat identitu přiřazenou systémem u existující sady škál
    |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
    |*Udělován*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token. | 
 
-   **Text požadavku**
+   **Text žádosti**
 
    ```JSON
     {
@@ -311,7 +311,7 @@ Pokud chcete zakázat identitu přiřazenou systémem u existující sady škál
     }
    ```
 
-   Pokud chcete odebrat spravovanou identitu přiřazenou systémem ze sady škálování virtuálního počítače, která má uživatelsky přiřazené spravované identity, `SystemAssigned` odeberte ji `{"identity":{"type:" "}}` z hodnoty a zachová `UserAssigned` hodnoty `userAssignedIdentities` a slovník, pokud používáte **rozhraní API verze 2018-06-01**. Pokud používáte **rozhraní API verze 2017-12-01** nebo starší, nechejte `identityIds` pole.
+   Pokud chcete odebrat spravovanou identitu přiřazenou systémem ze sady škálování virtuálního počítače, která má uživatelsky přiřazené spravované identity, odeberte ji `SystemAssigned` z `{"identity":{"type:" "}}` hodnoty a zachová hodnoty `UserAssigned` a `userAssignedIdentities` slovník, pokud používáte **rozhraní API verze 2018-06-01**. Pokud používáte **rozhraní API verze 2017-12-01** nebo starší, nechejte `identityIds` pole.
 
 ## <a name="user-assigned-managed-identity"></a>Spravovaná identita přiřazená uživatelem
 
@@ -339,7 +339,7 @@ V této části se dozvíte, jak přidat a odebrat spravovanou identitu přiřaz
 
 4. Pomocí pokynů, které najdete tady, vytvořte uživatelem přiřazenou spravovanou identitu: [vytvořte spravovanou identitu přiřazenou uživatelem](how-to-manage-ua-identity-rest.md#create-a-user-assigned-managed-identity).
 
-5. Vytvořte sadu škálování virtuálního počítače pomocí OBLÉ pro volání koncového bodu REST Azure Resource Manager. Následující příklad vytvoří sadu škálování virtuálního počítače s názvem *myVMSS* ve skupině prostředků *myResourceGroup* s uživatelem přiřazenou spravovanou identitou `ID1`, jak je uvedeno v těle žádosti podle hodnoty. `"identity":{"type":"UserAssigned"}` Nahraďte `<ACCESS TOKEN>` hodnotou, kterou jste obdrželi v předchozím kroku, pokud jste požádali o přístupový token nosiče a `<SUBSCRIPTION ID>` hodnotu, která je pro vaše prostředí vhodná.
+5. Vytvořte sadu škálování virtuálního počítače pomocí OBLÉ pro volání koncového bodu REST Azure Resource Manager. Následující příklad vytvoří sadu škálování virtuálního počítače s názvem *myVMSS* ve skupině prostředků *myResourceGroup* s uživatelem přiřazenou spravovanou identitou `ID1` , jak je uvedeno v těle žádosti podle hodnoty `"identity":{"type":"UserAssigned"}` . Nahraďte `<ACCESS TOKEN>` hodnotou, kterou jste obdrželi v předchozím kroku, pokud jste požádali o přístupový token nosiče a hodnotu, která je `<SUBSCRIPTION ID>` pro vaše prostředí vhodná.
  
    **ROZHRANÍ API VERZE 2018-06-01**
 
@@ -358,7 +358,7 @@ V této části se dozvíte, jak přidat a odebrat spravovanou identitu přiřaz
    |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
    |*Udělován*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token. | 
 
-   **Text požadavku**
+   **Text žádosti**
 
    ```JSON
     {
@@ -445,7 +445,7 @@ V této části se dozvíte, jak přidat a odebrat spravovanou identitu přiřaz
    |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
    |*Udělován*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token. |
  
-   **Text požadavku**
+   **Text žádosti**
 
    ```JSON
     {
@@ -542,7 +542,7 @@ V této části se dozvíte, jak přidat a odebrat spravovanou identitu přiřaz
 
 4. Pokud nemáte žádné spravované identity přiřazené uživateli nebo systémem přiřazené k sadě škálování virtuálních počítačů, použijte následující příkaz, který zavolá Azure Resource Manager koncový bod REST pro přiřazení první spravované identity přiřazené uživateli do sady škálování virtuálního počítače.  Pokud máte ke službě škálování virtuálního počítače přiřazené spravované identity uživatele nebo systému, přeskočte na krok 5, který vám ukáže, jak do sady škálování virtuálních počítačů přidat víc uživatelských identit přiřazených uživatelem, a zároveň udržovat spravovanou identitu přiřazenou systémem.
 
-   Následující příklad přiřadí spravovanou identitu přiřazenou uživatelem `ID1` do sady škálování virtuálního počítače s názvem *myVMSS* ve skupině prostředků *myResourceGroup*.  Nahraďte `<ACCESS TOKEN>` hodnotou, kterou jste obdrželi v předchozím kroku, pokud jste požádali o přístupový token nosiče a `<SUBSCRIPTION ID>` hodnotu, která je pro vaše prostředí vhodná.
+   Následující příklad přiřadí spravovanou identitu přiřazenou uživatelem `ID1` do sady škálování virtuálního počítače s názvem *myVMSS* ve skupině prostředků *myResourceGroup*.  Nahraďte `<ACCESS TOKEN>` hodnotou, kterou jste obdrželi v předchozím kroku, pokud jste požádali o přístupový token nosiče a hodnotu, která je `<SUBSCRIPTION ID>` pro vaše prostředí vhodná.
 
    **ROZHRANÍ API VERZE 2018-06-01**
 
@@ -561,7 +561,7 @@ V této části se dozvíte, jak přidat a odebrat spravovanou identitu přiřaz
    |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
    |*Udělován*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token. | 
 
-   **Text požadavku**
+   **Text žádosti**
 
    ```JSON
     {
@@ -593,7 +593,7 @@ V této části se dozvíte, jak přidat a odebrat spravovanou identitu přiřaz
    |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
    |*Udělován*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token. | 
 
-   **Text požadavku**
+   **Text žádosti**
 
    ```JSON
     {
@@ -610,9 +610,9 @@ V této části se dozvíte, jak přidat a odebrat spravovanou identitu přiřaz
    
    **ROZHRANÍ API VERZE 2018-06-01**
 
-   Přidejte spravovanou identitu přiřazenou uživatelem do hodnoty `userAssignedIdentities` Dictionary.
+   Přidejte spravovanou identitu přiřazenou uživatelem do `userAssignedIdentities` hodnoty Dictionary.
 
-   Například pokud máte spravovanou identitu přiřazenou systémem a uživatelem přiřazenou spravovanou identitu `ID1` , která je aktuálně přiřazená ke škálování virtuálního počítače, a chcete do ní přidat spravovanou identitu `ID2` přiřazenou uživateli:
+   Například pokud máte spravovanou identitu přiřazenou systémem a uživatelem přiřazenou spravovanou identitu, která je `ID1` aktuálně přiřazená ke škálování virtuálního počítače, a chcete do ní přidat spravovanou identitu přiřazenou uživateli `ID2` :
 
    ```bash
    curl  'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "userAssignedIdentities":{"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1":{},"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2":{}}}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -629,7 +629,7 @@ V této části se dozvíte, jak přidat a odebrat spravovanou identitu přiřaz
    |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
    |*Udělován*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token. | 
 
-   **Text požadavku**
+   **Text žádosti**
 
    ```JSON
     {
@@ -649,9 +649,9 @@ V této části se dozvíte, jak přidat a odebrat spravovanou identitu přiřaz
 
    **ROZHRANÍ API VERZE 2017-12-01**
 
-   Zachovejte uživatelsky přiřazené spravované identity, které byste chtěli zachovat v hodnotě `identityIds` pole při přidávání nové spravované identity přiřazené uživatelem.
+   Zachovejte uživatelsky přiřazené spravované identity, které byste chtěli zachovat v `identityIds` hodnotě pole při přidávání nové spravované identity přiřazené uživatelem.
 
-   Například pokud máte identitu přiřazenou systémem a uživatelem přiřazenou spravovanou identitu `ID1` , která je aktuálně přiřazená k vaší sadě škálování virtuálního počítače a chcete do ní přidat spravovanou identitu `ID2` přiřazenou uživateli:
+   Například pokud máte identitu přiřazenou systémem a uživatelem přiřazenou spravovanou identitu, která je `ID1` aktuálně přiřazená k vaší sadě škálování virtuálního počítače a chcete do ní přidat spravovanou identitu přiřazenou uživateli `ID2` :
 
     ```bash
    curl  'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2017-12-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1","/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2"]}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -668,7 +668,7 @@ V této části se dozvíte, jak přidat a odebrat spravovanou identitu přiřaz
    |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
    |*Udělován*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token. | 
 
-   **Text požadavku**
+   **Text žádosti**
 
    ```JSON
     {
@@ -708,7 +708,7 @@ V této části se dozvíte, jak přidat a odebrat spravovanou identitu přiřaz
    
    Pokud máte k virtuálnímu počítači přiřazené spravované identity, jsou uvedené v odpovědi v `identity` hodnotě. 
     
-   Například pokud máte uživatelem přiřazené spravované identity `ID1` a `ID2` máte přiřazenou sadu škálování virtuálního počítače a chcete zachovat `ID1` přiřazenou a zachovat spravovanou identitu přiřazenou systémem:
+   Například pokud máte uživatelem přiřazené spravované identity `ID1` a máte `ID2` přiřazenou sadu škálování virtuálního počítače a chcete zachovat `ID1` přiřazenou a zachovat spravovanou identitu přiřazenou systémem:
 
    **ROZHRANÍ API VERZE 2018-06-01**
 
@@ -729,7 +729,7 @@ V této části se dozvíte, jak přidat a odebrat spravovanou identitu přiřaz
    |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
    |*Udělován*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token. | 
 
-   **Text požadavku**
+   **Text žádosti**
 
    ```JSON
     {
@@ -761,7 +761,7 @@ V této části se dozvíte, jak přidat a odebrat spravovanou identitu přiřaz
    |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
    |*Udělován*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token. | 
 
-   **Text požadavku**
+   **Text žádosti**
 
    ```JSON
     {
@@ -791,7 +791,7 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
 |*Udělován*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token. | 
 
-**Text požadavku**
+**Text žádosti**
 
 ```JSON
 {
@@ -818,7 +818,7 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
 |*Udělován*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token. | 
 
-**Text požadavku**
+**Text žádosti**
 
 ```JSON
 {

@@ -6,15 +6,15 @@ keywords: nastavení, časový limit
 author: mgblythe
 ms.author: mblythe
 ms.date: 02/10/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: e27135d09da7060f2a948e37f6026fe66fbef5b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2efee29ba709607e1e7935215ca7689a39966de1
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79096609"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764158"
 ---
 # <a name="set-directory-level-inactivity-timeout"></a>Nastavit časový limit pro nečinnost na úrovni adresáře
 

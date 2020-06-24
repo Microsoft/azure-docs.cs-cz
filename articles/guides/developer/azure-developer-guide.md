@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
 ms.openlocfilehash: d74fd2e3f6b5cc090c6313aba67a1e139c713b85
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79245002"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84695075"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Úvodní příručka pro vývojáře v Azure
 
@@ -80,7 +80,7 @@ Z důvodu úrovně kontroly, kterou máte s virtuálními počítači, můžete 
 
 #### <a name="azure-functions-serverless"></a>Azure Functions (bez serveru)
 
-Místo toho, abyste se museli starat o sestavování a správu celé aplikace nebo infrastruktury pro spuštění kódu, co kdybyste mohli napsat kód a spustit ho jako reakci na události nebo podle plánu?  [Azure Functions](../../azure-functions/functions-overview.md) je nabídka se stylem bez serveru, která umožňuje napsat jenom kód, který potřebujete. Pomocí funkcí můžete aktivovat provádění kódu s požadavky HTTP, Webhooky, událostmi cloudové služby nebo podle plánu. Můžete si kód zvolit ve vývojovém jazyce, jako je například C\#, F\#, Node. js, Python nebo php. S fakturací na základě spotřeby platíte jenom za čas, kdy se váš kód spouští, a Azure podle potřeby škáluje.
+Místo toho, abyste se museli starat o sestavování a správu celé aplikace nebo infrastruktury pro spuštění kódu, co kdybyste mohli napsat kód a spustit ho jako reakci na události nebo podle plánu?  [Azure Functions](../../azure-functions/functions-overview.md) je nabídka se stylem bez serveru, která umožňuje napsat jenom kód, který potřebujete. Pomocí funkcí můžete aktivovat provádění kódu s požadavky HTTP, Webhooky, událostmi cloudové služby nebo podle plánu. Můžete si kód zvolit ve vývojovém jazyce, jako je například C \# , F \# , Node.js, Python nebo php. S fakturací na základě spotřeby platíte jenom za čas, kdy se váš kód spouští, a Azure podle potřeby škáluje.
 
 > **Kdy použít**: použijte Azure Functions, když máte kód aktivovaný jinými službami Azure, webovými událostmi nebo podle plánu. Funkce můžete použít také v případě, že nepotřebujete režii dokončeného hostovaného projektu nebo pokud chcete platit jenom za čas, kdy je kód spuštěný. Další informace najdete v tématu [přehled Azure Functions](../../azure-functions/functions-overview.md).
 >
@@ -96,7 +96,7 @@ Azure Service Fabric je platforma distribuovaných systémů. Tato platforma usn
 * Nasazení
 * Monitorování
 * Upgrade/opravy
-* Odstraňuje
+* odstraňování
 
 Aplikace, které se spouštějí ve sdíleném fondu počítačů, můžou v případě potřeby začít využívat malý objem a škálovat na stovky nebo tisíce počítačů.
 
@@ -163,7 +163,7 @@ Azure nabízí několik způsobů použití kontejnerů ve vašich aplikacích.
   >
   > **Začínáme**: [použijte vlastní image docker pro App Service v systému Linux](../../app-service/containers/quickstart-docker-go.md).
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Ověřování
 
 Je velmi důležité nejen zjistit, kdo používá vaše aplikace, ale také k tomu, aby se zabránilo neoprávněnému přístupu k prostředkům. Azure nabízí několik způsobů, jak ověřit klienty aplikace.
 

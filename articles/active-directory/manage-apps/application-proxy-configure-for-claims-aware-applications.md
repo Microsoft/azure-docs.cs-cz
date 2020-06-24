@@ -3,24 +3,24 @@ title: Aplikace pracující s deklaracemi – Aplikace Azure AD proxy | Microsof
 description: Jak publikovat místní ASP.NET aplikace, které přijímají deklarace služby AD FS pro zabezpečený vzdálený přístup vašich uživatelů.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/08/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cbc5c356ea5a542fdc12b11aff236c56b146b3d5
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 77d465b5900a3c36e6c6b957431b9d6ba56f50a4
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "68477239"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764855"
 ---
 # <a name="working-with-claims-aware-apps-in-application-proxy"></a>Práce s aplikacemi pracujícími s deklaracemi v proxy aplikací
 [Aplikace pracující s deklaracemi](https://msdn.microsoft.com/library/windows/desktop/bb736227.aspx) provádějí přesměrování na službu tokenů zabezpečení (STS). Služba STS požaduje přihlašovací údaje od uživatele v Exchangi pro token a pak uživatele přesměruje na aplikaci. Existuje několik způsobů, jak povolit proxy aplikace pro práci s těmito přesměrování. V tomto článku můžete nakonfigurovat nasazení pro aplikace pracující s deklaracemi. 

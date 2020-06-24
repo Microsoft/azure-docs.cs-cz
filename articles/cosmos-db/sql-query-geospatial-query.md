@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
-ms.openlocfilehash: 08b12bd9d35aaa61c79d35a55068983cdc0f1b83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bbfc31e810e2c11cde4907c9d5120b66195191af
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77566319"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764974"
 ---
 # <a name="querying-geospatial-data-with-azure-cosmos-db"></a>Dotazování na geoprostorové údaje pomocí Azure Cosmos DB
 
@@ -21,7 +21,7 @@ Tento článek popisuje, jak zadávat dotazy na geoprostorové údaje v Azure Co
 
 Tady je seznam geoprostorových systémových funkcí užitečných pro dotazování v Azure Cosmos DB:
 
-|**Využívání**|**Popis**|
+|**Použití**|**Popis**|
 |---|---|
 | ST_DISTANCE (spatial_expr, spatial_expr) | Vrací vzdálenost mezi dvěma LineStringmi výrazy pro bodový odkaz, mnohoúhelník nebo.|
 |ST_WITHIN (spatial_expr, spatial_expr) | Vrátí logický výraz, který označuje, zda se první objekt LineString (Point, mnohoúhelník nebo) nachází v rámci druhého objektu. JSON (Point, mnohoúhelník nebo LineString).|
@@ -36,7 +36,7 @@ Prostorové funkce lze použít k provádění dotazů na Proximity pro prostoro
 ```sql
     SELECT f.id
     FROM Families f
-    WHERE ST_DISTANCE(f.location, {'type': 'Point', 'coordinates':[31.9, -4.8]}) < 30000
+    WHERE ST_DISTANCE(f.location, {"type": "Point", "coordinates":[31.9, -4.8]}) < 30000
 ```
 
 **Výsledky**
@@ -51,7 +51,7 @@ Pokud zahrnete prostorové indexování do zásad indexování, pak se v indexu 
 
 `ST_WITHIN`dá se použít ke kontrole, jestli v mnohoúhelníku leží bod. Běžně se používají mnohoúhelníky, které představují hranice, jako jsou PSČ, hranice státu nebo přirozené formy. Pokud zahrnete prostorové indexování do zásad indexování, pak budou dotazy v rámci v rámci indexu obsluhovány efektivně.
 
-Argumenty mnohoúhelníku `ST_WITHIN` v můžou obsahovat jenom jeden prstenec, to znamená, že mnohoúhelníky nesmí obsahovat v nich otvory.
+Argumenty mnohoúhelníku v `ST_WITHIN` můžou obsahovat jenom jeden prstenec, to znamená, že mnohoúhelníky nesmí obsahovat v nich otvory.
 
 **Dotaz**
 
@@ -59,8 +59,8 @@ Argumenty mnohoúhelníku `ST_WITHIN` v můžou obsahovat jenom jeden prstenec, 
     SELECT *
     FROM Families f
     WHERE ST_WITHIN(f.location, {
-        'type':'Polygon',
-        'coordinates': [[[31.8, -5], [32, -5], [32, -4.7], [31.8, -4.7], [31.8, -5]]]
+        "type":"Polygon",
+        "coordinates": [[[31.8, -5], [32, -5], [32, -4.7], [31.8, -4.7], [31.8, -5]]]
     })
 ```
 
@@ -73,7 +73,7 @@ Argumenty mnohoúhelníku `ST_WITHIN` v můžou obsahovat jenom jeden prstenec, 
 ```
 
 > [!NOTE]
-> Podobně jako v případě, že neodpovídající typy fungují v Azure Cosmos DB dotaz, pokud hodnota umístění zadaná v některém z argumentů je poškozená nebo neplatná, vyhodnotí se jako **nedefinované** a vyhodnocený dokument bude přeskočen z výsledků dotazu. Pokud Váš dotaz nevrátí žádné výsledky, `ST_ISVALIDDETAILED` spusťte příkaz pro ladění, proč je prostorový typ neplatný.
+> Podobně jako v případě, že neodpovídající typy fungují v Azure Cosmos DB dotaz, pokud hodnota umístění zadaná v některém z argumentů je poškozená nebo neplatná, vyhodnotí se jako **nedefinované** a vyhodnocený dokument bude přeskočen z výsledků dotazu. Pokud Váš dotaz nevrátí žádné výsledky, spusťte příkaz `ST_ISVALIDDETAILED` pro ladění, proč je prostorový typ neplatný.
 >
 >
 
@@ -84,7 +84,7 @@ Azure Cosmos DB také podporuje provádění inverzních dotazů, to znamená, �
 ```sql
     SELECT *
     FROM Areas a
-    WHERE ST_WITHIN({'type': 'Point', 'coordinates':[31.9, -4.8]}, a.location)
+    WHERE ST_WITHIN({"type": "Point", "coordinates":[31.9, -4.8]}, a.location)
 ```
 
 **Výsledky**

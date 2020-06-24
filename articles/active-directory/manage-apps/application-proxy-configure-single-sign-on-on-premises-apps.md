@@ -3,25 +3,25 @@ title: Jednotné přihlašování SAML pro místní aplikace s Aplikace Azure AD
 description: Naučte se, jak zajistit jednotné přihlašování k místním aplikacím, které jsou zabezpečené pomocí ověřování SAML. Poskytněte vzdálený přístup k místním aplikacím pomocí proxy aplikací.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/24/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3d2117e913f292e92f37f31d2e123587c70a189
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f9b6753a0aa9e79624b9b972264611fd31f2bba8
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80803293"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764821"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>Jednotné přihlašování SAML pro místní aplikace s proxy aplikací
 
@@ -74,7 +74,7 @@ Před poskytnutím jednotného přihlašování pro místní aplikace je potřeb
 
 2. Na stránce **nastavit jednotné přihlašování pomocí SAML** otevřete záhlaví **základní konfigurace SAML** a vyberte jeho ikonu pro **Úpravy** (tužka). Ujistěte se, že **externí adresa URL** , kterou jste nakonfigurovali v proxy aplikaci, se naplní v polích **identifikátor**, **Adresa URL odpovědi**a **Adresa URL pro odhlášení** . Tyto adresy URL jsou vyžadovány pro správné fungování proxy aplikací. 
 
-3. Upravte **adresu URL odpovědi** nakonfigurovanou dříve, aby byla doména dostupná na internetu prostřednictvím proxy aplikací. `https://contosotravel-f128.msappproxy.net` Pokud je například vaše **externí adresa URL** a původní **Adresa URL odpovědi** `https://contosotravel.com/acs`, bude nutné aktualizovat původní **adresu URL odpovědi** na `https://contosotravel-f128.msappproxy.net/acs`.
+3. Upravte **adresu URL odpovědi** nakonfigurovanou dříve, aby byla doména dostupná na internetu prostřednictvím proxy aplikací. Pokud je například vaše **externí adresa URL** `https://contosotravel-f128.msappproxy.net` a původní **Adresa URL odpovědi** , bude `https://contosotravel.com/acs` nutné aktualizovat původní **adresu URL odpovědi** na `https://contosotravel-f128.msappproxy.net/acs` .
 
     ![Zadejte základní konfigurační data SAML.](./media/application-proxy-configure-single-sign-on-on-premises-apps/basic-saml-configuration.png)
 

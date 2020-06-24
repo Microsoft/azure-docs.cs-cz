@@ -3,24 +3,24 @@ title: Stránka aplikace se nezobrazuje správně pro aplikaci proxy aplikace | 
 description: Pokyny, pokud se stránka v aplikaci proxy aplikace, kterou jste spojili se službou Azure AD, nezobrazuje správně
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/21/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13e73f0ed56648ce162f00d6df5e7b86a922ca01
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 780847494da0ec5cd4eb8ab76f1e46125b8a7f8a
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "68381425"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764413"
 ---
 # <a name="application-page-does-not-display-correctly-for-an-application-proxy-application"></a>Stránka aplikace se nezobrazuje správně u aplikace proxy aplikace.
 
@@ -31,7 +31,7 @@ Když publikujete aplikaci proxy aplikace, budou při přístupu k aplikaci př�
 
 Můžete ověřit, jestli se u chybějících prostředků jedná o problém, a to tak, že otevřete sledování sítě (například Fiddler nebo nástroje F12 v aplikaci Internet Explorer/Microsoft Edge), nanačítáte stránku a vyhledáte chyby 404. To indikuje, že stránky se momentálně nenašly a že je potřebujete publikovat.
 
-Jako příklad tohoto případu Předpokládejme, že jste publikovali aplikaci výdajů pomocí interní adresy URL `http://myapps/expenses`, ale aplikace používá šablonu stylů. `http://myapps/style.css` V takovém případě šablona stylů není ve vaší aplikaci publikovaná, takže při pokusu o načtení Style. CSS vyvolají aplikace po načtení chyby 404. V tomto příkladu se problém vyřeší publikováním aplikace s interní adresou URL `http://myapp/`.
+Jako příklad tohoto případu Předpokládejme, že jste publikovali aplikaci výdajů pomocí interní adresy URL `http://myapps/expenses` , ale aplikace používá šablonu stylů `http://myapps/style.css` . V takovém případě šablona stylů není ve vaší aplikaci publikovaná, takže při pokusu o načtení Style. CSS vyvolají aplikace po načtení chyby 404. V tomto příkladu se problém vyřeší publikováním aplikace s interní adresou URL `http://myapp/` .
 
 ## <a name="problems-with-publishing-as-one-application"></a>Problémy s publikováním jako jedna aplikace
 

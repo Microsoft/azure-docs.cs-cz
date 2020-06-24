@@ -2,7 +2,7 @@
 title: Nastavení výstrah a oznámení pro spravovanou instanci (Azure Portal)
 description: Pomocí Azure Portal můžete vytvořit výstrahy spravované instance SQL, které můžou aktivovat oznámení nebo automatizaci při splnění podmínek, které zadáte.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 05/04/2020
-ms.openlocfilehash: 4251ac28bf378144d7f3374e615c15e69d316f80
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: ae139dd65242be9456f3498c494e1a7c5a29402f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117640"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84695690"
 ---
 # <a name="create-alerts-for-azure-sql-managed-instance-using-the-azure-portal"></a>Vytvoření upozornění pro Azure SQL Managed instance pomocí Azure Portal
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
