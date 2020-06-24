@@ -36,13 +36,13 @@ Pokud chcete povolit přihlášení pro uživatele z konkrétní organizace Azur
 
 ### <a name="configuring-optional-claims"></a>Konfigurace volitelných deklarací identity
 
-Pokud chcete získat deklarace identity `family_name` a `given_name` ze služby Azure AD, můžete nakonfigurovat volitelné deklarace identity pro aplikaci v uživatelském rozhraní Azure Portal nebo manifestu aplikace. Další informace najdete v tématu [jak poskytnout volitelné deklarace identity vaší aplikaci Azure AD](/azure/active-directory/develop/active-directory-optional-claims).
+Pokud chcete získat `family_name` `given_name` deklarace identity a ze služby Azure AD, můžete nakonfigurovat volitelné deklarace identity pro aplikaci v uživatelském rozhraní Azure Portal nebo manifestu aplikace. Další informace najdete v tématu [jak poskytnout volitelné deklarace identity vaší aplikaci Azure AD](/azure/active-directory/develop/active-directory-optional-claims).
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyhledejte a vyberte **Azure Active Directory**.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyhledejte a vyberte **Azure Active Directory**.
 1. V části **Spravovat** vyberte **Registrace aplikací**.
 1. V seznamu vyberte aplikaci, pro kterou chcete nakonfigurovat volitelné deklarace identity.
 1. V části **Správa** vyberte **Konfigurace tokenu**.
 1. Vyberte **přidat volitelnou deklaraci identity**.
 1. Jako **typ tokenu**vyberte **ID**.
-1. Vyberte volitelné deklarace identity, které chcete `family_name` přidat `given_name`, a.
+1. Vyberte volitelné deklarace identity, které chcete přidat, `family_name` a `given_name` .
 1. Klikněte na tlačítko **Add** (Přidat).

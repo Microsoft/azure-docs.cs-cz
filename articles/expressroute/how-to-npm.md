@@ -4,15 +4,15 @@ description: Nakonfigurujte cloudové monitorování sítě (NPM) pro okruhy Azu
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/25/2019
 ms.author: cherylmc
-ms.openlocfilehash: 54fa3dcbfbbcb3153f81407a9bc9b52511405390
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 05c21f4f3f0af0de524db75ce9e6feb38d98c24e
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74076592"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738375"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Konfigurace Network Performance Monitoru pro ExpressRoute
 
@@ -20,7 +20,7 @@ Tento článek vám pomůže nakonfigurovat rozšíření Network Performance Mo
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Můžete:
+Další možnosti:
 
 * Monitorování ztrát a latence v různých virtuální sítě a nastavení výstrah
 
@@ -85,7 +85,7 @@ Vytvořte pracovní prostor v předplatném, který má odkaz virtuální sítě
 2. Potom zkopírujte ID a **primární klíč** **pracovního prostoru** do poznámkového bloku.
 3. V části **Konfigurace agentů Log Analytics pro monitorování pomocí protokolu TCP** Stáhněte skript PowerShellu. PowerShellový skript vám pomůže otevřít příslušný port brány firewall pro transakce TCP.
 
-   ![Skript PowerShellu](./media/how-to-npm/7.png)
+   ![Skript prostředí PowerShell](./media/how-to-npm/7.png)
 
 ### <a name="22-install-a-monitoring-agent-on-each-monitoring-server-on-each-vnet-that-you-want-to-monitor"></a><a name="installagent"></a>2,2: nainstalujte agenta monitorování do každého monitorovacího serveru (na každé virtuální síti, kterou chcete monitorovat).
 

@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 05/25/2020
+ms.date: 06/16/2020
 ms.author: jlian
-ms.openlocfilehash: 7d7e04c526f7327a000ac26e255d2c8363c01f5c
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: bf193859c140001def83a18ca7965d9cbd312b02
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871240"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84907529"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>Podpora IoT Hub pro virtuální sítě s privátním odkazem a spravovanou identitou
 
@@ -91,6 +91,76 @@ Aby bylo možné ostatním službám najít službu IoT Hub jako důvěryhodnou 
 1. V části **stav**vyberte **zapnuto**a pak klikněte na **Uložit**.
 
     :::image type="content" source="media/virtual-network-support/managed-identity.png" alt-text="Snímek obrazovky ukazující, jak zapnout spravovanou identitu pro IoT Hub":::
+
+### <a name="assign-managed-identity-to-your-iot-hub-at-creation-time-using-arm-template"></a>Přiřazení spravované identity k vašemu IoT Hub v době vytváření pomocí šablony ARM
+
+K přiřazení spravované identity ke službě IoT Hub při zřizování prostředků použijte níže uvedenou šablonu ARM:
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+    {
+      "type": "Microsoft.Devices/IotHubs",
+      "apiVersion": "2020-03-01",
+      "name": "<provide-a-valid-resource-name>",
+      "location": "<any-of-supported-regions>",
+      "identity": {
+        "type": "SystemAssigned"
+      },
+      "sku": {
+        "name": "<your-hubs-SKU-name>",
+        "tier": "<your-hubs-SKU-tier>",
+        "capacity": 1
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2018-02-01",
+      "name": "updateIotHubWithKeyEncryptionKey",
+      "dependsOn": [
+        "<provide-a-valid-resource-name>"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "0.9.0.0",
+          "resources": [
+            {
+              "type": "Microsoft.Devices/IotHubs",
+              "apiVersion": "2020-03-01",
+              "name": "<provide-a-valid-resource-name>",
+              "location": "<any-of-supported-regions>",
+              "identity": {
+                "type": "SystemAssigned"
+              },
+              "sku": {
+                "name": "<your-hubs-SKU-name>",
+                "tier": "<your-hubs-SKU-tier>",
+                "capacity": 1
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
+```
+
+Po nahrazení hodnot prostředku `name` , `location` `SKU.name` a `SKU.tier` můžete pomocí Azure CLI nasadit prostředek do existující skupiny prostředků pomocí:
+
+```azurecli-interactive
+az deployment group create --name <deployment-name> --resource-group <resource-group-name> --template-file <template-file.json>
+```
+
+Po vytvoření prostředku můžete načíst identitu spravované služby přiřazenou k vašemu centru pomocí Azure CLI:
+
+```azurecli-interactive
+az resource show --resource-type Microsoft.Devices/IotHubs --name <iot-hub-resource-name> --resource-group <resource-group-name>
+```
 
 ### <a name="pricing-for-managed-identity"></a>Ceny za spravovanou identitu
 
@@ -196,11 +266,11 @@ await registryManager.ExportDevicesAsync(
     cancellationToken);
 ```
 
-Použití této verze sad SDK Azure IoT s podporou virtuální sítě pro jazyky C#, Java a Node. js:
+Použití této verze sad SDK Azure IoT s podporou virtuální sítě pro C#, Java a Node.js:
 
 1. Vytvořte proměnnou prostředí s názvem `EnableStorageIdentity` a nastavte její hodnotu na `1` .
 
-2. Stažení sady SDK: [Java](https://aka.ms/vnetjavasdk)  |  [C#](https://aka.ms/vnetcsharpsdk)  |  [Node. js](https://aka.ms/vnetnodesdk) jazyka Java C#
+2. Stažení sady SDK: [Java](https://aka.ms/vnetjavasdk)  |  [C#](https://aka.ms/vnetcsharpsdk)  |  [Node.js](https://aka.ms/vnetnodesdk) Java C#
  
 V případě Pythonu si stáhněte naši omezené verze z GitHubu.
 

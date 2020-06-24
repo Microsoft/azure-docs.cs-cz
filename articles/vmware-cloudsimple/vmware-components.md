@@ -10,11 +10,11 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 9c9b80cd4d8a7a7ac5597d10bbb87095564bd461
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79279504"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84702818"
 ---
 # <a name="private-cloud-vmware-components"></a>Komponenty VMware privátního cloudu
 
@@ -29,12 +29,12 @@ Privátní cloud je izolovaný systém VMware Stack (ESXi hosts, vCenter, síti 
 
 Zásobník VMware privátního cloudu je nasazený s následující verzí softwaru.
 
-| Součást | Version | Licencovaná verze |
+| Součást | Verze | Licencovaná verze |
 |-----------|---------|------------------|
 | ESXi | 6.7 U2 | Enterprise Plus |
 | vCenter | 6.7 U2 | vCenter úrovně Standard |
 | Síti vSAN | 6.7 | Enterprise |
-| Datové centrum NSX | 2.4.1 | Upřesnit |
+| Datové centrum NSX | 2.4.1 | Pokročilý |
 
 ## <a name="esxi"></a>ESXi
 
@@ -48,7 +48,7 @@ zařízení vCenter Server (VCSA) poskytuje funkce ověřování, správy a orch
 
 ### <a name="vcenter-single-sign-on"></a>jednotné přihlašování vCenter
 
-Služba Embedded Platform Service Controller v VCSA je přidružená k **doméně vCenter s jednotným přihlašováním**.  Název domény je **cloudsimple. Local**.  Pro přístup k **CloudOwner@cloudsimple.com** serveru vCenter se vytvoří výchozí uživatel.  Pro vCenter můžete přidat své místní nebo [zdroje identit](set-vcenter-identity.md)služby Azure Active Directory.
+Služba Embedded Platform Service Controller v VCSA je přidružená k **doméně vCenter s jednotným přihlašováním**.  Název domény je **cloudsimple. Local**.  **CloudOwner@cloudsimple.com**Pro přístup k serveru vCenter se vytvoří výchozí uživatel.  Pro vCenter můžete přidat své místní nebo [zdroje identit](set-vcenter-identity.md)služby Azure Active Directory.
 
 ## <a name="vsan-storage"></a>úložiště síti vSAN
 
@@ -82,7 +82,7 @@ Datové centrum NSX poskytuje virtualizaci sítě, mikrosegmentaci a možnosti z
 
 ## <a name="vsphere-cluster"></a>cluster vSphere
 
-Hostitelé ESXi jsou nakonfigurováni jako cluster, aby zajistili vysokou dostupnost privátního cloudu.  Při vytváření privátního cloudu jsou součásti pro správu nástroje vSphere nasazeny do prvního clusteru.  Pro součásti pro správu je vytvořen fond zdrojů a všechny virtuální počítače pro správu jsou nasazeny v tomto fondu zdrojů. První cluster se nedá odstranit, aby se zmenšil jeho privátní cloud.  cluster vSphere poskytuje vysokou dostupnost pro virtuální počítače s využitím **VSPHERE ha**.  Selhání k tolerování vycházejí z počtu dostupných uzlů v clusteru.  Můžete použít vzorec ```Number of nodes = 2N+1``` , ve kterém ```N``` je počet nedovolených odtolerovatcích.
+Hostitelé ESXi jsou nakonfigurováni jako cluster, aby zajistili vysokou dostupnost privátního cloudu.  Při vytváření privátního cloudu jsou součásti pro správu nástroje vSphere nasazeny do prvního clusteru.  Pro součásti pro správu je vytvořen fond zdrojů a všechny virtuální počítače pro správu jsou nasazeny v tomto fondu zdrojů. První cluster se nedá odstranit, aby se zmenšil jeho privátní cloud.  cluster vSphere poskytuje vysokou dostupnost pro virtuální počítače s využitím **VSPHERE ha**.  Selhání k tolerování vycházejí z počtu dostupných uzlů v clusteru.  Můžete použít vzorec, ```Number of nodes = 2N+1``` ve kterém ```N``` je počet nedovolených odtolerovatcích.
 
 ### <a name="vsphere-cluster-limits"></a>omezení clusteru vSphere
 

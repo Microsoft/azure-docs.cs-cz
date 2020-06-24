@@ -7,13 +7,13 @@ ms.date: 01/11/2018
 ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
-ms.reviewer: cbrooks
-ms.openlocfilehash: 3cdaeffe15dc637d2b988ce7a51030398ee53d9d
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.reviewer: dineshm
+ms.openlocfilehash: aefd03b9d0ce726e086dff96a648e5f3a6b28e6e
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465367"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84809207"
 ---
 # <a name="how-to-use-queue-storage-from-php"></a>Používání úložiště Queue z PHP
 
@@ -37,7 +37,7 @@ V této příručce použijete funkce služby Queue Storage, které je možné v
 
 ### <a name="install-via-composer"></a>Instalace prostřednictvím skladatele
 
-1. V kořenovém adresáři projektu vytvořte soubor s názvem **skladatel. JSON** a přidejte do něj následující kód:
+1. V kořenovém adresáři projektu vytvořte soubor s názvem **composer.js** a přidejte do něj následující kód:
    
     ```json
     {

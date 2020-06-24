@@ -6,14 +6,15 @@ ms.service: event-hubs
 documentationcenter: ''
 author: spelluru
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: f515d3ad832db7f78f98111ab67628a2874033ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: shvija
+ms.openlocfilehash: 055422f4067b7f27ee046a3a00b168db14d13046
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81459130"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85297405"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Konfigurace klíčů spravovaných zákazníkem pro šifrování dat Azure Event Hubs v klidovém formátu pomocí Azure Portal
 Azure Event Hubs poskytuje šifrování neaktivních dat pomocí šifrování služby Azure Storage (Azure SSE). Event Hubs spoléhá na Azure Storage uložení dat a ve výchozím nastavení se všechna data uložená pomocí Azure Storage šifrují pomocí klíčů spravovaných Microsoftem. 
@@ -41,7 +42,7 @@ Pokud chcete povolit klíčům spravovaným zákazníkem v Azure Portal, postupu
 1. Na stránce **Nastavení** v oboru názvů Event Hubs vyberte **šifrování**. 
 1. Vyberte **šifrování klíče spravovaného zákazníkem v klidovém** formátu, jak je znázorněno na následujícím obrázku. 
 
-    ![Povolit spravovaný klíč zákazníka](./media/configure-customer-managed-key/enable-customer-managed-key.png)
+    ![Povolení klíče spravovaného zákazníkem](./media/configure-customer-managed-key/enable-customer-managed-key.png)
 
 ## <a name="set-up-a-key-vault-with-keys"></a>Nastavení trezoru klíčů s klíči
 Po povolení klíčů spravovaných zákazníkem je potřeba přidružit spravovaný klíč zákazníka k vašemu oboru názvů Azure Event Hubs. Event Hubs podporuje pouze Azure Key Vault. Pokud zapnete možnost **šifrování pomocí klíče spravovaného zákazníkem** v předchozí části, je potřeba, abyste klíč importovali do Azure Key Vault. Klíče musí také obsahovat **obnovitelné odstranění** a pro tento klíč **se** neodstraňují konfigurace. Tato nastavení se dají nakonfigurovat pomocí [PowerShellu](../key-vault/general/soft-delete-powershell.md) nebo rozhraní příkazového [řádku](../key-vault/general/soft-delete-cli.md#enabling-purge-protection).
@@ -99,15 +100,15 @@ Pomocí těchto kroků povolte protokoly pro klíče spravované zákazníkem.
 ## <a name="log-schema"></a>Schéma protokolu 
 Všechny protokoly jsou uložené ve formátu JavaScript Object Notation (JSON). Každá položka má pole řetězce, která používají formát popsaný v následující tabulce. 
 
-| Název | Popis |
+| Name | Description |
 | ---- | ----------- | 
 | /TN | Popis úlohy, která selhala. |
 | ActivityId | Interní ID, které se používá ke sledování. |
 | category | Definuje klasifikaci úkolu. Například pokud je klíč z vašeho trezoru klíčů zakázaný, pak se jedná o kategorii informací, nebo pokud se klíč nedá rozdělit, může dojít k chybě. |
 | resourceId | ID prostředku Azure Resource Manager |
 | keyVault | Úplný název trezoru klíčů |
-| key | Název klíče, který slouží k šifrování oboru názvů Event Hubs. |
-| version | Verze používaného klíče |
+| Klíč | Název klíče, který slouží k šifrování oboru názvů Event Hubs. |
+| verze | Verze používaného klíče |
 | NázevOperace | Operace, která se provádí na klíči v trezoru klíčů. Můžete například zakázat/povolit klíč, zalamovat nebo rozbalení. |
 | kód | Kód, který je přidružen k operaci. Příklad: kód chyby 404 znamená, že klíč nebyl nalezen. |
 | zpráva | Jakákoli chybová zpráva přidružená k operaci |
@@ -155,7 +156,7 @@ V této části se dozvíte, jak provádět následující úlohy pomocí **Azur
 ### <a name="create-an-event-hubs-cluster-and-namespace-with-managed-service-identity"></a>Vytvoření clusteru Event Hubs a oboru názvů s identitou spravované služby
 V této části se dozvíte, jak vytvořit obor názvů Azure Event Hubs s identitou spravované služby pomocí šablony Azure Resource Manager a PowerShellu. 
 
-1. Vytvořte šablonu Azure Resource Manager pro vytvoření oboru názvů Event Hubs s identitou spravované služby. Název souboru: **CreateEventHubClusterAndNamespace. JSON**: 
+1. Vytvořte šablonu Azure Resource Manager pro vytvoření oboru názvů Event Hubs s identitou spravované služby. Název souboru: **CreateEventHubClusterAndNamespace.js**: 
 
     ```json
     {
@@ -224,7 +225,7 @@ V této části se dozvíte, jak vytvořit obor názvů Azure Event Hubs s ident
        }
     }
     ```
-2. Vytvořte soubor parametrů šablony s názvem: **CreateEventHubClusterAndNamespaceParams. JSON**. 
+2. Vytvořte soubor parametrů šablony s názvem: **CreateEventHubClusterAndNamespaceParams.jsv**. 
 
     > [!NOTE]
     > Nahraďte následující hodnoty: 
@@ -250,7 +251,7 @@ V této části se dozvíte, jak vytvořit obor názvů Azure Event Hubs s ident
     }
     
     ```
-3. Spuštěním následujícího příkazu PowerShellu nasaďte šablonu a vytvořte obor názvů Event Hubs. Pak načtěte ID Event Hubs oboru názvů pro pozdější použití. Před `{MyRG}` spuštěním příkazu nahraďte názvem skupiny prostředků.  
+3. Spuštěním následujícího příkazu PowerShellu nasaďte šablonu a vytvořte obor názvů Event Hubs. Pak načtěte ID Event Hubs oboru názvů pro pozdější použití. `{MyRG}`Před spuštěním příkazu nahraďte názvem skupiny prostředků.  
 
     ```powershell
     $outputs = New-AzResourceGroupDeployment -Name CreateEventHubClusterAndNamespace -ResourceGroupName {MyRG} -TemplateFile ./CreateEventHubClusterAndNamespace.json -TemplateParameterFile ./CreateEventHubClusterAndNamespaceParams.json
@@ -289,7 +290,7 @@ V tomto případě jste provedli následující kroky:
 
 V tomto kroku aktualizujete obor názvů Event Hubs s použitím informací o trezoru klíčů. 
 
-1. Vytvořte soubor JSON s názvem **CreateEventHubClusterAndNamespace. JSON** s následujícím obsahem: 
+1. Vytvořte soubor JSON s názvem **CreateEventHubClusterAndNamespace.js** s následujícím obsahem: 
 
     ```json
     {
@@ -361,7 +362,7 @@ V tomto kroku aktualizujete obor názvů Event Hubs s použitím informací o tr
     }
     ``` 
 
-2. Vytvořte soubor parametrů šablony: **UpdateEventHubClusterAndNamespaceParams. JSON**. 
+2. Vytvořte soubor parametrů šablony: **UpdateEventHubClusterAndNamespaceParams.jsna**. 
 
     > [!NOTE]
     > Nahraďte následující hodnoty: 
@@ -394,7 +395,7 @@ V tomto kroku aktualizujete obor názvů Event Hubs s použitím informací o tr
        }
     }
     ```             
-3. Spusťte následující příkaz prostředí PowerShell, který nasadí šablonu Správce prostředků. Před `{MyRG}` spuštěním příkazu nahraďte názvem vaší skupiny prostředků. 
+3. Spusťte následující příkaz prostředí PowerShell, který nasadí šablonu Správce prostředků. `{MyRG}`Před spuštěním příkazu nahraďte názvem vaší skupiny prostředků. 
 
     ```powershell
     New-AzResourceGroupDeployment -Name UpdateEventHubNamespaceWithEncryption -ResourceGroupName {MyRG} -TemplateFile ./UpdateEventHubClusterAndNamespace.json -TemplateParameterFile ./UpdateEventHubClusterAndNamespaceParams.json 
@@ -423,7 +424,7 @@ Níže jsou uvedené běžné kódy chyb, které se hledají, když je povolené
 ## <a name="next-steps"></a>Další kroky
 Viz následující články:
 - [Přehled Event Hubs](event-hubs-about.md)
-- [Přehled služby Key Vault](../key-vault/general/overview.md)
+- [Přehled Key Vault](../key-vault/general/overview.md)
 
 
 

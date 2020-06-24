@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/13/2019
-ms.openlocfilehash: 542861afe49d03a179a9740d5a58b9d27e0d7f20
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 97bea90e67b9449a8f5fd7b333b9ac149abef2f8
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300446"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945456"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault-preview"></a>Monitorování služby trezoru klíčů pomocí Azure Monitor pro Key Vault (Preview)
 Azure Monitor for Key Vault (Preview) poskytuje ucelený přehled o vašich trezorech klíčů tím, že nabízí jednotný pohled na vaše Key Vault požadavky, výkon, chyby a latenci.
@@ -156,7 +156,9 @@ Pomocí následujících kroků můžete nakonfigurovat předplatné s více př
 4. V rozevíracím seznamu **trezory klíčů** vyberte jeden nebo více účtů, které chcete použít jako výchozí. Nezapomeňte, že sešit podporuje výběr až na celkem 200 účtů úložiště.
 5. Na panelu příkazů vyberte **Uložit jako** a uložte kopii sešitu s vlastními úpravami a potom kliknutím na **hotové úpravy** vraťte do režimu čtení.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
+
+Obecné pokyny k odstraňování potíží najdete v článku věnovaném [řešení problémů](troubleshoot-workbooks.md)na základě vyhrazeného sešitu.
 
 Tato část vám pomůže s diagnostikou a řešením potíží s některými běžnými problémy, se kterými se můžete setkat při použití Azure Monitor pro Key Vault (Preview). K vyhledání informací týkajících se konkrétního problému použijte níže uvedený seznam.
 
@@ -164,49 +166,43 @@ Tato část vám pomůže s diagnostikou a řešením potíží s některými b�
 
 Chcete-li pomoct řešit problémy související s trezorem klíčů, které identifikujete pomocí Azure Monitor pro Key Vault (Preview), přečtěte si [dokumentaci Azure Key Vault](https://docs.microsoft.com/azure/key-vault/).
 
-### <a name="why-can-i-only-see-200-key-vaults"></a>Proč můžu zobrazit jenom trezory klíčů 200?
+### <a name="why-can-i-only-see-200-key-vaults"></a>Proč můžu zobrazit jenom trezory klíčů 200
 
 Je povolený limit 200 trezorů klíčů, které se dají vybrat a zobrazit. Bez ohledu na počet vybraných předplatných má počet vybraných trezorů klíčů limit 200.
 
-### <a name="what-will-happen-when-a-pinned-item-is-clicked"></a>Co se stane, když se klikne na připojenou položku?
-
-Po kliknutí na připojenou položku na řídicím panelu se otevře jedna ze dvou věcí:
-* Pokud se přehledy uložily – otevře se instance Insights, ze které se kód PIN uložil.
-* Pokud se přehledy neuložily, otevře se nová výchozí instance Insights.
-
-### <a name="why-dont-i-see-all-my-subscriptions-in-the-subscription-picker"></a>Proč ve výběru předplatného nevidím všechna moje předplatná?
+### <a name="why-dont-i-see-all-my-subscriptions-in-the-subscription-picker"></a>Proč ve výběru předplatného nevidím všechna předplatná
 
 Zobrazujeme jenom odběry, které obsahují trezory klíčů, zvolené z vybraného filtru předplatného, které jsou v hlavičce Azure Portal vybrané v adresáři a předplatném.
 
 ![Snímek obrazovky s filtrem předplatných](./media/key-vaults-insights-overview/Subscriptions.png)
 
-### <a name="i-am-getting-an-error-message-that-the-query-exceeds-the-maximum-number-of-workspacesregions-allowed-what-to-do-now"></a>Zobrazuje se chybová zpráva oznamující, že "dotaz překračuje maximální počet povolených pracovních prostorů/oblastí", co dělat?
+### <a name="i-am-getting-an-error-message-that-the-query-exceeds-the-maximum-number-of-workspacesregions-allowed-what-to-do-now"></a>Zobrazuje se chybová zpráva oznamující, že "dotaz překračuje maximální povolený počet pracovních prostorů/oblastí", co dělat hned
 
 V současné době existuje omezení na 25 oblastí a 200 pracovních prostorů, aby bylo možné zobrazit vaše data, budete muset snížit počet předplatných nebo skupin prostředků.
 
-### <a name="i-want-to-make-changes-or-add-additional-visualizations-to-key-vault-insights-how-do-i-do-so"></a>Chci udělat změny nebo přidat další vizualizace Key Vault Insights, jak to mám udělat?
+### <a name="i-want-to-make-changes-or-add-additional-visualizations-to-key-vault-insights-how-do-i-do-so"></a>Chci udělat změny nebo přidat další vizualizace Key Vault Insights, jak to mám udělat
 
 Chcete-li provést změny, vyberte úpravou "režim úprav" a upravte sešit. potom můžete svou práci uložit jako nový sešit, který je svázán s určeným předplatným a skupinou prostředků.
 
-### <a name="what-is-the-time-grain-once-we-pin-any-part-of-the-workbooks"></a>Jaký je časový interval, po který se připnout k jakékoli části sešitů?
+### <a name="what-is-the-time-grain-once-we-pin-any-part-of-the-workbooks"></a>Jaký je časový interval, po kterém se připnout k libovolné části sešitů
 
 Používáme časový interval "automatického", proto závisí na tom, jaký časový rozsah je vybraný.
 
-### <a name="what-is-the-time-range-when-any-part-of-the-workbook-is-pinned"></a>Jaký je časový rozsah, kdy je připnuté část sešitu?
+### <a name="what-is-the-time-range-when-any-part-of-the-workbook-is-pinned"></a>Jaký je časový rozsah, kdy je připnuté část sešitu
 
 Časový rozsah bude záviset na nastavení řídicího panelu.
 
-### <a name="why-do-i-not-see-any-data-for-my-key-vault-under-the-operations--latency-sections"></a>Proč se v sekcích Operations & latence nezobrazují žádná data pro moje Key Vault?
+### <a name="why-do-i-not-see-any-data-for-my-key-vault-under-the-operations--latency-sections"></a>Proč se v sekcích Operations & latence nezobrazují žádná data pro moje Key Vault
 
 Pokud chcete zobrazit data založená na protokolech, budete muset povolit protokoly pro všechny trezory klíčů, které chcete monitorovat. To se dá udělat v nastavení diagnostiky pro každý Trezor klíčů. Data budete muset poslat do určeného Log Analytics pracovního prostoru.
 
-### <a name="i-have-already-enabled-logs-for-my-key-vault-why-am-i-still-unable-to-see-my-data-under-operations--latency"></a>Už mám Povolené protokoly pro moje Key Vault, proč se mi v rámci operací & latenci pořád nedaří zobrazit moje data?
+### <a name="i-have-already-enabled-logs-for-my-key-vault-why-am-i-still-unable-to-see-my-data-under-operations--latency"></a>Už jsem povolil protokoly pro moje Key Vault, proč se mi v operacích & latence pořád nedaří zobrazit moje data.
 
 Diagnostické protokoly v současné době nefungují zpětně, takže se data začnou zobrazovat, jenom když dojde k provedeným akcím pro vaše trezory klíčů. V závislosti na tom, jak je Trezor klíčů aktivní, může trvat nějakou dobu v rozsahu od hodin až po jeden den.
 
 Navíc pokud máte vybraný vysoký počet trezorů klíčů a předplatných, možná nebudete moct zobrazit data z důvodu omezení dotazů. Aby bylo možné zobrazit data, možná budete muset snížit počet vybraných předplatných nebo trezorů klíčů. 
 
-### <a name="what-if-i-want-to-see-other-data-or-make-my-own-visualizations-how-can-i-make-changes-to-the-key-vault-insights"></a>Co když chci zobrazit další data nebo vytvořit vlastní vizualizace? Jak mohu dělat změny v Key Vault Insights?
+### <a name="what-if-i-want-to-see-other-data-or-make-my-own-visualizations-how-can-i-make-changes-to-the-key-vault-insights"></a>Co když chci zobrazit další data nebo vytvořit vlastní vizualizace? Jak mohu dělat změny v Key Vault Insights
 
 Existující sešit můžete upravit pomocí režimu úprav a pak uložit práci jako nový sešit, který bude mít všechny nové změny.
 

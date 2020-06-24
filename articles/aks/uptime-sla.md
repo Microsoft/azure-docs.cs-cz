@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.custom: references_regions
-ms.openlocfilehash: 2df0ad675f03b25363ab0f5b13dceb762a657ed7
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: b360f36dfc80033ac95e4face438b66eed33cec4
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299549"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945507"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Smlouva SLA pro Azure Kubernetes Service (AKS) pro provozuschopnost
 
@@ -23,13 +23,20 @@ Zákazníci můžou pořád vytvářet neomezený počet bezplatných clusterů 
 > [!Important]
 > Clustery s uzamčením odchozích dat najdete v tématu [omezení odchozího provozu](limit-egress-traffic.md) pro otevření odpovídajících portů.
 
+## <a name="region-availability"></a>Dostupnost v oblastech
+
+Smlouva SLA pro dobu provozu je dostupná ve veřejných oblastech, kde [se podporuje AKS](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service).
+
+* Azure Government se momentálně nepodporuje.
+* Azure Čína 21Vianet se momentálně nepodporuje.
+
 ## <a name="sla-terms-and-conditions"></a>Podmínky a ujednání SLA
 
 Smlouva SLA pro dobu provozu je placená funkce a je povolená pro jednotlivé clustery. Ceny smlouvy SLA pro dobu provozu určují počet diskrétních clusterů, a ne velikost jednotlivých clusterů. Další informace najdete v [podrobnostech o cenách smlouvy SLA pro dobu provozu](https://azure.microsoft.com/pricing/details/kubernetes-service/) .
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
-* Azure CLI verze 2.7.0 nebo novější
+* Nainstalujte [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) verze 2.7.0 nebo novější.
 
 ## <a name="creating-a-cluster-with-uptime-sla"></a>Vytvoření clusteru s smlouvou SLA pro dobu provozu
 

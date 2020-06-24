@@ -16,11 +16,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 851c5eb4ebfee4e4a4836a07b51578dd2b0c68cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79266868"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84701877"
 ---
 # <a name="troubleshooting-specific-rdp-error-messages-to-a-windows-vm-in-azure"></a>Řešení konkrétních chybových zpráv protokolu RDP pro virtuální počítač s Windows v Azure
 Při použití připojení vzdálené plochy k virtuálnímu počítači s Windows (VM) v Azure se může zobrazit konkrétní chybová zpráva. Tento článek podrobně popisuje některé běžné chybové zprávy, ke kterým došlo, a postup řešení potíží. Pokud máte problémy s připojením k VIRTUÁLNÍmu počítači pomocí protokolu RDP, ale nedošlo k určité chybové zprávě, přečtěte si článek [Průvodce odstraňováním potíží pro vzdálenou plochu](troubleshoot-rdp-connection.md).
@@ -69,7 +69,7 @@ Možná řešení:
 ## <a name="an-authentication-error-has-occurred-the-local-security-authority-cannot-be-contacted"></a>Došlo k chybě ověřování. Místní autoritu zabezpečení nelze kontaktovat.
 Příčina: cílový virtuální počítač nemůže najít autoritu zabezpečení v části uživatelské jméno vašich přihlašovacích údajů.
 
-Pokud je uživatelské jméno ve tvaru *SecurityAuthority*\\*username* (příklad: CORP\User1.), část *SecurityAuthority* je název počítače (pro místní úřad zabezpečení) nebo název domény služby Active Directory.
+Pokud je uživatelské jméno ve tvaru *SecurityAuthority* \\ *username* (příklad: CORP\User1.), část *SecurityAuthority* je název počítače (pro místní úřad zabezpečení) nebo název domény služby Active Directory.
 
 Možná řešení:
 
@@ -84,8 +84,8 @@ Příčina: cílový virtuální počítač nemůže ověřit název vašeho ú�
 
 Počítač se systémem Windows může ověřit pověření místního účtu nebo účtu domény.
 
-* Pro místní účty použijte syntaxi *ComputerName*\\*username* (příklad: SQL1\Admin4798).
-* V případě doménových účtů použijte syntaxi *DomainName*\\*username* (příklad: CONTOSO\peterodman).
+* Pro místní účty použijte syntaxi *ComputerName* \\ *username* (příklad: SQL1\Admin4798).
+* V případě doménových účtů použijte syntaxi *DomainName* \\ *username* (příklad: CONTOSO\peterodman).
 
 Pokud jste virtuální počítač zvýšili na řadič domény v nové doménové struktuře služby Active Directory, účet místního správce, pomocí kterého jste se přihlásili, se převede na ekvivalentní účet se stejným heslem v nové doménové struktuře a doméně. Místní účet se pak odstraní.
 

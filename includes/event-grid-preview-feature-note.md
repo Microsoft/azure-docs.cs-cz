@@ -28,7 +28,7 @@ V [cloudshellu](/azure/cloud-shell/quickstart):
 
 Pro místní instalaci:
 
-1. [Nainstalujte rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli). Ujistěte se, že máte nejnovější verzi, pomocí kontroly `az --version`.
+1. [Nainstalujte rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli). Ujistěte se, že máte nejnovější verzi, pomocí kontroly `az --version` .
 1. Odinstalace předchozích verzí rozšíření`az extension remove -n eventgrid`
 1. Nainstalujte `eventgrid` rozšíření pomocí nástroje.`az extension add -n eventgrid`
 

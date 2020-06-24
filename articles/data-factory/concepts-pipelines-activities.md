@@ -108,12 +108,12 @@ Tady je způsob definice kanálu ve formátu JSON:
 
 Značka | Description | Typ | Vyžadováno
 --- | ----------- | ---- | --------
-name | Název kanálu. Určuje název, který představuje akci prováděnou kanálem. <br/><ul><li>Maximální počet znaků: 140.</li><li>Musí začínat písmenem, číslicí nebo podtržítkem ( \_ ).</li><li>Nejsou povoleny následující znaky: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", "\" </li></ul> | Řetězec | Ano
-description | Určuje text popisující, k čemu se kanál používá. | Řetězec | Ne
-activities | Část **activities** může obsahovat definici jedné nebo více aktivit. Podrobnosti o elementu activities formátu JSON najdete v části [Zápis JSON aktivity](#activity-json). | Pole | Ano
-parameters | Část **parameters** může obsahovat definici jednoho nebo více parametrů v kanálu, aby byl kanál flexibilní pro opakované použití. | Seznam | Ne
-souběžnost | Maximální počet souběžných spuštění kanálu může být. Ve výchozím nastavení neexistuje žádná maximální hodnota. Pokud je dosaženo limitu souběžnosti, další spuštění kanálu se zařadí do fronty, dokud se dřív nedokončí. | Číslo | Ne 
-anotac | Seznam značek přidružených k kanálu | Pole | Ne
+name | Název kanálu. Určuje název, který představuje akci prováděnou kanálem. <br/><ul><li>Maximální počet znaků: 140.</li><li>Musí začínat písmenem, číslicí nebo podtržítkem ( \_ ).</li><li>Nejsou povoleny následující znaky: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", "\" </li></ul> | Řetězec | Yes
+description | Určuje text popisující, k čemu se kanál používá. | Řetězec | No
+activities | Část **activities** může obsahovat definici jedné nebo více aktivit. Podrobnosti o elementu activities formátu JSON najdete v části [Zápis JSON aktivity](#activity-json). | Pole | Yes
+parameters | Část **parameters** může obsahovat definici jednoho nebo více parametrů v kanálu, aby byl kanál flexibilní pro opakované použití. | Seznam | No
+souběžnost | Maximální počet souběžných spuštění kanálu může být. Ve výchozím nastavení neexistuje žádná maximální hodnota. Pokud je dosaženo limitu souběžnosti, další spuštění kanálu se zařadí do fronty, dokud se dřív nedokončí. | Číslo | No 
+anotac | Seznam značek přidružených k kanálu | Pole | No
 
 ## <a name="activity-json"></a>Zápis JSON aktivity
 Část **activities** může obsahovat definici jedné nebo více aktivit. Existují dva hlavní typy aktivit: aktivity spuštění a aktivity řízení.
@@ -143,13 +143,13 @@ Následující tabulka obsahuje popis vlastností v definici aktivity ve formát
 
 Značka | Description | Vyžadováno
 --- | ----------- | ---------
-name | Název aktivity. Určuje název, který představuje akci prováděnou danou aktivitou. <br/><ul><li>Maximální počet znaků: 55.</li><li>Musí začínat písmenem nebo podtržítkem ( \_ ).</li><li>Nejsou povoleny následující znaky: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", "\" | Ano</li></ul>
-description | Text popisující, k čemu aktivita slouží. | Ano
-typ | Typ aktivity. Různé typy aktivit najdete v částech [aktivity přesunu dat](#data-movement-activities), [aktivity transformace dat](#data-transformation-activities)a [aktivity řízení](#control-flow-activities) . | Ano
+name | Název aktivity. Určuje název, který představuje akci prováděnou danou aktivitou. <br/><ul><li>Maximální počet znaků: 55.</li><li>Musí začínat písmenem nebo podtržítkem ( \_ ).</li><li>Nejsou povoleny následující znaky: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", "\" | Yes</li></ul>
+description | Text popisující, k čemu aktivita slouží. | Yes
+typ | Typ aktivity. Různé typy aktivit najdete v částech [aktivity přesunu dat](#data-movement-activities), [aktivity transformace dat](#data-transformation-activities)a [aktivity řízení](#control-flow-activities) . | Yes
 linkedServiceName | Název propojené služby používané aktivitou.<br/><br/>Aktivita může vyžadovat zadání propojené služby, která odkazuje na požadované výpočetní prostředí. | Ano v případě aktivity HDInsight, dávkové hodnoticí aktivity služby Azure Machine Learning a aktivita uložené procedury <br/><br/>Ne ve všech ostatních případech
-typeProperties | Vlastnosti v části typeProperties závisí na příslušném typu aktivity. Pokud chcete zobrazit vlastnosti typu určité aktivity, klikněte na odkaz na aktivitu v předchozí části. | Ne
-policy | Zásady, které ovlivňují chování aktivity za běhu. Tato vlastnost obsahuje časový limit a chování při opakování. Pokud není zadaný, použijí se výchozí hodnoty. Další informace najdete v části [Zásada aktivity](#activity-policy). | Ne
-dependsOn | Tato vlastnost slouží k určení závislostí aktivity a toho, jak následující aktivity závisejí na předchozích aktivitách. Další informace najdete v části [Závislost aktivit](#activity-dependency). | Ne
+typeProperties | Vlastnosti v části typeProperties závisí na příslušném typu aktivity. Pokud chcete zobrazit vlastnosti typu určité aktivity, klikněte na odkaz na aktivitu v předchozí části. | No
+policy | Zásady, které ovlivňují chování aktivity za běhu. Tato vlastnost obsahuje časový limit a chování při opakování. Pokud není zadaný, použijí se výchozí hodnoty. Další informace najdete v části [Zásada aktivity](#activity-policy). | No
+dependsOn | Tato vlastnost slouží k určení závislostí aktivity a toho, jak následující aktivity závisejí na předchozích aktivitách. Další informace najdete v části [Závislost aktivit](#activity-dependency). | No
 
 ### <a name="activity-policy"></a>Zásada aktivity
 Zásady ovlivňují chování aktivity za běhu a nabízejí možnosti konfigurace. Zásady aktivit jsou dostupné jenom pro aktivity spuštění.
@@ -208,11 +208,11 @@ Aktivity řízení mají následující strukturu nejvyšší úrovně:
 
 Značka | Description | Vyžadováno
 --- | ----------- | --------
-name | Název aktivity. Určuje název, který představuje akci prováděnou danou aktivitou.<br/><ul><li>Maximální počet znaků: 55.</li><li>Musí začínat číslem písmenem nebo podtržítkem ( \_ ).</li><li>Nejsou povoleny následující znaky: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", "\" | Ano</li><ul>
-description | Text popisující, k čemu aktivita slouží. | Ano
-typ | Typ aktivity. Informace o různých typech aktivit najdete v částech [Aktivity přesunu dat](#data-movement-activities), [Aktivity transformace dat](#data-transformation-activities) a [Aktivity řízení](#control-flow-activities). | Ano
-typeProperties | Vlastnosti v části typeProperties závisí na příslušném typu aktivity. Pokud chcete zobrazit vlastnosti typu určité aktivity, klikněte na odkaz na aktivitu v předchozí části. | Ne
-dependsOn | Tato vlastnost slouží k určení závislostí aktivity a toho, jak následující aktivity závisejí na předchozích aktivitách. Další informace najdete v tématu [závislost aktivity](#activity-dependency). | Ne
+name | Název aktivity. Určuje název, který představuje akci prováděnou danou aktivitou.<br/><ul><li>Maximální počet znaků: 55.</li><li>Musí začínat číslem písmenem nebo podtržítkem ( \_ ).</li><li>Nejsou povoleny následující znaky: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", "\" | Yes</li><ul>
+description | Text popisující, k čemu aktivita slouží. | Yes
+typ | Typ aktivity. Informace o různých typech aktivit najdete v částech [Aktivity přesunu dat](#data-movement-activities), [Aktivity transformace dat](#data-transformation-activities) a [Aktivity řízení](#control-flow-activities). | Yes
+typeProperties | Vlastnosti v části typeProperties závisí na příslušném typu aktivity. Pokud chcete zobrazit vlastnosti typu určité aktivity, klikněte na odkaz na aktivitu v předchozí části. | No
+dependsOn | Tato vlastnost slouží k určení závislostí aktivity a toho, jak následující aktivity závisejí na předchozích aktivitách. Další informace najdete v tématu [závislost aktivity](#activity-dependency). | No
 
 ### <a name="activity-dependency"></a>Závislost aktivit
 Závislost aktivity definuje způsob, jakým budou následující aktivity závislé na předchozích aktivitách, a určuje podmínky, zda pokračovat v provádění dalšího úkolu. Aktivita může záviset na jedné nebo více předchozích aktivitách s různými podmínkami závislosti.

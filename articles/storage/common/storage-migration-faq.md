@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: d594f3cf556fe311e0b7400a23fd61d0336fe5f1
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 1d8275d11b845df43238dce82beabe89d6464799
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83651129"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84944691"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Nejčastější dotazy ohledně migrace služby Azure Storage
 
@@ -144,7 +144,7 @@ Postupujte následovně:
     $osDisk = New-AzDisk -DiskName $diskName -Disk $diskConfig -ResourceGroupName $resourceGroupName
     ```
 
-Další informace o tom, jak nasadit virtuální počítač ze spravovaného disku, najdete v tématu [CreateVmFromManagedOsDisk. ps1](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/blob/master/CreateVmFromManagedOsDisk.ps1).
+Další informace o tom, jak nasadit virtuální počítač ze spravovaného disku, najdete v tématu [CreateVmFromManagedOsDisk.ps1](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/blob/master/CreateVmFromManagedOsDisk.ps1).
 
 **Návody přesunout nebo stáhnout data z účtu úložiště?**
 
@@ -215,19 +215,20 @@ Neexistuje žádné řešení zálohování. Soubory Azure ale také podporují 
 - Ze sdílené složky do kontejneru objektů BLOB v rámci účtu úložiště nebo do jiného účtu úložiště.
 
 Další informace najdete v tématu [přenos dat pomocí AzCopy ve Windows](storage-use-azcopy.md).
+
 ## <a name="configuration"></a>Konfigurace
 
 **Návody změnit sekundární umístění na oblast Evropa pro účet úložiště?**
 
 Při vytváření účtu úložiště vyberete primární oblast pro daný účet. Výběr sekundární oblasti je založen na primární oblasti a nelze ji změnit. Další informace najdete v tématu [geograficky redundantní úložiště (GRS): replikace mezi různými oblastmi pro Azure Storage](storage-redundancy.md).
 
-**Kde mohu získat další informace o šifrování služby Azure Storage (SSE)?**  
+**Kde mohu získat další informace o šifrování Azure Storage?**  
 
 Viz následující články:
 
--  [Příručka zabezpečení Azure Storage](../blobs/security-recommendations.md)
-
--  [Šifrování služby Azure Storage pro neaktivní uložená data](storage-service-encryption.md)
+- [Šifrování služby Azure Storage pro neaktivní uložená data](storage-service-encryption.md)
+- [Použití klíčů spravovaných zákazníkem se Azure Key Vault ke správě šifrování Azure Storage](encryption-customer-managed-keys.md)
+- [Zadání šifrovacího klíče pro požadavek na úložiště objektů BLOB (Preview)](encryption-customer-provided-keys.md)
 
 **Návody šifrovat data v účtu úložiště?**
 
@@ -253,21 +254,21 @@ Pokud máte virtuální počítače, musíte před migrací dat účtu úložiš
 
 Poskytnutí přístupu k prostředkům úložiště ostatním lidem:
 
--   K poskytnutí přístupu k prostředku použijte token sdíleného přístupového podpisu (SAS).
+- K poskytnutí přístupu k prostředku použijte token sdíleného přístupového podpisu (SAS).
 
--   Zadejte uživatele s primárním nebo sekundárním klíčem pro účet úložiště. Další informace najdete v tématu [Správa přístupových klíčů účtu úložiště](storage-account-keys-manage.md).
+- Zadejte uživatele s primárním nebo sekundárním klíčem pro účet úložiště. Další informace najdete v tématu [Správa přístupových klíčů účtu úložiště](storage-account-keys-manage.md).
 
--   Změňte zásady přístupu tak, aby povolovaly anonymní přístup. Další informace najdete v tématu [udělení oprávnění anonymních uživatelů k kontejnerům a](../blobs/storage-manage-access-to-resources.md#grant-anonymous-users-permissions-to-containers-and-blobs)objektům blob.
+- Změňte zásady přístupu tak, aby povolovaly anonymní přístup. Další informace najdete v tématu [udělení oprávnění anonymních uživatelů k kontejnerům a](../blobs/storage-manage-access-to-resources.md#grant-anonymous-users-permissions-to-containers-and-blobs)objektům blob.
 
 **Kde je nainstalováno AzCopy?**
 
--   Pokud k AzCopy přistupujete z příkazového řádku Microsoft Azure Storage zadejte **AzCopy**. Příkazový řádek se nainstaluje společně s AzCopy.
+- Pokud k AzCopy přistupujete z příkazového řádku Microsoft Azure Storage zadejte **AzCopy**. Příkazový řádek se nainstaluje společně s AzCopy.
 
--   Pokud jste nainstalovali 32 verzi, najdete ji tady: **% ProgramFiles (x86)% \\ Microsoft SDK \\ Azure \\ AzCopy**.
+- Pokud jste nainstalovali 32 verzi, najdete ji tady: **% ProgramFiles (x86)% \\ Microsoft SDK \\ Azure \\ AzCopy**.
 
--   Pokud jste nainstalovali 64 verzi, najdete ji tady: **% ProgramFiles% \\ Microsoft SDK \\ Azure \\ AzCopy**.
+- Pokud jste nainstalovali 64 verzi, najdete ji tady: **% ProgramFiles% \\ Microsoft SDK \\ Azure \\ AzCopy**.
 
-**Návody použít vlastní doménu HTTPS s účtem úložiště? Například, jak se dá "https: \/ /mystorageaccountname.blob.Core.Windows.net/images/image.gif" Zobrazit jako "https: \/ /www.contoso.com/images/image.gif"?**
+**Návody použít vlastní doménu HTTPS s účtem úložiště? Například, jak se dá "https: \/ /mystorageaccountname.blob.core.windows.net/images/image.gif" zobrazovat jako "https: \/ /www.contoso.com/images/image.gif"?**
 
 TLS/SSL se v současné době nepodporuje u účtů úložiště s vlastními doménami.
 Můžete ale použít vlastní domény bez HTTPS. Další informace najdete v tématu [Konfigurace vlastního názvu domény pro koncový bod služby Blob Storage](../blobs/storage-custom-domain-name.md).
@@ -284,15 +285,15 @@ Pro přístup k redundantnímu úložišti se vyžaduje geograficky redundantní
 
 **Jak se dá získat přístup k datům uloženým v sekundární oblasti pro replikovaný účet úložiště (například úložiště redundantní zóny, geograficky redundantní úložiště nebo geograficky redundantní úložiště s přístupem pro čtení)?**
 
--   Pokud používáte redundantní úložiště zóny nebo geograficky redundantní úložiště, nemůžete získat přístup k datům ze sekundární oblasti, pokud neinicializujete převzetí služeb při selhání této oblasti. Další informace o procesu převzetí služeb při selhání najdete v tématu [zotavení po havárii a převzetí služeb při selhání účtu úložiště](storage-disaster-recovery-guidance.md).
+- Pokud používáte redundantní úložiště zóny nebo geograficky redundantní úložiště, nemůžete získat přístup k datům ze sekundární oblasti, pokud neinicializujete převzetí služeb při selhání této oblasti. Další informace o procesu převzetí služeb při selhání najdete v tématu [zotavení po havárii a převzetí služeb při selhání účtu úložiště](storage-disaster-recovery-guidance.md).
 
--   Pokud používáte geograficky redundantní úložiště s přístupem pro čtení, můžete kdykoli získat přístup k datům ze sekundární oblasti. Použijte jednu z následujících metod:  
+- Pokud používáte geograficky redundantní úložiště s přístupem pro čtení, můžete kdykoli získat přístup k datům ze sekundární oblasti. Použijte jednu z následujících metod:  
 
-    - **AzCopy**: pro přístup k sekundárnímu koncovému bodu se připojí k názvu účtu úložiště v adrese URL **sekundární** . Například:  
+  - **AzCopy**: pro přístup k sekundárnímu koncovému bodu se připojí k názvu účtu úložiště v adrese URL **sekundární** . Příklad:  
 
       `https://storageaccountname-secondary.blob.core.windows.net/vhds/BlobName.vhd`
 
-    - **Token SAS**: pro přístup k datům z koncového bodu použijte token SAS. Další informace najdete v tématu [použití sdílených přístupových podpisů](storage-sas-overview.md).
+  - **Token SAS**: pro přístup k datům z koncového bodu použijte token SAS. Další informace najdete v tématu [použití sdílených přístupových podpisů](storage-sas-overview.md).
 
 **Návody k přístupu k datům v účtu úložiště použít FTP?**
 
@@ -300,6 +301,6 @@ Neexistuje žádný způsob, jak získat přístup k účtu úložiště přímo
 
 Pokud chcete jenom stahovat data, aniž byste museli používat Průzkumník služby Storage nebo podobnou aplikaci, možná budete moct použít token SAS. Další informace najdete v tématu [použití sdílených přístupových podpisů](storage-sas-overview.md).
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoc? Obraťte se na podporu.
+## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktování podpory
 
 Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a ta vám pomůže váš problém rychle vyřešit.

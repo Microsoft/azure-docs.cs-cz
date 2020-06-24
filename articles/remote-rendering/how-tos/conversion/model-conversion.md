@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 135c58a665779ffaad8750ffe618bdbe38639b66
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: db05c7a5a45221485ecb62c2c90d56be52d5ef48
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681490"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808609"
 ---
 # <a name="convert-models"></a>Převod modelů
 
@@ -38,6 +38,11 @@ Existují drobné rozdíly mezi formáty s ohledem na převod vlastností materi
     - nebo poskytnutím *sdíleného přístupového podpisu (SAS)*.
 
 Data všech modelů (vstupní a výstupní) se ukládají do úložiště objektů BLOB v Azure, které zadal uživatel. Vzdálené vykreslování Azure poskytuje plnou kontrolu nad správou prostředků.
+
+## <a name="pricing"></a>Ceny
+
+Informace o cenách pro převod najdete na stránce s [cenami pro vzdálené vykreslování](https://azure.microsoft.com/pricing/details/remote-rendering) .
+
 
 ## <a name="conversion-parameters"></a>Parametry převodu
 

@@ -8,18 +8,18 @@ manager: mtillman
 ms.assetid: 8078f366-a2c4-4fbb-a44b-fc39fd89df81
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/10/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 97c03d417f8bf123de3332142344f292de00e3b2
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 92046b3a944a747ce76d2426855eec7b6bc2cd70
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734106"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84790242"
 ---
 # <a name="list-azure-deny-assignments-using-the-azure-portal"></a>Výpis přiřazení odmítnutí Azure pomocí Azure Portal
 
@@ -42,7 +42,7 @@ Pomocí těchto kroků můžete vypsat přiřazení zamítnutí v oboru předpla
 
 1. Klikněte na skupinu pro správu nebo na předplatné, které chcete zobrazit.
 
-1. Klikněte na **Řízení přístupu (IAM)**.
+1. Klikněte na **Řízení přístupu (IAM)** .
 
 1. Klikněte na kartu **Odepřít přiřazení** (nebo klikněte na tlačítko **Zobrazit** na dlaždici zobrazit přiřazení odepřít).
 
@@ -59,7 +59,7 @@ Pomocí těchto kroků můžete vypsat přiřazení zamítnutí v oboru předpla
     | **Název** | Název přiřazení zamítnutí. |
     | **Typ objektu zabezpečení** | Uživatel, skupina, systémově definované skupiny nebo instanční objekt. |
     | **Denied**  | Název objektu zabezpečení, který je zahrnutý v přiřazení zamítnutí. |
-    | **ID** | Jedinečný identifikátor pro přiřazení zamítnutí. |
+    | **Účet** | Jedinečný identifikátor pro přiřazení zamítnutí. |
     | **Vyloučené objekty zabezpečení** | Zda existují objekty zabezpečení, které jsou vyloučeny z přiřazení zamítnutí. |
     | **Neplatí pro podřízené položky** | Zda je přiřazení zamítnutí děděno do podoborů. |
     | **Chráněno systémem** | Zda je přiřazení zamítnuto spravováno službou Azure. V současné době vždycky Ano. |
@@ -90,7 +90,7 @@ Pomocí následujícího postupu můžete zobrazit další podrobnosti o přiřa
 
     ![Zamítnutí přiřazení – Odepřená oprávnění](./media/deny-assignments-portal/deny-assignment-denied-permissions.png)
 
-    | Typ akce | Popis |
+    | Typ akce | Description |
     | --- | --- |
     | **Akce**  | Operace správy se zamítly. |
     | **NotActions** | Operace správy vyloučené z operace odepřené správy |

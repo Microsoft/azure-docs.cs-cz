@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: ae20a0372c5808cc2265a4fae63b79ef2bb71605
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: c3f3eddf57b559d9e8f4837db453232308869767
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125498"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118045"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Zajištění vysoké dostupnosti pomocí Azure Cosmos DB
 
 Azure Cosmos DB transparentně replikuje vaše data ve všech oblastech Azure přidružených k vašemu účtu Cosmos. Cosmos DB využívá více vrstev redundance pro vaše data, jak je znázorněno na následujícím obrázku:
 
-![Fyzické dělení](./media/high-availability/cosmosdb-data-redundancy.png)
+:::image type="content" source="./media/high-availability/cosmosdb-data-redundancy.png" alt-text="Fyzické dělení" border="false":::
 
 - Data v kontejnerech Cosmos jsou [horizontálně rozdělená na oddíly](partitioning-overview.md).
 
@@ -89,7 +89,7 @@ Tato funkce je dostupná v těchto oblastech: *Velká Británie – jih, jihový
 
 Následující tabulka shrnuje schopnost vysoké dostupnosti u různých konfigurací účtu:
 
-|Klíčové ukazatele výkonu  |Jedna oblast bez Zóny dostupnosti (ne AZ)  |Jedna oblast s Zóny dostupnostiem (AZ)  |Zápisy ve více oblastech pomocí Zóny dostupnosti (AZ, 2 Regions) – Doporučené nastavení |
+|KPI  |Jedna oblast bez Zóny dostupnosti (ne AZ)  |Jedna oblast s Zóny dostupnostiem (AZ)  |Zápisy ve více oblastech pomocí Zóny dostupnosti (AZ, 2 Regions) – Doporučené nastavení |
 |---------|---------|---------|---------|
 |Smlouva SLA o dostupnosti pro zápis | 99,99 % | 99,99 % | 99,999 % |
 |SLA dostupnosti pro čtení  | 99,99 % | 99,99 % | 99,999 % |
@@ -128,7 +128,7 @@ az cosmosdb create \
 
 Zóny dostupnosti můžete povolit pomocí Azure Portal při vytváření účtu Azure Cosmos. Když vytváříte účet, ujistěte se, že jste povolili zápis **geografické redundance**, **více oblastí**a zvolíte oblast, kde se zóny dostupnosti podporují:
 
-![Povolit Zóny dostupnosti pomocí Azure Portal](./media/high-availability/enable-availability-zones-using-portal.png) 
+:::image type="content" source="./media/high-availability/enable-availability-zones-using-portal.png" alt-text="Povolit Zóny dostupnosti pomocí Azure Portal"::: 
 
 ## <a name="building-highly-available-applications"></a>Vytváření vysoce dostupných aplikací
 

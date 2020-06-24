@@ -5,17 +5,17 @@ description: Pomocí PowerShellu můžete vytvořit několik modelů Machine Lea
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: 145ee5b458927fc4e3cda5277de614383181eed5
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 43f797981c6e3d32cdd5083f4ee1e16359667bdd
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465690"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84696486"
 ---
 # <a name="create-multiple-web-service-endpoints-from-one-experiment-with-ml-studio-classic-and-powershell"></a>Vytvoření více koncových bodů webové služby z jednoho experimentu pomocí ML Studio (Classic) a PowerShellu
 
@@ -42,7 +42,7 @@ Použijte příklad [experimentu pro školení](https://gallery.azure.ai/Experim
 > 
 > 
 
-Experiment používá modul **Import dat** k importu datové sady školení *customer001. csv* z účtu úložiště Azure. Předpokládejme, že jste shromáždili školicí datové sady ze všech míst pronájmu kol a uložili je ve stejném umístění úložiště objektů BLOB s názvy souborů od *rentalloc001. csv* do *rentalloc10. csv*.
+Experiment používá modul **Import dat** k importu *customer001.csv* dat školení z účtu služby Azure Storage. Předpokládejme, že jste shromáždili školicí datové sady ze všech umístění půjčovny kol a uložili je do stejného umístění úložiště objektů BLOB s názvy souborů, které jsou v rozsahu od *rentalloc001.csv* do *rentalloc10.csv*.
 
 ![Modul čtečky importuje data z objektu blob Azure.](./media/create-models-and-endpoints-with-powershell/reader-module.png)
 
@@ -54,7 +54,7 @@ Existují i jiné způsoby, jak to provést. K získání dat z databáze v Azur
 
 ![Školený výstup modulu modelu do výstupního modulu webové služby](./media/create-models-and-endpoints-with-powershell/web-service-output.png)
 
-Teď spustíme tento experiment školení s použitím výchozí hodnoty *rental001. csv* jako školicí datovou sadu. Pokud zobrazíte výstup modulu **vyhodnocení** (klikněte na výstup a vyberte **vizualizovat**), uvidíte, že získáte dát výkon *AUC* = 0,91. V tuto chvíli jste připraveni nasadit webovou službu z tohoto zkušebního experimentu.
+Nyní spusťte tento experiment školení s použitím výchozí hodnoty *rental001.csv* jako školicí datovou sadu. Pokud zobrazíte výstup modulu **vyhodnocení** (klikněte na výstup a vyberte **vizualizovat**), uvidíte, že získáte dát výkon *AUC* = 0,91. V tuto chvíli jste připraveni nasadit webovou službu z tohoto zkušebního experimentu.
 
 ## <a name="deploy-the-training-and-scoring-web-services"></a>Nasazení webových služeb školení a bodování
 Chcete-li nasadit webovou službu školení, klikněte na tlačítko **nastavit webovou službu** pod plátnem experimentu a vyberte **nasadit webovou službu**. Zavolejte tuto webovou službu školení pro nájem kol.
@@ -87,7 +87,7 @@ Pak spusťte následující příkaz prostředí PowerShell:
         Add-AmlWebServiceEndpoint -WebServiceId $scoringSvc.Id -EndpointName $endpointName -Description $endpointName     
     }
 
-Nyní jste vytvořili 10 koncových bodů a všechny obsahovaly stejný vycvičený model vyškolený na *customer001. csv*. Můžete je zobrazit v Azure Portal.
+Nyní jste vytvořili 10 koncových bodů a všechny obsahovaly stejný vycvičený model vyškolený v *customer001.csv*. Můžete je zobrazit v Azure Portal.
 
 ![Zobrazit seznam vycvičených modelů na portálu](./media/create-models-and-endpoints-with-powershell/created-endpoints.png)
 

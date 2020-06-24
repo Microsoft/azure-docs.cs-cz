@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/12/2020
+ms.date: 06/16/2020
 ms.author: radeltch
-ms.openlocfilehash: a89c848f5c6e57aba01c7156cdc61f9e69c30d0b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 9419ed320089ff85722e0d9c0582e92491377ab1
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660173"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84907461"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>Připojení k veřejnému koncovému bodu pro Virtual Machines používání Azure Standard Load Balancer ve scénářích SAP pro vysokou dostupnost
 
@@ -63,7 +63,7 @@ Nejprve si přečtěte následující dokumenty:
   * [Přehled azure Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) – úplný přehled služby Azure Load Balancer, důležité principy, koncepty a kurzy 
   * [Odchozí připojení v Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#scenarios) – scénáře, jak dosáhnout odchozího připojení v Azure
   * [Odchozí pravidla nástroje pro vyrovnávání zatížení](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview)– vysvětluje koncepty odchozích pravidel nástroje pro vyrovnávání zatížení a postup vytváření odchozích pravidel.
-* Azure Firewall
+* Brána Azure Firewall
   * [Přehled Azure firewall](https://docs.microsoft.com/azure/firewall/overview)– přehled Azure firewall
   * [Kurz: nasazení a konfigurace Azure firewall](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal) – pokyny ke konfiguraci Azure Firewall prostřednictvím Azure Portal
 * [Virtuální sítě – uživatelsky definovaná pravidla](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#user-defined) – koncepce a pravidla směrování Azure  
@@ -165,7 +165,7 @@ Architektura by vypadala takto:
    Pravidlo brány firewall by vypadalo takto: ![ odchozí připojení s Azure firewall](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-firewall-rule.png)
 
 6. Vytvořte uživatelsky definovanou trasu z podsítě vašich virtuálních počítačů do privátní IP adresy **MyAzureFirewall**.
-   1. V případě, že jste umístění umístili do směrovací tabulky, klikněte na trasy. Vyberte Přidat. 
+   1. V případě, že jste umístění umístili do směrovací tabulky, klikněte na trasy. Vyberte možnost Přidat. 
    1. Název trasy: ToMyAzureFirewall, předpona adresy: **0.0.0.0/0**. Typ dalšího segmentu směrování: vyberte virtuální zařízení. Adresa dalšího segmentu směrování: zadejte privátní IP adresu brány firewall, kterou jste nakonfigurovali: **11.97.1.4**.  
    1. Uložit
 
@@ -222,7 +222,10 @@ Pokud chcete, aby služba Pacemaker komunikovala s rozhraním API pro správu Az
 
 ## <a name="other-solutions"></a>Další řešení
 
-Pokud se odchozí přenos směruje přes bránu firewall jiného výrobce, ujistěte se, že konfigurace brány firewall umožňuje odchozí připojení k rozhraní API pro správu Azure: `https://management.azure.com` a `https://login.microsoftonline.com` .  
+Pokud je odchozí provoz směrován přes bránu firewall jiného výrobce:
+
+- Pokud používáte Azure plot agent, ujistěte se, že konfigurace brány firewall umožňuje odchozí připojení k rozhraní API pro správu Azure: `https://management.azure.com` a`https://login.microsoftonline.com`   
+- Pokud používáte infrastrukturu aktualizace veřejného cloudu Azure SUSE k instalaci aktualizací a oprav, přečtěte si téma [infrastruktura aktualizace veřejného cloudu azure 101](https://suse.com/c/azure-public-cloud-update-infrastructure-101/) .
 
 ## <a name="next-steps"></a>Další kroky
 

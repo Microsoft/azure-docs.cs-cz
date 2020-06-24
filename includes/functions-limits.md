@@ -1,39 +1,37 @@
 ---
 author: ggailey777
-ms.service: cost-management-billing
+ms.service: azure-functions
 ms.topic: include
-ms.date: 05/09/2019
+ms.date: 05/04/2020
 ms.author: glenga
-ms.openlocfilehash: 4643bb7f95e4fd1249d3ab6699c1f835c77f18fe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 40d171101c5d99cd33c90ee8751092a3ceebf12e
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77198339"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84906702"
 ---
-| Prostředek | [Plán Consumption](../articles/azure-functions/functions-scale.md#consumption-plan) | [Plán Premium](../articles/azure-functions/functions-scale.md#premium-plan) | [App Service plán](../articles/azure-functions/functions-scale.md#app-service-plan)<sup>1</sup> |
-| --- | --- | --- | --- |
-| Horizontální navýšení kapacity | Řízení událostmi | Řízení událostmi | [Ruční nebo automatické škálování](../articles/app-service/manage-scale-up.md) | 
-| Maximální počet instancí | 200 | 100 | 10-20 |
-|Výchozí [Doba trvání časového limitu](../articles/azure-functions/functions-scale.md#timeout) (min.) |5 | 30 |30<sup>2</sup> |
-|Maximální [Doba trvání časového limitu](../articles/azure-functions/functions-scale.md#timeout) (min.) |10 | bez vazby<sup>8</sup> | neohraničené<sup>3</sup> |
-| Maximální počet odchozích připojení (na instanci) | 600 aktivní (celkem 1200) | Unbounded | Unbounded |
-| Maximální velikost požadavku (MB)<sup>4</sup> | 100 | 100 | 100 |
-| Maximální délka řetězce dotazu<sup>4</sup> | 4 096 | 4 096 | 4 096 |
-| Maximální délka adresy URL žádosti<sup>4</sup> | 8192 | 8192 | 8192 |
-| [ACU](../articles/virtual-machines/windows/acu.md) na instanci | 100 | 210-840 | 100-840 |
-| Maximální velikost paměti (GB na instanci) | 1,5 | 3,5 – 14 | 1,75 – 14 |
-| Aplikace Function App na plán |100 |100 |neohraničené<sup>5</sup> |
-| [Plány služby App Service](../articles/app-service/overview-hosting-plans.md) | 100 na [oblast](https://azure.microsoft.com/global-infrastructure/regions/) |100 na skupinu prostředků |100 na skupinu prostředků |
-| Úložiště<sup>6</sup> |1 GB |250 GB |50-1000 GB |
-| Vlastní domény na aplikaci</a> |500<sup>7</sup> |500 |500 |
-| [Podpora protokolu SSL](../articles/app-service/configure-ssl-bindings.md) vlastní domény |zahrnuto do nevázaného SNI SSL připojení | neohraničená SNI SSL a jsou zahrnutá 1 IP SSL připojení. |neohraničená SNI SSL a jsou zahrnutá 1 IP SSL připojení. | 
+| Prostředek |[Plán Consumption](../articles/azure-functions/functions-scale.md#consumption-plan)|[Plán Premium](../articles/azure-functions/functions-scale.md#premium-plan)|[Vyhrazený plán](../articles/azure-functions/functions-scale.md#app-service-plan)|[ASE](../articles/app-service/environment/intro.md)| [Kubernetes](../articles/aks/quotas-skus-regions.md) |
+| --- | --- | --- | --- | --- | --- |
+|Výchozí [Doba trvání časového limitu](../articles/azure-functions/functions-scale.md#timeout) (min.) |5 | 30 |30<sup>1</sup> | 30 | 30 |
+|Maximální [Doba trvání časového limitu](../articles/azure-functions/functions-scale.md#timeout) (min.) |10 | neohraničené<sup>7</sup> | neohraničené<sup>2</sup> | Unbounded | Unbounded |
+| Maximální počet odchozích připojení (na instanci) | 600 aktivní (celkem 1200) | Unbounded | Unbounded | Unbounded | Unbounded |
+| Maximální velikost požadavku (MB)<sup>3</sup> | 100 | 100 | 100 | 100 | Závisí na clusteru |
+| Maximální délka řetězce dotazu<sup>3</sup> | 4 096 | 4 096 | 4 096 | 4 096 | Závisí na clusteru |
+| Maximální délka adresy URL požadavku<sup>3</sup> | 8192 | 8192 | 8192 | 8192 | Závisí na clusteru |
+|[ACU](../articles/virtual-machines/windows/acu.md) na instanci | 100 | 210-840 | 100-840 | 210-250<sup>8</sup> | [Ceny AKS](https://azure.microsoft.com/pricing/details/container-service/) |
+| Maximální velikost paměti (GB na instanci) | 1.5 | 3,5 – 14 | 1,75 – 14 | 3,5 – 14 | Podporuje se libovolný uzel. |
+| Aplikace Function App na plán |100 |100 |neohraničené<sup>4</sup> | Unbounded | Unbounded |
+| [Plány služby App Service](../articles/app-service/overview-hosting-plans.md) | 100 na [oblast](https://azure.microsoft.com/global-infrastructure/regions/) |100 na skupinu prostředků |100 na skupinu prostředků | - | - |
+| Úložiště<sup>5</sup> |1 GB |250 GB |50-1000 GB | 1 TB | Není k dispozici |
+| Vlastní domény na aplikaci</a> |500<sup>6</sup> |500 |500 | 500 | Není k dispozici |
+| [Podpora protokolu SSL](../articles/app-service/configure-ssl-bindings.md) vlastní domény |zahrnuto do nevázaného SNI SSL připojení | neohraničená SNI SSL a jsou zahrnutá 1 IP SSL připojení. |neohraničená SNI SSL a jsou zahrnutá 1 IP SSL připojení. | neohraničená SNI SSL a jsou zahrnutá 1 IP SSL připojení. | Není k dispozici |
 
-<sup>1</sup> Pokud chcete určit omezení pro různé možnosti plánu App Service, přečtěte si [omezení App Service plánu](../articles/azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits).  
-<sup>2</sup> ve výchozím nastavení je časový limit pro modul runtime Functions 1. x v plánu App Service neohraničený.  
-<sup>3</sup> vyžaduje, aby byl plán App Service nastavený na [vždycky zapnutý](../articles/azure-functions/functions-scale.md#always-on). Platíte za standardní [sazby](https://azure.microsoft.com/pricing/details/app-service/).  
-<sup>4</sup> tato omezení se [nastavují na hostiteli](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/web.config).  
-<sup>5</sup> skutečný počet aplikací Function App, které můžete hostovat, závisí na aktivitách aplikací, velikosti instancí počítačů a na odpovídajícím využití prostředků.  
-<sup>6</sup> limit úložiště je celková velikost obsahu v dočasném úložišti napříč všemi aplikacemi ve stejném plánu App Service. Plán spotřeby používá soubory Azure pro dočasné úložiště.  
-<sup>7</sup> Pokud je vaše aplikace Function hostovaná v [plánu spotřeby](../articles/azure-functions/functions-scale.md#consumption-plan), podporuje se jenom možnost CNAME. Pro aplikace Function App v [plánu Premium](../articles/azure-functions/functions-scale.md#premium-plan) nebo v [plánu App Service](../articles/azure-functions/functions-scale.md#app-service-plan)můžete namapovat vlastní doménu pomocí záznamu CNAME nebo a.  
-<sup>8</sup> zaručuje až 60 minut.
+<sup>1</sup> ve výchozím nastavení je časový limit pro modul runtime Functions 1. x v plánu App Service neohraničený.  
+<sup>2</sup> vyžaduje, aby byl plán App Service nastavený na [vždycky zapnutý](../articles/azure-functions/functions-scale.md#always-on). Platíte za standardní [sazby](https://azure.microsoft.com/pricing/details/app-service/).  
+<sup>3</sup> tato omezení se [nastavují na hostiteli](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/web.config).  
+<sup>4</sup> skutečný počet aplikací Function App, které můžete hostovat, závisí na aktivitách aplikací, velikosti instancí počítačů a na odpovídajícím využití prostředků.  
+<sup>5</sup> limit úložiště je celková velikost obsahu v dočasném úložišti napříč všemi aplikacemi ve stejném plánu App Service. Plán spotřeby používá soubory Azure pro dočasné úložiště.  
+<sup>6</sup> Pokud je vaše aplikace Function hostovaná v [plánu spotřeby](../articles/azure-functions/functions-scale.md#consumption-plan), podporuje se jenom možnost CNAME. Pro aplikace Function App v [plánu Premium](../articles/azure-functions/functions-scale.md#premium-plan) nebo v [plánu App Service](../articles/azure-functions/functions-scale.md#app-service-plan)můžete namapovat vlastní doménu pomocí záznamu CNAME nebo a.  
+<sup>7</sup> garantuje až 60 minut.  
+<sup>8</sup> pracovních procesů jsou role, které hostují zákaznické aplikace. Pracovní procesy jsou dostupné ve třech pevných velikostech: One vCPU/3,5 GB RAM; Dva vCPU/7 GB paměti RAM; Čtyři vCPU/14 GB paměti RAM.

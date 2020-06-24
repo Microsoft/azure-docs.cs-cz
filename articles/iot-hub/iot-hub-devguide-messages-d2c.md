@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: d10744f2536cdf89115cdccd0bea6f1e5155774c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 18a37731171be5894a1481fb35569c9c7cf307f2
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79370453"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84790513"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Použití směrování zpráv IoT Hub k posílání zpráv ze zařízení do cloudu do různých koncových bodů
 
@@ -35,7 +35,15 @@ Služba IoT Hub má výchozí integrovaný integrovaný koncový bod (**zprávy 
 
 Každá zpráva je směrována do všech koncových bodů, jejichž směrovací dotazy odpovídají. Jinými slovy, zpráva může být směrována do více koncových bodů.
 
-IoT Hub aktuálně podporuje následující služby jako vlastní koncové body:
+
+Pokud má váš vlastní koncový bod konfigurace brány firewall, zvažte použití výjimky důvěryhodné první strany společnosti Microsoft, aby váš IoT Hub měl přístup ke konkrétním koncovým [Azure Storageám](./virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing)a [službám Azure Event Hubs](./virtual-network-support.md#egress-connectivity-to-event-hubs-endpoints-for-routing) a [Azure Service Bus](./virtual-network-support.md#egress-connectivity-to-service-bus-endpoints-for-routing). Tato možnost je k dispozici ve vybraných oblastech pro centra IoT s [identitou spravované služby](./virtual-network-support.md).
+
+IoT Hub aktuálně podporuje následující koncové body:
+
+ - Vestavěný koncový bod
+ - Azure Storage
+ - Service Bus fronty a Service Bus témata
+ - Event Hubs
 
 ### <a name="built-in-endpoint"></a>Vestavěný koncový bod
 
@@ -75,9 +83,6 @@ public void ListBlobsInContainer(string containerName, string iothub)
 }
 ```
 
-> [!NOTE]
-> Pokud má váš účet úložiště konfigurace brány firewall, které omezují připojení IoT Hub, zvažte použití [výjimky Microsoft Trusted First stran](./virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) (k dispozici ve vybraných oblastech pro centra IoT s identitou spravované služby).
-
 Pokud chcete vytvořit účet úložiště kompatibilního s Azure Data Lake Gen2, vytvořte nový účet úložiště v2 a v poli *hierarchický obor názvů* na kartě **Upřesnit** vyberte *povoleno* , jak je znázorněno na následujícím obrázku:
 
 ![Vybrat Azure datum Lake Gen2 Storage](./media/iot-hub-devguide-messages-d2c/selectadls2storage.png)
@@ -87,17 +92,9 @@ Pokud chcete vytvořit účet úložiště kompatibilního s Azure Data Lake Gen
 
 Service Bus front a témat používaných jako IoT Hub koncových bodů nesmí mít povoleny **relace** nebo je povolena **Detekce duplicitních** dat. Pokud je některá z těchto možností povolená, koncový bod se v Azure Portal jeví jako **nedosažitelný** .
 
-> [!NOTE]
-> Pokud má váš prostředek služby Service Bus konfigurace brány firewall, které omezují připojení IoT Hub, zvažte použití [výjimky Microsoft Trusted First stran](./virtual-network-support.md#egress-connectivity-to-service-bus-endpoints-for-routing) (k dispozici ve vybraných oblastech pro centra IoT se službou identity spravované služby).
-
-
 ### <a name="event-hubs"></a>Event Hubs
 
 Kromě předdefinovaného koncového bodu, který je kompatibilní s Event Hubs, můžete také směrovat data na vlastní koncové body typu Event Hubs. 
-
-> [!NOTE]
-> Pokud má váš prostředek centra událostí konfigurace brány firewall, které omezují připojení IoT Hub, zvažte použití [výjimky Microsoft Trusted First stran](./virtual-network-support.md#egress-connectivity-to-event-hubs-endpoints-for-routing) (k dispozici ve vybraných oblastech pro centra IoT se službou identity spravované služby).
-
 
 ## <a name="reading-data-that-has-been-routed"></a>Čtení dat, která byla směrována
 
@@ -146,11 +143,9 @@ Ve většině případů je průměrné zvýšení latence menší než 500 ms. 
 
 ## <a name="monitoring-and-troubleshooting"></a>Monitorování a řešení potíží
 
-IoT Hub poskytuje několik metrik vztahujících se ke směrování a koncovým bodům, které vám poskytnou přehled o stavu vašeho centra a zpráv odesílaných. Můžete zkombinovat informace z několika metrik a identifikovat tak hlavní příčinu problémů. Například použijte směrování metriky **: zprávy telemetrie vyřazené** nebo **D2C.** Prometric.. disabled k určení počtu zpráv, které byly zahozeny, když neodpovídaly dotazům na některé z tras a záložní trasy byly zakázány. [IoT Hub metriky](iot-hub-metrics.md) uvádí všechny metriky, které jsou ve výchozím nastavení povolené pro vaši IoT Hub.
+IoT Hub poskytuje několik metrik vztahujících se ke směrování a koncovým bodům, které vám poskytnou přehled o stavu vašeho centra a zpráv odesílaných. [IoT Hub metriky](iot-hub-metrics.md) uvádí všechny metriky, které jsou ve výchozím nastavení povolené pro vaši IoT Hub. Pomocí protokolu diagnostiky **tras** v Azure monitor [diagnostické nastavení](../iot-hub/iot-hub-monitor-resource-health.md)můžete sledovat chyby, ke kterým dojde během hodnocení dotazu směrování a stavu koncového bodu, jak je znázorněno v IoT Hub. Ke zjištění [stavu](iot-hub-devguide-endpoints.md#custom-endpoints) koncových bodů můžete použít REST API [získat stav koncových](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) bodů. 
 
-Ke zjištění [stavu](iot-hub-devguide-endpoints.md#custom-endpoints) koncových bodů můžete použít REST API [získat stav koncových](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) bodů. Doporučujeme použít [IoT Hub metriky](iot-hub-metrics.md) týkající se latence zprávy směrování k identifikaci a ladění chyb v případě, že stav koncového bodu je neaktivní nebo není v pořádku. Například pro typ koncového bodu Event Hubs můžete monitorovat **D2C. Endpoints. latence. eventHubs**. Stav koncového bodu, který není v pořádku, bude aktualizován na stav v pořádku, když IoT Hub navázala trvalý stav stavu.
-
-Pomocí **diagnostického diagnostického** protokolu v Azure monitor [nastavení diagnostiky](../iot-hub/iot-hub-monitor-resource-health.md)můžete sledovat chyby, ke kterým dojde během hodnocení směrovacího dotazu a stavu koncového bodu, jak je znázorněno IoT Hub, například když je koncový bod neaktivní. Tyto diagnostické protokoly lze odeslat do Azure Monitor protokolů, Event Hubs nebo Azure Storage pro vlastní zpracování.
+Další podrobnosti a podporu pro směrování potíží najdete v [Průvodci odstraňováním potíží pro směrování](troubleshoot-message-routing.md) .
 
 ## <a name="next-steps"></a>Další kroky
 

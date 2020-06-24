@@ -8,11 +8,11 @@ ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: b1b866f3be789c59eea38c5c22b5557d557440be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79243845"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84701809"
 ---
 # <a name="network-architecture-overview-of-app-service-environments"></a>Přehled architektury sítě App Service prostředí
 App Service prostředí se vždycky vytvářejí v rámci podsítě [virtuální sítě][virtualnetwork] – aplikace běžící v App Service Environment můžou komunikovat s privátními koncovými body umístěnými ve stejné topologii virtuální sítě.  Vzhledem k tomu, že zákazníci můžou uzamknout části své infrastruktury virtuální sítě, je důležité pochopit typy toků síťové komunikace, ke kterým dochází s App Service Environment.

@@ -7,17 +7,17 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 74c9f44ff5fbbbb50bba1594d371633fd49857eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d833a4cf26ee8ab69d16cbd1d776ca49a2df4bc4
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76845039"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738211"
 ---
 # <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>Monitorování bran VPN pomocí Network Watcher řešení potíží
 
@@ -36,7 +36,7 @@ Tento scénář bude:
 - Vytvoření Runbooku, který volá `Start-AzureRmNetworkWatcherResourceTroubleshooting` rutinu pro řešení potíží se stavem připojení
 - Propojit plán s runbookm
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Než začnete tento scénář, musíte mít následující požadavky:
 
@@ -53,7 +53,7 @@ Než začnete tento scénář, musíte mít následující požadavky:
 
 Prvním krokem ke konfiguraci příkladu je vytvoření Runbooku. V tomto příkladu se používá účet Spustit jako. Další informace o účtech Spustit jako najdete v webu [ověřování runbooků pomocí účtu Spustit jako pro Azure](../automation/automation-create-runas-account.md) .
 
-### <a name="step-1"></a>Krok 1
+### <a name="step-1"></a>Step 1
 
 V [Azure Portal](https://portal.azure.com) přejděte na Azure Automation a klikněte na **Runbooky** .
 
@@ -79,7 +79,7 @@ V tomto kroku poskytneme Runbooku název, v příkladu se nazývá **Get-VPNGate
 
 ### <a name="step-5"></a>Krok 5
 
-V tomto kroku je vytvořen Runbook, následující příklad kódu poskytuje veškerý kód potřebný pro příklad. Položky v kódu, které obsahují \<hodnotu\> , je nutné nahradit hodnotami z vašeho předplatného.
+V tomto kroku je vytvořen Runbook, následující příklad kódu poskytuje veškerý kód potřebný pro příklad. Položky v kódu, které obsahují, je \<value\> nutné nahradit hodnotami z vašeho předplatného.
 
 Jako tlačítko **Uložit** použijte následující kód.
 
@@ -155,7 +155,7 @@ Je nutné vytvořit nový plán. Klikněte na **připojit plán k sadě Runbook*
 
 ![Krok 7][7]
 
-### <a name="step-1"></a>Krok 1
+### <a name="step-1"></a>Step 1
 
 V okně **plán** klikněte na **vytvořit nový plán** .
 

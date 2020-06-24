@@ -14,11 +14,11 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3d72616422934501e042375edfb10a25aa27c527
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79262110"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84692151"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>Přidání nebo odstranění uživatelů pomocí Azure Active Directory
 
@@ -44,7 +44,7 @@ Chcete-li přidat nového uživatele, postupujte podle následujících kroků:
 
    - **Uživatelské jméno**. Povinná hodnota. Uživatelské jméno nového uživatele. Například, `mary@contoso.com`.
 
-     Část domény uživatelského jména musí používat počáteční výchozí název domény, * \<názevvašídomény>. onmicrosoft.com*, nebo vlastní název domény, jako je *contoso.com*. Další informace o tom, jak vytvořit vlastní název domény, najdete v tématu [Přidání vlastního názvu domény pomocí portálu Azure Active Directory](add-custom-domain.md).
+     Část domény uživatelského jména musí používat počáteční výchozí název domény, * \<yourdomainname> . onmicrosoft.com*nebo vlastní název domény, jako je například *contoso.com*. Další informace o tom, jak vytvořit vlastní název domény, najdete v tématu [Přidání vlastního názvu domény pomocí portálu Azure Active Directory](add-custom-domain.md).
 
    - **Skupiny**. Volitelně můžete přidat uživatele do jedné nebo více existujících skupin. Uživatele můžete také přidat do skupin později. Další informace o přidávání uživatelů do skupin najdete v tématu [Vytvoření základní skupiny a přidání členů pomocí Azure Active Directory](active-directory-groups-create-azure-portal.md).
 

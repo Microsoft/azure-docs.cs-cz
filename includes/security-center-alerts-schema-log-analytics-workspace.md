@@ -17,7 +17,7 @@ ms.locfileid: "79538828"
 ---
 ### <a name="the-data-model-of-the-schema"></a>Datový model schématu
 
-|Pole|Popis|
+|Pole|Description|
 |----|----|
 |**AlertName**|Zobrazované jméno výstrahy|
 |**AlertType**|Jedinečný identifikátor výstrahy|

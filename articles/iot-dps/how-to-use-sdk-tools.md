@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: b817b3cfe47ed08cae9e7e0b1c2c24363f2ccfed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79271522"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84691624"
 ---
 # <a name="how-to-use-tools-provided-in-the-sdks-to-simplify-development-for-provisioning"></a>Jak používat nástroje, které nabízí sady SDK ke zjednodušení vývoje pro zřizování
 IoT Hub Device Provisioning Service zjednodušuje proces zřizování pomocí nulového [automatického zřizování](concepts-auto-provisioning.md) za běhu zabezpečeným a škálovatelným způsobem.  Vyžaduje se ověření zabezpečení ve formě certifikátu X. 509 nebo čipu TPM (Trusted Platform Module).  Společnost Microsoft také spolupracuje s [dalšími bezpečnostními partnery](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) , aby vylepšila jistotu při zabezpečení nasazení IoT. Princip hardwarového požadavku na zabezpečení může být pro vývojáře poměrně náročný. K dispozici je sada sad SDK služby zřizování Azure IoT, aby vývojáři mohli používat pohodlí při psaní klientů, kteří komunikují se službou zřizování. Sady SDK také poskytují ukázky pro běžné scénáře a také sadu nástrojů pro zjednodušení ověření zabezpečení při vývoji.
@@ -25,8 +25,8 @@ Postup pro použití simulátoru TPM:
    ```
    git clone https://github.com/Azure/azure-iot-sdk-java.git
    ```
-2. Přejděte do složky simulátoru TPM v ```azure-iot-sdk-java/provisioning/provisioning-tool/tpm-simulator/```části.
-3. Před spuštěním jakékoli klientské aplikace pro zřízení zařízení spusťte simulátor. exe.
+2. Přejděte do složky simulátoru TPM v části ```azure-iot-sdk-java/provisioning/provisioning-tool/tpm-simulator/``` .
+3. Spusťte Simulator.exe před spuštěním jakékoli klientské aplikace pro zřízení zařízení.
 4. Nechte simulátor běžet na pozadí během procesu zřizování, aby získal ID registrace a ověřovací klíč.  Obě hodnoty jsou platné pouze pro jednu instanci běhu.
 
 ## <a name="x509-certificate-generator"></a>Generátor certifikátů X. 509
@@ -51,7 +51,7 @@ Generování certifikátu X. 509 pomocí tohoto generátoru:
    ```
 2. Změňte kořen na Azure-IoT-SDK-Java.
 3. Spusťte ```mvn install -DskipTests=true``` , aby se stáhly všechny požadované balíčky a zkompiluje se sada SDK.
-4. Přejděte do kořenového adresáře generátoru certifikátů X. 509 ```azure-iot-sdk-java/provisioning/provisioning-tools/provisioning-x509-cert-generator```v.
+4. Přejděte do kořenového adresáře generátoru certifikátů X. 509 v ```azure-iot-sdk-java/provisioning/provisioning-tools/provisioning-x509-cert-generator``` .
 5. Sestavit s```mvn clean install```
 6. Spusťte nástroj pomocí následujících příkazů:
    ```

@@ -1,14 +1,14 @@
 ---
 title: Preview – informace Azure Policy Kubernetes
 description: Přečtěte si, jak Azure Policy používá Rego a Open Agent zásad ke správě clusterů se systémem Kubernetes v Azure nebo místním prostředí. Tato funkce je ve verzi Preview.
-ms.date: 05/20/2020
+ms.date: 06/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9969bed9cb7c84faf9736bff2fb8337dc05d1bb0
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: ab18b85fc24deb58a6c65ca038d47120056eaa75
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84221142"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791703"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>Vysvětlení Azure Policy pro clustery Kubernetes (Preview)
 
@@ -25,7 +25,7 @@ Azure Policy pro Kubernetes podporuje následující Clusterová prostředí:
 - [Modul AKS](https://github.com/Azure/aks-engine/blob/master/docs/README.md)
 
 > [!IMPORTANT]
-> Azure Policy pro Kubernetes je ve verzi Preview a podporuje jenom fondy uzlů Linux a předdefinované definice zásad. Předdefinované definice zásad jsou v kategorii **Kubernetes** . Definice zásad omezené verze Preview s **EnforceRegoPolicy** efektem a související kategorií **služby Kubernetes** jsou _zastaralé_. Místo toho použijte aktualizovaný [EnforceOPAConstraint](./effects.md#enforceopaconstraint) efekt.
+> Azure Policy pro Kubernetes je ve verzi Preview a podporuje jenom fondy uzlů Linux a předdefinované definice zásad. Předdefinované definice zásad jsou v kategorii **Kubernetes** . Definice zásad omezené verze Preview s efektem **EnforceOPAConstraint** a **EnforceRegoPolicy** a související kategorií **služby Kubernetes** jsou _zastaralé_. Místo toho použijte _audit_ efektů a _Odepřít_ v režimu poskytovatele prostředků `Microsoft.Kubernetes.Data` .
 
 ## <a name="overview"></a>Přehled
 
@@ -370,7 +370,7 @@ kubectl get pods -n gatekeeper-system
 
 ## <a name="policy-language"></a>Jazyk zásad
 
-Struktura Azure Policy jazyka pro správu Kubernetes se řídí existujícími definicemi zásad. Efekt _EnforceOPAConstraint_ se používá ke správě clusterů Kubernetes a má podrobné vlastnosti, které jsou specifické pro práci s [omezeními neprů](https://github.com/open-policy-agent/frameworks/tree/master/constraint) a gatekeeper v3. Podrobnosti a příklady najdete v [EnforceOPAConstraint](./effects.md#enforceopaconstraint) efektu.
+Struktura Azure Policy jazyka pro správu Kubernetes se řídí existujícími definicemi zásad. Při použití [režimu poskytovatele prostředků](./definition-structure.md#resource-provider-modes) se `Microsoft.Kubernetes.Data` pro správu clusterů Kubernetes používají [audit](./effects.md#audit) a [zamítnutí](./effects.md#deny) efektů. _Audit_ a _zamítnutí_ musí poskytovat **podrobné** vlastnosti, které jsou specifické pro práci s [neprů omezením](https://github.com/open-policy-agent/frameworks/tree/master/constraint) a gatekeeper v3.
 
 Jako součást _Details. constraintTemplate_ a _Details._ properties v definici zásad Azure Policy předá do doplňku identifikátory URI těchto [CustomResourceDefinitions](https://github.com/open-policy-agent/gatekeeper#constraint-templates) (CRD). Rego je jazyk, který podporuje NEPRŮ a gatekeeper, aby ověřil požadavek na cluster Kubernetes. Díky podpoře stávajícího standardu pro správu Kubernetes Azure Policy umožňuje znovu použít stávající pravidla a párovat je Azure Policy pro jednotné prostředí generování sestav dodržování předpisů cloudu. Další informace najdete v tématu [co je Rego?](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego).
 
@@ -433,7 +433,7 @@ Každých 15 minut doplněk volá úplnou kontrolu clusteru. Po shromáždění 
 > [!NOTE]
 > Každá sestava dodržování předpisů v Azure Policy pro clustery Kubernetes zahrnuje všechna porušení během posledních 45 minut. Časové razítko indikuje, kdy došlo k porušení.
 
-## <a name="logging"></a>Protokolování
+## <a name="logging"></a>protokolování
 
 Jako Kubernetes Controller nebo kontejner se v clusteru Kubernetes udržují protokoly _Azure-Policy_ i _gatekeeper_ . Protokoly se dají zveřejnit na stránce **Přehled** v clusteru Kubernetes.
 Další informace najdete v tématu [monitorování výkonu clusteru Kubernetes s využitím Azure monitor pro kontejnery](../../../azure-monitor/insights/container-insights-analyze.md).

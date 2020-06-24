@@ -4,15 +4,15 @@ description: Seznam metrik dostupných pro každý typ prostředku s Azure Monit
 author: rboucher
 services: azure-monitor
 ms.topic: reference
-ms.date: 04/06/2020
+ms.date: 06/16/2020
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 09aa3a5febe9ea25d8614a99ec3f832cc2d0309f
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 7ed55200db72879f7ec7323b5c165998944688a5
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84456942"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84906781"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Podporované metriky s Azure Monitor
 
@@ -165,7 +165,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 |TotalUpdateDeploymentMachineRuns|Celkový počet spuštěných počítačů nasazení aktualizace|Počet|Celkem|Celkový počet spuštěných počítačů nasazení aktualizace softwaru v běhu nasazení aktualizace softwaru|SoftwareUpdateConfigurationName, status, TargetComputer, SoftwareUpdateConfigurationRunId|
 
 
-## <a name="microsoftbatchbatchaccounts"></a>Microsoft. Batch/batchAccounts
+## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 
 |Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|
@@ -202,7 +202,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 |JobTerminateStartEvent|Události spuštění ukončení úlohy|Počet|Celkem|Celkový počet úloh, které byly vyžádány k ukončení.|Úlohy|
 
 
-## <a name="microsoftbatchaiworkspaces"></a>Microsoft. BatchAI/pracovní prostory
+## <a name="microsoftbatchaiworkspaces"></a>Microsoft.BatchAI/Workspaces
 
 |Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|
@@ -1014,7 +1014,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 
 
-## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft. DocumentDB/databaseAccounts
+## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
 
 |Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|
@@ -2084,17 +2084,6 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 <sup>1</sup> Tato metrika je dostupná pro databáze používající model nákupu Vcore s 2 virtuální jádra a vyšší nebo 200 DTU a vyšší pro nákupní modely založené na DTU. 
 
 <sup>2</sup> Tato metrika je dostupná pro databáze používající model nákupu Vcore s 2 virtuální jádra a vyšší nebo 200 DTU a vyšší pro nákupní modely založené na DTU. Tato metrika není aktuálně k dispozici pro databáze s škálovatelnými škálováními.
-
-
-## <a name="microsoftsqlservers"></a>Microsoft. SQL/servery
-
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
-|---|---|---|---|---|---|
-|dtu_consumption_percent|Procento DTU|Procento|Průměr|Procento DTU|ElasticPoolResourceId|
-|database_dtu_consumption_percent|Procento DTU|Procento|Průměr|Procento DTU|DatabaseResourceId,ElasticPoolResourceId|
-|storage_used|Využité místo pro data|Bajty|Průměr|Využité místo pro data|ElasticPoolResourceId|
-|database_storage_used|Využité místo pro data|Bajty|Průměr|Využité místo pro data|DatabaseResourceId,ElasticPoolResourceId|
-|dtu_used|Využité DTU|Počet|Průměr|Využité DTU|DatabaseResourceId|
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft. SQL/managedInstances
 

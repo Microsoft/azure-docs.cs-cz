@@ -7,17 +7,17 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 59c1b6e6c281a736a79d110bd7d943344bcd5130
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 10abd1065fe47556109ed69d36493c165dec1418
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76840974"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738205"
 ---
 # <a name="automate-nsg-auditing-with-azure-network-watcher-security-group-view"></a>Automatizace NSG auditování pomocí zobrazení skupiny zabezpečení Azure Network Watcher
 
@@ -28,7 +28,7 @@ Pokud neznáte skupiny zabezpečení sítě, přečtěte si téma [Přehled zabe
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V tomto scénáři porovnáte známý dobrý směrný plán k výsledkům zobrazení ve skupině zabezpečení vráceným pro virtuální počítač.
 
@@ -124,7 +124,7 @@ $nsgbaserules = Get-Content -Path C:\temp\testvm1-nsg.json | ConvertFrom-Json
 
 ## <a name="retrieve-network-watcher"></a>Načíst Network Watcher
 
-Dalším krokem je načtení instance Network Watcher. `$networkWatcher` Proměnná je předána `AzNetworkWatcherSecurityGroupView` rutině.
+Dalším krokem je načtení instance Network Watcher. `$networkWatcher`Proměnná je předána `AzNetworkWatcherSecurityGroupView` rutině.
 
 ```powershell
 $networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
@@ -132,7 +132,7 @@ $networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network
 
 ## <a name="get-a-vm"></a>Získání virtuálního počítače
 
-Pro spuštění `Get-AzNetworkWatcherSecurityGroupView` rutiny se vyžaduje virtuální počítač. Následující příklad načte objekt virtuálního počítače.
+Pro spuštění rutiny se vyžaduje virtuální počítač `Get-AzNetworkWatcherSecurityGroupView` . Následující příklad načte objekt virtuálního počítače.
 
 ```powershell
 $VM = Get-AzVM -ResourceGroupName "testrg" -Name "testvm1"

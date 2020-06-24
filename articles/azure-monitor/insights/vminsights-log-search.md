@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 61a71539dc034a216689eafd8991df60db96d2a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 771cfa11375e97f2f6a94fc65cbd72306b12cd7e
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80396925"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84803974"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>Dotazování protokolů z Azure Monitor pro virtuální počítače
 
@@ -74,7 +74,7 @@ Kromě metriky počtu připojení jsou do následujících vlastností záznamu 
 |:--|:--|
 |BytesSent |Celkový počet bajtů, které byly odeslány během časového intervalu generování sestav |
 |BytesReceived |Celkový počet bajtů přijatých během časového intervalu generování sestav |
-|Odezvy |Počet odpovědí zaznamenaných v časovém intervalu generování sestav. 
+|Odpovědi |Počet odpovědí zaznamenaných v časovém intervalu generování sestav. 
 |ResponseTimeMax |Největší doba odezvy (v milisekundách) zjištěná během časového intervalu generování sestav. Pokud není žádná hodnota, vlastnost je prázdná.|
 |ResponseTimeMin |Nejmenší doba odezvy (v milisekundách) zjištěná během časového intervalu generování sestav. Pokud není žádná hodnota, vlastnost je prázdná.|
 |ResponseTimeSum |Součet všech dob odezvy (milisekund) zjištěných během časového intervalu generování sestav. Pokud není žádná hodnota, vlastnost je prázdná.|
@@ -112,7 +112,7 @@ Každá vlastnost RemoteIp v tabulce *VMConnection* je kontrolována na základ�
 |:--|:--|
 |MaliciousIp |Adresa RemoteIp |
 |IndicatorThreadType |Zjištěného indikátoru hrozby je jedna z následujících hodnot: *botnetu*, *C2*, *CryptoMining*, *adres darknetu*, *DDos*, *MaliciousUrl*, *malware*, *phishing*, *proxy*, *PUA*, *seznamu ke zhlédnutí*.   |
-|Popis |Popis pozorované hrozby. |
+|Description |Popis pozorované hrozby. |
 |TLPLevel |Úroveň TLP (provoz Light Protocol) je jedna z definovaných hodnot, *bílá*, *zelená*, *oranžová*a *červená*. |
 |Spolehlivost |Hodnoty jsou *0 – 100*. |
 |Severity |Hodnoty jsou *0 – 5*, přičemž *5* je nejzávažnější a *0* není u sebe závažná. Výchozí hodnota je *3*.  |
@@ -233,14 +233,14 @@ Záznamy s typem *VMProcess* mají data inventáře pro procesy připojené k pr
 |Skupina | Název skupiny procesů Procesy ve stejné skupině jsou logicky související, například součást stejné produktové nebo systémové komponenty. |
 |StartTime | Čas spuštění fondu procesů |
 |FirstPid | První PID ve fondu procesů |
-|Popis | Popis procesu |
+|Description | Popis procesu |
 |CompanyName | Název společnosti |
 |Vnitřní | Interní název |
 |ProductName | Název produktu |
 |ProductVersion | Verze produktu |
 |FileVersion | Verze souboru |
 |ExecutablePath |Cesta ke spustitelnému souboru |
-|Řádek | Příkazový řádek |
+|CommandLine | Příkazový řádek |
 |WorkingDirectory | Pracovní adresář |
 |Služby | Pole služeb, na kterých se proces provádí |
 |UserName | Účet, pod kterým se proces spouští |
@@ -442,7 +442,7 @@ Záznamy s typem *InsightsMetrics* mají údaje o výkonu z hostovaného operač
 |Počítač | Plně kvalifikovaný název domény počítače | 
 |Zdroj | *vm.azm.ms* |
 |Obor názvů | Kategorie čítače výkonu | 
-|Název | Název čítače výkonu |
+|Name | Název čítače výkonu |
 |Počítává | Shromážděná hodnota | 
 |Značky | Související podrobnosti o záznamu Značky používané s různými typy záznamů najdete v následující tabulce.  |
 |ID agenta | Jedinečný identifikátor pro každého agenta počítače |
@@ -451,10 +451,10 @@ Záznamy s typem *InsightsMetrics* mají údaje o výkonu z hostovaného operač
 
 Čítače výkonu, které jsou aktuálně shromážděny do tabulky *InsightsMetrics* , jsou uvedeny v následující tabulce:
 
-| Obor názvů | Název | Popis | Jednotka | Značky |
+| Obor názvů | Name | Description | Jednotka | Značky |
 |:---|:---|:---|:---|:---|
 | Počítač    | Prezenční signál             | Prezenční signál počítače                        | | |
-| Memory (Paměť)      | AvailableMB           | Bajty dostupné paměti                    | Bajty          | memorySizeMB – celková velikost paměti|
+| Memory (Paměť)      | AvailableMB           | Bajty dostupné paměti                    | Megabajty      | memorySizeMB – celková velikost paměti|
 | Síť     | WriteBytesPerSecond   | Bajty zápisu v síti za sekundu            | BytesPerSecond | NetworkDeviceId-ID zařízení<br>bajty-celkový počet odeslaných bajtů |
 | Síť     | ReadBytesPerSecond    | Počet bajtů přečtených v síti za sekundu             | BytesPerSecond | networkDeviceId-ID zařízení<br>Bajty celkem přijatých bajtů |
 | Procesor   | UtilizationPercentage | Procento využití procesoru          | Procento        | totalCpus – celkový počet procesorů |
@@ -467,7 +467,7 @@ Záznamy s typem *InsightsMetrics* mají údaje o výkonu z hostovaného operač
 | Logický disk | ReadLatencyMs         | Latence čtení v logickém disku milisekund     | Milisekund   | mountId – ID připojení zařízení |
 | Logický disk | ReadBytesPerSecond    | Bajty čtení z logického disku za sekundu        | BytesPerSecond | mountId – ID připojení zařízení |
 | Logický disk | FreeSpacePercentage   | Procento volného místa na logickém disku        | Procento        | mountId – ID připojení zařízení |
-| Logický disk | FreeSpaceMB           | Bajty volného místa logického disku             | Bajty          | mountId – ID připojení zařízení<br>diskSizeMB – celková velikost disku |
+| Logický disk | FreeSpaceMB           | Bajty volného místa logického disku             | Megabajty      | mountId – ID připojení zařízení<br>diskSizeMB – celková velikost disku |
 | Logický disk | BytesPerSecond        | Bajty logických disků za sekundu             | BytesPerSecond | mountId – ID připojení zařízení |
 
 

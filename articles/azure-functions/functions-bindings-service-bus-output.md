@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: 198cbb9f66ec5c6b84ed3cc4f20898495d8c126f
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 1d3441847fc47146418265804457c37c693bd60b
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560829"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85297014"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>Azure Service Bus výstupní vazba pro Azure Functions
 
@@ -38,9 +38,9 @@ public static string ServiceBusOutput([HttpTrigger] dynamic input, ILogger log)
 
 # <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
-Následující příklad ukazuje výstupní vazbu Service Bus v souboru *Function. JSON* a [funkci skriptu jazyka C#](functions-reference-csharp.md) , která používá vazbu. Funkce používá aktivační událost časovače k odeslání zprávy fronty každých 15 sekund.
+Následující příklad ukazuje výstupní vazbu Service Bus v *function.js* souboru a [funkci skriptu jazyka C#](functions-reference-csharp.md) , která používá vazbu. Funkce používá aktivační událost časovače k odeslání zprávy fronty každých 15 sekund.
 
-Tady jsou data vazby v souboru *Function. JSON* :
+Tady jsou data vazby v *function.js* souboru:
 
 ```json
 {
@@ -89,9 +89,9 @@ public static async Task Run(TimerInfo myTimer, ILogger log, IAsyncCollector<str
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Následující příklad ukazuje výstupní vazbu Service Bus v souboru *Function. JSON* a [funkci JavaScriptu](functions-reference-node.md) , která používá vazbu. Funkce používá aktivační událost časovače k odeslání zprávy fronty každých 15 sekund.
+Následující příklad ukazuje výstupní vazbu Service Bus v *function.js* souboru a [funkci JavaScriptu](functions-reference-node.md) , která používá vazbu. Funkce používá aktivační událost časovače k odeslání zprávy fronty každých 15 sekund.
 
-Tady jsou data vazby v souboru *Function. JSON* :
+Tady jsou data vazby v *function.js* souboru:
 
 ```json
 {
@@ -143,7 +143,7 @@ module.exports = function (context, myTimer) {
 
 Následující příklad ukazuje, jak zapisovat do fronty Service Bus v Pythonu.
 
-Definice vazby Service Bus je definována v *Function. JSON* , kde *typ* je nastaven na `serviceBus` .
+Definice vazby Service Bus je definována v *function.jsna* místě, kde je *typ* nastaven na `serviceBus` .
 
 ```json
 {
@@ -278,11 +278,11 @@ Python nepodporuje atributy.
 
 ## <a name="configuration"></a>Konfigurace
 
-Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v souboru *Function. JSON* a `ServiceBus` atributu.
+Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `ServiceBus` atribut.
 
-|Function. JSON – vlastnost | Vlastnost atributu |Description|
+|function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
-|**typ** | Není k dispozici | Musí být nastavené na "serviceBus". Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal.|
+|**textový** | Není k dispozici | Musí být nastavené na "serviceBus". Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal.|
 |**direction** | Není k dispozici | Musí být nastavené na "out". Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal. |
 |**Jméno** | Není k dispozici | Název proměnné, která představuje zprávu fronty nebo tématu v kódu funkce. Nastavte na "$return", chcete-li odkazovat na návratovou hodnotu funkce. |
 |**Proměnné QueueName**|**Proměnné QueueName**|Název fronty  Nastavte pouze v případě, že jsou odesílány zprávy fronty, nikoli téma.
@@ -305,7 +305,7 @@ Pro výstupní vazbu použijte následující typy parametrů:
 * `out byte[]`– Pokud má parametr hodnotu null, když funkce skončí, funkce nevytvoří zprávu.
 * `out BrokeredMessage`– Pokud má parametr hodnotu null, když se funkce ukončí, funkce nevytvoří zprávu (pro funkce 1. x).
 * `out Message`– Pokud má parametr hodnotu null, když se funkce ukončí, funkce nevytvoří zprávu (pro Functions 2. x a vyšší).
-* `ICollector<T>`nebo `IAsyncCollector<T>` – pro vytvoření více zpráv. Zpráva se vytvoří při volání `Add` metody.
+* `ICollector<T>`nebo `IAsyncCollector<T>` (pro asynchronní metody) – pro vytváření více zpráv. Zpráva se vytvoří při volání `Add` metody.
 
 Při práci s funkcemi jazyka C#:
 
@@ -353,12 +353,12 @@ Místo předdefinované výstupní vazby použijte [sadu Azure Service Bus SDK](
 
 <a name="host-json"></a>  
 
-## <a name="hostjson-settings"></a>nastavení Host. JSON
+## <a name="hostjson-settings"></a>host.jsnastavení
 
-Tato část popisuje globální nastavení konfigurace, která jsou k dispozici pro tuto vazbu ve verzích 2. x a vyšší. Ukázkový soubor host. JSON obsahuje pouze nastavení této vazby. Další informace o nastavení globálních konfigurací naleznete v tématu [reference Host. JSON pro verzi Azure Functions](functions-host-json.md).
+Tato část popisuje globální nastavení konfigurace, která jsou k dispozici pro tuto vazbu ve verzích 2. x a vyšší. Příklad host.jsv souboru níže obsahuje pouze nastavení této vazby. Další informace o globálních nastaveních konfigurace najdete v tématu [host.jsv referenčních informacích pro Azure Functions verzi](functions-host-json.md).
 
 > [!NOTE]
-> Odkaz na Host. JSON ve funkcích 1. x najdete v [referenčních informacích k host. JSON pro Azure Functions 1. x](functions-host-json-v1.md).
+> Odkaz na host.jspro ve funkcích 1. x naleznete v tématu [host.json reference for Azure Functions 1. x](functions-host-json-v1.md).
 
 ```json
 {

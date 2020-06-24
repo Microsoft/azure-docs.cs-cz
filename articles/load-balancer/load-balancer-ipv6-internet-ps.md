@@ -9,17 +9,17 @@ keywords: IPv6, Azure Load Balancer, duální zásobník, veřejná IP adresa, n
 ms.service: load-balancer
 ms.custom: seodec18
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 79fc74cc946578ffe91629065ddd03e43aa76957
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 8553c54b60d1d4e60e28bcb3006bcc804dbc39ad
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629469"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84803707"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>Začínáme vytvářet internetový nástroj pro vyrovnávání zatížení s protokolem IPv6 pomocí prostředí PowerShell pro Správce prostředků
 
@@ -102,7 +102,7 @@ Ujistěte se, že máte nejnovější produkční verzi modulu Azure Resource Ma
     $vnet = New-AzvirtualNetwork -Name VNet -ResourceGroupName NRP-RG -Location 'West US' -AddressPrefix 10.0.0.0/16 -Subnet $backendSubnet
     ```
 
-2. Vytvořte prostředky služby Azure Public IP adresa (PIP) pro fond front-end IP adres. `-DomainNameLabel` Před spuštěním následujících příkazů nezapomeňte změnit hodnotu. Hodnota musí být jedinečná v rámci oblasti Azure.
+2. Vytvořte prostředky služby Azure Public IP adresa (PIP) pro fond front-end IP adres. `-DomainNameLabel`Před spuštěním následujících příkazů nezapomeňte změnit hodnotu. Hodnota musí být jedinečná v rámci oblasti Azure.
 
     ```azurepowershell-interactive
     $publicIPv4 = New-AzPublicIpAddress -Name 'pub-ipv4' -ResourceGroupName NRP-RG -Location 'West US' -AllocationMethod Static -IpAddressVersion IPv4 -DomainNameLabel lbnrpipv4

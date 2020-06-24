@@ -4,14 +4,14 @@ description: Naučte se konfigurovat sadu škálování virtuálního počítač
 author: asudbring
 ms.author: allensu
 ms.service: load-balancer
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/26/2020
-ms.openlocfilehash: 0db09083a2197ce72e6d6eed2381b0308239586e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 858315008434f511e3adc0a91d591d924634fc39
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80349993"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84809502"
 ---
 # <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-azure-powershell"></a>Konfigurace sady škálování virtuálních počítačů s existujícím Azure Load Balancer pomocí Azure PowerShell
 

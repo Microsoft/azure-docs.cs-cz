@@ -53,7 +53,7 @@ Následující části uvádějí dostupné překladače deklarací identity.
 | {Culture: RegionName} | Dvě písmena kódu ISO pro oblast. | USA |
 | {Culture: RFC5646} | Kód jazyka RFC5646 | cs-CZ |
 
-### <a name="policy"></a>Zásady
+### <a name="policy"></a>Zásada
 
 | Deklarovat | Popis | Příklad |
 | ----- | ----------- | --------|

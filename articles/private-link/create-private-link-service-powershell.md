@@ -4,15 +4,15 @@ description: Naučte se vytvořit službu privátního propojení Azure pomocí 
 services: private-link
 author: malopMSFT
 ms.service: private-link
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 225ae9d07cc6df2fa809e250083ee6007ab2f945
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 89269fe8c291a0c5303ff58cd728e02d4907be0a
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76932084"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737304"
 ---
 # <a name="create-a-private-link-service-using-azure-powershell"></a>Vytvoření služby privátního propojení pomocí Azure PowerShell
 V tomto článku se dozvíte, jak vytvořit službu privátního propojení v Azure pomocí Azure PowerShell.
@@ -115,7 +115,7 @@ Dále vám ukážeme, jak namapovat tuto službu na privátní koncový bod v ji
 
 ## <a name="create-a-private-endpoint"></a>Vytvoření privátního koncového bodu
 ### <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
-Vytvořte virtuální síť pro privátní koncový bod pomocí [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). Tento příklad vytvoří virtuální síť s názvem *vnetPE* ve skupině prostředků s názvem *myResourceGroup*:
+Vytvořte virtuální síť pro privátní koncový bod pomocí [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). Tento příklad vytvoří virtuální síť s názvem *vnetPE*   ve skupině prostředků s názvem *myResourceGroup*:
  
 ```azurepowershell
 $virtualNetworkNamePE = "vnetPE"
@@ -147,7 +147,7 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName -Name $peNam
 ```
  
 ### <a name="get-private-endpoint"></a>Získat soukromý koncový bod
-Získejte IP adresu privátního koncového bodu `Get-AzPrivateEndpoint` následujícím způsobem:
+Získejte IP adresu privátního koncového bodu následujícím `Get-AzPrivateEndpoint` způsobem:
 
 ```azurepowershell
 # Get Private Endpoint and its IP Address 

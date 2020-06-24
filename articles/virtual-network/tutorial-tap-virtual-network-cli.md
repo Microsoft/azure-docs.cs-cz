@@ -10,17 +10,17 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/18/2018
 ms.author: kaanan
-ms.openlocfilehash: 56288a65dc9e5b12a12393965b9670e394146181
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9460208d66e859f5fe1ce0e9ae4d62087ea3f4ff
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80234973"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84696014"
 ---
 # <a name="work-with-a-virtual-network-tap-using-the-azure-cli"></a>Práce s virtuální sítí klepněte pomocí Azure CLI.
 
@@ -28,7 +28,7 @@ KLEPNUTÍ na virtuální síť Azure (terminálový přístupový bod) umožňuj
 
 ## <a name="create-a-virtual-network-tap-resource"></a>Vytvoření virtuální sítě klepnutím na prostředek
 
-[Požadavky](virtual-network-tap-overview.md#prerequisites) na čtení před vytvořením virtuální sítě klepněte na prostředek. Můžete spustit příkazy, které následují v [Azure Cloud Shell](https://shell.azure.com/bash), nebo spuštěním rozhraní příkazového řádku Azure (CLI) z počítače. Azure Cloud Shell je bezplatné interaktivní prostředí, které nevyžaduje instalaci rozhraní příkazového řádku Azure CLI do vašeho počítače. Musíte se přihlásit k Azure pomocí účtu, který má příslušná [oprávnění](virtual-network-tap-overview.md#permissions). Tento článek vyžaduje Azure CLI verze 2.0.46 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0](/cli/azure/install-azure-cli). Klepnutí na virtuální síť je aktuálně k dispozici jako rozšíření. Chcete-li nainstalovat rozšíření, které je `az extension add -n virtual-network-tap`třeba spustit. Pokud používáte Azure CLI místně, musíte také spustit `az login` , aby se vytvořilo připojení k Azure.
+[Požadavky](virtual-network-tap-overview.md#prerequisites) na čtení před vytvořením virtuální sítě klepněte na prostředek. Můžete spustit příkazy, které následují v [Azure Cloud Shell](https://shell.azure.com/bash), nebo spuštěním rozhraní příkazového řádku Azure (CLI) z počítače. Azure Cloud Shell je bezplatné interaktivní prostředí, které nevyžaduje instalaci rozhraní příkazového řádku Azure CLI do vašeho počítače. Musíte se přihlásit k Azure pomocí účtu, který má příslušná [oprávnění](virtual-network-tap-overview.md#permissions). Tento článek vyžaduje Azure CLI verze 2.0.46 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0](/cli/azure/install-azure-cli). Klepnutí na virtuální síť je aktuálně k dispozici jako rozšíření. Chcete-li nainstalovat rozšíření, které je třeba spustit `az extension add -n virtual-network-tap` . Pokud používáte Azure CLI místně, musíte také spustit, `az login` aby se vytvořilo připojení k Azure.
 
 1. Načtěte ID vašeho předplatného na proměnnou, která se používá v pozdějším kroku:
 

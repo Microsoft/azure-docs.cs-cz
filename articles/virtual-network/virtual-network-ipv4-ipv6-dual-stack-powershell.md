@@ -8,17 +8,17 @@ author: KumudD
 manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 3cfe80962c11e37c79549a74d7e4b19cd08f4684
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6f51794c28c68b41bb715dcc23ae775151b6d93d
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80420926"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84703056"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-using-basic-load-balancer---powershell"></a>Nasazení duální aplikace s protokolem IPv6 pomocí základní Load Balancer – PowerShell
 
@@ -307,7 +307,7 @@ $VM2 = New-AzVM -ResourceGroupName $rg.ResourceGroupName  -Location $rg.Location
 ```
 
 ## <a name="determine-ip-addresses-of-the-ipv4-and-ipv6-endpoints"></a>Určete IP adresy koncových bodů IPv4 a IPv6.
-Získejte všechny objekty síťového rozhraní ve skupině prostředků, abyste mohli shrnout IP adresu použitou v tomto nasazení s `get-AzNetworkInterface`. Získejte také adresy front-endu Load Balancer koncových bodů IPv4 a IPv6 `get-AzpublicIpAddress`.
+Získejte všechny objekty síťového rozhraní ve skupině prostředků, abyste mohli shrnout IP adresu použitou v tomto nasazení s `get-AzNetworkInterface` . Získejte také adresy front-endu Load Balancer koncových bodů IPv4 a IPv6 `get-AzpublicIpAddress` .
 
 ```azurepowershell-interactive
 $rgName= "dsRG1"

@@ -4,15 +4,15 @@ description: V tomto článku se dozvíte, jak přesunout veřejné partnerské 
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: fc5740fef87497d881f689f888e446dbf4d100e1
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 2f6b3ec93498ab58ba67a2ca08199feaa2da73ef
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84019447"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738358"
 ---
 # <a name="move-a-public-peering-to-microsoft-peering"></a>Přesun veřejného partnerského vztahu do partnerskému vztahu Microsoftu
 
@@ -22,7 +22,7 @@ Veřejný partnerský vztah Azure má 1 IP adresu NAT přidruženou ke každé r
 
 Po povolení veřejného partnerského vztahu se můžete připojit ke všem službám Azure. Neumožňujeme selektivně vybrat služby, pro které budeme inzerovat trasy. Zatímco partnerský vztah Microsoftu je obousměrné připojení, které umožňuje iniciovat připojení z Microsoft Azure služby spolu s vaší sítí WAN. Další informace o doménách směrování a partnerských vztahů najdete v tématu [okruhy ExpressRoute a domény směrování](expressroute-circuit-peerings.md).
 
-## <a name="before-you-begin"></a><a name="before"></a>Před zahájením
+## <a name="before-you-begin"></a><a name="before"></a>Než začnete
 
 Pokud se chcete připojit k partnerskému vztahu Microsoftu, musíte nastavit a spravovat překlad adres (NAT). Poskytovatel připojení může nastavit a spravovat překlad adres (NAT) jako spravovanou službu. Pokud plánujete přístup k Azure PaaS a službám Azure SaaS na partnerském vztahu Microsoftu, je důležité správně změnit velikost fondu IP adres NAT. Další informace o překladu adres (NAT) pro ExpressRoute najdete v tématu [požadavky na překlad adres (NAT) pro partnerský vztah Microsoftu](expressroute-nat.md#nat-requirements-for-microsoft-peering). Když se připojíte k Microsoftu prostřednictvím Azure ExpressRoute (partnerský vztah Microsoftu), máte několik odkazů na Microsoft. Jedno propojení je vaše stávající připojení k internetu a druhé je prostřednictvím ExpressRoute. Část provozu do Microsoftu může procházet přes internet, ale vracet se prostřednictvím ExpressRoute, nebo naopak.
 

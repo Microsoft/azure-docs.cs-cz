@@ -157,8 +157,16 @@
       href: ../policy-samples.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
 - name: Koncepty
   items:
-    - name: Image
-      href: shared-image-galleries.md
+    - name: Obrázky
+      items:
+        - name: Přehled
+          href: imaging.md
+        - name: Zřizování
+          href: provisioning.md
+        - name: Galerie sdílených imagí
+          href: shared-image-galleries.md
+        - name: Image Builder
+          href: image-builder-overview.md
     - name: Azure Resource Manager
       href: ../../azure-resource-manager/management/overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Oblasti
@@ -415,6 +423,50 @@
     - name: Použití imagí
       displayName: 'SIG, AMI, image'
       items:
+        - name: Požadavky pro konkrétní distribuci
+          items:
+            - name: Obecné kroky
+              href: create-upload-generic.md
+            - name: Ubuntu
+              href: create-upload-ubuntu.md
+            - name: CentOS
+              href: create-upload-centos.md
+            - name: Red Hat
+              href: redhat-create-upload-vhd.md
+            - name: Debian
+              href: debian-create-upload-vhd.md
+            - name: SUSE
+              href: suse-create-upload-vhd.md
+            - name: Oracle Linux
+              href: oracle-create-upload-vhd.md
+            - name: OpenBSD
+              href: create-upload-openbsd.md
+            - name: FreeBSD
+              href: freebsd-intro-on-azure.md
+        - name: Použití cloud-init
+          items:
+            - name: Přehled Cloud-init
+              href: using-cloud-init.md
+            - name: Podrobné informace
+              href: cloud-init-deep-dive.md
+            - name: Řešení potíží
+              href: cloud-init-troubleshooting.md
+            - name: Konfigurace názvu hostitele virtuálního počítače
+              href: cloudinit-update-vm-hostname.md
+            - name: Aktualizace balíčků ve virtuálním počítači
+              href: cloudinit-update-vm.md
+            - name: Přidání uživatele ve virtuálním počítači
+              href: cloudinit-add-user.md
+            - name: Konfigurace stránkovacího souboru
+              href: cloudinit-configure-swapfile.md
+            - name: Spuštění existujícího skriptu Bash
+              href: cloudinit-bash-script.md
+            - name: Příprava existujícího virtuálního počítače pro cloud-init
+              href: cloudinit-prepare-custom-image.md
+        - name: Vytváření imagí bez
+          href: no-agent.md
+        - name: Zákaz zřizování linuxových agentů
+          href: disable-provisioning.md
         - name: Galerie sdílených imagí
           items:
             - name: Rozhraní příkazového řádku
@@ -480,8 +532,6 @@
               href: ../image-version-encryption.md
         - name: Image Builder (Preview)
           items:
-            - name: Přehled
-              href: image-builder-overview.md
             - name: Použití Azure CLI
               href: image-builder.md
             - name: Referenční informace k šablonám ARM
@@ -495,27 +545,7 @@
               href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
         - name: Vyhledání a použití imagí
           href: cli-ps-findimage.md
-        - name: Vytvoření vlastní image
-          items:
-            - name: Obecné kroky
-              href: create-upload-generic.md
-            - name: Ubuntu
-              href: create-upload-ubuntu.md
-            - name: CentOS
-              href: create-upload-centos.md
-            - name: Red Hat
-              href: redhat-create-upload-vhd.md
-            - name: Debian
-              href: debian-create-upload-vhd.md
-            - name: SUSE
-              href: suse-create-upload-vhd.md
-            - name: Oracle Linux
-              href: oracle-create-upload-vhd.md
-            - name: OpenBSD
-              href: create-upload-openbsd.md
-            - name: FreeBSD
-              href: freebsd-intro-on-azure.md
-        - name: Zachycení virtuálního počítače v imagi
+        - name: Zachycení virtuálního počítače do spravované image
           href: capture-image.md
         - name: Sestavení image pomocí Packeru
           href: build-image-with-packer.md
@@ -813,22 +843,6 @@
               href: /azure/developer/terraform/install-configure
             - name: Vytvoření kompletního virtuálního počítače
               href: /azure/developer/terraform/create-linux-virtual-machine-with-infrastructure
-        - name: Cloud-init
-          items:
-            - name: Přehled Cloud-init
-              href: using-cloud-init.md
-            - name: Konfigurace názvu hostitele virtuálního počítače
-              href: cloudinit-update-vm-hostname.md
-            - name: Aktualizace balíčků ve virtuálním počítači
-              href: cloudinit-update-vm.md
-            - name: Přidání uživatele ve virtuálním počítači
-              href: cloudinit-add-user.md
-            - name: Konfigurace stránkovacího souboru
-              href: cloudinit-configure-swapfile.md
-            - name: Spuštění existujícího skriptu Bash
-              href: cloudinit-bash-script.md
-            - name: Příprava existujícího virtuálního počítače pro cloud-init
-              href: cloudinit-prepare-custom-image.md
         - name: Jenkins
           href: /azure/developer/jenkins/overview
           items:

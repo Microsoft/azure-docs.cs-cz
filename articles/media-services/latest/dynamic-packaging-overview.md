@@ -12,25 +12,25 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 03/17/2020
+ms.date: 06/11/2020
 ms.author: juliako
-ms.openlocfilehash: ae049d7486007696d8038eb4e6593cf996df659e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 20389c8298f4e970c4b3ba93d96f811fdc905003
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80372597"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791601"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Dynamické balení v Media Services V3
 
 Microsoft Azure Media Services lze použít ke kódování mnoha mediálních formátů souborů. Dodává je prostřednictvím různých protokolů streamování s ochranou obsahu nebo bez nich, aby se dosáhlo všech hlavních zařízení (jako jsou zařízení s iOS a Androidem). Tito klienti rozumí různým protokolům. Například iOS vyžaduje doručení datových proudů ve formátu HTTP Live Streaming (HLS) a zařízení s Androidem podporují HLS a také formát MPEG POMLČKy.
 
-V Media Services [koncový bod streamování](streaming-endpoint-concept.md) představuje dynamický (za běhu) balení a službu původu, která může doručovat obsah živě a na vyžádání přímo do aplikace Client Player. Používá jeden z běžných protokolů multimediálních datových proudů uvedených v následující části. Dynamické balení je funkce, která je standardem u všech koncových bodů streamování (Standard i Premium).
+V Media Services představuje [koncový bod streamování](streaming-endpoint-concept.md) (Origin) dynamické (za běhu) balení a službu origining, která může doručovat obsah živě a na vyžádání přímo do aplikace klienta v přehrávači. Používá jeden z běžných protokolů multimediálních datových proudů uvedených v následující části. *Dynamické balení* je funkce, která nabízí standard pro všechny koncové body streamování (Standard nebo Premium).
 
 > [!NOTE]
 > Pomocí [Azure Portal](https://portal.azure.com/) můžete spravovat V3 [Live události](live-events-outputs-concept.md), zobrazit [prostředky](assets-concept.md)v3 a získat informace o přístupu k rozhraním API. Pro všechny ostatní úlohy správy (například transformace a úlohy) použijte [REST API](https://docs.microsoft.com/rest/api/media/), [CLI](https://aka.ms/ams-v3-cli-ref)nebo jednu z podporovaných [sad SDK](media-services-apis-overview.md#sdks).
 
-## <a name="to-prepare-your-source-files-for-delivery"></a><a id="delivery-protocols"/>Příprava zdrojových souborů na doručení
+## <a name="to-prepare-your-source-files-for-delivery"></a>Příprava zdrojových souborů na doručení
 
 Pokud chcete využít výhod dynamického balení, musíte soubor Mezzanine (zdrojový soubor) [zakódovat](encoding-concept.md) do sady souborů MP4 s více přenosovými rychlostmi (ISO Base Media 14496-12). Potřebujete mít [Asset](assets-concept.md) s šifrovanými konfiguračními soubory MP4 a streaming, které vyžaduje Media Services dynamické balení. Z této sady souborů MP4 můžete použít dynamické balení k doručování videa prostřednictvím protokolů multimediálního datového proudu popsaných níže.
 
@@ -69,7 +69,7 @@ Váš klient streamování může určit následující formáty Smooth Streamin
 |Protocol (Protokol)|Poznámky a příklady| 
 |---|---|
 |Technologie Smooth Streaming| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest`||
-|Smooth Streaming 2,0 (starší manifest)|Ve výchozím nastavení obsahuje Smooth Streaming formát manifestu značku opakování (značka r). Někteří hráči ale nepodporují `r-tag`. Klienti s těmito hráči můžou používat formát, který zakazuje značku r:<br/><br/>`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=fmp4-v20)`|
+|Smooth Streaming 2,0 (starší manifest)|Ve výchozím nastavení obsahuje Smooth Streaming formát manifestu značku opakování (značka r). Někteří hráči ale nepodporují `r-tag` . Klienti s těmito hráči můžou používat formát, který zakazuje značku r:<br/><br/>`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=fmp4-v20)`|
 
 > [!NOTE]
 > Smooth Streaming vyžaduje, aby byl ve vašem datovém proudu přítomen zvuk i video.
@@ -80,12 +80,14 @@ Následující kroky ukazují běžný pracovní postup streamování Media Serv
 
 1. Nahrání vstupního souboru, jako je soubor QuickTime/MOV nebo MXF. Tento soubor se také označuje jako Mezzanine nebo zdrojový soubor. Seznam podporovaných formátů najdete v tématu [formáty podporované kodérem Standard](media-encoder-standard-formats.md).
 1. [Zakódovat](#encode-to-adaptive-bitrate-mp4s) soubor Mezzanine do sady H. 264/AAC MP4 s adaptivní přenosovou rychlostí.
-1. Publikujte výstupní Asset, který obsahuje sadu MP4 s adaptivní přenosovou rychlostí. Publikujete vytvořením lokátoru streamování.
-1. Vytvářejte adresy URL, které cílí na různé formáty (HLS, MPEG-POMLČKa a Smooth Streaming). **Koncový bod streamování** by postaral o poskytování správného manifestu a požadavků pro všechny tyto různé formáty.
-
+1. Publikujte výstupní Asset, který obsahuje sadu MP4 s adaptivní přenosovou rychlostí. Publikujete vytvořením [lokátoru streamování](streaming-locators-concept.md).
+1. Vytvářejte adresy URL, které cílí na různé formáty (HLS, MPEG-POMLČKa a Smooth Streaming). *Koncový bod streamování* by postaral o poskytování správného manifestu a požadavků pro všechny tyto různé formáty.
+    
 Následující diagram znázorňuje streamování na vyžádání s dynamickým pracovním postupem pro balení.
 
 ![Diagram pracovního postupu pro streamování na vyžádání s dynamickým balením](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
+
+Cesta ke stažení je k dispozici ve výše uvedeném obrázku, aby bylo vidět, že si můžete stáhnout soubor MP4 přímo prostřednictvím *koncového bodu streamování* (počátek) (zadáte [zásadu streamování](streaming-policy-concept.md) ke stažení na lokátoru streamování).<br/>Dynamický balíček nemění soubor. 
 
 ### <a name="encode-to-adaptive-bitrate-mp4s"></a>Kódovat do adaptivní přenosové rychlosti rychlostmi
 
@@ -101,7 +103,7 @@ Podívejte se na seznam [formátů a kodeků](media-encoder-standard-formats.md)
 
 Živá událost může být nastavená na *předávací* (místní živý kodér posílá datový proud s více přenosovými rychlostmi) nebo *živé kódování* (místní kodér Live Encoder posílá datový proud s jednou přenosovou rychlostí). 
 
-Tady je běžný pracovní postup pro živé streamování s dynamickým balením:
+Tady je běžný pracovní postup pro živé streamování s *dynamickým balením*:
 
 1. Vytvořte [živou událost](live-events-outputs-concept.md).
 1. Získejte adresu URL pro přijímání a nakonfigurujte místní kodér tak, aby používal adresu URL k odeslání informačního kanálu příspěvku.
@@ -111,9 +113,9 @@ Tady je běžný pracovní postup pro živé streamování s dynamickým balení
 1. Vytvořte Lokátor streamování s integrovanými typy zásad streamování.<br />Pokud máte v úmyslu zašifrovat svůj obsah, Projděte si [Přehled ochrany obsahu](content-protection-overview.md).
 1. Vypíšete cesty na lokátoru streamování, abyste získali adresy URL, které se mají použít.
 1. Získejte název hostitele pro koncový bod streamování, ze kterého chcete streamovat.
-1. Vytvářejte adresy URL, které cílí na různé formáty (HLS, MPEG-POMLČKa a Smooth Streaming). Koncový bod streamování se stará o poskytování správného manifestu a požadavků pro různé formáty.
+1. Vytvářejte adresy URL, které cílí na různé formáty (HLS, MPEG-POMLČKa a Smooth Streaming). *Koncový bod streamování* se stará o poskytování správného manifestu a požadavků pro různé formáty.
 
-Tento diagram znázorňuje pracovní postup živého streamování s dynamickým balením:
+Tento diagram znázorňuje pracovní postup živého streamování s *dynamickým balením*:
 
 ![Diagram pracovního postupu pro průchozí kódování s dynamickým balením](./media/live-streaming/pass-through.svg)
 
@@ -124,17 +126,17 @@ Informace o živém streamování v Media Services V3 najdete v tématu [Přehle
 Dynamické balení podporuje soubory MP4, které obsahují video kódované pomocí [H. 264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC nebo AVC1) nebo [H. 265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC, hev1 nebo hvc1).
 
 > [!NOTE]
-> Rozlišení až 4K a snímkových frekvencí až 60 snímků za sekundu byly testovány s dynamickým balením. [Kodér úrovně Premium](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) podporuje kódování do H. 265 prostřednictvím starších rozhraní API v2.
+> Rozlišení až 4K a snímkových frekvencí až 60 snímků za sekundu byly testovány s *dynamickým balením*. [Kodér úrovně Premium](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) podporuje kódování do H. 265 prostřednictvím starších rozhraní API v2.
 
-## <a name="audio-codecs-supported-by-dynamic-packaging"></a><a id="audio-codecs"/>Zvukové kodeky podporované dynamickým balením
+## <a name="audio-codecs-supported-by-dynamic-packaging"></a>Zvukové kodeky podporované dynamickým balením
 
 Dynamické balení podporuje zvuk, který je kódovaný pomocí následujících protokolů:
 
 * [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) (AAC-LC, HE-AAC v1 nebo HE-AAC v2)
 * [Dolby Digital Plus](https://en.wikipedia.org/wiki/Dolby_Digital_Plus) (vylepšené AC-3 nebo E-AC3)
-* Dolby ATMOS<br />
-   Streamování formátu Dolby ATMOS je podporováno pro standardy, jako je protokol MPEG-dispomlčka (CSF) nebo Common Media Application Format (CMAF) fragmentované MP4 a prostřednictvím HTTP Live Streaming (HLS) s CMAF.
+* Dolby ATMOS
 
+   Streamování formátu Dolby ATMOS je podporováno pro standardy, jako je protokol MPEG-dispomlčka (CSF) nebo Common Media Application Format (CMAF) fragmentované MP4 a prostřednictvím HTTP Live Streaming (HLS) s CMAF.
 * [DTS](https://en.wikipedia.org/wiki/DTS_%28sound_system%29)<br />
    Kodeky DTS podporované ČÁRKou-CSF, POMLČKou CMAF, HLS-M2TS a HLS-CMAF formáty balení:  
 
@@ -145,16 +147,24 @@ Dynamické balení podporuje zvuk, který je kódovaný pomocí následujících
 
 Dynamické balení podporuje více zvukových stop s POMLČKou nebo HLS (verze 4 nebo novější) pro streamování assetů, které mají více zvukových stop s více kodeky a jazyky.
 
-### <a name="additional-notes"></a>Další poznámky
+### <a name="limitations"></a>Omezení
 
-Dynamické balení nepodporuje soubory, které obsahují zvuk [Dolby Digital](https://en.wikipedia.org/wiki/Dolby_Digital) (AC3) (Jedná se o zastaralý kodek).
+#### <a name="ios-limitation-on-aac-51-audio"></a>omezení iOS na zvuku AAC 5,1
+
+Zařízení Apple iOS nepodporují zvukový kodek 5,1 AAC. Zvuk ve více kanálech musí být kódovaný pomocí kodeků Dolby Digital nebo Dolby Digital Plus.
+
+Podrobné informace najdete v tématu [specifikace vytváření HLS pro zařízení Apple](https://developer.apple.com/documentation/http_live_streaming/hls_authoring_specification_for_apple_devices).
 
 > [!NOTE]
-> [Kodér úrovně Premium](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) podporuje kódování na Dolby Digital Plus prostřednictvím starších rozhraní API v2.
+> Media Services nepodporuje kódování zvukového formátu Dolby Digital, Dolby digitálního plus nebo Dolby Digital Plus s formáty Dolby ATMOS Multi-Channel.
+
+#### <a name="dolby-digital-audio"></a>Zvuk Dolby Digital
+
+Media Services dynamické balení v současné době nepodporuje soubory, které obsahují zvuk [Dolby Digital](https://en.wikipedia.org/wiki/Dolby_Digital) (AC3) (to znamená, že se považuje za starší kodek od formátu Dolby).
 
 ## <a name="manifests"></a>Manifesty
 
-V Media Services dynamického balení se dynamicky generují manifesty klienta streamování pro HLS, MPEG-POMLČKy a Smooth Streaming na základě selektoru formátu v adrese URL.  
+V Media Services *dynamického balení*se dynamicky generují manifesty klienta streamování pro HLS, MPEG-pomlčky a Smooth Streaming na základě selektoru formátu v adrese URL.  
 
 Soubor manifestu obsahuje streamovaná metadata, jako je například typ stopy (zvuk, video nebo text), název stopy, počáteční a koncový čas, rychlost (kvality), sledovací jazyky, okno prezentace (posuvné okno pevné doby trvání) a kodek videa (FourCC). Také instruuje přehrávač, aby načetl další fragment poskytnutím informací o dalších dostupných fragmentech videa a jejich umístění. Fragmenty (nebo segmenty) jsou skutečnými "bloky obsahu videa.
 
@@ -281,7 +291,7 @@ V případě POMLČKového manifestu by se měly přidat následující dva elem
 
 #### <a name="hls-playlist"></a>HLS seznam testů
 
-V případě HLSch v7 `(format=m3u8-cmaf)`a vyšších seznamů se seznam `AUTOSELECT=YES,CHARACTERISTICS="public.accessibility.describes-video"` testů přenese, když je zvuková stopa signalizace.
+V případě HLSch v7 a vyšších `(format=m3u8-cmaf)` seznamů se seznam testů přenese, `AUTOSELECT=YES,CHARACTERISTICS="public.accessibility.describes-video"` když je zvuková stopa signalizace.
 
 #### <a name="example"></a>Příklad
 

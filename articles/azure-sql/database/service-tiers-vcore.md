@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/27/2019
-ms.openlocfilehash: 1f7d0d411ffbff6aad7d134711a0190251f68aa8
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 3a359e4b3523615623c76d48c1aafd7aa95a5277
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324432"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255037"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>Přehled modelu vCore – Azure SQL Database a Azure SQL Managed instance 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -91,10 +91,11 @@ Fsv2-Series se podporuje jenom na úrovni Pro obecné účely.  Oblasti, ve kter
 - Řada M-Series je hardwarově optimalizovaná možnost hardwaru pro úlohy, které přidávají větší nároky na paměť a vyšší výpočetní limity než služba Gen5.
 - Řada M-Series poskytuje 29 GB na vCore a 128 virtuální jádra, což zvyšuje limit paměti relativní vzhledem k Gen5, 8rychlostní až skoro 4 TB.
 
-Řada M-Series je podporována pouze v Pro důležité obchodní informace vrstvě a nepodporuje redundanci zóny.
+Řada M-Series je podporována pouze v Pro důležité obchodní informace vrstvě a nepodporuje redundanci zóny.  Předplatné musí být placeného typu nabídky, včetně průběžných plateb nebo smlouva Enterprise (EA).  V oblastech, kde je dostupná řada M-Series, najdete informace v tématu [dostupnost řady m-Series](#m-series).
 
-Pokud chcete povolit hardware řady M-Series pro předplatné a oblast, je nutné otevřít žádost o podporu. Předplatné musí být placeného typu nabídky, včetně průběžných plateb nebo smlouva Enterprise (EA).  Pokud je žádost o podporu schválená, možnosti výběru a zřizování řady M-Series se řídí stejným vzorem jako u ostatních generací hardwaru. V oblastech, kde je dostupná řada M-Series, najdete informace v tématu [dostupnost řady m-Series](#m-series).
-
+<!--
+To enable M-series hardware for a subscription and region, a support request must be opened. The subscription must be a paid offer type including Pay-As-You-Go or Enterprise Agreement (EA).  If the support request is approved, then the selection and provisioning experience of M-series follows the same pattern as for other hardware generations. For regions where M-series is available, see [M-series availability](#m-series).
+-->
 
 ### <a name="compute-and-memory-specifications"></a>Specifikace výpočtů a paměti
 
@@ -112,7 +113,7 @@ Další informace o omezeních prostředků najdete v tématech [omezení prost�
 
 ### <a name="selecting-a-hardware-generation"></a>Výběr hardwarového generování
 
-V Azure Portal můžete vybrat generování hardwaru pro databázi nebo fond v SQL Database v době vytváření, nebo můžete změnit vygenerování hardwaru existující databáze nebo fondu SQL.
+V Azure Portal můžete vybrat generování hardwaru pro databázi nebo fond v SQL Database v době vytváření, nebo můžete změnit vygenerování hardwaru existující databáze nebo fondu.
 
 **Výběr generování hardwaru při vytváření SQL Database nebo fondu**
 
@@ -193,32 +194,33 @@ Fsv2-Series je k dispozici v následujících oblastech: Austrálie – střed, 
 #### <a name="m-series"></a>Řada M
 
 Řada M-Series je k dispozici v následujících oblastech: Východní USA, Severní Evropa, Západní Evropa Západní USA 2.
-Řada M-Series může mít také omezené dostupnosti v dalších oblastech. Můžete si vyžádat jinou oblast, než je zde uvedeno, ale nemusí být splněna v jiné oblasti.
+<!--
+M-series may also have limited availability in additional regions. You can request a different region than listed here, but fulfillment in a different region may not be possible.
 
-Pokud chcete povolit dostupnost řady M-Series v rámci předplatného, musíte požádat o přístup k [nové žádosti o podporu](#create-a-support-request-to-enable-m-series).
+To enable M-series availability in a subscription, access must be requested by [filing a new support request](#create-a-support-request-to-enable-m-series).
 
 
-##### <a name="create-a-support-request-to-enable-m-series"></a>Vytvoření žádosti o podporu pro povolení řady M-Series: 
+##### Create a support request to enable M-series: 
 
-1. Na portálu vyberte **help + podpora** .
-2. Vyberte **Nová žádost o podporu**.
+1. Select **Help + support** in the portal.
+2. Select **New support request**.
 
-Na stránce **základy** zadejte následující:
+On the **Basics** page, provide the following:
 
-1. Jako **typ problému**vyberte **omezení služby a předplatné (kvóty)**.
-2. Pro **předplatné** = vyberte předplatné, abyste mohli povolit řadu M-Series.
-3. Jako **typ kvóty**vyberte **SQL Database**.
-4. Kliknutím na tlačítko **Další** přejdete na stránku s **podrobnostmi** .
+1. For **Issue type**, select **Service and subscription limits (quotas)**.
+2. For **Subscription** = select the subscription to enable M-series.
+3. For **Quota type**, select **SQL database**.
+4. Select **Next** to go to the **Details** page.
 
-Na stránce **Podrobnosti** zadejte následující:
+On the **Details** page, provide the following:
 
-1. V části **Podrobnosti o problému** vyberte odkaz **poskytnout podrobnosti** . 
-2. U **SQL Database typ kvóty** vyberte **M-Series**.
-3. V poli **oblast**vyberte oblast, do které chcete povolit řadu M-Series.
-    V oblastech, kde je dostupná řada M-Series, najdete informace v tématu [dostupnost řady m-Series](#m-series).
+1. In the **PROBLEM DETAILS** section select the **Provide details** link. 
+2. For **SQL Database quota type** select **M-series**.
+3. For **Region**, select the region to enable M-series.
+    For regions where M-series is available, see [M-series availability](#m-series).
 
-Schválené žádosti o podporu jsou obvykle splněné do 5 pracovních dnů.
-
+Approved support requests are typically fulfilled within 5 business days.
+-->
 
 ## <a name="next-steps"></a>Další kroky
 

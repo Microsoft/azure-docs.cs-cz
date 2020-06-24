@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: quickstart
 ms.date: 06/01/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: 273305894e05b397d0f48acd7a483a9fdfc247ef
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: e626f6e5b65e369c3c77900cd46f2b86cd6f9d52
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324028"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117994"
 ---
 # <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-azure-resource-manager-template"></a>Rychlý Start: vytvoření Azure Cosmos DB a kontejneru pomocí šablony Azure Resource Manager
 
@@ -41,11 +41,11 @@ Předplatné Azure nebo bezplatný zkušební účet služby Azure Cosmos DB
 
 V šabloně jsou definovány tři prostředky Azure:
 
-* [Microsoft. DocumentDB/databaseAccounts](/azure/templates/microsoft.documentdb/databaseaccounts): vytvořte účet Azure Cosmos.
+* [Microsoft.DocumentDB/databaseAccounts](/azure/templates/microsoft.documentdb/databaseaccounts): vytvořte účet Azure Cosmos.
 
-* [Microsoft. DocumentDB/databaseAccounts/sqlDatabases](/azure/templates/microsoft.documentdb/databaseaccounts/sqldatabases): vytvoření databáze Azure Cosmos.
+* [Microsoft.DocumentDB/databaseAccounts/sqlDatabases](/azure/templates/microsoft.documentdb/databaseaccounts/sqldatabases): vytvoření databáze Azure Cosmos.
 
-* [Microsoft. DocumentDB/databaseAccounts/sqlDatabases/Containers](/azure/templates/microsoft.documentdb/databaseaccounts/sqldatabases/containers): vytvoření kontejneru Azure Cosmos.
+* [Microsoft.DocumentDB/databaseAccounts/sqlDatabases/Containers](/azure/templates/microsoft.documentdb/databaseaccounts/sqldatabases/containers): vytvoření kontejneru Azure Cosmos.
 
 Další příklady šablon Azure Cosmos DB najdete v [galerii šablon rychlý Start](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Documentdb).
 
@@ -53,11 +53,11 @@ Další příklady šablon Azure Cosmos DB najdete v [galerii šablon rychlý St
 
 1. Vyberte následující obrázek a přihlaste se k Azure a otevřete šablonu. Šablona vytvoří účet Azure Cosmos, databázi a kontejner.
 
-   [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql%2Fazuredeploy.json)
+   [:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Nasazení do Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql%2Fazuredeploy.json)
 
 2. Vyberte nebo zadejte následující hodnoty.
 
-   ![Správce prostředků šablona, Integrace Azure Cosmos DB, nasazení portálu](./media/quick-create-template/create-cosmosdb-using-template-portal.png)
+   :::image type="content" source="./media/quick-create-template/create-cosmosdb-using-template-portal.png" alt-text="Správce prostředků šablona, Integrace Azure Cosmos DB, nasazení portálu":::
 
     Pokud není zadaný, použijte k vytvoření prostředků Azure Cosmos výchozí hodnoty.
 
@@ -78,7 +78,7 @@ Další příklady šablon Azure Cosmos DB najdete v [galerii šablon rychlý St
 
 3. Vyberte **Koupit**. Po úspěšném nasazení účtu Azure Cosmos se zobrazí oznámení:
 
-   ![Správce prostředků šablona, integrace Cosmos DB, nasazení oznámení portálu](./media/quick-create-template/resource-manager-template-portal-deployment-notification.png)
+   :::image type="content" source="./media/quick-create-template/resource-manager-template-portal-deployment-notification.png" alt-text="Správce prostředků šablona, integrace Cosmos DB, nasazení oznámení portálu":::
 
 K nasazení šablony se použije Azure Portal. Kromě Azure Portal můžete použít také Azure PowerShell, Azure CLI a REST API. Další informace o dalších metodách nasazení najdete v tématu [Nasazení šablon](../azure-resource-manager/templates/deploy-powershell.md).
 
@@ -108,7 +108,7 @@ $resourceGroupName = Read-Host -Prompt "Enter the resource group name where your
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud budete chtít pokračovat v práci s dalšími kurzy a, možná budete chtít tyto prostředky ponechat na místě.
+Pokud máte v úmyslu pokračovat v práci s dalšími rychlými starty a kurzy, možná budete chtít tyto prostředky ponechat na místě.
 Pokud už je nepotřebujete, odstraňte skupinu prostředků, která odstraní účet Azure Cosmos a související prostředky. Odstranění skupiny prostředků pomocí rozhraní příkazového řádku Azure nebo Azure PowerShell:
 
 # <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)

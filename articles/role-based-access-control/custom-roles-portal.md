@@ -7,19 +7,19 @@ author: rolyon
 manager: mtillman
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/30/2020
 ms.author: rolyon
-ms.openlocfilehash: f9ba8fa64a9699917fe73365cb5d9aa0c858cde7
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: a7be51cfceee3bb445b085efd780463c8b6f49be
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734175"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791193"
 ---
-# <a name="create-or-update-azure-custom-roles-using-the-azure-portal"></a>Pomocí Azure Portal vytvořit nebo aktualizovat vlastní role Azure
+# <a name="create-or-update-azure-custom-roles-using-the-azure-portal"></a>Vytváření nebo aktualizace vlastních rolí Azure pomocí webu Azure Portal
 
 Pokud [předdefinované role Azure](built-in-roles.md) nevyhovují konkrétním potřebám vaší organizace, můžete vytvořit vlastní vlastní role Azure. Stejně jako předdefinované role můžete uživatelům, skupinám a instančním objektům přiřadit vlastní role v oborech předplatného a skupiny prostředků. Vlastní role se ukládají v adresáři Azure Active Directory (Azure AD) a můžou se sdílet mezi předplatnými. Každý adresář může mít až 5000 vlastních rolí. Vlastní role se dají vytvořit pomocí Azure Portal, Azure PowerShell, rozhraní příkazového řádku Azure nebo REST API. Tento článek popisuje, jak pomocí Azure Portal vytvořit vlastní role.
 
@@ -33,7 +33,7 @@ K vytvoření vlastních rolí budete potřebovat:
 
 Azure má tisíce oprávnění, která můžete zahrnout do vaší vlastní role. Tady je čtyř způsobů, jak můžete určit oprávnění, která budete chtít přidat do vlastní role:
 
-| Metoda | Popis |
+| Metoda | Description |
 | --- | --- |
 | Podívejte se na stávající role | Můžete si prohlédnout stávající role a zjistit, jaká oprávnění jsou používána. Další informace najdete v tématu [předdefinované role Azure](built-in-roles.md). |
 | Vyhledat oprávnění podle klíčového slova | Když vytvoříte vlastní roli pomocí Azure Portal, můžete vyhledat oprávnění podle klíčového slova. Můžete například vyhledat *virtuální počítač* nebo oprávnění *fakturace* . Tato funkce hledání je podrobněji popsána v [kroku 4: oprávnění](#step-4-permissions). |
@@ -196,15 +196,15 @@ Pomocí těchto kroků můžete přidat nebo odebrat oprávnění pro vlastní r
 
 1. Kliknutím na **Přidat** přidejte oprávnění do seznamu oprávnění.
 
-    Oprávnění se přidá jako `Actions` nebo. `DataActions`
+    Oprávnění se přidá jako `Actions` nebo `DataActions` .
 
     ![Přidaná oprávnění](./media/custom-roles-portal/permissions-list-add.png)
 
-1. Chcete-li odebrat oprávnění, klikněte na ikonu Odstranit na konci řádku. Vzhledem k tomu, že uživatel nebude potřebovat možnost vytvářet lístky podpory, může být v tomto `Microsoft.Support/*` příkladu oprávnění odstraněno.
+1. Chcete-li odebrat oprávnění, klikněte na ikonu Odstranit na konci řádku. Vzhledem k tomu, že uživatel nebude potřebovat možnost vytvářet lístky podpory, může být v tomto příkladu `Microsoft.Support/*` oprávnění odstraněno.
 
 ### <a name="add-wildcard-permissions"></a>Přidat oprávnění zástupných znaků
 
-V závislosti na tom, jak se rozhodnete začít, můžete mít ve svém seznamu oprávnění\*zástupné znaky (). Zástupný znak (\*) rozšiřuje oprávnění na vše, co odpovídá řetězci, který zadáte. Předpokládejme například, že jste chtěli přidat všechna oprávnění související s Azure Cost Management a exporty. Můžete přidat všechna tato oprávnění:
+V závislosti na tom, jak se rozhodnete začít, můžete mít ve svém seznamu oprávnění zástupné znaky ( \* ). Zástupný znak ( \* ) rozšiřuje oprávnění na vše, co odpovídá řetězci, který zadáte. Předpokládejme například, že jste chtěli přidat všechna oprávnění související s Azure Cost Management a exporty. Můžete přidat všechna tato oprávnění:
 
 ```
 Microsoft.CostManagement/exports/action
@@ -224,7 +224,7 @@ Pokud chcete přidat nové oprávnění zástupných znaků, nemůžete ho přid
 
 ### <a name="exclude-permissions"></a>Vyloučit oprávnění
 
-Pokud má vaše role zástupné\*oprávnění () a chcete vyloučit nebo odečíst konkrétní oprávnění od těchto oprávnění, můžete je vyloučit. Řekněme například, že máte následující oprávnění zástupných znaků:
+Pokud má vaše role zástupné \* oprávnění () a chcete vyloučit nebo odečíst konkrétní oprávnění od těchto oprávnění, můžete je vyloučit. Řekněme například, že máte následující oprávnění zástupných znaků:
 
 ```
 Microsoft.CostManagement/exports/*
@@ -236,7 +236,7 @@ Pokud nechcete povolit odstranění exportu, můžete vyloučit následující o
 Microsoft.CostManagement/exports/delete
 ```
 
-Pokud oprávnění vyloučíte, přidá se jako `NotActions` nebo. `NotDataActions` Efektivní oprávnění pro správu jsou vypočítána přidáním všech `Actions` a poté odečtením všech. `NotActions` Platná oprávnění k datům jsou vypočítána přidáním všech `DataActions` a poté odečtením všech. `NotDataActions`
+Pokud oprávnění vyloučíte, přidá se jako `NotActions` nebo `NotDataActions` . Efektivní oprávnění pro správu jsou vypočítána přidáním všech `Actions` a poté odečtením všech `NotActions` . Platná oprávnění k datům jsou vypočítána přidáním všech `DataActions` a poté odečtením všech `NotDataActions` .
 
 > [!NOTE]
 > Vyloučení oprávnění není stejné jako odepřít. Vyloučení oprávnění je jednoduše pohodlný způsob, jak odečíst oprávnění od oprávnění zástupných znaků.
@@ -249,7 +249,7 @@ Pokud oprávnění vyloučíte, přidá se jako `NotActions` nebo. `NotDataActio
 
     ![Podokno vyloučení oprávnění – vybrané oprávnění](./media/custom-roles-portal/exclude-permissions-select.png)
 
-    Oprávnění se přidá jako `NotActions` nebo. `NotDataActions`
+    Oprávnění se přidá jako `NotActions` nebo `NotDataActions` .
 
     ![Vyloučená oprávnění](./media/custom-roles-portal/exclude-permissions-list-add.png)
 
@@ -269,7 +269,7 @@ Na kartě **přiřadit obory** určete, kde má být vaše vlastní role k dispo
 
 ## <a name="step-6-json"></a>Krok 6: JSON
 
-Na kartě **JSON** uvidíte vlastní roli formátovanou ve formátu JSON. Pokud chcete, můžete JSON přímo upravit. Chcete-li přidat oprávnění zástupného znaku (\*), je nutné použít tuto kartu.
+Na kartě **JSON** uvidíte vlastní roli formátovanou ve formátu JSON. Pokud chcete, můžete JSON přímo upravit. Chcete-li přidat oprávnění zástupného znaku ( \* ), je nutné použít tuto kartu.
 
 1. Pokud chcete kód JSON upravit, klikněte na **Upravit**.
 

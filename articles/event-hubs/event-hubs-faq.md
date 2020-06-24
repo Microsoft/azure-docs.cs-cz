@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/02/2019
 ms.author: shvija
-ms.openlocfilehash: 0ff1f19a30be8c4ca40a980459901fd9224a6626
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: cee131030b47320a51e54f8b8bed70b0e4d677b0
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996614"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738018"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs nejčastějších dotazech
 
@@ -97,9 +97,9 @@ Pokud používáte redundanci zóny pro svůj obor názvů, musíte provést ně
 2. Poznamenejte si název v části **nesměrodatná odpověď** , která je v jednom z následujících formátů: 
 
     ```
-    <name>-s1.servicebus.windows.net
-    <name>-s2.servicebus.windows.net
-    <name>-s3.servicebus.windows.net
+    <name>-s1.cloudapp.net
+    <name>-s2.cloudapp.net
+    <name>-s3.cloudapp.net
     ```
 3. Spusťte nástroj nslookup pro každý z nich s příponami S1, S2 a S3 k získání IP adres všech tří instancí spuštěných ve třech zónách dostupnosti. 
 
@@ -127,15 +127,15 @@ Potom povolte protokoly diagnostiky pro [Event Hubs události připojení k virt
 Event Hubs poskytuje koncový bod Kafka, který mohou používat vaše stávající aplikace založené na Apache Kafka. K dispozici je všechny změny konfigurace, které se vyžadují pro prostředí PaaS Kafka. Nabízí alternativu ke spuštění vlastního clusteru Kafka. Event Hubs podporuje Apache Kafka 1,0 a novější verze klientů a spolupracuje s vašimi stávajícími aplikacemi, nástroji a rozhraními Kafka. Další informace najdete v tématu [Event Hubs pro úložiště Kafka](https://github.com/Azure/azure-event-hubs-for-kafka).
 
 ### <a name="what-configuration-changes-need-to-be-done-for-my-existing-application-to-talk-to-event-hubs"></a>Jaké změny konfigurace je potřeba udělat, aby se moje stávající aplikace mohla spojit s Event Hubs?
-Pokud se chcete připojit k centru událostí, budete muset aktualizovat konfigurace klienta Kafka. Provede se vytvořením oboru názvů Event Hubs a získání [připojovacího řetězce](event-hubs-get-connection-string.md). Změňte Bootstrap. Server tak, aby ukazovaly Event Hubs plně kvalifikovaný název domény a port na 9093. Aktualizujte soubor SASL. jaas. config tak, aby klienta Kafka nasměroval na váš koncový bod Event Hubs (což je připojovací řetězec, který jste získali), se správným ověřováním, jak je uvedeno níže:
+Pokud se chcete připojit k centru událostí, budete muset aktualizovat konfigurace klienta Kafka. Provede se vytvořením oboru názvů Event Hubs a získání [připojovacího řetězce](event-hubs-get-connection-string.md). Změňte Bootstrap. Server tak, aby ukazovaly Event Hubs plně kvalifikovaný název domény a port na 9093. Aktualizujte sasl.jaas.config a nasměrujte klienta Kafka na koncový bod Event Hubs (což je připojovací řetězec, který jste získali), se správným ověřováním, jak je uvedeno níže:
 
-Bootstrap. Servers = {YOUR. EVENTHUBS. FQDN}: 9093 Request. Timeout. MS = 60000 Security. Protocol = SASL_SSL SASL. mechanismus = OBYČEJNÉ SASL. jaas. config = org. Apache. Kafka. Common. Security. obyčejný. PlainLoginModule vyžaduje username = "$ConnectionString" Password = "{. EVENTHUBS. Vázán. ŘETĚZEC} ";
+Bootstrap. Servers = {YOUR. EVENTHUBS. FQDN}: 9093 Request. Timeout. MS = 60000 Security. Protocol = SASL_SSL SASL. mechanizmus = obyčejný sasl.jaas.config= org. Apache. Kafka. Common. Security. obyčejný. PlainLoginModule Required username = "$ConnectionString" Password = "{a. EVENTHUBS. Vázán. ŘETĚZEC} ";
 
 Příklad:
 
-Bootstrap. Servers = dummynamespace. ServiceBus. Windows. NET: 9093 Request. Timeout. MS = 60000 Security. Protocol = SASL_SSL SASL. mechanismus = obyčejný SASL. jaas. config = org. Apache. Kafka. Common. Security. obyčejný. PlainLoginModule Required uživatelské_jméno = "$ConnectionString" Password = "Endpoint = Sb://dummynamespace.ServiceBus.Windows.NET/; SharedAccessKeyName = DummyAccessKeyName; SharedAccessKey = 5dOntTRytoC24opYThisAsit3is2B + OGY1US/fuL3ly = ";
+Bootstrap. Servers = dummynamespace. ServiceBus. Windows. NET: 9093 Request. Timeout. MS = 60000 Security. Protocol = SASL_SSL SASL. mechanismus = obyčejný sasl.jaas.config= org. Apache. Kafka. Common. Security. obyčejný. PlainLoginModule Required username = "$ConnectionString" Password = "Endpoint = Sb://dummynamespace.ServiceBus.Windows.NET/; SharedAccessKeyName = DummyAccessKeyName; SharedAccessKey = 5dOntTRytoC24opYThisAsit3is2B + OGY1US/fuL3ly = ";
 
-Poznámka: Pokud SASL. jaas. config není ve vašem rozhraní podporovaná konfigurace, najděte konfigurace, které se používají k nastavení uživatelského jména a hesla SASL a místo toho použijte je. Nastavte uživatelské jméno na $ConnectionString a heslo pro připojovací řetězec Event Hubs.
+Poznámka: Pokud sasl.jaas.config ve vašem rozhraní není podporovaná konfigurace, vyhledejte konfigurace používané k nastavení uživatelského jména a hesla SASL a použijte je. Nastavte uživatelské jméno na $ConnectionString a heslo pro připojovací řetězec Event Hubs.
 
 ### <a name="what-is-the-messageevent-size-for-event-hubs"></a>Jaká je velikost zprávy nebo události pro Event Hubs?
 Maximální povolená velikost zprávy pro Event Hubs je 1 MB.
@@ -253,7 +253,7 @@ Capture používá účet úložiště, který zadáte, pokud je povolený v cen
 
 Seznam všech kvót Event Hubs najdete v tématu [kvóty](event-hubs-quotas.md).
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 ### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>Proč nemůžu vytvořit obor názvů po jeho odstranění z jiného předplatného? 
 Když odstraníte obor názvů z předplatného, počkejte 4 hodiny, než ho znovu vytvoříte se stejným názvem v jiném předplatném. V opačném případě se může zobrazit následující chybová zpráva: `Namespace already exists` . 

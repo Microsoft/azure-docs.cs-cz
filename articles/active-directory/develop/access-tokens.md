@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 3e1d000ed316a1a92e6dcdab0f9b7d577fd33d8b
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: ebb751826f0495f378c2df4118b3ad2008fd418f
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772229"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84905013"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Tokeny přístupu Microsoft Identity Platform
 
@@ -71,17 +71,17 @@ Deklarace identity jsou přítomny pouze v případě, že existuje hodnota pro 
 
 ### <a name="header-claims"></a>Deklarace hlaviček
 
-|Deklarovat | Formát | Popis |
+|Deklarovat | Formát | Description |
 |--------|--------|-------------|
 | `typ` | Řetězec – vždycky "JWT" | Označuje, že token je JWT.|
-| `nonce` | String | Jedinečný identifikátor, který slouží k ochraně před útoky na opakované přehrání tokenu. Prostředek může tuto hodnotu zaznamenat k ochraně před přehráním. |
-| `alg` | String | Určuje algoritmus, který se použil k podepsání tokenu, například "RS256". |
-| `kid` | String | Určuje kryptografický otisk pro veřejný klíč, který se používá k podepsání tohoto tokenu. Emitováno v tokenech přístupu v 1.0 i v 2.0. |
-| `x5t` | String | Funguje stejně jako `kid` . `x5t`je starší deklarace identity vygenerována pouze v tokenech přístupu v 1.0 pro účely kompatibility. |
+| `nonce` | Řetězec | Jedinečný identifikátor, který slouží k ochraně před útoky na opakované přehrání tokenu. Prostředek může tuto hodnotu zaznamenat k ochraně před přehráním. |
+| `alg` | Řetězec | Určuje algoritmus, který se použil k podepsání tokenu, například "RS256". |
+| `kid` | Řetězec | Určuje kryptografický otisk pro veřejný klíč, který se používá k podepsání tohoto tokenu. Emitováno v tokenech přístupu v 1.0 i v 2.0. |
+| `x5t` | Řetězec | Funguje stejně jako `kid` . `x5t`je starší deklarace identity vygenerována pouze v tokenech přístupu v 1.0 pro účely kompatibility. |
 
 ### <a name="payload-claims"></a>Deklarace datové části
 
-| Deklarovat | Formát | Popis |
+| Deklarovat | Formát | Description |
 |-----|--------|-------------|
 | `aud` | Řetězec – identifikátor URI ID aplikace | Identifikuje zamýšleného příjemce tokenu. V tokenech ID jsou cílovou skupinou ID aplikace vaší aplikace, které je přiřazeno vaší aplikaci v Azure Portal. Vaše aplikace by měla tuto hodnotu ověřit a zamítnout token, pokud se hodnota neshoduje. |
 | `iss` | Řetězec, identifikátor URI služby STS | Identifikuje službu tokenů zabezpečení (STS), která vytvoří a vrátí token, a tenanta Azure AD, ve kterém byl uživatel ověřený. Pokud je vydaný token tokenem v 2.0 (viz `ver` deklaraci identity), identifikátor URI skončí `/v2.0` . Identifikátor GUID, který označuje, že uživatel je uživatelem uživatele z účet Microsoft je `9188040d-6c67-4c5b-b112-36a304b66dad` . Vaše aplikace by měla použít část s identifikátorem GUID k omezení sady klientů, kteří se mohou k aplikaci přihlásit, pokud jsou k dispozici. |
@@ -96,8 +96,8 @@ Deklarace identity jsou přítomny pouze v případě, že existuje hodnota pro 
 | `appidacr` | "0", "1" nebo "2" | K dispozici pouze v tokenech v 1.0. Označuje způsob ověření klienta. U veřejného klienta je hodnota "0". Pokud se použije ID klienta a tajný klíč klienta, hodnota je 1. Pokud byl klientský certifikát použit k ověření, hodnota je "2". |
 | `azp` | Řetězec, identifikátor GUID | Je k dispozici pouze v tokenech verze 2.0, což je náhrada za `appid` . ID aplikace klienta, který používá token. Aplikace může fungovat samostatně nebo jménem uživatele. ID aplikace obvykle představuje objekt aplikace, ale může také představovat instanční objekt služby ve službě Azure AD. |
 | `azpacr` | "0", "1" nebo "2" | Je k dispozici pouze v tokenech verze 2.0, což je náhrada za `appidacr` . Označuje způsob ověření klienta. U veřejného klienta je hodnota "0". Pokud se použije ID klienta a tajný klíč klienta, hodnota je 1. Pokud byl klientský certifikát použit k ověření, hodnota je "2". |
-| `preferred_username` | String | Primární uživatelské jméno, které představuje uživatele. Může to být e-mailová adresa, telefonní číslo nebo obecné uživatelské jméno bez zadaného formátu. Jeho hodnota je proměnlivá a může se v průběhu času měnit. Protože je proměnlivá, nesmí se tato hodnota použít k rozhodování o autorizaci.  Dá se použít i v pomocných parametrech uživatelského jména. `profile`Aby bylo možné získat tuto deklaraci, je vyžadován rozsah. |
-| `name` | String | Poskytuje uživatelsky čitelné hodnoty, které identifikují předmět tokenu. Hodnota není zaručena jako jedinečná, je proměnlivá a je navržena tak, aby se používala pouze pro účely zobrazení. `profile`Aby bylo možné získat tuto deklaraci, je vyžadován rozsah. |
+| `preferred_username` | Řetězec | Primární uživatelské jméno, které představuje uživatele. Může to být e-mailová adresa, telefonní číslo nebo obecné uživatelské jméno bez zadaného formátu. Jeho hodnota je proměnlivá a může se v průběhu času měnit. Protože je proměnlivá, nesmí se tato hodnota použít k rozhodování o autorizaci.  Dá se použít i v pomocných parametrech uživatelského jména. `profile`Aby bylo možné získat tuto deklaraci, je vyžadován rozsah. |
+| `name` | Řetězec | Poskytuje uživatelsky čitelné hodnoty, které identifikují předmět tokenu. Hodnota není zaručena jako jedinečná, je proměnlivá a je navržena tak, aby se používala pouze pro účely zobrazení. `profile`Aby bylo možné získat tuto deklaraci, je vyžadován rozsah. |
 | `scp` | Řetězec, seznam oborů oddělených mezerami | Sada oborů vystavené vaší aplikací, pro které klientská aplikace požádala o souhlas. Vaše aplikace by měla ověřit, že tyto obory jsou platné, které jsou vystavené vaší aplikací, a učinit rozhodnutí o autorizaci na základě hodnoty těchto oborů. Je zahrnutá jenom pro [tokeny uživatelů](#user-and-application-tokens). |
 | `roles` | Pole řetězců, seznam oprávnění | Sada oprávnění vystavená vaší aplikací, ke které žádající aplikace nebo uživatel udělil oprávnění k volání. Pro [aplikační tokeny](#user-and-application-tokens)se používá v rámci toku přihlašovacích údajů klienta ([v 1.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md), [v 2.0](v2-oauth2-client-creds-grant-flow.md)) místo uživatelských oborů.  Pro [tokeny uživatele](#user-and-application-tokens) se naplní role, ke kterým se uživatel přiřadil v cílové aplikaci. |
 | `wids` | Pole [RoleTemplateID](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#role-template-ids) identifikátorů GUID | Označuje role v rámci tenanta přiřazené tomuto uživateli z oddílu rolí, které jsou k dispozici na [stránce role správce](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#role-template-ids).  Tato deklarace identity je nakonfigurovaná na základě jednotlivých aplikací prostřednictvím `groupMembershipClaims` vlastnosti [manifestu aplikace](reference-app-manifest.md).  Nastaví se na All nebo DirectoryRole se vyžaduje.  Nemusí být k dispozici v tokenech získaných prostřednictvím implicitního toku, protože se týkají délky tokenu. |
@@ -107,7 +107,7 @@ Deklarace identity jsou přítomny pouze v případě, že existuje hodnota pro 
 | `sub` | Řetězec, identifikátor GUID | Objekt zabezpečení, o kterém token vyhodnotí informace, jako je například uživatel aplikace Tato hodnota je neměnná a nelze ji znovu přiřadit ani použít znovu. Dá se použít k bezpečnému provádění kontrol autorizace, například když se token používá pro přístup k prostředku a dá se použít jako klíč v databázových tabulkách. Vzhledem k tomu, že předmět je vždy přítomen v tokenech, které služba Azure AD vystavuje, doporučujeme použít tuto hodnotu v systému autorizace pro obecné účely. Subjekt je však párový identifikátor, který je jedinečný pro konkrétní ID aplikace. Proto pokud se jeden uživatel přihlásí ke dvěma různým aplikacím pomocí dvou různých ID klientů, obdrží tyto aplikace dvě různé hodnoty pro deklaraci předmětu. To může nebo nemusí být žádoucí v závislosti na vaší architektuře a požadavcích na ochranu osobních údajů. Viz také `oid` deklarace identity (která zůstává v aplikacích v rámci tenanta stejná). |
 | `oid` | Řetězec, identifikátor GUID | Neproměnlivý identifikátor pro objekt na platformě Microsoft identity, v tomto případě uživatelský účet. Dá se taky použít k bezpečnému provádění kontrol autorizace a jako klíče v databázových tabulkách. Toto ID jednoznačně identifikuje uživatele napříč aplikacemi – dvě různé aplikace přihlášené ke stejnému uživateli získají stejnou hodnotu v `oid` deklaraci identity. Proto `oid` lze použít při vytváření dotazů do Microsoft Online služby, jako je například Microsoft Graph. Microsoft Graph bude toto ID vracet jako `id` vlastnost pro daný [uživatelský účet](/graph/api/resources/user). Vzhledem k tomu `oid` , že umožňuje více aplikacím korelovat uživatele, `profile` je pro příjem této deklarace vyžadován rozsah. Všimněte si, že pokud jeden uživatel existuje ve více klientech, bude uživatel v každém tenantovi obsahovat jiné ID objektu – považují se za jiné účty, i když se uživatel do každého účtu přihlašuje pomocí stejných přihlašovacích údajů. |
 | `tid` | Řetězec, identifikátor GUID | Představuje tenanta Azure AD, ze kterého uživatel pochází. V případě pracovních a školních účtů je identifikátor GUID neměnné ID klienta organizace, do které uživatel patří. U osobních účtů je tato hodnota `9188040d-6c67-4c5b-b112-36a304b66dad` . `profile`Aby bylo možné získat tuto deklaraci, je vyžadován rozsah. |
-| `unique_name` | String | K dispozici pouze v tokenech v 1.0. Poskytuje lidsky čitelnou hodnotu, která identifikuje subjekt tokenu. Tato hodnota není zaručena jako jedinečná v rámci tenanta a měla by být použita pouze pro účely zobrazení. |
+| `unique_name` | Řetězec | K dispozici pouze v tokenech v 1.0. Poskytuje lidsky čitelnou hodnotu, která identifikuje subjekt tokenu. Tato hodnota není zaručena jako jedinečná v rámci tenanta a měla by být použita pouze pro účely zobrazení. |
 | `uti` | Neprůhledný řetězec | Interní deklarace identity, kterou Azure používá k opětovnému ověření tokenů. Prostředky by tuto deklaraci neměli používat. |
 | `rh` | Neprůhledný řetězec | Interní deklarace identity, kterou Azure používá k opětovnému ověření tokenů. Prostředky by neměly tuto deklaraci identity používat. |
 | `ver` | Řetězec, buď `1.0` nebo`2.0` | Určuje verzi přístupového tokenu. |
@@ -139,23 +139,23 @@ Můžete použít `BulkCreateGroups.ps1` ve složce [Scripts pro vytváření ap
 
 Pokud je to možné, budou v tokenech v 1.0 zahrnuté tyto deklarace, ale ve výchozím nastavení nejsou zahrnuté v tokenech verze 2.0. Pokud používáte v 2.0 a potřebujete jednu z těchto deklarací, požádejte o ně použití [volitelných deklarací identity](active-directory-optional-claims.md).
 
-| Deklarovat | Formát | Popis |
+| Deklarovat | Formát | Description |
 |-----|--------|-------------|
-| `ipaddr`| String | IP adresa, ze které uživatel ověřil. |
+| `ipaddr`| Řetězec | IP adresa, ze které uživatel ověřil. |
 | `onprem_sid`| Řetězec ve [formátu SID](https://docs.microsoft.com/windows/desktop/SecAuthZ/sid-components) | V případech, kdy má uživatel místní ověřování, tato deklarace identity poskytuje identifikátor SID. Můžete použít `onprem_sid` pro autorizaci ve starších verzích aplikací.|
 | `pwd_exp`| int, časové razítko systému UNIX | Určuje, kdy vyprší platnost hesla uživatele. |
-| `pwd_url`| String | Adresa URL, kam lze odeslat uživatele pro resetování hesla. |
+| `pwd_url`| Řetězec | Adresa URL, kam lze odeslat uživatele pro resetování hesla. |
 | `in_corp`| Boolean | Signalizuje, že se klient přihlašuje z podnikové sítě. Pokud nejsou, deklarace identity není zahrnutá. |
-| `nickname`| String | Další název uživatele, který je oddělený od prvního nebo posledního jména.|
-| `family_name` | String | Poskytuje příjmení, příjmení nebo rodinné jméno uživatele, jak je definováno v objektu User. |
-| `given_name` | String | Poskytuje první nebo křestní jméno uživatele, jak je nastaveno u objektu User. |
-| `upn` | String | Uživatelské jméno uživatele Může se jednat o telefonní číslo, e-mailovou adresu nebo neformátovaný řetězec. By se měla použít jenom pro účely zobrazení a poskytování pomocných parametrů uživatelského jména ve scénářích pro opakované ověření. |
+| `nickname`| Řetězec | Další název uživatele, který je oddělený od prvního nebo posledního jména.|
+| `family_name` | Řetězec | Poskytuje příjmení, příjmení nebo rodinné jméno uživatele, jak je definováno v objektu User. |
+| `given_name` | Řetězec | Poskytuje první nebo křestní jméno uživatele, jak je nastaveno u objektu User. |
+| `upn` | Řetězec | Uživatelské jméno uživatele Může se jednat o telefonní číslo, e-mailovou adresu nebo neformátovaný řetězec. By se měla použít jenom pro účely zobrazení a poskytování pomocných parametrů uživatelského jména ve scénářích pro opakované ověření. |
 
 #### <a name="the-amr-claim"></a>`amr`Deklarace identity
 
 Identity Microsoftu se můžou ověřovat různými způsoby, které můžou být relevantní pro vaši aplikaci. `amr`Deklarace identity je pole, které může obsahovat více položek, například `["mfa", "rsa", "pwd"]` pro ověřování, které používá heslo i ověřovací aplikaci.
 
-| Hodnota | Popis |
+| Hodnota | Description |
 |-----|-------------|
 | `pwd` | Ověřování hesla: buď heslo Microsoftu, nebo tajný klíč klienta aplikace. |
 | `rsa` | Ověřování bylo založeno na ověření klíče RSA, například u [aplikace Microsoft Authenticator](https://aka.ms/AA2kvvu). To zahrnuje případ, kdy ověřování proběhlo pomocí tokenu JWT podepsaného svým držitelem s certifikátem x509 vlastněné služby. |
@@ -230,11 +230,13 @@ Obchodní logika vaší aplikace bude diktovat tento krok, některé běžné au
 
 ## <a name="user-and-application-tokens"></a>Tokeny uživatelů a aplikací
 
-Vaše aplikace může přijímat tokeny jménem uživatele (běžný tok) nebo přímo z aplikace (prostřednictvím toku přihlašovacích údajů klienta ([v 1.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md), [v 2.0](v2-oauth2-client-creds-grant-flow.md)). Tyto tokeny pouze pro aplikace označují, že toto volání přichází z aplikace a nemá uživatele, který ho zavedl. Tyto tokeny jsou zpracovávány hlavně stejně, s několika rozdíly:
+Vaše aplikace může obdržet tokeny pro uživatele (obvykle se jedná o tento tok, který je popsán), nebo přímo z aplikace (prostřednictvím [toku přihlašovacích údajů klienta](v1-oauth2-client-creds-grant-flow.md)). Tyto tokeny pouze pro aplikace označují, že toto volání přichází z aplikace a nemá uživatele, který ho zavedl. Tyto tokeny jsou zpracovávány hlavně stejně:
 
-* Tokeny jenom pro aplikace nebudou mít `scp` deklaraci identity a můžou se místo toho jednat o `roles` deklaraci. V takovém případě se budou zaznamenávat oprávnění aplikace (na rozdíl od delegovaných oprávnění). Další informace o oprávněních delegovaných a aplikací najdete v tématu oprávnění a souhlas ([v 1.0](../azuread-dev/v1-permissions-consent.md), [v 2.0](v2-permissions-and-consent.md)).
-* Bude chybět mnoho deklarací specifických pro člověka, například `name` nebo `upn` .
-* `sub` `oid` Deklarace identity a budou stejné.
+* Pomocí `roles` můžete zobrazit oprávnění udělená předmětu tokenu (instanční objekt, a ne uživateli v tomto případě).
+* Použijte `oid` nebo `sub` k ověření, zda je volající objekt služby očekáván.
+
+Pokud vaše aplikace potřebuje rozlišovat přístupové tokeny jenom pro aplikace a přístupové tokeny pro uživatele, použijte `idtyp` [volitelnou deklaraci identity](active-directory-optional-claims.md).  Když `idtyp` do pole přidáte deklaraci identity `accessToken` a zkontrolujete hodnotu `app` , můžete zjistit přístupové tokeny jenom pro aplikaci.  Tokeny ID a přístupové tokeny pro uživatele nebudou obsahovat `idtyp` deklaraci identity.
+
 
 ## <a name="token-revocation"></a>Odvolání tokenu
 

@@ -11,35 +11,31 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2019
+ms.date: 06/11/2020
 ms.author: aschhab
-ms.openlocfilehash: 7234e33c04e742c77630f8d87481c7831fb00bf2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc5f81d55f3a9dd337cc56305cf04979e6f00d92
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "70013249"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738443"
 ---
 # <a name="service-bus-authentication-and-authorization"></a>Ověřování a autorizace Service Bus
-
-Aplikace získávají přístup k Azure Service Bus prostředkům pomocí ověřování pomocí tokenu sdíleného přístupového podpisu (SAS). Při použití SAS aplikace prezentují token pro Service Bus, který byl podepsaný symetrickým klíčem, který je známý jak pro vystavitele tokenu, tak Service Bus (tedy "Shared") a tento klíč je přímo přidružený k pravidlu, které uděluje konkrétní přístupová práva, jako je například oprávnění k přijímání a naslouchat nebo posílání zpráv. Pravidla SAS jsou nakonfigurovaná buď v oboru názvů, nebo přímo na entitách, jako je například fronta nebo téma, což umožňuje jemně odstupňované řízení přístupu.
-
-Tokeny SAS mohou být buď generovány přímo klientem Service Bus, nebo mohou být vygenerovány pomocí nějakého koncového bodu vydávajícího zprostředkujícího tokenu, se kterým klient komunikuje. Systém může například vyžadovat, aby klient zavolal koncový bod webové služby Active Directory Authorization Protected, aby prokáže jeho identitu a přístupová práva k systému, a webová služba pak vrátí příslušný token Service Bus. Tento token SAS se dá snadno vygenerovat pomocí poskytovatele Service Busho tokenu, který je zahrnutý v sadě Azure SDK. 
-
-> [!IMPORTANT]
-> Pokud používáte Azure Active Directory Access Control (označované také jako Access Control Service nebo ACS) se Service Bus, pamatujte, že podpora této metody je teď omezená a že byste měli svoji aplikaci migrovat na použití SAS. Další informace najdete v [tomto blogovém příspěvku](https://blogs.msdn.microsoft.com/servicebus/2017/06/01/upcoming-changes-to-acs-enabled-namespaces/) a v [tomto článku](service-bus-migrate-acs-sas.md).
+Existují dva způsoby, jak ověřit a autorizovat přístup k prostředkům Azure Service Bus: Azure Activity Directory (Azure AD) a signatury sdíleného přístupu (SAS). Tento článek obsahuje podrobné informace o použití těchto dvou typů mechanismů zabezpečení. 
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
-Integrace služby Azure Active Directory (Azure AD) pro prostředky Service Bus poskytuje řízení přístupu na základě role (RBAC) pro jemně odstupňovanou kontrolu nad přístupem klienta k prostředkům. Řízení přístupu na základě role (RBAC) můžete použít k udělení oprávnění objektu zabezpečení, který může být uživatel, skupina nebo instanční objekt. Služba Azure AD ověřuje objekt zabezpečení, aby vrátil token OAuth 2,0. Token se dá použít k autorizaci žádosti o přístup k prostředku Service Bus (frontě, tématu atd.).
+Integrace Azure AD pro prostředky Service Bus poskytuje řízení přístupu na základě role (RBAC) pro jemně odstupňovanou kontrolu nad přístupem klienta k prostředkům. Řízení přístupu na základě role (RBAC) můžete použít k udělení oprávnění objektu zabezpečení, který může být uživatel, skupina nebo instanční objekt služby. Služba Azure AD ověřuje objekt zabezpečení, aby vrátil token OAuth 2,0. Token se dá použít k autorizaci žádosti o přístup k prostředku Service Bus (frontě, tématu atd.).
 
 Další informace o ověřování ve službě Azure AD najdete v následujících článcích:
 
 - [Ověřování pomocí spravovaných identit](service-bus-managed-service-identity.md)
 - [Ověření z aplikace](authenticate-application.md)
 
+> [!NOTE]
+> [Service Bus REST API](/rest/api/servicebus/) podporuje ověřování OAuth pomocí Azure AD.
+
 > [!IMPORTANT]
 > Ověřování uživatelů nebo aplikací pomocí tokenu OAuth 2,0 vráceného službou Azure AD poskytuje vynikající zabezpečení a usnadňuje použití přes sdílené přístupové podpisy (SAS). V případě Azure AD není nutné ukládat tokeny do kódu a ohrozit potenciální ohrožení zabezpečení. Pokud je to možné, doporučujeme používat Azure AD s aplikacemi Azure Service Bus. 
-
 
 ## <a name="shared-access-signature"></a>Sdílený přístupový podpis
 [Ověřování SAS](service-bus-sas.md) umožňuje udělit uživateli přístup k prostředkům Service Bus s konkrétními právy. Ověřování SAS v Service Bus zahrnuje konfiguraci kryptografického klíče s přidruženými právy pro prostředek Service Bus. Klienti pak mohou získat přístup k tomuto prostředku předložením tokenu SAS, který se skládá z přistupového identifikátoru URI prostředku a jeho vypršení platnosti podepsaného pomocí konfigurovaného klíče.
@@ -59,10 +55,15 @@ Pro přístup k entitě vyžaduje klient token SAS generovaný pomocí konkrétn
 
 Podpora ověřování SAS pro Service Bus je obsažená v sadě Azure .NET SDK verze 2,0 a novější. SAS zahrnuje podporu pro [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule). Všechna rozhraní API, která přijímají připojovací řetězec jako parametr, zahrnují podporu připojovacích řetězců SAS.
 
+> [!IMPORTANT]
+> Pokud používáte Azure Active Directory Access Control (označované také jako Access Control Service nebo ACS) se Service Bus, pamatujte, že podpora této metody je nyní omezená a že byste měli [aplikaci migrovat na používání SAS](service-bus-migrate-acs-sas.md) nebo ověřování pomocí protokolu OAuth 2,0 s Azure AD (doporučeno). Další informace o vyřazení služby ACS najdete v [tomto blogovém příspěvku](https://blogs.msdn.microsoft.com/servicebus/2017/06/01/upcoming-changes-to-acs-enabled-namespaces/).
+
 ## <a name="next-steps"></a>Další kroky
+Další informace o ověřování ve službě Azure AD najdete v následujících článcích:
 
-- Další podrobnosti o SAS najdete dál v tématu čtení [Service Bus ověřování pomocí podpisů sdíleného přístupu](service-bus-sas.md) .
-- Jak [migrovat z Azure Active Directory Access Control (ACS) na autorizaci sdíleného přístupového podpisu](service-bus-migrate-acs-sas.md).
-- [Změny v oborech názvů s povoleným ACS](https://blogs.msdn.microsoft.com/servicebus/2017/06/01/upcoming-changes-to-acs-enabled-namespaces/).
-- Příslušné informace o Azure Relay ověřování a autorizaci najdete v tématu [ověřování Azure Relay a autorizaci](../service-bus-relay/relay-authentication-and-authorization.md). 
+- [Ověřování pomocí spravovaných identit](service-bus-managed-service-identity.md)
+- [Ověřování z aplikace](authenticate-application.md)
 
+Další informace o ověřování pomocí SAS najdete v následujících článcích:
+
+- [Ověřování pomocí SAS](service-bus-sas.md)

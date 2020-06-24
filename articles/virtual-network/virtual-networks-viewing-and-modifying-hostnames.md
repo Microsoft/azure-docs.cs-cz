@@ -8,17 +8,17 @@ manager: dcscontentpm
 ms.assetid: c668cd8e-4e43-4d05-acc3-db64fa78d828
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 09c911838d34a083de8450145ce849fc966eb0e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3f8c35604af9780fb4299bbd7bfd87c3d93ac537
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81459147"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84702835"
 ---
 # <a name="viewing-and-modifying-hostnames"></a>Zobrazení a úpravy názvů hostitelů
 Chcete-li, aby na instance role odkazoval název hostitele, je nutné nastavit hodnotu pro název hostitele v konfiguračním souboru služby pro každou roli. To uděláte tak, že přidáte požadovaný název hostitele do atributu **vmName** elementu **role** . Hodnota atributu **vmName** se používá jako základ pro název hostitele každé instance role. Například pokud **vmName** je *webrole* a existují tři instance této role, názvy hostitelů instancí budou *webrole0*, *webrole1*a *webrole2*. Nemusíte zadávat název hostitele pro virtuální počítače v konfiguračním souboru, protože název hostitele pro virtuální počítač je vyplněný na základě názvu virtuálního počítače. Další informace o konfiguraci služby Microsoft Azure najdete v tématu [schéma konfigurace služby Azure (soubor. cscfg)](https://msdn.microsoft.com/library/azure/ee758710.aspx) .
@@ -41,7 +41,7 @@ Z klienta REST postupujte podle těchto pokynů:
 
 1. Ujistěte se, že máte klientský certifikát pro připojení k Azure Portal. Pokud chcete získat certifikát klienta, postupujte podle kroků uvedených v tématu [Postupy: stažení a import nastavení publikování a informací o předplatném](https://msdn.microsoft.com/library/dn385850.aspx). 
 2. Nastavte položku záhlaví s názvem x-MS-Version s hodnotou 2013-11-01.
-3. Odeslat žádost v následujícím formátu:\/https:/Management.Core.Windows.NET/\<vytvořilo-ID\>/Services/hostedservices/\<Service-Name\>? embed-detail = true
+3. Odeslat žádost v následujícím formátu: https: \/ /Management.Core.Windows.NET/ \<subscrition-id\> /Services/hostedservices/ \<service-name\> ? embed-detail = true
 4. Vyhledejte element **hostname** pro každý element **RoleInstance** .
 
 > [!WARNING]

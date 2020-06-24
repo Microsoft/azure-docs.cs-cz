@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: tracking-python
-ms.openlocfilehash: ebc30f995c44685dfd58e627706e4ca60e8ecfd5
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: c4969628bb80d63cafc9537ec511ac218ff87ca7
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84556821"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738290"
 ---
 # <a name="what-is-azure-machine-learning"></a>Co je Azure Machine Learning?
 
@@ -103,7 +103,7 @@ Pokud chcete používat skripty pro automatizaci pracovního postupu machine lea
 
 Pokud chcete začít používat Azure Machine Learning, přečtěte si [Další kroky](#next-steps).
 
-## <a name="integration-with-other-services"></a>Integrace s jinými službami
+## <a name="integration-with-other-services"></a>Integrace s dalšími službami
 
 Azure Machine Learning funguje s ostatními službami na platformě Azure a integruje se s open source nástroji, jako je třeba Git a MLFlow.
 
@@ -124,16 +124,11 @@ Váš Azure Storage účet, výpočetní cíle a další prostředky se dají v 
 ## <a name="basic--enterprise-editions"></a><a name="sku"></a>Edice Basic & Enterprise
 
 Azure Machine Learning nabízí dvě edice, které jsou přizpůsobené potřebám strojového učení:
-+ Basic (všeobecně dostupná)
-+ Enterprise (Preview)
++ **Basic**: Skvělé pro vývoj open source v cloudovém měřítku s použitím prostředí pro první použití kódu.
 
-Tyto edice určují, které nástroje Machine Learning jsou dostupné vývojářům a odborníkům přes data z pracovního prostoru.   
++ **Enterprise**: vše z úrovně Basic plus Web Interface (Studio) + Secure, komplexní správa životního cyklu ml pro všechny úrovně dovedností.
 
-Základní pracovní prostory umožňují dál používat Azure Machine Learning a platit jenom za prostředky Azure spotřebované během procesu strojového učení. Pracovní prostory Enterprise Edition se budou účtovat jenom za jejich spotřebu v Azure, zatímco edice je ve verzi Preview. Přečtěte si další informace o tom, co je k dispozici na [stránce přehled Azure Machine Learning edition & ceny](https://azure.microsoft.com/pricing/details/machine-learning/). 
-
-Edici přiřadíte pokaždé, když vytvoříte pracovní prostor. A dříve existující pracovní prostory se po vás převedly na edici Basic. Edice Basic zahrnuje všechny funkce, které už jsou všeobecně dostupné od října 2019. Jakékoli experimenty v těchto pracovních prostorech vytvořených pomocí funkcí Enterprise Edition budou dál k dispozici jen pro čtení, dokud neprovedete upgrade na Enterprise. Přečtěte si, jak [upgradovat základní pracovní prostor na edici Enterprise](how-to-manage-workspace.md#upgrade). 
-
-Zákazníci se za tuto dobu účtují za náklady, které se týkají výpočtů a dalších prostředků Azure.
+Další informace o těchto edicích a možnostech, které se odemknou, najdete v [článku "Azure Machine Learning edice"](concept-editions.md).
 
 ## <a name="next-steps"></a>Další kroky
 

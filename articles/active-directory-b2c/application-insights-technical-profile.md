@@ -75,9 +75,9 @@ Element CryptographicKeys se nepoužívá.
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| InstrumentationKey| Ano | Application Insights [klíč instrumentace](../azure-monitor/app/create-new-resource.md#copy-the-instrumentation-key), který se použije pro protokolování událostí. | 
-| DeveloperMode| Ne | Logická hodnota, která označuje, zda je povolen režim pro vývojáře. Možné hodnoty: `true` nebo `false` (výchozí). Tato metadata řídí, jak jsou události ukládány do vyrovnávací paměti. Když ve vývojovém prostředí s minimálním objemem událostí povolíte vývojářský režim, budou se události odesílat okamžitě Application Insights.|  
-|DisableTelemetry |Ne |Logická hodnota, která označuje, zda má být povolena telemetrie. Možné hodnoty: `true` nebo `false` (výchozí).| 
+| InstrumentationKey| Yes | Application Insights [klíč instrumentace](../azure-monitor/app/create-new-resource.md#copy-the-instrumentation-key), který se použije pro protokolování událostí. | 
+| DeveloperMode| No | Logická hodnota, která označuje, zda je povolen režim pro vývojáře. Možné hodnoty: `true` nebo `false` (výchozí). Tato metadata řídí, jak jsou události ukládány do vyrovnávací paměti. Když ve vývojovém prostředí s minimálním objemem událostí povolíte vývojářský režim, budou se události odesílat okamžitě Application Insights.|  
+|DisableTelemetry |No |Logická hodnota, která označuje, zda má být povolena telemetrie. Možné hodnoty: `true` nebo `false` (výchozí).| 
 
 
 ## <a name="next-steps"></a>Další kroky

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: 3141bb3652cfa44c42125fe95f038582108a963f
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: 5ea5a94c73adda1328b97c3e985c4b6ac614d1b9
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84637134"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255020"
 ---
 # <a name="server-parameters-in-azure-database-for-mariadb"></a>Parametry serveru v Azure Database for MariaDB
 
@@ -84,8 +84,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MariaDB](https://ma
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|**Maximální hodnota (v bajtech)**|
 |---|---|---|---|---|
-|Basic|1|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
-|Basic|2|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
+|Basic|1|Nekonfigurovatelné na úrovni Basic|–|–|
+|Basic|2|Nekonfigurovatelné na úrovni Basic|–|–|
 |Pro obecné účely|2|262144|128|268435455|
 |Pro obecné účely|4|262144|128|536870912|
 |Pro obecné účely|8|262144|128|1073741824|
@@ -124,14 +124,17 @@ Když připojení překročí limit, může se zobrazit následující chyba:
 
 Při vytváření nových připojení klientů k MariaDB se přebírají čas a jakmile se naváže, tato připojení zabírají databázové prostředky, i když nepracuje. Většina aplikací vyžaduje mnoho krátkodobých připojení, což je v této situaci celé. Výsledkem je méně prostředků dostupných pro vaše skutečné zatížení, což vede ke snížení výkonu. Připojení Pooler, které zkracuje nečinné připojení a znovu používá existující připojení, jim pomůže vyhnout se. Další informace o nastavení ProxySQL najdete v našem [blogovém příspěvku](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042).
 
+>[!Note]
+>ProxySQL je open source nástroj pro komunitu. Společnost Microsoft je podporuje na základě optimálního úsilí. Pokud chcete získat technickou podporu s použitím autoritativních pokynů, můžete vyhodnotit a kontaktovat [podporu ProxySQL produktu](https://proxysql.com/services/support/).
+
 ### <a name="max_heap_table_size"></a>max_heap_table_size
 
 Další informace o tomto parametru najdete v [dokumentaci k MariaDB](https://mariadb.com/kb/en/server-system-variables/#max_heap_table_size) .
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|**Maximální hodnota (v bajtech)**|
 |---|---|---|---|---|
-|Basic|1|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
-|Basic|2|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
+|Basic|1|Nekonfigurovatelné na úrovni Basic|–|–|
+|Basic|2|Nekonfigurovatelné na úrovni Basic|–|–|
 |Pro obecné účely|2|16777216|16384|268435455|
 |Pro obecné účely|4|16777216|16384|536870912|
 |Pro obecné účely|8|16777216|16384|1073741824|
@@ -152,8 +155,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MariaDB](https://ma
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|* * Maximální hodnota * *|
 |---|---|---|---|---|
-|Basic|1|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
-|Basic|2|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
+|Basic|1|Nekonfigurovatelné na úrovni Basic|–|–|
+|Basic|2|Nekonfigurovatelné na úrovni Basic|–|–|
 |Pro obecné účely|2|0|0|16777216|
 |Pro obecné účely|4|0|0|33554432|
 |Pro obecné účely|8|0|0|67108864|
@@ -172,8 +175,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MariaDB](https://ma
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|**Maximální hodnota (v bajtech)**|
 |---|---|---|---|---|
-|Basic|1|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
-|Basic|2|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
+|Basic|1|Nekonfigurovatelné na úrovni Basic|–|–|
+|Basic|2|Nekonfigurovatelné na úrovni Basic|–|–|
 |Pro obecné účely|2|524288|32768|4194304|
 |Pro obecné účely|4|524288|32768|8388608|
 |Pro obecné účely|8|524288|32768|16777216|
@@ -192,8 +195,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MariaDB](https://ma
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|**Maximální hodnota (v bajtech)**|
 |---|---|---|---|---|
-|Basic|1|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
-|Basic|2|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
+|Basic|1|Nekonfigurovatelné na úrovni Basic|–|–|
+|Basic|2|Nekonfigurovatelné na úrovni Basic|–|–|
 |Pro obecné účely|2|16777216|1024|67108864|
 |Pro obecné účely|4|16777216|1024|134217728|
 |Pro obecné účely|8|16777216|1024|268435456|
