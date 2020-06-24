@@ -4,15 +4,15 @@ description: V tomto článku se dozvíte, jak vytvořit hostitele Azure bastion
 services: bastion
 author: charwen
 ms.service: bastion
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 03/11/2020
 ms.author: charwen
-ms.openlocfilehash: a420a3253040fff8b767a81f298ede283c1d214b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3c2780c8c99fd4568a7213b625ce785d3a99129c
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80619252"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743979"
 ---
 # <a name="quickstart-connect-to-a-virtual-machine-using-a-private-ip-address-and-azure-bastion"></a>Rychlý Start: připojení k virtuálnímu počítači pomocí privátní IP adresy a Azure bastionu
 
@@ -27,7 +27,7 @@ Tento článek rychlý Start ukazuje, jak se připojit k virtuálnímu počíta�
 
 |**Název** | **Hodnota** |
 | --- | --- |
-| Název |  VNet1Bastion |
+| Name |  VNet1Bastion |
 | Oblast | eastus |
 | Virtuální síť |  VNet1 |
 | + Název podsítě | AzureBastionSubnet |
@@ -37,7 +37,7 @@ Tento článek rychlý Start ukazuje, jak se připojit k virtuálnímu počíta�
 | SKU veřejné IP adresy |  Standard  |
 | Přiřazení  | Static |
 
-## <a name="create-a-bastion-host"></a><a name="createvmset"></a>Vytvoření hostitele typu bašta
+## <a name="create-a-bastion-host"></a><a name="createvmset"></a>Vytvoření hostitele bastionu
 
 Když vytvoříte hostitele bastionu na portálu pomocí existujícího virtuálního počítače, bude automaticky standardně odpovídat různým nastavením, aby odpovídal vašemu virtuálnímu počítači nebo virtuální síti.
 

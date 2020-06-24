@@ -3,7 +3,7 @@ title: Co je fond spravovaných instancí Azure SQL?
 titleSuffix: Azure SQL Managed Instance
 description: Přečtěte si o fondech spravovaných instancí Azure SQL (Preview), což je funkce, která poskytuje pohodlný a cenově výhodný způsob migrace menších SQL Server databází do cloudu ve velkém měřítku a správě více spravovaných instancí.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: b5d992d9067e1a232a0a78cf499bdebc34ee8563
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 54eb9b1b28de562395b4926c599bc5cb157fc63b
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219185"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708837"
 ---
 # <a name="what-is-an-azure-sql-managed-instance-pool-preview"></a>Co je fond spravovaných instancí Azure SQL (Preview)?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

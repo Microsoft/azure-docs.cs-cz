@@ -4,16 +4,16 @@ description: Informace o tom, jak pomocí Azure PowerShellu směrovat webový pr
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/31/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 8ca5c411db5644182f7e87f1ee1c63f3cbc4d2e9
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: fccc7281ed2978ccc63cd7b53a82c8a00b57d3c2
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73200404"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84805998"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-azure-powershell"></a>Směrování webového provozu podle adresy URL pomocí Azure PowerShellu
 
@@ -32,7 +32,7 @@ V tomto článku získáte informace o těchto tématech:
 
 Pokud budete chtít, můžete tento postup dokončit pomocí [Azure CLI](tutorial-url-route-cli.md) nebo [Azure Portal](create-url-route-portal.md).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -414,7 +414,7 @@ for ($i=1; $i -le 3; $i++)
 
 ## <a name="test-the-application-gateway"></a>Testování brány Application Gateway
 
-K získání veřejné IP adresy služby Application Gateway použijte [příkaz Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) . Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče. Například, `http://52.168.55.24`, `http://52.168.55.24:8080/images/test.htm`nebo. `http://52.168.55.24:8080/video/test.htm`
+K získání veřejné IP adresy služby Application Gateway použijte [příkaz Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) . Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče. Například, `http://52.168.55.24` , `http://52.168.55.24:8080/images/test.htm` nebo `http://52.168.55.24:8080/video/test.htm` .
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
@@ -422,11 +422,11 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ![Testování základní adresy URL v aplikační bráně](./media/tutorial-url-route-powershell/application-gateway-iistest.png)
 
-Změňte adresu URL na http://&lt;IP-address&gt;: 8080/images/test.htm, nahraďte svou IP &lt;adresu IP-address&gt;a měli byste vidět něco jako v následujícím příkladu:
+Změňte adresu URL na http:// &lt; IP-address &gt; : 8080/images/test.htm, nahraďte vaši IP adresu &lt; IP-address &gt; a měli byste vidět něco jako v následujícím příkladu:
 
 ![Testování adresy URL obrázků v aplikační bráně](./media/tutorial-url-route-powershell/application-gateway-iistest-images.png)
 
-Změňte adresu URL na http://&lt;IP-address&gt;: 8080/video/test.htm, nahraďte svou IP &lt;adresu IP-address&gt;a měli byste vidět něco jako v následujícím příkladu:
+Změňte adresu URL na http:// &lt; IP-address &gt; : 8080/video/test.htm, nahraďte IP adresu IP &lt; -Address &gt; a měli byste vidět něco jako v následujícím příkladu:
 
 ![Testování adresy URL videa v aplikační bráně](./media/tutorial-url-route-powershell/application-gateway-iistest-video.png)
 

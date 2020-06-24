@@ -9,87 +9,87 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 0672b9769feae65c73a6f752a268968a7bad9e4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0498823e1b730db6425d255b6de4b826dd05a6a4
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79502981"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84749487"
 ---
-# <a name="pca-based-anomaly-detection"></a>Detekce anomálií na základě PCA
+# <a name="pca-based-anomaly-detection-module"></a>Modul detekce anomálií založený na DPS
 
-Tento článek popisuje, jak použít modul pro **detekci anomálií založený na DPS** v Návrháři Azure Machine Learning (Preview) k vytvoření modelu detekce anomálií založeného na analýze základní součásti (DPS).
+Tento článek popisuje, jak použít modul pro detekci anomálií založený na DPS v Návrháři Azure Machine Learning (Preview) k vytvoření modelu detekce anomálií založeného na analýze základní součásti (DPS).
 
 Tento modul vám pomůže sestavit model ve scénářích, kde je snadné získat školicí data z jedné třídy, jako jsou například platné transakce, ale obtížné získat dostatečné vzorky cílových anomálií. 
 
-Například pro detekci podvodných transakcí velmi často nemáte dostatek příkladů podvodů ke školení, ale mají mnoho příkladů dobrých transakcí. Modul pro **detekci anomálií založený na** přístupnosti vyřeší problémy analýzou dostupných funkcí a určí, co představuje "normální" třídu, a použije metriky vzdálenosti k identifikaci případů, které představují anomálie. To vám umožní vytvořit model s použitím stávajících nevyvážených dat.
+Například pro detekci podvodných transakcí často nemusíte mít k dispozici dostatek příkladů podvodů ke školení. Je ale možné, že máte spoustu příkladů dobrých transakcí. Modul pro detekci anomálií založený na přístupnosti vyřeší problém tak, že analyzuje dostupné funkce a určí, co představuje "normální" třídu. Modul pak použije metriky vzdálenosti k identifikaci případů, které reprezentují anomálie. Tento přístup umožňuje vytvořit model pomocí stávajících nevyvážených dat.
 
 ## <a name="more-about-principal-component-analysis"></a>Další informace o analýze základních komponent
 
-*Základní analýza komponenty*, která je často zkrácená na DPS, je vytvořená technika ve strojovém učení. DPS se často používá v analýze průzkumného data, protože odhalí vnitřní strukturu dat a vysvětluje odchylku v datech.
+DPS je vytvořená technika ve strojovém učení. Často se používá při analýze dat pro průzkumné účely, protože odhalí vnitřní strukturu dat a vysvětluje odchylku v datech.
 
 Funkce DPS funguje při analýze dat, která obsahují více proměnných. Vyhledá korelaci mezi proměnnými a určí kombinaci hodnot, které nejlépe zachytí rozdíly ve výsledcích. Tyto kombinované hodnoty funkcí slouží k vytvoření kompaktnějšího prostoru funkcí označovaného jako *hlavní komponenty*.
 
-Pro detekci anomálií se analyzují jednotlivé nové vstupy a algoritmus detekce anomálií vypočítá svou projekci na eigenvectors společně s normalizovanou chybou rekonstrukce. Normalizovaná chyba se používá jako skóre anomálií. Čím vyšší je chyba, tím více neobvyklé instance je.
+Pro detekci anomálií se analyzují všechny nové vstupy. Algoritmus detekce anomálií počítá svou projekci na eigenvectors společně s normalizovanou chybou rekonstrukce. Normalizovaná chyba se používá jako skóre anomálií. Čím vyšší je chyba, tím více neobvyklé instance je.
 
 Další informace o tom, jak funguje DPS a o implementaci pro detekci anomálií, najdete v těchto dokladech:
 
-- [Náhodný algoritmus pro analýzu hlavní komponenty](https://arxiv.org/abs/0809.2274). Rokhlin, Szlan a Tygert
+- [Náhodný algoritmus pro analýzu hlavních komponent](https://arxiv.org/abs/0809.2274), od Rokhlin, Szlan a Tygert
 
-- [Hledání struktury s náhodností: pravděpodobnostní algoritmy pro vytváření přibližných rozkladů matice](http://users.cms.caltech.edu/~jtropp/papers/HMT11-Finding-Structure-SIREV.pdf) (stahování PDF). Halko, Martinsson a Tropp.
+- [Hledání struktury s náhodností: pravděpodobnostní algoritmy pro vytváření přibližných dekompozicí matice](http://users.cms.caltech.edu/~jtropp/papers/HMT11-Finding-Structure-SIREV.pdf) (stažení PDF), podle Halko, Martinsson a Tropp
 
-## <a name="how-to-configure-pca-anomaly-detection"></a>Jak nakonfigurovat detekci anomálií DPS
+## <a name="how-to-configure-pca-based-anomaly-detection"></a>Jak nakonfigurovat detekci anomálií na základě DPS
 
 1. Přidejte modul pro **detekci anomálií založený na DPS** do kanálu v návrháři. Tento modul můžete najít v kategorii **detekce anomálií** .
 
-2. V pravém panelu modulu pro **detekci anomálií** , klikněte na možnost **školicí režim** a určete, zda chcete vytvořit výuku modelu pomocí konkrétní sady parametrů, nebo můžete použít k vyhledání nejlepších parametrů parametr sweep.
+2. V pravém panelu modulu vyberte možnost **školicí režim** . Určete, zda chcete model naučit pomocí konkrétní sady parametrů, nebo použijte k nalezení nejlepších parametrů použití Sweep parametrů.
 
-    - **Jeden parametr**: tuto možnost vyberte, pokud víte, jak chcete model konfigurovat, a poskytněte konkrétní sadu hodnot jako argumenty.
+    Pokud víte, jak chcete model konfigurovat, vyberte možnost **jeden parametr** a poskytněte konkrétní sadu hodnot jako argumenty.
 
-3. **Počet komponent, které se mají použít v DPS**: zadejte počet výstupních funkcí nebo součástí, které chcete výstup.
+3. **Počet komponent, které se mají použít v DPS**, určíte tak, že zadáte počet výstupních funkcí nebo součástí.
 
-    Rozhodnutí o tom, kolik součástí se má zahrnout, je důležitou součástí návrhu experimentu pomocí DPS. Obecné pokyny je, že byste neměli zahrnovat stejný počet součástí DPS, jako jsou proměnné. Místo toho byste měli začít s nějakým menším počtem komponent a navýšit je až do splnění některých kritérií.
+    Rozhodnutí o tom, kolik součástí se má zahrnout, je důležitou součástí návrhu experimentu, který používá DPS. Obecné pokyny je, že byste neměli zahrnovat stejný počet součástí DPS, jako jsou proměnné. Místo toho byste měli začít s menším počtem komponent a zvyšovat je, dokud nesplní určité kritérium.
 
-    Nejlepších výsledků je dosaženo, pokud je počet výstupních komponent **menší než** počet sloupců funkcí dostupných v datové sadě.
+    Nejlepších výsledků je dosaženo, pokud je počet výstupních komponent *menší než* počet sloupců funkcí dostupných v datové sadě.
 
 4. Zadejte množství převzorkování, které se má provést během náhodného školení DPS. Při potížích s detekcí anomálií nevyvážená data obtížně používají standardní techniky DPS. Zadáním určité míry převzorkování můžete zvýšit počet cílových instancí.
 
-    Zadáte-li hodnotu 1, není provedeno žádné převzorkování. Pokud zadáte libovolnou hodnotu větší než 1, vygenerují se další vzorky, které se použijí při výuce modelu.
+    Zadáte-li hodnotu **1**, není provedeno žádné převzorkování. Pokud zadáte libovolnou hodnotu větší než **1**, vygenerují se další vzorky, které se použijí při výuce modelu.
 
     Existují dvě možnosti v závislosti na tom, zda používáte parametr Sweep nebo nikoli:
 
-    - **Parametr převzorkování pro náhodný DPS**: Zadejte jedno celé číslo, které představuje poměr převzorkování třídy menšiny přes normální třídu. (K dispozici při použití metody školení s **jedním parametrem** .)
+    - **Parametr převzorkování pro náhodný DPS**: Zadejte jedno celé číslo, které představuje poměr převzorkování třídy menšiny přes normální třídu. (Tato možnost je k dispozici, pokud používáte metodu školení s **jedním parametrem** .)
 
     > [!NOTE]
     > Nemůžete zobrazit sadu dat s převzorkováním. Další informace o tom, jak se převzorkování používá s DPS, najdete v tématu [technické poznámky](#technical-notes).
 
-5. Možnost **Povolit funkci vstupu, střední normalizace**: tuto možnost vyberte, pokud chcete všechny vstupní funkce normalizovat na střední hodnotu nula. Normalizace nebo škálování na nulu se obecně doporučuje pro DPS, protože cílem DPS je maximalizovat odchylku mezi proměnnými.
+5. Chcete-li normalizovat všechny vstupní funkce na střední hodnotu nuly, vyberte možnost **Povolit funkci pro zadání střední hodnoty** pro normalizaci. Normalizace nebo škálování na nulu se obecně doporučuje pro DPS, protože cílem DPS je maximalizovat odchylku mezi proměnnými.
 
-     Tato možnost je ve výchozím nastavení zaškrtnutá. Zrušte výběr této možnosti, pokud hodnoty již byly normalizovány pomocí jiné metody nebo měřítka.
+    Tato možnost je ve výchozím nastavení zaškrtnutá. Zrušte výběr, pokud hodnoty již byly normalizovány pomocí jiné metody nebo měřítka.
 
-6. Připojte datovou sadu s tagovaným školením a jeden z školicích modulů:
+6. Připojte datovou sadu s tagovaným školením a jeden ze školicích modulů.
 
-    - Pokud nastavíte možnost **vytvořit režim Trainer** na **jeden parametr**, použijte modul [detekce anomálií pro vlaky](train-anomaly-detection-model.md) .
+   Pokud nastavíte možnost **vytvořit režim Trainer** na **jeden parametr**, použijte modul [detekce anomálií pro vlaky](train-anomaly-detection-model.md) .
 
 7. Odešlete kanál.
 
 ## <a name="results"></a>Výsledky
 
-Po dokončení školení můžete buď Uložit školený model, nebo ho propojit s modulem [skóre modelu](score-model.md) , abyste mohli předpovědět výsledky anomálií.
+Po dokončení školení můžete vyškolený model Uložit. Nebo ho můžete propojit s modulem [bodového modelu](score-model.md) pro předpověď výsledků anomálií.
 
-Vyhodnocení výsledků modelu detekce anomálií vyžaduje některé další kroky:
+Pro vyhodnocení výsledků modelu detekce anomálií:
 
-1. Zajistěte, aby byl v datových sadách dostupný sloupec skóre.
+1. Ujistěte se, že je sloupec skóre v obou datových sadách k dispozici.
 
-    Pokud se pokusíte vyhodnotit model detekce anomálií a získat chybu, "neexistuje žádný sloupec skóre v datové sadě, která by se měla porovnat", znamená to, že používáte typickou zkušební datovou sadu, která obsahuje sloupec popisku, ale žádné skóre. Musíte zvolit datovou sadu, která odpovídá výstupu schématu pro modely detekce anomálií, které zahrnují **popisky s skóre** a sloupec **pravděpodobnosti skóre** .
+    Pokud se pokusíte vyhodnotit model detekce anomálií a zobrazí se chyba "neexistuje žádný sloupec skóre v sadě dat s skóre, která by se měla porovnat", "používáme typickou zkušební datovou sadu, která obsahuje sloupec popisku, ale žádné výsledky nepravděpodobností. Vyberte datovou sadu, která odpovídá výstupu schématu pro modely detekce anomálií, které zahrnují **popisky skóre** a sloupce **pravděpodobnosti skóre** .
 
-2. Ujistěte se, že jsou označené sloupce popisků.
+2. Ujistěte se, že jsou označeny popisky sloupců.
 
-    Někdy se Metadata přidružená k sloupci popisek v grafu kanálu odeberou. Pokud k tomu dojde, když použijete modul [vyhodnocení modelu](evaluate-model.md) k porovnání výsledků dvou modelů detekce anomálií, může se zobrazit chyba "neexistuje žádný sloupec popisku v sadě dat s skóre" nebo "neexistuje sloupec popisku v datové sadě s hodnocením k porovnání".
+    Někdy se Metadata přidružená k sloupci popisek v grafu kanálu odeberou. Pokud k tomu dojde, když použijete modul [vyhodnocení modelu](evaluate-model.md) k porovnání výsledků dvou modelů detekce anomálií, může se zobrazit chyba "neexistuje žádný sloupec popisku v datové sadě s skóre". Nebo se může zobrazit chyba "neexistuje žádný sloupec popisku v datové sadě s hodnocením k porovnání".
 
-    Této chybě se můžete vyhnout přidáním modulu [Upravit metadata](edit-metadata.md) před modulem [vyhodnocení modelu](evaluate-model.md) . K výběru sloupce třída použijte selektor sloupců a v rozevíracím seznamu **pole** vyberte možnost **popisek**.
+    Těmto chybám se můžete vyhnout přidáním modulu [Upravit metadata](edit-metadata.md) před modulem [vyhodnocení modelu](evaluate-model.md) . K výběru sloupce třída použijte selektor sloupců a v seznamu **pole** vyberte možnost **popisek**.
 
-3. Pomocí příkazu [Spustit skript](execute-python-script.md) v jazyce Python můžete upravit kategorie sloupců popisku na hodnotu 1 (kladné, normální) a 0 (záporná, abnormální).
+3. Pomocí modulu [spuštění skriptu Pythonu](execute-python-script.md) můžete upravit kategorie sloupců popisku na hodnotu **1 (kladné, normální)** a **0 (záporná,** neobvyklá).
 
     ````
     label_column_name = 'XXX'
@@ -100,7 +100,9 @@ Vyhodnocení výsledků modelu detekce anomálií vyžaduje některé další kr
     
 ## <a name="technical-notes"></a>Technické poznámky
 
-Tento algoritmus používá DPS k aproximaci podprostoru obsahujícího normální třídu. Podprostor je rozložený podle eigenvectors přidruženého k hornímu eigenvalues matice kovariance dat. U každého nového vstupu detektor anomálií nejprve vypočítá svou projekci na eigenvectors a pak vypočítá normalizovanou chybu rekonstrukce. Tato chyba je skóre anomálie. Čím vyšší je chyba, tím více neobvyklé instanci. Podrobnosti o tom, jak se počítá normální místo, najdete v tématu Wikipedii: [Analýza hlavní komponenty](https://wikipedia.org/wiki/Principal_component_analysis) . 
+Tento algoritmus používá DPS k aproximaci podprostoru, který obsahuje normální třídu. Podprostor je rozložený podle eigenvectors přidruženého k hornímu eigenvalues matice kovariance dat. 
+
+U každého nového vstupu detektor anomálií nejprve vypočítá svou projekci na eigenvectors a pak vypočítá normalizovanou chybu rekonstrukce. Tato chyba je skóre anomálie. Čím vyšší je chyba, tím více neobvyklé instanci. Podrobnosti o tom, jak se počítá normální místo, najdete v tématu Wikipedii: [Analýza hlavní komponenty](https://wikipedia.org/wiki/Principal_component_analysis). 
 
 
 ## <a name="next-steps"></a>Další kroky

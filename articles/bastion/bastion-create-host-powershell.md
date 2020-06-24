@@ -4,15 +4,15 @@ description: V tomto článku se dozvíte, jak vytvořit hostitele Azure bastion
 services: bastion
 author: cherylmc
 ms.service: bastion
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 43d834f0c834696cd4a836466c9663fe7c31a392
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c62ac014513f3e93a04008af06ef8ffe5008ed2a
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80520505"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84744251"
 ---
 # <a name="create-an-azure-bastion-host-using-azure-powershell"></a>Vytvoření hostitele Azure bastionu pomocí Azure PowerShell
 
@@ -20,13 +20,13 @@ V tomto článku se dozvíte, jak vytvořit hostitele Azure bastionu pomocí pro
 
 Volitelně můžete vytvořit hostitele Azure bastionu pomocí [Azure Portal](bastion-create-host-portal.md).
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Ověřte, že máte předplatné Azure. Pokud ještě nemáte předplatné Azure, můžete si aktivovat [výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/pricing/free-trial).
 
 [!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
-## <a name="create-a-bastion-host"></a><a name="createhost"></a>Vytvoření hostitele typu bašta
+## <a name="create-a-bastion-host"></a><a name="createhost"></a>Vytvoření hostitele bastionu
 
 Tato část vám pomůže vytvořit nový prostředek Azure bastionu pomocí Azure PowerShell.
 

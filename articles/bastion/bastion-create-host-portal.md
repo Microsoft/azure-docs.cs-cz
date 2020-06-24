@@ -4,15 +4,15 @@ description: V tomto článku se dozvíte, jak vytvořit hostitele Azure bastion
 services: bastion
 author: cherylmc
 ms.service: bastion
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: cherylmc
-ms.openlocfilehash: 1fa4b6a33b055f2042c9bf941a33ae03ead6ebde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d18d520419e77a225431d9c2a395f62411656537
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82148342"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84744268"
 ---
 # <a name="create-an-azure-bastion-host-using-the-portal"></a>Vytvoření hostitele Azure bastionu pomocí portálu
 
@@ -20,13 +20,13 @@ V tomto článku se dozvíte, jak vytvořit hostitele Azure bastionu pomocí Azu
 
 Na portálu můžete vytvořit nový prostředek hostitele bastionu, a to buď zadáním všech nastavení ručně, nebo pomocí nastavení, která odpovídají existujícímu virtuálnímu počítači. Pokud chcete vytvořit hostitele bastionu pomocí nastavení virtuálního počítače, přečtěte si článek [rychlý Start](quickstart-host-portal.md) . Volitelně můžete pomocí [Azure PowerShell](bastion-create-host-powershell.md) vytvořit hostitele Azure bastionu.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Bastionu je k dispozici v následujících veřejných oblastech Azure:
 
 [!INCLUDE [available regions](../../includes/bastion-regions-include.md)]
 
-## <a name="create-a-bastion-host"></a><a name="createhost"></a>Vytvoření hostitele typu bašta
+## <a name="create-a-bastion-host"></a><a name="createhost"></a>Vytvoření hostitele bastionu
 
 Tato část vám pomůže vytvořit nový prostředek Azure bastionu z Azure Portal.
 

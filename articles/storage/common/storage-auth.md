@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 8db6140789a9e4f46e368b913cacacd21609ccd9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1db26e6e1308299325e15b4c856fc2ebbaed8326
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81529718"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807614"
 ---
 # <a name="authorizing-access-to-data-in-azure-storage"></a>Autorizace přístupu k datům v Azure Storage
 

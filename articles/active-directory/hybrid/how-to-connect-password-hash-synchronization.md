@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c41b11ab65f5710d338ce0041579e1eb4678ec42
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e37095a964e656160edbbbc4a325feceb1e48e74
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80331370"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84749630"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementace synchronizace hodnot hash hesel pomocí synchronizace Azure AD Connect
 Tento článek poskytuje informace, které potřebujete k synchronizaci uživatelských hesel z místní instance služby Active Directory s instancí cloudové Azure Active Directory (Azure AD).
@@ -63,7 +63,7 @@ V následující části jsou popsány podrobné informace o tom, jak funguje sy
 > [!NOTE]
 > Původní algoritmus hash MD4 se nepřenáší do služby Azure AD. Místo toho se přenáší hodnota hash SHA256 původního algoritmu hash MD4. Výsledkem je, že pokud se získá hodnota hash uložená v Azure AD, nedá se použít v rámci útoku typu Pass-the-hash.
 
-### <a name="security-considerations"></a>Důležité informace o zabezpečení
+### <a name="security-considerations"></a>Aspekty zabezpečení
 
 Při synchronizaci hesel není verze ve formátu prostého textu hesla vystavena funkci synchronizace hodnot hash hesel, službě Azure AD ani žádné z přidružených služeb.
 
@@ -89,14 +89,13 @@ Pokud je uživatel v rozsahu synchronizace hodnot hash hesel, ve výchozím nast
 
 Můžete se nadále přihlašovat ke cloudovým službám pomocí synchronizovaného hesla, jehož platnost vypršela v místním prostředí. Heslo vašeho cloudu se aktualizuje při příštím změně hesla v místním prostředí.
 
-##### <a name="public-preview-of-the-enforcecloudpasswordpolicyforpasswordsyncedusers-feature"></a>Verze Public Preview funkce *EnforceCloudPasswordPolicyForPasswordSyncedUsers*
+##### <a name="enforcecloudpasswordpolicyforpasswordsyncedusers"></a>EnforceCloudPasswordPolicyForPasswordSyncedUsers
 
 Pokud jsou k dispozici synchronizující uživatelé, kteří komunikují pouze s integrovanými službami Azure AD a musí splňovat i zásady vypršení platnosti hesla, můžete vynutit dodržování zásad vypršení platnosti hesel Azure AD tím, že povolíte funkci *EnforceCloudPasswordPolicyForPasswordSyncedUsers* .
 
 Je-li *EnforceCloudPasswordPolicyForPasswordSyncedUsers* zakázán (což je výchozí nastavení), Azure AD Connect nastaví atribut PasswordPolicies synchronizovaných uživatelů na hodnotu "DisablePasswordExpiration". To se provádí při každém synchronizaci hesla uživatele a instruuje službu Azure AD, aby pro tohoto uživatele ignorovala zásady vypršení platnosti hesla cloudu. Hodnotu atributu můžete zjistit pomocí modulu Azure AD PowerShell pomocí tohoto příkazu:
 
 `(Get-AzureADUser -objectID <User Object ID>).passwordpolicies`
-
 
 Pokud chcete povolit funkci EnforceCloudPasswordPolicyForPasswordSyncedUsers, spusťte následující příkaz pomocí modulu MSOnline PowerShell, jak je znázorněno níže. Pro parametr enable musíte zadat Ano, jak je znázorněno níže:
 
@@ -126,7 +125,7 @@ Upozornění: Pokud jsou v Azure AD synchronizované účty, u kterých je potř
 > Tato funkce je teď v Public Preview.
 > Příkaz prostředí PowerShell Set-MsolPasswordPolicy nebude fungovat u federovaných domén. 
 
-#### <a name="public-preview-of-synchronizing-temporary-passwords-and-force-password-change-on-next-logon"></a>Public Preview synchronizace dočasných hesel a "vynucení změny hesla při příštím přihlášení"
+#### <a name="synchronizing-temporary-passwords-and-force-password-change-on-next-logon"></a>Synchronizace dočasných hesel a "vynucení změny hesla při příštím přihlášení"
 
 Je typický vynutit, aby uživatel při prvním přihlášení změnil heslo, zejména když dojde k resetování hesla správce.  Obvykle se označuje jako nastavení "dočasného" hesla a je dokončený zaškrtnutím příznaku "uživatel musí změnit heslo při příštím přihlášení" u objektu uživatele ve službě Active Directory (AD).
   
@@ -216,7 +215,7 @@ Pokud byl server uzamčen podle standardu FIPS (Federal Information Processing S
 **Pokud chcete povolit MD5 pro synchronizaci hodnot hash hesel, proveďte následující kroky:**
 
 1. Přejít na%programfiles%\Azure AD Sync\Bin.
-2. Otevřete soubor MIIServer. exe. config.
+2. Otevřete miiserver.exe.config.
 3. Na konci souboru přejít na uzel Configuration/runtime.
 4. Přidejte následující uzel:`<enforceFIPSPolicy enabled="false"/>`
 5. Uložte provedené změny.

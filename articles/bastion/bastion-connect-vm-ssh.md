@@ -4,15 +4,15 @@ description: V tomto článku se dozvíte, jak se připojit k virtuálnímu poč
 services: bastion
 author: cherylmc
 ms.service: bastion
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/24/2020
 ms.author: cherylmc
-ms.openlocfilehash: 381f45a51002188c72174cff83c26b829912a0b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 98f1f3d02d8433dd88fed844a587a961ea9f8c82
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77596823"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84744285"
 ---
 # <a name="connect-using-ssh-to-a-linux-virtual-machine-using-azure-bastion"></a>Připojení pomocí protokolu SSH k virtuálnímu počítači se systémem Linux pomocí Azure bastionu
 
@@ -23,9 +23,9 @@ Pomocí služby Azure bastionu se můžete připojit k virtuálnímu počítači
 * Soukromý klíč, který zadáte ručně
 * Soubor, který obsahuje informace o privátním klíči
 
-Privátní klíč SSH musí být ve formátu, který začíná `"-----BEGIN RSA PRIVATE KEY-----"` a končí na. `"-----END RSA PRIVATE KEY-----"`
+Privátní klíč SSH musí být ve formátu, který začíná `"-----BEGIN RSA PRIVATE KEY-----"` a končí na `"-----END RSA PRIVATE KEY-----"` .
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Ujistěte se, že jste nastavili hostitele Azure bastionu pro virtuální síť, ve které se virtuální počítač nachází. Další informace najdete v tématu [Vytvoření hostitele Azure bastionu](bastion-create-host-portal.md). Jakmile se služba bastionu zřídí a nasadí ve vaší virtuální síti, můžete ji použít pro připojení k libovolnému virtuálnímu počítači v této virtuální síti. 
 

@@ -5,15 +5,15 @@ description: V tomto článku se dozvíte, jak můžete použít Azure Log Analy
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 9fe4462a71852e5f66268f798f6f0418f2dd39c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 072640f5ba34b2782f75bbe4169567ade823f406
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74048097"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84806693"
 ---
 # <a name="use-log-analytics-to-examine-application-gateway-web-application-firewall-logs"></a>Využití Log Analytics ke kontrole protokolů Firewallu webových aplikací služby Application Gateway
 

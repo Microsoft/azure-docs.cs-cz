@@ -8,14 +8,14 @@ ms.service: storage
 ms.date: 03/12/2020
 ms.topic: conceptual
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: b2755d5aa5dbaa669fa2fdd8b84596e040b5dd6b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 50d889faa4d5b6659ac5358ba49cc49c8531a914
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81456817"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84805358"
 ---
 # <a name="use-customer-managed-keys-with-azure-key-vault-to-manage-azure-storage-encryption"></a>Použití klíčů spravovaných zákazníkem se Azure Key Vault ke správě šifrování Azure Storage
 
@@ -85,7 +85,7 @@ Přístup účtu úložiště můžete kdykoli odvolat do klíče spravovaného 
 - [Získání vlastností objektu blob](/rest/api/storageservices/get-blob-properties)
 - [Získat metadata objektu BLOB](/rest/api/storageservices/get-blob-metadata)
 - [Nastavení metadat objektu BLOB](/rest/api/storageservices/set-blob-metadata)
-- [Objekt BLOB snímku](/rest/api/storageservices/snapshot-blob)při volání s hlavičkou `x-ms-meta-name` požadavku
+- [Objekt BLOB snímku](/rest/api/storageservices/snapshot-blob)při volání s `x-ms-meta-name` hlavičkou požadavku
 - [Zkopírování objektu blob](/rest/api/storageservices/copy-blob)
 - [Kopírovat objekt BLOB z adresy URL](/rest/api/storageservices/copy-blob-from-url)
 - [Nastavení úrovně objektu blob](/rest/api/storageservices/set-blob-tier)
@@ -113,4 +113,4 @@ Klíče spravované zákazníkem jsou také k dispozici pro správu šifrování
 - [Konfigurace klíčů spravovaných zákazníkem pomocí Key Vault pro Azure Storage šifrování z Azure Portal](storage-encryption-keys-portal.md)
 - [Konfigurace klíčů spravovaných zákazníkem pomocí Key Vault pro Azure Storage šifrování z PowerShellu](storage-encryption-keys-powershell.md)
 - [Konfigurace klíčů spravovaných zákazníkem pomocí Key Vault pro šifrování Azure Storage z Azure CLI](storage-encryption-keys-cli.md)
-- [Azure Storage šifrování dat v klidovém umístění](storage-service-encryption.md)
+- [Šifrování služby Azure Storage pro neaktivní uložená data](storage-service-encryption.md)

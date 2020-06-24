@@ -4,15 +4,15 @@ description: Postup konfigurace výstrah v VPN Gateway události protokolu prost
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alzam
-ms.openlocfilehash: 95c55242baf2ceb3620ed71026af2bad0195c22d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3417d2b6e105626bceb992db088a4d0113aa798f
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82127982"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84983083"
 ---
 # <a name="set-up-alerts-on-resource-log-events-from-vpn-gateway"></a>Nastavení upozornění na události protokolu prostředků z VPN Gateway
 
@@ -45,7 +45,7 @@ Následující příklad kroků vytvoří výstrahu pro událost odpojení, kter
 
    ![Podrobnosti o vytvoření pracovního prostoru Log Analytics](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert2.png  "Vyberte")
 
-4. V okně **monitorovat** > **nastavení diagnostiky** Najděte bránu VPN.
+4. V okně **monitorovat**  >  **nastavení diagnostiky** Najděte bránu VPN.
 
    ![Výběry pro vyhledání brány VPN v nastavení diagnostiky](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert3.png  "Vyberte")
 

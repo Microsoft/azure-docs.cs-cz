@@ -6,18 +6,27 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.date: 05/06/2020
+ms.date: 06/17/2020
 tags: connectors
-ms.openlocfilehash: 7635d98bb48543dd07f05f34ea854af870876cc3
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: c2f3af4b0e2fafdd95798b412f37ed20204cd42f
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927441"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807749"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>Monitorování, vytváření a Správa souborů SFTP pomocí SSH a Azure Logic Apps
 
-Chcete-li automatizovat úlohy, které sledují, vytváří, odesílají a přijímaly soubory na serveru [Secure protokol FTP (File Transfer Protocol) (SFTP)](https://www.ssh.com/ssh/sftp/) pomocí protokolu [Secure Shell (SSH)](https://www.ssh.com/ssh/protocol/) , můžete vytvářet a automatizovat integrační pracovní postupy pomocí Azure Logic Apps a konektoru SFTP-SSH. SFTP je síťový protokol, který poskytuje přístup k souborům, přenos souborů a správu souborů přes jakýkoliv spolehlivý datový proud. Tady je několik ukázkových úloh, které můžete automatizovat:
+Chcete-li automatizovat úlohy, které sledují, vytváří, odesílají a přijímaly soubory na serveru [Secure protokol FTP (File Transfer Protocol) (SFTP)](https://www.ssh.com/ssh/sftp/) pomocí protokolu [Secure Shell (SSH)](https://www.ssh.com/ssh/protocol/) , můžete vytvářet a automatizovat integrační pracovní postupy pomocí Azure Logic Apps a konektoru SFTP-SSH. SFTP je síťový protokol, který poskytuje přístup k souborům, přenos souborů a správu souborů přes jakýkoliv spolehlivý datový proud.
+
+> [!NOTE]
+> Konektor SFTP-SSH v tuto chvíli nepodporuje tyto servery SFTP:
+> 
+> * IBM datapower
+> * OpenText zabezpečená tabulka MFT
+> * OpenText GXS
+
+Tady je několik ukázkových úloh, které můžete automatizovat:
 
 * Monitorování při přidání nebo změně souborů
 * Získat, vytvořit, kopírovat, přejmenovat, aktualizovat, zobrazit seznam a odstranit soubory.
@@ -42,18 +51,18 @@ Rozdíly mezi konektorem SFTP-SSH a konektorem SFTP najdete v části [porovnán
 
   | Akce | Podpora bloků dat | Přepsat podporu velikosti bloku |
   |--------|------------------|-----------------------------|
-  | **Kopírovat soubor** | No | Neuvedeno |
+  | **Kopírovat soubor** | Ne | Nelze použít |
   | **Vytvořit soubor** | Ano | Ano |
-  | **Vytvořit složku** | Neuvedeno | Neuvedeno |
-  | **Odstranit dlaždici** | Neuvedeno | Neuvedeno |
-  | **Extrakce archivu do složky** | Neuvedeno | Neuvedeno |
+  | **Vytvořit složku** | Nelze použít | Nelze použít |
+  | **Odstranit dlaždici** | Nelze použít | Nelze použít |
+  | **Extrakce archivu do složky** | Nelze použít | Nelze použít |
   | **Získat obsah souboru** | Ano | Ano |
   | **Získání obsahu souboru pomocí cesty** | Ano | Ano |
-  | **Získat metadata souboru** | Neuvedeno | Neuvedeno |
-  | **Získat metadata souboru pomocí cesty** | Neuvedeno | Neuvedeno |
-  | **Zobrazit seznam souborů ve složce** | Neuvedeno | Neuvedeno |
-  | **Přejmenovat soubor** | Neuvedeno | Neuvedeno |
-  | **Aktualizovat soubor** | No | Neuvedeno |
+  | **Získat metadata souboru** | Nelze použít | Nelze použít |
+  | **Získat metadata souboru pomocí cesty** | Nelze použít | Nelze použít |
+  | **Zobrazit seznam souborů ve složce** | Nelze použít | Nelze použít |
+  | **Přejmenovat soubor** | Nelze použít | Nelze použít |
+  | **Aktualizovat soubor** | Ne | Nelze použít |
   ||||
 
 * Protokol SFTP – triggery SSH nepodporují bloky zpráv. Při vyžádání obsahu souboru triggery vyberou pouze soubory, které jsou 15 MB nebo menší. Pokud chcete získat soubory větší než 15 MB, použijte tento vzor:
@@ -105,8 +114,8 @@ SFTP – SSH spouští dotazování systému souborů SFTP a hledání všech so
 
 | Klient SFTP | Akce |
 |-------------|--------|
-| WinSCP | Přejít na **Možnosti** > **Předvolby** > **přenos** > **Edit**upravit > **zachovat časové razítko** > **Zakázat** |
-| FileZilly | Přejít na **přenos** > – zachovat**zablokovaná** **Časová razítka přenesených souborů** >  |
+| WinSCP | Přejít na **Možnosti**  >  **Předvolby**  >  **přenos**  >  **Upravit**  >  **zachovat časové razítko**  >  **Zakázat** |
+| FileZilly | Přejít na **přenos**–  >  zachovat zablokovaná**Časová razítka přenesených souborů**  >  **Disable** |
 |||
 
 Pokud aktivační událost najde nový soubor, aktivační událost zkontroluje, jestli je nový soubor hotový, a ne částečně napsaný. Soubor může mít například probíhající změny, když aktivační událost kontroluje souborový server. Aby nedošlo k vrácení částečně napsaného souboru, aktivační událost zapisuje časové razítko pro soubor, který má poslední změny, ale tento soubor okamžitě nevrátí. Aktivační událost vrátí soubor pouze při opakovaném dotazování serveru. V některých případech může toto chování způsobit zpoždění až dvojnásobku intervalu dotazování triggeru.
@@ -133,7 +142,7 @@ Pokud je váš privátní klíč ve formátu výstupního souboru, který použ�
 
 ### <a name="windows-os"></a>Operační systém Windows
 
-1. Pokud jste to ještě neudělali, [Stáhněte si nejnovější nástroj pro generátor výstupu do souboru (PuTTYgen. exe)](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)a pak nástroj spusťte.
+1. Pokud jste to ještě neudělali, [Stáhněte si nejnovější nástroj pro generátory výstupu (puttygen.exe)](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)a pak nástroj spusťte.
 
 1. Na této obrazovce vyberte **načíst**.
 
@@ -145,7 +154,7 @@ Pokud je váš privátní klíč ve formátu výstupního souboru, který použ�
 
    ![Vyberte Exportovat OpenSSH klíč.](./media/connectors-sftp-ssh/export-openssh-key.png)
 
-1. Uložte soubor privátního klíče s příponou názvu `.pem` souboru.
+1. Uložte soubor privátního klíče s `.pem` příponou názvu souboru.
 
 ## <a name="considerations"></a>Požadavky
 
@@ -155,7 +164,7 @@ Tato část popisuje pokyny ke kontrole triggerů a akcí tohoto konektoru.
 
 ### <a name="create-file"></a>Vytvořit soubor
 
-Pokud chcete vytvořit soubor na vašem serveru SFTP, můžete použít akci SFTP-SSH **vytvořit soubor** . Když tato akce vytvoří soubor, služba Logic Apps taky automaticky zavolá váš server SFTP, aby získal metadata souboru. Pokud však přesunete nově vytvořený soubor předtím, než služba Logic Apps umožní volání získat metadata, zobrazí se `404` chybová zpráva. `'A reference was made to a file or folder which does not exist'` Pokud chcete přeskočit čtení metadat souboru po vytvoření souboru, postupujte podle pokynů pro [Přidání a nastavení vlastnosti **načíst všechny souborové metadata** na **ne**](#file-does-not-exist).
+Pokud chcete vytvořit soubor na vašem serveru SFTP, můžete použít akci SFTP-SSH **vytvořit soubor** . Když tato akce vytvoří soubor, služba Logic Apps taky automaticky zavolá váš server SFTP, aby získal metadata souboru. Pokud však přesunete nově vytvořený soubor předtím, než služba Logic Apps umožní volání získat metadata, zobrazí se `404` chybová zpráva `'A reference was made to a file or folder which does not exist'` . Pokud chcete přeskočit čtení metadat souboru po vytvoření souboru, postupujte podle pokynů pro [Přidání a nastavení vlastnosti **načíst všechny souborové metadata** na **ne**](#file-does-not-exist).
 
 <a name="connect"></a>
 
@@ -165,13 +174,13 @@ Pokud chcete vytvořit soubor na vašem serveru SFTP, můžete použít akci SFT
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com)a otevřete aplikaci logiky v návrháři aplikace logiky, pokud už není otevřený.
 
-1. Pro prázdné aplikace logiky zadejte `sftp ssh` do vyhledávacího pole jako filtr. V seznamu triggery vyberte aktivační událost, kterou chcete.
+1. Pro prázdné aplikace logiky zadejte do vyhledávacího pole `sftp ssh` jako filtr. V seznamu triggery vyberte aktivační událost, kterou chcete.
 
    -nebo-
 
    Pro existující aplikace logiky v rámci posledního kroku, kam chcete přidat akci, vyberte **Nový krok**. Do vyhledávacího pole zadejte `sftp ssh` jako filtr. V seznamu akce vyberte akci, kterou chcete.
 
-   Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi jednotlivými kroky. Vyberte symbol plus (**+**), který se zobrazí, a pak vyberte **přidat akci**.
+   Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi jednotlivými kroky. Vyberte symbol plus ( **+** ), který se zobrazí, a pak vyberte **přidat akci**.
 
 1. Zadejte potřebné informace pro vaše připojení.
 
@@ -179,13 +188,13 @@ Pokud chcete vytvořit soubor na vašem serveru SFTP, můžete použít akci SFT
    >
    > Když zadáte privátní klíč SSH do vlastnosti **privátního klíče SSH** , postupujte podle těchto dalších kroků, které vám pomůžou zajistit, aby byla pro tuto vlastnost k dispozici úplná a správná hodnota. Neplatný klíč způsobí selhání připojení.
 
-   I když můžete použít libovolný textový editor, tady je ukázkový postup, který ukazuje, jak správně zkopírovat a vložit klíč pomocí programu Notepad. exe jako příklad.
+   I když můžete použít libovolný textový editor, tady je ukázkový postup, který ukazuje, jak správně zkopírovat a vložit klíč pomocí Notepad.exe jako příklad.
 
    1. V textovém editoru otevřete soubor privátního klíče SSH. Tyto kroky používají jako příklad program Poznámkový blok.
 
    1. V nabídce **Úpravy** poznámkového bloku vyberte **Vybrat vše**.
 
-   1. Vyberte **Upravit** > **kopii**.
+   1. Vyberte **Upravit**  >  **kopii**.
 
    1. V aktivační události SFTP-SSH nebo v akci, kterou jste přidali, vložte *úplný* klíč, který jste zkopírovali do vlastnosti **privátního klíče SSH** , který podporuje více řádků.  ***Nezapomeňte klíč vložit*** . ***Klíč nezadejte ručně ani neupravujte***.
 
@@ -203,7 +212,7 @@ Chcete-li přepsat výchozí adaptivní chování, které využívá bloky dat, 
 
    ![Otevření nastavení SFTP-SSH](./media/connectors-sftp-ssh/sftp-ssh-connector-setttings.png)
 
-1. V části **přenos obsahu**zadejte do vlastnosti **velikost bloku** Integer hodnotu `5` `50`, například: 
+1. V části **přenos obsahu**zadejte do vlastnosti **velikost bloku** Integer hodnotu `5` `50` , například: 
 
    ![Místo toho zadejte velikost bloku, která se má použít.](./media/connectors-sftp-ssh/specify-chunk-size-override-default.png)
 

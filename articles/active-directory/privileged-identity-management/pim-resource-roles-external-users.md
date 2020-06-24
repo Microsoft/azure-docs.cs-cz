@@ -7,7 +7,7 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
@@ -15,12 +15,12 @@ ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2efcf77d65fa2f9e203ed805cd7d78b9802ee3aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 046a0d61bb7a6d715a1d732790d2b472b3e83c13
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74021940"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743775"
 ---
 # <a name="invite-guest-users-and-assign-azure-resource-roles-in-privileged-identity-management"></a>Pozvání uživatelů typu Host a přiřazení rolí prostředků Azure v Privileged Identity Management
 
@@ -55,7 +55,7 @@ Abyste se ujistili, že budete moci pozvat hosty do vaší organizace, měli bys
 
 1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
 
-1. Vyberte **Azure Active Directory** > **uživatelská nastavení**.
+1. Vyberte **Azure Active Directory**  >  **uživatelská nastavení**.
 
 1. Vyberte možnost **spravovat externí nastavení spolupráce**.
 
@@ -157,7 +157,7 @@ Můžete zobrazit protokoly auditu a sledovat, co dělají hosté.
 
     ![Prostředky Azure – stránka auditu prostředků výpis doby, žadatele a akce](./media/pim-resource-roles-external-users/audit-resource.png)
 
-1. Pokud chcete zobrazit aktivitu pro hosta, vyberte **Azure Active Directory** > **Users** > *jméno hosta*uživatele.
+1. Pokud chcete zobrazit aktivitu pro hosta, vyberte **Azure Active Directory**  >  **Users**  >  *jméno hosta*uživatele.
 
 1. Pokud chcete zobrazit protokoly auditu pro organizaci, vyberte **protokoly auditu** . V případě potřeby můžete zadat filtry.
 

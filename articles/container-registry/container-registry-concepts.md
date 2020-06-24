@@ -4,11 +4,11 @@ description: Seznámení se základními koncepty Azure Container Registry, úlo
 ms.topic: article
 ms.date: 09/10/2019
 ms.openlocfilehash: ea6e2577d3eee91626dd613617a0b79e4ff3d6a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79247056"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711982"
 ---
 # <a name="about-registries-repositories-and-images"></a>O registrech, úložištích a obrázcích
 

@@ -5,16 +5,16 @@ services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: yushwang
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.date: 03/25/2018
 ms.author: yushwang
-ms.openlocfilehash: c243c6ded4057c9e4ac63345f300f3b3b690b363
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 05df14005bb52d67aed0f616854c7b6b55e6e35d
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798946"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84982888"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>Konfigurace průchodu bránou VPN pro partnerský vztah virtuální sítě
 

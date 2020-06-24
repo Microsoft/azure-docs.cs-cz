@@ -10,18 +10,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: pim
 ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ddb4d0ff1339f1427c5041528cdbe464a345b37
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8091890d174ae68f012a6ec24685a0e705100f8b
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73847006"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743673"
 ---
 # <a name="review-access-to-azure-resource-roles-in-privileged-identity-management"></a>Kontrola přístupu k rolím prostředků Azure v Privileged Identity Management
 

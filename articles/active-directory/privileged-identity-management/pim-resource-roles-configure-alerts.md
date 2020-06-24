@@ -7,7 +7,7 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
@@ -15,12 +15,12 @@ ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0b938dc808d9b02ad4105d85a5b3125135c51d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0bfca096eb49ee9f1807935de1dac49151cc8ac3
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74023072"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743758"
 ---
 # <a name="configure-security-alerts-for-azure-resource-roles-in-privileged-identity-management"></a>Konfigurace výstrah zabezpečení pro role prostředků Azure v Privileged Identity Management
 
@@ -38,9 +38,9 @@ Vyberte výstrahu, chcete-li zobrazit sestavu se seznamem uživatelů nebo rolí
 
 | Výstrahy | Severity | Trigger | Doporučení |
 | --- | --- | --- | --- |
-| **K prostředku je přiřazeno příliš mnoho vlastníků.** |Střednědobé používání |Role vlastníka má příliš mnoho uživatelů. |Zkontrolujte uživatele v seznamu a znovu je přiřaďte k méně privilegovaným rolím. |
-| **K prostředku je přiřazeno příliš mnoho trvalých vlastníků.** |Střednědobé používání |K roli je trvale přiřazeno příliš mnoho uživatelů. |Zkontrolujte uživatele v seznamu a znovu je přiřaďte, aby vyžadovaly aktivaci pro použití role. |
-| **Duplicitní role se vytvořila.** |Střednědobé používání |Více rolí má stejné kritérium. |Použijte pouze jednu z těchto rolí. |
+| **K prostředku je přiřazeno příliš mnoho vlastníků.** |Střední |Role vlastníka má příliš mnoho uživatelů. |Zkontrolujte uživatele v seznamu a znovu je přiřaďte k méně privilegovaným rolím. |
+| **K prostředku je přiřazeno příliš mnoho trvalých vlastníků.** |Střední |K roli je trvale přiřazeno příliš mnoho uživatelů. |Zkontrolujte uživatele v seznamu a znovu je přiřaďte, aby vyžadovaly aktivaci pro použití role. |
+| **Duplicitní role se vytvořila.** |Střední |Více rolí má stejné kritérium. |Použijte pouze jednu z těchto rolí. |
 
 ### <a name="severity"></a>Severity
 

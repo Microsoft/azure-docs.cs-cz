@@ -9,18 +9,21 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.openlocfilehash: 9570724fdff3018c1dbcf76c15a9db8db0d68364
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: aa4fe715c18e582448ee7f642a6a75947356ab61
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84447824"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84982658"
 ---
 # <a name="preserve-data-privacy-by-using-differential-privacy-and-the-whitenoise-package"></a>Zachování ochrany soukromí dat pomocí rozdílového soukromí a balíčku WhiteNoise
 
 Přečtěte si, jaké jsou rozdílové ochrany osobních údajů a jak může balíček WhiteNoise pomáhat při implementaci rozdílových privátních systémů.
 
 Jak množství dat, které organizace shromažďuje a používá ke analýzám, se zvyšuje na ochranu osobních údajů a zabezpečení. Analýzy vyžadují data. Data, která se používají k učení modelů, jsou typicky přesnější. Pokud se pro tyto analýzy použijí osobní informace, je obzvláště důležité, aby data zůstala soukromá během jejího používání.
+
+> [!NOTE]
+> Všimněte si, že přejmenováváme sadu nástrojů a zavádíme nové jméno do nadcházejících týdnů. 
 
 ## <a name="how-differential-privacy-works"></a>Jak funguje rozdílová ochrana osobních údajů
 

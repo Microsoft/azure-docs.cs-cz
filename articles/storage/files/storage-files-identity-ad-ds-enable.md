@@ -5,24 +5,26 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: conceptual
-ms.date: 06/02/2020
+ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: 759b80ff3cf20bee1dd909cba59e67f5d36023b2
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 830525c114783cf1079551d72107b7f3670fabca
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84660793"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214430"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>Část 1: povolení ověřování služba AD DS pro sdílené složky Azure 
 
 Než povolíte ověřování Active Directory Domain Services (služba AD DS), ujistěte se, že jste si přečetli [článek s přehledem](storage-files-identity-auth-active-directory-enable.md) , abyste porozuměli podporovaným scénářům a požadavkům.
 
-Tento článek popisuje proces potřebný k povolení ověřování Active Directory Domain Services (služba AD DS) ve vašem účtu úložiště. Po povolení této funkce je nutné nakonfigurovat svůj účet úložiště a služba AD DS, aby se k ověřování sdílené složky Azure používaly přihlašovací údaje služba AD DS. Pokud chcete povolit služba AD DS ověřování pomocí protokolu SMB pro sdílené složky Azure, musíte svůj účet úložiště zaregistrovat pomocí služba AD DS a pak nastavit požadované vlastnosti domény v účtu úložiště. Když je tato funkce povolená v účtu úložiště, platí pro všechny nové a existující sdílené složky v účtu.
+Tento článek popisuje proces potřebný k povolení ověřování Active Directory Domain Services (služba AD DS) ve vašem účtu úložiště. Po povolení této funkce je nutné nakonfigurovat svůj účet úložiště a služba AD DS, aby služba AD DS přihlašovací údaje pro ověřování ve sdílené složce Azure. Pokud chcete povolit služba AD DS ověřování pomocí protokolu SMB pro sdílené složky Azure, musíte svůj účet úložiště zaregistrovat pomocí služba AD DS a pak nastavit požadované vlastnosti domény v účtu úložiště.
+
+Pokud chcete zaregistrovat svůj účet úložiště pomocí služba AD DS, vytvořte účet, který ho zastupuje v služba AD DS. Tento proces si můžete představit, jako by se jednalo o vytvoření účtu představujícího místní souborový server systému Windows ve vašem služba AD DS. Když je tato funkce povolená v účtu úložiště, platí pro všechny nové a existující sdílené složky v účtu.
 
 ## <a name="option-one-recommended-use-azfileshybrid-powershell-module"></a>Možnost 1 (doporučeno): použít modul AzFilesHybrid PowerShell
 
-Rutiny v modulu PowerShellu AzFilesHybrid provedly potřebné změny a funkce vám ji umožní. Vzhledem k tomu, že některé části rutin budou spolupracovat s místními služba AD DS, Vysvětleme to, co rutina udělá, abyste mohli zjistit, jestli se změny v souladu se zásadami dodržování předpisů a zabezpečení a jestli máte správná oprávnění ke spouštění rutin. I když doporučujeme použít modul AzFilesHybrid, pokud to nemůžete udělat, budeme postupovat podle těchto kroků, abyste je mohli ručně provést.
+Rutiny v modulu AzFilesHybrid PowerShellu provedou potřebné změny a funkce vám ji umožní. Vzhledem k tomu, že některé části rutin spolupracují s vašimi místními služba AD DS, vysvětlete, co rutiny dělají, abyste mohli určit, jestli se změny zarovnají se zásadami dodržování předpisů a zabezpečení, a ujistěte se, že máte správná oprávnění ke spouštění rutin. I když doporučujeme použít modul AzFilesHybrid, pokud to nemůžete udělat, budeme postupovat podle těchto kroků, abyste je mohli ručně provést.
 
 ### <a name="download-azfileshybrid-module"></a>Stáhnout modul AzFilesHybrid
 
@@ -32,11 +34,11 @@ Rutiny v modulu PowerShellu AzFilesHybrid provedly potřebné změny a funkce v�
 
 ### <a name="run-join-azstorageaccountforauth"></a>Spustit příkaz JOIN – AzStorageAccountForAuth
 
-`Join-AzStorageAccountForAuth`Rutina provádí ekvivalent offline připojení k doméně jménem zadaného účtu úložiště. Skript pomocí rutiny vytvoří účet ve vaší doméně služby Active Directory, buď [účet počítače](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (výchozí), nebo [účet přihlášení služby](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts). Pokud se rozhodnete spustit příkaz ručně, měli byste vybrat účet, který nejlépe vyhovuje vašemu prostředí.
+`Join-AzStorageAccountForAuth`Rutina provádí ekvivalent offline připojení k doméně jménem zadaného účtu úložiště. Skript pomocí rutiny vytvoří [účet počítače](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) ve vaší doméně služby Active Directory. Pokud z jakéhokoli důvodu nemůžete použít účet počítače, můžete změnit skript a místo toho vytvořit [přihlašovací účet služby](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts) . Pokud se rozhodnete spustit příkaz ručně, měli byste vybrat účet, který nejlépe vyhovuje vašemu prostředí.
 
-Účet služba AD DS vytvořený rutinou představuje účet úložiště. Pokud je účet služba AD DS vytvořen v rámci organizační jednotky (OU), která vynutila vypršení platnosti hesla, je nutné aktualizovat heslo před maximálním stářím hesla. Nepodaří se aktualizovat heslo účtu dřív, než tato brána způsobí selhání ověřování při přístupu ke sdíleným složkám Azure. Informace o tom, jak aktualizovat heslo, najdete v tématu [aktualizace hesla účtu služba AD DS](storage-files-identity-ad-ds-update-password.md).
+Účet služba AD DS vytvořený rutinou představuje účet úložiště. Pokud je účet služba AD DS vytvořen v rámci organizační jednotky (OU), která vynutila vypršení platnosti hesla, je nutné aktualizovat heslo před maximálním stářím hesla. Neúspěšná aktualizace hesla k účtu před tímto datem způsobí selhání ověřování při přístupu ke sdíleným složkám Azure File. Informace o tom, jak aktualizovat heslo, najdete v tématu [aktualizace hesla účtu služba AD DS](storage-files-identity-ad-ds-update-password.md).
 
-Nezapomeňte nahradit hodnoty zástupných symbolů vlastními v parametrech níže, než je spustíte v PowerShellu.
+Zástupné hodnoty nahraďte vlastními v parametrech níže, než je spustíte v prostředí PowerShell.
 > [!IMPORTANT]
 > Rutina připojení k doméně vytvoří účet služby AD, který bude představovat účet úložiště (sdílená složka) ve službě AD. Můžete se rozhodnout, že se zaregistrujete jako účet počítače nebo přihlašovací účet služby. Podrobnosti najdete v [části Nejčastější dotazy](https://docs.microsoft.com/azure/storage/files/storage-files-faq#security-authentication-and-access-control) . V případě účtů počítačů je ve službě AD po dobu 30 dnů nastavena výchozí doba platnosti hesla. Podobně platí, že přihlašovací účet služby může mít nastavené stáří vypršení platnosti hesla na doméně služby AD nebo organizační jednotce (OU).
 > U obou typů účtů doporučujeme, abyste zkontrolovali stáří vypršení platnosti hesla nakonfigurované v prostředí služby AD a naplánovali byste si [aktualizovat heslo účtu úložiště](storage-files-identity-ad-ds-update-password.md) účtu služby AD před maximálním stářím hesla. Můžete zvážit [Vytvoření nové organizační jednotky AD (OU) ve službě AD](https://docs.microsoft.com/powershell/module/addsadministration/new-adorganizationalunit?view=win10-ps) a zakázat zásady pro vypršení platnosti hesla na účtech [počítačů](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj852252(v=ws.11)?redirectedfrom=MSDN) nebo účtů přihlášení služby odpovídajícím způsobem. 
@@ -69,9 +71,9 @@ Select-AzSubscription -SubscriptionId $SubscriptionId
 
 Join-AzStorageAccountForAuth `
         -ResourceGroupName $ResourceGroupName `
-        -Name $StorageAccountName `
+        -StorageAccountName $StorageAccountName `
         -DomainAccountType "<ComputerAccount|ServiceLogonAccount>" `
-        -OrganizationalUnitName "<ou-name-here>" #You can also use -OrganizationalUnitDistinguishedName "<ou-distinguishedname-here>" instead. If you don't provide the OU name as an input parameter, the AD identity that represents the storage account will be created under the root directory.
+        -OrganizationalUnitDistinguishedName "<ou-distinguishedname-here>" # If you don't provide the OU name as an input parameter, the AD identity that represents the storage account is created under the root directory.
 
 #You can run the Debug-AzStorageAccountAuth cmdlet to conduct a set of basic checks on your AD configuration with the logged on AD user. This cmdlet is supported on AzFilesHybrid v0.1.2+ version. For more details on the checks performed in this cmdlet, see Azure Files Windows troubleshooting guide.
 Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGroupName $ResourceGroupName -Verbose
@@ -151,6 +153,6 @@ $storageAccount.AzureFilesIdentityBasedAuth.ActiveDirectoryProperties
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto okamžiku jste úspěšně povolili funkci v účtu úložiště. Chcete-li použít funkci, je nutné nakonfigurovat a provést změny. Přejděte k další části.
+Teď jste úspěšně povolili funkci v účtu úložiště. Chcete-li použít funkci, je nutné přiřadit oprávnění na úrovni sdílení. Přejděte k další části.
 
 [Druhá část: přiřazení oprávnění na úrovni sdílení k identitě](storage-files-identity-ad-ds-assign-permissions.md)

@@ -4,15 +4,15 @@ description: Zjistěte, jak používat sdílenou složku Azure s Windows a Windo
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 06/07/2018
+ms.date: 06/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4fef6102ac2ee69926c1c56af338b6e92670dd71
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 014b980470ee8d0a25df2d6c10f9aa37270d83ab
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773096"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214303"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Použití sdílené složky Azure s Windows
 Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné bez problémů používat v systémech Windows a Windows Server. Tento článek popisuje důležité informace o používání sdílené složky Azure s Windows a Windows Serverem.
@@ -41,41 +41,8 @@ Sdílené složky Azure můžete používat v instalaci Windows na virtuálním 
 > Vždy doporučujeme získat nejnovější aktualizaci KB pro vaši verzi systému Windows.
 
 ## <a name="prerequisites"></a>Požadavky 
-* **Název účtu úložiště**: Pokud chcete připojit sdílenou složku Azure, budete potřebovat název účtu úložiště.
 
-* **Klíč účtu úložiště**: Pokud chcete připojit sdílenou složku Azure, budete potřebovat primární (nebo sekundární) klíč úložiště. Klíče SAS aktuálně nejsou pro připojení podporovány.
-
-* **Zkontrolujte, že je otevřený port 445:** Protokol SMB vyžaduje otevřený port TCP 445. Pokud je port 445 zablokovaný, připojení selžou. Ke kontrole, jestli vaše brána firewall neblokuje port 445, můžete použít rutinu `Test-NetConnection`. Další informace o [různých způsobech blokovaného alternativního řešení najdete na portu 445](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked).
-
-    Následující kód PowerShellu předpokládá, že máte nainstalovaný modul Azure PowerShell. Další informace najdete v tématu [instalace Azure PowerShell modulu](https://docs.microsoft.com/powershell/azure/install-az-ps) . Nezapomeňte nahradit `<your-storage-account-name>` a `<your-resource-group-name>` odpovídajícími názvy pro váš účet úložiště.
-
-    ```powershell
-    $resourceGroupName = "<your-resource-group-name>"
-    $storageAccountName = "<your-storage-account-name>"
-
-    # This command requires you to be logged into your Azure account, run Login-AzAccount if you haven't
-    # already logged in.
-    $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
-
-    # The ComputerName, or host, is <storage-account>.file.core.windows.net for Azure Public Regions.
-    # $storageAccount.Context.FileEndpoint is used because non-Public Azure regions, such as sovereign clouds
-    # or Azure Stack deployments, will have different hosts for Azure file shares (and other storage resources).
-    Test-NetConnection -ComputerName ([System.Uri]::new($storageAccount.Context.FileEndPoint).Host) -Port 445
-    ```
-
-    Pokud připojení proběhne úspěšně, měl by se zobrazit následující výstup:
-
-    ```
-    ComputerName     : <storage-account-host-name>
-    RemoteAddress    : <storage-account-ip-address>
-    RemotePort       : 445
-    InterfaceAlias   : <your-network-interface>
-    SourceAddress    : <your-ip-address>
-    TcpTestSucceeded : True
-    ```
-
-    > [!Note]  
-    > Výše uvedený příkaz vrátí aktuální IP adresu účtu úložiště. Není zaručeno, že tato IP adresa zůstane stejná, a kdykoli se může změnit. Nekódujte pevně tuto IP adresu do skriptů ani do konfigurace brány firewall. 
+Zkontrolujte, že je otevřený port 445: Protokol SMB vyžaduje otevřený port TCP 445. Pokud je port 445 zablokovaný, připojení selžou. Můžete zjistit, jestli brána firewall blokuje port 445 pomocí `Test-NetConnection` rutiny. Další informace o tom, jak obejít blokovaný port 445, najdete v části [Příčina 1: port 445 je blokován](storage-troubleshoot-windows-file-connection-problems.md#cause-1-port-445-is-blocked) v naší příručce pro řešení potíží s Windows.
 
 ## <a name="using-an-azure-file-share-with-windows"></a>Použití sdílené složky Azure s Windows
 Pokud chcete používat sdílenou složku Azure s Windows, musíte ji buď připojit, což znamená přiřadit jí písmeno jednotky nebo cestu k přípojnému bodu, nebo k ní přistupovat přes její [cestu UNC](https://msdn.microsoft.com/library/windows/desktop/aa365247.aspx). 
@@ -84,97 +51,31 @@ Tento článek používá klíč účtu úložiště pro přístup ke sdílené 
 
 Při migraci obchodních aplikací očekávajících sdílenou složku SMB metodou „lift and shift“ do Azure se jako alternativa k provozu vyhrazeného souborového serveru Windows na virtuálním počítači Azure běžně používá sdílená složka Azure. Jedním z důležitých aspektů úspěšné migrace obchodní aplikace, která má používat sdílenou složku Azure, je to, že řada obchodních aplikací se spouští v kontextu vyhrazeného účtu služby s omezenými systémovými oprávněními, a ne v kontextu účtu správce virtuálního počítače. Proto je potřeba zajistit připojení a uložení přihlašovacích údajů pro sdílenou složku Azure z kontextu účtu služby, a nikoli účtu správce.
 
-### <a name="persisting-azure-file-share-credentials-in-windows"></a>Trvalé uložení přihlašovacích údajů sdílené složky Azure ve Windows  
-Nástroj [cmdkey](https://docs.microsoft.com/windows-server/administration/windows-commands/cmdkey) umožňuje uložit přihlašovací údaje účtu úložiště v rámci Windows. To znamená, že při pokusu o přístup ke sdílené složce Azure přes cestu UNC nebo její připojení nebudete muset zadávat přihlašovací údaje. Pokud chcete uložit přihlašovací údaje vašeho účtu úložiště, spusťte následující příkazy PowerShellu, ve kterých podle potřeby nahraďte `<your-storage-account-name>` a `<your-resource-group-name>`.
+### <a name="mount-the-azure-file-share"></a>Připojení sdílené složky Azure
 
-```powershell
-$resourceGroupName = "<your-resource-group-name>"
-$storageAccountName = "<your-storage-account-name>"
+Azure Portal vám poskytne skript, který můžete použít k připojení sdílené složky přímo k hostiteli. Doporučujeme použít tento poskytnutý skript.
 
-# These commands require you to be logged into your Azure account, run Login-AzAccount if you haven't
-# already logged in.
-$storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
-$storageAccountKeys = Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountName
+Postup získání tohoto skriptu:
 
-# The cmdkey utility is a command-line (rather than PowerShell) tool. We use Invoke-Expression to allow us to 
-# consume the appropriate values from the storage account variables. The value given to the add parameter of the
-# cmdkey utility is the host address for the storage account, <storage-account>.file.core.windows.net for Azure 
-# Public Regions. $storageAccount.Context.FileEndpoint is used because non-Public Azure regions, such as sovereign 
-# clouds or Azure Stack deployments, will have different hosts for Azure file shares (and other storage resources).
-Invoke-Expression -Command ("cmdkey /add:$([System.Uri]::new($storageAccount.Context.FileEndPoint).Host) " + `
-    "/user:AZURE\$($storageAccount.StorageAccountName) /pass:$($storageAccountKeys[0].Value)")
-```
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přejděte do účtu úložiště, který obsahuje sdílenou složku, kterou chcete připojit.
+1. Vyberte **sdílení souborů**.
+1. Vyberte sdílenou složku, kterou chcete připojit.
 
-Uložení přihlašovacích údajů pro účet úložiště nástrojem cmdkey můžete ověřit pomocí parametru list:
+    :::image type="content" source="media/storage-how-to-use-files-windows/select-file-shares.png" alt-text="případě":::
 
-```powershell
-cmdkey /list
-```
+1. Vyberte **Připojit**.
 
-Pokud jsou přihlašovací údaje pro vaši sdílenou složku Azure úspěšně uložené, očekávaný výstup je následující (seznam může obsahovat další uložené klíče):
+    :::image type="content" source="media/storage-how-to-use-files-windows/file-share-connect-icon.png" alt-text="Snímek obrazovky ikony připojení pro sdílenou složku":::
 
-```
-Currently stored credentials:
+1. Vyberte písmeno jednotky, ke které se má sdílená složka připojit.
+1. Zkopírujte zadaný skript.
 
-Target: Domain:target=<storage-account-host-name>
-Type: Domain Password
-User: AZURE\<your-storage-account-name>
-```
+    :::image type="content" source="media/storage-how-to-use-files-windows/files-portal-mounting-cmdlet-resize.png" alt-text="Ukázkový text":::
 
-Teď byste měli mít možnost připojit sdílenou složku nebo k ní získat přístup, aniž byste museli zadávat další přihlašovací údaje.
+1. Vložte skript do prostředí v hostiteli, ke kterému chcete sdílenou složku připojit, a spusťte ji.
 
-#### <a name="advanced-cmdkey-scenarios"></a>Pokročilé scénáře s nástrojem cmdkey
-V případě nástroje cmdkey existují další dva scénáře, které byste měli zvážit: ukládání přihlašovacích údajů pro jiného uživatele (například k účtu služby) na počítači a ukládání přihlašovacích údajů na vzdáleném počítači s využitím vzdálené komunikace PowerShellu.
-
-Uložení přihlašovacích údajů pro jiného uživatele v počítači je jednoduché: Pokud jste přihlášeni k účtu, stačí spustit následující příkaz PowerShellu:
-
-```powershell
-$password = ConvertTo-SecureString -String "<service-account-password>" -AsPlainText -Force
-$credential = New-Object System.Management.Automation.PSCredential -ArgumentList "<service-account-username>", $password
-Start-Process -FilePath PowerShell.exe -Credential $credential -LoadUserProfile
-```
-
-Tím se otevře nové okno PowerShellu v kontextu uživatele vašeho účtu služby (nebo uživatelského účtu). Pak můžete použít nástroj cmdkey, jak je popsáno [výše](#persisting-azure-file-share-credentials-in-windows).
-
-Uložení přihlašovacích údajů na vzdáleném počítači s využitím vzdálené komunikace PowerShellu však není možné, protože nástroj cmdkey neumožňuje přístup ke svému úložišti přihlašovacích údajů, když je uživatel přihlášený přes vzdálenou komunikaci PowerShellu, a to ani za účelem jejich přidání. Doporučujeme přihlásit se k počítači pomocí [Vzdálené plochy](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/windows).
-
-### <a name="mount-the-azure-file-share-with-powershell"></a>Připojení sdílené složky Azure pomocí PowerShellu
-Spusťte následující příkazy z běžné relace PowerShellu (nikoli vyšší) a připojte sdílenou složku Azure. Nezapomeňte nahradit `<your-resource-group-name>`, `<your-storage-account-name>`, `<your-file-share-name>` a `<desired-drive-letter>` odpovídajícími údaji.
-
-```powershell
-$resourceGroupName = "<your-resource-group-name>"
-$storageAccountName = "<your-storage-account-name>"
-$fileShareName = "<your-file-share-name>"
-
-# These commands require you to be logged into your Azure account, run Login-AzAccount if you haven't
-# already logged in.
-$storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
-$storageAccountKeys = Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountName
-$fileShare = Get-AzStorageShare -Context $storageAccount.Context | Where-Object { 
-    $_.Name -eq $fileShareName -and $_.IsSnapshot -eq $false
-}
-
-if ($fileShare -eq $null) {
-    throw [System.Exception]::new("Azure file share not found")
-}
-
-# The value given to the root parameter of the New-PSDrive cmdlet is the host address for the storage account, 
-# <storage-account>.file.core.windows.net for Azure Public Regions. $fileShare.StorageUri.PrimaryUri.Host is 
-# used because non-Public Azure regions, such as sovereign clouds or Azure Stack deployments, will have different 
-# hosts for Azure file shares (and other storage resources).
-$password = ConvertTo-SecureString -String $storageAccountKeys[0].Value -AsPlainText -Force
-$credential = New-Object System.Management.Automation.PSCredential -ArgumentList "AZURE\$($storageAccount.StorageAccountName)", $password
-New-PSDrive -Name <desired-drive-letter> -PSProvider FileSystem -Root "\\$($fileShare.StorageUri.PrimaryUri.Host)\$($fileShare.Name)" -Credential $credential -Persist
-```
-
-> [!Note]  
-> Při použití možnosti `-Persist` v rutině `New-PSDrive` bude možné sdílenou složku znovu připojit pouze při spuštění, pokud jsou přihlašovací údaje uložené. Přihlašovací údaje můžete uložit pomocí nástroje cmdkey, jek je [popsáno výše](#persisting-azure-file-share-credentials-in-windows). 
-
-V případě potřeby můžete sdílenou složku Azure odpojit pomocí následující rutiny PowerShellu.
-
-```powershell
-Remove-PSDrive -Name <desired-drive-letter>
-```
+Teď máte připojenou sdílenou složku Azure.
 
 ### <a name="mount-the-azure-file-share-with-file-explorer"></a>Připojení sdílené složky Azure pomocí Průzkumníka souborů
 > [!Note]  
@@ -182,7 +83,7 @@ Remove-PSDrive -Name <desired-drive-letter>
 
 1. Otevřete Průzkumníka souborů. Můžete to provést otevřením z nabídky Start nebo stisknutím klávesové zkratky Win+E.
 
-1. Na levé straně okna přejděte na položku **Tento počítač** . Tím se změní dostupné nabídky na pásu karet. V nabídce počítač vyberte **mapovat síťovou jednotku**.
+1. V levé části okna přejděte na **Tento počítač** . Tím se změní dostupné nabídky na pásu karet. V nabídce počítač vyberte **mapovat síťovou jednotku**.
     
     ![Snímek obrazovky s rozevírací nabídkou Připojit síťovou jednotku](./media/storage-how-to-use-files-windows/1_MountOnWindows10.png)
 
@@ -201,7 +102,7 @@ Remove-PSDrive -Name <desired-drive-letter>
 1. Až budete připraveni sdílenou složku Azure odpojit, můžete to provést tak, že v Průzkumníku souborů kliknete pravým tlačítkem na položku sdílené složky v části **Umístění v síti** a vyberete **Odpojit**.
 
 ### <a name="accessing-share-snapshots-from-windows"></a>Přístup ke snímkům sdílené složky z Windows
-Pokud jste ručně nebo automaticky prostřednictvím skriptu nebo služby jako Azure Backup pořídili snímek sdílené složky, můžete ve Windows zobrazit předchozí verze sdílené složky, adresáře nebo konkrétního souboru ze sdílené složky. Snímek sdílené složky můžete pořídit z [Azure Portal](storage-how-to-use-files-portal.md), [Azure POWERSHELL](storage-how-to-use-files-powershell.md)a [Azure CLI](storage-how-to-use-files-cli.md).
+Pokud jste ručně nebo automaticky prostřednictvím skriptu nebo služby jako Azure Backup pořídili snímek sdílené složky, můžete ve Windows zobrazit předchozí verze sdílené složky, adresáře nebo konkrétního souboru ze sdílené složky. Snímek sdílené složky můžete pořídit pomocí [Azure PowerShell](storage-how-to-use-files-powershell.md), [Azure CLI](storage-how-to-use-files-cli.md)nebo [Azure Portal](storage-how-to-use-files-portal.md).
 
 #### <a name="list-previous-versions"></a>Výpis předchozích verzí
 Přejděte k položce nebo nadřazené položce, kterou je potřeba obnovit. Dvojím kliknutím přejděte do požadovaného adresáře. Klikněte pravým tlačítkem a v nabídce vyberte **Vlastnosti**.
@@ -237,7 +138,7 @@ Následující tabulka obsahuje podrobné informace o stavu protokolu SMB 1 v je
 | Windows 8.1                               | Povoleno              | Odebrání pomocí funkce Windows | 
 | Windows Server 2012                       | Povoleno              | Zakázání pomocí registru       | 
 | Windows Server 2008 R2                    | Povoleno              | Zakázání pomocí registru       |
-| Windows 7                                 | Povoleno              | Zakázání pomocí registru       | 
+| Windows 7                                 | Povoleno              | Zakázání pomocí registru       | 
 
 ### <a name="auditing-smb-1-usage"></a>Auditování využití protokolu SMB 1
 > Platí pro Windows Server 2019, půlroční kanál Windows serveru (verze 1709 a 1803), Windows Server 2016, Windows 10 (verze 1507, 1607, 1703, 1709 a 1803), Windows Server 2012 R2 a Windows 8.1

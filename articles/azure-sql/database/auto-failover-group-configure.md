@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/14/2019
-ms.openlocfilehash: 13ca1ed4abef1eb367239a60ee7fe3d40ffee8d5
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 32543dffa492770d7217fb07652e41baf603ebcc
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195546"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85250906"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Konfigurace skupiny převzetí služeb při selhání pro Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -295,7 +295,7 @@ Převzetí služeb při selhání pro skupinu převezmete do sekundárního serv
 1. V podokně úloh vyberte **převzetí služeb při** selhání pro skupinu převzetí služeb při selhání, která obsahuje váš elastický fond.
 1. U upozornění, které vás upozorní na to, že relace TDS budou odpojeny, vyberte **Ano** .
 
-   ![Převzetí služeb při selhání ve skupině, která obsahuje vaše databáze SQL](./media/auto-failover-group-configure/failover-sql-db.png)
+   ![Převzetí služeb při selhání ve skupině, která obsahuje vaši databázi](./media/auto-failover-group-configure/failover-sql-db.png)
 
 1. Zkontrolujte, který server je primární a který server je sekundární. Pokud se převzetí služeb při selhání úspěšně převedlo, musí mít dva servery zaměnitelné role.
 1. Znovu vyberte **převzetí služeb při** selhání, abyste skupinu převzetí služeb při selhání mohli obnovit původní nastavení.

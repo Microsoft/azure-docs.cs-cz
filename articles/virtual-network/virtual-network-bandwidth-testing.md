@@ -7,17 +7,17 @@ documentationcenter: na
 author: steveesp
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/21/2017
 ms.author: steveesp
-ms.openlocfilehash: 80e8a5e5de1da2098d895e09b36fb209050743a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 964b0bd543e887cce304d785d18a651f50bd4c45
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60743069"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708242"
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>Testování šířky pásma a propustnosti (NTTTCP)
 
@@ -30,7 +30,7 @@ Pro účely tohoto testu musí být oba virtuální počítače buď ve stejné 
 
 Poznamenejte si IP adresu příjemce. Pojďme zavolat tuto IP adresu "a. b. c. r"
 
-Poznamenejte si počet jader na virtuálním počítači. Pojďme zavolat tuto "\#NUM\_Core"
+Poznamenejte si počet jader na virtuálním počítači. Pojďme zavolat tuto " \# NUM \_ Core"
 
 Spusťte test NTTTCP po dobu 300 sekund (nebo 5 minut) na virtuálním počítači odesílatele a na virtuálním počítači přijímače.
 
@@ -54,35 +54,35 @@ Parametry odesílatele: NTttcp-s 10.27.33.7-t 10-n 1-P 1
 
 Stáhnout nejnovější verzi:<https://gallery.technet.microsoft.com/NTttcp-Version-528-Now-f8b12769>
 
-Nebo ho vyhledejte, pokud je přesunutý:--měl by se nejdřív narazit. <https://www.bing.com/search?q=ntttcp+download> \<
+Nebo ho vyhledejte, pokud je přesunutý: <https://www.bing.com/search?q=ntttcp+download> \< --měl by se nejdřív narazit.
 
-Zvažte vložení NTTTCP do samostatné složky, jako je c\\: Tools
+Zvažte vložení NTTTCP do samostatné složky, jako je c: \\ Tools
 
 #### <a name="allow-ntttcp-through-the-windows-firewall"></a>Povolení NTTTCP přes bránu Windows Firewall
 Na PŘIJÍMAČi vytvořte v bráně Windows Firewall pravidlo povolení, které umožní doručení provozu NTTTCP. Je nejjednodušší povolit celý program NTTTCP podle názvu, ale Nepovolit příchozí konkrétní porty TCP.
 
 Povolte NTttcp přes bránu Windows Firewall takto:
 
-netsh advfirewall firewall Add rule program =\<cesta\>\\NTttcp. exe Name = "NTttcp" Protocol = any dir = in Action = Allow Enable = Yes Profile = any
+netsh advfirewall firewall Add rule program = \<PATH\> \\ntttcp.exe název = "NTttcp" Protocol = any dir = in Action = Allow Enable = Yes Profile = any
 
-Pokud jste například zkopírovali NTttcp. exe do složky "c:\\Tools", bude to příkaz: 
+Pokud jste například zkopírovali ntttcp.exe do složky "c: \\ Tools", bude to příkaz: 
 
-netsh advfirewall firewall Add rule program = c:\\Tools\\NTttcp. exe Name = "NTttcp" Protocol = any dir = in Action = Allow Enable = Yes Profile = any
+netsh advfirewall firewall Add rule program = c: \\ tools \\ntttcp.exe název = "NTttcp" Protocol = any dir = in Action = Allow Enable = Yes Profile = any
 
 #### <a name="running-ntttcp-tests"></a>Spouštění testů NTTTCP
 
 Spusťte NTTTCP na PŘIJÍMAČi (**spusťte z cmd**, ne z PowerShellu):
 
-NTttcp-r – m [2\*\#počet\_jader],\*, a. b. c. r-t 300
+NTttcp-r – m [2 \* \# počet \_ jader], \* , a. b. c. r-t 300
 
 Pokud má virtuální počítač čtyři jádra a IP adresu 10.0.0.4, může to vypadat takto:
 
-NTttcp-r – m 8,\*, 10.0.0.4-t 300
+NTttcp-r – m 8, \* , 10.0.0.4-t 300
 
 
 Spusťte NTTTCP na ODESILATELi (**spusťte z cmd**, ne z PowerShellu):
 
-NTttcp-s – m 8,\*, 10.0.0.4-t 300 
+NTttcp-s – m 8, \* , 10.0.0.4-t 300 
 
 Počkejte na výsledky.
 
@@ -132,13 +132,13 @@ V těchto scénářích doporučujeme povolit režim bez synchronizace, aby se t
 
 #### <a name="from-linux-to-windows"></a>Ze systému Linux na systém Windows:
 
-> \<přijímače Windows:
+Přijímač \<Windows> :
 
 ``` bash
 ntttcp -r -m <2 x nr cores>,*,<Windows server IP>
 ```
 
-> \<odesílatele pro Linux:
+Odesílatel \<Linux> :
 
 ``` bash
 ntttcp -s -m <2 x nr cores>,*,<Windows server IP> -N -t 300
@@ -146,13 +146,13 @@ ntttcp -s -m <2 x nr cores>,*,<Windows server IP> -N -t 300
 
 #### <a name="from-windows-to-linux"></a>Z Windows na Linux:
 
-> \<přijímače pro Linux:
+Přijímač \<Linux> :
 
 ``` bash
 ntttcp -r -m <2 x nr cores>,*,<Linux server IP>
 ```
 
-> \<pro odesílatele systému Windows:
+Odesílatel \<Windows> :
 
 ``` bash
 ntttcp -s -m <2 x nr cores>,*,<Linux  server IP> -ns -t 300

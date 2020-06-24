@@ -4,18 +4,18 @@ description: 'Přečtěte si, jak řešit potíže s Application Gatewaym server
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 11/16/2019
 ms.author: amsriva
-ms.openlocfilehash: a48ed39af243296bcb76cb61f1fe64e4e95ab7e7
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 1b0abe998540c4fcc0a9b83f6d1175e18a560871
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801735"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808158"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Řešení chyb Chybná brána ve službě Application Gateway
-<p class="alert is-flex is-primary"><span class="has-padding-left-medium has-padding-top-extra-small"><a class="button is-primary" href="https://azurevirtualsupportagent.services.microsoft.com?content=66c070b6-1c47-4c7f-b928-317a8c8b452f" target='_blank'>Začněte</a></span><span class="has-padding-small">rychle řešit potíže pomocí našeho virtuálního agenta a spusťte <b>automatizovanou diagnostiku.</b> </span> Prohlášení o <sub>zásadách ochrany osobních údajů</sub> <span class="has-padding-small"> <a href="https://privacy.microsoft.com/privacystatement" target='_blank'> <div align="right"></div></a></span></p>
+
 Naučte se řešit chybné chyby brány (502) přijaté při použití Azure Application Gateway.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -82,7 +82,7 @@ Při zřizování instance služby Application Gateway automaticky nakonfiguruje
 
 Následující tabulka uvádí hodnoty spojené s výchozím testem stavu:
 
-| Vlastnost sondy | Hodnota | Popis |
+| Vlastnost sondy | Hodnota | Description |
 | --- | --- | --- |
 | Adresa URL testu paměti |`http://127.0.0.1/` |Cesta URL |
 | Interval |30 |Interval testu paměti v sekundách |
@@ -106,12 +106,12 @@ Vlastní sondy stavu umožňují větší flexibilitu při výchozím chování 
 
 Jsou přidány následující další vlastnosti:
 
-| Vlastnost sondy | Popis |
+| Vlastnost sondy | Description |
 | --- | --- |
 | Name |Název sondy. Tento název se používá k odkazování na test v nastavení back-endu protokolu HTTP. |
 | Protocol (Protokol) |Protokol použitý k odeslání testu. Sonda používá protokol definovaný v nastavení back-endu HTTP. |
 | Hostitel |Název hostitele, který má odeslat test. Dá se použít jenom v případě, že je na aplikační bráně nakonfigurovaný vícenásobný Web. To se liší od názvu hostitele virtuálního počítače. |
-| Cesta |Relativní cesta sondy. Platná cesta začíná znakem/. Sonda se \<posílá do protokolu\>://\<hostitel\>:\<cesta portu\>\<\> |
+| Cesta |Relativní cesta sondy. Platná cesta začíná znakem/. Sonda se posílá do \<protocol\> :// \<host\> :\<port\>\<path\> |
 | Interval |Interval testu paměti v sekundách. Toto je časový interval mezi dvěma po sobě jdoucími sondami. |
 | Časový limit |Časový limit testu v sekundách. Pokud v tomto časovém limitu neobdrží platná odpověď, sonda je označena jako neúspěšná. |
 | Prahová hodnota pro poškozený stav |Počet opakování testu Back-end Server je označený po po sobě jdoucí počet po sobě jdoucích selhání testu dosáhne prahové hodnoty, která není v pořádku. |
@@ -121,8 +121,8 @@ Jsou přidány následující další vlastnosti:
 Ověřte, jestli je vlastní sonda stavu správně nakonfigurovaná jako předchozí tabulka. Kromě předchozích kroků pro řešení potíží také zajistěte následující:
 
 * Ujistěte se, že je test správně zadaný podle [Průvodce](application-gateway-create-probe-ps.md).
-* Pokud je Aplikační brána nakonfigurovaná pro jednu lokalitu, ve výchozím nastavení by měl být název hostitele zadaný `127.0.0.1`jako, pokud není v rámci vlastního testu nakonfigurovaný jinak.
-* Ujistěte se, že volání http://\<host\>:\<cesta\>\<\> portu vrátí kód výsledku HTTP 200.
+* Pokud je Aplikační brána nakonfigurovaná pro jednu lokalitu, ve výchozím nastavení by měl být název hostitele zadaný jako `127.0.0.1` , pokud není v rámci vlastního testu nakonfigurovaný jinak.
+* Ujistěte se, že volání http:// \<host\> : \<port\> \<path\> vrátí kód výsledku HTTP 200.
 * Zajistěte, aby interval, časový limit a UnhealtyThreshold byly v přijatelných oblastech.
 * Pokud používáte test HTTPS, ujistěte se, že back-end server nevyžaduje SNI konfigurací záložního certifikátu na back-end serveru.
 

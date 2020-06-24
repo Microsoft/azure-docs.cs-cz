@@ -4,15 +4,15 @@ description: Tento článek poskytuje informace o tom, jak upgradovat Applicatio
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 3903ccd1c15765d06cd1794a40567e2c70062538
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: f20302a4993da1754255254ce6d69c000750d4ab
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73795902"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84806784"
 ---
 # <a name="how-to-upgrade-application-gateway-ingress-controller-using-helm"></a>Postup upgradu kontroleru příchozího přenosu dat služby Application Gateway s využitím Helmu 
 
@@ -34,7 +34,7 @@ Než zahájíte postup upgradu, ujistěte se, že jste přidali požadované úl
         https://appgwingress.blob.core.windows.net/ingress-azure-helm-package/
     ```
 
-## <a name="upgrade"></a>Upgrade
+## <a name="upgrade"></a>Upgradovat
 
 1. Pokud chcete získat nejnovější verzi, aktualizujte úložiště AGIC Helm:
 
@@ -71,7 +71,7 @@ Než zahájíte postup upgradu, ujistěte se, že jste přidali požadované úl
     odd-billygoat   22              Fri Jun 21 15:56:06 2019        FAILED  ingress-azure-0.7.0-rc1 0.7.0-rc1       default
     ```
 
-    Instalace grafu Helm z výše uvedené odpovědi je pojmenována `odd-billygoat`. Tento název použijeme pro zbytek příkazů. Váš skutečný název nasazení se pravděpodobně bude lišit.
+    Instalace grafu Helm z výše uvedené odpovědi je pojmenována `odd-billygoat` . Tento název použijeme pro zbytek příkazů. Váš skutečný název nasazení se pravděpodobně bude lišit.
 
 1. Upgradujte nasazení Helm na novou verzi:
 
@@ -100,7 +100,7 @@ Pokud by nasazení Helm nebylo úspěšné, můžete vrátit zpět na předchoz�
     2               Fri Jun 21 15:56:06 2019        FAILED          ingress-azure-xx        xxxx
     ```
 
-    Z ukázkového výstupu `helm history` příkazu vypadá jako poslední úspěšné nasazení naší `odd-billygoat` revize.`1`
+    Z ukázkového výstupu `helm history` příkazu vypadá jako poslední úspěšné nasazení naší `odd-billygoat` Revize.`1`
 
 1. Vrátit zpět poslední úspěšnou revizi:
 

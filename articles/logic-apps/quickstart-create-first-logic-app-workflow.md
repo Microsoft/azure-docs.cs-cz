@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/20/2019
-ms.openlocfilehash: 3087b964ff5f9754d6552fc95625541ce94a6535
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 555230499ebda106cbca616b779ae632d65349ab
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82148001"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807857"
 ---
 # <a name="quickstart-create-your-first-workflow-by-using-azure-logic-apps---azure-portal"></a>Rychlý Start: vytvoření prvního pracovního postupu pomocí Azure Logic Apps-Azure Portal
 
@@ -45,14 +45,14 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí přihlašo
 
    | Vlastnost | Hodnota | Popis |
    |----------|-------|-------------|
-   | **Název** | <*Logic-App-Name*> | Název aplikace logiky, který může obsahovat jenom písmena, číslice, spojovníky (`-`), podtržítka`_`(), kulaté závorky`(`( `)`,) a tečky`.`(). Tento příklad používá "moji-First-Logic-App". |
+   | **Název** | <*Logic-App-Name*> | Název aplikace logiky, který může obsahovat jenom písmena, číslice, spojovníky ( `-` ), podtržítka ( `_` ), kulaté závorky ( `(` , `)` ) a tečky ( `.` ). Tento příklad používá "moji-First-Logic-App". <p><p>**Poznámka**: názvy pro Logic Apps musí být v různých oblastech jedinečné. |
    | **Předplatné** | <*Azure – předplatné – název*> | Název vašeho předplatného Azure |
-   | **Skupina prostředků** | <*Azure-Resource-Group-Name*> | Název [skupiny prostředků Azure](../azure-resource-manager/management/overview.md) , která slouží k uspořádání souvisejících prostředků. V tomto příkladu se používá "My-First-LA-RG". |
+   | **Skupina prostředků** | <*Azure-Resource-Group-Name*> | Název [skupiny prostředků Azure](../azure-resource-manager/management/overview.md) , která slouží k uspořádání souvisejících prostředků. V tomto příkladu se používá "My-First-LA-RG". <p><p>**Poznámka**: názvy skupin prostředků musí být v různých oblastech jedinečné. |
    | **Umístění** | <*Oblast Azure*> | Oblast, kam se mají ukládat informace o aplikaci logiky V tomto příkladu se používá "Západní USA". |
-   | **Log Analytics** | Vypnuto | Pokud chcete zapnout protokolování diagnostiky, ponechte nastavení **Vypnuto**. |
+   | **Log Analytics** | Vypnout | Pokud chcete zapnout protokolování diagnostiky, ponechte nastavení **Vypnuto**. |
    ||||
 
-1. Až Azure nasadí vaši aplikaci, vyberte na panelu nástrojů Azure možnost **oznámení** > **Přejít na prostředek** pro vaši nasazenou aplikaci logiky.
+1. Až Azure nasadí vaši aplikaci, vyberte na panelu nástrojů Azure možnost **oznámení**  >  **Přejít na prostředek** pro vaši nasazenou aplikaci logiky.
 
    ![Přejít na nově vytvořený prostředek aplikace logiky](./media/quickstart-create-first-logic-app-workflow/go-to-new-logic-app-resource.png)
 
@@ -78,7 +78,7 @@ Dále přidejte [trigger](../logic-apps/logic-apps-overview.md#logic-app-concept
 
    ![Nastavení triggeru s informačním kanálem RSS, frekvencí a intervalem](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-settings.png)
 
-   | Vlastnost | Hodnota | Popis |
+   | Vlastnost | Hodnota | Description |
    |----------|-------|-------------|
    | **Adresa URL informačního kanálu RSS** | `http://feeds.reuters.com/reuters/topNews` | Odkaz na informační kanál RSS, který chcete monitorovat |
    | **Doba** | 1 | Počet intervalů, po které se má čekat mezi kontrolami |
@@ -105,7 +105,7 @@ Teď přidejte [akci](../logic-apps/logic-apps-overview.md#logic-app-concepts) ,
 
 1. V části **Zvolte akci** a vyhledávací pole vyberte **vše**.
 
-1. Do vyhledávacího pole zadejte `send an email` , pokud chcete najít konektory, které tuto akci nabízejí. V seznamu akce vyberte akci "Odeslat e-mail" pro e-mailovou službu, kterou chcete použít. V tomto příkladu se používá konektor Outlooku pro Office 365, který má akci **Odeslat e-mail** .
+1. Do vyhledávacího pole zadejte, pokud `send an email` chcete najít konektory, které tuto akci nabízejí. V seznamu akce vyberte akci "Odeslat e-mail" pro e-mailovou službu, kterou chcete použít. V tomto příkladu se používá konektor Outlooku pro Office 365, který má akci **Odeslat e-mail** .
 
    ![Výběr akce Odeslat e-mail pro Office 365 Outlook](./media/quickstart-create-first-logic-app-workflow/add-action-send-email.png)
 

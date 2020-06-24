@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 12/30/2019
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 373b939ac63f31ccaf6a9f01fac92920e19074ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 80ca5b63a91da31a5b226a589e15fb202eabd4ad
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75553446"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84805776"
 ---
 # <a name="run-powershell-commands-with-azure-ad-credentials-to-access-blob-or-queue-data"></a>Spuštění příkazů PowerShellu s přihlašovacími údaji Azure AD pro přístup k datům objektů BLOB nebo Queue
 

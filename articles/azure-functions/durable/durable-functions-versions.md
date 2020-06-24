@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 4a117e7f69647af3ad82f9013bfa40556ccc0dbd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ba190f40d3b9451aec6e86ea69b7d0fe6e66aa3
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77152886"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807847"
 ---
 # <a name="durable-functions-versions-overview"></a>Přehled verzí Durable Functions
 
@@ -50,19 +50,19 @@ Nainstalujte ve svém projektu verzi 2. x [rozšíření vazby Durable Functions
 
 Durable Functions 2. x přináší několik přerušujících změn. Aplikace Durable Functions 1. x nejsou kompatibilní s Durable Functions 2. x bez změny kódu. V této části jsou uvedené některé změny, které je třeba provést při upgradu funkcí verze 1. x na 2. x.
 
-#### <a name="hostjson-schema"></a>Schéma Host. JSON
+#### <a name="hostjson-schema"></a>Host.jsve schématu
 
-Durable Functions 2. x používá nové schéma Host. JSON. Hlavní změny od 1. x zahrnují:
+Durable Functions 2. x používá nový host.jsve schématu. Hlavní změny od 1. x zahrnují:
 
 * `"storageProvider"`(a `"azureStorage"` dílčí část) pro konfiguraci specifickou pro úložiště.
 * `"tracing"`pro trasování a konfiguraci protokolování.
 * `"notifications"`(a `"eventGrid"` dílčí část) pro konfiguraci oznámení služby Event Grid.
 
-Podrobnosti najdete v [referenční dokumentaci k Durable Functions Host. JSON](durable-functions-bindings.md#durable-functions-2-0-host-json) .
+Podrobnosti najdete v tématu [Durable Functions host.jsv referenční dokumentaci](durable-functions-bindings.md#durable-functions-2-0-host-json) .
 
 #### <a name="default-taskhub-name-changes"></a>Výchozí změny názvu taskhub
 
-Pokud v Host. JSON není zadaný název centra úloh, ve verzi 1. x se použila výchozí hodnota "DurableFunctionsHub". Ve verzi 2. x je výchozí název centra úloh odvozený od názvu aplikace Function App. Z tohoto důvodu Pokud jste při upgradu na 2. x nezadali název centra úloh, váš kód bude pracovat s novým centrem úloh a všechny jeho orchestrace v letadle již nebudou aplikace zpracovávat. Pokud chcete tento problém obejít, můžete buď výslovně nastavit název centra úloh na hodnotu v1. x ve výchozím nastavení "DurableFunctionsHub", nebo můžete postupovat podle našeho [Průvodce nasazením s nulovými výpadky](durable-functions-zero-downtime-deployment.md) , kde najdete podrobné informace o tom, jak zpracovávat zásadní změny v rámci letů.
+Pokud ve verzi 1. x není název centra úloh zadaný v host.jsna, byl nastaven jako výchozí na hodnotu "DurableFunctionsHub". Ve verzi 2. x je výchozí název centra úloh odvozený od názvu aplikace Function App. Z tohoto důvodu Pokud jste při upgradu na 2. x nezadali název centra úloh, váš kód bude pracovat s novým centrem úloh a všechny jeho orchestrace v letadle již nebudou aplikace zpracovávat. Pokud chcete tento problém obejít, můžete buď výslovně nastavit název centra úloh na hodnotu v1. x ve výchozím nastavení "DurableFunctionsHub", nebo můžete postupovat podle našeho [Průvodce nasazením s nulovými výpadky](durable-functions-zero-downtime-deployment.md) , kde najdete podrobné informace o tom, jak zpracovávat zásadní změny v rámci letů.
 
 #### <a name="public-interface-changes-net-only"></a>Změny veřejného rozhraní (jenom .NET)
 
@@ -77,8 +77,12 @@ Následující tabulka představuje hlavní změny:
 | `DurableActivityContext` nebo `DurableActivityContextBase` | `IDurableActivityContext` |
 | `OrchestrationClientAttribute` | `DurableClientAttribute` |
 
-V případě, kdy abstraktní základní třída obsahovala virtuální metody, byly tyto virtuální metody nahrazeny metodami rozšíření definovanými `DurableContextExtensions`v.
+V případě, kdy abstraktní základní třída obsahovala virtuální metody, byly tyto virtuální metody nahrazeny metodami rozšíření definovanými v `DurableContextExtensions` .
 
-#### <a name="functionjson-changes-javascript-and-c-script"></a>změny funkce Function. JSON (skript JavaScript a C#)
+#### <a name="functionjson-changes-javascript-and-c-script"></a>function.jspři změnách (skript JavaScript a C#)
 
-V Durable Functions 1. x používá `type` vazba klienta Orchestration. `orchestrationClient` Místo toho používá `durableClient` verze 2. x.
+V Durable Functions 1. x používá vazba klienta Orchestration `type` `orchestrationClient` . Místo toho používá verze 2. x `durableClient` .
+
+#### <a name="raise-event-changes"></a>Vyvolat změny událostí
+
+V Durable Functions 1. x volání rozhraní API pro [vyvolání události](durable-functions-external-events.md#send-events) a zadání instance, která neexistovala, vedlo k chybě v tichém režimu. Počínaje 2. x je výsledkem vyvolání události neexistující orchestrace výjimka.

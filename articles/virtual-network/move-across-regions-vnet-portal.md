@@ -3,15 +3,15 @@ title: Přesuňte virtuální síť Azure do jiné oblasti Azure pomocí Azure P
 description: Přesuňte virtuální síť Azure z jedné oblasti Azure do jiné pomocí Správce prostředků šablony a Azure Portal.
 author: asudbring
 ms.service: virtual-network
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/26/2019
 ms.author: allensu
-ms.openlocfilehash: c54725d9a947b0c912a822686d7b2cffe1a7b5c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ed3da649ba65484a79b42ba5bb45431839e123d4
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75640784"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711438"
 ---
 # <a name="move-an-azure-virtual-network-to-another-region-by-using-the-azure-portal"></a>Přesuňte virtuální síť Azure do jiné oblasti pomocí Azure Portal
 
@@ -42,9 +42,9 @@ Pokud chcete exportovat virtuální síť a nasadit cílovou virtuální síť p
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com)a pak vyberte **skupiny prostředků**.
 1. Vyhledejte skupinu prostředků, která obsahuje zdrojovou virtuální síť, a pak ji vyberte.
-1. Vyberte **Nastavení** > **Exportovat šablonu**.
+1. Vyberte **Nastavení**  >  **Exportovat šablonu**.
 1. V podokně **Exportovat šablonu** vyberte **nasadit**.
-1. Chcete-li otevřít soubor *Parameters. JSON* v editoru online, vyberte možnost **Šablona** > **Upravit parametry**.
+1. Chcete-li otevřít *parameters.js* v souboru v editoru online, vyberte možnost **Šablona**  >  **Upravit parametry**.
 1. Chcete-li upravit parametr názvu virtuální sítě, změňte vlastnost **Value** v části **parametry**:
 
     ```json
@@ -63,7 +63,7 @@ Pokud chcete exportovat virtuální síť a nasadit cílovou virtuální síť p
 
 1. V editoru vyberte **Save (Uložit** ).
 
-1. Chcete-li otevřít soubor *template. JSON* v editoru online, vyberte **šablonu** > **Upravit šablonu**.
+1. Chcete-li otevřít *template.js* v souboru v editoru online, vyberte **šablonu**  >  **Upravit šablonu**.
 
 1. V online editoru můžete upravit cílovou oblast, do které se virtuální síť přesune, a změnit vlastnost **Location** v části **prostředky**:
 
@@ -85,11 +85,11 @@ Pokud chcete exportovat virtuální síť a nasadit cílovou virtuální síť p
 
     ```
 
-1. Pokud chcete získat kódy umístění oblastí, přečtěte si téma [umístění Azure](https://azure.microsoft.com/global-infrastructure/locations/). Kód oblasti je název oblasti, bez mezer (například **střed USA** = **centralus**).
+1. Pokud chcete získat kódy umístění oblastí, přečtěte si téma [umístění Azure](https://azure.microsoft.com/global-infrastructure/locations/). Kód oblasti je název oblasti, bez mezer (například **střed USA**  =  **centralus**).
 
 1. Volitelné V závislosti na vašich požadavcích můžete také změnit jiné parametry v šabloně.
 
-    * **Adresní prostor**: před uložením souboru můžete změnit adresní prostor virtuální sítě změnou části**addressSpace** **prostředků** > a změnou vlastnosti **addressPrefixes** :
+    * **Adresní prostor**: před uložením souboru můžete změnit adresní prostor virtuální sítě změnou **resources**  >  části**addressSpace** prostředků a změnou vlastnosti **addressPrefixes** :
 
         ```json
                 "resources": [
@@ -140,7 +140,7 @@ Pokud chcete exportovat virtuální síť a nasadit cílovou virtuální síť p
                 ]
         ```
 
-        Chcete-li změnit předponu adresy v souboru *template. JSON* , upravte ji na dvou místech: v kódu v předchozí části a v části **typ** následujícího kódu. Změňte vlastnost **addressPrefix** v následujícím kódu tak, aby odpovídala vlastnosti **addressPrefix** v kódu v předchozí části.
+        Chcete-li změnit předponu adresy v *template.js* souboru, upravte ji na dvou místech: v kódu v předchozí části a v části **typ** následujícího kódu. Změňte vlastnost **addressPrefix** v následujícím kódu tak, aby odpovídala vlastnosti **addressPrefix** v kódu v předchozí části.
 
         ```json
          "type": "Microsoft.Network/virtualNetworks/subnets",
@@ -178,13 +178,13 @@ Pokud chcete exportovat virtuální síť a nasadit cílovou virtuální síť p
 
 1. V online editoru vyberte Save ( **Uložit**).
 
-1. Pokud chcete zvolit předplatné, ve kterém se bude nasazovat cílová virtuální síť, vyberte**předplatné** **základní** > .
+1. Pokud chcete zvolit předplatné, ve kterém se bude nasazovat cílová virtuální síť **Basics**, vyberte  >  **předplatné**základní.
 
-1. Chcete-li zvolit skupinu prostředků, do které bude nasazena cílová virtuální síť, vyberte možnost**Skupina prostředků** **základní** > . 
+1. Chcete-li zvolit skupinu prostředků, do které bude nasazena cílová virtuální síť **Basics**, vyberte možnost  >  **Skupina prostředků**základní. 
 
     Pokud pro cílovou virtuální síť potřebujete vytvořit novou skupinu prostředků, vyberte **vytvořit novou**. Ujistěte se, že název není stejný jako název zdrojové skupiny prostředků ve stávající virtuální síti.
 
-1. Ověřte, zda je umístění **základních** > **umístění** nastaveno na cílové umístění, do kterého chcete virtuální síť nasadit.
+1. Ověřte, **Basics**zda  >  je umístění základních**umístění** nastaveno na cílové umístění, do kterého chcete virtuální síť nasadit.
 
 1. V části **Nastavení**ověřte, že se název shoduje s názvem, který jste zadali dříve v editoru parametrů.
 

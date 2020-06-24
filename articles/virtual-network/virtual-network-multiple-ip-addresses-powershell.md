@@ -8,17 +8,17 @@ manager: KumudD
 ms.service: virtual-network
 ms.subservice: ip-services
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/24/2017
 ms.author: allensu
-ms.openlocfilehash: e4197923fa71c719611bea7603113cab331d4ba8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 819b6af0d336e454aeeb67a9be62109cb6b08bb8
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82147793"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708225"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>Přiřazení více IP adres k virtuálním počítačům pomocí PowerShellu
 
@@ -35,7 +35,7 @@ Tento článek vysvětluje, jak pomocí PowerShellu vytvořit virtuální počí
 Následující postup vysvětluje, jak vytvořit ukázkový virtuální počítač s více IP adresami, jak je popsáno ve scénáři. Změňte hodnoty proměnných podle požadavků vaší implementace.
 
 1. Otevřete příkazový řádek PowerShellu a dokončete zbývající kroky v této části v rámci jedné relace PowerShellu. Pokud ještě nemáte nainstalované a nakonfigurované prostředí PowerShell, proveďte kroky popsané v článku [Postup instalace a konfigurace Azure PowerShell](/powershell/azure/overview) .
-2. Pomocí `Connect-AzAccount` příkazu se přihlaste ke svému účtu.
+2. Pomocí příkazu se přihlaste ke svému účtu `Connect-AzAccount` .
 3. Položky *myResourceGroup* a *westus* nahraďte názvem a umístěním, které zvolíte. Vytvořte skupinu prostředků. Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
    ```powershell
@@ -92,9 +92,9 @@ Následující postup vysvětluje, jak vytvořit ukázkový virtuální počíta
     -SecurityRules $NSGRule
     ```
 
-6. Definujte primární konfiguraci IP pro síťovou kartu. Pokud jste nepoužili dříve definovanou hodnotu, změňte 10.0.0.4 na platnou adresu v podsíti, kterou jste vytvořili. Před přiřazením statické IP adresy doporučujeme, abyste nejdřív zkontrolovali, že se už nepoužívá. Zadejte příkaz `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.4 -VirtualNetwork $VNet`. Pokud je adresa k dispozici, vrátí výstup *hodnotu true*. Pokud není k dispozici, vrátí výstup *hodnotu false* a seznam adres, které jsou k dispozici. 
+6. Definujte primární konfiguraci IP pro síťovou kartu. Pokud jste nepoužili dříve definovanou hodnotu, změňte 10.0.0.4 na platnou adresu v podsíti, kterou jste vytvořili. Před přiřazením statické IP adresy doporučujeme, abyste nejdřív zkontrolovali, že se už nepoužívá. Zadejte příkaz `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.4 -VirtualNetwork $VNet` . Pokud je adresa k dispozici, vrátí výstup *hodnotu true*. Pokud není k dispozici, vrátí výstup *hodnotu false* a seznam adres, které jsou k dispozici. 
 
-    V následujících příkazech **nahraďte \<text Replace-with-unique-Name> jedinečným názvem DNS, který chcete použít.** Název musí být jedinečný napříč všemi veřejnými IP adresami v oblasti Azure. Toto je volitelný parametr. Pokud se chcete k virtuálnímu počítači připojit jenom pomocí veřejné IP adresy, můžete ho odebrat.
+    V následujících příkazech **nahraďte \<replace-with-your-unique-name> jedinečným názvem DNS, který se má použít.** Název musí být jedinečný napříč všemi veřejnými IP adresami v oblasti Azure. Toto je volitelný parametr. Pokud se chcete k virtuálnímu počítači připojit jenom pomocí veřejné IP adresy, můžete ho odebrat.
 
     ```powershell
     

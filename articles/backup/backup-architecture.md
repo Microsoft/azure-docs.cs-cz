@@ -4,11 +4,11 @@ description: Poskytuje přehled architektury, komponent a procesů, které použ
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.openlocfilehash: b093c6702bb26fe537622727fe1b623141bf4160
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79273615"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707919"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Architektura Azure Backup a součásti
 
@@ -44,15 +44,15 @@ Recovery Services trezory mají následující funkce:
 - Zálohované položky můžete monitorovat v trezoru, včetně virtuálních počítačů Azure a místních počítačů.
 - Přístup k trezoru můžete spravovat pomocí [řízení přístupu na základě role (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)v Azure.
 - Určíte, jak se data v trezoru replikují pro redundanci:
-  - **Místně redundantní úložiště (LRS)**: Pokud chcete chránit před selháním v datacentru, můžete použít LRS. LRS replikuje data do jednotky škálování úložiště. [Další informace](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs).
-  - **Geograficky redundantní úložiště (GRS)**: Pokud chcete chránit před výpadky v rámci oblastí, můžete použít GRS. GRS replikuje vaše data do sekundární oblasti. [Další informace](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs).
+  - **Místně redundantní úložiště (LRS)**: Pokud chcete chránit před selháním v datacentru, můžete použít LRS. LRS replikuje data do jednotky škálování úložiště. [Přečtěte si další informace](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs).
+  - **Geograficky redundantní úložiště (GRS)**: Pokud chcete chránit před výpadky v rámci oblastí, můžete použít GRS. GRS replikuje vaše data do sekundární oblasti. [Přečtěte si další informace](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs).
   - Ve výchozím nastavení používají trezory Recovery Services GRS.
 
 ## <a name="backup-agents"></a>Agenti zálohování
 
 Azure Backup poskytuje různé agenty zálohování v závislosti na tom, jaký typ počítače se zálohuje:
 
-**Agent** | **Zobrazí**
+**Agenta** | **Podrobnosti**
 --- | ---
 **Agent MARS** | <ul><li>Spouští se na jednotlivých místních počítačích Windows serveru pro zálohování souborů, složek a stavu systému.</li> <li>Spouští se na virtuálních počítačích Azure pro zálohování souborů, složek a stavu systému.</li> <li>Spouští na serverech DPM nebo MABS k zálohování místního úložiště aplikace DPM/MABS do Azure.</li></ul>
 **Rozšíření virtuálního počítače Azure** | Spustí se na virtuálních počítačích Azure, které je zálohují do trezoru.
@@ -61,7 +61,7 @@ Azure Backup poskytuje různé agenty zálohování v závislosti na tom, jaký 
 
 Následující tabulka popisuje různé typy zálohování a jejich použití:
 
-**Typ zálohování** | **Zobrazí** | **Využívání**
+**Typ zálohování** | **Podrobnosti** | **Použití**
 --- | --- | ---
 **Do bloku** | Úplná záloha obsahuje celý zdroj dat. Trvá větší šířku pásma sítě než rozdílové nebo přírůstkové zálohy. | Slouží k prvotnímu zálohování.
 **Diferenciál** |  Rozdílové zálohování ukládá bloky, které se od počátečního úplného zálohování změnily. Používá menší množství sítě a úložiště a neuchovává redundantní kopie nezměněných dat.<br/><br/> Neefektivní vzhledem k tomu, že se přenesou a ukládají datové bloky nezměněné mezi novějšími zálohami. | Nepoužívá se Azure Backup.
@@ -71,7 +71,7 @@ Následující tabulka popisuje různé typy zálohování a jejich použití:
 
 Následující tabulka popisuje různé typy záloh používaných pro SQL Server databáze a četnost jejich používání:
 
-**Typ zálohování** | **Zobrazí** | **Využívání**
+**Typ zálohování** | **Podrobnosti** | **Použití**
 --- | --- | ---
 **Úplné zálohování** | Úplná záloha databáze zálohuje celou databázi. Obsahuje všechna data v konkrétní databázi nebo v sadě skupin souborů nebo souborů. Úplné zálohování také obsahuje dostatek protokolů pro obnovení těchto dat. | Maximálně můžete aktivovat jednu úplnou zálohu denně.<br/><br/> Můžete si zvolit, že chcete vytvořit úplnou zálohu na denní nebo týdenní interval.
 **Rozdílové zálohování** | Rozdílová záloha vychází z poslední předchozí zálohy na základě úplného zálohování dat.<br/><br/> Zachycuje jenom data, která se od úplného zálohování změnila. |  Ve většině případů můžete aktivovat jednu rozdílovou zálohu za den.<br/><br/> V jednom dni nemůžete nakonfigurovat úplnou zálohu a rozdílovou zálohu.
@@ -95,8 +95,8 @@ Následující tabulka shrnuje podporované funkce pro různé typy zálohován�
 **Funkce** | **Přímé zálohování souborů a složek (pomocí agenta MARS)** | **Zálohování virtuálních počítačů Azure** | **Počítače nebo aplikace s DPM/MABS**
 --- | --- | --- | ---
 Zálohování do trezoru | ![Ano][green] | ![Ano][green] | ![Ano][green]
-Zálohování na disk DPM/MABS, potom do Azure | | | ![Ano][green]
-Komprimovat data odesílaná k zálohování | ![Ano][green] | Při přenosu dat se nepoužívá žádná komprese. Úložiště je mírně nepatrné, ale obnovení je rychlejší.  | ![Ano][green]
+Zálohování na disk DPM/MABS, potom do Azure | | | ![Yes][green]
+Komprimovat data odesílaná k zálohování | ![Yes][green] | Při přenosu dat se nepoužívá žádná komprese. Úložiště je mírně nepatrné, ale obnovení je rychlejší.  | ![Yes][green]
 Spustit přírůstkové zálohování |![Ano][green] |![Ano][green] |![Ano][green]
 Zálohování disků s odstraněnými duplicitními daty | | | ![Částečně][yellow]<br/><br/> Jenom pro servery DPM/MABS nasazené místně.
 

@@ -4,15 +4,15 @@ description: V tomto kurzu se naučíte, jak pomocí Azure Virtual WAN vytvořit
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: cherylmc
-ms.openlocfilehash: b1e6305d142530ab19849f61f12a122d0c6434aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d3a2c85540a4efa2f934605c4c056b458e2879ca
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80059303"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84749601"
 ---
 # <a name="expressroute-encryption-ipsec-over-expressroute-for-virtual-wan"></a>Šifrování ExpressRoute: protokol IPsec over ExpressRoute pro virtuální síť WAN
 
@@ -54,7 +54,7 @@ V obou těchto příkladech pošle Azure provoz do 10.0.1.0/24 přes připojení
 > Pokud budete *stejné* předpony inzerovat přes ExpressRoute i připojení VPN, Azure použije cestu ExpressRoute přímo bez ochrany VPN.
 >
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 [!INCLUDE [Before you begin](../../includes/virtual-wan-tutorial-vwan-before-include.md)]
 

@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
 ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4dd525973a8c8ba5bb3103126b4ddb5b6973590a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 334f239ea8382a67add9655d4a25f98d254567d3
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78205020"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743945"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Konfigurace nastavení role Azure AD v Privileged Identity Management
 
@@ -44,7 +44,7 @@ Pomocí těchto kroků otevřete nastavení role Azure AD.
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) s uživatelem v roli [správce privilegované role](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) .
 gt
-1. Otevřete **Azure AD Privileged Identity Management** &gt; &gt; **Nastavení role** **role Azure AD** .
+1. Otevřete **Azure AD Privileged Identity Management** &gt; Nastavení role **role Azure AD** &gt; **Role settings**.
 
     ![Stránka nastavení role se seznamem rolí Azure AD](./media/pim-how-to-change-default-settings/role-settings.png)
 
@@ -167,7 +167,7 @@ Použijte přepínač **lístku incident/požadavek** , který vyžádá oprávn
 
 Pomocí přepínače **Multi-Factor Authentication** určete, jestli se má vyžadovat, aby uživatelé před aktivací svých rolí vyžadovali ověření své identity pomocí vícefaktorového ověřování. Musí jenom ověřit identitu jenom jednou pro každou relaci, a ne pokaždé, když se role aktivuje. Při povolování vícefaktorového ověřování je potřeba mít na paměti dvě tipy:
 
-- Uživatelé, kteří mají účty Microsoft pro své e-mailové adresy (obvykle @outlook.comale ne vždycky), se nemůžou zaregistrovat pro Azure Multi-Factor Authentication. Pokud chcete přiřadit role uživatelům s účty Microsoft, měli byste je buď zaměnit, nebo zakázat službu Multi-Factor Authentication pro danou roli.
+- Uživatelé, kteří mají účty Microsoft pro své e-mailové adresy (obvykle @outlook.com ale ne vždycky), se nemůžou zaregistrovat pro Azure Multi-Factor Authentication. Pokud chcete přiřadit role uživatelům s účty Microsoft, měli byste je buď zaměnit, nebo zakázat službu Multi-Factor Authentication pro danou roli.
 - Nemůžete zakázat Azure Multi-Factor Authentication pro role s vysokou úrovní oprávnění pro Azure AD a Office 365. Tato bezpečnostní funkce pomáhá chránit následující role:  
   
   - Správce Azure Information Protection
@@ -186,7 +186,7 @@ Pomocí přepínače **Multi-Factor Authentication** určete, jestli se má vyž
   - Správce zabezpečení
   - Správce SharePointu
   - Správce Skypu pro firmy
-  - Správce uživatele
+  - Správce uživatelů
 
 Další informace naleznete v tématu [Multi-Factor Authentication a Privileged Identity Management](pim-how-to-require-mfa.md).
 

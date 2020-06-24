@@ -46,7 +46,7 @@ Následující tabulka uvádí scénáře obnovení k bodu v čase pro spravovan
 
 |           |Obnovení existující databáze na stejnou instanci spravované instance SQL| Obnovit existující databázi do jiné spravované instance SQL|Obnovit vyřazenou databázi do stejné spravované instance SQL|Obnovit vyřazenou databázi do jiné spravované instance SQL|
 |:----------|:----------|:----------|:----------|:----------|
-|**portál Azure**| Ano|No |Ano|Ne|
+|**portál Azure**| Yes|No |Yes|No|
 |**Azure CLI**|Ano |Ano |Ne|Ne|
 |**PowerShell**| Ano|Ano |Ano|Ano|
 

@@ -5,15 +5,15 @@ description: Tento článek poskytuje informace o tom, jak řešit problémy s s
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: f5f5c16f3d6aa1d7115e99cbae0dbd6cd926b25a
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 5acf4ac1ec75d5cec057e4b66e3c6cbd8a463271
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82202532"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808018"
 ---
 # <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>Řešení potíží s spřažením relací Azure Application Gateway
 
@@ -161,7 +161,7 @@ Nástroje pro ladění webu, jako je Fiddler, vám můžou přispět k ladění 
 
 Použijte webový ladicí program podle vašeho výběru. V této ukázce použijeme Fiddler k zachycení a analýze přenosů http nebo https, postupujte podle pokynů:
 
-1. Stáhněte si nástroj Fiddler na <https://www.telerik.com/download/fiddler>adrese.
+1. Stáhněte si nástroj Fiddler na adrese <https://www.telerik.com/download/fiddler> .
 
     > [!NOTE]
     > Vyberte Fiddler4, pokud je v zachytávání počítač nainstalovaný .NET 4. V opačném případě vyberte možnost Fiddler2.
@@ -174,7 +174,7 @@ Použijte webový ladicí program podle vašeho výběru. V této ukázce použi
 
     ![řešení potíží – spřažení relace – problémy – 13](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-13.png)
 
-4. Pravděpodobně budete zajímat dešifrovaný provoz https a můžete povolit dešifrování pomocí protokolu HTTPS výběrem **nástrojů** > **Fiddler Options**a zaškrtnutím políčka " **dešifrování přenosů https**".
+4. Pravděpodobně budete zajímat dešifrovaný provoz https a můžete povolit dešifrování pomocí protokolu HTTPS výběrem **nástrojů**  >  **Fiddler Options**a zaškrtnutím políčka " **dešifrování přenosů https**".
 
     ![řešení potíží – spřažení relace – problémy – 14](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-14.png)
 
@@ -182,7 +182,7 @@ Použijte webový ladicí program podle vašeho výběru. V této ukázce použi
 
     ![řešení potíží – spřažení relace – problémy-15](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-15.png)
 
-6. Po reprodukování problému uložte soubor k revizi tak, že vyberete **soubor** > **Uložit** > **všechny relace..**. 
+6. Po reprodukování problému uložte soubor k revizi tak, že vyberete **soubor**  >  **Uložit**  >  **všechny relace..**. 
 
     ![řešení potíží – spřažení relace – problémy – 16](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-16.png)
 

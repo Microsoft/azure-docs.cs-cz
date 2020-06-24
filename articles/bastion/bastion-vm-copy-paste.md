@@ -4,15 +4,15 @@ description: V tomto článku se dozvíte, jak kopírovat a vkládat do a z virt
 services: bastion
 author: charwen
 ms.service: bastion
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: charwen
-ms.openlocfilehash: 8580b7e28c8a4860739efa0763ebb7c20a80585e
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 4e818617b70e874153e026bcf40b6dfee8a8e04e
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780279"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84744234"
 ---
 # <a name="copy-and-paste-to-a-virtual-machine-azure-bastion"></a>Zkopírování a vložení do virtuálního počítače: Azure bastionu
 

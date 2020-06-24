@@ -4,15 +4,15 @@ description: V tomto článku se dozvíte, jak řešit potíže s Azure bastionu
 services: bastion
 author: charwen
 ms.service: bastion
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 10/16/2019
 ms.author: charwen
-ms.openlocfilehash: 749d7125c013f419197ef8243d2475e612dc81b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ab4cc288f2a505baaa8f3a70db0a1fe76fb20c96
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80619171"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84744064"
 ---
 # <a name="troubleshoot-azure-bastion"></a>Řešení potíží se službou Azure Bastion
 
@@ -20,7 +20,7 @@ V tomto článku se dozvíte, jak řešit potíže s Azure bastionu.
 
 ## <a name="unable-to-create-an-nsg-on-azurebastionsubnet"></a><a name="nsg"></a>Nejde vytvořit NSG na AzureBastionSubnet.
 
-**Otázka:** Při pokusu o vytvoření NSG v podsíti Azure bastionu se zobrazí následující chyba: * <NSG name> skupina zabezpečení sítě nemá potřebná pravidla pro podsíť Azure bastionu AzureBastionSubnet*.
+**Otázka:** Při pokusu o vytvoření NSG v podsíti Azure bastionu se zobrazí následující chyba: *Skupina zabezpečení sítě nemá <NSG name> potřebná pravidla pro podsíť Azure bastionu AzureBastionSubnet*.
 
 **A:** Pokud vytvoříte a použijete NSG na *AzureBastionSubnet*, ujistěte se, že jste do svého NSG přidali následující pravidla. Pokud tato pravidla nepřidáte, vytvoření nebo aktualizace NSG se nezdaří.
 
@@ -39,7 +39,7 @@ Další informace najdete v tématu [doprovodné materiály k NSG pro Azure bast
 
 Jako příklad můžete použít následující příkaz k vytvoření nového klíče RSA SSH:
 
-**ssh-keygen-t RSA-b 4096-C "email@domain.com"**
+**ssh-keygen-t RSA-b 4096-C " email@domain.com "**
 
 Výstup:
 
@@ -71,7 +71,7 @@ The key's randomart image is:
 
 **Otázka:** Nedaří se mi připojit se k virtuálnímu počítači s Windows, který je připojený k doméně.
 
-**A:** Azure bastionu podporuje přihlášení virtuálních počítačů připojených k doméně pro přihlašovací uživatelské jméno a heslo. Při zadávání přihlašovacích údajů domény v Azure Portal použijte k přihlášení formát UPNusername@domain() místo formátu *doména \ uživatelské_jméno* . To je podporováno pro virtuální počítače připojené k doméně nebo Hybrid-JOINED (jak je připojeno k doméně i Azure AD). U virtuálních počítačů, které jsou jenom připojené k Azure AD, se nepodporuje.
+**A:** Azure bastionu podporuje přihlášení virtuálních počítačů připojených k doméně pro přihlašovací uživatelské jméno a heslo. Při zadávání přihlašovacích údajů domény v Azure Portal použijte username@domain k přihlášení formát UPN () místo formátu *doména \ uživatelské_jméno* . To je podporováno pro virtuální počítače připojené k doméně nebo Hybrid-JOINED (jak je připojeno k doméně i Azure AD). U virtuálních počítačů, které jsou jenom připojené k Azure AD, se nepodporuje.
 
 ## <a name="file-transfer-issues"></a><a name="filetransfer"></a>Problémy s přenosem souborů
 

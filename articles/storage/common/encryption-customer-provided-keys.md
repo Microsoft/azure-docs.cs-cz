@@ -8,14 +8,14 @@ ms.service: storage
 ms.date: 03/12/2020
 ms.topic: conceptual
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: c8a5555c5c33255fdc5902a115e7e9103a4e936f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0e5a85bcc4ded3b4bf3fcbcaf095d7c8ef01c458
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79410061"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84805319"
 ---
 # <a name="provide-an-encryption-key-on-a-request-to-blob-storage-preview"></a>Zadání šifrovacího klíče pro požadavek na úložiště objektů BLOB (Preview)
 
@@ -25,7 +25,7 @@ Klienti, kteří provádějí požadavky na úložiště objektů BLOB v Azure, 
 
 Když klientská aplikace poskytuje šifrovací klíč na žádost, Azure Storage provádí šifrování a dešifrování transparentně při čtení a zápisu dat objektů BLOB. Azure Storage zapíše hodnotu hash SHA-256 šifrovacího klíče spolu s obsahem objektu BLOB. Hodnota hash se používá k ověření, že všechny následné operace s objektem BLOB používají stejný šifrovací klíč.
 
-Azure Storage neukládá ani nespravuje šifrovací klíč, který klient s požadavkem odesílá. Klíč se bezpečně zahodí ihned po dokončení procesu šifrování nebo dešifrování.
+Azure Storage neukládá ani nespravuje šifrovací klíč, který klient s požadavkem odesílá. Klíč se okamžitě po dokončení procesu šifrování nebo dešifrování bezpečně odstraní.
 
 Když klient vytvoří nebo aktualizuje objekt BLOB pomocí klíče dodaného zákazníkem v žádosti, musí klíč zadat i následné žádosti o čtení a zápis tohoto objektu BLOB. Pokud klíč není k dispozici u žádosti o objekt blob, který již byl zašifrován pomocí klíče poskytnutého zákazníkem, požadavek se nezdařil s kódem chyby 409 (konflikt).
 
@@ -39,7 +39,7 @@ Každý snímek objektu BLOB může mít vlastní šifrovací klíč.
 
 V případě volání REST můžou klienti pomocí následujících hlaviček bezpečně předat informace o šifrovacím klíči na žádost do úložiště objektů BLOB:
 
-|Hlavička požadavku | Popis |
+|Hlavička požadavku | Description |
 |---------------|-------------|
 |`x-ms-encryption-key` |Vyžaduje se pro požadavky zápisu i čtení. Hodnota šifrovacího klíče AES-256 kódovaná v kódování Base64. |
 |`x-ms-encryption-key-sha256`| Vyžaduje se pro požadavky zápisu i čtení. SHA256 šifrovacího klíče zakódovaného ve formátu base64. |
@@ -77,4 +77,4 @@ Pokud chcete otočit šifrovací klíč, který se použil k zašifrování obje
 ## <a name="next-steps"></a>Další kroky
 
 - [Určení klíče poskytovaného zákazníkem pro požadavek na úložiště objektů BLOB s využitím .NET](../blobs/storage-blob-customer-provided-key.md)
-- [Azure Storage šifrování dat v klidovém umístění](storage-service-encryption.md)
+- [Šifrování služby Azure Storage pro neaktivní uložená data](storage-service-encryption.md)

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: robinsh
 ms.openlocfilehash: c43c142b22709d42416b2dd14dfc78812970916a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79284730"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708106"
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>Vytvoření centra IoT pomocí Azure Portal
 
@@ -20,7 +20,7 @@ ms.locfileid: "79284730"
 
 Tento článek popisuje, jak vytvořit a spravovat centra IoT pomocí [Azure Portal](https://portal.azure.com).
 
-Pokud chcete použít kroky v tomto kurzu, budete potřebovat předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud chcete použít kroky v tomto kurzu, budete potřebovat předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
@@ -86,7 +86,7 @@ Klikněte na **Vybrat kontejner** a vyberte účet úložiště a kontejner. Kdy
 
 V případě **zdroje dat**vyberte zprávy telemetrie zařízení. 
 
-Pak přidejte dotaz směrování. V tomto příkladu `level` `critical` jsou zprávy, které mají vlastnost aplikace nazvané s hodnotou rovnou, směrovány do účtu úložiště.
+Pak přidejte dotaz směrování. V tomto příkladu jsou zprávy, které mají vlastnost aplikace nazvané `level` s hodnotou rovnou, `critical` směrovány do účtu úložiště.
 
 ![Snímek obrazovky, který ukazuje uložení nového pravidla směrování](./media/iot-hub-create-through-portal/iot-hub-add-route.png)
 
@@ -112,7 +112,7 @@ Tady jsou dva způsoby, jak v předplatném najít konkrétní centrum IoT:
 
 1. Pokud znáte skupinu prostředků, do které Centrum IoT patří, klikněte na **skupiny prostředků**a pak v seznamu vyberte skupinu prostředků. Na obrazovce skupina prostředků se zobrazí všechny prostředky v této skupině, včetně centra IoT. Klikněte na centrum, pro které hledáte.
 
-2. Klikněte na **Všechny prostředky**. V podokně **všechny prostředky** je rozevírací seznam, který je ve výchozím nastavení nastaven `All types`jako výchozí. Klikněte na rozevírací seznam a zrušte jeho `Select all`kontrolu. Vyhledejte `IoT Hub` ho a podívejte se na něj. Kliknutím na rozevírací seznam ho zavřete a položky se vyfiltrují, aby se zobrazily jenom vaše centra IoT.
+2. Klikněte na **Všechny prostředky**. V podokně **všechny prostředky** je rozevírací seznam, který je ve výchozím nastavení nastaven jako výchozí `All types` . Klikněte na rozevírací seznam a zrušte jeho kontrolu `Select all` . Vyhledejte `IoT Hub` ho a podívejte se na něj. Kliknutím na rozevírací seznam ho zavřete a položky se vyfiltrují, aby se zobrazily jenom vaše centra IoT.
 
 ## <a name="delete-the-iot-hub"></a>Odstranit centrum IoT
 

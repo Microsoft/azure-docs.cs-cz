@@ -3,8 +3,8 @@ title: Konfigurace & Správa odkazů na obsah
 titleSuffix: Azure SQL Managed Instance
 description: Referenční příručka obsahu, která vás učí, jak nakonfigurovat a spravovat spravovanou instanci Azure SQL.
 services: sql-database
-ms.service: sql-database
-ms.subservice: managed-instance
+ms.service: sql-managed-instance
+ms.subservice: operations
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlr
 ms.date: 04/16/2019
-ms.openlocfilehash: 39e43368e41305e9cdd0a685ea98adde71244b33
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 23ce3272d99401340d784f88dd537baa55774a63
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84216348"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708820"
 ---
 # <a name="azure-sql-managed-instance-content-reference"></a>Referenční dokumentace obsahu spravované instance Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

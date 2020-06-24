@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: b46e8efb252224f83603000777b2e342f7e7ab9d
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 19503fa2257f42cf896dbfb831d4165e329134b2
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684440"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85250345"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Infrastruktura aktualizace Red Hat pro virtuální počítače na vyžádání Red Hat Enterprise Linux v Azure
  RHUI ( [Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) ) umožňuje poskytovatelům cloudu, jako je Azure, zrcadlit obsah úložiště hostovaného na Red Hat, vytvářet vlastní úložiště pomocí obsahu specifického pro Azure a zpřístupňuje je pro virtuální počítače koncových uživatelů.
@@ -83,7 +83,7 @@ RedHat:RHEL:7.6:7.6.2019062116
 >[!NOTE]
 > EUS se v RHEL Extras nepodporuje. To znamená, že pokud instalujete balíček, který je obvykle dostupný z kanálu RHEL Extras, nebudete ho moct v EUS použít. Životní cyklus produktu Red Hat Extras je [zde](https://access.redhat.com/support/policy/updates/extras/)podrobně popsán.
 
-V době psaní tohoto zápisu skončila podpora EUS pro RHEL <= 7,4. Další podrobnosti najdete v části "Red Hat Enterprise Linux delší podporované doplňky" v [dokumentaci k Red Hat](https://access.redhat.com/support/policy/updates/errata/) .
+V době psaní tohoto zápisu skončila podpora EUS pro RHEL <= 7,4. Další podrobnosti najdete v části "Rozšířená údržba Red Hat Enterprise Linux" v [dokumentaci k Red Hat](https://access.redhat.com/support/policy/updates/errata/#Long_Support) .
 * RHEL 7,4 EUS Podpora končí 31. srpna 2019
 * RHEL 7,5 EUS Podpora končí 30. dubna 2020
 * RHEL 7,6 EUS Podpora končí 31. října 2020
@@ -164,13 +164,18 @@ Pokud používáte konfiguraci sítě k dalšímu omezení přístupu z virtuál
 51.5.243.77
 51.4.228.145
 ```
+>[!NOTE]
+>Nové image vlády Azure USA, od ledna 2020, budou používat veřejnou IP adresu uvedenou v části globální hlavička Azure výše.
+
+>[!NOTE]
+>Všimněte si také, že Azure Německo je zastaralá ve prospěch veřejných oblastí Německa. Doporučení pro zákazníky Azure v Německu je začít ukazovat na veřejné RHUI pomocí kroků uvedených [tady](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/redhat-rhui#manual-update-procedure-to-use-the-azure-rhui-servers).
 
 ## <a name="azure-rhui-infrastructure"></a>Infrastruktura Azure RHUI
 
 
 ### <a name="update-expired-rhui-client-certificate-on-a-vm"></a>Aktualizace certifikátu klienta RHUI s vypršenou platností na virtuálním počítači
 
-Pokud používáte starší image virtuálního počítače s RHEL, třeba RHEL 7,4 (Image URN: `RedHat:RHEL:7.4:7.4.2018010506` ), dojde k problémům s připojením k RHUI v důsledku certifikátu klienta TLS/SSL s vypršenou platností. Chyba, kterou vidíte, může vypadat jako _"partner SSL odmítl váš certifikát jako neplatný"_ nebo _"Chyba: nejde načíst metadata úložiště (repomd. XML) pro úložiště:... Ověřte prosím cestu a zkuste to znovu_. Pokud chcete tento problém vyřešit, aktualizujte prosím na virtuálním počítači balíček klienta RHUI pomocí následujícího příkazu:
+Pokud používáte starší image virtuálního počítače s RHEL, třeba RHEL 7,4 (Image URN: `RedHat:RHEL:7.4:7.4.2018010506` ), dojde k problémům s připojením k RHUI v důsledku certifikátu klienta TLS/SSL s vypršenou platností. Chyba, kterou vidíte, může vypadat jako _"partner SSL odmítl váš certifikát jako neplatný"_ nebo _"Chyba: nejde načíst metadata úložiště (repomd.xml) pro úložiště:... Ověřte prosím cestu a zkuste to znovu_. Pokud chcete tento problém vyřešit, aktualizujte prosím na virtuálním počítači balíček klienta RHUI pomocí následujícího příkazu:
 
 ```bash
 sudo yum update -y --disablerepo='*' --enablerepo='*microsoft*'

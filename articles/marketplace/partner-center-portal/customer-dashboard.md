@@ -6,13 +6,13 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 12/11/2019
-ms.openlocfilehash: dcb9f554b214813439ab8753cf21e7d11a0fba56
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.date: 06/15/2020
+ms.openlocfilehash: 77541cc9f8a90335aedae0806981cbd8cca1f84d
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83872574"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807785"
 ---
 # <a name="customer-dashboard-in-commercial-marketplace-analytics"></a>Řídicí panel Zákazníci v analýzách komerčního marketplace
 

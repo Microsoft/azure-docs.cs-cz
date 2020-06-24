@@ -31,7 +31,7 @@ Odkazy níže poskytují užitečné prostředky pro vývojáře pomocí Azure S
 - [Zdrojový kód knihovny](https://github.com/Azure/azure-storage-net/tree/master/Blob)
 - [Package (NuGet) pro verzi 11. x](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)
 - [Package (NuGet) pro verzi 12. x](https://www.nuget.org/packages/Azure.Storage.Blobs)
-- [Ukázky](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob)
+- [ukázky](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob)
 
 ### <a name="net-tools"></a>Nástroje .NET
 

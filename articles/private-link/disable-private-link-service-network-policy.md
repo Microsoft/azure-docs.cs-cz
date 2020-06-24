@@ -4,19 +4,19 @@ description: Informace o zakázání zásad sítě pro privátní připojení Az
 services: private-link
 author: malopMSFT
 ms.service: private-link
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 4c6bd64d141341e0b7fa5641e04320a95d7951bb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1062f126da8be6b37f6b52eee520425b3edcde16
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75452993"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84744336"
 ---
 # <a name="disable-network-policies-for-private-link-service-source-ip"></a>Zakázat zásady sítě pro zdrojovou IP adresu služby privátního propojení
 
-Aby bylo možné zvolit zdrojovou IP adresu pro službu privátního propojení, je v podsíti vyžadováno `privateLinkServiceNetworkPolicies` explicitní nastavení zakázání. Toto nastavení se vztahuje pouze na konkrétní privátní IP adresu, kterou jste zvolili jako zdrojovou IP adresu služby privátního propojení. V případě jiných prostředků v podsíti se přístup řídí podle definice pravidel zabezpečení skupiny zabezpečení sítě (NSG). 
+Aby bylo možné zvolit zdrojovou IP adresu pro službu privátního propojení, `privateLinkServiceNetworkPolicies` je v podsíti vyžadováno explicitní nastavení zakázání. Toto nastavení se vztahuje pouze na konkrétní privátní IP adresu, kterou jste zvolili jako zdrojovou IP adresu služby privátního propojení. V případě jiných prostředků v podsíti se přístup řídí podle definice pravidel zabezpečení skupiny zabezpečení sítě (NSG). 
  
 Při použití libovolného klienta Azure (PowerShell, CLI nebo šablony) se vyžaduje další krok, který tuto vlastnost změní. Zásadu můžete zakázat pomocí služby Cloud Shell z Azure Portal nebo místní instalace Azure PowerShell, rozhraní příkazového řádku Azure nebo pomocí šablon Azure Resource Manager.  
  
@@ -24,13 +24,15 @@ Použijte následující postup, chcete-li zakázat zásady sítě služby priv�
 
 ## <a name="using-azure-powershell"></a>Použití Azure Powershell
 Tato část popisuje, jak zakázat zásady privátního koncového bodu podsítě pomocí Azure PowerShell.
+V kódu nahraďte "default" názvem virtuální podsítě.
 
 ```azurepowershell
+$virtualSubnetName = "default"
 $virtualNetwork= Get-AzVirtualNetwork `
   -Name "myVirtualNetwork" ` 
-  -ResourceGroupName "myResourceGroup"  
+  -ResourceGroupName "myResourceGroup"
    
-($virtualNetwork | Select -ExpandProperty subnets | Where-Object  {$_.Name -eq 'default'} ).privateLinkServiceNetworkPolicies = "Disabled"  
+($virtualNetwork | Select -ExpandProperty subnets | Where-Object  {$_.Name -eq $virtualSubnetName} ).privateLinkServiceNetworkPolicies = "Disabled"  
  
 $virtualNetwork | Set-AzVirtualNetwork 
 ```

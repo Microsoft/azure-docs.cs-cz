@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 02/05/2020
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 09558a8d1e4e2dc68cefd2c870f54e008d10b97b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7e47440a54d733d0b5d849123633bf7e067fcd81
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77083566"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84805701"
 ---
 # <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>Vytvoření účtu, který podporuje klíče spravované zákazníkem pro tabulky a fronty
 
@@ -138,8 +138,8 @@ Pokud chcete pomocí PowerShellu vytvořit účet úložiště, který spoléhá
 
 Pak vytvořte účet úložiště pro obecné účely v2 voláním příkazu [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) s příslušnými parametry:
 
-- Zahrňte `-EncryptionKeyTypeForQueue` možnost a nastavte ji na `Account` hodnotu pro použití šifrovacího klíče účtu k šifrování dat v úložišti front.
-- Zahrňte `-EncryptionKeyTypeForTable` možnost a nastavte ji na `Account` hodnotu pro použití šifrovacího klíče účtu k šifrování dat v úložišti tabulek.
+- Zahrňte `-EncryptionKeyTypeForQueue` možnost a nastavte ji na hodnotu pro `Account` použití šifrovacího klíče účtu k šifrování dat v úložišti front.
+- Zahrňte `-EncryptionKeyTypeForTable` možnost a nastavte ji na hodnotu pro `Account` použití šifrovacího klíče účtu k šifrování dat v úložišti tabulek.
 
 Následující příklad ukazuje, jak vytvořit účet úložiště pro obecné účely v2, který je nakonfigurovaný pro geograficky redundantní úložiště s přístupem pro čtení (RA-GRS) a který používá šifrovací klíč účtu k šifrování dat pro frontu i úložiště tabulek. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami:
 
@@ -159,8 +159,8 @@ Pokud chcete pomocí Azure CLI vytvořit účet úložiště, který spoléhá n
 
 Pak vytvořte účet úložiště pro obecné účely v2 voláním příkazu [AZ Storage Account Create](/cli/azure/storage/account#az-storage-account-create) s příslušnými parametry:
 
-- Zahrňte `--encryption-key-type-for-queue` možnost a nastavte ji na `Account` hodnotu pro použití šifrovacího klíče účtu k šifrování dat v úložišti front.
-- Zahrňte `--encryption-key-type-for-table` možnost a nastavte ji na `Account` hodnotu pro použití šifrovacího klíče účtu k šifrování dat v úložišti tabulek.
+- Zahrňte `--encryption-key-type-for-queue` možnost a nastavte ji na hodnotu pro `Account` použití šifrovacího klíče účtu k šifrování dat v úložišti front.
+- Zahrňte `--encryption-key-type-for-table` možnost a nastavte ji na hodnotu pro `Account` použití šifrovacího klíče účtu k šifrování dat v úložišti tabulek.
 
 Následující příklad ukazuje, jak vytvořit účet úložiště pro obecné účely v2, který je nakonfigurovaný pro geograficky redundantní úložiště s přístupem pro čtení (RA-GRS) a který používá šifrovací klíč účtu k šifrování dat pro frontu i úložiště tabulek. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami:
 
@@ -222,11 +222,11 @@ Po vytvoření účtu, který spoléhá na šifrovací klíč účtu, si v jedno
 
 ## <a name="verify-the-account-encryption-key"></a>Ověření šifrovacího klíče účtu
 
-Pokud chcete ověřit, že služba v účtu úložiště používá šifrovací klíč účtu, zavolejte příkaz Azure CLI [AZ Storage Account](/cli/azure/storage/account#az-storage-account-show) . Tento příkaz vrátí sadu vlastností účtu úložiště a jejich hodnoty. Vyhledejte `keyType` pole pro každou službu ve vlastnosti šifrování a ověřte, jestli je nastavená na `Account`.
+Pokud chcete ověřit, že služba v účtu úložiště používá šifrovací klíč účtu, zavolejte příkaz Azure CLI [AZ Storage Account](/cli/azure/storage/account#az-storage-account-show) . Tento příkaz vrátí sadu vlastností účtu úložiště a jejich hodnoty. Vyhledejte `keyType` pole pro každou službu ve vlastnosti šifrování a ověřte, jestli je nastavená na `Account` .
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Pokud chcete ověřit, že služba v účtu úložiště používá šifrovací klíč účtu, zavolejte příkaz [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) . Tento příkaz vrátí sadu vlastností účtu úložiště a jejich hodnoty. Vyhledejte `KeyType` pole pro každou službu v rámci `Encryption` vlastnosti a ověřte, zda je nastavena na `Account`hodnotu.
+Pokud chcete ověřit, že služba v účtu úložiště používá šifrovací klíč účtu, zavolejte příkaz [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) . Tento příkaz vrátí sadu vlastností účtu úložiště a jejich hodnoty. Vyhledejte `KeyType` pole pro každou službu v rámci `Encryption` vlastnosti a ověřte, zda je nastavena na hodnotu `Account` .
 
 ```powershell
 $account = Get-AzStorageAccount -ResourceGroupName <resource-group> `
@@ -237,7 +237,7 @@ $account.Encryption.Services.Table
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pokud chcete ověřit, že služba v účtu úložiště používá šifrovací klíč účtu, zavolejte příkaz [AZ Storage Account](/cli/azure/storage/account#az-storage-account-show) . Tento příkaz vrátí sadu vlastností účtu úložiště a jejich hodnoty. Vyhledejte `keyType` pole pro každou službu ve vlastnosti šifrování a ověřte, jestli je nastavená na `Account`.
+Pokud chcete ověřit, že služba v účtu úložiště používá šifrovací klíč účtu, zavolejte příkaz [AZ Storage Account](/cli/azure/storage/account#az-storage-account-show) . Tento příkaz vrátí sadu vlastností účtu úložiště a jejich hodnoty. Vyhledejte `keyType` pole pro každou službu ve vlastnosti šifrování a ověřte, jestli je nastavená na `Account` .
 
 ```azurecli
 az storage account show /
@@ -253,5 +253,5 @@ az storage account show /
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Azure Storage šifrování dat v klidovém umístění](storage-service-encryption.md) 
+- [Šifrování služby Azure Storage pro neaktivní uložená data](storage-service-encryption.md) 
 - [Co je Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?

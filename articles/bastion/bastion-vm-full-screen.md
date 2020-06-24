@@ -4,15 +4,15 @@ description: V tomto článku se dozvíte, jak změnit zobrazení na celou obraz
 services: bastion
 author: charwen
 ms.service: bastion
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: charwen
-ms.openlocfilehash: 2e72eb9ffc3affa0bf09692ac0780f9310308521
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f4aa2c5aa3f40802db7be64eeb778866819bfe67
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80619298"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84744217"
 ---
 # <a name="change-to-full-screen-view-for-a-vm-session-azure-bastion"></a>Změnit na zobrazení na celé obrazovce pro relaci virtuálních počítačů: Azure bastionu
 
@@ -22,7 +22,7 @@ Tento článek vám pomůže změnit zobrazení virtuálního počítače na cel
 
 Během vzdálené relace spusťte na paletě nástrojů pro přístup ke schránce bastionu výběr dvou šipek, které se nachází na levém středi relace.
 
-![nástroje](./media/bastion-vm-manage/left.png)
+![tools](./media/bastion-vm-manage/left.png)
 
 ## <a name="select-full-screen"></a>Vybrat celou obrazovku
 

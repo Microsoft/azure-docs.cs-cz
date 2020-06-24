@@ -4,15 +4,15 @@ description: Vytvořte připojení IPsec z vaší místní sítě k virtuální 
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: e386e5fc9c4d62266e0ca23869bf30ccaffeb91d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1f096993645aca6999667af88c91d3f55f79d914
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79244443"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84983049"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Vytvoření připojení typu Site-to-Site pomocí webu Azure Portal (Classic)
 
@@ -31,7 +31,7 @@ Připojení brány VPN typu Site-to-Site slouží k připojení místní sítě 
 
 ![Diagram připojení VPN Gateway typu Site-to-Site mezi různými místy](./media/vpn-gateway-howto-site-to-site-classic-portal/site-to-site-diagram.png)
 
-## <a name="before-you-begin"></a><a name="before"></a>Před zahájením
+## <a name="before-you-begin"></a><a name="before"></a>Než začnete
 
 Před zahájením konfigurace ověřte, že splňujete následující kritéria:
 

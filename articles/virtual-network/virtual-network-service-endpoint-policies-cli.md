@@ -11,18 +11,18 @@ Customer intent: I want only specific Azure Storage account to be allowed access
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: rdhillon
 ms.custom: ''
-ms.openlocfilehash: e01af052a936403162115965f2dc5b3ad46dd9cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 702ee5dd8d432582ce1df75ce71c220aa0507cba
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78271186"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708208"
 ---
 # <a name="manage-data-exfiltration-to-azure-storage-accounts-with-virtual-network-service-endpoint-policies-using-the-azure-cli"></a>Správa exfiltrace dat pro Azure Storage účtů pomocí zásad koncového bodu služby virtuální sítě pomocí rozhraní příkazového řádku Azure
 
@@ -37,7 +37,7 @@ V tomto článku získáte informace o těchto tématech:
 * Potvrďte přístup k povolenému účtu úložiště z podsítě.
 * Potvrďte, že je přístup k nedovolenému účtu úložiště z podsítě odepřený.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -263,7 +263,7 @@ az network service-endpoint policy create \
   --location eastus
 ```
 
-Uložte identifikátor URI prostředku pro povolený účet úložiště v proměnné. Než spustíte následující příkaz, nahraďte * \<>-Subscription-ID* skutečnou hodnotou ID vašeho předplatného.
+Uložte identifikátor URI prostředku pro povolený účet úložiště v proměnné. Před spuštěním příkazu uvedeného níže nahraďte *\<your-subscription-id>* skutečnou hodnotou vašeho ID předplatného.
 
 ```azurecli-interactive
 $serviceResourceId="/subscriptions/<your-subscription-id>/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/allowedstorageacc"
@@ -313,7 +313,7 @@ Vytvoření virtuálního počítače trvá několik minut. Po vytvoření si po
 
 ### <a name="confirm-access-to-storage-account"></a>Ověření přístupu k účtu úložiště
 
-Připojte se přes SSH k virtuálnímu počítači *myVmPrivate* . * \<PublicIpAddress>* nahraďte veřejnou IP adresou vašeho virtuálního počítače s *myVmPrivate* .
+Připojte se přes SSH k virtuálnímu počítači *myVmPrivate* . Nahraďte *\<publicIpAddress>* veřejnou IP adresou vašeho virtuálního počítače s *myVmPrivate* .
 
 ```bash 
 ssh <publicIpAddress>
@@ -325,7 +325,7 @@ Vytvořte složku pro přípojný bod:
 sudo mkdir /mnt/MyAzureFileShare1
 ```
 
-Připojte sdílenou složku Azure k adresáři, který jste vytvořili. Než spustíte následující příkaz, nahraďte * \<klíč úložiště-Key>* hodnotou *AccountKey* z **$saConnectionString 1**.
+Připojte sdílenou složku Azure k adresáři, který jste vytvořili. Před provedením následujícího příkazu nahraďte *\<storage-account-key>* hodnotu *AccountKey* z **$saConnectionString 1**.
 
 ```bash
 sudo mount --types cifs //allowedstorageacc.file.core.windows.net/my-file-share /mnt/MyAzureFileShare1 --options vers=3.0,username=allowedstorageacc,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
@@ -343,13 +343,13 @@ sudo mkdir /mnt/MyAzureFileShare2
 
 Pokuste se připojit sdílenou složku Azure z účtu úložiště *notallowedstorageacc* do adresáře, který jste vytvořili. V tomto článku se předpokládá, že jste nasadili nejnovější verzi Ubuntu. Pokud používáte starší verze Ubuntu, přečtěte si další informace o připojení sdílených složek v tématu [připojení na Linux](../storage/files/storage-how-to-use-files-linux.md?toc=%2fazure%2fvirtual-network%2ftoc.json) . 
 
-Než spustíte následující příkaz, nahraďte * \<klíč úložiště-Key>* hodnotou *AccountKey* z **$saConnectionString 2**.
+Před spuštěním příkazu uvedeného níže nahraďte *\<storage-account-key>* hodnotou *AccountKey* z **$saConnectionString 2**.
 
 ```bash
 sudo mount --types cifs //notallowedstorageacc.file.core.windows.net/my-file-share /mnt/MyAzureFileShare2 --options vers=3.0,username=notallowedstorageacc,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
 ```
 
-Přístup je odepřený a zobrazí se `mount error(13): Permission denied` chyba, protože tento účet úložiště není v seznamu povolených zásad koncového bodu služby, který jsme v podsíti použili. 
+Přístup je odepřený a zobrazí se `mount error(13): Permission denied` Chyba, protože tento účet úložiště není v seznamu povolených zásad koncového bodu služby, který jsme v podsíti použili. 
 
 Ukončete relaci SSH na virtuálním počítači s *myVmPublic* .
 

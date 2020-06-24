@@ -4,15 +4,15 @@ description: Tahle stránka poskytuje pokyny pro vytvoření, konfiguraci, spuš
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: 406dcdb419dba2e8044a173f4c05028abbaba3da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 439523fe55f231548ebc80ebc5d3b53c2f0d6e2f
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81312421"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808142"
 ---
 # <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb"></a>Vytvoření aplikační brány s interním nástrojem pro vyrovnávání zatížení (interního nástroje)
 
@@ -20,7 +20,7 @@ Služba Azure Application Gateway se dá nakonfigurovat pomocí virtuální IP a
 
 Tenhle článek vás provede kroky konfigurace aplikační brány s ILB.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -52,7 +52,7 @@ Toto jsou kroky, které se musí provést k vytvoření služby Application Gate
 
 Ujistěte se, že jste přepnuli režim prostředí PowerShell tak, aby se mohly použít rutiny Azure Resource Manageru. Další informace najdete v tématu [Použití prostředí Windows PowerShell s Resource Managerem](../powershell-azure-resource-manager.md).
 
-### <a name="step-1"></a>Krok 1
+### <a name="step-1"></a>Step 1
 
 ```powershell
 Connect-AzAccount
@@ -92,7 +92,7 @@ V předchozím příkladu jsme vytvořili skupinu prostředků s názvem "appgw-
 
 Následující příklad ukazuje, jak vytvořit virtuální síť pomocí Resource Managera:
 
-### <a name="step-1"></a>Krok 1
+### <a name="step-1"></a>Step 1
 
 ```powershell
 $subnetconfig = New-AzVirtualNetworkSubnetConfig -Name subnet01 -AddressPrefix 10.0.0.0/24
@@ -118,7 +118,7 @@ Tento krok přiřadí objekt podsítě k proměnné $subnet pro další kroky.
 
 ## <a name="create-an-application-gateway-configuration-object"></a>Vytvořte objekt konfigurace aplikační brány 
 
-### <a name="step-1"></a>Krok 1
+### <a name="step-1"></a>Step 1
 
 ```powershell
 $gipconfig = New-AzApplicationGatewayIPConfiguration -Name gatewayIP01 -Subnet $subnet
@@ -203,7 +203,7 @@ Chcete-li odstranit Aplikační bránu, je třeba provést následující kroky 
 2. Pomocí rutiny `Remove-AzApplicationGateway` bránu odeberte.
 3. Zkontrolujte odstranění brány pomocí rutiny `Get-AzureApplicationGateway`.
 
-### <a name="step-1"></a>Krok 1
+### <a name="step-1"></a>Step 1
 
 Získejte objekt služby Application Gateway a přidružte ho k proměnné „$getgw“.
 
@@ -262,6 +262,6 @@ Pokud chcete konfigurovat přesměrování zpracování SSL, přejděte do čás
 
 Pokud chcete další informace o obecných možnostech vyrovnávání zatížení, přečtěte si část:
 
-* [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
-* [Traffic Manager Azure](https://azure.microsoft.com/documentation/services/traffic-manager/)
+* [Nástroj pro vyrovnávání zatížení Azure](https://azure.microsoft.com/documentation/services/load-balancer/)
+* [Azure Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 

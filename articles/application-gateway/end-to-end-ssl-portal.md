@@ -5,16 +5,16 @@ description: Naučte se, jak pomocí Azure Portal vytvořit Aplikační bránu s
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: absha
 ms.custom: mvc
-ms.openlocfilehash: 6f86f32e64bbbe79ea5a403d04f7d6c29ee6b980
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 33240d1f44d2f26569791f72a3d5fc3a6656a757
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80133015"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808038"
 ---
 # <a name="configure-end-to-end-tls-by-using-application-gateway-with-the-portal"></a>Konfigurace kompletního TLS pomocí Application Gateway s portálem
 
@@ -23,9 +23,9 @@ Tento článek popisuje, jak pomocí Azure Portal nakonfigurovat komplexní šif
 > [!NOTE]
 > SKU Application Gateway v2 vyžaduje důvěryhodné kořenové certifikáty pro povolení ucelené konfigurace.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Pro konfiguraci kompletního protokolu TLS s aplikační bránou potřebujete certifikát pro bránu. Pro back-endové servery jsou také vyžadovány certifikáty. Certifikát brány se používá k odvození symetrického klíče v souladu se specifikací protokolu TLS. Symetrický klíč se pak použije k šifrování a dešifrování provozu odeslaného do brány. 
 

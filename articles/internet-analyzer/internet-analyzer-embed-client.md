@@ -4,15 +4,15 @@ description: V tomto článku se dozvíte, jak do aplikace vložit klienta služ
 services: internet-analyzer
 author: mattcalder
 ms.service: internet-analyzer
-ms.topic: quickstart
+ms.topic: how-to
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: f9ecb8d731945847160b49c68c554fafdd7285d9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0d4b27b85ac7bc61e14a79f29e4e26ec4973ced1
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74896383"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84744047"
 ---
 # <a name="embed-the-internet-analyzer-client"></a>Vložit klienta nástroje Internet Analyzer
 
@@ -22,9 +22,9 @@ V tomto článku se dozvíte, jak vložit klienta JavaScriptu do aplikace. Insta
 > Tato verze Public Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
-Internet Analyzer vyžaduje přístup k Azure a dalším službám společnosti Microsoft, aby fungovaly správně. Před vložením klienta prosím `fpc.msedge.net` povolte přístup k síti a všechny předem nakonfigurované adresy URL koncového bodu (viditelné prostřednictvím rozhraní příkazového [řádku](internet-analyzer-cli.md)).
+Internet Analyzer vyžaduje přístup k Azure a dalším službám společnosti Microsoft, aby fungovaly správně. Před vložením klienta prosím povolte přístup k síti `fpc.msedge.net` a všechny předem nakonfigurované adresy URL koncového bodu (viditelné prostřednictvím rozhraní příkazového [řádku](internet-analyzer-cli.md)).
 
 ## <a name="find-the-client-script-url"></a>Najít adresu URL klientského skriptu
 
@@ -44,7 +44,7 @@ Skript je vygenerován speciálně pro váš profil a testy. Po načtení se skr
 
 ## <a name="client-examples"></a>Příklady klientů
 
-Tyto příklady znázorňují několik základních metod, jak vložit klientský JavaScript do vaší webové stránky nebo aplikace. Pro adresu `0bfcb32638b44927935b9df86dcfe397` URL skriptu používáme jako příklad ID profilu.
+Tyto příklady znázorňují několik základních metod, jak vložit klientský JavaScript do vaší webové stránky nebo aplikace. `0bfcb32638b44927935b9df86dcfe397`Pro adresu URL skriptu používáme jako příklad ID profilu.
 
 ### <a name="run-on-page-load"></a>Spustit při načtení stránky
 Nejjednodušším způsobem je použít značku skriptu uvnitř bloku značek Meta. Tato značka spustí skript jedenkrát za načtení stránky.

@@ -6,17 +6,17 @@ documentationcenter: ''
 author: sharad4u
 ms.service: frontdoor
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sharadag
-ms.openlocfilehash: b935355cce36a6e26b168db286ab40248f8f0f68
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7939daf97309d5026fd24732cd922e47c2b16812
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79471723"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743622"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door"></a>Monitorování metrik a protokolů v frontách Azure na předních dveřích
 
@@ -29,7 +29,7 @@ Pomocí front-dveří Azure můžete monitorovat prostředky následujícími zp
 
 Metriky jsou funkce pro určité prostředky Azure, které umožňují zobrazit čítače výkonu na portálu. K dispozici jsou následující metriky front dveří:
 
-| Metrika | Zobrazovaný název metriky | Jednotka | Dimenze | Popis |
+| Metrika | Zobrazovaný název metriky | Jednotka | Dimenze | Description |
 | --- | --- | --- | --- | --- |
 | RequestCount | Počet požadavků | Počet | Stavu protokolu http</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Počet požadavků klientů poskytovaných předními dveřmi.  |
 | RequestSize | Velikost požadavku | Bajty | Stavu protokolu http</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Počet bajtů odeslaných jako požadavek od klientů do předních dveří. |

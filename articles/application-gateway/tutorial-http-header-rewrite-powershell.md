@@ -4,15 +4,15 @@ description: Tento článek poskytuje informace o tom, jak vytvořit Application
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: absha
-ms.openlocfilehash: 2663c049245a7025b5948a64fc5008bb9e7dee90
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f8aec788e5370bd0c6f0e2f1b6ff032ca68cac87
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74173721"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84806441"
 ---
 # <a name="create-an-application-gateway-and-rewrite-http-headers"></a>Vytvořit Aplikační bránu a přepsat hlavičky HTTP
 
@@ -30,11 +30,11 @@ V tomto článku získáte informace o těchto tématech:
 > * Vytvoření služby Application Gateway
 > * Testování brány Application Gateway
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tento článek vyžaduje, abyste spustili Azure PowerShell místně. Musíte mít nainstalovanou verzi AZ Module verze 1.0.0 nebo novější. Spusťte `Import-Module Az` a pak`Get-Module Az` vyhledejte verzi. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps). Po ověření verze PowerShellu spusťte příkaz `Login-AzAccount`, abyste vytvořili připojení k Azure.
+Tento článek vyžaduje, abyste spustili Azure PowerShell místně. Musíte mít nainstalovanou verzi AZ Module verze 1.0.0 nebo novější. Spusťte `Import-Module Az` a pak `Get-Module Az` vyhledejte verzi. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps). Po ověření verze PowerShellu spusťte příkaz `Login-AzAccount`, abyste vytvořili připojení k Azure.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -169,7 +169,7 @@ Get-AzPublicIPAddress -ResourceGroupName $rg -Name AppGwVIP
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Nejprve Prozkoumejte prostředky, které byly vytvořeny pomocí aplikační brány. Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, `Remove-AzResourceGroup` služby Application Gateway a všech souvisejících prostředků použít příkaz.
+Nejprve Prozkoumejte prostředky, které byly vytvořeny pomocí aplikační brány. Pokud už je nepotřebujete, můžete `Remove-AzResourceGroup` k odebrání skupiny prostředků, služby Application Gateway a všech souvisejících prostředků použít příkaz.
 
 `Remove-AzResourceGroup -Name $rg`
 

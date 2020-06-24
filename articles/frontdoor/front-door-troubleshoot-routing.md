@@ -9,15 +9,15 @@ ms.service: frontdoor
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 09/22/2018
 ms.author: sharadag
-ms.openlocfilehash: 962c884eb8adc05e5d50b6b254d5c3f0b18af556
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f4310350e83284d6a2839f8c3d86526d3cda74ff
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79471502"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743571"
 ---
 # <a name="troubleshooting-common-routing-issues"></a>Řešení běžných potíží se směrováním
 
@@ -39,7 +39,7 @@ K tomuto problému dochází, když back-end trvá déle než konfigurace časov
 
 - Odešlete žádost přímo do back-endu (bez přechodu přes přední vrátka) a podívejte se na to, jaká je obvyklá doba, jakou má váš back-end reagovat.
 - Poslat požadavek přes dvířka a zjistit, jestli se vám zobrazují odpovědi 503. Pokud ne, může se jednat o problém s vypršením časového limitu. Obraťte se prosím na podporu.
-- Pokud provedete přes přední dvířka, výsledkem bude 503 kód chyby odezvy a potom nakonfigurovat pole sendReceiveTimeout pro vaše přední dveře, aby se výchozí časový limit rozšířil na 4 minuty (240 sekund). Nastavení je zavolána `sendRecvTimeoutSeconds`v `backendPoolSettings` a. 
+- Pokud provedete přes přední dvířka, výsledkem bude 503 kód chyby odezvy a potom nakonfigurovat pole sendReceiveTimeout pro vaše přední dveře, aby se výchozí časový limit rozšířil na 4 minuty (240 sekund). Nastavení je `backendPoolSettings` zavolána v a `sendRecvTimeoutSeconds` . 
 
 ## <a name="requests-sent-to-the-custom-domain-returns-400-status-code"></a>Požadavky odeslané do vlastní domény vrátí stavový kód 400.
 

@@ -4,12 +4,12 @@ description: Nakonfigurujte akci GitHubu, která automatizuje kroky k sestavení
 ms.topic: article
 ms.date: 03/18/2020
 ms.custom: ''
-ms.openlocfilehash: 13397cee8197afc65b93c587ae1505e59cfdebc1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fab0eff04d86428a7e3eba730373da72c903b0ff
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80258035"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743996"
 ---
 # <a name="configure-a-github-action-to-create-a-container-instance"></a>Konfigurace akce GitHubu pro vytvoření instance kontejneru
 
@@ -33,7 +33,7 @@ Tento článek ukazuje dva způsoby, jak nastavit pracovní postup:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Účet GitHub** – vytvořte účet, https://github.com Pokud ho ještě nemáte.
+* **Účet GitHub** – vytvořte účet https://github.com , pokud ho ještě nemáte.
 * **Azure CLI** – k dokončení kroků rozhraní PŘÍKAZového řádku Azure můžete použít Azure Cloud Shell nebo místní instalaci rozhraní PŘÍKAZového řádku Azure. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
 * **Azure Container Registry** – Pokud ho ještě nemáte, vytvořte službu Azure Container Registry na úrovni Basic pomocí rozhraní příkazového [řádku Azure](../container-registry/container-registry-get-started-azure-cli.md), [Azure Portal](../container-registry/container-registry-get-started-portal.md)nebo jiných metod. Poznamenejte si skupinu prostředků použitou pro nasazení, která se používá pro pracovní postup GitHubu.
 
@@ -45,7 +45,7 @@ Tento článek ukazuje dva způsoby, jak nastavit pracovní postup:
 
   ![Snímek obrazovky s tlačítkem forku (zvýrazněným) v GitHubu](../container-registry/media/container-registry-tutorial-quick-build/quick-build-01-fork.png)
 
-* Ujistěte se, že jsou pro vaše úložiště povolené akce. Přejděte do rozvětvené úložiště a vyberte **Settings** > **Akce**nastavení. V **oprávnění akce**zajistěte, aby byla vybrána **možnost Povolit místní akce a akci třetích stran pro toto úložiště** .
+* Ujistěte se, že jsou pro vaše úložiště povolené akce. Přejděte do rozvětvené úložiště a vyberte **Settings**  >  **Akce**nastavení. V **oprávnění akce**zajistěte, aby byla vybrána **možnost Povolit místní akce a akci třetích stran pro toto úložiště** .
 
 ## <a name="configure-github-workflow"></a>Konfigurace pracovního postupu GitHubu
 
@@ -53,7 +53,7 @@ Tento článek ukazuje dva způsoby, jak nastavit pracovní postup:
 
 V pracovním postupu GitHubu je potřeba zadat přihlašovací údaje Azure pro ověření v Azure CLI. Následující příklad vytvoří instanční objekt s rolí přispěvatele vymezenou pro skupinu prostředků vašeho registru kontejneru.
 
-Nejprve Získejte ID prostředku vaší skupiny prostředků. Název skupiny nahraďte následujícím příkazem [AZ Group show][az-acr-show] :
+Nejprve Získejte ID prostředku vaší skupiny prostředků. Název skupiny nahraďte následujícím příkazem [AZ Group show][az-group-show] :
 
 ```azurecli
 groupId=$(az group show \
@@ -87,7 +87,7 @@ Výstup se podobá tomuto:
 }
 ```
 
-Výstup JSON uložte, protože se používá v pozdějším kroku. Všimněte si také, že `clientId`je potřeba aktualizovat instanční objekt v další části.
+Výstup JSON uložte, protože se používá v pozdějším kroku. Všimněte si také, že je `clientId` potřeba aktualizovat instanční objekt v další části.
 
 ### <a name="update-service-principal-for-registry-authentication"></a>Aktualizace instančního objektu pro ověřování registru
 
@@ -112,7 +112,7 @@ az role assignment create \
 
 ### <a name="save-credentials-to-github-repo"></a>Uložení přihlašovacích údajů do úložiště GitHub
 
-1. V uživatelském rozhraní GitHubu přejděte do rozvětvené úložiště a vyberte **Nastavení** > **tajné klíče**. 
+1. V uživatelském rozhraní GitHubu přejděte do rozvětvené úložiště a vyberte **Nastavení**  >  **tajné klíče**. 
 
 1. Chcete-li přidat následující tajné klíče, vyberte možnost **Přidat nový tajný kód** :
 
@@ -120,15 +120,15 @@ az role assignment create \
 |---------|---------|
 |`AZURE_CREDENTIALS`     | Celý výstup JSON z vytváření instančního objektu |
 |`REGISTRY_LOGIN_SERVER`   | Název přihlašovacího serveru vašeho registru (bez malých písmen). Příklad: *myregistry.Azure.CR.IO*        |
-|`REGISTRY_USERNAME`     |  `clientId` Z výstupu JSON z vytváření instančního objektu       |
-|`REGISTRY_PASSWORD`     |  `clientSecret` Z výstupu JSON z vytváření instančního objektu |
+|`REGISTRY_USERNAME`     |  `clientId`Z výstupu JSON z vytváření instančního objektu       |
+|`REGISTRY_PASSWORD`     |  `clientSecret`Z výstupu JSON z vytváření instančního objektu |
 | `RESOURCE_GROUP` | Název skupiny prostředků, kterou jste použili k určení oboru instančního objektu |
 
 ### <a name="create-workflow-file"></a>Vytvořit soubor pracovního postupu
 
-1. V uživatelském rozhraní GitHubu vyberte **Akce** > **nový pracovní postup**.
+1. V uživatelském rozhraní GitHubu vyberte **Akce**  >  **nový pracovní postup**.
 1. Vyberte **nastavit pracovní postup sami**.
-1. V části **Upravit nový soubor**vložte následující obsah YAML k přepsání ukázkového kódu. Přijměte výchozí název `main.yml`souboru nebo zadejte název souboru, který zvolíte.
+1. V části **Upravit nový soubor**vložte následující obsah YAML k přepsání ukázkového kódu. Přijměte výchozí název souboru `main.yml` nebo zadejte název souboru, který zvolíte.
 1. Vyberte možnost **Spustit potvrzení**, volitelně zadejte krátké a rozšířené popisy potvrzení a vyberte **Potvrdit nový soubor**.
 
 ```yml
@@ -173,7 +173,7 @@ jobs:
 
 ### <a name="validate-workflow"></a>Ověřit pracovní postup
 
-Po potvrzení souboru pracovního postupu se spustí pracovní postup. Pokud chcete zkontrolovat průběh pracovního postupu, přejděte na **Akce** > **pracovní postupy**. 
+Po potvrzení souboru pracovního postupu se spustí pracovní postup. Pokud chcete zkontrolovat průběh pracovního postupu, přejděte na **Akce**  >  **pracovní postupy**. 
 
 ![Zobrazit průběh pracovního postupu](./media/container-instances-github-action/github-action-progress.png)
 
@@ -203,7 +203,7 @@ Po zřízení instance přejděte do plně kvalifikovaného názvu domény konte
 
 ## <a name="use-deploy-to-azure-extension"></a>Použití nasazení do rozšíření Azure
 
-Případně můžete nakonfigurovat pracovní postup pomocí [rozšíření nasazení do Azure](https://github.com/Azure/deploy-to-azure-cli-extension) v rozhraní příkazového řádku Azure CLI. `az container app up` Příkaz v rozšíření přebírá vstupní parametry od vás, abyste mohli nastavit pracovní postup pro nasazení na Azure Container Instances. 
+Případně můžete nakonfigurovat pracovní postup pomocí [rozšíření nasazení do Azure](https://github.com/Azure/deploy-to-azure-cli-extension) v rozhraní příkazového řádku Azure CLI. `az container app up`Příkaz v rozšíření přebírá vstupní parametry od vás, abyste mohli nastavit pracovní postup pro nasazení na Azure Container Instances. 
 
 Pracovní postup vytvořený pomocí Azure CLI je podobný pracovnímu postupu, který můžete [vytvořit ručně pomocí GitHubu](#configure-github-workflow).
 

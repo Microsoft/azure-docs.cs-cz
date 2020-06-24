@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/27/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 850ace7af15ab37ab9a4a124d20ed4588771f4d4
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 0b278841fc3693d79821d25caf7c9a208341dea1
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594395"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85242181"
 ---
 ## <a name="common-scenarios"></a>Typické scénáře
 Při navýšení zátěže můžou významně těžit z následujících scénářů:
@@ -24,9 +24,11 @@ Při navýšení zátěže můžou významně těžit z následujících scéná
 ## <a name="bursting-flow"></a>Tok shlukování
 Systém shlukování zatížení se vztahuje stejným způsobem na úrovni virtuálního počítače i na úrovni disku. Váš prostředek, buď virtuální počítač nebo disk, začne s úplnými zásobami kreditů. Tyto kredity vám umožní roztržení po dobu 30 minut s maximální sazbou shlukování. Kredity shlukování se sčítají, když je prostředek spuštěný pod limity úložiště na disku výkonu. Pro všechny vstupně-výstupní operace a MB/s, které váš prostředek používá, můžete začít nahromadění kreditů. Pokud se u vašeho prostředku narostly kredity, které se mají použít pro navýšení zátěže, a vaše zatížení potřebuje dodatečný výkon, může prostředek využít tyto kredity k tomu, aby dosáhl vyššího výkonu v/v, aby využíval vstupně-výstupní požadavky na disk.
 
+
+
 ![Diagram shlukování s intervaly](media/managed-disks-bursting/bucket-diagram.jpg)
 
-Jedna z věcí, kterou si můžete všimnout při akumulaci, je to, že se u každého prostředku liší, protože vychází z nevyužitých vstupně-výstupních operací a MB/s pod jejich objemy výkonu. To znamená, že vyšší nároky na základní výkon můžou snížit množství jejich nárůstu rychleji než nižší směrné produkty. Například volnoběh disku P1 bez aktivity bude mít 120 vstupně-výstupních operací za sekundu, zatímco P20 disk během volnoběhu bez aktivity narůstá 2 300 vstupně-výstupních operací za sekundu.
+Až na vás, jak budete chtít používat 30 minut shlukování. Můžete ji použít po dobu 30 minut po sobě jdoucí nebo občasně v průběhu dne. Když je produkt nasazený, je připravený na celý kredit a když dojde k vyčerpání kreditů, které trvá méně než jeden den, aby bylo možné plně obzásobit všechny kredity. Můžete nashromáždit a strávit své kredity na základě vašeho uvážení a 30 minutový interval nemusí být znovu nanejvýš na nárůst. Jedna z věcí, kterou si můžete všimnout při akumulaci, je to, že se u každého prostředku liší, protože vychází z nevyužitých vstupně-výstupních operací a MB/s pod jejich objemy výkonu. To znamená, že vyšší nároky na základní výkon můžou snížit množství jejich nárůstu rychleji než nižší směrné produkty. Například volnoběh disku P1 bez aktivity bude mít 120 vstupně-výstupních operací za sekundu, zatímco P20 disk během volnoběhu bez aktivity narůstá 2 300 vstupně-výstupních operací za sekundu.
 
 ## <a name="bursting-states"></a>Stavy shlukování
 Existují tři stavy, ve kterých může být prostředek zapnutý s povoleným roztržením:
@@ -70,7 +72,7 @@ Aplikace pak potřebuje zpracovat dávkovou úlohu, která vyžaduje 192 MB/s. D
 - 2 datové disky P10 
     - Zřízené MB/s: 250
 
- Po počátečním spuštění se aplikace na virtuálním počítači spustí a má nekritickou úlohu. Tato úloha vyžaduje 30 MB/s, která se rovnoměrně rozloží na všechny disky: ![shlukování nečinnosti virtuálních počítačů bez shlukování na více instancích](media/managed-disks-bursting/bursting-vm-nonbursting-disk/burst-vm-nonbursting-disk-normal.jpg)
+ Po počátečním spuštění se aplikace na virtuálním počítači spustí a má nekritickou úlohu. Tato úloha vyžaduje 30 MB/s, která se rovnoměrně rozloží na všechny disky: ![ shlukování nečinnosti virtuálních počítačů bez shlukování na více instancích](media/managed-disks-bursting/bursting-vm-nonbursting-disk/burst-vm-nonbursting-disk-normal.jpg)
 
 Aplikace pak potřebuje zpracovat dávkovou úlohu, která vyžaduje 600 MB/s. Standard_L8s_v2 rozšíří, aby splňovala tuto poptávku, a požadavky na disky se rovnoměrně rozloží na P50 disky:
 

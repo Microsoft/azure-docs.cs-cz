@@ -4,15 +4,15 @@ description: Tento článek vás provede resetováním VPN Gateway Azure, aby se
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: e3a5807a0ccfa39cc80acacedaa5fb4d3afaaed3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 90a01e4ee3ddf7b100ef51e55b9917c709a05864
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79244417"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84982879"
 ---
 # <a name="reset-a-vpn-gateway"></a>Resetování brány VPN Gateway
 
@@ -28,7 +28,7 @@ Pokud po prvním resetování nedojde k obnovení připojení, znovu vydejte ste
 
 Pokud stále dochází k problémům s připojením mezi různými místy, otevřete prosím žádost o podporu z Azure Portal po dvou restartováních.
 
-## <a name="before-you-begin"></a><a name="before"></a>Před zahájením
+## <a name="before-you-begin"></a><a name="before"></a>Než začnete
 
 Před restartováním brány ověřte pro každé tunelové propojení VPN typu Site-to-Site (S2S) s protokolem IPsec klíčové body následujícího seznamu. Jakákoli neshoda v těchto bodech způsobí odpojení tunelových propojení VPN typu S2S. Ověření a opravování konfigurací místních a Azure VPN Gateway vám ušetříte z zbytečných restartování a přerušení pro ostatní funkční připojení v bráně.
 
@@ -50,7 +50,7 @@ Správce prostředků VPN Gateway můžete resetovat pomocí Azure Portal. Pokud
    ![Resetovat okno VPN Gateway](./media/vpn-gateway-howto-reset-gateway/reset-vpn-gateway-portal.png)
 3. V okně Reset klikněte na tlačítko **obnovit** .
 
-## <a name="powershell"></a><a name="ps"></a>Prostředí
+## <a name="powershell"></a><a name="ps"></a>PowerShell
 
 ### <a name="resource-manager-deployment-model"></a>Model nasazení Resource Manager
 

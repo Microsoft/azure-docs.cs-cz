@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 94f005ee4b2542e4cc0908880d589a2ee6a4d798
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 3f951c05100b5e36a2162e2422a066d563b24136
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267422"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85250651"
 ---
 # <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Rychlý Start: použití .NET a C# v aplikaci Visual Studio k připojení a dotazování databáze ve službě Azure SQL Database nebo Azure SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -29,7 +29,7 @@ V tomto rychlém startu se dozvíte, jak používat kód [.NET Framework](https:
 K dokončení tohoto rychlého startu je potřeba:
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- Databázi Azure SQL. K vytvoření a konfiguraci databáze v Azure SQL Database můžete použít jeden z těchto rychlých startů:
+- Databáze v Azure SQL Database. K vytvoření a konfiguraci databáze v Azure SQL Database můžete použít jeden z těchto rychlých startů:
 
   || Databáze SQL | Spravovaná instance SQL | SQL Server na virtuálním počítači Azure |
   |:--- |:--- |:---|:---|
@@ -49,7 +49,7 @@ K dokončení tohoto rychlého startu je potřeba:
 
 ## <a name="get-server-connection-information"></a>Získat informace o připojení k serveru
 
-Získejte informace o připojení, které potřebujete pro připojení ke službě Azure SQL Database. Pro nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
+Získejte informace o připojení, které potřebujete pro připojení k databázi. Pro nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 

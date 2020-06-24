@@ -4,11 +4,11 @@ description: Naučte se používat REST API k obnovení sdílených složek Azur
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.openlocfilehash: 1c3160491ef92c62745af1468556e7d5c30437fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79252503"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710571"
 ---
 # <a name="restore-azure-file-shares-using-rest-api"></a>Obnovení sdílených složek Azure pomocí REST API
 
@@ -160,7 +160,7 @@ POST https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48a
 
 Chcete-li aktivovat obnovení sdílené složky Azure, jsou zde uvedené součásti textu žádosti:
 
-Název |  Typ   |   Popis
+Name |  Typ   |   Description
 --- | ---- | ----
 Vlastnosti | AzureFileShareRestoreRequest | Vlastnosti RestoreRequestResource
 
@@ -370,7 +370,7 @@ POST https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48a
 
 Chcete-li aktivovat obnovení sdílené složky Azure, jsou zde uvedené součásti textu žádosti:
 
-Název |  Typ   |   Popis
+Name |  Typ   |   Description
 --- | ---- | ----
 Vlastnosti | AzureFileShareRestoreRequest | Vlastnosti RestoreRequestResource
 
@@ -378,7 +378,7 @@ Vlastnosti | AzureFileShareRestoreRequest | Vlastnosti RestoreRequestResource
 
 ### <a name="restore-to-original-location"></a>Obnovit do původního umístění
 
-Následující text žádosti o obnovení souboru *Restoretest. txt* ve sdílené složce *azurefiles* v účtu úložiště *afsaccount* .
+Následující text požadavku slouží k obnovení souboru *Restoretest.txt* ve sdílené složce *azurefiles* v účtu úložiště *afsaccount* .
 
 Vytvořit text žádosti
 
@@ -404,7 +404,7 @@ Vytvořit text žádosti
 
 ### <a name="restore-to-alternate-location"></a>Obnovit do alternativního umístění
 
-Následující text žádosti o obnovení souboru *Restoretest. txt* ve sdílené složce *azurefiles* v účtu úložiště *afsaccount* do složky *restoredata* ve sdílené složce *azurefiles1* v účtu úložiště *afaccount1* .
+Následující text žádosti o obnovení souboru *Restoretest.txt* ve sdílené složce *azurefiles* v účtu úložiště *afsaccount* do složky *restoredata* sdílené složky *azurefiles1* v účtu úložiště *afaccount1* .
 
 Vytvořit text žádosti
 

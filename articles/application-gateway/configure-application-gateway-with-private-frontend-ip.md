@@ -5,15 +5,15 @@ description: Tento článek poskytuje informace o tom, jak nakonfigurovat Applic
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/16/2020
 ms.author: victorh
-ms.openlocfilehash: df21a2c40dd532ac1ff321638099ceee8a2b3e53
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c7a0022c5cff405a993f30cdf2ab5900485c84a1
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535583"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808111"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>Konfigurace aplikační brány s koncovým bodem interního nástroje pro vyrovnávání zatížení (interního nástroje)
 
@@ -59,7 +59,7 @@ Aby mohl Azure komunikovat mezi prostředky, které vytvoříte, potřebuje virt
 10. Vyberte **Přidat back-end fond**.
 11. Jako **název**zadejte *appGatewayBackendPool*.
 12. Pro **přidání back-end fondu bez cílů**vyberte **Ano**. Cíle přidáte později.
-13. Vyberte **Přidat**.
+13. Vyberte možnost **Přidat**.
 14. Vyberte **Další: Konfigurace**.
 15. V části **pravidla směrování**vyberte **Přidat pravidlo**.
 16. Jako **název pravidla**zadejte *RRULE-01*.

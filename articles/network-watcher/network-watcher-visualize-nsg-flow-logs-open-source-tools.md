@@ -7,26 +7,23 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: e567994038fb4f71ef86dc577760ecf4699a0b1d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6d2b2fb55a9c23643bbb778ced047e75871ba7f5
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76840634"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807671"
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>Vizualizace protokolů toku skupin zabezpečení sítě, které jsou ve službě Azure Network Watcher, s použitím opensourcových nástrojů
 
 Protokoly toku skupin zabezpečení sítě poskytují informace, které se dají použít k pochopení příchozího a odchozího provozu IP v skupinách zabezpečení sítě. Tyto protokoly toku ukazují odchozí a příchozí toky pro každé pravidlo. síťové rozhraní, ke kterému se tok vztahuje, je 5 informací řazené kolekce členů toku (zdrojová nebo cílová IP adresa, zdrojový/cílový port, protokol) a pokud byl provoz povolený nebo zakázaný.
 
 Tyto protokoly toků můžou být obtížné ručně analyzovat a získávat z nich přehledy. Existuje však několik open source nástrojů, které vám mohou vizualizovat tato data. Tento článek vám poskytne řešení pro vizualizaci těchto protokolů pomocí elastického zásobníku, který vám umožní rychle indexovat a vizualizovat protokoly toku na řídicím panelu Kibana.
-
-> [!Warning]  
-> Následující kroky fungují s protokoly toku verze 1. Podrobnosti najdete v tématu [Úvod do protokolování toků pro skupiny zabezpečení sítě](network-watcher-nsg-flow-logging-overview.md). Následující pokyny nebudou fungovat s verzí 2 souborů protokolu bez úprav.
 
 ## <a name="scenario"></a>Scénář
 
@@ -138,6 +135,11 @@ Další pokyny k instalaci elastického hledání najdete v [pokynech k instalac
                   "protocol" => "%{[records][properties][flows][flows][flowTuples][5]}"
                   "trafficflow" => "%{[records][properties][flows][flows][flowTuples][6]}"
                   "traffic" => "%{[records][properties][flows][flows][flowTuples][7]}"
+                  "flowstate" => "%{[records][properties][flows][flows][flowTuples][8]}"
+                   "packetsSourceToDest" => "%{[records][properties][flows][flows][flowTuples][9]}"
+                   "bytesSentSourceToDest" => "%{[records][properties][flows][flows][flowTuples][10]}"
+                   "packetsDestToSource" => "%{[records][properties][flows][flows][flowTuples][11]}"
+                   "bytesSentDestToSource" => "%{[records][properties][flows][flows][flowTuples][12]}"
                    }
       convert => {"unixtimestamp" => "integer"}
       convert => {"srcPort" => "integer"}

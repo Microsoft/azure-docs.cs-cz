@@ -9,13 +9,13 @@ ms.subservice: common
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: tamram
-ms.reviewer: cbrooks
-ms.openlocfilehash: 724c250b56107cb68da387bdd531602e8d239e1c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: ozgun
+ms.openlocfilehash: f69301bdbc0af9334858940fbfd3d7d0a0a63153
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82127529"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807649"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-storage"></a>Konfigurace rozšířené ochrany před internetovými útoky pro Azure Storage
 
@@ -36,7 +36,7 @@ Podrobnosti o cenách, včetně bezplatné 30denní zkušební verze, najdete na
 
 Rozšířenou ochranu před internetovými útoky můžete nakonfigurovat libovolným z několika způsobů popsaných v následujících částech.
 
-### <a name="portal"></a>[Portál](#tab/azure-portal)
+### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 1. Spusťte [Azure Portal](https://portal.azure.com/).
 1. Přejděte na účet Azure Storage. V části **Nastavení**vyberte **Rozšířené zabezpečení**.
@@ -91,7 +91,7 @@ Pomocí příkazů rozhraní REST API můžete vytvořit, aktualizovat nebo zís
 * [Rozšířená ochrana před internetovými útoky – vytvořit](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/create)
 * [Rozšířená ochrana před internetovými útoky – získání](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/get)
 
-### <a name="powershell"></a>[Prostředí](#tab/azure-powershell)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Použijte následující rutiny PowerShellu:
 

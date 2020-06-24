@@ -43,9 +43,9 @@ Klíčovými součástmi transakční replikace jsou **Vydavatel**, **distributo
 
 | Role | Azure SQL Database | Spravovaná instance Azure SQL |
 | :----| :------------- | :--------------- |
-| **Publisher** | No | Ano |
-| **Rozdělovač** | No | Ano|
-| **Předplatitel pro vyžádání obsahu** | No | Ano|
+| **Publisher** | No | Yes |
+| **Rozdělovač** | No | Yes|
+| **Předplatitel pro vyžádání obsahu** | No | Yes|
 | **Předplatitel nabízených oznámení**| Ano | Ano|
 | &nbsp; | &nbsp; | &nbsp; |
 
@@ -72,11 +72,11 @@ Existují různé [typy replikace](https://docs.microsoft.com/sql/relational-dat
 
 | Replikace | Azure SQL Database | Spravovaná instance Azure SQL |
 | :----| :------------- | :--------------- |
-| [**Standardní transakční**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Ano (jenom jako předplatitel) | Ano |
-| [**Snímek**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Ano (jenom jako předplatitel) | Ano|
+| [**Standardní transakční**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Ano (jenom jako předplatitel) | Yes |
+| [**Snímek**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Ano (jenom jako předplatitel) | Yes|
 | [**Sloučit replikaci**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | Ne | Ne|
 | [**Peer-to-peer**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Ne | Ne|
-| [**Obousměrné**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | No | Ano|
+| [**Obousměrné**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | No | Yes|
 | [**Odběry, které by možné aktualizovat**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Ne | Ne|
 | &nbsp; | &nbsp; | &nbsp; |
 

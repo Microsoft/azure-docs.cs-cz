@@ -5,15 +5,15 @@ description: Tento článek poskytuje informace o tom, jak řešit potíže s p�
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: 961ed17bcef19b445c2546a557725bb6bd8653cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2af52d1e7c211ccc0b5c18ed1ecda66d46d80786
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80293541"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84806497"
 ---
 # <a name="troubleshoot-app-service-issues-in-application-gateway"></a>Řešení potíží s App Service v Application Gateway
 
@@ -77,7 +77,7 @@ Set-Cookie: ARRAffinity=b5b1b14066f35b3e4533a1974cacfbbd969bf1960b6518aa2c2e2619
 
 X-Powered-By: ASP.NET
 ```
-V předchozím příkladu si všimněte, že hlavička odpovědi má stavový kód 301 pro přesměrování. Hlavička umístění má místo původního názvu `www.contoso.com`hostitele název hostitele služby App Service.
+V předchozím příkladu si všimněte, že hlavička odpovědi má stavový kód 301 pro přesměrování. Hlavička umístění má místo původního názvu hostitele název hostitele služby App Service `www.contoso.com` .
 
 ## <a name="solution-rewrite-the-location-header"></a>Řešení: přepište hlavičku umístění
 
@@ -98,9 +98,9 @@ Musíte vlastnit vlastní doménu a postupovat podle tohoto postupu:
 
     ![Seznam vlastních domén služby App Service](./media/troubleshoot-app-service-redirection-app-service-url/appservice-2.png)
 
-- Vaše služba App Service je připravena přijmout název `www.contoso.com`hostitele. Změňte záznam CNAME v DNS tak, aby odkazoval zpátky na plně kvalifikovaný název domény služby Application Gateway, například `appgw.eastus.cloudapp.azure.com`.
+- Vaše služba App Service je připravena přijmout název hostitele `www.contoso.com` . Změňte záznam CNAME v DNS tak, aby odkazoval zpátky na plně kvalifikovaný název domény služby Application Gateway, například `appgw.eastus.cloudapp.azure.com` .
 
-- Ujistěte se, že se `www.contoso.com` vaše doména při DOTAZech DNS překládá na plně kvalifikovaný název domény služby Application Gateway.
+- Ujistěte se, že se vaše doména `www.contoso.com` při dotazech DNS překládá na plně kvalifikovaný název domény služby Application Gateway.
 
 - Nastavením vlastního testu zakážete možnost **Vybrat název hostitele z nastavení http back-endu**. V Azure Portal zrušte zaškrtnutí políčka v nastavení sondy. V prostředí PowerShell nepoužívejte v příkazu **set-AzApplicationGatewayProbeConfig** přepínač **-PickHostNameFromBackendHttpSettings** . Do pole název hostitele testu zadejte plně kvalifikovaný název domény služby App Service, example.azurewebsites.net. Požadavky testu odeslané z aplikační brány přenesou tento plně kvalifikovaný název domény v hlavičce hostitele.
 
@@ -111,7 +111,7 @@ Musíte vlastnit vlastní doménu a postupovat podle tohoto postupu:
 
 - Přidružte vlastní test zpět k nastavení HTTP back-endu a ověřte, jestli je back-end v pořádku.
 
-- Služba Application Gateway by teď měla předejte stejný název `www.contoso.com`hostitele službě App Service. Přesměrování proběhne na stejném názvu hostitele. Podívejte se na následující příklady hlaviček požadavků a odpovědí.
+- Služba Application Gateway by teď měla předejte stejný název hostitele `www.contoso.com` službě App Service. Přesměrování proběhne na stejném názvu hostitele. Podívejte se na následující příklady hlaviček požadavků a odpovědí.
 
 K implementaci předchozích kroků pomocí prostředí PowerShell pro existující instalaci použijte ukázkový skript PowerShellu, který následuje. Všimněte si, že jsme v konfiguraci testu a nastavení HTTP nepoužívali přepínače **-PickHostname** .
 

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 9cd3cd60f5d62a0c416b0e05ea408c20483bff13
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7e8a70955b36f11727019fe430f62e84d4f0c93c
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74931333"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85248296"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Vytváření, sledování a Správa datových továrn Azure pomocí sady Azure Data Factory .NET SDK
 > [!NOTE]
@@ -50,7 +50,7 @@ Vytvořte aplikaci Azure Active Directory, vytvořte pro ni instanční objekt a
     ```powershell
     Get-AzSubscription
     ```
-4. Spuštěním následujícího příkazu vyberte předplatné, se kterým chcete pracovat. Nahraďte ** &lt;NameOfAzureSubscription** &gt; názvem vašeho předplatného Azure.
+4. Spuštěním následujícího příkazu vyberte předplatné, se kterým chcete pracovat. Nahraďte ** &lt; NameOfAzureSubscription** &gt; názvem vašeho předplatného Azure.
 
     ```powershell
     Get-AzSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzContext
@@ -120,7 +120,7 @@ Aktivita kopírování provádí přesun dat ve službě Azure Data Factory. Akt
 3. V **Konzole Správce balíčků** postupujte takto:
    1. Spusťte následující příkaz a nainstalujte balíček služby Data Factory: `Install-Package Microsoft.Azure.Management.DataFactories`
    2. Spusťte následující příkaz pro instalaci balíčku Azure Active Directory (v kódu použijete rozhraní API Active Directory): `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213`
-4. Nahraďte obsah souboru **App. config** v projektu následujícím obsahem: 
+4. Nahraďte obsah souboru **App.config** v projektu následujícím obsahem: 
     
     ```xml
     <?xml version="1.0" encoding="utf-8" ?>
@@ -137,7 +137,7 @@ Aktivita kopírování provádí přesun dat ve službě Azure Data Factory. Akt
         </appSettings>
     </configuration>
     ```
-5. V souboru App. config aktualizujte hodnoty ** &lt;&gt;ID aplikace**, ** &lt;heslo&gt;**, ** &lt;&gt;ID předplatného**a ** &lt;ID&gt; tenanta** vlastními hodnotami.
+5. V souboru App.Config aktualizujte hodnoty ** &lt; ID &gt; aplikace**, ** &lt; heslo &gt; **, ** &lt; ID &gt; předplatného**a ** &lt; ID &gt; tenanta** vlastními hodnotami.
 6. Přidejte následující příkazy **using** do souboru **program.cs** v projektu.
 
     ```csharp
@@ -453,7 +453,7 @@ Aktivita kopírování provádí přesun dat ve službě Azure Data Factory. Akt
     John, Doe
     Jane, Doe
     ```
-17. Spusťte ukázku kliknutím na **ladění** -> **Spustit ladění** v nabídce. Když se zobrazí **Získávání běhových podrobností o datovém řezu**, počkejte několik minut a stiskněte **ENTER**.
+17. Spusťte ukázku kliknutím na **ladění**  ->  **Spustit ladění** v nabídce. Když se zobrazí **Získávání běhových podrobností o datovém řezu**, počkejte několik minut a stiskněte **ENTER**.
 18. Pomocí webu Azure Portal ověřte, že je objekt pro vytváření dat **APITutorialFactory** vytvořený s těmito artefakty:
     * Propojená služba: **AzureStorageLinkedService**
     * Datová sada: **DatasetBlobSource** a **DatasetBlobDestination**.
@@ -500,6 +500,6 @@ while (response != null);
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Podívejte se na následující příklad pro vytvoření kanálu pomocí sady .NET SDK, který kopíruje data z úložiště objektů BLOB v Azure do databáze SQL Azure: 
+Podívejte se na následující příklad pro vytvoření kanálu pomocí sady .NET SDK, který kopíruje data z úložiště objektů BLOB v Azure do Azure SQL Database: 
 
 - [Vytvoření kanálu pro kopírování dat z Blob Storage do SQL Database](data-factory-copy-activity-tutorial-using-dotnet-api.md)

@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 02/26/2020
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: c7091592f8806b6f6655315ae1faace286c2c1f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b4af9c23e2599ad666908763720a5f01303b8d50
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78207690"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84805484"
 ---
 # <a name="authorize-access-to-blob-or-queue-data-with-azure-cli"></a>Autorizace přístupu k datům objektů BLOB nebo front pomocí Azure CLI
 
@@ -26,15 +26,15 @@ Azure Storage poskytuje rozšíření pro rozhraní příkazového řádku Azure
 
 ## <a name="specify-how-data-operations-are-authorized"></a>Určete způsob, jakým jsou datové operace autorizovány.
 
-Příkazy rozhraní příkazového řádku Azure pro čtení a zápis dat objektů BLOB a `--auth-mode` front obsahují volitelný parametr. Zadáním tohoto parametru označíte, jak má být datová operace autorizována:
+Příkazy rozhraní příkazového řádku Azure pro čtení a zápis dat objektů BLOB a front obsahují volitelný `--auth-mode` parametr. Zadáním tohoto parametru označíte, jak má být datová operace autorizována:
 
-- Nastavte `--auth-mode` parametr tak `login` , aby se přihlásil pomocí objektu zabezpečení služby Azure AD (doporučeno).
-- Nastavte `--auth-mode` parametr na starší `key` hodnotu pro pokus o načtení přístupového klíče účtu, který se má použít pro autorizaci. Pokud `--auth-mode` parametr vynecháte, Azure CLI se taky pokusí načíst přístupový klíč.
+- Nastavte `--auth-mode` parametr tak, aby `login` se přihlásil pomocí objektu zabezpečení služby Azure AD (doporučeno).
+- Nastavte `--auth-mode` parametr na starší `key` hodnotu pro pokus o načtení přístupového klíče účtu, který se má použít pro autorizaci. Pokud parametr vynecháte `--auth-mode` , Azure CLI se taky pokusí načíst přístupový klíč.
 
 Pokud chcete použít `--auth-mode` parametr, ujistěte se, že máte nainstalovanou verzi Azure CLI 2.0.46 nebo novější. Spusťte `az --version` a ověřte nainstalovanou verzi.
 
 > [!IMPORTANT]
-> Pokud `--auth-mode` parametr vynecháte nebo ho nastavíte `key`na, pokusí se Azure CLI použít přístupový klíč k účtu pro autorizaci. V takovém případě společnost Microsoft doporučuje zadat přístupový klíč buď v příkazu, nebo v proměnné prostředí **AZURE_STORAGE_KEY** . Další informace o proměnných prostředí naleznete v části s názvem [nastavení proměnných prostředí pro parametry autorizace](#set-environment-variables-for-authorization-parameters).
+> Pokud parametr vynecháte `--auth-mode` nebo ho nastavíte na `key` , pokusí se Azure CLI použít přístupový klíč k účtu pro autorizaci. V takovém případě společnost Microsoft doporučuje zadat přístupový klíč buď v příkazu, nebo v proměnné prostředí **AZURE_STORAGE_KEY** . Další informace o proměnných prostředí naleznete v části s názvem [nastavení proměnných prostředí pro parametry autorizace](#set-environment-variables-for-authorization-parameters).
 >
 > Pokud přístupový klíč nezadáte, pokusí se rozhraní příkazového řádku Azure volat poskytovatele prostředků Azure Storage a načíst ho pro každou operaci. Provádění mnoha operací s daty, které vyžadují volání poskytovatele prostředků, může způsobit omezení. Další informace o omezeních poskytovatele prostředků najdete v tématu [škálovatelnost a výkonnostní cíle pro poskytovatele prostředků Azure Storage](scalability-targets-resource-provider.md).
 
@@ -59,7 +59,7 @@ Následující příklad ukazuje, jak vytvořit kontejner z Azure CLI pomocí va
     > [!IMPORTANT]
     > Rozšiřování přiřazení rolí RBAC může trvat několik minut.
 
-1. Zavolejte pomocí příkazu [AZ Storage Container Create](/cli/azure/storage/container#az-storage-container-create) s `--auth-mode` parametrem nastaveným `login` na, aby se vytvořil kontejner pomocí vašich přihlašovacích údajů Azure AD. Nezapomeňte nahradit zástupné hodnoty v lomených závorkách vlastními hodnotami:
+1. Zavolejte pomocí příkazu [AZ Storage Container Create](/cli/azure/storage/container#az-storage-container-create) s `--auth-mode` parametrem nastaveným na `login` , aby se vytvořil kontejner pomocí vašich přihlašovacích údajů Azure AD. Nezapomeňte nahradit zástupné hodnoty v lomených závorkách vlastními hodnotami:
 
     ```azurecli
     az storage container create \
@@ -97,13 +97,13 @@ az storage container create \
 
 Můžete zadat parametry autorizace v proměnných prostředí, aby se zabránilo jejich zahrnutí při každém volání operace Azure Storage data. Následující tabulka popisuje dostupné proměnné prostředí.
 
-| Proměnná prostředí                  | Popis                                                                                                                                                                                                                                                                                                                                                                     |
+| Proměnná prostředí                  | Description                                                                                                                                                                                                                                                                                                                                                                     |
 |---------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |    AZURE_STORAGE_ACCOUNT              |    Název účtu úložiště. Tato proměnná by se měla používat ve spojení s klíčem účtu úložiště nebo tokenem SAS. Pokud žádná není, Azure CLI se pokusí získat přístupový klíč účtu úložiště pomocí ověřeného účtu Azure AD. Pokud se spustí velký počet příkazů najednou, může být dosaženo limitu omezování Azure Storage poskytovatele prostředků. Další informace o omezeních poskytovatele prostředků najdete v tématu [škálovatelnost a výkonnostní cíle pro poskytovatele prostředků Azure Storage](scalability-targets-resource-provider.md).             |
 |    AZURE_STORAGE_KEY                  |    Klíč účtu úložiště. Tato proměnná se musí používat ve spojení s názvem účtu úložiště.                                                                                                                                                                                                                                                                          |
 |    AZURE_STORAGE_CONNECTION_STRING    |    Připojovací řetězec, který obsahuje klíč účtu úložiště nebo token SAS. Tato proměnná se musí používat ve spojení s názvem účtu úložiště.                                                                                                                                                                                                                       |
 |    AZURE_STORAGE_SAS_TOKEN            |    Token sdíleného přístupového podpisu (SAS). Tato proměnná se musí používat ve spojení s názvem účtu úložiště.                                                                                                                                                                                                                                                            |
-|    AZURE_STORAGE_AUTH_MODE            |    Režim ověřování, ve kterém se má příkaz Spustit. Povolené hodnoty jsou `login` (doporučeno) nebo `key`. Pokud zadáte `login`, rozhraní příkazového řádku Azure CLI použije přihlašovací údaje Azure AD k autorizaci operace s daty. Pokud zadáte starší `key` režim, pokusí se Azure CLI zadat dotaz na přístupový klíč účtu a ověřit příkaz pomocí klíče.    |
+|    AZURE_STORAGE_AUTH_MODE            |    Režim ověřování, ve kterém se má příkaz Spustit. Povolené hodnoty jsou `login` (doporučeno) nebo `key` . Pokud zadáte `login` , rozhraní příkazového řádku Azure CLI použije přihlašovací údaje Azure AD k autorizaci operace s daty. Pokud zadáte starší `key` režim, pokusí se Azure CLI zadat dotaz na přístupový klíč účtu a ověřit příkaz pomocí klíče.    |
 
 ## <a name="next-steps"></a>Další kroky
 

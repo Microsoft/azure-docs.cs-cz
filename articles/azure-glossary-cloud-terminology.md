@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: 7c80ba6b15cec08da9bcefea243493a824ef66bd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fa7464c70593c83c708aba49235ecdde1be0cc9f
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79276475"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807763"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure Glosář: slovník cloudové terminologie na platformě Azure
 
@@ -31,7 +31,7 @@ Glosář Microsoft Azure je krátký slovník cloudové terminologie pro platfor
 
 ## <a name="account"></a>account
 Účet, který se používá pro přístup k předplatnému Azure a jeho správu. Často se označuje jako účet Azure, přestože účet může být některý z těchto: stávající pracovní, školní nebo osobní účet Microsoft nebo uživatelské jméno a heslo pro Office 365. Můžete také vytvořit účet pro správu předplatného Azure při registraci [bezplatné zkušební verze](https://azure.microsoft.com).  
-Přečtěte si téma [registrace předplatného Azure s účtem Office 365](cost-management-billing/manage/office-365-account-for-azure-subscription.md) a [účty, které můžete použít k přihlášení](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
+Přečtěte si téma [registrace předplatného Azure s účtem Microsoft 365](cost-management-billing/manage/microsoft-365-account-for-azure-subscription.md) a [účty, které můžete použít k přihlášení](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
 ## <a name="api-app"></a>Aplikace API
 Jiný název [aplikace App Service](#app-service-app).

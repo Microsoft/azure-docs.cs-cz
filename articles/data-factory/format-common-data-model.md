@@ -5,14 +5,14 @@ author: djpmsft
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/05/2020
+ms.date: 06/16/2020
 ms.author: daperlov
-ms.openlocfilehash: 1764036413d6e4f634ed156f7cfb441b4a2bb1e6
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 5e75f2203552a69e50ed16176525429c6c9d8810
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84604932"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807819"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Formát modelu Common data model v Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -32,14 +32,14 @@ Model Common data model je k dispozici jako [vložená datová sada](data-flow-s
 
 V níže uvedené tabulce jsou uvedeny vlastnosti podporované zdrojem CDM. Tyto vlastnosti můžete upravit na kartě **Možnosti zdrojového kódu** .
 
-| Name | Popis | Vyžadováno | Povolené hodnoty | Vlastnost skriptu toku dat |
+| Name | Description | Vyžadováno | Povolené hodnoty | Vlastnost skriptu toku dat |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Formát | Formát musí být`cdm` | ano | `cdm` | formát |
-| Formát metadat | Kde se nachází odkaz na entitu na data. Pokud používáte CDM verze 1,0, vyberte manifest. Pokud používáte verzi CDM před 1,0, vyberte model. JSON. | Yes | `'manifest'` nebo `'model'` | manifestType |
+| Formát metadat | Kde se nachází odkaz na entitu na data. Pokud používáte CDM verze 1,0, vyberte manifest. Pokud používáte verzi CDM před 1,0, vyberte model.jszapnuto. | Ano | `'manifest'` nebo `'model'` | manifestType |
 | Kořen umístění: kontejner | Název kontejneru složky CDM | ano | Řetězec | Systému souborů |
 | Kořenové umístění: cesta ke složce | Umístění kořenové složky složky CDM | ano | Řetězec | folderPath |
 | Soubor manifestu: cesta k entitě | Cesta ke složce entity v kořenové složce | ne | Řetězec | entityPath |
-| Soubor manifestu: název manifestu | Název souboru manifestu Výchozí hodnota je Default.  | No | Řetězec | manifest |
+| Soubor manifestu: název manifestu | Název souboru manifestu Výchozí hodnota je Default.  | Ne | Řetězec | manifest |
 | Filtrovat podle poslední změny | Zvolit filtrování souborů podle toho, kdy se naposledy změnily | ne | Časové razítko | modifiedAfter <br> modifiedBefore | 
 | Propojená služba schématu | Propojená služba, ve které se nachází Corpus | Ano, pokud používáte manifest | `'adlsgen2'` nebo `'github'` | corpusStore | 
 | Kontejner odkazů na entity | Corpus kontejneru je v | Ano, pokud používáte manifest a corpus v ADLS Gen2 | Řetězec | adlsgen2_fileSystem |
@@ -53,35 +53,28 @@ V níže uvedené tabulce jsou uvedeny vlastnosti podporované zdrojem CDM. Tyto
 
 CDM je k dispozici pouze jako vložená datová sada a ve výchozím nastavení nemá přidružené schéma. Chcete-li získat metadata sloupce, klikněte na tlačítko **importovat schéma** na kartě **projekce** . To vám umožní odkazovat na názvy sloupců a datové typy určené parametrem corpus. K importu schématu musí být aktivní [relace ladění toku dat](concepts-data-flow-debug-mode.md) .
 
-![Importovat schéma](media/format-common-data-model/import-schema-source.png)
 
-### <a name="cdm-source-example"></a>Příklad zdroje CDM
-
-Níže uvedený obrázek je příkladem konfigurace zdroje CDM v části mapování toků dat.
-
-![CDM zdroj](media/format-common-data-model/data-flow-source.png)
-
-Přidružený skript toku dat je:
+### <a name="cdm-source-data-flow-script-example"></a>Příklad skriptu zdrojového toku dat CDM
 
 ```
 source(output(
-        ServingSizeId as integer,
-        ServingSize as integer,
-        ServingSizeUomId as string,
-        ServingSizeNote as string,
+        ProductSizeId as integer,
+        ProductColor as integer,
+        CustomerId as string,
+        Note as string,
         LastModifiedDate as timestamp
     ),
     allowSchemaDrift: true,
     validateSchema: false,
-    entity: 'ServingSize.cdm.json/ServingSize',
+    entity: 'Product.cdm.json/Product',
     format: 'cdm',
     manifestType: 'manifest',
-    manifestName: 'ServingSizeManifest',
-    entityPath: 'ServingSize',
-    corpusPath: 'ProductAhold_Updated',
+    manifestName: 'ProductManifest',
+    entityPath: 'Product',
+    corpusPath: 'Products',
     corpusStore: 'adlsgen2',
     adlsgen2_fileSystem: 'models',
-    folderPath: 'ServingSizeData',
+    folderPath: 'ProductData',
     fileSystem: 'data') ~> CDMSource
 ```
 
@@ -89,13 +82,13 @@ source(output(
 
 V níže uvedené tabulce jsou uvedeny vlastnosti, které CDM jímka podporuje. Tyto vlastnosti můžete upravit na kartě **Nastavení** .
 
-| Name | Popis | Vyžadováno | Povolené hodnoty | Vlastnost skriptu toku dat |
+| Name | Description | Vyžadováno | Povolené hodnoty | Vlastnost skriptu toku dat |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Formát | Formát musí být`cdm` | ano | `cdm` | formát |
 | Kořen umístění: kontejner | Název kontejneru složky CDM | ano | Řetězec | Systému souborů |
 | Kořenové umístění: cesta ke složce | Umístění kořenové složky složky CDM | ano | Řetězec | folderPath |
 | Soubor manifestu: cesta k entitě | Cesta ke složce entity v kořenové složce | ne | Řetězec | entityPath |
-| Soubor manifestu: název manifestu | Název souboru manifestu Výchozí hodnota je Default. | No | Řetězec | manifest |
+| Soubor manifestu: název manifestu | Název souboru manifestu Výchozí hodnota je Default. | Ne | Řetězec | manifest |
 | Propojená služba schématu | Propojená služba, ve které se nachází Corpus | ano | `'adlsgen2'` nebo `'github'` | corpusStore | 
 | Kontejner odkazů na entity | Corpus kontejneru je v | Ano, pokud se corpus v ADLS Gen2 | Řetězec | adlsgen2_fileSystem |
 | Úložiště referencí k entitám | GitHub repository name | Ano, pokud je corpus v GitHubu | Řetězec | github_repository |
@@ -108,24 +101,20 @@ V níže uvedené tabulce jsou uvedeny vlastnosti, které CDM jímka podporuje. 
 | Oddělovač sloupců | Postup při zápisu do DelimitedText, jak vymezují sloupce | Ano, pokud se zapisuje do DelimitedText | Řetězec | columnDelimiter |
 | První řádek jako záhlaví | Pokud používáte DelimitedText, určuje, jestli se názvy sloupců přidávají jako záhlaví. | ne | `true` nebo `false` | columnNamesAsHeader |
 
-### <a name="cdm-sink-example"></a>Příklad jímky CDM
-
-Níže uvedený obrázek je příkladem konfigurace jímky CDM v části mapování toků dat.
-
-![CDM zdroj](media/format-common-data-model/data-flow-sink.png)
+### <a name="cdm-sink-data-flow-script-example"></a>Příklad skriptu toku dat jímky CDM
 
 Přidružený skript toku dat je:
 
 ```
 CDMSource sink(allowSchemaDrift: true,
     validateSchema: false,
-    entity: 'ServingSize.cdm.json/ServingSize',
+    entity: 'Product.cdm.json/Product',
     format: 'cdm',
-    entityPath: 'ServingSize',
-    manifestName: 'ServingSizeManifest',
-    corpusPath: 'ProductAhold_Updated',
+    entityPath: 'ProductSize',
+    manifestName: 'ProductSizeManifest',
+    corpusPath: 'Products',
     partitionPath: 'adf',
-    folderPath: 'ServingSizeData',
+    folderPath: 'ProductSizeData',
     fileSystem: 'cdm',
     subformat: 'parquet',
     corpusStore: 'adlsgen2',

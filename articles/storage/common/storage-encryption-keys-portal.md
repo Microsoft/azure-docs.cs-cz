@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 192e58b101b824ca0cc0c732e02647838be6dc35
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 30ef840e254355e7db34c626f482d86246e6a738
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81456477"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84805407"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-the-azure-portal"></a>Konfigurace klíčů spravovaných zákazníkem pomocí Azure Key Vault pomocí Azure Portal
 
@@ -101,5 +101,5 @@ Když zakážete klíče spravované zákazníkem, váš účet úložiště se 
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Azure Storage šifrování dat v klidovém umístění](storage-service-encryption.md)
+- [Šifrování služby Azure Storage pro neaktivní uložená data](storage-service-encryption.md)
 - [Co je Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?

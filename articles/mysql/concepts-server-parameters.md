@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/5/2020
-ms.openlocfilehash: f78e6969c98545ec0b9b3e0a0822d4b9ae35903a
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 198e23065603d58a9b1386b7c16792a1d8140f55
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84562004"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85250498"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Parametry serveru v Azure Database for MySQL
 
@@ -123,6 +123,9 @@ Když připojení překročí limit, může se zobrazit následující chyba:
 > Pro dosažení optimálního prostředí doporučujeme, abyste k efektivní správě připojení používali připojení Pooler jako ProxySQL.
 
 Vytváření nových připojení klientů k MySQL trvá čas i po jejich navázání, tato připojení zabírají databázové prostředky i v případě nečinnosti. Většina aplikací vyžaduje mnoho krátkodobých připojení, což je v této situaci celé. Výsledkem je méně prostředků dostupných pro vaše skutečné zatížení, což vede ke snížení výkonu. Připojení Pooler, které zkracuje nečinné připojení a znovu používá existující připojení, jim pomůže vyhnout se. Další informace o nastavení ProxySQL najdete v našem [blogovém příspěvku](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042).
+
+>[!Note]
+>ProxySQL je open source nástroj pro komunitu. Společnost Microsoft je podporuje na základě optimálního úsilí. Pokud chcete získat technickou podporu s použitím autoritativních pokynů, můžete vyhodnotit a kontaktovat [podporu ProxySQL produktu](https://proxysql.com/services/support/).
 
 ### <a name="max_heap_table_size"></a>max_heap_table_size
 

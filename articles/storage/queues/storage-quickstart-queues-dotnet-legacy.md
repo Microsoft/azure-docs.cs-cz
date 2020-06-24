@@ -7,13 +7,13 @@ ms.date: 02/06/2018
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.reviewer: cbrooks
-ms.openlocfilehash: c327629f0c5e88520a8bb0b9c4ff68e6edc00c35
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.reviewer: dineshm
+ms.openlocfilehash: 807765aea66561abb5a8764f119d2be4632a56d5
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79137335"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807561"
 ---
 # <a name="quickstart-use-the-azure-storage-sdk-v11-for-net-to-manage-a-queue"></a>Rychlý Start: použití sady Azure Storage SDK V11 pro .NET ke správě fronty
 
@@ -200,7 +200,7 @@ Console.WriteLine("Message expiration time: {0}", message.ExpirationTime.ToStrin
 Console.WriteLine();
 ```
 
-Chcete-li přidat zprávu, jejíž platnost nevyprší, `Timespan.FromSeconds(-1)` použijte ve volání [AddMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync).
+Chcete-li přidat zprávu, jejíž platnost nevyprší, použijte `Timespan.FromSeconds(-1)` ve volání [AddMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync).
 
 ```csharp
 await queue.AddMessageAsync(message, TimeSpan.FromSeconds(-1), null, null, null);

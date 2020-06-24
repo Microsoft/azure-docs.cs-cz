@@ -7,14 +7,14 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: f5d42a6a0567d3949bc4b0fb1947450a9c957f18
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e93343708ce8a89e9c6e8f57c6cebb198578e325
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75972346"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84805664"
 ---
 # <a name="use-the-azure-storage-resource-provider-to-access-management-resources"></a>Použití poskytovatele prostředků Azure Storage k přístupu k prostředkům správy
 
@@ -44,7 +44,7 @@ Azure poskytuje předdefinované role, které udělují oprávnění k volání 
 
 Předdefinované role, které udělují oprávnění k volání operací správy úložiště, zahrnují role popsané v následující tabulce:
 
-|    Role RBAC    |    Popis    |    Zahrnuje přístup k klíčům účtu?    |
+|    Role RBAC    |    Description    |    Zahrnuje přístup k klíčům účtu?    |
 |---------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|
 | **Vlastník** | Může spravovat všechny prostředky úložiště a přistupovat k prostředkům.  | Ano, poskytuje oprávnění k zobrazení a obnovení klíčů účtu úložiště. |
 | **Přispěvatel**  | Může spravovat všechny prostředky úložiště, ale nemůže spravovat prostředky pro přiřazení. | Ano, poskytuje oprávnění k zobrazení a obnovení klíčů účtu úložiště. |

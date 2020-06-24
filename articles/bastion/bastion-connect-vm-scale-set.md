@@ -4,21 +4,21 @@ description: V tomto článku se dozvíte, jak se připojit k sadě škálován�
 services: bastion
 author: charwen
 ms.service: bastion
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: charwen
-ms.openlocfilehash: 290a20fcd827841c24983f3bdd54b6db8e154462
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e3dc7ce36e773b5a615b1abf4f50406fcb07826b
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80619346"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84744302"
 ---
 # <a name="connect-to-a-virtual-machine-scale-set-using-azure-bastion"></a>Připojení k sadě škálování virtuálního počítače pomocí Azure bastionu
 
 V tomto článku se dozvíte, jak bezpečně a hladce RDP na instanci sady škálování virtuálních počítačů s Windows ve službě Azure Virtual Network pomocí Azure bastionu. K instanci sady škálování virtuálního počítače se můžete připojit přímo z Azure Portal. Při použití Azure bastionu virtuální počítače nevyžadují klienta, agenta ani další software. Další informace o Azure bastionu najdete v tématu [Přehled](bastion-overview.md).
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Ujistěte se, že jste pro virtuální síť nastavili hostitele Azure bastionu, ve kterém se sada škálování virtuálního počítače nachází. Další informace najdete v tématu [Vytvoření hostitele Azure bastionu](bastion-create-host-portal.md). Jakmile je služba bastionu zřízená a nasazená ve vaší virtuální síti, můžete ji použít pro připojení k instanci sady škálování virtuálního počítače v této virtuální síti. Bastionu předpokládá, že používáte protokol RDP pro připojení k sadě škálování virtuálních počítačů s Windows, a SSH pro připojení k sadě škálování virtuálních počítačů se systémem Linux. Informace o připojení k virtuálnímu počítači se systémem Linux najdete v tématu [připojení k virtuálnímu počítači](bastion-connect-vm-ssh.md)se systémem Linux.
 

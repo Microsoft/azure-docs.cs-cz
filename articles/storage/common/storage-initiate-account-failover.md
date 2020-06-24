@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/28/2020
+ms.date: 06/11/2020
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 905554d1763bdd3c5990a43c5c8d98f336e1c442
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: cbdeb1c55af157a0bf5160d2420974fd014ea3b3
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171204"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807591"
 ---
 # <a name="initiate-a-storage-account-failover"></a>Iniciovat převzetí služeb při selhání účtu úložiště
 
@@ -44,16 +44,16 @@ Další informace o Azure Storage redundanci najdete v tématu [Azure Storage re
 Pokud chcete iniciovat převzetí služeb při selhání účtu z Azure Portal, postupujte takto:
 
 1. Přejděte na svůj účet úložiště.
-2. V části **Nastavení**vyberte **geografickou replikaci**. Následující obrázek ukazuje stav geografické replikace a převzetí služeb při selhání v účtu úložiště.
+1. V části **Nastavení**vyberte **geografickou replikaci**. Následující obrázek ukazuje stav geografické replikace a převzetí služeb při selhání v účtu úložiště.
 
-    ![Snímek obrazovky znázorňující geografickou replikaci a stav převzetí služeb při selhání](media/storage-initiate-account-failover/portal-failover-prepare.png)
+    :::image type="content" source="media/storage-initiate-account-failover/portal-failover-prepare.png" alt-text="Snímek obrazovky znázorňující geografickou replikaci a stav převzetí služeb při selhání":::
 
-3. Ověřte, že je váš účet úložiště nakonfigurovaný pro geograficky redundantní úložiště (GRS) nebo geograficky redundantní úložiště s přístupem pro čtení (RA-GRS). Pokud není, vyberte v části **Nastavení** možnost **Konfigurace** a aktualizujte svůj účet na geograficky redundantní.
-4. Vlastnost **čas poslední synchronizace** určuje, jak daleko je sekundární sekundární z primární třídy. **Čas poslední synchronizace** poskytuje odhad rozsahu ztráty dat, ke které dojde po dokončení převzetí služeb při selhání. Další informace o kontrole vlastnosti **Poslední čas synchronizace** najdete v tématu [Kontrola vlastnosti času poslední synchronizace pro účet úložiště](last-sync-time-get.md).
-5. Vyberte **Příprava pro převzetí služeb při selhání**.
-6. Přečtěte si potvrzovací dialog. Až budete připraveni, potvrďte a zahajte převzetí služeb při selhání zadáním **Ano** .
+1. Ověřte, že je váš účet úložiště nakonfigurovaný pro geograficky redundantní úložiště (GRS) nebo geograficky redundantní úložiště s přístupem pro čtení (RA-GRS). Pokud není, vyberte v části **Nastavení** možnost **Konfigurace** a aktualizujte svůj účet na geograficky redundantní.
+1. Vlastnost **čas poslední synchronizace** určuje, jak daleko je sekundární sekundární z primární třídy. **Čas poslední synchronizace** poskytuje odhad rozsahu ztráty dat, ke které dojde po dokončení převzetí služeb při selhání. Další informace o kontrole vlastnosti **Poslední čas synchronizace** najdete v tématu [Kontrola vlastnosti času poslední synchronizace pro účet úložiště](last-sync-time-get.md).
+1. Vyberte **Příprava pro převzetí služeb při selhání**.
+1. Přečtěte si potvrzovací dialog. Až budete připraveni, potvrďte a zahajte převzetí služeb při selhání zadáním **Ano** .
 
-    ![Snímek obrazovky s potvrzovacím dialogem pro převzetí služeb při selhání účtu](media/storage-initiate-account-failover/portal-failover-confirm.png)
+    :::image type="content" source="media/storage-initiate-account-failover/portal-failover-confirm.png" alt-text="Snímek obrazovky s potvrzovacím dialogem pro převzetí služeb při selhání účtu":::
 
 ## <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -94,7 +94,7 @@ Invoke-AzStorageAccountFailover -ResourceGroupName <resource-group-name> -Name <
 
 Pokud chcete pomocí Azure CLI iniciovat převzetí služeb při selhání, spusťte následující příkazy:
 
-```azurecli
+```azurecli-interactive
 az storage account show \ --name accountName \ --expand geoReplicationStats
 az storage account failover \ --name accountName
 ```

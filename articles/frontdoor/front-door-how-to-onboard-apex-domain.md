@@ -4,20 +4,20 @@ description: Naučte se, jak připojit kořenovou nebo vrcholovou doménu k exis
 services: front-door
 author: sharad4u
 ms.service: frontdoor
-ms.topic: article
+ms.topic: how-to
 ms.date: 5/21/2019
 ms.author: sharadag
-ms.openlocfilehash: 4b74338f22a82d76ef13126ee0862b841bd89a99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d8f08f7cde54aaf705872c8c45bc18eb4a27df77
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80878880"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743588"
 ---
 # <a name="onboard-a-root-or-apex-domain-on-your-front-door"></a>Připojit kořenovou nebo vrcholovou doménu na vaše přední dveře
 Přední dveře Azure pomocí záznamů CNAME ověří vlastnictví domény pro připojování vlastních domén. Přední dveře také nezveřejňují front-end IP adresu přidruženou k profilu front-endu, takže nemůžete mapovat svou doménu vrcholu na IP adresu, pokud je cílem připojit se do front-endu Azure.
 
-Protokol DNS brání přiřazení záznamů CNAME ve vrcholu zóny. Například pokud je `contoso.com`vaše doména; můžete vytvořit záznamy CNAME pro `somelabel.contoso.com`; Nemůžete ale pro `contoso.com` sebe vytvořit záznam CNAME. Toto omezení představuje problém pro vlastníky aplikace, kteří mají aplikace s vyrovnáváním zatížení za předními dveřmi Azure. Vzhledem k tomu, že použití profilu front-dveří vyžaduje vytvoření záznamu CNAME, není možné nasměrovat na přední profil od vrcholu zóny.
+Protokol DNS brání přiřazení záznamů CNAME ve vrcholu zóny. Pokud je vaše doména například, `contoso.com` můžete vytvořit záznamy CNAME pro `somelabel.contoso.com` , ale nemůžete vytvořit záznam CNAME pro `contoso.com` sebe samé. Toto omezení představuje problém pro vlastníky aplikace, kteří mají aplikace s vyrovnáváním zatížení za předními dveřmi Azure. Vzhledem k tomu, že použití profilu front-dveří vyžaduje vytvoření záznamu CNAME, není možné nasměrovat na přední profil od vrcholu zóny.
 
 Tento problém je vyřešen pomocí záznamů aliasů v Azure DNS. Na rozdíl od záznamů CNAME se záznamy aliasů vytvoří ve vrcholu zóny a vlastníci aplikace je můžou použít k tomu, aby odkazovaly na svůj záznam vrcholu zóny na profil front dveří, který má veřejné koncové body. Vlastníci aplikace odkazují na stejný profil front-dveří, který se používá pro všechny ostatní domény v rámci zóny DNS. Například `contoso.com` a `www.contoso.com` může odkazovat na stejný profil front-dveří. 
 
@@ -48,12 +48,12 @@ V tomto článku získáte informace o těchto tématech:
 
     ![Záznam aliasu pro vrchol zóny](./media/front-door-apex-domain/front-door-apex-alias-record.png)
 
-6. Výše uvedený krok vytvoří záznam vrcholu zóny ukazující na prostředek front-dveří a také mapování záznamů CNAME "afdverify" (příklad- `afdverify.contosonews.com`), na `afdverify.<name>.azurefd.net` které se bude používat pro připojování domény do profilu front-dveří.
+6. Výše uvedený krok vytvoří záznam vrcholu zóny ukazující na prostředek front-dveří a také mapování záznamů CNAME "afdverify" (příklad- `afdverify.contosonews.com` ), na `afdverify.<name>.azurefd.net` které se bude používat pro připojování domény do profilu front-dveří.
 
 ## <a name="onboard-the-custom-domain-on-your-front-door"></a>Zprovoznění vlastní domény na předních dveřích
 
 1. Na kartě přední Návrhář dvířek klikněte na ikonu ' + ' v části hostitelé front-endu a přidejte novou vlastní doménu.
-2. Do pole název vlastního hostitele zadejte název kořenové nebo vrcholové domény, například `contosonews.com`.
+2. Do pole název vlastního hostitele zadejte název kořenové nebo vrcholové domény, například `contosonews.com` .
 3. Po ověření mapování CNAME z domény na vaše přední dvířka klikněte na **Přidat** a přidejte vlastní doménu.
 4. Změny odešlete kliknutím na **Uložit** .
 

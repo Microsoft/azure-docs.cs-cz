@@ -4,15 +4,15 @@ description: Tento článek poskytuje informace o tom, jak vystavit službu AKS 
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: c664141a8c89ccbdf37bd3f9a19cfa659982a47d
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 2f3f871ccd29456b086d939277d94b5e4eac23c6
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73795573"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807927"
 ---
 # <a name="expose-an-aks-service-over-http-or-https-using-application-gateway"></a>Vystavení služby AKS přes HTTP nebo HTTPS pomocí Application Gateway 
 
@@ -20,14 +20,14 @@ Tyto kurzy vám pomůžou znázornit využití [prostředků Kubernetes](https:/
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Byl `ingress-azure` nainstalován Helm graf.
+- Byl nainstalován `ingress-azure` Helm graf.
   - [**Nasazení bezserverová**](ingress-controller-install-new.md): Pokud začínáte od začátku, přečtěte si tyto pokyny k instalaci, které popisují postup nasazení clusteru AKS pomocí Application Gateway a instalace řadiče pro příchozí bránu Application Gateway do clusteru AKS.
   - [**Nasazení brownfield**](ingress-controller-install-existing.md): Pokud máte existující cluster AKS a Application Gateway, přečtěte si tyto pokyny, jak nainstalovat řadič pro příchozí bránu Application Gateway do clusteru AKS.
 - Pokud chcete v této aplikaci používat protokol HTTPS, budete potřebovat certifikát x509 a jeho privátní klíč.
 
 ## <a name="deploy-guestbook-application"></a>Nasadit `guestbook` aplikaci
 
-Aplikace kniha návštěv je kanonická Kubernetes aplikace, která vytváří front-end webové uživatelské rozhraní, back-end a databázi Redis. Ve výchozím nastavení `guestbook` zpřístupňuje svou aplikaci prostřednictvím služby s názvem `frontend` na portu `80`. Bez Kubernetes prostředků příchozího přenosu dat není služba přístupná z vnějšku clusteru AKS. Pro přístup k aplikaci prostřednictvím protokolu HTTP a protokolu HTTPS použijeme prostředky příchozího přenosu dat a nastavení.
+Aplikace kniha návštěv je kanonická Kubernetes aplikace, která vytváří front-end webové uživatelské rozhraní, back-end a databázi Redis. Ve výchozím nastavení `guestbook` zpřístupňuje svou aplikaci prostřednictvím služby s názvem `frontend` na portu `80` . Bez Kubernetes prostředků příchozího přenosu dat není služba přístupná z vnějšku clusteru AKS. Pro přístup k aplikaci prostřednictvím protokolu HTTP a protokolu HTTPS použijeme prostředky příchozího přenosu dat a nastavení.
 
 Pomocí níže uvedených pokynů Nasaďte aplikaci pro knihu návštěv.
 
@@ -62,9 +62,9 @@ spec:
 
 Tato příchozí `frontend` služba zpřístupní službu `guestbook-all-in-one` nasazení jako výchozí back-end Application Gateway.
 
-Uložte výše uvedený prostředek příchozího přenosu `ing-guestbook.yaml`dat jako.
+Uložte výše uvedený prostředek příchozího přenosu dat jako `ing-guestbook.yaml` .
 
-1. Nasadit `ing-guestbook.yaml` spuštěním:
+1. Nasadit spuštěním `ing-guestbook.yaml` :
 
     ```bash
     kubectl apply -f ing-guestbook.yaml
@@ -72,7 +72,7 @@ Uložte výše uvedený prostředek příchozího přenosu `ing-guestbook.yaml`d
 
 1. Podívejte se do protokolu pro stav nasazení na řadiči příchozího přenosu dat.
 
-Nyní by `guestbook` měla být aplikace k dispozici. Můžete to zjistit tak, že navštívíte veřejnou adresu Application Gateway.
+Nyní `guestbook` by měla být aplikace k dispozici. Můžete to zjistit tak, že navštívíte veřejnou adresu Application Gateway.
 
 ## <a name="expose-services-over-https"></a>Vystavení služeb přes HTTPS
 
@@ -107,7 +107,7 @@ V případě, že není zadán název hostitele, bude služba knihy návštěv d
     ```
 
     > [!NOTE] 
-    > Nahraďte `<guestbook-secret-name>` ve výše uvedeném prostředku příchozího přenosu názvem vašeho tajného kódu. Uložte výše uvedený prostředek příchozího přenosu do názvu `ing-guestbook-tls.yaml`souboru.
+    > Nahraďte `<guestbook-secret-name>` ve výše uvedeném prostředku příchozího přenosu názvem vašeho tajného kódu. Uložte výše uvedený prostředek příchozího přenosu do názvu souboru `ing-guestbook-tls.yaml` .
 
 1. Nasaďte-kniha-knihy – YAML spuštěním
 
@@ -117,7 +117,7 @@ V případě, že není zadán název hostitele, bude služba knihy návštěv d
 
 1. Podívejte se do protokolu pro stav nasazení na řadiči příchozího přenosu dat.
 
-`guestbook` Aplikace bude nyní k dispozici na protokolech HTTP i HTTPS.
+`guestbook`Aplikace bude nyní k dispozici na protokolech HTTP i HTTPS.
 
 ### <a name="with-specified-hostname"></a>Se zadaným názvem hostitele
 
@@ -125,7 +125,7 @@ Můžete taky zadat název hostitele na vstupu pro multiplexování konfigurací
 Zadáte-li název hostitele, bude služba v knize pro přístup k dispozici pouze na zadaném hostiteli.
 
 1. Zadejte následující příchozí přenosy.
-    V poli příchozího přenosu zadejte název tajného kódu v `secretName` oddílu a odpovídajícím způsobem nahraďte název hostitele `hosts` v oddílu.
+    V poli příchozího přenosu zadejte název tajného kódu v `secretName` oddílu a odpovídajícím způsobem nahraďte název hostitele v `hosts` oddílu.
 
     ```yaml
     apiVersion: extensions/v1beta1
@@ -156,7 +156,7 @@ Zadáte-li název hostitele, bude služba v knize pro přístup k dispozici pouz
 
 1. Podívejte se do protokolu pro stav nasazení na řadiči příchozího přenosu dat.
 
-`guestbook` Aplikace bude teď k dispozici na http i HTTPS jenom na zadaném hostiteli (`<guestbook.contoso.com>` v tomto příkladu).
+`guestbook`Aplikace bude teď k dispozici na http i HTTPS jenom na zadaném hostiteli ( `<guestbook.contoso.com>` v tomto příkladu).
 
 ## <a name="integrate-with-other-services"></a>Integrace s ostatními službami
 

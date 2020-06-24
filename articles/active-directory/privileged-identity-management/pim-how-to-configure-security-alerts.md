@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
 ms.date: 03/05/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86dbcdc24c90ba8b161b041af96cbdd0665ad827
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6273a5b62e5b84e53d5e54fdb840f32646939066
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253309"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743894"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-privileged-identity-management"></a>Konfigurace výstrah zabezpečení pro role Azure AD v Privileged Identity Management
 
@@ -82,7 +82,7 @@ V této části jsou uvedené všechny výstrahy zabezpečení pro role Azure AD
 
 | | |
 | --- | --- |
-| **Závažnost** | Střednědobé používání |
+| **Závažnost** | Střední |
 | **Proč se mi tato výstraha zobrazí?** | Účty v privilegované roli nezměnily heslo během posledních 90 dnů. Tyto účty můžou být služby nebo sdílené účty, které nejsou udržované a jsou zranitelné vůči útočníkům. |
 | **Jak opravit?** | Zkontrolujte účty v seznamu. Pokud již přístup nepotřebují, odeberte je ze svých privilegovaných rolí. |
 | **Prevention (Prevence)** | Ujistěte se, že účty, které jsou sdíleny, přecházejí silné heslo, když dojde ke změně v uživatelích, kteří znají heslo. </br>Pravidelně kontrolujte účty s privilegovanými rolemi pomocí kontrol [přístupu](pim-how-to-start-security-review.md) a odeberte přiřazení rolí, která už nepotřebujete. |
@@ -181,7 +181,7 @@ V této části jsou uvedené všechny výstrahy zabezpečení pro role Azure AD
 
 | | |
 | --- | --- |
-| **Závažnost** | Střednědobé používání |
+| **Závažnost** | Střední |
 | **Proč se mi tato výstraha zobrazí?** | Účty v privilegované roli nezměnily heslo během posledních 90 dnů. Tyto účty můžou být služby nebo sdílené účty, které nejsou udržované a jsou zranitelné vůči útočníkům. |
 | **Jak opravit?** | Zkontrolujte účty v seznamu. Pokud již přístup nepotřebují, odeberte je ze svých privilegovaných rolí. |
 | **Prevention (Prevence)** | Ujistěte se, že účty, které jsou sdíleny, přecházejí silné heslo, když dojde ke změně v uživatelích, kteří znají heslo. </br>Pravidelně kontrolujte účty s privilegovanými rolemi pomocí kontrol [přístupu](pim-how-to-start-security-review.md) a odeberte přiřazení rolí, která už nepotřebujete. |

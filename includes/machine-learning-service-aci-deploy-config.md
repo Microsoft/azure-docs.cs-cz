@@ -11,12 +11,12 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "79486014"
 ---
-Položky v `deploymentconfig.json` dokumentu jsou mapovány na parametry pro [AciWebservice. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciservicedeploymentconfiguration?view=azure-ml-py). Následující tabulka popisuje mapování mezi entitami v dokumentu JSON a parametry pro metodu:
+Položky v dokumentu jsou `deploymentconfig.json` mapovány na parametry pro [AciWebservice. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciservicedeploymentconfiguration?view=azure-ml-py). Následující tabulka popisuje mapování mezi entitami v dokumentu JSON a parametry pro metodu:
 
-| Entita JSON | Parametr metody | Popis |
+| Entita JSON | Parametr metody | Description |
 | ----- | ----- | ----- |
-| `computeType` | Není k dispozici | Cílové výpočetní prostředí. Pro ACI musí být `ACI`hodnota. |
-| `containerResourceRequirements` | Není k dispozici | Kontejner pro entity CPU a paměti |
+| `computeType` | NA | Cílové výpočetní prostředí. Pro ACI musí být hodnota `ACI` . |
+| `containerResourceRequirements` | NA | Kontejner pro entity CPU a paměti |
 | &emsp;&emsp;`cpu` | `cpu_cores` | Počet jader procesoru, které se mají přidělit. Upravovaný`0.1` |
 | &emsp;&emsp;`memoryInGB` | `memory_gb` | Velikost paměti (v GB), která má být přidělena této webové službě. Výchozí`0.5` |
 | `location` | `location` | Oblast Azure, do které se má tato webová služba nasadit Pokud není zadáno, bude použito umístění pracovního prostoru. Další podrobnosti o dostupných oblastech najdete tady: [ACI oblasti](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=container-instances) |

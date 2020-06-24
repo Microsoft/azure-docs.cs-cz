@@ -4,15 +4,15 @@ description: Naučte se, jak vytvořit front-dvířka s přesměrovaným provoze
 services: front-door
 author: sharad4u
 ms.service: frontdoor
-ms.topic: article
+ms.topic: how-to
 ms.date: 5/21/2019
 ms.author: sharadag
-ms.openlocfilehash: f1b8c033a3ec230d60c30f6168de8ce013a80ac6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 05699c827af251b890de4c6f195df5872bfbe364
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80877996"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743605"
 ---
 # <a name="create-a-front-door-with-http-to-https-redirection-using-the-azure-portal"></a>Vytvoření front-dveří s použitím přesměrování HTTP na HTTPS pomocí Azure Portal
 
@@ -25,7 +25,7 @@ V tomto článku získáte informace o těchto tématech:
 > * Přidání vlastní domény s certifikátem TLS/SSL 
 > * Nastavit přesměrování HTTPS u vlastní domény
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="create-a-front-door-with-an-existing-web-app-resource"></a>Vytvoření front-dveří s existujícím prostředkem webové aplikace
 
@@ -40,19 +40,19 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
      ![Návrhář konfigurace front-dveří](./media/front-door-url-redirect/front-door-designer.png)
 
-6. Klikněte na ikonu**+**' ' na _hostitelích front_ -Endu, abyste vytvořili hostitele front-end, zadejte globálně jedinečný název výchozího hostitele front-endu pro vaše`\<**name**\>.azurefd.net`přední dveře (). Kliknutím na tlačítko **Přidat** přejděte k dalšímu kroku.
+6. Klikněte na **+** ikonu ' ' na _hostitelích front_ -Endu, abyste vytvořili hostitele front-end, zadejte globálně jedinečný název výchozího hostitele front-endu pro vaše přední dveře ( `\<**name**\>.azurefd.net` ). Kliknutím na tlačítko **Přidat** přejděte k dalšímu kroku.
 
      ![Přidat hostitele front-endu](./media/front-door-url-redirect/front-door-create-fehost.png)
 
-7. **+** Kliknutím na ikonu ve _fondech back-end_ vytvořte fond back-end. Zadejte název back-end fondu a potom klikněte na**Přidat back-end**.
+7. Kliknutím na **+** ikonu ve _fondech back-end_ vytvořte fond back-end. Zadejte název back-end fondu a potom klikněte na**Přidat back-end**.
 8. Jako _službu App Service_vyberte typ hostitele back-endu. Vyberte předplatné, ve kterém je vaše webová aplikace hostovaná, a pak vyberte konkrétní webovou aplikaci z rozevíracího seznamu pro **název hostitele back-endu**.
 9. Kliknutím na tlačítko **Přidat** uložte back-end a kliknutím na tlačítko **Přidat** znovu uložte konfiguraci fondu back-end.   ![Přidání back-endu do back-endu fondu](./media/front-door-url-redirect/front-door-create-backendpool.png)
 
-10. **+** Kliknutím na ikonu v _pravidlech směrování_ vytvoříte trasu. Zadejte název trasy, řekněme, že "HttpToHttpsRedirect" a pak nastavte pole _přijaté protokoly_ na **hodnotu pouze http**. Ujistěte se, že je vybraný příslušný _hostitel front-end_ .  
+10. Kliknutím na **+** ikonu v _pravidlech směrování_ vytvoříte trasu. Zadejte název trasy, řekněme, že "HttpToHttpsRedirect" a pak nastavte pole _přijaté protokoly_ na **hodnotu pouze http**. Ujistěte se, že je vybraný příslušný _hostitel front-end_ .  
 11. V části _Podrobnosti o trasách_ nastavte _typ trasy_ pro **přesměrování**, zajistěte, aby byl _typ přesměrování_ nastavený na hodnotu **Nalezeno (302)** a _protokol přesměrování_ je nastavený **jenom na https**. 
 12. Kliknutím na Přidat uložte pravidlo směrování pro přesměrování HTTP na HTTPS.
      ![Přidat trasu přesměrování HTTP na HTTPS](./media/front-door-url-redirect/front-door-redirect-config-example.png)
-13. Přidejte další pravidlo směrování pro zpracování provozu HTTPS. **+** Klikněte na přihlašovat _pravidla směrování_ a zadejte název trasy, řekněme, že "DefaultForwardingRoute" a pak nastavte pole _přijaté protokoly_ na **hodnotu pouze https**. Ujistěte se, že je vybraný příslušný _hostitel front-end_ .
+13. Přidejte další pravidlo směrování pro zpracování provozu HTTPS. Klikněte na **+** přihlašovat _pravidla směrování_ a zadejte název trasy, řekněme, že "DefaultForwardingRoute" a pak nastavte pole _přijaté protokoly_ na **hodnotu pouze https**. Ujistěte se, že je vybraný příslušný _hostitel front-end_ .
 14. V části Podrobnosti o trasách nastavte _typ směrování_ , který se má **předat**, ujistěte se, že je vybraný správný back-end fond a že _protokol předávání_ je nastavený **jenom na https**. 
 15. Kliknutím na tlačítko Přidat uložte pravidlo směrování pro přesměrování požadavků.
      ![Přidat dopředný postup pro přenosy HTTPS](./media/front-door-url-redirect/front-door-forward-route-example.png)
@@ -63,13 +63,13 @@ Následující kroky předvádí, jak můžete přidat vlastní doménu do exist
 
 ### <a name="add-a-custom-domain"></a>Přidání vlastní domény
 
-V tomto příkladu přidáte záznam CNAME pro `www` subdoménu (například `www.contosonews.com`).
+V tomto příkladu přidáte záznam CNAME pro `www` subdoménu (například `www.contosonews.com` ).
 
 #### <a name="create-the-cname-record"></a>Vytvoření záznamu CNAME
 
-Přidejte záznam CNAME pro mapování subdomény k výchozímu hostiteli front-endu (`<name>.azurefd.net`, kde `<name>` je název vašeho front-endu Profile).
+Přidejte záznam CNAME pro mapování subdomény k výchozímu hostiteli front-endu ( `<name>.azurefd.net` , kde `<name>` je název vašeho front-endu Profile).
 
-Pro `www.contoso.com` doménu jako příklad přidejte záznam CNAME, který mapuje název `www` na. `<name>.azurefd.net`
+Pro `www.contoso.com` doménu jako příklad přidejte záznam CNAME, který mapuje název `www` na `<name>.azurefd.net` .
 
 Po přidání záznamu CNAME bude stránka záznamů DNS vypadat jako v následujícím příkladu:
 
@@ -78,7 +78,7 @@ Po přidání záznamu CNAME bude stránka záznamů DNS vypadat jako v následu
 #### <a name="onboard-the-custom-domain-on-your-front-door"></a>Zprovoznění vlastní domény na předních dveřích
 
 1. Na kartě přední Návrhář dvířek klikněte na ikonu ' + ' v části hostitelé front-endu a přidejte novou vlastní doménu. 
-2. Do pole název vlastního hostitele zadejte plně kvalifikovaný název DNS, třeba `www.contosonews.com`. 
+2. Do pole název vlastního hostitele zadejte plně kvalifikovaný název DNS, třeba `www.contosonews.com` . 
 3. Po ověření mapování CNAME z domény na vaše přední dvířka klikněte na **Přidat** a přidejte vlastní doménu.
 4. Změny odešlete kliknutím na **Uložit** .
 
@@ -94,7 +94,7 @@ Po přidání záznamu CNAME bude stránka záznamů DNS vypadat jako v následu
 4. Po několika minutách klikněte na **aktualizovat** a pak znovu klikněte na vlastní doménu. zobrazí se průběh zřizování certifikátu. 
 
 > [!WARNING]
-> Povolení protokolu HTTPS pro vlastní doménu může trvat několik minut a také závisí na ověření vlastnictví domény, pokud záznam CNAME není přímo namapovaný na hostitele `<name>.azurefd.net`front-dveří. Přečtěte si další informace o [tom, jak povolit protokol HTTPS pro vlastní doménu](./front-door-custom-domain-https.md).
+> Povolení protokolu HTTPS pro vlastní doménu může trvat několik minut a také závisí na ověření vlastnictví domény, pokud záznam CNAME není přímo namapovaný na hostitele front-dveří `<name>.azurefd.net` . Přečtěte si další informace o [tom, jak povolit protokol HTTPS pro vlastní doménu](./front-door-custom-domain-https.md).
 
 ## <a name="configure-the-routing-rules-for-the-custom-domain"></a>Konfigurace pravidel směrování pro vlastní doménu
 

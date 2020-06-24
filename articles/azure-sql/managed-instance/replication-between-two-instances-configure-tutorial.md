@@ -3,7 +3,7 @@ title: Konfigurace replikace mezi spravovanými instancemi
 titleSuffix: Azure SQL Managed Instance
 description: V tomto kurzu se naučíte konfigurovat transakční replikaci mezi vydavatelem/distributorem spravované instance Azure SQL a předplatitelem spravované instance SQL.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: data-movement
 ms.custom: sqldbrb=1
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: 507207c9c8de96d18d11299b9ab5c2566c061150
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: ac701b70a9db860e2f839ab30fb575133703c142
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219675"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708471"
 ---
 # <a name="tutorial-configure-replication-between-two-managed-instances"></a>Kurz: Konfigurace replikace mezi dvěma spravovanými instancemi
 
