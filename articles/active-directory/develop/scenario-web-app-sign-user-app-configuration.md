@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev, tracking-python
-ms.openlocfilehash: fe4dec0d1223468126723a19d5218d6e93707f50
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 72168c54bd7968ce9c0315d3f3e47bae09e45004
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558815"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052218"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>Webová aplikace, která podepisuje uživatele: Konfigurace kódu
 
@@ -29,7 +29,7 @@ Knihovny, které slouží k ochraně webové aplikace (a webového rozhraní API
 
 | Platforma | Knihovna | Description |
 |----------|---------|-------------|
-| ![.NET](media/sample-v2-code/logo_net.png) | [Rozšíření modelu identity pro .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | Rozšíření Microsoft Identity Model pro .NET, které používá přímo ASP.NET a ASP.NET Core, navrhuje sadu knihoven DLL spouštěných v .NET Framework i .NET Core. Z webové aplikace ASP.NET nebo ASP.NET Core můžete ověřování tokenu řídit pomocí třídy **TokenValidationParameters** (konkrétně v některých partnerských scénářích). |
+| ![.NET](media/sample-v2-code/logo_NET.png) | [Rozšíření modelu identity pro .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | Rozšíření Microsoft Identity Model pro .NET, které používá přímo ASP.NET a ASP.NET Core, navrhuje sadu knihoven DLL spouštěných v .NET Framework i .NET Core. Z webové aplikace ASP.NET nebo ASP.NET Core můžete ověřování tokenu řídit pomocí třídy **TokenValidationParameters** (konkrétně v některých partnerských scénářích). |
 | ![Java](media/sample-v2-code/small_logo_java.png) | [MSAL v Javě](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | Podpora webových aplikací v jazyce Java |
 | ![Python](media/sample-v2-code/small_logo_python.png) | [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | Podpora webových aplikací v Pythonu |
 
@@ -73,7 +73,7 @@ V některých případech mohou být aplikace parametry podle `Authority` , což
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-V ASP.NET Core se tato nastavení nacházejí v souboru [appSettings. JSON](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/1-WebApp-OIDC/1-1-MyOrg/appsettings.json#L2-L8) v části "AzureAd".
+V ASP.NET Core se tato nastavení nacházejí v [appsettings.js](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/1-WebApp-OIDC/1-1-MyOrg/appsettings.json#L2-L8) v souboru v části "AzureAd".
 
 ```Json
 {
@@ -95,12 +95,12 @@ V ASP.NET Core se tato nastavení nacházejí v souboru [appSettings. JSON](http
     // Client ID (application ID) obtained from the Azure portal
     "ClientId": "[Enter the Client Id]",
     "CallbackPath": "/signin-oidc",
-    "SignedOutCallbackPath ": "/signout-callback-oidc"
+    "SignedOutCallbackPath ": "/signout-oidc"
   }
 }
 ```
 
-V ASP.NET Core obsahuje jiný soubor ([properties\launchSettings.JSON](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/1-WebApp-OIDC/1-1-MyOrg/Properties/launchSettings.json#L6-L7)) adresu URL ( `applicationUrl` ) a port TLS/SSL ( `sslPort` ) pro vaši aplikaci a různé profily.
+V ASP.NET Core obsahuje jiný soubor ([properties\launchSettings.json](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/1-WebApp-OIDC/1-1-MyOrg/Properties/launchSettings.json#L6-L7)) adresu URL ( `applicationUrl` ) a port TLS/SSL ( `sslPort` ) pro vaši aplikaci a různé profily.
 
 ```Json
 {
@@ -134,11 +134,11 @@ V ASP.NET Core obsahuje jiný soubor ([properties\launchSettings.JSON](https://g
 
 V Azure Portal musí být identifikátory URI odpovědi, které je třeba registrovat na **ověřovací** stránce vaší aplikace, odpovídat těmto adresám URL. Pro dva předchozí konfigurační soubory by to bylo `https://localhost:44321/signin-oidc` . Důvodem je, že `applicationUrl` je `http://localhost:3110` , ale `sslPort` je zadaný (44321). `CallbackPath`je `/signin-oidc` , jak je definováno v `appsettings.json` .
 
-Stejným způsobem by byl identifikátor URI pro odhlášení nastaven na hodnotu `https://localhost:44321/signout-callback-oidc` .
+Stejným způsobem by byl identifikátor URI pro odhlášení nastaven na hodnotu `https://localhost:44321/signout-oidc` .
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-V ASP.NET je aplikace nakonfigurována pomocí souboru [Web. config](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/Web.config#L12-L15) , řádky 12 až 15.
+V ASP.NET se aplikace konfiguruje pomocí souboru [Web.config](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/Web.config#L12-L15) , řádky 12 až 15.
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>

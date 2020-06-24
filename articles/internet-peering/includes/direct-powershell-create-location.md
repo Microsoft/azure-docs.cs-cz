@@ -15,7 +15,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81680780"
 ---
-Rutina PowerShellu **Get-AzPeeringLocation** vrátí seznam umístění partnerského vztahu s povinným `Kind`parametrem, který použijete v pozdějších krocích.
+Rutina PowerShellu **Get-AzPeeringLocation** vrátí seznam umístění partnerského vztahu s povinným parametrem `Kind` , který použijete v pozdějších krocích.
 
 ```powershell
 Get-AzPeeringLocation -Kind Direct

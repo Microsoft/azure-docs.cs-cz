@@ -2,25 +2,25 @@
 title: Potíže s přihlášením k aplikaci Galerie Azure AD nakonfigurované pro jednotné přihlašování | Microsoft Docs
 description: Jak řešit problémy s aplikací Galerie Azure AD, která je nakonfigurovaná pro jednotné přihlašování pomocí hesla
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9fd17d9e066be6a1abff5165436a09b8921184e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6eebde3a7c6163b7faf92be193fe442cd5b74d2c
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "68381306"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84759109"
 ---
 # <a name="sign-in-problems-with-an-azure-ad-gallery-app-configured-for-sso"></a>Problémy s přihlašováním pomocí aplikace Galerie Azure AD nakonfigurované pro jednotné přihlašování
 
@@ -77,7 +77,7 @@ Požadavky:
 
 -   Musíte nastavit [Active Directory Domain Services](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx) a počítače uživatelů musí být připojené k vaší doméně.
 
--   Pro úpravu objektu Zásady skupiny (GPO) máte oprávnění upravit nastavení. Ve výchozím nastavení mají toto oprávnění členové těchto skupin zabezpečení: Domain Administrators, Enterprise Administrators a Zásady skupiny Creator Owners. [Další informace](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx).
+-   Pro úpravu objektu Zásady skupiny (GPO) máte oprávnění upravit nastavení. Ve výchozím nastavení mají toto oprávnění členové těchto skupin zabezpečení: Domain Administrators, Enterprise Administrators a Zásady skupiny Creator Owners. [Přečtěte si další informace](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx).
 
 Pokud chcete nakonfigurovat zásady skupiny a nasadit je pro uživatele, přečtěte si téma [nasazení rozšíření přístupového panelu pro Internet Explorer pomocí zásad skupiny](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-group-policy).
 

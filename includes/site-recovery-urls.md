@@ -15,7 +15,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/29/2020
 ms.locfileid: "67175532"
 ---
-Název | Komerční adresa URL | Adresa URL pro státní správu | Popis
+Name | Komerční adresa URL | Adresa URL pro státní správu | Description
 --- | --- | --- | ---
 Azure Active Directory | ``login.microsoftonline.com`` | ``login.microsoftonline.us`` | Slouží k řízení přístupu a správě identit pomocí Azure Active Directory. 
 Backup | ``*.backup.windowsazure.com`` | ``*.backup.windowsazure.us`` | Používá se ke koordinaci a přenosu dat replikace.

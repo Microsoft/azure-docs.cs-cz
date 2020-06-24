@@ -4,21 +4,21 @@ description: Postup konfigurace klientů OpenVPN pro Azure Virtual WAN
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/18/2020
 ms.author: cherylmc
-ms.openlocfilehash: 133ce2f735344bb636015ec5bc261e661045afc8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f955b5347bc5a2c0fe1fd8a93e14badab1f354c8
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80108884"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753279"
 ---
 # <a name="configure-an-openvpn-client-for-azure-virtual-wan"></a>Konfigurace klienta OpenVPN pro Azure Virtual WAN
 
 Tento článek vám pomůže nakonfigurovat **klienty &reg; protokolu OpenVPN** .
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Vytvořte konfiguraci VPN uživatele (Point-to-site). Ujistěte se, že pro typ tunelu vyberete "OpenVPN". Postup najdete v tématu [Vytvoření konfigurace P2S pro Azure Virtual WAN](virtual-wan-point-to-site-portal.md#p2sconfig).
 

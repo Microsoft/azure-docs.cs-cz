@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 931511a44e19bfe094791a3ee9b9ca30e03648cb
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: fc6ab2c9c844350e83674ed96a0e79289c7f5b43
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84669654"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255411"
 ---
 # <a name="create-an-azure-stream-analytics-job-in-azure-sql-edge-preview"></a>Vytvoření úlohy Azure Stream Analytics v Azure SQL Edge (Preview) 
 
@@ -33,16 +33,16 @@ Streamování T-SQL využívá funkci externích zdrojů dat SQL Server k defino
 
 - [VYTVOŘIT externí datový proud (Transact-SQL)](#example-create-an-external-stream-object-to-azure-sql-database)
 
-Pokud se navíc jako výstupní datový proud používá Azure SQL Edge, SQL Server nebo Azure SQL Database, budete potřebovat [vytvořit databázi s rozsahem pověření (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql). Tento příkaz T-SQL definuje přihlašovací údaje pro přístup k databázi SQL.
+Pokud se navíc jako výstupní datový proud používá Azure SQL Edge, SQL Server nebo Azure SQL Database, budete potřebovat [vytvořit databázi s rozsahem pověření (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql). Tento příkaz T-SQL definuje přihlašovací údaje pro přístup k databázi.
 
 ### <a name="supported-input-and-output-stream-data-sources"></a>Podporované vstupní a výstupní datové proudy zdrojů dat
 
 Azure SQL Edge aktuálně podporuje jenom následující zdroje dat jako vstupy a výstupy streamu.
 
-| Typ zdroje dat | Vstup | Výstup | Popis |
+| Typ zdroje dat | Vstup | Výstup | Description |
 |------------------|-------|--------|------------------|
 | Centrum Azure IoT Edge | Ano | Ano | Zdroj dat pro čtení a zápis streamovaná data do centra Azure IoT Edge. Další informace najdete v tématu [IoT Edge hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub).|
-| Databáze SQL | N | Ano | Připojení zdroje dat, které zapisuje streamovaná data do SQL Database. SQL Database může být místní databáze ve službě Azure SQL Edge nebo Vzdálená databáze ve SQL Server nebo Azure SQL Database.|
+| SQL Database | N | Ano | Připojení zdroje dat, které zapisuje streamovaná data do SQL Database. Databáze může být místní databáze ve službě Azure SQL Edge nebo Vzdálená databáze ve SQL Server nebo Azure SQL Database.|
 | Azure Blob Storage | N | Ano | Zdroj dat pro zápis dat do objektu BLOB v účtu úložiště Azure. |
 | Kafka | Ano | N | Zdroj dat pro čtení dat streamování z tématu Kafka. Tento adaptér je v tuto chvíli dostupný jenom pro verze Intel nebo AMD serveru Azure SQL Edge. Není k dispozici pro verzi ARM64 serveru Azure SQL Edge.|
 

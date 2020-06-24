@@ -12,21 +12,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2020
 ms.author: memildin
-ms.openlocfilehash: a741fb76827327c1231890d71ee1da79e052ed50
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 99c9a9ac742981734daf107d73c9cec8777dc642
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232406"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85257529"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Rozšířená ochrana před internetovými útoky v programu Microsoft Defender pomocí Azure Security Center
 
-Azure Security Center rozšiřuje svou cloudovou platformu ochrany, která se integruje s [pokročilou ochranou před internetovými útoky v programu Microsoft Defender](https://www.microsoft.com/microsoft-365/windows/microsoft-defender-atp) (ATP).
-Tato změna přináší komplexní možnosti technologie EDR (Endpoint Detection and Response). Díky integraci ochrany ATP v programu Microsoft Defender můžete obdržíte nezvyklosti. Můžete také detekovat a reagovat na pokročilé útoky na koncových bodech serveru monitorovaných Azure Security Center.
+Azure Security Center se integruje s [pokročilou ochranou před internetovými útoky v programu Microsoft Defender (ATP)](https://www.microsoft.com/microsoft-365/windows/microsoft-defender-atp) , aby poskytovala komplexní možnosti detekce a odezvy koncových bodů
 
 ## <a name="microsoft-defender-atp-features-in-security-center"></a>Funkce ATP v programu Microsoft Defender v Security Center
 
-Při používání ATP Microsoft Defenderu získáte:
+ATP v programu Microsoft Defender poskytuje:
 
 - **Pokročilé senzory pro detekci narušení po porušení**: senzory ATP Microsoft Defenderu pro Windows servery shromažďují obrovské množství signálů chování.
 
@@ -34,19 +33,18 @@ Při používání ATP Microsoft Defenderu získáte:
 
 - **Analýza hrozeb**: ATP v programu Microsoft Defender generuje výstrahy, když identifikuje nástroje, techniky a postupy pro útočníky. Využívá data vygenerovaná Microsoft Threat Hunters a týmy zabezpečení a rozšiřuje je o inteligentní informace poskytované partnery.
 
-V Azure Security Center jsou nyní k dispozici následující možnosti:
 
-- **Automatizované zprovoznění**: senzor ATP v programu Microsoft Defender je automaticky povolen pro Windows servery, které jsou připojené k Azure Security Center (s výjimkou těch, které používají systém windows server 2019).
+Integrací služby Defender ATP s Azure Security Center můžete také využít výhod následujících dalších možností:
 
-- **Jediné podokno skla**: konzola Azure Security Center zobrazuje výstrahy ATP v programu Microsoft Defender.
+- **Automatizovaná**registrace: Integration automaticky povoluje senzor ATP v programu Microsoft Defender pro servery Windows, které monitorují Azure Security Center (pokud nepoužívají systém Windows Server 2019).
 
-K dalšímu zkoumání použijte ATP v programu Microsoft Defender. ATP v programu Microsoft Defender poskytuje další informace, jako je strom procesu výstrah a graf incidentu. Můžete se také podívat na podrobnou časovou osu počítače, která zobrazuje každé chování po dobu až šesti měsíců.
+- **Jediné podokno skla**: konzola Azure Security Center zobrazuje výstrahy ATP v programu Microsoft Defender. K dalšímu zkoumání použijte ATP v programu Microsoft Defender. ATP v programu Microsoft Defender poskytuje další informace, jako je strom procesu výstrah a graf incidentu. Můžete se také podívat na podrobnou časovou osu počítače, která zobrazuje každé chování po dobu až šesti měsíců.
 
-![Stránka ATP v programu Microsoft Defender s podrobnými informacemi o výstraze](media/security-center-wdatp/image3.png)
+    ![Stránka ATP v programu Microsoft Defender s podrobnými informacemi o výstraze](media/security-center-wdatp/image3.png)
 
 ## <a name="platform-support"></a>Podpora platformy
 
-ATP Microsoft Defender v Security Center podporuje detekci na Windows serveru 2016, 2012 R2 a 2008 R2 SP1. pro virtuální počítače Azure potřebujete předplatné úrovně Standard a pro virtuální počítače mimo Azure budete potřebovat úroveň Standard jenom na úrovni pracovního prostoru.
+ATP Microsoft Defender v Security Center podporuje detekci v systému Windows Server 2016, 2012 R2 a 2008 R2 SP1. Pro virtuální počítače Azure potřebujete předplatné úrovně Standard a pro virtuální počítače mimo Azure budete potřebovat úroveň Standard jenom na úrovni pracovního prostoru.
 
 > [!NOTE]
 > Když použijete Azure Security Center k monitorování serverů, automaticky se vytvoří tenant Microsoft Defender ATP a data ATP programu Microsoft Defender se ve výchozím nastavení uloží do Evropy. Pokud potřebujete přesunout data do jiného umístění, musíte kontaktovat podpora Microsoftu pro resetování tenanta. Monitorování koncového bodu serveru, který využívá tuto integraci, je pro zákazníky Office 365 RSZ zakázané.
@@ -66,7 +64,7 @@ Pokud chcete servery připojit k Security Center, klikněte na **Přejít na Azu
 
 ## <a name="enable-microsoft-defender-atp-integration"></a>Povolit integraci ATP v programu Microsoft Defender
 
-Pokud chcete zobrazit, jestli je povolená integrace služby Microsoft Defender ATP, vyberte**Nastavení cenové &** **Security Center** > > klikněte na své předplatné.
+Pokud chcete zobrazit, jestli je povolená integrace **služby**Microsoft Defender ATP, vyberte  >  **Nastavení cenové &** Security Center > klikněte na své předplatné.
 Tady vidíte aktuálně povolená integrace.
 
   ![Stránka Nastavení detekce hrozeb Azure Security Center s povolenou integrací ATP v programu Microsoft Defender](media/security-center-wdatp/enable-integrations.png)
@@ -81,11 +79,9 @@ Tady vidíte aktuálně povolená integrace.
 
 ## <a name="access-to-the-microsoft-defender-atp-portal"></a>Přístup k portálu Microsoft Defender ATP
 
-Postupujte podle pokynů v části [přiřazení přístupu uživatele k portálu](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/assign-portal-access).
+1. Postupujte podle pokynů v části [přiřazení přístupu uživatele k portálu](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/assign-portal-access).
 
-## <a name="set-the-firewall-configuration"></a>Nastavení konfigurace brány firewall
-
-Pokud máte proxy nebo bránu firewall, která blokuje anonymní provoz, protože se senzor ATP Microsoft Defender připojuje z kontextu systému, zajistěte, aby byl povolen anonymní provoz. Postupujte podle pokynů v tématu [Povolení přístupu k adresám URL služby Microsoft Defender ATP v proxy server](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet#enable-access-to-microsoft-defender-atp-service-urls-in-the-proxy-server).
+1. Ověřte, jestli máte proxy nebo bránu firewall, která blokuje anonymní provoz. Senzor ATP (Defender ATP) se připojuje z kontextu systému, takže musí být povolený anonymní provoz. Pokud chcete zajistit nerušený přístup k portálu Microsoft Defender ATP, postupujte podle pokynů v tématu [Povolení přístupu k adresám URL služby Microsoft Defender ATP v proxy server](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet#enable-access-to-microsoft-defender-atp-service-urls-in-the-proxy-server).
 
 ## <a name="test-the-feature"></a>Testování funkce
 
@@ -105,7 +101,7 @@ Vygenerování neškodné výstrahy testu ATP v programu Microsoft Defender:
 
 1. Pokud je příkaz úspěšný, zobrazí se na řídicím panelu Azure Security Center a na portálu Microsoft Defender ATP nové upozornění. Zobrazení této výstrahy může trvat několik minut.
 
-1. Pokud chcete zobrazit výstrahu v Security Center, přečtěte si > **podezřelé příkazový řádek PowerShellu** **výstrahy zabezpečení**.
+1. Pokud chcete zobrazit výstrahu v Security Center, přečtěte si **Security alerts**  >  **podezřelé příkazový řádek PowerShellu**výstrahy zabezpečení.
 
 1. V okně šetření vyberte odkaz pro přechod na portál Microsoft Defender ATP.
 

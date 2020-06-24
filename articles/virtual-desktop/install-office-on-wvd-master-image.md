@@ -4,20 +4,20 @@ description: Postup instalace a přizpůsobení sady Office v hlavní imagi virt
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/02/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2c62fdb41cdd19e34062124564ace9645df1dde6
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 3e213ac7a4d0436cf904a8104cea7e76eabaece4
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84672693"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85200524"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>Instalace sady Office do hlavní image virtuálního pevného disku
 
-V tomto článku se dozvíte, jak nainstalovat Office 365 ProPlus, OneDrive a další běžné aplikace na hlavní image virtuálního pevného disku (VHD) pro nahrání do Azure. Pokud uživatelé potřebují přístup k určitým obchodním aplikacím (LOB), doporučujeme je nainstalovat po dokončení pokynů v tomto článku.
+V tomto článku se dozvíte, jak nainstalovat aplikace Microsoft 365 pro podnikové, OneDrive a další běžné aplikace na hlavním obrázku virtuálního pevného disku (VHD) pro nahrání do Azure. Pokud uživatelé potřebují přístup k určitým obchodním aplikacím (LOB), doporučujeme je nainstalovat po dokončení pokynů v tomto článku.
 
 V tomto článku se předpokládá, že už jste vytvořili virtuální počítač (VM). Pokud ne, přečtěte si téma [Příprava a přizpůsobení hlavního image virtuálního pevného disku](set-up-customize-master-image.md#create-a-vm) .
 
@@ -28,29 +28,30 @@ Tento článek také předpokládá, že máte na virtuálním počítači vyš�
 
 ## <a name="install-office-in-shared-computer-activation-mode"></a>Nainstalovat Office v režimu aktivace sdíleného počítače
 
-Aktivace pomocí sdíleného počítače vám umožní nasadit Office 365 ProPlus na počítač ve vaší organizaci, ke kterému má více uživatelů přistup. Další informace o aktivaci sdíleného počítače najdete v tématu [Přehled aktivace sdíleného počítače pro Office 365 ProPlus](/deployoffice/overview-of-shared-computer-activation-for-office-365-proplus/).
+Aktivace pomocí sdíleného počítače vám umožní nasazovat aplikace Microsoft 365 pro podniky na počítač ve vaší organizaci, ke kterému má více uživatelů přistup. Další informace o aktivaci sdíleného počítače najdete v tématu [Přehled aktivace sdíleného počítače pro aplikace Microsoft 365](/deployoffice/overview-shared-computer-activation).
 
 K instalaci Office použijte [Nástroj pro nasazení Office](https://www.microsoft.com/download/details.aspx?id=49117) . Windows 10 Enterprise multi-session podporuje jenom tyto verze Office:
-- Office 365 ProPlus
-- Office 365 Business, který je součástí předplatného Microsoft 365 Business
+
+   - Aplikace Microsoft 365 pro podniky
+   - Microsoft 365 aplikace pro firmy, které jsou součástí předplatného Microsoft 365 Business Premium
 
 Nástroj pro nasazení Office vyžaduje konfigurační soubor XML. Postup přizpůsobení následující ukázky najdete v tématu [Možnosti konfigurace pro nástroj pro nasazení Office](/deployoffice/configuration-options-for-the-office-2016-deployment-tool/).
 
 Tato ukázka konfiguračního souboru XML provede následující akce:
 
-- • Nainstalujte Office z měsíčního podnikového kanálu a při spuštění dodávejte aktualizace z měsíčního podnikového kanálu.
-- Použijte architekturu x64.
-- Zakáže automatické aktualizace.
-- Odeberte všechny existující instalace Office a migrujte jeho nastavení.
-- Povolit aktivaci sdíleného počítače.
+   - Nainstalujte si Office z měsíčního podnikového kanálu a doručovat aktualizace z měsíčního podnikového kanálu.
+   - Použijte architekturu x64.
+   - Zakáže automatické aktualizace.
+   - Odeberte všechny existující instalace Office a migrujte jeho nastavení.
+   - Povolit aktivaci sdíleného počítače.
 
 >[!NOTE]
 >Funkce hledání ve vzorníku Visia nemusí fungovat podle očekávání na virtuálním počítači s Windows.
 
 Tady je postup, jak tento ukázkový konfigurační soubor XML neprovede:
 
-- Nainstalovat Skype pro firmy
-- Nainstalujte OneDrive v režimu pro jednotlivé uživatele. Další informace najdete v tématu [instalace OneDrivu v režimu podle počítače](#install-onedrive-in-per-machine-mode).
+   - Nainstalovat Skype pro firmy
+   - Nainstalujte OneDrive v režimu pro jednotlivé uživatele. Další informace najdete v tématu [instalace OneDrivu v režimu podle počítače](#install-onedrive-in-per-machine-mode).
 
 >[!NOTE]
 >Aktivace sdíleného počítače se dá nastavit prostřednictvím objektů Zásady skupiny (GPO) nebo nastavení registru. Objekt zásad skupiny se nachází v **zásadách konfigurace počítačů \\ \\ šablony pro správu \\ \\ Nastavení licencování systém Microsoft Office 2016 (počítač)** .
@@ -121,7 +122,7 @@ Tady je postup, jak nainstalovat OneDrive v režimu podle počítače:
 2. Pomocí tohoto odkazu Stáhněte OneDriveSetup.exe do připraveného umístění:<https://aka.ms/OneDriveWVD-Installer>
 
 3. Pokud jste nainstalovali Office s OneDrivem vynecháte **\<ExcludeApp ID="OneDrive" /\>** , odinstalujte všechny stávající instalace OneDrivu na příkazovém řádku se zvýšenými oprávněními spuštěním tohoto příkazu:
-    
+
     ```batch
     "[staged location]\OneDriveSetup.exe" /uninstall
     ```
@@ -160,7 +161,7 @@ Tady je postup, jak nainstalovat OneDrive v režimu podle počítače:
 
 Virtuální počítač s Windows nepodporuje Skype pro firmy.
 
-Nápovědu k instalaci Microsoft Teams najdete v tématu [použití Microsoft Teams na virtuálním počítači s Windows](teams-on-wvd.md).
+Nápovědu k instalaci Microsoft Teams najdete v tématu [použití Microsoft Teams na virtuálním počítači s Windows](teams-on-wvd.md). Optimalizace médií pro Microsoft Teams na virtuálním počítači s Windows je dostupná ve verzi Preview.
 
 ## <a name="next-steps"></a>Další kroky
 

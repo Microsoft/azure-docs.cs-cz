@@ -10,18 +10,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 03/22/2020
+ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 514f8e86d6bd28cc5212e0f0058f00e270f43e35
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 86f2d5202a9b5439fcacca549659e4e181ffeca4
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80128418"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85078126"
 ---
 # <a name="view-reports-and-logs-in-azure-ad-entitlement-management"></a>Zobrazení sestav a protokolů v Azure AD – Správa nároků
 
@@ -79,17 +79,17 @@ Tato sestava umožňuje zobrazit seznam prostředků, které jsou aktuálně př
 
 ## <a name="determine-the-status-of-a-users-request"></a>Určení stavu požadavku uživatele
 
-Pokud chcete získat další podrobnosti o tom, jak si uživatel vyžádal a přijal přístup k balíčku přístupu, můžete použít protokol auditu Azure AD. Konkrétně můžete použít záznamy protokolu v kategorii `EntitlementManagement` a a `UserManagement` získat další podrobnosti o krocích zpracování pro jednotlivé požadavky.  
+Pokud chcete získat další podrobnosti o tom, jak si uživatel vyžádal a přijal přístup k balíčku přístupu, můžete použít protokol auditu Azure AD. Konkrétně můžete použít záznamy protokolu v `EntitlementManagement` kategorii a a `UserManagement` získat další podrobnosti o krocích zpracování pro jednotlivé požadavky.  
 
 1. Klikněte na **Azure Active Directory** a pak klikněte na **protokoly auditu**.
 
-1. V horní části změňte **kategorii** na buď `EntitlementManagement` nebo `UserManagement`, v závislosti na záznamu auditu, který hledáte.  
+1. V horní části změňte **kategorii** na buď `EntitlementManagement` nebo `UserManagement` , v závislosti na záznamu auditu, který hledáte.  
 
 1. Klikněte na **Použít**.
 
 1. Chcete-li stáhnout protokoly, klikněte na tlačítko **Stáhnout**.
 
-Když Azure AD obdrží novou žádost, zapíše záznam auditu, ve kterém je `EntitlementManagement` **kategorie** , a **aktivita** se obvykle `User requests access package assignment`nachází.  V případě přímého přiřazení vytvořeného v Azure Portal je `Administrator directly assigns user to access package`pole **aktivita** záznamu auditu a uživatel, který provádí přiřazení, je identifikován funkcí **ActorUserPrincipalName**.
+Když Azure AD obdrží novou žádost, zapíše záznam auditu, ve kterém je **kategorie** , `EntitlementManagement` a **aktivita** se obvykle nachází `User requests access package assignment` .  V případě přímého přiřazení vytvořeného v Azure Portal je pole **aktivita** záznamu auditu `Administrator directly assigns user to access package` a uživatel, který provádí přiřazení, je identifikován funkcí **ActorUserPrincipalName**.
 
 Služba Azure AD bude během žádosti zapisovat další záznamy auditu, včetně:
 
@@ -101,11 +101,11 @@ Služba Azure AD bude během žádosti zapisovat další záznamy auditu, včetn
 | `EntitlementManagement` | `Approve access package assignment request` | Žádost schválena |
 | `EntitlementManagement` | `Ready to fulfill access package assignment request` |Žádost schválena nebo nevyžaduje schválení |
 
-Když se uživateli přiřadí přístup, služba Azure AD zapíše záznam auditu pro `EntitlementManagement` kategorii s **aktivitou** `Fulfill access package assignment`.  Uživatel, který obdržel přístup, identifikuje pole **ActorUserPrincipalName** .
+Když se uživateli přiřadí přístup, služba Azure AD zapíše záznam auditu pro `EntitlementManagement` kategorii s **aktivitou** `Fulfill access package assignment` .  Uživatel, který obdržel přístup, identifikuje pole **ActorUserPrincipalName** .
 
-Pokud se přístup nepřiřadil, služba Azure AD `EntitlementManagement` zapíše záznam auditu pro kategorii s **aktivitou** `Deny access package assignment request`, pokud žádost zamítl schvalovatel, nebo `Access package assignment request timed out (no approver action taken)`Pokud časový limit požadavku vypršel před schválením schvalovatelem.
+Pokud se přístup nepřiřadil, služba Azure AD zapíše záznam auditu pro `EntitlementManagement` kategorii s **aktivitou** `Deny access package assignment request` , pokud žádost zamítl schvalovatel, nebo `Access package assignment request timed out (no approver action taken)` Pokud časový limit požadavku vypršel před schválením schvalovatelem.
 
-Když platnost přiřazení balíčku přístupu uživatele vyprší, zruší ho uživatel nebo ho odebral správce a pak Azure AD zapíše záznam auditu pro `EntitlementManagement` kategorii s **aktivitou** . `Remove access package assignment`
+Když platnost přiřazení balíčku přístupu uživatele vyprší, zruší ho uživatel nebo ho odebral správce a pak Azure AD zapíše záznam auditu pro `EntitlementManagement` kategorii s **aktivitou** `Remove access package assignment` .
 
 ## <a name="next-steps"></a>Další kroky
 

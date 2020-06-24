@@ -3,22 +3,22 @@ title: Integrace s Proxy aplikací služby AD na serveru NDES
 titleSuffix: Azure Active Directory
 description: Pokyny k nasazení Proxy aplikací služby Azure Active Directory k ochraně serveru NDES.
 services: active-directory
-author: CelesteDG
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/17/2020
-ms.author: baselden
+ms.author: kenwith
 ms.reviewer: mimart
-ms.openlocfilehash: 4ccd8834671725ace72497391090f81eb197ad6a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0798b7674828b14a37f20921e05820d995bff6a7
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77032254"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84760792"
 ---
 # <a name="integrate-with-azure-ad-application-proxy-on-a-network-device-enrollment-service-ndes-server"></a>Integrace se službou Azure Proxy aplikací služby AD na serveru služby zápisu síťových zařízení (NDES)
 
@@ -45,18 +45,18 @@ Azure Proxy aplikací služby AD je postavená na Azure. Nabízí obrovské mno�
 1. Přečtěte si podmínek služby. Až budete připraveni, vyberte **přijmout podmínky & stáhnout**.
 1. Zkopírujte instalační soubor konektoru služby Azure Proxy aplikací služby AD na server NDES. 
    > Konektor můžete nainstalovat na libovolný server v podnikové síti s přístupem k NDES. Nemusíte ho instalovat na samotný server NDES.
-1. Spusťte instalační soubor, například *aplikaci aadapplicationproxyconnectorinstaller. exe*. Přijměte licenční podmínky pro software.
+1. Spusťte instalační soubor, například *AADApplicationProxyConnectorInstaller.exe*. Přijměte licenční podmínky pro software.
 1. Během instalace budete vyzváni k registraci konektoru s proxy aplikací v adresáři služby Azure AD.
    * Zadejte přihlašovací údaje pro globálního správce nebo Správce aplikací ve vašem adresáři služby Azure AD. Přihlašovací údaje správce globálních nebo aplikací Azure AD se můžou lišit od přihlašovacích údajů Azure na portálu.
 
         > [!NOTE]
         > Globální účet správce nebo účet správce aplikací použitý k registraci konektoru musí patřit do stejného adresáře, ve kterém povolíte službu proxy aplikací.
         >
-        > Pokud je například doména služby Azure AD *contoso.com*, měl by mít `admin@contoso.com` správce globální/aplikace v této doméně nebo jiný platný alias.
+        > Pokud je například doména služby Azure AD *contoso.com*, měl by mít správce globální/aplikace `admin@contoso.com` v této doméně nebo jiný platný alias.
 
    * Pokud je pro server, na který konektor instalujete, zapnutá konfigurace rozšířeného zabezpečení aplikace Internet Explorer, může být registrační obrazovka zablokovaná. Pokud chcete povolit přístup, postupujte podle pokynů v chybové zprávě nebo vypněte rozšířené zabezpečení aplikace Internet Explorer během procesu instalace.
    * Pokud se registrace konektoru nepovede, přečtěte si téma [řešení potíží s proxy aplikací](application-proxy-troubleshoot.md)
-1. Na konci instalace se zobrazí Poznámka pro prostředí s odchozím proxy serverem. Pokud chcete nakonfigurovat konektor Azure Proxy aplikací služby AD tak, aby fungoval přes odchozí proxy server, spusťte zadaný skript, například `C:\Program Files\Microsoft AAD App Proxy connector\ConfigureOutBoundProxy.ps1`.
+1. Na konci instalace se zobrazí Poznámka pro prostředí s odchozím proxy serverem. Pokud chcete nakonfigurovat konektor Azure Proxy aplikací služby AD tak, aby fungoval přes odchozí proxy server, spusťte zadaný skript, například `C:\Program Files\Microsoft AAD App Proxy connector\ConfigureOutBoundProxy.ps1` .
 1. Na stránce proxy aplikace v Azure Portal je nový konektor uveden se stavem *aktivní*, jak je znázorněno v následujícím příkladu:
 
     ![Nový konektor Azure Proxy aplikací služby AD zobrazený jako aktivní v Azure Portal](./media/active-directory-app-proxy-protect-ndes/connected-app-proxy.png)
@@ -83,7 +83,7 @@ Azure Proxy aplikací služby AD je postavená na Azure. Nabízí obrovské mno�
 
 1. Otestujte, jestli k serveru NDES máte přístup prostřednictvím proxy aplikace služby Azure AD, a to tak, že do prohlížeče vložíte odkaz, který jste zkopírovali v kroku 10. Měla by se zobrazit výchozí úvodní stránka služby IIS.
 
-1. Jako konečný test přidejte cestu *mscep. dll* do existující adresy URL, kterou jste vložili v předchozím kroku:
+1. Jako konečný test přidejte *mscep.dll* cestu k existující adrese URL, kterou jste vložili v předchozím kroku:
 
    https://scep-test93635307549127448334.msappproxy.net/certsrv/mscep/mscep.dll
 

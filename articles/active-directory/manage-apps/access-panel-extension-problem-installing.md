@@ -3,25 +3,25 @@ title: Instalace rozšíření prohlížeče přístupového panelu aplikace –
 description: Oprava běžných chyb zjištěných při instalaci rozšíření prohlížeče přístupového panelu.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 05/04/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere,asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 771ba79f067cbff1ab8bbfece64f4028b4ca50b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2046c24220079a604792d07f3ebc3f6ef11e9c8a
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74275861"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84761081"
 ---
 # <a name="install-the-access-panel-browser-extension"></a>Nainstalovat rozšíření prohlížeče přístupového panelu
 
@@ -52,7 +52,7 @@ Chcete-li nainstalovat rozšíření prohlížeče přístupového panelu, postu
 3.  Po zobrazení výzvy vyberte **nainstalovat hned**.  
     Jste přesměrováni na odkaz ke stažení pro vybraný prohlížeč. 
     
-4.  Vyberte **Přidat**.
+4.  Vyberte možnost **Přidat**.
 
 5.  Pokud se zobrazí výzva, buď **Povolte** nebo **Povolte** rozšíření.
 
@@ -67,7 +67,7 @@ Rozšíření pro Chrome a Microsoft Edge si také můžete stáhnout přímo z 
 - [Rozšíření Firefox](https://addons.mozilla.org/en-US/firefox/addon/access-panel-extension/)
 
 ## <a name="use-the-my-apps-secure-sign-in-extension"></a>Použijte rozšíření pro zabezpečené přihlášení k aplikacím
-* Pokud používáte jinou adresu URL moje aplikace než `https://myapps.microsoft.com`, nakonfigurujte výchozí adresu URL tak, že provedete následující kroky:
+* Pokud používáte jinou adresu URL moje aplikace než `https://myapps.microsoft.com` , nakonfigurujte výchozí adresu URL tak, že provedete následující kroky:
    1. Když *k rozšíření nejste přihlášení,* klikněte pravým tlačítkem myši na ikonu rozšíření.
    2. V nabídce vyberte **Moje aplikace adresa URL**.
    3. Vyberte výchozí adresu URL.

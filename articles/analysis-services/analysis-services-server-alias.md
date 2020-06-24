@@ -4,15 +4,15 @@ description: Naučte se vytvářet Azure Analysis Services aliasy názvů server
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 06/16/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4b416a25fd0befa91076fed5f9bf5df23ea30844
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 42055762c9c0a642b3efd05af841d70f3f91413c
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83698987"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84816867"
 ---
 # <a name="alias-server-names"></a>Názvy serverů s aliasem
 
@@ -37,7 +37,7 @@ Při připojování z klienta se název serveru aliasu zadává pomocí formátu
 
 Pokud chcete vytvořit koncový bod aliasu, můžete použít libovolnou metodu, která vrátí platný název Azure Analysis Services serveru. Například odkaz na soubor v Azure Blob Storage, který obsahuje skutečný název serveru, nebo vytvořit a publikovat webovou aplikaci ASP.NET Web Forms.
 
-V tomto příkladu je aplikace webových formulářů ASP.NET vytvořena v aplikaci Visual Studio. Odkaz na hlavní stránku a uživatelský ovládací prvek se odeberou ze stránky default. aspx. Obsah default. aspx je jednoduše následující direktivou stránky:
+V tomto příkladu je aplikace webových formulářů ASP.NET vytvořena v aplikaci Visual Studio. Odkaz na stránku a uživatelský ovládací prvek jsou odebrány ze stránky default. aspx. Obsah default. aspx je jednoduše následující direktivou stránky:
 
 ```
 <%@ Page Title="Home Page" Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="FriendlyRedirect._Default" %>

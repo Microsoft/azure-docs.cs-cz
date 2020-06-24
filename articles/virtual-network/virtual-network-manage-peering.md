@@ -10,23 +10,23 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: altambaw
-ms.openlocfilehash: 452cef0a65dd9c994b5d010676e402013b195ed3
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: d38b164e95b1791971f88f62e7eccfee8a59bd71
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300626"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711098"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Vytvoření, změna nebo odstranění partnerského vztahu virtuální sítě
 
 Přečtěte si, jak vytvořit, změnit nebo odstranit partnerský vztah virtuální sítě. Partnerský vztah virtuálních sítí umožňuje propojit virtuální sítě ve stejné oblasti a oblastech (označované také jako globální partnerský vztah virtuální sítě) prostřednictvím páteřní sítě Azure. Po navázání partnerského vztahu se virtuální sítě pořád spravují jako samostatné prostředky. Pokud s partnerským vztahem mezi virtuálními sítěmi začínáte, můžete o něm získat další informace v tématu [Přehled partnerského vztahu virtuální sítě](virtual-network-peering-overview.md) nebo v tomto [kurzu](tutorial-connect-virtual-networks-portal.md).
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

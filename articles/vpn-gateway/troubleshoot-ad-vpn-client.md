@@ -4,15 +4,15 @@ description: Řešení potíží s VPN Gateway P2S klienty ověřování Azure A
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 11/04/2019
 ms.author: cherylmc
-ms.openlocfilehash: 8871e92f0911c4d3cbcc1772bef1daeb5c70b5d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 56a8514fc2531ba0b18925427814e5bfef7d64bf
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74151968"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84988098"
 ---
 # <a name="troubleshoot-an-azure-ad-authentication-vpn-client"></a>Řešení potíží s klientem sítě VPN pro ověřování Azure AD
 

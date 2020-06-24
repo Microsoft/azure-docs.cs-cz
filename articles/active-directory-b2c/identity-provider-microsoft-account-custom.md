@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 56c25ce417a17024843de1b9b16f57740de1e9fc
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: f159f1a9e4201b1f8eac07f59ec1705f4b6cd0c2
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83636979"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85201913"
 ---
 # <a name="set-up-sign-in-with-a-microsoft-account-using-custom-policies-in-azure-active-directory-b2c"></a>Nastavení přihlašování pomocí účet Microsoft s využitím vlastních zásad v Azure Active Directory B2C
 
@@ -33,7 +33,7 @@ V tomto článku se dozvíte, jak povolit přihlášení uživatelů ze účet M
 
 Pokud chcete povolit přihlašování pro uživatele pomocí účet Microsoft, musíte zaregistrovat aplikaci v tenantovi Azure AD. Tenant Azure AD není stejný jako váš tenant Azure AD B2C.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD, a to tak, že v horní nabídce vyberete adresář a filtr **předplatného** a zvolíte adresář, který obsahuje vašeho TENANTA Azure AD.
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Registrace aplikací**.
 1. Vyberte **Nová registrace**.
@@ -43,7 +43,7 @@ Pokud chcete povolit přihlašování pro uživatele pomocí účet Microsoft, m
 1. Vybrat **registraci**
 1. Poznamenejte si **ID aplikace (klienta)** zobrazené na stránce Přehled aplikace. To budete potřebovat při konfiguraci zprostředkovatele deklarací v pozdější části.
 1. Vybrat **certifikáty & tajných** kódů
-1. Klikněte na **nový tajný klíč klienta** .
+1. Klikněte na **Nový tajný kód klienta**.
 1. Zadejte **Popis** tajného kódu, například *MSA tajný klíč klienta aplikace*a klikněte na tlačítko **Přidat**.
 1. Poznamenejte si heslo aplikace zobrazené ve sloupci **hodnota** . Tuto hodnotu použijete v další části.
 
@@ -64,7 +64,7 @@ Pokud chcete získat `family_name` `given_name` deklarace identity a ze služby 
 
 Teď, když jste vytvořili aplikaci v tenantovi Azure AD, musíte do svého tenanta Azure AD B2C Uložit tajný klíč klienta této aplikace.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 1. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD B2C. V horní nabídce vyberte filtr **adresář + odběr** a zvolte adresář, který obsahuje vašeho tenanta.
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 1. Na stránce Přehled vyberte možnost **Architektura prostředí identity**.
@@ -81,7 +81,7 @@ Pokud chcete uživatelům povolit, aby se přihlásili pomocí účet Microsoft,
 
 Službu Azure AD můžete definovat jako zprostředkovatele deklarací přidáním prvku **ClaimsProvider** do souboru rozšíření zásady.
 
-1. Otevřete soubor zásad *TrustFrameworkExtensions. XML* .
+1. Otevřete soubor zásad *TrustFrameworkExtensions.xml* .
 1. Vyhledejte element **ClaimsProviders** . Pokud neexistuje, přidejte jej pod kořenový element.
 1. Přidejte nový **ClaimsProvider** následujícím způsobem:
 
@@ -138,7 +138,7 @@ Než budete pokračovat, nahrajte upravenou zásadu a potvrďte, že zatím nem�
 
 1. V Azure Portal přejděte na svého tenanta Azure AD B2C a vyberte **rozhraní identity Experience Framework**.
 1. Na stránce **vlastní zásady** vyberte **nahrát vlastní zásadu**.
-1. Pokud existuje, zapněte **zásadu přepsat**a pak vyhledejte a vyberte soubor *TrustFrameworkExtensions. XML* .
+1. Pokud existuje, zapněte **zásadu přepsat**a pak vyhledejte a vyberte soubor *TrustFrameworkExtensions.xml* .
 1. Klikněte na **Odeslat**.
 
 Pokud se na portálu nezobrazí žádné chyby, pokračujte k další části.
@@ -147,9 +147,9 @@ Pokud se na portálu nezobrazí žádné chyby, pokračujte k další části.
 
 V tomto okamžiku jste nastavili zprostředkovatele identity, ale ještě není dostupný na žádném z vašich přihlašovacích nebo přihlašovacích obrazovek. Aby byl k dispozici, vytvořte duplikát stávající cesty uživatele šablony a pak ho upravte, aby měl i účet Microsoft poskytovatele identity.
 
-1. Otevřete soubor *TrustFrameworkBase. XML* z úvodní sady.
+1. Otevřete soubor *TrustFrameworkBase.xml* z úvodní sady.
 1. Vyhledejte a zkopírujte celý obsah prvku **UserJourney** , který obsahuje `Id="SignUpOrSignIn"` .
-1. Otevřete *soubor TrustFrameworkExtensions. XML* a vyhledejte element **userjourney** . Pokud element neexistuje, přidejte jej.
+1. Otevřete *TrustFrameworkExtensions.xml* a vyhledejte element **userjourney** . Pokud element neexistuje, přidejte jej.
 1. Vložte celý obsah elementu **UserJourney** , který jste zkopírovali jako podřízený prvek **userjourney** elementu.
 1. Přejmenujte ID cesty pro uživatele. Například, `SignUpSignInMSA`.
 
@@ -157,10 +157,10 @@ V tomto okamžiku jste nastavili zprostředkovatele identity, ale ještě není 
 
 Element **claimsproviderselection.** se podobá tlačítku poskytovatele identity na obrazovce pro registraci nebo přihlášení. Pokud přidáte prvek **claimsproviderselection.** pro účet Microsoft, zobrazí se nové tlačítko, když se uživatel na stránce zařadí.
 
-1. V souboru *TrustFrameworkExtensions. XML* vyhledejte prvek **OrchestrationStep** , který obsahuje cestu k `Order="1"` uživateli, kterou jste vytvořili.
+1. V souboru *TrustFrameworkExtensions.xml* vyhledejte element **OrchestrationStep** , který obsahuje cestu k `Order="1"` uživateli, kterou jste vytvořili.
 1. Pod **ClaimsProviderSelects**přidejte následující element. Nastavte hodnotu **TargetClaimsExchangeId** na odpovídající hodnotu, například `MicrosoftAccountExchange` :
 
-    ```XML
+    ```xml
     <ClaimsProviderSelection TargetClaimsExchangeId="MicrosoftAccountExchange" />
     ```
 
@@ -177,7 +177,7 @@ Teď, když máte tlačítko na místě, musíte ho propojit s akcí. Tato akce 
 
     Aktualizujte hodnotu **TechnicalProfileReferenceId** tak, aby odpovídala `Id` hodnotě v elementu **TechnicalProfile** zprostředkovatele deklarací, který jste přidali dříve. Například, `MSA-OIDC`.
 
-1. Uložte soubor *TrustFrameworkExtensions. XML* a znovu ho nahrajte k ověření.
+1. Uložte soubor *TrustFrameworkExtensions.xml* a znovu ho nahrajte pro účely ověření.
 
 ## <a name="create-an-azure-ad-b2c-application"></a>Vytvoření aplikace Azure AD B2C
 
@@ -189,7 +189,7 @@ Komunikace s Azure AD B2C probíhá prostřednictvím aplikace, kterou zaregistr
 
 Aktualizujte soubor předávající strany (RP), který iniciuje cestu uživatele, kterou jste vytvořili.
 
-1. Vytvořte kopii *SignUpOrSignIn. XML* v pracovním adresáři a přejmenujte ji. Přejmenujte ho například na *SignUpSignInMSA. XML*.
+1. Vytvořte kopii *SignUpOrSignIn.xml* v pracovním adresáři a přejmenujte ji. Přejmenujte ho například na *SignUpSignInMSA.xml*.
 1. Otevřete nový soubor a aktualizujte hodnotu atributu **PolicyId** pro **TrustFrameworkPolicy** s jedinečnou hodnotou. Například, `SignUpSignInMSA`.
 1. Aktualizujte hodnotu **PUBLICPOLICYURI** identifikátorem URI pro zásadu. Například`http://contoso.com/B2C_1A_signup_signin_msa`
 1. Aktualizujte hodnotu atributu **ReferenceId** v **DefaultUserJourney** tak, aby odpovídala ID cesty uživatele, kterou jste vytvořili dříve (SignUpSignInMSA).

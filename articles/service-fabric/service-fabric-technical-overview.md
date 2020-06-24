@@ -7,11 +7,11 @@ ms.date: 09/17/2018
 ms.author: masnider
 ms.custom: sfrev
 ms.openlocfilehash: a9266c2a8d2ad179cfdb12e367a14f37d1abc9b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258236"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710282"
 ---
 # <a name="service-fabric-terminology-overview"></a>Přehled terminologie Service Fabric
 
@@ -21,7 +21,7 @@ Azure Service Fabric je platforma distribuovaných systémů usnadňující bale
 
 **Cluster**: sada virtuálních nebo fyzických počítačů připojených k síti, do kterých se vaše mikroslužby nasazují a spravují.  Clustery je možné škálovat na tisíce počítačů.
 
-**Uzel**: počítač nebo virtuální počítač, který je součástí clusteru, se označuje jako *uzel*. Každému uzlu je přiřazen název uzlu (řetězec). Uzly mají charakteristiky, jako jsou vlastnosti umístění. Každý počítač nebo virtuální počítač má automaticky spuštěnou službu `FabricHost.exe`systému Windows, která při spuštění spustí spuštění a pak spustí dva spustitelné soubory: `Fabric.exe` a `FabricGateway.exe`. Tyto dva spustitelné soubory tvoří uzel. V případě testovacích scénářů můžete hostovat více uzlů na jednom počítači nebo VIRTUÁLNÍm počítači spuštěním více instancí `Fabric.exe` a `FabricGateway.exe`.
+**Uzel**: počítač nebo virtuální počítač, který je součástí clusteru, se označuje jako *uzel*. Každému uzlu je přiřazen název uzlu (řetězec). Uzly mají charakteristiky, jako jsou vlastnosti umístění. Každý počítač nebo virtuální počítač má automaticky spuštěnou službu systému Windows, `FabricHost.exe` která při spuštění spustí spuštění a pak spustí dva spustitelné soubory: `Fabric.exe` a `FabricGateway.exe` . Tyto dva spustitelné soubory tvoří uzel. V případě testovacích scénářů můžete hostovat více uzlů na jednom počítači nebo VIRTUÁLNÍm počítači spuštěním více instancí `Fabric.exe` a `FabricGateway.exe` .
 
 ## <a name="application-and-service-concepts"></a>Koncepce aplikací a služeb
 
@@ -58,11 +58,11 @@ Všechny balíčky kódu definované jako součást prostředku aplikace jsou na
 
 Další informace najdete v článku o [modelu aplikace](service-fabric-application-model.md) .
 
-**Balíček aplikace**: adresář disku obsahující `ApplicationManifest.xml` soubor typu aplikace. Odkazuje na balíčky služeb pro každý typ služby, který tvoří typ aplikace. Soubory v adresáři balíčku aplikace se zkopírují do úložiště imagí Service Fabricho clusteru. Například balíček aplikace pro typ e-mailové aplikace může obsahovat odkazy na balíček front-Service, balíček front-Service a balíček databázových služeb.
+**Balíček aplikace**: adresář disku obsahující soubor typu aplikace `ApplicationManifest.xml` . Odkazuje na balíčky služeb pro každý typ služby, který tvoří typ aplikace. Soubory v adresáři balíčku aplikace se zkopírují do úložiště imagí Service Fabricho clusteru. Například balíček aplikace pro typ e-mailové aplikace může obsahovat odkazy na balíček front-Service, balíček front-Service a balíček databázových služeb.
 
-**Pojmenovaná aplikace**: po zkopírování balíčku aplikace do úložiště imagí vytvoříte instanci aplikace v rámci clusteru. Instanci vytvoříte při určení typu aplikace balíčku aplikace pomocí jejího názvu nebo verze. Každé instanci typu aplikace je přiřazen název identifikátoru URI (Uniform Resource Identifier), který vypadá `"fabric:/MyNamedApp"`takto:. V rámci clusteru můžete vytvořit více pojmenovaných aplikací z jednoho typu aplikace. Můžete také vytvořit pojmenované aplikace z různých typů aplikací. Každá pojmenovaná aplikace je spravovaná a má nezávisle.
+**Pojmenovaná aplikace**: po zkopírování balíčku aplikace do úložiště imagí vytvoříte instanci aplikace v rámci clusteru. Instanci vytvoříte při určení typu aplikace balíčku aplikace pomocí jejího názvu nebo verze. Každé instanci typu aplikace je přiřazen název identifikátoru URI (Uniform Resource Identifier), který vypadá takto: `"fabric:/MyNamedApp"` . V rámci clusteru můžete vytvořit více pojmenovaných aplikací z jednoho typu aplikace. Můžete také vytvořit pojmenované aplikace z různých typů aplikací. Každá pojmenovaná aplikace je spravovaná a má nezávisle.
 
-**Typ služby**: název/verze přiřazená k balíčkům kódu služby, datovým balíčkům a konfiguračním balíčkům. Typ služby je definovaný v `ServiceManifest.xml` souboru a vložený v adresáři balíčku služby. Na adresář balíčku služby se pak odkazuje v `ApplicationManifest.xml` souboru balíčku aplikace. V rámci clusteru můžete po vytvoření pojmenované aplikace vytvořit pojmenovanou službu z některého z typů služeb typu aplikace. `ServiceManifest.xml` Soubor typu služby popisuje službu.
+**Typ služby**: název/verze přiřazená k balíčkům kódu služby, datovým balíčkům a konfiguračním balíčkům. Typ služby je definovaný v `ServiceManifest.xml` souboru a vložený v adresáři balíčku služby. Na adresář balíčku služby se pak odkazuje v souboru balíčku aplikace `ApplicationManifest.xml` . V rámci clusteru můžete po vytvoření pojmenované aplikace vytvořit pojmenovanou službu z některého z typů služeb typu aplikace. Soubor typu služby `ServiceManifest.xml` Popisuje službu.
 
 Další informace najdete v článku o [modelu aplikace](service-fabric-application-model.md) .
 
@@ -75,18 +75,18 @@ Existují dva typy služeb:
 
 Změna **Konfigurace** odkazuje na proces jakékoli změny v sadě replik služby. Viz [rekonfigurace](service-fabric-concepts-reconfiguration.md).
 
-**Balíček služby**: adresář disku, který obsahuje `ServiceManifest.xml` soubor typu služby. Tento soubor odkazuje na kód, statická data a konfigurační balíčky pro typ služby. Soubory v adresáři balíčku služby jsou odkazovány `ApplicationManifest.xml` souborem typu aplikace. Balíček služby může například odkazovat na kód, statická data a konfigurační balíčky, které tvoří databázovou službu.
+**Balíček služby**: adresář disku, který obsahuje soubor typu služby `ServiceManifest.xml` . Tento soubor odkazuje na kód, statická data a konfigurační balíčky pro typ služby. Soubory v adresáři balíčku služby jsou odkazovány souborem typu aplikace `ApplicationManifest.xml` . Balíček služby může například odkazovat na kód, statická data a konfigurační balíčky, které tvoří databázovou službu.
 
-**Pojmenovaná služba**: po vytvoření pojmenované aplikace můžete vytvořit instanci jednoho z jeho typů služeb v rámci clusteru. Typ služby určíte pomocí jejího názvu nebo verze. Každá instance typu služby má přiřazený název identifikátoru URI v oboru názvů IDENTIFIKÁTORu URI pojmenované aplikace. Například pokud vytvoříte "MyDatabase" pojmenovanou službu v rámci "MyNamedApp" pojmenované aplikace, identifikátor URI vypadá takto: `"fabric:/MyNamedApp/MyDatabase"`. V rámci pojmenované aplikace můžete vytvořit několik pojmenovaných služeb. Každá pojmenovaná služba může mít vlastní schéma oddílů a instance nebo počet replik.
+**Pojmenovaná služba**: po vytvoření pojmenované aplikace můžete vytvořit instanci jednoho z jeho typů služeb v rámci clusteru. Typ služby určíte pomocí jejího názvu nebo verze. Každá instance typu služby má přiřazený název identifikátoru URI v oboru názvů IDENTIFIKÁTORu URI pojmenované aplikace. Například pokud vytvoříte "MyDatabase" pojmenovanou službu v rámci "MyNamedApp" pojmenované aplikace, identifikátor URI vypadá takto: `"fabric:/MyNamedApp/MyDatabase"` . V rámci pojmenované aplikace můžete vytvořit několik pojmenovaných služeb. Každá pojmenovaná služba může mít vlastní schéma oddílů a instance nebo počet replik.
 
-**Balíček kódu**: adresář disku obsahující spustitelné soubory typu služby, obvykle soubory exe/dll. Soubory v adresáři balíčku kódu jsou odkazovány ze `ServiceManifest.xml` souboru typu služby. Při vytváření pojmenované služby je balíček kódu zkopírován do uzlu nebo uzlů, které jsou vybrány pro spuštění pojmenované služby. Pak se kód začne spouštět. Existují dva typy spustitelných souborů balíčku kódu:
+**Balíček kódu**: adresář disku obsahující spustitelné soubory typu služby, obvykle soubory exe/dll. Soubory v adresáři balíčku kódu jsou odkazovány ze souboru typu služby `ServiceManifest.xml` . Při vytváření pojmenované služby je balíček kódu zkopírován do uzlu nebo uzlů, které jsou vybrány pro spuštění pojmenované služby. Pak se kód začne spouštět. Existují dva typy spustitelných souborů balíčku kódu:
 
 * **Spustitelné soubory hosta**: spustitelné soubory, které běží jako – jsou v hostitelském operačním systému (Windows nebo Linux). Tyto spustitelné soubory neodkazují na ani neodkazují na žádné soubory Service Fabric runtime, a proto nepoužívají žádné Service Fabric programovací modely. Tyto spustitelné soubory nemůžou používat některé funkce Service Fabric, jako je třeba služba pojmenování pro zjišťování koncových bodů. Spustitelné soubory hosta nemůžou sestavovat metriky zatížení, které jsou specifické pro jednotlivé instance služby.
 * **Spustitelné soubory hostitele služby**: spustitelné soubory, které používají Service Fabric programovacích modelů propojením s Service Fabric běhových souborů a povolením funkcí Service Fabric. Například pojmenovaná instance služby může registrovat koncové body pomocí Naming Service Service Fabric a může také nahlásit metriky zatížení.
 
-**Datový balíček**: adresář disku, který obsahuje statické datové soubory typu, které jsou jen pro čtení, obvykle fotky, zvuk a videosoubory. Soubory v adresáři datových balíčků jsou odkazovány ze `ServiceManifest.xml` souboru typu služby. Při vytváření pojmenované služby je balíček dat zkopírován do uzlu nebo uzlů vybraných pro spuštění pojmenované služby. Kód začíná běžet a teď může přistupovat k datovým souborům.
+**Datový balíček**: adresář disku, který obsahuje statické datové soubory typu, které jsou jen pro čtení, obvykle fotky, zvuk a videosoubory. Soubory v adresáři datových balíčků jsou odkazovány ze souboru typu služby `ServiceManifest.xml` . Při vytváření pojmenované služby je balíček dat zkopírován do uzlu nebo uzlů vybraných pro spuštění pojmenované služby. Kód začíná běžet a teď může přistupovat k datovým souborům.
 
-**Konfigurační balíček**: adresář disku, který obsahuje statické konfigurační soubory typu služby jen pro čtení, obvykle textové soubory. Soubory v adresáři konfiguračního balíčku jsou odkazovány ze `ServiceManifest.xml` souboru typu služby. Při vytváření pojmenované služby se soubory v konfiguračním balíčku zkopírují do jednoho nebo více uzlů vybraných pro spuštění pojmenované služby. Pak se kód začne spouštět a teď může přistupovat ke konfiguračním souborům.
+**Konfigurační balíček**: adresář disku, který obsahuje statické konfigurační soubory typu služby jen pro čtení, obvykle textové soubory. Soubory v adresáři konfiguračního balíčku jsou odkazovány ze souboru typu služby `ServiceManifest.xml` . Při vytváření pojmenované služby se soubory v konfiguračním balíčku zkopírují do jednoho nebo více uzlů vybraných pro spuštění pojmenované služby. Pak se kód začne spouštět a teď může přistupovat ke konfiguračním souborům.
 
 **Kontejnery**: ve výchozím nastavení Service Fabric nasadí a aktivuje služby jako procesy. Service Fabric můžou nasazovat i služby v imagích kontejnerů. Kontejnery jsou virtualizační technologie, která z aplikací vyabstrakce základní operační systém. Aplikace a její modul runtime, závislosti a systémové knihovny se spouští uvnitř kontejneru. Kontejner má plný privátní přístup k vlastnímu izolovanému zobrazení kontejneru konstrukcí operačního systému. Service Fabric podporuje kontejnery Windows serveru a kontejnery Docker v systému Linux. Další informace najdete v tématu [Service Fabric a kontejnery](service-fabric-containers-overview.md).
 
@@ -141,7 +141,7 @@ Můžete také spouštět stávající aplikace na Service Fabric:
 
 **Kontejnery**: Service Fabric podporuje nasazení kontejnerů Docker v kontejnerech se systémy Linux a Windows Server v systému windows Server 2016 společně s podporou režimu izolace technologie Hyper-V. V [modelu aplikace](service-fabric-application-model.md)Service Fabric kontejner představuje hostitele aplikace, ve kterém jsou umístěny více replik služby. Service Fabric může spustit libovolné kontejnery a scénář je podobný scénáři hostující spustitelný soubor, kde zabalíte existující aplikaci do kontejneru. Kromě toho můžete také [spouštět Service Fabric služby uvnitř kontejnerů](service-fabric-services-inside-containers.md) .
 
-**Spustitelné soubory hosta**: v Azure můžete spustit libovolný typ kódu, jako je Node. js, Python, Java nebo C++, Service Fabric jako služba. Service Fabric odkazuje na tyto typy služeb jako spustitelné soubory hosta, které jsou považovány za bezstavové služby. Výhodou spuštění hostovaného spustitelného souboru v clusteru Service Fabric zahrnuje vysokou dostupnost, monitorování stavu, správu životního cyklu aplikací, vysokou hustotu a zjistitelnost.
+**Spustitelné soubory hosta**: v Azure můžete spustit libovolný typ kódu, jako je například Node.js, Python, Java nebo C++, Service Fabric jako služba. Service Fabric odkazuje na tyto typy služeb jako spustitelné soubory hosta, které jsou považovány za bezstavové služby. Výhodou spuštění hostovaného spustitelného souboru v clusteru Service Fabric zahrnuje vysokou dostupnost, monitorování stavu, správu životního cyklu aplikací, vysokou hustotu a zjistitelnost.
 
 Další informace najdete v článku [Volba programovacího modelu pro vaši službu](service-fabric-choose-framework.md) .
 

@@ -3,12 +3,12 @@ title: Prostředí pro správu napříč tenanty
 description: Správa delegovaných prostředků v Azure umožňuje prostředí pro správu mezi klienty.
 ms.date: 05/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: ad8fc7452a704a4a030e7a6eb45a5ba397912ef1
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: 225a7f7725762c6887858366b134a7ad9a7b8eb6
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402378"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052679"
 ---
 # <a name="cross-tenant-management-experiences"></a>Prostředí pro správu napříč tenanty
 
@@ -60,6 +60,10 @@ Většinu úkolů a služeb je možné provádět na delegovaných prostředcíc
 - Zálohování a obnovení zákaznických dat v klientech zákazníků
 - Pomocí [Průzkumníka zálohování](../../backup/monitor-azure-backup-with-backup-explorer.md) si můžete zobrazit provozní informace o zálohovaných položkách (včetně prostředků Azure, které ještě nejsou nakonfigurované pro zálohování), a informace o monitorování (úlohy a výstrahy) pro delegované předplatné. Průzkumník zálohování je momentálně dostupný jenom pro data virtuálních počítačů Azure.
 - [Sestavy zálohování](../../backup/configure-reports.md) v rámci delegovaných předplatných vám umožní sledovat historické trendy, analyzovat spotřebu úložiště záloh a auditovat a obnovovat zálohy.
+
+[Azure cost management + fakturace](../../cost-management-billing/index.yml):
+
+- Od tenanta pro správu můžou partneři CSP zobrazovat, spravovat a analyzovat poplatky za spotřební spotřebu (bez nákupů) pro zákazníky, kteří jsou v rámci plánu Azure. Náklady budou založené na maloobchodním tarifech a na přístup k Azure RBAC, který partner má pro předplatné zákazníka.
 
 [Služba Azure Kubernetes (AKS)](../../aks/index.yml):
 
@@ -143,7 +147,6 @@ U všech scénářů Prosím mějte na paměti následující stávající omeze
 - Přiřazení rolí musí používat [předdefinované role](../../role-based-access-control/built-in-roles.md)řízení přístupu na základě role (RBAC). Všechny předdefinované role se v současné době podporují se správou delegovaných prostředků Azure s výjimkou vlastníka nebo jakýchkoli integrovaných rolí s oprávněním pro [Dataactions](../../role-based-access-control/role-definitions.md#dataactions) . Role správce přístupu uživatelů je podporovaná jenom pro omezené použití při [přiřazování rolí ke spravovaným identitám](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant).  Vlastní role a [role správců pro klasický odběr](../../role-based-access-control/classic-administrators.md) nejsou podporovány.
 - I když můžete připojit odběry, které používají Azure Databricks, uživatelé v tenantovi pro správu nemůžou v současné době spouštět Azure Databricks pracovní prostory na delegovaném předplatném.
 - I když můžete připojit odběry a skupiny prostředků pro správu delegovaných prostředků Azure, které mají zámky prostředků, nebudou tyto zámky bránit provádění akcí uživatelům ve správě tenanta. [Zakažte přiřazení](../../role-based-access-control/deny-assignments.md) , která chrání systémem spravované prostředky, jako jsou ty, které vytvořily spravované aplikace Azure nebo plány Azure (přiřazení zamítnutí přiřazení systémem), zabrání uživatelům ve správě tenanta na těchto prostředcích. Nicméně v tomto okamžiku nemohou uživatelé v tenantovi zákazníka vytvořit vlastní přiřazení odepřít (přiřazení odepřít uživateli).
-- Uživatelé v tenantovi pro správu nebudou mít přístup k informacím o fakturaci pro delegovaného zákazníka, a to i v případě, že mají integrovanou roli, která by obvykle povolovala přístup. Důvodem je to, že přístup k informacím o fakturaci vyžaduje další kroky, které se v tuto chvíli podporují jenom pro uživatele v rámci stejného tenanta.
 
 ## <a name="next-steps"></a>Další kroky
 

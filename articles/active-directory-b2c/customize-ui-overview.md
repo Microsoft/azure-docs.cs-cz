@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/04/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ebbf789d804ab903489c809fc96f1514d6c4f577
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 8e0a4a3cac51f54d0bb4e5b23d0b44052d1e89a1
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84658082"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202479"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Přizpůsobení uživatelského rozhraní v Azure Active Directory B2C
 
@@ -154,7 +154,7 @@ V následující tabulce jsou uvedeny fragmenty kódu HTML, které se Azure AD B
 | Registrace místního účtu | Obsahuje formulář pro registraci místního účtu na základě e-mailové adresy nebo uživatelského jména. Formulář může obsahovat různé vstupní ovládací prvky, jako je textové pole, vstupní pole pro heslo, přepínač, rozevírací seznamy s jedním výběrem a zaškrtávací políčka vícenásobného výběru. |
 | Registrace účtu sociální sítě | Může se zobrazit při registraci pomocí existujícího účtu od poskytovatele sociální identity, jako je Facebook nebo Google. Používá se, když je potřeba shromáždit další informace od zákazníka pomocí registračního formuláře. |
 | Jednotné registrace nebo přihlašování | Zpracovává registraci i přihlašování zákazníků, kteří můžou používat poskytovatele sociálních identit, jako je Facebook, Google nebo místní účty. |
-| Vícefaktorové ověřování | Zákazníci si můžou při registraci nebo přihlašování ověřit telefonní čísla (pomocí textu nebo hlasu). |
+| Ověřování pomocí služby Multi-Factor Authentication | Zákazníci si můžou při registraci nebo přihlašování ověřit telefonní čísla (pomocí textu nebo hlasu). |
 | Chyba | Poskytne zákazníkovi informace o chybě. |
 
 ## <a name="company-branding-preview"></a>Branding společnosti (Preview)
@@ -169,7 +169,7 @@ Chcete-li přizpůsobit stránky toku uživatele, je třeba nejprve nakonfigurov
 
 Začněte tím, že nastavíte logo banner, obrázek pozadí a barvu pozadí v rámci **brandingu společnosti**.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
 1. V části **Spravovat**vyberte **Branding společnosti**.
@@ -219,13 +219,13 @@ Obsah lze z různých míst načíst na základě používaného národního pro
 
 Identifikátor URI vlastní stránky může vypadat například takto:
 
-```HTTP
+```http
 https://contoso.blob.core.windows.net/{Culture:RFC5646}/myHTML/unified.html
 ```
 
 Stránku v francouzštině můžete načíst tak, že nahrajete obsah z:
 
-```HTTP
+```http
 https://contoso.blob.core.windows.net/fr/myHTML/unified.html
 ```
 

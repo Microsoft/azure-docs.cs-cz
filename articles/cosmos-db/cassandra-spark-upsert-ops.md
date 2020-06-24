@@ -6,14 +6,14 @@ ms.author: govindk
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/24/2018
-ms.openlocfilehash: 7770e7fbe846defc865b3fcc702fcb00bae1b73c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5ad2cf5dee43f0345017930377a3ed9d2e4624bf
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60893396"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85257478"
 ---
 # <a name="upsert-data-into-azure-cosmos-db-cassandra-api-from-spark"></a>Upsert data do Azure Cosmos DB rozhraní API Cassandra ze Sparku
 
@@ -92,5 +92,5 @@ cdbConnector.withSessionDo(session => session.execute("update books_ks.books set
 Pokud chcete provádět další operace s daty uloženými v Azure Cosmos DB rozhraní API Cassandra tabulkách, přejděte k následujícím článkům:
  
 * [Operace odstranění](cassandra-spark-delete-ops.md)
-* [Agregační operace](cassandra-spark-aggregation-ops.md)
+* [Operace agregace](cassandra-spark-aggregation-ops.md)
 * [Operace kopírování tabulky](cassandra-spark-table-copy-ops.md)

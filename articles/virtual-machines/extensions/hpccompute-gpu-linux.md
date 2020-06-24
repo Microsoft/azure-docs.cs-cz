@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/11/2019
 ms.author: akjosh
-ms.openlocfilehash: 55ca9232252895dd46ad3da3912f808ebd9b9533
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 68dddde965900b966efa96fbd7da7141f1ed8a94
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559674"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753544"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>Rozšíření ovladače NVIDIA GPU pro Linux
 
@@ -36,7 +36,7 @@ K dispozici je také rozšíření pro instalaci ovladačů NVIDIA GPU na [virtu
 
 Toto rozšíření podporuje následující distribuce operačního systému, v závislosti na podpoře ovladačů pro konkrétní verzi operačního systému.
 
-| Distribuce | Version |
+| Distribuce | Verze |
 |---|---|
 | Linux: Ubuntu | 16,04 LTS, 18,04 LTS |
 | Linux: Red Hat Enterprise Linux | 7,3, 7,4, 7,5, 7,6, 7,7 |
@@ -146,8 +146,7 @@ az vm extension set \
   --vm-name myVM \
   --name NvidiaGpuDriverLinux \
   --publisher Microsoft.HpcCompute \
-  --version 1.3 \
-  }'
+  --version 1.3 
 ```
 
 Následující příklad také přidá dvě volitelná vlastní nastavení jako příklad pro jinou než výchozí instalaci ovladače. Konkrétně aktualizuje jádro operačního systému na nejnovější a nainstaluje konkrétní ovladač verze CUDA Toolkit. Znovu si všimněte, že nastavení--Settings jsou volitelná a výchozí. Všimněte si, že aktualizace jádra může prodloužit dobu instalace rozšíření. Také volba konkrétní (starší) tolkit verze CUDA nemusí být vždycky kompatibilní s novějšími jádry.

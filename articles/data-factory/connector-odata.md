@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 06/12/2020
 ms.author: jingwang
-ms.openlocfilehash: c2fe6b6cc7b52dda9f2beffa444f1965723ea92a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 12a858364fc58972894f9fb365955496f8832246
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416930"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987801"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>Kopírování dat ze zdroje OData pomocí Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -55,15 +55,15 @@ Následující části obsahují podrobné informace o vlastnostech, které mů�
 
 Pro propojenou službu OData jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost **Type** musí být nastavená na **OData**. |Ano |
+| typ | Vlastnost **Type** musí být nastavená na **OData**. |Ano |
 | url | Kořenová adresa URL služby OData |Ano |
 | authenticationType | Typ ověřování, který se používá pro připojení ke zdroji OData. Povolené hodnoty jsou **anonymní**, **základní**, **Windows**a **AadServicePrincipal**. Uživatel s podporou OAuth není podporován. | Ano |
 | userName | Zadejte **uživatelské jméno** , pokud použijete základní ověřování nebo ověřování systému Windows. | Ne |
 | heslo | Zadejte **heslo** pro uživatelský účet, který jste zadali pro uživatelské **jméno**. Označte toto pole jako typ **SecureString** a bezpečně ho uložte do Data Factory. Můžete také [vytvořit odkaz na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
 | servicePrincipalId | Zadejte ID klienta Azure Active Directory aplikace. | Ne |
-| aadServicePrincipalCredentialType | Zadejte typ přihlašovacích údajů, který se použije pro ověřování instančního objektu. Povolené hodnoty jsou: `ServicePrincipalKey` nebo `ServicePrincipalCert`. | Ne |
+| aadServicePrincipalCredentialType | Zadejte typ přihlašovacích údajů, který se použije pro ověřování instančního objektu. Povolené hodnoty jsou: `ServicePrincipalKey` nebo `ServicePrincipalCert` . | Ne |
 | servicePrincipalKey | Zadejte klíč Azure Active Directory aplikace. Označte toto pole jako **SecureString** , abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
 | servicePrincipalEmbeddedCert | Zadejte certifikát kódovaný v kódování Base64 vaší aplikace zaregistrovaný v Azure Active Directory. Označte toto pole jako **SecureString** , abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
 | servicePrincipalEmbeddedCertPassword | Zadejte heslo certifikátu, pokud je certifikát zabezpečený heslem. Označte toto pole jako **SecureString** , abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md).  | Ne|
@@ -204,12 +204,12 @@ V této části najdete seznam vlastností, které datová sada OData podporuje.
 
 Chcete-li kopírovat data z OData, nastavte vlastnost **Type** datové sady na **ODataResource**. Podporovány jsou následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost **Type** datové sady musí být nastavená na **ODataResource**. | Ano |
+| typ | Vlastnost **Type** datové sady musí být nastavená na **ODataResource**. | Ano |
 | cesta | Cesta k prostředku OData | Ano |
 
-**Případě**
+**Příklad**
 
 ```json
 {
@@ -240,12 +240,13 @@ V této části najdete seznam vlastností, které podporuje zdroj OData.
 
 Chcete-li kopírovat data z OData, v části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **ODataSource**. | Ano |
-| query | Možnosti dotazu OData pro filtrování dat Příklad: `"$select=Name,Description&$top=5"`.<br/><br/>**Poznámka**: konektor OData kopíruje data z kombinované adresy URL: `[URL specified in linked service]/[path specified in dataset]?[query specified in copy activity source]`. Další informace najdete v tématu [komponenty adresy URL OData](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Ne |
+| typ | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **ODataSource**. | Ano |
+| query | Možnosti dotazu OData pro filtrování dat Příklad: `"$select=Name,Description&$top=5"`.<br/><br/>**Poznámka**: konektor OData kopíruje data z kombinované adresy URL: `[URL specified in linked service]/[path specified in dataset]?[query specified in copy activity source]` . Další informace najdete v tématu [komponenty adresy URL OData](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Ne |
+| httpRequestTimeout | Časový limit (hodnota **TimeSpan** ) požadavku HTTP získat odpověď. Tato hodnota představuje časový limit pro získání odpovědi, nikoli časový limit pro čtení dat odpovědi. Pokud není zadaný, výchozí hodnota je **00:30:00** (30 minut). | Ne |
 
-**Případě**
+**Příklad**
 
 ```json
 "activities":[
@@ -291,7 +292,7 @@ Při kopírování dat z OData se používají následující mapování mezi da
 | EDM. DateTime | DateTime |
 | EDM. Decimal | Desetinné číslo |
 | Edm.Double | Double |
-| EDM. Single | Single |
+| EDM. Single | Jeden |
 | EDM. GUID | Identifikátor GUID |
 | EDM. Int16 | Int16 |
 | Edm.Int32 | Int32 |

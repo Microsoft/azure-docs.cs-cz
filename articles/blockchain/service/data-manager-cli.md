@@ -2,14 +2,14 @@
 title: Konfigurace blockchain Data Manager pomocí Azure CLI – Azure blockchain Service
 description: Vytvoření a Správa blockchain Data Manager pro službu Azure blockchain pomocí Azure CLI
 ms.date: 03/30/2020
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: e490803fabeed7d6234bd6984acbfb9f5270e0c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b7b897f35cb864e2a1fa904bbb3ec13b56986598
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81254406"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85200456"
 ---
 # <a name="configure-blockchain-data-manager-using-azure-cli"></a>Konfigurace Blockchain Data Manageru s využitím Azure CLI
 
@@ -25,7 +25,7 @@ Pokud chcete nakonfigurovat instanci Data Manager blockchain, postupujte takto:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Nainstalujte nejnovější rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) a přihlaste se pomocí `az login`.
+* Nainstalujte nejnovější rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) a přihlaste se pomocí `az login` .
 * Kompletní [rychlé zprovoznění: pomocí Visual Studio Code se připojte k síti konsorcia služeb Azure blockchain](connect-vscode.md). Služba Azure blockchain Service úrovně *Standard* se doporučuje při použití blockchain data Manager.
 * Vytvoření [tématu Event Grid](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)
 * Další informace o [obslužných rutinách událostí v Azure Event Grid](../../event-grid/event-handlers.md)
@@ -34,7 +34,7 @@ Pokud chcete nakonfigurovat instanci Data Manager blockchain, postupujte takto:
 
 Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem.
 
-Pokud chcete otevřít Cloud Shell, vyberte položku **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče tak, že přejdete [https://shell.azure.com/bash](https://shell.azure.com/bash)na. Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
+Pokud chcete otevřít Cloud Shell, vyberte položku **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče tak, že přejdete na [https://shell.azure.com/bash](https://shell.azure.com/bash) . Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
 
 Pokud dáváte přednost instalaci a používání rozhraní příkazového řádku místně, musíte použít Azure CLI verze 2.0.51 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
@@ -62,7 +62,7 @@ az resource create \
 | Parametr | Popis |
 |-----------|-------------|
 | resource-group | Název skupiny prostředků, kde se má vytvořit instance Data Manager blockchain |
-| jméno | Název instance Data Manager blockchain |
+| name | Název instance Data Manager blockchain |
 | typ prostředku | Typ prostředku pro instanci blockchain Data Manager je **Microsoft. blockchain/sledovací**procesy. |
 | je-full-Object | Určuje, že vlastnosti obsahují možnosti pro prostředek sledovacího procesu. |
 | properties | Řetězec ve formátu JSON, který obsahuje vlastnosti prostředku sledovacího procesu. Může být předán jako řetězec nebo jako soubor.  |
@@ -79,7 +79,7 @@ Příklad konfigurace JSON pro vytvoření instance blockchain Manageru v oblast
 }
 ```
 
-| Prvek | Popis |
+| Prvek | Description |
 |---------|-------------|
 | location | Oblast, kde se má vytvořit prostředek sledovacího procesu |
 | properties | Vlastnosti, které se mají nastavit při vytváření prostředku sledovacího procesu |
@@ -124,7 +124,7 @@ az resource create \
 | Parametr | Popis |
 |-----------|-------------|
 | resource-group | Název skupiny prostředků, kde se má vytvořit vstupní prostředek |
-| jméno | Název vstupu |
+| name | Název vstupu |
 | namespace | Použijte obor názvů poskytovatele **Microsoft. blockchain** . |
 | typ prostředku | Typ prostředku pro vstup Data Manager blockchain jsou **vstupy**. |
 | nadřazený | Cesta ke sledovacímu procesu, ke kterému je vstup přidružen. Například sledovací procesy **/mywatcher**. |
@@ -133,7 +133,7 @@ az resource create \
 
 ### <a name="input-examples"></a>Příklady vstupu
 
-Příklad konfigurace JSON pro vytvoření vstupního prostředku v oblasti *východní USA* , která je připojená k \<blockchain členu\>.
+Příklad konfigurace JSON pro vytvoření vstupního prostředku v oblasti *východní USA* , která je připojená k \<Blockchain member\> .
 
 ``` json
 {
@@ -147,11 +147,11 @@ Příklad konfigurace JSON pro vytvoření vstupního prostředku v oblasti *vý
 }
 ```
 
-| Prvek | Popis |
+| Prvek | Description |
 |---------|-------------|
 | location | Oblast, kde se má vytvořit vstupní prostředek |
 | inputType | Typ hlavní knihy člena služby Azure blockchain. V současné době se podporuje **ethereem** . |
-| resourceId | Uzel transakce, ke kterému je vstup připojen Nahraďte \<ID\>předplatného, \<skupinu \<\> \>prostředků a člena blockchain hodnotami pro prostředek uzlu transakce. Vstup se připojí k výchozímu uzlu transakce pro člena služby Azure blockchain. |
+| resourceId | Uzel transakce, ke kterému je vstup připojen \<Subscription ID\>Hodnoty, \<Resource group\> a nahraďte \<Blockchain member\> hodnotami pro prostředek uzlu transakce. Vstup se připojí k výchozímu uzlu transakce pro člena služby Azure blockchain. |
 
 Vytvořte vstup s názvem *myInput* pro *MYWATCHER* pomocí řetězce JSON pro konfiguraci.
 
@@ -196,7 +196,7 @@ az resource create \
 | Parametr | Popis |
 |-----------|-------------|
 | resource-group | Název skupiny prostředků, kde se má vytvořit výstupní prostředek |
-| jméno | Název výstupu. |
+| name | Název výstupu. |
 | namespace | Použijte obor názvů poskytovatele **Microsoft. blockchain** . |
 | typ prostředku | Typ prostředku pro výstup blockchain Data Manager je **výstupy**. |
 | nadřazený | Cesta ke sledovacímu procesu, ke kterému je výstup přidružen Například sledovací procesy **/mywatcher**. |
@@ -205,7 +205,7 @@ az resource create \
 
 ### <a name="output-examples"></a>Příklady výstupu
 
-Příklad konfigurace JSON pro vytvoření výstupního prostředku v oblasti *východní USA* , která je připojená k tématu Event Grid s \<názvem téma\>Event Grid.
+Příklad konfigurace JSON pro vytvoření výstupního prostředku v oblasti *východní USA* , která je připojená k tématu Event Grid s názvem \<event grid topic\> .
 
 ``` json
 {
@@ -219,11 +219,11 @@ Příklad konfigurace JSON pro vytvoření výstupního prostředku v oblasti *v
 }
 ```
 
-| Prvek | Popis |
+| Prvek | Description |
 |---------|-------------|
 | location | Oblast, ve které se má vytvořit výstupní prostředek. |
 | outputType | Typ výstupu. V současné době se podporuje **EventGrid** . |
-| resourceId | Prostředek, ke kterému je připojen výstup. Nahraďte \<ID\>předplatného, \<skupinu \<\> \>prostředků a člena blockchain hodnotami pro prostředek služby Event Grid. |
+| resourceId | Prostředek, ke kterému je připojen výstup. \<Subscription ID\>Hodnoty, \<Resource group\> a nahraďte \<Blockchain member\> hodnotami pro prostředek Event gridu. |
 
 Vytvořte výstup s názvem *MyOutput* pro *mywatcher* , který se připojí k tématu Event gridu pomocí konfiguračního řetězce JSON.
 
@@ -273,7 +273,7 @@ az resource create \
 | Parametr | Popis |
 |-----------|-------------|
 | resource-group | Název skupiny prostředků, kde se má vytvořit prostředek aplikace |
-| jméno | Název aplikace |
+| name | Název aplikace |
 | namespace | Použijte obor názvů poskytovatele **Microsoft. blockchain** . |
 | typ prostředku | Typ prostředku pro aplikaci blockchain Data Manager je **artefakty**. |
 | nadřazený | Cesta ke sledovacímu procesu, ke kterému je aplikace přidružena Například sledovací procesy **/mywatcher**. |
@@ -301,7 +301,7 @@ Příklad konfigurace JSON pro vytvoření prostředku aplikace v oblasti *vých
 }
 ```
 
-| Prvek | Popis |
+| Prvek | Description |
 |---------|-------------|
 | location | Oblast, kde se má vytvořit prostředek aplikace |
 | artifactType | Typ aplikace V současné době se podporuje **EthereumSmartContract** . |
@@ -348,7 +348,7 @@ az resource invoke-action \
 | Parametr | Popis |
 |-----------|-------------|
 | action | Spusťte sledovací proces pomocí rutiny **Start** . |
-| identifikační | ID prostředku sledovacího procesu. Nahraďte \<ID\>předplatného, \<skupinu \<\> \>prostředků a název sledovacího procesu hodnotami prostředku sledovacího procesu.|
+| identifikační | ID prostředku sledovacího procesu. \<Subscription ID\>Hodnoty, \<Resource group\> a nahraďte \<Watcher name\> hodnotou prostředku sledovacího procesu.|
 
 ### <a name="start-instance-example"></a>Příklad spuštění instance
 
@@ -373,7 +373,7 @@ az resource invoke-action \
 | Parametr | Popis |
 |-----------|-------------|
 | action | Pomocí **stop** zastavte sledovací proces. |
-| identifikační | Název sledovacího procesu. Nahraďte \<ID\>předplatného, \<skupinu \<\> \>prostředků a název sledovacího procesu hodnotami prostředku sledovacího procesu. |
+| identifikační | Název sledovacího procesu. \<Subscription ID\>Hodnoty, \<Resource group\> a nahraďte \<Watcher name\> hodnotou prostředku sledovacího procesu. |
 
 ### <a name="stop-watcher-example"></a>Příklad zastavení sledovacího procesu
 
@@ -399,7 +399,7 @@ az resource delete \
 | Parametr | Popis |
 |-----------|-------------|
 | resource-group | Název skupiny prostředků sledovacího procesu, který se má odstranit |
-| jméno | Název sledovacího procesu, který se má odstranit |
+| name | Název sledovacího procesu, který se má odstranit |
 | typ prostředku | Typ prostředku pro sledovací proces blockchain Data Manager je **Microsoft. blockchain/sledovací**procesy. |
 
 ### <a name="delete-instance-example"></a>Příklad odstranění instance

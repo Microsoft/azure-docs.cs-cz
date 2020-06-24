@@ -2,21 +2,21 @@
 title: Rychlý Start – přidání aplikace do tenanta Azure Active Directory
 description: V tomto rychlém startu se pomocí webu Azure Portal přidá aplikace z galerie do tenanta Azure Active Directory (Azure AD).
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 650a4f643f170fc64dd0e0643d645a7dcbffdfbc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b89ab7e44bc71fa442f332cbba35af450f7d5155
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79240489"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84760656"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-tenant"></a>Rychlý start: Přidání aplikace do tenanta Azure Active Directory
 
@@ -27,7 +27,7 @@ Po přidání aplikace do tenanta Azure AD můžete:
 - Umožňuje spravovat přístup uživatelů k aplikaci pomocí zásad podmíněného přístupu.
 - Konfigurovat jednotné přihlašování uživatelů k aplikaci pomocí jejich účtů Azure AD.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 K přidání aplikace do tenanta budete potřebovat:
 

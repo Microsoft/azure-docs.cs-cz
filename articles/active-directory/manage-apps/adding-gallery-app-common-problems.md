@@ -3,24 +3,24 @@ title: Problém při přidávání aplikace Galerie Azure AD | Microsoft Docs
 description: Seznamte se s běžnými problémy, které lidé čelí při přidávání aplikací Galerie Azure AD a k tomu, co můžete vyřešit
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 09/11/2018
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2b42880f99f3e87d75854166047896860f9eb14
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e4387a3ca02297311cd9ab025c315ca3324cbbbe
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "65784427"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84760401"
 ---
 # <a name="problem-adding-an-azure-ad-gallery-application"></a>Problém při přidávání aplikace Galerie Azure AD
 
@@ -99,7 +99,7 @@ Další podrobnosti o oznámeních najdete v následujících popisech.
 
 - **UPN** – uživatel, který operaci provedl
 
-  -   Příklad – **tperkins\@f128.info**
+  -   Příklad – **tperkins \@ f128.info**
 
 - **ID tenanta** – jedinečné ID tenanta, kterého byl uživatel, který provedl operaci, členem
 
@@ -125,7 +125,7 @@ Další podrobnosti o oznámeních najdete v následujících popisech.
 
 -   **Podrobnosti** – podrobný popis toho, co se stalo v důsledku operace
 
-    -   Příklad – **interní adresa `https://bing.com/` URL je neplatná, protože se už používá** .
+    -   Příklad – **interní adresa URL `https://bing.com/` je neplatná, protože se už používá** .
 
 -   **Chyba kopírování** – kliknutím na **ikonu Kopírovat** napravo od textového pole **Kopírovat chybu** zkopírujte všechny podrobnosti oznámení, které chcete sdílet s podporou nebo skupinou produktů. 
 -   engineer (technik)

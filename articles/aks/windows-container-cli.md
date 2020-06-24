@@ -4,12 +4,12 @@ description: Naučte se rychle vytvořit cluster Kubernetes a nasadit aplikaci v
 services: container-service
 ms.topic: article
 ms.date: 05/06/2020
-ms.openlocfilehash: 70dbe927c3d106e6a853f215f93c51bd7e547150
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 29ee22cb4b28726b25ead6ff78d90de99847666b
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84658513"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84886957"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Vytvoření kontejneru Windows serveru v clusteru služby Azure Kubernetes (AKS) pomocí rozhraní příkazového řádku Azure
 
@@ -86,7 +86,6 @@ az aks create \
     --name myAKSCluster \
     --node-count 2 \
     --enable-addons monitoring \
-    --kubernetes-version 1.16.9 \
     --generate-ssh-keys \
     --windows-admin-password $PASSWORD_WIN \
     --windows-admin-username azureuser \
@@ -95,8 +94,6 @@ az aks create \
 ```
 
 > [!NOTE]
-> Pokud nemůžete vytvořit cluster AKS, protože verze není v této oblasti podporovaná, můžete pro tuto oblast vyhledat seznam podporovaných verzí pomocí příkazu [az AKS get-versions--Location eastus].
->  
 > Pokud se zobrazí chyba ověřování hesla, zkuste vytvořit skupinu prostředků v jiné oblasti.
 > Pak zkuste cluster vytvořit s novou skupinou prostředků.
 
@@ -112,8 +109,7 @@ az aks nodepool add \
     --cluster-name myAKSCluster \
     --os-type Windows \
     --name npwin \
-    --node-count 1 \
-    --kubernetes-version 1.16.9
+    --node-count 1
 ```
 
 Výše uvedený příkaz vytvoří nový fond uzlů s názvem *npwin* a přidá ho do *myAKSCluster*. Při vytváření fondu uzlů pro spouštění kontejnerů Windows serveru je výchozí hodnota pro *Node-VM-size* *Standard_D2s_v3*. Pokud se rozhodnete nastavit parametr *Node-VM-Size* , zkontrolujte prosím seznam [omezených velikostí virtuálních počítačů][restricted-vm-sizes]. Minimální doporučená velikost je *Standard_D2s_v3*. Výše uvedený příkaz používá také výchozí podsíť ve výchozí virtuální síti vytvořené při spuštění `az aks create` .

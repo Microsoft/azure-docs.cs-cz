@@ -3,23 +3,23 @@ title: Aplikace Azure AD proxy a Qlik smysl | Microsoft Docs
 description: Zapněte proxy aplikace v Azure Portal a nainstalujte konektory pro reverzní proxy.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/06/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2edf63da0fd09f829f936b54eb088c34dfe029a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f9696d48db7d051f3a8bdf16f93438fb71f025dc
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79036997"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84760044"
 ---
 # <a name="application-proxy-and-qlik-sense"></a>Proxy aplikace a Qlik – smysl 
 Proxy aplikací služby Azure Active Directory a Qliký smysl spolupracovali společně, aby bylo zajištěno, že k zajištění vzdáleného přístupu pro nasazení rozpoznávání Qlik budete moct snadno používat proxy aplikace.  
@@ -38,7 +38,7 @@ Při publikování aplikace postupujte podle těchto kroků. Podrobnější náv
 
 
 1. Přihlaste se k webu Azure Portal jako globální správce. 
-2. Vyberte **Azure Active Directory** > **podnikových aplikací**. 
+2. Vyberte **Azure Active Directory**  >  **podnikových aplikací**. 
 3. V horní části okna vyberte **Přidat** . 
 4. Vyberte **místní aplikaci**. 
 5. Vyplňte požadovaná pole informacemi o vaší nové aplikaci. Pro nastavení použijte následující pokyny: 

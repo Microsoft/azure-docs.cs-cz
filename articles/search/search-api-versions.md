@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 178f56354120bf7a65c51f1c9cf54e34bd011d97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 20f11b14c0393f27a81710218d630f052775e1c3
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79137284"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85078970"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>Verze rozhraní API v Azure Kognitivní hledání
 
@@ -32,26 +32,26 @@ Níže je snímek aktuální verze všech programovacích rozhraní do Azure Kog
 
 | Rozhraní | Nejnovější hlavní verze | Status |
 | --- | --- | --- |
-| [.NET SDK](https://aka.ms/search-sdk) |9.0 |Obecně dostupné, vydání květen 2019 |
+| [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) |9.0 |Obecně dostupné, vydání květen 2019 |
 | [.NET SDK Preview](https://aka.ms/search-sdk-preview) |8,0 – Preview |Preview, vydáno v dubnu 2019 |
 | [Rozhraní API služby REST](https://docs.microsoft.com/rest/api/searchservice/) |2019-05-06 |Všeobecně dostupné |
 | [Služba REST API 2019-05-06 – Preview](search-api-preview.md) |2019-05-06 – Preview |Preview |
 | [.NET Management SDK](https://aka.ms/search-mgmt-sdk) |3.0 |Všeobecně dostupné |
 | [Rozhraní REST API pro správu](https://docs.microsoft.com/rest/api/searchmanagement/) |2020-03-13|Všeobecně dostupné |
 
-Pro rozhraní REST API, včetně `api-version` každého volání, je požadováno. Použití `api-version` usnadňuje cílení na konkrétní verzi, jako je rozhraní API verze Preview. Následující příklad ukazuje, `api-version` jak je zadán parametr:
+Pro rozhraní REST API, včetně `api-version` každého volání, je požadováno. Použití `api-version` usnadňuje cílení na konkrétní verzi, jako je rozhraní API verze Preview. Následující příklad ukazuje, jak `api-version` je zadán parametr:
 
     GET https://my-demo-app.search.windows.net/indexes/hotels?api-version=2019-05-06
 
 > [!NOTE]
-> I když každý požadavek má `api-version`, doporučujeme, abyste pro všechny požadavky rozhraní API používali stejnou verzi. To platí hlavně v případě, že nové verze rozhraní API zavádějí atributy nebo operace, které nejsou rozpoznávány předchozími verzemi. Kombinování verzí rozhraní API může mít nezamýšlené důsledky a je třeba se jim vyhnout.
+> I když každý požadavek má `api-version` , doporučujeme, abyste pro všechny požadavky rozhraní API používali stejnou verzi. To platí hlavně v případě, že nové verze rozhraní API zavádějí atributy nebo operace, které nejsou rozpoznávány předchozími verzemi. Kombinování verzí rozhraní API může mít nezamýšlené důsledky a je třeba se jim vyhnout.
 >
 > REST API REST API služby a správy jsou samostatně nezávislé na verzi. Jakákoli podobnost v číslech verzí je koincident.
 
 Obecně dostupná rozhraní API (nebo GA) se dají používat v produkčním prostředí a podléhají smlouvám o úrovni služeb Azure. Verze Preview mají experimentální funkce, které nejsou vždycky migrovány na verzi GA. **Důrazně se doporučuje vyhnout se používání rozhraní API ve verzi Preview v produkčních aplikacích.**
 
 ## <a name="update-to-the-latest-version-of-the-rest-api-by-october-15-2020"></a>Aktualizace na nejnovější verzi REST API do 15. října 2020
-Následující verze služby Azure Kognitivní hledání REST API budou vyřazeny a už se nepodporují od 15. října 2020: **2014-07-31-Preview**, **2014-10-20-** Preview, **2015-02-28-Preview**a **2015-02-28**. Verze sady Azure Kognitivní hledání .NET SDK starší než **3.0.0-RC** navíc budou také vyřazeny, protože cílí na jednu z těchto REST API verzí. Po tomto datu nebudou aplikace používající některou z zastaralých REST API nebo verzí SDK nadále fungovat a musí být upgradovány. Stejně jako u jakékoli změny tohoto typu se vám pošle 12 měsíců oznámení, takže budete mít adekvátní čas na jeho úpravu.  Pokud chcete dál používat Azure Kognitivní hledání, migrujte prosím stávající kód, který cílí na [REST API](search-api-migration.md) na [verzi REST API verze 2019-05-06](https://docs.microsoft.com/rest/api/searchservice/) nebo novější, nebo .net SDK na [verzi 3,0](search-dotnet-sdk-migration.md) nebo novější do 15. října 2020.  Pokud máte nějaké dotazy týkající se aktualizace na nejnovější verzi, odešlete e-mail na azuresearch_contact@microsoft.com adresu 15. května 2020, abyste měli dostatek času na aktualizaci kódu.
+Následující verze služby Azure Kognitivní hledání REST API budou vyřazeny a už se nepodporují od 15. října 2020: **2014-07-31-Preview**, **2014-10-20-** Preview, **2015-02-28-Preview**a **2015-02-28**. Verze sady Azure Kognitivní hledání .NET SDK starší než **3.0.0-RC** navíc budou také vyřazeny, protože cílí na jednu z těchto REST API verzí. Po tomto datu nebudou aplikace používající některou z zastaralých REST API nebo verzí SDK nadále fungovat a musí být upgradovány. Stejně jako u jakékoli změny tohoto typu se vám pošle 12 měsíců oznámení, takže budete mít adekvátní čas na jeho úpravu.  Pokud chcete dál používat Azure Kognitivní hledání, migrujte prosím stávající kód, který cílí na [REST API](search-api-migration.md) na [verzi REST API verze 2019-05-06](https://docs.microsoft.com/rest/api/searchservice/) nebo novější, nebo .net SDK na [verzi 3,0](search-dotnet-sdk-migration.md) nebo novější do 15. října 2020.  Pokud máte nějaké dotazy týkající se aktualizace na nejnovější verzi, odešlete e-mail na adresu azuresearch_contact@microsoft.com 15. května 2020, abyste měli dostatek času na aktualizaci kódu.
 
 ## <a name="about-preview-and-generally-available-versions"></a>O verzi Preview a obecně dostupné verze
 Azure Kognitivní hledání vždy předem vydává experimentální funkce přes REST API a pak prostřednictvím předprodejní verze sady .NET SDK.

@@ -15,6 +15,6 @@ ms.locfileid: "67175199"
 
 1.  V okně **Správce zařízení StorSimple** klikněte na službu, kterou jste vytvořili. Na pravé straně se otevře nové okno.
 
-2.  V okně, které se otevře, klikněte **na &gt; spravovat** **klíče**.
+2.  V okně, které se otevře, klikněte **na &gt; Spravovat** **klíče**.
 
 3.  Kliknutím na ikonu Kopírovat zkopírujte registrační klíč služby a uložte ho pro pozdější použití.

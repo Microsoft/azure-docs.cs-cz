@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3f6af5e8e1cfadd302eadfedf189a6710ac4aeca
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 3841f4c4f068fd597bd537288a45dd188c7d1a2f
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82966594"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85203331"
 ---
 # <a name="configure-session-behavior-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurace chování relace pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -36,7 +36,7 @@ Pomocí následujících vlastností můžete spravovat relace webových aplikac
 
 Chcete-li změnit chování relace a konfigurace jednotného přihlašování, přidejte do elementu [RelyingParty](relyingparty.md) element **UserJourneyBehaviors** .  Element **UserJourneyBehaviors** musí následovat za **DefaultUserJourney**. Váš element **UserJourneyBehavors** by měl vypadat jako v tomto příkladu:
 
-```XML
+```xml
 <UserJourneyBehaviors>
    <SingleSignOn Scope="Application" />
    <SessionExpiryType>Absolute</SessionExpiryType>
@@ -60,7 +60,7 @@ Když uživatele přesměrujete na koncový bod Azure AD B2Cho odhlašování (p
 Aby bylo možné podporovat jednotné přihlašování, musí technické profily vystavitele tokenů pro tokeny JWT i SAML určovat:
 
 - Název protokolu, například`<Protocol Name="OpenIdConnect" />`
-- Odkaz na technický profil relace, například `UseTechnicalProfileForSessionManagement ReferenceId="SM-jwt-issuer" />`.
+- Odkaz na technický profil relace, například `UseTechnicalProfileForSessionManagement ReferenceId="SM-jwt-issuer" />` .
 
 Následující příklad znázorňuje vystavitele tokenů JWT a SAML s jednotným odhlášením:
 

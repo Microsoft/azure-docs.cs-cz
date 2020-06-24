@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ff5ef8f742914129d868152814d84d2112267c09
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7307d047861a4fd6ba2065d231fde8040a383cfb
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78187781"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85201833"
 ---
 # <a name="pass-an-access-token-through-a-custom-policy-to-your-application-in-azure-active-directory-b2c"></a>Předání přístupového tokenu pomocí vlastní zásady do aplikace v Azure Active Directory B2C
 
@@ -30,9 +30,9 @@ Azure AD B2C podporuje předávání přístupového tokenu [OAuth 2,0](authoriz
 
 ## <a name="add-the-claim-elements"></a>Přidání prvků deklarace identity
 
-1. Otevřete soubor *TrustframeworkExtensions. XML* a přidejte následující element **ClaimType** s identifikátorem `identityProviderAccessToken` do prvku **ClaimsSchema** :
+1. Otevřete soubor *TrustframeworkExtensions.xml* a přidejte následující element **ClaimType** s identifikátorem `identityProviderAccessToken` do prvku **ClaimsSchema** :
 
-    ```XML
+    ```xml
     <BuildingBlocks>
       <ClaimsSchema>
         <ClaimType Id="identityProviderAccessToken">
@@ -47,7 +47,7 @@ Azure AD B2C podporuje předávání přístupového tokenu [OAuth 2,0](authoriz
 
 2. Přidejte element **OutputClaim** do elementu **TechnicalProfile** pro každého poskytovatele identity OAuth 2,0, pro který chcete získat přístupový token. Následující příklad ukazuje prvek přidaný do technického profilu Facebooku:
 
-    ```XML
+    ```xml
     <ClaimsProvider>
       <DisplayName>Facebook</DisplayName>
       <TechnicalProfiles>
@@ -61,10 +61,10 @@ Azure AD B2C podporuje předávání přístupového tokenu [OAuth 2,0](authoriz
     </ClaimsProvider>
     ```
 
-3. Uložte soubor *TrustframeworkExtensions. XML* .
-4. Otevřete soubor zásad předávající strany, například *SignUpOrSignIn. XML*, a přidejte element **OutputClaim** do **TechnicalProfile**:
+3. Uložte soubor *TrustframeworkExtensions.xml* .
+4. Otevřete soubor zásad předávající strany, například *SignUpOrSignIn.xml*, a přidejte do **TechnicalProfile**element **OutputClaim** :
 
-    ```XML
+    ```xml
     <RelyingParty>
       <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
       <TechnicalProfile Id="PolicyProfile">
@@ -80,7 +80,7 @@ Azure AD B2C podporuje předávání přístupového tokenu [OAuth 2,0](authoriz
 
 ## <a name="test-your-policy"></a>Testování zásad
 
-Při testování aplikací v Azure AD B2C může být užitečné, aby byl token Azure AD B2C vrácen `https://jwt.ms` , aby bylo možné zkontrolovat deklarace identity v ní.
+Při testování aplikací v Azure AD B2C může být užitečné, aby byl token Azure AD B2C vrácen, aby bylo možné `https://jwt.ms` zkontrolovat deklarace identity v ní.
 
 ### <a name="upload-the-files"></a>Nahrání souborů
 
@@ -89,14 +89,14 @@ Při testování aplikací v Azure AD B2C může být užitečné, aby byl token
 3. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 4. Vyberte **architekturu prostředí identity**.
 5. Na stránce vlastní zásady klikněte na **nahrát zásadu**.
-6. Vyberte **přepsat zásadu, pokud existuje**, a pak vyhledejte a vyberte soubor *TrustframeworkExtensions. XML* .
-7. Vyberte **nahrát**.
-8. Opakujte kroky 5 až 7 pro soubor předávající strany, například *SignUpOrSignIn. XML*.
+6. Vyberte **přepsat zásadu, pokud existuje**, a pak vyhledejte a vyberte soubor *TrustframeworkExtensions.xml* .
+7. Vyberte **Nahrát**.
+8. Opakujte kroky 5 až 7 pro soubor předávající strany, například *SignUpOrSignIn.xml*.
 
 ### <a name="run-the-policy"></a>Spustit zásadu
 
 1. Otevřete zásadu, kterou jste změnili. Například *B2C_1A_signup_signin*.
-2. V případě **aplikace**vyberte svou aplikaci, kterou jste předtím zaregistrovali. Pokud chcete token zobrazit v následujícím příkladu, měla by se zobrazit `https://jwt.ms` **Adresa URL odpovědi** .
+2. V případě **aplikace**vyberte svou aplikaci, kterou jste předtím zaregistrovali. Pokud chcete token zobrazit v následujícím příkladu, měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
 3. Vyberte **Spustit nyní**.
 
     Měl by se zobrazit něco podobného jako v následujícím příkladu:

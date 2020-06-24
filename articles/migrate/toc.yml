@@ -48,6 +48,10 @@
           href: tutorial-assess-physical.md
         - name: Migrace fyzických serverů
           href: tutorial-migrate-physical-virtual-machines.md
+    - name: Posouzení a migrace serverů
+      items:
+        - name: 'Zjišťování, posouzení a migrace virtuálních počítačů Amazon Web Services (AWS) do Azure'
+          href: tutorial-migrate-aws-virtual-machines.md
     - name: Vyhodnocení importovaných serverů pro migraci
       items:
         - name: Vyhodnocení importovaných serverů pro migraci

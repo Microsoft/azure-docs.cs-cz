@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 9ab2122fe1dd71a06127cad5ecc064fc42845390
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 1d3804a019add8f97dcbad0f9d707d50c35830bb
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847715"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753906"
 ---
 # <a name="create-a-managed-service-offer"></a>Vytvoření nabídky spravované služby
 
@@ -80,9 +80,20 @@ Tato stránka umožňuje definovat podrobnosti o Marketplace (například název
 > [!NOTE]
 > Obsah seznamu nabídek (například popis, dokumenty, snímky obrazovky a podmínky použití) nemusí být v angličtině, pokud popis nabídky začíná frází "Tato aplikace je k dispozici pouze v [jazykovém jazyce, který není v angličtině]." Je také přijatelné poskytnout *užitečnou adresu URL pro odkaz* k poskytnutí obsahu v jiném jazyce, než který je použit v obsahu nabídky.
 
+Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Portal:
+
+:::image type="content" source="media/example-managed-services.png" alt-text="Ukazuje, jak se tato nabídka zobrazuje v Azure Portal.":::
+
+#### <a name="call-out-descriptions"></a>Popisy volání
+
+1. Nadpis
+2. Popis
+3. Užitečné odkazy
+4. Screenshoty
+
 ### <a name="name"></a>Name
 
-Název, který sem zadáte, se zákazníkům zobrazí jako název seznamu nabídek. Toto pole se předem vyplní textem, který jste zadali jako **alias nabídky** při vytváření nabídky, ale tuto hodnotu můžete změnit. Tento název může být ochranných známek (a může obsahovat symboly ochranných známek a autorských práv). Název nesmí být delší než 50 znaků a nesmí obsahovat žádné emoji.
+Název, který sem zadáte, se zákazníkům zobrazí jako název seznamu nabídek. Toto pole je předem vyplněno textem, který jste zadali pro možnost **alias nabídky** při vytváření nabídky, ale můžete tuto hodnotu změnit. Tento název může být ochranných známek (a může obsahovat symboly ochranných známek a autorských práv). Název nesmí být delší než 50 znaků a nesmí obsahovat žádné emoji.
 
 ### <a name="search-results-summary"></a>Souhrn výsledků hledání
 
@@ -92,7 +103,7 @@ Zadejte krátký popis vaší nabídky (až 100 znaků), který se dá použít 
 
 Zadejte delší popis vaší nabídky (až 256 znaků). Toto dlouhé Shrnutí se dá použít taky ve výsledcích hledání na webu Marketplace.
 
-### <a name="description"></a>Popis
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 

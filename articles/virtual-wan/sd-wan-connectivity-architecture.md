@@ -5,15 +5,15 @@ description: Další informace o propojení privátního SD-WAN s Azure Virtual 
 services: virtual-wan
 author: skishen525
 ms.service: virtual-wan
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/12/2020
 ms.author: sukishen
-ms.openlocfilehash: 9b935c1f612e7634bad86818cd8331fba0078a9d
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.openlocfilehash: 7b134e8ef4e09f1506f1d548ffb7579dcf65fbdd
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860575"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753333"
 ---
 # <a name="sd-wan-connectivity-architecture-with-azure-virtual-wan"></a>Architektura připojení SD-WAN s Azure Virtual WAN
 

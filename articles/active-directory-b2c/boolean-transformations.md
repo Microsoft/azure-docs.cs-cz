@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 06/06/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 02d488108474084346d9e37d5cc6ecbe3a8a05c6
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: 7c292f939339add06168c55236f8666651e4aace
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84484278"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85201272"
 ---
 # <a name="boolean-claims-transformations"></a>Logické transformace deklarací identity
 
@@ -36,7 +36,7 @@ Provede operaci a se dvěma logickými inputClaims a nastaví outputClaim s výs
 
 Následující transformace deklarací identity ukazuje, jak a dvě booleovské ClaimTypes: a `isEmailNotExist` `isSocialAccount` . Výstupní deklarace identity `presentEmailSelfAsserted` je nastavena na `true` hodnotu, pokud jsou obě vstupní deklarace identity `true` . V kroku orchestrace můžete použít předběžnou podmínku k přednastavení stránky s vlastním kontrolním účtem, jenom když je e-mail účtu v sociální síti prázdný.
 
-```XML
+```xml
 <ClaimsTransformation Id="CheckWhetherEmailBePresented" TransformationMethod="AndClaims">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="isEmailNotExist" TransformationClaimType="inputClaim1" />
@@ -72,7 +72,7 @@ Transformace deklarací **AssertBooleanClaimIsEqualToValue** je vždy prováděn
 
 Následující transformace deklarací identity ukazuje, jak ověřit hodnotu logického typu ClaimType s `true` hodnotou. Pokud `accountEnabled` je hodnota ClaimType false, je vyvolána chybová zpráva.
 
-```XML
+```xml
 <ClaimsTransformation Id="AssertAccountEnabledIsTrue" TransformationMethod="AssertBooleanClaimIsEqualToValue">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="accountEnabled" TransformationClaimType="inputClaim" />
@@ -86,7 +86,7 @@ Následující transformace deklarací identity ukazuje, jak ověřit hodnotu lo
 
 `login-NonInteractive`Technický profil ověření volá `AssertAccountEnabledIsTrue` transformaci deklarací identity.
 
-```XML
+```xml
 <TechnicalProfile Id="login-NonInteractive">
   ...
   <OutputClaimsTransformations>
@@ -97,7 +97,7 @@ Následující transformace deklarací identity ukazuje, jak ověřit hodnotu lo
 
 Technický profil s vlastním uplatněním volá ověřovací **přihlášení – neinteraktivní** technický profil.
 
-```XML
+```xml
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
   <Metadata>
     <Item Key="UserMessageIfClaimsTransformationBooleanValueIsNotEqual">Custom error message if account is disabled.</Item>
@@ -127,7 +127,7 @@ Kontroluje, zda je logická hodnota deklarace identity rovna hodnotě `true` neb
 
 Následující transformace deklarací identity ukazuje, jak ověřit hodnotu logického typu ClaimType s `true` hodnotou. Pokud `IsAgeOver21Years` je hodnota ClaimType rovna `true` , transformace deklarací identity vrátí `true` , jinak `false` .
 
-```XML
+```xml
 <ClaimsTransformation Id="AssertAccountEnabled" TransformationMethod="CompareBooleanClaimToValue">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="IsAgeOver21Years" TransformationClaimType="inputClaim" />
@@ -161,7 +161,7 @@ Provede operaci not pro logickou inputClaim a nastaví outputClaim s výsledkem 
 
 Pomocí této transformace deklarace identity proveďte logickou negaci deklarace identity.
 
-```XML
+```xml
 <ClaimsTransformation Id="CheckWhetherEmailBePresented" TransformationMethod="NotClaims">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="userExists" TransformationClaimType="inputClaim" />
@@ -191,7 +191,7 @@ Vypočítá nebo ze dvou logických inputClaims a nastaví outputClaim s výsled
 
 Následující transformace deklarací identity ukazuje, jak se `Or` dvěma logickými ClaimTypesy. V kroku orchestrace můžete použít předběžnou podmínku k přednastavení stránky s vlastním oceněním, pokud je hodnota jedné z deklarací `true` .
 
-```XML
+```xml
 <ClaimsTransformation Id="CheckWhetherEmailBePresented" TransformationMethod="OrClaims">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="isLastTOSAcceptedNotExists" TransformationClaimType="inputClaim1" />

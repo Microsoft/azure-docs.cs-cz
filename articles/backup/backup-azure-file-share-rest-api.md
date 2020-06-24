@@ -4,11 +4,11 @@ description: Naučte se používat REST API k zálohování sdílených složek 
 ms.topic: conceptual
 ms.date: 02/16/2020
 ms.openlocfilehash: 2cf385830ec1be17cb62432e6ef9cba7d82a9db1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79248096"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710605"
 ---
 # <a name="backup-azure-file-share-using-azure-backup-via-rest-api"></a>Zálohování sdílené složky Azure pomocí Azure Backup přes REST API
 
@@ -38,7 +38,7 @@ Trezor musí v předplatném zjistit všechny účty úložiště Azure, které 
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupname}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers?api-version=2016-12-01&$filter={$filter}
 ```
 
-Identifikátor URI příspěvku obsahuje `{subscriptionId}`parametry `{vaultName}`, `{vaultresourceGroupName}`, a `{fabricName}` . V našem příkladu bude hodnota různých parametrů následující:
+Identifikátor URI příspěvku obsahuje `{subscriptionId}` `{vaultName}` parametry,, `{vaultresourceGroupName}` a `{fabricName}` . V našem příkladu bude hodnota různých parametrů následující:
 
 - `{fabricName}`je *Azure*
 
@@ -54,7 +54,7 @@ Vzhledem k tomu, že všechny požadované parametry jsou uvedeny v identifikát
 POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/refreshContainers?api-version=2016-12-01&$filter=backupManagementType eq 'AzureStorage'
 ```
 
-#### <a name="responses"></a>Odezvy
+#### <a name="responses"></a>Odpovědi
 
 Operace Refresh je [asynchronní operace](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). To znamená, že tato operace vytvoří další operaci, která musí být sledována samostatně.
 
@@ -467,7 +467,7 @@ POST https://management.azure.com/subscriptions/00000000-0000-0000-0000-00000000
 
 Chcete-li aktivovat zálohování na vyžádání, níže jsou uvedené součásti textu žádosti.
 
-| Název       | Typ                       | Popis                       |
+| Name       | Typ                       | Description                       |
 | ---------- | -------------------------- | --------------------------------- |
 | Vlastnosti | AzurefilesharebackupReques | Vlastnosti BackupRequestResource |
 
@@ -487,7 +487,7 @@ Příklad textu žádosti
 }
 ```
 
-### <a name="responses"></a>Odezvy
+### <a name="responses"></a>Odpovědi
 
 Aktivace zálohování na vyžádání je [asynchronní operace](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). To znamená, že tato operace vytvoří další operaci, která musí být sledována samostatně.
 

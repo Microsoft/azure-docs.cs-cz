@@ -3,14 +3,14 @@ title: Přehled Azure Automation Update Management
 description: Tento článek poskytuje přehled funkce Update Management, která implementuje aktualizace pro počítače se systémem Windows a Linux.
 services: automation
 ms.subservice: update-management
-ms.date: 06/03/2020
+ms.date: 06/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: fcc34f8d5a07354b31880ebfa605012e05ec3a20
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 85b724cacc9c878f39de62e91e18713a1817933d
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84342948"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84817237"
 ---
 # <a name="update-management-overview"></a>Přehled Update Managementu
 
@@ -29,7 +29,7 @@ Update Management pro virtuální počítače můžete povolit následujícími 
 K dispozici je [šablona Azure Resource Manager](automation-update-management-deploy-template.md) , která vám umožní nasadit Update Management do nového nebo existujícího účtu Automation a Log Analytics pracovní prostor ve vašem předplatném.
 
 > [!NOTE]
-> Počítač nakonfigurovaný s Update Management nemůžete použít ke spouštění vlastních skriptů z Azure Automation. Tento počítač může spustit pouze skript pro aktualizaci podepsaný společností Microsoft. 
+> Počítač nakonfigurovaný s Update Management nemůžete použít ke spouštění vlastních skriptů z Azure Automation. Tento počítač může spustit pouze skript pro aktualizaci podepsaný společností Microsoft.
 
 ## <a name="about-update-management"></a>O Update Management
 
@@ -68,21 +68,22 @@ Při definování nasazení také zadáte plán, který schválíte a nastavíte
 Aktualizace se instalují podle runbooků ve službě Azure Automation. Tyto Runbooky nemůžete zobrazit a nevyžadují žádnou konfiguraci. Při vytvoření nasazení aktualizace se vytvoří plán, který spustí sadu Runbook s aktualizací v zadaném čase pro zahrnuté počítače. Hlavní runbook spouští podřízený Runbook na každém agentovi pro instalaci požadovaných aktualizací.
 
 V datu a čase zadaném v nasazení aktualizace spouštějí cílové počítače paralelně nasazení. Před instalací se spustí Kontrola, aby se ověřilo, že se aktualizace pořád vyžadují. V případě klientských počítačů služby WSUS, pokud aktualizace nejsou schváleny ve službě WSUS, nasazení aktualizace se nepovede.
+
 Počítač zaregistrovaný pro Update Management ve více než jednom pracovním prostoru Log Analytics (označovaný také jako více domovských) se nepodporuje.
 
 ## <a name="clients"></a>Klienti
 
 ### <a name="supported-client-types"></a>Podporované typy klientů
 
-Následující tabulka uvádí podporované operační systémy pro posouzení aktualizací. Oprava vyžaduje Hybrid Runbook Worker. Informace o požadavcích na Hybrid Runbook Worker najdete v tématu [nasazení Hybrid Runbook Worker Windows](automation-windows-hrw-install.md) a [nasazení Hybrid Runbook Worker pro Linux](automation-linux-hrw-install.md).
+Následující tabulka uvádí podporované operační systémy pro posouzení aktualizací a opravy. Oprava vyžaduje Hybrid Runbook Worker. Informace o požadavcích na Hybrid Runbook Worker najdete v tématu [nasazení Hybrid Runbook Worker Windows](automation-windows-hrw-install.md) a [nasazení Hybrid Runbook Worker pro Linux](automation-linux-hrw-install.md).
 
 > [!NOTE]
 > Posouzení aktualizací počítačů se systémem Linux je podporováno pouze v určitých oblastech, které jsou uvedeny v účtu Automation a v [tabulce mapování](https://docs.microsoft.com/azure/automation/how-to/region-mappings#supported-mappings)Log Analytics pracovního prostoru. 
 
 |Operační systém  |Poznámky  |
 |---------|---------|
-|Windows Server 2019 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2016 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2012 R2 (Datacenter/Standard)<br><br>Windows Server 2012 || 
-|Windows Server 2008 R2 (RTM a SP1 Standard)| Update Management podporuje pouze posouzení pro tento operační systém. Oprava není podporovaná, protože [Hybrid Runbook Worker](automation-windows-hrw-install.md) není pro Windows Server 2008 R2 podporovaná. |
+|Windows Server 2019 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2016 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2012 R2 (Datacenter/Standard)<br><br>Windows Server 2012 ||
+|Windows Server 2008 R2 (RTM a SP1 Standard)| Update Management podporuje posouzení a opravy pro tento operační systém. [Hybrid Runbook Worker](automation-windows-hrw-install.md) se podporuje pro Windows Server 2008 R2. |
 |CentOS 6 (x86/x64) a 7 (x64)      | Agenti Linux vyžadují přístup k úložišti aktualizací. Oprava založená na klasifikaci vyžaduje `yum` , aby vracela data zabezpečení, která CentOS ve svých verzích RTM. Další informace o opravách na základě klasifikace na CentOS najdete v tématu [klasifikace aktualizací v systému Linux](automation-view-update-assessments.md#linux-2).          |
 |Red Hat Enterprise 6 (x86/x64) a 7 (x64)     | Agenti Linux vyžadují přístup k úložišti aktualizací.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) a 12 (x64)     | Agenti Linux vyžadují přístup k úložišti aktualizací.        |
@@ -103,7 +104,7 @@ V následující tabulce jsou uvedeny nepodporované operační systémy:
 
 ### <a name="client-requirements"></a>Požadavky na klienty
 
-Následující informace popisují požadavky klienta specifické pro operační systém. Další pokyny najdete v tématu [Plánování sítě](#ports).  Informace o požadavcích klienta na TLS 1,2 najdete v tématu [vynucení TLS 1,2 pro Azure Automation](automation-managing-data.md#tls-12-enforcement-for-azure-automation).
+Následující informace popisují požadavky klienta specifické pro operační systém. Další pokyny najdete v tématu [Plánování sítě](#ports). Informace o požadavcích klienta na TLS 1,2 najdete v tématu [vynucení TLS 1,2 pro Azure Automation](automation-managing-data.md#tls-12-enforcement-for-azure-automation).
 
 #### <a name="windows"></a>Windows
 
@@ -152,7 +153,7 @@ Pokud je vaše skupina pro správu Operations Manager [připojená k pracovnímu
 * Aktualizace sady pro správu nasazení
 
 > [!NOTE]
-> Máte-li skupinu pro správu Operations Manager 1807 nebo 2019 připojenou k pracovnímu prostoru Log Analytics a agenty konfigurované ve skupině pro správu pro shromažďování dat protokolu, je třeba přepsat parametr `IsAutoRegistrationEnabled` a nastavit jej na hodnotu true v pravidle **Microsoft. IntelligencePacks. AzureAutomation. HybridAgent. init** .
+> Máte-li skupinu pro správu Operations Manager 1807 nebo 2019 připojenou k pracovnímu prostoru Log Analytics a agenty konfigurované ve skupině pro správu pro shromažďování dat protokolu, je nutné parametr přepsat `IsAutoRegistrationEnabled` a v pravidle **Microsoft.IntelligencePacks.AzureAutomation.HybridAgent.Init** ho nastavit na hodnotu true.
 
 Další informace o aktualizacích sad Management Pack najdete v tématu [připojení Operations Manager k Azure monitor protokolů](../azure-monitor/platform/om-agents.md).
 
@@ -187,10 +188,10 @@ Následující adresy jsou vyžadovány konkrétně pro Update Management. Komun
 
 |Veřejný partnerský vztah Azure  |Azure Government  |
 |---------|---------|
-|*.ods.opinsights.azure.com    | *. ods.opinsights.azure.us         |
-|*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
-|*.blob.core.windows.net | *. blob.core.usgovcloudapi.net|
-|*.azure-automation.net | *. azure-automation.us|
+|`*.ods.opinsights.azure.com`    | `*.ods.opinsights.azure.us`        |
+|`*.oms.opinsights.azure.com`     | `*.oms.opinsights.azure.us`        |
+|`*.blob.core.windows.net` | `*.blob.core.usgovcloudapi.net`|
+|`*.azure-automation.net` | `*.azure-automation.us`|
 
 U počítačů s Windows musíte taky u všech koncových bodů vyžadovaných nástrojem web Windows Update umožňovat provoz. Aktualizovaný seznam požadovaných koncových bodů najdete v [problémech souvisejících s HTTP/proxy serverem](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy). Pokud máte místní [web Windows Update Server](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment), musíte taky na serveru, který určíte v [klíči služby WSUS](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry), povolený provoz.
 
@@ -214,7 +215,7 @@ Následující tabulka definuje klasifikace, které Update Management podporuje 
 |Balíčky funkcí     | Nové funkce produktu distribuované mimo vydání produktu.        |
 |Aktualizace Service Pack     | Kumulativní sada oprav hotfix, které se aplikují na aplikaci.        |
 |Aktualizace definic     | Aktualizace virů nebo jiných definičních souborů.        |
-|Nástroje     | Nástroj nebo funkce, které pomáhají dokončit jednu nebo více úloh.        |
+|nástroje     | Nástroj nebo funkce, které pomáhají dokončit jednu nebo více úloh.        |
 |Aktualizace     | Aktualizace aplikace nebo souboru, který je aktuálně nainstalován.        |
 
 Následující tabulka definuje podporované klasifikace aktualizací pro Linux.

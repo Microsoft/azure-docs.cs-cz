@@ -5,26 +5,26 @@ description: Naučte se přidávat, měnit nebo odstraňovat podsítě virtuáln
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2020
 ms.author: kumud
-ms.openlocfilehash: b9ef084e530faa3bcea2cfcf1554a84f543bbf59
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b43fb027116d746a60c9cd4e690e63181fff4ade
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82186080"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711013"
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>Přidání, změna nebo odstranění podsítě virtuální sítě
 
 Naučte se přidávat, měnit nebo odstraňovat podsítě virtuální sítě. Všechny prostředky Azure nasazené do virtuální sítě se nasazují do podsítě ve virtuální síti. Pokud s virtuálními sítěmi začínáte, můžete o nich získat další informace v [přehledu virtuální sítě](virtual-networks-overview.md) nebo v tématu [rychlý Start](quick-create-portal.md). Další informace o správě virtuální sítě najdete v tématu [Vytvoření, změna nebo odstranění virtuální sítě](manage-virtual-network.md).
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Pokud ho nemáte, nastavte účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Pak před zahájením kroků v jakékoli části tohoto článku dokončete jednu z těchto úloh: 
 
@@ -44,7 +44,7 @@ Pokud ho nemáte, nastavte účet Azure s aktivním předplatným. [Vytvořte si
 
 2. Vyberte název virtuální sítě, do které chcete přidat podsíť.
 
-3. V **Nastavení**vyberte podsíť **podsítě** > **Subnet**.
+3. V **Nastavení**vyberte podsíť **podsítě**  >  **Subnet**.
 
 4. V dialogovém okně **Přidat podsíť** zadejte hodnoty pro následující nastavení:
 
@@ -78,7 +78,7 @@ Pokud ho nemáte, nastavte účet Azure s aktivním předplatným. [Vytvořte si
 
 5. Na stránce podsíť změňte kterékoli z následujících nastavení:
 
-    | Nastavení | Popis |
+    | Nastavení | Description |
     | --- | --- |
     | **Rozsah adres** | Pokud v rámci podsítě nejsou nasazené žádné prostředky, můžete změnit rozsah adres. Pokud v podsíti existují nějaké prostředky, musíte buď přesunout prostředky do jiné podsítě, nebo je nejdřív odstranit z podsítě. Postup přesunutí nebo odstranění prostředku se liší v závislosti na prostředku. Pokud chcete zjistit, jak přesunout nebo odstranit prostředky, které jsou v podsítích, přečtěte si dokumentaci pro každý z těchto typů prostředků. Prohlédněte si omezení pro **Rozsah adres** v kroku 4 [Přidání podsítě](#add-a-subnet). |
     | **Uživatelé** | Přístup k podsíti můžete řídit pomocí integrovaných rolí nebo vlastních rolí. Další informace o přiřazování rolí a uživatelů pro přístup k podsíti najdete v tématu [Přidání přiřazení role](../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-a-role-assignment). |
@@ -120,7 +120,7 @@ Podsíť můžete odstranit pouze v případě, že v podsíti nejsou žádné p
 
 Aby bylo možné provádět úlohy v podsítích, musí být váš účet přiřazen k [roli Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) nebo k [vlastní roli](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , která je přiřazená k příslušným akcím v následující tabulce:
 
-|Akce                                                                   |   Název                                       |
+|Akce                                                                   |   Name                                       |
 |-----------------------------------------------------------------------  |   -----------------------------------------  |
 |Microsoft. Network/virtualNetworks/podsítí/čtení                           |   Čtení podsítě virtuální sítě              |
 |Microsoft. Network/virtualNetworks/podsítí/Write                          |   Vytvoření nebo aktualizace podsítě virtuální sítě  |

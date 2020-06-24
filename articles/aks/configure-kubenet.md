@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: a393e87963eabf2e3cf41148233c0e350dc6e380
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 8a101235f8e7aaeff455732b5c048cbc81c20079
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309664"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85079044"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Používání sítě kubenet s vlastními rozsahy IP adres ve službě Azure Kubernetes Service (AKS)
 
@@ -32,7 +32,7 @@ V tomto článku se dozvíte, jak pomocí sítě *kubenet* vytvořit a použít 
 > [!WARNING]
 > Pokud chcete používat fondy uzlů Windows serveru, musíte použít Azure CNI. Použití kubenet jako síťového modelu není k dispozici pro kontejnery Windows serveru.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.65 nebo novější.  `az --version`Verzi zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
 
@@ -201,16 +201,37 @@ Při vytváření clusteru AKS se automaticky vytvoří skupina zabezpečení s�
 
 V kubenet musí existovat směrovací tabulka v těchto podsítích clusteru. AKS podporuje uvedení vlastní existující podsítě a směrovací tabulky.
 
-Pokud vaše vlastní podsíť neobsahuje směrovací tabulku, vytvoří AKS jednu za vás a přidá do ní pravidla. Pokud vaše vlastní podsíť obsahuje směrovací tabulku při vytváření clusteru, AKS potvrdí existující směrovací tabulku během operací clusteru a podle toho aktualizuje pravidla pro operace poskytovatele cloudu.
+Pokud vaše vlastní podsíť neobsahuje směrovací tabulku, vytvoří AKS jednu za vás a přidá do ní pravidla v rámci životního cyklu clusteru. Pokud vaše vlastní podsíť obsahuje směrovací tabulku při vytváření clusteru, AKS potvrdí existující tabulku směrování během operací clusteru a přidá nebo aktualizuje pravidla pro operace poskytovatele cloudu.
+
+> [!WARNING]
+> Vlastní pravidla je možné přidat do vlastní tabulky směrování a aktualizovat. Poskytovatel cloudu Kubernetes ale přidají pravidla, která se nesmí aktualizovat ani odebrat. Pravidla, jako je například 0.0.0.0/0, musí existovat vždy v dané směrovací tabulce a mapovat na cíl vaší internetové brány, jako je například síťové virtuální zařízení nebo jiná výstupní brána. Při aktualizaci pravidel, která se mění jenom na vaše vlastní pravidla, postupujte opatrně.
+
+Přečtěte si další informace o nastavení [Vlastní směrovací tabulky][custom-route-table].
+
+Kubenet Networking vyžaduje uspořádaná pravidla směrovací tabulky pro úspěšné směrování požadavků. Z důvodu tohoto návrhu musí být pro každý cluster, který na něm závisí, pečlivě udržovány směrovací tabulky. Více clusterů nemůže sdílet směrovací tabulku, protože pod CIDRs z různých clusterů se může překrývat, což způsobí neočekávané a poškozené směrování. Při konfiguraci více clusterů ve stejné virtuální síti nebo při vyhradování virtuální sítě pro každý cluster se ujistěte, že jsou zvážena následující omezení.
 
 Omezení:
 
 * Oprávnění musí být přiřazena před vytvořením clusteru, ujistěte se, že používáte instanční objekt s oprávněním k zápisu do vlastní podsítě a vlastní směrovací tabulky.
 * Spravované identity se v současnosti nepodporují s vlastními směrovacími tabulkami v kubenet.
-* Vlastní směrovací tabulka musí být přidružena k podsíti před vytvořením clusteru AKS. Tuto tabulku směrování nelze aktualizovat a všechna pravidla směrování musí být přidána nebo odebrána z počáteční tabulky směrování před vytvořením clusteru AKS.
-* Všechny podsítě v rámci virtuální sítě AKS musí používat ke stejné směrovací tabulce.
-* Každý cluster AKS musí používat jedinečnou směrovací tabulku. Směrovací tabulku nelze znovu použít s více clustery.
+* Vlastní směrovací tabulka musí být přidružena k podsíti před vytvořením clusteru AKS.
+* Po vytvoření clusteru nelze aktualizovat prostředek přidružené směrovací tabulky. I když nelze prostředek směrovací tabulky aktualizovat, lze upravit vlastní pravidla v tabulce směrování.
+* Každý cluster AKS musí používat jednu jedinečnou směrovací tabulku pro všechny podsítě přidružené ke clusteru. Směrovací tabulku s několika clustery nemůžete znovu použít kvůli potenciálu překrývající se pod CIDRs a konfliktní pravidla směrování.
 
+Po vytvoření vlastní směrovací tabulky a jejím přidružení k podsíti ve vaší virtuální síti můžete vytvořit nový cluster AKS, který používá vaši směrovací tabulku.
+Musíte použít ID podsítě, kde plánujete nasadit cluster AKS. Tato podsíť musí být také přidružená k vlastní směrovací tabulce.
+
+```azurecli-interactive
+# Find your subnet ID
+az network vnet subnet list --resource-group
+                            --vnet-name
+                            [--subscription]
+```
+
+```azurecli-interactive
+# Create a kubernetes cluster with with a custom subnet preconfigured with a route table
+az aks create -g MyResourceGroup -n MyManagedCluster --vnet-subnet-id MySubnetID
+```
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -238,3 +259,4 @@ Když je cluster AKS nasazený do stávající podsítě virtuální sítě, mů
 [vnet-peering]: ../virtual-network/virtual-network-peering-overview.md
 [express-route]: ../expressroute/expressroute-introduction.md
 [network-comparisons]: concepts-network.md#compare-network-models
+[custom-route-table]: ../virtual-network/manage-route-table.md

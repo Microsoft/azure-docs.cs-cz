@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 92f2102d8d6353da2002a4ee9d5bfbe57a774e10
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: cd7e7df5c789743cf6bd84c6150fd901490bdedd
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792067"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84751634"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Základní hodnoty zabezpečení Azure pro Azure Storage
 
@@ -218,7 +218,7 @@ Můžete také využít integrované definice zásad související s účtem úl
 
 ### <a name="26-monitor-and-review-logs"></a>2,6: Sledujte a kontrolujte protokoly
 
-**Doprovodné**materiály: Chcete-li zkontrolovat protokoly Azure Storage, jsou k dispozici běžné možnosti, jako jsou například dotazy prostřednictvím nabídky Log Analytics a také jedinečná možnost zobrazení souborů protokolu přímo. V Azure Storage se protokoly ukládají v objektech blob, ke kterým je potřeba získat http://accountname.blob.core.windows.net/přímý pøístup v $Logs (ve výchozím nastavení je složka protokolování skrytá, takže budete muset přejít přímo. V příkazech seznamu se nezobrazí. 
+**Doprovodné**materiály: Chcete-li zkontrolovat protokoly Azure Storage, jsou k dispozici běžné možnosti, jako jsou například dotazy prostřednictvím nabídky Log Analytics a také jedinečná možnost zobrazení souborů protokolu přímo. V Azure Storage se protokoly ukládají v objektech blob, ke kterým je potřeba získat přímý pøístup v http://accountname.blob.core.windows.net/ $Logs (ve výchozím nastavení je složka protokolování skrytá, takže budete muset přejít přímo. V příkazech seznamu se nezobrazí. 
 
 Také pro svůj účet Azure Storage povolit rozšířenou ochranu před internetovými útoky. Rozšířená ochrana před internetovými útoky pro Azure Storage poskytuje další vrstvu zabezpečení, která detekuje neobvyklé a potenciálně nebezpečné pokusy o přístup k účtům úložiště nebo jejich zneužití. Výstrahy zabezpečení se spouštějí při výskytu anomálií v aktivitě. Tyto výstrahy zabezpečení jsou integrovány do Azure Security Center a jsou také odesílány prostřednictvím e-mailu správcům předplatného s podrobnostmi o podezřelé aktivitě a doporučeních k tomu, jak tyto hrozby prozkoumat a opravit. 
 
@@ -785,7 +785,10 @@ Kromě toho můžete pomocí grafu prostředků Azure dotazovat nebo zjišťovat
 
 **Pokyny**: pomocí aliasů Azure Policy v oboru názvů Microsoft. Storage vytvořit vlastní zásady pro auditování nebo prosazování konfigurace instancí účtů úložiště. Můžete také použít předdefinované definice Azure Policy pro Azure Storage účet, například: 
 
-Auditování neomezeného síťového přístupu k účtům úložiště nasazení rozšířené ochrany před internetovými útoky na účty úložiště účty úložiště by se měly migrovat na nové Azure Resource Manager prostředky zabezpečený přenos do účtů úložiště by měl být povolený. 
+Auditování neomezeného síťového přístupu k účtům úložiště  
+Nasazení rozšířené ochrany před internetovými útoky na účty úložiště  
+Účty úložiště by se měly migrovat na nové prostředky Azure Resource Manager.  
+Měl by se povolit zabezpečený přenos do účtů úložiště  
 
 Použijte doporučení z Azure Security Center jako standardní hodnoty konfigurace pro vaše účty úložiště. 
 

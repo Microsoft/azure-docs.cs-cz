@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b23b60ae49a4973fa04e6fa5f795f99536e32e7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f17bbe1a19b969fec681082df50be754f5d6034b
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78188745"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202360"
 ---
 # <a name="deploy-custom-policies-with-azure-pipelines"></a>Nasazení vlastních zásad pomocí Azure Pipelines
 
@@ -29,7 +29,7 @@ Pro povolení Azure Pipelines správy vlastních zásad v rámci Azure AD B2C js
 1. Konfigurace kanálu Azure
 
 > [!IMPORTANT]
-> Správa Azure AD B2C vlastních zásad pomocí kanálu Azure aktuálně používá operace ve **verzi Preview** , které jsou k `/beta` dispozici na koncovém bodu rozhraní API Microsoft Graph. Použití těchto rozhraní API v produkčních aplikacích není podporováno. Další informace najdete v referenčních informacích ke [koncovému bodu Microsoft Graph REST API beta](https://docs.microsoft.com/graph/api/overview?toc=./ref/toc.json&view=graph-rest-beta).
+> Správa Azure AD B2C vlastních zásad pomocí kanálu Azure aktuálně používá operace ve **verzi Preview** , které jsou k dispozici na `/beta` KONCOVÉM bodu rozhraní API Microsoft Graph. Použití těchto rozhraní API v produkčních aplikacích není podporováno. Další informace najdete v referenčních informacích ke [koncovému bodu Microsoft Graph REST API beta](https://docs.microsoft.com/graph/api/overview?toc=./ref/toc.json&view=graph-rest-beta).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -46,7 +46,7 @@ Scénář, který je zde popsán, používá volání služby Service-to-Service
 
 Jak je uvedeno v části [požadavky](#prerequisites), budete potřebovat registraci aplikace, kterou skripty PowerShellu spouštěné pomocí Azure Pipelines – můžou použít pro přístup k prostředkům ve vašem tenantovi.
 
-Pokud už máte registraci aplikace, kterou používáte pro úlohy automatizace, ujistěte se, že je jí udělené **oprávnění Microsoft Graph** > **zásady zásad** > **. TrustFramework** v rámci **oprávnění API** k registraci aplikace.
+Pokud už máte registraci aplikace, kterou používáte pro úlohy automatizace, ujistěte se, že je jí udělené oprávnění **Microsoft Graph**zásady  >  **zásad**  >  **. TrustFramework** v rámci **oprávnění API** k registraci aplikace.
 
 Pokyny k registraci aplikace pro správu najdete v tématu [správa Azure AD B2C s](microsoft-graph-get-started.md)využitím Microsoft Graph.
 
@@ -58,9 +58,9 @@ S registrovanou aplikací pro správu jste připraveni nakonfigurovat úložišt
 1. [Vytvořte nový projekt][devops-create-project] nebo vyberte existující projekt.
 1. V projektu přejděte do **úložišť** a vyberte stránku **soubory** . Vyberte existující úložiště nebo ho vytvořte pro toto cvičení.
 1. Vytvořte složku s názvem *B2CAssets*. Pojmenujte požadovaný zástupný soubor *Readme.MD* a **potvrďte** ho. Pokud chcete, můžete tento soubor později odebrat.
-1. Přidejte soubory zásad Azure AD B2C do složky *B2CAssets* . To zahrnuje *TrustFrameworkBase. XML*, *TrustFrameWorkExtensions. XML*, *SignUpOrSignin. XML*, *ProfileEdit. XML*, *PasswordReset. XML*a všechny další zásady, které jste vytvořili. Poznamenejte si název souboru zásad Azure AD B2C pro použití v pozdějším kroku (používá se jako argumenty skriptu PowerShellu).
-1. V kořenovém adresáři úložiště vytvořte složku s názvem *Scripts* a pojmenujte zástupný soubor *DeployToB2c. ps1*. V tomto okamžiku soubor nepotvrďte, a to v pozdějším kroku.
-1. Do souboru *DeployToB2c. ps1*vložte následující skript PowerShellu a pak soubor **potvrďte** . Skript získá token z Azure AD a zavolá rozhraní Microsoft Graph API, které odešle zásady do složky *B2CAssets* do vašeho tenanta Azure AD B2C.
+1. Přidejte soubory zásad Azure AD B2C do složky *B2CAssets* . To zahrnuje *TrustFrameworkBase.xml*, *TrustFrameWorkExtensions.xml*, *SignUpOrSignin.xml*, *ProfileEdit.xml*, *PasswordReset.xml*a všechny další zásady, které jste vytvořili. Poznamenejte si název souboru zásad Azure AD B2C pro použití v pozdějším kroku (používá se jako argumenty skriptu PowerShellu).
+1. V kořenovém adresáři úložiště vytvořte složku s názvem *Scripts* a pojmenujte zástupný soubor *DeployToB2c.ps1*. V tomto okamžiku soubor nepotvrďte, a to v pozdějším kroku.
+1. Do *DeployToB2c.ps1*vložte následující skript PowerShellu a pak soubor **potvrďte** . Skript získá token z Azure AD a zavolá rozhraní Microsoft Graph API, které odešle zásady do složky *B2CAssets* do vašeho tenanta Azure AD B2C.
 
     ```PowerShell
     [Cmdletbinding()]
@@ -114,7 +114,7 @@ Po inicializaci a naplnění vašeho úložiště pomocí vlastních souborů z�
 ### <a name="create-pipeline"></a>Vytvoření kanálu
 
 1. Přihlaste se ke svojí organizaci Azure DevOps Services a přejděte do svého projektu.
-1. V projektu vyberte **kanály** > **release** > **New Pipeline**.
+1. V projektu vyberte **kanály**  >  **release**  >  **New Pipeline**.
 1. V části **Vybrat šablonu**vyberte **prázdná úloha**.
 1. Zadejte **název fáze**, například *DeployCustomPolicies*, a pak zavřete podokno.
 1. Vyberte **Přidat artefakt**a v části **typ zdroje**vyberte **úložiště Azure**.
@@ -131,7 +131,7 @@ Po inicializaci a naplnění vašeho úložiště pomocí vlastních souborů z�
 1. Vyberte kartu **proměnné** .
 1. Přidejte následující proměnné pod **proměnnou kanálu** a nastavte jejich hodnoty tak, jak jsou zadány:
 
-    | Název | Hodnota |
+    | Name | Hodnota |
     | ---- | ----- |
     | `clientId` | **ID aplikace (klienta)** aplikace, kterou jste zaregistrovali dříve. |
     | `clientSecret` | Hodnota **tajného klíče klienta** , který jste vytvořili dříve. <br /> Změňte typ proměnné na **tajný kód** (vyberte ikonu zámku). |
@@ -144,14 +144,14 @@ Po inicializaci a naplnění vašeho úložiště pomocí vlastních souborů z�
 Pak přidejte úkol pro nasazení souboru zásad.
 
 1. Vyberte kartu **úlohy** .
-1. Vyberte **úloha agenta**a potom vyberte znaménko plus (**+**) a přidejte úkol do úlohy agenta.
+1. Vyberte **úloha agenta**a potom vyberte znaménko plus ( **+** ) a přidejte úkol do úlohy agenta.
 1. Vyhledejte a vyberte **PowerShell**. Nevybírejte "Azure PowerShell," PowerShell na cílových počítačích "nebo jinou položku prostředí PowerShell.
 1. Vyberte nově přidaný úkol **skriptu prostředí PowerShell** .
 1. Zadejte následující hodnoty pro úlohu skript prostředí PowerShell:
     * **Verze úlohy**: 2. *
     * **Zobrazovaný název**: název zásady, kterou by měl tento úkol odeslat. Například *B2C_1A_TrustFrameworkBase*.
     * **Typ**: cesta k souboru
-    * **Cesta ke skriptu**: vyberte tři tečky (***...***), přejděte do složky *Scripts* a pak vyberte soubor *DeployToB2C. ps1* .
+    * **Cesta ke skriptu**: vyberte tři tečky (***...***), přejděte do složky *skripty* a pak vyberte soubor *DeployToB2C.ps1* .
     * **Náhodné**
 
         Pro **argumenty**zadejte následující hodnoty. Nahraďte `{alias-name}` aliasem, který jste zadali v předchozí části.
@@ -172,11 +172,11 @@ Pak přidejte úkol pro nasazení souboru zásad.
 
 Úloha, kterou jste právě přidali, nahrává *jeden* soubor zásad pro Azure AD B2C. Než budete pokračovat, ručně aktivujte úlohu (**vytvořit vydání**), abyste zajistili, že se úspěšně dokončí před vytvořením dalších úkolů.
 
-Pokud se úloha úspěšně dokončí, přidejte úlohy nasazení provedením předchozích kroků pro všechny soubory vlastních zásad. Upravte hodnoty `-PolicyId` argumentů `-PathToFile` a pro každou zásadu.
+Pokud se úloha úspěšně dokončí, přidejte úlohy nasazení provedením předchozích kroků pro všechny soubory vlastních zásad. Upravte `-PolicyId` `-PathToFile` hodnoty argumentů a pro každou zásadu.
 
-`PolicyId` Je hodnota zjištěná na začátku souboru zásad XML v uzlu TrustFrameworkPolicy. Například `PolicyId` v následujících zásadách XML je *B2C_1A_TrustFrameworkBase*:
+`PolicyId`Je hodnota zjištěná na začátku souboru zásad XML v uzlu TrustFrameworkPolicy. Například `PolicyId` v následujících zásadách XML je *B2C_1A_TrustFrameworkBase*:
 
-```XML
+```xml
 <TrustFrameworkPolicy
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
@@ -189,11 +189,11 @@ PublicPolicyUri="http://contoso.onmicrosoft.com/B2C_1A_TrustFrameworkBase">
 
 Když spustíte agenty a nahrajete soubory zásad, ujistěte se, že se nahrály v tomto pořadí:
 
-1. *TrustFrameworkBase. XML*
-1. *TrustFrameworkExtensions. XML*
-1. *SignUpOrSignin. XML*
-1. *ProfileEdit. XML*
-1. *PasswordReset. XML*
+1. *TrustFrameworkBase.xml*
+1. *TrustFrameworkExtensions.xml*
+1. *SignUpOrSignin.xml*
+1. *ProfileEdit.xml*
+1. *PasswordReset.xml*
 
 Rozhraní identity Experience Framework toto pořadí vynutilo, protože struktura souborů je postavená na hierarchickém řetězu.
 
@@ -209,7 +209,7 @@ Měl by se zobrazit informační zpráva s oznámením, že vydaná verze byla z
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace:
+Přečtěte si další informace:
 
 * [Volání služby mezi službami pomocí přihlašovacích údajů klienta](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)
 * [Azure DevOps Services](https://docs.microsoft.com/azure/devops/user-guide/?view=azure-devops)

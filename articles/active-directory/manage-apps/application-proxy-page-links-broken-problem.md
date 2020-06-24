@@ -2,21 +2,22 @@
 title: Odkazy na stránce nefungují pro aplikaci proxy aplikace.
 description: Řešení potíží s nefunkčními odkazy v aplikacích proxy aplikací, které jste integrují s Azure AD
 services: active-directory
-author: msmimart
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 09/10/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca782b5a190704911472d70c414d12afa7e558f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 050874b301628348b513b8b5b0c2b878a1dcecaa
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75430244"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84760197"
 ---
 # <a name="links-on-the-page-dont-work-for-an-application-proxy-application"></a>Odkazy na stránce nefungují pro aplikaci proxy aplikace.
 
@@ -33,7 +34,7 @@ Existují tři způsoby, jak tento problém vyřešit. Níže uvedené možnosti
 
 1.  Ujistěte se, že interní adresa URL je kořen, který obsahuje všechny relevantní odkazy pro aplikaci. To umožňuje, aby všechny odkazy byly vyřešeny jako obsah publikovaný v rámci stejné aplikace.
 
-    Pokud změníte interní adresu URL, ale nechcete změnit cílovou stránku pro uživatele, změňte adresu URL domovské stránky na dříve publikovanou interní adresu URL. To se dá udělat tak, že v části Azure Active Directory –&gt; registrace aplikací&gt; vyberete aplikaci –&gt; branding. V části branding se zobrazí pole Adresa URL domovské stránky, které můžete upravit jako požadovanou cílovou stránku. Pokud pořád používáte starší verze Registrace aplikací zkušeností, na kartě Vlastnosti se zobrazí podrobnosti adresa URL domovské stránky. 
+    Pokud změníte interní adresu URL, ale nechcete změnit cílovou stránku pro uživatele, změňte adresu URL domovské stránky na dříve publikovanou interní adresu URL. To se dá udělat tak, že v části Azure Active Directory – &gt; Registrace aplikací &gt; vyberete aplikaci – &gt; branding. V části branding se zobrazí pole Adresa URL domovské stránky, které můžete upravit jako požadovanou cílovou stránku. Pokud pořád používáte starší verze Registrace aplikací zkušeností, na kartě Vlastnosti se zobrazí podrobnosti adresa URL domovské stránky. 
     
     > [!IMPORTANT]
     > Aby bylo možné provést výše uvedené změny, budete potřebovat práva k úpravám aplikačních objektů ve službě Azure AD. Uživatel musí mít přiřazenou roli [správce aplikace](../users-groups-roles/roles-delegate-app-roles.md#assign-built-in-application-admin-roles) , která uživateli uděluje modificaion práva k aplikacím v Azure AD.

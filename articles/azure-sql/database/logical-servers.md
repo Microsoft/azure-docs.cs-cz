@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 596967a918dc3a94061ce907848e7e502660b97c
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: c587af529831c4fb8cdb15b50b2a0b16a868efe3
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324364"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255377"
 ---
 # <a name="what-is-a-logical-sql-server-in-azure-sql-database-and-azure-synapse"></a>Co je logický SQL Server v Azure SQL Database a Azure synapse?
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -55,7 +55,7 @@ Skupinu prostředků pro server můžete vytvořit před časem nebo vytvoření
 
 Pokud chcete vytvořit server (bez databáze, elastického fondu nebo databáze datového skladu) pomocí [Azure Portal](https://portal.azure.com), přejděte na prázdný formulář SQL serveru (logický SQL Server).
 
-### <a name="create-a-blank-or-sample-sql-database-in-azure-sql-database"></a>Vytvoření prázdné nebo ukázkové databáze SQL v Azure SQL Database
+### <a name="create-a-blank-or-sample-database-in-azure-sql-database"></a>Vytvoření prázdné nebo ukázkové databáze v Azure SQL Database
 
 Chcete-li vytvořit databázi v SQL Database pomocí [Azure Portal](https://portal.azure.com)přejděte do prázdného formuláře SQL Database a zadejte požadované informace. Můžete vytvořit skupinu prostředků a Server před časem nebo při vytváření samotné databáze. Můžete vytvořit prázdnou databázi nebo vytvořit ukázkovou databázi založenou na Adventure Works LT.
 

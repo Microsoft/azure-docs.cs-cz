@@ -3,12 +3,12 @@ title: Detekce pohybu, nahrávání videa do Azure Media Services
 description: V tomto rychlém startu se dozvíte, jak používat Live video Analytics na IoT Edge k detekci pohybů v živém datovém streamu a k nahrávání videoklipů do Azure Media Services.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: f0045f7fddfe6c544f10d280450cdafe8dca9e2d
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 0a81bebe7333266e1b70f97f8c712fccf392a464
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84262042"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84817315"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>Rychlý Start: zjištění pohybu, nahrání videa do Media Services
 
@@ -21,9 +21,9 @@ Tento článek se sestavuje na začátku [Začínáme rychlý Start](get-started
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Visual Studio Code](https://code.visualstudio.com/) na počítači pomocí [rozšíření Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
 * Pokud jste dříve nedokončili [Začínáme rychlý Start](get-started-detect-motion-emit-events-quickstart.md) , Projděte si následující kroky:
-    * Dokončení [nastavení prostředků Azure](get-started-detect-motion-emit-events-quickstart.md#set-up-azure-resources)
+    * [Nastavení prostředků Azure](get-started-detect-motion-emit-events-quickstart.md#set-up-azure-resources)
     * [Nasazení modulů](get-started-detect-motion-emit-events-quickstart.md#deploy-modules-on-your-edge-device)
-    * [Konfigurace Visual Studio Code](get-started-detect-motion-emit-events-quickstart.md#configure-azure-iot-tools-extension-in-visual-studio-code)
+    * [Konfigurace Visual Studio Code](get-started-detect-motion-emit-events-quickstart.md#configure-the-azure-iot-tools-extension)
 
 ## <a name="review-the-sample-video"></a>Kontrola ukázkového videa
 

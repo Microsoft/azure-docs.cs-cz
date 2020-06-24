@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5c6956c38d15213d84b43b24784d2bb2b3a1963f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: eeea35b3564bc2407a2458a43c8349937a4cd845
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83638566"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85203516"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Konfigurace toku přihlašovacích údajů pro heslo vlastníka prostředku v Azure Active Directory B2C pomocí vlastní zásady
 
@@ -36,10 +36,10 @@ Proveďte kroky v části Začínáme [s vlastními zásadami v Azure Active Dir
 
 ##  <a name="create-a-resource-owner-policy"></a>Vytvoření zásady vlastníka prostředku
 
-1. Otevřete soubor *TrustFrameworkExtensions. XML* .
+1. Otevřete soubor *TrustFrameworkExtensions.xml* .
 2. Pokud ještě neexistuje, přidejte element **ClaimsSchema** a jeho podřízené prvky jako první prvek pod prvkem **BuildingBlocks** :
 
-    ```XML
+    ```xml
     <ClaimsSchema>
       <ClaimType Id="logonIdentifier">
         <DisplayName>User name or email address that the user can use to sign in</DisplayName>
@@ -62,7 +62,7 @@ Proveďte kroky v části Začínáme [s vlastními zásadami v Azure Active Dir
 
 3. Po **ClaimsSchema**přidejte element **ClaimsTransformations** a jeho podřízené prvky do elementu **BuildingBlocks** :
 
-    ```XML
+    ```xml
     <ClaimsTransformations>
       <ClaimsTransformation Id="CreateSubjectClaimFromObjectID" TransformationMethod="CreateStringClaim">
         <InputParameters>
@@ -88,7 +88,7 @@ Proveďte kroky v části Začínáme [s vlastními zásadami v Azure Active Dir
 
 4. Vyhledejte element **ClaimsProvider** , který má **DisplayName** `Local Account SignIn` a přidejte následující technický profil:
 
-    ```XML
+    ```xml
     <TechnicalProfile Id="ResourceOwnerPasswordCredentials-OAUTH2">
       <DisplayName>Local Account SignIn</DisplayName>
       <Protocol Name="OpenIdConnect" />
@@ -128,7 +128,7 @@ Proveďte kroky v části Začínáme [s vlastními zásadami v Azure Active Dir
 
 5. Přidejte následující prvky **ClaimsProvider** s jejich technickými profily do prvku **ClaimsProviders** :
 
-    ```XML
+    ```xml
     <ClaimsProvider>
       <DisplayName>Azure Active Directory</DisplayName>
       <TechnicalProfiles>
@@ -182,7 +182,7 @@ Proveďte kroky v části Začínáme [s vlastními zásadami v Azure Active Dir
 
 6. Přidejte element **userjourney** a jeho podřízené prvky do elementu **TrustFrameworkPolicy** :
 
-    ```XML
+    ```xml
     <UserJourney Id="ResourceOwnerPasswordCredentials">
       <PreserveOriginalAssertion>false</PreserveOriginalAssertion>
       <OrchestrationSteps>
@@ -218,19 +218,19 @@ Proveďte kroky v části Začínáme [s vlastními zásadami v Azure Active Dir
     ```
 
 7. Na stránce **vlastní zásady** ve vašem tenantovi Azure AD B2C vyberte **Odeslat zásadu**.
-8. Pokud existuje, zapněte **zásadu přepsat**a pak vyhledejte a vyberte soubor *TrustFrameworkExtensions. XML* .
+8. Pokud existuje, zapněte **zásadu přepsat**a pak vyhledejte a vyberte soubor *TrustFrameworkExtensions.xml* .
 9. Klikněte na **Odeslat**.
 
 ## <a name="create-a-relying-party-file"></a>Vytvoření souboru předávající strany
 
 Dále aktualizujte soubor předávající strany, který zahájí cestu uživatele, kterou jste vytvořili:
 
-1. Vytvořte kopii souboru *SignUpOrSignin. XML* v pracovním adresáři a přejmenujte jej na *ROPC_Auth. XML*.
+1. Vytvořte kopii souboru *SignUpOrSignin.xml* v pracovním adresáři a přejmenujte ho na *ROPC_Auth.xml*.
 2. Otevřete nový soubor a změňte hodnotu atributu **PolicyId** pro **TrustFrameworkPolicy** na jedinečnou hodnotu. ID zásady je název vaší zásady. Například **B2C_1A_ROPC_Auth**.
 3. Změňte hodnotu atributu **ReferenceId** v **DefaultUserJourney** na `ResourceOwnerPasswordCredentials` .
 4. Změňte element **OutputClaims** tak, aby obsahoval pouze následující deklarace identity:
 
-    ```XML
+    ```xml
     <OutputClaim ClaimTypeReferenceId="sub" />
     <OutputClaim ClaimTypeReferenceId="objectId" />
     <OutputClaim ClaimTypeReferenceId="displayName" DefaultValue="" />
@@ -239,7 +239,7 @@ Dále aktualizujte soubor předávající strany, který zahájí cestu uživate
     ```
 
 5. Na stránce **vlastní zásady** ve vašem tenantovi Azure AD B2C vyberte **Odeslat zásadu**.
-6. Pokud existuje, zapněte **zásadu přepsat**a pak vyhledejte a vyberte soubor *ROPC_Auth. XML* .
+6. Pokud existuje, zapněte **zásadu přepsat**a pak vyhledejte a vyberte soubor *ROPC_Auth.xml* .
 7. Klikněte na **Odeslat**.
 
 ## <a name="test-the-policy"></a>Testování zásad
@@ -267,7 +267,7 @@ Použijte svou oblíbenou aplikaci pro vývoj rozhraní API k vygenerování vol
 
 Skutečný požadavek POST vypadá jako v následujícím příkladu:
 
-```HTTPS
+```https
 POST /<tenant-name>.onmicrosoft.com/oauth2/v2.0/token?B2C_1_ROPC_Auth HTTP/1.1
 Host: <tenant-name>.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
@@ -277,7 +277,7 @@ username=contosouser.outlook.com.ws&password=Passxword1&grant_type=password&scop
 
 Úspěšná odpověď s offline přístupem vypadá jako v následujícím příkladu:
 
-```JSON
+```json
 {
     "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik9YQjNhdTNScWhUQWN6R0RWZDM5djNpTmlyTWhqN2wxMjIySnh6TmgwRlki...",
     "token_type": "Bearer",
@@ -309,7 +309,7 @@ Sestavte následné volání jako tu, který je zde zobrazen. Použijte informac
 
 Úspěšná odpověď vypadá jako v následujícím příkladu:
 
-```JSON
+```json
 {
     "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ilg1ZVhrNHh5b2pORnVtMWtsMll0djhkbE5QNC1jNTdkTzZRR1RWQndhT...",
     "id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ilg1ZVhrNHh5b2pORnVtMWtsMll0djhkbE5QNC1jNTdkTzZRR1RWQn...",

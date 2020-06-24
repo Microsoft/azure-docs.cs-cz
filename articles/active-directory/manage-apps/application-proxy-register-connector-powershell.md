@@ -3,25 +3,25 @@ title: Konektor proxy Aplikace Azure AD pro tichou instalaci | Microsoft Docs
 description: Popisuje, jak provést bezobslužnou instalaci konektoru služby Azure Proxy aplikací služby AD, která poskytuje zabezpečený vzdálený přístup k místním aplikacím.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/24/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ae3cd491db03fd036869a8d86aeb646e3175b59
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 0b959649074e68d50a266f05841ce4c87e2b3e20
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82609965"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84760010"
 ---
 # <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>Vytvoření skriptu bezobslužné instalace pro konektor Azure Proxy aplikací služby AD
 
@@ -53,7 +53,7 @@ Existují dvě metody, které můžete použít k registraci konektoru:
 * Registrace konektoru pomocí vytvořeného tokenu offline
 
 ### <a name="register-the-connector-using-a-windows-powershell-credential-object"></a>Zaregistrujte konektor pomocí objektu přihlašovacích údajů prostředí Windows PowerShell.
-1. Vytvořte objekt `$cred` přihlašovacích údajů prostředí Windows PowerShell, který obsahuje uživatelské jméno a heslo pro váš adresář. Spusťte následující příkaz a nahraďte * \<uživatelské\> jméno* a * \<heslo\>*:
+1. Vytvořte objekt přihlašovacích údajů prostředí Windows PowerShell `$cred` , který obsahuje uživatelské jméno a heslo pro váš adresář. Spusťte následující příkaz a nahraďte *\<username\>* a *\<password\>* :
 
         $User = "<username>"
         $PlainPassword = '<password>'
@@ -175,7 +175,7 @@ Existují dvě metody, které můžete použít k registraci konektoru:
 
    `$SecureToken = $Token | ConvertTo-SecureString -AsPlainText -Force`
 
-3. Spusťte následující příkaz prostředí Windows PowerShell a nahraďte \<identifikátor\> GUID tenanta vaším ID adresáře:
+3. Spusťte následující příkaz prostředí Windows PowerShell a nahraďte \<tenant GUID\> ID vašeho adresáře:
 
    `.\RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Token -Token $SecureToken -TenantId <tenant GUID> -Feature ApplicationProxy`
 

@@ -6,15 +6,15 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: include
-ms.date: 10/09/2019
+ms.date: 06/01/2020
 ms.author: dsindona
 ms.custom: include file
-ms.openlocfilehash: f79b25c98ae2e764f607fc5a12bc311ed0edacae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d868d7d231f6dbe1952756917e5a7965d6cea2e
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80286179"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84686336"
 ---
 Spojte se se zákazníky přímo, a to tak, že na tržištích zadáte nabídku a zapojíte systém pro řízení vztahů se zákazníky (CRM), abyste mohli dostávat kontaktní údaje zákazníka hned, co zákazník vyjádří zájem nebo nasadí váš produkt.
 
@@ -22,7 +22,6 @@ Spojte se se zákazníky přímo, a to tak, že na tržištích zadáte nabídku
 
 Partnerské centrum podporuje následující systémy CRM pro správu potenciálních zákazníků. Vyberte odkaz pro pokyny k instalaci.
 
-- [Azure Blob](../commercial-marketplace-lead-management-instructions-azure-blob.md) – zadejte kontaktní e-mail, název kontejneru a připojovací řetězec účtu úložiště. 
 - [Tabulka Azure](../commercial-marketplace-lead-management-instructions-azure-table.md) – zadejte kontaktní e-mail a připojovací řetězec účtu úložiště. 
 - [Dynamics CRM Online](../commercial-marketplace-lead-management-instructions-dynamics.md) – poskytněte kontaktní e-mail, adresu URL a režim ověřování (Office 365 nebo Azure Active Directory).
 - [Koncový bod HTTPS](../commercial-marketplace-lead-management-instructions-https.md) – poskytněte kontaktní e-mail a adresu URL koncového bodu https. 

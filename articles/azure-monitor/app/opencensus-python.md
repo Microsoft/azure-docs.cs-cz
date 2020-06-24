@@ -7,12 +7,12 @@ ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
 ms.custom: tracking-python
-ms.openlocfilehash: 3a47296d755c2a933e7e136a4b17ae87561213ad
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 04581826ab6b05333e910a162c7a0ca9566ec334
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84553858"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85079114"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Nastavení Azure Monitor pro aplikaci Python
 
@@ -342,36 +342,10 @@ Podrobnosti o tom, jak upravit sledovanou telemetrii před odesláním do Azure 
     > [!NOTE]
     > `traces`v tomto kontextu není stejný jako `Tracing` . `traces`odkazuje na typ telemetrie, který se zobrazí v Azure Monitor při použití `AzureLogHandler` . `Tracing`odkazuje na koncept v OpenCensus a má vztah k [distribuovanému trasování](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing).
 
-5. Pokud chcete naformátovat zprávy protokolu, můžete použít `formatters` v integrovaném [rozhraní API protokolování](https://docs.python.org/3/library/logging.html#formatter-objects)Pythonu.
+    > [!NOTE]
+    > Kořenový protokolovací nástroj je nakonfigurován s UPOZORNĚNÍm na úrovni. To znamená, že všechny odeslané protokoly, které mají méně závažnosti, budou ignorovány a následně nebudou odesílány do Azure Monitor. Další podrobnosti najdete v této [dokumentaci](https://docs.python.org/3/library/logging.html#logging.Logger.setLevel) .
 
-    ```python
-    import logging
-    from opencensus.ext.azure.log_exporter import AzureLogHandler
-    
-    logger = logging.getLogger(__name__)
-    
-    format_str = '%(asctime)s - %(levelname)-8s - %(message)s'
-    date_format = '%Y-%m-%d %H:%M:%S'
-    formatter = logging.Formatter(format_str, date_format)
-    # TODO: replace the all-zero GUID with your instrumentation key.
-    handler = AzureLogHandler(
-        connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
-    handler.setFormatter(formatter)
-    logger.addHandler(handler)
-    
-    def valuePrompt():
-        line = input("Enter a value: ")
-        logger.warning(line)
-    
-    def main():
-        while True:
-            valuePrompt()
-    
-    if __name__ == "__main__":
-        main()
-    ```
-
-6. Pomocí pole custom_dimensions můžete do zpráv protokolu přidat také vlastní vlastnosti v argumentu klíčového slova *extra* . Ty se zobrazí v v Azure Monitor jako páry klíč-hodnota `customDimensions` .
+5. Pomocí pole custom_dimensions můžete do zpráv protokolu přidat také vlastní vlastnosti v argumentu klíčového slova *extra* . Ty se zobrazí v v Azure Monitor jako páry klíč-hodnota `customDimensions` .
     > [!NOTE]
     > Aby tato funkce fungovala, musíte do pole custom_dimensions předat slovník. Pokud předáte argumenty jiného typu, protokolovací nástroj je bude ignorovat.
 
@@ -390,6 +364,39 @@ Podrobnosti o tom, jak upravit sledovanou telemetrii před odesláním do Azure 
 
     # Use properties in logging statements
     logger.warning('action', extra=properties)
+    ```
+
+#### <a name="configure-logging-for-django-applications"></a>Konfigurace protokolování pro aplikace Django
+
+Protokolování můžete nakonfigurovat explicitně v kódu aplikace, jak je uvedeno výše pro aplikace Django, nebo můžete zadat v konfiguraci protokolování Django. Tento kód může přejít do libovolného souboru, který používáte pro konfiguraci nastavení Django. Další informace o konfiguraci protokolování najdete v tématu [Django Settings](https://docs.djangoproject.com/en/3.0/topics/settings/) for Configure Django Settings and [Django Logging](https://docs.djangoproject.com/en/3.0/topics/logging/) .
+
+    ```python
+    LOGGING = {
+        "handlers": {
+            "azure": {
+                "level": "DEBUG",
+                "class": "opencensus.ext.azure.log_exporter.AzureLogHandler",
+                "instrumentation_key": "<your-ikey-here>",
+            },
+            "console": {
+                "level": "DEBUG",
+                "class": "logging.StreamHandler",
+                "stream": sys.stdout,
+            },
+        },
+        "loggers": {
+            "logger_name": {"handlers": ["azure", "console"]},
+        },
+    }
+    ```
+
+Ujistěte se, že používáte protokolovací nástroj se stejným názvem, jaký je zadaný ve vaší konfiguraci.
+
+    ```python
+    import logging
+        
+    logger = logging.getLogger("logger_name")
+    logger.warning("this will be tracked")
     ```
 
 #### <a name="sending-exceptions"></a>Odesílání výjimek
@@ -428,6 +435,21 @@ Podrobnosti o tom, jak rozšířit protokoly pomocí dat kontextu trasování, n
 #### <a name="modify-telemetry"></a>Úprava telemetrie
 
 Podrobnosti o tom, jak upravit sledovanou telemetrii před odesláním do Azure Monitor, najdete v tématu OpenCensus Python [telemetrie](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors).
+
+## <a name="configure-azure-monitor-exporters"></a>Konfigurace Azure Monitor vývozců
+
+Jak je uvedeno výše, existují tři různé Azure Monitor vývozců, kteří podporují OpenCensus, každý z nich odesílá různé typy telemetrie do Azure Monitor. Chcete-li zjistit, jaké typy telemetrie každý vývozce odesílá, přečtěte si níže.
+
+Každý vývozce přijímá stejné argumenty pro konfiguraci a předává je prostřednictvím konstruktorů. Můžete si prohlédnout podrobnosti o každé níže.
+
+1. `connection_string`– Připojovací řetězec, který se používá pro připojení k vašemu Azure Monitor prostředku. Má přednost před `instrumentation_key` .
+2. `enable_standard_metrics`– Používá se pro `AzureMetricsExporter` . Signalizuje, že vývozce automaticky pošle metriky [čítače výkonu](https://docs.microsoft.com/azure/azure-monitor/platform/app-insights-metrics#performance-counters) Azure monitor. Výchozí hodnota je `True` .
+3. `export_interval`– Slouží k určení frekvence v sekundách exportu.
+4. `instrumentation_key`– Klíč instrumentace, který se používá pro připojení k vašemu Azure Monitor prostředku.
+5. `logging_sampling_rate`– Používá se pro `AzureLogHandler` . Poskytuje vzorkovací frekvenci [0, 1,0] pro export protokolů. Výchozí hodnota je 1,0.
+6. `max_batch_size`-Určuje maximální velikost telemetrie, která je exportována najednou.
+7. `proxies`-Určuje posloupnost proxy serverů, které se mají použít k odesílání dat do Azure Monitor. Další podrobnosti najdete v tématu [proxy](https://requests.readthedocs.io/en/master/user/advanced/#proxies) .
+8. `storage_path`– Cesta k umístění místní složky úložiště (neodeslané telemetrie). Jako `opencensus-ext-azure` v 1.0.3 je výchozí cesta dočasným adresářem operačního systému + `opencensus-python`  +  `your-ikey` . Pro 1.0.3 pro pre v je výchozí cesta $USER + `.opencensus`  +  `.azure`  +  `python-file-name` .
 
 ## <a name="view-your-data-with-queries"></a>Zobrazení dat pomocí dotazů
 

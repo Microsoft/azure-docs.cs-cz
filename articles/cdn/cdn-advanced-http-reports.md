@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 0b0eec2425f8a1663eb7a09c83a6bad037d1d79c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c06af1cc7f068070954669fc4ec269c9e679f278
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67594114"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84886060"
 ---
 # <a name="analyze-usage-statistics-with-azure-cdn-advanced-http-reports"></a>Analýza statistik využití pomocí Azure CDN pokročilých sestav HTTP
 ## <a name="overview"></a>Přehled
@@ -48,7 +48,7 @@ Podrobné informace o provozu a šířce pásma pro jednotlivé oblasti jsou k d
 
 Pro každý typ geografické sestavy založené na mapě je níže uveden stručný popis.
 
-| Report Name | Popis |
+| Report Name | Description |
 | --- | --- |
 | Mapa světa |Tato sestava vám umožní zobrazit celosvětovou poptávku pro obsah CDN. Každá země nebo oblast je Barevně odlišená na mapě světa, aby označovala procento přístupů, které pocházejí z dané oblasti. |
 | Mapa USA |Tato sestava vám umožní zobrazit v USA požadavek na obsah CDN. Každý stav je na této mapě barevně odlišený, aby označoval procento přístupů, které pocházejí z dané oblasti. |
@@ -71,7 +71,7 @@ Data, která byla použita k vygenerování pruhového grafu, lze zobrazit pod n
 
 Stručný popis je k dispozici pro oba typy sestav níže.
 
-| Report Name | Popis |
+| Report Name | Description |
 | --- | --- |
 | Hlavní města |Tato sestava řadí města podle počtu přístupů, které pocházejí z dané oblasti. |
 | Hlavní země |Tato sestava řadí země nebo oblasti podle počtu přístupů, které pocházejí z dané země nebo oblasti. |

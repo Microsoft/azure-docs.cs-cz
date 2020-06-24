@@ -3,12 +3,12 @@ title: Nastavení zařízení Azure Migrate v Azure Government
 description: Přečtěte si, jak nastavit zařízení Azure Migrate v Azure Government
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: a7a2e90b718c50cb86fdca9911e7535d434e7afa
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: c8bcecd7cca78a24d9dbf18e185c9362ed712b43
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331997"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052489"
 ---
 # <a name="set-up-an-appliance-in-azure-government"></a>Nastavení zařízení v Azure Government 
 
@@ -45,7 +45,7 @@ Před nasazením souboru ZIP ověřte, zda je soubor zip zabezpečený.
 1. Na počítači, do kterého jste soubor stáhli, otevřete jako správce příkazový řádek.
 2. Spusťte následující příkaz, který vygeneruje hodnotu hash pro soubor zip.
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Příklad: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-VMWare-USGov.zip MD5```
+    - Příklad: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-VMWare-USGov.zip SHA256```
 
 3. Ověřte nejnovější verzi a hodnotu hash zařízení:
 
@@ -71,7 +71,7 @@ Spuštění skriptu:
 1. Extrahujte soubor zip do složky na počítači, který bude hostovat zařízení. Ujistěte se, že nespouštíte skript na počítači v existujícím zařízení Azure Migrate.
 2. Na počítači spusťte PowerShell s oprávněními správce (se zvýšenými oprávněními).
 3. Změňte adresář PowerShellu na složku obsahující obsah extrahovaný ze staženého souboru ZIP.
-4. Spusťte skript **AzureMigrateInstaller. ps1**následujícím způsobem:``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-VMWare-USGov>AzureMigrateInstaller.ps1 ```
+4. Spusťte skript **AzureMigrateInstaller.ps1**následujícím způsobem:``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-VMWare-USGov>AzureMigrateInstaller.ps1 ```
 5. Po úspěšném spuštění skriptu se spustí webová aplikace zařízení, aby bylo možné zařízení nastavit. Pokud narazíte na nějaké problémy, zkontrolujte protokoly skriptu na adrese C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log.
 
 ### <a name="verify-access"></a>Ověřit přístup
@@ -97,7 +97,7 @@ Před nasazením souboru ZIP ověřte, zda je soubor zip zabezpečený.
 1. Na počítači, do kterého jste soubor stáhli, otevřete jako správce příkazový řádek.
 2. Spusťte následující příkaz, který vygeneruje hodnotu hash pro soubor zip.
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Příklad: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-HyperV-USGov.zip MD5```
+    - Příklad: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-HyperV-USGov.zip SHA256```
 
 3. Ověřte nejnovější verzi a hodnotu hash zařízení:
 
@@ -124,7 +124,7 @@ Spuštění skriptu:
 1. Extrahujte soubor zip do složky na počítači, který bude hostovat zařízení. Ujistěte se, že nespouštíte skript na počítači v existujícím zařízení Azure Migrate.
 2. Na počítači spusťte PowerShell s oprávněními správce (se zvýšenými oprávněními).
 3. Změňte adresář PowerShellu na složku obsahující obsah extrahovaný ze staženého souboru ZIP.
-4. Spusťte skript **AzureMigrateInstaller. ps1**následujícím způsobem:``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-HyperV-USGov>AzureMigrateInstaller.ps1 ``` 
+4. Spusťte skript **AzureMigrateInstaller.ps1**následujícím způsobem:``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-HyperV-USGov>AzureMigrateInstaller.ps1 ``` 
 5. Po úspěšném spuštění skriptu se spustí webová aplikace zařízení, aby bylo možné zařízení nastavit. Pokud narazíte na nějaké problémy, zkontrolujte protokoly skriptu na adrese C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log.
 
 ### <a name="verify-access"></a>Ověřit přístup
@@ -150,7 +150,7 @@ Před nasazením souboru ZIP ověřte, zda je soubor zip zabezpečený.
 1. Na počítači, do kterého jste soubor stáhli, otevřete jako správce příkazový řádek.
 2. Spusťte následující příkaz, který vygeneruje hodnotu hash pro soubor zip.
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Příklad: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5```
+    - Příklad: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip SHA256```
 
 3. Ověřte nejnovější verzi a hodnotu hash zařízení:
 
@@ -176,7 +176,7 @@ Spuštění skriptu:
 1. Extrahujte soubor zip do složky na počítači, který bude hostovat zařízení. Ujistěte se, že nespouštíte skript na počítači v existujícím zařízení Azure Migrate.
 2. Na počítači spusťte PowerShell s oprávněními správce (se zvýšenými oprávněními).
 3. Změňte adresář PowerShellu na složku obsahující obsah extrahovaný ze staženého souboru ZIP.
-4. Spusťte skript **AzureMigrateInstaller. ps1**následujícím způsobem:``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>AzureMigrateInstaller.ps1 ```
+4. Spusťte skript **AzureMigrateInstaller.ps1**následujícím způsobem:``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>AzureMigrateInstaller.ps1 ```
 5. Po úspěšném spuštění skriptu se spustí webová aplikace zařízení, aby bylo možné zařízení nastavit. Pokud narazíte na nějaké problémy, zkontrolujte protokoly skriptu na adrese C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log.
 
 ### <a name="verify-access"></a>Ověřit přístup

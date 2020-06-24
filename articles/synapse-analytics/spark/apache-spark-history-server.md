@@ -5,16 +5,16 @@ services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 4f03033942517f4778192e0b12f84610df8fd469
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b4ee5d064d17d7b11305c6c86dc1d29ddccc642e
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81429210"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194990"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Použití serveru historie rozšířených Apache Spark k ladění a diagnostice Apache Spark aplikací
 
@@ -106,7 +106,7 @@ Přehled úlohy můžete zobrazit v grafu vygenerované úlohy. Ve výchozím na
 
 ![ID úlohy grafu aplikace Spark a grafu úlohy](./media/apache-spark-history-server/apache-spark-graph-jobid.png)
 
-### <a name="display"></a>Displej
+### <a name="display"></a>Zobrazení
 
 Ve výchozím nastavení je vybraná možnost zobrazení **průběhu** . Tok dat můžete kontrolovat výběrem možnosti **číst** nebo **napsané** v rozevíracím seznamu **zobrazení** .
 
@@ -120,10 +120,10 @@ Uzel grafu zobrazuje barvy zobrazené v legendě heatmapu.
 
 Pokud chcete úlohu přehrát, vyberte **přehrávání**. Kdykoli můžete zastavit výběr **zastavit** . Barvy úlohy při přehrávání zobrazují různé stavy:
 
-|Barvy|Význam|
+|Barva|Význam|
 |-|-|
 |Green|Úspěch: úloha se úspěšně dokončila.|
-|Orange|Opakování: instance úloh, které selhaly, ale neovlivňují konečný výsledek úlohy. Tyto úlohy měly duplicitní nebo opakované instance, které mohou být později úspěšné.|
+|Oranžový|Opakování: instance úloh, které selhaly, ale neovlivňují konečný výsledek úlohy. Tyto úlohy měly duplicitní nebo opakované instance, které mohou být později úspěšné.|
 |Blue|Spuštěno: úloha je spuštěná.|
 |White|Čekání nebo přeskočení: úloha čeká na spuštění, nebo se fáze přeskočila.|
 |Červený|Nezdařilo se: úloha se nezdařila.|
@@ -157,7 +157,7 @@ Když najedete myší na uzel grafu, zobrazí se popis tlačítka, když dojde k
 
 Na kartě graf úlohy mají fáze popis a zobrazí se malá ikona, pokud má úlohy, které splňují následující podmínky:
 
-|Podmínka|Popis|
+|Podmínka|Description|
 |-|-|
 |Zkosit data|velikost přečtených dat > Průměrná velikost čtení dat všech úkolů v této fázi * 2 a velikost pro čtení dat > 10 MB|
 |Časové zkosení|čas spuštění > Průměrná doba provádění všech úkolů v této fázi * 2 a doba spuštění > 2 minuty|

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/03/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: afdf2f531ede30d868123d89cac94fcfae070384
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 52831a1907d5ca8d13b0477c909d0d0358873973
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78188541"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202216"
 ---
 # <a name="general-claims-transformations"></a>Obecné transformace deklarací identity
 
@@ -35,7 +35,7 @@ Kopírovat hodnotu deklarace identity na jinou. Obě deklarace identity musí b�
 
 Tuto transformaci deklarací identity použijte ke zkopírování hodnoty z řetězce nebo číselné deklarace na jinou deklaraci identity. V následujícím příkladu se zkopíruje hodnota deklarace identity externalEmail na deklaraci identity e-mailu.
 
-```XML
+```xml
 <ClaimsTransformation Id="CopyEmailAddress" TransformationMethod="CopyClaim">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="externalEmail" TransformationClaimType="inputClaim"/>
@@ -64,7 +64,7 @@ Kontroluje, zda **inputClaim** existuje nebo není, a nastaví **outputClaim** n
 
 Pomocí této transformace deklarací identity ověřte, zda deklarace identity existuje nebo obsahuje libovolnou hodnotu. Vrácená hodnota je logická hodnota, která označuje, zda existuje deklarace identity. Následující příklad zkontroluje, jestli tato e-mailová adresa existuje.
 
-```XML
+```xml
 <ClaimsTransformation Id="CheckIfEmailPresent" TransformationMethod="DoesClaimExist">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="inputClaim" />
@@ -89,11 +89,11 @@ Vytvoří hodnotu hash zadaného prostého textu pomocí soli a tajného klíče
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | prostý | řetězec | Vstupní deklarace identity, která se má zašifrovat |
-| InputClaim | sůl | řetězec | Parametr Salt. Pomocí `CreateRandomString` transformace deklarací identity můžete vytvořit náhodnou hodnotu. |
-| InputParameter | randomizerSecret | řetězec | Odkazuje na existující **klíč zásad**Azure AD B2C. Pokud chcete vytvořit nový klíč zásad: v tenantovi Azure AD B2C v části **Spravovat**vyberte **Architektura prostředí identity**. Vyberte **klíče zásad** pro zobrazení klíčů, které jsou k dispozici ve vašem tenantovi. Vyberte **Přidat**. V případě **možností**vyberte možnost **ručně**. Zadejte název (předponu *B2C_1A_* možné přidat automaticky.) Do textového pole **tajný kód** zadejte libovolný tajný klíč, který chcete použít, například 1234567890. V případě **použití klíče**vyberte možnost **podpis**. Vyberte **Vytvořit**. |
+| InputClaim | sůl | řetězec | Parametr Salt. Pomocí transformace deklarací identity můžete vytvořit náhodnou hodnotu `CreateRandomString` . |
+| InputParameter | randomizerSecret | řetězec | Odkazuje na existující **klíč zásad**Azure AD B2C. Pokud chcete vytvořit nový klíč zásad: v tenantovi Azure AD B2C v části **Spravovat**vyberte **Architektura prostředí identity**. Vyberte **klíče zásad** pro zobrazení klíčů, které jsou k dispozici ve vašem tenantovi. Vyberte možnost **Přidat**. V případě **možností**vyberte možnost **ručně**. Zadejte název (předponu *B2C_1A_* možné přidat automaticky.) Do textového pole **tajný kód** zadejte libovolný tajný klíč, který chcete použít, například 1234567890. V případě **použití klíče**vyberte možnost **podpis**. Vyberte **Vytvořit**. |
 | OutputClaim | hash | řetězec | Deklarace ClaimType, která je vytvořena po vyvolání této transformace deklarací. Deklarace identity konfigurovaná v `plaintext` inputClaim. |
 
-```XML
+```xml
 <ClaimsTransformation Id="HashPasswordWithEmail" TransformationMethod="Hash">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="password" TransformationClaimType="plaintext" />

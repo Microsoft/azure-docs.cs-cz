@@ -1,15 +1,14 @@
 ---
 title: Zálohování databází SQL Serveru ve virtuálních počítačích Azure
 description: V tomto článku se dozvíte, jak zálohovat SQL Server databáze na virtuálních počítačích Azure pomocí Azure Backup.
-ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: faf5ffd65f9b3133c504413201d58aee988af71a
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 16e24ed94d8017d9fb922193bb16a33ec7a9cdfd
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248103"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84817535"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Zálohování databází SQL Serveru ve virtuálních počítačích Azure
 
@@ -34,9 +33,10 @@ V tomto článku se dozvíte, jak:
 Před zálohováním SQL Server databáze ověřte následující kritéria:
 
 1. Identifikujte nebo vytvořte [Recovery Services trezor](backup-sql-server-database-azure-vms.md#create-a-recovery-services-vault) ve stejné oblasti a předplatném jako virtuální počítač hostující instanci SQL Server.
-2. Ověřte, že virtuální počítač má [připojení k síti](backup-sql-server-database-azure-vms.md#establish-network-connectivity).
-3. Ujistěte se, že SQL Server databáze dodržují [pravidla pro pojmenovávání databází pro Azure Backup](#database-naming-guidelines-for-azure-backup).
-4. Ověřte, že nemáte pro databázi povolená žádná další zálohovací řešení. Před zálohováním databáze zakažte všechny ostatní SQL Server zálohy.
+1. Ověřte, že virtuální počítač má [připojení k síti](backup-sql-server-database-azure-vms.md#establish-network-connectivity).
+1. Ujistěte se, že SQL Server databáze dodržují [pravidla pro pojmenovávání databází pro Azure Backup](#database-naming-guidelines-for-azure-backup).
+1. Zajistěte, aby celková délka názvu virtuálního počítače SQL Server a názvu skupiny prostředků nepřesáhla 84 znaků pro virtuální počítače Azure Resource Manager (ARM) (nebo 77 znaků pro klasické virtuální počítače). Toto omezení je způsobeno tím, že některé znaky jsou vyhrazené službou.
+1. Ověřte, že nemáte pro databázi povolená žádná další zálohovací řešení. Před zálohováním databáze zakažte všechny ostatní SQL Server zálohy.
 
 > [!NOTE]
 > Můžete povolit Azure Backup pro virtuální počítač Azure a také pro SQL Server databáze běžící na virtuálním počítači bez konfliktu.
@@ -47,7 +47,7 @@ Pro všechny operace vyžaduje SQL Server virtuální počítač připojení ke 
 
 V následující tabulce jsou uvedeny různé alternativy, které můžete použít při navazování připojení:
 
-| **Možnost**                        | **Výhody**                                               | **Nevýhody**                                            |
+| **Nastavení**                        | **Výhody**                                               | **Nevýhody**                                            |
 | --------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Soukromé koncové body                 | Povolení zálohování přes privátní IP adresy uvnitř virtuální sítě  <br><br>   Podrobné řízení na straně sítě a trezoru | Má za následek standardní [náklady](https://azure.microsoft.com/pricing/details/private-link/) na soukromý koncový bod |
 | Značky služby NSG                  | Jednodušší Správa jako změny rozsahu se sloučí automaticky.   <br><br>   Žádné další náklady | Dá se použít jenom s skupin zabezpečení sítě  <br><br>    Poskytuje přístup k celé službě. |
@@ -69,7 +69,7 @@ Pokud používáte skupiny zabezpečení sítě (NSG), pomocí značky služby *
 
 1. V části **Nastavení**vyberte **odchozí pravidla zabezpečení** .
 
-1. Vyberte **Přidat**. Zadejte všechny požadované podrobnosti pro vytvoření nového pravidla, jak je popsáno v [Nastavení pravidla zabezpečení](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings). Ujistěte se, že možnost **cíl** je nastavená na *příznak služby* a **cílová značka služby** je nastavená na *AzureBackup*.
+1. Vyberte možnost **Přidat**. Zadejte všechny požadované podrobnosti pro vytvoření nového pravidla, jak je popsáno v [Nastavení pravidla zabezpečení](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings). Ujistěte se, že možnost **cíl** je nastavená na *příznak služby* a **cílová značka služby** je nastavená na *AzureBackup*.
 
 1. Kliknutím na **Přidat** uložte nově vytvořené odchozí pravidlo zabezpečení.
 
@@ -264,7 +264,7 @@ Vytvoření zásady zálohování:
 
 Automatickou ochranu můžete povolit, pokud chcete automaticky zálohovat všechny stávající a budoucí databáze na samostatnou instanci SQL Server nebo do skupiny dostupnosti Always On.
 
-* Neexistuje žádné omezení počtu databází, které můžete v jednom okamžiku vybrat pro automatickou ochranu.
+* Neexistuje žádné omezení počtu databází, které můžete vybrat pro automatickou ochranu v jednom okamžiku. Zjišťování se obvykle spouští každých 8 hodin. Můžete ale okamžitě vyhledat a chránit nové databáze v případě, že ručně spustíte zjišťování výběrem možnosti znovu **zjistit databáze** .
 * Nemůžete selektivně chránit nebo vyloučit databáze z ochrany v instanci v době, kdy jste povolili automatickou ochranu.
 * Pokud už vaše instance obsahuje některé chráněné databáze, zůstane chráněná v příslušných zásadách i po zapnutí automatické ochrany. Všechny nechráněné databáze přidané později budou mít jenom jednu zásadu, kterou definujete v době povolení automatické ochrany, která je uvedená v části **Konfigurace zálohování**. Zásadu přidruženou k databázi s automatickou ochranou ale můžete změnit později.  
 

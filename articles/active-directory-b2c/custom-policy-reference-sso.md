@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4aa9f4839c8bfc04cee4bb03ea0eac98cb8b25c0
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 4824b64236270c422f22809e9eeb191ee3be27fa
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926115"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202564"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Správa relací jednotného přihlašování v Azure Active Directory B2C
 
@@ -57,7 +57,7 @@ Deklarace identity, které je potřeba vrátit do aplikace nebo použít v rámc
 
 Když název určíte, tento zprostředkovatel neprovede žádnou akci. Tento zprostředkovatel se dá použít pro potlačení chování jednotného přihlašování pro konkrétní technický profil. Do `SM-Noop` [Úvodní sady Custom Policy Pack](custom-policy-get-started.md#custom-policy-starter-pack)je zahrnutý následující technický profil.
 
-```XML
+```xml
 <TechnicalProfile Id="SM-Noop">
   <DisplayName>Noop Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.NoopSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -68,7 +68,7 @@ Když název určíte, tento zprostředkovatel neprovede žádnou akci. Tento zp
 
 Tento zprostředkovatel se dá použít k ukládání deklarací identity v relaci. Na tohoto poskytovatele se obvykle odkazuje v technickém profilu, který se používá ke správě místních a federovaných účtů. Do `SM-AAD` [Úvodní sady Custom Policy Pack](custom-policy-get-started.md#custom-policy-starter-pack)je zahrnutý následující technický profil.
 
-```XML
+```xml
 <TechnicalProfile Id="SM-AAD">
   <DisplayName>Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.DefaultSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -89,7 +89,7 @@ Tento zprostředkovatel se dá použít k ukládání deklarací identity v rela
 
 Do `SM-MFA` [Úvodní sady Custom Policy Pack](custom-policy-get-started.md#custom-policy-starter-pack) je zahrnutý následující technický profil `SocialAndLocalAccountsWithMfa` . Tento technický profil spravuje relaci Multi-Factor Authentication.
 
-```XML
+```xml
 <TechnicalProfile Id="SM-MFA">
   <DisplayName>Session Mananagement Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.DefaultSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -106,7 +106,7 @@ Do `SM-MFA` [Úvodní sady Custom Policy Pack](custom-policy-get-started.md#cust
 
 Tento zprostředkovatel se používá k potlačení obrazovky "zvolit zprostředkovatele identity" a odhlášení ze Spojeného poskytovatele identity. Obvykle se na něj odkazuje v technickém profilu nakonfigurovaném pro federovaného poskytovatele identity, jako je Facebook nebo Azure Active Directory. Do `SM-SocialLogin` [Úvodní sady Custom Policy Pack](custom-policy-get-started.md#custom-policy-starter-pack)je zahrnutý následující technický profil.
 
-```XML
+```xml
 <TechnicalProfile Id="SM-SocialLogin">
   <DisplayName>Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.ExternalLoginSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -123,7 +123,7 @@ Tento zprostředkovatel se používá k potlačení obrazovky "zvolit zprostřed
 
 | Atribut | Povinné | Popis|
 | --- | --- | --- |
-| AlwaysFetchClaimsFromProvider | No | Aktuálně se nepoužívá, může být ignorováno. |
+| AlwaysFetchClaimsFromProvider | Ne | Aktuálně se nepoužívá, může být ignorováno. |
 
 ### <a name="oauthssosessionprovider"></a>OAuthSSOSessionProvider
 
@@ -140,7 +140,7 @@ Tento zprostředkovatel se používá ke správě Azure AD B2Cch relací mezi OA
 
 Tento zprostředkovatel se používá ke správě Azure AD B2C relací SAML mezi aplikací předávající strany nebo poskytovatelem federované identity SAML. Při použití poskytovatele jednotného přihlašování pro uložení relace zprostředkovatele identity SAML `RegisterServiceProviders` musí být nastavená na `false` . `SM-Saml-idp` [Technický profil zprostředkovatele identity SAML](saml-identity-provider-technical-profile.md)používá následující technický profil.
 
-```XML
+```xml
 <TechnicalProfile Id="SM-Saml-idp">
   <DisplayName>Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.SamlSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -154,7 +154,7 @@ Při použití poskytovatele pro ukládání relace SAML B2C `RegisterServicePro
 
 `SM-Saml-issuer` [Technický profil vystavitele SAML](saml-issuer-technical-profile.md) používá následující technický profil
 
-```XML
+```xml
 <TechnicalProfile Id="SM-Saml-issuer">
   <DisplayName>Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.SamlSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
@@ -165,8 +165,8 @@ Při použití poskytovatele pro ukládání relace SAML B2C `RegisterServicePro
 
 | Atribut | Povinné | Popis|
 | --- | --- | --- |
-| IncludeSessionIndex | No | Aktuálně se nepoužívá, může být ignorováno.|
-| RegisterServiceProviders | No | Indikuje, že by měl poskytovatel zaregistrovat všechny poskytovatele služeb SAML, u kterých bylo vydaný kontrolní výraz. Možné hodnoty: `true` (výchozí), nebo `false` .|
+| IncludeSessionIndex | Ne | Aktuálně se nepoužívá, může být ignorováno.|
+| RegisterServiceProviders | Ne | Indikuje, že by měl poskytovatel zaregistrovat všechny poskytovatele služeb SAML, u kterých bylo vydaný kontrolní výraz. Možné hodnoty: `true` (výchozí), nebo `false` .|
 
 
 ## <a name="next-steps"></a>Další kroky

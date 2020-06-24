@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 78f7c8eb363d791b7109aebced668c1e0a952274
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: fdbd6784ea3333c92154e940916f052dd9cdbfd9
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83636099"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202496"
 ---
 # <a name="walkthrough-add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>Návod: Přidání výměn deklarací identity REST API do vlastních zásad v Azure Active Directory B2C
 
@@ -123,7 +123,7 @@ Výše uvedené komentáře `AuthenticationType` a `AllowInsecureAuthInProductio
 1. Vložte `<UserJourneys>` do souboru rozšíření za zavřením `<ClaimsProviders>` elementu.
 1. Vyhledejte `<UserJourney Id="SignUpOrSignIn">` a přidejte následující krok orchestrace před poslední.
 
-    ```XML
+    ```xml
     <OrchestrationStep Order="7" Type="ClaimsExchange">
       <ClaimsExchanges>
         <ClaimsExchange Id="RESTGetProfile" TechnicalProfileReferenceId="REST-GetProfile" />
@@ -133,7 +133,7 @@ Výše uvedené komentáře `AuthenticationType` a `AllowInsecureAuthInProductio
 
 1. Refaktorujte poslední krok orchestrace změnou na `Order` `8` . Vaše poslední kroky orchestrace by měly vypadat takto:
 
-    ```XML
+    ```xml
     <OrchestrationStep Order="7" Type="ClaimsExchange">
       <ClaimsExchanges>
         <ClaimsExchange Id="RESTGetProfile" TechnicalProfileReferenceId="REST-GetProfile" />
@@ -171,17 +171,17 @@ Pokud chcete vrátit `balance` deklaraci identity zpátky do aplikace předávaj
 </RelyingParty>
 ```
 
-Tento krok opakujte pro **ProfileEdit. XML**a cesty uživatele **PasswordReset. XML** .
+Tento krok opakujte pro **ProfileEdit.xml**a **PasswordReset.xml** cestu k uživateli.
 
-Uložte soubory, které jste změnili: *TrustFrameworkBase. XML*a *TrustFrameworkExtensions. XML*, *SignUpOrSignin. XML*, *ProfileEdit. XML*a *PasswordReset. XML*. 
+Soubory, které jste změnili: *TrustFrameworkBase.xml*a *TrustFrameworkExtensions.xml*, *SignUpOrSignin.xml*, *ProfileEdit.xml*a *PasswordReset.xml*, uložte. 
 
 ## <a name="test-the-custom-policy"></a>Testování vlastních zásad
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD, a to tak, že v horní nabídce vyberete adresář a filtr **předplatného** a zvolíte adresář, který obsahuje vašeho TENANTA Azure AD.
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Registrace aplikací**.
 1. Vyberte **architekturu prostředí identity**.
-1. Vyberte **Odeslat vlastní zásadu**a pak nahrajte soubory zásad, které jste změnili: *TrustFrameworkBase. XML*a *TrustFrameworkExtensions. XML*, *SignUpOrSignin. XML*, *ProfileEdit. XML*a *PasswordReset. XML*. 
+1. Vyberte **Odeslat vlastní zásadu**a pak nahrajte soubory zásad, které jste změnili: *TrustFrameworkBase.xml*a *TrustFrameworkExtensions.xml*, *SignUpOrSignin.xml*, *ProfileEdit.xml*a *PasswordReset.xml*. 
 1. Vyberte zásadu registrace nebo přihlašování, kterou jste nahráli, a klikněte na tlačítko **Spustit** .
 1. Měli byste být schopni se zaregistrovat pomocí e-mailové adresy nebo účtu Facebook.
 1. Token, který se odesílá zpátky do vaší aplikace, zahrnuje `balance` deklaraci identity.

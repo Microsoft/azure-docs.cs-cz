@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: how-to
 ms.date: 12/27/2019
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: bc312964b9afe5c025b6e13657ccf2725aff3bd8
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 0d8f6069193607d19e10c013f3d9cb1cf00a7de6
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84552398"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84816723"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurace vývojového prostředí pro Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -59,7 +59,7 @@ Instance služby [compute Azure Machine Learning (Preview)](concept-compute-inst
 
 Pro výpočetní instanci není nic k instalaci ani konfiguraci.  Vytvořte si ji kdykoli v pracovním prostoru Azure Machine Learning. Zadejte jenom název a zadejte typ virtuálního počítače Azure. Vyzkoušejte si to hned v tomto [kurzu: nastavení prostředí a pracovního prostoru](tutorial-1st-experiment-sdk-setup.md).
 
-Přečtěte si další informace o [výpočetních instancích](concept-compute-instance.md).
+Další informace o výpočetních instancích, včetně postupu instalace balíčků, najdete v tématu [výpočetní instance](concept-compute-instance.md).
 
 Pokud chcete zastavit náklady na výpočetní výkon, [zastavte výpočetní instanci](tutorial-1st-experiment-sdk-train.md#clean-up-resources).
 
@@ -345,7 +345,7 @@ Vyzkoušet:
 
 ## <a name="create-a-workspace-configuration-file"></a><a id="workspace"></a>Vytvoření konfiguračního souboru pracovního prostoru
 
-Konfigurační soubor pracovního prostoru je soubor JSON, který oznamuje sadě SDK, jak komunikovat s vaším pracovním prostorem Azure Machine Learning. Soubor má název *config. JSON*a má následující formát:
+Konfigurační soubor pracovního prostoru je soubor JSON, který oznamuje sadě SDK, jak komunikovat s vaším pracovním prostorem Azure Machine Learning. Soubor má název *config.jsv*a má následující formát:
 
 ```json
 {
@@ -361,9 +361,9 @@ Chcete-li použít tento soubor ze svého kódu, použijte `ws=Workspace.from_co
 
 Konfigurační soubor můžete vytvořit třemi způsoby:
 
-* **Použijte [ws. write_config](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)**: pro zápis souboru *config. JSON* . Soubor obsahuje informace o konfiguraci pro váš pracovní prostor. *Config. JSON* si můžete stáhnout nebo zkopírovat do jiných vývojových prostředí.
+* **Použijte [ws. write_config](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)**: k zápisu *config.js* do souboru. Soubor obsahuje informace o konfiguraci pro váš pracovní prostor. *config.js* můžete stáhnout nebo zkopírovat do jiných vývojových prostředí.
 
-* **Stažení souboru**: v [Azure Portal](https://ms.portal.azure.com)v části **Přehled** pracovního prostoru vyberte **Stáhnout soubor config. JSON** .
+* **Stažení souboru**: v [Azure Portal](https://ms.portal.azure.com)vyberte **Stáhnout config.jsv** části **Přehled** v pracovním prostoru.
 
      ![portál Azure](./media/how-to-configure-environment/configure.png)
 
@@ -384,7 +384,7 @@ Konfigurační soubor můžete vytvořit třemi způsoby:
         print('Workspace not found')
     ```
 
-    Tento kód zapíše konfigurační soubor do souboru *. AzureML/config. JSON* .
+    Tento kód zapíše konfigurační soubor do souboru *. AzureML/config.js* .
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 403dbe6106cb7a1d277ba672112d2bc45dbc2987
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cc227081af4f306a27b77eb727ea96467f94fa2e
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78186263"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85203108"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Shromažďovat protokoly Azure Active Directory B2C pomocí Application Insights
 
@@ -42,28 +42,28 @@ Pokud ho ještě nemáte, vytvořte v předplatném instanci Application Insight
 
 ## <a name="configure-the-custom-policy"></a>Konfigurace vlastních zásad
 
-1. Otevřete soubor předávající strany (RP), například *SignUpOrSignin. XML*.
-1. Do `<TrustFrameworkPolicy>` elementu přidejte následující atributy:
+1. Otevřete soubor předávající strany (RP), například *SignUpOrSignin.xml*.
+1. Do elementu přidejte následující atributy `<TrustFrameworkPolicy>` :
 
-   ```XML
+   ```xml
    DeploymentMode="Development"
    UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights"
    ```
 
-1. Pokud ještě neexistuje, přidejte do `<UserJourneyBehaviors>` `<RelyingParty>` uzlu podřízený uzel. Musí se nacházet hned po `<DefaultUserJourney ReferenceId="UserJourney Id" from your extensions policy, or equivalent (for example:SignUpOrSigninWithAAD" />`.
+1. Pokud ještě neexistuje, přidejte `<UserJourneyBehaviors>` do uzlu podřízený uzel `<RelyingParty>` . Musí se nacházet hned po `<DefaultUserJourney ReferenceId="UserJourney Id" from your extensions policy, or equivalent (for example:SignUpOrSigninWithAAD" />` .
 1. Přidejte následující uzel jako podřízený `<UserJourneyBehaviors>` prvek elementu. Nezapomeňte nahradit `{Your Application Insights Key}` **klíč instrumentace** Application Insights, který jste si poznamenali dříve.
 
-    ```XML
+    ```xml
     <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{Your Application Insights Key}" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
     ```
 
     * `DeveloperMode="true"`dává ApplicationInsights pokyn k urychlení telemetrie prostřednictvím kanálu zpracování. Vhodné pro vývoj, ale omezení na vysoké objemy.
-    * `ClientEnabled="true"`pošle skript ApplicationInsights na straně klienta pro sledování zobrazení stránky a chyby na straně klienta. Můžete je zobrazit v tabulce **browserTimings** na portálu Application Insights. `ClientEnabled= "true"`Nastavením přidáte Application Insights do skriptu stránky a získáte časování načtení stránky a volání AJAX, počty, podrobnosti výjimek prohlížeče a selhání AJAX a počty uživatelů a relací. Toto pole je **volitelné**a je nastavené na `false` výchozí hodnotu.
+    * `ClientEnabled="true"`pošle skript ApplicationInsights na straně klienta pro sledování zobrazení stránky a chyby na straně klienta. Můžete je zobrazit v tabulce **browserTimings** na portálu Application Insights. Nastavením `ClientEnabled= "true"` přidáte Application Insights do skriptu stránky a získáte časování načtení stránky a volání AJAX, počty, podrobnosti výjimek prohlížeče a selhání AJAX a počty uživatelů a relací. Toto pole je **volitelné**a je nastavené na `false` výchozí hodnotu.
     * `ServerEnabled="true"`odešle existující UserJourneyRecorder JSON jako vlastní událost pro Application Insights.
 
     Příklad:
 
-    ```XML
+    ```xml
     <TrustFrameworkPolicy
       ...
       TenantId="fabrikamb2c.onmicrosoft.com"
@@ -93,7 +93,7 @@ Předtím, než budete moci zobrazit nové protokoly v Application Insights, exi
 
 Tady je seznam dotazů, které můžete použít k zobrazení protokolů:
 
-| Dotaz | Popis |
+| Dotaz | Description |
 |---------------------|--------------------|
 `traces` | Zobrazit všechny protokoly vygenerované Azure AD B2C |
 `traces | where timestamp > ago(1d)` | Zobrazit všechny protokoly vygenerované Azure AD B2C za poslední den

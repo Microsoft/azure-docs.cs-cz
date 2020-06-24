@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 06/06/2018
 ms.author: allensu
-ms.openlocfilehash: 35d028a38e6ac19f270abcc8708a532b3749eb39
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2c432b28250dca382f69a992de73d633b5ea45b8
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81254797"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84883992"
 ---
 # <a name="azure-diagnostic-logs"></a>Diagnostické protokoly Azure
 
@@ -87,7 +87,7 @@ Pokud chcete použít účet úložiště pro ukládání protokolů, postupujte
 
 5. Po dokončení vytváření nastavení diagnostického protokolu vyberte **Uložit**.
 
-### <a name="logging-with-azure-monitor"></a>Protokolování pomocí Azure Monitor
+### <a name="logging-with-azure-monitor"></a>Protokolování s využitím Azure Monitoru
 
 Chcete-li použít Azure Monitor k uložení protokolů, postupujte podle následujících kroků:
 
@@ -176,8 +176,8 @@ Než budete moct získat přístup k základním analytickým datům z účtu sl
 2.  Vyhledání účtu úložiště
 3.  Rozbalte uzel **kontejnery objektů BLOB** pod tímto účtem úložiště.
 4.  Vyberte kontejner s názvem *Insights-logs-coreanalytics*.
-5.  Výsledky se zobrazí v pravém podokně, počínaje první úrovní, jako *ResourceID =*. Pokračujte v výběru všech úrovní, dokud nenajdete soubor *PT1H. JSON*. Vysvětlení cesty najdete v tématu [Formát cesty objektu BLOB](cdn-azure-diagnostic-logs.md#blob-path-format).
-6.  Každý soubor BLOB *PT1H. JSON* představuje protokoly analýz na jednu hodinu pro konkrétní koncový bod CDN nebo jeho vlastní doménu.
+5.  Výsledky se zobrazí v pravém podokně, počínaje první úrovní, jako *ResourceID =*. Pokračujte v výběru všech úrovní, dokud soubor nenajdete *PT1H.js*. Vysvětlení cesty najdete v tématu [Formát cesty objektu BLOB](cdn-azure-diagnostic-logs.md#blob-path-format).
+6.  Každý objekt BLOB *PT1H.jsv* souboru představuje protokoly analýz na jednu hodinu pro konkrétní koncový bod CDN nebo jeho vlastní doménu.
 7.  Schéma obsahu tohoto souboru JSON je popsané v části schéma základních protokolů analýzy.
 
 
@@ -189,7 +189,7 @@ Základní protokoly analýzy se generují každou hodinu a data se shromažďuj
 
 **Popis polí:**
 
-|Hodnota|Popis|
+|Hodnota|Description|
 |-------|---------|
 |ID předplatného    |ID předplatného Azure ve formátu identifikátoru GUID|
 |Název skupiny prostředků |Název skupiny prostředků, do které patří prostředky CDN.|
@@ -198,7 +198,7 @@ Základní protokoly analýzy se generují každou hodinu a data se shromažďuj
 |Year|  Znázornění čtyřmístného roku, například 2017|
 |Month| Vyjádření čísla měsíce se dvěma číslicemi. 01 = leden... 12 = prosinec|
 |Den|   Vyjádření dne v měsíci se dvěma číslicemi|
-|PT1H. JSON| Skutečný soubor JSON, ve kterém jsou uložená data analýzy|
+|PT1H.jsna| Skutečný soubor JSON, ve kterém jsou uložená data analýzy|
 
 ### <a name="exporting-the-core-analytics-data-to-a-csv-file"></a>Export základních analytických dat do souboru CSV
 
@@ -323,7 +323,7 @@ Microsoft v současné době nabízí jenom základní protokoly analýzy, kter�
 Následující tabulka obsahuje seznam metrik dostupných v základních protokolech analýzy pro **Azure CDN Standard od Microsoftu**, **Azure CDN Standard od Akamai**a **Azure CDN Standard/Premium z Verizon**. Ne všechny metriky jsou dostupné ze všech zprostředkovatelů, i když jsou tyto rozdíly minimální. Tabulka také zobrazuje, zda je daná metrika k dispozici od poskytovatele. Metriky jsou k dispozici pouze pro koncové body CDN, které na ně mají provoz.
 
 
-|Metrika                     | Popis | Microsoft | Verizon | Akamai |
+|Metric                     | Popis | Microsoft | Verizon | Akamai |
 |---------------------------|-------------|-----------|---------|--------|
 | RequestCountTotal         | Celkový počet přístupů k žádosti v průběhu tohoto období. | Ano | Ano |Ano |
 | RequestCountHttpStatus2xx | Počet všech požadavků, které vedly k 2xx kódu HTTP (například 200, 202). | Ano | Ano |Ano |

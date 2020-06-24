@@ -13,11 +13,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: c2e2394bbcee5294bfb752a0af2969457ffff0ee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260524"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710146"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Přesun dat z Amazon RedShift pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -59,7 +59,7 @@ Následující části popisují vlastnosti JSON, které se používají k defin
 
 Následující tabulka uvádí popisy pro prvky JSON, které jsou specifické pro propojenou službu Amazon RedShift.
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 | --- | --- | --- |
 | **textový** |Tato vlastnost musí být nastavená na **AmazonRedshift**. |Ano |
 | **WebServer** |IP adresa nebo název hostitele serveru Amazon RedShift. |Ano |
@@ -74,9 +74,9 @@ Seznam oddílů a vlastností, které jsou k dispozici pro definování datovýc
 
 Oddíl **typeProperties** se liší pro každý typ datové sady a poskytuje informace o umístění dat ve Storu. Oddíl **typeProperties** pro datovou sadu **relačních**typů, která zahrnuje datovou sadu Amazon RedShift, má následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 | --- | --- | --- |
-| **Tabulky** |Název tabulky v databázi Amazon RedShift, na kterou odkazuje propojená služba |Ne (Pokud je zadaná vlastnost **dotazu** aktivity kopírování typu **RelationalSource** ) |
+| **tableName** |Název tabulky v databázi Amazon RedShift, na kterou odkazuje propojená služba |Ne (Pokud je zadaná vlastnost **dotazu** aktivity kopírování typu **RelationalSource** ) |
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
@@ -84,7 +84,7 @@ Seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit,
 
 V případě aktivity kopírování je-li zdrojem typu **AmazonRedshiftSource**, jsou v části **typeProperties** k dispozici následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 | --- | --- | --- |
 | **zadávání** | K načtení dat použijte vlastní dotaz. |Ne (Pokud je určena vlastnost **TableName** objektu DataSet) |
 | **redshiftUnloadSettings** | Obsahuje skupinu vlastností při použití příkazu RedShift **Unload** . | Ne |
@@ -93,7 +93,7 @@ V případě aktivity kopírování je-li zdrojem typu **AmazonRedshiftSource**,
 
 Alternativně můžete použít typ **RelationalSource** , který zahrnuje Amazon RedShift, s následující vlastností v oddílu **typeProperties** . Poznámka: Tento typ zdroje nepodporuje příkaz RedShift **Unload** .
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 | --- | --- | --- |
 | **zadávání** |K načtení dat použijte vlastní dotaz. | Ne (Pokud je určena vlastnost **TableName** objektu DataSet) |
 
@@ -333,7 +333,7 @@ Následující mapování se používají, když aktivita kopírování převede
 | CELÉ ČÍSLO |Int32 |
 | BIGINT |Int64 |
 | NOTACI |Desetinné číslo |
-| REÁLNÉ |Single |
+| REÁLNÉ |Jeden |
 | DVOJITÁ PŘESNOST |Double |
 | DATOVÉHO |Řetězec |
 | CHAR |Řetězec |

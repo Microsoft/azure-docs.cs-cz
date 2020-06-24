@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 09/12/2019
 ms.author: rajanaki
 ms.openlocfilehash: 4b005ae308576db6fd26fcf079161430b266ec3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281779"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710248"
 ---
 # <a name="run-a-failback-for-hyper-v-vms"></a>Spuštění navrácení služeb po obnovení pro virtuální počítače Hyper-V
 
@@ -29,14 +29,14 @@ Tento článek popisuje, jak navrátit služby po obnovení virtuálních počí
 2. Zajistěte, aby virtuální počítače Azure používaly účet úložiště, a ne spravované disky. Navrácení služeb po obnovení virtuálních počítačů Hyper-V replikovaných pomocí spravovaných disků se nepodporuje.
 3. Ověřte, jestli je místní Hostitel Hyper-V (nebo server VMM System Center, pokud používáte s Site Recovery) spuštěný a připojený k Azure. 
 4. Ujistěte se, že jsou pro virtuální počítače dokončené převzetí služeb při selhání a potvrzení. Nemusíte nastavovat žádné konkrétní součásti Site Recovery pro navrácení služeb po obnovení virtuálních počítačů Hyper-V z Azure.
-5. Čas potřebný k dokončení synchronizace dat a spuštění místního virtuálního počítače bude záviset na řadě faktorů. Chcete-li urychlit stahování dat, můžete nakonfigurovat agenta Microsoft Recovery Services, aby používal více vláken k paralelizovat stahování. [Další informace](https://support.microsoft.com/help/3056159/how-to-manage-on-premises-to-azure-protection-network-bandwidth-usage).
+5. Čas potřebný k dokončení synchronizace dat a spuštění místního virtuálního počítače bude záviset na řadě faktorů. Chcete-li urychlit stahování dat, můžete nakonfigurovat agenta Microsoft Recovery Services, aby používal více vláken k paralelizovat stahování. [Přečtěte si další informace](https://support.microsoft.com/help/3056159/how-to-manage-on-premises-to-azure-protection-network-bandwidth-usage).
 
 
 ## <a name="fail-back-to-the-original-location"></a>Navrácení služeb po obnovení do původního umístění
 
 Pokud chcete navrátit virtuální počítače Hyper-V v Azure do původního místního virtuálního počítače, spusťte plánované převzetí služeb při selhání z Azure do místní lokality následujícím způsobem:
 
-1. V trezoru > **replikované položky**vyberte virtuální počítač. Klikněte pravým tlačítkem na virtuální počítač > **plánovaném převzetí služeb při selhání**. Pokud nakonfigurujete plán obnovení zpět, vyberte název plánu a klikněte na**plánované**převzetí služeb při **selhání** > .
+1. V trezoru > **replikované položky**vyberte virtuální počítač. Klikněte pravým tlačítkem na virtuální počítač > **plánovaném převzetí služeb při selhání**. Pokud nakonfigurujete plán obnovení zpět, vyberte název plánu a klikněte na plánované převzetí služeb při **selhání**  >  **Planned Failover**.
 2. V **potvrzení plánovaného převzetí služeb při selhání**vyberte zdrojové a cílové umístění. Poznamenejte si směr převzetí služeb při selhání. Pokud se převzetí služeb při selhání od primární práce a všech virtuálních počítačů nachází v sekundárním umístění, jedná se pouze o informace.
 3. V **synchronizaci dat**vyberte některou možnost:
     - **Synchronizovat data před převzetím služeb při selhání (synchronizovat jenom rozdílové změny)**– Tato možnost minimalizuje výpadky virtuálních počítačů při synchronizaci bez jejich vypnutí.
@@ -64,7 +64,7 @@ Navrácení služeb po obnovení do alternativního umístění následujícím 
 
 1. Pokud nastavujete nový hardware, nainstalujte na počítači [podporovanou verzi Windows](hyper-v-azure-support-matrix.md#replicated-vms)a roli Hyper-V.
 2. Vytvořte přepínač virtuální sítě se stejným názvem, který jste měli na původním serveru.
-3. Ve\< \<skupině > **ochrany** **chráněných položek** > ProtectionGroupName>->> VirtualMachineName, vyberte virtuální počítač, u kterého chcete provést navrácení služeb po obnovení, a pak vyberte **plánované převzetí služeb při selhání**.
+3. V části Skupina ochrany **chráněných položek**  >  **Protection Group**  >  \<ProtectionGroupName>  ->  \<VirtualMachineName> vyberte virtuální počítač, u kterého chcete provést navrácení služeb po obnovení a pak vyberte **plánované převzetí služeb při selhání**.
 4. V **potvrzení plánovaného převzetí služeb při selhání**vyberte **vytvořit místní virtuální počítač, pokud neexistuje**.
 5. V části **název hostitele**vyberte nový hostitelský server Hyper-V, na kterém chcete virtuální počítač umístit.
 6. V **synchronizaci dat**doporučujeme vybrat možnost synchronizace dat před převzetím služeb při selhání. Tím se minimalizují výpadky virtuálních počítačů při synchronizaci bez jejich vypnutí. Provádí následující akce:
@@ -72,7 +72,7 @@ Navrácení služeb po obnovení do alternativního umístění následujícím 
     - **Fáze 2**: ukončí virtuální počítač Azure, aby tam nedocházelo k žádným novým změnám. Poslední sada změn se přenese na místní server a spustí se místní virtuální počítač.
     
 7. Kliknutím na značku zaškrtnutí spustíte převzetí služeb při selhání (navrácení služeb po obnovení).
-8. Po dokončení počáteční synchronizace a připravení na vypnutí virtuálního počítače Azure klikněte na **úlohy** > \<plánovaná úloha převzetí služeb při selhání> > **Dokončit převzetí služeb při selhání**. Tím se vypne počítač Azure, přenese nejnovější změny do místního virtuálního počítače a spustí se.
+8. Po dokončení počáteční synchronizace a připravení na vypnutí virtuálního počítače Azure klikněte na **úlohy**  >  \<planned failover job>  >  **Dokončit převzetí služeb při selhání**. Tím se vypne počítač Azure, přenese nejnovější změny do místního virtuálního počítače a spustí se.
 9. K místnímu virtuálnímu počítači se můžete přihlásit a ověřit tak, že vše funguje podle očekávání.
 10. Kliknutím na **Potvrdit** dokončete převzetí služeb při selhání. Potvrzení odstraní virtuální počítač Azure a jeho disky a připraví místní virtuální počítač, aby se znovu chránil.
 10. Kliknutím na **Zpětná replikace** spustíte replikaci místního virtuálního počítače do Azure. V Azure se replikují jenom rozdílové změny, protože virtuální počítač byl vypnutý.

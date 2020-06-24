@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 01/29/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: dfb34085181e0b759d1d77485ff21b5bc59e0de3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1d1928de8c9731b54966e566d4dddf9c01073d41
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78189765"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85201255"
 ---
 # <a name="claimsproviders"></a>ClaimsProviders
 
@@ -23,7 +23,7 @@ ms.locfileid: "78189765"
 
 Zprostředkovatel deklarací obsahuje sadu [technických profilů](technicalprofiles.md). Každý zprostředkovatel deklarací identity musí mít jeden nebo více technických profilů, které určují koncové body a protokoly potřebné ke komunikaci se zprostředkovatelem deklarací. Zprostředkovatel deklarací může mít více technických profilů. Například může být definováno více technických profilů, protože zprostředkovatel deklarací podporuje více protokolů, různé koncové body s různými možnostmi nebo uvolňuje různé nároky na různé úrovně záruky. Může být přijatelné vydávat citlivé deklarace identity na jednu cestu uživatele, ale ne v jiném.
 
-```XML
+```xml
 <ClaimsProviders>
   <ClaimsProvider>
     <Domain>Domain name</Domain>
@@ -41,7 +41,7 @@ Zprostředkovatel deklarací obsahuje sadu [technických profilů](technicalprof
 
 Element **ClaimsProviders** obsahuje následující element:
 
-| Prvek | Výskytů | Popis |
+| Prvek | Výskytů | Description |
 | ------- | ----------- | ----------- |
 | ClaimsProvider | 1: n | Akreditovaný zprostředkovatel deklarací identity, který se dá využít v různých jízdách uživatelů |
 
@@ -49,7 +49,7 @@ Element **ClaimsProviders** obsahuje následující element:
 
 Element **ClaimsProvider** obsahuje následující podřízené prvky:
 
-| Prvek | Výskytů | Popis |
+| Prvek | Výskytů | Description |
 | ------- | ---------- | ----------- |
 | Domain (Doména) | 0:1 | Řetězec, který obsahuje název domény pro poskytovatele deklarací identity. Například pokud váš zprostředkovatel deklarací zahrnuje technický profil Facebooku, název domény je Facebook.com. Tento název domény se používá pro všechny technické profily definované ve zprostředkovateli deklarací, pokud není přepsán technickým profilem. Na název domény se taky dá odkazovat v **domain_hint**. Další informace najdete v části **přihlášení k přesměrování do poskytovatele sociálních sítí** v tématu [Nastavení přímého přihlašování pomocí Azure Active Directory B2C](direct-signin.md). |
 | DisplayName | 1:1 | Řetězec, který obsahuje název zprostředkovatele deklarací. |
@@ -57,7 +57,7 @@ Element **ClaimsProvider** obsahuje následující podřízené prvky:
 
 **ClaimsProvider** organizuje, jak se vaše technické profily vztahují k poskytovateli deklarací identity. Následující příklad ukazuje zprostředkovatele deklarací Azure Active Directory s Azure Active Directory technickými profily:
 
-```XML
+```xml
 <ClaimsProvider>
   <DisplayName>Azure Active Directory</DisplayName>
   <TechnicalProfiles>
@@ -95,7 +95,7 @@ Element **ClaimsProvider** obsahuje následující podřízené prvky:
 
 Následující příklad ukazuje zprostředkovatele deklarací Facebooku s technickým profilem **Facebooku-OAuth** .
 
-```XML
+```xml
 <ClaimsProvider>
   <Domain>facebook.com</Domain>
   <DisplayName>Facebook</DisplayName>

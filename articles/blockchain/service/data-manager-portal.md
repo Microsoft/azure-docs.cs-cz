@@ -2,14 +2,14 @@
 title: Konfigurace Data Manager blockchain pomocí Azure Portal-služba Azure blockchain
 description: Vytvoření a Správa blockchain Data Manager pro službu Azure blockchain pomocí Azure Portal.
 ms.date: 03/30/2020
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 08f5a4a807087afce13dd4a6e96c0e9dd0a36103
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a151c28d31bf0bb7f21185fb161315d42f9563d8
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260594"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85200677"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>Konfigurace Blockchain Data Manageru s využitím webu Azure Portal
 
@@ -34,15 +34,15 @@ Odchozí připojení odesílá blockchain data do Azure Event Grid. Při vytvá�
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Přejít na člen služby Azure blockchain, který se má připojit k blockchain Data Manager. Vyberte **Blockchain data Manager**.
-1. Vyberte **Přidat**.
+1. Vyberte možnost **Přidat**.
 
     ![Přidat Data Manager blockchain](./media/data-manager-portal/add-instance.png)
 
     Zadejte následující podrobnosti:
 
-    Nastavení | Popis
+    Nastavení | Description
     --------|------------
-    Název | Zadejte jedinečný název pro připojenou blockchain Data Manager. Název Data Manager blockchain může obsahovat malá písmena a číslice a maximální délka je 20 znaků.
+    Name | Zadejte jedinečný název pro připojenou blockchain Data Manager. Název Data Manager blockchain může obsahovat malá písmena a číslice a maximální délka je 20 znaků.
     Uzel transakce | Vyberte uzel transakce. V seznamu jsou jenom uzly transakcí, ke kterým máte přístup pro čtení.
     Název připojení | Zadejte jedinečný název odchozího připojení, kde se odesílají data blockchain transakce.
     Koncový bod služby Event Grid | V rámci stejného předplatného, jako je blockchain Data Manager instance, vyberte téma Event Grid.
@@ -76,7 +76,7 @@ Smlouva ABI definuje rozhraní inteligentních kontraktů. Popisuje, jak pracova
 
     Kontrakt ABI je zkopírován do schránky.
 
-1. Uložte pole **ABI** jako soubor JSON. Například *ABI. JSON*. Tento soubor použijete v pozdějším kroku.
+1. Uložte pole **ABI** jako soubor JSON. Například *abi.jsna*. Tento soubor použijete v pozdějším kroku.
 
 Blockchain Data Manager vyžaduje nasazený bytový kód pro inteligentní kontrakt. Nasazený bajt se liší od bajtového kódu inteligentního kontraktu. K zkopírování bytového kódu do schránky použijte rozšíření Azure blockchain Development Kit.
 
@@ -88,11 +88,11 @@ Blockchain Data Manager vyžaduje nasazený bytový kód pro inteligentní kontr
 
     Kód bajtu je zkopírován do schránky.
 
-1. Uložte hodnotu **bajtového kódu** jako soubor JSON. Příklad: *bytového kódu. JSON*. Tento soubor použijete v pozdějším kroku.
+1. Uložte hodnotu **bajtového kódu** jako soubor JSON. Například *bytecode.jsna*. Tento soubor použijete v pozdějším kroku.
 
-Následující příklad ukazuje soubory *ABI. JSON* a *bytového souboru. JSON* otevřené v editoru vs Code. Soubory by měly vypadat podobně.
+Následující příklad ukazuje *abi.js* a *bytecode.js* souborů otevřených v editoru vs Code. Soubory by měly vypadat podobně.
 
-![Příklad souborů ABI. JSON a bytového souboru. JSON](./media/data-manager-portal/contract-files.png)
+![Příklad abi.jsa bytecode.jssouborů](./media/data-manager-portal/contract-files.png)
 
 ### <a name="create-contract-abi-and-bytecode-url"></a>Vytvořit kontrakt ABI a adresu URL bytového kódu
 
@@ -108,9 +108,9 @@ Blockchain Data Manager vyžaduje, aby při přidávání aplikace byly v adrese
 
     ![Vytvoření kontejneru účtu úložiště](./media/data-manager-portal/create-container.png)
 
-    | Pole | Popis |
+    | Pole | Description |
     |-------|-------------|
-    | Název  | Zadejte název kontejneru. Například *smartcontract* |
+    | Name  | Zadejte název kontejneru. Například *smartcontract* |
     | Úroveň veřejného přístupu | Zvolit *privátní (bez anonymního přístupu)* |
 
 1. Kliknutím na **OK** kontejner vytvoříte.
@@ -119,7 +119,7 @@ Blockchain Data Manager vyžaduje, aby při přidávání aplikace byly v adrese
 
     ![Nahrát objekt BLOB](./media/data-manager-portal/upload-blobs.png)
 
-    Vyberte **nahrát**.
+    Vyberte **Nahrát**.
 
 #### <a name="generate-url"></a>Vygenerovat adresu URL
 
@@ -138,15 +138,15 @@ Pro každý objekt BLOB vygenerujte sdílený přístupový podpis.
 
 1. V seznamu instancí vyberte instanci blockchain Data Manager.
 1. Vyberte **blockchain aplikace**.
-1. Vyberte **Přidat**.
+1. Vyberte možnost **Přidat**.
 
     ![Přidání aplikace blockchain](./media/data-manager-portal/add-application.png)
 
     Zadejte název aplikace blockchain a adresy URL pro kód a bytového kódu inteligentního kontraktu.
 
-    Nastavení | Popis
+    Nastavení | Description
     --------|------------
-    Název | Zadejte jedinečný název, který má blockchain aplikace sledovat.
+    Name | Zadejte jedinečný název, který má blockchain aplikace sledovat.
     ABI kontraktu | Cesta URL k souboru ABI kontraktu Další informace najdete v tématu [Vytvoření kontraktu ABI a adresy URL bytového kódu](#create-contract-abi-and-bytecode-url).
     Bajtový kód kontraktu | Cesta URL k souboru bytového kódu Další informace najdete v tématu [Vytvoření kontraktu ABI a adresy URL bytového kódu](#create-contract-abi-and-bytecode-url).
 

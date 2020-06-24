@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f50373b0841b7626bc405f121015c15ae1587a97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 77bb53e2605913fcee6999284acb04616efc53af
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80108572"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85201408"
 ---
 # <a name="define-an-application-insights-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Definování Application Insights technického profilu ve vlastních zásadách Azure AD B2C
 
@@ -32,7 +32,7 @@ Azure Active Directory B2C (Azure AD B2C) podporuje odesílání dat události p
 
 ## <a name="protocol"></a>Protocol (Protokol)
 
-Atribut **Name** elementu **Protocol** musí být nastaven na `Proprietary`hodnotu. Atribut **obslužné rutiny** musí obsahovat plně kvalifikovaný název sestavení obslužné rutiny protokolu, které používá Azure AD B2C pro Application Insights:`Web.TPEngine.Providers.AzureApplicationInsightsProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
+Atribut **Name** elementu **Protocol** musí být nastaven na hodnotu `Proprietary` . Atribut **obslužné rutiny** musí obsahovat plně kvalifikovaný název sestavení obslužné rutiny protokolu, které používá Azure AD B2C pro Application Insights:`Web.TPEngine.Providers.AzureApplicationInsightsProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
 
 Následující příklad ukazuje běžný Application Insights technický profil. Mezi další Application Insights technické profily patří AzureInsights-Common pro využití jeho konfigurace.  
 
@@ -45,9 +45,9 @@ Následující příklad ukazuje běžný Application Insights technický profil
 
 ## <a name="input-claims"></a>Vstupní deklarace identity
 
-Element **InputClaims** obsahuje seznam deklarací pro odeslání do Application Insights. Můžete také namapovat název vaší deklarace na název, který se zobrazí v Application Insights. Následující příklad ukazuje, jak odeslat telemetrií do Application Insights. Vlastnosti události jsou přidány pomocí syntaxe `{property:NAME}`, kde název je přidán do události. DefaultValue může být buď statická hodnota, nebo hodnota, která je vyřešená jedním z podporovaných [překladačů deklarací identity](claim-resolver-overview.md).
+Element **InputClaims** obsahuje seznam deklarací pro odeslání do Application Insights. Můžete také namapovat název vaší deklarace na název, který se zobrazí v Application Insights. Následující příklad ukazuje, jak odeslat telemetrií do Application Insights. Vlastnosti události jsou přidány pomocí syntaxe `{property:NAME}` , kde název je přidán do události. DefaultValue může být buď statická hodnota, nebo hodnota, která je vyřešená jedním z podporovaných [překladačů deklarací identity](claim-resolver-overview.md).
 
-```XML
+```xml
 <InputClaims>
   <InputClaim ClaimTypeReferenceId="PolicyId" PartnerClaimType="{property:Policy}" DefaultValue="{Policy:PolicyId}" />
   <InputClaim ClaimTypeReferenceId="CorrelationId" PartnerClaimType="{property:JourneyId}" DefaultValue="{Context:CorrelationId}" />
@@ -73,7 +73,7 @@ Element CryptographicKeys se nepoužívá.
 
 ## <a name="metadata"></a>Metadata
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
 | InstrumentationKey| Ano | Application Insights [klíč instrumentace](../azure-monitor/app/create-new-resource.md#copy-the-instrumentation-key), který se použije pro protokolování událostí. | 
 | DeveloperMode| Ne | Logická hodnota, která označuje, zda je povolen režim pro vývojáře. Možné hodnoty: `true` nebo `false` (výchozí). Tato metadata řídí, jak jsou události ukládány do vyrovnávací paměti. Když ve vývojovém prostředí s minimálním objemem událostí povolíte vývojářský režim, budou se události odesílat okamžitě Application Insights.|  

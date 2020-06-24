@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 51cb46d3ce1b74681c2ee3e53104cc57e73f1c5d
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 7674cda0e64670c611e599c2116e31c0a3d03b35
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84192236"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202819"
 ---
 # <a name="disable-email-verification-during-customer-sign-up-using-a-custom-policy-in-azure-active-directory-b2c"></a>Zakázat ověřování e-mailů při registraci zákazníka pomocí vlastní zásady v Azure Active Directory B2C
 
@@ -34,7 +34,7 @@ Technický profil **LocalAccountSignUpWithLogonEmail** je [samostatně](self-ass
 1. Vyhledejte `ClaimsProviders` element. Pokud element neexistuje, přidejte jej.
 1. Do elementu přidejte následující zprostředkovatele deklarací `ClaimsProviders` :
 
-```XML
+```xml
 <ClaimsProvider>
   <DisplayName>Local Account</DisplayName>
   <TechnicalProfiles>

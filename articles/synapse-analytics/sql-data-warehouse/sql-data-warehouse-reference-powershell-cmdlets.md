@@ -6,17 +6,17 @@ author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f3d6d0c1f71e2262e943998cdc08717291903365
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a1631a3dcb7383959bb62e2b57049386d0675418
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80743816"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85200830"
 ---
 # <a name="powershell--rest-apis-for-azure-synapse-analytics-sql-pool"></a>Rozhraní API REST & PowerShellu pro fond SQL Azure synapse Analytics
 
@@ -78,7 +78,7 @@ Tyto rutiny PowerShellu se podporují s datovým skladem Azure synapse Analytics
 * [Get-AzSqlDatabaseRestorePoint](/powershell/module/az.sql/get-azsqldatabaserestorepoint?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 * [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 * [Remove-AzSqlDatabase](/powershell/module/az.sql/remove-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
-* [Restore-AzSqlDatabase]/PowerShell/Module/AZ.SQL/Restore-azsqldatabase? TOC =/Azure/synapse-Analytics/SQL-Data-Warehouse/TOC.JSON&BC =/Azure/synapse-Analytics/SQL-Data-Warehouse/breadcrumb/TOC.JSON)
+* [Restore-AzSqlDatabase]/PowerShell/Module/AZ.SQL/Restore-azsqldatabase? TOC =/Azure/synapse-Analytics/SQL-Data-Warehouse/toc.jsv&BC =/Azure/synapse-Analytics/SQL-Data-Warehouse/breadcrumb/toc.jszapnuto)
 * [Pokračovat – AzSqlDatabase](/powershell/module/az.sql/resume-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 * [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 * [Pozastavit – AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
@@ -90,4 +90,4 @@ Další příklady PowerShellu najdete v tématech:
 * [Vytvoření datového skladu pomocí prostředí PowerShell](create-data-warehouse-powershell.md)
 * [Obnovení databáze](sql-data-warehouse-restore-points.md)
 
-Další úkoly, které je možné automatizovat pomocí PowerShellu, najdete v tématu [Azure SQL Database rutiny]/PowerShell/Module/AZ.SQL? TOC =/Azure/synapse-Analytics/SQL-Data-Warehouse/TOC.JSON&BC =/Azure/synapse-Analytics/SQL-Data-Warehouse/breadcrumb/TOC.JSON). Pro datový sklad Azure synapse Analytics nejsou podporovány všechny rutiny Azure SQL Database. Seznam úloh, které je možné automatizovat pomocí REST, najdete v tématu [operace pro Azure SQL Database](/rest/api/sql/?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
+Další úkoly, které je možné automatizovat pomocí PowerShellu, najdete v tématu [Azure SQL Database rutiny]/PowerShell/Module/AZ.SQL? TOC =/Azure/synapse-Analytics/SQL-Data-Warehouse/toc.jsna&BC =/Azure/synapse-Analytics/SQL-Data-Warehouse/breadcrumb/toc.json). Pro datový sklad Azure synapse Analytics nejsou podporovány všechny rutiny Azure SQL Database. Seznam úloh, které je možné automatizovat pomocí REST, najdete v tématu [operace pro Azure SQL Database](/rest/api/sql/?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).

@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
 ms.openlocfilehash: 1445e8cf38b2694146fc8749ba5e77f2297de969
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79249045"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710928"
 ---
 # <a name="common-alert-schema"></a>Běžné schéma upozornění
 
@@ -34,7 +34,7 @@ Společné schéma výstrah se primárně projeví v oznámeních výstrah. Ní�
 | Akce | Prvky|
 |:---|:---|
 | SMS | Konzistentní šablona serveru SMS pro všechny typy výstrah. |
-| E-mailu | Jednotná a podrobná šablona e-mailu, která umožňuje snadnou diagnostikovat problémy na první pohled. Vložené hloubkové odkazy na instanci výstrahy na portálu a ovlivněný prostředek zajistí, že můžete rychle přejít do procesu nápravy. |
+| E-mail | Jednotná a podrobná šablona e-mailu, která umožňuje snadnou diagnostikovat problémy na první pohled. Vložené hloubkové odkazy na instanci výstrahy na portálu a ovlivněný prostředek zajistí, že můžete rychle přejít do procesu nápravy. |
 | Webhook/aplikace logiky/Azure Functions/Automation Runbook | Konzistentní struktura JSON pro všechny typy výstrah, která umožňuje snadno sestavit integraci napříč různými typy výstrah. |
 
 Nové schéma také umožní širší možnosti spotřeby výstrah napříč Azure Portal i Mobilní aplikace Azure v bezprostřední budoucnosti. 

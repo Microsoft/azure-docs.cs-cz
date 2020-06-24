@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 04/28/2020
+ms.date: 06/12/2020
 ms.custom: seoapril2019, tracking-python
-ms.openlocfilehash: c0cf361cc00466a8ddf098b52bfaacc2fa63dad4
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: bc9ab6ddf3a9032fd1919b70d830f0d65cdc06ed
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559444"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84817985"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Nasazování modelů pomocí služby Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -255,9 +255,34 @@ file_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'my_model_folder', 'skl
 ```
 
 **Příklad více modelů**
+
+V tomto scénáři jsou v pracovním prostoru registrovány dva modely:
+
+* `my_first_model`: Obsahuje jeden soubor ( `my_first_model.pkl` ) a existuje pouze jedna verze ( `1` ).
+* `my_second_model`: Obsahuje jeden soubor ( `my_second_model.pkl` ) a existují dvě verze, `1` a `2` .
+
+Po nasazení služby jsou v operaci nasazení k dispozici oba modely:
+
+```python
+first_model = Model(ws, name="my_first_model", version=1)
+second_model = Model(ws, name="my_second_model", version=2)
+service = Model.deploy(ws, "myservice", [first_model, second_model], inference_config, deployment_config)
+```
+
+V imagi Docker, který hostuje službu, `AZUREML_MODEL_DIR` obsahuje proměnná prostředí adresář, ve kterém se modely nacházejí.
+V tomto adresáři se všechny modely nacházejí v cestě k adresáři `MODEL_NAME/VERSION` . Kde `MODEL_NAME` je název registrovaného modelu a `VERSION` je verze modelu. Soubory, které tvoří registrovaný model, jsou uloženy v těchto adresářích.
+
+V tomto příkladu by byly cesty `$AZUREML_MODEL_DIR/my_first_model/1/my_first_model.pkl` a `$AZUREML_MODEL_DIR/my_second_model/2/my_second_model.pkl` .
+
+
 ```python
 # Example when the model is a file, and the deployment contains multiple models
-model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_model', '1', 'sklearn_regression_model.pkl')
+first_model_name = 'my_first_model'
+first_model_version = '1'
+first_model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), first_model_name, first_model_version, 'my_first_model.pkl')
+second_model_name = 'my_second_model'
+second_model_version = '2'
+second_model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), second_model_name, second_model_version, 'my_second_model.pkl')
 ```
 
 ##### <a name="get_model_path"></a>get_model_path
@@ -322,6 +347,8 @@ def run(data):
         return error
 ```
 
+##### <a name="power-bi-compatible-endpoint"></a>Power BI kompatibilní koncový bod 
+
 Následující příklad ukazuje, jak definovat vstupní data jako `<key: value>` slovník pomocí datového rámce. Tato metoda je podporována pro využívání nasazené webové služby od Power BI. (Další[informace o tom, jak využívat webovou službu z Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-integration).)
 
 ```python
@@ -358,8 +385,9 @@ input_sample = pd.DataFrame(data=[{
 # This is an integer type sample. Use the data type that reflects the expected result.
 output_sample = np.array([0])
 
-
-@input_schema('data', PandasParameterType(input_sample))
+# To indicate that we support a variable length of data input,
+# set enforce_shape=False
+@input_schema('data', PandasParameterType(input_sample, enforce_shape=False))
 @output_schema(NumpyParameterType(output_sample))
 def run(data):
     try:
@@ -925,13 +953,18 @@ output = service.run(input_payload)
 print(output)
 ```
 
-Poznámka: tyto závislosti jsou zahrnuté v předem sestaveném kontejneru odvození skriptu sklearn:
+Poznámka: tyto závislosti jsou zahrnuté v předem sestaveném kontejneru pro odvození scikit:
 
 ```yaml
+    - dill
     - azureml-defaults
     - inference-schema[numpy-support]
     - scikit-learn
     - numpy
+    - joblib
+    - pandas
+    - scipy
+    - sklearn_pandas
 ```
 
 ## <a name="package-models"></a>Modely balíčků
@@ -1129,7 +1162,7 @@ import requests
 # Load image data
 data = open('example.jpg', 'rb').read()
 # Post raw data to scoring URI
-res = request.post(url='<scoring-uri>', data=data, headers={'Content-Type': 'application/octet-stream'})
+res = requests.post(url='<scoring-uri>', data=data, headers={'Content-Type': 'application/octet-stream'})
 ```
 
 <a id="cors"></a>

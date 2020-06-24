@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.author: mimart
 ms.subservice: B2C
 ms.date: 02/10/2020
-ms.openlocfilehash: c4069774249795073b4390de839ae9f563c8b1cb
-ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
+ms.openlocfilehash: 2dc65c2e1b87c50ad2400b8ffb5d4c548e860c91
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84424005"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85201289"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Monitorování Azure AD B2C s využitím Azure Monitor
 
@@ -84,12 +84,12 @@ Pokud chcete připojit klienta služby Azure AD ( **zákazníka**), vytvořte [�
 
 Stažení šablony Azure Resource Manager a souborů parametrů:
 
-- [rgDelegatedResourceManagement. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)
-- [rgDelegatedResourceManagement. Parameters. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)
+- [rgDelegatedResourceManagement.jsna](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)
+- [rgDelegatedResourceManagement.parameters.jsna](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)
 
 Dále aktualizujte soubor parametrů s hodnotami, které jste si poznamenali dříve. Následující fragment kódu JSON ukazuje příklad souboru parametrů šablony Azure Resource Manager. Pro `authorizations.value.roleDefinitionId` použijte pro *roli přispěvatele* [předdefinovanou hodnotu role](../role-based-access-control/built-in-roles.md) `b24988ac-6180-42a0-ab88-20f7382dd24c` .
 
-```JSON
+```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
@@ -223,7 +223,7 @@ Jste připraveni [vytvořit nastavení diagnostiky](../active-directory/reports-
 
 Postup konfigurace nastavení monitorování pro Azure AD B2C protokoly aktivit:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 1. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. Vyberte **Azure Active Directory**
 1. V části **Monitorování** vyberte **Nastavení diagnostiky**.

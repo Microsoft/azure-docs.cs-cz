@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 733a33881fe3acc962aeda4b05a1b01be4e148ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c8c4e65c7ee97b33acbd68bfd8267a334508e25c
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81680360"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85203737"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -25,7 +25,7 @@ Element **RelyingParty** Určuje cestu uživatele k vykonání aktuální žádo
 
 Následující příklad ukazuje element **RelyingParty** v souboru zásad *B2C_1A_signup_signin* :
 
-```XML
+```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <TrustFrameworkPolicy
   xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
@@ -74,7 +74,7 @@ Následující příklad ukazuje element **RelyingParty** v souboru zásad *B2C_
 
 Volitelný element **RelyingParty** obsahuje následující prvky:
 
-| Prvek | Výskytů | Popis |
+| Prvek | Výskytů | Description |
 | ------- | ----------- | ----------- |
 | DefaultUserJourney | 1:1 | Výchozí cesta uživatele pro aplikaci RP. |
 | UserJourneyBehaviors | 0:1 | Rozsah chování při jízdě uživatelů. |
@@ -82,11 +82,11 @@ Volitelný element **RelyingParty** obsahuje následující prvky:
 
 ## <a name="defaultuserjourney"></a>DefaultUserJourney
 
-`DefaultUserJourney` Prvek určuje odkaz na identifikátor cesty uživatele, který je obvykle definován v zásadách základní nebo rozšíření. Následující příklady znázorňují cestu k registraci nebo přihlašování uživatele určenou v elementu **RelyingParty** :
+`DefaultUserJourney`Prvek určuje odkaz na identifikátor cesty uživatele, který je obvykle definován v zásadách základní nebo rozšíření. Následující příklady znázorňují cestu k registraci nebo přihlašování uživatele určenou v elementu **RelyingParty** :
 
 Zásada *B2C_1A_signup_signin* :
 
-```XML
+```xml
 <RelyingParty>
   <DefaultUserJourney ReferenceId="SignUpOrSignIn">
   ...
@@ -94,7 +94,7 @@ Zásada *B2C_1A_signup_signin* :
 
 *B2C_1A_TrustFrameWorkBase* nebo *B2C_1A_TrustFrameworkExtensionPolicy*:
 
-```XML
+```xml
 <UserJourneys>
   <UserJourney Id="SignUpOrSignIn">
   ...
@@ -102,7 +102,7 @@ Zásada *B2C_1A_signup_signin* :
 
 Element **DefaultUserJourney** obsahuje následující atribut:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
 | ReferenceId | Ano | Identifikátor cesty uživatele v zásadě. Další informace najdete v tématu [cesty uživatelů](userjourneys.md) . |
 
@@ -110,10 +110,10 @@ Element **DefaultUserJourney** obsahuje následující atribut:
 
 Element **UserJourneyBehaviors** obsahuje následující prvky:
 
-| Prvek | Výskytů | Popis |
+| Prvek | Výskytů | Description |
 | ------- | ----------- | ----------- |
 | SingleSignOn | 0:1 | Rozsah chování relace jednotného přihlašování (SSO) pro cestu uživatele. |
-| SessionExpiryType |0:1 | Chování při ověřování relace. Možné hodnoty: `Rolling` nebo `Absolute`. `Rolling` Hodnota (výchozí) znamená, že uživatel zůstane přihlášený, dokud bude uživatel v aplikaci neustále aktivní. `Absolute` Hodnota označuje, že se uživatel bude nucen znovu ověřit po uplynutí časového období určeného v době platnosti relace aplikace. |
+| SessionExpiryType |0:1 | Chování při ověřování relace. Možné hodnoty: `Rolling` nebo `Absolute` . `Rolling`Hodnota (výchozí) znamená, že uživatel zůstane přihlášený, dokud bude uživatel v aplikaci neustále aktivní. `Absolute`Hodnota označuje, že se uživatel bude nucen znovu ověřit po uplynutí časového období určeného v době platnosti relace aplikace. |
 | SessionExpiryInSeconds | 0:1 | Doba života souboru cookie relace Azure AD B2C's zadaná jako celé číslo uložené v prohlížeči uživatele po úspěšném ověření. |
 | JourneyInsights | 0:1 | Klíč instrumentace Azure Application Insights, který se má použít. |
 | ContentDefinitionParameters | 0:1 | Seznam párů klíč-hodnota, které se mají připojit k identifikátoru URI načtení definice obsahu. |
@@ -123,25 +123,25 @@ Element **UserJourneyBehaviors** obsahuje následující prvky:
 
 Element **SingleSignon** obsahuje následující atribut:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Rozsah | Ano | Rozsah chování jednotného přihlašování. Možné hodnoty: `Suppressed`, `Tenant`, `Application`, nebo `Policy`. `Suppressed` Hodnota znamená, že se chování potlačí a uživatel se vždy zobrazí výzva k výběru poskytovatele identity.  `Tenant` Hodnota označuje, že se chování použije u všech zásad v tenantovi. Například uživatel, který přecházení ze dvou cest zásad pro tenanta, nevyzve k výběru poskytovatele identity. `Application` Hodnota označuje, že chování bude použito pro všechny zásady aplikace, které vytváří požadavek. Například uživatel, který přecházení ze dvou cest zásad pro aplikaci, nezobrazuje výzvu k výběru poskytovatele identity. `Policy` Hodnota znamená, že chování se vztahuje pouze na zásadu. Například uživatel, který přechází ze dvou cest zásad pro rozhraní vztahu důvěryhodnosti, se při přepínání mezi zásadami zobrazí dotaz na výběr poskytovatele identity. |
+| Rozsah | Ano | Rozsah chování jednotného přihlašování. Možné hodnoty: `Suppressed` , `Tenant` , `Application` , nebo `Policy` . `Suppressed`Hodnota znamená, že se chování potlačí a uživatel se vždy zobrazí výzva k výběru poskytovatele identity.  `Tenant`Hodnota označuje, že se chování použije u všech zásad v tenantovi. Například uživatel, který přecházení ze dvou cest zásad pro tenanta, nevyzve k výběru poskytovatele identity. `Application`Hodnota označuje, že chování bude použito pro všechny zásady aplikace, které vytváří požadavek. Například uživatel, který přecházení ze dvou cest zásad pro aplikaci, nezobrazuje výzvu k výběru poskytovatele identity. `Policy`Hodnota znamená, že chování se vztahuje pouze na zásadu. Například uživatel, který přechází ze dvou cest zásad pro rozhraní vztahu důvěryhodnosti, se při přepínání mezi zásadami zobrazí dotaz na výběr poskytovatele identity. |
 | KeepAliveInDays | Ano | Určuje, jak dlouho zůstane uživatel přihlášený. Nastavením hodnoty 0 dojde k vypnutí funkcí políčko zůstat přihlášeni. Další informace najdete v tématu [zůstat přihlášeni](custom-policy-keep-me-signed-in.md). |
-|EnforceIdTokenHintOnLogout| Ne|  Vynutí předání dříve vydaného tokenu ID koncovému bodu pro odhlášení jako pomocný parametr pro aktuální ověřenou relaci koncového uživatele s klientem. Možné hodnoty: `false` (výchozí), nebo `true`. Další informace najdete v tématu věnovaném [webovému přihlášení pomocí OpenID Connect](openid-connect.md).  |
+|EnforceIdTokenHintOnLogout| Ne|  Vynutí předání dříve vydaného tokenu ID koncovému bodu pro odhlášení jako pomocný parametr pro aktuální ověřenou relaci koncového uživatele s klientem. Možné hodnoty: `false` (výchozí), nebo `true` . Další informace najdete v tématu věnovaném [webovému přihlášení pomocí OpenID Connect](openid-connect.md).  |
 
 
 ## <a name="journeyinsights"></a>JourneyInsights
 
 Element **JourneyInsights** obsahuje následující atributy:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| TelemetryEngine | Ano | Hodnota musí být `ApplicationInsights`. |
+| TelemetryEngine | Ano | Hodnota musí být `ApplicationInsights` . |
 | InstrumentationKey | Ano | Řetězec, který obsahuje klíč instrumentace pro element Application Insights. |
-| DeveloperMode | Ano | Možné hodnoty: `true` nebo `false`. Pokud `true`Application Insights zrychlí telemetrii prostřednictvím kanálu zpracování. Toto nastavení je vhodné pro vývoj, ale je omezené na vysoké objemy. podrobné protokoly aktivit jsou navržené jenom na podporu vývoje vlastních zásad. Nepoužívejte režim vývoje v produkčním prostředí. Protokoly shromažďují všechny deklarace, které během vývoje odesílají a od nich od poskytovatelů identity. Pokud se v produkčním prostředí používá, vývojář předpokládá zodpovědnost za PII (soukromě identifikovatelné informace) shromážděné v protokolu App Insights, který vlastní. Tyto podrobné protokoly jsou shromažďovány, pouze pokud je tato hodnota `true`nastavena na.|
-| ClientEnabled | Ano | Možné hodnoty: `true` nebo `false`. Pokud `true`aplikace odešle Application Insights skript na straně klienta pro sledování zobrazení stránky a chyby na straně klienta. |
-| ServerEnabled | Ano | Možné hodnoty: `true` nebo `false`. Pokud `true`aplikace odešle existující UserJourneyRecorder JSON jako vlastní událost pro Application Insights. |
-| TelemetryVersion | Ano | Hodnota musí být `1.0.0`. |
+| DeveloperMode | Ano | Možné hodnoty: `true` nebo `false` . Pokud `true` Application Insights zrychlí telemetrii prostřednictvím kanálu zpracování. Toto nastavení je vhodné pro vývoj, ale je omezené na vysoké objemy. podrobné protokoly aktivit jsou navržené jenom na podporu vývoje vlastních zásad. Nepoužívejte režim vývoje v produkčním prostředí. Protokoly shromažďují všechny deklarace, které během vývoje odesílají a od nich od poskytovatelů identity. Pokud se v produkčním prostředí používá, vývojář předpokládá zodpovědnost za PII (soukromě identifikovatelné informace) shromážděné v protokolu App Insights, který vlastní. Tyto podrobné protokoly jsou shromažďovány, pouze pokud je tato hodnota nastavena na `true` .|
+| ClientEnabled | Ano | Možné hodnoty: `true` nebo `false` . Pokud `true` aplikace odešle Application Insights skript na straně klienta pro sledování zobrazení stránky a chyby na straně klienta. |
+| ServerEnabled | Ano | Možné hodnoty: `true` nebo `false` . Pokud `true` aplikace odešle existující USERJOURNEYRECORDER JSON jako vlastní událost pro Application Insights. |
+| TelemetryVersion | Ano | Hodnota musí být `1.0.0` . |
 
 Další informace najdete v tématu [shromažďování protokolů](troubleshoot-with-application-insights.md) .
 
@@ -155,15 +155,15 @@ Následující příklad předává parametr s názvem `campaignId` s hodnotou `
 
 Element **ContentDefinitionParameters** obsahuje následující element:
 
-| Prvek | Výskytů | Popis |
+| Prvek | Výskytů | Description |
 | ------- | ----------- | ----------- |
 | ContentDefinitionParameter | 0: n | Řetězec, který obsahuje dvojici klíč-hodnota, která je připojena k řetězci dotazu identifikátoru URI pro načtení definice obsahu. |
 
 Element **ContentDefinitionParameter** obsahuje následující atribut:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Název | Ano | Název páru klíč-hodnota. |
+| Name | Ano | Název páru klíč-hodnota. |
 
 Další informace najdete v tématu [Konfigurace uživatelského rozhraní s dynamickým obsahem pomocí vlastních zásad](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri) .
 
@@ -171,16 +171,16 @@ Další informace najdete v tématu [Konfigurace uživatelského rozhraní s dyn
 
 Element **TechnicalProfile** obsahuje následující atribut:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| ID | Ano | Hodnota musí být `PolicyProfile`. |
+| ID | Ano | Hodnota musí být `PolicyProfile` . |
 
 **TechnicalProfile** obsahuje následující prvky:
 
-| Prvek | Výskytů | Popis |
+| Prvek | Výskytů | Description |
 | ------- | ----------- | ----------- |
 | DisplayName | 1:1 | Řetězec, který obsahuje název technického profilu. |
-| Popis | 0:1 | Řetězec, který obsahuje popis technického profilu. |
+| Description | 0:1 | Řetězec, který obsahuje popis technického profilu. |
 | Protocol (Protokol) | 1:1 | Protokol používaný pro federaci. |
 | Metadata | 0:1 | Kolekce *položek* párů klíč/hodnota využívané protokolem pro komunikaci s koncovým bodem v průběhu transakce pro konfiguraci interakce mezi předávající stranou a ostatními účastníky komunity. |
 | OutputClaims | 1:1 | Seznam typů deklarací, které jsou pořízeny jako výstup v technickém profilu. Každý z těchto prvků obsahuje odkaz na objekt **ClaimType** , který je již definován v části **ClaimsSchema** nebo v zásadě, ze které tento soubor zásad dědí. |
@@ -188,21 +188,21 @@ Element **TechnicalProfile** obsahuje následující atribut:
 
 Element **Protocol** obsahuje následující atribut:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Název | Ano | Název platného protokolu podporovaného Azure AD B2C, který se používá jako součást technického profilu. Možné hodnoty: `OpenIdConnect` nebo `SAML2`. `OpenIdConnect` Hodnota představuje standard protokolu OpenID Connect 1,0 podle specifikace OpenID Foundation. `SAML2` Představuje standard protokolu SAML 2,0 podle specifikace pro Oasis. |
+| Name | Ano | Název platného protokolu podporovaného Azure AD B2C, který se používá jako součást technického profilu. Možné hodnoty: `OpenIdConnect` nebo `SAML2` . `OpenIdConnect`Hodnota představuje standard protokolu OpenID Connect 1,0 podle specifikace OpenID Foundation. `SAML2`Představuje standard protokolu SAML 2,0 podle specifikace pro Oasis. |
 
 ## <a name="outputclaims"></a>OutputClaims
 
 Element **OutputClaims** obsahuje následující element:
 
-| Prvek | Výskytů | Popis |
+| Prvek | Výskytů | Description |
 | ------- | ----------- | ----------- |
 | OutputClaim | 0: n | Název očekávaného typu deklarace v seznamu podporovaných pro zásadu, které předávající strana přihlašuje k odběru. Tato deklarace slouží jako výstup pro technický profil. |
 
 Element **OutputClaim** obsahuje následující atributy:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Ano | Odkaz na objekt **ClaimType** již definovaný v oddílu **ClaimsSchema** v souboru zásad. |
 | Hodnot | Ne | Výchozí hodnota, která se dá použít, pokud je hodnota deklarace prázdná. |
@@ -216,13 +216,13 @@ Pomocí elementu **SubjectNameingInfo** řídíte hodnotu předmětu tokenu:
 
 Element **SubjectNamingInfo** obsahuje následující atribut:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
 | ClaimType | Ano | Odkaz na **PartnerClaimTypeu**výstupní deklarace identity. Deklarace výstupů musí být definované v **OutputClaims** kolekci zásad předávající strany. |
 
-Následující příklad ukazuje, jak definovat předávající stranu OpenID Connect. Informace o názvu subjektu jsou nakonfigurovány jako `objectId`:
+Následující příklad ukazuje, jak definovat předávající stranu OpenID Connect. Informace o názvu subjektu jsou nakonfigurovány jako `objectId` :
 
-```XML
+```xml
 <RelyingParty>
   <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
   <TechnicalProfile Id="PolicyProfile">
@@ -242,7 +242,7 @@ Následující příklad ukazuje, jak definovat předávající stranu OpenID Co
 ```
 Token JWT zahrnuje `sub` deklaraci identity s identifikátorem objectID uživatele:
 
-```JSON
+```json
 {
   ...
   "sub": "6fbbd70d-262b-4b50-804c-257ae1706ef2",
