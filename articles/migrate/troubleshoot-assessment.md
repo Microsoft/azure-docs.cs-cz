@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: 18158c867ba7a3307585eab0f950d15a6a12aa7c
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 5323e54a81c7123e3e60f69d05accef9a63c7bc4
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84342625"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737440"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Řešení potíží s vyhodnocením a vizualizací závislostí
 
@@ -105,7 +105,7 @@ Posouzení Azure Migrate serveru v současné době zohledňuje náklady na lice
 
 Nástroj Hodnocení serverů průběžně shromažďuje data o výkonu místních počítačů a používá je k doporučení skladové položky virtuálního počítače a disku v Azure. [Přečtěte si, jak](concepts-assessment-calculation.md#calculate-sizing-performance-based) se shromažďují data založená na výkonu.
 
-## <a name="why-is-my-assessment-showing-a-warning-that-it-was-created-with-an-invalid-combintion-of-reserved-instances-vm-uptime-and-discount-"></a>Proč je moje hodnocení zobrazeno upozorněním, že bylo vytvořeno s neplatným combintion rezervovaných instancí, doba provozu a slevy virtuálního počítače (%)?
+## <a name="why-is-my-assessment-showing-a-warning-that-it-was-created-with-an-invalid-combination-of-reserved-instances-vm-uptime-and-discount-"></a>Proč je moje hodnocení zobrazeno upozorněním, že bylo vytvořeno s neplatnou kombinací rezervovaných instancí, doba provozu a slevy virtuálního počítače (%)?
 Když vyberete možnost rezervované instance, sleva (%) a vlastnosti pro dobu provozu virtuálního počítače nelze použít. Při vytváření hodnocení s neplatnou kombinací těchto vlastností jsou tlačítka upravit a přepočítat zakázaná. Vytvořte prosím nové posouzení. [Přečtěte si další informace](https://go.microsoft.com/fwlink/?linkid=2131554).
 
 ## <a name="dependency-visualization-in-azure-government"></a>Vizualizace závislostí v Azure Government
@@ -132,15 +132,14 @@ Pro virtuální počítače se systémem Linux se ujistěte, že instalační p�
 
 ## <a name="visualize-dependencies-for--hour"></a>Vizualizace závislostí pro > hodinu
 
-I když Azure Migrate umožňuje přejít zpět k určitému datu za poslední měsíc, maximální doba, po kterou můžete vizualizovat závislosti, je jedna hodina.
+S analýzou závislostí bez agentů můžete vizualizovat závislosti nebo je exportovat v mapě po dobu až 30 dnů.
 
-Například můžete použít funkci časového trvání na mapě závislostí k zobrazení závislostí včera, ale můžete je zobrazit pouze v jednom hodinovém období.
-
-Můžete ale použít protokoly Azure Monitor k [dotazování dat závislosti](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) v delší době trvání.
+S analýzou závislostí na základě agenta, i když Azure Migrate umožňuje přejít zpět k určitému datu v posledním měsíci, maximální doba, po kterou je možné vizualizovat závislosti, je jedna hodina. Například můžete použít funkci časového trvání na mapě závislostí k zobrazení závislostí včera, ale můžete je zobrazit pouze v jednom hodinovém období. Můžete ale použít protokoly Azure Monitor k [dotazování dat závislosti](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) v delší době trvání.
 
 ## <a name="visualized-dependencies-for--10-machines"></a>Vizuální závislosti pro počítače s > 10
 
-V Azure Migrate hodnocení serveru můžete [vizualizovat závislosti pro skupiny](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) s až 10 virtuálními počítači. U větších skupin doporučujeme, abyste virtuální počítače rozdělili do menších skupin pro vizualizaci závislostí.
+V Azure Migrate posouzení serveru s analýzou závislostí založenou na agentech můžete [vizualizovat závislosti pro skupiny](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) s až 10 virtuálními počítači. U větších skupin doporučujeme, abyste virtuální počítače rozdělili do menších skupin pro vizualizaci závislostí.
+
 
 ## <a name="machines-show-install-agent"></a>Počítače zobrazují "instalovat agenta"
 
@@ -152,12 +151,15 @@ Po migraci počítačů s povolenou vizualizací závislostí do Azure se můžo
 - Pokud se adresy MAC i IP liší od místních, Azure Migrate nepřidruží místní počítače k žádným Service Mapm datům závislostí. V takovém případě se zobrazí možnost nainstalovat agenta místo zobrazení závislostí.
 - Po otestování migrace do Azure zůstanou místní počítače zapnuté podle očekávání. Ekvivalentní počítače propracované v Azure získají jinou adresu MAC a můžou získat různé IP adresy. Pokud neblokujete odchozí Azure Monitor přenosů protokolů z těchto počítačů, Azure Migrate nebude přidružit místní počítače k žádným Service Map datům závislostí, a proto se zobrazí možnost nainstalovat agenty, nikoli zobrazit závislosti.
 
+## <a name="dependencies-export-csv-shows-unknown-process"></a>Při exportu sdílených svazků clusteru se zobrazí zpráva "Neznámý proces".
+V rámci analýzy závislostí bez agenta se názvy procesů zachycují na základě nejlepšího úsilí. V některých případech, i když jsou zachyceny názvy zdrojového a cílového serveru a cílový port, není možné určit názvy procesů na obou koncích závislosti. V takových případech je proces označený jako "Neznámý proces".
+
 
 ## <a name="capture-network-traffic"></a>Zaznamenání síťového provozu
 
 Shromážděte protokoly síťového provozu následujícím způsobem:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Stisknutím klávesy F12 spusťte Vývojářské nástroje. V případě potřeby zrušte zaškrtnutí **políčka vymazat položky u nastavení navigace** .
 3. Vyberte kartu **síť** a zahajte zachytávání síťového provozu:
    - V části Chrome vyberte **zachovat protokol**. Záznam by se měl spustit automaticky. Červený kroužek indikuje, že se zaznamenává provoz. Pokud se červené kolečko nezobrazí, vyberte černý kroužek, který chcete spustit.

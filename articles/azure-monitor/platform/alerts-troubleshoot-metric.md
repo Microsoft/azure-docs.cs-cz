@@ -4,14 +4,14 @@ description: Běžné problémy se Azure Monitor výstrahami metrik a možnými 
 author: harelbr
 ms.author: harelbr
 ms.topic: reference
-ms.date: 04/28/2020
+ms.date: 06/21/2020
 ms.subservice: alerts
-ms.openlocfilehash: 605d1f550335417a26340b6ee54736321ad69f80
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 36ff80bc0858d6d08cc120d126628de02ba6e703
+ms.sourcegitcommit: 666303748238dfdf9da30d49d89b915af73b0468
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300759"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85130734"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Řešení potíží s výstrahami Azure Monitor metriky 
 
@@ -112,7 +112,7 @@ Povolený počet pravidel upozornění metrik na předplatné podléhá [omezen�
 Pokud jste dosáhli limitu kvóty, může vám s řešením tohoto problému pomoct následující postup:
 1. Zkuste odstranit nebo zakázat pravidla upozornění na metriky, které už se nepoužívají.
 
-2. Přejděte na používání pravidel upozornění na metriky, která monitorují více prostředků. Díky této funkci může jedno pravidlo výstrahy monitorovat více prostředků pomocí pouze jednoho pravidla výstrahy započítaného na kvótu. Další informace o této schopnosti a podporovaných typech prostředků naleznete v tématu [násobný](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-overview#monitoring-at-scale-using-metric-alerts-in-azure-monitor).
+2. Přejděte na používání pravidel upozornění na metriky, která monitorují více prostředků. Díky této funkci může jedno pravidlo výstrahy monitorovat více prostředků pomocí pouze jednoho pravidla výstrahy započítaného na kvótu. Další informace o této možnosti a podporovaných typech prostředků najdete [tady](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-overview#monitoring-at-scale-using-metric-alerts-in-azure-monitor).
 
 3. Pokud potřebujete maximální kvótu zvýšit, otevřete žádost o podporu a zadejte následující informace:
 
@@ -191,6 +191,33 @@ Pokud chcete vytvořit pravidlo upozornění na metriky, musíte mít následuj�
 - Oprávnění číst pro cílový prostředek pravidla výstrahy
 - Oprávnění k zápisu pro skupinu prostředků, ve které se vytvoří pravidlo výstrahy (Pokud vytváříte pravidlo výstrahy z Azure Portal, pravidlo výstrahy se vytvoří ve stejné skupině prostředků, ve které se nachází cílový prostředek).
 - Oprávnění ke čtení pro jakoukoli skupinu akcí přidruženou k pravidlu výstrahy (Pokud je k dispozici)
+
+
+## <a name="naming-restrictions-for-metric-alert-rules"></a>Omezení pojmenování pro pravidla upozornění na metriky
+
+Pro názvy pravidel upozornění metriky si prosím pamatujte následující omezení:
+
+- Po vytvoření se názvy pravidel upozornění metriky nedají změnit (Přejmenovat).
+- Názvy pravidel upozornění na metriky musí být v rámci skupiny prostředků jedinečné.
+- Názvy pravidel upozornění na metriky nesmí obsahovat tyto znaky: * # & +:  < > ? @ % { } \ / 
+- Názvy pravidel upozornění na metriky nemůžou končit tímto znakem:.
+
+
+## <a name="restrictions-when-using-dimensions-in-a-metric-alert-rule-with-multiple-conditions"></a>Omezení při použití dimenzí v pravidle upozornění na metriku s několika podmínkami
+
+Výstrahy metrik podporují upozorňování na multidimenzionální metriky i podporu definující více podmínek (až 5 podmínek na pravidlo výstrahy).
+
+Při použití dimenzí v pravidle výstrahy obsahujícím více podmínek Pamatujte na následující omezení:
+1. V rámci každé podmínky můžete vybrat jenom jednu hodnotu na dimenzi.
+2. Nemůžete použít možnost vybrat všechny aktuální a budoucí hodnoty (vybrat \* ).
+3. Pokud metriky, které jsou konfigurovány v různých podmínkách, podporují stejnou dimenzi, pak musí být nakonfigurovaná hodnota dimenze explicitně nastavena stejným způsobem pro všechny tyto metriky (v příslušných podmínkách).
+Příklad:
+    - Vezměte v úvahu pravidlo upozornění metriky, které je definováno v účtu úložiště, a monitorujte dvě podmínky:
+        * Celkový počet **transakcí** > 5
+        * Průměrná **SuccessE2ELatency** > 250 ms
+    - Chci aktualizovat první podmínku a jenom monitorovat transakce, kde se dimenze **ApiName** rovná *getblob*
+    - Vzhledem k tomu, že obě **transakce** i metriky **SuccessE2ELatency** podporují dimenzi **ApiName** , budu muset aktualizovat obě podmínky a obě z nich musí určovat dimenzi **ApiName** s hodnotou *getblob* .
+
 
 ## <a name="next-steps"></a>Další kroky
 

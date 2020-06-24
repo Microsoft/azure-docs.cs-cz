@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: 820fe016d630e63660368c9065acbcda9b514921
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 44c86dae3c7df8293404c253b94164c37d574158
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858609"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736930"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Řešení potíží s aktivací virtuálního počítače Azure s Windows
 
@@ -92,7 +92,7 @@ Pro virtuální počítač vytvořený z vlastní image musíte nakonfigurovat p
 4. Pomocí nástroje PsPing ověřte, že máte připojení k serveru KMS. Přejděte do složky, do které jste extrahovali stažený soubor Pstools.zip, a spusťte následující:
   
     ```
-    \psping.exe kms.core.windows.net:1688
+    .\psping.exe kms.core.windows.net:1688
     ```
    V druhém řádku výstupu se ujistěte, že vidíte: odesláno = 4, přijato = 4, ztraceno = 0 (0% ztráta).
 

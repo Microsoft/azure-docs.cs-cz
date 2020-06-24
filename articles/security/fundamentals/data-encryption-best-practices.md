@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/09/2020
 ms.author: terrylan
-ms.openlocfilehash: c5bf62f434b2095f7200b5562c38c252a0195c5b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1b6fcf38f9f69976e6ed8d64040cfbcf44f090e1
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79243494"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85124047"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Osvědčené postupy šifrování a zabezpečení dat v Azure
 Tento článek popisuje osvědčené postupy pro zabezpečení a šifrování dat.
@@ -121,7 +121,7 @@ Chcete kontrolovat a zabezpečovat e-maily, dokumenty a citlivá data, která sd
 
 Klasifikace je vždy identifikovatelná bez ohledu na to, kde jsou data uložená nebo s kým se sdílí. Popisky zahrnují vizuální označení, jako jsou například záhlaví, zápatí nebo vodoznak. Do záhlaví souborů a e-mailů se přidají metadata ve formátu prostého textu. Jasný text zajišťuje, aby další služby, jako například řešení pro ochranu před únikem informací, mohly identifikovat klasifikaci a provádět příslušné akce.
 
-Technologie ochrany používá službu Azure Rights Management (Azure RMS). Tato technologie se integruje s dalšími cloudovými službami a aplikacemi Microsoftu, například s Office 365 nebo Azure Active Directory. Tato technologie ochrany používá zásady šifrování, identity a autorizace. Ochrana, která se používá prostřednictvím Azure RMS, zůstává u dokumentů a e-mailů, nezávisle na umístění – uvnitř nebo vně vaší organizace, sítí, souborových serverů a aplikací.
+Technologie ochrany používá službu Azure Rights Management (Azure RMS). Tato technologie je integrovaná do dalších cloudových služeb a aplikací Microsoftu, jako jsou Microsoft 365 a Azure Active Directory. Tato technologie ochrany používá zásady šifrování, identity a autorizace. Ochrana, která se používá prostřednictvím Azure RMS, zůstává u dokumentů a e-mailů, nezávisle na umístění – uvnitř nebo vně vaší organizace, sítí, souborových serverů a aplikací.
 
 Toto řešení ochrany informací vám zajišťuje kontrolu nad daty, i když je sdílená s ostatními lidmi. Můžete také použít Azure RMS s vlastními obchodními aplikacemi a řešeními ochrany informací od dodavatelů softwaru, ať už jsou aplikace a řešení místní nebo v cloudu.
 

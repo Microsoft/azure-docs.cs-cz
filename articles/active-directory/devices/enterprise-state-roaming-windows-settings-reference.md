@@ -4,19 +4,19 @@ description: Nastavení, která budou roamingovaná nebo zálohovaná ve Windows
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: troubleshooting
+ms.topic: reference
 ms.date: 02/12/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a7abc402f1fc2e449e7aac5effdb01b6b941100
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6048ee9237640799b7bec37083e607fc74ffb8e4
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78672631"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85252963"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Referenční informace k nastavení roamingu pro Windows 10
 
@@ -26,12 +26,12 @@ Následuje seznam nastavení, která budou v systému Windows 10 roamingovaná n
 
 V následující tabulce najdete souhrn typů zařízení a účtů, které jsou podporované architekturou synchronizace, zálohování a obnovení ve Windows 10.
 
-| Typ účtu a operace | Aplikace klasické pracovní plochy | Mobilní |
+| Typ účtu a operace | Plocha | Mobilní zařízení |
 | --- | --- | --- |
 | Azure Active Directory: synchronizace |Ano |Ne |
 | Azure Active Directory: zálohování a obnovení |Ne |Ne |
 | Účet Microsoft: synchronizace |Ano |Ano |
-| Účet Microsoft: zálohování a obnovení |Ne |Ano |
+| Účet Microsoft: zálohování a obnovení |No |Ano |
 
 ## <a name="what-is-backup"></a>Co je zálohování?
 
@@ -69,14 +69,14 @@ V následující tabulce se ve sloupci skupina nastavení zobrazí další polo�
 Interní položky ve sloupci skupina nastavení odkazují na nastavení a aplikace, které se můžou zakázat jenom v synchronizaci v rámci samotné aplikace, nebo vypnutím synchronizace pro celé zařízení pomocí správy mobilních zařízení (MDM) nebo nastavení Zásady skupiny.
 Nastavení, která se nevztahují k roamingu nebo synchronizaci, nepatří do skupiny.
 
-| Nastavení | Aplikace klasické pracovní plochy | Mobilní | Skupina |
+| Nastavení | Plocha | Mobilní zařízení | Skupina |
 | --- | --- | --- | --- |
 | **Účty**: obrázek účtu |synchronizace |× |Motiv |
-| **Účty**: Další nastavení účtu |× |× | |
-| **Rozšířené mobilní širokopásmové**připojení: název sítě pro sdílení připojení k Internetu (umožňuje automatické zjišťování mobilních Wi-Fi hotspotů přes Bluetooth) |× |× |Hesla |
+| **Účty**: Další nastavení účtu |X |X | |
+| **Rozšířené mobilní širokopásmové**připojení: název sítě pro sdílení připojení k Internetu (umožňuje automatické zjišťování mobilních Wi-Fi hotspotů přes Bluetooth) |X |X |Hesla |
 | **Data aplikací**: jednotlivé aplikace můžou synchronizovat data |synchronizovat zálohu |synchronizovat zálohu |internal |
-| **Seznam aplikací**: seznam nainstalovaných aplikací |× |zálohování |Ostatní |
-| **Bluetooth**: všechna nastavení Bluetooth |× |× | |
+| **Seznam aplikací**: seznam nainstalovaných aplikací |× |zálohování |Jiné |
+| **Bluetooth**: všechna nastavení Bluetooth |X |X | |
 | **Příkazový řádek**: výchozí nastavení pro příkazový řádek |synchronizace |× |internal |
 | **Přihlašovací údaje**: schránka na přihlašovací údaje |synchronizace |synchronizace |heslo |
 | **Datum, čas a oblast**: Automatický čas (synchronizace v internetovém čase) |synchronizace |synchronizace |language |
@@ -95,7 +95,7 @@ Nastavení, která se nevztahují k roamingu nebo synchronizaci, nepatří do sk
 | **Individuální nastavení plochy**: Tapeta prezentace |synchronizace |× |Motiv |
 | **Individuální nastavení plochy**: nastavení hlavního panelu (pozice, automatické skrývání atd.) |synchronizace |× |Motiv |
 | **Individuální nastavení plochy**: rozložení úvodní obrazovky |× |zálohování | |
-| **Zařízení**: sdílené tiskárny, ke kterým jste se připojili |× |× |ostatní |
+| **Zařízení**: sdílené tiskárny, ke kterým jste se připojili |X |X |ostatní |
 | **Prohlížeč Microsoft Edge**: seznam pro čtení |synchronizace |synchronizace |internal |
 | **Prohlížeč Microsoft Edge**: oblíbené položky |synchronizace |synchronizace |internal |
 | **Prohlížeč Microsoft Edge**: hlavní lokality <sup> [[1]](#footnote-1)</sup> |synchronizace |synchronizace |internal |
@@ -141,20 +141,20 @@ Nastavení, která se nevztahují k roamingu nebo synchronizaci, nepatří do sk
 | **Jazyk**: CHS WUBI-ZvukovýSignál, když 4-kódování je neplatné. |synchronizace |× |Jazyk |
 | **Jazyk**: CHT Ču-to zahrnuje CJK-A |synchronizace |× |Jazyk |
 | **Jazyk**: japonské editor IME – prediktivní psaní a vlastní slova |synchronizace |synchronizace |Jazyk |
-| **Language**: Korejština (KOR) IME |× |× |Jazyk |
-| **Jazyk**: rozpoznávání rukopisu |× |× |Jazyk |
+| **Language**: Korejština (KOR) IME |X |X |Jazyk |
+| **Jazyk**: rozpoznávání rukopisu |X |X |Jazyk |
 | **Jazyk**: Profil jazyka |synchronizace |zálohování |Jazyk |
 | **Jazyk**: Kontrola pravopisu – automatické opravy a zvýraznění chybných pravopisů |synchronizace |zálohování |Jazyk |
 | **Jazyk**: seznam klávesnic |synchronizace |zálohování |Jazyk |
-| **Zamykací obrazovka**: všechna nastavení zamykací obrazovky |× |× | |
-| **Lupa**: zapnuto nebo vypnuto (přepínač Master) |× |× |Usnadnění přístupu |
+| **Zamykací obrazovka**: všechna nastavení zamykací obrazovky |X |X | |
+| **Lupa**: zapnuto nebo vypnuto (přepínač Master) |X |X |Usnadnění přístupu |
 | **Lupa**: zapnout nebo vypnout barvu inverze (ve výchozím nastavení vypnuté) |synchronizace |× |Usnadnění přístupu |
 | **Lupa**: sledování – Sledujte fokus klávesnice |synchronizace |× |Usnadnění přístupu |
 | **Lupa**: sledování – následovat ukazatel myši |synchronizace |× |Usnadnění přístupu |
 | **Lupa**: spustit při přihlášení uživatele (ve výchozím nastavení vypnuté) |synchronizace |× |Usnadnění přístupu |
 | **Myš**: Změna velikosti kurzoru myši |synchronizace |× |ostatní |
 | **Myš**: Změna barvy kurzoru myši |synchronizace |× |ostatní |
-| **Myš**: všechna ostatní nastavení |× |× | |
+| **Myš**: všechna ostatní nastavení |X |X | |
 | **Narrator**: Snadné spuštění |synchronizace |× |Usnadnění přístupu |
 | **Narrator**: uživatelé můžou měnit rozteč mluvené řeči. |synchronizace |× |Usnadnění přístupu |
 | **Narrator**: uživatelé můžou zapnout nebo vypnout čtení tipů pro společné položky (ve výchozím nastavení zapnuté). |synchronizace |× |Usnadnění přístupu |
@@ -166,7 +166,7 @@ Nastavení, která se nevztahují k roamingu nebo synchronizaci, nepatří do sk
 | **Narrator**: aktivace kláves na dotykové klávesnici při zvedání prstu (ve výchozím nastavení vypnuté) |synchronizace |× |Usnadnění přístupu |
 | **Usnadnění přístupu**: Nastavte tloušťku blikajícího kurzoru. |synchronizace |× |Usnadnění přístupu |
 | **Usnadnění přístupu**: odebrání imagí na pozadí (ve výchozím nastavení vypnuté) |synchronizace |× |Usnadnění přístupu |
-| **Napájení a režim spánku**: všechna nastavení |× |× | |
+| **Napájení a režim spánku**: všechna nastavení |X |X | |
 | **Přizpůsobení úvodní obrazovky**: Barva zvýraznění (jenom telefon) |× |synchronizace |Motiv |
 | **Psaní**: slovník pravopisu |synchronizace |zálohování |Jazyk |
 | **Psaní**: Automatické opravy chybně napsaného slova |synchronizace |zálohování |Jazyk |

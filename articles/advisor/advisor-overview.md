@@ -3,30 +3,30 @@ title: Úvod do Azure Advisor
 description: K optimalizaci nasazení Azure použijte Azure Advisor.
 ms.topic: article
 ms.date: 02/01/2019
-ms.openlocfilehash: 74048073677cdf0f9f57d84469959a84e78cd6c7
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 0c6c79dd764f92475b3b0121ae46706c0dfc0bcb
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854432"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117773"
 ---
 # <a name="introduction-to-azure-advisor"></a>Úvod do Azure Advisor
 
 Přečtěte si o klíčových funkcích Azure Advisor a Získejte odpovědi na nejčastější dotazy.
 
 ## <a name="what-is-advisor"></a>Co je Advisor?
-Advisor je přizpůsobený cloudový konzultant, který pomáhá dodržovat osvědčené postupy pro optimalizaci nasazení Azure. Analyzuje konfiguraci vašich prostředků a telemetrii jejich využívání a následně doporučí řešení, která zlepší finanční úspornost, výkon, dostupnost a zabezpečení vašich prostředků Azure.
+Advisor je přizpůsobený cloudový konzultant, který pomáhá dodržovat osvědčené postupy pro optimalizaci nasazení Azure. Analyzuje svou konfiguraci prostředků a telemetrii využití a potom doporučuje řešení, která vám pomůžou vylepšit efektivitu nákladů, výkon, spolehlivost (dříve označované jako vysoké dostupnosti) a zabezpečení vašich prostředků Azure.
 
 Pomocí Poradce můžete:
 * Získat proaktivní přizpůsobená doporučení osvědčených postupů, na jejichž základě můžete jednat. 
-* Zvyšte výkon, zabezpečení a vysokou dostupnost svých prostředků, jak identifikujete příležitosti pro snížení celkové útraty Azure.
+* Zvyšte výkon, zabezpečení a spolehlivost svých prostředků, jak identifikujete příležitosti pro snížení celkové útraty Azure.
 * Získat doporučení s navrhovanými akcemi.
 
 Ke službě Advisor můžete přistupovat prostřednictvím [Azure Portal](https://aka.ms/azureadvisordashboard). Přihlaste se k [portálu](https://portal.azure.com), vyhledejte **Poradce** v navigační nabídce nebo ho vyhledejte v nabídce **všechny služby** .
 
 Řídicí panel poradce zobrazuje individuální doporučení pro všechna Vaše předplatná.  Filtry můžete použít k zobrazení doporučení pro konkrétní předplatná a typy prostředků.  Doporučení jsou rozdělená na pět kategorií: 
 
-* **Vysoká dostupnost**: zajištění a zlepšení kontinuity důležitých podnikových aplikací. Další informace najdete v tématu [doporučení pro vysokou dostupnost služby Advisor](advisor-high-availability-recommendations.md).
+* **Spolehlivost (dříve označovaná jako vysoká dostupnost)**: zajištění a zlepšení kontinuity důležitých podnikových aplikací. Další informace najdete v tématu [doporučení pro spolehlivost Advisoru](advisor-high-availability-recommendations.md).
 * **Zabezpečení**: detekuje hrozby a ohrožení zabezpečení, které by mohly vést k porušení zabezpečení. Další informace najdete v tématu [doporučení pro zabezpečení služby Advisor](advisor-security-recommendations.md).
 * **Výkon**: pro zlepšení rychlosti aplikací. Další informace najdete v tématu [doporučení k výkonu služby Advisor](advisor-performance-recommendations.md).
 * **Náklady**: pro optimalizaci a snížení celkové útraty Azure. Další informace najdete v tématu [doporučení pro náklady na poradce](advisor-cost-recommendations.md).
@@ -68,7 +68,7 @@ Chcete-li odložit nebo zrušit doporučení, klikněte na odkaz **odložit** . 
 Další informace o doporučení Advisoru najdete tady:
 
 * [Začínáme se službou Advisor](advisor-get-started.md)
-* [Doporučení pro vysokou dostupnost poradce](advisor-high-availability-recommendations.md)
+* [Doporučení pro spolehlivost Advisoru](advisor-high-availability-recommendations.md)
 * [Doporučení pro zabezpečení Advisoru](advisor-security-recommendations.md)
 * [Doporučení pro výkon Advisoru](advisor-performance-recommendations.md)
 * [Doporučení pro náklady na poradce](advisor-cost-recommendations.md)

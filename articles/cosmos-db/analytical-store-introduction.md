@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: srchi
-ms.openlocfilehash: f00acf3580130d85d6eaeaee4d52eb748d20aa7b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a6f486f15fb5967dfb14508115e2340e4953be81
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656653"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85116022"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Co je Azure Cosmos DB analytické úložiště (Preview)?
 
@@ -44,7 +44,7 @@ Analytické úlohy obvykle zahrnují agregace a sekvenční kontroly vybraných 
 
 Například pokud jsou provozní tabulky v následujícím formátu:
 
-![Ukázková provozní tabulka](./media/analytical-store-introduction/sample-operational-data-table.png)
+:::image type="content" source="./media/analytical-store-introduction/sample-operational-data-table.png" alt-text="Ukázková provozní tabulka" border="false":::
 
 Úložiště řádků uchovává výše uvedená data v serializovaném formátu na každém řádku na disku. Tento formát umožňuje rychlejší transakční čtení, zápisy a provozní dotazy, jako například "návratové informace o Product1". Jak ale datová sada roste a pokud chcete spouštět složité analytické dotazy na data, může být nákladné. Například pokud chcete získat "trendy prodeje produktu v kategorii s názvem" vybavení "napříč různými obchodními jednotkami a měsíci", je nutné spustit složitý dotaz. Velký počet kontrol této datové sady může být nákladný z hlediska zřízené propustnosti a může také ovlivnit výkon transakčních úloh, které pracují s aplikacemi a službami v reálném čase.
 
@@ -52,7 +52,7 @@ Analytické úložiště, které je úložištěm sloupců, je vhodnější pro 
 
 Následující obrázek znázorňuje transakční úložiště řádků vs. analytické úložiště sloupců v Azure Cosmos DB:
 
-![Transakční úložiště řádků vs. analytické úložiště sloupců v Azure Cosmos DB](./media/analytical-store-introduction/transactional-analytical-data-stores.png)
+:::image type="content" source="./media/analytical-store-introduction/transactional-analytical-data-stores.png" alt-text="Transakční úložiště řádků vs. analytické úložiště sloupců v Azure Cosmos DB" border="false":::
 
 ### <a name="decoupled-performance-for-analytical-workloads"></a>Oddělitelné výkony pro analytické úlohy
 
@@ -168,8 +168,8 @@ Další informace najdete v následujících dokumentech:
 
 * [Odkaz na Azure synapse pro Azure Cosmos DB](synapse-link.md)
 
-* [Začínáme s odkazem na Azure synapse pro Azure Cosmos DB](configure-synapse-link.md)
+* [Začínáme s Azure Synapse Linkem pro Azure Cosmos DB](configure-synapse-link.md)
 
 * [Nejčastější dotazy týkající se synapse odkazů pro Azure Cosmos DB](synapse-link-frequently-asked-questions.md)
 
-* [Odkaz na Azure synapse pro případy použití Azure Cosmos DB](synapse-link-use-cases.md)
+* [Případy použití Azure Synapse Linku pro Azure Cosmos DB](synapse-link-use-cases.md)

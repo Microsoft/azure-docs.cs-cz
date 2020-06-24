@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: ''
-ms.openlocfilehash: 65bb1a3915ece384974da12b4e7a1ad0c1e08133
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7656b60c31e7da7841f9afb723167eb061fe3401
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77655803"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85124467"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metrics-database-for-a-windows-virtual-machine-classic"></a>Odeslání metriky hostovaného operačního systému do databáze Azure Monitor metriky pro virtuální počítač s Windows (Classic)
 
@@ -48,7 +48,7 @@ Proces, který je popsaný v tomto článku, funguje jenom na klasických virtu�
 
 ## <a name="create-a-service-principal"></a>Vytvoření instančního objektu
 
-Pomocí pokynů v tématu [Vytvoření instančního objektu](../../active-directory/develop/howto-create-service-principal-portal.md)vytvořte v tenantovi Azure Active Directory zásadu služby. Při procházení tohoto procesu Pamatujte na následující: 
+Pomocí pokynů v tématu [Vytvoření instančního objektu](../../active-directory/develop/howto-create-service-principal-portal.md)vytvořte instanční objekt ve svém tenantovi Azure Active Directory. Při procházení tohoto procesu Pamatujte na následující: 
 - Vytvoří nový tajný klíč klienta pro tuto aplikaci.
 - Uložte klíč a ID klienta pro použití v pozdějších krocích.
 

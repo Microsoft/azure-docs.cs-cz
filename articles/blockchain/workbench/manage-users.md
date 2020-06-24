@@ -2,14 +2,14 @@
 title: Správa uživatelů v Azure blockchain Workbench
 description: Jak spravovat uživatele v Azure blockchain Workbench.
 ms.date: 05/09/2019
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: brendal
-ms.openlocfilehash: 573ec477a3e75beb91f90da0545fb7d4c0f9bf39
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78841ca830ae56f6c07f796bdde85f6a6ba9c921
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79252178"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212730"
 ---
 # <a name="manage-users-in-azure-blockchain-workbench"></a>Správa uživatelů v Azure blockchain Workbench
 

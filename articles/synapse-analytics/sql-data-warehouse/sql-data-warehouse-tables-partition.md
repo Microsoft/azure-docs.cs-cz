@@ -6,17 +6,17 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 368276f75128c80b8df326a26acf26c841e9f68a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f7c7358dc405b3db2b3f014bb99a96fa56580314
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80742691"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213920"
 ---
 # <a name="partitioning-tables-in-synapse-sql-pool"></a>Dělení tabulek v synapse fondu SQL
 
@@ -157,7 +157,7 @@ INSERT INTO dbo.FactInternetSales
 VALUES (1,20000101,1,1,1,1,1,1);
 ```
 
-Následující dotaz vyhledá počet řádků pomocí zobrazení `sys.partitions` katalogu:
+Následující dotaz vyhledá počet řádků pomocí `sys.partitions` zobrazení katalogu:
 
 ```sql
 SELECT  QUOTENAME(s.[name])+'.'+QUOTENAME(t.[name]) as Table_name
@@ -208,7 +208,7 @@ ALTER TABLE FactInternetSales SWITCH PARTITION 2 TO  FactInternetSales_20000101 
 ALTER TABLE FactInternetSales SPLIT RANGE (20010101);
 ```
 
-Vše, co je ponecháno, je zarovnání dat na nové hranice oddílu pomocí `CTAS`a poté přepnout data zpět do hlavní tabulky.
+Vše, co je ponecháno, je zarovnání dat na nové hranice oddílu pomocí `CTAS` a poté přepnout data zpět do hlavní tabulky.
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_20000101_20010101]
@@ -237,7 +237,7 @@ UPDATE STATISTICS [dbo].[FactInternetSales];
 
 ### <a name="load-new-data-into-partitions-that-contain-data-in-one-step"></a>Načtení nových dat do oddílů, které obsahují data v jednom kroku
 
-Načítání dat do oddílů pomocí přepínání oddílů je pohodlný způsob, jak vytvořit nová data v tabulce, která nejsou viditelná pro uživatele přepínačem v nových datech.  Může to být náročné na zaneprázdněné systémy, aby se mohla zabývat kolize uzamčení spojeného s přepínáním oddílů.  Chcete-li vymazat stávající data v oddílu, je k `ALTER TABLE` dismailu nutné použít k přepnutí dat.  V nových `ALTER TABLE` datech se pak vyžadoval jiný.  V synapse fondu SQL je `TRUNCATE_TARGET` možnost podporována v `ALTER TABLE` příkazu.  Pomocí `TRUNCATE_TARGET` `ALTER TABLE` příkazu přepíše existující data v oddílu novými daty.  Níže je uveden příklad, který `CTAS` používá k vytvoření nové tabulky s existujícími daty, vkládání nových dat a následné přepínání všech dat zpět do cílové tabulky, která Přepisuje stávající data.
+Načítání dat do oddílů pomocí přepínání oddílů je pohodlný způsob, jak vytvořit nová data v tabulce, která nejsou viditelná pro uživatele přepínačem v nových datech.  Může to být náročné na zaneprázdněné systémy, aby se mohla zabývat kolize uzamčení spojeného s přepínáním oddílů.  Chcete-li vymazat stávající data v oddílu, je k dismailu `ALTER TABLE` nutné použít k přepnutí dat.  `ALTER TABLE`V nových datech se pak vyžadoval jiný.  V synapse fondu SQL `TRUNCATE_TARGET` je možnost podporována v `ALTER TABLE` příkazu.  Pomocí `TRUNCATE_TARGET` `ALTER TABLE` příkazu přepíše existující data v oddílu novými daty.  Níže je uveden příklad, který používá `CTAS` k vytvoření nové tabulky s existujícími daty, vkládání nových dat a následné přepínání všech dat zpět do cílové tabulky, která Přepisuje stávající data.
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_NewSales]

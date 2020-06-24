@@ -9,18 +9,18 @@ editor: ''
 tags: azure-resource-manager
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: d926a9f686f0f4c39203b8a217a7c608cfad926e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 52d33e7292ebe7b27eede2b89aa605780f826392
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80548106"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737610"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor-preview"></a>Monitorování připojení k síti pomocí monitorování připojení (Preview)
 
@@ -402,9 +402,9 @@ Z Azure Portal pro vytvoření testovací skupiny v monitorování připojení z
    
        Můžete přejít k podrobnostem z úrovně předplatného na jiné úrovně v hierarchii:
 
-      **Subscription** > **VNETs** > **Subnets** > Skupiny > **prostředků**předplatného virtuální sítě**virtuální počítače podsítí s agenty**
+      **Předplatné**  >  **Skupiny prostředků**  >  **Virtuální sítě**  >  **Podsítě**  >  **Virtuální počítače s agenty**
 
-      Můžete také změnit hodnotu pole **Seskupit podle** , aby se strom spouštěl z jiné úrovně. Pokud například vytvoříte seskupení podle virtuální sítě, zobrazí se virtuální počítače, které mají agenty v hierarchii **virtuální sítě** > **Subnets** > **virtuální počítače podsítí s agenty**.
+      Můžete také změnit hodnotu pole **Seskupit podle** , aby se strom spouštěl z jiné úrovně. Pokud například vytvoříte seskupení podle virtuální sítě, zobrazí se virtuální počítače, které mají agenty v hierarchii **virtuální sítě**  >  **Subnets**  >  **virtuální počítače podsítí s agenty**.
 
       ![Snímek obrazovky s monitorováním připojení, který zobrazuje panel Přidat zdroje a kartu agenti Azure](./media/connection-monitor-2-preview/add-azure-sources.png)
 
@@ -444,7 +444,7 @@ Z Azure Portal pro vytvoření testovací skupiny v monitorování připojení z
 
     * **Název** – pojmenujte konfiguraci testu.
     * **Protokol** – vyberte TCP, ICMP nebo http. Pokud chcete změnit protokol HTTP na HTTPS, jako protokol vyberte **http** a jako port vyberte **443** .
-        * **Vytvořit konfiguraci testu sítě** – toto zaškrtávací políčko se zobrazí jenom v případě, že jste v poli **protokol** vybrali **http** . Toto políčko zaškrtněte, pokud chcete vytvořit další konfiguraci testu, která používá stejné zdroje a cíle, které jste zadali jinde v konfiguraci. Nově vytvořená konfigurace testu je pojmenována `<the name of your test configuration>_networkTestConfig`.
+        * **Vytvořit konfiguraci testu sítě** – toto zaškrtávací políčko se zobrazí jenom v případě, že jste v poli **protokol** vybrali **http** . Toto políčko zaškrtněte, pokud chcete vytvořit další konfiguraci testu, která používá stejné zdroje a cíle, které jste zadali jinde v konfiguraci. Nově vytvořená konfigurace testu je pojmenována `<the name of your test configuration>_networkTestConfig` .
         * **Disable traceroute** – toto pole se vztahuje na testovací skupiny, jejichž protokol je TCP nebo ICMP. Toto políčko zaškrtněte, pokud chcete zastavit zdroje z vyhledávání topologie a času směrování po směrování.
     * **Cílový port** – toto pole můžete přizpůsobit podle vybraného cílového portu.
     * **Frekvence testování** – pomocí tohoto pole můžete zvolit, jak často se budou zdroje testovat pomocí příkazu otestovat cílový protokol a port, který jste zadali. Můžete zvolit 30 sekund, 1 minutu, 5 minut, 15 minut nebo 30 minut. Zdroje budou testovat připojení k cílům na základě hodnoty, kterou zvolíte.  Pokud například vyberete 30 sekund, zdroje budou kontrolovat připojení k cíli nejméně jednou za 30 sekund.
@@ -573,7 +573,7 @@ Zobrazení trendů v RTT a Procento neúspěšných kontrol pro monitorování p
 
 1. Změňte časový interval pro zobrazení více dat.
 1. Změňte zobrazení tak, aby se zobrazily zdroje, cíle nebo konfigurace testu. 
-1. Vyberte zdroj založený na neúspěšných testech a prozkoumejte pět neúspěšných testů. Můžete například vybrat **zobrazení podle** > **zdrojů** a **Zobrazit podle** > **umístění** a prozkoumat příslušné testy v monitorování připojení.
+1. Vyberte zdroj založený na neúspěšných testech a prozkoumejte pět neúspěšných testů. Můžete například vybrat **zobrazení podle**  >  **zdrojů** a **Zobrazit podle**  >  **umístění** a prozkoumat příslušné testy v monitorování připojení.
 
    ![Snímek obrazovky znázorňující metriky výkonu pro pět prvních neúspěšných testů](./media/connection-monitor-2-preview/cm-drill-select-source.png)
 
@@ -616,7 +616,7 @@ Ve sledováních připojení, které byly vytvořeny před zobrazením připojen
 
 Když použijete metriky, nastavte typ prostředku jako Microsoft. Network/networkWatchers/connectionMonitors.
 
-| Metrika | Zobrazované jméno | Jednotka | Typ agregace | Popis | Dimenze |
+| Metrika | Zobrazované jméno | Jednotka | Typ agregace | Description | Dimenze |
 | --- | --- | --- | --- | --- | --- |
 | ProbesFailedPercent | % PROBE selhalo | Procento | Průměr | Procento sond monitorování připojení selhalo. | Žádné dimenze |
 | AverageRoundtripMs | Průměrná doba odezvy (MS) | Milisekund | Průměr | Průměrná doba odezvy sítě pro testy monitorování připojení odesílané mezi zdrojem a cílem |             Žádné dimenze |

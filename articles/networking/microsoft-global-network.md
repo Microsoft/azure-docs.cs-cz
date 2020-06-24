@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 06/13/2019
 ms.author: kumud
 ms.reviewer: ypitsch
-ms.openlocfilehash: b78e227159065d2ae85d9b1dc989e8ea192ae26a
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 5028417758bb8be38505d27d3dfb5e2fc055c3ca
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982798"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85125817"
 ---
 # <a name="microsoft-global-network"></a>Globální síť Microsoftu
 
@@ -38,7 +38,7 @@ Bez ohledu na to, jestli se připojení z Londýna do Brna nebo z Washington DC 
 
 Pokud se třeba uživatel v Londýně pokusí získat přístup ke službě v Brně, pak internetové přenosy vstoupí do jedné z našich okrajů v Londýně, přechází přes Microsoft WAN přes Francii, naše cesty k trans-Arábie mezi Evropa a Indie a pak na Japonsko, kde je služba hostovaná. Provoz odezvy je symetrický. V takovém případě se někdy označuje jako [Směrování studených brambor](https://en.wikipedia.org/wiki/Hot-potato_and_cold-potato_routing) , což znamená, že provoz zůstává v síti od Microsoftu co nejkratší, než jsme ho vypnuli.  
   
-Znamená to tedy jakýkoliv a veškerý provoz při používání služeb Microsoftu? Ano, jakýkoli provoz mezi datovými centry v rámci Microsoft Azure nebo mezi službami Microsoftu, jako je například Virtual Machines, Office 365, XBox, SQL databáze, úložiště a virtuální sítě, je směrován v rámci naší globální sítě a nikdy přes veřejný Internet, aby se zajistil optimální výkon a integrita.  
+Znamená to tedy jakýkoliv a veškerý provoz při používání služeb Microsoftu? Ano, jakýkoli provoz mezi datovými centry v rámci Microsoft Azure nebo mezi službami Microsoftu, jako jsou Virtual Machines, Microsoft 365, XBox, SQL databáze, úložiště a virtuální sítě, je směrován v rámci naší globální sítě a nikdy přes veřejný Internet, aby se zajistil optimální výkon a integrita.  
  
 Velkou škálu investic do kapacity a rozmanitosti zemního vlákna na cestách Metro, suchozemských a podmořských cest je rozhodující pro nás, aby se zajistila konzistence a vysoká úroveň služeb při současném nárůstu našeho cloudu a online služby. Poslední dodatky do naší globální sítě jsou naše [MAREA](https://www.submarinecablemap.com/#/submarine-cable/marea) podmořský kabel, první Open line line (OLS) v oboru Subsea, mezi Bilbao, Španělsko a) – Virginia pláž,) – Virginia, USA a také pochod mezi [New](https://www.submarinecablemap.com/#/submarine-cable/aeconnect-1) York, USA a Dublinem, Irskem a [novým křížením (NCP)](https://www.submarinecablemap.com/#/submarine-cable/new-cross-pacific-ncp-cable-system) mezi Tokio, japonskoem a Portland. 
  

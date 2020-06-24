@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 01/22/2019
 ms.author: lbosq
 ms.custom: tracking-python
-ms.openlocfilehash: fd266dd4e75915c0710acce1a2a49f24049c4e9d
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 0f96cbd86921428a85aa69f3561252aeb7fd67b5
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559871"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118215"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-python-and-the-azure-portal"></a>Rychlý Start: vytvoření databáze grafů v Azure Cosmos DB pomocí Pythonu a Azure Portal
 
@@ -98,7 +98,7 @@ Teď se vraťte na portál Azure, kde najdete informace o připojení, a zkop�
 
     Zkopírujte první část hodnoty identifikátoru URI.
 
-    ![Zobrazení a zkopírování přístupového klíče na webu Azure Portal na stránce Klíče](./media/create-graph-python/keys.png)
+    :::image type="content" source="./media/create-graph-python/keys.png" alt-text="Zobrazení a zkopírování přístupového klíče na webu Azure Portal na stránce Klíče":::
 
 2. Otevřete soubor *Connect.py* a na řádku 104 vložte hodnotu identifikátoru URI `<YOUR_ENDPOINT>` do tohoto umístění:
 
@@ -172,21 +172,21 @@ Po vložení vrcholů a hran se teď můžete vrátit na Průzkumník dat a zobr
 
 1. V Azure Cosmos DB účtu v Azure Portal vyberte možnost **Průzkumník dat**, rozbalte položku **Ukázka-graf**, vyberte možnost **graf**a pak vyberte možnost **použít filtr**. 
 
-   ![Vytváření nových dokumentů v Průzkumníku dat na webu Azure Portal](./media/create-graph-python/azure-cosmosdb-data-explorer-expanded.png)
+   :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-expanded.png" alt-text="Vytváření nových dokumentů v Průzkumníku dat na webu Azure Portal":::
 
 2. V seznamu **výsledků** si všimněte, že se do grafu přidávají tři noví uživatelé. Vrcholy můžete přesouvat přetahováním, přibližovat a oddalovat můžete pomocí kolečka myši a zvětšit plochu grafu můžete pomocí obousměrné šipky. 
 
-   ![Nové vrcholy v grafu v Průzkumníku dat na webu Azure Portal](./media/create-graph-python/azure-cosmosdb-graph-explorer-new.png)
+   :::image type="content" source="./media/create-graph-python/azure-cosmosdb-graph-explorer-new.png" alt-text="Nové vrcholy v grafu v Průzkumníku dat na webu Azure Portal":::
 
 3. Teď přidáme několik nových uživatelů. Vyberte tlačítko **nový vrchol** a přidejte do grafu data.
 
-   ![Vytváření nových dokumentů v Průzkumníku dat na webu Azure Portal](./media/create-graph-python/azure-cosmosdb-data-explorer-new-vertex.png)
+   :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-new-vertex.png" alt-text="Vytváření nových dokumentů v Průzkumníku dat na webu Azure Portal":::
 
 4. Zadejte popisek *person* (osoba).
 
 5. Vyberte **Přidat vlastnost** a přidejte každou z následujících vlastností. Všimněte si, že pro každou osobu v grafu můžete vytvořit jedinečné vlastnosti. Vyžaduje se pouze klíč id.
 
-    Klíč|value|Poznámky
+    Klíč|hodnota|Poznámky
     ----|----|----
     PK|/pk| 
     id|ashley|Jedinečný identifikátor pro vrchol. Pokud identifikátor nezadáte, vygeneruje se pro vás.
@@ -204,7 +204,7 @@ Po vložení vrcholů a hran se teď můžete vrátit na Průzkumník dat a zobr
 
 9. Vyberte **Přidat vlastnost** a přidejte každou z následujících vlastností:
 
-    Klíč|value|Poznámky
+    Klíč|hodnota|Poznámky
     ----|----|----
     PK|/pk| 
     id|rakesh|Jedinečný identifikátor pro vrchol. Pokud identifikátor nezadáte, vygeneruje se pro vás.
@@ -219,15 +219,15 @@ Po vložení vrcholů a hran se teď můžete vrátit na Průzkumník dat a zobr
 
 12. Teď můžeme propojit uživatele rakesh a ashley. V seznamu **výsledků** ověřte, že je vybraná možnost **Ashley** , a pak vyberte tlačítko Upravit vedle **cílů** na pravé dolní straně. Možná budete muset rozšířit okno, aby se zobrazila oblast **Vlastnosti**.
 
-    ![Změna cíle vrcholu v grafu](./media/create-graph-python/azure-cosmosdb-data-explorer-edit-target.png)
+    :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-edit-target.png" alt-text="Změna cíle vrcholu v grafu":::
 
 13. Do pole **cíl** zadejte *Rakesh*a do pole **popisek hrany** zadejte text *zná*a zaškrtněte políčko.
 
-    ![Přidání propojení mezi uživateli ashley a rakesh v Průzkumníku dat](./media/create-graph-python/azure-cosmosdb-data-explorer-set-target.png)
+    :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-set-target.png" alt-text="Přidání propojení mezi uživateli ashley a rakesh v Průzkumníku dat":::
 
 14. Teď vyberte ze seznamu výsledků uživatele **rakesh** a zobrazí se propojení mezi uživateli ashley a rakesh. 
 
-    ![Dva propojené vrcholy v Průzkumníku dat](./media/create-graph-python/azure-cosmosdb-graph-explorer.png)
+    :::image type="content" source="./media/create-graph-python/azure-cosmosdb-graph-explorer.png" alt-text="Dva propojené vrcholy v Průzkumníku dat":::
 
 Tím je dokončená část tohoto kurzu věnovaná vytváření prostředků. Můžete pokračovat přidáním vrcholů do grafu, úpravou existujících vrcholů nebo změnou dotazů. Teď si projdeme metriky, které služba Azure Cosmos DB nabízí, a potom vyčistíme prostředky. 
 

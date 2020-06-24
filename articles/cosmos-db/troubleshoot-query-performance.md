@@ -8,12 +8,12 @@ ms.date: 04/22/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 977b2fa40e2ce27a2711e5a44f5fb487433c9462
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 80e966bf190dcbe4490269ef28a95babadda68d8
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714555"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117909"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Řešení potíží s dotazy při použití Azure Cosmos DB
 
@@ -34,7 +34,7 @@ Před čtením tohoto průvodce je užitečné vzít v úvahu běžné problémy
 
 - Nejlepšího výkonu dosáhnete pomocí těchto [tipů pro výkon](performance-tips.md).
     > [!NOTE]
-    > Pro lepší výkon doporučujeme zpracování bitového hostitelského systému Windows 64. Sada SQL SDK obsahuje nativní knihovnu ServiceInterop. dll pro místní analýzu a optimalizaci dotazů v místním prostředí. ServiceInterop. dll je podporován pouze na platformě Windows x64. Pro Linux a jiné nepodporované platformy, kde ServiceInterop. dll není k dispozici, se k získání optimalizovaného dotazu provede další síťové volání brány.
+    > Pro lepší výkon doporučujeme zpracování bitového hostitelského systému Windows 64. Sada SQL SDK obsahuje nativní ServiceInterop.dll k analýze a optimalizaci dotazů v místním prostředí. ServiceInterop.dll se podporuje jenom na platformě Windows x64. Pro Linux a jiné nepodporované platformy, kde ServiceInterop.dll není k dispozici, se k získání optimalizovaného dotazu provede další síťové volání brány.
 - Sada SDK umožňuje nastavení `MaxItemCount` pro vaše dotazy, ale nemůžete zadat minimální počet položek.
     - Kód by měl zpracovat libovolnou velikost stránky od nuly do `MaxItemCount` .
     - Počet položek na stránce bude vždy menší nebo roven zadanému `MaxItemCount` . Je však `MaxItemCount` striktně maximálně a může to být méně výsledků než tato částka.
@@ -47,7 +47,7 @@ Před čtením tohoto průvodce je užitečné vzít v úvahu běžné problémy
 
 Když v Azure Cosmos DB optimalizujete dotaz, prvním krokem je vždycky [získat metriky dotazu](profile-sql-api-query.md) pro dotaz. Tyto metriky jsou také k dispozici prostřednictvím Azure Portal. Po spuštění dotazu v Průzkumník dat jsou metriky dotazů zobrazené vedle karty **výsledky** :
 
-[![Získávání metrik ](./media/troubleshoot-query-performance/obtain-query-metrics.png) dotazů](./media/troubleshoot-query-performance/obtain-query-metrics.png#lightbox)
+:::image type="content" source="./media/troubleshoot-query-performance/obtain-query-metrics.png" alt-text="Získávání metrik dotazů" lightbox="./media/troubleshoot-query-performance/obtain-query-metrics.png":::
 
 Po získání metriky dotazu Porovnejte **počet načtených dokumentů** s **počtem výstupních dokumentů** pro váš dotaz. Pomocí tohoto porovnání Identifikujte relevantní oddíly, které je potřeba si projít v tomto článku.
 

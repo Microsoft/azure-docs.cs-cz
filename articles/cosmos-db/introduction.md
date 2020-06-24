@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2019
-ms.openlocfilehash: 6292c3c2d928581d0564fe457342ea7b1e17111c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bfac783fcb8ce88977fc8d97f821a7350f57aab8
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80983020"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118572"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Vítá vás Azure Cosmos DB
 
@@ -24,7 +24,7 @@ Můžete [vyzkoušet Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cos
 > [!div class="nextstepaction"]
 > [Vyzkoušet Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/)
 
-![Azure Cosmos DB je globálně distribuovaná databázová služba od Microsoftu, která nabízí elastické škálování na více instancí, zaručenou nízkou latenci, pět modelů konzistence a komplexní zaručené smlouvy SLA.](./media/introduction/azure-cosmos-db.png)
+:::image type="content" source="./media/introduction/azure-cosmos-db.png" alt-text="Azure Cosmos DB je globálně distribuovaná databázová služba od Microsoftu, která nabízí elastické škálování na více instancí, zaručenou nízkou latenci, pět modelů konzistence a komplexní zaručené smlouvy SLA." border="false":::
 
 ## <a name="key-benefits"></a>Klíčové výhody
 
@@ -48,7 +48,7 @@ Pomocí Cosmos DB můžete vytvářet vysoce reagující aplikace globálním š
 
 ### <a name="precisely-defined-multiple-consistency-choices"></a>Přesně definované, vícenásobné volby konzistence
 
-Při sestavování globálně distribuovaných aplikací v Cosmos DB už nemusíte provádět extrémní [kompromisy mezi konzistencí, dostupností, latencí a propustností](consistency-levels-tradeoffs.md). Pro intuitivní programovací model s nízkou latencí a vysokou dostupností pro globálně distribuovanou aplikaci je možné pečlivě vymezit protokol replikace s více hlavními servery, který nabízí - *strong* [pět jasně definovaných možností konzistence](consistency-levels.md), *ohraničená neaktuálnost*, *relace*, *konzistentní předpona*a *konečný –.* Cosmos DB
+Při sestavování globálně distribuovaných aplikací v Cosmos DB už nemusíte provádět extrémní [kompromisy mezi konzistencí, dostupností, latencí a propustností](consistency-levels-tradeoffs.md). Pro intuitivní programovací model s nízkou latencí a vysokou dostupností pro globálně distribuovanou aplikaci je možné pečlivě vymezit protokol replikace s více hlavními servery, který nabízí [pět jasně definovaných možností konzistence](consistency-levels.md)  -  *,* *ohraničená neaktuálnost*, *relace*, *konzistentní předpona*a konečný –. *eventual* Cosmos DB
 
 ### <a name="no-schema-or-index-management"></a>Žádná Správa schématu ani indexu
 

@@ -9,11 +9,11 @@ ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/11/2020
 ms.topic: article
 ms.openlocfilehash: 73b116117530e5a2103b604efbf757d691006508
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79284028"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84704518"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Zpracování chyb a výjimek v Azure Logic Apps
 
@@ -27,7 +27,7 @@ U většiny základních výjimek a zpracování chyb můžete použít *zásady
 
 Tady jsou typy zásad opakování:
 
-| Typ | Popis |
+| Typ | Description |
 |------|-------------|
 | **Výchozí** | Tato zásada odesílá až čtyři opakované pokusy ve *exponenciálně rostoucích* intervalech, které se škálují po 7,5 sekund, ale jsou omezené mezi 5 a 45 sekundami. |
 | **Exponenciální interval**  | Tato zásada počká náhodný interval vybraný z exponenciálně rostoucího rozsahu před odesláním dalšího požadavku. |
@@ -69,16 +69,16 @@ Případně můžete zásady opakování zadat ručně v `inputs` části pro ak
 
 *Požadováno*
 
-| Hodnota | Typ | Popis |
+| Hodnota | Typ | Description |
 |-------|------|-------------|
-| <*opakování – typ zásad*> | Řetězec | Typ zásady opakování, který chcete použít: `default`, `none`, nebo `fixed``exponential` |
-| <*interval opakování*> | Řetězec | Interval opakování, ve kterém hodnota musí používat [formát ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). Výchozí minimální interval je `PT5S` a maximální interval je. `PT1D` Když použijete exponenciální zásadu intervalu, můžete zadat jiné minimální a maximální hodnoty. |
+| <*opakování – typ zásad*> | Řetězec | Typ zásady opakování, který chcete použít: `default` , `none` , `fixed` nebo`exponential` |
+| <*interval opakování*> | Řetězec | Interval opakování, ve kterém hodnota musí používat [formát ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). Výchozí minimální interval je `PT5S` a maximální interval je `PT1D` . Když použijete exponenciální zásadu intervalu, můžete zadat jiné minimální a maximální hodnoty. |
 | <*opakování – pokusy*> | Integer | Počet pokusů o opakování, který musí být mezi 1 a 90. |
 ||||
 
-*Nepovinné*
+*Volitelné*
 
-| Hodnota | Typ | Popis |
+| Hodnota | Typ | Description |
 |-------|------|-------------|
 | <*minimální interval*> | Řetězec | Pro pravidlo exponenciálního intervalu, nejmenší interval náhodně vybraného intervalu ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) |
 | <*maximální interval*> | Řetězec | Pro pravidlo exponenciálního intervalu, nejdelší interval pro náhodně vybraný interval ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) |
@@ -112,15 +112,15 @@ I když v akci nebo triggeru není explicitně definované, tady je způsob, jak
 }
 ```
 
-### <a name="none"></a>Žádná
+### <a name="none"></a>Žádné
 
-Pokud chcete určit, že akce nebo Trigger neopakuje neúspěšné požadavky, nastavte <*Opakovat-zásady-typ*> na `none`.
+Pokud chcete určit, že akce nebo Trigger neopakuje neúspěšné požadavky, nastavte <*Opakovat-zásady-typ*> na `none` .
 
 ### <a name="fixed-interval"></a>Pevný interval
 
-Chcete-li určit, že akce nebo aktivační událost před odesláním dalšího požadavku počká zadaný interval, nastavte <*Opakovat – typ zásad*> na `fixed`.
+Chcete-li určit, že akce nebo aktivační událost před odesláním dalšího požadavku počká zadaný interval, nastavte <*Opakovat – typ zásad*> na `fixed` .
 
-*Případě*
+*Příklad*
 
 Tato zásada opakování se pokusí získat nejnovější novinky po prvním neúspěšném požadavku s 30 sekundovým zpožděním mezi jednotlivými pokusy:
 
@@ -143,7 +143,7 @@ Tato zásada opakování se pokusí získat nejnovější novinky po prvním ne�
 
 ### <a name="exponential-interval"></a>Exponenciální interval
 
-Chcete-li určit, že akce nebo aktivační událost před odesláním dalšího požadavku počká na náhodný interval, nastavte <*Opakovat – typ zásad*> na `exponential`. Náhodný interval je vybrán z exponenciálního rostoucího rozsahu. Volitelně můžete také přepsat výchozí minimální a maximální intervaly zadáním vlastního minimálního a maximálního intervalu.
+Chcete-li určit, že akce nebo aktivační událost před odesláním dalšího požadavku počká na náhodný interval, nastavte <*Opakovat – typ zásad*> na `exponential` . Náhodný interval je vybrán z exponenciálního rostoucího rozsahu. Volitelně můžete také přepsat výchozí minimální a maximální intervaly zadáním vlastního minimálního a maximálního intervalu.
 
 **Rozsahy náhodných proměnných**
 
@@ -162,9 +162,9 @@ Tato tabulka ukazuje, jak Logic Apps generuje v zadaném rozsahu jednotnou náho
 
 ## <a name="catch-and-handle-failures-by-changing-run-after-behavior"></a>Zachycení a zpracování selhání změnou chování spustit po
 
-Když přidáte akce v návrháři aplikace logiky, implicitně deklarujete pořadí, které se má použít pro spuštění těchto akcí. Po dokončení akce je tato akce označena `Succeeded`stavem, jako například, `Failed`, `Skipped`nebo. `TimedOut` V každé definici akce `runAfter` vlastnost určuje akci předchůdce, která musí být nejprve dokončena, a stav povolený pro dané předchůdce, než bude možné spustit akci následníka. Ve výchozím nastavení se akce, kterou přidáte v návrháři, spustí až po dokončení předchůdce se `Succeeded` stavem.
+Když přidáte akce v návrháři aplikace logiky, implicitně deklarujete pořadí, které se má použít pro spuštění těchto akcí. Po dokončení akce je tato akce označena stavem, jako například `Succeeded` , `Failed` , `Skipped` nebo `TimedOut` . V každé definici akce `runAfter` vlastnost určuje akci předchůdce, která musí být nejprve dokončena, a stav povolený pro dané předchůdce, než bude možné spustit akci následníka. Ve výchozím nastavení se akce, kterou přidáte v návrháři, spustí až po dokončení předchůdce se `Succeeded` stavem.
 
-Pokud akce vyvolá neošetřenou chybu nebo výjimku, je tato akce označena `Failed`a všechny akce následníka jsou označeny. `Skipped` Pokud k tomuto chování dochází pro akci, která má paralelní větve, modul Logic Apps se řídí ostatními větvemi k určení stavu jejich dokončení. Pokud například větev končí `Skipped` akcí, je stav dokončení této větve založený na tomto stavu přeskočené akce. Po dokončení spuštění aplikace logiky určí modul celý stav spuštění vyhodnocením všech stavů větví. Pokud dojde k výpadku jakékoli větve, je označena `Failed`celá aplikace logiky.
+Pokud akce vyvolá neošetřenou chybu nebo výjimku, je tato akce označena `Failed` a všechny akce následníka jsou označeny `Skipped` . Pokud k tomuto chování dochází pro akci, která má paralelní větve, modul Logic Apps se řídí ostatními větvemi k určení stavu jejich dokončení. Pokud například větev končí `Skipped` akcí, je stav dokončení této větve založený na tomto stavu přeskočené akce. Po dokončení spuštění aplikace logiky určí modul celý stav spuštění vyhodnocením všech stavů větví. Pokud dojde k výpadku jakékoli větve, je označena celá aplikace logiky `Failed` .
 
 ![Příklady, které ukazují, jak se vyhodnocují stavy spuštění](./media/logic-apps-exception-handling/status-evaluation-for-parallel-branches.png)
 
@@ -174,7 +174,7 @@ Aby se zajistilo, že akce může stále běžet navzdory jejímu stavu předch�
 
 ### <a name="customize-run-after-behavior"></a>Přizpůsobení chování "spustit po"
 
-Chování akce "spustit po" můžete přizpůsobit tak, aby se akce spustila, když je stav předchůdce `Succeeded`buď, `Failed`, `Skipped` `TimedOut`, nebo některý z těchto stavů. Pokud například chcete poslat e-mail po označení `Add_a_row_into_a_table` `Failed`akce předchůdce Excelu online, místo `Succeeded`toho změňte chování spustit po pomocí tohoto kroku:
+Chování akce "spustit po" můžete přizpůsobit tak, aby se akce spustila, když je stav předchůdce buď `Succeeded` ,,, `Failed` `Skipped` `TimedOut` nebo některý z těchto stavů. Pokud například chcete poslat e-mail po `Add_a_row_into_a_table` označení akce předchůdce Excelu online `Failed` , místo `Succeeded` toho změňte chování spustit po pomocí tohoto kroku:
 
 * V zobrazení Návrh vyberte tlačítko se třemi tečkami (**...**) a pak vyberte **Konfigurovat spustit po**.
 
@@ -188,7 +188,7 @@ Chování akce "spustit po" můžete přizpůsobit tak, aby se akce spustila, kd
 
   ![Změnit chování "spustit po" na "selhalo"](./media/logic-apps-exception-handling/run-after-property-status-set-to-failed.png)
 
-  Chcete-li určit, že akce bude spuštěna, `Failed` `Skipped` zda je akce předchůdce `TimedOut`označena jako nebo, vyberte jiné stavy:
+  Chcete-li určit, že akce bude spuštěna, zda je akce předchůdce označena jako `Failed` `Skipped` nebo `TimedOut` , vyberte jiné stavy:
 
   ![Změnit chování spustit po po, aby měl jakýkoliv jiný stav](./media/logic-apps-exception-handling/run-after-property-multiple-statuses.png)
 
@@ -208,7 +208,7 @@ Chování akce "spustit po" můžete přizpůsobit tak, aby se akce spustila, kd
   }
   ```
 
-  V tomto příkladu změňte `runAfter` vlastnost z `Succeeded` na: `Failed`
+  V tomto příkladu změňte `runAfter` vlastnost z `Succeeded` na `Failed` :
 
   ```json
   "Send_an_email_(V2)": {
@@ -235,7 +235,7 @@ Chování akce "spustit po" můžete přizpůsobit tak, aby se akce spustila, kd
   }
   ```
 
-  Chcete-li určit, že akce bude spuštěna, `Failed` `Skipped` zda je akce předchůdce `TimedOut`označena jako nebo, přidejte další stavy:
+  Chcete-li určit, že akce bude spuštěna, zda je akce předchůdce označena jako `Failed` `Skipped` nebo `TimedOut` , přidejte další stavy:
 
   ```json
   "runAfter": {
@@ -251,11 +251,11 @@ Chování akce "spustit po" můžete přizpůsobit tak, aby se akce spustila, kd
 
 Podobně jako při provádění jednotlivých akcí s `runAfter` vlastností můžete seskupit akce v rámci [oboru](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md). Obory můžete použít, když chcete logicky seskupit akce společně, vyhodnotit agregovaný stav oboru a provádět akce na základě tohoto stavu. Po dokončení všech akcí v oboru, který je spuštěný, získá samotný rozsah svůj vlastní stav.
 
-Chcete-li zjistit stav oboru, můžete použít stejná kritéria, která používáte ke kontrole stavu spuštění aplikace logiky, například `Succeeded`, `Failed`a tak dále.
+Chcete-li zjistit stav oboru, můžete použít stejná kritéria, která používáte ke kontrole stavu spuštění aplikace logiky, například `Succeeded` , `Failed` a tak dále.
 
-Ve výchozím nastavení platí, že po úspěšném dokončení všech akcí oboru je stav oboru označený `Succeeded`. Pokud výsledná akce v oboru vychází jako `Failed` nebo `Aborted`, je stav oboru označený `Failed`.
+Ve výchozím nastavení platí, že po úspěšném dokončení všech akcí oboru je stav oboru označený `Succeeded` . Pokud výsledná akce v oboru `Failed` vychází jako nebo `Aborted` , je stav oboru označený `Failed` .
 
-Chcete-li zachytit výjimky `Failed` v oboru a spustit akce, které tyto chyby zpracovávají, můžete pro `runAfter` daný `Failed` obor použít vlastnost. Tímto způsobem, pokud *některé* akce v oboru selžou a použijete `runAfter` vlastnost tohoto oboru, můžete vytvořit jedinou akci pro zachycení selhání.
+Chcete-li zachytit výjimky v `Failed` oboru a spustit akce, které tyto chyby zpracovávají, můžete `runAfter` pro daný obor použít vlastnost `Failed` . Tímto způsobem, pokud *některé* akce v oboru selžou a použijete `runAfter` vlastnost tohoto oboru, můžete vytvořit jedinou akci pro zachycení selhání.
 
 Omezení pro rozsahy najdete v tématu [omezení a konfigurace](../logic-apps/logic-apps-limits-and-config.md).
 
@@ -265,7 +265,7 @@ Omezení pro rozsahy najdete v tématu [omezení a konfigurace](../logic-apps/lo
 
 I když je užitečné zachycení selhání z oboru, můžete také chtít, aby byl kontext, který vám pomůže pochopit přesně to, které akce se nezdařily, a všechny chyby nebo stavové kódy, které byly vráceny.
 
-[`result()`](../logic-apps/workflow-definition-language-functions-reference.md#result) Funkce poskytuje kontext o výsledcích ze všech akcí v oboru. `result()` Funkce přijímá jeden parametr, což je název oboru, a vrátí pole, které obsahuje všechny výsledky akce v rámci daného oboru. Tyto objekty akcí zahrnují stejné atributy jako `actions()` objekt, jako je čas spuštění akce, čas ukončení, stav, vstupy, ID korelace a výstupy. Chcete-li odeslat kontext pro všechny akce, které selhaly v rámci oboru, můžete `@result()` snadno spárovat výraz `runAfter` s vlastností.
+[`result()`](../logic-apps/workflow-definition-language-functions-reference.md#result)Funkce poskytuje kontext o výsledcích ze všech akcí v oboru. `result()`Funkce přijímá jeden parametr, což je název oboru, a vrátí pole, které obsahuje všechny výsledky akce v rámci daného oboru. Tyto objekty akcí zahrnují stejné atributy jako `actions()` objekt, jako je čas spuštění akce, čas ukončení, stav, vstupy, ID korelace a výstupy. Chcete-li odeslat kontext pro všechny akce, které selhaly v rámci oboru, můžete snadno spárovat `@result()` výraz s `runAfter` vlastností.
 
 Chcete-li spustit akci pro každou akci v oboru, který má `Failed` výsledek, a filtrovat pole výsledků dolů na neúspěšné akce, můžete spárovat `@result()` výraz s akcí [**pole filtru**](logic-apps-perform-data-operations.md#filter-array-action) a a [**pro každou**](../logic-apps/logic-apps-control-flow-loops.md) smyčku. Můžete převzít filtrované pole výsledků a provést akci pro každou chybu pomocí `For_each` smyčky.
 
@@ -314,19 +314,19 @@ Tady je podrobný návod, který popisuje, co se stane v tomto příkladu:
 
 1. Chcete-li získat výsledek ze všech akcí uvnitř "My_Scope", akce **pole filtru** použije tento výraz filtru:`@result('My_Scope')`
 
-1. Podmínka pro **pole filtru** je jakákoli `@result()` položka, která má stav rovná se `Failed`. Tato podmínka filtruje pole, které má všechny výsledky akce z "My_Scope" dolů do pole, které obsahuje pouze výsledky neúspěšných akcí.
+1. Podmínka pro **pole filtru** je jakákoli `@result()` položka, která má stav rovná se `Failed` . Tato podmínka filtruje pole, které má všechny výsledky akce z "My_Scope" dolů do pole, které obsahuje pouze výsledky neúspěšných akcí.
 
-1. Provede akci `For_each` smyčky u *filtrovaných* výstupů polí. Tento krok provádí akci u každého neúspěšného výsledku akce, který byl dříve filtrován.
+1. Provede `For_each` akci smyčky u *filtrovaných* výstupů polí. Tento krok provádí akci u každého neúspěšného výsledku akce, který byl dříve filtrován.
 
    Pokud jedna akce v oboru nebude úspěšná, akce ve `For_each` smyčce se spustí jenom jednou. Několik neúspěšných akcí způsobuje jednu akci za selhání.
 
-1. Odešle příspěvek HTTP na tělo odpovědi `For_each` položky, což je `@item()['outputs']['body']` výraz.
+1. Odešle příspěvek HTTP na `For_each` tělo odpovědi položky, což je `@item()['outputs']['body']` výraz.
 
-   Obrazec `@result()` položky je stejný jako `@actions()` tvar a lze ho analyzovat stejným způsobem.
+   `@result()`Obrazec položky je stejný jako `@actions()` tvar a lze ho analyzovat stejným způsobem.
 
-1. Přidejte dvě vlastní hlavičky s názvem akce při selhání (`@item()['name']`) a neúspěšném spuštěným spuštěním ID`@item()['clientTrackingId']`sledování klienta ().
+1. Přidejte dvě vlastní hlavičky s názvem akce při selhání ( `@item()['name']` ) a neúspěšném spuštěným spuštěním ID sledování klienta ( `@item()['clientTrackingId']` ).
 
-Pro referenci `@result()` tady je příklad jedné položky, která zobrazuje vlastnosti `name`, `body`a `clientTrackingId` , které jsou analyzovány v předchozím příkladu. Mimo `For_each` akci `@result()` vrátí pole těchto objektů.
+Pro referenci tady je příklad jedné `@result()` položky, `name` `body` která zobrazuje vlastnosti, a, `clientTrackingId` které jsou analyzovány v předchozím příkladu. Mimo `For_each` akci `@result()` vrátí pole těchto objektů.
 
 ```json
 {

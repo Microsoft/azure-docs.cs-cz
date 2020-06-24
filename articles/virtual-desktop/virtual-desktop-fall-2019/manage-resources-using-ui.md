@@ -4,16 +4,16 @@ description: Jak nainstalovat nástroj uživatelského rozhraní se šablonou Az
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: abe9b060793983e42ab432924ca5d6d7f43d307d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: b2680a463bd0150a92dc587eb2f233ef58a58f6d
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82615237"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214158"
 ---
 # <a name="deploy-a-management-tool-with-an-azure-resource-manager-template"></a>Nasazení nástroje pro správu pomocí šablony Azure Resource Manager
 
@@ -52,11 +52,11 @@ Pomocí těchto pokynů nasaďte šablonu Azure Resource Management:
 
 1. Přejít na [stránku GitHub Azure RDS-Templates](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy).
 2. Nasaďte šablonu do Azure.
-    - Pokud nasazujete v podnikovém předplatném, přejděte dolů a vyberte **nasadit do Azure**. 
+    - Pokud nasazujete v podnikovém předplatném, přejděte dolů a vyberte **nasadit do Azure**.
     - Pokud nasazujete v rámci předplatného poskytovatele Cloud Solution Provider, při nasazení do Azure postupujte podle těchto pokynů:
         1. Posuňte se dolů a klikněte pravým tlačítkem myši na **nasadit do Azure**a pak vyberte **Kopírovat umístění odkazu**.
         2. Otevřete textový editor, jako je Poznámkový blok, a vložte odkaz sem.
-        3. Hned za <https://portal.azure.com/> a před hashtagem (#) zadejte znak hvězdička (@) následovaný názvem domény klienta. Tady je příklad formátu: <https://portal.azure.com/@Contoso.onmicrosoft.com#create/>.
+        3. Hned za <https://portal.azure.com/> a před hashtagem (#) zadejte znak hvězdička (@) následovaný názvem domény klienta. Tady je příklad formátu: <https://portal.azure.com/@Contoso.onmicrosoft.com#create/> .
         4. Přihlaste se k Azure Portal jako uživatel s oprávněním správce/Přispěvatel k předplatnému poskytovatele Cloud Solution Provider.
         5. Vložte odkaz, který jste zkopírovali do textového editoru, do adresního řádku.
 3. Při zadávání parametrů udělejte toto:
@@ -83,10 +83,10 @@ Chcete-li zjistit, který uživatel, který můžete použít k přihlášení k
 
 Jakmile se rozhodnete, který uživatel použijete k poskytnutí souhlasu, postupujte podle těchto pokynů a poskytněte tomuto nástroji souhlas:
 
-1. Přejděte do prostředků Azure, vyberte prostředek Azure App Services s názvem, který jste zadali v šabloně (například Apr3UX), a přejděte na adresu URL, která k němu je přidružená. například <https://rdmimgmtweb-210520190304.azurewebsites.net>.
+1. Přejděte do prostředků Azure, vyberte prostředek Azure App Services s názvem, který jste zadali v šabloně (například Apr3UX), a přejděte na adresu URL, která k němu je přidružená. například <https://rdmimgmtweb-210520190304.azurewebsites.net> .
 2. Přihlaste se pomocí příslušného Azure Active Directory uživatelského účtu.
 3. Pokud jste ověřili s globálním správcem, můžete teď zaškrtnout políčko pro **vyjádření souhlasu jménem vaší organizace**. Vyberte **přijmout** pro poskytnutí souhlasu.
-   
+
    ![Snímek obrazovky zobrazující stránku s úplným souhlasem, kterou uvidí uživatel nebo správce.](../media/management-ui-consent-page.png)
 
 Nyní přejdete k nástroji pro správu.
@@ -97,11 +97,11 @@ Po poskytnutí souhlasu organizace nebo zadaného uživatele můžete kdykoli z�
 
 Při spuštění nástroje postupujte podle těchto pokynů:
 
-1. Vyberte prostředek služby Azure App Services s názvem, který jste zadali v šabloně (například Apr3UX), a přejděte na adresu URL, která je k ní přidružená. například <https://rdmimgmtweb-210520190304.azurewebsites.net>.
+1. Vyberte prostředek služby Azure App Services s názvem, který jste zadali v šabloně (například Apr3UX), a přejděte na adresu URL, která je k ní přidružená. například <https://rdmimgmtweb-210520190304.azurewebsites.net> .
 2. Přihlaste se pomocí svých přihlašovacích údajů k virtuálnímu počítači s Windows.
 3. Po zobrazení výzvy k výběru skupiny tenantů vyberte v rozevíracím seznamu **výchozí skupinu tenantů** .
 4. Když vyberete **výchozí skupinu tenantů**, měla by se zobrazit nabídka na levé straně okna. V této nabídce najděte název skupiny tenantů a vyberte ji.
-  
+
   > [!NOTE]
   > Pokud máte vlastní skupinu tenantů, zadejte název ručně místo volby v rozevíracím seznamu.
 

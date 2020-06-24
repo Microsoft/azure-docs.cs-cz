@@ -3,21 +3,21 @@ title: Připojení k účtu Azure Cosmos pomocí privátního odkazu Azure
 description: Přečtěte si, jak bezpečně přistupovat k účtu Azure Cosmos z virtuálního počítače vytvořením privátního koncového bodu.
 author: malopMSFT
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/04/2019
 ms.author: allensu
-ms.openlocfilehash: b7a50a2dabc9503ca5dbdd3388e29cfc69963885
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d074128376d481902a203de3d32ef89aa72d7b3a
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78252606"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737712"
 ---
-# <a name="connect-privately-to-an-azure-cosmos-account-using-azure-private-link"></a>Připojení soukromě k účtu Azure Cosmos pomocí privátního odkazu Azure
+# <a name="connect-privately-to-an-azure-cosmos-account-using-azure-private-link"></a>Privátní připojení k účtu služby Azure Cosmos DB s využitím služby Azure Private Link
 
 Privátní koncový bod Azure je základním stavebním blokem privátního propojení v Azure. Umožňuje prostředkům Azure, jako jsou virtuální počítače (VM), komunikovat soukromě s prostředky privátního propojení.
 
-V tomto článku se naučíte, jak vytvořit virtuální počítač ve virtuální síti Azure a účtu Azure Cosmos s privátním koncovým bodem pomocí Azure Portal. Pak můžete bezpečně přistupovat k účtu Azure Cosmos z virtuálního počítače.
+V tomto článku se dozvíte, jak pomocí webu Azure Portal vytvořit virtuální počítač ve virtuální síti Azure a účet služby Azure Cosmos DB s privátním koncovým bodem. Pak budete moct bezpečně přistupovat z virtuálního počítače k účtu služby Azure Cosmos DB.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -33,18 +33,18 @@ V této části budete muset v krocích níže nahradit následující parametry
 
 | Parametr                   | Hodnota                |
 |-----------------------------|----------------------|
-| **\<Resource-Group-Name>**  | myResourceGroup|
-| **\<název virtuální sítě>** | myVirtualNetwork         |
-| **\<název oblasti>**          | USA – středozápad     |
-| **\<IPv4 –>adresního prostoru**   | 10.1.0.0 \ 16          |
-| **\<>názvů podsítí**          | mySubnet        |
-| **\<podsíť-adresa>rozsahu** | 10.1.0.0 \ 24          |
+| **\<resource-group-name>**  | myResourceGroup|
+| **\<virtual-network-name>** | myVirtualNetwork         |
+| **\<region-name>**          | USA – středozápad     |
+| **\<IPv4-address-space>**   | 10.1.0.0 \ 16          |
+| **\<subnet-name>**          | mySubnet        |
+| **\<subnet-address-range>** | 10.1.0.0 \ 24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-the-virtual-machine"></a>Vytvoření virtuálního počítače
 
-1. V levé horní části obrazovky Azure Portal vyberte **vytvořit** > **Compute** > **virtuální počítač**Compute.
+1. V levé horní části obrazovky Azure Portal vyberte **vytvořit**  >  **Compute**  >  **virtuální počítač**Compute.
 
 1. V nástroji **vytvořit virtuální počítač základy**zadejte nebo vyberte tyto informace:
 
@@ -114,7 +114,7 @@ Připojte se k virtuálnímu počítači *myVm* z Internetu následujícím způ
     1. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače.
 
         > [!NOTE]
-        > Možná budete muset vybrat **Další volby** > **použít jiný účet**a zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače.
+        > Možná budete muset vybrat **Další volby**  >  **použít jiný účet**a zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače.
 
 1. Vyberte **OK**.
 
@@ -126,7 +126,7 @@ Připojte se k virtuálnímu počítači *myVm* z Internetu následujícím způ
 
 V této části se připojíte soukromě k účtu Azure Cosmos pomocí privátního koncového bodu. 
 
-1. Pokud chcete zahrnout IP adresu a mapování DNS, přihlaste se k *myVM*virtuálnímu počítači myVM `c:\Windows\System32\Drivers\etc\hosts` , otevřete soubor a zahrňte informace DNS z předchozího kroku v následujícím formátu:
+1. Pokud chcete zahrnout IP adresu a mapování DNS, přihlaste se k virtuálnímu počítači *myVM*, otevřete `c:\Windows\System32\Drivers\etc\hosts` soubor a zahrňte informace DNS z předchozího kroku v následujícím formátu:
 
    [Privátní IP adresa] [Koncový bod účtu]. Documents. Azure. com
 
@@ -149,7 +149,7 @@ V této části se připojíte soukromě k účtu Azure Cosmos pomocí privátn�
 
 1. Vyberte **Další**.
 
-1. Vyberte **Connect** (Připojit).
+1. Vyberte **Připojit**.
 
 1. Procházejte databáze a kontejnery Azure Cosmos z *mycosmosaccount*.
 

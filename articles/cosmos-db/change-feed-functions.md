@@ -7,18 +7,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 7a74635551d8416bf60689b1f1403f29883e81bd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ce95e760dd9faf2130a81dff3f0611c27f99551d
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78851363"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118895"
 ---
 # <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>Architektury založené na událostech bez serveru s Azure Cosmos DB a Azure Functions
 
 Azure Functions poskytuje nejjednodušší způsob, jak se připojit ke [kanálu změn](change-feed.md). Můžete vytvořit malé proaktivní Azure Functions, které se automaticky aktivují pro každou novou událost v kanálu změn kontejneru Azure Cosmos.
 
-![Funkce založené na událostech bez serveru, které pracují s triggerem Azure Functions pro Cosmos DB](./media/change-feed-functions/functions.png)
+:::image type="content" source="./media/change-feed-functions/functions.png" alt-text="Funkce založené na událostech bez serveru, které pracují s triggerem Azure Functions pro Cosmos DB" border="false":::
 
 Pomocí [triggeru Azure Functions pro Cosmos DB](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md)můžete využívat funkce škálování a spolehlivého rozpoznávání událostí v [kanálu změn](./change-feed-processor.md), aniž byste museli udržovat žádnou [infrastrukturu pracovních procesů](./change-feed-processor.md). Zaměřte se jenom na logiku funkce Azure Functions, aniž byste se museli starat o zbytek kanálu týkajícího se zdrojů událostí. Trigger můžete dokonce kombinovat s dalšími [vazbami Azure Functions](../azure-functions/functions-triggers-bindings.md#supported-bindings).
 
@@ -30,7 +30,7 @@ Pomocí [triggeru Azure Functions pro Cosmos DB](../azure-functions/functions-bi
 K implementaci toku založeného na události bez serveru budete potřebovat:
 
 * **Monitorovaný kontejner**: monitorovaný kontejner je monitorovaným kontejnerem Azure Cosmos a ukládá data, ze kterých se generuje kanál změn. Jakékoli vložení, aktualizace monitorovaného kontejneru se projeví v kanálu změn kontejneru.
-* **Kontejner zapůjčení**: kontejner zapůjčení udržuje stav napříč několika a dynamickými instancemi funkcí Azure bez serveru a umožňuje dynamické škálování. Tento kontejner zapůjčení může být ručně nebo automaticky vytvořen triggerem Azure Functions pro Cosmos DB. Chcete-li automaticky vytvořit kontejner zapůjčení, nastavte v [konfiguraci](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration)příznak *CreateLeaseCollectionIfNotExists* . Kontejnery zapůjčení musí mít definici klíče `/id` oddílu.
+* **Kontejner zapůjčení**: kontejner zapůjčení udržuje stav napříč několika a dynamickými instancemi funkcí Azure bez serveru a umožňuje dynamické škálování. Tento kontejner zapůjčení může být ručně nebo automaticky vytvořen triggerem Azure Functions pro Cosmos DB. Chcete-li automaticky vytvořit kontejner zapůjčení, nastavte v [konfiguraci](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration)příznak *CreateLeaseCollectionIfNotExists* . Kontejnery zapůjčení musí mít `/id` definici klíče oddílu.
 
 ## <a name="create-your-azure-functions-trigger-for-cosmos-db"></a>Vytvoření triggeru Azure Functions pro Cosmos DB
 

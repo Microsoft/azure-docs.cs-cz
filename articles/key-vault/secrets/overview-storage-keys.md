@@ -9,16 +9,16 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
-ms.openlocfilehash: 1125bafa43ce1752c58d1cce0bba66a6bbd32c32
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1a39a8e4d09da1f9ec8721c2ea89672e7bfc096a
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81685418"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118538"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>Správa klíčů účtu úložiště pomocí Key Vault a Azure CLI
 
-Účet úložiště Azure používá přihlašovací údaje, které zahrnují název účtu a klíč. Klíč se vygeneruje automaticky a slouží jako heslo, nikoli jako kryptografický klíč. Key Vault spravuje klíče účtu úložiště tak, že je ukládá jako Key Vault tajných klíčů. 
+Účet úložiště Azure používá přihlašovací údaje, které zahrnují název účtu a klíč. Klíč se vygeneruje automaticky a slouží jako heslo, nikoli jako kryptografický klíč. Key Vault spravuje klíče účtu úložiště tím, že je pravidelně znovu generuje v účtu úložiště, a poskytuje tokeny sdíleného přístupového podpisu pro delegovaný přístup k prostředkům ve vašem účtu úložiště.
 
 Pomocí funkce klíče spravovaného účtu úložiště Key Vault můžete zobrazit (synchronizovat) klíče s účtem služby Azure Storage a pravidelně je znovu vygenerovat (otočit) klíče. Klíče můžete spravovat jak pro účty úložiště, tak pro účty klasického úložiště.
 
@@ -46,7 +46,7 @@ Key Vault je aplikace Microsoftu, která je předem registrovaná ve všech klie
 | --- | --- | --- |
 | Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
 | Azure AD | Veřejný Azure | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
-| Ostatní  | Všechny | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
+| Jiné  | Všechny | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -71,8 +71,8 @@ az login
 Pomocí příkazu Azure CLI [AZ role Assignment Create](/cli/azure/role/assignment?view=azure-cli-latest) udělte Key Vault přístup k vašemu účtu úložiště. Zadejte příkaz pro následující hodnoty parametrů:
 
 - `--role`: Předejte roli RBAC role služby klíčového účtu úložiště. Tato role omezuje rozsah přístupu na váš účet úložiště. Pro klasický účet úložiště dejte místo toho roli služby operátora klíč účtu klasického úložiště.
-- `--assignee`: Předejte hodnotuhttps://vault.azure.net, což je adresa url pro Key Vault ve veřejném cloudu Azure. (V případě cloudového použití Azure Goverment použijte--asingee-Object-ID ', přečtěte si téma [ID aplikace instančního objektu](#service-principal-application-id).)
-- `--scope`: Předejte své ID prostředku účtu úložiště, který je ve formuláři `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>`. ID předplatného zjistíte pomocí příkazu Azure CLI [AZ Account list](/cli/azure/account?view=azure-cli-latest#az-account-list) . Pokud chcete najít název účtu úložiště a skupinu prostředků účtu úložiště, použijte příkaz Azure CLI [AZ Storage Account list](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-list) .
+- `--assignee`: Předejte hodnotu https://vault.azure.net , což je adresa URL pro Key Vault ve veřejném cloudu Azure. (V případě cloudového použití Azure Goverment použijte--asingee-Object-ID ', přečtěte si téma [ID aplikace instančního objektu](#service-principal-application-id).)
+- `--scope`: Předejte své ID prostředku účtu úložiště, který je ve formuláři `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>` . ID předplatného zjistíte pomocí příkazu Azure CLI [AZ Account list](/cli/azure/account?view=azure-cli-latest#az-account-list) . Pokud chcete najít název účtu úložiště a skupinu prostředků účtu úložiště, použijte příkaz Azure CLI [AZ Storage Account list](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-list) .
 
 ```azurecli-interactive
 az role assignment create --role "Storage Account Key Operator Service Role" --assignee 'https://vault.azure.net' --scope "/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>"
@@ -90,11 +90,11 @@ az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --storage
 Všimněte si, že oprávnění k účtům úložiště nejsou k dispozici na stránce zásady přístupu na účtu úložiště v Azure Portal.
 ### <a name="create-a-key-vault-managed-storage-account"></a>Vytvoření spravovaného účtu úložiště Key Vault
 
- Pomocí příkazu Azure CLI [AZ klíčů Storage](/cli/azure/keyvault/storage?view=azure-cli-latest#az-keyvault-storage-add) vytvořte účet spravovaného úložiště Key Vault. Nastavte dobu regenerace 90 dní. Po 90 dnech Key Vault znovu vygeneruje `key1` a zahodí aktivní klíč z `key2` na. `key1` `key1`je pak označen jako aktivní klíč. Zadejte příkaz pro následující hodnoty parametrů:
+ Pomocí příkazu Azure CLI [AZ klíčů Storage](/cli/azure/keyvault/storage?view=azure-cli-latest#az-keyvault-storage-add) vytvořte účet spravovaného úložiště Key Vault. Nastavte dobu regenerace 90 dní. Po 90 dnech Key Vault znovu vygeneruje `key1` a zahodí aktivní klíč z `key2` na `key1` . `key1`je pak označen jako aktivní klíč. Zadejte příkaz pro následující hodnoty parametrů:
 
 - `--vault-name`: Předejte název vašeho trezoru klíčů. Název vašeho trezoru klíčů zjistíte pomocí příkazu Azure CLI AZ Key [trezor list](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-list) .
 - `-n`: Předejte název svého účtu úložiště. Název svého účtu úložiště zjistíte pomocí příkazu Azure CLI [AZ Storage Account list](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-list) .
-- `--resource-id`: Předejte své ID prostředku účtu úložiště, který je ve formuláři `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>`. ID předplatného zjistíte pomocí příkazu Azure CLI [AZ Account list](/cli/azure/account?view=azure-cli-latest#az-account-list) . Pokud chcete najít název účtu úložiště a skupinu prostředků účtu úložiště, použijte příkaz Azure CLI [AZ Storage Account list](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-list) .
+- `--resource-id`: Předejte své ID prostředku účtu úložiště, který je ve formuláři `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>` . ID předplatného zjistíte pomocí příkazu Azure CLI [AZ Account list](/cli/azure/account?view=azure-cli-latest#az-account-list) . Pokud chcete najít název účtu úložiště a skupinu prostředků účtu úložiště, použijte příkaz Azure CLI [AZ Storage Account list](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-list) .
    
  ```azurecli-interactive
 az keyvault storage add --vault-name <YourKeyVaultName> -n <YourStorageAccountName> --active-key-name key1 --auto-regenerate-key --regeneration-period P90D --resource-id "/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>"
@@ -106,14 +106,14 @@ Můžete také požádat Key Vault o generování tokenů sdíleného přístupo
 
 Příkazy v této části dokončí následující akce:
 
-- Nastavte definici `<YourSASDefinitionName>`sdíleného přístupového podpisu účtu. Definice je nastavená na spravovaném účtu `<YourStorageAccountName>` úložiště Key Vault ve vašem trezoru `<YourKeyVaultName>`klíčů.
+- Nastavte definici sdíleného přístupového podpisu účtu `<YourSASDefinitionName>` . Definice je nastavená na spravovaném účtu úložiště Key Vault `<YourStorageAccountName>` ve vašem trezoru klíčů `<YourKeyVaultName>` .
 - Vytvořte token sdíleného přístupového podpisu účtu pro služby blob, File, Table a Queue. Token se vytvoří pro službu typů prostředků, kontejner a objekt. Token se vytvoří se všemi oprávněními přes HTTPS a zadaným počátečním a koncovým datem.
-- V trezoru nastavte Key Vault definici sdíleného přístupového podpisu spravovaného úložiště. Definice obsahuje identifikátor URI šablony tokenu sdíleného přístupového podpisu, který byl vytvořen. Definice má typ `account` sdíleného přístupového podpisu a je platná po dobu N dní.
+- V trezoru nastavte Key Vault definici sdíleného přístupového podpisu spravovaného úložiště. Definice obsahuje identifikátor URI šablony tokenu sdíleného přístupového podpisu, který byl vytvořen. Definice má typ sdíleného přístupového podpisu `account` a je platná po dobu N dní.
 - Ověřte, že se sdílený přístupový podpis uložil do trezoru klíčů jako tajný kód.
 
 ### <a name="create-a-shared-access-signature-token"></a>Vytvoření tokenu sdíleného přístupového podpisu
 
-Pomocí příkazu Azure CLI [AZ Storage Account Generate-SAS](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-generate-sas) vytvořte definici sdíleného přístupového podpisu. Tato operace vyžaduje oprávnění `storage` a `setsas` .
+Pomocí příkazu Azure CLI [AZ Storage Account Generate-SAS](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-generate-sas) vytvořte definici sdíleného přístupového podpisu. Tato operace vyžaduje `storage` oprávnění a `setsas` .
 
 
 ```azurecli-interactive
@@ -158,7 +158,7 @@ K zobrazení obsahu tohoto tajného kódu teď můžete použít příkaz [AZ kl
 az keyvault secret show --vault-name <YourKeyVaultName> --id <SasDefinitionID>
 ```
 
-Výstup tohoto příkazu zobrazí řetězec definice SAS jako`value`.
+Výstup tohoto příkazu zobrazí řetězec definice SAS jako `value` .
 
 
 ## <a name="next-steps"></a>Další kroky

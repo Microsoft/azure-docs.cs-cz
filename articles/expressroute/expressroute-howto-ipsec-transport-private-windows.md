@@ -4,16 +4,16 @@ description: Jak povolit transportní režim protokolu IPsec mezi virtuálními 
 services: expressroute
 author: fabferri
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/17/2018
 ms.author: fabferri
 ms.custom: seodec18
-ms.openlocfilehash: 1bc33047d31262af443cddc418853fbacd88aec1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 32ad4f643ff0b217460403245cbb4e99f139aef9
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74022009"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737253"
 ---
 # <a name="configure-ipsec-transport-mode-for-expressroute-private-peering"></a>Konfigurace režimu přenosu IPsec pro privátní partnerské vztahy ExpressRoute
 
@@ -61,7 +61,7 @@ Při konfiguraci zásad protokolu IPsec je důležité pochopit následující t
 
 [![5]][5]
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Ujistěte se, že splňujete následující požadavky:
 
@@ -161,7 +161,7 @@ Vytvořte seznam filtrů, který určuje šifrovaný provoz HTTP s cílovým por
 2. Do pole **Název:** zadejte název vašeho seznamu filtru IP adres. Například **Azure-premises-HTTP8080**. Pak klikněte na tlačítko **Přidat**.
 
    [![25]][25]
-3. Na stránce s **popisem filtru IP a zrcadlenou vlastností** vyberte možnost **Zrcadleno**. Zrcadlení nastavení odpovídá paketům v obou směrech, což umožňuje obousměrnou komunikaci. Pak klikněte na **Další**.
+3. Na stránce s **popisem filtru IP a zrcadlenou vlastností** vyberte možnost **Zrcadleno**. Zrcadlení nastavení odpovídá paketům v obou směrech, což umožňuje obousměrnou komunikaci. Potom klikněte na **Další**.
 
    [![26]][26]
 4. Na stránce **Zdroj přenosu IP** adres v rozevíracím seznamu **zdrojová adresa:** vyberte **konkrétní IP adresu nebo podsíť**. 
@@ -255,7 +255,7 @@ Přidejte do zásady protokolu IPsec **seznam filtrů IP** a **akci filtru** , k
 7. Windows podporuje čtyři různé typy ověřování: Kerberos, certifikáty, NTLMv2 a předsdílený klíč. Vzhledem k tomu, že pracujete s hostiteli připojeným k doméně, vyberte možnost **výchozí nastavení služby Active Directory (protokol Kerberos V5)** a poté klikněte na tlačítko **Další**.
 
    [![47]][47]
-8. Nové zásady vytvoří pravidlo zabezpečení: **Azure-premises-HTTP8080**. Klikněte na tlačítko **OK**.
+8. Nové zásady vytvoří pravidlo zabezpečení: **Azure-premises-HTTP8080**. Klikněte na **OK**.
 
    [![48]][48]
 

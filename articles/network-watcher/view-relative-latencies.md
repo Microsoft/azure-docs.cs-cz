@@ -6,18 +6,18 @@ documentationcenter: ''
 author: damendo
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/14/2017
 ms.author: damendo
 ms.custom: ''
-ms.openlocfilehash: 39f81731f20566d1a39f3f0931ff52c4e8b43ec0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 938315dac80ae51984851083753a9cb8f77662b2
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80521383"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737899"
 ---
 # <a name="view-relative-latency-to-azure-regions-from-specific-locations"></a>Zobrazení relativní latence připojení k oblastem Azure z konkrétních umístění
 
@@ -59,10 +59,10 @@ Get-AzNetworkWatcherReachabilityReport `
 ```
 
 > [!NOTE]
-> Oblast, kterou zadáte v předchozím příkazu, se nemusí shodovat s oblastí, kterou jste zadali při načítání sledovacího procesu sítě. Předchozí příkaz jednoduše vyžaduje, abyste zadali existující sledovací proces sítě. Sledovací proces sítě může být v libovolné oblasti. Pokud zadáte hodnoty pro `-Country` a `-State`, musí být platné. V hodnotách se rozlišují malá a velká písmena. Data jsou k dispozici omezenému počtu zemí nebo oblastí, států a měst. Spusťte příkazy v části [Zobrazit dostupné země/oblasti, stavy, města a poskytovatele,](#view-available) abyste si zobrazili seznam dostupných zemí/oblastí, města a států pro použití s předchozím příkazem. 
+> Oblast, kterou zadáte v předchozím příkazu, se nemusí shodovat s oblastí, kterou jste zadali při načítání sledovacího procesu sítě. Předchozí příkaz jednoduše vyžaduje, abyste zadali existující sledovací proces sítě. Sledovací proces sítě může být v libovolné oblasti. Pokud zadáte hodnoty pro `-Country` a `-State` , musí být platné. V hodnotách se rozlišují malá a velká písmena. Data jsou k dispozici omezenému počtu zemí nebo oblastí, států a měst. Spusťte příkazy v části [Zobrazit dostupné země/oblasti, stavy, města a poskytovatele,](#view-available) abyste si zobrazili seznam dostupných zemí/oblastí, města a států pro použití s předchozím příkazem. 
 
 > [!WARNING]
-> Pro `-StartTime` a `-EndTime`je nutné zadat datum v posledních 30 dnech. Když zadáte předchozí datum, nebudou se vracet žádná data.
+> Pro a je nutné zadat datum v posledních 30 dnech `-StartTime` `-EndTime` . Když zadáte předchozí datum, nebudou se vracet žádná data.
 
 Výstup z předchozího příkazu je následující:
 
@@ -108,7 +108,7 @@ Ve vráceném výstupu je hodnota pro **skore** relativní latenci napříč obl
 
 ## <a name="compare-relative-network-latencies-across-azure-regions-from-a-specific-location"></a>Porovnání relativních latencí sítě napříč oblastmi Azure z konkrétního umístění
 
-Pokud místo určení relativních latencí mezi konkrétním umístěním a konkrétní oblastí Azure pomocí `-Location`jste chtěli určit relativní latenci pro všechny oblasti Azure z konkrétního fyzického umístění, můžete to udělat i vy. Například následující příkaz vám pomůže vyhodnotit, co oblast Azure nasadí, v případě, že vaši primární uživatelé Comcastu uživatele ve státě Washington:
+Pokud místo určení relativních latencí mezi konkrétním umístěním a konkrétní oblastí Azure pomocí `-Location` jste chtěli určit relativní latenci pro všechny oblasti Azure z konkrétního fyzického umístění, můžete to udělat i vy. Například následující příkaz vám pomůže vyhodnotit, co oblast Azure nasadí, v případě, že vaši primární uživatelé Comcastu uživatele ve státě Washington:
 
 ```powershell
 Get-AzNetworkWatcherReachabilityReport `

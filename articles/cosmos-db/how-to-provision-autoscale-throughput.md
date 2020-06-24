@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/10/2020
-ms.openlocfilehash: 16fad7f57d3054c193da2571f1b33cfd77fdd51c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 59feabce099087edb011df471561229bfa88a289
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664757"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118725"
 ---
 # <a name="provision-autoscale-throughput-on-database-or-container-in-azure-cosmos-db"></a>Zřizování propustnosti automatického škálování v databázi nebo kontejneru v Azure Cosmos DB
 
@@ -26,7 +26,7 @@ Tento článek vysvětluje, jak zřídit propustnost automatického škálován�
 
 1. Vyberte **Nový kontejner.** Zadejte název databáze, kontejneru a klíč oddílu. V části **propustnost**vyberte možnost **automatického škálování** a nastavte [maximální propustnost (ru/s)](provision-throughput-autoscale.md#how-autoscale-provisioned-throughput-works) , na kterou se má databáze nebo kontejner škálovat.
 
-   ![Vytvoření kontejneru a konfigurace zřízené propustnosti automatického škálování](./media/how-to-provision-autoscale-throughput/create-new-autoscale-container.png)
+   :::image type="content" source="./media/how-to-provision-autoscale-throughput/create-new-autoscale-container.png" alt-text="Vytvoření kontejneru a konfigurace zřízené propustnosti automatického škálování":::
 
 1. Vyberte **OK**.
 
@@ -45,7 +45,7 @@ Pokud chcete zřídit automatické škálování sdílené databáze propustnost
 
 1. V části **škálování**vyberte možnost **automatického škálování** a **uložte**.
 
-   ![Povolení automatického škálování u existujícího kontejneru](./media/how-to-provision-autoscale-throughput/autoscale-scale-and-settings.png)
+   :::image type="content" source="./media/how-to-provision-autoscale-throughput/autoscale-scale-and-settings.png" alt-text="Povolení automatického škálování u existujícího kontejneru":::
 
 > [!NOTE]
 > Pokud povolíte automatické škálování u existující databáze nebo kontejneru, počáteční hodnota pro max. RU/s se určí systémem na základě vašeho aktuálního ručního zřízeného nastavení propustnosti a úložiště. Po dokončení operace můžete v případě potřeby změnit maximální RU/s. [Další informace](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work) 

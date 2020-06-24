@@ -6,17 +6,17 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: damendo
-ms.openlocfilehash: 675919db55932d3ccc04fd5397f6f673832b4900
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c04da65af27ebd5ac654bc059ae004c157a20f33
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76840566"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737525"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>Zobrazení topologie virtuální sítě Azure
 
@@ -51,7 +51,7 @@ Prostředky zobrazené v diagramu jsou podmnožinou síťových součástí ve v
 
 Příkazy můžete spustit v následujících krocích:
 - V Azure Cloud Shell výběrem možnosti **vyzkoušet** v pravém horním rohu libovolného příkazu. Azure Cloud Shell je bezplatné interaktivní prostředí, které má předinstalované společné nástroje Azure a které je nakonfigurované pro použití s vaším účtem.
-- Spuštěním rozhraní příkazového řádku z počítače. Pokud spouštíte rozhraní příkazového řádku z počítače, kroky v tomto článku vyžadují Azure CLI verze 2.0.31 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli). Pokud používáte Azure CLI místně, musíte také spustit `az login` , aby se vytvořilo připojení k Azure.
+- Spuštěním rozhraní příkazového řádku z počítače. Pokud spouštíte rozhraní příkazového řádku z počítače, kroky v tomto článku vyžadují Azure CLI verze 2.0.31 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli). Pokud používáte Azure CLI místně, musíte také spustit, `az login` aby se vytvořilo připojení k Azure.
 
 Účet, který použijete, musí mít potřebná [oprávnění](required-rbac-permissions.md).
 
@@ -84,7 +84,7 @@ Příkazy můžete spustit v následujících krocích:
 
 Příkazy můžete spustit v následujících krocích:
 - V Azure Cloud Shell výběrem možnosti **vyzkoušet** v pravém horním rohu libovolného příkazu. Azure Cloud Shell je bezplatné interaktivní prostředí, které má předinstalované společné nástroje Azure a které je nakonfigurované pro použití s vaším účtem.
-- Spuštěním prostředí PowerShell z počítače. Pokud spustíte PowerShell z počítače, Tento článek vyžaduje modul Azure PowerShell `Az` . Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
+- Spuštěním prostředí PowerShell z počítače. Pokud spustíte PowerShell z počítače, Tento článek vyžaduje `Az` modul Azure PowerShell. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 
 Účet, který použijete, musí mít potřebná [oprávnění](required-rbac-permissions.md).
 

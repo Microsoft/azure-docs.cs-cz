@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 3b390ffa20cf3cf79b8fb6311ad05b2978bd5d24
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 46716cf5bd810225cbfc3b54d246917c9559f78f
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77655785"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85124455"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>Odeslat metriky hostovaného operačního systému do Azure Monitor klasický Cloud Services úložiště metrik 
 
@@ -46,7 +46,7 @@ Proces, který je popsaný v tomto článku, funguje jenom pro čítače výkonu
 
 ## <a name="create-a-service-principal"></a>Vytvoření instančního objektu 
 
-Vytvořte v tenantovi Azure Active Directory Princip služby pomocí pokynů na webu [použití portálu k vytvoření Azure Active Directory aplikace a instančního objektu, který má přístup k prostředkům](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal). Během tohoto procesu mějte na paměti následující: 
+Vytvořte instanční objekt ve vašem Azure Active Directorym tenantovi pomocí pokynů na webu [použití portálu k vytvoření Azure Active Directory aplikace a instančního objektu, který má přístup k prostředkům](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal). Během tohoto procesu mějte na paměti následující: 
 
 - Pro přihlašovací adresu URL můžete umístit libovolnou adresu URL.  
 - Vytvoří nový tajný klíč klienta pro tuto aplikaci.  

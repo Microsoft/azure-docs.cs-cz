@@ -12,12 +12,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 04/19/2020
-ms.openlocfilehash: 68ae42faaf4f3aea851fa1649ba033f60f2b199a
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 4aaf62af01933b24e666a3a1d626b666869d07e5
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193922"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117365"
 ---
 # <a name="monitoring-microsoft-azure-sql-database-and-azure-sql-managed-instance-performance-using-dynamic-management-views"></a>Monitorování Microsoft Azure SQL Database a výkonu spravované instance Azure SQL pomocí zobrazení dynamické správy
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -364,7 +364,7 @@ GROUP BY wait_type
 ORDER BY SUM(wait_time) DESC;
 ```
 
-### <a name="identity-high-memory-consuming-statements"></a>Vysoce náročné příkazy paměti pro identitu
+### <a name="identify-high-memory-consuming-statements"></a>Identifikace vysoce náročných příkazů paměti
 
 Pomocí následujícího dotazu Identifikujte vysoce náročné příkazy paměti:
 

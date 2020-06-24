@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7b5208d2da3635e822049859cae9c8f17b6105a
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 9090ca5b8057179b0cbef1d0a87ae563303ed2c1
+ms.sourcegitcommit: 666303748238dfdf9da30d49d89b915af73b0468
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84464245"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85130428"
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Oznámení Azure Active Directory Identity Protection
 
@@ -31,7 +31,11 @@ Tento článek poskytuje přehled e-mailů s oznámením.
 
 V reakci na zjištěný účet hrozí Azure AD Identity Protection vygenerovat e-mailové upozornění s **uživateli s rizikem zjištěným** jako předmětem. E-mail obsahuje odkaz na sestavu **[Uživatelé označení příznakem rizika](../reports-monitoring/concept-user-at-risk.md)** . Osvědčeným postupem je okamžitě prozkoumat riziko pro uživatele.
 
-Konfigurace pro tuto výstrahu vám umožní určit, na jakou úroveň rizika uživatele má být výstraha vygenerována. E-mail se vygeneruje, když úroveň rizika uživatele dosáhne toho, co jste určili. Po přesunu na tuto úroveň rizika uživatele ale nebudete dostávat noví uživatelé upozorňující na riziko zjištěná e-mailová upozornění pro tohoto uživatele. Pokud jste například nastavili zásady na upozornění pro středně velké uživatelské riziko a uživatel Jan se přesune na střední riziko, obdržíte riziko zjištěného e-mailu pro uživatele Jan. V případě, že se Jan pak přesune na vysoké riziko nebo má další zjišťování rizik, nedostanete upozornění zjištěná druhým uživatelem.
+Konfigurace pro tuto výstrahu vám umožní určit, na jakou úroveň rizika uživatele má být výstraha vygenerována. E-mail se vygeneruje, když úroveň rizika uživatele dosáhne toho, co jste zadali. Pokud jste například nastavili zásady na výstrahu středně velkému uživateli a skóre rizika uživatele od uživatele Jan se z důvodu rizika přihlášení v reálném čase přesune na střední riziko, obdržíte uživateli zjištěné riziko. Pokud má uživatel následnou detekci rizik, která by způsobila, že výpočet úrovně rizika uživatele bude představovat zadanou úroveň rizika (nebo vyšší), obdržíte při přepočítání skóre uživatele zjištěné e-maily další uživatelé s riziky zjištěnými uživateli. Pokud se například uživatel přesune k střednímu riziku 1. ledna, obdržíte e-mailové oznámení, pokud je u nastavení nastaveno výstrahy na střední riziko. Pokud má stejný uživatel další detekci rizik na 1. lednu, což je také střední riziko, a skóre rizika uživatele se přepočítá a je stále střední, obdržíte další e-mailové oznámení. 
+
+Další e-mailové oznámení se ale pošle jenom v případě, že čas, kdy došlo k detekci rizika (která způsobila změnu na úrovni rizika uživatele), je novější než poslední e-mail byl odeslán. Například přihlášení uživatele od 1. ledna v 9:00 a nehrozí riziko v reálném čase (což znamená, že z důvodu tohoto přihlášení nebylo vygenerováno žádné e-maily). Deseti minut 5:10 později se stejný uživatel přihlásí znovu a má vysoké riziko v reálném čase, což způsobí, že se úroveň rizika uživatele přesune na vysokou a pošle se e-mail. V 5:15 ráno se v případě nedostatku do offline režimu projeví rizikové skóre pro původní přihlášení v 5. Další uživatel označený příznakem pro rizikovou e-maily se neposílá, protože čas prvního přihlášení byl před druhým přihlášením, které už spustilo e-mailové oznámení.
+
+Aby nedocházelo k přetížení e-mailů, obdržíte jenom jednoho uživatele, u kterého se zjistilo riziko v 5 sekundách. To znamená, že pokud více uživatelů přejde na zadanou úroveň rizika během stejného 5 sekundového období, agregujeme a pošleme jeden e-mail, který bude reprezentovat změnu na úrovni rizika pro všechny z nich.
 
 ![E-mail zjištěných uživatelů v nebezpečí](./media/howto-identity-protection-configure-notifications/01.png)
 

@@ -4,15 +4,15 @@ description: Naučte se připojit soukromě k účtu úložiště v Azure pomoc�
 services: private-link
 author: malopMSFT
 ms.service: private-link
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 111e6e2f80c3460f363c496b7b32befdca16250d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1ccbb685ceb406fd7a52edf793b53d9e1c32630b
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81115114"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737321"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Privátní připojení k účtu úložiště s využitím privátního koncového bodu Azure
 Privátní koncový bod Azure je základním stavebním blokem privátního propojení v Azure. Umožňuje prostředkům Azure, jako jsou virtuální počítače (VM), komunikovat soukromě s prostředky privátního propojení.
@@ -34,19 +34,19 @@ V této části budete muset v krocích níže nahradit následující parametry
 
 | Parametr                   | Hodnota                |
 |-----------------------------|----------------------|
-| **\<Resource-Group-Name>**  | myResourceGroup |
-| **\<název virtuální sítě>** | myVirtualNetwork          |
-| **\<název oblasti>**          | USA – středozápad      |
-| **\<IPv4 –>adresního prostoru**   | 10.1.0.0 \ 16          |
-| **\<>názvů podsítí**          | mySubnet        |
-| **\<podsíť-adresa>rozsahu** | 10.1.0.0 \ 24          |
+| **\<resource-group-name>**  | myResourceGroup |
+| **\<virtual-network-name>** | myVirtualNetwork          |
+| **\<region-name>**          | USA – středozápad      |
+| **\<IPv4-address-space>**   | 10.1.0.0 \ 16          |
+| **\<subnet-name>**          | mySubnet        |
+| **\<subnet-address-range>** | 10.1.0.0 \ 24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 
 ### <a name="create-virtual-machine"></a>Vytvoření virtuálního počítače
 
-1. V levé horní části obrazovky Azure Portal vyberte **vytvořit** > **Compute** > **virtuální počítač**Compute.
+1. V levé horní části obrazovky Azure Portal vyberte **vytvořit**  >  **Compute**  >  **virtuální počítač**Compute.
 
 1. V nástroji **vytvořit virtuální počítač základy**zadejte nebo vyberte tyto informace:
 
@@ -94,7 +94,7 @@ V této části budete muset v krocích níže nahradit následující parametry
 ## <a name="create-your-private-endpoint"></a>Vytvoření privátního koncového bodu
 V této části vytvoříte privátním koncovým bodem privátního účtu úložiště. 
 
-1. V levé horní části obrazovky Azure Portal vyberte **vytvořit prostředek** > **Storage** > úložiště**účet**úložiště.
+1. V levé horní části obrazovky Azure Portal vyberte **vytvořit prostředek**  >  **úložiště**  >  **účet**úložiště.
 
 1. V nástroji **vytvořit účet úložiště – základy**zadejte nebo vyberte tyto informace:
 
@@ -122,7 +122,7 @@ V této části vytvoříte privátním koncovým bodem privátního účtu úlo
     | Předplatné | Vyberte své předplatné. |
     | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.|
     |Umístění|Vyberte **WestCentralUS**.|
-    |Název|Zadejte *myPrivateEndpoint*.  |
+    |Name|Zadejte *myPrivateEndpoint*.  |
     |Dílčí prostředek úložiště|Ponechte výchozí **objekt BLOB**. |
     | **SÍTĚ** |  |
     | Virtuální síť  | Vyberte *MyVirtualNetwork* ze skupiny prostředků *myResourceGroup*. |
@@ -155,7 +155,7 @@ Připojte se k virtuálnímu počítači *myVm* z Internetu následujícím způ
     1. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače.
 
         > [!NOTE]
-        > Možná budete muset vybrat **Další volby** > **použít jiný účet**a zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače.
+        > Možná budete muset vybrat **Další volby**  >  **použít jiný účet**a zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače.
 
 1. Vyberte **OK**.
 
@@ -168,7 +168,7 @@ Připojte se k virtuálnímu počítači *myVm* z Internetu následujícím způ
 V této části se soukromě připojíte k účtu úložiště pomocí privátního koncového bodu.
 
 1. Ve vzdálené ploše *myVM*otevřete PowerShell.
-2. Po `nslookup mystorageaccount.blob.core.windows.net` zadání této zprávy se zobrazí zpráva podobná této:
+2. `nslookup mystorageaccount.blob.core.windows.net`Po zadání této zprávy se zobrazí zpráva podobná této:
     ```azurepowershell
     Server:  UnKnown
     Address:  168.63.129.16
@@ -184,7 +184,7 @@ V této části se soukromě připojíte k účtu úložiště pomocí privátn�
 7. Vyberte **Další**.
 8. Vložte připojovací řetězec vložením dříve zkopírovaných informací.
 9. Vyberte **Další**.
-10. Vyberte **Connect** (Připojit).
+10. Vyberte **Připojit**.
 11. Procházení kontejnerů objektů BLOB z mystorageaccount 
 12. Volitelně Vytvořte složky nebo nahrajte soubory do *mystorageaccount*. 
 13. Zavřete připojení ke vzdálené ploše pro *myVM*. 

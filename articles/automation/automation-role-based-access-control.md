@@ -6,12 +6,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 05/17/2018
 ms.topic: conceptual
-ms.openlocfilehash: d60885f7dbcd090e4f2172015787bc34d4ee7bcf
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ac05d5b4eb8dd9d7a39f56ec6efae4831f00c623
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832499"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100010"
 ---
 # <a name="manage-role-permissions-and-security"></a>Správa oprávnění rolí a zabezpečení
 
@@ -43,7 +43,7 @@ V následujících tabulkách jsou popsána konkrétní oprávnění udělená j
 
 Vlastník může spravovat všechno, včetně přístupu. Následující tabulka uvádí oprávnění udělená pro roli:
 
-|Akce|Popis|
+|Akce|Description|
 |---|---|
 |Microsoft. Automation/automationAccounts/|Vytváření a Správa prostředků všech typů.|
 
@@ -283,7 +283,7 @@ V následující části se dozvíte, jak nakonfigurovat RBAC na svém účtu Au
 
 3. Do pole pro **Výběr** zadejte jméno uživatele, kterému chcete udělit oprávnění. Vyberte uživatele ze seznamu a klikněte na **Uložit**.
 
-   ![Přidání uživatelů](media/automation-role-based-access-control/automation-04-add-users.png)
+   ![Přidávání uživatelů](media/automation-role-based-access-control/automation-04-add-users.png)
 
    Nyní byste měli vidět, že uživatel byl přidán na stránku Uživatelé s přiřazenou vybranou rolí.
 
@@ -404,7 +404,7 @@ $userId = "<User ObjectId>" # Azure Active Directory (AAD) user's ObjectId from 
 $aa = Get-AzResource -ResourceGroupName $rgName -ResourceType "Microsoft.Automation/automationAccounts" -ResourceName $automationAccountName
 
 # Get the Runbook resource
-$rb = Get-AzResource -ResourceGroupName $rgName -ResourceType "Microsoft.Automation/automationAccounts/runbooks" -ResourceName "$automationAccountName/$rbName"
+$rb = Get-AzResource -ResourceGroupName $rgName -ResourceType "Microsoft.Automation/automationAccounts/runbooks" -ResourceName "$rbName"
 
 # The Automation Job Operator role only needs to be run once per user.
 New-AzRoleAssignment -ObjectId $userId -RoleDefinitionName "Automation Job Operator" -Scope $aa.ResourceId

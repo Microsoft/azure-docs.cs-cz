@@ -3,28 +3,33 @@ title: Vytvoření virtuálního počítače s Windows pomocí Azure image Build
 description: Vytvořte virtuální počítač s Windows pomocí Tvůrce imagí Azure.
 author: cynthn
 ms.author: cynthn
-ms.date: 07/31/2019
+ms.date: 05/05/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
-ms.openlocfilehash: 269b2f4674f2c99fc438c1a7be65e5660ca58d08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6fa1f6bcc6c91a493225726bc0df60d2d0b4a1e3
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81869499"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85119184"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder"></a>Verze Preview: Vytvoření virtuálního počítače s Windows pomocí Azure image Builder
 
 V tomto článku se dozvíte, jak můžete vytvořit vlastní image Windows pomocí Tvůrce imagí virtuálních počítačů Azure. Příklad v tomto [článku používá pro](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#properties-customize) přizpůsobení image vlastníky:
 - PowerShell (ScriptUri) – Stáhněte a spusťte [powershellový skript](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/testPsScript.ps1).
 - Restartování Windows – virtuální počítač se restartuje.
-- PowerShell (inline) – spusťte konkrétní příkaz. V tomto příkladu na virtuálním počítači vytvoří adresář pomocí `mkdir c:\\buildActions`.
+- PowerShell (inline) – spusťte konkrétní příkaz. V tomto příkladu na virtuálním počítači vytvoří adresář pomocí `mkdir c:\\buildActions` .
 - Soubor – zkopírujte soubor z GitHubu do virtuálního počítače. Tento příklad zkopíruje [index.MD](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html) do `c:\buildArtifacts\index.html` virtuálního počítače.
+- buildTimeoutInMinutes – zvyšte čas sestavení tak, aby bylo možné déle spouštět buildy, výchozí hodnota je 240 minut a můžete prodloužit dobu sestavování, aby bylo možné spouštět buildy delší.
+- vmProfile – určení vmSize a vlastností sítě
+- osDiskSizeGB – velikost obrázku můžete zvětšit.
+- Identita – poskytuje identitu pro Azure image Builder, která se má použít při sestavování.
 
-Můžete také zadat `buildTimeoutInMinutes`. Výchozí hodnota je 240 minut a můžete prodloužit dobu sestavování tak, aby umožňovala delší spuštění sestavení.
 
-K nakonfigurování image budeme používat šablonu Sample. JSON. Soubor. JSON, který používáme, je tady: [helloImageTemplateWin. JSON](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Windows_Managed_Image/helloImageTemplateWin.json). 
+Můžete také zadat `buildTimeoutInMinutes` . Výchozí hodnota je 240 minut a můžete prodloužit dobu sestavování tak, aby umožňovala delší spuštění sestavení.
+
+K nakonfigurování image budeme používat šablonu Sample. JSON. Soubor. JSON, který používáme, je tady: [helloImageTemplateWin.js](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Windows_Managed_Image/helloImageTemplateWin.json). 
 
 
 > [!IMPORTANT]
@@ -50,7 +55,8 @@ Ověřte vaši registraci.
 
 ```azurecli-interactive
 az provider show -n Microsoft.VirtualMachineImages | grep registrationState
-
+az provider show -n Microsoft.KeyVault | grep registrationState
+az provider show -n Microsoft.Compute | grep registrationState
 az provider show -n Microsoft.Storage | grep registrationState
 ```
 
@@ -58,9 +64,11 @@ Pokud nevyžadují registraci, spusťte tento příkaz:
 
 ```azurecli-interactive
 az provider register -n Microsoft.VirtualMachineImages
-
+az provider register -n Microsoft.Compute
+az provider register -n Microsoft.KeyVault
 az provider register -n Microsoft.Storage
 ```
+
 
 ## <a name="set-variables"></a>Nastavení proměnných
 
@@ -80,7 +88,7 @@ runOutputName=aibWindows
 imageName=aibWinImage
 ```
 
-Vytvořte proměnnou pro ID předplatného. Můžete to získat pomocí `az account show | grep id`.
+Vytvořte proměnnou pro ID předplatného. Můžete to získat pomocí `az account show | grep id` .
 
 ```azurecli-interactive
 subscriptionID=<Your subscription ID>
@@ -93,18 +101,41 @@ Tato skupina prostředků se používá k uložení artefaktu šablony konfigura
 az group create -n $imageResourceGroup -l $location
 ```
 
-## <a name="set-permissions-on-the-resource-group"></a>Nastavení oprávnění pro skupinu prostředků
+## <a name="create-a-user-assigned-identity-and-set-permissions-on-the-resource-group"></a>Vytvoření uživatelsky přiřazené identity a nastavení oprávnění pro skupinu prostředků
+Nástroj image Builder použije poskytnutou [identitu uživatele](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity) k vložení image do skupiny prostředků. V tomto příkladu vytvoříte definici role Azure, která má podrobné akce k provedení distribuce image. Definice role se pak přiřadí identitě User-identity.
 
-Udělte přispěvateli image Builder oprávnění k vytvoření image ve skupině prostředků. Bez toho se sestavení image nezdaří. 
+## <a name="create-user-assigned-managed-identity-and-grant-permissions"></a>Vytvoření spravované identity přiřazené uživatelem a udělení oprávnění 
+```bash
+# create user assigned identity for image builder to access the storage account where the script is located
+idenityName=aibBuiUserId$(date +'%s')
+az identity create -g $imageResourceGroup -n $idenityName
 
-`--assignee` Hodnota je ID registrace aplikace pro službu Tvůrce imagí. 
+# get identity id
+imgBuilderCliId=$(az identity show -g $imageResourceGroup -n $idenityName | grep "clientId" | cut -c16- | tr -d '",')
 
-```azurecli-interactive
+# get the user identity URI, needed for the template
+imgBuilderId=/subscriptions/$subscriptionID/resourcegroups/$imageResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$idenityName
+
+# download preconfigured role definition example
+curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json -o aibRoleImageCreation.json
+
+imageRoleDefName="Azure Image Builder Image Def"$(date +'%s')
+
+# update the definition
+sed -i -e "s/<subscriptionID>/$subscriptionID/g" aibRoleImageCreation.json
+sed -i -e "s/<rgName>/$imageResourceGroup/g" aibRoleImageCreation.json
+sed -i -e "s/Azure Image Builder Service Image Creation Role/$imageRoleDefName/g" aibRoleImageCreation.json
+
+# create role definitions
+az role definition create --role-definition ./aibRoleImageCreation.json
+
+# grant role definition to the user assigned identity
 az role assignment create \
-    --assignee cf32a0cc-373c-47c9-9156-0db11f6a6dfc \
-    --role Contributor \
+    --assignee $imgBuilderCliId \
+    --role $imageRoleDefName \
     --scope /subscriptions/$subscriptionID/resourceGroups/$imageResourceGroup
 ```
+
 
 
 ## <a name="download-the-image-configuration-template-example"></a>Stažení příkladu šablony konfigurace image
@@ -119,18 +150,19 @@ sed -i -e "s/<rgName>/$imageResourceGroup/g" helloImageTemplateWin.json
 sed -i -e "s/<region>/$location/g" helloImageTemplateWin.json
 sed -i -e "s/<imageName>/$imageName/g" helloImageTemplateWin.json
 sed -i -e "s/<runOutputName>/$runOutputName/g" helloImageTemplateWin.json
+sed -i -e "s%<imgBuilderId>%$imgBuilderId%g" helloImageTemplateWin.json
 
 ```
 
-Tento příklad můžete v terminálu upravit pomocí textového editoru, jako `vi`je.
+Tento příklad můžete v terminálu upravit pomocí textového editoru, jako je `vi` .
 
 ```azurecli-interactive
-vi helloImageTemplateLinux.json
+vi helloImageTemplateWin.json
 ```
 
 > [!NOTE]
-> Pro zdrojovou image musíte vždycky [zadat verzi](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-version-failure), kterou nemůžete použít `latest`.
-> Pokud přidáte nebo změníte skupinu prostředků, do které je bitová kopie distribuována, musíte [nastavit oprávnění](#set-permissions-on-the-resource-group) pro skupinu prostředků.
+> Pro zdrojovou image musíte vždycky [zadat verzi](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-version-failure), kterou nemůžete použít `latest` .
+> Pokud přidáte nebo změníte skupinu prostředků, do které je bitová kopie distribuována, musíte [nastavit oprávnění](#create-a-user-assigned-identity-and-set-permissions-on-the-resource-group) pro skupinu prostředků.
  
 ## <a name="create-the-image"></a>Vytvoření image
 
@@ -145,7 +177,7 @@ az resource create \
     -n helloImageTemplateWin01
 ```
 
-Po dokončení Tato akce vrátí zprávu o úspěchu zpět do konzoly a vytvoří `Image Builder Configuration Template` v. `$imageResourceGroup` Tento prostředek můžete zobrazit ve skupině prostředků v Azure Portal, pokud povolíte možnost Zobrazit skryté typy.
+Po dokončení Tato akce vrátí zprávu o úspěchu zpět do konzoly a vytvoří `Image Builder Configuration Template` v `$imageResourceGroup` . Tento prostředek můžete zobrazit ve skupině prostředků v Azure Portal, pokud povolíte možnost Zobrazit skryté typy.
 
 Na pozadí vytvoří Tvůrce imagí také pracovní skupinu prostředků ve vašem předplatném. Tato skupina prostředků se používá pro sestavení image. Bude v tomto formátu:`IT_<DestinationResourceGroup>_<TemplateName>`
 
@@ -181,7 +213,7 @@ Pokud narazíte na nějaké chyby, přečtěte si prosím tyto kroky pro [řeše
 
 ## <a name="create-the-vm"></a>Vytvořte virtuální počítač.
 
-Vytvořte virtuální počítač pomocí Image, kterou jste vytvořili. * \<Heslo>* nahraďte vlastním heslem pro `aibuser` virtuální počítač.
+Vytvořte virtuální počítač pomocí Image, kterou jste vytvořili. Nahraďte *\<password>* vlastním heslem pro `aibuser` virtuální počítač.
 
 ```azurecli-interactive
 az vm create \
@@ -216,6 +248,18 @@ az resource delete \
     --resource-group $imageResourceGroup \
     --resource-type Microsoft.VirtualMachineImages/imageTemplates \
     -n helloImageTemplateWin01
+```
+
+### <a name="delete-the-role-assignment-role-definition-and-user-identity"></a>Odstraňte přiřazení role, definici role a identitu uživatele.
+```azurecli-interactive
+az role assignment delete \
+    --assignee $imgBuilderCliId \
+    --role "$imageRoleDefName" \
+    --scope /subscriptions/$subscriptionID/resourceGroups/$imageResourceGroup
+
+az role definition delete --name "$imageRoleDefName"
+
+az identity delete --ids $imgBuilderId
 ```
 
 ### <a name="delete-the-image-resource-group"></a>Odstranit skupinu prostředků image

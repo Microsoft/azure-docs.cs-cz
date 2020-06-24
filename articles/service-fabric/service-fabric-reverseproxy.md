@@ -5,12 +5,12 @@ author: BharatNarasimman
 ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: 4fa4c6e46dd786b833087f892d995e85b5d2ea47
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 326075b947ea61384681fb2353c27d3e1450156d
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282221"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84735332"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Reverzní proxy server v Azure Service Fabric
 Reverzní proxy server integrovaný do Azure Service Fabric pomáhá mikroslužbám běžícím v clusteru Service Fabric zjišťovat a komunikovat s dalšími službami, které mají koncové body http.
@@ -78,7 +78,7 @@ http(s)://<Cluster FQDN | internal IP>:Port/<ServiceInstanceName>/<Suffix path>?
 * **TargetReplicaSelector** Tím se určuje, jak by měla být vybraná cílová replika nebo instance.
   * Když je cílová služba stavová, může být TargetReplicaSelector jedna z následujících: "PrimaryReplica", "RandomSecondaryReplica" nebo "RandomReplica". Pokud tento parametr není zadán, výchozí hodnota je ' PrimaryReplica '.
   * Pokud je cílová služba Bezstavová, reverzní proxy server vybere náhodnou instanci oddílu služby, aby předal požadavek.
-* **Časový limit:**  Určuje časový limit pro požadavek HTTP vytvořený reverzním proxy serverem jménem žádosti klienta. Výchozí hodnota je 60 sekund. Toto je volitelný parametr.
+* **Časový limit:**  Určuje časový limit pro požadavek HTTP vytvořený reverzním proxy serverem jménem žádosti klienta. Výchozí hodnota je 120 sekund. Toto je volitelný parametr.
 
 ### <a name="example-usage"></a>Příklad použití
 Příklad: Pojďme využít službu *Fabric:/MyApp/mojesluzba* , která otevře NASLOUCHACÍ proces http na následující adrese URL:
@@ -115,7 +115,7 @@ Brána pak tyto požadavky přepošle na adresu URL služby:
 ## <a name="special-handling-for-port-sharing-services"></a>Speciální zpracování pro služby pro sdílení portů
 Service Fabric reverzní proxy server se znovu pokusí znovu přeložit adresu služby a pokusit se o tuto žádost znovu, pokud není dostupná služba. Obecně platí, že pokud nelze získat přístup k službě, instance služby nebo replika byla přesunuta do jiného uzlu v rámci normálního životního cyklu. V takovém případě může reverzní proxy obdržet chybu připojení k síti, což znamená, že koncový bod již není otevřen na původně přeložené adrese.
 
-Repliky nebo instance služby ale můžou sdílet hostitelský proces a můžou taky sdílet port, pokud je hostovaný webovým serverem založeným na http. sys, včetně těchto:
+Repliky nebo instance služby však mohou sdílet hostitelský proces a mohou také sdílet port, pokud je hostován webovým serverem http.sys, včetně:
 
 * [System .NET. HttpListener](https://msdn.microsoft.com/library/system.net.httplistener%28v=vs.110%29.aspx)
 * [ASP.NET Core weblisten](https://docs.asp.net/latest/fundamentals/servers.html#weblistener)

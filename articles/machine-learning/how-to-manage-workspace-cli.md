@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: how-to
 ms.author: larryfr
 author: Blackmist
-ms.date: 03/05/2020
-ms.openlocfilehash: 9131ce9b211a33fe45ef571f3a274b4ddc81739f
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.date: 06/19/2020
+ms.openlocfilehash: f22ef4d1ebd9c4d3c226556c4ef28a873edd80ea
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84430390"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85119252"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Vytvoření pracovního prostoru pro Azure Machine Learning pomocí Azure CLI
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -59,7 +59,7 @@ az extension add -n azure-cli-ml
 Pracovní prostor Azure Machine Learning spoléhá na tyto služby nebo entity Azure:
 
 > [!IMPORTANT]
-> Pokud nezadáte existující službu Azure, vytvoří se během vytváření pracovního prostoru automaticky. Vždy je nutné zadat skupinu prostředků.
+> Pokud nezadáte existující službu Azure, vytvoří se během vytváření pracovního prostoru automaticky. Vždy je nutné zadat skupinu prostředků. Při připojování vlastního účtu úložiště se ujistěte, že má zapnuté funkce Azure Blob i Azure File a že hierarchický obor názvů (ADLS Gen 2) je zakázaný. Vlastní účet úložiště můžete kdykoli připojit později, až bude pracovní prostor vytvořen jako úložiště dat.
 
 | Služba | Parametr pro určení existující instance |
 | ---- | ---- |
@@ -317,7 +317,7 @@ Další informace najdete v dokumentaci ke [sdílení pracovního prostoru AZ ml
 
 ## <a name="sync-keys-for-dependent-resources"></a>Synchronizace klíčů pro závislé prostředky
 
-Pokud změníte přístupové klíče pro jeden z prostředků používaných vaším pracovním prostorem, pomocí následujícího příkazu synchronizujte nové klíče s pracovním prostorem:
+Pokud změníte přístupové klíče pro některý z prostředků, které váš pracovní prostor používá, trvá to přibližně hodinu, než se pracovní prostor synchronizuje s novým klíčem. Pokud chcete vynutit okamžitou synchronizaci nových klíčů v pracovním prostoru, použijte následující příkaz:
 
 ```azurecli-interactive
 az ml workspace sync-keys -w <workspace-name> -g <resource-group-name>
@@ -346,7 +346,7 @@ az group delete -g <resource-group-name>
 
 Další informace najdete v tématu [AZ ml Workspace Delete](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-delete) Document.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 ### <a name="resource-provider-errors"></a>Chyby poskytovatele prostředků
 

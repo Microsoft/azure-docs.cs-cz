@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 05/19/2020
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: 9152bdfa9575738c853521814938cd0d7ec25efb
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 53725e7d4c39405e7ba47f8915e7444ce6a2167a
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657369"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118445"
 ---
 # <a name="built-in-jupyter-notebooks-support-in-azure-cosmos-db-preview"></a>Integrovaná podpora Jupyter poznámkových bloků v Azure Cosmos DB (Preview)
 
@@ -19,11 +19,11 @@ Jupyter Poznámkový blok je open-source webová aplikace, která umožňuje vyt
 
 Azure Cosmos DB integrovaných notebooků Jupyter se přímo integrují do Azure Portal a účtů Azure Cosmos DB, takže jsou praktické a snadno použitelné. Vývojáři, odborníci na data, technici a analytiké můžou pomocí známých prostředí Jupyter poznámkových bloků provádět zkoumání dat, čištění dat, transformaci dat, numerické simulace, statistické modelování, vizualizaci dat a strojové učení.
 
-![Vizualizace poznámkových bloků Jupyter v Azure Cosmos DB](./media/cosmosdb-jupyter-notebooks/cosmos-notebooks-overview.png)
+:::image type="content" source="./media/cosmosdb-jupyter-notebooks/cosmos-notebooks-overview.png" alt-text="Vizualizace poznámkových bloků Jupyter v Azure Cosmos DB":::
 
 Azure Cosmos DB podporuje poznámkové bloky C# i Python pro všechna rozhraní API, včetně Core (SQL), Cassandra, Gremlin, Table a API pro MongoDB. V poznámkovém bloku můžete využít integrované příkazy a funkce, které usnadňují vytváření Azure Cosmos DBch prostředků, nahrávání dat a dotazování a vizualizaci dat v Azure Cosmos DB. 
 
-![Podpora notebooků Jupyter v Azure Cosmos DB](./media/cosmosdb-jupyter-notebooks/jupyter-notebooks-portal.png)
+:::image type="content" source="./media/cosmosdb-jupyter-notebooks/jupyter-notebooks-portal.png" alt-text="Podpora notebooků Jupyter v Azure Cosmos DB":::
 
 ## <a name="benefits-of-jupyter-notebooks"></a>Výhody Jupyter poznámkových bloků
 

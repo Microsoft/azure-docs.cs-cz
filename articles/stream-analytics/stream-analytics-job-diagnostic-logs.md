@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/27/2020
-ms.openlocfilehash: 40b57af95f9ea4d4212756634c721ddd55f85d7b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/18/2020
+ms.openlocfilehash: 4737b8f13a3a4a1e65c4c7812bd514f76a24d2e3
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82127752"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85119020"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>Řešení potíží s Azure Stream Analytics pomocí protokolů prostředků
 
@@ -59,23 +59,23 @@ Protokoly aktivit jsou ve výchozím nastavení zapnuté a poskytují podrobné 
 
 Důrazně doporučujeme zapnout protokoly prostředků a odesílat je do protokolů Azure Monitor. Ve výchozím nastavení jsou **vypnuté** . Pokud je chcete zapnout, proveďte tyto kroky:
 
-1.  Přihlaste se k Azure Portal a přejděte do Stream Analytics úlohy. V části **monitorování**vyberte **diagnostické protokoly**. Pak vyberte **zapnout diagnostiku**.
+1.  [Vytvořte pracovní prostor Log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) , pokud ho ještě nemáte. Doporučuje se, aby byl váš pracovní prostor Log Analytics ve stejné oblasti jako vaše úloha Stream Analytics.
+
+2.  Přihlaste se k Azure Portal a přejděte do Stream Analytics úlohy. V části **monitorování**vyberte **diagnostické protokoly**. Pak vyberte **zapnout diagnostiku**.
 
     ![Navigační okno s protokoly prostředků](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs-monitoring.png)  
 
-2.  V **nastavení diagnostiky** vytvořte **název** a zaškrtněte políčko u možnosti **Odeslat do Log Analytics**. Pak přidejte existující **pracovní prostor Log Analytics**, nebo vytvořte nový. Zaškrtněte políčka pro **spouštění** a **vytváření** v části **log**a **AllMetrics** v části **metrika**. Klikněte na **Uložit**. Doporučuje se použít Log Analytics pracovní prostor ve stejné oblasti Azure jako vaše úloha Stream Analytics a zabránit tak dalším nákladům.
+2.  Zadejte **název** v **nastavení diagnostiky název** a zaškrtněte políčka pro **spouštění** a **vytváření** v části **log**a **AllMetrics** v části **metrika**. Pak vyberte **Odeslat do Log Analytics** a zvolte pracovní prostor. Klikněte na **Uložit**.
 
-    ![Nastavení pro protokoly prostředků](./media/stream-analytics-job-diagnostic-logs/diagnostic-settings.png)
+    ![Nastavení pro protokoly prostředků](./media/stream-analytics-job-diagnostic-logs/logs-setup.png)
 
 3. Po spuštění úlohy Stream Analytics se protokoly prostředků směrují do vašeho pracovního prostoru Log Analytics. Chcete-li zobrazit protokoly prostředků pro vaši úlohu, vyberte v části **monitorování** možnost **protokoly** .
 
    ![Protokoly prostředků v části monitorování](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs.png)
 
-4. Stream Analytics poskytuje předdefinované dotazy, které vám umožní snadno vyhledat protokoly, které vás zajímají. 3 kategorie jsou **Obecné**, **chyby vstupních dat** a **chyby výstupních dat**. Pokud například chcete zobrazit souhrn všech chyb vaší úlohy za posledních 7 dní, můžete vybrat **spuštění** příslušného předem definovaného dotazu. 
+4. Stream Analytics poskytuje předdefinované dotazy, které vám umožní snadno vyhledat protokoly, které vás zajímají. V levém podokně můžete vybrat všechny předem definované dotazy a pak vybrat **Spustit**. Výsledky dotazu se zobrazí v dolním podokně. 
 
-   ![Protokoly prostředků v části monitorování](./media/stream-analytics-job-diagnostic-logs/logs-categories.png)
-
-   ![Výsledky protokolů](./media/stream-analytics-job-diagnostic-logs/logs-result.png)
+   ![Protokoly prostředků v části monitorování](./media/stream-analytics-job-diagnostic-logs/logs-example.png)
 
 ## <a name="resource-log-categories"></a>Kategorie protokolu prostředků
 
@@ -94,14 +94,14 @@ Azure Stream Analytics zachycuje dvě kategorie protokolů prostředků:
 
 Všechny protokoly jsou uložené ve formátu JSON. Každá položka má následující obecná pole řetězců:
 
-Název | Popis
+Name | Description
 ------- | -------
 time | Časové razítko (v UTC) protokolu
 resourceId | ID prostředku, na kterém byla operace provedena, v horním případě. Obsahuje ID předplatného, skupinu prostředků a název úlohy. Například **/Subscriptions/6503D296-DAC1-4449-9B03-609A1F4A1C87/RESOURCEGROUPS/my-Resource-Group/Providers/Microsoft. STREAMANALYTICS/STREAMINGJOBS/MYSTREAMINGJOB**.
 category | Kategorie protokolu, buď **spuštění** , nebo **vytváření obsahu**.
 operationName | Název operace, která se zaznamená do protokolu. Například **odeslání událostí: Chyba zápisu výstupu SQL do mysqloutput**.
 status | Stav operace. Například **Chyba** nebo **úspěch**.
-level | Úroveň protokolování. Například **Chyba**, **Upozornění**nebo **informativní**.
+úroveň | Úroveň protokolování. Například **Chyba**, **Upozornění**nebo **informativní**.
 properties | Podrobnosti specifické pro záznam v protokolu, serializované jako řetězec JSON. Další informace najdete v následujících částech tohoto článku.
 
 ### <a name="execution-log-properties-schema"></a>Schéma vlastností protokolu spuštění
@@ -112,7 +112,7 @@ Protokoly spouštění obsahují informace o událostech, ke kterým došlo běh
 
 Všechny chyby, ke kterým dojde během zpracování úlohy, jsou v této kategorii protokolů. Tyto protokoly se nejčastěji vytvářejí během operací čtení, serializace a zápisu dat. Tyto protokoly nezahrnují chyby připojení. Chyby připojení se považují za obecné události. Můžete si přečíst další informace o příčině různých [vstupních a výstupních chybových dat](https://docs.microsoft.com/azure/stream-analytics/data-errors).
 
-Název | Popis
+Name | Description
 ------- | -------
 Zdroj | Název vstupu nebo výstupu úlohy, kde došlo k chybě
 Zpráva | Zpráva přidružená k chybě
@@ -133,7 +133,7 @@ V závislosti na hodnotě **OperationName** mají chyby dat následující sché
 
 Obecné události se týkají všech ostatních.
 
-Název | Popis
+Name | Description
 -------- | --------
 Chyba | volitelné Informace o chybě. Obvykle se jedná o výjimku, pokud je k dispozici.
 Zpráva| Zpráva protokolu

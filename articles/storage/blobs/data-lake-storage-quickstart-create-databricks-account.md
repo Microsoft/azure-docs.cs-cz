@@ -6,14 +6,14 @@ ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
-ms.date: 02/17/2020
+ms.date: 06/12/2020
 ms.reviewer: jeking
-ms.openlocfilehash: b6dd1aab4c0ce6c656600d7cc7c71233d256aa0b
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 6c44588f3c95e4707813143c216823323d8183da
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780534"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84782906"
 ---
 # <a name="quickstart-analyze-data-with-databricks"></a>Rychlý Start: Analýza dat pomocí datacihlů
 
@@ -34,7 +34,7 @@ V tomto rychlém startu spustíte úlohu Apache Spark pomocí Azure Databricks k
 
 V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azure Databricks.
 
-1. V Azure Portal vyberte vytvořit Azure Databricks **prostředků** > **Analytics** > **Azure Databricks**.
+1. V Azure Portal vyberte vytvořit Azure Databricks **prostředků**  >  **Analytics**  >  **Azure Databricks**.
 
     ![Datacihly na Azure Portal](./media/data-lake-storage-quickstart-create-databricks-account/azure-databricks-on-portal.png "Datacihly na Azure Portal")
 
@@ -48,7 +48,7 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
     |---------|---------|
     |**Název pracovního prostoru**     | Zadejte název pracovního prostoru Databricks.        |
     |**Předplatné**     | Z rozevíracího seznamu vyberte své předplatné Azure.        |
-    |**Skupina prostředků**     | Určete, jestli chcete vytvořit novou skupinu prostředků, nebo použít existující. Skupina prostředků je kontejner, který obsahuje související prostředky pro řešení Azure. Další informace naleznete v tématu [Přehled skupin prostředků v Azure](../../azure-resource-manager/management/overview.md). |
+    |**Skupina prostředků**     | Určete, jestli chcete vytvořit novou skupinu prostředků, nebo použít existující. Skupina prostředků je kontejner, který uchovává související prostředky pro řešení Azure. Další informace naleznete v tématu [Přehled skupin prostředků v Azure](../../azure-resource-manager/management/overview.md). |
     |**Umístění**     | Vyberte **USA – západ 2**. Pokud chcete, můžete si vybrat jinou veřejnou oblast.        |
     |**Cenová úroveň**     |  Zvolte úroveň **Standard** nebo **Premium**. Další informace o těchto úrovních najdete na [stránce s cenami za Databricks](https://azure.microsoft.com/pricing/details/databricks/).       |
 
@@ -60,7 +60,7 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
 
 1. Na webu Azure Portal přejděte do pracovního prostoru Databricks, který jste vytvořili, a vyberte **Spustit pracovní prostor**.
 
-2. Budete přesměrováni na portál Azure Databricks. Na portálu vyberte **Nový** > **cluster**.
+2. Budete přesměrováni na portál Azure Databricks. Na portálu vyberte **Nový**  >  **cluster**.
 
     ![Datacihly v Azure](./media/data-lake-storage-quickstart-create-databricks-account/databricks-on-azure.png "Datacihly v Azure")
 
@@ -107,7 +107,7 @@ V této části nejprve vytvoříte v pracovním prostoru Azure Databricks pozn�
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
 
    ```
-5. V tomto bloku kódu Nahraďte zástupné hodnoty `storage-account-name`, `tenant-id` `appID`, `password`a v tomto bloku kódu hodnotami, které jste shromáždili při vytváření instančního objektu. Nastavte hodnotu `container-name` zástupný symbol na libovolný název, který chcete kontejneru přidělit.
+5. V tomto bloku kódu nahraďte `storage-account-name` `appID` `password` `tenant-id` zástupné hodnoty,, a v tomto bloku kódu hodnotami, které jste shromáždili při vytváření instančního objektu. Nastavte `container-name` hodnotu zástupný symbol na libovolný název, který chcete kontejneru přidělit.
 
 6. Stiskněte klávesy **SHIFT + ENTER** a spusťte kód v tomto bloku.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2020
 ms.author: memildin
-ms.openlocfilehash: 19ca17f66f6818ed4c3ef532e2030cc03f0e73ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9b8d7f241f79b087f318c9c416dcadf92838b084
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80062947"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85126208"
 ---
 # <a name="security-alerts-schemas"></a>Schémata výstrah zabezpečení
 
@@ -140,7 +140,7 @@ Události výstrahy zabezpečení v protokolu aktivit můžete zobrazit tak, že
 
 ### <a name="the-data-model-of-the-schema"></a>Datový model schématu
 
-|Pole|Popis|
+|Pole|Description|
 |----|----|
 |**barev**|Konstanta, "operace"|
 |**correlationId**|ID výstrahy Azure Security Center|
@@ -150,7 +150,7 @@ Události výstrahy zabezpečení v protokolu aktivit můžete zobrazit tak, že
 |**kategorií**|Podpole Value a localizedValue jsou konstanta-"Security".|
 |**eventTimestamp**|Časové razítko UTC pro vygenerování výstrahy|
 |**účet**|Plně kvalifikované ID výstrahy|
-|**obsah**|Konstanta, "informativní"|
+|**úroveň**|Konstanta, "informativní"|
 |**operationId**|Zobrazit ID korelace|
 |**operationName**|Pole hodnota je konstanta-"Microsoft. Security/Locations/Alerts/Activate/Action", a lokalizovaná hodnota bude "aktivovat výstrahu" (může být potenciálně lokalizována do národního prostředí uživatele).|
 |**resourceGroupName**|Bude obsahovat název skupiny prostředků.|
@@ -171,7 +171,7 @@ Události výstrahy zabezpečení v protokolu aktivit můžete zobrazit tak, že
 
 ### <a name="ms-graph-api"></a>[MS Graph API](#tab/schema-graphapi)
 
-Microsoft Graph je brána k datům a inteligentním Microsoft 365. Nabízí jednotný model programovatelnosti, který můžete použít pro přístup k obrovskému množství dat v Office 365, Windows 10 a Enterprise Mobility + Security. Využijte spoustu dat v Microsoft Graph k sestavování aplikací pro organizace a zákazníky, kteří komunikují s miliony uživatelů.
+Microsoft Graph je brána k datům a inteligentním Microsoft 365. Poskytuje jednotný model programovatelnosti, který můžete použít pro přístup k obrovskému množství dat v Microsoft 365, Windows 10 a Enterprise Mobility + Security. Využijte spoustu dat v Microsoft Graph k sestavování aplikací pro organizace a zákazníky, kteří komunikují s miliony uživatelů.
 
 Schéma a reprezentace JSON pro výstrahy zabezpečení odeslané do služby MS Graph jsou k dispozici v [dokumentaci Microsoft Graph](https://docs.microsoft.com/graph/api/resources/alert?view=graph-rest-1.0).
 

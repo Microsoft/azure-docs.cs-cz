@@ -5,16 +5,16 @@ services: synapse-analytics
 author: filippopovic
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
-ms.date: 04/15/2020
+ms.subservice: sql
+ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 7d9157993e8cdbb6f7976ee2d4ce67b9039e7b52
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 7df4d917ce25d644003a60b34bc0683ea75299f3
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835831"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85204876"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>Řízení přístupu účtu úložiště pro SQL na vyžádání (Preview)
 
@@ -29,7 +29,18 @@ Tento článek popisuje typy přihlašovacích údajů, které můžete použít
 Uživatel, který byl přihlášen k prostředku na vyžádání SQL, musí mít autorizaci pro přístup k souborům v Azure Storage, pokud nejsou soubory veřejně dostupné. Pro přístup k neveřejné [identitě uživatelů](?tabs=user-identity)úložiště, [sdílenému přístupovému podpisu](?tabs=shared-access-signature)a [spravované identitě](?tabs=managed-identity)můžete použít tři typy autorizace.
 
 > [!NOTE]
-> [Předávací služba Azure AD](#force-azure-ad-pass-through) je výchozím chováním při vytváření pracovního prostoru. Pokud ho použijete, nemusíte vytvářet přihlašovací údaje pro každý účet úložiště, ke kterému jste přistupovali pomocí přihlašovacích údajů Azure AD. [Toto chování můžete zakázat](#disable-forcing-azure-ad-pass-through).
+> **Předávací služba Azure AD** je výchozím chováním při vytváření pracovního prostoru.
+
+### <a name="user-identity"></a>[Identita uživatele](#tab/user-identity)
+
+**Identita uživatele**, známá taky jako "předávací služba Azure AD", je autorizační typ, kde se k autorizaci přístupu k datům používá identita uživatele Azure AD, který je přihlášený k SQL na vyžádání. Před přístupem k datům musí správce Azure Storage udělit oprávnění k uživateli Azure AD. Jak je uvedeno v následující tabulce, není podporováno pro typ uživatele SQL.
+
+> [!IMPORTANT]
+> Abyste mohli používat vaši identitu pro přístup k datům, musíte mít roli vlastníka dat objektu BLOB úložiště/Přispěvatel/čtenář.
+> I v případě, že jste vlastníkem účtu úložiště, je stále nutné přidat sami sebe do jedné z rolí dat objektu BLOB úložiště.
+>
+> Další informace o řízení přístupu v Azure Data Lake Store Gen2 naleznete [v tématu řízení přístupu v Azure Data Lake Storage Gen2](../../storage/blobs/data-lake-storage-access-control.md) článku.
+>
 
 ### <a name="shared-access-signature"></a>[Sdílený přístupový podpis](#tab/shared-access-signature)
 
@@ -43,49 +54,6 @@ Token SAS můžete získat tak, že přejdete na **účet úložiště > Azure P
 > Token SAS:? sv = 2018-03-28&SS = bfqt&SRT aplikace = SCO&SP = rwdlacup&se = 2019-04-18T20:42:12Z&St = 2019-04-18T12:42:12Z&spr = https&SIG = lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78% 3D
 
 Aby bylo možné povolit přístup pomocí tokenu SAS, je nutné vytvořit pověření v oboru databáze nebo na serveru.
-
-### <a name="user-identity"></a>[Identita uživatele](#tab/user-identity)
-
-**Identita uživatele**, označovaná také jako "průchozí", je autorizační typ, ve kterém se k autorizaci přístupu k datům používá identita uživatele služby Azure AD, který se přihlásil k SQL na vyžádání. Před přístupem k datům musí správce Azure Storage udělit oprávnění k uživateli Azure AD. Jak je uvedeno v tabulce výše, není podporováno pro typ uživatele SQL.
-
-> [!IMPORTANT]
-> Abyste mohli používat vaši identitu pro přístup k datům, musíte mít roli vlastníka dat objektu BLOB úložiště/Přispěvatel/čtenář.
-> I v případě, že jste vlastníkem účtu úložiště, je stále nutné přidat sami sebe do jedné z rolí dat objektu BLOB úložiště.
->
-> Další informace o řízení přístupu v Azure Data Lake Store Gen2 naleznete [v tématu řízení přístupu v Azure Data Lake Storage Gen2](../../storage/blobs/data-lake-storage-access-control.md) článku.
->
-
-Musíte explicitně povolit předávací ověřování Azure AD, aby uživatelé Azure AD mohli získat přístup k úložišti pomocí svých identit.
-
-#### <a name="force-azure-ad-pass-through"></a>Vynutit předávací službu Azure AD
-
-Vynucení předávacího průchodu Azure AD je výchozím chováním, které dosáhlo speciálního názvu PŘIHLAŠOVACÍho údaje, `UserIdentity` který se vytvoří automaticky během zřizování pracovních prostorů Azure synapse. Vynucuje použití předávacího průchodu Azure AD pro každý dotaz každého přihlášení služby Azure AD, ke kterému dojde bez ohledu na existenci jiných přihlašovacích údajů.
-
-> [!NOTE]
-> Předávací služba Azure AD je výchozí chování. Nemusíte vytvářet přihlašovací údaje pro každý účet úložiště, ke kterému přistupovali prostřednictvím přihlášení AD.
-
-Pokud jste [zakázali vynucení předávacího procesu Azure AD pro každý dotaz](#disable-forcing-azure-ad-pass-through)a chcete ho znovu povolit, spusťte:
-
-```sql
-CREATE CREDENTIAL [UserIdentity]
-WITH IDENTITY = 'User Identity';
-```
-
-Pokud chcete povolit vynucení předávacího průchodu Azure AD pro konkrétního uživatele, můžete tomuto konkrétnímu uživateli udělit referenční oprávnění k přihlašovacím údajům `UserIdentity` . Následující příklad umožňuje vynucení předávacího průchodu Azure AD pro user_name:
-
-```sql
-GRANT REFERENCES ON CREDENTIAL::[UserIdentity] TO USER [user_name];
-```
-
-#### <a name="disable-forcing-azure-ad-pass-through"></a>Zakázat vynucení předávacího Azure AD
-
-[Pro každý dotaz můžete zakázat vynucení předávacího Azure AD](#force-azure-ad-pass-through). Pokud ho chcete zakázat, vyřaďte `Userdentity` přihlašovací údaje pomocí:
-
-```sql
-DROP CREDENTIAL [UserIdentity];
-```
-
-Pokud ho chcete znovu povolit, přečtěte si část [vynucení předávacího rozhraní Azure AD](#force-azure-ad-pass-through) .
 
 ### <a name="managed-identity"></a>[Spravovaná identita](#tab/managed-identity)
 
@@ -152,7 +120,7 @@ GRANT REFERENCES ON CREDENTIAL::[UserIdentity] TO [public];
 Přihlašovací údaje v oboru serveru se používají, když funkce přihlášení `OPENROWSET` k SQL funguje bez `DATA_SOURCE` čtení souborů v některém účtu úložiště. Název přihlašovacích údajů v oboru serveru se **musí** shodovat s adresou URL úložiště Azure. Přihlašovací údaje se přidají spuštěním [Vytvoření přihlašovacích údajů](/sql/t-sql/statements/create-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest). Budete muset zadat argument název PŘIHLAŠOVACÍch údajů. Musí odpovídat buď části cesty, nebo celé cestě k datům v úložišti (viz níže).
 
 > [!NOTE]
-> Argument pro zprostředkovatele KRYPTOGRAFICKÝch služeb není podporován.
+> `FOR CRYPTOGRAPHIC PROVIDER`Argument není podporován.
 
 PŘIHLAŠOVACÍ jméno na úrovni serveru musí odpovídat celé cestě k účtu úložiště (a volitelně kontejneru) v následujícím formátu: `<prefix>://<storage_account_path>/<storage_path>` . Cesty k účtu úložiště jsou popsané v následující tabulce:
 
@@ -162,10 +130,13 @@ PŘIHLAŠOVACÍ jméno na úrovni serveru musí odpovídat celé cestě k účtu
 | Azure Data Lake Storage Gen1 | HTTPS  | <storage_account>. azuredatalakestore.net/webhdfs/v1 |
 | Azure Data Lake Storage Gen2 | HTTPS  | <storage_account>. dfs.core.windows.net              |
 
-> [!NOTE]
-> K dispozici jsou speciální přihlašovací údaje na úrovni serveru `UserIdentity` , které [vynutí předávací službu Azure AD](?tabs=user-identity#force-azure-ad-pass-through).
-
 Přihlašovací údaje v oboru serveru umožňují přístup k úložišti Azure pomocí následujících typů ověřování:
+
+### <a name="user-identity"></a>[Identita uživatele](#tab/user-identity)
+
+Uživatelé Azure AD mají přístup ke všem souborům ve službě Azure Storage, pokud mají `Storage Blob Data Owner` `Storage Blob Data Contributor` roli, nebo `Storage Blob Data Reader` . Uživatelé Azure AD nepotřebují přihlašovací údaje pro přístup k úložišti. 
+
+Uživatelé SQL nemůžou k přístupu k úložišti používat ověřování Azure AD.
 
 ### <a name="shared-access-signature"></a>[Sdílený přístupový podpis](#tab/shared-access-signature)
 
@@ -180,15 +151,6 @@ WITH IDENTITY='SHARED ACCESS SIGNATURE'
 GO
 ```
 
-### <a name="user-identity"></a>[Identita uživatele](#tab/user-identity)
-
-Následující skript vytvoří přihlašovací údaje na úrovni serveru, které uživateli umožňují zosobnit pomocí identity Azure AD.
-
-```sql
-CREATE CREDENTIAL [UserIdentity]
-WITH IDENTITY = 'User Identity';
-```
-
 ### <a name="managed-identity"></a>[Spravovaná identita](#tab/managed-identity)
 
 Následující skript vytvoří přihlašovací údaje na úrovni serveru, které můžou používat `OPENROWSET` funkce pro přístup k jakémukoli souboru v úložišti Azure pomocí spravované identity pracovního prostoru.
@@ -200,16 +162,8 @@ WITH IDENTITY='Managed Identity'
 
 ### <a name="public-access"></a>[Veřejný přístup](#tab/public-access)
 
-Následující skript vytvoří přihlašovací údaje na úrovni serveru, které můžou používat `OPENROWSET` funkce pro přístup k jakémukoli souboru na veřejně dostupném úložišti Azure. Vytvořte toto přihlašovací údaje, aby se povolil objekt zabezpečení SQL, který spustí `OPENROWSET` funkci pro čtení veřejně dostupných souborů v Azure Storage, které odpovídají adrese URL v názvu přihlašovacích údajů.
+Přihlašovací údaje v oboru databáze nejsou nutné k povolení přístupu k veřejně dostupným souborům. Vytvoří [zdroj dat bez pověření oboru databáze](develop-tables-external-tables.md?tabs=sql-ondemand#example-for-create-external-data-source) pro přístup k veřejně dostupným souborům v Azure Storage.
 
-Musíte mít> Exchange <*mystorageaccountname* s vaším skutečným názvem účtu úložiště a <*mystorageaccountcontainername*> s aktuálním názvem kontejneru:
-
-```sql
-CREATE CREDENTIAL [https://<mystorageaccountname>.blob.core.windows.net/<mystorageaccountcontainername>]
-WITH IDENTITY='SHARED ACCESS SIGNATURE'
-, SECRET = '';
-GO
-```
 ---
 
 ## <a name="database-scoped-credential"></a>Přihlašovací údaje v rámci databáze
@@ -218,23 +172,20 @@ Přihlašovací údaje v oboru databáze se používají, když jakákoli instan
 
 Přihlašovací údaje v rámci databáze umožňují přístup k úložišti Azure pomocí následujících typů ověřování:
 
+### <a name="azure-ad-identity"></a>[Identita Azure AD](#tab/user-identity)
+
+Uživatelé Azure AD mají přístup k jakémukoli souboru v úložišti Azure, pokud mají `Storage Blob Data Owner` roli aspoň, `Storage Blob Data Contributor` nebo `Storage Blob Data Reader` . Uživatelé Azure AD nepotřebují přihlašovací údaje pro přístup k úložišti.
+
+Uživatelé SQL nemůžou k přístupu k úložišti používat ověřování Azure AD.
+
 ### <a name="shared-access-signature"></a>[Sdílený přístupový podpis](#tab/shared-access-signature)
 
 Následující skript vytvoří přihlašovací údaje, které se používají pro přístup k souborům v úložišti pomocí tokenu SAS zadaného v přihlašovacích údajích.
 
 ```sql
 CREATE DATABASE SCOPED CREDENTIAL [SasToken]
-WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-04-18T20:42:12Z&st=2019-04-18T12:42:12Z&spr=https&sig=lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78%3D';
-GO
-```
-
-### <a name="azure-ad-identity"></a>[Identita Azure AD](#tab/user-identity)
-
-Následující skript vytvoří přihlašovací údaje v rámci databáze používané [externí tabulkou](develop-tables-external-tables.md) a `OPENROWSET` funkcemi, které používají zdroj dat s přihlašovacími údaji pro přístup k souborům úložiště pomocí vlastní identity Azure AD.
-
-```sql
-CREATE DATABASE SCOPED CREDENTIAL [AzureAD]
-WITH IDENTITY = 'User Identity';
+WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
+     SECRET = 'sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-04-18T20:42:12Z&st=2019-04-18T12:42:12Z&spr=https&sig=lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78%3D';
 GO
 ```
 
@@ -272,14 +223,17 @@ WITH (    LOCATION   = 'https://*******.blob.core.windows.net/samples',
 Pomocí následujícího skriptu vytvořte tabulku, která přistupuje k veřejně dostupnému zdroji dat.
 
 ```sql
-CREATE EXTERNAL FILE FORMAT [SynapseParquetFormat] WITH ( FORMAT_TYPE = PARQUET)
+CREATE EXTERNAL FILE FORMAT [SynapseParquetFormat]
+       WITH ( FORMAT_TYPE = PARQUET)
 GO
 CREATE EXTERNAL DATA SOURCE publicData
 WITH (    LOCATION   = 'https://****.blob.core.windows.net/public-access' )
 GO
 
 CREATE EXTERNAL TABLE dbo.userPublicData ( [id] int, [first_name] varchar(8000), [last_name] varchar(8000) )
-WITH ( LOCATION = 'parquet/user-data/*.parquet', DATA_SOURCE = [publicData], FILE_FORMAT = [SynapseParquetFormat] )
+WITH ( LOCATION = 'parquet/user-data/*.parquet',
+       DATA_SOURCE = [publicData],
+       FILE_FORMAT = [SynapseParquetFormat] )
 ```
 
 Uživatel databáze může číst obsah souborů ze zdroje dat pomocí externí tabulky nebo funkce [OpenRowset](develop-openrowset.md) , která odkazuje na zdroj dat:
@@ -287,7 +241,9 @@ Uživatel databáze může číst obsah souborů ze zdroje dat pomocí externí 
 ```sql
 SELECT TOP 10 * FROM dbo.userPublicData;
 GO
-SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet', DATA_SOURCE = [mysample], FORMAT=PARQUET) as rows;
+SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet',
+                                DATA_SOURCE = [mysample],
+                                FORMAT=PARQUET) as rows;
 GO
 ```
 
@@ -300,13 +256,13 @@ GO
 CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'Y*********0'
 GO
 
--- Create databases scoped credential that use User Identity, Managed Identity, or SAS. User needs to create only database-scoped credentials that should be used to access data source:
+-- Create databases scoped credential that use Managed Identity or SAS token. User needs to create only database-scoped credentials that should be used to access data source:
 
-CREATE DATABASE SCOPED CREDENTIAL MyIdentity WITH IDENTITY = 'User Identity'
+CREATE DATABASE SCOPED CREDENTIAL WorkspaceIdentity
+WITH IDENTITY = 'Managed Identity'
 GO
-CREATE DATABASE SCOPED CREDENTIAL WorkspaceIdentity WITH IDENTITY = 'Managed Identity'
-GO
-CREATE DATABASE SCOPED CREDENTIAL SasCredential WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'sv=2019-10-1********ZVsTOL0ltEGhf54N8KhDCRfLRI%3D'
+CREATE DATABASE SCOPED CREDENTIAL SasCredential
+WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'sv=2019-10-1********ZVsTOL0ltEGhf54N8KhDCRfLRI%3D'
 
 -- Create data source that one of the credentials above, external file format, and external tables that reference this data source and file format:
 
@@ -316,13 +272,14 @@ GO
 CREATE EXTERNAL DATA SOURCE mysample
 WITH (    LOCATION   = 'https://*******.blob.core.windows.net/samples'
 -- Uncomment one of these options depending on authentication method that you want to use to access data source:
---,CREDENTIAL = MyIdentity 
 --,CREDENTIAL = WorkspaceIdentity 
 --,CREDENTIAL = SasCredential 
 )
 
 CREATE EXTERNAL TABLE dbo.userData ( [id] int, [first_name] varchar(8000), [last_name] varchar(8000) )
-WITH ( LOCATION = 'parquet/user-data/*.parquet', DATA_SOURCE = [mysample], FILE_FORMAT = [SynapseParquetFormat] )
+WITH ( LOCATION = 'parquet/user-data/*.parquet',
+       DATA_SOURCE = [mysample],
+       FILE_FORMAT = [SynapseParquetFormat] );
 
 ```
 

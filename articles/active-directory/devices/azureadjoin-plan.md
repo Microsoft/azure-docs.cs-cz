@@ -4,19 +4,19 @@ description: Popisuje kroky, které jsou potřeba k implementaci zařízení př
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6bbecf0e365ba7a8424da775245181fa64c21f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 17e6660548084d64fce38617ba4e80ccf197f3d3
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78672701"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253065"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Postupy: plánování implementace služby Azure AD JOIN
 
@@ -104,7 +104,7 @@ Připojení k Azure AD:
 
 - Platí jenom pro zařízení s Windows 10. 
 - Neplatí pro předchozí verze Windows nebo jiné operační systémy. Pokud máte zařízení s Windows 7/8.1, musíte upgradovat na Windows 10 a nasadit službu Azure AD JOIN.
-- Není podporován na zařízeních s čipem TPM v režimu FIPS.
+- Je podporován pro čip TPM kompatibilní se standardem FIPS 2,0, ale není podporován pro čip TPM 1,2. Pokud vaše zařízení mají čip TPM kompatibilní se standardem FIPS 1,2, je nutné je před pokračováním v rámci služby Azure AD JOIN zakázat. Microsoft neposkytuje žádné nástroje pro zakázání režimu FIPS pro čipy TPM, protože je závislý na výrobci čipu TPM. Požádejte o podporu svého hardwarového výrobce OEM.
  
 **Doporučení:** Vždy používejte nejnovější verzi Windows 10, abyste mohli využít výhod aktualizovaných funkcí.
 
@@ -185,6 +185,8 @@ Zařízení připojená k Azure AD nepodporují místní aplikace, které se spo
 
 Připojení ke vzdálené ploše k zařízením připojeným k Azure AD vyžaduje, aby byl hostitelský počítač buď připojený k Azure AD, nebo připojený k hybridní službě Azure AD. Vzdálená plocha z nepřipojeného zařízení nebo jiného zařízení než Windows není podporovaná. Další informace najdete v tématu [připojení ke vzdálenému počítači připojenému k Azure AD](/windows/client-management/connect-to-remote-aadj-pc) .
 
+Když se spouští aktualizace Windows 10 2004, uživatelé můžou ALO použít vzdálenou plochu ze zařízení s Windows 10 registrovaných v Azure AD na zařízení připojené k Azure AD. 
+
 ## <a name="understand-your-provisioning-options"></a>Informace o možnostech zřizování
 
 Službu Azure AD JOIN můžete zřídit pomocí následujících přístupů:
@@ -217,7 +219,7 @@ Vyberte si v tabulce výše svůj přístup k nasazení nebo přístupy a Projd�
 
 ## <a name="configure-your-device-settings"></a>Konfigurace nastavení zařízení
 
-Azure Portal vám umožní řídit nasazení zařízení připojených k Azure AD ve vaší organizaci. Pokud chcete nakonfigurovat související nastavení, na **stránce Azure Active Directory**vyberte `Devices > Device settings`.
+Azure Portal vám umožní řídit nasazení zařízení připojených k Azure AD ve vaší organizaci. Pokud chcete nakonfigurovat související nastavení, na **stránce Azure Active Directory**vyberte `Devices > Device settings` .
 
 ### <a name="users-may-join-devices-to-azure-ad"></a>Uživatelé můžou připojovat zařízení do Azure AD.
 
@@ -243,7 +245,7 @@ Než budete moct nakonfigurovat nastavení mobility, možná budete muset nejdř
 
 **Postup přidání poskytovatele MDM**:
 
-1. Na **stránce Azure Active Directory**v části **Spravovat** klikněte na `Mobility (MDM and MAM)`. 
+1. Na **stránce Azure Active Directory**v části **Spravovat** klikněte na `Mobility (MDM and MAM)` . 
 1. Klikněte na **Přidat aplikaci**.
 1. Ze seznamu vyberte poskytovatele MDM.
 
@@ -295,8 +297,8 @@ Tuto implementaci můžete použít k [vyžadování spravovaných zařízení p
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Připojení nového zařízení s Windows 10 k Azure AD během prvního spuštění](azuread-joined-devices-frx.md)
-> [připojit své pracovní zařízení k síti vaší organizace](/azure/active-directory/user-help/user-help-join-device-on-network)
+> [Připojení nového zařízení s Windows 10 k Azure AD během prvního spuštění](azuread-joined-devices-frx.md) 
+>  [Připojte své pracovní zařízení k síti vaší organizace](/azure/active-directory/user-help/user-help-join-device-on-network) .
 
 <!--Image references-->
 [1]: ./media/azureadjoin-plan/12.png

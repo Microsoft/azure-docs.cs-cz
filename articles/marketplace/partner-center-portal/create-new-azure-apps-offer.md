@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: ace85727680ecf6d62860ac2239a8c0b68ae6e0e
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 1755d6808183887ca428f227272c3923d4bae21f
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848783"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213838"
 ---
 # <a name="create-an-azure-application-offer"></a>Vytvoření nabídky aplikací Azure
 
@@ -20,7 +20,7 @@ Tento článek vysvětluje kroky a požadavky pro vytvoření nové nabídky apl
 
 Než budete moct publikovat novou nabídku aplikací Azure, [Vytvořte si v partnerském centru účet komerčního tržiště](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) a ujistěte se, že je váš účet zaregistrovaný v programu pro komerční Marketplace.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Návrh, sestavování a testování nabídek aplikací Azure vyžaduje technické znalosti platformy Azure i technologií používaných k sestavování této nabídky. Váš technický tým by měl mít znalosti o následujících technologiích Microsoftu:
 
@@ -92,9 +92,9 @@ Existují dva druhy plánů aplikací Azure: šablony řešení a spravované ap
 
 Všechny aplikace Azure obsahují v kořenové složce archivu aspoň dva soubory `.zip` :
 
-* Soubor šablony Správce prostředků s názvem [mainTemplate. JSON](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).  Tato šablona definuje prostředky, které se mají nasadit do předplatného Azure zákazníka.  Příklady šablon Správce prostředků najdete v [galerii šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/) nebo v příslušném úložišti [šablon pro rychlý Start Azure Resource Manager](https://github.com/azure/azure-quickstart-templates) .
+* Soubor šablony Správce prostředků s názvem [mainTemplate.js](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).  Tato šablona definuje prostředky, které se mají nasadit do předplatného Azure zákazníka. Příklady šablon Správce prostředků najdete v [galerii šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/) nebo v příslušném úložišti [šablon pro rychlý Start Azure Resource Manager](https://github.com/azure/azure-quickstart-templates) .
 
-* Definice uživatelského rozhraní pro prostředí pro vytváření aplikací Azure s názvem [createUiDefinition. JSON](https://docs.microsoft.com/azure/managed-applications/create-uidefinition-overview).  V uživatelském rozhraní zadáváte elementy, které uživatelům umožňují zadávat hodnoty parametrů.
+* Definice uživatelského rozhraní pro prostředí pro vytváření aplikací Azure s názvem [createUiDefinition.js](https://docs.microsoft.com/azure/managed-applications/create-uidefinition-overview).  V uživatelském rozhraní zadáváte elementy, které uživatelům umožňují zadávat hodnoty parametrů.
 
 Všechny nové nabídky aplikací Azure musí zahrnovat [identifikátor GUID poskytovatele využívání zákaznických zákazníků Azure](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution). 
 
@@ -161,16 +161,43 @@ Vyberte alespoň jednu a až tři kategorie, do kterých chcete svou nabídku um
 
 ## <a name="offer-listing"></a>Seznam nabídek
 
-Na této stránce můžete spravovat kopii a image pro vaši nabídku komerčního tržiště. 
+Na této stránce můžete spravovat kopii a image pro vaši nabídku komerčního tržiště.
 
 ### <a name="marketplace-details"></a>Podrobnosti Marketplace
 
 > [!NOTE]
 > Obsah seznamu nabídek (například popis, dokumenty, snímky obrazovky a podmínky použití) nemusí být v angličtině, pokud popis nabídky začíná frází "Tato aplikace je k dispozici pouze v [jazykovém jazyce, který není v angličtině]." Je také přijatelné poskytnout *užitečnou adresu URL pro odkaz* k poskytnutí obsahu v jiném jazyce, než který je použit v obsahu nabídky.
 
+Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Marketplace (uvedené ceny jsou například jenom pro účely a nejsou určené k tomu, aby odrážely skutečné náklady):
+
+:::image type="content" source="media/example-azure-marketplace-app.png" alt-text="Ukazuje, jak se tato nabídka zobrazuje v Azure Marketplace.":::
+
+#### <a name="call-out-descriptions"></a>Popisy volání
+
+1. Logo
+2. Kategorie
+3. Adresa podpory (odkaz)
+4. Podmínky použití
+5. Adresa zásad ochrany osobních údajů (odkaz)
+6. Název nabídky
+7. Souhrn
+8. Description
+9. Snímky obrazovky a videa
+
+<br>Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Portal:
+
+:::image type="content" source="media/example-virtual-machine-container-iot-edge-saas.png" alt-text="Ukazuje, jak se tato nabídka zobrazuje v Azure Portal.":::
+
+#### <a name="call-out-descriptions"></a>Popisy volání
+
+1. Nadpis
+2. Popis
+3. Užitečné odkazy
+4. Screenshoty
+
 #### <a name="name"></a>Name
 
-Název, který sem zadáte, se zákazníkům zobrazí jako název seznamu nabídek. Toto pole se předem vyplní textem, který jste zadali jako **alias nabídky** při vytváření nabídky, ale tuto hodnotu můžete změnit. Tento název může být ochranných známek (a může obsahovat symboly ochranných známek a autorských práv). Název nesmí být delší než 50 znaků a nesmí obsahovat žádné emoji.
+Název, který sem zadáte, se zákazníkům zobrazí jako název seznamu nabídek. Toto pole je předem vyplněno textem, který jste zadali pro možnost **alias nabídky** při vytváření nabídky, ale můžete tuto hodnotu změnit. Tento název může být ochranných známek (a může obsahovat symboly ochranných známek a autorských práv). Název nesmí být delší než 50 znaků a nesmí obsahovat žádné emoji.
 
 #### <a name="search-results-summary"></a>Souhrn výsledků hledání
 
@@ -180,7 +207,7 @@ Zadejte krátký popis vaší nabídky, maximálně 100 znaků. Tento popis se d
 
 Zadejte delší popis nabídky, maximálně 256 znaků. Tento popis se dá použít ve výsledcích hledání.
 
-#### <a name="description"></a>Popis
+#### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -265,7 +292,7 @@ Než budete pokračovat, vyberte **Uložit koncept** .
 
 Technická konfigurace definuje podrobnosti (ID tenanta a ID aplikace), které se používají k identifikaci vaší služby, což vygeneruje události měření pro spravovanou aplikaci pomocí [rozhraní API služby měření na webu Marketplace](./marketplace-metering-service-apis.md).  Zadejte identitu, kterou bude služba používat při generování událostí měření.
 
-* **ID tenanta Azure AD** (povinné): v rámci Azure Portal vyžadujeme [Vytvoření aplikace Azure Active Directory (AD)](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) , abyste mohli ověřit, že připojení mezi našimi dvěma službami bude za ověřenou komunikací. [ID tenanta](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)zjistíte tak, že přejdete na Azure Active Directory a vyberete **vlastnosti**a pak vyhledáte uvedené číslo **ID adresáře** (například 50c464d3-4930-494c-963c-1e951d15360e).
+* **ID tenanta Azure AD** (povinné): uvnitř Azure Portal musíte [vytvořit aplikaci Azure Active Directory (AD)](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) , abyste mohli ověřit, že připojení mezi našimi dvěma službami je za ověřenou komunikací. [ID tenanta](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)zjistíte tak, že přejdete na Azure Active Directory a vyberete **vlastnosti**a pak vyhledáte uvedené číslo **ID adresáře** (například 50c464d3-4930-494c-963c-1e951d15360e).
 * **ID aplikace Azure AD** (povinné): budete také potřebovat [ID aplikace](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) a ověřovací klíč. Tyto hodnoty získáte tak, že přejdete na Azure Active Directory a vyberete **Registrace aplikací**a pak vyhledáte uvedené číslo **ID aplikace** (například 50c464d3-4930-494c-963c-1e951d15360e). Ověřovací klíč najdete tak, že přejdete na **Nastavení** a vyberete **klíče**. Budete muset zadat popis a dobu trvání a pak zadat číselnou hodnotu.
 
 >[!Note]
@@ -421,8 +448,8 @@ Tato karta vám umožní upravit koncept verze vaší technické konfigurace.
 
 Všechny balíčky plánu aplikací Azure musí zahrnovat tyto dva soubory v kořenové složce `.zip` archivu:
 
-* Soubor šablony Správce prostředků s názvem [mainTemplate. JSON](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). Tato šablona automatizuje nasazení prostředků do předplatného Azure Customer.  Příklady šablon Správce prostředků najdete v [galerii šablon Azure pro rychlý Start](https://azure.microsoft.com/documentation/templates/) nebo v příslušném úložišti [šablon pro rychlý Start Azure Resource Manager](https://github.com/azure/azure-quickstart-templates) .
-* Definice uživatelského rozhraní pro prostředí pro vytváření aplikací Azure s názvem [createUiDefinition. JSON](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview).
+* Soubor šablony Správce prostředků s názvem [mainTemplate.js](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). Tato šablona automatizuje nasazení prostředků do předplatného Azure Customer.  Příklady šablon Správce prostředků najdete v [galerii šablon Azure pro rychlý Start](https://azure.microsoft.com/documentation/templates/) nebo v příslušném úložišti [šablon pro rychlý Start Azure Resource Manager](https://github.com/azure/azure-quickstart-templates) .
+* Definice uživatelského rozhraní pro prostředí pro vytváření aplikací Azure s názvem [createUiDefinition.js](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview).
 
 Maximální podporované velikosti souborů jsou:
 
@@ -505,7 +532,7 @@ Chcete-li povolit testovací jednotku, zaškrtněte políčko **Povolit testovac
 
 ### <a name="test-drive-technical-configuration"></a>Technická konfigurace testovacích jednotek
 
-- **ID aplikace Azure AD** (povinné): zadejte [ID aplikace](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)Azure Active Directory (AD). Chcete-li zjistit toto ID, přihlaste se k [Azure Portal](https://portal.azure.com/), v levé nabídce vyberte kartu Active Directory, vyberte možnost **Registrace aplikací**a vyhledejte číslo **ID aplikace** uvedené v seznamu (například 50c464d3-4930-494c-963c-1e951d15360e).
+- **ID aplikace Azure AD** (povinné): zadejte [ID aplikace](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)Azure Active Directory (AD). Chcete-li zjistit toto ID, přihlaste se k [Azure Portal](https://portal.azure.com/), v levé nabídce vyberte kartu Active Directory, vyberte možnost **Registrace aplikací**a vyhledejte uvedené číslo **ID aplikace** (například 50c464d3-4930-494c-963c-1e951d15360e).
 
 #### <a name="deployment-subscription-details"></a>Podrobnosti předplatného nasazení
 
@@ -531,7 +558,7 @@ Popište možnosti prostředí Test Drive.
 * **Videa: přidat videa** (volitelné) – videa se dají nahrát na YouTube nebo Vimeo a tady se odkazuje s odkazem a obrázkem miniatury (533 x 324 pixelů), takže zákazník může zobrazit návod k informacím, který jim pomůže lépe porozumět testovacím jednotkám, včetně toho, jak úspěšně používat funkce vaší nabídky a pochopit scénáře, které zvýrazní jejich výhody.
   * **Název** (povinné)
   * **Adresa** (jenom YouTube nebo Vimeo; povinné)
-  * **Miniatura** (soubor obrázku musí být ve formátu PNG a 533 x 324 px).
+  * **Miniatura** (soubor obrázku musí být ve formátu PNG a 533 x 324 pixelů).
 
 Než budete pokračovat, vyberte **Uložit koncept** .
 

@@ -2,21 +2,21 @@
 title: Reference k atributu SAP SuccessFactors
 description: Informace o tom, které atributy z SuccessFactors jsou podporované SuccessFactors zřizováním na základě lidských zdrojů
 services: active-directory
-author: cmmdesai
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
-ms.topic: article
+ms.topic: reference
 ms.workload: identity
 ms.date: 12/06/2019
-ms.author: chmutali
+ms.author: kenwith
 ms.reviewer: celested
-ms.openlocfilehash: cdd6abf5d10a529aa4c529d0364b2ba9f1df72e3
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 25541b76dda55db1ec26f4d8e3ec63573a47e7b1
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593180"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84781544"
 ---
 # <a name="sap-successfactors-attribute-reference"></a>Reference k atributu SAP SuccessFactors
 
@@ -92,26 +92,26 @@ Následující tabulka zachycuje seznam atributů SuccessFactors podporovaných 
 | 55 | EmpJob                                 | position                     | Čtení           |
 | 65 | EmpJob                                 | customString13               | Čtení           |
 | 56 | EmpJob                                 | managerId                    | Čtení           |
-| 57 | EmpJob\.BusinessUnit                   | businessUnit                 | Čtení           |
-| 58 | EmpJob\.BusinessUnit                   | businessUnitId               | Čtení           |
-| 59 | Společnost\.EmpJob                        | company                      | Čtení           |
-| 60 | Společnost\.EmpJob                        | companyId                    | Čtení           |
-| 61 | CountryOfRegistration\.společnosti\.EmpJob | twoCharCountryCode           | Čtení           |
-| 62 | EmpJob\.CostCenter                     | costCenter                   | Čtení           |
-| 63 | EmpJob\.CostCenter                     | costCenterId                 | Čtení           |
-| 64 | EmpJob\.CostCenter                     | costCenterDescription        | Čtení           |
-| 65 | EmpJob\.oddělení                     | Oddělení                   | Čtení           |
-| 66 | EmpJob\.oddělení                     | departmentId                 | Čtení           |
-| 67 | EmpJob\.rozdělení                       | dělení                     | Čtení           |
-| 68 | EmpJob\.rozdělení                       | divisionId                   | Čtení           |
-| 69 | EmpJob\.JobCode                        | jobCode                      | Čtení           |
-| 70 | EmpJob\.JobCode                        | jobCodeId                    | Čtení           |
-| 71 | Umístění\.EmpJob                       | Umístění                 | Čtení           |
-| 72 | Umístění\.EmpJob                       | officeLocationAddress        | Čtení           |
-| 73 | Umístění\.EmpJob                       | officeLocationCity           | Čtení           |
-| 74 | Umístění\.EmpJob                       | officeLocationCustomString4  | Čtení           |
-| 75 | Umístění\.EmpJob                       | officeLocationZipCode        | Čtení           |
-| 76 | EmpJob\.PayGrade                       | payGrade                     | Čtení           |
+| 57 | EmpJob \. BusinessUnit                   | businessUnit                 | Čtení           |
+| 58 | EmpJob \. BusinessUnit                   | businessUnitId               | Čtení           |
+| 59 | \.Společnost EmpJob                        | company                      | Čtení           |
+| 60 | \.Společnost EmpJob                        | companyId                    | Čtení           |
+| 61 | \.CountryOfRegistration společnosti \. EmpJob | twoCharCountryCode           | Čtení           |
+| 62 | EmpJob \. CostCenter                     | costCenter                   | Čtení           |
+| 63 | EmpJob \. CostCenter                     | costCenterId                 | Čtení           |
+| 64 | EmpJob \. CostCenter                     | costCenterDescription        | Čtení           |
+| 65 | EmpJob \. oddělení                     | Oddělení                   | Čtení           |
+| 66 | EmpJob \. oddělení                     | departmentId                 | Čtení           |
+| 67 | EmpJob \. rozdělení                       | dělení                     | Čtení           |
+| 68 | EmpJob \. rozdělení                       | divisionId                   | Čtení           |
+| 69 | EmpJob \. JobCode                        | jobCode                      | Čtení           |
+| 70 | EmpJob \. JobCode                        | jobCodeId                    | Čtení           |
+| 71 | \.Umístění EmpJob                       | Umístění                 | Čtení           |
+| 72 | \.Umístění EmpJob                       | officeLocationAddress        | Čtení           |
+| 73 | \.Umístění EmpJob                       | officeLocationCity           | Čtení           |
+| 74 | \.Umístění EmpJob                       | officeLocationCustomString4  | Čtení           |
+| 75 | \.Umístění EmpJob                       | officeLocationZipCode        | Čtení           |
+| 76 | EmpJob \. PayGrade                       | payGrade                     | Čtení           |
 | 77 | EmpEmploymentTermination               | activeEmploymentsCount       | Čtení           |
 | 78 | EmpEmploymentTermination               | latestTerminationDate        | Čtení           |
 
@@ -122,22 +122,22 @@ Následující tabulka uvádí výchozí mapování atributů mezi SuccessFactor
 | \# | SuccessFactors – entita                  | SuccessFactors – atribut | Výchozí mapování atributů AD nebo Azure AD   | Zpracování přeznačení                                                                            |
 |----|----------------------------------------|--------------------------|-----------------------------------------|----------------------------------------------------------------------------------------------|
 | 1  | PerPerson                              | personIdExternal         | Zaměstnance                              | Použito jako shodný atribut                                                                   |
-| 2  | PerPerson                              | perPersonUuid            | \[Nenamapováno \- se používá jako zdrojové ukotvení.\] | Při počáteční synchronizaci propojuje služba zřizování personUuid existující objectGuid\..  |
-| 3  | PerPersonal                            | displayName              | displayName                             | Není k dispozici                                                                                           |
-| 4  | PerPersonal                            | firstName                | givenName                               | Není k dispozici                                                                                           |
-| 5  | PerPersonal                            | lastName                 | sn                                      | Není k dispozici                                                                                           |
-| 6  | Uživatel                                   | addressLine1             | streetAddress                           | Není k dispozici                                                                                           |
-| 7  | Uživatel                                   | city                     | l                                       | Není k dispozici                                                                                           |
-| 8  | Uživatel                                   | country                  | společném                                      | Není k dispozici                                                                                           |
-| 9  | Uživatel                                   | state                    | st                                      | Není k dispozici                                                                                           |
-| 10 | Uživatel                                   | uživatelské jméno                 | samAccountName                          | Není k dispozici                                                                                           |
-| 11 | Uživatel                                   | PSČ                  | Ovládacím                              | Není k dispozici                                                                                           |
-| 12 | PerEmail                               | emailAddress             | pošta                                    | Není k dispozici                                                                                           |
-| 13 | EmpJob                                 | jobTitle                 | title                                   | Není k dispozici                                                                                           |
-| 14 | EmpJob                                 | managerId                | manager                                 | Není k dispozici                                                                                           |
-| 15 | CountryOfRegistration\.společnosti\.EmpJob | twoCharCountryCode       | c                                       | Není k dispozici                                                                                           |
-| 16 | EmpJob\.oddělení                     | Oddělení               | Oddělení                              | Není k dispozici                                                                                           |
-| 17 | EmpJob\.rozdělení                       | dělení                 | company                                 | Není k dispozici                                                                                           |
-| 18 | Umístění\.EmpJob                       | officeLocationAddress    | streetAddress                           | Není k dispozici                                                                                           |
-| 19 | Umístění\.EmpJob                       | officeLocationZipCode    | Ovládacím                              | Není k dispozici                                                                                           |
+| 2  | PerPerson                              | perPersonUuid            | \[Nenamapováno se \- používá jako zdrojové ukotvení.\] | Při počáteční synchronizaci propojuje služba zřizování personUuid existující objectGuid\..  |
+| 3  | PerPersonal                            | displayName              | displayName                             | NA                                                                                           |
+| 4  | PerPersonal                            | firstName                | givenName                               | NA                                                                                           |
+| 5  | PerPersonal                            | lastName                 | sn                                      | NA                                                                                           |
+| 6  | Uživatel                                   | addressLine1             | streetAddress                           | NA                                                                                           |
+| 7  | Uživatel                                   | city                     | l                                       | NA                                                                                           |
+| 8  | Uživatel                                   | country                  | společném                                      | NA                                                                                           |
+| 9  | Uživatel                                   | state                    | st                                      | NA                                                                                           |
+| 10 | Uživatel                                   | uživatelské jméno                 | samAccountName                          | NA                                                                                           |
+| 11 | Uživatel                                   | PSČ                  | Ovládacím                              | NA                                                                                           |
+| 12 | PerEmail                               | emailAddress             | pošta                                    | NA                                                                                           |
+| 13 | EmpJob                                 | jobTitle                 | title                                   | NA                                                                                           |
+| 14 | EmpJob                                 | managerId                | manager                                 | NA                                                                                           |
+| 15 | \.CountryOfRegistration společnosti \. EmpJob | twoCharCountryCode       | c                                       | NA                                                                                           |
+| 16 | EmpJob \. oddělení                     | Oddělení               | Oddělení                              | NA                                                                                           |
+| 17 | EmpJob \. rozdělení                       | dělení                 | company                                 | NA                                                                                           |
+| 18 | \.Umístění EmpJob                       | officeLocationAddress    | streetAddress                           | NA                                                                                           |
+| 19 | \.Umístění EmpJob                       | officeLocationZipCode    | Ovládacím                              | NA                                                                                           |
 | 20 | EmpEmploymentTermination               | activeEmploymentsCount   | accountEnabled                          | Pokud activeEmploymentsCount = 0, zakažte Account\..                                           |

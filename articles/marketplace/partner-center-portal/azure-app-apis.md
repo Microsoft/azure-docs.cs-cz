@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: e50534639f5f46b1675ba5c074fb8fdd843ac87e
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 1df921f26c88d29d5053914e8ccc89b9ac0f1bae
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83770053"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85126038"
 ---
 # <a name="partner-center-submission-api-to-onboard-azure-apps-in-partner-center"></a>Rozhraní API pro odeslání partnerského centra pro zprovoznění aplikací Azure v partnerském centru
 
@@ -29,7 +29,7 @@ K dispozici je několik programových prostředků, které potřebujete k použ�
 
 Než začnete psát kód pro volání rozhraní API pro odeslání partnerského centra, ujistěte se, že jste dokončili následující požadavky.
 
-- Vy (nebo vaše organizace) musí mít adresář služby Azure AD a musíte mít oprávnění [globálního správce](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) pro tento adresář. Pokud už používáte Office 365 nebo jiné firemní služby od Microsoftu, už máte adresář Azure AD. V opačném případě můžete [vytvořit novou službu Azure AD v partnerském centru](https://docs.microsoft.com/windows/uwp/publish/associate-azure-ad-with-partner-center#create-a-brand-new-azure-ad-to-associate-with-your-partner-center-account) bez dalších poplatků.
+- Vy (nebo vaše organizace) musí mít adresář služby Azure AD a musíte mít oprávnění [globálního správce](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) pro tento adresář. Pokud už používáte Microsoft 365 nebo jiné firemní služby od Microsoftu, už máte adresář Azure AD. V opačném případě můžete [vytvořit novou službu Azure AD v partnerském centru](https://docs.microsoft.com/windows/uwp/publish/associate-azure-ad-with-partner-center#create-a-brand-new-azure-ad-to-associate-with-your-partner-center-account) bez dalších poplatků.
 
 - Musíte [přidružit aplikaci Azure AD k účtu partnerského centra](https://docs.microsoft.com/windows/uwp/monetize/create-and-manage-submissions-using-windows-store-services#associate-an-azure-ad-application-with-your-windows-partner-center-account) a získat ID TENANTA, ID klienta a klíč. Tyto hodnoty budete potřebovat k získání přístupového tokenu Azure AD, který použijete v volání rozhraní API pro odeslání Microsoft Store.
 

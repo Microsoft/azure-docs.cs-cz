@@ -6,15 +6,15 @@ ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 4/1/2020
-ms.openlocfilehash: 3ba06ea592d51eedbe827e1ab6418f65722d579c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/11/2020
+ms.openlocfilehash: fef5e6e3ea1a6f0ccc9213c13a129fab77af5274
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80632304"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736148"
 ---
-# <a name="customize-server-configuration-parameters-by-using-azure-cli"></a>Přizpůsobení parametrů konfigurace serveru pomocí Azure CLI
+# <a name="configure-server-parameters-in-azure-database-for-mariadb-using-the-azure-cli"></a>Konfigurace parametrů serveru v Azure Database for MariaDB pomocí rozhraní příkazového řádku Azure
 Pomocí Azure CLI, nástroje příkazového řádku Azure můžete vypsat, zobrazit a aktualizovat parametry konfigurace Azure Database for MariaDB serveru. Podmnožina konfigurací modulu se zveřejňuje na úrovni serveru a dá se upravit.
 
 ## <a name="prerequisites"></a>Požadavky
@@ -35,7 +35,7 @@ Definice všech uvedených parametrů naleznete v části Reference MariaDB na [
 ## <a name="show-server-configuration-parameter-details"></a>Zobrazit podrobnosti parametru konfigurace serveru
 Chcete-li zobrazit podrobnosti o konkrétním parametru konfigurace pro server, spusťte příkaz [AZ MariaDB Server Configuration show](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-show) .
 
-Tento příklad ukazuje podrobnosti parametru konfigurace **serveru\_pomalého dotazu\_** pro server **mydemoserver.MariaDB.Database.Azure.com** v části Skupina prostředků **myresourcegroup.**
+Tento příklad ukazuje podrobnosti parametru konfigurace serveru **pomalého \_ dotazu \_ ** pro server **mydemoserver.MariaDB.Database.Azure.com** v části Skupina prostředků **myresourcegroup.**
 ```azurecli-interactive
 az mariadb server configuration show --name slow_query_log --resource-group myresourcegroup --server mydemoserver
 ```
@@ -43,7 +43,7 @@ az mariadb server configuration show --name slow_query_log --resource-group myre
 ## <a name="modify-a-server-configuration-parameter-value"></a>Změna hodnoty parametru konfigurace serveru
 Můžete také změnit hodnotu určitého parametru konfigurace serveru, který aktualizuje základní konfigurační hodnotu pro modul MariaDB serveru. Chcete-li aktualizovat konfiguraci, použijte příkaz [AZ MariaDB Server Configuration set](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-set) . 
 
-Pokud chcete aktualizovat parametr konfigurace serveru s **pomalým\_\_dotazem** na serveru **mydemoserver.MariaDB.Database.Azure.com** v části Skupina prostředků **myresourcegroup.**
+Pokud chcete aktualizovat parametr konfigurace serveru s **pomalým \_ dotazem \_ ** na serveru **mydemoserver.MariaDB.Database.Azure.com** v části Skupina prostředků **myresourcegroup.**
 ```azurecli-interactive
 az mariadb server configuration set --name slow_query_log --resource-group myresourcegroup --server mydemoserver --value ON
 ```
@@ -53,7 +53,15 @@ Pokud chcete resetovat hodnotu parametru konfigurace, vynechejte volitelný `--v
 az mariadb server configuration set --name slow_query_log --resource-group myresourcegroup --server mydemoserver
 ```
 
-Tento kód resetuje konfiguraci **protokolu\_pomalých\_dotazů** na výchozí hodnotu **vypnuto**. 
+Tento kód resetuje konfiguraci ** \_ \_ protokolu pomalých dotazů** na výchozí hodnotu **vypnuto**. 
+
+## <a name="setting-parameters-not-listed"></a>Nastavení neuvedených parametrů
+Pokud parametr serveru, který chcete aktualizovat, není uveden v Azure Portal, můžete volitelně nastavit parametr na úrovni připojení pomocí `init_connect` . Tím se nastaví parametry serveru pro každého klienta, který se připojuje k serveru. 
+
+Aktualizujte parametr konfigurace serveru **init \_ connect** serveru **mydemoserver.MariaDB.Database.Azure.com** v části Skupina prostředků **myresourcegroup** pro nastavení hodnot, jako je například znaková sada.
+```azurecli-interactive
+az mariadb server configuration set --name init_connect --resource-group myresourcegroup --server mydemoserver --value "SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;"
+```
 
 ## <a name="working-with-the-time-zone-parameter"></a>Práce s parametrem časového pásma
 
@@ -62,7 +70,7 @@ Tento kód resetuje konfiguraci **protokolu\_pomalých\_dotazů** na výchozí h
 Tabulky časových pásem na vašem serveru můžou být vyplněné voláním `mysql.az_load_timezone` uložené procedury z nástroje, jako je příkazový řádek MariaDB nebo MariaDB Workbench.
 
 > [!NOTE]
-> Pokud spouštíte `mysql.az_load_timezone` příkaz z MariaDB Workbench, možná budete muset nejdřív vypnout režim bezpečné aktualizace pomocí `SET SQL_SAFE_UPDATES=0;`.
+> Pokud spouštíte `mysql.az_load_timezone` příkaz z MariaDB Workbench, možná budete muset nejdřív vypnout režim bezpečné aktualizace pomocí `SET SQL_SAFE_UPDATES=0;` .
 
 ```sql
 CALL mysql.az_load_timezone();
@@ -81,7 +89,7 @@ SELECT name FROM mysql.time_zone_name;
 
 Časové pásmo globální úrovně lze nastavit pomocí příkazu [AZ MariaDB Server Configuration set](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-set) .
 
-Následující příkaz aktualizuje parametr konfigurace **serveru\_časového pásma** serveru **mydemoserver.MariaDB.Database.Azure.com** ve skupině prostředků **myresourcegroup** na **US/Tichomoří**.
+Následující příkaz aktualizuje parametr konfigurace **serveru \_ časového pásma** serveru **mydemoserver.MariaDB.Database.Azure.com** ve skupině prostředků **myresourcegroup** na **US/Tichomoří**.
 
 ```azurecli-interactive
 az mariadb server configuration set --name time_zone --resource-group myresourcegroup --server mydemoserver --value "US/Pacific"

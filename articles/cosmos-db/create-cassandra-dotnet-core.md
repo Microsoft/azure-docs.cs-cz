@@ -8,19 +8,19 @@ ms.author: thvankra
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/18/2020
-ms.openlocfilehash: 9df32b441d5dd2653fd3708013bb75660ef593c5
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 56adfa2ddab011372783a7a7872b4f4c8d7fc050
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84311048"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118436"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-core-and-azure-cosmos-db"></a>Rychlý Start: sestavení aplikace Cassandra pomocí .NET Core a Azure Cosmos DB
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
 > * [.NET Core](create-cassandra-dotnet-core.md)
-> * [Java V3](create-cassandra-java.md)
+> * [Java v3](create-cassandra-java.md)
 > * [Java v4](create-cassandra-java-v4.md)
 > * [Node.js](create-cassandra-nodejs.md)
 > * [Python](create-cassandra-python.md)
@@ -133,13 +133,13 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
 
 1. Na portálu [Azure Portal](https://portal.azure.com/) vyberte **Připojovací řetězec**.
 
-    Pomocí tlačítka ![Tlačítko pro kopírování](./media/create-cassandra-dotnet/copy.png) na pravé straně obrazovky zkopírujte hodnotu UŽIVATELSKÉ JMÉNO.
+1. Pomocí tlačítka ![Tlačítko pro kopírování](./media/create-cassandra-dotnet/copy.png) na pravé straně obrazovky zkopírujte hodnotu UŽIVATELSKÉ JMÉNO.
 
-    ![Zobrazení a zkopírování přístupového klíče na webu Azure Portal, stránka Připojovací řetězec](./media/create-cassandra-dotnet/keys.png)
+   :::image type="content" source="./media/create-cassandra-dotnet/keys.png" alt-text="Zobrazení a zkopírování přístupového klíče na webu Azure Portal, stránka Připojovací řetězec":::
 
-2. V aplikaci Visual Studio otevřete soubor Program.cs. 
+1. V aplikaci Visual Studio otevřete soubor Program.cs. 
 
-3. Vložte hodnotu UŽIVATELSKÉ JMÉNO z portálu místo `<PROVIDE>` na řádku 13.
+1. Vložte hodnotu UŽIVATELSKÉ JMÉNO z portálu místo `<PROVIDE>` na řádku 13.
 
     Řádek 13 souboru Program.cs by teď měl vypadat nějak takto: 
 
@@ -149,14 +149,13 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
 
     `private const string CassandraContactPoint = "cosmos-db-quickstarts.cassandra.cosmosdb.azure.com"; //  DnsName`
 
-3. Přejděte zpátky na portál a zkopírujte hodnotu HESLO. Vložte hodnotu HESLO z portálu místo `<PROVIDE>` na řádku 14.
+1. Přejděte zpátky na portál a zkopírujte hodnotu HESLO. Vložte hodnotu HESLO z portálu místo `<PROVIDE>` na řádku 14.
 
     Řádek 14 souboru Program.cs by teď měl vypadat nějak takto: 
 
     `private const string Password = "2Ggkr662ifxz2Mg...==";`
 
-
-4. Uložte soubor Program.cs.
+1. Uložte soubor Program.cs.
     
 ## <a name="run-the-net-core-app"></a>Spuštění aplikace .NET Core
 
@@ -169,13 +168,13 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
     ```
 3. Spusťte aplikaci stisknutím CTRL + F5. Aplikace se zobrazí v okně konzoly. 
 
-    ![Zobrazení a ověření výstupu](./media/create-cassandra-dotnet/output.png)
+    :::image type="content" source="./media/create-cassandra-dotnet/output.png" alt-text="Zobrazení a ověření výstupu":::
 
     Stisknutím kláves CTRL + C zastavte provádění programu a zavřete okno konzoly. 
     
 4. Na portálu Azure Portal otevřete **Data Explorer**, abyste se mohli na tato nová data dotazovat, měnit je a pracovat s nimi.
 
-    ![Zobrazení dat v Průzkumníku dat](./media/create-cassandra-dotnet/data-explorer.png)
+    :::image type="content" source="./media/create-cassandra-dotnet/data-explorer.png" alt-text="Zobrazení dat v Průzkumníku dat":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>Ověření smluv SLA na webu Azure Portal
 

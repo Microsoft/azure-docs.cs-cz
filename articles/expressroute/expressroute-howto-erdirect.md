@@ -4,15 +4,15 @@ description: Tato stránka vám pomůže nakonfigurovat ExpressRoute Direct.
 services: expressroute
 author: jaredr80
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/22/2020
 ms.author: jaredro
-ms.openlocfilehash: 2722a852b1119ef619bc414bce5cb3a8ff6f8f00
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d028baef8898ce8d45fa8e2e142a58a1ae3300c
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77031608"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736250"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>Jak nakonfigurovat ExpressRoute Direct
 
@@ -223,7 +223,7 @@ ExpressRoute Direct nabízí možnost připojit se přímo k globální síti Mi
    Circuits                   : []
    ```
 
-   `AdminState = "Disabled"` Pro vypnutí portů použijte stejný postup.
+   `AdminState = "Disabled"`Pro vypnutí portů použijte stejný postup.
 
 ## <a name="create-a-circuit"></a><a name="circuit"></a>Vytvoření okruhu
 

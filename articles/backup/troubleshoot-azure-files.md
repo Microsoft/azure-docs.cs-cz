@@ -3,12 +3,12 @@ title: Řešení potíží se zálohováním sdílených složek Azure
 description: Tento článek obsahuje informace o řešení potíží, ke kterým dochází při ochraně sdílených složek Azure.
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 3d04a60b8bab5ba764818eab341ac08836b0dfd1
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 15cea28ee6c6a969b56e34242e2631b0aa760331
+ms.sourcegitcommit: 666303748238dfdf9da30d49d89b915af73b0468
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116735"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85130394"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Řešení potíží při zálohování sdílených složek Azure
 
@@ -25,6 +25,7 @@ Tento článek obsahuje informace o řešení potíží, které řeší všechny
   >Všechny sdílené složky v účtu úložiště je možné chránit jenom v rámci jednoho trezoru Recovery Services. Pomocí [tohoto skriptu](scripts/backup-powershell-script-find-recovery-services-vault.md) můžete najít trezor služby Recovery Services, ve kterém je váš účet úložiště zaregistrovaný.
 
 - Ujistěte se, že sdílená složka není přítomna v žádném z nepodporovaných účtů úložiště. Podporované účty úložiště můžete najít v tématu [Podpora pro zálohování sdílených složek Azure](azure-file-share-support-matrix.md) .
+- Zajistěte, aby celková délka názvu účtu úložiště a názvu skupiny prostředků nepřesáhla 84 znaků v případě nových účtů úložiště a 77 znaků v případě klasických účtů úložiště. 
 - Zkontrolujte nastavení brány firewall účtu úložiště, abyste měli jistotu, že je povolená možnost Povolit důvěryhodné služby Microsoftu přístup k účtu úložiště.
 
 ### <a name="error-in-portal-states-discovery-of-storage-accounts-failed"></a>Chyba na portálu hlásí, že zjišťování účtů úložiště selhalo

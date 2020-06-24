@@ -7,17 +7,17 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 06263f85f7d6ad6cc80724baab01124833498739
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 100a8ed1987b2edbc0aea1708c8a60b48bf391b1
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79129649"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737916"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-powershell"></a>Správa zachytávání paketů pomocí Azure Network Watcher pomocí prostředí PowerShell
 
@@ -39,7 +39,7 @@ Tento článek vás provede různými úlohami správy, které jsou aktuálně k
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V tomto článku se předpokládá, že máte následující zdroje:
 
@@ -48,11 +48,11 @@ V tomto článku se předpokládá, že máte následující zdroje:
 * Virtuální počítač s povoleným rozšířením zachytávání paketů.
 
 > [!IMPORTANT]
-> Zachytávání paketů vyžaduje rozšíření `AzureNetworkWatcherExtension`virtuálního počítače. Pokud chcete nainstalovat rozšíření na virtuální počítač s Windows, přejděte na web [azure Network Watcher Agent Virtual Machine Extension for Windows](../virtual-machines/windows/extensions-nwa.md) a pro Linux VM, navštivte [rozšíření Azure Network Watcher Agent Virtual Machine pro Linux](../virtual-machines/linux/extensions-nwa.md).
+> Zachytávání paketů vyžaduje rozšíření virtuálního počítače `AzureNetworkWatcherExtension` . Pokud chcete nainstalovat rozšíření na virtuální počítač s Windows, přejděte na web [azure Network Watcher Agent Virtual Machine Extension for Windows](../virtual-machines/windows/extensions-nwa.md) a pro Linux VM, navštivte [rozšíření Azure Network Watcher Agent Virtual Machine pro Linux](../virtual-machines/linux/extensions-nwa.md).
 
 ## <a name="install-vm-extension"></a>Instalace rozšíření virtuálních počítačů
 
-### <a name="step-1"></a>Krok 1
+### <a name="step-1"></a>Step 1
 
 ```powershell
 $VM = Get-AzVM -ResourceGroupName testrg -Name VM1
@@ -63,7 +63,7 @@ $VM = Get-AzVM -ResourceGroupName testrg -Name VM1
 Následující příklad načte informace o rozšíření potřebné ke spuštění `Set-AzVMExtension` rutiny. Tato rutina nainstaluje agenta zachytávání paketů do hostovaného virtuálního počítače.
 
 > [!NOTE]
-> Dokončení `Set-AzVMExtension` rutiny může trvat několik minut.
+> `Set-AzVMExtension`Dokončení rutiny může trvat několik minut.
 
 Pro virtuální počítače s Windows:
 
@@ -123,7 +123,7 @@ ForceUpdateTag          :
 
 Po dokončení předchozích kroků se na virtuálním počítači nainstaluje agent zachytávání paketů.
 
-### <a name="step-1"></a>Krok 1
+### <a name="step-1"></a>Step 1
 
 Dalším krokem je načtení instance Network Watcher. Tato proměnná je předána `New-AzNetworkWatcherPacketCapture` rutině v kroku 4.
 

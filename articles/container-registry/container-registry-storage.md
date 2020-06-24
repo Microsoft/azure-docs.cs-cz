@@ -2,13 +2,13 @@
 title: Úložiště image kontejneru
 description: Podrobnosti o tom, jak jsou image kontejnerů Docker uložené v Azure Container Registry, včetně zabezpečení, redundance a kapacity.
 ms.topic: article
-ms.date: 03/21/2018
-ms.openlocfilehash: b738556e5a4f764cd47c72d964ee188d1344b336
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 06/18/2020
+ms.openlocfilehash: d51014e9e0769091aba42682cce3a6a01cfa19de
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683401"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214056"
 ---
 # <a name="container-image-storage-in-azure-container-registry"></a>Úložiště imagí kontejneru v Azure Container Registry
 
@@ -16,7 +16,7 @@ Každá služba Azure Container Registry [Basic, Standard a Premium](container-r
 
 ## <a name="encryption-at-rest"></a>Šifrování v klidovém případě
 
-Všechny Image kontejneru v registru jsou zašifrované v klidovém stavu. Azure automaticky zašifruje image před uložením a dešifruje je průběžně, když se nebo vaše aplikace a služby vyžádají z image.
+Všechny Image kontejneru v registru jsou zašifrované v klidovém stavu. Azure automaticky zašifruje image před uložením a dešifruje je průběžně, když se nebo vaše aplikace a služby vyžádají z image. Volitelně můžete použít další vrstvu šifrování s [klíčem spravovaným zákazníkem](container-registry-customer-managed-keys.md).
 
 ## <a name="geo-redundant-storage"></a>Geograficky redundantní úložiště
 
@@ -26,19 +26,11 @@ Azure používá geograficky redundantní schéma úložiště pro ochranu před
 
 V případě scénářů, které vyžadují ještě větší záruku na vysokou dostupnost, zvažte použití funkce [geografické replikace](container-registry-geo-replication.md) v registrech úrovně Premium. Geografická replikace pomáhá chránit před ztrátou přístupu k vašemu registru v případě *celkové* regionální chyby, nikoli jenom při selhání úložiště. Geografická replikace poskytuje další výhody, jako je například úložiště imagí v síti, pro rychlejší nabízená oznámení a stahování v případě distribuovaných scénářů vývoje nebo nasazení.
 
-## <a name="image-limits"></a>Omezení imagí
+## <a name="scalable-storage"></a>Škálovatelné úložiště
 
-Následující tabulka popisuje kapacitu kontejneru a omezení úložiště pro služby Azure Container Registry.
+Azure Container Registry vám umožňuje vytvořit libovolný počet úložišť, obrázků, vrstev nebo značek podle potřeby, a to až do [limitu úložiště registru](container-registry-skus.md#service-tier-features-and-limits). 
 
-| Prostředek | Omezení |
-| -------- | :---- |
-| Úložiště | Bez omezení |
-| Obrázky | Bez omezení |
-| Vrstvy | Bez omezení |
-| Značky | Bez omezení|
-| Storage | 5 TB |
-
-Výkon vašeho registru může ovlivnit velmi vysoký počet úložišť a značek. V rámci rutiny údržby registru pravidelně odstraňujte nepoužívaná úložiště, značky a obrázky. Odstraněné prostředky registru, jako jsou úložiště, image a značky, se po odstranění *nedají* obnovit. Další informace o odstraňování prostředků registru najdete v tématu [odstranění imagí kontejneru v Azure Container Registry](container-registry-delete.md).
+Výkon vašeho registru může ovlivnit velmi vysoký počet úložišť a značek. V rámci rutiny údržby registru pravidelně odstraňujte nepoužívaná úložiště, značky a image a volitelně nastavte [zásady uchovávání informací](container-registry-retention-policy.md) pro netagované manifesty. Odstraněné prostředky registru, jako jsou úložiště, image a značky, *nelze* po odstranění obnovit. Další informace o odstraňování prostředků registru najdete v tématu [odstranění imagí kontejneru v Azure Container Registry](container-registry-delete.md).
 
 ## <a name="storage-cost"></a>Náklady na úložiště
 

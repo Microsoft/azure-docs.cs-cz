@@ -3,12 +3,12 @@ title: Omezení pojmenování prostředků
 description: Zobrazuje pravidla a omezení pro pojmenování prostředků Azure.
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: 5baf9ce63442ee60d212362df92a44d0fa2723fa
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 7d5a7d82aceae6902ad953e314434f1a3736a5e1
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84610300"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117535"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Omezení a pravidla pojmenování prostředků Azure
 
@@ -343,7 +343,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > | laboratoře/vzorce | laboratoř | 1–80 | Alfanumerické znaky, podtržítka, spojovníky a závorky. |
 > | Labs/VirtualMachines | laboratoř | 1-15 (Windows)<br>1-64 (Linux) | Alfanumerické znaky a spojovníky.<br><br>Začíná a končí alfanumerickými znaky. Nemůžou být všechna čísla. |
 
-## <a name="microsoftdocumentdb"></a>Microsoft. DocumentDB
+## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
 
 > [!div class="mx-tableFixed"]
 > | Entita | Rozsah | Délka | Platné znaky |
@@ -524,7 +524,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > [!div class="mx-tableFixed"]
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
-> | obsažené | global | 6-50 | Alfanumerické znaky a spojovníky<br><br>Začíná a končí alfanumerickými znaky. |
+> | obsažené | global | 6-50 | Alfanumerické znaky a spojovníky<br><br>Začíná písmenem. Konec s alfanumerickými znaky. |
 > | obory názvů/autorizačních pravidel | namespace | 1-256 | Alfanumerické znaky, tečky, spojovníky a podtržítka.<br><br>Zahajte alfanumerické znaky. |
 > | obory názvů/notificationHubs | namespace | 1-260 | Alfanumerické znaky, tečky, spojovníky a podtržítka.<br><br>Zahajte alfanumerické znaky. |
 > | obory názvů/notificationHubs/autorizačních pravidel | Centrum oznámení | 1-256 | Alfanumerické znaky, tečky, spojovníky a podtržítka.<br><br>Zahajte alfanumerické znaky. |
@@ -542,7 +542,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > [!div class="mx-tableFixed"]
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
-> | Řešení | Pracovní prostor | Není k dispozici | Pro řešení vytvořená společností Microsoft musí být název ve vzoru:<br>`SolutionType(WorkspaceName)`<br><br>Pro řešení vytvořená třetími stranami musí být název ve vzoru:<br>`SolutionType[WorkspaceName]`<br><br>Platný název je například:<br>`AntiMalware(contoso-IT)`<br><br>Typ řešení rozlišuje velká a malá písmena. |
+> | Řešení | Pracovní prostor | – | Pro řešení vytvořená společností Microsoft musí být název ve vzoru:<br>`SolutionType(WorkspaceName)`<br><br>Pro řešení vytvořená třetími stranami musí být název ve vzoru:<br>`SolutionType[WorkspaceName]`<br><br>Platný název je například:<br>`AntiMalware(contoso-IT)`<br><br>Typ řešení rozlišuje velká a malá písmena. |
 
 ## <a name="microsoftportal"></a>Microsoft. Portal
 

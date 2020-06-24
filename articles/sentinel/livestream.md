@@ -9,25 +9,20 @@ editor: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/06/2019
+ms.date: 06/14/2020
 ms.author: yelevin
-ms.openlocfilehash: b392644e504fa8187e637278bef8718c9c2caa3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 14928d3c94ced8d1cd0c12e76428be73b68b91d9
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77582122"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84783159"
 ---
 # <a name="use-hunting-livestream-in-azure-sentinel-to-detect-threats"></a>K detekci hrozeb použijte lovecké živě ve službě Azure Sentinel.
-
-> [!IMPORTANT]
-> Lovecké živě ve službě Azure Sentinel jsou momentálně ve verzi Public Preview a postupně se vystavují klientům.
-> Tato funkce se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 
 K vytváření interaktivních relací umožňujících testování nově vytvořených dotazů, když dojde k událostem, dostávat oznámení z relací, když se najde shoda, a v případě potřeby můžete spustit šetření. Relaci živě můžete rychle vytvořit pomocí libovolného dotazu Log Analytics.
 
@@ -48,42 +43,42 @@ K vytváření interaktivních relací umožňujících testování nově vytvo�
 
 Můžete vytvořit relaci živě z existujícího loveckého dotazu nebo vytvořit svou relaci úplně od začátku.
 
-1. V Azure Portal přejděte do části **Sentinel** > **Threat Management** > **lov**.
+1. V Azure Portal přejděte do části **Sentinel**  >  **Threat Management**  >  **lov**.
 
-2. Vytvoření relace živě z loveckého dotazu:
+1. Vytvoření relace živě z loveckého dotazu:
     
     1. Na kartě **dotazy** vyhledejte lovecký dotaz, který chcete použít.
-    2. Klikněte pravým tlačítkem na dotaz a vyberte **Přidat do živě**. Příklad:
+    1. Klikněte pravým tlačítkem na dotaz a vyberte **Přidat do živě**. Příklad:
     
     > [!div class="mx-imgBorder"]
     > ![vytvořit relaci živě z loveckého dotazu Azure Sentinel](./media/livestream/livestream-from-query.png)
 
-3. Vytvoření relace živě od začátku: 
+1. Vytvoření relace živě od začátku: 
     
     1. Vyberte kartu **živě**
-    2. Vyberte **Přejít na živě**.
+    1. Klikněte na **+ Nový živě**.
     
-4. V podokně **živě** :
+1. V podokně **živě** :
     
     - Pokud jste spustili živě z dotazu, zkontrolujte dotaz a proveďte jakékoli změny, které chcete provést.
     - Pokud jste začali živě od začátku, vytvořte dotaz. 
 
-5. Na panelu příkazů vyberte **Přehrát** .
+1. Na panelu příkazů vyberte **Přehrát** .
     
     Stavový řádek pod panelem příkazů indikuje, jestli je relace živě spuštěná nebo pozastavená. V následujícím příkladu je spuštěná relace:
     
     > [!div class="mx-imgBorder"]
     > ![Vytvoření relace živě z loveckí Sentinel Azure](./media/livestream/livestream-session.png)
 
-6. Na panelu příkazů vyberte **Uložit** .
+1. Na panelu příkazů vyberte **Uložit** .
     
     Pokud nevyberete **pozastavit**, relace zůstane spuštěná, dokud nebudete odhlášeni od Azure Portal.
 
 ## <a name="view-your-livestream-sessions"></a>Zobrazení živěch relací
 
-1. V Azure Portal přejděte na kartu **Sentinel** > **Threat Management** > **lovecké** > **živě** .
+1. V Azure Portal přejděte na kartu **Sentinel**  >  **Threat Management**  >  **lovecké**  >  **živě** .
 
-2. Vyberte relaci živě, kterou chcete zobrazit nebo upravit. Příklad:
+1. Vyberte relaci živě, kterou chcete zobrazit nebo upravit. Příklad:
     
     > [!div class="mx-imgBorder"]
     > ![vytvořit relaci živě z loveckého dotazu Azure Sentinel](./media/livestream/livestream-tab.png)

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: thvankra
-ms.openlocfilehash: 8f84d611ecdf3fc0f86273498753e550315cd878
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: c9517b6d48f21a2ac2c4b92e68c788a33897511b
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83586180"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85119150"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>Elastické škálování účtu Azure Cosmos DB rozhraní API Cassandra
 
@@ -19,7 +19,7 @@ K dispozici je celá řada možností, jak prozkoumat elastickou povahu rozhran�
 
 Pro rozhraní API Cassandra můžete načíst poplatek za jednotky žádosti pro jednotlivé dotazy pomocí [sad .NET a Java SDK](https://docs.microsoft.com/azure/cosmos-db/find-request-unit-charge#cassandra-api). To je užitečné při určování množství RU/s, které budete muset zřídit ve službě.
 
-![Databázové operace spotřebovávají jednotky žádosti](./media/request-units/request-units.png)
+:::image type="content" source="./media/request-units/request-units.png" alt-text="Databázové operace spotřebovávají jednotky žádosti" border="false":::
 
 ## <a name="handling-rate-limiting-429-errors"></a>Omezení rychlosti zpracování (429 chyb)
 

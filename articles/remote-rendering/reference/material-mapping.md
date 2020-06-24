@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: ce287ed94066aac4b900d2ddb02579a54b8550f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f1ae8ca1ef940e45c2d32adc9a002b349f9e1b44
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80680385"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84783006"
 ---
 # <a name="material-mapping-for-model-formats"></a>Mapování materiálu pro formáty modelů
 
@@ -47,14 +47,13 @@ Každá textura v glTF může mít `texCoord` hodnotu, která je také podporov�
 
 ### <a name="embedded-textures"></a>Vložené textury
 
-Podporují se textury vložené do * \*souborů. bin* nebo * \*. glb* .
+Podporují se textury vložené do souborů * \* . bin* nebo * \* . glb* .
 
 ### <a name="supported-gltf-extension"></a>Podporované rozšíření glTF
 
 Kromě základní sady funkcí podporuje vzdálené vykreslování Azure následující rozšíření glTF:
 
 * [MSFT_packing_occlusionRoughnessMetallic](https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Vendor/MSFT_packing_occlusionRoughnessMetallic/README.md)
-* [MSFT_texture_dds](https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Vendor/MSFT_texture_dds/README.md)
 * [KHR_materials_unlit](https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Khronos/KHR_materials_unlit/README.md): odpovídá [barevným materiálům](../overview/features/color-materials.md). U *vyzařujících* materiálů doporučujeme toto rozšíření použít.
 * [KHR_materials_pbrSpecularGlossiness](https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Khronos/KHR_materials_pbrSpecularGlossiness/README.md): místo kovových textur nemusíte mít k dispozici textury rozlesku – zrcadlově glossiness. Implementace vzdáleného vykreslování Azure přímo sleduje vzorce převodu z rozšíření.
 
@@ -102,10 +101,10 @@ Mapování výše je nejsložitější součást převodu materiálu z důvodu m
 Některé níže používané definice:
 
 * `Specular` =  `SpecularColor` * `SpecularFactor`
-* `SpecularIntensity` = `Specular`. Red ∗ 0,2125 + `Specular`. Zelená ∗ 0,7154 + `Specular`. Blue ∗ 0,0721
-* `DiffuseBrightness`= 0,299 * `Diffuse`. Red<sup>2</sup> + 0,587 * `Diffuse`. Zelená<sup>2</sup> + 0,114 * `Diffuse`. Modrá<sup>2</sup>
-* `SpecularBrightness`= 0,299 * `Specular`. Red<sup>2</sup> + 0,587 * `Specular`. Zelená<sup>2</sup> + 0,114 * `Specular`. Modrá<sup>2</sup>
-* `SpecularStrength`= Max (`Specular`. Červená, `Specular`. Zelená, `Specular`. Novák
+* `SpecularIntensity` = `Specular`. Red ∗ 0,2125 + `Specular` . Zelená ∗ 0,7154 + `Specular` . Blue ∗ 0,0721
+* `DiffuseBrightness`= 0,299 * `Diffuse` . Red<sup>2</sup> + 0,587 * `Diffuse` . Zelená<sup>2</sup> + 0,114 * `Diffuse` . Modrá<sup>2</sup>
+* `SpecularBrightness`= 0,299 * `Specular` . Red<sup>2</sup> + 0,587 * `Specular` . Zelená<sup>2</sup> + 0,114 * `Specular` . Modrá<sup>2</sup>
+* `SpecularStrength`= Max ( `Specular` . Červená, `Specular` . Zelená, `Specular` . Novák
 
 Vzorec SpecularIntensity se získá [odsud.](https://en.wikipedia.org/wiki/Luma_(video))
 Vzorec jasu je popsán v této [specifikaci](http://www.itu.int/dms_pubrec/itu-r/rec/bt/R-REC-BT.601-7-201103-I!!PDF-E.pdf).
@@ -139,10 +138,10 @@ Metalness = clamp(value, 0.0, 1.0);
 
 ### <a name="albedo"></a>Albedo
 
-`Albedo`je vypočítán `Diffuse`z `Specular`, a `Metalness`.
+`Albedo`je vypočítán z `Diffuse` , `Specular` a `Metalness` .
 
 Jak je popsáno v části kov, dielectric povrchy odráží přibližně 4% světla.  
-Tady je příklad, jak lineárně interpoluje barvy mezi `Dielectric` a `Metal` , a `Metalness` to pomocí hodnoty jako faktoru. Pokud je k `0.0`dispozici rozptyl, pak v závislosti na odlesku bude tato barva buď tmavá (Pokud je zrcadlově velká), nebo se difúze nemění (Pokud není k dispozici žádná odlesk). Pokud je k dishodnotě značná hodnota, pak barva difúze zmizí a bude mít za následek odlesky barev.
+Tady je příklad, jak lineárně interpoluje barvy mezi `Dielectric` a, a to `Metal` pomocí `Metalness` hodnoty jako faktoru. Pokud je k `0.0` dispozici rozptyl, pak v závislosti na odlesku bude tato barva buď tmavá (Pokud je zrcadlově velká), nebo se difúze nemění (Pokud není k dispozici žádná odlesk). Pokud je k dishodnotě značná hodnota, pak barva difúze zmizí a bude mít za následek odlesky barev.
 
 ```Cpp
 dielectricSpecularReflectance = 0.04
@@ -156,22 +155,22 @@ AlbedoRGB = clamp(albedoRawColor, 0.0, 1.0);
 
 `AlbedoRGB`byl vypočítán pomocí výše uvedeného vzorce, ale alfa kanál vyžaduje další výpočty. Formát FBX je Vague o transparentnosti a má mnoho způsobů, jak ho definovat. Různé nástroje obsahu používají různé metody. Nápad je sjednotit do jednoho vzorce. V případě, že se některé assety nevytváří běžným způsobem, jsou některé z nich nesprávně zobrazené jako průhledné.
 
-Tato akce je vypočítána z `TransparentColor`, `TransparencyFactor`, `Opacity`:
+Tato akce je vypočítána z `TransparentColor` , `TransparencyFactor` , `Opacity` :
 
-Pokud `Opacity` je definován, použijte ji přímo: `AlbedoAlpha`  =  `Opacity` else  
-Pokud `TransparencyColor` je definován, pak `AlbedoAlpha` = 1,0-((`TransparentColor`. Červená + `TransparentColor`. Zelená + `TransparentColor`. Modrý)/3,0) else  
-IF `TransparencyFactor`, then `AlbedoAlpha` = 1,0-`TransparencyFactor`
+Pokud `Opacity` je definován, použijte ji přímo: `AlbedoAlpha`  =  `Opacity` Else  
+Pokud `TransparencyColor` je definován, pak `AlbedoAlpha` = 1,0-(( `TransparentColor` . Červená + `TransparentColor` . Zelená + `TransparentColor` . Modrý)/3,0) else  
+IF `TransparencyFactor` , then `AlbedoAlpha` = 1,0-`TransparencyFactor`
 
-Konečná `Albedo` barva má čtyři kanály a kombinaci `AlbedoRGB` s. `AlbedoAlpha`
+Konečná `Albedo` Barva má čtyři kanály a kombinaci `AlbedoRGB` s `AlbedoAlpha` .
 
 ### <a name="summary"></a>Souhrn
 
-Pokud je zde shrnuto `Albedo` , bude se velmi blízko původní `Diffuse`, pokud `Specular` bude téměř nula. V opačném případě bude povrch vypadat jako kovový povrch a ztratí barvu difúze. Povrch se bude podobat a odrazit, pokud `ShininessExponent` je dostatečně velký a `Specular` jasný. V opačném případě bude plocha vypadat hrubě a zlomek odráží prostředí.
+Pokud je zde shrnuto, `Albedo` bude se velmi blízko původní `Diffuse` , pokud `Specular` bude téměř nula. V opačném případě bude povrch vypadat jako kovový povrch a ztratí barvu difúze. Povrch se bude podobat a odrazit, pokud `ShininessExponent` je dostatečně velký a `Specular` jasný. V opačném případě bude plocha vypadat hrubě a zlomek odráží prostředí.
 
 ### <a name="known-issues"></a>Známé problémy
 
-* Aktuální vzorec nefunguje dobře pro jednoduchou barevnou geometrii. Pokud `Specular` je dostatečně jasný, pak všechny geometrií se odrážejí kovové povrchy bez jakékoli barvy. Alternativním řešením je, aby se `Specular` snížilo na 30% z původního nebo na použití nastavení převodu [fbxAssumeMetallic](../how-tos/conversion/configure-model-conversion.md#converting-from-older-fbx-formats-with-a-phong-material-model).
-* Materiály v obsahu PBR byly nedávno `Maya` přidány `3DS Max` k nástrojům a vytváření obsahu. Používají vlastní uživatelsky definované vlastnosti černého pole k předání do FBX. Vzdálené vykreslování Azure tyto další vlastnosti nepřečte, protože nejsou zdokumentováné a formát je uzavřený.
+* Aktuální vzorec nefunguje dobře pro jednoduchou barevnou geometrii. Pokud `Specular` je dostatečně jasný, pak všechny geometrií se odrážejí kovové povrchy bez jakékoli barvy. Alternativním řešením je, aby se snížilo `Specular` na 30% z původního nebo na použití nastavení převodu [fbxAssumeMetallic](../how-tos/conversion/configure-model-conversion.md#converting-from-older-fbx-formats-with-a-phong-material-model).
+* Materiály v obsahu PBR byly nedávno přidány k `Maya` `3DS Max` nástrojům a vytváření obsahu. Používají vlastní uživatelsky definované vlastnosti černého pole k předání do FBX. Vzdálené vykreslování Azure tyto další vlastnosti nepřečte, protože nejsou zdokumentováné a formát je uzavřený.
 
 ## <a name="next-steps"></a>Další kroky
 

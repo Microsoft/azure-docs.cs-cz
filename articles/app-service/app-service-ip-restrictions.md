@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 298555da2056bc4c16d4d7b16615604f9798b91b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a77172aacc4c58e6430339328410744cc866def3
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81639274"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207120"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Omezení přístupu Azure App Service
 
@@ -30,7 +30,7 @@ Možnost omezit přístup k vaší webové aplikaci z Azure Virtual Network (VNe
 
 ## <a name="adding-and-editing-access-restriction-rules-in-the-portal"></a>Přidání a úprava pravidel omezení přístupu na portálu ##
 
-Pokud chcete do aplikace přidat pravidlo omezení přístupu, otevřete pomocí nabídky**omezení přístupu k** **síti**>a klikněte na **konfigurovat omezení přístupu** .
+Pokud chcete do aplikace přidat pravidlo omezení přístupu, otevřete pomocí nabídky **Network** > **omezení přístupu k** síti a klikněte na **konfigurovat omezení přístupu** .
 
 ![Možnosti App Service sítě](media/app-service-ip-restrictions/access-restrictions.png)  
 
@@ -59,6 +59,10 @@ Koncové body služby umožňují omezit přístup k vybraným podsítím virtu�
 Koncové body služby nelze použít k omezení přístupu k aplikacím, které běží v App Service Environment. Když je vaše aplikace v App Service Environment, můžete řídit přístup k aplikaci pomocí pravidel přístupu IP. 
 
 Pomocí koncových bodů služby můžete nakonfigurovat aplikaci pomocí aplikačních bran nebo jiných zařízení WAF. Vícevrstvé aplikace můžete konfigurovat také pomocí zabezpečených back-endu. Další informace o některých možnostech najdete v článku [funkce sítě a App Service](networking-features.md) a [Application Gateway integraci s koncovými body služby](networking/app-gateway-with-service-endpoints.md).
+
+> [!NOTE]
+> Koncové body služby se aktuálně nepodporují u webových aplikací, které používají IP SSL virtuální IP adresy (VIP). 
+>
 
 ## <a name="managing-access-restriction-rules"></a>Správa pravidel omezení přístupu
 

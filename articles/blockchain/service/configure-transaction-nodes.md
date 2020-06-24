@@ -2,14 +2,14 @@
 title: Konfigurace uzlů transakcí služby Azure blockchain
 description: Jak nakonfigurovat uzly transakcí služby Azure blockchain
 ms.date: 11/20/2019
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: janders
-ms.openlocfilehash: 8fa18496d0c1aa59beb55569e731967d5ebea427
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 90836ad94410dfec5caa32275362f1407c9f5b1a
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80876925"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212560"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>Konfigurace uzlů transakcí služby Azure blockchain
 
@@ -35,9 +35,9 @@ Chcete-li přidat uzel transakce:
 
     ![Přidat uzel transakce](./media/configure-transaction-nodes/add-node.png)
 
-    | Nastavení | Popis |
+    | Nastavení | Description |
     |---------|-------------|
-    | Název | Název uzlu transakce. Název slouží k vytvoření adresy DNS pro koncový bod uzlu transakce. Například, `newnode-myblockchainmember.blockchain.azure.com`. Název uzlu po jeho vytvoření nelze změnit. |
+    | Name | Název uzlu transakce. Název slouží k vytvoření adresy DNS pro koncový bod uzlu transakce. Například, `newnode-myblockchainmember.blockchain.azure.com`. Název uzlu po jeho vytvoření nelze změnit. |
     | Heslo | Nastavte silné heslo. Použijte heslo pro přístup ke koncovému bodu uzlu transakce pomocí základního ověřování.
 
 1. Vyberte **Vytvořit**.
@@ -89,7 +89,7 @@ Podrobnosti koncového bodu základního ověřování uzlu transakce můžete z
 
 Uživatelské jméno je název vašeho uzlu a nelze ho změnit.
 
-Chcete-li použít adresu URL \<,\> nahraďte heslo nastavením hesla při zřízení uzlu. Heslo můžete aktualizovat výběrem možnosti **resetovat heslo**.
+Chcete-li použít adresu URL, nahraďte \<password\> heslo nastavené při zřízení uzlu. Heslo můžete aktualizovat výběrem možnosti **resetovat heslo**.
 
 ### <a name="access-keys"></a>Přístupové klíče
 

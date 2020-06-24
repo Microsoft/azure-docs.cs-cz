@@ -11,19 +11,21 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 03/24/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: 835bcba5e24137377c33c9166b1c3076d19cacc1
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: d73427db5fd168a31c478f92ef11307df136a775
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84552386"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85125408"
 ---
 # <a name="connect-to-azure-storage-services"></a>Připojení ke službám Azure Storage
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-V tomto článku se dozvíte, jak se připojit ke službám úložiště Azure prostřednictvím Azure Machine Learning úložiště dat. Úložiště dat ukládají informace o připojení, například ID předplatného a autorizaci tokenů ve vašem [Key Vault](https://azure.microsoft.com/services/key-vault/) přidružené k pracovnímu prostoru, takže můžete bezpečně přistupovat k úložišti, aniž byste je museli zakódovat ve svých skriptech. Informace o tom, kde je úložiště dat vhodné v rámci celkového pracovního postupu pro přístup k datům v Azure Machine Learning, najdete v článku [zabezpečený přístup k datům](concept-data.md#data-workflow) .
+V tomto článku se dozvíte, jak se **připojit ke službám úložiště Azure prostřednictvím Azure Machine Learning úložiště dat**. Úložiště dat ukládají informace o připojení, například ID předplatného a autorizaci tokenů ve vašem [Key Vault](https://azure.microsoft.com/services/key-vault/) přidružené k pracovnímu prostoru, takže můžete bezpečně přistupovat k úložišti, aniž byste je museli zakódovat ve svých skriptech. 
 
-Z [těchto řešení Azure Storage](#matrix)můžete vytvořit úložiště dat. Pro Nepodporovaná řešení úložišť a za účelem úspory nákladů na výstup při experimentech strojového učení doporučujeme [přesunout vaše data](#move) na podporovaná řešení Azure Storage. 
+**Pro Nepodporovaná řešení úložišť**a za účelem úspory nákladů na výstup dat během experimentů ml [přesuňte data](#move) do podporovaných řešení Azure Storage.  Z [těchto řešení Azure Storage](#matrix)můžete vytvořit úložiště dat. 
+
+Informace o tom, kde je úložiště dat vhodné v rámci celkového pracovního postupu pro přístup k datům v Azure Machine Learning, najdete v článku [zabezpečený přístup k datům](concept-data.md#data-workflow) .
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -95,12 +97,14 @@ Všechny metody registru jsou ve [`Datastore`](https://docs.microsoft.com/python
 
 Můžete najít informace, které potřebujete k naplnění `register_azure_*()` metody v [Azure Portal](https://portal.azure.com).
 
+* Název úložiště dat by měl obsahovat jenom malá písmena, číslice a podtržítka. 
+
 * Pokud plánujete použít klíč účtu nebo token SAS pro ověřování, v levém podokně vyberte **účty úložiště** a zvolte účet úložiště, který chcete zaregistrovat. 
   * Stránka **Přehled** poskytuje informace, jako je název účtu, kontejner a název sdílené složky. 
       1. Klíče účtu najdete v části **přístupové klíče** v podokně **Nastavení** . 
       1. V případě tokenů SAS přejděte na **sdílené přístupové podpisy** v podokně **Nastavení** .
 
-* Pokud plánujete použít Princip služby pro ověřování, pokračujte na **Registrace aplikací** a vyberte aplikaci, kterou chcete použít. 
+* Pokud máte v úmyslu použít instanční objekt k ověřování, otevřete **Registrace aplikací** a vyberte aplikaci, kterou chcete použít. 
     * Jeho odpovídající stránka **přehledu** bude obsahovat požadované informace, jako je ID TENANTA a ID klienta.
 
 > [!IMPORTANT]
@@ -112,7 +116,7 @@ Chcete-li vytvořit úložiště dat pro další služby úložiště a zobrazit
 
 #### <a name="blob-container"></a>Kontejner objektů blob
 
-Pokud chcete zaregistrovat kontejner objektů blob Azure jako úložiště dat, použijte [`register_azure_blob-container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-) .
+Pokud chcete zaregistrovat kontejner objektů blob Azure jako úložiště dat, použijte [`register_azure_blob_container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-) .
 
 Následující kód vytvoří a zaregistruje `blob_datastore_name` úložiště dat do `ws` pracovního prostoru. Toto úložiště dat přistupuje k `my-container-name` kontejneru objektů BLOB v `my-account-name` účtu úložiště pomocí poskytnutého přístupového klíče účtu.
 
@@ -128,7 +132,7 @@ blob_datastore = Datastore.register_azure_blob_container(workspace=ws,
                                                          account_name=account_name,
                                                          account_key=account_key)
 ```
-Pokud je váš kontejner objektů BLOB ve virtuální síti, zahrňte parametr `skip_validation=True` do [`register_azure_blob-container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-) metody. 
+Pokud je váš kontejner objektů BLOB ve virtuální síti, zahrňte parametr `skip_validation=True` do [`register_azure_blob_container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-) metody. 
 
 #### <a name="file-share"></a>Sdílená složka
 

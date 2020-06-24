@@ -10,13 +10,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
-ms.date: 03/18/2020
-ms.openlocfilehash: e61bc750a06fb041e97def842e81fd62b614fcf6
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.date: 06/10/2020
+ms.openlocfilehash: 756c62aa070f05c4b66de0cde6c7df59d9b1d09a
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982152"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84735183"
 ---
 # <a name="quickstart-use-the-copy-data-tool-to-copy-data"></a>Rychlý Start: použití nástroje Kopírování dat ke kopírování dat
 
@@ -37,13 +37,13 @@ V tomto rychlém startu použijete Azure Portal k vytvoření datové továrny. 
 
 1. Spusťte webový prohlížeč **Microsoft Edge** nebo **Google Chrome**. Uživatelské rozhraní služby Data Factory podporují v současnosti jenom webové prohlížeče Microsoft Edge a Google Chrome.
 1. Přejít na [Azure Portal](https://portal.azure.com). 
-1. V nabídce Azure Portal vyberte vytvořit data Factory **Resource** > **Analytics** > **Data Factory**:
+1. V nabídce Azure Portal vyberte vytvořit data Factory **Resource**  >  **Analytics**  >  **Data Factory**:
 
     ![Vytvoření nové datové továrny](./media/doc-common-process/new-azure-data-factory-menu.png)
 
 1. Na stránce **Nová datová továrna** jako **Název** zadejte **ADFTutorialDataFactory**. 
  
-   Název objektu pro vytváření dat Azure musí být *globálně jedinečný*. Pokud se zobrazí následující chyba, změňte název datové továrny (například ** &lt;na&gt;ADFTutorialDataFactory**) a zkuste to znovu. Pravidla pojmenování artefaktů služby Data Factory najdete v článku [Data Factory – pravidla pojmenování](naming-rules.md).
+   Název objektu pro vytváření dat Azure musí být *globálně jedinečný*. Pokud se zobrazí následující chyba, změňte název datové továrny (například na ** &lt; &gt; ADFTutorialDataFactory**) a zkuste to znovu. Pravidla pojmenování artefaktů služby Data Factory najdete v článku [Data Factory – pravidla pojmenování](naming-rules.md).
   
    ![Chyba: název není k dispozici](./media/doc-common-process/name-not-available-error.png)
 1. Jako **Předplatné** vyberte své předplatné Azure, ve kterém chcete datovou továrnu vytvořit. 
@@ -90,7 +90,7 @@ V tomto rychlém startu použijete Azure Portal k vytvoření datové továrny. 
 
 1. Na stránce **Choose the input file or folder** (Zvolit vstupní soubor nebo složku) proveďte následující kroky:
 
-   a. Klikněte na **Procházet** a přejděte do složky **adftutorial/Input** , vyberte soubor **EMP. txt** a pak klikněte na **zvolit**. 
+   a. Klikněte na **Procházet** a přejděte do složky **adftutorial/Input** , vyberte soubor **emp.txt** a pak klikněte na **zvolit**. 
 
    d. Zaškrtněte políčko **binární kopírování** pro zkopírování souboru tak, jak je, a pak vyberte **Další**. 
 

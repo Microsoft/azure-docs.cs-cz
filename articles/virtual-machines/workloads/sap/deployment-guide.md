@@ -13,14 +13,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/16/2019
+ms.date: 06/22/2020
 ms.author: sedusch
-ms.openlocfilehash: a850f7ceaeb57678738084cb14f383b46c7dfe84
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 828615add9f24b5a2089e240bbf62647f34a25f0
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84660647"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207398"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Nasazení Azure Virtual Machines pro SAP NetWeaver
 
@@ -201,7 +201,6 @@ ms.locfileid: "84660647"
 [planning-guide-3.2.2]:planning-guide.md#fc1ac8b2-e54a-487c-8581-d3cc6625e560 (Upgradovat domény)
 [planning-guide-3.2.3]:planning-guide.md#18810088-f9be-4c97-958a-27996255c665 (Skupiny dostupnosti Azure)
 [planning-guide-3.2]:planning-guide.md#8d8ad4b8-6093-4b91-ac36-ea56d80dbf77 (Koncept Microsoft Azure virtuálních počítačů)
-[planning-guide-3.3.2]:planning-guide.md#ff5ad0f9-f7f4-4022-9102-af07aef3bc92 (Premium Storage Azure)
 [planning-guide-5.1.1]:planning-guide.md#4d175f1b-7353-4137-9d2f-817683c26e53 (Přesun virtuálního počítače z místního prostředí do Azure s nezobecněným diskem)
 [planning-guide-5.1.2]:planning-guide.md#e18f7839-c0e2-4385-b1e6-4538453a285c (Nasazení virtuálního počítače s použitím obrázku specifického pro zákazníka)
 [planning-guide-5.2.1]:planning-guide.md#1b287330-944b-495d-9ea7-94b83aff73ef (Příprava na přesun virtuálního počítače z místního prostředí do Azure pomocí nezobecněného disku)
@@ -215,7 +214,6 @@ ms.locfileid: "84660647"
 [planning-guide-7.1]:planning-guide.md#3e9c3690-da67-421a-bc3f-12c520d99a30 (Jeden virtuální počítač se scénářem Ukázky/školení SAP NetWeaver)
 [planning-guide-7]:planning-guide.md#96a77628-a05e-475d-9df3-fb82217e8f14 (Koncepty pouze cloudového nasazení instancí SAP)
 [planning-guide-9.1]:planning-guide.md#6f0a47f3-a289-4090-a053-2521618a28c3 (Řešení Azure Monitoring pro SAP)
-[planning-guide-azure-premium-storage]:planning-guide.md#ff5ad0f9-f7f4-4022-9102-af07aef3bc92 (Premium Storage Azure)
 [planning-guide-managed-disks]:planning-guide.md#c55b2c6e-3ca1-4476-be16-16c81927550f (Managed Disks)
 [planning-guide-figure-100]:media/virtual-machines-shared-sap-planning-guide/100-single-vm-in-azure.png
 [planning-guide-figure-1300]:media/virtual-machines-shared-sap-planning-guide/1300-ref-config-iaas-for-sap.png
@@ -443,7 +441,7 @@ Průvodce vás provede nastavením požadovaných parametrů k vytvoření virtu
    * **Umístění**: kam se má nový virtuální počítač nasadit. Pokud chcete virtuální počítač připojit k místní síti, ujistěte se, že jste vybrali umístění virtuální sítě, která připojuje Azure k vaší místní síti. Další informace najdete v tématu [Microsoft Azure sítě][planning-guide-microsoft-azure-networking] v [Azure Virtual Machines plánování a implementace pro SAP NetWeaver][planning-guide].
 1. **Velikost**:
 
-     Seznam podporovaných typů virtuálních počítačů najdete v tématu SAP Note [1928533]. Pokud chcete používat Azure Premium Storage, ujistěte se, že jste vybrali správný typ virtuálního počítače. Nepodporují Premium Storage všechny typy virtuálních počítačů. Další informace najdete v tématech [úložiště: Microsoft Azure Storage a datové disky][planning-guide-storage-microsoft-azure-storage-and-data-disks] a [Azure Premium Storage][planning-guide-azure-premium-storage] v [Azure Virtual Machines plánování a implementace pro SAP NetWeaver][planning-guide].
+     Seznam podporovaných typů virtuálních počítačů najdete v tématu SAP Note [1928533]. Pokud chcete používat Azure Premium Storage, ujistěte se, že jste vybrali správný typ virtuálního počítače. Nepodporují Premium Storage všechny typy virtuálních počítačů. Další informace najdete v tématu [úložiště: Microsoft Azure Storage a datové disky][planning-guide-storage-microsoft-azure-storage-and-data-disks] a [Azure Storage pro úlohy sap](./planning-guide-storage.md) v [Azure Virtual Machines plánování a implementace pro SAP NetWeaver][planning-guide].
 
 1. **Nastavení**:
    * **Storage**
@@ -583,7 +581,7 @@ Průvodce vás provede nastavením požadovaných parametrů k vytvoření virtu
    * **Umístění**: kam se má nový virtuální počítač nasadit. Pokud chcete virtuální počítač připojit k místní síti, ujistěte se, že jste vybrali umístění virtuální sítě, která připojuje Azure k vaší místní síti. Další informace najdete v tématu [Microsoft Azure sítě][planning-guide-microsoft-azure-networking] v [Azure Virtual Machines plánování a implementace pro SAP NetWeaver][planning-guide].
 1. **Velikost**:
 
-     Seznam podporovaných typů virtuálních počítačů najdete v tématu SAP Note [1928533]. Pokud chcete používat Azure Premium Storage, ujistěte se, že jste vybrali správný typ virtuálního počítače. Nepodporují Premium Storage všechny typy virtuálních počítačů. Další informace najdete v tématech [úložiště: Microsoft Azure Storage a datové disky][planning-guide-storage-microsoft-azure-storage-and-data-disks] a [Azure Premium Storage][planning-guide-azure-premium-storage] v [Azure Virtual Machines plánování a implementace pro SAP NetWeaver][planning-guide].
+     Seznam podporovaných typů virtuálních počítačů najdete v tématu SAP Note [1928533]. Pokud chcete používat Azure Premium Storage, ujistěte se, že jste vybrali správný typ virtuálního počítače. Nepodporují Premium Storage všechny typy virtuálních počítačů. Další informace najdete v tématu [úložiště: Microsoft Azure Storage a datové disky][planning-guide-storage-microsoft-azure-storage-and-data-disks] a [Azure Storage pro úlohy sap](./planning-guide-storage.md) v [Azure Virtual Machines plánování a implementace pro SAP NetWeaver][planning-guide].
 
 1. **Nastavení**:
    * **Storage**
@@ -1030,6 +1028,11 @@ Nové rozšíření VM pro SAP používá pro přístup k datům monitorování 
 
 Proces bude automatizován v další verzi Azure PowerShell (> 4.2.0). Po tom, co je nová verze dostupná, budeme Tento článek aktualizovat. Do té doby prosím postupujte podle těchto kroků a nainstalujte rozšíření ručně.
 
+> [!NOTE]
+> Následující kroky vyžadují oprávnění vlastníka pro skupinu prostředků nebo jednotlivé prostředky (virtuální počítač, datové disky atd.).
+
+1. Ujistěte se, že používáte agenta hostitele SAP 7,21 PL 47 nebo vyšší.
+1. Ujistěte se, že jste odinstalovali aktuální verzi rozšíření virtuálního počítače pro SAP. Instalace obou verzí rozšíření virtuálního počítače pro SAP na stejném virtuálním počítači není podporovaná.
 1. Ujistěte se, že máte nainstalovanou nejnovější verzi rutiny Azure PowerShell. Další informace najdete v tématu [nasazení rutin Azure PowerShell][deployment-guide-4.1].
 1. Postupujte podle kroků uvedených v článku [Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí prostředí PowerShell][qs-configure-powershell-windows-vm] , aby se virtuálnímu počítači povolila spravovaná identita přiřazená systémem. Spravované identity přiřazené uživatelem nejsou podporovány rozšířením virtuálního počítače pro SAP. Můžete ale povolit i identitu přiřazenou systémem i uživatele.
     
@@ -1067,6 +1070,11 @@ Proces bude automatizován v další verzi Azure PowerShell (> 4.2.0). Po tom, c
 
 Nové rozšíření VM pro SAP používá pro přístup k datům monitorování a konfigurace virtuálního počítače spravovanou identitu přiřazenou k virtuálnímu počítači. Pokud chcete pro SAP nainstalovat nové rozšíření Azure pomocí rozhraní příkazového řádku Azure, musíte nejdřív přiřadit takovou identitu k virtuálnímu počítači a udělit této identitě přístup ke všem prostředkům používaným tímto virtuálním počítačem, třeba k diskům a síťovým rozhraním.
 
+> [!NOTE]
+> Následující kroky vyžadují oprávnění vlastníka pro skupinu prostředků nebo jednotlivé prostředky (virtuální počítač, datové disky atd.).
+
+1. Ujistěte se, že používáte agenta hostitele SAP 7,21 PL 47 nebo vyšší.
+1. Ujistěte se, že jste odinstalovali aktuální verzi rozšíření virtuálního počítače pro SAP. Instalace obou verzí rozšíření virtuálního počítače pro SAP na stejném virtuálním počítači není podporovaná.
 1. Nainstalujte rozhraní příkazového řádku Azure CLI 2,0, jak je popsáno v tématu [instalace Azure cli 2,0][azure-cli-2].
 
 1. Přihlaste se pomocí svého účtu Azure:
@@ -1420,7 +1428,7 @@ Rozšíření není nainstalované. Určete, zda se jedná o problém s proxy se
 
 Proces Windows AzureEnhancedMonitoring shromažďuje metriky výkonu v Azure. Proces získává data z několika zdrojů. Některá konfigurační data se shromažďují místně a některé metriky výkonu se čtou z Azure Monitor.
 
-Pokud chcete řešit potíže pomocí SAP Note [1999351], otevřete zprávu zákaznická podpora SAP na komponentě BC-op-NT-AZR pro Windows nebo BC-op-LNX-AZR pro virtuální počítač se systémem Linux.
+Pokud problém nevyřešíte pomocí protokolu SAP Note [1999351] , otevřete zprávu zákaznická podpora SAP na komponentě BC-op-NT-AZR pro Windows nebo BC-op-LNX-AZR pro virtuální počítač se systémem Linux. Připojte prosím soubor protokolu C: \\ balíčky \\ plugins \\ Microsoft. zákaznického poradního. AzureEnhancedMonitoring. MonitorX64Windows \\ &lt;>\\logapp.txt k incidentu.
 
 #### <a name="linuxlogo_linux-azure-performance-counters-do-not-show-up-at-all"></a>![Linux][Logo_Linux] Čítače výkonu Azure se vůbec nezobrazují
 
@@ -1442,7 +1450,7 @@ Metriky výkonu v Azure se shromažďují pomocí démona, který získává dat
 
 Úplný a aktuální seznam známých problémů najdete v článku SAP Note [1999351], který obsahuje další informace o řešení potíží pro rozšíření Azure pro SAP.
 
-Pokud problém nevyřešíte pomocí SAP Note [1999351] , nainstalujte rozšíření znovu, jak je popsáno v tématu [Konfigurace rozšíření Azure pro SAP][deployment-guide-4.5]. Pokud se problém opakuje, otevřete zprávu zákaznická podpora SAP na komponentě BC-OP-NT-AZR pro Windows nebo BC-OP-LNX-AZR pro virtuální počítač se systémem Linux.
+Pokud problém nevyřešíte pomocí SAP Note [1999351] , nainstalujte rozšíření znovu, jak je popsáno v tématu [Konfigurace rozšíření Azure pro SAP][deployment-guide-4.5]. Pokud se problém opakuje, otevřete zprávu zákaznická podpora SAP na komponentě BC-OP-NT-AZR pro Windows nebo BC-OP-LNX-AZR pro virtuální počítač se systémem Linux. Připojte prosím &lt; k incidentu soubor protokolu/var/lib/waagent/Microsoft.AzureCAT.AzureEnhancedMonitoring.MonitorX64Linux-verze>/logapp.txt.
 
 ## <a name="azure-extension-error-codes"></a>Kódy chyb rozšíření Azure
 

@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 05/31/2020
 ms.author: raynew
-ms.openlocfilehash: 2f59bbb4711d79fdcb59e39378c25c031ac68af8
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 71c5c5881ab34dd9bc1a4da9e097b46ec21dcea1
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84249055"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85124217"
 ---
 # <a name="support-for-moving-azure-resources-across-regions"></a>Podpora přesunu prostředků Azure napříč oblastmi
 
@@ -32,7 +32,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > - [Microsoft. AzureData](#microsoftazuredata)
 > - [Microsoft. AzureStack](#microsoftazurestack)
 > - [Microsoft.Batch](#microsoftbatch)
-> - [Microsoft. BatchAI](#microsoftbatchai)
+> - [Microsoft.BatchAI](#microsoftbatchai)
 > - [Microsoft. BingMaps](#microsoftbingmaps)
 > - [Microsoft. BizTalkServices](#microsoftbiztalkservices)
 > - [Microsoft. blockchain](#microsoftblockchain)
@@ -74,7 +74,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > - [Microsoft. Devices](#microsoftdevices)
 > - [Microsoft. DevSpaces](#microsoftdevspaces)
 > - [Microsoft. DevTestLab](#microsoftdevtestlab)
-> - [Microsoft. DocumentDB](#microsoftdocumentdb)
+> - [Microsoft.DocumentDB](#microsoftdocumentdb)
 > - [Microsoft. DomainRegistration](#microsoftdomainregistration)
 > - [Microsoft. EnterpriseKnowledgeGraph](#microsoftenterpriseknowledgegraph)
 > - [Microsoft. EventGrid](#microsofteventgrid)
@@ -249,14 +249,14 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | batchaccounts |  Ano (pomocí šablony)<br/><br/> [Přesunutí účtu Batch mezi oblasti](../../batch/best-practices.md#moving-batch-accounts-across-regions) |
+> | batchaccounts |  Účty Batch nejde přesunout přímo z jedné oblasti do druhé, ale šablonu můžete použít k exportu šablony, její úpravě a nasazení šablony do nové oblasti. <br/><br/> Další informace o [přesunu účtu Batch napříč oblastmi](../../batch/best-practices.md#moving-batch-accounts-across-regions) |
 
-## <a name="microsoftbatchai"></a>Microsoft. BatchAI
+## <a name="microsoftbatchai"></a>Microsoft.BatchAI
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | existující | Ne | 
+> | existující | Ne <br/><br/> Služba Azure Batch AI je [vyřazena](https://docs.microsoft.com/previous-versions/azure/batch-ai/overview-what-happened-batch-ai).
 > | servery | Ne | 
 > | úlohy | Ne | 
 > | pracovní prostory | Ne | 
@@ -280,7 +280,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | blockchainmembers | Ne |
+> | blockchainmembers | Ne <br/><br/> Síť blockchain nemůže mít uzly v různých oblastech. 
 > | sledovacích procesů | Ne | 
 
 ## <a name="microsoftblueprint"></a>Microsoft. detail
@@ -327,7 +327,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | domainnames | Ne |  
+> | domainnames | Pro klasické služby se neplánuje žádná práce.
 > | virtualmachines | Ne | 
 
 
@@ -337,7 +337,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | networksecuritygroups | Ne |
+> | networksecuritygroups | Pro klasické služby se neplánuje žádná práce.
 > | reservedips | Ne | 
 > | virtualnetworks | Ne | 
 
@@ -355,7 +355,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
 > | accounts | Ne | 
-> | Cognitive Search | Ano (pomocí šablony)<br/><br/> [Přesunutí služby Kognitivní hledání do jiné oblasti](../../search/search-howto-move-across-regions.md)
+> | Cognitive Search | Podporováno v ručních krocích.<br/><br/> Přečtěte si o [přesunu služby Azure kognitivní hledání do jiné oblasti](../../search/search-howto-move-across-regions.md) .
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
@@ -410,7 +410,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | containerservices | Ne | 
+> | containerservices | Ne.<br/><br/> Služba je [Vyřazená](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/).
 > | managedclusters | Ne | 
 > | openshiftmanagedclusters | Ne | 
 
@@ -543,7 +543,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | servery | Ne |  
+> | servery | Pokud je služba zřízená s geograficky redundantním úložištěm zálohování, můžete k obnovení v jiných oblastech použít geografické obnovení. [Další informace](../../mariadb/concepts-business-continuity.md#recover-from-an-azure-regional-data-center-outage)
 
 ## <a name="microsoftdbformysql"></a>Microsoft. DBforMySQL
 
@@ -578,9 +578,9 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | elasticpools | Ne | 
-> | elasticpools / iothubtenants | Ne | 
-> | iothubs | Ano | 
+> | elasticpools | Ne. Prostředek není vystavený.
+> | elasticpools / iothubtenants | Ne. Prostředek není vystavený.
+> | iothubs | Ano. [Další informace](../../iot-hub/iot-hub-how-to-clone.md)
 > | provisioningservices | Ne | 
 
 ## <a name="microsoftdevspaces"></a>Microsoft. DevSpaces
@@ -603,7 +603,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Labs/VirtualMachines | Ne |  
 > | časových | Ne |  
 
-## <a name="microsoftdocumentdb"></a>Microsoft. DocumentDB
+## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
@@ -715,7 +715,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | checknameavailability |  Ne
+> | checknameavailability |  Ne.<br/><br/> IoT Central pracuje s geografickými oblastmi a ne oblastmi.
 > | zapisovací | Ne
 
 ## <a name="microsoftiothub"></a>Microsoft. IoTHub
@@ -768,7 +768,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | accounts | Ne | 
+> | accounts | Ne, jedná se o globální službu.
 
 ## <a name="microsoftlogic"></a>Microsoft. Logic
 
@@ -842,14 +842,14 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | accounts |  Ne |  
+> | accounts |  Ne, Azure Maps je geoprostorové služba. 
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft. MarketplaceApps
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | classicdevservices | Ne | 
+> | classicdevservices | Pro klasické služby se neplánuje žádná práce. 
 
 ## <a name="microsoftmedia"></a>Microsoft. Media
 
@@ -1011,7 +1011,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | trezory | No. [Zakázat trezor a znovu vytvořit](https://docs.microsoft.com/azure/site-recovery/move-vaults-across-regions) pro Site Recovery  | 
+> | trezory | Ne.<br/><br/> Přesunutí Recovery Services trezorů pro Azure Backup napříč oblastmi Azure se nepodporuje.<br/><br/> V Recovery Services trezory pro Azure Site Recovery můžete [trezor zakázat a znovu vytvořit](https://docs.microsoft.com/azure/site-recovery/move-vaults-across-regions) v cílové oblasti. | 
 
 
 ## <a name="microsoftrelay"></a>Microsoft. Relay
