@@ -13,4 +13,4 @@ ms.locfileid: "67174775"
 ---
 > [!TIP]
 >
-> Pokud plánujete použít vazby HTTP nebo Webhooku, naplánujte, abyste zabránili vyčerpání portů, která může být způsobena nesprávným vytvořením instance `HttpClient`. Další informace najdete v tématu [Správa připojení v Azure Functions](../articles/azure-functions/manage-connections.md).
+> Pokud plánujete použít vazby HTTP nebo Webhooku, naplánujte, abyste zabránili vyčerpání portů, která může být způsobena nesprávným vytvořením instance `HttpClient` . Další informace najdete v tématu [Správa připojení v Azure Functions](../articles/azure-functions/manage-connections.md).

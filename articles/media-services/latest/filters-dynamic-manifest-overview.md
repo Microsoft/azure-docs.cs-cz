@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 07/11/2019
 ms.author: juliako
-ms.openlocfilehash: cd955f97a2f26543f799d95b7dc0b1de235333c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb7a399258dcab679468d2b8f699487b1ec5406b
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74186211"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84705198"
 ---
 # <a name="filter-your-manifests-using-dynamic-packager"></a>Filtrování manifestů pomocí dynamického balíčku
 
@@ -36,13 +36,13 @@ Tato možnost zadat různé filtry v datovém proudu poskytuje výkonné řešen
 
 ## <a name="overview-of-manifests"></a>Přehled manifestů
 
-Azure Media Services podporuje protokoly HLS, MPEG POMLČKy a Smooth Streaming. V rámci [dynamického balení](dynamic-packaging-overview.md)se dynamicky generují manifesty klienta streamování (HLS hlavní seznam testů, pomlčka multimediální prezentace [MPD] a Smooth Streaming) na základě selektor formátu v adrese URL. Další informace najdete v tématu Delivery Protocols ( [běžné pracovní postupy na vyžádání](dynamic-packaging-overview.md#delivery-protocols)).
+Azure Media Services podporuje protokoly HLS, MPEG POMLČKy a Smooth Streaming. V rámci [dynamického balení](dynamic-packaging-overview.md)se dynamicky generují manifesty klienta streamování (HLS hlavní seznam testů, pomlčka multimediální prezentace [MPD] a Smooth Streaming) na základě selektor formátu v adrese URL. Další informace najdete v tématu Delivery Protocols ( [běžné pracovní postupy na vyžádání](dynamic-packaging-overview.md#to-prepare-your-source-files-for-delivery)).
 
 ### <a name="get-and-examine-manifest-files"></a>Získání a kontrola souborů manifestu
 
 Určíte seznam stavů filtru sledování, které závisí na tom, které stopy datového proudu (živé nebo video na vyžádání [VOD]) by měly být součástí dynamicky vytvořeného manifestu. Chcete-li získat a prohlédnout vlastnosti stop, je třeba nejprve načíst manifest Smooth Streaming.
 
-Kurz [nahrávání, kódování a streamování souborů pomocí .NET](stream-files-tutorial-with-api.md#get-streaming-urls) vám ukáže, jak vytvořit adresy URL streamování pomocí .NET. Pokud aplikaci spouštíte, jedna z adres URL ukazuje na manifest Smooth Streaming: `https://amsaccount-usw22.streaming.media.azure.net/00000000-0000-0000-0000-0000000000000/ignite.ism/manifest`.<br/> Zkopírujte a vložte adresu URL do panelu Adresa v prohlížeči. Soubor se stáhne. Můžete ho otevřít v libovolném textovém editoru.
+Kurz [nahrávání, kódování a streamování souborů pomocí .NET](stream-files-tutorial-with-api.md#get-streaming-urls) vám ukáže, jak vytvořit adresy URL streamování pomocí .NET. Pokud aplikaci spouštíte, jedna z adres URL ukazuje na manifest Smooth Streaming: `https://amsaccount-usw22.streaming.media.azure.net/00000000-0000-0000-0000-0000000000000/ignite.ism/manifest` .<br/> Zkopírujte a vložte adresu URL do panelu Adresa v prohlížeči. Soubor se stáhne. Můžete ho otevřít v libovolném textovém editoru.
 
 Příklad REST najdete v tématu [nahrání, kódování a streamování souborů pomocí REST](stream-files-tutorial-with-rest.md#list-paths-and-build-streaming-urls).
 
@@ -146,7 +146,7 @@ Další informace najdete v [tomto blogovém příspěvku](https://azure.microso
 - Zákazníci potřebují stáhnout manifest ručně a analyzovat přesné časové razítko a časové měřítko času spuštění.
 
     - Chcete-li určit vlastnosti stop v assetu, [Získejte a zkontrolujte soubor manifestu](#get-and-examine-manifest-files).
-    - Vzorec pro nastavení vlastností časového razítka filtru assetu je: <br/>startTimestamp = &lt;čas zahájení&gt; +  &lt;v manifestu očekával čas spuštění filtru v sekundách&gt; * časová osa
+    - Vzorec pro nastavení vlastností časového razítka filtru assetu je: <br/>startTimestamp = &lt; čas zahájení v manifestu &gt;  +   &lt; očekával čas spuštění filtru v sekundách &gt; * Časová osa
 
 ## <a name="next-steps"></a>Další kroky
 

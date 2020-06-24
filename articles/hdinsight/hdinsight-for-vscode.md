@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 5c429da761c39ae6828eb5d79809b687e8a76bd3
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: a20cbf14ea2aa2475f25236615b85d6697ce252b
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609093"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84704858"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Použití nástrojů pro podregistr Spark & pro Visual Studio Code
 
@@ -140,7 +140,7 @@ Běžný cluster můžete propojit pomocí uživatelského jména spravovaného 
 
 4. [Připojte](#connect-to-an-azure-account) se k účtu Azure nebo propojte cluster, pokud jste to ještě neudělali.
 
-5. Vyberte cluster jako výchozí cluster pro aktuální soubor skriptu. Nástroje automaticky aktualizují **. **Konfigurační soubor VSCode\settings.JSON:
+5. Vyberte cluster jako výchozí cluster pro aktuální soubor skriptu. Nástroje automaticky aktualizují **.VSCode\settings.js** konfiguračního souboru:
 
    ![Nastavit výchozí konfiguraci clusteru](./media/hdinsight-for-vscode/set-default-cluster-configuration.png)
 
@@ -249,6 +249,10 @@ Nástroj také podporuje dotaz **Spark SQL** :
    ![spuštění výsledků ipynb](./media/hdinsight-for-vscode/run-ipynb-file-results.png)
 
 
+> [!NOTE]
+>
+>MS-Python >= verze 2020.5.78807 není v tomto rozsahu podporována. Jedná se o [známý problém](#known-issues).
+
 ## <a name="submit-pyspark-batch-job"></a>Odeslat dávkovou úlohu PySpark
 
 1. Otevřete složku **HDexample** , kterou jste si poznamenali [dříve](#open-a-work-folder), pokud je uzavřená.  
@@ -290,16 +294,16 @@ Po odeslání úlohy Pythonu se protokoly odeslání zobrazí v okně **výstup*
 
 ## <a name="apache-livy-configuration"></a>Konfigurace Apache Livy
 
-Konfigurace [Apache Livy](https://livy.incubator.apache.org/) je podporovaná. Můžete ji nakonfigurovat v **. Soubor VSCode\settings.json** ve složce pracovního prostoru. V současné době konfigurace Livy podporuje pouze skript Pythonu. Další informace najdete v tématu [LIVY Readme](https://github.com/cloudera/livy/blob/master/README.rst ).
+Konfigurace [Apache Livy](https://livy.incubator.apache.org/) je podporovaná. Můžete ji nakonfigurovat v souboru **.VSCode\settings.js** v souboru ve složce pracovního prostoru. V současné době konfigurace Livy podporuje pouze skript Pythonu. Další informace najdete v tématu [LIVY Readme](https://github.com/cloudera/livy/blob/master/README.rst ).
 
 <a id="triggerlivyconf"></a>**Jak aktivovat konfiguraci Livy**
 
 Metoda 1  
 1. V řádku nabídek přejděte na **File**  >  **Preferences**  >  **Nastavení**předvolby souborů.
 2. Do pole **Nastavení hledání** zadejte **odeslání úlohy HDInsight: Livy conf**.  
-3. Pro příslušný výsledek hledání vyberte **Upravit v nastavení. JSON** .
+3. Pro příslušný výsledek hledání vyberte **Upravit v settings.js** .
 
-Metoda 2: odešle soubor a Všimněte si, že `.vscode` Složka je automaticky přidána do pracovní složky. Konfiguraci Livy můžete zobrazit tak, že vyberete **. vscode\settings.JSON**.
+Metoda 2: odešle soubor a Všimněte si, že `.vscode` Složka je automaticky přidána do pracovní složky. Konfiguraci Livy můžete zobrazit výběrem **.vscode\settings.jszapnuto**.
 
 + Nastavení projektu:
 
@@ -448,9 +452,9 @@ Odešlete úlohu do clusteru HDInsight pomocí Data Lake Storage Gen2. Pokud vá
 V řádku nabídek přejděte na **Zobrazit**  >  **paleta příkazů**a pak zadejte **Azure: odhlásit**se.
 
 ## <a name="known-issues"></a>Známé problémy
-### <a name="python-on-2020580290-version-is-not-supported-on-this-extention"></a>Python ve verzi 2020.5.80290 se v tomto rozsahu nepodporuje. 
+### <a name="ms-python-2020578807-version-is-not-supported-on-this-extention"></a>v tomto rozsahu se nepodporuje verze 2020.5.78807 v jazyce MS-Python >=. 
 
-"Nepovedlo se připojit k poznámkovým blokům Jupyter." je známý problém 2020.5.80290 verze Pythonu. Pro předcházení tomuto problému doporučujeme, aby uživatelé používali **2020.4.76186** verze MS-Pythonu.
+"Nepovedlo se připojit k poznámkovým blokům Jupyter." je známý problém verze Pythonu >= 2020.5.78807. Pro předcházení tomuto problému doporučujeme, aby uživatelé používali **[2020.4.76186](https://github.com/microsoft/vscode-python/releases/download/2020.4.76186/ms-python-release.vsix)** verze MS-Pythonu.
 
 ![známé problémy](./media/hdinsight-for-vscode/known-issue.png)
 

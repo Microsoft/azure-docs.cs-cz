@@ -7,12 +7,12 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 03/10/2020
-ms.openlocfilehash: 12616fbc80468d35ebb8b0bc5cd12bfd5871e788
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 99e8afa0a92ba8bb53505e2519efec7baafbcf48
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79503654"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84805107"
 ---
 # <a name="quickstart-monitor-an-azure-virtual-machine-with-azure-monitor"></a>Rychlý Start: monitorování virtuálního počítače Azure pomocí Azure Monitor
 [Azure monitor](../overview.md) spustí shromažďování dat z virtuálních počítačů Azure a okamžik jejich vytvoření. V tomto rychlém startu se dozvíte, jak se budou automaticky shromažďovat data pro virtuální počítač Azure a jak je zobrazit v Azure Portal. Pak povolíte [Azure monitor pro virtuální počítače](../insights/vminsights-overview.md) pro váš virtuální počítač, který umožní agentům na virtuálním počítači shromažďovat a analyzovat data z hostovaného operačního systému, včetně procesů a jejich závislostí.
@@ -65,7 +65,7 @@ Když vytváříte nový pracovní prostor Log Analytics, musí být nakonfiguro
 
 2. Vyberte **Data** a pak vyberte **Protokoly událostí systému Windows**.
 
-3. Přidejte protokol událostí zadáním názvu protokolu.  Zadejte **systém** a potom vyberte znaménko **+** Plus.
+3. Přidejte protokol událostí zadáním názvu protokolu.  Zadejte **systém** a potom vyberte znaménko plus **+** .
 
 4. V tabulce zaškrtněte závažnosti **Chyby** a **Upozornění**.
 
@@ -75,7 +75,7 @@ Když vytváříte nový pracovní prostor Log Analytics, musí být nakonfiguro
 
 1. Vyberte **Syslog**.  
 
-2. Přidejte protokol událostí zadáním názvu protokolu.  Zadejte **SYSLOG** a potom vyberte znaménko plus **+**.  
+2. Přidejte protokol událostí zadáním názvu protokolu.  Zadejte **SYSLOG** a potom vyberte znaménko plus **+** .  
 
 3. V tabulce zrušte výběr **informací o**závažnosti, **Upozornění** a **ladění**. 
 
@@ -83,7 +83,7 @@ Když vytváříte nový pracovní prostor Log Analytics, musí být nakonfiguro
 
 ## <a name="view-data-collected"></a>Zobrazení shromážděných dat
 
-7. Klikněte na virtuální počítač a pak vyberte kartu **výkon** . Tím se zobrazí vybraná skupina čítačů výkonu shromážděných z hostovaného operačního systému virtuálního počítače. Posuňte se dolů a zobrazte další čítače a přesuňte ukazatel myši na graf, abyste zobrazili průměrnou a percentily v různou dobu.
+7. Klikněte na virtuální počítač a pak vyberte kartu **výkon** , která se nachází na dlaždici monitorování **přehledů** v nabídce **monitorování** . Tím se zobrazí vybraná skupina čítačů výkonu shromážděných z hostovaného operačního systému virtuálního počítače. Posuňte se dolů a zobrazte další čítače a přesuňte ukazatel myši na graf, abyste zobrazili průměrnou a percentily v různou dobu.
 
     ![Výkon](media/quick-monitor-azure-vm/performance.png)
 

@@ -9,11 +9,11 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.openlocfilehash: 0e3d343c0a68dd527e4e8e8d23e5b3843a216a78
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79271509"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84705368"
 ---
 # <a name="symmetric-key-attestation"></a>Osvědčení symetrického klíče
 
@@ -46,9 +46,9 @@ Tokeny SAS mají následující formát:
 
 Tady jsou komponenty každého tokenu:
 
-| Hodnota | Popis |
+| Hodnota | Description |
 | --- | --- |
-| označení |Řetězec pro podpis HMAC-SHA256. Pro jednotlivé registrace se tento podpis vytvoří pomocí symetrického klíče (primárního nebo sekundárního) k provedení hodnoty hash. Pro skupiny registrací se k provedení hodnoty hash používá klíč odvozený z klíče skupiny zápisu. Hodnota hash se provádí ve zprávě formuláře: `URL-encoded-resourceURI + "\n" + expiry`. **Důležité**: klíč musí být před použitím pro výpočet HMAC-SHA256 dekódovat z formátu base64. Výsledek signatury musí být také kódovaný pomocí adresy URL. |
+| označení |Řetězec pro podpis HMAC-SHA256. Pro jednotlivé registrace se tento podpis vytvoří pomocí symetrického klíče (primárního nebo sekundárního) k provedení hodnoty hash. Pro skupiny registrací se k provedení hodnoty hash používá klíč odvozený z klíče skupiny zápisu. Hodnota hash se provádí ve zprávě formuláře: `URL-encoded-resourceURI + "\n" + expiry` . **Důležité**: klíč musí být před použitím pro výpočet HMAC-SHA256 dekódovat z formátu base64. Výsledek signatury musí být také kódovaný pomocí adresy URL. |
 | resourceUri |Identifikátor URI koncového bodu registrace, ke kterému má být přístup s tímto tokenem, počínaje ID oboru pro instanci služby Device Provisioning. Například `{Scope ID}/registrations/{Registration ID}`. |
 | vypršení platnosti |Řetězce UTF8 po dobu v sekundách od epocha 00:00:00 UTC dne 1. ledna 1970. |
 | {URL-Encoded-resourceURI} |Malá adresa URL – kódování identifikátoru URI pro malý případ prostředku |

@@ -8,11 +8,11 @@ ms.date: 01/10/2020
 ms.topic: conceptual
 ms.author: sutalasi
 ms.openlocfilehash: d2dfaab3d01ea29b0f9ecba1e9d748415bed2edc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257196"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84704376"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>Nastavení zotavení po havárii virtuálních počítačů VMware do Azure pomocí PowerShellu
 
@@ -37,7 +37,7 @@ Než začnete, potřebujete:
 
 - Ujistěte se, že rozumíte [komponentám a architektuře řešení](vmware-azure-architecture.md).
 - Zkontrolujte [požadavky na podporu](site-recovery-support-matrix-to-azure.md) pro všechny komponenty.
-- Máte modul Azure PowerShell `Az` . Pokud potřebujete nainstalovat nebo upgradovat Azure PowerShell, postupujte podle pokynů v tomto [Průvodci a nainstalujte a nakonfigurujte Azure PowerShell](/powershell/azure/install-az-ps).
+- Máte `Az` modul Azure PowerShell. Pokud potřebujete nainstalovat nebo upgradovat Azure PowerShell, postupujte podle pokynů v tomto [Průvodci a nainstalujte a nakonfigurujte Azure PowerShell](/powershell/azure/install-az-ps).
 
 ## <a name="log-into-azure"></a>Přihlášení k Azure
 
@@ -105,7 +105,7 @@ Select-AzSubscription -SubscriptionName "ASR Test Subscription"
 Nastavte kontext trezoru pomocí rutiny Set-ASRVaultContext. Po nastavení se následné operace Azure Site Recovery v relaci PowerShellu provádějí v kontextu vybraného trezoru.
 
 > [!TIP]
-> Modul Azure Site Recovery PowerShellu (AZ. RecoveryServices Module) obsahuje snadné použití aliasů pro většinu rutin. Rutiny v modulu přebírají * \<>**AzRecoveryServicesAsr**\<objekt –>* a mají ekvivalentní aliasy, které přijímají * \<operaci formuláře> –>objektů**ASR**\< *. Můžete nahradit aliasy rutiny pro snadné použití.
+> Modul Azure Site Recovery PowerShellu (AZ. RecoveryServices Module) obsahuje snadné použití aliasů pro většinu rutin. Rutiny v modulu mají formu * \<Operation> - **AzRecoveryServicesAsr** \<Object> * a mají ekvivalentní aliasy, které mají formu * \<Operation> - **ASR** \<Object> *. Můžete nahradit aliasy rutiny pro snadné použití.
 
 V následujícím příkladu se k určení kontextu trezoru pro relaci PowerShellu použijí podrobnosti trezoru z $vault proměnné.
 
@@ -351,7 +351,7 @@ K ochraně zjištěného virtuálního počítače budete potřebovat následuj�
 Teď replikujte následující virtuální počítače pomocí nastavení zadaných v této tabulce.
 
 
-|Virtuální počítač  |Procesový Server        |Účet úložiště              |Účet úložiště protokolů  |Zásada           |Účet pro instalaci služby mobility|Cílová skupina prostředků  | Cílová virtuální síť  |Cílová podsíť  |
+|Virtuální počítač  |Procesový Server        |Účet úložiště              |Účet úložiště protokolů  |Zásady           |Účet pro instalaci služby mobility|Cílová skupina prostředků  | Cílová virtuální síť  |Cílová podsíť  |
 |-----------------|----------------------|-----------------------------|---------------------|-----------------|-----------------------------------------|-----------------------|-------------------------|---------------|
 |CentOSVM1       |ConfigurationServer   |–| logstorageaccount1                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR – VNet                 |Podsíť – 1       |
 |Win2K12VM1       |Škálování – ProcessServer|premiumstorageaccount1       |logstorageaccount1   |ReplicationPolicy|WindowsAccount                           |VMwareDRToAzurePs      |ASR – VNet                 |Podsíť – 1       |   

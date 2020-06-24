@@ -5,20 +5,20 @@ author: malcolmtyrrell
 ms.author: matyrr
 ms.date: 03/05/2020
 ms.topic: how-to
-ms.openlocfilehash: d5f843add0649682bae8c472bc50b6beea33bf93
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 722d3e218272202074820db442ab1592042c7011
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681516"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84805013"
 ---
 # <a name="get-information-about-a-converted-model"></a>Získání informací o převedeném modelu
 
-Soubor arrAsset, který je vytvořen pomocí služby pro převod, je určen pouze pro využití ve službě vykreslování. Pokud ale chcete získat přístup k informacím o modelu bez spuštění relace vykreslování, může dojít k nějakým časům. Proto služba převodu umístí soubor JSON vedle souboru arrAsset do výstupního kontejneru. Například pokud je soubor `buggy.gltf` převeden, kontejner výstupu bude obsahovat soubor s názvem `buggy.info.json` vedle převedeného prostředku. `buggy.arrAsset` Obsahuje informace o zdrojovém modelu, převedeném modelu a o samotném převodu.
+Soubor arrAsset, který je vytvořen pomocí služby pro převod, je určen pouze pro využití ve službě vykreslování. Pokud ale chcete získat přístup k informacím o modelu bez spuštění relace vykreslování, může dojít k nějakým časům. Proto služba převodu umístí soubor JSON vedle souboru arrAsset do výstupního kontejneru. Například pokud `buggy.gltf` je soubor převeden, kontejner výstupu bude obsahovat soubor s názvem `buggy.info.json` vedle převedeného prostředku `buggy.arrAsset` . Obsahuje informace o zdrojovém modelu, převedeném modelu a o samotném převodu.
 
 ## <a name="example-info-file"></a>Příklad souboru s *informacemi*
 
-Zde je příklad *informačního* souboru vytvořeného převodem souboru s `buggy.gltf`názvem:
+Zde je příklad *informačního* souboru vytvořeného převodem souboru s názvem `buggy.gltf` :
 
 ```JSON
 {
@@ -100,7 +100,7 @@ V této části jsou zaznamenány informace o formátu zdrojového souboru.
 V této části najdete informace o zdrojové scéně. Mezi hodnotami v této části a odpovídajícími hodnotami v nástroji, který vytvořil zdrojový model, budou často zjištěny rozdíly. Tyto rozdíly se očekávají, protože model se během exportu a převodu změnil.
 
 * `numMeshes`: Počet částí mřížky, kde každá část může odkazovat na jeden materiál.
-* `numFaces`: Celkový počet _trojúhelníků_ v celém modelu. Všimněte si, že síť je během převodu triangulated.
+* `numFaces`: Celkový počet _trojúhelníků_ v celém modelu. Všimněte si, že síť je během převodu triangulated. Toto číslo přispívá k omezení mnohoúhelníku ve [standardní velikosti virtuálních počítačů pro vykreslování](../../reference/vm-sizes.md#how-the-renderer-evaluates-the-number-of-polygons).
 * `numVertices`: Celkový počet vrcholů v celém modelu.
 * `numMaterial`: Celkový počet materiálů v celém modelu.
 * `numFacesSmallestMesh`: Počet trojúhelníků v nejmenší mřížce modelu.
@@ -122,7 +122,7 @@ V této části jsou zaznamenány informace vypočítané z převedeného prost�
 
 * `numMeshPartsCreated`: Počet sítí v arrAsset. Může se lišit od `numMeshes` v `inputStatistics` části, protože vytváření instancí je ovlivněno procesem převodu.
 * `numMeshPartsInstanced`: Počet sítí, které se znovu používají v arrAsset.
-* `recenteringOffset`: Když je `recenterToOrigin` povolená možnost v [ConversionSettings](configure-model-conversion.md) , je tato hodnota překlad, který by převedl převedený model zpátky do původní pozice.
+* `recenteringOffset`: Když `recenterToOrigin` je povolená možnost v [ConversionSettings](configure-model-conversion.md) , je tato hodnota překlad, který by převedl převedený model zpátky do původní pozice.
 * `boundingBox`: Hranice modelu.
 
 ## <a name="next-steps"></a>Další kroky

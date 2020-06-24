@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 4560ca2b07826e2a071f515f147dfab8cbec3624
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254492"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84704586"
 ---
 # <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>Nasazení virtuálního pole StorSimple – nastavení jako serveru iSCSI prostřednictvím Azure Portal
 
@@ -81,7 +81,7 @@ Pomocí následujících podrobných pokynů nastavte a nakonfigurujte vaše vir
 6. Na stránce **nastavení zařízení** :
    
    1. Přiřaďte zařízení jedinečný **název** . Tento název může být 1-15 znaků a může obsahovat písmena, číslice a spojovníky.
-   2. Klikněte na ikonu **serveru iSCSI** ikona serveru ![iSCSI](./media/storsimple-virtual-array-deploy3-iscsi-setup/image7.png) pro **typ** zařízení, které vytváříte. Server iSCSI vám umožní zřídit blokové úložiště.
+   2. Klikněte na ikonu **serveru iSCSI** ikona ![ serveru iSCSI ](./media/storsimple-virtual-array-deploy3-iscsi-setup/image7.png) pro **typ** zařízení, které vytváříte. Server iSCSI vám umožní zřídit blokové úložiště.
    3. Určete, jestli chcete, aby toto zařízení bylo připojené k doméně. Pokud je vaše zařízení serverem iSCSI, je připojení k doméně volitelné. Pokud se rozhodnete připojit server iSCSI k doméně, klikněte na **použít**, počkejte, až se nastavení použije, a pak přejděte k dalšímu kroku.
       
        Pokud chcete zařízení připojit k doméně. Zadejte **název domény**a pak klikněte na **použít**.
@@ -100,7 +100,7 @@ Pomocí následujících podrobných pokynů nastavte a nakonfigurujte vaše vir
    
     Na stránce **webového proxy serveru** :
    
-   1. Zadejte **adresu URL webového proxy serveru** v tomto formátu: *http\/:/Host-IP adresa* nebo *plně kvalifikovaný název domény: číslo portu*. Upozorňujeme, že adresy URL protokolu HTTPS nejsou podporovány.
+   1. Zadejte **adresu URL webového proxy serveru** v tomto formátu: *http: \/ /Host-IP adresa* nebo *plně kvalifikovaný název domény: číslo portu*. Upozorňujeme, že adresy URL protokolu HTTPS nejsou podporovány.
    2. Zadejte **ověřování** jako **základní** nebo **žádné**.
    3. Pokud používáte ověřování, budete také muset zadat **uživatelské jméno** a **heslo**.
    4. Klikněte na **Použít**. Tím se ověří a použije nakonfigurovaná nastavení webového proxy serveru.
@@ -118,7 +118,7 @@ Pomocí následujících podrobných pokynů nastavte a nakonfigurujte vaše vir
    
    1. Zadejte **registrační klíč služby** , který jste získali v **kroku 2: získání registračního klíče služby** v části [nasazení StorSimple Virtual Array – Příprava portálu](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key).
    2. Pokud se nejedná o první zařízení, které zaregistrujete v rámci této služby, budete muset zadat **šifrovací klíč dat služby**. Tento klíč je vyžadován s registračním klíčem služby k registraci dalších zařízení ve službě StorSimple Device Manager. Další informace najdete v tématu [získání šifrovacího klíče dat služby](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) v místním webovém uživatelském rozhraní.
-   3. Klikněte na **zaregistrovat**. Tím se zařízení restartuje. Možná budete muset počkat na 2-3 minut, než se zařízení úspěšně zaregistruje. Jakmile se zařízení restartuje, přejdete na přihlašovací stránku.
+   3. Klikněte na **Zaregistrovat**. Tím se zařízení restartuje. Možná budete muset počkat na 2-3 minut, než se zařízení úspěšně zaregistruje. Jakmile se zařízení restartuje, přejdete na přihlašovací stránku.
       
       ![Registrovat zařízení](./media/storsimple-virtual-array-deploy3-iscsi-setup/image11.png)
 10. Vraťte se na Azure Portal.

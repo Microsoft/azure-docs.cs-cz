@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88b65c8e8962ad8420ded47da1a343672123c589
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3c0a6302383240f65d900369128337a41a13ecfa
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77058174"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84805072"
 ---
 # <a name="tutorial-configure-docusign-for-automatic-user-provisioning"></a>Kurz: Konfigurace DocuSign pro Automatické zřizování uživatelů
 
@@ -77,6 +77,9 @@ Cílem této části je vysvětlit, jak povolit uživatelům zřizování uživa
     a. Do textového pole **správce uživatelské jméno** zadejte název účtu Docusign, který má přiřazený profil **správce systému** v Docusign.com.
    
     b. Do textového pole **heslo správce** zadejte heslo pro tento účet.
+
+> [!NOTE]
+> Pokud je nastavené jednotné přihlašování i zřizování uživatelů, musí být autorizační pověření používaná pro zřizování nakonfigurovaná tak, aby fungovala s přihlašováním a uživatelským jménem nebo heslem.
 
 1. V Azure Portal klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k vaší aplikaci Docusign.
 

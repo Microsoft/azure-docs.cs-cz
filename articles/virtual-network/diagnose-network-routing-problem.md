@@ -10,17 +10,17 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/30/2018
 ms.author: kumud
-ms.openlocfilehash: 13d74fbb4a7c133ca2365fd2cbfce4b3d2bea72e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1c23244707179e05c63ed44b5915e58eefd3f4a3
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75350605"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84705045"
 ---
 # <a name="diagnose-a-virtual-machine-routing-problem"></a>Diagnostika problému s směrováním virtuálního počítače
 
@@ -38,7 +38,7 @@ Následující postup předpokládá, že máte existující virtuální počít
 2. V horní části Azure Portal do vyhledávacího pole zadejte název virtuálního počítače, který je ve stavu spuštěno. Jakmile se ve výsledcích hledání zobrazí název virtuálního počítače, vyberte ho.
 3. V části **Nastavení** vlevo vyberte **sítě**a přejděte na prostředek síťového rozhraní, a to tak, že vyberete jeho název.
      ![Zobrazit síťová rozhraní](./media/diagnose-network-routing-problem/view-nics.png)
-4. Na levé straně vyberte **efektivní trasy**. Na následujícím obrázku jsou zobrazeny efektivní trasy pro síťové rozhraní s názvem **myVMNic1** : ![zobrazení efektivních tras](./media/diagnose-network-routing-problem/view-effective-routes.png)
+4. Na levé straně vyberte **efektivní trasy**. Na následujícím obrázku jsou zobrazeny efektivní trasy pro síťové rozhraní s názvem **myVMNic1** : ![ zobrazení efektivních tras](./media/diagnose-network-routing-problem/view-effective-routes.png)
 
     Pokud existuje více síťových rozhraní připojených k virtuálnímu počítači, můžete zobrazit efektivní trasy pro jakékoli síťové rozhraní, a to tak, že je vyberete. Vzhledem k tomu, že každé síťové rozhraní může být v jiné podsíti, může mít každé síťové rozhraní různé efektivní trasy.
 

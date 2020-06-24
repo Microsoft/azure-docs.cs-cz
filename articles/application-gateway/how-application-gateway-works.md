@@ -4,15 +4,15 @@ description: Tento článek poskytuje informace o tom, jak brána Application Ga
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/16/2019
 ms.author: absha
-ms.openlocfilehash: 84a7bdfb9f8f7c741140cbe2086149dff90db211
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7622ac319929548dd50a3af763b1b65ea8a36d2b
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80132970"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85250226"
 ---
 # <a name="how-an-application-gateway-works"></a>Jak funguje Aplikační brána
 

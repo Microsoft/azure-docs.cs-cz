@@ -10,17 +10,17 @@ tags: azure-resource-manager
 ms.assetid: a54feccf-0123-4e49-a743-eb8d0bdd1ebc
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: kumud
-ms.openlocfilehash: 6939ea2497a9f12321e1a6dfb9bf9fbb353bc7db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d4e78a90c5b852177c88350422bdd6ce1e398cd
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80240778"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84704943"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>Diagnostika problému s filtrováním síťového provozu virtuálního počítače
 
@@ -177,7 +177,7 @@ Ať už pomocí webu Azure [Portal](#diagnose-using-azure-portal), [PowerShellu]
 | Protocol (Protokol)                | TCP                                                                                |
 | Akce                  | Povolit                                                                              |
 | Priorita                | 100                                                                                |
-| Název                    | Povolení – HTTP – vše                                                                     |
+| Name                    | Povolení – HTTP – vše                                                                     |
 
 Po vytvoření pravidla je port 80 povolený pro příchozí připojení z Internetu, protože priorita pravidla je vyšší než výchozí pravidlo zabezpečení s názvem *DenyAllInBound*, které zakazuje provoz. Přečtěte si, jak [vytvořit pravidlo zabezpečení](manage-network-security-group.md#create-a-security-rule). Pokud jsou k síťovému rozhraní i podsíti přidruženy různé skupin zabezpečení sítě, musíte stejné pravidlo vytvořit v obou skupin zabezpečení sítě.
 

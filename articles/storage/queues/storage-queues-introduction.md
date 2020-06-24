@@ -7,13 +7,13 @@ ms.date: 03/18/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: overview
-ms.reviewer: cbrooks
-ms.openlocfilehash: 4a2bea77578282d68d86bc1a8cea765aa2cbd555
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.reviewer: dineshm
+ms.openlocfilehash: 678ab8a3f3dace17671c242939c20cb5499b2e39
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80060851"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84805130"
 ---
 # <a name="what-are-azure-queues"></a>Co jsou fronty Azure?
 
@@ -41,5 +41,5 @@ Služba front obsahuje následující součásti:
 
 ## <a name="next-steps"></a>Další kroky
 
-* [vytvořit účet úložiště](../storage-create-storage-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
+* [Vytvoření účtu úložiště](../storage-create-storage-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
 * [Začínáme s frontami pomocí .NET](storage-dotnet-how-to-use-queues.md)
