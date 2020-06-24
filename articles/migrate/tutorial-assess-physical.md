@@ -3,12 +3,12 @@ title: Posouzení fyzických serverů pro migraci do Azure pomocí posouzení se
 description: Popisuje postup vyhodnocení místních fyzických serverů pro migraci do Azure pomocí Azure Migrate posouzení serveru.
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: 5cbd1b85bdb9017a96dc863b83223c31c716cf77
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: 2c0662c6ccf66f09413891c99da789c50847277e
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331793"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080762"
 ---
 # <a name="assess-physical-servers-with-azure-migrateserver-assessment"></a>Vyhodnotit fyzické servery pomocí Azure Migrate: posouzení serveru
 
@@ -80,7 +80,7 @@ Azure Migrate: posouzení serveru spouští odlehčené zařízení.
     - Extrahujte obsah ze souboru ZIP. Spusťte konzolu PowerShellu s oprávněními správce.
     - Spusťte skript prostředí PowerShell pro spuštění webové aplikace zařízení.
     - Nakonfigurujete zařízení poprvé a zaregistrujete ho do projektu Azure Migrate.
-- Pro jeden Azure Migrate projekt můžete nastavit více zařízení. U všech zařízení můžete zjistit libovolný počet fyzických serverů. Pro každé zařízení je možné zjistit maximálně 250 serverů.
+- Pro jeden Azure Migrate projekt můžete nastavit více zařízení. U všech zařízení můžete zjistit libovolný počet fyzických serverů. Pro každé zařízení je možné zjistit maximálně 1000 serverů.
 
 ### <a name="download-the-installer-script"></a>Stažení instalačního skriptu
 
@@ -101,7 +101,7 @@ Před nasazením souboru ZIP ověřte, zda je soubor zip zabezpečený.
 2. Spusťte následující příkaz, který vygeneruje hodnotu hash pro soubor zip:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Příklad použití pro veřejný cloud:```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
-    - Příklad použití pro oficiální Cloud:```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5 ```
+    - Příklad použití pro oficiální Cloud:```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip SHA256 ```
 3.  Ověřte nejnovější verze zařízení a hodnoty hash:
     - Pro veřejný cloud:
 
@@ -132,7 +132,7 @@ Spusťte skript následujícím způsobem:
 1. Extrahujte soubor zip do složky na serveru, který bude hostitelem zařízení.  Ujistěte se, že nespouštíte skript na počítači v existujícím zařízení Azure Migrate.
 2. Na výše uvedeném serveru s oprávněním správce (zvýšené) spusťte PowerShell.
 3. Změňte adresář PowerShellu na složku, do které byl obsah extrahován ze staženého souboru ZIP.
-4. Spusťte skript s názvem **AzureMigrateInstaller. ps1** spuštěním následujícího příkazu:
+4. Spusťte skript s názvem **AzureMigrateInstaller.ps1** spuštěním následujícího příkazu:
 
     - Pro veřejný cloud:``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1 ```
     - Pro Azure Government:``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>AzureMigrateInstaller.ps1 ```
@@ -180,7 +180,7 @@ Nyní se z zařízení připojte k fyzickým serverům, které se mají zjistit,
 
 1. Klikněte na **Přidat přihlašovací údaje** a zadejte přihlašovací údaje účtu, které zařízení použije k zjišťování serverů.  
 2. Zadejte **operační systém**, popisný název přihlašovacích údajů a uživatelské jméno a heslo. Pak klikněte na **Přidat**.
-Každé pro servery se systémem Windows a Linux můžete přidat jednu sadu přihlašovacích údajů.
+Můžete přidat několik přihlašovacích údajů pro servery se systémem Windows a Linux.
 4. Klikněte na **Přidat server**a zadejte podrobnosti o serveru – plně kvalifikovaný název domény/IP adresa a popisný název přihlašovacích údajů (jedna položka na řádek) pro připojení k serveru.
 3. Klikněte na **Validate** (Ověřit). Po ověření se zobrazí seznam serverů, které se dají zjistit.
     - Pokud se ověření serveru nepovede, zkontrolujte chybu přesunutím ukazatele myši na ikonu ve sloupci **stav** . Opravte problémy a znovu ověřte.
@@ -200,7 +200,7 @@ Po zjištění můžete ověřit, že se servery zobrazují v Azure Portal.
 
 Existují dva typy hodnocení, které můžete vytvořit pomocí Azure Migrate: posouzení serveru.
 
-**Posouzení** | **Zobrazí** | **Data**
+**Posouzení** | **Podrobnosti** | **Data**
 --- | --- | ---
 **Na základě výkonu** | Posouzení na základě shromážděných dat o výkonu | **Doporučená velikost virtuálního počítače**: na základě dat využití procesoru a paměti.<br/><br/> **Doporučený typ disku (spravovaný disk Standard nebo Premium)**: na základě vstupně-výstupních operací a propustnosti místních disků.
 **Jako místní** | Posouzení na základě místních velikostí. | **Doporučená velikost virtuálního počítače**: na základě velikosti místního serveru<br/><br> **Doporučený typ disku**: na základě nastavení typu úložiště, které jste vybrali pro posouzení.

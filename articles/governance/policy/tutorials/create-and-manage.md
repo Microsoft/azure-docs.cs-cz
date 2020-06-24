@@ -1,14 +1,14 @@
 ---
 title: 'Kurz: Vytvoření zásad pro vymáhání dodržování předpisů'
 description: V tomto kurzu použijete zásady k vymáhání standardů, řízení nákladů, údržbě zabezpečení a zavedení zásad pro návrh na podnikové požadavky.
-ms.date: 03/24/2020
+ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: dcebbbfcc2f86ace7ea4400a2fdb6f1392f4efe6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 90ac6d1c4121b8672e561ff633263775bbad5357
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82190822"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84781123"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>Kurz: vytvoření a Správa zásad pro vymáhání dodržování předpisů
 
@@ -24,7 +24,7 @@ Pokud chcete přiřadit zásadu pro identifikaci aktuálního stavu dodržován�
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
 
 ## <a name="assign-a-policy"></a>Přiřazení zásady
 
@@ -78,7 +78,7 @@ Prvním krokem při vynucování dodržování předpisů pomocí služby Azure 
 
 ## <a name="implement-a-new-custom-policy"></a>Implementace nové vlastní zásady
 
-Teď, když jste přiřadili předdefinovanou definici zásady, můžete se službou Azure Policy provádět další akce. V dalším kroku vytvoříte novou vlastní zásadu, která šetří náklady tím, že se ověří, že virtuální počítače vytvořené ve vašem prostředí nemůžou být v řadě G. Díky tomu se zamítnou všechny žádosti uživatelů ve vaší organizaci o vytvoření virtuálního počítače v řadě G Series.
+Teď, když jste přiřadili předdefinovanou definici zásady, můžete se službou Azure Policy provádět další akce. V dalším kroku vytvoříte novou vlastní zásadu, která šetří náklady tím, že ověří, že virtuální počítače vytvořené ve vašem prostředí nemůžou být v řadě G. To znamená, že pokaždé, když se uživatel ve vaší organizaci pokusí vytvořit virtuální počítač v řadě G, je žádost zamítnutá.
 
 1. Na levé straně stránky služby Azure Policy v části **Vytváření obsahu** vyberte **Definice**.
 
@@ -93,8 +93,8 @@ Teď, když jste přiřadili předdefinovanou definici zásady, můžete se slu�
      > [!NOTE]
      > Pokud se chystáte tuto definici zásady použít pro více předplatných, umístěním musí být skupina pro správu obsahující předplatná, ke kterým zásadu přiřadíte. Totéž platí i pro definici iniciativy.
 
-   - Název definice zásady – _ *_vyžaduje skladové položky virtuálních počítačů menší než G series_ .
-   - Popis účelu definice zásady – _Tato definice zásady za účelem snížení nákladů vynucuje, aby všechny virtuální počítače vytvořené v tomto oboru měly skladové položky nižší než G Series._
+   - Název definice zásady – _vyžaduje SKU virtuálních počítačů, které nejsou v řadě G_ .
+   - Popis toho, co definice zásad má dělat – _Tato definice zásady vynutila, že všechny virtuální počítače vytvořené v tomto oboru mají jiné skladové položky než G series, aby se snížily náklady._
    - Zvolte některou z existujících možností (například _Compute_) nebo pro tuto definici zásady vytvořte novou kategorii.
    - Zkopírujte následující kód JSON a pak v něm podle potřeby aktualizujte:
       - Parametry zásady.
@@ -278,7 +278,7 @@ PolicyDefinitionId : /providers/Microsoft.Authorization/policyDefinitions/e56962
 
 ## <a name="create-a-policy-definition-with-azure-cli"></a>Vytvoření definice zásady pomocí Azure CLI
 
-Definici zásady můžete vytvořit pomocí rozhraní `az policy definition` příkazového řádku Azure pomocí příkazu. Pokud chcete vytvořit definici zásady s vloženým pravidlem, použijte následující příklad:
+Definici zásady můžete vytvořit pomocí rozhraní příkazového řádku Azure pomocí `az policy definition` příkazu. Pokud chcete vytvořit definici zásady s vloženým pravidlem, použijte následující příklad:
 
 ```azurecli-interactive
 az policy definition create --name 'denyCoolTiering' --description 'Deny cool access tiering for storage' --rules '{
@@ -356,7 +356,7 @@ Pomocí definice iniciativy můžete seskupit několik definic zásad za účele
 
 1. V části **Kategorie** zvolte některou z existujících možností nebo vytvořte novou kategorii.
 
-1. Projděte seznam **Dostupné definice** (pravá polovina stránky **Definice iniciativy**) a vyberte definice zásad, které chcete přidat do této iniciativy. V části **získání bezpečného** podnětu přidejte následující předdefinované definice zásad, a to tak, **+** že vyberete vedle možnosti informace o definici zásady nebo vyberete řádek definice zásad a pak na stránce Podrobnosti možnost **+ Přidat** :
+1. Projděte seznam **Dostupné definice** (pravá polovina stránky **Definice iniciativy**) a vyberte definice zásad, které chcete přidat do této iniciativy. V části **získání bezpečného** podnětu přidejte následující předdefinované definice zásad, a to tak, že vyberete **+** vedle možnosti informace o definici zásady nebo vyberete řádek definice zásad a pak na stránce Podrobnosti možnost **+ Přidat** :
 
    - Povolená umístění
    - Monitorovat chybějící Endpoint Protection v Azure Security Center
@@ -373,7 +373,7 @@ Pomocí definice iniciativy můžete seskupit několik definic zásad za účele
    :::image type="content" source="../media/create-and-manage/initiative-definition-3.png" alt-text="Změnit parametry definice iniciativy z povolených hodnot" border="false":::
 
    > [!NOTE]
-   > U některých parametrů `strongType` není možné automaticky určit seznam hodnot. V těchto případech se napravo od řádku parametru zobrazí tři tečky. Při výběru se otevře stránka obor parametru (&lt;název&gt;parametru). Na této stránce vyberte předplatné, které chcete použít k zadání možností hodnot. Tento obor parametru se používá pouze během vytváření definice iniciativy a nemá žádný vliv na vyhodnocování zásad ani na obor iniciativy po přiřazení.
+   > U některých parametrů `strongType` není možné automaticky určit seznam hodnot. V těchto případech se napravo od řádku parametru zobrazí tři tečky. Při výběru se otevře stránka obor parametru ( &lt; název parametru &gt; ). Na této stránce vyberte předplatné, které chcete použít k zadání možností hodnot. Tento obor parametru se používá pouze během vytváření definice iniciativy a nemá žádný vliv na vyhodnocování zásad ani na obor iniciativy po přiřazení.
 
    Nastavte parametr ' Allowed umístění ' na ' Východní USA 2 ' a ponechte ostatní jako výchozí ' AuditifNotExists '.
 
@@ -381,7 +381,7 @@ Pomocí definice iniciativy můžete seskupit několik definic zásad za účele
 
 #### <a name="create-a-policy-initiative-definition-with-azure-cli"></a>Vytvoření definice iniciativy zásad pomocí Azure CLI
 
-Definici iniciativy zásad můžete vytvořit pomocí rozhraní `az policy set-definition` příkazového řádku Azure pomocí příkazu. Pokud chcete vytvořit definici iniciativy zásad s existující definicí zásad, použijte následující příklad:
+Definici iniciativy zásad můžete vytvořit pomocí rozhraní příkazového řádku Azure pomocí `az policy set-definition` příkazu. Pokud chcete vytvořit definici iniciativy zásad s existující definicí zásad, použijte následující příklad:
 
 ```azurecli-interactive
 az policy set-definition create -n readOnlyStorage --definitions '[
@@ -395,7 +395,7 @@ az policy set-definition create -n readOnlyStorage --definitions '[
 
 #### <a name="create-a-policy-initiative-definition-with-azure-powershell"></a>Vytvoření definice iniciativy zásad pomocí Azure PowerShell
 
-Definici iniciativy zásad můžete vytvořit pomocí Azure PowerShell `New-AzPolicySetDefinition` rutinou. Pokud chcete vytvořit definici iniciativy zásad s existující definicí zásad, použijte následující definiční soubor iniciativy zásad `VMPolicySet.json`:
+Definici iniciativy zásad můžete vytvořit pomocí Azure PowerShell `New-AzPolicySetDefinition` rutinou. Pokud chcete vytvořit definici iniciativy zásad s existující definicí zásad, použijte následující definiční soubor iniciativy zásad `VMPolicySet.json` :
 
 ```json
 [

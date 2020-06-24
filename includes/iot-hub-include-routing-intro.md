@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 9a20dca71727e83db98c4c97567949bd127fc7fb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 552a40be0c069d1002ebc7ea4dafe0d6f93a5755
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77111191"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85128193"
 ---
 [Směrování zpráv](../articles/iot-hub/iot-hub-devguide-messages-d2c.md) umožňuje odesílat data telemetrie ze zařízení IoT do integrovaných koncových bodů kompatibilních s centrem událostí nebo vlastních koncových bodů, jako je BLOB storage, Service Bus fronty, Service Bus témata a Event Hubs. Chcete-li nakonfigurovat vlastní směrování zpráv, vytvořte [dotazy směrování](../articles/iot-hub/iot-hub-devguide-routing-query-syntax.md) pro přizpůsobení trasy, která odpovídá určité podmínce. Po nastavení se příchozí data automaticky přesměrují na koncové body pomocí služby IoT Hub. Pokud zpráva neodpovídá žádnému z definovaných směrovacích dotazů, bude směrována do výchozího koncového bodu.
 
@@ -39,13 +39,13 @@ K dokončení částí 1 a 2 tohoto kurzu provedete následující úlohy:
 ## <a name="prerequisites"></a>Požadavky
 
 * V části 1 tohoto kurzu:
-  - Mít předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+  - Mít předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 * V části 2 tohoto kurzu:
   - Musíte mít hotovou část 1 tohoto kurzu a prostředky budou stále k dispozici.
   - Nainstalujte [Visual Studio](https://www.visualstudio.com/).
   - Mít přístup k účtu Power BI k analýze Stream Analytics výchozího koncového bodu. ([Vyzkoušejte službu Power BI zdarma](https://app.powerbi.com/signupredirect?pbi_source=web).)
-  - Mít účet Office 365 pro odesílání e-mailů s oznámením.
+  - Máte pracovní nebo školní účet pro odesílání e-mailů s oznámením.
   - Ujistěte se, že je v bráně firewall otevřený port 8883. Ukázka v tomto kurzu používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokovaný v některých podnikových a vzdělávacích prostředích sítě. Další informace a způsoby, jak tento problém obejít, najdete v tématu [připojení k IoT Hub (MQTT)](../articles/iot-hub/iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 [!INCLUDE [cloud-shell-try-it.md](cloud-shell-try-it.md)]

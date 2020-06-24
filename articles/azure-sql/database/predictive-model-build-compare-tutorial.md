@@ -14,17 +14,17 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/26/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4a5936501f45694febe284d9747bdefdfeae6aeb
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: ca0af9a34587f8d3a3c0502c77556975b1d8df4e
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053331"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253830"
 ---
 # <a name="tutorial-create-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Kurz: Vytvoření prediktivního modelu v R s Azure SQL Database Machine Learning Services (Preview)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Ve druhé části této série výukových kurzů vytvoříte dva prediktivní modely v jazyce R a vyberete nejpřesnější model. V další části této série tento model nasadíte do databáze SQL pomocí Azure SQL Database Machine Learning Services (Preview).
+Ve druhé části této série výukových kurzů vytvoříte dva prediktivní modely v jazyce R a vyberete nejpřesnější model. V další části této série nasadíte tento model do databáze v Azure SQL Database pomocí Azure SQL Database Machine Learning Services (Preview).
 
 [!INCLUDE[ml-preview-note](../../../includes/sql-database-ml-preview-note.md)]
 
@@ -38,7 +38,7 @@ V tomto článku se dozvíte, jak:
 
 V [první části](predictive-model-prepare-data-tutorial.md)jste zjistili, jak naimportovat ukázkovou databázi a potom připravit data, která se mají používat k výuce prediktivního modelu v jazyce R.
 
-V [třetí části](predictive-model-deploy-tutorial.md)se dozvíte, jak uložit model do databáze a pak vytvořit uložené procedury z skriptů R, které jste vytvořili v částech One a 2. Uložené procedury se spustí v databázi SQL, aby se předpovědi na základě nových dat.
+V [třetí části](predictive-model-deploy-tutorial.md)se dozvíte, jak uložit model do databáze a pak vytvořit uložené procedury z skriptů R, které jste vytvořili v částech One a 2. Uložené procedury se spustí v databázi, aby se předpovědi vytvářely na základě nových dat.
 
 ## <a name="prerequisites"></a>Požadavky
 

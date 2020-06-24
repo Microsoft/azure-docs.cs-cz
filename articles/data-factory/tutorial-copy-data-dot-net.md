@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 11/08/2019
 ms.author: jingwang
-ms.openlocfilehash: ad257d0bea38d03803bf2be44313a3e086e7654c
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 182c5b4059874b6e03092481c68b39cf55bc7e62
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118170"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253932"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Kopírování dat z objektu blob Azure do Azure SQL Database pomocí Azure Data Factory
 
@@ -41,7 +41,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure]
 ## <a name="prerequisites"></a>Požadavky
 
 * *Účet Azure Storage*. Úložiště objektů blob použijete jako *zdrojové* úložiště dat. Pokud nemáte účet úložiště Azure, přečtěte si téma [Vytvoření účtu úložiště pro obecné účely](../storage/common/storage-account-create.md).
-* *Azure SQL Database*. Tuto databázi použijete jako úložiště dat *jímky*. Pokud nemáte Azure SQL Database, přečtěte si téma [Vytvoření databáze SQL Azure](../azure-sql/database/single-database-create-quickstart.md).
+* *Azure SQL Database*. Tuto databázi použijete jako úložiště dat *jímky*. Pokud nemáte databázi v Azure SQL Database, přečtěte si téma [Vytvoření databáze v Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md).
 * *Visual Studio*. Návod v tomto článku používá Visual Studio 2019.
 * *[Sada Azure SDK pro .NET](/dotnet/azure/dotnet-tools)*
 * *Azure Active Directory aplikace* Pokud nemáte aplikaci Azure Active Directory, přečtěte si část [Vytvoření aplikace Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) tématu [Postupy: použití portálu k vytvoření aplikace služby Azure AD](../active-directory/develop/howto-create-service-principal-portal.md). Zkopírujte následující hodnoty pro použití v pozdějších krocích: **ID aplikace (klienta)**, **ověřovací klíč**a **ID adresáře (tenant)**. Podle pokynů ve stejném článku přiřaďte aplikaci k roli **přispěvatele** .
@@ -54,14 +54,14 @@ Teď připravte svůj objekt blob Azure a Azure SQL Database pro kurz vytvořen�
 
 Nejdřív vytvořte zdrojový objekt BLOB tak, že vytvoříte kontejner a nahrajete do něj vstupní textový soubor:
 
-1. Otevřete Poznámkový blok. Zkopírujte následující text a uložte ho místně do souboru s názvem *soubor inputemp. txt*.
+1. Otevřete Poznámkový blok. Zkopírujte následující text a uložte ho místně do souboru s názvem *inputEmp.txt*.
 
     ```inputEmp.txt
     John|Doe
     Jane|Doe
     ```
 
-2. Pomocí nástroje, jako je například [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) , vytvořte kontejner *adfv2tutorial* a odešlete soubor *soubor inputemp. txt* do kontejneru.
+2. Pomocí nástroje, jako je například [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) , vytvořte kontejner *adfv2tutorial* a odešlete soubor *inputEmp.txt* do kontejneru.
 
 #### <a name="create-a-sink-sql-table"></a>Vytvoření tabulky SQL jímky
 
@@ -98,7 +98,7 @@ Pomocí sady Visual Studio vytvořte konzolovou aplikaci C# .NET.
 1. Otevřete sadu Visual Studio.
 2. V okně **Start** vyberte **vytvořit nový projekt**.
 3. V okně **vytvořit nový projekt** vyberte v seznamu typů projektů verzi **aplikace konzoly (.NET Framework)** jazyka C#. Pak vyberte **Další**.
-4. V okně **Konfigurovat nový projekt** zadejte **název projektu** *ADFv2Tutorial*. V poli **umístění**vyhledejte a/nebo vytvořte adresář, do kterého chcete projekt uložit. Pak vyberte **vytvořit**. Nový projekt se zobrazí v integrovaném vývojovém prostředí sady Visual Studio.
+4. V okně **Konfigurovat nový projekt** zadejte **název projektu** *ADFv2Tutorial*. V poli **umístění**vyhledejte a/nebo vytvořte adresář, do kterého chcete projekt uložit. Potom vyberte **Vytvořit**. Nový projekt se zobrazí v integrovaném vývojovém prostředí sady Visual Studio.
 
 ## <a name="install-nuget-packages"></a>Instalace balíčků NuGet
 

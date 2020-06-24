@@ -8,12 +8,12 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: b84f98bd383c2b90c3291527b336d798e9b9cae9
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 14760eaef309ec5695b423b98e59a8ae1ab5cacb
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83666136"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84886764"
 ---
 # <a name="tutorial-diagnose-repair-and-commit-changes-to-your-skillset"></a>Kurz: Diagnostika, oprava a potvrzení změn ve vašem dovednosti
 
@@ -173,12 +173,12 @@ Po dokončení spuštění relace ladění klikněte na kartu chyby/upozornění
 ## <a name="fix-missing-skill-output-values"></a>Oprava chybějících výstupních hodnot dovedností
 
 > [!div class="mx-imgBorder"]
-> ![Chyby a upozornění](media/cognitive-search-debug/warnings-missing-value-locs-orgs.png)
+> ![Chyby a upozornění](media/cognitive-search-debug/warnings-missing-value-locations-organizations.png)
 
 Z dovednosti chybí výstupní hodnoty. Chcete-li identifikovat dovednost s chybou přejít do rozšířené datové struktury, vyhledejte název hodnoty a podívejte se na jeho původní zdroj. V případě chybějících organizací a hodnot umístění se jedná o výstupy #1ch dovedností. Otevření vyhodnocovacího filtru výrazů </> pro každou cestu zobrazí výrazy uvedené jako "/Document/Content/Organizations" a "/Document/Content/Locations" (v uvedeném pořadí).
 
 > [!div class="mx-imgBorder"]
-> ![Entita vyhodnocení výrazu – entita organizace](media/cognitive-search-debug/expression-eval-missing-value-locs-orgs.png)
+> ![Entita vyhodnocení výrazu – entita organizace](media/cognitive-search-debug/expression-eval-missing-value-locations-organizations.png)
 
 Výstup těchto entit je prázdný a neměl by být prázdný. Jaké jsou vstupy vytvářející tento výsledek?
 
@@ -187,7 +187,7 @@ Výstup těchto entit je prázdný a neměl by být prázdný. Jaké jsou vstupy
 1. Otevřete vyhodnocovací filtr výrazů **</>** pro vstup "text".
 
 > [!div class="mx-imgBorder"]
-> ![Vstup pro textovou dovednost](media/cognitive-search-debug/input-skill-missing-value-locs-orgs.png)
+> ![Vstup pro textovou dovednost](media/cognitive-search-debug/input-skill-missing-value-locations-organizations.png)
 
 Zobrazený výsledek tohoto vstupu nevypadá jako textový vstup. Vypadá jako obrázek, který je ohraničen novými řádky. Nedostatek textu znamená, že není možné identifikovat žádné entity. V hierarchii dovednosti se zobrazuje obsah nejprve zpracován dovedností #6 (OCR) a pak se předává do dovednosti #5 (sloučení). 
 
@@ -195,7 +195,7 @@ Zobrazený výsledek tohoto vstupu nevypadá jako textový vstup. Vypadá jako o
 1. Vyberte kartu **spuštění** v pravém podokně podrobností o dovednostech a otevřete vyhodnocovací filtr výrazů **</>** pro výstupy "mergedText".
 
 > [!div class="mx-imgBorder"]
-> ![Výstup pro dovednost sloučení](media/cognitive-search-debug/merge-output-detail-missing-value-locs-orgs.png)
+> ![Výstup pro dovednost sloučení](media/cognitive-search-debug/merge-output-detail-missing-value-locations-organizations.png)
 
 Zde je text spárován s obrázkem. Podívejte se na výraz "/Document/merged_content", zobrazí se chyba v cestách "organizace" a "umístění" pro #1 dovednost. Místo použití '/Document/Content ' by mělo být pro vstupy "text" použito '/Document/merged_content '.
 
@@ -216,7 +216,7 @@ Po skončení běhu indexeru jsou chyby stále k dispozici. Vraťte se k dovedno
 1. Otevřete vyhodnocovací filtr výrazů **</>** pro entitu "organizace".
 
 > [!div class="mx-imgBorder"]
-> ![Výstup pro entitu organizace](media/cognitive-search-debug/skill-output-detail-missing-value-locs-orgs.png)
+> ![Výstup pro entitu organizace](media/cognitive-search-debug/skill-output-detail-missing-value-locations-organizations.png)
 
 Vyhodnocení výsledku výrazu dává správný výsledek. Dovednost pracuje na určení správné hodnoty pro entitu "organizace". Mapování výstupu v cestě entity však stále vyvolává chybu. Při porovnávání výstupní cesty v dovednosti s výstupní cestou v této chybě se jedná o dovednosti, které jsou nadřazené výstupům, organizacím a umístěním pod uzlem/Document/Content. Mapování polí pro výstup očekává, že výsledky budou nadřazené v uzlu/Document/merged_content. V předchozím kroku se vstup změnil z '/Document/Content ' na '/Document/merged_content '. Kontext v nastavení dovedností se musí změnit, aby se zajistilo, že se výstup vygeneruje pomocí správného kontextu.
 
@@ -228,7 +228,7 @@ Vyhodnocení výsledku výrazu dává správný výsledek. Dovednost pracuje na 
 1. V nabídce okna relace klikněte na **Spustit** . Tím se zahájí další spuštění dovednosti s použitím dokumentu.
 
 > [!div class="mx-imgBorder"]
-> ![Oprava kontextu v nastavení dovedností](media/cognitive-search-debug/skill-setting-context-correction-missing-value-locs-orgs.png)
+> ![Oprava kontextu v nastavení dovedností](media/cognitive-search-debug/skill-setting-context-correction-missing-value-locations-organizations.png)
 
 Všechny chyby byly vyřešeny.
 

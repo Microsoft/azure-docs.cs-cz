@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4122e575fc7823fd2e79a26f210f06e5c1b0a835
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: e114bf3a87f3018cc51c5752d57ce5911053542f
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857984"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118402"
 ---
 # <a name="tutorial-create-a-cassandra-api-account-in-azure-cosmos-db-by-using-a-java-application-to-store-keyvalue-data"></a>Kurz: vytvoření účtu rozhraní API Cassandra v Azure Cosmos DB pomocí aplikace Java k ukládání dat o klíčích a hodnotách
 
@@ -31,7 +31,7 @@ Tento kurz se zabývá následujícími úkony:
 
 ## <a name="prerequisites"></a>Požadavky 
 
-* Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete. 
+* Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio), ještě než začnete. 
 
 * Získejte nejnovější verzi sady [Java Development Kit (JDK)](/java/azure/jdk/?view=azure-java-stable). 
 
@@ -42,7 +42,7 @@ Tento kurz se zabývá následujícími úkony:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/). 
 
-2. Vyberte **vytvořit** > **databáze** > prostředků**Azure Cosmos DB**. 
+2. Vyberte **vytvořit**  >  **databáze**prostředků  >  **Azure Cosmos DB**. 
 
 3. V podokně **nový účet** zadejte nastavení pro nový účet Azure Cosmos. 
 
@@ -54,7 +54,7 @@ Tento kurz se zabývá následujícími úkony:
    |Skupina prostředků   | Zadejte název.    |  Vyberte**Vytvořit novou** a zadejte název nové skupiny prostředků pro váš účet. V zájmu jednoduchosti můžete použít název, který se shoduje s vaším ID.    |
    |Umístění    |  Vyberte oblast nejbližší vašim uživatelům.    |  Vyberte geografické umístění, ve kterém chcete účet Azure Cosmos hostovat. Použijte umístění, které je nejblíže vašim uživatelům, a poskytněte jim tak nejrychlejší přístup k datům.    |
 
-   ![Vytvoření účtu pomocí portálu](./media/create-cassandra-api-account-java/create-account.png)
+   :::image type="content" source="./media/create-cassandra-api-account-java/create-account.png" alt-text="Vytvoření účtu pomocí portálu":::
 
 4. Vyberte **Vytvořit**. <br/>Vytvoření účtu trvá několik minut. Po vytvoření prostředku uvidíte na pravé straně portálu oznámení o **úspěšném nasazení** .
 
@@ -91,7 +91,7 @@ Pomocí následujících kroků sestavíte ukázku od začátku:
  
 2. Najděte složku `cassandra-demo`. Pomocí textového editoru otevřete soubor `pom.xml`, který byl vygenerován. 
 
-   Přidejte závislosti Cassandra a vytvořte moduly plug-in vyžadované vaším projektem, jak je znázorněno v souboru [pom. XML](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/pom.xml) .  
+   Přidejte závislosti Cassandra a sestavování modulů plug-in vyžadovaných vaším projektem, jak je znázorněno v souboru [pom.xml](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/pom.xml) .  
 
 3. Ve složce `cassandra-demo\src\main` vytvořte novou složku s názvem `resources`.  Ve složce prostředků přidejte soubory config.properties a log4j.properties:
 
@@ -105,7 +105,7 @@ Pomocí následujících kroků sestavíte ukázku od začátku:
 
 5. Ukázka Java vytvoří databázi s informacemi o uživateli, jako je uživatelské jméno, ID uživatele a město uživatele. Budete muset definovat metody get a set pro přístup k podrobnostem o uživateli v hlavní funkci.
  
-   Ve `src/main/java/com/azure/cosmosdb/cassandra/` složce vytvořte třídu [User. Java](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/src/main/java/com/azure/cosmosdb/cassandra/examples/UserProfile.java) s metodami Get a set. 
+   Ve složce vytvořte třídu [User. Java](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/src/main/java/com/azure/cosmosdb/cassandra/examples/UserProfile.java) `src/main/java/com/azure/cosmosdb/cassandra/` s metodami Get a set. 
 
 ## <a name="add-a-database-and-a-table"></a>Přidání databáze a tabulky  
 
@@ -113,7 +113,7 @@ Tato část popisuje, jak přidat databázi (místo) a tabulku pomocí CQL.
 
 1. Ve složce `src\main\java\com\azure\cosmosdb\cassandra` vytvořte novou složku s názvem `repository`. 
 
-2. Vytvořte třídu `UserRepository` Java a přidejte do ní následující kód: 
+2. Vytvořte `UserRepository` třídu Java a přidejte do ní následující kód: 
 
    ```java
    package com.azure.cosmosdb.cassandra.repository; 
@@ -160,7 +160,7 @@ Tato část popisuje, jak přidat databázi (místo) a tabulku pomocí CQL.
 
 3. Vyhledejte složku `src\main\java\com\azure\cosmosdb\cassandra` a vytvořte novou podsložku s názvem `examples`.
 
-4. Vytvořte třídu `UserProfile` Java. Tato třída obsahuje hlavní metodu, která volá metody createKeyspace a createTable, které jste definovali dříve: 
+4. Vytvořte `UserProfile` třídu Java. Tato třída obsahuje hlavní metodu, která volá metody createKeyspace a createTable, které jste definovali dříve: 
 
    ```java
    package com.azure.cosmosdb.cassandra.examples; 

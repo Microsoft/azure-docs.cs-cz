@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 12/04/2019
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: blobs
-ms.openlocfilehash: c1d26fda57d665cc8d83f594f4efeebebc7bf139
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 21771fb1bb041dd2f09f5d82d9def4cfe91794f6
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81456885"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808395"
 ---
 # <a name="tutorial---encrypt-and-decrypt-blobs-using-azure-key-vault"></a>Kurz – šifrování a dešifrování objektů BLOB pomocí Azure Key Vault
 
@@ -75,7 +75,7 @@ Install-Package Microsoft.Azure.KeyVault
 Install-Package Microsoft.Azure.KeyVault.Extensions
 ```
 
-Přidejte do souboru App. config AppSettings.
+Přidat AppSettings do App.Config.
 
 ```xml
 <appSettings>
@@ -87,7 +87,7 @@ Přidejte do souboru App. config AppSettings.
 </appSettings>
 ```
 
-Přidejte následující `using` direktivy a nezapomeňte do projektu přidat odkaz na System. Configuration.
+Přidejte následující `using` direktivy a nezapomeňte přidat odkaz na System.Configuration do projektu.
 
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
@@ -231,7 +231,7 @@ SymmetricKey sec = (SymmetricKey) cloudResolver.ResolveKeyAsync(
     CancellationToken.None).GetAwaiter().GetResult();
 ```
 
-A to je vše. Užijte si ji!
+A je to! Užijte si ji!
 
 ## <a name="next-steps"></a>Další kroky
 

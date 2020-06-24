@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/16/2018
-ms.openlocfilehash: 3c55becb098c9d93688b59f1db4f702acbff3f72
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: bb61f6146e588673038fae9f41b770c4865cefb7
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837488"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945286"
 ---
 # <a name="azure-monitor-cli-samples"></a>Ukázky Azure Monitor CLI
 V tomto článku se dozvíte, jak vzorkovat příkazy rozhraní příkazového řádku (CLI), které vám pomůžou při přístupu k funkcím Azure Monitor. Azure Monitor umožňuje automatické škálování Cloud Services, Virtual Machines a Web Apps a odesílání oznámení o výstrahách nebo volání webových adres URL na základě hodnot nakonfigurovaných dat telemetrie.
@@ -29,51 +29,51 @@ az login
 
 Po spuštění tohoto příkazu se budete muset přihlásit prostřednictvím pokynů na obrazovce. Všechny příkazy fungují v kontextu výchozího předplatného.
 
-Pokud chcete zobrazit seznam podrobností o aktuálním předplatném, použijte následující příkaz.
+Zobrazí seznam podrobností o vašem aktuálním předplatném.
 
 ```azurecli
 az account show
 ```
 
-Chcete-li změnit pracovní kontext na jiné předplatné, použijte následující příkaz.
+Změňte pracovní kontext na jiné předplatné.
 
 ```azurecli
 az account set -s <Subscription ID or name>
 ```
 
-Chcete-li zobrazit seznam všech podporovaných příkazů Azure Monitor, proveďte následující příkaz.
+Zobrazí seznam všech podporovaných příkazů Azure Monitor.
 
 ```azurecli
 az monitor -h
 ```
 
-## <a name="view-activity-log-for-a-subscription"></a>Zobrazení protokolu aktivit pro předplatné
+## <a name="view-activity-log"></a>Zobrazit protokol aktivit
 
-Chcete-li zobrazit seznam událostí protokolu aktivit, proveďte následující příkaz.
+Zobrazení seznamu událostí protokolu aktivit.
 
 ```azurecli
 az monitor activity-log list
 ```
 
-Pokud chcete zobrazit všechny dostupné možnosti, zkuste následující postup.
+Zobrazit všechny dostupné možnosti.
 
 ```azurecli
 az monitor activity-log list -h
 ```
 
-Tady je příklad, jak zobrazit seznam protokolů podle zdroje.
+Vypíše protokoly ze zdroje dat.
 
 ```azurecli
 az monitor activity-log list --resource-group <group name>
 ```
 
-Příklad pro výpis protokolů podle volajícího
+Vypíše protokoly podle volajícího.
 
 ```azurecli
 az monitor activity-log list --caller myname@company.com
 ```
 
-Příklad výpisu protokolů podle volajícího pro typ prostředku v rámci rozsahu dat
+Vypíše protokoly volající na typ prostředku v rámci rozsahu dat.
 
 ```azurecli
 az monitor activity-log list --resource-provider Microsoft.Web \

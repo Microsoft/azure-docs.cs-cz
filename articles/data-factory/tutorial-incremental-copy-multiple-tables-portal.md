@@ -1,6 +1,6 @@
 ---
 title: Přírůstkové kopírování více tabulek pomocí Azure Portal
-description: V tomto kurzu vytvoříte kanál Azure Data Factory, který postupně kopíruje rozdílová data z několika tabulek v databázi SQL Server do Azure SQL Database.
+description: V tomto kurzu vytvoříte kanál Azure Data Factory, který postupně kopíruje rozdílová data z několika tabulek v databázi SQL Server do databáze v Azure SQL Database.
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -10,19 +10,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 05/29/2020
-ms.openlocfilehash: 680f8518e5d005aebeffd54fe6d05ae1124c595a
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.date: 06/10/2020
+ms.openlocfilehash: c215c2cb256ab37bcb096c018aefb3a410ab1e4f
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559704"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251144"
 ---
-# <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database-using-the-azure-portal"></a>Přírůstkové načtení dat z více tabulek v SQL Server do databáze SQL Azure pomocí Azure Portal
+# <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-a-database-in-azure-sql-database-using-the-azure-portal"></a>Přírůstkové načtení dat z více tabulek v SQL Server do databáze v Azure SQL Database pomocí Azure Portal
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-V tomto kurzu vytvoříte datovou továrnu Azure s kanálem, který načte rozdílová data z několika tabulek v databázi SQL Server do Azure SQL Database.    
+V tomto kurzu vytvoříte datovou továrnu Azure s kanálem, který načte rozdílová data z několika tabulek v databázi SQL Server do databáze v Azure SQL Database.    
 
 V tomto kurzu provedete následující kroky:
 
@@ -69,7 +69,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
 
 ## <a name="prerequisites"></a>Požadavky
 * **SQL Server**. V tomto kurzu použijete databázi SQL Server jako zdrojové úložiště dat. 
-* **Azure SQL Database**. Použijete databázi SQL jako úložiště dat jímky. Pokud databázi SQL nemáte, přečtěte si téma [Vytvoření databáze Azure SQL](../azure-sql/database/single-database-create-quickstart.md), kde najdete kroky pro její vytvoření. 
+* **Azure SQL Database**. Jako úložiště dat jímky použijete databázi v Azure SQL Database. Pokud nemáte databázi v SQL Database, přečtěte si téma [Vytvoření databáze v Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md) , kde najdete kroky pro její vytvoření. 
 
 ### <a name="create-source-tables-in-your-sql-server-database"></a>Vytvoření zdrojových tabulek v databázi SQL Serveru
 
@@ -111,12 +111,13 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
     
     ```
 
-### <a name="create-destination-tables-in-your-azure-sql-database"></a>Vytvoření cílových tabulek v databázi Azure SQL
-1. Otevřete aplikaci SQL Server Management Studio a připojte se ke své databázi Azure SQL.
+### <a name="create-destination-tables-in-your-database"></a>Vytvoření cílových tabulek v databázi
+
+1. Otevřete SQL Server Management Studio a připojte se k databázi v Azure SQL Database.
 
 1. V **Průzkumníku serveru** klikněte pravým tlačítkem na databázi a zvolte **Nový dotaz**.
 
-1. Spusťte následující příkaz SQL pro databázi SQL Azure a vytvořte tabulky s názvem `customer_table` a `project_table` :  
+1. Spusťte na databázi následující příkaz SQL, aby se vytvořily tabulky s názvem `customer_table` a `project_table`:  
     
     ```sql
     create table customer_table
@@ -134,8 +135,9 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
 
     ```
 
-### <a name="create-another-table-in-the-azure-sql-database-to-store-the-high-watermark-value"></a>Vytvoření další tabulky v databázi Azure SQL pro ukládání hodnoty horní meze
-1. Spusťte následující příkaz SQL pro databázi SQL Azure a vytvořte tabulku s názvem `watermarktable` pro uložení hodnoty meze: 
+### <a name="create-another-table-in-your-database-to-store-the-high-watermark-value"></a>Vytvoření další tabulky v databázi pro ukládání hodnoty horní meze
+
+1. Spusťte následující příkaz SQL pro vaši databázi a vytvořte tabulku s názvem `watermarktable` pro uložení hodnoty meze: 
     
     ```sql
     create table watermarktable
@@ -156,9 +158,9 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
     
     ```
 
-### <a name="create-a-stored-procedure-in-the-azure-sql-database"></a>Vytvoření uložené procedury v databázi Azure SQL 
+### <a name="create-a-stored-procedure-in-your-database"></a>Vytvoření uložené procedury v databázi
 
-Spuštěním následujícího příkazu ve vaší databázi Azure SQL vytvořte uloženou proceduru. Tato uložená procedura aktualizuje hodnotu meze po každém spuštění kanálu. 
+Spuštěním následujícího příkazu vytvořte v databázi uloženou proceduru. Tato uložená procedura aktualizuje hodnotu meze po každém spuštění kanálu. 
 
 ```sql
 CREATE PROCEDURE usp_write_watermark @LastModifiedtime datetime, @TableName varchar(50)
@@ -174,8 +176,9 @@ END
 
 ```
 
-### <a name="create-data-types-and-additional-stored-procedures-in-azure-sql-database"></a>Vytvoření datových typů a dalších uložených procedur v databázi Azure SQL
-Spusťte následující dotaz pro vytvoření dvou uložených procedur a dvou datových typů ve službě Azure SQL Database. Slouží ke slučování dat ze zdrojových tabulek do cílových tabulek.
+### <a name="create-data-types-and-additional-stored-procedures-in-your-database"></a>Vytvoření datových typů a dalších uložených procedur v databázi
+
+Spusťte následující dotaz pro vytvoření dvou uložených procedur a dvou datových typů ve vaší databázi. Slouží ke slučování dat ze zdrojových tabulek do cílových tabulek.
 
 Aby bylo možné cestu snadno začít používat, přímo tyto uložené procedury předají rozdílová data v rámci přes proměnnou tabulky a pak je sloučí do cílového úložiště. Buďte opatrní, protože neočekává "velký" počet rozdílových řádků (více než 100), které se mají Uložit do proměnné tabulky.  
 
@@ -260,9 +263,13 @@ END
 ## <a name="create-self-hosted-integration-runtime"></a>Vytvoření místního prostředí Integration Runtime
 Vzhledem k tomu, že přesouváte data z úložiště dat v privátní síti (v místním prostředí) do úložiště dat Azure, nainstalujte do svého místního prostředí místní prostředí Integration Runtime (IR). Místní prostředí IR přesouvá data mezi privátní sítí a Azure. 
 
-1. Klikněte na **Připojení** v dolní části levého podokna a v okně **Připojení** přepněte na kartu **Prostředí Integration Runtime**. 
+1. Na stránce **Začínáme** v uživatelském rozhraní Azure Data Factory vyberte [kartu spravovat](https://docs.microsoft.com/azure/data-factory/author-management-hub) z levého podokna.
 
-1. Na kartě **Prostředí Integration Runtime** klikněte na **+ Nové**. 
+   ![Tlačítko Správa domovské stránky](media/doc-common-process/get-started-page-manage-button.png)
+
+1. V levém podokně vyberte **modul runtime integrace** a pak vyberte **+ Nový**.
+
+   ![Vytvoření prostředí Integration Runtime](media/doc-common-process/manage-new-integration-runtime.png)
 
 1. V okně **nastavení Integration runtime** vyberte možnost **provést přesun dat a odeslat aktivity do externích výpočtů**a klikněte na **pokračovat**. 
 
@@ -281,13 +288,14 @@ Vzhledem k tomu, že přesouváte data z úložiště dat v privátní síti (v 
 1. Zkontrolujte, že se v seznamu prostředí Integration Runtime zobrazuje **MySelfHostedIR**.
 
 ## <a name="create-linked-services"></a>Vytvoření propojených služeb
-V datové továrně vytvoříte propojené služby, abyste svá úložiště dat a výpočetní služby spojili s datovou továrnou. V této části vytvoříte propojené služby pro SQL Server databázi a Azure SQL Database. 
+V datové továrně vytvoříte propojené služby, abyste svá úložiště dat a výpočetní služby spojili s datovou továrnou. V této části vytvoříte propojené služby pro SQL Server databázi a databázi v Azure SQL Database. 
 
 ### <a name="create-the-sql-server-linked-service"></a>Vytvoření propojené služby SQL Serveru
 V tomto kroku propojíte databázi SQL Server s datovou továrnou.
 
 1. V okně **Připojení** přepněte z karty **Prostředí Integration Runtime** na kartu **Propojené služby** a klikněte na **+ Nová**.
 
+   ![Nová propojená služba](./media/doc-common-process/new-linked-service.png)
 1. V okně **Nová propojená služba** vyberte **SQL Server** a klikněte na **Pokračovat**. 
 
 1. V okně **Nová propojená služba** proveďte následující kroky:
@@ -303,7 +311,7 @@ V tomto kroku propojíte databázi SQL Server s datovou továrnou.
     1. Pokud chcete propojenou službu uložit, klikněte na **Dokončit**.
 
 ### <a name="create-the-azure-sql-database-linked-service"></a>Vytvoření propojené služby Azure SQL Database
-V posledním kroku vytvoříte propojenou službu, která propojí vaši zdrojovou databázi SQL Serveru s datovou továrnou. V tomto kroku s datovou továrnou propojíte cílovou databázi Azure SQL nebo databázi Azure SQL jímky. 
+V posledním kroku vytvoříte propojenou službu, která propojí vaši zdrojovou databázi SQL Serveru s datovou továrnou. V tomto kroku propojíte svou cílovou databázi nebo databázi jímky s datovou továrnou. 
 
 1. V okně **Připojení** přepněte z karty **Prostředí Integration Runtime** na kartu **Propojené služby** a klikněte na **+ Nová**.
 1. V okně **Nová propojená služba** vyberte **Azure SQL Database** a klikněte na **Pokračovat**. 
@@ -311,8 +319,8 @@ V posledním kroku vytvoříte propojenou službu, která propojí vaši zdrojov
 
     1. Jako **Název** zadejte **AzureSqlDatabaseLinkedService**. 
     1. V rozevíracím seznamu **název serveru**vyberte název serveru. 
-    1. Jako **Název databáze** vyberte databázi Azure SQL, ve které jste jako součást požadavků vytvořili tabulky customer_table a project_table. 
-    1. Jako **Uživatelské jméno** zadejte jméno uživatele, který má přístup k této databázi Azure SQL. 
+    1. V poli **název databáze**vyberte databázi, ve které jste vytvořili customer_table a project_table jako součást požadavků. 
+    1. Do pole **uživatelské jméno**zadejte jméno uživatele, který má přístup k databázi. 
     1. Jako **Heslo** zadejte **heslo** pro tohoto uživatele. 
     1. Pokud chcete otestovat, jestli se služba Data Factory může připojit k vaší databázi SQL Serveru, klikněte na **Test připojení**. Opravte všechny chyby, dokud připojení nebude úspěšné. 
     1. Pokud chcete propojenou službu uložit, klikněte na **Dokončit**.
@@ -349,7 +357,7 @@ V tomto kroku vytvoříte datové sady, které představují zdroj dat, cíl dat
     1. V části **Vytvořit nebo aktualizovat parametry** klikněte na **Nový**. 
     1. Jako **název** zadejte **SinkTableName** a jako **typ** zadejte **Řetězec**. Tato datová sada jako parametr přijímá **SinkTableName**. Parametr SinkTableName nastavuje kanál dynamicky za běhu. Aktivita ForEach v kanálu prochází seznam názvů tabulek a při každé iteraci předává název tabulky této datové sadě.
    
-    ![Datová sada jímky – vlastnosti](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-parameters.png)
+        ![Datová sada jímky – vlastnosti](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-parameters.png)
 1. V okno Vlastnosti přepněte na kartu **připojení** a jako **propojená služba**vyberte **AzureSqlDatabaseLinkedService** . U vlastnosti **Tabulka** klikněte na **Přidat dynamický obsah**.   
     
 1. V okně **Přidat dynamický obsah** vyberte v části **parametry** možnost **SinkTableName** . 
@@ -371,7 +379,7 @@ V tomto kroku vytvoříte datovou sadu pro uložení hodnoty horní meze.
     1. Jako **Propojená služba** vyberte **AzureSqlDatabaseLinkedService**.
     1. Jako **Tabulka** vyberte **[dbo].[watermarktable]**.
 
-    ![Datová sada meze – připojení](./media/tutorial-incremental-copy-multiple-tables-portal/watermark-dataset-connection.png)
+        ![Datová sada meze – připojení](./media/tutorial-incremental-copy-multiple-tables-portal/watermark-dataset-connection.png)
 
 ## <a name="create-a-pipeline"></a>Vytvoření kanálu
 Tento kanál dostává jako parametr seznam tabulek. Aktivita ForEach prochází seznam názvů tabulek a provádí následující operace: 
@@ -455,7 +463,7 @@ Tento kanál dostává jako parametr seznam tabulek. Aktivita ForEach prochází
     1. Jako vlastnost **typ tabulky** zadejte `@{item().TableType}` .
     1. Jako **název parametru typu tabulky**zadejte `@{item().TABLE_NAME}` .
 
-    ![Aktivita kopírování – parametry](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png)
+        ![Aktivita kopírování – parametry](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png)
 1. Přetáhněte aktivitu **Uložená procedura** z panelu nástrojů **Aktivity** na plochu návrháře kanálu. Propojte aktivitu **kopírování** s aktivitou **Uložená procedura**. 
 
 1. Vyberte v kanálu aktivitu **Uložená procedura** a na kartě **Obecné** v okně **Vlastnosti** jako **Název** zadejte **StoredProceduretoWriteWatermarkActivity**. 
@@ -507,10 +515,12 @@ Tento kanál dostává jako parametr seznam tabulek. Aktivita ForEach prochází
 
 ## <a name="monitor-the-pipeline"></a>Monitorování kanálu
 
-1. Vlevo přepněte na kartu **Monitorování**. Zobrazí se **ručně aktivované** spuštění kanálu. Kliknutím na tlačítko **Aktualizovat** seznam aktualizujte. Pomocí odkazů ve sloupci **Akce** můžete zobrazit spuštění aktivit související se spuštěním kanálu nebo spustit kanál znovu. 
+1. Vlevo přepněte na kartu **Monitorování**. Zobrazí se **ručně aktivované** spuštění kanálu. Pomocí odkazů ve sloupci **název kanálu** můžete zobrazit podrobnosti o aktivitách a znovu spustit kanál.
 
-    ![Spuštění kanálu](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-runs.png)
-1. Klikněte na odkaz **Zobrazit spuštění aktivit** ve sloupci **Akce**. Zobrazí se spuštění aktivit související s vybraným spuštěním kanálu. 
+1. Pokud chcete zobrazit spuštění aktivit související se spuštěním kanálu, vyberte odkaz pod sloupcem **název kanálu** . Chcete-li zobrazit podrobnosti o spuštění aktivity, vyberte odkaz **Podrobnosti** (ikona brýlí) ve sloupci **název aktivity** . 
+
+1. Výběrem možnosti **všechny spuštěné kanály** v horní části přejdete zpátky k zobrazení spuštění kanálu. Jestliže chcete zobrazení aktualizovat, vyberte **Aktualizovat**.
+
 
 ## <a name="review-the-results"></a>Kontrola výsledků
 V SQL Server Management Studiu spusťte následující dotazy na cílovou databázi SQL a ověřte, že data byla ze zdrojových tabulek zkopírována do cílových tabulek: 
@@ -605,9 +615,11 @@ VALUES
 
 ## <a name="monitor-the-pipeline-again"></a>Opětovné monitorování kanálu
 
-1. Vlevo přepněte na kartu **Monitorování**. Zobrazí se **ručně aktivované** spuštění kanálu. Kliknutím na tlačítko **Aktualizovat** seznam aktualizujte. Pomocí odkazů ve sloupci **Akce** můžete zobrazit spuštění aktivit související se spuštěním kanálu nebo spustit kanál znovu. 
+1. Vlevo přepněte na kartu **Monitorování**. Zobrazí se **ručně aktivované** spuštění kanálu. Pomocí odkazů ve sloupci **název kanálu** můžete zobrazit podrobnosti o aktivitách a znovu spustit kanál.
 
-1. Klikněte na odkaz **Zobrazit spuštění aktivit** ve sloupci **Akce**. Zobrazí se spuštění aktivit související s vybraným spuštěním kanálu. 
+1. Pokud chcete zobrazit spuštění aktivit související se spuštěním kanálu, vyberte odkaz pod sloupcem **název kanálu** . Chcete-li zobrazit podrobnosti o spuštění aktivity, vyberte odkaz **Podrobnosti** (ikona brýlí) ve sloupci **název aktivity** . 
+
+1. Výběrem možnosti **všechny spuštěné kanály** v horní části přejdete zpátky k zobrazení spuštění kanálu. Jestliže chcete zobrazení aktualizovat, vyberte **Aktualizovat**.
 
 ## <a name="review-the-final-results"></a>Kontrola konečných výsledků
 V SQL Server Management Studio spusťte následující dotazy na cílovou databázi SQL, abyste ověřili, že aktualizovaná/nová data byla ze zdrojových tabulek zkopírována do cílových tabulek. 

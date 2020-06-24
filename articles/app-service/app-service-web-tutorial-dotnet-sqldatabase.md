@@ -6,12 +6,12 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.custom: mvc, devcenter, vs-azure, seodec18
-ms.openlocfilehash: f6c8b388a9d1261e08314b8f8c607e5ee16362ae
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 57701218186266e897e8312d01372fd36ddee715
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84013784"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84906118"
 ---
 # <a name="tutorial-deploy-an-aspnet-app-to-azure-with-azure-sql-database"></a>Kurz: nasazení aplikace v ASP.NET do Azure pomocí Azure SQL Database
 
@@ -43,7 +43,7 @@ Pokud jste již nainstalovali aplikaci Visual Studio, přidejte úlohy v aplikac
 ## <a name="download-the-sample"></a>Stažení ukázky
 
 * [Stáhněte si ukázkový projekt](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/archive/master.zip).
-* Extrahuje (rozbalí) soubor *soubor dotnet-SQLDB-tutorial-Master. zip* .
+* Extrahuje (extrahuje) soubor *dotnet-sqldb-tutorial-master.zip* .
 
 Ukázkový projekt obsahuje základní aplikaci CRUD (vytváření-čtení-aktualizace-odstraňování) v [ASP.NET MVC](https://www.asp.net/mvc) používající [Entity Framework Code First](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application).
 
@@ -133,7 +133,7 @@ Před vytvořením databáze budete potřebovat [logický SQL Server](../azure-s
 
    ![Vytvořit server](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database-server.png)
 
-4. Klikněte na tlačítko **OK**. Dialogové okno **Konfigurace služby SQL Database** ještě nezavírejte.
+4. Klikněte na **OK**. Dialogové okno **Konfigurace služby SQL Database** ještě nezavírejte.
 
 ### <a name="create-a-database-in-azure-sql-database"></a>Vytvoření databáze v Azure SQL Database
 
@@ -410,3 +410,8 @@ V dalším kurzu se dozvíte, jak snadno zlepšit zabezpečení připojení ke s
 
 > [!div class="nextstepaction"]
 > [Zabezpečený přístup ke službě SQL Database s využitím spravovaných identit pro prostředky Azure](app-service-web-tutorial-connect-msi.md)
+
+Další zdroje informací:
+
+> [!div class="nextstepaction"]
+> [Konfigurace aplikace ASP.NET](configure-language-dotnet-framework.md)

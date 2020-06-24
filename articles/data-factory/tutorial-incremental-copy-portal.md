@@ -10,19 +10,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
-ms.date: 05/29/2020
-ms.openlocfilehash: 5b7c7219c15f6c9b687aecd2e9d9f46ea4a71efa
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.date: 06/10/2020
+ms.openlocfilehash: df185f8b75af6a845306fccc18d7d3cce74d0815
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84249089"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85249161"
 ---
-# <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Přírůstkové načtení dat z Azure SQL Database do úložiště objektů BLOB v Azure pomocí Azure Portal
+# <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Přírůstkové načtení dat z Azure SQL Database do úložiště objektů BLOB v Azure pomocí Azure Portal
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-V tomto kurzu vytvoříte službu Azure Data Factory s kanálem, který načítá rozdílová data z tabulky v databázi Azure SQL do úložiště Azure Blob Storage.
+V tomto kurzu vytvoříte datovou továrnu Azure s kanálem, který načte rozdílová data z tabulky v Azure SQL Database do úložiště objektů BLOB v Azure.
 
 V tomto kurzu provedete následující kroky:
 
@@ -65,7 +65,7 @@ Tady jsou důležité kroky pro vytvoření tohoto řešení:
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
-* **Azure SQL Database**. Tuto databázi použijete jako zdrojové úložiště dat. Pokud databázi SQL nemáte, přečtěte si téma [Vytvoření databáze Azure SQL](../azure-sql/database/single-database-create-quickstart.md), kde najdete kroky pro její vytvoření.
+* **Azure SQL Database**. Tuto databázi použijete jako zdrojové úložiště dat. Pokud nemáte databázi v Azure SQL Database, přečtěte si téma [Vytvoření databáze v Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md) , kde najdete kroky pro její vytvoření.
 * **Azure Storage**. Úložiště objektů blob použijete jako úložiště dat jímky. Pokud nemáte účet úložiště, přečtěte si téma [Vytvoření účtu úložiště](../storage/common/storage-account-create.md), kde najdete kroky pro jeho vytvoření. Vytvořte kontejner s názvem adftutorial. 
 
 ### <a name="create-a-data-source-table-in-your-sql-database"></a>Vytvoření tabulky zdroje dat v databázi SQL
@@ -103,6 +103,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
     ```
 
 ### <a name="create-another-table-in-your-sql-database-to-store-the-high-watermark-value"></a>Vytvoření další tabulky v databázi SQL pro ukládání hodnoty horní meze
+
 1. Spuštěním následujícího příkazu SQL na databázi SQL vytvořte tabulku s názvem `watermarktable` pro uložení hodnoty meze:  
 
     ```sql
@@ -169,7 +170,7 @@ END
          
         Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/overview.md).  
 6. Jako **verzi** vyberte **V2**.
-7. Vyberte **umístění** pro objekt pro vytváření dat. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
+7. Vyberte **umístění** pro objekt pro vytváření dat. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat (Azure Storage, Azure SQL Database, spravované instance Azure SQL atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou můžou být v jiných oblastech.
 8. Klikněte na **Vytvořit**.      
 9. Po vytvoření se zobrazí stránka **Datová továrna**, jak je znázorněno na obrázku.
 
@@ -199,7 +200,7 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
     2. Jako **název serveru**vyberte svůj server.
     3. Z rozevíracího seznamu vyberte **název vaší databáze** .
     4. Zadejte heslo k **uživatelskému jménu**  &  **Password**.
-    5. Pokud chcete otestovat připojení k databázi Azure SQL, klikněte na **Test připojení**.
+    5. Chcete-li otestovat připojení k vaší databázi SQL, klikněte na tlačítko **Test připojení**.
     6. Klikněte na **Finish** (Dokončit).
     7. Potvrďte, že je pro **propojenou službu**vybraná možnost **AzureSqlDatabaseLinkedService** .
 
@@ -277,7 +278,7 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
         | LastModifiedtime | DateTime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
         | TableName | Řetězec | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |
 
-    ![Aktivita Uložená procedura – nastavení uložené procedury](./media/tutorial-incremental-copy-portal/sproc-activity-stored-procedure-settings.png)
+        ![Aktivita Uložená procedura – nastavení uložené procedury](./media/tutorial-incremental-copy-portal/sproc-activity-stored-procedure-settings.png)
 27. Pokud chcete ověřit nastavení kanálu, klikněte na **Ověřit** na panelu nástrojů. Ověřte, že se nezobrazí žádné chyby ověření. Pokud chcete okno **Sestava ověření kanálu** zavřít, klikněte na >>.   
 
 28. Pomocí tlačítka **Publikovat vše** publikujte entity (propojené služby, datové sady a kanály) do služby Azure Data Factory. Počkejte, dokud se nezobrazí zpráva o úspěšném publikování.
@@ -290,9 +291,9 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
 
 ## <a name="monitor-the-pipeline-run"></a>Monitorování spuštění kanálu
 
-1. Vlevo přepněte na kartu **Monitorování**. Zobrazí se stav ručně aktivovaného spuštění kanálu. Kliknutím na tlačítko **Aktualizovat** seznam aktualizujte.
+1. Vlevo přepněte na kartu **Monitorování**. Zobrazí se stav běhu aktivovaného ruční triggerem. Pomocí odkazů ve sloupci **název kanálu** můžete zobrazit podrobnosti o spuštění a znovu spustit kanál.
 
-2. Pokud chcete zobrazit spuštění aktivit související se spuštěním kanálu, klikněte na první odkaz (**Zobrazit spuštění aktivit**) ve sloupci **Akce**. Zpět na předchozí zobrazení můžete přejít kliknutím na **Kanály** v horní části. Kliknutím na tlačítko **Aktualizovat** seznam aktualizujte.
+2. Pokud chcete zobrazit spuštění aktivit související se spuštěním kanálu, vyberte odkaz pod sloupcem **název kanálu** . Chcete-li zobrazit podrobnosti o spuštění aktivity, vyberte odkaz **Podrobnosti** (ikona brýlí) ve sloupci **název aktivity** . Výběrem možnosti **všechny spuštěné kanály** v horní části přejdete zpátky k zobrazení spuštění kanálu. Jestliže chcete zobrazení aktualizovat, vyberte **Aktualizovat**.
 
 
 ## <a name="review-the-results"></a>Kontrola výsledků
@@ -322,7 +323,7 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
 
 ## <a name="add-more-data-to-source"></a>Přidání dalších dat do zdroje
 
-Do databáze SQL (úložiště zdroje dat) vložte nová data.
+Vložte nová data do databáze (úložiště zdrojů dat).
 
 ```sql
 INSERT INTO data_source_table
@@ -332,7 +333,7 @@ INSERT INTO data_source_table
 VALUES (7, 'newdata','9/7/2017 9:01:00 AM')
 ```
 
-Aktualizovaná data v databázi SQL vypadají takto:
+Aktualizovaná data ve vaší databázi jsou:
 
 ```
 PersonID | Name | LastModifytime
@@ -346,8 +347,8 @@ PersonID | Name | LastModifytime
 7 | newdata | 2017-09-07 09:01:00.000
 ```
 
-
 ## <a name="trigger-another-pipeline-run"></a>Aktivace dalšího spuštění kanálu
+
 1. Přepněte na kartu **Upravit** . Pokud není otevřený v návrháři, klikněte na kanál ve stromovém zobrazení.
 
 2. Klikněte na tlačítko **Přidat aktivační událost** na panelu nástrojů a pak klikněte na **aktivovat nyní**.
@@ -355,9 +356,9 @@ PersonID | Name | LastModifytime
 
 ## <a name="monitor-the-second-pipeline-run"></a>Monitorování druhého spuštění kanálu
 
-1. Vlevo přepněte na kartu **Monitorování**. Zobrazí se stav ručně aktivovaného spuštění kanálu. Kliknutím na tlačítko **Aktualizovat** seznam aktualizujte.
+1. Vlevo přepněte na kartu **Monitorování**. Zobrazí se stav běhu aktivovaného ruční triggerem. Pomocí odkazů ve sloupci **název kanálu** můžete zobrazit podrobnosti o aktivitách a znovu spustit kanál.
 
-2. Pokud chcete zobrazit spuštění aktivit související se spuštěním kanálu, klikněte na první odkaz (**Zobrazit spuštění aktivit**) ve sloupci **Akce**. Zpět na předchozí zobrazení můžete přejít kliknutím na **Kanály** v horní části. Kliknutím na tlačítko **Aktualizovat** seznam aktualizujte.
+2. Pokud chcete zobrazit spuštění aktivit související se spuštěním kanálu, vyberte odkaz pod sloupcem **název kanálu** . Chcete-li zobrazit podrobnosti o spuštění aktivity, vyberte odkaz **Podrobnosti** (ikona brýlí) ve sloupci **název aktivity** . Výběrem možnosti **všechny spuštěné kanály** v horní části přejdete zpátky k zobrazení spuštění kanálu. Jestliže chcete zobrazení aktualizovat, vyberte **Aktualizovat**.
 
 
 ## <a name="verify-the-second-output"></a>Ověření druhého výstupu
@@ -398,7 +399,7 @@ V tomto kurzu jste provedli následující kroky:
 > * Monitorování druhého spuštění kanálu
 > * Kontrola výsledků druhého spuštění
 
-V tomto kurzu kanál zkopíroval data z jedné tabulky v databázi SQL do úložiště objektů blob. Přejděte k následujícímu kurzu, kde se dozvíte, jak kopírovat data z několika tabulek v databázi SQL Server do SQL Database.
+V tomto kurzu kanál zkopíroval data z jedné tabulky v SQL Database do úložiště objektů BLOB. Přejděte k následujícímu kurzu, kde se dozvíte, jak kopírovat data z několika tabulek v databázi SQL Server do SQL Database.
 
 > [!div class="nextstepaction"]
 >[Přírůstkové načtení dat z více tabulek v SQL Serveru do Azure SQL Database](tutorial-incremental-copy-multiple-tables-portal.md)

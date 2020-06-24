@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.author: brendm
 author: bmitchell287
 ms.date: 10/06/2019
-ms.openlocfilehash: f08a3b5d0a03b0e898457bbb783dd5031c4b0f27
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 93cefd0c71e2d51187e68c6f5f02777d158e95a4
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76277479"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84792060"
 ---
 # <a name="scale-an-application-in-azure-spring-cloud"></a>Škálování aplikace ve jarním cloudu Azure
 
@@ -25,7 +25,7 @@ Po dokončení budete potřebovat, abyste v každé aplikaci v rámci služby pr
 
 Pro absolvování tohoto kurzu potřebujete:
 
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete. 
 * Nasazená instance služby jarní cloudová služba Azure  Pokud chcete začít, postupujte podle našeho [rychlého startu na webu nasazení aplikace prostřednictvím rozhraní příkazového řádku Azure CLI](spring-cloud-quickstart-launch-app-cli.md) .
 * V instanci služby už je vytvořená aspoň jedna aplikace.
 
@@ -58,6 +58,9 @@ Nezapomeňte vybrat možnost **Uložit** a použít nastavení škálování.
 ![Služba škálování v Azure Portal](media/spring-cloud-tutorial-scale-manual/scale-up-out.png)
 
 Po několika sekundách se provedené změny zobrazí na stránce **Přehled** s dalšími podrobnostmi, které jsou k dispozici na kartě **instance aplikace** . škálování nevyžaduje žádné změny kódu ani nové nasazení.
+
+## <a name="upgrade-to-the-standard-tier"></a>Upgrade na úroveň Standard
+Pokud se nacházíte na úrovni Basic a omezujete je na jednu nebo více těchto [omezení](spring-cloud-quotas.md), můžete upgradovat na úroveň Standard. Pokud to chcete provést, přejděte nejprve do nabídky cenová úroveň a vyberte sloupec standardní úroveň a klikněte na tlačítko **upgradovat** .
 
 ## <a name="next-steps"></a>Další kroky
 

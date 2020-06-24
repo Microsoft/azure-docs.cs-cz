@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/07/2017
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 5c828644cb03d83df38265719cd8afabc24cf739
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3d1efc0a116a38686fa929a2058fa88e4c2cfa82
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "66242569"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85119473"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-table-api-account"></a>Migrace dat do účtu rozhraní Table API služby Azure Cosmos DB
 
@@ -66,13 +66,13 @@ Při definování služby Azure Table Storage nebo rozhraní Table API Preview j
     /s.Filter: Optional. Filter string to apply
     /s.Projection: Optional. List of columns to select
 
-Pokud chcete načíst zdrojový připojovací řetězec při importu z Azure Table Storage, otevřete Azure Portal a klikněte na**přístupové klíče****účtu** >  **úložiště** > a pak pomocí tlačítka Kopírovat zkopírujte **připojovací řetězec**.
+Pokud chcete načíst zdrojový připojovací řetězec při importu z Azure Table Storage, otevřete Azure Portal a klikněte na **Storage accounts**  >  **Account**  >  **přístupové klíče**účtu úložiště a pak pomocí tlačítka Kopírovat zkopírujte **připojovací řetězec**.
 
-![Snímek obrazovky s možnostmi zdroje HBase](./media/table-import/storage-table-access-key.png)
+:::image type="content" source="./media/table-import/storage-table-access-key.png" alt-text="Snímek obrazovky s možnostmi zdroje HBase":::
 
-Pokud chcete při importu z účtu Azure Cosmos DB rozhraní API pro tabulky (Preview) načíst zdrojový připojovací řetězec, otevřete Azure Portal, klikněte na **Azure Cosmos DB** > **Account** > **připojovací řetězec** účtu a pomocí tlačítka Kopírovat zkopírujte **připojovací řetězec**.
+Pokud chcete při importu z účtu Azure Cosmos DB rozhraní API pro tabulky (Preview) načíst zdrojový připojovací řetězec, otevřete Azure Portal, klikněte na **Azure Cosmos DB**  >  **Account**  >  **připojovací řetězec** účtu a pomocí tlačítka Kopírovat zkopírujte **připojovací řetězec**.
 
-![Snímek obrazovky s možnostmi zdroje HBase](./media/table-import/cosmos-connection-string.png)
+:::image type="content" source="./media/table-import/cosmos-connection-string.png" alt-text="Snímek obrazovky s možnostmi zdroje HBase":::
 
 [Ukázkový příkaz pro Azure Table Storage](#azure-table-storage)
 

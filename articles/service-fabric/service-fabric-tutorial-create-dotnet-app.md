@@ -4,16 +4,16 @@ description: V tomto kurzu se dozvíte, jak vytvořit aplikaci s front-endem v A
 ms.topic: tutorial
 ms.date: 07/10/2019
 ms.custom: mvc
-ms.openlocfilehash: cbfae89ffa446ca3915129fd9add2701ac21d837
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f7bad66d15cc2f9fb1885e440f95e76e12ea458a
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75465472"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214022"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Kurz: Vytvoření a nasazení aplikace s front-end službou webového rozhraní API pro ASP.NET Core a stavovou back-end službou
 
-Tento kurz je první částí série.  Dozvíte se, jak vytvořit aplikaci Azure Service Fabric s front-endem webového rozhraní API pro ASP.NET Core a stavovou back-end službou pro ukládání dat. Až budete hotovi, budete mít hlasovací aplikaci s webovým front-endem v ASP.NET Core, která ukládá výsledky hlasování do stavové back-end služby v clusteru. Pokud nechcete hlasovací aplikaci vytvářet ručně, můžete si [stáhnout zdrojový kód](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) dokončené aplikace a přeskočit k části [Prohlídka ukázkové hlasovací aplikace](#walkthrough_anchor).  Pokud chcete, můžete se podívat na [video s průvodcem](https://channel9.msdn.com/Events/Connect/2017/E100) tímto kurzem.
+Tento kurz je první částí série.  Dozvíte se, jak vytvořit aplikaci Azure Service Fabric s front-endem webového rozhraní API pro ASP.NET Core a stavovou back-end službou pro ukládání dat. Až budete hotovi, budete mít hlasovací aplikaci s webovým front-endem v ASP.NET Core, která ukládá výsledky hlasování do stavové back-end služby v clusteru. Tato série kurzů vyžaduje počítač vývojářů v systému Windows. Pokud nechcete hlasovací aplikaci vytvářet ručně, můžete si [stáhnout zdrojový kód](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) dokončené aplikace a přeskočit k části [Prohlídka ukázkové hlasovací aplikace](#walkthrough_anchor).  Pokud chcete, můžete se podívat na [video s průvodcem](https://channel9.msdn.com/Events/Connect/2017/E100) tímto kurzem.
 
 ![AngularJS + ASP. NET API front end, připojení ke stavové back-endové službě na Service Fabric](./media/service-fabric-tutorial-create-dotnet-app/application-diagram.png)
 
@@ -45,7 +45,7 @@ Nejprve vytvořte webový front-end hlasovací aplikace pomocí ASP.NET Core. AS
 
 1. Spusťte Visual Studio jako **správce**.
 
-2. Vytvořte projekt se **souborem**->**Nový**->**projekt**.
+2. Vytvořte projekt se **souborem** -> **Nový** -> **projekt**.
 
 3. V dialogovém okně **Nový projekt** zvolte **Cloud > Aplikace Service Fabric**.
 
@@ -300,7 +300,7 @@ namespace VotingWeb.Controllers
 
 Po vytvoření front-end služby VotingWeb sada Visual Studio náhodně vybere port, na kterém bude služba naslouchat.  Služba VotingWeb se chová jako front-end této aplikace a přijímá externí provoz, takže tuto službu svážeme s pevným a dobře známým portem.  [Manifest služby](service-fabric-application-and-service-manifests.md) deklaruje koncové body služby.
 
-V Průzkumník řešení otevřete *VotingWeb/PackageRoot/ServiceManifest. XML*.  V části **Resources** (Prostředky) vyhledejte element **Endpoint** (Koncový bod) a změňte hodnotu **Port** na **8080**. Pokud chcete aplikaci nasadit a spustit místně, port pro naslouchání aplikace musí být otevřený a dostupný na vašem počítači.
+V Průzkumník řešení otevřete *VotingWeb/PackageRoot/ServiceManifest.xml*.  V části **Resources** (Prostředky) vyhledejte element **Endpoint** (Koncový bod) a změňte hodnotu **Port** na **8080**. Pokud chcete aplikaci nasadit a spustit místně, port pro naslouchání aplikace musí být otevřený a dostupný na vašem počítači.
 
 ```xml
 <Resources>
@@ -455,7 +455,7 @@ Tento kurz používá rozhraní [ASP.NET Core Web API](service-fabric-reliable-s
         ],
 ```
 Pokud chcete najít port reverzního proxy serveru, který se používá v místním vývojovém clusteru, podívejte se na element **HttpApplicationGatewayEndpoint** v manifestu místního Service Fabric clusteru:
-1. Otevřete okno prohlížeče a přejděte na adresu http:\//localhost: 19080 a otevřete nástroj Service Fabric Explorer.
+1. Otevřete okno prohlížeče a přejděte na adresu http: \/ /localhost: 19080 a otevřete nástroj Service Fabric Explorer.
 2. Vyberte možnost **cluster-> manifest**.
 3. Poznamenejte si port elementu HttpApplicationGatewayEndpoint. Ve výchozím nastavení by to měl být port 19081. Pokud to port 19081 není, bude nutné ho změnit v metodě GetProxyAddress následujícího kódu VotesController.cs.
 

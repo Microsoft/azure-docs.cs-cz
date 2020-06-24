@@ -10,16 +10,16 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 103545225b15a74d8c2ea0be5e88caa18f3c31cc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: de9e7fd605a1d53d1078523c77cd33065c03ca85
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82184771"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118963"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---add-crud-functions-to-the-app"></a>Vytvoření úhlové aplikace s rozhraním API Azure Cosmos DB pro MongoDB – přidání funkcí CRUD do aplikace
 
-Tento kurz s více částmi ukazuje, jak vytvořit novou aplikaci napsanou v Node. js s Express a úhlovými a pak ji připojit k [účtu Cosmos nakonfigurovanému pomocí rozhraní API služby Cosmos DB pro MongoDB](mongodb-introduction.md). Šestá část kurzu vychází z [části 5](tutorial-develop-mongodb-nodejs-part5.md) a zabývá se následujícími úlohami:
+V tomto výukovém kurzu se dozvíte, jak vytvořit novou aplikaci napsanou v Node.js pomocí Expressu a úhlu a pak ji připojit k [účtu Cosmos nakonfigurovanému pomocí rozhraní API Cosmos DB pro MongoDB](mongodb-introduction.md). Šestá část kurzu vychází z [části 5](tutorial-develop-mongodb-nodejs-part5.md) a zabývá se následujícími úlohami:
 
 > [!div class="checklist"]
 > * Vytvoření funkcí Post, Put a Delete pro službu hero
@@ -40,7 +40,7 @@ Před zahájením této části kurzu se ujistěte, že jste dokončili kroky v 
 
     Podívejte se, že řádek 7 v souboru routes.js volá funkci `getHeroes` na řádku 5 v souboru **hero.service.js**.  Stejné párování potřebujeme vytvořit i pro funkce post, put a delete. 
 
-    ![Soubory routes.js a hero.service.js ve Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part6/routes-heroservicejs.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/routes-heroservicejs.png" alt-text="Soubory routes.js a hero.service.js ve Visual Studio Code":::
     
     Začněme napsáním kódu pro službu hero. 
 
@@ -88,11 +88,11 @@ Před zahájením této části kurzu se ujistěte, že jste dokončili kroky v 
 
 6. Nyní přejděte zpět do internetového prohlížeče a stisknutím klávesy F12 (na většině počítačů) otevřete Vývojářské nástroje a kartu Síť. Přejděte na adresu `http://localhost:3000` a sledujte prováděná volání přes síť.
 
-    ![Karta Síť v prohlížeči Chrome ukazující aktivitu sítě](./media/tutorial-develop-mongodb-nodejs-part6/add-new-hero.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/add-new-hero.png" alt-text="Karta Síť v prohlížeči Chrome ukazující aktivitu sítě":::
 
 7. Přidejte nového hrdinu výběrem tlačítka **Add New Hero** (Přidat nového hrdinu). Zadejte ID 999, jméno (name) Fred a slavný výrok (saying) „Hello“ a pak vyberte **Save** (Uložit). Na kartě Síť by se mělo zobrazit odeslání požadavku POST pro nového hrdinu. 
 
-    ![Karta Síť v prohlížeči Chrome se zobrazenou aktivitou sítě pro funkce Get a Post](./media/tutorial-develop-mongodb-nodejs-part6/post-new-hero.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/post-new-hero.png" alt-text="Karta Síť v prohlížeči Chrome se zobrazenou aktivitou sítě pro funkce Get a Post":::
 
     Vraťme se zpět a přidejme do aplikace funkce Put a Delete.
 
@@ -177,11 +177,11 @@ Před zahájením této části kurzu se ujistěte, že jste dokončili kroky v 
 
     Teď můžete na kartě Síť vybrat příslušné ID a zobrazit datovou část. V datové části se zobrazí, ze slavný výrok (saying) je teď nastavený na „Bye“.
 
-    ![Aplikace Heroes a karta Síť se zobrazenou datovou částí](./media/tutorial-develop-mongodb-nodejs-part6/put-hero-function.png) 
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/put-hero-function.png" alt-text="Aplikace Heroes a karta Síť se zobrazenou datovou částí"::: 
 
     V uživatelském rozhraní také můžete některého z hrdinů odstranit a podívat se, jak dlouho dokončení operace odstranění trvá. Vyzkoušejte to výběrem tlačítka Delete (Odstranit) u hrdiny se jménem Fred.
 
-    ![Aplikace Heroes a karta Síť se zobrazenými časy dokončení funkcí](./media/tutorial-develop-mongodb-nodejs-part6/times.png) 
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/times.png" alt-text="Aplikace Heroes a karta Síť se zobrazenými časy dokončení funkcí"::: 
 
     Pokud stránku aktualizujete, na kartě Síť se zobrazí čas potřebný k získání hrdinů. I když jsou tyto časy rychlé, hodně záleží na tom, kde na světě se vaše data nacházejí, a na vaší schopnosti geograficky je replikovat do oblastí blízko vašim uživatelům. Další informace o geografické replikaci najdete v dalším kurzu, který bude vydaný už brzy.
 

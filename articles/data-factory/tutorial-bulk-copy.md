@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: c150972c2804b12ac436a0dd10cdf13f92f43478
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: b1601bf095b5898de965d42a16e63f278499a9bf
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560996"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251505"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-using-powershell"></a>Hromadné kopírování více tabulek pomocí Azure Data Factory pomocí prostředí PowerShell
 
@@ -59,7 +59,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
 
 **Příprava zdrojové databáze Azure SQL Database**:
 
-Podle postupu v článku [Vytvoření databáze Azure SQL](../azure-sql/database/single-database-create-quickstart.md) vytvořte Azure SQL Database s ukázkovými daty Adventure Works LT. V tomto kurzu se všechny tabulky z této ukázkové databáze zkopírují do datového skladu SQL.
+Vytvořte databázi s ukázkovými daty Adventure Works LT v SQL Database [vytvořením databáze v Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md) článku. V tomto kurzu se všechny tabulky z této ukázkové databáze zkopírují do datového skladu SQL.
 
 **Příprava jímky Azure SQL Data Warehouse**:
 
@@ -334,7 +334,7 @@ Tento kanál jako parametr používá seznam tabulek. Data ze všech tabulek v t
                         "activities": [
                             {
                                 "name": "CopyData",
-                                "description": "Copy data from SQL database to SQL DW",
+                                "description": "Copy data from Azure SQL Database to SQL DW",
                                 "type": "Copy",
                                 "inputs": [
                                     {

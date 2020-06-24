@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e56040f5e17ee33da6b21ab42d2deddf5dd7064
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: 030d5b5ad596b0d9e5eb2d636770c985b1cff5ed
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84447794"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85099119"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>Kurz: povolení zpětného zápisu pro Samoobslužné resetování hesla Azure Active Directory do místního prostředí
 
@@ -34,7 +34,7 @@ V tomto kurzu se naučíte:
 
 K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
 
-* Funkční tenant Azure AD s povolenou aspoň Azure AD Premium zkušební licencí P2.
+* Funkční tenant Azure AD s povolenou aspoň Azure AD Premium zkušební licencí P1 nebo P2.
     * V případě potřeby [ho vytvořte zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
     * Další informace najdete v tématu [licenční požadavky pro Azure AD SSPR](concept-sspr-licensing.md).
 * Účet s oprávněními *globálního správce* .

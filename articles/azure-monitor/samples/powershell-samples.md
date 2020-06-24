@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 2/14/2018
-ms.openlocfilehash: 6c00556bfbcd2108b3cb5bd2cfdf88a741f85a99
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 14fe27c28e2eb6a527dc6f026916002cfb5b0147
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837476"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945252"
 ---
 # <a name="azure-monitor-powershell-samples"></a>Ukázky Azure Monitor PowerShellu
 Tento článek ukazuje ukázky příkazů PowerShellu, které vám pomůžou při přístupu k funkcím Azure Monitor.
@@ -52,7 +52,7 @@ Set-AzContext -SubscriptionId <subscriptionid>
 ```
 
 
-## <a name="retrieve-activity-log-for-a-subscription"></a>Načtení protokolu aktivit pro předplatné
+## <a name="retrieve-activity-log"></a>Načíst protokol aktivit
 Použijte rutinu [Get-AzLog](https://docs.microsoft.com/powershell/module/az.monitor/get-azlog) .  Níže jsou uvedeny některé běžné příklady. Protokol aktivit obsahuje posledních 90 dnů provozu. Použití dat před tímto časem má za následek chybovou zprávu.  
 
 Podívejte se, jak aktuální datum a čas slouží k ověření, které časy se mají použít v následujících příkazech:

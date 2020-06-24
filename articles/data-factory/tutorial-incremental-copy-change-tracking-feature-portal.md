@@ -1,6 +1,6 @@
 ---
 title: Přírůstkové kopírování dat pomocí Change Tracking pomocí Azure Portal
-description: V tomto kurzu vytvoříte kanál Azure Data Factory, který postupně kopíruje rozdílová data z několika tabulek v databázi SQL Server do Azure SQL Database.
+description: V tomto kurzu vytvoříte kanál Azure Data Factory, který postupně kopíruje rozdílová data z několika tabulek v databázi SQL Server do databáze v Azure SQL Database.
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/12/2018
-ms.openlocfilehash: 51d8d1c7405622ea8fd3bb847937abcb0e748523
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: cb8d03b853e4e0f4f5f60a144e7a05ef19de1071
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559798"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251824"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-the-azure-portal"></a>Přírůstkové načtení dat z Azure SQL Database do Azure Blob Storage pomocí informací o sledování změn pomocí Azure Portal
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-V tomto kurzu vytvoříte datovou továrnu Azure s kanálem, který načítá rozdílová data na základě **sledování změn** ve zdrojové databázi Azure SQL do úložiště objektů blob Azure.  
+V tomto kurzu vytvoříte datovou továrnu Azure s kanálem, který načte rozdílová data na základě informací o **sledování změn** ve zdrojové databázi v Azure SQL Database do úložiště objektů BLOB v Azure.  
 
 V tomto kurzu provedete následující kroky:
 
@@ -45,9 +45,9 @@ Tady jsou obvyklé kroky uceleného pracovního postupu pro přírůstkové nač
 > Azure SQL Database i SQL Server podporují technologii Change Tracking. Tento kurz využívá Azure SQL Database jako zdrojové úložiště dat. Můžete také použít instanci SQL Server.
 
 1. **Počáteční načtení historických dat** (spouští se jednou):
-    1. Povolte technologii Change Tracking ve zdrojové databázi Azure SQL.
-    2. Získejte počáteční hodnotu SYS_CHANGE_VERSION v databázi Azure SQL jako základ pro zaznamenávání změněných dat.
-    3. Načtěte kompletní data z databáze Azure SQL do Azure Blob Storage.
+    1. Povolí Change Tracking technologii ve zdrojové databázi v Azure SQL Database.
+    2. Získá počáteční hodnotu SYS_CHANGE_VERSION v databázi jako směrný plán pro zachycení změněných dat.
+    3. Načte plná data ze zdrojové databáze do úložiště objektů BLOB v Azure.
 2. **Přírůstkové načítání rozdílových dat podle plánu** (spouští se pravidelně po počátečním načtení dat):
     1. Získejte starou a novou hodnotu SYS_CHANGE_VERSION.
     3. Načtěte rozdílová data připojením primárních klíčů změněných řádků (mezi dvěma hodnotami SYS_CHANGE_VERSION) ze **sys.change_tracking_tables** k datům ve **zdrojové tabulce** a potom přesuňte rozdílová data do cíle.
@@ -70,13 +70,14 @@ V tomto kurzu vytvoříte dva kanály, které provádějí následující dvě o
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
-* **Azure SQL Database**. Tuto databázi použijete jako **zdrojové** úložiště dat. Pokud Azure SQL Database nemáte, přečtěte si článek věnovaný [vytvoření databáze Azure SQL](../azure-sql/database/single-database-create-quickstart.md), kde najdete kroky pro její vytvoření.
+* **Azure SQL Database**. Tuto databázi použijete jako **zdrojové** úložiště dat. Pokud nemáte databázi v Azure SQL Database, přečtěte si článek [Vytvoření databáze v článku Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md) , kde najdete kroky pro její vytvoření.
 * **Účet Azure Storage**. Úložiště objektů blob použijete jako úložiště dat **jímky**. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../storage/common/storage-account-create.md) , kde najdete kroky, jak ho vytvořit. Vytvořte kontejner s názvem **adftutorial**. 
 
-### <a name="create-a-data-source-table-in-your-azure-sql-database"></a>Vytvoření tabulky zdroje dat v databázi Azure SQL
+### <a name="create-a-data-source-table-in-azure-sql-database"></a>Vytvoření tabulky zdroje dat v Azure SQL Database
+
 1. Spusťte **SQL Server Management Studio**a připojte se k SQL Database.
 2. V **Průzkumníku serveru** klikněte pravým tlačítkem na **databázi** a potom zvolte **Nový dotaz**.
-3. Spuštěním následujícího příkazu SQL na vaší databázi Azure SQL vytvořte tabulku s názvem `data_source_table` jako úložiště zdroje dat.  
+3. Spusťte následující příkaz SQL pro vaši databázi a vytvořte tabulku s názvem `data_source_table` jako úložiště zdroje dat.  
 
     ```sql
     create table data_source_table
@@ -97,10 +98,11 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
         (5, 'eeee', 22);
 
     ```
+
 4. Povolte mechanismus **Change Tracking** pro vaši databázi a zdrojovou tabulku (data_source_table) spuštěním následujícího příkazu SQL:
 
     > [!NOTE]
-    > - Místo &lt;your database name&gt; použijte název databáze Azure SQL, která má data_source_table.
+    > - Nahraďte &lt; název databáze &gt; názvem databáze v Azure SQL Database, která má data_source_table.
     > - V uvedeném příkladě se změněná data uchovávají po dobu dvou dnů. Pokud načtete změněná data vždy po třech nebo více dnech, některá změněná data nejsou zahrnuta.  Musíte změnit hodnotu CHANGE_RETENTION a použít větší číslo. Další možností je zajistit, že interval načítání změněných dat spadá do dvou dnů. Další informace najdete v tématu věnovaném [povolení sledování změn pro databázi](/sql/relational-databases/track-changes/enable-and-disable-change-tracking-sql-server#enable-change-tracking-for-a-database).
 
     ```sql
@@ -130,7 +132,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
 
     > [!NOTE]
     > Pokud se data po povolení sledování změn pro SQL Database nezmění, hodnota verze sledování změn je 0.
-6. Spuštěním následujícího dotazu ve vaší databázi Azure SQL vytvořte uloženou proceduru. Kanál vyvolá tuto uloženou proceduru pro aktualizaci verze sledování změn v tabulce, kterou jste vytvořili v předchozím kroku.
+6. Spuštěním následujícího dotazu vytvořte v databázi uloženou proceduru. Kanál vyvolá tuto uloženou proceduru pro aktualizaci verze sledování změn v tabulce, kterou jste vytvořili v předchozím kroku.
 
     ```sql
     CREATE PROCEDURE Update_ChangeTracking_Version @CurrentTrackingVersion BIGINT, @TableName varchar(50)
@@ -188,7 +190,7 @@ Nainstalujte nejnovější moduly Azure PowerShellu podle pokynů v tématu [Ins
     ![Tlačítko Nový kanál](./media/tutorial-incremental-copy-change-tracking-feature-portal/get-started-page.png)
 
 ## <a name="create-linked-services"></a>Vytvoření propojených služeb
-V datové továrně vytvoříte propojené služby, abyste svá úložiště dat a výpočetní služby spojili s datovou továrnou. V této části vytvoříte propojené služby pro účet Azure Storage a databázi Azure SQL.
+V datové továrně vytvoříte propojené služby, abyste svá úložiště dat a výpočetní služby spojili s datovou továrnou. V této části vytvoříte propojené služby pro účet Azure Storage a vaši databázi v Azure SQL Database.
 
 ### <a name="create-azure-storage-linked-service"></a>Vytvořte propojenou službu pro Azure Storage
 V tomto kroku s datovou továrnou propojíte svůj účet služby Azure Storage.
@@ -209,7 +211,7 @@ V tomto kroku s datovou továrnou propojíte svůj účet služby Azure Storage.
 
 
 ### <a name="create-azure-sql-database-linked-service"></a>Vytvoření propojené služby Azure SQL Database
-V tomto kroku propojíte databázi Azure SQL s datovou továrnou.
+V tomto kroku propojíte databázi s datovou továrnou.
 
 1. Klikněte na **Připojení** a pak na **+ Nové**.
 2. V okně **Nová propojená služba** vyberte **Azure SQL Database** a klikněte na **Pokračovat**.
@@ -217,11 +219,11 @@ V tomto kroku propojíte databázi Azure SQL s datovou továrnou.
 
     1. Do pole **Název** zadejte **AzureSqlDatabaseLinkedService**.
     2. V poli **název serveru** vyberte svůj server.
-    4. V poli **název databáze** vyberte svou databázi.
-    5. Do pole **Uživatelské jméno** zadejte jméno uživatele.
-    6. Do pole **Heslo** zadejte heslo pro tohoto uživatele.
-    7. Klikněte na **Test připojení** a otestujte připojení.
-    8. Klikněte na **Uložit** a uložte propojenou službu.
+    3. V poli **název databáze** vyberte svou databázi.
+    4. Do pole **Uživatelské jméno** zadejte jméno uživatele.
+    5. Do pole **Heslo** zadejte heslo pro tohoto uživatele.
+    6. Klikněte na **Test připojení** a otestujte připojení.
+    7. Klikněte na **Uložit** a uložte propojenou službu.
 
        ![Nastavení propojené služby Azure SQL Database](./media/tutorial-incremental-copy-change-tracking-feature-portal/azure-sql-database-linked-service-settings.png)
 
@@ -329,7 +331,7 @@ Ve složce `incchgtracking` kontejneru `adftutorial` uvidíte soubor s názvem `
 
 ![Výstupní soubor pro úplné kopírování](media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-output-file.png)
 
-Tento soubor by měl obsahovat data z databáze Azure SQL:
+Soubor by měl mít data z vaší databáze:
 
 ```
 1,aaaa,21
@@ -341,7 +343,7 @@ Tento soubor by měl obsahovat data z databáze Azure SQL:
 
 ## <a name="add-more-data-to-the-source-table"></a>Přidání dalších dat do zdrojové tabulky
 
-Spusťte na databázi Azure SQL následující dotaz pro přidání a aktualizaci řádku.
+Spusťte následující dotaz pro vaši databázi a přidejte řádek a aktualizujte řádek.
 
 ```sql
 INSERT INTO data_source_table
@@ -452,7 +454,7 @@ Ve složce `incchgtracking` kontejneru `adftutorial` uvidíte druhý soubor.
 
 ![Výstupní soubor pro přírůstkové kopírování](media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-copy-output-file.png)
 
-Tento soubor by měl obsahovat jenom rozdílová data z databáze Azure SQL. Záznam s `U` je aktualizovaný řádek v databázi a `I` je přidaný řádek.
+Soubor by měl obsahovat jenom rozdílová data z vaší databáze. Záznam s `U` je aktualizovaný řádek v databázi a `I` je přidaný řádek.
 
 ```
 1,update,10,2,U

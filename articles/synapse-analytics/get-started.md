@@ -1,136 +1,142 @@
 ---
 title: 'Kurz: Začínáme s Azure synapse Analytics'
-description: Postup podle kroků pro rychlé pochopení základních konceptů v Azure synapse
+description: V tomto kurzu se naučíte základní kroky pro nastavení a používání Azure synapse Analytics.
 services: synapse-analytics
 author: saveenr
 ms.author: saveenr
 manager: julieMSFT
 ms.reviewer: jrasnick
 ms.service: synapse-analytics
-ms.topic: quickstart
+ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: 00f93086fec62c08c5241d868fc5104a1197cff3
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: daa8b594b06203c7de9a9b462be469dd71ed2e49
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84605404"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791856"
 ---
-# <a name="getting-started-with-azure-synapse-analytics"></a>Začínáme s využitím Azure synapse Analytics
+# <a name="get-started-with-azure-synapse-analytics"></a>Začínáme s Azure synapse Analytics
 
-Tento dokument vás provede všemi základními kroky potřebnými k instalaci a používání služby Azure synapse Analytics.
+Tento kurz vás provede základními kroky pro nastavení a použití analýzy Azure synapse.
 
-## <a name="prepare-a-storage-account-for-use-with-a-synapse-workspace"></a>Příprava účtu úložiště pro použití v pracovním prostoru synapse
+## <a name="prepare-a-storage-account"></a>Příprava účtu úložiště
 
-* Otevřete [Azure Portal](https://portal.azure.com)
-* Vytvořte nový účet úložiště s následujícími nastaveními:
+1. Otevřete [Azure Portal](https://portal.azure.com).
+1. Vytvořte nový účet úložiště s následujícími nastaveními:
 
     |Karta|Nastavení | Navrhovaná hodnota | Popis |
     |---|---|---|---|
-    |Základy|**Název účtu úložiště**| Můžete mu dát libovolný název.|V tomto dokumentu se na něj budeme odkazovat jako na `contosolake` .|
-    |Základy|**Druh účtu**|Musí být nastavené na`StorageV2`||
-    |Základy|**Umístění**|Můžete vybrat libovolné umístění.| Doporučujeme, aby váš synapse pracovní prostor Azure Data Lake Storage a účet Gen2 (ADLS) byly ve stejné oblasti.|
-    |Pokročilý|**Data Lake Storage Gen2**|`Enabled`| Azure synapse funguje jenom s účty úložiště, kde je toto nastavení povolené.|
+    |Základy|**Název účtu úložiště**| Můžete mu dát libovolný název.|V tomto dokumentu na něj odkazujeme jako na **contosolake**.|
+    |Základy|**Druh účtu**|Musí být nastavené na **StorageV2**.||
+    |Základy|**Umístění**|Vyberte libovolné umístění.| Doporučujeme, aby byl váš pracovní prostor Azure synapse Analytics a účet Azure Data Lake Storage Gen2 ve stejné oblasti.|
+    |Upřesnit|**Data Lake Storage Gen2**|**Enabled** (Povoleno)| Azure synapse funguje jenom s účty úložiště, kde je toto nastavení povolené.|
+    |||||
 
-1. Po vytvoření účtu úložiště v levém navigačním panelu vyberte **řízení přístupu (IAM)** . Pak přiřaďte následující role nebo ověřte, zda jsou již přiřazeny. 
+1. Po vytvoření účtu úložiště v levém podokně vyberte **řízení přístupu (IAM)** . Pak přiřaďte následující role nebo ověřte, zda jsou již přiřazeny:
+    1. Přiřaďte roli **vlastníka** sami sobě.
+    1. Přiřaďte se k roli **vlastníka dat objektu BLOB úložiště** .
+1. V levém podokně vyberte **kontejnery** a vytvořte kontejner.
+1. Kontejneru můžete dát libovolný název. V tomto dokumentu budeme pojmenovat **uživatele**kontejneru.
+1. Přijměte výchozí nastavení **úroveň veřejného přístupu**a pak vyberte **vytvořit**.
 
-    a. * Přiřaďte sami sobě roli **vlastníka** v účtu úložiště b. * Přiřaďte se k roli **vlastníka dat objektu BLOB úložiště** v účtu úložiště.
-
-1. V levém navigačním panelu vyberte **kontejnery** a vytvořte kontejner. Můžete mu dát libovolný název. Přijměte výchozí **úroveň veřejného přístupu**. V tomto dokumentu budeme volat kontejner `users` . Vyberte **Vytvořit**. 
-
-V následujícím kroku nakonfigurujete pracovní prostor synapse, který bude používat tento účet úložiště jako primární účet úložiště, a kontejner pro ukládání dat pracovního prostoru. Pracovní prostor bude ukládat data v Apache Sparkch tabulkách a v protokolech aplikací Spark v tomto účtu do složky s názvem `/synapse/workspacename` .
+V následujícím kroku nakonfigurujete pracovní prostor Azure synapse tak, aby používal tento účet úložiště jako primární účet úložiště a kontejner pro ukládání dat pracovního prostoru. Pracovní prostor ukládá data v Apache Sparkch tabulkách. Ukládá protokoly aplikací Spark do složky s názvem **/synapse/workspacename**.
 
 ## <a name="create-a-synapse-workspace"></a>Vytvoření pracovního prostoru synapse
 
-* Otevřete [Azure Portal](https://portal.azure.com) a v horní části hledání `Synapse` .
-* Ve výsledcích hledání v části **služby**vyberte **Azure synapse Analytics (pracovní prostory verze Preview)** .
-* Vyberte **+ Přidat** a vytvořte pracovní prostor s tímto nastavením.
+1. Otevřete [Azure Portal](https://portal.azure.com)a v horní části vyhledejte **synapse**.
+1. Ve výsledcích hledání v části **služby**vyberte **Azure synapse Analytics (pracovní prostory verze Preview)**.
+1. Vyberte **Přidat** a vytvořte pracovní prostor pomocí těchto nastavení:
 
     |Karta|Nastavení | Navrhovaná hodnota | Popis |
     |---|---|---|---|
-    |Základy|**Název pracovního prostoru**|Můžete ji volat cokoli.| V tomto dokumentu použijeme`myworkspace`|
+    |Základy|**Název pracovního prostoru**|Můžete ji volat cokoli.| V tomto dokumentu budeme používat **MyWorkspace**.|
     |Základy|**Oblast**|Porovnává s oblastí účtu úložiště.|
 
 1. V části **vybrat data Lake Storage Gen 2**vyberte účet a kontejner, který jste vytvořili dříve.
+1. Vyberte **zkontrolovat + vytvořit**  >  **vytvořit**. Váš pracovní prostor je připravený během několika minut.
 
-1. Vyberte **Zkontrolovat a vytvořit**. Vyberte **Vytvořit**. Pracovní prostor bude připraven během několika minut.
+## <a name="verify-access-to-the-storage-account"></a>Ověřte přístup k účtu úložiště.
 
-## <a name="verify-the-synapse-workspace-msi-has-access-to-the-storage-account"></a>Ověření, jestli má MSI synapse v pracovním prostoru přístup k účtu úložiště
+Spravované identity pro váš pracovní prostor Azure synapse už můžou mít přístup k účtu úložiště. Pomocí těchto kroků se ujistěte, že:
 
-To může být pro vás již provedeno. V každém případě byste měli ověřit.
+1. Otevřete [Azure Portal](https://portal.azure.com) a primární účet úložiště, který jste zvolili pro váš pracovní prostor.
+1. V levém podokně vyberte **řízení přístupu (IAM)** .
+1. Přiřaďte následující role nebo se ujistěte, že jsou již přiřazeny. Pro identitu pracovního prostoru používáme stejný název a název pracovního prostoru.
+    1. Pro roli **Přispěvatel dat objektů BLOB úložiště** v účtu úložiště přiřaďte **MyWorkspace** jako identitu pracovního prostoru.
+    1. Přiřaďte **MyWorkspace** jako název pracovního prostoru.
 
-1. Otevřete [Azure Portal](https://portal.azure.com) a otevřete primární účet úložiště, který jste zvolili pro váš pracovní prostor.
-1. V levém navigačním panelu vyberte **řízení přístupu (IAM)** . Pak přiřaďte následující role nebo ověřte, zda jsou již přiřazeny. 
-    a. Přiřaďte identitu pracovního prostoru k roli **Přispěvatel dat objektů BLOB úložiště** v účtu úložiště. Identita pracovního prostoru má stejný název jako pracovní prostor. V tomto dokumentu je název pracovního prostoru `myworkspace` tak, aby identita pracovního prostoru byla`myworkspaced`
 1. Vyberte **Uložit**.
-    
-## <a name="launch-synapse-studio"></a>Spuštění funkce Synapse Studio
 
-Po vytvoření pracovního prostoru synapse máte dva způsoby, jak otevřít synapse Studio:
-* Otevřete pracovní prostor synapse v [Azure Portal](https://portal.azure.com) a v horní části **přehledu** vyberte **Spustit synapse Studio** .
-* Přímo přejít na https://web.azuresynapse.net pracovní prostor a přihlásit se k němu.
+## <a name="open-synapse-studio"></a>Otevřít synapse Studio
+
+Po vytvoření pracovního prostoru Azure synapse máte dva způsoby, jak otevřít synapse Studio:
+
+* Otevřete pracovní prostor synapse ve [Azure Portal](https://portal.azure.com). V horní části **přehledu** vyberte **Spustit synapse Studio**.
+* Přejdete do https://web.azuresynapse.net svého pracovního prostoru a přihlásíte se k němu.
 
 ## <a name="create-a-sql-pool"></a>Vytvoření fondu SQL
 
-1. V synapse studiu na levé straně navigace vyberte **spravovat > fondů SQL** .
-1. Vyberte **+ Nová** a zadejte tato nastavení:
+1. V synapse studiu v levém podokně vyberte **Spravovat**  >  **fondy SQL**.
+1. Vyberte **nové** a zadejte tato nastavení:
 
     |Nastavení | Navrhovaná hodnota | 
-    |---|---|
-    |**Název fondu SQL**| `SQLDB1`|
-    |**Úroveň výkonu**|`DW100C`|
+    |---|---|---|
+    |**Název fondu SQL**| **SQLDB1**|
+    |**Úroveň výkonu**|**DW100C**|
+    |||
 
-1. Vyberte **zkontrolovat + vytvořit** a pak vyberte **vytvořit**.
-1. Váš fond SQL bude připravený během několika minut. Když se vytvoří fond SQL, bude se taky přidružit k databázi fondu SQL s názvem **SQLDB1**.
+1. Vyberte **zkontrolovat + vytvořit**  >  **vytvořit**. Váš fond SQL bude připravený během několika minut. Váš fond SQL je přidružen k databázi fondu SQL, která se také označuje jako **SQLDB1**.
 
 Fond SQL spotřebovává Fakturovatelné prostředky, pokud je aktivní. Fond můžete později pozastavit a snížit tak náklady.
 
 ## <a name="create-an-apache-spark-pool"></a>Vytvoření fondu Apache Spark
 
-1. V synapse studiu vyberte na levé straně možnost **spravovat fondy > Apache Spark** .
-1. Vyberte **+ Nová** a zadejte tato nastavení:
+1. V synapse studiu v levém podokně vyberte **Spravovat**  >  **fondy Apache Spark**.
+1. Vyberte **nové** a zadejte tato nastavení:
 
     |Nastavení | Navrhovaná hodnota | 
-    |---|---|
-    |**Název Apache Spark fondu**|`Spark1`
-    |**Velikost uzlu**| `Small`|
+    |---|---|---|
+    |**Název Apache Spark fondu**|**Spark1**
+    |**Velikost uzlu**| **Malá**|
     |**Počet uzlů**| Nastavte minimum na 3 a maximum na 3.|
 
-1. Vyberte **zkontrolovat + vytvořit** a pak vyberte **vytvořit**.
-1. Váš fond Apache Spark bude připravený během několika sekund.
+1. Vyberte **zkontrolovat + vytvořit**  >  **vytvořit**. Váš fond Apache Spark bude připravený během několika sekund.
 
 > [!NOTE]
-> Bez ohledu na název Apache Spark fond nevypadá jako fond SQL. Je to jenom pro základní metadata, která používáte k informování pracovního prostoru synapse o tom, jak pracovat s Sparkem. 
+> Bez ohledu na název Apache Spark fond nevypadá jako fond SQL. Jedná se o jenom některá základní metadata, která používáte k tomu, abyste synapse pracovnímu prostoru Azure, jak pracovat s Sparkem.
 
-Vzhledem k tomu, že jsou metadata, nelze spustit ani zastavit fondy Spark. 
+Vzhledem k tomu, že se jedná o metadata, nelze spustit ani zastavit fondy Spark.
 
-Když v synapse provedete jakoukoli aktivitu Spark, určíte fond Spark, který se má použít. Fond informuje synapse, kolik prostředků Spark se má použít. Platíte jenom za využití prostředků Thar. Při aktivním používání fondu se prostředky automaticky vyprší a budou recyklovány.
+Při provádění aktivity Sparku v Azure synapse určíte fond Spark, který se má použít. Tento fond oznamuje službě Azure synapse, kolik prostředků Spark se má použít. Platíte jenom za prostředky, které používáte. Při aktivním zastavení fondu se prostředky automaticky vyprší a recykluje se.
 
 > [!NOTE]
-> Databáze Spark jsou nezávisle vytvořené z fondů Spark. Pracovní prostor má vždycky databázi Spark s názvem **Default** a můžete vytvořit další databáze Spark.
+> Databáze Spark jsou nezávisle vytvořené z fondů Spark. Pracovní prostor má vždy databázi Spark s názvem **Default**. Můžete vytvořit další databáze Spark.
 
 ## <a name="the-sql-on-demand-pool"></a>Fond na vyžádání SQL
 
-Každý pracovní prostor obsahuje předem sestavený nebo neodstranitelné fondy s názvem **SQL na vyžádání**. Fond na vyžádání SQL umožňuje pracovat s SQL bez nutnosti vytvářet nebo považovat za správu synapse fondu SQL. Na rozdíl od jiných druhů fondů je fakturace za SQL na vyžádání založená na množství dat naskenovaných pro spuštění dotazu, a ne na počtu prostředků použitých ke spuštění dotazu.
+Každý pracovní prostor obsahuje předem sestavený fond s názvem **SQL na vyžádání**. Tento fond nejde odstranit. Fond na vyžádání SQL umožňuje pracovat s SQL bez nutnosti vytvářet nebo považovat za správu fondu SQL ve službě Azure synapse.
 
-* SQL na vyžádání má také vlastní databáze SQL na vyžádání, které existují nezávisle na jakémkoli fondu SQL na vyžádání.
-* V současné době má pracovní prostor vždy právě jeden fond SQL na vyžádání s názvem **SQL na vyžádání**.
+Na rozdíl od jiných druhů fondů je fakturace za SQL na vyžádání založená na množství dat naskenovaných pro spuštění dotazu, nikoli na počtu prostředků použitých ke spuštění dotazu.
+
+* SQL na vyžádání má vlastní databáze SQL na vyžádání, které existují nezávisle na jakémkoli fondu SQL na vyžádání.
+* Pracovní prostor má vždy přesně jeden fond SQL na vyžádání s názvem **SQL na vyžádání**.
 
 ## <a name="load-the-nyc-taxi-sample-data-into-the-sqldb1-database"></a>Načtení ukázkových dat NYC taxislužby do databáze SQLDB1
 
-1. V synapse studiu vyberte v nabídce nejvyšší úrovně modrou možnost **?** .
-1. Vyberte **začínáme > centrum Začínáme**
-1. Na kartě **ukázková data dotazu**s popiskem vyberte fond SQL s názvem.`SQLDB1`
-1. Vyberte **data dotazu**. Zobrazí se oznámení, že se zobrazí zpráva "načítání ukázkových dat", která se zobrazí, a pak zmizí.
-1. V horní části synapse studia se zobrazí indikátor s světle modrým oznámením, že se data načítají do SQLDB1. Počkejte, než se zeleně odmítne.
+1. V synapse studiu v nabídce nejvyšší úrovně modrá vyberte **?** .
+1. Vyberte **Začínáme**s  >  **úvodním startem**.
+1. Na kartě s popisem **dotazu ukázková data**vyberte fond SQL s názvem **SQLDB1**.
+1. Vyberte **data dotazu**. Krátce se zobrazí oznámení "načtení ukázkových dat". Světle modrý stavový řádek v horní části synapse studia indikuje, že se data načítají do SQLDB1.
+1. Jakmile se stavový řádek změní na zelený, zavřete ho.
 
 ## <a name="explore-the-nyc-taxi-data-in-the-sql-pool"></a>Prozkoumejte data NYC taxislužby ve fondu SQL.
 
-1. V synapse studiu přejděte do centra **dat** .
-1. Přejděte do **tabulky SQLDB1 >**. Uvidíte, že se načetly několik tabulek.
-1. Klikněte pravým tlačítkem na **dbo. Tabulka cest** a výběr **nového skriptu SQL > vybrat prvních 100 řádků**
-1. Vytvoří se nový skript SQL, který se automaticky spustí.
-1. Všimněte si, že v horní části SQL Script **Connect** se automaticky nastaví fond SQL s názvem `SQLDB1` .
+1. V synapse studiu přejdete do centra **dat** .
+1. Přejít na **SQLDB1**  >  **tabulky**SQLDB1. Zobrazí se několik načtených tabulek.
+1. Klikněte pravým tlačítkem na **dbo. Tabulka cest** a výběr **nového skriptu SQL**  >  **Vyberte horní 100 řádků**.
+1. Počkejte, než se vytvoří a spustí nový skript SQL.
+1. Všimněte si, že v horní části SQL Script **Connect** se automaticky nastaví fond SQL s názvem **SQLDB1**.
 1. Nahraďte text skriptu SQL tímto kódem a spusťte ho.
 
     ```sql
@@ -143,17 +149,17 @@ Každý pracovní prostor obsahuje předem sestavený nebo neodstranitelné fond
     ORDER BY PassengerCount
     ```
 
-1. Tento dotaz ukazuje, jak celková vzdálenost cest a Průměrná doba odezvy se vztahují k počtu cestujících.
+    Tento dotaz ukazuje, jak celková vzdálenost cest a Průměrná doba odezvy se vztahují k počtu cestujících.
 1. V okně výsledek skriptu SQL změňte **zobrazení** na **graf** , aby se zobrazila vizualizace výsledků jako spojnicový graf.
 
-## <a name="load-the-nyc-taxi-sample-data-into-the-spark-nyctaxi-database"></a>Načtení ukázkových dat NYC taxislužby do databáze Spark nyctaxi
+## <a name="load-the-nyc-taxi-data-into-the-spark-nyctaxi-database"></a>Načtení dat taxislužby NYC do databáze Spark nyctaxi
 
-K dispozici jsou data v tabulce v `SQLDB1` . Nyní ji nahrajeme do databáze Spark s názvem `nyctaxi` .
+K dispozici jsou data v tabulce v **SQLDB1**. Načtěte ho do databáze Spark s názvem **nyctaxi**.
 
-1. V synapse studiu přejděte do centra pro **vývoj** .
-1. Výběr **+** a výběr **poznámkového bloku**
-1. V horní části poznámkového bloku nastavte hodnotu **připojit na** .`Spark1`
-1. Vyberte **přidat kód** pro přidání buňky kódu poznámkového bloku a vložte text níže:
+1. V synapse studiu přejdete do centra pro **vývoj** .
+1. Vyberte **+**  >  **Poznámkový blok**.
+1. V horní části poznámkového bloku nastavte hodnotu **připojit k** **Spark1**.
+1. Vyberte **přidat kód** pro přidání buňky kódu poznámkového bloku a vložte následující text:
 
     ```scala
     %%spark
@@ -162,15 +168,15 @@ K dispozici jsou data v tabulce v `SQLDB1` . Nyní ji nahrajeme do databáze Spa
     df.write.mode("overwrite").saveAsTable("nyctaxi.trip")
     ```
 
-1. Přejděte do centra **dat** , klikněte pravým tlačítkem na **databáze** a vyberte **aktualizovat**.
-1. Nyní byste měli vidět tyto databáze:
-    - SQLDB1 (fond SQL)
-    - nyctaxi (Spark)
-      
+1. Přejděte do centra **dat** , klikněte pravým tlačítkem na **databáze**a pak vyberte **aktualizovat**. Tyto databáze by se měly zobrazit:
+
+    - **SQLDB1** (fond SQL)
+    - **nyctaxi** (Spark)
+
 ## <a name="analyze-the-nyc-taxi-data-using-spark-and-notebooks"></a>Analýza dat taxislužby NYC pomocí Sparku a poznámkových bloků
 
-1. Vrátit se do poznámkového bloku
-1. Vytvořte novou buňku kódu, zadejte následující text a spusťte buňku, která bude obsahovat příklad dat NYC taxislužby, která jsme načetli do `nyctaxi` databáze Spark.
+1. Vraťte se do poznámkového bloku.
+1. Vytvořte novou buňku kódu a zadejte následující text. Pak spuštěním buňky zobrazte data NYC taxislužby, která jsme načetli do databáze **nyctaxi** Spark.
 
    ```py
    %%pyspark
@@ -178,7 +184,7 @@ K dispozici jsou data v tabulce v `SQLDB1` . Nyní ji nahrajeme do databáze Spa
    display(df)
    ```
 
-1. Spusťte následující kód, který provede stejnou analýzu jako dříve s fondem SQL `SQLDB1` . Tento kód také uloží výsledky analýzy do tabulky s názvem `nyctaxi.passengercountstats` a vizualizuje výsledky.
+1. Spusťte následující kód, který provede stejnou analýzu, jakou jsme provedli dříve s fondem SQL **SQLDB1**. Tento kód uloží výsledky analýzy do tabulky s názvem **nyctaxi. passengercountstats** a vizualizuje výsledky.
 
    ```py
    %%pyspark
@@ -196,10 +202,10 @@ K dispozici jsou data v tabulce v `SQLDB1` . Nyní ji nahrajeme do databáze Spa
    ```
 
 1. Ve výsledcích buňky vyberte možnost **graf** , aby se zobrazila data vizuálů.
- 
-## <a name="customize-data-visualization-data-with-spark-and-notebooks"></a>Přizpůsobení dat vizualizace dat pomocí Sparku a poznámkových bloků
 
-Pomocí poznámkových bloků můžete ovládat vykreslování grafů. Následující kód ukazuje jednoduchý příklad pomocí oblíbených knihoven `matplotlib` a `seaborn` . Vykreslí se stejný druh spojnicového grafu, který jste viděli při spuštění dotazů SQL dříve.
+## <a name="customize-data-visualization-with-spark-and-notebooks"></a>Přizpůsobení vizualizace dat pomocí Sparku a poznámkových bloků
+
+Můžete řídit, jak se grafy vykreslují pomocí poznámkových bloků. Následující kód ukazuje jednoduchý příklad. Používá oblíbené knihovny **matplotlib** a **Seaborn**. Kód vykresluje stejný druh spojnicového grafu jako příkazy jazyka SQL, které byly dříve spuštěny.
 
 ```py
 %%pyspark
@@ -213,12 +219,12 @@ seaborn.lineplot(x="PassengerCount", y="SumTripDistance" , data = df)
 seaborn.lineplot(x="PassengerCount", y="AvgTripDistance" , data = df)
 matplotlib.pyplot.show()
 ```
-    
+
 ## <a name="load-data-from-a-spark-table-into-a-sql-pool-table"></a>Načtení dat z tabulky Spark do tabulky fondu SQL
 
-Dříve jsme zkopírovali data z tabulky fondů SQL `SQLDB1.dbo.Trip` do tabulky Spark `nyctaxi.trip` . Pomocí Sparku jsme data agreguje do tabulky Spark `nyctaxi.passengercountstats` . Nyní zkopírujeme data z `nyctaxi.passengercountstats` do tabulky fondu SQL s názvem `SQLDB1.dbo.PassengerCountStats` . 
+Dříve jsme zkopírovali data z tabulky fondu SQL **SQLDB1. dbo. Trip** do tabulky Spark **nyctaxi. Trip**. Pomocí Sparku jsme data agreguje do tabulky Spark **nyctaxi. passengercountstats**. Nyní zkopírujeme data z **nyctaxi. passengercountstats** do tabulky fondu SQL s názvem **SQLDB1. dbo. passengercountstats**.
 
-Ve svém poznámkovém bloku spusťte níže uvedenou buňku. Nakopíruje agregovanou tabulku Spark zpátky do tabulky fondu SQL.
+Spusťte následující buňku v poznámkovém bloku. Nakopíruje agregovanou tabulku Spark zpátky do tabulky fondu SQL.
 
 ```scala
 %%spark
@@ -226,43 +232,44 @@ val df = spark.sql("SELECT * FROM nyctaxi.passengercountstats")
 df.write.sqlanalytics("SQLDB1.dbo.PassengerCountStats", Constants.INTERNAL )
 ```
 
-## <a name="analyze-nyc-taxi-data-in-spark-databases-using-sql-on-demand"></a>Analýza dat NYC taxislužby v databázích Sparku pomocí SQL na vyžádání 
+## <a name="analyze-nyc-taxi-data-in-spark-databases-using-sql-on-demand"></a>Analýza dat NYC taxislužby v databázích Sparku pomocí SQL na vyžádání
 
-Tabulky v databázích Spark jsou automaticky viditelné a Queryable na vyžádání SQL.
+Tabulky v databázích Spark jsou automaticky viditelné a mohou být dotazovány na vyžádání SQL.
 
-1. V synapse studiu přejděte do centra pro **vývoj** a vytvořte nový skript SQL.
-1. Nastavení **připojení k** **SQL na vyžádání** 
+1. V synapse studiu přejdete do centra pro **vývoj** a vytvoříte nový skript SQL.
+1. Nastavte **připojení k** **SQL na vyžádání**.
 1. Vložte do skriptu následující text a spusťte skript.
 
     ```sql
     SELECT *
     FROM nyctaxi.dbo.passengercountstats
     ```
+
     > [!NOTE]
-    > Při prvním spuštění dotazu, který používá SQL na vyžádání, bude trvat přibližně 10 sekund, než se SQL na vyžádání shromáždí prostředky SQL potřebné ke spuštění vašich dotazů. Následné dotazy tento čas nevyžadují a budou mnohem rychlejší.
+    > Při prvním spuštění dotazu, který používá SQL na vyžádání, trvá SQL na vyžádání přibližně 10 sekund pro shromáždění prostředků SQL potřebných ke spuštění dotazů. Následné dotazy budou mnohem rychlejší.
   
 ## <a name="orchestrate-activities-with-pipelines"></a>Orchestrace aktivit s kanály
 
-V Azure synapse můžete orchestrovat širokou škálu úloh. V této části uvidíte, jak snadné je.
+V Azure synapse můžete orchestrovat širokou škálu úloh.
 
-1. V synapse studiu přejděte do centra **Orchestration** .
-1. Vyberte možnost **+** **kanál**. Vytvoří se nový kanál.
-1. Přejděte do centra pro vývoj a najděte Poznámkový blok, který jste vytvořili dříve.
+1. V synapse studiu přejdete do centra **Orchestration** .
+1. Vyberte **+**  >  **kanál** a vytvořte nový kanál.
+1. Přejít do centra pro **vývoj** a vyhledat Poznámkový blok, který jste vytvořili dříve.
 1. Přetáhněte tento poznámkový blok do kanálu.
-1. V kanálu vyberte **Přidat trigger > nový/upravit**.
-1. V části **zvolit Trigger** vyberte **Nový**a potom v části opakování nastavte spuštění triggeru každé 1 hodinu.
+1. V kanálu vyberte **Přidat Trigger**  >  **Nový/upravit**.
+1. V části **zvolit aktivační událost**vyberte **Nový**a potom v části **opakování** nastavte spuštění triggeru každé 1 hodinu.
 1. Vyberte **OK**.
-1. Vyberte **publikovat vše** a kanál se spustí každou hodinu.
-1. Pokud chcete, aby kanál běžel hned, aniž byste čekali na další hodinu, vyberte **Přidat trigger > nový/upravit**.
+1. Vyberte **Publikovat vše**. Kanál se spouští každou hodinu.
+1. Pokud chcete kanál spustit nyní, aniž byste čekali na další hodinu, vyberte **Přidat Trigger**  >  **Nový/upravit**.
 
-## <a name="working-with-data-in-a-storage-account"></a>Práce s daty v účtu úložiště
+## <a name="work-with-data-in-a-storage-account"></a>Práce s daty v účtu úložiště
 
-Zatím jsme pokryli, že v databázích v pracovním prostoru byly uloženy údaje o těchto scénářích. Nyní ukážeme, jak pracovat se soubory v účtech úložiště. V tomto scénáři použijeme primární účet úložiště v pracovním prostoru a kontejneru, který jsme určili při vytváření pracovního prostoru.
+Zatím jsme pokryli scénáře, kdy se data nacházejí v databázích v pracovním prostoru. Teď vám ukážeme, jak pracovat se soubory v účtech úložiště. V tomto scénáři použijeme primární účet úložiště pracovního prostoru a kontejneru, který jsme určili při vytváření pracovního prostoru.
 
-* Název účtu úložiště:`contosolake`
-* Název kontejneru v účtu úložiště:`users`
+* Název účtu úložiště: **contosolake**
+* Název kontejneru v účtu úložiště: **Uživatelé**
 
-### <a name="creating-csv-and-parquet-files-in-your-storage-account"></a>Vytváření souborů CSV a Parquet v účtu úložiště
+### <a name="create-csv-and-parquet-files-in-your-storage-account"></a>Vytváření souborů CSV a Parquet v účtu úložiště
 
 Spusťte následující kód v poznámkovém bloku. Vytvoří soubor CSV a soubor Parquet v účtu úložiště.
 
@@ -274,15 +281,13 @@ df.write.mode("overwrite").csv("/NYCTaxi/PassengerCountStats.csv")
 df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats.parquet")
 ```
 
-### <a name="analyzing-data-in-a-storage-account"></a>Analýza dat v účtu úložiště
+### <a name="analyze-data-in-a-storage-account"></a>Analýza dat v účtu úložiště
 
-1. V synapse studiu přejděte do centra **dat** .
-1. Vybrat **propojené**
-1. Přejděte na **účty úložiště > MyWorkspace (Primary-contosolake)** .
-1. Vybrat **uživatele (primární) "**
-1. Měla by se zobrazit složka s názvem `NYCTaxi` . Uvnitř byste měli vidět dvě složky `PassengerCountStats.csv` a `PassengerCountStats.parquet` .
-1. Přejděte do `PassengerCountStats.parquet` složky.
-1. Klikněte pravým tlačítkem na `.parquet` soubor uvnitř a vyberte **Nový Poznámkový blok**. vytvoří se Poznámkový blok s buňkou, jako je tato:
+1. V synapse studiu otevřete centrum **dat** a pak vyberte **propojit**.
+1. Přejít na **účty úložiště**  >  **MyWorkspace (Primary-contosolake)**.
+1. Vybrat **uživatele (primární) "**. Měla by se zobrazit složka **NYCTaxi** . Uvnitř byste měli vidět dvě složky s názvem **PassengerCountStats.csv** a **PassengerCountStats. Parquet**.
+1. Otevřete složku **PassengerCountStats. Parquet** . V rámci uvidíte soubor Parquet s názvem, jako je *součást-00000-2638e00c-0790-496b-a523-578da9a15019-C000. přichycení. Parquet*.
+1. Klikněte pravým tlačítkem na **. Parquet**a pak vyberte **Nový Poznámkový blok**. Vytvoří Poznámkový blok, který má podobné buňky:
 
     ```py
     %%pyspark
@@ -291,7 +296,7 @@ df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats.parquet")
     ```
 
 1. Spusťte buňku.
-1. Pravým tlačítkem myši klikněte na soubor Parquet v rámci a vyberte **Nový skript sql > vyberte horní 100 řádků**. vytvoří se skript SQL podobný tomuto:
+1. Klikněte pravým tlačítkem na soubor Parquet uvnitř a pak vyberte **Nový skript SQL**  >  **Vybrat horní 100 řádků**. Vytvoří skript SQL podobný tomuto:
 
     ```sql
     SELECT TOP 100 *
@@ -300,81 +305,83 @@ df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats.parquet")
         FORMAT='PARQUET'
     ) AS [r];
     ```
-    
-1. Ve skriptu se pole **připojit k** nastaví na **vyžádání SQL**.
+
+     Ve skriptu je pole **připojit k** **na vyžádání**nastaveno na hodnotu SQL.
+
 1. Spusťte skript.
 
 ## <a name="visualize-data-with-power-bi"></a>Vizualizace dat pomocí Power BI
 
-Z dat NYX taxislužby jsme vytvořili agregované datové sady ve dvou tabulkách:
-* `nyctaxi.passengercountstats`
-* `SQLDB1.dbo.PassengerCountStats`
+Z dat NYC taxislužby jsme vytvořili agregované datové sady ve dvou tabulkách:
+- **nyctaxi.passengercountstats**
+- **SQLDB1. dbo. PassengerCountStats**
 
-Pracovní prostor Power BI můžete propojit s pracovním prostorem synapse. Díky tomu můžete snadno získat data do svého pracovního prostoru Power BI a upravovat sestavy Power BI přímo v pracovním prostoru synapse.
+Pracovní prostor Power BI můžete propojit s pracovním prostorem Azure synapse. Díky tomu můžete snadno získat data do svého pracovního prostoru Power BI. Sestavy Power BI můžete upravovat přímo v pracovním prostoru Azure synapse.
 
 ### <a name="create-a-power-bi-workspace"></a>Vytvoření pracovního prostoru Power BI
 
 1. Přihlaste se k [PowerBI.Microsoft.com](https://powerbi.microsoft.com/).
-1. Vytvořte nový pracovní prostor Power BI `NYCTaxiWorkspace1` .
+1. Vytvořte nový pracovní prostor Power BI nazvaný **NYCTaxiWorkspace1**.
 
-### <a name="link-your-synapse-workspace-to-your-new-power-bi-workspace"></a>Propojit pracovní prostor synapse s novým pracovním prostorem Power BI
+### <a name="link-your-azure-synapse-workspace-to-your-new-power-bi-workspace"></a>Propojení pracovního prostoru Azure synapse s novým pracovním prostorem Power BI
 
-1. V synapse studiu přejděte do části **správa > propojené služby**.
-1. Vyberte **+ Nový** a vyberte **připojit k Power BI** a nastavte tato pole:
+1. V synapse studiu si přečtěte, jak **Spravovat**  >  **propojené služby**.
+1. Vyberte **Nový**  >  **připojit k Power BI**a pak nastavte tato pole:
 
     |Nastavení | Navrhovaná hodnota | 
     |---|---|
-    |**Název**|`NYCTaxiWorkspace1`|
-    |**Název pracovního prostoru**|`NYCTaxiWorkspace1`|
-        
+    |**Název**|**NYCTaxiWorkspace1**|
+    |**Název pracovního prostoru**|**NYCTaxiWorkspace1**|
+
 1. Vyberte **Vytvořit**.
 
-### <a name="create-a-power-bi-dataset-that-uses-data-in-your-synapse-workspace"></a>Vytvoření datové sady Power BI, která používá data v pracovním prostoru synapse
+### <a name="create-a-power-bi-dataset-that-uses-data-in-your-azure-synapse-workspace"></a>Vytvoření datové sady Power BI, která používá data v pracovním prostoru Azure synapse
 
-1. V synapse studiu přejděte na **Power BI vývoj >**.
-1. Přejděte na **NYCTaxiWorkspace1 > Power BI datových sad** a vyberte **Nový Power BI datová sada**.
-1. Najeďte myší na `SQLDB1` databázi a vyberte **Stáhnout soubor. pbids**.
-1. Otevřete stažený `.pbids` soubor. 
-1. Spustí se Power BI Desktop a automaticky se připojí k `SQLDB1` vašemu pracovnímu prostoru synapse.
-1. Pokud se zobrazí dialogové okno s názvem **databáze SQL serveru**: a. Vyberte **účet Microsoft**. 
-    b. Vyberte **Přihlásit** se a přihlaste se.
-    c. Vyberte **Připojit**.
-1. Otevře se dialogové okno **navigátor** . V takovém případě Ověřte tabulku **PassengerCountStats** a vyberte **načíst**.
-1. Zobrazí se dialogové okno **nastavení připojení** . Vyberte **DirectQuery** a vyberte **OK** .
+1. V synapse studiu si Projděte **vývoj**  >  **Power BI**.
+1. Přejít na **NYCTaxiWorkspace1**  >  **Power BI datových sad** a vyberte **Nový Power BI datová sada**.
+1. Najeďte myší na databázi **SQLDB1** a vyberte **Stáhnout soubor. pbids**.
+1. Otevřete stažený soubor **. pbids** . Power BI Desktop se otevře a automaticky se připojí k **SQLDB1** v pracovním prostoru Azure synapse.
+1. Pokud se zobrazí dialogové okno s názvem **databáze SQL serveru**:
+    1. Vyberte **účet Microsoft**.
+    1. Vyberte **Přihlásit** se a přihlaste se ke svému účtu.
+    1. Vyberte **Připojit**.
+1. Po otevření dialogového okna **navigátor** ověřte tabulku **PassengerCountStats** a vyberte **načíst**.
+1. Po zobrazení dialogového okna **nastavení připojení** vyberte **DirectQuery**  >  **OK**.
 1. Na levé straně vyberte tlačítko **Sestava** .
 1. Přidejte **Spojnicový graf** do sestavy.
-    a. Přetáhněte sloupec **PasssengerCount** na **vizualizace > osy** b. Přetáhněte sloupce **SumTripDistance** a **AvgTripDistance** na **vizualizace > hodnoty**.
+    1. Přetáhněte sloupec **PassengerCount** na osu **vizualizace**  >  **Axis**.
+    1. Přetáhněte sloupce **SumTripDistance** a **AvgTripDistance** na hodnoty **vizualizace**  >  **Values**.
 1. Na kartě **Domů** vyberte **publikovat**.
-1. Zobrazí se dotaz, jestli chcete změny uložit. Vyberte **Uložit**.
-1. Zobrazí se výzva k výběru názvu souboru. Zvolte `PassengerAnalysis.pbix` a vyberte **Uložit**.
-1. Zobrazí se výzva k **výběru cílového umístění** `NYCTaxiWorkspace1` a vyberte vybrat. **Select**
+1. Vyberte **Uložit** a uložte tak provedené změny.
+1. Zvolte název souboru **PassengerAnalysis. pbix**a pak vyberte Save ( **Uložit**).
+1. V **možnosti vybrat cíl**zvolte možnost **NYCTaxiWorkspace1**a pak klikněte na tlačítko **Vybrat**.
 1. Počkejte na dokončení publikování.
 
 ### <a name="configure-authentication-for-your-dataset"></a>Konfigurace ověřování pro datovou sadu
 
-1. Otevřete [PowerBI.Microsoft.com](https://powerbi.microsoft.com/) a **Přihlaste se** .
-1. Vlevo v části **pracovní prostory** vyberte `NYCTaxiWorkspace1` pracovní prostor.
-1. V tomto pracovním prostoru byste měli vidět datovou sadu s názvem `Passenger Analysis` a zprávu s názvem `Passenger Analysis` .
-1. Najeďte myší na `PassengerAnalysis` datovou sadu a vyberte ikonu se třemi tečkami a vyberte **Nastavení**.
-1. V části **přihlašovací údaje ke zdroji dat**nastavte **metodu ověřování** na **OAuth2** a vyberte **Přihlásit**se.
+1. Otevřete [PowerBI.Microsoft.com](https://powerbi.microsoft.com/) a **Přihlaste se**.
+1. Na levé straně v části **pracovní prostory**vyberte pracovní prostor **NYCTaxiWorkspace1** .
+1. V tomto pracovním prostoru Najděte datovou sadu nazvanou **Analýza osobního** prostředí a sestavu s názvem **Analýza osobních**dat.
+1. Najeďte myší na **PassengerAnalysis** datovou sadu, vyberte tlačítko se třemi tečkami (...) a pak vyberte **Nastavení**.
+1. V části **přihlašovací údaje ke zdroji dat**nastavte **metodu ověřování** na **OAuth2**a pak vyberte **Přihlásit**se.
 
 ### <a name="edit-a-report-in-synapse-studio"></a>Úprava sestavy v synapse studiu
 
-1. Vraťte se na synapse Studio a vyberte **Zavřít a aktualizovat** . 
-1. Přejít do centra pro **vývoj** 
-1. Najeďte myší na **Power BI** a klikněte na uzel aktualizovat **Power BI sestavy** .
-1. Teď pod **Power BI** byste měli vidět: a. * V části **NYCTaxiWorkspace1 > Power BI datové sady**se vytvoří nová datová sada s názvem **PassengerAnalysis**.
-    b. * V části **NYCTaxiWorkspace1 > Power BI sestav**se zobrazí nová sestava s názvem **PassengerAnalysis**.
-1. Vyberte sestavu **PassengerAnalysis** . 
-1. Sestava se otevře a teď můžete sestavu upravit přímo v synapse studiu.
+1. Vraťte se na synapse Studio a vyberte **Zavřít a aktualizovat**.
+1. Přejít do centra pro **vývoj** .
+1. Najeďte myší na **Power BI** a vyberte uzel aktualizovat **Power BI sestavy** .
+1. V části **Power BI** byste měli vidět:
+    1. V části **NYCTaxiWorkspace1**  >  **Power BI datové sady**se vytvoří nová datová sada s názvem **PassengerAnalysis**.
+    1. V části **NYCTaxiWorkspace1**  >  **Power BI sestavy**se zobrazí nová sestava s názvem **PassengerAnalysis**.
+1. Vyberte sestavu **PassengerAnalysis** . Sestava se otevře a můžete ji přímo v synapse studiu upravovat.
 
 ## <a name="monitor-activities"></a>Monitorování aktivit
 
-1. V synapse studiu přejděte do centra monitorování.
+1. V synapse studiu přejdete do centra **monitorování** .
 1. V tomto umístění uvidíte historii všech aktivit prováděných v pracovním prostoru a ty, které jsou teď aktivní.
-1. Prozkoumejte **spuštění kanálu**, **Apache Spark aplikace**a **požadavky SQL** a uvidíte, co jste už v pracovním prostoru provedli.
+1. Prozkoumejte **spuštění kanálu**, **Apache Spark aplikace**a **požadavky SQL** , abyste viděli, co jste už v pracovním prostoru provedli.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o [Azure synapse Analytics (Preview)](overview-what-is.md)
+Přečtěte si další informace o [Azure synapse Analytics (verze Preview pracovních prostorů)](overview-what-is.md).
 

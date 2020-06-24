@@ -5,12 +5,12 @@ author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 69e2b25a16a984445a32f884fab5caec6651df32
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e17bad915fd913f6e3894ed386e914e65aa46c01
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84018374"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85250328"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>Kurz: Import souborů SQL BACPAC pomocí šablon ARM
 
@@ -45,7 +45,7 @@ K dokončení tohoto článku potřebujete:
 
 ## <a name="prepare-a-bacpac-file"></a>Příprava souboru BACPAC
 
-Soubor BACPAC se sdílí na [GitHubu](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac). Pokud chcete vytvořit vlastní, přečtěte si téma [Export databáze Azure SQL do souboru BACPAC](../../azure-sql/database/database-export.md). Pokud se rozhodnete soubor publikovat do vlastního umístění, v pozdější části kurzu budete muset šablonu aktualizovat.
+Soubor BACPAC se sdílí na [GitHubu](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac). Pokud si chcete vytvořit vlastní, přečtěte si téma [Export databáze z Azure SQL Database do souboru BacPac](../../azure-sql/database/database-export.md). Pokud se rozhodnete soubor publikovat do vlastního umístění, v pozdější části kurzu budete muset šablonu aktualizovat.
 
 Soubor BACPAC musí být uložený v účtu Azure Storage, aby se mohl importovat pomocí šablony ARM. Následující skript prostředí PowerShell připraví soubor BACPAC pomocí těchto kroků:
 
@@ -116,7 +116,7 @@ Soubor BACPAC musí být uložený v účtu Azure Storage, aby se mohl importova
    * `Microsoft.SQL.servers/databases`. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases).
 
         Před přizpůsobením šablony je užitečné získat základní informace o této šabloně.
-1. Vyberte **soubor**  >  **Uložit jako** a uložte kopii souboru do místního počítače s názvem *azuredeploy. JSON*.
+1. Vyberte **soubor**  >  **Uložit jako** a uložte kopii souboru do místního počítače s názvem *azuredeploy.js*.
 
 ## <a name="edit-the-template"></a>Úprava šablony
 
@@ -196,7 +196,7 @@ Soubor BACPAC musí být uložený v účtu Azure Storage, aby se mohl importova
 
         Vysvětlení definice prostředku najdete v [referenčních informacích k rozšíření služby SQL Database](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases/extensions). Tady je několik důležitých elementů:
 
-        * **dependsOn:** Prostředek rozšíření se musí vytvořit po vytvoření databáze SQL.
+        * **dependsOn**: prostředek rozšíření se musí vytvořit po vytvoření databáze.
         * **storageKeyType**: zadejte typ klíče úložiště, který se má použít. Hodnota může být `StorageAccessKey` nebo `SharedAccessKey`. Použijte `StorageAccessKey` v tomto kurzu.
         * **storageKey**: Zadejte klíč pro účet úložiště, ve kterém je uložený soubor BacPac. Pokud je typ klíče úložiště `SharedAccessKey` , musí předcházet "?".
         * **storageUri**: zadejte adresu URL souboru BacPac uloženého v účtu úložiště.
@@ -241,7 +241,7 @@ Použijte vygenerované heslo. Viz [Požadavky](#prerequisites).
 
 Chcete-li získat přístup k serveru z klientského počítače, je nutné přidat další pravidlo brány firewall. Další informace najdete v tématu [Vytvoření a Správa pravidel brány firewall protokolu IP](../../azure-sql/database/firewall-configure.md#create-and-manage-ip-firewall-rules).
 
-V Azure Portal vyberte databázi SQL z nově nasazené skupiny prostředků. Vyberte **Editor dotazů (Preview)** a zadejte přihlašovací údaje správce. Uvidíte, že se do databáze naimportovaly dvě tabulky.
+V Azure Portal vyberte databázi z nově nasazené skupiny prostředků. Vyberte **Editor dotazů (Preview)** a zadejte přihlašovací údaje správce. Uvidíte, že se do databáze naimportovaly dvě tabulky.
 
 ![Editor dotazů (Preview)](./media/template-tutorial-deploy-sql-extensions-bacpac/resource-manager-tutorial-deploy-sql-extensions-bacpac-query-editor.png)
 

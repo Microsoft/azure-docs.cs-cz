@@ -8,12 +8,12 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 05/05/2020
-ms.openlocfilehash: 85ac56eb20eabf308d6686a047d8c5ede914fed9
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: ef1f0c607eb1d0152a5dd5f5acc812bb9364e47a
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82966439"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85079224"
 ---
 # <a name="tutorial-optimize-indexing-with-the-push-api"></a>Kurz: optimalizace indexování pomocí rozhraní API push
 
@@ -21,7 +21,7 @@ Azure Kognitivní hledání podporuje [dva základní přístupy](search-what-is
 
 V tomto kurzu se dozvíte, jak efektivně indexovat data pomocí [modelu nabízených oznámení](search-what-is-data-import.md#pushing-data-to-an-index) pomocí dávkování požadavků a pomocí exponenciální strategie omezení rychlosti opakování. Aplikaci si můžete [Stáhnout a spustit](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/optimize-data-indexing). Tento článek vysvětluje klíčové aspekty aplikace a faktory, které je potřeba vzít v úvahu při indexování dat.
 
-Tento kurz používá jazyk C# a [sadu .NET SDK](https://aka.ms/search-sdk) k provádění následujících úloh:
+Tento kurz používá jazyk C# a [sadu .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) k provádění následujících úloh:
 
 > [!div class="checklist"]
 > * Vytvoření indexu
@@ -30,7 +30,7 @@ Tento kurz používá jazyk C# a [sadu .NET SDK](https://aka.ms/search-sdk) k pr
 > * Použití více vláken ke zvýšení rychlosti indexování
 > * Použití exponenciální strategie omezení rychlosti opakování k opakovanému pokusu o neúspěšné položky
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -70,15 +70,15 @@ Volání rozhraní API vyžadují adresu URL služby a přístupový klíč. Vyh
 
 1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
 
-1. V části **Nastavení** > **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
+1. V části **Nastavení**  >  **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
 
    ![Získání koncového bodu HTTP a přístupového klíče](media/search-get-started-postman/get-url-key.png "Získání koncového bodu HTTP a přístupového klíče")
 
 ## <a name="2---set-up-your-environment"></a>2. nastavení prostředí
 
 1. Spusťte Visual Studio a otevřete **OptimizeDataIndexing. sln**.
-1. V Průzkumník řešení otevřete **appSettings. JSON** a poskytněte informace o připojení.
-1. `searchServiceName`Pokud je úplná adresa URL "https://my-demo-service.search.windows.net", název služby, který se má poskytnout, je "Moje ukázka-služba".
+1. V Průzkumník řešení otevřete **appsettings.js** a zadejte informace o připojení.
+1. `searchServiceName`Pokud je úplná adresa URL " https://my-demo-service.search.windows.net ", název služby, který se má poskytnout, je "Moje ukázka-služba".
 
 ```json
 {
@@ -90,7 +90,7 @@ Volání rozhraní API vyžadují adresu URL služby a přístupový klíč. Vyh
 
 ## <a name="3---explore-the-code"></a>3. Prozkoumejte kód
 
-Po aktualizaci souboru *appSettings. JSON*by měl být ukázkový program v **OptimizeDataIndexing. sln** připravený k sestavování a spouštění.
+Po aktualizaci *appsettings.jsv*nástroji by měl být vzorový program v **OptimizeDataIndexing. sln** připravený k sestavování a spouštění.
 
 Tento kód je odvozen z rychlého startu v [C#](search-get-started-dotnet.md). Podrobnější informace o základech práce se sadou .NET SDK najdete v tomto článku.
 
@@ -233,7 +233,7 @@ public static double EstimateObjectSize(object data)
 }
 ```
 
-Funkce vyžaduje `ISearchIndexClient` a také počet pokusů, které chcete testovat u každé velikosti dávky. V případě, že pro každou dávku může dojít k nějakým proměnlivým výsledkům, zkusíme každou dávku ve výchozím nastavení třikrát udělat, aby byly výsledky lépe statisticky důležité.
+Funkce vyžaduje a také `ISearchIndexClient` počet pokusů, které chcete testovat u každé velikosti dávky. V případě, že pro každou dávku může dojít k nějakým proměnlivým výsledkům, zkusíme každou dávku ve výchozím nastavení třikrát udělat, aby byly výsledky lépe statisticky důležité.
 
 ```csharp
 await TestBatchSizes(indexClient, numTries: 3);
@@ -281,7 +281,7 @@ TimeSpan delay = delay = TimeSpan.FromSeconds(2);
 int maxRetryAttempts = 5;
 ```
 
-Je důležité zachytit [IndexBatchException](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexbatchexception?view=azure-dotnet) , protože tyto výjimky signalizují, že operace indexování se pouze částečně zdařila (207s). Položky, které selhaly, by se `FindFailedActionsToRetry` měly opakovat pomocí metody, která usnadňuje vytvoření nové dávky obsahující pouze neúspěšné položky.
+Je důležité zachytit [IndexBatchException](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexbatchexception?view=azure-dotnet) , protože tyto výjimky signalizují, že operace indexování se pouze částečně zdařila (207s). Položky, které selhaly, by se měly opakovat pomocí `FindFailedActionsToRetry` metody, která usnadňuje vytvoření nové dávky obsahující pouze neúspěšné položky.
 
 Výjimky jiné než `IndexBatchException` by měly být také zachyceny a označovaly, že žádost byla zcela neúspěšná. Tyto výjimky jsou méně běžné, zejména se sadou .NET SDK při opakovaném pokusu o 503s automaticky.
 
@@ -324,7 +324,7 @@ do
 
 Odtud rozbalíme exponenciální kód omezení rychlosti do funkce, aby ho bylo možné snadno volat.
 
-Pro správu aktivních vláken se pak vytvoří další funkce. Pro zjednodušení Tato funkce není zde obsažena, ale je možné ji najít v [ExponentialBackoff.cs](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/optimize-data-indexing/OptimizeDataIndexing/ExponentialBackoff.cs). Funkci lze volat pomocí následujícího příkazu, kde `hotels` jsou data, která chceme nahrát, `1000` je velikost dávky a `8` je počet souběžných vláken:
+Pro správu aktivních vláken se pak vytvoří další funkce. Pro zjednodušení Tato funkce není zde obsažena, ale je možné ji najít v [ExponentialBackoff.cs](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/optimize-data-indexing/OptimizeDataIndexing/ExponentialBackoff.cs). Funkci lze volat pomocí následujícího příkazu `hotels` , kde jsou data, která chceme nahrát, `1000` je velikost dávky a `8` je počet souběžných vláken:
 
 ```csharp
 ExponentialBackoff.IndexData(indexClient, hotels, 1000, 8).Wait();

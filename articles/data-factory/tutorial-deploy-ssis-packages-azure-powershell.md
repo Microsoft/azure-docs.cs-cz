@@ -14,12 +14,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 6ffc1aa6e28bf17d0de3783e5e03b6a2df541e4a
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 2c3f2ccd80f2f329a7495beda1a002d84d769802
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194651"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253915"
 ---
 # <a name="set-up-an-azure-ssis-ir-in-azure-data-factory-by-using-powershell"></a>Nastavení Azure-SSIS IR v Azure Data Factory pomocí prostředí PowerShell
 
@@ -55,7 +55,7 @@ V tomto kurzu provedete následující:
     - V závislosti na vybraném databázovém serveru se SSISDB dá vytvořit jménem jako jedna databáze nebo součást elastického fondu v SQL Database nebo ve spravované instanci SQL, která je dostupná ve veřejné síti nebo prostřednictvím připojení k virtuální síti. Pokyny k výběru typu databázového serveru pro hostování SSISDB najdete v tématu [porovnání SQL Database a spravované instance SQL](create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance).
     
       Pokud používáte SQL Database s bránou firewall protokolu IP nebo koncovými body služby virtuální sítě nebo spravovanou instancí SQL s privátním koncovým bodem hostitele SSISDB, nebo pokud požadujete přístup k místním datům bez konfigurace místního prostředí IR, připojte se k Azure-SSIS IR k virtuální síti. Další informace najdete v tématu [vytvoření Azure-SSIS IR ve virtuální síti](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
-    - Potvrďte, že nastavení **Povolit přístup ke službám Azure** je povolené pro SQL Database. Toto nastavení se nedá použít, když používáte SQL Database s pravidly brány firewall protokolu IP nebo koncovými body služby virtuální sítě nebo se spravovanou instancí SQL s privátním koncovým bodem pro hostování SSISDB. Další informace najdete v tématu [Zabezpečení databáze Azure SQL](../azure-sql/database/secure-database-tutorial.md#create-firewall-rules). Pokud chcete toto nastavení povolit pomocí PowerShellu, přečtěte si článek [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule).
+    - Potvrďte, že nastavení **Povolit přístup ke službám Azure** je povolené pro SQL Database. Toto nastavení se nedá použít, když používáte SQL Database s pravidly brány firewall protokolu IP nebo koncovými body služby virtuální sítě nebo se spravovanou instancí SQL s privátním koncovým bodem pro hostování SSISDB. Další informace najdete v tématu [zabezpečená Azure SQL Database](../azure-sql/database/secure-database-tutorial.md#create-firewall-rules). Pokud chcete toto nastavení povolit pomocí PowerShellu, přečtěte si článek [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule).
     - Přidejte IP adresu klientského počítače nebo rozsah IP adres, včetně IP adresy klientského počítače, do seznamu IP adres klienta v nastavení brány firewall pro SQL Database. Další informace najdete v tématu [pravidla brány firewall na úrovni serveru a databáze](../azure-sql/database/firewall-configure.md).
     - K SQL Database nebo spravované instanci SQL se můžete připojit pomocí ověřování SQL s přihlašovacími údaji správce serveru nebo ověřováním Azure Active Directory (Azure AD) se spravovanou identitou pro vaši datovou továrnu. Pro ověřování Azure AD pro přidání spravované identity pro vaši datovou továrnu do skupiny Azure AD s oprávněním k přístupu k databázovému serveru, přečtěte si téma [vytvoření Azure-SSIS IR s ověřováním Azure AD](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
     - Potvrďte, že SQL Database nebo spravovaná instance SQL ještě nemá SSISDB. Nastavení Azure-SSIS IR nepodporuje používání existující SSISDB.

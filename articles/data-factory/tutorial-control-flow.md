@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 7746726775cd5230f48842ad9a9260efe0e540b5
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: fd006e836432ce775be8cbbefea6d9219e8b13b3
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022108"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253456"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Větvení a řetězení aktivit v kanálech Data Factory
 
@@ -48,7 +48,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 * Účet Azure Storage. Úložiště objektů BLOB použijete jako zdrojové úložiště dat. Pokud nemáte účet úložiště Azure, přečtěte si téma [Vytvoření účtu úložiště](../storage/common/storage-account-create.md).
 * Průzkumník služby Azure Storage. Pokud chcete tento nástroj nainstalovat, přečtěte si téma [Průzkumník služby Azure Storage](https://storageexplorer.com/).
-* Azure SQL Database. Tuto databázi použijete jako úložiště dat jímky. Pokud nemáte Azure SQL Database, přečtěte si téma [Vytvoření databáze SQL Azure](../azure-sql/database/single-database-create-quickstart.md).
+* Azure SQL Database. Tuto databázi použijete jako úložiště dat jímky. Pokud nemáte databázi v Azure SQL Database, přečtěte si téma [Vytvoření databáze v Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md).
 * Visual Studio. Tento článek používá Visual Studio 2019.
 * Sada Azure .NET SDK. Stáhněte a nainstalujte si [sadu Azure .NET SDK](https://azure.microsoft.com/downloads/).
 
@@ -58,7 +58,7 @@ Vytvořte aplikaci, jak je popsáno v tématu [Vytvoření aplikace Azure Active
 
 ### <a name="create-a-blob-table"></a>Vytvoření tabulky objektů BLOB
 
-1. Otevřete textový editor. Zkopírujte následující text a uložte ho místně jako *input. txt*.
+1. Otevřete textový editor. Zkopírujte následující text a uložte ho místně jako *input.txt*.
 
    ```
    Ethel|Berg
@@ -66,7 +66,7 @@ Vytvořte aplikaci, jak je popsáno v tématu [Vytvoření aplikace Azure Active
    ```
 
 1. Otevřete Průzkumník služby Azure Storage. Rozbalte svůj účet úložiště. Klikněte pravým tlačítkem na **kontejnery objektů BLOB** a vyberte **vytvořit kontejner objektů BLOB**.
-1. Pojmenujte nový kontejner *adfv2branch* a vyberte **nahrát** a přidejte do kontejneru *vstupní soubor. txt* .
+1. Pojmenujte nový kontejner *adfv2branch* a vyberte **nahrát** a přidejte soubor *input.txt* do kontejneru.
 
 ## <a name="create-visual-studio-project"></a>Vytvoření projektu v sadě Visual Studio<a name="create-visual-studio-project"></a>
 
@@ -344,7 +344,7 @@ Po uložení pracovního postupu zkopírujte a uložte hodnotu **adresy URL post
 
 ## <a name="fail-email-workflow"></a>Pracovní postup pro e-maily s informací o úspěchu
 
-Naklonujte **CopySuccessEmail** jako jiný pracovní postup Logic Apps s názvem *CopyFailEmail*. Schéma `Request Body JSON schema` v triggeru požadavku je stejné. Změňte formát e-mailu, například `Subject`, tak, aby to odpovídalo neúspěchu. Zde naleznete příklad:
+Naklonujte **CopySuccessEmail** jako jiný pracovní postup Logic Apps s názvem *CopyFailEmail*. Schéma `Request Body JSON schema` v triggeru požadavku je stejné. Změňte formát e-mailu, například `Subject`, tak, aby to odpovídalo neúspěchu. Tady je příklad:
 
 ![Návrhář aplikace logiky – pracovní postup selhání e-mailu](media/tutorial-control-flow/fail-email-workflow.png)
 

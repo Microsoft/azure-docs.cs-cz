@@ -3,12 +3,12 @@ title: Nastavení služby QnA Maker – QnA Maker
 description: Než budete moct vytvořit QnA Maker znalostní báze, musíte nejdřív nastavit službu QnA Maker v Azure. Každý, kdo má oprávnění k vytváření nových prostředků v předplatném, může nastavit službu QnA Maker.
 ms.topic: conceptual
 ms.date: 05/28/2020
-ms.openlocfilehash: 106796533f42250a2656735d97878ea04d6fa57f
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 0a1b79c91e4e1bd9a57d6dcbb38432125573b9e6
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235523"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214124"
 ---
 # <a name="manage-qna-maker-resources"></a>Správa prostředků QnA Maker
 
@@ -60,9 +60,9 @@ Tento postup slouží k vytvoření prostředků Azure potřebných ke správě 
     Prostředek s typem _Cognitive Services_ má vaše klíče _předplatného_ .
 
 
-## <a name="find-subscription-keys-in-the-azure-portal"></a>Najít klíče předplatného v Azure Portal
+## <a name="find-authoring-keys-in-the-azure-portal"></a>Hledání klíčů pro vytváření Azure Portal
 
-Klíče předplatného můžete zobrazit a obnovit z Azure Portal, kde jste vytvořili prostředek QnA Maker.
+Klíče pro vytváření obsahu můžete zobrazit a obnovit z Azure Portal, kde jste vytvořili prostředek QnA Maker. Tyto klíče mohou být označovány jako klíče předplatného. 
 
 1. V Azure Portal otevřete prostředek QnA Maker a vyberte prostředek, který má typ _Cognitive Services_ :
 
@@ -72,7 +72,7 @@ Klíče předplatného můžete zobrazit a obnovit z Azure Portal, kde jste vytv
 
     ![Klíč předplatného](../media/qnamaker-how-to-key-management/subscription-key.PNG)
 
-## <a name="find-endpoint-keys-in-the-qna-maker-portal"></a>Hledání klíčů koncových bodů na portálu QnA Maker
+## <a name="find-query-endpoint-keys-in-the-qna-maker-portal"></a>Hledání klíčů koncových bodů dotazů na portálu QnA Maker
 
 Koncový bod je ve stejné oblasti jako prostředek, protože klávesy koncových bodů slouží k volání znalostní báze.
 

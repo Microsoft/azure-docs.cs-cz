@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: 83e6498f47c36fa54890131922dc8d452a3d9220
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: edb6846d199470818e07a208feb778aca3021d9e
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560485"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253660"
 ---
 # <a name="branching-and-chaining-activities-in-an-azure-data-factory-pipeline-using-the-azure-portal"></a>Větvení a řetězení aktivit v Azure Data Factoryovém kanálu pomocí Azure Portal
 
@@ -44,7 +44,7 @@ Tento kurz používá Azure Portal. K interakci s Azure Data Factory můžete po
 
 * **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 * **Účet Azure Storage**. Úložiště objektů blob použijete jako **zdrojové** úložiště dat. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../storage/common/storage-account-create.md) , kde najdete kroky, jak ho vytvořit.
-* **Azure SQL Database**. Tuto databázi použijete jako úložiště dat **jímky**. Pokud Azure SQL Database nemáte, přečtěte si článek věnovaný [vytvoření databáze Azure SQL](../azure-sql/database/single-database-create-quickstart.md), kde najdete kroky pro její vytvoření.
+* **Azure SQL Database**. Tuto databázi použijete jako úložiště dat **jímky**. Pokud nemáte databázi v Azure SQL Database, přečtěte si článek [Vytvoření databáze v článku Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md) , kde najdete kroky pro její vytvoření.
 
 ### <a name="create-blob-table"></a>Vytvoření tabulky objektů blob
 
@@ -206,6 +206,7 @@ V tomto kroku vytvoříte kanál s jednou aktivitou kopírování a dvěma aktiv
 13. Přepněte na kartu s **kanálu** (nebo) klikněte na kanál ve stromovém zobrazení. Ověřte, že jako **Zdrojová datová sada** je vybraná datová sada **SourceBlobDataset**.
 
     ![Zdrojová datová sada](./media/tutorial-control-flow-portal/pipeline-source-dataset-selected.png)
+
 13. V okně Vlastnosti přepněte na kartu **Jímka** a klikněte na **+ Nová** v části **Datová sada jímky**. V tomto kroku pro aktivitu kopírování vytvoříte datovou sadu jímky podobným způsobem, jako jste vytvořili zdrojovou datovou sadu.
 
     ![Tlačítko Nová datová sada jímky](./media/tutorial-control-flow-portal/new-sink-dataset-button.png)

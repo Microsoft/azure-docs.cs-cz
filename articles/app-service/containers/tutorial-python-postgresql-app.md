@@ -10,12 +10,12 @@ ms.custom:
 - seo-python-october2019
 - cli-validate
 - tracking-python
-ms.openlocfilehash: 4a2f80ea30fc68ae1dfea72983fd2b229d40c711
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 29aeae7683c46b1e10acdf1b2c4a7183c22eb408
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559285"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807323"
 ---
 # <a name="tutorial-deploy-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>Kurz: nasazení webové aplikace v Pythonu (Django) s PostgreSQL v Azure App Service
 
@@ -62,8 +62,8 @@ Podívejte se na *azuresite/produkční. py*, který provede nezbytnou konfigura
 
 - Zdědit všechna nastavení z *azuresite/Settings. py*.
 - Přidejte plně kvalifikovaný název domény App Service aplikace k povoleným hostitelům. 
-- Použijte [WhiteNoise](https://whitenoise.evans.io/en/stable/) k povolení obsluhy statických souborů v produkčním prostředí, protože Django ve výchozím nastavení neslouží jako statické soubory v produkčním prostředí. Balíček WhiteNoise je již součástí *požadavků. txt*.
-- Přidejte konfiguraci pro databázi PostgreSQL. Ve výchozím nastavení používá Django jako databázi sqlite3, ale není vhodná pro produkční aplikace. Balíček [psycopg2-Binary](https://pypi.org/project/psycopg2-binary/) již obsahuje *požadavky. txt*.
+- Použijte [WhiteNoise](https://whitenoise.evans.io/en/stable/) k povolení obsluhy statických souborů v produkčním prostředí, protože Django ve výchozím nastavení neslouží jako statické soubory v produkčním prostředí. Balíček WhiteNoise je již součástí *requirements.txt*.
+- Přidejte konfiguraci pro databázi PostgreSQL. Ve výchozím nastavení používá Django jako databázi sqlite3, ale není vhodná pro produkční aplikace. Balíček [psycopg2-Binary](https://pypi.org/project/psycopg2-binary/) je již součástí *requirements.txt*.
 - Konfigurace Postgres používá proměnné prostředí. Později se dozvíte, jak nastavit proměnné prostředí v App Service.
 
 *azuresite/produkční. py* je zahrnuté do úložiště pro usnadnění, ale zatím ho aplikace nepoužívá. Abyste se ujistili, že se v App Service používá jeho nastavení, musíte pro přístup k němu nakonfigurovat dva soubory, *Manage.py* a *azuresite/rozhraním WSGI. py*.
@@ -220,6 +220,8 @@ cd site/wwwroot
 
 # Activate default virtual environment in App Service container
 source /antenv/bin/activate
+# Install packages
+pip install -r requirements.txt
 # Run database migrations
 python manage.py migrate
 # Create the super user (follow prompts)

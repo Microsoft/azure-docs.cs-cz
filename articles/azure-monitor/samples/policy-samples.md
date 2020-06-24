@@ -1,23 +1,23 @@
 ---
 title: Předdefinované definice zásad pro Azure Monitor
 description: Vypíše Azure Policy předdefinované definice zásad pro Azure Monitor. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 05/29/2020
+ms.date: 06/10/2020
 ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.custom: subject-policy-samples
-ms.openlocfilehash: defd6593b02a6a2805118654f61c4a5ea8cc72ed
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 5a4aa6b9ae9e33ef868c7dcc443b01c43eb1c70a
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234472"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84882501"
 ---
-# <a name="azure-policy-built-in-policy-definitions-for-azure-monitor"></a>Azure Policy předdefinované definice zásad pro Azure Monitor
+# <a name="azure-policy-built-in-definitions-for-azure-monitor"></a>Azure Policy předdefinované definice pro Azure Monitor
 
 Tato stránka je indexem [Azure Policy](../../governance/policy/overview.md) integrovaných definic zásad pro Azure monitor. Další Azure Policy integrovaných pro jiné služby najdete v tématu [Azure Policy předdefinované definice](../../governance/policy/samples/built-in-policies.md).
 
-Název každé předdefinované definice zásad odkazuje na definici zásady v Azure Portal. Použijte odkaz ve sloupci **GitHub** k zobrazení zdroje v [úložišti Azure Policy GitHubu](https://github.com/Azure/azure-policy).
+Název každé předdefinované definice zásad odkazuje na definici zásady v Azure Portal. Pomocí odkazu ve sloupci **verze** Zobrazte zdroj v [úložišti Azure Policy GitHubu](https://github.com/Azure/azure-policy).
 
 ## <a name="azure-monitor"></a>Azure Monitor
 

@@ -7,12 +7,12 @@ ms.topic: sample
 ms.date: 01/04/2019
 ms.author: tomfitz
 ms.custom: mvc, fasttrack-edit
-ms.openlocfilehash: 2d77dcbd07a67e3ba50d70770515416b45fbc7a3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2caaadd0da9d62128d04962fa1f2ff7eade907b0
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80637906"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254425"
 ---
 # <a name="azure-resource-manager-templates-for-app-service"></a>Šablony Azure Resource Manager pro App Service
 
@@ -29,7 +29,6 @@ Další informace o syntaxi a vlastnostech JSON pro App Services prostředky naj
 | [Aplikace s vlastními sloty nasazení](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-custom-deployment-slots)| Nasadí aplikaci App Service s vlastními sloty pro nasazení nebo prostředími. |
 |**Konfigurace aplikace**||
 | [Certifikát aplikace z Key Vault](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-certificate-from-key-vault)| Nasadí App Service certifikát aplikace z Azure Key Vault tajného klíče a použije ho pro vazbu TLS/SSL. |
-| [Aplikace s vlastní doménou](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-custom-domain)| Nasadí aplikaci App Service s vlastním názvem hostitele. |
 | [Aplikace s vlastní doménou a SSL](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-custom-domain-and-ssl)| Nasadí aplikaci App Service s vlastním názvem hostitele a získá certifikát aplikace z Key Vault vazby TLS/SSL. |
 | [Aplikace s rozšířením GoLang](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-with-golang)| Nasadí aplikaci App Service s rozšířením webu golang. Pak můžete v Azure spouštět webové aplikace vyvinuté v jazyce Golang. |
 | [Aplikace s Java 8 a Tomcat 8](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-java-tomcat)| Nasadí aplikaci App Service s povoleným jazykem Java 8 a Tomcat 8. Pak můžete v Azure spouštět aplikace v Javě. |
@@ -42,7 +41,7 @@ Další informace o syntaxi a vlastnostech JSON pro App Services prostředky naj
 |**Aplikace s připojenými prostředky**||
 | [Aplikace s MySQL](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-managed-mysql)| Nasadí aplikaci App Service ve Windows pomocí Azure Database for MySQL. |
 | [Aplikace s PostgreSQL](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-managed-postgresql)| Nasadí aplikaci App Service ve Windows pomocí Azure Database for PostgreSQL. |
-| [Aplikace s databází SQL](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-sql-database)| Nasadí aplikaci App Service a SQL Database na úrovni služeb Basic. |
+| [Aplikace s databází v Azure SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-sql-database)| Nasadí aplikaci App Service a databázi v Azure SQL Database na úrovni služeb Basic. |
 | [Aplikace s připojením k úložišti objektů BLOB](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-blob-connection)| Nasadí aplikaci App Service s připojovacím řetězcem úložiště objektů BLOB v Azure. Z aplikace pak můžete použít úložiště objektů BLOB. |
 | [Aplikace s mezipamětí Azure pro Redis](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-with-redis-cache)| Nasadí aplikaci App Service s mezipamětí Azure pro Redis. |
 |**App Service Environment**||

@@ -5,14 +5,14 @@ ms.subservice: application-insights
 ms.topic: tutorial
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 08/13/2019
+ms.date: 06/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 98d7c1552a7b1f2b02ae4df1cad24e20f7ac76e1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6e344908fff54a06f1885774c88b509096c26e08
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79239592"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84783142"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Vyhledání a diagnostika problémů s výkonem pomocí Azure Application Insights
 
@@ -36,7 +36,7 @@ Pro absolvování tohoto kurzu potřebujete:
 - [Povolit Application Insights Profiler](../../azure-monitor/app/profiler.md#installation) pro vaši aplikaci.
 
 ## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
-Přihlaste se k Azure Portal [https://portal.azure.com](https://portal.azure.com)v.
+Přihlaste se k Azure Portal v [https://portal.azure.com](https://portal.azure.com) .
 
 ## <a name="identify-slow-server-operations"></a>Identifikace pomalých operací serveru
 Application Insights shromažďuje podrobnosti o výkonu různých operací ve vaší aplikaci. Díky identifikaci operací, které trvají nejdéle, můžete diagnostikovat potenciální problémy nebo lépe cílit probíhající vývoj a vylepšit tak celkový výkon aplikace.
@@ -61,7 +61,7 @@ Application Insights shromažďuje podrobnosti o výkonu různých operací ve v
     ![Operace s podrobnostmi na konci](media/tutorial-performance/4-end-to-end.png)
     
 
-6.  **Profiler** pomáhá s podrobnější diagnostikou na úrovni kódu díky zobrazení skutečného kódu spuštěného pro příslušnou operaci a času, který zabraly jednotlivé kroky. Vzhledem k tomu, že se profiler spouští pravidelně, některé operace nemusejí mít trasování.  V průběhu času by trasování mělo mít více operací.  Pokud chcete pro operaci spustit profiler, klikněte na **Trasování Profileru**.
+6.  [**Profiler**](../../azure-monitor/app/profiler-overview.md) vám pomůže s diagnostikou na úrovni kódu dál tím, že zobrazuje skutečný kód, který běžel pro danou operaci, a čas potřebný pro každý krok. Vzhledem k tomu, že se profiler spouští pravidelně, některé operace nemusejí mít trasování.  V průběhu času by trasování mělo mít více operací.  Pokud chcete pro operaci spustit profiler, klikněte na **Trasování Profileru**.
 5.  Trasování zobrazí pro každou operaci jednotlivé události, takže můžete diagnostikovat původní příčinu v průběhu celé operace.  Klikněte na jeden z horních příkladů s nejdelší dobou trvání.
 6.  Kliknutím na možnost **Hot Path** zvýrazněte konkrétní cestu k událostem, která nejvíce přispívá k celkové době trvání operace.  V tomto příkladu vidíte, že nejpomalejší volání pochází z metody *FabrikamFiberAzureStorage.GetStorageTableData*. Částí, která trvá nejdéle, je metoda *CloudTable.CreateIfNotExist*. Pokud se tento řádek kódu provádí při každém volání funkce, budou se spotřebovávat zbytečná síťová volání a prostředky procesoru. Nejlepším způsobem, jak kód opravit, je vložit tento řádek do některé metody po spuštění, která se provede pouze jednou.
 
@@ -76,7 +76,7 @@ Application Insights shromažďuje podrobnosti o výkonu různých operací ve v
 ## <a name="use-logs-data-for-server"></a>Použít data protokolů pro server
  Protokoly poskytují bohatý dotazovací jazyk, který umožňuje analyzovat všechna data shromážděná v Application Insights. Můžete ho použít k provádění hloubkové analýzy dat o požadavcích a výkonu.
 
-1. Vraťte se na panel podrobností operace a klikněte ![na tlačítko](media/tutorial-performance/app-viewinlogs-icon.png)**zobrazení ikon protokolů v protokolech (analýza).**
+1. Vraťte se na panel podrobností operace a klikněte na tlačítko ![ zobrazení ikon protokolů](media/tutorial-performance/app-viewinlogs-icon.png)**v protokolech (analýza).**
 
 2. Protokoly se otevře s dotazem pro každé zobrazení na panelu.  Tyto dotazy můžete spustit tak, jak jsou, nebo je upravit podle vlastních potřeb.  První dotaz zobrazí dobu trvání této operace v průběhu času.
 
@@ -97,7 +97,7 @@ Kromě identifikace procesů serveru, které je potřeba optimalizovat, dokáže
 ## <a name="use-logs-data-for-client"></a>Použití dat protokolů pro klienta
 Stejně jako data shromážděná pro výkon serveru Application Insights zpřístupňují všechna data klienta pro hloubkovou analýzu pomocí protokolů.
 
-1. Vraťte se do souhrnu prohlížeče a ![klikněte na](media/tutorial-performance/app-viewinlogs-icon.png) tlačítko zobrazení ikon protokolů **v protokolech (analýza).**
+1. Vraťte se do souhrnu prohlížeče a klikněte na tlačítko ![ zobrazení ikon protokolů ](media/tutorial-performance/app-viewinlogs-icon.png) **v protokolech (analýza).**
 
 2. Protokoly se otevře s dotazem pro každé zobrazení na panelu. První dotaz zobrazí dobu trvání různých zobrazení stránek v průběhu času.
 

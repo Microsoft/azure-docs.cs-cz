@@ -14,21 +14,21 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/29/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: d5227fc89d99257f3390820d4930c3d57b63f03d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 2a90003c9de2cf0e942b518c6d4e9c3569039caf
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053397"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251416"
 ---
 # <a name="tutorial-deploy-a-clustering-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Kurz: nasazení modelu clusteringu v jazyce R s Azure SQL Database Machine Learning Services (Preview)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-V třetí části této série výukových kurzů nasadíte model clusteringu vyvinutý v jazyce R do databáze SQL pomocí Azure SQL Database Machine Learning Services (Preview).
+V třetí části této série kurzů pro tři části nasadíte model clusteringu vyvinutý v jazyce R do databáze v Azure SQL Database pomocí Azure SQL Database Machine Learning Services (Preview).
 
 [!INCLUDE[ml-preview-note](../../../includes/sql-database-ml-preview-note.md)]
 
-Uloženou proceduru vytvoříte pomocí vloženého skriptu jazyka R, který provádí clusteringu. Vzhledem k tomu, že se váš model spouští ve službě Azure SQL Database, můžete ho snadno vyškolet s daty uloženými v databázi.
+Uloženou proceduru vytvoříte pomocí vloženého skriptu jazyka R, který provádí clusteringu. Vzhledem k tomu, že se model spouští ve Azure SQL Database, je možné ho snadno vyškolet na data uložená v databázi.
 
 V tomto článku se dozvíte, jak:
 
@@ -38,7 +38,7 @@ V tomto článku se dozvíte, jak:
 > * Provedení clusteringu v SQL Database
 > * Použití informací o clusteringu
 
-V [první části](clustering-model-prepare-data-tutorial.md)jste zjistili, jak připravit data z databáze SQL Azure pro provádění clusteringu.
+V [první části](clustering-model-prepare-data-tutorial.md)jste zjistili, jak připravit data z databáze pro provádění clusteringu.
 
 V [druhé části](clustering-model-build-tutorial.md)jste zjistili, jak vytvořit a naučit model pro clustering v jazyce R.
 

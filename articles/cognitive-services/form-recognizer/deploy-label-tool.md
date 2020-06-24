@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 27afbafcadb4c482e97e1d003706e7d2712e63c9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3bb8f0e809ae1acbec1479c20e24c90fd81905d4
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82117263"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212441"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>Nasazení ukázkového nástroje pro popisování
 
@@ -82,14 +82,14 @@ Pomocí následujících kroků vytvořte nový prostředek pomocí Azure Portal
    > [!div class="mx-imgBorder"]
    > ![Konfigurovat Docker](./media/quickstarts/formre-configure-docker.png)
 
-7. A to je vše. V dalším kroku vyberte **zkontrolovat + vytvořit**a pak **vytvořit** a nasaďte webovou aplikaci. Po dokončení budete mít přístup k webové aplikaci na adrese URL uvedené v **přehledu** prostředku.
+7. A je to! V dalším kroku vyberte **zkontrolovat + vytvořit**a pak **vytvořit** a nasaďte webovou aplikaci. Po dokončení budete mít přístup k webové aplikaci na adrese URL uvedené v **přehledu** prostředku.
 
 > [!NOTE]
 > Při vytváření webové aplikace můžete taky nakonfigurovat autorizaci a ověřování. Není to nutné pro začátek. 
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Jako alternativu k používání Azure Portal můžete vytvořit prostředek pomocí Azure CLI. Než budete pokračovat, bude nutné nainstalovat rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Pokud už s Azure CLI pracujete, můžete tento krok přeskočit. 
+Jako alternativu k používání Azure Portal můžete vytvořit prostředek pomocí Azure CLI. Než budete pokračovat, bude nutné nainstalovat rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli). Pokud už s Azure CLI pracujete, můžete tento krok přeskočit. 
 
 K tomuto příkazu potřebujete znát několik věcí:
 

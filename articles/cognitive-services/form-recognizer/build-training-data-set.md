@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: pafarley
-ms.openlocfilehash: 9342d87318eb6a5248c75d2333fb5e2a4cbef8f4
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: ffa09293ad2ff02e104ce285b6b0aaca7d4744a2
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873297"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212662"
 ---
 # <a name="build-a-training-data-set-for-a-custom-model"></a>Sestavení sady školicích dat pro vlastní model
 
@@ -26,7 +26,7 @@ Pokud chcete použít manuálně popsání školicích dat, musíte začínat as
 
 ## <a name="training-data-tips"></a>Tipy k datům školení
 
-Je důležité použít datovou sadu optimalizovanou pro školení. Následující tipy vám pomohou zajistit, abyste získali nejlepší výsledky z operace [vlastního modelu vlaku](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync) :
+Je důležité použít datovou sadu optimalizovanou pro školení. Následující tipy vám pomohou zajistit, abyste získali nejlepší výsledky z operace [vlastního modelu vlaku](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/TrainCustomModelAsync) :
 
 * Pokud je to možné, používejte textové dokumenty PDF namísto dokumentů na základě obrázků. Naskenované soubory PDF jsou zpracovávány jako obrázky.
 * Pro vyplněné formuláře použijte příklady, které mají všechna jejich pole vyplněna.
@@ -44,11 +44,11 @@ Ujistěte se, že vaše školicí data budou také postupovat podle požadavků 
 
 Když se spojíte se sadou dokumentů formuláře, které budete používat pro školení, je nutné ji nahrát do kontejneru úložiště objektů BLOB v Azure. Pokud si nejste jisti, jak vytvořit účet služby Azure Storage pomocí kontejneru, postupujte podle pokynů [pro rychlý start Azure Storage pro Azure Portal](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal).
 
-Pokud chcete použít ručně označené údaje, budete také muset nahrát soubory *. labels. JSON* a *. OCR. JSON* , které odpovídají vašim školicím dokumentům. K vygenerování těchto souborů můžete použít [Nástroj pro označování ukázkových popisků](./quickstarts/label-tool.md) (nebo vlastní uživatelské rozhraní).
+Pokud chcete použít ručně označené údaje, budete také muset nahrát *.labels.js* a *.ocr.js* soubory, které odpovídají vašim školicím dokumentům. K vygenerování těchto souborů můžete použít [Nástroj pro označování ukázkových popisků](./quickstarts/label-tool.md) (nebo vlastní uživatelské rozhraní).
 
 ### <a name="organize-your-data-in-subfolders-optional"></a>Uspořádání dat v podsložkách (volitelné)
 
-Ve výchozím nastavení budou rozhraní API pro [vlastní model výuky](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync) používat jenom dokumenty formuláře, které jsou umístěné v kořenovém adresáři kontejneru úložiště. Můžete však s daty v podsložkách vlaky, pokud ji zadáte v volání rozhraní API. Obvykle tělo volání [vlastního modelu vlaku](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync) má následující formát, kde `<SAS URL>` je adresa URL sdíleného přístupového podpisu vašeho kontejneru:
+Ve výchozím nastavení budou rozhraní API pro [vlastní model výuky](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/TrainCustomModelAsync) používat jenom dokumenty formuláře, které jsou umístěné v kořenovém adresáři kontejneru úložiště. Můžete však s daty v podsložkách vlaky, pokud ji zadáte v volání rozhraní API. Obvykle tělo volání [vlastního modelu vlaku](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/TrainCustomModelAsync) má následující formát, kde `<SAS URL>` je adresa URL sdíleného přístupového podpisu vašeho kontejneru:
 
 ```json
 {

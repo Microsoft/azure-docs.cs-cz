@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 79d8cb4b09ef547bf1c0b01f48872ddcb4f964ee
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f883b8527fff97ea3e16e7ffa7637c432dc33c2f
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81616542"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84783346"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>Jak používat obnovitelné odstranění Key Vaultu s využitím PowerShellu
 
@@ -31,7 +31,7 @@ Funkce obnovitelného odstranění Azure Key Vault umožňuje obnovení odstran�
 
 >[!NOTE]
 > Existuje zastaralá verze našeho Key Vaultho souborového formátování PowerShellu **, která se dá načíst** do vašeho prostředí namísto správné verze. Očekáváme aktualizovanou verzi PowerShellu, která bude obsahovat potřebnou opravu formátování výstupu, a v tomto okamžiku aktualizuje toto téma. Aktuální alternativní řešení: Pokud se setkáte s tímto problémem formátování, je:
-> - Následující dotaz použijte, pokud si všimnete, že se vám nezobrazuje vlastnost s povoleným odstraněním hesla, která `$vault = Get-AzKeyVault -VaultName myvault; $vault.EnableSoftDelete`je popsaná v tomto tématu:.
+> - Následující dotaz použijte, pokud si všimnete, že se vám nezobrazuje vlastnost s povoleným odstraněním hesla, která je popsaná v tomto tématu: `$vault = Get-AzKeyVault -VaultName myvault; $vault.EnableSoftDelete` .
 
 
 Informace o Key Vault specifických referenčních informacích pro PowerShell najdete v tématu [Azure Key Vault PowerShell reference](/powershell/module/az.keyvault).
@@ -40,7 +40,7 @@ Informace o Key Vault specifických referenčních informacích pro PowerShell n
 
 Operace Key Vault se samostatně spravují prostřednictvím oprávnění řízení přístupu na základě role (RBAC) následujícím způsobem:
 
-| Operace | Popis | Oprávnění uživatele |
+| Operace | Description | Oprávnění uživatele |
 |:--|:--|:--|
 |Seznam|Zobrazí seznam odstraněných trezorů klíčů.|Microsoft. deletedVaults trezor//Read|
 |Zotavit|Obnoví odstraněný Trezor klíčů.|Trezor Microsoft. a trezory/zápis|
@@ -245,7 +245,7 @@ Totéž platí pro Trezor klíčů. Aby bylo možné trvale odstranit dočasně 
 
 ### <a name="purging-a-key-vault"></a>Vyprazdňování trezoru klíčů
 
-Když se odstraní Trezor klíčů, veškerý obsah se trvale odstraní, včetně klíčů, tajných klíčů a certifikátů. Pokud chcete vymazat odstraněný Trezor klíčů, použijte `Remove-AzKeyVault` příkaz s možností `-InRemovedState` a zadáním umístění odstraněného trezoru klíčů k `-Location location` argumentu. Umístění odstraněného trezoru můžete najít pomocí příkazu `Get-AzKeyVault -InRemovedState`.
+Když se odstraní Trezor klíčů, veškerý obsah se trvale odstraní, včetně klíčů, tajných klíčů a certifikátů. Pokud chcete vymazat odstraněný Trezor klíčů, použijte `Remove-AzKeyVault` příkaz s možností `-InRemovedState` a zadáním umístění odstraněného trezoru klíčů k `-Location location` argumentu. Umístění odstraněného trezoru můžete najít pomocí příkazu `Get-AzKeyVault -InRemovedState` .
 
 ```powershell
 Remove-AzKeyVault -VaultName ContosoVault -InRemovedState -Location westus
@@ -265,7 +265,7 @@ Výpis odstraněných objektů trezoru klíčů se zobrazí také v případě, 
 
 ## <a name="enabling-purge-protection"></a>Povoluje se ochrana vyprázdnění.
 
-Pokud je zapnutá ochrana vyprázdnění, trezor nebo objekt v odstraněném stavu nelze odstranit, dokud neuplyne doba uchování 90 dnů. Tento trezor nebo objekt je stále možné obnovit. Tato funkce poskytuje přidanou jistotu, že trezor nebo objekt nikdy nebude možné trvale odstranit, dokud neuplyne doba uchování.
+Pokud je zapnutá ochrana vyprázdnění, trezor nebo objekt v odstraněném stavu nelze odstranit, dokud neuplyne doba uchování. Tento trezor nebo objekt je stále možné obnovit. Tato funkce poskytuje přidanou jistotu, že trezor nebo objekt nikdy nebude možné trvale odstranit, dokud neuplyne doba uchování. Výchozí doba uchování je 90 dní, ale během vytváření trezoru klíčů je možné nastavit interval zásad uchovávání informací na hodnotu od 7 do 90 dnů. Zásady uchovávání informací o vyprázdnění ochrany používají stejný interval. Po nastavení se interval zásad uchovávání dat nedá změnit.
 
 Ochranu vyprázdnění můžete povolit jenom v případě, že je povolené i obnovitelné odstranění. 
 

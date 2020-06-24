@@ -1,6 +1,6 @@
 ---
-title: 'CLI: připojení aplikace k databázi SQL'
-description: Naučte se používat rozhraní příkazového řádku Azure k automatizaci nasazení a správy aplikace App Service. V této ukázce se dozvíte, jak připojit aplikaci k databázi SQL.
+title: 'CLI: připojení aplikace k SQL Database'
+description: Naučte se používat rozhraní příkazového řádku Azure k automatizaci nasazení a správy aplikace App Service. V této ukázce se dozvíte, jak připojit aplikaci k SQL Database.
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 7c2efdd0-f553-4038-a77a-e953021b3f77
@@ -9,16 +9,16 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18
-ms.openlocfilehash: aa922930314d630e1aece004bab0c74adaf8eb2f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 297ef15cbf2b8e261d38dabe3a91cb26f3b449d2
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84015484"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85250736"
 ---
-# <a name="connect-an-app-service-app-to-a-sql-database-using-cli"></a>Připojení aplikace App Service k databázi SQL pomocí rozhraní příkazového řádku
+# <a name="connect-an-app-service-app-to-sql-database-using-cli"></a>Připojení aplikace App Service k SQL Database pomocí rozhraní příkazového řádku
 
-Tento ukázkový skript vytvoří databázi SQL Azure a aplikaci App Service. Pak propojí databázi SQL s aplikací pomocí nastavení aplikace.
+Tento ukázkový skript vytvoří databázi v Azure SQL Database a v aplikaci App Service. Pak propojí databázi s aplikací pomocí nastavení aplikace.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

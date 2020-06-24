@@ -4,12 +4,12 @@ description: Popisuje, jak vyhodnotit místní virtuální počítače Hyper-V p
 ms.topic: tutorial
 ms.date: 06/03/2020
 ms.custom: mvc
-ms.openlocfilehash: 2c4233df6566f3187c8366188b0eb960189b43c5
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: 53cf4eea4bfe61951be9975bacf9adb2b3fcf435
+ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331759"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85106478"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>Posouzení virtuálních počítačů Hyper-V pomocí Azure Migrate posouzení serveru
 
@@ -36,7 +36,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 - [Dokončete](tutorial-prepare-hyper-v.md) první kurz v této sérii. Pokud to neuděláte, pokyny v tomto kurzu nebudou fungovat.
 - Tady je seznam toho, co byste měli udělat v prvním kurzu:
     - [Připravte Azure](tutorial-prepare-hyper-v.md#prepare-azure) pro práci s Azure Migrate.
-    - [Připravte hostitele Hyper-V](tutorial-prepare-hyper-v.md#prepare-hyper-v-for-assessment) a vyhodnocování virtuálních počítačů.
+    - [Připravte hostitele Hyper-V](tutorial-prepare-hyper-v.md#prepare-for-assessment) a vyhodnocování virtuálních počítačů.
     - [Ověřte](tutorial-prepare-hyper-v.md#prepare-for-appliance-deployment) , co potřebujete, abyste nasadili Azure Migrate zařízení pro posouzení technologie Hyper-V.
 
 ## <a name="set-up-an-azure-migrate-project"></a>Nastavení Azure Migrateho projektu
@@ -96,13 +96,13 @@ Před nasazením souboru ZIP ověřte, zda je soubor zip zabezpečený.
     - ```C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm]```
     - Příklady použití: ```C:\>Get-FileHash -Path ./AzureMigrateAppliance_v1.19.06.27.zip -Algorithm SHA256```
 
-3.  Ověřte nejnovější verze zařízení a obsahuje následující hodnoty:
+3.  Ověřte nejnovější verze zařízení a hodnoty hash:
 
     - Pro veřejný cloud Azure:
 
         **Scénář** | **Stáhnout** | **SHA256**
         --- | --- | ---
-        Hyper-V (8,93 MB) | [Nejnovější verze](https://aka.ms/migrate/appliance/hyperv) |  572be425ea0aca69a9aa8658c950bc319b2bdbeb93b440577264500091c846a1
+        Hyper-V (8,93 GB) | [Nejnovější verze](https://aka.ms/migrate/appliance/hyperv) |  572be425ea0aca69a9aa8658c950bc319b2bdbeb93b440577264500091c846a1
 
     - Pro Azure Government:
 
@@ -174,10 +174,7 @@ Nastavte zařízení poprvé.
 
 ### <a name="delegate-credentials-for-smb-vhds"></a>Pověření delegáta pro virtuální pevné disky SMB
 
-Pokud používáte na SMB virtuální pevné disky, musíte povolit delegování přihlašovacích údajů ze zařízení na hostitele Hyper-V. To vyžaduje následující:
-
-- Povolíte každému hostiteli, aby fungoval jako delegát pro zařízení. Pokud jste postupovali podle kurzů v předchozím kurzu, provedli jste to v předchozím kurzu, když jste připravili technologii Hyper-V pro účely posouzení a migrace. Měli byste buď nastavit CredSSP pro hostitele [ručně](tutorial-prepare-hyper-v.md#enable-credssp-on-hosts), nebo [Spustit skript](tutorial-prepare-hyper-v.md#prepare-with-a-script) , který to dělá.
-- Povolte delegování CredSSP, aby zařízení Azure Migrate mohlo fungovat jako klient a delegování přihlašovacích údajů na hostitele.
+Pokud používáte na SMB virtuální pevné disky, musíte povolit delegování přihlašovacích údajů ze zařízení na hostitele Hyper-V. K tomu je potřeba povolit, aby každý hostitel fungoval jako delegát pro zařízení. Pokud jste postupovali podle kurzů v předchozím kurzu, provedli jste to v předchozím kurzu, když jste připravili technologii Hyper-V pro účely posouzení a migrace. Měli byste buď nastavit CredSSP pro hostitele [ručně](tutorial-prepare-hyper-v.md#enable-credssp-to-delegate-credentials), nebo [Spustit skript](tutorial-prepare-hyper-v.md#run-the-script) , který to dělá.
 
 Povolit na zařízení následujícím způsobem:
 
@@ -186,12 +183,12 @@ Povolit na zařízení následujícím způsobem:
 Na virtuálním počítači zařízení spusťte tento příkaz. HyperVHost1/HyperVHost2 jsou příklady názvů hostitelů.
 
 ```
-Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com HyperVHost2.contoso.com -Force
+Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com, HyperVHost2.contoso.com, HyperVHost1, HyperVHost2 -Force
 ```
 
 Příklad: ` Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com HyperVHost2.contoso.com -Force `
 
-#### <a name="option-2"></a>2. možnost
+#### <a name="option-2"></a>Možnost 2
 
 Případně to udělejte v Editor místních zásad skupiny na zařízení:
 
@@ -226,7 +223,7 @@ Po dokončení zjišťování můžete ověřit, že se virtuální počítače 
 
 Existují dva typy posouzení, které můžete spustit pomocí Azure Migrate posouzení serveru.
 
-**Posouzení** | **Zobrazí** | **Data**
+**Posouzení** | **Podrobnosti** | **Data**
 --- | --- | ---
 **Na základě výkonu** | Posouzení na základě shromážděných dat o výkonu | **Doporučená velikost virtuálního počítače**: na základě dat využití procesoru a paměti.<br/><br/> **Doporučený typ disku (spravovaný disk Standard nebo Premium)**: na základě vstupně-výstupních operací a propustnosti místních disků.
 **Jako místní** | Posouzení na základě místních velikostí. | **Doporučená velikost virtuálního počítače**: na základě velikosti místního virtuálního počítače<br/><br> **Doporučený typ disku**: na základě nastavení typu úložiště, které jste vybrali pro posouzení.

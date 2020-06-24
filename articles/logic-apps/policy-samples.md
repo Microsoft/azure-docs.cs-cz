@@ -1,22 +1,22 @@
 ---
 title: Předdefinované definice zásad pro Azure Logic Apps
 description: Vypíše Azure Policy předdefinované definice zásad pro Azure Logic Apps. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 05/29/2020
+ms.date: 06/10/2020
 ms.topic: sample
 ms.suite: integration
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 81bbaf7ec2b6c9d29efeea34f1ca22dc5f4cd4cb
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: e94192a64513fc50924a0d0182914cbef6073d3c
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84236182"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84886542"
 ---
-# <a name="azure-policy-built-in-policy-definitions-for-azure-logic-apps"></a>Azure Policy předdefinované definice zásad pro Azure Logic Apps
+# <a name="azure-policy-built-in-definitions-for-azure-logic-apps"></a>Azure Policy předdefinované definice pro Azure Logic Apps
 
 Tato stránka je indexem [Azure Policy](../governance/policy/overview.md) integrovaných definic zásad pro Azure Logic Apps. Další Azure Policy integrovaných pro jiné služby najdete v tématu [Azure Policy předdefinované definice](../governance/policy/samples/built-in-policies.md).
 
-Název každé předdefinované definice zásad odkazuje na definici zásady v Azure Portal. Použijte odkaz ve sloupci **GitHub** k zobrazení zdroje v [úložišti Azure Policy GitHubu](https://github.com/Azure/azure-policy).
+Název každé předdefinované definice zásad odkazuje na definici zásady v Azure Portal. Pomocí odkazu ve sloupci **verze** Zobrazte zdroj v [úložišti Azure Policy GitHubu](https://github.com/Azure/azure-policy).
 
 ## <a name="azure-logic-apps"></a>Azure Logic Apps
 

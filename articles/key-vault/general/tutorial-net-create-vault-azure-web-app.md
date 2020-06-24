@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
-ms.openlocfilehash: dca7392c35c398ae3d9da62114c991ee4c0e57ca
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: f6e70caaedf906142b19ba45f0eb4d818e2955e7
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82997003"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85051896"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-with-net"></a>Kurz: použití spravované identity pro připojení Key Vault k webové aplikaci Azure pomocí .NET
 
@@ -51,7 +51,7 @@ Pokud chcete vytvořit Trezor klíčů, použijte příkaz [AZ Key trezor Create
 az keyvault create --name "<your-keyvault-name>" -g "myResourceGroup"
 ```
 
-Poznamenejte si vrácenou `vaultUri`hodnotu, která bude ve formátu "https://<Your-webtrezor-Name>. Vault.Azure.NET/". Bude použit v kroku [aktualizace kódu](#update-the-code) .
+Poznamenejte si vrácenou hodnotu `vaultUri` , která bude ve formátu "https://<Your-webtrezor-name>. Vault.Azure.NET/". Bude použit v kroku [aktualizace kódu](#update-the-code) .
 
 V trezoru klíčů teď můžete umístit tajný klíč pomocí příkazu [AZ Key trezor tajné sady](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-set) . Nastavte název tajného kódu na "MySecret" a hodnotu na "úspěch!".
 
@@ -109,7 +109,7 @@ Pokud chcete nakonfigurovat uživatele nasazení, spusťte příkaz [AZ WebApp D
 az webapp deployment user set --user-name "<username>" --password "<password>"
 ```
 
-Výstup JSON zobrazuje heslo jako `null`. Pokud se zobrazí chyba `'Conflict'. Details: 409`, změňte uživatelské jméno. Pokud se zobrazí chyba `'Bad Request'. Details: 400`, použijte silnější heslo. 
+Výstup JSON zobrazuje heslo jako `null` . Pokud se zobrazí chyba `'Conflict'. Details: 409`, změňte uživatelské jméno. Pokud se zobrazí chyba `'Bad Request'. Details: 400`, použijte silnější heslo. 
 
 Poznamenejte si uživatelské jméno a heslo, které chcete použít k nasazení webových aplikací.
 
@@ -144,10 +144,10 @@ Po vytvoření plánu služby App Service se v rozhraní příkazového řádku 
 
 ### <a name="create-a-remote-web-app"></a>Vytvoření vzdálené webové aplikace
 
-Vytvořte [webovou aplikaci Azure](../../app-service/containers/app-service-linux-intro.md) v plánu `myAppServicePlan` App Service. 
+Vytvořte [webovou aplikaci Azure](../../app-service/containers/app-service-linux-intro.md) v `myAppServicePlan` plánu App Service. 
 
 > [!Important]
-> Podobně jako u Key Vault musí mít webová aplikace Azure jedinečný název. V \<následujících příkladech nahraďte\> WebApp-Name názvem vaší webové aplikace.
+> Podobně jako u Key Vault musí mít webová aplikace Azure jedinečný název. \<your-webapp-name\>V následujících příkladech nahraďte názvem vaší webové aplikace.
 
 
 ```azurecli-interactive
@@ -176,7 +176,7 @@ Local git is configured with url of 'https://&lt;username&gt;@&lt;your-webapp-na
 
 Adresa URL vzdáleného úložiště Git se zobrazuje ve vlastnosti `deploymentLocalGitUrl` ve formátu `https://<username>@<your-webapp-name>.scm.azurewebsites.net/<your-webapp-name>.git`. Tuto adresu URL uložte, jak ji budete potřebovat později.
 
-Přejděte k nově vytvořené aplikaci. Název vaší aplikace nahraďte parametrem _ &lt;-WebApp-Name>_ .
+Přejděte k nově vytvořené aplikaci. Název vaší aplikace nahraďte parametrem _ &lt; -WebApp-Name>_ .
 
 ```bash
 https://<your-webapp-name>.azurewebsites.net
@@ -186,7 +186,7 @@ Zobrazí se výchozí webová stránka pro nově vytvořenou webovou aplikaci Az
 
 ### <a name="deploy-your-local-app"></a>Nasazení místní aplikace
 
-Zpátky v místním okně terminálu přidejte vzdálené úložiště Azure do místního úložiště Git a nahraďte * \<deploymentLocalGitUrl-from-Create-Step>* adresou URL vzdáleného úložiště Git, kterou jste uložili z kroku [vytvoření vzdálené webové aplikace](#create-a-remote-web-app) .
+Zpátky v místním okně terminálu přidejte vzdálené úložiště Azure do místního úložiště Git a nahraďte *\<deploymentLocalGitUrl-from-create-step>* adresu URL vzdáleného úložiště Git, kterou jste uložili v kroku [vytvoření vzdálené webové aplikace](#create-a-remote-web-app) .
 
 ```bash
 git remote add azure <deploymentLocalGitUrl-from-create-step>
@@ -232,7 +232,7 @@ Pomocí webového prohlížeče vyhledejte (nebo aktualizujte) nasazenou aplikac
 http://<your-webapp-name>.azurewebsites.net
 ```
 
-Zobrazí se zpráva "Hello World!". zpráva, kterou jste dříve viděli `http://localhost:5000`při návštěvě.
+Zobrazí se zpráva "Hello World!". zpráva, kterou jste dříve viděli při návštěvě `http://localhost:5000` .
 
 ## <a name="create-and-assign-a-managed-identity"></a>Vytvoření a přiřazení spravované identity
 
@@ -279,9 +279,10 @@ Přidejte tyto dva řádky do záhlaví:
 ```csharp
 using Azure.Identity;
 using Azure.Security.KeyVault.Secrets;
+using Azure.Core;
 ```
 
-Přidejte tyto řádky před `app.UseEndpoints` voláním, aktualizujte identifikátor URI tak, `vaultUri` aby odrážela váš Trezor klíčů. Pod kódem používá [DefaultAzureCredential ()](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet) pro ověřování do trezoru klíčů, který používá token ze spravované identity aplikace k ověření. Používá se také exponenciální omezení rychlosti pro opakované pokusy v případě omezení trezoru klíčů.
+Přidejte tyto řádky před `app.UseEndpoints` voláním, aktualizujte identifikátor URI tak, aby odrážela `vaultUri` váš Trezor klíčů. Pod kódem používá [DefaultAzureCredential ()](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet) pro ověřování do trezoru klíčů, který používá token ze spravované identity aplikace k ověření. Používá se také exponenciální omezení rychlosti pro opakované pokusy v případě omezení trezoru klíčů.
 
 ```csharp
 SecretClientOptions options = new SecretClientOptions()

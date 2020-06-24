@@ -6,16 +6,16 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: tutorial
 ms.date: 08/01/2019
-ms.openlocfilehash: 1c3987e4f2f31dd0c2395f9b40cc40780c40a518
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 10733dc59d7b143657c67e24d45d4a7c920cbd03
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021598"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255190"
 ---
 # <a name="tutorial-register-data-assets-in-azure-data-catalog"></a>Kurz: registrace datových assetů v Azure Data Catalog
 
-V tomto kurzu pomocí registračního nástroje zaregistrujete datové assety z ukázkové databáze SQL Azure s využitím katalogu. Registrace je proces extrahování klíčových strukturálních metadat – například názvy, typy a umístění – ze zdroje dat a assetů v tomto zdroji a zkopírování těchto metadat do katalogu. Zdroj dat a datové assety zůstanou tam, kde jsou, ale jejich metadata použije katalog k tomu, aby byly tyto objekty snadněji zjistitelné a srozumitelnější.
+V tomto kurzu pomocí registračního nástroje zaregistrujete datové assety z ukázkové databáze pomocí katalogu. Registrace je proces extrahování klíčových strukturálních metadat – například názvy, typy a umístění – ze zdroje dat a assetů v tomto zdroji a zkopírování těchto metadat do katalogu. Zdroj dat a datové assety zůstanou tam, kde jsou, ale jejich metadata použije katalog k tomu, aby byly tyto objekty snadněji zjistitelné a srozumitelnější.
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 
 Chcete-li začít, je nutné dokončit [rychlé](register-data-assets-tutorial.md)zprovoznění.
 
-* [Microsoft Azure](https://azure.microsoft.com/) předplatné.
+* Předplatné [Microsoft Azure](https://azure.microsoft.com/)
 * Musíte mít vlastního [klienta Azure Active Directory](../active-directory/fundamentals/active-directory-access-create-new-tenant.md).
 
 Pokud chcete nastavit Data Catalog, musíte být vlastníkem nebo spoluvlastníkem předplatného Azure.
@@ -39,11 +39,11 @@ Pokud chcete nastavit Data Catalog, musíte být vlastníkem nebo spoluvlastník
 
 ### <a name="register-a-data-source"></a>Registrace zdroje dat
 
-Pomocí [ukázky Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md)zaregistrujete datové assety (tabulky), ale můžete použít libovolný podporovaný zdroj dat, pokud dáváte přednost práci s daty, která jsou známá a jsou relevantní pro vaši roli. Seznam podporovaných zdrojů dat naleznete v tématu [Podporované zdroje dat](data-catalog-dsr.md).
+Zaregistrujete datové assety (tabulky) z [ukázkové databáze](../azure-sql/database/single-database-create-quickstart.md) pro Azure SQL Database, ale můžete použít libovolný podporovaný zdroj dat, pokud dáváte přednost práci s daty, která jsou známá a jsou relevantní pro vaši roli. Seznam podporovaných zdrojů dat naleznete v tématu [Podporované zdroje dat](data-catalog-dsr.md).
 
-Název Azure SQL Database, který používáme v tomto kurzu, je *RLSTest*.
+Název databáze, který používáme v tomto kurzu, je *RLSTest*.
 
-Datové assety z ukázky Azure SQL Database teď můžete registrovat pomocí Azure Data Catalog.
+Datové assety z ukázkové databáze teď můžete registrovat pomocí Azure Data Catalog.
 
 1. Přejít na [domovskou stránku Azure Data Catalog](http://azuredatacatalog.com) a vyberte **publikovat data**.
 
@@ -61,13 +61,13 @@ Datové assety z ukázky Azure SQL Database teď můžete registrovat pomocí Az
 
     ![Azure Data Catalog – zdroje dat](media/register-data-assets-tutorial/data-catalog-data-sources.png)
 
-5. Zadejte vlastnosti připojení SQL Server pro Azure SQL Database a vyberte **připojit**.
+5. Zadejte vlastnosti připojení SQL Server pro ukázku databáze v Azure SQL Database a vyberte **připojit**.
 
    ![Azure Data Catalog – nastavení připojení k SQL Serveru](media/register-data-assets-tutorial/data-catalog-sql-server-connection.png)
 
-6. Zaregistrujte metadata datového assetu. V tomto příkladu zaregistrujete objekty **produktu** z ukázkového oboru názvů Azure SQL Database:
+6. Zaregistrujte metadata datového assetu. V tomto příkladu zaregistrujete objekty **produktu** z ukázkového oboru názvů:
 
-    1. Ve stromové struktuře **hierarchie serveru** rozbalte ukázku Azure SQL Database a vyberte **tabulky SalesLT**.
+    1. Ve stromové struktuře **hierarchie serveru** rozbalte ukázku databáze a vyberte **tabulky SalesLT**.
 
     2. Pomocí kombinace kláves CTRL + SELECT vyberte **Product**, **ProductCategory**, **ProductDescription**a **ProductModel** .
 
@@ -85,7 +85,7 @@ Datové assety z ukázky Azure SQL Database teď můžete registrovat pomocí Az
 
           ![Kurz Azure Data Catalog – objekty k registraci](media/register-data-assets-tutorial/data-catalog-objects-register.png)
 
-    8. Vyberte **Registrovat**. Služba Azure Data Catalog zaregistruje vaše vybrané objekty. V tomto cvičení jsou zaregistrované vybrané objekty z vaší ukázky služby Azure SQL Database. Registrační nástroj vyextrahuje metadata z datového assetu a zkopíruje je do služby Azure Data Catalog. Data zůstanou tam, kde se aktuálně zůstanou. Data zůstávají pod kontrolou správců a zásad systému původu.
+    8. Vyberte **Registrovat**. Služba Azure Data Catalog zaregistruje vaše vybrané objekty. V tomto cvičení jsou zaregistrovány vybrané objekty z ukázkové databáze. Registrační nástroj vyextrahuje metadata z datového assetu a zkopíruje je do služby Azure Data Catalog. Data zůstanou tam, kde se aktuálně zůstanou. Data zůstávají pod kontrolou správců a zásad systému původu.
 
           ![Azure Data Catalog – registrované objekty](media/register-data-assets-tutorial/data-catalog-registered-objects.png)
 
@@ -93,7 +93,7 @@ Datové assety z ukázky Azure SQL Database teď můžete registrovat pomocí Az
 
         ![Objekty na portálu Azure Data Catalog](media/register-data-assets-tutorial/data-catalog-view-portal.png)
 
-V tomto cvičení jste zaregistrovali objekty z ukázkové databáze SQL Azure, aby je uživatelé ve vaší organizaci mohli snadno zjistit.
+V tomto cvičení jste zaregistrovali objekty z ukázkové databáze pro Azure SQL Database tak, aby je uživatelé ve vaší organizaci mohli snadno zjistit.
 
 V dalším cvičení se dozvíte, jak zjistit registrované datové assety.
 
@@ -168,7 +168,7 @@ Závorky lze použít k seskupení částí dotazu za účelem logické izolace,
 
     ![Azure Data Catalog – vyhledávání seskupení](media/register-data-assets-tutorial/data-catalog-grouping-search.png)
 
-### <a name="comparison-operators"></a>Operátory porovnávání
+### <a name="comparison-operators"></a>Operátory porovnání
 
 S pomocí operátorů porovnání lze použít porovnávání jiné než rovnost pro vlastnosti, které mají typ dat číslo nebo datum.
 
@@ -178,7 +178,7 @@ S pomocí operátorů porovnání lze použít porovnávání jiné než rovnost
 
 3. Stiskněte klávesu **ENTER**.
 
-4. Potvrďte, že jste viděli tabulky **Product**, **ProductCategory**a **ProductDescription** a službu Azure SQL Database, kterou jste zaregistrovali ve výsledcích hledání.
+4. Potvrďte, že jste viděli tabulky **Product**, **ProductCategory**a **ProductDescription** a SQL Database, kterou jste zaregistrovali ve výsledcích hledání.
 
     ![Azure Data Catalog – výsledky vyhledávání porovnání](media/register-data-assets-tutorial/data-catalog-comparison-operator-results.png)
 
@@ -251,7 +251,7 @@ V tomto cvičení otevřete datové assety v integrovaném klientském nástroji
 
 ### <a name="sql-server-management-studio"></a>SQL Server Management Studio
 
-V tomto cvičení jste se připojili k datovým assetům zjištěným pomocí služby Azure Data Catalog. Portál služby Azure Data Catalog vám umožňuje připojit se přímo pomocí klientských aplikací integrovaných do jeho nabídky **Otevřít v aplikaci**. Také se ale můžete připojit pomocí jakékoli aplikace, kterou si vyberete, pomocí informací o umístění připojení zahrnutých v metadatech assetu. Můžete například použít SQL Server Management Studio pro připojení k databázi SQL Azure pro přístup k datům v datových assetech zaregistrovaných v tomto kurzu.
+V tomto cvičení jste se připojili k datovým assetům zjištěným pomocí služby Azure Data Catalog. Portál služby Azure Data Catalog vám umožňuje připojit se přímo pomocí klientských aplikací integrovaných do jeho nabídky **Otevřít v aplikaci**. Také se ale můžete připojit pomocí jakékoli aplikace, kterou si vyberete, pomocí informací o umístění připojení zahrnutých v metadatech assetu. Můžete například použít SQL Server Management Studio pro připojení k Azure SQL Database pro přístup k datům v datových assetech zaregistrovaných v tomto kurzu.
 
 1. Otevřete **SQL Server Management Studio**.
 

@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 09/03/2019
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: a709d0d4aa9b7c4e3ab06e6d34bbb199cb1b5917
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: c658283ed610dcd14fca82b14217cba979388fc2
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84323922"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85252912"
 ---
 # <a name="tutorial-secure-a-database-in-azure-sql-database"></a>Kurz: zabezpečení databáze v Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -301,7 +301,7 @@ Povolení auditování:
     ![Záznamy auditu](./media/secure-database-tutorial/audit-records.png)
 
 > [!IMPORTANT]
-> Postup dalšího přizpůsobení událostí auditu pomocí PowerShellu nebo REST API najdete v tématu [auditování databáze SQL](../../azure-sql/database/auditing-overview.md) .
+> Další informace o tom, jak dál přizpůsobit události auditu pomocí PowerShellu nebo REST API, najdete v tématu [SQL Database auditování](../../azure-sql/database/auditing-overview.md) .
 
 ### <a name="dynamic-data-masking"></a>Dynamické maskování dat
 

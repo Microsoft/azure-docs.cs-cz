@@ -1,24 +1,24 @@
 ---
 title: Předdefinované definice zásad pro Azure Database for PostgreSQL
 description: Vypíše Azure Policy předdefinované definice zásad pro Azure Database for PostgreSQL. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 05/29/2020
+ms.date: 06/10/2020
 ms.topic: sample
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 148bafe65935ad358184d93cf994866ac87d24bf
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: fdc07730c7b8b1a7ff2c33a7b1625a4e313331a4
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84233050"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887312"
 ---
-# <a name="azure-policy-built-in-policy-definitions-for-azure-database-for-postgresql"></a>Azure Policy předdefinované definice zásad pro Azure Database for PostgreSQL
+# <a name="azure-policy-built-in-definitions-for-azure-database-for-postgresql"></a>Azure Policy předdefinované definice pro Azure Database for PostgreSQL
 
 Tato stránka je indexem [Azure Policy](../governance/policy/overview.md) integrovaných definic zásad pro Azure Database for PostgreSQL. Další Azure Policy integrovaných pro jiné služby najdete v tématu [Azure Policy předdefinované definice](../governance/policy/samples/built-in-policies.md).
 
-Název každé předdefinované definice zásad odkazuje na definici zásady v Azure Portal. Použijte odkaz ve sloupci **GitHub** k zobrazení zdroje v [úložišti Azure Policy GitHubu](https://github.com/Azure/azure-policy).
+Název každé předdefinované definice zásad odkazuje na definici zásady v Azure Portal. Pomocí odkazu ve sloupci **verze** Zobrazte zdroj v [úložišti Azure Policy GitHubu](https://github.com/Azure/azure-policy).
 
 ## <a name="azure-database-for-postgresql"></a>Azure Database for PostgreSQL
 

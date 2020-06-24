@@ -5,16 +5,16 @@ services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: tutorial
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 84e808caa033491ce3f2da099459d1242df6decd
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: afe231186adec95b09a75d7fe59552ca8a07049b
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299532"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213138"
 ---
 # <a name="use-sql-on-demand-preview-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio-preview"></a>Použití SQL na vyžádání (Preview) k analýze otevřených datových sad Azure a vizualizaci výsledků v Azure synapse Studio (Preview)
 
@@ -23,7 +23,7 @@ V tomto kurzu se dozvíte, jak provádět analýzu průzkumnéch dat kombinací 
 Konkrétně analyzujete [datovou sadu taxislužby New York City (NYC)](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/) , která zahrnuje:
 
 - Data a časy vyzvednutí a vyřazení.
-- Výstupní a odkládací umístění. 
+- Výběr a odkládací umístění. 
 - Vzdálenosti cest.
 - Tarify s položkou
 - Typy přenosů.
@@ -32,7 +32,7 @@ Konkrétně analyzujete [datovou sadu taxislužby New York City (NYC)](https://a
 
 ## <a name="automatic-schema-inference"></a>Automatické odvození schématu
 
-Vzhledem k tomu, že jsou data uložena ve formátu souboru Parquet, je k dispozici automatické odvození schématu. Data můžete snadno dotazovat, aniž byste museli vypsat datové typy všech sloupců v souborech. Můžete také použít mechanismus virtuálního sloupce a funkci FilePath k odfiltrování určité podmnožiny souborů.
+Vzhledem k tomu, že jsou data uložena ve formátu souboru Parquet, je k dispozici automatické odvození schématu. Data můžete snadno dotazovat bez výpisu datových typů všech sloupců v souborech. Můžete také použít mechanismus virtuálního sloupce a funkci FilePath k odfiltrování určité podmnožiny souborů.
 
 Nejdřív se podíváme na data taxislužby NYC spuštěním následujícího dotazu:
 

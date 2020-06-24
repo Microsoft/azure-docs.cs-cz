@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 06/17/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1da910cbf700845bdb6d5c07a6ee375a73579e75
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 1ade9e3200909c781dc00cf4e3713395f55f173d
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84456857"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253731"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) k GitHubu
 
@@ -58,7 +58,6 @@ Pokud chcete nakonfigurovat integraci GitHubu do Azure AD, musíte přidat GitHu
 1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **GitHub** .
 1. Vyberte **GitHub** z panelu výsledků a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-github"></a>Konfigurace a testování jednotného přihlašování Azure AD pro GitHub
 
 Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí GitHubu pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, musíte vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v GitHubu.
@@ -84,14 +83,17 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V části **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-   a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://github.com/orgs/<entity-id>/sso`
+   a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://github.com/orgs/<Organization ID>/sso`
 
-    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:`https://github.com/orgs/<entity-id>`
+    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:`https://github.com/orgs/<Organization ID>`
+
+    c. Do pole **Adresa URL odpovědi** textox zadejte adresu URL pomocí následujícího vzoru:`https://github.com/orgs/<Organization ID>/saml/consume`
+
 
     > [!NOTE]
-    > Počítejte s tím, že se nejedná o reálné hodnoty. Tyto hodnoty musíte aktualizovat pomocí vlastního přihlašovacího URL a identifikátoru. Tady doporučujeme, abyste v identifikátoru použili jedinečnou hodnotu řetězce. K načtení těchto hodnot použijte část správce GitHubu.
+    > Počítejte s tím, že se nejedná o reálné hodnoty. Tyto hodnoty musíte aktualizovat pomocí vlastního přihlašovací adresy URL, identifikátoru a adresy URL odpovědi. Tady doporučujeme, abyste v identifikátoru použili jedinečnou hodnotu řetězce. K načtení těchto hodnot použijte část správce GitHubu.
 
-5. Vaše aplikace GitHub očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů, kde **NameIdentifier** je mapován pomocí **User. userPrincipalName**. Aplikace GitHub očekává mapování **NameIdentifier** pomocí **User. mail**, takže potřebujete upravit mapování atributů kliknutím na ikonu **Upravit** a změnit mapování atributů.
+5. Vaše aplikace GitHub očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů, kde je jako **jedinečný identifikátor uživatele (ID názvu)** namapována hodnota **User. userPrincipalName**. Aplikace GitHub očekává, že **jedinečný identifikátor uživatele (ID)** má být namapován pomocí **User. mail**, takže je nutné upravit mapování atributů kliknutím na ikonu **Upravit** a změnit mapování atributů.
 
     ![image](common/edit-attribute.png)
 
@@ -141,15 +143,19 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ## <a name="configure-github-sso"></a>Konfigurace jednotného přihlašování GitHubu
 
-1. V jiném okně webového prohlížeče se k webu GitHub přihlaste jako správce.
+1. V jiném okně webového prohlížeče se přihlaste k webu GitHub do vaší organizace jako správce.
 
 2. Přejděte na **Nastavení** a klikněte na **zabezpečení** .
 
     ![Nastavení](./media/github-tutorial/tutorial_github_config_github_03.png)
 
-3. Zaškrtněte pole **Povolit ověřování SAML** a odhalte konfigurační pole jednotného přihlašování. Pak pomocí hodnoty URL jednotného přihlašování aktualizujte adresu URL jednotného přihlašování v konfiguraci služby Azure AD.
+3. Zaškrtněte pole **Povolit ověřování SAML** a odhalte konfigurační pole jednotného přihlašování. proveďte následující kroky:
 
     ![Nastavení](./media/github-tutorial/tutorial_github_config_github_13.png)
+
+    a. Zkopírujte hodnotu **adresy URL jednotného přihlašování** a vložte tuto hodnotu do textového pole **přihlašovací adresa URL** v **základní konfiguraci SAML** v Azure Portal.
+    
+    b. Zkopírujte hodnotu **adresy url assertion Consumer Service** a vložte tuto hodnotu do textového pole **Adresa URL odpovědi** v **základní konfiguraci SAML** v Azure Portal.
 
 4. Nakonfigurujte následující pole:
 
