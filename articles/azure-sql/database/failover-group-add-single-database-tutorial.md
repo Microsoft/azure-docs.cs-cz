@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 06/19/2019
-ms.openlocfilehash: 4df537e8cce51cc7358784fc72ef8ae077614df7
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 53645b6ba9f1463eac14ea974a17c356c1791db6
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344556"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255309"
 ---
 # <a name="tutorial-add-an-azure-sql-database-to-an-autofailover-group"></a>Kurz: Přidání Azure SQL Database do skupiny převzetí služeb při selhání
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -225,7 +225,7 @@ Testovací převzetí služeb při selhání pomocí Azure Portal.
 1. V podokně úloh vyberte **převzetí služeb při** selhání pro skupinu převzetí služeb při selhání, která obsahuje ukázkovou databázi.
 1. U upozornění, které vás upozorní na to, že relace TDS budou odpojeny, vyberte **Ano** .
 
-   ![Převzetí služeb při selhání ve skupině, která obsahuje vaši databázi ve službě SQL Database](./media/failover-group-add-single-database-tutorial/failover-sql-db.png)
+   ![Převzetí služeb při selhání ve skupině, která obsahuje vaši databázi](./media/failover-group-add-single-database-tutorial/failover-sql-db.png)
 
 1. Zkontrolujte, který server je teď primární a který server je sekundární. Pokud se převzetí služeb při selhání úspěšně převedlo, musí mít dva servery zaměnitelné role.
 1. Znovu vyberte **převzetí služeb při selhání** , aby se servery znovu nezměnily na původní role.

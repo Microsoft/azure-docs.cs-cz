@@ -5,22 +5,22 @@ description: Vytvoření nebo úprava partnerského vztahu serveru Exchange pomo
 services: internet-peering
 author: derekolo
 ms.service: internet-peering
-ms.topic: article
+ms.topic: how-to
 ms.date: 5/19/2020
 ms.author: derekol
-ms.openlocfilehash: 004479d7aa3ec46da4790c0d8dfa698c6d9fb986
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 1eaf7413b01bceacbcbf3640bfe654fdad026672
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84249491"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84700661"
 ---
 # <a name="create-or-modify-an-exchange-peering-with-route-server-in-azure-portal"></a>Vytvoření nebo úprava partnerského vztahu systému Exchange pomocí serveru Směrování v Azure Portal
 
 Tento článek popisuje, jak vytvořit partnerský vztah Microsoft Exchange s směrovacím serverem pomocí Azure Portal. Tento článek také ukazuje, jak kontrolovat stav prostředku, aktualizovat ho nebo odstranit a zrušit jeho zřízení.
 
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 * Před zahájením konfigurace si Projděte návod [požadavky](prerequisites.md) a [partnerský vztah Exchange](walkthrough-exchange-all.md) .
 * Pokud už máte partnerské vztahy Exchange s Microsoftem, které se nepřevádějí na prostředky Azure, přečtěte si téma [Převod staršího partnerského vztahu Exchange na prostředek Azure pomocí portálu](howto-legacy-exchange-portal.md).
 

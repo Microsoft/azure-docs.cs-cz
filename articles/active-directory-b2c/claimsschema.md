@@ -44,7 +44,7 @@ Element **ClaimType** obsahuje následující atribut:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| ID | Ano | Identifikátor, který se používá pro typ deklarace. Ostatní elementy můžou tento identifikátor v zásadách použít. |
+| ID | Yes | Identifikátor, který se používá pro typ deklarace. Ostatní elementy můžou tento identifikátor v zásadách použít. |
 
 Element **ClaimType** obsahuje následující prvky:
 
@@ -92,8 +92,8 @@ Element **Protocol** obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Name | Ano | Název platného protokolu, který podporuje Azure AD B2C. Možné hodnoty jsou: OAuth1, OAuth2, typu Saml2, OpenIdConnect. |
-| PartnerClaimType | Ano | Název typu deklarace, který se má použít |
+| Name | Yes | Název platného protokolu, který podporuje Azure AD B2C. Možné hodnoty jsou: OAuth1, OAuth2, typu Saml2, OpenIdConnect. |
+| PartnerClaimType | Yes | Název typu deklarace, který se má použít |
 
 V následujícím příkladu, když architektura prostředí identity komunikuje s poskytovatelem identity typu Saml2 nebo s aplikací předávající strany, je **přidaná deklarace identity** namapovaná na `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` OpenIdConnect a OAuth2, na kterou je tato deklarace namapovaná `family_name` .
 
@@ -127,8 +127,8 @@ Element **Maske** obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| `Type` | Ano | Typ masky deklarace identity. Možné hodnoty: `Simple` nebo `Regex` . `Simple`Hodnota označuje, že je použita jednoduchá textová maska pro úvodní část deklarace řetězce. `Regex`Hodnota označuje, že regulární výraz je použit na deklaraci řetězce jako celek.  Pokud `Regex` je zadána hodnota, volitelný atribut musí být také definován s regulárním výrazem, který má být použit. |
-| `Regex` | Ne | Pokud **`Type`** je nastaven na `Regex` , zadejte regulární výraz, který se má použít.
+| `Type` | Yes | Typ masky deklarace identity. Možné hodnoty: `Simple` nebo `Regex` . `Simple`Hodnota označuje, že je použita jednoduchá textová maska pro úvodní část deklarace řetězce. `Regex`Hodnota označuje, že regulární výraz je použit na deklaraci řetězce jako celek.  Pokud `Regex` je zadána hodnota, volitelný atribut musí být také definován s regulárním výrazem, který má být použit. |
+| `Regex` | No | Pokud **`Type`** je nastaven na `Regex` , zadejte regulární výraz, který se má použít.
 
 Následující příklad konfiguruje deklaraci **PhoneNumber** s `Simple` maskou:
 
@@ -167,7 +167,7 @@ Element **omezení** může obsahovat následující atribut:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| MergeBehavior | Ne | Metoda použitá ke sloučení hodnot výčtu se třídou ClaimType v nadřazené zásadě se stejným identifikátorem. Tento atribut použijte, pokud přepíšete deklaraci identity zadanou v základní zásadě. Možné hodnoty: `Append` , `Prepend` , nebo `ReplaceAll` . `Append`Hodnota je kolekce dat, která by se měla připojit na konec kolekce zadané v nadřazené zásadě. `Prepend`Hodnota je kolekce dat, která by se měla přidat před kolekce zadané v nadřazené zásadě. `ReplaceAll`Hodnota je kolekce dat zadaných v nadřazené zásadě, která by se měla ignorovat. |
+| MergeBehavior | No | Metoda použitá ke sloučení hodnot výčtu se třídou ClaimType v nadřazené zásadě se stejným identifikátorem. Tento atribut použijte, pokud přepíšete deklaraci identity zadanou v základní zásadě. Možné hodnoty: `Append` , `Prepend` , nebo `ReplaceAll` . `Append`Hodnota je kolekce dat, která by se měla připojit na konec kolekce zadané v nadřazené zásadě. `Prepend`Hodnota je kolekce dat, která by se měla přidat před kolekce zadané v nadřazené zásadě. `ReplaceAll`Hodnota je kolekce dat zadaných v nadřazené zásadě, která by se měla ignorovat. |
 
 Element **omezení** obsahuje následující prvky:
 
@@ -184,9 +184,9 @@ Prvek **výčtu** obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Text | Ano | Zobrazovaný řetězec, který je zobrazen uživateli v uživatelském rozhraní pro tuto možnost. |
-|Hodnota | Ano | Hodnota deklarace identity, která je přidružená k výběru této možnosti. |
-| SelectByDefault | Ne | Určuje, zda má být tato možnost ve výchozím nastavení vybrána v uživatelském rozhraní. Možné hodnoty: true nebo false. |
+| Text | Yes | Zobrazovaný řetězec, který je zobrazen uživateli v uživatelském rozhraní pro tuto možnost. |
+|Hodnota | Yes | Hodnota deklarace identity, která je přidružená k výběru této možnosti. |
+| SelectByDefault | No | Určuje, zda má být tato možnost ve výchozím nastavení vybrána v uživatelském rozhraní. Možné hodnoty: true nebo false. |
 
 Následující příklad konfiguruje deklaraci identity rozevíracího seznamu **měst** s výchozí hodnotou nastavenou na `New York` :
 
@@ -213,8 +213,8 @@ Prvek **vzoru** může obsahovat následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| RegularExpression | Ano | Regulární výraz, který deklarace identity tohoto typu musí splňovat, aby byl platný. |
-| HelpText | Ne | Chybová zpráva pro uživatele, pokud se chyba kontroly regulárního výrazu nezdařila. |
+| RegularExpression | Yes | Regulární výraz, který deklarace identity tohoto typu musí splňovat, aby byl platný. |
+| HelpText | No | Chybová zpráva pro uživatele, pokud se chyba kontroly regulárního výrazu nezdařila. |
 
 V následujícím příkladu je nakonfiguruje deklarace **e-mailu** pomocí ověřování vstupu regulárního výrazu a textu v nápovědě:
 

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: mayg
 ms.openlocfilehash: b8f0512f978f25ca196ad6e9a7a03243c47f0662
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258080"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84691199"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>Nastavení mapování sítě a adresování IP pro virtuální sítě
 
@@ -73,7 +73,7 @@ IP adresa každé síťové karty na cílovém virtuálním počítači je nakon
 
 ## <a name="ip-address-assignment-during-failover"></a>Přiřazení IP adresy během převzetí služeb při selhání
 
-**Zdrojové a cílové podsítě** | **Zobrazí**
+**Zdrojové a cílové podsítě** | **Podrobnosti**
 --- | ---
 Stejný adresní prostor | IP adresa zdrojového adaptéru virtuálního počítače je nastavená jako IP adresa cílové síťové karty virtuálního počítače.<br/><br/> Pokud adresa není k dispozici, je jako cíl nastavena Další dostupná IP adresa.
 Jiný adresní prostor | Následující dostupná IP adresa v cílové podsíti je nastavená jako adresa cílové síťové karty virtuálního počítače.
@@ -82,7 +82,7 @@ Jiný adresní prostor | Následující dostupná IP adresa v cílové podsíti 
 
 ## <a name="ip-address-assignment-during-test-failover"></a>Přiřazení IP adresy během testovacího převzetí služeb při selhání
 
-**Cílová síť** | **Zobrazí**
+**Cílová síť** | **Podrobnosti**
 --- | ---
 Cílová síť je virtuální síť převzetí služeb při selhání. | -Cílová IP adresa bude statická se stejnou IP adresou. <br/><br/>  – Pokud je stejná IP adresa už přiřazená, pak je tato IP adresa další dostupnou na konci rozsahu podsítě. Příklad: Pokud je zdrojová IP adresa 10.0.0.19 a převzetí služeb při selhání používá rozsah 10.0.0.0/24, pak je 10.0.0.254 další IP adresa přiřazená k cílovému virtuálnímu počítači.
 Cílová síť není virtuální síť převzetí služeb při selhání. | -Cílová IP adresa bude statická se stejnou IP adresou.<br/><br/>  – Pokud je stejná IP adresa už přiřazená, pak je tato IP adresa další dostupnou na konci rozsahu podsítě.<br/><br/> Příklad: Pokud je zdrojová statická IP adresa 10.0.0.19 a převzetí služeb při selhání je v síti, která není síť s podporou převzetí služeb při selhání, s rozsahem 10.0.0.0/24, pak bude cílová statická IP adresa 10.0.0.0.19, pokud bude k dispozici, a jinak bude 10.0.0.254.

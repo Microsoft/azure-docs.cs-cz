@@ -3,12 +3,12 @@ title: Začínáme se službou Azure Advisor
 description: Začínáme s Azure Advisor.
 ms.topic: article
 ms.date: 02/01/2019
-ms.openlocfilehash: f40aa9d3177f251787d60f3087c5f85b6d982b6e
-ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
+ms.openlocfilehash: e91049077502a6c0eedf0a4f979c073690c214da
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84509113"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117858"
 ---
 # <a name="get-started-with-azure-advisor"></a>Začínáme se službou Azure Advisor
 
@@ -27,7 +27,7 @@ Naučte se, jak získat přístup ke službě Advisor prostřednictvím Azure Po
 
 1. Na řídicím panelu služby Advisor se zobrazí souhrn doporučení pro všechna vybraná předplatná.  Předplatná, pro která chcete zobrazit doporučení, můžete zvolit pomocí rozevíracího seznamu filtru předplatných.
 
-1. Pokud chcete získat doporučení pro konkrétní kategorii, klikněte na jednu z karet: **Vysoká dostupnost**, **zabezpečení**, **výkon**nebo **náklady**. 
+1. Pokud chcete získat doporučení pro konkrétní kategorii, klikněte na jednu z karet: **spolehlivost**, **zabezpečení**, **výkon**nebo **náklady**. 
 
    ![Řídicí panel Azure Advisor](./media/advisor-overview/advisor-dashboard.png)
 
@@ -124,7 +124,8 @@ Možnost stažení respektuje všechny filtry, které jste použili na řídicí
 Další informace o službě Advisor najdete v těchto tématech:
 
 - [Úvod do Azure Advisor](advisor-overview.md)
-- [Doporučení pro vysokou dostupnost poradce](advisor-high-availability-recommendations.md)
+- [Doporučení pro spolehlivost Advisoru](advisor-high-availability-recommendations.md)
 - [Doporučení pro zabezpečení Advisoru](advisor-security-recommendations.md)
 - [Doporučení pro výkon Advisoru](advisor-performance-recommendations.md)
 - [Doporučení pro náklady na poradce](advisor-cost-recommendations.md)
+- [Doporučení provozní kvality Advisoru](advisor-operational-excellence-recommendations.md)

@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 02/19/2015
 ms.author: gwallace
 ms.custom: tracking-python
-ms.openlocfilehash: 4722e8adadf59f8a4ad7b36a73fad5a6cff3370f
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 3b5c48053f7015e2bd46045d376cde27ca07d4a7
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560882"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84907036"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>Použití Twilio pro hlasové funkce a možnosti SMS v Pythonu
 Tato příručka ukazuje, jak provádět běžné programovací úlohy pomocí služby Twilio API v Azure. Mezi zahrnuté scénáře patří telefonní hovor a odeslání zprávy o krátké službě zprávy (SMS). Další informace o Twilio a použití hlasu a SMS v aplikacích najdete v části [Další kroky](#NextSteps) .
@@ -62,10 +62,12 @@ TwiML je sada instrukcí založených na XML, která je založená na příkazec
 
 Například následující TwiML převede text **Hello World** na řeč.
 
-    <?xml version="1.0" encoding="UTF-8" ?>
-    <Response>
-      <Say>Hello World</Say>
-    </Response>
+```xml
+<?xml version="1.0" encoding="UTF-8" ?>
+  <Response>
+    <Say>Hello World</Say>
+  </Response>
+```
 
 Když vaše aplikace volá rozhraní Twilio API, je jedním z parametrů rozhraní API adresa URL, která vrací TwiML odpověď. Pro účely vývoje můžete použít adresy URL poskytované Twilio a poskytnout tak odpovědi na TwiML používané vašimi aplikacemi. Můžete také hostovat vlastní adresy URL pro vytváření odpovědí TwiML a další možnost je použít `TwiMLResponse` objekt.
 
@@ -100,17 +102,17 @@ Aplikaci můžete nakonfigurovat tak, aby používala knihovnu Twilio pro Python
 
 * Nainstalujte knihovnu Twilio pro Python jako balíček PIP. Dá se nainstalovat pomocí následujících příkazů:
    
-        $ pip install twilio
+  `$ pip install twilio`
 
     - nebo -
 
 * Stáhněte si knihovnu Twilio pro Python z GitHubu ( [https://github.com/twilio/twilio-python][twilio_python] ) a nainstalujte ji takto:
 
-        $ python setup.py install
+  `$ python setup.py install`
 
 Po instalaci knihovny Twilio pro Python `import` ji můžete v souborech Pythonu:
 
-        import twilio
+  `import twilio`
 
 Další informace najdete v tématu [twilio_github_readme](https://github.com/twilio/twilio-python/blob/master/README.md).
 

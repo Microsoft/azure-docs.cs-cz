@@ -55,9 +55,9 @@ Element **ValidationTechnicalProfile** obsahuje následující atribut:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| ReferenceId | Ano | Identifikátor technického profilu, který je už definovaný v zásadách nebo v nadřazené zásadě. |
-|ContinueOnError|Ne| Označuje, zda má ověřování všech následných technických profilů ověřování pokračovat, pokud tento technický profil ověření vyvolá chybu. Možné hodnoty: `true` nebo `false` (výchozí, zpracování dalších profilů ověřování se zastaví a vrátí se chyba). |
-|ContinueOnSuccess | Ne | Označuje, zda má ověřování všech následných ověřovacích profilů pokračovat v případě úspěšného ověření tohoto technického profilu. Možné hodnoty: `true` nebo `false` . Výchozí hodnota je `true` , což znamená, že zpracování dalších profilů ověření bude pokračovat. |
+| ReferenceId | Yes | Identifikátor technického profilu, který je už definovaný v zásadách nebo v nadřazené zásadě. |
+|ContinueOnError|No| Označuje, zda má ověřování všech následných technických profilů ověřování pokračovat, pokud tento technický profil ověření vyvolá chybu. Možné hodnoty: `true` nebo `false` (výchozí, zpracování dalších profilů ověřování se zastaví a vrátí se chyba). |
+|ContinueOnSuccess | No | Označuje, zda má ověřování všech následných ověřovacích profilů pokračovat v případě úspěšného ověření tohoto technického profilu. Možné hodnoty: `true` nebo `false` . Výchozí hodnota je `true` , což znamená, že zpracování dalších profilů ověření bude pokračovat. |
 
 Element **ValidationTechnicalProfile** obsahuje následující element:
 
@@ -69,8 +69,8 @@ Prvek **předběžné podmínky** obsahuje následující atribut:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| `Type` | Ano | Typ kontroly nebo dotazu, který má být proveden pro předběžnou podmínku. Buď `ClaimsExist` je zadáno, aby bylo zajištěno, že akce budou provedeny v případě, že zadané deklarace existují v aktuální sadě deklarací uživatele, nebo `ClaimEquals` zda je zadána akce, pokud zadaná deklarace identity existuje a její hodnota je rovna zadané hodnotě. |
-| `ExecuteActionsIf` | Ano | Určuje, zda mají být provedeny akce v předběžné podmínce, pokud je test nastaven na hodnotu true nebo false. |
+| `Type` | Yes | Typ kontroly nebo dotazu, který má být proveden pro předběžnou podmínku. Buď `ClaimsExist` je zadáno, aby bylo zajištěno, že akce budou provedeny v případě, že zadané deklarace existují v aktuální sadě deklarací uživatele, nebo `ClaimEquals` zda je zadána akce, pokud zadaná deklarace identity existuje a její hodnota je rovna zadané hodnotě. |
+| `ExecuteActionsIf` | Yes | Určuje, zda mají být provedeny akce v předběžné podmínce, pokud je test nastaven na hodnotu true nebo false. |
 
 Prvek **podmínky** obsahuje následující prvky:
 

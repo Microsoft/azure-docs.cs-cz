@@ -1,35 +1,39 @@
 ---
-title: Vyhodnocení výkonu modelu
+title: Vyhodnotit & modely pro křížové ověřování
 titleSuffix: ML Studio (classic) - Azure
-description: Přečtěte si, jak vyhodnotit výkon modelu v Azure Machine Learning Studio (Classic) a o metrikách dostupných pro tuto úlohu.
+description: Přečtěte si informace o metrikách, které můžete použít k monitorování výkonu modelu v Azure Machine Learning Studio (Classic).
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: caa37dbc3a09236c8e9553eba506e6c0b25e51e2
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: bd6c291cd703d56f86dc26c041eb39023bba0578
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118444"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945099"
 ---
-# <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>Postup vyhodnocení výkonu modelu v Azure Machine Learning Studio (Classic)
+# <a name="evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>Vyhodnotit výkon modelu v Azure Machine Learning Studio (Classic)
 
-Tento článek ukazuje, jak vyhodnotit výkon modelu v Azure Machine Learning Studio (Classic) a poskytuje stručné vysvětlení metrik dostupných pro tuto úlohu. K dispozici jsou tři běžné scénáře učení s dohledem: 
+V tomto článku najdete informace o metrikách, které můžete použít k monitorování výkonu modelu v Azure Machine Learning Studio (Classic).  Vyhodnocení výkonu modelu je jedním z hlavních fází procesu zpracování dat. Označuje, jak úspěšné je hodnocení (předpovědi) datové sady vyškolený model. Azure Machine Learning Studio (Classic) podporuje hodnocení modelu prostřednictvím dvou z hlavních modulů strojového učení: 
++ [Vyhodnocení modelu][evaluate-model] 
++ [Model křížového ověřování][cross-validate-model]
 
+Tyto moduly vám umožní zjistit, jak model vykonává, v rámci řady metrik, které se běžně používají v machine learningu a statistice.
+
+Vyhodnocování modelů by se měly považovat společně s:
++ [Optimalizace parametrů pro algoritmy](algorithm-parameters-optimize.md)
++ [Interpretovatelnost modelů](interpret-model-results.md)
+
+K dispozici jsou tři běžné scénáře učení s dohledem: 
 * nevýhody
 * binární klasifikace 
 * klasifikace s více třídami
 
-
-
-Vyhodnocení výkonu modelu je jedním z hlavních fází procesu zpracování dat. Označuje, jak úspěšné je hodnocení (předpovědi) datové sady vyškolený model. 
-
-Azure Machine Learning Studio (Classic) podporuje hodnocení modelu prostřednictvím dvou z hlavních modulů strojového učení: [vyhodnoťte model][evaluate-model] a [model křížového ověřování][cross-validate-model]. Tyto moduly vám umožní zjistit, jak model vykonává, v rámci řady metrik, které se běžně používají v machine learningu a statistice.
 
 ## <a name="evaluation-vs-cross-validation"></a>Vyhodnocení vs. vzájemné ověřování
 Vyhodnocení a vzájemné ověřování představují standardní způsoby měření výkonu modelu. Generují metriky vyhodnocení, které můžete kontrolovat nebo porovnávat s nimi i s ostatními modely.
@@ -138,7 +142,7 @@ V tomto experimentu použijeme oblíbenou datovou sadu [Iris](https://archive.ic
 ### <a name="creating-the-experiment"></a>Vytvoření experimentu
 Přidejte do svého pracovního prostoru následující moduly v Azure Machine Learning Studio (Classic):
 
-* [Importovat data][import-data]
+* [Import dat][import-data]
 * [Rozhodovací les s více třídami][multiclass-decision-forest]
 * [Rozdělení dat][split]
 * [Trénování modelu][train-model]

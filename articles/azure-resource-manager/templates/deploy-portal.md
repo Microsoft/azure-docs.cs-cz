@@ -3,12 +3,12 @@ title: Nasazení prostředků pomocí Azure Portal
 description: K nasazení prostředků do skupiny prostředků ve vašem předplatném použijte Azure Portal a správu prostředků Azure.
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: ea2faf810b3a5d1b8fa46575201022a501cc7d58
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 31f80eb617820def871633dac1541c7dc3bed691
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80153433"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255258"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-portal"></a>Nasazení prostředků pomocí šablon ARM a Azure Portal
 
@@ -86,7 +86,7 @@ Pokud chcete spustit nasazení, ale ne použít žádnou z šablon na webu Marke
 1. Zobrazí se několik možností pro vytvoření šablony:
 
     - Vytvoření **vlastní šablony v editoru**: Vytvořte šablonu pomocí editoru šablon portálu.  Editor je schopný přidat schéma šablony prostředků.
-    - **Běžné šablony**: Existují čtyři běžné šablony pro vytvoření virtuálního počítače se systémem Linux, virtuálního počítače s Windows, webové aplikace a databáze SQL Azure.
+    - **Běžné šablony**: Existují čtyři běžné šablony pro vytvoření virtuálního počítače se systémem Linux, virtuálního počítače s Windows, webové aplikace a databáze v Azure SQL Database.
     - **Načtení šablony pro rychlý Start GitHubu**: použijte existující [šablony pro rychlý Start](https://azure.microsoft.com/resources/templates/).
 
    ![Možnosti zobrazení](./media/deploy-portal/see-options.png)

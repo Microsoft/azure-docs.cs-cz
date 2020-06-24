@@ -123,7 +123,7 @@ Tento zprostředkovatel se používá k potlačení obrazovky "zvolit zprostřed
 
 | Atribut | Povinné | Popis|
 | --- | --- | --- |
-| AlwaysFetchClaimsFromProvider | Ne | Aktuálně se nepoužívá, může být ignorováno. |
+| AlwaysFetchClaimsFromProvider | No | Aktuálně se nepoužívá, může být ignorováno. |
 
 ### <a name="oauthssosessionprovider"></a>OAuthSSOSessionProvider
 
@@ -165,8 +165,8 @@ Při použití poskytovatele pro ukládání relace SAML B2C `RegisterServicePro
 
 | Atribut | Povinné | Popis|
 | --- | --- | --- |
-| IncludeSessionIndex | Ne | Aktuálně se nepoužívá, může být ignorováno.|
-| RegisterServiceProviders | Ne | Indikuje, že by měl poskytovatel zaregistrovat všechny poskytovatele služeb SAML, u kterých bylo vydaný kontrolní výraz. Možné hodnoty: `true` (výchozí), nebo `false` .|
+| IncludeSessionIndex | No | Aktuálně se nepoužívá, může být ignorováno.|
+| RegisterServiceProviders | No | Indikuje, že by měl poskytovatel zaregistrovat všechny poskytovatele služeb SAML, u kterých bylo vydaný kontrolní výraz. Možné hodnoty: `true` (výchozí), nebo `false` .|
 
 
 ## <a name="next-steps"></a>Další kroky

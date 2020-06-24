@@ -3,17 +3,17 @@ title: Použití Azure Mapsho vykreslování – Vizualizér chyb
 description: V tomto článku se dozvíte, jak vizualizovat upozornění a chyby vrácené rozhraním API pro převod Creator.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/18/2020
+ms.date: 06/12/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 01d131833f36c1b46eea1b9c08339b067fb9e937
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 7e43995c4221127580333c3f013fcb209730f863
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681950"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791111"
 ---
 # <a name="using-the-azure-maps-drawing-error-visualizer"></a>Použití Azure Mapsho vykreslování – Vizualizér chyb
 
@@ -58,16 +58,16 @@ V tomto kurzu se používá aplikace [po](https://www.postman.com/) aplikaci, al
 
 V rámci staženého balíčku zip z tohoto `diagnosticPackageLocation` odkazu najdete dva soubory.
 
-* _VisualizationTool. zip_: obsahuje zdrojový kód, médium a webovou stránku pro Vizualizér chyb při vykreslování.
-* _ConversionWarningsAndErrors. JSON_: obsahuje formátovaný seznam upozornění, chyby a další podrobnosti, které používá Vizualizér chyb kreslení.
+* _VisualizationTool.zip_: obsahuje zdrojový kód, médium a webovou stránku pro Vizualizér chyb při vykreslování.
+* _ConversionWarningsAndErrors.js_: obsahuje formátovaný seznam upozornění, chyby a další podrobnosti, které jsou používány Vizualizérm chyb kreslení.
 
-Rozbalte složku _VisualizationTool. zip_ . Obsahuje následující položky:
+Rozbalte složku _VisualizationTool.zip_ . Obsahuje následující položky:
 
 * Složka _assets_ : obsahuje obrázky a mediální soubory
 * _statická_ složka: zdrojový kód
-* _index. html_ soubor: webová aplikace.
+* Soubor _index.html_ : webová aplikace
 
-Otevřete soubor _index. html_ pomocí kteréhokoli z následujících prohlížečů s příslušným číslem verze. Je možné použít jinou verzi, pokud verze nabízí stejně kompatibilní chování jako uvedená verze.
+Otevřete soubor _index.html_ pomocí kteréhokoli z následujících prohlížečů s příslušným číslem verze. Je možné použít jinou verzi, pokud verze nabízí stejně kompatibilní chování jako uvedená verze.
 
 * Microsoft Edge 80
 * Safari 13
@@ -78,15 +78,15 @@ Otevřete soubor _index. html_ pomocí kteréhokoli z následujících prohlíž
 
 Po spuštění nástroje pro Vizualizér chyb při vykreslování se zobrazí stránka pro nahrání. Stránka pro nahrání obsahuje pole pro přetažení. Rozevírací pole přetažení & funguje také jako tlačítko, které spustí dialogové okno Průzkumníka souborů.
 
-![Vykreslování aplikace Vizualizér chyb – Úvodní stránka](./media/drawing-errors-visualizer/start-page.png)
+:::image type="content" source="./media/drawing-errors-visualizer/start-page.png" alt-text="Vykreslování aplikace Vizualizér chyb – Úvodní stránka":::
 
-Soubor _ConversionWarningsAndErrors. JSON_ byl umístěn v kořenovém adresáři staženého adresáře. Pokud chcete načíst soubor _ConversionWarningsAndErrors. JSON_ , můžete ho buď přetáhnout & do pole, nebo kliknout na pole, najít soubor v dialogovém okně Průzkumník souborů a pak tento soubor nahrát.
+_ConversionWarningsAndErrors.jsv_ souboru byl umístěn v kořenovém adresáři staženého adresáře. Pokud chcete načíst _ConversionWarningsAndErrors.js_ , můžete buď pře& táhnout soubor do pole, nebo kliknout na pole, najít soubor v dialogovém okně Průzkumníka souborů a pak tento soubor nahrát.
 
-![Kreslení aplikace Vizualizér chyb – přetáhnutím a přetažením načtěte data](./media/drawing-errors-visualizer/loading-data.gif)
+:::image type="content" source="./media/drawing-errors-visualizer/loading-data.gif" alt-text="Kreslení aplikace Vizualizér chyb – přetáhnutím a přetažením načtěte data":::
 
-Po načtení souboru _ConversionWarningsAndErrors. JSON_ se zobrazí seznam chyb a upozornění balíčku pro kreslení. Jednotlivé chyby nebo upozornění jsou určeny vrstvou, úrovní a podrobnou zprávou. Nyní můžete přejít k jednotlivým chybám a získat další informace o tom, jak chybu vyřešit.  
+Po načtení _ConversionWarningsAndErrors.js_ souboru se zobrazí seznam chyb a upozornění balíčku pro kreslení. Jednotlivé chyby nebo upozornění jsou určeny vrstvou, úrovní a podrobnou zprávou. Chcete-li zobrazit podrobné informace o chybě nebo upozornění, klikněte na odkaz **Podrobnosti** . Nerušivý oddíl se pak zobrazí pod seznamem. Nyní můžete přejít k jednotlivým chybám a získat další informace o tom, jak chybu vyřešit.
 
-![Vykreslování aplikace Vizualizér chyb – chyby a upozornění](./media/drawing-errors-visualizer/errors.png)
+:::image type="content" source="./media/drawing-errors-visualizer/errors.png" alt-text="Vykreslování aplikace Vizualizér chyb – chyby a upozornění":::
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -8,23 +8,23 @@ author: damendo
 ms.assetid: 0f043f08-19e1-4125-98b0-3e335ba69681
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 1bd823d94552d1e920b367b6576b0e3bb74aefb2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6a7b4d8c3d2e2b33d8e2a9936670992b1c922b6a
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80474924"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737355"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Zjišťování neoprávněných vniknutí k síti pomocí Network Watcher a open source nástrojů
 
 Zachytávání paketů představují klíčovou komponentu pro implementaci systémů zjišťování neoprávněných vniknutí k síti (ID) a provádění monitorování zabezpečení sítě (NSM). Existuje několik nástrojů Open Source ID, které zpracovávají pakety a vyhledávají signatury možných vniknutí do sítě a škodlivých aktivit. Pomocí zachytávání paketů poskytovaných Network Watcher můžete analyzovat síť pro jakékoli škodlivé napadení nebo ohrožení zabezpečení.
 
-Jedním z těchto open source nástrojů je Suricata, modul pro identifikaci, který používá RuleSets k monitorování síťového provozu a aktivuje výstrahy vždy, když dojde k podezřelým událostem. Suricata nabízí vícevláknový modul, což znamená, že může provádět analýzu síťového provozu se zvýšenou rychlostí a efektivitou. Další podrobnosti o Suricata a jejích funkcích najdete na webu na adrese https://suricata-ids.org/.
+Jedním z těchto open source nástrojů je Suricata, modul pro identifikaci, který používá RuleSets k monitorování síťového provozu a aktivuje výstrahy vždy, když dojde k podezřelým událostem. Suricata nabízí vícevláknový modul, což znamená, že může provádět analýzu síťového provozu se zvýšenou rychlostí a efektivitou. Další podrobnosti o Suricata a jejích funkcích najdete na webu na adrese https://suricata-ids.org/ .
 
 ## <a name="scenario"></a>Scénář
 
@@ -48,7 +48,7 @@ Všechny ostatní metody instalace najdete na stráncehttps://suricata.readthedo
     sudo sudo apt-get install suricata
     ```
 
-1. Chcete-li ověřit instalaci, spusťte příkaz `suricata -h` , který zobrazí úplný seznam příkazů.
+1. Chcete-li ověřit instalaci, spusťte příkaz, `suricata -h` který zobrazí úplný seznam příkazů.
 
 ### <a name="download-the-emerging-threats-ruleset"></a>Stáhněte si nově vznikající hrozby RuleSet
 
@@ -125,13 +125,13 @@ Další pokyny k instalaci elastického vyhledávání najdete v tématu [instal
     curl -L -O https://artifacts.elastic.co/downloads/logstash/logstash-5.2.0.deb
     sudo dpkg -i logstash-5.2.0.deb
     ```
-1. Dál musíme nakonfigurovat Logstash ke čtení z výstupu souboru předvečer. JSON. Vytvořte soubor logstash. conf pomocí:
+1. Dál musíme nakonfigurovat Logstash pro čtení z výstupu eve.jsv souboru. Vytvořte soubor logstash. conf pomocí:
 
     ```
     sudo touch /etc/logstash/conf.d/logstash.conf
     ```
 
-1. Do souboru přidejte následující obsah (Ujistěte se, že cesta k souboru předvečer. JSON je správná):
+1. Do souboru přidejte následující obsah (Ujistěte se, že je cesta k eve.jsv souboru správná):
 
     ```ruby
     input {
@@ -203,7 +203,7 @@ Další pokyny k instalaci elastického vyhledávání najdete v tématu [instal
     }
     ```
 
-1. Ujistěte se, že máte správná oprávnění k souboru předvečer. JSON, aby Logstash mohl soubor ingestovat.
+1. Ujistěte se, že máte správná oprávnění k eve.jsv souboru, aby Logstash mohl soubor ingestovat.
     
     ```
     sudo chmod 775 /var/log/suricata/eve.json

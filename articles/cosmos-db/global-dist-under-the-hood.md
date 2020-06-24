@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: a46a69476a2ad6550bc7b3a533fd09565d461db3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 161927e02782a294165b0304c259a63f8336067c
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74872124"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118130"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Globální distribuce dat pomocí Azure Cosmos DB – pod kapotou
 
 Azure Cosmos DB je základní služba v Azure, která se nasazuje napříč všemi oblastmi Azure po celém světě, včetně veřejných, svrchovaného, ministerstva obrany a státních cloudů. V rámci datového centra nasadíme a spravujeme Azure Cosmos DB na obrovských razítek počítačů, z nichž každá má vyhrazené místní úložiště. V rámci datového centra je Azure Cosmos DB nasazený v mnoha clusterech, z nichž každá potenciálně spouští více generací hardwaru. Počítače v clusteru jsou obvykle rozloženy mezi 10-20 domén selhání pro zajištění vysoké dostupnosti v rámci oblasti. Následující obrázek ukazuje topologii globálního distribučního systému Cosmos DB:
 
-![Systémová topologie](./media/global-dist-under-the-hood/distributed-system-topology.png)
+:::image type="content" source="./media/global-dist-under-the-hood/distributed-system-topology.png" alt-text="Systémová topologie" border="false":::
 
 **Globální distribuce v Azure Cosmos DB je klíč:** Po několika kliknutích nebo programově s jedním voláním rozhraní API můžete přidat nebo odebrat geografické oblasti přidružené k databázi Cosmos. Databáze Cosmos se zase skládá ze sady Cosmos kontejnerů. V Cosmos DB kontejnery slouží jako logické jednotky distribuce a škálovatelnosti. Kolekce, tabulky a grafy, které vytvoříte, jsou (interně) pouze Cosmos kontejnery. Kontejnery jsou zcela nezávislá schématu a poskytují obor dotazu. Data v kontejneru Cosmos jsou automaticky indexována při příjmu. Automatické indexování umožňuje uživatelům dotazování na data bez starostí se správou schématu nebo indexu, zejména při globálně distribuované instalaci.  
 
@@ -30,7 +30,7 @@ Když aplikace používající Cosmos DB elasticky škáluje propustnost Cosmos 
 
 Jak je znázorněno na následujícím obrázku, data v kontejneru jsou distribuována do dvou dimenzí – v oblasti a oblastech, po celém světě:  
 
-![fyzické oddíly](./media/global-dist-under-the-hood/distribution-of-resource-partitions.png)
+:::image type="content" source="./media/global-dist-under-the-hood/distribution-of-resource-partitions.png" alt-text="fyzické oddíly" border="false":::
 
 Fyzický oddíl je implementován skupinou replik, která se nazývá *sada replik*. Každý počítač hostuje stovky replik, které odpovídají různým fyzickým oddílům v rámci pevně stanovené sady procesů, jak je znázorněno na obrázku výše. Repliky odpovídající fyzickým oddílům se dynamicky umísťují a vyrovnávají zatížení napříč počítači v rámci clusteru a datových center v rámci jedné oblasti.  
 
@@ -52,7 +52,7 @@ Fyzický oddíl je vyhodnocen jako samoobslužná skupina replik s vyrovnáván�
 
 Skupina fyzických oddílů, jedna z každé konfigurace s oblastmi databáze Cosmos, se skládá pro správu stejné sady klíčů replikovaných ve všech nakonfigurovaných oblastech. Tato vyšší koordinační primitivum se nazývá *oddíl-set* – geograficky distribuované dynamické překrytí fyzických oddílů, které spravují danou sadu klíčů. I když je daný fyzický oddíl (sada replik) vymezen v rámci clusteru, sada oddílů může zahrnovat clustery, datová centra a geografické oblasti, jak je znázorněno na následujícím obrázku:  
 
-![Sady oddílů](./media/global-dist-under-the-hood/dynamic-overlay-of-resource-partitions.png)
+:::image type="content" source="./media/global-dist-under-the-hood/dynamic-overlay-of-resource-partitions.png" alt-text="Sady oddílů" border="false":::
 
 Můžete si představit sadu oddílů jako geograficky rozptýlenou "Super sadu replik", která se skládá z několika sad replik, které mají stejnou sadu klíčů. Podobně jako u sady replik je členství v sadě oddílů také dynamické – mění se na základě implicitních operací správy fyzického oddílu, které přidávají nebo odebírají nové oddíly do nebo z dané sady oddílů (například při horizontálním navýšení kapacity propustnosti v kontejneru, přidání nebo odebrání oblasti do databáze Cosmos nebo při selhání). Vzhledem k tomu, že každý z oddílů (sada oddílů) spravuje členství oddílu v rámci vlastní sady replik, je členství plně decentralizované a vysoce dostupné. Během opětovné konfigurace sady oddílů je také navázána topologie překrytí mezi fyzickými oddíly. Topologie se dynamicky vybere na základě úrovně konzistence, zeměpisné vzdálenosti a dostupné šířky pásma sítě mezi zdrojovým a cílovým fyzickým oddílem.  
 

@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: a5aaef50f12bfec89cf5e883ed6b1c85fa984ad6
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 1e8a2bc6f9a8103440b68f2e8d2de9328ed00145
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82995991"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118606"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>Nastavení Azure Key Vault s použitím rotace a auditování klíčů
 
@@ -92,7 +92,7 @@ Nejdřív musíte aplikaci zaregistrovat pomocí Azure Active Directory. Pak sd�
 1. V **registrování aplikace**zadejte smysluplný název aplikace, který se zobrazí uživatelům.
 1. Určete, kdo může používat aplikaci následujícím způsobem:
 
-    | Podporované typy účtu | Popis |
+    | Podporované typy účtu | Description |
     |-------------------------|-------------|
     | **Účty jen v tomto organizačním adresáři** | Tuto možnost vyberte, pokud vytváříte obchodní aplikaci. Tato možnost není dostupná, pokud neprovádíte registraci aplikace v adresáři.<br><br>Tato možnost se mapuje pouze na účty Azure AD s jedním tenantem.<br><br>Tato možnost je výchozí, pokud neprovádíte registraci aplikace mimo adresář. V případech, kdy je aplikace zaregistrovaná mimo adresář, jsou výchozí možností účty Azure AD s více tenanty a osobní účty Microsoft. |
     | **Účty v libovolném organizačním adresáři** | Tuto možnost vyberte, pokud chcete cílit na všechny zákazníky z řad firem a vzdělávacích institucí.<br><br>Tato možnost se mapuje pouze na účty Azure AD s více tenanty.<br><br>Pokud jste aplikaci zaregistrovali jako jenom pro jednoho tenanta Azure AD, můžete ji aktualizovat na Azure AD multi-tenant a zpátky na jeden tenant prostřednictvím **ověřovací** stránky. |
@@ -169,9 +169,6 @@ var sec = kv.GetSecretAsync(<SecretID>).Result.Value;
 Po spuštění aplikace byste teď měli ověřit, že se má Azure Active Directory a pak se z Azure Key Vault načítá vaše tajná hodnota.
 
 ## <a name="key-rotation-using-azure-automation"></a>Střídání klíčů pomocí Azure Automation
-
-> [!IMPORTANT]
-> Azure Automation Runbooky stále vyžadují použití `AzureRM` modulu.
 
 Nyní jste připraveni nastavit strategii otáčení pro hodnoty, které ukládáte jako Key Vault tajných klíčů. Tajné kódy lze otáčet několika způsoby:
 
@@ -273,14 +270,14 @@ Dalším krokem je [vytvoření fronty Azure Service Bus](../../service-bus-mess
 
 1. Vytvořte obor názvů Service Bus (Pokud již máte nějaké, který chcete použít, přejděte ke kroku 2).
 2. V Azure Portal přejděte na instanci Service Bus a vyberte obor názvů, ve kterém chcete vytvořit frontu.
-3. Vyberte **vytvořit prostředek** > **Podniková integrace** > **Service Bus**a potom zadejte požadované podrobnosti.
+3. Vyberte **vytvořit prostředek**  >  **Podniková integrace**  >  **Service Bus**a potom zadejte požadované podrobnosti.
 4. Vyhledejte informace o Service Bus připojení, a to tak, že vyberete obor názvů a pak vyberete **informace o připojení**. Tyto informace budete potřebovat pro další část.
 
 Dále [vytvořte funkci Azure](../../azure-functions/functions-create-first-azure-function.md) , která bude dotazovat protokoly trezoru klíčů v rámci účtu úložiště a vyzvednout nové události. Tato funkce se aktivuje podle plánu.
 
 Pokud chcete vytvořit aplikaci Azure Function App, vyberte **vytvořit prostředek**, vyhledejte **Function App**na Marketplace a pak vyberte **vytvořit**. Během vytváření můžete použít existující plán hostování nebo vytvořit nový. Můžete se také rozhodnout pro dynamické hostování. Další informace o možnostech hostování pro Azure Functions najdete v tématu [Jak škálovat Azure Functions](../../azure-functions/functions-scale.md).
 
-Po vytvoření aplikace služby Azure Functions se na ni dostanete a vyberte scénář **časovače** a **C\# ** pro jazyk. Pak vyberte **vytvořit tuto funkci**.
+Po vytvoření aplikace služby Azure Functions se na ni dostanete a vyberte scénář **časovače** a **C \# ** pro jazyk. Pak vyberte **vytvořit tuto funkci**.
 
 ![Okno spuštění Azure Functions](../media/keyvault-keyrotation/Azure_Functions_Start.png)
 
@@ -400,15 +397,15 @@ static string GetContainerSasUri(CloudBlockBlob blob)
 
 Funkce vybere nejnovější soubor protokolu z účtu úložiště, ve kterém jsou zapsány protokoly trezoru klíčů, přiřadí nejnovější události z tohoto souboru a vloží je do fronty Service Bus. 
 
-Vzhledem k tomu, že jeden soubor může mít více událostí, měli byste vytvořit soubor Sync. txt, který funkce také prohlíží při určení časového razítka poslední události, která byla vybrána. Pomocí tohoto souboru zajistíte, že nebudete nahrávat stejnou událost víckrát. 
+Vzhledem k tomu, že jeden soubor může mít více událostí, měli byste vytvořit soubor sync.txt, na který funkce také vypadá, a určit časové razítko posledního vyzvednutí události. Pomocí tohoto souboru zajistíte, že nebudete nahrávat stejnou událost víckrát. 
 
-Soubor Sync. txt obsahuje časové razítko pro poslední nalezenou událost. Po načtení protokolů je třeba je seřadit podle časových razítek a zajistit tak jejich správné pořadí.
+sync.txt soubor obsahuje časové razítko pro poslední událost, která se vyskytla. Po načtení protokolů je třeba je seřadit podle časových razítek a zajistit tak jejich správné pořadí.
 
 Pro tuto funkci odkazujeme na několik dalších knihoven, které nejsou dostupné v Azure Functions. Aby bylo možné tyto knihovny zahrnout, musíme je Azure Functions načíst pomocí NuGet. V poli **kód** vyberte **Zobrazit soubory**.
 
 ![Možnost Zobrazit soubory](../media/keyvault-keyrotation/Azure_Functions_ViewFiles.png)
 
-Přidejte soubor s názvem Project. JSON s následujícím obsahem:
+Přidejte soubor s názvem project.jss následujícím obsahem:
 
 ```json
     {
@@ -425,11 +422,11 @@ Přidejte soubor s názvem Project. JSON s následujícím obsahem:
 
 Po výběru **uložit**Azure Functions stáhne požadované binární soubory.
 
-Přepněte na kartu **Integration** a udělte parametru Timer smysluplný název, který se má použít v rámci funkce. V předchozím kódu funkce očekává, že časovač bude mít název *myTimer*. Zadejte [výraz cron](../../app-service/webjobs-create.md#CreateScheduledCRON) pro časovač následujícím způsobem: `0 * * * * *`. Tento výraz způsobí, že se funkce spustí jednou za minutu.
+Přepněte na kartu **Integration** a udělte parametru Timer smysluplný název, který se má použít v rámci funkce. V předchozím kódu funkce očekává, že časovač bude mít název *myTimer*. Zadejte [výraz cron](../../app-service/webjobs-create.md#CreateScheduledCRON) pro časovač následujícím způsobem: `0 * * * * *` . Tento výraz způsobí, že se funkce spustí jednou za minutu.
 
-Na stejné kartě **integrace** přidejte vstup typu **úložiště objektů BLOB v Azure**. Tento vstup odkazuje na soubor Sync. txt, který obsahuje časové razítko poslední události, kterou funkce prohlédla. Tento vstup bude k dispozici v rámci funkce pomocí názvu parametru. V předchozím kódu očekává vstup úložiště Azure Blob Storage název parametru, který se má *inputBlob*. Vyberte účet úložiště, ve kterém se bude nacházet soubor Sync. txt (může to být stejný nebo jiný účet úložiště). Do pole cesta zadejte cestu k souboru ve formátu `{container-name}/path/to/sync.txt`.
+Na stejné kartě **integrace** přidejte vstup typu **úložiště objektů BLOB v Azure**. Tento vstup bude ukazovat na sync.txt soubor, který obsahuje časové razítko poslední události, kterou funkce prohlédla ve funkci. Tento vstup bude k dispozici v rámci funkce pomocí názvu parametru. V předchozím kódu očekává vstup úložiště Azure Blob Storage název parametru, který se má *inputBlob*. Vyberte účet úložiště, do kterého se má soubor sync.txt umístit (může to být stejný nebo jiný účet úložiště). Do pole cesta zadejte cestu k souboru ve formátu `{container-name}/path/to/sync.txt` .
 
-Přidejte výstup typu **úložiště objektů BLOB v Azure**. Tento výstup bude ukazovat na soubor Sync. txt, který jste definovali ve vstupu. Tento výstup používá funkce k zápisu časového razítka poslední události, na které se prohlédlo. Předchozí kód očekává, že tento parametr bude mít název *outputBlob*.
+Přidejte výstup typu **úložiště objektů BLOB v Azure**. Tento výstup bude ukazovat na sync.txt soubor, který jste definovali ve vstupu. Tento výstup používá funkce k zápisu časového razítka poslední události, na které se prohlédlo. Předchozí kód očekává, že tento parametr bude mít název *outputBlob*.
 
 Funkce je nyní připravena. Ujistěte se, že jste přešli zpátky na kartu **vývoj** a kód uložíte. V okně výstup vyhledejte chyby kompilace a opravte je podle potřeby. Pokud je kód zkompilován, pak by měl kód nyní kontrolovat protokoly trezorů klíčů každou minutu a vložit nové události do definované fronty Service Bus. Při každém spuštění funkce by se měly zobrazit informace o protokolování, které se mají zapsat do okna protokolu.
 
@@ -437,7 +434,7 @@ Funkce je nyní připravena. Ujistěte se, že jste přešli zpátky na kartu **
 
 Dále musíte vytvořit aplikaci logiky Azure, která vezme události, které funkce přenáší do fronty Service Bus, analyzuje obsah a pošle e-mail na základě vyhovující podmínky.
 
-[Vytvořte aplikaci logiky](../../logic-apps/quickstart-create-first-logic-app-workflow.md) tak, že vyberete **vytvořit prostředek** > **Integration** > **Logic App**.
+[Vytvořte aplikaci logiky](../../logic-apps/quickstart-create-first-logic-app-workflow.md) tak, že vyberete **vytvořit prostředek**  >  **Integration**  >  **Logic App**.
 
 Po vytvoření aplikace logiky se na ni dostanete a vyberte **Upravit**. V editoru aplikace logiky vyberte **Service Bus Queue** a zadejte svoje přihlašovací údaje Service Bus, abyste je připojili ke frontě.
 

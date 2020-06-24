@@ -3,12 +3,12 @@ title: Koncepty – privátní cloudy a clustery
 description: Seznamte se s klíčovými možnostmi pro služby Azure VMware Software-Defined data Centers a vSphere v řešení VMware v Azure pomocí VMware.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: f51b76b654a43d690aa5c97fa9df99fad1f47d7a
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 09e1fd45b1dd873509f942ef8b524783acfed4ce
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82740379"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84906985"
 ---
 # <a name="azure-vmware-solution-avs-preview-private-cloud-and-cluster-concepts"></a>Koncept řešení Azure VMware (AVS) ve verzi Preview pro privátní cloud a clustery
 
@@ -38,7 +38,7 @@ V clusterech se zabezpečením v privátním cloudu pro funkci AVS se používaj
 
 | Typ hostitele              |             Procesor             |   RAM (GB)   |  Síti vSAN NVMe cache úrovně (TB, RAW)  |  úroveň kapacity síti vSAN SSD (TB, RAW)  |
 | :---                   |            :---:            |    :---:     |               :---:              |                :---:               |
-| Horní – konec (HE)          |  Dual Intel 18 Core 2,3 GHz  |     576      |                3,2               |                15,20               |
+| Horní – konec (HE)          |  Dual Intel 18 Core 2,3 GHz  |     576      |                3.2               |                15,20               |
 
 Hostitelé, kteří se používají k sestavení nebo škálování clusterů, se získávají z izolovaného fondu hostitelů. Tito hostitelé prošli hardwarovými testy a museli jste bezpečně odstranit všechna data z disků Flash. Když odeberete hostitele z clusteru, interní disky se bezpečně vymažou a hostitelé se umístí do izolovaného fondu hostitelů. Když přidáte hostitele do clusteru, použije se upravený hostitel z izolovaného fondu.
 
@@ -61,10 +61,10 @@ Obecné zásady upgradu a procesy pro software pro platformu AVS jsou popsány v
 
 Údržba hostitelů a správa životního cyklu se provádí bez dopadu na kapacitu nebo výkon clusterů privátního cloudu. Mezi příklady automatizované údržby hostitele patří upgrady firmwaru a oprava hardwaru nebo náhrada.
 
-Společnost Microsoft zodpovídá za správu životního cyklu zařízení NSX-T, jako jsou NSX-T Manager a NSX-T okraje. Společnost Microsoft je také zodpovědná za zavedení konfigurace sítě, například vytvoření brány vrstvy 0 a povolení směrování na sever-jih. Jako správce privátního cloudu služby AVS zodpovídáte za NSX konfiguraci SDN, jako jsou segmenty sítě, distribuovaná pravidla brány firewall, brány 1 a nástroje pro vyrovnávání zatížení.
+Společnost Microsoft zodpovídá za správu životního cyklu zařízení NSX-T, jako je NSX-T Manager a NSX-T Edge. Společnost Microsoft je také zodpovědná za zavedení konfigurace sítě, například vytvoření brány vrstvy 0 a povolení směrování na sever-jih. Jako správce privátního cloudu služby AVS zodpovídáte za NSX konfiguraci SDN, jako jsou segmenty sítě, distribuovaná pravidla brány firewall, brány 1 a nástroje pro vyrovnávání zatížení.
 
 > [!IMPORTANT]
-> Správce služby AVS nesmí měnit konfiguraci NSXch okrajů a brány vrstvy 0. To může mít za následek ztrátu služby.
+> Správce služby AVS nesmí měnit konfiguraci brány NSX-T Edge nebo vrstvy 0. To může mít za následek ztrátu služby.
 
 ## <a name="backup-and-restoration"></a>Zálohování a obnovení
 
