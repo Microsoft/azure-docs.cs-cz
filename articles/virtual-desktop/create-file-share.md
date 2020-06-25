@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7fca57bd517296711ada2f714d523bfa0709337c
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: eea6f901a7228d7ed411d27296e1fb44a41d9f72
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85208378"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361332"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>Vytvoření kontejneru profilu se soubory Azure a služba AD DS
 
@@ -74,7 +74,8 @@ V dalším kroku budete muset povolit ověřování služby Active Directory (AD
 
 3.  Otevřete Azure Portal, otevřete svůj účet úložiště, vyberte **Konfigurace**a potvrďte, že **Služba Active Directory (AD)** je nastavená na **povoleno**.
 
-     ![Snímek obrazovky konfigurační stránky s povoleným Azure Active Directory (AD).](media/active-directory-enabled.png)
+     > [!div class="mx-imgBorder"]
+     > ![Snímek obrazovky konfigurační stránky s povoleným Azure Active Directory (AD).](media/active-directory-enabled.png)
 
 ## <a name="assign-azure-rbac-permissions-to-windows-virtual-desktop-users"></a>Přiřazení oprávnění Azure RBAC uživatelům pro virtuální počítače s Windows
 

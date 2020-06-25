@@ -6,17 +6,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: overview
+ms.topic: tutorial
 ms.date: 05/19/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f149678bd65ff47b8582e56cf376d88284c8fa8b
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 835eb66444dd9f4c4da7689196c759621cfef999
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681329"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85360754"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Zřízení pilotního cloudu pro existující synchronizovanou doménovou strukturu AD 
 
@@ -76,7 +76,7 @@ Azure AD Connect synchronizace synchronizuje změny, ke kterým došlo v místn�
     **Značka:** Ponechat toto prázdné<br>
     ![Vlastní pravidlo](media/how-to-cloud-custom-user-rule/user2.png)</br>
  
- 4. Na stránce **Filtr oboru** zadejte organizační jednotku nebo skupinu zabezpečení, na které se má pilotní nasazení vycházet.  Pokud chcete filtrovat podle organizační jednotky, přidejte část s názvem organizační jednotky rozlišujícího názvu. Toto pravidlo bude použito pro všechny uživatele, kteří jsou v dané organizační jednotce.  Pokud tedy DN končí na "OU = procesory, DC = contoso, DC = com, přidáte tento filtr.  Pak klikněte na **Další**. 
+ 4. Na stránce **Filtr oboru** zadejte organizační jednotku nebo skupinu zabezpečení, na které se má pilotní nasazení vycházet.  Pokud chcete filtrovat podle organizační jednotky, přidejte část s názvem organizační jednotky rozlišujícího názvu. Toto pravidlo bude použito pro všechny uživatele, kteří jsou v dané organizační jednotce.  Pokud tedy DN končí na "OU = procesory, DC = contoso, DC = com, přidáte tento filtr.  Potom klikněte na **Další**. 
 
     |Pravidlo|Atribut|Operátor|Hodnota|
     |-----|----|----|-----|
@@ -109,7 +109,7 @@ Pro všechny typy objektů (uživatel, skupina a kontakt) se musí provést stej
     
     ![Vlastní pravidlo](media/how-to-cloud-custom-user-rule/user6.png)</br>
  
- 3. Na stránce **Filtr oboru** vyberte **CloudNoFlow** rovná se **true**. Pak klikněte na **Další**.
+ 3. Na stránce **Filtr oboru** vyberte **CloudNoFlow** rovná se **true**. Potom klikněte na **Další**.
  ![Vlastní pravidlo](media/how-to-cloud-custom-user-rule/user7.png)</br>
  
  4. Na stránce pravidla **spojování** klikněte na **Další**.

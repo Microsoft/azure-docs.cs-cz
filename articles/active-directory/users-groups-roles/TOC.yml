@@ -183,7 +183,7 @@
               href: directory-admin-roles-secure.md
             - name: Vytvoření nouzových účtů
               href: directory-emergency-access.md
-        - name: Jednotka pro správu
+        - name: Jednotky pro správu
           items:
             - name: Přehled jednotek pro správu
               href: directory-administrative-units.md

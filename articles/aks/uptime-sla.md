@@ -3,14 +3,14 @@ title: Azure Kubernetes Service (AKS) s smlouvou SLA pro provozuschopnost
 description: Přečtěte si o volitelné nabídce SLA pro dobu provozu pro Server API služby Azure Kubernetes (AKS).
 services: container-service
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 06/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: b360f36dfc80033ac95e4face438b66eed33cec4
-ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
+ms.openlocfilehash: 9f8b0cc5a80853542b15d1993713d8a97f5371b9
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84945507"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361570"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Smlouva SLA pro Azure Kubernetes Service (AKS) pro provozuschopnost
 
@@ -30,29 +30,38 @@ Smlouva SLA pro dobu provozu je dostupná ve veřejných oblastech, kde [se podp
 * Azure Government se momentálně nepodporuje.
 * Azure Čína 21Vianet se momentálně nepodporuje.
 
+## <a name="limitations"></a>Omezení
+
+* Soukromé clustery se aktuálně nepodporují.
+
 ## <a name="sla-terms-and-conditions"></a>Podmínky a ujednání SLA
 
 Smlouva SLA pro dobu provozu je placená funkce a je povolená pro jednotlivé clustery. Ceny smlouvy SLA pro dobu provozu určují počet diskrétních clusterů, a ne velikost jednotlivých clusterů. Další informace najdete v [podrobnostech o cenách smlouvy SLA pro dobu provozu](https://azure.microsoft.com/pricing/details/kubernetes-service/) .
 
 ## <a name="before-you-begin"></a>Než začnete
 
-* Nainstalujte [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) verze 2.7.0 nebo novější.
+* Nainstalujte [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) verze 2.8.0 nebo novější.
 
-## <a name="creating-a-cluster-with-uptime-sla"></a>Vytvoření clusteru s smlouvou SLA pro dobu provozu
+## <a name="creating-a-new-cluster-with-uptime-sla"></a>Vytvoření nového clusteru s smlouvou SLA pro dobu provozu
+
+> [!NOTE]
+> Pokud v současné době povolíte smlouvu SLA pro dobu provozu, neexistuje žádný způsob, jak ho z clusteru odebrat.
 
 Pokud chcete vytvořit nový cluster s smlouvou SLA pro dobu provozu, použijte rozhraní příkazového řádku Azure.
 
-Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*.
+Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *eastus* :
 
 ```azurecli-interactive
+# Create a resource group
 az group create --name myResourceGroup --location eastus
 ```
-Pomocí příkazu [az aks create][az-aks-create] vytvořte cluster AKS. Následující příklad vytvoří cluster *myAKSCluster* s jedním uzlem. Kromě toho se dá pomocí parametru *--enable-addons monitoring* povolit Azure Monitor pro kontejnery.  Dokončení této operace trvá několik minut.
+Pomocí [`az aks create`][az-aks-create] příkazu vytvořte cluster AKS. Následující příklad vytvoří cluster *myAKSCluster* s jedním uzlem. Dokončení této operace trvá několik minut:
 
 ```azurecli-interactive
-az aks create --resource-group myResourceGroup --name myAKSCluster --uptime-sla --node-count 1 --enable-addons monitoring --generate-ssh-keys
+# Create an AKS cluster with uptime SLA
+az aks create --resource-group myResourceGroup --name myAKSCluster --uptime-sla --node-count 1
 ```
-Po několika minutách se příkaz dokončí a vrátí informace o clusteru ve formátu JSON. Následující fragment kódu JSON ukazuje placené úrovně SKU, což značí, že cluster je povolený s smlouvou SLA pro provozuschopnost.
+Po několika minutách se příkaz dokončí a vrátí informace o clusteru ve formátu JSON. Následující fragment kódu JSON ukazuje placené úrovně SKU, což značí, že je cluster povolený s smlouvou SLA pro dobu provozu:
 
 ```output
   },
@@ -62,15 +71,61 @@ Po několika minutách se příkaz dokončí a vrátí informace o clusteru ve f
   },
 ```
 
-## <a name="limitations"></a>Omezení
+## <a name="modify-an-existing-cluster-to-use-uptime-sla"></a>Úprava existujícího clusteru pro použití smlouvy SLA pro dobu provozu
 
-* V současné době nejde převést existující cluster, aby se povolila smlouva SLA pro provozuschopnost.
-* V současné době neexistuje způsob, jak odebrat smlouvu SLA pro provozuschopnost z clusteru AKS po vytvoření s povoleným povolením.  
-* Soukromé clustery se aktuálně nepodporují.
+Volitelně můžete aktualizovat existující clustery, aby používaly smlouvu SLA pro provozuschopnost.
+
+Pokud jste vytvořili cluster AKS s předchozím postupem, odstraňte skupinu prostředků:
+
+```azurecli-interactive
+# Delete the existing cluster by deleting the resource group 
+az group delete --name myResourceGroup --yes --no-wait
+```
+
+Vytvořte novou skupinu prostředků:
+
+```azurecli-interactive
+# Create a resource group
+az group create --name myResourceGroup --location eastus
+```
+
+Vytvoření nového clusteru a nevyužívání smlouvy SLA pro dobu provozu:
+
+```azurecli-interactive
+# Create a new cluster without uptime SLA
+az aks create --resource-group myResourceGroup --name myAKSCluster--node-count 1
+```
+
+Pomocí [`az aks update`][az-aks-nodepool-update] příkazu aktualizujte stávající cluster:
+
+```azurecli-interactive
+# Update an existing cluster to use Uptime SLA
+ az aks update --resource-group myResourceGroup --name myAKSCluster --uptime-sla
+ ```
+
+ Následující fragment kódu JSON ukazuje placené úrovně SKU, což značí, že je cluster povolený s smlouvou SLA pro dobu provozu:
+
+ ```output
+  },
+  "sku": {
+    "name": "Basic",
+    "tier": "Paid"
+  },
+  ```
+
+## <a name="clean-up"></a>Vyčištění
+
+Pokud se chcete vyhnout poplatkům, vyčistěte prostředky, které jste vytvořili. Pokud chcete cluster odstranit, pomocí [`az group delete`][az-group-delete] příkazu odstraňte skupinu prostředků AKS:
+
+```azurecli-interactive
+az group delete --name myResourceGroup --yes --no-wait
+```
+
 
 ## <a name="next-steps"></a>Další kroky
 
 Pomocí [zóny dostupnosti][availability-zones] můžete zvýšit vysokou dostupnost úloh clusteru AKS.
+
 Nakonfigurujte cluster tak, aby [omezil přenos odchozího provozu](limit-egress-traffic.md).
 
 <!-- LINKS - External -->
@@ -86,3 +141,5 @@ Nakonfigurujte cluster tak, aby [omezil přenos odchozího provozu](limit-egress
 [limit-egress-traffic]: ./limit-egress-traffic.md
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
+[az-aks-nodepool-update]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-update
+[az-group-delete]: /cli/azure/group#az-group-delete

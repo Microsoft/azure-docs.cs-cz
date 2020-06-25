@@ -8,17 +8,17 @@ editor: curtand
 ms.reviewer: darora10
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/21/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4626e0149028a140d143fb8d0969a03b732201fa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0e52083b2413f28b0c95b3a86be44c501e97cfd7
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79036980"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85359751"
 ---
 # <a name="fix-modified-default-rules-in-azure-ad-connect"></a>Oprava změněných výchozích pravidel v Azure AD Connect
 
@@ -49,7 +49,7 @@ Níže jsou uvedené běžné úpravy výchozích pravidel:
 
 Než změníte jakákoli pravidla:
 
-- Zakažte Plánovač synchronizace. Plánovač se ve výchozím nastavení spouští každých 30 minut. Ujistěte se, že se nespouští při provádění změn a odstraňování potíží s novými pravidly. K dočasnému zakázání plánovače spusťte PowerShell a spusťte `Set-ADSyncScheduler -SyncCycleEnabled $false`příkaz.
+- Zakažte Plánovač synchronizace. Plánovač se ve výchozím nastavení spouští každých 30 minut. Ujistěte se, že se nespouští při provádění změn a odstraňování potíží s novými pravidly. K dočasnému zakázání plánovače spusťte PowerShell a spusťte příkaz `Set-ADSyncScheduler -SyncCycleEnabled $false` .
  ![Příkazy PowerShellu pro zakázání plánovače synchronizace](media/how-to-connect-fix-default-rules/default3.png)
 
 - Změna rozsahu filtru může mít za následek odstranění objektů v cílovém adresáři. Před provedením jakýchkoli změn v oboru objektů buďte opatrní. Doporučujeme, abyste před provedením změn na aktivním serveru provedli změny v přípravném serveru.
@@ -105,10 +105,10 @@ Nechejte pravidla **filtru oboru** a **spojení** prázdné. Vyplňte transforma
 Nyní se dozvíte, jak vytvořit nový atribut pro tok objektů uživatele ze služby Active Directory do Azure Active Directory. Pomocí těchto kroků lze namapovat libovolný atribut z libovolného objektu na zdroj a cíl. Další informace najdete v tématu [vytváření vlastních pravidel synchronizace](how-to-connect-create-custom-sync-rule.md) a [Příprava na zřízení uživatelů](https://docs.microsoft.com/office365/enterprise/prepare-for-directory-synchronization).
 
 ### <a name="override-the-value-of-an-existing-attribute"></a>Přepsat hodnotu existujícího atributu
-Je možné, že budete chtít přepsat hodnotu atributu, který již byl namapován. Pokud třeba chcete nastavit hodnotu null jenom na atribut ve službě Azure AD, stačí jenom vytvořit příchozí pravidlo. Nastavte konstantní hodnotu, `AuthoritativeNull`tok do cílového atributu. 
+Je možné, že budete chtít přepsat hodnotu atributu, který již byl namapován. Pokud třeba chcete nastavit hodnotu null jenom na atribut ve službě Azure AD, stačí jenom vytvořit příchozí pravidlo. Nastavte konstantní hodnotu, `AuthoritativeNull` tok do cílového atributu. 
 
 >[!NOTE] 
-> Místo `AuthoritativeNull` `Null` v tomto případě použijte. Důvodem je, že hodnota, která není null, nahradí hodnotu null, i když má nižší prioritu (vyšší číslo hodnoty v pravidle). `AuthoritativeNull`na druhé straně se nenahradí hodnotou jinou než null jinými pravidly. 
+> `AuthoritativeNull`Místo `Null` v tomto případě použijte. Důvodem je, že hodnota, která není null, nahradí hodnotu null, i když má nižší prioritu (vyšší číslo hodnoty v pravidle). `AuthoritativeNull`na druhé straně se nenahradí hodnotou jinou než null jinými pravidly. 
 
 ### <a name="dont-sync-existing-attribute"></a>Nesynchronizovat existující atribut
 Pokud chcete vyloučit atribut z synchronizace, použijte funkci filtrování atributů, která je k dispozici v Azure AD Connect. Z ikony plocha spusťte **Azure AD Connect** a pak vyberte **přizpůsobit možnosti synchronizace**.
@@ -141,7 +141,7 @@ Tento atribut nemůžete nastavit ve službě Active Directory. Nastavte hodnotu
 
 `cloudFiltered <= IIF(Left(LCase([department]), 3) = "hrd", True, NULL)`
 
-Nejdříve jsme převedli oddělení ze zdroje (Active Directory) na malá písmena. Potom pomocí `Left` funkce jsme udělali jenom první tři znaky a porovnali je s `hrd`. V případě, že se shoduje, je hodnota `True`nastavena na `NULL`, jinak. V nastavení hodnoty na hodnotu null může jiné pravidlo s nižší prioritou (hodnota vyšší číslo) zapisovat do ní s jinou podmínkou. Spusťte náhled na jednom objektu pro ověření pravidla synchronizace, jak je uvedeno v části [ověření pravidla synchronizace](#validate-sync-rule) .
+Nejdříve jsme převedli oddělení ze zdroje (Active Directory) na malá písmena. Potom pomocí `Left` funkce jsme udělali jenom první tři znaky a porovnali je s `hrd` . V případě, že se shoduje, je hodnota nastavena na `True` , jinak `NULL` . V nastavení hodnoty na hodnotu null může jiné pravidlo s nižší prioritou (hodnota vyšší číslo) zapisovat do ní s jinou podmínkou. Spusťte náhled na jednom objektu pro ověření pravidla synchronizace, jak je uvedeno v části [ověření pravidla synchronizace](#validate-sync-rule) .
 
 ![Možnosti vytvoření pravidla synchronizace příchozích synchronizací](media/how-to-connect-fix-default-rules/default7a.png)
 

@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6446b039d90e04c9fe7fca28b361f620183a0292
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2bcf7b5b8791b813a28133d8a662d1736aacf35a
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80875737"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85358714"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Požadavky pro Azure AD Connect
 Toto téma popisuje předpoklady a požadavky na hardware pro Azure AD Connect.
@@ -81,7 +81,7 @@ Další informace naleznete v tématu:
 * Azure AD Connect vyžaduje k ukládání dat identity databázi SQL Serveru. Ve výchozím nastavení je nainstalovaná SQL Server 2012 Express LocalDB (světlá verze SQL Server Express). SQL Server Express má limit velikosti 10GB, který umožňuje spravovat přibližně 100 000 objektů. Pokud potřebujete spravovat větší objem objektů adresáře, musíte Průvodce instalací nasměrovat na jinou instalaci SQL Server. Typ SQL Server instalace může mít vliv na [výkon Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-performance-factors#sql-database-factors).
 * Pokud používáte jinou instalaci SQL Server, platí tyto požadavky:
   * Azure AD Connect podporuje všechny verze Microsoft SQL Server z 2012 (s nejnovější aktualizací Service Pack) do SQL Server 2019. Microsoft Azure SQL Database není **podporován** jako databáze.
-  * Je nutné použít kolaci SQL nerozlišující malá a velká písmena. Tyto kolace se identifikují pomocí \_CI_ v názvu. Použití kolace citlivého **na velká** a malá písmena, které identifikuje \_CS_ v názvu.
+  * Je nutné použít kolaci SQL nerozlišující malá a velká písmena. Tyto kolace se identifikují pomocí \_ CI_ v názvu. Použití kolace citlivého **na velká** a malá písmena, které identifikuje \_ CS_ v názvu.
   * Můžete mít jenom jeden synchronizační modul na jednu instanci SQL. Pro sdílení instance SQL s nástrojem FIM/MIM Sync, DirSync nebo Azure AD Sync **není podporována** .
 
 ### <a name="accounts"></a>Účty
@@ -96,7 +96,7 @@ Další informace naleznete v tématu:
   * Pokud používáte Microsoft Cloud v Německu nebo v cloudu Microsoft Azure Government, najdete informace v tématu [Azure AD Connect synchronizace instancí služby](reference-connect-instances.md) pro adresy URL.
 * Azure AD Connect (verze 1.1.614.0 a After) ve výchozím nastavení používá protokol TLS 1,2 pro šifrování komunikace mezi synchronizačním modulem a službou Azure AD. Pokud není v podkladovém operačním systému k dispozici protokol TLS 1,2, Azure AD Connect přírůstkové ke starším protokolům (TLS 1,1 a TLS 1,0).
 * Před verzí 1.1.614.0 Azure AD Connect ve výchozím nastavení používá TLS 1,0 pro šifrování komunikace mezi synchronizačním modulem a službou Azure AD. Pokud chcete přejít na TLS 1,2, postupujte podle kroků v části [Povolení TLS 1,2 pro Azure AD Connect](#enable-tls-12-for-azure-ad-connect).
-* Pokud používáte pro připojení k Internetu odchozí proxy server, je třeba přidat následující nastavení v souboru **C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config** pro Průvodce instalací a Azure AD Connect synchronizaci, aby bylo možné se připojit k Internetu a službě Azure AD. Tento text musí být zadaný na konci souboru. V tomto kódu &lt;PROXYADDRESS&gt; představuje skutečnou IP adresu proxy serveru nebo název hostitele.
+* Pokud používáte pro připojení k Internetu odchozí proxy server, je třeba přidat následující nastavení **C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config** souboru pro Průvodce instalací a Azure AD Connect synchronizaci, aby bylo možné se připojit k Internetu a službě Azure AD. Tento text musí být zadaný na konci souboru. V tomto kódu &lt; PROXYADDRESS &gt; představuje skutečnou IP adresu proxy serveru nebo název hostitele.
 
 ```
     <system.net>
@@ -110,7 +110,7 @@ Další informace naleznete v tématu:
     </system.net>
 ```
 
-* Pokud vaše proxy server vyžaduje ověření, musí se [účet služby](reference-connect-accounts-permissions.md#adsync-service-account) nacházet v doméně a k určení [vlastního účtu služby](how-to-connect-install-custom.md#install-required-components)musíte použít instalační cestu přizpůsobená nastavení. Také potřebujete jinou změnu souboru Machine. config. V rámci této změny v souboru Machine. config reaguje Průvodce instalací a synchronizační modul na žádosti o ověření z proxy server. V případě všech stránek průvodce instalací, kromě stránky **Konfigurace** , se použijí přihlašovací údaje přihlášeného uživatele. Na stránce **Konfigurace** na konci Průvodce instalací je kontext přepnut na [účet služby](reference-connect-accounts-permissions.md#adsync-service-account) , který byl vytvořen vámi. Oddíl Machine. config by měl vypadat takto.
+* Pokud vaše proxy server vyžaduje ověření, musí se [účet služby](reference-connect-accounts-permissions.md#adsync-service-account) nacházet v doméně a k určení [vlastního účtu služby](how-to-connect-install-custom.md#install-required-components)musíte použít instalační cestu přizpůsobená nastavení. Také potřebujete jinou změnu machine.config. Při této změně v machine.config reaguje Průvodce instalací a synchronizační modul na žádosti o ověření z proxy server. V případě všech stránek průvodce instalací, kromě stránky **Konfigurace** , se použijí přihlašovací údaje přihlášeného uživatele. Na stránce **Konfigurace** na konci Průvodce instalací je kontext přepnut na [účet služby](reference-connect-accounts-permissions.md#adsync-service-account) , který byl vytvořen vámi. Oddíl machine.config by měl vypadat takto.
 
 ```
     <system.net>
@@ -129,7 +129,7 @@ Další informace naleznete v tématu:
 Další informace najdete v tématu MSDN o [výchozím elementu proxy serveru](https://msdn.microsoft.com/library/kd3cf2ex.aspx).  
 Další informace o potížích s připojením najdete v tématu [řešení problémů s připojením](tshoot-connect-connectivity.md).
 
-### <a name="other"></a>Ostatní
+### <a name="other"></a>Jiné
 * Volitelné: testovací uživatelský účet pro ověření synchronizace.
 
 ## <a name="component-prerequisites"></a>Předpoklady součásti
@@ -151,7 +151,7 @@ Před verzí 1.1.614.0 Azure AD Connect ve výchozím nastavení používá TLS 
     ```
 2. For all operating systems, set this registry key and restart the server.
     ```
-    HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\.NETFramework\v4.0.30319 "do schusestrongcrypto" = DWORD: 00000001
+    HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft \. NETFramework\v4.0.30319 "do schusestrongcrypto" = DWORD: 00000001
     ```
 4. If you also want to enable TLS 1.2 between the sync engine server and a remote SQL Server, then make sure you have the required versions installed for [TLS 1.2 support for Microsoft SQL Server](https://support.microsoft.com/kb/3135244).
 

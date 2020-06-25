@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/11/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 723411191d0990583d039a0fc9651437480807b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 597e322536703560fad8a0ba562cc70ce3aa1775
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80983258"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85357405"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect synchronizace: konfigurace upřednostňovaného umístění dat pro prostředky Office 365
 Účelem tohoto tématu je projít si, jak nakonfigurovat atribut pro preferované umístění dat v Azure Active Directory (Azure AD) Connect Sync. Pokud někdo používá pro Office 365 více geografických možností, použijte tento atribut k určení geografického umístění dat Office 365 uživatele. ( *Oblast* podmínek a *geografické* použití jsou zaměnitelné.)
@@ -54,7 +54,7 @@ Zeměpisných oblastech v sadě Office 365 dostupné pro více geografických um
 | Švýcarsko | CYRILICE |
 | Spojené arabské emiráty | JSOU |
 | Spojené království | GBR |
-| Spojené státy | NAM |
+| USA | NAM |
 
 * Pokud geografická oblast není uvedená v této tabulce (například Jižní Amerika), nedá se použít pro více geografických oblastí.
 
@@ -91,8 +91,8 @@ Následující části obsahují postup pro povolení synchronizace atributu **p
 Aby se zabránilo tomu, že se nezamýšlené změny exportují do služby Azure AD, zajistěte, aby žádná synchronizace neprobíhala v průběhu aktualizace synchronizačních pravidel. Zakázání integrovaného plánovače synchronizace:
 
 1. Spusťte relaci PowerShellu na Azure AD Connectovém serveru.
-2. Zakažte naplánovanou synchronizaci spuštěním této rutiny: `Set-ADSyncScheduler -SyncCycleEnabled $false`.
-3. Spusťte **START** >  **Synchronization Service Manager** spuštěním**synchronizační služby**.
+2. Zakažte naplánovanou synchronizaci spuštěním této rutiny: `Set-ADSyncScheduler -SyncCycleEnabled $false` .
+3. Spusťte **Synchronization Service Manager** **spuštěním**  >  **synchronizační služby**.
 4. Vyberte kartu **operace** a potvrďte, že neexistuje žádná operace s *probíhajícím*stavem.
 
 ![Snímek obrazovky s Synchronization Service Manager](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step1.png)
@@ -135,7 +135,7 @@ Ve výchozím nastavení se neimportuje atribut **preferredDataLocation** do pro
 ## <a name="step-5-create-an-inbound-synchronization-rule"></a>Krok 5: vytvoření pravidla pro příchozí synchronizaci
 Pravidlo příchozí synchronizace povoluje, aby hodnota atributu mohla přecházet ze zdrojového atributu v místní službě Active Directory do úložiště metaverse.
 
-1. Spusťte **Editor pravidel synchronizace** kliknutím na **Spustit** > **Editor pravidel synchronizace**.
+1. Spusťte **Editor pravidel synchronizace** kliknutím na **Spustit**  >  **Editor pravidel synchronizace**.
 2. Nastavte **směr** vyhledávacího filtru na **příchozí**.
 3. Pokud chcete vytvořit nové příchozí pravidlo, vyberte **Přidat nové pravidlo**.
 4. Na kartě **Popis** zadejte následující konfiguraci:

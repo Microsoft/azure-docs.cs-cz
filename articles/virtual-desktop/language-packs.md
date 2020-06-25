@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 04/03/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7d05c1222ff43537ab8dad34588b80fe537fd0a1
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 70592d940e3766597475f4a7b90a3902a53406d5
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85200405"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361298"
 ---
 # <a name="install-language-packs"></a>Instalace jazykových sad
 
@@ -36,7 +36,8 @@ Instalace jazykových sad:
 4. V části **země nebo oblast**vyberte upřednostňovanou zemi nebo oblast z rozevírací nabídky.
     V tomto příkladu vybereme **Francii**, jak je znázorněno na následujícím snímku obrazovky:
 
-    ![Snímek obrazovky stránky oblasti Aktuálně vybraná oblast je Francie.](media/region-page-france.png)
+    > [!div class="mx-imgBorder"]
+    > ![Snímek obrazovky stránky oblasti Aktuálně vybraná oblast je Francie.](media/region-page-france.png)
 
 5. Potom vyberte **jazyk**a pak vyberte **Přidat jazyk**. V seznamu vyberte jazyk, který chcete nainstalovat, a pak vyberte **Další**.
 6. Když se otevře okno **instalovat jazykové funkce** , zaškrtněte políčko **nainstalovat jazykovou sadu a nastavte možnost jazyk zobrazení systému Windows**.
@@ -45,15 +46,19 @@ Instalace jazykových sad:
 
     Pojďme si projít rychlou vizuální ukázkou. Následující obrázky ukazují, jak nainstalovat francouzské a holandské jazykové sady a pak jako jazyk zobrazení nastavit francouzštinu.
 
-    ![Snímek obrazovky stránky jazyků na začátku procesu. Vybraný jazyk zobrazení systému Windows je angličtina.](media/language-page-default.png)
+    > [!div class="mx-imgBorder"]
+    > ![Snímek obrazovky stránky jazyků na začátku procesu. Vybraný jazyk zobrazení systému Windows je angličtina.](media/language-page-default.png)
 
-    ![Snímek obrazovky okna pro výběr jazyka Uživatel zadal do panelu hledání "francouzštinu", aby našel balíčky francouzského jazyka.](media/select-language-french.png)
+    > [!div class="mx-imgBorder"]
+    > ![Snímek obrazovky okna pro výběr jazyka Uživatel zadal do panelu hledání "francouzštinu", aby našel balíčky francouzského jazyka.](media/select-language-french.png)
 
-    ![Snímek obrazovky se stránkou funkcí instalace jazyka Francouzština se vybere jako preferovaný jazyk. Vybrané možnosti jsou "nastavit jazyk zobrazení," nainstalovat jazykové sady, "rozpoznávání řeči" a "rukopis".](media/install-language-features.png)
+    > [!div class="mx-imgBorder"]
+    > ![Snímek obrazovky se stránkou funkcí instalace jazyka Francouzština se vybere jako preferovaný jazyk. Vybrané možnosti jsou "nastavit jazyk zobrazení," nainstalovat jazykové sady, "rozpoznávání řeči" a "rukopis".](media/install-language-features.png)
 
     Po nainstalování jazykových sad se v seznamu jazyků zobrazí názvy jazykových sad.
 
-    ![Snímek obrazovky se stránkou jazyka s nainstalovanými novými jazykovými balíčky Jazykové sady pro francouzštinu a Nizozemsko jsou uvedené v části preferované jazyky.](media/language-page-complete.png)
+    > [!div class="mx-imgBorder"]
+    > ![Snímek obrazovky se stránkou jazyka s nainstalovanými novými jazykovými balíčky Jazykové sady pro francouzštinu a Nizozemsko jsou uvedené v části preferované jazyky.](media/language-page-complete.png)
 
 9. Pokud se zobrazí okno s výzvou k odhlášení od vaší relace. Odhlaste se a znovu se přihlaste. Váš jazyk zobrazení by teď měl být vybraný jako jazyk.
 
@@ -113,7 +118,8 @@ Pokud se během procesu Sysprep zobrazí chybová zpráva, měli byste postupova
 
    Text v souboru chyby vám sdělí, že musíte odinstalovat konkrétní jazykový balíček, jak je znázorněno na následujícím obrázku. Zkopírujte název jazykových balíčků pro další krok.
 
-   ![Snímek obrazovky souboru Setuperr. Text s názvem balíčku se zvýrazní tmavě modře.](media/setuperr-package-name.png)
+   > [!div class="mx-imgBorder"]
+   > ![Snímek obrazovky souboru Setuperr. Text s názvem balíčku se zvýrazní tmavě modře.](media/setuperr-package-name.png)
 
 2. Otevřete nové okno prostředí PowerShell a spuštěním následující rutiny s názvem balíčku, který jste zkopírovali v kroku 2, odeberte balíček jazyka:
 
@@ -137,7 +143,8 @@ Zachycení image:
 
 3. Do pole **název** zadejte název své image a přiřaďte ji do skupiny prostředků pomocí rozevírací nabídky **Skupina prostředků** , jak je znázorněno na následujícím obrázku.
 
-   ![Snímek obrazovky okna vytvořit obrázek Název, který uživatel přidělil této imagi testu, je "vmwvd-image-fr" a přiřadí se do skupiny prostředků "testwvdimagerg".](media/create-image.png)
+   > [!div class="mx-imgBorder"]
+   > ![Snímek obrazovky okna vytvořit obrázek Název, který uživatel přidělil této imagi testu, je "vmwvd-image-fr" a přiřadí se do skupiny prostředků "testwvdimagerg".](media/create-image.png)
 
 4. Vyberte **Vytvořit**.
 

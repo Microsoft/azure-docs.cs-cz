@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: 6b852cb4-2850-40a1-8280-8724081601f7
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48f3109b4c87e25444629ca25411894eab8a9d56
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 55270889c8c284335d5aa7b545718da419ba8d84
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "71827129"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85357354"
 ---
 # <a name="azure-ad-connect-sync-prevent-accidental-deletes"></a>Synchronizace Azure AD Connect: Prevence náhodného odstranění
 Toto téma popisuje funkci prevence náhodného odstranění (prevence nechtěného odstranění) v Azure AD Connect.
@@ -35,7 +35,7 @@ Mezi běžné scénáře, kdy vidíte mnoho odstranění, patří:
 * Odstraní se všechny objekty v organizační jednotce.
 * Organizační jednotka se přejmenuje, takže všechny objekty, které jsou v ní obsažené, jsou mimo rozsah synchronizace.
 
-Výchozí hodnotu 500 objektů je možné změnit pomocí PowerShellu pomocí nástroje `Enable-ADSyncExportDeletionThreshold`, který je součástí modulu ad Sync nainstalovaného s Azure Active Directory Connect. Tuto hodnotu byste měli nakonfigurovat tak, aby odpovídala velikosti vaší organizace. Vzhledem k tomu, že se Plánovač synchronizace spouští každých 30 minut, jedná se o počet odstranění, který se zobrazuje do 30 minut.
+Výchozí hodnotu 500 objektů je možné změnit pomocí PowerShellu pomocí nástroje `Enable-ADSyncExportDeletionThreshold` , který je součástí modulu ad Sync nainstalovaného s Azure Active Directory Connect. Tuto hodnotu byste měli nakonfigurovat tak, aby odpovídala velikosti vaší organizace. Vzhledem k tomu, že se Plánovač synchronizace spouští každých 30 minut, jedná se o počet odstranění, který se zobrazuje do 30 minut.
 
 Pokud je pro export do služby Azure AD moc málo mazání, export se zastaví a dostanete e-mail podobný tomuto:
 
@@ -45,7 +45,7 @@ Pokud je pro export do služby Azure AD moc málo mazání, export se zastaví a
 >
 > 
 
-Stav `stopped-deletion-threshold-exceeded` můžete zobrazit také při hledání v uživatelském rozhraní **Synchronization Service Manager** pro exportní profil.
+Stav můžete zobrazit také `stopped-deletion-threshold-exceeded` při hledání v uživatelském rozhraní **Synchronization Service Manager** pro exportní profil.
 ![Zabránit náhodnému odstranění Service Manager uživatelského rozhraní synchronizace](./media/how-to-connect-sync-feature-prevent-accidental-deletes/syncservicemanager.png)
 
 Pokud se to neočekávalo, prozkoumejte a proveďte nápravné akce. Chcete-li zjistit, které objekty budou smazány, postupujte takto:
@@ -63,11 +63,11 @@ Pokud se to neočekávalo, prozkoumejte a proveďte nápravné akce. Chcete-li z
 ## <a name="if-all-deletes-are-desired"></a>Pokud jsou všechna odstranění požadovaná
 Pokud jsou všechna odstranění požadovaná, proveďte následující akce:
 
-1. Pokud chcete načíst aktuální prahovou hodnotu odstranění, spusťte rutinu `Get-ADSyncExportDeletionThreshold`PowerShellu. Zadejte účet globálního správce služby Azure AD a heslo. Výchozí hodnota je 500.
-2. Pokud chcete tuto ochranu dočasně zakázat a nechat tyto operace odstranit, spusťte rutinu PowerShellu `Disable-ADSyncExportDeletionThreshold`:. Zadejte účet globálního správce služby Azure AD a heslo.
+1. Pokud chcete načíst aktuální prahovou hodnotu odstranění, spusťte rutinu PowerShellu `Get-ADSyncExportDeletionThreshold` . Zadejte účet globálního správce služby Azure AD a heslo. Výchozí hodnota je 500.
+2. Pokud chcete tuto ochranu dočasně zakázat a nechat tyto operace odstranit, spusťte rutinu PowerShellu: `Disable-ADSyncExportDeletionThreshold` . Zadejte účet globálního správce služby Azure AD a heslo.
    ![Přihlašovací údaje](./media/how-to-connect-sync-feature-prevent-accidental-deletes/credentials.png)
 3. Když je konektor Azure Active Directory stále vybraný, vyberte akci **Spustit** a vyberte **exportovat**.
-4. Pokud chcete ochranu znovu povolit, spusťte rutinu PowerShellu: `Enable-ADSyncExportDeletionThreshold -DeletionThreshold 500`. Nahraďte 500 hodnotou, kterou jste si všimli při načítání aktuální prahové hodnoty pro odstranění. Zadejte účet globálního správce služby Azure AD a heslo.
+4. Pokud chcete ochranu znovu povolit, spusťte rutinu PowerShellu: `Enable-ADSyncExportDeletionThreshold -DeletionThreshold 500` . Nahraďte 500 hodnotou, kterou jste si všimli při načítání aktuální prahové hodnoty pro odstranění. Zadejte účet globálního správce služby Azure AD a heslo.
 
 ## <a name="next-steps"></a>Další kroky
 **Témata s přehledem**

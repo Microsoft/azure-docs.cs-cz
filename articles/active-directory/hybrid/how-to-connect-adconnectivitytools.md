@@ -6,17 +6,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 4/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd5340cd8c802df4ffbe0207b5401d2fee4e207e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d7eed3e06ab42671d9674ad3893a88dfe9817e22
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "64571116"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85360176"
 ---
 # <a name="troubleshoot-azure-ad-connectivity-with-the-adconnectivitytool-powershell-module"></a>Řešení potíží s připojením služby Azure AD pomocí modulu PowerShellu pro ADConnectivityTool
 
@@ -47,7 +47,7 @@ Například při pokusu o přidání adresáře na obrazovku **připojit adresá
 
 Co se skutečně děje na pozadí, je Azure AD Connect volání `Start-NetworkConnectivityDiagnosisTools` funkce.  Tato funkce se volá, když se ověření přihlašovacích údajů nepovede kvůli problému s připojením k síti.
 
-Nakonec se při každém volání nástroje z Průvodce vygeneruje podrobný soubor protokolu. Protokol se nachází v **C:\ProgramData\AADConnect\ADConnectivityTool-\<datum>. log\<v době>.**
+Nakonec se při každém volání nástroje z Průvodce vygeneruje podrobný soubor protokolu. Protokol je umístěný v **C:\ProgramData\AADConnect\ADConnectivityTool- \<date> - \<time> . log.**
 
 ## <a name="adconnectivitytools-post-installation"></a>ADConnectivityTools po instalaci
 Po instalaci Azure AD Connect můžete použít jakoukoli funkci v modulu PowerShellu ADConnectivityTools.  

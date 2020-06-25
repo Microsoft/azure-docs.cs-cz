@@ -5,17 +5,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 356a05d4d92f17ceb66ff0208153ec3eac736757
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fe2d0a16aeacfc551a6a07a72b58b5f461f93433
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74793895"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85360516"
 ---
 # <a name="tutorial-basic-active-directory-environment"></a>Kurz: základní prostředí služby Active Directory
 
@@ -201,13 +201,13 @@ Teď je potřeba vytvořit tenanta Azure AD, abyste mohli synchronizovat naše u
 3. Vyberte ve výsledcích hledání **Azure Active Directory**.
 4. Vyberte **Vytvořit**.</br>
 ![Vytvoření](media/tutorial-single-forest/create1.png)</br>
-5. Zadejte **název organizace** společně s **počátečním názvem domény**. Pak vyberte **vytvořit**. Vytvoří se váš adresář.
+5. Zadejte **název organizace** společně s **počátečním názvem domény**. Potom vyberte **Vytvořit**. Vytvoří se váš adresář.
 6. Po dokončení této možnosti klikněte na odkaz **tady** a adresář spravujte.
 
 ## <a name="create-a-global-administrator-in-azure-ad"></a>Vytvoření globálního správce v Azure AD
 Teď, když máte tenanta Azure AD, vytvoříte účet globálního správce.  Účet globálního správce vytvoříte takto.
 
-1.  V části **Spravovat** vyberte **Uživatele**.</br>
+1.  V části **Spravovat** vyberte **Uživatelé**.</br>
 ![Vytvoření](media/tutorial-single-forest/administrator1.png)</br>
 2.  Vyberte **Všichni uživatelé** a pak vyberte **+ Nový uživatel**.
 3.  Zadejte jméno a uživatelské jméno uživatele. To bude globální správce pro tenanta. Také budete chtít změnit **roli adresáře** na **globální správce.** A můžete i zobrazit dočasné heslo. Po dokončení vyberte **Vytvořit**.</br>

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 31a2bcdcf7b21999ddf17170b024589204c0e9e5
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: b8d0bcff79b6101047545614538dc1d58a854a6d
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212781"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361247"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Příprava a přizpůsobení hlavní image VHD
 
@@ -37,11 +37,13 @@ Vytvoření virtuálního počítače se zkopírovaným virtuálním pevným dis
 
 2. Na stránce zadat generaci vyberte **generace 1**.
 
-    ![Snímek obrazovky se stránkou pro určení generace. Je vybrána možnost "generace 1".](media/a41174fd41302a181e46385e1e701975.png)
+    > [!div class="mx-imgBorder"]
+    > ![Snímek obrazovky se stránkou pro určení generace. Je vybrána možnost "generace 1".](media/a41174fd41302a181e46385e1e701975.png)
 
 3. V části typ kontrolního bodu zakažte kontrolní body tím, že zrušíte jeho zrušení.
 
-    ![Snímek obrazovky oddílu s typem kontrolního bodu na stránce s kontrolními body](media/20c6dda51d7cafef33251188ae1c0c6a.png)
+    > [!div class="mx-imgBorder"]
+    > ![Snímek obrazovky oddílu s typem kontrolního bodu na stránce s kontrolními body](media/20c6dda51d7cafef33251188ae1c0c6a.png)
 
 Můžete taky spustit následující rutinu v PowerShellu a zakázat kontrolní body.
 
@@ -53,7 +55,8 @@ Set-VM -Name <VMNAME> -CheckpointType Disabled
 
 Pokud vytvoříte virtuální počítač z existujícího virtuálního pevného disku, vytvoří se ve výchozím nastavení dynamický disk. Můžete ji změnit na pevný disk výběrem možnosti **Upravit disk...** , jak je znázorněno na následujícím obrázku. Podrobnější pokyny najdete v tématu [Příprava virtuálního pevného disku (VHDX) Windows pro nahrání do Azure](../virtual-machines/windows/prepare-for-upload-vhd-image.md).
 
-![Snímek obrazovky s možností upravit disk](media/35772414b5a0f81f06f54065561d1414.png)
+> [!div class="mx-imgBorder"]
+> ![Snímek obrazovky s možností upravit disk](media/35772414b5a0f81f06f54065561d1414.png)
 
 Pomocí následující rutiny prostředí PowerShell můžete také změnit disk na pevný disk.
 
@@ -126,7 +129,8 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fEnab
 
 Pro hostitele relací virtuálních počítačů s Windows, kteří používají více relací Windows 10 Enterprise nebo Windows 10 Enterprise, doporučujeme zakázat smysl úložiště. Smysl úložiště můžete zakázat v nabídce nastavení v části **úložiště**, jak je znázorněno na následujícím snímku obrazovky:
 
-![Snímek obrazovky nabídky úložiště v části nastavení. Možnost "rozpoznávání úložiště" je vypnuta.](media/storagesense.png)
+> [!div class="mx-imgBorder"]
+> ![Snímek obrazovky nabídky úložiště v části nastavení. Možnost "rozpoznávání úložiště" je vypnuta.](media/storagesense.png)
 
 Nastavení registru můžete změnit také spuštěním následujícího příkazu:
 
@@ -189,15 +193,18 @@ V následujících pokynech se dozvíte, jak nahrát hlavní bitovou kopii do ú
 
 2. Nahrajte virtuální pevný disk do kontejneru objektů BLOB v účtu úložiště. Pomocí [nástroje Průzkumník služby Storage](https://azure.microsoft.com/features/storage-explorer/)můžete rychle nahrávat. Další informace o nástroji pro Průzkumník služby Storage najdete v [tomto článku](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows).
 
-    ![Snímek obrazovky okna hledání nástroje pro Průzkumník služby Microsoft Azure Storage Zaškrtávací políčko nahrát soubory. VHD nebo VHDX jako objekty blob stránky (doporučeno) je zaškrtnuté.](media/897aa9a9b6acc0aa775c31e7fd82df02.png)
+    > [!div class="mx-imgBorder"]
+    > ![Snímek obrazovky okna hledání nástroje pro Průzkumník služby Microsoft Azure Storage Zaškrtávací políčko nahrát soubory. VHD nebo VHDX jako objekty blob stránky (doporučeno) je zaškrtnuté.](media/897aa9a9b6acc0aa775c31e7fd82df02.png)
 
 3. V dalším kroku přejdete do Azure Portal v prohlížeči a vyhledáte "image". Vaše hledání by vám mělo vést k **Vytvoření stránky s obrázkem** , jak je znázorněno na následujícím snímku obrazovky:
 
-    ![Snímek obrazovky se stránkou vytvořit obrázek v Azure Portal vyplněný příklady hodnot pro obrázek.](media/d3c840fe3e2430c8b9b1f44b27d2bf4f.png)
+    > [!div class="mx-imgBorder"]
+    > ![Snímek obrazovky se stránkou vytvořit obrázek v Azure Portal vyplněný příklady hodnot pro obrázek.](media/d3c840fe3e2430c8b9b1f44b27d2bf4f.png)
 
 4. Po vytvoření image by se na následujícím snímku obrazovky měla zobrazit oznámení, jako je třeba ta:
 
-    ![Snímek obrazovky s oznámením o úspěšném vytvoření obrázku](media/1f41b7192824a2950718a2b7bb9e9d69.png)
+    > [!div class="mx-imgBorder"]
+    > ![Snímek obrazovky s oznámením o úspěšném vytvoření obrázku](media/1f41b7192824a2950718a2b7bb9e9d69.png)
 
 ## <a name="next-steps"></a>Další kroky
 

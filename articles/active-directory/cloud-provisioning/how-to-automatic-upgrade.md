@@ -8,31 +8,31 @@ manager: daveba
 editor: ''
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f09b2fc685881aa8a7bd87b6a855c657af9ef43d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4d0f7093f44a284ec26907d7c4bcfb2bdfd04763
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78190309"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85360907"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-agent-automatic-upgrade"></a>Azure AD Connect agent zřizování cloudu: automatický upgrade
 
 Ujistěte se, že vaše Azure Active Directory (Azure AD) Connect Cloud zřizovacího agenta je vždycky aktuální, a to pomocí funkce automatického upgradu.
 
-Agent se nainstaluje tady: "program files\Azure AD Connect zřizování Agent\AADConnectProvisioningAgent.exe"
+Agent se nainstaluje zde: "program files\Azure AD Connect zřizování Agent\AADConnectProvisioningAgent.exe"
 
 Verzi ověříte tak, že kliknete pravým tlačítkem na spustitelný soubor a vyberete vlastnosti a pak podrobnosti.
 
 ![Verze souboru agenta](media/how-to-automatic-upgrade/agent1.png)
 
-Aktualizace agenta se nainstaluje tady: "program files\Azure AD Connect Updater\AzureADConnectAgentUpdater.exee agent"
+Aktualizace agenta se nainstaluje tady: "program files\Azure AD Connect zřizování agent Updater\AzureADConnectAgentUpdater.exe"
 
 Verzi ověříte tak, že kliknete pravým tlačítkem na spustitelný soubor a vyberete vlastnosti a pak podrobnosti.
 

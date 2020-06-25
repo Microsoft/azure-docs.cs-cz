@@ -1,7 +1,7 @@
 ---
 title: Přehled dokumentace analýzy kódu zabezpečení společnosti Microsoft
 description: Tento článek představuje přehled rozšíření analýzy kódu Microsoft Security.
-author: vharindra
+author: sukhans
 manager: sukhans
 ms.author: terrylan
 ms.date: 07/31/2019
@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 963bc909b69962cded0a50d717e3a653d3d69769
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e42ea5c6863e769f6d2664b3bcd48d15f00b6b5e
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74851464"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361315"
 ---
 # <a name="about-microsoft-security-code-analysis"></a>Informace o analýze kódu zabezpečení společnosti Microsoft
 
@@ -65,15 +65,11 @@ V této části jsou uvedeny sady nástrojů, které jsou aktuálně k dispozici
 
 ### <a name="binskim"></a>BinSkim
 
-BinSkim je přenosný spustitelný soubor (PE), který ověřuje nastavení kompilátoru, nastavení linkeru a další charakteristiky binárních souborů souvisejících se zabezpečením. Tato úloha sestavení poskytuje obálku příkazového řádku kolem konzolové aplikace binskim. exe. BinSkim je open source nástroj. Další informace najdete v tématu [BinSkim na GitHubu](https://github.com/Microsoft/binskim).
+BinSkim je přenosný spustitelný soubor (PE), který ověřuje nastavení kompilátoru, nastavení linkeru a další charakteristiky binárních souborů souvisejících se zabezpečením. Tato úloha sestavení poskytuje obálku příkazového řádku kolem konzolové aplikace binskim.exe. BinSkim je open source nástroj. Další informace najdete v tématu [BinSkim na GitHubu](https://github.com/Microsoft/binskim).
 
 ### <a name="credential-scanner"></a>Skener přihlašovacích údajů
 
 Hesla a další tajné kódy uložené ve zdrojovém kódu jsou významné problémy. Skener přihlašovacích údajů je proprietární Nástroj pro statickou analýzu, který pomáhá tento problém vyřešit. Nástroj detekuje přihlašovací údaje, tajné kódy, certifikáty a další citlivý obsah ve zdrojovém kódu a ve výstupu sestavení.
-
-### <a name="microsoft-security-risk-detection"></a>Zjišťování rizik zabezpečení společnosti Microsoft
-
-Zjišťování rizik společnosti Microsoft (MSRD) je cloudová služba pro účely přibližného testování. Identifikuje zneužití chyb zabezpečení v softwaru. Tato služba vyžaduje samostatné předplatné a aktivaci. Další informace najdete v centru pro [vývojáře v MSRD](https://docs.microsoft.com/security-risk-detection/).
 
 ### <a name="roslyn-analyzers"></a>Analyzátory Roslyn
 

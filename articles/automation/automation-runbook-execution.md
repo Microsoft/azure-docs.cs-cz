@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: c9e602f9ed6a9132c78dbdf0ea3246cbeae80671
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 4f62a94c8ed8baa9979aa1469e785d26781af7f0
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832346"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361621"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Spouštění runbooků ve službě Azure Automation
 
@@ -53,7 +53,7 @@ V následující tabulce jsou uvedeny některé úlohy spuštění sady Runbook 
 |Vyžadování softwaru a spustitelných souborů třetích stran|Hybrid Runbook Worker|Můžete spravovat operační systém a instalovat software.|
 |Monitorování souboru nebo složky pomocí Runbooku|Hybrid Runbook Worker|Použijte [úlohu sledovacího](automation-watchers-tutorial.md) procesu na Hybrid Runbook Worker.|
 |Spuštění skriptu náročného na prostředky|Hybrid Runbook Worker| Izolované prostory Azure mají [omezení prostředků](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits).|
-|Použití modulů s konkrétními požadavky| Hybrid Runbook Worker|Tady je několik příkladů:</br> WinSCP – závislost na WinSCP. exe </br> Správa služby IIS – závislost při povolování nebo správě služby IIS|
+|Použití modulů s konkrétními požadavky| Hybrid Runbook Worker|Tady je několik příkladů:</br> WinSCP – závislost na winscp.exe </br> Správa služby IIS – závislost při povolování nebo správě služby IIS|
 |Instalace modulu pomocí instalačního programu|Hybrid Runbook Worker|Moduly pro izolovaný prostor (sandbox) musí podporovat kopírování.|
 |Používejte Runbooky nebo moduly, které vyžadují .NET Framework verze odlišná od 4.7.2.|Hybrid Runbook Worker|Podpora izolovaného prostoru (sandbox) Azure podporuje .NET Framework 4.7.2 a upgrade na jinou verzi se nepodporuje.|
 |Spouštění skriptů vyžadujících zvýšení oprávnění|Hybrid Runbook Worker|Izolované prostory neumožňují zvýšení oprávnění. Pomocí Hybrid Runbook Worker můžete vypnout nástroj řízení uživatelských účtů a použít příkaz [Invoke-Command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7) při spuštění příkazu, který vyžaduje zvýšení úrovně oprávnění.|
@@ -79,7 +79,7 @@ Sada Runbook vyžaduje příslušné [přihlašovací údaje](shared-resources/c
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
-Azure Automation využívá [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) k monitorování operací počítače. Operace vyžadují Log Analytics pracovní prostor a [agenty Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent).
+Azure Automation využívá [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) ke sledování operací počítače. Operace vyžadují Log Analytics pracovní prostor a [agenty Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent).
 
 ### <a name="log-analytics-agent-for-windows"></a>Agent Log Analytics pro Windows
 

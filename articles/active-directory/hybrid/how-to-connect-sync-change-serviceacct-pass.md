@@ -12,17 +12,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b2a0d0b77b6db481b13785907a1359d2bbe3e9b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cfb6e0608609a3940affd83a0aa235a2ef7c041c
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80984500"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85357558"
 ---
 # <a name="changing-the-adsync-service-account-password"></a>Změna hesla účtu služby ADSync
 Změníte-li heslo účtu služby ADSync, synchronizační služba nebude moci správně spustit, dokud neodstraníte šifrovací klíč a znovu znovu spustíte heslo účtu služby ADSync. 
@@ -107,7 +107,7 @@ Vzhledem k tomu, že stávající hesla uložená v databázi již nelze dešifr
 Do synchronizační služby nemůžete přímo zadat heslo k účtu služby Azure AD. Místo toho je třeba použít rutinu **Add-ADSyncAADServiceAccount** k opětovné inicializaci účtu služby Azure AD. Rutina obnoví heslo účtu a zpřístupní ho službě synchronizace:
 
 1. Spusťte novou relaci PowerShellu na Azure AD Connectovém serveru.
-2. Spusťte rutinu `Add-ADSyncAADServiceAccount`.
+2. Spusťte rutinu `Add-ADSyncAADServiceAccount` .
 3. V místním dialogovém okně zadejte přihlašovací údaje globálního správce Azure AD pro vašeho tenanta Azure AD.
 ![Nástroj Azure AD Connect Sync šifrovací klíč](./media/how-to-connect-sync-change-serviceacct-pass/key7.png)
 4. Pokud je to úspěšné, zobrazí se příkazový řádek PowerShellu.

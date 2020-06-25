@@ -30,9 +30,9 @@
     - name: Automatizace s využitím instančních objektů
       href: analysis-services-service-principal.md
     - name: Klientské knihovny
-      href: analysis-services-data-providers.md
+      href: 'https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current'
     - name: Úroveň kompatibility
-      href: 'https://docs.microsoft.com/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services'
+      href: 'https://docs.microsoft.com/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services?view=azure-analysis-services-current'
     - name: Připojení k místním zdrojům dat
       href: analysis-services-gateway.md
     - name: Připojení k serverům

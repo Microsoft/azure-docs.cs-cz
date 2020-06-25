@@ -3,14 +3,14 @@ title: Spuštění Azure Automation Runbooku z Webhooku
 description: V tomto článku se dozvíte, jak pomocí Webhooku spustit Runbook v Azure Automation z volání HTTP.
 services: automation
 ms.subservice: process-automation
-ms.date: 06/03/2020
+ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 78ce1e46b7ea2cc82a0c478b0c81abbf701f68a9
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: e64f437b65964b585311aeae25e5f3a92275754a
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84342965"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361672"
 ---
 # <a name="start-a-runbook-from-a-webhook"></a>Spuštění runbooku z webhooku
 
@@ -29,7 +29,7 @@ Následující tabulka popisuje vlastnosti, které musíte nakonfigurovat pro We
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| Name |Název Webhooku Můžete zadat jakýkoli název, který chcete, protože není k dispozici klientovi. Používá se pouze k identifikaci Runbooku v Azure Automation. Jako osvědčený postup byste měli Webhook dát název týkající se klienta, který ho používá. |
+| Název |Název Webhooku Můžete zadat jakýkoli název, který chcete, protože není k dispozici klientovi. Používá se pouze k identifikaci Runbooku v Azure Automation. Jako osvědčený postup byste měli Webhook dát název týkající se klienta, který ho používá. |
 | URL |Adresa URL Webhooku Jedná se o jedinečnou adresu, kterou klient volá s HTTP POST, aby mohl spustit Runbook propojený s webhookem. Při vytváření Webhooku se automaticky vygeneruje. Nemůžete zadat vlastní adresu URL. <br> <br> Adresa URL obsahuje token zabezpečení, který umožňuje systému třetí strany vyvolat sadu Runbook bez dalšího ověřování. Z tohoto důvodu byste měli zacházet s adresou URL, jako je heslo. Z bezpečnostních důvodů můžete při vytváření Webhooku zobrazit jenom adresu URL v Azure Portal. Poznamenejte si adresu URL v zabezpečeném umístění pro budoucí použití. |
 | Datum vypršení platnosti | Datum vypršení platnosti Webhooku, po kterém ho už nebude možné používat. Po vytvoření Webhooku můžete upravit datum vypršení platnosti, dokud nevypršela platnost Webhooku. |
 | Povoleno | Nastavení určující, zda je Webhook ve výchozím nastavení povolený, když je vytvořený. Pokud tuto vlastnost nastavíte na zakázáno, nebude moct Webhook používat žádný klient. Tuto vlastnost můžete nastavit při vytváření Webhooku nebo jakékoli jiné doby po jejím vytvoření. |
@@ -83,9 +83,13 @@ Nyní předáte následující objekt JSON v uživatelském rozhraní pro `Webho
 
 Zabezpečení Webhooku závisí na ochraně osobních údajů své adresy URL, která obsahuje token zabezpečení, který umožňuje vyvolání Webhooku. Azure Automation neprovádí žádné ověřování u žádosti, pokud je provedena na správnou adresu URL. Z tohoto důvodu by klienti neměli používat Webhooky pro Runbooky, které provádějí vysoce citlivé operace bez použití náhradních způsobů ověření žádosti.
 
-Do sady Runbook můžete zahrnout logiku, která určí, zda je vyvolána webhookem. Nechat sadu Runbook, aby kontrolovala `WebhookName` vlastnost `WebhookData` parametru. Sada Runbook může provést další ověření tím, že hledá konkrétní informace ve `RequestHeader` `RequestBody` vlastnostech a.
+Vezměte v úvahu následující strategie:
 
-Další strategií je, aby sada Runbook při přijetí požadavku Webhooku prováděla nějaké ověření externí podmínky. Představte si třeba sadu Runbook, která je volána GitHubem, kdykoli je nové potvrzení do úložiště GitHub. Runbook se může připojit k GitHubu a ověřit, že před pokračováním došlo k novému potvrzení.
+* Do sady Runbook můžete zahrnout logiku, která určí, zda je vyvolána webhookem. Nechat sadu Runbook, aby kontrolovala `WebhookName` vlastnost `WebhookData` parametru. Sada Runbook může provést další ověření tím, že hledá konkrétní informace ve `RequestHeader` `RequestBody` vlastnostech a.
+
+* Nechat sadu Runbook při přijetí požadavku Webhooku provést nějaké ověření externí podmínky. Představte si třeba sadu Runbook, která je volána GitHubem, kdykoli je nové potvrzení do úložiště GitHub. Runbook se může připojit k GitHubu a ověřit, že před pokračováním došlo k novému potvrzení.
+
+* Azure Automation podporuje značky služby virtuální sítě Azure, konkrétně [GuestAndHybridManagement](../virtual-network/service-tags-overview.md). Pomocí značek služeb můžete definovat řízení přístupu k síti pro [skupiny zabezpečení sítě](../virtual-network/security-overview.md#security-rules) nebo [Azure firewall](../firewall/service-tags.md) a Trigger webhooků z vaší virtuální sítě. Značky služeb lze použít místo konkrétních IP adres při vytváření pravidel zabezpečení. Zadáním názvu značky služby **GuestAndHybridManagement** v příslušném zdrojovém nebo cílovém poli pravidla můžete povolit nebo zamítnout přenos pro službu Automation. Tato značka služby nepodporuje povolení podrobnějšího řízení tím, že omezí rozsahy IP adres na konkrétní oblast.
 
 ## <a name="create-a-webhook"></a>Vytvoření Webhooku
 
@@ -116,7 +120,7 @@ http://<Webhook Server>/token?=<Token Value>
 
 Klient obdrží z požadavku jeden z následujících návratových kódů `POST` .
 
-| Kód | Text | Description |
+| Kód | Text | Popis |
 |:--- |:--- |:--- |
 | 202 |Přijato |Požadavek byl přijat a sada Runbook byla úspěšně zařazena do fronty. |
 | 400 |Chybný požadavek |Žádost nebyla přijata z některého z následujících důvodů: <ul> <li>Platnost Webhooku vypršela.</li> <li>Webhook je zakázaný.</li> <li>Token v adrese URL je neplatný.</li>  </ul> |

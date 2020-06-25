@@ -2,24 +2,20 @@
 title: Vypsání přiřazení rolí Azure pomocí Azure Portal – Azure RBAC
 description: Naučte se určit, k jakým prostředkům uživatelé, skupiny, instanční objekty nebo spravované identity mají přístup pomocí Azure Portal a řízení přístupu na základě role Azure (Azure RBAC).
 services: active-directory
-documentationcenter: ''
 author: rolyon
 manager: mtillman
-ms.assetid: 8078f366-a2c4-4fbb-a44b-fc39fd89df81
 ms.service: role-based-access-control
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/18/2020
+ms.date: 06/24/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 4315b6ded8824fb119cd9c05a760b4269bcfd12d
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: f7d56ecc7fc6bd850fced33c2c1cf20902bb2df4
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84791057"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361833"
 ---
 # <a name="list-azure-role-assignments-using-the-azure-portal"></a>Vypsání přiřazení rolí Azure pomocí Azure Portal
 
@@ -30,7 +26,7 @@ ms.locfileid: "84791057"
 
 ## <a name="list-role-assignments-for-a-user-or-group"></a>Seznam přiřazení rolí pro uživatele nebo skupinu
 
-Nejjednodušší způsob, jak zobrazit role přiřazené uživateli nebo skupině v rámci předplatného, je použít podokno **prostředky Azure** .
+Nejjednodušší způsob, jak zobrazit role přiřazené uživateli nebo skupině v rámci předplatného, je použít podokno **přiřazení role Azure** .
 
 1. V Azure Portal v nabídce Azure Portal vyberte **všechny služby** .
 
@@ -38,11 +34,11 @@ Nejjednodušší způsob, jak zobrazit role přiřazené uživateli nebo skupin�
 
 1. Klikněte na uživatele nebo skupinu, pro kterou chcete zobrazit seznam přiřazení rolí.
 
-1. Klikněte na **prostředky Azure**.
+1. Klikněte na **přiřazení rolí Azure**.
 
     Zobrazí se seznam rolí přiřazených vybranému uživateli nebo skupině v různých oborech, jako je skupina pro správu, předplatné, skupina prostředků nebo prostředek. Tento seznam obsahuje všechna přiřazení rolí, ke kterým máte oprávnění číst.
 
-    ![Přiřazení rolí pro uživatele](./media/role-assignments-list-portal/azure-resources-user.png)    
+    ![Přiřazení rolí pro uživatele](./media/role-assignments-list-portal/azure-role-assignments-user.png)    
 
 1. Chcete-li změnit předplatné, klikněte na seznam **předplatných** .
 
@@ -102,29 +98,35 @@ Pokud chcete vypsat přístup pro uživatele, skupinu, instanční objekt nebo s
 
     V tomto podokně můžete zobrazit role přiřazené k vybranému objektu zabezpečení a oboru. Pokud jsou v tomto oboru k dispozici nějaká přiřazení odepřít nebo zděděná do tohoto oboru, budou uvedena.
 
-## <a name="list-role-assignments-for-a-system-assigned-managed-identity"></a>Seznam přiřazení rolí pro spravovanou identitu přiřazenou systémem
+## <a name="list-role-assignments-for-a-managed-identity"></a>Seznam přiřazení rolí pro spravovanou identitu
+
+Přiřazení rolí pro spravované identity přiřazené systémem a uživatelem v konkrétním oboru můžete vypsat pomocí okna **řízení přístupu (IAM)** , jak je popsáno výše. Tato část popisuje, jak zobrazit seznam přiřazení rolí jenom pro spravovanou identitu.
+
+### <a name="system-assigned-managed-identity"></a>Spravovaná identita přiřazená systémem
 
 1. V Azure Portal otevřete spravovanou identitu přiřazenou systémem.
 
 1. V nabídce vlevo klikněte na možnost **Identita**.
 
-    ![Spravovaná identita přiřazená systémem](./media/role-assignments-list-portal/identity-system-assigned.png)
+    ![Spravovaná identita přiřazená systémem](./media/shared/identity-system-assigned.png)
 
-1. V části **přiřazení rolí**klikněte na **Zobrazit role Azure RBAC přiřazené této spravované identitě**.
+1. V části **oprávnění**klikněte na **přiřazení rolí Azure**.
 
     Zobrazí se seznam rolí přiřazených k vybrané spravované identitě přiřazené systémem v různých oborech, jako je skupina pro správu, předplatné, skupina prostředků nebo prostředek. Tento seznam obsahuje všechna přiřazení rolí, ke kterým máte oprávnění číst.
 
-    ![Přiřazení rolí pro spravovanou identitu přiřazenou systémem](./media/role-assignments-list-portal/azure-resources-system-assigned.png)
+    ![Přiřazení rolí pro spravovanou identitu přiřazenou systémem](./media/shared/role-assignments-system-assigned.png)
 
-## <a name="list-role-assignments-for-a-user-assigned-managed-identity"></a>Seznam přiřazení rolí pro uživatelem přiřazenou spravovanou identitu
+1. Chcete-li změnit předplatné, klikněte na seznam **předplatných** .
+
+### <a name="user-assigned-managed-identity"></a>Spravovaná identita přiřazená uživatelem
 
 1. V Azure Portal otevřete uživatelem přiřazenou spravovanou identitu.
 
-1. Klikněte na **prostředky Azure**.
+1. Klikněte na **přiřazení rolí Azure**.
 
     Zobrazí se seznam rolí přiřazených k vybrané spravované identitě přiřazené uživatelem v různých oborech, jako je skupina pro správu, předplatné, skupina prostředků nebo prostředek. Tento seznam obsahuje všechna přiřazení rolí, ke kterým máte oprávnění číst.
 
-    ![Přiřazení rolí pro spravovanou identitu přiřazenou systémem](./media/role-assignments-list-portal/azure-resources-user-assigned.png)
+    ![Přiřazení rolí pro spravovanou identitu přiřazenou systémem](./media/shared/role-assignments-user-assigned.png)
 
 1. Chcete-li změnit předplatné, klikněte na seznam **předplatných** .
 
@@ -137,6 +139,51 @@ V každém předplatném můžete mít až **2000** přiřazení rolí. Toto ome
 Pokud se blížíte k maximálnímu počtu a pokusíte se přidat další přiřazení role, zobrazí se upozornění v podokně **Přidat přiřazení role** . Způsob, jakým můžete snížit počet přiřazení rolí, najdete v tématu [řešení potíží s Azure RBAC](troubleshooting.md#azure-role-assignments-limit).
 
 ![Řízení přístupu – upozornění přidání přiřazení role](./media/role-assignments-list-portal/add-role-assignment-warning.png)
+
+## <a name="download-role-assignments-preview"></a>Stáhnout přiřazení rolí (Preview)
+
+Přiřazení rolí si můžete stáhnout v oboru ve formátu CSV nebo JSON. To může být užitečné v případě, že při migraci předplatného potřebujete zkontrolovat seznam v tabulce nebo přebírat inventář.
+
+> [!IMPORTANT]
+> Stažení přiřazení rolí je momentálně ve verzi Public Preview.
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
+> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Když si stáhnete přiřazení rolí, měli byste mít na paměti následující kritéria:
+
+- Pokud nemáte oprávnění ke čtení adresáře, jako je například role čtenáři adresáře, sloupce DisplayName, SignInName a ObjectType budou prázdné.
+- Nezahrnují se přiřazení rolí, jejichž objekt zabezpečení byl odstraněn.
+- Není zahrnutý přístup povolený pro klasické správce.
+
+Pomocí těchto kroků si můžete stáhnout přiřazení rolí v oboru.
+
+1. V Azure Portal klikněte na **všechny služby** a pak vyberte obor, ve kterém chcete stáhnout přiřazení rolí. Můžete například vybrat **skupiny pro správu**, **předplatná**, **skupiny prostředků**nebo prostředek.
+
+1. Klikněte na konkrétní prostředek.
+
+1. Klikněte na **Řízení přístupu (IAM)** .
+
+1. Kliknutím na **Stáhnout přiřazení rolí (Preview)** otevřete podokno pro stažení rolí přiřazení.
+
+    ![Řízení přístupu – stažení přiřazení rolí](./media/role-assignments-list-portal/download-role-assignments.png)
+
+1. Pomocí zaškrtávacích políček vyberte přiřazení rolí, která chcete zahrnout do staženého souboru.
+
+    - **Zděděné** – zahrňte zděděné přiřazení rolí pro aktuální obor.
+    - **V aktuálním oboru** – zahrňte přiřazení rolí pro aktuální obor.
+    - **Podřízené** – zahrnuje přiřazení rolí na úrovních pod aktuálním oborem. Toto zaškrtávací políčko je pro obor skupiny pro správu zakázané.
+
+1. Vyberte formát souboru, který může obsahovat hodnoty oddělené čárkami (CSV) nebo JavaScript Object Notation (JSON).
+
+1. Zadejte název souboru.
+
+1. Kliknutím na **Start** zahájíte stahování.
+
+    Následující příklad ukazuje výstup pro jednotlivé formáty souborů.
+
+    ![Stažení přiřazení rolí jako sdíleného svazku clusteru](./media/role-assignments-list-portal/download-role-assignments-csv.png)
+
+    ![Stažení přiřazení rolí jako sdíleného svazku clusteru](./media/role-assignments-list-portal/download-role-assignments-json.png)
 
 ## <a name="next-steps"></a>Další kroky
 

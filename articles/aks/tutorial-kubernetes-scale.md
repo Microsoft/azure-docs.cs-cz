@@ -5,12 +5,12 @@ services: container-service
 ms.topic: tutorial
 ms.date: 01/14/2019
 ms.custom: mvc
-ms.openlocfilehash: f830d42ef09a60b1f9ced43250b24a68003d1e87
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ab9217229a64605273537fc65cf3a29dcecd20c3
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82129001"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361587"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>Kurz: Škálování aplikací ve službě Azure Kubernetes Service (AKS)
 
@@ -23,7 +23,7 @@ Pokud jste postupovali podle kurzů, máte funkční cluster Kubernetes v AKS a 
 
 V dalších kurzech se hlasová aplikace Azure aktualizuje na novou verzi.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V předchozích kurzech byla aplikace zabalena do image kontejneru. Tato image se nahrála do Azure Container Registry a vytvořili jste cluster AKS. Aplikace se pak nasadí do clusteru AKS. Pokud jste tyto kroky neudělali a chcete je sledovat, začněte s [kurzem 1 – vytváření imagí kontejneru][aks-tutorial-prepare-app].
 
@@ -74,7 +74,7 @@ az aks show --resource-group myResourceGroup --name myAKSCluster --query kuberne
 ```
 
 > [!NOTE]
-> Pokud je váš cluster AKS menší než *1,10*, server metriky se neinstaluje automaticky. Manifesty instalace serveru metriky jsou k dispozici `components.yaml` jako prostředek na vydaných verzích serveru metriky, což znamená, že je můžete nainstalovat přes adresu URL. Další informace o těchto definicích YAML najdete v části věnované [nasazení][metrics-server-github] v souboru Readme.
+> Pokud je váš cluster AKS menší než *1,10*, server metriky se neinstaluje automaticky. Manifesty instalace serveru metriky jsou k dispozici jako `components.yaml` prostředek na vydaných verzích serveru metriky, což znamená, že je můžete nainstalovat přes adresu URL. Další informace o těchto definicích YAML najdete v části věnované [nasazení][metrics-server-github] v souboru Readme.
 > 
 > Příklad instalace:
 > ```console
@@ -97,7 +97,7 @@ Následující příklad využívá příkaz [kubectl autoscale][kubectl-autosca
 kubectl autoscale deployment azure-vote-front --cpu-percent=50 --min=3 --max=10
 ```
 
-Případně můžete vytvořit soubor manifestu, který definuje chování automatického škálování a omezení prostředků. Následuje příklad souboru manifestu s názvem `azure-vote-hpa.yaml`.
+Případně můžete vytvořit soubor manifestu, který definuje chování automatického škálování a omezení prostředků. Následuje příklad souboru manifestu s názvem `azure-vote-hpa.yaml` .
 
 ```yaml
 apiVersion: autoscaling/v1
@@ -113,6 +113,7 @@ spec:
     name: azure-vote-back
   targetCPUUtilizationPercentage: 50 # target CPU utilization
 
+---
 
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
@@ -128,7 +129,7 @@ spec:
   targetCPUUtilizationPercentage: 50 # target CPU utilization
 ```
 
-Použijte `kubectl apply` k použití automatického škálování definovaného v souboru `azure-vote-hpa.yaml` manifestu.
+Použijte `kubectl apply` k použití automatického škálování definovaného v `azure-vote-hpa.yaml` souboru manifestu.
 
 ```
 kubectl apply -f azure-vote-hpa.yaml

@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 401f8239cded04b6342b706242e970e39118d73d
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: caf7db5f27ed6f612d0896bff0899feda3311883
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83827161"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85357745"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory bezproblémové jednotné přihlašování
 
@@ -63,11 +63,11 @@ Bezproblémové jednotné přihlašování se dá kombinovat buď se [synchroniz
 
 | OS\Browser |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|Ano\*|Ano|Ano|Ano\*\*\*|–
-|Windows 8.1|Ano\*|–|Ano|Ano\*\*\*|–
-|Windows 8|Ano\*|–|Ano|Ano\*\*\*|–
-|Windows 7|Ano\*|–|Ano|Ano\*\*\*|–
-|Windows Server 2012 R2 nebo novější|Ano\*\*|–|Ano|Ano\*\*\*|–
+|Windows 10|Ano\*|Ano|Yes|Ano\*\*\*|–
+|Windows 8.1|Ano\*|–|Yes|Ano\*\*\*|–
+|Windows 8|Ano\*|–|Yes|Ano\*\*\*|–
+|Windows 7|Ano\*|–|Yes|Ano\*\*\*|–
+|Windows Server 2012 R2 nebo novější|Ano\*\*|–|Yes|Ano\*\*\*|–
 |Mac OS X|–|–|Ano\*\*\*|Ano\*\*\*|Ano\*\*\*
 
 

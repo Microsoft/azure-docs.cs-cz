@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/21/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4b52a3025bfb15e2679709353cebf28254a75c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aa763c875b06bd7e22be0e814838f2e79b24e283
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77185506"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85358017"
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>Přihlašování uživatelů s využitím předávacího ověřování služby Azure Active Directory
 
@@ -58,7 +58,7 @@ Předávací ověřování můžete kombinovat s funkcí [snadného jednotného 
 ## <a name="feature-highlights"></a>Zvýraznění funkcí
 
 - Podporuje přihlášení uživatele do všech aplikací založených na webovém prohlížeči a do systém Microsoft Office klientských aplikací, které používají [moderní ověřování](https://aka.ms/modernauthga).
-- Přihlašovací jména uživatelů můžou být místní výchozí uživatelské jméno (`userPrincipalName`) nebo jiný atribut nakonfigurovaný v Azure AD Connect (známý jako `Alternate ID`).
+- Přihlašovací jména uživatelů můžou být místní výchozí uživatelské jméno ( `userPrincipalName` ) nebo jiný atribut nakonfigurovaný v Azure AD Connect (známý jako `Alternate ID` ).
 - Tato funkce bezproblémově funguje s funkcemi [podmíněného přístupu](../active-directory-conditional-access-azure-portal.md) , jako je Multi-Factor Authentication (MFA), které vám pomůžou zabezpečit uživatele.
 - Je integrovaná s cloudovou [samoobslužnou správou hesel](../authentication/active-directory-passwords-overview.md), včetně zpětného zápisu hesla do místní služby Active Directory a ochrany heslem, a to tak, že se hesla běžně používají.
 - Prostředí s více doménovými strukturami se podporují, pokud mezi doménovými strukturami služby AD existují vztahy důvěryhodnosti doménové struktury a pokud je Směrování přípon názvů správně nakonfigurované.

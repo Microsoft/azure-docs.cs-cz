@@ -12,18 +12,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/28/2018
 ms.author: billmath
 author: billmath
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f3e521fb7668305ce511aaddd63ed2cce8dfed0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 13d56ec321cd257412c2b0abbe0be655c6cb4dbf
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80331727"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85360091"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>Správa vztahu důvěryhodnosti AD FS s Azure AD s využitím Azure AD Connectu
 
@@ -103,14 +103,14 @@ Azure AD Connect zajistí, že vztah důvěryhodnosti služby Azure AD je vždyc
 
 ## <a name="restore-issuance-transform-rules"></a>Obnovit pravidla transformace vystavení
 
-Azure AD Connect verze 1.1.873.0 nebo novější vytvoří zálohu nastavení vztahu důvěryhodnosti služby Azure AD vždy, když se provede aktualizace nastavení vztahu důvěryhodnosti služby Azure AD. Nastavení vztahu důvěryhodnosti Azure AD se zálohují na **%ProgramData%\AADConnect\ADFS**. Název&lt;souboru je v následujícím formátu: AadTrust-Date&gt;-&lt;Time&gt;. txt, například AadTrust-20180710-150216. txt.
+Azure AD Connect verze 1.1.873.0 nebo novější vytvoří zálohu nastavení vztahu důvěryhodnosti služby Azure AD vždy, když se provede aktualizace nastavení vztahu důvěryhodnosti služby Azure AD. Nastavení vztahu důvěryhodnosti Azure AD se zálohují na **%ProgramData%\AADConnect\ADFS**. Název souboru je v následujícím formátu: AadTrust- &lt; Date &gt; - &lt; Time &gt; . txt, například AadTrust-20180710-150216.txt
 
 ![Snímek obrazovky s příkladem zálohování vztahu důvěryhodnosti Azure AD](./media/how-to-connect-azure-ad-trust/backup.png)
 
 Pravidla transformace vystavování můžete obnovit pomocí navrhovaných kroků níže.
 
 1. Otevřete uživatelské rozhraní pro správu AD FS v Správce serveru
-2. Otevřete vlastnosti vztahu důvěryhodnosti Azure AD tak, že přecházíte **AD FS &gt; vztahy &gt; důvěryhodnosti předávající strany systém Microsoft Office &gt; 365 Identity Platform upravit zásady vystavování deklarací identity** .
+2. Otevřete vlastnosti vztahu důvěryhodnosti Azure AD tak, že přecházíte **AD FS &gt; vztahy důvěryhodnosti předávající strany &gt; systém Microsoft Office 365 Identity Platform &gt; upravit zásady vystavování deklarací identity** .
 3. Klikněte na **Přidat pravidlo** .
 4. V šabloně pravidla deklarace identity vyberte Odeslat deklarace identity pomocí vlastního pravidla a klikněte na **Další** .
 5. Zkopírujte název pravidla deklarace identity ze záložního souboru a vložte ho do pole **název pravidla deklarace identity** .

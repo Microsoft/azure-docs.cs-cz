@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/22/2020
 ms.author: sedusch
-ms.openlocfilehash: 828615add9f24b5a2089e240bbf62647f34a25f0
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 758e79109d6cf0d41e5e5981168b0eed9f9928d6
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85207398"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361383"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Nasazení Azure Virtual Machines pro SAP NetWeaver
 
@@ -211,10 +211,6 @@ ms.locfileid: "85207398"
 [planning-guide-5.4.2]:planning-guide.md#9789b076-2011-4afa-b2fe-b07a8aba58a1 (Kopírování disků mezi Azure Storage účty)
 [planning-guide-5.5.1]:planning-guide.md#4efec401-91e0-40c0-8e64-f2dceadff646 (Struktura virtuálních počítačů/VHD pro nasazení SAP)
 [planning-guide-5.5.3]:planning-guide.md#17e0d543-7e8c-4160-a7da-dd7117a1ad9d (Nastavení automatického připojení pro připojené disky)
-[planning-guide-7.1]:planning-guide.md#3e9c3690-da67-421a-bc3f-12c520d99a30 (Jeden virtuální počítač se scénářem Ukázky/školení SAP NetWeaver)
-[planning-guide-7]:planning-guide.md#96a77628-a05e-475d-9df3-fb82217e8f14 (Koncepty pouze cloudového nasazení instancí SAP)
-[planning-guide-9.1]:planning-guide.md#6f0a47f3-a289-4090-a053-2521618a28c3 (Řešení Azure Monitoring pro SAP)
-[planning-guide-managed-disks]:planning-guide.md#c55b2c6e-3ca1-4476-be16-16c81927550f (Managed Disks)
 [planning-guide-figure-100]:media/virtual-machines-shared-sap-planning-guide/100-single-vm-in-azure.png
 [planning-guide-figure-1300]:media/virtual-machines-shared-sap-planning-guide/1300-ref-config-iaas-for-sap.png
 [planning-guide-figure-1400]:media/virtual-machines-shared-sap-planning-guide/1400-attach-detach-disks.png
@@ -446,7 +442,7 @@ Průvodce vás provede nastavením požadovaných parametrů k vytvoření virtu
 1. **Nastavení**:
    * **Storage**
      * **Typ disku**: Vyberte typ disku disku s operačním systémem. Pokud chcete pro datové disky použít Premium Storage, doporučujeme použít také Premium Storage pro disk s operačním systémem.
-     * **Použití spravovaných disků**: pokud chcete Managed disks použít, vyberte Ano. Další informace o Managed Disks naleznete v části kapitola [Managed disks][planning-guide-managed-disks] v příručce pro plánování.
+     * **Použití spravovaných disků**: pokud chcete Managed disks použít, vyberte Ano. Další informace o Managed Disks naleznete v části kapitola [Managed disks](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage#microsoft-azure-storage-resiliency) v příručce pro plánování.
      * **Účet úložiště**: Vyberte existující účet úložiště nebo vytvořte nový. Ne všechny typy úložišť fungují pro spouštění aplikací SAP. Další informace o typech úložiště najdete v tématu [Struktura úložiště virtuálního počítače pro nasazení RDBMS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64).
    * **Síť**
      * **Virtuální síť** a **podsíť**: Pokud chcete virtuální počítač integrovat s vaším intranetem, vyberte virtuální síť, která je připojená k vaší místní síti.
@@ -586,7 +582,7 @@ Průvodce vás provede nastavením požadovaných parametrů k vytvoření virtu
 1. **Nastavení**:
    * **Storage**
      * **Typ disku**: Vyberte typ disku disku s operačním systémem. Pokud chcete pro datové disky použít Premium Storage, doporučujeme použít také Premium Storage pro disk s operačním systémem.
-     * **Použití spravovaných disků**: pokud chcete Managed disks použít, vyberte Ano. Další informace o Managed Disks naleznete v části kapitola [Managed disks][planning-guide-managed-disks] v příručce pro plánování.
+     * **Použití spravovaných disků**: pokud chcete Managed disks použít, vyberte Ano. Další informace o Managed Disks naleznete v části kapitola [Managed disks](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage#microsoft-azure-storage-resiliency) v příručce pro plánování.
    * **Síť**
      * **Virtuální síť** a **podsíť**: Pokud chcete virtuální počítač integrovat s vaším intranetem, vyberte virtuální síť, která je připojená k vaší místní síti.
      * **Veřejná IP adresa**: Vyberte veřejnou IP adresu, kterou chcete použít, nebo zadejte parametry pro vytvoření nové veřejné IP adresy. Veřejnou IP adresu můžete použít pro přístup k virtuálnímu počítači přes Internet. Ujistěte se, že jste taky vytvořili skupinu zabezpečení sítě, která vám usnadní zabezpečení přístupu k virtuálnímu počítači.
@@ -917,7 +913,7 @@ Další informace o trasách definovaných uživatelem najdete v tématu [trasy 
 > Obecný příkaz podpory: Pokud potřebujete podporu pro rozšíření Azure pro SAP, vždy prosím otevřete incident pomocí SAP pro komponentu BC-OP-NT-AZR pro Windows nebo BC-OP-LNX-AZR.
 > V systému podpory SAP existují vyhrazení technici podpory Microsoftu, které vám pomůžou s našimi společnými zákazníky.
 
-Po přípravě virtuálního počítače, jak je popsáno v tématu [scénáře nasazení virtuálních počítačů pro SAP v Azure][deployment-guide-3], je na virtuálním počítači nainstalovaný agent virtuálního počítače Azure. Dalším krokem je nasazení rozšíření Azure pro SAP, které je k dispozici v úložišti rozšíření Azure v globálních datacentrech Azure. Další informace najdete v tématu [plánování a implementace služby Azure Virtual Machines pro SAP NetWeaver][planning-guide-9.1].
+Po přípravě virtuálního počítače, jak je popsáno v tématu [scénáře nasazení virtuálních počítačů pro SAP v Azure][deployment-guide-3], je na virtuálním počítači nainstalovaný agent virtuálního počítače Azure. Dalším krokem je nasazení rozšíření Azure pro SAP, které je k dispozici v úložišti rozšíření Azure v globálních datacentrech Azure. Další informace najdete v tématu [plánování a implementace Azure Virtual Machines pro SAP NetWeaver] [Planning-Guide-9,1].
 
 Právě probíhá vydání nové verze rozšíření Azure pro SAP. Nové rozšíření používá systémem přiřazenou identitu virtuálního počítače k získání informací o připojených discích, síťových rozhraních a samotném virtuálním počítači. Aby bylo možné získat přístup k těmto prostředkům, musí systémová identita virtuálního počítače mít oprávnění ke čtení pro virtuální počítač, disk s operačním systémem, datové disky a síťová rozhraní. V současné době doporučujeme instalovat pouze nové rozšíření v následujících scénářích:
 

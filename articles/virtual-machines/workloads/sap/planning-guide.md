@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/22/2020
+ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 60d2f8017454cd73e91bb022bab79a48b0af8a36
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 1a3b07dadba17f72f6f4c5765787c7122eebaa89
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85209585"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361400"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Plánování a implementace služby Azure Virtual Machines pro SAP NetWeaver
 
@@ -549,13 +549,6 @@ V rámci Azure se název disku/virtuálního pevného disku řídí následujíc
 Výše uvedený řetězec musí jednoznačně identifikovat disk nebo virtuální pevný disk, který je uložený v Azure Storage.
 
 
-#### <a name="managed-disks"></a><a name="c55b2c6e-3ca1-4476-be16-16c81927550f"></a>Spravované disky
-
-Managed disks je typ prostředku v Azure Resource Manager, který se dá použít místo VHD, které jsou uložené v účtech Azure Storage. Managed Disks automaticky zarovnává se skupinou dostupnosti virtuálního počítače, ke které jsou připojené, a proto Zvyšte dostupnost vašeho virtuálního počítače a služeb, které běží na virtuálním počítači. Další informace najdete v [článku Přehled](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview).
-
-Doporučujeme používat službu Azure Managed disks, protože zjednodušuje nasazování a správu virtuálních počítačů.
-
-
 #### <a name="azure-persisted-storage-types"></a>Typy trvalého úložiště Azure
 Azure nabízí celou řadu možností trvalého úložiště, které se dají použít pro úlohy SAP a specifické komponenty zásobníku SAP. Další podrobnosti najdete v dokumentu [Azure Storage pro úlohy SAP](./planning-guide-storage.md).
 
@@ -967,7 +960,7 @@ V době stahování VHD nebo Managed Disks nejde aktivovat. I když stahujete di
   ```
 
 * Stažení virtuálního pevného disku  
-  Po zastavení systému SAP a vypnutí virtuálního počítače můžete pomocí rutiny prostředí PowerShell Save-AzVhd na místním cíli stáhnout disky VHD zpátky do místního světa. Abyste to mohli udělat, potřebujete adresu URL virtuálního pevného disku, který najdete v části "úložiště" Azure Portal (je třeba přejít na účet úložiště a kontejner úložiště, kde byl virtuální pevný disk vytvořen) a potřebujete znát, kam se má VHD zkopírovat.
+  Po zastavení systému SAP a vypnutí virtuálního počítače můžete použít rutinu PowerShellu `Save-AzVhd` na místním cíli a stáhnout disky VHD zpátky do místního světa. Abyste to mohli udělat, potřebujete adresu URL virtuálního pevného disku, který najdete v části "úložiště" Azure Portal (je třeba přejít na účet úložiště a kontejner úložiště, kde byl virtuální pevný disk vytvořen) a potřebujete znát, kam se má VHD zkopírovat.
 
   Pak můžete použít příkaz definováním parametru SourceUri jako adresy URL disku VHD ke stažení a LocalFilePath jako fyzického umístění virtuálního pevného disku (včetně jeho názvu). Příkaz by mohl vypadat takto:
 
@@ -988,7 +981,7 @@ V době stahování VHD nebo Managed Disks nejde aktivovat. I když stahujete di
   ```
 
 * Stažení virtuálního pevného disku   
-  Po zastavení systému SAP a vypnutí virtuálního počítače můžete pomocí příkazu Azure CLI Azure _Storage BLOB stáhnout_ na místním cíli stáhnout disky VHD zpátky do místního světa. Abyste to mohli udělat, potřebujete název a kontejner virtuálního pevného disku, který najdete v části "úložiště" Azure Portal (musí přejít na účet úložiště a kontejner úložiště, kde byl virtuální pevný disk vytvořen) a potřebujete znát, kam se má VHD zkopírovat.
+  Po zastavení systému SAP a vypnutí virtuálního počítače můžete použít příkaz Azure CLI `_azure storage blob download_` na místním cíli a stáhnout disky VHD zpátky do místního světa. Abyste to mohli udělat, potřebujete název a kontejner virtuálního pevného disku, který najdete v části "úložiště" Azure Portal (musí přejít na účet úložiště a kontejner úložiště, kde byl virtuální pevný disk vytvořen) a potřebujete znát, kam se má VHD zkopírovat.
 
   Pak můžete použít příkaz definováním objektů BLOB parametrů a kontejneru VHD ke stažení a cíle jako fyzického cílového umístění virtuálního pevného disku (včetně jeho názvu). Příkaz by mohl vypadat takto:
 

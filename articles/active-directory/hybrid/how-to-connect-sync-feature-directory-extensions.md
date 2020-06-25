@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: 995ee876-4415-4bb0-a258-cca3cbb02193
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/12/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80438319a6337dd6f28f9bdca8a428829b6cb0b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3afec7c31488529af9ba15100c914899a0d1d808
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77917909"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85357456"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect synchronizace: přípony adresářů
 K rozšíření schématu v Azure Active Directory (Azure AD) s vlastními atributy z místní služby Active Directory můžete použít rozšíření adresáře. Tato funkce umožňuje sestavovat obchodní aplikace pomocí atributů, které budete nadále spravovat místně. Tyto atributy lze spotřebovat prostřednictvím [rozšíření](https://docs.microsoft.com/graph/extensibility-overview
@@ -60,14 +60,14 @@ Během instalace Azure AD Connect je aplikace zaregistrovaná tam, kde jsou tyto
 
 Ujistěte se, že jste vybrali možnost **všechny aplikace** , aby se tato aplikace zobrazila.
 
-Atributy mají předponu **rozšíření \_{ApplicationId}\_**. ApplicationId má stejnou hodnotu pro všechny atributy v tenantovi Azure AD. Tuto hodnotu budete potřebovat pro všechny ostatní scénáře v tomto tématu.
+Atributy mají předponu **rozšíření \_ {ApplicationId} \_ **. ApplicationId má stejnou hodnotu pro všechny atributy v tenantovi Azure AD. Tuto hodnotu budete potřebovat pro všechny ostatní scénáře v tomto tématu.
 
 ## <a name="viewing-attributes-using-the-microsoft-graph-api"></a>Zobrazení atributů pomocí rozhraní Microsoft Graph API
 
 Tyto atributy jsou nyní k dispozici prostřednictvím rozhraní Microsoft Graph API pomocí [Microsoft Graph Exploreru](https://developer.microsoft.com/graph/graph-explorer#).
 
 >[!NOTE]
-> V rozhraní Microsoft Graph API musíte požádat o vrácení atributů. Explicitně vyberte atributy takto: `https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com?$select=extension_9d98ed114c4840d298fad781915f27e4_employeeID,extension_9d98ed114c4840d298fad781915f27e4_division`.
+> V rozhraní Microsoft Graph API musíte požádat o vrácení atributů. Explicitně vyberte atributy takto: `https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com?$select=extension_9d98ed114c4840d298fad781915f27e4_employeeID,extension_9d98ed114c4840d298fad781915f27e4_division` .
 >
 > Další informace najdete v tématu [Microsoft Graph: použití parametrů dotazu](https://developer.microsoft.com/graph/docs/concepts/query_parameters#select-parameter).
 

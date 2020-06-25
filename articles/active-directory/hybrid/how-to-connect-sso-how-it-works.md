@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd4743bc38c3b2b4b9495b33535b4b73f48d1372
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: af5a9b5b5dd8eb6b6bec8440287918d1f8610064
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71176671"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85357915"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory bezproblémové jednotné přihlašování: technický hluboký podrobně
 
@@ -39,12 +39,12 @@ Tato část obsahuje tři části:
 
 Bezproblémové jednotné přihlašování je povolené pomocí Azure AD Connect, jak je znázorněno [zde](how-to-connect-sso-quick-start.md). Při povolování této funkce dojde k následujícím krokům:
 
-- Účet počítače (`AZUREADSSOACC`) se vytvoří v místní službě Active Directory (AD) v každé doménové struktuře služby AD, kterou synchronizujete do Azure AD (pomocí Azure AD Connect).
+- Účet počítače ( `AZUREADSSOACC` ) se vytvoří v místní službě Active Directory (AD) v každé doménové struktuře služby AD, kterou synchronizujete do Azure AD (pomocí Azure AD Connect).
 - Kromě toho se vytvoří několik hlavních názvů služby Kerberos (SPN), které se použijí během procesu přihlášení k Azure AD.
 - Dešifrovací klíč protokolu Kerberos účtu počítače se bezpečně sdílí s Azure AD. Pokud existuje více doménových struktur služby AD, každý účet počítače bude mít vlastní jedinečný dešifrovací klíč protokolu Kerberos.
 
 >[!IMPORTANT]
-> Účet `AZUREADSSOACC` počítače musí být z bezpečnostních důvodů důrazně chráněn. Pouze správci domény by měli být schopni spravovat účet počítače. Zajistěte, aby delegování protokolu Kerberos na účtu počítače bylo zakázané a aby žádný jiný účet ve službě Active Directory nemá `AZUREADSSOACC` oprávnění k delegování na účtu počítače. Uložte účet počítače do organizační jednotky (OU), kde jsou bezpečné před náhodným odstraněním a k nimž mají přístup pouze správci domény. Dešifrovací klíč protokolu Kerberos v účtu počítače by měl být také považován za citlivý. Důrazně doporučujeme, abyste [převzali šifrovací klíč protokolu Kerberos](how-to-connect-sso-faq.md) účtu `AZUREADSSOACC` počítače nejméně každých 30 dní.
+> `AZUREADSSOACC`Účet počítače musí být z bezpečnostních důvodů důrazně chráněn. Pouze správci domény by měli být schopni spravovat účet počítače. Zajistěte, aby delegování protokolu Kerberos na účtu počítače bylo zakázané a aby žádný jiný účet ve službě Active Directory nemá oprávnění k delegování na `AZUREADSSOACC` účtu počítače. Uložte účet počítače do organizační jednotky (OU), kde jsou bezpečné před náhodným odstraněním a k nimž mají přístup pouze správci domény. Dešifrovací klíč protokolu Kerberos v účtu počítače by měl být také považován za citlivý. Důrazně doporučujeme, abyste [převzali šifrovací klíč protokolu Kerberos](how-to-connect-sso-faq.md) `AZUREADSSOACC` účtu počítače nejméně každých 30 dní.
 
 Po dokončení nastavení funguje bezproblémové jednotné přihlašování stejným způsobem jako jakékoli jiné přihlášení, které používá integrované ověřování systému Windows (IWA).
 
@@ -60,7 +60,7 @@ Tok přihlášení ve webovém prohlížeči je následující:
    >U [některých aplikací](./how-to-connect-sso-faq.md)se přeskočí kroky 2 & 3.
 
 4. Při použití JavaScriptu na pozadí se Azure AD dohlásí do prohlížeče prostřednictvím neautorizované odpovědi 401, aby poskytoval lístek protokolu Kerberos.
-5. V prohlížeči pak aplikace vyžádá lístek ze služby Active Directory pro účet `AZUREADSSOACC` počítače (který představuje Azure AD).
+5. V prohlížeči pak aplikace vyžádá lístek ze služby Active Directory pro `AZUREADSSOACC` účet počítače (který představuje Azure AD).
 6. Služba Active Directory vyhledá účet počítače a vrátí lístek protokolu Kerberos do prohlížeče šifrovaného pomocí tajného klíče účtu počítače.
 7. Prohlížeč přepošle lístek protokolu Kerberos, který získal ze služby Active Directory do Azure AD.
 8. Azure AD dešifruje lístek protokolu Kerberos, který zahrnuje identitu uživatele přihlášeného k firemnímu zařízení pomocí dříve sdíleného klíče.

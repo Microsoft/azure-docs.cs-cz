@@ -5,15 +5,15 @@ author: billmath
 ms.author: billmath
 manager: daveba
 ms.date: 12/02/2019
-ms.topic: article
+ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: e41be4b76245f2567015eb0ede317830120ee61a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 009e762b69d4f3512158d69ef3c67089096c9da7
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75549481"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85360788"
 ---
 # <a name="cloud-provisioning-troubleshooting"></a>Řešení potíží se zřizováním cloudu
 
@@ -44,7 +44,7 @@ Tyto položky lze ověřit v Azure Portal a na místním serveru, na kterém je 
 Pokud chcete ověřit, jestli je agent v Azure a je v pořádku, postupujte podle těchto kroků.
 
 1. Přihlaste se k portálu Azure.
-1. Na levé straně vyberte **Azure Active Directory** > **Azure AD Connect**. V centru vyberte **Spravovat zřizování (Preview)**.
+1. Na levé straně vyberte **Azure Active Directory**  >  **Azure AD Connect**. V centru vyberte **Spravovat zřizování (Preview)**.
 1. Na obrazovce **Azure AD zřizování (Preview)** vyberte **zkontrolovat všechny agenty**.
 
    ![Zkontrolovat všechny agenty](media/how-to-install/install7.png)</br>
@@ -67,7 +67,7 @@ Tento test ověřuje, jestli můžou vaši agenti komunikovat s Azure přes port
 
 Pokud chcete ověřit, jestli je agent spuštěný, postupujte podle těchto kroků.
 
-1. Na serveru s nainstalovaným agentem otevřete **služby** , a to tak, že k němu přejdete, nebo když přejdete na **Start** > **Spustit** > **Services. msc**.
+1. Na serveru s nainstalovaným agentem otevřete **služby** , a to tak, že k němu přejdete, nebo když přejdete na **Start**  >  **Spustit**  >  **Services. msc**.
 1. V části **služby**se ujistěte, že je k dispozici aktualizace **agenta Microsoft Azure AD Connect** a **Microsoft Azure AD připojení zřizování** , a jejich stav je *spuštěný*.
 
    ![Obrazovka služby](media/how-to-troubleshoot/troubleshoot1.png)
@@ -87,7 +87,7 @@ K tomuto problému obvykle dochází v důsledku zásad skupiny, které znemož�
 Chcete-li tento problém vyřešit, postupujte podle následujících kroků.
 
 1. Přihlaste se k serveru pomocí účtu správce.
-1. Otevřete **služby** tak, že k němu přejdete, nebo když přejdete na **Spustit** > **Spustit** > **Services. msc**.
+1. Otevřete **služby** tak, že k němu přejdete, nebo když přejdete na **Spustit**  >  **Spustit**  >  **Services. msc**.
 1. V části **služby**dvakrát klikněte na **Microsoft Azure AD připojit zřizovacího agenta**.
 1. Na kartě **přihlášení** změňte **Tento účet** na správce domény. Pak službu restartujte. 
 
@@ -99,7 +99,7 @@ Při pokusu o registraci agenta se může zobrazit následující chybová zprá
 
 ![Chybová zpráva s časovým limitem](media/how-to-troubleshoot/troubleshoot4.png)
 
-K tomuto problému obvykle dochází kvůli tomu, že se agent nedokáže připojit ke službě hybridní identity a vyžaduje, abyste nakonfigurovali proxy server HTTP. Pokud chcete tento problém vyřešit, nakonfigurujte odchozí proxy server. 
+Příčinou tohoto problému je obvykle to, že se agent nemůže připojit k hybridní službě identit a vyžaduje po vás konfiguraci proxy serveru HTTP. Pokud chcete tento problém vyřešit, nakonfigurujte odchozí proxy server. 
 
 Agent zřizování podporuje použití odchozího proxy serveru. Můžete ji nakonfigurovat úpravou konfiguračního souboru agenta *C:\Program Files\Microsoft Azure AD Connect zřizování Agent\AADConnectProvisioningAgent.exe.config*. Přidejte do něj následující řádky na konec souboru těsně před uzavírací `</configuration>` značku.
 Nahraďte proměnné `[proxy-server]` a `[proxy-port]` názvem proxy server a hodnotami portů.
@@ -126,13 +126,13 @@ Chcete-li tento problém vyřešit, změňte zásady spouštění prostředí Po
 
 ### <a name="log-files"></a>Soubory protokolů
 
-Ve výchozím nastavení agent posílá minimální chybové zprávy a informace o trasování zásobníku. Tyto protokoly trasování najdete ve složce *C:\ProgramData\Microsoft\Azure zřizování služby AD Connect Agent\Trace*.
+Ve výchozím nastavení agent generuje minimální množství chybových zpráv a informací o trasování zásobníku. Tyto protokoly trasování najdete ve složce *C:\ProgramData\Microsoft\Azure zřizování služby AD Connect Agent\Trace*.
 
 Pokud chcete získat další podrobnosti o řešení problémů souvisejících s agentem, postupujte podle těchto kroků.
 
 1. Zastavení služby **Microsoft Azure AD připojení agenta zřizování**.
 1. Vytvořte kopii původního konfiguračního souboru: *C:\Program Files\Microsoft Azure AD Connect zřizování Agent\AADConnectProvisioningAgent.exe.config*.
-1. Existující `<system.diagnostics>` oddíl nahraďte následujícím a všechny zprávy trasování budou přejít do souboru *ProvAgentTrace. log*.
+1. Existující oddíl nahraďte `<system.diagnostics>` následujícím a všechny zprávy trasování budou přejít do souboru *ProvAgentTrace. log*.
 
    ```xml
      <system.diagnostics>

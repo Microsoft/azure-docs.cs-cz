@@ -7,29 +7,29 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a4e2dc09c54b39d58b0193e7ac9f585236886722
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 36031006f155f1651845dbce48b6c6ec84397e93
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73572672"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361417"
 ---
 # <a name="create-an-office-data-connection-file"></a>Vytvoření souboru s datovým připojením Office
 
-Informace v tomto článku popisují, jak můžete vytvořit soubor datového připojení Office pro připojení k serveru Azure Analysis Services z verze Excel 2016, 16.0.7369.2117 nebo starší nebo Excel 2013. Vyžaduje se i aktualizovaný [poskytovatel MSOLAP. 7](analysis-services-data-providers.md) .
+Informace v tomto článku popisují, jak můžete vytvořit soubor datového připojení Office pro připojení k serveru Azure Analysis Services z verze Excel 2016, 16.0.7369.2117 nebo starší nebo Excel 2013. Vyžaduje se i aktualizovaný [poskytovatel MSOLAP. 7](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current) .
 
 
 1. Níže zkopírujte soubor s ukázkovým připojením a vložte ho do textového editoru. 
 
-2. V `odc:ConnectionString`nástroji změňte následující vlastnosti:
+2. V nástroji `odc:ConnectionString` změňte následující vlastnosti:
 
-    *   `Data Source=asazure://<region>.asazure.windows.net/<servername>;` Přejděte `<region>` do oblasti serveru Analysis Services a `<servername>` na název vašeho serveru.
+    *   `Data Source=asazure://<region>.asazure.windows.net/<servername>;`Přejděte `<region>` do oblasti serveru Analysis Services a `<servername>` na název vašeho serveru.
 
-    *   V `Initial Catalog=<database>;` části `<database>` změnit na název vaší databáze.
+    *   V `Initial Catalog=<database>;` `<database>` části změnit na název vaší databáze.
 
-3. V `<odc:CommandText>Model</odc:CommandText>` části `Model` změnit na název vašeho modelu nebo perspektivy. 
+3. V `<odc:CommandText>Model</odc:CommandText>` `Model` části změnit na název vašeho modelu nebo perspektivy. 
 
-4. Uložte soubor s `.odc` příponou do složky C:\Users\\*username*\Documents\My data sources.
+4. Uložte soubor s `.odc` příponou do složky C:\Users \\ *username*\Documents\My data sources.
 
 5. Klikněte na soubor pravým tlačítkem a pak klikněte na **otevřít v Excelu**. Nebo v aplikaci Excel klikněte na pásu karet **data** na **existující připojení**, vyberte soubor a klikněte na **otevřít**.
 

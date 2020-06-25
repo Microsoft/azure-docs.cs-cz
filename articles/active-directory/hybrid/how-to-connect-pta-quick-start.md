@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca425c7c5739785f3463086d89b4796f09bf45b4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 61e772d7a55577c263edc83ccface31932f5b2dd
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82229812"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85358357"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory předávací ověřování: rychlý Start
 
@@ -72,9 +72,9 @@ Ujistěte se, že jsou splněné následující požadavky.
      | **8080** (volitelné) | Agenti ověřování hlásí svůj stav každých deset minut přes port 8080, pokud není k dispozici port 443. Tento stav se zobrazuje na portálu Azure AD. Port _8080 se nepoužívá pro_ přihlášení uživatelů. |
      
      Pokud brána firewall vynutila pravidla podle prvotních uživatelů, otevřete tyto porty pro provoz ze služeb systému Windows, které jsou spuštěny jako síťová služba.
-   - Pokud brána firewall nebo proxy umožňuje přidávání do seznamu povolených serverů DNS, přidejte připojení do ** \*souborů. msappproxy.NET** a ** \*. ServiceBus.Windows.NET**. V takovém případě povolte přístup k [rozsahům IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653), které se aktualizují týdně.
+   - Pokud brána firewall nebo proxy umožňuje přidávání do seznamu povolených serverů DNS, přidejte připojení do souborů ** \* . msappproxy.NET** a ** \* . ServiceBus.Windows.NET**. V takovém případě povolte přístup k [rozsahům IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653), které se aktualizují týdně.
    - Vaše agenti ověřování potřebují pro počáteční registraci přístup k **Login.Windows.NET** a **Login.microsoftonline.com** . Otevřete taky bránu firewall pro tyto adresy URL.
-   - Pro ověření certifikátu Odblokujte následující adresy URL: **mscrl.Microsoft.com:80**, **CRL.Microsoft.com:80**, **OCSP.msocsp.com:80**a **www\.Microsoft.com:80**. Vzhledem k tomu, že se tyto adresy URL používají pro ověřování certifikátů s jinými produkty Microsoftu, tyto adresy URL už možná máte odblokované.
+   - Pro ověření certifikátu Odblokujte následující adresy URL: **mscrl.Microsoft.com:80**, **CRL.Microsoft.com:80**, **OCSP.msocsp.com:80**a **www \. Microsoft.com:80**. Vzhledem k tomu, že se tyto adresy URL používají pro ověřování certifikátů s jinými produkty Microsoftu, tyto adresy URL už možná máte odblokované.
 
 ### <a name="azure-government-cloud-prerequisite"></a>Cloudová součást Azure Government
 Před povolením předávacího ověřování prostřednictvím Azure AD Connect v kroku 2 si stáhněte nejnovější verzi agenta PTA z Azure Portal.  Musíte zajistit, aby byl váš Agent 1.5.1742.0 verze **.** nebo novější.  Postup ověření agenta najdete v tématu [Upgrade agentů ověřování](how-to-connect-pta-upgrade-preview-authentication-agents.md) .
@@ -150,8 +150,8 @@ Nejdřív to můžete provést interaktivně pouhým spuštěním staženého sp
 
 Za druhé můžete vytvořit a spustit skript bezobslužného nasazení. To je užitečné, pokud chcete nasadit více agentů ověřování najednou nebo nainstalovat ověřovací agenty na servery Windows, které nemají povolené uživatelské rozhraní nebo že nemáte přístup ke vzdálené ploše. V této části najdete pokyny k použití tohoto přístupu:
 
-1. Spusťte následující příkaz pro instalaci ověřovacího agenta: `AADConnectAuthAgentSetup.exe REGISTERCONNECTOR="false" /q`.
-2. Ověřovacího agenta můžete v rámci služby zaregistrovat pomocí prostředí Windows PowerShell. Vytvořte objekt `$cred` přihlašovacích údajů prostředí PowerShell, který obsahuje uživatelské jméno a heslo globálního správce pro vašeho tenanta. Spusťte následující příkaz a nahraďte * \<uživatelské\> jméno* a * \<heslo\>*:
+1. Spusťte následující příkaz pro instalaci ověřovacího agenta: `AADConnectAuthAgentSetup.exe REGISTERCONNECTOR="false" /q` .
+2. Ověřovacího agenta můžete v rámci služby zaregistrovat pomocí prostředí Windows PowerShell. Vytvořte objekt přihlašovacích údajů prostředí PowerShell `$cred` , který obsahuje uživatelské jméno a heslo globálního správce pro vašeho tenanta. Spusťte následující příkaz a nahraďte *\<username\>* a *\<password\>* :
 
         $User = "<username>"
         $PlainPassword = '<password>'

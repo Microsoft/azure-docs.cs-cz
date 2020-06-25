@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.subservice: ''
-ms.openlocfilehash: 47c504d9359779294c4690059d1958614d863e58
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: b0cdff2ce71fb63194933bdfed26da16fdebcca7
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85260878"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361917"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Použití privátního odkazu Azure k bezpečnému připojení sítí k Azure Monitor
 
@@ -168,9 +168,8 @@ Přístup tímto způsobem se omezuje jenom na data v prostředku Application In
 
 > [!NOTE]
 > Aby bylo možné plně zabezpečit Application Insights na základě pracovních prostorů, musíte uzamknout přístup k prostředkům Application Insights a také k příslušnému pracovnímu prostoru Log Analytics.
-
-> [!NOTE]
-> Diagnostika na úrovni kódu (Profiler/ladicí program) aktuálně nepodporuje privátní propojení.
+>
+> Diagnostika na úrovni kódu (Profiler/ladicí program) vyžaduje poskytnutí vlastního účtu úložiště pro podporu privátního odkazu. Zde najdete [dokumentaci](https://docs.microsoft.com/azure/azure-monitor/app/profiler-bring-your-own-storage) , jak to provést.
 
 ## <a name="use-apis-and-command-line"></a>Použití rozhraní API a příkazového řádku
 
@@ -226,7 +225,7 @@ Pokud chcete, aby mohl agent Log Analytics stahovat balíčky řešení, přidej
 
 | Cloudové prostředí | Prostředek agenta | Porty | Směr |
 |:--|:--|:--|:--|
-|Veřejný partnerský vztah Azure     | scadvisor.blob.core.windows.net         | 443 | Odchozí
+|Veřejný partnerský vztah Azure     | scadvisorcontent.blob.core.windows.net         | 443 | Odchozí
 |Azure Government | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  Odchozí
 |Azure (Čína) 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Odchozí
 

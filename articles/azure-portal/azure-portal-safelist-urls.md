@@ -1,5 +1,5 @@
 ---
-title: Safelist adresy URL Azure Portal v bráně firewall nebo proxy server
+title: Přidání adres URL webu Azure Portal na seznam bezpečných adres v bráně firewall nebo na proxy serveru
 description: Přidejte tyto adresy URL, aby bylo možné proxy server nepoužívat ke komunikaci s Azure Portal a jeho službami.
 services: azure-portal
 keywords: ''
@@ -9,14 +9,14 @@ ms.date: 04/10/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 399c64c88e78079432fcf7c09dafd199da83358b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 67ccf6e2f113c0ec72cfcbccedf88017e452ec4b
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81255043"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361655"
 ---
-# <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>Safelist adresy URL Azure Portal v bráně firewall nebo proxy server
+# <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>Přidání adres URL webu Azure Portal na seznam bezpečných adres v bráně firewall nebo na proxy serveru
 
 Můžete nakonfigurovat místní zařízení zabezpečení a obejít omezení zabezpečení pro Azure Portal adresy URL. Tato konfigurace může zlepšit výkon a konektivitu mezi vaší místní sítí a cloudem Azure.
 
@@ -53,6 +53,7 @@ Koncové body adresy URL, které se Safelist pro Azure Portal, jsou specifické 
 #### <a name="us-government-cloud"></a>[Cloud pro státní správu USA](#tab/us-government-cloud)
 
 ```
+*.applicationinsights.us
 *.azure.us
 *.loganalytics.us
 *.microsoft.us

@@ -8,19 +8,19 @@ manager: daveba
 ms.assetid: 05f16c3e-9d23-45dc-afca-3d0fa9dbf501
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e37095a964e656160edbbbc4a325feceb1e48e74
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.openlocfilehash: 47f0dea435af56f6994b57079983a63b3a29600d
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84749630"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85358558"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementace synchronizace hodnot hash hesel pomocí synchronizace Azure AD Connect
 Tento článek poskytuje informace, které potřebujete k synchronizaci uživatelských hesel z místní instance služby Active Directory s instancí cloudové Azure Active Directory (Azure AD).
@@ -122,7 +122,6 @@ Upozornění: Pokud jsou v Azure AD synchronizované účty, u kterých je potř
 `Set-AzureADUser -ObjectID <User Object ID> -PasswordPolicies "DisablePasswordExpiration"`
 
 > [!NOTE]
-> Tato funkce je teď v Public Preview.
 > Příkaz prostředí PowerShell Set-MsolPasswordPolicy nebude fungovat u federovaných domén. 
 
 #### <a name="synchronizing-temporary-passwords-and-force-password-change-on-next-logon"></a>Synchronizace dočasných hesel a "vynucení změny hesla při příštím přihlášení"
@@ -140,9 +139,6 @@ Aby bylo možné v Azure AD podporovat dočasná hesla pro synchronizované uži
 
 > [!CAUTION]
 > Tuto funkci byste měli používat jenom v případě, že je v tenantovi povolený zpětný zápis hesla SSPR a hesla.  To znamená, že pokud uživatel změní heslo pomocí SSPR, bude synchronizován se službou Active Directory.
-
-> [!NOTE]
-> Tato funkce je ve verzi Public Preview hned teď.
 
 #### <a name="account-expiration"></a>Vypršení platnosti účtu
 

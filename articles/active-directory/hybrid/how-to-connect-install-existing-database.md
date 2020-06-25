@@ -12,17 +12,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/30/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7eaeece4b44c0804774a15194e19c34ce200bc80
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 23bcb63b6b499e72cb43089659e513d276bd8306
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558514"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85358969"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>Instalace nástroje Azure AD Connect s využitím existující databáze ADSync
 Azure AD Connect vyžaduje, aby databáze SQL Server ukládala data. Můžete buď použít výchozí SQL Server 2012 Express LocalDB nainstalované s Azure AD Connect nebo použít vlastní plnou verzi SQL. Dříve při instalaci Azure AD Connect byla vždy vytvořena nová databáze s názvem ADSync. U Azure AD Connect verze 1.1.613.0 (nebo po) máte možnost nainstalovat Azure AD Connect tak, že na ni přejdete na existující databázi ADSync.
@@ -56,7 +56,7 @@ Důležité poznámky, které byste si poznamenali, než budete pokračovat:
 - Nemůžete mít více Azure AD Connectch serverů sdílejí stejnou databázi ADSync. Metoda "použít existující databázi" umožňuje znovu použít stávající databázi ADSync pomocí nového serveru Azure AD Connect. Sdílení nepodporuje.
 
 ## <a name="steps-to-install-azure-ad-connect-with-use-existing-database-mode"></a>Postup instalace Azure AD Connect s režimem "používání existující databáze"
-1.  Stáhněte si instalační program Azure AD Connect (souboru azureadconnect. MSI) do Windows serveru. Dvojím kliknutím na instalační program Azure AD Connect spusťte instalaci Azure AD Connect.
+1.  Stáhněte si instalační program Azure AD Connect (AzureADConnect.MSI) do Windows serveru. Dvojím kliknutím na instalační program Azure AD Connect spusťte instalaci Azure AD Connect.
 2.  Po dokončení instalace MSI se spustí průvodce Azure AD Connect v režimu expresní instalace. Zavřete obrazovku kliknutím na ikonu Ukončit.
 ![Uvítání](./media/how-to-connect-install-existing-database/db1.png)
 3.  Spusťte nový příkazový řádek nebo novou relaci PowerShellu. Přejděte do složky C:\Program Files\Microsoft Azure Active Directory Connect. Spuštěním příkazu .\AzureADConnect.exe /useexistingdatabase spusťte průvodce Azure AD Connect v režimu instalace Použít stávající databázi.

@@ -11,16 +11,16 @@ ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/11/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48ed9abf3e088e2581a3dd81b7c89e6b99da3ceb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b15250804dd316000aa20d6b97e9cccbfc36e9ad
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76897194"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85359088"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>Diagnostika a oprava chyb synchronizace kvůli duplicitním atributům
 
@@ -32,9 +32,9 @@ Funkce diagnostiky má tyto výhody:
 - K povolení této funkce není nutný žádný upgrade nebo konfigurace.
 Další informace o Azure AD najdete v tématu [synchronizace identity a odolnost duplicitních atributů](how-to-connect-syncservice-duplicate-attribute-resiliency.md).
 
-## <a name="problems"></a>Problém
+## <a name="problems"></a>Problémy
 ### <a name="a-common-scenario"></a>Běžný scénář
-Když dojde k chybám při synchronizaci **QuarantinedAttributeValueMustBeUnique** a **AttributeValueMustBeUnique** , je běžné vidět, že ve službě Azure AD dojde ke konfliktu adres **userPrincipalName** nebo **proxy** . Chyby synchronizace můžete vyřešit tak, že aktualizujete konfliktní zdrojový objekt z místní strany. Po další synchronizaci bude vyřešena chyba synchronizace. Například tento obrázek ukazuje, že dva uživatelé mají konflikt jejich **userPrincipalName**. Oba jsou **Jana. J\@contoso.com**. Konfliktní objekty jsou v karanténě v Azure AD.
+Když dojde k chybám při synchronizaci **QuarantinedAttributeValueMustBeUnique** a **AttributeValueMustBeUnique** , je běžné vidět, že ve službě Azure AD dojde ke konfliktu adres **userPrincipalName** nebo **proxy** . Chyby synchronizace můžete vyřešit tak, že aktualizujete konfliktní zdrojový objekt z místní strany. Po další synchronizaci bude vyřešena chyba synchronizace. Například tento obrázek ukazuje, že dva uživatelé mají konflikt jejich **userPrincipalName**. Oba jsou **Jana. J \@ contoso.com**. Konfliktní objekty jsou v karanténě v Azure AD.
 
 ![Běžný scénář diagnostiky chyby synchronizace](./media/how-to-connect-health-diagnose-sync-errors/IIdFixCommonCase.png)
 

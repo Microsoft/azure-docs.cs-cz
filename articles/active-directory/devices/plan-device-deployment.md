@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f716c52443abedb0fb838fa95b421033f5e93408
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 97ddc91b5e49cafa87b90113f0160d8aec9c699a
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85217987"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85360312"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>Plánování nasazení zařízení Azure Active Directory
 
@@ -66,7 +66,7 @@ Když projekty technologie selžou, obvykle to vznikne z důvodu neshodných oč
 
 Pro tento plán přidejte do svého seznamu následující účastníky:
 
-| Role| Description |
+| Role| Popis |
 | - | - |
 | Správce zařízení| Zástupce týmu zařízení, který dokáže ověřit, jestli plán splňuje požadavky na zařízení vaší organizace. |
 | Správce sítě| Zástupce ze síťového týmu, který může zajistit, aby splňoval požadavky na síť. |
@@ -118,9 +118,8 @@ zařízení s iOS a Androidem můžou být jenom registrovaná v Azure AD. Násl
 |**Klíčové funkce**| | |  |
 | Jednotné přihlašování ke cloudovým prostředkům| ![zaškrtnutí](./media/plan-device-deployment/check.png)| ![zaškrtnutí](./media/plan-device-deployment/check.png)| ![zaškrtnutí](./media/plan-device-deployment/check.png) |
 | Jednotné přihlašování k místním prostředkům| | ![zaškrtnutí](./media/plan-device-deployment/check.png)| ![zaškrtnutí](./media/plan-device-deployment/check.png) |
-| Podmíněný přístup| ![zaškrtnutí](./media/plan-device-deployment/check.png) 
-Vyhovující zařízení| ![zaškrtnutí](./media/plan-device-deployment/check.png)
-Odpovídající zařízení| ![zaškrtnutí](./media/plan-device-deployment/check.png) |
+| Podmíněný přístup <br> (Vyžadovat, aby zařízení byla označená jako vyhovující) <br> (Musí se spravovat přes MDM)| ![zaškrtnutí](./media/plan-device-deployment/check.png) | ![zaškrtnutí](./media/plan-device-deployment/check.png)|![zaškrtnutí](./media/plan-device-deployment/check.png) |
+Podmíněný přístup <br>(Vyžadovat zařízení připojená k hybridní službě Azure AD)| | | ![zaškrtnutí](./media/plan-device-deployment/check.png)
 | Samoobslužné resetování hesla z přihlašovací obrazovky Windows| | ![zaškrtnutí](./media/plan-device-deployment/check.png)| ![zaškrtnutí](./media/plan-device-deployment/check.png) |
 | Resetování PIN kódu Windows Hello| | ![zaškrtnutí](./media/plan-device-deployment/check.png)| ![zaškrtnutí](./media/plan-device-deployment/check.png) |
 | Roaming podnikového stavu napříč zařízeními| | ![zaškrtnutí](./media/plan-device-deployment/check.png)| ![zaškrtnutí](./media/plan-device-deployment/check.png) |

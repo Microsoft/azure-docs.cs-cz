@@ -13,16 +13,16 @@ ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/26/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2233b434fda628dcf812a62f06541fc4b0296aba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: db4327f77d466ee66ef7fdbdaa60ef7ebd51f2d0
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76897351"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85359654"
 ---
 # <a name="change-signature-hash-algorithm-for-office-365-relying-party-trust"></a>Změnit algoritmus hash podpisu pro vztah důvěryhodnosti předávající strany Office 365
 ## <a name="overview"></a>Přehled
@@ -39,7 +39,7 @@ Po nastavení algoritmu podpisu pomocí jednoho ze dvou procesů AD FS podepíš
 2. Rozbalte uzel AD FS a klikněte na **vztahy důvěryhodnosti předávající strany**.
 3. Klikněte pravým tlačítkem na vztah důvěryhodnosti předávající strany Office 365/Azure a vyberte **vlastnosti**.
 4. Vyberte kartu **Upřesnit** a vyberte zabezpečený algoritmus hash SHA256.
-5. Klikněte na tlačítko **OK**.
+5. Klikněte na **OK**.
 
 ![SHA256 Signing Algorithm – MMC](./media/how-to-connect-fed-sha256-guidance/mmc.png)
 

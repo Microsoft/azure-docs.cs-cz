@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/31/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0775e717c0610e122bb31f752beecd2c97599053
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 59f252eac53f3aab2263f2019c9d4b13b0f68dce
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82201036"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85358884"
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>Podpora více domén pro federaci s Azure AD
 Následující dokumentace poskytuje pokyny k používání více domén nejvyšší úrovně a subdomén při federováníí s doménami Office 365 nebo Azure AD.
@@ -36,7 +36,7 @@ Když je doména federované pomocí Azure AD, v doméně v Azure se nastaví n�
 >
 >
 
-IssuerUri můžete zobrazit pomocí příkazu `Get-MsolDomainFederationSettings -DomainName <your domain>`PowerShellu.
+IssuerUri můžete zobrazit pomocí příkazu PowerShellu `Get-MsolDomainFederationSettings -DomainName <your domain>` .
 
 ![Get-MsolDomainFederationSettings](./media/how-to-connect-install-multiple-domains/MsolDomainFederationSettings.png)
 
@@ -69,7 +69,7 @@ Dalším krokem `-SupportMultipleDomain` je to, že zajišťuje, aby systém AD 
 
 Proto při ověřování do Azure AD nebo Office 365 se k vyhledání domény v Azure AD použije element IssuerUri v tokenu uživatele.  Pokud není nalezena shoda, ověřování se nezdaří.
 
-Pokud je bsimon@bmcontoso.comnapříklad hlavní název uživatele (UPN), element IssuerUri v tokenu, AD FS problémy, bude nastaven na `http://bmcontoso.com/adfs/services/trust`. Tento element se bude shodovat s konfigurací Azure AD a ověření proběhne úspěšně.
+Pokud je například hlavní název uživatele (UPN) bsimon@bmcontoso.com , element IssuerUri v tokenu, AD FS problémy, bude nastaven na `http://bmcontoso.com/adfs/services/trust` . Tento element se bude shodovat s konfigurací Azure AD a ověření proběhne úspěšně.
 
 Následuje vlastní pravidlo deklarace identity, které implementuje tuto logiku:
 
@@ -82,9 +82,9 @@ Následuje vlastní pravidlo deklarace identity, které implementuje tuto logiku
 >
 
 ## <a name="how-to-update-the-trust-between-ad-fs-and-azure-ad"></a>Jak aktualizovat vztah důvěryhodnosti mezi AD FS a Azure AD
-Pokud jste nevytvořili federovaný vztah důvěryhodnosti mezi AD FS a vaší instancí služby Azure AD, bude pravděpodobně nutné tento vztah důvěryhodnosti znovu vytvořit.  Důvodem je, že pokud je původně nastaven bez `-SupportMultipleDomain` parametru, je IssuerUri nastavena s výchozí hodnotou.  Na následujícím snímku obrazovky vidíte, že je IssuerUri nastaven na `https://adfs.bmcontoso.com/adfs/services/trust`hodnotu.
+Pokud jste nevytvořili federovaný vztah důvěryhodnosti mezi AD FS a vaší instancí služby Azure AD, bude pravděpodobně nutné tento vztah důvěryhodnosti znovu vytvořit.  Důvodem je, že pokud je původně nastaven bez `-SupportMultipleDomain` parametru, je IssuerUri nastavena s výchozí hodnotou.  Na následujícím snímku obrazovky vidíte, že je IssuerUri nastaven na hodnotu `https://adfs.bmcontoso.com/adfs/services/trust` .
 
-Pokud jste úspěšně přidali novou doménu na portálu Azure AD a pokusíte se ji převést pomocí `Convert-MsolDomaintoFederated -DomainName <your domain>`, zobrazí se následující chyba.
+Pokud jste úspěšně přidali novou doménu na portálu Azure AD a pokusíte se ji převést pomocí, zobrazí se `Convert-MsolDomaintoFederated -DomainName <your domain>` následující chyba.
 
 ![Chyba federace](./media/how-to-connect-install-multiple-domains/trust1.png)
 
@@ -92,11 +92,11 @@ Pokud se pokusíte přidat `-SupportMultipleDomain` přepínač, zobrazí se ná
 
 ![Chyba federace](./media/how-to-connect-install-multiple-domains/trust2.png)
 
-Pouhým pokusem `Update-MsolFederatedDomain -DomainName <your domain> -SupportMultipleDomain` o spuštění v původní doméně dojde také k chybě.
+Pouhým pokusem o spuštění `Update-MsolFederatedDomain -DomainName <your domain> -SupportMultipleDomain` v původní doméně dojde také k chybě.
 
 ![Chyba federace](./media/how-to-connect-install-multiple-domains/trust3.png)
 
-Pomocí následujících kroků přidejte další doménu nejvyšší úrovně.  Pokud jste už přidali doménu a tento `-SupportMultipleDomain` parametr nepoužili, začněte kroky pro odebrání a aktualizaci původní domény.  Pokud jste ještě nepřidali doménu nejvyšší úrovně, můžete začít s postupem přidání domény pomocí prostředí PowerShell Azure AD Connect.
+Pomocí následujících kroků přidejte další doménu nejvyšší úrovně.  Pokud jste už přidali doménu a tento parametr nepoužili `-SupportMultipleDomain` , začněte kroky pro odebrání a aktualizaci původní domény.  Pokud jste ještě nepřidali doménu nejvyšší úrovně, můžete začít s postupem přidání domény pomocí prostředí PowerShell Azure AD Connect.
 
 Pomocí následujících kroků odeberte Microsoft Online Trust a aktualizujte původní doménu.
 
@@ -104,14 +104,14 @@ Pomocí následujících kroků odeberte Microsoft Online Trust a aktualizujte p
 2. Na levé straně rozbalte **vztahy důvěryhodnosti** a **vztahy důvěryhodnosti předávající strany** .
 3. Na pravé straně odstraňte položku **platformy Identity systém Microsoft Office 365** .
    ![Odebrat Microsoft Online](./media/how-to-connect-install-multiple-domains/trust4.png)
-4. Na počítači, na kterém je nainstalovaný [modul Azure Active Directory pro prostředí Windows PowerShell](https://msdn.microsoft.com/library/azure/jj151815.aspx) , spusťte následující příkaz `$cred=Get-Credential`:.  
+4. Na počítači, na kterém je nainstalovaný [modul Azure Active Directory pro prostředí Windows PowerShell](https://msdn.microsoft.com/library/azure/jj151815.aspx) , spusťte následující příkaz: `$cred=Get-Credential` .  
 5. Zadejte uživatelské jméno a heslo globálního správce pro doménu Azure AD, se kterou jste federování.
 6. V PowerShellu zadejte`Connect-MsolService -Credential $cred`
-7. V PowerShellu zadejte `Update-MSOLFederatedDomain -DomainName <Federated Domain Name> -SupportMultipleDomain`.  Tato aktualizace je určena pro původní doménu.  Pomocí výše uvedených domén by to bylo:`Update-MsolFederatedDomain -DomainName bmcontoso.com -SupportMultipleDomain`
+7. V PowerShellu zadejte `Update-MSOLFederatedDomain -DomainName <Federated Domain Name> -SupportMultipleDomain` .  Tato aktualizace je určena pro původní doménu.  Pomocí výše uvedených domén by to bylo:`Update-MsolFederatedDomain -DomainName bmcontoso.com -SupportMultipleDomain`
 
 Pomocí následujících kroků přidejte novou doménu nejvyšší úrovně pomocí prostředí PowerShell.
 
-1. Na počítači, na kterém je nainstalovaný [modul Azure Active Directory pro prostředí Windows PowerShell](https://msdn.microsoft.com/library/azure/jj151815.aspx) , spusťte následující příkaz `$cred=Get-Credential`:.  
+1. Na počítači, na kterém je nainstalovaný [modul Azure Active Directory pro prostředí Windows PowerShell](https://msdn.microsoft.com/library/azure/jj151815.aspx) , spusťte následující příkaz: `$cred=Get-Credential` .  
 2. Zadejte uživatelské jméno a heslo globálního správce pro doménu Azure AD, se kterou jste federování
 3. V PowerShellu zadejte`Connect-MsolService -Credential $cred`
 4. V PowerShellu zadejte`New-MsolFederatedDomain –SupportMultipleDomain –DomainName`
@@ -119,14 +119,14 @@ Pomocí následujících kroků přidejte novou doménu nejvyšší úrovně pom
 Pomocí následujících kroků přidejte novou doménu nejvyšší úrovně pomocí Azure AD Connect.
 
 1. Spustit Azure AD Connect z plochy nebo nabídky Start
-2. Výběr možnosti přidat další doménu Azure AD ![přidat další doménu služby Azure AD](./media/how-to-connect-install-multiple-domains/add1.png)
+2. Výběr možnosti přidat další doménu Azure AD ![ Přidat další doménu služby Azure AD](./media/how-to-connect-install-multiple-domains/add1.png)
 3. Zadejte svoje přihlašovací údaje pro Azure AD a Active Directory.
 4. Vyberte druhou doménu, kterou chcete konfigurovat pro federaci.
    ![Přidat další doménu služby Azure AD](./media/how-to-connect-install-multiple-domains/add2.png)
 5. Kliknutí na Nainstalovat
 
 ### <a name="verify-the-new-top-level-domain"></a>Ověřte novou doménu nejvyšší úrovně.
-Pomocí příkazu `Get-MsolDomainFederationSettings -DomainName <your domain>`prostředí PowerShell můžete zobrazit aktualizované IssuerUri.  Na následujícím snímku obrazovky vidíte, že nastavení federace se v původní doméně aktualizovala.`http://bmcontoso.com/adfs/services/trust`
+Pomocí příkazu prostředí PowerShell `Get-MsolDomainFederationSettings -DomainName <your domain>` můžete zobrazit aktualizované IssuerUri.  Na následujícím snímku obrazovky vidíte, že nastavení federace se v původní doméně aktualizovala.`http://bmcontoso.com/adfs/services/trust`
 
 ![Get-MsolDomainFederationSettings](./media/how-to-connect-install-multiple-domains/MsolDomainFederationSettings.png)
 
@@ -137,7 +137,7 @@ A IssuerUri v nové doméně je nastavené na`https://bmfabrikam.com/adfs/servic
 ## <a name="support-for-subdomains"></a>Podpora subdomén
 Když přidáte subdoménu, z důvodu způsobu, jakým služba Azure AD zpracuje domény, zdědí nastavení nadřazeného objektu.  IssuerUri musí proto odpovídat nadřazeným prvkům.
 
-Takže to znamená například, že mám bmcontoso.com a pak přidat corp.bmcontoso.com.  Bude muset být **`http://bmcontoso.com/adfs/services/trust`** IssuerUri pro uživatele z Corp.bmcontoso.com.  Standardní pravidlo implementované výše pro Azure AD však vygeneruje token s vystavitelem **`http://corp.bmcontoso.com/adfs/services/trust`**. neshoduje se s požadovanou hodnotou domény a ověření se nezdaří.
+Takže to znamená například, že mám bmcontoso.com a pak přidat corp.bmcontoso.com.  Bude muset být IssuerUri pro uživatele z corp.bmcontoso.com **`http://bmcontoso.com/adfs/services/trust`** .  Standardní pravidlo implementované výše pro Azure AD však vygeneruje token s vystavitelem **`http://corp.bmcontoso.com/adfs/services/trust`** . neshoduje se s požadovanou hodnotou domény a ověření se nezdaří.
 
 ### <a name="how-to-enable-support-for-subdomains"></a>Jak povolit podporu pro subdomény
 Chcete-li tento problém obejít, je nutné aktualizovat AD FS vztah důvěryhodnosti předávající strany pro Microsoft Online.  Chcete-li to provést, musíte nakonfigurovat vlastní pravidlo deklarace identity tak, aby při vytváření vlastní hodnoty vystavitele z přípony hlavního názvu uživatele (UPN) odříznout jakékoli subdomény.
@@ -147,13 +147,13 @@ Tato deklarace se provede tímto způsobem:
     c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, "^.*@([^.]+\.)*?(?<domain>([^.]+\.?){2})$", "http://${domain}/adfs/services/trust/"));
 
 [!NOTE]
-Poslední číslo v sadě regulárních výrazů je počet nadřazených domén, které jsou v kořenové doméně. Zde se používá bmcontoso.com, takže jsou nutné dvě nadřazené domény. Pokud by se měly zachovat tři nadřazené domény (například: corp.bmcontoso.com), pak se toto číslo zaznamenalo tři. V takovém případě lze určit rozsah, přičemž shoda bude vždy provedena tak, aby odpovídala maximálnímu počtu domén. "{2,3}" bude odpovídat dvěma až třem doménám (tj.: bmfabrikam.com a Corp.bmcontoso.com).
+Poslední číslo v sadě regulárních výrazů je počet nadřazených domén, které jsou v kořenové doméně. Zde se používá bmcontoso.com, takže jsou nutné dvě nadřazené domény. Pokud by se měly zachovat tři nadřazené domény (například: corp.bmcontoso.com), pak se toto číslo zaznamenalo tři. V takovém případě lze určit rozsah, přičemž shoda bude vždy provedena tak, aby odpovídala maximálnímu počtu domén. " {2,3} " bude odpovídat dvěma až třem doménám (tj.: bmfabrikam.com a Corp.bmcontoso.com).
 
 Pomocí následujících kroků přidejte vlastní deklaraci identity pro podporu subdomén.
 
 1. Otevřít správu AD FS
 2. Klikněte pravým tlačítkem na Microsoft online RP Trust a vyberte upravit pravidla deklarací identity.
-3. Vyberte třetí pravidlo deklarace identity a nahraďte ![Upravit deklaraci identity.](./media/how-to-connect-install-multiple-domains/sub1.png)
+3. Vyberte třetí pravidlo deklarace identity a nahraďte ![ Upravit deklaraci identity.](./media/how-to-connect-install-multiple-domains/sub1.png)
 4. Nahradit aktuální deklaraci identity:
 
         c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, ".+@(?<domain>.+)","http://${domain}/adfs/services/trust/"));
@@ -164,7 +164,7 @@ Pomocí následujících kroků přidejte vlastní deklaraci identity pro podpor
 
     ![Nahradit deklaraci identity](./media/how-to-connect-install-multiple-domains/sub2.png)
 
-5. Klikněte na tlačítko OK.  Klikněte na použít.  Klikněte na tlačítko OK.  Zavřete správu služby AD FS.
+5. Klikněte na tlačítko OK.  Klikněte na Použít.  Klikněte na tlačítko OK.  Zavřete správu služby AD FS.
 
 ## <a name="next-steps"></a>Další kroky
 Nyní, když máte nainstalovanou službu Azure AD Connect, si můžete [ověřit instalaci a přiřadit licence](how-to-connect-post-installation.md).

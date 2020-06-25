@@ -615,6 +615,8 @@
               href: app/remove-application-insights.md
         - name: Monitorování bez kódu
           items:
+            - name: Přehled
+              href: app/codeless-overview.md
             - name: Škálovací sada a virtuální počítač Azure
               href: app/azure-vm-vmss-apps.md
             - name: Azure App Service

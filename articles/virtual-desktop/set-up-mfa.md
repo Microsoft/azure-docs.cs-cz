@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 468597c82ae6c99aadeb33fafae78e3b3ed343cd
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 16abe8d155a0d7d7f65c69e6305da62bd8813ea4
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85213665"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361145"
 ---
 # <a name="enable-azure-multi-factor-authentication-for-windows-virtual-desktop"></a>Povolit Azure Multi-Factor Authentication pro virtuální počítače s Windows
 
@@ -48,7 +48,8 @@ V této části se dozvíte, jak vytvořit zásadu podmíněného přístupu, kt
 6. V části **cloudové aplikace nebo akce**  >  **Include**vyberte **vybrat aplikace**.
    - Zvolte **virtuální počítač s Windows** (ID aplikace 9cdead84-a844-4324-93f2-b2e6bb768d07), pak **Vyberte**a pak **Hotovo**.
 
-     ![Snímek obrazovky se stránkou cloudové aplikace nebo akce Klientské aplikace virtuálních počítačů a virtuálních počítačů s Windows jsou zvýrazněné červeně.](media/cloud-apps-enterprise.png)
+     > [!div class="mx-imgBorder"]
+     > ![Snímek obrazovky se stránkou cloudové aplikace nebo akce Klientské aplikace virtuálních počítačů a virtuálních počítačů s Windows jsou zvýrazněné červeně.](media/cloud-apps-enterprise.png)
 
      >[!NOTE]
      >Pokud chcete najít ID aplikace, kterou chcete vybrat, přejděte na **podnikové aplikace** a v rozevírací nabídce Typ aplikace vyberte **aplikace Microsoftu** .

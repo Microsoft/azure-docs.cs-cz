@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/21/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9311c1060b953e87f163cb482db14cdd43f50d3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 467b9b2e613e43b95007142a120d39be1272de93
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60242108"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85357830"
 ---
 # <a name="user-privacy-and-azure-ad-seamless-single-sign-on"></a>Ochrana osobních údajů uživatelů a bezproblémové jednotné přihlašování Azure AD
 
@@ -43,10 +43,10 @@ Tuto druhou možnost důrazně doporučujeme, protože je snazší ji implemento
 
 ### <a name="delete-azure-ad-connect-trace-log-files"></a>Odstranit Azure AD Connect soubory protokolu trasování
 
-Ověřte obsah složky **%ProgramData%\AADConnect** a odstraňte obsah protokolu trasování (soubory**Trace\*-. log** ) této složky během 48 hodin od instalace nebo upgradování Azure AD Connect nebo úpravou bezproblémové konfigurace jednotného přihlašování, protože tato akce může vytvářet data, která jsou pokrytá GDPR.
+Ověřte obsah složky **%ProgramData%\AADConnect** a odstraňte obsah protokolu trasování (soubory**Trace- \* . log** ) této složky během 48 hodin od instalace nebo upgradování Azure AD Connect nebo úpravou bezproblémové konfigurace jednotného přihlašování, protože tato akce může vytvářet data, která jsou pokrytá GDPR.
 
 >[!IMPORTANT]
->V této složce neodstraňujte soubor **PersistedState. XML** , protože tento soubor slouží k údržbě stavu předchozí instalace Azure AD Connect a používá se při instalaci upgradu. Tento soubor nikdy nebude obsahovat žádná data o osobě a neměl by se nikdy odstranit.
+>Neodstraňujte soubor **PersistedState.xml** v této složce, protože tento soubor slouží k údržbě stavu předchozí instalace Azure AD Connect a používá se v případě, že je dokončena instalace upgradu. Tento soubor nikdy nebude obsahovat žádná data o osobě a neměl by se nikdy odstranit.
 
 Tyto soubory protokolu trasování můžete zkontrolovat a odstranit pomocí Průzkumníka Windows nebo můžete použít následující skript PowerShellu k provedení nezbytných akcí:
 

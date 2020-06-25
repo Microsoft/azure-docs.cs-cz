@@ -16,12 +16,12 @@ ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: dc2763fd3c203a5b0443299d9824b6ebf61bdc78
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: 870c9c91e285988cdc1fb294b3fc9b3270de7483
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84791074"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361900"
 ---
 # <a name="add-or-remove-azure-role-assignments-for-external-guest-users-using-the-azure-portal"></a>Přidání nebo odebrání přiřazení rolí Azure pro externí uživatele typu Host pomocí Azure Portal
 
@@ -89,7 +89,9 @@ V Azure RBAC pro udělení přístupu přiřadíte roli. Chcete-li přidat při�
 
     Pokud nemáte oprávnění k přiřazování rolí, bude možnost přidat přiřazení role zakázaná.
 
-    ![Přidat nabídku](./media/role-assignments-external-users/add-menu.png)
+    ![Přidat nabídku přiřazení role](./media/shared/add-role-assignment-menu.png)
+
+    Otevře se podokno Přidat přiřazení role.
 
 1. V rozevíracím seznamu **Role** vyberte roli, například **Přispěvatel virtuálních počítačů**.
 
@@ -119,7 +121,9 @@ Pokud uživatel typu Host ještě není ve vašem adresáři, můžete uživatel
 
 1. Kliknutím na **Přidat** > **Přidat přiřazení role** otevřete podokno Přidat přiřazení role.
 
-    ![Přidat nabídku](./media/role-assignments-external-users/add-menu.png)
+    ![Přidat nabídku přiřazení role](./media/shared/add-role-assignment-menu.png)
+
+    Otevře se podokno Přidat přiřazení role.
 
 1. V rozevíracím seznamu **Role** vyberte roli, například **Přispěvatel virtuálních počítačů**.
 

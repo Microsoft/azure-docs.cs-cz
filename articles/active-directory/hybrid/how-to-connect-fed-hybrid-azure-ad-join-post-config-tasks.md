@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ffb8243041bb93ba8be6a65bb83df6f84affaee3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 491a8f00de2fcd4c977a1856005b4358a4b62bd6
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80049660"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85359785"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>Úlohy po dokončení konfigurace pro hybridní připojení k Azure AD
 
@@ -52,7 +52,7 @@ Pokud vaše organizace přistupuje k Internetu prostřednictvím odchozího prox
 
 ## <a name="4-configure-the-scp-in-any-forests-that-were-not-configured-by-azure-ad-connect"></a>4. Nakonfigurujte spojovací bod služby v jakékoli doménové struktuře, která nebyla nakonfigurovaná pomocí Azure AD Connect 
 
-Spojovací bod služby (SCP) obsahuje informace o tenantovi Azure AD, které budou vaše zařízení používat k automatické registraci.  Spusťte skript prostředí PowerShell ConfigureSCP. ps1, který jste si stáhli z Azure AD Connect.
+Spojovací bod služby (SCP) obsahuje informace o tenantovi Azure AD, které budou vaše zařízení používat k automatické registraci.  Spusťte skript prostředí PowerShell, ConfigureSCP.ps1, který jste si stáhli z Azure AD Connect.
 
 ## <a name="5-configure-any-federation-service-that-was-not-configured-by-azure-ad-connect"></a>5. Nakonfigurujte jakoukoli federační službu, která nebyla nakonfigurovaná pomocí Azure AD Connect
 
@@ -63,7 +63,7 @@ Pokud vaše organizace používá pro přihlášení ke službě Azure AD služb
 
 ## <a name="6-enable-azure-ad-seamless-sso-for-windows-down-level-devices"></a>6. povolení služby Azure AD bezproblémové jednotné přihlašování pro zařízení se systémem Windows nižší úrovně
 
-Pokud vaše organizace používá synchronizaci hodnot hash hesel nebo předávací ověřování pro přihlášení ke službě Azure AD, povolte Azure AD bez problémů pomocí jednotného přihlašování s touto metodou přihlášení k ověření zařízení se systémem Windows nižší https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-ssoúrovně:. 
+Pokud vaše organizace používá synchronizaci hodnot hash hesel nebo předávací ověřování pro přihlášení ke službě Azure AD, povolte Azure AD bez problémů pomocí jednotného přihlašování s touto metodou přihlášení k ověření zařízení se systémem Windows nižší úrovně: https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso . 
 
 ## <a name="7-set-azure-ad-policy-for-windows-down-level-devices"></a>7. nastavení zásad Azure AD pro zařízení nižší úrovně Windows
 
@@ -82,7 +82,7 @@ Pokud používáte [bezproblémové přihlašování (SSO](how-to-connect-sso.md
 
 ## <a name="9-install-microsoft-workplace-join-on-windows-down-level-devices"></a>9. instalace aplikace Microsoft Workplace Join na zařízeních nižší úrovně Windows
 
-Tento instalační program vytvoří v systému zařízení naplánovanou úlohu, která běží v kontextu uživatele. Úkol se aktivuje, když se uživatel přihlásí k Windows. Úloha se tiše připojí k zařízení pomocí Azure AD s přihlašovacími údaji uživatele po ověření pomocí integrovaného ověřování systému Windows. Stažení softwaru je v https://www.microsoft.com/download/details.aspx?id=53554. 
+Tento instalační program vytvoří v systému zařízení naplánovanou úlohu, která běží v kontextu uživatele. Úkol se aktivuje, když se uživatel přihlásí k Windows. Úloha se tiše připojí k zařízení pomocí Azure AD s přihlašovacími údaji uživatele po ověření pomocí integrovaného ověřování systému Windows. Stažení softwaru je v https://www.microsoft.com/download/details.aspx?id=53554 . 
 
 ## <a name="10-configure-group-policy-to-allow-device-registration"></a>10. konfigurace zásad skupiny pro povolení registrace zařízení
 

@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 01/08/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 65a61babe58e1cb9438262186a7f4cf37cb10a34
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 3e248e7af5fc9ed2bc144a4b302577be56524d7d
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612537"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361163"
 ---
 # <a name="host-pool-creation"></a>Vytvoření fondu hostitelů
 
@@ -31,13 +31,14 @@ Navštivte [technickou komunitu pro virtuální počítače s Windows](https://t
 
 ## <a name="acquiring-the-windows-10-enterprise-multi-session-image"></a>Získání bitové kopie Windows 10 Enterprise s více relacemi
 
-Pokud chcete použít bitovou kopii Windows 10 Enterprise s více relacemi, **Přečtěte si Azure Marketplace, vyberte** > Začínáme s**Microsoft Windows 10** > a [Windows 10 Enterprise multi-session verze 1809](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice).
+Pokud chcete použít bitovou kopii Windows 10 Enterprise s více relacemi, **Přečtěte si Azure Marketplace, vyberte Začínáme**s  >  **Microsoft Windows 10** > a [Windows 10 Enterprise multi-session verze 1809](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice).
 
 ## <a name="issues-with-using-the-azure-portal-to-create-host-pools"></a>Problémy s používáním Azure Portal k vytváření fondů hostitelů
 
 ### <a name="error-create-a-free-account-appears-when-accessing-the-service"></a>Chyba: při přístupu ke službě se zobrazí zpráva vytvořit bezplatný účet.
 
-![Obrázek znázorňující Azure Portal se zobrazením zprávy vytvořit bezplatný účet](media/create-new-account.png)
+> [!div class="mx-imgBorder"]
+> ![Obrázek znázorňující Azure Portal se zobrazením zprávy vytvořit bezplatný účet](media/create-new-account.png)
 
 **Příčina**: v účtu, ke kterému jste se přihlásili do Azure, nejsou aktivní předplatná, nebo účet nemá oprávnění k zobrazení předplatných. 
 
@@ -60,9 +61,10 @@ Při řešení neúspěšného nasazení Azure Resource Manager šablon a prost�
 3. Po identifikaci chyby použijte chybovou zprávu a prostředky v tématu [řešení běžných chyb nasazení Azure pomocí Azure Resource Manager](../azure-resource-manager/resource-manager-common-deployment-errors.md) k vyřešení problému.
 4. Odstraňte všechny prostředky vytvořené během předchozího nasazení a zkuste šablonu znovu nasadit.
 
-### <a name="error-your-deployment-failedhostnamejoindomain"></a>Chyba: nasazení nebylo úspěšné....\<název hostitele>/JoinDomain
+### <a name="error-your-deployment-failedhostnamejoindomain"></a>Chyba: nasazení nebylo úspěšné... \<hostname> /JoinDomain
 
-![Nasazování se nepovedlo snímek obrazovky.](media/failure-joindomain.png)
+> [!div class="mx-imgBorder"]
+> ![Nasazování se nepovedlo snímek obrazovky.](media/failure-joindomain.png)
 
 Příklad nezpracované chyby:
 
@@ -103,7 +105,8 @@ Chcete-li tento problém vyřešit, proveďte následující akce:
 
 ### <a name="error-vmextensionprovisioningerror"></a>Chyba: VMExtensionProvisioningError
 
-![Snímek obrazovky vašeho nasazení selhal se stavem zřizování terminálu selhalo.](media/failure-vmextensionprovisioning.png)
+> [!div class="mx-imgBorder"]
+> ![Snímek obrazovky vašeho nasazení selhal se stavem zřizování terminálu selhalo.](media/failure-vmextensionprovisioning.png)
 
 **Příčina 1:** Přechodná chyba v prostředí virtuálního počítače s Windows
 
@@ -113,7 +116,8 @@ Chcete-li tento problém vyřešit, proveďte následující akce:
 
 ### <a name="error-the-admin-username-specified-isnt-allowed"></a>Chyba: zadané uživatelské jméno správce není povolené.
 
-![Snímek obrazovky s vaším nasazením se nepovedl, protože zadaný správce není povolený.](media/failure-username.png)
+> [!div class="mx-imgBorder"]
+> ![Snímek obrazovky s vaším nasazením se nepovedl, protože zadaný správce není povolený.](media/failure-username.png)
 
 Příklad nezpracované chyby:
 
@@ -130,7 +134,8 @@ Příklad nezpracované chyby:
 
 ### <a name="error-vm-has-reported-a-failure-when-processing-extension"></a>Chyba: virtuální počítač ohlásil selhání při zpracování rozšíření
 
-![Snímek obrazovky s operací prostředku dokončeným se stavem zřizování terminálu v nasazení se nezdařil.](media/failure-processing.png)
+> [!div class="mx-imgBorder"]
+> ![Snímek obrazovky s operací prostředku dokončeným se stavem zřizování terminálu v nasazení se nezdařil.](media/failure-processing.png)
 
 Příklad nezpracované chyby:
 
@@ -149,7 +154,8 @@ Příklad nezpracované chyby:
 
 ### <a name="error-deploymentfailed--powershell-dsc-configuration-firstsessionhost-completed-with-errors"></a>Chyba: DeploymentFailed – konfigurace prostředí PowerShell DSC ' FirstSessionHost ' se dokončila s chybami
 
-![Snímek obrazovky s nasazením se nepovedl s konfigurací PowerShellu pro DSC FirstSessionHost se dokončil s chybami.](media/failure-dsc.png)
+> [!div class="mx-imgBorder"]
+> ![Snímek obrazovky s nasazením se nepovedl s konfigurací PowerShellu pro DSC FirstSessionHost se dokončil s chybami.](media/failure-dsc.png)
 
 Příklad nezpracované chyby:
 

@@ -12,17 +12,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35e04be046e20883f60c576745a29342add68a81
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 4077146292db1266d5dbc51cc577f952b2bff191
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60241594"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85357507"
 ---
 # <a name="changing-the-ad-ds-account-password"></a>Změna hesla účtu služby AD DS
 Účet služba AD DS odkazuje na uživatelský účet používaný službou Azure AD Connect ke komunikaci s místní službou Active Directory. Pokud změníte heslo účtu služba AD DS, musíte aktualizovat Azure AD Connect synchronizační službu pomocí nového hesla. V opačném případě se synchronizace už nedokáže správně synchronizovat s místní službou Active Directory a zobrazí se následující chyby:

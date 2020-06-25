@@ -5,18 +5,18 @@ services: active-directory
 author: billmath
 manager: daveba
 ms.service: active-directory
-ms.topic: reference
+ms.topic: how-to
 ms.workload: identity
 ms.date: 04/02/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da2328674fd601f2e04684e8a9af1ae242ff6106
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5ef693a48dc52854e4e1fd8359ef24f65ce236f7
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82229795"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85358578"
 ---
 # <a name="migrate-groups-from-one-forest-to-another-for-azure-ad-connect"></a>Migrace skupin z jedné doménové struktury na jinou pro Azure AD Connect
 
@@ -29,7 +29,7 @@ Tento článek popisuje, jak migrovat skupiny z jedné doménové struktury do d
 
 ## <a name="migrate-groups"></a>Migrace skupin
 
-Počínaje verzí 1.5.18.0 Azure AD Connect podporuje použití `mS-DS-ConsistencyGuid` atributu pro skupiny. Pokud se rozhodnete `mS-DS-ConsistencyGuid` jako atribut zdrojového ukotvení a hodnota se naplní ve službě Active Directory, Azure AD Connect použije hodnotu `mS-DS-ConsistencyGuid` jako `immutableId`. V opačném případě se vrátí k `objectGUID`použití. Všimněte si ale, že Azure AD Connect nezapisuje hodnotu zpět do `mS-DS-ConsistencyGuid` atributu ve službě Active Directory.
+Počínaje verzí 1.5.18.0 Azure AD Connect podporuje použití `mS-DS-ConsistencyGuid` atributu pro skupiny. Pokud se rozhodnete `mS-DS-ConsistencyGuid` jako atribut zdrojového ukotvení a hodnota se naplní ve službě Active Directory, Azure AD Connect použije hodnotu `mS-DS-ConsistencyGuid` jako `immutableId` . V opačném případě se vrátí k použití `objectGUID` . Všimněte si ale, že Azure AD Connect nezapisuje hodnotu zpět do `mS-DS-ConsistencyGuid` atributu ve službě Active Directory.
 
 Při přesunu mezi doménovými strukturami se při přesunu objektu skupiny z jedné doménové struktury (řekněte F1) do jiné doménové struktury (řekněme F2) musí zkopírovat buď `mS-DS-ConsistencyGuid` hodnotu (Pokud je přítomná), nebo `objectGUID` hodnotu z objektu v doménové struktuře F1 na `mS-DS-ConsistencyGuid` atribut objektu ve F2.
 

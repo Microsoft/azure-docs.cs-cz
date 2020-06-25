@@ -6,12 +6,12 @@ author: renatosalas
 ms.author: regutier
 ms.date: 04/14/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 2f928ac2f8772942eb748d68a65662938b1405ed
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: d84010fd62d753fafd7edffab833b203657f74c7
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84882517"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361934"
 ---
 # <a name="configure-bring-your-own-storage-byos-for-application-insights-profiler-and-snapshot-debugger"></a>Konfigurace Přineste si vlastní úložiště (BYOS) pro Application Insights Profiler a Snapshot Debugger
 
@@ -21,9 +21,9 @@ Když použijete Application Insights Profiler nebo Snapshot Debugger, artefakty
 Pomocí Přineste si vlastní úložiště se tyto artefakty nahrají do účtu úložiště, který ovládáte. To znamená, že budete řídit zásady šifrování na místě, zásady správy životního cyklu a přístup k síti. Budete ale odpovědní za náklady spojené s tímto účtem úložiště.
 
 > [!NOTE]
-> Pokud povolujete privátní propojení, je nutné použít vlastní úložiště. Další informace o privátních odkazech [najdete v dokumentaci](https://docs.microsoft.com/azure/private-link/private-link-overview).
+> Pokud povolujete privátní propojení, je nutné použít vlastní úložiště. Další informace o privátním odkazu pro Application Insights [najdete v dokumentaci.](https://docs.microsoft.com/azure/azure-monitor/platform/private-link-security)
 >
-> Pokud povolujete klíče spravované zákazníkem, je nutné použít vlastní úložiště. Další informace o klíčích spravovaných zákazníkem [najdete v dokumentaci](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys).
+> Pokud povolujete klíče spravované zákazníkem, je nutné použít vlastní úložiště. Další informace o klíčích spravovaných zákazníkem pro Application Insights [najdete v dokumentaci.](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys)
 
 ## <a name="how-will-my-storage-account-be-accessed"></a>Jak bude k účtu úložiště přistup?
 1. Agenti, kteří jsou spuštěni ve vašem Virtual Machines nebo App Service, nahrávají artefakty (profily, snímky a symboly) do kontejnerů objektů BLOB ve vašem účtu. Tento proces zahrnuje kontaktování služby Application Insights Profiler nebo Snapshot Debugger k získání tokenu SAS (sdíleného přístupového podpisu) k novému objektu BLOB ve vašem účtu úložiště.
@@ -229,7 +229,7 @@ Chcete-li nakonfigurovat BYOS pro diagnostiku na úrovni kódu (Profiler/ladicí
 1. Povolte diagnostiku na úrovni kódu (Profiler/ladicí program) na úlohy, které vás zajímají, prostřednictvím Azure Portal. (App Service > Application Insights) _ ![ Obrázek 2,0](media/profiler-bring-your-own-storage/figure-20.png)_ 
  _Obrázek 2,0_
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 ### <a name="template-schema-schema_uri-isnt-supported"></a>Schéma šablony {schema_uri} se nepodporuje.
 * Ujistěte se, že `$schema` je vlastnost šablony platná. Musí splňovat následující vzor:`https://schema.management.azure.com/schemas/{schema_version}/deploymentTemplate.json#`
 * Ujistěte se, že `schema_version` je šablona v rámci platných hodnot: `2014-04-01-preview, 2015-01-01, 2018-05-01, 2019-04-01, 2019-08-01` .

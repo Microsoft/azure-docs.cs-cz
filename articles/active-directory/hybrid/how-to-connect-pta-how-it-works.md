@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/19/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59cd52dbdf6c13900cde592aeb52d8bf9abf850f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e794b66341d4e7c478fd526107cc35c7c745fa7f
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60347770"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85358323"
 ---
 # <a name="azure-active-directory-pass-through-authentication-technical-deep-dive"></a>Azure Active Directory předávací ověřování: technický hluboký podrobně
 Tento článek představuje přehled způsobu, jakým funguje předávací ověřování Azure Active Directory (Azure AD). Podrobné technické a bezpečnostní informace najdete v článku o [podrobně zabezpečení](how-to-connect-pta-security-deep-dive.md) .
@@ -40,7 +40,7 @@ Když se uživatel pokusí přihlásit k aplikaci zabezpečené službou Azure A
 5. Azure AD při přijetí žádosti o přihlášení umístí uživatelské jméno a heslo (šifrované pomocí veřejného klíče ověřovacích agentů) do fronty.
 6. Místní agent ověřování Získá uživatelské jméno a šifrované heslo z fronty. Všimněte si, že agent se často dotazuje na požadavky z fronty, ale načítá žádosti přes předem zavedené trvalé připojení.
 7. Agent dešifruje heslo pomocí jeho privátního klíče.
-8. Agent ověří uživatelské jméno a heslo ke službě Active Directory pomocí standardních rozhraní API systému Windows, což je podobný mechanismus, který používá Active Directory Federation Services (AD FS) (AD FS). Uživatelské jméno může být buď místní výchozí uživatelské jméno, obvykle `userPrincipalName`nebo jiný atribut nakonfigurovaný v Azure AD Connect (známý jako `Alternate ID`).
+8. Agent ověří uživatelské jméno a heslo ke službě Active Directory pomocí standardních rozhraní API systému Windows, což je podobný mechanismus, který používá Active Directory Federation Services (AD FS) (AD FS). Uživatelské jméno může být buď místní výchozí uživatelské jméno, obvykle `userPrincipalName` nebo jiný atribut nakonfigurovaný v Azure AD Connect (známý jako `Alternate ID` ).
 9. Místní řadič domény (DC) služby Active Directory vyhodnocuje požadavek a vrátí příslušnou odpověď (úspěch, selhání, heslo vypršel nebo uživatel uzamkl) k agentovi.
 10. Agent ověřování zase vrátí tuto odpověď zpět do služby Azure AD.
 11. Azure AD vyhodnocuje odpověď a odpoví na uživatele podle potřeby. Například služba Azure AD buď podepisuje uživatele hned, nebo požadavky na Azure Multi-Factor Authentication.

@@ -6,17 +6,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c086227d23901cb7904d8cc0a768e9f4b5ad43db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 50f02ea42bb792320da6e2523b733f09afd412a0
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77620978"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85360958"
 ---
 # <a name="create-a-new-configuration-for-azure-ad-connect-cloud-based-provisioning"></a>Vytvoření nové konfigurace pro Azure AD Connect cloudové zřizování
 
@@ -25,7 +25,7 @@ Po nainstalování agenta se budete muset přihlásit do Azure Portal a nakonfig
 ## <a name="configure-provisioning"></a>Konfigurace zřizování
 Pokud chcete nakonfigurovat zřizování, postupujte podle těchto kroků.
 
-1.  Na portálu Azure Portal vyberte **Azure Active Directory**.
+1.  V Azure Portal vyberte **Azure Active Directory**.
 1.  Vyberte **Azure AD Connect**.
 1.  Vyberte **Spravovat zřizování (Preview)**.
 
@@ -41,7 +41,7 @@ Pokud chcete nakonfigurovat zřizování, postupujte podle těchto kroků.
 ## <a name="scope-provisioning-to-specific-users-and-groups"></a>Zřizování oboru pro konkrétní uživatele a skupiny
 Můžete určit, že má agent synchronizovat konkrétní uživatele a skupiny pomocí místních skupin služby Active Directory nebo organizačních jednotek. V rámci konfigurace nemůžete konfigurovat skupiny a organizační jednotky. 
 
-1.  Na portálu Azure Portal vyberte **Azure Active Directory**.
+1.  V Azure Portal vyberte **Azure Active Directory**.
 1.  Vyberte **Azure AD Connect**.
 1.  Vyberte **Spravovat zřizování (Preview)**.
 1.  V části **Konfigurace**vyberte svou konfiguraci.
@@ -64,7 +64,7 @@ Můžete určit, že má agent synchronizovat konkrétní uživatele a skupiny p
 
 ## <a name="restart-provisioning"></a>Restartovat zřizování 
 Pokud nechcete čekat na další naplánované spuštění, aktivujte zřizování spuštěním pomocí tlačítka pro **restartování** . 
-1.  Na portálu Azure Portal vyberte **Azure Active Directory**.
+1.  V Azure Portal vyberte **Azure Active Directory**.
 1.  Vyberte **Azure AD Connect**.
 1.  Vyberte **Spravovat zřizování (Preview)**.
 1.  V části **Konfigurace**vyberte svou konfiguraci.
@@ -76,7 +76,7 @@ Pokud nechcete čekat na další naplánované spuštění, aktivujte zřizován
 ## <a name="remove-a-configuration"></a>Odebrat konfiguraci
 Pokud chcete konfiguraci odstranit, postupujte podle těchto kroků.
 
-1.  Na portálu Azure Portal vyberte **Azure Active Directory**.
+1.  V Azure Portal vyberte **Azure Active Directory**.
 1.  Vyberte **Azure AD Connect**.
 1.  Vyberte **Spravovat zřizování (Preview)**.
 1.  V části **Konfigurace**vyberte svou konfiguraci.

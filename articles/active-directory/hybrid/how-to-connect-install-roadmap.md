@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9ed613972f166f1f9955fc34e9bb640d87da6b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bee5ba92f6795df6635dc98a19cabaeb9692a470
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80331427"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85358731"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Plán instalace Azure AD Connect a Azure AD Connect Health
 
@@ -132,7 +132,7 @@ Pokud chcete začít se službou Azure AD Connect Health, použijte následujíc
 
 1. [Získejte předplatné služby Azure AD Premium](../fundamentals/active-directory-get-started-premium.md) nebo [začněte se zkušební verzí](https://azure.microsoft.com/trial/get-started-active-directory/).
 2. [Stáhněte a nainstalujte agenty služby Azure AD Connect Health](#download-and-install-azure-ad-connect-health-agent) na servery identity.
-3. Zobrazte řídicí panel Azure AD Connect Health na [https://aka.ms/aadconnecthealth](https://aka.ms/aadconnecthealth)adrese.
+3. Zobrazte řídicí panel Azure AD Connect Health na adrese [https://aka.ms/aadconnecthealth](https://aka.ms/aadconnecthealth) .
 
 > [!NOTE]
 > Nezapomeňte, že než na řídicím panelu služby Azure AD Connect Health uvidíte nějaká data, je třeba na cílové servery nainstalovat agenty služby Azure AD Connect Health.

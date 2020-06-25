@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/20/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89de1495dc6bb411d5d43986177f11abb016cf15
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 04f523a2615892268d56c167a682987453dc997c
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82200883"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85359734"
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>Obnovení federačních certifikátů pro Office 365 a Azure Active Directory
 ## <a name="overview"></a>Přehled
@@ -99,8 +99,8 @@ Ve výstupu příkazu Get-MsolFederationProperty nebo Get-AdfsCertificate zaškr
 | AutoCertificateRollover | Synchronizace certifikátů s Azure AD | Federační metadata jsou veřejně přístupná. | Obou | Akce |
 |:---:|:---:|:---:|:---:|:---:|
 | Ano |Ano |Ano |- |Není vyžadována žádná akce. Přečtěte si téma [Automatické obnovení podpisového certifikátu tokenu](#autorenew). |
-| Ano |Ne |- |Méně než 15 dní |Obnovte hned. Viz [Ruční obnovení podpisového certifikátu tokenu](#manualrenew). |
-| Ne |- |- |Méně než 30 dní |Obnovte hned. Viz [Ruční obnovení podpisového certifikátu tokenu](#manualrenew). |
+| Yes |Ne |- |Méně než 15 dní |Obnovte hned. Viz [Ruční obnovení podpisového certifikátu tokenu](#manualrenew). |
+| No |- |- |Méně než 30 dní |Obnovte hned. Viz [Ruční obnovení podpisového certifikátu tokenu](#manualrenew). |
 
 \[-] Nezáleží
 
@@ -116,7 +116,7 @@ Zkontrolujte následující a potvrďte, že se certifikát může automaticky a
 
 **2. federační metadata AD FS jsou veřejně přístupná.** Ověřte, že vaše federační metadata jsou veřejně přístupná, a to tak, že přejdete na následující adresu URL z počítače ve veřejném Internetu (mimo podnikovou síť):
 
-https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.XML
+https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
 
 kde `(your_FS_name)` je nahrazen název hostitele federační služby, kterou vaše organizace používá, například FS.contoso.com.  Pokud máte možnost úspěšně ověřit obě tato nastavení, nemusíte provádět žádné další kroky.  
 
@@ -141,7 +141,7 @@ Na druhé straně, pokud je **AutoCertificateRollover** nastavené na **hodnotu 
 1. Ověřte, zda jste přihlášeni k primárnímu AD FS serveru.
 2. Ověřte aktuální podpisové certifikáty v AD FS otevřením okna příkazového řádku prostředí PowerShell a spuštěním následujícího příkazu:
 
-    PS C:\>Get-ADFSCertificate – podepisování tokenů CertificateType
+    PS C: \> Get-ADFSCertificate – podepisování tokenů CertificateType
 
    > [!NOTE]
    > Pokud používáte AD FS 2,0, měli byste nejdřív spustit rutinu Add-abyste pssnapin Microsoft. ADFS. PowerShell.
@@ -149,8 +149,8 @@ Na druhé straně, pokud je **AutoCertificateRollover** nastavené na **hodnotu 
    >
 3. Podívejte se na výstup příkazu na libovolných uvedených certifikátech. Pokud AD FS vygeneroval nový certifikát, měli byste vidět dva certifikáty ve výstupu: jeden, pro který je **primární** hodnota **true** , a datum **NotAfter** spadá do 5 dnů a jedna, pro kterou je **primární** hodnota **false** , a **NotAfter** je přibližně ročně v budoucnosti.
 4. Pokud vidíte jenom jeden certifikát a datum **NotAfter** je do 5 dní, musíte vygenerovat nový certifikát.
-5. Pokud chcete vygenerovat nový certifikát, spusťte na příkazovém řádku PowerShellu následující příkaz: `PS C:\>Update-ADFSCertificate –CertificateType token-signing`.
-6. Ověřte aktualizaci tak, že znovu spustíte následující příkaz: PS C:\>Get-ADFSCertificate – CertificateType token-signing
+5. Pokud chcete vygenerovat nový certifikát, spusťte na příkazovém řádku PowerShellu následující příkaz: `PS C:\>Update-ADFSCertificate –CertificateType token-signing` .
+6. Ověřte aktualizaci tak, že znovu spustíte následující příkaz: PS C: \> Get-ADFSCertificate – CertificateType token-signing
 
 Nyní by měly být uvedeny dva certifikáty, z nichž jedna má **NotAfter** datum v budoucnosti, a pro kterou je **primární** hodnota **false**.
 
@@ -160,8 +160,8 @@ Aktualizujte Office 365 o nové podpisové certifikáty tokenů, které se mají
 1. Otevřete Modul Microsoft Azure Active Directory pro Windows PowerShell.
 2. Spusťte $cred = Get-Credential. Když tato rutina vyzve k zadání přihlašovacích údajů, zadejte přihlašovací údaje účtu správce cloudové služby.
 3. Spusťte Connect-MsolService – Credential $cred. Tato rutina vás připojí ke cloudové službě. Vytvoření kontextu, který vás připojí ke cloudové službě, je nutné před spuštěním kterékoli z dalších rutin instalovaných nástrojem.
-4. Pokud tyto příkazy spouštíte na počítači, který není AD FS primární federační server, spusťte příkaz set- &lt;MSOLAdfscontext-Computer AD FS primary server&gt;, kde &lt;AD FS primární server&gt; je vnitřní název FQDN primárního AD FS serveru. Tato rutina vytvoří kontext, který vás připojí k AD FS.
-5. Spusťte rutinu Update-MSOLFederatedDomain – &lt;domainname&gt;doména. Tato rutina aktualizuje nastavení z AD FS do cloudové služby a nakonfiguruje vztah důvěryhodnosti mezi nimi.
+4. Pokud tyto příkazy spouštíte na počítači, který není AD FS primární federační server, spusťte příkaz set-MSOLAdfscontext-Computer &lt; AD FS primary server &gt; , kde &lt; AD FS primární server &gt; je vnitřní název FQDN primárního AD FS serveru. Tato rutina vytvoří kontext, který vás připojí k AD FS.
+5. Spusťte rutinu Update-MSOLFederatedDomain – domainname &lt; Doména &gt; . Tato rutina aktualizuje nastavení z AD FS do cloudové služby a nakonfiguruje vztah důvěryhodnosti mezi nimi.
 
 > [!NOTE]
 > Pokud potřebujete podporovat více domén nejvyšší úrovně, například contoso.com a fabrikam.com, je nutné použít přepínač **SupportMultipleDomain** u všech rutin. Další informace najdete v tématu [Podpora více domén nejvyšší úrovně](how-to-connect-install-multiple-domains.md).

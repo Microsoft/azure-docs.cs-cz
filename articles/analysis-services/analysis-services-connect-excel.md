@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b5c46c8b85af59efaf611300e2ab7129b3ef3cde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 123e271ae1b83603d599b9ef0381e25b3c963def
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80411373"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361553"
 ---
 # <a name="connect-with-excel"></a>Propojení s Excelem
 
 Po vytvoření serveru a nasazení tabelárního modelu do něj mohou klienti připojit a začít prozkoumat data. 
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Účet, pomocí kterého se přihlašujete, musí patřit k roli databáze modelu s alespoň oprávněními ke čtení. Další informace najdete v tématu [Ověřování a uživatelská oprávnění](analysis-services-manage-users.md). 
 
@@ -26,9 +26,9 @@ Po vytvoření serveru a nasazení tabelárního modelu do něj mohou klienti p�
 
 Připojení k serveru v Excelu je podporované pomocí získat data v Excelu 2016 a novějším. Připojení pomocí Průvodce importem tabulky v Power Pivot není podporováno. 
 
-1. V Excelu na pásu karet **data** klikněte na **Načíst externí data** > **z jiných zdrojů** > **z Analysis Services**.
+1. V Excelu na pásu karet **data** klikněte na **Načíst externí data**  >  **z jiných zdrojů**  >  **z Analysis Services**.
 
-2. V Průvodci datovým připojením zadejte do pole **název serveru**název serveru včetně protokolu a identifikátoru URI. Například asazure://westcentralus.asazure.windows.net/advworks. Pak v části přihlašovací **údaje pro přihlášení**vyberte **použít následující uživatelské jméno a heslo**a potom zadejte uživatelské jméno organizace, například nancy@adventureworks.coma heslo.
+2. V Průvodci datovým připojením zadejte do pole **název serveru**název serveru včetně protokolu a identifikátoru URI. Například asazure://westcentralus.asazure.windows.net/advworks. Pak v části přihlašovací **údaje pro přihlášení**vyberte **použít následující uživatelské jméno a heslo**a potom zadejte uživatelské jméno organizace, například nancy@adventureworks.com a heslo.
 
     > [!IMPORTANT]
     > Pokud se přihlásíte pomocí účtu Microsoft, Live ID, Yahoo, Gmail atd. nebo se budete muset přihlásit pomocí služby Multi-Factor Authentication, ponechejte pole pro heslo prázdné. Po kliknutí na tlačítko Další se zobrazí výzva k zadání hesla. 
@@ -42,7 +42,7 @@ Připojení k serveru v Excelu je podporované pomocí získat data v Excelu 201
 
 ## <a name="see-also"></a>Viz také
 
-[Klientské knihovny](analysis-services-data-providers.md)   
+[Klientské knihovny](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current)   
 [Správa serveru](analysis-services-manage.md)     
 
 

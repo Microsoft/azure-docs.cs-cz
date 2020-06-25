@@ -5,15 +5,15 @@ author: billmath
 ms.author: billmath
 manager: davba
 ms.date: 12/02/2019
-ms.topic: article
+ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: ec12927b40096b7ff04fae6b7cbc69a7bc11e8f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a15a25ce4fbe1a43c2a5065bf88f5c40c5865721
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75549291"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85360686"
 ---
 # <a name="transformations"></a>Transformace
 
@@ -62,7 +62,7 @@ Chcete-li přidat mapování vlastního atributu, postupujte podle těchto krok�
                                 }
                             },
     ```
-1. Upravte kód tak, aby byl atribut společnosti namapován na `ExtensionAttribute3`.
+1. Upravte kód tak, aby byl atribut společnosti namapován na `ExtensionAttribute3` .
 
    ```
                                     {
@@ -98,7 +98,7 @@ Chcete-li přidat mapování vlastního atributu, postupujte podle těchto krok�
 
     ![Restartovat zřizování](media/how-to-transformation/transform3.png)
 
- 1. Po chvíli ověřte, zda jsou atributy naplněny spuštěním následujícího dotazu v aplikaci Graph Explorer: `https://graph.microsoft.com/beta/users/{Azure AD user UPN}`.
+ 1. Po chvíli ověřte, zda jsou atributy naplněny spuštěním následujícího dotazu v aplikaci Graph Explorer: `https://graph.microsoft.com/beta/users/{Azure AD user UPN}` .
  1. Nyní by se měla zobrazit hodnota.
 
     ![Hodnota se zobrazí](media/how-to-transformation/transform4.png)

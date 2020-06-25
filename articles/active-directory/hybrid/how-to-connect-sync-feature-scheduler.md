@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: 6b1a598f-89c0-4244-9b20-f4aaad5233cf
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/01/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 309adfbebd4f4b615ac1f4061823ca01f3d3ee15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4f5cf9487f6f10ce661009e5e504be51a098b7e6
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261070"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85357388"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Synchronizace Azure AD Connect: Plánovač
 Toto téma popisuje integrovaný Plánovač v Azure AD Connect Sync (synchronizační modul).
@@ -41,7 +41,7 @@ Scheduler zodpovídá za dvě úlohy:
 Samotný Plánovač je vždycky spuštěný, ale dá se nakonfigurovat tak, aby se spouštěl jenom jeden nebo žádný z těchto úkolů. Například pokud potřebujete mít vlastní proces synchronizačního cyklu, můžete tuto úlohu v Plánovači zakázat, ale úlohu údržby pořád spustit.
 
 ## <a name="scheduler-configuration"></a>Konfigurace Scheduleru
-Pokud chcete zobrazit aktuální konfigurační nastavení, přejděte do PowerShellu a `Get-ADSyncScheduler`spusťte. Zobrazuje se vám obrázek podobný tomuto:
+Pokud chcete zobrazit aktuální konfigurační nastavení, přejděte do PowerShellu a spusťte `Get-ADSyncScheduler` . Zobrazuje se vám obrázek podobný tomuto:
 
 ![GetSyncScheduler](./media/how-to-connect-sync-feature-scheduler/getsynccyclesettings2016.png)
 
@@ -58,7 +58,7 @@ Pokud se vám při spuštění této rutiny zobrazí **příkaz synchronizovat n
 * **StagingModeEnabled**. Ukazuje, zda je povolen [pracovní režim](how-to-connect-sync-staging-server.md) . Pokud je toto nastavení povoleno, potlačí se exporty na spouštění, ale stále spouštějte import a synchronizaci.
 * **SchedulerSuspended**. Během upgradu nastavte připojit k dočasnému blokování spuštění plánovače.
 
-Některá z těchto nastavení můžete změnit pomocí `Set-ADSyncScheduler`. Je možné upravit následující parametry:
+Některá z těchto nastavení můžete změnit pomocí `Set-ADSyncScheduler` . Je možné upravit následující parametry:
 
 * CustomizedSyncCycleInterval
 * NextSyncCyclePolicyType
@@ -83,11 +83,11 @@ Změny změní Plánovač tak, aby běžel denně.
 ### <a name="disable-the-scheduler"></a>Zakázat Plánovač  
 Pokud potřebujete provést změny konfigurace, budete chtít Plánovač zakázat. Například při [konfiguraci filtrování](how-to-connect-sync-configure-filtering.md) nebo [provádění změn pravidel synchronizace](how-to-connect-sync-change-the-configuration.md).
 
-Chcete-li zakázat Plánovač, `Set-ADSyncScheduler -SyncCycleEnabled $false`spusťte příkaz.
+Chcete-li zakázat Plánovač, spusťte příkaz `Set-ADSyncScheduler -SyncCycleEnabled $false` .
 
 ![Zakázat Plánovač](./media/how-to-connect-sync-feature-scheduler/schedulerdisable.png)
 
-Až provedete změny, nezapomeňte znovu povolit Plánovač s nástrojem `Set-ADSyncScheduler -SyncCycleEnabled $true`.
+Až provedete změny, nezapomeňte znovu povolit Plánovač s nástrojem `Set-ADSyncScheduler -SyncCycleEnabled $true` .
 
 ## <a name="start-the-scheduler"></a>Spustit Plánovač
 Plánovač se ve výchozím nastavení spouští každých 30 minut. V některých případech můžete chtít spustit cyklus synchronizace mezi naplánovanými cykly nebo musíte spustit jiný typ.
@@ -109,7 +109,7 @@ Cyklus rozdílového synchronizace zahrnuje následující kroky:
 
 Je možné, že máte naléhavou změnu, kterou je třeba synchronizovat okamžitě, což je důvod, proč je nutné ručně spustit cyklus. 
 
-Pokud potřebujete ručně spustit cyklus synchronizace, pak z PowerShellu spusťte `Start-ADSyncSyncCycle -PolicyType Delta`.
+Pokud potřebujete ručně spustit cyklus synchronizace, pak z PowerShellu spusťte `Start-ADSyncSyncCycle -PolicyType Delta` .
 
 Pokud chcete spustit úplný cyklus synchronizace, spusťte `Start-ADSyncSyncCycle -PolicyType Initial` z příkazového řádku PowerShellu.   
 
@@ -156,8 +156,8 @@ Pokud Plánovač aktuálně spouští cyklus synchronizace, může být nutné h
 
 Když je spuštěný cyklus synchronizace, nemůžete provádět změny konfigurace. Můžete počkat, až proces plánovače proces dokončí, ale můžete ho také zastavit, aby bylo možné provést změny hned. Zastavení aktuálního cyklu není škodlivé a probíhající změny se zpracovávají při příštím spuštění.
 
-1. Začněte tím, že zaznamenáte, že Plánovač zastaví aktuální cyklus pomocí `Stop-ADSyncSyncCycle`rutiny prostředí PowerShell.
-2. Pokud použijete sestavení před 1.1.281, pak zastavení plánovače nezastaví aktuální konektor z aktuální úlohy. Chcete-li vynutit zastavení konektoru, proveďte následující akce ![: StopAConnector](./media/how-to-connect-sync-feature-scheduler/stopaconnector.png)
+1. Začněte tím, že zaznamenáte, že Plánovač zastaví aktuální cyklus pomocí rutiny prostředí PowerShell `Stop-ADSyncSyncCycle` .
+2. Pokud použijete sestavení před 1.1.281, pak zastavení plánovače nezastaví aktuální konektor z aktuální úlohy. Chcete-li vynutit zastavení konektoru, proveďte následující akce: ![ StopAConnector](./media/how-to-connect-sync-feature-scheduler/stopaconnector.png)
    * Spusťte **synchronizační službu** z nabídky Start. Přejděte na **konektory**, zvýrazněte konektor se stavem **spuštěno**a vyberte možnost **zastavit** z akcí.
 
 Plánovač je stále aktivní a při další příležitosti se znovu spustí.
@@ -178,7 +178,7 @@ Názvy, které se mají použít pro [názvy konektorů](how-to-connect-sync-ser
 
 ![Vyvolat profil spuštění](./media/how-to-connect-sync-feature-scheduler/invokerunprofile.png)  
 
-`Invoke-ADSyncRunProfile` Rutina je synchronní, to znamená, že nevrací řízení, dokud konektor nedokončí operaci, buď úspěšně, nebo s chybou.
+`Invoke-ADSyncRunProfile`Rutina je synchronní, to znamená, že nevrací řízení, dokud konektor nedokončí operaci, buď úspěšně, nebo s chybou.
 
 Při plánování konektorů je potřeba, abyste je naplánovali v následujícím pořadí:
 
