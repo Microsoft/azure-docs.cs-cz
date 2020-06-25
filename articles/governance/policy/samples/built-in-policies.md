@@ -1,21 +1,25 @@
 ---
 title: Seznam předdefinovaných definic zásad
 description: Vypíše předdefinované definice zásad pro Azure Policy. Kategorie zahrnují značky, dodržování předpisů, Key Vault, Kubernetes, konfiguraci hostů a další.
-ms.date: 06/10/2020
+ms.date: 06/23/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 0ab717e4246112152b9a497c51d2a630bc48dfd1
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 94f69754ab51728a18da10b45e05770f1271760b
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84709434"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85313772"
 ---
 # <a name="azure-policy-built-in-policy-definitions"></a>Azure Policy předdefinované definice zásad
 
 Tato stránka je indexem Azure Policy integrovaných definic zásad.
 
 Název každého z vestavěných odkazů na definici zásady v Azure Portal. Pomocí odkazu ve **zdrojovém** sloupci zobrazíte zdroj v [úložišti Azure Policy GitHubu](https://github.com/Azure/azure-policy). Předdefinované jsou seskupené podle vlastnosti **Category** v **metadatech**. Chcete-li přejít do konkrétní **kategorie**, použijte nabídku na pravé straně stránky. V opačném případě použijte k použití funkce hledání v prohlížeči <kbd>kombinaci kláves CTRL</kbd> - <kbd>F</kbd> .
+
+## <a name="api-for-fhir"></a>API pro FHIR
+
+[!INCLUDE [azure-policy-samples-policies-api-for-fhir](../../../../includes/policy/samples/bycat/policies-api-for-fhir.md)]
 
 ## <a name="api-management"></a>API Management
 
@@ -125,7 +129,7 @@ Název každého z vestavěných odkazů na definici zásady v Azure Portal. Pom
 
 [!INCLUDE [azure-policy-samples-policies-network](../../../../includes/policy/samples/bycat/policies-network.md)]
 
-## <a name="search"></a>Search
+## <a name="search"></a>Hledat
 
 [!INCLUDE [azure-policy-samples-policies-search](../../../../includes/policy/samples/bycat/policies-search.md)]
 

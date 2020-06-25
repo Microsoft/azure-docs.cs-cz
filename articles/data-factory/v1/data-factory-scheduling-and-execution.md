@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 15a2d6ae5d8b80468ffcdd00d60b1f36843ed677
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: e0707f9a7694741f54771699f5aeb3b452b11b8c
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84707153"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85319716"
 ---
 # <a name="data-factory-scheduling-and-execution"></a>Plánování a provádění Data Factory
 > [!NOTE]
@@ -25,7 +25,7 @@ ms.locfileid: "84707153"
 Tento článek vysvětluje aspekty plánování a spouštění aplikačního modelu služby Azure Data Factory. V tomto článku se předpokládá, že rozumíte základům Data Factory konceptů aplikačního modelu, včetně aktivit, kanálů, propojených služeb a datových sad. Základní koncepty Azure Data Factory najdete v následujících článcích:
 
 * [Úvodní informace k Data Factory](data-factory-introduction.md)
-* [Pipelines](data-factory-create-pipelines.md)
+* [Kanály](data-factory-create-pipelines.md)
 * [Datové sady](data-factory-create-datasets.md) 
 
 ## <a name="start-and-end-times-of-pipeline"></a>Počáteční a koncové časy kanálu
@@ -230,10 +230,10 @@ Datová sada může mít definované zásady ověřování, které určují, jak
 
 Oddíl **Policy** v definici datové sady definuje kritéria nebo podmínku, kterou musí řezy datové sady splňovat. Následující tabulka obsahuje popis vlastností, které můžete použít v části **Policy (zásady** ):
 
-| Název zásady | Description | Použito pro | Vyžadováno | Výchozí |
+| Název zásady | Popis | Použito pro | Vyžadováno | Výchozí |
 | --- | --- | --- | --- | --- |
 | minimumSizeMB | Ověří, jestli data v **objektu blob Azure** splňují požadavky na minimální velikost (v megabajtech). |Azure Blob |No |NA |
-| minimumRows | Ověří, jestli data v **databázi SQL Azure** nebo **tabulce Azure** obsahují minimální počet řádků. |<ul><li>Azure SQL Database</li><li>Tabulka Azure</li></ul> |No |NA |
+| minimumRows | Ověří, jestli data v **Azure SQL Database** nebo **tabulce Azure** obsahují minimální počet řádků. |<ul><li>Azure SQL Database</li><li>Tabulka Azure</li></ul> |No |NA |
 
 #### <a name="examples"></a>Příklady
 **minimumSizeMB:**
@@ -266,7 +266,7 @@ Další informace o těchto vlastnostech a příkladech najdete v článku o [vy
 ## <a name="activity-policies"></a>Zásady aktivit
 Zásady ovlivňují chování aktivity za běhu, konkrétně při zpracování řezu tabulky. Podrobnosti jsou uvedeny v následující tabulce.
 
-| Vlastnost | Povolené hodnoty | Výchozí hodnota | Description |
+| Vlastnost | Povolené hodnoty | Výchozí hodnota | Popis |
 | --- | --- | --- | --- |
 | souběžnost |Integer <br/><br/>Maximální hodnota: 10 |1 |Počet souběžných spuštění aktivity.<br/><br/>Určuje počet paralelních spuštění aktivit, ke kterým může dojít v různých řezech. Například pokud aktivita potřebuje projít velkou sadou dostupných dat, větší hodnota souběžnosti zrychluje zpracování dat. |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |Určuje pořadí datových řezů, které jsou zpracovávány.<br/><br/>Například pokud máte 2 řezy (jedna se děje na 16:00 a druhý na 17:00), a obě jsou vyřízeny. Pokud nastavíte executionPriorityOrder na NewestFirst, řez se nejprve zpracuje v 5 odp. Podobně pokud nastavíte executionPriorityORder na OldestFIrst, bude zpracován řez ve 4 PM. |

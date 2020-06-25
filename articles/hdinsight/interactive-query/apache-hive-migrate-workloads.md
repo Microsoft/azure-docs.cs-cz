@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/13/2019
-ms.openlocfilehash: 003ee13220e9e8aae252e1a976d579beac870052
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 4f1154b994e512521edf22a3b8dc5819a93a5249
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84015008"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85319204"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Migrace úloh podregistru Azure HDInsight 3,6 do HDInsight 4,0
 
@@ -34,7 +34,7 @@ Jednou z výhod podregistru je schopnost exportovat metadata do externí databá
 Tabulky kyselin HDInsight 3,6 a HDInsight 4,0 rozumějí rozdíly v KYSELosti odlišně. Jediná akce požadovaná před migrací je spuštění hlavní komprimace proti každé tabulce KYSELosti v clusteru 3,6. Podrobnosti o komprimaci najdete v [příručce k jazyku pro podregistr](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-AlterTable/Partition/Compact) .
 
 ### <a name="2-copy-sql-database"></a>2. kopírování SQL Database
-Vytvořte novou kopii vašich externích metastore. Pokud používáte externí metastore, je jedním z bezpečných a snadných způsobů, jak vytvořit kopii metastore, je [obnovit databázi](../../azure-sql/database/recovery-using-backups.md#point-in-time-restore) s jiným názvem pomocí funkce SQL Database obnovení.  Další informace o připojení externích metastore ke clusteru HDInsight najdete v tématu [použití externích úložišť metadat ve službě Azure HDInsight](../hdinsight-use-external-metadata-stores.md) .
+Vytvořte novou kopii vašich externích metastore. Pokud používáte externí metastore, je jedním z bezpečných a snadných způsobů, jak vytvořit kopii metastore, je [obnovit databázi](../../azure-sql/database/recovery-using-backups.md#point-in-time-restore) s jiným názvem pomocí `RESTORE` funkce.  Další informace o připojení externích metastore ke clusteru HDInsight najdete v tématu [použití externích úložišť metadat ve službě Azure HDInsight](../hdinsight-use-external-metadata-stores.md) .
 
 ### <a name="3-upgrade-metastore-schema"></a>3. upgrade schématu metastore
 Po dokončení **kopírování** metastore spusťte skript upgradu schématu v [akci skriptu](../hdinsight-hadoop-customize-cluster-linux.md) v existujícím clusteru HDInsight 3,6 a upgradujte nový metastore na schéma pro podregistr 3. (Tento krok nevyžaduje připojení nového metastore ke clusteru.) To umožňuje připojení databáze jako HDInsight 4,0 metastore.
@@ -44,7 +44,7 @@ Použijte hodnoty v tabulce níže. Nahraďte `SQLSERVERNAME DATABASENAME USERNA
 |Vlastnost | Hodnota |
 |---|---|
 |Typ skriptu|– Vlastní|
-|Name|Upgrade podregistru|
+|Název|Upgrade podregistru|
 |Identifikátor URI skriptu bash|`https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh`|
 |Typ (typy) uzlů|Head|
 |Parametry|SQLSERVER HESLO K UŽIVATELSKÉMU JMÉNU \ DATABASENAME|
@@ -217,7 +217,7 @@ V HDInsight 3,6 je klient grafického uživatelského rozhraní pro interakci se
 |Vlastnost | Hodnota |
 |---|---|
 |Typ skriptu|– Vlastní|
-|Name|DAS|
+|Název|DAS|
 |Identifikátor URI skriptu bash|`https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh`|
 |Typ (typy) uzlů|Head|
 

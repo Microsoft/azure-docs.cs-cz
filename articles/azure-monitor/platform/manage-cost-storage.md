@@ -11,17 +11,17 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/16/2020
+ms.date: 06/19/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: c6358411572de6049a3362cc0e8e26b9cbc82d43
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.openlocfilehash: 4f7be81c3593e35dfbbcf3a5671726da70ae0c7e
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84906847"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85319665"
 ---
-# <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Správa využití a nákladů pomocí protokolů Azure Monitor
+# <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Správa využití a nákladů pomocí protokolů Azure Monitor    
 
 > [!NOTE]
 > Tento článek popisuje, jak pochopit a řídit náklady na protokoly Azure Monitor. Související článek, [sledování využití a odhadované náklady](https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs) popisuje, jak zobrazit využití a odhadované náklady napříč více funkcemi monitorování Azure pro různé cenové modely. Všechny ceny a náklady uvedené v tomto článku jsou třeba jenom pro účely. 
@@ -32,7 +32,7 @@ V tomto článku si projdeme, jak můžete aktivně monitorovat monitorovaný ob
 
 ## <a name="pricing-model"></a>Cenový model
 
-Výchozí ceny pro Log Analytics jsou Model průběžných **plateb** na základě ingestování objemu dat a volitelně i pro delší dobu uchovávání dat. Objem dat se měří jako velikost dat, která se budou ukládat. Každý Log Analytics pracovní prostor se účtuje jako samostatná služba a přispívá vám k fakturaci za vaše předplatné Azure. Množství příjmu dat může být značná v závislosti na následujících faktorech: 
+Výchozí ceny pro Log Analytics jsou Model průběžných **plateb** na základě ingestování objemu dat a volitelně i pro delší dobu uchovávání dat. Objem dat se měří jako velikost dat, která se uloží v GB (10 ^ 9 bajtů). Každý Log Analytics pracovní prostor se účtuje jako samostatná služba a přispívá vám k fakturaci za vaše předplatné Azure. Množství příjmu dat může být značná v závislosti na následujících faktorech: 
 
   - Počet povolených řešení pro správu a jejich konfiguraci
   - Počet monitorovaných virtuálních počítačů
@@ -40,7 +40,7 @@ Výchozí ceny pro Log Analytics jsou Model průběžných **plateb** na základ
   
 Kromě modelu průběžných plateb Log Analytics má vrstvy **rezervace kapacity** , které vám umožní ve srovnání s průběžnými platbami ušetřit až 25%. Cena za rezervaci kapacity vám umožní koupit rezervaci od 100 GB za den. Veškeré využití nad úrovní rezervace se bude účtovat podle tarifu průběžných plateb. Úrovně rezervace kapacity mají 31 dnů v období závazku. Během období závazku můžete přejít na úroveň rezervace kapacity vyšší úrovně (která bude restartovala 31. období závazku), ale nemůžete přejít zpět na průběžné platby nebo na nižší úroveň rezervace kapacity až po dokončení období závazku. Faktura za úrovně rezervace kapacity se provádí každý den. [Přečtěte si další informace](https://azure.microsoft.com/pricing/details/monitor/) o cenách Log Analytics s průběžnými platbami a rezervací kapacity. 
 
-U všech cenových úrovní je velikost dat události počítána z řetězcové reprezentace vlastností, které jsou uloženy v Log Analytics pro tuto událost, bez ohledu na to, zda jsou data odesílána z agenta nebo přidána během procesu příjmu. To zahrnuje všechna [vlastní pole](https://docs.microsoft.com/azure/azure-monitor/platform/custom-fields) , která jsou přidána, když jsou shromažďována data a uložena v Log Analytics. Při výpočtu velikosti události jsou vyloučeny některé vlastnosti společné pro všechny typy dat, včetně některých [log Analyticsch standardních vlastností](https://docs.microsoft.com/azure/azure-monitor/platform/log-standard-properties). To zahrnuje `_ResourceId` , `_ItemId` , `_IsBillable` `_BilledSize` a `Type` . Všechny ostatní vlastnosti uložené v Log Analytics jsou zahrnuté do výpočtu velikosti události. Některé datové typy jsou zcela bezplatné poplatky za příjem dat, například AzureActivity, prezenční signál a typy využití. Chcete-li zjistit, zda byla událost vyloučena z fakturace pro příjem dat, můžete použít `_IsBillable` vlastnost, jak je uvedeno [níže](#data-volume-for-specific-events).
+U všech cenových úrovní je velikost dat události počítána z řetězcové reprezentace vlastností, které jsou uloženy v Log Analytics pro tuto událost, bez ohledu na to, zda jsou data odesílána z agenta nebo přidána během procesu příjmu. To zahrnuje všechna [vlastní pole](https://docs.microsoft.com/azure/azure-monitor/platform/custom-fields) , která jsou přidána, když jsou shromažďována data a uložena v Log Analytics. Při výpočtu velikosti události jsou vyloučeny některé vlastnosti společné pro všechny typy dat, včetně některých [log Analyticsch standardních vlastností](https://docs.microsoft.com/azure/azure-monitor/platform/log-standard-properties). To zahrnuje `_ResourceId` , `_ItemId` , `_IsBillable` `_BilledSize` a `Type` . Všechny ostatní vlastnosti uložené v Log Analytics jsou zahrnuté do výpočtu velikosti události. Některé datové typy jsou zcela bezplatné poplatky za příjem dat, například AzureActivity, prezenční signál a typy využití. Chcete-li zjistit, zda byla událost vyloučena z fakturace pro příjem dat, můžete použít `_IsBillable` vlastnost, jak je uvedeno [níže](#data-volume-for-specific-events). Použití je hlášeno v GB (1,0 E9 bajtů). 
 
 Všimněte si také, že některá řešení, jako je [Azure Security Center](https://azure.microsoft.com/pricing/details/security-center/), [Správa konfigurace a konfigurace](https://azure.microsoft.com/pricing/details/automation/) [Azure](https://azure.microsoft.com/pricing/details/azure-sentinel/) , mají své vlastní cenové modely. 
 
@@ -196,7 +196,7 @@ Každý pracovní prostor má denní limit, který se aplikuje na jinou hodinu d
 Brzy po dosažení denního limitu se kolekce fakturovatelných datových typů zastaví pro zbytek dne. (Latence vyplývající z použití denního limitu znamená, že se limit nepoužívá přesně na určenou denní úroveň limitu.) V horní části stránky se zobrazí banner s upozorněním pro vybraný Log Analytics pracovní prostor a událost operace se odešle do tabulky *Operation* v kategorii **LogManagement** . Shromažďování dat se obnoví po uplynutí doby obnovení definované v rámci *denního limitu*. Doporučujeme definovat pravidlo výstrahy na základě této události operace, která je nakonfigurována tak, aby po dosažení denního limitu dat upozornila na oznámení. 
 
 > [!WARNING]
-> Denní limit nezastaví shromažďování dat z Azure Security Center, s výjimkou pracovních prostorů, ve kterých Azure Security Center byl nainstalován před 19. června 2017. 
+> Denní limit nezastaví shromažďování dat z Azure Sentinal ani Azure Security Center, s výjimkou pracovních prostorů, ve kterých Azure Security Center byl nainstalován před 19. června 2017. 
 
 ### <a name="identify-what-daily-data-limit-to-define"></a>Určete, který denní limit dat se má definovat.
 

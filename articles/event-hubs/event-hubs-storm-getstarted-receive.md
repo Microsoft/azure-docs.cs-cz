@@ -1,26 +1,14 @@
 ---
 title: 'Rychlý Start: příjem událostí pomocí Apache Storm – Azure Event Hubs'
 description: 'Rychlý Start: Tento článek poskytuje informace o tom, jak přijímat události z Azure Event Hubs pomocí Apache Storm.'
-services: event-hubs
-documentationcenter: ''
-author: ShubhaVijayasarathy
-manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: event-hubs
-ms.workload: na
-ms.tgt_pltfrm: java
-ms.devlang: multiple
 ms.topic: quickstart
-ms.custom: seodec18
-ms.date: 11/05/2019
-ms.author: shvija
-ms.openlocfilehash: 90293da07d3a7ef1c32e5f82d35198d4ffa536b1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/23/2020
+ms.openlocfilehash: 05973a9a930cd7b42a5a00554c48832065c794ec
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73717603"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85315362"
 ---
 # <a name="quickstart-receive-events-from-event-hubs-using-apache-storm"></a>Rychlý Start: příjem událostí z Event Hubs pomocí Apache Storm
 
@@ -48,7 +36,7 @@ Tento kurz používá instalaci [HDInsight][HDInsight Storm] , která je součá
 5. Vyberte **použít výchozí umístění pracovního prostoru**a pak klikněte na **Další** .
 6. Vyberte **Maven-Archetype – rychlý Start** Archetype a potom klikněte na **Další** .
 7. Vložte ID **skupiny** a **ArtifactId**a potom klikněte na **Dokončit** .
-8. V **pom. XML**přidejte do `<dependency>` uzlu následující závislosti.
+8. V **pom.xml**přidejte do uzlu následující závislosti `<dependency>` .
 
     ```xml  
     <dependency>
@@ -80,7 +68,7 @@ Tento kurz používá instalaci [HDInsight][HDInsight Storm] , která je součá
     </dependency>
     ```
 
-9. Ve složce **Src** vytvořte soubor s názvem **config. Properties** a zkopírujte následující obsah `receive rule key` a nahraďte hodnoty a: `event hub name`
+9. Ve složce **Src** vytvořte soubor s názvem **config. Properties** a zkopírujte následující obsah a nahraďte `receive rule key` `event hub name` hodnoty a:
 
     ```java
     eventhubspout.username = ReceiveRule

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 390cddf557905e95e313896f9f172e30b81352b9
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 5d83f05c16004edc3ad4842b7e4e9d4b9babe577
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195930"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85319063"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Řešení potíží při použití Brány pro správu dat
 Tento článek poskytuje informace o řešení potíží s používáním Správa dat brány.
@@ -224,7 +224,7 @@ K tomu může dojít z různých důvodů a zmírnění omezení se podle potře
 #### <a name="resolution"></a>Řešení
 Před připojením k databázi SQL povolte odchozí připojení TCP přes port TCP/1433 na straně klienta Správa dat brány.
 
-Pokud je cílovou databází Azure SQL Database, ověřte také SQL Server nastavení brány firewall pro Azure.
+Pokud je cílová databáze v Azure SQL Database, ověřte také SQL Server nastavení brány firewall pro Azure.
 
 Pokud chcete otestovat připojení k místnímu úložišti dat, přečtěte si následující část.
 

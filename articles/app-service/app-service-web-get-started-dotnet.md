@@ -77,7 +77,7 @@ Při vytváření App Service a publikování webové aplikace postupujte podle 
 
 1. V dialogovém okně **plán hostování: vytvořit nové** zadejte hodnoty uvedené v následující tabulce:
 
-   | Nastavení  | Navrhovaná hodnota | Description |
+   | Nastavení  | Navrhovaná hodnota | Popis |
    | -------- | --------------- | ----------- |
    | **Plán hostování**  | *myFirstAzureWebAppPlan* | Název plánu služby App Service. |
    | **Umístění**      | *Západní Evropa* | Datacentrum, které je hostitelem webové aplikace. |

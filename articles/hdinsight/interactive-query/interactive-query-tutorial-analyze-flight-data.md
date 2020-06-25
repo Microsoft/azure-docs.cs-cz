@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: operace ETL s interaktivním dotazem – Azure HDInsight'
-description: Kurz – Zjistěte, jak extrahovat data z nezpracované sady dat CSV. Transformuje ho pomocí interaktivního dotazu na HDInsight. Pak načtěte transformovaná data do služby Azure SQL Database pomocí Apache Sqoop.
+description: Kurz – Zjistěte, jak extrahovat data z nezpracované sady dat CSV. Transformuje ho pomocí interaktivního dotazu na HDInsight. Pak načtěte transformovaná data do Azure SQL Database pomocí Apache Sqoop.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
 ms.date: 07/02/2019
-ms.openlocfilehash: 431cd5efbb1087d99fc8521cec7a5c604856dac5
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 5c5a3c9e66a4d25a84d7940f49ec332d57f4c818
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021734"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85319187"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>Kurz: extrakce, transformace a načtení dat pomocí interaktivního dotazu ve službě Azure HDInsight
 
-V tomto kurzu stáhnete nezpracovaný datový soubor CSV s veřejně dostupnými letovými daty. Naimportujte ho do úložiště clusteru HDInsight a pak data Transformujte pomocí interaktivního dotazu ve službě Azure HDInsight. Data se po transformaci načítají do Azure SQL Database pomocí [Apache Sqoop](https://sqoop.apache.org/).
+V tomto kurzu stáhnete nezpracovaný datový soubor CSV s veřejně dostupnými letovými daty. Naimportujte ho do úložiště clusteru HDInsight a pak data Transformujte pomocí interaktivního dotazu ve službě Azure HDInsight. Po transformaci dat načtěte tato data do databáze v Azure SQL Database pomocí [Apache Sqoop](https://sqoop.apache.org/).
 
 Tento kurz se zabývá následujícími úkony:
 
@@ -25,14 +25,14 @@ Tento kurz se zabývá následujícími úkony:
 > * Stažení ukázkových údajů o letech
 > * Nahrání dat do clusteru HDInsight
 > * Transformace dat pomocí interaktivního dotazu
-> * Vytvoření tabulky ve službě Azure SQL Database
-> * Použití Sqoop k exportu dat do Azure SQL Database
+> * Vytvoření tabulky v databázi v Azure SQL Database
+> * Export dat do databáze v Azure SQL Database pomocí Sqoop
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Interaktivní cluster dotazů v HDInsight. Přečtěte si téma [vytvoření Apache Hadoop clusterů pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) a výběr **interaktivního dotazu** pro **typ clusteru**.
 
-* Azure SQL Database. Databázi Azure SQL použijete jako cílové úložiště dat. Pokud databázi SQL nemáte, přečtěte si téma [Vytvoření databáze Azure SQL na webu Azure Portal](/azure/sql-database/sql-database-single-database-get-started).
+* Databáze v Azure SQL Database. Tuto databázi použijete jako cílové úložiště dat. Pokud nemáte databázi v Azure SQL Database, přečtěte si téma [Vytvoření databáze v Azure SQL Database v Azure Portal](/azure/sql-database/sql-database-single-database-get-started).
 
 * Klient SSH. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -46,7 +46,7 @@ Tento kurz se zabývá následujícími úkony:
    | --- | --- |
    | Filter Year (Filtr roku) |2019 |
    | Filter Period (Filtr období) |January (Leden) |
-   | Pole |`Year, FlightDate, Reporting_Airline, DOT_ID_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, Origin, OriginCityName, OriginState, DestAirportID, Dest, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay`. |
+   | Fields (Pole) |`Year, FlightDate, Reporting_Airline, DOT_ID_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, Origin, OriginCityName, OriginState, DestAirportID, Dest, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay`. |
 
 3. Vyberte **Download** (Stáhnout). Získáte soubor .zip s vybranými datovými poli.
 
@@ -252,7 +252,7 @@ Existuje mnoho způsobů, jak se připojit ke službě SQL Database a vytvořit 
 
 ## <a name="export-data-to-sql-database-using-apache-sqoop"></a>Export dat do SQL Database s využitím Apache Sqoop
 
-V předchozích částech jste zkopírovali transformovaná data do umístění `/tutorials/flightdelays/output`. V této části použijete Sqoop k exportu dat z `/tutorials/flightdelays/output` do tabulky, kterou jste vytvořili v databázi Azure SQL.
+V předchozích částech jste zkopírovali transformovaná data do umístění `/tutorials/flightdelays/output`. V této části použijete Sqoop k exportu dat z `/tutorials/flightdelays/output` do tabulky, kterou jste vytvořili v Azure SQL Database.
 
 1. Zadáním následujícího příkazu ověřte, že Sqoop může zobrazit vaši databázi SQL:
 

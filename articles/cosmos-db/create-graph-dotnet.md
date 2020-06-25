@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 02/21/2020
 ms.author: lbosq
-ms.openlocfilehash: bf453587b354b5db3f3ef1a80f974bcb8f8f4e14
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a85df3e437f2c1ec93996cdaacfccadeaa47cc99
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81730018"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118249"
 ---
 # <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>Rychlý Start: vytvoření .NET Framework nebo základní aplikace pomocí účtu rozhraní API Azure Cosmos DB Gremlin
 
@@ -95,7 +95,7 @@ Všechny následující fragmenty kódu pocházejí ze souboru Program.cs.
 
    :::code language="csharp" source="~/azure-cosmosdb-graph-dotnet/GremlinNetSample/Program.cs" id="defineClientandServerObjects":::
 
-* Spusťte každý dotaz Gremlin pomocí `GremlinClient` objektu s asynchronní úlohou. Můžete číst dotazy Gremlin ze slovníku definovaného v předchozím kroku a provést je. Později Získejte výsledek a přečtěte si hodnoty, které jsou formátovány jako slovník, pomocí `JsonSerializer` třídy z balíčku Newtonsoft. JSON:
+* Spusťte každý dotaz Gremlin pomocí `GremlinClient` objektu s asynchronní úlohou. Můžete číst dotazy Gremlin ze slovníku definovaného v předchozím kroku a provést je. Později Získejte výsledek a přečtěte si hodnoty, které jsou formátovány jako slovník, pomocí `JsonSerializer` třídy z Newtonsoft.Jsv balíčku:
 
    :::code language="csharp" source="~/azure-cosmosdb-graph-dotnet/GremlinNetSample/Program.cs" id="executeQueries":::
 
@@ -109,9 +109,9 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
 
    **Koncový bod Gremlin** – Tato hodnota se použije, když se k účtu databáze grafů připojíte s využitím knihovny Gremlin.Net.
 
-    ![Kopírování koncového bodu](./media/create-graph-dotnet/endpoint.png)
+    :::image type="content" source="./media/create-graph-dotnet/endpoint.png" alt-text="Kopírování koncového bodu":::
 
-   Pokud chcete tuto ukázku spustit, zkopírujte hodnotu **Gremlin koncového bodu** , odstraňte číslo portu na konci, což znamená, že se `https://<your cosmos db account name>.gremlin.cosmosdb.azure.com`identifikátor URI naplní. Hodnota koncového bodu by měla vypadat nějak takto.`testgraphacct.gremlin.cosmosdb.azure.com`
+   Pokud chcete tuto ukázku spustit, zkopírujte hodnotu **Gremlin koncového bodu** , odstraňte číslo portu na konci, což znamená, že se identifikátor URI naplní `https://<your cosmos db account name>.gremlin.cosmosdb.azure.com` . Hodnota koncového bodu by měla vypadat nějak takto.`testgraphacct.gremlin.cosmosdb.azure.com`
 
 1. Potom přejděte na kartu **klíče** a zkopírujte hodnotu **primárního klíče** z Azure Portal. 
 
@@ -146,7 +146,7 @@ Teď se můžete vrátit do Průzkumníku dat na webu Azure Portal, procházet n
 
     Graf můžete přiblížit nebo oddálit, můžete rozšířit prostor pro zobrazení grafu, přidat další vrcholy a přesouvat vrcholy na zobrazovací ploše.
 
-    ![Zobrazení grafu v Průzkumníku dat na webu Azure Portal](./media/create-graph-dotnet/graph-explorer.png)
+    :::image type="content" source="./media/create-graph-dotnet/graph-explorer.png" alt-text="Zobrazení grafu v Průzkumníku dat na webu Azure Portal":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>Ověření smluv SLA na webu Azure Portal
 

@@ -1,22 +1,14 @@
 ---
 title: Pravidla brány firewall pro Azure Event Hubs | Microsoft Docs
 description: Pomocí pravidel brány firewall povolte připojení z konkrétních IP adres do Azure Event Hubs.
-services: event-hubs
-documentationcenter: ''
-author: spelluru
-manager: timlt
-ms.service: event-hubs
-ms.devlang: na
-ms.custom: seodec18
 ms.topic: article
-ms.date: 12/20/2019
-ms.author: spelluru
-ms.openlocfilehash: 2d67ad70ccdf4ce1f88401806700f38bd1d3c11d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 06/23/2020
+ms.openlocfilehash: fb9fa72af7127224afdcf70ecca1c851e9212c4d
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655883"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85320418"
 ---
 # <a name="configure-ip-firewall-rules-for-an-azure-event-hubs-namespace"></a>Konfigurace pravidel brány firewall protokolu IP pro Azure Event Hubs obor názvů
 Ve výchozím nastavení jsou Event Hubs obory názvů přístupné z Internetu, pokud požadavek přichází s platným ověřováním a autorizací. Pomocí brány firewall protokolu IP je můžete omezit na více než jenom na sadu IPv4 adres nebo rozsahů IPv4 adres v [CIDR (směrování mezi doménami bez třídy)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .

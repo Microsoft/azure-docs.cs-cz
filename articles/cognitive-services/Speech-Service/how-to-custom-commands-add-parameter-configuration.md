@@ -43,7 +43,7 @@ Pokud to chcete provést, Začněte přidáním nového webového koncového bod
 
 | Nastavení | Navrhovaná hodnota |
 |----|----|
-| Name | `getDevices` |
+| Název | `getDevices` |
 | URL | `https://aka.ms/speech/cc-sampledevices` |
 | Metoda | GET |
 

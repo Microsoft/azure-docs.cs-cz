@@ -1,20 +1,14 @@
 ---
 title: Události Azure Event Hubs-Exchange pomocí různých protokolů
 description: V tomto článku se dozvíte, jak můžou zákazníci a výrobci, kteří používají různé protokoly (AMQP, Apache Kafka a HTTPS), vyměňovat události při použití Azure Event Hubs.
-services: event-hubs
-documentationcenter: ''
-author: spelluru
-ms.service: event-hubs
 ms.topic: article
 ms.date: 06/23/2020
-ms.author: spelluru
-ms.reviewer: shvija
-ms.openlocfilehash: 7ebcf1fc838fbe6b1c70b1fe422f40de3c47e752
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: ec3122dcf151fe3e7b7b9578725e810ddca22bdf
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/24/2020
-ms.locfileid: "85296436"
+ms.locfileid: "85320600"
 ---
 # <a name="exchange-events-between-consumers-and-producers-that-use-different-protocols-amqp-kafka-and-https"></a>Výměna událostí mezi spotřebiteli a producenty, kteří používají různé protokoly: AMQP, Kafka a HTTPS
 Azure Event Hubs podporuje tři protokoly pro příjemce a výrobce: AMQP, Kafka a HTTPS. Každý z těchto protokolů má svůj vlastní způsob, jak vyjádřit zprávu, a to přirozeně na následující otázku: Pokud aplikace odesílá události do centra událostí s jedním protokolem a spotřebovává je s jiným protokolem, co jednotlivé části a hodnoty události vypadají, jako když dorazí na příjemce? Tento článek popisuje osvědčené postupy pro producenta i příjemce, aby bylo zajištěno, že hodnoty v rámci události jsou správně interpretovány náročnými aplikacemi.

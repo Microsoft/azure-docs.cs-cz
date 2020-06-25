@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87da588806908566bd1980da4c3120c0d4537b4a
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 89e1868d8e9a346d5a791c9fa8ae7682ca2b6807
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84673135"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84905132"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Co je přístup uživatelů typu host při spolupráci B2B v Azure Active Directory?
 
@@ -99,9 +99,11 @@ Azure AD podporuje externí zprostředkovatele identity, jako je Facebook, účt
 ## <a name="create-a-self-service-sign-up-user-flow-preview"></a>Vytvoření samoobslužného uživatelského toku pro registraci (Preview)
 
 Pomocí samoobslužného uživatelského toku registrace můžete vytvořit prostředí pro registraci externích uživatelů, kteří chtějí přistupovat k aplikacím. V rámci toku registrace můžete poskytnout možnosti pro různé poskytovatele identity v sociálních sítích nebo podnikových organizacích a shromažďovat informace o uživateli. Přečtěte si o [samoobslužném přihlášení a způsobu jeho nastavení](self-service-sign-up-overview.md).
-<!-- You can also use [API connectors](api-connectors-overview.md) to integrate your user flows with external systems, for example user approval systems, user input validation systems, or custom business logic. -->
+
+[Konektory rozhraní API](api-connectors-overview.md) můžete použít také k integraci uživatelských toků samoobslužné registrace k externím cloudovým systémům. Můžete se spojit s vlastními pracovními postupy schvalování, provádět ověřování identity, ověřovat informace poskytované uživateli a další.
 
 ![Snímek obrazovky zobrazující stránku toků uživatelů](media/what-is-b2b/self-service-sign-up-user-flow-overview.png)
+<!--TODO: Add screenshot with API connectors -->
 
 ## <a name="next-steps"></a>Další kroky
 

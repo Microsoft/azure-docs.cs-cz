@@ -1,19 +1,14 @@
 ---
 title: Posílání a přijímání událostí z Azure Event Hubs pomocí JavaScriptu (nejnovější)
 description: Tento článek poskytuje návod pro vytvoření aplikace JavaScriptu, která odesílá a přijímá události z Azure Event Hubs pomocí nejnovějšího balíčku Azure/Event-hub verze 5.
-services: event-hubs
-author: spelluru
-ms.service: event-hubs
-ms.workload: core
 ms.topic: quickstart
-ms.date: 01/30/2020
-ms.author: spelluru
-ms.openlocfilehash: 71c50e8efdf26f2a7d3f270a774b08e49c92faa7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/23/2020
+ms.openlocfilehash: ad9a78aa48ee0d4c01e2748b8b52192e259add7b
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82159416"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85312928"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-javascript--azureevent-hubs-version-5"></a>Odesílání událostí do a příjem událostí z Center událostí pomocí JavaScriptu (Azure/Event-hub verze 5)
 V tomto rychlém startu se dozvíte, jak odesílat události do centra událostí a přijímat z něj události pomocí balíčku **Azure/Event-hub verze 5** JavaScriptu. 
@@ -27,7 +22,7 @@ Pokud s Azure Event Hubs teprve začínáte, přečtěte si téma [přehled Even
 K dokončení tohoto rychlého startu potřebujete následující požadavky:
 
 - **Microsoft Azure předplatné**. Pokud chcete používat služby Azure, včetně Azure Event Hubs, potřebujete předplatné.  Pokud nemáte existující účet Azure, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/free/) nebo využít výhody pro předplatitele MSDN při [vytváření účtu](https://azure.microsoft.com).
-- Node. js verze 8. x nebo novější. Stáhněte si nejnovější [verzi LTS (Long-Term support)](https://nodejs.org).  
+- Node.js verze 8. x nebo novější. Stáhněte si nejnovější [verzi LTS (Long-Term support)](https://nodejs.org).  
 - Visual Studio Code (doporučeno) nebo jakékoli jiné integrované vývojové prostředí (IDE).  
 - Aktivní Event Hubs obor názvů a centrum událostí. Pokud je chcete vytvořit, proveďte následující kroky: 
 
@@ -61,7 +56,7 @@ npm install @azure/eventhubs-checkpointstore-blob
 V této části vytvoříte aplikaci JavaScriptu, která odesílá události do centra událostí.
 
 1. Otevřete oblíbený editor, například [Visual Studio Code](https://code.visualstudio.com).
-1. Vytvořte soubor s názvem *Send. js*a vložte do něj následující kód:
+1. Vytvořte soubor s názvem *send.js*a vložte do něj následující kód:
 
     ```javascript
     const { EventHubProducerClient } = require("@azure/event-hubs");
@@ -102,9 +97,9 @@ V této části vytvoříte aplikaci JavaScriptu, která odesílá události do 
     [![Ověřte, že centrum událostí přijalo zprávy.](./media/getstarted-dotnet-standard-send-v2/verify-messages-portal.png)](./media/getstarted-dotnet-standard-send-v2/verify-messages-portal.png#lightbox)
 
     > [!NOTE]
-    > Úplný zdrojový kód, včetně dalších informativních komentářů, najdete na [stránce GitHub sendEvents. js](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/samples/javascript/sendEvents.js).
+    > Úplný zdrojový kód včetně dalších informativních komentářů najdete na [stránce sendEvents.js GitHubu](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/samples/javascript/sendEvents.js).
 
-Blahopřejeme! Nyní jste odeslali události do centra událostí.
+Gratulujeme! Nyní jste odeslali události do centra událostí.
 
 
 ## <a name="receive-events"></a>Příjem událostí
@@ -126,7 +121,7 @@ Nezapomeňte si poznamenejte připojovací řetězec a název kontejneru pro poz
 ### <a name="write-code-to-receive-events"></a>Psaní kódu pro příjem událostí
 
 1. Otevřete oblíbený editor, například [Visual Studio Code](https://code.visualstudio.com).
-1. Vytvořte soubor s názvem *Receive. js*a vložte do něj následující kód:
+1. Vytvořte soubor s názvem *receive.js*a vložte do něj následující kód:
 
     ```javascript
     const { EventHubConsumerClient } = require("@azure/event-hubs");
@@ -185,9 +180,9 @@ Nezapomeňte si poznamenejte připojovací řetězec a název kontejneru pro poz
 1. Spusťte `node receive.js` příkaz na příkazovém řádku, aby se tento soubor spustil. V okně by se měly zobrazovat zprávy o přijatých událostech.
 
     > [!NOTE]
-    > Úplný zdrojový kód, včetně dalších informativních komentářů, najdete na [stránce GitHub receiveEventsUsingCheckpointStore. js](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsUsingCheckpointStore.js).
+    > Úplný zdrojový kód včetně dalších informativních komentářů najdete na [stránce receiveEventsUsingCheckpointStore.js GitHubu](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsUsingCheckpointStore.js).
 
-Blahopřejeme! Nyní jste dostali události z centra událostí. Program přijímače dostane události ze všech oddílů výchozí skupiny příjemců v centru událostí.
+Gratulujeme! Nyní jste dostali události z centra událostí. Program přijímače dostane události ze všech oddílů výchozí skupiny příjemců v centru událostí.
 
 ## <a name="next-steps"></a>Další kroky
 Podívejte se na tyto ukázky na GitHubu:

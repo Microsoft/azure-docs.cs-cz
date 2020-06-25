@@ -7,12 +7,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: twooley
-ms.openlocfilehash: 154f8f1923874a3221597f1c0017fe99b5d31844
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d240a212f898c917fd9c55b837210191eab704e5
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84015926"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85319560"
 ---
 # <a name="copy-data-between-data-lake-storage-gen1-and-azure-sql-database-using-sqoop"></a>Kopírování dat mezi Data Lake Storage Gen1 a Azure SQL Database pomocí Sqoop
 
@@ -22,20 +22,20 @@ Naučte se používat Apache Sqoop k importu a exportu dat mezi Azure SQL Databa
 
 Aplikace pro velké objemy dat jsou přirozenou volbou pro zpracování nestrukturovaných a částečně strukturovaných dat, jako jsou protokoly a soubory. Je ale možné, že budete potřebovat zpracovat strukturovaná data uložená v relačních databázích.
 
-[Apache Sqoop](https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html) je nástroj určený k přenosu dat mezi relačními databázemi a úložištěm s velkými objemy dat, jako je například Data Lake Storage Gen1. Můžete ji použít k importu dat ze systému pro správu relačních databází (RDBMS), jako je například Azure SQL Database do Data Lake Storage Gen1. Data pak můžete transformovat a analyzovat pomocí úloh s velkými objemy dat a pak je exportovat zpátky do RDBMS. V tomto článku použijete jako relační databázi Azure SQL Database k importu/exportu z.
+[Apache Sqoop](https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html) je nástroj určený k přenosu dat mezi relačními databázemi a úložištěm s velkými objemy dat, jako je například Data Lake Storage Gen1. Můžete ji použít k importu dat ze systému pro správu relačních databází (RDBMS), jako je například Azure SQL Database do Data Lake Storage Gen1. Data pak můžete transformovat a analyzovat pomocí úloh s velkými objemy dat a pak je exportovat zpátky do RDBMS. V tomto článku použijete pro import/export do relační databáze databázi v Azure SQL Database.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Než začnete, musíte mít následující:
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 * **Účet Azure Data Lake Storage Gen1**. Pokyny k vytvoření účtu najdete v tématu Začínáme [s Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md) .
 * **Cluster Azure HDInsight** s přístupem k účtu Data Lake Storage Gen1. Další informace najdete v tématu [Vytvoření clusteru HDInsight s Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md). V tomto článku se předpokládá, že máte cluster HDInsight Linux s přístupem Data Lake Storage Gen1.
-* **Azure SQL Database**. Pokyny k jeho vytvoření najdete v tématu [Vytvoření databáze SQL Azure](../sql-database/sql-database-get-started.md) .
+* **Azure SQL Database**. Pokyny k vytvoření databáze v Azure SQL Database najdete v tématu [Vytvoření databáze v Azure SQL Database](../sql-database/sql-database-get-started.md)
 
-## <a name="create-sample-tables-in-the-azure-sql-database"></a>Vytvoření ukázkových tabulek ve službě Azure SQL Database
+## <a name="create-sample-tables-in-the-database"></a>Vytvoření ukázkových tabulek v databázi
 
-1. Začněte tím, že vytvoříte dvě ukázkové tabulky ve službě Azure SQL Database. Pomocí [SQL Server Management Studio](../azure-sql/database/connect-query-ssms.md) nebo sady Visual Studio se připojte k databázi a spusťte následující dotazy.
+1. Začněte vytvořením dvou vzorových tabulek v databázi. Pomocí [SQL Server Management Studio](../azure-sql/database/connect-query-ssms.md) nebo sady Visual Studio se připojte k databázi a spusťte následující dotazy.
 
     **Vytvořit Tabulka1**
 
@@ -87,7 +87,7 @@ Pro An HDInsight cluster již jsou k dispozici balíčky Sqoop. Pokud jste nakon
 
        sqoop-import --connect "jdbc:sqlserver://<sql-database-server-name>.database.windows.net:1433;username=<username>@<sql-database-server-name>;password=<password>;database=<sql-database-name>" --table Table1 --target-dir adl://<data-lake-storage-gen1-name>.azuredatalakestore.net/Sqoop/SqoopImportTable1
 
-   Zástupný symbol **SQL-Database-Server-Name** představuje název serveru, na kterém běží databáze SQL Azure. zástupný symbol **SQL-Database-Name** představuje skutečný název databáze.
+   Zástupný symbol **SQL-Database-Server-Name** představuje název serveru, na kterém je databáze spuštěná. zástupný symbol **SQL-Database-Name** představuje skutečný název databáze.
 
    Třeba
 

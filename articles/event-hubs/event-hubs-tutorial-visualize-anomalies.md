@@ -1,20 +1,14 @@
 ---
 title: Azure Event Hubs – vizualizace anomálií dat v událostech v reálném čase
 description: 'Kurz: vizualizace anomálií dat v reálném čase odeslaných do Microsoft Azure Event Hubs'
-services: event-hubs
-author: ShubhaVijayasarathy
-manager: timlt
-ms.author: shvija
 ms.topic: tutorial
-ms.service: event-hubs
-ms.custom: seodec18
-ms.date: 01/15/2020
-ms.openlocfilehash: f71d8e9f88dad32818ed25d4a0719a1528656f96
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/23/2020
+ms.openlocfilehash: 595c0e06750171c844249a77ecef16c84dc8ada5
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77163173"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85315607"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Kurz: Vizualizace datových anomálií v událostech v reálném čase odesílaných do služby Azure Event Hubs
 
@@ -159,8 +153,8 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 Event Hubs [ukázky na GitHubu](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet) obsahují aplikaci pro detekci anomálií, která vytváří testovací data za vás. Simuluje používání platebních karet tím, že do centra událostí zapisuje transakce provedené platebními kartami. Zároveň občas pro jednu platební kartu zapíše několik transakcí v několika oblastech, aby se označily jako anomálie. Pokud chcete tuto aplikaci spustit, postupujte následovně: 
 
 1. Z GitHubu si stáhněte [ukázky pro službu Azure Event Hubs](https://github.com/Azure/azure-event-hubs/archive/master.zip) a místně je rozbalte.
-2. Přejděte do složky **\azure-Event-Hubs-master\samples\DotNet\\ ** složky. 
-3. Přepněte do složky **Azure. Messaging. EventHubs\AnomalyDetector\\ ** a dvojím kliknutím na **AnomalyDetector. sln** otevřete řešení v aplikaci Visual Studio. 
+2. Přejděte do složky **\azure-Event-Hubs-master\samples\DotNet \\ ** složky. 
+3. Přepněte do složky **Azure. Messaging. EventHubs\AnomalyDetector \\ ** a dvojím kliknutím na **AnomalyDetector. sln** otevřete řešení v aplikaci Visual Studio. 
 
     Pokud chcete použít starou verzi ukázky, která používá starý balíček Microsoft. Azure. EventHubs, otevřete řešení ze složky **Microsoft. Azure. EventHubs\AnomalyDetector** . 
 3. Otevřete soubor Program.cs a nahraďte **Event Hubs connection string** připojovacím řetězcem, který jste si uložili při spuštění skriptu. 
@@ -386,4 +380,4 @@ Přejděte k dalšímu článku, kde najdete další informace o službě Azure 
 > [!div class="nextstepaction"]
 > [Začínáme s odesíláním zpráv do služby Azure Event Hubs v .NET Standard](get-started-dotnet-standard-send-v2.md)
 
-[vytvořte si bezplatný účet]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+[Vytvoření bezplatného účtu]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio

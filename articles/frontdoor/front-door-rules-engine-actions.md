@@ -1,6 +1,6 @@
 ---
-title: Přední dvířka Azure | Microsoft Docs
-description: Tento článek obsahuje přehled služby Azure Front Door. Zjistěte, zda se jedná o správnou volbu pro síťový provoz vyrovnávání zatížení pro vaši aplikaci.
+title: Azure Front Door
+description: Tento článek poskytuje seznam různých akcí, které můžete provádět s modulem pravidel pro službu Azure dopředných dveří.
 services: frontdoor
 documentationcenter: ''
 author: megan-beatty
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
 ms.author: mebeatty
-ms.openlocfilehash: 3e7c9606a17736ea45b09a4d6981b4d55fa6dee6
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: e11555e883a323bcb5b0be1c62b2825bce77524e
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82515556"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85314000"
 ---
 # <a name="azure-front-door-rules-engine-actions"></a>Akce modulu pravidel pro přední dveře Azure
 
 V [modulu pravidel AFD](front-door-rules-engine.md) se pravidlo skládá z nuly nebo více podmínek a akcí shody. Tento článek poskytuje podrobné popisy akcí, které můžete použít v modulu pravidel AFD.
 
-Akce definuje chování, které se použije na typ požadavku, který určuje podmínku shody nebo sada podmínek shody. V modulu pravidel AFD může pravidlo obsahovat až pět akcí, jenom jednu z nich může být akce přepsání konfigurace trasy (přesměrování nebo přesměrování). 
+Akce definuje chování, které se použije na typ požadavku, který určuje podmínku shody nebo sada podmínek shody. V modulu pravidel AFD může pravidlo obsahovat až pět akcí, jenom jednu z nich může být akce přepsání konfigurace trasy (přesměrování nebo přesměrování).
 
 K dispozici jsou následující akce, které je možné použít v modulu pravidel služby Azure front-dveří.  
 
@@ -102,7 +102,7 @@ Zahrnout zadané řetězce dotazu | Pro ukládání do mezipaměti se používaj
 Další pole |  Popis 
 ------------------|---------------
 Dynamická komprese | Přední dvířka můžou dynamicky Komprimovat obsah na hranici, což vede k menší a rychlejší reakci.
-Parametry dotazu | Seznam povolených (nebo nepovolených) parametrů oddělený čárkami, který se má použít jako základ pro ukládání do mezipaměti.
+Parametry dotazů | Seznam povolených (nebo nepovolených) parametrů oddělený čárkami, který se má použít jako základ pro ukládání do mezipaměti.
 Doba uložení mezipaměti | Doba vypršení platnosti mezipaměti ve dnech, hodinách, minutách, sekundách Všechny hodnoty musí být int. 
 
 ## <a name="next-steps"></a>Další kroky

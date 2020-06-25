@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5d631143b839e052316490d3b3b89ca10469cb1
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 2f3ea5f1810b5ca80e096b19e1dcf230e21eabcc
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83778831"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85317642"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Kurz: Konfigurace hybridního připojení k Azure Active Directory pro spravované domény
 
@@ -34,13 +34,13 @@ Uvedení zařízení do Azure AD maximalizuje produktivitu uživatelů prostřed
 
 Spravované prostředí můžete nasadit pomocí [synchronizace hodnot hash hesel (kosmetice)](../hybrid/whatis-phs.md) nebo [předávacího ověřování (PTA)](../hybrid/how-to-connect-pta.md) pomocí [bezproblémového jednotného přihlašování](../hybrid/how-to-connect-sso.md). Tyto scénáře nevyžadují konfiguraci federačního serveru pro ověřování.
 
-V tomto kurzu:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Konfigurace hybridního připojení k Azure AD
 > * Povolení zařízení s Windows nižší úrovně
 > * Ověření připojených zařízení
-> * Odstranit potíže
+> * Řešení potíží
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -70,9 +70,9 @@ Služba připojení k hybridní službě Azure AD vyžaduje, aby zařízení mě
 - `https://device.login.microsoftonline.com`
 - `https://autologon.microsoftazuread-sso.com`(Pokud používáte nebo plánujete používat bezproblémové přihlašování SSO)
 
-Pokud vaše organizace vyžaduje přístup k Internetu prostřednictvím odchozího proxy serveru, doporučujeme [implementovat automatické zjišťování webových proxy serverů (WPAD)](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10)) a povolit tak počítačům s Windows 10 registraci zařízení ve službě Azure AD. Problémy s konfigurací a správou protokolu WPAD najdete v tématu [řešení potíží při automatickém zjišťování](/previous-versions/tn-archive/cc302643(v=technet.10)).
+Pokud vaše organizace vyžaduje přístup k Internetu prostřednictvím odchozího proxy serveru, můžete pomocí [implementace automatického zjišťování webových proxy serverů (WPAD)](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10)) povolit počítačům s Windows 10 registraci zařízení ve službě Azure AD. Problémy s konfigurací a správou protokolu WPAD najdete v tématu [řešení potíží při automatickém zjišťování](/previous-versions/tn-archive/cc302643(v=technet.10)). V zařízeních s Windows 10 starších než 1709 aktualizace je k dispozici jen možnost WPAD pro konfiguraci proxy serveru pro práci s hybridním připojením k Azure AD. 
 
-Pokud protokol WPAD nepoužíváte, můžete na svém počítači nakonfigurovat nastavení proxy serveru počínaje systémem Windows 10 1709. Další informace najdete v tématu [nastavení proxy WinHTTP nasazená objektem zásad skupiny](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/).
+Pokud službu WPAD nepoužíváte, můžete na svém počítači nakonfigurovat nastavení proxy serveru WinHTTP počínaje systémem Windows 10 1709. Další informace najdete v tématu [nastavení proxy WinHTTP nasazená objektem zásad skupiny](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/).
 
 > [!NOTE]
 > Pokud nakonfigurujete nastavení proxy serveru na svém počítači pomocí nastavení WinHTTP, nepůjde se připojit k Internetu bez jakýchkoli počítačů, které se nemůžou připojit k nakonfigurovanému proxy serveru.
@@ -222,7 +222,7 @@ Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -e
 Pokud dochází k problémům s dokončováním hybridního připojení služby Azure AD pro zařízení s Windows připojená k doméně, přečtěte si téma:
 
 - [Řešení potíží se zařízeními pomocí příkazu dsregcmd](https://docs.microsoft.com/azure/active-directory/devices/troubleshoot-device-dsregcmd)
-- [Řešení potíží s hybridními Azure Active Directory připojenými zařízeními](troubleshoot-hybrid-join-windows-current.md)
+- [Řešení potíží se zařízeními připojenými službou Hybrid Azure Active Directory Join](troubleshoot-hybrid-join-windows-current.md)
 - [Řešení potíží s modulem hybridní Azure Active Directory připojená zařízení nižší úrovně](troubleshoot-hybrid-join-windows-legacy.md)
 
 ## <a name="next-steps"></a>Další kroky

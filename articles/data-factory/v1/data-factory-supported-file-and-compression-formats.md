@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 901e15994b8a51a5fd45d57ca7a4db7778d968e1
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 33f67e1bfa27f4314f64cbcc4d472905fcb15099
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84707034"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85318760"
 ---
 # <a name="file-and-compression-formats-supported-by-azure-data-factory"></a>Formáty souborů a komprese podporované nástrojem Azure Data Factory
 *Toto téma se vztahuje na následující konektory: [Amazon S3](data-factory-amazon-simple-storage-service-connector.md), [Azure Blob](data-factory-azure-blob-connector.md), [Azure Data Lake Store](data-factory-azure-datalake-connector.md), [File System](data-factory-onprem-file-system-connector.md), [FTP](data-factory-ftp-connector.md), [HDFS](data-factory-hdfs-connector.md), [http](data-factory-http-connector.md)a [SFTP](data-factory-sftp-connector.md).*
@@ -219,7 +219,7 @@ V této ukázce očekáváte, že jeden kořenový objekt JSON se mapuje na jede
 ```
 a chcete ho zkopírovat do tabulky Azure SQL v následujícím formátu a přitom data uvnitř pole linearizovat, a to extrakcí dat z objektů i z pole:
 
-| id | deviceType | targetResourceType | resourceManagementProcessRunId | occurrenceTime |
+| ID | deviceType | targetResourceType | resourceManagementProcessRunId | occurrenceTime |
 | --- | --- | --- | --- | --- |
 | ed0e4960-d9c5-11e6-85dc-d7996816aad3 | PC | Microsoft.Compute/virtualMachines | 827f8aaa-ab72-437c-ba48-d8917a7336a3 | 1/13/2017 11:24:37 AM |
 
@@ -349,7 +349,7 @@ Vstupní datová sada typu **JsonFormat** je definovaná následujícím způsob
 
 Pokud máte v SQL Database následující tabulku:
 
-| id | order_date | order_price | order_by |
+| ID | order_date | order_price | order_by |
 | --- | --- | --- | --- |
 | 1 | 20170119 | 2000 | David |
 | 2 | 20170120 | 3500 | Patrick |
@@ -497,7 +497,7 @@ Oddíl **Compression** má dvě vlastnosti:
 
 Když zadáte `compression` vlastnost ve formátu JSON vstupní datové sady, kanál může číst komprimovaná data ze zdroje a když zadáte vlastnost do výstupní datové sady JSON, aktivita kopírování může zapsat komprimovaná data do cílového umístění. Tady je několik ukázkových scénářů:
 
-* Načte komprimovaná data GZIP z objektu blob Azure, dekomprimuje je a zapisuje výsledná data do služby Azure SQL Database. Můžete definovat vstupní datovou sadu Azure Blob s `compression` `type` vlastností JSON jako gzip.
+* Načte komprimovaná data GZIP z objektu blob Azure, dekomprimuje je a zapíše data výsledků do Azure SQL Database. Můžete definovat vstupní datovou sadu Azure Blob s `compression` `type` vlastností JSON jako gzip.
 * Načtěte data z textového souboru z místního systému souborů, Zkomprimujte ho pomocí formátu GZip a zapište komprimovaná data do objektu blob Azure. Nadefinujete výstupní datovou sadu Azure Blob s `compression` `type` vlastností JSON jako gzip.
 * Přečtěte si soubor. zip ze serveru FTP, dekomprimujte ho, aby se soubory dostaly do všech souborů, a Azure Data Lake Store. Můžete definovat vstupní datovou sadu FTP s `compression` `type` vlastností JSON jako ZipDeflate.
 * Přečtěte si komprimovaná data z objektu blob Azure, dekomprimujete je, Zkomprimujte je pomocí BZIP2 a zapište výsledná data do objektu blob Azure. V tomto případě definujete vstupní datovou sadu Azure Blob s `compression` `type` nastavením na gzip a výstupní datovou sadu s `compression` `type` nastavením na bzip2.   

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: cfea9aa7bfcc9a9698bb93bdf54797481b8539ce
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cf1d732391f86bec9c0ec2de1e6bace2e808bb19
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80333966"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85318922"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>Kurz: implementace prostorových analýz IoT pomocí Azure Maps
 
@@ -36,7 +36,7 @@ V tomto kurzu provedete tyto kroky:
 
 Toto řešení předvádí situaci, kdy se společnost půjčovny automobilů plánuje sledovat a protokolovat události pro jeho půjčovnu automobilů. Společnosti pro nájem auta obvykle pronajímat automobily do konkrétní geografické oblasti. Musí sledovat, jaké má vaše automobily v průběhu pronájmu. Instance auta, které opouští zvolenou geografickou oblast, musí být protokolovány. Protokolování dat zajišťuje správné zpracování zásad, poplatků a dalších obchodních aspektů.
 
-V našem případě použití jsou Půjčovna automobilů vybavená zařízeními IoT, která pravidelně odesílají data telemetrie do Azure IoT Hub. Telemetrie zahrnuje aktuální umístění a označuje, jestli je modul auta spuštěný. Schéma umístění zařízení dodržuje [schéma IoT technologie Plug and Play pro geoprostorové údaje](https://github.com/Azure/IoTPlugandPlay/blob/master/Schemas/geospatial.md). Schéma telemetrie zařízení pro půjčovnu aut vypadá takto:
+V našem případě použití jsou Půjčovna automobilů vybavená zařízeními IoT, která pravidelně odesílají data telemetrie do Azure IoT Hub. Telemetrie zahrnuje aktuální umístění a označuje, jestli je modul auta spuštěný. Schéma umístění zařízení dodržuje [schéma IoT technologie Plug and Play pro geoprostorové údaje](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v1-preview/schemas/geospatial.md). Schéma telemetrie zařízení pro půjčovnu aut vypadá takto:
 
 ```JSON
 {
@@ -191,13 +191,13 @@ Otevřete aplikaci pro vystavování a podle následujících pokynů nahrajte g
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0
    ```
 
-6. Zkopírujte identifikátor URI stavu a přidejte do `subscription-key` něj parametr. K `subscription-key` parametru přiřaďte hodnotu klíč předplatného účtu Azure Maps. Formát identifikátoru URI stavu by měl být podobný následujícímu a `{Subscription-key}` byl nahrazen klíčem předplatného.
+6. Zkopírujte identifikátor URI stavu a přidejte `subscription-key` do něj parametr. K parametru přiřaďte hodnotu klíč předplatného účtu Azure Maps `subscription-key` . Formát identifikátoru URI stavu by měl být podobný následujícímu a byl `{Subscription-key}` nahrazen klíčem předplatného.
 
    ```HTTP
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
    ```
 
-7. Pokud chcete, `udId` otevřete v aplikaci pro vystavení novou kartu a na kartě tvůrce vyberte získat metodu HTTP a vytvořte požadavek GET na identifikátor URI stavu. Pokud se vaše data úspěšně nahrála, obdržíte udId v těle odpovědi. Zkopírujte udId pro pozdější použití.
+7. Pokud chcete, otevřete v aplikaci pro vystavení `udId` novou kartu a na kartě tvůrce vyberte získat metodu HTTP a vytvořte požadavek GET na identifikátor URI stavu. Pokud se vaše data úspěšně nahrála, obdržíte udId v těle odpovědi. Zkopírujte udId pro pozdější použití.
 
    ```JSON
    {
@@ -261,7 +261,7 @@ Po přidání předplatného Event Grid do funkce Azure Function se zobrazí vý
 
 ![rozbočovač – např. trasa](./media/tutorial-iot-hub-maps/hub-route.png)
 
-V našem ukázkovém scénáři chceme vyfiltrovat všechny zprávy, u kterých se vozidlo za pronájem pohybuje. Aby se tyto události telemetrie zařízení publikovaly Event Grid, použijeme dotaz směrování k filtrování událostí, ve kterých je `Engine` vlastnost **"on"**. Existují různé způsoby, jak dotazovat zprávy ze zařízení do cloudu, a získat další informace o syntaxi směrování zpráv, najdete v tématu [IoT Hub směrování zpráv](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax). Dotaz na směrování vytvoříte tak, že kliknete na trasu **RouteToEventGrid** a nahradíte **dotaz směrování** pomocí **"Engine =" v** "a kliknete na **Uložit**. Centrum IoT teď bude publikovat jenom telemetrii zařízení, ve které je modul ZAPNUTý.
+V našem ukázkovém scénáři chceme vyfiltrovat všechny zprávy, u kterých se vozidlo za pronájem pohybuje. Aby se tyto události telemetrie zařízení publikovaly Event Grid, použijeme dotaz směrování k filtrování událostí, ve kterých `Engine` je vlastnost **"on"**. Existují různé způsoby, jak dotazovat zprávy ze zařízení do cloudu, a získat další informace o syntaxi směrování zpráv, najdete v tématu [IoT Hub směrování zpráv](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax). Dotaz na směrování vytvoříte tak, že kliknete na trasu **RouteToEventGrid** a nahradíte **dotaz směrování** pomocí **"Engine =" v** "a kliknete na **Uložit**. Centrum IoT teď bude publikovat jenom telemetrii zařízení, ve které je modul ZAPNUTý.
 
 ![rozbočovač – např. filtr](./media/tutorial-iot-hub-maps/hub-filter.png)
 
@@ -272,7 +272,7 @@ Jakmile je naše funkce Azure v provozu, můžeme teď do IoT Hub odesílat data
 
 1. Stáhněte projekt [rentalCarSimulation](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/tree/master/src/rentalCarSimulation) C#. 
 
-2. V libovolném textovém editoru otevřete soubor simulatedCar.cs a nahraďte hodnotu hodnotou `connectionString` , kterou jste uložili při registraci zařízení, a uložte změny do souboru.
+2. V libovolném textovém editoru otevřete soubor simulatedCar.cs a nahraďte hodnotu hodnotou, `connectionString` kterou jste uložili při registraci zařízení, a uložte změny do souboru.
  
 3. Ujistěte se, že máte na svém počítači nainstalovanou platformu .NET Core. V místním okně terminálu přejděte do kořenové složky projektu C# a spuštěním následujícího příkazu nainstalujte požadované balíčky pro aplikaci simulovaného zařízení:
     

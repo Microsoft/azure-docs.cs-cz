@@ -1,22 +1,14 @@
 ---
 title: Použití datových proudů Akka pro Apache Kafka – Azure Event Hubs | Microsoft Docs
 description: Tento článek poskytuje informace o tom, jak připojit Akka datové proudy k centru událostí Azure.
-services: event-hubs
-documentationcenter: ''
-author: ShubhaVijayasarathy
-editor: ''
-ms.assetid: ''
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: how-to
-ms.date: 04/02/2020
-ms.author: shvija
-ms.openlocfilehash: 0b96f1448fd223aae2dde77c5c05a8c9bd74ee9b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: ae3cc44d854aa0996a6a567e56ff4e70afe0492d
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80632841"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85320203"
 ---
 # <a name="using-akka-streams-with-event-hubs-for-apache-kafka"></a>Použití Akka Streams se službou Event Hubs pro Apache Kafka
 V tomto kurzu se dozvíte, jak propojit Akka datové proudy s centrem událostí bez změny klientů protokolu nebo spuštění vlastních clusterů. Azure Event Hubs pro Kafka podporuje [Apache Kafka verze 1,0.](https://kafka.apache.org/10/documentation.html)
@@ -31,7 +23,7 @@ V tomto kurzu se naučíte:
 > [!NOTE]
 > Tato ukázka je k dispozici na [GitHubu](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/akka/java) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 K dokončení tohoto kurzu se ujistěte, že máte následující požadavky:
 
@@ -66,7 +58,7 @@ Pomocí poskytnutého příkladu producenta Akka streamy odešlete zprávy služ
 
 #### <a name="producer-applicationconf"></a>Aplikace producenta. conf
 
-Aktualizujte `bootstrap.servers` hodnoty `sasl.jaas.config` a v `producer/src/main/resources/application.conf` nástroji a nasměrujte producent na Event Hubs koncový bod Kafka se správným ověřením.
+Aktualizujte `bootstrap.servers` hodnoty a v nástroji a `sasl.jaas.config` `producer/src/main/resources/application.conf` nasměrujte producent na Event Hubs koncový bod Kafka se správným ověřením.
 
 ```xml
 akka.kafka.producer {
@@ -93,7 +85,7 @@ mvn clean package
 mvn exec:java -Dexec.mainClass="AkkaTestProducer"
 ```
 
-Producent zahájí odesílání událostí do centra událostí v tématu `test`a vytiskne události do STDOUT.
+Producent zahájí odesílání událostí do centra událostí v tématu `test` a vytiskne události do STDOUT.
 
 ## <a name="run-akka-streams-consumer"></a>Spustit příjemce streamování Akka
 
@@ -103,7 +95,7 @@ Pomocí poskytnutého příkladu příjemce přijímají zprávy z centra událo
 
 #### <a name="consumer-applicationconf"></a>Aplikace příjemce. conf
 
-Aktualizujte `bootstrap.servers` hodnoty `sasl.jaas.config` a v `consumer/src/main/resources/application.conf` nástroji a nasměrujte uživatele na Event Hubs koncový bod Kafka se správným ověřením.
+Aktualizujte `bootstrap.servers` hodnoty a v nástroji a `sasl.jaas.config` `consumer/src/main/resources/application.conf` nasměrujte uživatele na Event Hubs koncový bod Kafka se správným ověřením.
 
 ```xml
 akka.kafka.consumer {
@@ -133,7 +125,7 @@ mvn clean package
 mvn exec:java -Dexec.mainClass="AkkaTestConsumer"
 ```
 
-Pokud má centrum událostí události (například pokud je váš výrobce spuštěný), pak příjemce začne přijímat události z tématu `test`. 
+Pokud má centrum událostí události (například pokud je váš výrobce spuštěný), pak příjemce začne přijímat události z tématu `test` . 
 
 Podrobnější informace o datových proudech Akka najdete v [příručce Akka Streams Kafka](https://doc.akka.io/docs/akka-stream-kafka/current/home.html) .
 

@@ -3,16 +3,16 @@ title: Úvod
 description: Seznamte se s funkcemi a výhodami řešení Azure VMware (AVS) pro nasazení a správu úloh na bázi VMware v Azure.
 ms.topic: overview
 ms.date: 05/04/2020
-ms.openlocfilehash: e227b6c7c2f25fbf62f11c17dc62293e4fbd5267
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 9e3ab0abfdaa613a08675356bc5b01949e0381ae
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82740329"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84749678"
 ---
 # <a name="what-is-azure-vmware-solution-avs-preview"></a>Co je Azure VMware Solution (AVS) Preview?
 
-Řešení Azure VMware (AVS) poskytuje privátní cloudy v Azure. Privátní cloudy obsahují vSphere clustery, které jsou sestavené z vyhrazené holé infrastruktury Azure. Clustery privátních cloudů můžete škálovat od 3 do 16 hostitelů a možnost mít více clusterů v jednom privátním cloudu. Všechny privátní cloudy se zřídí s vCenter Server, síti vSAN, vSphere a NSX-T. Úlohy můžete migrovat z místních prostředí, vytvořit nebo nasadit nové virtuální počítače a využívat služby Azure ze svých privátních cloudů.
+Řešení Azure VMware (AVS) nabízí privátní cloudy v Azure. Tyto privátní cloudy obsahují clustery vSphere a využívají vyhrazenou infrastrukturu holých počítačů Azure. Clustery v privátních cloudech můžete škálovat na 3 až 16 hostitelů a v jednom privátním cloudu můžete mít více clusterů. Všechny privátní cloudy se zřídí s vCenter Server, síti vSAN, vSphere a NSX-T. Do privátních cloudů můžete migrovat úlohy z místních prostředků, můžete v nich vytvářet nebo nasazovat nové virtuální počítače a využívat v nich služby Azure.
 
 Funkce AVS je ověřované řešení VMware s průběžným ověřováním a testováním vylepšení a upgradů. Infrastruktura a software privátního cloudu spravuje a udržuje společnost Microsoft a umožňuje zaměřit se na vývoj a spouštění úloh v privátních cloudech.
 

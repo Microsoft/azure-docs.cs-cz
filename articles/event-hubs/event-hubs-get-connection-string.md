@@ -1,21 +1,14 @@
 ---
 title: Získání připojovacího řetězce – Azure Event Hubs | Microsoft Docs
 description: Tento článek poskytuje pokyny pro získání připojovacího řetězce, který můžou klienti používat pro připojení k Azure Event Hubs.
-services: event-hubs
-documentationcenter: na
-author: spelluru
-manager: timlt
-ms.service: event-hubs
 ms.topic: article
-ms.custom: seodec18
-ms.date: 02/19/2019
-ms.author: spelluru
-ms.openlocfilehash: 77a768f907ad989a457ee498f26ad0f6e004f786
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.date: 06/23/2020
+ms.openlocfilehash: 271d4dcc1f2fab08dc7f625ce36e021eda225b87
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84710911"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85320489"
 ---
 # <a name="get-an-event-hubs-connection-string"></a>Získání připojovacího řetězce Event Hubs
 

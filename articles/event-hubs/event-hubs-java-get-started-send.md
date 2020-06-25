@@ -1,19 +1,14 @@
 ---
 title: Odesílání a příjem událostí z Azure Event Hubs pomocí jazyka Java (starší verze)
 description: Tento článek popisuje postup vytvoření aplikace Java, která odesílá a přijímá události z Azure Event Hubs pomocí starého balíčku Azure-eventhubs.
-services: event-hubs
-author: spelluru
-ms.service: event-hubs
-ms.workload: core
 ms.topic: quickstart
-ms.date: 02/11/2020
-ms.author: spelluru
-ms.openlocfilehash: 379739533e15e60bc47bfc883a67037d4a58d0e0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/23/2020
+ms.openlocfilehash: 8c44cfa2a3130e714ac95989248aee634996df2a
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81417623"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85320313"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-eventhubs"></a>Použití jazyka Java k posílání událostí nebo přijímání událostí z Azure Event Hubs (Azure-eventhubs)
 
@@ -57,7 +52,7 @@ Pro jednoduchého vydavatele událostí importujte balíček *com. Microsoft. Az
 
 ### <a name="write-code-to-send-messages-to-the-event-hub"></a>Napsání kódu pro odesílání zpráv do centra událostí
 
-Pro následující příklad nejprve vytvořte nový projekt Maven pro aplikaci konzoly nebo prostředí v oblíbeném vývojovém prostředí Java. Přidejte třídu s názvem `SimpleSend`a do třídy přidejte následující kód:
+Pro následující příklad nejprve vytvořte nový projekt Maven pro aplikaci konzoly nebo prostředí v oblíbeném vývojovém prostředí Java. Přidejte třídu s názvem `SimpleSend` a do třídy přidejte následující kód:
 
 ```java
 import com.google.gson.Gson;
@@ -140,7 +135,7 @@ Pomocí transformace řetězce na jeho kódování UTF-8 Vytvořte událost v je
 
 Sestavte a spusťte program a ujistěte se, že nejsou k dispozici žádné chyby.
 
-Blahopřejeme! Nyní jste odeslali zprávy do centra událostí.
+Gratulujeme! Nyní jste odeslali zprávy do centra událostí.
 
 ### <a name="appendix-how-messages-are-routed-to-eventhub-partitions"></a>Příloha: způsob směrování zpráv do oddílů EventHub
 
@@ -210,7 +205,7 @@ Klientská knihovna Java pro Event Hubs je k dispozici pro použití v projektec
 
 Pro různé typy prostředí sestavení můžete explicitně získat nejnovější vydané soubory JAR z [centrálního úložiště Maven](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22).
 
-1. Pro následující příklad nejprve vytvořte nový projekt Maven pro aplikaci konzoly nebo prostředí v oblíbeném vývojovém prostředí Java. Třída je volána `ErrorNotificationHandler`.     
+1. Pro následující příklad nejprve vytvořte nový projekt Maven pro aplikaci konzoly nebo prostředí v oblíbeném vývojovém prostředí Java. Třída je volána `ErrorNotificationHandler` .     
    
     ```java
     import java.util.function.Consumer;
@@ -316,7 +311,7 @@ Pro různé typy prostředí sestavení můžete explicitně získat nejnovějš
        }
    }
    ```
-3. Vytvořte jednu další třídu s `EventProcessor`názvem pomocí následujícího kódu:
+3. Vytvořte jednu další třídu s názvem `EventProcessor` pomocí následujícího kódu:
    
     ```java
     public static class EventProcessor implements IEventProcessor

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: 27cc1052a2f35382b2d6a93482b7af219a9a187a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 35835e1508311bd31008a2335a8c543e558686c2
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84015161"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85319374"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Použití Apache Oozie s Apache Haddopem k definování a spuštění pracovního procesu v linuxové službě Azure HDInsight
 
@@ -29,13 +29,13 @@ Oozie můžete použít také k plánování úloh, které jsou specifické pro 
 > [!NOTE]  
 > Další možností definování pracovních postupů pomocí HDInsight je použití Azure Data Factory. Další informace o Data Factory najdete v tématu [použití nástroje Apache prasete a Apache Hive s Data Factory](../data-factory/transform-data.md). Pokud chcete používat Oozie v clusterech s Balíček zabezpečení podniku, přečtěte si téma [spuštění Apache Oozie v clusterech HDInsight Hadoop s balíček zabezpečení podniku](domain-joined/hdinsight-use-oozie-domain-joined-clusters.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 * **Cluster Hadoop ve službě HDInsight**. Viz Začínáme [se službou HDInsight v systému Linux](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
 * **Klient SSH**. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* **Azure SQL Database**.  Přečtěte si téma [Vytvoření databáze SQL Azure v Azure Portal](../sql-database/sql-database-get-started.md).  V tomto článku se používá databáze s názvem **oozietest**.
+* **Azure SQL Database**.  Viz téma [Vytvoření databáze v Azure SQL Database Azure Portal](../sql-database/sql-database-get-started.md).  V tomto článku se používá databáze s názvem **oozietest**.
 
 * Schéma identifikátoru URI pro primární úložiště clusterů. `wasb://`pro Azure Storage pro `abfs://` Azure Data Lake Storage Gen2 nebo `adl://` pro Azure Data Lake Storage Gen1. Pokud je pro Azure Storage povolený zabezpečený přenos, identifikátor URI by byl `wasbs://` . Viz také [zabezpečený přenos](../storage/common/storage-require-secure-transfer.md).
 
@@ -126,7 +126,7 @@ Pomocí následujících kroků vytvořte skript HiveQL (podregistr Query Langua
 
    * `${hiveDataFolder}`: Obsahuje umístění pro uložení datových souborů pro tabulku.
 
-     Soubor definice pracovního postupu, Workflow. XML v tomto článku, předá tyto hodnoty do tohoto skriptu HiveQL za běhu.
+     Soubor definice pracovního postupu, workflow.xml v tomto článku, předá tyto hodnoty do tohoto skriptu HiveQL za běhu.
 
 1. Pokud chcete soubor uložit, vyberte **CTRL + X**, zadejte **Y**a pak vyberte **ENTER**.  
 
@@ -275,7 +275,7 @@ Definice pracovních postupů Oozie se napíší v jazyce hPDL (Hadoop proces De
 
 ## <a name="create-the-job-definition"></a>Vytvoření definice úlohy
 
-Definice úlohy popisuje, kde najít soubor Workflow. XML. Popisuje také místo, kde najít jiné soubory používané pracovním postupem, například `useooziewf.hql` . Také definuje hodnoty vlastností použitých v rámci pracovního postupu a přidružených souborů.
+Definice úlohy popisuje, kde najít workflow.xml. Popisuje také místo, kde najít jiné soubory používané pracovním postupem, například `useooziewf.hql` . Také definuje hodnoty vlastností použitých v rámci pracovního postupu a přidružených souborů.
 
 1. Chcete-li získat úplnou adresu výchozího úložiště, použijte následující příkaz. Tato adresa se používá v konfiguračním souboru, který jste vytvořili v dalším kroku.
 
@@ -366,7 +366,7 @@ Definice úlohy popisuje, kde najít soubor Workflow. XML. Popisuje také místo
     </configuration>
     ```
 
-    Většina informací v tomto souboru slouží k naplnění hodnot použitých v souborech Workflow. XML nebo ooziewf. HQL, jako je například `${nameNode}` .  Pokud se jedná o cestu `wasbs` , musíte použít úplnou cestu. Nezkraťte ho jenom na `wasbs:///` . `oozie.wf.application.path`Položka určuje, kde najít soubor Workflow. XML. Tento soubor obsahuje pracovní postup, který byl spuštěn touto úlohou.
+    Většina informací v tomto souboru slouží k naplnění hodnot použitých v souborech workflow.xml nebo ooziewf. HQL, jako je například `${nameNode}` .  Pokud se jedná o cestu `wasbs` , musíte použít úplnou cestu. Nezkraťte ho jenom na `wasbs:///` . `oozie.wf.application.path`Položka určuje, kde se má najít soubor workflow.xml. Tento soubor obsahuje pracovní postup, který byl spuštěn touto úlohou.
 
 3. Chcete-li vytvořit konfiguraci definice úlohy Oozie, použijte následující příkaz:
 
@@ -539,7 +539,7 @@ Chcete-li získat přístup k webovému uživatelskému rozhraní Oozie, proveď
 
 Koordinátora můžete použít k určení začátku, konce a frekvence výskytu úloh. Chcete-li definovat plán pro pracovní postup, proveďte následující kroky:
 
-1. Pomocí následujícího příkazu vytvořte soubor s názvem **Coordinator. XML**:
+1. Pomocí následujícího příkazu vytvořte soubor s názvem **coordinator.xml**:
 
     ```bash
     nano coordinator.xml
@@ -564,7 +564,7 @@ Koordinátora můžete použít k určení začátku, konce a frekvence výskytu
     > * `${coordStart}`: Čas zahájení úlohy.
     > * `${coordEnd}`: Čas ukončení úlohy.
     > * `${coordTimezone}`: Úlohy koordinátora jsou v pevně stanoveném časovém pásmu bez letního času, který je obvykle reprezentován pomocí standardu UTC. Toto časové pásmo se označuje jako *časové pásmo zpracování Oozie.*
-    > * `${wfPath}`: Cesta k souboru Workflow. XML.
+    > * `${wfPath}`: Cesta k workflow.xml.
 
 2. Pokud chcete soubor uložit, vyberte **CTRL + X**, zadejte **Y**a pak vyberte **ENTER**.
 
@@ -593,7 +593,7 @@ Koordinátora můžete použít k určení začátku, konce a frekvence výskytu
         </property>
         ```
 
-       Nahraďte `wasbs://mycontainer@mystorageaccount.blob.core.windows` text hodnotou použitou v ostatních položkách v souboru Job. XML.
+       Nahraďte `wasbs://mycontainer@mystorageaccount.blob.core.windows` text hodnotou použitou v ostatních položkách v souboru job.xml.
 
    * Pro definování počátečního, koncového a četnosti koordinátoru přidejte následující kód XML:
 

@@ -1,25 +1,14 @@
 ---
 title: 'Rychlý Start: vytvoření centra událostí se skupinou uživatelů – Azure Event Hubs'
 description: 'Rychlý Start: vytvoření oboru názvů Event Hubs s centrem událostí a skupinou uživatelů pomocí šablon Azure Resource Manager'
-services: event-hubs
-documentationcenter: .net
-author: spelluru
-editor: ''
-ms.assetid: 28bb4591-1fd7-444f-a327-4e67e8878798
-ms.service: event-hubs
-ms.devlang: tbd
 ms.topic: quickstart
-ms.tgt_pltfrm: dotnet
-ms.workload: na
-ms.date: 02/11/2020
-ms.author: spelluru
-ms.custom: subject-armqs
-ms.openlocfilehash: c2221fe5b5ab38afbdde167e5bcbf6b47ed4f861
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/23/2020
+ms.openlocfilehash: 8a1ad9a2b2ce7a8e9e5911cca18b297378a966bd
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79528077"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85315655"
 ---
 # <a name="quickstart-create-an-event-hub-by-using-an-azure-resource-manager-template"></a>Rychlý Start: vytvoření centra událostí pomocí šablony Azure Resource Manager
 
@@ -31,13 +20,13 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 
-Žádné.
+Žádné
 
 ## <a name="create-an-event-hub"></a>Vytvoření centra událostí
 
 ### <a name="review-the-template"></a>Kontrola šablony
 
-Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-eventhubs-create-namespace-and-eventhub/).
+Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-eventhubs-create-namespace-and-eventhub/).
 
 :::code language="json" source="~/quickstart-templates/101-eventhubs-create-namespace-and-eventhub/azuredeploy.json" range="1-61" highlight="32-59":::
 

@@ -12,12 +12,12 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: 3f9f4db0119b10a2df3a1007f9e5fa710e31f0e2
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: b348f3f3684d580ca84eed9b9a094717c12cf849
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84113703"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85319080"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>Aktivita uložené procedury SQL Server
 > [!div class="op_single_selector" title1="Aktivity transformace"]
@@ -49,7 +49,7 @@ Aktivitu uložené procedury můžete použít k vyvolání uložené procedury 
 >
 > Při kopírování dat z Azure SQL Database nebo SQL Server nebo Azure SQL Data Warehouse můžete nakonfigurovat **SqlSource** v aktivitě kopírování a vyvolat uloženou proceduru pro čtení dat ze zdrojové databáze pomocí vlastnosti **sqlReaderStoredProcedureName** . Další informace najdete v následujících článcích konektoru: [Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties), [SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties) [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)
 
-Následující návod používá aktivitu uložené procedury v kanálu k vyvolání uložené procedury ve službě Azure SQL Database.
+Následující návod používá aktivitu uložené procedury v kanálu k vyvolání uložené procedury v Azure SQL Database.
 
 ## <a name="walkthrough"></a>Názorný postup
 ### <a name="sample-table-and-stored-procedure"></a>Ukázková tabulka a uložená procedura
@@ -106,7 +106,7 @@ Následující návod používá aktivitu uložené procedury v kanálu k vyvol�
    ![Data Factory domovskou stránku](media/data-factory-stored-proc-activity/data-factory-home-page.png)
 
 ### <a name="create-an-azure-sql-linked-service"></a>Vytvoření propojené služby Azure SQL
-Po vytvoření datové továrny vytvoříte propojenou službu Azure SQL, která propojuje vaši databázi Azure SQL, která obsahuje tabulku s příklady a usp_sample uloženou proceduru do vaší datové továrny.
+Po vytvoření datové továrny vytvoříte propojenou službu Azure SQL, která propojuje vaši databázi v Azure SQL Database, která obsahuje tabulku vzorků a usp_sample uloženou proceduru, do vaší datové továrny.
 
 1. Kliknutím na **vytvořit a nasadit** v okně **Data Factory** pro **SProcDF** spusťte Editor Data Factory.
 2. Na panelu příkazů klikněte na **nové úložiště dat** a vyberte **Azure SQL Database**. V editoru by se měl zobrazit skript JSON pro vytvoření propojené služby Azure SQL.
@@ -207,7 +207,7 @@ Všimněte si následujících vlastností:
 3. V zobrazení diagramu dvakrát klikněte na datovou sadu `sprocsampleout` . Řezy se zobrazí ve stavu připraveno. Mělo by existovat pět řezů, protože řez se vytvoří pro každou hodinu mezi počátečním a koncovým časem z formátu JSON.
 
     ![dlaždice diagramu](media/data-factory-stored-proc-activity/data-factory-slices.png)
-4. Pokud je řez ve stavu **připraveno** , spusťte `select * from sampletable` dotaz proti službě Azure SQL Database a ověřte, že data byla vložena do tabulky pomocí uložené procedury.
+4. Pokud je řez ve stavu **připraveno** , spusťte `select * from sampletable` dotaz na databázi a ověřte, zda byla data do tabulky vložena v rámci uložené procedury.
 
    ![Výstupní data](./media/data-factory-stored-proc-activity/output.png)
 
@@ -303,15 +303,15 @@ Tady je formát JSON pro definování aktivity uložené procedury:
 
 Tyto vlastnosti JSON jsou popsány v následující tabulce:
 
-| Vlastnost | Description | Vyžadováno |
+| Vlastnost | Popis | Vyžadováno |
 | --- | --- | --- |
-| name | Název aktivity |Ano |
-| description |Text popisující, k čemu se aktivita používá |Ne |
-| typ | Musí být nastavené na: **SqlServerStoredProcedure** | Ano |
-| vztahují | Nepovinný parametr. Pokud zadáte vstupní datovou sadu, musí být k dispozici (ve stavu "připraveno") pro spuštění aktivity uložená procedura. Vstupní datovou sadu nelze v uložené proceduře jako parametr spotřebovat. Slouží pouze ke kontrole závislosti před spuštěním aktivity uložené procedury. |Ne |
-| činnosti | Pro aktivitu uložené procedury musíte zadat výstupní datovou sadu. Výstupní datová sada určuje **plán** aktivity uložené procedury (každou hodinu, týdně, měsíčně atd.). <br/><br/>Výstupní datová sada musí používat **propojenou službu** , která odkazuje na Azure SQL Database nebo Azure SQL Data Warehouse nebo SQL Server databázi, ve které chcete spustit uloženou proceduru. <br/><br/>Výstupní datová sada může sloužit jako způsob, jak předat výsledek uložené procedury pro následné zpracování jinou aktivitou ([řetězení aktivit](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) v kanálu. Data Factory však do této datové sady automaticky nezapisuje výstup uložené procedury. Jedná se o uloženou proceduru, která zapisuje do tabulky SQL, na kterou odkazuje výstupní datová sada. <br/><br/>V některých případech může být výstupní datovou sadou **fiktivní datová**sada, která se používá pouze k zadání plánu pro spuštění aktivity uložené procedury. |Ano |
-| storedProcedureName |Zadejte název uložené procedury ve službě Azure SQL Database nebo Azure SQL Data Warehouse nebo SQL Server databázi reprezentované propojenou službou, kterou používá výstupní tabulka. |Ano |
-| storedProcedureParameters |Zadejte hodnoty pro parametry uložené procedury. Pokud pro parametr potřebujete předat hodnotu null, použijte syntaxi: "param1": null (bez velkých malých písmen). V následující ukázce se dozvíte, jak tuto vlastnost použít. |Ne |
+| name | Název aktivity |Yes |
+| description |Text popisující, k čemu se aktivita používá |No |
+| typ | Musí být nastavené na: **SqlServerStoredProcedure** | Yes |
+| vztahují | Nepovinný parametr. Pokud zadáte vstupní datovou sadu, musí být k dispozici (ve stavu "připraveno") pro spuštění aktivity uložená procedura. Vstupní datovou sadu nelze v uložené proceduře jako parametr spotřebovat. Slouží pouze ke kontrole závislosti před spuštěním aktivity uložené procedury. |No |
+| činnosti | Pro aktivitu uložené procedury musíte zadat výstupní datovou sadu. Výstupní datová sada určuje **plán** aktivity uložené procedury (každou hodinu, týdně, měsíčně atd.). <br/><br/>Výstupní datová sada musí používat **propojenou službu** , která odkazuje na Azure SQL Database nebo Azure SQL Data Warehouse nebo SQL Server databázi, ve které chcete spustit uloženou proceduru. <br/><br/>Výstupní datová sada může sloužit jako způsob, jak předat výsledek uložené procedury pro následné zpracování jinou aktivitou ([řetězení aktivit](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) v kanálu. Data Factory však do této datové sady automaticky nezapisuje výstup uložené procedury. Jedná se o uloženou proceduru, která zapisuje do tabulky SQL, na kterou odkazuje výstupní datová sada. <br/><br/>V některých případech může být výstupní datovou sadou **fiktivní datová**sada, která se používá pouze k zadání plánu pro spuštění aktivity uložené procedury. |Yes |
+| storedProcedureName |Zadejte název uložené procedury v Azure SQL Database, Azure SQL Data Warehouse nebo SQL Server reprezentované propojenou službou, kterou používá výstupní tabulka. |Yes |
+| storedProcedureParameters |Zadejte hodnoty pro parametry uložené procedury. Pokud pro parametr potřebujete předat hodnotu null, použijte syntaxi: "param1": null (bez velkých malých písmen). V následující ukázce se dozvíte, jak tuto vlastnost použít. |No |
 
 ## <a name="passing-a-static-value"></a>Předání statické hodnoty
 Teď zvažte přidání dalšího sloupce s názvem "scénář" v tabulce, která obsahuje statickou hodnotu s názvem "dokument Sample".

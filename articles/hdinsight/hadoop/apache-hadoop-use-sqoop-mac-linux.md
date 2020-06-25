@@ -1,6 +1,6 @@
 ---
 title: Apache Sqoop s Apache Hadoop – Azure HDInsight
-description: Naučte se používat Apache Sqoop k importu a exportu mezi Apache Hadoop v HDInsight a Azure SQL Database.
+description: Naučte se používat Apache Sqoop k importu a exportu mezi Apache Hadoop ve službě HDInsight a Azure SQL Database.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,20 +8,20 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/28/2019
-ms.openlocfilehash: 21bc903349876a76576fb742840e9899f9d94bcd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: caa4d0d45152b49ee76c3f9795f9a05b888776d6
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74769383"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85319524"
 ---
-# <a name="use-apache-sqoop-to-import-and-export-data-between-apache-hadoop-on-hdinsight-and-sql-database"></a>Import a export dat mezi Apache Hadoopem ve službě HDInsight a SQL Database pomocí Apache Sqoopu
+# <a name="use-apache-sqoop-to-import-and-export-data-between-apache-hadoop-on-hdinsight-and-azure-sql-database"></a>Použití Apache Sqoop k importu a exportu dat mezi Apache Hadoop ve službě HDInsight a Azure SQL Database
 
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-Naučte se používat Apache Sqoop k importu a exportu mezi Apache Hadoopm clusterem v Azure HDInsight a v databázi Azure SQL Database nebo Microsoft SQL Server. Kroky v tomto dokumentu používají `sqoop` příkaz přímo z hlavnímu uzlu clusteru Hadoop. Pomocí SSH se připojíte k hlavnímu uzlu a spustíte příkazy v tomto dokumentu. Tento článek je pokračováním [v použití Apache Sqoop se systémem Hadoop ve službě HDInsight](./hdinsight-use-sqoop.md).
+Naučte se používat Apache Sqoop k importu a exportu mezi Apache Hadoopm clusterem v Azure HDInsight a Azure SQL Database nebo Microsoft SQL Server. Kroky v tomto dokumentu používají `sqoop` příkaz přímo z hlavnímu uzlu clusteru Hadoop. Pomocí SSH se připojíte k hlavnímu uzlu a spustíte příkazy v tomto dokumentu. Tento článek je pokračováním [v použití Apache Sqoop se systémem Hadoop ve službě HDInsight](./hdinsight-use-sqoop.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 * Dokončení [Nastavení testovacího prostředí](./hdinsight-use-sqoop.md#create-cluster-and-sql-database) [pro použití Apache Sqoop se systémem Hadoop ve službě HDInsight](./hdinsight-use-sqoop.md).
 
@@ -29,7 +29,7 @@ Naučte se používat Apache Sqoop k importu a exportu mezi Apache Hadoopm clust
 
 * Seznamte se se znalostí pro Sqoop. Další informace najdete v tématu [uživatelská příručka pro Sqoop](https://sqoop.apache.org/docs/1.4.7/SqoopUserGuide.html).
 
-## <a name="set-up"></a>Nastavit
+## <a name="set-up"></a>Nastavení
 
 1. Připojte se ke clusteru pomocí [příkazu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md) . Níže uvedený příkaz upravte tak, že ho nahradíte názvem clusteru a pak zadáte tento příkaz:
 
@@ -37,7 +37,7 @@ Naučte se používat Apache Sqoop k importu a exportu mezi Apache Hadoopm clust
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. Pro snadné použití nastavte proměnné. Hodnoty `PASSWORD`, `MYSQLSERVER`a `MYDATABASE` nahraďte příslušnými hodnotami a potom zadejte následující příkazy:
+1. Pro snadné použití nastavte proměnné. `PASSWORD`Hodnoty, `MYSQLSERVER` a nahraďte `MYDATABASE` příslušnými hodnotami a potom zadejte následující příkazy:
 
     ```bash
     export password='PASSWORD'
@@ -51,9 +51,9 @@ Naučte se používat Apache Sqoop k importu a exportu mezi Apache Hadoopm clust
 
 ## <a name="sqoop-export"></a>Export Sqoop
 
-Z podregistru do SQL Server.
+Z podregistru do SQL.
 
-1. Pokud chcete ověřit, že Sqoop uvidí vaše SQL Database, zadejte níže uvedený příkaz v otevřeném připojení SSH. Tento příkaz vrátí seznam databází.
+1. Pokud chcete ověřit, že Sqoop uvidí vaši databázi, zadejte níže uvedený příkaz v otevřeném připojení SSH. Tento příkaz vrátí seznam databází.
 
     ```bash
     sqoop list-databases --connect $serverConnect
@@ -65,7 +65,7 @@ Z podregistru do SQL Server.
     sqoop list-tables --connect $serverDbConnect
     ```
 
-1. Pokud chcete exportovat data z tabulky `hivesampletable` podregistru do `mobiledata` tabulky v SQL Database, zadejte níže uvedený příkaz v otevřeném připojení SSH:
+1. Chcete-li exportovat data z `hivesampletable` tabulky podregistru do `mobiledata` tabulky v databázi, zadejte následující příkaz v otevřeném připojení SSH:
 
     ```bash
     sqoop export --connect $serverDbConnect \
@@ -86,9 +86,9 @@ Z podregistru do SQL Server.
 
 ## <a name="sqoop-import"></a>Import Sqoop
 
-Z SQL Server do úložiště Azure.
+Z SQL do Azure Storage.
 
-1. Zadejte níže uvedený příkaz v otevřeném připojení SSH, abyste importovali data `mobiledata` z tabulky v SQL Database do `wasbs:///tutorials/usesqoop/importeddata` adresáře v HDInsight. Pole v datech jsou oddělena znakem tabulátoru a řádky jsou zakončeny znakem nového řádku.
+1. Zadejte níže uvedený příkaz v otevřeném připojení SSH, abyste importovali data z `mobiledata` tabulky v SQL do `wasbs:///tutorials/usesqoop/importeddata` adresáře v HDInsight. Pole v datech jsou oddělena znakem tabulátoru a řádky jsou zakončeny znakem nového řádku.
 
     ```bash
     sqoop import --connect $serverDbConnect \
@@ -134,11 +134,11 @@ Z SQL Server do úložiště Azure.
         SELECT * FROM mobiledata_imported2 LIMIT 10;
         ```
 
-    1. Ukončete Beeline pomocí `!exit`.
+    1. Ukončete Beeline pomocí `!exit` .
 
 ## <a name="limitations"></a>Omezení
 
-* Hromadný export – pomocí HDInsight se systémem Linux, konektor Sqoop, který slouží k exportu dat do Microsoft SQL Server nebo Azure SQL Database nepodporuje hromadné vložení.
+* Hromadný export – pomocí HDInsight se systémem Linux konektor Sqoop, který slouží k exportu dat do SQL, nepodporuje hromadné vložení.
 
 * Dávkování – pomocí HDInsight se systémem Linux při použití `-batch` přepínače při vkládání provede Sqoop vícenásobné vkládání místo dávkování operací vložení.
 
@@ -159,5 +159,5 @@ Z SQL Server do úložiště Azure.
 Nyní jste se naučili, jak používat Sqoop. Další informace naleznete v tématu:
 
 * [Použití Apache Oozie se službou HDInsight](../hdinsight-use-oozie-linux-mac.md): použijte akci Sqoop v pracovním postupu Oozie.
-* [Analýza dat zpoždění letu pomocí HDInsight](../interactive-query/interactive-query-tutorial-analyze-flight-data.md): pomocí interaktivního dotazu Analyzujte data zpoždění letu a pak pomocí Sqoop exportujte data do databáze SQL Azure.
+* [Analýza dat zpoždění letu pomocí HDInsight](../interactive-query/interactive-query-tutorial-analyze-flight-data.md): pomocí interaktivního dotazu Analyzujte data zpoždění letu a pak pomocí Sqoop exportujte data do databáze v Azure.
 * [Nahrávání dat do HDInsight](../hdinsight-upload-data.md): Najděte další metody pro nahrávání dat do služby HDInsight/Azure Blob Storage.

@@ -80,7 +80,7 @@ Pomocí následujících kroků vytvořte webovou aplikaci v ASP.NET:
 
 1. V dialogu **Konfigurovat plán hostování** zadejte hodnoty z následující tabulky a pak vyberte **OK**.
 
-   | Nastavení | Navrhovaná hodnota | Description |
+   | Nastavení | Navrhovaná hodnota | Popis |
    |-|-|-|
    | Plán Hosting| myAppServicePlan | Název plánu služby App Service. |
    | Umístění | Západní Evropa | Datacentrum, které je hostitelem webové aplikace. |

@@ -1,20 +1,14 @@
 ---
 title: Použití Apache Kafka nástroje MirrorMaker – Azure Event Hubs | Microsoft Docs
 description: Tento článek poskytuje informace o tom, jak pomocí Kafka nástroje MirrorMaker zrcadlit cluster Kafka v rozbočovačích AzureEvent.
-services: event-hubs
-documentationcenter: .net
-author: ShubhaVijayasarathy
-manager: timlt
-ms.service: event-hubs
 ms.topic: how-to
-ms.date: 04/02/2020
-ms.author: shvija
-ms.openlocfilehash: fb041ec0d3cd474cca12d5ad55b733337566b9cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: aea8ebcfa65d5f4c90aa1908d03f0fcde8906bba
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80632788"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85320186"
 ---
 # <a name="use-kafka-mirrormaker-with-event-hubs-for-apache-kafka"></a>Použití Kafka nástroje MirrorMaker s Event Hubs pro Apache Kafka
 
@@ -39,7 +33,7 @@ Důležitým aspektem moderních cloudových aplikací je schopnost aktualizovat
 
 Koncový bod služby Azure Event Hubs Kafka vám umožňuje připojit se k Azure Event Hubs pomocí protokolu Kafka (tj. klienti Kafka). Díky minimálním změnám aplikace v Kafka se můžete připojit k Azure Event Hubs a využívat výhody ekosystému Azure. Event Hubs aktuálně podporuje verze Kafka 1,0 a novější.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Abyste mohli absolvovat tento kurz, ujistěte se, že máte následující:
 
@@ -80,9 +74,9 @@ Pokud chcete nakonfigurovat Kafka nástroje MirrorMaker, přidělte mu jako svů
 
 #### <a name="consumer-configuration"></a>Konfigurace příjemce
 
-Aktualizujte konfigurační soubor `source-kafka.config`příjemce, který oznamuje nástroje MirrorMaker vlastností zdrojového clusteru Kafka.
+Aktualizujte konfigurační soubor příjemce `source-kafka.config` , který oznamuje nástroje MirrorMaker vlastností zdrojového clusteru Kafka.
 
-##### <a name="source-kafkaconfig"></a>Source – Kafka. config
+##### <a name="source-kafkaconfig"></a>source-kafka.config
 
 ```
 bootstrap.servers={SOURCE.KAFKA.IP.ADDRESS1}:{SOURCE.KAFKA.PORT1},{SOURCE.KAFKA.IP.ADDRESS2}:{SOURCE.KAFKA.PORT2},etc
@@ -93,9 +87,9 @@ client.id=mirror_maker_consumer
 
 #### <a name="producer-configuration"></a>Konfigurace výrobce
 
-Teď aktualizujte konfigurační soubor `mirror-eventhub.config`producenta, který dává službě Event Hubs pokyn, aby odesílala duplicitní data (neboli zrcadlená). Konkrétně změňte `bootstrap.servers` a `sasl.jaas.config` přejděte na Event Hubs koncový bod Kafka. Služba Event Hubs vyžaduje zabezpečenou komunikaci (SASL), která se dosahuje nastavením poslední tři vlastnosti v následující konfiguraci: 
+Teď aktualizujte konfigurační soubor producenta `mirror-eventhub.config` , který dává službě Event Hubs pokyn, aby odesílala duplicitní data (neboli zrcadlená). Konkrétně změňte `bootstrap.servers` a `sasl.jaas.config` přejděte na Event Hubs koncový bod Kafka. Služba Event Hubs vyžaduje zabezpečenou komunikaci (SASL), která se dosahuje nastavením poslední tři vlastnosti v následující konfiguraci: 
 
-##### <a name="mirror-eventhubconfig"></a>zrcadlení – eventhub. config
+##### <a name="mirror-eventhubconfig"></a>mirror-eventhub.config
 
 ```
 bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093

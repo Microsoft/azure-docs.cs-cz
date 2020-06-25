@@ -1,24 +1,14 @@
 ---
 title: Event Hubs Azure – procesní události Apache Kafka
 description: 'Kurz: v tomto článku se dozvíte, jak zpracovávat události Kafka, které se ingestují prostřednictvím centra událostí pomocí Azure Stream Analytics'
-services: event-hubs
-documentationcenter: ''
-author: spelluru
-manager: ''
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.custom: seodec18
-ms.date: 04/02/2020
-ms.author: spelluru
-ms.openlocfilehash: 9c678a91b88b87acb438311b4968be4cae46733b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/23/2020
+ms.openlocfilehash: 8fbc1ae326cc75603f5a86361e4bc79ecc461fd6
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80632806"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85313271"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Kurz: proces Apache Kafka pro události Event Hubs pomocí Stream Analytics 
 Tento článek ukazuje, jak streamovat data do Event Hubs a zpracovávat je pomocí Azure Stream Analytics. Provede vás následujícími kroky: 
@@ -50,8 +40,8 @@ Když vytvoříte obor názvů úrovně **standard** Event Hubs, je automaticky 
 ## <a name="send-messages-with-kafka-in-event-hubs"></a>Posílání zpráv pomocí Kafka v Event Hubs
 
 1. Naklonujte [Azure Event Hubs pro úložiště Kafka](https://github.com/Azure/azure-event-hubs-for-kafka) do vašeho počítače.
-2. Přejděte do složky: `azure-event-hubs-for-kafka/quickstart/java/producer`. 
-4. Aktualizujte podrobnosti o konfiguraci pro producenta `src/main/resources/producer.config`v. Zadejte **název** a **připojovací řetězec** pro **obor názvů centra událostí**. 
+2. Přejděte do složky: `azure-event-hubs-for-kafka/quickstart/java/producer` . 
+4. Aktualizujte podrobnosti o konfiguraci pro producenta v `src/main/resources/producer.config` . Zadejte **název** a **připojovací řetězec** pro **obor názvů centra událostí**. 
 
     ```xml
     bootstrap.servers={EVENT HUB NAMESPACE}.servicebus.windows.net:9093
@@ -60,7 +50,7 @@ Když vytvoříte obor názvů úrovně **standard** Event Hubs, je automaticky 
     sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{CONNECTION STRING for EVENT HUB NAMESPACE}";
     ```
 
-5. Přejděte na `azure-event-hubs-for-kafka/quickstart/java/producer/src/main/java/`a otevřete soubor **TestDataReporter. Java** v editoru dle vašeho výběru. 
+5. Přejděte na `azure-event-hubs-for-kafka/quickstart/java/producer/src/main/java/` a otevřete soubor **TestDataReporter. Java** v editoru dle vašeho výběru. 
 6. Odkomentujte následující řádek kódu:
 
     ```java
@@ -73,7 +63,7 @@ Když vytvoříte obor názvů úrovně **standard** Event Hubs, je automaticky 
     ```
 
     Tento kód odesílá data události ve formátu **JSON** . Když nakonfigurujete vstup pro Stream Analytics úlohu, jako formát vstupních dat zadáte JSON. 
-7. **Spusťte producenta** a stream do Event Hubs. V počítači s Windows při použití **příkazového řádku Node. js**přepněte do `azure-event-hubs-for-kafka/quickstart/java/producer` složky před spuštěním těchto příkazů. 
+7. **Spusťte producenta** a stream do Event Hubs. V počítači s Windows při použití **příkazového řádkuNode.js**přepněte do `azure-event-hubs-for-kafka/quickstart/java/producer` složky před spuštěním těchto příkazů. 
    
     ```shell
     mvn clean package

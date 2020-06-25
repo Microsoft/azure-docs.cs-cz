@@ -4,12 +4,12 @@ description: Přečtěte si, jak získat přístup k souborům, rozhraním REST 
 ms.topic: how-to
 ms.date: 12/04/2018
 ms.custom: tracking-python
-ms.openlocfilehash: 2c7133e9c258c77aa9c242dd7276076625153703
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: a7e242c000b57cbbfafebc1e11191199a7a4b95f
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84554371"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85319131"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>Přístup ke cloudovým datům v poznámkovém bloku
 
@@ -42,11 +42,11 @@ if response.status_code == 200:
     print(dataframe_rest2)
 ```
 
-## <a name="azure-sql-databases"></a>Databáze SQL Azure
+## <a name="azure-sql-database-and-sql-managed-instance"></a>Azure SQL Database a SQL Managed instance
 
-K databázím SQL Server můžete přistupovat pomocí knihoven pyodbc nebo pymssql.
+K databázím v SQL Database nebo spravované instanci SQL získáte přístup pomocí knihoven pyodbc nebo pymssql.
 
-[Použití Pythonu k dotazování databáze SQL Azure](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-python) vám poskytne pokyny k vytvoření databáze obsahující data AdventureWorks a ukazuje, jak tato data dotazovat. Stejný kód se zobrazí v ukázkovém poznámkovém bloku tohoto článku.
+[Použití Pythonu k dotazování databáze SQL Azure](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-python) vám poskytne pokyny k vytvoření databáze v SQL Database obsahující data AdventureWorks a ukazuje, jak tato data dotazovat. Stejný kód se zobrazí v ukázkovém poznámkovém bloku tohoto článku.
 
 ## <a name="azure-storage"></a>Azure Storage
 

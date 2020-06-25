@@ -1,21 +1,14 @@
 ---
 title: 'Rychlý Start: odesílání a příjem událostí pomocí jazyka přejít – Azure Event Hubs'
 description: 'Rychlý Start: Tento článek poskytuje návod pro vytvoření aplikace v cestách, která odesílá události z Azure Event Hubs.'
-services: event-hubs
-author: ShubhaVijayasarathy
-manager: kamalb
-ms.service: event-hubs
-ms.workload: core
 ms.topic: quickstart
-ms.custom: seodec18
-ms.date: 11/05/2019
-ms.author: shvija
-ms.openlocfilehash: e5f52d0ddbf9a66d974732d6d98ca8a5b09cc2d0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/23/2020
+ms.openlocfilehash: 18b139db32e806ac2bdbf440a9dfa8a10ab1ecf3
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73720581"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85320348"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-event-hubs-using-go"></a>Rychlý Start: odeslání událostí do nebo příjem událostí z Event Hubs pomocí jazyka přejít
 Azure Event Hubs je platforma pro streamování velkých objemů dat a služba pro ingestování událostí, která je schopná přijmout a zpracovat miliony událostí za sekundu. Služba Event Hubs dokáže zpracovávat a ukládat události, data nebo telemetrické údaje produkované distribuovaným softwarem a zařízeními. Data odeslaná do centra událostí je možné transformovat a uložit pomocí libovolného poskytovatele analýz v reálném čase nebo adaptérů pro dávkové zpracování a ukládání. Podrobnější přehled služby Event Hubs najdete v tématech [Přehled služby Event Hubs](event-hubs-about.md) a [Funkce služby Event Hubs](event-hubs-features.md).
@@ -30,7 +23,7 @@ V tomto kurzu se dozvíte, jak psát aplikace v cestách pro odesílání událo
 Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
 - Místně se nainstaluje. V případě potřeby postupujte podle [těchto pokynů](https://golang.org/doc/install) .
-- Aktivní účet Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet][] před tím, než začnete.
+- Aktivní účet Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet][], ještě než začnete.
 - **Vytvoří obor názvů Event Hubs a centrum událostí**. Použijte [Azure Portal](https://portal.azure.com) k vytvoření oboru názvů typu Event Hubs a získání přihlašovacích údajů pro správu, které vaše aplikace potřebuje ke komunikaci s centrem událostí. Pokud chcete vytvořit obor názvů a centrum událostí, postupujte podle pokynů v [tomto článku](event-hubs-create.md).
 
 ## <a name="send-events"></a>Odesílání událostí
@@ -38,7 +31,7 @@ V této části se dozvíte, jak vytvořit aplikaci v cestách pro odesílání 
 
 ### <a name="install-go-package"></a>Nainstalovat balíček přejít
 
-Získejte balíček přejít pro Event Hubs s `go get` nebo. `dep` Příklad:
+Získejte balíček přejít pro Event Hubs s `go get` nebo `dep` . Příklad:
 
 ```bash
 go get -u github.com/Azure/azure-event-hubs-go
@@ -127,7 +120,7 @@ log.Printf("got partition IDs: %s\n", info.PartitionIDs)
 
 Spusťte aplikaci, aby odesílala události do centra událostí. 
 
-Blahopřejeme! Nyní jste odeslali zprávy do centra událostí.
+Gratulujeme! Nyní jste odeslali zprávy do centra událostí.
 
 ## <a name="receive-events"></a>Příjem událostí
 
@@ -139,7 +132,7 @@ Ukázky pro vytváření artefaktů úložiště s využitím sady SDK jsou k di
 
 ### <a name="go-packages"></a>Balíčky přejít
 
-Chcete-li dostávat zprávy, Získejte balíčky přejít pro Event Hubs s `go get` nebo `dep`:
+Chcete-li dostávat zprávy, Získejte balíčky přejít pro Event Hubs s `go get` nebo `dep` :
 
 ```bash
 go get -u github.com/Azure/azure-event-hubs-go/...
@@ -269,9 +262,9 @@ if err != nil {
 
 ### <a name="write-code-to-receive-messages"></a>Napsání kódu pro přijímání zpráv
 
-Díky nastavení všeho můžete spustit hostitele procesoru událostí s nástrojem `Start(context)` , aby bylo možné trvale běžet, nebo `StartNonBlocking(context)` spustit pouze tak dlouho, dokud jsou k dispozici zprávy.
+Díky nastavení všeho můžete spustit hostitele procesoru událostí s nástrojem, `Start(context)` aby bylo možné trvale běžet, nebo `StartNonBlocking(context)` Spustit pouze tak dlouho, dokud jsou k dispozici zprávy.
 
-Tento kurz se spustí a spustí se takto: Příklady najdete v ukázce z webu GitHub `StartNonBlocking`:
+Tento kurz se spustí a spustí se takto: Příklady najdete v ukázce z webu GitHub `StartNonBlocking` :
 
 ```go
 ctx := context.Background()

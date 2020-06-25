@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 06/10/2020
+ms.date: 06/23/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: e47dee10e00340f04afd4a9807501bf83d25f9ec
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: f16f9b3fe6cd17b9fb6eb1cb2bd3ef1f42824701
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84709125"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85312758"
 ---
-|Name |Description |Zásady |Verze |
+|Název |Popis |Zásady |Verze |
 |---|---|---|---|
 |[Auditovat virtuální počítače Linux, u kterých nejsou nainstalované zadané aplikace](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_InstalledApplicationLinux.json) |V této iniciativě se nasadí požadavky na zásady a Audituje virtuální počítače Linux, u kterých nejsou nainstalované zadané aplikace. Pokud chcete získat další informace o zásadách konfigurace hostů, navštivte prosím.[https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.1.0 |
 |[Auditovat virtuální počítače Linux, ve kterých jsou nainstalované zadané aplikace](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_NotInstalledApplicationLinux.json) |V této iniciativě se nasadí požadavky na zásady a Audituje virtuální počítače Linux s nainstalovanými zadanými aplikacemi. Pokud chcete získat další informace o zásadách konfigurace hostů, navštivte prosím.[https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.1.0 |
@@ -37,3 +37,4 @@ ms.locfileid: "84709125"
 |[Auditovat virtuální počítače s Windows, na kterých jsou nainstalované zadané aplikace](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_NotInstalledApp.json) |Tento iniciativa nasadí požadavky na zásady a Audituje virtuální počítače s Windows, ve kterých jsou nainstalované zadané aplikace. Pokud chcete získat další informace o zásadách konfigurace hostů, navštivte prosím.[https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.0.0 |
 |[Auditovat virtuální počítače s Windows pomocí nedokončeného restartování](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_WindowsPendingReboot.json) |V této iniciativě se nasadí požadavky na zásady a Audituje virtuální počítače s Windows pomocí nedokončeného restartování. Pokud chcete získat další informace o zásadách konfigurace hostů, navštivte prosím.[https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.0.0 |
 |[Auditovat webové servery systému Windows, které nepoužívají protokoly zabezpečených komunikací](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_TLS.json) |V této iniciativě se nasadí požadavky na zásady a auditují se webové servery Windows, které nepoužívají protokoly TLS (Secure Communication Protocol) (TLS 1,1 nebo TLS 1,2). Pokud chcete získat další informace o zásadách konfigurace hostů, navštivte prosím.[https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.0.0 |
+|[Nasazení požadavků pro povolení zásad konfigurace hostů na virtuálních počítačích](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_Prerequisites.json) |V této iniciativě se přidá spravovaná identita přiřazená systémem a nasadí se pro virtuální počítače, které mají nárok na monitorování pomocí zásad konfigurace hosta, nasadí příslušné rozhraní konfigurace hosta platformy. Je to předpoklad pro všechny zásady konfigurace hostů a před použitím zásad konfigurace hosta musí být přiřazený k oboru přiřazení zásad. Další informace o konfiguraci hosta najdete na adrese [https://aka.ms/gcpol](https://aka.ms/gcpol) . |4 |1.0.0 – Preview |

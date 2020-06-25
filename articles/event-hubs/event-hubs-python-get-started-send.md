@@ -1,21 +1,14 @@
 ---
 title: Posílání a přijímání událostí z Azure Event Hubs pomocí Pythonu (staré)
 description: V tomto návodu se dozvíte, jak vytvářet a spouštět skripty Pythonu, které odesílají události do služby Azure Event Hubs nebo z nich přijímat události pomocí starého balíčku Azure-eventhub verze 1.
-services: event-hubs
-author: spelluru
-manager: femila
-ms.service: event-hubs
-ms.workload: core
 ms.topic: quickstart
-ms.date: 01/15/2020
-ms.author: spelluru
-ms.custom: tracking-python
-ms.openlocfilehash: 96c95efdc8f2154e0586fec59d1af66496acb101
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.date: 06/23/2020
+ms.openlocfilehash: 4ce53d2d82a00f98dbbd538bd7a61da9ba44e832
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558966"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85314479"
 ---
 # <a name="quickstart-send-and-receive-events-with-event-hubs-using-python-azure-eventhub-version-1"></a>Rychlý Start: odesílání a příjem událostí pomocí Event Hubs pomocí Pythonu (Azure – eventhub verze 1)
 V tomto rychlém startu se dozvíte, jak odesílat události do centra událostí a přijímat z něj události pomocí balíčku **Azure-eventhub verze 1** Python. 

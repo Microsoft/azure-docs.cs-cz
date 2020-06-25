@@ -3,12 +3,12 @@ title: Monitorování aplikací Java kdekoli – Azure Monitor Application Insig
 description: Monitorování výkonu aplikací bez kódu pro aplikace Java běžící v jakémkoli prostředí bez instrumentace aplikace. Najděte hlavní příčinu potíží d pomocí distribuovaného trasování a mapy aplikací.
 ms.topic: conceptual
 ms.date: 04/16/2020
-ms.openlocfilehash: 478e42669339ac015076c89da103d91080090685
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 0c66ad01f265dde7da2f48b17b3ad4438d59a0ae
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509206"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85319682"
 ---
 # <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>Možnosti konfigurace – samostatný agent Java pro Azure Monitor Application Insights
 
@@ -33,14 +33,14 @@ Další podrobnosti a další možnosti konfigurace najdete níže.
 
 ## <a name="configuration-file-path"></a>Cesta ke konfiguračnímu souboru
 
-Ve výchozím nastavení Application Insights Java 3,0 Preview očekává, že se konfigurační soubor pojmenuje `ApplicationInsights.json`a že se nachází ve stejném adresáři jako `applicationinsights-agent-3.0.0-PREVIEW.4.jar`.
+Ve výchozím nastavení Application Insights Java 3,0 Preview očekává, že se konfigurační soubor pojmenuje a že se `ApplicationInsights.json` nachází ve stejném adresáři jako `applicationinsights-agent-3.0.0-PREVIEW.5.jar` .
 
 Vlastní cestu ke konfiguračnímu souboru můžete zadat buď pomocí
 
 * `APPLICATIONINSIGHTS_CONFIGURATION_FILE`Proměnná prostředí nebo
 * `applicationinsights.configurationFile`Systémová vlastnost Java
 
-Pokud zadáte relativní cestu, bude vyřešena vzhledem k adresáři, kde `applicationinsights-agent-3.0.0-PREVIEW.4.jar` se nachází.
+Pokud zadáte relativní cestu, bude vyřešena vzhledem k adresáři, kde `applicationinsights-agent-3.0.0-PREVIEW.5.jar` se nachází.
 
 ## <a name="connection-string"></a>Připojovací řetězec
 
@@ -48,7 +48,7 @@ To je povinné. Připojovací řetězec najdete v prostředku Application Insigh
 
 :::image type="content" source="media/java-ipa/connection-string.png" alt-text="Připojovací řetězec Application Insights":::
 
-Připojovací řetězec můžete také nastavit pomocí proměnné `APPLICATIONINSIGHTS_CONNECTION_STRING`prostředí.
+Připojovací řetězec můžete také nastavit pomocí proměnné prostředí `APPLICATIONINSIGHTS_CONNECTION_STRING` .
 
 ## <a name="cloud-role-name"></a>Název cloudové role
 
@@ -68,7 +68,7 @@ Pokud chcete nastavit název cloudové role:
 
 Pokud není název cloudové role nastaven, použije se k označení součásti na mapě aplikace název Application Insights prostředku.
 
-Název cloudové role můžete také nastavit pomocí proměnné `APPLICATIONINSIGHTS_ROLE_NAME`prostředí.
+Název cloudové role můžete také nastavit pomocí proměnné prostředí `APPLICATIONINSIGHTS_ROLE_NAME` .
 
 ## <a name="cloud-role-instance"></a>Instance cloudové role
 
@@ -86,13 +86,13 @@ Pokud chcete nastavit instanci cloudové role na jinou hodnotu než název poč�
 }
 ```
 
-Instanci cloudové role můžete také nastavit pomocí proměnné `APPLICATIONINSIGHTS_ROLE_INSTANCE`prostředí.
+Instanci cloudové role můžete také nastavit pomocí proměnné prostředí `APPLICATIONINSIGHTS_ROLE_INSTANCE` .
 
 ## <a name="application-log-capture"></a>Zachycení protokolu aplikace
 
 Application Insights Java 3,0 Preview automaticky zachycuje protokolování aplikací prostřednictvím log4j, Logback a Java. util. Logging.
 
-Ve výchozím nastavení bude zachytávání veškerého protokolování `WARN` provedené na úrovni nebo výše.
+Ve výchozím nastavení bude zachytávání veškerého protokolování provedené na `WARN` úrovni nebo výše.
 
 Pokud chcete změnit tuto prahovou hodnotu:
 
@@ -123,7 +123,7 @@ Jedná se o platné `threshold` hodnoty, které můžete zadat v `ApplicationIns
 | LADĚNÍ/JEMNÉ   | DEBUG  | DEBUG   | Nevadí    |
 | LEPŠÍ        | DEBUG  | DEBUG   | LEPŠÍ   |
 | TRACE/NEJLEPŠÍ | TRACE  | TRACE   | Nejlepší  |
-| VŠE          | VŠE    | VŠE     | VŠE     |
+| ALL          | ALL    | ALL     | ALL     |
 
 ## <a name="jmx-metrics"></a>JMX metriky
 
@@ -237,7 +237,7 @@ Pokud je vaše aplikace za bránou firewall a nemůže se připojit přímo k Ap
 
 To může být užitečné pro hledání a diagnostikování problémů Application Insights sebe sama.
 
-Ve výchozím nastavení se protokoluje do konzoly s `warn`úrovní odpovídající této konfiguraci:
+Ve výchozím nastavení se protokoluje do konzoly s úrovní `warn` odpovídající této konfiguraci:
 
 ```json
 {
@@ -252,7 +252,7 @@ Ve výchozím nastavení se protokoluje do konzoly s `warn`úrovní odpovídají
 }
 ```
 
-Platné úrovně jsou `OFF`, `ERROR`, `WARN`, `INFO`, `DEBUG`a `TRACE`.
+Platné úrovně jsou `OFF` , `ERROR` , `WARN` , `INFO` , a `DEBUG` `TRACE` .
 
 Pokud se chcete přihlásit k souboru místo protokolování do konzoly:
 
@@ -271,4 +271,4 @@ Pokud se chcete přihlásit k souboru místo protokolování do konzoly:
 }
 ```
 
-Při použití protokolování souborů se po každém pokusu `maxSizeMB`o soubor změní a zachová se kromě aktuálního souboru protokolu jenom poslední dokončený soubor protokolu.
+Při použití protokolování souborů se po každém `maxSizeMB` pokusu o soubor změní a zachová se kromě aktuálního souboru protokolu jenom poslední dokončený soubor protokolu.

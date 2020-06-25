@@ -9,12 +9,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 149ac61e4737faa81e55fac3e07133c73bbc00d5
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: a581288259a521f8f2f93ff3fbc16f4926486643
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488116"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84771168"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>Rychlý Start: zprovoznění služby Azure Sentinel
 
@@ -47,7 +47,7 @@ Po připojení zdrojů dat si můžete vybrat z Galerie odborných vytvořených
 
    ![search](./media/quickstart-onboard/search-product.png)
 
-1. Vyberte **Přidat**.
+1. Vyberte možnost **Přidat**.
 
 1. Vyberte pracovní prostor, který chcete použít, nebo vytvořte nový. Službu Azure Sentinel můžete spustit ve více než jednom pracovním prostoru, ale data jsou izolovaná do jednoho pracovního prostoru.
 
@@ -58,7 +58,7 @@ Po připojení zdrojů dat si můžete vybrat z Galerie odborných vytvořených
    > - U všech [oblastí GA Log Analytics](https://azure.microsoft.com/global-infrastructure/services/?products=monitor) s výjimkou oblastí Čína a Německo (svrchovan) může Azure Sentinel běžet v pracovních prostorech. Data generovaná službou Azure Sentinel (jako jsou incidenty, záložky a pravidla výstrah, která mohou obsahovat data zákaznická z těchto pracovních prostorů) se ukládají v Evropě (pro pracovní prostory v Evropě), v Austrálii (pro pracovní prostory v Austrálii) nebo v Východní USA (pro pracovní prostory v jiné oblasti).
 
    >[!IMPORTANT]
-   > - Po povolení Azure Sentinel v pracovním prostoru se přesun tohoto pracovního prostoru do jiných skupin prostředků nebo předplatných nepodporuje. Pokud potřebujete přesunout pracovní prostor, obraťte se na podporu s pokyny.
+   > - Po povolení Azure Sentinel v pracovním prostoru se přesun tohoto pracovního prostoru do jiných skupin prostředků nebo předplatných nepodporuje. Pokud potřebujete pracovní prostor přesunout, kontaktujte [Azure Sentinel](mailto:AzureSentinel@microsoft.com).
 
 1. Vyberte **Přidat Sentinel Azure**.
   

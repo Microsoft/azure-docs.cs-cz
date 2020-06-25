@@ -1,21 +1,14 @@
 ---
 title: Příjem událostí pomocí procesoru událostí hostitel – Azure Event Hubs | Microsoft Docs
 description: Tento článek popisuje hostitele procesoru událostí v Azure Event Hubs, který zjednodušuje správu kontrolních bodů, zapůjčení a čtení událostí s paralelním hostováním.
-services: event-hubs
-documentationcenter: .net
-author: spelluru
-ms.service: event-hubs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.date: 06/23/2020
-ms.author: spelluru
-ms.reviewer: shvija
-ms.openlocfilehash: f3d6a5e77c3c1c5e8b8dceb44e5bcbe9cb5f93ec
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 338b4e890d61aca0d48287db6f042f9dc088754b
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/24/2020
-ms.locfileid: "85299292"
+ms.locfileid: "85320634"
 ---
 # <a name="event-processor-host"></a>EventProcessorHost
 > [!NOTE]

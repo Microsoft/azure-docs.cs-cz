@@ -1,20 +1,14 @@
 ---
 title: Použití Apache Flink pro Apache Kafka – Azure Event Hubs | Microsoft Docs
 description: Tento článek poskytuje informace o tom, jak připojit Apache Flink k centru událostí Azure.
-services: event-hubs
-documentationcenter: ''
-author: ShubhaVijayasarathy
-manager: timlt
-ms.service: event-hubs
 ms.topic: how-to
-ms.date: 04/02/2020
-ms.author: shvija
-ms.openlocfilehash: 2e5a2924cdc00c1cc057d71c40645085df4bae6a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 43cbf99a6ba2c0384ceffc10b01916f6ad22b26a
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80632811"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85320134"
 ---
 # <a name="use-apache-flink-with-azure-event-hubs-for-apache-kafka"></a>Použití Apache Flink se službou Azure Event Hubs pro Apache Kafka
 V tomto kurzu se dozvíte, jak připojit Apache Flink k centru událostí beze změny klientů protokolu nebo spuštění vlastních clusterů. Azure Event Hubs podporuje [Apache Kafka verze 1,0.](https://kafka.apache.org/10/documentation.html)..
@@ -31,7 +25,7 @@ V tomto kurzu se naučíte:
 > [!NOTE]
 > Tato ukázka je k dispozici na [GitHubu](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/flink) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 K dokončení tohoto kurzu se ujistěte, že máte následující požadavky:
 
@@ -64,9 +58,9 @@ Pomocí poskytnutého příkladu Flink producenta odešle zprávy službě Event
 
 ### <a name="provide-an-event-hubs-kafka-endpoint"></a>Zadejte Event Hubs koncový bod Kafka.
 
-#### <a name="producerconfig"></a>soubor. config pro výrobce
+#### <a name="producerconfig"></a>producer.config
 
-Aktualizujte `bootstrap.servers` hodnoty `sasl.jaas.config` a v `producer/src/main/resources/producer.config` nástroji a nasměrujte producent na Event Hubs koncový bod Kafka se správným ověřením.
+Aktualizujte `bootstrap.servers` hodnoty a v nástroji a `sasl.jaas.config` `producer/src/main/resources/producer.config` nasměrujte producent na Event Hubs koncový bod Kafka se správným ověřením.
 
 ```xml
 bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093
@@ -95,9 +89,9 @@ Pomocí poskytnutého příkladu příjemce přijímají zprávy z centra událo
 
 ### <a name="provide-an-event-hubs-kafka-endpoint"></a>Zadejte Event Hubs koncový bod Kafka.
 
-#### <a name="consumerconfig"></a>příjemce. config
+#### <a name="consumerconfig"></a>consumer.config
 
-Aktualizujte `bootstrap.servers` hodnoty `sasl.jaas.config` a v `consumer/src/main/resources/consumer.config` nástroji a nasměrujte uživatele na Event Hubs koncový bod Kafka se správným ověřením.
+Aktualizujte `bootstrap.servers` hodnoty a v nástroji a `sasl.jaas.config` `consumer/src/main/resources/consumer.config` nasměrujte uživatele na Event Hubs koncový bod Kafka se správným ověřením.
 
 ```xml
 bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093
@@ -118,7 +112,7 @@ mvn clean package
 mvn exec:java -Dexec.mainClass="FlinkTestConsumer"
 ```
 
-Pokud má centrum událostí události (například pokud je váš výrobce také spuštěný), pak uživatel začne přijímat události z tématu `test`.
+Pokud má centrum událostí události (například pokud je váš výrobce také spuštěný), pak uživatel začne přijímat události z tématu `test` .
 
 Podrobnější informace o připojení Flink k Kafka najdete v [příručce k Flink konektoru Kafka](https://ci.apache.org/projects/flink/flink-docs-stable/dev/connectors/kafka.html) .
 

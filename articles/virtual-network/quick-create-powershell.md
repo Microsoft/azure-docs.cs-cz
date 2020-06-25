@@ -15,11 +15,11 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: kumud
 ms.openlocfilehash: 1d30b35264707c59c899cc3a224e4affa2a4696e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79241441"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707459"
 ---
 # <a name="quickstart-create-a-virtual-network-using-powershell"></a>Rychlý start: Vytvoření virtuální sítě pomocí PowerShellu
 
@@ -31,7 +31,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si teď [bezplatný účet](
 
 Pokud se rozhodnete nainstalovat a používat PowerShell místně místo toho, musíte použít Azure PowerShell modulu verze 1.0.0 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Informace o instalaci a upgradu najdete v tématu [install Azure PowerShell Module](/powershell/azure/install-az-ps) .
 
-Nakonec, pokud používáte PowerShell místně, budete také muset spustit `Connect-AzAccount`. Tento příkaz vytvoří připojení k Azure.
+Nakonec, pokud používáte PowerShell místně, budete také muset spustit `Connect-AzAccount` . Tento příkaz vytvoří připojení k Azure.
 
 ## <a name="create-a-resource-group-and-a-virtual-network"></a>Vytvoření skupiny prostředků a virtuální sítě
 
@@ -94,7 +94,7 @@ New-AzVm `
     -AsJob
 ```
 
-`-AsJob` Možnost vytvoří virtuální počítač na pozadí. Můžete pokračovat k dalšímu kroku.
+`-AsJob`Možnost vytvoří virtuální počítač na pozadí. Můžete pokračovat k dalšímu kroku.
 
 Když Azure začne vytvářet virtuální počítač na pozadí, získáte něco podobného:
 
@@ -145,7 +145,7 @@ mstsc /v:<publicIpAddress>
 1. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače.
 
     > [!NOTE]
-    > Možná budete muset vybrat **Další volby** > **použít jiný účet**a zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače.
+    > Možná budete muset vybrat **Další volby**  >  **použít jiný účet**a zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače.
 
 1. Vyberte **OK**.
 

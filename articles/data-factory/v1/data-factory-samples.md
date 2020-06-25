@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 2b0238d8026bff435fce9c03b6517efb6a55311d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: f1e861bf9c6cc2a485ac9f153a0c932ec2e6fbb2
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84019907"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85318905"
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory – ukázky
 > [!NOTE]
@@ -26,17 +26,17 @@ ms.locfileid: "84019907"
 ## <a name="samples-on-github"></a>Ukázky na GitHubu
 [Úložiště GitHub Azure-DataFactory](https://github.com/azure/azure-datafactory) obsahuje několik ukázek, které vám pomůžou rychle zvýšit úroveň pomocí služby Azure Data Factory (nebo) změnit skripty a použít je v vlastní aplikaci. Složka Samples\JSON obsahuje fragmenty JSON pro běžné scénáře.
 
-| Ukázka | Description |
+| Ukázka | Popis |
 |:--- |:--- |
 | [Návod k ADF](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ADFWalkthrough) |Tato ukázka poskytuje ucelený návod ke zpracování souborů protokolu pomocí Azure Data Factory k přepínání dat ze souborů protokolů v nástroji na přehledy. <br/><br/>V tomto návodu kanál Data Factory shromažďuje ukázkové protokoly, zpracovává a vylepšuje data z protokolů pomocí referenčních dat a transformuje je k vyhodnocení efektivity marketingové kampaně, která se nedávno spustila. |
 | [Ukázky JSON](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/JSON) |Tato ukázka poskytuje příklady JSON pro běžné scénáře. |
 | [Ukázka stahovacího data http](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HttpDataDownloaderSample) |Tato ukázka předvádí stažení dat z koncového bodu HTTP do Azure Blob Storage pomocí vlastní aktivity rozhraní .NET. |
-| [Ukázka aktivity mezi dvěma doménami AppDomain](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/CrossAppDomainDotNetActivitySample) |Tato ukázka umožňuje vytvořit vlastní aktivitu rozhraní .NET, která není omezená na verze sestavení používané spouštěčem ADF (například WindowsAzure. Storage v 4.3.0, Newtonsoft. JSON v 6.0. x atd.). |
-| [Spustit skript jazyka R](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample) |Tato ukázka obsahuje Data Factory vlastní aktivity, které lze použít k vyvolání RScript. exe. Tato ukázka funguje jenom s vlastním clusterem HDInsight (ne na vyžádání), na kterém už je nainstalovaný R. |
+| [Ukázka aktivity mezi dvěma doménami AppDomain](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/CrossAppDomainDotNetActivitySample) |Tato ukázka umožňuje vytvořit vlastní aktivitu rozhraní .NET, která není omezená na verze sestavení používané spouštěčem ADF (například WindowsAzure. Storage v 4.3.0, Newtonsoft.Jsna v 6.0. x atd.). |
+| [Spustit skript jazyka R](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample) |Tato ukázka obsahuje Data Factory vlastní aktivity, které lze použít k vyvolání RScript.exe. Tato ukázka funguje jenom s vlastním clusterem HDInsight (ne na vyžádání), na kterém už je nainstalovaný R. |
 | [Vyvolání úloh Spark v clusteru HDInsight Hadoop](https://docs.microsoft.com/azure/data-factory/tutorial-transform-data-spark-portal) |V této ukázce se dozvíte, jak používat aktivitu MapReduce k vyvolání programu Spark. Program Spark pouze kopíruje data z jednoho kontejneru objektů BLOB v Azure do jiného. |
 | [Analýza Twitteru pomocí aktivity dávkového vyhodnocování Azure Machine Learning](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-AzureMLBatchScoringActivity) |V této ukázce se dozvíte, jak použít AzureMLBatchScoringActivity k vyvolání Azure Machine Learningho modelu, který provádí Twitter mínění Analysis, bodování, předpovědi atd. |
 | [Analýza Twitteru pomocí vlastní aktivity](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-CustomC%23Activity) |V této ukázce se dozvíte, jak použít vlastní aktivitu .NET k vyvolání modelu Azure Machine Learning, který provádí Twitter mínění Analysis, bodování, předpovědi atd. |
-| [Parametrizované kanály pro Azure Machine Learning](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ParameterizedPipelinesForAzureML) |Ukázka poskytuje ucelený kód jazyka C# pro nasazení N kanálů pro vyhodnocování a přeškolení každého s jiným parametrem oblasti, kde seznam oblastí pochází ze souboru Parameters. txt, který je součástí této ukázky. |
+| [Parametrizované kanály pro Azure Machine Learning](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ParameterizedPipelinesForAzureML) |Ukázka poskytuje ucelený kód v jazyce C# pro nasazení N kanálů pro vyhodnocování a přeškolení každého s jiným parametrem oblasti, kde seznam oblastí pochází z parameters.txt souboru, který je součástí této ukázky. |
 | [Aktualizace referenčních dat pro úlohy Azure Stream Analytics](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ReferenceDataRefreshForASAJobs) |Tento příklad ukazuje, jak použít Azure Data Factory a Azure Stream Analytics společně ke spouštění dotazů s referenčními daty a nastavení aktualizace referenčních dat podle plánu. |
 | [Hybridní kanál s místními Hortonworks Hadoop](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HybridPipelineWithOnPremisesHortonworksHadoop) |Ukázka používá místní cluster Hadoop jako výpočetní cíl pro spouštění úloh v Data Factory stejným způsobem jako při přidávání dalších výpočetních cílů, jako je cluster Hadoop založený na HDInsight v cloudu. |
 | [Nástroj pro převod JSON](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/JSONConversionTool) |Tento nástroj umožňuje převést JSON z verze před verzí 2015-07-01-Preview na nejnovější nebo 2015-07-01-Preview (výchozí). |
@@ -46,7 +46,7 @@ ms.locfileid: "84019907"
 ## <a name="azure-resource-manager-templates"></a>Šablony Azure Resource Manageru
 Následující šablony Azure Resource Manager můžete najít Data Factory na GitHubu.
 
-| Šablona | Description |
+| Šablona | Popis |
 | --- | --- |
 | [Kopírování z Azure Blob Storage do Azure SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy) |Při nasazení této šablony se vytvoří objekt pro vytváření dat Azure s kanálem, který kopíruje data ze zadaného úložiště objektů BLOB v Azure do Azure SQL Database. |
 | [Kopírování z Salesforce do Azure Blob Storage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy) |Při nasazení této šablony se vytvoří objekt pro vytváření dat Azure s kanálem, který kopíruje data ze zadaného účtu Salesforce do úložiště objektů BLOB v Azure. |
@@ -75,7 +75,7 @@ Dlaždici **ukázkové kanály** na domovské stránce vaší datové továrny m
     ![Okno Objekt pro vytváření dat](./media/data-factory-samples/DataFactoryBladeAfter.png)
 
 ## <a name="samples-in-visual-studio"></a>Ukázky v aplikaci Visual Studio
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Požadované součásti
 Na počítači musíte mít nainstalované tyto položky:
 
 * Visual Studio 2013 nebo Visual Studio 2015.
@@ -90,7 +90,7 @@ Na počítači musíte mít nainstalované tyto položky:
    2. V pravém podokně vyberte **šablony Data Factory** .
    3. Zadejte **název** projektu.
    4. Vyberte **umístění** projektu.
-   5. Klikněte na tlačítko **OK**.
+   5. Klikněte na **OK**.
 
       ![Dialogové okno Nový projekt](./media/data-factory-samples/vs-new-project-adf-templates.png)
 3. V dialogovém okně **Data Factory šablony** vyberte vzorovou šablonu v části **šablony použití** a klikněte na **Další**. Následující kroky vás provedou použitím šablony **profilace zákazníka** . Postup je podobný jako u ostatních ukázek.
@@ -104,7 +104,7 @@ Na počítači musíte mít nainstalované tyto položky:
    4. Vyberte **skupinu prostředků** pro datovou továrnu.
    5. Pro **oblast**vyberte **západní USA**, **východní USA**nebo **Severní Evropa** .
    6. Klikněte na **Další**.
-6. Na stránce **Konfigurovat úložiště dat** Zadejte existující **databázi SQL Azure** a **účet úložiště Azure** (nebo) vytvořte databázi/úložiště a klikněte na další.
+6. Na stránce **Konfigurovat úložiště dat** Zadejte existující **databázi v Azure SQL Database** a **účet úložiště Azure** (nebo) vytvořte databázi nebo úložiště a klikněte na další.
 7. Na stránce **Konfigurace COMPUTE** vyberte výchozí a klikněte na **Další**.
 8. Na stránce **Souhrn** Zkontrolujte všechna nastavení a klikněte na **Další**.
 9. Na stránce **stav nasazení** počkejte na dokončení nasazení a klikněte na tlačítko **Dokončit**.

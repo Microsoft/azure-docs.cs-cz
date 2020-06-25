@@ -1,18 +1,18 @@
 ---
 title: Předdefinované definice zásad pro Azure RBAC
 description: Obsahuje seznam Azure Policy integrovaných definic zásad pro službu Azure RBAC. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 06/10/2020
+ms.date: 06/23/2020
 ms.topic: sample
 author: rolyon
 ms.author: rolyon
 ms.service: role-based-access-control
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 320ce2ef52f206d97489dc8cba562029883fccf5
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 448f382bcaba1ba37b64a6aa5722d98c0d1648ee
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84888602"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85317259"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-rbac"></a>Azure Policy předdefinované definice pro Azure RBAC
 

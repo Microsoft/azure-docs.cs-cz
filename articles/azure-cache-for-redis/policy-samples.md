@@ -1,18 +1,18 @@
 ---
 title: Předdefinované definice zásad pro Azure cache pro Redis
 description: Seznam Azure Policy integrovaných definic zásad pro službu Azure cache pro Redis. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 06/10/2020
+ms.date: 06/23/2020
 ms.topic: sample
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.custom: subject-policy-samples
-ms.openlocfilehash: a54dfc87937bdeb438b0a84c6385d3876946c546
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: ee64e2200511118d55f3df152b5adaa574a333d3
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84883861"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85313237"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-cache-for-redis"></a>Azure Policy předdefinované definice pro Azure cache pro Redis
 

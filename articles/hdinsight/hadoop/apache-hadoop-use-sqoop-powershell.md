@@ -8,20 +8,20 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/14/2020
-ms.openlocfilehash: 87077eacd607acf4efbd660a1926daf15db7f7e5
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 67565dbaf0dd69eb271001645446f73917afa060
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653572"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85319490"
 ---
 # <a name="run-apache-sqoop-jobs-with-azure-powershell-in-hdinsight"></a>Spouštění úloh Apache Sqoop pomocí Azure PowerShell ve službě HDInsight
 
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-Naučte se používat Azure PowerShell ke spouštění úloh Apache Sqoop v Azure HDInsight k importu a exportu dat mezi clusterem HDInsight a databází Azure SQL Database nebo SQL Server.  Tento článek je pokračováním [v použití Apache Sqoop se systémem Hadoop ve službě HDInsight](./hdinsight-use-sqoop.md).
+Naučte se používat Azure PowerShell ke spouštění úloh Apache Sqoop v Azure HDInsight k importu a exportu dat mezi clusterem HDInsight a Azure SQL Database nebo SQL Server.  Tento článek je pokračováním [v použití Apache Sqoop se systémem Hadoop ve službě HDInsight](./hdinsight-use-sqoop.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 * Pracovní stanice s Azure PowerShell [AZ Module](https://docs.microsoft.com/powershell/azure/overview) installed.
 
@@ -31,9 +31,9 @@ Naučte se používat Azure PowerShell ke spouštění úloh Apache Sqoop v Azur
 
 ## <a name="sqoop-export"></a>Export Sqoop
 
-Z podregistru do SQL Server.
+Z podregistru do SQL.
 
-Tento příklad exportuje data z tabulky podregistru `hivesampletable` do `mobiledata` tabulky v SQL Database. Nastavte hodnoty pro následující proměnné a potom spusťte příkaz.
+Tento příklad exportuje data z tabulky podregistru `hivesampletable` do `mobiledata` tabulky v SQL. Nastavte hodnoty pro následující proměnné a potom spusťte příkaz.
 
 ```powershell
 $hdinsightClusterName = ""
@@ -96,7 +96,7 @@ Pokud se zobrazí chybová zpráva, `The specified blob does not exist.` zkuste 
 
 ## <a name="sqoop-import"></a>Import Sqoop
 
-Z SQL Server Azure Storage. Tento příklad importuje data z `mobiledata` tabulky v SQL Database do `wasb:///tutorials/usesqoop/importeddata` adresáře v HDInsight. Pole v datech jsou oddělena znakem tabulátoru a řádky jsou zakončeny znakem nového řádku. V tomto příkladu se předpokládá, že jste dokončili předchozí příklad.
+Z SQL do Azure Storage. Tento příklad importuje data z `mobiledata` tabulky v SQL do `wasb:///tutorials/usesqoop/importeddata` adresáře v HDInsight. Pole v datech jsou oddělena znakem tabulátoru a řádky jsou zakončeny znakem nového řádku. V tomto příkladu se předpokládá, že jste dokončili předchozí příklad.
 
 ```powershell
 $sqoopCommand = "import --connect $connectionString --table mobiledata --target-dir wasb:///tutorials/usesqoop/importeddata --fields-terminated-by '\t' --lines-terminated-by '\n' -m 1"
@@ -128,7 +128,7 @@ Get-AzHDInsightJobOutput `
 
 Jedná se o robustní příklad, který exportuje data z `/tutorials/usesqoop/data/sample.log` výchozího účtu úložiště a pak je naimportuje do tabulky nazvané `log4jlogs` v databázi SQL Server. Tento příklad není závislý na předchozích příkladech.
 
-Následující skript prostředí PowerShell předběžně zpracuje zdrojový soubor a pak ho exportuje do Azure SQL Database do tabulky `log4jlogs` . Nahraďte `CLUSTERNAME` `CLUSTERPASSWORD` hodnoty, a `SQLPASSWORD` s hodnotami, které jste použili v rámci požadavků.
+Následující skript prostředí PowerShell předběžně zpracuje zdrojový soubor a pak ho exportuje do tabulky `log4jlogs` . Nahraďte `CLUSTERNAME` `CLUSTERPASSWORD` hodnoty, a `SQLPASSWORD` s hodnotami, které jste použili v rámci požadavků.
 
 ```powershell
 <#------ BEGIN USER INPUT ------#>
@@ -219,7 +219,7 @@ $writeStream.Flush()
 $memStream.Seek(0, "Begin")
 $destBlob.UploadFromStream($memStream)
 
-#export the log file from the cluster to the SQL database
+#export the log file from the cluster to SQL
 Write-Host "Exporting the log file ..." -ForegroundColor Green
 
 $pw = ConvertTo-SecureString -String $httpPassword -AsPlainText -Force
@@ -271,7 +271,7 @@ Get-AzHDInsightJobOutput `
 
 HDInsight se systémem Linux nabízí tato omezení:
 
-* Hromadný export: konektor Sqoop, který se používá k exportu dat do Microsoft SQL Server nebo Azure SQL Database v současné době nepodporuje hromadné vložení.
+* Hromadný export: konektor Sqoop, který se používá k exportu dat do SQL, v současné době nepodporuje hromadné vložení.
 
 * Dávkování: pomocí `-batch` přepínače při vložení provede Sqoop vícenásobné vkládání místo dávkování operací vložení.
 

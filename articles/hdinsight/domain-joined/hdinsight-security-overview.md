@@ -33,7 +33,7 @@ Hraniční zabezpečení v HDInsight se dosahuje pomocí [virtuálních sítí](
 
 Všechny clustery nasazené ve virtuální síti budou mít také privátní koncový bod. Koncový bod se přeloží na soukromou IP adresu v rámci virtuální sítě pro privátní přístup HTTP ke branám clusteru.
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Authentication
 
 [Balíček zabezpečení podniku](apache-domain-joined-architecture.md) ze služby HDInsight poskytuje ověřování založené na službě Active Directory, podporu více uživatelů a řízení přístupu na základě rolí. Integrace služby Active Directory se dosahuje pomocí [Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md). S těmito možnostmi můžete vytvořit cluster HDInsight připojený k doméně služby Active Directory. Pak nakonfigurujte seznam zaměstnanců z podnikového, který se může ověřit v clusteru.
 

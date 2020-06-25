@@ -1,24 +1,14 @@
 ---
 title: Geografické zotavení po havárii – Azure Event Hubs | Microsoft Docs
 description: Použití geografických oblastí k převzetí služeb při selhání a zotavení po havárii v Azure Event Hubs
-services: event-hubs
-documentationcenter: ''
-author: ShubhaVijayasarathy
-manager: timlt
-editor: ''
-ms.service: event-hubs
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 04/28/2020
-ms.author: shvija
-ms.openlocfilehash: 47e3a27ba9c0b7995f45f38ae4e19941cb4f8c01
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 06/23/2020
+ms.openlocfilehash: 142e2b99376bef24a6477f7b40394ca2b67f292b
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659717"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85320542"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs – geografická zotavení po havárii 
 Když se nepoužívá celá oblast Azure nebo datová centra (Pokud se nepoužívají žádné [zóny dostupnosti](../availability-zones/az-overview.md) ), je důležité, aby zpracování dat pokračovalo v provozu v jiné oblasti nebo datacentru. V takovém případě *geografické zotavení po havárii* a *geografická replikace* jsou důležité funkce pro všechny podniky. Azure Event Hubs podporuje jak geografické zotavení po havárii, tak i geografickou replikaci na úrovni oboru názvů. 
@@ -55,10 +45,10 @@ Podporovány jsou následující kombinace primárních a sekundárních oborů 
 
 | Primární obor názvů | Sekundární obor názvů | Podporuje se | 
 | ----------------- | -------------------- | ---------- |
-| Standard | Standard | Ano | 
-| Standard | Vyhrazená | Ano | 
-| Vyhrazená | Vyhrazená | Ano | 
-| Vyhrazená | Standard | Ne | 
+| Standard | Standard | Yes | 
+| Standard | Vyhrazená | Yes | 
+| Vyhrazená | Vyhrazená | Yes | 
+| Vyhrazená | Standard | No | 
 
 > [!NOTE]
 > Obory názvů, které jsou ve stejném vyhrazeném clusteru, nelze spárovat. Obory názvů, které jsou v samostatných clusterech, můžete spárovat. 

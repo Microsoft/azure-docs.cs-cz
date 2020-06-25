@@ -17,7 +17,7 @@ ms.locfileid: "69541453"
 ---
 Teď můžete pomocí nástroje Průzkumník dat na webu Azure Portal vytvořit databázi grafu. 
 
-1. Vyberte **Průzkumník dat** > **Nový graf**.
+1. Vyberte **Průzkumník dat**  >  **Nový graf**.
 
     Úplně vpravo se zobrazí oblast **Přidat graf**. Pokud ji nevidíte, možná se budete muset posunout doprava.
 
