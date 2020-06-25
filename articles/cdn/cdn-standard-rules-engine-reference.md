@@ -5,14 +5,14 @@ services: cdn
 author: asudbring
 ms.service: azure-cdn
 ms.topic: article
-ms.date: 11/01/2019
+ms.date: 06/22/2020
 ms.author: allensu
-ms.openlocfilehash: 6d4fa4451c3db3d6f2a506eabd5676d18b0219f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5cb053a87293a4309a393bd9e0e76bf0d881dd71
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81259897"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322175"
 ---
 # <a name="standard-rules-engine-reference-for-azure-cdn"></a>Reference ke stroji pravidel Standard pro Azure CDN
 
@@ -32,11 +32,11 @@ Chcete-li definovat pravidlo v modulu pravidel, nastavte [podmínky](cdn-standar
 
  ![Struktura Azure CDNch pravidel](./media/cdn-standard-rules-engine-reference/cdn-rules-structure.png)
 
-Každé pravidlo může mít až čtyři podmínky shody a tři akce. Každý koncový bod Azure CDN může mít až pět pravidel. 
+Každé pravidlo může mít až deset podmínek shody a pět akcí. Každý koncový bod Azure CDN může mít až 25 pravidel. 
 
-Zahrnuté v aktuálním omezení s pěti pravidly pro Azure CDN koncový bod je výchozí *globální pravidlo*. Globální pravidlo nemá podmínky shody a akce, které jsou definovány v globálním pravidle, budou vždy aktivovány.
+Součástí tohoto omezení je výchozí *globální pravidlo*. Globální pravidlo nemá podmínky shody. akce, které jsou definovány v globálním pravidle, se vždy aktivují.
 
-## <a name="syntax"></a>Syntaxe
+## <a name="syntax"></a>Syntax
 
 Způsob zpracování speciálních znaků v pravidle se liší v závislosti na tom, jak různé podmínky shody a akce zpracovávají textové hodnoty. Podmínka nebo akce shody mohou interpretovat text jedním z následujících způsobů:
 
@@ -48,7 +48,7 @@ Způsob zpracování speciálních znaků v pravidle se liší v závislosti na 
 
 Text, který je interpretován jako hodnota literálu, zpracovává všechny speciální znaky *s výjimkou% symbol* jako součást hodnoty, která musí být v pravidle shodná. Například podmínka shody literálů nastavená na `'*'` je splněna pouze v případě, že `'*'` je nalezena přesná hodnota.
 
-K označení kódování adresy URL (například `%20`) se používá znak procenta.
+K označení kódování adresy URL (například) se používá znak procenta `%20` .
 
 ### <a name="wildcard-values"></a>Zástupné hodnoty
 
@@ -57,10 +57,10 @@ Text, který je interpretován jako zástupná hodnota, přiřadí další význ
 Znak | Popis
 ----------|------------
 \ | Zpětné lomítko se používá k úniku znaků určených v této tabulce. Zpětné lomítko musí být zadáno přímo před speciálním znakem, který by měl být uvozen řídicím znakem. Například následující syntaxe řídí hvězdičku:`\*`
-% | K označení kódování adresy URL (například `%20`) se používá znak procenta.
+% | K označení kódování adresy URL (například) se používá znak procenta `%20` .
 \* | Hvězdička je zástupný znak, který reprezentuje jeden nebo více znaků.
 mezera | Znak mezery označuje, že podmínka shody může být splněna některou ze zadaných hodnot nebo vzorů.
-jednoduché uvozovky | Jednoduché uvozovky nemají zvláštní význam. Sada jednoduchých uvozovek však označuje, že hodnota by měla být považována za hodnotu literálu. Jednoduché uvozovky lze použít následujícími způsoby:<ul><li>Aby byla splněna podmínka shody pokaždé, když zadaná hodnota odpovídá jakékoli části hodnoty porovnání.  Například `'ma'` by odpovídaly jakémukoli z následujících řetězců: <ul><li>/Business/**ma**rathon/Asset.htm</li><li>**ma**p. gif</li><li>/business/template. **ma**p</li></ul><li>Aby bylo možné zadat speciální znak jako literální znak. Můžete například zadat literální znak mezery, a to uzavřením znaku mezery do sady jednoduchých uvozovek (`' '` nebo `'<sample value>'`).</li><li>Povoluje zadání prázdné hodnoty. Zadejte prázdnou hodnotu zadáním sady jednoduchých uvozovek ('**'**).</li></ul>**Důležité**informace:<br /><ul><li>Pokud zadaná hodnota neobsahuje zástupný znak, hodnota se automaticky považuje za hodnotu literálu. Pro hodnotu literálu není nutné zadávat sadu jednoduchých uvozovek.</li><li>Pokud zpětné lomítko není použito k úniku jiného znaku v této tabulce, je zpětné lomítko ignorováno, je-li zadáno v sadě jednoduchých uvozovek.</li><li>Dalším způsobem, jak zadat speciální znak jako literální znak, je vystavení řídicího znaku pomocí zpětného lomítka (`\`).</li></ul>
+jednoduché uvozovky | Jednoduché uvozovky nemají zvláštní význam. Sada jednoduchých uvozovek však označuje, že hodnota by měla být považována za hodnotu literálu. Jednoduché uvozovky lze použít následujícími způsoby:<ul><li>Aby byla splněna podmínka shody pokaždé, když zadaná hodnota odpovídá jakékoli části hodnoty porovnání.  Například `'ma'` by odpovídaly jakémukoli z následujících řetězců: <ul><li>/Business/**ma**rathon/asset.htm</li><li>**ma**p.gif</li><li>/business/template. **ma**p</li></ul><li>Aby bylo možné zadat speciální znak jako literální znak. Můžete například zadat literální znak mezery, a to uzavřením znaku mezery do sady jednoduchých uvozovek ( `' '` nebo `'<sample value>'` ).</li><li>Povoluje zadání prázdné hodnoty. Zadejte prázdnou hodnotu zadáním sady jednoduchých uvozovek ('**'**).</li></ul>**Důležité**informace:<br /><ul><li>Pokud zadaná hodnota neobsahuje zástupný znak, hodnota se automaticky považuje za hodnotu literálu. Pro hodnotu literálu není nutné zadávat sadu jednoduchých uvozovek.</li><li>Pokud zpětné lomítko není použito k úniku jiného znaku v této tabulce, je zpětné lomítko ignorováno, je-li zadáno v sadě jednoduchých uvozovek.</li><li>Dalším způsobem, jak zadat speciální znak jako literální znak, je vystavení řídicího znaku pomocí zpětného lomítka ( `\` ).</li></ul>
 
 ## <a name="next-steps"></a>Další kroky
 

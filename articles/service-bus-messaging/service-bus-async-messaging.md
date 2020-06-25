@@ -1,25 +1,14 @@
 ---
 title: Service Bus asynchronní zasílání zpráv | Microsoft Docs
 description: Přečtěte si, jak Azure Service Bus podporuje asynchronism prostřednictvím úložiště a předávacího mechanismu s frontami, tématy a předplatnými.
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: f1435549-e1f2-40cb-a280-64ea07b39fc7
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: 554260f403104d815b9b63c576c7ba0a2f3cf1e1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: b628dd72efe0280e688b602f873a3f01d15ef587
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76761028"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85337780"
 ---
 # <a name="asynchronous-messaging-patterns-and-high-availability"></a>Asynchronní vzorce zasílání zpráv a vysoká dostupnost
 

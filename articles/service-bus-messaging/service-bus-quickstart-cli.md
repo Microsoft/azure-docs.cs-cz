@@ -1,20 +1,17 @@
 ---
 title: Rychlý Start – vytvoření fronty Service Bus pomocí Azure CLI | Microsoft Docs
 description: V tomto rychlém startu se dozvíte, jak pomocí rozhraní příkazového řádku Azure vytvořit frontu Service Bus. Pak použijete ukázkovou aplikaci Java k posílání zpráv do fronty a jejich přijímání.
-services: service-bus-messaging
 author: spelluru
-manager: timlt
-ms.service: service-bus-messaging
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 04/10/2019
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: e34599b12b8b0c487c6813038951b051d1eaf425
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ed09a72fd5eed72e7a07fefed53bf010a543b658
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "66400265"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85337389"
 ---
 # <a name="quickstart-use-the-azure-cli-to-create-a-service-bus-queue"></a>Rychlý Start: použití rozhraní příkazového řádku Azure k vytvoření fronty Service Bus
 V tomto rychlém startu se dozvíte, jak odesílat a přijímat zprávy pomocí Service Bus pomocí rozhraní příkazového řádku Azure a knihovny Java v Service Bus. Pokud vás zajímají techničtější podrobnosti, můžete si [přečíst vysvětlení](#understand-the-sample-code) klíčových prvků vzorového kódu.

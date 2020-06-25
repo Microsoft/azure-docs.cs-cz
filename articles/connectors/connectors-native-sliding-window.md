@@ -3,19 +3,19 @@ title: Plánování úloh pro zpracování souvislých dat
 description: Vytváření a spouštění opakujících se úloh, které zpracovávají souvislá data pomocí posuvných oken v Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: deli, klam, logicappspm
+ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 03/25/2020
-ms.openlocfilehash: 3ec71a1ed8d24eb637afbb73b5949b69a1e3c041
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 103805fbf395dc120acc96fbcee273abcf14939d
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83004619"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322115"
 ---
 # <a name="schedule-and-run-tasks-for-contiguous-data-by-using-the-sliding-window-trigger-in-azure-logic-apps"></a>Naplánujte a spusťte úkoly pro souvislé data pomocí posuvné aktivační události okna v Azure Logic Apps
 
-Aby bylo možné pravidelně spouštět úlohy, procesy nebo úlohy, které musí zpracovávat data v souvislých blocích, můžete spustit pracovní postup aplikace logiky pomocí **posuvné** aktivační události okna. Můžete nastavit datum a čas a také časové pásmo pro spuštění pracovního postupu a opakování pro opakování tohoto pracovního postupu. Pokud z jakéhokoli důvodu neexistují opakování, Tato aktivační událost zpracuje tyto zmeškané opakování. Například při synchronizaci dat mezi databází a úložištěm zálohování použijte aktivační událost posuvných oken tak, aby se data synchronizovaná bez mezer. Další informace o integrovaných triggerech a akcích plánování najdete v tématu [plánování a spouštění opakujících se automatizovaných úloh, úkolů a pracovních postupů s Azure Logic Apps](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md).
+Aby bylo možné pravidelně spouštět úlohy, procesy nebo úlohy, které musí zpracovávat data v souvislých blocích, můžete spustit pracovní postup aplikace logiky pomocí **posuvné** aktivační události okna. Můžete nastavit datum a čas a také časové pásmo pro spuštění pracovního postupu a opakování pro opakování tohoto pracovního postupu. Pokud z nějakého důvodu neexistují opakování, například kvůli přerušení nebo zakázaným pracovním postupům, Tato aktivační událost zpracuje tyto zmeškané opakování. Například při synchronizaci dat mezi databází a úložištěm zálohování použijte aktivační událost posuvných oken tak, aby se data synchronizovaná bez mezer. Další informace o integrovaných triggerech a akcích plánování najdete v tématu [plánování a spouštění opakujících se automatizovaných úloh, úkolů a pracovních postupů s Azure Logic Apps](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md).
 
 Tady je několik vzorů, které tato aktivační událost podporuje:
 
@@ -30,7 +30,7 @@ Rozdíly mezi touto triggerem a triggerem opakování nebo další informace o p
 > [!TIP]
 > Pokud chcete aktivovat aplikaci logiky a spustit ji jenom jednou v budoucnu, Projděte si téma [Spustit úlohy jenom jednou](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#run-once).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 * Předplatné Azure. Pokud předplatné nemáte, můžete si [zaregistrovat bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -40,7 +40,7 @@ Rozdíly mezi touto triggerem a triggerem opakování nebo další informace o p
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vytvoření prázdné aplikace logiky
 
-1. Po zobrazení návrháře aplikace logiky zadejte `sliding window` do vyhledávacího pole jako filtr. V seznamu triggery vyberte aktivační událost **posuvných oken** jako první krok v pracovním postupu aplikace logiky.
+1. Po zobrazení návrháře aplikace logiky zadejte do vyhledávacího pole `sliding window` jako filtr. V seznamu triggery vyberte aktivační událost **posuvných oken** jako první krok v pracovním postupu aplikace logiky.
 
    ![Vyberte aktivační událost posuvných oken.](./media/connectors-native-sliding-window/add-sliding-window-trigger.png)
 
@@ -50,8 +50,8 @@ Rozdíly mezi touto triggerem a triggerem opakování nebo další informace o p
 
    | Vlastnost | Název JSON | Požaduje se | Typ | Popis |
    |----------|----------|-----------|------|-------------|
-   | **Doba** | `interval` | Ano | Integer | Kladné celé číslo, které popisuje, jak často se pracovní postup spouští na základě frekvence. Tady jsou minimální a maximální intervaly: <p>-Month: 1-16 měsíců <br>-Week: 1-71 týdnů <br>Denní: 1-500 dní <br>-Hodina: 1 – 12000 hodin <br>-Minute: 1 – 72000 minut <br>-Sekunda: 1 – 9999999 sekund <p>Pokud má například interval hodnotu 6 a frekvence je "Month" (měsíc), opakování je každých 6 měsíců. |
-   | **Frekvence** | `frequency` | Ano | String | Jednotka času pro opakování: **sekunda**, **minuta**, **hodina**, **den**, **týden**nebo **měsíc** |
+   | **Doba** | `interval` | Yes | Integer | Kladné celé číslo, které popisuje, jak často se pracovní postup spouští na základě frekvence. Tady jsou minimální a maximální intervaly: <p>-Month: 1-16 měsíců <br>-Week: 1-71 týdnů <br>Denní: 1-500 dní <br>-Hodina: 1 – 12000 hodin <br>-Minute: 1 – 72000 minut <br>-Sekunda: 1 – 9999999 sekund <p>Pokud má například interval hodnotu 6 a frekvence je "Month" (měsíc), opakování je každých 6 měsíců. |
+   | **Frekvence** | `frequency` | Yes | Řetězec | Jednotka času pro opakování: **sekunda**, **minuta**, **hodina**, **den**, **týden**nebo **měsíc** |
    ||||||
 
    ![Rozšířené možnosti opakování](./media/connectors-native-sliding-window/sliding-window-trigger-more-options-details.png)
@@ -60,9 +60,9 @@ Rozdíly mezi touto triggerem a triggerem opakování nebo další informace o p
 
    | Vlastnost | Požaduje se | Název JSON | Typ | Popis |
    |----------|----------|-----------|------|-------------|
-   | **Zpoždění** | No | způsobené | String | Doba, po kterou se má zpozdit každé opakování, pomocí [specifikace data a času ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations) |
-   | **Časové pásmo** | No | timeZone | String | Platí pouze v případě, že zadáte čas spuštění, protože tato aktivační událost nepřijímá [posun UTC](https://en.wikipedia.org/wiki/UTC_offset). Vyberte časové pásmo, které chcete použít. |
-   | **Čas spuštění** | No | startTime | String | Zadejte počáteční datum a čas v tomto formátu: <p>RRRR-MM-DDThh: mm: SS Pokud vyberete časové pásmo <p>-nebo- <p>RRRR-MM-DDThh: mm: ssZ, pokud nevyberete časové pásmo <p>Pokud například požadujete 18. září 2017 na 2:00 odp., zadejte "2017-09-18T14:00:00" a vyberte časové pásmo, například Tichomoří (běžný čas). Případně zadejte "2017-09-18T14:00:00Z" bez časového pásma. <p>**Poznámka:** Tento počáteční čas musí následovat po [specifikaci data a času ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) ve [formátu data a času UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), ale bez [posunu UTC](https://en.wikipedia.org/wiki/UTC_offset). Pokud nevyberete časové pásmo, je nutné na konci přidat písmeno "Z" bez mezer. Tento "Z" odkazuje na ekvivalentní [námořní čas](https://en.wikipedia.org/wiki/Nautical_time). <p>V případě jednoduchých plánů je počáteční čas prvním výskytem, zatímco pro pokročilé opakování se Trigger neaktivuje dříve, než je čas spuštění. [*Jaké jsou způsoby, jak můžu použít počáteční datum a čas?*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
+   | **Zpoždění** | No | způsobené | Řetězec | Doba, po kterou se má zpozdit každé opakování, pomocí [specifikace data a času ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations) |
+   | **Časové pásmo** | No | timeZone | Řetězec | Platí pouze v případě, že zadáte čas spuštění, protože tato aktivační událost nepřijímá [posun UTC](https://en.wikipedia.org/wiki/UTC_offset). Vyberte časové pásmo, které chcete použít. |
+   | **Čas spuštění** | No | startTime | Řetězec | Zadejte počáteční datum a čas v tomto formátu: <p>RRRR-MM-DDThh: mm: SS Pokud vyberete časové pásmo <p>-nebo- <p>RRRR-MM-DDThh: mm: ssZ, pokud nevyberete časové pásmo <p>Pokud například požadujete 18. září 2017 na 2:00 odp., zadejte "2017-09-18T14:00:00" a vyberte časové pásmo, například Tichomoří (běžný čas). Případně zadejte "2017-09-18T14:00:00Z" bez časového pásma. <p>**Poznámka:** Tento počáteční čas musí následovat po [specifikaci data a času ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) ve [formátu data a času UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), ale bez [posunu UTC](https://en.wikipedia.org/wiki/UTC_offset). Pokud nevyberete časové pásmo, je nutné na konci přidat písmeno "Z" bez mezer. Tento "Z" odkazuje na ekvivalentní [námořní čas](https://en.wikipedia.org/wiki/Nautical_time). <p>V případě jednoduchých plánů je počáteční čas prvním výskytem, zatímco pro pokročilé opakování se Trigger neaktivuje dříve, než je čas spuštění. [*Jaké jsou způsoby, jak můžu použít počáteční datum a čas?*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
    |||||
 
 1. Nyní Sestavte zbývající pracovní postup s dalšími akcemi. Další akce, které můžete přidat, najdete v tématu [konektory pro Azure Logic Apps](../connectors/apis-list.md).

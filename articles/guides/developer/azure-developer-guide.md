@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: d74fd2e3f6b5cc090c6313aba67a1e139c713b85
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 38e93585c2d9fd3c9cf6e4affdfd1b0a250fedc4
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84695075"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321911"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Úvodní příručka pro vývojáře v Azure
 
@@ -130,7 +130,7 @@ Většina aplikací musí ukládat data, takže se ale rozhodnete hostovat svou 
 
   > **Kdy použít**: když vaše aplikace vyžaduje úložiště dat s referenční integritou, transakční podporou a podporou pro dotazy TSQL.
   >
-  > **Začínáme**: [Vytvoření databáze SQL během pár minut pomocí Azure Portal](../../sql-database/sql-database-get-started.md).
+  > **Začínáme**: [vytvoření databáze v Azure SQL Database v řádu minut pomocí Azure Portal](../../sql-database/sql-database-get-started.md).
 
 
 Pomocí [Azure Data Factory](../../data-factory/introduction.md) můžete přesunout existující místní data do Azure. Pokud nejste připraveni přesunout data do cloudu, [Hybrid Connections](../../app-service/app-service-hybrid-connections.md) v Azure App Service umožňuje připojit vaši aplikaci v App Service hostované k místním prostředkům. Můžete se také připojit ke službě Azure data a Storage z vašich místních aplikací.
@@ -163,7 +163,7 @@ Azure nabízí několik způsobů použití kontejnerů ve vašich aplikacích.
   >
   > **Začínáme**: [použijte vlastní image docker pro App Service v systému Linux](../../app-service/containers/quickstart-docker-go.md).
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Authentication
 
 Je velmi důležité nejen zjistit, kdo používá vaše aplikace, ale také k tomu, aby se zabránilo neoprávněnému přístupu k prostředkům. Azure nabízí několik způsobů, jak ověřit klienty aplikace.
 
@@ -198,7 +198,7 @@ Když vaše aplikace běží v Azure, je potřeba monitorovat výkon, sledovat p
 Bez ohledu na to, jestli je zřizování virtuálních počítačů nebo publikování vašich webových aplikací pomocí průběžné integrace, se Azure integruje s většinou oblíbených DevOps nástrojů. Můžete pracovat s nástroji, které už máte, a maximalizovat stávající prostředí s podporou nástrojů jako:
 
 * Jenkins
-* GitHubu
+* GitHub
 * Puppet
 * Chef
 * TeamCity
@@ -268,7 +268,7 @@ Služby jako [Mobile Apps](../../app-service-mobile/app-service-mobile-dotnet-ho
 
 Spuštění vaší aplikace v Azure asi zahrnuje práci s více službami Azure. Tyto služby se řídí stejným životním cyklem a lze je představit jako logickou jednotku. Webová aplikace může například používat Web Apps, SQL Database, úložiště, Azure cache pro Redis a služby Azure Content Delivery Network. [Azure Resource Manager](../../azure-resource-manager/management/overview.md) vám umožní pracovat s prostředky v aplikaci jako se skupinou. Všechny prostředky můžete nasadit, aktualizovat nebo odstranit v rámci jediné koordinované operace.
 
-Společně s logicky seskupením a správou souvisejících prostředků Azure Resource Manager zahrnuje možnosti nasazení, které umožňují přizpůsobit nasazení a konfiguraci souvisejících prostředků. Můžete například použít Správce prostředků nasazení a konfiguraci aplikace. Tato aplikace se může skládat z několika virtuálních počítačů, nástroje pro vyrovnávání zatížení a databáze SQL Azure jako jedné jednotky.
+Společně s logicky seskupením a správou souvisejících prostředků Azure Resource Manager zahrnuje možnosti nasazení, které umožňují přizpůsobit nasazení a konfiguraci souvisejících prostředků. Můžete například použít Správce prostředků nasazení a konfiguraci aplikace. Tato aplikace se může skládat z několika virtuálních počítačů, nástroje pro vyrovnávání zatížení a databáze v Azure SQL Database jako jedna jednotka.
 
 Tato nasazení vyvíjíte pomocí šablony Azure Resource Manager, což je dokument ve formátu JSON. Šablony umožňují definovat nasazení a spravovat aplikace pomocí deklarativních šablon namísto skriptů. Šablony mohou fungovat v různých prostředích, jako jsou testování, příprava a produkce. Pomocí šablon můžete například přidat tlačítko do úložiště GitHub, které nasadí kód v úložišti do sady služeb Azure jediným kliknutím.
 

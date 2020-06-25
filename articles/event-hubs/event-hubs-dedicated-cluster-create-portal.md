@@ -1,22 +1,14 @@
 ---
 title: Vytvoření vyhrazeného clusteru Event Hubs pomocí Azure Portal
 description: V tomto rychlém startu se dozvíte, jak vytvořit cluster Azure Event Hubs pomocí Azure Portal.
-services: event-hubs
-documentationcenter: ''
-author: spelluru
-manager: ''
-ms.service: event-hubs
 ms.topic: quickstart
-ms.custom: mvc
 ms.date: 06/23/2020
-ms.author: spelluru
-ms.reviewer: shvija
-ms.openlocfilehash: ad2c392fca7bf85ecf0840f6442ef8454e768f7a
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: cb657619e16f7be1d633bab61625026a40a378b8
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/24/2020
-ms.locfileid: "85296096"
+ms.locfileid: "85323096"
 ---
 # <a name="quickstart-create-a-dedicated-event-hubs-cluster-using-azure-portal"></a>Rychlý Start: vytvoření vyhrazeného clusteru Event Hubs pomocí Azure Portal 
 Clustery Event Hubs nabízejí nasazení s jedním nájemcem pro zákazníky s nejnáročnějšími požadavky na streamování. Tato nabídka má garantovanou smlouvu SLA 99,99% a je dostupná jenom na naší vyhrazené cenové úrovni. [Cluster Event Hubs](event-hubs-dedicated-overview.md) může příchozí miliony událostí za sekundu se zaručenou kapacitou a latencí druhé sekundy. Obory názvů a centra událostí vytvořené v rámci clusteru obsahují všechny funkce standardní nabídky a další, ale bez omezení příchozího přenosu dat. Vyhrazená nabídka také zahrnuje oblíbenou funkci [Event Hubs Capture](event-hubs-capture-overview.md) bez dalších poplatků, což vám umožní automaticky dávkovat a zasílat datové proudy do [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) nebo [Azure Data Lake Storage Gen 1](../data-lake-store/data-lake-store-overview.md).

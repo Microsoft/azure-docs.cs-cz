@@ -1,20 +1,14 @@
 ---
 title: Posílání a přijímání událostí z Azure Event Hubs pomocí Pythonu (nejnovější)
 description: Tento článek popisuje návod pro vytvoření aplikace v Pythonu, která odesílá a přijímá události z Azure Event Hubs pomocí nejnovějšího balíčku Azure-eventhub verze 5.
-services: event-hubs
-author: spelluru
-ms.service: event-hubs
-ms.workload: core
 ms.topic: quickstart
 ms.date: 02/11/2020
-ms.author: spelluru
-ms.custom: tracking-python
-ms.openlocfilehash: 3a79097a5939feb7380475a3cc3a80c4cb15f655
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.openlocfilehash: f47a770975caac7f07e0bfa3181e50a94b6e59ba
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84753391"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321679"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-python-azure-eventhub-version-5"></a>Posílání událostí a přijímání událostí z Center událostí pomocí Pythonu (Azure – eventhub verze 5)
 V tomto rychlém startu se dozvíte, jak odesílat události do centra událostí a přijímat z něj události pomocí balíčku **Azure-eventhub verze 5** Python.

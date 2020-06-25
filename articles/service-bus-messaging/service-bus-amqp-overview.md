@@ -1,25 +1,14 @@
 ---
 title: Přehled AMQP 1,0 v Azure Service Bus
 description: Přečtěte si, jak Azure Service Bus podporuje rozšířený protokol řízení front zpráv (AMQP) (AMQP), což je otevřený standardní protokol.
-services: service-bus-messaging
-documentationcenter: .net
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: 0e8d19cc-de36-478e-84ae-e089bbc2d515
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: multiple
 ms.topic: article
-ms.date: 01/23/2019
-ms.author: aschhab
-ms.openlocfilehash: 50d21cfe8136b9c794eae5104bbb34e28f7c1661
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 8ddeadde85e3e0b574c93db0227dcba6ad746f64
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76759308"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85338054"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>Podpora AMQP 1,0 v Service Bus
 Azure Service Bus cloudová služba i místní [Service Bus pro Windows Server (Service Bus 1,1)](https://msdn.microsoft.com/library/dn282144.aspx) podporují protokol AMQP (Advanced Message Queueing Protocol) 1,0. AMQP umožňuje sestavovat hybridní aplikace pro různé platformy s využitím otevřeného standardního protokolu. Můžete sestavovat aplikace pomocí komponent sestavených pomocí různých jazyků a platforem, které běží v různých operačních systémech. Všechny tyto komponenty se mohou připojit k Service Bus a hladce si vyměňovat strukturované obchodní zprávy efektivně a s plnou věrností.

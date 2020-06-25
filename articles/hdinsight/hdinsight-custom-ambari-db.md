@@ -6,20 +6,20 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 06/24/2019
 ms.author: hrasheed
-ms.openlocfilehash: 4cb96e1299010636e0bce3cb99fbba9862822564
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e92b0679111a6d5c6173da04c5061c95956125b8
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022261"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322961"
 ---
 # <a name="set-up-hdinsight-clusters-with-a-custom-ambari-db"></a>Nastavení clusterů HDInsight s vlastní Ambari DB
 
 Apache Ambari zjednodušuje správu a monitorování Apache Hadoopho clusteru. Ambari nabízí snadno použitelné webové uživatelské rozhraní a REST API. Ambari je součástí clusterů HDInsight a používá se k monitorování clusteru a provádění změn konfigurace.
 
-V normálním vytváření clusteru, jak je popsáno v dalších článcích, jako je například [Nastavení clusterů ve službě HDInsight](hdinsight-hadoop-provision-linux-clusters.md), je Ambari nasazena v [S0 databázi SQL Azure](../azure-sql/database/resource-limits-dtu-single-databases.md#standard-service-tier) spravované službou HDInsight a není přístupná pro uživatele.
+V normálním vytváření clusteru, jak je popsáno v dalších článcích, jako je například [Nastavení clusterů ve službě HDInsight](hdinsight-hadoop-provision-linux-clusters.md), je Ambari nasazena v [S0 Azure SQL Database](../azure-sql/database/resource-limits-dtu-single-databases.md#standard-service-tier) , která je spravována službou HDInsight a není pro uživatele přístupná.
 
 Funkce vlastní Ambari DB umožňuje nasadit nový cluster a nastavit Ambari v externí databázi, kterou spravujete. Nasazení se provádí pomocí šablony Azure Resource Manager. Tato funkce má následující výhody:
 
@@ -38,6 +38,7 @@ Můžete nasadit vlastní Ambari DB se všemi typy a verzemi clusteru. Víc clus
 
 Vlastní Ambari DB má následující požadavky:
 
+- Název databáze nesmí obsahovat spojovníky nebo mezery.
 - Musíte mít existující server a databázi Azure SQL DB.
 - Databáze, kterou zadáte pro nastavení Ambari, musí být prázdná. Ve výchozím schématu dbo by neměly být žádné tabulky.
 - Uživatel, který se používá k připojení k databázi, by měl mít v databázi oprávnění SELECT, CREATE TABLE a INSERT.

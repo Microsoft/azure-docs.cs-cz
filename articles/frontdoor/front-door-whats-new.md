@@ -1,23 +1,23 @@
 ---
-title: Novinky ve službě Azure Front Door
-description: Přečtěte si, co je nového v frontách Azure.
+title: Azure Front Door
+description: Tento článek poskytuje průběžný seznam nedávných změn, které se provedou v dopředných dveřích Azure.
 services: frontdoor
 documentationcenter: ''
 author: megan-beatty
 editor: ''
 ms.service: frontdoor
 ms.devlang: na
-ms.topic: article
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
 ms.author: mebeatty
-ms.openlocfilehash: f76e54d698e30cb2b8f929050264a3afaec36562
-ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+ms.openlocfilehash: d00ed607322205daefd80c111b83483524c4a742
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84743469"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321516"
 ---
 # <a name="whats-new-in-azure-front-door"></a>Co je nového v Azure front-dveří?
 
@@ -30,8 +30,9 @@ Přední dveře Azure se aktualizují průběžně. V tomto článku najdete inf
 
 ## <a name="new-features"></a>Nové funkce
 
-|Funkce  |Description  |Datum přidání  |
+|Funkce  |Popis  |Datum přidání  |
 |---------|---------|---------|
+| Pravidla – modul GA | Přizpůsobení způsobu zpracování požadavků HTTP na hraničních zařízeních. Další informace najdete v tématu [Přehled modulu pravidel](front-door-rules-engine.md). |Červen 2020 |
 | Modul pravidel (Preview) | Přizpůsobení způsobu zpracování požadavků HTTP na hraničních zařízeních. Další informace najdete v tématu [Přehled modulu pravidel](front-door-rules-engine.md). |Duben 2020 |
 
 

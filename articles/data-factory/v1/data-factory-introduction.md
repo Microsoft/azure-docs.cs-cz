@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 01/22/2018
-ms.openlocfilehash: 4175214219350620ae44d0249243e23b1a25144a
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 69265b17d5030d30bbb4d4be3e68c3d98fc90af0
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196592"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321086"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Úvod do služby Azure Data Factory 
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -142,6 +142,6 @@ Pokud chcete zjistit, jak sestavit datové továrny s datovými kanály, postupu
 
 | Kurz | Popis |
 | --- | --- |
-| [Přesun dat mezi dvěma cloudovými úložišti dat](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) |Vytvoříte datovou továrnu s kanálem, který přesouvá data z úložiště objektů blob do tabulky SQL. |
+| [Přesun dat mezi dvěma cloudovými úložišti dat](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) |Vytvořte datovou továrnu s kanálem, který přesouvá data z úložiště objektů blob do SQL Database. |
 | [Transformace dat pomocí clusteru Hadoop](data-factory-build-your-first-pipeline.md) |Sestavíte svou první datovou továrnu Azure s datovým kanálem, který zpracovává data pomocí skriptu Hive v clusteru Azure HDInsight (Hadoop). |
 | [Přesun dat mezi místním úložištěm dat a cloudovým úložištěm dat pomocí Systému sledování a správy dat](data-factory-move-data-between-onprem-and-cloud.md) |Vytvořte datovou továrnu s kanálem, který přesouvá data z databáze SQL Server do objektu blob Azure. Jako součást návodu nainstalujete a nakonfigurujete ve svém počítači Bránu správy dat. |

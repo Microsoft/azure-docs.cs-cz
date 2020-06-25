@@ -1,25 +1,18 @@
 ---
 title: Vytváření Azure Service Busch prostředků pomocí šablon
 description: Použití šablon Azure Resource Manager k automatizaci vytváření prostředků Service Bus
-services: service-bus-messaging
 documentationcenter: .net
 author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: 24f6a207-0fa4-49cf-8a58-963f9e2fd655
-ms.service: service-bus-messaging
-ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
-ms.workload: na
-ms.date: 09/11/2018
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 9bc784ee57b9bde393408cbefa9a197aebc59b08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2fd6a42d9624d7a95e66b88e004e1f5203a738a1
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76264454"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85336607"
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>Vytváření Service Busch prostředků pomocí šablon Azure Resource Manager
 

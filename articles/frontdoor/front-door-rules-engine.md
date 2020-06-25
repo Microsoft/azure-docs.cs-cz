@@ -1,6 +1,6 @@
 ---
-title: Přední dvířka Azure | Microsoft Docs
-description: Tento článek obsahuje přehled služby Azure Front Door. Zjistěte, zda se jedná o správnou volbu pro síťový provoz vyrovnávání zatížení pro vaši aplikaci.
+title: Azure Front Door
+description: Tento článek poskytuje přehled funkce modulu pravidel pro přední dveře Azure.
 services: frontdoor
 documentationcenter: ''
 author: megan-beatty
@@ -12,27 +12,23 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
 ms.author: mebeatty
-ms.openlocfilehash: 19deb763c8e750490854892c90d0293d3e209c09
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: ee981d08e53765003e88870d35b291a5802e6848
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82515549"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322014"
 ---
 # <a name="what-is-rules-engine-for-azure-front-door"></a>Co je to modul pravidel pro přední dveře Azure? 
 
 Modul pravidel umožňuje přizpůsobit způsob zpracování požadavků HTTP na hraničních zařízeních a poskytuje větší kontrolu nad chováním vaší webové aplikace. Modul pravidel pro přední dveře Azure zahrnuje několik klíčových funkcí, včetně:
 
-- Směrování na základě hlaviček – požadavky na směrování na základě vzorů v obsahu hlaviček požadavků, souborů cookie a řetězců dotazů.
-- Směrování založené na parametrech – můžete využít řadu podmínek shody, včetně argumentů post, dotazovacích řetězců, souborů cookie a metod žádosti, a směrovat požadavky na základě parametrů požadavku HTTP. 
-- Přepsání konfigurací směrování: 
-    - Pomocí možností přesměrování vraťte 301/302/307/308 přesměrování na klienta, aby se přesměrovala na nové názvy hostitelů, cesty a protokoly. 
-    - Pomocí možností předávání přepište cestu URL požadavku, aniž byste museli provést tradiční přesměrování a předat požadavek příslušnému back-endu v nakonfigurovaném fondu back-end. 
-    - Přizpůsobte konfiguraci ukládání do mezipaměti a dynamicky měníte trasu od předávání do mezipaměti na základě podmínek shody. 
-
-> [!IMPORTANT]
-> Tato verze Public Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
+- Vyvynuťte protokol HTTPS, ujistěte se, že všichni koncoví uživatelé komunikují s vaším obsahem prostřednictvím zabezpečeného připojení.
+- Implementujte hlavičky zabezpečení, abyste zabránili ohrožením zabezpečení založeného na prohlížeči, jako je HTTP Strict-Transport-Security (HSTS), X-XSS-Protection, Content-Security-Policy, X-frame-Options, stejně jako hlavičky Access-Control-Allow-Origin pro scénáře sdílení prostředků mezi zdroji (CORS). Atributy založené na zabezpečení je také možné definovat pomocí souborů cookie.
+- Směrování požadavků na mobilní nebo desktopové verze vaší aplikace na základě vzorů v obsahu hlaviček požadavků, souborů cookie nebo řetězců dotazů.
+- K přesměrování na nové názvy hostitelů, cesty nebo protokoly použijte možnosti přesměrování pro vrácení 301, 302, 307 a 308 přesměrování na klienta.
+- Dynamicky Upravte konfiguraci ukládání do mezipaměti trasy na základě příchozích požadavků.
+- Přepište cestu URL požadavku a předejte požadavek do příslušného back-endu v nakonfigurovaném fondu back-endu.
 
 ## <a name="architecture"></a>Architektura 
 
@@ -52,7 +48,7 @@ V obou těchto příkladech platí, že pokud není splněna žádná podmínka 
 
 Pomocí modulu pravidel AFD můžete vytvořit řadu konfigurací modulu pravidel, z nichž každá se skládá ze sady pravidel. Následující text popisuje určitou užitečnou terminologii, kterou se vám bude při konfiguraci modulu pravidel nacházet. 
 
-- *Konfigurace modulu pravidel*: sada pravidel, která se aplikují na pravidlo pro jedno směrování. Každá konfigurace je omezená na 5 pravidel. Můžete vytvořit až 10 konfigurací. 
+- *Konfigurace modulu pravidel*: sada pravidel, která se aplikují na pravidlo pro jedno směrování. Každá konfigurace je omezená na 25 pravidel. Můžete vytvořit až 10 konfigurací. 
 - *Pravidlo stroje pravidel*: pravidlo složené z až 10 podmínek shody a 5 akcí.
 - *Podmínka shody*: existuje mnoho podmínek shody, které lze využít k analýze příchozích požadavků. Pravidlo může obsahovat až 10 podmínek shody. Podmínky shody jsou vyhodnocovány pomocí operátoru **and** . Úplný seznam podmínek shody najdete [tady](front-door-rules-engine-match-conditions.md). 
 - *Akce*: akce určují, co se stane s vašimi příchozími požadavky – akce a hlavičky požadavku a odpovědi, přesměrování, přesměrování a Přepisy jsou dostupné dnes. Pravidlo může obsahovat až 5 akcí. pravidlo ale může obsahovat jenom 1 přepsání konfigurace trasy.  Úplný seznam akcí najdete [tady](front-door-rules-engine-actions.md).

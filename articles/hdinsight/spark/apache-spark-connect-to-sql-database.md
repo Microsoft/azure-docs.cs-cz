@@ -8,25 +8,25 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: f0bc1890fd5ca9c045caa6325f474e85f1b85622
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: c209260b32a69ec5d983e5d37c43ce83fdbda67f
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022244"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322350"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>Použití clusteru HDInsight Spark ke čtení a zápisu dat do Azure SQL Database
 
-Naučte se připojit cluster Apache Spark v Azure HDInsight pomocí Azure SQL Database. Pak můžete číst, zapisovat a streamovat data do databáze SQL. Pokyny v tomto článku používají Jupyter Notebook ke spouštění fragmentů kódu Scala. Můžete ale vytvořit samostatnou aplikaci v Scala nebo Pythonu a provádět stejné úlohy.
+Naučte se, jak připojit cluster Apache Spark v Azure HDInsight pomocí Azure SQL Database. Pak můžete číst, zapisovat a streamovat data do databáze SQL. Pokyny v tomto článku používají Jupyter Notebook ke spouštění fragmentů kódu Scala. Můžete ale vytvořit samostatnou aplikaci v Scala nebo Pythonu a provádět stejné úlohy.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 * Cluster Azure HDInsight Spark.  Postupujte podle pokynů v tématu [Vytvoření clusteru Apache Spark v HDInsight](apache-spark-jupyter-spark-sql.md).
 
-* Azure SQL Database. Postupujte podle pokynů v tématu [vytvoření Azure SQL Database](../../azure-sql/database/single-database-create-quickstart.md). Ujistěte se, že jste vytvořili databázi s ukázkovým schématem a daty **AdventureWorksLT** . Také se ujistěte, že jste vytvořili pravidlo brány firewall na úrovni serveru, které umožní IP adrese vašeho klienta přístup k databázi SQL na serveru. Pokyny pro přidání pravidla brány firewall jsou k dispozici ve stejném článku. Po vytvoření Azure SQL Database se ujistěte, že jsou následující hodnoty užitečné. Budete je potřebovat pro připojení k databázi z clusteru Spark.
+* Azure SQL Database. Postupujte podle pokynů v tématu [Vytvoření databáze v Azure SQL Database](../../azure-sql/database/single-database-create-quickstart.md). Ujistěte se, že jste vytvořili databázi s ukázkovým schématem a daty **AdventureWorksLT** . Také se ujistěte, že jste vytvořili pravidlo brány firewall na úrovni serveru, které umožní IP adrese vašeho klienta přístup k databázi SQL. Pokyny pro přidání pravidla brány firewall jsou k dispozici ve stejném článku. Po vytvoření databáze SQL se ujistěte, že jsou následující hodnoty užitečné. Budete je potřebovat pro připojení k databázi z clusteru Spark.
 
-    * Název serveru, který je hostitelem Azure SQL Database.
-    * Název Azure SQL Database
+    * Název serveru
+    * Název databáze.
     * Azure SQL Database uživatelské jméno a heslo správce.
 
 * SQL Server Management Studio (SSMS). Postupujte podle pokynů v tématu [použití SSMS k připojení a dotazování dat](../../azure-sql/database/connect-query-ssms.md).
@@ -64,10 +64,10 @@ Nyní můžete začít vytvářet aplikace.
 
 V této části si přečtete data z tabulky (například **tabulky SalesLT. Address**), která existuje v databázi AdventureWorks.
 
-1. V novém poznámkovém bloku Jupyter vložte v buňce kódu následující fragment kódu a nahraďte zástupné hodnoty hodnotami pro váš Azure SQL Database.
+1. V novém poznámkovém bloku Jupyter vložte v buňce kódu následující fragment kódu a nahraďte zástupné hodnoty hodnotami pro vaši databázi.
 
     ```scala
-    // Declare the values for your Azure SQL database
+    // Declare the values for your database
 
     val jdbcUsername = "<SQL DB ADMIN USER>"
     val jdbcPassword = "<SQL DB ADMIN PWD>"
@@ -89,7 +89,7 @@ V této části si přečtete data z tabulky (například **tabulky SalesLT. Add
     connectionProperties.put("password", s"${jdbcPassword}")
     ```
 
-1. Pomocí následujícího fragmentu kódu můžete vytvořit datový rámec s daty z tabulky v Azure SQL Database. V tomto fragmentu kódu používáme `SalesLT.Address` tabulku, která je k dispozici jako součást databáze **AdventureWorksLT** . Vložte fragment kódu do buňky kódu a stisknutím klávesy **SHIFT + ENTER** spusťte.
+1. Pomocí následujícího fragmentu kódu můžete vytvořit datový rámec s daty z tabulky v databázi. V tomto fragmentu kódu používáme `SalesLT.Address` tabulku, která je k dispozici jako součást databáze **AdventureWorksLT** . Vložte fragment kódu do buňky kódu a stisknutím klávesy **SHIFT + ENTER** spusťte.
 
     ```scala
     val sqlTableDF = spark.read.jdbc(jdbc_url, "SalesLT.Address", connectionProperties)
@@ -119,12 +119,12 @@ V této části si přečtete data z tabulky (například **tabulky SalesLT. Add
 
 ## <a name="write-data-into-azure-sql-database"></a>Zápis dat do Azure SQL Database
 
-V této části použijeme ukázkový soubor CSV dostupný v clusteru k vytvoření tabulky v Azure SQL Database a naplníme je daty. Ukázkový soubor CSV (**TVK. csv**) je k dispozici na všech clusterech HDInsight na adrese `HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv` .
+V této části použijeme ukázkový soubor CSV dostupný v clusteru k vytvoření tabulky v databázi a naplníme je daty. Ukázkový soubor CSV (**HVAC.csv**) je k dispozici na všech clusterech HDInsight na adrese `HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv` .
 
-1. V novém poznámkovém bloku Jupyter vložte v buňce kódu následující fragment kódu a nahraďte zástupné hodnoty hodnotami pro váš Azure SQL Database.
+1. V novém poznámkovém bloku Jupyter vložte v buňce kódu následující fragment kódu a nahraďte zástupné hodnoty hodnotami pro vaši databázi.
 
     ```scala
-    // Declare the values for your Azure SQL database
+    // Declare the values for your database
 
     val jdbcUsername = "<SQL DB ADMIN USER>"
     val jdbcPassword = "<SQL DB ADMIN PWD>"
@@ -146,7 +146,7 @@ V této části použijeme ukázkový soubor CSV dostupný v clusteru k vytvoře
     connectionProperties.put("password", s"${jdbcPassword}")
     ```
 
-1. Pomocí následujícího fragmentu kódu rozbalte schéma dat v souboru TVK. csv a pomocí schématu načtěte data ze sdíleného svazku clusteru v dataframe `readDf` . Vložte fragment kódu do buňky kódu a stisknutím klávesy **SHIFT + ENTER** spusťte.
+1. Pomocí následujícího fragmentu kódu rozbalte schéma dat v HVAC.csv a pomocí schématu načtěte data z sdíleného svazku clusteru do datového rámce `readDf` . Vložte fragment kódu do buňky kódu a stisknutím klávesy **SHIFT + ENTER** spusťte.
 
     ```scala
     val userSchema = spark.read.option("header", "true").csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv").schema
@@ -160,7 +160,7 @@ V této části použijeme ukázkový soubor CSV dostupný v clusteru k vytvoře
     spark.sql("create table hvactable_hive as select * from temphvactable")
     ```
 
-1. Nakonec pomocí tabulky podregistr vytvořte tabulku v Azure SQL Database. Následující fragment kódu vytvoří `hvactable` v Azure SQL Database.
+1. Nakonec pomocí tabulky podregistr vytvořte tabulku v databázi. Následující fragment kódu vytvoří `hvactable` v Azure SQL Database.
 
     ```scala
     spark.table("hvactable_hive").write.jdbc(jdbc_url, "hvactable", connectionProperties)
@@ -172,7 +172,7 @@ V této části použijeme ukázkový soubor CSV dostupný v clusteru k vytvoře
 
     ![Připojení k SQL Database pomocí SSMS1](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms.png "Připojení k SQL Database pomocí SSMS1")
 
-    b. Z **Průzkumník objektů**rozbalte Azure SQL Database a uzel tabulky, aby se zobrazila vytvořená tabulka **dbo. TVK** .
+    b. Z **Průzkumník objektů**rozbalte databázi a uzel tabulky, aby se zobrazila vytvořená tabulka **dbo. TVK** .
 
     ![Připojení k SQL Database pomocí SSMS2](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms-locate-table.png "Připojení k SQL Database pomocí SSMS2")
 
@@ -184,7 +184,7 @@ V této části použijeme ukázkový soubor CSV dostupný v clusteru k vytvoře
 
 ## <a name="stream-data-into-azure-sql-database"></a>Streamování dat do Azure SQL Database
 
-V této části streamuje data do `hvactable` , které jste už vytvořili v Azure SQL Database v předchozí části.
+V této části streamuje data do `hvactable` , které jste vytvořili v předchozí části.
 
 1. V prvním kroku se ujistěte, že v nástroji nejsou žádné záznamy `hvactable` . Pomocí SSMS spusťte v tabulce následující dotaz.
 
@@ -202,7 +202,7 @@ V této části streamuje data do `hvactable` , které jste už vytvořili v Azu
     import java.sql.{Connection,DriverManager,ResultSet}
     ```
 
-1. Data ze **souboru. csv ve formátu TVK** se streamují do `hvactable` . V clusteru je k dispozici soubor TVK. csv `/HdiSamples/HdiSamples/SensorSampleData/HVAC/` . V následujícím fragmentu kódu nejprve získáme schéma dat, která se mají streamovat. Pak vytvoříme datový proud streamování pomocí tohoto schématu. Vložte fragment kódu do buňky kódu a stisknutím klávesy **SHIFT + ENTER** spusťte.
+1. Streamují data z **HVAC.csv** do `hvactable` . Soubor HVAC.csv je v clusteru k dispozici na adrese `/HdiSamples/HdiSamples/SensorSampleData/HVAC/` . V následujícím fragmentu kódu nejprve získáme schéma dat, která se mají streamovat. Pak vytvoříme datový proud streamování pomocí tohoto schématu. Vložte fragment kódu do buňky kódu a stisknutím klávesy **SHIFT + ENTER** spusťte.
 
     ```scala
     val userSchema = spark.read.option("header", "true").csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv").schema
@@ -210,11 +210,11 @@ V této části streamuje data do `hvactable` , které jste už vytvořili v Azu
     readStreamDf.printSchema
     ```
 
-1. Výstup zobrazuje schéma **TVK. csv**. `hvactable`Má také stejné schéma. Výstup vypíše sloupce v tabulce.
+1. Výstup ukazuje schéma **HVAC.csv**. `hvactable`Má také stejné schéma. Výstup vypíše sloupce v tabulce.
 
     ![Tabulka schématu Apache Spark HDInsight](./media/apache-spark-connect-to-sql-database/hdinsight-schema-table.png "Schéma tabulky")
 
-1. Nakonec pomocí následujícího fragmentu kódu načtěte data ze souboru TVK. csv a Streamujte ho do `hvactable` v Azure SQL Database. Vložte fragment kódu do buňky kódu, nahraďte zástupné hodnoty hodnotami pro váš Azure SQL Database a potom stiskněte **SHIFT + ENTER** pro spuštění.
+1. Nakonec použijte následující fragment kódu ke čtení dat z HVAC.csv a jejich streamování do do `hvactable` ve vaší databázi. Vložte fragment kódu do buňky kódu, nahraďte zástupné hodnoty hodnotami pro vaši databázi a potom stiskněte **SHIFT + ENTER** pro spuštění.
 
     ```scala
     val WriteToSQLQuery  = readStreamDf.writeStream.foreach(new ForeachWriter[Row] {

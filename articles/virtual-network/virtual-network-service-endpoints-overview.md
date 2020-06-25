@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: 9dd4bc79760dde00808358fe489f6e539c2b9a2e
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 3e17df2a3c92d24a7fa662fbf92f8c89b434eb0d
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220432"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85338225"
 ---
 # <a name="virtual-network-service-endpoints"></a>Koncové body služby pro virtuální síť
 
@@ -39,7 +39,7 @@ Tato funkce je k dispozici pro následující služby a oblasti Azure. *Microsof
 - **[Azure Service Bus](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. ServiceBus*): všeobecně dostupné ve všech oblastech Azure.
 - **[Azure Event Hubs](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. EventHub*): všeobecně dostupné ve všech oblastech Azure.
 - **[Azure Data Lake Store Gen 1](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. Azureactivedirectory selhala*): všeobecně dostupná ve všech oblastech Azure, kde je adls Gen1 k dispozici.
-- **[Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)**: všeobecně dostupná ve všech oblastech Azure, kde je dostupná služba App Service.
+- **[Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)** (*Microsoft. Web*): všeobecně dostupné ve všech oblastech Azure, kde je dostupná služba App Service.
 
 **Public Preview**
 
@@ -88,7 +88,7 @@ Koncové body služby poskytují následující výhody:
 - Virtuální síť, ve které je koncový bod nakonfigurovaný, může být ve stejném předplatném jako prostředek služby Azure nebo v jiném předplatném. Další informace o oprávněních požadovaných pro nastavení koncových bodů a zabezpečení služeb Azure najdete v části [Zřizování](#provisioning).
 - U podporovaných služeb můžete pomocí koncových bodů služby svázat s virtuálními sítěmi nové nebo existující prostředky.
 
-### <a name="considerations"></a>Důležité informace
+### <a name="considerations"></a>Požadavky
 
 - Po povolení koncového bodu služby zdrojové IP adresy virtuálních počítačů v přepínači podsítě. Zdrojová IP adresa se při komunikaci se službou z dané podsítě přepne z použití veřejných adres IPv4 na používání jejich privátní IPv4 adresy. Během tohoto přepnutí se ukončí všechna existující otevřená připojení TCP ke službě. Při povolování nebo zakazování koncového bodu služby pro podsíť se ujistěte, že nejsou spuštěné žádné důležité úlohy. Také se ujistěte, že se vaše aplikace můžou po přepnutí IP adres automaticky připojit ke službám Azure.
 
@@ -151,5 +151,5 @@ Nejčastější dotazy najdete v tématu [Virtual Network časté otázky týkaj
 - [Zabezpečení Azure SQL Data Warehouse k virtuální síti](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fsql-data-warehouse%2ftoc.json)
 - [Integrace služeb Azure ve virtuálních sítích](virtual-network-for-azure-services.md)
 - [Virtual Network zásady koncového bodu služby](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
-- [Šablona Azure Resource Manager](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration)
+- [Šablona Azure Resource Manageru](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration)
 

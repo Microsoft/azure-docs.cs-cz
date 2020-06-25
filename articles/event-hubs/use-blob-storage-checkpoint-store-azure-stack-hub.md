@@ -1,19 +1,14 @@
 ---
 title: Použití Blob Storage jako úložiště kontrolních bodů v centru Azure Stack (Preview)
 description: Tento článek popisuje, jak používat Blob Storage jako úložiště kontrolního bodu v Event Hubs v centru Azure Stack (Preview).
-services: event-hubs
-documentationcenter: na
-author: spelluru
-ms.service: event-hubs
 ms.topic: how-to
-ms.date: 03/18/2020
-ms.author: spelluru
-ms.openlocfilehash: 2938099383c32eac493e4b4bb620f03c76ca5c44
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 0990941191827c66cd51d70216c75e106d0448fd
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82023646"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322365"
 ---
 # <a name="use-blob-storage-as-checkpoint-store---event-hubs-on-azure-stack-hub-preview"></a>Použití Blob Storage jako kontrolní bod úložiště – Event Hubs v Azure Stackm centru (Preview)
 Pokud používáte Azure Blob Storage jako úložiště kontrolního bodu v prostředí, které podporuje jinou verzi sady SDK pro úložiště objektů blob, než jsou ta, která jsou obvykle k dispozici v Azure, budete muset použít kód ke změně verze rozhraní API služby úložiště na konkrétní verzi podporovanou tímto prostředím. Pokud například používáte [Event Hubs v centru Azure Stack, verze 2002](https://docs.microsoft.com/azure-stack/user/event-hubs-overview), nejvyšší dostupná verze služby úložiště je verze 2017-11-09. V takovém případě je nutné použít kód pro cílení na verzi rozhraní API služby úložiště na 2017-11-09. Příklad cílení na konkrétní verzi rozhraní API úložiště najdete v těchto ukázkách na GitHubu: 
@@ -34,7 +29,7 @@ The value for one of the HTTP headers is not in the correct format
 
 
 ## <a name="sample-error-message-in-python"></a>Ukázková chybová zpráva v Pythonu
-V případě Pythonu `azure.core.exceptions.HttpResponseError` je chyba předána obslužné rutině `on_error(partition_context, error)` chyby pro `EventHubConsumerClient.receive()`. Metoda `receive()` ale nevyvolává výjimku. `print(error)`vytisknou se následující informace o výjimce:
+V případě Pythonu je chyba `azure.core.exceptions.HttpResponseError` předána obslužné rutině chyby `on_error(partition_context, error)` pro `EventHubConsumerClient.receive()` . Metoda ale `receive()` nevyvolává výjimku. `print(error)`vytisknou se následující informace o výjimce:
 
 ```bash
 The value for one of the HTTP headers is not in the correct format.

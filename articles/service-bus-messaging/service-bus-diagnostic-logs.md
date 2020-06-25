@@ -1,26 +1,14 @@
 ---
 title: Protokoly diagnostiky Azure Service Bus | Microsoft Docs
 description: Tento článek poskytuje přehled všech provozních a diagnostických protokolů, které jsou k dispozici pro Azure Service Bus.
-keywords: ''
-documentationcenter: .net
-services: service-bus-messaging
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: a80fb97810fee04a4eb50c43178c168e66f29173
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: eeaa7e92488fd59994fc07ea0081b0f00c8768df
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80618734"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85337539"
 ---
 # <a name="enable-diagnostics-logs-for-service-bus"></a>Povolit protokoly diagnostiky pro Service Bus
 

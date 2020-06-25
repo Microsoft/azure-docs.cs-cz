@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: mimckitt
 ms.subservice: disks
-ms.openlocfilehash: e69b041a2e4c8a0715adb6ab126a3aede42f7dde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5044993e04dabc363a7a4ee49abb66285bcd7521
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81869692"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85338239"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>Postup rozšíření jednotky operačního systému virtuálního počítače
 
@@ -160,7 +160,7 @@ Start-AzVM -ResourceGroupName $rgName -Name $vmName
 
 ## <a name="resizing-data-disks"></a>Změna velikosti datových disků
 
-Tento článek se zaměřuje hlavně na rozšíření disku operačního systému virtuálního počítače, ale skript se dá použít i k rozšíření datových disků připojených k virtuálnímu počítači. Pokud například chcete rozšířit datový disk připojený k virtuálnímu počítači, nahraďte objekt `OSDisk` v části `StorageProfile` polem `DataDisks` a použijte číselný index k získání odkazu na první připojený datový disk, jak je znázorněno níže:
+Tento článek se zaměřuje hlavně na rozšíření disku operačního systému virtuálního počítače, ale skript se dá použít i k rozšíření datových disků připojených k virtuálnímu počítači. Pokud se jenom rozšíří datový disk, virtuální počítač se **nemusí** uvolnit. Pokud například chcete rozšířit datový disk připojený k virtuálnímu počítači, nahraďte objekt `OSDisk` v části `StorageProfile` polem `DataDisks` a použijte číselný index k získání odkazu na první připojený datový disk, jak je znázorněno níže:
 
 **Spravovaný disk**
 
@@ -201,11 +201,11 @@ Po rozbalení disku pro virtuální počítač musíte přejít do operačního 
 
 2.  Otevřete příkazový řádek a zadejte příkaz **DiskPart**.
 
-2.  Do příkazového řádku **DiskPart** zadejte `list volume`. Poznamenejte si svazek, který chcete zvětšit.
+2.  Do příkazového řádku **DiskPart** zadejte `list volume` . Poznamenejte si svazek, který chcete zvětšit.
 
-3.  Do příkazového řádku **DiskPart** zadejte `select volume <volumenumber>`. Tím se vybere *volumenumber* svazku, který chcete v jednom disku zvětšit do souvislého prázdného místa.
+3.  Do příkazového řádku **DiskPart** zadejte `select volume <volumenumber>` . Tím se vybere *volumenumber* svazku, který chcete v jednom disku zvětšit do souvislého prázdného místa.
 
-4.  Do příkazového řádku **DiskPart** zadejte `extend [size=<size>]`. Tím se rozšíří vybraný svazek o *Velikost* v megabajtech (MB).
+4.  Do příkazového řádku **DiskPart** zadejte `extend [size=<size>]` . Tím se rozšíří vybraný svazek o *Velikost* v megabajtech (MB).
 
 
 ## <a name="next-steps"></a>Další kroky

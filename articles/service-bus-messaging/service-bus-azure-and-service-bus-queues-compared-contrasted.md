@@ -1,25 +1,14 @@
 ---
-title: Porovnání front Azure Storage a front Service Bus
+title: Porovnání front služeb Azure Storage a Service Bus
 description: Analyzuje rozdíly a podobnosti mezi dvěma typy front, které nabízí Azure.
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: f07301dc-ca9b-465c-bd5b-a0f99bab606b
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: tbd
-ms.date: 09/04/2019
-ms.author: aschhab
-ms.openlocfilehash: ffa98e511053edc75fd0e6f25f7b0e21ee9ddda0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: a64000741de68518dd459b105a093ccf4cb6ab7b
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414530"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85337637"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Fronty úložiště a fronty Service Bus – porovnání a kontrast
 Tento článek analyzuje rozdíly a podobnosti mezi dvěma typy front, které nabízí Microsoft Azure dnes: fronty úložiště a Service Bus fronty. Pomocí těchto informací můžete porovnat a obcházet příslušné technologie a dát jim k moc informací o tom, které řešení nejlépe vyhovuje vašim potřebám.
@@ -52,7 +41,7 @@ Jako architekt nebo vývojář řešení **byste měli zvážit použití Servic
 * Chcete, aby aplikace zpracovala zprávy jako paralelní dlouhodobé proudy (zprávy jsou přidruženy ke streamu pomocí vlastnosti [SessionID](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sessionid) ve zprávě). V tomto modelu každý uzel v náročné aplikaci soutěží na datové proudy, nikoli na zprávy. Když je datový proud přidělen k náročnému uzlu, uzel může prošetřit stav stavu datového proudu aplikace pomocí transakcí.
 * Vaše řešení vyžaduje transakční chování a nedělitelnost při odesílání nebo přijímání více zpráv z fronty.
 * Vaše aplikace zpracovává zprávy, které mohou překročit 64 KB, ale nebude se nejspíš přiblíží limitu 256 KB.
-* Vyřešíte požadavek na poskytování modelu přístupu na základě role do front a různá práva a oprávnění pro odesílatele a příjemce. Další informace najdete v těchto článcích:
+* Vyřešíte požadavek na poskytování modelu přístupu na základě role do front a různá práva a oprávnění pro odesílatele a příjemce. Další informace najdete v následujících článcích:
     - [Ověřování pomocí spravovaných identit](service-bus-managed-service-identity.md)
     - [Ověření z aplikace](authenticate-application.md)
 * Velikost fronty nepřekročí 80 GB.
@@ -135,7 +124,7 @@ V této části se porovnávají fronty úložiště a Service Bus fronty z pers
 | Maximální velikost fronty |**500 TB**<br/><br/>(omezeno na [jednu kapacitu účtu úložiště](../storage/common/storage-introduction.md#queue-storage)) |**1 GB až 80 GB**<br/><br/>(definováno při vytváření fronty a [Povolení dělení](service-bus-partitioning.md) – viz část "Další informace") |
 | Maximální velikost zprávy |**64 kB**<br/><br/>(48 KB při použití kódování **Base64** )<br/><br/>Azure podporuje velké zprávy kombinováním front a objektů BLOB – v takovém bodě můžete každou položku zařadit do fronty až 200 GB. |**256 KB** nebo **1 MB**<br/><br/>(včetně záhlaví a textu, maximální velikost hlavičky: 64 KB).<br/><br/>Závisí na [úrovni služby](service-bus-premium-messaging.md). |
 | Maximální hodnota TTL zprávy |**Infinite** (od verze API-Version 2017-07-27) |**TimeSpan. max** |
-| Maximální počet front |**Unlimited** |**10 000**<br/><br/>(obor názvů pro službu) |
+| Maximální počet front |**Unlimited** |**10 000**<br/><br/>(obor názvů pro službu) |
 | Maximální počet souběžných klientů |**Unlimited** |**Unlimited**<br/><br/>(100 souběžného počtu připojení se vztahuje jenom na komunikaci založenou na protokolu TCP). |
 
 ### <a name="additional-information"></a>Další informace
@@ -157,7 +146,7 @@ V této části se porovnávají funkce správy poskytované frontami úložišt
 | Nativní C++ |**Ano** |**Ano** |
 | Java API |**Ano** |**Ano** |
 | ROZHRANÍ PHP API |**Ano** |**Ano** |
-| Rozhraní API pro Node. js |**Ano** |**Ano** |
+| Node.js API |**Ano** |**Ano** |
 | Libovolná Podpora metadat |**Ano** |**Ne** |
 | Queue pravidla pojmenování |**Až 63 znaků dlouhé**<br/><br/>(Písmena v názvu fronty musí být malá.) |**Až 260 znaků dlouhé**<br/><br/>(U cest a názvů fronty se nerozlišují malá a velká písmena.) |
 | Funkce Get Queue Length |**Ano**<br/><br/>(Přibližná hodnota, pokud vyprší platnost zpráv nad rámec hodnoty TTL bez odstranění.) |**Ano**<br/><br/>(Přesně, hodnota bodu v čase.) |
@@ -191,7 +180,7 @@ Vzhledem k tomu, že Service Bus fronty poskytují řadu pokročilých funkcí, 
 ## <a name="next-steps"></a>Další kroky
 Následující články poskytují další doprovodné materiály a informace o používání front úložiště nebo Service Bus front.
 
-* [Začínáme s frontami Service Bus](service-bus-dotnet-get-started-with-queues.md)
+* [Začínáme s frontami služby Service Bus](service-bus-dotnet-get-started-with-queues.md)
 * [Jak používat službu Queue Storage](../storage/queues/storage-dotnet-how-to-use-queues.md)
 * [Osvědčené postupy pro zlepšení výkonu pomocí Service Bus zprostředkovaných zpráv](service-bus-performance-improvements.md)
 * [Představení front a témat v Azure Service Bus (příspěvek na blogu)](https://www.serverless360.com/blog/azure-service-bus-queues-vs-topics)

@@ -1,7 +1,7 @@
 ---
-title: Nastavení připojení ke službě Azure SQL Database pomocí spravované identity (Preview)
+title: Nastavení připojení k Azure SQL Database pomocí spravované identity (Preview)
 titleSuffix: Azure Cognitive Search
-description: Naučte se, jak nastavit připojení indexeru ke službě Azure SQL Database pomocí spravované identity (Preview).
+description: Naučte se, jak nastavit připojení indexeru k Azure SQL Database pomocí spravované identity (Preview).
 manager: luisca
 author: markheff
 ms.author: maheff
@@ -9,22 +9,23 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 87389651707a3bdcc18ae7eb03b88681b5303c4d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 3e58bdafce6746d7f83dfbceeff529c6d4b5075a
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664799"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321339"
 ---
-# <a name="set-up-an-indexer-connection-to-an-azure-sql-database-using-a-managed-identity-preview"></a>Nastavení připojení indexeru ke službě Azure SQL Database pomocí spravované identity (Preview)
+# <a name="set-up-an-indexer-connection-to-azure-sql-database-using-a-managed-identity-preview"></a>Nastavení připojení indexeru k Azure SQL Database pomocí spravované identity (Preview)
 
 > [!IMPORTANT] 
 > Podpora nastavení připojení ke zdroji dat pomocí spravované identity je aktuálně v ověřované veřejné verzi Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy.
 > Vyplněním [tohoto formuláře](https://aka.ms/azure-cognitive-search/mi-preview-request)můžete požádat o přístup k verzi Preview.
 
-Tato stránka popisuje, jak nastavit připojení indexeru ke službě Azure SQL Database pomocí spravované identity namísto zadání přihlašovacích údajů do připojovacího řetězce objektu zdroje dat.
+Tato stránka popisuje, jak nastavit připojení indexeru k Azure SQL Database pomocí spravované identity namísto zadání přihlašovacích údajů do připojovacího řetězce objektu zdroje dat.
 
 Než se dozvíte víc o této funkci, doporučujeme vám pochopit, co indexer je a jak nastavit indexer pro zdroj dat. Další informace najdete na následujících odkazech:
+
 * [Přehled indexeru](search-indexer-overview.md)
 * [Indexer pro Azure SQL](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 
@@ -39,7 +40,7 @@ Když je povolená spravovaná identita přiřazená systémem, Azure vytvoří 
 Po výběru možnosti **Uložit** se zobrazí ID objektu, které bylo přiřazeno k vaší vyhledávací službě.
 
 ![ID objektu](./media/search-managed-identities/system-assigned-identity-object-id.png "ID objektu")
- 
+
 ### <a name="2---provision-azure-active-directory-admin-for-sql-server"></a>2. zřízení Azure Active Directory správce pro SQL Server
 
 Při připojování k databázi v dalším kroku se budete muset připojit pomocí účtu Azure Active Directory (Azure AD), který má oprávnění správce k databázi, aby vaše služba vyhledávání mohla mít přístup k databázi.
@@ -102,7 +103,7 @@ Při indexování z databáze SQL musí mít zdroj dat následující požadovan
 * **název** je jedinečný název zdroje dat v rámci vyhledávací služby.
 * **typ** je`azuresql`
 * **přihlašovací údaje**
-    * Při ověřování pomocí spravované identity se formát **přihlašovacích údajů** liší od použití identity spravovaných. Tady poskytnete počáteční katalog nebo název databáze a ResourceId, které nemají klíč nebo heslo účtu. ResourceId musí zahrnovat ID předplatného Azure SQL Database, skupinu prostředků služby SQL Database a název databáze SQL. 
+    * Při ověřování pomocí spravované identity se formát **přihlašovacích údajů** liší od použití identity spravovaných. Tady poskytnete počáteční katalog nebo název databáze a ResourceId, které nemají klíč nebo heslo účtu. ResourceId musí zahrnovat ID předplatného Azure SQL Database, skupinu prostředků SQL Database a název databáze SQL. 
     * Formát připojovacího řetězce spravované identity:
         * *Počáteční katalog | Databáze =**název databáze**; ResourceId =/Subscriptions/**ID vašeho předplatného**/resourceGroups/**název vaší skupiny prostředků**/Providers/Microsoft.SQL/Servers/**vaše SQL Server jméno**/; Časový limit připojení =**časový limit připojení**;*
 * **Container** Určuje název tabulky nebo zobrazení, které chcete indexovat.

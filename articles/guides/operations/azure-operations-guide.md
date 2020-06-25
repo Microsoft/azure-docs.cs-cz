@@ -8,12 +8,12 @@ ms.service: azure
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 08/24/2018
-ms.openlocfilehash: 4f9da6cbfe8d1e6b92c39148b275de193730c8f1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e7ebcf39c203f9956b23ef22754b38f32e9d9352
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77623581"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323024"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Začínáme s operátory IT Azure
 
@@ -186,7 +186,7 @@ Než budete moct pracovat se službami Azure, potřebujete předplatné. K dispo
 
 **Bezplatné účty**: odkaz pro registraci bezplatného účtu se nachází na [webu Azure](https://azure.microsoft.com/). Díky tomu budete mít kredit v průběhu 30 dnů a vyzkoušíte jakoukoli kombinaci prostředků v Azure. Pokud částku svého kreditu překročíte, váš účet se pozastaví. Na konci zkušebního období se vaše služby vyřadí z provozu a nebudou už fungovat. Můžete kdykoli upgradovat na předplatné s průběžnými platbami.
 
-**Předplatná MSDN**: Pokud máte předplatné MSDN, získáte každý měsíc určitou částku na kredit Azure. Pokud máte například Microsoft Visual Studio Enterprise s předplatným MSDN, získáte \$kredit Azure 150 měsíčně.
+**Předplatná MSDN**: Pokud máte předplatné MSDN, získáte každý měsíc určitou částku na kredit Azure. Pokud máte například Microsoft Visual Studio Enterprise s předplatným MSDN, získáte \$ kredit Azure 150 měsíčně.
 
 Pokud překročíte částku kreditu, bude služba zakázána, dokud se nespustí další měsíc. Limit útraty můžete vypnout a přidat platební kartu, která se má použít pro další náklady. Některé z těchto nákladů se uvažují pro účty MSDN. Platíte například cenu za Linux pro virtuální počítače s Windows serverem a za servery Microsoftu se neúčtují žádné další poplatky, jako je Microsoft SQL Server. To umožňuje vytvářet účty MSDN ideální pro scénáře vývoje a testování.
 
@@ -226,7 +226,7 @@ Ceny za každou službu v Azure se liší. Řada služeb Azure poskytuje úrovn�
 
 Azure Resource Manager je mechanismus nasazení, správy a organizace pro prostředky Azure. Pomocí Správce prostředků můžete do skupiny prostředků umístit mnoho jednotlivých prostředků dohromady.
 
-Správce prostředků taky zahrnuje možnosti nasazení, které umožňují přizpůsobitelné nasazení a konfiguraci souvisejících prostředků. Například pomocí Správce prostředků můžete nasadit aplikaci, která se skládá z několika virtuálních počítačů, nástroje pro vyrovnávání zatížení a databáze SQL jako jedné jednotky. Tato nasazení vyvíjíte pomocí šablony Správce prostředků.
+Správce prostředků taky zahrnuje možnosti nasazení, které umožňují přizpůsobitelné nasazení a konfiguraci souvisejících prostředků. Například pomocí Správce prostředků můžete nasadit aplikaci, která se skládá z několika virtuálních počítačů, nástroje pro vyrovnávání zatížení a databáze v Azure SQL Database jako jeden celek. Tato nasazení vyvíjíte pomocí šablony Správce prostředků.
 
 Resource Manager poskytuje několik výhod:
 
@@ -465,7 +465,7 @@ Místní síť můžete připojit k virtuální síti Azure pomocí ExpressRoute
 Vzhledem k tomu, že je virtuální síť Azure připojená k vaší místní síti, musí virtuální sítě mezi různými místy používat jedinečnou část adresního prostoru, který vaše organizace používá. Podobně jako u různých podnikových umístění je přiřazena konkrétní podsíť protokolu IP, Azure se v rámci rozšiřování sítě bude lišit od jiného umístění.
 Existuje několik možností, jak nasadit virtuální síť.
 
-- [Portál](../..//virtual-network/quick-create-portal.md)
+- [Azure Portal](../..//virtual-network/quick-create-portal.md)
 
 - [PowerShell](../../virtual-network/quick-create-powershell.md)
 

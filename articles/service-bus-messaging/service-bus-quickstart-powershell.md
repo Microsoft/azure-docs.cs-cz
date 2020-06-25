@@ -1,21 +1,17 @@
 ---
 title: Vytvoření fronty Service Bus pomocí Azure PowerShell
 description: V tomto rychlém startu se dozvíte, jak pomocí Azure PowerShell vytvořit frontu Service Bus. Pak použijete ukázkovou aplikaci k posílání zpráv do fronty a jejich přijímání.
-services: service-bus-messaging
 author: spelluru
-manager: timlt
-ms.service: service-bus-messaging
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.custom: mvc
-ms.date: 12/20/2019
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 890e8d3a7592a6794fd19ac28b6ca613ac7201c6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f1fecfd7ba9f35d06b680d43248bf82aeb54a27b
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75426940"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85337239"
 ---
 # <a name="quickstart-use-azure-powershell-to-create-a-service-bus-queue"></a>Rychlý Start: použití Azure PowerShell k vytvoření fronty Service Bus
 Tento rychlý start popisuje, jak odesílat zprávy do fronty Service Bus a přijímat je. Používá se k tomu prostředí PowerShell, kde se vytvoří obor názvů pro zasílání zpráv a v tomto oboru názvů fronta. Dále je třeba získat v oboru názvů přihlašovací údaje pro autorizaci. Postup pak ukazuje, jak do této fronty odesílat zprávy a přijímat je z ní pomocí [knihovny .NET Standard](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus).
@@ -29,7 +25,7 @@ Tento rychlý start popisuje, jak odesílat zprávy do fronty Service Bus a při
 
 Před tímto kurzem se ujistěte, že máte nainstalované tyto položky:
 
-- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet][] před tím, než začnete. 
+- Předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet][], ještě než začnete. 
 - [Visual Studio 2017 s aktualizací Update 3 (verze 15.3, 26730.01)](https://www.visualstudio.com/vs) nebo novější. Pomocí sady Visual Studio vytvoříte ukázku, která odesílá zprávy do fronty a přijímá z ní zprávu. Ukázka je testování fronty, kterou jste vytvořili na portálu. 
 - [NET Core SDK](https://www.microsoft.com/net/download/windows) verze 2.0 nebo novější.
 
@@ -165,7 +161,7 @@ Metoda `Main()` pak spustí asynchronní smyčku zpráv, `MainAsync()`.
 
 ### <a name="message-loop"></a>Smyčka zpráv
 
-Metoda MainAsync () vytvoří klienta fronty s argumenty příkazového řádku, zavolá obslužnou rutinu přijímající zprávy s názvem `RegisterOnMessageHandlerAndReceiveMessages()`a odešle sadu zpráv:
+Metoda MainAsync () vytvoří klienta fronty s argumenty příkazového řádku, zavolá obslužnou rutinu přijímající zprávy s názvem `RegisterOnMessageHandlerAndReceiveMessages()` a odešle sadu zpráv:
 
 ```csharp
 static async Task MainAsync(string ServiceBusConnectionString, string QueueName)

@@ -7,12 +7,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: troubleshooting
 ms.date: 07/10/2019
-ms.openlocfilehash: 901f2b56bc045dc9a9837dd18b2e6ce7169aa3b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 510787b395388f0dc895b9646aee8208013f3b42
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76964222"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322032"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share"></a>Řešení běžných problémů v Azure Data Share 
 
@@ -64,7 +64,7 @@ Sdílení založené na SQL vyžaduje další oprávnění. Podrobnosti najdete 
 
 "Uživatel x neexistuje v SQL Database"
 
-Pokud se tato chyba zobrazí při přidávání datové sady ze zdroje založeného na SQL, může to být tím, že jste nevytvořili uživatele pro spravovanou identitu Azure data Shared na svém SQL Server.  Pokud chcete tento problém vyřešit, spusťte následující skript:
+Pokud se tato chyba zobrazí při přidávání datové sady ze zdroje založeného na SQL, může to být tím, že jste nevytvořili uživatele pro spravovanou identitu Azure data Shared v SQL Database.  Pokud chcete tento problém vyřešit, spusťte následující skript:
 
 ```sql
     create user "<share_acct_name>" from external provider; 

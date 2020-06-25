@@ -1,6 +1,6 @@
 ---
-title: Přední dvířka Azure | Microsoft Docs
-description: Tento článek obsahuje přehled služby Azure Front Door. Zjistěte, zda se jedná o správnou volbu pro síťový provoz vyrovnávání zatížení pro vaši aplikaci.
+title: Azure Front Door
+description: Tento článek poskytuje seznam různých podmínek shody, které jsou k dispozici pro modul pravidel služby Azure front-dveří.
 services: frontdoor
 documentationcenter: ''
 author: megan-beatty
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
 ms.author: mebeatty
-ms.openlocfilehash: 77c0d68f507e09b315c912d1d91fdf9cf63db6fa
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: d42b6b56f0cdd1f6ef2ea45b21a027f1b4c56b1c
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82515528"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321993"
 ---
 # <a name="azure-front-door-rules-engine-match-conditions"></a>Podmínky shody stroje Azure pro pravidla front
 
-V [modulu pravidel AFD](front-door-rules-engine.md) se pravidlo skládá z nuly nebo více podmínek shody a akce. Tento článek poskytuje podrobné popisy podmínek shody, které můžete použít v modulu pravidel AFD. 
+V [modulu pravidel AFD](front-door-rules-engine.md) se pravidlo skládá z nuly nebo více podmínek shody a akce. Tento článek poskytuje podrobné popisy podmínek shody, které můžete použít v modulu pravidel AFD.
 
-První část pravidla je podmínka shody nebo sada podmínek shody. Pravidlo může sestávat z až deseti podmínek shody. Podmínka shody identifikuje konkrétní typy požadavků, pro které jsou provedeny definované akce. Pokud použijete více podmínek shody, podmínky shody jsou seskupeny pomocí logiky a. Pro všechny podmínky shody, které podporují více hodnot (uvedené níže jako "oddělený mezerou"), se předpokládá operátor "nebo". 
+První část pravidla je podmínka shody nebo sada podmínek shody. Pravidlo může sestávat z až deseti podmínek shody. Podmínka shody identifikuje konkrétní typy požadavků, pro které jsou provedeny definované akce. Pokud použijete více podmínek shody, podmínky shody jsou seskupeny pomocí logiky a. Pro všechny podmínky shody, které podporují více hodnot (uvedené níže jako "oddělený mezerou"), se předpokládá operátor "nebo".
 
 Podmínku shody můžete například použít k těmto akcím:
 
@@ -142,7 +142,7 @@ Operátor | Adresa URL požadavku | Transformace případu
 
 #### <a name="key-information"></a>Informace o klíči
 
-- Když použijete tuto podmínku pravidla, nezapomeňte zahrnout informace o protokolu. Například: *https://www.\<yourdomain\>.com*.
+- Když použijete tuto podmínku pravidla, nezapomeňte zahrnout informace o protokolu. Například: * https://www . \<yourdomain\> . model COM*.
 
 ## <a name="request-file-extension"></a>Žádost o příponu souboru
 

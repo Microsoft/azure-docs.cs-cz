@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 77bfd9d5bcae7bedd673354e32464d5f59bdc9b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ad87272749011c81c1040825da3f3c53858a55bd
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76720867"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322857"
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>Přesun dat do a z Azure Blob Storage pomocí konektorů SSIS
 [Služba SSIS (SQL Server Integration Services) Feature Pack pro Azure](https://msdn.microsoft.com/library/mt146770.aspx) poskytuje komponenty pro připojení k Azure, přenos dat mezi Azure a místními zdroji dat a zpracování dat uložených v Azure.
@@ -27,14 +27,14 @@ Jakmile si zákazníci přesunou místní data do cloudu, budou mít přístup k
 
 Příklady používání těchto prostředků Azure najdete v návodech k [SQL](sql-walkthrough.md) a [HDInsight](hive-walkthrough.md) .
 
-Diskuzi o normativních scénářích, které používají SSIS k tomu, aby se v hybridních scénářích integrace dat prováděly běžné obchodní potřeby, najdete v článku [Další informace o služba SSIS (SQL Server Integration Services) balíčku funkcí pro blog Azure](https://blogs.msdn.com/b/ssis/archive/2015/06/25/doing-more-with-sql-server-integration-services-feature-pack-for-azure.aspx) .
+Diskuzi o normativních scénářích, které používají SSIS k tomu, aby se v hybridních scénářích integrace dat prováděly běžné obchodní potřeby, najdete v článku [Další informace o služba SSIS (SQL Server Integration Services) balíčku funkcí pro blog Azure](https://techcommunity.microsoft.com/t5/sql-server-integration-services/doing-more-with-sql-server-integration-services-feature-pack-for/ba-p/388238) .
 
 > [!NOTE]
 > Úplný Úvod do úložiště objektů BLOB v Azure najdete v tématu [základy Azure Blob](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) a [Azure Blob Service](https://msdn.microsoft.com/library/azure/dd179376.aspx).
 > 
 > 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 Abyste mohli provádět úkoly popsané v tomto článku, musíte mít předplatné Azure a nastavený účet Azure Storage. Pro nahrání nebo stažení dat budete potřebovat název účtu Azure Storage a klíč účtu.
 
 * Pokud chcete nastavit **předplatné Azure**, přečtěte si [bezplatnou měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
@@ -70,7 +70,7 @@ Parametry, které používá úkol, jsou popsány zde:
 | **BlobContainer** |Určuje název kontejneru objektů blob, který obsahuje nahrané soubory jako objekty blob. |
 | **BlobDirectory** |Určuje adresář objektů blob, ve kterém se nahraný soubor uloží jako objekt blob bloku. Adresář objektů BLOB je virtuální hierarchická struktura. Pokud objekt BLOB již existuje, nahrazuje ho. |
 | **LocalDirectory** |Určuje místní adresář, který obsahuje soubory, které se mají nahrát. |
-| **Bitmap** |Určuje filtr názvu pro výběr souborů se zadaným vzorem názvu. Například MySheet\*. xls\* obsahuje soubory, jako je například MySheet001. xls a MySheetABC. xlsx. |
+| **Bitmap** |Určuje filtr názvu pro výběr souborů se zadaným vzorem názvu. Například MySheet \* . xls \* obsahuje soubory, například MySheet001.xls a MySheetABC.xlsx |
 | **TimeRangeFrom/TimeRangeTo** |Určuje filtr časového rozsahu. Soubory upravené po *TimeRangeFrom* a před zahrnutím *TimeRangeTo* . |
 
 > [!NOTE]

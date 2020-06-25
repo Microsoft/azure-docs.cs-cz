@@ -3,16 +3,16 @@ title: Vytvoření prvního automatizovaného pracovního postupu
 description: Rychlý Start – sestavení prvního automatizovaného pracovního postupu pomocí Azure Logic Apps pro řešení Integration System a Enterprise Application Integration (EAI)
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/20/2019
-ms.openlocfilehash: 555230499ebda106cbca616b779ae632d65349ab
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 0b3559a27fe9fae6c34b07c648a289d205560bd8
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84807857"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321577"
 ---
 # <a name="quickstart-create-your-first-workflow-by-using-azure-logic-apps---azure-portal"></a>Rychlý Start: vytvoření prvního pracovního postupu pomocí Azure Logic Apps-Azure Portal
 
@@ -74,13 +74,13 @@ Dále přidejte [trigger](../logic-apps/logic-apps-overview.md#logic-app-concept
 
    ![Vyberte, kdy se má aktivovat položka informačního kanálu.](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-new-feed-item.png)
 
-1. Zadejte tyto informace pro aktivační událost, jak je znázorněno na obrázku a popisuje:
+1. Zadejte informace pro aktivační událost, jak je popsáno v tabulce:
 
    ![Nastavení triggeru s informačním kanálem RSS, frekvencí a intervalem](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-settings.png)
 
-   | Vlastnost | Hodnota | Description |
+   | Vlastnost | Hodnota | Popis |
    |----------|-------|-------------|
-   | **Adresa URL informačního kanálu RSS** | `http://feeds.reuters.com/reuters/topNews` | Odkaz na informační kanál RSS, který chcete monitorovat |
+   | **Adresa URL informačního kanálu RSS** | <*RSS – informační kanál – adresa URL*> | Odkaz na informační kanál RSS, který chcete monitorovat. Tento příklad používá `http://feeds.reuters.com/reuters/topNews` . |
    | **Doba** | 1 | Počet intervalů, po které se má čekat mezi kontrolami |
    | **Frekvence** | Minuta | Jednota času pro každý interval mezi kontrolami  |
    ||||

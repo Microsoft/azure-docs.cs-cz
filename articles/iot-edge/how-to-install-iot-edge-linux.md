@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: kgremban
-ms.openlocfilehash: 5c3c9c7a061fd4c471b1ef159388deb1a851dd57
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: d73f3a37bb084533733b27b49ac171747cee814c
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/24/2020
-ms.locfileid: "85297150"
+ms.locfileid: "85321878"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-debian-based-linux-systems"></a>Instalace modulu runtime Azure IoT Edge v systémech Linux založených na distribuci Debian
 
@@ -166,7 +166,7 @@ sudo systemctl restart iotedge
 
 ### <a name="option-2-automatic-provisioning"></a>Možnost 2: Automatické zřizování
 
-Zařízení IoT Edge se dají automaticky zřídit pomocí [Azure IoT Hub Device Provisioning Service (DPS)](../iot-dps/index.yml). V současné době IoT Edge podporuje při automatickém zřizování dva mechanismy ověřování, ale vaše hardwarové požadavky můžou mít vliv na vaše volby. Například zařízení malinu PI ve výchozím nastavení nespadají do čipu TPM (Trusted Platform Module). Další informace najdete v následujících článcích:
+Zařízení IoT Edge se dají automaticky zřídit pomocí [Azure IoT Hub Device Provisioning Service (DPS)](../iot-dps/index.yml). V současné době IoT Edge podporuje tři mechanismy ověřování při použití automatického zřizování, ale vaše hardwarové požadavky můžou mít vliv na vaše volby. Například zařízení malinu PI ve výchozím nastavení nespadají do čipu TPM (Trusted Platform Module). Další informace najdete v následujících článcích:
 
 * [Vytvoření a zřízení zařízení IoT Edge s virtuálním čipem TPM na virtuálním počítači se systémem Linux](how-to-auto-provision-simulated-device-linux.md)
 * [Vytvoření a zřízení zařízení IoT Edge pomocí certifikátů X. 509](how-to-auto-provision-x509-certs.md)

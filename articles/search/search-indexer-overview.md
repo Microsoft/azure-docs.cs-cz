@@ -1,7 +1,7 @@
 ---
 title: Indexery pro procházení dat během importu
 titleSuffix: Azure Cognitive Search
-description: Procházejte databázi Azure SQL, Azure Cosmos DB nebo úložiště Azure, extrahujte hledaná data a naplňte index Azure Kognitivní hledání.
+description: Procházení Azure SQL Database, spravované instance SQL, Azure Cosmos DB nebo Azure Storage k extrakci prohledávatelných dat a naplnění indexu služby Azure Kognitivní hledání.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 2faadc962b31560e9e2eb10372493a483bf06905
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: 28f5bac80529306fc11eb7eb059b6f25071efd41
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84203881"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85320960"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Indexery ve službě Azure Cognitive Search
 
@@ -50,7 +50,7 @@ Všechny operace související s indexery, včetně požadavků GET pro stav neb
 * [Azure Data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md) (ve verzi Preview)
 * [Azure Table Storage](search-howto-indexing-azure-tables.md)
 * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
-* [Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
+* [Azure SQL Database a SQL Managed instance](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 * [SQL Server na Azure Virtual Machines](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
 * [Spravovaná instance SQL](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
 
@@ -128,7 +128,7 @@ Historie spouštění obsahuje až 50 posledních dokončených spuštění, kte
 ## <a name="next-steps"></a>Další kroky
 Teď jste získali základní představu. V dalším kroku se zaměříme na požadavky a úlohy specifické pro různé typy zdrojů dat.
 
-* [Azure SQL Database nebo SQL Server na virtuálním počítači Azure](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
+* [Azure SQL Database, spravovaná instance SQL nebo SQL Server na virtuálním počítači Azure](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
 * [Azure Table Storage](search-howto-indexing-azure-tables.md)

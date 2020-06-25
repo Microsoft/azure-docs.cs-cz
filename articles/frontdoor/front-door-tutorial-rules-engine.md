@@ -1,58 +1,56 @@
 ---
-title: Konfigurace modulu pravidel – přední dvířka Azure
-description: Tento článek popisuje, jak nakonfigurovat moduly pravidel pro přední dveře Azure.
+title: Azure Front Door
+description: Tento článek popisuje, jak nakonfigurovat modul pravidel v Azure Portal i CLI.
 services: frontdoor
 documentationcenter: ''
 author: megan-beatty
 editor: ''
 ms.service: frontdoor
 ms.devlang: na
-ms.topic: how-to
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
 ms.author: mebeatty
-ms.openlocfilehash: ed54f26f37617d420fae1aaf3f51853b0439a349
-ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+ms.openlocfilehash: a931a12889cec67baf6ef2db09091c8ec581ef08
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84743554"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321558"
 ---
-# <a name="configure-your-rules-engine"></a>Konfigurace modulu pravidel 
+# <a name="configure-your-rules-engine"></a>Konfigurace modulu pravidel
 
-> [!IMPORTANT]
-> Tato verze Public Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
+Tento článek popisuje kroky pro vytvoření konfigurace modulu pravidel a prvního pravidla v Azure Portal i CLI. 
 
-## <a name="configure-rules-engine-in-azure-portal"></a>Konfigurace modulu pravidel v Azure Portal 
+## <a name="configure-rules-engine-in-azure-portal"></a>Konfigurace modulu pravidel v Azure Portal
 1. Před vytvořením konfigurace modulu pravidel [vytvořte přední dveře](quickstart-create-front-door.md).
 
-2. V rámci prostředku front-dveří klikněte na **Nastavení** a vyberte **Konfigurace modulu pravidel**. Klikněte na **Přidat**, zadejte název konfigurace a začněte vytvářet konfiguraci modulu prvních pravidel. 
+2. V rámci prostředku front-dveří klikněte na **Nastavení** a vyberte **Konfigurace modulu pravidel**. Klikněte na **Přidat**, zadejte název konfigurace a začněte vytvářet konfiguraci modulu prvních pravidel.
 
-![vyhledat modul pravidel](./media/front-door-rules-engine/rules-engine-tutorial-1.png)
+    ![vyhledat modul pravidel](./media/front-door-rules-engine/rules-engine-tutorial-1.png)
 
-3. Klikněte na **Přidat pravidlo** a vytvořte své první pravidlo. Potom kliknutím na **Přidat podmínku** nebo **přidat akci** můžete pravidlo definovat. 
+3. Klikněte na **Přidat pravidlo** a vytvořte své první pravidlo. Potom kliknutím na **Přidat podmínku** nebo **přidat akci** můžete pravidlo definovat.
     
-    *Poznámky:*
-    - Pokud chcete odstranit podmínku nebo akci z pravidla, můžete použít odpadkový koš na pravé straně konkrétní podmínky nebo akce.
-    - Pokud chcete vytvořit pravidlo, které platí pro veškerý příchozí provoz, nezadávejte žádné podmínky. 
-    - Chcete-li zastavit vyhodnocení pravidel po splnění první podmínky shody, klikněte na **zastavit vyhodnocování pravidla**. 
+    > [!NOTE]
+    >- Pokud chcete odstranit podmínku nebo akci z pravidla, můžete použít odpadkový koš na pravé straně konkrétní podmínky nebo akce.
+    > - Pokud chcete vytvořit pravidlo, které platí pro veškerý příchozí provoz, nezadávejte žádné podmínky.
+    > - Pokud chcete zastavit vyhodnocení pravidel po splnění první podmínky shody, klikněte na **zastavit vyhodnocení zbývajícího pravidla**. Pokud je toto políčko zaškrtnuté a splní se všechny podmínky shody určitého pravidla, zbývající pravidla v konfiguraci se nespustí.  
 
-![vyhledat modul pravidel](./media/front-door-rules-engine/rules-engine-tutorial-4.png)
+    ![vyhledat modul pravidel](./media/front-door-rules-engine/rules-engine-tutorial-4.png) 
 
-4. Určete prioritu pravidel v rámci vaší konfigurace pomocí tlačítek nahoru, dolů a přesunout na horní. Priorita má vzestupné pořadí, což znamená, že první pravidlo je nejdůležitější. 
+4. Určete prioritu pravidel v rámci vaší konfigurace pomocí tlačítek nahoru, dolů a přesunout na horní. Priorita má vzestupné pořadí, což znamená, že první pravidlo je nejdůležitější.
 
-5. Po vytvoření jednoho nebo více pravidel stiskněte **Uložit**. Tato akce vytvoří konfiguraci modulu pravidel. 
+5. Po vytvoření jednoho nebo více pravidel stiskněte **Uložit**. Tato akce vytvoří konfiguraci modulu pravidel.
 
-6. Po vytvoření jedné nebo více konfigurací přidružte konfiguraci modulu pravidel k pravidlu směrování. V případě, že je možné použít jednu konfiguraci pro mnoho pravidel směrování, pravidlo směrování může obsahovat pouze jednu konfiguraci modulu pravidel. Přidružení provedete tak, že přejdete do **okna**  >  **pravidla směrování**na přední dveře. Vyberte pravidlo směrování, do kterého chcete přidat konfiguraci modulu pravidel, přejít do konfigurace modulu pravidla **podrobností o směrování**  >  **Rules engine configuration**a vyberte konfiguraci, kterou chcete přidružit. 
+6. Po vytvoření jedné nebo více konfigurací přidružte konfiguraci modulu pravidel k pravidlu směrování. V případě, že je možné použít jednu konfiguraci pro mnoho pravidel směrování, pravidlo směrování může obsahovat pouze jednu konfiguraci modulu pravidel. Přidružení provedete tak, že přejdete do **okna**  >  **pravidla směrování**na přední dveře. Vyberte pravidlo směrování, do kterého chcete přidat konfiguraci modulu pravidel, přejít do konfigurace modulu pravidla **podrobností o směrování**  >  **Rules engine configuration**a vyberte konfiguraci, kterou chcete přidružit.
 
-![vyhledat modul pravidel](./media/front-door-rules-engine/rules-engine-tutorial-5.png)
+    ![vyhledat modul pravidel](./media/front-door-rules-engine/rules-engine-tutorial-5.png)
 
 
-## <a name="configure-rules-engine-in-azure-cli"></a>Konfigurace modulu pravidel v Azure CLI 
+## <a name="configure-rules-engine-in-azure-cli"></a>Konfigurace modulu pravidel v Azure CLI
 
-1. Pokud jste to ještě neudělali, nainstalujte rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Přidat příponu "front-dveří":-AZ Extension add--name front-dveří. Pak Přihlaste se a přepněte do svého předplatného AZ Account set--Subscription <name_or_Id>. 
+1. Pokud jste to ještě neudělali, nainstalujte rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Přidat příponu "front-dveří":-AZ Extension add--name front-dveří. Pak Přihlaste se a přepněte do svého předplatného AZ Account set--Subscription <name_or_Id>.
 
 2. Začněte vytvořením modulu pravidel – tento příklad ukazuje jedno pravidlo s jednou akcí založenou na hlavičkách a jednu podmínkou shody. 
 
@@ -60,31 +58,31 @@ ms.locfileid: "84743554"
 az network front-door rules-engine rule create -f {front_door} -g {resource_group} --rules-engine-name {rules_engine} --name {rule1} --priority 1 --action-type RequestHeader --header-action Overwrite --header-name Rewrite --header-value True --match-variable RequestFilenameExtension --operator Contains --match-values jpg png --transforms Lowercase
 ```
 
-2.  Vypíše všechna pravidla. 
+3. Vypíše všechna pravidla. 
 
 ```azurecli-interactive
 az network front-door rules-engine rule list -f {front_door} -g {rg} --name {rules_engine}
 ```
 
-3.  Přidejte akci přepsání trasy přesměrování. 
+4. Přidejte akci přepsání trasy přesměrování. 
 
 ```azurecli-interactive
 az network front-door rules-engine rule action add -f {front_door} -g {rg} --rules-engine-name {rules_engine} --name {rule1} --action-type ForwardRouteOverride --backend-pool {backend_pool_name} --caching Disabled
 ```
 
-4.  Vypíše všechny akce v pravidle. 
+5. Vypíše všechny akce v pravidle. 
 
 ```azurecli-interactive
 az network front-door rules-engine rule action list -f {front_door} -g {rg} -r {rules_engine} --name {rule1}
 ```
 
-5. Propojte konfiguraci modulu pravidel s pravidlem směrování.  
+6. Propojte konfiguraci modulu pravidel s pravidlem směrování.  
 
 ```azurecli-interactive
 az network front-door routing-rule update -g {rg} -f {front_door} -n {routing_rule_name} --rules-engine {rules_engine}
 ```
 
-6. Odpojte modul pravidel. 
+7. Odpojte modul pravidel. 
 
 ```azurecli-interactive
 az network front-door routing-rule update -g {rg} -f {front_door} -n {routing_rule_name} --remove rulesEngine # case sensitive word ‘rulesEngine’

@@ -4,18 +4,18 @@ description: Naučte se používat Azure CLI k vytvoření a Azure Active Direct
 services: container-service
 ms.topic: article
 ms.date: 04/16/2019
-ms.openlocfilehash: dba6590daf5c64dd1e53663e71a0cc27941b1470
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 83ba43c3b8a00325750ec935fd3a43ec7d56074c
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82779939"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85336525"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>Integrace Azure Active Directory se službou Azure Kubernetes pomocí Azure CLI
 
 Službu Azure Kubernetes Service (AKS) je možné nakonfigurovat tak, aby pro ověřování uživatelů používala Azure Active Directory (AD). V této konfiguraci se můžete přihlásit ke clusteru AKS pomocí ověřovacího tokenu Azure AD. Operátoři clusteru můžou taky nakonfigurovat Kubernetes řízení přístupu na základě role (RBAC) na základě identity uživatele nebo členství ve skupině adresáře.
 
-V tomto článku se dozvíte, jak vytvořit požadované součásti Azure AD a pak nasadit cluster s podporou Azure AD a vytvořit v clusteru AKS základní roli RBAC. [Tyto kroky můžete provést také pomocí Azure Portal][azure-ad-portal].
+V tomto článku se dozvíte, jak vytvořit požadované součásti Azure AD a pak nasadit cluster s podporou Azure AD a vytvořit v clusteru AKS základní roli RBAC.
 
 Kompletní vzorový skript použitý v tomto článku najdete v tématu [ukázky v Azure CLI – integrace AKS s Azure AD][complete-script].
 
@@ -23,11 +23,11 @@ Platí následující omezení:
 
 - Azure AD se dá povolit, jenom když vytvoříte nový cluster s podporou RBAC. Službu Azure AD nelze povolit v existujícím clusteru AKS.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.61 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
 
-[https://shell.azure.com](https://shell.azure.com) V prohlížeči otevřete Cloud Shell.
+[https://shell.azure.com](https://shell.azure.com)V prohlížeči otevřete Cloud Shell.
 
 Pro zajištění konzistence a ke spuštění příkazů v tomto článku Vytvořte proměnnou pro požadovaný název clusteru AKS. Následující příklad používá název *myakscluster*:
 
@@ -97,7 +97,7 @@ az ad app permission admin-consent --id  $serverApplicationId
 
 ## <a name="create-azure-ad-client-component"></a>Vytvořit součást klienta Azure AD
 
-Druhá aplikace Azure AD se používá, když se uživatel do clusteru AKS přihlásí pomocí rozhraní příkazového řádku`kubectl`Kubernetes (). Tato klientská aplikace přijme požadavek na ověření od uživatele a ověří své přihlašovací údaje a oprávnění. Pomocí příkazu [AZ AD App Create][az-ad-app-create] vytvořte aplikaci Azure AD pro komponentu klienta:
+Druhá aplikace Azure AD se používá, když se uživatel do clusteru AKS přihlásí pomocí rozhraní příkazového řádku Kubernetes ( `kubectl` ). Tato klientská aplikace přijme požadavek na ověření od uživatele a ověří své přihlašovací údaje a oprávnění. Pomocí příkazu [AZ AD App Create][az-ad-app-create] vytvořte aplikaci Azure AD pro komponentu klienta:
 
 ```azurecli-interactive
 clientApplicationId=$(az ad app create \
@@ -208,7 +208,7 @@ Nyní použijte příkaz [kubectl Get lusks][kubectl-get] k zobrazení lusků na
 kubectl get pods --all-namespaces
 ```
 
-Zobrazí se výzva pro přihlášení k ověření pomocí přihlašovacích údajů Azure AD pomocí webového prohlížeče. Po úspěšném ověření se `kubectl` v příkazu zobrazí lusky v clusteru AKS, jak je znázorněno v následujícím příkladu výstupu:
+Zobrazí se výzva pro přihlášení k ověření pomocí přihlašovacích údajů Azure AD pomocí webového prohlížeče. Po úspěšném ověření se v `kubectl` příkazu zobrazí lusky v clusteru AKS, jak je znázorněno v následujícím příkladu výstupu:
 
 ```console
 kubectl get pods --all-namespaces

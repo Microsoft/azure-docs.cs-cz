@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a27d8ec5aba55abcea54069b9707d766c4acc7a7
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 8576088069f419872db57b063163e8d9b1968b33
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85078320"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85338217"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>Řízení přístupu pro externí uživatele ve správě nároků Azure AD
 
@@ -103,13 +103,13 @@ Aby uživatelé mimo vaši organizaci mohli žádat o přístup k balíčkům a 
 
 - Ujistěte se, že nastavení na úrovni webu povoluje přístup hosta (stejné výběry možností jako v seznamu výše). Další informace najdete v tématu [Zapnutí nebo vypnutí externího sdílení pro lokalitu](https://docs.microsoft.com/sharepoint/change-external-sharing-site).
 
-### <a name="review-your-office-365-group-sharing-settings"></a>Zkontrolujte nastavení sdílení skupiny Office 365.
+### <a name="review-your-microsoft-365-group-sharing-settings"></a>Kontrola nastavení sdílení skupin Microsoft 365
 
-- Pokud chcete zahrnout skupiny Office 365 do balíčků pro přístup externích uživatelů, ujistěte se, že je možnost **umožnit uživatelům přidat nové hosty do organizace** nastavená na **zapnuto** , aby povolovala přístup hostů. Další informace najdete v tématu [Správa přístupu hosta ke skupinám Office 365](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide#manage-groups-guest-access).
+- Pokud chcete zahrnout skupiny Microsoft 365 do balíčků pro přístup externích uživatelů, ujistěte se, že je možnost **umožnit uživatelům přidat nové hosty do organizace** nastavená na **zapnuto** , aby povolila přístup hostů. Další informace najdete v tématu [Správa přístupu hostů k skupinám Microsoft 365](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide#manage-groups-guest-access).
 
-- Pokud chcete, aby externí uživatelé měli přístup k webu SharePointu Online a prostředkům přidruženým ke skupině Office 365, ujistěte se, že jste zapnuli externí sdílení SharePointu Online. Další informace najdete v tématu [Zapnutí nebo vypnutí externí sdílení](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
+- Pokud chcete, aby externí uživatelé měli přístup k webu SharePointu Online a prostředkům přidruženým ke skupině Microsoft 365, ujistěte se, že jste zapnuli externí sdílení SharePointu Online. Další informace najdete v tématu [Zapnutí nebo vypnutí externí sdílení](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
 
-- Informace o tom, jak nastavit zásady hosta pro skupiny Office 365 na úrovni adresáře v prostředí PowerShell, najdete v tématu [Příklad: Konfigurace zásad hostů pro skupiny na úrovni adresáře](../users-groups-roles/groups-settings-cmdlets.md#example-configure-guest-policy-for-groups-at-the-directory-level).
+- Informace o tom, jak nastavit zásady hosta pro Microsoft 365 skupiny na úrovni adresáře v prostředí PowerShell, najdete v tématu [Příklad: Konfigurace zásad hostů pro skupiny na úrovni adresáře](../users-groups-roles/groups-settings-cmdlets.md#example-configure-guest-policy-for-groups-at-the-directory-level).
 
 ### <a name="review-your-teams-sharing-settings"></a>Kontrola nastavení sdílení týmů
 

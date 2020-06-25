@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: longl
-ms.openlocfilehash: da9ad5576d146c007e45124668875e9681860ce6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e2241a452bdcf974282814eb118da68517b02369
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76938831"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323191"
 ---
 # <a name="specify-a-face-recognition-model"></a>Určení modelu rozpoznávání obličeje
 
@@ -23,7 +23,14 @@ V této příručce se dozvíte, jak zadat model rozpoznávání obličeje pro r
 
 Služba obličeje používá modely strojového učení k provádění operací na lidských plochách na obrázcích. I nadále vylepšujeme přesnost našich modelů na základě zpětné vazby od zákazníků a pokrok ve výzkumu a poskytujeme tato vylepšení jako aktualizace modelu. Vývojáři mají možnost určit, kterou verzi modelu rozpoznávání obličeje má použít; můžou zvolit model, který nejlépe odpovídá jejich případu použití.
 
-Pokud jste nový uživatel, doporučujeme použít nejnovější model. Přečtěte si, kde se dozvíte, jak ho zadat v různých tvářových operacích a vyhnout se konfliktům modelu. Pokud jste pokročilý uživatel a nejste si jistí, jestli byste měli přepnout na nejnovější model, přejděte k části [vyhodnotit různé modely](#evaluate-different-models) , abyste vyhodnotili nový model a porovnali výsledky pomocí aktuální datové sady.
+Služba Azure Face má k dispozici tři modely rozpoznávání. _Recognition_01_ modelů (publikovaných 2017) a _recognition_02_ (publikovaných 2019) se průběžně podporují, aby se zajistila zpětná kompatibilita pro zákazníky, kteří používají FaceLists nebo **Person**s těmito modely. **FaceList** nebo **osoba** bude vždy používat model rozpoznávání, pomocí kterého byl vytvořen, a při jejich přidání se k tomuto modelu přiřadí nové plošky. Tuto změnu nelze po vytvoření změnit a zákazníci budou muset použít odpovídající model rozpoznávání s odpovídajícím **FaceList** nebo **osobou**.
+
+Můžete přejít na pozdější modely rozpoznávání, a to na vlastní pohodlí; budete ale muset vytvořit nové FaceLists a objektů persongroup s modelem rozpoznávání podle vašeho výběru.
+
+Model _recognition_03_ (publikovaný 2020) je nejpřesnější model, který je aktuálně k dispozici. Pokud jste nový zákazník, doporučujeme použít tento model. _Recognition_03_ zajistí lepší přesnost pro porovnání podobnosti a porovnávání porovnávání s osobami. Všimněte si, že každý model pracuje nezávisle na ostatních a prahová hodnota spolehlivosti pro jeden model není určena k porovnání napříč jinými modely rozpoznávání.
+
+Přečtěte si, kde se dozvíte, jak zadat vybraný model v různých operacích obličeje a vyhnout se konfliktům modelu. Pokud jste pokročilý uživatel a chcete zjistit, jestli byste měli přejít na nejnovější model, přejděte k části [vyhodnotit různé modely](#evaluate-different-models) , abyste vyhodnotili nový model a porovnali výsledky pomocí aktuální datové sady.
+
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -39,27 +46,27 @@ Detekce tváře identifikuje vizuální vzhledy lidských plošek a vyhledá jej
 Model rozpoznávání se používá při extrakci funkcí obličeje, takže můžete určit verzi modelu při provádění operace zjišťování.
 
 Při použití rozhraní API [pro detekci obličeje] přiřaďte verzi modelu s `recognitionModel` parametrem. Dostupné hodnoty jsou:
+* recognition_01
+* recognition_02
+* recognition_03
 
-* `recognition_01`
-* `recognition_02`
 
 Volitelně můžete zadat parametr _returnRecognitionModel_ (výchozí **hodnota false**), který určuje, zda má být v odpovědi vráceno _recognitionModel_ . Adresa URL požadavku pro REST API pro [rozpoznávání tváře] by tedy vypadala takto:
 
 `https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes][&recognitionModel][&returnRecognitionModel]&subscription-key=<Subscription key>`
 
-Používáte-li knihovnu klienta, lze hodnotu přiřadit `recognitionModel` pomocí předání řetězce představujícího verzi.
-Pokud necháte tuto položku nepřiřazenou, použije se výchozí verze modelu (_recognition_01_). Podívejte se na následující příklad kódu pro klientskou knihovnu rozhraní .NET.
+Používáte-li knihovnu klienta, lze hodnotu přiřadit `recognitionModel` pomocí předání řetězce představujícího verzi. Pokud necháte nepřiřazený, použije se výchozí verze modelu `recognition_01` . Podívejte se na následující příklad kódu pro klientskou knihovnu rozhraní .NET.
 
 ```csharp
 string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
-var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, true, true, recognitionModel: "recognition_02", returnRecognitionModel: true);
+var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, true, true, recognitionModel: "recognition_01", returnRecognitionModel: true);
 ```
 
 ## <a name="identify-faces-with-specified-model"></a>Identifikujte plošky se zadaným modelem
 
 Služba obličeje může z obrázku extrahovat data z obrázku a přidružit ho k objektu **Person** (například prostřednictvím volání rozhraní API pro [Přidání obličeje](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) ) a ukládat objekty více **osob** společně ve službě **Person**. Nový obličej se pak dá porovnávat se skupinou **osob** (s voláním [Identifikace obličeje] ) a je možné identifikovat odpovídající osobu v této skupině.
 
-Skupina **osob** by měla mít jeden jedinečný model rozpoznávání pro všechny **osoby**a a při vytváření skupiny ( `recognitionModel` [Person-Create] nebo [LargePersonGroup-Create]) můžete tuto možnost zadat pomocí parametru. Pokud tento parametr nezadáte, použije se původní `recognition_01` model. Skupina bude vždy používat model rozpoznávání, pomocí kterého byl vytvořen, a při jejich přidání do tohoto modelu budou přidruženy nové plošky. tuto hodnotu nelze změnit po vytvoření skupiny. Pokud chcete zjistit, ke kterému modelu je nakonfigurované **osoba** , použijte rozhraní [Person-Get] API s parametrem _returnRecognitionModel_ nastaveným na **hodnotu true**.
+Skupina **osob** by měla mít jeden jedinečný model rozpoznávání pro všechny **osoby**a a při `recognitionModel` vytváření skupiny ([Person-Create] nebo [LargePersonGroup-Create]) můžete tuto možnost zadat pomocí parametru. Pokud tento parametr nezadáte, použije se původní `recognition_01` model. Skupina bude vždy používat model rozpoznávání, pomocí kterého byl vytvořen, a při jejich přidání do tohoto modelu budou přidruženy nové plošky. tuto hodnotu nelze změnit po vytvoření skupiny. Pokud chcete zjistit, ke kterému modelu je nakonfigurované **osoba** , použijte rozhraní [Person-Get] API s parametrem _returnRecognitionModel_ nastaveným na **hodnotu true**.
 
 Podívejte se na následující příklad kódu pro klientskou knihovnu rozhraní .NET.
 
@@ -77,29 +84,30 @@ V rozhraní API [pro rozpoznávání tváře] se žádná změna nezměnila. Sta
 
 ## <a name="find-similar-faces-with-specified-model"></a>Hledání podobných plošek se zadaným modelem
 
-Můžete také zadat model rozpoznávání pro hledání podle podobnosti. Verzi modelu můžete přiřadit `recognitionModel` při vytváření seznamu obličeje pomocí [FaceList-Create] API nebo [LargeFaceList-Create]. Pokud tento parametr nezadáte, použije se původní `recognition_01` model. Seznam obličeje bude vždy používat model rozpoznávání, pomocí kterého byl vytvořen, a při jejich přidání do tohoto modelu budou přidruženy nové plošky. tuto změnu nelze po vytvoření změnit. Pokud chcete zjistit, pro který model je seznam obličeje nakonfigurovaný pomocí, použijte rozhraní API [FaceList-Get] s parametrem _returnRecognitionModel_ nastaveným na **hodnotu true**.
+Můžete také zadat model rozpoznávání pro hledání podle podobnosti. Verzi modelu můžete přiřadit `recognitionModel` při vytváření seznamu obličeje pomocí [FaceList-Create] API nebo [LargeFaceList-Create]. Pokud tento parametr nezadáte, `recognition_01` použije se ve výchozím nastavení model. V seznamu obličeje bude vždy použit model rozpoznávání, pomocí kterého byl vytvořen, a při jejich přidání do seznamu se k tomuto modelu přiřadí nové plošky. tuto změnu nelze po vytvoření změnit. Pokud chcete zjistit, pro který model je seznam obličeje nakonfigurovaný pomocí, použijte rozhraní API [FaceList-Get] s parametrem _returnRecognitionModel_ nastaveným na **hodnotu true**.
 
 Podívejte se na následující příklad kódu pro klientskou knihovnu rozhraní .NET.
 
 ```csharp
-await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_02");
+await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_03");
 ```
 
-Tento kód vytvoří seznam obličeje s názvem `My face collection`pomocí _recognition_02ho_ modelu pro extrakci funkcí. Když vyhledáte tento seznam obličeje pro podobné plošky nově zjištěné plochy, je nutné, aby tato hlava byla detekována ([rozpoznávání obličeje]) pomocí modelu _recognition_02_ . Jak je uvedeno v předchozí části, model musí být konzistentní.
+Tento kód vytvoří seznam obličeje s názvem `My face collection` pomocí _recognition_03ho_ modelu pro extrakci funkcí. Když vyhledáte tento seznam obličeje pro podobné plošky nově zjištěné plochy, je nutné, aby tato hlava byla detekována ([rozpoznávání obličeje]) pomocí modelu _recognition_03_ . Jak je uvedeno v předchozí části, model musí být konzistentní.
 
 U [podobných] rozhraní API se nezměnila žádná změna. zadáváte pouze verzi modelu v detekci.
 
 ## <a name="verify-faces-with-specified-model"></a>Ověřit plošky se zadaným modelem
 
-Rozhraní API pro [ověření tváře] kontroluje, jestli dvě plošky patří stejné osobě. V rozhraní API pro ověřování se nezměnila žádná změna v souvislosti s modely rozpoznávání, ale můžete porovnat pouze ty plošky, které byly zjištěny se stejným modelem. To znamená, že obě obličeje budou muset být zjištěny pomocí `recognition_01` nebo. `recognition_02`
+Rozhraní API pro [ověření tváře] kontroluje, jestli dvě plošky patří stejné osobě. V rozhraní API pro ověřování se nezměnila žádná změna v souvislosti s modely rozpoznávání, ale můžete porovnat pouze ty plošky, které byly zjištěny se stejným modelem.
 
 ## <a name="evaluate-different-models"></a>Vyhodnotit různé modely
 
-Pokud byste chtěli porovnávat výkony _recognition_01_ a _recognition_02_ modelů na vašich datech, budete potřebovat:
+Pokud chcete porovnat výkon různých modelů rozpoznávání na vlastních datech, budete potřebovat:
+1. Vytvořte tři objektů persongroup pomocí _recognition_01_, _recognition_02_a _recognition_03_ .
+1. Použijte svá data obrázků k detekci plošek a zaregistrujte je **osobě**s v těchto třech **osobách**. 
+1. Objektů persongroup své služby pomocí rozhraní API person-vlak.
+1. Test pomocí obličeje – identifikujte všechny tři **osoby**a porovnejte výsledky.
 
-1. Vytvořte dvě **osoby**s _recognition_01_ a _recognition_02_ v uvedeném pořadí.
-1. Pomocí svých obrazových dat můžete detekovat obličeje a zaregistrovat je **osobě**s pro tyto dvě **osoby**a aktivovat školicí proces pomocí rozhraní API služby [Person-vlak] .
-1. Test pomocí [obličeje – Identifikujte] u obou **uživatelů**a porovnejte výsledky.
 
 Pokud obvykle zadáte prahovou hodnotu spolehlivosti (hodnota mezi 0 a 1, která určuje, jak jistotu musí model identifikovat obličej), možná budete muset pro různé modely použít jiné prahové hodnoty. Prahová hodnota pro jeden model není určena ke sdílení jiné a nebude nutně vracet stejné výsledky.
 
@@ -118,7 +126,7 @@ V tomto článku jste zjistili, jak určit model rozpoznávání pro použití s
 [PersonGroup – Create]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244
 [Person – Get]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395246
 [PersonGroup Person - Add Face]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b
-[PersonGroup – Train]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249
+[PersonGroup - Train]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249
 [LargePersonGroup – Create]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d
 [FaceList – vytvořit]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524b
 [FaceList – získat]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524c

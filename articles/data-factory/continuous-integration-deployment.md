@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 1b5d51eafc0cb21a02f8a750bd78b5be7aca734f
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: d997c6d4eae93290cbb1e4cafe6c7ad662a65933
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84605506"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85336866"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Průběžná integrace a doručování v Azure Data Factory
 
@@ -197,7 +197,7 @@ Tým Data Factory poskytl [ukázkový skript před a po nasazení](#script) , kt
 
    ![Vytvoření vlastní šablony](media/continuous-integration-deployment/custom-deployment-build-your-own-template.png) 
 
-1. Vyberte **načíst soubor**a pak vyberte vygenerovanou šablonu správce prostředků. Toto je soubor **arm_template. JSON** umístěný v souboru zip, který je exportovaný v kroku 1.
+1. Vyberte **načíst soubor**a pak vyberte vygenerovanou šablonu správce prostředků. Toto je **arm_template.js** soubor umístěný v souboru zip, který je exportovaný v kroku 1.
 
    ![Upravit šablonu](media/continuous-integration-deployment/custom-deployment-edit-template.png)
 
@@ -212,7 +212,7 @@ Pokud má vaše továrna pro vývoj přidružené úložiště Git, můžete př
 * Používáte automatizované CI/CD a chcete změnit některé vlastnosti během nasazení Správce prostředků, ale vlastnosti nejsou ve výchozím nastavení parametrizované.
 * Vaše továrna je tak velká, že výchozí šablona Správce prostředků je neplatná, protože má více než maximální povolený počet parametrů (256).
 
-Pokud chcete přepsat výchozí šablonu Parametrizace, vytvořte v kořenové složce vaší větve Git soubor s názvem **ARM-Template-Parameters-definition. JSON** . Je nutné použít tento přesný název souboru.
+Pokud chcete přepsat výchozí šablonu Parametrizace, vytvořte v kořenové složce vaší větve Git soubor s názvem **arm-template-parameters-definition.js** . Je nutné použít tento přesný název souboru.
 
    ![Soubor vlastních parametrů](media/continuous-integration-deployment/custom-parameters.png)
 
@@ -225,7 +225,7 @@ Při exportu šablony Správce prostředků Data Factory přečte tento soubor z
 
 ### <a name="custom-parameter-syntax"></a>Vlastní syntaxe parametru
 
-Níže jsou uvedeny některé pokyny, které je třeba provést při vytváření souboru vlastních parametrů – **ARM-Template-Parameters-definition. JSON**. Soubor se skládá z oddílu pro každý typ entity: Trigger, kanál, propojená služba, datová sada, prostředí Integration runtime a tok dat.
+Níže jsou uvedeny některé pokyny, které je třeba provést při vytváření souboru vlastních parametrů **arm-template-parameters-definition.jsv**. Soubor se skládá z oddílu pro každý typ entity: Trigger, kanál, propojená služba, datová sada, prostředí Integration runtime a tok dat.
 
 * Zadejte cestu k vlastnosti pod odpovídajícím typem entity.
 * Nastavením názvu vlastnosti  `*` určíte, že chcete parametrizovat všechny vlastnosti (pouze na první úrovni, ne rekurzivně). V této konfiguraci můžete také zadat výjimky.
@@ -422,6 +422,7 @@ Níže je uvedená aktuální výchozí šablona Parametrizace. Pokud potřebuje
                     "systemNumber": "=",
                     "server": "=",
                     "url":"=",
+                    "functionAppUrl":"=",
                     "environmentUrl": "=",
                     "aadResourceId": "=",
                     "sasUri": "|:-sasUri:secureString",
@@ -574,9 +575,9 @@ Pokud jste nakonfigurovali Git, propojené šablony se generují a ukládají sp
 
 ![Složka propojených šablon Správce prostředků](media/continuous-integration-deployment/linked-resource-manager-templates.png)
 
-Propojené šablony Správce prostředků obvykle sestávají z hlavní šablony a sady podřízených šablon, které jsou propojeny s hlavním serverem. Nadřazená šablona se nazývá ArmTemplate_master. JSON a podřízené šablony jsou pojmenovány vzorovým ArmTemplate_0. JSON, ArmTemplate_1. JSON atd. 
+Propojené šablony Správce prostředků obvykle sestávají z hlavní šablony a sady podřízených šablon, které jsou propojeny s hlavním serverem. Nadřazená šablona se nazývá ArmTemplate_master.jsv a podřízené šablony jsou pojmenovány se vzorovým ArmTemplate_0.jsna ArmTemplate_1.jszapnuté a tak dále. 
 
-Pokud chcete místo úplné Správce prostředků šablony použít propojené šablony, aktualizujte úlohu CI/CD tak, aby odkazovala na ArmTemplate_master. JSON místo ArmTemplateForFactory. JSON (úplná šablona Správce prostředků). Správce prostředků také vyžaduje, abyste nahráli propojené šablony do účtu úložiště, aby k nim Azure během nasazení mohl přistupovat. Další informace najdete v tématu [nasazení propojených správce prostředků šablon pomocí VSTS](https://blogs.msdn.microsoft.com/najib/2018/04/22/deploying-linked-arm-templates-with-vsts/).
+Pokud chcete místo úplné Správce prostředků šablony použít propojené šablony, aktualizujte úlohu CI/CD tak, aby odkazovala na ArmTemplate_master.jsnamísto ArmTemplateForFactory.jszapnuto (úplnou Správce prostředků šablonu). Správce prostředků také vyžaduje, abyste nahráli propojené šablony do účtu úložiště, aby k nim Azure během nasazení mohl přistupovat. Další informace najdete v tématu [nasazení propojených správce prostředků šablon pomocí VSTS](https://blogs.msdn.microsoft.com/najib/2018/04/22/deploying-linked-arm-templates-with-vsts/).
 
 Nezapomeňte přidat skripty Data Factory do kanálu CI/CD před a po úloze nasazení.
 
@@ -726,8 +727,10 @@ function triggerSortUtil {
         return;
     }
     $visited[$trigger.Name] = $true;
-    $trigger.Properties.DependsOn | Where-Object {$_ -and $_.ReferenceTrigger} | ForEach-Object{
-        triggerSortUtil -trigger $triggerNameResourceDict[$_.ReferenceTrigger.ReferenceName] -triggerNameResourceDict $triggerNameResourceDict -visited $visited -sortedList $sortedList
+    if ($trigger.Properties.DependsOn) {
+        $trigger.Properties.DependsOn | Where-Object {$_ -and $_.ReferenceTrigger} | ForEach-Object{
+            triggerSortUtil -trigger $triggerNameResourceDict[$_.ReferenceTrigger.ReferenceName] -triggerNameResourceDict $triggerNameResourceDict -visited $visited -sortedList $sortedList
+        }
     }
     $sortedList.Push($trigger)
 }

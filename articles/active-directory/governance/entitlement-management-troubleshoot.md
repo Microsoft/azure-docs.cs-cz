@@ -16,12 +16,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c29305fe6a5b4ff33652720d87a2a9c447888472
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 7494f8e65f0b92540fec3ddc1f07e59004227625
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85077855"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85338181"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Řešení potíží se správou nároků Azure AD
 
@@ -45,7 +45,7 @@ Tento článek popisuje některé položky, které byste měli ověřit, abyste 
 
 * Pokud jsou k prostředku, který chcete spravovat pomocí přístupového balíčku, již přiřazení uživatelé, ujistěte se, že jsou tito uživatelé přiřazení k přístupovému balíčku pomocí odpovídajících zásad. Do přístupového balíčku byste například měli zahrnout skupiny, které již obsahují některé uživatele. Pokud tito uživatelé ve skupině vyžadují nepřetržitý přístup, musí mít odpovídající zásady pro přístupové balíčky, aby neztratili přístup ke skupině. Přístupový balíček můžete přiřadit tak, že požádáte uživatele, aby si vyžádali přístupový balíček obsahující příslušný prostředek, nebo že uživatele přiřadíte k přístupovému balíčku přímo. Další informace najdete v tématu [Nastavení žádostí o změnu a schvalování balíčku pro přístup](entitlement-management-access-package-request-policy.md).
 
-* Když odeberete člena týmu, odebere se i ze skupiny Office 365. Odebrání z týmového chatu může trvat o něco déle. Další informace najdete v tématu [členství ve skupině](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership).
+* Když odeberete člena týmu, odeberou se také z Microsoft 365 skupiny. Odebrání z týmového chatu může trvat o něco déle. Další informace najdete v tématu [členství ve skupině](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership).
 
 * Ujistěte se, že váš adresář není nakonfigurovaný pro více geografických umístění. Správa nároků v současné době nepodporuje více geografických umístění pro SharePoint Online. Weby SharePointu Online musí být ve výchozím geografickém umístění, aby se mohly řídit pomocí správy nároků. Další informace najdete v tématu [s více geografickými možnostmi na OneDrivu a SharePointu Online](https://docs.microsoft.com/Office365/Enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-office-365).
 

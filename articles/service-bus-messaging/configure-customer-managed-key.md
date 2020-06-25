@@ -1,19 +1,14 @@
 ---
 title: Konfigurace vlastního klíče pro šifrování Azure Service Busch dat v klidovém prostředí
 description: Tento článek poskytuje informace o tom, jak nakonfigurovat vlastní klíč pro šifrování Azure Service Bus data REST.
-services: service-bus-messaging
-ms.service: service-bus
-documentationcenter: ''
-author: axisc
 ms.topic: conceptual
-ms.date: 02/25/2020
-ms.author: aschhab
-ms.openlocfilehash: 82a5fbef8c307d60d82b147f04a2a687b8b0433e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 9bc48d82d1e63f08ab68e8f9c6a63e781c14c675
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81459062"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85338096"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>Konfigurace klíčů spravovaných zákazníkem pro šifrování Azure Service Bus dat v klidovém formátu pomocí Azure Portal
 Azure Service Bus Premium poskytuje šifrování neaktivních dat pomocí šifrování služby Azure Storage (Azure SSE). Service Bus Premium spoléhá na Azure Storage uložení dat a ve výchozím nastavení se všechna data uložená pomocí Azure Storage šifrují pomocí klíčů spravovaných Microsoftem. 
@@ -42,7 +37,7 @@ Pokud chcete povolit klíčům spravovaným zákazníkem v Azure Portal, postupu
 2. Na stránce **Nastavení** v oboru názvů Service Bus vyberte **šifrování**.
 3. Vyberte **šifrování klíče spravovaného zákazníkem v klidovém** formátu, jak je znázorněno na následujícím obrázku.
 
-    ![Povolit spravovaný klíč zákazníka](./media/configure-customer-managed-key/enable-customer-managed-key.png)
+    ![Povolení klíče spravovaného zákazníkem](./media/configure-customer-managed-key/enable-customer-managed-key.png)
 
 
 ## <a name="set-up-a-key-vault-with-keys"></a>Nastavení trezoru klíčů s klíči
@@ -117,7 +112,7 @@ V této části se dozvíte, jak provádět následující úlohy pomocí **Azur
 ### <a name="create-a-premium-service-bus-namespace-with-managed-service-identity"></a>Vytvoření oboru názvů Premium Service Bus s identitou spravované služby
 V této části se dozvíte, jak vytvořit obor názvů Azure Service Bus s identitou spravované služby pomocí šablony Azure Resource Manager a PowerShellu. 
 
-1. Vytvořte šablonu Azure Resource Manager pro vytvoření oboru názvů Service Bus úrovně Premium s identitou spravované služby. Název souboru: **CreateServiceBusPremiumNamespace. JSON**: 
+1. Vytvořte šablonu Azure Resource Manager pro vytvoření oboru názvů Service Bus úrovně Premium s identitou spravované služby. Název souboru: **CreateServiceBusPremiumNamespace.js**: 
 
     ```json
     {
@@ -165,7 +160,7 @@ V této části se dozvíte, jak vytvořit obor názvů Azure Service Bus s iden
        }
     }
     ```
-2. Vytvořte soubor parametrů šablony s názvem: **CreateServiceBusPremiumNamespaceParams. JSON**. 
+2. Vytvořte soubor parametrů šablony s názvem: **CreateServiceBusPremiumNamespaceParams.jsv**. 
 
     > [!NOTE]
     > Nahraďte následující hodnoty: 
@@ -186,7 +181,7 @@ V této části se dozvíte, jak vytvořit obor názvů Azure Service Bus s iden
        }
     }
     ```
-3. Spuštěním následujícího příkazu PowerShellu nasaďte šablonu a vytvořte obor názvů Premium Service Bus. Pak načtěte ID Service Bus oboru názvů pro pozdější použití. Před `{MyRG}` spuštěním příkazu nahraďte názvem skupiny prostředků.  
+3. Spuštěním následujícího příkazu PowerShellu nasaďte šablonu a vytvořte obor názvů Premium Service Bus. Pak načtěte ID Service Bus oboru názvů pro pozdější použití. `{MyRG}`Před spuštěním příkazu nahraďte názvem skupiny prostředků.  
 
     ```powershell
     $outputs = New-AzResourceGroupDeployment -Name CreateServiceBusPremiumNamespace -ResourceGroupName {MyRG} -TemplateFile ./CreateServiceBusPremiumNamespace.json -TemplateParameterFile ./CreateServiceBusPremiumNamespaceParams.json
@@ -225,7 +220,7 @@ V tomto případě jste provedli následující kroky:
 
 V tomto kroku aktualizujete obor názvů Service Bus s použitím informací o trezoru klíčů. 
 
-1. Vytvořte soubor JSON s názvem **UpdateServiceBusNamespaceWithEncryption. JSON** s následujícím obsahem: 
+1. Vytvořte soubor JSON s názvem **UpdateServiceBusNamespaceWithEncryption.js** s následujícím obsahem: 
 
     ```json
     {
@@ -288,7 +283,7 @@ V tomto kroku aktualizujete obor názvů Service Bus s použitím informací o t
     }
     ``` 
 
-2. Vytvořte soubor parametrů šablony: **UpdateServiceBusNamespaceWithEncryptionParams. JSON**.
+2. Vytvořte soubor parametrů šablony: **UpdateServiceBusNamespaceWithEncryptionParams.jsna**.
 
     > [!NOTE]
     > Nahraďte následující hodnoty: 
@@ -317,7 +312,7 @@ V tomto kroku aktualizujete obor názvů Service Bus s použitím informací o t
        }
     }
     ```             
-3. Spusťte následující příkaz prostředí PowerShell, který nasadí šablonu Správce prostředků. Před `{MyRG}` spuštěním příkazu nahraďte názvem vaší skupiny prostředků. 
+3. Spusťte následující příkaz prostředí PowerShell, který nasadí šablonu Správce prostředků. `{MyRG}`Před spuštěním příkazu nahraďte názvem vaší skupiny prostředků. 
 
     ```powershell
     New-AzResourceGroupDeployment -Name UpdateServiceBusNamespaceWithEncryption -ResourceGroupName {MyRG} -TemplateFile ./UpdateServiceBusNamespaceWithEncryption.json -TemplateParameterFile ./UpdateServiceBusNamespaceWithEncryptionParams.json
@@ -327,6 +322,6 @@ V tomto kroku aktualizujete obor názvů Service Bus s použitím informací o t
 ## <a name="next-steps"></a>Další kroky
 Viz následující články:
 - [Přehled Service Bus](service-bus-messaging-overview.md)
-- [Přehled služby Key Vault](../key-vault/general/overview.md)
+- [Přehled Key Vault](../key-vault/general/overview.md)
 
 

@@ -1,25 +1,15 @@
 ---
 title: Začínáme s frontami služby Azure Service Bus | Dokumentace Microsoftu
 description: V tomto kurzu vytvoříte konzolové aplikace .NET Core pro posílání zpráv a přijímání zpráv z fronty Service Bus.
-services: service-bus-messaging
-documentationcenter: .net
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: 68a34c00-5600-43f6-bbcc-fea599d500da
-ms.service: service-bus-messaging
-ms.devlang: tbd
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
-ms.workload: na
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: 5718106aee0e60d111398efdb839945c2c7a8a06
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 477d9d5a23e50d9b303d560b5530cbc22104c5cb
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77471733"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85337556"
 ---
 # <a name="get-started-with-service-bus-queues"></a>Začínáme s frontami služby Service Bus
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
@@ -55,7 +45,7 @@ Spusťte Visual Studio a vytvořte nový projekt **Konzolová aplikace (.NET Cor
 
 ### <a name="write-code-to-send-messages-to-the-queue"></a>Napsání kódu pro odesílání zpráv do fronty
 
-1. V *program.cs*přidejte následující `using` příkazy v horní části definice oboru názvů před deklaraci třídy:
+1. V *program.cs*přidejte následující příkazy v `using` horní části definice oboru názvů před deklaraci třídy:
 
     ```csharp
     using System.Text;
@@ -72,7 +62,7 @@ Spusťte Visual Studio a vytvořte nový projekt **Konzolová aplikace (.NET Cor
     static IQueueClient queueClient;
     ```
 
-    Jako `ServiceBusConnectionString` proměnnou zadejte připojovací řetězec pro obor názvů. Zadejte název fronty.
+    Jako proměnnou zadejte připojovací řetězec pro obor názvů `ServiceBusConnectionString` . Zadejte název fronty.
 
 1. Nahraďte `Main()` metodu následující **asynchronní** `Main` metodou. Volá `SendMessagesAsync()` metodu, kterou přidáte v dalším kroku k odesílání zpráv do fronty. 
 
@@ -201,7 +191,7 @@ Pokud chcete přijímat zprávy, které jste odeslali, vytvořte další aplikac
 
 ### <a name="write-code-to-receive-messages-from-the-queue"></a>Napsání kódu pro příjem zpráv z fronty
 
-1. V *program.cs*přidejte následující `using` příkazy v horní části definice oboru názvů před deklaraci třídy:
+1. V *program.cs*přidejte následující příkazy v `using` horní části definice oboru názvů před deklaraci třídy:
 
     ```csharp
     using System;
@@ -219,7 +209,7 @@ Pokud chcete přijímat zprávy, které jste odeslali, vytvořte další aplikac
     static IQueueClient queueClient;
     ```
 
-    Jako `ServiceBusConnectionString` proměnnou zadejte připojovací řetězec pro obor názvů. Zadejte název fronty.
+    Jako proměnnou zadejte připojovací řetězec pro obor názvů `ServiceBusConnectionString` . Zadejte název fronty.
 
 1. Nahraďte metodu `Main()` následujícím kódem:
 
@@ -392,7 +382,7 @@ Spusťte program a znovu se podívejte na portál. **Počet aktivních zpráv** 
 
 ![Zařadit do fronty po přijetí zpráv][queue-message-receive]
 
-Blahopřejeme! Nyní jste vytvořili frontu, do této fronty jste odeslali sadu zpráv a tyto zprávy přijali ze stejné fronty.
+Gratulujeme! Nyní jste vytvořili frontu, do této fronty jste odeslali sadu zpráv a tyto zprávy přijali ze stejné fronty.
 
 > [!NOTE]
 > Prostředky Service Bus můžete spravovat pomocí [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer/). Service Bus Explorer umožňuje uživatelům snadno se připojit k oboru názvů Service Bus a spravovat entity zasílání zpráv. Tento nástroj poskytuje pokročilé funkce, jako jsou funkce importu a exportu, nebo možnost testovat témata, fronty, odběry, služby přenosu, centra oznámení a centra událostí.

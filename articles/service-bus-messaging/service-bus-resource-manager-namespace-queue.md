@@ -1,26 +1,19 @@
 ---
 title: Vytvoření Azure Service Busého oboru názvů a fronty pomocí šablony Azure
 description: 'Rychlý Start: vytvoření oboru názvů Service Bus a fronty pomocí šablony Azure Resource Manager'
-services: service-bus-messaging
 documentationcenter: .net
 author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: a6bfb5fd-7b98-4588-8aa1-9d5f91b599b6
-ms.service: service-bus-messaging
-ms.devlang: tbd
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.tgt_pltfrm: dotnet
-ms.workload: na
-ms.date: 03/30/2020
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: b08253104eeb61f6bb09fde507473d235a996494
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e382d39e10e1907c9892f03a3da64945f3049fee
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80422633"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85337029"
 ---
 # <a name="quickstart-create-a-service-bus-namespace-and-a-queue-using-an-azure-resource-manager-template"></a>Rychlý Start: vytvoření oboru názvů Service Bus a fronty pomocí šablony Azure Resource Manager
 
@@ -38,7 +31,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ### <a name="review-the-template"></a>Kontrola šablony
 
-Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/201-servicebus-create-queue).
+Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/201-servicebus-create-queue).
 
 :::code language="json" source="~/quickstart-templates/201-servicebus-create-queue/azuredeploy.json" range="1-75" highlight="31-63":::
 

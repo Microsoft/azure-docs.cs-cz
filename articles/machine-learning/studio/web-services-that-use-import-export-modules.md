@@ -11,18 +11,18 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: how-to
 ms.date: 03/28/2017
-ms.openlocfilehash: 3cc47eb3fb097b7ed88cf931ef423aa34c0d071c
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 634c8b118a9d1f041e536f17cc9588f3a85fa4d6
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84705725"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321825"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>Nasazení webových služeb Azure Machine Learning Studio (Classic), které používají moduly importu a exportu dat
 
 Při vytváření prediktivní experimentu obvykle přidáte vstup a výstup webové služby. Při nasazení experimentu mohou uživatelé odesílat a přijímat data z webové služby prostřednictvím vstupů a výstupů. U některých aplikací mohou být data spotřebitele k dispozici z datového kanálu nebo již nacházejí v externím zdroji dat, jako je například úložiště objektů BLOB v Azure. V těchto případech nepotřebují číst a zapisovat data pomocí vstupů a výstupů webové služby. Můžou místo toho použít službu Batch Execution Service (BES) ke čtení dat ze zdroje dat pomocí modulu import dat a zápis výsledků bodování do jiného umístění dat pomocí modulu export dat.
 
-Datové moduly importu dat a exportu mohou číst a zapisovat do různých umístění dat, jako je webová adresa URL přes HTTP, dotaz na podregistr, Azure SQL Database, Azure Table Storage, Azure Blob Storage, datový kanál nebo databáze SQL Server.
+Datové moduly importu dat a exportu mohou číst a zapisovat do různých umístění dat, jako je webová adresa URL prostřednictvím protokolu HTTP, dotazu na podregistr, databáze v Azure SQL Database, Azure Table Storage, Azure Blob Storage, datového kanálu nebo databáze SQL Server.
 
 V tomto tématu se používá Ukázka 5: výuka, test, vyhodnocení binární klasifikace: datová sada pro dospělé a předpokládá, že datová sada již byla načtena do tabulky Azure SQL s názvem censusdata.
 

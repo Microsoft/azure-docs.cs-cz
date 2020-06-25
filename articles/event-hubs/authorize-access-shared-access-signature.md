@@ -1,20 +1,14 @@
 ---
 title: Autorizace přístupu pomocí sdíleného přístupového podpisu v Azure Event Hubs
 description: Tento článek poskytuje informace o autorizaci přístupu k prostředkům Azure Event Hubs pomocí sdílených přístupových podpisů (SAS).
-services: event-hubs
-ms.service: event-hubs
-documentationcenter: ''
-author: spelluru
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.author: spelluru
-ms.reviewer: shvija
-ms.openlocfilehash: 0c572723c493847ed15f80948511d1cc993fa7e1
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 6a2d7385f82864e8d378055333377fb9c3f73c19
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/24/2020
-ms.locfileid: "85298748"
+ms.locfileid: "85323113"
 ---
 # <a name="authorizing-access-to-event-hubs-resources-using-shared-access-signatures"></a>Autorizace přístupu k prostředkům Event Hubs pomocí sdílených přístupových podpisů
 Sdílený přístupový podpis (SAS) poskytuje způsob, jak udělit omezený přístup k prostředkům v oboru názvů Event Hubs. SAS chrání přístup k Event Hubs prostředkům na základě autorizačních pravidel. Tato pravidla se konfigurují buď v oboru názvů, nebo v entitě (centra událostí nebo téma). Tento článek poskytuje přehled modelu SAS a kontroluje osvědčené postupy SAS.

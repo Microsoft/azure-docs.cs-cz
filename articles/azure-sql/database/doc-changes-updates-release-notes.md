@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: sstein
-ms.openlocfilehash: 15a18693b3d1623f5f549742ff95ac4194952eb8
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.openlocfilehash: 04442d7c82b463c0cfa5813bd4b20554b57ec950
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84717845"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323232"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Co je nového v Azure SQL Database & spravované instance SQL?
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -172,7 +172,7 @@ GRANT EXECUTE ON master.dbo.xp_sqlagent_notify TO [login_name]
 
 Úroveň služby Pro důležité obchodní informace nebude v některých případech správně používat [maximální limity paměti pro paměťově optimalizované objekty](../managed-instance/resource-limits.md#in-memory-oltp-available-space) . Spravovaná instance SQL může povolit zatížení pro využití více paměti pro OLTP operace v paměti, což může mít vliv na dostupnost a stabilitu instance. Dotazy OLTP v paměti, které dosáhnou limitu, nemusí okamžitě selhat. Tento problém bude brzy vyřešen. Dotazy, které používají více paměti OLTP v paměti, selžou dříve, pokud dosáhnou [omezení](../managed-instance/resource-limits.md#in-memory-oltp-available-space).
 
-**Alternativní řešení**: [sledujte využití úložiště v paměti OLTP](https://docs.microsoft.com/azure/sql-database/sql-database-in-memory-oltp-monitor-space) pomocí [SQL Server Management Studio](/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage#bkmk_Monitoring) a ujistěte se, že zatížení nevyužívá více než dostupnou paměť. Zvyšte limit paměti, který závisí na počtu virtuální jádra, nebo Optimalizujte úlohy tak, aby používaly méně paměti.
+**Alternativní řešení**: [sledujte využití úložiště v paměti OLTP](https://docs.microsoft.com/azure/azure-sql/in-memory-oltp-monitor-space) pomocí [SQL Server Management Studio](/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage#bkmk_Monitoring) a ujistěte se, že zatížení nevyužívá více než dostupnou paměť. Zvyšte limit paměti, který závisí na počtu virtuální jádra, nebo Optimalizujte úlohy tak, aby používaly méně paměti.
  
 ### <a name="wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty"></a>Při pokusu o odebrání neprázdného souboru se vrátila chybná chyba.
 

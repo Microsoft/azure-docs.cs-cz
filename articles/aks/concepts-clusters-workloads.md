@@ -4,12 +4,12 @@ description: Seznamte se se základními komponentami clusterů a úloh Kubernet
 services: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: ddf6543ff0e4313b28c183718b6ac3b2395e0dbf
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 9b54bdbfcbc37d3863d4e6b86ae6fe5522bb5be9
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84729967"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85336632"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Základní koncepty Kubernetes pro Azure Kubernetes Service (AKS)
 
@@ -105,9 +105,9 @@ Aby bylo možné udržovat výkon a funkce uzlu, jsou prostředky rezervovány n
 
 Výše uvedená pravidla pro paměť a přidělení procesoru se používají k udržení dobrých uzlů agentů, včetně některých z nich hostujících prostředí, které jsou pro stav clusteru zásadní. Tato pravidla přidělení také způsobí, že uzel hlásí méně ALLOCATABLE paměť a procesor, než by by neměl být součástí clusteru Kubernetes. Výše uvedené rezervace prostředků se nedají změnit.
 
-Například pokud uzel nabízí 7 GB, bude hlásit 34% ALLOCATABLE paměti, která není nad prahovou hodnotou 750Mi pevného vyřazení.
+Například pokud uzel nabízí 7 GB, bude hlásit 34% paměti, která není ALLOCATABLE, včetně prahové hodnoty pro pevné vyřazení 750Mi.
 
-`(0.25*4) + (0.20*3) = + 1 GB + 0.6GB = 1.6GB / 7GB = 22.86% reserved`
+`0.75 + (0.25*4) + (0.20*3) = 0.75GB + 1GB + 0.6GB = 2.35GB / 7GB = 33.57% reserved`
 
 Kromě rezervací pro samotný Kubernetes vyhradí základní operační systém Node také množství prostředků procesoru a paměti pro udržení funkcí operačního systému.
 

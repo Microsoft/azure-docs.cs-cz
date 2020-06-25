@@ -1,20 +1,14 @@
 ---
 title: Řešení potíží s připojením – Azure Event Hubs | Microsoft Docs
 description: Tento článek poskytuje informace o řešení problémů s připojením k Azure Event Hubs.
-services: event-hubs
-documentationcenter: na
-author: spelluru
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: article
-ms.date: 05/27/2020
-ms.author: spelluru
-ms.openlocfilehash: 4111a71200ec9bffdfed37c926635754c868f71e
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.date: 06/23/2020
+ms.openlocfilehash: 15c93873a25e70b0f9a88fc5ea621b90d58e7581
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84726714"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322375"
 ---
 # <a name="troubleshoot-connectivity-issues---azure-event-hubs"></a>Řešení potíží s připojením – Azure Event Hubs
 K dispozici jsou různé důvody pro klientské aplikace, které se nemohou připojit k centru událostí. Problémy s připojením mohou být trvalé nebo přechodné. Pokud se problém projeví i po celou dobu (trvalý), možná budete chtít ověřit připojovací řetězec, nastavení brány firewall vaší organizace, nastavení brány firewall protokolu IP, nastavení zabezpečení sítě (koncové body služby, privátní koncové body atd.) a další. Pro přechodné problémy, upgrade na nejnovější verzi sady SDK, spuštění příkazů pro kontrolu zrušených paketů a získání trasování sítě může pomáhat při řešení problémů. 

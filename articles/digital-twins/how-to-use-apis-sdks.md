@@ -8,12 +8,12 @@ ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: ebac7fb6cf4addaa43367d27a4926a85770dd595
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 9ed482a5d6619960a50a409b08aa8c6d9725ab9e
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/24/2020
-ms.locfileid: "85296130"
+ms.locfileid: "85321595"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Použití rozhraní API a sad SDK služby Azure Digital Twins
 
@@ -258,13 +258,13 @@ client.UpdateDigitalTwin("myTwin", uou.Serialize());
 
 ## <a name="general-apisdk-usage-notes"></a>Obecné poznámky k používání rozhraní API/sady SDK
 
-Tato část obsahuje obecné informace o nástroji a pokyny pro používání rozhraní API a sad SDK.
-
 > [!NOTE]
 > Mějte prosím na paměti, že ve verzi Preview nepodporuje digitální vlákna Azure **sdílení prostředků mezi zdroji (CORS)**. Výsledkem je, že pokud voláte REST API z aplikace v prohlížeči, rozhraní [API Management (APIM)](../api-management/api-management-key-concepts.md) nebo konektor [Power Apps](https://docs.microsoft.com/powerapps/powerapps-overview) , může se zobrazit chyba zásad.
 > Chcete-li tuto chybu vyřešit, můžete provést jednu z následujících akcí:
 > * Z zprávy vypruhute hlavičku CORS `Access-Control-Allow-Origin` . Tato hlavička uvádí, zda lze odpověď sdílet. 
 > * Případně můžete vytvořit proxy CORS a zajistit, aby se digitální vlákna Azure REST APIa prostřednictvím něj. 
+
+Následující seznam poskytuje další podrobnosti a obecné pokyny pro používání rozhraní API a sad SDK.
 
 * Chcete-li použít sadu SDK, vytvořte instanci `DigitalTwinsClient` třídy. Konstruktor vyžaduje přihlašovací údaje, které lze získat pomocí různých metod ověřování v `Azure.Identity` balíčku. Další `Azure.Identity` informace najdete v [dokumentaci k jejímu oboru názvů](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet). 
 * `InteractiveBrowserCredential`Při zahájení práce může být užitečné, ale k dispozici je několik dalších možností, včetně přihlašovacích údajů pro [spravovanou identitu](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet), které pravděpodobně použijete k ověření služby [Azure Functions se službou MSI](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet) proti digitálním vazbám Azure. Další informace o naleznete `InteractiveBrowserCredential` v [dokumentaci třídy](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet).

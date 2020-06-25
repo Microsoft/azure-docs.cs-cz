@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44c8a46c844b9bc4b92702323df18addb207dd6c
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 2f05fa9f9f31011f04aee0d2bedbcd4c4dad5d39
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85078159"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85338198"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Co je správa nároků Azure AD?
 
@@ -67,13 +67,13 @@ Správa nároků zavádí do Azure AD koncept *balíčku pro přístup*. Balíč
  Tady jsou typy prostředků, ke kterým můžete spravovat přístup uživatelů pomocí správy nároků:
 
 - Členství ve skupinách zabezpečení služby Azure AD
-- Členství skupin a týmů Office 365
+- Členství Microsoft 365 skupin a týmů
 - Přiřazení k podnikovým aplikacím Azure AD, včetně aplikací SaaS a aplikací integrovaných s vlastními, které podporují federaci, jednotné přihlašování a/nebo zřizování
 - Členství na webech SharePointu Online
 
-Můžete také řídit přístup k dalším prostředkům, které spoléhají na skupiny zabezpečení Azure AD nebo skupiny Office 365.  Příklad:
+Můžete také řídit přístup k dalším prostředkům, které spoléhají na skupiny zabezpečení Azure AD nebo Microsoft 365 skupiny.  Příklad:
 
-- Uživatelům můžete udělit licence pro systém Microsoft Office 365 pomocí skupiny zabezpečení Azure AD v balíčku přístupu a konfigurací [licencování na základě skupin](../users-groups-roles/licensing-groups-assign.md) pro tuto skupinu.
+- Uživatelům můžete udělit licence pro Microsoft 365 pomocí skupiny zabezpečení Azure AD v balíčku přístupu a konfigurací [licencování na základě skupin](../users-groups-roles/licensing-groups-assign.md) pro tuto skupinu.
 - Uživatelům můžete udělit přístup ke správě prostředků Azure pomocí skupiny zabezpečení Azure AD v balíčku pro přístup a vytvoření [přiřazení role Azure](../../role-based-access-control/role-assignments-portal.md) pro tuto skupinu.
 
 ## <a name="how-do-i-control-who-gets-access"></a>Návody ovládací prvek, který získá přístup?
@@ -114,7 +114,7 @@ Přístupové balíčky nenahrazují jiné mechanismy pro přiřazení přístup
 
 Chcete-li lépe pochopit správu nároků a její dokumentaci, můžete se vrátit k následujícímu seznamu podmínek.
 
-| Pojem | Description |
+| Pojem | Popis |
 | --- | --- |
 | přístup k balíčku | Sada prostředků, které tým nebo projekt potřebuje a řídí se zásadami. Přístupový balíček je vždycky obsažený v katalogu. Vytvořili jste nový balíček pro přístup pro scénář, ve kterém uživatelé potřebují požádat o přístup.  |
 | žádost o přístup | Žádost o přístup k prostředkům v balíčku pro přístup Požadavek obvykle prochází schvalovacím pracovním postupem.  V případě schválení obdrží žádající uživatel přiřazení balíčku přístupu. |

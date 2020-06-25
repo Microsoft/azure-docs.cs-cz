@@ -1,18 +1,18 @@
 ---
 title: Předdefinované definice zásad pro Azure Data Lake Analytics
 description: Vypíše Azure Policy předdefinované definice zásad pro Azure Data Lake Analytics. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 06/10/2020
+ms.date: 06/23/2020
 ms.topic: sample
 author: hrasheed-msft
 ms.author: hrasheed
 ms.service: data-lake-analytics
 ms.custom: subject-policy-samples
-ms.openlocfilehash: ff6807e4a66bde49fea39853b2b2867c7d0924c3
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: c4b7d926985e23b47f13be6539045ab774ef6ef0
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84887393"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321803"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-data-lake-analytics"></a>Azure Policy předdefinované definice pro Azure Data Lake Analytics
 

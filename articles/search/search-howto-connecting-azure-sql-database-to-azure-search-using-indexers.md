@@ -1,7 +1,7 @@
 ---
 title: Hledání ve službě Azure SQL data
 titleSuffix: Azure Cognitive Search
-description: Import dat z Azure SQL Database pomocí indexerů pro fulltextové vyhledávání ve službě Azure Kognitivní hledání. Tento článek se zabývá připojeními, konfigurací indexeru a přijímáním dat.
+description: Import dat z Azure SQL Database nebo spravované instance SQL pomocí indexerů pro fulltextové vyhledávání ve službě Azure Kognitivní hledání. Tento článek se zabývá připojeními, konfigurací indexeru a přijímáním dat.
 manager: nitinme
 author: mgottein
 ms.author: magottei
@@ -9,20 +9,20 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9279622ee54a9fdaa6617cfe2758cfb563fdbffa
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 1afe92720997ede327f098b9a435d00842ae201e
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85080603"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322135"
 ---
-# <a name="connect-to-and-index-azure-sql-database-content-using-an-azure-cognitive-search-indexer"></a>Připojení a indexování Azure SQL Database obsahu pomocí indexeru Azure Kognitivní hledání
+# <a name="connect-to-and-index-azure-sql-content-using-an-azure-cognitive-search-indexer"></a>Připojení a indexování obsahu Azure SQL pomocí indexeru Azure Kognitivní hledání
 
-Než budete moct zadat dotaz na [index služby Azure kognitivní hledání](search-what-is-an-index.md), musíte ho naplnit Vašimi daty. Pokud data nacházející se v databázi SQL Azure, může **indexovací člen služby azure kognitivní hledání pro Azure SQL Database** (nebo **Azure SQL indexer** pro krátký) automatizovat proces indexování, což znamená méně kódu pro zápis a méně infrastruktury pro péči o.
+Než budete moct zadat dotaz na [index služby Azure kognitivní hledání](search-what-is-an-index.md), musíte ho naplnit Vašimi daty. Pokud data umístěná v Azure SQL Database nebo spravované instanci SQL **kognitivní hledání indexer Azure pro Azure SQL Database** (nebo **Azure SQL indexer** pro krátké) může automatizovat proces indexování, což znamená méně kódu pro zápis a méně infrastruktury pro péči o.
 
-Tento článek se věnuje mechanismu použití [indexerů](search-indexer-overview.md), ale také popisuje funkce, které jsou k dispozici pouze pro databáze SQL Azure (například integrované sledování změn). 
+Tento článek se věnuje mechanismu použití [indexerů](search-indexer-overview.md), ale také popisuje funkce, které jsou k dispozici pouze pro Azure SQL Database nebo spravované instance SQL (například integrované sledování změn). 
 
-Kromě databází Azure SQL poskytuje Azure Kognitivní hledání indexery pro [Azure Cosmos DB](search-howto-index-cosmosdb.md), [úložiště objektů BLOB v Azure](search-howto-indexing-azure-blob-storage.md)a [úložiště tabulek Azure](search-howto-indexing-azure-tables.md). Pokud chcete požádat o podporu pro jiné zdroje dat, zadejte svůj názor na [Fórum Azure kognitivní hledání Feedback](https://feedback.azure.com/forums/263029-azure-search/).
+Kromě Azure SQL Database a SQL Managed instance poskytuje Azure Kognitivní hledání indexery pro [Azure Cosmos DB](search-howto-index-cosmosdb.md), [úložiště objektů BLOB v Azure](search-howto-indexing-azure-blob-storage.md)a [úložiště tabulek Azure](search-howto-indexing-azure-tables.md). Pokud chcete požádat o podporu pro jiné zdroje dat, zadejte svůj názor na [Fórum Azure kognitivní hledání Feedback](https://feedback.azure.com/forums/263029-azure-search/).
 
 ## <a name="indexers-and-data-sources"></a>Indexery a zdroje dat
 
@@ -172,7 +172,7 @@ Pokud vaše databáze SQL podporuje [sledování změn](https://docs.microsoft.c
 
 + Požadavky na verzi databáze:
   * Pokud používáte SQL Server na virtuálních počítačích Azure, SQL Server 2012 SP3 a novější.
-  * Pokud používáte Azure SQL Database, Azure SQL Database V12.
+  * Azure SQL Database nebo spravované instance SQL
 + Pouze tabulky (žádná zobrazení). 
 + V databázi [Povolte sledování změn](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-tracking-sql-server) pro tabulku. 
 + V tabulce není žádný složený primární klíč (primární klíč, který obsahuje více než jeden sloupec).  
@@ -354,7 +354,7 @@ Pro přírůstkové indexování podporuje Azure Kognitivní hledání dvě zás
 
 V replikách jen pro čtení nepodporuje funkce SQL Database integrované sledování změn. Proto je nutné použít zásady vysokého měřítka. 
 
-Naše standardní doporučení je použití datového typu rowversion pro sloupec horních značek. Použití rowversion ale spoléhá na `MIN_ACTIVE_ROWVERSION` funkci SQL Database, která není podporovaná v replikách jen pro čtení. Proto je nutné, aby indexer naodkazoval na primární repliku, pokud používáte rowversion.
+Naše standardní doporučení je použití datového typu rowversion pro sloupec horních značek. Použití rowversion ale spoléhá na `MIN_ACTIVE_ROWVERSION` funkci, která není podporovaná v replikách jen pro čtení. Proto je nutné, aby indexer naodkazoval na primární repliku, pokud používáte rowversion.
 
 Pokud se pokusíte použít rowversion v replice, která je jen pro čtení, zobrazí se následující chyba: 
 

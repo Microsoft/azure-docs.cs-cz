@@ -10,12 +10,12 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 05/11/2020
-ms.openlocfilehash: 97253a75a089570613c1d7b378ad4acf07d798a4
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 5aeec1c2dae1d8a8cc11b5e8b3181d9b22069a43
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84431245"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85338307"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Aktivovat aplikace, procesy nebo pracovní postupy CI/CD na základě Azure Machine Learningch událostí (Preview)
 
@@ -47,7 +47,7 @@ Další informace o zdrojích událostí a obslužných rutinách událostí naj
 
 Azure Machine Learning poskytuje události v různých místech životního cyklu machine learningu: 
 
-| Typ události | Description |
+| Typ události | Popis |
 | ---------- | ----------- |
 | `Microsoft.MachineLearningServices.RunCompleted` | Vyvoláno, když je dokončeno spuštění experimentu machine learningu. |
 | `Microsoft.MachineLearningServices.ModelRegistered` | Vyvolá se v případě, že je model strojového učení zaregistrován v pracovním prostoru. |
@@ -117,7 +117,7 @@ Azure Event Grid umožňuje zákazníkům vytvářet nespojené obslužné rutin
 
 1. Na levém panelu vyberte možnost __události__ a potom vyberte možnost **odběry událostí**. 
 
-    ![SELECT-events-in-Workspace. png](./media/how-to-use-event-grid/select-event.png)
+    ![select-events-in-workspace.png](./media/how-to-use-event-grid/select-event.png)
 
 1. Vyberte typ události, který se má spotřebovat. Například následující snímek obrazovky má __zaregistrovaný model__, byl __nasazen model__, __dokončen běh__a __byl zjištěn posun datových sad__:
 
@@ -146,11 +146,11 @@ Následující příklad ukazuje, jak vybrat předplatné Azure a vytvořit nov�
 # Select the Azure subscription that contains the workspace
 az account set --subscription "<name or ID of the subscription>"
 
-# Subscribe to the machine learning workspace.
-az eventgrid event-subscription create \
-  --name {eventGridFilterName} \
-  --source-resource-id "/subscriptions/{subId}/resourceGroups/{rgName}/ \providers/Microsoft.MachineLearningServices/workspaces/{wsName}" \
-  --endpoint {event handler endpoint} \
+# Subscribe to the machine learning workspace. This example uses EventHub as a destination. 
+az eventgrid event-subscription create --name {eventGridFilterName} \
+  --source-resource-id /subscriptions/{subId}/resourceGroups/{RG}/providers/Microsoft.MachineLearningServices/workspaces/{wsName} \
+  --endpoint-type eventhub \
+  --endpoint /subscriptions/{SubID}/resourceGroups/TestRG/providers/Microsoft.EventHub/namespaces/n1/eventhubs/EH1 \
   --included-event-types Microsoft.MachineLearningServices.ModelRegistered \
   --subject-begins-with "models/mymodelname"
 ```

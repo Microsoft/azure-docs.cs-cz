@@ -3,14 +3,14 @@ title: Nasazení Windows Hybrid Runbook Worker v Azure Automation
 description: V tomto článku se dozvíte, jak nasadit Hybrid Runbook Worker, které můžete použít ke spouštění Runbooků v počítačích se systémem Windows v místním datovém centru nebo cloudovém prostředí.
 services: automation
 ms.subservice: process-automation
-ms.date: 06/17/2020
+ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: b1cac1ed1ff92086991d405ad72950e362493619
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 6141440cdb5b232145417c6051cb340e806f9352
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85079179"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85338001"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Nasazení Hybrid Runbook Worker Windows
 
@@ -190,15 +190,15 @@ Nyní spusťte `Add-HybridRunbookWorker` rutinu pomocí následující syntaxe.
 Add-HybridRunbookWorker –GroupName <String> -EndPoint <Url> -Token <String>
 ```
 
-Informace požadované pro tuto rutinu můžete získat ze stránky Správa klíčů v Azure Portal. Otevřete tuto stránku tak, že vyberete **klíče** na stránce nastavení v účtu Automation.
+Můžete získat informace požadované pro parametry `EndPoint` a `Token` ze stránky **klíče** ve vašem účtu Automation. V části **Nastavení účtu** na levé straně stránky vyberte **klíče** .
 
 ![Stránka Správa klíčů](media/automation-hybrid-runbook-worker/elements-panel-keys.png)
 
+* Pro `EndPoint` parametr Zkopírujte hodnotu pro **URL**.
+
+* Pro `Token` parametr Zkopírujte hodnotu **primárního přístupového klíče**.
+
 * Pro `GroupName` parametr použijte název skupiny Hybrid Runbook Worker. Pokud tato skupina už v účtu Automation existuje, do ní se přidá aktuální počítač. Pokud tato skupina neexistuje, přidá se.
-
-* Pro `EndPoint` parametr použijte položku **Adresa URL** na stránce Správa klíčů.
-
-* Pro `Token` parametr použijte položku **primárního přístupového klíče** na stránce Správa klíčů.
 
 * V případě potřeby nastavte `Verbose` parametr pro příjem podrobností o instalaci.
 

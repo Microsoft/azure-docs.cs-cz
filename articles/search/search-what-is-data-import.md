@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: 332b221043356eb32b4f1ef4eed8b1b7246c0f21
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 26899d629661fbf3a4f48ac09fa9fd3ee806bdb4
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85080541"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321138"
 ---
 # <a name="data-import-overview---azure-cognitive-search"></a>Přehled importu dat – Azure Kognitivní hledání
 
@@ -52,7 +52,7 @@ V REST API vystavte žádosti HTTP POST s texty požadavku JSON na adresu URL ko
 V sadě .NET SDK vytvořte balíček dat do `IndexBatch` objektu. `IndexBatch`Zapouzdřuje kolekci `IndexAction` objektů, z nichž každý obsahuje dokument a vlastnost, která oznamuje službě Azure kognitivní hledání, jakou akci má tento dokument dělat. Příklad kódu naleznete v tématu [rychlý Start pro C#](search-get-started-dotnet.md).
 
 
-| @search.action | Description | Potřebná pole pro každý dokument | Poznámky |
+| @search.action | Popis | Potřebná pole pro každý dokument | Poznámky |
 | -------------- | ----------- | ---------------------------------- | ----- |
 | `upload` |Akce `upload` je podobná akci „upsert“, kdy je dokument vložený, pokud je nový a aktualizovaný nebo nahrazený, pokud již existuje. |klíč a další pole, která si přejete definovat |Pokud aktualizujete nebo nahrazujete stávající dokument, bude každé pole, které není zadané v žádosti, nastavené na `null`. K tomu dojde i v případě, že bylo pole dříve nastavené na nenulovou hodnotu. |
 | `merge` |Aktualizuje stávající dokument se zadanými poli. Pokud dokument v indexu neexistuje, sloučení selže. |klíč a další pole, která si přejete definovat |Každé pole zadané ve sloučení nahradí stávající pole v dokumentu. V sadě .NET SDK obsahuje pole typu `DataType.Collection(DataType.String)` . V REST API obsahuje pole typu `Collection(Edm.String)` . Například pokud dokument obsahuje pole `tags` s hodnotou `["budget"]` a vy spustíte sloučení s polem `tags` s hodnotou `["economy", "pool"]`, konečná hodnota pole `tags` bude `["economy", "pool"]`. Hodnota nebude `["budget", "economy", "pool"]`. |
@@ -76,7 +76,7 @@ Model Pull prochází podporovaný zdroj dat a automaticky nahrává data do va�
 + [Úložiště objektů BLOB](search-howto-indexing-azure-blob-storage.md)
 + [Úložiště tabulek](search-howto-indexing-azure-tables.md)
 + [Azure Cosmos DB](search-howto-index-cosmosdb.md)
-+ [Databáze Azure SQL a SQL Server na virtuálních počítačích Azure](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
++ [Azure SQL Database, spravovaná instance SQL a SQL Server na virtuálních počítačích Azure](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 
 Indexery propojují index se zdrojem dat (obvykle tabulka, zobrazení nebo ekvivalentní struktura) a mapují pole zdroje na odpovídající pole v indexu. Během provádění je sada řádků automaticky převedena na formát JSON a načtena do určeného indexu. Všechny indexery podporují plánování, takže můžete určit, jak často se data budou aktualizovat. Většina indexerů umožňuje sledování změn dat, pokud ho zdroj dat podporuje. Indexery sledují změny a odstranění ve stávajících dokumentech a rozpoznávají nové dokumenty, a díky tomu není potřeba aktivně spravovat data v indexu. 
 

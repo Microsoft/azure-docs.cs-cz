@@ -6,17 +6,17 @@ documentationcenter: ''
 author: sharad4u
 ms.service: frontdoor
 ms.devlang: na
-ms.topic: how-to
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sharadag
-ms.openlocfilehash: 7939daf97309d5026fd24732cd922e47c2b16812
-ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+ms.openlocfilehash: f57c0353989cfcf924042d202bd80a57b476507b
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84743622"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322309"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door"></a>Monitorování metrik a protokolů v frontách Azure na předních dveřích
 
@@ -29,7 +29,7 @@ Pomocí front-dveří Azure můžete monitorovat prostředky následujícími zp
 
 Metriky jsou funkce pro určité prostředky Azure, které umožňují zobrazit čítače výkonu na portálu. K dispozici jsou následující metriky front dveří:
 
-| Metrika | Zobrazovaný název metriky | Jednotka | Dimenze | Description |
+| Metrika | Zobrazovaný název metriky | Jednotka | Dimenze | Popis |
 | --- | --- | --- | --- | --- |
 | RequestCount | Počet požadavků | Počet | Stavu protokolu http</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Počet požadavků klientů poskytovaných předními dveřmi.  |
 | RequestSize | Velikost požadavku | Bajty | Stavu protokolu http</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Počet bajtů odeslaných jako požadavek od klientů do předních dveří. |
@@ -88,6 +88,7 @@ Přední dveře aktuálně poskytují protokoly diagnostiky (v dávce po hodiná
 | RequestUri | Identifikátor URI přijatého požadavku |
 | ResponseBytes | Bajty odeslané back-end serverem jako odpověď  |
 | RoutingRuleName | Název pravidla směrování, na které se požadavek shodoval. |
+| RulesEngineMatchNames | Názvy pravidel, která požadavek odpovídá. |
 | Tato SecurityProtocol | Verze protokolu TLS/SSL používaná požadavkem nebo hodnotou null, pokud není šifrování. |
 | SentToOriginShield | Logické pole představující, zda v prvním prostředí chyběla mezipaměť a žádost byla odeslána do místní mezipaměti. Ignorujte toto pole, pokud je pravidlo směrování přesměrování nebo když nemá povoleno ukládání do mezipaměti. |
 | TimeTaken | Doba, kterou trvala akce, v milisekundách. |

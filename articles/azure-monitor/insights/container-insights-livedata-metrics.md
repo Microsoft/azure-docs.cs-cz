@@ -4,41 +4,38 @@ description: Tento článek popisuje zobrazení metrik v reálném čase bez pou
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.custom: references_regions
-ms.openlocfilehash: 54d751769005dabb4708eb198bcc765d830ba605
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 81d7210778fd6b5d75fb4b4fa8e066d2e015174f
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196135"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85338023"
 ---
 # <a name="how-to-view-metrics-in-real-time"></a>Jak zobrazit metriky v reálném čase
 
-Funkce Azure Monitor for Containers Live data (Preview) umožňuje vizualizovat metriky o stavu uzlu a pod v clusteru v reálném čase. Emuluje přímý přístup k `kubectl top nodes` `kubectl get pods –all-namespaces` `kubectl get nodes` příkazům, a pro volání, analýzu a vizualizaci dat v grafech výkonu, které jsou součástí tohoto přehledu. 
+Funkce Azure Monitor for Containers Live data (Preview) umožňuje vizualizovat metriky o stavu uzlu a pod v clusteru v reálném čase. Emuluje přímý přístup k `kubectl top nodes` `kubectl get pods –all-namespaces` `kubectl get nodes` příkazům, a pro volání, analýzu a vizualizaci dat v grafech výkonu, které jsou součástí tohoto přehledu.
 
-Tento článek poskytuje podrobný přehled a pomůže vám pochopit, jak tuto funkci používat.  
-
->[!NOTE]
->AKS clustery, které jsou povolené jako [soukromé clustery](https://azure.microsoft.com/updates/aks-private-cluster/) , s touto funkcí se nepodporují. Tato funkce spoléhá přímo na rozhraní Kubernetes API prostřednictvím proxy server z prohlížeče. Když zapnete zabezpečení sítě, zablokujete tím, že rozhraní Kubernetes API z tohoto proxy serveru znemožní tento provoz. 
+Tento článek poskytuje podrobný přehled a pomůže vám pochopit, jak tuto funkci používat.
 
 >[!NOTE]
->Tato funkce je dostupná ve všech oblastech Azure, včetně Azure Čína. V tuto chvíli není dostupná ve službě Azure USA pro státní správu.
+>AKS clustery, které jsou povolené jako [soukromé clustery](https://azure.microsoft.com/updates/aks-private-cluster/) , s touto funkcí se nepodporují. Tato funkce spoléhá přímo na rozhraní Kubernetes API prostřednictvím proxy server z prohlížeče. Když zapnete zabezpečení sítě, zablokujete tím, že rozhraní Kubernetes API z tohoto proxy serveru znemožní tento provoz.
 
 Nápovědu k nastavení nebo řešení potíží s funkcí živá data (Preview) najdete v naší [příručce k instalaci](container-insights-livedata-setup.md).
 
-## <a name="how-it-works"></a>Jak to funguje 
+## <a name="how-it-works"></a>Jak to funguje
 
-Funkce Live data (Preview) přímo přistupuje k rozhraní Kubernetes API a další informace o modelu ověřování najdete [tady](https://kubernetes.io/docs/concepts/overview/kubernetes-api/). 
+Funkce Live data (Preview) přímo přistupuje k rozhraní Kubernetes API a další informace o modelu ověřování najdete [tady](https://kubernetes.io/docs/concepts/overview/kubernetes-api/).
 
-Tato funkce provádí operaci cyklického dotazování proti koncovým bodům metriky (včetně `/api/v1/nodes` , `/apis/metrics.k8s.io/v1beta1/nodes` a `/api/v1/pods` ), což je ve výchozím nastavení každých pět sekund. Tato data se uloží do mezipaměti v prohlížeči a naplní se čtyřmi grafy výkonu, které jsou součástí Azure Monitor pro kontejnery na kartě **cluster** , a to výběrem možnosti **Přejít na aktivní (Preview)**. Každé následné dotazování je rozdělené do více než pět minut okna vizualizace. 
+Tato funkce provádí operaci cyklického dotazování proti koncovým bodům metriky (včetně `/api/v1/nodes` , `/apis/metrics.k8s.io/v1beta1/nodes` a `/api/v1/pods` ), což je ve výchozím nastavení každých pět sekund. Tato data se uloží do mezipaměti v prohlížeči a naplní se čtyřmi grafy výkonu, které jsou součástí Azure Monitor pro kontejnery na kartě **cluster** , a to výběrem možnosti **Přejít na aktivní (Preview)**. Každé následné dotazování je rozdělené do více než pět minut okna vizualizace.
 
 ![Možnost přejít do živého zobrazení v clusteru](./media/container-insights-livedata-metrics/cluster-view-go-live-example-01.png)
 
-Interval dotazování se konfiguruje v rozevíracím seznamu **nastavit interval** , který umožňuje nastavit dotazování pro nová data každých 1, 5, 15 a 30 sekund. 
+Interval dotazování se konfiguruje v rozevíracím seznamu **nastavit interval** , který umožňuje nastavit dotazování pro nová data každých 1, 5, 15 a 30 sekund.
 
 ![Interval cyklického dotazování na živý seznam](./media/container-insights-livedata-metrics/cluster-view-polling-interval-dropdown.png)
 
 >[!IMPORTANT]
->Doporučujeme nastavit interval dotazování na jednu sekundu a vyřešit problém po krátkou dobu. Tyto požadavky mohou mít vliv na dostupnost a omezování rozhraní Kubernetes API v clusteru. Následně znovu nakonfigurujte na delší interval dotazování. 
+>Doporučujeme nastavit interval dotazování na jednu sekundu a vyřešit problém po krátkou dobu. Tyto požadavky mohou mít vliv na dostupnost a omezování rozhraní Kubernetes API v clusteru. Následně znovu nakonfigurujte na delší interval dotazování.
 
 >[!IMPORTANT]
 >Během operace této funkce nejsou trvale uloženy žádná data. Všechny informace zachycené během této relace jsou okamžitě odstraněny při zavření prohlížeče nebo při opuštění funkce. Data zůstávají pouze pro vizualizaci v pěti minutách okna. Všechny metriky starší než pět minut jsou také trvale odstraněny.
@@ -47,9 +44,9 @@ Tyto grafy nejde připnout k poslednímu řídicímu panelu Azure, který jste p
 
 ## <a name="metrics-captured"></a>Zaznamenané metriky
 
-### <a name="node-cpu-utilization---node-memory-utilization-"></a>Využití CPU v uzlu%/využití paměti uzlu% 
+### <a name="node-cpu-utilization---node-memory-utilization-"></a>Využití CPU v uzlu%/využití paměti uzlu%
 
-Tyto dva grafy výkonu se mapují na ekvivalent vyvolání `kubectl top nodes` a zachytí výsledky **procesoru%** a **paměti%** sloupců do příslušného grafu. 
+Tyto dva grafy výkonu se mapují na ekvivalent vyvolání `kubectl top nodes` a zachytí výsledky **procesoru%** a **paměti%** sloupců do příslušného grafu.
 
 ![Příklady výsledků Kubectl hlavních uzlů](./media/container-insights-livedata-metrics/kubectl-top-nodes-example.png)
 
@@ -81,7 +78,7 @@ Tento graf výkonu se mapuje na ekvivalent vyvolání `kubectl get pods –all-n
 ![Graf počtu uzlů pod](./media/container-insights-livedata-metrics/cluster-view-node-pod-count.png)
 
 >[!NOTE]
->Názvy stavů, které jsou interpretovány `kubectl` v grafu, nemusí přesně odpovídat. 
+>Názvy stavů, které jsou interpretovány `kubectl` v grafu, nemusí přesně odpovídat.
 
 ## <a name="next-steps"></a>Další kroky
 

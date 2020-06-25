@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: df261dbf8af8ffdb4ccb10626594626150245748
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a66d2f49c2f5646faadd13662c1e798401a71c73
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176392"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85338360"
 ---
 # <a name="choose-an-azure-solution-for-data-transfer"></a>Zvolit řešení Azure pro přenos dat
 
@@ -35,7 +35,7 @@ Pohyb dat může být z následujících typů:
 
     - **Grafické rozhraní** – Pokud občas přenášíte jenom pár souborů a nepotřebujete provádět automatizaci přenosu dat, můžete zvolit nástroj grafického rozhraní, například Průzkumník služby Azure Storage nebo webový nástroj pro průzkum v Azure Portal.
     - **Skriptovaná nebo programová migrace** – můžete používat optimalizované softwarové nástroje, které poskytujeme nebo voláme přímo rozhraní REST API/sady SDK. Dostupné nástroje pro skriptování jsou AzCopy, Azure PowerShell a Azure CLI. Pro programové rozhraní použijte jednu ze sad SDK pro .NET, Java, Python, Node/JS, C++, přejít, PHP nebo Ruby.
-    - **Místní zařízení** – poskytujeme fyzické nebo virtuální zařízení, které se nachází ve vašem datovém centru a optimalizuje přenos dat přes síť. Tato zařízení také poskytují místní mezipaměť často používaných souborů. Fyzickým zařízením je Data Box Edge a virtuálním zařízením je Data Box Gateway. Oba se spustí trvale ve vašich prostorách a připojí se k Azure přes síť.
+    - **Místní zařízení** – poskytujeme fyzické nebo virtuální zařízení, které se nachází ve vašem datovém centru a optimalizuje přenos dat přes síť. Tato zařízení také poskytují místní mezipaměť často používaných souborů. Fyzickým zařízením je Azure Stack hraniční a virtuální zařízení je Data Box Gateway. Oba se spustí trvale ve vašich prostorách a připojí se k Azure přes síť.
     - **Spravovaný datový kanál** – můžete nastavit kanál cloudu k pravidelnému přenosu souborů mezi několika službami Azure, místním prostředím nebo kombinací dvou. Pomocí Azure Data Factory můžete nastavit a spravovat datové kanály a přesouvat a transformovat data pro analýzu.
 
 Následující vizuál znázorňuje pokyny pro výběr různých nástrojů pro přenos dat Azure v závislosti na šířce pásma, která je dostupná pro přenos, velikost dat určená pro přenos a frekvence přenosů.
@@ -77,7 +77,7 @@ Můžete také přejít na účet Azure Storage v Azure Portal a vybrat funkci p
 - Projdeme si tyto možnosti:
 
     - [Azure Data box, Azure Data box disk a Azure Data box Heavy pro offline přenosy](https://docs.microsoft.com/azure/databox/).
-    - [Azure Data box Gateway a Azure Data box Edge pro online přenosy](https://docs.microsoft.com/azure/databox-online/).
+    - [Azure Data box Gateway a Azure Stack Edge pro online přenosy](https://docs.microsoft.com/azure/databox-online/).
 - [Přečtěte si, co je Azure Data Factory](https://docs.microsoft.com/azure/data-factory/copy-activity-overview).
 - Použití rozhraní REST API k přenosu dat
 

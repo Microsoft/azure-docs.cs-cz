@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2019
 ms.author: sharadag
-ms.openlocfilehash: b2ee41324cfaefa4d5aec3aa02b2d0d8c75da78f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 081305170020aa35511ad574bd8c5575c192d577
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80879118"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322281"
 ---
 # <a name="what-is-azure-front-door"></a>Co je Azure Front Door?
 Přední dvířka Azure umožňují definovat, spravovat a monitorovat globální směrování pro webový provoz optimalizací pro nejlepší výkon a rychlé globální převzetí služeb při selhání pro zajištění vysoké dostupnosti. S předními dvířky můžete transformaci svých globálních uživatelů a podnikových aplikací transformovat na robustní, vysoce výkonné přizpůsobené moderní aplikace, rozhraní API a obsah, který se službou Azure dosáhne globální cílové skupiny.
@@ -36,7 +36,7 @@ Prostřednictvím protokolu pro všesměrového vysílání na základě rozděl
 
 ## <a name="increase-application-availability-with-smart-health-probes"></a>Zvýšení dostupnosti aplikací pomocí inteligentních sond stavu
 
-Front Door poskytuje vysokou dostupnost důležitých aplikací pomocí inteligentních sond stavu, monitorování back-endů z hlediska latence a dostupnosti a tím, že poskytuje okamžité automatické převzetí služeb back-endu při selhání. U svých aplikací můžete provádět operace plánované údržby bez jakýchkoli výpadků. Zatímco probíhá údržba, Front Door směruje provoz do alternativních back-endů.
+Přední dvířka poskytují vysokou dostupnost pro vaše důležité aplikace pomocí svých inteligentních sond stavu a sledují back-endy v případě latence i dostupnosti a poskytování rychlého automatického převzetí služeb při selhání v případě výpadku. U svých aplikací můžete provádět operace plánované údržby bez jakýchkoli výpadků. Zatímco probíhá údržba, Front Door směruje provoz do alternativních back-endů.
 
 ## <a name="url-based-routing"></a>Směrování na základě adresy URL
 Směrování na základě cesty URL umožňuje směrovat provoz do back-endových fondů na základě cest URL žádosti. Jedním ze scénářů je směrování žádostí o různé typy obsahu do různých back-endových fondů.

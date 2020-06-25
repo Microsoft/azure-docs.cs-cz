@@ -1,19 +1,15 @@
 ---
 title: Autorizace přístupu ke službě Azure Event Hubs
 description: Tento článek poskytuje informace o různých možnostech pro autorizaci přístupu k prostředkům Azure Event Hubs.
-services: event-hubs
-ms.service: event-hubs
-documentationcenter: ''
-author: spelluru
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 643c749d0b48c360e807fc5f5280a1f1bfa55bac
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 18b8bd80eaec316fbaefadad0dd7a19418bfa838
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/24/2020
-ms.locfileid: "85298765"
+ms.locfileid: "85323181"
 ---
 # <a name="authorize-access-to-azure-event-hubs"></a>Autorizace přístupu ke službě Azure Event Hubs
 Pokaždé, když publikujete nebo spotřebujete události a data z centra událostí, se klient snaží získat přístup k prostředkům Event Hubs. Každý požadavek na zabezpečený prostředek musí být autorizovaný, aby služba mohla zajistit, aby měl klient potřebná oprávnění k publikování/využívání dat. 

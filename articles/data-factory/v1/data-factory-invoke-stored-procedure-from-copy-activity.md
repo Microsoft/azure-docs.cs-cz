@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d05c2b03a0c498144f37c9b6205053120a596b09
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f687901601ba517a50710610d4c827524b8ec565
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74924088"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85320977"
 ---
 # <a name="invoke-stored-procedure-from-copy-activity-in-azure-data-factory"></a>Vyvolat uloženou proceduru z aktivity kopírování v Azure Data Factory
 > [!NOTE]
@@ -29,7 +29,7 @@ Při kopírování dat do [SQL Server](data-factory-sqlserver-connector.md) nebo
 Následující příklad ukazuje, jak vyvolat uloženou proceduru v databázi SQL Server z kanálu Data Factory (aktivita kopírování):  
 
 ## <a name="output-dataset-json"></a>Formát JSON výstupní datové sady
-V souboru JSON výstupní datové sady nastavte **typ** na: **SQLServer**. Nastavte ji na **AzureSqlTable** pro použití se službou Azure SQL Database. Hodnota vlastnosti **TableName** musí odpovídat názvu prvního parametru uložené procedury.  
+V souboru JSON výstupní datové sady nastavte **typ** na: **SQLServer**. Nastavte ji na **AzureSqlTable** pro použití s Azure SQL Database. Hodnota vlastnosti **TableName** musí odpovídat názvu prvního parametru uložené procedury.  
 
 ```json
 {

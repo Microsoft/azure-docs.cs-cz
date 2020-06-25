@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/28/2020
 ms.author: nicolela
-ms.openlocfilehash: adac35bd3f59870f0c164b69548375610e9733b1
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 0d42d3292c894aec1deff5da548383499ca50db9
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84897338"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85338304"
 ---
 # <a name="set-up-a-lab-with-gpu-virtual-machines"></a>Nastavení testovacího prostředí s virtuálními počítači GPU
 
@@ -26,7 +26,6 @@ V tomto článku se dozvíte, jak provádět následující úlohy:
 
 - Vyberte si mezi *vizualizacemi* a *výpočetními* jednotkami grafiky (GPU).
 - Ujistěte se, že jsou nainstalované příslušné ovladače GPU.
-- Nakonfigurujte nastavení protokol RDP (Remote Desktop Protocol) (RDP) pro připojení k virtuálnímu počítači GPU (VM).
 
 ## <a name="choose-between-visualization-and-compute-gpu-sizes"></a>Výběr mezi vizualizací a výpočetními velikostmi GPU
 Na první stránce Průvodce vytvořením testovacího prostředí vyberte v rozevíracím seznamu **Velikost virtuálního počítače** , kterou potřebujete, a vyberte velikost virtuálních počítačů potřebných pro vaši třídu.  
@@ -37,13 +36,13 @@ V tomto procesu máte možnost vybrat buď **vizualizaci** , nebo **výpočetní
 
 Jak je popsáno v následující tabulce, *Výpočet* velikosti GPU procesorů je určený pro aplikace náročné na výpočetní výkon.  Například [obsáhlý Learning v typu třídy zpracování přirozeného jazyka](./class-type-deep-learning-natural-language-processing.md) používá velikost **malého GPU (COMPUTE)** .  Výpočetní procesor je vhodný pro tento typ třídy, protože studenti využívají architektury hloubkového učení a nástroje, které jsou k dispozici v [Data Science Virtual Machine image](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) , k výuce modelů pro obsáhlý Learning s velkými sadami dat.
 
-| Velikost | Cores | Paměť RAM | Description | 
+| Velikost | Cores | Paměť RAM | Popis | 
 | ---- | ----- | --- | ----------- | 
 | Malý grafický procesor (COMPUTE) | -&nbsp;6 &nbsp; jader<br>-&nbsp;56 &nbsp; GB &nbsp; RAM  | [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) |Tato velikost nejlépe vyhovuje aplikacím náročným na počítač, jako je například umělá logika (AI) a obsáhlý Learning. |
 
 Velikosti GPU pro *vizualizaci* jsou určené pro aplikace náročné na grafiku.  Například [typ třídy SolidWorks Engineering](./class-type-solidworks.md) ukazuje použití velikosti **malého GPU (vizualizace)** .  Grafický procesor vizualizace je vhodný pro tento typ třídy, protože studenti pracují s prostředím SolidWorks 3D Computer-to design (CAD) pro modelování a vizualizaci tuhých objektů.
 
-| Velikost | Cores | Paměť RAM | Description | 
+| Velikost | Cores | Paměť RAM | Popis | 
 | ---- | ----- | --- | ----------- | 
 | Malý grafický procesor (vizualizace) | -&nbsp;6 &nbsp; jader<br>-&nbsp;56 &nbsp; GB &nbsp; RAM  | [Standard_NV6](https://docs.microsoft.com/azure/virtual-machines/nv-series) | Tato velikost je nejvhodnější pro vzdálenou vizualizaci, streamování, hraní a kódování využívající architektury, jako je OpenGL a DirectX. |
 | Střední GPU (vizualizace) | -&nbsp;12 &nbsp; jader<br>-&nbsp;112 &nbsp; GB &nbsp; RAM  | [Standard_NV12](https://docs.microsoft.com/azure/virtual-machines/nv-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Tato velikost je nejvhodnější pro vzdálenou vizualizaci, streamování, hraní a kódování využívající architektury, jako je OpenGL a DirectX. |
@@ -56,9 +55,6 @@ Pokud chcete využít možnosti GPU vašich virtuálních počítačů v testova
 Jak je znázorněno na předchozím obrázku, tato možnost je ve výchozím nastavení povolená, což zajistí, že jsou nainstalované *nejnovější* ovladače pro typ GPU a image, kterou jste vybrali.
 - Když vybíráte velikost *výpočetního* GPU, virtuální počítače v testovacím prostředí jsou napájené pomocí GPU [NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf) .  V tomto případě jsou nainstalovány nejnovější ovladače [COMPUTE Unified Device Architecture (CUDA)](https://www.nvidia.com/object/io_69526.html) , což umožňuje vysoce výkonné výpočetní prostředí.
 - Když vyberete velikost GPU pro *vizualizaci* , vaše testovací virtuální počítače jsou napájené technologií GPU [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) a [technologií Grid](https://www.nvidia.com/content/dam/en-zz/Solutions/design-visualization/solutions/resources/documents1/NVIDIA_GRID_vPC_Solution_Overview.pdf).  V takovém případě jsou nainstalovány nejnovější ovladače mřížky, což umožňuje použití aplikací náročných na grafiku.
-
-> [!IMPORTANT]
-> Aby bylo možné používat pro *vizualizaci* GPU nejlepší uživatelské prostředí, zajistěte, aby byly nainstalované *oba* ovladače *a* aby byl GPU povolen přes připojení RDP. Další informace najdete v části [Povolení připojení GPU přes protokol RDP k virtuálním](how-to-setup-lab-gpu.md#enable-gpu-over-rdp-connection-to-windows-vms) počítačům s Windows v tomto článku.
 
 ### <a name="install-the-drivers-manually"></a>Ruční instalace ovladačů
 Možná budete muset nainstalovat jinou verzi ovladače než nejnovější verzi.  V této části se dozvíte, jak ručně nainstalovat vhodné ovladače v závislosti na tom, jestli používáte *výpočetní* procesor (GPU) nebo grafický procesor *vizualizace* .
@@ -99,7 +95,6 @@ Chcete-li ručně nainstalovat ovladače pro velikost grafického procesoru vizu
   
 1. Restartujte šablonu virtuálního počítače.
 1. Podle pokynů v části [ověření nainstalovaných ovladačů](how-to-setup-lab-gpu.md#validate-the-installed-drivers) ověřte, jestli jsou ovladače správně nainstalované.
-1. Nakonfigurujte nastavení RDP a povolte připojení GPU podle pokynů v části [Povolení připojení GPU přes RDP k virtuálním počítačům s Windows](how-to-setup-lab-gpu.md#enable-gpu-over-rdp-connection-to-windows-vms) .
 1. Po instalaci ovladačů a dalšího softwaru, který je pro vaši třídu nutný, vyberte **publikovat** a vytvořte virtuální počítače studentů.
 
 ### <a name="validate-the-installed-drivers"></a>Ověřit nainstalované ovladače
@@ -121,25 +116,6 @@ Tato část popisuje, jak ověřit, jestli jsou ovladače GPU správně nainstal
 
 #### <a name="linux-images"></a>Image Linux
 Postupujte podle pokynů v části "ověřit instalaci ovladače" v tématu [instalace ovladačů NVIDIA GPU pro virtuální počítače řady N-Series se systémem Linux](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup#verify-driver-installation).
-
-## <a name="enable-gpu-over-rdp-connection-to-windows-vms"></a>Povolit připojení GPU přes připojení RDP k virtuálním počítačům s Windows
-Pokud používáte protokol RDP pro připojení k virtuálnímu počítači s Windows, který používá grafický procesor *vizualizace* , je potřeba provést několik dalších konfigurací, aby se grafický procesor používal pro vykreslování grafiky. V opačném případě se procesor použije k vykreslování grafiky.
-
-Na virtuálním počítači šablony udělejte toto:
-
-1. Nakonfigurujte nastavení RDP pro použití GPU.
-
-   a. Postupujte podle pokynů v tématu [Konfigurace vykreslování aplikace podporující GPU](https://docs.microsoft.com/azure/virtual-desktop/configure-vm-gpu#configure-gpu-accelerated-app-rendering).  
-   b. Postupujte podle pokynů v tématu [Konfigurace kódování rámců GPU – akcelerace](https://docs.microsoft.com/azure/virtual-desktop/configure-vm-gpu#configure-gpu-accelerated-frame-encoding).
-
-1. Ověřte konfiguraci. 
-
-   a. Postupujte podle pokynů v části [ověření vykreslování aplikací pomocí GPU](https://docs.microsoft.com/azure/virtual-desktop/configure-vm-gpu#verify-gpu-accelerated-app-rendering).  
-   b. Postupujte podle pokynů v části [ověření kódování rámce GPU-Accelerated](https://docs.microsoft.com/azure/virtual-desktop/configure-vm-gpu#verify-gpu-accelerated-frame-encoding).
-
-1. Teď máte nainstalované ovladače a nastavení RDP nakonfigurovaná tak, aby používala GPU.  Po instalaci dalšího softwaru, který je pro vaši třídu nezbytný, můžete vybrat **publikovat** a vytvořit virtuální počítače studentů.  
-
-Když se vaši studenti připojí ke svým virtuálním počítačům pomocí protokolu RDP, budou se jejich plochy vykreslovat podle GPU svého virtuálního počítače.
 
 ## <a name="next-steps"></a>Další kroky
 Viz následující články:

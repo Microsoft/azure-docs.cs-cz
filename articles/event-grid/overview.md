@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 02/20/2020
 ms.author: femila
 ms.custom: seodec18
-ms.openlocfilehash: 38f0218a7dedd243cccfab4b0b5ecfb73d3a626a
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 4ae40c37d42848cc2ac726694e32df621996df03
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560311"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321321"
 ---
 # <a name="what-is-azure-event-grid"></a>Co je Azure Event Grid?
 
@@ -60,7 +60,7 @@ V současné době podporují odesílání událostí do Event Gridu následují
 * [Automatizace (dříve označované jako Microsoft Flow)](https://preview.flow.microsoft.com/connectors/shared_azureeventgrid/azure-event-grid/)
 * [Service Bus](handler-service-bus.md)
 * [Queue Storage](handler-storage-queues.md)
-* [Webhooky](handler-webhooks.md)
+* [WebHooky](handler-webhooks.md)
 
 ## <a name="concepts"></a>Koncepty
 
@@ -103,7 +103,7 @@ Event Grid propojuje zdroje dat a obslužné rutiny událostí. Pomocí Event Gr
 
 ![Automatizace operací](./media/overview/Ops_automation.png)
 
-Event Grid umožňuje urychlit automatizaci a zjednodušit vynucování zásad. Můžete například použít Event Grid k upozorňování Azure Automation při vytvoření virtuálního počítače nebo databáze SQL. Pomocí událostí můžete automaticky ověřit, jestli konfigurace služby splňují předpisy, vkládat metadata do operací Operations Tools, označit virtuální počítače nebo pracovní položky souboru.
+Event Grid umožňuje urychlit automatizaci a zjednodušit vynucování zásad. Můžete například použít Event Grid k upozorňování Azure Automation, když se vytvoří virtuální počítač nebo databáze v Azure SQL. Pomocí událostí můžete automaticky ověřit, jestli konfigurace služby splňují předpisy, vkládat metadata do operací Operations Tools, označit virtuální počítače nebo pracovní položky souboru.
 
 ### <a name="application-integration"></a>Integrace aplikací
 

@@ -1,24 +1,14 @@
 ---
 title: Zjišťování duplicitních zpráv Azure Service Bus | Microsoft Docs
 description: Tento článek vysvětluje, jak můžete zjišťovat duplicity v Azure Service Busch zprávách. Duplicitní zprávu lze ignorovat a vyřadit.
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: c109b9fd310a09e5eb4c6d18cc3536e4d8069c0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: c8935fa67dda28bb2fec663c5e714982933f0f22
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76760364"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85337906"
 ---
 # <a name="duplicate-detection"></a>Vyhledávání duplicit
 
@@ -65,7 +55,7 @@ Udržování malého okna znamená, že se musí uchovávat a odpovídat méně 
 Další informace o Service Bus zasílání zpráv najdete v následujících tématech:
 
 * [Fronty, témata a odběry služby Service Bus](service-bus-queues-topics-subscriptions.md)
-* [Začínáme s frontami Service Bus](service-bus-dotnet-get-started-with-queues.md)
+* [Začínáme s frontami služby Service Bus](service-bus-dotnet-get-started-with-queues.md)
 * [Jak používat témata a odběry Service Bus](service-bus-dotnet-how-to-use-topics-subscriptions.md)
 
 Ve scénářích, kdy kód klienta nemůže znovu odeslat zprávu se stejným parametrem *MessageID* jako předtím, je důležité navrhovat zprávy, které lze bezpečně znovu zpracovat. Tento [Blogový příspěvek o idempotence](https://particular.net/blog/what-does-idempotent-mean) popisuje různé postupy, jak to provést.

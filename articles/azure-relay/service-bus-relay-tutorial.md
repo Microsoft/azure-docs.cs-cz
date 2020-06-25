@@ -1,25 +1,14 @@
 ---
 title: Zveřejnění služby REST Prem WCF klientům pomocí Azure Relay
 description: V tomto kurzu se dozvíte, jak vystavit místní službu WCF REST pro externího klienta pomocí Azure WCF Relay.
-services: service-bus-relay
-documentationcenter: na
-author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: 53dfd236-97f1-4778-b376-be91aa14b842
-ms.service: service-bus-relay
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/21/2020
-ms.author: spelluru
-ms.openlocfilehash: 551c8e662669737d9d074a69cb03d6060ab87ad5
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: 50628073efd7114aaacfe37177d2f5beb3be3d47
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83204668"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322691"
 ---
 # <a name="tutorial-expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>Kurz: zpřístupnění místní služby WCF REST externímu klientovi pomocí Azure WCF Relay
 
@@ -86,7 +75,7 @@ Kontrakt služby určuje, které operace služba podporuje. Operace jsou metody 
 1. Změňte název oboru názvů z výchozího názvu `EchoService` na `Microsoft.ServiceBus.Samples`.
 
    > [!IMPORTANT]
-   > V tomto kurzu se používá obor názvů C# `Microsoft.ServiceBus.Samples` , který je oborem názvů spravovaného typu založeného na kontraktu, který se používá v konfiguračním souboru v části [Konfigurace klienta služby WCF](#configure-the-wcf-client) . Můžete určit libovolný obor názvů, který chcete při sestavování této ukázky použít. Tento kurz ale nebude fungovat, pokud pak v konfiguračním souboru aplikace neupravíte obory názvů kontraktu a služby odpovídajícím způsobem. Obor názvů zadaný v souboru *App. config* musí být stejný jako obor názvů zadaný v souborech jazyka C#.
+   > V tomto kurzu se používá obor názvů C# `Microsoft.ServiceBus.Samples` , který je oborem názvů spravovaného typu založeného na kontraktu, který se používá v konfiguračním souboru v části [Konfigurace klienta služby WCF](#configure-the-wcf-client) . Můžete určit libovolný obor názvů, který chcete při sestavování této ukázky použít. Tento kurz ale nebude fungovat, pokud pak v konfiguračním souboru aplikace neupravíte obory názvů kontraktu a služby odpovídajícím způsobem. Obor názvů zadaný v souboru *App.config* musí být stejný jako obor názvů zadaný v souborech jazyka C#.
    >
 
 1. Přímo po `Microsoft.ServiceBus.Samples` deklaraci oboru názvů, ale v rámci oboru názvů, definujte nové rozhraní s názvem `IEchoContract` a použijte `ServiceContractAttribute` atribut na rozhraní s hodnotou oboru názvů `https://samples.microsoft.com/ServiceModel/Relay/` . Vložte následující kód za deklaraci oboru názvů:
@@ -153,7 +142,7 @@ Když je teď vytvořené rozhraní, můžete ho implementovat.
 
 ## <a name="implement-the-wcf-contract"></a>Implementace kontraktu WCF
 
-Vytvoření služby Azure Relay vyžaduje, abyste nejdřív vytvořili kontrakt pomocí rozhraní. Další informace o vytváření rozhraní najdete v předchozí části. Další postup implementuje rozhraní. Tato úloha zahrnuje vytvoření třídy s názvem `EchoService` , která implementuje uživatelsky definované `IEchoContract` rozhraní. Po implementaci rozhraní je třeba nakonfigurovat rozhraní pomocí konfiguračního souboru *App. config* . Konfigurační soubor obsahuje informace potřebné pro aplikaci. Tyto informace zahrnují název služby, název kontraktu a typ protokolu, který se používá ke komunikaci se službou Relay. Kód použitý pro tyto úlohy je k dispozici v příkladu, který následuje po tomto postupu. Obecnější diskuzi o implementaci kontraktu služby najdete v tématu [implementace kontraktů](/dotnet/framework/wcf/implementing-service-contracts)služeb.
+Vytvoření služby Azure Relay vyžaduje, abyste nejdřív vytvořili kontrakt pomocí rozhraní. Další informace o vytváření rozhraní najdete v předchozí části. Další postup implementuje rozhraní. Tato úloha zahrnuje vytvoření třídy s názvem `EchoService` , která implementuje uživatelsky definované `IEchoContract` rozhraní. Po implementaci rozhraní je třeba nakonfigurovat rozhraní pomocí konfiguračního souboru *App.config* . Konfigurační soubor obsahuje informace potřebné pro aplikaci. Tyto informace zahrnují název služby, název kontraktu a typ protokolu, který se používá ke komunikaci se službou Relay. Kód použitý pro tyto úlohy je k dispozici v příkladu, který následuje po tomto postupu. Obecnější diskuzi o implementaci kontraktu služby najdete v tématu [implementace kontraktů](/dotnet/framework/wcf/implementing-service-contracts)služeb.
 
 1. Vytvořte novou třídu s názvem `EchoService` přímo po definování rozhraní `IEchoContract`. Třída `EchoService` implementuje rozhraní `IEchoContract`.
 
@@ -190,7 +179,7 @@ Vytvoření služby Azure Relay vyžaduje, abyste nejdřív vytvořili kontrakt 
 
 Konfigurační soubor je podobný konfiguračnímu souboru WCF. Obsahuje název služby, koncový bod a vazbu. Koncový bod je umístění Azure Relay zveřejňuje klienty a hostitele ke vzájemné komunikaci. Vazba je typ protokolu, který se používá ke komunikaci. Hlavním rozdílem je, že tento nakonfigurovaný koncový bod služby odkazuje na vazbu [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) , která není součástí .NET Framework. [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) je jednou z vazeb definovaných službou.
 
-1. V **Průzkumník řešení**poklikejte na **App. config** a otevře se soubor v editoru sady Visual Studio.
+1. V **Průzkumník řešení**dvakrát klikněte na **App.config** a otevřete soubor v editoru sady Visual Studio.
 1. V elementu `<appSettings>` nahraďte zástupné texty názvem svého oboru názvů a klíčem SAS, který jste zkopírovali v jednom z předchozích kroků.
 1. Ve značkách `<system.serviceModel>` přidejte element `<services>`. V jednom konfiguračním souboru můžete definovat několik aplikací Relay. V tomto kurzu se ale definuje jen jedna.
 
@@ -239,7 +228,7 @@ Následující kód ukazuje implementaci kontraktu služby.
     }
 ```
 
-Následující kód ukazuje základní formát souboru *App. config* přidruženého k hostiteli služby.
+Následující kód ukazuje základní formát *App.config* souboru přidruženého k hostiteli služby.
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -329,7 +318,7 @@ V tomto kurzu je URI `sb://putServiceNamespaceHere.windows.net/EchoService`.
 
     Tento krok informuje službu Relay o tom, že se vaše aplikace dá najít veřejně, a prozkoumáním informačního kanálu Atom pro váš projekt. Pokud nastavíte `DiscoveryType` na `private` , bude mít klient stále přístup ke službě. Služba se ale při hledání v `Relay` oboru názvů nezobrazí. Místo toho by klient musel předem znát cestu ke koncovému bodu.
 
-1. Použijte pověření služby pro koncové body služby definované v souboru *App. config* :
+1. Použijte pověření služby pro koncové body služby definované v souboru *App.config* :
 
     ```csharp
     foreach (ServiceEndpoint endpoint in host.Description.Endpoints)
@@ -445,7 +434,7 @@ namespace Microsoft.ServiceBus.Samples
 
 ## <a name="create-a-wcf-client-for-the-service-contract"></a>Vytvoření klienta WCF pro kontrakt služby
 
-Další úlohou je vytvoření klientské aplikace a definování kontraktu služby, který budete implementovat později. Tyto kroky se podobají postupům, které se používají k vytvoření služby: Definování kontraktu, úpravy souboru *App. config* , použití přihlašovacích údajů pro připojení ke službě Relay a tak dále. Kód použitý k těmto úlohám najdete v příkladu za postupem.
+Další úlohou je vytvoření klientské aplikace a definování kontraktu služby, který budete implementovat později. Tyto kroky se podobají postupům, které se používají k vytvoření služby: Definování kontraktu, úpravy souboru *App.config* , použití přihlašovacích údajů pro připojení ke službě Relay a tak dále. Kód použitý k těmto úlohám najdete v příkladu za postupem.
 
 1. Vytvořit nový projekt v aktuálním řešení sady Visual Studio pro klienta:
 
@@ -516,9 +505,9 @@ namespace Microsoft.ServiceBus.Samples
 
 ## <a name="configure-the-wcf-client"></a>Konfigurace klienta WCF
 
-V tomto kroku vytvoříte soubor *App. config* pro základní klientskou aplikaci, která přistupuje ke službě vytvořené dříve v tomto kurzu. Tento soubor *App. config* definuje kontrakt, vazbu a název koncového bodu. Kód použitý k těmto úlohám najdete v příkladu za postupem.
+V tomto kroku vytvoříte soubor *App.config* pro základní klientskou aplikaci, která přistupuje ke službě vytvořené dříve v tomto kurzu. Tento *App.config* soubor definuje kontrakt, vazbu a název koncového bodu. Kód použitý k těmto úlohám najdete v příkladu za postupem.
 
-1. V **Průzkumník řešení**v projektu **EchoClient** poklikejte na **App. config** a otevře se soubor v editoru sady Visual Studio.
+1. V **Průzkumník řešení**v projektu **EchoClient** dvakrát klikněte na **App.config** a otevřete soubor v editoru sady Visual Studio.
 1. V elementu `<appSettings>` nahraďte zástupné texty názvem svého oboru názvů a klíčem SAS, který jste zkopírovali v jednom z předchozích kroků.
 1. V rámci `system.serviceModel` elementu přidejte `<client>` element.
 
@@ -546,9 +535,9 @@ V tomto kroku vytvoříte soubor *App. config* pro základní klientskou aplikac
 
 1. Vyberte **soubor**  >  **Uložit vše**.
 
-### <a name="example-of-the-appconfig-file"></a>Příklad souboru App. config
+### <a name="example-of-the-appconfig-file"></a>Příklad souboru App.config
 
-Následující kód ukazuje soubor *App. config* pro klienta echo.
+Následující kód ukazuje soubor *App.config* pro klienta echo.
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -613,7 +602,7 @@ Jedním z hlavních rozdílů však je, že klientská aplikace používá pro p
     sasCredential.TokenProvider = TokenProvider.CreateSharedAccessSignatureTokenProvider("RootManageSharedAccessKey", sasKey);
     ```
 
-1. Vytvořte objekt pro vytváření kanálů, který načte konfiguraci popsanou v souboru *App. config* .
+1. Vytvořte objekt pro vytváření kanálů, který načte konfiguraci popsanou v souboru *App.config* .
 
     ```csharp
     ChannelFactory<IEchoChannel> channelFactory = new ChannelFactory<IEchoChannel>("RelayEndpoint", new EndpointAddress(serviceUri));

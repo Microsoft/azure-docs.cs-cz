@@ -6,20 +6,20 @@ manager: nitinme
 author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 050848b0bff65b19e2b17bd170e1d3e9ff0176f1
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: c07c00345140d96bf3265fb280fe29b1274bdee6
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791999"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321302"
 ---
 # <a name="example-create-a-form-recognizer-custom-skill"></a>Příklad: Vytvoření vlastní dovednosti pro rozpoznávání formulářů
 
 V tomto příkladu Azure Kognitivní hledání dovednosti se dozvíte, jak vytvořit vlastní dovednosti pro rozpoznávání formulářů pomocí C# a Visual studia. Nástroj pro rozpoznávání formulářů analyzuje dokumenty a extrahuje páry klíč/hodnota a tabulková data. Když rozbalíte Nástroj pro rozpoznávání formulářů do [vlastního rozhraní dovedností](cognitive-search-custom-skill-interface.md), můžete tuto funkci přidat jako krok v rámci kompletního kanálu pro rozšíření. Kanál pak může načíst dokumenty a dělat další transformace.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) (libovolná edice).
 - Nejméně pět forem stejného typu. Můžete použít ukázková data uvedená v této příručce.
@@ -43,9 +43,9 @@ Nejprve přidejte proměnné prostředí na úrovni projektu. V levém podokně 
 * `FORMS_RECOGNIZER_RETRY_DELAY`s hodnotou nastavenou na 1000. Tato hodnota je čas v milisekundách, po který bude program čekat před opakováním dotazu.
 * `FORMS_RECOGNIZER_MAX_ATTEMPTS`s hodnotou nastavenou na 100. Tato hodnota představuje počet pokusů, kolikrát program dotazuje službu při pokusu o získání úspěšné odpovědi.
 
-Potom otevřete _AnalyzeForm.cs_ a najděte `fieldMappings` proměnnou, která odkazuje na soubor *. JSON pole-Mapping. JSON* . Tento soubor (a proměnná, která na něj odkazuje) definuje seznam klíčů, které chcete extrahovat z vašich formulářů, a vlastní popisek pro každý klíč. `{ "Address:", "address" }, { "Invoice For:", "recipient" }` Například hodnota znamená, že skript uloží pouze hodnoty pro zjištěné `Address:` a `Invoice For:` pole a označí tyto hodnoty pomocí `"address"` a `"recipient"`v uvedeném pořadí.
+Dále otevřete _AnalyzeForm.cs_ a najděte `fieldMappings` proměnnou, která odkazuje na *field-mappings.jsv* souboru. Tento soubor (a proměnná, která na něj odkazuje) definuje seznam klíčů, které chcete extrahovat z vašich formulářů, a vlastní popisek pro každý klíč. Například hodnota `{ "Address:", "address" }, { "Invoice For:", "recipient" }` znamená, že skript uloží pouze hodnoty pro zjištěné `Address:` a `Invoice For:` pole a označí tyto hodnoty pomocí `"address"` a v `"recipient"` uvedeném pořadí.
 
-Nakonec si poznamenejte `contentType` proměnnou. Tento skript spustí daný model rozpoznávání formulářů na vzdálených dokumentech, na které odkazuje adresa URL, takže typ obsahu je `application/json`. Pokud chcete analyzovat místní soubory zahrnutím jejich datových proudů do požadavků HTTP, budete muset změnit `contentType` na příslušný [typ MIME](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Complete_list_of_MIME_types) pro váš soubor.
+Nakonec si poznamenejte `contentType` proměnnou. Tento skript spustí daný model rozpoznávání formulářů na vzdálených dokumentech, na které odkazuje adresa URL, takže typ obsahu je `application/json` . Pokud chcete analyzovat místní soubory zahrnutím jejich datových proudů do požadavků HTTP, budete muset změnit na `contentType` příslušný [typ MIME](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Complete_list_of_MIME_types) pro váš soubor.
 
 ## <a name="test-the-function-from-visual-studio"></a>Testování funkce ze sady Visual Studio
 
@@ -77,7 +77,7 @@ Začněte s níže uvedenou šablonou textu žádosti.
 }
 ```
 
-Tady budete muset zadat adresu URL formuláře, který má stejný typ jako formuláře, které jste si vystavili. Pro účely testování můžete použít jeden z vašich školicích formulářů. Pokud jste postupovali s rychlým startem, vaše formuláře se budou nacházet v účtu služby Azure Blob Storage. Otevřete Průzkumník služby Azure Storage, vyhledejte soubor formuláře, klikněte na něj pravým tlačítkem myši a vyberte **získat sdílený přístupový podpis**. V dalším dialogovém okně bude k dispozici adresa URL a token SAS. Zadejte tyto řetězce do polí `"formUrl"` a `"formSasToken"` v textu žádosti, v uvedeném pořadí.
+Tady budete muset zadat adresu URL formuláře, který má stejný typ jako formuláře, které jste si vystavili. Pro účely testování můžete použít jeden z vašich školicích formulářů. Pokud jste postupovali s rychlým startem, vaše formuláře se budou nacházet v účtu služby Azure Blob Storage. Otevřete Průzkumník služby Azure Storage, vyhledejte soubor formuláře, klikněte na něj pravým tlačítkem myši a vyberte **získat sdílený přístupový podpis**. V dalším dialogovém okně bude k dispozici adresa URL a token SAS. Zadejte tyto řetězce do `"formUrl"` polí a v `"formSasToken"` textu žádosti, v uvedeném pořadí.
 
 > [!div class="mx-imgBorder"]
 > ![Průzkumník služby Azure Storage; je vybraný dokument PDF.](media/cognitive-search-skill-form/form-sas.png)
@@ -111,7 +111,7 @@ Měla by se zobrazit odpověď podobná následujícímu příkladu:
 
 Až budete s chováním funkce spokojeni, můžete ho publikovat.
 
-1. V **Průzkumník řešení** v aplikaci Visual Studio klikněte pravým tlačítkem myši na projekt a vyberte **publikovat**. Vyberte **vytvořit nové** > **publikování**.
+1. V **Průzkumník řešení** v aplikaci Visual Studio klikněte pravým tlačítkem myši na projekt a vyberte **publikovat**. Vyberte **vytvořit nové**  >  **publikování**.
 1. Pokud jste ještě nepřipojili Visual Studio k účtu Azure, vyberte **Přidat účet....**
 1. Postupujte podle výzev na obrazovce. Zadejte jedinečný název pro službu App Service, předplatné Azure, skupinu prostředků, plán hostování a účet úložiště, který chcete použít. Můžete vytvořit novou skupinu prostředků, nový plán hostování a nový účet úložiště, pokud je ještě nemáte. Až budete hotovi, vyberte **vytvořit**.
 1. Po dokončení nasazení si všimněte adresy URL webu. Tato adresa URL je adresa vaší aplikace Function App v Azure. Uložte ho do dočasného umístění.

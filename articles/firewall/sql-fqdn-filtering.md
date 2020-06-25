@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 06/18/2020
 ms.author: victorh
-ms.openlocfilehash: 3085e664b75e404e14ba0992a286d33cbf3ef771
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: e7b21a4ebf18cad51898e3a83b622e518c6b391e
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85077823"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322404"
 ---
 # <a name="configure-azure-firewall-application-rules-with-sql-fqdns"></a>Konfigurace Azure Firewall pravidel aplikací s plně kvalifikovanými názvy domén SQL
 
@@ -63,4 +63,4 @@ Pokud používáte jiné než výchozí porty pro přenos SQL IaaS, můžete tyt
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o proxy serveru SQL a režimech přesměrování najdete v tématu [Architektura připojení Azure SQL Database](../azure-sql/database/connectivity-architecture.md).
+Další informace o proxy serveru SQL a režimech přesměrování najdete v tématu [architektura Azure SQL Databaseho připojení](../azure-sql/database/connectivity-architecture.md).

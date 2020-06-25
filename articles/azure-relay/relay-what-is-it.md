@@ -1,24 +1,14 @@
 ---
 title: Co je Azure Relay? | Dokumentace Microsoftu
 description: Tento článek obsahuje přehled služby Azure Relay, která umožňuje vyvíjet cloudové aplikace využívající místní služby spuštěné v podnikové síti, a to bez nutnosti otevírat připojení brány firewall nebo provádět výraznější změny síťové infrastruktury.
-services: service-bus-relay
-author: spelluru
-manager: ''
-editor: ''
-ms.assetid: 1e3e971d-2a24-4f96-a88a-ce3ea2b1a1cd
-ms.service: service-bus-relay
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 11/13/2018
-ms.author: spelluru
-ms.openlocfilehash: 964a472a5c0a6350090f83755747a12e89a1650e
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: 0c9a67bcad47ad2e7284bcf6e70914d2ffb06a8c
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83211629"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322654"
 ---
 # <a name="what-is-azure-relay"></a>Co je Azure Relay?
 Služba Azure Relay umožňuje bezpečně zpřístupnit služby spuštěné v podnikové síti pro veřejný cloud. Můžete to udělat bez otevření portu v bráně firewall nebo provedení rušivých změn v infrastruktuře podnikové sítě. 

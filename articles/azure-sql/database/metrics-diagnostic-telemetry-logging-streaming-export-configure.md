@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 04/06/2020
-ms.openlocfilehash: 87a30544378936f8408f187f6b9ad67edb8dce12
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 49550453885ebaba40380a4675ace8fb012fcaa1
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117758"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322730"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-and-sql-managed-instance-diagnostic-telemetry"></a>Konfigurace exportu streamování Azure SQL Database a diagnostiky diagnostické telemetrie SQL spravované instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -37,16 +37,16 @@ Kromě streamování exportu Intelligent Insightsho protokolu můžete také exp
 
 | Diagnostická telemetrie pro databáze | Podpora Azure SQL Database | Podpora spravované instance Azure SQL |
 | :------------------- | ----- | ----- |
-| [Základní metriky](#basic-metrics): obsahuje hodnoty DTU/CPU, DTU/CPU, procentuální podíl fyzického data, procento zápisu protokolu, úspěšné/neúspěšné/blokované připojení brány firewall, procento relací, procento pracovních procesů, úložiště, procento úložiště a procento XTP úložiště. | Ano | Ne |
-| [Rozšířená instance a aplikace](#advanced-metrics): obsahuje data systémové databáze tempdb a velikost souboru protokolu a soubor protokolu tempdb%. | Ano | Ne |
+| [Základní metriky](#basic-metrics): obsahuje hodnoty DTU/CPU, DTU/CPU, procentuální podíl fyzického data, procento zápisu protokolu, úspěšné/neúspěšné/blokované připojení brány firewall, procento relací, procento pracovních procesů, úložiště, procento úložiště a procento XTP úložiště. | Yes | Ne |
+| [Rozšířená instance a aplikace](#advanced-metrics): obsahuje data systémové databáze tempdb a velikost souboru protokolu a soubor protokolu tempdb%. | Yes | Ne |
 | [QueryStoreRuntimeStatistics](#query-store-runtime-statistics): obsahuje informace o statistice za běhu dotazu, jako je například využití procesoru a statistika doby trvání dotazu. | Ano | Ano |
 | [QueryStoreWaitStatistics](#query-store-wait-statistics): obsahuje informace o statistice čekání na dotaz (co vaše dotazy čekaly), jako je například CPU, protokol a uzamykání. | Ano | Ano |
 | [Chyby](#errors-dataset): obsahuje informace o chybách SQL v databázi. | Ano | Ano |
-| [DatabaseWaitStatistics](#database-wait-statistics-dataset): obsahuje informace o tom, kolik času databáze strávila čekáním na různé typy čekání. | Ano | Ne |
-| [Timeout](#time-outs-dataset): obsahuje informace o časových limitech v databázi. | Ano | Ne |
-| [Bloky](#blockings-dataset): obsahuje informace o blokujících událostech v databázi. | Ano | Ne |
-| [Zablokování](#deadlocks-dataset): obsahuje informace o událostech zablokování v databázi. | Ano | Ne |
-| [AutomaticTuning](#automatic-tuning-dataset): obsahuje informace o automatickém ladění doporučení pro databázi. | Ano | Ne |
+| [DatabaseWaitStatistics](#database-wait-statistics-dataset): obsahuje informace o tom, kolik času databáze strávila čekáním na různé typy čekání. | Yes | Ne |
+| [Timeout](#time-outs-dataset): obsahuje informace o časových limitech v databázi. | Yes | Ne |
+| [Bloky](#blockings-dataset): obsahuje informace o blokujících událostech v databázi. | Yes | Ne |
+| [Zablokování](#deadlocks-dataset): obsahuje informace o událostech zablokování v databázi. | Yes | Ne |
+| [AutomaticTuning](#automatic-tuning-dataset): obsahuje informace o automatickém ladění doporučení pro databázi. | Yes | Ne |
 | [SQLInsights](#intelligent-insights-dataset): obsahuje Intelligent Insights do výkonu pro databázi. Další informace najdete v tématu [Intelligent Insights](intelligent-insights-overview.md). | Ano | Ano |
 
 > [!NOTE]
@@ -231,7 +231,7 @@ Pokud chcete povolit streamování diagnostické telemetrie pro instanci databá
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> PowerShell Azure Resource Manager modul stále podporuje Azure, ale všechny budoucí vývojové prostředí jsou pro modul AZ. SQL. Tyto rutiny naleznete v tématu [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické.
+> PowerShell Azure Resource Manager modul je stále podporován, ale všechny budoucí vývojové prostředí jsou pro modul AZ. SQL. Tyto rutiny naleznete v tématu [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické.
 
 Metriky a protokolování diagnostiky můžete povolit pomocí prostředí PowerShell.
 
@@ -471,7 +471,7 @@ Podrobnosti o telemetrie dostupných pro všechny protokoly jsou popsány v nás
 
 #### <a name="resource-usage-stats-for-managed-instances"></a>Statistika využití prostředků pro spravované instance
 
-|Vlastnost|Description|
+|Vlastnost|Popis|
 |---|---|
 |TenantId|ID tenanta |
 |SourceSystem|Vždycky: Azure|
@@ -496,7 +496,7 @@ Podrobnosti o telemetrie dostupných pro všechny protokoly jsou popsány v nás
 
 #### <a name="query-store-runtime-statistics"></a>Statistiky za běhu úložiště dotazů
 
-|Vlastnost|Description|
+|Vlastnost|Popis|
 |---|---|
 |TenantId|ID tenanta |
 |SourceSystem|Vždycky: Azure |
@@ -547,7 +547,7 @@ Další informace o [datech statistiky modulu runtime úložiště dotazů](http
 
 #### <a name="query-store-wait-statistics"></a>Statistika čekání na úložiště dotazů
 
-|Vlastnost|Description|
+|Vlastnost|Popis|
 |---|---|
 |TenantId|ID tenanta |
 |SourceSystem|Vždycky: Azure |
@@ -585,7 +585,7 @@ Další informace o [datech statistiky čekání na úložiště dotazů](https:
 
 #### <a name="errors-dataset"></a>Datová sada chyb
 
-|Vlastnost|Description|
+|Vlastnost|Popis|
 |---|---|
 |TenantId|ID tenanta |
 |SourceSystem|Vždycky: Azure |
@@ -614,7 +614,7 @@ Přečtěte si další informace o [chybových zprávách SQL](https://docs.micr
 
 #### <a name="database-wait-statistics-dataset"></a>Datová sada statistiky čekání databáze
 
-|Vlastnost|Description|
+|Vlastnost|Popis|
 |---|---|
 |TenantId|ID tenanta |
 |SourceSystem|Vždycky: Azure |
@@ -643,7 +643,7 @@ Přečtěte si další informace o [statistice čekání databáze](https://docs
 
 #### <a name="time-outs-dataset"></a>Datová sada časových limitů
 
-|Vlastnost|Description|
+|Vlastnost|Popis|
 |---|---|
 |TenantId|ID tenanta |
 |SourceSystem|Vždycky: Azure |
@@ -666,7 +666,7 @@ Přečtěte si další informace o [statistice čekání databáze](https://docs
 
 #### <a name="blockings-dataset"></a>Datová sada bloků
 
-|Vlastnost|Description|
+|Vlastnost|Popis|
 |---|---|
 |TenantId|ID tenanta |
 |SourceSystem|Vždycky: Azure |
@@ -690,7 +690,7 @@ Přečtěte si další informace o [statistice čekání databáze](https://docs
 
 #### <a name="deadlocks-dataset"></a>Datová sada zablokování
 
-|Vlastnost|Description|
+|Vlastnost|Popis|
 |---|---|
 |TenantId|ID tenanta |
 |SourceSystem|Vždycky: Azure |
@@ -711,7 +711,7 @@ Přečtěte si další informace o [statistice čekání databáze](https://docs
 
 #### <a name="automatic-tuning-dataset"></a>Datová sada automatického ladění
 
-|Vlastnost|Description|
+|Vlastnost|Popis|
 |---|---|
 |TenantId|ID tenanta |
 |SourceSystem|Vždycky: Azure |

@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: yluiu
-ms.openlocfilehash: 40ca1dbf981c5a9025cf5a0bac6b007709d69a77
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a90b37b197e25a8db79a87761d94dfded53acf50
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76934582"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323208"
 ---
 # <a name="specify-a-face-detection-model"></a>Určení modelu detekce obličeje
 
@@ -47,11 +47,11 @@ Adresa URL požadavku pro REST API pro [rozpoznávání tváře] bude vypadat ta
 
 `https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes][&recognitionModel][&returnRecognitionModel][&detectionModel]&subscription-key=<Subscription key>`
 
-Používáte-li knihovnu klienta, lze hodnotu přiřadit pro `detectionModel` předáním vhodného řetězce. Pokud ho necháte nepřiřazený, rozhraní API použije výchozí verzi modelu (`detection_01`). Podívejte se na následující příklad kódu pro klientskou knihovnu rozhraní .NET.
+Používáte-li knihovnu klienta, lze hodnotu přiřadit pro `detectionModel` předáním vhodného řetězce. Pokud ho necháte nepřiřazený, rozhraní API použije výchozí verzi modelu ( `detection_01` ). Podívejte se na následující příklad kódu pro klientskou knihovnu rozhraní .NET.
 
 ```csharp
 string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
-var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, false, false, recognitionModel: "recognition_02", detectionModel: "detection_02");
+var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, false, false, recognitionModel: "recognition_03", detectionModel: "detection_02");
 ```
 
 ## <a name="add-face-to-person-with-specified-model"></a>Přidat obličej k osobě se zadaným modelem
@@ -63,7 +63,7 @@ Podívejte se na následující příklad kódu pro klientskou knihovnu rozhran�
 ```csharp
 // Create a PersonGroup and add a person with face detected by "detection_02" model
 string personGroupId = "mypersongroupid";
-await faceClient.PersonGroup.CreateAsync(personGroupId, "My Person Group Name", recognitionModel: "recognition_02");
+await faceClient.PersonGroup.CreateAsync(personGroupId, "My Person Group Name", recognitionModel: "recognition_03");
 
 string personId = (await faceClient.PersonGroupPerson.CreateAsync(personGroupId, "My Person Name")).PersonId;
 
@@ -71,7 +71,7 @@ string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
 await client.PersonGroupPerson.AddFaceFromUrlAsync(personGroupId, personId, imageUrl, detectionModel: "detection_02");
 ```
 
-Tento kód vytvoří objekt **Person** s ID `mypersongroupid` a přidá do něj **osobu** . Pak přidá na tuto **osobu** tvář s použitím `detection_02` modelu. Pokud nezadáte parametr *detectionModel* , rozhraní API použije výchozí model, `detection_01`.
+Tento kód vytvoří objekt **Person** s ID `mypersongroupid` a přidá do něj **osobu** . Pak přidá na tuto **osobu** tvář s použitím `detection_02` modelu. Pokud nezadáte parametr *detectionModel* , rozhraní API použije výchozí model, `detection_01` .
 
 > [!NOTE]
 > Nemusíte používat stejný model detekce pro všechny plošky v objektu **Person** a nemusíte používat stejný model detekce při zjišťování nových plošek pro porovnání s objektem **Person** (například v rozhraní API pro [identifikaci obličeje] ).
@@ -81,13 +81,13 @@ Tento kód vytvoří objekt **Person** s ID `mypersongroupid` a přidá do něj 
 Pokud přidáte plošku do existujícího objektu **FaceList** , můžete také určit model detekce. Podívejte se na následující příklad kódu pro klientskou knihovnu rozhraní .NET.
 
 ```csharp
-await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_02");
+await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_03");
 
 string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
 await client.FaceList.AddFaceFromUrlAsync(faceListId, imageUrl, detectionModel: "detection_02");
 ```
 
-Tento kód vytvoří **FaceList** s názvem `My face collection` a přidá na něj obličej s `detection_02` modelem. Pokud nezadáte parametr *detectionModel* , rozhraní API použije výchozí model, `detection_01`.
+Tento kód vytvoří **FaceList** s názvem `My face collection` a přidá na něj obličej s `detection_02` modelem. Pokud nezadáte parametr *detectionModel* , rozhraní API použije výchozí model, `detection_01` .
 
 > [!NOTE]
 > Nemusíte používat stejný model detekce pro všechny plošky v objektu **FaceList** a nemusíte používat stejný model detekce při zjišťování nových plošek pro porovnání s objektem **FaceList** .
@@ -103,7 +103,7 @@ Různé modely detekce tváře jsou optimalizované pro různé úlohy. Přehled
 |Vrátí atributy obličeje (pozice pozice, věk, emoce atd.), pokud jsou zadány ve volání metody Detect. |  Nevrací atributy obličeje.     |
 |Vrátí orientační vzhledy, pokud jsou zadány ve volání metody Detect.   | Nevrací orientační vzhledy.  |
 
-Nejlepším způsobem, jak porovnávat funkční způsobilost modelů `detection_01` a `detection_02` , je použít je pro ukázkovou datovou sadu. Doporučujeme volat rozhraní API pro [rozpoznávání tváře] na celou řadu imagí, zejména obrázky mnoha plošek nebo ploch, které se obtížně zobrazují, a to pomocí každého modelu detekce. Věnujte pozornost počtu ploch, které vrátí každý model.
+Nejlepším způsobem, jak porovnávat funkční způsobilost `detection_01` modelů a, `detection_02` je použít je pro ukázkovou datovou sadu. Doporučujeme volat rozhraní API pro [rozpoznávání tváře] na celou řadu imagí, zejména obrázky mnoha plošek nebo ploch, které se obtížně zobrazují, a to pomocí každého modelu detekce. Věnujte pozornost počtu ploch, které vrátí každý model.
 
 ## <a name="next-steps"></a>Další kroky
 

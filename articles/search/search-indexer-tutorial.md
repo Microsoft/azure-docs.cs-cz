@@ -1,23 +1,23 @@
 ---
 title: Kurz C# – indexování dat SQL Azure
 titleSuffix: Azure Cognitive Search
-description: V tomto kurzu C# se připojte ke službě Azure SQL Database, extrahujte hledaná data a načtěte ji do indexu služby Azure Kognitivní hledání.
+description: V tomto kurzu C# se připojte k Azure SQL Database, extrahujte hledaná data a načtěte ji do indexu Azure Kognitivní hledání.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: cf0c2c75b795fcca347439714e163d4022b79fa4
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: c2972d13b25d167c2144c4f66e36822e85e29690
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85261014"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85320994"
 ---
 # <a name="tutorial-index-azure-sql-data-using-the-net-sdk"></a>Kurz: indexování dat SQL Azure pomocí sady .NET SDK
 
-Konfigurace [indexeru](search-indexer-overview.md) pro extrakci prohledávatelných dat ze služby Azure SQL Database a jejich odeslání do indexu vyhledávání v Azure kognitivní hledání. 
+Nakonfigurujte [indexer](search-indexer-overview.md) pro extrakci prohledávatelných dat z Azure SQL Database a odešlete ho do indexu vyhledávání ve službě Azure kognitivní hledání. 
 
 Tento kurz používá jazyk C# a [sadu .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) k provádění následujících úloh:
 
@@ -144,7 +144,7 @@ Schéma může obsahovat také další elementy, včetně profilů vyhodnocován
 
 Hlavní program obsahuje logiku pro vytváření klienta, index, zdroj dat a indexer. Kód předpokládá, že byste tento program mohli spustit několikrát, a proto kontroluje a odstraňuje existující prostředky se stejným názvem.
 
-Objekt zdroje dat je nakonfigurovaný s nastavením, která jsou specifická pro prostředky Azure SQL Database, včetně [částečného nebo přírůstkového indexování](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) pro využití integrovaných [funkcí detekce změn](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server) v Azure SQL. Ukázková databáze hotelů v Azure SQL má sloupec "obnovitelné odstranění" s názvem **IsDeleted**. Pokud je tento sloupec v databázi nastavený na hodnotu true, indexer odebere odpovídající dokument z indexu služby Azure Kognitivní hledání.
+Objekt zdroje dat má nakonfigurovaná nastavení, která jsou specifická pro Azure SQL Database prostředky, včetně [částečného nebo přírůstkového indexování](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) pro využití integrovaných [funkcí detekce změn](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server) v Azure SQL. Ukázková databáze hotelů v Azure SQL má sloupec "obnovitelné odstranění" s názvem **IsDeleted**. Pokud je tento sloupec v databázi nastavený na hodnotu true, indexer odebere odpovídající dokument z indexu služby Azure Kognitivní hledání.
 
   ```csharp
   Console.WriteLine("Creating data source...");
@@ -253,4 +253,4 @@ Prostředky můžete najít a spravovat na portálu pomocí odkazu všechny pros
 Teď, když jste obeznámení se základy indexování SQL Database, se podíváme na konfiguraci indexeru.
 
 > [!div class="nextstepaction"]
-> [Konfigurace indexeru služby Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
+> [Konfigurace indexeru SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)

@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 96a5d3d5c894dda4270c5a8832f188ead56a1ce4
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 85b680aafd822b80edf543ca39787848129f1930
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020893"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322046"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Role a požadavky pro Azure Data Share 
 
@@ -37,10 +37,10 @@ Níže je uveden souhrn rolí přiřazených k spravované identitě prostředku
 |Azure Data Lake Gen1 | Vlastník | Nepodporuje se
 |Azure Data Lake Gen2 | Čtečka dat objektů BLOB úložiště | Přispěvatel dat objektu BLOB služby Storage
 |Azure SQL Server | Přispěvatel databáze SQL | Přispěvatel databáze SQL
-|Cluster Azure Průzkumník dat | Přispěvatel | Přispěvatel
+|Cluster Azure Data Exploreru | Přispěvatel | Přispěvatel
 |
 
-Pro sdílení založené na SQL je potřeba vytvořit uživatele SQL z externího poskytovatele v databázi SQL se stejným názvem, jaký má prostředek sdílené složky Azure. Níže je uveden souhrn oprávnění vyžadovaných uživatelem SQL.
+Pro sdílení založené na SQL je potřeba vytvořit uživatele SQL z externího poskytovatele v Azure SQL Database se stejným názvem jako prostředek sdílené složky Azure. Níže je uveden souhrn oprávnění vyžadovaných uživatelem SQL.
 
 | |  |  |
 |---|---|---|
@@ -66,7 +66,7 @@ Chcete-li vytvořit přiřazení role pro spravovanou identitu prostředku sdíl
 1. V části *Vybrat*zadejte název vašeho prostředku Azure Data Share.
 1. Klikněte na *Uložit*.
 
-Pro zdroje založené na SQL se kromě výše uvedených kroků musí uživatel SQL vytvořit z externího poskytovatele v databázi SQL se stejným názvem, jako je prostředek sdílené složky Azure. Tomuto uživateli musí být uděleno oprávnění *db_datareader* . Ukázkový skript spolu s dalšími předpoklady pro sdílení na základě SQL najdete v kurzu [sdílení vašich dat](share-your-data.md) . 
+Pro zdroje založené na SQL se kromě výše uvedených kroků musí uživatel SQL vytvořit z externího poskytovatele v SQL Database se stejným názvem jako prostředek sdílené složky Azure. Tomuto uživateli musí být uděleno oprávnění *db_datareader* . Ukázkový skript spolu s dalšími předpoklady pro sdílení na základě SQL najdete v kurzu [sdílení vašich dat](share-your-data.md) . 
 
 ### <a name="data-consumer"></a>Příjemce dat
 Aby bylo možné přijímat data, musí mít spravovaná identita prostředku zdroje dat uživatele udělen přístup k cílovému úložišti dat Azure. Například v případě účtu úložiště má spravovaná identita prostředku sdílení dat přiřazenou roli Přispěvatel dat objektů BLOB úložiště. 
@@ -84,7 +84,7 @@ Chcete-li vytvořit přiřazení role pro spravovanou identitu prostředku sdíl
 1. V části *Vybrat*zadejte název vašeho prostředku Azure Data Share.
 1. Klikněte na *Uložit*.
 
-V případě cíle založeného na jazyce SQL musí být kromě výše uvedeného postupu vytvořen uživatel SQL z externího poskytovatele v databázi SQL se stejným názvem, jaký má prostředek sdílené složky Azure. Tento uživatel musí mít udělená oprávnění *db_datareader, db_datawriter db_ddladmin* . Ukázkový skript spolu s dalšími předpoklady pro sdílení založené na SQL najdete v kurzu [přijetí a přijetí dat](subscribe-to-data-share.md) . 
+V případě cíle založeného na jazyce SQL musí být kromě výše uvedeného postupu vytvořen uživatel SQL od externího poskytovatele v SQL Database se stejným názvem, jako má prostředek Azure Data Share. Tento uživatel musí mít udělená oprávnění *db_datareader, db_datawriter db_ddladmin* . Ukázkový skript spolu s dalšími předpoklady pro sdílení založené na SQL najdete v kurzu [přijetí a přijetí dat](subscribe-to-data-share.md) . 
 
 Pokud sdílíte data pomocí rozhraní REST API, je potřeba vytvořit Tato přiřazení rolí ručně. 
 

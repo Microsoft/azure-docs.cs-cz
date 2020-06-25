@@ -3,12 +3,12 @@ title: Postup povolení Azure Monitor pro kontejnery | Microsoft Docs
 description: Tento článek popisuje, jak povolíte a nakonfigurujete Azure Monitor pro kontejnery, abyste porozuměli tomu, jak váš kontejner vykonává a jaké byly zjištěny problémy související s výkonem.
 ms.topic: conceptual
 ms.date: 06/15/2020
-ms.openlocfilehash: a765c601682eb594d40ba98b8b4ef1853f35fb37
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: e17a346418bc5d38470168339f2078a0a187fe4e
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84886009"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85338256"
 ---
 # <a name="how-to-enable-azure-monitor-for-containers"></a>Postup povolení Azure Monitor pro kontejnery
 
@@ -57,7 +57,7 @@ Než začnete, ujistěte se, že máte následující:
 Následující je oficiálně podporovaná s Azure Monitor pro kontejnery.
 
 - Prostředí: Azure Red Hat OpenShift, Kubernetes on-premises a AKS Engine v Azure a Azure Stack. Další informace najdete v tématu [AKS Engine on Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908).
-- Verze Kubernetes a zásad podpory jsou stejné jako verze [podporovaných AKS](../../aks/supported-kubernetes-versions.md). 
+- Verze Kubernetes a zásad podpory jsou stejné jako verze [podporovaných AKS](../../aks/supported-kubernetes-versions.md).
 
 ## <a name="network-firewall-requirements"></a>Požadavky na bránu firewall sítě
 
@@ -65,7 +65,7 @@ Informace v následující tabulce uvádí informace o konfiguraci proxy serveru
 
 |Prostředek agenta|Porty |
 |--------------|------|
-| `*.ods.opinsights.azure.com` | 443 |  
+| `*.ods.opinsights.azure.com` | 443 |
 | `*.oms.opinsights.azure.com` | 443 |
 | `dc.services.visualstudio.com` | 443 |
 | `*.monitoring.azure.com` | 443 |
@@ -73,7 +73,7 @@ Informace v následující tabulce uvádí informace o konfiguraci proxy serveru
 
 Informace v následující tabulce uvádí informace o konfiguraci proxy serveru a brány firewall pro Azure Čína 21Vianet.
 
-|Prostředek agenta|Porty |Description | 
+|Prostředek agenta|Porty |Popis |
 |--------------|------|-------------|
 | `*.ods.opinsights.azure.cn` | 443 | Přijímání dat |
 | `*.oms.opinsights.azure.cn` | 443 | Připojování OMS |
@@ -81,7 +81,7 @@ Informace v následující tabulce uvádí informace o konfiguraci proxy serveru
 
 Informace v následující tabulce uvádí informace o konfiguraci proxy serveru a brány firewall pro vládu Azure USA.
 
-|Prostředek agenta|Porty |Description | 
+|Prostředek agenta|Porty |Popis |
 |--------------|------|-------------|
 | `*.ods.opinsights.azure.us` | 443 | Přijímání dat |
 | `*.oms.opinsights.azure.us` | 443 | Připojování OMS |
@@ -92,7 +92,7 @@ Informace v následující tabulce uvádí informace o konfiguraci proxy serveru
 Vaše schopnost monitorovat výkon se spoléhá na Log Analyticsho agenta kontejnerů pro Linux speciálně vyvinutých pro Azure Monitor pro kontejnery. Tento specializovaný agent shromažďuje data o výkonu a událostech ze všech uzlů v clusteru a Agent je automaticky nasazen a zaregistrován v zadaném Log Analytics pracovním prostoru během nasazování. Verze agenta je Microsoft/OMS: ciprod04202018 nebo novější a představuje datum v následujícím formátu: *MMDDYYYY*.
 
 >[!NOTE]
->V rámci verze Preview podpory Windows serveru pro AKS má cluster AKS s uzly Windows serveru nainstalovaný Agent pro shromažďování dat a předávání do Azure Monitor. Místo toho se uzel Linux automaticky nasadí do clusteru jako součást standardního nasazení a přepošle data Azure Monitor jménem všech uzlů Windows v clusteru.  
+>S obecnou dostupností podpory Windows serveru pro AKS má cluster AKS s uzly Windows serveru nainstalovaný Agent verze Preview jako daemonset pod na každém jednotlivém uzlu Windows serveru pro shromažďování protokolů a jejich přeposílání do Log Analytics. Pro metriky výkonu se uzel Linux automaticky nasadí do clusteru jako součást standardního nasazení a přepošle data Azure Monitor jménem všech uzlů Windows v clusteru.
 >
 
 Po vydání nové verze agenta se automaticky upgraduje na spravovaných clusterech Kubernetes hostovaných ve službě Azure Kubernetes Service (AKS). Pokud chcete postupovat podle vydaných verzí, přečtěte si téma [oznámení o vydáních](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)
@@ -103,7 +103,7 @@ Po vydání nové verze agenta se automaticky upgraduje na spravovaných cluster
 
 Azure Monitor pro kontejnery povolíte pomocí jedné z následujících metod popsaných v následující tabulce.
 
-| Stav nasazení | Metoda | Description |
+| Stav nasazení | Metoda | Popis |
 |------------------|--------|-------------|
 | Nový cluster Kubernetes | [Vytvoření clusteru AKS pomocí Azure CLI](../../aks/kubernetes-walkthrough.md#create-aks-cluster)| Můžete povolit monitorování nového clusteru AKS, který vytvoříte pomocí Azure CLI. |
 | | [Vytvoření clusteru AKS pomocí Terraformu](container-insights-enable-new-cluster.md#enable-using-terraform)| Můžete povolit monitorování nového clusteru AKS, který vytvoříte pomocí nástroje Open Source Tool Terraformu. |

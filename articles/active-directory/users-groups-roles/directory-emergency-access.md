@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c26b4e04970dd6c35fc6a71a1aade94d949b520
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.openlocfilehash: 0339d9d47752c194eeda96cd2df4859d6b97518b
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816178"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85338285"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Správa účtů pro nouzový přístup v Azure AD
 
@@ -156,5 +156,5 @@ Tyto kroky by se měly provádět v pravidelných intervalech a pro klíčové z
 - [Přidání uživatelů pomocí Azure AD](../fundamentals/add-users-azure-active-directory.md) a [přiřazení nového uživatele k roli globálního správce](../fundamentals/active-directory-users-assign-role-azure-portal.md)
 - Pokud jste se ještě nezaregistrovali, [Zaregistrujte](../fundamentals/active-directory-get-started-premium.md)se do Azure AD Premium.
 - [Jak pro uživatele vyžadovat dvoustupňové ověřování](../authentication/howto-mfa-userstates.md)
-- [Konfigurace dalších ochran pro globální správce v sadě office 365](https://docs.microsoft.com/office365/enterprise/protect-your-global-administrator-accounts), pokud používáte sadu Office 365
+- [Konfigurace dalších ochran pro globální správce v Microsoft 365](https://docs.microsoft.com/office365/enterprise/protect-your-global-administrator-accounts), pokud používáte Microsoft 365
 - [Spusťte kontrolu přístupu globálních správců](../privileged-identity-management/pim-how-to-start-security-review.md) a [Převeďte stávající globální správce na další konkrétní role správce](directory-assign-admin-roles.md) .

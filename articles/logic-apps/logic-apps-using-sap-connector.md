@@ -7,14 +7,14 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
-ms.date: 05/29/2020
+ms.date: 06/23/2020
 tags: connectors
-ms.openlocfilehash: 557e162d9d7f0238d5554c32cb3ae96885877dbe
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 01c1a2b3f9455f19877f1b16b7fff5a7c2e77c76
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220505"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323160"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Připojení k systémům SAP z Azure Logic Apps
 
@@ -39,7 +39,7 @@ V tomto článku se dozvíte, jak vytvořit ukázkové aplikace logiky, které s
 
 <a name="pre-reqs"></a>
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Pokud chcete postupovat podle tohoto článku, budete potřebovat tyto položky:
 
@@ -49,9 +49,12 @@ Pokud chcete postupovat podle tohoto článku, budete potřebovat tyto položky:
 
 * [Aplikační Server SAP](https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server) nebo [Server zpráv SAP](https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm).
 
-* Obsah zprávy, který můžete odeslat na Server SAP, například vzorový soubor IDoc, musí být ve formátu XML a zahrnovat obor názvů pro akci SAP, kterou chcete použít.
+* Obsah zprávy, který odešlete do serveru SAP, jako je například ukázkový soubor IDoc, musí být ve formátu XML a zahrnovat obor názvů pro akci SAP, kterou chcete použít.
 
 * Chcete-li použít **při přijetí zprávy z** triggeru SAP, je nutné provést tyto kroky nastavení:
+  
+  > [!NOTE]
+  > Tato aktivační událost používá stejné umístění URI pro obnovení i zrušení odběru odběru Webhooku. Operace obnovení používá `PATCH` metodu HTTP, zatímco operace zrušení odběru používá `DELETE` metodu HTTP. Toto chování může vést k tomu, že operace obnovení se objeví jako operace zrušení odběru v historii triggeru, ale operace se pořád obnovuje, protože Trigger používá `PATCH` jako metodu HTTP, ne `DELETE` .
 
   * Nastavte oprávnění zabezpečení brány SAP pomocí tohoto nastavení:
 
@@ -90,10 +93,10 @@ Tyto požadavky platí v případě, že aplikace logiky běží v [prostředí 
 
 1. [Stáhněte a nainstalujte si nejnovější knihovnu klienta SAP](#sap-client-library-prerequisites) na místním počítači. Měli byste mít následující soubory sestavení:
 
-   * libicudecnumber. dll
-   * rscp4n. dll
-   * sapnco. dll
-   * sapnco_utils. dll
+   * libicudecnumber.dll
+   * rscp4n.dll
+   * sapnco.dll
+   * sapnco_utils.dll
 
 1. Vytvořte soubor. zip, který obsahuje tato sestavení a nahrajte tento balíček do kontejneru objektů BLOB v Azure Storage.
 
@@ -111,7 +114,7 @@ Tyto požadavky platí v případě, že aplikace logiky běží v [prostředí 
    
    1. V podokně **Přidat nový spravovaný konektor** do pole **balíček SAP** vložte adresu URL souboru. zip, který obsahuje sestavení SAP. *Ujistěte se, že jste zahrnuli token SAS.*
 
-   1. Až to budete mít, vyberte **Vytvořit**.
+   1. Po dokončení vyberte **Vytvořit**.
 
    Další informace najdete v tématu [Přidání konektorů ISE](../logic-apps/add-artifacts-integration-service-environment-ise.md#add-ise-connectors-environment).
 
@@ -360,9 +363,9 @@ V tomto příkladu se používá aplikace logiky, která se aktivuje, když apli
 
       Logic Apps nastaví a otestuje připojení, aby se zajistilo správné fungování připojení.
 
-1. Zadejte [požadované parametry](#parameters) na základě konfigurace systému SAP.
+1. Zadejte [požadované parametry](#parameters) na základě konfigurace systému SAP. 
 
-   Volitelně můžete zadat jednu nebo více akcí SAP. Tento seznam akcí určuje zprávy, které aktivační událost obdrží od vašeho serveru SAP. Prázdný seznam určuje, že Trigger obdrží všechny zprávy. Pokud má seznam více než jednu zprávu, aktivační událost přijímá pouze zprávy uvedené v seznamu. Všechny ostatní zprávy odeslané z vašeho serveru SAP jsou odmítnuty.
+   Můžete [filtrovat zprávy, které obdržíte ze serveru SAP, zadáním seznamu akcí SAP](#filter-with-sap-actions).
 
    Akci SAP můžete vybrat z výběru souboru:
 
@@ -395,6 +398,56 @@ Spolu s jednoduchým řetězcem a číselnými vstupy akceptuje konektor SAP ná
 * Změna parametrů, které nahradí parametry směru tabulky pro novější verze SAP.
 * Parametry hierarchické tabulky
 
+<a name="filter-with-sap-actions"></a>
+
+#### <a name="filter-with-sap-actions"></a>Filtrování pomocí akcí SAP
+
+Volitelně můžete filtrovat zprávy, které aplikace logiky přijme ze serveru SAP, zadáním seznamu nebo pole s jednou nebo několika akcemi SAP. Ve výchozím nastavení je toto pole prázdné, což znamená, že aplikace logiky obdrží všechny zprávy ze serveru SAP bez filtrování. 
+
+Když nastavíte filtr pole, aktivační událost přijímá jenom zprávy ze zadaných typů akcí SAP a odmítne všechny ostatní zprávy ze serveru SAP. Tento filtr ale nemá vliv na to, jestli je text obdržené datové části slabý nebo silný.
+
+Jakékoli filtrování akcí SAP se stane na úrovni adaptéru SAP pro vaši místní bránu dat. Další informace najdete v tématu [Jak odeslat testovací IDOCs do Logic Apps z SAP](#send-idocs-from-sap).
+
+Pokud nemůžete odesílat IDoc pakety z SAP do triggeru vaší aplikace logiky, přečtěte si zprávu o odmítnutí volání transakčního RFC (tRFC) v dialogovém okně SAP tRFC (T-Code SM58). V rozhraní SAP se může zobrazit následující chybové zprávy, které jsou oříznuté z důvodu omezení dílčího řetězce v **textovém poli Stav** .
+
+* `The RequestContext on the IReplyChannel was closed without a reply being`: K neočekávaným chybám dochází, když popisovač catch-All pro kanál ukončí kanál z důvodu chyby a znovu sestaví kanál pro zpracování dalších zpráv.
+
+  * Pokud chcete potvrdit, že aplikace logiky přijala IDoc, [přidejte akci odpovědi](../connectors/connectors-native-reqres.md#add-a-response-action) , která vrátí `200 OK` stavový kód. IDoc je přepravován prostřednictvím tRFC, což nepovoluje datovou část odpovědi.
+
+  * Pokud potřebujete IDoc místo toho, odpovězte s jakýmkoli stavovým kódem HTTP, který je jiný než `200 OK` tak, že adaptér SAP vrátí výjimku zpět do SAP vaším jménem. 
+
+* `The segment or group definition E2EDK36001 was not found in the IDoc meta`: K očekávaným chybám dochází s jinými chybami, jako je například selhání při generování datové části XML IDoc, protože její segmenty nejsou uvolněny SAP, takže chybí metadata typu segmentu požadovaná pro převod. 
+
+  * Pokud chcete tyto segmenty uvolnit pomocí SAP, obraťte se na pracovníky ABAP pro váš systém SAP.
+
+<a name="find-extended-error-logs"></a>
+
+#### <a name="find-extended-error-logs"></a>Najít rozšířené protokoly chyb
+
+V případě úplných chybových zpráv se podívejte na rozšířené protokoly adaptéru SAP. 
+
+V případě verzí pro místní bránu dat od června 2020 a novějších můžete [Povolit protokoly brány v nastavení aplikace](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot#collect-logs-from-the-on-premises-data-gateway-app).
+
+V případě verzí pro místní bránu dat od dubna 2020 a novějších jsou protokoly ve výchozím nastavení zakázané. Pokud chcete načíst rozšířené protokoly, postupujte podle těchto kroků:
+
+1. V instalační složce místní brány dat otevřete `Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config` soubor. 
+
+1. Pro nastavení **SapExtendedTracing** změňte hodnotu z **false** na **true**.
+
+1. Volitelně můžete pro méně událostí změnit hodnotu **SapTracingLevel** z **informativní** (výchozí) na **Error** nebo **Warning**. Nebo pro další události změňte **informativní** na **verbose**.
+
+1. Uložte konfigurační soubor.
+
+1. Restartujte bránu dat. Otevřete aplikaci pro místní instalaci brány dat a přejděte do nabídky **nastavení služby** . V části **restartovat bránu**vyberte **restartovat nyní**.
+
+1. Reprodukování problému.
+
+1. Exportujte protokoly brány. V aplikaci pro instalaci brány dat přejděte do nabídky **Diagnostika** . V části **protokoly brány**vyberte **exportovat protokoly**. Tyto soubory obsahují protokoly SAP seřazené podle data. V závislosti na velikosti protokolu můžou existovat pro jedno datum více souborů protokolu.
+
+1. V konfiguračním souboru vraťte nastavení **SapExtendedTracing** na **hodnotu false**.
+
+1. Restartujte službu brány.
+
 ### <a name="test-your-logic-app"></a>Testování aplikace logiky
 
 1. Pokud chcete aktivovat aplikaci logiky, odešlete zprávu ze systému SAP.
@@ -403,9 +456,148 @@ Spolu s jednoduchým řetězcem a číselnými vstupy akceptuje konektor SAP ná
 
 1. Otevřete poslední spuštění, ve kterém se zobrazí zpráva odeslaná ze systému SAP v oddílu aktivační výstupy triggeru.
 
+<a name="send-idocs-from-sap"></a>
+
+### <a name="test-sending-idocs-from-sap"></a>Test odesílání IDocs ze SAP
+
+K odeslání IDocs z SAP do aplikace logiky potřebujete následující minimální konfiguraci:
+
+> [!IMPORTANT]
+> Tyto kroky použijte jenom v případě, že testujete konfiguraci SAP pomocí aplikace logiky. Provozní prostředí vyžadují další konfiguraci.
+
+1. [Konfigurace cíle RFC v SAP](#create-rfc-destination)
+
+1. [Vytvoření připojení ABAP k cíli RFC](#create-abap-connection)
+
+1. [Vytvoření portu přijímače](#create-receiver-port)
+
+1. [Vytvořit port odesílatele](#create-sender-port)
+
+1. [Vytvoření partnera logického systému](#create-logical-system-partner)
+
+1. [Vytvořit profil partnera](#create-partner-profiles)
+
+1. [Testování odesílání zpráv](#test-sending-messages)
+
+#### <a name="create-rfc-destination"></a>Vytvořit cíl RFC
+
+1. Pokud chcete otevřít **konfiguraci nastavení připojení RFC** , použijte v rozhraní SAP kód transakce **Sm59** (T Code) s předponou **/n** .
+
+1. Vyberte **připojení TCP/IP**  >  **vytvořit**.
+
+1. Vytvořte nový cíl RFC s následujícím nastavením:
+    
+    * Jako **cíl RFC**zadejte název.
+    
+    * Na kartě **technické nastavení** pro **typ aktivace**vyberte **registrovaný serverový program**. Jako **ID programu**zadejte hodnotu. V SAP se Trigger vaší aplikace logiky zaregistruje pomocí tohoto identifikátoru.
+    
+    * Na kartě **Unicode** pro **typ komunikace s cílovým systémem**vyberte **Unicode**.
+
+1. Uložte provedené změny.
+
+1. Zaregistrujte nové **ID programu** pomocí Azure Logic Apps.
+
+1. Chcete-li otestovat připojení, vyberte v rozhraní SAP v části nový **cíl RFC**možnost **Test připojení**.
+
+#### <a name="create-abap-connection"></a>Vytvořit připojení ABAP
+
+1. Pokud chcete otevřít **konfiguraci nastavení připojení RFC** , v rozhraní SAP použijte kód transakce **Sm59*** (T Code) s předponou **/n** .
+
+1. Vyberte **připojení ABAP**  >  **vytvořit**.
+
+1. V části **cíl RFC**zadejte identifikátor [testovacího systému SAP](#create-rfc-destination).
+
+1. Uložte provedené změny.
+
+1. Chcete-li otestovat připojení, vyberte možnost **Test připojení** .
+
+#### <a name="create-receiver-port"></a>Vytvořit port přijímače
+
+1. Chcete-li otevřít **porty v nastavení zpracování IDOC** , použijte v rozhraní SAP kód transakce **We21** (T Code) s předponou **/n** .
+
+1. Vyberte **porty**  >  **transakční RFC**  >  **vytvořit**.
+
+1. V okně nastavení, které se otevře, vyberte **vlastní název portu**. Jako port testu zadejte **název**. Uložte provedené změny.
+
+1. V nastavení pro nový port přijímače pro **specifikaci RFC**zadejte do pole cíl [RFC testu](#create-rfc-destination)identifikátor.
+
+1. Uložte provedené změny.
+
+#### <a name="create-sender-port"></a>Vytvořit port odesílatele
+
+1.  Chcete-li otevřít **porty v nastavení zpracování IDOC** , použijte v rozhraní SAP kód transakce **We21** (T Code) s předponou **/n** .
+
+1. Vyberte **porty**  >  **transakční RFC**  >  **vytvořit**.
+
+1. V okně nastavení, které se otevře, vyberte **vlastní název portu**. Pro port testu zadejte **název** , který začíná na **SAP**. Všechny názvy portů odesílatele musí začínat písmeny **SAP**, například **SAPTEST**. Uložte provedené změny.
+
+1. V nastavení pro nový port odesílatele zadejte do pole **cíl RFC**zadání identifikátoru pro [připojení ABAP](#create-abap-connection).
+
+1. Uložte provedené změny.
+
+#### <a name="create-logical-system-partner"></a>Vytvořit partnera logického systému
+
+1. Chcete-li otevřít **zobrazení změna "logické systémy": Přehled** nastavení v rozhraní SAP, použijte kód transakce **Bd54** (T Code).
+
+1. Přijměte zobrazenou zprávu upozornění: **Upozornění: tabulka je mezi klientem**
+
+1. Nad seznamem, který zobrazuje vaše existující logické systémy, vyberte **nové položky**.
+
+1. Pro nový logický systém zadejte **Log.Sysidentifikátor tem** a popis krátkého **názvu** . Uložte provedené změny.
+
+1. Po zobrazení **výzvy pro Workbench** vytvořit novou žádost zadáním popisu, nebo pokud jste už žádost vytvořili, tento krok přeskočte.
+
+1. Po vytvoření žádosti Workbench propojte požadavek na požadavek na aktualizaci tabulky. Pokud chcete potvrdit, že se tabulka aktualizovala, uložte změny.
+
+#### <a name="create-partner-profiles"></a>Vytvoření profilů partnerů
+
+V produkčních prostředích musíte vytvořit dva profily partnerů. První profil je pro odesílatele, který je vaší organizací a systémem SAP. Druhý profil je pro příjemce, což je vaše aplikace logiky.
+
+1. Pokud chcete otevřít nastavení **partnerských profilů** , použijte ve svém rozhraní SAP kód transakce **We20** (T Code) s předponou **/n** .
+
+1. V části **profily partnerů**vyberte **Typ partnera LS**  >  **vytvořit**.
+
+1. Vytvořte nový profil partnera s následujícím nastavením:
+
+    * Jako **partner – ne.** zadejte [identifikátor vašeho partnera logického systému](#create-logical-system-partner).
+
+    * Pro **partn. Zadejte**, zadejte **ls**.
+
+    * Pro **agenta**zadejte identifikátor pro uživatelský účet SAP, který se má použít při registraci identifikátorů programu pro Azure Logic Apps nebo jiné systémy bez SAP.
+
+1. Uložte provedené změny. Pokud jste [nevytvořili partnera logického systému](#create-logical-system-partner), zobrazí se chyba, **Zadejte platné číslo partnera**.
+
+1. V nastavení vašeho partnerského profilu v části **odchozí parmtrs**vyberte **vytvořit odchozí parametr**.
+
+1. Vytvořte nový odchozí parametr s následujícím nastavením:
+
+    * Zadejte **typ zprávy**, například **CREMAS**.
+
+    * Zadejte [identifikátor portu přijímače](#create-receiver-port).
+
+    * Zadejte IDoc velikost **balíčku. Velikost**. Nebo pokud chcete [Odeslat IDOCs po jednom z SAP](#receive-idoc-packets-from-sap), vyberte možnost **předat IDOC hned**po druhém.
+
+1. Uložte provedené změny.
+
+#### <a name="test-sending-messages"></a>Testování odesílání zpráv
+
+1. Chcete-li otevřít **Nástroj test Tool pro IDOC zpracování** , použijte v rozhraní SAP kód transakce **We19** (T Code) s předponou **/n** .
+
+1. V části **Šablona pro test**vyberte **typ zprávy**a zadejte typ zprávy, například **CREMAS**. Vyberte **Vytvořit**.
+
+1. Výběrem možnosti **pokračovat**potvrďte, **který typ IDOC?** zpráva.
+
+1. Vyberte uzel **EDIDC** . Zadejte odpovídající hodnoty pro port příjemce a odesilatele. Vyberte **Pokračovat**.
+
+1. Vyberte **standardní odchozí zpracování**.
+
+1. Pokud chcete spustit odchozí IDoc zpracování, vyberte **pokračovat**. Po dokončení zpracování se zobrazí zpráva **IDOC odeslána do systému SAP nebo externího programu** .
+
+1.  Chcete-li zjistit chyby zpracování, použijte kód transakce **SM58** (T Code) s předponou **/n** .
+
 ## <a name="receive-idoc-packets-from-sap"></a>Příjem paketů IDoc ze SAP
 
-Můžete nastavit SAP pro [posílání IDOCs v paketech](https://help.sap.com/viewer/8f3819b0c24149b5959ab31070b64058/7.4.16/en-US/4ab38886549a6d8ce10000000a42189c.html), což jsou dávky nebo skupiny IDOCs. Aby bylo možné přijímat pakety IDoc, konektor SAP a konkrétně Trigger nevyžadují další konfiguraci. Pokud však chcete zpracovat každou položku v paketu IDoc poté, co Trigger obdrží paket, je nutné provést některé další kroky pro rozdělení paketu do jednotlivých IDocs.
+Můžete nastavit SAP pro [posílání IDOCs v paketech](https://help.sap.com/viewer/8f3819b0c24149b5959ab31070b64058/7.4.16/4ab38886549a6d8ce10000000a42189c.html), což jsou dávky nebo skupiny IDOCs. Aby bylo možné přijímat pakety IDoc, konektor SAP a konkrétně Trigger nevyžadují další konfiguraci. Pokud však chcete zpracovat každou položku v paketu IDoc poté, co Trigger obdrží paket, je nutné provést některé další kroky pro rozdělení paketu do jednotlivých IDocs.
 
 Tady je příklad, který ukazuje, jak extrahovat jednotlivé IDocs z paketu pomocí [ `xpath()` funkce](./workflow-definition-language-functions-reference.md#xpath):
 
@@ -439,7 +631,14 @@ Můžete použít šablonu pro rychlý Start pro tento model výběrem této ša
 
 ## <a name="generate-schemas-for-artifacts-in-sap"></a>Generování schémat pro artefakty v SAP
 
-V tomto příkladu se používá aplikace logiky, kterou můžete aktivovat pomocí požadavku HTTP. Akce SAP odešle požadavek do systému SAP, aby vygeneroval schémata pro zadané IDoc a BAPI. Schémata, která se vracejí v odpovědi, se nahrají na účet pro integraci pomocí konektoru Azure Resource Manager.
+V tomto příkladu se používá aplikace logiky, kterou můžete aktivovat pomocí požadavku HTTP. Chcete-li generovat schémata pro zadané IDoc a BAPI, odešle **schéma** akce SAP do systému SAP požadavek.
+
+Tato akce SAP vrátí schéma XML, nikoli obsah nebo data samotného dokumentu XML. Schémata vrácená v odpovědi se odesílají na účet pro integraci pomocí konektoru Azure Resource Manager. Schémata obsahují tyto části:
+
+* Struktura zprávy požadavku. Tyto informace slouží k vytvoření seznamu BAPI `get` .
+* Struktura zprávy s odpovědí. Tyto informace slouží k analýze odpovědi. 
+
+K odeslání zprávy s požadavkem použijte obecnou akci SAP **Odeslat zprávu do SAP**nebo cílené akce **BAPI volání** .
 
 ### <a name="add-an-http-request-trigger"></a>Přidání triggeru požadavku HTTP
 
@@ -639,9 +838,23 @@ Když se odesílají zprávy s povoleným **bezpečným typováním** , TIMS odp
 
 ## <a name="advanced-scenarios"></a>Pokročilé scénáře
 
+### <a name="change-language-headers"></a>Změna jazykových hlaviček
+
+Když se připojíte k SAP z Logic Apps, výchozím jazykem pro připojení je angličtina. Jazyk pro připojení můžete nastavit pomocí [standardní HLAVIČKY `Accept-Language` http](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.4) se vstupními požadavky.
+
+> [!TIP]
+> Většina webových prohlížečů přidá `Accept-Language` hlavičku na základě nastavení uživatele. Webový prohlížeč použije tuto hlavičku při vytváření nového připojení SAP v Návrháři Logic Apps. Pokud nechcete vytvářet připojení SAP v preferovaném jazyce ve webovém prohlížeči, aktualizujte nastavení webového prohlížeče tak, aby používala preferovaný jazyk, nebo vytvořte připojení SAP pomocí Azure Resource Manager místo návrháře Logic Apps. 
+
+Můžete například odeslat žádost s `Accept-Language` hlavičkou do aplikace logiky pomocí triggeru **požadavku HTTP** . Všechny akce v aplikaci logiky obdrží hlavičku. Pak SAP používá zadané jazyky ve svých systémových zprávách, jako jsou například chybové zprávy BAPI.
+
+Parametry připojení SAP pro aplikaci logiky nemají vlastnost Language. Takže pokud použijete `Accept-Language` hlavičku, může se zobrazit následující chyba: **Zkontrolujte prosím informace o účtu nebo oprávnění a zkuste to znovu.** V takovém případě místo toho ověřte protokoly chyb komponenty SAP. K chybě ve skutečnosti dojde v součásti SAP, která používá hlavičku, takže se může zobrazit jedna z těchto chybových zpráv:
+
+* `"SAP.Middleware.Connector.RfcLogonException: Select one of the installed languages"`
+* `"SAP.Middleware.Connector.RfcAbapMessageException: Select one of the installed languages"`
+
 ### <a name="confirm-transaction-explicitly"></a>Potvrdit transakci explicitně
 
-Když odesíláte transakce do SAP z Logic Apps, k tomuto systému Exchange dochází ve dvou krocích, jak je popsáno v dokumentu SAP, v tématu [transakční aplikace RFC serveru](https://help.sap.com/doc/saphelp_nwpi71/7.1/en-US/22/042ad7488911d189490000e829fbbd/content.htm?no_cache=true). Ve výchozím nastavení zpracuje akce **Odeslat do SAP** jak kroky pro přenos funkce, tak potvrzení transakce v jednom volání. Konektor SAP vám dává možnost oddělit tyto kroky. Můžete odeslat IDoc a místo toho, aby transakce byla automaticky potvrzena, můžete použít akci explicitní **potvrzení ID transakce** .
+Když odesíláte transakce do SAP z Logic Apps, k tomuto systému Exchange dochází ve dvou krocích, jak je popsáno v dokumentu SAP, v tématu [transakční aplikace RFC serveru](https://help.sap.com/doc/saphelp_nwpi71/7.1/22/042ad7488911d189490000e829fbbd/content.htm?no_cache=true). Ve výchozím nastavení zpracuje akce **Odeslat do SAP** jak kroky pro přenos funkce, tak potvrzení transakce v jednom volání. Konektor SAP vám dává možnost oddělit tyto kroky. Můžete odeslat IDoc a místo toho, aby transakce byla automaticky potvrzena, můžete použít akci explicitní **potvrzení ID transakce** .
 
 Tato možnost oddělit potvrzení ID transakce je užitečná v případě, že nechcete provádět duplicitní transakce v SAP, například ve scénářích, kdy může dojít k selhání z důvodu příčin potíží se sítí. Potvrzením ID transakce samostatně se transakce v systému SAP pouze v jednom okamžiku dokončí.
 

@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 75bbce0f1e9787e55880ccac80dacb5457e1f2c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 56afed264facb6a02040cef01cd5d5d41526ec49
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "68728373"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322669"
 ---
 # <a name="security-frame-authorization--mitigations"></a>Rámec zabezpečení: autorizace | Hrozeb 
 | Produkt/služba | Článek |
 | --------------- | ------- |
 | **Hranice důvěryhodnosti počítače** | <ul><li>[Ujistěte se, že jsou nakonfigurovány správné seznamy ACL pro omezení neoprávněného přístupu k datům v zařízení.](#acl-restricted-access)</li><li>[Zajistěte, aby byl v adresáři User-Profile uložený obsah aplikace citlivý pro uživatele.](#sensitive-directory)</li><li>[Zajistěte, aby byly nasazené aplikace spuštěné s nejnižšími oprávněními.](#deployed-privileges)</li></ul> |
 | **Webová aplikace** | <ul><li>[Vymáhat pořadí sekvenčních kroků při zpracování toků obchodních logiky](#sequential-logic)</li><li>[Implementujte mechanismus omezování četnosti, aby se zabránilo výčtu.](#rate-enumeration)</li><li>[Zajistěte, aby byla zajištěna správná autorizace a následovala zásada minimálního oprávnění.](#principle-least-privilege)</li><li>[Obchodní logika a rozhodnutí o autorizaci přístupu k prostředkům by neměly být založené na parametrech příchozích požadavků.](#logic-request-parameters)</li><li>[Ujistěte se, že obsah a prostředky nejsou vyčíslitelné nebo přístupné prostřednictvím vynuceného procházení.](#enumerable-browsing)</li></ul> |
-| **Databáze** | <ul><li>[Zajistěte, aby se pro připojení k databázovému serveru používaly minimálně privilegované účty.](#privileged-server)</li><li>[Implementujte zabezpečení na úrovni řádků, abyste klientům zabránili v přístupu k ostatním datům.](#rls-tenants)</li><li>[Role sysadmin by měla mít pouze platné potřebné uživatele.](#sysadmin-users)</li></ul> |
+| **Database** | <ul><li>[Zajistěte, aby se pro připojení k databázovému serveru používaly minimálně privilegované účty.](#privileged-server)</li><li>[Implementujte zabezpečení na úrovni řádků, abyste klientům zabránili v přístupu k ostatním datům.](#rls-tenants)</li><li>[Role sysadmin by měla mít pouze platné potřebné uživatele.](#sysadmin-users)</li></ul> |
 | **Cloudová brána IoT** | <ul><li>[Připojení ke cloudové bráně s použitím nejnižších privilegovaných tokenů](#cloud-least-privileged)</li></ul> |
 | **Azure Event Hub** | <ul><li>[Pro generování tokenů zařízení použít jenom klíč SAS s oprávněním pro odesílání](#sendonly-sas)</li><li>[Nepoužívejte přístupové tokeny, které poskytují přímý přístup k centru událostí.](#access-tokens-hub)</li><li>[Připojte se k centru událostí pomocí klíčů SAS, které mají minimální požadovaná oprávnění.](#sas-minimum-permissions)</li></ul> |
 | **Azure Document DB** | <ul><li>[Pokud je to možné, použijte k připojení Azure Cosmos DB tokeny prostředků.](#resource-docdb)</li></ul> |
@@ -136,7 +136,7 @@ Nyní možný Útočník nemůže manipulovat a měnit operaci aplikace, protož
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
 | **Odkazy**              | –  |
-| **Uvedené** | <p>Citlivé statické a konfigurační soubory by neměly být uchovávány v kořenovém adresáři webu. Pro obsah, který není nezbytný k veřejnému, by se měly použít buď správné ovládací prvky pro přístup, nebo odebrat samotný obsah.</p><p>Vynucené procházení je obvykle kombinované s technikami hrubou silou pro shromažďování informací pomocí pokusu o přístup k tolika adresám URL, aby bylo možné vytvořit výčet adresářů a souborů na serveru. Útočníci můžou kontrolovat všechny varianty často existujících souborů. Například hledání souborů hesla by zahrnovalo soubory, včetně psswd. txt, Password. htm, Password. dat a dalších variací.</p><p>Chcete-li tyto možnosti zmírnit, je třeba zahrnout funkce pro detekci pokusů o útok hrubou silou.</p>|
+| **Uvedené** | <p>Citlivé statické a konfigurační soubory by neměly být uchovávány v kořenovém adresáři webu. Pro obsah, který není nezbytný k veřejnému, by se měly použít buď správné ovládací prvky pro přístup, nebo odebrat samotný obsah.</p><p>Vynucené procházení je obvykle kombinované s technikami hrubou silou pro shromažďování informací pomocí pokusu o přístup k tolika adresám URL, aby bylo možné vytvořit výčet adresářů a souborů na serveru. Útočníci můžou kontrolovat všechny varianty často existujících souborů. Například hledání souborů hesla by zahrnovalo soubory, mezi které patří psswd.txt, password.htm, Password. dat a další variace.</p><p>Chcete-li tyto možnosti zmírnit, je třeba zahrnout funkce pro detekci pokusů o útok hrubou silou.</p>|
 
 ## <a name="ensure-that-least-privileged-accounts-are-used-to-connect-to-database-server"></a><a id="privileged-server"></a>Zajistěte, aby se pro připojení k databázovému serveru používaly minimálně privilegované účty.
 
@@ -146,7 +146,7 @@ Nyní možný Útočník nemůže manipulovat a měnit operaci aplikace, protož
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
-| **Odkazy**              | [SQL Database hierarchie oprávnění](https://msdn.microsoft.com/library/ms191465), [zabezpečit databáze SQL](https://msdn.microsoft.com/library/ms190401) |
+| **Odkazy**              | [Hierarchie oprávnění SQL](https://docs.microsoft.com/sql/relational-databases/security/permissions-hierarchy-database-engine), [zabezpečit SQL](https://docs.microsoft.com/sql/relational-databases/security/securables) |
 | **Uvedené** | Pro připojení k databázi by se měly použít aspoň privilegované účty. Přihlášení aplikace by mělo být omezeno v databázi a mělo by se provádět pouze vybrané uložené procedury. Přihlašovací jméno aplikace by nemělo mít přímý přístup k tabulce. |
 
 ## <a name="implement-row-level-security-rls-to-prevent-tenants-from-accessing-each-others-data"></a><a id="rls-tenants"></a>Implementujte zabezpečení na úrovni řádků, abyste klientům zabránili v přístupu k ostatním datům.
@@ -160,7 +160,7 @@ Nyní možný Útočník nemůže manipulovat a měnit operaci aplikace, protož
 | **Odkazy**              | [SQL Server zabezpečení na úrovni řádků (RLS)](https://msdn.microsoft.com/library/azure/dn765131.aspx) |
 | **Uvedené** | <p>Zabezpečení na úrovni řádku umožňuje řízení přístupu k řádkům v databázové tabulce na základě charakteristiky uživatele spouštějícího dotaz (například členství ve skupině nebo kontext spuštění).</p><p>Zabezpečení na úrovni řádků (RLS) zjednodušuje návrh a kódování zabezpečení ve vaší aplikaci. RLS umožňuje implementovat omezení přístupu k datovým řádkům. Například pro zajištění, že pracovníci mají přístup pouze k datovým řádkům, které se vztahují k jejich oddělení, nebo pro omezení přístupu zákazníků pouze k datům souvisejícím s jejich společností.</p><p>Logika omezení přístupu se nachází v databázové vrstvě, nikoli z dat v jiné aplikační vrstvě. Databázový systém použije omezení přístupu při každém pokusu o přístup k datům z libovolné úrovně. Tím se zajistí spolehlivější a robustní zabezpečení systému tím, že se zmenší plocha plochy systému zabezpečení.</p><p>|
 
-Mějte prosím na paměti, že funkce RLS jako připravená databáze je platná jenom pro SQL Server od 2016 do Azure SQL Database. Pokud není implementovaná funkce samoobslužná aplikace, měla by být zajištěna omezení přístupu k datům pomocí zobrazení a postupů.
+Mějte na paměti, že funkce RLS jako dostupná databáze je k dispozici pouze pro SQL Server spouštění 2016, Azure SQL Database a SQL Managed instance. Pokud není implementovaná funkce samoobslužná aplikace, měla by být zajištěna omezení přístupu k datům pomocí zobrazení a postupů.
 
 ## <a name="sysadmin-role-should-only-have-valid-necessary-users"></a><a id="sysadmin-users"></a>Role sysadmin by měla mít pouze platné potřebné uživatele.
 
@@ -170,7 +170,7 @@ Mějte prosím na paměti, že funkce RLS jako připravená databáze je platná
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
-| **Odkazy**              | [SQL Database hierarchie oprávnění](https://msdn.microsoft.com/library/ms191465), [zabezpečit databáze SQL](https://msdn.microsoft.com/library/ms190401) |
+| **Odkazy**              | [Hierarchie oprávnění SQL](https://docs.microsoft.com/sql/relational-databases/security/permissions-hierarchy-database-engine), [zabezpečit SQL](https://docs.microsoft.com/sql/relational-databases/security/securables) |
 | **Uvedené** | Členové pevné role serveru SysAdmin by měli být velmi omezené a nikdy neobsahují účty používané aplikacemi.  Zkontrolujte seznam uživatelů v roli a odeberte všechny nepotřebné účty.|
 
 ## <a name="connect-to-cloud-gateway-using-least-privileged-tokens"></a><a id="cloud-least-privileged"></a>Připojení ke cloudové bráně s použitím nejnižších privilegovaných tokenů
@@ -317,7 +317,7 @@ Mějte prosím na paměti, že funkce RLS jako připravená databáze je platná
 | **Uvedené** | <p>Systém používá slabý odkaz na třídu, který může útočníkovi umožnit spustit neautorizovaný kód. Program odkazuje na uživatelsky definovanou třídu, která není jednoznačně identifikována. Když rozhraní .NET načte tuto slabě identifikovanou třídu, vyhledá zavaděč typu CLR třídu v následujících umístěních v zadaném pořadí:</p><ol><li>Pokud je známo sestavení typu, zavaděč vyhledá umístění pro přesměrování konfiguračního souboru, GAC, aktuální sestavení s použitím informací o konfiguraci a základního adresáře aplikace.</li><li>Pokud je sestavení neznámé, zavaděč vyhledá aktuální sestavení, mscorlib a umístění, které vrátila obslužná rutina události TypeResolve.</li><li>Toto pořadí vyhledávání CLR se dá upravit pomocí háčků, jako je mechanismus předávání typů a událost AppDomain. TypeResolve.</li></ol><p>Pokud útočník zneužije pořadí vyhledávání CLR vytvořením alternativní třídy se stejným názvem a umístěním do alternativního umístění, které modul CLR načte jako první, modul CLR neúmyslně neprovede kód poskytovaný útočníkem.</p>|
 
 ### <a name="example"></a>Příklad
-`<behaviorExtensions/>` Element konfiguračního souboru služby WCF vydá pokyn pro WCF, aby přidal vlastní třídu chování do konkrétního rozšíření WCF.
+`<behaviorExtensions/>`Element konfiguračního souboru služby WCF vydá pokyn pro WCF, aby přidal vlastní třídu chování do konkrétního rozšíření WCF.
 ```
 <system.serviceModel>
     <extensions>
@@ -327,10 +327,10 @@ Mějte prosím na paměti, že funkce RLS jako připravená databáze je platná
     </extensions>
 </system.serviceModel>
 ```
-Použití plně kvalifikovaných (silných) názvů jednoznačně identifikuje typ a zvyšuje zabezpečení systému. Při registraci typů v souborech Machine. config a App. config použijte plně kvalifikované názvy sestavení.
+Použití plně kvalifikovaných (silných) názvů jednoznačně identifikuje typ a zvyšuje zabezpečení systému. Při registraci typů do machine.config a app.config souborů použijte plně kvalifikované názvy sestavení.
 
 ### <a name="example"></a>Příklad
-`<behaviorExtensions/>` Element konfiguračního souboru služby WCF VYDÁ pokyn WCF pro přidání silně odkazované třídy vlastního chování do konkrétního rozšíření WCF.
+`<behaviorExtensions/>`Element konfiguračního souboru služby WCF vydá pokyn WCF pro přidání silně odkazované třídy vlastního chování do konkrétního rozšíření WCF.
 ```
 <system.serviceModel>
     <extensions>

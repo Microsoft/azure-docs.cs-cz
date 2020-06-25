@@ -4,12 +4,12 @@ description: Tento článek popisuje, jak nastavit zobrazení protokolů kontejn
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: references_regions
-ms.openlocfilehash: ec75cc0a014b8a4f8c9b9d89a5bdca93936eb68a
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 9d60836af350e9af99355db9a7cc140a949d1492
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196039"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85337939"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>Jak nastavit funkci živých dat (Preview)
 
@@ -22,30 +22,27 @@ Tato funkce podporuje následující metody řízení přístupu k protokolům, 
     - AKS nakonfigurovaný s ClusterMonitoringUser vazby role clusteru ** [clusterMonitoringUser](https://docs.microsoft.com/rest/api/aks/managedclusters/listclustermonitoringusercredentials?view=azurermps-5.2.0)**
 - AKS povolený pomocí jednotného přihlašování založené na Azure Active Directory (AD) založeného na SAML
 
-Tyto pokyny vyžadují přístup pro správu ke clusteru Kubernetes a pokud se konfigurace používá Azure Active Directory (AD) pro ověřování uživatelů, přístup pro správu k Azure AD.  
+Tyto pokyny vyžadují přístup pro správu ke clusteru Kubernetes a pokud se konfigurace používá Azure Active Directory (AD) pro ověřování uživatelů, přístup pro správu k Azure AD.
 
 Tento článek vysvětluje, jak nakonfigurovat ověřování pro řízení přístupu k funkci živá data (Preview) z clusteru:
 
 - AKS cluster s povoleným řízením přístupu na základě role (RBAC)
-- Azure Active Directory integrovaný cluster AKS. 
+- Azure Active Directory integrovaný cluster AKS.
 
 >[!NOTE]
->AKS clustery, které jsou povolené jako [soukromé clustery](https://azure.microsoft.com/updates/aks-private-cluster/) , s touto funkcí se nepodporují. Tato funkce spoléhá přímo na rozhraní Kubernetes API prostřednictvím proxy server z prohlížeče. Když zapnete zabezpečení sítě, zablokujete tím, že rozhraní Kubernetes API z tohoto proxy serveru znemožní tento provoz. 
-
->[!NOTE]
->Tato funkce je dostupná ve všech oblastech Azure, včetně Azure Čína. V tuto chvíli není dostupná ve službě Azure USA pro státní správu.
+>AKS clustery, které jsou povolené jako [soukromé clustery](https://azure.microsoft.com/updates/aks-private-cluster/) , s touto funkcí se nepodporují. Tato funkce spoléhá přímo na rozhraní Kubernetes API prostřednictvím proxy server z prohlížeče. Když zapnete zabezpečení sítě, zablokujete tím, že rozhraní Kubernetes API z tohoto proxy serveru znemožní tento provoz.
 
 ## <a name="authentication-model"></a>Režim ověřování
 
 Funkce Live data (Preview) využívá rozhraní Kubernetes API, které se shoduje s `kubectl` nástrojem příkazového řádku. Koncové body rozhraní API Kubernetes využívají certifikát podepsaný svým držitelem, který se nedá ověřit v prohlížeči. Tato funkce využívá interní proxy server k ověření certifikátu se službou AKS, která zajišťuje důvěryhodnost provozu.
 
-Azure Portal vás vyzve k ověření přihlašovacích údajů pro cluster Azure Active Directory a přesměrování vás na nastavení registrace klienta během vytváření clusteru (a v tomto článku znovu nakonfigurované). Toto chování je podobné procesu ověřování, který vyžaduje `kubectl` . 
+Azure Portal vás vyzve k ověření přihlašovacích údajů pro cluster Azure Active Directory a přesměrování vás na nastavení registrace klienta během vytváření clusteru (a v tomto článku znovu nakonfigurované). Toto chování je podobné procesu ověřování, který vyžaduje `kubectl` .
 
 >[!NOTE]
 >Autorizaci ke clusteru spravuje Kubernetes a model zabezpečení, se kterým se konfiguruje. Uživatelé, kteří mají přístup k této funkci, vyžadují oprávnění ke stažení konfigurace Kubernetes (*kubeconfig*), podobně jako je spuštěná `az aks get-credentials -n {your cluster name} -g {your resource group}` . Tento konfigurační soubor obsahuje token pro autorizaci a ověření pro **roli uživatele clusteru služby Azure Kubernetes**v případě, že jsou clustery s povolenou službou RBAC a AKS bez povoleného ověřování RBAC. Obsahuje informace o Azure AD a registrační registraci klienta, pokud je AKS povoleno pomocí jednotného přihlašování založeného na SAML Azure Active Directory (AD).
 
 >[!IMPORTANT]
->Uživatelé této funkce vyžadují ke clusteru [roli uživatele clusteru Azure Kubernetes](../../azure/role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role permissions) , aby mohli stáhnout `kubeconfig` a používat tuto funkci. K využití této funkce uživatelé **nevyžadují přístup** Přispěvatel ke clusteru. 
+>Uživatelé této funkce vyžadují ke clusteru [roli uživatele clusteru Azure Kubernetes](../../azure/role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role permissions) , aby mohli stáhnout `kubeconfig` a používat tuto funkci. K využití této funkce uživatelé **nevyžadují přístup** Přispěvatel ke clusteru.
 
 ## <a name="using-clustermonitoringuser-with-rbac-enabled-clusters"></a>Použití clusterMonitoringUser s clustery s povolenou službou RBAC
 
@@ -65,50 +62,50 @@ Když povolíte autorizaci Kubernetes RBAC, používají se dva uživatelé: **c
 
 Následující příklady kroků ukazují, jak nakonfigurovat vazbu role clusteru z této šablony konfigurace YAML.
 
-1. Zkopírujte a vložte soubor YAML a uložte ho jako LogReaderRBAC. yaml.  
+1. Zkopírujte a vložte soubor YAML a uložte ho jako LogReaderRBAC. yaml.
 
     ```
-    apiVersion: rbac.authorization.k8s.io/v1 
-    kind: ClusterRole 
-    metadata: 
-       name: containerHealth-log-reader 
-    rules: 
-        - apiGroups: ["", "metrics.k8s.io", "extensions", "apps"] 
-          resources: 
-             - "pods/log" 
-             - "events" 
-             - "nodes" 
-             - "pods" 
-             - "deployments" 
-             - "replicasets" 
-          verbs: ["get", "list"] 
-    --- 
-    apiVersion: rbac.authorization.k8s.io/v1 
-    kind: ClusterRoleBinding 
-    metadata: 
-       name: containerHealth-read-logs-global 
-    roleRef: 
-       kind: ClusterRole 
-       name: containerHealth-log-reader 
-       apiGroup: rbac.authorization.k8s.io 
-    subjects: 
-    - kind: User 
-      name: clusterUser 
-      apiGroup: rbac.authorization.k8s.io 
+    apiVersion: rbac.authorization.k8s.io/v1
+    kind: ClusterRole
+    metadata:
+       name: containerHealth-log-reader
+    rules:
+        - apiGroups: ["", "metrics.k8s.io", "extensions", "apps"]
+          resources:
+             - "pods/log"
+             - "events"
+             - "nodes"
+             - "pods"
+             - "deployments"
+             - "replicasets"
+          verbs: ["get", "list"]
+    ---
+    apiVersion: rbac.authorization.k8s.io/v1
+    kind: ClusterRoleBinding
+    metadata:
+       name: containerHealth-read-logs-global
+    roleRef:
+       kind: ClusterRole
+       name: containerHealth-log-reader
+       apiGroup: rbac.authorization.k8s.io
+    subjects:
+    - kind: User
+      name: clusterUser
+      apiGroup: rbac.authorization.k8s.io
     ```
 
 2. Pokud chcete aktualizovat konfiguraci, spusťte následující příkaz: `kubectl apply -f LogReaderRBAC.yaml` .
 
->[!NOTE] 
+>[!NOTE]
 > Pokud jste v clusteru použili předchozí verzi `LogReaderRBAC.yaml` souboru, aktualizujte ji zkopírováním a vložením nového kódu uvedeného v kroku 1 výše a potom spuštěním příkazu zobrazeného v kroku 2 ho použijte pro svůj cluster.
 
-## <a name="configure-ad-integrated-authentication"></a>Konfigurace ověřování integrovaného se službou AD 
+## <a name="configure-ad-integrated-authentication"></a>Konfigurace ověřování integrovaného se službou AD
 
 Cluster AKS nakonfigurovaný k použití Azure Active Directory (AD) pro ověřování uživatelů využívá přihlašovací údaje osoby, která přistupuje k této funkci. V této konfiguraci se můžete přihlásit ke clusteru AKS pomocí ověřovacího tokenu Azure AD.
 
-Registrace klienta Azure AD musí být znovu nakonfigurovaná, aby Azure Portal mohl přesměrovat autorizační stránky jako důvěryhodnou adresu URL pro přesměrování. Uživatelům z Azure AD se pak udělí přímý přístup ke stejným koncovým bodům rozhraní Kubernetes API prostřednictvím **ClusterRoles** a **ClusterRoleBindings**. 
+Registrace klienta Azure AD musí být znovu nakonfigurovaná, aby Azure Portal mohl přesměrovat autorizační stránky jako důvěryhodnou adresu URL pro přesměrování. Uživatelům z Azure AD se pak udělí přímý přístup ke stejným koncovým bodům rozhraní Kubernetes API prostřednictvím **ClusterRoles** a **ClusterRoleBindings**.
 
-Další informace o pokročilém nastavení zabezpečení v Kubernetes najdete v [dokumentaci k Kubernetes](https://kubernetes.io/docs/reference/access-authn-authz/rbac/). 
+Další informace o pokročilém nastavení zabezpečení v Kubernetes najdete v [dokumentaci k Kubernetes](https://kubernetes.io/docs/reference/access-authn-authz/rbac/).
 
 >[!NOTE]
 >Pokud vytváříte nový cluster s podporou RBAC, přečtěte si téma [integrace Azure Active Directory se službou Azure Kubernetes](../../aks/azure-ad-integration.md) a postup při konfiguraci ověřování Azure AD. Všimněte si, že během postupu vytvoření klientské aplikace se v této části zvýrazní dvě adresy URL pro přesměrování, které je potřeba vytvořit pro Azure Monitor pro kontejnery odpovídající hodnotám uvedeným v kroku 3 níže.
@@ -117,24 +114,24 @@ Další informace o pokročilém nastavení zabezpečení v Kubernetes najdete v
 
 1. V části **Azure Active Directory > registrace aplikací** v Azure Portal vyhledejte registraci klienta pro váš cluster Kubernetes ve službě Azure AD.
 
-2. V levém podokně vyberte **ověřování** . 
+2. V levém podokně vyberte **ověřování** .
 
 3. Do tohoto seznamu přidejte dvě adresy URL pro přesměrování jako typy **webových** aplikací. První základní hodnota URL by měla být `https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` a druhá základní hodnota URL by měla být `https://monitoring.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` .
 
     >[!NOTE]
-    >Pokud tuto funkci používáte v Azure Čína, měla by první základní hodnota URL být `https://afd.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` a druhá základní hodnota URL by měla být `https://monitoring.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` . 
-    
+    >Pokud tuto funkci používáte v Azure Čína, měla by první základní hodnota URL být `https://afd.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` a druhá základní hodnota URL by měla být `https://monitoring.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` .
+
 4. Po registraci adres URL pro přesměrování v části **implicitní udělení**vyberte možnost **přístupové tokeny** a **tokeny ID** a uložte provedené změny.
 
 >[!NOTE]
 >Konfigurace ověřování pomocí Azure Active Directory pro jednotné přihlašování se dá provést jenom při počátečním nasazení nového clusteru AKS. Nemůžete nakonfigurovat jednotné přihlašování pro cluster AKS, který je už nasazený.
-  
+
 >[!IMPORTANT]
 >Pokud jste překonfigurovali službu Azure AD pro ověřování uživatelů pomocí aktualizovaného identifikátoru URI, vymažte mezipaměť prohlížeče, aby se zajistilo stažení a použití aktualizovaného ověřovacího tokenu.
 
 ## <a name="grant-permission"></a>Udělit oprávnění
 
-Aby bylo možné získat přístup k funkci živá data (Preview), musí mít každý účet Azure AD udělené oprávnění k příslušným rozhraním API v Kubernetes. Postup pro udělení Azure Active Directory účtu se podobá postupu popsanému v části [ověřování RBAC Kubernetes](#configure-kubernetes-rbac-authorization) . Než použijete šablonu konfigurace YAML pro váš cluster, nahraďte **clusterUser** v rámci **ClusterRoleBinding** požadovaným uživatelem. 
+Aby bylo možné získat přístup k funkci živá data (Preview), musí mít každý účet Azure AD udělené oprávnění k příslušným rozhraním API v Kubernetes. Postup pro udělení Azure Active Directory účtu se podobá postupu popsanému v části [ověřování RBAC Kubernetes](#configure-kubernetes-rbac-authorization) . Než použijete šablonu konfigurace YAML pro váš cluster, nahraďte **clusterUser** v rámci **ClusterRoleBinding** požadovaným uživatelem.
 
 >[!IMPORTANT]
 >Pokud se uživateli, kterému udělíte vazbu RBAC, nachází ve stejném tenantovi Azure AD, přiřaďte oprávnění na základě třídy userPrincipalName. Pokud je uživatel v jiném tenantovi služby Azure AD, dotaz na a použijte vlastnost objectId.
