@@ -1,24 +1,14 @@
 ---
 title: Azure Service Bus komplexní trasování a diagnostika | Microsoft Docs
 description: Přehled Service Bus diagnostiky klientů a komplexní trasování (klient prostřednictvím všech služeb, které se podílejí na zpracování)
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: 7c2efc9c736097873201505f280af5d47bed4847
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 6138d3d6424364f28f55f81044768acb894bc651
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80294176"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85340723"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Distribuované trasování a korelace prostřednictvím Service Bus zasílání zpráv
 
@@ -81,7 +71,7 @@ async Task ProcessAsync(Message message)
 ```
 
 V tomto příkladu `RequestTelemetry` je hlášena pro každou zpracovávanou zprávu s časovým razítkem, dobou trvání a výsledkem (úspěch). Telemetrie má také sadu vlastností korelace.
-Vnořená trasování a výjimky hlášené během zpracování zprávy jsou také označeny vlastnostmi korelace, které je představují jako podřízené položky `RequestTelemetry`.
+Vnořená trasování a výjimky hlášené během zpracování zprávy jsou také označeny vlastnostmi korelace, které je představují jako podřízené položky `RequestTelemetry` .
 
 V případě, že během zpracování zprávy provedete volání podporovaných externích komponent, automaticky se sledují a korelují. Informace o ručním sledování a korelaci najdete [v tématu sledování vlastních operací pomocí Application Insights .NET SDK](../azure-monitor/app/custom-operations-tracking.md) .
 
@@ -188,10 +178,10 @@ V každé události máte přístup `Activity.Current` , který obsahuje kontext
 #### <a name="logging-additional-properties"></a>Protokolování dalších vlastností
 
 `Activity.Current`poskytuje podrobný kontext aktuální operace a jejích nadřazených prvků. Další informace najdete v [dokumentaci aktivity](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) , kde najdete další podrobnosti.
-Service Bus Instrumentace poskytuje další informace `Activity.Current.Tags` , které jsou k dispozici, `MessageId` a `SessionId` pokaždé, když jsou k dispozici.
+Service Bus Instrumentace poskytuje další informace, které jsou k `Activity.Current.Tags` `MessageId` `SessionId` dispozici, a pokaždé, když jsou k dispozici.
 
-Aktivity, které sledují událost Receive, prohlížet a ReceiveDeferred, mohou mít `RelatedTo` také značku. Obsahuje jedinečný seznam `Diagnostic-Id`(y) zpráv, které byly přijaty v důsledku.
-Tato operace může vést k přijetí několika nesouvisejících zpráv. `Diagnostic-Id` Také není známo, když operace začíná, takže operace Receive by mohly být sladěné s operacemi zpracování pouze pomocí této značky. Je užitečné při analýze problémů s výkonem ke kontrole, jak dlouho trvalo přijímání zprávy.
+Aktivity, které sledují událost Receive, prohlížet a ReceiveDeferred, mohou mít také `RelatedTo` značku. Obsahuje jedinečný seznam `Diagnostic-Id` (y) zpráv, které byly přijaty v důsledku.
+Tato operace může vést k přijetí několika nesouvisejících zpráv. Také není `Diagnostic-Id` známo, když operace začíná, takže operace Receive by mohly být sladěné s operacemi zpracování pouze pomocí této značky. Je užitečné při analýze problémů s výkonem ke kontrole, jak dlouho trvalo přijímání zprávy.
 
 Účinný způsob, jak přihlašovat značky, je iterovat přes ně, takže Přidání značek k předchozímu příkladu vypadá takto. 
 
@@ -211,25 +201,25 @@ serviceBusLogger.LogInformation($"{currentActivity.OperationName} is finished, D
 #### <a name="filtering-and-sampling"></a>Filtrování a vzorkování
 
 V některých případech je žádoucí protokolovat pouze část událostí, aby se snížila režie výkonu nebo spotřeba úložiště. Mohli byste protokolovat pouze události stop (jako v předchozím příkladu) nebo ukázkové procento událostí. 
-`DiagnosticSource`Poskytněte způsob, jak ho dosáhnout `IsEnabled` pomocí predikátu. Další informace najdete v tématu [filtrování založené na kontextu v DiagnosticSource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md#context-based-filtering).
+`DiagnosticSource`Poskytněte způsob, jak ho dosáhnout pomocí `IsEnabled` predikátu. Další informace najdete v tématu [filtrování založené na kontextu v DiagnosticSource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md#context-based-filtering).
 
 `IsEnabled`může být voláno vícekrát, aby jedna operace minimalizovala dopad na výkon.
 
 `IsEnabled`se volá v následujícím pořadí:
 
-1. `IsEnabled(<OperationName>, string entity, null)`například `IsEnabled("Microsoft.Azure.ServiceBus.Send", "MyQueue1")`. Všimněte si, že na konci není žádné "Start" nebo "Stop". Slouží k filtrování konkrétních operací nebo front. Pokud zpětné volání `false`vrátí události pro operaci, nebudou odeslány.
+1. `IsEnabled(<OperationName>, string entity, null)`například `IsEnabled("Microsoft.Azure.ServiceBus.Send", "MyQueue1")` . Všimněte si, že na konci není žádné "Start" nebo "Stop". Slouží k filtrování konkrétních operací nebo front. Pokud zpětné volání vrátí `false` události pro operaci, nebudou odeslány.
 
-   * Pro operace "proces" a "ProcessSession" obdržíte `IsEnabled(<OperationName>, string entity, Activity activity)` také zpětné volání. Slouží k filtrování událostí na základě vlastností `activity.Id` značek nebo.
+   * Pro operace "proces" a "ProcessSession" obdržíte také `IsEnabled(<OperationName>, string entity, Activity activity)` zpětné volání. Slouží k filtrování událostí na základě `activity.Id` vlastností značek nebo.
   
-2. `IsEnabled(<OperationName>.Start)`například `IsEnabled("Microsoft.Azure.ServiceBus.Send.Start")`. Kontroluje, zda by měla být aktivována událost Start. Výsledek má vliv pouze na událost Start, ale další instrumentace na ní není závislá.
+2. `IsEnabled(<OperationName>.Start)`například `IsEnabled("Microsoft.Azure.ServiceBus.Send.Start")` . Kontroluje, zda by měla být aktivována událost Start. Výsledek má vliv pouze na událost Start, ale další instrumentace na ní není závislá.
 
-`IsEnabled` Pro událost zastavení není k dispozici.
+Pro událost zastavení není k dispozici `IsEnabled` .
 
 Pokud je výsledkem nějaké operace výjimka, `IsEnabled("Microsoft.Azure.ServiceBus.Exception")` je volána metoda. Přihlásili jste se k odběru událostí Exception a zabráníte zbytek instrumentace. V takovém případě je stále nutné tyto výjimky zpracovat. Vzhledem k tomu, že je jiná instrumentace zakázaná, neměli byste očekávat, že by kontext trasování byl tok se zprávami od spotřebitelů k producentovi.
 
 Můžete použít `IsEnabled` také implementaci strategií vzorkování. Vzorkování založené na `Activity.Id` nebo `Activity.RootId` zaručuje konzistentní vzorkování přes všechny pneumatiky (Pokud je šířené systémem trasování nebo vlastním kódem).
 
-V případě, že `DiagnosticSource` je pro stejný zdroj k dispozici více posluchačů, je pro přijetí události dostačující pouze jeden naslouchací `IsEnabled` proces, takže není zaručeno jejich volání.
+V `DiagnosticSource` případě, že je pro stejný zdroj k dispozici více posluchačů, je pro přijetí události dostačující pouze jeden naslouchací proces, takže není `IsEnabled` zaručeno jejich volání.
 
 ## <a name="next-steps"></a>Další kroky
 

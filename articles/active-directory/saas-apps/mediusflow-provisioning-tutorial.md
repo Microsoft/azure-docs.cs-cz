@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: cd2217046a725f0bb0a05f1eb0afc5434bf3b6fa
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 3b194755e96e8b8dec2bd0325417950ffe96241c
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664281"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85339319"
 ---
 # <a name="tutorial-configure-mediusflow-for-automatic-user-provisioning"></a>Kurz: Konfigurace MediusFlow pro Automatické zřizování uživatelů
 
@@ -52,11 +52,11 @@ Scénář popsaný v tomto kurzu předpokládá, že už máte následující po
 
 ## <a name="step-2-configure-mediusflow-to-support-provisioning-with-azure-ad"></a>Krok 2. Konfigurace MediusFlow pro podporu zřizování pomocí Azure AD
 
-### <a name="activate-the-office-365-app-within-mediusflow"></a>Aktivace aplikace Office 365 v rámci MediusFlow
+### <a name="activate-the-microsoft-365-app-within-mediusflow"></a>Aktivace aplikace Microsoft 365 v rámci MediusFlow
 Začněte tím, že v MediusFlow povolíte přístup ke službě Azure AD a funkci konfigurace Azure AD, a to provedením následujících kroků:
 
 #### <a name="user-login"></a>Přihlášení uživatele
-Pokud chcete povolit tok přihlášení k Office 365 nebo Azure AD, přečtěte si [this] ( https://success.mediusflow.com/documentation/administration_guide/user_login_and_transfer/office365userintegration/#user-login-setup) článek.
+Pokud chcete povolit tok přihlášení Microsoft 365/Azure AD, přečtěte si [this] ( https://success.mediusflow.com/documentation/administration_guide/user_login_and_transfer/office365userintegration/#user-login-setup) článek.
 
 #### <a name="user-transfer-configuration"></a>Konfigurace přenosu uživatelů
 Pokud chcete povolit portál pro konfiguraci uživatelů pro zřizování ze služby Azure AD, přečtěte si [Tento](
@@ -129,7 +129,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-mediusflow-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro MediusFlow ve službě Azure AD:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
@@ -161,15 +161,15 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
    |Atribut|Typ|
    |---|---|
-   |userName|String|
-   |e-maily [typ EQ "Work"]. Value|String|
-   |název. DisplayName|String|
+   |userName|Řetězec|
+   |e-maily [typ EQ "Work"]. Value|Řetězec|
+   |název. DisplayName|Řetězec|
    |aktivně|Logická hodnota|
-   |název. křestní jméno|String|
-   |název. rodina|String|
-   |název. formátovaný|String|
-   |externalID|String|
-   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager|Odkaz|
+   |název. křestní jméno|Řetězec|
+   |název. rodina|Řetězec|
+   |název. formátovaný|Řetězec|
+   |externalID|Řetězec|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager|Referenční informace|
 
 
 10. V části **mapování** vyberte **synchronizovat Azure Active Directory skupiny do MediusFlow**.
@@ -178,9 +178,9 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
       |Atribut|Typ|
       |---|---|
-      |displayName|String|
-      |externalID|String|
-      |členy|Odkaz|
+      |displayName|Řetězec|
+      |externalID|Řetězec|
+      |členy|Referenční informace|
 
 12. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 

@@ -1,25 +1,14 @@
 ---
 title: Odkaz syntaxe SQLRuleAction v Azure Service Bus
 description: Tento článek poskytuje referenci pro SQLRuleAction syntax. Akce jsou napsány v syntaxi založené na jazyku SQL, která je provedena proti zprostředkované zprávě.
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: 37615e39577ef60cccc9df91b61a6aa24ca794d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 61fa6e046b4d4a0ba91bf8608c846755026d07ec
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76759624"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341586"
 ---
 # <a name="sqlruleaction-syntax-reference-for-azure-service-bus"></a>Reference syntaxe SQLRuleAction pro Azure Service Bus
 
@@ -63,9 +52,9 @@ V tomto článku jsou uvedeny podrobnosti o gramatické akci pravidla SQL.
     [<scope> .] <property_name>
 ``` 
   
-## <a name="arguments"></a>Argumenty  
+## <a name="arguments"></a>Arguments  
   
--   `<scope>`je volitelný řetězec, který označuje rozsah `<property_name>`. Platné hodnoty jsou `sys` nebo `user`. `sys` Hodnota označuje rozsah systému, kde `<property_name>` je název veřejné vlastnosti [třídy BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage). `user`označuje obor uživatele, `<property_name>` kde je klíč slovníku [třídy BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) . `user`Obor je výchozím rozsahem, `<scope>` Pokud není zadán.  
+-   `<scope>`je volitelný řetězec, který označuje rozsah `<property_name>` . Platné hodnoty jsou `sys` nebo `user` . `sys`Hodnota označuje rozsah systému, kde `<property_name>` je název veřejné vlastnosti [třídy BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage). `user`označuje obor uživatele, kde `<property_name>` je klíč slovníku [třídy BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) . `user`Obor je výchozím rozsahem, pokud není `<scope>` zadán.  
   
 ### <a name="remarks"></a>Poznámky  
 
@@ -83,7 +72,7 @@ Pokus o přístup k neexistující systémové vlastnosti je chyba, ale pokus o 
   
 ```  
   
-### <a name="arguments"></a>Argumenty  
+### <a name="arguments"></a>Arguments  
  `<regular_identifier>`je řetězec reprezentovaný následujícím regulárním výrazem:  
   
 ```  
@@ -92,13 +81,13 @@ Pokus o přístup k neexistující systémové vlastnosti je chyba, ale pokus o 
   
  To znamená, že všechny řetězce, které začínají písmenem a jsou následovány jedním nebo více podtržítkem/písmenem nebo číslicí.  
   
- `[:IsLetter:]`označuje libovolný znak Unicode, který je zařazený do kategorie jako písmeno Unicode. `System.Char.IsLetter(c)`Vrátí `true` , `c` Pokud je písmeno Unicode.  
+ `[:IsLetter:]`označuje libovolný znak Unicode, který je zařazený do kategorie jako písmeno Unicode. `System.Char.IsLetter(c)`Vrátí, `true` Pokud `c` je písmeno Unicode.  
   
- `[:IsDigit:]`znamená, že každý znak Unicode, který je zařazen jako desítkovou číslici. `System.Char.IsDigit(c)`Vrátí `true` , `c` Pokud je číslice Unicode.  
+ `[:IsDigit:]`znamená, že každý znak Unicode, který je zařazen jako desítkovou číslici. `System.Char.IsDigit(c)`Vrátí, `true` Pokud `c` je číslice Unicode.  
   
- Klíčové `<regular_identifier>` slovo nemůže být rezervované.  
+ `<regular_identifier>`Klíčové slovo nemůže být rezervované.  
   
- `<delimited_identifier>`je libovolný řetězec, který je uzavřený pomocí levé nebo pravé hranaté závorky ([]). Pravá hranatá závorka je vyjádřena jako dvě pravé hranaté závorky. Následují příklady `<delimited_identifier>`:  
+ `<delimited_identifier>`je libovolný řetězec, který je uzavřený pomocí levé nebo pravé hranaté závorky ([]). Pravá hranatá závorka je vyjádřena jako dvě pravé hranaté závorky. Následují příklady `<delimited_identifier>` :  
   
 ```  
 [Property With Space]  
@@ -106,7 +95,7 @@ Pokus o přístup k neexistující systémové vlastnosti je chyba, ale pokus o 
   
 ```  
   
- `<quoted_identifier>`je libovolný řetězec, který je uzavřený pomocí dvojitých uvozovek. Dvojité uvozovky v identifikátoru jsou reprezentovány dvěma dvojitými uvozovkami. Nedoporučuje se používat identifikátory v uvozovkách, protože je lze snadno zaměňovat pomocí řetězcové konstanty. Pokud je to možné, použijte oddělený identifikátor. Zde je příklad `<quoted_identifier>`:  
+ `<quoted_identifier>`je libovolný řetězec, který je uzavřený pomocí dvojitých uvozovek. Dvojité uvozovky v identifikátoru jsou reprezentovány dvěma dvojitými uvozovkami. Nedoporučuje se používat identifikátory v uvozovkách, protože je lze snadno zaměňovat pomocí řetězcové konstanty. Pokud je to možné, použijte oddělený identifikátor. Zde je příklad `<quoted_identifier>` :  
   
 ```  
 "Contoso & Northwind"  
@@ -138,7 +127,7 @@ Pokus o přístup k neexistující systémové vlastnosti je chyba, ale pokus o 
   
  `<escape_char>`musí se jednat o výraz, který se vyhodnotí jako řetězec o délce 1. Slouží jako řídicí znak pro operátor LIKE.  
   
- Například `property LIKE 'ABC\%' ESCAPE '\'` odpovídá `ABC%` místo řetězce, který začíná na `ABC`.  
+ Například `property LIKE 'ABC\%' ESCAPE '\'` odpovídá `ABC%` místo řetězce, který začíná na `ABC` .  
   
 ## <a name="constant"></a> – konstanta  
   
@@ -147,7 +136,7 @@ Pokus o přístup k neexistující systémové vlastnosti je chyba, ale pokus o 
       <integer_constant> | <decimal_constant> | <approximate_number_constant> | <boolean_constant> | NULL  
 ```  
   
-### <a name="arguments"></a>Argumenty  
+### <a name="arguments"></a>Arguments  
   
 -   `<integer_constant>`je řetězec čísel, který není uzavřen v uvozovkách a neobsahuje desetinná místa. Hodnoty se ukládají jako `System.Int64` interně a používají stejný rozsah.  
   
@@ -160,7 +149,7 @@ Pokus o přístup k neexistující systémové vlastnosti je chyba, ale pokus o 
   
 -   `<decimal_constant>`je řetězec čísel, který není uzavřen v uvozovkách a obsahuje desetinnou čárku. Hodnoty se ukládají jako `System.Double` interně a používají stejný rozsah nebo přesnost.  
   
-     V budoucí verzi může být toto číslo Uloženo v jiném datovém typu, aby podporovalo přesnou sémantiku čísel, takže byste neměli spoléhat na skutečnost, že základní datový typ je `System.Double` `<decimal_constant>`.  
+     V budoucí verzi může být toto číslo Uloženo v jiném datovém typu, aby podporovalo přesnou sémantiku čísel, takže byste neměli spoléhat na skutečnost, že základní datový typ je `System.Double` `<decimal_constant>` .  
   
      Následují příklady desítkových konstant:  
   
@@ -185,7 +174,7 @@ Pokus o přístup k neexistující systémové vlastnosti je chyba, ale pokus o 
   
 ### <a name="remarks"></a>Poznámky
   
-Logické konstanty jsou reprezentovány `TRUE` klíčovými slovy nebo `FALSE`. Hodnoty jsou uloženy jako `System.Boolean`.  
+Logické konstanty jsou reprezentovány klíčovými slovy `TRUE` nebo `FALSE` . Hodnoty jsou uloženy jako `System.Boolean` .  
   
 ## <a name="string_constant"></a>string_constant  
   
@@ -207,9 +196,9 @@ Logické konstanty jsou reprezentovány `TRUE` klíčovými slovy nebo `FALSE`. 
   
 ### <a name="remarks"></a>Poznámky  
 
-`newid()` Funkce vrátí hodnotu **System. GUID** vygenerovanou `System.Guid.NewGuid()` metodou.  
+`newid()`Funkce vrátí hodnotu **System. GUID** vygenerovanou `System.Guid.NewGuid()` metodou.  
   
-`property(name)` Funkce vrátí hodnotu vlastnosti, na kterou odkazuje `name`. `name` Hodnotou může být libovolný platný výraz, který vrací řetězcovou hodnotu.  
+`property(name)`Funkce vrátí hodnotu vlastnosti, na kterou odkazuje `name` . `name`Hodnotou může být libovolný platný výraz, který vrací řetězcovou hodnotu.  
   
 ## <a name="considerations"></a>Požadavky
 

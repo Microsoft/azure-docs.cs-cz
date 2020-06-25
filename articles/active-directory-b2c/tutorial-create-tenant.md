@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4e2957ea179d9737bb6aad6fb8f121780575115b
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: 807cc4647a27cf62109885ba1adaeaf5058a20c4
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84976373"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85355416"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Kurz: Vytvoření tenanta Azure Active Directory B2C
 
@@ -62,7 +62,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 1. Vyberte **Zkontrolovat a vytvořit**.
 1. Zkontrolujte nastavení adresáře. Potom vyberte **Vytvořit**.
 
-Pro účely fakturace můžete propojit více Azure AD B2C tenantů s jedním předplatným Azure.
+Pro účely fakturace můžete propojit více Azure AD B2C tenantů s jedním předplatným Azure. Pokud chcete propojit tenanta, musíte být správcem v Azure AD B2C tenant a mít v rámci předplatného Azure přiřazenou aspoň roli Přispěvatel. Viz [propojení klienta Azure AD B2C k předplatnému](billing.md#link-an-azure-ad-b2c-tenant-to-a-subscription).
 
 ## <a name="select-your-b2c-tenant-directory"></a>Vyberte adresář tenanta B2C
 

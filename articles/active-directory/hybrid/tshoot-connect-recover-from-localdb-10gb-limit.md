@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 07/17/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d420c64c5834f7d3cb11d2f5f59e3ed85a54891
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: d6a61a4a26176ee353d1f182579e1f8d80a95aab
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "60386920"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85355994"
 ---
 # <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Azure AD Connect: Jak provést obnovení při dosažení 10GB limitu pro LocalDB
 Azure AD Connect vyžaduje k ukládání dat identity databázi SQL Serveru. Můžete použít buď výchozí databázi SQL Server 2012 Express LocalDB nainstalovanou se službou Azure AD Connect, nebo vlastní plnou verzi SQL. SQL Server Express má omezení velikosti 10 GB. Pokud při použití LocalDB dosáhnete tohoto limitu, synchronizační služba Azure AD Connect se už nemůže spustit ani správně synchronizovat. Tento článek popisuje kroky obnovení.
@@ -66,15 +66,15 @@ Název databáze vytvořené pro Azure AD Connect je **AdSync**. Chcete-li prov�
 * Účet synchronizační služby, který se používá jako operační kontext synchronizační služby Azure AD Connect.
 * Místní skupina ADSyncAdmins, která byla vytvořena během instalace.
 
-1. Zálohujte databázi tak, že zkopírujete soubory **AdSync. mdf** a **ADSync_log. ldf** nacházející se v `%ProgramFiles%\Microsoft Azure AD Sync\Data` umístění do bezpečného umístění.
+1. Zálohujte databázi tak, že zkopírujete soubory **AdSync. mdf** a **ADSync_log. ldf** nacházející `%ProgramFiles%\Microsoft Azure AD Sync\Data` se v umístění do bezpečného umístění.
 
 2. Spusťte novou relaci PowerShellu.
 
-3. Přejděte do složky `%ProgramFiles%\Microsoft SQL Server\110\Tools\Binn`.
+3. Přejděte do složky `%ProgramFiles%\Microsoft SQL Server\110\Tools\Binn` .
 
-4. Spusťte nástroj **Sqlcmd** spuštěním příkazu `./SQLCMD.EXE -S "(localdb)\.\ADSync" -U <Username> -P <Password>`s použitím přihlašovacích údajů správce systému nebo databáze dbo.
+4. Spusťte nástroj **Sqlcmd** spuštěním příkazu s `./SQLCMD.EXE -S "(localdb)\.\ADSync" -U <Username> -P <Password>` použitím přihlašovacích údajů správce systému nebo databáze dbo.
 
-5. Chcete-li zmenšit databázi, zadejte `DBCC Shrinkdatabase(ADSync,1);`na příkazovém řádku Sqlcmd (1>) a potom `GO` na další řádek.
+5. Chcete-li zmenšit databázi, zadejte na příkazovém řádku Sqlcmd (1>) a `DBCC Shrinkdatabase(ADSync,1);` potom na `GO` Další řádek.
 
 6. Pokud je operace úspěšná, zkuste znovu spustit synchronizační službu. Pokud můžete spustit synchronizační službu, otevřete krok [Odstranit data historie spuštění](#delete-run-history-data) . Pokud ne, obraťte se na podporu.
 
@@ -87,7 +87,7 @@ Ve výchozím nastavení Azure AD Connect zachovává data historie spuštění 
 
 3. V části **Akce**vyberte možnost **Vymazat běhy**...
 
-4. Můžete buď zvolit možnost **Vymazat všechna spuštění** nebo **zrušit zaškrtnutí políček... možnost \<data>** Doporučujeme začít tím, že vymažete data historie spuštění, která jsou starší než dva dny. Pokud budete pokračovat v běhu do problému velikosti databáze, zvolte možnost **Vymazat všechna spuštění** .
+4. Můžete buď zvolit možnost **Vymazat všechna spuštění** nebo **zrušit zaškrtnutí políček před. \<date> ..** . Doporučujeme začít tím, že vymažete data historie spuštění, která jsou starší než dva dny. Pokud budete pokračovat v běhu do problému velikosti databáze, zvolte možnost **Vymazat všechna spuštění** .
 
 ### <a name="shorten-retention-period-for-run-history-data"></a>Zkrátit dobu uchování dat historie spuštění
 Tento krok umožňuje snížit pravděpodobnost spuštění limitu 10 GB po několika synchronizačních cyklech.

@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 10/18/2018
 ms.author: cshoe
-ms.openlocfilehash: 97509001aa66c2c1bf0c91b6b2a5ab25f9d6ec88
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bfb502e42e41ac530851766db87bcebf3c94c371
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74227072"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85340860"
 ---
 # <a name="azure-function-event-grid-trigger-local-debugging"></a>Funkce Azure Function Event Grid aktivovat místní ladění
 
@@ -34,7 +34,7 @@ Po vytvoření funkce otevřete soubor kódu a zkopírujte na začátek souboru 
 
 ![Kopírovat umístění](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-copy-location.png)
 
-Potom nastavte zarážku na řádku, který začíná na `log.LogInformation`.
+Potom nastavte zarážku na řádku, který začíná na `log.LogInformation` .
 
 ![Nastavit zarážku](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-set-breakpoint.png)
 
@@ -62,7 +62,7 @@ Otevřete Azure Portal a přejděte do účtu úložiště a klikněte na možno
 
 ![Přidat událost účtu úložiště](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-add-event.png)
 
-V okně *události* klikněte na tlačítko **odběr události** . V okně pro *sudé předplatné* klikněte na rozevírací seznam *Typ koncového bodu* a vyberte **Webhook**.
+V okně *události* klikněte na tlačítko **odběr události** . V okně *odběr událostí* klikněte na rozevírací seznam *Typ koncového bodu* a vyberte **Webhook**.
 
 ![Vybrat typ předplatného](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-event-subscription-type.png)
 
@@ -70,7 +70,7 @@ Po nakonfigurování typu koncového bodu klikněte na **Vybrat koncový bod** a
 
 ![Vybrat typ koncového bodu](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-event-subscription-endpoint.png)
 
-Hodnota *koncového bodu odběratele* se skládá ze tří různých hodnot. Předpona je adresa URL protokolu HTTPS vygenerovaná *ngrok*. Zbývající adresa URL pochází z adresy URL, která se nachází v souboru s kódem funkce, s názvem funkce přidaným na konci. Počínaje adresou URL ze souboru kódu funkce nahrazuje `http://localhost:7071` adresa URL `{functionname}` *ngrok* a nahrazuje název funkce.
+Hodnota *koncového bodu odběratele* se skládá ze tří různých hodnot. Předpona je adresa URL protokolu HTTPS vygenerovaná *ngrok*. Zbývající adresa URL pochází z adresy URL, která se nachází v souboru s kódem funkce, s názvem funkce přidaným na konci. Počínaje adresou URL ze souboru kódu funkce nahrazuje adresa URL *ngrok* `http://localhost:7071` a nahrazuje název funkce `{functionname}` .
 
 Následující snímek obrazovky ukazuje, jak by měla poslední adresa URL vypadat:
 

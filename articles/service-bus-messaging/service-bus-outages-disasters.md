@@ -1,20 +1,14 @@
 ---
 title: Izolování Azure Service Bus aplikací proti výpadkům a katastrofám
 description: V tomto článku najdete techniky ochrany aplikací proti možnému výpadku Azure Service Bus.
-services: service-bus-messaging
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 01/27/2020
-ms.author: aschhab
-ms.openlocfilehash: 56e3737b992664f031189c9ac243101eef922731
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 06/23/2020
+ms.openlocfilehash: e6dba5e6cf4700dfab354a434ac4d48f9a95b76a
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020196"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85339660"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Osvědčené postupy pro ochranu aplikací před haváriemi a výpadky služby Service Bus
 

@@ -1,25 +1,17 @@
 ---
 title: Použití Azure Service Bus témat s balíčkem Azure/Service-Bus Node.js
 description: Naučte se používat Service Bus témata a odběry v Azure z Node.js aplikace pomocí balíčku Azure/Service-Bus.
-services: service-bus-messaging
-documentationcenter: nodejs
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: b9f5db85-7b6c-4cc7-bd2c-bd3087c99875
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
+author: spelluru
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 01/16/2020
-ms.author: aschhab
-ms.openlocfilehash: 91fae982f53af8da359baaff685996c0d1cb57c2
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.date: 06/23/2020
+ms.author: spelluru
+ms.openlocfilehash: d4b382a0cf857f9cfe1065815e9b07b8260023a8
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84976553"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85339801"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>Rychlý Start: jak používat Service Bus témata a předplatná s Node.js a balíčkem Azure-Sb
 V tomto kurzu se naučíte vytvářet Node.js aplikace pro odesílání zpráv do Service Bus tématu a příjem zpráv z Service Bus předplatného pomocí balíčku [Azure-SB](https://www.npmjs.com/package/azure-sb) . Ukázky jsou napsané v JavaScriptu a používají Node.js [modul Azure](https://www.npmjs.com/package/azure) , který interně používá `azure-sb` balíček.

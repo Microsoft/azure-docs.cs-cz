@@ -1,23 +1,14 @@
 ---
 title: Azure Service Bus filtry témat | Microsoft Docs
 description: Tento článek vysvětluje, jak můžou předplatitelé definovat, které zprávy chce přijímat z tématu zadáním filtrů.
-services: service-bus-messaging
-documentationcenter: ''
-author: spelluru
-editor: ''
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/16/2020
-ms.author: spelluru
-ms.openlocfilehash: bbf569e95c59e888b830876f0458b063bd3920da
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.date: 06/23/2020
+ms.openlocfilehash: b722c040248c199782f6c8dea020ae582762e102
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84258806"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85339956"
 ---
 # <a name="topic-filters-and-actions"></a>Akce a filtry témat
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 084083a704a007e6675234883c62350d1d9a0849
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 22bf7e85a48e0d138bfdbca82cf032287d982899
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81536144"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85339590"
 ---
 # <a name="quickstart-call-an-aspnet-web-api-protected-by-microsoft-identity-platform"></a>Rychlý Start: volání webového rozhraní API ASP.NET chráněného technologií Microsoft Identity Platform
 
@@ -30,7 +30,7 @@ Chcete-li spustit tuto ukázku, budete potřebovat následující:
 
 * Visual Studio 2017 nebo 2019.  Stáhněte si [Visual Studio zdarma](https://www.visualstudio.com/downloads/).
 
-* [Účet Microsoft](https://www.outlook.com) nebo [vývojářský Program sady Office 365](/office/developer-program/office-365-developer-program)
+* Buď [účet Microsoft](https://www.outlook.com) , nebo [Microsoft 365 vývojářský program](/office/developer-program/office-365-developer-program)
 
 ## <a name="download-or-clone-this-sample"></a>Stáhnout nebo naklonovat tuto ukázku
 
@@ -61,7 +61,7 @@ Pokud chcete své aplikace registrovat ručně, je třeba nejprve tyto kroky:
    - Změňte **podporované typy účtů** na **účty v libovolném organizačním adresáři**.
    - Výběrem možnosti **Registrovat** aplikaci vytvořte.
 
-1. Na stránce **Přehled** aplikace vyhledejte hodnotu **ID aplikace (klienta)** a zaznamenejte ji pro pozdější použití. Budete ho potřebovat ke konfiguraci konfiguračního souboru sady Visual Studio pro tento projekt (`ClientId` v `TodoListService\Web.config`).
+1. Na stránce **Přehled** aplikace vyhledejte hodnotu **ID aplikace (klienta)** a zaznamenejte ji pro pozdější použití. Budete ho potřebovat ke konfiguraci konfiguračního souboru sady Visual Studio pro tento projekt ( `ClientId` v `TodoListService\Web.config` ).
 1. Vyberte část **vystavení rozhraní API** a:
    - Vyberte **Přidat obor** .
    - přijměte navrhovaný identifikátor URI ID aplikace (API://{clientId}) tak, že vyberete **Uložit a pokračovat** .
@@ -77,12 +77,12 @@ Pokud chcete své aplikace registrovat ručně, je třeba nejprve tyto kroky:
 
 ### <a name="configure-the-service-project-to-match-the-registered-web-api"></a>Konfigurace projektu služby tak, aby odpovídal zaregistrovanému webovému rozhraní API
 
-1. Otevřete řešení v aplikaci Visual Studio a otevřete soubor **Web. config** v kořenovém adresáři projektu **TodoListService** .
+1. Otevřete řešení v aplikaci Visual Studio a pak otevřete soubor **Web.config** pod kořenem projektu **TodoListService** .
 1. Nahraďte hodnotu `ida:ClientId` parametru **ID klienta (ID aplikace)** z aplikace, kterou jste právě zaregistrovali na portálu pro registraci aplikací.
 
-### <a name="add-the-new-scope-to-the-todolistclients-appconfig"></a>Přidání nového oboru do souboru App. config pro *TodoListClient*
+### <a name="add-the-new-scope-to-the-todolistclients-appconfig"></a>Přidání nového oboru do app.config *TodoListClient*
 
-1. Otevřete soubor **App. config** umístěný v kořenové složce projektu **TodoListClient** a potom vložte **ID aplikace** z aplikace, kterou jste právě zaregistrovali pro svůj *TodoListService* v `TodoListServiceScope` parametru, a nahraďte `{Enter the Application ID of your TodoListService from the app registration portal}`řetězec.
+1. Otevřete **app.config** soubor umístěný v kořenové složce projektu **TodoListClient** a potom vložte **ID aplikace** z aplikace, kterou jste právě zaregistrovali pro svůj *TodoListService* v `TodoListServiceScope` parametru, a nahraďte řetězec `{Enter the Application ID of your TodoListService from the app registration portal}` .
 
    > Poznámka: Ujistěte se, že používá následující formát:
    >
@@ -103,23 +103,23 @@ V tomto kroku nakonfigurujete projekt *TodoListClient* tak, že zaregistrujete n
    - Změňte **podporované typy účtů** na **účty v libovolném organizačním adresáři**.
    - Výběrem možnosti **Registrovat** aplikaci vytvořte.
 1. Na stránce Přehled aplikace vyberte část **Ověřování**.
-   - V části **identifikátory URI** | přesměrování**navrhované identifikátory URI přesměrování pro veřejné klienty (mobilní zařízení, stolní počítače)** ověřte**https://login.microsoftonline.com/common/oauth2/nativeclient**
+   - V části **identifikátory URI přesměrování**  |  **navrhované identifikátory URI přesměrování pro veřejné klienty (mobilní zařízení, stolní počítače)** ověřte**https://login.microsoftonline.com/common/oauth2/nativeclient**
    - Vyberte **Uložit**.
 1. Vyberte oddíl **oprávnění rozhraní API** .
    - Klikněte na tlačítko **Přidat oprávnění** a pak na
    - Vyberte kartu **Moje rozhraní API** .
-   - V seznamu rozhraní API vyberte nebo zadejte název `AppModelv2-NativeClient-DotNet-TodoListService API`, který jste zadali pro webové rozhraní API.
+   - V seznamu rozhraní API vyberte `AppModelv2-NativeClient-DotNet-TodoListService API` nebo zadejte název, který jste zadali pro webové rozhraní API.
    - Zaškrtněte **access_as_user** oprávnění, pokud ještě není zaškrtnuté. V případě potřeby použijte vyhledávací pole.
    - Vyberte tlačítko **Přidat oprávnění** .
 
 ### <a name="configure-your-todolistclient-project"></a>Konfigurace projektu *TodoListClient*
 
 1. Na *portálu pro registraci aplikací*zkopírujte na stránce **Přehled** hodnotu **ID aplikace (klienta)** .
-1. Otevřete soubor **App. config** umístěný v kořenové složce projektu **TodoListClient** a vložte hodnotu do hodnoty `ida:ClientId` parametru.
+1. Otevřete **app.config** soubor umístěný v kořenové složce projektu **TodoListClient** a vložte hodnotu do `ida:ClientId` hodnoty parametru.
 
 ## <a name="run-your-project"></a>Spusťte projekt
 
-1. Stisknutím `<F5>` klávesy spusťte projekt. Váš *TodoListClient* by měl být otevřený.
+1. Stisknutím klávesy `<F5>` spusťte projekt. Váš *TodoListClient* by měl být otevřený.
 1. Vyberte možnost **Přihlásit** se v pravém horním rohu a přihlaste se pomocí stejného uživatele, kterého jste použili k registraci aplikace, nebo uživatele ve stejném adresáři.
 1. Pokud se v tuto chvíli přihlašujete poprvé, může se zobrazit výzva k zadání souhlasu s webovým rozhraním API *TodoListService* .
 1. Pro přístup k webovému rozhraní API *TodoListService* a manipulaci se seznamem *úkolů* si také požádáte o přístupový token do oboru *access_as_user* .
@@ -130,13 +130,13 @@ Jedním z způsobů, jak uživatelům z jiných adresářů povolit přístup k 
 
 1. Vraťte se zpátky na *portál pro registraci aplikací* a otevřete vlastnosti vašeho **TodoListService**.
 1. V části **vystavení rozhraní API** klikněte na **Přidat klientskou aplikaci** v části *autorizované klientské aplikace* .
-1. Do pole *ID klienta* Vložte ID `TodoListClient` aplikace.
-1. V části *autorizované obory* vyberte obor pro toto webové rozhraní API `api://<Application ID>/access_as_user`.
+1. Do pole *ID klienta* Vložte ID aplikace `TodoListClient` .
+1. V části *autorizované obory* vyberte obor pro toto webové rozhraní API `api://<Application ID>/access_as_user` .
 1. V dolní části stránky stiskněte tlačítko **Přidat aplikaci** .
 
 ## <a name="run-your-project"></a>Spusťte projekt
 
-1. Stisknutím `<F5>` klávesy spusťte projekt. Váš *TodoListClient* by měl být otevřený.
+1. Stisknutím klávesy `<F5>` spusťte projekt. Váš *TodoListClient* by měl být otevřený.
 1. Vyberte možnost **Přihlásit** se v pravém horním rohu (nebo zrušte zaškrtnutí políčka mezipaměť/přihlášení) a pak se přihlaste pomocí osobního účet Microsoft (live.com nebo Hotmail.com) nebo pracovního nebo školního účtu.
 
 ## <a name="optional-restrict-sign-in-access-to-your-application"></a>Volitelné: Omezte přístup k vaší aplikaci.
@@ -149,8 +149,8 @@ Chcete-li omezit, kdo se může přihlásit ke své aplikaci, použijte jednu z 
 
 Přístup pro přihlášení k aplikaci můžete omezit jenom na uživatelské účty, které jsou v jednom tenantovi Azure AD – včetně *účtů hostů* tohoto tenanta. Tento scénář je společný pro *obchodní aplikace*:
 
-1. Otevřete soubor **app_start \Startup.auth** a změňte hodnotu koncového bodu metadat, který se předává do `OpenIdConnectSecurityTokenProvider` do `"https://login.microsoftonline.com/{Tenant ID}/v2.0/.well-known/openid-configuration"` (můžete také použít název tenanta, například `contoso.onmicrosoft.com`).
-2. Ve stejném `ValidIssuer` souboru nastavte vlastnost na `TokenValidationParameters` `"https://sts.windows.net/{Tenant ID}/"` a a `ValidateIssuer` argument na. `true`
+1. Otevřete soubor **app_start \Startup.auth** a změňte hodnotu koncového bodu metadat, který se předává do `OpenIdConnectSecurityTokenProvider` do `"https://login.microsoftonline.com/{Tenant ID}/v2.0/.well-known/openid-configuration"` (můžete také použít název tenanta, například `contoso.onmicrosoft.com` ).
+2. Ve stejném souboru nastavte `ValidIssuer` vlastnost na `TokenValidationParameters` `"https://sts.windows.net/{Tenant ID}/"` a a `ValidateIssuer` argument na `true` .
 
 ### <a name="option-2-use-a-custom-method-to-validate-issuers"></a>Možnost 2: použití vlastní metody pro ověření vystavitelů
 

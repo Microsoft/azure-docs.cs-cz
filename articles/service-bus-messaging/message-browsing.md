@@ -1,30 +1,20 @@
 ---
 title: Azure Service Bus – procházení zpráv
 description: Procházení a prohlížení zpráv Service Bus umožňuje klientovi Azure Service Bus zobrazit výčet všech zpráv, které jsou umístěny ve frontě nebo předplatném.
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: 6156557d10210535b287aa516070c0b5da416512
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 0f2d4ed1225aef4c28a5f3d841669c2e3122ba10
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77539361"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341238"
 ---
 # <a name="message-browsing"></a>Procházení zpráv
 
 Procházení nebo prohlížení zpráv umožňuje klientovi Service Bus vytvořit výčet všech zpráv umístěných ve frontě nebo předplatném, obvykle pro účely diagnostiky a ladění.
 
-Operace prohlížení vrátí všechny zprávy, které existují ve frontě nebo protokolu zpráv odběru, nejen ty, které jsou k dispozici `Receive()` pro okamžité `OnMessage()` získání nebo smyčku. `State` Vlastnost každé zprávy obsahuje informace o tom, zda je zpráva aktivní (k dispozici pro příjem), [odložena](message-deferral.md)nebo [naplánována](message-sequencing.md).
+Operace prohlížení vrátí všechny zprávy, které existují ve frontě nebo protokolu zpráv odběru, nejen ty, které jsou k dispozici pro okamžité získání `Receive()` nebo `OnMessage()` smyčku. `State`Vlastnost každé zprávy obsahuje informace o tom, zda je zpráva aktivní (k dispozici pro příjem), [odložena](message-deferral.md)nebo [naplánována](message-sequencing.md).
 
 Spotřebované a vydané zprávy s vypršenou platností jsou vyčištěny asynchronním "uvolňováním paměti" a nemusí nutně přesně vypršet, pokud vyprší platnost zpráv, a proto `Peek` mohou vracet zprávy, jejichž platnost již vypršela, a v případě, že dojde k dalšímu vyvolání operace Receive v rámci fronty nebo předplatného.
 
@@ -47,5 +37,5 @@ Můžete také naplnit přetížení metody pomocí [SequenceNumber](/dotnet/api
 Další informace o Service Bus zasílání zpráv najdete v následujících tématech:
 
 * [Fronty, témata a odběry služby Service Bus](service-bus-queues-topics-subscriptions.md)
-* [Začínáme s frontami Service Bus](service-bus-dotnet-get-started-with-queues.md)
+* [Začínáme s frontami služby Service Bus](service-bus-dotnet-get-started-with-queues.md)
 * [Jak používat témata a odběry Service Bus](service-bus-dotnet-how-to-use-topics-subscriptions.md)

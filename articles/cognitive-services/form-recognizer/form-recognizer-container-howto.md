@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 06/24/2020
 ms.author: aahi
-ms.openlocfilehash: fe6e0a0f3ffd3680c75c086222a4a390ce15d4df
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: a014628a9664e33aa855cc4fbf40979236d765f9
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85213189"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85355603"
 ---
 # <a name="install-and-run-form-recognizer-containers-preview"></a>Instalace a spuštění kontejnerů pro rozpoznávání formulářů (Preview)
 
@@ -138,6 +138,9 @@ Ke spuštění kontejneru použijte příkaz [Docker Run](https://docs.docker.co
 [Examples](form-recognizer-container-configuration.md#example-docker-run-commands) `docker run` K dispozici jsou příklady příkazů.
 
 ### <a name="form-recognizer"></a>Rozpoznávání formulářů
+
+> [!NOTE]
+> Adresáře používané `--mount` v těchto příkladech jsou cesty k adresářům systému Windows. Pokud používáte Linux nebo macOS, změňte parametr svého prostředí. 
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 8g --cpus 2 \
@@ -307,7 +310,7 @@ Kontejner poskytuje rozhraní API koncového bodu REST, které můžete najít n
 
 [!INCLUDE [How to stop the container](../../../includes/cognitive-services-containers-stop.md)]
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud spouštíte kontejner s povoleným výstupním [připojením](form-recognizer-container-configuration.md#mount-settings) a povolíte protokolování, kontejner generuje soubory protokolu, které jsou užitečné při řešení problémů, ke kterým dochází při spuštění nebo spuštění kontejneru.
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
-ms.openlocfilehash: b23cc2f69e78135998dcaa8a182f3d3ccc0eba82
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 3adb94709d089e2f1d106680acc00c08d2203a4d
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84190418"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85340882"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>Protokoly Azure Monitor pro poskytovatele služeb
 
@@ -64,7 +64,7 @@ Výhody centralizované architektury jsou:
 Nevýhody centralizované architektury jsou:
 
 * Tato architektura se vztahuje jenom na data virtuálních počítačů založená na agentech. nepokrývá PaaS, SaaS a zdroje dat prostředků infrastruktury Azure.
-* Oddělení dat mezi zákazníky může být obtížné, když se sloučí do jednoho pracovního prostoru. Jedinou dobrým způsobem, jak to udělat, je použít plně kvalifikovaný název domény (FQDN) počítače nebo ID předplatného Azure. 
+* Oddělení dat mezi zákazníky může být obtížné, když se sloučí do jednoho pracovního prostoru. Jedinou dobrým způsobem, jak to udělat, je použít plně kvalifikovaný název domény (FQDN) počítače nebo ID předplatného Azure.
 * Všechna data všech zákazníků budou uložena ve stejné oblasti s jednou fakturou a stejným nastavením pro uchování a nastavení konfigurace.
 * Služby Azure Fabric a PaaS Services, například Azure Diagnostics a protokoly auditu Azure, vyžadují, aby byl pracovní prostor ve stejném tenantovi jako prostředek, a proto nemůže protokoly odesílat do centrálního pracovního prostoru.
 * Všichni agenti virtuálních počítačů ze všech zákazníků budou ověřeni do centrálního pracovního prostoru pomocí stejného ID a klíče pracovního prostoru. Neexistuje žádná metoda pro blokování protokolů od určitého zákazníka bez přerušení dalších zákazníků.
@@ -77,13 +77,13 @@ Existují dvě možnosti implementace protokolů v centrálním umístění:
 
 1. Centrální pracovní prostor: poskytovatel služeb může ve svém tenantovi vytvořit pracovní prostor a použít skript, který využívá [rozhraní API pro dotazování](https://dev.loganalytics.io/) s [rozhraním API pro shromažďování dat](../../azure-monitor/platform/data-collector-api.md) k přenesení dat z různých pracovních prostorů do tohoto centrálního umístění. Další možností je jiný než skript, je použít [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview).
 
-2. Power BI jako centrální umístění: Power BI se může chovat jako centrální umístění, když různé pracovní prostory exportují data do tohoto prostředí pomocí integrace mezi Log Analyticsm a [Power BIm](../../azure-monitor/platform/powerbi.md). 
+2. Power BI jako centrální umístění: Power BI se může chovat jako centrální umístění, když různé pracovní prostory exportují data do tohoto prostředí pomocí integrace mezi Log Analyticsm a [Power BIm](../../azure-monitor/platform/powerbi.md).
 
 ## <a name="next-steps"></a>Další kroky
 
 * Automatizace vytváření a konfigurace pracovních prostorů pomocí [šablon Správce prostředků](template-workspace-configuration.md)
 
-* Automatizace vytváření pracovních prostorů pomocí [PowerShellu](../../azure-monitor/platform/powershell-workspace-configuration.md) 
+* Automatizace vytváření pracovních prostorů pomocí [PowerShellu](../../azure-monitor/platform/powershell-workspace-configuration.md)
 
 * Integrace s existujícími systémy pomocí [výstrah](../../azure-monitor/platform/alerts-overview.md)
 

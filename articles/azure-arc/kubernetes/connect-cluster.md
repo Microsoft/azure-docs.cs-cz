@@ -9,12 +9,12 @@ ms.author: mlearned
 description: Připojení clusteru Kubernetes s povoleným ARC Azure pomocí ARC Azure
 keywords: Kubernetes, oblouk, Azure, K8s, Containers
 ms.custom: references_regions
-ms.openlocfilehash: 232d5e5a5f6efd6ddbd6124f78de4f4b8c1cd639
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: ec77609e5ee30cd3451c52635e530eb7153bc9a0
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84676416"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341395"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Připojení clusteru Kubernetes s povoleným ARC Azure (Preview)
 
@@ -77,10 +77,8 @@ Agenti Azure ARC vyžadují, aby následující protokoly/porty/odchozí adresy 
 
 ```console
 az provider register --namespace Microsoft.Kubernetes
-Registering is still on-going. You can monitor using 'az provider show -n Microsoft.Kubernetes'
 
 az provider register --namespace Microsoft.KubernetesConfiguration
-Registering is still on-going. You can monitor using 'az provider show -n Microsoft.KubernetesConfiguration'
 ```
 
 Registrace je asynchronní proces. Registrace může trvat přibližně 10 minut. Proces registrace můžete monitorovat pomocí následujících příkazů:

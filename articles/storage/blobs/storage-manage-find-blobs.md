@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 083b130d1bb02ccc922c834c09a0d16fab004ae9
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 637bdb02cd9fc5296c74633bbfa381e62673a4bf
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433579"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85355654"
 ---
 # <a name="manage-and-find-data-on-azure-blob-storage-with-blob-index-preview"></a>Správa a hledání dat v Azure Blob Storage s využitím indexu objektů BLOB (Preview)
 
@@ -36,11 +36,11 @@ Předpony názvů kontejnerů a objektů BLOB jsou jednorozměrné kategorizace 
 
 Vezměte v úvahu následující pět objektů BLOB v účtu úložiště:
 >
-> container1/Transaction. csv  
-> container2/kampaň. docx  
-> fotek/bannerphoto. png  
-> archivy/dokončeno/2019review. PDF  
-> protokoly/2020/01/01/logfile. txt  
+> container1/transaction.csv  
+> container2/campaign.docx  
+> fotky/bannerphoto.png  
+> archivy/dokončené/2019review.pdf  
+> protokoly/2020/01/01/logfile.txt  
 >
 
 Tyto objekty BLOB se momentálně oddělují pomocí předpony kontejneru/virtuální složky nebo názvu objektu BLOB. Pomocí indexu objektů blob můžete nastavit atribut značky indexu `Project = Contoso` u těchto pěti objektů blob, aby je bylo možné kategorizovat společně a přitom zachovat stávající předpony organizace. Tím se eliminuje nutnost přesunu dat vyvoláním možnosti filtrování a hledání dat pomocí multidimenzionálního indexu platformy úložiště.
@@ -63,7 +63,7 @@ V objektu blob můžete použít více značek, aby byly výstižnější data.
 > "Priorita" = ' 01 ' 
 >
 
-Chcete-li upravit existující atributy značek indexu, je nutné nejprve načíst existující atributy značky, upravit atributy značky a nahradit ji operací SetBlobTags. Chcete-li odebrat všechny značky indexu z objektu blob, zavolejte operaci SetBlobTags bez zadaných atributů značek. Jelikož jsou značky indexu objektů BLOB dílčím prostředkem obsahu dat objektů blob, SetBlobTags neupravuje žádný podkladový obsah a nemění čas poslední změny objektu BLOB.
+Chcete-li upravit existující atributy značek indexu, je nutné nejprve načíst existující atributy značky, upravit atributy značky a nahradit ji operací SetBlobTags. Chcete-li odebrat všechny značky indexu z objektu blob, zavolejte operaci SetBlobTags bez zadaných atributů značek. Jelikož jsou značky indexu objektů BLOB dílčím prostředkem k obsahu dat objektů blob, SetBlobTags nemění žádný podkladový obsah a nemění čas poslední změny objektu BLOB nebo ETag (značka entity). Můžete vytvořit nebo upravit značky indexu pro všechny aktuální základní objekty BLOB a předchozí verze. značky pro snímky nebo obnovitelné odstraněné objekty blob však nelze upravovat. 
 
 Následující omezení se vztahují na značky indexu objektu BLOB:
 - Každý objekt BLOB může mít až 10 značek indexu objektu BLOB.

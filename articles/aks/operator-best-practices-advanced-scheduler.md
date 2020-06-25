@@ -5,12 +5,12 @@ description: Seznamte se s osvědčenými postupy pro použití pokročilých fu
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: d0d13a699d2559c6b4360c807721e0b748959382
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f63db0efb509223715efd4848a91d0435ab54af7
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617523"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85340847"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro pokročilé funkce plánovače ve službě Azure Kubernetes Service (AKS)
 
@@ -67,7 +67,7 @@ spec:
     effect: "NoSchedule"
 ```
 
-Pokud je nasazeno, jako je například použití `kubectl apply -f gpu-toleration.yaml`, může Kubernetes úspěšně naplánovat uzel pod v uzlech s aplikovanou příchuti. Tato logická izolace umožňuje řídit přístup k prostředkům v rámci clusteru.
+Pokud je nasazeno, jako je například použití `kubectl apply -f gpu-toleration.yaml` , může Kubernetes úspěšně naplánovat uzel pod v uzlech s aplikovanou příchuti. Tato logická izolace umožňuje řídit přístup k prostředkům v rámci clusteru.
 
 Když použijete chuti, pracujte s vývojáři vaší aplikace a vlastníky, abyste jim umožnili definovat požadovaná tolerovánost v jejich nasazeních.
 
@@ -122,7 +122,7 @@ spec:
       limits:
         cpu: 4.0
         memory: 16Gi
-    nodeSelector:
+  nodeSelector:
       hardware: highmem
 ```
 

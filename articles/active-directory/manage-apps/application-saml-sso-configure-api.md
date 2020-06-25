@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: kenwith
 ms.reviewer: luleon
-ms.openlocfilehash: c766fb84fa14eab09143cfb5b71f7aefc9f51d24
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 50ee9e3c22c885931e2586f65ba2fa3353fccfeb
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85077777"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85355841"
 ---
 # <a name="automate-saml-based-sso-app-configuration-with-microsoft-graph-api"></a>Automatizace konfigurace aplikace jednotného přihlašování založeného na SAML pomocí rozhraní Microsoft Graph API
 
@@ -111,6 +111,8 @@ Content-type: application/json
 
 Pomocí ID šablony, které jste načetli pro aplikaci v posledním kroku, [vytvořte instanci](https://docs.microsoft.com/graph/api/applicationtemplate-instantiate?view=graph-rest-beta&tabs=http) aplikace a instančního objektu ve vašem tenantovi.
 
+> [!NOTE] 
+> K vytvoření instance [aplikací mimo galerii](add-non-gallery-app.md)můžete použít rozhraní applicationTemplate API. Použijte applicationTemplateId `8adf8e6e-67b2-4cf2-a259-e3dc5476c621` .
 #### <a name="request"></a>Žádost
 
 <!-- {
@@ -594,7 +596,7 @@ HTTP/1.1 204
 
 Přiřaďte k instančnímu objektu následujícího uživatele a přiřaďte AWS_Role1. 
 
-| Name  | ID  |
+| Název  | ID  |
 |---------|---------|
 | ID uživatele (principalId) | 6cad4079-4e79-4a3f-9efb-ea30a14bdb26 |
 | Typ (principalType) | Uživatel |

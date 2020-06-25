@@ -1,19 +1,14 @@
 ---
 title: Ověření aplikace pro přístup k Azure Service Bus entit
 description: Tento článek poskytuje informace o ověřování aplikace s Azure Active Directory pro přístup k Azure Service Bus entit (fronty, témata atd.).
-services: service-bus-messaging
-ms.service: event-hubs
-documentationcenter: ''
-author: axisc
 ms.topic: conceptual
-ms.date: 08/22/2019
-ms.author: aschhab
-ms.openlocfilehash: 6a78e4d81921fae8dcb325e9d72df1eee7b99a3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 707fbec4317b4c34349e04895f9c6a0bdf4f1b47
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259289"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341514"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>Ověřování a autorizace aplikace s Azure Active Directory pro přístup k Azure Service Busm entitám
 Azure Service Bus podporuje použití Azure Active Directory (Azure AD) k autorizaci požadavků na Service Bus entit (fronty, témata, odběry nebo filtry). Pomocí Azure AD můžete použít řízení přístupu na základě role (RBAC) k udělení oprávnění objektu zabezpečení, který může být uživatel, skupina nebo instanční objekt aplikace. Další informace o rolích a přiřazení rolí najdete v tématu [Principy různých rolí](../role-based-access-control/overview.md).
@@ -21,7 +16,7 @@ Azure Service Bus podporuje použití Azure Active Directory (Azure AD) k autori
 ## <a name="overview"></a>Přehled
 Když se objekt zabezpečení (uživatel, skupina nebo aplikace) pokusí o přístup k Service Bus entitě, musí být žádost autorizována. S Azure AD je přístup k prostředku v procesu se dvěma kroky. 
 
- 1. Nejprve je ověřená identita objektu zabezpečení a je vrácen token OAuth 2,0. Název prostředku pro vyžádání tokenu `https://servicebus.azure.net`.
+ 1. Nejprve je ověřená identita objektu zabezpečení a je vrácen token OAuth 2,0. Název prostředku pro vyžádání tokenu `https://servicebus.azure.net` .
  1. V dalším kroku se token předává jako součást požadavku služby Service Bus k autorizaci přístupu k zadanému prostředku.
 
 Krok ověřování vyžaduje, aby žádost o aplikaci obsahovala přístupový token OAuth 2,0 za běhu. Pokud je aplikace spuštěná v rámci entity Azure, jako je třeba virtuální počítač Azure, sada škálování virtuálního počítače nebo aplikace funkce Azure, může pro přístup k prostředkům použít spravovanou identitu. Informace o tom, jak ověřit požadavky prováděné spravovanou identitou pro Service Bus službu, najdete v tématu [ověření přístupu k prostředkům Azure Service Bus pomocí Azure Active Directory a spravovaných identit pro prostředky Azure](service-bus-managed-service-identity.md). 
@@ -128,7 +123,7 @@ Aplikace potřebuje při žádosti o tokenu klíč klienta k prokázání jeho i
     ![Tajný klíč klienta](./media/authenticate-application/client-secret.png)
 
 ### <a name="permissions-for-the-service-bus-api"></a>Oprávnění pro rozhraní Service Bus API
-Pokud je vaše aplikace Konzolová aplikace, musíte zaregistrovat nativní aplikaci a přidat oprávnění rozhraní API pro **Microsoft. ServiceBus** do požadované sady **oprávnění** . Nativní aplikace také potřebují identifikátor **URI přesměrování** ve službě Azure AD, který slouží jako identifikátor; identifikátor URI nemusí být cílovým umístěním v síti. Použijte `https://servicebus.microsoft.com` v tomto příkladu, protože vzorový kód již používá tento identifikátor URI.
+Pokud je vaše aplikace Konzolová aplikace, musíte zaregistrovat nativní aplikaci a přidat oprávnění rozhraní API pro **Microsoft. ServiceBus** do požadované sady **oprávnění** . Nativní aplikace také potřebují identifikátor **URI přesměrování** ve službě Azure AD, který slouží jako identifikátor; identifikátor URI nemusí být cílovým umístěním v síti. Použijte v `https://servicebus.microsoft.com` tomto příkladu, protože vzorový kód již používá tento identifikátor URI.
 
 ### <a name="client-libraries-for-token-acquisition"></a>Klientské knihovny pro získání tokenu  
 Po zaregistrování aplikace a udělení oprávnění k odesílání a přijímání dat v Azure Service Bus můžete do své aplikace přidat kód pro ověření objektu zabezpečení a získání tokenu OAuth 2,0. K ověření a získání tokenu můžete použít buď jednu z [knihoven ověřování Microsoft Identity Platform](../active-directory/develop/reference-v2-libraries.md) , nebo jinou Open Source knihovnu, která podporuje OpenID nebo Connect 1,0. Aplikace pak může použít přístupový token k autorizaci žádosti o Azure Service Bus.
@@ -142,12 +137,12 @@ Použijte možnost **přihlášení pomocí tajného klíče klienta** , nikoli 
 
 ### <a name="run-the-sample"></a>Spuštění ukázky
 
-Předtím, než můžete spustit ukázku, upravte soubor **App. config** a v závislosti na vašem scénáři nastavte následující hodnoty:
+Než budete moct ukázku spustit, upravte soubor **app.config** a v závislosti na vašem scénáři nastavte následující hodnoty:
 
 - `tenantId`: Nastavte na hodnotu **TenantId** .
 - `clientId`: Nastavte na hodnotu **ApplicationId** .
 - `clientSecret`: Pokud se chcete přihlásit pomocí tajného kódu klienta, vytvořte ho v Azure AD. Místo nativní aplikace taky použijte webovou aplikaci nebo rozhraní API. Do oboru názvů, který jste dříve vytvořili, taky přidejte aplikaci do **Access Control (IAM)** .
-- `serviceBusNamespaceFQDN`: Nastavte na úplný název DNS nově vytvořeného oboru názvů Service Bus; například `example.servicebus.windows.net`.
+- `serviceBusNamespaceFQDN`: Nastavte na úplný název DNS nově vytvořeného oboru názvů Service Bus; například `example.servicebus.windows.net` .
 - `queueName`: Nastavte název fronty, kterou jste vytvořili.
 - Identifikátor URI pro přesměrování, který jste zadali v aplikaci v předchozích krocích.
 
@@ -166,5 +161,5 @@ Pokud se o přenosu zpráv přes Service Bus chcete dozvědět víc, pročtěte 
 
 - [Service Bus ukázky RBAC](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/RoleBasedAccessControl)
 - [Fronty, témata a odběry služby Service Bus](service-bus-queues-topics-subscriptions.md)
-- [Začínáme s frontami Service Bus](service-bus-dotnet-get-started-with-queues.md)
+- [Začínáme s frontami služby Service Bus](service-bus-dotnet-get-started-with-queues.md)
 - [Jak používat témata a odběry Service Bus](service-bus-dotnet-how-to-use-topics-subscriptions.md)

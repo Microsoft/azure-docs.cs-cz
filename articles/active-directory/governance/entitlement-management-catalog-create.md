@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 253d0dc945e0351b5c017739d081c567a139f5d1
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 16a9c8ddfbc2c2a45067080dc68a759de226591b
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85078432"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85339567"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>Vytvoření a správa katalogu prostředků v Azure AD – Správa nároků
 
@@ -57,7 +57,7 @@ Katalog můžete vytvořit také pomocí Microsoft Graph.  Uživatel v příslu�
 
 ## <a name="add-resources-to-a-catalog"></a>Přidání prostředků do katalogu
 
-Aby bylo možné zahrnout prostředky do balíčku pro přístup, musí tyto prostředky existovat v katalogu. Typy prostředků, které můžete přidat, jsou skupiny, aplikace a weby SharePointu Online. Skupiny můžou být cloudové vytvořené skupiny Office 365 nebo cloudové skupiny zabezpečení Azure AD. Aplikace můžou být Azure AD podnikové aplikace, včetně aplikací SaaS a vašich vlastních aplikací, které jsou federované do Azure AD. Weby můžou být weby SharePointu Online nebo kolekce webů SharePointu Online.
+Aby bylo možné zahrnout prostředky do balíčku pro přístup, musí tyto prostředky existovat v katalogu. Typy prostředků, které můžete přidat, jsou skupiny, aplikace a weby SharePointu Online. Skupiny můžou být cloudové Microsoft 365 skupiny nebo cloudové skupiny zabezpečení Azure AD. Aplikace můžou být Azure AD podnikové aplikace, včetně aplikací SaaS a vašich vlastních aplikací, které jsou federované do Azure AD. Weby můžou být weby SharePointu Online nebo kolekce webů SharePointu Online.
 
 **Požadovaná role:** [Přidání prostředků do katalogu](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog) najdete v tématu požadované role.
 

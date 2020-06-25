@@ -7,17 +7,17 @@ ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c419c2127b1c5fe3aaa60c6e828ff0c5a6676c07
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c0008ab89f4599e2ada51b5637a9665a249bc1c4
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77598540"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85340838"
 ---
 # <a name="quickstart-create-and-manage-an-azure-file-share-with-azure-powershell"></a>Rychlý start: Vytvoření a správa sdílené složky Azure pomocí Azure PowerShellu 
 Tato příručka vás provede základy práce se [sdílenými složkami Azure](storage-files-introduction.md) pomocí PowerShellu. Sdílené složky Azure jsou stejné jako ostatní sdílené složky, ale jsou uložené v cloudu a využívají platformu Azure. Sdílené složky Azure podporují standardní průmyslový protokol SMB a umožňují sdílení souborů mezi různými počítači, aplikacemi a instancemi. 
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -40,7 +40,7 @@ New-AzResourceGroup `
 ## <a name="create-a-storage-account"></a>vytvořit účet úložiště
 Účet úložiště je sdílený fond úložiště, který můžete použít k nasazení sdílených složek Azure. Účet úložiště může obsahovat neomezený počet sdílených složek a sdílená složka můžete obsahovat neomezený počet souborů až do omezení kapacity účtu úložiště. Tento příklad vytvoří obecné účely verze 2 (účet úložiště GPv2), který může Storage úrovně Standard nebo jiné prostředky úložiště, jako jsou objekty blob nebo fronty, na rotačním médiu pevného disku (HDD). Soubory Azure také podporují jednotky SSD (Solid-State disk Drive) (SSD). Služba Azure File Shares úrovně Premium se dá vytvořit v účtech úložiště úložiště.
 
-Tento příklad vytvoří účet úložiště pomocí rutiny [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) . Účet úložiště má název *mystorageaccount\<Random Number>* a odkaz na tento účet úložiště je uložený v **$storageAcct**proměnné. Názvy účtů úložiště musí být jedinečné, proto k názvu pomocí rutiny `Get-Random` připojte číslo, aby byl jedinečný. 
+Tento příklad vytvoří účet úložiště pomocí rutiny [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) . Účet úložiště bude mít název *mystorageaccount\<random number>* a odkaz na tento účet úložiště se uloží do proměnné **$storageAcct**. Názvy účtů úložiště musí být jedinečné, proto k názvu pomocí rutiny `Get-Random` připojte číslo, aby byl jedinečný. 
 
 ```azurepowershell-interactive 
 $storageAccountName = "mystorageacct$(Get-Random)"
@@ -88,7 +88,7 @@ Ve většině případů budete se sdílenou složkou Azure pracovat přes proto
 - Využíváte bezserverové prostředky, jako je služba [Azure Functions](../../azure-functions/functions-overview.md). 
 - Vytváříte službu pro přidávání hodnot, která bude pracovat s mnoha sdílenými složkami Azure, jako je třeba zálohování nebo prohledávání antivirové ochrany.
 
-Následující příklady ukazují, jak používat modul Azure PowerShell k manipulaci s sdílenou složkou Azure pomocí protokolu File REST. `-Context` Parametr se používá k načtení klíče účtu úložiště, který provede označené akce proti sdílené složce. Pokud chcete načíst klíč účtu úložiště, musíte mít `Owner` v účtu úložiště roli RBAC.
+Následující příklady ukazují, jak používat modul Azure PowerShell k manipulaci s sdílenou složkou Azure pomocí protokolu File REST. `-Context`Parametr se používá k načtení klíče účtu úložiště, který provede označené akce proti sdílené složce. Pokud chcete načíst klíč účtu úložiště, musíte mít `Owner` v účtu úložiště roli RBAC.
 
 #### <a name="create-directory"></a>Vytvoření adresáře
 Pokud chcete vytvořit nový adresář s názvem *myDirectory* v kořenovém adresáři sdílené složky Azure, použijte rutinu [New-AzStorageDirectory](/powershell/module/az.storage/New-AzStorageDirectory) .
@@ -186,7 +186,7 @@ Get-AzStorageFile `
     -Path "myDirectory2" 
 ```
 
-I když `Start-AzStorageFileCopy` je rutina praktická pro ad hoc přesun souborů mezi sdílenými složkami Azure, pro migrace a větší přesuny `robocopy` dat doporučujeme na `rsync` Windows a na MacOS a Linux. `robocopy`a `rsync` k provádění přesunů dat místo rozhraní REST API použijte protokol SMB.
+I když `Start-AzStorageFileCopy` je rutina praktická pro ad hoc přesun souborů mezi sdílenými složkami Azure, pro migrace a větší přesuny dat doporučujeme `robocopy` na Windows a `rsync` na MacOS a Linux. `robocopy`a `rsync` k provádění přesunů dat místo rozhraní REST API použijte protokol SMB.
 
 ## <a name="create-and-manage-share-snapshots"></a>Vytváření a správa snímků sdílených složek
 Další užitečnou úlohou, kterou se sdílenými složkami Azure můžete provádět, je vytváření snímků sdílených složek. Snímek uchovává sdílenou složku Azure k určitému bodu v čase. Snímky sdílených složek jsou podobné technologiím operačního systému, které už možná znáte, jako například:
@@ -199,7 +199,7 @@ Snímek sdílené složky pro sdílenou složku můžete vytvořit pomocí `Snap
 
 ```azurepowershell-interactive
 $share = Get-AzStorageShare -Context $storageAcct.Context -Name $shareName
-$snapshot = $share.Snapshot()
+$snapshot = $share.CloudFileShare.Snapshot()
 ```
 
 ### <a name="browse-share-snapshots"></a>Procházení snímků sdílené složky

@@ -1,24 +1,14 @@
 ---
 title: Řízení přístupu Azure Service Bus pomocí sdílených přístupových podpisů
 description: Přehled řízení přístupu Service Bus pomocí podpisů sdíleného přístupu najdete v podrobnostech o autorizaci SAS pomocí Azure Service Bus.
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-editor: spelluru
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/20/2019
-ms.author: aschhab
-ms.openlocfilehash: c381d9413c4003bc2ab9a9357ff2769e84d14c3e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: e0d8abcd5693ac20c79a1357eb066e3ae8dcdfe8
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259471"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85340965"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Řízení přístupu Service Bus pomocí sdílených přístupových podpisů
 
@@ -29,7 +19,7 @@ SAS chrání přístup k Service Bus na základě autorizačních pravidel. Ty j
 > [!NOTE]
 > Azure Service Bus podporuje autorizaci přístupu k oboru názvů Service Bus a jeho entitám pomocí Azure Active Directory (Azure AD). Ověřování uživatelů nebo aplikací pomocí tokenu OAuth 2,0 vráceného službou Azure AD poskytuje vynikající zabezpečení a usnadňuje použití přes sdílené přístupové podpisy (SAS). V případě Azure AD není nutné ukládat tokeny do kódu a ohrozit potenciální ohrožení zabezpečení.
 >
-> Microsoft doporučuje používat Azure AD s aplikacemi Azure Service Bus, pokud je to možné. Další informace najdete v těchto článcích:
+> Microsoft doporučuje používat Azure AD s aplikacemi Azure Service Bus, pokud je to možné. Další informace najdete v následujících článcích:
 > - [Ověřování a autorizace aplikace s Azure Active Directory pro přístup k Azure Service BUSM entitám](authenticate-application.md).
 > - [Ověření spravované identity pomocí Azure Active Directory pro přístup k prostředkům Azure Service Bus](service-bus-managed-service-identity.md)
 
@@ -45,7 +35,7 @@ Token [sdíleného přístupového podpisu](/dotnet/api/microsoft.servicebus.sha
 
 Každý Service Bus obor názvů a každá Service Bus entita má nastavené zásady autorizace sdíleného přístupu z pravidel. Zásady na úrovni oboru názvů platí pro všechny entity v oboru názvů bez ohledu na jejich jednotlivé konfigurace zásad.
 
-U každého pravidla zásad autorizace se rozhodujete o třech údajích, které se týkají **názvu**, **oboru**a **práv**. **Název** je pouze to; jedinečný název v rámci tohoto oboru. Obor je dostatečně snadný: Jedná se o identifikátor URI daného prostředku. V případě oboru názvů Service Bus obor je plně kvalifikovaný název domény (FQDN), například `https://<yournamespace>.servicebus.windows.net/`.
+U každého pravidla zásad autorizace se rozhodujete o třech údajích, které se týkají **názvu**, **oboru**a **práv**. **Název** je pouze to; jedinečný název v rámci tohoto oboru. Obor je dostatečně snadný: Jedná se o identifikátor URI daného prostředku. V případě oboru názvů Service Bus obor je plně kvalifikovaný název domény (FQDN), například `https://<yournamespace>.servicebus.windows.net/` .
 
 Práva, která jsou odvozená pravidlem zásad, můžou být kombinací:
 
@@ -77,12 +67,12 @@ Každý klient, který má přístup k názvu autorizačního pravidla a jeden z
 SharedAccessSignature sig=<signature-string>&se=<expiry>&skn=<keyName>&sr=<URL-encoded-resourceURI>
 ```
 
-* **`se`**– Okamžité vypršení platnosti tokenu Celé číslo odráží sekundy od epocha `00:00:00 UTC` dne 1. ledna 1970 (UNIX epocha), až vyprší platnost tokenu.
+* **`se`**– Okamžité vypršení platnosti tokenu Celé číslo odráží sekundy od epocha dne `00:00:00 UTC` 1. ledna 1970 (UNIX epocha), až vyprší platnost tokenu.
 * **`skn`**– Název autorizačního pravidla.
 * **`sr`**– Identifikátor URI přistupované prostředku.
 * **`sig`** Označení.
 
-`signature-string` Je hodnota hash SHA-256 vypočítaná přes identifikátor URI prostředku (**obor** , jak je popsáno v předchozí části), a řetězcové vyjádření funkce vypršení platnosti tokenu, která je oddělená znakem LF.
+`signature-string`Je hodnota hash SHA-256 vypočítaná přes identifikátor URI prostředku (**obor** , jak je popsáno v předchozí části), a řetězcové vyjádření funkce vypršení platnosti tokenu, která je oddělená znakem LF.
 
 Výpočet hodnoty hash se podobá následujícímu pseudo kódu a vrací hodnotu hash s 256 bity a 32 bajty.
 
@@ -92,13 +82,13 @@ SHA-256('https://<yournamespace>.servicebus.windows.net/'+'\n'+ 1438205742)
 
 Token obsahuje hodnoty, které nejsou hash, aby příjemce mohl znovu vypočítat hodnotu hash se stejnými parametry a ověřit, zda má Vystavitel k dispozici platný podpisový klíč.
 
-Identifikátor URI prostředku je úplný identifikátor URI Service Bus prostředku, ke kterému je nárok na přístup. Například `http://<namespace>.servicebus.windows.net/<entityPath>` nebo `sb://<namespace>.servicebus.windows.net/<entityPath>`; To znamená, `http://contoso.servicebus.windows.net/contosoTopics/T1/Subscriptions/S3`. 
+Identifikátor URI prostředku je úplný identifikátor URI Service Bus prostředku, ke kterému je nárok na přístup. Například `http://<namespace>.servicebus.windows.net/<entityPath>` nebo `sb://<namespace>.servicebus.windows.net/<entityPath>` ; to znamená `http://contoso.servicebus.windows.net/contosoTopics/T1/Subscriptions/S3` . 
 
 **Identifikátor URI musí být [kódovaný v procentech](https://msdn.microsoft.com/library/4fkewx0t.aspx).**
 
 Autorizační pravidlo sdíleného přístupu použité pro podepisování musí být nakonfigurováno pro entitu určenou tímto identifikátorem URI nebo jedním z jeho hierarchických nadřazených prvků. Například `http://contoso.servicebus.windows.net/contosoTopics/T1` nebo `http://contoso.servicebus.windows.net` v předchozím příkladu.
 
-Token SAS je platný pro všechny prostředky s předponou `<resourceURI>` použitou v. `signature-string`
+Token SAS je platný pro všechny prostředky s předponou `<resourceURI>` použitou v `signature-string` .
 
 ## <a name="regenerating-keys"></a>Opětovné generování klíčů
 
@@ -191,7 +181,7 @@ V předchozí části jste viděli, jak použít token SAS s požadavkem HTTP PO
 
 Předtím, než začnete odesílat data do Service Bus, musí vydavatel odeslat token SAS v rámci zprávy AMQP do dobře definovaného uzlu AMQP s názvem **$CBS** (můžete ho zobrazit jako "speciální" frontu, kterou služba používá k získání a ověření všech tokenů SAS. Vydavatel musí ve zprávě AMQP zadat pole **ReplyTo** ; Jedná se o uzel, ve kterém služba reaguje na vydavatele s výsledkem ověření tokenu (jednoduchý vzor žádosti a odpovědi mezi vydavatelem a službou). Tento uzel odpovědi se vytvoří průběžně, mluví o dynamickém vytváření vzdáleného uzlu, jak je popsáno ve specifikaci AMQP 1,0. Po kontrole platnosti tokenu SAS může vydavatel přejít do služby a začít posílat data.
 
-Následující kroky ukazují, jak odeslat token SAS pomocí protokolu AMQP pomocí knihovny [AMQP.NET Lite](https://github.com/Azure/amqpnetlite) . To je užitečné, pokud nemůžete použít oficiální sadu Service Bus SDK (například na WinRT, prostředí .NET Compact Framework, .NET Micro Framework a mono) vývoj v\#jazyce C. Tato knihovna je samozřejmě užitečná pro pochopení, jak funguje zabezpečení založené na deklaracích na úrovni AMQP, jak jste viděli, jak funguje na úrovni HTTP (s požadavkem HTTP POST a tokenem SAS odesílaným v hlavičce "Authorization"). Pokud nepotřebujete takové hloubkové znalosti o AMQP, můžete použít oficiální sadu Service Bus SDK s .NET Framework aplikacemi, které to provede za vás.
+Následující kroky ukazují, jak odeslat token SAS pomocí protokolu AMQP pomocí knihovny [AMQP.NET Lite](https://github.com/Azure/amqpnetlite) . To je užitečné, pokud nemůžete použít oficiální sadu Service Bus SDK (například na WinRT, prostředí .NET Compact Framework, .NET Micro Framework a mono) vývoj v jazyce C \# . Tato knihovna je samozřejmě užitečná pro pochopení, jak funguje zabezpečení založené na deklaracích na úrovni AMQP, jak jste viděli, jak funguje na úrovni HTTP (s požadavkem HTTP POST a tokenem SAS odesílaným v hlavičce "Authorization"). Pokud nepotřebujete takové hloubkové znalosti o AMQP, můžete použít oficiální sadu Service Bus SDK s .NET Framework aplikacemi, které to provede za vás.
 
 ### <a name="c35"></a>C&#35;
 
@@ -244,7 +234,7 @@ private bool PutCbsToken(Connection connection, string sasToken)
 }
 ```
 
-Metoda přijímá *připojení* (instance třídy připojení AMQP, která je poskytována [knihovnou AMQP .NET Lite](https://github.com/Azure/amqpnetlite)), která představuje připojení TCP ke službě a parametr sasToken, který je token SAS k odeslání. *sasToken* `PutCbsToken()`
+`PutCbsToken()`Metoda přijímá *připojení* (instance třídy připojení AMQP, která je poskytována [knihovnou AMQP .NET Lite](https://github.com/Azure/amqpnetlite)), která představuje připojení TCP ke službě a parametr *sasToken* , který je token SAS k odeslání.
 
 > [!NOTE]
 > Je důležité, aby se připojení vytvořilo pomocí **mechanismu ověřování SASL nastaveného na anonymní** (a ne jako výchozí jednoduché s uživatelským jménem a heslem, které se používá, pokud nepotřebujete odeslat token SAS).
@@ -253,7 +243,7 @@ Metoda přijímá *připojení* (instance třídy připojení AMQP, která je po
 
 V dalším kroku vytvoří Vydavatel dvě AMQP odkazy pro odeslání tokenu SAS a příjem odpovědi (výsledek ověření tokenu) ze služby.
 
-Zpráva AMQP obsahuje sadu vlastností a další informace než jednoduchá zpráva. Token SAS je tělo zprávy (pomocí jejího konstruktoru). Vlastnost **"ReplyTo"** je nastavená na název uzlu pro příjem výsledku ověření na odkazu přijímače (jeho název můžete změnit, pokud chcete, a dynamicky ho vytvoří služba). Poslední tři vlastnosti aplikace nebo vlastní aplikace jsou službou používány k označení toho, jaký druh operace je nutné provést. Jak je popsáno ve specifikaci konceptu CBS, musí se jednat o **název operace** ("Put-token"), **typ tokenu** (v tomto případě a `servicebus.windows.net:sastoken`) a **"název" cílové skupiny** , na kterou se vztahuje token (celá entita).
+Zpráva AMQP obsahuje sadu vlastností a další informace než jednoduchá zpráva. Token SAS je tělo zprávy (pomocí jejího konstruktoru). Vlastnost **"ReplyTo"** je nastavená na název uzlu pro příjem výsledku ověření na odkazu přijímače (jeho název můžete změnit, pokud chcete, a dynamicky ho vytvoří služba). Poslední tři vlastnosti aplikace nebo vlastní aplikace jsou službou používány k označení toho, jaký druh operace je nutné provést. Jak je popsáno ve specifikaci konceptu CBS, musí se jednat o **název operace** ("Put-token"), **typ tokenu** (v tomto případě a `servicebus.windows.net:sastoken` ) a **"název" cílové skupiny** , na kterou se vztahuje token (celá entita).
 
 Po odeslání tokenu SAS na odkaz odesílatele musí vydavatel přečíst odpověď na odkazu příjemce. Odpověď je jednoduchá AMQP zpráva s vlastností aplikace s názvem **"stavový kód"** , která může obsahovat stejné hodnoty jako stavový kód HTTP.
 
@@ -263,7 +253,7 @@ Následující tabulka uvádí přístupová práva požadovaná pro různé ope
 
 | Operace | Požadovaná deklarace identity | Rozsah deklarací identity |
 | --- | --- | --- |
-| **Hosting** | | |
+| **Obor názvů** | | |
 | Konfigurace autorizačního pravidla pro obor názvů |Spravovat |Libovolná adresa oboru názvů |
 | **Registr služby** | | |
 | Zobrazení výčtu privátních zásad |Spravovat |Libovolná adresa oboru názvů |

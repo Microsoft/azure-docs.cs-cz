@@ -2,24 +2,15 @@
 title: Použití front Azure Service Bus s PHP
 description: V tomto kurzu se naučíte vytvářet aplikace PHP pro posílání zpráv a příjem zpráv z Service Bus fronty.
 services: service-bus-messaging
-documentationcenter: php
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: e29c829b-44c5-4350-8f2e-39e0c380a9f2
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: quickstart
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: fcb735d81cac587c75a133ad582f2a839551dcfa
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/23/2020
+ms.openlocfilehash: a7e0d1fa321f1b7c1295b5a640fe78b46adf1c72
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76760687"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341124"
 ---
 # <a name="quickstart-how-to-use-service-bus-queues-with-php"></a>Rychlý Start: použití Service Bus front s PHP
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
@@ -66,7 +57,7 @@ require_once 'vendor/autoload.php';
 use WindowsAzure\Common\ServicesBuilder;
 ```
 
-V níže uvedených příkladech bude `require_once` příkaz vždy zobrazen, ale budou odkazovány pouze třídy, které jsou nezbytné pro spuštění příkladu.
+V níže uvedených příkladech `require_once` bude příkaz vždy zobrazen, ale budou odkazovány pouze třídy, které jsou nezbytné pro spuštění příkladu.
 
 ## <a name="set-up-a-service-bus-connection"></a>Nastavení Service Busho připojení
 Chcete-li vytvořit instanci klienta Service Bus, musíte nejprve mít platný připojovací řetězec v tomto formátu:
@@ -75,14 +66,14 @@ Chcete-li vytvořit instanci klienta Service Bus, musíte nejprve mít platný p
 Endpoint=[yourEndpoint];SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[Primary Key]
 ```
 
-Kde `Endpoint` je obvykle formát `[yourNamespace].servicebus.windows.net`.
+Kde `Endpoint` je obvykle formát `[yourNamespace].servicebus.windows.net` .
 
-Chcete-li vytvořit libovolného klienta služby Azure, musíte použít `ServicesBuilder` třídu. Můžete:
+Chcete-li vytvořit libovolného klienta služby Azure, musíte použít `ServicesBuilder` třídu. Další možnosti:
 
 * Předání připojovacího řetězce přímo do něj.
 * Použijte **CloudConfigurationManager (ccm)** pro kontrolu několika externích zdrojů pro připojovací řetězec:
   * Ve výchozím nastavení se dodává s podporou pro jednu externí proměnnou zdrojového prostředí.
-  * Nové zdroje můžete přidat rozšířením `ConnectionStringSource` třídy.
+  * Nové zdroje můžete přidat rozšířením třídy. `ConnectionStringSource`
 
 Ve zde uvedených příkladech se připojovací řetězec předává přímo.
 
@@ -97,9 +88,9 @@ $serviceBusRestProxy = ServicesBuilder::getInstance()->createServiceBusService($
 ```
 
 ## <a name="create-a-queue"></a>Vytvoření fronty
-Můžete provádět operace správy pro Service Bus fronty prostřednictvím `ServiceBusRestProxy` třídy. `ServiceBusRestProxy` Objekt je vytvořen pomocí metody `ServicesBuilder::createServiceBusService` Factory s příslušným připojovacím řetězcem, který zapouzdřuje oprávnění tokenu pro jeho správu.
+Můžete provádět operace správy pro Service Bus fronty prostřednictvím `ServiceBusRestProxy` třídy. `ServiceBusRestProxy`Objekt je vytvořen pomocí `ServicesBuilder::createServiceBusService` metody Factory s příslušným připojovacím řetězcem, který zapouzdřuje oprávnění tokenu pro jeho správu.
 
-Následující příklad ukazuje, jak `ServiceBusRestProxy` vytvořit instanci volání `ServiceBusRestProxy->createQueue` a a vytvořit frontu s názvem `myqueue` v rámci oboru `MySBNamespace` názvů služby:
+Následující příklad ukazuje, jak vytvořit instanci `ServiceBusRestProxy` volání a a `ServiceBusRestProxy->createQueue` vytvořit frontu s názvem `myqueue` v rámci `MySBNamespace` oboru názvů služby:
 
 ```php
 require_once 'vendor/autoload.php';
@@ -133,7 +124,7 @@ catch(ServiceException $e){
 > 
 
 ## <a name="send-messages-to-a-queue"></a>Zasílání zpráv do fronty
-Chcete-li odeslat zprávu do fronty Service Bus, vaše aplikace volá `ServiceBusRestProxy->sendQueueMessage` metodu. Následující kód ukazuje, jak odeslat zprávu do `myqueue` fronty, která byla dříve vytvořena v rámci `MySBNamespace` oboru názvů služby.
+Chcete-li odeslat zprávu do fronty Service Bus, vaše aplikace volá `ServiceBusRestProxy->sendQueueMessage` metodu. Následující kód ukazuje, jak odeslat zprávu do fronty, která `myqueue` byla dříve vytvořena v rámci `MySBNamespace` oboru názvů služby.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -173,7 +164,7 @@ Nejlepším způsobem, jak přijímat zprávy z fronty, je použít `ServiceBusR
 
 Při použití režimu [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) je operace Receive jedinou operací; To znamená, že když Service Bus obdrží požadavek na čtení zprávy ve frontě, označí zprávu jako spotřebou a vrátí ji do aplikace. Režim [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) je nejjednodušší model a funguje nejlépe ve scénářích, kde aplikace může tolerovat možnost, že v případě selhání se zpráva nezpracuje. Pro lepší vysvětlení si představte scénář, ve kterém spotřebitel vyšle požadavek na přijetí, ale než ji může zpracovat, dojde v něm k chybě a ukončí se. Vzhledem k tomu, že Service Bus bude označena jako spotřebovaná zpráva, pak když se aplikace znovu spustí a začne znovu spotřebovávat zprávy, vynechá se zpráva, která byla spotřebována před chybou.
 
-Ve výchozím režimu [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock) se příjem zprávy stane dvě operace fáze, která umožňuje podporovat aplikace, které nemůžou tolerovat chybějící zprávy. Když Service Bus obdrží požadavek, najde další zprávu, která se má spotřebovat, zamkne ji, aby zabránila ostatním uživatelům v jejich přijetí, a pak ji vrátí do aplikace. Poté, co aplikace dokončí zpracování zprávy (nebo je uloží spolehlivě pro budoucí zpracování), dokončí druhou fázi procesu příjmu tím, že se přijatá zpráva pošle `ServiceBusRestProxy->deleteMessage`do. Když Service Bus uvidí `deleteMessage` volání, bude zprávu označovat jako spotřebou a odebrat ji z fronty.
+Ve výchozím režimu [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock) se příjem zprávy stane dvě operace fáze, která umožňuje podporovat aplikace, které nemůžou tolerovat chybějící zprávy. Když Service Bus obdrží požadavek, najde další zprávu, která se má spotřebovat, zamkne ji, aby zabránila ostatním uživatelům v jejich přijetí, a pak ji vrátí do aplikace. Poté, co aplikace dokončí zpracování zprávy (nebo je uloží spolehlivě pro budoucí zpracování), dokončí druhou fázi procesu příjmu tím, že se přijatá zpráva pošle do `ServiceBusRestProxy->deleteMessage` . Když Service Bus uvidí `deleteMessage` volání, bude zprávu označovat jako spotřebou a odebrat ji z fronty.
 
 Následující příklad ukazuje, jak přijmout a zpracovat zprávu pomocí režimu [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock) (výchozí režim).
 

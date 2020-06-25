@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 4f45ac40e7df865bdb4722d086325096c377cd59
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 496b315e23beeb97d08befca13e05c4797268f36
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80877538"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341567"
 ---
 # <a name="entity-functions"></a>Funkce entit
 
@@ -18,7 +18,7 @@ Funkce entit definují operace pro čtení a aktualizaci malých částí stavu,
 Entity poskytují prostředky pro horizontální navýšení kapacity aplikací tím, že distribuují práci napříč mnoha entitami, každý s mírným stavem.
 
 > [!NOTE]
-> Funkce entit a související funkce jsou dostupné jenom v Durable Functions 2,0 a novějších.
+> Funkce entit a související funkce jsou dostupné jenom v Durable Functions 2,0 a novějších. V současné době jsou podporovány v rozhraní .NET a JavaScriptu.
 
 ## <a name="general-concepts"></a>Obecné koncepty
 
@@ -32,14 +32,14 @@ K entitám se dostanete pomocí jedinečného identifikátoru *ID entity*. ID en
 * **Název entity**, což je název, který identifikuje typ entity. Příkladem je "čítač". Tento název se musí shodovat s názvem funkce entity, která implementuje entitu. Nerozlišuje se případ.
 * **Klíč entity**, což je řetězec, který jedinečně identifikuje entitu mezi všemi ostatními entitami se stejným názvem. Příkladem je identifikátor GUID.
 
-Například funkce `Counter` entity může být použita k udržení skóre v online hře. Každá instance hry má jedinečné ID entity, například `@Counter@Game1` a. `@Counter@Game2` Všechny operace, které cílí na konkrétní entitu, vyžadují zadání ID entity jako parametru.
+Například `Counter` funkce entity může být použita k udržení skóre v online hře. Každá instance hry má jedinečné ID entity, například `@Counter@Game1` a `@Counter@Game2` . Všechny operace, které cílí na konkrétní entitu, vyžadují zadání ID entity jako parametru.
 
 ### <a name="entity-operations"></a>Operace s entitami ###
 
 Pokud chcete vyvolat operaci na entitě, zadejte:
 
 * **ID entity** cílové entity
-* **Název operace**, což je řetězec, který určuje operaci, která má být provedena. `Counter` Entita může například podporovat `add`operace, `get`, nebo `reset` .
+* **Název operace**, což je řetězec, který určuje operaci, která má být provedena. `Counter`Entita může například podporovat `add` `get` operace,, nebo `reset` .
 * **Vstup operace**, což je volitelný vstupní parametr pro operaci. Například operace přidání může jako vstup mít celočíselnou hodnotu.
 * **Naplánovaný čas**, což je volitelný parametr pro určení doby doručení operace. Například operace může být spolehlivě naplánována na spuštění několik dní v budoucnu.
 
@@ -55,11 +55,11 @@ V současné době jsou dvě různá rozhraní API pro definování entit:
 
 **Syntaxe založená na třídě (pouze .NET)**, kde entity a operace jsou reprezentovány třídami a metodami. Tato syntaxe vytváří snadněji čitelný kód a umožňuje, aby operace byly vyvolány způsobem bezpečným pro typ. Syntaxe založená na třídě je tenká vrstva nad syntaxí založenou na funkci, takže obě varianty lze ve stejné aplikaci použít zaměnitelné.
 
-# <a name="c"></a>[R #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ### <a name="example-function-based-syntax---c"></a>Příklad: syntaxe založená na funkcích – C #
 
-Následující kód je příkladem jednoduché `Counter` entity implementované jako trvalá funkce. Tato funkce definuje tři operace, `add` `reset`, a `get`, každý z nich funguje v celočíselném stavu.
+Následující kód je příkladem jednoduché `Counter` entity implementované jako trvalá funkce. Tato funkce definuje tři operace, `add` , `reset` a `get` , každý z nich funguje v celočíselném stavu.
 
 ```csharp
 [FunctionName("Counter")]
@@ -105,7 +105,7 @@ public class Counter
 }
 ```
 
-Stav této entity je objekt typu `Counter`, který obsahuje pole, které ukládá aktuální hodnotu čítače. Chcete-li zachovat tento objekt v úložišti, je jeho serializace a deserializována knihovnou [JSON.NET](https://www.newtonsoft.com/json) . 
+Stav této entity je objekt typu `Counter` , který obsahuje pole, které ukládá aktuální hodnotu čítače. Chcete-li zachovat tento objekt v úložišti, je jeho serializace a deserializována knihovnou [JSON.NET](https://www.newtonsoft.com/json) . 
 
 Další informace o syntaxi založené na třídě a způsobu jejich použití naleznete v tématu [definování tříd entit](durable-functions-dotnet-entities.md#defining-entity-classes).
 
@@ -113,9 +113,9 @@ Další informace o syntaxi založené na třídě a způsobu jejich použití n
 
 ### <a name="example-javascript-entity"></a>Příklad: entita JavaScript
 
-Trvalé entity jsou k dispozici v JavaScriptu počínaje verzí **1.3.0** balíčku `durable-functions` npm. Následující kód je `Counter` entita implementovaná jako trvalá funkce napsaná v JavaScriptu.
+Trvalé entity jsou k dispozici v JavaScriptu počínaje verzí **1.3.0** `durable-functions` balíčku npm. Následující kód je `Counter` entita implementovaná jako trvalá funkce napsaná v JavaScriptu.
 
-**Čítač/Function. JSON**
+**Čítač/function.jszapnuto**
 ```json
 {
   "bindings": [
@@ -129,7 +129,7 @@ Trvalé entity jsou k dispozici v JavaScriptu počínaje verzí **1.3.0** balí�
 }
 ```
 
-**Čítač/index. js**
+**Čítač/index.js**
 ```javascript
 const df = require("durable-functions");
 
@@ -171,7 +171,7 @@ Následující příklady znázorňují různé způsoby přístupu k entitám.
 
 Pro přístup k entitám z běžné funkce Azure, která je také známá jako funkce klienta, použijte [vazbu klienta entity](durable-functions-bindings.md#entity-client). Následující příklad ukazuje funkce aktivované frontou, která tuto vazbu používá.
 
-# <a name="c"></a>[R #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 > [!NOTE]
 > V následujících příkladech se pro přístup k entitám zobrazí následující příklady s volným typem. Obecně doporučujeme, abyste měli [přístup k entitám prostřednictvím rozhraní](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces) , protože poskytuje další kontrolu typu.
@@ -209,7 +209,7 @@ Termínový *signál* znamená, že volání rozhraní API entity je jednosměrn
 
 Funkce klienta se také mohou dotazovat na stav entity, jak je znázorněno v následujícím příkladu:
 
-# <a name="c"></a>[R #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("QueryCounter")]
@@ -244,7 +244,7 @@ Dotazy na stav entity se odesílají do trvalého úložiště sledování a vra
 
 Funkce Orchestrator mají přístup k entitám pomocí rozhraní API ve [vazbě triggeru orchestrace](durable-functions-bindings.md#orchestration-trigger). Následující příklad kódu ukazuje volání funkce Orchestrator a signalizaci `Counter` entity.
 
-# <a name="c"></a>[R #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("CounterOrchestration")]
@@ -289,9 +289,9 @@ Pouze orchestrace jsou schopny volat entity a získat odpověď, což může bý
 ### <a name="example-entity-signals-an-entity"></a>Příklad: entita signalizuje entitu.
 
 Funkce entity může posílat signály jiným entitám nebo dokonce sám sebe, zatímco provádí operaci.
-Například můžeme upravit příklad předchozí `Counter` entity tak, že pošle signál "byl dosažen milník" do některé entity monitorování, když čítač dosáhne hodnoty 100.
+Například můžeme upravit `Counter` příklad předchozí entity tak, že pošle signál "byl dosažen milník" do některé entity monitorování, když čítač dosáhne hodnoty 100.
 
-# <a name="c"></a>[R #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
    case "add":
@@ -372,21 +372,21 @@ public static async Task<bool> TransferFundsAsync(
 }
 ```
 
-V rozhraní .NET `LockAsync` vrátí `IDisposable`, který ukončí oddíl kritické, pokud je uvolněn. Tento `IDisposable` výsledek lze použít společně s `using` blokem pro získání syntaktické reprezentace oddílu kritického.
+V rozhraní .NET `LockAsync` vrátí `IDisposable` , který ukončí oddíl kritické, pokud je uvolněn. Tento `IDisposable` výsledek lze použít společně s `using` blokem pro získání syntaktické reprezentace oddílu kritického.
 
-V předchozím příkladu funkce Orchestrator přenesla prostředky ze zdrojové entity na cílovou entitu. `LockAsync` Metoda uzamkl entity zdrojového i cílového účtu. Toto uzamykání zajišťuje, že žádný jiný klient by nemohl zadat dotaz nebo změnit stav obou účtů, dokud logika orchestrace neukončila kritickou část na konci `using` příkazu. Toto chování brání v tom, aby bylo možné přečerpání ze zdrojového účtu.
+V předchozím příkladu funkce Orchestrator přenesla prostředky ze zdrojové entity na cílovou entitu. `LockAsync`Metoda uzamkl entity zdrojového i cílového účtu. Toto uzamykání zajišťuje, že žádný jiný klient by nemohl zadat dotaz nebo změnit stav obou účtů, dokud logika orchestrace neukončila kritickou část na konci `using` příkazu. Toto chování brání v tom, aby bylo možné přečerpání ze zdrojového účtu.
 
 > [!NOTE] 
 > Pokud se orchestrace ukončí, ať už normálně nebo s chybou, všechny kritické oddíly v průběhu budou implicitně ukončeny a všechny zámky se uvolní.
 
 ### <a name="critical-section-behavior"></a>Kritické chování oddílu
 
-`LockAsync` Metoda vytvoří kritickou část v orchestraci. Tyto kritické oddíly zabraňují jiným orchestraci v provádění překrývajících se změn v zadané sadě entit. `LockAsync` Rozhraní API interně odesílá operace "uzamknout" do entit a vrátí, když obdrží zprávu s odpovědí "zámek" ze všech těchto stejných entit. Zámky i odemknutí jsou integrované operace podporované všemi entitami.
+`LockAsync`Metoda vytvoří kritickou část v orchestraci. Tyto kritické oddíly zabraňují jiným orchestraci v provádění překrývajících se změn v zadané sadě entit. `LockAsync`Rozhraní API interně odesílá operace "uzamknout" do entit a vrátí, když obdrží zprávu s odpovědí "zámek" ze všech těchto stejných entit. Zámky i odemknutí jsou integrované operace podporované všemi entitami.
 
 V entitě nejsou povoleny žádné operace, pokud je v uzamčeném stavu. Toto chování zajistí, že entita může současně uzamknout pouze jedna instance orchestrace. Pokud se volající pokusí vyvolat operaci u entity, když je uzamčena orchestrací, tato operace je umístěna do fronty čekajících operací. Žádné nedokončené operace se zpracovávají do doby, než orchestrace hospodářství uvolní zámek.
 
 > [!NOTE] 
-> Toto chování se mírně liší od primitiv synchronizace používaných ve většině programovacích jazyků, jako je `lock` například příkaz v jazyce C#. Například v jazyce C# musí být `lock` příkaz používán všemi vlákny k zajištění správné synchronizace napříč více vlákny. Entity ale nevyžadují, aby všichni volající explicitně zamkli entitu. Pokud nějaký volající zamkne entitu, všechny ostatní operace v této entitě se zablokují a zařadí do fronty za tímto zámkem.
+> Toto chování se mírně liší od primitiv synchronizace používaných ve většině programovacích jazyků, jako je například `lock` příkaz v jazyce C#. Například v jazyce C# `lock` musí být příkaz používán všemi vlákny k zajištění správné synchronizace napříč více vlákny. Entity ale nevyžadují, aby všichni volající explicitně zamkli entitu. Pokud nějaký volající zamkne entitu, všechny ostatní operace v této entitě se zablokují a zařadí do fronty za tímto zámkem.
 
 Zámky entit jsou odolné, takže zůstanou i v případě, že je spuštěný proces recyklován. Zámky jsou interně trvale zachované jako součást trvalého stavu entity.
 

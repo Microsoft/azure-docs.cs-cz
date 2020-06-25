@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/14/2020
 ms.author: allensu
-ms.openlocfilehash: 1bc18788019c3ec97e06e3b01e823a0ba53541b8
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 598df2f0a1e9badebbb1bf8e7ec0f93ff98d55ce
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734752"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341787"
 ---
 # <a name="what-is-azure-load-balancer"></a>Co je Azure Load Balancer?
 
@@ -32,7 +32,7 @@ Azure Load Balancer funguje ve vrstvě čtyř modelu propojení Open Systems (OS
 **[Interní (nebo soukromý) Nástroj pro vyrovnávání zatížení](./components.md#frontend-ip-configurations)** se používá, pokud jsou privátní IP adresy potřeba jenom na front-endu. Interní nástroje pro vyrovnávání zatížení se používají k vyrovnávání zatížení provozu v rámci virtuální sítě. Front-endu nástroje pro vyrovnávání zatížení je možné v hybridním scénáři použít z místní sítě.
 
 <p align="center">
-  <img src="./media/load-balancer-overview/load-balancer.svg" width="512" title="Azure Load Balancer">
+  <img src="./media/load-balancer-overview/load-balancer.svg" width="512" title="Nástroj pro vyrovnávání zatížení Azure">
 </p>
 
 *Obrázek: vyrovnávání vícevrstvých aplikací s využitím veřejného i interního Load Balancer*
@@ -44,7 +44,7 @@ Pomocí Standard Load Balancer můžete škálovat aplikace a vytvářet vysoce 
 
 Mezi klíčové scénáře, které můžete provádět pomocí Standard Load Balancer patří:
 
-- Vyrovnávání zatížení **[interního](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-manage-portal)** a **[externího](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-internal-portal)** provozu do virtuálních počítačů Azure.
+- Vyrovnávání zatížení **[interního](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-internal-portal)** a **[externího](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-manage-portal)** provozu do virtuálních počítačů Azure.
 
 - Zvyšte dostupnost díky distribuci prostředků **[v rámci](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-public-zonal-portal)** zón a **[mezi](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-public-zone-redundant-portal)** nimi.
 

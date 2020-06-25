@@ -7,12 +7,12 @@ ms.service: lab-services
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: nicolela
-ms.openlocfilehash: ee2f1636547378102f35b432914426b3e24d92ef
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: d3f6a855f4b162f0b14ff01ed0a3560897383c49
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84898987"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341758"
 ---
 # <a name="set-up-a-lab-for-engineering-classes-using-solidworks"></a>Nastavení testovacího prostředí pro inženýrské třídy pomocí SolidWorks
 
@@ -77,8 +77,6 @@ Kroky v této části ukazují, jak nastavit virtuální počítač šablony sta
 
     > [!NOTE]
     > V dialogovém okně **Přidat server** se zobrazí výzva k zadání **čísla portu** používaného pro váš licenční server a názvu nebo IP adresy licenčního serveru.
-
-1. Po dokončení instalace klientského softwaru musíte taky povolit, aby se grafický procesor používal přes připojení RDP. Další informace najdete v článku o [tom, jak povolit připojení GPU přes připojení RDP](how-to-setup-lab-gpu.md#enable-gpu-over-rdp-connection-to-windows-vms) .
 
 ## <a name="cost"></a>Náklady
 

@@ -8,12 +8,12 @@ ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 67b476b2ec6ec0c841639f7aa1d94a0d9d3d3304
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 18f7657cdaf3eb1fef76ca65856fde3b29b714a7
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262329"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85355875"
 ---
 # <a name="explore-azure-digital-twins-with-a-sample-client-app"></a>Prozkoumejte digitální vlákna Azure pomocí ukázkové klientské aplikace
 
@@ -43,7 +43,7 @@ Prvním krokem při vytváření řešení digitálních vláken Azure je defino
 Modely jsou podobné třídám v objektově orientovaném programovacím jazyce; poskytují uživatelsky definované šablony pro [digitální vlákna](concepts-twins-graph.md) , které budou následovat a vytvoří se později. Jsou napsány v jazyce podobném formátu JSON, který se nazývá **Digital DTDL (digitální vlákna)**, a může definovat *vlastnosti*, *telemetrie*, *relace*a *komponenty*s dvojitou čárkou.
 
 > [!NOTE]
-> DTDL také umožňuje povolit definici *příkazů* pro digitální vlákna. V současné době se ale ve službě Azure Digital probíhají příkazy aktuálně nepodporují.
+> DTDL také umožňuje definici *příkazů* pro digitální vlákna. V současné době se ale ve službě Azure Digital probíhají příkazy aktuálně nepodporují.
 
 V okně aplikace Visual Studio, kde je otevřen projekt _**AdtE2ESample**_ , použijte podokno *Průzkumník řešení* a přejděte do složky *AdtSampleApp\SampleClientApp\Models* . Tato složka obsahuje ukázkové modely.
 
@@ -131,7 +131,8 @@ Opakovaným spuštěním `CreateModels` příkazu zkuste znovu nahrát jeden ze 
 CreateModels Room
 ```
 
-Protože nejde přepsat modely, tato akce nyní vrátí chybu služby:
+Jelikož modely nelze přepsat, nyní bude vrácena chyba služby.
+Podrobnosti o tom, jak odstranit existující modely, naleznete v tématu [How to: Manage Custom Models](how-to-manage-model.md).
 ```cmd/sh
 Response 409: Service request failed.
 Status: 409 (Conflict)

@@ -7,17 +7,17 @@ manager: daveba
 ms.reviewer: martincoetzer
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57e4451f67a75e9101f21d449152d9c6f42aaf02
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 6fe9fe10b66aa6eb5fcdaafbf8e0132918e9645c
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84216607"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85356675"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Migrace z federace na synchronizaci hodnot hash hesel pro Azure Active Directory
 
@@ -143,7 +143,7 @@ Před převodem z federované identity na spravovanou identitu si pečlivě proh
 | Pokud uživatel | Pak... |
 |-|-|
 | Plánujete dál používat AD FS s jinými aplikacemi (kromě Azure AD a Office 365). | Po převedení domén budete používat AD FS i Azure AD. Vezměte v úvahu činnost koncového uživatele. V některých scénářích může být potřeba, aby se uživatelé museli ověřovat dvakrát: jednou pro Azure AD (kde uživatel získá přístup SSO k ostatním aplikacím, jako je třeba Office 365), a znovu pro všechny aplikace, které jsou pořád vázané na AD FS jako vztah důvěryhodnosti předávající strany. |
-| Vaše instance AD FS je silně přizpůsobená a spoléhá na konkrétní nastavení přizpůsobení v souboru. js. js (například pokud jste změnili přihlašovací prostředí tak, aby uživatelé používali jenom formát **sAMAccountName** pro svoje uživatelské jméno místo hlavního názvu uživatele (UPN), nebo vaše organizace zcela vytvořila prostředí pro přihlašování. Soubor. js se nedá v Azure AD duplikovat. | Než budete pokračovat, musíte ověřit, že služba Azure AD dokáže splnit vaše aktuální požadavky na vlastní nastavení. Další informace a pokyny najdete v částech AD FS brandingu a AD FS přizpůsobení.|
+| Vaše instance AD FS je silně přizpůsobená a spoléhá na konkrétní nastavení přizpůsobení v souboru onload.js (například pokud jste změnili přihlašovací prostředí tak, aby uživatelé jako uživatelské jméno používali jenom formát **sAMAccountName** , a ne hlavní název uživatele (UPN), nebo vaše organizace intenzivně přihlásila vaše prostředí. Soubor onload.js nejde duplikovat v Azure AD. | Než budete pokračovat, musíte ověřit, že služba Azure AD dokáže splnit vaše aktuální požadavky na vlastní nastavení. Další informace a pokyny najdete v částech AD FS brandingu a AD FS přizpůsobení.|
 | K blokování starších verzí ověřovacích klientů slouží AD FS.| Zvažte nahrazení AD FS ovládacích prvků, které blokují starší verze ověřování klientů pomocí kombinace [ovládacích prvků podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions) a [pravidel přístupu klienta Exchange Online](https://aka.ms/EXOCAR). |
 | Požadujete, aby uživatelé prováděli vícefaktorové ověřování proti místnímu řešení Multi-Factor Authentication serveru, když se uživatelé ověřují AD FS.| Ve spravované doméně identity nemůžete do toku ověřování vložit výzvu Multi-Factor Authentication prostřednictvím místního řešení Multi-Factor Authentication. Po převodu domény ale můžete službu Azure Multi-Factor Authentication použít pro službu Multi-Factor Authentication.<br /><br /> Pokud uživatelé aktuálně nepoužívají Multi-Factor Authentication Azure, je nutný krok registrace uživatele jednorázová. Musíte připravit na a sdělit plánované registrace vašim uživatelům. |
 | V AD FS v tuto chvíli používáte k řízení přístupu k Office 365 zásady řízení přístupu (pravidla AuthZ).| Zvažte nahrazení zásad odpovídajícími [zásadami podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) Azure AD a [pravidly přístupu klienta Exchange Online](https://aka.ms/EXOCAR).|
@@ -168,7 +168,7 @@ Když připojíte zařízení ke službě Azure AD, můžete vytvořit pravidla 
 
 Aby bylo zajištěno, že hybridní připojení bude i nadále fungovat pro všechna zařízení, která jsou připojená k doméně po převodu domén na synchronizaci hodnot hash hesel pro klienty Windows 10, musíte použít možnosti Azure AD Connect zařízení pro synchronizaci účtů počítačů služby Active Directory s Azure AD. 
 
-Pro účty počítačů s Windows 8 a Windows 7 používá hybridní připojení k registraci počítače ve službě Azure AD bezproblémové přihlašování. Nemusíte synchronizovat účty počítačů s Windows 8 a Windows 7, jako je tomu u zařízení s Windows 10. Je ale potřeba nasadit aktualizovaný soubor workplacejoin. exe (prostřednictvím souboru. msi) na klienty se systémy Windows 8 a Windows 7, aby se mohli sami zaregistrovat pomocí bezproblémového přihlašování. [Stáhněte soubor. msi](https://www.microsoft.com/download/details.aspx?id=53554).
+Pro účty počítačů s Windows 8 a Windows 7 používá hybridní připojení k registraci počítače ve službě Azure AD bezproblémové přihlašování. Nemusíte synchronizovat účty počítačů s Windows 8 a Windows 7, jako je tomu u zařízení s Windows 10. Je ale potřeba nasadit aktualizovaný soubor workplacejoin.exe (prostřednictvím souboru. msi) do klientů Windows 8 a Windows 7, aby se mohli sami zaregistrovat pomocí bezproblémového jednotného přihlašování. [Stáhněte soubor. msi](https://www.microsoft.com/download/details.aspx?id=53554).
 
 Další informace najdete v tématu [Konfigurace hybridních zařízení připojených k Azure AD](https://docs.microsoft.com/azure/active-directory/device-management-hybrid-azuread-joined-devices-setup).
 
@@ -460,7 +460,7 @@ Historická aktualizace atributu **userPrincipalName** , který používá synch
 
 Informace o tom, jak tuto funkci ověřit nebo zapnout, najdete v tématu [synchronizace aktualizací userPrincipalName](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsyncservice-features).
 
-### <a name="troubleshooting"></a>Odstraňování potíží
+### <a name="troubleshooting"></a>Řešení potíží
 
 Váš tým podpory by měl pochopit, jak řešit problémy s ověřováním, které vznikají během nebo po změně federace na spravovanou. Následující dokumentaci k řešení potíží vám pomohou týmu podpory seznámení s běžnými kroky při řešení potíží a s příslušnými akcemi, které vám mohou pomoci izolovat a vyřešit problém.
 

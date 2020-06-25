@@ -11,18 +11,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 474000d1d4d7e1358682d1421125d482e3782049
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 64ab5901ad54e37fc05d7da757ce7f31d42fe3b6
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60381388"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85357099"
 ---
 # <a name="using-the-sync-service-manager-operations-tab"></a>Použití karty synchronizace Service Manager operací
 
@@ -35,12 +35,12 @@ Horní polovina zobrazuje všechna spuštění v chronologickém pořadí. Ve v�
 
 Sloupec **Status (stav** ) obsahuje nejdůležitější informace a zobrazuje nejzávažnější problém pro běh. Tady je stručný přehled nejběžnějších stavů v pořadí podle priority k prozkoumání (kde * značí několik možných chybových řetězců).
 
-| Status | Poznámka |
+| Status | Komentář |
 | --- | --- |
 | ukončen\* |Spuštění se nepovedlo dokončit. Například pokud je vzdálený systém mimo provoz a nelze ho kontaktovat. |
 | zastaveno – limit chyby |Došlo k více než 5 000 chybám. Běh se automaticky zastavil kvůli velkému počtu chyb. |
-| dokončeno –\*chyby |Běh se dokončil, ale vyskytly se chyby (méně než 5 000), které by se měly prozkoumat. |
-| dokončeno –\*upozornění |Běh se dokončil, ale některá data nejsou v očekávaném stavu. Pokud máte chyby, pak je tato zpráva obvykle jenom příznakem. Dokud nebudete řešit chyby, neměli byste prozkoumat upozornění. |
+| dokončeno – \* chyby |Běh se dokončil, ale vyskytly se chyby (méně než 5 000), které by se měly prozkoumat. |
+| dokončeno – \* Upozornění |Běh se dokončil, ale některá data nejsou v očekávaném stavu. Pokud máte chyby, pak je tato zpráva obvykle jenom příznakem. Dokud nebudete řešit chyby, neměli byste prozkoumat upozornění. |
 | úspěch |Žádné problémy. |
 
 Když vyberete řádek, v dolní části aktualizace zobrazíte podrobnosti o daném spuštění. Vlevo od dolního okraje může být seznam, který říká **Krok #**. Tento seznam se zobrazí pouze v případě, že máte více domén v doménové struktuře, kde je každá doména reprezentována krokem. Název domény najdete pod **oddílem**nadpisu. V části **Statistika synchronizace**můžete najít další informace o počtu zpracovaných změn. Můžete kliknout na odkazy a získat tak seznam změněných objektů. Pokud máte objekty s chybami, zobrazí se tyto chyby v části **chyby synchronizace**.

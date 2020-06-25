@@ -1,34 +1,26 @@
 ---
-title: Použití Azure Service Busch front v Node. js pomocí balíčku Azure-Sb
-description: Naučte se vytvářet aplikace v Node. js pro posílání zpráv a příjem zpráv z fronty Azure Service Bus pomocí balíčku Azure-Sb.
-services: service-bus-messaging
-documentationcenter: nodejs
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: a87a00f9-9aba-4c49-a0df-f900a8b67b3f
-ms.service: service-bus-messaging
-ms.workload: tbd
-ms.tgt_pltfrm: na
+title: Použití Azure Service Busch front v Node.js pomocí balíčku Azure-Sb
+description: Naučte se vytvářet aplikace Node.js pro posílání zpráv a přijímání zpráv z fronty Azure Service Bus pomocí balíčku Azure-Sb.
+author: spelluru
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 01/27/2020
-ms.author: aschhab
+ms.date: 06/23/2020
+ms.author: spelluru
 ms.custom: seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 7ee3939c1a1b450f2458267ab0b70e3924a4869b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 01841b1e6d6fed684137e1327dd77e276650803c
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78330596"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85340614"
 ---
-# <a name="quickstart-use-service-bus-queues-in-azure-with-nodejs-and-the-azure-sb-package"></a>Rychlý Start: použití Service Busch front v Azure pomocí Node. js a balíčku Azure-Sb
-V tomto kurzu se naučíte vytvářet aplikace v Node. js pro posílání zpráv a příjem zpráv z fronty Azure Service Bus pomocí balíčku [Azure-SB](https://www.npmjs.com/package/azure-sb) . Ukázky se napíší v JavaScriptu a používají [modul Azure](https://www.npmjs.com/package/azure) Node. js, který interně používá balíček Azure-Sb.
+# <a name="quickstart-use-service-bus-queues-in-azure-with-nodejs-and-the-azure-sb-package"></a>Rychlý Start: použití Service Busch front v Azure s využitím Node.js a balíčku Azure-Sb
+V tomto kurzu se naučíte vytvářet Node.js aplikace pro posílání zpráv a příjem zpráv z fronty Azure Service Bus pomocí balíčku [Azure-SB](https://www.npmjs.com/package/azure-sb) . Ukázky jsou napsané v JavaScriptu a používají Node.js [modul Azure](https://www.npmjs.com/package/azure) , který interně používá balíček Azure-Sb.
 
 > [!IMPORTANT]
-> Balíček [Azure-SB](https://www.npmjs.com/package/azure-sb) používá [Service Bus rozhraní REST runtime API](/rest/api/servicebus/service-bus-runtime-rest). Můžete získat rychlejší práci pomocí nového [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) , který používá rychlejší [Protokol AMQP 1,0](service-bus-amqp-overview.md). 
+> Balíček [Azure-SB](https://www.npmjs.com/package/azure-sb) používá [Service Bus rozhraní REST runtime API](/rest/api/servicebus/service-bus-runtime-rest). Můžete získat rychlejší práci pomocí nového, [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) který používá rychlejší [protokol AMQP 1,0](service-bus-amqp-overview.md). 
 > 
-> Další informace o novém balíčku najdete v tématu [Jak používat Service Bus fronty s Node. js a @azure/service-bus balíčkem.](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-queues-new-package)v opačném případě pokračujte ve čtení a zjistěte, jak používat balíček [Azure](https://www.npmjs.com/package/azure) .
+> Další informace o novém balíčku najdete v tématu [použití Service Bus front s Node.js a @azure/service-bus balíčkem](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-queues-new-package). Další informace o použití balíčku [Azure](https://www.npmjs.com/package/azure) najdete v tématu o tom, jak pokračovat v čtení.
 
 ## <a name="prerequisites"></a>Požadavky
 - Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete aktivovat výhody pro [předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
@@ -38,17 +30,17 @@ V tomto kurzu se naučíte vytvářet aplikace v Node. js pro posílání zpráv
     3. Získá **připojovací řetězec**. 
 
         > [!NOTE]
-        > V tomto kurzu vytvoříte **frontu** v oboru názvů Service Bus pomocí Node. js. 
+        > V tomto kurzu vytvoříte **frontu** v oboru názvů Service Bus pomocí Node.js. 
  
 
 ## <a name="create-a-nodejs-application"></a>Vytvoření aplikace Node.js
-Vytvořte prázdnou aplikaci Node. js. Pokyny k vytvoření aplikace Node. js najdete v tématu [Vytvoření a nasazení aplikace Node. js na web Azure][Create and deploy a Node.js application to an Azure Website]nebo [cloudovou službu Node. js][Node.js Cloud Service] pomocí prostředí Windows PowerShell.
+Vytvořte prázdnou Node.jsovou aplikaci. Pokyny k vytvoření Node.js aplikace najdete v tématu [Vytvoření a nasazení Node.js aplikace na web Azure][Create and deploy a Node.js application to an Azure Website]nebo [Node.js cloudovou službu][Node.js Cloud Service] pomocí Windows PowerShellu.
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Konfigurace aplikace pro použití Service Bus
-Pokud chcete použít Azure Service Bus, Stáhněte a použijte balíček Azure Node. js. Tento balíček obsahuje sadu knihoven, které komunikují se službou Service Bus REST.
+Pokud chcete použít Azure Service Bus, Stáhněte a použijte balíček Azure Node.js. Tento balíček obsahuje sadu knihoven, které komunikují se službou Service Bus REST.
 
 ### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>K získání balíčku použijte Správce balíčků Node (NPM).
-1. Pomocí příkazového okna **prostředí Windows PowerShell pro Node. js** přejděte do složky **c:\\node\\sbqueues\\WebRole1** , ve které jste vytvořili ukázkovou aplikaci.
+1. Pomocí příkazového okna **Windows PowerShellu pro Node.js** přejděte do složky **c: \\ node \\ sbqueues \\ WebRole1** , ve které jste vytvořili ukázkovou aplikaci.
 2. Do příkazového okna zadejte **npm Install Azure** , které by měly mít za následek výstup podobný následujícímu příkladu:
 
     ```
@@ -67,25 +59,25 @@ Pokud chcete použít Azure Service Bus, Stáhněte a použijte balíček Azure 
 3. Můžete ručně spustit příkaz **ls** a ověřit, že se vytvořila složka **node_modules**. V této složce najděte balíček **Azure** obsahující knihovny, které potřebujete pro přístup k Service Bus frontám.
 
 ### <a name="import-the-module"></a>Importovat modul
-Pomocí poznámkového bloku nebo jiného textového editoru přidejte do horní části souboru **Server. js** aplikace následující text:
+Pomocí poznámkového bloku nebo jiného textového editoru přidejte na začátek souboru **server.js** aplikace následující:
 
 ```javascript
 var azure = require('azure');
 ```
 
 ### <a name="set-up-an-azure-service-bus-connection"></a>Nastavení Azure Service Busho připojení
-Modul Azure přečte proměnnou `AZURE_SERVICEBUS_CONNECTION_STRING` prostředí a získá informace potřebné pro připojení k Service Bus. Pokud tato proměnná prostředí není nastavena, je nutné při volání `createServiceBusService`zadat informace o účtu.
+Modul Azure přečte proměnnou prostředí `AZURE_SERVICEBUS_CONNECTION_STRING` a získá informace potřebné pro připojení k Service Bus. Pokud tato proměnná prostředí není nastavena, je nutné při volání zadat informace o účtu `createServiceBusService` .
 
-Příklad nastavení proměnných prostředí v [Azure Portal][Azure portal] webu Azure najdete v tématu [Webová aplikace Node. js s úložištěm][Node.js Web Application with Storage].
+Příklad nastavení proměnných prostředí v [Azure Portal][Azure portal] webu Azure najdete v tématu [Node.js webové aplikace s úložištěm][Node.js Web Application with Storage].
 
 ## <a name="create-a-queue"></a>Vytvoření fronty
-Objekt **ServiceBusService** vám umožní pracovat s frontami Service Bus. Následující kód vytvoří objekt **ServiceBusService** . Přidejte ho poblíž horní části souboru **Server. js** po příkazu pro import modulu Azure:
+Objekt **ServiceBusService** vám umožní pracovat s frontami Service Bus. Následující kód vytvoří objekt **ServiceBusService** . Po příkazu pro import modulu Azure ho přidejte poblíž horní části **server.js** souboru:
 
 ```javascript
 var serviceBusService = azure.createServiceBusService();
 ```
 
-Zavoláním `createQueueIfNotExists` objektu **ServiceBusService** se vrátí zadaná fronta (pokud existuje), nebo se vytvoří nová fronta se zadaným názvem. Následující kód používá `createQueueIfNotExists` k vytvoření nebo připojení k frontě s názvem `myqueue`:
+Zavoláním `createQueueIfNotExists` objektu **ServiceBusService** se vrátí zadaná fronta (pokud existuje), nebo se vytvoří nová fronta se zadaným názvem. Následující kód používá `createQueueIfNotExists` k vytvoření nebo připojení k frontě s názvem `myqueue` :
 
 ```javascript
 serviceBusService.createQueueIfNotExists('myqueue', function(error){
@@ -95,7 +87,7 @@ serviceBusService.createQueueIfNotExists('myqueue', function(error){
 });
 ```
 
-`createServiceBusService` Metoda také podporuje další možnosti, které umožňují přepsat výchozí nastavení fronty, jako je například doba zprávy na hodnotu Live nebo maximální velikost fronty. Následující příklad nastaví maximální velikost fronty na 5 GB a hodnotu TTL (Time to Live) 1 minute:
+`createServiceBusService`Metoda také podporuje další možnosti, které umožňují přepsat výchozí nastavení fronty, jako je například doba zprávy na hodnotu Live nebo maximální velikost fronty. Následující příklad nastaví maximální velikost fronty na 5 GB a hodnotu TTL (Time to Live) 1 minute:
 
 ```javascript
 var queueOptions = {
@@ -117,15 +109,15 @@ Volitelné operace filtrování lze použít na operace prováděné pomocí **S
 function handle (requestOptions, next)
 ```
 
-Po provedení předběžného zpracování na možnostech žádosti musí metoda volat `next`, předání zpětného volání s následujícím podpisem:
+Po provedení předběžného zpracování na možnostech žádosti musí metoda volat `next` , předání zpětného volání s následujícím podpisem:
 
 ```javascript
 function (returnObject, finalCallback, next)
 ```
 
-V tomto zpětném volání a po zpracování `returnObject` (odpověď z požadavku na server) musí zpětné volání vyvolat `next` , pokud existuje, aby pokračoval v zpracování jiných filtrů, nebo vyvolat `finalCallback`, což ukončí vyvolání služby.
+V tomto zpětném volání a po zpracování `returnObject` (odpověď z požadavku na server) musí zpětné volání vyvolat, `next` Pokud existuje, aby pokračoval v zpracování jiných filtrů, nebo vyvolat `finalCallback` , což ukončí vyvolání služby.
 
-K dispozici jsou dva filtry, které implementují logiku opakování, `ExponentialRetryPolicyFilter` do sady Azure SDK pro `LinearRetryPolicyFilter`Node. js a. Následující kód vytvoří `ServiceBusService` objekt, který používá `ExponentialRetryPolicyFilter`:
+K dispozici jsou dva filtry, které implementují logiku opakování, do sady Azure SDK pro Node.js `ExponentialRetryPolicyFilter` a `LinearRetryPolicyFilter` . Následující kód vytvoří `ServiceBusService` objekt, který používá `ExponentialRetryPolicyFilter` :
 
 ```javascript
 var retryOperations = new azure.ExponentialRetryPolicyFilter();
@@ -135,7 +127,7 @@ var serviceBusService = azure.createServiceBusService().withFilter(retryOperatio
 ## <a name="send-messages-to-a-queue"></a>Zasílání zpráv do fronty
 Chcete-li odeslat zprávu do fronty Service Bus, vaše aplikace zavolá `sendQueueMessage` metodu na objekt **ServiceBusService** . Zprávy odeslané do (a přijaté z) Service Bus fronty jsou objekty **BrokeredMessage** a mají sadu standardních vlastností (například **Label** a **TimeToLive**), slovník, který se používá k uložení vlastních vlastností specifických pro aplikaci a tělo libovolných aplikačních dat. Aplikace může nastavit tělo zprávy předáním řetězce jako zprávy. Všechny požadované standardní vlastnosti se naplní výchozími hodnotami.
 
-Následující příklad ukazuje, jak odeslat zkušební zprávu do fronty s názvem `myqueue` pomocí: `sendQueueMessage`
+Následující příklad ukazuje, jak odeslat zkušební zprávu do fronty s názvem `myqueue` pomocí `sendQueueMessage` :
 
 ```javascript
 var message = {
@@ -157,9 +149,9 @@ Zprávy jsou přijímány z fronty pomocí `receiveQueueMessage` metody v objekt
 
 Výchozím chováním při čtení a odstraňování zprávy jako součást operace Receive je nejjednodušší model a funguje nejlépe ve scénářích, ve kterých aplikace může tolerovat nezpracovávání zprávy, když dojde k selhání. Pro pochopení tohoto chování Vezměte v úvahu situaci, ve které spotřebitel vydá žádost o přijetí, a poté dojde k chybě před jejím zpracováním. Vzhledem k tomu, že Service Bus bude zprávu označovat jako spotřebovaná, a když se aplikace znovu spustí a začne znovu přijímat zprávy, vynechá se zpráva, která byla spotřebována před chybou.
 
-Pokud je `isPeekLock` parametr nastaven na **hodnotu true**, obdrží se operace se dvěma fázemi, což umožňuje podporovat aplikace, které neumožňují tolerovat chybějící zprávy. Když Service Bus přijme požadavek, najde zprávu, která je na řadě ke spotřebování, uzamkne ji proti spotřebování jinými spotřebiteli a vrátí ji do aplikace. Poté, co aplikace dokončí zpracování zprávy (nebo je uloží spolehlivě pro budoucí zpracování), dokončí druhou fázi procesu Receive voláním `deleteMessage` metody a zadáním zprávy, která má být odstraněna jako parametr. `deleteMessage` Metoda označí zprávu jako spotřebou a odebere ji z fronty.
+Pokud `isPeekLock` je parametr nastaven na **hodnotu true**, obdrží se operace se dvěma fázemi, což umožňuje podporovat aplikace, které neumožňují tolerovat chybějící zprávy. Když Service Bus přijme požadavek, najde zprávu, která je na řadě ke spotřebování, uzamkne ji proti spotřebování jinými spotřebiteli a vrátí ji do aplikace. Poté, co aplikace dokončí zpracování zprávy (nebo je uloží spolehlivě pro budoucí zpracování), dokončí druhou fázi procesu Receive voláním `deleteMessage` metody a zadáním zprávy, která má být odstraněna jako parametr. `deleteMessage`Metoda označí zprávu jako spotřebou a odebere ji z fronty.
 
-Následující příklad ukazuje, jak přijímat a zpracovávat zprávy pomocí `receiveQueueMessage`. Příklad nejprve přijme a odstraní zprávu a potom obdrží zprávu s použitím `isPeekLock` hodnoty nastavenou na **hodnotu true**a potom zprávu odstraní pomocí: `deleteMessage`
+Následující příklad ukazuje, jak přijímat a zpracovávat zprávy pomocí `receiveQueueMessage` . Příklad nejprve přijme a odstraní zprávu a potom obdrží zprávu s použitím `isPeekLock` hodnoty nastavenou na **hodnotu true**a potom zprávu odstraní pomocí `deleteMessage` :
 
 ```javascript
 serviceBusService.receiveQueueMessage('myqueue', function(error, receivedMessage){

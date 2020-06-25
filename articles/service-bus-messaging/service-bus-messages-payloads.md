@@ -1,24 +1,14 @@
 ---
 title: Azure Service Bus zprávy, datové části a serializace | Microsoft Docs
 description: Tento článek poskytuje přehled Azure Service Busch zpráv, datových částí, směrování zpráv a serializaci.
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: 11e56ae2483a254fb00e3593da7841f3f3d844f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: d426489776dff652cbf72d640f3e74b1bc8e30d4
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76759393"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341675"
 ---
 # <a name="messages-payloads-and-serialization"></a>Zprávy, datové části a serializace
 
@@ -34,7 +24,7 @@ Ekvivalentní názvy používané na úrovni protokolu AMQP jsou uvedeny v závo
 
 | Název vlastnosti                         | Popis                                                                                                                                                                                                                                                                                                                                                                                                                               |
 |---------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|  [ContentType](/dotnet/api/microsoft.azure.servicebus.message.contenttype) (Content-Type)           | Volitelně popisuje datovou část zprávy s popisovačem po formátu RFC2045, oddíl 5; například `application/json`.                                                                                                                                                                                                                                                                                             |
+|  [ContentType](/dotnet/api/microsoft.azure.servicebus.message.contenttype) (Content-Type)           | Volitelně popisuje datovou část zprávy s popisovačem po formátu RFC2045, oddíl 5; například `application/json` .                                                                                                                                                                                                                                                                                             |
 |  [ID korelace (ID](/dotnet/api/microsoft.azure.servicebus.message.correlationid#Microsoft_Azure_ServiceBus_Message_CorrelationId) korelace)       | Umožňuje aplikaci pro účely korelace určit kontext pro zprávu. například odráží zprávu **MessageID** zprávy, na kterou je odpovězeno.                                                                                                                                                                                                                                                                  |
 | [DeadLetterSource](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deadlettersource)                      | Nastaveno pouze ve zprávách, které byly nedoručené a následně automaticky předány z fronty nedoručených zpráv do jiné entity. Určuje entitu, ve které byla zpráva nedoručena. Tato vlastnost je jen ke čtení.                                                                                                                                                                                                                                  |
 | [DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deliverycount)                         | Počet doručení, u kterých došlo k pokusu o tuto zprávu. Počet se zvýší, když vyprší platnost zámku zprávy, nebo je zpráva explicitně opuštěna příjemcem. Tato vlastnost je jen ke čtení.                                                                                                                                                                                                                                                  |
@@ -73,11 +63,11 @@ Směrování v rámci oboru názvů Service Bus lze realizovat pomocí pravidel 
 
 ## <a name="payload-serialization"></a>Serializace datové části
 
-Při přenosu nebo uložení v rámci Service Bus je datová část vždy neprůhledný binární blok. Vlastnost [ContentType](/dotnet/api/microsoft.azure.servicebus.message.contenttype) umožňuje aplikacím popsat datovou část s doporučeným formátem pro hodnoty vlastností, které jsou popisem typu obsahu MIME podle IETF RFC2045; například `application/json;charset=utf-8`.
+Při přenosu nebo uložení v rámci Service Bus je datová část vždy neprůhledný binární blok. Vlastnost [ContentType](/dotnet/api/microsoft.azure.servicebus.message.contenttype) umožňuje aplikacím popsat datovou část s doporučeným formátem pro hodnoty vlastností, které jsou popisem typu obsahu MIME podle IETF RFC2045; například `application/json;charset=utf-8` .
 
 Na rozdíl od variant Java nebo .NET Standard, .NET Framework verze rozhraní API Service Bus podporuje vytváření instancí **BrokeredMessage** předáním libovolných objektů .NET do konstruktoru. 
 
-Při použití starší verze protokolu SBMP jsou tyto objekty serializovány pomocí výchozího binárního serializátoru nebo pomocí serializátoru, který je externě dodán. Při použití protokolu AMQP je objekt serializován do objektu AMQP. Příjemce může tyto objekty načíst pomocí metody [GetBody\<T> ()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) a zadat očekávaný typ. Pomocí AMQP jsou objekty serializovány do AMQP grafu objektů **ArrayList** a **IDictionary<řetězců, objektů>** objektů a libovolného klienta AMQP je může dekódovat. 
+Při použití starší verze protokolu SBMP jsou tyto objekty serializovány pomocí výchozího binárního serializátoru nebo pomocí serializátoru, který je externě dodán. Při použití protokolu AMQP je objekt serializován do objektu AMQP. Příjemce může tyto objekty načíst pomocí metody [GetBody \<T> ()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) , a to zadáním očekávaného typu. Pomocí AMQP jsou objekty serializovány do AMQP grafu objektů **ArrayList** a **IDictionary<řetězců, objektů>** objektů a libovolného klienta AMQP je může dekódovat. 
 
 I když je tato skrytá serializace Magic užitečná, aplikace by měly přebírat explicitní kontrolu serializace objektů a přepínat své objekty do datových proudů před jejich zahrnutím do zprávy a vracet je zpět na straně přijímače. Výsledkem je interoperabilní výsledky. Mělo by se také poznamenat, že zatímco AMQP má výkonný binární kódovací model, je svázán s ekosystémem zasílání zpráv AMQP a klienti HTTP budou mít problémy dekódovat taková datová část. 
 
@@ -90,5 +80,5 @@ Varianty rozhraní API pro .NET Standard a Java přijímají pouze pole bajtů, 
 Další informace o Service Bus zasílání zpráv najdete v následujících tématech:
 
 * [Fronty, témata a odběry služby Service Bus](service-bus-queues-topics-subscriptions.md)
-* [Začínáme s frontami Service Bus](service-bus-dotnet-get-started-with-queues.md)
+* [Začínáme s frontami služby Service Bus](service-bus-dotnet-get-started-with-queues.md)
 * [Jak používat témata a odběry Service Bus](service-bus-dotnet-how-to-use-topics-subscriptions.md)

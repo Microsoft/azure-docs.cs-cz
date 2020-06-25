@@ -1,24 +1,14 @@
 ---
 title: Azure Service Bus – vypršení platnosti zprávy
 description: Tento článek vysvětluje vypršení platnosti a dobu provozu Azure Service Busch zpráv. Po uplynutí tohoto termínu se zpráva už nedoručuje.
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: e86c92fa1cfb13929d5617502224f479709efdd3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: ca789be91e835576ec06a422bdbbbf25eb775dac
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76756330"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341198"
 ---
 # <a name="message-expiration-time-to-live"></a>Vypršení platnosti zpráv (hodnota TTL)
 
@@ -26,7 +16,7 @@ Datová část ve zprávě nebo příkaz nebo dotaz, který zpráva předává p
 
 Pro vývojová a testovací prostředí, ve kterých se fronty a témata často používají v kontextu částečných spuštění aplikací nebo částí aplikace, je také žádoucí, aby byly automaticky uvolněny do paměti pro vybrané testovací zprávy, aby bylo možné začít čistit další testovací běh.
 
-Vypršení platnosti pro jednotlivé zprávy lze ovládat nastavením vlastnosti systému [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) , která určuje relativní dobu trvání. Vypršení platnosti se bude absolutní okamžitá, když je zpráva zařazená do fronty. V tomto okamžiku převezme vlastnost [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc) hodnotu [(**EnqueuedTimeUtc**](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc#Microsoft_ServiceBus_Messaging_BrokeredMessage_EnqueuedTimeUtc) + [**TimeToLive**)](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive). Nastavení TTL (Time-to-Live) u zprostředkovaných zpráv se nevynutilo, když neaktivně nenaslouchá žádní klienti.
+Vypršení platnosti pro jednotlivé zprávy lze ovládat nastavením vlastnosti systému [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) , která určuje relativní dobu trvání. Vypršení platnosti se bude absolutní okamžitá, když je zpráva zařazená do fronty. V tomto okamžiku převezme vlastnost [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc) hodnotu [(**EnqueuedTimeUtc**](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc#Microsoft_ServiceBus_Messaging_BrokeredMessage_EnqueuedTimeUtc)  +  [**TimeToLive**)](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive). Nastavení TTL (Time-to-Live) u zprostředkovaných zpráv se nevynutilo, když neaktivně nenaslouchá žádní klienti.
 
 Po **ExpiresAtUtc** Instant se zprávy stanou neoprávněnými pro načtení. Vypršení platnosti nemá vliv na zprávy, které jsou momentálně uzamčené pro doručení; Tyto zprávy jsou stále zpracovávány normálně. Pokud zámek vyprší nebo dojde k opuštění zprávy, bude vypršení platnosti platit okamžitě.
 
@@ -87,5 +77,5 @@ Tady je postup, který se považuje za nečinnost entit (fronty, témata a odbě
 Další informace o Service Bus zasílání zpráv najdete v následujících tématech:
 
 * [Fronty, témata a odběry služby Service Bus](service-bus-queues-topics-subscriptions.md)
-* [Začínáme s frontami Service Bus](service-bus-dotnet-get-started-with-queues.md)
+* [Začínáme s frontami služby Service Bus](service-bus-dotnet-get-started-with-queues.md)
 * [Jak používat témata a odběry Service Bus](service-bus-dotnet-how-to-use-topics-subscriptions.md)

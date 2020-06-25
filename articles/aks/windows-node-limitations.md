@@ -5,12 +5,12 @@ description: Přečtěte si o známých omezeních při spouštění fondů uzl�
 services: container-service
 ms.topic: article
 ms.date: 05/28/2020
-ms.openlocfilehash: e03343bc0bf8d2b49d2322573e75fe76cc853e32
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: c420eb850313900d3726b93dd97f911a428d3560
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84976604"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85339884"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Aktuální omezení pro fondy uzlů Windows serveru a úlohy aplikací ve službě Azure Kubernetes Service (AKS)
 
@@ -85,7 +85,7 @@ Název musí být delší než 6 (šest) znaků. Toto je aktuální omezení AKS
 
 ## <a name="are-all-features-supported-with-windows-nodes"></a>Jsou všechny funkce podporované uzly Windows?
 
-Zásady sítě a kubenet se v tuto chvíli nepodporují s uzly Windows. 
+Zásady sítě a kubenet se v tuto chvíli nepodporují s uzly Windows.
 
 ## <a name="can-i-run-ingress-controllers-on-windows-nodes"></a>Můžu spustit řadiče příchozího přenosu dat v uzlech Windows?
 
@@ -101,7 +101,7 @@ Podpora skupinových účtů spravované služby (gMSA) není v současné době
 
 ## <a name="can-i-use-azure-monitor-for-containers-with-windows-nodes-and-containers"></a>Můžu použít Azure Monitor pro kontejnery s uzly a kontejnery Windows?
 
-Ano, ale Azure Monitor má sadu [omezení][azure-monitor] pro podporu Windows.
+Ano, můžete ale Azure Monitor ve verzi Public Preview pro shromažďování protokolů (stdout, stderr) a metriky z kontejnerů Windows. Můžete se také připojit k živému streamu protokolů stdout z kontejneru Windows.
 
 ## <a name="what-if-i-need-a-feature-which-is-not-supported"></a>Co když potřebuji funkci, která není podporovaná?
 

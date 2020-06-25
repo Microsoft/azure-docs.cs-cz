@@ -3,14 +3,14 @@ title: Zálohování sdílených složek Azure v Azure Portal
 description: Naučte se používat Azure Portal k zálohování sdílených složek Azure v trezoru Recovery Services.
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: a77f7fd0ec21eae60a7313a9ffa889fbef4372c6
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: a78760e793704d9ec4580e21ea86e0ba573b3949
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82977972"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85340704"
 ---
-# <a name="back-up-azure-file-shares-in-a-recovery-services-vault"></a>Zálohování sdílených složek Azure v trezoru Recovery Services
+# <a name="back-up-azure-file-shares"></a>Zálohování sdílených složek Azure 
 
 Tento článek vysvětluje, jak používat Azure Portal k zálohování [sdílených složek Azure](https://docs.microsoft.com/azure/storage/files/storage-files-introduction).
 
@@ -148,7 +148,7 @@ V některých případech můžete chtít vytvořit snímek zálohy nebo bod obn
 
 1. Výběrem **OK** potvrďte spuštěnou úlohu zálohování na vyžádání.
 
-1. Monitorujte oznámení na portálu, abyste měli přehled o dokončení spuštění úlohy zálohování. Průběh úlohy můžete monitorovat na řídicím panelu trezoru. Vyberte > **probíhající** **úlohy zálohování**.
+1. Monitorujte oznámení na portálu, abyste měli přehled o dokončení spuštění úlohy zálohování. Průběh úlohy můžete monitorovat na řídicím panelu trezoru. Vyberte **probíhající úlohy zálohování**  >  **In progress**.
 
 >[!NOTE]
 >Azure Backup uzamkne účet úložiště při konfiguraci ochrany pro jakoukoli sdílenou složku v příslušném účtu. Tato operace zajišťuje ochranu před náhodným odstraněním účtu úložiště s zálohovanými sdílenými složkami.

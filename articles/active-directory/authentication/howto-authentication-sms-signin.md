@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rateller
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 450e6aa1b22806fbd4d142e47caee720d7f63648
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.openlocfilehash: 3ef4bbe25c21940958b2bc3e22d4bb85b04acd34
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860167"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85340069"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory-preview"></a>Konfigurace a povolení ověřování na základě serveru SMS pomocí Azure Active Directory (Preview)
 
@@ -29,7 +29,7 @@ V tomto článku se dozvíte, jak povolit ověřování pomocí serveru SMS pro 
 | Ověřování pomocí serveru SMS pro uživatele je funkce verze Public Preview služby Azure Active Directory. Další informace o verzích Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) verze Preview.|
 |     |
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 K dokončení tohoto článku potřebujete následující prostředky a oprávnění:
 
@@ -150,12 +150,16 @@ Pokud se při pokusu o nastavení telefonního čísla pro uživatelský účet 
 
 Další způsoby, jak se přihlásit ke službě Azure AD bez hesla, například Microsoft Authenticator aplikace nebo klíčů zabezpečení FIDO2, najdete v tématu [Možnosti ověřování bez hesla pro službu Azure AD][concepts-passwordless].
 
+K [Povolení][rest-enable] nebo [zakázání][rest-disable] přihlášení pomocí serveru SMS můžete také použít Microsoft Graph REST API beta.
+
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../fundamentals/sign-up-organization.md
 [associate-azure-ad-tenant]: ../fundamentals/active-directory-how-subscriptions-associated-directory.md
 [concepts-passwordless]: concept-authentication-passwordless.md
 [tutorial-azure-mfa]: tutorial-enable-azure-mfa.md
 [tutorial-sspr]: tutorial-enable-sspr.md
+[rest-enable]: /graph/api/phoneauthenticationmethod-enablesmssignin?view=graph-rest-beta&tabs=http
+[rest-disable]: /graph/api/phoneauthenticationmethod-disablesmssignin?view=graph-rest-beta&tabs=http
 
 <!-- EXTERNAL LINKS -->
 [azure-portal]: https://portal.azure.com

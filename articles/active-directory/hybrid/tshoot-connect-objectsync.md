@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e10d00ed90248319801974c7c1e7fadf835024b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 73d4239dd34f2a64aa7b3edbf88bad4348e01291
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81407020"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85356198"
 ---
 # <a name="troubleshoot-object-synchronization-with-azure-ad-connect-sync"></a>Řešení potíží se synchronizací objektů pomocí synchronizace Azure AD Connect
 Tento článek popisuje kroky pro řešení potíží se synchronizací objektů pomocí úlohy řešení potíží. Pokud chcete zjistit, jak řešení potíží funguje ve službě Azure Active Directory (Azure AD), podívejte se na [Toto krátké video](https://aka.ms/AADCTSVideo).
@@ -32,7 +32,7 @@ V případě nasazení Azure AD Connect s verzí 1.1.749.0 nebo novější k ře
 Chcete-li spustit úlohu řešení potíží v průvodci, proveďte následující kroky:
 
 1.  Na serveru Azure AD Connect otevřete novou relaci prostředí Windows PowerShell s možností spustit jako správce.
-2.  Spusťte `Set-ExecutionPolicy RemoteSigned` nebo `Set-ExecutionPolicy Unrestricted`.
+2.  Spusťte `Set-ExecutionPolicy RemoteSigned` nebo `Set-ExecutionPolicy Unrestricted` .
 3.  Spusťte Průvodce Azure AD Connect.
 4.  Přejděte na stránku další úlohy, vyberte možnost řešení potíží a klikněte na tlačítko Další.
 5.  Na stránce Poradce při potížích klikněte na spustit a spusťte v PowerShellu nabídku pro odstraňování potíží.
@@ -43,7 +43,7 @@ Chcete-li spustit úlohu řešení potíží v průvodci, proveďte následujíc
 Úkol odstraňování potíží vyžaduje následující vstupní parametry:
 1.  **Rozlišující název objektu** – jedná se o rozlišující název objektu, který vyžaduje řešení potíží.
 2.  **Název konektoru služby AD** – jedná se o název doménové struktury služby Active Directory, ve které se nachází výše uvedený objekt.
-3.  Přihlašovací údaje globálního správce tenanta ![služby Azure AD pro globální správce](media/tshoot-connect-objectsync/objsynch1.png)
+3.  Přihlašovací údaje globálního správce tenanta služby Azure AD pro globální správce ![](media/tshoot-connect-objectsync/objsynch1.png)
 
 ### <a name="understand-the-results-of-the-troubleshooting-task"></a>Vysvětlení výsledků úlohy odstraňování potíží
 Úloha řešení potíží provádí následující kontroly:

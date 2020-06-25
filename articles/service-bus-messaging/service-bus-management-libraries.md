@@ -1,25 +1,15 @@
 ---
 title: Knihovny pro správu Azure Service Bus | Microsoft Docs
 description: Tento článek vysvětluje, jak pomocí Azure Service Bus knihovny pro správu dynamicky zřizovat Service Bus obory názvů a entity.
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: e1531d9b70860f498a3e38305f26eb862c9513f3
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.date: 06/23/2020
+ms.openlocfilehash: 042edcd1851f86dd2a660673bc87884b68410bfb
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901504"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341716"
 ---
 # <a name="service-bus-management-libraries"></a>Knihovny pro správu služby Service Bus
 
@@ -40,7 +30,7 @@ Pokud chcete začít používat Service Bus knihovny pro správu, musíte se ov�
 * [Vytvoření instančního objektu pro přístup k prostředkům pomocí Azure PowerShellu](/azure/azure-resource-manager/resource-group-authenticate-service-principal)
 * [Vytvoření instančního objektu pro přístup k prostředkům pomocí Azure CLI](/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
 
-Tyto kurzy vám poskytnou `AppId` (ID klienta), `TenantId`a `ClientSecret` (ověřovací klíč), které se používají k ověřování pomocí knihoven pro správu. Pro skupinu prostředků, na které chcete spustit, musíte mít minimálně [**Azure Service Bus oprávnění vlastníka dat**](/azure/role-based-access-control/built-in-roles#azure-service-bus-data-owner) nebo [**přispěvatele**](/azure/role-based-access-control/built-in-roles#contributor) .
+Tyto kurzy vám poskytnou `AppId` (ID klienta), `TenantId` a `ClientSecret` (ověřovací klíč), které se používají k ověřování pomocí knihoven pro správu. Pro skupinu prostředků, na které chcete spustit, musíte mít minimálně [**Azure Service Bus oprávnění vlastníka dat**](/azure/role-based-access-control/built-in-roles#azure-service-bus-data-owner) nebo [**přispěvatele**](/azure/role-based-access-control/built-in-roles#contributor) .
 
 ## <a name="programming-pattern"></a>Programovací model
 

@@ -1,24 +1,14 @@
 ---
 title: Azure Service Bus – odložení zprávy
 description: Tento článek vysvětluje, jak odložit doručování Azure Service Busch zpráv. Zpráva zůstane ve frontě nebo odběru, ale odloží se bokem.
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: 5e32c461902c1e340c6cece22669a59847e660cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: f4fe231c56a1bcdea4f15de90cb0e9406f0284a3
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77538392"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341222"
 ---
 # <a name="message-deferral"></a>Odložení zpráv
 
@@ -36,7 +26,7 @@ Rozhraní API je [BrokeredMessage. odklad](/dotnet/api/microsoft.servicebus.mess
 
 Odložené zprávy zůstávají v hlavní frontě společně se všemi ostatními aktivními zprávami (na rozdíl od zpráv s nedoručenými zprávami, které jsou v podfrontě uložené), ale už se nedají přijímat pomocí běžných funkcí Receive/metody ReceiveAsync. Odložené zprávy lze zjistit pomocí [procházení zpráv](message-browsing.md) , pokud aplikace ztratí jejich sledování.
 
-Chcete-li načíst odloženou zprávu, její vlastník je zodpovědný za zapamatování [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) při jejich odložení. Každý příjemce, který zná pořadové číslo odložené zprávy, může později zprávu přijmout explicitně s `Receive(sequenceNumber)`.
+Chcete-li načíst odloženou zprávu, její vlastník je zodpovědný za zapamatování [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) při jejich odložení. Každý příjemce, který zná pořadové číslo odložené zprávy, může později zprávu přijmout explicitně s `Receive(sequenceNumber)` .
 
 Pokud zprávu nelze zpracovat, protože konkrétní prostředek pro zpracování této zprávy je dočasně nedostupný, ale zpracování zprávy by se po několik minut pozastavilo, zapamatujte si **SequenceNumber** v [naplánované zprávě](message-sequencing.md) , aby se publikovala během několika minut, a znovu načíst odloženou zprávu při doručení naplánované zprávy. Pokud obslužná rutina zprávy závisí na databázi pro všechny operace a tato databáze je dočasně nedostupná, neměli byste používat odložení, ale místo toho bude možné zprávy přijímat úplně, dokud nebude znovu dostupná databáze.
 
@@ -46,5 +36,5 @@ Pokud zprávu nelze zpracovat, protože konkrétní prostředek pro zpracování
 Další informace o Service Bus zasílání zpráv najdete v následujících tématech:
 
 * [Fronty, témata a odběry služby Service Bus](service-bus-queues-topics-subscriptions.md)
-* [Začínáme s frontami Service Bus](service-bus-dotnet-get-started-with-queues.md)
+* [Začínáme s frontami služby Service Bus](service-bus-dotnet-get-started-with-queues.md)
 * [Jak používat témata a odběry Service Bus](service-bus-dotnet-how-to-use-topics-subscriptions.md)

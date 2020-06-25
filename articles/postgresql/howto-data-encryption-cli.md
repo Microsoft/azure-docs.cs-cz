@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/30/2020
-ms.openlocfilehash: 77c464f51bd17921052b3ae1e9fefb49e777d6c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f7621867aad6baf517462983e35afb0b28223756
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181901"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341300"
 ---
 # <a name="data-encryption-for-azure-database-for-postgresql-single-server-by-using-the-azure-cli"></a>Šifrování dat pro Azure Database for PostgreSQL jeden server pomocí Azure CLI
 
@@ -54,16 +54,16 @@ Naučte se používat Azure CLI k nastavení a správě šifrování dat pro vá
 
 1. Existují dva způsoby, jak získat spravovanou identitu pro váš Azure Database for PostgreSQL jeden server.
 
-    ### <a name="create-an-new-azure-database-for-mysql-server-with-a-managed-identity"></a>Vytvořte nový server Azure Database for MySQL se spravovanou identitou.
+    ### <a name="create-an-new-azure-database-for-postgresql-server-with-a-managed-identity"></a>Vytvořte nový server Azure Database for PostgreSQL se spravovanou identitou.
 
     ```azurecli-interactive
-    az postgres server create --name -g <resource_group> --location <locations> --storage-size <size>  -u <user>-p <pwd> --backup-retention <7> --sku-name <sku name> --geo-redundant-backup <Enabled/Disabled>  --assign-identity
+    az postgres server create --name <server_name> -g <resource_group> --location <location> --storage-size <size>  -u <user> -p <pwd> --backup-retention <7> --sku-name <sku name> --geo-redundant-backup <Enabled/Disabled> --assign-identity
     ```
 
-    ### <a name="update-an-existing-the-azure-database-for-mysql-server-to-get-a-managed-identity"></a>Aktualizujte existující server Azure Database for MySQL, aby získal spravovanou identitu.
+    ### <a name="update-an-existing-the-azure-database-for-postgresql-server-to-get-a-managed-identity"></a>Aktualizujte existující server Azure Database for PostgreSQL, aby získal spravovanou identitu.
 
     ```azurecli-interactive
-    az postgres server update –name <server name>  -g <resoure_group> --assign-identity
+    az postgres server update --resource-group <resource_group> --name <server_name> --assign-identity
     ```
 
 2. Nastavte **klíčová oprávnění** (**získání**, **zabalení**, **rozbalení**) pro **objekt zabezpečení**, což je název serveru PostgreSQL Single server.
@@ -77,7 +77,7 @@ Naučte se používat Azure CLI k nastavení a správě šifrování dat pro vá
 1. Povolte šifrování dat pro Azure Database for PostgreSQL jeden server pomocí klíče vytvořeného v Azure Key Vault.
 
     ```azurecli-interactive
-    az postgres server key create –name  <server name>  -g <resource_group> --kid <key url>
+    az postgres server key create --name <server_name> -g <resource_group> --kid <key_url>
     ```
 
     Adresa URL klíče:`https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
@@ -102,7 +102,7 @@ Po zašifrování Azure Database for PostgreSQL jednoho serveru pomocí spravova
 ### <a name="get-the-key-used"></a>Získat použitý klíč
 
     ```azurecli-interactive
-    az mysql server key show --name  <server name>  -g <resource_group> --kid <key url>
+    az postgres server key show --name <server name>  -g <resource_group> --kid <key url>
     ```
 
     Key url:  `https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`

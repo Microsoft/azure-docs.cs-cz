@@ -1,7 +1,7 @@
 ---
 title: Přístupy k migraci uživatelů
 titleSuffix: Azure AD B2C
-description: Migrace uživatelských účtů od jiného zprostředkovatele identity do Azure AD B2C pomocí metod hromadného importu nebo bezproblémové migrace.
+description: Migrace uživatelských účtů od jiného zprostředkovatele identity do Azure AD B2C pomocí metod migrace před migrací nebo bezproblémové migrace.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,25 +11,25 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b3ee069985fd39288a562d3caafc50b12290c060
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2a606335a17a9c8f4796b1ce813a1fd891963e0f
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80332333"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85355382"
 ---
 # <a name="migrate-users-to-azure-ad-b2c"></a>Migrace uživatelů na Azure AD B2C
 
-Migrace od jiného zprostředkovatele identity na Azure Active Directory B2C (Azure AD B2C) může také vyžadovat migraci stávajících uživatelských účtů. Zde jsou popsané dvě metody migrace, *hromadné importy* a *bezproblémové migrace*. V obou případech je potřeba napsat aplikaci nebo skript, které používají [rozhraní Microsoft Graph API](manage-user-accounts-graph-api.md) k vytváření uživatelských účtů v Azure AD B2C.
+Migrace od jiného zprostředkovatele identity na Azure Active Directory B2C (Azure AD B2C) může také vyžadovat migraci stávajících uživatelských účtů. Tady jsou popsané dvě metody migrace, *před migrací* a *bezproblémové migrace*. V obou případech je potřeba napsat aplikaci nebo skript, které používají [rozhraní Microsoft Graph API](manage-user-accounts-graph-api.md) k vytváření uživatelských účtů v Azure AD B2C.
 
-## <a name="bulk-import"></a>Hromadný import
+## <a name="pre-migration"></a>Předběžná migrace
 
-V toku hromadného importu provede aplikace pro migraci tyto kroky pro každý uživatelský účet:
+V toku před migrací aplikace pro migraci provádí tyto kroky pro každý uživatelský účet:
 
 1. Přečtěte si uživatelský účet od starého zprostředkovatele identity, včetně jeho aktuálních přihlašovacích údajů (uživatelské jméno a heslo).
 1. V adresáři Azure AD B2C vytvořte odpovídající účet s aktuálními přihlašovacími údaji.
 
-Postup hromadného importu použijte v obou těchto dvou situacích:
+Tok předběžné migrace použijte v některé z těchto dvou případů:
 
 - Máte přístup k přihlašovacím údajům uživatele ve formátu prostého textu (uživatelské jméno a heslo).
 - Přihlašovací údaje jsou šifrované, ale můžete je dešifrovat.
@@ -43,25 +43,25 @@ Postup bezproblémové migrace použijte v případě, že nešifrovaná hesla v
 - Heslo je uloženo v jednosměrovém šifrovaném formátu, například pomocí funkce hash.
 - Heslo ukládá starší zprostředkovatel identity způsobem, ke kterému nemůžete získat přístup. Například když zprostředkovatel identity ověřuje přihlašovací údaje voláním webové služby.
 
-Plynulý tok migrace ještě vyžaduje hromadnou migraci uživatelských účtů, ale pak používá [vlastní zásadu](custom-policy-get-started.md) pro dotazování [REST API](custom-policy-rest-api-intro.md) (kterou vytvoříte) k nastavení hesla jednotlivých uživatelů při prvním přihlášení.
+Plynulý tok migrace ještě vyžaduje předem migraci uživatelských účtů, ale pak používá [vlastní zásadu](custom-policy-get-started.md) pro dotazování [REST API](custom-policy-rest-api-intro.md) (kterou vytvoříte) k nastavení hesla jednotlivých uživatelů při prvním přihlášení.
 
-Plynulý tok migrace má tedy dvě fáze: *hromadné importy* a *Nastavení přihlašovacích údajů*.
+Plynulý tok migrace má tedy dvě fáze: *Předběžná migrace* a *Nastavení přihlašovacích údajů*.
 
-### <a name="phase-1-bulk-import"></a>Fáze 1: hromadný import
+### <a name="phase-1-pre-migration"></a>Fáze 1: předběžná migrace
 
 1. Vaše aplikace pro migraci přečte uživatelské účty od starého zprostředkovatele identity.
 1. Aplikace pro migraci vytváří v adresáři Azure AD B2C příslušné uživatelské účty, ale *nenastavuje hesla*.
 
 ### <a name="phase-2-set-credentials"></a>Fáze 2: Nastavení přihlašovacích údajů
 
-Po dokončení hromadné migrace účtů budou vaše vlastní zásady a REST API při přihlášení uživatele provádět tyto akce:
+Po dokončení předběžné migrace účtů vaše vlastní zásady a REST API při přihlášení uživatele provádět následující akce:
 
 1. Přečtěte si Azure AD B2C uživatelský účet odpovídající zadané e-mailové adrese.
 1. Vyhodnocením logického atributu rozšíření ověřte, zda je účet označen pro migraci.
-    - Pokud se atribut rozšíření vrátí `True`, zavolejte REST API a ověřte heslo proti staršímu zprostředkovateli identity.
+    - Pokud se atribut rozšíření vrátí `True` , zavolejte REST API a ověřte heslo proti staršímu zprostředkovateli identity.
       - Pokud REST API zjistí, že heslo není správné, uživateli se zobrazí zpráva s popisem chyby.
-      - Pokud REST API určuje, zda je heslo správné, zapište heslo k účtu Azure AD B2C a změňte logický atribut rozšíření na `False`.
-    - Pokud se vrátí `False`logický atribut rozšíření, pokračujte v procesu přihlášení jako normální.
+      - Pokud REST API určuje, zda je heslo správné, zapište heslo k účtu Azure AD B2C a změňte logický atribut rozšíření na `False` .
+    - Pokud se vrátí logický atribut rozšíření `False` , pokračujte v procesu přihlášení jako normální.
 
 Příklad vlastní zásady a REST API najdete v [ukázce bezproblémové migrace uživatelů](https://aka.ms/b2c-account-seamless-migration) na GitHubu.
 

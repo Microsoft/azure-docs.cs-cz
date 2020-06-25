@@ -12,12 +12,12 @@ ms.date: 06/05/2020
 ms.author: celested
 ms.reviewer: asteen, jlu, hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c4b253a3017f1a836ac989bb897065a6a7d8337
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: a82f81888828cb5edd42c37a6e8b2c2ee51fe603
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84739949"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85339554"
 ---
 # <a name="configure-the-stay-signed-in-prompt-for-azure-ad-accounts"></a>Nakonfigurovat možnost zůstat přihlášeni? vyzvat k zadání účtů Azure AD
 
@@ -28,7 +28,7 @@ Následující diagram znázorňuje tok přihlašování uživatelů pro spravov
 :::image type="content" source="./media/keep-me-signed-in/kmsi-workflow.png" alt-text="Diagram znázorňující tok přihlašování uživatelů pro spravovaného vs. federovaného tenanta":::
 
 > [!NOTE]
-> Když nakonfigurujete možnost zůstat přihlášeni, budete potřebovat použít Azure Active Directory (Azure AD) Premium 1, Premium 2 nebo Basic nebo licenci Office 365. Další informace o licencování a edicích najdete v tématu [Registrace pro Azure AD Premium](active-directory-get-started-premium.md).<br><br>Edice Azure AD Premium a Basic jsou k dispozici pro zákazníky v Číně pomocí světové instance Azure AD. Edice Premium a Basic služby Azure AD v současnosti nejsou podporované ve službě Azure provozované v Číně společností 21Vianet. Další informace vám poskytne [Fórum Azure AD](https://feedback.azure.com/forums/169401-azure-active-directory/)s využitím diskuze.
+> Když nakonfigurujete možnost zůstat přihlášeni, budete potřebovat použít Azure Active Directory (Azure AD) Premium 1, Premium 2 nebo Basic nebo licenci Microsoft 365. Další informace o licencování a edicích najdete v tématu [Registrace pro Azure AD Premium](active-directory-get-started-premium.md).<br><br>Edice Azure AD Premium a Basic jsou k dispozici pro zákazníky v Číně pomocí světové instance Azure AD. Edice Premium a Basic služby Azure AD v současnosti nejsou podporované ve službě Azure provozované v Číně společností 21Vianet. Další informace vám poskytne [Fórum Azure AD](https://feedback.azure.com/forums/169401-azure-active-directory/)s využitím diskuze.
 
 ## <a name="configure-kmsi"></a>Konfigurace políčko zůstat přihlášeni
 
@@ -61,6 +61,6 @@ Uživatelům můžete zabránit v zobrazení přerušení nastavením **možnost
 
 Přečtěte si o dalších nastaveních, která mají vliv na časový limit relace přihlášení:
 
-* Office 365 – [časový limit nečinné relace](https://docs.microsoft.com/sharepoint/sign-out-inactive-users)
+* Microsoft 365 – [časový limit nečinné relace](https://docs.microsoft.com/sharepoint/sign-out-inactive-users)
 * Podmíněný přístup Azure AD – [frekvence přihlašování uživatelů](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime)
 * Azure Portal – [časový limit nečinnosti na úrovni adresáře](https://docs.microsoft.com/azure/azure-portal/admin-timeout)

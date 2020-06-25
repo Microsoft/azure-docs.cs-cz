@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c72abf79f0a420309ebe229673be9439fd99b74c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 57e52a35fba6a375e52d4061d3bd16c0b571485d
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78188252"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85355365"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-openid-connect-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení pomocí OpenID Connect pomocí Azure Active Directory B2C
 
@@ -31,7 +31,7 @@ ms.locfileid: "78188252"
 
 ## <a name="configure-the-identity-provider"></a>Konfigurace zprostředkovatele identity
 
-Každý zprostředkovatel identity OpenID Connect popisuje dokument metadat, který obsahuje většinu informací potřebných k provedení přihlášení. Zahrnuje to i informace, jako jsou adresy URL, které se mají použít, a umístění veřejných podpisových klíčů služby. Dokument metadat OpenID Connect je vždycky umístěný na koncovém bodu, který končí `.well-known\openid-configuration`na. Pro poskytovatele identity OpenID Connect, kterého chcete přidat, zadejte adresu URL metadat.
+Každý zprostředkovatel identity OpenID Connect popisuje dokument metadat, který obsahuje většinu informací potřebných k provedení přihlášení. Zahrnuje to i informace, jako jsou adresy URL, které se mají použít, a umístění veřejných podpisových klíčů služby. Dokument metadat OpenID Connect je vždycky umístěný na koncovém bodu, který končí na `.well-known/openid-configuration` . Pro poskytovatele identity OpenID Connect, kterého chcete přidat, zadejte adresu URL metadat.
 
 ## <a name="client-id-and-secret"></a>ID klienta a tajný kód
 
@@ -48,7 +48,7 @@ Obor definuje informace a oprávnění, které chcete shromáždit od vlastního
 
 Typ odpovědi popisuje, jaký druh informací se pošle zpátky při počátečním volání `authorization_endpoint` vlastního zprostředkovatele identity. Můžete použít následující typy odpovědí:
 
-* `code`: Na základě [toku autorizačního kódu](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth)se kód vrátí zpět do Azure AD B2C. Azure AD B2C pokračuje v `token_endpoint` volání metody pro výměnu kódu pro token.
+* `code`: Na základě [toku autorizačního kódu](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth)se kód vrátí zpět do Azure AD B2C. Azure AD B2C pokračuje v volání metody `token_endpoint` pro výměnu kódu pro token.
 * `id_token`: Token ID se vrátí zpět k Azure AD B2C z vlastního zprostředkovatele identity.
 
 ## <a name="response-mode"></a>Režim odezvy

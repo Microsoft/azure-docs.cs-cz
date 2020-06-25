@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: cherylmc
-ms.openlocfilehash: e8c86e88f481c6ad27f551a87afae7547c32a331
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 7e70348ba1638057fdab579c1f2799a0f5aa77a4
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84676247"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341352"
 ---
 # <a name="expressroute-routing-requirements"></a>Požadavky na směrování služby ExpressRoute
 Pokud se chcete připojit ke cloudovým službám Microsoftu pomocí služby ExpressRoute, budete muset nastavit a spravovat směrování. Někteří poskytovatelé připojení nabízejí nastavení a správu směrování jako spravovanou službu. Zeptejte se svého poskytovatele připojení, jestli tuto službu nabízí. Pokud ne, je nutné splnit následující požadavky:
@@ -153,59 +153,59 @@ Podrobný seznam geopolitických oblastí, přidružených oblastí Azure a odpo
 
 Můžete zakoupit víc než jeden okruh ExpressRoute na geopolitickou oblast. Použití víc připojení nabízí významné výhody vysoké dostupnosti z důvodu georedundance. V případech, kdy máte více okruhů ExpressRoute, obdržíte stejnou sadu předpon inzerovaných od Microsoftu na cestách partnerských vztahů Microsoftu a veřejných partnerských vztahů. To znamená, že bude mít z vaší sítě do Microsoftu víc cest. To může potenciálně v rámci vaší sítě způsobovat přijímání neoptimálních rozhodnutí o směrování. V důsledku toho se můžete u různých služeb setkat s neoptimálním průběhem připojení. Při rozhodování o směrování se na tyto hodnoty komunity můžete spoléhat, abyste nabízeli [uživatelům optimální směrování](expressroute-optimize-routing.md).
 
-| **Oblast Microsoft Azure** | **Oblastní komunita protokolu BGP** | **Komunita protokolu BGP úložiště** | **Komunita protokolu BGP SQL** | **Cosmos DB komunita protokolu BGP** |
-| --- | --- | --- | --- | --- |
+| **Oblast Microsoft Azure** | **Oblastní komunita protokolu BGP** | **Komunita protokolu BGP úložiště** | **Komunita protokolu BGP SQL** | **Cosmos DB komunita protokolu BGP** | **Záloha komunity protokolu BGP** |
+| --- | --- | --- | --- | --- | --- |
 | **Severní Amerika** | |
-| USA – východ | 12076:51004 | 12076:52004 | 12076:53004 | 12076:54004 |
-| USA – východ 2 | 12076:51005 | 12076:52005 | 12076:53005 | 12076:54005 |
-| USA – západ | 12076:51006 | 12076:52006 | 12076:53006 | 12076:54006 |
-| USA – západ 2 | 12076:51026 | 12076:52026 | 12076:53026 | 12076:54026 |
-| USA – středozápad | 12076:51027 | 12076:52027 | 12076:53027 | 12076:54027 |
-| USA – středosever | 12076:51007 | 12076:52007 | 12076:53007 | 12076:54007 |
-| USA – středojih | 12076:51008 | 12076:52008 | 12076:53008 | 12076:54008 |
-| USA – střed | 12076:51009 | 12076:52009 | 12076:53009 | 12076:54009 |
-| Střední Kanada | 12076:51020 | 12076:52020 | 12076:53020 | 12076:54020 |
-| Kanada – východ | 12076:51021 | 12076:52021 | 12076:53021 | 12076:54021 |
+| USA – východ | 12076:51004 | 12076:52004 | 12076:53004 | 12076:54004 | 12076:55004 |
+| USA – východ 2 | 12076:51005 | 12076:52005 | 12076:53005 | 12076:54005 | 12076:55005 |
+| USA – západ | 12076:51006 | 12076:52006 | 12076:53006 | 12076:54006 | 12076:55006 |
+| USA – západ 2 | 12076:51026 | 12076:52026 | 12076:53026 | 12076:54026 | 12076:55026 |
+| USA – středozápad | 12076:51027 | 12076:52027 | 12076:53027 | 12076:54027 | 12076:55027 |
+| USA – středosever | 12076:51007 | 12076:52007 | 12076:53007 | 12076:54007 | 12076:55007 |
+| USA – středojih | 12076:51008 | 12076:52008 | 12076:53008 | 12076:54008 | 12076:55008 |
+| USA – střed | 12076:51009 | 12076:52009 | 12076:53009 | 12076:54009 | 12076:55009 |
+| Střední Kanada | 12076:51020 | 12076:52020 | 12076:53020 | 12076:54020 | 12076:55020 |
+| Kanada – východ | 12076:51021 | 12076:52021 | 12076:53021 | 12076:54021 | 12076:55021 |
 | **Jižní Amerika** | |
-| Brazílie – jih | 12076:51014 | 12076:52014 | 12076:53014 | 12076:54014 |
+| Brazílie – jih | 12076:51014 | 12076:52014 | 12076:53014 | 12076:54014 | 12076:55014 |
 | **Evropa** | |
-| Severní Evropa | 12076:51003 | 12076:52003 | 12076:53003 | 12076:54003 |
-| Západní Evropa | 12076:51002 | 12076:52002 | 12076:53002 | 12076:54002 |
-| Spojené království – jih | 12076:51024 | 12076:52024 | 12076:53024 | 12076:54024 |
-| Spojené království – západ | 12076:51025 | 12076:52025 | 12076:53025 | 12076:54025 |
-| Francie – střed | 12076:51030 | 12076:52030 | 12076:53030 | 12076:54030 |
-| Francie – jih | 12076:51031 | 12076:52031 | 12076:53031 | 12076:54031 |
-| Švýcarsko – sever | 12076:51038 | 12076:52038 | 12076:53038 | 12076:54038 | 
-| Švýcarsko – západ | 12076:51039 | 12076:52039 | 12076:53039 | 12076:54039 | 
-| Německo – sever | 12076:51040 | 12076:52040 | 12076:53040 | 12076:54040 | 
-| Německo – středozápad | 12076:51041 | 12076:52041 | 12076:53041 | 12076:54041 | 
-| Norsko – východ | 12076:51042 | 12076:52042 | 12076:53042 | 12076:54042 | 
-| Norsko – západ | 12076:51043 | 12076:52043 | 12076:53043 | 12076:54043 | 
+| Severní Evropa | 12076:51003 | 12076:52003 | 12076:53003 | 12076:54003 | 12076:55003 |
+| Západní Evropa | 12076:51002 | 12076:52002 | 12076:53002 | 12076:54002 | 12076:55002 |
+| Spojené království – jih | 12076:51024 | 12076:52024 | 12076:53024 | 12076:54024 | 12076:55024 |
+| Spojené království – západ | 12076:51025 | 12076:52025 | 12076:53025 | 12076:54025 | 12076:55025 |
+| Francie – střed | 12076:51030 | 12076:52030 | 12076:53030 | 12076:54030 | 12076:55030 |
+| Francie – jih | 12076:51031 | 12076:52031 | 12076:53031 | 12076:54031 | 12076:55031 |
+| Švýcarsko – sever | 12076:51038 | 12076:52038 | 12076:53038 | 12076:54038 | 12076:55038 |
+| Švýcarsko – západ | 12076:51039 | 12076:52039 | 12076:53039 | 12076:54039 | 12076:55039 | 
+| Německo – sever | 12076:51040 | 12076:52040 | 12076:53040 | 12076:54040 | 12076:55040 | 
+| Německo – středozápad | 12076:51041 | 12076:52041 | 12076:53041 | 12076:54041 | 12076:55041 | 
+| Norsko – východ | 12076:51042 | 12076:52042 | 12076:53042 | 12076:54042 | 12076:55042 | 
+| Norsko – západ | 12076:51043 | 12076:52043 | 12076:53043 | 12076:54043 | 12076:55043 | 
 | **Asie a Tichomoří** | |
-| Východní Asie | 12076:51010 | 12076:52010 | 12076:53010 | 12076:54010 |
-| Jihovýchodní Asie | 12076:51011 | 12076:52011 | 12076:53011 | 12076:54011 |
+| Východní Asie | 12076:51010 | 12076:52010 | 12076:53010 | 12076:54010 | 12076:55010 |
+| Jihovýchodní Asie | 12076:51011 | 12076:52011 | 12076:53011 | 12076:54011 | 12076:55011 |
 | **Japonsko** | |
-| Japonsko – východ | 12076:51012 | 12076:52012 | 12076:53012 | 12076:54012 |
-| Japonsko – západ | 12076:51013 | 12076:52013 | 12076:53013 | 12076:54013 |
+| Japonsko – východ | 12076:51012 | 12076:52012 | 12076:53012 | 12076:54012 | 12076:55012 |
+| Japonsko – západ | 12076:51013 | 12076:52013 | 12076:53013 | 12076:54013 | 12076:55013 |
 | **Austrálie** | |
-| Austrálie – východ | 12076:51015 | 12076:52015 | 12076:53015 | 12076:54015 |
-| Austrálie – jihovýchod | 12076:51016 | 12076:52016 | 12076:53016 | 12076:54016 |
+| Austrálie – východ | 12076:51015 | 12076:52015 | 12076:53015 | 12076:54015 | 12076:55015 |
+| Austrálie – jihovýchod | 12076:51016 | 12076:52016 | 12076:53016 | 12076:54016 | 12076:55016 |
 | **Australská vláda** | |
-| Austrálie – střed | 12076:51032 | 12076:52032 | 12076:53032 | 12076:54032 |
-| Austrálie – střed 2 | 12076:51033 | 12076:52033 | 12076:53033 | 12076:54033 |
+| Austrálie – střed | 12076:51032 | 12076:52032 | 12076:53032 | 12076:54032 | 12076:55032 |
+| Austrálie – střed 2 | 12076:51033 | 12076:52033 | 12076:53033 | 12076:54033 | 12076:55033 |
 | **Indie** | |
-| Indie – jih | 12076:51019 | 12076:52019 | 12076:53019 | 12076:54019 |
-| Indie – západ | 12076:51018 | 12076:52018 | 12076:53018 | 12076:54018 |
-| Indie – střed | 12076:51017 | 12076:52017 | 12076:53017 | 12076:54017 |
+| Indie – jih | 12076:51019 | 12076:52019 | 12076:53019 | 12076:54019 | 12076:55019 |
+| Indie – západ | 12076:51018 | 12076:52018 | 12076:53018 | 12076:54018 | 12076:55018 |
+| Indie – střed | 12076:51017 | 12076:52017 | 12076:53017 | 12076:54017 | 12076:55017 |
 | **Jižní Korea** | |
-| Jižní Korea – jih | 12076:51028 | 12076:52028 | 12076:53028 | 12076:54028 |
-| Jižní Korea – střed | 12076:51029 | 12076:52029 | 12076:53029 | 12076:54029 |
+| Jižní Korea – jih | 12076:51028 | 12076:52028 | 12076:53028 | 12076:54028 | 12076:55028 |
+| Jižní Korea – střed | 12076:51029 | 12076:52029 | 12076:53029 | 12076:54029 | 12076:55029 |
 | **Jižní Afrika**| |
-| Jižní Afrika – sever | 12076:51034 | 12076:52034 | 12076:53034 | 12076:54034 |
-| Jižní Afrika – západ | 12076:51035 | 12076:52035 | 12076:53035 | 12076:54035 |
+| Jižní Afrika – sever | 12076:51034 | 12076:52034 | 12076:53034 | 12076:54034 | 12076:55034 |
+| Jižní Afrika – západ | 12076:51035 | 12076:52035 | 12076:53035 | 12076:54035 | 12076:55035 |
 | **Spojené arabské emiráty**| |
-| Spojené arabské emiráty sever | 12076:51036 | 12076:52036 | 12076:53036 | 12076:54036 |
-| Spojené arabské emiráty – střed | 12076:51037 | 12076:52037 | 12076:53037 | 12076:54037 |
+| Spojené arabské emiráty sever | 12076:51036 | 12076:52036 | 12076:53036 | 12076:54036 | 12076:55036 |
+| Spojené arabské emiráty – střed | 12076:51037 | 12076:52037 | 12076:53037 | 12076:54037 | 12076:55037 |
 
 
 Všechny trasy inzerované Microsoftem budou označené odpovídající hodnotou komunity. 
@@ -226,6 +226,7 @@ Kromě výše uvedeného bude Microsoft také označovat předpony podle služby
 | CRM Online\*\*\*\* |12076:5040 |
 | Globální služby Azure\* | 12076:5050 |
 | Azure Active Directory |12076:5060 |
+| Azure Resource Manager |12076:5070 |
 | Další online služby Office 365 * * | 12076:5100 |
 
 \*Služba Azure Global Services v tuto chvíli obsahuje jenom Azure DevOps. \

@@ -1,25 +1,14 @@
 ---
 title: Použití PowerShellu ke správě Azure Service Busch prostředků | Microsoft Docs
 description: Tento článek vysvětluje, jak používat modul Azure PowerShell k vytváření a správě entit Service Bus (obory názvů, fronty, témata, odběry).
-services: service-bus-messaging
-documentationcenter: .NET
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: 8605e269f09e4fedf7a61817a3634e75081593ca
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.date: 06/23/2020
+ms.openlocfilehash: 7ff79d8cf2aac09a0b8d2f04ade0b3d1d9b2e74e
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82890240"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341757"
 ---
 # <a name="use-powershell-to-manage-service-bus-resources"></a>Použití PowerShellu ke správě Service Busch prostředků
 
@@ -45,7 +34,7 @@ Prvním krokem je použití PowerShellu pro přihlášení k účtu Azure a pře
 
 Při práci s oborem názvů Service Bus můžete použít rutiny [Get-AzServiceBusNamespace](/powershell/module/az.servicebus/get-azservicebusnamespace), [New-AzServiceBusNamespace](/powershell/module/az.servicebus/new-azservicebusnamespace), [Remove-AzServiceBusNamespace](/powershell/module/az.servicebus/remove-azservicebusnamespace)a [set-AzServiceBusNamespace](/powershell/module/az.servicebus/set-azservicebusnamespace) .
 
-Tento příklad vytvoří ve skriptu několik místních proměnných. `$Namespace` a `$Location`.
+Tento příklad vytvoří ve skriptu několik místních proměnných. `$Namespace`a `$Location` .
 
 * `$Namespace`je název oboru názvů Service Bus, se kterým chceme pracovat.
 * `$Location`Určuje datové centrum, ve kterém zřizujeme obor názvů.

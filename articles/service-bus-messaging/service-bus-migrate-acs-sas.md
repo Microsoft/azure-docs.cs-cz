@@ -1,23 +1,14 @@
 ---
 title: Azure Service Bus – migrace na autorizaci sdíleného přístupového podpisu
 description: Přečtěte si o migraci z Azure Active Directory Access Control Service na autorizaci sdíleného přístupového podpisu.
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/27/2020
-ms.author: aschhab
-ms.openlocfilehash: 532bbaf0b983b2d4310780686777cbe895afebe4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 9ef6eda205af150a20236da68e1b6b1dbf91059e
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76774623"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85340119"
 ---
 # <a name="service-bus---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Service Bus – migrace z Azure Active Directory Access Control Service na autorizaci sdíleného přístupového podpisu
 
@@ -29,11 +20,11 @@ SAS má výhodu v tom, že není přímo závislý na jiné službě, ale dá se
 
 Pro všechny existující aplikace, které jsou závislé na službě ACS, doporučujeme zákazníkům migrovat své aplikace tak, aby se místo toho spoléhali na SAS.
 
-## <a name="migration-scenarios"></a> Scénáře migrace
+## <a name="migration-scenarios"></a>Scénáře migrace
 
 Služby ACS a Service Bus jsou integrovány prostřednictvím sdíleného vědomí *podpisového klíče*. Podpisový klíč se používá v oboru názvů ACS k podepisování tokenů autorizace a používá ho Service Bus k ověření toho, že token byl vydaný spárovaným oborem názvů ACS. Obor názvů ACS obsahuje identity služby a autorizační pravidla. Autorizační pravidla definují, která identita služby nebo který token vydaný externím zprostředkovatelem identity získá typ přístupu k části grafu oboru názvů Service Bus ve formě shody s nejdelší předponou.
 
-Pravidlo služby ACS může například **udělit deklaraci identity pro** předponu `/` cesty k identitě služby, což znamená, že token vydaný službou ACS na základě tohoto pravidla uděluje oprávnění klienta k odesílání všem entitám v oboru názvů. Pokud je `/abc`Předpona cesty, je identita omezena na odeslání do entit s názvem `abc` nebo uspořádané pod touto předponou. Předpokládá se, že čtenáři těchto pokynů k migraci už znají tyto koncepty.
+Pravidlo služby ACS může například **udělit deklaraci identity pro** předponu cesty `/` k identitě služby, což znamená, že token vydaný službou ACS na základě tohoto pravidla uděluje oprávnění klienta k odesílání všem entitám v oboru názvů. Pokud je předpona cesty `/abc` , je identita omezena na odeslání do entit s názvem `abc` nebo uspořádané pod touto předponou. Předpokládá se, že čtenáři těchto pokynů k migraci už znají tyto koncepty.
 
 Scénáře migrace spadají do tří hlavních kategorií:
 

@@ -11,18 +11,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c851b5ef024e6584e6f8c93995208b08a91fbb60
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: 82c66231bcbdcaeb5371838291f1e6998f9f8bd7
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "62095485"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85356164"
 ---
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Azure AD Connect synchronizace: zpracování chyb LargeObject způsobených atributem userCertificate
 
@@ -131,7 +131,7 @@ Nové pravidlo synchronizace musí mít stejný **Filtr oboru** a **vyšší pri
 
     | Atribut | Hodnota |
     | --- | --- |
-    | Typ toku |**Expression** |
+    | Typ toku |**Vyjádření** |
     | Cílový atribut |**userCertificate** |
     | Zdrojový atribut |*Použijte následující výraz*:`IIF(IsNullOrEmpty([userCertificate]), NULL, IIF((Count([userCertificate])> 15),AuthoritativeNull,[userCertificate]))` |
     

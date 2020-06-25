@@ -1,22 +1,14 @@
 ---
 title: Konfigurace pravidel brány firewall protokolu IP pro Azure Service Bus
 description: Jak používat pravidla brány firewall k povolení Azure Service Bus Připojení z konkrétních IP adres.
-services: service-bus
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus
-ms.devlang: na
 ms.topic: article
-ms.date: 05/14/2020
-ms.author: aschhab
-ms.openlocfilehash: fdd3540248c5210e2f6fc47f439641c007a793d8
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 06/23/2020
+ms.openlocfilehash: a5ae491f82e73c5364788dff8b531e81d17ebb68
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647805"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341447"
 ---
 # <a name="configure-ip-firewall-rules-for-azure-service-bus"></a>Konfigurace pravidel brány firewall protokolu IP pro Azure Service Bus
 Ve výchozím nastavení jsou Service Bus obory názvů přístupné z Internetu, pokud požadavek přichází s platným ověřováním a autorizací. Pomocí brány firewall protokolu IP je můžete omezit na více než jenom na sadu IPv4 adres nebo rozsahů IPv4 adres v [CIDR (směrování mezi doménami bez třídy)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .

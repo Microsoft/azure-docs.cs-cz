@@ -1,18 +1,16 @@
 ---
 title: Integrace Azure Service Bus se službou Azure Private Link
 description: Naučte se integrovat Azure Service Bus se službou Azure Private Link.
-services: service-bus-messaging
 author: spelluru
 ms.author: spelluru
-ms.date: 03/13/2020
-ms.service: service-bus-messaging
+ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: a78375a3acf5c56d9a59c0f4b6113a063f8c431a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 4516405472abf733c8ef06fb5ee5855f8e97d396
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650960"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85340432"
 ---
 # <a name="integrate-azure-service-bus-with-azure-private-link"></a>Integrace Azure Service Bus s privátním propojením Azure
 
@@ -57,7 +55,7 @@ Váš privátní koncový bod a virtuální síť musí být ve stejné oblasti.
 
 Pokud již máte existující obor názvů, můžete vytvořit privátní koncový bod pomocí následujících kroků:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 2. Na panelu hledání zadejte **Service Bus**.
 3. V seznamu vyberte **obor názvů** , do kterého chcete přidat privátní koncový bod.
 4. V části **Nastavení**vyberte kartu **síť** .
@@ -173,9 +171,9 @@ Existují čtyři stavy zřizování:
 
 | Akce služby | Stav privátního koncového bodu příjemce služby | Popis |
 |--|--|--|
-| Žádné | Čekající na vyřízení | Připojení je vytvořeno ručně a čeká na schválení vlastníkem prostředku privátního odkazu. |
+| Žádná | Čekající na vyřízení | Připojení je vytvořeno ručně a čeká na schválení vlastníkem prostředku privátního odkazu. |
 | Schválení | Schválené | Připojení bylo automaticky nebo ručně schváleno a je připraveno k použití. |
-| Odmítnout | Rejected | Připojení bylo odmítnuto vlastníkem prostředku privátního odkazu. |
+| Odmítnout | Zamítnuto | Připojení bylo odmítnuto vlastníkem prostředku privátního odkazu. |
 | Odebrat | Propojení | Připojení bylo odebráno vlastníkem prostředku privátního propojení, soukromý koncový bod bude informativní a měl by být odstraněn pro vyčištění. |
  
 ###  <a name="approve-reject-or-remove-a-private-endpoint-connection"></a>Schválení, zamítnutí nebo odebrání připojení privátního koncového bodu

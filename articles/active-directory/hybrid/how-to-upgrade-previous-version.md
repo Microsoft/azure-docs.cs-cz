@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: 31f084d8-2b89-478c-9079-76cf92e6618f
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: Identity
 ms.date: 04/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a3e7373a8b0354a3d08debf944f2f77f1609382
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 7a14249f28da15f04a214c2a1cb4bd415fb59ce9
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60347687"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85356623"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: Upgrade z předchozí verze na nejnovější verzi
 Toto téma popisuje různé metody, které můžete použít k upgradu instalace služby Azure Active Directory (Azure AD) Connect na nejnovější verzi. Doporučujeme, abyste si zachovali aktuální verze Azure AD Connect. Při provádění podstatné změny konfigurace můžete také použít kroky v části kroková [migrace](#swing-migration) .
@@ -54,7 +54,7 @@ Pokud jste provedli změny v rámci předdefinovaných pravidel synchronizace, t
 
 Během místního upgradu můžou být zavedené změny, které vyžadují konkrétní synchronizační aktivity (včetně kroku úplného importu a úplné synchronizace), které se spustí po dokončení upgradu. Pokud chcete takové aktivity odložit, přečtěte si část [postup odložení úplné synchronizace po upgradu](#how-to-defer-full-synchronization-after-upgrade).
 
-Pokud používáte Azure AD Connect s nestandardním konektorem (například obecný konektor LDAP a obecný konektor SQL), musíte aktualizovat odpovídající konfiguraci konektoru v [Synchronization Service Manager](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-connectors) po místním upgradu. Podrobnosti o tom, jak aktualizovat konfiguraci konektoru, najdete v části [konektor – Historie vydání verze – řešení potíží](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-connector-version-history#troubleshooting). Pokud neaktualizujete kroky pro konfiguraci, import a export, nebudou pro konektor správně fungovat. V protokolu událostí aplikace se zobrazí následující chybová zpráva *verze sestavení v konfiguraci konektoru AAD ("X.X.xxx. X ") je starší než skutečná verze (" X.X.XXX. X ") pro" C:\Program Files\Microsoft Azure AD Sync\Extensions\Microsoft.IAM.Connector.GenericLdap.dll ".*
+Pokud používáte Azure AD Connect s nestandardním konektorem (například obecný konektor LDAP a obecný konektor SQL), musíte aktualizovat odpovídající konfiguraci konektoru v [Synchronization Service Manager](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-connectors) po místním upgradu. Podrobnosti o tom, jak aktualizovat konfiguraci konektoru, najdete v části [konektor – Historie vydání verze – řešení potíží](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-connector-version-history#troubleshooting). Pokud neaktualizujete kroky pro konfiguraci, import a export, nebudou pro konektor správně fungovat. V protokolu událostí aplikace se zobrazí následující chybová zpráva *verze sestavení v konfiguraci konektoru AAD ("X.X.xxx. X ") je starší než skutečná verze (" X.X.XXX. X ") adresáře" C:\Program Files\Microsoft Azure AD Sync\Extensions\Microsoft.IAM.Connector.GenericLdap.dll ".*
 
 ## <a name="swing-migration"></a>Postupná migrace
 Pokud máte složité nasazení nebo mnoho objektů, může být nepraktické provést místní upgrade v živém systému. Pro některé zákazníky může tento proces trvat několik dní – a během této doby se nezpracují žádné rozdílové změny. Tuto metodu můžete použít také v případě, že plánujete udělat podstatné změny v konfiguraci a chcete si je vyzkoušet před jejich odesláním do cloudu.

@@ -1,25 +1,14 @@
 ---
 title: Azure Service Bus – výjimky zasílání zpráv | Microsoft Docs
 description: Tento článek poskytuje seznam výjimek zasílání zpráv Azure Service Bus a navrhovaných akcí, které se mají učinit, když dojde k výjimce.
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: 3d8526fe-6e47-4119-9f3e-c56d916a98f9
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 03/23/2020
-ms.author: aschhab
-ms.openlocfilehash: f1a4caf6ffd5740b4227aff2f38d9cb709c77b48
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.date: 06/23/2020
+ms.openlocfilehash: dd57938c24565257aefebc89a8b070865e6791af
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82739343"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341642"
 ---
 # <a name="service-bus-messaging-exceptions"></a>Service Bus výjimky zasílání zpráv
 Tento článek obsahuje seznam výjimek rozhraní .NET generovaných rozhraními API .NET Framework. 
@@ -29,7 +18,7 @@ Rozhraní API pro zasílání zpráv generují výjimky, které mohou být v ná
 
 1. Chyba kódování uživatele ([System. ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx), [System. InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx), [System. OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx), [System. Runtime. Serialization. SerializationException](https://msdn.microsoft.com/library/system.runtime.serialization.serializationexception.aspx)). Obecná akce: Zkuste opravit kód, než budete pokračovat.
 2. Chyba nastavení/konfigurace ([Microsoft. ServiceBus. Messaging. MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.servicebus.messagingentitynotfoundexception), [System. UnauthorizedAccessException](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx). Obecná akce: Zkontrolujte konfiguraci a v případě potřeby proveďte změny.
-3. Přechodné výjimky ([Microsoft. ServiceBus. Messaging. MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception), [Microsoft. ServiceBus. Messaging. výjimka serverbusyexception](/dotnet/api/microsoft.azure.servicebus.serverbusyexception), [Microsoft. ServiceBus. Messaging. MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception)). Obecná akce: zkuste operaci zopakovat nebo upozorněte uživatele. `RetryPolicy` Třídu v klientské sadě SDK lze nakonfigurovat tak, aby zpracovávala opakované pokusy automaticky. Další informace najdete v tématu [pokyny pro opakování](/azure/architecture/best-practices/retry-service-specific#service-bus).
+3. Přechodné výjimky ([Microsoft. ServiceBus. Messaging. MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception), [Microsoft. ServiceBus. Messaging. výjimka serverbusyexception](/dotnet/api/microsoft.azure.servicebus.serverbusyexception), [Microsoft. ServiceBus. Messaging. MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception)). Obecná akce: zkuste operaci zopakovat nebo upozorněte uživatele. `RetryPolicy`Třídu v klientské sadě SDK lze nakonfigurovat tak, aby zpracovávala opakované pokusy automaticky. Další informace najdete v tématu [pokyny pro opakování](/azure/architecture/best-practices/retry-service-specific#service-bus).
 4. Další výjimky ([System. Transactions. TransactionException](https://msdn.microsoft.com/library/system.transactions.transactionexception.aspx), [System. TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx), [Microsoft. ServiceBus. Messaging. MessageLockLostException](/dotnet/api/microsoft.azure.servicebus.messagelocklostexception), [Microsoft. ServiceBus. Messaging. SessionLockLostException](/dotnet/api/microsoft.azure.servicebus.sessionlocklostexception)). Obecná akce: specifická pro typ výjimky; informace najdete v tabulce v následující části: 
 
 ## <a name="exception-types"></a>Typy výjimek
@@ -74,7 +63,7 @@ Message: The maximum entity size has been reached or exceeded for Topic: 'xxx-xx
 
 Zpráva uvádí, že téma překročilo omezení velikosti, v tomto případě 1 GB (výchozí omezení velikosti). 
 
-### <a name="namespaces"></a>Jmenné prostory
+### <a name="namespaces"></a>Obory názvů
 
 Pro obory názvů může [QuotaExceededException](/dotnet/api/microsoft.azure.servicebus.quotaexceededexception) značit, že aplikace překročila maximální počet připojení k oboru názvů. Příklad:
 

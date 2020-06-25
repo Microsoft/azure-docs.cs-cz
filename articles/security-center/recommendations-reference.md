@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2020
 ms.author: memildin
-ms.openlocfilehash: 647d0b13930109b093532ce0b330e9b3eb6d439b
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 92df0a7919a7d01b062356bfa4d32cc701e1e6f4
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85260946"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341282"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Doporučení zabezpečení – referenční příručka
 
@@ -153,7 +153,7 @@ Vaše zabezpečené skóre vychází z počtu Security Center doporučení, kter
 |**Je třeba povolit transparentní šifrování dat databází SQL.**|Povolit transparentní šifrování dat pro ochranu neaktivních dat a splnění požadavků na dodržování předpisů.<br>(Související zásady: transparentní šifrování dat pro databáze SQL by měly být povolené)|Nízká|**Ano**|SQL|
 |**Posouzení ohrožení zabezpečení by mělo být povoleno na SQL Database**|Posouzení ohrožení zabezpečení může zjišťovat, sledovat a pomáhat při nápravě potenciálních ohrožení zabezpečení databáze.<br>(Související zásady: posouzení ohrožení zabezpečení by mělo být povolené na vašich serverech SQL Server.)|Vysoká|**Ano**|SQL|
 |**Posouzení ohrožení zabezpečení by mělo být povoleno na spravované instanci SQL**|Posouzení ohrožení zabezpečení může zjišťovat, sledovat a pomáhat při nápravě potenciálních ohrožení zabezpečení databáze.<br>(Související zásady: posouzení ohrožení zabezpečení by mělo být povolené na spravované instanci SQL.)|Vysoká|**Ano**|SQL|
-|**Ohrožení zabezpečení vašich databází SQL na virtuálních počítačích by mělo být opraveno.**|Posouzení ohrožení zabezpečení SQL prohledává chyby zabezpečení v databázi a zpřístupňuje jakékoli odchylky od osvědčených postupů, jako jsou například chyby konfigurace, nadměrné oprávnění a nechráněná citlivá data. Řešení zjištěných slabých míst může významně zlepšit stature zabezpečení databáze.|Vysoká|N|SQL|
+|**Ohrožení zabezpečení na vašich serverech SQL na počítačích by mělo být opraveno**|Posouzení ohrožení zabezpečení SQL prohledává chyby zabezpečení v databázi a zpřístupňuje jakékoli odchylky od osvědčených postupů, jako jsou například chyby konfigurace, nadměrné oprávnění a nechráněná citlivá data. Řešení zjištěných slabých míst může významně zlepšit stature zabezpečení databáze.|Vysoká|N|SQL|
 |**Ohrožení zabezpečení vašich databází SQL by mělo být opraveno**|Posouzení ohrožení zabezpečení SQL prohledává chyby zabezpečení v databázi a zpřístupňuje jakékoli odchylky od osvědčených postupů, jako jsou například chyby konfigurace, nadměrné oprávnění a nechráněná citlivá data. Řešení zjištěných slabých míst může významně zlepšit stature zabezpečení databáze.<br>(Související zásady: ohrožení zabezpečení vašich databází SQL by měla být opravená.)|Vysoká|N|SQL|
 ||||||
 

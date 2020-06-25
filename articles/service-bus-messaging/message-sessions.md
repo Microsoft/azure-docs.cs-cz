@@ -1,24 +1,14 @@
 ---
 title: Relace Azure Service Bus zpráv | Microsoft Docs
 description: Tento článek vysvětluje, jak pomocí relací povolit společné a seřazené zpracování neohraničených sekvencí souvisejících zpráv.
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 05/20/2020
-ms.author: aschhab
-ms.openlocfilehash: 9cedf3678fc73b004c142380b4ba69c10ca72ebf
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.date: 06/23/2020
+ms.openlocfilehash: c1b714df1df7e2c3ba39c63581dc3c40a2ff9d1e
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726991"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341192"
 ---
 # <a name="message-sessions"></a>Relace zpráv
 Microsoft Azure Service Bus relace umožňují společné a seřazené zpracování neohraničených sekvencí souvisejících zpráv. Relace se dají použít v vzorcích **First in, First out (FIFO)** a **Request-response** . Tento článek popisuje, jak používat relace k implementaci těchto vzorů při použití Service Bus. 
@@ -88,7 +78,7 @@ Definice počtu doručení na zprávu v kontextu relací se mírně liší od de
 
 | Scénář | Zvyšuje se počet doručení zprávy |
 |----------|---------------------------------------------|
-| Relace je přijata, ale zámek relace vyprší (z důvodu vypršení časového limitu). | Ano |
+| Relace je přijata, ale zámek relace vyprší (z důvodu vypršení časového limitu). | Yes |
 | Relace je přijata, zprávy v relaci nejsou dokončeny (i v případě, že jsou uzamčené) a relace je zavřena. | No |
 | Relace je přijata, zprávy jsou dokončeny a relace je explicitně zavřena. | Není k dispozici (Jedná se o standardní tok. Z relace se odeberou tyto zprávy.) |
 

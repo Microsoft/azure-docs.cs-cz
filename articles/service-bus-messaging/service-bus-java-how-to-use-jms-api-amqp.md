@@ -1,25 +1,15 @@
 ---
 title: Použití AMQP s rozhraním API služby Java Message Service & Azure Service Bus
 description: Jak používat službu JMS (Java Message Service) s Azure Service Bus a rozšířený protokol řízení front zpráv (AMQP) (AMQP) 1,0.
-services: service-bus-messaging
-documentationcenter: java
-author: axisc
-editor: spelluru
-ms.assetid: be766f42-6fd1-410c-b275-8c400c811519
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: Java
 ms.topic: article
-ms.date: 10/22/2019
-ms.author: aschhab
+ms.date: 06/23/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: cd06838abbb69af5684fdea18c42f6a8f95ffe2f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ccea6175d0baec56b609538d15c32892bb2edff0
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77371251"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341724"
 ---
 # <a name="use-the-java-message-service-jms-with-azure-service-bus-and-amqp-10"></a>Použití JMS (Java Message Service) s Azure Service Bus a AMQP 1,0
 V tomto článku se dozvíte, jak používat funkce Azure Service Bus zasílání zpráv (fronty a témata pro publikování a odběr) z aplikací Java pomocí oblíbeného standardu rozhraní API pro JMS (Java Message Service). K dispozici je [doprovodný článek](service-bus-amqp-dotnet.md) , který vysvětluje, jak to samé provést pomocí rozhraní API Azure Service Bus .NET. Tyto dvě příručky můžete použít společně a získat další informace o zasílání zpráv mezi různými platformami pomocí AMQP 1,0.
@@ -29,7 +19,7 @@ Rozšířený protokol řízení front zpráv (AMQP) (AMQP) 1,0 je efektivní a 
 Podpora AMQP 1,0 v Azure Service Bus znamená, že můžete používat funkce řazení a publikování zprostředkovaných zpráv z různých platforem pomocí efektivního binárního protokolu. Kromě toho můžete sestavovat aplikace tvořené komponentami sestavenými pomocí kombinace jazyků, platforem a operačních systémů.
 
 ## <a name="get-started-with-service-bus"></a>Začínáme se službou Service Bus
-V tomto průvodci se předpokládá, že už máte obor názvů Service Bus obsahující frontu s názvem `basicqueue`. Pokud to neuděláte, můžete [vytvořit obor názvů a frontu](service-bus-create-namespace-portal.md) pomocí [Azure Portal](https://portal.azure.com). Další informace o tom, jak vytvořit Service Bus obory názvů a fronty, najdete v tématu Začínáme [s Service Bus fronty](service-bus-dotnet-get-started-with-queues.md).
+V tomto průvodci se předpokládá, že už máte obor názvů Service Bus obsahující frontu s názvem `basicqueue` . Pokud to neuděláte, můžete [vytvořit obor názvů a frontu](service-bus-create-namespace-portal.md) pomocí [Azure Portal](https://portal.azure.com). Další informace o tom, jak vytvořit Service Bus obory názvů a fronty, najdete v tématu Začínáme [s Service Bus fronty](service-bus-dotnet-get-started-with-queues.md).
 
 > [!NOTE]
 > Dělené fronty a témata také podporují AMQP. Další informace najdete v tématech [rozdělené entity zasílání zpráv](service-bus-partitioning.md) a [Podpora AMQP 1,0 pro Service Bus dělené fronty a témata](service-bus-partitioned-queues-and-topics-amqp-overview.md).
@@ -37,11 +27,11 @@ V tomto průvodci se předpokládá, že už máte obor názvů Service Bus obsa
 > 
 
 ## <a name="downloading-the-amqp-10-jms-client-library"></a>Stažení klientské knihovny AMQP 1,0 JMS
-Informace o tom, kde stáhnout nejnovější verzi klientské knihovny Apache Qpid JMS AMQP 1,0, najdete [https://qpid.apache.org/download.html](https://qpid.apache.org/download.html)v části.
+Informace o tom, kde stáhnout nejnovější verzi klientské knihovny Apache Qpid JMS AMQP 1,0, najdete v části [https://qpid.apache.org/download.html](https://qpid.apache.org/download.html) .
 
 Při sestavování a spouštění aplikací JMS pomocí Service Bus musíte do cesty k cestě Java přidat následující čtyři soubory JAR z distribučního archivu Apache Qpid JMS AMQP 1,0:
 
-* Geronimo-JMS\_1,1\_spec-1.0. jar
+* Geronimo-JMS \_ 1,1 \_ spec-1.0. jar
 * qpid-JMS-Client-[verze]. jar
 
 > [!NOTE]
@@ -121,7 +111,7 @@ MessageConsumer consumer = session.createConsumer(queue);
 Při použití JMS s Service Bus se nevyžadují žádná speciální rozhraní API ani možnosti. Existuje však několik omezení, která budou zahrnuta později. Stejně jako u libovolné aplikace JMS je první požadovaná věc konfigurací prostředí JNDI, aby bylo možné přeložit **ConnectionFactory** a cíle.
 
 #### <a name="configure-the-jndi-initialcontext"></a>Konfigurace JNDI InitialContext
-Prostředí JNDI je konfigurováno předáním zatřiďovací tabulky informací o konfiguraci do konstruktoru třídy javax. pojmenování. InitialContext. Dva vyžadované elementy v zatřiďovací tabulce jsou název třídy počátečního kontextu objektu pro vytváření kontextu a adresy URL poskytovatele. Následující kód ukazuje, jak nakonfigurovat prostředí JNDI tak, aby používalo Qpidho poskytovatele JNDI s vlastnostmi souboru s názvem **ServiceBus. Properties**.
+Prostředí JNDI je konfigurováno předáním zatřiďovací tabulky informací o konfiguraci do konstruktoru třídy javax.naming.InitialContext. Dva vyžadované elementy v zatřiďovací tabulce jsou název třídy počátečního kontextu objektu pro vytváření kontextu a adresy URL poskytovatele. Následující kód ukazuje, jak nakonfigurovat prostředí JNDI tak, aby používalo Qpidho poskytovatele JNDI s vlastnostmi souboru s názvem **ServiceBus. Properties**.
 
 ```java
 // set up JNDI context
@@ -385,6 +375,6 @@ Service Bus AMQP 1,0 můžete také použít z jiných jazyků, včetně .NET, C
 * [Podpora AMQP 1,0 v Azure Service Bus](service-bus-amqp-overview.md)
 * [Jak používat AMQP 1,0 s rozhraním API Service Bus .NET](service-bus-dotnet-advanced-message-queuing.md)
 * [Příručka pro vývojáře Service Bus AMQP 1,0](service-bus-amqp-dotnet.md)
-* [Začínáme s frontami Service Bus](service-bus-dotnet-get-started-with-queues.md)
+* [Začínáme s frontami služby Service Bus](service-bus-dotnet-get-started-with-queues.md)
 * [Středisko pro vývojáře Java](https://azure.microsoft.com/develop/java/)
 

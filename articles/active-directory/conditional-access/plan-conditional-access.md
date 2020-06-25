@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff25cb15257302ac806aa9480d6d7b911eb36d06
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 83cc75c1d69ee7232edf0c21643d25027b97f088
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253286"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85339719"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>Plánování nasazení podmíněného přístupu
 
@@ -216,7 +216,7 @@ Přístupové tokeny se ve výchozím nastavení vydávají, pokud podmínka zá
 
 ### <a name="minimize-the-number-of-ca-policies"></a>Minimalizace počtu zásad certifikační autority
 
-Vytváření zásad pro jednotlivé aplikace nebude efektivní a vede k obtížné správě. Podmíněný přístup použije jenom prvních 195 zásad na uživatele. Doporučujeme analyzovat své aplikace a seskupit je do aplikací, které mají stejné požadavky na prostředky pro stejné uživatele. Pokud například všechny aplikace Office 365 nebo všechny aplikace pro HR mají stejné požadavky pro stejné uživatele, vytvořte jednu zásadu a zahrňte všechny aplikace, na které se vztahuje. 
+Vytváření zásad pro jednotlivé aplikace nebude efektivní a vede k obtížné správě. Podmíněný přístup použije jenom prvních 195 zásad na uživatele. Doporučujeme analyzovat své aplikace a seskupit je do aplikací, které mají stejné požadavky na prostředky pro stejné uživatele. Pokud například všechny Microsoft 365 aplikace nebo všechny aplikace pro personální oddělení mají stejné požadavky pro stejné uživatele, vytvořte jednu zásadu a zahrňte všechny aplikace, na které se vztahuje. 
 
 ### <a name="set-up-emergency-access-accounts"></a>Nastavení účtů pro nouzový přístup
 
@@ -380,7 +380,7 @@ Některé organizace mají pro tento účel testovací klienty. Může však bý
 
 Testovací plán je důležitý pro porovnání očekávaných výsledků a skutečných výsledků. Před testováním byste měli vždycky očekávat. Následující tabulka popisuje příklady testovacích případů. Upravte scénáře a očekávané výsledky na základě toho, jak jsou nakonfigurované zásady certifikační autority.
 
-| Zásady| Scénář| Očekávaný výsledek |
+| Zásada| Scénář| Očekávaný výsledek |
 | - | - | - |
 | [Vyžadovat MFA, pokud není v práci](untrusted-networks.md)| Autorizovaný uživatel se přihlásí do aplikace v důvěryhodném umístění/v práci.| Uživatel není vyzván k MFA. |
 | [Vyžadovat MFA, pokud není v práci](untrusted-networks.md)| Autorizovaný uživatel se přihlásí do aplikace, když není v důvěryhodném umístění/v práci.| Uživatel je vyzván k ověřování MFA a úspěšně se může přihlásit. |

@@ -3,14 +3,14 @@ title: Nasazení Hybrid Runbook Worker pro Linux v Azure Automation
 description: V tomto článku se dozvíte, jak nainstalovat Azure Automation Hybrid Runbook Worker ke spouštění Runbooků na počítačích se systémem Linux v místním datovém centru nebo v cloudovém prostředí.
 services: automation
 ms.subservice: process-automation
-ms.date: 06/17/2020
+ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: a8679c189e77fe7b191a645b07c68b6101604644
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: c569c83ed0bc5d78f0e5670c802188ee9fd8fd53
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85079157"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85340803"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Nasazení Hybrid Runbook Worker pro Linux
 
@@ -82,11 +82,11 @@ Procesy Hybrid Runbook Worker pro Linux podporují v Azure Automation omezené s
 
 |Typ Runbooku | Podporuje se |
 |-------------|-----------|
-|Python 2 |Ano |
+|Python 2 |Yes |
 |PowerShell |Ano<sup>1</sup> |
-|Pracovní postup PowerShellu |Ne |
-|Grafický |Ne |
-|Grafický pracovní postup PowerShellu |Ne |
+|Pracovní postup PowerShellu |No |
+|Grafický |No |
+|Grafický pracovní postup PowerShellu |No |
 
 <sup>1</sup> Runbooky PowerShellu vyžadují, aby byl na počítači se systémem Linux nainstalovaný PowerShell Core. Další informace o tom, jak ji nainstalovat, najdete v tématu [instalace PowerShellu Core v systému Linux](/powershell/scripting/install/installing-powershell-core-on-linux) .
 
@@ -120,13 +120,25 @@ Pokud chcete nainstalovat a nakonfigurovat Hybrid Runbook Worker pro Linux, prov
 
     Ve výsledcích hledání byste měli vidět záznamy prezenčního signálu pro daný počítač, což znamená, že je připojený a oznamuje službě zprávy. Ve výchozím nastavení každý Agent přepošle záznam prezenčního signálu do přiřazeného pracovního prostoru.
 
-3. Spuštěním následujícího příkazu přidejte počítač do skupiny Hybrid Runbook Worker a změňte hodnoty parametrů *-w*, *-k*, *-g*a *-e*. Pro parametr *-g* nahraďte hodnotu názvem Hybrid Runbook Worker skupiny, ke které se má nový hybrid Runbook Worker Linux připojit. Pokud název ve vašem účtu Automation neexistuje, vytvoří se nová skupina Hybrid Runbook Worker s tímto názvem.
+3. Spuštěním následujícího příkazu přidejte počítač do skupiny Hybrid Runbook Worker a zadejte hodnoty parametrů `-w` ,, `-k` `-g` a `-e` .
+
+    Můžete získat informace požadované pro parametry `-k` a `-e` ze stránky **klíče** ve vašem účtu Automation. V části **Nastavení účtu** na levé straně stránky vyberte **klíče** .
+
+    ![Stránka Správa klíčů](media/automation-hybrid-runbook-worker/elements-panel-keys.png)
+
+    * Pro `-e` parametr Zkopírujte hodnotu pro **URL**.
+
+    * Pro `-k` parametr Zkopírujte hodnotu **primárního přístupového klíče**.
+
+    * Pro `-g` parametr zadejte název skupiny Hybrid Runbook Worker, ke které se má připojit nový hybrid Runbook Worker pro Linux. Pokud tato skupina už v účtu Automation existuje, do ní se přidá aktuální počítač. Pokud tato skupina neexistuje, vytvoří se s tímto názvem.
+
+    * Pro `-w` parametr zadejte ID vašeho pracovního prostoru Log Analytics.
 
    ```bash
    sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/onboarding.py --register -w <logAnalyticsworkspaceId> -k <automationSharedKey> -g <hybridGroupName> -e <automationEndpoint>
    ```
 
-4. Po dokončení příkazu se na stránce Hybrid Worker skupiny v Azure Portal zobrazí nová skupina a počet členů. Pokud se jedná o existující skupinu, zvýší se počet členů. Skupinu můžete vybrat ze seznamu na stránce Hybrid Worker skupiny a vybrat dlaždici **hybridní pracovní procesy** . Na stránce hybridní procesy se zobrazí všichni členové skupiny v seznamu.
+4. Po dokončení příkazu se na stránce Hybrid Worker skupiny v účtu Automation zobrazí nová skupina a počet členů. Pokud se jedná o existující skupinu, zvýší se počet členů. Skupinu můžete vybrat ze seznamu na stránce Hybrid Worker skupiny a vybrat dlaždici **hybridní pracovní procesy** . Na stránce hybridní procesy se zobrazí všichni členové skupiny v seznamu.
 
     > [!NOTE]
     > Pokud pro virtuální počítač Azure používáte rozšíření Log Analytics virtuálních počítačů pro Linux, doporučujeme, `autoUpgradeMinorVersion` aby nastavení na `false` Automatické upgradování verzí mohlo způsobovat problémy s Hybrid Runbook Worker. Informace o tom, jak rozšíření upgradovat ručně, najdete v tématu nasazení rozhraní příkazového [řádku Azure CLI](../virtual-machines/extensions/oms-linux.md#azure-cli-deployment).

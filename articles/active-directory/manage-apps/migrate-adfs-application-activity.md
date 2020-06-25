@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 01/14/2019
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e379b81fafb156b1ea71a8992abfdc060065b8b2
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 59502e01a96b603067bd80b92bcf49136f8cef4e
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84763172"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85339159"
 ---
 # <a name="use-the-ad-fs-application-activity-report-preview-to-migrate-applications-to-azure-ad"></a>Použití sestavy aktivity aplikace AD FS (Preview) k migraci aplikací do služby Azure AD
 
@@ -36,8 +36,9 @@ Data aktivity aplikace AD FS jsou k dispozici uživatelům, kteří mají přiř
 
 * Vaše organizace musí aktuálně používat AD FS k přístupu k aplikacím.
 * Azure AD Connect Health musí být ve vašem tenantovi Azure AD povolené.
+* Je nutné nainstalovat Azure AD Connect Health pro agenta AD FS.
    * [Další informace o Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-adfs)
-   * [Začínáme s nastavením Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-agent-install)
+   * [Začněte s nastavením Azure AD Connect Health a nainstalujte agenta AD FS](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-agent-install)
 
 ## <a name="discover-ad-fs-applications-that-can-be-migrated"></a>Zjištění AD FSch aplikací, které se dají migrovat 
 
@@ -73,7 +74,7 @@ Sestava aktivity aplikace AD FS je k dispozici v Azure Portal v části Azure AD
 
 V následující tabulce jsou uvedeny všechny testy konfigurace, které se provádí v AD FSch aplikacích.
 
-|Výsledek  |Úspěch/upozornění/selhání  |Description  |
+|Výsledek  |Úspěch/upozornění/selhání  |Popis  |
 |---------|---------|---------|
 |Test – ADFSRPAdditionalAuthenticationRules <br> Pro AdditionalAuthentication se zjistilo aspoň jedno pravidlo, které není migrovat.       | Úspěch/upozornění          | Předávající strana obsahuje pravidla pro dotazování služby Multi-Factor Authentication (MFA). Pokud se chcete přesunout do služby Azure AD, přeložte tato pravidla na zásady podmíněného přístupu. Pokud používáte místní MFA, doporučujeme přejít na Azure MFA. [Přečtěte si další informace o podmíněném přístupu](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks).        |
 |Test – ADFSRPAdditionalWSFedEndpoint <br> Předávající strana má AdditionalWSFedEndpoint nastavenou na hodnotu true.       | Úspěch/neúspěch          | Předávající strana v AD FS umožňuje více koncových bodů kontrolního výrazu WS-dodávání.V současné době Azure AD podporuje jenom jeden.Pokud máte scénář, kde tento výsledek blokuje migraci, [dejte nám prosím jistotu](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695621-allow-multiple-ws-fed-assertion-endpoints).     |

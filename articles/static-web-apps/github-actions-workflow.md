@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 4d69bb69081643e0223c23a9029aabb35c8d22ef
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 92d445991aa8b90a343ad7d015787cff35ddf183
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254714"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85340940"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>Pracovní postupy akcí GitHubu pro Azure static Web Apps Preview
 
@@ -50,7 +50,9 @@ jobs:
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
+      with:
+        submodules: true
     - name: Build And Deploy
       id: builddeploy
       uses: Azure/static-web-apps-deploy@v0.0.1-preview
@@ -102,7 +104,7 @@ Každá aktivační událost události vyžaduje obslužnou rutinu události. [�
 
 V souboru pracovního postupu statického Web Apps jsou k dispozici dvě dostupné úlohy.
 
-| Name  | Description |
+| Název  | Popis |
 |---------|---------|
 |`build_and_deploy_job` | Provede se při vložení potvrzení změn nebo otevření žádosti o přijetí změn pro větev uvedenou ve `on` Vlastnosti. |
 |`close_pull_request_job` | Provede se jenom při zavření žádosti o přijetí změn, která odebere pracovní prostředí vytvořené z žádostí o přijetí změn. |
@@ -148,7 +150,7 @@ Můžete mít jemně odstupňovanou kontrolu nad tím, které příkazy se spust
 
 Nasazení vždy volá `npm install` před libovolným vlastním příkazem.
 
-| Příkaz            | Description |
+| Příkaz            | Popis |
 |---------------------|-------------|
 | `app_build_command` | Definuje vlastní příkaz, který se má spustit během nasazování aplikace statického obsahu.<br><br>Například pro konfiguraci výrobního sestavení pro úhlovou aplikaci ENTER `ng build --prod` . Pokud necháte pole prázdné, pracovní postup se pokusí spustit `npm run build` příkazy nebo `npm run build:Azure` .  |
 | `api_build_command` | Definuje vlastní příkaz, který se spustí během nasazování aplikace Azure Functions API. |

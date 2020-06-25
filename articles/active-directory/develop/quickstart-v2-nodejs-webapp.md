@@ -1,6 +1,6 @@
 ---
-title: Přidání OIDC přihlašování do webové aplikace Node. js – Microsoft Identity Platform | Azure
-description: Naučte se implementovat ověřování ve webové aplikaci Node. js pomocí OpenID Connect.
+title: Přidání přihlašování OIDC do webové aplikace Node.js – Microsoft Identity Platform | Azure
+description: Naučte se implementovat ověřování ve webové aplikaci Node.js pomocí OpenID Connect.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,24 +11,24 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 1ff92b8a9477800477ebb2d79145ddaa78831f30
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5522d35faf1888c862e0c42328f08067e7b9be26
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81536059"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85339895"
 ---
-# <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Rychlý Start: Přidání přihlašování pomocí OpenID připojení k webové aplikaci Node. js
+# <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Rychlý Start: přidání přihlášení pomocí OpenID připojení k webové aplikaci Node.js
 
-V tomto rychlém startu se dozvíte, jak nastavit ověřování OpenID Connect ve webové aplikaci vytvořené pomocí Node. js s Express. Ukázka je navržená tak, aby běžela na jakékoli platformě.
+V tomto rychlém startu se dozvíte, jak nastavit ověřování OpenID Connect ve webové aplikaci vytvořené pomocí Node.js s využitím Express. Ukázka je navržená tak, aby běžela na jakékoli platformě.
 
 ## <a name="prerequisites"></a>Požadavky
 
 K provedení této ukázky budete potřebovat:
 
-* Instalace Node. js zhttp://nodejs.org/
+* Nainstalovat Node.js zhttp://nodejs.org/
 
-* [Účet Microsoft](https://www.outlook.com) nebo [vývojářský Program sady Office 365](/office/developer-program/office-365-developer-program)
+* Buď [účet Microsoft](https://www.outlook.com) , nebo [Microsoft 365 vývojářský program](/office/developer-program/office-365-developer-program)
 
 ## <a name="register-your-application"></a>Registrace vaší aplikace
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
@@ -52,7 +52,7 @@ K provedení této ukázky budete potřebovat:
 
 1. V seznamu stránek pro aplikaci vyberte **Ověřování**.
     - V části **identifikátory URI pro přesměrování** vyberte v poli se seznamem možnost **Web** a zadejte následující identifikátor URI pro přesměrování:`http://localhost:3000/auth/openid/return`
-    - V části **Upřesnit nastavení** nastavte **adresu URL pro odhlášení** na `http://localhost:3000`.
+    - V části **Upřesnit nastavení** nastavte **adresu URL pro odhlášení** na `http://localhost:3000` .
     - V části **Upřesnit nastavení > implicitního udělení oprávnění** ověřte **tokeny ID** , protože tato ukázka vyžaduje, aby byl [tok implicitního udělení](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-implicit-grant-flow) povolen k přihlášení uživatele.
 
 1. Vyberte **Uložit**.
@@ -72,7 +72,7 @@ Z prostředí nebo příkazového řádku:
 
 `$ git clone git@github.com:AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs.git`
 
-– nebo –
+nebo
 
 `$ git clone https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs.git`
 
@@ -82,23 +82,23 @@ Z kořenového adresáře projektu spusťte příkaz:
 
 ## <a name="configure-the-application"></a>Konfigurace aplikace
 
-Zadejte parametry v `exports.creds` souboru config. js podle pokynů.
+Zadejte parametry v `exports.creds` v config.js podle pokynů.
 
-* `<tenant_name>` Aktualizujte `exports.identityMetadata` se pomocí názvu tenanta Azure AD ve formátu \*. onmicrosoft.com.
+* Aktualizujte `<tenant_name>` `exports.identityMetadata` se pomocí názvu TENANTA Azure AD ve formátu \* . onmicrosoft.com.
 * Aktualizujte `exports.clientID` ID aplikace, kterou jste si poznamenali v registraci aplikace.
 * Aktualizujte `exports.clientSecret` pomocí tajného klíče aplikace zjištěného při registraci aplikace.
 * Aktualizujte `exports.redirectUrl` identifikátor URI přesměrování, který jste si poznamenali v registraci aplikace.
 
 **Volitelná konfigurace pro produkční aplikace:**
 
-* Pokud `exports.destroySessionUrl` chcete použít jiný `post_logout_redirect_uri`, aktualizujte v souboru config. js.
+* `exports.destroySessionUrl`Pokud chcete použít jiný, aktualizujte v config.js `post_logout_redirect_uri` .
 
-* Pokud `exports.useMongoDBSessionStore` chcete používat [MongoDB](https://www.mongodb.com) nebo jiná [kompatibilní úložiště relací](https://github.com/expressjs/session#compatible-session-stores), nastavte v souboru config. js na hodnotu true.
-Výchozí úložiště relací v této ukázce je `express-session`. Výchozí úložiště relací není vhodné pro produkční prostředí.
+* `exports.useMongoDBSessionStore`Pokud chcete používat [MongoDB](https://www.mongodb.com) nebo jiná [kompatibilní úložiště relací](https://github.com/expressjs/session#compatible-session-stores), nastavte v config.js na hodnotu true.
+Výchozí úložiště relací v této ukázce je `express-session` . Výchozí úložiště relací není vhodné pro produkční prostředí.
 
-* Aktualizujte `exports.databaseUri`, pokud chcete použít úložiště relací MongoDB a jiný identifikátor URI databáze.
+* Aktualizujte `exports.databaseUri` , pokud chcete použít úložiště relací MongoDB a jiný identifikátor URI databáze.
 
-* Aktualizace `exports.mongoDBSessionMaxAge`. Tady můžete určit, jak dlouho chcete uchovat relaci v mongoDB. Jednotka má sekundu (y).
+* Aktualizace `exports.mongoDBSessionMaxAge` . Tady můžete určit, jak dlouho chcete uchovat relaci v mongoDB. Jednotka má sekundu (y).
 
 ## <a name="build-and-run-the-application"></a>Sestavení a spuštění aplikace
 
@@ -110,7 +110,7 @@ Spusťte aplikaci pomocí následujícího příkazu z příkazového řádku.
 $ node app.js
 ```
 
-**Je pro vás výstup serveru obtížné?:** K přihlášení `bunyan` v této ukázce používáme. Konzola nebude velmi smyslná, pokud nenainstalujete Bunyan a spustíte server, jak je uvedeno výše, ale přesměrujte ho prostřednictvím binárního souboru Bunyan:
+**Je pro vás výstup serveru obtížné?:** `bunyan`K přihlášení v této ukázce používáme. Konzola nebude velmi smyslná, pokud nenainstalujete Bunyan a spustíte server, jak je uvedeno výše, ale přesměrujte ho prostřednictvím binárního souboru Bunyan:
 
 ```
 $ npm install -g bunyan
@@ -120,7 +120,7 @@ $ node app.js | bunyan
 
 ### <a name="youre-done"></a>A je to hotové!
 
-Budete mít úspěšné spuštění serveru v systému `http://localhost:3000`.
+Budete mít úspěšné spuštění serveru v systému `http://localhost:3000` .
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 

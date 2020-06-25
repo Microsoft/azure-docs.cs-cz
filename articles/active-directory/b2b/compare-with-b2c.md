@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9006a70ae941abb700412a7c596627939c994028
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 1c45aae35c7c1cf2fbde436303a2ac000dfdd5ec
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587506"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85339604"
 ---
 # <a name="compare-solutions-for-external-identities-in-azure-active-directory"></a>Porovnání řešení pro externí identity v Azure Active Directory
 
@@ -36,11 +36,11 @@ Následující tabulka obsahuje podrobné porovnání různých scénářů, kte
 
 | Víceklientské aplikace  | Spolupráce externích uživatelů (B2B) | Aplikace pro spotřebitele nebo zákazníky (B2C)  |
 | ---- | --- | --- |
-| Primární scénář: podnikový software jako služba (SaaS) | Primární scénář: spolupráce pomocí aplikací Microsoftu (Office 365, teams,...) nebo vlastního softwaru pro spolupráci.  | Primární scénář: transakční aplikace využívající vlastní vyvíjené aplikace   |
+| Primární scénář: podnikový software jako služba (SaaS) | Primární scénář: spolupráce pomocí aplikací Microsoftu (Microsoft 365, týmů,...) nebo vlastního softwaru pro spolupráci.  | Primární scénář: transakční aplikace využívající vlastní vyvíjené aplikace   |
 | Určeno pro: organizace, které chtějí poskytovat softwaru mnoho podnikových zákazníků.    | Komu je určená: Organizacím, které chtějí ověřovat uživatele z partnerských organizací bez ohledu na zprostředkovatele identity.    | Určeno pro: pozvání zákazníků vašich mobilních a webových aplikací, ať mezi jednotlivci, institucionálními nebo organizačními zákazníky v adresáři služby Azure AD oddělené od adresáře vaší organizace. |
 | Podporované identity: zaměstnanci s účty Azure AD. | Podporované identity: U zaměstnanců a partnerů jsou to pracovní nebo školní účty nebo jakákoli e-mailová adresa. Brzy bude podporované přímé federování.      | Podporované identity: Koncoví uživatelé s účty místních aplikací (jakákoli e-mailová adresa nebo uživatelské jméno) nebo jiná podporovaná sociální identita s přímým federováním.       |
 | Externí uživatelé jsou spravováni ve svém vlastním adresáři izolovaně z adresáře, ve kterém byla aplikace zaregistrována.    | Externí uživatelé jsou spravováni ve stejném adresáři jako zaměstnanci, ale speciálně s poznámkami. Můžou být spravované stejným způsobem jako zaměstnanci, můžou se přidávat do stejných skupin a tak dále.    | Externí uživatelé jsou spravováni v adresáři aplikace. Spravují se odděleně od zaměstnance organizace a adresáře partnerů (pokud existuje).  |
-| Jednotné přihlašování: jednotné přihlašování pro všechny aplikace připojené k Azure AD je podporované.          | Jednotné přihlašování: jednotné přihlašování pro všechny aplikace připojené k Azure AD je podporované. Můžete třeba poskytnout přístup k aplikacím Office 365 nebo k místním a dalším aplikacím SaaS, jako je Salesforce nebo Workday.    | Jednotné přihlašování: jednotné přihlašování pro aplikace vlastněné zákazníkem v rámci Azure AD B2Cch tenantů je podporované. Jednotné přihlašování k Office 365 nebo jiným aplikacím Microsoft SaaS se nepodporuje.    |
+| Jednotné přihlašování: jednotné přihlašování pro všechny aplikace připojené k Azure AD je podporované.          | Jednotné přihlašování: jednotné přihlašování pro všechny aplikace připojené k Azure AD je podporované. Můžete například poskytnout přístup k Microsoft 365 nebo místním aplikacím a dalším aplikacím SaaS, jako je Salesforce nebo Workday.    | Jednotné přihlašování: jednotné přihlašování pro aplikace vlastněné zákazníkem v rámci Azure AD B2Cch tenantů je podporované. Jednotné přihlašování k Microsoft 365 nebo jiným aplikacím Microsoft SaaS není podporováno.    |
 | Životní cyklus zákazníka: spravuje se v domovské organizaci uživatele.      | Životní cyklus partnera: Spravuje ho hostitelská organizace nebo organizace, která odesílá pozvánky.    | Životní cyklus zákazníka: Zajišťovaný samostatně nebo spravovaný aplikací.      |
 | Zásady zabezpečení a dodržování předpisů: spravované organizací hostitele nebo pozváním (například pomocí [zásad podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/b2b/conditional-access)).           | Zásady zabezpečení a dodržování předpisů: spravované organizací hostitele nebo pozváním (například pomocí [zásad podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/b2b/conditional-access)). | Zásady zabezpečení a dodržování předpisů: Spravuje je aplikace.        |
 | Branding: používá se značka organizace hostitele/pozvání.   | Branding: používá se značka organizace hostitele/pozvání.    | Značka: Spravuje ji aplikace. Většinou se používá značka produktu. Značka organizace ustupuje do pozadí.   |

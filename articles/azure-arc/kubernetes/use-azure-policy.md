@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Použití Azure Policy k aplikování konfigurace clusteru ve velkém měřítku
 keywords: Kubernetes, oblouk, Azure, K8s, Containers
-ms.openlocfilehash: 80ffd70b830483c548f29a029d448bb6b480a8d4
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 4c013fe562d89bff4d1ce9c9f3e832e1b51c70f1
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84676195"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341367"
 ---
 # <a name="use-azure-policy-to-apply-cluster-configurations-at-scale-preview"></a>Použití Azure Policy k aplikování konfigurace clusteru ve velkém měřítku (Preview)
 
@@ -26,7 +26,7 @@ Pokud používáte více úložišť Git jako zdroje pravdy pro každý cluster 
 ## <a name="create-a-policy-assignment"></a>Vytvoření přiřazení zásady
 
 1. V Azure Portal přejděte na zásady a v části **vytváření obsahu** na bočním panelu vyberte **definice**.
-2. V kategorii "Kubernetes" vyberte integrovanou zásadu "nasadit GitOps do clusteru Kubernetes" a klikněte na **Vybrat**.
+2. V kategorii "Kubernetes" vyberte integrovanou zásadu "nasadit GitOps do clusteru Kubernetes" a klikněte na **přiřadit**.
 3. Nastavte **obor** na skupinu pro správu, předplatné nebo skupinu prostředků, kde se bude přiřazení zásady vztahovat.
 4. Pokud chcete vyloučit jakékoli prostředky z oboru zásad, nastavte **vyloučení**.
 5. Udělte přiřazení zásad **název** a **Popis** , který můžete použít k jeho snadnému identifikaci.

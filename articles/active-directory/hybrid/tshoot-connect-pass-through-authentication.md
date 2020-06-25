@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 4/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f297cec0e5f88461d61b14974b57992f847f6e1c
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: 36844c3c2fcfdbf016b3e2d148345e9ce31ea2b4
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85051985"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85356147"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Řešení potíží s předávacím ověřováním služby Azure Active Directory
 
@@ -44,7 +44,7 @@ Ujistěte se, že je ve vašem tenantovi stále **povolená** funkce předávac�
 
 Pokud se uživatel nemůže přihlásit pomocí předávacího ověřování, může se na obrazovce přihlášení k Azure AD zobrazit jedna z následujících uživatelských chyb: 
 
-|Chyba|Description|Řešení
+|Chyba|Popis|Řešení
 | --- | --- | ---
 |AADSTS80001|Nelze se připojit ke službě Active Directory|Zajistěte, aby byly servery agenta členy stejné doménové struktury služby AD, jako uživatelé, jejichž hesla je potřeba ověřit, a že se můžou připojit ke službě Active Directory.  
 |AADSTS8002|Došlo k vypršení časového limitu při připojování ke službě Active Directory|Zkontrolujte, jestli je k dispozici služba Active Directory a reaguje na žádosti od agentů.

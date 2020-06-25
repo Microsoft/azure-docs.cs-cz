@@ -4,12 +4,12 @@ description: Přečtěte si, jak připravit místní počítače na migraci pomo
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom: MVC
-ms.openlocfilehash: d5ac4ded59a69e57de02779b0ba8ade9d7b48b26
-ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
+ms.openlocfilehash: 01e4a0652d575efd1c40612153be1742cd8e8927
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85106358"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341320"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Příprava místních počítačů na migraci do Azure
 
@@ -35,7 +35,7 @@ Tabulka shrnuje omezení zjišťování, hodnocení a migrace pro Azure Migrate.
 --- | --- | --- | ---
 **Virtuální počítače VMware** | Objevte a posuďte až 35 000 virtuálních počítačů v jednom Azure Migrate projektu. | Zjistěte, jak 10 000 virtuálních počítačů VMware s jedním [zařízením Azure Migrate](common-questions-appliance.md) pro VMware. | **Migrace bez agenta**: souběžně můžete replikovat maximálně 300 virtuálních počítačů. Pro dosažení nejlepšího výkonu doporučujeme vytvořit více dávk virtuálních počítačů, pokud máte více než 50.<br/><br/> **Migrace založená na agentovi**: [zařízení replikace](migrate-replication-appliance.md) můžete [škálovat](./agent-based-migration-architecture.md#performance-and-scaling) pro replikaci velkého počtu virtuálních počítačů.<br/><br/> Na portálu můžete pro replikaci vybrat až 10 počítačů najednou. Pokud chcete replikovat více počítačů, přidejte je do dávek po 10.
 **Virtuální počítače Hyper-V** | Objevte a posuďte až 35 000 virtuálních počítačů v jednom Azure Migrate projektu. | Zjištění až 5 000 virtuálních počítačů Hyper-V s jedním zařízením Azure Migrate | Zařízení se nepoužívá pro migraci technologie Hyper-V. Místo toho se Zprostředkovatel replikace technologie Hyper-V spustí na každém hostiteli Hyper-V.<br/><br/> Kapacita replikace je ovlivněná faktory výkonu, jako jsou třeba změny virtuálních počítačů, a nahrává šířku pásma pro data replikace.<br/><br/> Na portálu můžete pro replikaci vybrat až 10 počítačů najednou. Pokud chcete replikovat více počítačů, přidejte je do dávek po 10.
-**Fyzický počítač** | Objevte a posuďte až 35 000 počítačů v jednom Azure Migrate projektu. | Pro fyzické servery si můžete najít až 250 fyzických serverů s jedním zařízením Azure Migrate. | Kapacitu [zařízení replikace](migrate-replication-appliance.md) můžete [škálovat](/agent-based-migration-architecture.md#performance-and-scaling) a replikovat tak velký počet serverů.<br/><br/> Na portálu můžete pro replikaci vybrat až 10 počítačů najednou. Pokud chcete replikovat více počítačů, přidejte je do dávek po 10.
+**Fyzický počítač** | Objevte a posuďte až 35 000 počítačů v jednom Azure Migrate projektu. | Pro fyzické servery si můžete najít až 250 fyzických serverů s jedním zařízením Azure Migrate. | Kapacitu [zařízení replikace](migrate-replication-appliance.md) můžete [škálovat](./agent-based-migration-architecture.md#performance-and-scaling) a replikovat tak velký počet serverů.<br/><br/> Na portálu můžete pro replikaci vybrat až 10 počítačů najednou. Pokud chcete replikovat více počítačů, přidejte je do dávek po 10.
 
 ## <a name="select-a-vmware-migration-method"></a>Vyberte metodu migrace VMware.
 

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: cfff05ed52258ee448d83a521b99dca7d356a0f9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 41feacf180bbe21fdd3d04cabaaf3e3fbaacd20e
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80061049"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85355467"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-linux-for-use-with-azure-files"></a>Konfigurace sítě VPN typu Point-to-Site (P2S) na platformě Linux pro použití se soubory Azure
 Pomocí připojení VPN typu Point-to-Site (P2S) můžete připojit sdílené složky Azure přes protokol SMB mimo Azure bez nutnosti otevírat port 445. Připojení VPN typu Point-to-site je připojení VPN mezi Azure a jednotlivými klienty. Pokud chcete použít připojení VPN P2S se soubory Azure, bude nutné nakonfigurovat připojení VPN P2S pro každého klienta, který se chce připojit. Pokud máte mnoho klientů, kteří se potřebují připojit ke sdíleným složkám Azure ze své místní sítě, můžete místo připojení typu Point-to-site pro každého klienta použít připojení VPN typu Site-to-Site (S2S). Další informace najdete v tématu [Konfigurace sítě Site-to-Site VPN pro použití se soubory Azure](storage-files-configure-s2s-vpn.md).
@@ -44,7 +44,7 @@ Abyste měli přístup ke sdílené složce Azure a dalším prostředkům Azure
 
 Následující skript vytvoří virtuální síť Azure se třemi podsítěmi: jednu pro koncový bod služby účtu úložiště, která je nutná pro přístup k účtu úložiště bez nutnosti vytvářet vlastní směrování pro veřejnou IP adresu účtu úložiště, který se může změnit, a jednu pro bránu virtuální sítě, která poskytuje službu VPN. 
 
-Nezapomeňte nahradit `<region>`, `<resource-group>`a `<desired-vnet-name>` s odpovídajícími hodnotami pro vaše prostředí.
+Nezapomeňte nahradit `<region>` , `<resource-group>` a `<desired-vnet-name>` s odpovídajícími hodnotami pro vaše prostředí.
 
 ```bash
 region="<region>"
@@ -117,7 +117,9 @@ Brána virtuální sítě Azure je služba, ke které se budou připojovat vaše
 Nezapomeňte nahradit `<desired-vpn-name-here>` názvem, který byste chtěli pro tyto prostředky.
 
 > [!Note]  
-> Nasazení brány virtuální sítě Azure může trvat až 45 minut. I když se tento prostředek nasazuje, tento skript skriptu bash se zablokuje, aby se nasazení dokončilo. To se očekává.
+> Nasazení brány virtuální sítě Azure může trvat až 45 minut. I když se tento prostředek nasazuje, tento skript skriptu bash se zablokuje, aby se nasazení dokončilo.
+>
+> Připojení P2S IKEv2/OpenVPN nejsou u **základní** skladové položky (SKU) podporována. Tento skript pro bránu virtuální sítě odpovídajícím způsobem používá **VpnGw1** SKU.
 
 ```bash
 vpnName="<desired-vpn-name-here>"
