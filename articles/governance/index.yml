@@ -10,13 +10,13 @@ metadata:
   ms.collection: collection
   author: DCtheGeek
   ms.author: dacoulte
-  ms.date: 05/22/2020
-  ms.openlocfilehash: 0b9a78c6632d93a9aabaffeca400250c1adfb6d3
-  ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+  ms.date: 06/16/2020
+  ms.openlocfilehash: b76bde8d10ecfdd54531030ff5a006e4c46cb1a9
+  ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 06/09/2020
-  ms.locfileid: "84609178"
+  ms.lasthandoff: 06/24/2020
+  ms.locfileid: "85321533"
 highlightedContent:
   items:
   - title: Přehled zásad správného řízení
@@ -113,7 +113,7 @@ additionalContent:
         url: /powershell/module/az.resources/#resources
       - text: Sada Azure SDK pro .NET
         url: /dotnet/api/overview/azure/managementgroups
-      - text: Azure SDK pro Node
+      - text: Azure SDK for JavaScript
         url: /javascript/api/@azure/arm-managementgroups/managementgroups
       - text: REST
         url: /rest/api/resources/managementgroups
@@ -157,10 +157,10 @@ additionalContent:
       - text: Sada Azure SDK pro .NET
         url: /dotnet/api/microsoft.azure.management.resourcemanager.models.policydefinition
         note: (definice zásad)
-      - text: Azure SDK pro Node
+      - text: Azure SDK for JavaScript
         url: /javascript/api/@azure/arm-policy
         note: (zásady)
-      - text: Azure SDK pro Node
+      - text: Azure SDK for JavaScript
         url: /javascript/api/@azure/arm-policyinsights
         note: (Policy Insights)
       - text: Azure SDK pro Python
@@ -198,7 +198,7 @@ additionalContent:
       - text: Azure SDK pro Javu
         url: https://search.maven.org/artifact/com.microsoft.azure.resourcegraph.v2019_04_01/azure-mgmt-resourcegraph/1.0.0-beta/jar
         note: (Maven)
-      - text: Azure SDK pro Node
+      - text: Azure SDK for JavaScript
         url: /javascript/api/@azure/arm-resourcegraph
       - text: Azure SDK pro Python
         url: /python/api/azure-mgmt-resourcegraph/azure.mgmt.resourcegraph
