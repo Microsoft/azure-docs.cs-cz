@@ -6,14 +6,14 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/26/2019
-ms.openlocfilehash: 1fdee9a5d90fc065e198d880f9d0dea10804b881
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a9e6e8276733eeed88561ed39a6702aec76286a4
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75972633"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85317782"
 ---
-# <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Vytvoření šablon Azure Resource Manager pro automatizaci nasazení pro Azure Logic Apps
+# <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Vytváření šablon Azure Resource Manageru pro automatizaci nasazení pro Azure Logic Apps
 
 Tento článek popisuje způsoby, jak můžete vytvořit [šablonu Azure Resource Manager](../azure-resource-manager/management/overview.md) pro aplikaci logiky, která vám umožní automatizovat vytváření a nasazení aplikace logiky. Přehled struktury a syntaxe pro šablonu, která obsahuje definici pracovního postupu a další prostředky nezbytné pro nasazení, najdete v tématu [Přehled: Automatizace nasazení pro Logic Apps pomocí šablon Azure Resource Manager](logic-apps-azure-resource-manager-templates-overview.md).
 
@@ -45,7 +45,7 @@ Stažením aplikace logiky získáte šablonu, která obsahuje definice pro vaš
 
 Správce prostředků šablony můžete vytvořit pomocí Azure PowerShell s [modulem LogicAppTemplate](https://github.com/jeffhollan/LogicAppTemplateCreator). Tento Open source modul nejprve vyhodnotí vaši aplikaci logiky a všechna připojení, která používá aplikace logiky. Modul pak vygeneruje šablony prostředků s potřebnými parametry pro nasazení.
 
-Předpokládejme například, že máte aplikaci logiky, která přijímá zprávu z fronty Azure Service Bus a odesílá data do databáze SQL Azure. Modul zachovává veškerou logiku Orchestrace a parameterizes připojovací řetězce SQL a Service Bus, takže můžete tyto hodnoty zadat a změnit na základě potřeb nasazení.
+Předpokládejme například, že máte aplikaci logiky, která přijímá zprávu z fronty Azure Service Bus a odesílá data do Azure SQL Database. Modul zachovává veškerou logiku Orchestrace a parameterizes připojovací řetězce SQL a Service Bus, takže můžete tyto hodnoty zadat a změnit na základě potřeb nasazení.
 
 Tyto ukázky ukazují, jak vytvořit a nasadit Logic Apps pomocí Azure Resource Manager šablon, Azure Pipelines v Azure DevOps a Azure PowerShell:
 
@@ -86,7 +86,7 @@ Pokud chcete vygenerovat šablonu po instalaci modulu LogicAppTemplate a rozhran
 PS> Get-LogicAppTemplate -Token (az account get-access-token | ConvertFrom-Json).accessToken -LogicApp <logic-app-name> -ResourceGroup <Azure-resource-group-name> -SubscriptionId $SubscriptionId -Verbose | Out-File C:\template.json
 ```
 
-Pokud chcete postupovat podle doporučení pro potrubí v tokenu z [nástroje Azure Resource Manager Client](https://github.com/projectkudu/ARMClient), spusťte tento příkaz místo `$SubscriptionId` toho, kde je vaše ID předplatného Azure:
+Pokud chcete postupovat podle doporučení pro potrubí v tokenu z [nástroje Azure Resource Manager Client](https://github.com/projectkudu/ARMClient), spusťte tento příkaz místo toho, kde `$SubscriptionId` je vaše ID předplatného Azure:
 
 ```text
 PS> armclient token $SubscriptionId | Get-LogicAppTemplate -LogicApp <logic-app-name> -ResourceGroup <Azure-resource-group-name> -SubscriptionId $SubscriptionId -Verbose | Out-File C:\template.json
@@ -104,10 +104,10 @@ Pro extrakci pomocí Azure Key Vault odkazů (pouze statické) spusťte tento p�
 PS> Get-ParameterTemplate -TemplateFile $filename -KeyVault Static | Out-File $fileNameParameter
 ```
 
-| Parametry | Požaduje se | Popis |
+| Parametry | Povinné | Popis |
 |------------|----------|-------------|
-| TemplateFile | Ano | Cesta k souboru šablony |
-| KeyVault | Ne | Výčet, který popisuje, jak zpracovat možné hodnoty trezoru klíčů. Výchozí formát je `None`. |
+| TemplateFile | Yes | Cesta k souboru šablony |
+| KeyVault | No | Výčet, který popisuje, jak zpracovat možné hodnoty trezoru klíčů. Výchozí formát je `None`. |
 ||||
 
 ## <a name="next-steps"></a>Další kroky

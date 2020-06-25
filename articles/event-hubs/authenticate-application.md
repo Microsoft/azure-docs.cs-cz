@@ -1,19 +1,14 @@
 ---
 title: Ověření aplikace pro přístup k prostředkům Azure Event Hubs
 description: Tento článek poskytuje informace o ověřování aplikace s Azure Active Directory pro přístup k prostředkům Azure Event Hubs.
-services: event-hubs
-ms.service: event-hubs
-documentationcenter: ''
-author: spelluru
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.author: spelluru
-ms.openlocfilehash: 64cd07fc75b91ad7f6a4e01b1c5e0ba06739c50f
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 50566c9405eb203778068b61a03cb9a2d22209b4
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/24/2020
-ms.locfileid: "85296725"
+ms.locfileid: "85318177"
 ---
 # <a name="authenticate-an-application-with-azure-active-directory-to-access-event-hubs-resources"></a>Ověření aplikace s Azure Active Directory pro přístup k prostředkům Event Hubs
 Microsoft Azure poskytuje integrované řízení přístupu pro prostředky a aplikace založené na Azure Active Directory (Azure AD). Klíčovou výhodou použití Azure AD s Azure Event Hubs je, že už nemusíte ukládat přihlašovací údaje do kódu. Místo toho můžete požádat o přístupový token OAuth 2,0 z platformy Microsoft Identity Platform. Název prostředku pro vyžádání tokenu `https://eventhubs.azure.net/` (pro klienty Kafka je prostředek k vyžádání tokenu `https://<namespace>.servicebus.windows.net` ). Azure AD ověřuje objekt zabezpečení (uživatel, skupina nebo instanční objekt), který spouští aplikaci. Pokud je ověření úspěšné, služba Azure AD vrátí přístupový token do aplikace a aplikace pak může pomocí přístupového tokenu autorizovat požadavky na prostředky Azure Event Hubs.

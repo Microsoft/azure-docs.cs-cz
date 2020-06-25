@@ -1,23 +1,14 @@
 ---
 title: Vyrovnávání zatížení oddílu napříč několika instancemi – Azure Event Hubs | Microsoft Docs
 description: Popisuje, jak vyrovnávat zatížení oddílů mezi několika instancemi aplikace pomocí procesoru událostí a sady Azure Event Hubs SDK.
-services: event-hubs
-documentationcenter: .net
-author: ShubhaVijayasarathy
-editor: ''
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 05/28/2020
-ms.author: shvija
-ms.openlocfilehash: 4851a3edad9726230a8fc0dd3085caa172c8d5f3
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.date: 06/23/2020
+ms.openlocfilehash: d5db1e877c1bfa6fac177e1ff8ed137e0301b709
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84147864"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85314988"
 ---
 # <a name="balance-partition-load-across-multiple-instances-of-your-application"></a>Vyrovnávání zatížení oddílu napříč několika instancemi vaší aplikace
 Chcete-li škálovat aplikaci pro zpracování událostí, můžete spustit více instancí aplikace a vyrovnávat zatížení mezi sebou. Ve starších verzích vám [EventProcessorHost](event-hubs-event-processor-host.md) povolil vyrovnávat zatížení mezi několika instancemi programu a události kontrolního bodu při příjmu. V novějších verzích (5,0 a vyšší), **EventProcessorClient** (.NET a Java) nebo **EventHubConsumerClient** (Python a JavaScript) vám umožňuje provádět stejné. Vývojový model je jednodušší pomocí událostí. Přihlásíte se k odběru událostí, na které vás zajímáte, registrací obslužné rutiny události.

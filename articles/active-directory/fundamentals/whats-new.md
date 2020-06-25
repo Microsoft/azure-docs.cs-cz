@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b0f0ed5a36af0890577fcc6fd097698c147c0d6
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 1c4e2b4d046490500fceb7a1bee09559790fd433
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/24/2020
-ms.locfileid: "85298102"
+ms.locfileid: "85317523"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Co je nového v Azure Active Directory?
 
@@ -96,7 +96,7 @@ V současné době jsou uživatelé, kteří jsou v doméně federované v Azure
 **Kategorie služby:** Cloudy svrchovan  
 **Schopnost produktu:** Ověřování uživatelů
  
-Od června začne dokument zjišťování OIDC [Microsoft Identity Platform a OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/v2-protocols-oidc) na koncovém bodu [cloudu Azure Government](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud) (login.microsoftonline.us) vracet správný národní koncový bod [cloudového grafu](https://docs.microsoft.com/graph/deployments) ( https://graph.microsoft.us nebo na https://dod-graph.microsoft.us0) základě poskytnutého tenanta).  V současné době poskytuje nesprávný msgraph_host pole koncového bodu grafu (graph.microsoft.com).  
+Od června začne dokument zjišťování OIDC [Microsoft Identity Platform a OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/v2-protocols-oidc) na koncovém bodu [cloudu Azure Government](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud) (login.microsoftonline.us) vracet správný národní koncový bod [cloudového grafu](https://docs.microsoft.com/graph/deployments) ( https://graph.microsoft.us nebo na https://dod-graph.microsoft.us) základě poskytnutého tenanta).  V současné době poskytuje nesprávný msgraph_host pole koncového bodu grafu (graph.microsoft.com).  
 
 Oprava této chyby se postupně provede přibližně 2 měsíce.  
 

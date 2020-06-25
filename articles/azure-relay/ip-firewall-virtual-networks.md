@@ -1,21 +1,14 @@
 ---
 title: Congigure firewall protokolu IP pro Azure Relay obor názvů
 description: Tento článek popisuje, jak používat pravidla brány firewall k povolení připojení z konkrétních IP adres k oborům názvů Azure Relay.
-services: service-bus-relay
-documentationcenter: ''
-author: spelluru
-ms.service: service-bus-relay
-ms.devlang: na
-ms.custom: seodec18
 ms.topic: article
-ms.date: 05/13/2020
-ms.author: spelluru
-ms.openlocfilehash: 88eb7acf1e72084a83d6d8631c0ea5d740988640
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 06/23/2020
+ms.openlocfilehash: f5fca44c56982e368b762a0b9b3418f1175f7de0
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653420"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85314855"
 ---
 # <a name="configure-ip-firewall-for-an-azure-relay-namespace"></a>Konfigurace brány firewall protokolu IP pro obor názvů Azure Relay
 Ve výchozím nastavení jsou obory názvů Relay přístupné z Internetu, pokud požadavek přichází s platným ověřováním a autorizací. Pomocí brány firewall protokolu IP je můžete omezit na více než jenom na sadu IPv4 adres nebo rozsahů IPv4 adres v [CIDR (směrování mezi doménami bez třídy)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 50d408da248bfcea7088af52cd551579da0ad14e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 26456c09975fa49bae17a3cfeef8ecc1ef913815
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84051210"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85315892"
 ---
 # <a name="azure-security-baseline-for-azure-sql-database--sql-managed-instance"></a>Základní hodnota zabezpečení Azure pro Azure SQL Database & SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -353,7 +353,7 @@ https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemem
 
 Jak nakonfigurovat a spravovat Azure Active Directory ověřování pomocí Azure SQL:
 
-https://docs.microsoft.com/azure/sql-database/sql-database-authentication-aad-configure
+https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure
 
 **Monitorování Azure Security Center**: Ano
 
@@ -449,7 +449,7 @@ Jak nakonfigurovat pojmenovaná umístění v Azure:https://docs.microsoft.com/a
 
 Jak nakonfigurovat a spravovat Azure Active Directory ověřování pomocí Azure SQL:
 
-https://docs.microsoft.com/azure/sql-database/sql-database-authentication-aad-configure
+https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure
 
 Jak vytvořit a nakonfigurovat instanci AAD:
 
@@ -477,7 +477,7 @@ https://docs.microsoft.com/azure/active-directory/governance/access-reviews-over
 
 Jak nakonfigurovat a spravovat Azure Active Directory ověřování pomocí Azure SQL:
 
-https://docs.microsoft.com/azure/sql-database/sql-database-authentication-aad-configure
+https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure
 
 Jak integrovat protokoly aktivit Azure do Azure Monitor:
 

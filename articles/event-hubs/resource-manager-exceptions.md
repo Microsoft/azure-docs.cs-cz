@@ -1,23 +1,14 @@
 ---
 title: Výjimky pro Azure Event Hubs – Správce prostředků | Microsoft Docs
 description: Seznam výjimek Event Hubs Azure, které jsou Surface Azure Resource Manager a navrhovaných akcí
-services: service-bus-messaging
-documentationcenter: na
-author: spelluru
-editor: spelluru
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/08/2019
-ms.author: spelluru
-ms.openlocfilehash: e6ee1137fce97cbe5a64aa5287223f6ba09dcf47
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: d8d52f0a0c58ee756afa4d5d8599e2981edb9cdc
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74936084"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85312524"
 ---
 # <a name="azure-event-hubs---resource-manager-exceptions"></a>Výjimky pro Azure Event Hubs – Správce prostředků
 Tento článek uvádí výjimky vygenerované při interakci s Azure Event Hubs s využitím šablon nebo přímých volání prostřednictvím šablon Azure Resource Manager.

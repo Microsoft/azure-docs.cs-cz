@@ -1,22 +1,14 @@
 ---
 title: Protokoly diagnostiky pro Hybrid Connections
 description: Tento článek poskytuje přehled všech protokolů aktivit a diagnostiky, které jsou k dispozici pro Azure Relay.
-services: service-bus-messaging
-author: spelluru
-editor: ''
-ms.assetid: ''
-ms.service: service-bus-relay
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.date: 04/27/2020
-ms.author: spelluru
-ms.openlocfilehash: b7ac5f1da70352115bf05df1a61120f46a85ec5d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: f79e4aa21fcb9e592f431e252981dc0e7c02817f
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83211103"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85314898"
 ---
 # <a name="enable-diagnostics-logs-for-azure-relay-hybrid-connections"></a>Povolit protokoly diagnostiky pro Azure Relay Hybrid Connections
 Když začnete používat Hybrid Connections Azure Relay, možná budete chtít monitorovat, jak a kdy jsou posluchači a odesílatelé spuštěni a zavřeni a jak se budou vaše Hybrid Connections vytvářet a jsou odesílány zprávy. Tento článek poskytuje přehled protokolů aktivit a diagnostiky, které poskytuje služba Azure Relay. 
@@ -60,7 +52,7 @@ Nové nastavení se projeví přibližně po 10 minutách. Protokoly se zobrazí
 ## <a name="schema-for-hybrid-connections-events"></a>Schéma pro události hybridních připojení
 Řetězce JSON protokolu událostí Hybrid Connections obsahují prvky uvedené v následující tabulce:
 
-| Name | Popis |
+| Název | Popis |
 | ------- | ------- |
 | ResourceId | ID prostředku Azure Resource Manager |
 | ActivityId | Interní ID, které slouží k identifikaci zadané operace. Může být také známé jako "TrackingId" |

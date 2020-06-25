@@ -2,24 +2,14 @@
 title: Azure Relay metriky v Azure Monitor | Microsoft Docs
 description: Tento článek poskytuje informace o tom, jak můžete pomocí Azure Monitor monitorovat stav Azure Relay.
 services: service-bus-relay
-documentationcenter: .NET
-author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: service-bus-relay
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/21/2020
-ms.author: spelluru
-ms.openlocfilehash: 159249e2c997e4c414127992b08a83b488281e46
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: 0383d99aaca487bb89ab198c42d0ce189ad20249
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83211798"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85314369"
 ---
 # <a name="azure-relay-metrics-in-azure-monitor"></a>Azure Relay metriky v Azure Monitor 
 Azure Relay metriky poskytují stav prostředků ve vašem předplatném Azure. S bohatou sadou dat metrik můžete posoudit celkový stav svých prostředků přenosu, nejen na úrovni oboru názvů, ale také na úrovni entity. Tyto statistiky můžou být důležité, protože vám pomohou monitorovat stav Azure Relay. Metriky taky můžou pomoct řešit problémy s hlavními příčinami, aniž byste museli kontaktovat podporu Azure.
@@ -58,7 +48,7 @@ Všechny hodnoty metrik jsou odesílány do Azure Monitor každou minutu. Časov
 
 ## <a name="connection-metrics"></a>Metriky připojení
 
-| Název metriky | Description |
+| Název metriky | Popis |
 | ------------------- | ----------------- |
 | ListenerConnections – úspěch  | Počet úspěšných připojení naslouchacího procesu provedených k Azure Relay v zadaném období. <br/><br/> Jednotka: počet <br/> Typ agregace: celkem <br/> Dimenze: EntityName|
 |ListenerConnections – ClientError |Počet chyb klienta na připojeních naslouchacího procesu v zadaném období.<br/><br/> Jednotka: počet <br/> Typ agregace: celkem <br/> Dimenze: EntityName|
@@ -75,7 +65,7 @@ Všechny hodnoty metrik jsou odesílány do Azure Monitor každou minutu. Časov
 
 ## <a name="memory-usage-metrics"></a>Metriky využití paměti
 
-| Název metriky | Description |
+| Název metriky | Popis |
 | ------------------- | ----------------- |
 |BytesTransferred |Počet bajtů přenesených v zadaném období.<br/><br/> Jednotka: bajtů <br/> Typ agregace: celkem <br/> Dimenze: EntityName|
 
@@ -83,7 +73,7 @@ Všechny hodnoty metrik jsou odesílány do Azure Monitor každou minutu. Časov
 
 Azure Relay podporuje následující dimenze pro metriky v Azure Monitor. Přidávání dimenzí do metrik je volitelné. Pokud dimenze nepřidáte, jsou metriky zadány na úrovni oboru názvů. 
 
-|Název dimenze|Description|
+|Název dimenze|Popis|
 | ------------------- | ----------------- |
 |EntityName| Azure Relay podporuje entity zasílání zpráv pod oborem názvů.|
 

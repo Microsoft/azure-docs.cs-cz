@@ -1,24 +1,14 @@
 ---
 title: Azure Relay – migrace na autorizaci sdíleného přístupového podpisu
 description: Popisuje postup migrace Azure Relay aplikací z použití Azure Active Directory Access Control Service k autorizaci sdíleného přístupového podpisu.
-services: service-bus-relay
-documentationcenter: ''
-author: clemensv
-manager: timlt
-editor: ''
-ms.service: service-bus-relay
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/21/2020
-ms.author: spelluru
-ms.openlocfilehash: 59b9e734526c56016e2ddf59c2afb5b8f7b4ad09
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: 300a7eb5bb69db878b208be8c1e2b404717a6265
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83211772"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85314313"
 ---
 # <a name="azure-relay---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Azure Relay – migrace z Azure Active Directory Access Control Service na autorizaci sdíleného přístupového podpisu
 
@@ -30,7 +20,7 @@ SAS má výhodu v tom, že není přímo závislý na jiné službě, ale dá se
 
 Pro všechny existující aplikace, které jsou závislé na službě ACS, doporučujeme zákazníkům migrovat své aplikace tak, aby se místo toho spoléhali na SAS.
 
-## <a name="migration-scenarios"></a> Scénáře migrace
+## <a name="migration-scenarios"></a>Scénáře migrace
 
 Služby ACS a předávání jsou integrovány prostřednictvím sdíleného vědomí *podpisového klíče*. Podpisový klíč se používá v oboru názvů ACS k podepisování tokenů autorizace a používá ho Azure Relay k ověření toho, že token byl vydaný spárovaným oborem názvů ACS. Obor názvů ACS obsahuje identity služby a autorizační pravidla. Autorizační pravidla definují, která identita služby nebo který token vydaný externím zprostředkovatelem identity získá typ přístupu k části grafu oboru názvů přenosu ve formě shody s nejdelší předponou.
 

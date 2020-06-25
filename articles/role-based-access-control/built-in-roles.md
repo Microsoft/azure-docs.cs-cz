@@ -8,12 +8,12 @@ ms.workload: identity
 author: rolyon
 ms.author: rolyon
 ms.date: 06/18/2020
-ms.openlocfilehash: 6e570c100a30f18a843f50cb8dc93572bb62d0f7
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: b645945cc082b321e63e9d02e0bb6a799e82364d
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85080728"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85317297"
 ---
 # <a name="azure-built-in-roles"></a>Předdefinované role Azure
 
@@ -26,7 +26,7 @@ Následující tabulka uvádí stručný popis a jedinečné ID každé předdef
 ## <a name="all"></a>Vše
 
 > [!div class="mx-tableFixed"]
-> | Předdefinovaná role | Description | ID |
+> | Předdefinovaná role | Popis | ID |
 > | --- | --- | --- |
 > | **Obecné** |  |  |
 > | [Přispěvatel](#contributor) | Umožňuje spravovat vše kromě udělení přístupu k prostředkům. | b24988ac-6180-42a0-ab88-20f7382dd24c |
@@ -87,6 +87,7 @@ Následující tabulka uvádí stručný popis a jedinečné ID každé předdef
 > | [AcrQuarantineWriter](#acrquarantinewriter) | zapisovač dat karantény ACR | c8d4ff99-41c3-41a8-9f60-21dfdad59608 |
 > | [Role Správce clusteru služby Azure Kubernetes](#azure-kubernetes-service-cluster-admin-role) | Vypíše akci přihlašovacích údajů správce clusteru. | 0ab0b1a8-8aac-4efd-b8c2-3ee1fb270be8 |
 > | [Role uživatele clusteru služby Azure Kubernetes](#azure-kubernetes-service-cluster-user-role) | Vypíše akci přihlašovacích údajů uživatele clusteru. | 4abbcc35-e782-43d8-92c5-2d3f1bd2253f |
+> | [Role přispěvatele služby Azure Kubernetes](#azure-kubernetes-service-contributor-role) | Uděluje přístup ke čtení a zápisu clusterů služby Azure Kubernetes. | ed7f3fbd-7b88-4dd4-9017-9adb7ce333f8 |
 > | **Databáze** |  |  |
 > | [Role čtečky účtu Cosmos DB](#cosmos-db-account-reader-role) | Může číst data Azure Cosmos DB účtu. Správa účtů Azure Cosmos DB najdete v tématu [Přispěvatel účtu DocumentDB](#documentdb-account-contributor) . | fbdf93bf-df7d-467e-a4d2-9458aa1360c8 |
 > | [Operátor Cosmos DB](#cosmos-db-operator) | Umožňuje správu účtů Azure Cosmos DB, ale ne přístup k datům v nich. Zabraňuje přístup k klíčům účtu a připojovacím řetězcům. | 230815da-be43-4aae-9cb4-875f7bd000aa |
@@ -3138,6 +3139,50 @@ Vypíše akci přihlašovacích údajů uživatele clusteru. [Další informace]
     }
   ],
   "roleName": "Azure Kubernetes Service Cluster User Role",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="azure-kubernetes-service-contributor-role"></a>Role přispěvatele služby Azure Kubernetes
+
+Uděluje přístup ke čtení a zápisu clusterů služby Azure Kubernetes.
+
+> [!div class="mx-tableFixed"]
+> |  |  |
+> | --- | --- |
+> | **Akce** |  |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Read | Získání spravovaného clusteru |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Write | Vytvoří nový spravovaný cluster nebo aktualizuje stávající. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | **NotActions** |  |
+> | *žádný* |  |
+> | **Akce dataactions** |  |
+> | *žádný* |  |
+> | **NotDataActions** |  |
+> | *žádný* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Grants access to read and write Azure Kubernetes Service clusters",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/ed7f3fbd-7b88-4dd4-9017-9adb7ce333f8",
+  "name": "ed7f3fbd-7b88-4dd4-9017-9adb7ce333f8",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.ContainerService/managedClusters/read",
+        "Microsoft.ContainerService/managedClusters/write",
+        "Microsoft.Resources/deployments/*"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Azure Kubernetes Service Contributor Role",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }

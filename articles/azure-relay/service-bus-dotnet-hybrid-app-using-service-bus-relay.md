@@ -1,25 +1,14 @@
 ---
 title: Hybridní místní/cloudová aplikace (.NET) přenosu Azure Windows Communication Foundation (WCF) | Microsoft Docs
 description: Přečtěte si, jak vystavit místní službu WCF pro webovou aplikaci v cloudu pomocí Azure Relay
-services: service-bus-relay
-documentationcenter: .net
-author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: 9ed02f7c-ebfb-4f39-9c97-b7dc15bcb4c1
-ms.service: service-bus-relay
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 09/12/2019
-ms.author: spelluru
-ms.openlocfilehash: b86d535e4cbc275b3ee777d7c70146f7711c502c
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: 78d250eb2572f137df4bcfd40c5c85cee9fb61dc
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83211590"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85314404"
 ---
 # <a name="expose-an-on-premises-wcf-service-to-a-web-application-in-the-cloud-by-using-azure-relay"></a>Vystavení místní služby WCF pro webovou aplikaci v cloudu pomocí Azure Relay
 
@@ -41,7 +30,7 @@ V tomto kurzu provedete následující úlohy:
 > * Nasaďte webovou aplikaci do Azure.
 > * Spusťte aplikaci v Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
@@ -197,7 +186,7 @@ Proveďte následující změny kódu v řešení:
     }
     ```
 
-1. V **Průzkumník řešení**poklikejte na **App. config** a otevře se soubor v editoru sady Visual Studio. V dolní části `<system.ServiceModel>` prvku, ale stále v `<system.ServiceModel>` , přidejte následující kód XML. Nezapomeňte nahradit `yourServiceNamespace` názvem vašeho oboru názvů a `yourKey` klíč SAS, který jste dříve získali z portálu:
+1. V **Průzkumník řešení**dvakrát klikněte na **App.config** a otevřete soubor v editoru sady Visual Studio. V dolní části `<system.ServiceModel>` prvku, ale stále v `<system.ServiceModel>` , přidejte následující kód XML. Nezapomeňte nahradit `yourServiceNamespace` názvem vašeho oboru názvů a `yourKey` klíč SAS, který jste dříve získali z portálu:
 
     ```xml
     <system.serviceModel>
@@ -224,7 +213,7 @@ Proveďte následující změny kódu v řešení:
     > [!NOTE]
     > Chyba způsobila, že `transportClientEndpointBehavior` je pouze upozornění a není blokujícím problémem pro tento příklad.
 
-1. Pořád v *App. config*v `<appSettings>` elementu nahraďte hodnotu připojovacího řetězce připojovacím řetězcem, který jste předtím získali z portálu.
+1. Stále v *App.config*v `<appSettings>` elementu nahraďte hodnotu připojovacího řetězce připojovacím řetězcem, který jste dříve získali z portálu.
 
     ```xml
     <appSettings>

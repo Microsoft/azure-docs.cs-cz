@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: fc19f247a9a915bfafde68f652784c42285928ca
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: 00b4306340e9888ea5a794c7940a021674060e05
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84974921"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85316117"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Nejčastější dotazy ke službě Azure Cache for Redis
 Seznamte se s odpověďmi na běžné otázky, vzory a osvědčené postupy pro službu Azure cache pro Redis.
@@ -177,7 +177,7 @@ Informace o používání služby Azure cache pro Redis s prostředím PowerShel
 ### <a name="what-do-the-stackexchangeredis-configuration-options-do"></a>Co dělají konfigurační možnosti StackExchange. Redis?
 StackExchange. Redis má mnoho možností. Tato část pojednává o některých běžných nastaveních. Podrobnější informace o možnostech StackExchange. Redis najdete v tématu [Konfigurace stackexchange. Redis](https://stackexchange.github.io/StackExchange.Redis/Configuration).
 
-| ConfigurationOptions | Description | Doporučení |
+| ConfigurationOptions | Popis | Doporučení |
 | --- | --- | --- |
 | AbortOnConnectFail |Když se nastaví na true, připojení se po selhání sítě znovu nepřipojí. |Nastavte na hodnotu false a nechte StackExchange. Redis automaticky znovu připojit. |
 | ConnectRetry |Počet opakovaných pokusů o připojení při počátečním připojení. |Pokyny najdete v následujících pokynech. |
@@ -289,7 +289,7 @@ Redis Server neprovádí nativně podporu TLS, ale mezipaměť Azure pro Redis. 
 >
 >
 
-Nástroje Redis, jako `redis-cli` je například nefungují s portem TLS, ale můžete použít nástroj, jako je například `stunnel` k bezpečnému připojení nástrojů k portu TLS podle pokynů v tomto příspěvku na Blogový příspěvek [pro vydání služby ASP.NET pro Redis verze Preview](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) .
+Nástroje Redis, jako `redis-cli` je například nefungují s portem TLS, ale můžete použít nástroj, jako je například `stunnel` k bezpečnému připojení nástrojů k portu TLS podle pokynů v tomto příspěvku na Blogový příspěvek [pro vydání služby ASP.NET pro Redis verze Preview](https://devblogs.microsoft.com/aspnet/announcing-asp-net-session-state-provider-for-redis-preview-release/) .
 
 Pokyny ke stažení nástrojů Redis naleznete v části How to [Run Redis Commands?](#cache-commands)
 

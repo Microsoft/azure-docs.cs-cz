@@ -1,20 +1,14 @@
 ---
 title: Ověřování spravované identity pomocí Azure Active Directory
 description: Tento článek poskytuje informace o ověřování spravované identity pomocí Azure Active Directory pro přístup k prostředkům Azure Event Hubs.
-services: event-hubs
-ms.service: event-hubs
-documentationcenter: ''
-author: spelluru
-manager: ''
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.author: spelluru
-ms.openlocfilehash: ebbc49e4828fe728cb1810c23b15251e0be2b1f3
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 4e9bfb9c4649732ac5afc80dfb0a522ff9f333be
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/24/2020
-ms.locfileid: "85298833"
+ms.locfileid: "85318092"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>Ověření spravované identity pomocí Azure Active Directory pro přístup k prostředkům Event Hubs
 Azure Event Hubs podporuje ověřování Azure Active Directory (Azure AD) se [spravovanými identitami pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md). Spravované identity pro prostředky Azure můžou autorizovat přístup k Event Hubs prostředkům pomocí přihlašovacích údajů Azure AD z aplikací běžících ve službě Azure Virtual Machines (VM), aplikací Function App, Virtual Machine Scale Sets a dalších služeb. Pomocí spravovaných identit pro prostředky Azure spolu s ověřováním Azure AD se můžete vyhnout ukládání přihlašovacích údajů k vašim aplikacím, které běží v cloudu.

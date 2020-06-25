@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69ac1e70684b2c4396bb15a439edab37a7e45040
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: 7ae642df48fbd18d8ead439d89ced88aa3da327c
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84975584"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85317541"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Omezené delegování protokolu Kerberos pro jednotné přihlašování k aplikacím pomocí proxy aplikací
 
@@ -43,7 +43,7 @@ Tento diagram vysvětluje tok, když se uživatel pokusí o přístup k místní
 7. Konektor odešle původní požadavek na aplikační server pomocí tokenu protokolu Kerberos, který přijal ze služby AD.
 8. Aplikace pošle odpověď konektoru, která se pak vrátí službě proxy aplikací a nakonec uživateli.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 Než začnete s jednotným přihlašováním pro aplikace IWA, ujistěte se, že je vaše prostředí připravené s následujícími nastaveními a konfiguracemi:
 
 * Vaše aplikace, jako jsou webové aplikace SharePoint, jsou nastavené na používání integrovaného ověřování systému Windows. Další informace najdete v tématu [Povolení podpory pro ověřování protokolem Kerberos](https://technet.microsoft.com/library/dd759186.aspx)nebo pro SharePoint v tématu [Plánování ověřování protokolem Kerberos v SharePointu 2013](https://technet.microsoft.com/library/ee806870.aspx).
@@ -156,3 +156,4 @@ V některých případech se ale požadavek úspěšně pošle do back-endu apli
 
 * [Postup konfigurace aplikace proxy aplikací pro použití omezeného delegování protokolu Kerberos](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
 * [Řešení potíží s proxy aplikace](application-proxy-troubleshoot.md)
+

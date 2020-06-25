@@ -8,19 +8,19 @@ ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
-ms.openlocfilehash: 93b150d47f1703662ebda5b017e1824cf74b7ab0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e40eb9cc22cdc071381cc847b49a01d4d713653d
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82233699"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85318620"
 ---
 # <a name="tutorial-deploy-your-aspnet-app-and-azure-sql-database-code-by-using-azure-devops-starter"></a>Kurz: nasazení aplikace ASP.NET a kódu Azure SQL Database pomocí Azure DevOps Starter
 
 Azure DevOps Starter prezentuje zjednodušené prostředí, ve kterém můžete přenášet existující kód a úložiště Git nebo zvolit ukázkovou aplikaci pro vytvoření kanálu průběžné integrace (CI) a průběžného doručování (CD) do Azure. 
 
 DevOps Starter také:
-* Automaticky vytvoří prostředky Azure, jako je Azure SQL Database.
+* Automaticky vytvoří prostředky Azure, jako je například databáze v Azure SQL Database.
 * Vytvoří a nakonfiguruje kanál vydání v Azure Pipelines, který obsahuje kanál sestavení pro CI.
 * Nastaví pro disk CD kanál pro vydání verze. 
 * Vytvoří prostředek Azure Application Insights pro monitorování.
@@ -33,16 +33,16 @@ V tomto kurzu provedete následující:
 > * Prozkoumání kanálu CI
 > * Prozkoumání kanálu CD
 > * Potvrďte změny Azure Repos a automaticky je nasaďte do Azure.
-> * Připojení k databázi SQL Azure 
+> * Připojení k Azure SQL Database 
 > * Vyčištění prostředků
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 * Předplatné Azure. Můžete ho získat zdarma prostřednictvím programu [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/).
 
-## <a name="create-a-project-in-devops-projects-for-an-aspnet-app-and-an-azure-sql-database"></a>Vytvoření projektu v DevOps Projects pro aplikaci ASP.NET a službu Azure SQL Database
+## <a name="create-a-project-in-devops-projects-for-an-aspnet-app-and-azure-sql-database"></a>Vytvoření projektu v DevOps Projects pro aplikaci ASP.NET a Azure SQL Database
 
-DevOps Starter vytvoří kanál CI/CD v Azure Pipelines. Můžete vytvořit novou organizaci Azure DevOps nebo použít stávající organizaci. DevOps Starter taky vytvoří prostředky Azure, jako je Azure SQL Database, v předplatném Azure dle vašeho výběru.
+DevOps Starter vytvoří kanál CI/CD v Azure Pipelines. Můžete vytvořit novou organizaci Azure DevOps nebo použít stávající organizaci. DevOps Starter také v předplatném Azure vytvoří prostředky Azure, jako je například Azure SQL Database, podle vašeho výběru.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
@@ -140,11 +140,11 @@ Nyní jste připraveni spolupracovat s týmem v aplikaci pomocí procesu CI/CD, 
 
 1. Po dokončení vydaných verzí aktualizujte svou aplikaci, aby se ověřily vaše změny.
 
-## <a name="connect-to-the-azure-sql-database"></a>Připojení k databázi SQL Azure
+## <a name="connect-to-azure-sql-database"></a>Připojení k Azure SQL Database
 
-Pro připojení k databázi SQL Azure potřebujete příslušná oprávnění.
+Abyste se mohli připojit k Azure SQL Database, potřebujete příslušná oprávnění.
 
-1. Na řídicím panelu DevOps Starter vyberte **SQL Database** a přejdete na stránku správy pro databázi SQL.
+1. Na řídicím panelu DevOps Starter vyberte **SQL Database** a přejdete na stránku pro správu SQL Database.
    
 1. Vyberte **nastavit bránu firewall serveru**a pak vyberte **Přidat IP adresu klienta**. 
 
@@ -156,16 +156,16 @@ Pro připojení k databázi SQL Azure potřebujete příslušná oprávnění.
 
 1. Vyberte **resetovat heslo**, zadejte heslo pro přihlašovací jméno správce SQL Server a pak vyberte **Uložit**. Nezapomeňte toto heslo zachovat pro pozdější použití v tomto kurzu.
 
-    K připojení k SQL Server a databázi SQL Azure teď můžete volitelně použít klientské nástroje, jako je SQL Server Management Studio nebo Visual Studio. Pro připojení použijte vlastnost **Název serveru**.
+    Nyní můžete volitelně použít klientské nástroje, jako je SQL Server Management Studio nebo Visual Studio, k připojení k SQL Server a Azure SQL Database. Pro připojení použijte vlastnost **Název serveru**.
 
-    Pokud jste nezměnili uživatelské jméno databáze při počáteční konfiguraci projektu v DevOps Projects, je vaše uživatelské jméno místní součástí vaší e-mailové adresy. Pokud je vaše e-mailová adresa *například\@johndoe Microsoft.com*, vaše uživatelské jméno je *johndoe*.
+    Pokud jste nezměnili uživatelské jméno databáze při počáteční konfiguraci projektu v DevOps Projects, je vaše uživatelské jméno místní součástí vaší e-mailové adresy. Pokud je vaše e-mailová adresa například *johndoe \@ Microsoft.com*, vaše uživatelské jméno je *johndoe*.
 
    > [!NOTE]
    > Pokud změníte heslo pro přihlášení SQL, je nutné změnit heslo v proměnné kanálu verze, jak je popsáno v části [prohlédnutí kanálu CD](#examine-the-cd-pipeline) .
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud testujete, můžete se vyhnout nabíhání poplatků za účtování pomocí vyčištění prostředků. Pokud už je nepotřebujete, můžete databázi SQL Azure a související prostředky, které jste vytvořili v tomto kurzu, odstranit. K tomu použijte funkci **Odstranit** na řídicím panelu DevOps Starter.
+Pokud testujete, můžete se vyhnout nabíhání poplatků za účtování pomocí vyčištění prostředků. Pokud už je nepotřebujete, můžete odstranit Azure SQL Database a související prostředky, které jste vytvořili v tomto kurzu. K tomu použijte funkci **Odstranit** na řídicím panelu DevOps Starter.
 
 > [!IMPORTANT]
 > Následující postup trvale odstraní prostředky. Funkce *odstranění* zničí data vytvořená projektem v DevOps Starter v Azure i Azure DevOps a nebude možné ji načíst. Tento postup použijte až po pečlivém čtení výzev.
@@ -184,7 +184,7 @@ Tyto kanály buildu a verze můžete volitelně upravit tak, aby splňovaly pož
 > * Prozkoumání kanálu CI
 > * Prozkoumání kanálu CD
 > * Potvrďte změny Azure Repos a automaticky je nasaďte do Azure.
-> * Připojení k databázi SQL Azure 
+> * Připojení k Azure SQL Database 
 > * Vyčištění prostředků
 
 Další informace o kanálu CI/CD najdete tady:

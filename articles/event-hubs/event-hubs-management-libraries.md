@@ -1,21 +1,14 @@
 ---
 title: Knihovny pro správu – Azure Event Hubs | Microsoft Docs
 description: Tento článek poskytuje informace o knihovně, kterou můžete použít ke správě oborů názvů a entit Azure Event Hubs v rozhraní .NET.
-services: event-hubs
-author: ShubhaVijayasarathy
-manager: timlt
-ms.service: event-hubs
-ms.devlang: dotnet
 ms.topic: article
-ms.custom: seodec18
-ms.date: 12/06/2018
-ms.author: shvija
-ms.openlocfilehash: 431fe04461f422274697d1e91c4b56e914ce2d4e
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.date: 06/23/2020
+ms.openlocfilehash: f3129ae5586a3096dda89eea3af21eefd1606f30
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60746654"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85312985"
 ---
 # <a name="event-hubs-management-libraries"></a>Knihovny pro správu Event Hubs
 
@@ -27,7 +20,7 @@ Knihovny pro správu služby Azure Event Hubs můžete použít k dynamickému z
 * Vytvoření, aktualizace, odstranění Event Hubs
 * Vytvoření, aktualizace, odstranění skupiny uživatelů
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Chcete-li začít používat Event Hubs knihovny pro správu, je třeba ověřit pomocí Azure Active Directory (AAD). Služba AAD vyžaduje, abyste se ověřili jako instanční objekt, který poskytuje přístup k prostředkům Azure. Informace o vytváření instančního objektu najdete v jednom z těchto článků:  
 
@@ -35,7 +28,7 @@ Chcete-li začít používat Event Hubs knihovny pro správu, je třeba ověřit
 * [Vytvoření instančního objektu pro přístup k prostředkům pomocí Azure PowerShellu](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 * [Vytvoření instančního objektu pro přístup k prostředkům pomocí Azure CLI](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md)
 
-Tyto kurzy vám poskytnou `AppId` (ID klienta), `TenantId`a `ClientSecret` (ověřovací klíč), které se používají k ověřování pomocí knihoven pro správu. Pro skupinu prostředků, na které chcete spustit, musíte mít oprávnění **vlastníka** .
+Tyto kurzy vám poskytnou `AppId` (ID klienta), `TenantId` a `ClientSecret` (ověřovací klíč), které se používají k ověřování pomocí knihoven pro správu. Pro skupinu prostředků, na které chcete spustit, musíte mít oprávnění **vlastníka** .
 
 ## <a name="programming-pattern"></a>Programovací model
 

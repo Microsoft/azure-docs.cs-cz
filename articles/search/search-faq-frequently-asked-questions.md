@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/10/2020
-ms.openlocfilehash: 520699b81024de9491f34263f16872428ddbd487
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d3c5a998db5e76118b0c5a73b6df8bdedadc6dfb
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81618039"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85317227"
 ---
 # <a name="azure-cognitive-search---frequently-asked-questions-faq"></a>Nejčastější dotazy k Azure Kognitivní hledáníu (FAQ)
 
@@ -53,7 +53,7 @@ Chcete-li znovu vytvořit index, je nutné znovu indexovat data z externích zdr
 
 Alternativně můžete použít vzorový kód **index-Backup-Restore** v tomto [úložišti Azure kognitivní hledání .NET](https://github.com/Azure-Samples/azure-search-dotnet-samples) k zálohování definice indexu a snímku indexu do řady souborů JSON. Později můžete v případě potřeby použít nástroj a soubory k obnovení indexu.  
 
-### <a name="can-i-index-from-sql-database-replicas-applies-to-azure-sql-database-indexers"></a>Je možné indexovat z replik služby SQL Database (platí pro [Azure SQL Database indexery](https://docs.microsoft.com/azure/search/search-howto-connecting-azure-sql-database-to-azure-search-using-indexers))
+### <a name="can-i-index-from-sql-database-replicas-applies-to-azure-sql-database-indexers"></a>Je možné indexovat z SQL Database repliky (platí pro [Azure SQL Database indexery](https://docs.microsoft.com/azure/search/search-howto-connecting-azure-sql-database-to-azure-search-using-indexers))
 
 Při vytváření indexu od začátku neexistují žádná omezení použití primárních nebo sekundárních replik jako zdroje dat. Aktualizace indexu pomocí přírůstkových aktualizací (na základě změněných záznamů) ale vyžaduje primární repliku. Tento požadavek pochází z SQL Database, který garantuje sledování změn pouze u primárních replik. Pokud se pokusíte použít sekundární repliky pro úlohu aktualizace indexu, není vám zaručeno, abyste získali všechna data.
 
@@ -75,7 +75,7 @@ Výrazy se zástupnými znaky, přibližné a regulární výrazy se ale neanaly
 
 ### <a name="my-wildcard-searches-are-slow"></a>Hledání pomocí zástupného znaku je pomalé.
 
-Většina vyhledávacích dotazů se zástupnými znaky, jako je například předpona, přibližná a regulární výraz, se přepíší interně se shodnými podmínkami v indexu vyhledávání. Toto dodatečné zpracování prohledávání indexu vyhledávání přičítá k latenci. Další, podobně `a*` široké vyhledávací dotazy, například které je vhodné přepsat mnoha výrazy, mohou být velmi pomalé. Pro provádění zástupných hledání se zástupnými znaky zvažte definování [vlastního analyzátoru](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search).
+Většina vyhledávacích dotazů se zástupnými znaky, jako je například předpona, přibližná a regulární výraz, se přepíší interně se shodnými podmínkami v indexu vyhledávání. Toto dodatečné zpracování prohledávání indexu vyhledávání přičítá k latenci. Další, podobně široké vyhledávací dotazy, `a*` například které je vhodné přepsat mnoha výrazy, mohou být velmi pomalé. Pro provádění zástupných hledání se zástupnými znaky zvažte definování [vlastního analyzátoru](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search).
 
 ### <a name="why-is-the-search-rank-a-constant-or-equal-score-of-10-for-every-hit"></a>Proč je u každé z přístupů v pořadí hledání konstantní nebo stejné skóre 1,0?
 

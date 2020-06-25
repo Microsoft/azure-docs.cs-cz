@@ -1,18 +1,14 @@
 ---
 title: Zabezpečení sítě pro Azure Event Hubs
 description: Tento článek popisuje, jak nakonfigurovat přístup z privátních koncových bodů.
-services: event-hubs
-author: spelluru
-ms.service: event-hubs
 ms.topic: conceptual
-ms.date: 03/11/2020
-ms.author: spelluru
-ms.openlocfilehash: 46e6a9ecc2ed09aed1076f12c1f61a966485bdad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: de4c5c6ddc658aab549ccf6960edbca3285e338d
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80422767"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85312847"
 ---
 # <a name="network-security-for-azure-event-hubs"></a>Zabezpečení sítě pro Azure Event Hubs 
 Tento článek popisuje, jak používat následující funkce zabezpečení pro Azure Event Hubs: 
@@ -26,7 +22,7 @@ Tento článek popisuje, jak používat následující funkce zabezpečení pro 
 ## <a name="service-tags"></a>Značky služeb
 Značka služby představuje skupinu předpon IP adres z dané služby Azure. Společnost Microsoft spravuje předpony adres, které jsou zahrnuté ve značce služby, a automaticky aktualizuje značku služby, protože se mění adresy. tím se minimalizuje složitost častých aktualizací pravidel zabezpečení sítě. Další informace o značkách služby najdete v tématu [Přehled značek služeb](../virtual-network/service-tags-overview.md).
 
-Pomocí značek služeb můžete definovat řízení přístupu k síti pro  [skupiny zabezpečení sítě](../virtual-network/security-overview.md#security-rules)nebo [Azure firewall](../firewall/service-tags.md). Při vytváření pravidel zabezpečení používejte značky služby místo konkrétních IP adres. Zadáním názvu značky služby (například **EventHub**) v příslušném *zdrojovém* nebo *cílovém* poli pravidla můžete povolit nebo odepřít provoz pro příslušnou službu.
+Pomocí značek služeb můžete definovat řízení přístupu k síti pro [skupiny zabezpečení sítě](../virtual-network/security-overview.md#security-rules)   nebo [Azure firewall](../firewall/service-tags.md). Při vytváření pravidel zabezpečení používejte značky služby místo konkrétních IP adres. Zadáním názvu značky služby (například **EventHub**) v příslušném *zdrojovém*   nebo *cílovém*   poli pravidla můžete povolit nebo odepřít provoz pro příslušnou službu.
 
 | Značka služby | Účel | Dá se použít příchozí nebo odchozí? | Je možné je rozregionovat? | Lze použít s Azure Firewall? |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|

@@ -1,25 +1,14 @@
 ---
 title: Nejčastější dotazy k Azure Relay | Microsoft Docs
 description: Tento článek obsahuje odpovědi na některé z nejčastějších dotazů týkajících se služby Azure Relay.
-services: service-bus-relay
-documentationcenter: na
-author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: 886d2c7f-838f-4938-bd23-466662fb1c8e
-ms.service: service-bus-relay
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/21/2020
-ms.author: spelluru
-ms.openlocfilehash: ac8967ab036929bf5363a79c9d7c60485bc98841
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: 40e6f830e2314f7c8f36fcd25d24a41cc256bef2
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83211980"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85317020"
 ---
 # <a name="azure-relay-faqs"></a>Nejčastější dotazy k Azure Relay
 
@@ -123,12 +112,12 @@ $res = Find-AzResource -ResourceNameContains mynamespace -ResourceType 'Microsof
 Move-AzResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptionId 'ffffffff-ffff-ffff-ffff-ffffffffffff' -ResourceId $res.ResourceId
 ```
 
-## <a name="troubleshooting"></a>Odstraňování potíží
+## <a name="troubleshooting"></a>Řešení potíží
 ### <a name="what-are-some-of-the-exceptions-generated-by-azure-relay-apis-and-suggested-actions-you-can-take"></a>Jaké jsou některé výjimky generované rozhraními API Azure Relay a doporučené akce, které můžete provést?
 Popis běžných výjimek a navrhovaných akcí, které můžete provést, najdete v tématu [výjimky přenosu][Relay exceptions].
 
 ### <a name="what-is-a-shared-access-signature-and-which-languages-can-i-use-to-generate-a-signature"></a>Co je sdílený přístupový podpis a které jazyky můžu použít k vygenerování podpisu?
-Sdílené přístupové podpisy (SAS) jsou mechanismy ověřování založené na zabezpečených hodnotách hash nebo identifikátorech URI SHA-256. Informace o tom, jak generovat vlastní signatury v Node. js, PHP, Pythonu, Java, C a C#, najdete v tématu [Service Bus ověřování pomocí sdílených přístupových podpisů][Shared Access Signatures].
+Sdílené přístupové podpisy (SAS) jsou mechanismy ověřování založené na zabezpečených hodnotách hash nebo identifikátorech URI SHA-256. Informace o tom, jak generovat vlastní signatury v Node.js, PHP, Pythonu, Java, C a C#, najdete v tématu [ověřování Service Bus pomocí sdílených přístupových podpisů][Shared Access Signatures].
 
 ### <a name="is-it-possible-to-whitelist-relay-endpoints"></a>Je možné do seznamu povolených koncových bodů přenosu povolit?
 Ano. Předávací klient umožňuje připojení ke službě Azure Relay pomocí plně kvalifikovaných názvů domén. Zákazníci můžou přidat položku pro `*.servicebus.windows.net` na brány firewall, které podporují seznam povolených DNS.

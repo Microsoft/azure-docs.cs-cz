@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 05/01/2017
-ms.openlocfilehash: 1599fe76f3542717bebe63228d8c46f7e5de97c3
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 4854fabb3dccc276ec32a596a42263acd07ac276
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84457163"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85316070"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>Zprostředkovatel stavu relací ASP.NET pro Azure Cache for Redis
 
@@ -42,7 +42,7 @@ Balíček NuGet zprostředkovatele stavu relace Redis má závislost na balíčk
 >
 >
 
-Balíček NuGet stáhne a přidá požadované odkazy na sestavení a přidá následující oddíl do souboru Web. config. Tato část obsahuje požadovanou konfiguraci pro vaši aplikaci ASP.NET, aby používala službu Azure cache pro poskytovatele stavu relace Redis.
+Balíček NuGet stáhne a přidá požadované odkazy na sestavení a přidá následující oddíl do souboru web.config. Tato část obsahuje požadovanou konfiguraci pro vaši aplikaci ASP.NET, aby používala službu Azure cache pro poskytovatele stavu relace Redis.
 
 ```xml
 <sessionState mode="Custom" customProvider="MySessionStateStore">
@@ -94,9 +94,9 @@ Nakonfigurujte atributy s hodnotami z okna cache v portál Microsoft Azure a pod
 * **operationTimeoutInMilliseconds** – toto nastavení umožňuje přepsat nastavení syncTimeout v klientovi stackexchange. Redis. Pokud není zadaný, použije se výchozí nastavení syncTimeout 1000. Další informace najdete v tématu [konfigurační model stackexchange. Redis](https://go.microsoft.com/fwlink/?LinkId=398705).
 * **redisSerializerType** – toto nastavení umožňuje zadat vlastní serializaci obsahu relace, který je odeslán do Redis. Zadaný typ musí implementovat `Microsoft.Web.Redis.ISerializer` a musí deklarovat veřejný konstruktor bez parametrů. Ve výchozím nastavení `System.Runtime.Serialization.Formatters.Binary.BinaryFormatter` se používá.
 
-Další informace o těchto vlastnostech najdete v původním příspěvku na blogu v oznámení [o poskytovateli stavu relace ASP.NET pro Redis](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx).
+Další informace o těchto vlastnostech najdete v původním příspěvku na blogu v oznámení [o poskytovateli stavu relace ASP.NET pro Redis](https://devblogs.microsoft.com/aspnet/announcing-asp-net-session-state-provider-for-redis-preview-release/).
 
-Nezapomeňte v souboru Web. config komentovat oddíl standardního zprostředkovatele stavu relace InProc.
+Nezapomeňte ve svém web.config komentovat oddíl standardního zprostředkovatele stavu relace InProc.
 
 ```xml
 <!-- <sessionState mode="InProc"

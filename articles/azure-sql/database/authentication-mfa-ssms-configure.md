@@ -12,17 +12,17 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/27/2019
-ms.openlocfilehash: fc8f79221a5923dea9f767e62566c716bbdcad50
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 9548168e15522a8fb21cfd33c0cf475841a5d52b
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344828"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85318228"
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>Konfigurace služby Multi-Factor Authentication pro SQL Server Management Studio a Azure AD
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-V tomto článku se dozvíte, jak používat službu Multi-Factor Authentication služby Azure Active Directory (Azure AD) s SQL Server Management Studio (SSMS). Azure AD MFA se dá použít při připojování SSMS nebo SqlPackage. exe k [Azure SQL Database](sql-database-paas-overview.md), [spravované instanci Azure SQL](../managed-instance/sql-managed-instance-paas-overview.md) a [azure synapse Analytics (dřív Azure SQL Data Warehouse)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md). Přehled služby Multi-Factor Authentication najdete v tématech [univerzální ověřování pomocí SQL Database, spravovaná instance SQL a Azure synapse (podpora SSMS pro MFA)](../database/authentication-mfa-ssms-overview.md).
+V tomto článku se dozvíte, jak používat službu Multi-Factor Authentication služby Azure Active Directory (Azure AD) s SQL Server Management Studio (SSMS). Azure AD MFA se dá použít při připojení SSMS nebo SqlPackage.exe k [Azure SQL Database](sql-database-paas-overview.md), [spravované instanci Azure SQL](../managed-instance/sql-managed-instance-paas-overview.md) a [azure synapse Analytics (dřív Azure SQL Data Warehouse)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md). Přehled služby Multi-Factor Authentication najdete v tématech [univerzální ověřování pomocí SQL Database, spravovaná instance SQL a Azure synapse (podpora SSMS pro MFA)](../database/authentication-mfa-ssms-overview.md).
 
 > [!IMPORTANT]
 > Databáze v Azure SQL Database, Azure SQL Managed instance a Azure synapse (dříve Azure SQL Data Warehouse) se ve zbývající části tohoto článku společně označují jako databáze a server odkazuje na [Server](logical-servers.md) , který je hostitelem databází pro Azure SQL Database a Azure synapse.
@@ -77,5 +77,5 @@ Po dokončení ověření se SSMS připojuje obvykle k platným přihlašovacím
 
 - Přehled služby Multi-Factor Authentication najdete v tématech [univerzální ověřování pomocí SQL Database, spravovaná instance SQL a Azure synapse (podpora SSMS pro MFA)](../database/authentication-mfa-ssms-overview.md).  
 - Udělit ostatním přístup k vaší databázi: [SQL Database ověřování a autorizace: udělení přístupu](logins-create-manage.md)  
-- Zajistěte, aby se uživatelé mohli připojit přes bránu firewall: [Konfigurace pravidla brány firewall na úrovni serveru pomocí Azure Portal](/database/firewall-configure.md)  
+- Zajistěte, aby se uživatelé mohli připojit přes bránu firewall: [Konfigurace pravidla brány firewall na úrovni serveru pomocí Azure Portal](https://docs.microsoft.com/azure/azure-sql/database/firewall-configure)  
 - Při používání **služby Active Directory – univerzální s** ověřováním MFA je k dispozici trasování ADAL od [SSMS 17,3](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms). Ve výchozím nastavení můžete trasování ADAL zapnout pomocí nabídky **nástroje**, **Možnosti** , v části **služby Azure**, **cloud Azure**, **ADAL okno výstup úroveň trasování**a následným povolením **výstupu** v nabídce **zobrazení** . Trasování jsou k dispozici v okně výstup při výběru **možnosti Azure Active Directory**.

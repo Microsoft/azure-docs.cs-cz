@@ -13,12 +13,12 @@ ms.date: 06/16/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 451615ae5a642260a596ee93dc27f04cfa4b644e
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 893f449c6a8e6b41a79fe9d7c26db461b757e4a3
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/24/2020
-ms.locfileid: "85298153"
+ms.locfileid: "85317752"
 ---
 # <a name="migrate-applications-to-microsoft-authentication-library-msal"></a>Migrace aplikací do knihovny Microsoft Authentication Library (MSAL)
 
@@ -57,7 +57,8 @@ Odpověď: Ano. Od 30. června 2020 už nebudeme přidávat nové funkce do ADAL
 __Otázka: Návody víte, které moje aplikace používají ADAL?__  
 O: Pokud máte zdrojový kód aplikace, můžete odkazovat na výše uvedené příručky migrace, které vám pomůžou určit, kterou knihovnu aplikace používá a jak ji migrovat do MSAL. Pokud nemáte přístup ke zdrojovému kódu vaší aplikace, můžete [otevřít žádost o podporu](developer-support-help-options.md#open-a-support-request) a získat tak seznam registrovaných aplikací a knihovny, které aplikace používá.
 
-__Otázka: budou mé stávající aplikace ADAL nadále fungovat?__ Odpověď: vaše existující aplikace budou i nadále fungovat bez úprav. Pokud plánujete, že byste je měli po dobu od 30. června 2022, měli byste zvážit jejich aktualizaci na MSAL, aby byly zabezpečené, ale migrace na MSAL není nutná k zachování stávajících funkcí.
+__Otázka: budou mé stávající aplikace ADAL nadále fungovat?__  
+Odpověď: vaše existující aplikace budou i nadále fungovat bez úprav. Pokud plánujete, že byste je měli po dobu od 30. června 2022, měli byste zvážit jejich aktualizaci na MSAL, aby byly zabezpečené, ale migrace na MSAL není nutná k zachování stávajících funkcí.
 
 __Otázka: Proč investovat do MSAL?__  
 Odpověď: MSAL obsahuje nové funkce, které nejsou v ADAL, včetně přírůstkového souhlasu, jednotné přihlašování a správy mezipaměti tokenů. I na rozdíl od ADAL bude MSAL nadále získávat opravy zabezpečení i po 30. června 2022. [Přečtěte si další informace](msal-overview.md).

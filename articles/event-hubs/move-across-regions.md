@@ -1,20 +1,14 @@
 ---
 title: Přesunutí oboru názvů Azure Event Hubs do jiné oblasti | Microsoft Docs
 description: V tomto článku se dozvíte, jak přesunout obor názvů Azure Event Hubs z aktuální oblasti do jiné oblasti.
-services: event-hubs
-author: spelluru
-ms.service: event-hubs
 ms.topic: how-to
-ms.custom: subject-moving-resources
-ms.date: 04/14/2020
-ms.author: spelluru
-ms.reviewer: shvija
-ms.openlocfilehash: 5b96bf1c538b3c5589a1993a0353292fadd0936d
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.date: 06/23/2020
+ms.openlocfilehash: a70397772d22a65046f87877deab6263d4b2104f
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690491"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85312969"
 ---
 # <a name="move-an-azure-event-hubs-namespace-to-another-region"></a>Přesunutí oboru názvů Azure Event Hubs do jiné oblasti
 Existují různé scénáře, ve kterých byste chtěli přesunout existující Event Hubs obor názvů z jedné oblasti do druhé. Například můžete chtít vytvořit obor názvů se stejnou konfigurací pro testování. V rámci [Plánování zotavení po havárii](event-hubs-geo-dr.md#setup-and-failover-flow)možná budete chtít vytvořit také sekundární obor názvů v jiné oblasti.
@@ -22,7 +16,7 @@ Existují různé scénáře, ve kterých byste chtěli přesunout existující 
 > [!NOTE]
 > V tomto článku se dozvíte, jak exportovat šablonu Azure Resource Manager pro existující obor názvů Event Hubs a potom použít šablonu k vytvoření oboru názvů se stejným nastavením konfigurace v jiné oblasti. Tento proces však nepřesouvá události, které ještě nebyly zpracovány. Před odstraněním je třeba zpracovat události z původního oboru názvů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 - Zajistěte, aby služby a funkce používané vaším účtem byly podporovány v cílové oblasti.
 - V případě funkcí verze Preview se ujistěte, že je vaše předplatné na seznamu povolených pro cílovou oblast.
@@ -36,7 +30,7 @@ Začněte tím, že vyexportujete šablonu Správce prostředků. Tato šablona 
 
 2. Vyberte **všechny prostředky** a pak vyberte svůj obor názvů Event Hubs.
 
-3. Vyberte > **Nastavení** > **Exportovat šablonu**.
+3. Vyberte > **Nastavení**  >  **Exportovat šablonu**.
 
 4. Na stránce **Exportovat šablonu** vyberte **Stáhnout** .
 
@@ -62,7 +56,7 @@ Nasaďte šablonu pro vytvoření oboru názvů Event Hubs v cílové oblasti.
 
 5. Vyberte **Vytvořit vlastní šablonu v editoru**.
 
-6. Vyberte **načíst soubor**a pak podle pokynů načtěte soubor **template. JSON** , který jste stáhli v poslední části.
+6. Vyberte **načíst soubor**a potom podle pokynů načtěte **template.js** do souboru, který jste stáhli v poslední části.
 
 7. Vyberte **Uložit** a šablonu uložte. 
 

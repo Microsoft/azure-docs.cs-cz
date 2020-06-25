@@ -1,22 +1,14 @@
 ---
 title: Koncové body služby Virtual Network – Azure Event Hubs | Microsoft Docs
 description: Tento článek poskytuje informace o tom, jak přidat koncový bod služby Microsoft. EventHub do virtuální sítě.
-services: event-hubs
-documentationcenter: ''
-author: ShubhaVijayasarathy
-manager: timlt
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: article
-ms.custom: seodec18
-ms.date: 11/26/2019
-ms.author: shvija
-ms.openlocfilehash: 91b08d6130da640adc28a3b7d85bd33f0e876caf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: cf8b956a38f0b22581da3608cd64219aba484988
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81390284"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85315436"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>Použití koncových bodů služby Virtual Network s využitím Azure Event Hubs
 

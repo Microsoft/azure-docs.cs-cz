@@ -1,25 +1,14 @@
 ---
 title: Přehled rozhraní API pro Azure Relay | Microsoft Docs
-description: Tento článek poskytuje přehled dostupných Azure Relay rozhraní API (.NET Standard, .NET Framework, Node. js atd.).
-services: service-bus-relay
-documentationcenter: na
-author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: fdaa1d2b-bd80-4e75-abb9-0c3d0773af2d
-ms.service: service-bus-relay
-ms.devlang: na
+description: Tento článek poskytuje přehled dostupných Azure Relay rozhraní API (.NET Standard, .NET Framework, Node.js atd.).
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/21/2020
-ms.author: spelluru
-ms.openlocfilehash: ad7226b5c5badfddf9f436a1229a48f729485821
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: 15e13ccac9b05e6e1b0730b38b372dec20c69dda
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83210590"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85316962"
 ---
 # <a name="available-relay-apis"></a>Dostupná předávací rozhraní API
 
@@ -31,9 +20,9 @@ V části [Další informace](#additional-information) najdete další informace
 
 | Jazyk/platforma | Dostupná funkce | Klientský balíček | Repository |
 | --- | --- | --- | --- |
-| .NET Standard | Hybridní připojení | [Microsoft.Azure.Relay](https://www.nuget.org/packages/Microsoft.Azure.Relay/) | [GitHubu](https://github.com/azure/azure-relay-dotnet) |
+| .NET Standard | Hybridní připojení | [Microsoft.Azure.Relay](https://www.nuget.org/packages/Microsoft.Azure.Relay/) | [GitHub](https://github.com/azure/azure-relay-dotnet) |
 | .NET Framework | WCF Relay | [WindowsAzure. ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | – |
-| Node | Hybridní připojení | [WebSockets`hyco-ws`](https://www.npmjs.com/package/hyco-ws)<br/>[WebSockets`hyco-websocket`](https://www.npmjs.com/package/hyco-websocket)<br/>[Požadavky HTTP:`hyco-https`](https://www.npmjs.com/package/hyco-https) | [GitHubu](https://github.com/Azure/azure-relay-node) |
+| Node | Hybridní připojení | [WebSockets`hyco-ws`](https://www.npmjs.com/package/hyco-ws)<br/>[WebSockets`hyco-websocket`](https://www.npmjs.com/package/hyco-websocket)<br/>[Požadavky HTTP:`hyco-https`](https://www.npmjs.com/package/hyco-https) | [GitHub](https://github.com/Azure/azure-relay-node) |
 
 ### <a name="additional-information"></a>Další informace
 
@@ -47,11 +36,11 @@ Knihovna .NET Standard je založena na definici otevřeného protokolu pro Hybri
 
 #### <a name="nodejs"></a>Node.js
 
-Moduly Hybrid Connections uvedené v tabulce výše nahrazují nebo mění existující moduly node. js s alternativními implementacemi, které naslouchají na službě Azure Relay místo do zásobníku místní sítě.
+Moduly Hybrid Connections uvedené v tabulce výše nahrazují nebo mění existující Node.js moduly s alternativními implementacemi, které naslouchají Azure Relay službě, nikoli v zásobníku místní sítě.
 
-`hyco-https`Modul mění a částečně Přepisuje základní moduly node. js `http` a `https` poskytuje implementaci naslouchacího procesu https, která je kompatibilní s mnoha existujícími moduly a aplikacemi Node. js, které jsou závislé na těchto základních modulech.
+`hyco-https`Modul mění a částečně Přepisuje základní Node.js moduly `http` a `https` poskytuje implementaci naslouchacího procesu https, která je kompatibilní s mnoha existujícími Node.js moduly a aplikacemi, které jsou závislé na těchto základních modulech.
 
-`hyco-ws`Moduly a `hyco-websocket` mění oblíbené `ws` `websocket` moduly a moduly pro Node. js, které poskytují alternativní implementace naslouchacího procesu, které umožňují modulům a aplikacím, aby fungovaly v rámci Hybrid Connections Relay.
+`hyco-ws`Moduly a `hyco-websocket` mění oblíbené `ws` a `websocket` moduly pro Node.js a poskytují alternativní implementace naslouchacího procesu, které umožňují modulům a aplikacím, aby fungovaly za Hybrid Connections Relay.
 
 Podrobnosti o těchto modulech najdete v úložišti GitHub [Azure-Relay-Node](https://github.com/Azure/azure-relay-node) .
 

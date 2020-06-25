@@ -1,24 +1,14 @@
 ---
 title: Event Hubs Azure – výjimky
 description: Tento článek poskytuje seznam výjimek zasílání zpráv Azure Event Hubs a navrhovaných akcí.
-services: event-hubs
-documentationcenter: na
-author: ShubhaVijayasarathy
-manager: timlt
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.custom: seodec18
-ms.date: 01/16/2020
-ms.author: shvija
-ms.openlocfilehash: d7f420b353361bdd4185958a1f66bfb68fd5decc
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: ce9e1bcd1f9e4d196d03d55374af8b1c86651851
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125634"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85314616"
 ---
 # <a name="event-hubs-messaging-exceptions---net"></a>Výjimky zasílání zpráv Event Hubs – .NET
 V této části jsou uvedeny výjimky rozhraní .NET generované rozhraním API .NET Framework. 

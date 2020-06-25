@@ -15,12 +15,12 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1878004f51a66ba414c3e74be97c7135a51295bc
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 97eef1f331d8e6965e378d6a76cfa7a0c50feb9a
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84763699"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85317472"
 ---
 # <a name="unexpected-application-in-my-applications-list"></a>Neočekávaná aplikace v seznamu Moje aplikace
 
@@ -66,7 +66,7 @@ Při filtrování na **všechny aplikace**zobrazuje seznam **všechny aplikace**
 
 5. Při přidání nové registrace aplikace vytvořením aplikace vytvořené pomocí [portálu pro registraci aplikací v 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-app-registration)
 
-6. Když přidáte aplikaci, kterou vyvíjíte, můžete použít [metody ověřování ASP.NET](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions) nebo [připojené služby](https://blogs.msdn.com/b/visualstudio/archive/2014/11/19/connecting-to-cloud-services.aspx) sady Visual Studio.
+6. Když přidáte aplikaci, kterou vyvíjíte, můžete použít [metody ověřování ASP.NET](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions) nebo [připojené služby](https://devblogs.microsoft.com/visualstudio/connecting-to-cloud-services/) sady Visual Studio.
 
 7. Když vytvoříte instanční objekt služby pomocí [modulu Azure AD PowerShell](/powershell/azure/install-adv2?view=azureadps-2.0)
 

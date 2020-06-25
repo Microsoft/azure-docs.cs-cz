@@ -1,19 +1,14 @@
 ---
 title: Zpracování dat z Event Hubs Azure pomocí Stream Analytics | Microsoft Docs
 description: V tomto článku se dozvíte, jak zpracovávat data z centra událostí Azure pomocí úlohy Azure Stream Analytics.
-services: event-hubs
-author: spelluru
-manager: ''
-ms.author: spelluru
-ms.date: 07/09/2019
+ms.date: 06/23/2020
 ms.topic: article
-ms.service: event-hubs
-ms.openlocfilehash: 531426656fe833752c9c4685688c00de3894895b
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 2db4fba59a1a06a24ee2939c51ecdf65aa06cef3
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "69991948"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85312900"
 ---
 # <a name="process-data-from-your-event-hub-using-azure-stream-analytics"></a>Zpracování dat z centra událostí pomocí Azure Stream Analytics 
 Služba Azure Stream Analytics usnadňuje ingestování, zpracování a analýzu streamování dat z Azure Event Hubs a umožňuje efektivní přehledy, které umožňují řídit akce v reálném čase. Tato integrace vám umožní rychle vytvořit kanál analýzy v Hot-Path. Azure Portal můžete použít k vizualizaci příchozích dat a napsání dotazu Stream Analytics. Jakmile je dotaz připravený, můžete ho přesunout do produkčního prostředí jenom několika kliknutími. 
@@ -49,7 +44,7 @@ Tady jsou klíčové výhody služby Azure Event Hubs a Integrace Azure Stream A
     - Můžete zobrazit náhled příchozích dat ve formátu tabulky nebo v nezpracovaném formátu. 
     - Pokud vaše data nejsou aktuální, vyberte **aktualizovat** , aby se zobrazily nejnovější události. 
 
-        Tady je příklad dat ve **formátu tabulky**: výsledky ve formátu ![tabulky.](./media/process-data-azure-stream-analytics/snapshot-results.png)
+        Tady je příklad dat ve **formátu tabulky**: ![ výsledky ve formátu tabulky.](./media/process-data-azure-stream-analytics/snapshot-results.png)
 
         Tady je příklad dat v **nezpracovaném formátu**: 
 

@@ -3,14 +3,14 @@ title: Přehled Azure Automation Update Management
 description: Tento článek poskytuje přehled funkce Update Management, která implementuje aktualizace pro počítače se systémem Windows a Linux.
 services: automation
 ms.subservice: update-management
-ms.date: 06/16/2020
+ms.date: 06/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 85b724cacc9c878f39de62e91e18713a1817933d
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.openlocfilehash: 86116e4aa76b376331e25719d128fc733c3257ae
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84817237"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85316396"
 ---
 # <a name="update-management-overview"></a>Přehled Update Managementu
 
@@ -166,11 +166,11 @@ Další informace o aktualizacích sad Management Pack najdete v tématu [připo
 
 Následující tabulka popisuje připojené zdroje, které Update Management podporuje:
 
-| Připojený zdroj | Podporuje se | Description |
+| Připojený zdroj | Podporuje se | Popis |
 | --- | --- | --- |
-| Agenti systému Windows |Ano |Update Management shromažďuje informace o aktualizacích systému z agentů Windows a potom spustí instalaci požadovaných aktualizací. |
-| Agenti systému Linux |Ano |Update Management shromažďuje informace o aktualizacích systému z agentů Linux a potom spustí instalaci požadovaných aktualizací v podporovaných distribucích. |
-| Skupina pro správu Operations Manageru |Ano |Update Management shromažďuje informace o aktualizacích systému z agentů v připojené skupině pro správu.<br/><br/>Přímé připojení od agenta Operations Manager do Azure Monitor protokolů není vyžadováno. Data se předávají ze skupiny pro správu do pracovního prostoru Log Analytics. |
+| Agenti systému Windows |Yes |Update Management shromažďuje informace o aktualizacích systému z agentů Windows a potom spustí instalaci požadovaných aktualizací. |
+| Agenti systému Linux |Yes |Update Management shromažďuje informace o aktualizacích systému z agentů Linux a potom spustí instalaci požadovaných aktualizací v podporovaných distribucích. |
+| Skupina pro správu Operations Manageru |Yes |Update Management shromažďuje informace o aktualizacích systému z agentů v připojené skupině pro správu.<br/><br/>Přímé připojení od agenta Operations Manager do Azure Monitor protokolů není vyžadováno. Data se předávají ze skupiny pro správu do pracovního prostoru Log Analytics. |
 
 ### <a name="collection-frequency"></a>Četnost shromažďování dat
 
@@ -207,7 +207,7 @@ Při konfiguraci počítačů, které nemají přístup k Internetu, postupujte 
 
 Následující tabulka definuje klasifikace, které Update Management podporuje pro aktualizace pro Windows. 
 
-|Classification  |Description  |
+|Classification  |Popis  |
 |---------|---------|
 |Důležité aktualizace     | Aktualizace pro určitý problém, která řeší kritickou chybu nesouvisející se zabezpečením.        |
 |Aktualizace zabezpečení     | Aktualizace pro problém související se zabezpečením určitého produktu.        |
@@ -220,10 +220,17 @@ Následující tabulka definuje klasifikace, které Update Management podporuje 
 
 Následující tabulka definuje podporované klasifikace aktualizací pro Linux.
 
-|Classification  |Description  |
+|Classification  |Popis  |
 |---------|---------|
 |Důležité aktualizace a aktualizace zabezpečení     | Aktualizace pro konkrétní problém nebo problém související se zabezpečením určitého produktu.         |
 |Další aktualizace     | Všechny ostatní aktualizace, které nejsou v podstatě důležité nebo které nejsou aktualizacemi zabezpečení.        |
+
+>[!NOTE]
+>Klasifikace aktualizací pro počítače se systémem Linux je k dispozici pouze při použití v podporovaných oblastech veřejného cloudu Azure. Při použití Update Management v následujících národních oblastech cloudu:
+>* Azure pro vládu USA
+>* 21Vianet v Číně
+>
+> neexistují žádné klasifikace aktualizací pro Linux a jsou hlášeny v kategorii **ostatní aktualizace** . Update Management používá data publikovaná v podporovaných distribucích, konkrétně v jejich vydaných [oválech](https://oval.mitre.org/) (otevřené soubory zabezpečení a posouzení). Vzhledem k tomu, že přístup k Internetu je z těchto národních cloudů omezený, Update Management nemůže získat přístup k těmto souborům a využívat je.
 
 V případě systému Linux může Update Management rozlišovat mezi důležitými aktualizacemi a aktualizacemi zabezpečení v cloudu a současně zobrazuje data posouzení z důvodu obohacení dat v cloudu. Pro opravy Update Management spoléhá na data klasifikace, která jsou k dispozici v počítači. Na rozdíl od jiných distribucí nemá CentOS tyto informace dostupné ve verzi RTM. Pokud máte počítače CentOS nakonfigurované tak, aby vracely data zabezpečení pro následující příkaz, Update Management se může opravit na základě klasifikací.
 
@@ -231,7 +238,7 @@ V případě systému Linux může Update Management rozlišovat mezi důležit�
 sudo yum -q --security check-update
 ```
 
-V současné době není podporována žádná podporovaná metoda pro povolení nativní klasifikace – dostupnost dat v CentOS. V tuto chvíli je zákazníkům, kteří si tuto funkci povolili sami, získali jenom podporu s lepší námahou. 
+V současné době není podporována žádná podporovaná metoda pro povolení nativní klasifikace – dostupnost dat v CentOS. V tuto chvíli je zákazníkům, kteří si tuto funkci povolili sami, získali jenom podporu s lepší námahou.
 
 Chcete-li klasifikovat aktualizace na Red Hat Enterprise verze 6, je nutné nainstalovat modul plug-in Yumu-Security. V Red Hat Enterprise Linux 7 je modul plug-in již součástí samotného Yumu a není nutné nic instalovat. Další informace najdete v následujícím [článku znalostní báze](https://access.redhat.com/solutions/10021)Red Hat.
 

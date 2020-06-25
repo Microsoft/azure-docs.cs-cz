@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: 838835cf44b5ca5048ea6cb7bc1bba582b2a0926
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: cabb1a7d45906c9e60e1defd7d3d99286cdd39fb
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647979"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85318245"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Správa mezipaměti Azure pro Redis s využitím Azure PowerShell
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ V tomto tématu se dozvíte, jak provádět běžné úlohy, jako je vytvářen�
 
 Další informace o modelu nasazení Classic najdete v tématu [Azure Resource Manager vs. Classic Deployment: Principy modelů nasazení a stavu vašich prostředků](../azure-resource-manager/management/deployment-models.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 Pokud jste již nainstalovali Azure PowerShell, je nutné, abyste měli Azure PowerShell verze 1.0.0 nebo novější. Verzi Azure PowerShell, kterou jste nainstalovali s tímto příkazem, můžete zjistit na příkazovém řádku Azure PowerShell.
 
     Get-Module Az | format-table version
@@ -119,12 +119,12 @@ Následující tabulka obsahuje vlastnosti a popisy běžně používaných para
 
 | Parametr | Popis | Výchozí |
 | --- | --- | --- |
-| Name |Název mezipaměti | |
+| Název |Název mezipaměti | |
 | Umístění |Umístění mezipaměti | |
 | ResourceGroupName |Název skupiny prostředků, ve které se má mezipaměť vytvořit | |
 | Velikost |Velikost mezipaměti. Platné hodnoty jsou: P1, P2, P3, P4, C0, C1, C2, C3, C4, C5, C6, 250MB, 1 GB, 2,5 GB, 6 GB, 13GB, 26GB, 53GB. |PAMĚT |
 | ShardCount |Počet horizontálních oddílů, které se mají vytvořit při vytváření mezipaměti Premium s povoleným clusteringem Platné hodnoty jsou: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10. | |
-| Skladová jednotka (SKU) |Určuje SKLADOVOU položku mezipaměti. Platné hodnoty jsou: Basic, Standard, Premium. |Standard |
+| SKU |Určuje SKLADOVOU položku mezipaměti. Platné hodnoty jsou: Basic, Standard, Premium. |Standard |
 | RedisConfiguration |Určuje nastavení konfigurace Redis. Podrobnosti o jednotlivých nastaveních najdete v následujících tabulkách [vlastností RedisConfiguration](#redisconfiguration-properties) . | |
 | EnableNonSslPort |Určuje, jestli je povolený port bez SSL. |False |
 | MaxMemoryPolicy |Tento parametr je zastaralý – místo toho použijte RedisConfiguration. | |
@@ -779,5 +779,5 @@ Další informace o používání prostředí Windows PowerShell s Azure najdete
 * [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/templates/deploy-portal.md): Naučte se vytvářet a spravovat skupiny prostředků v Azure Portal.
 * [Blog o Azure](https://azure.microsoft.com/blog/): Seznamte se s novými funkcemi v Azure.
 * [Blog k Windows PowerShellu](https://devblogs.microsoft.com/powershell/): Přečtěte si o nových funkcích Windows PowerShellu.
-* ["Hey, Scripting Guy!" Blog](https://blogs.technet.com/b/heyscriptingguy/): Získejte z komunity Windows PowerShellu reálné tipy a triky.
+* ["Hey, Scripting Guy!" Blog](https://devblogs.microsoft.com/scripting/author/the-scripting-guys/): Získejte z komunity Windows PowerShellu reálné tipy a triky.
 

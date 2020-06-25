@@ -11,12 +11,12 @@ ms.date: 06/10/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: b7139c458d2cc2a59f4202e9cbc7d48433514f34
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: d054ff893e1bfdc0f48ede2e2aaa6050885ccc0a
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84792080"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85314040"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Odkazy-IoT Hub koncové body
 
@@ -38,11 +38,11 @@ Následující seznam popisuje koncové body:
 
 * **Správa identit zařízení** Každé centrum IoT zveřejňuje sadu koncových bodů protokolu HTTPS REST pro správu identit zařízení (vytváření, načítání, aktualizace a odstraňování). [Identity zařízení](iot-hub-devguide-identity-registry.md) se používají pro ověřování zařízení a řízení přístupu.
 
-* **Správa s dvojitou**podobou zařízení Každé centrum IoT zveřejňuje sadu koncových bodů protokolu HTTPS s přístupem k službě pro dotazování a aktualizaci [vláken zařízení](iot-hub-devguide-device-twins.md) (aktualizace značek a vlastností).
+* **Správa s dvojitou**podobou zařízení Každé centrum IoT zveřejňuje sadu koncových bodů protokolu HTTPS s přístupem k službě pro dotazování a aktualizaci [vláken zařízení](iot-hub-devguide-device-twins.md) (aktualizace značek a vlastností). 
 
 * **Správa úloh**. Každá služba IoT Hub zpřístupňuje sadu koncových bodů protokolu HTTPS s přístupem k službě pro dotazování a správu [úloh](iot-hub-devguide-jobs.md).
 
-* **Koncové body zařízení**. Pro každé zařízení, které je v registru identit, zveřejní IoT Hub sadu koncových bodů:
+* **Koncové body zařízení**. Pro každé zařízení v registru identity IoT Hub zveřejňuje sadu koncových bodů. S výjimkou případů, kdy je uvedeno jinak, jsou tyto koncové body vystaveny pomocí protokolů [MQTT v 3.1.1](https://mqtt.org/), https 1,1 a [AMQP 1,0](https://www.amqp.org/) . AMQP a MQTT jsou dostupné i přes [objekty WebSockets](https://tools.ietf.org/html/rfc6455) na portu 443.
 
   * *Posílání zpráv ze zařízení do cloudu*. Zařízení pomocí tohoto koncového bodu [odesílá zprávy typu zařízení-Cloud](iot-hub-devguide-messages-d2c.md).
 
@@ -50,11 +50,9 @@ Následující seznam popisuje koncové body:
 
   * *Iniciujte nahrávání souborů*. Zařízení používá tento koncový bod pro příjem Azure Storage identifikátor URI SAS z IoT Hub pro [nahrání souboru](iot-hub-devguide-file-upload.md).
 
-  * *Načte a aktualizuje vlastnosti vlákna zařízení*. Zařízení používá tento koncový bod pro přístup k vlastnostem, které jsou v [zařízení](iot-hub-devguide-device-twins.md).
+  * *Načte a aktualizuje vlastnosti vlákna zařízení*. Zařízení používá tento koncový bod pro přístup k vlastnostem, které jsou v [zařízení](iot-hub-devguide-device-twins.md). Protokol HTTPS není podporován.
 
-  * *Přijmout požadavky přímých metod*. Zařízení používá tento koncový bod k naslouchání požadavkům [přímých metod](iot-hub-devguide-direct-methods.md).
-
-    Tyto koncové body jsou vystaveny pomocí protokolů [MQTT v 3.1.1](https://mqtt.org/), https 1,1 a [AMQP 1,0](https://www.amqp.org/) . AMQP a MQTT jsou dostupné i přes [objekty WebSockets](https://tools.ietf.org/html/rfc6455) na portu 443.
+  * *Přijmout požadavky přímých metod*. Zařízení používá tento koncový bod k naslouchání požadavkům [přímých metod](iot-hub-devguide-direct-methods.md). Protokol HTTPS není podporován.
 
 * **Koncové body služby**. Každé centrum IoT Hub zpřístupňuje sadu koncových bodů pro back-end řešení ke komunikaci s vašimi zařízeními. S jednou výjimkou se tyto koncové body zveřejňují jenom pomocí protokolů WebSockets [AMQP](https://www.amqp.org/) a AMQP. Koncový bod volání přímé metody se zveřejňuje prostřednictvím protokolu HTTPS.
   

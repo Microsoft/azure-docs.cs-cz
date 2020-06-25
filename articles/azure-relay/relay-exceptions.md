@@ -1,25 +1,14 @@
 ---
 title: Azure Relay výjimky a jak je vyřešit | Microsoft Docs
 description: Seznam výjimek Azure Relay a navrhovaných akcí, které můžete provést, abyste je mohli vyřešit.
-services: service-bus-relay
-documentationcenter: na
-author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: 5f9dd02c-cce0-43b3-8eb8-744f0c27f38c
-ms.service: service-bus-relay
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/20/2017
-ms.author: spelluru
-ms.openlocfilehash: fe8f057443b978e70e7cdd2591affd455fefdca8
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: 0bc8a399173331525d62b25929f65ad189ed219b
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83210866"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85316879"
 ---
 # <a name="azure-relay-exceptions"></a>Výjimky Azure Relay
 
@@ -48,7 +37,7 @@ V následující tabulce jsou uvedeny typy výjimek zasílání zpráv a jejich 
 
 | **Typ výjimky** | **Popis** | **Navrhovaná akce** | **Poznámka k automatickému nebo okamžitému opakování** |
 | --- | --- | --- | --- |
-| [Prodlev](https://msdn.microsoft.com/library/system.timeoutexception.aspx) |Server neodpověděl na požadovanou operaci v zadaném čase, který je řízen [OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout). Je možné, že server dokončil požadovanou operaci. K tomu může dojít v důsledku zpoždění sítě nebo jiné infrastruktury. |Zkontrolujte konzistenci stavu systému a v případě potřeby akci opakujte. Viz [TimeoutException](#timeoutexception). |V některých případech může být užitečné zkusit to znovu. Přidejte do kódu logiku opakování. |
+| [Časový limit](https://msdn.microsoft.com/library/system.timeoutexception.aspx) |Server neodpověděl na požadovanou operaci v zadaném čase, který je řízen [OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout). Je možné, že server dokončil požadovanou operaci. K tomu může dojít v důsledku zpoždění sítě nebo jiné infrastruktury. |Zkontrolujte konzistenci stavu systému a v případě potřeby akci opakujte. Viz [TimeoutException](#timeoutexception). |V některých případech může být užitečné zkusit to znovu. Přidejte do kódu logiku opakování. |
 | [Neplatná operace](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx) |Požadovaná operace uživatele není povolena v rámci serveru nebo služby. Podrobnosti najdete ve zprávě výjimky. |Podívejte se na kód a dokumentaci. Ujistěte se, že požadovaná operace je platná. |Nemůžete to zkusit znovu. |
 | [Operace zrušena](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx) |Došlo k pokusu o vyvolání operace u objektu, který již byl uzavřen, přerušen nebo vyřazen. Ve výjimečných případech je ambientní transakce již uvolněna. |Zkontrolujte kód a ujistěte se, že nevyvolává operace u uvolněného objektu. |Nemůžete to zkusit znovu. |
 | [Neautorizovaný přístup](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx) |Objekt [TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) nemohl získat token, token je neplatný nebo token neobsahuje deklarace požadované k provedení operace. |Ujistěte se, že Poskytovatel tokenů je vytvořený se správnými hodnotami. Ověřte konfiguraci služby Access Control. |V některých případech může být užitečné zkusit to znovu. Přidejte do kódu logiku opakování. |

@@ -1,20 +1,14 @@
 ---
 title: Konfigurace vlastního klíče pro šifrování dat služby Azure Event Hubs v klidovém prostředí
 description: Tento článek poskytuje informace o tom, jak nakonfigurovat vlastní klíč pro šifrování služby Azure Event Hubs data REST.
-services: event-hubs
-ms.service: event-hubs
-documentationcenter: ''
-author: spelluru
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.author: spelluru
-ms.reviewer: shvija
-ms.openlocfilehash: 055422f4067b7f27ee046a3a00b168db14d13046
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: b92437f69dd5ff01d57d12e8e8e7fdce73cfddc0
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/24/2020
-ms.locfileid: "85297405"
+ms.locfileid: "85314733"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Konfigurace klíčů spravovaných zákazníkem pro šifrování dat Azure Event Hubs v klidovém formátu pomocí Azure Portal
 Azure Event Hubs poskytuje šifrování neaktivních dat pomocí šifrování služby Azure Storage (Azure SSE). Event Hubs spoléhá na Azure Storage uložení dat a ve výchozím nastavení se všechna data uložená pomocí Azure Storage šifrují pomocí klíčů spravovaných Microsoftem. 
@@ -100,7 +94,7 @@ Pomocí těchto kroků povolte protokoly pro klíče spravované zákazníkem.
 ## <a name="log-schema"></a>Schéma protokolu 
 Všechny protokoly jsou uložené ve formátu JavaScript Object Notation (JSON). Každá položka má pole řetězce, která používají formát popsaný v následující tabulce. 
 
-| Name | Description |
+| Název | Popis |
 | ---- | ----------- | 
 | /TN | Popis úlohy, která selhala. |
 | ActivityId | Interní ID, které se používá ke sledování. |

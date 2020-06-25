@@ -1,25 +1,14 @@
 ---
 title: Škálovatelnost – Azure Event Hubs | Microsoft Docs
 description: Tento článek poskytuje informace o tom, jak škálovat Event Hubs Azure pomocí oddílů a jednotek propustnosti.
-services: event-hubs
-documentationcenter: na
-author: ShubhaVijayasarathy
-manager: timlt
-editor: ''
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.custom: seodec18
-ms.date: 06/18/2019
-ms.author: shvija
-ms.openlocfilehash: 2b36faef8c39a8e9b02a056576ae7f5a77b1f6bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 6d1c7bc5a0206b634e5a85243f25b2c926762d7e
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79280947"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85315475"
 ---
 # <a name="scaling-with-event-hubs"></a>Škálování pomocí Event Hubs
 

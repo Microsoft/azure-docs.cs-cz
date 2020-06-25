@@ -5,14 +5,14 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 11/07/2019
+ms.date: 06/24/2020
 ms.author: abnarain
-ms.openlocfilehash: f27132eb21d245d0d26de910abba088ba3b8efde
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: e77d621d5699c434e691de0a523e58e49166d8d6
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170967"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85315147"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Řešení potíží s místním hostováním Integration runtime
 
@@ -22,7 +22,9 @@ Tento článek popisuje běžné metody řešení potíží pro prostředí Inte
 
 ## <a name="common-errors-and-resolutions"></a>Běžné chyby a jejich řešení
 
-### <a name="error-message-self-hosted-integration-runtime-cant-connect-to-cloud-service"></a>Chybová zpráva: Integration runtime v místním prostředí se nemůže připojit ke cloudové službě.
+### <a name="error-message"></a>Chybová zpráva: 
+
+`Self-hosted integration runtime can't connect to cloud service`
 
 ![Problém s připojením IR v místním prostředí](media/self-hosted-integration-runtime-troubleshoot-guide/unable-to-connect-to-cloud-service.png)
 
@@ -86,7 +88,8 @@ Očekává se následující odpověď:
 > *    Ověřte, jestli je certifikát TLS/SSL wu2.frontend.clouddatahub.net/na proxy server důvěryhodný.
 > *    Pokud na proxy serveru používáte ověřování pomocí služby Active Directory, změňte účet služby na uživatelský účet, který bude mít přístup k proxy serveru jako služba Integration Runtime.
 
-### <a name="error-message-self-hosted-integration-runtime-node-logical-shir-is-in-inactive-running-limited-state"></a>Chybová zpráva: uzel Integration runtime (v místním prostředí)/logický SHIR je v neaktivním stavu (s omezením).
+### <a name="error-message"></a>Chybová zpráva: 
+`Self-hosted integration runtime node/ logical SHIR is in Inactive/ "Running (Limited)" state`
 
 #### <a name="cause"></a>Příčina 
 
@@ -130,6 +133,146 @@ K tomuto chování dochází, když uzly nemůžou vzájemně komunikovat.
 1. Chcete-li tento problém vyřešit, zkuste jednu nebo obě následující metody:
     - Vložte všechny uzly do stejné domény.
     - Přidejte IP adresu do mapování hostitele ve všech souborech hostitelů hostovaného virtuálního počítače.
+
+
+## <a name="troubleshoot-connectivity-issue"></a>Řešení potíží s připojením
+
+### <a name="troubleshoot-connectivity-issue-between-self-hosted-ir-and-data-factory-or-self-hosted-ir-and-data-sourcesink"></a>Řešení potíží s připojením mezi místním prostředím IR a Data Factorym nebo místním prostředím IR a zdrojem dat/jímky
+
+Pokud chcete řešit potíže s připojením k síti, měli byste vědět, jak [shromažďovat trasování sítě](#how-to-collect-netmon-trace), pochopit, jak ho používat, a [analyzovat trasování Netmon](#how-to-analyze-netmon-trace) před použitím nástrojů Netmon v reálných případech z místního prostředí IR.
+
+Při řešení potíží s připojením, jako je například níže mezi místním prostředím IR a Data Factory v místním prostředí, může dojít k potížím: 
+
+![Požadavek HTTP se nezdařil.](media/self-hosted-integration-runtime-troubleshoot-guide/http-request-error.png)
+
+Nebo jeden mezi místním a datovým prostředím v místním prostředí – dojde k následujícím chybám:
+
+**Chybová zpráva:**
+`Copy failed with error:Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,Message=Cannot connect to SQL Server: ‘IP address’`
+
+**Chybová zpráva:**
+`One or more errors occurred. An error occurred while sending the request. The underlying connection was closed: An unexpected error occurred on a receive. Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host. An existing connection was forcibly closed by the remote host Activity ID.`
+
+**Řešení:** Pokud se setkáte s výše uvedenými problémy, přečtěte si následující pokyny k řešení potíží:
+
+Netmon trasování a proveďte další analýzu.
+- Za prvé můžete nastavit filtr tak, aby se na straně klienta zobrazily všechny resetované informace ze serveru. V níže uvedeném příkladu uvidíte stranu serveru Data Factory serveru.
+
+    ![Server datové továrny](media/self-hosted-integration-runtime-troubleshoot-guide/data-factory-server.png)
+
+- Po získání balíčku pro obnovení můžete najít konverzaci pomocí protokolu TCP.
+
+    ![Najít konverzaci](media/self-hosted-integration-runtime-troubleshoot-guide/find-conversation.png)
+
+- Pak můžete pomocí odebrání filtru získat převod mezi klientem a Data Factory serverem.
+
+    ![Získat konverzaci](media/self-hosted-integration-runtime-troubleshoot-guide/get-conversation.png)
+- Na základě shromážděného trasování Netmon můžeme říct, že celková hodnota TTL (TimeToLive) je 64. V závislosti na **výchozích hodnotách TTL a segmentů směrování** uvedených v [tomto článku](https://packetpushers.net/ip-time-to-live-and-hop-limit-basics/) (jak jsou extrahovány níže) vidíte, že se jedná o systém Linux, který resetuje balíček a způsobuje odpojení.
+
+    Výchozí hodnoty TTL a mezních hodnot směrování se mezi různými operačními systémy liší, Toto jsou výchozí hodnoty pro několik:
+    - Linux kernel 2,4 (CIRCA 2001): 255 pro TCP, UDP a ICMP
+    - Linux kernel 4,10 (2015): 64 pro TCP, UDP a ICMP
+    - Windows XP (2001): 128 pro TCP, UDP a ICMP
+    - Windows 10 (2015): 128 pro TCP, UDP a ICMP
+    - Windows Server 2008:128 pro TCP, UDP a ICMP
+    - Windows Server 2019 (2018): 128 pro TCP, UDP a ICMP
+    - macOS (2001): 64 pro TCP, UDP a ICMP
+
+    ![HODNOTA TTL 61](media/self-hosted-integration-runtime-troubleshoot-guide/ttl-61.png)
+    
+    Je ale zobrazená jako 61 namísto 64 výše uvedeného příkladu, protože když síťový balíček dosáhne cíle, musí jít o jiný segment směrování, jako jsou směrovače nebo síťová zařízení. Počet směrovačů/síťových zařízení bude v konečné hodnotě TTL snížen.
+    V tomto případě můžeme vidět, že se resetování může odeslat ze systému Linux s hodnotou TTL 64.
+
+- Musíme zkontrolovat čtvrtý segment směrování z místního prostředí IR a potvrdit, odkud zařízení pro resetování může pocházet.
+ 
+    *Síťový balíček ze systému Linux A s hodnotou TTL 64-> B TTL 64 minus 1 = 63-> C TTL 63 minus 1 = 62-> TTL 62 minus 1 = 61 v místním prostředí IR*
+
+- V ideálním případě bude hodnota TTL 128, což znamená, že systém Windows spouští naši Data Factory. Jak je znázorněno v následujícím příkladu, *128 – 107 = 21 směrování*, což znamená, že 21 směrování pro balíček bylo odesláno z Data Factory do místního prostředí IR během ověřování TCP 3.
+ 
+    ![HODNOTA TTL 107](media/self-hosted-integration-runtime-troubleshoot-guide/ttl-107.png)
+
+    Proto je potřeba zapojit síťový tým a ověřit, co je čtvrtý segment směrování z místního prostředí IR. Pokud se jedná o bránu firewall jako systém Linux, zkontrolujte všechny protokoly, proč zařízení obnoví balíček po TCP 3 handshake. Pokud si ale nejste jistí, kde se má prozkoumat, zkuste získat trasování Netmon z místního prostředí IR a brány firewall během problematické doby, abyste zjistili, které zařízení může resetovat tento balíček a způsobit odpojení. V takovém případě je potřeba, abyste svůj síťový tým přesunuli vpřed.
+
+### <a name="how-to-collect-netmon-trace"></a>Jak shromažďovat Netmon trasování
+
+1.  Stáhněte si nástroje Netmon z [tohoto webu](https://www.microsoft.com/en-sg/download/details.aspx?id=4865)a nainstalujte je na serverovém počítači (jakýkoli server s problémem) a klienta (jako je například prostředí IR pro místní hostování).
+
+2.  Vytvořte složku, například v následující cestě: *D:\netmon*. Ujistěte se, že má dostatek místa pro uložení protokolu.
+
+3.  Zaznamenejte informace o IP adrese a portu. 
+    1. Spuštění příkazového řádku
+    2. Vyberte Spustit jako správce a spusťte následující příkaz:
+       
+        ```
+        Ipconfig /all >D:\netmon\IP.txt
+        netstat -abno > D:\netmon\ServerNetstat.txt
+        ```
+
+4.  Zachyťte trasování Netmon (síťový balíček).
+    1. Spuštění příkazového řádku
+    2. Vyberte Spustit jako správce a spusťte následující příkaz:
+        
+        ```
+        cd C:\Program Files\Microsoft Network Monitor 3
+        ```
+    3. Můžete použít tři různé příkazy pro zachycení síťové stránky:
+        - Možnost A: příkaz souboru RoundRobin (zachytí se jenom jeden soubor a přepíše staré protokoly).
+
+            ```
+            nmcap /network * /capture /file D:\netmon\ServerConnection.cap:200M
+            ```         
+        - Možnost B: příkaz zřetězeného souboru (vytvoří se nový soubor, pokud se dosáhne 200 MB).
+        
+            ```
+            nmcap /network * /capture /file D:\netmon\ServerConnection.chn:200M
+            ```          
+        - Možnost C: příkaz plánovaného souboru.
+
+            ```
+            nmcap /network * /capture /StartWhen /Time 10:30:00 AM 10/28/2011 /StopWhen /Time 11:30:00 AM 10/28/2011 /file D:\netmon\ServerConnection.chn:200M
+            ```  
+
+5.  Stisknutím **kombinace kláves CTRL + C** zastavíte zachytávání trasování Netmon.
+ 
+> [!NOTE]
+> Pokud je na klientském počítači možné shromažďovat pouze trasování Netmon, Získejte prosím adresu IP serveru, která vám usnadní analýzu tohoto trasování.
+
+### <a name="how-to-analyze-netmon-trace"></a>Jak analyzovat trasování Netmon
+
+Když se pokusíte o **8.8.8.8 888** s výše shromážděným trasováním Netmon, měli byste vidět pod trasováním:
+
+![Netmon trasování 1](media/self-hosted-integration-runtime-troubleshoot-guide/netmon-trace-1.png)
+
+![Netmon trasování 2](media/self-hosted-integration-runtime-troubleshoot-guide/netmon-trace-2.png)
+ 
+
+To znamená, že nemůžete na straně serveru **8.8.8.8** vytvořit připojení TCP na základě portu **888**, takže uvidíte dva další balíčky **SynReTransmit** . Vzhledem k tomu, že source **hostitel2** se nepovedlo vytvořit připojení k **8.8.8.8** v prvním balíčku, zůstane při vytváření připojení.
+
+> [!TIP]
+> - Můžete kliknout na možnost **Load Filter**  ->  **Standard Filter**  ->  **adresy**  ->  **IPv4**.
+> - Zadejte **IPv4. Address = = 8.8.8.8** as Filter a klikněte na **použít**. Pak se zobrazí jenom komunikace z místního počítače do cílového **8.8.8.8**.
+
+![filtrovat adresy 1](media/self-hosted-integration-runtime-troubleshoot-guide/filter-addresses-1.png)
+        
+![filtrovat adresy 2](media/self-hosted-integration-runtime-troubleshoot-guide/filter-addresses-2.png)
+
+Níže uvedený příklad ukazuje, jak dobrý scénář vypadá. 
+
+- Pokud služba Telnet **8.8.8.8 53** funguje bez jakýchkoli potíží, uvidíte, že se provede metoda HANDSHAKE protokolu TCP 3 a pak se relace dokončí s metodou HANDSHAKE protokolu TCP 4.
+
+    ![dobrý příklad scénáře 1](media/self-hosted-integration-runtime-troubleshoot-guide/good-scenario-1.png)
+     
+    ![dobrý příklad scénáře 2](media/self-hosted-integration-runtime-troubleshoot-guide/good-scenario-2.png)
+
+- V závislosti na výše uvedené signalizaci TCP 3 se můžete podívat pod pracovní postup:
+
+    ![Pracovní postup handshake protokolu TCP 3](media/self-hosted-integration-runtime-troubleshoot-guide/tcp-3-handshake-workflow.png)
+ 
+- Metoda handshake protokolu TCP 4 pro dokončení relace a její pracovní postup se zobrazí následujícím způsobem:
+
+    ![Protokol handshake protokolu TCP 4](media/self-hosted-integration-runtime-troubleshoot-guide/tcp-4-handshake.png)
+
+    ![Pracovní postup handshake protokolu TCP 4](media/self-hosted-integration-runtime-troubleshoot-guide/tcp-4-handshake-workflow.png) 
 
 
 ## <a name="next-steps"></a>Další kroky

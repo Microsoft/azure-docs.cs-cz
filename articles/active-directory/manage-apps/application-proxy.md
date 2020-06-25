@@ -13,12 +13,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 20b186c75358344e6e995b24b8e54e308c8653d2
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: 84cd6f9d7612cc6cf5829c03c398dd65a6eec412
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84975414"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85318024"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-active-directorys-application-proxy"></a>Vzdálený přístup k místním aplikacím prostřednictvím proxy aplikace Azure Active Directory
 
@@ -60,7 +60,7 @@ Následující diagram ukazuje, jak služba Azure AD a proxy aplikací společn�
 5. Konektor odešle požadavek do místní aplikace.
 6. Odpověď je odeslána prostřednictvím konektoru a služby proxy aplikací k uživateli.
 
-| Součást | Description |
+| Součást | Popis |
 | --------- | ----------- |
 | Koncový bod  | Koncový bod je adresa URL nebo [portál pro koncové uživatele](end-user-experiences.md). Uživatelé můžou kontaktovat aplikace i mimo vaši síť přístupem k externí adrese URL. Uživatelé v rámci vaší sítě mají přístup k aplikaci prostřednictvím adresy URL nebo portálu pro koncové uživatele. Když uživatelé přejdou do některého z těchto koncových bodů, ověřují se ve službě Azure AD a potom jsou směrováni přes konektor do místní aplikace.|
 | Azure AD | Azure AD provádí ověřování pomocí adresáře tenanta, který je uložený v cloudu. |
@@ -71,3 +71,4 @@ Následující diagram ukazuje, jak služba Azure AD a proxy aplikací společn�
 
 ## <a name="next-steps"></a>Další kroky
 Pokud chcete začít používat proxy aplikace, přečtěte si téma [kurz: Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikací](application-proxy-add-on-premises-application.md).
+

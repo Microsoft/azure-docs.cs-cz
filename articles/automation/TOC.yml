@@ -41,6 +41,10 @@
       href: automation-runbook-types.md
     - name: PowerShell DSC
       href: /powershell/scripting/dsc/overview/overview
+    - name: Zabezpečení
+      items:
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
     - name: Zabezpečení dat
       items:
         - name: Šifrování zabezpečených prostředků
@@ -63,6 +67,8 @@
           href: how-to/automation-region-dns-records.md
         - name: Správa účtu Spustit jako služby Automation
           href: manage-runas-account.md
+        - name: Privátní připojení k účtu Automation
+          href: how-to/private-link-security.md
         - name: Správa oprávnění rolí a zabezpečení
           href: automation-role-based-access-control.md
         - name: Přesun účtu Automation do jiného předplatného

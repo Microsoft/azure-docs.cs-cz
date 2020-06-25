@@ -1,19 +1,14 @@
 ---
 title: Ověření přístupu k Azure Event Hubs se signaturami sdíleného přístupu
 description: V tomto článku se dozvíte, jak ověřit přístup k prostředkům Event Hubs pomocí sdílených přístupových podpisů.
-services: event-hubs
-ms.service: event-hubs
-documentationcenter: ''
-author: spelluru
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.author: spelluru
-ms.openlocfilehash: d29fef42fb875c6ed55ac1d879b9c398490e1700
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: ed389460cf3461df060df79fb756e73711f693f0
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/24/2020
-ms.locfileid: "85298816"
+ms.locfileid: "85318041"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Ověřování přístupu k prostředkům Event Hubs pomocí sdílených přístupových podpisů (SAS)
 Sdílený přístupový podpis (SAS) poskytuje podrobnější kontrolu nad typem přístupu, který udělíte klientům, kteří mají sdílený přístupový podpis. Tady jsou některé ovládací prvky, které můžete nastavit v SAS: 

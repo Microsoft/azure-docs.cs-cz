@@ -1,25 +1,14 @@
 ---
 title: Dostupnost a konzistence – Azure Event Hubs | Microsoft Docs
 description: Jak zajistit maximální možnou dostupnost a konzistenci s Azure Event Hubs pomocí oddílů.
-services: event-hubs
-documentationcenter: na
-author: spelluru
-editor: ''
-ms.assetid: 8f3637a1-bbd7-481e-be49-b3adf9510ba1
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 06/23/2020
-ms.author: spelluru
-ms.reviewer: shvija
-ms.openlocfilehash: 8b60576eeaadb439cbeb0fb1fd5a189905390894
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 497a6e7430c4e6f8e29f903294ca94a4cb23012b
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/24/2020
-ms.locfileid: "85299343"
+ms.locfileid: "85315763"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Dostupnost a konzistence ve službě Event Hubs
 

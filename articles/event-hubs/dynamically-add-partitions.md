@@ -1,19 +1,14 @@
 ---
 title: Dynamické přidávání oddílů do centra událostí v Azure Event Hubs
 description: V tomto článku se dozvíte, jak dynamicky přidávat oddíly do centra událostí v Azure Event Hubs.
-services: event-hubs
-author: spelluru
-ms.service: event-hubs
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.author: spelluru
-ms.reviewer: shvija
-ms.openlocfilehash: 985e85e0958984be6ebecb9f0898e2723de9e85d
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: ea0477dcc695c7a2fb936daadc3679c94bfac12f
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/24/2020
-ms.locfileid: "85297286"
+ms.locfileid: "85317946"
 ---
 # <a name="dynamically-add-partitions-to-an-event-hub-apache-kafka-topic-in-azure-event-hubs"></a>Dynamické přidávání oddílů do centra událostí (Apache Kafka téma) v Azure Event Hubs
 Služba Event Hubs poskytuje datový proud zpráv pomocí schématu rozdělujícího datový proud na oddíly pro jednotlivé příjemce. To zajišťuje, aby každý příjemce četl jenom konkrétní podmnožinu nebo oddíl datového proudu zpráv. Toto schéma umožňuje vodorovné škálování zpracování událostí a poskytuje další funkce zaměřené na datový proud, které nejsou ve frontách a tématech k dispozici. Oddíl je seřazená posloupnost událostí, která se nachází v centru událostí. Jakmile přijdete o novější události, přidají se na konec této sekvence. Další informace o oddílech obecně najdete v [oddílu oddíly](event-hubs-scalability.md#partitions) .

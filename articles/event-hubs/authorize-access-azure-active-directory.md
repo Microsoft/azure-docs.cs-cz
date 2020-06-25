@@ -1,19 +1,14 @@
 ---
 title: Autorizace přístupu pomocí Azure Active Directory
 description: Tento článek poskytuje informace o autorizaci přístupu k prostředkům Event Hubs pomocí Azure Active Directory.
-services: event-hubs
-ms.service: event-hubs
-documentationcenter: ''
-author: spelluru
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.author: spelluru
-ms.openlocfilehash: d2c89cee1e315f57998fadff0423747cca599cbe
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 734c95f6f26dbb646f641e4446287df52c86be6a
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/24/2020
-ms.locfileid: "85298782"
+ms.locfileid: "85317974"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>Autorizace přístupu k prostředkům Event Hubs pomocí Azure Active Directory
 Azure Event Hubs podporuje použití Azure Active Directory (Azure AD) k autorizaci požadavků na Event Hubs prostředky. Pomocí Azure AD můžete použít řízení přístupu na základě role (RBAC) k udělení oprávnění objektu zabezpečení, který může být uživatel nebo instanční objekt služby. Další informace o rolích a přiřazení rolí najdete v tématu [Principy různých rolí](../role-based-access-control/overview.md).

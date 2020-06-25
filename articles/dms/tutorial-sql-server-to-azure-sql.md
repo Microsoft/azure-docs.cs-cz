@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: a3917443e25589cafe1d68522e13ba60ef634341
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 45a343fdbd41abf1388556131f1f53a675d8ab49
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84191492"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85316231"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-offline-using-dms"></a>Kurz: Offline migrace SQL Serveru do služby Azure SQL Database pomocí DMS
 
@@ -36,15 +36,15 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
 
-Tento článek popisuje offline migraci z SQL Server do jedné databáze nebo ve fondu databáze v Azure SQL Database. Informace o online migraci najdete v tématu [Online migrace SQL Serveru do služby Azure SQL Database pomocí DMS](tutorial-sql-server-azure-sql-online.md).
+Tento článek popisuje offline migraci z SQL Server do databáze v Azure SQL Database. Informace o online migraci najdete v tématu [Online migrace SQL Serveru do služby Azure SQL Database pomocí DMS](tutorial-sql-server-azure-sql-online.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Pro absolvování tohoto kurzu je potřeba provést následující:
 
 - Stáhněte a nainstalujte [SQL Server 2016 nebo novější](https://www.microsoft.com/sql-server/sql-server-downloads).
 - Povolte protokol TCP/IP, který se ve výchozím nastavení zakáže během instalace SQL Serveru Express, a to podle pokynů v článku [Povolení nebo zakázání síťového protokolu serveru](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure).
-- Vytvořte jednu (nebo sdruženou) databázi v Azure SQL Database, kterou provedete podle podrobných informací uvedených v článku [Vytvoření izolované databáze v Azure SQL Database pomocí Azure Portal](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started).
+- Vytvořte v Azure SQL Database databázi, kterou provedete podle podrobných informací uvedených v článku [Vytvoření databáze v Azure SQL Database pomocí Azure Portal](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started).
 
     > [!NOTE]
     > Pokud používáte služba SSIS (SQL Server Integration Services) (SSIS) a chcete migrovat databázi katalogu pro projekty SSIS a balíčky (SSISDB) z SQL Server na Azure SQL Database, cílový SSISDB se při zřizování SSIS v Azure Data Factory (ADF) automaticky vytvoří a bude spravovat vaším jménem. Další informace o migraci balíčků SSIS najdete v článku migrace balíčků [služba SSIS (SQL Server Integration Services) do Azure](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages).
@@ -70,7 +70,7 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
 - Pokud používáte zařízení brány firewall před zdrojovými databázemi, budete možná muset přidat pravidla firewallu, která Azure Database Migration Service umožní přístup ke zdrojovým databázím pro migraci.
 - Vytvořte [pravidlo brány firewall](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) protokolu IP na úrovni serveru pro Azure SQL Database, které povolí Azure Database Migration Service přístup k cílovým databázím. Zadejte rozsah podsítě virtuální sítě, která se používá pro Azure Database Migration Service.
 - Ujistěte se, že přihlašovací údaje použité pro připojení ke zdrojové instanci SQL Serveru mají oprávnění [CONTROL SERVER](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql).
-- Ujistěte se, že přihlašovací údaje použité pro připojení k cílové instanci služby Azure SQL Database mají oprávnění CONTROL DATABASE k cílovým databázím Azure SQL.
+- Zajistěte, aby pověření používaná k připojení k cílové instanci Azure SQL Database měla oprávnění řízení databáze pro cílové databáze.
 
 ## <a name="assess-your-on-premises-database"></a>Posouzení místní databáze
 
@@ -97,7 +97,7 @@ Než budete moct migrovat data z SQL Server instance do izolované databáze neb
 
     ![Posouzení migrace dat](media/tutorial-sql-server-to-azure-sql/dma-assessments.png)
 
-    Pro izolované databáze nebo databáze ve fondu v Azure SQL Database posouzení identifikují problémy s paritou funkcí a blokující problémy při nasazení do izolované databáze nebo databáze ve fondu.
+    Pro databáze v Azure SQL Database posouzení identifikují problémy s paritou funkcí a blokující problémy při nasazení do izolované databáze nebo databáze ve fondu.
 
     - Kategorie **Parita funkcí SQL Serveru** poskytuje komplexní sadu doporučení, alternativní postupy, které jsou v Azure k dispozici, a postupy pro zmírnění problémů, které vám pomůžou naplánovat náročnost projektů migrace.
     - Kategorie **problémy s kompatibilitou** identifikuje částečně podporované nebo nepodporované funkce, které odráží problémy s kompatibilitou, které by mohly blokovat migraci SQL Server databází do Azure SQL Database. K dispozici jsou také doporučení, která vám pomůžou tyto problémy vyřešit.
@@ -109,7 +109,7 @@ Než budete moct migrovat data z SQL Server instance do izolované databáze neb
 Až budete spokojení s posouzením a spokojeni s tím, že vybraná databáze je vhodným kandidátem na migraci do izolované databáze nebo databáze ve fondu v Azure SQL Database, použijte k migraci schématu do Azure SQL Database možnost DMA.
 
 > [!NOTE]
-> Před vytvořením projektu migrace v nástroji Data Migration Assistant se ujistěte, že už máte zřízenou databázi Azure SQL, jak je uvedeno v požadavcích. Pro účely tohoto kurzu se předpokládá, že je název služby Azure SQL Database **AdventureWorksAzure**, ale můžete zadat libovolný název.
+> Před vytvořením projektu migrace v Data Migration Assistant Ujistěte se, že jste už zřídili databázi v Azure, jak je uvedeno v části požadavky. Pro účely tohoto kurzu se předpokládá, že je název služby Azure SQL Database **AdventureWorksAzure**, ale můžete zadat libovolný název.
 
 > [!IMPORTANT]
 > Pokud používáte SSIS, DMA v současné době nepodporuje migraci zdrojového SSISDB, ale můžete znovu nasadit své projekty a balíčky SSIS do cílového SSISDB hostovaného Azure SQL Database. Další informace o migraci balíčků SSIS najdete v článku migrace balíčků [služba SSIS (SQL Server Integration Services) do Azure](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages).

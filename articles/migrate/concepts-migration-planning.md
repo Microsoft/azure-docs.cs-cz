@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/21/2020
 ms.author: rajosh
-ms.openlocfilehash: 377085a98214d5fa92d08dd78d37635364295c46
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 81132f0a6f8b57d8798a9a5c4f0a2b9c1ac736d4
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85268989"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85317393"
 ---
 # <a name="build-migration-plan-with-azure-migrate"></a>Sestavení plánu migrace pomocí Azure Migrate
 
@@ -70,7 +70,7 @@ Po zjištění vašich serverů použijte mapování závislostí bez agenta k v
 
 Jelikož Azure poskytuje flexibilitu při změně velikosti cloudové kapacity v průběhu času, migrace je příležitostí k optimalizaci prostředků procesoru a paměti přidělených vašim serverům. Pro skupinu, kterou jste identifikovali, vytvořte posouzení, abyste porozuměli historii výkonu úloh, které se v Azure budou velmi zásadní v doporučeních SKU virtuálních počítačů a disků.
 
-## <a name="asses-your-readiness-for-migration"></a>Posoudit připravenosti na migraci
+## <a name="assess-your-readiness-for-migration"></a>Posouzení připravenosti na migraci
 
 ### <a name="readiness-and-suitability-analysis-for-azure"></a>Připravenost a analýza vhodnosti pro Azure
 Vyexportujte sestavu posouzení virtuálních počítačů Azure a vyfiltrujte tyto kategorie připravenosti, abyste pochopili připravenost virtuálních počítačů pro Azure:

@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 03/10/2020
-ms.openlocfilehash: 0b7d7b9e3b373c8a994538bc3d5f31b78df3cd6a
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 30e2ec47e2b9b3a95acb5b79800ce64ba11e757d
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85210418"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85317886"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Poznámky k verzi Azure Machine Learning
 
@@ -86,7 +86,7 @@ Podívejte [se na seznam známých problémů](resource-known-issues.md) , kde s
     + Opravuje chybu, která způsobila azureml_automl. log pro negenerované nebo chybějící protokoly při provádění AutoML experimentu ve vzdáleném cílovém výpočetním prostředí.
     + U klasifikačních sad, které mají nevyvážené třídy, použijeme vyrovnávání zatížení, pokud ho služba Sweeper (Feature Sweeper) zjistí, že bude lepší než základní hodnota.
     + AutoML spuštění jsou nyní označena jako podřízené spuštění paralelního kroku spuštění.
-  + **AzureML-vlak-automl-runtime**
+  + **azureml-train-automl-runtime**
     + Změněné chování AutoML spuštění k vyvolání UserErrorException, pokud služba vyvolá chybu uživatele
     + AutoML spuštění jsou nyní označena jako podřízené spuštění paralelního kroku spuštění.
 
@@ -147,7 +147,7 @@ Podívejte [se na seznam známých problémů](resource-known-issues.md) , kde s
     + Přidejte podporu pro různé jazyky pro modely Transformer pro obsáhlý Learning, jako je například BERT v automatizovaných ML.
     + Odebere zastaralou lag_length parametr z dokumentace.
     + Vylepšili jsme dokumentaci parametrů prognózování. Parametr lag_length byl zastaralý.
-  + **AzureML-vlak-automl-runtime**
+  + **azureml-train-automl-runtime**
     + Povolení vysvětlení pro AutoML Prophet a navýšení modelů, které obsahují model Prophet.
     + Aktualizace dokumentace pro balíčky AzureML-vlak-automl-*
   + **azureml-train-core**
@@ -254,7 +254,7 @@ Podívejte [se na seznam známých problémů](resource-known-issues.md) , kde s
     + Odebrání omezení pro modely phrophet a xgboost při vyškolení na vzdálené výpočetní prostředky.
     + `azureml-train-automl-runtime`a `azureml-automl-runtime` mají aktualizované závislosti pro `pytorch` , `scipy` a `cudatoolkit` . nyní podporujeme `pytorch==1.4.0` , `scipy>=1.0.0,<=1.3.1` a `cudatoolkit==10.1.243` .
     + Přidání funkce, která uživatelům umožní zahrnout do vygenerování předpovědí odložení funkcí.
-  + **AzureML-vlak-automl-runtime**
+  + **azureml-train-automl-runtime**
     + Vylepšené protokolování v AutoML
     + Přidání podrobného zpracování chyb pro výjimky pro přípravu dat
     + Odebrání omezení pro modely phrophet a xgboost při vyškolení na vzdálené výpočetní prostředky.
@@ -337,7 +337,7 @@ Podívejte [se na seznam známých problémů](resource-known-issues.md) , kde s
     + Opravy dokumentů pro AutoMLConfig.
     + Vynucování kontrol datového typu u cv_split_indices vstupu v AutoMLConfig.
     + Opravili jsme problém se selháním AutoML běhu v show_output
-  + **AzureML-vlak-automl-runtime**
+  + **azureml-train-automl-runtime**
     + Oprava chyby v iteracích kompletu, která zabránila úspěšnému dokončení stahování modelu.
   + **azureml-train-core**
     + Opravte překlepy ve třídě AzureML. vlak. DNN. Nccl.
@@ -367,7 +367,7 @@ Teď můžete vytvářet, upravovat a sdílet notebooky a soubory ve strojovém 
 
 Z studia získáte přístup k následujícím webovým nástrojům pro vytváření obsahu:
     
-| Webový nástroj  |     Description  | Edice | 
+| Webový nástroj  |     Popis  | Edice | 
 |---|---|---|
 | Notebooky Azure ML Studio   |     První vytváření obsahu pro soubory poznámkových bloků a podpora všech operací, které jsou dostupné v sadě SDK Azure ML Python SDK. | Basic & Enterprise  |   
 
@@ -439,7 +439,7 @@ Z studia získáte přístup k následujícím webovým nástrojům pro vytvář
     + Pevná regrese při prvotním zastavení
     + Zastaralý tok AzureML. dprep. Dataflow jako platný typ pro vstupní data.
     +  Výchozí doba experimentu AutoML se mění na šest dní.
-  + **AzureML-vlak-automl-runtime**
+  + **azureml-train-automl-runtime**
     + Přidání další telemetrie kolem operací po školení.
     + Přidání podpory pro zhuštěné AutoML e2e
   + **azureml-opendatasets**
@@ -561,7 +561,7 @@ Z studia získáte přístup k následujícím webovým nástrojům pro vytvář
   + **azureml-train-automl-client**
     + Opravili jsme problém, kdy se některé balíčky můžou na vzdáleném spuštění nainstalovat na nesprávnou verzi.
     + opravený problém FeaturizationConfig, který filtruje vlastní konfiguraci featurization.
-  + **AzureML-vlak-automl-runtime**
+  + **azureml-train-automl-runtime**
     + Opravili jsme problém s detekcí četnosti ve vzdálených spuštěních.
     + Přesunuto `AutoMLStep` v `azureml-pipeline-steps` balíčku. Zastaralé v `AutoMLStep` rámci `azureml-train-automl-runtime` .
   + **azureml-train-core**
@@ -639,7 +639,7 @@ Z studia získáte přístup k následujícím webovým nástrojům pro vytvář
     + aktualizace AzureML-tensorboard na podporu tensorflow 2,0
   + **azureml-train-automl-client**
     + opravený problém FeaturizationConfig, který filtruje vlastní konfiguraci featurization.
-  + **AzureML-vlak-automl-runtime**
+  + **azureml-train-automl-runtime**
     + Přesunuto `AutoMLStep` v `azureml-pipeline-steps` balíčku. Zastaralé v `AutoMLStep` rámci `azureml-train-automl-runtime` .
   + **azureml-train-core**
     + Podpora PyTorch verze 1,4 ve PyTorch Estimator
@@ -814,7 +814,7 @@ Z studia získáte přístup k následujícím webovým nástrojům pro vytvář
   + **azureml-train-automl-client**
     + Přidali jsme tenký klient pro odesílání AutoML experimentů, aniž byste museli instalovat žádné závislosti ve strojovém učení místně.
     + Pevné protokolování automaticky zjištěných prodlevy, velikostí oken a maximálního počtu horizontů ve vzdálených spuštěních.
-  + **AzureML-vlak-automl-runtime**
+  + **azureml-train-automl-runtime**
     + Přidání nového balíčku AutoML k izolaci strojového učení a běhových komponent z klienta.
   + **AzureML-contrib-výuka-RL**
     + Přidala se podpora výuky pro zvýšení podpory v sadě SDK.
@@ -879,7 +879,7 @@ Z studia můžete provádět výukové, testovací, nasazování a správu Azure
 
 Z studia získáte přístup k následujícím webovým nástrojům pro vytváření obsahu:
 
-| Webový nástroj | Description | Edice |
+| Webový nástroj | Popis | Edice |
 |-|-|-|
 | Virtuální počítač poznámkového bloku (Preview) | Plně spravovaná cloudová pracovní stanice | Basic & Enterprise |
 | [Automatizované Machine Learning](tutorial-first-experiment-automated-ml.md) (Preview) | Neexistují žádné zkušenosti s kódem pro automatizaci vývoje modelů strojového učení. | Enterprise |
@@ -1017,7 +1017,7 @@ Azure Machine Learning je teď poskytovatel prostředků pro Event Grid, můžet
   + Použít transformaci SQL
   + Oříznout hodnoty
   + Shrnout data
-  + Import z databáze SQL
+  + Importovat z SQL Database
 
 ## <a name="2019-10-14"></a>2019-10-14
 
@@ -2031,7 +2031,7 @@ Poznámka: sada SDK pro přípravu dat už nebude instalovat `numpy` a `pandas` 
 ### <a name="azure-machine-learning-data-prep-sdk-v1012"></a>Sada Azure Machine Learning data PREP SDK v 1.0.12
 
 + **Nové funkce**
-  + Data PREP teď podporuje čtení z databáze SQL Azure pomocí úložiště dat.
+  + Příprava dat teď podporuje čtení z Azure SQL Database pomocí úložiště dat.
 
 + **Provedeny**
   + Vylepšený výkon u velkých objemů paměti u různých operací.
