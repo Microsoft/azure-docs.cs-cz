@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
 ms.reviewer: baanders
-ms.openlocfilehash: 4051b5c098b0ce299185a483abf2bdd39bb6c11f
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 50fade5179d5323a332d9b103f2fac17d402aa3f
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84725813"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362845"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>Použití digitálních vláken Azure k aktualizaci mapy vnitřních Azure Maps
 
@@ -163,5 +163,5 @@ V závislosti na konfiguraci topologie budete moct uložit tyto tři atributy na
 
 Další informace o správě, upgradu a načítání informací z grafu vláken naleznete v následujících odkazech:
 
-* [Postupy: Správa digitálního vlákna](./how-to-manage-twin.md)
+* [Postupy: Správa digitálních vláken](./how-to-manage-twin.md)
 * [Postupy: dotazování na nevlákenný graf](./how-to-query-graph.md)

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: tutorial
-ms.date: 03/05/2020
+ms.date: 06/23/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 801bfcf02174c5dd98d4c7231c674299ef411aff
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: d50eafd8464a315cb4e619a0c34b6a173d6ca638
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78943121"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362189"
 ---
 # <a name="tutorial-create-a-single-page-web-app"></a>Kurz: Vytvoření webové aplikace s jednou stránkou
 
@@ -352,7 +352,7 @@ Funkce rendereru může přijímat tyto parametry:
 
 Parametry `index` a `count` se můžou použít k číslování výsledků, generování zvláštního kódu HTML pro začátek nebo konec kolekce, vložení konců řádků za určitý počet položek a tak dále. Pokud renderer tuto funkci nepotřebuje, nepotřebuje tyto dva parametry přijímat.
 
-Renderer `news` je zobrazený v následujícím javascriptovém úryvku:
+`news`Vykreslovací modul je zobrazen v následujícím výpisu JavaScriptu:
 ```javascript
     // render news story
     news: function (item) {

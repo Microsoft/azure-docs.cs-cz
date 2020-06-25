@@ -13,17 +13,17 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/22/2020
+ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3997ae5aa95423841a918a3b5ed1fb0a01d3602e
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 1e64624865a314a7487a7ce474c1e5e56e3d9277
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85217991"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362998"
 ---
-# <a name="azure-storage-types-for-sap-workload"></a>Azure Storage typy pro úlohu SAP
+# <a name="azure-storage-types-for-sap-workload"></a>Typy služby Azure Storage pro úlohy SAP
 Azure má spoustu typů úložiště, které se v různých možnostech, propustnosti, latenci a cenách liší. Některé typy úložiště nejsou ani omezené možnosti použitelné pro scénáře SAP. Vzhledem k tomu, že některé typy úložiště Azure jsou vhodné nebo optimalizované pro konkrétní scénáře úloh SAP. Zejména u SAP HANA některé typy úložiště Azure získali certifikaci pro použití s SAP HANA. V tomto dokumentu procházíme mezi různými typy úložišť a popisujete jejich schopnost a použitelnost pomocí úloh SAP a komponent SAP.
 
 Přeoznačení jednotek používaných v rámci tohoto článku. Dodavatelé veřejného cloudu přesunuli, aby používali GiB ([gibibajt](https://en.wikipedia.org/wiki/Gibibyte)) nebo TIB ([Tebibyte](https://en.wikipedia.org/wiki/Tebibyte) jako jednotky velikostí místo gigabajtů a terabajtů. Proto všechna dokumentace a cenám Azure tyto jednotky používají.  V celém dokumentu odkazujeme výhradně na tyto jednotky formátu MiB, GiB a TiB jednotky. Možná budete muset naplánovat na MB, GB a TB. Proto si pamatujte na některé malé rozdíly ve výpočtech, pokud potřebujete velikost pro propustnost 400 MiB/s, nikoli propustnost 250 MiB/s.
@@ -34,7 +34,23 @@ Microsoft Azure úložiště HDD úrovně Standard, SSD úrovně Standard, Azure
 
 Existuje několik dalších metod redundance, které jsou popsány v článku [Azure Storage replikaci](https://docs.microsoft.com/azure/storage/common/storage-redundancy?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) , která platí pro některé z různých typů úložiště, které Azure nabízí. 
 
-Jak jsou tyto možnosti odolnosti aplikovány na typy úložiště Azure používané pro SAP, jsou popsány v následujících částech.
+### <a name="azure-managed-disks"></a>Azure Managed disks
+
+Managed disks je typ prostředku v Azure Resource Manager, který se dá použít místo VHD, které jsou uložené v účtech Azure Storage. Managed Disks automaticky zarovnává se [skupinou dostupnosti] [virtuální počítače-spravovat-dostupnost] virtuálního počítače, ke kterému jsou připojené, a proto Zvyšte dostupnost vašeho virtuálního počítače a služeb, které běží na virtuálním počítači. Další informace najdete v [článku Přehled](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview).
+
+V souvislosti s odolností tento příklad ukazuje výhody spravovaných disků:
+
+- Nasazujete dva virtuální počítače DBMS pro váš systém SAP v sadě dostupnosti Azure. 
+- Když Azure nasadí virtuální počítače, disk s bitovou kopií operačního systému se umístí do jiného clusteru úložiště. Tím předejdete tomu, že oba virtuální počítače mají dopad na problém s jedním clusterem úložiště Azure.
+- Když vytváříte nové spravované disky, které těmto virtuálním počítačům přiřadíte pro ukládání souborů dat a protokolů vaší databáze, tyto nové disky pro tyto dva virtuální počítače se nasadí taky v samostatných clusterech úložiště, takže to, že žádný z disků prvního virtuálního počítače nesdílí clustery úložiště s disky druhého virtuálního počítače.
+
+Nasazování bez spravovaných disků v účtech úložiště definovaných zákazníky, přidělení disku je libovolné a nemá žádné povědomí o tom, že se virtuální počítače nasazují v rámci AvSet pro účely odolnosti.
+
+> [!NOTE]
+> Z tohoto důvodu a několika dalších vylepšení, která jsou exkluzivně dostupná prostřednictvím spravovaných disků, vyžadujeme, aby nová nasazení virtuálních počítačů, které používají blokové úložiště Azure pro své disky (všechna úložiště Azure kromě Azure NetApp Files), používala Azure Managed disks pro základní disky VHD/OS, datové disky, které obsahují soubory databáze SAP. Nezávisle na tom, jestli nasazujete virtuální počítače prostřednictvím skupiny dostupnosti, napříč Zóny dostupnosti nebo nezávisle na sadách a zónách. Disky, které se používají pro účely ukládání záloh, nemusí být nutně nutné pro spravované disky.
+
+> [!NOTE]
+> Azure Managed disks poskytuje jenom místní redundanci (LRS). 
 
 
 ## <a name="storage-scenarios-with-sap-workloads"></a>Scénáře úložiště s úlohami SAP
@@ -67,6 +83,7 @@ Než přejdete k podrobnostem, prezentujeme Shrnutí a doporučení, které už 
 | DBMS protokolovat řady virtuálních počítačů, které nejsou HANA/HANA M/Mv2 | nepodporováno | vhodné (nepatří do výrobního typu) | Doporučené<sup>1</sup> | doporučil | nepodporováno |
 | DBMS protokoluje řady virtuálních počítačů, které nejsou M/HANA/Mv2. | nepodporováno | vhodné (nepatří do výrobního typu) | vhodné pro až středně velké zatížení | doporučil | nepodporováno |
 
+
 <sup>1</sup> s využitím služby [Azure akcelerátor zápisu](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator) pro řady virtuálních počítačů M/Mv2 pro svazky protokolu/opakování protokolů <sup>2</sup> pomocí ANF vyžaduje/Hana/data a také/Hana/log pro ANF. 
 
 Vlastnosti, které můžete očekávat od různých typů úložišť, jako je:
@@ -78,11 +95,25 @@ Vlastnosti, které můžete očekávat od různých typů úložišť, jako je:
 | Zápisy latence | high | střední až vysoká  | nízká (dílčí – milisekunda<sup>1</sup>) | dílčí milisekunda | dílčí milisekunda |
 | Podporuje HANA | ne | ne | Ano<sup>1</sup> | ano | ano |
 | Možné snímky disku | ano | ano | ano | ne | ano |
+| Přidělení disků v různých clusterech úložiště při používání skupin dostupnosti | prostřednictvím spravovaných disků | prostřednictvím spravovaných disků | prostřednictvím spravovaných disků | typ disku není podporovaný virtuálními počítači nasazenými prostřednictvím skupin dostupnosti. | žádné<sup>3</sup> |
+| Zarovnáno s Zóny dostupnosti | ano | ano | ano | ano | vyžaduje zapojení Microsoftu |
+| Oblast redundance | nepoužívá se pro spravované disky | nepoužívá se pro spravované disky | nepoužívá se pro spravované disky | ne | ne |
+| Geografická redundance | nepoužívá se pro spravované disky | nepoužívá se pro spravované disky | ne | ne | ne |
 
 
 <sup>1</sup> s využitím [Azure akcelerátor zápisu](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator) pro řady virtuálních počítačů M/Mv2 pro svazky protokolů/opakování
 
 <sup>2</sup> náklady závisí na ZŘÍZENých vstupně-výstupních operacích a propustnosti.
+
+<sup>3</sup> vytvoření různých fondů kapacit ANF nezaručuje nasazení fondů kapacity do různých jednotek úložiště.
+
+
+> [!IMPORTANT]
+> Aby bylo možné dosáhnout méně než 1 milisekundy na latenci vstupu a výstupu pomocí Azure NetApp Files (ANF), budete muset spolupracovat s Microsoftem, aby bylo možné uspořádat správné umístění mezi vašimi virtuálními počítači a sdílenými složkami NFS na základě ANF. Zatím není k dispozici žádný mechanismus, který poskytuje automatickou blízkost mezi nasazeným virtuálním počítačem a svazky NFS hostovanými na ANF. Vzhledem k různým nastavením různých oblastí Azure může být přidaná latence sítě nabízena přes 1 milisekundovou latenci, pokud virtuální počítač a sdílená složka NFS nejsou přiděleny v blízkosti.
+
+
+> [!IMPORTANT]
+> Žádné z aktuálně nabízené služby Azure Block Storage na základě úložiště není k dispozici ani Azure NetApp Files nabízet jakékoli geografické nebo zeměpisné redundance. V důsledku toho je potřeba zajistit, aby se vaše architektury pro obnovení s vysokou dostupností a zotavení po havárii nespoléhaly na žádný typ replikace nativního úložiště Azure pro tyto spravované disky, soubory NFS nebo sdílené složky protokolu SMB.
 
 
 ## <a name="azure-premium-storage"></a>Azure Premium Storage
@@ -95,8 +126,7 @@ Vlastnosti, které můžete očekávat od různých typů úložišť, jako je:
 Tento typ úložiště cílí na úlohy DBMS, provoz úložiště, který vyžaduje latenci s nízkou dobou v milisekundách, a v případě Azure Premium Storage se SLA na zatížení za vstupně-výstupní operace a náklady na propustnost, a to v případě, že se v případě Azure Premium Storage nejedná o skutečný objem dat, který je na těchto discích uložený. Můžete také vytvořit disky na Premium Storage, které nejsou přímo mapovány na kategorie velikosti uvedené v článku [SSD úrovně Premium](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#premium-ssd). K závěrům z tohoto článku patří:
 
 - Úložiště je uspořádáno v oblastech. Například disk v rozsahu od 513 GiB do 1024 kapacity GiB sdílí stejné možnosti a stejné měsíční náklady
-- Počet IOPS na GiB se nesleduje.
--  lineární napříč kategoriemi velikosti Menší disky nižší než 32 GiB mají za GiB vyšší sazby za IOPS. U disků přesahujících 32 GiB až 1024 GiB je sazba IOPS za GiB mezi 4-5 IOPS za GiB. V případě větších disků až do 32 767 GiB je sazba IOPS za GiB nižší než 1.
+- Počet IOPS na GiB nesleduje lineární napříč kategoriemi velikostí. Menší disky nižší než 32 GiB mají za GiB vyšší sazby za IOPS. U disků přesahujících 32 GiB až 1024 GiB je sazba IOPS za GiB mezi 4-5 IOPS za GiB. V případě větších disků až do 32 767 GiB je sazba IOPS za GiB nižší než 1.
 - Propustnost vstupně-výstupních operací pro toto úložiště není lineární pro velikost kategorie disku. Pro menší disky, jako je kategorie mezi 65 GiB a 128 GiB kapacita, je propustnost kolem 780KB/GiB. Vzhledem k tomu, že pro extrémní velké disky, jako je 32 767 GiB disk, je propustnost kolem 28KB/GiB
 - VSTUPNĚ-výstupní operace a SLA propustnosti nelze změnit, aniž by došlo ke změně kapacity disku.
 

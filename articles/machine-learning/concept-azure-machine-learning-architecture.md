@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 05/13/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: 49c23774fe16c24ba90daa02cdda1688b79b12d3
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 97b13118eb0299f042bdadfebecbc1a23d1ce59f
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683039"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362590"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Jak Azure Machine Learning funguje: architektura a koncepty
 
@@ -45,9 +45,9 @@ Pracovní postup modelu Machine Learning se obvykle řídí tímto pořadím:
 Použijte tyto nástroje pro Azure Machine Learning:
 
 +  Spolupracovat se službou v jakémkoli prostředí Pythonu s [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
-+ Interakci se službou v jakémkoli prostředí R s [Azure Machine Learning SDK pro R](https://azure.github.io/azureml-sdk-for-r/reference/index.html).
++ Interakci se službou v jakémkoli prostředí R s [Azure Machine Learning SDK pro R](https://azure.github.io/azureml-sdk-for-r/reference/index.html) (Preview).
 + Automatizujte své aktivity strojového učení pomocí [Azure Machine Learning CLI](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli).
-+ Použijte [Azure Machine Learning Designer (Preview)](concept-designer.md) k provedení kroků pracovního postupu bez psaní kódu.
++ Použijte [Azure Machine Learning Designer (Preview)](concept-designer.md) k provedení kroků pracovního postupu bez psaní kódu. ( [Pracovní prostor organizace](concept-workspace.md#upgrade)) je vyžadován pro použití návrháře.)
 + [Mnohé modely řešení](https://aka.ms/many-models) (Preview) jsou sestavené na Azure Machine Learning a umožňují výuku, provozování a správu stovek nebo dokonce tisíců modelů strojového učení.
 
 > [!NOTE]
@@ -62,7 +62,7 @@ Použijte tyto nástroje pro Azure Machine Learning:
             * [Konfigurace spuštění](#run-configurations)
             * [Snímek](#snapshots)
             * [Sledování Gitu](#github-tracking-and-integration)
-            * [Protokolování](#logging)
+            * [protokolování](#logging)
     * [Kanály ML](#ml-pipelines)
     * [Modely](#models)
         * [Prostředí](#environments)
@@ -127,7 +127,7 @@ Když spustíte školicí kurz, kde zdrojový adresář je místní úložiště
 
 Další informace najdete v tématu [integrace Gitu pro Azure Machine Learning](concept-train-model-git-integration.md).
 
-### <a name="logging"></a>Protokolování
+### <a name="logging"></a>protokolování
 
 Při vývoji řešení použijte sadu Azure Machine Learning Python SDK ve vašem skriptu Pythonu k protokolování libovolných metrik. Po spuštění dotazu na metriky určete, zda běh vytvořil model, který chcete nasadit.
 

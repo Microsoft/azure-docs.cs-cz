@@ -6,43 +6,40 @@ manager: rkarlin
 ms.assetid: 91c870e5-2669-437f-9896-ee6c7fe1d51d
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
-ms.topic: conceptual
-ms.date: 11/17/2019
+ms.topic: how-to
+ms.date: 06/24/2020
 ms.author: yelevin
-ms.openlocfilehash: b82ddfef57efaaca0ae43750cd306a63a772b911
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0f85e543c83413e840354c053a1f4cb0925fc271
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80616830"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362896"
 ---
-# <a name="connect-data-from-azure-ad-identity-protection"></a>Připojení dat z Azure AD Identity Protection
+# <a name="connect-data-from-azure-active-directory-azure-ad-identity-protection"></a>Připojení dat z Azure Active Directory (Azure AD) Identity Protection
 
-
-
-Můžete streamovat protokoly z [Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection) do Azure Sentinel a streamovat výstrahy do Azure Sentinel a zobrazit řídicí panely, vytvořit vlastní výstrahy a vylepšit šetření. Azure Active Directory Identity Protection poskytuje konsolidované zobrazení v rizikových uživatelích, detekci rizik a ohrožení zabezpečení, s možností okamžitě opravit riziko a nastavit zásady pro automatické napravení budoucích událostí. Služba je postavená na zkušenostech Microsoftu s ochranou identit spotřebitelů a díky signálům z více než 13 000 000 000 přihlášení denně získá obrovský přesnost. 
-
+Můžete streamovat protokoly z [Azure AD Identity Protection](../active-directory/identity-protection/overview-identity-protection.md) do Azure Sentinel a streamovat výstrahy do Azure Sentinel a zobrazit řídicí panely, vytvořit vlastní výstrahy a vylepšit šetření. Azure Active Directory Identity Protection poskytuje konsolidované zobrazení v rizikových uživatelích, detekci rizik a ohrožení zabezpečení, s možností okamžitě opravit riziko a nastavit zásady pro automatické napravení budoucích událostí. Služba je postavená na zkušenostech Microsoftu s ochranou identit spotřebitelů a díky signálům z více než 13 000 000 000 přihlášení denně získá obrovský přesnost. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Musíte mít [licenci Azure Active Directory Premium P1 nebo P2](https://azure.microsoft.com/pricing/details/active-directory/) .
-- Uživatel s oprávněními globálního správce nebo správce zabezpečení
+- Musíte mít [předplatné Azure AD Premium P2](https://azure.microsoft.com/pricing/details/active-directory/).
+- Musíte mít uživatele s oprávněními globálního správce nebo správce zabezpečení.
 
 
 ## <a name="connect-to-azure-ad-identity-protection"></a>Připojení k Azure AD Identity Protection
 
-Pokud už máte Azure AD Identity Protection, ujistěte se, že je [ve vaší síti povolená](../active-directory/identity-protection/overview-identity-protection.md).
-Pokud je Azure AD Identity Protection nasazená a načítá data, můžou se data výstrah snadno streamovat do služby Azure Sentinel.
-
+Pokud máte předplatné Azure AD Premium P2, zahrnuje Azure AD Identity Protection. Pokud [jsou nějaké zásady povolené](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md) a generují výstrahy, můžou se data výstrah do Azure Sentinel snadno streamovat.
 
 1. V Azure Sentinel vyberte **datové konektory** a pak klikněte na dlaždici **Azure AD Identity Protection** .
 
-2. Kliknutím na **připojit** spustíte streamování Azure AD Identity Protection událostí do Azure Sentinel.
+1. Kliknutím na **připojit** spustíte streamování Azure AD Identity Protection událostí do Azure Sentinel.
 
+1. Pokud chcete pro Azure AD Identity Protection výstrahy použít příslušné schéma v Log Analytics, vyhledejte **SecurityAlert**.
 
-6. Pokud chcete pro Azure AD Identity Protection výstrahy použít příslušné schéma v Log Analytics, vyhledejte **SecurityAlert**.
+Pokud chcete konektor otestovat, můžete [simulovat detekce](../active-directory/identity-protection/howto-identity-protection-simulate-risk.md) a vygenerovat ukázkové výstrahy, které budou streamovat do služby Azure Sentinel.
 
 ## <a name="next-steps"></a>Další kroky
+
 V tomto dokumentu jste zjistili, jak připojit Azure AD Identity Protection ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
 - Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
 - Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats-built-in.md).

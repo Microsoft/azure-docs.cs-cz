@@ -2,18 +2,18 @@
 title: Správa koncových bodů a tras
 titleSuffix: Azure Digital Twins
 description: Přečtěte si, jak nastavit a spravovat koncové body a trasy událostí pro data digitálních vláken Azure.
-author: cschormann
-ms.author: cschorm
-ms.date: 3/17/2020
+author: alexkarcher-msft
+ms.author: alkarche
+ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: cf18d8ef391115da5e1c8fcab235c30e96287f5b
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: b6f5765f51983e3b1ca9c182849b64258476a2ce
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84725677"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362760"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins"></a>Správa koncových bodů a tras v digitálních prozdvojeních Azure
 
@@ -74,17 +74,19 @@ Ukázky v tomto článku používají sadu C# SDK.
 
 Trasy událostí jsou definované pomocí rozhraní API roviny dat. Definice trasy může obsahovat tyto prvky:
 * ID trasy, kterou chcete použít
-* ID koncového bodu, který chcete použít
+* Název koncového bodu, který chcete použít
 * Filtr definující události odesílané do koncového bodu 
 
-Pokud není k dispozici žádné ID trasy, nejsou směrovány žádné zprávy mimo digitální vlákna Azure. Pokud je k dispozici ID trasy a filtr je `null` , všechny zprávy budou směrovány do koncového bodu. Pokud je k dispozici ID trasy a je přidán filtr, budou zprávy na základě filtru filtrovány.
+Pokud není k dispozici žádné ID trasy, nejsou směrovány žádné zprávy mimo digitální vlákna Azure. Pokud je k dispozici ID trasy a filtr je `true` , všechny zprávy budou směrovány do koncového bodu. Pokud je k dispozici ID trasy a je přidán jiný filtr, budou zprávy na základě filtru filtrovány.
 
 Jedna trasa by měla umožňovat výběr více oznámení a typů událostí. 
 
-Zde je volání sady SDK, které se používá k přidání trasy události:
+`CreateEventRoute`je volání sady SDK, které se používá k přidání trasy události. Tady je příklad jeho použití:
 
 ```csharp
-await client.CreateEventRoute("routeName", new EventRoute("endpointID"));
+EventRoute er = new EventRoute("endpointName");
+er.Filter("true"); //Filter allows all messages
+await client.CreateEventRoute("routeName", er);
 ```
 
 > [!TIP]
@@ -130,22 +132,23 @@ Bez filtrování se koncovým bodům dostanou nejrůznější události z digit�
 
 Odesílaných událostí můžete omezit přidáváním filtru do koncového bodu.
 
-Pokud chcete přidat filtr, můžete použít požadavek PUT na *https://{YourHost}/EventRoutes/myNewRoute? API-Version = 2020-03 -01-Preview* s následujícím textem:
+Pokud chcete přidat filtr, můžete použít požadavek PUT na *https://{YourHost}/EventRoutes/myNewRoute? API-Version = 2020-05 -31-Preview* s následujícím textem:
 
 ```json  
 {
-    "endpointId": "<endpoint-ID>",
+    "endpointName": "<endpoint-name>",
     "filter": "<filter-text>"
 }
 ``` 
 
 Tady jsou podporované filtry tras.
 
-| Název filtru | Description | Filtrovat schéma | Podporované hodnoty | 
+| Název filtru | Popis | Filtrovat schéma | Podporované hodnoty | 
 | --- | --- | --- | --- |
-| Typ | [Typ toku událostí](./concepts-route-events.md#types-of-event-messages) prostřednictvím vaší digitální instance | `"filter" : "type = '<eventType>'"` | `Microsoft.DigitalTwins.Twin.Create` <br> `Microsoft.DigitalTwins.Twin.Delete` <br> `Microsoft.DigitalTwins.Twin.Update`<br>`Microsoft.DigitalTwins.Edge.Create`<br>`Microsoft.DigitalTwins.Edge.Update`<br> `Microsoft.DigitalTwins.Edge.Delete` <br> `microsoft.iot.telemetry`  |
-| Zdroj | Název instance digitálního vlákna Azure | `"filter" : "source = '<hostname>'"`|  **Pro oznámení:**`<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net` <br> **Pro telemetrii:**`<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net/ digitaltwins/<twinId>`|
-| Subjekt | Popis události v kontextu výše uvedeného zdroje událostí | `"filter": " subject = '<subject>'"` | **U oznámení**je subjekt`<twinid>` <br> nebo formát identifikátoru URI pro předměty, které jsou jednoznačně identifikované více částmi nebo identifikátory:<br>`<twinid>/relationships/<relationship>/<edgeid>`<br> V případě **telemetrie**je subjektem cesta k komponentě (Pokud se telemetrie generuje z vlákna), jako je například `comp1.comp2` . Pokud telemetrie není vygenerována ze součásti, je pole předmětu prázdné. |
+| Typ | [Typ toku událostí](./concepts-route-events.md#types-of-event-messages) prostřednictvím vaší digitální instance | `"filter" : "type = '<eventType>'"` | `Microsoft.DigitalTwins.Twin.Create` <br> `Microsoft.DigitalTwins.Twin.Delete` <br> `Microsoft.DigitalTwins.Twin.Update`<br>`Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br> `Microsoft.DigitalTwins.Relationship.Delete` <br> `microsoft.iot.telemetry`  |
+| Zdroj | Název instance digitálního vlákna Azure | `"filter" : "source = '<hostname>'"`|  **Pro oznámení**:`<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net` <br> **Pro telemetrii**:`<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net/digitaltwins/<twinId>`|
+| Subjekt | Popis události v kontextu výše uvedeného zdroje událostí | `"filter": " subject = '<subject>'"` | **Pro oznámení**: subjekt je`<twinid>` <br> nebo formát identifikátoru URI pro předměty, které jsou jednoznačně identifikované více částmi nebo identifikátory:<br>`<twinid>/relationships/<relationshipid>`<br> **Pro telemetrii**: subjekt je cesta k komponentě (Pokud se telemetrie generuje z vlákna), jako je například `comp1.comp2` . Pokud telemetrie není vygenerována ze součásti, je pole předmětu prázdné. |
+| Schéma dat | ID modelu DTDL | `"filter": "dataschema = 'dtmi:example:com:floor4;2'"` | **Pro telemetrii**: schéma dat je ID modelu vlákna nebo komponenty, která tuto telemetrii emituje. <br>**Pro oznámení**: schéma dat se nepodporuje.|
 | Typ obsahu | Typ obsahu hodnoty dat | `"filter": "datacontenttype = '<contentType>'"` | `application/json` |
 | Specifikace verze | Verze schématu události, kterou používáte | `"filter": "specversion = '<version>'"` | Musí být `1.0` . To označuje schéma CloudEvents verze 1,0. |
 | True nebo false | Umožňuje vytvoření trasy bez filtrování nebo zakázání trasy. | `"filter" : "<true/false>"` | `true`= trasa je povolená bez filtrování. <br> `false`= trasa je zakázána. |

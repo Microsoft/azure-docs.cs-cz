@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9ad222c5fb5554698b6166b0b10a52221a31b360
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 5b54f87635e1ea972778b0039dc34170c5b7ab8a
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84886213"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362284"
 ---
 # <a name="cloud-tiering-overview"></a>Přehled vrstvení cloudu
 Vrstvení cloudu je volitelná funkce Azure File Sync, ve které jsou často používané soubory ukládány do mezipaměti místně na serveru, zatímco všechny ostatní soubory jsou vrstveny do souborů Azure na základě nastavení zásad. Když je soubor vrstvený, Azure File Sync filtr systému souborů (StorageSync.sys) nahradí soubor místně s ukazatelem nebo bodem rozboru. Bod rozboru představuje adresu URL souboru ve službě soubory Azure. Vrstvený soubor má atribut offline i atribut FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS nastavený v systému souborů NTFS, aby aplikace třetích stran mohli bezpečně identifikovat vrstvené soubory.
@@ -31,7 +31,11 @@ Když uživatel otevře vrstvený soubor, Azure File Sync hladce znovu volá dat
 ### <a name="how-does-cloud-tiering-work"></a>Jak funguje vrstva cloudu?
 Filtr systému Azure File Sync vytvoří pro každý koncový bod serveru "heatmapu" svého oboru názvů. Monitoruje v průběhu času přístup (operace čtení a zápisu) a pak na základě četnosti i recency přístupu přiřadí ke každému souboru zahřívání. Často používaný soubor, který se nedávno otevřel, se považuje za horkou, zatímco soubor, který je zlomek a který se v určitou dobu neotevřel, se považuje za studenou. Když svazek souboru na serveru překročí prahovou hodnotu pro volné místo, kterou jste nastavili, bude tyto soubory navrstvit do služby soubory Azure, dokud nedosáhnete procenta volného místa.
 
-Ve verzích 4,0 a vyšších Azure File Sync agenta můžete také zadat zásadu data na každém koncovém bodu serveru, ke kterému se budou navrstvit všechny soubory, ke kterým během zadaného počtu dnů nepřijdete nebo se nemění.
+Kromě toho můžete zadat zásadu data na každý koncový bod serveru, ke kterému se budou navrstvit všechny soubory nedostupné během zadaného počtu dnů bez ohledu na dostupnou kapacitu místního úložiště. To je dobrá volba k proaktivnímu uvolnění místa na místním disku, pokud víte, že soubory v tomto koncovém bodu serveru není nutné uchovávat místně po určitém stáří. Ta uvolní cennou kapacitu místního disku pro jiné koncové body na stejném svazku, aby bylo možné ukládat do mezipaměti více souborů.
+
+Heatmapu vrstev cloudu je v podstatě uspořádaný seznam všech souborů, které se synchronizují a jsou v umístění s povoleným vrstvou cloudu. Aby bylo možné určit relativní pozici jednotlivého souboru v tomto heatmapu, používá systém maximum kteréhokoli z následujících časových razítek v tomto pořadí: MAX (čas posledního přístupu, čas poslední změny, čas vytvoření). Čas posledního přístupu se obvykle sleduje a je dostupný. Když se ale vytvoří nový koncový bod serveru s povoleným vytvářením vrstev cloudu, pak se zpočátku nedostal dostatek času na sledování přístupu k souboru. Při nedostatku času posledního přístupu se k vyhodnocení relativní pozice v heatmapu použije čas poslední změny. Stejná záloha se vztahuje na zásady data. Bez času posledního přístupu bude zásada data fungovat s časem poslední změny. Neměl by být k dispozici, bude vrácen na čas vytvoření souboru. V průběhu času bude systém sledovat více a více požadavků na přístup k souborům a překlopit se, aby bylo možné předem sledovat čas posledního přístupu na základě sebe.
+
+Vrstvení cloudu nezávisí na funkci systému souborů NTFS ke sledování času posledního přístupu. Tato funkce systému souborů NTFS je ve výchozím nastavení vypnutá a kvůli důležitým informacím o výkonu nedoporučujeme tuto funkci ručně povolit. Vrstvení cloudu sleduje čas posledního přístupu samostatně a velmi efektivně.
 
 <a id="tiering-minimum-file-size"></a>
 ### <a name="what-is-the-minimum-file-size-for-a-file-to-tier"></a>Jaká je minimální velikost souboru pro soubor do vrstvy?
@@ -89,7 +93,7 @@ Existuje několik způsobů, jak ověřit, zda byl soubor vrstven do sdílené s
         
         | Písmeno atributu | Atribut | Definice |
         |:----------------:|-----------|------------|
-        | A | Archivovat | Indikuje, že by měl být soubor zálohovaný zálohovacím softwarem. Tento atribut je vždy nastaven bez ohledu na to, zda je soubor na disku povrstvený nebo uložený jako plný. |
+        | A | Archiv | Indikuje, že by měl být soubor zálohovaný zálohovacím softwarem. Tento atribut je vždy nastaven bez ohledu na to, zda je soubor na disku povrstvený nebo uložený jako plný. |
         | P | Zhuštěný soubor | Označuje, že se jedná o zhuštěný soubor. Zhuštěný soubor je specializovaný typ souboru, který systém souborů NTFS nabízí pro efektivní použití v případě, že je soubor na diskovém streamu většinou prázdný. Azure File Sync používá zhuštěné soubory, protože soubor je buď úplně vrstven, nebo částečně odvolán. V plně vrstveném souboru je datový proud souboru uložený v cloudu. V částečně vráceném souboru je tato část souboru již na disku. Pokud je soubor zcela znovu volán na disk, Azure File Sync jej převede ze zhuštěného souboru do normálního souboru. Tento atribut je nastaven pouze v systémech Windows Server 2016 a starších.|
         | M | Odvolat při přístupu k datům | Indikuje, že data souboru nejsou plně přítomná v místním úložišti. Při čtení souboru dojde k tomu, že se alespoň část obsahu souboru načte ze sdílené složky Azure, ke které je připojený koncový bod serveru. Tento atribut je nastaven pouze v systému Windows Server 2019. |
         | L | Spojovací bod | Označuje, že soubor obsahuje bod rozboru. Bod rozboru je speciální ukazatel pro použití filtrem systému souborů. Azure File Sync používá spojovací body k definování do Azure File Syncho filtru systému souborů (StorageSync.sys) umístění v cloudu, kde je soubor uložený. To podporuje bezproblémový přístup. Uživatelé nebudou muset znát, že se používá Azure File Sync nebo jak získat přístup k souboru ve sdílené složce Azure. Když je soubor zcela znovu vyvolán, Azure File Sync odebere bod rozboru ze souboru. |

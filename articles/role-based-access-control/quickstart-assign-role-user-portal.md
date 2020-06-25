@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/22/2019
 ms.author: rolyon
-ms.openlocfilehash: e70a3a1eedbc56754ad46fd99dddc0c7a3a6cf2f
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: c6736bb2642ff08d0aa3cda536ef1599324efded
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735840"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362006"
 ---
 # <a name="tutorial-grant-a-user-access-to-azure-resources-using-the-azure-portal"></a>Kurz: udělení přístupu uživatele k prostředkům Azure pomocí Azure Portal
 
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 > * Udělení přístupu pro uživatele v oboru skupiny prostředků
 > * Odebrání přístupu
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -62,17 +62,19 @@ Když ve službě Azure RBAC udělíte přístup, vytvoříte přiřazení role.
 
 1. V seznamu **skupin prostředků**klikněte na novou skupinu prostředků **RBAC-Resource-Group** .
 
-1. Klikněte na **Řízení přístupu (IAM)**.
+1. Klikněte na **Řízení přístupu (IAM)** .
 
 1. Kliknutím na kartu **Přiřazení rolí** zobrazte aktuální seznam přiřazení rolí.
 
    ![Okno Řízení přístupu (IAM) pro skupinu prostředků](./media/quickstart-assign-role-user-portal/access-control.png)
 
-1. Kliknutím na **Přidat** > **Přidat přiřazení role** otevřete podokno přidat přiřazení role.
+1. Kliknutím na **Přidat** > **Přidat přiřazení role** otevřete podokno Přidat přiřazení role.
 
    Pokud nemáte oprávnění k přiřazování rolí, bude možnost přidat přiřazení role zakázaná.
 
-   ![Přidat nabídku](./media/role-assignments-portal/add-menu.png)
+   ![Přidat nabídku přiřazení role](./media/shared/add-role-assignment-menu.png)
+
+    Otevře se podokno Přidat přiřazení role.
 
    ![Přidat podokno přiřazení role](./media/quickstart-assign-role-user-portal/add-role-assignment.png)
 

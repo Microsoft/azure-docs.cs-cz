@@ -3,12 +3,12 @@ title: Nastavení vývojového prostředí v systému Linux
 description: Nainstalujte modul runtime a sadu SDK a vytvořte místní vývojový cluster v Linuxu. Po dokončení této instalace a nastavení budete moci sestavovat aplikace.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 38ea94e14a182671b3540a87c3bf90e861479fe5
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 346230c0363bf58926cc46cb8bac2de61b81d68b
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84338460"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361968"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Příprava vývojového prostředí v Linuxu
 > [!div class="op_single_selector"]
@@ -61,40 +61,45 @@ Pokud chcete nainstalovat sadu SDK a přidružený balíček modulu runtime pomo
 
 1. Otevřete terminál.
 
-2. Přidejte do seznamu zdrojů úložiště `dotnet`.
+2. Přidejte `dotnet` úložiště do seznamu zdroje, který odpovídá vaší distribuci.
 
     ```bash
-    wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb
+    wget -q https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb
     sudo dpkg -i packages-microsoft-prod.deb
     ```
 
 3. Přidejte do své klíčenky APT nový klíč GPG (Gnu Privacy Guard neboli GnuPG).
 
     ```bash
-    curl -fsSL https://packages.microsoft.com/keys/msopentech.asc | sudo apt-key add -
+    sudo curl -fsSL https://packages.microsoft.com/keys/msopentech.asc | sudo apt-key add -
     ```
 
 4. Přidejte do své klíčenky APT oficiální klíč GPG Dockeru.
 
     ```bash
-    sudo apt-get install curl
     sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
     ```
 
-5. Nastavte úložiště Dockeru.
+5. Přidejte klíč MS Open Tech GPG do svého APTového prstence.
+
+    ```bash
+    sudo curl -fsSL https://packages.microsoft.com/keys/msopentech.asc | apt-key add -
+    ```
+
+6. Nastavte úložiště Dockeru.
 
     ```bash
     sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
     ```
 
-6. Přidejte klíč JDK Azul do svého správce klíčů APT a nastavte jeho úložiště.
+7. Přidejte klíč JDK Azul do svého správce klíčů APT a nastavte jeho úložiště.
 
     ```bash
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0xB1998361219BD9C9
     sudo apt-add-repository "deb http://repos.azul.com/azure-only/zulu/apt stable main"
     ```
 
-7. Obnovte seznamy balíčků na základě nově přidaných úložišť.
+8. Obnovte seznamy balíčků na základě nově přidaných úložišť.
 
     ```bash
     sudo apt-get update

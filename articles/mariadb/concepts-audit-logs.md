@@ -5,24 +5,21 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 6/18/2020
-ms.openlocfilehash: 9b577b12250f1a600c91776e64ecaf65be5d8476
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.date: 6/24/2020
+ms.openlocfilehash: 7c9d59eee1e1ce69394301023b108952eaf46790
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85100888"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362420"
 ---
 # <a name="audit-logs-in-azure-database-for-mariadb"></a>Protokoly auditu v Azure Database for MariaDB
 
 V Azure Database for MariaDB je k dispozici pro uživatele protokol auditu. Protokol auditu lze použít ke sledování aktivity na úrovni databáze a často se používá pro dodržování předpisů.
 
-> [!IMPORTANT]
-> Funkce protokolu auditu je momentálně ve verzi Preview.
-
 ## <a name="configure-audit-logging"></a>Konfigurace protokolování auditu
 
->[!NOTE]
+>[!IMPORTANT]
 > Doporučujeme pouze protokolovat typy událostí a uživatele požadované pro vaše účely auditování, aby se zajistilo, že výkon serveru nebude velmi ovlivněn.
 
 Ve výchozím nastavení je protokol auditu zakázán. Pokud ho chcete povolit, nastavte na `audit_log_enabled` zapnuto.

@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 02/21/2020
+ms.date: 06/24/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 064fcf618914bca31ad9e7e60c76df8f599cd8bf
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 151e7d286dac91ddd0e988027968f2e44a83e35e
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84687187"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362641"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Kurz: Nasazení a konfigurace brány Azure Firewall pomocí webu Azure Portal
 
@@ -26,7 +26,9 @@ Jedním ze způsobů, jak můžete řídit odchozí síťový přístup z podsí
 
 Síťový provoz podléhá nakonfigurovaným pravidlům brány firewall, když ho směrujete na bránu firewall jako na výchozí bránu podsítě.
 
-V tomto kurzu pro usnadnění nasazení vytvoříte jednu zjednodušenou virtuální síť se třemi podsítěmi. U produkčních nasazení se doporučuje [model hvězdicového a paprskového modelu](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) . Brána firewall je ve své vlastní virtuální síti. Servery úloh jsou v virtuální sítě s partnerským vztahem ve stejné oblasti s jednou nebo více podsítěmi.
+V tomto kurzu pro usnadnění nasazení vytvoříte jednu zjednodušenou virtuální síť se třemi podsítěmi.
+
+V produkčních nasazeních se doporučuje [model hvězdicové a Paprskové](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) služby, kde brána firewall patří do vlastní virtuální sítě. Servery úloh jsou v virtuální sítě s partnerským vztahem ve stejné oblasti s jednou nebo více podsítěmi.
 
 * **AzureFirewallSubnet** – v této podsíti bude brána firewall.
 * **Workload-SN** – v této podsíti bude server úloh. Provoz této podsítě bude procházet bránou firewall.
@@ -142,7 +144,7 @@ Nasaďte do virtuální sítě bránu firewall.
    |---------|---------|
    |Předplatné     |\<your subscription\>|
    |Skupina prostředků     |**Test-FW-RG** |
-   |Name     |**Test-FW01**|
+   |Název     |**Test-FW01**|
    |Umístění     |Vyberte dříve použité umístění.|
    |Volba virtuální sítě     |**Použít existující**: **test-FW-vn**|
    |Veřejná IP adresa     |**Přidat nový** Veřejná IP adresa musí být typu Standardní SKU.|

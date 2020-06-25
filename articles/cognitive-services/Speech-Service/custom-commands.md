@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: 9954e4fe739c055a00c2e3bc52b73200a7824a43
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 0800a287b747a8a421958d20f0b1ce56247d6d01
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85299105"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362155"
 ---
 # <a name="what-is-custom-commands"></a>Co jsou vlastní příkazy?
 
-Hlasové aplikace, jako jsou [hlasové asistenti](voice-assistants.md) , naslouchají uživatelům a probírají akci v reakci, často se domluví zpět. Používají [Převod řeči na text](speech-to-text.md) k přepisovat řeči uživatele a pak provádějí akci s použitím přirozeného jazyka pro porozumění textu. Tato akce často zahrnuje mluvený výstup z pomocníka generovaného [převodem textu na řeč](text-to-speech.md). Zařízení se připojují k asistentům pomocí objektu sady Speech SDK `DialogServiceConnector` .
+Aplikace, jako je [hlasový asistent](voice-assistants.md) , naslouchají uživatelům a probírají akci v reakci, často se domluví zpět. Používají [Převod řeči na text](speech-to-text.md) k přepisovat řeči uživatele a pak provádějí akci s použitím přirozeného jazyka pro porozumění textu. Tato akce často zahrnuje mluvený výstup z pomocníka generovaného [převodem textu na řeč](text-to-speech.md). Zařízení se připojují k asistentům pomocí objektu sady Speech SDK `DialogServiceConnector` .
 
 **Vlastní příkazy** usnadňují vytváření bohatě bohatých aplikací pro hlasové příkazy optimalizovaných pro prostředí s prvními interakcemi hlasu. Poskytuje jednotné prostředí pro vytváření, automatický hostující model a poměrně nižší složitost, což vám pomůže soustředit se na vytváření nejlepšího řešení pro scénáře hlasových příkazů.
 

@@ -5,20 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 6/18/2020
-ms.openlocfilehash: 62bdb08d3627959b8985481c848db064149cf844
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.date: 6/24/2020
+ms.openlocfilehash: f05f26c54d9f3ea62180c598aada59d405c3c805
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85100783"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362675"
 ---
 # <a name="configure-and-access-audit-logs-in-the-azure-portal"></a>Konfigurace a přístup k protokolům auditu v Azure Portal
 
 Z Azure Portal můžete nakonfigurovat [protokoly auditu Azure Database for MariaDB](concepts-audit-logs.md) a nastavení diagnostiky.
-
-> [!IMPORTANT]
-> Funkce protokolu auditu je momentálně ve verzi Preview.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -28,7 +25,7 @@ Pokud chcete projít tento průvodce, budete potřebovat:
 
 ## <a name="configure-audit-logging"></a>Konfigurace protokolování auditu
 
->[!NOTE]
+>[!IMPORTANT]
 > Doporučujeme pouze protokolovat typy událostí a uživatele požadované pro vaše účely auditování, aby se zajistilo, že výkon serveru nebude velmi ovlivněn.
 
 Povolte a nakonfigurujte protokolování auditu.

@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.reviewer: trbye, jmartens, larryfr
 ms.author: tracych
 author: tracychms
-ms.date: 04/15/2020
+ms.date: 06/23/2020
 ms.custom: Build2020, tracking-python
-ms.openlocfilehash: b26527321cf7fc5ca7fc4b061f11b86f8830ec29
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: ae79a4f7264224f29db4ede0944ae079130b6394
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84552321"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362607"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Spuštění dávkového odvozování pro velké objemy dat pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -51,7 +51,7 @@ Následující akce nastaví prostředky strojového učení, které potřebujet
 
 ### <a name="configure-workspace"></a>Konfigurace pracovního prostoru
 
-Vytvořte objekt pracovního prostoru z existujícího pracovního prostoru. `Workspace.from_config()`přečte soubor config. JSON a načte podrobnosti do objektu s názvem WS.
+Vytvořte objekt pracovního prostoru z existujícího pracovního prostoru. `Workspace.from_config()`přečte config.jsv souboru a načte podrobnosti do objektu s názvem WS.
 
 ```python
 from azureml.core import Workspace
@@ -210,7 +210,7 @@ Skript *musí obsahovat* dvě funkce:
 - `init()`: Tuto funkci použijte pro veškerou nákladný nebo běžnou přípravu pro pozdější odvození. Můžete ji například použít k načtení modelu do globálního objektu. Tato funkce bude volána pouze jednou na začátku procesu.
 -  `run(mini_batch)`: Funkce se spustí pro každou `mini_batch` instanci.
     -  `mini_batch`: ParallelRunStep vyvolá metodu Run a předá buď seznam, nebo PANDAS datový rámec jako argument metody. Každá položka v mini_batch bude – cesta k souboru, pokud je vstupem datová sada, PANDAS dataframe, pokud je vstupem TabularDataset.
-    -  `response`: metoda Run () by měla vracet PANDAS dataframe nebo Array. Pro append_row output_action jsou tyto vrácené prvky připojeny do společného výstupního souboru. V případě summary_only se obsah prvků ignoruje. U všech výstupních akcí každý vrácený element Output označuje jedno úspěšné spuštění vstupního prvku ve vstupní Mini-Batch. Měli byste se ujistit, že je ve výsledku spuštění k dispozici dostatek dat pro mapování vstupu na výsledek výstupu. Výstup spuštění se zapíše do výstupního souboru a nebude zaručit, že bude v pořádku, abyste ho namapovali na vstup, měli byste použít nějaký klíč ve výstupu.
+    -  `response`: metoda Run () by měla vracet PANDAS dataframe nebo Array. Pro append_row output_action jsou tyto vrácené prvky připojeny do společného výstupního souboru. V případě summary_only se obsah prvků ignoruje. U všech výstupních akcí každý vrácený element Output označuje jedno úspěšné spuštění vstupního prvku ve vstupní Mini-Batch. Ujistěte se, že je ve výsledku spuštění k dispozici dostatek dat pro mapování vstupu na výsledek výstupu. Výstup spuštění se zapíše do výstupního souboru a nebude zaručit, že bude v pořádku, abyste ho namapovali na vstup, měli byste použít nějaký klíč ve výstupu.
 
 ```python
 # Snippets from a sample script.
@@ -266,11 +266,11 @@ file_path = os.path.join(script_dir, "<file_name>")
 
 ## <a name="build-and-run-the-pipeline-containing-parallelrunstep"></a>Sestavování a spouštění kanálu obsahujícího ParallelRunStep
 
-Teď máte všechno, co potřebujete: vstupy dat, model, výstup a skript pro odvození. Pojďme sestavit kanál odvození dávky obsahující ParallelRunStep.
+Teď máte všechno, co potřebujete: datové vstupy, model, výstup a skript pro odvození. Pojďme sestavit kanál odvození dávky obsahující ParallelRunStep.
 
 ### <a name="prepare-the-environment"></a>Příprava prostředí
 
-Nejdřív zadejte závislosti pro váš skript. To vám umožní instalovat balíčky PIP i nakonfigurovat prostředí. Vždy prosím zahrňte balíčky **AzureML-Core** a **AzureML-dataprep [PANDAS, zapékací]** .
+Nejdřív zadejte závislosti pro váš skript. Díky tomu budete moct instalovat balíčky PIP i nakonfigurovat prostředí. Vždy zahrňte balíčky **AzureML-Core** a **AzureML-dataprep [PANDAS, zapékací]** .
 
 Pokud používáte vlastní image Docker (user_managed_dependencies = true), měli byste také mít nainstalované conda.
 
@@ -309,7 +309,7 @@ batch_env.docker.base_image = DEFAULT_GPU_IMAGE
 - `run_invocation_timeout`: `run()` Časový limit volání metody v sekundách. (volitelné; výchozí hodnota je `60` )
 - `run_max_try`: Maximální počet testovaných položek `run()` pro Mini-Batch. V `run()` případě, že dojde k výjimce, se nezdařila nebo není vrácena žádná hodnota, pokud `run_invocation_timeout` je dosaženo (volitelné; výchozí hodnota je `3` ). 
 
-Můžete zadat `mini_batch_size` , `node_count` ,, `process_count_per_node` `logging_level` `run_invocation_timeout` a jako, aby při opětovném `run_max_try` `PipelineParameter` odeslání běhu kanálu mohli doladit hodnoty parametrů. V tomto příkladu použijete PipelineParameter pro `mini_batch_size` a `Process_count_per_node` a pak změníte tyto hodnoty, když znovu odešlete spustit později. 
+Můžete zadat `mini_batch_size` , `node_count` ,, `process_count_per_node` `logging_level` , `run_invocation_timeout` a jako, aby při opětovném `run_max_try` `PipelineParameter` odeslání běhu kanálu mohli doladit hodnoty parametrů. V tomto příkladu použijete PipelineParameter pro `mini_batch_size` a `Process_count_per_node` a pak změníte tyto hodnoty, když znovu odešlete spustit později. 
 
 ```python
 from azureml.pipeline.core import PipelineParameter

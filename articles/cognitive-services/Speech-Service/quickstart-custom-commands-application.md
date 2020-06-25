@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 14bf43375e2ebe37d496a7343c5f85c41f55bc29
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 2ea850acf0ef581ea66733b0293ba044c87bb3a0
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307412"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362138"
 ---
 # <a name="create-a-voice-assistant-using-custom-commands"></a>Vytvoření hlasového asistenta pomocí vlastních příkazů
 
@@ -24,7 +24,7 @@ V tomto rychlém startu vytvoříte a otestujete základní aplikaci Custom Comm
 ## <a name="prerequisites"></a>Požadavky
 
 > [!div class="checklist"]
-> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Vytvoření prostředku Azure Speech<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Vytvořte prostředek řeči Azure v oblasti, která podporuje vlastní příkazy.<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 > * Stáhněte si ukázkový soubor JSON pro [inteligentní místnost Lite](https://aka.ms/speech/cc-quickstart) .
 > * Stáhněte si nejnovější verzi [klienta Windows Voice Assistant](https://aka.ms/speech/va-samples-wvac).
 
@@ -82,7 +82,8 @@ Nyní byste měli vidět přehled vaší nové aplikace Custom Commands.
     - Zapnutí televizního vysílání
     - Nastavit teplotu na 80 stupňů
     - Vypnout
-    - Nastavení alarmu
+    - TV
+    - Nastavit alarm na 5 odp.
 
 ## <a name="integrate-custom-commands-application-in-an-assistant"></a>Integrace aplikace Custom Commands v Pomocníkovi
 Než budete moct k této aplikaci přistupovat z vnějšího nástroje Speech Studio, musíte aplikaci publikovat. Pro publikování aplikace budete muset nakonfigurovat předpověď LUIS prostředků.  
@@ -110,7 +111,7 @@ Případně můžete tyto hodnoty získat také tak, že vyberete **Nastavení**
 
 V rozsahu tohoto článku budeme používat klienta Windows Voice Assistant, který jste stáhli jako součást požadavků. Rozbalte složku.
 1. Spusťte **VoiceAssistantClient.exe**.
-1. Vytvořte nový profil publikování a zadejte hodnotu pro **profil připojení**. V části **Obecná nastavení** zadejte hodnoty **klíč předplatného**, klíč **předplatného** a **vlastní příkazy ID aplikace**.
+1. Vytvořte nový profil publikování a zadejte hodnotu pro **profil připojení**. V části **Obecné nastavení** zadejte hodnotu **klíč předplatného** (to je stejná jako hodnota **klíče prostředku řeči** , kterou jste uložili při publikování aplikace), **oblast klíče předplatného** a **vlastní příkazy ID aplikace**.
     > [!div class="mx-imgBorder"]
     > ![WVAC vytvořit profil](media/custom-commands/create-profile.png)
 1. Vyberte **Uložit a použít profil**.

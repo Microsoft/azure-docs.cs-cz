@@ -8,18 +8,18 @@ ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: cc6451d9be6c125d1b01bc5bb33fd553ce789f31
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 753fa7afb49ca58aa2eceb309beb8316024b41bc
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85263190"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362709"
 ---
 # <a name="dtdl-client-side-parser-library"></a>Knihovna analyzátorů DTDL na straně klienta
 
 [!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
-[Modely](concepts-models.md) v digitálních prostředníkech Azure jsou definované pomocí jazyka DTDL (Digital nenáročné definice) založené na formátu JSON. V případech, kdy je užitečné analyzovat vaše modely, je v NuGet.org k dispozici knihovna analýzy DTDL jako knihovna na straně klienta: [Microsoft. Azure. DigitalTwins. Parser](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/).
+[Modely](concepts-models.md) v digitálních prostředníkech Azure se definují pomocí jazyka DTDL (Digital nenáročné na digitální vlákna JSON). V případech, kdy je užitečné analyzovat vaše modely, je v NuGet.org k dispozici knihovna analýzy DTDL jako knihovna na straně klienta: [Microsoft. Azure. DigitalTwins. Parser](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/).
 
 Tato knihovna poskytuje model přístup k definicím DTDL, který v podstatě funguje jako ekvivalent jazyka C# pro DTDL. Tato knihovna se dá použít nezávisle na jakékoli [sadě SDK pro digitální vlákna Azure](how-to-use-apis-sdks.md), zejména pro ověřování DTDL ve vizuálním nebo textovém editoru. Je vhodné zajistit, aby byly soubory definice modelu platné, než se pokusíte je odeslat do služby.
 
@@ -70,7 +70,7 @@ Další informace o této ukázce naleznete v tématu zdrojový kód nebo spusti
 
 ## <a name="use-the-parser-library-in-code"></a>Použití knihovny analyzátorů v kódu
 
-Knihovnu analyzátoru můžete také použít přímo k ověření modelů sami.
+Knihovnu analyzátoru můžete také použít přímo pro věci, jako je ověřování modelů ve vaší vlastní aplikaci nebo pro generování dynamického, modelem řízených uživatelských rozhraní, řídicích panelů a sestav.
 
 Pro podporu níže uvedeného příkladu kódu analyzátoru zvažte několik modelů definovaných v instanci digitálních vláken Azure:
 
@@ -172,4 +172,4 @@ void PrintInterfaceContent(DTInterfaceInfo dtif, IReadOnlyDictionary<Dtmi, DTEnt
 ## <a name="next-steps"></a>Další kroky
 
 Až dokončíte psaní modelů, přečtěte si téma jak je nahrát (a provést jiné operace správy) pomocí rozhraní DigitalTwinsModels API:
-* [Postupy: Správa zdvojeného modelu](how-to-manage-model.md)
+* [Postupy: Správa vlastních modelů](how-to-manage-model.md)

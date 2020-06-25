@@ -4,16 +4,16 @@ titleSuffix: Azure Digital Twins
 description: Podívejte se, jak interpretovat různé typy událostí a jejich různé zprávy s oznámením.
 author: baanders
 ms.author: baanders
-ms.date: 3/12/2020
+ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: e194c046cde623e0fcdd4c73ac24f2bf0755945c
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: e8a1bb19a18f43bae4639d2ca9d9b9941bd29324
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85299428"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362814"
 ---
 # <a name="understand-event-data"></a>Pochopení dat událostí
 
@@ -39,7 +39,11 @@ Některá oznámení odpovídají standardu CloudEvents. Shoda CloudEvents je n�
 * Oznámení vysílaná z [digitálních vláken](concepts-twins-graph.md) s [modelem](concepts-models.md) vyhovujícím CloudEvents
 * Oznámení zpracovaná a generovaná pomocí digitálních vláken Azure v souladu s CloudEvents
 
-Služby musí přidat pořadové číslo pro všechna oznámení, aby označovaly jejich pořadí, nebo aby si zachovali vlastní řazení jiným způsobem. Oznámení vysílaná pomocí digitálních vláken Azure do Event Grid se naformátují do schématu Event Grid, dokud Event Grid pro vstup podporuje CloudEvents. Atributy rozšíření u hlaviček budou přidány jako vlastnosti Event Grid schématu v datové části. 
+Služby musí přidat pořadové číslo pro všechna oznámení, aby označovaly jejich pořadí, nebo aby si zachovali vlastní řazení jiným způsobem. 
+
+Oznámení vygenerovaná pomocí digitálních vláken Azure do Event Grid se automaticky naformátují buď na schéma CloudEvents, nebo na schéma EventGridEvent, a to v závislosti na typu schématu definovaném v tématu Event Grid. 
+
+Atributy rozšíření u hlaviček budou přidány jako vlastnosti Event Grid schématu v datové části. 
 
 ### <a name="event-notification-bodies"></a>Tělo oznámení události
 
@@ -50,43 +54,39 @@ Sada polí, které tělo obsahuje, se liší podle různých typů oznámení. T
 Zpráva telemetrie:
 
 ```json
-{ 
-    "specversion": "1.0", 
-    "type": "microsoft.iot.telemetry", 
-    "source": "myhub.westus2.azuredigitaltwins.net", 
-    "subject": "thermostat.vav-123", 
-    "id": "c1b53246-19f2-40c6-bc9e-4666fa590d1a",
-    "dataschema": "dtmi:com:contoso:DigitalTwins:VAV;1",
-    "time": "2018-04-05T17:31:00Z", 
-    "datacontenttype" : "application/json", 
-    "data":  
-      {
-          "temp": 70,
-          "humidity": 40 
-      }
+{
+  "specversion": "1.0",
+  "id": "df5a5992-817b-4e8a-b12c-e0b18d4bf8fb",
+  "type": "microsoft.iot.telemetry",
+  "source": "contoso-adt.api.wus2.digitaltwins.azure.net/digitaltwins/room1",
+  "data": {
+    "Temperature": 10
+  },
+  "dataschema": "dtmi:example:com:floor4;2",
+  "datacontenttype": "application/json",
+  "traceparent": "00-7e3081c6d3edfb4eaf7d3244b2036baa-23d762f4d9f81741-01"
 }
 ```
 
 Zpráva s oznámením o životním cyklu:
 
 ```json
-{ 
-    "specversion": "1.0", 
-    "type": "microsoft.digitaltwins.twin.create", 
-    "source": "mydigitaltwins.westus2.azuredigitaltwins.net", 
-    "subject": "device-123", 
-    "id": "c1b53246-19f2-40c6-bc9e-4666fa590d1a", 
-    "time": "2018-04-05T17:31:00Z", 
-    "datacontenttype" : "application/json", 
-    "dataschema": "dtmi:com:contoso:DigitalTwins:Device;1",           
-    "data":  
-      { 
-        "$dtId": "room-123", 
-        "property": "value",
-        "$metadata": { 
-                //...
-        } 
-      } 
+{
+  "specversion": "1.0",
+  "id": "d047e992-dddc-4a5a-b0af-fa79832235f8",
+  "type": "Microsoft.DigitalTwins.Twin.Create",
+  "source": "contoso-adt.api.wus2.digitaltwins.azure.net",
+  "data": {
+    "$dtId": "floor1",
+    "$etag": "W/\"e398dbf4-8214-4483-9d52-880b61e491ec\"",
+    "$metadata": {
+      "$model": "dtmi:example:Floor;1"
+    }
+  },
+  "subject": "floor1",
+  "time": "2020-06-23T19:03:48.9700792Z",
+  "datacontenttype": "application/json",
+  "traceparent": "00-18f4e34b3e4a784aadf5913917537e7d-691a71e0a220d642-01"
 }
 ```
 
@@ -111,12 +111,11 @@ Tady jsou pole v těle oznámení o životním cyklu.
 | `id` | Identifikátor oznámení, jako je například identifikátor UUID nebo čítač, který služba spravuje. `source` + `id`je jedinečný pro každou událost DISTINCT. |
 | `source` | Název instance služby IoT Hub nebo instance digitálního vlákna Azure, jako je například *myhub.Azure-Devices.NET* nebo *mydigitaltwins.westus2.azuredigitaltwins.NET* |
 | `specversion` | 1.0 |
-| `type` | `Microsoft.DigitalTwins.Twin.Create`<br>`Microsoft.DigitalTwins.Twin.Delete`<br>`Microsoft.DigitalTwins.TwinProxy.Create`<br>`Microsoft.DigitalTwins.TwinProxy.Delete`<br>`Microsoft.DigitalTwins.TwinProxy.Attach`<br>`Microsoft.DigitalTwins.TwinProxy.Detach` |
-| `datacontenttype` | application/json |
+| `type` | `Microsoft.DigitalTwins.Twin.Create`<br>`Microsoft.DigitalTwins.Twin.Delete` |
+| `datacontenttype` | `application/json` |
 | `subject` | ID digitálního vlákna |
 | `time` | Časové razítko, kdy došlo k operaci na vlákna |
-| `sequence` | Hodnota vyjadřující pozici události ve větší seřazené posloupnosti událostí. Služby musí přidat pořadové číslo pro všechna oznámení, aby označovaly jejich pořadí, nebo aby si zachovali vlastní řazení jiným způsobem. Pořadové číslo se zvýší s každou zprávou. Nastaví se na 1, pokud se objekt odstraní a znovu vytvoří se stejným ID. |
-| `sequencetype` | Další podrobnosti o použití pole Sequence. Tato vlastnost například může určovat, že hodnota musí být podepsané 32 celé číslo, které začíná na 1 a v každém okamžiku se zvýší o 1. |
+| `traceparent` | Kontext trasování W3C pro událost |
 
 #### <a name="body-details"></a>Podrobnosti těla
 
@@ -165,7 +164,6 @@ Tady je další příklad digitálního vlákna. Tento model je založen na [mod
   "comfortIndex": 85,
   "$metadata": {
     "$model": "dtmi:com:contoso:Building;1",
-    "$kind": "DigitalTwin",
     "avgTemperature": {
       "desiredValue": 72,
       "desiredVersion": 5,
@@ -197,11 +195,11 @@ Tady jsou pole v těle oznámení o změně hrany.
 | `id` | Identifikátor oznámení, jako je například identifikátor UUID nebo čítač, který služba spravuje. `source` + `id`je jedinečný pro každou událost DISTINCT |
 | `source` | Název instance digitálního vlákna Azure, jako je *mydigitaltwins.westus2.azuredigitaltwins.NET* |
 | `specversion` | 1.0 |
-| `type` | `Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br>`Microsoft.DigitalTwins.Relationship.Delete`<br>`datacontenttype    application/json for Relationship.Create`<br>`application/json-patch+json for Relationship.Update` |
-| `subject` | ID vztahu, např.`<twinID>/relationships/<relationshipName>/<edgeID>` |
+| `type` | `Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br>`Microsoft.DigitalTwins.Relationship.Delete`
+|`datacontenttype`| `application/json` |
+| `subject` | ID vztahu, např.`<twinID>/relationships/<relationshipName>` |
 | `time` | Časové razítko při výskytu operace u vztahu |
-| `sequence` | Hodnota vyjadřující pozici události ve větší seřazené posloupnosti událostí. Služby musí přidat pořadové číslo pro všechna oznámení, aby označovaly jejich pořadí, nebo aby si zachovali vlastní řazení jiným způsobem. Pořadové číslo se zvýší s každou zprávou. Nastaví se na 1, pokud se objekt odstraní a znovu vytvoří se stejným ID. |
-| `sequencetype` | Další podrobnosti o použití pole Sequence. Tato vlastnost například může určovat, že hodnota musí být podepsané 32 celé číslo, které začíná na 1 a v každém okamžiku se zvýší o 1. |
+| `traceparent` | Kontext trasování W3C pro událost |
 
 #### <a name="body-details"></a>Podrobnosti těla
 
@@ -212,13 +210,16 @@ Tělo je datová část relace, také ve formátu JSON. Používá stejný form�
 Tady je příklad oznámení relace aktualizace pro aktualizaci vlastnosti:
 
 ```json
-[
-  {
-    "op": "replace",
-    "path": "ownershipUser",
-    "value": "user3"
+{
+    "modelId": "dtmi:example:Floor;1",
+    "patch": [
+      {
+        "value": "user3",
+        "path": "/ownershipUser",
+        "op": "replace"
+      }
+    ]
   }
-]
 ```
 
 `Relationship.Delete`V případě je text totožný s `GET` požadavkem a získá nejnovější stav před odstraněním.
@@ -227,7 +228,7 @@ Tady je příklad upozornění na vytvoření nebo odstranění vztahu:
 
 ```json
 {
-    "$relationshipId": "EdgeId1",
+    "$relationshipName": "RelationshipName1",
     "$sourceId": "building11",
     "$relationshipName": "Contains",
     "$targetId": "floor11",
@@ -235,6 +236,7 @@ Tady je příklad upozornění na vytvoření nebo odstranění vztahu:
     "ownershipDepartment": "Operations"
 }
 ```
+
 
 ### <a name="digital-twin-change-notifications"></a>Oznámení o změně digitálního vlákna
 
@@ -252,11 +254,10 @@ Tady jsou pole v těle oznámení o změně digitálního vlákna.
 | `source` | Název instance služby IoT Hub nebo instance digitálního vlákna Azure, jako je například *myhub.Azure-Devices.NET* nebo *mydigitaltwins.westus2.azuredigitaltwins.NET*
 | `specversion` | 1.0 |
 | `type` | `Microsoft.DigitalTwins.Twin.Update` |
-| `datacontenttype` | Application/JSON – patch + JSON |
+| `datacontenttype` | `application/json` |
 | `subject` | ID digitálního vlákna |
 | `time` | Časové razítko při výskytu operace u digitálního vlákna |
-| `sequence` | Hodnota vyjadřující pozici události ve větší seřazené posloupnosti událostí. Služby musí přidat pořadové číslo pro všechna oznámení, aby označovaly jejich pořadí, nebo aby si zachovali vlastní řazení jiným způsobem. Pořadové číslo se zvýší s každou zprávou. Nastaví se na 1, pokud se objekt odstraní a znovu vytvoří se stejným ID. |
-| `sequencetype` | Další podrobnosti o použití pole Sequence. Tato vlastnost například může určovat, že hodnota musí být podepsané 32 celé číslo, které začíná na 1 a v každém okamžiku se zvýší o 1. |
+| `traceparent` | Kontext trasování W3C pro událost |
 
 #### <a name="body-details"></a>Podrobnosti těla
 
@@ -266,28 +267,37 @@ Tělo `Twin.Update` oznámení je dokument opravy JSON obsahující aktualizaci 
 
 ```json
 [
-  {
-    "op": "replace",
-    "path": "/mycomp/prop1",
-    "value": {"a":3}
-  }
+    {
+        "op": "replace",
+        "value": 40,
+        "path": "/Temperature"
+    },
+    {
+        "op": "add",
+        "value": 30,
+        "path": "/comp1/prop1"
+    }
 ]
 ```
 
 Příslušné oznámení (Pokud synchronně vykonává služba, například digitální vlákna Azure, které aktualizují digitální vlákna) by mělo tělo, jako je:
 
 ```json
-[
-    { "op": "replace", "path": "/myComp/prop1", "value": {"a": 3}},
-    { "op": "replace", "path": "/myComp/$metadata/prop1",
-        "value": {
-            "desiredValue": { "a": 3 },
-            "desiredVersion": 2,
-                "ackCode": 200,
-            "ackVersion": 2 
-        }
-    }
-]
+{
+    "modelId": "dtmi:example:com:floor4;2",
+    "patch": [
+      {
+        "value": 40,
+        "path": "/Temperature",
+        "op": "replace"
+      },
+      {
+        "value": 30,
+        "path": "/comp1/prop1",
+        "op": "add"
+      }
+    ]
+  }
 ```
 
 ## <a name="next-steps"></a>Další kroky

@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 195668886a0c1ba9f96939a7e5e3960a6932dee5
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 124d81651cd937dc9671f725f54826b1ff9a42a5
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235893"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362318"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Vytvoření tenanta a fondu hostitelů
 
@@ -30,7 +30,8 @@ Navštivte [technickou komunitu pro virtuální počítače s Windows](https://t
 
 Pokud chcete použít bitovou kopii Windows 10 Enterprise s více relacemi, **Přečtěte si Azure Marketplace, vyberte Začínáme**s  >  **Microsoft Windows 10** > a [Windows 10 Enterprise pro virtuální plochy verze 1809](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice).
 
-![Snímek obrazovky s výběrem Windows 10 Enterprise pro virtuální plochy verze 1809](../media/AzureMarketPlace.png)
+> [!div class="mx-imgBorder"]
+> ![Snímek obrazovky s výběrem Windows 10 Enterprise pro virtuální plochy verze 1809](../media/AzureMarketPlace.png)
 
 ## <a name="creating-windows-virtual-desktop-tenant"></a>Vytváří se tenant virtuální plochy Windows.
 
@@ -54,7 +55,8 @@ Contact your IT Admin to review the configuration of your service subscriptions.
 
 ### <a name="error-the-user-isnt-authorized-to-query-the-management-service"></a>Chyba: uživatel nemá oprávnění pro dotaz na službu správy.
 
-![Snímek obrazovky okna prostředí PowerShell, ve kterém uživatel nemá oprávnění pro dotaz na službu správy.](../media/UserNotAuthorizedNewTenant.png)
+> [!div class="mx-imgBorder"]
+> ![Snímek obrazovky okna prostředí PowerShell, ve kterém uživatel nemá oprávnění pro dotaz na službu správy.](../media/UserNotAuthorizedNewTenant.png)
 
 Příklad nezpracované chyby:
 
@@ -75,7 +77,8 @@ Příklad nezpracované chyby:
 
 **Oprava:** Postupujte podle pokynů v tématu [přiřazení role aplikace TenantCreator uživateli ve vašem tenantovi Azure Active Directory](tenant-setup-azure-active-directory.md#assign-the-tenantcreator-application-role). Po provedení těchto pokynů budete mít přiřazeného uživatele k roli TenantCreator.
 
-![Snímek obrazovky přiřazené role TenantCreator](../media/TenantCreatorRoleAssigned.png)
+> [!div class="mx-imgBorder"]
+> ![Snímek obrazovky přiřazené role TenantCreator](../media/TenantCreatorRoleAssigned.png)
 
 ## <a name="creating-windows-virtual-desktop-session-host-vms"></a>Vytváření virtuálních počítačů hostitele relace virtuálních počítačů s Windows
 
@@ -87,7 +90,8 @@ Virtuální počítač s Windows – zřízení šablony fondu hostitelů je dos
 
 ### <a name="error-when-using-the-link-from-github-the-message-create-a-free-account-appears"></a>Chyba: při použití odkazu z GitHubu se zobrazí zpráva "vytvořit bezplatný účet".
 
-![Snímek obrazovky s vytvořením bezplatného účtu.](../media/be615904ace9832754f0669de28abd94.png)
+> [!div class="mx-imgBorder"]
+> ![Snímek obrazovky s vytvořením bezplatného účtu.](../media/be615904ace9832754f0669de28abd94.png)
 
 **Příčina 1:** V účtu, který se používá k přihlášení k Azure, nejsou aktivní předplatná, nebo účet nemá oprávnění k zobrazení předplatných.
 
@@ -110,7 +114,8 @@ Virtuální počítač s Windows – zřízení šablony fondu hostitelů je dos
 
 ### <a name="error-you-receive-template-deployment-is-not-valid-error"></a>Chyba: obdržíte chybu nasazení šablony není platné.
 
-![Snímek obrazovky s názvem nasazení šablony... není platný, chyba](../media/troubleshooting-marketplace-validation-error-generic.png)
+> [!div class="mx-imgBorder"]
+> ![Snímek obrazovky s názvem nasazení šablony... není platný, chyba](../media/troubleshooting-marketplace-validation-error-generic.png)
 
 Než provedete konkrétní akci, budete muset zjistit protokol aktivit a zobrazit podrobnou chybu při ověřování nasazení.
 
@@ -119,10 +124,14 @@ Zobrazení chyby v protokolu aktivit:
 1. Ukončí aktuální nabídku nasazení Azure Marketplace.
 2. V horním panelu vyhledávání vyhledejte a vyberte **Protokol aktivit**.
 3. Vyhledejte aktivitu s názvem **ověřit nasazení** , která má stav **selhání** a vyberte aktivitu.
-   ![Snímek obrazovky jednotlivých * * ověřit aktivitu nasazení * * s * * neúspěšným * * stavem](../media/troubleshooting-marketplace-validation-error-activity-summary.png)
+   
+   > [!div class="mx-imgBorder"]
+   > ![Snímek obrazovky jednotlivých * * ověřit aktivitu nasazení * * s * * neúspěšným * * stavem](../media/troubleshooting-marketplace-validation-error-activity-summary.png)
 
 4. Vyberte JSON a potom se posuňte dolů k dolní části obrazovky, dokud se nezobrazí pole "statusMessage".
-   ![Snímek obrazovky s neúspěšnou aktivitou s červeným polem kolem vlastnosti statusMessage textu JSON](../media/troubleshooting-marketplace-validation-error-json-boxed.png)
+   
+   > [!div class="mx-imgBorder"]
+   > ![Snímek obrazovky s neúspěšnou aktivitou s červeným polem kolem vlastnosti statusMessage textu JSON](../media/troubleshooting-marketplace-validation-error-json-boxed.png)
 
 Pokud vaše šablona operace překročí limit kvóty, můžete opravit jednu z následujících akcí:
 
@@ -140,7 +149,8 @@ Při řešení neúspěšného nasazení Azure Resource Manager šablon a prost�
 
 ### <a name="error-your-deployment-failedhostnamejoindomain"></a>Chyba: nasazení nebylo úspěšné... \<hostname> /JoinDomain
 
-![Nasazování se nepovedlo snímek obrazovky.](../media/e72df4d5c05d390620e07f0d7328d50f.png)
+> [!div class="mx-imgBorder"]
+> ![Nasazování se nepovedlo snímek obrazovky.](../media/e72df4d5c05d390620e07f0d7328d50f.png)
 
 Příklad nezpracované chyby:
 
@@ -181,7 +191,8 @@ Chcete-li tento problém vyřešit, proveďte následující akce:
 
 ### <a name="error-vmextensionprovisioningerror"></a>Chyba: VMExtensionProvisioningError
 
-![Snímek obrazovky vašeho nasazení selhal se stavem zřizování terminálu selhalo.](../media/7aaf15615309c18a984673be73ac969a.png)
+> [!div class="mx-imgBorder"]
+> ![Snímek obrazovky vašeho nasazení selhal se stavem zřizování terminálu selhalo.](../media/7aaf15615309c18a984673be73ac969a.png)
 
 **Příčina 1:** Přechodná chyba v prostředí virtuálního počítače s Windows
 
@@ -191,7 +202,8 @@ Chcete-li tento problém vyřešit, proveďte následující akce:
 
 ### <a name="error-the-admin-username-specified-isnt-allowed"></a>Chyba: zadané uživatelské jméno správce není povolené.
 
-![Snímek obrazovky s vaším nasazením se nepovedl, protože zadaný správce není povolený.](../media/f2b3d3700e9517463ef88fa41875bac9.png)
+> [!div class="mx-imgBorder"]
+> ![Snímek obrazovky s vaším nasazením se nepovedl, protože zadaný správce není povolený.](../media/f2b3d3700e9517463ef88fa41875bac9.png)
 
 Příklad nezpracované chyby:
 
@@ -210,7 +222,8 @@ Příklad nezpracované chyby:
 
 ### <a name="error-vm-has-reported-a-failure-when-processing-extension"></a>Chyba: virtuální počítač ohlásil selhání při zpracování rozšíření
 
-![Snímek obrazovky s operací prostředku dokončeným se stavem zřizování terminálu v nasazení se nezdařil.](../media/49c4a1836a55d91cd65125cf227f411f.png)
+> [!div class="mx-imgBorder"]
+> ![Snímek obrazovky s operací prostředku dokončeným se stavem zřizování terminálu v nasazení se nezdařil.](../media/49c4a1836a55d91cd65125cf227f411f.png)
 
 Příklad nezpracované chyby:
 
@@ -236,7 +249,8 @@ Příklad nezpracované chyby:
 
 ### <a name="error-deploymentfailed--powershell-dsc-configuration-firstsessionhost-completed-with-errors"></a>Chyba: DeploymentFailed – konfigurace prostředí PowerShell DSC ' FirstSessionHost ' se dokončila s chybami
 
-![Snímek obrazovky s nasazením se nepovedl s konfigurací PowerShellu pro DSC FirstSessionHost se dokončil s chybami.](../media/64870370bcbe1286906f34cf0a8646ab.png)
+> [!div class="mx-imgBorder"]
+> ![Snímek obrazovky s nasazením se nepovedl s konfigurací PowerShellu pro DSC FirstSessionHost se dokončil s chybami.](../media/64870370bcbe1286906f34cf0a8646ab.png)
 
 Příklad nezpracované chyby:
 
@@ -365,7 +379,8 @@ New-RdsRoleAssignment -TenantName <Windows Virtual Desktop tenant name> -RoleDef
 
 ### <a name="error-user-requires-azure-multi-factor-authentication-mfa"></a>Chyba: uživatel vyžaduje Azure Multi-Factor Authentication (MFA).
 
-![Snímek obrazovky nasazení se nezdařil z důvodu nedostatku Multi-Factor Authentication (MFA)](../media/MFARequiredError.png)
+> [!div class="mx-imgBorder"]
+> ![Snímek obrazovky nasazení se nezdařil z důvodu nedostatku Multi-Factor Authentication (MFA)](../media/MFARequiredError.png)
 
 Příklad nezpracované chyby:
 

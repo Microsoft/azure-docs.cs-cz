@@ -1,7 +1,7 @@
 ---
 title: Dokumentace k analýze kódu zabezpečení společnosti Microsoft – nejčastější dotazy
 description: Tento článek obsahuje nejčastější dotazy týkající se rozšíření analýzy kódu zabezpečení společnosti Microsoft.
-author: vharindra
+author: sukhans
 manager: sukhans
 ms.author: terrylan
 ms.date: 07/31/2019
@@ -12,21 +12,21 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 7a888d95a97e30e7d663b528e8d9941aec1f51e9
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 3d5eac2d3e2f3cd87ddad02aac68ce015163bd00
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84015841"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362070"
 ---
 # <a name="frequently-asked-questions"></a>Nejčastější dotazy
 Máte nějaké otázky? Další informace najdete v následujících nejčastějších dotazech.
 
-## <a name="general-faq"></a>Obecné Nejčastější dotazy
+## <a name="general-faq"></a>Obecné nejčastější dotazy
 
 ### <a name="can-i-install-the-extension-on-my-visual-studio-team-foundation-server-instance-instead-of-on-an-azure-devops-instance"></a>Můžu nainstalovat rozšíření na mou instanci sady Visual Studio Team Foundation Server místo v instanci Azure DevOps?
 
-No. Rozšíření není k dispozici pro stažení a instalaci sady Visual Studio Team Foundation Server.
+Ne. Rozšíření není k dispozici pro stažení a instalaci sady Visual Studio Team Foundation Server.
 
 ### <a name="do-i-have-to-run-microsoft-security-code-analysis-with-my-build"></a>Musím v mém buildu spustit analýzu kódu zabezpečení od Microsoftu? 
 
@@ -38,7 +38,7 @@ Pro jiné nástroje, jako je BinSkim, které analyzují artefakty po sestavení,
 
 ### <a name="can-i-break-my-build-when-results-are-found"></a>Je možné ukončit sestavení při nalezení výsledků?
 
-Yes. Můžete zavést přerušení sestavení, když kterýkoli nástroj ohlásí problém nebo problém v souboru protokolu. Stačí přidat úlohu sestavení po analýze a zaškrtnout políčko pro libovolný nástroj, pro který chcete sestavení přerušit.
+Ano. Můžete zavést přerušení sestavení, když kterýkoli nástroj ohlásí problém nebo problém v souboru protokolu. Stačí přidat úlohu sestavení po analýze a zaškrtnout políčko pro libovolný nástroj, pro který chcete sestavení přerušit.
 
 V uživatelském rozhraní úlohy po analýze můžete zvolit, aby se sestavení přerušit, když jakýkoli nástroj hlásí pouze chyby nebo chyby a upozornění.
 
@@ -55,7 +55,7 @@ Patrné rozdíly:
 
 ### <a name="can-i-run-a-build-task-like-credential-scanner-across-multiple-repositories-in-an-azure-devops-build"></a>Můžu spustit úlohu sestavení, jako je třeba skener přihlašovacích údajů v rámci několika úložišť v sestavení Azure DevOps?
 
-No. Používání nástrojů pro bezpečné vývoj v různých úložištích v jednom kanálu se nepodporuje.
+Ne. Používání nástrojů pro bezpečné vývoj v různých úložištích v jednom kanálu se nepodporuje.
 
 ### <a name="the-output-file-i-specified-isnt-being-created-or-i-cant-find-the-output-file-i-specified"></a>Zadaný výstupní soubor se nevytváří nebo nejde najít zadaný výstupní soubor.
 
@@ -67,7 +67,7 @@ No. Používání nástrojů pro bezpečné vývoj v různých úložištích v 
 
 ### <a name="can-i-queue-a-build-to-run-these-tasks-on-a-hosted-build-agent"></a>Můžu sestavení zařadit do fronty a spustit tyto úlohy v hostovaném agentu sestavení? 
 
-Yes. Všechny úlohy a nástroje v rozšíření lze spustit u hostovaného agenta sestavení.
+Ano. Všechny úlohy a nástroje v rozšíření lze spustit u hostovaného agenta sestavení.
 
 >[!NOTE]
 > Úloha sestavení pro kontrolu proti malwaru vyžaduje, aby byl v programu Windows Defender povolen agent sestavení. Hostitelem sady Visual Studio 2017 a novějších je například agent. V hostovaném agentu sady Visual Studio 2015 se úloha sestavení nespustí.
@@ -90,7 +90,7 @@ Po jejich instalaci budou úkoly sestavení zabezpečení poskytované rozšíř
 
 ### <a name="does-installing-the-extension-modify-my-existing-azure-pipelines"></a>Mění se v instalaci rozšíření moje existující Azure Pipelines? 
 
-No. Instalace rozšíření zpřístupňuje úlohy sestavení zabezpečení pro přidání do vašich kanálů. Stále je nutné přidat nebo aktualizovat definice sestavení, aby nástroje mohly pracovat s procesem sestavení.
+Ne. Instalace rozšíření zpřístupňuje úlohy sestavení zabezpečení pro přidání do vašich kanálů. Stále je nutné přidat nebo aktualizovat definice sestavení, aby nástroje mohly pracovat s procesem sestavení.
 
 ## <a name="task-specific-faq"></a>Nejčastější dotazy ke konkrétním úlohám
 
@@ -123,7 +123,7 @@ Klíč hash tajného kódu z výstupního souboru CredScan je vyžadován, jak j
 
 Výrazem souboru může být název souboru. Může to být i část úplné cesty k souboru nebo názvu souboru. Zástupné znaky se nepodporují.
 
-Následující příklady ukazují, jak potlačit \Src\JS\lib\angular.js souboru \<InputPath>
+Následující příklady ukazují, jak potlačit soubor \<InputPath>\src\JS\lib\angular.js
 
 Příklady platných pravidel potlačení:
 
@@ -131,7 +131,7 @@ Příklady platných pravidel potlačení:
 - \src\JS\lib\angular.js
 - \JS\lib\angular.js
 - \lib\angular.js
-- úhlov. js – potlačí všechny soubory se stejným názvem.
+- angular.js – potlačí všechny soubory se stejným názvem.
 
         {
             "tool": "Credential Scanner",
@@ -166,7 +166,7 @@ Další informace najdete v blogovém příspěvku, který je [bezpečný pro sp
 
 #### <a name="can-i-write-my-own-custom-searchers"></a>Můžu psát vlastní vyhledávací vlastníky?
 
-Pro kontrolu přihlašovacích údajů se spoléhá na sadu vyhledávačů obsahu, které jsou běžně definované v souboru buildsearchers. XML. Soubor obsahuje pole serializovaných objektů XML, které reprezentují objekt **ContentSearcher** . Program se distribuuje se sadou dobře testovaných vyhledávacích programů. Můžete ale taky implementovat vlastní vyhledávací služby.
+Kontrola přihlašovacích údajů spoléhá na sadu vyhledávačů obsahu, které jsou běžně definované v souboru buildsearchers.xml. Soubor obsahuje pole serializovaných objektů XML, které reprezentují objekt **ContentSearcher** . Program se distribuuje se sadou dobře testovaných vyhledávacích programů. Můžete ale taky implementovat vlastní vyhledávací služby.
 
 Hledání obsahu je definováno následujícím způsobem:
 
@@ -196,23 +196,23 @@ Hledání obsahu je definováno následujícím způsobem:
 
 Vzhledem k tomu, že se úlohy analyzátorů Roslyn spouštějí jako součást kompilace, musí být zdrojový strom na sestavovacím počítači ve stavu pro sestavení.
 
-Krok do hlavního postupu sestavení a analyzátoru Roslyn může vést k tomu, že se zdrojový strom vloží do stavu, který brání jeho sestavení. Tento dodatečný krok je pravděpodobně **dotnet. exe Publishing**. Zkuste duplikovat krok, který provede obnovení NuGet těsně před krokem analyzátory Roslyn. Tento duplicitní krok může umístit zdrojový strom zpátky do sestaveného stavu.
+Krok do hlavního postupu sestavení a analyzátoru Roslyn může vést k tomu, že se zdrojový strom vloží do stavu, který brání jeho sestavení. Tento další krok je pravděpodobně **dotnet.exe publikování**. Zkuste duplikovat krok, který provede obnovení NuGet těsně před krokem analyzátory Roslyn. Tento duplicitní krok může umístit zdrojový strom zpátky do sestaveného stavu.
 
-##### <a name="cscexe-cant-create-an-analyzer-instance"></a>CSc. exe nemůže vytvořit instanci analyzátoru.
+##### <a name="cscexe-cant-create-an-analyzer-instance"></a>csc.exe nemůže vytvořit instanci analyzátoru.
 
 Úplná chybová zpráva:
 
-soubor csc. exe byl ukončen s kódem chyby 1--instanci služby Analyzer *AAAA* nelze vytvořit z jazyka C: \\ *bbbb*. dll: nelze načíst soubor nebo sestavení Microsoft. CodeAnalysis, Version =*X. x. x. x*, Culture = neutral, PublicKeyToken = 31bf3856ad364e35 nebo jedna z jejích závislostí. Systém nemůže najít zadaný soubor.
+"' csc.exe ' byl ukončen s kódem chyby 1--instanci služby Analyzer *AAAA* nelze vytvořit z jazyka C: \\ *bbbb*. dll: nelze načíst soubor nebo sestavení ' Microsoft. CodeAnalysis, Version = X.*x. x. x*, Culture = neutral, PublicKeyToken = 31bf3856ad364e35 ' nebo jednu z jeho závislostí. Systém nemůže najít zadaný soubor.
 
-Ujistěte se, že kompilátor podporuje analyzátory Roslyn. Spuštěním příkazu **CSc. exe/Version** by měla být nahlášena hodnota verze 2,6 nebo novější.
+Ujistěte se, že kompilátor podporuje analyzátory Roslyn. Spuštění příkazu **csc.exe/Version** by mělo hlásit hodnotu verze 2,6 nebo novější.
 
 V některých případech může soubor. csproj přepsat instalaci sady Visual Studio sestavení počítače tím, že odkazuje na balíček z Microsoft.Net. compilers. Pokud nechcete použít konkrétní verzi kompilátoru, odeberte odkazy na Microsoft.Net. compilers. V opačném případě se ujistěte, že verze odkazovaného balíčku je také 2,6 nebo novější.
 
-Pokuste se získat cestu k protokolu chyb, která je zadána v možnosti **/Errorlog CSc. exe** . Možnost a cesta se zobrazí v protokolu pro úlohu sestavení analyzátorů Roslyn. Můžou vypadat nějak takto **:/errorlog: f:\ts-services-123 \_ work\456\s\Some\Project\Code\Code.csproj.Sarif**
+Pokuste se získat cestu k protokolu chyb, která je zadána v možnosti **csc.exe/Errorlog** . Možnost a cesta se zobrazí v protokolu pro úlohu sestavení analyzátorů Roslyn. Můžou vypadat nějak takto **:/errorlog: f:\ts-services-123 \_ work\456\s\Some\Project\Code\Code.csproj.Sarif**
 
 ##### <a name="the-c-compiler-version-isnt-recent-enough"></a>Verze kompilátoru C# není dost nedávné.
 
-Chcete-li získat nejnovější verze kompilátoru jazyka C#, přejít na [Microsoft.NET. compilers](https://www.nuget.org/packages/Microsoft.Net.Compilers). Pokud chcete získat nainstalovanou verzi, spusťte **CSc. exe/Version** na příkazovém řádku. Ujistěte se, že odkazujete na balíček NuGet Microsoft.Net. compilers verze 2,6 nebo novější.
+Chcete-li získat nejnovější verze kompilátoru jazyka C#, přejít na [Microsoft.NET. compilers](https://www.nuget.org/packages/Microsoft.Net.Compilers). Pokud chcete získat nainstalovanou verzi, spusťte **csc.exe/Version** na příkazovém řádku. Ujistěte se, že odkazujete na balíček NuGet Microsoft.Net. compilers verze 2,6 nebo novější.
 
 ##### <a name="msbuild-and-vsbuild-logs-arent-found"></a>Protokoly MSBuild a VSBuild se nenašly.
 

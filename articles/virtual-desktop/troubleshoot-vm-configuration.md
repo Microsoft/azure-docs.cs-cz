@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 81a3d8e08486f76fc23a489acd3138d7b9fe8134
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: df2990e3799d0b16f316c522185ac9b779ca48e4
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84711625"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362352"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Konfigurace virtuálního počítače hostitele relace
 
@@ -121,7 +121,8 @@ Když je agent virtuálního počítače s Windows nejdřív nainstalovaný na v
 
 ### <a name="error-the-status-filed-in-get-azwvdsessionhost-cmdlet-shows-status-as-unavailable"></a>Chyba: stav uložený v rutině Get-AzWvdSessionHost zobrazuje stav jako nedostupný.
 
-![Rutina Get-AzWvdSessionHost zobrazuje stav jako nedostupné.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
+> [!div class="mx-imgBorder"]
+> ![Rutina Get-AzWvdSessionHost zobrazuje stav jako nedostupné.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
 **Příčina:** Agent se nemůže sám aktualizovat na novou verzi.
 
@@ -194,7 +195,8 @@ Pokud máte problémy s souběžným zásobníkem virtuálních počítačů s W
 
 Pokud je nainstalovaná a povolená souběžná sada protokolů, výstup z **qwinsta** se zobrazí ve výstupu **RDP-SxS** .
 
-![Nainstalovaná nebo povolená Souběžná instalace s qwinsta, která je ve výstupu uvedená jako RDP-SxS.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
+> [!div class="mx-imgBorder"]
+> ![Nainstalovaná nebo povolená Souběžná instalace s qwinsta, která je ve výstupu uvedená jako RDP-SxS.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
 Projděte si níže uvedené položky registru a potvrďte, že jejich hodnoty se shodují. Pokud klíče registru chybí nebo se neshodují s hodnotami, postupujte podle pokynů v části [Vytvoření fondu hostitelů pomocí prostředí PowerShell](create-host-pools-powershell.md) , jak přeinstalovat souběžný zásobník.
 
@@ -208,7 +210,8 @@ Projděte si níže uvedené položky registru a potvrďte, že jejich hodnoty s
 
 ### <a name="error-o_reverse_connect_stack_failure"></a>Chyba: O_REVERSE_CONNECT_STACK_FAILURE
 
-![Kód chyby O_REVERSE_CONNECT_STACK_FAILURE.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
+> [!div class="mx-imgBorder"]
+> ![Kód chyby O_REVERSE_CONNECT_STACK_FAILURE.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
 **Příčina:** Souběžná sada není nainstalovaná na virtuálním počítači hostitele relace.
 
@@ -244,19 +247,21 @@ Pokud chcete spustit nápravu ze stejné podsítě a domény, postupujte podle t
             psexec.exe \\<VMname> cmd
     ```
 
-    >[!Note]
+    >[!NOTE]
     >VMname je název počítače virtuálního počítače se selháním souběžného zásobníku.
 
 7. Kliknutím na Souhlasím přijměte licenční smlouvu PsExec.
 
-    ![Snímek licenční smlouvy na software](media/SoftwareLicenseTerms.png)
+    > [!div class="mx-imgBorder"]
+    > ![Snímek licenční smlouvy na software](media/SoftwareLicenseTerms.png)
 
-    >[!Note]
+    >[!NOTE]
     >Toto dialogové okno se zobrazí jenom při prvním spuštění PsExec.
 
 8. Po otevření relace příkazového řádku na virtuálním počítači se selháním souběžného zásobníku spusťte qwinsta a potvrďte, že je k dispozici položka s názvem RDP-SxS. V takovém případě se souběžný zásobník na virtuálním počítači nenachází, takže problém není vázaný na souběžný zásobník.
 
-    ![Příkazový řádek správce](media/AdministratorCommandPrompt.png)
+    > [!div class="mx-imgBorder"]
+    > ![Příkazový řádek správce](media/AdministratorCommandPrompt.png)
 
 9. Spusťte následující příkaz, ve kterém se zobrazí seznam součástí, které jsou nainstalované na virtuálním počítači s nefunkčním zásobníkem souběžných souběžných aplikací.
 
@@ -324,7 +329,8 @@ Pokud chcete zjistit, jakou verzi Windows 10 Enterprise máte víc relací:
 3. Vyberte **informace o vašem počítači**.
 4. Podívejte se na číslo vedle možnosti verze. Číslo by mělo být buď "1809" nebo "1903", jak je znázorněno na následujícím obrázku.
 
-    ![Snímek obrazovky okna specifikace systému Windows. Číslo verze je zvýrazněné modře.](media/windows-specifications.png)
+    > [!div class="mx-imgBorder"]
+    > ![Snímek obrazovky okna specifikace systému Windows. Číslo verze je zvýrazněné modře.](media/windows-specifications.png)
 
 Teď, když znáte číslo verze, přejděte k příslušné části.
 

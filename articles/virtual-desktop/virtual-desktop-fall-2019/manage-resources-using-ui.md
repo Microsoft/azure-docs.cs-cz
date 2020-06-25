@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b2680a463bd0150a92dc587eb2f233ef58a58f6d
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 307fe6cd287d7a58435f745cd066be8308293267
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85214158"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362104"
 ---
 # <a name="deploy-a-management-tool-with-an-azure-resource-manager-template"></a>Nasazení nástroje pro správu pomocí šablony Azure Resource Manager
 
@@ -71,11 +71,13 @@ Po dokončení šablony Azure Resource Manager GitHubu najdete v Azure Portal sk
 
 Před přihlášením a použitím nástroje pro správu musíte poskytnout souhlas nové aplikace Azure AD přidružené k nástroji pro správu. Poskytnutí souhlasu umožňuje nástroji pro správu provést volání správy virtuálních počítačů s Windows jménem uživatele, který je aktuálně přihlášený k nástroji.
 
-![Snímek obrazovky zobrazující oprávnění, která jsou k dispozici při souhlasu nástroje pro správu uživatelského rozhraní.](../media/management-ui-delegated-permissions.png)
+> [!div class="mx-imgBorder"]
+> ![Snímek obrazovky zobrazující oprávnění, která jsou k dispozici při souhlasu nástroje pro správu uživatelského rozhraní.](../media/management-ui-delegated-permissions.png)
 
 Chcete-li zjistit, který uživatel, který můžete použít k přihlášení k nástroji, přejít na [stránku nastavení uživatele Azure Active Directory](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) a poznamenejte si hodnotu pro uživatele, kteří budou mít **souhlas s přístupem k firemním datům jménem společnosti**.
 
-![Snímek obrazovky, který ukazuje, jestli uživatelé můžou udělit souhlas aplikacím jenom pro uživatele.](../media/management-ui-user-consent-allowed.png)
+> [!div class="mx-imgBorder"]
+> ![Snímek obrazovky, který ukazuje, jestli uživatelé můžou udělit souhlas aplikacím jenom pro uživatele.](../media/management-ui-user-consent-allowed.png)
 
 - Pokud je hodnota nastavená na **Ano**, můžete se přihlásit pomocí libovolného uživatelského účtu v Azure Active Directory a poskytnout souhlas jenom pro tohoto uživatele. Pokud se ale později přihlásíte k nástroji pro správu pomocí jiného uživatele, musíte stejný souhlas udělat znovu.
 - Pokud je hodnota nastavena na **ne**, musíte se přihlásit jako globální správce v Azure Active Directory a poskytnout souhlas správce pro všechny uživatele v adresáři. Žádnému dalšímu uživateli se zobrazí výzva k vyjádření souhlasu.
@@ -87,7 +89,8 @@ Jakmile se rozhodnete, který uživatel použijete k poskytnutí souhlasu, postu
 2. Přihlaste se pomocí příslušného Azure Active Directory uživatelského účtu.
 3. Pokud jste ověřili s globálním správcem, můžete teď zaškrtnout políčko pro **vyjádření souhlasu jménem vaší organizace**. Vyberte **přijmout** pro poskytnutí souhlasu.
 
-   ![Snímek obrazovky zobrazující stránku s úplným souhlasem, kterou uvidí uživatel nebo správce.](../media/management-ui-consent-page.png)
+   > [!div class="mx-imgBorder"]
+   > ![Snímek obrazovky zobrazující stránku s úplným souhlasem, kterou uvidí uživatel nebo správce.](../media/management-ui-consent-page.png)
 
 Nyní přejdete k nástroji pro správu.
 

@@ -8,12 +8,12 @@ ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 4e2b223337bbe5d46f314a8d2126ab562b937445
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 79035a2fa2f7f3bed4890faa749661f025cea312
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84726077"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362862"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Pochopení digitálních vláken a jejich dvojitých grafů
 
@@ -98,7 +98,7 @@ Data z digitálního vlákna a data relace jsou ukládána ve formátu JSON. To 
 
 Při reprezentaci jako objektu JSON zobrazí digitální vlákna následující pole:
 
-| Název pole | Description |
+| Název pole | Popis |
 | --- | --- |
 | `$dtId` | Uživatelem zadaný řetězec představující ID digitálního vlákna |
 | `$conformance` | Výčet, který obsahuje stav shody tohoto digitálního*vlákna (v* *souladu*s nevyhovujícími, *Neznámý*) |
@@ -164,7 +164,7 @@ Tady je příklad digitálního vlákna formátovaného jako objekt JSON:
 
 Při reprezentaci jako objektu JSON se v relaci z digitálního vlákna zobrazí následující pole:
 
-| Název pole | Description |
+| Název pole | Popis |
 | --- | --- |
 | `$edgeId` | Uživatelem zadaný řetězec představující ID této hraniční relace. Tento řetězec je jedinečný v kontextu zdrojového digitálního vlákna, což také znamená, že `sourceId`  +  `edgeId` je jedinečný v kontextu instance digitálního vlákna Azure. |
 | `$sourceId` | ID zdrojového digitálního vlákna |
@@ -187,8 +187,8 @@ Tady je příklad vztahu naformátovaného jako objekt JSON:
 ## <a name="next-steps"></a>Další kroky
 
 Podívejte se, jak spravovat prvky grafu pomocí rozhraní API digitálních vláken Azure:
-* [Postupy: Správa digitálního vlákna](how-to-manage-twin.md)
-* [Postupy: Správa zdvojeného grafu s relacemi](how-to-manage-graph.md)
+* [Postupy: Správa digitálních vláken](how-to-manage-twin.md)
+* [Postupy: Správa dvojitých grafů s relacemi](how-to-manage-graph.md)
 
 Nebo se naučíte dotazovat se na graf s dvojitými podseznamy digitálních vláken Azure pro informace:
 * [Koncepty: dotazovací jazyk](concepts-query-language.md)

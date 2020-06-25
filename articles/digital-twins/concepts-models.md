@@ -8,12 +8,12 @@ ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: cacf4c21e92b434aeb73cd76e6dda26508f41d77
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 5aef0c9a9b0f3dbfb5ad2f4c827b1a11190e097a
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85261354"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362879"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Principy dvojitých modelů v digitálních prozdvojeních Azure
 
@@ -23,7 +23,7 @@ Klíčovou charakteristikou digitálních vláken Azure je možnost definovat vl
 
 Model je podobný **třídě** v objektově orientovaném programovacím jazyce, který definuje datový tvar pro jeden konkrétní koncept v reálném pracovním prostředí. Modely mají názvy (například *místnost* nebo *senzor teploty*) a obsahují prvky, jako jsou vlastnosti, telemetrie/události a příkazy, které popisují, co tento typ entity ve vašem prostředí může dělat. Později tyto modely použijete k vytvoření [**digitálních vláken**](concepts-twins-graph.md) , které reprezentují konkrétní entity, které splňují tento popis typu.
 
-Modely jsou zapisovány pomocí **digitálního DTDL (Digital vláken Definition Language)** založeného na formátu JSON.  
+Modely se napisují pomocí **digitálního DTDL (Digital vláken Definition Language)** založeného na JSON – ld.  
 
 ## <a name="digital-twin-definition-language-dtdl-for-writing-models"></a>DTDL (Digital redefinition Language) pro psaní modelů
 
@@ -112,7 +112,7 @@ Zde je příklad typického modelu, který je napsán jako rozhraní DTDL. Model
 
 Pole modelu jsou:
 
-| Pole | Description |
+| Pole | Popis |
 | --- | --- |
 | `@id` | Identifikátor modelu. Musí být ve formátu `dtmi:<domain>:<unique model identifier>;<model version number>` . |
 | `@type` | Určuje druh informací, které jsou popsány. Pro rozhraní je typ *rozhraní*. |
@@ -207,7 +207,7 @@ Nebo, další informace o knihovně analyzátoru, včetně příkladu, jak ji po
 ## <a name="next-steps"></a>Další kroky
 
 Přečtěte si téma Správa modelů pomocí rozhraní DigitalTwinsModels API:
-* [Postupy: Správa zdvojeného modelu](how-to-manage-model.md)
+* [Postupy: Správa vlastních modelů](how-to-manage-model.md)
 
 Nebo se dozvíte, jak se vytváří digitální vlákna na základě modelů:
 * [Koncepty: digitální vlákna a Dvojitá graf](concepts-twins-graph.md)

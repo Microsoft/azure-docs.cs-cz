@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 7f98b2c94659c083f5dbd2c43fd9015f8b60a9db
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 8e0927ccd8c94f589adf6eb11004b728f697b6e1
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307501"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362403"
 ---
-# <a name="create-application-with-simple-commands"></a>Vytvoření aplikace pomocí jednoduchých příkazů
+# <a name="create-application-with-simple-commands"></a>Vytvoření aplikace s jednoduchými příkazy
 
 V tomto článku získáte informace o těchto tématech:
  - Vytvoření prázdné aplikace
@@ -26,6 +26,10 @@ V tomto článku získáte informace o těchto tématech:
 
 ## <a name="create-empty-application"></a>Vytvořit prázdnou aplikaci
 Vytvořte prázdnou aplikaci Custom Commands. Podrobnosti najdete v [rychlém](quickstart-custom-commands-application.md)startu. Tentokrát namísto importu projektu vytvoříte prázdný projekt.
+
+1. Do pole **název** zadejte název projektu jako `Smart-Room-Lite` (nebo něco jiného podle vašeho výběru).
+1. V seznamu **jazyk** vyberte možnost **Angličtina (USA)**.
+1. Vyberte nebo vytvořte prostředek LUIS podle vašeho výběru.
 
    > [!div class="mx-imgBorder"]
    > ![Vytvoření projektu](media/custom-commands/create-new-project.png)
@@ -36,7 +40,7 @@ Můžete aktualizovat prostředek pro vytváření obsahu, který jste vybrali v
 
 ## <a name="add-turnon-command"></a>Přidat příkaz TurnOn
 
-V aplikaci Customer – vlastní příkazy v programu **Smart Room – Lite** přidejte jednoduchý příkaz, který zpracuje utterance, `turn on the tv` a odpoví zprávou `Ok, turning the tv on` .
+V prázdné aplikaci pro vlastní příkazy **inteligentních místností – Lite** , kterou jste právě vytvořili, přidejte jednoduchý příkaz, který zpracuje utterance `turn on the tv` a odpoví zprávou `Ok, turning the tv on` .
 
 1. Vytvořte nový příkaz výběrem **příkazu nový** v horní části levého podokna. Otevře se **nové okno příkazu** .
 1. Zadejte hodnotu pole **název** jako **TurnOn**.
@@ -44,7 +48,7 @@ V aplikaci Customer – vlastní příkazy v programu **Smart Room – Lite** p�
 
 V prostředním podokně jsou uvedeny různé vlastnosti příkazu. Nakonfigurujete následující vlastnosti příkazu. Vysvětlení všech vlastností konfigurace příkazu naleznete v [odkazech](./custom-commands-references.md).
 
-| Konfigurace            | Description                                                                                                                 |
+| Konfigurace            | Popis                                                                                                                 |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | **Příklady vět** | Příklad projevy, jak může uživatel aktivovat tento příkaz                                                                 |
 | **Parametry**       | Informace potřebné k dokončení příkazu                                                                                |
@@ -74,23 +78,17 @@ Teď ale nemusíme mít parametry, takže se můžeme přesunout do oddílu **pr
 
 V dalším kroku musí mít příkaz pravidlo dokončení. Toto pravidlo přikáže uživateli, že je prováděna akce plnění. Chcete-li si přečíst další informace o pravidlech a pravidlech dokončení, přejít na [odkazy](./custom-commands-references.md).
 
-1. Vyberte **výchozí pravidlo dokončení** a upravte ho následujícím způsobem: 
+1. Vyberte **výchozí pravidlo dokončení** a upravte ho následujícím způsobem:
 
     
     | Nastavení    | Navrhovaná hodnota                          | Popis                                        |
     | ---------- | ---------------------------------------- | -------------------------------------------------- |
     | **Název**       | ConfirmationResponse                  | Název popisující účel pravidla          |
-    | **Podmínky** | Žádné                                     | Podmínky, které určují, kdy se pravidlo dá spustit    |
+    | **Podmínky** | Žádná                                     | Podmínky, které určují, kdy se pravidlo dá spustit    |
     | **Akce**    | Odeslat odezvu na řeč > jednoduchý editor > první variaci >`Ok, turning the tv on` | Akce, která se má provést, když je podmínka pravidla pravdivá |
     
 
-1. Alternativně můžete odstranit existující výchozí pravidlo dokončení a vytvořit nový, a to tak, že v horní části podokna prostředníku vyberete **Přidat** .
-1. Zadejte hodnotu v části **Name (název** ).
-1. Přidat akci.
-   1. Vytvořte akci výběrem možnosti **přidat akci** v části **Akce** .
-   1. V okně **Nová akce** v seznamu **typ** vyberte **Odeslat odezvu řeči**.
-   1. V části **odpověď**vyberte **jednoduchý editor**.
-   1. Do pole **první variace** zadejte hodnotu pro odezvu jako `Ok, turning the tv on` .
+
 
    > [!div class="mx-imgBorder"]
    > ![Vytvoření odpovědi na řeč](media/custom-commands/create-speech-response-action.png)
@@ -98,6 +96,9 @@ V dalším kroku musí mít příkaz pravidlo dokončení. Toto pravidlo přiká
 1. Akci uložte kliknutím na **Uložit** .
 1. Zpátky v části **pravidla dokončování** vyberte **Uložit** a uložte všechny změny. 
 
+
+ > [!NOTE]
+    > Není nutné používat výchozí pravidlo dokončení, které je součástí příkazu. V případě potřeby můžete stávající výchozí pravidlo dokončování odstranit a přidat vlastní pravidlo.
 
 ### <a name="try-it-out"></a>Vyzkoušejte si to.
 
@@ -124,8 +125,8 @@ Pak upravte existující pravidla dokončení **dokončeno** následujícím zp�
 
 | Nastavení    | Navrhovaná hodnota                          |
 | ---------- | ---------------------------------------- |
-| Name  | ConfirmationResponse                  |
-| Podmínky | Žádné                                     |
+| Název  | ConfirmationResponse                  |
+| Podmínky | Žádná                                     |
 | Akce    | Odeslat odezvu na řeč > jednoduchý editor > první variaci >`Ok, setting temperature to 40 degrees` |
 
 Výběrem **Uložit** uložte všechny změny do příkazu.
@@ -136,7 +137,7 @@ Vytvořte nový příkaz **SetAlarm** pomocí ukázkové věty "**Nastavení ala
 | Nastavení    | Navrhovaná hodnota                          |
 | ---------- | ---------------------------------------- |
 | Název pravidla  | ConfirmationResponse                  |
-| Podmínky | Žádné                                     |
+| Podmínky | Žádná                                     |
 | Akce    | Odeslat odezvu na řeč > jednoduchý editor > první variaci >`Ok, setting an alarm for 9 am tomorrow` |
 
 Výběrem **Uložit** uložte všechny změny do příkazu.

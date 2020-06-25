@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3348920260b6c256b25d0ff2419cdfd2a00dea35
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 4ee1b8d849051b9192e53f761050f1c4b6480e1b
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85207307"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362437"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-azure-ad-ds"></a>Vytvoření kontejneru profilu se službou Azure Files a Azure služba AD DS
 
@@ -93,7 +93,8 @@ Získání přístupového klíče účtu úložiště:
 
     Tím se stáhne soubor RDP, který vám umožní přihlásit se k virtuálnímu počítači pomocí vlastních přihlašovacích údajů.
 
-    ![Snímek obrazovky karty RDP okna připojit k virtuálnímu počítači](media/rdp-tab.png)
+    > [!div class="mx-imgBorder"]
+    > ![Snímek obrazovky karty RDP okna připojit k virtuálnímu počítači](media/rdp-tab.png)
 
 6. Až se přihlásíte k virtuálnímu počítači, spusťte příkazový řádek jako správce.
 
@@ -156,11 +157,13 @@ Postup konfigurace kontejneru profilu FSLogix:
 
 9.  Klikněte pravým tlačítkem na **profily**, vyberte **Nový**a pak vyberte **hodnotu DWORD (32-bit).** Pojmenujte hodnotu **Enabled** a nastavte hodnotu **data** na **1**.
 
-    ![Snímek obrazovky s klíčem Profile REG_DWORD soubor je zvýrazněný a jeho datová hodnota je nastavená na 1.](media/dword-value.png)
+    > [!div class="mx-imgBorder"]
+    > ![Snímek obrazovky s klíčem Profile REG_DWORD soubor je zvýrazněný a jeho datová hodnota je nastavená na 1.](media/dword-value.png)
 
 10. Klikněte pravým tlačítkem na **profily**, vyberte **Nový**a potom vyberte **hodnotu s více řetězci**. Pojmenujte hodnotu **VHDLocations** a `\\fsprofile.file.core.windows.net\share` jako datovou hodnotu zadejte identifikátor URI pro sdílenou složku souborů Azure.
 
-    ![Snímek obrazovky s klíčem Profiles, který ukazuje soubor VHDLocations Jeho hodnota dat zobrazuje identifikátor URI pro sdílenou složku služby soubory Azure.](media/multi-string-value.png)
+    > [!div class="mx-imgBorder"]
+    > ![Snímek obrazovky s klíčem Profiles, který ukazuje soubor VHDLocations Jeho hodnota dat zobrazuje identifikátor URI pro sdílenou složku služby soubory Azure.](media/multi-string-value.png)
 
 ## <a name="assign-users-to-a-session-host"></a>Přiřazení uživatelů k hostiteli relace
 

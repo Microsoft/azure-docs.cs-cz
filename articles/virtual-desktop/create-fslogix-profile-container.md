@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 968e753cb8bf4376d2082d5238004c291b8f0938
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 2656c7ee433198d2ccd883b1c3a175c141c43813
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85211937"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362981"
 ---
 # <a name="create-a-profile-container-with-azure-netapp-files-and-ad-ds"></a>Vytvoření kontejneru profilu pomocí Azure NetApp Files a služba AD DS
 
@@ -53,7 +53,8 @@ Abyste mohli začít, musíte nastavit účet Azure NetApp Files.
 
 4. Pokud Azure Cloud Shell používáte poprvé, vytvořte účet úložiště ve stejném předplatném, ve kterém zachováte Azure NetApp Files a virtuální plochu Windows.
 
-   ![Okno účtu úložiště s tlačítkem vytvořit úložiště v dolní části okna zvýrazněné červeně.](media/create-storage-button.png)
+   > [!div class="mx-imgBorder"]
+   > ![Okno účtu úložiště s tlačítkem vytvořit úložiště v dolní části okna zvýrazněné červeně.](media/create-storage-button.png)
 
 5. Jakmile Azure Cloud Shell načte, spusťte následující dvě rutiny.
 
@@ -67,7 +68,8 @@ Abyste mohli začít, musíte nastavit účet Azure NetApp Files.
 
 6. V levé části okna vyberte **všechny služby**. Do vyhledávacího pole, které se zobrazí v horní části nabídky, zadejte **Azure NetApp Files** .
 
-   ![Snímek obrazovky uživatele, který zadává slovo "Azure NetApp Files" do vyhledávacího pole všechny služby. Ve výsledcích hledání se zobrazuje prostředek Azure NetApp Files.](media/azure-netapp-files-search-box.png)
+   > [!div class="mx-imgBorder"]
+   > ![Snímek obrazovky uživatele, který zadává slovo "Azure NetApp Files" do vyhledávacího pole všechny služby. Ve výsledcích hledání se zobrazuje prostředek Azure NetApp Files.](media/azure-netapp-files-search-box.png)
 
 
 7. Ve výsledcích hledání vyberte **Azure NetApp Files** a pak vyberte **vytvořit**.
@@ -108,7 +110,8 @@ Potom musíte připojit připojení ke službě Active Directory.
 
 1. V nabídce na levé straně stránky vyberte **připojení služby Active Directory** a pak vyberte tlačítko **připojit** a otevřete stránku připojit se ke **službě Active Directory** .
 
-   ![Snímek obrazovky s nabídkou připojení ke službě Active Directory](media/active-directory-connections-menu.png)
+   > [!div class="mx-imgBorder"]
+   > ![Snímek obrazovky s nabídkou připojení ke službě Active Directory](media/active-directory-connections-menu.png)
 
 2. Zadejte následující hodnoty na stránce připojit se ke **službě Active Directory** , abyste se připojili k připojení:
 
@@ -148,7 +151,8 @@ Po vytvoření svazku nakonfigurujte parametry přístupu ke svazku.
 
 6.  Pokud chcete zobrazit cestu pro připojení, vyberte **Přejít k prostředku** a podívejte se na kartu Přehled.
 
-    ![Snímek obrazovky s přehledem s červenou šipkou ukazující na cestu pro připojení](media/overview-mount-path.png)
+    > [!div class="mx-imgBorder"]
+    > ![Snímek obrazovky s přehledem s červenou šipkou ukazující na cestu pro připojení](media/overview-mount-path.png)
 
 ## <a name="configure-fslogix-on-session-host-virtual-machines-vms"></a>Konfigurace FSLogix na virtuálních počítačích hostitele relace
 
@@ -218,7 +222,8 @@ Tato část je založená na [vytvoření kontejneru profilu pro fond hostitelů
 
 4. Otevřete **Azure NetApp Files**, vyberte svůj účet Azure NetApp Files a pak vyberte **svazky**. Po otevření nabídky svazky vyberte odpovídající svazek.
 
-   ![Snímek obrazovky s NetApp účtem, který jste nastavili dříve v Azure Portal s vybraným tlačítkem svazky.](media/netapp-account.png)
+   > [!div class="mx-imgBorder"]
+   > ![Snímek obrazovky s NetApp účtem, který jste nastavili dříve v Azure Portal s vybraným tlačítkem svazky.](media/netapp-account.png)
 
 5. Přejít na kartu **Přehled** a ověřte, že kontejner profilu FSLogix používá místo.
 
@@ -226,7 +231,8 @@ Tato část je založená na [vytvoření kontejneru profilu pro fond hostitelů
 
    V rámci této složky by měl existovat profil VHD (nebo VHDX), jako je ten v následujícím příkladu.
 
-   ![Snímek obrazovky obsahu složky v cestě pro připojení Uvnitř je jeden soubor VHD s názvem "Profile_ssbb".](media/mount-path-folder.png)
+   > [!div class="mx-imgBorder"]
+   > ![Snímek obrazovky obsahu složky v cestě pro připojení Uvnitř je jeden soubor VHD s názvem "Profile_ssbb".](media/mount-path-folder.png)
 
 ## <a name="next-steps"></a>Další kroky
 

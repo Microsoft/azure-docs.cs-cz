@@ -8,12 +8,12 @@ ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 89de2e86e425e2c585f9a1243f6666a0ae077c10
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: ddbe49f34bbdbf0f9c461a25f23d6f7cbd8600d9
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84726051"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362947"
 ---
 # <a name="authenticate-a-client-application-with-azure-digital-twins"></a>Ověřování klientské aplikace pomocí digitálních vláken Azure
 
@@ -175,7 +175,7 @@ K ověření aplikace .NET se službami Azure můžete v klientské aplikaci pou
 Budete potřebovat ID *aplikace (klienta)* a *ID adresáře (tenant)* z dřívější verze a také adresu URL instance digitálního vlákna Azure.
 
 > [!TIP]
-> Adresa URL instance digitálních vláken Azure se provede přidáním *https://* na začátek *názvu hostitele*instance digitálního vlákna Azure. Chcete-li zobrazit název hostitele spolu se všemi vlastnostmi vaší instance, můžete spustit `az dt show --dt-name <your-Azure-Digital-Twins-instance>` .
+> Adresa URL instance digitálních vláken Azure se provede přidáním *https://* na začátek *názvu hostitele*instance digitálního vlákna Azure. Chcete-li zobrazit *název hostitele*spolu se všemi vlastnostmi vaší instance, můžete spustit `az dt show --dt-name <your-Azure-Digital-Twins-instance>` . Pomocí `az account show --query tenantId` příkazu můžete zobrazit své *ID adresáře (tenant)*. 
 
 ```javascript
 import * as Msal from "msal";
@@ -259,4 +259,4 @@ Přečtěte si další informace o tom, jak funguje zabezpečení v Azure Digita
 * [Koncepty: zabezpečení pro řešení digitálních vláken Azure](concepts-security.md)
 
 Nebo teď, když je toto ověřování nastavené, přejděte k vytváření modelů ve vaší instanci:
-* [Postupy: Správa zdvojeného modelu](how-to-manage-model.md)
+* [Postupy: Správa vlastních modelů](how-to-manage-model.md)

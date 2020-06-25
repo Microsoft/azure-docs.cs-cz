@@ -1,5 +1,5 @@
 ---
-title: Správa grafu dvojčat s využitím vztahů
+title: Správa dvojitě vyřízených grafů s relacemi
 titleSuffix: Azure Digital Twins
 description: Podívejte se, jak spravovat graf digitálních vláken pomocí propojení s relacemi.
 author: baanders
@@ -8,12 +8,12 @@ ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: e332936543cc36e20b88da4ce5cc9115d0890967
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 13ceed847b3946b47fb3389145843ad085391dc5
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84725694"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362794"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Správa grafu digitálních vláken pomocí vztahů
 
@@ -23,7 +23,7 @@ Srdcem digitálních vláken Azure je [dvojitě graf](concepts-twins-graph.md) ,
 
 Jakmile budete mít funkční [instanci digitálních vláken Azure](how-to-set-up-instance.md) a nastavili jste [ověřování](how-to-authenticate-client.md) pro klientskou aplikaci, můžete použít [**rozhraní API DigitalTwins**](how-to-use-apis-sdks.md) k vytváření, úpravám a odstraňování digitálních vláken a jejich vztahů v instanci digitálních vláken Azure. Můžete také použít [rozhraní .NET (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)nebo rozhraní příkazového [řádku Azure Digital revlákens](how-to-use-cli.md).
 
-Tento článek se zaměřuje na správu vztahů a grafu jako celku. Chcete-li pracovat s jednotlivými digitálními podseznamy, přečtěte si téma [Postup: Správa digitálního vlákna](how-to-manage-twin.md).
+Tento článek se zaměřuje na správu vztahů a grafu jako celku. Chcete-li pracovat s jednotlivými digitálními podseznamy, přečtěte si téma [Postup: Správa digitálních vláken](how-to-manage-twin.md).
 
 ## <a name="create-relationships"></a>Vytvoření relací
 

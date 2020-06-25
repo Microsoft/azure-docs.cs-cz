@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0660947907b26e1a86bbd68bb32d1ac5d211b20e
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 544610f4011f7ad12d5b311aab3afd4bc1373ac5
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85206049"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362335"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>Nasazení diagnostických nástrojů
 
@@ -195,7 +195,8 @@ Nastavení identifikátoru URI přesměrování:
 6. V rozevírací nabídce Typ vyberte **Web** .
 7. Zadejte adresu URL na stránce Přehled aplikace a na konec této stránky přidejte **/Security/SignIn-callback** . Příklad: `https://<yourappname>.azurewebsites.net/security/signin-callback`.
 
-   ![Stránka s identifikátorem URI pro přesměrování](../media/redirect-uri-page.png)
+   > [!div class="mx-imgBorder"]
+   > ![Stránka s identifikátorem URI pro přesměrování](../media/redirect-uri-page.png)
 
 8. Teď přejděte k prostředkům Azure, vyberte prostředek Azure App Services s názvem, který jste zadali v šabloně, a přejděte na adresu URL, která k němu je přidružená. (Pokud jste například použili název aplikace, který jste použili v šabloně `contosoapp45` , pak je vaše přidružená adresa URL <https://contosoapp45.azurewebsites.net> ).
 9. Přihlaste se pomocí příslušného Azure Active Directory uživatelského účtu.

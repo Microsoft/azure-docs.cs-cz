@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: eeccf0031e28bdcb719c0d534874d2c240ba46d3
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 0dd03508a745a231f10cfc6d09953067618043e9
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83117423"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362505"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Konfigurace virtuálního počítače hostitele relace
 
@@ -118,7 +118,8 @@ Když je agent virtuálního počítače s Windows nejdřív nainstalovaný na v
 
 ### <a name="error-the-status-filed-in-get-rdssessionhost-cmdlet-shows-status-as-unavailable"></a>Chyba: stav uložený v rutině Get-RdsSessionHost zobrazuje stav jako nedostupný.
 
-![Rutina Get-RdsSessionHost zobrazuje stav jako nedostupné.](../media/23b8e5f525bb4e24494ab7f159fa6b62.png)
+> [!div class="mx-imgBorder"]
+> ![Rutina Get-RdsSessionHost zobrazuje stav jako nedostupné.](../media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
 **Příčina:** Agent se nemůže sám aktualizovat na novou verzi.
 
@@ -179,7 +180,7 @@ Když je agent virtuálního počítače s Windows nejdřív nainstalovaný na v
 
 ## <a name="troubleshooting-issues-with-the-windows-virtual-desktop-side-by-side-stack"></a>Řešení potíží se souběžným zásobníkem virtuálních počítačů s Windows
 
-Souběžná sada virtuálních počítačů s Windows je automaticky nainstalována se systémem Windows Server 2019. K instalaci souběžného zásobníku na Microsoft Windows Server 2016 nebo Windows Server 2012 R2 použijte instalační program Microsoft (MSI). V systému Microsoft Windows 10 je souběžná sada virtuálních počítačů s Windows zapnutá pomocí **enablesxstackrs. ps1**.
+Souběžná sada virtuálních počítačů s Windows je automaticky nainstalována se systémem Windows Server 2019. K instalaci souběžného zásobníku na Microsoft Windows Server 2016 nebo Windows Server 2012 R2 použijte instalační program Microsoft (MSI). V systému Microsoft Windows 10 je souběžná sada virtuálních počítačů s Windows povolena s **enablesxstackrs.ps1**.
 
 Existují tři hlavní způsoby, jak je souběžný zásobník nainstalovaný nebo povolený na virtuálních počítačích fondu hostitelů relace:
 
@@ -191,7 +192,8 @@ Pokud máte problémy s souběžným zásobníkem virtuálních počítačů s W
 
 Pokud je nainstalovaná a povolená souběžná sada protokolů, výstup z **qwinsta** se zobrazí ve výstupu **RDP-SxS** .
 
-![Nainstalovaná nebo povolená Souběžná instalace s qwinsta, která je ve výstupu uvedená jako RDP-SxS.](../media/23b8e5f525bb4e24494ab7f159fa6b62.png)
+> [!div class="mx-imgBorder"]
+> ![Nainstalovaná nebo povolená Souběžná instalace s qwinsta, která je ve výstupu uvedená jako RDP-SxS.](../media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
 Projděte si níže uvedené položky registru a potvrďte, že jejich hodnoty se shodují. Pokud klíče registru chybí nebo se neshodují s hodnotami, postupujte podle pokynů v části [Vytvoření fondu hostitelů pomocí prostředí PowerShell](create-host-pools-powershell-2019.md) , jak přeinstalovat souběžný zásobník.
 
@@ -205,7 +207,8 @@ Projděte si níže uvedené položky registru a potvrďte, že jejich hodnoty s
 
 ### <a name="error-o_reverse_connect_stack_failure"></a>Chyba: O_REVERSE_CONNECT_STACK_FAILURE
 
-![Kód chyby O_REVERSE_CONNECT_STACK_FAILURE.](../media/23b8e5f525bb4e24494ab7f159fa6b62.png)
+> [!div class="mx-imgBorder"]
+> ![Kód chyby O_REVERSE_CONNECT_STACK_FAILURE.](../media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
 **Příčina:** Souběžná sada není nainstalovaná na virtuálním počítači hostitele relace.
 
@@ -227,8 +230,8 @@ Existují známé okolnosti, které můžou způsobit selhání souběžného z�
 - Není podle správného pořadí kroků pro povolení zásobníku souběžného sdílení.
 - Automaticky aktualizovat na rozšířený univerzální disk s Windows 10 (EVD)
 - Chybí role Hostitel relace vzdálené plochy (vzdálené relace).
-- Spuštění enablesxsstackrc. ps1 několikrát
-- Spuštění enablesxsstackrc. ps1 v účtu, který nemá oprávnění místního správce
+- Spuštění enablesxsstackrc.ps1 několikrát
+- Spuštění enablesxsstackrc.ps1 v účtu, který nemá oprávnění místního správce
 
 Pokyny v této části vám pomůžou odinstalovat souběžnou sadu virtuálních počítačů s Windows. Po odinstalování souběžného zásobníku v části [Vytvoření fondu hostitelů s PowerShellem](create-host-pools-powershell-2019.md) pro přeinstalaci souběžného zásobníku použijte možnost zaregistrovat virtuální počítač s fondem hostitelů virtuálních klientů Windows.
 
@@ -247,19 +250,21 @@ Pokud chcete spustit nápravu ze stejné podsítě a domény, postupujte podle t
             psexec.exe \\<VMname> cmd
     ```
 
-    >[!Note]
+    >[!NOTE]
     >VMname je název počítače virtuálního počítače se selháním souběžného zásobníku.
 
 7. Kliknutím na Souhlasím přijměte licenční smlouvu PsExec.
 
-    ![Snímek licenční smlouvy na software](../media/SoftwareLicenseTerms.png)
+    > [!div class="mx-imgBorder"]
+    > ![Snímek licenční smlouvy na software](../media/SoftwareLicenseTerms.png)
 
-    >[!Note]
+    >[!NOTE]
     >Toto dialogové okno se zobrazí jenom při prvním spuštění PsExec.
 
 8. Po otevření relace příkazového řádku na virtuálním počítači se selháním souběžného zásobníku spusťte qwinsta a potvrďte, že je k dispozici položka s názvem RDP-SxS. V takovém případě se souběžný zásobník na virtuálním počítači nenachází, takže problém není vázaný na souběžný zásobník.
 
-    ![Příkazový řádek správce](../media/AdministratorCommandPrompt.png)
+    > [!div class="mx-imgBorder"]
+    > ![Příkazový řádek správce](../media/AdministratorCommandPrompt.png)
 
 9. Spusťte následující příkaz, ve kterém se zobrazí seznam součástí, které jsou nainstalované na virtuálním počítači s nefunkčním zásobníkem souběžných souběžných aplikací.
 
@@ -281,7 +286,7 @@ Pokud chcete spustit nápravu ze stejné podsítě a domény, postupujte podle t
 
 Pokud používáte operační systém Microsoft Windows 10, pokračujte podle následujících pokynů:
 
-14. Z virtuálního počítače se systémem PsExec otevřete Průzkumníka souborů a zkopírujte disablesxsstackrc. ps1 na systémovou jednotku virtuálního počítače s nefunkčním zásobníkem souběžných souběžných sestavení.
+14. Z virtuálního počítače se systémem PsExec otevřete Průzkumníka souborů a zkopírujte disablesxsstackrc.ps1 do systémové jednotky virtuálního počítače se selháním souběžného zásobníku.
 
     ```cmd
         \\<VMname>\c$\
@@ -290,7 +295,7 @@ Pokud používáte operační systém Microsoft Windows 10, pokračujte podle n�
     >[!NOTE]
     >VMname je název počítače virtuálního počítače se selháním souběžného zásobníku.
 
-15. Doporučený postup: z nástroje PsExec spusťte PowerShell a přejděte do složky z předchozího kroku a spusťte disablesxsstackrc. ps1. Případně můžete spustit následující rutiny:
+15. Doporučený postup: z nástroje PsExec spusťte PowerShell a přejděte do složky z předchozího kroku a spusťte disablesxsstackrc.ps1. Případně můžete spustit následující rutiny:
 
     ```PowerShell
     Remove-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\ClusterSettings" -Name "SessionDirectoryListener" -Force
@@ -327,7 +332,8 @@ Pokud chcete zjistit, jakou verzi Windows 10 Enterprise máte víc relací:
 3. Vyberte **informace o vašem počítači**.
 4. Podívejte se na číslo vedle možnosti verze. Číslo by mělo být buď "1809" nebo "1903", jak je znázorněno na následujícím obrázku.
 
-    ![Snímek obrazovky okna specifikace systému Windows. Číslo verze je zvýrazněné modře.](../media/windows-specifications.png)
+    > [!div class="mx-imgBorder"]
+    > ![Snímek obrazovky okna specifikace systému Windows. Číslo verze je zvýrazněné modře.](../media/windows-specifications.png)
 
 Teď, když znáte číslo verze, přejděte k příslušné části.
 

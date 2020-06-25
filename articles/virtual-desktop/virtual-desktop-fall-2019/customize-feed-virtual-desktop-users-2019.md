@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f6b956981269bca83140e4d1d08067b2d0db0d1d
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 58f05b2f9f15166e161b31578b47cf06afcb13a0
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85204774"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362573"
 ---
 # <a name="customize-feed-for-windows-virtual-desktop-users"></a>Přizpůsobení kanálu pro uživatele Windows Virtual Desktopu
 
@@ -37,14 +37,18 @@ Pokud chcete načíst seznam publikovaných vzdálených aplikací RemoteApp pro
 ```powershell
 Get-RdsRemoteApp -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname>
 ```
-![Snímek obrazovky rutiny PowerShellu Get-RDSRemoteApp se zvýrazněným názvem a FriendlyName.](../media/get-rdsremoteapp.png)
+
+> [!div class="mx-imgBorder"]
+> ![Snímek obrazovky rutiny PowerShellu Get-RDSRemoteApp se zvýrazněným názvem a FriendlyName.](../media/get-rdsremoteapp.png)
 
 Chcete-li přiřadit popisný název k vzdálené aplikaci RemoteApp, spusťte následující rutinu prostředí PowerShell:
 
 ```powershell
 Set-RdsRemoteApp -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname> -Name <existingappname> -FriendlyName <newfriendlyname>
 ```
-![Snímek obrazovky rutiny PowerShellu set-RDSRemoteApp s názvem a novým výrazem FriendlyName](../media/set-rdsremoteapp.png)
+
+> [!div class="mx-imgBorder"]
+> ![Snímek obrazovky rutiny PowerShellu set-RDSRemoteApp s názvem a novým výrazem FriendlyName](../media/set-rdsremoteapp.png)
 
 ## <a name="customize-the-display-name-for-a-remote-desktop"></a>Přizpůsobení zobrazovaného názvu pro vzdálenou plochu
 
@@ -55,14 +59,18 @@ Pokud chcete načíst prostředek vzdálené plochy, spusťte následující rut
 ```powershell
 Get-RdsRemoteDesktop -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname>
 ```
-![Snímek obrazovky rutiny PowerShellu Get-RDSRemoteApp se zvýrazněným názvem a FriendlyName.](../media/get-rdsremotedesktop.png)
+
+> [!div class="mx-imgBorder"]
+> ![Snímek obrazovky rutiny PowerShellu Get-RDSRemoteApp se zvýrazněným názvem a FriendlyName.](../media/get-rdsremotedesktop.png)
 
 Chcete-li přiřadit popisný název k prostředku vzdálené plochy, spusťte následující rutinu prostředí PowerShell:
 
 ```powershell
 Set-RdsRemoteDesktop -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname> -FriendlyName <newfriendlyname>
 ```
-![Snímek obrazovky rutiny PowerShellu set-RDSRemoteApp s názvem a novým výrazem FriendlyName](../media/set-rdsremotedesktop.png)
+
+> [!div class="mx-imgBorder"]
+> ![Snímek obrazovky rutiny PowerShellu set-RDSRemoteApp s názvem a novým výrazem FriendlyName](../media/set-rdsremotedesktop.png)
 
 ## <a name="next-steps"></a>Další kroky
 

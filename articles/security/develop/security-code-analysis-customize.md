@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 8d074c12f28abdc61f4d70356c2a7aa264deb44c
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 744b186b32927f81be21ff067c9195bddb33c416
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871895"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362087"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>Konfigurace a přizpůsobení úloh sestavení
 
@@ -61,15 +61,15 @@ Podrobnosti o konfiguraci úlohy jsou uvedené na následujícím snímku obrazo
 - Do vlastnosti **cíl**zadejte jeden nebo více specifikátorů pro soubor, adresář nebo vzor filtru. Tyto specifikátory jsou přeloženy na jeden nebo více binárních souborů, které mají být analyzovány:
     - Více zadaných cílů musí být oddělených středníkem (;).
     - Specifikátorem může být jeden soubor nebo obsahovat zástupné znaky.
-    - Specifikace adresáře musí vždy končit znakem \\*.
+    - Specifikace adresáře musí vždy končit znakem \\ *.
     - Příklady:
 
            *.dll;*.exe
            $(BUILD_STAGINGDIRECTORY)\*
            $(BUILD_STAGINGDIRECTORY)\*.dll;$(BUILD_STAGINGDIRECTORY)\*.exe;
 
-- Pokud v seznamu **typ** vyberete položku **příkazový řádek** , je nutné spustit binskim. exe:
-     - Ujistěte se, že první argumenty pro binskim. exe jsou příkazy **analyzovat** následované jednou nebo více specifikacemi cesty. Každá cesta může být buď úplná cesta, nebo cesta relativní ke zdrojovému adresáři.
+- Pokud v seznamu **typ** vyberete položku **příkazový řádek** , je nutné spustit binskim.exe:
+     - Ujistěte se, že první argumenty binskim.exe jsou příkazy **analyze** a jedna nebo více specifikací cesty. Každá cesta může být buď úplná cesta, nebo cesta relativní ke zdrojovému adresáři.
      - Více cílových cest musí být odděleny mezerou.
      - Můžete vynechat možnost **/o** nebo **/Output** . Výstupní hodnota je přidána nebo nahrazena.
      - Standardní konfigurace příkazového řádku jsou uvedené níže.
@@ -78,7 +78,7 @@ Podrobnosti o konfiguraci úlohy jsou uvedené na následujícím snímku obrazo
            analyze *.dll *.exe --recurse --verbose
 
           > [!NOTE]
-          > Koncový \\znak * je důležitý, pokud zadáte adresáře pro cíl.
+          > Koncový \\ znak * je důležitý, pokud zadáte adresáře pro cíl.
 
 Další informace o argumentech příkazového řádku BinSkim, pravidlech podle ID nebo ukončovacích kódech najdete v [uživatelské příručce k BinSkim](https://github.com/Microsoft/binskim/blob/master/docs/UserGuide.md).
 
@@ -103,40 +103,10 @@ Mezi dostupné možnosti patří:
   - **Časový limit shody**: doba v sekundách, po kterou se při pokusu o vynechání kontroly shoduje se zadaným vyhledávacím objektem.
   - **Velikost vyrovnávací paměti pro čtení prohledávání souborů**: velikost vyrovnávací paměti použité při čtení obsahu v bajtech. Výchozí hodnota je 524 288.  
   - **Maximální počet přečtených bajtů při kontrole souborů**: maximální počet bajtů, které se mají načíst ze souboru při analýze obsahu. Výchozí hodnota je 104 857 600.
-  - **Možnosti ovládacích prvků** > **spouštějící tuto úlohu**: Určuje, kdy se úloha spustí. Pokud chcete zadat složitější podmínky, vyberte **vlastní podmínky** .
+  - **Možnosti**  >  ovládacích prvků **Spustit tuto úlohu**: Určuje, kdy se úloha spustí. Pokud chcete zadat složitější podmínky, vyberte **vlastní podmínky** .
   - **Version (verze**): verze úlohy buildu v rámci služby Azure DevOps. Tato možnost se často nepoužívá.
 
 Informace o konfiguraci YAML pro tuto úlohu najdete v našich [přihlašovacích údajích k YAML možností skeneru přihlašovacích údajů](yaml-configuration.md#credential-scanner-task) .
-
-## <a name="microsoft-security-risk-detection-task"></a>Úloha zjišťování rizik zabezpečení společnosti Microsoft
-
-> [!NOTE]
-> Před použitím úlohy MSRD je nutné vytvořit a nakonfigurovat účet se službou Microsoft Security rizikovost Detection (MSRD). Tato služba vyžaduje samostatný proces připojování. Na rozdíl od většiny ostatních úloh v tomto rozšíření Tato úloha vyžaduje samostatné předplatné s MSRD.
->
-> Pokyny najdete v článku [zjišťování rizik zabezpečení společnosti Microsoft](https://aka.ms/msrddocs) a [zjišťování rizik zabezpečení společnosti Microsoft: postupy](https://docs.microsoft.com/security-risk-detection/how-to/) .
-
-Podrobnosti o konfiguraci této úlohy jsou uvedené v následujícím seznamu. Pro libovolný prvek uživatelského rozhraní můžete na tento prvek umístit ukazatel myši a získat tak nápovědu.
-
-   - **Název koncového bodu služby Azure DevOps pro MSRD**: obecný typ koncového bodu služby Azure DevOps ukládá vaši adresu URL instance PŘIPOJENého MSRDu a váš přístupový token REST API. Pokud jste takový koncový bod vytvořili, můžete ho zadat tady. V opačném případě vyberte odkaz **Spravovat** pro vytvoření a konfiguraci nového koncového bodu služby pro tuto úlohu MSRD.
-   - **ID účtu**: identifikátor GUID, který se dá načíst z adresy URL účtu MSRD.
-   - **Adresy URL ke binárním souborům**: seznam veřejně dostupných adres URL oddělený středníkem. Rozmazaný počítač používá tyto adresy URL ke stažení binárních souborů.
-   - **Adresy URL souborů počátečního**typu: seznam veřejně dostupných adres URL oddělený středníkem. Rozmazaný počítač používá tyto adresy URL ke stažení semen. Zadání této hodnoty je volitelné, pokud jsou soubory počáteční hodnoty staženy společně s binárními soubory.
-   - **Typ platformy operačního**systému: platforma operačního systému (OS) počítačů, které spouštějí fuzzy úlohu. Dostupné hodnoty jsou **Windows** a **Linux**.
-   - Edice **Windows/Linux Edition**: edice operačního systému počítačů, které spouštějí fuzzy úlohu. Výchozí hodnotu můžete přepsat, pokud vaše počítače mají jinou edici operačního systému.
-   - **Instalační skript balíčku**: váš skript, který se má spustit na testovacím počítači. Tento skript nainstaluje cílový program testu a jeho závislosti před odesláním přibližné úlohy.
-   - **Parametry odeslání úlohy**:
-       - **Počáteční adresář**: cesta k adresáři v přibližném počítači, který obsahuje semena.
-       - **Rozšíření osazení**: Přípona názvu souboru semen.
-       - **Test spustitelného souboru ovladače**: cesta k cílovému spustitelnému souboru v rozmazaných počítačích.
-       - **Architektura spustitelných souborů testovacího ovladače**: architektura cílového spustitelného souboru. Dostupné hodnoty jsou **x86** a **amd64**.
-       - **Argumenty testovacího ovladače**: argumenty příkazového řádku předané testovacímu spustitelnému souboru. Argument "% Testfile%", včetně uvozovek, je automaticky nahrazen úplnou cestou k cílovému souboru. Tento soubor se analyzuje pomocí ovladače testu a je povinný.
-       - **Proces testovacího ovladače se ukončí při dokončení testu**: zaškrtněte toto políčko, pokud chcete po dokončení ukončit ovladač testu. Vymažte je, pokud je třeba test ovladače vynuceně zavřít.
-       - **Maximální doba trvání (v sekundách)**: odhad nejdelší rozumně očekávané doby, kterou cílový program vyžaduje k analýze vstupního souboru. Přesnější odhad, efektivnější spuštění aplikace.
-       - **Testovací ovladač lze spustit opakovaně**: zaškrtněte toto políčko, pokud testovací ovladač může běžet opakovaně bez závislosti na trvalém nebo sdíleném globálním stavu.
-       - **Testovací ovladač lze přejmenovat**: zaškrtněte toto políčko, pokud se spustitelný soubor testovacího ovladače dá přejmenovat a pořád funguje správně.
-       - **Fuzzy aplikace běží jako jeden proces operačního systému**: Toto políčko zaškrtněte, pokud testovací ovladač běží v rámci jednoho procesu operačního systému. Pokud testovací ovladač setrvá další procesy, vymažte ho.
-
-Informace o konfiguraci YAML pro tuto úlohu najdete v našem [YAML možností zjišťování rizik zabezpečení Microsoftu](yaml-configuration.md#microsoft-security-risk-detection-task) .
 
 ## <a name="roslyn-analyzers-task"></a>Úloha analyzátorů Roslyn
 
@@ -153,11 +123,11 @@ Mezi dostupné možnosti patří:
 - **RuleSet**: hodnoty jsou **vyžadovány v SDL**, **doporučuje se SDL**nebo vaše vlastní sada pravidel.
 - **Verze analyzátorů**: Doporučujeme vybrat možnost **nejnovější**.
 - **Soubor potlačení upozornění kompilátoru**: textový soubor se seznamem ID upozornění, které se potlačí.
-- **Možnosti ovládacích prvků** > **spouštějící tuto úlohu**: Určuje, kdy se úloha spustí. Zvolte **vlastní podmínky** a určete složitější podmínky.
+- **Možnosti**  >  ovládacích prvků **Spustit tuto úlohu**: Určuje, kdy se úloha spustí. Zvolte **vlastní podmínky** a určete složitější podmínky.
 
 > [!NOTE]
 >
-> - Analyzátory Roslyn jsou integrovány s kompilátorem a lze je spustit pouze jako součást kompilace CSc. exe. Proto tato úloha vyžaduje, aby byl příkaz kompilátoru, který byl dříve v sestavení spuštěn, znovu přehrán nebo znovu spuštěn. Toto přehrajte nebo spusťte dotazování v Visual Studio Team Services (VSTS) pro protokoly úloh sestavení MSBuild.
+> - Analyzátory Roslyn jsou integrovány s kompilátorem a lze je spustit pouze jako součást kompilace csc.exe. Proto tato úloha vyžaduje, aby byl příkaz kompilátoru, který byl dříve v sestavení spuštěn, znovu přehrán nebo znovu spuštěn. Toto přehrajte nebo spusťte dotazování v Visual Studio Team Services (VSTS) pro protokoly úloh sestavení MSBuild.
 >
 >   Neexistuje žádný jiný způsob, jak úlohu spolehlivě získat příkazový řádek kompilace MSBuild z definice sestavení. Doporučujeme přidat textové pole volného tvaru, které uživatelům umožní zadat jejich příkazové řádky. Ale pak by bylo obtížné tyto příkazové řádky udržovat v aktuálním stavu a synchronizovat s hlavním sestavením.
 >

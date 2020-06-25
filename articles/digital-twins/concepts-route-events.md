@@ -8,12 +8,12 @@ ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: be5709c8ccf8626ac3a48fdf7cad1c61dbfbf628
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 87d57470ffbe1d65bb646c51387e15e58ab6fa30
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84729512"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362913"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Směrování událostí v rámci digitálních vláken Azure a mimo ně
 
@@ -59,7 +59,7 @@ Aby bylo možné definovat trasu události, vývojáři musí nejprve definovat 
 * Service Bus
 
 Koncové body se nastavují pomocí rozhraní API řídicí plochy (podporované pomocí rozhraní příkazového [řádku Azure pro digitální vlákna](how-to-use-cli.md)nebo prostřednictvím Azure Portal. Definice koncového bodu poskytuje:
-* ID koncového bodu (nebo popisný název)
+* Název koncového bodu
 * Typ koncového bodu (Event Grid, centrum událostí nebo Service Bus)
 * Primární připojovací řetězec a sekundární připojovací řetězec, který se má ověřit 
 * Cesta k tématu koncového bodu, například *Your-topic.westus2.eventgrid.Azure.NET*
@@ -67,18 +67,18 @@ Koncové body se nastavují pomocí rozhraní API řídicí plochy (podporované
 Rozhraní API koncového bodu, která jsou k dispozici v řídicí rovině, jsou:
 * Vytvořit koncový bod
 * Získá seznam koncových bodů.
-* Získat koncový bod podle ID (předávat ID koncového bodu)
-* Odstranit koncový bod podle ID (předávat ID koncového bodu)
+* Získat koncový bod podle názvu
+* Odstranit koncový bod podle názvu
 
 ## <a name="create-an-event-route"></a>Vytvoření trasy události
  
 V klientské aplikaci se vytvoří trasy událostí s následujícím voláním [rozhraní .NET (C#) SDK](how-to-use-apis-sdks.md) : 
 
 ```csharp
-await client.EventRoutes.AddAsync("<name-for-the-new-route>", new EventRoute("<endpoint-ID>"));
+await client.EventRoutes.AddAsync("<name-for-the-new-route>", new EventRoute("<endpoint-name>"));
 ```
 
-* `endpoint-ID`Identifikuje koncový bod, jako je například centrum událostí, Event Grid nebo Service Bus. Tyto koncové body je potřeba vytvořit v předplatném a připojit se k digitálním plochám Azure pomocí rozhraní API řídicích rovin před provedením tohoto volání registrace.
+* `endpoint-name`Identifikuje koncový bod, jako je například centrum událostí, Event Grid nebo Service Bus. Tyto koncové body je potřeba vytvořit v předplatném a připojit se k digitálním plochám Azure pomocí rozhraní API řídicích rovin před provedením tohoto volání registrace.
 
 Objekt trasy události předaný objektu `EventRoutes.Add` také převezme [parametr **filtru** ](./how-to-manage-routes.md#filter-events), který lze použít k omezení typů událostí, které následují po této trase.
 

@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 06/22/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 5415237a502116b597c1514f75f35203108237ec
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: d613caa5c2eea4f2add129c640ab322168c536f6
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85299071"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362488"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>Izolace sítě během školení & odvození s privátními virtuálními sítěmi
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -136,7 +136,10 @@ Konfigurace pravidla NSG se v Azure Portal zobrazuje na následujícím obrázku
 [![Odchozí NSG pravidla pro Výpočetní prostředky služby Machine Learning](./media/how-to-enable-virtual-network/limited-outbound-nsg-exp.png)](./media/how-to-enable-virtual-network/limited-outbound-nsg-exp.png#lightbox)
 
 > [!NOTE]
-> Pokud plánujete používání výchozích imagí Docker poskytovaných Microsoftem a povolením spravovaných závislostí uživatelů, musíte také použít __značku služby__ __MicrosoftContainerRegistry. Region_Name__ (například MicrosoftContainerRegistry. EastUS).
+> Pokud plánujete používání výchozích imagí Docker poskytovaných Microsoftem a povolením spravovaných závislostí uživatelů, musíte použít taky následující __značky služby__:
+>
+> * __MicrosoftContainerRegistry__
+> * __AzureFrontDoor.FirstParty__
 >
 > Tato konfigurace je nutná, pokud máte kód podobný následujícímu fragmentu kódu jako součást vašich školicích skriptů:
 >

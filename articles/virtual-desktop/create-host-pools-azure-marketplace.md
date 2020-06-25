@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8a20d7cb05f4529d5aa8a115b7d1db6e4d812be0
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: 7c22ad844f0a543cfbf2e007ab2bfc8f0fe22ef7
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85100856"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362930"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Kurz: Vytvoření fondu hostitelů pomocí Azure Portal
 
@@ -67,20 +67,23 @@ Chcete-li začít vytvářet nový fond hostitelů:
    
    Oblast Azure, která je přidružená k oblastem, kterou jste vybrali, je místo, kde se budou ukládat metadata pro tento fond hostitelů a příslušné objekty. Ujistěte se, že jste vybrali oblasti v zeměpisné oblasti, do kterých chcete ukládat metadata služby.
 
-     ![Snímek obrazovky Azure Portal zobrazující pole umístění s vybraným Východní USAm umístěním Vedle pole je text "metadata budou uložena v Východní USA."](media/portal-location-field.png)
+     > [!div class="mx-imgBorder"]
+     > ![Snímek obrazovky Azure Portal zobrazující pole umístění s vybraným Východní USAm umístěním Vedle pole je text "metadata budou uložena v Východní USA."](media/portal-location-field.png)
 
 8. V části typ fondu hostitelů vyberte, jestli fond hostitelů bude **osobní** nebo **sdružený**.
 
     - Pokud zvolíte možnost **osobní**, v poli Typ přiřazení vyberte buď možnost **automaticky** , nebo **přímo** .
 
-      ![Snímek obrazovky s rozevírací nabídkou pro pole typu přiřazení Uživatel zvolil možnost automaticky.](media/assignment-type-field.png)
+      > [!div class="mx-imgBorder"]
+      > ![Snímek obrazovky s rozevírací nabídkou pro pole typu přiřazení Uživatel zvolil možnost automaticky.](media/assignment-type-field.png)
 
 9. Pokud zvolíte **fond**, zadejte následující informace:
 
      - V poli **maximální počet relací**zadejte maximální počet uživatelů, které mají vyrovnávání zatížení pro jednoho hostitele relace.
      - Pro **algoritmus vyrovnávání zatížení**vyberte v závislosti na vzoru použití buď možnost šířka – první nebo hloubka – první.
 
-       ![Snímek obrazovky s polem typu přiřazení se zvolenými možnostmi ve fondu Uživatel v rozevírací nabídce pro vyrovnávání zatížení najede myší na ukazatel nad pozicí – první.](media/pooled-assignment-type.png)
+       > [!div class="mx-imgBorder"]
+       > ![Snímek obrazovky s polem typu přiřazení se zvolenými možnostmi ve fondu Uživatel v rozevírací nabídce pro vyrovnávání zatížení najede myší na ukazatel nad pozicí – první.](media/pooled-assignment-type.png)
 
 10. Vyberte **Další: podrobnosti o virtuálním počítači**.
 
@@ -117,11 +120,13 @@ Nastavení virtuálního počítače v rámci procesu nastavení fondu hostitel�
 
      Pokud nevidíte požadovaný obrázek, vyberte **Procházet všechny image a disky**, které vám umožní vybrat v galerii jiný obrázek nebo obrázek poskytnutý Microsoftem a jinými vydavateli.
 
-     ![Snímek obrazovky Marketplace se seznamem obrázků ze společnosti Microsoft zobrazených.](media/marketplace-images.png)
+     > [!div class="mx-imgBorder"]
+     > ![Snímek obrazovky Marketplace se seznamem obrázků ze společnosti Microsoft zobrazených.](media/marketplace-images.png)
 
      Můžete také přejít na **Moje položky** a zvolit si vlastní image, kterou jste už nahráli.
 
-     ![Snímek obrazovky s kartou Moje položky](media/my-items.png)
+     > [!div class="mx-imgBorder"]
+     > ![Snímek obrazovky s kartou Moje položky](media/my-items.png)
 
     - Pokud zvolíte **objekt BLOB úložiště**, můžete využít vlastní sestavení Image prostřednictvím technologie Hyper-V nebo na virtuálním počítači Azure. Stačí zadat umístění obrázku v objektu BLOB úložiště jako identifikátor URI.
 
@@ -136,7 +141,8 @@ Nastavení virtuálního počítače v rámci procesu nastavení fondu hostitel�
     >[!NOTE]
     >Pro zvýšení zabezpečení doporučujeme, abyste neotevřeli veřejné příchozí porty.
 
-    ![Snímek obrazovky se stránkou skupiny zabezpečení, která zobrazuje seznam dostupných portů v rozevírací nabídce.](media/available-ports.png)
+    > [!div class="mx-imgBorder"]
+    > ![Snímek obrazovky se stránkou skupiny zabezpečení, která zobrazuje seznam dostupných portů v rozevírací nabídce.](media/available-ports.png)
     
     Pokud zvolíte možnost **Upřesnit**, vyberte existující skupinu zabezpečení sítě, kterou jste již nakonfigurovali.
 

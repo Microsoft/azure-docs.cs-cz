@@ -12,18 +12,17 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: d4281d3b6132e551283a71cd1801ef462fbfc68c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 33ce2a496caa52609d8bdf8c92e29064ca4ae349
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82146127"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362036"
 ---
 # <a name="microsoft-security-code-analysis-releases-and-roadmap"></a>Microsoft Security Code Analysis – vydání a plán
 
-Tým Microsoft Security Code Analysis je v partnerství s Developer Support hrdým k oznámení nejnovějších a nadcházejících vylepšení našeho rozšíření MSCA. Přečtěte si prosím následující přehled.
+Tým Microsoft Security Code Analysis je v partnerství s Developer Support hrdým k oznámení nejnovějších a nadcházejících vylepšení našeho rozšíření MSCA.
 
-![Vydání](./media/security-code-analysis-releases/releases.png)
 
 ## <a name="credential-scanner-v20-released-in-april-2020"></a>Credential Scanner v 2.0: vydaný v dubnu 2020
 
@@ -54,18 +53,25 @@ Tým Microsoft Security Code Analysis je v partnerství s Developer Support hrd�
 
 ### <a name="improvements"></a>Vylepšen
 
-- FUNKCE: aktualizujte na finální SARIF v2 (verze 2.1.16). To umožňuje ukládání výsledků do mezipaměti při předávání--hash na příkazovém řádku, což je výrazné zlepšení výkonu při rekurzivní analýze adresářů s více kopiemi cílů skenování.
+- FUNKCE: aktualizujte na finální SARIF v2 (verze 2.1.16). Tato aktualizace umožňuje ukládání výsledků do mezipaměti při předávání--hash na příkazovém řádku, což vede k výraznému zlepšení výkonu při rekurzivní analýze adresářů s více kopiemi cílů skenování.
 - Oprava chyby: Opravte překlep v BA2021. DoNotMarkWritableSectionsAsExecutable výstup.
 - VÝKON: Eliminujte načítání PDB pro všechny mimo smíšený režim pro spravovaná sestavení, včetně knihovny IL (předem kompilovaných) binárních souborů.
 - Nepravdivá ZÁPORNÁ Oprava: Ověřte, že soubor PDB umístěný společně s binárním souborem se ve skutečnosti shoduje s binárním souborem v analýze.
 - FUNKCE: zadáním argumentu--Local-symbol-directorys zadejte další (místní, nesymbolové) umístění pro hledání PDB.
 - FALEŠNě pozitivní Oprava: přeskočit analýzu založenou na PDB pro vygenerovaný spustitelný soubor .NET Core Native Bootstrap (který není uživatelsky ovladatelného kódu).
 
-## <a name="whats-next-in-fy20"></a>Co dál v FY20?
+## <a name="whats-next-in-q3-cy20"></a>Co dál v kroku Q3 CY20?
 
 - Nástroj Java Security Analysis
 - Nástroj pro analýzu zabezpečení Pythonu
 - ES Lint nahrazení TS Lint pro TypeScript a JavaScript
+- Nástroj pro analýzu šablon Správce prostředků
+
+## <a name="tool-deprecation-notification"></a>Oznámení o zastaralosti nástroje
+
+### <a name="microsoft-security-risk-detection-msrd-is-deprecated-on-june-26-2020"></a>Zjišťování rizik společnosti Microsoft (MSRD) je zastaralá od června 26 2020.
+
+Vyřazená služba MSRD, která se už nepoužívá, bude nahrazena Open Source neočekávanou platformou vývojáře pro Azure. Tato platforma se v současnosti vyvíjí a testuje v partnerství s mnoha jádry produktových týmů Microsoftu. Tato přibližná platforma bude integrovat úpravy a umožní adaptivní, výukové testy, které jsou integrovány do kanálů CI/CD, které se v průběhu času v softwarových projektech rozrůstá v čase. Verze Open Source této platformy je naplánovaná na druhou polovinu 2020.
 
 ## <a name="next-steps"></a>Další kroky
 

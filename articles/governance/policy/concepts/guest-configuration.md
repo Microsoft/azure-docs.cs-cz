@@ -3,16 +3,17 @@ title: Informace o tom, jak auditovat obsah virtuálních počítačů
 description: Přečtěte si, jak Azure Policy používá agenta konfigurace hosta k auditování nastavení v rámci virtuálních počítačů.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: f37364f62550a76360ea0dbb35b92f8aac67f22f
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 81c8c642eb8b5da1e45e4d9a703685acf219ca5a
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259146"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362624"
 ---
-# <a name="understand-azure-policys-guest-configuration"></a>Vysvětlení konfigurace hosta Azure Policy
+# <a name="understand-azure-policys-guest-configuration"></a>Vysvětlení konfigurace hosta ve službě Azure Policy
 
-Azure Policy může auditovat nastavení v rámci počítače. Ověřování se provádí pomocí rozšíření Konfigurace hosta a prostřednictvím klienta. Toto rozšíření prostřednictvím klienta ověřuje nastavení, jako například:
+Azure Policy můžou auditovat nastavení v počítači, a to pro počítače běžící v Azure i v [počítačích připojených k Arc](https://docs.microsoft.com/azure/azure-arc/servers/overview).
+Ověřování se provádí pomocí rozšíření Konfigurace hosta a prostřednictvím klienta. Toto rozšíření prostřednictvím klienta ověřuje nastavení, jako například:
 
 - Konfigurace operačního systému
 - Konfigurace nebo přítomnost aplikací
@@ -21,33 +22,36 @@ Azure Policy může auditovat nastavení v rámci počítače. Ověřování se 
 V tuto chvíli většina zásad konfigurace hosta Azure Policy jenom auditovat nastavení v rámci počítače.
 Nepoužívají konfigurace. Výjimkou je jedna integrovaná zásada, na [kterou se odkazuje níže](#applying-configurations-using-guest-configuration).
 
+## <a name="enable-guest-configuration"></a>Povolit konfiguraci hosta
+
+Pokud chcete auditovat stav počítačů ve vašem prostředí, včetně počítačů v Azure a připojených počítačů ARC, Projděte si následující podrobnosti.
+
 ## <a name="resource-provider"></a>Poskytovatel prostředků
 
 Než budete moct použít konfiguraci hosta, musíte zaregistrovat poskytovatele prostředků. Poskytovatel prostředků je zaregistrován automaticky, pokud je přiřazení zásady konfigurace hostů provedeno prostřednictvím portálu. Můžete provést ruční registraci prostřednictvím [portálu](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal), [Azure PowerShell](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell)nebo rozhraní příkazového [řádku Azure](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-cli).
 
-## <a name="extension-and-client"></a>Rozšíření a klient
+## <a name="deploy-requirements-for-azure-virtual-machines"></a>Nasazení požadavků pro virtuální počítače Azure
 
-Pokud chcete auditovat nastavení v rámci počítače, je povolená [rozšíření virtuálního počítače](../../../virtual-machines/extensions/overview.md) . Rozšíření stáhne příslušné přiřazení zásad a odpovídající definici konfigurace.
+Pokud chcete auditovat nastavení v rámci počítače, je povolená [rozšíření virtuálního počítače](../../../virtual-machines/extensions/overview.md) a počítač musí mít systémově spravovanou identitu. Rozšíření stáhne příslušné přiřazení zásad a odpovídající definici konfigurace. Identita se používá k ověření počítače při jeho čtení a zápisu do služby konfigurace hosta. Pro připojené počítače ARC není rozšíření vyžadováno, protože je zahrnuto v agentovi počítače připojeného k ARC.
 
 > [!IMPORTANT]
-> K provádění auditů na virtuálních počítačích Azure se vyžaduje rozšíření konfigurace hosta. Pokud chcete nasadit rozšíření ve velkém měřítku, přiřaďte následující definice zásad: 
->  - [Nasaďte požadavky pro povolení zásad konfigurace hostů na virtuálních počítačích s Windows.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
->  - [Nasaďte požadavky pro povolení zásad konfigurace hostů na virtuálních počítačích se systémem Linux.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
+> K auditování virtuálních počítačů Azure se vyžaduje rozšíření konfigurace hosta a spravovaná identita. Pokud chcete nasadit rozšíření ve velkém měřítku, přiřaďte následující iniciativu zásad: 
+>  - [Nasazení požadavků pro povolení zásad konfigurace hostů na virtuálních počítačích](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8)
 
 ### <a name="limits-set-on-the-extension"></a>Omezení nastavená pro rozšíření
 
-Pokud chcete omezit rozšíření proti ovlivnění aplikací spuštěných v počítači, konfigurace hosta nemůže překročit více než 5% procesoru. Toto omezení existuje jak pro předdefinované, tak pro vlastní definice.
+Pokud chcete omezit rozšíření proti ovlivnění aplikací spuštěných v počítači, konfigurace hosta nemůže překročit více než 5% procesoru. Toto omezení existuje jak pro předdefinované, tak pro vlastní definice. Totéž platí pro službu konfigurace hosta v agentovi počítače připojeného k ARC.
 
 ### <a name="validation-tools"></a>Nástroje ověřování
 
 V počítači používá klient konfigurace Host místní nástroje pro spuštění auditu.
 
-V následující tabulce je uveden seznam místních nástrojů používaných pro každý podporovaný operační systém:
+V následující tabulce je uveden seznam místních nástrojů používaných na každém podporovaném operačním systému. U předdefinovaného obsahu obsluhuje konfigurace hosta automatické načítání těchto nástrojů.
 
 |Operační systém|Nástroj pro ověření|Poznámky|
 |-|-|-|
 |Windows|[Konfigurace požadovaného stavu prostředí PowerShell](/powershell/scripting/dsc/overview/overview) v2| Po straně bylo načteno do složky, kterou používá Azure Policy. Nekoliduje s Windows PowerShell DSC. PowerShell Core není přidaný do systémové cesty.|
-|Linux|[Nespec](https://www.chef.io/inspec/)| Nainstaluje 2.2.61 INSPEC verze ve výchozím umístění a přidá se do systémové cesty. Dependenices pro balíček INSPEC, včetně Ruby a Pythonu, jsou nainstalované také. |
+|Linux|[Nespec](https://www.chef.io/inspec/)| Nainstaluje 2.2.61 INSPEC verze ve výchozím umístění a přidá se do systémové cesty. Jsou nainstalované i závislosti pro INSPEC Package, včetně Ruby a Pythonu. |
 
 ### <a name="validation-frequency"></a>Frekvence ověřování
 
@@ -58,7 +62,7 @@ Klient konfigurace hosta kontroluje nový obsah každých 5 minut. Po přijetí 
 Zásady konfigurace hosta jsou zahrnuté do nových verzí. Starší verze operačních systémů, které jsou k dispozici ve Azure Marketplace, jsou vyloučené, pokud není agent konfigurace hosta kompatibilní.
 Následující tabulka obsahuje seznam podporovaných operačních systémů pro Image Azure:
 
-|Publisher|Name|Verze|
+|Publisher|Název|Verze|
 |-|-|-|
 |Canonical|Ubuntu Server|14,04 a novější|
 |Credativ|Debian|8 a novější|
@@ -70,20 +74,17 @@ Následující tabulka obsahuje seznam podporovaných operačních systémů pro
 
 Vlastní image virtuálních počítačů jsou podporovány zásadami konfigurace hosta, pokud se jedná o jeden z operačních systémů uvedených v tabulce výše.
 
-### <a name="unsupported-client-types"></a>Nepodporované typy klientů
-
-Windows Server nano Server se v žádné verzi nepodporuje.
-
 ## <a name="guest-configuration-extension-network-requirements"></a>Síťové požadavky rozšíření konfigurace hosta
 
 Aby počítače komunikovaly s poskytovatelem prostředků konfigurace hosta v Azure, vyžadují odchozí přístup k datacentrům Azure na portu **443**. Pokud síť v Azure nepovoluje odchozí přenosy, nakonfigurujte výjimky s pravidly [skupiny zabezpečení sítě](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) . [Označení služby](../../../virtual-network/service-tags-overview.md) "GuestAndHybridManagement" lze použít k odkazování na službu konfigurace hosta.
 
 ## <a name="managed-identity-requirements"></a>Požadavky na spravovanou identitu
 
-Zásady **DeployIfNotExists** , které přidávají rozšíření do virtuálních počítačů, také povolují spravovanou identitu přiřazenou systémem, pokud taková neexistuje.
+Zásady v iniciativě [nasazují požadavky pro povolení zásad konfigurace hostů na virtuálních počítačích](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8) povolují spravovanou identitu přiřazenou systémem, pokud taková neexistuje. V iniciativě existují dvě definice zásad, které spravují vytváření identit. Podmínky IF v definicích zásad zajišťují správné chování na základě aktuálního stavu prostředku počítače v Azure.
 
-> [!WARNING]
-> Vyhněte se povolení spravované identity přiřazené uživateli pro virtuální počítače v oboru pro zásady, které povolují spravovanou identitu přiřazenou systémem. Identita přiřazená uživatelem je nahrazena a může způsobit, že počítač přestane reagovat.
+Pokud počítač momentálně nemá žádné spravované identity, platí tyto zásady: [ \[ Preview \] : Přidejte spravovanou identitu přiřazenou systémem a povolte přiřazení konfigurace hostů na virtuálních počítačích bez identit](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3cf2ab00-13f1-4d0c-8971-2ac904541a7e) .
+
+Pokud má počítač nyní uživatelsky přiřazenou identitu systému, platí následující: ve [ \[ verzi Preview \] : Přidání spravované identity přiřazené systémem pro povolení přiřazení konfigurace hostů na virtuálních počítačích s identitou přiřazenou uživatelem](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F497dff13-db2a-4c0f-8603-28fa3b331ab6) .
 
 ## <a name="guest-configuration-definition-requirements"></a>Požadavky na definici konfigurace hosta
 

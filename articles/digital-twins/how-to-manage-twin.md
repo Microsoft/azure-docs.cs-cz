@@ -1,5 +1,5 @@
 ---
-title: Správa digitálního dvojčete
+title: Správa digitálních vláken
 titleSuffix: Azure Digital Twins
 description: Podívejte se, jak načíst, aktualizovat a odstranit jednotlivé vlákna a relace.
 author: baanders
@@ -8,12 +8,12 @@ ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 9acea128313fc440834626dd3a99b117e4b25a8f
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 07c77f3cf149fdd6533a070b29f709758be23ce5
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84735893"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362726"
 ---
 # <a name="manage-digital-twins"></a>Správa digitálních vláken
 
@@ -21,7 +21,7 @@ ms.locfileid: "84735893"
 
 Entity ve vašem prostředí jsou reprezentovány pomocí [digitálních vláken](concepts-twins-graph.md). Správa digitálních vláken může zahrnovat vytváření, úpravy a odebírání. K provedení těchto operací můžete použít [**rozhraní API DigitalTwins**](how-to-use-apis-sdks.md), [sadu .NET (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)nebo rozhraní příkazového [řádku Azure Digital vlákens](how-to-use-cli.md).
 
-Tento článek se zaměřuje na správu digitálních vláken; Chcete-li pracovat se vztahy a s [dvojitým grafem](concepts-twins-graph.md) jako celku, přečtěte si téma [How to: manage a Graph with Relationships](how-to-manage-graph.md).
+Tento článek se zaměřuje na správu digitálních vláken; Chcete-li pracovat se vztahy a s [dvojitým grafem](concepts-twins-graph.md) v podobě celku, přečtěte si téma [Postup: Správa nefunkčního grafu s relacemi](how-to-manage-graph.md).
 
 > [!TIP]
 > Všechny funkce sady SDK přicházejí v synchronních a asynchronních verzích.
@@ -347,4 +347,4 @@ Vlákna je také možné spravovat pomocí rozhraní příkazového řádku Azur
 ## <a name="next-steps"></a>Další kroky
 
 Podívejte se, jak vytvořit a spravovat vztahy mezi vašimi digitálními dvojitými hodnotami:
-* [Postupy: Správa zdvojeného grafu s relacemi](how-to-manage-graph.md)
+* [Postupy: Správa dvojitých grafů s relacemi](how-to-manage-graph.md)

@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 1d74bf089f3e5bc1fd04232b58ce95c649a170e1
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: d2a14a501ebcf0913804ce39019a3fa4018ca141
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307424"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362369"
 ---
-# <a name="add-parameters-to-commands"></a>Přidat parametry do příkazů
+# <a name="add-parameters-to-commands"></a>Přidání parametrů do příkazů
 
 V tomto článku se dozvíte, jak přidat parametry do vlastních příkazů. Parametry jsou informace vyžadované příkazy k dokončení úkolu. Ve složitých scénářích lze také pomocí parametrů definovat podmínky, které aktivují vlastní akce.
 
@@ -52,7 +52,7 @@ V tomto článku se dozvíte, jak přidat parametry do vlastních příkazů. Pa
 
        | Konfigurace      | Navrhovaná hodnota     | Popis                                                      |
        | ------------------ | ----------------| ---------------------------------------------------------------------|
-       | Name               | `OnOff`           | Popisný název pro parametr                                                                           |
+       | Název               | `OnOff`           | Popisný název pro parametr                                                                           |
        | Je globální          | unchecked       | Zaškrtávací políčko označující, zda je hodnota pro tento parametr globálně použita pro všechny příkazy v aplikaci|
        | Vyžadováno           | checked         | Zaškrtávací políčko, které určuje, zda je před dokončením příkazu nutné zadat hodnotu pro tento parametr |
        | Odpověď na povinný parametr      |Jednoduchý editor >`On or Off?`      | Výzva k zadání hodnoty tohoto parametru, pokud není známa |
@@ -60,9 +60,10 @@ V tomto článku se dozvíte, jak přidat parametry do vlastních příkazů. Pa
        | Konfigurace      | Přijměte předdefinované vstupní hodnoty z interního katalogu. | V případě řetězců to omezuje vstupy na sadu možných hodnot. |
        | Předdefinované vstupní hodnoty     | `on`, `off`           | Sada možných hodnot a jejich aliasů         |
        
-        > [!div class="mx-imgBorder"]
+        
+   1. Pokud chcete přidat předdefinované vstupní hodnoty, vyberte **přidat předdefinované zadání** a v okně **Nová položka** zadejte **název** , jak je uvedeno v tabulce výše. V tomto případě nepoužíváme aliasy, takže je můžete nechat prázdné. 
+    > [!div class="mx-imgBorder"]
         > ![Vytvořit parametr](media/custom-commands/create-on-off-parameter.png)
-
    1. Vyberte **Uložit** a uložte všechny konfigurace parametru.
  
  ### <a name="add-subjectdevice-parameter"></a>Přidat parametr SubjectDevice 
@@ -72,7 +73,7 @@ V tomto článku se dozvíte, jak přidat parametry do vlastních příkazů. Pa
 
        | Nastavení            | Navrhovaná hodnota       |
        | ------------------ | --------------------- |
-       | Name               | `SubjectDevice`         |
+       | Název               | `SubjectDevice`         |
        | Je globální          | unchecked             |
        | Vyžadováno           | checked               |
        | Odpověď na povinný parametr     | Jednoduchý editor >`Which device do you want to control?`    | 
@@ -145,7 +146,7 @@ Přidat novou **teplotu** parametrů s následující konfigurací
 
 | Konfigurace      | Navrhovaná hodnota     |
 | ------------------ | ----------------|
-| Name               | `Temperature`           |
+| Název               | `Temperature`           |
 | Vyžadováno           | checked         |
 | Odpověď na povinný parametr      | Jednoduchý editor >`What temperature would you like?`
 | Typ               | Číslo          |
@@ -182,7 +183,7 @@ Přidejte parametr s názvem **DateTime** s následující konfigurací.
 
    | Nastavení                           | Navrhovaná hodnota                     | 
    | --------------------------------- | ----------------------------------------|
-   | Name                              | `DateTime`                               |
+   | Název                              | `DateTime`                               |
    | Vyžadováno                          | checked                                 |
    | Odpověď na povinný parametr   | Jednoduchý editor >`For what time?`            | 
    | Typ                              | DateTime                                |

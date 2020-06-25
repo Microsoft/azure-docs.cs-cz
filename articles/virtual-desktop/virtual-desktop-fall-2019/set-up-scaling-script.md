@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f3a82665f197301fe81c448dd18181f0602bdbef
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: f94852a99f0bc430ac193b9951de607cdd7fa933
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85209789"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362539"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>Škálování hostitelů relací pomocí Azure Automation
 
@@ -106,7 +106,8 @@ Nejdřív budete potřebovat účet Azure Automation ke spuštění Runbooku Pow
 
 6. Až nastavíte účet Azure Automation, přihlaste se ke svému předplatnému Azure a ujistěte se, že se Váš účet Azure Automation a relevantní sada Runbook objevily v zadané skupině prostředků, jak je znázorněno na následujícím obrázku:
 
-![Obrázek stránky s přehledem Azure zobrazující nově vytvořený účet služby Automation a sadu Runbook.](../media/automation-account.png)
+> [!div class="mx-imgBorder"]
+> ![Obrázek stránky s přehledem Azure zobrazující nově vytvořený účet služby Automation a sadu Runbook.](../media/automation-account.png)
 
   Pokud chcete zjistit, jestli je Webhook tam, kde by měl být, vyberte název Runbooku. V dalším kroku přejdete do části prostředky Runbooku a vyberete **Webhooky**.
 
@@ -236,11 +237,13 @@ Nakonec budete muset vytvořit aplikaci logiky Azure a nastavit plán spouštěn
 
      Po spuštění skriptu by se aplikace logiky měla zobrazit ve skupině prostředků, jak je znázorněno na následujícím obrázku.
 
-     ![Obrázek stránky s přehledem pro ukázkovou aplikaci Azure Logic.](../media/logic-app.png)
+     > [!div class="mx-imgBorder"]
+     > ![Obrázek stránky s přehledem pro ukázkovou aplikaci Azure Logic.](../media/logic-app.png)
 
 Chcete-li provést změny v plánu spuštění, jako je například změna intervalu opakování nebo časového pásma, přejdete do plánovače automatického škálování a výběrem možnosti **Upravit** přejdete do návrháře Logic Apps.
 
-![Obrázek návrháře Logic Apps. Nabídky opakování a Webhooku, které umožňují uživateli upravit časy opakování a soubor Webhooku, jsou otevřené.](../media/logic-apps-designer.png)
+> [!div class="mx-imgBorder"]
+> ![Obrázek návrháře Logic Apps. Nabídky opakování a Webhooku, které umožňují uživateli upravit časy opakování a soubor Webhooku, jsou otevřené.](../media/logic-apps-designer.png)
 
 ## <a name="manage-your-scaling-tool"></a>Správa nástroje pro škálování
 
@@ -252,7 +255,8 @@ Můžete zobrazit souhrnnou stav všech úloh sady Runbook nebo zobrazit podrobn
 
 Napravo od vybraného účtu Automation v části Statistika úlohy můžete zobrazit seznam souhrnů všech úloh sady Runbook. Po otevření stránky **úlohy** na levé straně okna se zobrazí stav aktuální úlohy, časy spuštění a časy dokončení.
 
-![Snímek obrazovky se stránkou stavu úlohy.](../media/jobs-status.png)
+> [!div class="mx-imgBorder"]
+> ![Snímek obrazovky se stránkou stavu úlohy.](../media/jobs-status.png)
 
 ### <a name="view-logs-and-scaling-tool-output"></a>Zobrazení protokolů a škálování výstupu nástroje
 
@@ -260,5 +264,6 @@ Protokoly o škálování na více instancí a operace škálování na více in
 
 V rámci skupiny prostředků hostující účet Azure Automation přejděte na Runbook (výchozí název je WVDAutoScaleRunbook) a vyberte **Přehled**. Na stránce Přehled vyberte úlohu v části Nedávné úlohy, abyste zobrazili její výstup nástroje pro změnu velikosti, jak je znázorněno na následujícím obrázku.
 
-![Obrázek okna výstup pro nástroj pro škálování](../media/tool-output.png)
+> [!div class="mx-imgBorder"]
+> ![Obrázek okna výstup pro nástroj pro škálování](../media/tool-output.png)
 

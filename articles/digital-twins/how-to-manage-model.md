@@ -1,5 +1,5 @@
 ---
-title: Správa modelu dvojčat
+title: Správa vlastních modelů
 titleSuffix: Azure Digital Twins
 description: Podívejte se, jak vytvořit, upravit a odstranit model v rámci digitálních vláken Azure.
 author: baanders
@@ -8,12 +8,12 @@ ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 6c023ff8419a41353e0c8aff70d04c5b9fcb27a4
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 7d9fd0386f13f6c3e6df7b9d8bcf120b55c6446d
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84725643"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362777"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Správa modelů digitálních vláken Azure
 
@@ -255,4 +255,4 @@ Modely je také možné spravovat pomocí rozhraní příkazového řádku Azure
 ## <a name="next-steps"></a>Další kroky
 
 Podívejte se, jak vytvořit a spravovat digitální vlákna na základě vašich modelů:
-* [Postupy: Správa digitálního vlákna](how-to-manage-twin.md)
+* [Postupy: Správa digitálních vláken](how-to-manage-twin.md)

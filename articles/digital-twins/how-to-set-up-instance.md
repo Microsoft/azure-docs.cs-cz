@@ -8,12 +8,12 @@ ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: bbd7c74fc87b3f7af799637e2288dcd074266843
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 792b3894bf051298250ea8f402086c1edf297842
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84725575"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362743"
 ---
 # <a name="set-up-an-azure-digital-twins-instance"></a>Nastavení instance digitálních vláken Azure
 
@@ -58,7 +58,7 @@ Aby bylo možné používat digitální vlákna Azure v rámci klientské aplika
 
 #### <a name="assign-yourself-a-role"></a>Přiřazení role
 
-Pomocí e-mailu přidruženého k tenantovi služby AAD v předplatném Azure vytvořte přiřazení role pro sebe sama. Nejprve se ujistěte, že jste ve svém předplatném Azure klasifikováni jako vlastník. Pak můžete k přiřazení uživatele k roli vlastníka pro instanci digitálního vlákna Azure použít následující příkaz:
+Pomocí e-mailu přidruženého k tenantovi služby AAD v předplatném Azure vytvořte přiřazení role pro sebe sama. Nejprve se ujistěte, že jste ve svém předplatném Azure klasifikováni jako vlastník. Můžete to zkontrolovat pomocí `az role assignment list --assignee <your-Azure-email>` příkazu, abyste ověřili, že *RoleDefinitionName* je *vlastníkem*. Pak můžete k přiřazení uživatele k roli vlastníka pro instanci digitálního vlákna Azure použít následující příkaz:
 
 ```azurecli
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<your-AAD-email>" --role "Azure Digital Twins Owner (Preview)"

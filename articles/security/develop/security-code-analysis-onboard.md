@@ -12,14 +12,14 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 5b7e36c12dab65f4bcc6c05a1ee902301c402d5e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a7fab9515051180fdb1b894602478768a60177ef
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82147668"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362053"
 ---
-# <a name="onboarding-and-installing"></a>Připojování a instalace
+# <a name="onboarding-and-installing"></a>Nasazení a instalace
 
 Požadavky na Začínáme s analýzou kódu zabezpečení Microsoftu:
 
@@ -50,6 +50,7 @@ Pokud splňujete výše uvedené kvalifikace, obraťte se na partnera z níže u
 
 - Zóny – kontaktní údaje:cloudsupport@zones.com
 - Wortell – kontaktní údaje:info@wortell.nl
+- Logické informace – kontaktní údaje:Matthew.Curtis@us.logicalis.com 
 
 ### <a name="become-a-partner"></a>Staňte se partnerem
 
@@ -57,12 +58,12 @@ Tým Microsoft Security Code Analysis je, aby se připojil k partnerům Premier 
 
 ## <a name="installing-the-microsoft-security-code-analysis-extension"></a>Instalace rozšíření Microsoft Security Code Analysis Extension
 
-1. Po sdílení rozšíření s vaší organizací Azure DevOps můžete přejít na stránku organizace Azure DevOps. Ukázková adresa URL pro takovou stránku je `https://dev.azure.com/contoso`.
+1. Po sdílení rozšíření s vaší organizací Azure DevOps můžete přejít na stránku organizace Azure DevOps. Ukázková adresa URL pro takovou stránku je `https://dev.azure.com/contoso` .
 1. Vyberte ikonu nákupního balíčku v pravém horním rohu vedle svého jména a pak vyberte **Spravovat rozšíření**.
 1. Vyberte **Shared**.
 1. Vyberte rozšíření Microsoft Security Code Analysis, vyberte **nainstalovat**.
 1. V rozevíracím seznamu vyberte organizaci Azure DevOps, na kterou chcete rozšíření nainstalovat.
-1. Vyberte **Install** (Nainstalovat). Po dokončení instalace můžete začít používat rozšíření.
+1. Vyberte **Nainstalovat**. Po dokončení instalace můžete začít používat rozšíření.
 
 >[!NOTE]
 > I v případě, že nemáte přístup pro instalaci rozšíření, pokračujte v postupu instalace. Během procesu instalace můžete požádat o přístup správce vaší organizace Azure DevOps.
@@ -72,12 +73,12 @@ Po instalaci rozšíření jsou úkoly sestavení pro bezpečné nasazení vidit
 ## <a name="adding-specific-build-tasks-to-your-azure-devops-pipeline"></a>Přidání konkrétních úloh sestavení do kanálu Azure DevOps
 
 1. Z vaší organizace Azure DevOps otevřete týmový projekt.
-1. Vyberte **Pipelines** > **sestavení**kanálů.
+1. Vyberte **Pipelines**  >  **sestavení**kanálů.
 1. Vyberte kanál, do kterého chcete přidat úlohy sestavení rozšíření:
    - Nový kanál: vyberte **Nový** a pomocí podrobných kroků vytvořte nový kanál.
    - Upravit kanál: Vyberte existující kanál a pak výběrem **Upravit** zahajte úpravy kanálu.
 1. Vyberte **+** a přejít do podokna **Přidat úlohy** .
-1. Ze seznamu nebo pomocí vyhledávacího pole vyhledejte úkol sestavení, který chcete přidat. Vyberte **Přidat**.
+1. Ze seznamu nebo pomocí vyhledávacího pole vyhledejte úkol sestavení, který chcete přidat. Vyberte možnost **Přidat**.
 1. Zadejte parametry potřebné pro úlohu.
 1. Zařadit nové sestavení do fronty
    >[!NOTE]

@@ -5,20 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 6/18/2020
-ms.openlocfilehash: a27bd98b723e6e827ba7d9e155586d336ababc49
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.date: 6/24/2020
+ms.openlocfilehash: 813e86e8446932d1618fff1853cee8972570f43f
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85100765"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85363015"
 ---
 # <a name="configure-and-access-audit-logs-in-the-azure-cli"></a>Konfigurace a přístup k protokolům auditu v rozhraní příkazového řádku Azure
 
 [Protokoly auditu Azure Database for MySQL](concepts-audit-logs.md) můžete nakonfigurovat z rozhraní příkazového řádku Azure CLI.
-
-> [!IMPORTANT]
-> Funkce protokolu auditu je momentálně ve verzi Preview.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -33,7 +30,7 @@ Pokud chcete projít tento průvodce, budete potřebovat:
 
 ## <a name="configure-audit-logging"></a>Konfigurace protokolování auditu
 
->[!NOTE]
+>[!IMPORTANT]
 > Doporučujeme pouze protokolovat typy událostí a uživatele požadované pro vaše účely auditování, aby se zajistilo, že výkon serveru nebude velmi ovlivněn.
 
 Povolte a nakonfigurujte protokolování auditu pomocí následujících kroků:
