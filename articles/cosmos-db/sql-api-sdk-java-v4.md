@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 05/20/2020
 ms.author: anfeldma
-ms.openlocfilehash: bb2e6256a3272bea74ac1176c859fcbfefe46b10
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: aa5e741d8578253b8b3e8e5c692873c39cec8f79
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391991"
+ms.locfileid: "85412630"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Azure Cosmos DB rozhraní Java SDK v4 pro Core (SQL) API: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -61,6 +61,16 @@ Azure Cosmos DB Java SDK v4 for Core (SQL) kombinuje asynchronní rozhraní API 
 | **Azure Cosmos DB semináře a cvičení** |[Domovská stránka inCosmos DBch Workshops](https://aka.ms/cosmosworkshop)
 
 ## <a name="release-history"></a>Historie verzí
+
+### <a name="410-2020-06-25"></a>4.1.0 (2020-06-25)
+#### <a name="new-features"></a>Nové funkce
+* Přidání podpory pro `GROUP BY` dotaz
+* Zvýšila se výchozí hodnota maxConnectionsPerEndpoint na 130 v DirectConnectionConfig.
+* Zvýšila se výchozí hodnota maxRequestsPerConnection na 30 v DirectConnectionConfig.
+#### <a name="key-bug-fixes"></a>Opravy chyb klíčů
+* Opravili jsme problémy v pořadí podle dotazů, které vrací duplicitní výsledky při obnovení pomocí tokenu pro pokračování. 
+* Opravené problémy s dotazem na hodnotu vrací hodnoty null pro vnořený objekt.
+* Pevná výjimka nenulového ukazatele u správce požadavků v RntbdClientChannelPool.
 
 ### <a name="401-2020-06-10"></a>4.0.1 (2020-06-10)
 #### <a name="new-features"></a>Nové funkce

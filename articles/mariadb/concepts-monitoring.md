@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 0573456e6f7c5adc2b1efbce8dd12611fae788cd
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.date: 06/25/2020
+ms.openlocfilehash: 708b243d9db16ee8454b4bc0f5c136b9f4399916
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266266"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85413191"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>Monitorování v Azure Database for MariaDB
 Sledování dat o vašich serverech vám pomůže při řešení potíží a optimalizaci pro vaše úlohy. Azure Database for MariaDB poskytuje různé metriky, které poskytují přehled o chování serveru.
@@ -28,7 +28,7 @@ Tyto metriky jsou k dispozici pro Azure Database for MariaDB:
 |---|---|---|---|
 |cpu_percent|Procento využití procesoru|Procento|Procento využití procesoru.|
 |memory_percent|Procentuální hodnota paměti|Procento|Procentuální podíl používané paměti.|
-|io_consumption_percent|V/v procenta|Procento|Procento využití v/v.|
+|io_consumption_percent|V/v procenta|Procento|Procento využití v/v. (Neplatí pro servery úrovně Basic.)|
 |storage_percent|Procento úložiště|Procento|Procento využitého limitu úložiště z maxima serveru.|
 |storage_used|Využité úložiště|Bajty|Velikost využitého úložiště. Úložiště používané službou může zahrnovat soubory databáze, protokoly transakcí a protokoly serveru.|
 |serverlog_storage_percent|Procentuální hodnota úložiště protokolu serveru|Procento|Procento využití úložiště protokolu serveru z maximálního úložiště protokolu serveru serveru.|

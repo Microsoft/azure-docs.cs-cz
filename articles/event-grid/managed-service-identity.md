@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: how-to
 ms.date: 06/18/2020
 ms.author: spelluru
-ms.openlocfilehash: 69c7c7f361a930ab1dc2e0437365d2f4457b57e2
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: 4d81845ab61d8a84b9bad47ede4a027cd772c499
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85101076"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85412923"
 ---
 # <a name="event-delivery-with-a-managed-identity"></a>Doručování událostí se spravovanou identitou
 Tento článek popisuje, jak povolit [identitu spravované služby](../active-directory/managed-identities-azure-resources/overview.md) pro témata a domény služby Azure Event Grid. Slouží k přeposílání událostí do podporovaných cílů, jako jsou Service Bus fronty a témata, centra událostí a účty úložiště.
@@ -44,6 +44,8 @@ Podobně můžete pomocí `az eventgrid domain create` příkazu vytvořit domé
 V předchozí části jste zjistili, jak povolit systémově spravovanou identitu při vytváření tématu nebo domény. V této části se dozvíte, jak povolit systémově spravovanou identitu pro existující téma nebo doménu. 
 
 ### <a name="use-the-azure-portal"></a>Použití webu Azure Portal
+Následující postup ukazuje, jak v tématu Povolit identitu spravovanou systémem. Postup pro povolení identity pro doménu je podobný. 
+
 1. Přejít na [Azure Portal](https://portal.azure.com).
 2. V horní části panelu hledání vyhledejte **témata Event gridu** .
 3. Vyberte **téma** , pro které chcete spravovanou identitu povolit. 

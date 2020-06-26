@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/19/2019
-ms.openlocfilehash: 935fba3869367bff971e6067b22b05b3a0d9119f
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.date: 06/25/2020
+ms.openlocfilehash: a8f76be741ee3407ef4393b2e806889a7e494a15
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266878"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85414585"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>Monitorování a ladění Azure Database for PostgreSQL – jeden server
 Sledování dat o vašich serverech vám pomůže při řešení potíží a optimalizaci pro vaše úlohy. Azure Database for PostgreSQL poskytuje různé možnosti monitorování, které poskytují přehled o chování serveru.
@@ -26,7 +26,7 @@ Tyto metriky jsou k dispozici pro Azure Database for PostgreSQL:
 |---|---|---|---|
 |cpu_percent|Procento využití procesoru|Procento|Procento využití procesoru.|
 |memory_percent|Procentuální hodnota paměti|Procento|Procentuální podíl používané paměti.|
-|io_consumption_percent|V/v procenta|Procento|Procento využití v/v.|
+|io_consumption_percent|V/v procenta|Procento|Procento využití v/v. (Neplatí pro servery úrovně Basic.)|
 |storage_percent|Procento úložiště|Procento|Procento využitého limitu úložiště z maxima serveru.|
 |storage_used|Využité úložiště|Bajty|Velikost využitého úložiště. Úložiště používané službou může zahrnovat soubory databáze, protokoly transakcí a protokoly serveru.|
 |storage_limit|Omezení úložiště|Bajty|Maximální úložiště pro tento server.|

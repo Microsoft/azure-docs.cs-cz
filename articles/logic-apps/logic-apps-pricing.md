@@ -7,13 +7,13 @@ author: jonfancey
 ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
-ms.date: 07/19/2019
-ms.openlocfilehash: f47c7412bdd5ada1e50d1005b8e740e3f46ffd8d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/25/2020
+ms.openlocfilehash: df9d1989253bd1e6b168aa00dad941917ca2dfd3
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81536229"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85412477"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Cenový model pro Azure Logic Apps
 
@@ -116,13 +116,13 @@ Zakázané aplikace logiky se neúčtují, protože nemůžou vytvářet nové i
 
 [Pevný cenový model](https://azure.microsoft.com/pricing/details/logic-apps) se vztahuje na [účty pro integraci](logic-apps-enterprise-integration-create-integration-account.md) , kde můžete prozkoumat, vyvíjet a testovat funkce [B2B a EDI](logic-apps-enterprise-integration-b2b.md) a [zpracování XML](logic-apps-enterprise-integration-xml.md) v Azure Logic Apps bez dalších nákladů. Každé předplatné Azure může mít až [určitý limit integračních účtů](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits). Každý účet pro integraci může ukládat až do konkrétního [limitu artefaktů](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits), včetně obchodních partnerů, smluv, map, schémat, sestavení, certifikátů, konfigurací dávek a tak dále.
 
-Azure Logic Apps nabízí účty pro integraci Free, Basic a Standard. Úrovně Basic a Standard jsou podporovány Logic Apps smlouvou o úrovni služeb (SLA), zatímco úroveň Free není podporována smlouvou SLA a má omezení propustnosti a využití. S výjimkou účtů pro integraci bezplatné úrovně můžete mít v každé oblasti Azure více než jeden účet pro integraci. Cenové sazby najdete v tématu [Logic Apps ceny](https://azure.microsoft.com/pricing/details/logic-apps/).
+Azure Logic Apps nabízí účty pro integraci Free, Basic a Standard. Úrovně Basic a Standard jsou podporovány Logic Apps smlouvou o úrovni služeb (SLA), zatímco úroveň Free není podporována smlouvou SLA a má omezení dostupnosti, propustnosti a využití oblasti. S výjimkou účtů pro integraci bezplatné úrovně můžete mít v každé oblasti Azure více než jeden účet pro integraci. Cenové sazby najdete v tématu [Logic Apps ceny](https://azure.microsoft.com/pricing/details/logic-apps/).
 
 Pokud máte [ *prostředí ISE (Integration Service Environment* ) (](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) [Premium nebo Developer](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)), vaše ISE může mít 5 celkových účtů pro integraci. Další informace o tom, jak model fixního cenového modelu funguje pro ISE, najdete v části předchozí [pevný cenový model](#fixed-pricing) v tomto tématu. Cenové sazby najdete v tématu [Logic Apps ceny](https://azure.microsoft.com/pricing/details/logic-apps).
 
 Pokud si chcete vybrat mezi účtem pro integraci Free, Basic nebo Standard, přečtěte si tyto popisy případů použití:
 
-* **Zdarma**: v případě, že chcete vyzkoušet průzkumné scénáře, nikoli produkční scénáře
+* **Zdarma**: v případě, že chcete vyzkoušet průzkumné scénáře, nikoli produkční scénáře. Tato úroveň je dostupná jenom pro veřejné oblasti v Azure, například Západní USA nebo jihovýchodní Asie, ale ne pro [Azure Čína 21Vianet](https://docs.microsoft.com/azure/china/overview-operations) nebo [Azure Government](../azure-government/documentation-government-welcome.md).
 
 * **Basic**: Pokud chcete, aby zpracování zpráv fungovalo jako malý obchodní partner, který má vztah obchodního partnera s větší obchodní entitou
 

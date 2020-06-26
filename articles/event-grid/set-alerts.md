@@ -7,15 +7,15 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 06/25/2020
 ms.author: spelluru
-ms.openlocfilehash: 488d3025f279916cb98e75f3f8db56fdc9d6d1de
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 1a2eacb5fa03ea2a5a8ba2d38d9b3e7dea315890
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/26/2020
-ms.locfileid: "85392883"
+ms.locfileid: "85412834"
 ---
 # <a name="set-alerts-on-azure-event-grid-metrics-and-activity-logs"></a>Nastavení upozornění na Azure Event Grid metriky a protokoly aktivit
-Tento článek popisuje, jak vytvořit výstrahy pro Azure Event Grid metriky a operace protokolu aktivit. 
+Tento článek popisuje, jak vytvořit výstrahy pro Azure Event Grid metriky a operace protokolu aktivit. Můžete vytvářet upozornění na metriky publikování i doručování pro Azure Event Grid prostředky (témata a domény). Pro systémová témata [vytvořte výstrahy pomocí stránky **metriky** ](#create-alerts-using-the-metrics-page).
 
 ## <a name="create-alerts-on-dead-lettered-events"></a>Vytváření výstrah pro události s nedoručenými písmeny
 Následující postup ukazuje, jak vytvořit výstrahu pro metriku **událostí s nedoručenými zprávami** pro vlastní téma. V tomto příkladu se odešle e-mail vlastníkovi skupiny prostředků Azure, když počet nedoručených událostí pro téma překročí 10. 
@@ -33,6 +33,9 @@ Následující postup ukazuje, jak vytvořit výstrahu pro metriku **událostí 
     2. Vyberte dimenze (volitelné). 
         
         :::image type="content" source="./media/monitor-event-delivery/configure-signal-logic.png" alt-text="Konfigurace logiky signálů":::        
+
+        > [!NOTE]
+        > Můžete vybrat **+** tlačítko pro **EventSubscriptionName** a zadat název odběru události pro filtrování událostí. 
     3. Posuňte se dolů. V části **logika výstrahy** vyberte **operátor**, **typ agregace**a zadejte **mezní hodnotu**a potom vyberte **Hotovo**. V tomto příkladu se aktivuje výstraha v případě, že celkový počet nedoručených událostí je větší než 10. 
     
         :::image type="content" source="./media/monitor-event-delivery/alert-logic.png" alt-text="Logika výstrahy":::                
@@ -66,7 +69,7 @@ Pokud například chcete vytvořit výstrahu pro událost selhání doručení, 
 
 
 ## <a name="create-alerts-using-the-metrics-page"></a>Vytváření výstrah pomocí stránky metriky
-Výstrahy můžete také vytvořit pomocí stránky **metriky** . Postup je podobný. 
+Výstrahy můžete také vytvořit pomocí stránky **metriky** . Postup je podobný. Pro systémová témata můžete k vytváření výstrah použít jenom stránku **metriky** , protože stránka **výstrahy** není k dispozici. 
 
 :::image type="content" source="./media/monitor-event-delivery/metric-page-create-alert-button.png" alt-text="Stránka metrik – tlačítko vytvořit výstrahu":::   
     

@@ -6,12 +6,12 @@ author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: 174279e4bd241ee9b336fc1ce7e0af389d2297a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2f31ee7f7d60a3bf0ab56b9ed8aa7fd25774e06c
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80667011"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85412545"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>Práce s daty v Azure Cosmos DB
 
@@ -21,9 +21,9 @@ Kromě základních typů potřebuje mnoho aplikací, aby typ DateTime představ
 
 ## <a name="storing-datetimes"></a>Ukládání DateTime
 
-Azure Cosmos DB podporuje typy JSON, jako je řetězec, číslo, logická hodnota, null, Array, Object. Nepodporují přímo typ DateTime. V současné době Azure Cosmos DB nepodporuje lokalizaci dat. Proto je nutné ukládat hodnoty DateTime jako řetězce. Doporučený formát pro řetězce DateTime v Azure Cosmos DB je `YYYY-MM-DDThh:mm:ss.fffffffZ` podle standardu ISO 8601 UTC. Doporučuje se ukládat všechna data v Azure Cosmos DB jako UTC. Převod řetězců data na tento formát umožní řazení dat lexikograficky. Pokud jsou uložena data, která nejsou ve formátu UTC, musí být logika zpracována na straně klienta. Chcete-li převést místní datový typ DateTime na čas UTC, posun musí být ve formátu JSON znám nebo uložen jako vlastnost a klient může použít posun k výpočtu hodnoty DateTime UTC.
+Azure Cosmos DB podporuje typy JSON, jako je řetězec, číslo, logická hodnota, null, Array, Object. Nepodporují přímo typ DateTime. V současné době Azure Cosmos DB nepodporuje lokalizaci dat. Proto je nutné ukládat hodnoty DateTime jako řetězce. Doporučený formát pro řetězce DateTime v Azure Cosmos DB je podle `yyyy-MM-ddTHH:mm:ss.fffffffZ` standardu ISO 8601 UTC. Doporučuje se ukládat všechna data v Azure Cosmos DB jako UTC. Převod řetězců data na tento formát umožní řazení dat lexikograficky. Pokud jsou uložena data, která nejsou ve formátu UTC, musí být logika zpracována na straně klienta. Chcete-li převést místní datový typ DateTime na čas UTC, posun musí být ve formátu JSON znám nebo uložen jako vlastnost a klient může použít posun k výpočtu hodnoty DateTime UTC.
 
-Dotazy rozsahu s řetězci DateTime jako filtry jsou podporovány pouze v případě, že jsou řetězce DateTime všechny v UTC a mají stejnou délku. V Azure Cosmos DB systémová funkce [GetCurrentDateTime](sql-query-getcurrentdatetime.md) vrátí aktuální datum a čas UTC 8601 hodnoty řetězce ve formátu: `YYYY-MM-DDThh:mm:ss.fffffffZ`.
+Dotazy rozsahu s řetězci DateTime jako filtry jsou podporovány pouze v případě, že jsou řetězce DateTime všechny v UTC a mají stejnou délku. V Azure Cosmos DB systémová funkce [GetCurrentDateTime](sql-query-getcurrentdatetime.md) vrátí aktuální datum a čas UTC 8601 hodnoty řetězce ve formátu: `yyyy-MM-ddTHH:mm:ss.fffffffZ` .
 
 Většina aplikací může použít výchozí řetězcovou reprezentaci pro datový typ DateTime z následujících důvodů:
 
@@ -65,7 +65,7 @@ Tento dokument je uložený v Azure Cosmos DB následujícím způsobem:
     }
 ```  
 
-Případně můžete ukládat hodnoty DateTime jako časová razítka systému UNIX, tj. číslo představující počet uplynulých sekund od 1. ledna 1970. Tento přístup se řídí vnitřní`_ts`vlastností Timestamp () Azure Cosmos DB. Můžete použít třídu [UnixDateTimeConverter](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.unixdatetimeconverter.aspx) k serializaci hodnot DateTime jako čísel.
+Případně můžete ukládat hodnoty DateTime jako časová razítka systému UNIX, tj. číslo představující počet uplynulých sekund od 1. ledna 1970. `_ts`Tento přístup se řídí vnitřní vlastností Timestamp () Azure Cosmos DB. Můžete použít třídu [UnixDateTimeConverter](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.unixdatetimeconverter.aspx) k serializaci hodnot DateTime jako čísel.
 
 ## <a name="querying-datetimes-in-linq"></a>Dotazování na hodnoty DateTime v LINQ
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c5f6cec8b7fd1169a4f04649fcaf7bb7ada33833
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8381e391afa0f8866f511d3d85e02467c6d9ba5d
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81406292"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85413378"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Asynchronní aktualizace s využitím rozhraní REST API
 
@@ -30,7 +30,7 @@ Základní adresa URL má následující formát:
 https://<rollout>.asazure.windows.net/servers/<serverName>/models/<resource>/
 ```
 
-Představte si třeba model nazvaný AdventureWorks na serveru s názvem `myserver`, který je umístěný v západní USA oblasti Azure. Název serveru:
+Představte si třeba model nazvaný AdventureWorks na serveru s názvem `myserver` , který je umístěný v západní USA oblasti Azure. Název serveru:
 
 ```
 asazure://westus.asazure.windows.net/myserver 
@@ -61,7 +61,7 @@ https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refres
 Všechna volání musí být ověřena pomocí platného tokenu Azure Active Directory (OAuth 2) v autorizační hlavičce a musí splňovat následující požadavky:
 
 - Token musí být buď token uživatele, nebo objekt služby aplikace.
-- Token musí mít nastavenou správnou cílovou skupinu `https://*.asazure.windows.net`.
+- Token musí mít nastavenou správnou cílovou skupinu `https://*.asazure.windows.net` .
 - Aby mohl uživatel nebo aplikace provést požadované volání, musí mít na serveru nebo v modelu dostatečná oprávnění. Úroveň oprávnění je určena rolemi v rámci modelu nebo skupiny pro správu na serveru.
 
     > [!IMPORTANT]
@@ -158,14 +158,14 @@ Chcete-li získat seznam historických operací aktualizace pro model, použijte
 [
     {
         "refreshId": "1344a272-7893-4afa-a4b3-3fb87222fdac",
-        "startTime": "2017-12-09T01:58:04.76",
-        "endTime": "2017-12-09T01:58:12.607",
+        "startTime": "2017-12-07T02:06:57.1838734Z",
+        "endTime": "2017-12-07T02:07:00.4929675Z",
         "status": "succeeded"
     },
     {
         "refreshId": "474fc5a0-3d69-4c5d-adb4-8a846fa5580b",
-        "startTime": "2017-12-07T02:05:48.32",
-        "endTime": "2017-12-07T02:05:54.913",
+        "startTime": "2017-12-07T01:05:54.157324Z",
+        "endTime": "2017-12-07T01:05:57.353371Z",
         "status": "succeeded"
     }
 ]
@@ -194,7 +194,7 @@ Chcete-li zjistit stav operace synchronizace, použijte příkaz GET s předán�
 }
 ```
 
-Hodnoty pro `syncstate`:
+Hodnoty pro `syncstate` :
 
 - 0: replikace. Soubory databáze jsou replikovány do cílové složky.
 - 1: rehydratované. Probíhá rehydratované databáze na instancích serveru jen pro čtení.
@@ -218,7 +218,7 @@ Ukázka kódu používá ověřování [instančního objektu](#service-principa
 Další informace o tom, jak nastavit instanční objekt a přiřadit potřebná oprávnění v Azure jako, najdete v tématu [Vytvoření instančního objektu – Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md) a [Přidání instančního objektu k roli správce serveru](analysis-services-addservprinc-admins.md) . Po dokončení kroků proveďte následující další kroky:
 
 1.    V ukázce kódu vyhledejte **řetězcovou autoritu =...**, nahraďte **Common** číslem ID tenanta vaší organizace.
-2.    Komentář/Odkomentujte, aby se třída ClientCredential použila k vytvoření instance objektu přihlašovacích údajů. Ujistěte se \<, že ID aplikace \<> a klíč aplikace> jsou dostupné zabezpečeným způsobem nebo používají ověřování pomocí certifikátů u instančních objektů.
+2.    Komentář/Odkomentujte, aby se třída ClientCredential použila k vytvoření instance objektu přihlašovacích údajů. Ujistěte se, že \<App ID> \<App Key> hodnoty a jsou dostupné zabezpečeným způsobem, nebo používejte ověřování pomocí certifikátů u instančních objektů.
 3.    Spusťte ukázku.
 
 

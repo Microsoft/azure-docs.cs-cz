@@ -16,12 +16,12 @@ ms.date: 02/18/2019
 ms.author: kenwith
 ms.reviewer: luleon, asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c2dc73038151297952dc208031b4a3b6dbcf146
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 68dc90cdb096849df17bc25ac185b1239b46ec72
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84759313"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85413140"
 ---
 # <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>Problémy s přihlášením k aplikaci z galerie s nakonfigurovaným federovaným jednotným přihlašováním
 
@@ -39,7 +39,7 @@ Pokud chcete řešit potíže s přihlašováním níže, doporučujeme vám pos
 
 `Issuer`Atribut odeslaný z aplikace do služby Azure AD v požadavku SAML neodpovídá hodnotě identifikátoru, která je nakonfigurovaná pro aplikaci ve službě Azure AD.
 
-**Rozhodnutí**
+**Řešení**
 
 Zajistěte, aby se `Issuer` atribut v požadavku SAML shodoval s hodnotou identifikátoru nakonfigurovanou v Azure AD. Pokud používáte prostředí pro [testování](../azuread-dev/howto-v1-debug-saml-sso-issues.md) v Azure Portal s rozšířením zabezpečeného prohlížeče moje aplikace, nemusíte ručně postupovat podle těchto kroků.
 
@@ -69,7 +69,7 @@ Zajistěte, aby se `Issuer` atribut v požadavku SAML shodoval s hodnotou identi
 
 `AssertionConsumerServiceURL`Hodnota v požadavku SAML se neshoduje s hodnotou adresy URL odpovědi nebo vzorem nakonfigurovaným ve službě Azure AD. `AssertionConsumerServiceURL`Hodnota v požadavku SAML je adresa URL, která se zobrazí v chybě.
 
-**Rozhodnutí**
+**Řešení**
 
 Zajistěte, aby `AssertionConsumerServiceURL` hodnota v požadavku SAML odpovídala hodnotě adresy URL odpovědi nakonfigurované ve službě Azure AD. Pokud používáte prostředí pro [testování](../azuread-dev/howto-v1-debug-saml-sso-issues.md) v Azure Portal s rozšířením zabezpečeného prohlížeče moje aplikace, nemusíte ručně postupovat podle těchto kroků.
 
@@ -99,7 +99,7 @@ Po aktualizaci hodnoty adresy URL odpovědi v Azure AD, která odpovídá hodnot
 
 Uživateli se v Azure AD neudělil přístup k aplikaci.​
 
-**Rozhodnutí**
+**Řešení**
 
 Chcete-li přiřadit jednoho nebo více uživatelů k aplikaci přímo, postupujte podle následujících kroků. Pokud používáte prostředí pro [testování](../azuread-dev/howto-v1-debug-saml-sso-issues.md) v Azure Portal s rozšířením zabezpečeného prohlížeče moje aplikace, nemusíte ručně postupovat podle těchto kroků.
 
@@ -148,7 +148,7 @@ Azure AD nepodporuje požadavek SAML, který aplikace odeslala pro jednotné př
 -   Chybějící požadovaná pole v požadavku SAML
 -   Kódovaná metoda požadavku SAML
 
-**Rozhodnutí**
+**Řešení**
 
 1. Zachytit požadavek SAML. V tomto kurzu se dozvíte, jak pomocí [SAML ladit jednotné přihlašování k aplikacím ve službě Azure AD](../azuread-dev/howto-v1-debug-saml-sso-issues.md) a Naučte se zachytit požadavek SAML.
 
@@ -168,7 +168,7 @@ Dodavatel aplikace by měl ověřit, jestli podporují implementaci Azure AD SAM
 
 `Issuer`Atribut odeslaný z aplikace do služby Azure AD v žádosti SAML se neshoduje s hodnotou identifikátoru nakonfigurovanou pro aplikaci ve službě Azure AD.
 
-**Rozhodnutí**
+**Řešení**
 
 Zajistěte, aby se `Issuer` atribut v požadavku SAML shodoval s hodnotou identifikátoru nakonfigurovanou v Azure AD. Pokud používáte [prostředí testování](../azuread-dev/howto-v1-debug-saml-sso-issues.md) v Azure Portal s rozšířením zabezpečeného prohlížeče moje aplikace, nemusíte ručně postupovat podle těchto kroků:
 
@@ -197,7 +197,7 @@ Zajistěte, aby se `Issuer` atribut v požadavku SAML shodoval s hodnotou identi
 
 Objekt aplikace je poškozený a Azure AD nerozpozná certifikát nakonfigurovaný pro aplikaci.
 
-**Rozhodnutí**
+**Řešení**
 
 Chcete-li odstranit a vytvořit nový certifikát, postupujte podle následujících kroků:
 
@@ -233,7 +233,7 @@ Chcete-li odstranit a vytvořit nový certifikát, postupujte podle následujíc
 
 Služba Azure AD nemohla identifikovat požadavek SAML v rámci parametrů adresy URL v požadavku HTTP. K tomu může dojít, když aplikace při odesílání požadavku SAML do Azure AD nepoužívá vazbu přesměrování HTTP.
 
-**Rozhodnutí**
+**Řešení**
 
 Aplikace potřebuje odeslat požadavek SAML zakódovaný do hlavičky umístění pomocí vazby přesměrování HTTP. Další informace o způsobu implementace najdete v části věnované vazbě HTTP Redirect v [dokumentu specifikace protokolu SAML](https://docs.oasis-open.org/security/saml/v2.0/saml-bindings-2.0-os.pdf).
 
@@ -241,11 +241,11 @@ Aplikace potřebuje odeslat požadavek SAML zakódovaný do hlavičky umístěn�
 
 **Možná příčina**
 
-Pokud v rámci jednotného přihlašování požadavek na přihlášení neobsahuje adresu URL explicitní odpovědi (adresa URL služby potvrzení), služba Azure AD vybere kteroukoli z konfigurovaných adres URL pro danou aplikaci. I když má aplikace nakonfigurovanou adresu URL pro explicitní odpověď, může být uživatel přesměrován https://127.0.0.1:444 . 
+Pokud v rámci jednotného přihlašování požadavek na přihlášení neobsahuje adresu URL explicitní odpovědi (adresa URL služby potvrzení), služba Azure AD vybere kteroukoli z nakonfigurovaných adres URL odpovědí pro danou aplikaci. I když má aplikace nakonfigurovanou adresu URL pro explicitní odpověď, může být uživatel přesměrován https://127.0.0.1:444 . 
 
 Při přidávání aplikace jako aplikace mimo galerii služba Azure Active Directory vytvořila tuto adresu URL pro odpověď jako výchozí hodnotu. Toto chování se změnilo a Azure Active Directory už tuto adresu URL ve výchozím nastavení nepřidává. 
 
-**Rozhodnutí**
+**Řešení**
 
 Odstraní nepoužívané adresy URL odpovědí nakonfigurované pro aplikaci.
 

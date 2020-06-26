@@ -8,12 +8,12 @@ ms.date: 04/07/2020
 ms.topic: how-to
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: c83c97aab43b6978922202cc96ff92e1e046a7e2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f23a91a278b81c1583d88db2ede265ba2ad2d415
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80811630"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85414214"
 ---
 # <a name="export-iot-data-to-destinations-in-azure"></a>Export dat IoT do cílových umístění v Azure
 
@@ -88,21 +88,27 @@ Teď, když máte cíl pro export dat, postupujte podle těchto kroků a nastavt
 
 4. V rozevíracím seznamu vyberte **obor názvů Event Hubs**, **Service Bus obor**názvů, **obor názvů účtu úložiště**nebo **Zadejte připojovací řetězec**.
 
-    - V rámci stejného předplatného jako aplikace pro IoT Central se zobrazí jenom účty úložiště, Event Hubs obory názvů a Service Bus obory názvů. Pokud chcete exportovat do cílového umístění mimo toto předplatné, vyberte **zadat připojovací řetězec** a podívejte se na další krok.
+    - V rámci stejného předplatného jako aplikace pro IoT Central se zobrazí jenom účty úložiště, Event Hubs obory názvů a Service Bus obory názvů. Pokud chcete exportovat do cílového umístění mimo toto předplatné, vyberte **zadat připojovací řetězec** a podívejte se na krok 6.
     - U aplikací vytvořených pomocí bezplatného cenového plánu je jediným způsobem, jak nakonfigurovat export dat, prostřednictvím připojovacího řetězce. Pro aplikace v cenovém plánu zdarma nemáte přidružené předplatné Azure.
 
     ![Vytvořit nové centrum událostí](media/howto-export-data/export-event-hub.png)
 
-5. Volitelné Pokud jste zvolili **zadat připojovací řetězec**, zobrazí se nové okno pro vložení připojovacího řetězce. Získání připojovacího řetězce pro:
-    - Event Hubs nebo Service Bus v Azure Portal přejít na obor názvů:
-        - V části **Nastavení**vyberte **zásady sdíleného přístupu** .
-        - Vyberte výchozí **RootManageSharedAccessKey** nebo vytvořte nový.
-        - Zkopírování primárního nebo sekundárního připojovacího řetězce
-    - Účet úložiště, v Azure Portal přejít na účet úložiště:
-        - V části **Nastavení**vyberte **přístupové klíče** .
-        - Zkopírujte buď připojovací řetězec klíč1, nebo připojovací řetězec key2.
+5. V rozevíracím seznamu vyberte centrum událostí, frontu, téma nebo kontejner.
 
-6. V rozevíracím seznamu vyberte centrum událostí, frontu, téma nebo kontejner.
+6. Volitelné Pokud jste zvolili **zadat připojovací řetězec**, zobrazí se nové okno pro vložení připojovacího řetězce. Získání připojovacího řetězce pro:
+
+    - Event Hubs nebo Service Bus v Azure Portal přejít na obor názvů:
+        - Použití připojovacího řetězce pro celý obor názvů:
+            1. V části **Nastavení**vyberte **zásady sdíleného přístupu** .
+            2. Vytvořte nový klíč nebo vyberte existující klíč, který má oprávnění **Odeslat** .
+            3. Zkopírování primárního nebo sekundárního připojovacího řetězce
+        - Pokud chcete použít připojovací řetězec pro konkrétní instanci centra událostí nebo Service Bus frontu nebo téma, přejít na **entity > Event Hubs** nebo **entity > fronty** nebo **entity > témata**. Vyberte konkrétní instanci a použijte stejný postup k získání připojovacího řetězce.
+    - Účet úložiště, v Azure Portal přejít na účet úložiště:
+        - Podporují se jenom připojovací řetězce pro celý účet úložiště. Připojovací řetězce s oborem jednoho kontejneru nejsou podporovány.
+          1. V části **Nastavení**vyberte **přístupové klíče** .
+          2. Zkopírujte buď připojovací řetězec klíč1, nebo připojovací řetězec key2.
+
+    Vložte do připojovacího řetězce. Zadejte název instance nebo kontejneru, přičemž mějte na paměti, že se rozlišují malá a velká písmena.
 
 7. V části **data, která chcete exportovat**, vyberte typy dat k exportu nastavením typ na **zapnuto**.
 
@@ -131,7 +137,7 @@ Pro Event Hubs a Service Bus IoT Central exportuje novou zprávu rychle po přij
 Pro úložiště objektů BLOB se zprávy účtují a exportují jednou za minutu. Exportované soubory používají stejný formát jako soubory zpráv exportované [IoT Hub směrováním zpráv](../../iot-hub/tutorial-routing.md) do úložiště objektů BLOB.
 
 > [!NOTE]
-> V případě úložiště objektů BLOB zajistěte, aby vaše zařízení odesílala `contentEncoding:utf-8` zprávy, `utf-16`které `utf-32`mají `contentType: application/JSON` a (nebo). Příklad najdete v [dokumentaci k IoT Hub](../../iot-hub/iot-hub-devguide-routing-query-syntax.md#message-routing-query-based-on-message-body) .
+> V případě úložiště objektů BLOB zajistěte, aby vaše zařízení odesílala zprávy, které mají `contentType: application/JSON` a `contentEncoding:utf-8` (nebo `utf-16` `utf-32` ). Příklad najdete v [dokumentaci k IoT Hub](../../iot-hub/iot-hub-devguide-routing-query-syntax.md#message-routing-query-based-on-message-body) .
 
 Zařízení, které poslalo telemetrii, je reprezentované ID zařízení (viz následující oddíly). Pokud chcete získat názvy zařízení, exportovat data zařízení a sladit každou zprávu pomocí **connectionDeviceId** , který odpovídá ID zařízení zprávy zařízení. **deviceId**
 
@@ -297,7 +303,7 @@ Každý záznam zprávy nebo snímku představuje jednu nebo více změn v publi
 
 - `id`šablony zařízení, která odpovídá `instanceOf` datovému proudu zařízení výše
 - `displayName`šablony zařízení
-- Zařízení `capabilityModel` `interfaces`, včetně definicí a telemetrie, vlastností a příkazů
+- Zařízení `capabilityModel` `interfaces` , včetně definicí a telemetrie, vlastností a příkazů
 - `cloudProperties`definici
 - Přepisuje a počáteční hodnoty, které jsou vloženy do`capabilityModel`
 
@@ -553,7 +559,7 @@ Pokud máte v aplikaci ve verzi Preview existující export dat se zapnutými da
 Od 3. února 2020 budou všechny nové exporty v aplikacích se zapnutými šablonami zařízení a zařízení mít formát dat popsaný výše. Všechny exporty vytvořené před tímto datem zůstanou ve starém formátu dat až do 30. června 2020, kdy se tyto exporty automaticky migrují do nového formátu dat. Nový formát dat odpovídá vlastnostem [zařízení](https://docs.microsoft.com/rest/api/iotcentral/devices/get), [vlastnosti zařízení](https://docs.microsoft.com/rest/api/iotcentral/devices/getproperties), [cloudové vlastnosti zařízení](https://docs.microsoft.com/rest/api/iotcentral/devices/getcloudproperties)a objekty [šablon zařízení](https://docs.microsoft.com/rest/api/iotcentral/devicetemplates/get) ve IoT Central veřejném rozhraní API.
 
 U **zařízení**se jedná o významné rozdíly mezi starým a novým datovým formátem:
-- `@id`v případě odebrání `deviceId` zařízení se přejmenuje na`id` 
+- `@id`v případě odebrání zařízení se `deviceId` přejmenuje na`id` 
 - `provisioned`Přidání příznaku pro popis stavu zřizování zařízení
 - `approved`Přidání příznaku k popisu stavu schválení zařízení
 - `properties`zahrnutí vlastností zařízení a cloudu, které odpovídají entitám ve veřejném rozhraní API
@@ -561,7 +567,7 @@ U **zařízení**se jedná o významné rozdíly mezi starým a novým datovým 
 V případě **šablon zařízení**jsou významné rozdíly mezi starým a novým datovým formátem:
 
 - `@id`pro šablonu zařízení je přejmenovaná na`id`
-- `@type`pro šablonu zařízení se přejmenuje `types`na a je teď polem.
+- `@type`pro šablonu zařízení se přejmenuje na `types` a je teď polem.
 
 ### <a name="devices-format-deprecated-as-of-3-february-2020"></a>Zařízení (formát se už nepoužívá od 3. února 2020)
 

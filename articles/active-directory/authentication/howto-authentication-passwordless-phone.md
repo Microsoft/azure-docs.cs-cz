@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3412938cfc2ad3fbec293fd33f64e114e14e6f7e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 100e4b88589f3731d127ccb1060e556c1f3a2f39
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81450968"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85413242"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Povolení přihlášení bez hesla pomocí aplikace Microsoft Authenticator (Preview)
 
@@ -46,7 +46,7 @@ Funkce registrace pro metody ověřování nevyužívající hesla se spoléhaj�
 ### <a name="enable-passwordless-phone-sign-in-authentication-methods"></a>Povolit metody ověřování přihlašování bezheslem pro telefonování
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com)
-1. Vyhledejte a vyberte *Azure Active Directory*. Vybrat zásady**ověřování metody** > ověřování **zabezpečení** > **(Preview)**
+1. Vyhledejte a vyberte *Azure Active Directory*. Vybrat **Security**  >  zásady**ověřování metody**ověřování zabezpečení  >  **(Preview)**
 1. V části **přihlášení bez hesla pro telefonování**vyberte následující možnosti.
    1. **Povolit** – Ano nebo ne
    1. **Cíl** – všichni uživatelé nebo vybrat uživatele
@@ -78,13 +78,13 @@ Po zadání uživatelského jména na webu a výběru možnosti **Další**se u�
 
 Je možné, že uživatel v určitém okamžiku vytvořil přihlašovací údaje pro přihlášení bez hesla v aktuální Microsoft Authenticator aplikaci nebo na dřívějším zařízení. Když správce povolí zásadu metody ověřování pro telefonické přihlášení k telefonu bez hesla, bude začít používat nové přihlašovací výzvy, a to bez ohledu na to, jestli je povolil použití této zásady. Pokud uživatel nepovolil použití přihlašovacích údajů podle zásad, zobrazí se po dokončení toku ověřování chyba. 
 
-Správce může povolit, aby uživatel mohl používat přihlášení bez hesla pro telefonování, nebo musí tuto metodu odebrat uživatel. Pokud uživatel už registrované zařízení nemá, může přejít na [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) adresu a odebrat ho. Pokud i nadále používají ověřovací data pro MFA, můžou zvolit **Zakázat přihlášení telefonem** z Microsoft Authenticator.  
+Správce může povolit, aby uživatel mohl používat přihlášení bez hesla pro telefonování, nebo musí tuto metodu odebrat uživatel. Pokud uživatel už registrované zařízení nemá, může přejít na adresu [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) a odebrat ho. Pokud i nadále používají ověřovací data pro MFA, můžou zvolit **Zakázat přihlášení telefonem** z Microsoft Authenticator.  
 
 ### <a name="ad-fs-integration"></a>Integrace AD FS
 
-Pokud uživatel povolil Microsoft Authenticator přihlašovací údaje bez hesla, ověřování pro tohoto uživatele vždy bude ve výchozím nastavení odesláno oznámení ke schválení. Tato logika brání uživatelům v hybridním tenantovi směrovat se na službu AD FS, aby se ověřování přihlásilo bez toho, aby uživatel musel další krok kliknout na použít heslo. Tento proces taky obchází všechny místní zásady podmíněného přístupu a předávací ověřovací toky. 
+Pokud uživatel povolil Microsoft Authenticator přihlašovací údaje bez hesla, ověřování pro tohoto uživatele vždy bude ve výchozím nastavení odesláno oznámení ke schválení. Tato logika zabraňuje tomu, aby se uživatelé v hybridním tenantovi nasměrovali na AD FS pro ověřování přihlašování bez toho, aby uživatel musel další krok kliknout na použít heslo. Tento proces taky obchází všechny místní zásady podmíněného přístupu a předávací ověřovací toky. 
 
-Pokud má uživatel nezodpovězené přihlášení k telefonu bez hesla a pokusí se o přihlášení znovu, může se stát, že se uživatel bude muset místo toho pokusit zadat heslo.  
+Pokud uživatel nemá k disAD FS nezodpovězené ověřování telefonického přihlášení k telefonu a pokusí se o přihlášení znovu, může se uživatel rozhodnout, že místo toho zadá heslo.  
 
 ### <a name="azure-mfa-server"></a>Azure MFA Server
 

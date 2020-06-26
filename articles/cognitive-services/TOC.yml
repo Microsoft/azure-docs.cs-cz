@@ -36,6 +36,8 @@
       href: ./encryption/cognitive-services-encryption-keys-portal.md
     - name: Ověřování žádostí v Cognitive Services
       href: authentication.md
+    - name: Standardní hodnoty zabezpečení
+      href: security-baseline.md
 - name: Podpora kontejnerů
   items:
     - name: Podpora kontejnerů

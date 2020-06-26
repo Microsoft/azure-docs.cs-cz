@@ -4,14 +4,14 @@ description: Naučte se auditovat operace roviny ovládacího prvku, jako je nap
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 04/23/2020
+ms.date: 06/25/2020
 ms.author: sngun
-ms.openlocfilehash: cb6a27c0f03b7c0c41d8f323609df612363cfd9e
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 4c9f02784507ee893b6396fef4ed34a87610166d
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262646"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85414166"
 ---
 # <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>Postup při auditování operací roviny ovládacího prvku Azure Cosmos DB
 
@@ -29,7 +29,7 @@ Následuje několik ukázkových scénářů, ve kterých je užitečné objedn�
 
 Před auditem operací řízení roviny v Azure Cosmos DB zakažte na svém účtu přístup k zápisu metadat na základě klíčů. Pokud je zakázaný přístup pro zápis metadat založených na klíčích, klienti připojující se k účtu Azure Cosmos prostřednictvím klíčů účtu nemají přístup k účtu. Přístup pro zápis můžete zakázat nastavením `disableKeyBasedMetadataWriteAccess` vlastnosti na hodnotu true. Po nastavení této vlastnosti se můžou změny libovolného prostředku vyskytnout od uživatele, který má správnou roli řízení přístupu na základě role (RBAC) a přihlašovací údaje. Další informace o tom, jak tuto vlastnost nastavit, najdete v článku [prevence změn ze sad SDK](role-based-access-control.md#preventing-changes-from-cosmos-sdk) . 
 
-`disableKeyBasedMetadataWriteAccess`Když je tato funkce zapnutá, klienti na bázi sady SDK spouštějí operace vytvořit nebo aktualizovat, protože se vrátí chyba *"post" na prostředku "ContainerNameorDatabaseName Azure Cosmos DB"* . Musíte zapnout přístup k takovým operacím pro váš účet nebo provádět operace vytvoření/aktualizace prostřednictvím Azure Resource Manager, Azure CLI nebo Azure PowerShellu. Pokud chcete přejít zpátky, nastavte disableKeyBasedMetadataWriteAccess na **hodnotu false** pomocí rozhraní příkazového řádku Azure, jak je popsané v článku [prevence změn ze sady Cosmos SDK](role-based-access-control.md#preventing-changes-from-cosmos-sdk) . Nezapomeňte změnit hodnotu `disableKeyBasedMetadataWriteAccess` na false namísto true.
+`disableKeyBasedMetadataWriteAccess`Když je tato funkce zapnutá, klienti na bázi sady SDK spouštějí operace vytvořit nebo aktualizovat, protože se vrátí chyba *"post" na prostředku "ContainerNameorDatabaseName Azure Cosmos DB"* . Musíte zapnout přístup k takovým operacím pro váš účet nebo provádět operace vytvoření/aktualizace prostřednictvím Azure Resource Manager, Azure CLI nebo Azure PowerShell. Pokud chcete přejít zpátky, nastavte disableKeyBasedMetadataWriteAccess na **hodnotu false** pomocí rozhraní příkazového řádku Azure, jak je popsané v článku [prevence změn ze sady Cosmos SDK](role-based-access-control.md#preventing-changes-from-cosmos-sdk) . Nezapomeňte změnit hodnotu `disableKeyBasedMetadataWriteAccess` na false namísto true.
 
 Při vypnutí přístupu k zápisu metadat Vezměte v úvahu následující body:
 
@@ -71,7 +71,7 @@ Když se u účtu Azure Cosmos změní úroveň konzistence, zachytí následuj�
 
 :::image type="content" source="./media/audit-control-plane-logs/add-ip-filter-logs.png" alt-text="Řízení protokolů roviny při přidání virtuální sítě":::
 
-Po aktualizaci propustnosti tabulky Cassandra se zaznamenávají následující snímky obrazovky:
+Následující snímky obrazovky zaznamenávají protokoly, když se vytvoří místo na disku nebo tabulka Cassandra účtu a když se aktualizuje propustnost. Protokoly roviny ovládacího prvku pro operace vytvoření a aktualizace v databázi a kontejner jsou protokolovány samostatně, jak je znázorněno na následujícím snímku obrazovky:
 
 :::image type="content" source="./media/audit-control-plane-logs/throughput-update-logs.png" alt-text="Řízení protokolů roviny při aktualizaci propustnosti":::
 
@@ -101,30 +101,39 @@ Níže jsou uvedené operace roviny ovládacího prvku, které jsou k dispozici 
 
 Níže jsou dostupné operace roviny ovládacího prvku na úrovni databáze a kontejneru. Tyto operace jsou k dispozici jako metriky ve službě Azure monitor:
 
+* SQL Database vytvořena
 * SQL Database Aktualizováno
-* Kontejner SQL se aktualizoval.
 * Aktualizace propustnosti SQL Database
-* Propustnost kontejneru SQL se aktualizovala
 * Odstraněné SQL Database
+* Vytvořil se kontejner SQL.
+* Kontejner SQL se aktualizoval.
+* Propustnost kontejneru SQL se aktualizovala
 * Kontejner SQL se odstranil.
+* Cassandra místo pro vytváření klíčů
 * Cassandra se aktualizované místo na disku
-* Tabulka Cassandra se aktualizovala.
 * Propustnost Cassandraho místa na disku se aktualizovala
-* Propustnost tabulky Cassandra se aktualizovala.
 * Odstraněné místo na Cassandra
+* Tabulka Cassandra se vytvořila.
+* Tabulka Cassandra se aktualizovala.
+* Propustnost tabulky Cassandra se aktualizovala.
 * Tabulka Cassandra se odstranila.
+* Databáze Gremlin se vytvořila.
 * Databáze Gremlin se aktualizovala.
-* Graf Gremlin se aktualizoval.
 * Propustnost databáze Gremlin se aktualizovala
-* Byla aktualizována propustnost grafu Gremlin
 * Databáze Gremlin se odstranila.
+* Graf Gremlin se vytvořil.
+* Graf Gremlin se aktualizoval.
+* Byla aktualizována propustnost grafu Gremlin
 * Graf Gremlin se odstranil.
+* Databáze Mongo se vytvořila.
 * Databáze Mongo se aktualizovala.
-* Kolekce Mongo se aktualizovala
 * Propustnost databáze Mongo se aktualizovala
-* Byla aktualizována propustnost kolekce Mongo
 * Databáze Mongo se odstranila.
+* Kolekce Mongo se vytvořila.
+* Kolekce Mongo se aktualizovala
+* Byla aktualizována propustnost kolekce Mongo
 * Kolekce Mongo se odstranila.
+* Tabulka Azure se vytvořila.
 * Tabulka Azure se aktualizovala
 * Aktualizace propustnosti tabulky Azure
 * Tabulka Azure se odstranila.
@@ -144,14 +153,15 @@ Níže jsou uvedené názvy operací v diagnostických protokolech pro různé o
 
 Pro operace specifické pro rozhraní API je operace pojmenována s následujícím formátem:
 
-* ApiKind + ApiKindResourceType + typem operace OperationType + spustit/dokončit
-* ApiKind + ApiKindResourceType + "propustnost" + typem operace OperationType + spustit/dokončit
+* ApiKind + ApiKindResourceType + typem operace OperationType
+* ApiKind + ApiKindResourceType + "propustnost" + typem operace OperationType
 
 **Příklad** 
 
-* CassandraKeyspacesUpdateStart, CassandraKeyspacesUpdateComplete
-* CassandraKeyspacesThroughputUpdateStart, CassandraKeyspacesThroughputUpdateComplete
-* SqlContainersUpdateStart, SqlContainersUpdateComplete
+* CassandraKeyspacesCreate
+* CassandraKeyspacesUpdate
+* CassandraKeyspacesThroughputUpdate
+* SqlContainersUpdate
 
 Vlastnost *ResourceDetails* obsahuje celé tělo prostředku jako datovou část požadavku a obsahuje všechny vlastnosti požadované k aktualizaci.
 
@@ -161,14 +171,28 @@ Následuje několik příkladů, jak získat diagnostické protokoly pro operace
 
 ```kusto
 AzureDiagnostics 
-| where Category =="ControlPlaneRequests"
-| where  OperationName startswith "SqlContainersUpdateStart"
+| where Category startswith "ControlPlane"
+| where OperationName contains "Update"
+| project httpstatusCode_s, statusCode_s, OperationName, resourceDetails_s, activityId_g
 ```
 
 ```kusto
 AzureDiagnostics 
 | where Category =="ControlPlaneRequests"
-| where  OperationName startswith "SqlContainersThroughputUpdateStart"
+| where TimeGenerated >= todatetime('2020-05-14T17:37:09.563Z')
+| project TimeGenerated, OperationName, apiKind_s, apiKindResourceType_s, operationType_s, resourceDetails_s
+```
+
+```kusto
+AzureDiagnostics 
+| where Category =="ControlPlaneRequests"
+| where  OperationName startswith "SqlContainersUpdate"
+```
+
+```kusto
+AzureDiagnostics 
+| where Category =="ControlPlaneRequests"
+| where  OperationName startswith "SqlContainersThroughputUpdate"
 ```
 
 ## <a name="next-steps"></a>Další kroky

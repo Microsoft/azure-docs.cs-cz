@@ -6,16 +6,16 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit, tracking-python
-ms.openlocfilehash: 891eda49e11d9a9252cfcb5a0677eb47551135bc
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 2eaa2202ac6c2f0fac0f53c6eeb2f5d08c764f1e
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561805"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85413344"
 ---
 # <a name="azure-event-grid-output-binding-for-azure-functions"></a>Azure Event Grid výstupní vazba pro Azure Functions
 
-Použijte výstupní vazbu Event Grid k zápisu událostí do vlastního tématu. Musíte mít platný [přístupový klíč pro vlastní téma](../event-grid/security-authentication.md#authenticate-publishing-clients-using-sas-or-key).
+Použijte výstupní vazbu Event Grid k zápisu událostí do vlastního tématu. Musíte mít platný [přístupový klíč pro vlastní téma](../event-grid/security-authenticate-publishing-clients.md).
 
 Informace o nastavení a podrobnostech o konfiguraci najdete v tématu [Přehled](./functions-bindings-event-grid.md).
 
@@ -59,7 +59,7 @@ public static async Task Run(
 
 # <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
-Následující příklad ukazuje výstupní data vazby Event Grid v souboru *Function. JSON* .
+Následující příklad ukazuje Event Grid výstupní data vazby v *function.jsv* souboru.
 
 ```json
 {
@@ -102,7 +102,7 @@ public static void Run(TimerInfo myTimer, ICollector<EventGridEvent> outputEvent
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Následující příklad ukazuje výstupní data vazby Event Grid v souboru *Function. JSON* .
+Následující příklad ukazuje Event Grid výstupní data vazby v *function.jsv* souboru.
 
 ```json
 {
@@ -162,9 +162,9 @@ module.exports = function(context) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Následující příklad ukazuje aktivační vazbu v souboru *Function. JSON* a [funkci Pythonu](functions-reference-python.md) , která používá vazbu. Pak pošle v události vlastnímu Event Gridmu tématu, jak je uvedeno v `topicEndpointUri` .
+Následující příklad ukazuje aktivační vazbu v *function.js* souboru a [funkci Pythonu](functions-reference-python.md) , která používá vazbu. Pak pošle v události do vlastního tématu, jak je uvedeno v `topicEndpointUri` .
 
-Tady jsou data vazby v souboru *Function. JSON* :
+Tady jsou data vazby v *function.js* souboru:
 
 ```json
 {
@@ -187,7 +187,7 @@ Tady jsou data vazby v souboru *Function. JSON* :
 }
 ```
 
-Zde je ukázka Pythonu pro odeslání události do vlastního tématu Event Grid nastavením `EventGridOutputEvent` :
+Zde je ukázka Pythonu pro odeslání události do vlastního tématu nastavením `EventGridOutputEvent` :
 
 ```python
 import logging
@@ -255,11 +255,11 @@ Vazba Event Grid Output není pro jazyk Java k dispozici.
 
 ## <a name="configuration"></a>Konfigurace
 
-Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v souboru *Function. JSON* a `EventGrid` atributu.
+Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `EventGrid` atribut.
 
-|Function. JSON – vlastnost | Vlastnost atributu |Description|
+|function.jsvlastnost | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**typ** | Není k dispozici | Musí být nastavené na "eventGrid". |
+|**textový** | Není k dispozici | Musí být nastavené na "eventGrid". |
 |**direction** | Není k dispozici | Musí být nastavené na "out". Tento parametr je nastaven automaticky při vytváření vazby v Azure Portal. |
 |**Jméno** | Není k dispozici | Název proměnné použitý v kódu funkce, který představuje událost. |
 |**topicEndpointUri** |**TopicEndpointUri** | Název nastavení aplikace, které obsahuje identifikátor URI vlastního tématu, například `MyTopicEndpointUri` . |
@@ -278,11 +278,11 @@ Odesílat zprávy pomocí parametru metody, jako je například `out EventGridEv
 
 # <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
-Odesílat zprávy pomocí parametru metody, jako je například `out EventGridEvent paramName` . Ve skriptu jazyka C# `paramName` je hodnota zadaná ve `name` vlastnosti *Function. JSON*. Chcete-li zapsat více zpráv, můžete použít `ICollector<EventGridEvent>` nebo `IAsyncCollector<EventGridEvent>` místo `out EventGridEvent` .
+Odesílat zprávy pomocí parametru metody, jako je například `out EventGridEvent paramName` . Ve skriptu jazyka C# `paramName` je hodnota zadaná ve `name` vlastnosti *function.jsv*. Chcete-li zapsat více zpráv, můžete použít `ICollector<EventGridEvent>` nebo `IAsyncCollector<EventGridEvent>` místo `out EventGridEvent` .
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Přístup k události výstupu pomocí `context.bindings.<name>` Where `<name>` je hodnota zadaná ve `name` vlastnosti *Function. JSON*.
+Přístup k události výstupu pomocí `context.bindings.<name>` Where `<name>` je hodnota zadaná ve `name` vlastnosti *function.json*.
 
 # <a name="python"></a>[Python](#tab/python)
 

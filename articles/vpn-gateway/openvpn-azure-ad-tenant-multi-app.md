@@ -4,15 +4,15 @@ description: P2S VPN můžete použít pro připojení k virtuální síti pomoc
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
-ms.topic: how-to
-ms.date: 02/19/2020
+ms.topic: conceptual
+ms.date: 06/25/2020
 ms.author: alzam
-ms.openlocfilehash: 2fc329bd77bafb2e11575b75be102314df98131f
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: 0ef0c7d3a269753067e53a69b9da680db969e25d
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84987200"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85414418"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>Vytvoření tenanta Azure Active Directory pro připojení typu point-to-site přes protokol OpenVPN
 
@@ -28,32 +28,20 @@ Při připojování k virtuální síti můžete použít ověřování založen
 
 V tomto kroku povolíte ověřování Azure AD v bráně VPN.
 
-1. Povolte ověřování Azure AD v bráně VPN spuštěním následujících příkazů. Nezapomeňte upravit příkazy, aby odrážely vaše vlastní prostředí:
+1. Povolte ověřování Azure AD v bráně VPN tak, že přejdete na **položku konfigurace Point-to-site** a jako **Typ tunelu zadáte** **OpenVPN (výběr protokolu SSL)** . Jako **typ ověřování** vyberte **Azure Active Directory** a potom zadejte informace v části **Azure Active Directory** .
 
-    ```azurepowershell-interactive
-    $gw = Get-AzVirtualNetworkGateway -Name <name of VPN gateway> -ResourceGroupName <Resource group>
-    Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -VpnClientRootCertificates @()
-    Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -AadTenantUri "https://login.microsoftonline.com/<your Directory ID>" -AadAudienceId "application ID from previous section" -AadIssuerUri "https://sts.windows.net/<your Directory ID>/" -VpnClientAddressPool 192.168.0.0/24
-    ```
+    ![Azure VPN](./media/openvpn-azure-ad-tenant-multi-app/azure-ad-auth-portal.png)
+
     > [!NOTE]
-    > Ve výše uvedených příkazech nepoužívejte ID aplikace klienta Azure VPN. Tato akce udělí všem uživatelům přístup k bráně VPN. Použijte ID registrovaných aplikací.
+    > Nepoužívejte ID aplikace klienta Azure VPN: udělí všem uživatelům přístup k bráně VPN. Použijte ID registrovaných aplikací.
 
-2. Vytvořte a Stáhněte si profil spuštěním následujících příkazů. Změňte hodnoty-ResourcGroupName a-Name tak, aby odpovídaly vašemu vlastním.
+2. Vytvořte a Stáhněte si profil Kliknutím na odkaz **stáhnout klienta VPN** .
 
-    ```azurepowershell-interactive
-    $profile = New-AzVpnClientConfiguration -Name <name of VPN gateway> -ResourceGroupName <Resource group> -AuthenticationMethod "EapTls"
-    $PROFILE.VpnProfileSASUrl
-    ```
+3. Extrahujte stažený soubor zip.
 
-3. Po spuštění příkazů vidíte výsledek podobný tomu níže. Zkopírujte výslednou adresu URL do prohlížeče a Stáhněte si soubor. zip profilu.
+4. Přejděte do složky unzip "AzureVPN".
 
-    ![Azure VPN](./media/openvpn-azure-ad-tenant-multi-app/profile.png)
-
-4. Extrahujte stažený soubor zip.
-
-5. Přejděte do složky unzip "AzureVPN".
-
-6. Poznamenejte si umístění souboru azurevpnconfig.xml. azurevpnconfig.xml obsahuje nastavení pro připojení VPN a dá se importovat přímo do klientské aplikace VPN Azure. Tento soubor můžete také distribuovat všem uživatelům, kteří se potřebují připojit prostřednictvím e-mailu nebo jiným způsobem. Uživatel bude potřebovat platné přihlašovací údaje Azure AD pro úspěšné připojení.
+5. Poznamenejte si umístění souboru azurevpnconfig.xml. azurevpnconfig.xml obsahuje nastavení pro připojení VPN a dá se importovat přímo do klientské aplikace VPN Azure. Tento soubor můžete také distribuovat všem uživatelům, kteří se potřebují připojit prostřednictvím e-mailu nebo jiným způsobem. Uživatel bude potřebovat platné přihlašovací údaje Azure AD pro úspěšné připojení.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: 40b3ebf9193ad2d167cb36792900746201605298
-ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
+ms.openlocfilehash: f4e5bbdc50d99eca774dc5b96657ac8bfdebca17
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85106462"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85414143"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Co je to privátní koncový bod Azure?
 
@@ -24,7 +24,7 @@ Privátní koncový bod Azure je síťové rozhraní, které vás privátně a z
 
 |Vlastnost  |Popis |
 |---------|---------|
-|Name    |    Jedinečný název v rámci skupiny prostředků.      |
+|Název    |    Jedinečný název v rámci skupiny prostředků.      |
 |Podsíť    |  Podsíť pro nasazení a přidělování privátních IP adres z virtuální sítě. Požadavky na podsíť najdete v části omezení v tomto článku.         |
 |Prostředek privátního propojení    |   Prostředek privátního propojení pro připojení pomocí ID prostředku nebo aliasu ze seznamu dostupných typů. Pro veškerý provoz odeslaný do tohoto prostředku se vygeneruje jedinečný identifikátor sítě.       |
 |Cílový podprostředek   |      Prostředek, který se má připojit. Každý typ prostředku privátního propojení má různé možnosti pro výběr na základě předvolby.    |
@@ -76,7 +76,7 @@ Prostředek privátního propojení je cílovým cílem daného privátního kon
 |**Azure Relay** | Microsoft. Relay/obory názvů | namespace |
 |**Azure Event Grid** | Microsoft. EventGrid/témata    | téma |
 |**Azure Event Grid** | Microsoft. EventGrid/domény    | doména |
-|**WebApps Azure** | Microsoft. Web/weby    | webovém |
+|**WebApps Azure** | Microsoft. Web/weby    | místa |
 |**Azure Machine Learning** | Microsoft. MachineLearningServices/pracovní prostory    | Pracovní prostor |
   
  

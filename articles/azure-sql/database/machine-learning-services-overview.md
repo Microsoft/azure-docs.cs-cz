@@ -7,18 +7,18 @@ ms.subservice: machine-learning
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: dphansen
-ms.author: davidph
+author: garyericson
+ms.author: garye
 ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 11/20/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: c45d52b89d23b2b030f6292a2257dfd732e8f766
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 0a11e2ba820797bac8ce93517841fd37a8256d2c
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344760"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85413055"
 ---
 # <a name="azure-sql-database-machine-learning-services-with-r-preview"></a>Azure SQL Database Machine Learning Services s R (Preview)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -37,7 +37,7 @@ Machine Learning Services zahrnuje základní distribuci R, překrývající se 
 
 Nejběžnější balíčky Open Source R jsou předem nainstalované v Machine Learning Services. K dispozici jsou také následující balíčky R od společnosti Microsoft:
 
-| Balíček R | Description|
+| Balíček R | Popis|
 |-|-|
 | [Microsoft R Open](https://mran.microsoft.com/rro) | Microsoft R Open je rozšířená distribuce jazyka R od Microsoftu. Je to kompletní Open-Source platforma pro statistickou analýzu a datové vědy. Je založen na a 100% kompatibilním s R a obsahuje další možnosti pro zlepšení výkonu a reprodukovatelnosti. |
 | [RevoScaleR](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-revoscaler) | RevoScaleR je primární knihovna pro škálovatelné funkce R. Functions v této knihovně, které jsou široce používané. V těchto knihovnách jsou nalezeny transformace dat a manipulace, statistická sumarizace, vizualizace a mnoho forem modelování a analýz. Kromě toho funkce v těchto knihovnách automaticky distribuují úlohy napříč dostupnými jádry pro paralelní zpracování, s možností pracovat na blocích dat, která jsou koordinována a spravována výpočetním modulem. |

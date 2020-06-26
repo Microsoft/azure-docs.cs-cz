@@ -4,17 +4,17 @@ description: Připojení soukromě k webové aplikaci pomocí privátního konco
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
-ms.date: 06/02/2020
+ms.date: 06/26/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: bc9cd134e4c83aea94ae0049158b3054c602cce8
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: b9cf0467829425003a33ef806d8e7028e7f27add
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85374419"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85413395"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>Používání privátních koncových bodů pro webovou aplikaci Azure (Preview)
 
@@ -65,22 +65,52 @@ V protokolech HTTP webové aplikace se nachází zdrojová IP adresa klienta. Ta
 
 ## <a name="dns"></a>DNS
 
+Pokud pro webovou aplikaci použijete privátní koncový bod, požadovaná adresa URL se musí shodovat s názvem vaší webové aplikace. Ve výchozím nastavení mywebappname.azurewebsites.net.
+
 Ve výchozím nastavení bez privátního koncového bodu je veřejný název vaší webové aplikace kanonický název clusteru.
-Například překlad názvů bude: mywebapp.azurewebsites.net CNAME clustername.azurewebsites.windows.net clustername.azurewebsites.windows.net CNAME cloudservicename.cloudapp.net cloudservicename.cloudapp.net A 40.122.110.154 
+Například překlad názvů bude:
 
-Při nasazení privátního koncového bodu změníme položku DNS tak, aby odkazovala na kanonický název mywebapp.privatelink.azurewebsites.net.
-Například překlad názvů bude: mywebapp.azurewebsites.net CNAME mywebapp.privatelink.azurewebsites.net mywebapp.privatelink.azurewebsites.net CNAME clustername.azurewebsites.windows.net clustername.azurewebsites.windows.net CNAME cloudservicename.cloudapp.net cloudservicename.cloudapp.net A 40.122.110.154 
+|Název |Typ |Hodnota |
+|-----|-----|------|
+|mywebapp.azurewebsites.net|CNAME|clustername.azurewebsites.windows.net|
+|clustername.azurewebsites.windows.net|CNAME|cloudservicename.cloudapp.net|
+|cloudservicename.cloudapp.net|A|40.122.110.154| 
 
-Pokud máte privátní server DNS nebo privátní zónu Azure DNS, musíte nastavit zónu s názvem privatelink.azurewebsites.net. Zaregistrujte si záznam pro vaši webovou aplikaci pomocí záznamu a a IP adresy privátního koncového bodu.
-Například překlad názvů bude: mywebapp.azurewebsites.net CNAME mywebapp.privatelink.azurewebsites.net mywebapp.privatelink.azurewebsites.net A 10.10.10.8 
+
+Při nasazení privátního koncového bodu aktualizujeme položku DNS tak, aby odkazovala na kanonický název mywebapp.privatelink.azurewebsites.net.
+Například překlad názvů bude:
+
+|Název |Typ |Hodnota |Přeznačit |
+|-----|-----|------|-------|
+|mywebapp.azurewebsites.net|CNAME|mywebapp.privatelink.azurewebsites.net|
+|mywebapp.privatelink.azurewebsites.net|CNAME|clustername.azurewebsites.windows.net|
+|clustername.azurewebsites.windows.net|CNAME|cloudservicename.cloudapp.net|
+|cloudservicename.cloudapp.net|A|40.122.110.154|< – tato veřejná IP adresa není vaším privátním koncovým bodem. zobrazí se chyba 503.|
+
+Musíte nastavit privátní server DNS nebo privátní zónu Azure DNS, pro testy můžete změnit položku hostitele testovacího počítače.
+Zóna DNS, kterou potřebujete vytvořit, je: **privatelink.azurewebsites.NET**. Zaregistrujte si záznam pro vaši webovou aplikaci pomocí záznamu a a IP adresy privátního koncového bodu.
+Například překlad názvů bude:
+
+|Název |Typ |Hodnota |Přeznačit |
+|-----|-----|------|-------|
+|mywebapp.azurewebsites.net|CNAME|mywebapp.privatelink.azurewebsites.net|
+|mywebapp.privatelink.azurewebsites.net|A|10.10.10.8|< – tuto položku můžete spravovat v systému DNS, aby odkazovala na IP adresu privátního koncového bodu.|
+
+Po této konfiguraci DNS se můžete připojit k webové aplikaci soukromě s výchozím názvem mywebappname.azurewebsites.net.
+
 
 Pokud potřebujete použít vlastní název DNS, musíte do své webové aplikace přidat vlastní název. Ve verzi Preview se vlastní název musí ověřit jako libovolný vlastní název, a to pomocí veřejného překladu názvů DNS. Další informace najdete v tématu [vlastní ověření DNS][dnsvalidation].
 
-Pokud potřebujete použít konzolu Kudu nebo Kudu REST API (například nasazení s agenty pro samoobslužné hostování Azure DevOps), musíte vytvořit dva záznamy v privátní zóně Azure DNS nebo ve vlastním serveru DNS. 
-- PrivateEndpointIP yourwebappname.azurewebsites.net 
-- PrivateEndpointIP yourwebappname.scm.azurewebsites.net 
+V případě konzoly Kudu nebo Kudu REST API (například nasazení pomocí samoobslužných agentů Azure DevOps) musíte vytvořit dva záznamy v privátní zóně Azure DNS nebo ve vlastním serveru DNS. 
 
-Tyto dva záznamy se vyplní automaticky, pokud máte privátní zónu s názvem privatelink.azurewebsites.net propojenou s virtuální sítí, kde vytvoříte soukromý koncový bod.
+| Název | Typ | Hodnota |
+|-----|-----|-----|
+| mywebapp.privatelink.azurewebsites.net | A | PrivateEndpointIP | 
+| mywebapp.scm.privatelink.azurewebsites.net | A | PrivateEndpointIP | 
+
+> [!TIP]
+> Tyto dva záznamy se vyplní automaticky, pokud máte privátní zónu DNS s názvem privatelink.azurewebsites.net propojenou s virtuální sítí, kde vytvoříte soukromý koncový bod.
+
 
 ## <a name="pricing"></a>Ceny
 

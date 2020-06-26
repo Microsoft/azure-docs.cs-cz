@@ -5,14 +5,14 @@ services: event-grid
 author: VidyaKukke
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 03/11/2020
+ms.date: 06/25/2020
 ms.author: vkukke
-ms.openlocfilehash: ba3bc14c9b4a9d5d866dbb1b9369557b948078d0
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: f3b3877ae3278e12eec43843dbed6ac686227860
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/26/2020
-ms.locfileid: "85390189"
+ms.locfileid: "85414245"
 ---
 # <a name="network-security-for-azure-event-grid-resources"></a>Zabezpečení sítě pro prostředky Azure Event Grid
 Tento článek popisuje, jak používat následující funkce zabezpečení pro Azure Event Grid: 
@@ -37,6 +37,7 @@ Azure Event Grid podporuje řízení přístupu na základě IP adres pro publik
 
 Ve výchozím nastavení je k tématům a doménám přístup z Internetu, pokud požadavek přichází s platným ověřováním a autorizací. Pomocí brány firewall protokolu IP je můžete omezit na více než jenom sadu IP adres nebo rozsahů IP adres ve notaci [směrování mezi doménami CIDR (bez třídy)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) . Vydavatelé pocházející z jakékoli jiné IP adresy se odmítnou a obdrží odpověď 403 (zakázáno).
 
+Podrobné pokyny ke konfiguraci brány firewall protokolu IP pro témata a domény najdete v tématu [Konfigurace brány firewall protokolu IP](configure-firewall.md).
 
 ## <a name="private-endpoints"></a>Soukromé koncové body
 Pomocí [privátních koncových bodů](../private-link/private-endpoint-overview.md) můžete v případě, že chcete přijímat události přímo z vaší virtuální sítě, zabezpečit vaše témata a domény přes [privátní propojení](../private-link/private-link-overview.md) , aniž byste museli procházet veřejným internetem. Privátní koncový bod je speciální síťové rozhraní pro službu Azure ve vaší virtuální síti. Když vytvoříte privátní koncový bod pro vaše téma nebo doménu, zajistíte zabezpečené připojení mezi klienty ve vaší virtuální síti a vaším prostředkem Event Grid. Privátnímu koncovému bodu je přiřazena IP adresa z rozsahu IP adres vaší virtuální sítě. Připojení mezi soukromým koncovým bodem a službou Event Grid používá zabezpečený privátní odkaz.
@@ -58,7 +59,7 @@ Při vytváření privátního koncového bodu se záznam CNAME DNS pro prostře
 
 Když vyřešíte adresu URL tématu nebo adresy URL koncového bodu domény mimo virtuální síť s privátním koncovým bodem, přeloží se na veřejný koncový bod služby. Záznamy o prostředcích DNS pro "téma", pokud jsou vyřešeny **mimo virtuální síť** hostující soukromý koncový bod, bude:
 
-| Name                                          | Typ      | Hodnota                                         |
+| Název                                          | Typ      | Hodnota                                         |
 | --------------------------------------------- | ----------| --------------------------------------------- |  
 | `topicA.westus.eventgrid.azure.net`             | CNAME     | `topicA.westus.privatelink.eventgrid.azure.net` |
 | `topicA.westus.privatelink.eventgrid.azure.net` | CNAME     | \<Azure traffic manager profile\>
@@ -67,7 +68,7 @@ Pomocí [brány firewall protokolu IP](#ip-firewall)můžete odepřít nebo ří
 
 Při překladu z virtuální sítě hostující soukromý koncový bod se v tématu nebo adrese URL koncového bodu domény přeloží na IP adresu privátního koncového bodu. Záznamy o prostředcích DNS pro téma "kapitola", při jejich vyřešení z **virtuální** sítě, která je hostitelem privátního koncového bodu, bude:
 
-| Name                                          | Typ      | Hodnota                                         |
+| Název                                          | Typ      | Hodnota                                         |
 | --------------------------------------------- | ----------| --------------------------------------------- |  
 | `topicA.westus.eventgrid.azure.net`             | CNAME     | `topicA.westus.privatelink.eventgrid.azure.net` |
 | `topicA.westus.privatelink.eventgrid.azure.net` | A         | 10.0.0.5
