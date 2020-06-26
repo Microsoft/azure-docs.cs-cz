@@ -6,19 +6,19 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: azuread-dev
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 12/06/2019
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: fbdae8b8506731f13ff08e877ea8eedb6d57fa78
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0ae99ba6540250d18c0bb5f6365e2ed3b9939ac9
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80666930"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85383865"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Uvedení aplikace v galerii aplikací služby Azure Active Directory
 
@@ -51,7 +51,7 @@ Můžete získat bezplatný zkušební účet se všemi funkcemi služby Azure A
 
 Po otestování, že integrace aplikace funguje se službou Azure AD, odešlete žádost o aplikaci na [portál Microsoft Application Network](https://microsoft.sharepoint.com/teams/apponboarding/Apps).
 
-Pokud se po přihlášení zobrazí následující stránka, obraťte se na [integrační tým jednotného přihlašování služby Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). Zadejte e-mailový účet, který chcete použít k odeslání žádosti. [name@yourbusiness.com](mailto:name@yourbusiness.com) Je upřednostňována obchodní e-mailová adresa. Tým Azure AD přidá účet na portál Microsoft Application Network.
+Pokud se po přihlášení zobrazí následující stránka, obraťte se na [integrační tým jednotného přihlašování služby Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). Zadejte e-mailový účet, který chcete použít k odeslání žádosti. Je upřednostňována obchodní e-mailová adresa [name@yourbusiness.com](mailto:name@yourbusiness.com) . Tým Azure AD přidá účet na portál Microsoft Application Network.
 
 ![Zpráva s požadavkem na přístup na SharePointovém portálu](./media/howto-app-gallery-listing/errorimage.png)
 
@@ -79,7 +79,7 @@ Uživatel typu Host je federovaný pro domácího tenanta, který je také Azure
  
 **Zabezpečená řešení:**
 
-* Registrovaní uživatelé typu Host napravují vlastní riziko uživatele. To může provést uživatel typu Host, který provádí zabezpečené změny nebo resetování hesla (https://aka.ms/sspr) na svém domovském tenantovi (to vyžaduje MFA a SSPR v domovském tenantovi). Zabezpečená změna nebo resetování hesla je nutné iniciovat ve službě Azure AD, nikoli v Prem.
+* Registrovaní uživatelé typu Host napravují vlastní riziko uživatele. To může provést uživatel typu Host, který provádí zabezpečené změny nebo resetování hesla ( https://aka.ms/sspr) na svém domovském tenantovi (to vyžaduje MFA a SSPR v domovském tenantovi). Zabezpečená změna nebo resetování hesla je nutné iniciovat ve službě Azure AD, nikoli v Prem.
 
 * Uživatelé typu Host mají nápravu svého rizika. V takovém případě správce provede resetování hesla (dočasné generování hesla). Tato nepotřebuje ochranu identity. Správce hostovaného uživatele může přejít na adresu https://aka.ms/RiskyUsers a kliknout na resetovat heslo.
 
@@ -136,7 +136,7 @@ Pokud chcete aktualizovat nebo odebrat existující aplikaci v galerii aplikací
 
 ## <a name="list-requests-by-customers"></a>Vypsat žádosti od zákazníků
 
-Zákazníci můžou odeslat žádost o seznam aplikací tak, že si vyberou **žádosti o aplikace od zákazníků** > **Odeslat novou žádost**.
+Zákazníci můžou odeslat žádost o seznam aplikací tak, že si vyberou **žádosti o aplikace od zákazníků**  >  **Odeslat novou žádost**.
 
 ![Zobrazuje dlaždici aplikace požadované zákazníky.](./media/howto-app-gallery-listing/customer-submit-request.png)
 
@@ -156,4 +156,4 @@ Tady je postup pro aplikace vyžadované zákazníky.
 
 ## <a name="escalations"></a>Eskalací zákazníka
 
-Pro všechny eskalace odešlete e-mail týmu pro [integraci jednotného přihlašování do služby Azure AD](mailto:SaaSApplicationIntegrations@service.microsoft.com) na adrese SaaSApplicationIntegrations@service.microsoft.coma budeme co nejdříve reagovat.
+Pro všechny eskalace odešlete e-mail týmu pro [integraci jednotného přihlašování do služby Azure AD](mailto:SaaSApplicationIntegrations@service.microsoft.com) na adrese SaaSApplicationIntegrations@service.microsoft.com a budeme co nejdříve reagovat.

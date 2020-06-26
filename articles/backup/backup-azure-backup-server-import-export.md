@@ -3,12 +3,12 @@ title: Offline zálohování pro DPM a Azure Backup Server
 description: Pomocí Azure Backup můžete odesílat data mimo síť pomocí služby Azure import/export. Tento článek vysvětluje pracovní postup offline zálohování pro DPM a Azure Backup Server.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: 1fb9910f2cdf8f000725fde697d971fc1c3d385b
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: bb9b3599e74e74058598acd53f5156459c0b74fb
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84631979"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374929"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-mabs"></a>Pracovní postup offline zálohování pro DPM a Azure Backup Server (MABS)
 
@@ -83,9 +83,9 @@ Informace v této části vám pomůžou dokončit pracovní postup offline zál
    Popis vstupů je následující:
 
    * **Pracovní umístění**: dočasné umístění úložiště, do kterého se vytvořila prvotní záložní kopie. Pracovní umístění může být ve sdílené síťové složce nebo na místním počítači. Pokud je počítač kopírování a zdrojový počítač jiný, zadejte úplnou síťovou cestu k pracovnímu umístění.
-   * **Účet Azure Storage**: název účtu úložiště v předplatném Azure přidruženého k souboru nastavení publikování v Azure.
-   * **Azure Storage kontejner**: název cílového objektu BLOB úložiště v účtu služby Azure Storage, do kterého se importují zálohovaná data.
-   * **ID předplatného Azure**: ID předplatného Azure pro předplatné, ze kterého jste stáhli soubor nastavení publikování v Azure.
+   * **Azure Resource Manager účet úložiště**: název účtu úložiště Správce prostředků typu (pro obecné účely v1 nebo pro obecné účely v2) v jakémkoli předplatném Azure.
+   * **Azure Storage kontejner**: název cílového kontejneru úložiště objektů BLOB v účtu služby Azure Storage, do kterého se importují zálohovaná data.
+   * **ID předplatného Azure**: ID předplatného Azure, kde se vytváří účet Azure Storage.
    * **Název úlohy pro import do Azure**: jedinečný název, podle kterého služba Azure import service a Azure Backup sleduje přenos dat odeslaných na disky do Azure.
 
     Uložte **pracovní umístění** a informace o **názvu úlohy importu Azure** , které jste zadali. Je nutné připravit disky.

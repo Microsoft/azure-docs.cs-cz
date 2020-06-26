@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 05/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e023e9c8c4c6f0021eabccad8783c27eba98d0d5
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 235fd429707a418fa193e986b95c9b38fa6c8101
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83116522"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85385021"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>Kurz: přizpůsobení rozhraní uživatelského prostředí v Azure Active Directory B2C
 
@@ -43,10 +43,10 @@ Vytvoříte účet a kontejner úložiště Azure a potom do kontejneru umístí
 
 I když můžete soubory ukládat mnoha různými způsoby, můžete je v tomto kurzu ukládat do [úložiště objektů BLOB v Azure](../storage/blobs/storage-blobs-introduction.md).
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Ujistěte se, že používáte adresář, který obsahuje vaše předplatné Azure. V horní nabídce vyberte filtr **adresář + odběr** a zvolte adresář, který obsahuje vaše předplatné. Tento adresář je jiný než ten, který obsahuje vašeho tenanta Azure B2C.
 3. V levém horním rohu Azure Portal vyberte všechny služby, vyhledejte a vyberte **účty úložiště**.
-4. Vyberte **Přidat**.
+4. Vyberte možnost **Přidat**.
 5. V části **Skupina prostředků**vyberte **vytvořit novou**, zadejte název nové skupiny prostředků a pak klikněte na **OK**.
 6. Zadejte název účtu úložiště. Zvolený název musí být jedinečný v rámci Azure, mít délku 3 až 24 znaků a může obsahovat jen číslice a malá písmena.
 7. Vyberte umístění účtu úložiště nebo přijměte výchozí umístění.
@@ -95,7 +95,7 @@ Chcete-li přizpůsobit uživatelské rozhraní prostředí pro registraci, zač
 
     Stránku lze navrhnout jakýmkoli způsobem, ale element **rozhraní API** div je vyžadován pro libovolný soubor vlastního nastavení HTML, který vytvoříte.
 
-3. Uložte soubor jako *Custom-UI. html*.
+3. Uložte soubor jako *custom-ui.html*.
 4. Vytvořte následující jednoduchou šablonu stylů CSS, která bude nacentrovat všechny prvky na stránce pro registraci nebo přihlášení včetně prvků, které Azure AD B2C vkládání.
 
     ```css
@@ -129,7 +129,7 @@ V tomto kurzu ukládáte soubory, které jste vytvořili v účtu úložiště t
 
 1. V levém horním rohu Azure Portal vyberte **všechny služby** , vyhledejte a vyberte **účty úložiště**.
 2. Vyberte účet úložiště, který jste vytvořili, vyberte **objekty blob**a potom vyberte kontejner, který jste vytvořili.
-3. Vyberte **Odeslat**, přejděte na a vyberte soubor *Custom-UI. html* a pak klikněte na **nahrát**.
+3. Vyberte **Odeslat**, přejděte na a vyberte soubor *custom-ui.html* a pak klikněte na **nahrát**.
 
     ![Stránka nahrát objekt blob na portálu se zvýrazněným tlačítkem Odeslat a soubory](./media/tutorial-customize-ui/upload-blob.png)
 
@@ -141,7 +141,7 @@ V tomto kurzu ukládáte soubory, které jste vytvořili v účtu úložiště t
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 2. Vyberte **toky uživatelů (zásady)** a pak vyberte tok uživatele *B2C_1_signupsignin1* .
 3. Vyberte **rozložení stránky**a potom v části **jednotná registrace nebo přihlášení**klikněte na **Ano** , aby se **použil vlastní obsah stránky**.
-4. Do pole **URI vlastní stránky**zadejte identifikátor URI pro soubor *Custom-UI. html* , který jste si poznamenali dříve.
+4. Do pole **URI vlastní stránky**zadejte identifikátor URI pro soubor *custom-ui.html* , který jste si poznamenali dříve.
 5. V horní části stránky vyberte **Save (Uložit**).
 
 ## <a name="test-the-user-flow"></a>Testování toku uživatele

@@ -7,18 +7,18 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/21/2019
 ms.author: ryanwi
 ms.reviewer: jlu
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: ff0ce05b13fea8409475e3415c5d810d7c79769a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7bb572e9e22519491290e54417f5ca350d6c0b5c
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154861"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85383713"
 ---
 # <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>Postupy: opětovná aktivace zakázaných oborů názvů Access Control Service
 
@@ -67,7 +67,7 @@ Pomocí PowerShellu služby ACS můžete vypsat všechny obory názvů ACS a zno
     Než budete moct spustit příkaz, možná budete muset změnit zásady spouštění spuštěním rutiny **Set-ExecutionPolicy** .
 1. Seznam dostupných předplatných Azure získáte pomocí rutiny **Get-AcsSubscription** .
 1. Uveďte obory názvů služby ACS pomocí rutiny **Get-AcsNamespace** .
-1. Potvrďte, že jsou obory názvů zakázané `State` potvrzením, že je `Disabled`.
+1. Potvrďte, že jsou obory názvů zakázané potvrzením, že `State` je `Disabled` .
 
     [![Potvrďte, že jsou obory názvů zakázané.](./media/howto-reactivate-disabled-acs-namespaces/confirm-disabled-namespace.png)](./media/howto-reactivate-disabled-acs-namespaces/confirm-disabled-namespace.png#lightbox)
 
@@ -122,7 +122,7 @@ Další rozšíření již nebudou automaticky schválena. Pokud k migraci potř
 ## <a name="help-and-support"></a>Nápověda a podpora
 
 - Pokud narazíte na problémy po následujícím postupu, obraťte se na [podporu Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
-- Pokud máte dotazy nebo připomínky k vyřazení služby ACS, kontaktujte nás acsfeedback@microsoft.comna adrese.
+- Pokud máte dotazy nebo připomínky k vyřazení služby ACS, kontaktujte nás na adrese acsfeedback@microsoft.com .
 
 ## <a name="next-steps"></a>Další kroky
 

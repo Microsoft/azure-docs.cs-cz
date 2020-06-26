@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 64b440054795670b99a22e37dec7188f3e1cd74c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4297ee64742b81e86eb8b85c0a6c405fac07d67f
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78189986"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85386160"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Nastavte adresy URL pro přesměrování na b2clogin.com pro Azure Active Directory B2C
 
@@ -50,7 +50,7 @@ Je možné, že budete muset provést několik úprav, abyste mohli migrovat sv�
 
 ## <a name="change-identity-provider-redirect-urls"></a>Změna adres URL pro přesměrování zprostředkovatele identity
 
-Na webu každého zprostředkovatele identity, na kterém jste vytvořili aplikaci, změňte všechny důvěryhodné adresy URL tak, aby se `your-tenant-name.b2clogin.com` přesměrovaly na místo *Login.microsoftonline.com*.
+Na webu každého zprostředkovatele identity, na kterém jste vytvořili aplikaci, změňte všechny důvěryhodné adresy URL tak, aby se přesměrovaly na `your-tenant-name.b2clogin.com` místo *Login.microsoftonline.com*.
 
 Pro adresy URL pro přesměrování b2clogin.com můžete použít dva formáty. První z nich přináší výhody, proč se "Microsoft" zobrazuje kdekoli v adrese URL pomocí ID tenanta (GUID) místo názvu domény klienta:
 
@@ -58,7 +58,7 @@ Pro adresy URL pro přesměrování b2clogin.com můžete použít dva formáty.
 https://{your-tenant-name}.b2clogin.com/{your-tenant-id}/oauth2/authresp
 ```
 
-Druhá možnost používá název domény tenanta ve formátu `your-tenant-name.onmicrosoft.com`. Příklad:
+Druhá možnost používá název domény tenanta ve formátu `your-tenant-name.onmicrosoft.com` . Například:
 
 ```
 https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp
@@ -67,11 +67,11 @@ https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth
 Pro oba formáty:
 
 * Nahraďte `{your-tenant-name}` názvem vašeho tenanta Azure AD B2C.
-* Odeberte `/te` , pokud existuje v adrese URL.
+* Odeberte, `/te` Pokud existuje v adrese URL.
 
 ## <a name="update-your-applications-and-apis"></a>Aktualizace aplikací a rozhraní API
 
-Kód ve vašich aplikacích a rozhraní API s podporou Azure AD B2C se může na `login.microsoftonline.com` několik míst odkazovat. Kód může mít například odkazy na toky uživatelů a koncové body tokenu. Místo toho aktualizujte následující informace `your-tenant-name.b2clogin.com`:
+Kód ve vašich aplikacích a rozhraní API s podporou Azure AD B2C se může na `login.microsoftonline.com` několik míst odkazovat. Kód může mít například odkazy na toky uživatelů a koncové body tokenu. Místo toho aktualizujte následující informace `your-tenant-name.b2clogin.com` :
 
 * Koncový bod autorizace
 * Koncový bod tokenu
@@ -91,7 +91,7 @@ Informace o migraci rozhraní API služby Azure API Management chráněných pom
 
 ### <a name="validateauthority-property"></a>Vlastnost ValidateAuthority
 
-Pokud používáte [MSAL.NET][msal-dotnet] v2 nebo starší, nastavte `false` vlastnost **ValidateAuthority** na instanci klienta tak, aby umožňovala přesměrování na *b2clogin.com*. Toto nastavení není vyžadováno pro MSAL.NET v3 a novější.
+Pokud používáte [MSAL.NET][msal-dotnet] v2 nebo starší, nastavte vlastnost **ValidateAuthority** na `false` instanci klienta tak, aby umožňovala přesměrování na *b2clogin.com*. Toto nastavení není vyžadováno pro MSAL.NET v3 a novější.
 
 ```csharp
 ConfidentialClientApplication client = new ConfidentialClientApplication(...); // Can also be PublicClientApplication

@@ -6,27 +6,27 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: azuread-dev
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 02/18/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: luleon, hirsin, paulgarn
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5d92b43b47a20a75d2c8b6becb69cfee5829e80f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bbd622ccb7aeecfff4d3dc744623105a593e6a67
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154844"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85383576"
 ---
-# <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Ladění jednotného přihlašování založeného na SAML pro aplikace v Azure Active Directory
+# <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Ladění jednotného přihlašování k aplikacím v Azure Active Directory založeného na SAML
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
 Naučte se najít a opravit problémy s [jednotným přihlašováním](../manage-apps/what-is-single-sign-on.md) pro aplikace v Azure Active Directory (Azure AD), které podporují [Security Assertion Markup Language (SAML) 2,0](https://en.wikipedia.org/wiki/Security_Assertion_Markup_Language). 
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Doporučujeme, abyste nainstalovali [rozšíření pro zabezpečené přihlašování k aplikacím](../user-help/my-apps-portal-end-user-troubleshoot.md#im-having-trouble-installing-the-my-apps-secure-sign-in-extension). Toto rozšíření prohlížeče usnadňuje shromažďování požadavků SAML a odpovědí SAML, které potřebujete k řešení problémů s jednotným přihlašováním. V případě, že nemůžete nainstalovat rozšíření, v tomto článku se dozvíte, jak vyřešit problémy s nainstalovaným i bez rozšíření.
 

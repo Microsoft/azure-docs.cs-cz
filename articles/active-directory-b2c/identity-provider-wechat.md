@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/08/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c53210939358255b20d0e976df9c4bff88580a80
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 462e33c836d8ca0a904e8f7b2e833dc7103311fc
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78184430"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85387894"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-wechat-account-using-azure-active-directory-b2c"></a>Nastavte si registraci a přihlaste se pomocí účtu WeChat pomocí Azure Active Directory B2C
 
@@ -24,14 +24,14 @@ ms.locfileid: "78184430"
 
 ## <a name="create-a-wechat-application"></a>Vytvoření aplikace v WeChat
 
-Pokud chcete účet WeChat použít jako poskytovatele identity v Azure Active Directory B2C (Azure AD B2C), musíte ve svém tenantovi vytvořit aplikaci, která ho bude představovat. Pokud ještě nemáte účet WeChat, můžete získat informace na adrese [https://kf.qq.com/faq/161220Brem2Q161220uUjERB.html](https://kf.qq.com/faq/161220Brem2Q161220uUjERB.html).
+Pokud chcete účet WeChat použít jako poskytovatele identity v Azure Active Directory B2C (Azure AD B2C), musíte ve svém tenantovi vytvořit aplikaci, která ho bude představovat. Pokud ještě nemáte účet WeChat, můžete získat informace na adrese [https://kf.qq.com/faq/161220Brem2Q161220uUjERB.html](https://kf.qq.com/faq/161220Brem2Q161220uUjERB.html) .
 
 ### <a name="register-a-wechat-application"></a>Registrace aplikace WeChat
 
-1. Přihlaste [https://open.weixin.qq.com/](https://open.weixin.qq.com/) se k přihlašovacím údajům WeChat.
+1. Přihlaste se k [https://open.weixin.qq.com/](https://open.weixin.qq.com/) přihlašovacím údajům WeChat.
 1. Vyberte**管理中心**(centrum pro správu).
 1. Použijte postup k registraci nové aplikace.
-1. Zadejte `https://your-tenant_name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` v**授权回调域**(adresa URL zpětného volání). Například pokud je název vašeho tenanta contoso, nastavte adresu URL na `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`.
+1. Zadejte `https://your-tenant_name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` v**授权回调域**(adresa URL zpětného volání). Například pokud je název vašeho tenanta contoso, nastavte adresu URL na `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp` .
 1. Zkopírujte **ID aplikace** a **klíč App**. Budete je potřebovat pro přidání poskytovatele identity k vašemu tenantovi.
 
 ## <a name="configure-wechat-as-an-identity-provider-in-your-tenant"></a>Konfigurace WeChat jako zprostředkovatele identity ve vašem tenantovi

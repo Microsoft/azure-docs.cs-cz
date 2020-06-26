@@ -15,12 +15,12 @@ ms.topic: reference
 ms.date: 10/03/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 454412bc20fef1a10a51e027b52b6d54df52e6c0
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 839ce418fa8ad72e18537cf673c8af0479409ba7
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84764600"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85386279"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Nejčastější dotazy k proxy aplikací služby Active Directory (Azure AD)
 
@@ -71,6 +71,13 @@ K dispozici jsou čítače sledování výkonu, které jsou nainstalovány spolu
 ### <a name="does-the-azure-ad-application-proxy-connector-have-to-be-on-the-same-subnet-as-the-resource"></a>Musí být konektor Azure Proxy aplikací služby AD ve stejné podsíti jako prostředek?
 
 Konektor se nemusí nacházet ve stejné podsíti. Nicméně potřebuje překlad názvů (DNS, soubor hostitelů) k prostředku a nezbytné síťové připojení (směrování do prostředku, porty otevřené v prostředku atd.). Doporučení najdete v tématu [požadavky na topologii sítě při použití proxy aplikací služby Azure Active Directory](application-proxy-network-topology.md).
+
+### <a name="what-versions-of-windows-server-can-i-install-a-connector-on"></a>Jaké verze Windows serveru mohu nainstalovat konektor?
+Proxy aplikací vyžaduje systém Windows Server 2012 R2 nebo novější. V současné době existuje omezení HTTP2 pro Windows Server 2019. Aby bylo možné úspěšně použít konektor v systému Windows Server 2019, je nutné přidat následující klíč registru a restartovat server:
+    ```
+    HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
+    ```
+
 
 ## <a name="application-configuration"></a>Konfigurace aplikací
 

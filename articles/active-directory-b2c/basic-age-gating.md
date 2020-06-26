@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/13/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 56cbeb8e8fe21f4b39c2f5c6af43e83ae330e5d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6bd93f9062f8446ce20436a7a04e2054aaf5be71
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78189969"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85386127"
 ---
 # <a name="enable-age-gating-in-azure-active-directory-b2c"></a>Povolit omezení stáří v Azure Active Directory B2C
 
@@ -27,11 +27,11 @@ Omezení stáří v Azure Active Directory B2C (Azure AD B2C) umožňuje identif
 
 Po povolení stáří v [uživatelském toku](user-flow-overview.md)se uživatelům zobrazí výzva, když byli narodili a ve které zemi nebo oblasti se v nich nacházejí. Pokud se uživatel přihlásí, že dříve nezadal informace, bude nutné ho zadat při příštím přihlášení. Pravidla se aplikují při každém přihlášení uživatele.
 
-Azure AD B2C používá informace, které uživatel zadá, k určení, jestli se jedná o vedlejší. Pole **ageGroup** se pak ve svém účtu aktualizuje. Hodnota může být `null`, `Undefined`, `Minor` `Adult`, a. `NotAdult`  Pole **ageGroup** a **consentProvidedForMinor** se pak použijí k výpočtu hodnoty **legalAgeGroupClassification**.
+Azure AD B2C používá informace, které uživatel zadá, k určení, jestli se jedná o vedlejší. Pole **ageGroup** se pak ve svém účtu aktualizuje. Hodnota může být `null` , `Undefined` ,, `Minor` `Adult` a `NotAdult` .  Pole **ageGroup** a **consentProvidedForMinor** se pak použijí k výpočtu hodnoty **legalAgeGroupClassification**.
 
 Omezení stáří zahrnuje dvě věkové hodnoty: stáří, které už někdo nepovažuje za nezletilou, a stáří, ve kterém by měl mít uživatel souhlas rodičů. V následující tabulce jsou uvedena věková pravidla, která se používají k definování vedlejších a méně závažného souhlasu.
 
-| Země/region | Název země nebo oblasti | Věk pro menší souhlas | Menší stáří |
+| Země/oblast | Název země nebo oblasti | Věk pro menší souhlas | Menší stáří |
 | -------------- | ------------------- | ----------------- | --------- |
 | Výchozí | Žádná | Žádná | 18 |
 | AE | Spojené arabské emiráty | Žádná | 21 |
@@ -59,7 +59,7 @@ Omezení stáří zahrnuje dvě věkové hodnoty: stáří, které už někdo ne
 | LU | Lucembursko | 16 | 18 |
 | LV | Lotyšsko | 16 | 18 |
 | MT | Malta | 16 | 18 |
-| Není k dispozici | Namibie | Žádná | 21 |
+| NA | Namibie | Žádná | 21 |
 | NL | Nizozemsko | 16 | 18 |
 | PL | Polsko | 13 | 18 |
 | PT | Portugalsko | 16 | 18 |
@@ -71,7 +71,7 @@ Omezení stáří zahrnuje dvě věkové hodnoty: stáří, které už někdo ne
 | TD | Čad | Žádná | 21 |
 | TH | Thajsko | Žádná | 20 |
 | TW | Tchaj-wan | Žádná | 20 |
-| USA | Spojené státy | 13 | 18 |
+| USA | USA | 13 | 18 |
 
 ## <a name="age-gating-options"></a>Možnosti uzavírání stáří
 
@@ -103,7 +103,7 @@ Po nastavení tenanta pro použití omezení stáří můžete tuto funkci použ
 1. Vytvořte tok uživatele s povoleným omezením stáří.
 2. Po vytvoření toku uživatele vyberte v nabídce možnost **vlastnosti** .
 3. V části omezení **stáří** vyberte **povoleno**.
-4. Pak se rozhodnete, jak chcete spravovat uživatele, kteří identifikují jako nezletilých. Pro **registraci nebo přihlášení**vyberte `Allow minors to access your application` nebo `Block minors from accessing your application`. Pokud je vybráno blokování nezletilých, vyberete `Send a JSON back to the application` nebo `Show an error message`.
+4. Pak se rozhodnete, jak chcete spravovat uživatele, kteří identifikují jako nezletilých. Pro **registraci nebo přihlášení**vyberte `Allow minors to access your application` nebo `Block minors from accessing your application` . Pokud je vybráno blokování nezletilých, vyberete `Send a JSON back to the application` nebo `Show an error message` .
 
 
 

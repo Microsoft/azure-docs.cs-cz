@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72b21514e07b65b89d10b317da95ec7d92ecae78
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: a76d9ccbf7b83ea28de3ef5bb1d140caa7201ebd
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85360329"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85386364"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Jak spravovat místní skupinu Administrators na zařízeních připojených k Azure AD
 
 Abyste mohli spravovat zařízení s Windows, musíte být členem místní skupiny Administrators. V rámci procesu připojení Azure Active Directory (Azure AD) aktualizuje Azure AD členství této skupiny na zařízení. Aktualizaci členství můžete přizpůsobit tak, aby vyhovovala vašim obchodním požadavkům. Aktualizace členství je například užitečná, pokud chcete pracovníkům technické podpory povolit úkoly vyžadující práva správce na zařízení.
 
-Tento článek vysvětluje, jak funguje aktualizace členství a jak je můžete přizpůsobit během připojení k Azure AD. Obsah tohoto článku se nevztahuje k **hybridní** službě Azure AD JOIN.
+Tento článek vysvětluje, jak funguje členství v místních správcích a jak je můžete přizpůsobit během připojení k Azure AD. Obsah tohoto článku se nevztahuje na zařízení **připojená k hybridní službě Azure AD** .
 
 ## <a name="how-it-works"></a>Jak to funguje
 
@@ -59,10 +59,13 @@ Pokud chcete upravit roli Správce zařízení, nakonfigurujte **Další místn�
 >[!NOTE]
 > Tato možnost vyžaduje klienta Azure AD Premium. 
 
-Správci zařízení mají přiřazená všechna zařízení připojená k Azure AD. Nemůžete nastavit rozsah správců zařízení na určitou sadu zařízení. Aktualizace role Správce zařízení nutně nemá bezprostřední dopad na ovlivněné uživatele. V zařízeních, ve kterých je uživatel již přihlášen *, dojde k aktualizaci oprávnění při následujících* akcích:
+Správci zařízení mají přiřazená všechna zařízení připojená k Azure AD. Nemůžete nastavit rozsah správců zařízení na určitou sadu zařízení. Aktualizace role Správce zařízení nutně nemá bezprostřední dopad na ovlivněné uživatele. Na zařízeních, ve kterých je uživatel už přihlášený, se zvýšení oprávnění provede, *když dojde k následujícím* akcím:
 
-- do 4 hodin bylo předáno, aby služba Azure AD vydávala nový primární obnovovací token s příslušnými oprávněními. 
+- Až 4 hodiny uplynulo pro Azure AD za účelem vydání nového primárního obnovovacího tokenu s příslušnými oprávněními. 
 - Pokud chcete aktualizovat svůj profil, odhlaste se a přihlaste se k němu, ne zamknout nebo odemknout.
+
+>[!NOTE]
+> Výše uvedené akce se nevztahují na uživatele, kteří předtím nebyli přihlášení k příslušnému zařízení. V takovém případě se oprávnění správce uplatní hned po prvním přihlášení k zařízení. 
 
 ## <a name="manage-regular-users"></a>Správa běžných uživatelů
 
@@ -88,7 +91,7 @@ Nelze přiřadit skupiny k roli Správce zařízení, pouze jednotliví uživate
 
 Správci zařízení mají přiřazená všechna zařízení připojená k Azure AD. Nemůžou být vymezené na konkrétní sadu zařízení.
 
-Když odeberete uživatele z role Správce zařízení, pořád mají oprávnění místního správce na zařízení, pokud se k němu přihlásí. Oprávnění se odvolá během dalšího přihlášení po 4 hodinách při vydání nového primárního obnovovacího tokenu.
+Když odeberete uživatele z role Správce zařízení, pořád mají oprávnění místního správce na zařízení, pokud se k němu přihlásí. Oprávnění se odvolá při příštím přihlášení při vydání nového primárního obnovovacího tokenu. Toto odvolání, podobně jako zvýšení oprávnění, může trvat až 4 hodiny.
 
 ## <a name="next-steps"></a>Další kroky
 

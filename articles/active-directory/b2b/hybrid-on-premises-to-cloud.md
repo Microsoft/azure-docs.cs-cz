@@ -4,7 +4,7 @@ description: Udělte místně spravovaným externím partnerům přístup k mís
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/24/2018
 ms.author: mimart
 author: msmimart
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcc8c0538bb3362818a4172dd42905fd72b19812
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 76b17391008160cfea9cbf029932d7081466cf3d
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74272605"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85386925"
 ---
 # <a name="grant-locally-managed-partner-accounts-access-to-cloud-resources-using-azure-ad-b2b-collaboration"></a>Přidělte místně spravované partnerské účty přístup k prostředkům cloudu pomocí spolupráce Azure AD B2B.
 
@@ -32,7 +32,7 @@ Než povolíte synchronizaci atributu UserType, musíte se nejdřív rozhodnout,
 K tomu patří dva běžné přístupy:
 
 - Určete nepoužitý místní atribut služby Active Directory (například extensionAttribute1), který se použije jako zdrojový atribut. 
-- Alternativně je odvozena hodnota atributu UserType z jiných vlastností. Například chcete synchronizovat všechny uživatele jako hosta, pokud jejich místní atribut Active Directory userPrincipalName končí na * \@Partners.contoso.com*domény.
+- Alternativně je odvozena hodnota atributu UserType z jiných vlastností. Například chcete synchronizovat všechny uživatele jako hosta, pokud jejich místní atribut Active Directory UserPrincipalName končí na * \@ Partners.contoso.com*domény.
  
 Podrobné požadavky atributů najdete v tématu [povolení synchronizace usertype](../hybrid/how-to-connect-sync-change-the-configuration.md#enable-synchronization-of-usertype). 
 

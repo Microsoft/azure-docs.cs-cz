@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/25/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: eadac0e973b361b1fdee63dcc9cfa848a0b2bacb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d432912cb0442744061500fc01bdd86a4c5d97ef
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78183954"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85385344"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c-preview"></a>Nastavení registrace a přihlášení k telefonu pomocí vlastních zásad v Azure AD B2C (Preview)
 
@@ -48,7 +48,7 @@ V následujících krocích se předpokládá, že jste splnili [požadavky](#pr
 
     `active-directory-b2c-custom-policy-starterpack/scenarios/`**`phone-number-passwordless`**
 
-1. V každém souboru nahraďte řetězec `yourtenant` názvem vašeho tenanta Azure AD B2C. Například pokud je název vašeho tenanta B2C *contosob2c*, všechny instance `yourtenant.onmicrosoft.com` se stanou. `contosob2c.onmicrosoft.com`
+1. V každém souboru nahraďte řetězec `yourtenant` názvem vašeho tenanta Azure AD B2C. Například pokud je název vašeho tenanta B2C *contosob2c*, všechny instance `yourtenant.onmicrosoft.com` se stanou `contosob2c.onmicrosoft.com` .
 
 1. Dokončete kroky v části [Přidání ID aplikací do vlastní zásady](custom-policy-get-started.md#add-application-ids-to-the-custom-policy) [v tématu Začínáme s vlastními zásadami v Azure Active Directory B2C](custom-policy-get-started.md). V tomto případě aktualizujte `/phone-number-passwordless/` **`Phone_Email_Base.xml`** **ID aplikace (klienta)** dvou aplikací, které jste zaregistrovali při dokončování požadavků, *IdentityExperienceFramework* a *ProxyIdentityExperienceFramework*.
 
@@ -58,21 +58,21 @@ V následujících krocích se předpokládá, že jste splnili [požadavky](#pr
 1. V části **zásady**vyberte **Architektura prostředí identity**.
 1. Vyberte **Odeslat vlastní zásadu**.
 1. Soubory zásad nahrajte v následujícím pořadí:
-    1. *Phone_Email_Base. XML*
-    1. *SignUpOrSignInWithPhone. XML*
-    1. *SignUpOrSignInWithPhoneOrEmail. XML*
-    1. *ProfileEditPhoneOnly. XML*
-    1. *ProfileEditPhoneEmail. XML*
-    1. *ChangePhoneNumber. XML*
-    1. *PasswordResetEmail. XML*
+    1. *Phone_Email_Base.xml*
+    1. *SignUpOrSignInWithPhone.xml*
+    1. *SignUpOrSignInWithPhoneOrEmail.xml*
+    1. *ProfileEditPhoneOnly.xml*
+    1. *ProfileEditPhoneEmail.xml*
+    1. *ChangePhoneNumber.xml*
+    1. *PasswordResetEmail.xml*
 
-Při nahrávání každého souboru Azure přidá předponu `B2C_1A_`.
+Při nahrávání každého souboru Azure přidá předponu `B2C_1A_` .
 
 ## <a name="test-the-custom-policy"></a>Testování vlastních zásad
 
 1. V části **vlastní zásady**vyberte **B2C_1A_SignUpOrSignInWithPhone**.
 1. V části **Vybrat aplikaci**vyberte aplikaci *WebApp1* , kterou jste zaregistrovali při dokončování požadavků.
-1. V **možnosti vybrat adresu URL odpovědi**zvolte `https://jwt.ms`.
+1. V **možnosti vybrat adresu URL odpovědi**zvolte `https://jwt.ms` .
 1. Vyberte **Spustit nyní** a zaregistrujte se pomocí e-mailové adresy nebo telefonního čísla.
 1. Vyberte znovu **Spustit** znovu a přihlaste se pomocí stejného účtu, abyste měli jistotu, že máte správnou konfiguraci.
 
@@ -86,7 +86,7 @@ Pomocí [Microsoft Graph](manage-user-accounts-graph-api.md)můžete najít uži
 GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+{phone number}' and c/issuer eq '{tenant name}.onmicrosoft.com')
 ```
 
-Příklad:
+Například:
 
 ```http
 GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+450334567890' and c/issuer eq 'contosob2c.onmicrosoft.com')

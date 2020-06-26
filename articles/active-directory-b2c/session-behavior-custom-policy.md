@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3841f4c4f068fd597bd537288a45dd188c7d1a2f
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: a2f20a4521efe2806c4bc66e4612b99caf84382a
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85203331"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85385259"
 ---
 # <a name="configure-session-behavior-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurace chování relace pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -60,7 +60,7 @@ Když uživatele přesměrujete na koncový bod Azure AD B2Cho odhlašování (p
 Aby bylo možné podporovat jednotné přihlašování, musí technické profily vystavitele tokenů pro tokeny JWT i SAML určovat:
 
 - Název protokolu, například`<Protocol Name="OpenIdConnect" />`
-- Odkaz na technický profil relace, například `UseTechnicalProfileForSessionManagement ReferenceId="SM-jwt-issuer" />` .
+- Odkaz na technický profil relace, například `UseTechnicalProfileForSessionManagement ReferenceId="SM-OAuth-issuer" />` .
 
 Následující příklad znázorňuje vystavitele tokenů JWT a SAML s jednotným odhlášením:
 
@@ -74,7 +74,7 @@ Následující příklad znázorňuje vystavitele tokenů JWT a SAML s jednotný
       <Protocol Name="OpenIdConnect" />
       <OutputTokenFormat>JWT</OutputTokenFormat>
       ...    
-      <UseTechnicalProfileForSessionManagement ReferenceId="SM-jwt-issuer" />
+      <UseTechnicalProfileForSessionManagement ReferenceId="SM-OAuth-issuer" />
     </TechnicalProfile>
 
     <!-- Session management technical profile for OIDC based tokens -->

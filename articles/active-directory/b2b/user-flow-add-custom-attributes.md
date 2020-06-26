@@ -6,17 +6,17 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: mimart
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbf5b758059dc44f17afba191e49fc170e38feef
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 4369f42df8862adbc0b7fafd42979b9ceac0729b
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84886421"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85386602"
 ---
 # <a name="define-custom-attributes-for-user-flows-preview"></a>Definování vlastních atributů toků uživatelů (Preview)
 
@@ -27,7 +27,7 @@ ms.locfileid: "84886421"
 
 Pro každou aplikaci můžete mít různé požadavky na informace, které chcete shromažďovat během registrace. Azure AD obsahuje integrovanou sadu informací uložených v atributech, jako je křestní jméno, příjmení, město a poštovní směrovací číslo. Pomocí Azure AD můžete roztáhnout sadu atributů uložených v účtu Guest, když se externí uživatel přihlásí pomocí toku uživatele.
 
-V Azure Portal můžete vytvořit vlastní atributy a použít je v uživatelských tocích samoobslužné registrace. Tyto atributy můžete také číst a zapisovat pomocí [rozhraní Microsoft Graph API](https://docs.microsoft.com/azure/active-directory-b2c/manage-user-accounts-graph-api). Rozhraní Microsoft Graph API podporuje vytváření a aktualizaci uživatele s atributy rozšíření. Atributy rozšíření v Graph API jsou pojmenovány pomocí konvence `extension_<extensions-app-id>_attributename` . Příklad:
+V Azure Portal můžete vytvořit vlastní atributy a použít je v uživatelských tocích samoobslužné registrace. Tyto atributy můžete také číst a zapisovat pomocí [rozhraní Microsoft Graph API](https://docs.microsoft.com/azure/active-directory-b2c/manage-user-accounts-graph-api). Rozhraní Microsoft Graph API podporuje vytváření a aktualizaci uživatele s atributy rozšíření. Atributy rozšíření v Graph API jsou pojmenovány pomocí konvence `extension_<extensions-app-id>_attributename` . Například:
 
 ```JSON
 "extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyNumber": "212342"

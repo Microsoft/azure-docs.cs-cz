@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b5d1f44b35b89607fecf6875b1e56be97f37d0fa
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 1ea11008155899e09bf461e56a8bb4981d37238d
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85203634"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85385412"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>Zabezpečení rozhraní API služby Azure API Management pomocí Azure AD B2C
 
@@ -73,7 +73,7 @@ Dále Získejte dobře známou adresu URL konfigurace pro některý z vašich Az
 
     Tuto hodnotu použijete v další části při konfiguraci rozhraní API v Azure API Management.
 
-Teď byste měli mít zaznamenané dvě adresy URL pro použití v další části: OpenID Connected a adresa URL koncového bodu konfigurace a identifikátor URI vystavitele. Příklad:
+Teď byste měli mít zaznamenané dvě adresy URL pro použití v další části: OpenID Connected a adresa URL koncového bodu konfigurace a identifikátor URI vystavitele. Například:
 
 ```
 https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_signupsignin1/v2.0/.well-known/openid-configuration
@@ -154,7 +154,7 @@ Klientská aplikace (v tomto případě), která volá publikované rozhraní AP
 
 Po nahrání přístupového tokenu a klíče předplatného APIM jste teď připraveni otestovat, jestli jste správně nakonfigurovali zabezpečený přístup k rozhraní API.
 
-1. Vytvoří novou `GET` žádost v [post](https://www.getpostman.com/). V poli Adresa URL požadavku Zadejte koncový bod seznamu mluvčího rozhraní API, které jste publikovali jako jeden z požadovaných součástí. Příklad:
+1. Vytvoří novou `GET` žádost v [post](https://www.getpostman.com/). V poli Adresa URL požadavku Zadejte koncový bod seznamu mluvčího rozhraní API, které jste publikovali jako jeden z požadovaných součástí. Například:
 
     `https://contosoapim.azure-api.net/conference/speakers`
 

@@ -7,28 +7,28 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/08/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 62a283efb93987d3c4a6564c9b25d2031c269559
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e07be01a0fb6d74b4dcef5cbc6ec129f95fd2e7d
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80051466"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85387928"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-twitter-account-using-azure-active-directory-b2c"></a>Nastavte si registraci a přihlaste se pomocí účtu Twitteru pomocí Azure Active Directory B2C
 
 ## <a name="create-an-application"></a>Vytvoření aplikace
 
-Pokud chcete jako poskytovatele identity v Azure AD B2C používat Twitter, musíte vytvořit aplikaci Twitter. Pokud ještě nemáte účet na Twitteru, můžete se zaregistrovat [https://twitter.com/signup](https://twitter.com/signup).
+Pokud chcete jako poskytovatele identity v Azure AD B2C používat Twitter, musíte vytvořit aplikaci Twitter. Pokud ještě nemáte účet na Twitteru, můžete se zaregistrovat [https://twitter.com/signup](https://twitter.com/signup) .
 
 1. Přihlaste se k webu pro [vývojáře na Twitteru](https://developer.twitter.com/en/apps) pomocí přihlašovacích údajů k účtu Twitteru.
 1. Vyberte **vytvořit aplikaci**.
 1. Zadejte **název aplikace** a **Popis aplikace**.
-1. Do **adresy URL webu**zadejte `https://your-tenant.b2clogin.com`. Nahraďte `your-tenant` názvem vašeho tenanta. Například, `https://contosob2c.b2clogin.com`.
-1. Jako **adresu URL zpětného volání**zadejte `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-user-flow-Id/oauth1/authresp`. Nahraďte `your-tenant` názvem vašeho tenanta a `your-user-flow-Id` identifikátorem toku uživatele. Například, `b2c_1A_signup_signin_twitter`. Při zadávání názvu tenanta a ID toku uživatele je potřeba použít malá písmena, i když jsou v Azure AD B2C definované velkými písmeny.
+1. Do **adresy URL webu**zadejte `https://your-tenant.b2clogin.com` . Nahraďte `your-tenant` názvem vašeho tenanta. Například, `https://contosob2c.b2clogin.com`.
+1. Jako **adresu URL zpětného volání**zadejte `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-user-flow-Id/oauth1/authresp` . Nahraďte `your-tenant` názvem vašeho tenanta a `your-user-flow-Id` identifikátorem toku uživatele. Například, `b2c_1A_signup_signin_twitter`. Při zadávání názvu tenanta a ID toku uživatele je potřeba použít malá písmena, i když jsou v Azure AD B2C definované velkými písmeny.
 1. V dolní části stránky si přečtěte a přijměte podmínky a pak vyberte **vytvořit**.
 1. Na stránce **podrobností aplikace** vyberte **Upravit > upravit podrobnosti**, zaškrtněte políčko **Povolit přihlášení pomocí Twitteru**a potom vyberte **Uložit**.
 1. Vyberte **klíče a tokeny** a zaznamenejte **klíč rozhraní API příjemce** a hodnoty **tajného klíče rozhraní API příjemce** , které chcete použít později.

@@ -9,12 +9,12 @@ ms.date: 06/15/2020
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
-ms.openlocfilehash: 383b59d10fa1de1b2ee0ea8b505c164577487255
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: 7052e9203532320a7de5197e983d40cb0a34b50d
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84974377"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374776"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Co je nového ve virtuálním počítači s Windows?
 
@@ -73,6 +73,8 @@ Provedli jsme několik vylepšení Microsoft Teams pro virtuální počítače s
 Další informace najdete v [našem blogovém příspěvku](https://azure.microsoft.com/updates/windows-virtual-desktop-media-optimization-for-microsoft-teams-is-now-available-in-public-preview/).
 
 ## <a name="next-steps"></a>Další kroky
+
+Přečtěte si o budoucích plánech v [Microsoft 365 plán virtuálních klientů pro Windows](https://www.microsoft.com/microsoft-365/roadmap?filters=Windows%20Virtual%20Desktop).
 
 V těchto článcích najdete informace o aktualizacích pro naše klienty pro virtuální počítače a službu Vzdálená plocha systému Windows:
 

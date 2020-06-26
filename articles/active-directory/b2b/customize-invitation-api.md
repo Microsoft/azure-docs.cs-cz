@@ -4,19 +4,19 @@ description: Spolupráce B2B ve službě Azure Active Directory podporuje vaše 
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: reference
+ms.topic: how-to
 ms.date: 04/11/2017
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a090ee3f9588ff6bff01e12db469bf04407a7fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e9f62ece12732c45037bcad328eec162bebb4e6a
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79263462"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85387197"
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Azure Active Directory rozhraní API pro spolupráci B2B a přizpůsobení
 
@@ -117,7 +117,7 @@ Get-AzureADUser -Filter "UserState eq 'PendingAcceptance'" | Format-List -Proper
 
 ## <a name="see-also"></a>Viz také
 
-Podívejte se na reference k rozhraní API [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation)pozvánky v.
+Podívejte se na reference k rozhraní API pozvánky v [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) .
 
 ## <a name="next-steps"></a>Další kroky
 

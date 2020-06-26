@@ -12,12 +12,12 @@ ms.date: 06/01/2020
 ms.author: marsma
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 309d9f24030b4d1cb31cdc3ebd10663c50958fbe
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 6f516ae9e0bfec160c2ca6b5a0a45a419dd8480b
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300025"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85386721"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft Identity Platform Code Samples (koncový bod verze 2.0)
 
@@ -37,17 +37,19 @@ Můžete také přispívat na ukázky na GitHubu. Další informace najdete v t�
 
 ## <a name="single-page-applications"></a>Jednostránkové aplikace
 
-Tyto ukázky ukazují, jak napsat jednostránkovou aplikaci zabezpečenou technologií Microsoft Identity Platform. Tyto ukázky používají jeden z charakterů MSAL. js.
+Tyto ukázky ukazují, jak napsat jednostránkovou aplikaci zabezpečenou technologií Microsoft Identity Platform. Tyto ukázky používají jeden z typů MSAL.js.
 
-| Platforma | Popis | Odkaz |
+| Platforma | Description | Odkaz |
 | -------- | --------------------- | -------- |
-| ![Tento obrázek ukazuje JavaScript logo JavaScript ](media/sample-v2-code/logo_js.png) [(msal. js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) . | Volání Microsoft Graph |[JavaScript – graphapi-v2](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) |
-| ![Tento obrázek ukazuje JavaScript logo JavaScript ](media/sample-v2-code/logo_js.png) [(msal. js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) . | Volá Microsoft Graph pomocí toku kódu ověřování s/PKCE. |[JavaScript – v2](https://github.com/Azure-Samples/ms-identity-javascript-v2) |
-| ![Tento obrázek ukazuje JavaScript logo JavaScript ](media/sample-v2-code/logo_js.png) [(msal. js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) . | Volá B2C |[B2C-JavaScript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) |
-| ![Na tomto obrázku je znázorněný JavaScript s logem úhlu ](media/sample-v2-code/logo_angular.png) [(MSALý úhlový)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) .| Volá vlastní webové rozhraní API. | [MS-identity-JavaScript-úhlové ověřování – aspnetcore-WebApi](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnetcore-webapi) |
-| ![Na tomto obrázku je znázorněný JavaScript s logem úhlu ](media/sample-v2-code/logo_angular.png) [(MSALý úhlový)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) .| Volání Microsoft Graph  | [Active-Directory-JavaScript-singlepageapp-úhlová](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular) |
-| ![Na tomto obrázku je znázorněný JavaScript s logem reakce ](media/sample-v2-code/logo_react.png) [(msal. js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) .| Volá vlastní webové rozhraní API, které zase volá Microsoft Graph.  | [MS-identity-JavaScript-reakci-Spa-dotnetcore-WebApi-OBO](https://github.com/Azure-Samples/ms-identity-javascript-react-spa-dotnetcore-webapi-obo) |
-| ![Na tomto obrázku je znázorněný JavaScript s logem úhlu ](media/sample-v2-code/logo_angular.png) [(MSALý úhlový)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) . | Volá B2C |[Active-Directory-B2C-JavaScript-úhlů-Spa](https://github.com/Azure-Samples/active-directory-b2c-javascript-angular-spa) |
+| ![Tento obrázek ukazuje JavaScript logo JavaScript ](media/sample-v2-code/logo_js.png) [(msal.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | Microsoft Graph volání SPA |[JavaScript – graphapi-v2](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) |
+| ![Tento obrázek ukazuje JavaScript logo JavaScript ](media/sample-v2-code/logo_js.png) [(msal.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | Zabezpečené ověřování hesla – volání Microsoft Graph pomocí toku kódu ověřování s/PKCE |[JavaScript – v2](https://github.com/Azure-Samples/ms-identity-javascript-v2) |
+| ![Tento obrázek ukazuje JavaScript logo JavaScript ](media/sample-v2-code/logo_js.png) [(msal.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | B2C, volání hesla |[B2C-JavaScript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) |
+| ![Na tomto obrázku je znázorněný JavaScript s logem úhlu ](media/sample-v2-code/logo_angular.png) [(MSALý úhlový)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) .| Microsoft Graph volání SPA  | [Active-Directory-JavaScript-singlepageapp-úhlová](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular) |
+| ![Na tomto obrázku je znázorněný JavaScript s logem úhlu ](media/sample-v2-code/logo_angular.png) [(MSALý úhlový)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) .| SPA volá vlastní webové rozhraní API. | [MS-identity-JavaScript-úhlové ověřování – aspnetcore-WebApi](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnetcore-webapi) |
+| ![Na tomto obrázku je znázorněný JavaScript s logem úhlu ](media/sample-v2-code/logo_angular.png) [(MSALý úhlový)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) . | B2C, volání hesla |[Active-Directory-B2C-JavaScript-úhlů-Spa](https://github.com/Azure-Samples/active-directory-b2c-javascript-angular-spa) |
+| ![Na tomto obrázku je znázorněný JavaScript s logem reakce ](media/sample-v2-code/logo_react.png) [(msal.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core)| SPA volá vlastní webové rozhraní API, které zase volá Microsoft Graph  | [MS-identity-JavaScript-reakci-Spa-dotnetcore-WebApi-OBO](https://github.com/Azure-Samples/ms-identity-javascript-react-spa-dotnetcore-webapi-obo) |
+| ![Na tomto obrázku je znázorněný JavaScript s logem úhlu ](media/sample-v2-code/logo_angular.png) [(MSALý úhlový)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) . | Víceklientské ověřování SPA volá vlastní webové rozhraní API pro více tenantů. |[MS-identity-JavaScript-úhlů-Spa-ASPNET-WebApi-víceklientské tenant](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnet-webapi-multitenant) |
+| ![Na tomto obrázku je znázorněný JavaScript s logem úhlu ](media/sample-v2-code/logo_angular.png) [(MSALý úhlový)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) . | SPA volá vlastní webové rozhraní API s aplikačními rolemi a skupinami zabezpečení. |[MS-identity-JavaScript-úhlová-Spa-dotnetcore-WebApi-role-skupiny](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-dotnetcore-webapi-roles-groups) |
 
 ## <a name="web-applications"></a>Webové aplikace
 
@@ -55,7 +57,7 @@ Následující ukázky ilustrují webové aplikace, které přihlásí uživatel
 
 | Platforma | Pouze přihlášení uživatelé | Přihlašování uživatelů a volání Microsoft Graph |
 | -------- | ------------------- | --------------------------------- |
-| ![Tento obrázek ukazuje logo ASP.NET Core.](media/sample-v2-code/logo_NETcore.png)</p>Jádro ASP.NET | [Kurz pro uživatele ASP.NET Core WebApp přihlašování uživatelů](https://aka.ms/aspnetcore-webapp-sign-in) | Stejná ukázka v [ASP.NET Core volání webové aplikace Microsoft Graph](https://aka.ms/aspnetcore-webapp-call-msgraph) fáze |
+| ![Tento obrázek ukazuje logo ASP.NET Core.](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core | [Kurz pro uživatele ASP.NET Core WebApp přihlašování uživatelů](https://aka.ms/aspnetcore-webapp-sign-in) | Stejná ukázka v [ASP.NET Core volání webové aplikace Microsoft Graph](https://aka.ms/aspnetcore-webapp-call-msgraph) fáze |
 | ![Na tomto obrázku vidíte logo ASP.NET](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET | [Rychlý Start ASP.NET](https://github.com/AzureAdQuickstarts/AppModelv2-WebApp-OpenIDConnect-DotNet) </p> [dotnet-WebApp-openidconnect-v2](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-v2)  |  [dotnet – s omezením admin-scopes-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) </p> |[MSGraph – školení – aspnetmvcapp](https://github.com/microsoftgraph/msgraph-training-aspnetmvcapp)
 | ![Tento obrázek ukazuje logo Java.](media/sample-v2-code/logo_java.png)  |                   | [MS-identity – Java – WebApp](https://github.com/Azure-Samples/ms-identity-java-webapp) |
 | ![Tento obrázek ukazuje logo Pythonu.](media/sample-v2-code/logo_python.png)  |                   | [MS-identity – Python – WebApp](https://github.com/Azure-Samples/ms-identity-python-webapp) |
@@ -107,11 +109,11 @@ Následující ukázky ukazují, jak chránit webové rozhraní API pomocí konc
 
 | Platforma | Ukázka |
 | -------- | ------------------- |
-| ![Tento obrázek ukazuje logo ASP.NET Core.](media/sample-v2-code/logo_NETcore.png)</p>Jádro ASP.NET | ASP.NET Core webové rozhraní API (služba) [dotnet-Native-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi-calls-msgraph)  |
+| ![Tento obrázek ukazuje logo ASP.NET Core.](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core | ASP.NET Core webové rozhraní API (služba) [dotnet-Native-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi-calls-msgraph)  |
 | ![Na tomto obrázku vidíte logo ASP.NET](media/sample-v2-code/logo_NET.png)</p>ASP.NET MVC | Webové rozhraní API (služba) [MS-identity-ASPNET-WebApi-OnBehalfOf](https://github.com/Azure-Samples/ms-identity-aspnet-webapi-onbehalfof) |
 | ![Tento obrázek ukazuje logo Java.](media/sample-v2-code/logo_java.png) | Webové rozhraní API (služba) [MS-identity-Java-WebApi](https://github.com/Azure-Samples/ms-identity-java-webapi) |
-| ![Tento obrázek ukazuje logo Node. js.](media/sample-v2-code/logo_nodejs.png) | Webové rozhraní API (služba) [Active-Directory-JavaScript-NodeJS-WebApi-v2](https://github.com/Azure-Samples/active-directory-javascript-nodejs-webapi-v2) |
-| ![Tento obrázek ukazuje logo Node. js.](media/sample-v2-code/logo_nodejs.png) | Webové rozhraní API B2C (služba) [služby Active-Directory-B2C-JavaScript-NodeJS-WebApi](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi) |
+| ![Tento obrázek ukazuje logo Node.js.](media/sample-v2-code/logo_nodejs.png) | Webové rozhraní API (služba) [Active-Directory-JavaScript-NodeJS-WebApi-v2](https://github.com/Azure-Samples/active-directory-javascript-nodejs-webapi-v2) |
+| ![Tento obrázek ukazuje logo Node.js.](media/sample-v2-code/logo_nodejs.png) | Webové rozhraní API B2C (služba) [služby Active-Directory-B2C-JavaScript-NodeJS-WebApi](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi) |
 
 ## <a name="azure-functions-as-web-apis"></a>Azure Functions jako webová rozhraní API
 
@@ -119,10 +121,10 @@ Následující ukázky ukazují, jak chránit funkci Azure pomocí HttpTrigger a
 
 | Platforma | Ukázka |
 | -------- | ------------------- |
-| ![Tento obrázek ukazuje logo ASP.NET Core.](media/sample-v2-code/logo_NETcore.png)</p>Jádro ASP.NET | ASP.NET Core rozhraní Web API (služba) Azure function of [dotnet-Native-aspnetcore-v2](https://github.com/Azure-Samples/ms-identity-dotnet-webapi-azurefunctions)  |
-| ![Tento obrázek ukazuje logo Node. js.](media/sample-v2-code/logo_nodejs.png)</p>NodeJS | Webové rozhraní API (služba) služby [NodeJS a Passport-Azure-AD](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-azurefunctions) |
+| ![Tento obrázek ukazuje logo ASP.NET Core.](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core | ASP.NET Core rozhraní Web API (služba) Azure function of [dotnet-Native-aspnetcore-v2](https://github.com/Azure-Samples/ms-identity-dotnet-webapi-azurefunctions)  |
+| ![Tento obrázek ukazuje logo Node.js.](media/sample-v2-code/logo_nodejs.png)</p>NodeJS | Webové rozhraní API (služba) služby [NodeJS a Passport-Azure-AD](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-azurefunctions) |
 | ![Tento obrázek ukazuje logo Pythonu.](media/sample-v2-code/logo_python.png)</p>Python | Webové rozhraní API (služba) [Pythonu](https://github.com/Azure-Samples/ms-identity-python-webapi-azurefunctions) |
-| ![Tento obrázek ukazuje logo Node. js.](media/sample-v2-code/logo_nodejs.png)</p>NodeJS | Webové rozhraní API (služba) pro [NodeJS a Passport – Azure-AD s využitím jménem](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions) |
+| ![Tento obrázek ukazuje logo Node.js.](media/sample-v2-code/logo_nodejs.png)</p>NodeJS | Webové rozhraní API (služba) pro [NodeJS a Passport – Azure-AD s využitím jménem](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions) |
 
 ## <a name="other-microsoft-graph-samples"></a>Další ukázky Microsoft Graph
 

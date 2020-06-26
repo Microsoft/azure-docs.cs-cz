@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/14/2020
-ms.openlocfilehash: a71d8e251de1d1aedea1d1a329a27bfa236ddfff
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b2e77049d121a11a45a096017f18f1345f6c6884
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652379"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374844"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Přehled Azure HDInsight 4,0
 
@@ -91,6 +91,7 @@ Neexistuje žádná podporovaná cesta upgradu z předchozích verzí HDInsight 
 
 * HDInsight 4,0 nepodporuje MapReduce pro Apache Hive. Místo toho použijte Apache Tez. Přečtěte si další informace o [Apache Tez](https://tez.apache.org/).
 * HDInsight 4,0 nepodporuje Apache Storm.
+* HDInsight 4,0 nepodporuje typ clusteru ML Services.
 * Zobrazení podregistru už není dostupné v HDInsight 4,0.
 * Překladač prostředí v Apache Zeppelin se nepodporuje v clusterech Spark a interaktivních dotazech.
 * V clusteru Spark-LLAP není možné *zakázat* LLAP. LLAP můžete jenom vypnout.

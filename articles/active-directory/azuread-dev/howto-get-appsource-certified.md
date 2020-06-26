@@ -6,19 +6,19 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: azuread-dev
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 08/21/2018
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3ad4efa3b8126a9b9c6557822f61e3bfff3fe120
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 163087461dbbcfd036b348f69362f0ad0010e791
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154878"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85383848"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Jak získat AppSource Certified pro Azure Active Directory
 
@@ -38,7 +38,7 @@ Pokud se chcete dozvědět, jak integrovat aplikaci se službou Azure AD pomocí
 
 Pokud chcete v aplikaci povolit více tenantů, postupujte takto:
 1. Nastavte `Multi-Tenanted` vlastnost na `Yes` informace o registraci vaší aplikace v [Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps). Ve výchozím nastavení jsou aplikace vytvořené v Azure Portal nakonfigurované jako *[jeden tenant](#single-tenant-applications)*.
-1. Aktualizujte kód, aby odesílal požadavky na `common` koncový bod. To provedete tak, že aktualizujete koncový bod z `https://login.microsoftonline.com/{yourtenant}` na `https://login.microsoftonline.com/common*`.
+1. Aktualizujte kód, aby odesílal požadavky na `common` koncový bod. To provedete tak, že aktualizujete koncový bod z `https://login.microsoftonline.com/{yourtenant}` na `https://login.microsoftonline.com/common*` .
 1. U některých platforem, jako je například ASP .NET, je nutné také aktualizovat kód, aby přijímal více vystavitelů.
 
 Další informace o víceklientské architektuře najdete v tématu [jak se přihlásit k libovolnému uživateli Azure Active Directory (Azure AD) pomocí vzoru aplikace pro více tenantů](../develop/howto-convert-app-to-be-multi-tenant.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).
@@ -117,7 +117,7 @@ Další informace o zkušebním prostředí AppSource najdete v [tomto videu](ht
 
 Pro integraci služby Azure AD používáme pro poskytování podpory [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource) s komunitou.
 
-Důrazně doporučujeme, abyste si nejdřív položili své dotazy na Stack Overflow a mohli si projít stávající problémy, abyste zjistili, jestli se někdo na svůj dotaz předá. Ujistěte se, že jsou vaše dotazy nebo komentáře označeny [ `[azure-active-directory]` pomocí `[appsource]`a ](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource).
+Důrazně doporučujeme, abyste si nejdřív položili své dotazy na Stack Overflow a mohli si projít stávající problémy, abyste zjistili, jestli se někdo na svůj dotaz předá. Ujistěte se, že jsou vaše dotazy nebo komentáře označeny pomocí [ `[azure-active-directory]` a `[appsource]` ](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource).
 
 Následující komentáře vám poskytnou zpětnou vazbu a pomáhají nám zdokonalit a obsloužit náš obsah.
 

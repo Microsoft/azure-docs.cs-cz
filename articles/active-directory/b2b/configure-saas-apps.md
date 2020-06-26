@@ -4,7 +4,7 @@ description: Kód a ukázky PowerShellu pro spolupráci B2B služby Azure Active
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2017
 ms.author: mimart
 author: msmimart
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c73a14c2a8cd063672bd0998368ca660f52cd5a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9b8f38d42003645e6d6544d5c2064a0c8e692c0f
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74272956"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85387346"
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>Konfigurace aplikací SaaS pro spolupráci B2B
 
@@ -81,7 +81,7 @@ Uživatelům můžete povolit, aby mohli k účtu Azure AD ověřovat uživatele
 
    ![Snímek obrazovky zobrazující nastavení konfigurace jednotného přihlašování](media/configure-saas-apps/configure-box-sso.png)
 
-   a. V poli **Adresa URL pro přihlášení** zkontrolujte, že je správně nastavená přihlašovací adresa URL pro pole Azure Portal. Tato adresa URL je adresa URL vašeho tenanta Box.com. Měl by následovat po konvenci *https://.box.com*pojmenování.  
+   a. V poli **Adresa URL pro přihlášení** zkontrolujte, že je správně nastavená přihlašovací adresa URL pro pole Azure Portal. Tato adresa URL je adresa URL vašeho tenanta Box.com. Měl by následovat po konvenci pojmenování *https://.box.com* .  
    **Identifikátor** se nedá použít pro tuto aplikaci, ale pořád se zobrazuje jako povinné pole.
 
    b. Do pole **identifikátor uživatele** zadejte **User. mail** (pro jednotné přihlašování pro účty hosta).

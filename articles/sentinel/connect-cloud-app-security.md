@@ -14,16 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2020
 ms.author: yelevin
-ms.openlocfilehash: 266d97e834247088d40837cbec1436e00d0f4be2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b2a48b3990afc5fb4ecfb8d40738b18873846459
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80422147"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374912"
 ---
 # <a name="connect-data-from-microsoft-cloud-app-security"></a>Připojení dat z Microsoft Cloud App Security 
-
-
 
 Konektor [Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) (MCAS) umožňuje streamovat výstrahy a [protokoly Cloud Discovery](https://docs.microsoft.com/cloud-app-security/tutorial-shadow-it) z MCAS do služby Azure Sentinel. To vám umožní získat přehled o vašich cloudových aplikacích, získávat sofistikované analýzy, které vám pomůžou identifikovat a bojovat proti týká kybernetických hrozeb a řídit, jak se data cestují.
 
@@ -50,7 +48,9 @@ Pokud je Cloud App Security nasazená a ingestují vaše data, můžou se data v
 
 1. Klikněte na **použít změny**.
 
-1. Pokud chcete použít příslušné schéma v Log Analytics pro Cloud App Security výstrahy, zadejte `SecurityAlert` do okna dotazu. Do pole Cloud Discovery protokoly schématu zadejte `McasShadowItReporting`.
+1. Můžete vybrat, jestli chcete, aby výstrahy z Azure Security Center automaticky generovaly incidenty ve službě Azure Sentinel. V části **vytvořit incidenty**vyberte **povoleno** , pokud chcete zapnout výchozí analytické pravidlo, které automaticky vytvoří incidenty z výstrah. Toto pravidlo pak můžete upravit v části **Analýza**na kartě **aktivní pravidla** .
+
+1. Pokud chcete použít příslušné schéma v Log Analytics pro Cloud App Security výstrahy, zadejte `SecurityAlert` do okna dotazu. Do pole Cloud Discovery protokoly schématu zadejte `McasShadowItReporting` .
 
 > [!NOTE]
 > Cloud Discovery pomáhá detekovat a identifikovat trendy tím, že agreguje data základních uživatelů ke cloudovým aplikacím.

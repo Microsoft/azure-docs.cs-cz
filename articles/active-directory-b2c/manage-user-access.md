@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/24/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ad681f4996f713b8bb0c85b07a3f38f0dcb6708a
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 084284037b02ce02d1e46a61a69d6e60cc89a36b
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83738230"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85387724"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Správa přístupu uživatelů v Azure Active Directory B2C
 

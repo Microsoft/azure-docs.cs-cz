@@ -7,22 +7,22 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/08/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 48955caddb64069f897078f5e47066d9f11d119b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 72e4de1473766d50512453ae38b6033ff0c5b73d
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78188136"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85388030"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>Nastavte si registraci a přihlaste se pomocí účtu Google pomocí Azure Active Directory B2C
 
 ## <a name="create-a-google-application"></a>Vytvoření aplikace Google
 
-Pokud chcete použít účet Google jako [poskytovatele identity](authorization-code-flow.md) v Azure Active Directory B2C (Azure AD B2C), musíte vytvořit aplikaci v konzole pro vývojáře Google. Pokud ještě nemáte účet Google, můžete se zaregistrovat v [https://accounts.google.com/SignUp](https://accounts.google.com/SignUp).
+Pokud chcete použít účet Google jako [poskytovatele identity](authorization-code-flow.md) v Azure Active Directory B2C (Azure AD B2C), musíte vytvořit aplikaci v konzole pro vývojáře Google. Pokud ještě nemáte účet Google, můžete se zaregistrovat v [https://accounts.google.com/SignUp](https://accounts.google.com/SignUp) .
 
 1. Přihlaste se ke [konzole pro vývojáře Google](https://console.developers.google.com/) pomocí svých přihlašovacích údajů k účtu Google.
 1. V levém horním rohu stránky vyberte seznam projekt a pak vyberte **Nový projekt**.
@@ -30,7 +30,7 @@ Pokud chcete použít účet Google jako [poskytovatele identity](authorization-
 1. Ujistěte se, že používáte nový projekt výběrem rozevírací nabídky projekt v levém horním rohu obrazovky, vyberte svůj projekt podle názvu a pak vyberte **otevřít**.
 1. V nabídce vlevo vyberte **obrazovku pro vyjádření souhlasu OAuth** , vyberte **externí**a pak vyberte **vytvořit**.
 Zadejte **název** vaší aplikace. V části **autorizované domény** zadejte *B2clogin.com* a vyberte **Uložit**.
-1. V nabídce vlevo vyberte **přihlašovací údaje** a pak vyberte **vytvořit přihlašovací údaje** > **ID klienta OAuth**.
+1. V nabídce vlevo vyberte **přihlašovací údaje** a pak vyberte **vytvořit přihlašovací údaje**  >  **ID klienta OAuth**.
 1. V části **Typ aplikace**vyberte **Webová aplikace**.
 1. Zadejte **název** vaší aplikace, zadejte `https://your-tenant-name.b2clogin.com` v **autorizovaných zdrojích JavaScriptu**a `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` v **autorizovaných identifikátorech URI pro přesměrování**. Nahraďte `your-tenant-name` názvem vašeho tenanta. Při zadávání názvu tenanta musíte použít malá písmena, i když je tenant definovaný velkými písmeny v Azure AD B2C.
 1. Klikněte na **Vytvořit**.

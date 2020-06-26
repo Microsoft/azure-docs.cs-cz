@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 11/04/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cc227081af4f306a27b77eb727ea96467f94fa2e
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: fad29c32731ee2470354a51acf32e350eb0c4cfc
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85203108"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85384868"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Shromažďovat protokoly Azure Active Directory B2C pomocí Application Insights
 
@@ -61,7 +61,7 @@ Pokud ho ještě nemáte, vytvořte v předplatném instanci Application Insight
     * `ClientEnabled="true"`pošle skript ApplicationInsights na straně klienta pro sledování zobrazení stránky a chyby na straně klienta. Můžete je zobrazit v tabulce **browserTimings** na portálu Application Insights. Nastavením `ClientEnabled= "true"` přidáte Application Insights do skriptu stránky a získáte časování načtení stránky a volání AJAX, počty, podrobnosti výjimek prohlížeče a selhání AJAX a počty uživatelů a relací. Toto pole je **volitelné**a je nastavené na `false` výchozí hodnotu.
     * `ServerEnabled="true"`odešle existující UserJourneyRecorder JSON jako vlastní událost pro Application Insights.
 
-    Příklad:
+    Například:
 
     ```xml
     <TrustFrameworkPolicy

@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/08/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e99b5717cdcc32d8fd138d1edf5fe1bd3283c70e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 08aa7e4af6dc5d5e5bff470bc4c5d023e25b3014
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78187895"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85387877"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>Nastavte si registraci a přihlaste se pomocí účtu Weibo pomocí Azure Active Directory B2C
 
@@ -24,7 +24,7 @@ ms.locfileid: "78187895"
 
 ## <a name="create-a-weibo-application"></a>Vytvoření aplikace v Weibo
 
-Pokud chcete účet Weibo použít jako poskytovatele identity v Azure Active Directory B2C (Azure AD B2C), musíte ve svém tenantovi vytvořit aplikaci, která ho bude představovat. Pokud ještě nemáte účet Weibo, můžete se zaregistrovat [https://weibo.com/signup/signup.php?lang=en-us](https://weibo.com/signup/signup.php?lang=en-us).
+Pokud chcete účet Weibo použít jako poskytovatele identity v Azure Active Directory B2C (Azure AD B2C), musíte ve svém tenantovi vytvořit aplikaci, která ho bude představovat. Pokud ještě nemáte účet Weibo, můžete se zaregistrovat [https://weibo.com/signup/signup.php?lang=en-us](https://weibo.com/signup/signup.php?lang=en-us) .
 
 1. Přihlaste se k [portálu pro vývojáře Weibo](https://open.weibo.com/) pomocí přihlašovacích údajů k účtu Weibo.
 1. Po přihlášení vyberte své zobrazované jméno v pravém horním rohu.
@@ -44,7 +44,7 @@ Pokud chcete účet Weibo použít jako poskytovatele identity v Azure Active Di
 1. Vyberte**保存以上信息**(Uložit).
 1. Vyberte**高级信息**(rozšířené informace).
 1. Vyberte**编辑**(Upravit) vedle pole pro OAuth 2.0**授权设置**(adresa URL pro přesměrování).
-1. Zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` pro OAuth 2.0**授权设置**(adresa URL pro přesměrování). Například pokud je název vašeho tenanta contoso, nastavte adresu URL na `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`.
+1. Zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` pro OAuth 2.0**授权设置**(adresa URL pro přesměrování). Například pokud je název vašeho tenanta contoso, nastavte adresu URL na `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp` .
 1. Vyberte**提交**(Odeslat).
 
 ## <a name="configure-a-weibo-account-as-an-identity-provider"></a>Konfigurace účtu Weibo jako zprostředkovatele identity

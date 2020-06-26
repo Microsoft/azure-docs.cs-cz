@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 0dc70aa67a1414c08ec70e2e034f4ab12b194c0a
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: cbdeb1b2987188a23e71726f54db84b12d060b27
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "81535940"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85386452"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Volání rozhraní API Microsoft Graph z aplikace Univerzální platforma Windows (XAML)
 
@@ -42,9 +42,10 @@ Tato příručka vytvoří ukázkovou aplikaci UWP, která se dotazuje Microsoft
 
 Tato příručka používá následující balíček NuGet:
 
-|Knihovna|Popis|
+|Knihovna|Description|
 |---|---|
 |[Microsoft. identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Identity a ověřování Microsoftu|
+|[Microsoft. Graph](https://www.nuget.org/packages/Microsoft.Graph)|Klientská knihovna Microsoft Graph|
 
 ## <a name="set-up-your-project"></a>Nastavení projektu
 
@@ -66,15 +67,16 @@ Tato příručka vytvoří aplikaci, která zobrazí tlačítko s dotazem Graph 
 
 ### <a name="add-microsoft-authentication-library-to-your-project"></a>Přidat do projektu knihovnu Microsoft Authentication Library
 
-1. V > aplikaci Visual Studio vyberte **nástroje** > **Správce balíčků NuGet****Konzola správce balíčků**.
-1. Zkopírujte a vložte následující příkaz v okně **konzoly Správce balíčků** :
+1. V aplikaci Visual Studio vyberte **nástroje**  >  **Správce balíčků NuGet**  >  **Konzola správce balíčků**.
+1. Zkopírujte a vložte následující příkazy v okně **konzoly Správce balíčků** :
 
     ```powershell
     Install-Package Microsoft.Identity.Client
+    Install-Package Microsoft.Graph
     ```
 
    > [!NOTE]
-   > Tento příkaz nainstaluje [knihovnu Microsoft Authentication Library](https://aka.ms/msal-net). MSAL získává, ukládá do mezipaměti a aktualizuje tokeny uživatelů, které přistupují k rozhraním API chráněným platformou Microsoft identity.
+   > První příkaz nainstaluje [knihovnu Microsoft Authentication Library (MSAL.NET)](https://aka.ms/msal-net). MSAL.NET získává, ukládá do mezipaměti a aktualizuje tokeny uživatelů, kteří přistupují k rozhraním API chráněným platformou Microsoft identity. Druhý příkaz nainstaluje [Microsoft Graph klientskou knihovnu rozhraní .NET](https://github.com/microsoftgraph/msgraph-sdk-dotnet) pro ověření požadavků na Microsoft Graph a volání služby.   
 
 ### <a name="create-your-applications-ui"></a>Vytvoření uživatelského rozhraní aplikace
 
@@ -103,197 +105,193 @@ V této části se dozvíte, jak pomocí MSAL získat token pro rozhraní Micros
 
     ```csharp
     using Microsoft.Identity.Client;
+    using Microsoft.Graph;
     using System.Diagnostics;
     using System.Threading.Tasks;
     ```
 
-1. `MainPage` Třídu nahraďte následujícím kódem:
+1. Třídu nahraďte `MainPage` následujícím kódem:
 
     ```csharp
     public sealed partial class MainPage : Page
     {
-        //Set the API Endpoint to Graph 'me' endpoint
-        string graphAPIEndpoint = "https://graph.microsoft.com/v1.0/me";
-
+       
         //Set the scope for API call to user.read
-        string[] scopes = new string[] { "user.read" };
+        private string[] scopes = new string[] { "user.read" };
 
         // Below are the clientId (Application Id) of your app registration and the tenant information.
         // You have to replace:
         // - the content of ClientID with the Application Id for your app registration
-        // - the content of Tenant with the information about the accounts allowed to sign in in your application:
-        //   - for Work or School account in your org, use your tenant ID, or domain
-        //   - for any Work or School accounts, use organizations
-        //   - for any Work or School accounts, or Microsoft personal account, use common
-        //   - for Microsoft Personal account, use consumers
-        private const string ClientId = "0b8b0665-bc13-4fdc-bd72-e0227b9fc011";
+        private const string ClientId = "[Application Id pasted from the application registration portal]";
 
-        public IPublicClientApplication PublicClientApp { get; }
+        private const string Tenant = "common"; // Alternatively "[Enter your tenant, as obtained from the Azure portal, e.g. kko365.onmicrosoft.com]"
+        private const string Authority = "https://login.microsoftonline.com/" + Tenant;
+
+        // The MSAL Public client app
+        private static IPublicClientApplication PublicClientApp;
+
+        private static string MSGraphURL = "https://graph.microsoft.com/v1.0/";
+        private static AuthenticationResult authResult;
 
         public MainPage()
         {
-          this.InitializeComponent();
-
-          PublicClientApp = PublicClientApplicationBuilder.Create(ClientId)
-                .WithAuthority(AadAuthorityAudience.AzureAdAndPersonalMicrosoftAccount)
-                .WithLogging((level, message, containsPii) =>
-                {
-                    Debug.WriteLine($"MSAL: {level} {message} ");
-                }, LogLevel.Warning, enablePiiLogging:false,enableDefaultPlatformLogging:true)
-                .WithUseCorporateNetwork(true)
-                .Build();
+            this.InitializeComponent();
         }
 
         /// <summary>
-        /// Call AcquireTokenInteractive - to acquire a token requiring user to sign-in
+        /// Call AcquireTokenAsync - to acquire a token requiring user to sign in
         /// </summary>
         private async void CallGraphButton_Click(object sender, RoutedEventArgs e)
         {
-         AuthenticationResult authResult = null;
-         ResultText.Text = string.Empty;
-         TokenInfoText.Text = string.Empty;
+            try
+            {
+                // Sign in user using MSAL and obtain an access token for Micrososft Graph
+                GraphServiceClient graphClient = await SignInAndInitializeGraphServiceClient(scopes);
 
-         // It's good practice to not do work on the UI thread, so use ConfigureAwait(false) whenever possible.
-         IEnumerable<IAccount> accounts = await PublicClientApp.GetAccountsAsync().ConfigureAwait(false);
-         IAccount firstAccount = accounts.FirstOrDefault();
+                // Call the /me endpoint of Graph
+                User graphUser = await graphClient.Me.Request().GetAsync();
 
-         try
-         {
-          authResult = await PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
+                // Go back to the UI thread to make changes to the UI
+                await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+                {
+                    ResultText.Text = "Display Name: " + graphUser.DisplayName + "\nBusiness Phone: " + graphUser.BusinessPhones.FirstOrDefault()
+                                      + "\nGiven Name: " + graphUser.GivenName + "\nid: " + graphUser.Id
+                                      + "\nUser Principal Name: " + graphUser.UserPrincipalName;
+                    DisplayBasicTokenInfo(authResult);
+                    this.SignOutButton.Visibility = Visibility.Visible;
+                });
+            }
+            catch (MsalException msalEx)
+            {
+                await DisplayMessageAsync($"Error Acquiring Token:{System.Environment.NewLine}{msalEx}");
+            }
+            catch (Exception ex)
+            {
+                await DisplayMessageAsync($"Error Acquiring Token Silently:{System.Environment.NewLine}{ex}");
+                return;
+            }
+        }
+                /// <summary>
+        /// Signs in the user and obtains an access token for Microsoft Graph
+        /// </summary>
+        /// <param name="scopes"></param>
+        /// <returns> Access Token</returns>
+        private static async Task<string> SignInUserAndGetTokenUsingMSAL(string[] scopes)
+        {
+            // Initialize the MSAL library by building a public client application
+            PublicClientApp = PublicClientApplicationBuilder.Create(ClientId)
+                .WithAuthority(Authority)
+                .WithUseCorporateNetwork(false)
+                .WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")
+                 .WithLogging((level, message, containsPii) =>
+                 {
+                     Debug.WriteLine($"MSAL: {level} {message} ");
+                 }, LogLevel.Warning, enablePiiLogging: false, enableDefaultPlatformLogging: true)
+                .Build();
+
+            // It's good practice to not do work on the UI thread, so use ConfigureAwait(false) whenever possible.
+            IEnumerable<IAccount> accounts = await PublicClientApp.GetAccountsAsync().ConfigureAwait(false);
+            IAccount firstAccount = accounts.FirstOrDefault();
+
+            try
+            {
+                authResult = await PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
                                                   .ExecuteAsync();
-         }
-         catch (MsalUiRequiredException ex)
-         {
-          // A MsalUiRequiredException happened on AcquireTokenSilent.
-          // This indicates you need to call AcquireTokenInteractive to acquire a token
-          System.Diagnostics.Debug.WriteLine($"MsalUiRequiredException: {ex.Message}");
+            }
+            catch (MsalUiRequiredException ex)
+            {
+                // A MsalUiRequiredException happened on AcquireTokenSilentAsync. This indicates you need to call AcquireTokenAsync to acquire a token
+                Debug.WriteLine($"MsalUiRequiredException: {ex.Message}");
 
-          try
-          {
-           authResult = await PublicClientApp.AcquireTokenInteractive(scopes)
-                                                      .ExecuteAsync()
-                                                      .ConfigureAwait(false);
-           }
-           catch (MsalException msalex)
-           {
-            await DisplayMessageAsync($"Error Acquiring Token:{System.Environment.NewLine}{msalex}");
-           }
-          }
-          catch (Exception ex)
-          {
-           await DisplayMessageAsync($"Error Acquiring Token Silently:{System.Environment.NewLine}{ex}");
-           return;
-          }
+                authResult = await PublicClientApp.AcquireTokenInteractive(scopes)
+                                                  .ExecuteAsync()
+                                                  .ConfigureAwait(false);
 
-          if (authResult != null)
-          {
-           var content = await GetHttpContentWithToken(graphAPIEndpoint,
-                                                       authResult.AccessToken).ConfigureAwait(false);
-
-           // Go back to the UI thread to make changes to the UI
-           await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
-           {
-            ResultText.Text = content;
-            DisplayBasicTokenInfo(authResult);
-            this.SignOutButton.Visibility = Visibility.Visible;
-           });
-          }
+            }
+            return authResult.AccessToken;
         }
     }
     ```
 
 #### <a name="get-a-user-token-interactively"></a>Interaktivní získání tokenu uživatele<a name="more-information"></a>
 
-Výsledkem `AcquireTokenInteractive` metody je okno, které vyzve uživatele k přihlášení. Aplikace obvykle vyžadují, aby se uživatelé přihlásili interaktivně při prvním přístupu k chráněnému prostředku. Můžou se taky muset přihlásit, když se nezdařila tichá operace získání tokenu. Příkladem je vypršení platnosti hesla uživatele.
+`AcquireTokenInteractive`Výsledkem metody je okno, které vyzve uživatele k přihlášení. Aplikace obvykle vyžadují, aby se uživatelé přihlásili interaktivně při prvním přístupu k chráněnému prostředku. Můžou se taky muset přihlásit, když se nezdařila tichá operace získání tokenu. Příkladem je vypršení platnosti hesla uživatele.
 
 #### <a name="get-a-user-token-silently"></a>Získání tokenu uživatele bez upozornění
 
-`AcquireTokenSilent` Metoda zpracovává získání a obnovení tokenů bez zásahu uživatele. Po `AcquireTokenInteractive` prvním spuštění a vyzvání uživatele k zadání přihlašovacích údajů použijte `AcquireTokenSilent` metodu k vyžádání tokenů pro pozdější volání. Tato metoda získává tokeny tiše. MSAL zpracovává mezipaměť a obnovení tokenu.
+`AcquireTokenSilent`Metoda zpracovává získání a obnovení tokenů bez zásahu uživatele. Po `AcquireTokenInteractive` prvním spuštění a vyzvání uživatele k zadání přihlašovacích údajů použijte `AcquireTokenSilent` metodu k vyžádání tokenů pro pozdější volání. Tato metoda získává tokeny tiše. MSAL zpracovává mezipaměť a obnovení tokenu.
 
-Nakonec se `AcquireTokenSilent` metoda nezdařila. Důvody k selhání zahrnují uživatele, který se odhlásil nebo změnil jeho heslo na jiném zařízení. Pokud MSAL zjistí, že problém vyžaduje interaktivní akci, vyvolá `MsalUiRequiredException` výjimku. Vaše aplikace může tuto výjimku zpracovat dvěma způsoby:
+Nakonec se `AcquireTokenSilent` Metoda nezdařila. Důvody k selhání zahrnují uživatele, který se odhlásil nebo změnil jeho heslo na jiném zařízení. Pokud MSAL zjistí, že problém vyžaduje interaktivní akci, vyvolá `MsalUiRequiredException` výjimku. Vaše aplikace může tuto výjimku zpracovat dvěma způsoby:
 
 * Vaše aplikace volá `AcquireTokenInteractive` okamžitě. Výsledkem tohoto volání je dotazování uživatele na přihlášení. Tento přístup se obvykle používá pro online aplikace, kde pro uživatele není k dispozici žádný obsah offline. Ukázka vygenerovaná tímto průvodcem Setup se řídí vzorem. Při prvním spuštění ukázky se zobrazí v akci.
 
-   Vzhledem k tomu, že aplikace nepoužila žádného uživatele, `accounts.FirstOrDefault()` obsahuje hodnotu null `MsalUiRequiredException` a vyvolá výjimku.
+   Vzhledem k tomu, že aplikace nepoužila žádného uživatele, `accounts.FirstOrDefault()` obsahuje hodnotu null a vyvolá `MsalUiRequiredException` výjimku.
 
-   Kód v ukázce pak zpracovává výjimku voláním `AcquireTokenInteractive`. Výsledkem tohoto volání je dotazování uživatele na přihlášení.
+   Kód v ukázce pak zpracovává výjimku voláním `AcquireTokenInteractive` . Výsledkem tohoto volání je dotazování uživatele na přihlášení.
 
 * Vaše aplikace prezentuje vizuální označení uživatelům, kteří se potřebují přihlašovat. Pak si můžou vybrat správný čas pro přihlášení. Aplikace se může opakovat `AcquireTokenSilent` později. Tento postup použijte, když uživatelé můžou používat jiné funkce aplikace bez přerušení. Příkladem je, když je offline obsah k dispozici v aplikaci. V takovém případě se uživatelé můžou rozhodnout, kdy se chtějí přihlásit. Aplikace se může pokusit znovu `AcquireTokenSilent` po dočasné nedostupnosti sítě.
 
-### <a name="call-microsoft-graph-api-by-using-the-token-you-just-obtained"></a>Volání rozhraní API Microsoft Graph pomocí tokenu, který jste právě získali
+### <a name="instantiate-the-microsoft-graph-service-client-by-obtaining-the-token-from-the-signinuserandgettokenusingmsal-method"></a>Vytvoření instance klienta služby Microsoft Graph získáním tokenu z metody SignInUserAndGetTokenUsingMSAL
 
 Do *MainPage.XAML.cs*přidejte následující novou metodu:
 
-   ```csharp
-   /// <summary>
-   /// Perform an HTTP GET request to a URL using an HTTP Authorization header
-   /// </summary>
-   /// <param name="url">The URL</param>
-   /// <param name="token">The token</param>
-   /// <returns>String containing the results of the GET operation</returns>
-   public async Task<string> GetHttpContentWithToken(string url, string token)
-   {
-       var httpClient = new System.Net.Http.HttpClient();
-       System.Net.Http.HttpResponseMessage response;
-       try
-       {
-           var request = new System.Net.Http.HttpRequestMessage(System.Net.Http.HttpMethod.Get, url);
-           // Add the token in Authorization header
-           request.Headers.Authorization =
-             new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-           response = await httpClient.SendAsync(request);
-           var content = await response.Content.ReadAsStringAsync();
-           return content;
-       }
-       catch (Exception ex)
-        {
-           return ex.ToString();
-       }
-    }
-   ```
+```csharp
+      /// <summary>
+     /// Sign in user using MSAL and obtain a token for Microsoft Graph
+     /// </summary>
+     /// <returns>GraphServiceClient</returns>
+     private async static Task<GraphServiceClient> SignInAndInitializeGraphServiceClient(string[] scopes)
+     {
+         GraphServiceClient graphClient = new GraphServiceClient(MSGraphURL,
+             new DelegateAuthenticationProvider(async (requestMessage) =>
+             {
+                 requestMessage.Headers.Authorization = new AuthenticationHeaderValue("bearer", await SignInUserAndGetTokenUsingMSAL(scopes));
+             }));
 
- Tato metoda vytvoří `GET` požadavek od Graph API pomocí `Authorization` hlavičky.
+         return await Task.FromResult(graphClient);
+     }
+```
 
 #### <a name="more-information-on-making-a-rest-call-against-a-protected-api"></a>Další informace o tom, jak provést volání REST proti chráněnému rozhraní API
 
-V této ukázkové aplikaci `GetHttpContentWithToken` metoda vytvoří požadavek HTTP `GET` proti chráněnému prostředku, který vyžaduje token. Pak metoda vrátí obsah volajícímu. Tato metoda přidá získaný token v autorizační hlavičce **protokolu HTTP** . V této ukázce je prostředkem koncový bod Microsoft Graph API **já** , který zobrazuje informace o profilu uživatele.
+V této ukázkové aplikaci je `GetGraphServiceClient` Metoda vytvořena `GraphServiceClient` pomocí přístupového tokenu. Pak `GraphServiceClient` slouží k získání informací o profilu uživatele z koncového bodu **já** .
 
 ### <a name="add-a-method-to-sign-out-the-user"></a>Přidejte metodu pro odhlášení uživatele.
 
 Pokud chcete uživatele odhlásit, přidejte následující metodu do *MainPage.XAML.cs*:
 
-   ```csharp
-   /// <summary>
-   /// Sign out the current user
-   /// </summary>
-   private async void SignOutButton_Click(object sender, RoutedEventArgs e)
-   {
-       IEnumerable<IAccount> accounts = await PublicClientApp.GetAccountsAsync().ConfigureAwait(false);
-       IAccount firstAccount = accounts.FirstOrDefault();
+```csharp
+/// <summary>
+/// Sign out the current user
+/// </summary>
+private async void SignOutButton_Click(object sender, RoutedEventArgs e)
+{
+    IEnumerable<IAccount> accounts = await PublicClientApp.GetAccountsAsync().ConfigureAwait(false);
+    IAccount firstAccount = accounts.FirstOrDefault();
 
-       try
-       {
-           await PublicClientApp.RemoveAsync(firstAccount).ConfigureAwait(false);
-           await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
-           {
-               ResultText.Text = "User has signed out";
-               this.CallGraphButton.Visibility = Visibility.Visible;
-                   this.SignOutButton.Visibility = Visibility.Collapsed;
-               });
-           }
-           catch (MsalException ex)
-           {
-               ResultText.Text = $"Error signing out user: {ex.Message}";
-           }
-       }
-   ```
+    try
+    {
+        await PublicClientApp.RemoveAsync(firstAccount).ConfigureAwait(false);
+        await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+        {
+            ResultText.Text = "User has signed out";
+            this.CallGraphButton.Visibility = Visibility.Visible;
+                this.SignOutButton.Visibility = Visibility.Collapsed;
+            });
+        }
+        catch (MsalException ex)
+        {
+            ResultText.Text = $"Error signing out user: {ex.Message}";
+        }
+    }
+```
 
 > [!NOTE]
-> MSAL.NET používá asynchronní metody k získání tokenů nebo manipulaci s účty. Ve vlákně UI musíte podporovat akce uživatelského rozhraní. To je důvod `Dispatcher.RunAsync` volání a preventivních opatření k volání `ConfigureAwait(false)`.
+> MSAL.NET používá asynchronní metody k získání tokenů nebo manipulaci s účty. Ve vlákně UI musíte podporovat akce uživatelského rozhraní. To je důvod `Dispatcher.RunAsync` volání a preventivních opatření k volání `ConfigureAwait(false)` .
 
 #### <a name="more-information-about-signing-out"></a>Další informace o odhlášení<a name="more-information-on-sign-out"></a>
 
-`SignOutButton_Click` Metoda odebere uživatele z uživatelské mezipaměti MSAL. Tato metoda efektivně oznamuje MSAL, že aktuálnímu uživateli zapomene. Budoucí požadavek na získání tokenu je úspěšný jenom v případě, že je interaktivní.
+`SignOutButton_Click`Metoda odebere uživatele z uživatelské mezipaměti MSAL. Tato metoda efektivně oznamuje MSAL, že aktuálnímu uživateli zapomene. Budoucí požadavek na získání tokenu je úspěšný jenom v případě, že je interaktivní.
 
 Aplikace v této ukázce podporuje jednoho uživatele. MSAL podporuje scénáře, ve kterých se uživatel může přihlásit k více než jednomu účtu. Příkladem je e-mailová aplikace, kde má uživatel několik účtů.
 
@@ -301,20 +299,20 @@ Aplikace v této ukázce podporuje jednoho uživatele. MSAL podporuje scénáře
 
 Přidejte následující metodu do *MainPage.XAML.cs* k zobrazení základních informací o tokenu:
 
-   ```csharp
-   /// <summary>
-   /// Display basic information contained in the token. Needs to be called from the UI thread.
-   /// </summary>
-   private void DisplayBasicTokenInfo(AuthenticationResult authResult)
-   {
-       TokenInfoText.Text = "";
-       if (authResult != null)
-       {
-           TokenInfoText.Text += $"User Name: {authResult.Account.Username}" + Environment.NewLine;
-           TokenInfoText.Text += $"Token Expires: {authResult.ExpiresOn.ToLocalTime()}" + Environment.NewLine;
-       }
-   }
-   ```
+```csharp
+/// <summary>
+/// Display basic information contained in the token. Needs to be called from the UI thread.
+/// </summary>
+private void DisplayBasicTokenInfo(AuthenticationResult authResult)
+{
+    TokenInfoText.Text = "";
+    if (authResult != null)
+    {
+        TokenInfoText.Text += $"User Name: {authResult.Account.Username}" + Environment.NewLine;
+        TokenInfoText.Text += $"Token Expires: {authResult.ExpiresOn.ToLocalTime()}" + Environment.NewLine;
+    }
+}
+```
 
 #### <a name="more-information"></a>Další informace<a name="more-information-1"></a>
 
@@ -324,34 +322,34 @@ Tokeny ID získané pomocí **OpenID Connect** také obsahují malou podmnožinu
 
 Do *MainPage.XAML.cs*přidejte následující novou metodu:
 
-   ```csharp
-   /// <summary>
-   /// Displays a message in the ResultText. Can be called from any thread.
-   /// </summary>
-   private async Task DisplayMessageAsync(string message)
-   {
-        await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal,
-            () =>
-            {
-                ResultText.Text = message;
-            });
-        }
-   ```
+```csharp
+/// <summary>
+/// Displays a message in the ResultText. Can be called from any thread.
+/// </summary>
+private async Task DisplayMessageAsync(string message)
+{
+     await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal,
+         () =>
+         {
+             ResultText.Text = message;
+         });
+     }
+```
 
 ## <a name="register-your-application"></a>Registrace vaší aplikace
 
 Nyní je nutné zaregistrovat aplikaci:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Vyberte **Azure Active Directory** > **Registrace aplikací**.
+1. Vyberte **Azure Active Directory**  >  **Registrace aplikací**.
 1. Vyberte **Nová registrace**. Zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například *UWP-App-Call-MSGraph*.
 1. V části **podporované typy účtů**vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft (např. Skype, Xbox)** a pokračujte kliknutím na **Registrovat** .
-1. Na stránce Přehled vyhledejte hodnotu **ID aplikace (klienta)** a zkopírujte ji. Vraťte se do sady `ClientId` Visual Studio, otevřete *MainPage.XAML.cs*a nahraďte hodnotu touto hodnotou.
+1. Na stránce Přehled vyhledejte hodnotu **ID aplikace (klienta)** a zkopírujte ji. Vraťte se do sady Visual Studio, otevřete *MainPage.XAML.cs*a nahraďte hodnotu `ClientId` touto hodnotou.
 
 Konfigurace ověřování pro vaši aplikaci:
 
 1. Zpátky v [Azure Portal](https://portal.azure.com)v části **Spravovat**vyberte **ověřování**.
-1. V části **identifikátory URI** | přesměrování**navrhované identifikátory URI pro přesměrování pro veřejné klienty (mobilní počítače)** ověřte **https://login.microsoftonline.com/common/oauth2/nativeclient**.
+1. V části **identifikátory URI přesměrování**  |  **navrhované identifikátory URI pro přesměrování pro veřejné klienty (mobilní počítače)** ověřte **https://login.microsoftonline.com/common/oauth2/nativeclient** .
 1. Vyberte **Uložit**.
 
 Konfigurace oprávnění rozhraní API pro aplikaci:
@@ -374,8 +372,71 @@ Pokud chcete povolit integrované ověřování Windows, když se používá s d
    * **Sdílené uživatelské certifikáty**
 
 > [!IMPORTANT]
-> [Integrované ověřování systému Windows](https://aka.ms/msal-net-iwa) není pro tuto ukázku standardně nakonfigurováno. Aplikace, které `Enterprise Authentication` vyžadují `Shared User Certificates` nebo poskytují požadavky na vyšší úroveň ověřování ve Windows Storu. Ne všichni vývojáři chtějí provádět vyšší úroveň ověřování. Toto nastavení povolte jenom v případě, že potřebujete integrované ověřování Windows s doménou federované služby Azure AD.
+> [Integrované ověřování systému Windows](https://aka.ms/msal-net-iwa) není pro tuto ukázku standardně nakonfigurováno. Aplikace, které `Enterprise Authentication` `Shared User Certificates` vyžadují nebo poskytují požadavky na vyšší úroveň ověřování ve Windows Storu. Ne všichni vývojáři chtějí provádět vyšší úroveň ověřování. Toto nastavení povolte jenom v případě, že potřebujete integrované ověřování Windows s doménou federované služby Azure AD.
 
+## <a name="alternate-approach-to-using-withdefaultredirecturi"></a>Alternativní přístup k použití WithDefaultRedirectURI ()
+
+V aktuální ukázce `WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")` je použita metoda. Chcete-li použít `WithDefaultRedirectURI()` , proveďte tyto kroky:
+
+1. V *MainPage.XAML.cs*nahraďte `WithRedirectUri` `WithDefaultRedirectUri` :
+
+   **Aktuální kód**
+
+   ```csharp
+
+   PublicClientApp = PublicClientApplicationBuilder.Create(ClientId)
+       .WithAuthority(Authority)
+       .WithUseCorporateNetwork(false)
+       .WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")
+       .WithLogging((level, message, containsPii) =>
+        {
+            Debug.WriteLine($"MSAL: {level} {message} ");
+        }, LogLevel.Warning, enablePiiLogging: false, enableDefaultPlatformLogging: true)
+       .Build();
+
+   ```
+
+   **Aktualizovaný kód**
+
+   ```csharp
+
+   PublicClientApp = PublicClientApplicationBuilder.Create(ClientId)
+       .WithAuthority("https://login.microsoftonline.com/common")
+       .WithUseCorporateNetwork(false)
+       .WithDefaultRedirectUri()
+       .WithLogging((level, message, containsPii) =>
+        {
+            Debug.WriteLine($"MSAL: {level} {message} ");
+        }, LogLevel.Warning, enablePiiLogging: false, enableDefaultPlatformLogging: true)
+       .Build();
+   ```
+
+2.  Vyhledejte identifikátor URI zpětného volání pro vaši aplikaci přidáním `redirectURI` pole v *MainPage.XAML.cs* a nastavením zarážky:
+
+    ```csharp
+
+    public sealed partial class MainPage : Page
+    {
+            ...
+
+            string redirectURI = Windows.Security.Authentication.Web.WebAuthenticationBroker
+                                .GetCurrentApplicationCallbackUri().ToString();
+            public MainPage()
+            {
+                ...
+            }
+           ...
+    }
+  
+    ```
+
+    Spusťte aplikaci a potom zkopírujte hodnotu `redirectUri` při dosažení zarážky. Hodnota by měla vypadat nějak takto:  
+    `ms-app://s-1-15-2-1352796503-54529114-405753024-3540103335-3203256200-511895534-1429095407/`
+
+    Řádek kódu pak můžete odebrat, protože je požadován pouze jednou pro načtení hodnoty. 
+
+3. V portálu pro registraci aplikací přidejte vrácenou hodnotu do **RedirectUri** v okně **ověřování** .
+   
 ## <a name="test-your-code"></a>Testování kódu
 
 Chcete-li otestovat aplikaci, vyberte F5 pro spuštění projektu v aplikaci Visual Studio. Zobrazí se hlavní okno:
@@ -396,16 +457,16 @@ Na obrazovce **výsledky volání rozhraní API** se zobrazí informace o profil
 
 ![Obrazovka výsledků volání rozhraní API](./media/tutorial-v2-windows-uwp/uwp-results-screen-vs2019.png)
 
-Zobrazí se také základní informace o tokenu získaném `AcquireTokenInteractive` prostřednictvím `AcquireTokenSilent` nebo v poli **informace o tokenu** :
+Zobrazí se také základní informace o tokenu získaném prostřednictvím `AcquireTokenInteractive` nebo `AcquireTokenSilent` v poli **informace o tokenu** :
 
-|Vlastnost  |Formát  |Popis |
+|Vlastnost  |Formát  |Description |
 |---------|---------|---------|
 |`Username` |`user@domain.com` |Uživatelské jméno, které uživatele identifikuje.|
 |`Token Expires` |`DateTime` |Čas vypršení platnosti tokenu MSAL rozšiřuje datum vypršení platnosti tím, že podle potřeby obnoví token.|
 
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>Další informace o oborech a delegovaných oprávněních
 
-Rozhraní Microsoft Graph API vyžaduje `user.read` , aby se v oboru četl profil uživatele. Tento obor se ve výchozím nastavení přidá v každé aplikaci, která je zaregistrovaná na portálu pro registraci aplikací. Další rozhraní API pro Microsoft Graph a vlastní rozhraní API pro back-end Server můžou vyžadovat další obory. Například Microsoft Graph rozhraní API vyžaduje `Calendars.Read` rozsah pro výpis kalendářů uživatele.
+Rozhraní Microsoft Graph API vyžaduje, aby se v `user.read` oboru četl profil uživatele. Tento obor se ve výchozím nastavení přidá v každé aplikaci, která je zaregistrovaná na portálu pro registraci aplikací. Další rozhraní API pro Microsoft Graph a vlastní rozhraní API pro back-end Server můžou vyžadovat další obory. Například Microsoft Graph rozhraní API vyžaduje `Calendars.Read` rozsah pro výpis kalendářů uživatele.
 
 Chcete-li získat přístup k kalendářům uživatele v kontextu aplikace, přidejte `Calendars.Read` delegované oprávnění k informacím o registraci aplikace. Pak přidejte `Calendars.Read` obor do `acquireTokenSilent` volání.
 

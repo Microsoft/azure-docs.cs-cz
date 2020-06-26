@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 249acaad66bdfd8b5d6b8420d22a9090e44beb41
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 5b7eea37cbd926046c6b923b003cd47e0a0c2b0c
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85204094"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85387622"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>Správa Azure AD B2C uživatelských účtů pomocí Microsoft Graph
 
@@ -116,7 +116,7 @@ Pokud účty, které chcete migrovat, mají slabší sílu hesla, než je [siln�
 
 Každá aplikace pro zákazníky má jedinečné požadavky na shromažďování informací. Váš tenant Azure AD B2C obsahuje integrovanou sadu informací uložených ve vlastnostech, jako je křestní jméno, příjmení, město a poštovní směrovací číslo. Pomocí Azure AD B2C můžete roztáhnout sadu vlastností uložených v každém účtu zákazníka. Další informace o definování vlastních atributů najdete v tématech [vlastní atributy (toky uživatelů)](user-flow-custom-attributes.md) a [vlastní atributy (vlastní zásady)](custom-policy-custom-attributes.md).
 
-Rozhraní Microsoft Graph API podporuje vytváření a aktualizaci uživatele s atributy rozšíření. Atributy rozšíření v Graph API jsou pojmenovány pomocí konvence `extension_ApplicationObjectID_attributename` . Příklad:
+Rozhraní Microsoft Graph API podporuje vytváření a aktualizaci uživatele s atributy rozšíření. Atributy rozšíření v Graph API jsou pojmenovány pomocí konvence `extension_ApplicationObjectID_attributename` . Například:
 
 ```json
 "extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyNumber": "212342"

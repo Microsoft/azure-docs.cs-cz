@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/09/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c8fad8b5bd2dccba36c0c6888712fa806f3cbfc8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5d6d6169f8662c9b973fb7f624a590322f62b0b5
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78187215"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85387520"
 ---
 # <a name="use-the-azure-portal-to-create-and-delete-consumer-users-in-azure-ad-b2c"></a>Použití Azure Portal k vytváření a odstraňování uživatelů spotřebitelů v Azure AD B2C
 
@@ -40,10 +40,10 @@ Tento článek se zaměřuje na práci s **uživatelskými účty** v Azure Port
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
-1. V části **Spravovat** vyberte **Uživatele**.
+1. V části **Spravovat** vyberte **Uživatelé**.
 1. Vyberte **Nový uživatel**.
 1. Vyberte **vytvořit Azure AD B2C uživatele**.
-1. Vyberte **způsob přihlášení** a zadejte **e-mailovou** adresu nebo **uživatelské jméno** pro nového uživatele. Vámi zvolená metoda přihlašování se musí shodovat s nastavením, které jste zadali pro poskytovatele identity *místního účtu* klienta Azure AD B2C (viz **Správa** > **zprostředkovatelů identity** ve vašem tenantovi Azure AD B2C).
+1. Vyberte **způsob přihlášení** a zadejte **e-mailovou** adresu nebo **uživatelské jméno** pro nového uživatele. Vámi zvolená metoda přihlašování se musí shodovat s nastavením, které jste zadali pro poskytovatele identity *místního účtu* klienta Azure AD B2C (viz **Správa**  >  **zprostředkovatelů identity** ve vašem tenantovi Azure AD B2C).
 1. Zadejte **jméno** uživatele. Obvykle se jedná o celé jméno (zadané a příjmení) uživatele.
 1. Volitelné Přihlášení můžete **zablokovat** , pokud chcete odložit možnost přihlášení uživatele. Přihlášení můžete povolit později úpravou **profilu** uživatele v Azure Portal.
 1. Vyberte možnost **automaticky generovat heslo** nebo si **dejte vytvořit heslo**.

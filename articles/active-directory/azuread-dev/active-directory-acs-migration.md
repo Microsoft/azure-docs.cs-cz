@@ -7,18 +7,18 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.custom: aaddev
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3168d36bf4c2d3c696173725f669b12dc168dcc6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8a7c6966c439bd69f809a26e0f3a7781d95619ad
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154997"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85383831"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Postupy: migrace z Azure Access Control Service
 
@@ -55,9 +55,9 @@ Chcete-li použít tyto komponenty, je nutné vytvořit jeden nebo více Access 
 https://<mynamespace>.accesscontrol.windows.net
 ```
 
-Veškerá komunikace s operacemi služby STS a správou se provádí na této adrese URL. Pro různé účely můžete použít různé cesty. Pokud chcete zjistit, jestli vaše aplikace nebo služby používají Access Control, Sledujte jakýkoliv provoz do&lt;oboru&gt;názvů https://. AccessControl.Windows.NET. Veškerý provoz na tuto adresu URL se zpracovává pomocí Access Control a musí být vyřazený. 
+Veškerá komunikace s operacemi služby STS a správou se provádí na této adrese URL. Pro různé účely můžete použít různé cesty. Pokud chcete zjistit, jestli vaše aplikace nebo služby používají Access Control, Sledujte jakýkoliv provoz do &lt; oboru názvů https:// &gt; . AccessControl.Windows.NET. Veškerý provoz na tuto adresu URL se zpracovává pomocí Access Control a musí být vyřazený. 
 
-Výjimkou je jakýkoli provoz na `https://accounts.accesscontrol.windows.net`. Provoz na tuto adresu URL již zpracovává jiná **služba a neovlivňuje Access Control** vyřazení. 
+Výjimkou je jakýkoli provoz na `https://accounts.accesscontrol.windows.net` . Provoz na tuto adresu URL již zpracovává jiná **služba a neovlivňuje Access Control** vyřazení. 
 
 Další informace o Access Control najdete v článku [Access Control Service 2,0 (archivováno)](https://msdn.microsoft.com/library/hh147631.aspx).
 
@@ -92,7 +92,7 @@ Podle kroků v této části zjistíte, které z vašich aplikací budou ovlivn�
 
 1. Připojte se k ACS pomocí rutiny **Connect-AcsAccount** .
   
-    Je možné, že budete `Set-ExecutionPolicy -ExecutionPolicy Bypass` muset spustit před spuštěním příkazů a správce těchto předplatných, aby bylo možné příkazy spustit.
+    Je možné, že budete muset spustit `Set-ExecutionPolicy -ExecutionPolicy Bypass` před spuštěním příkazů a správce těchto předplatných, aby bylo možné příkazy spustit.
 
 2. Seznam dostupných předplatných Azure získáte pomocí rutiny **Get-AcsSubscription** .
 3. Uveďte obory názvů služby ACS pomocí rutiny **Get-AcsNamespace** .
@@ -112,9 +112,9 @@ Od listopadu 2017 jsou všechny součásti Access Control plně podporované a f
 
 Tady je plán pro zastaralé Access Control komponenty:
 
-- **Listopadu 2017**: prostředí pro správu Azure AD na portálu Azure Classic [je vyřazené](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/). V tomto okamžiku je Správa oboru názvů pro Access Control k dispozici na nové vyhrazené adrese URL `https://manage.windowsazure.com?restoreClassic=true`:. Pomocí této adresy URl můžete zobrazit existující obory názvů, povolit a zakázat obory názvů a odstranit obory názvů, pokud se rozhodnete.
-- **2. dubna 2018**: portál Azure Classic je zcela vyřazený, což znamená Access Control Správa oboru názvů už není dostupná prostřednictvím žádné adresy URL. V tuto chvíli nemůžete zakázat nebo povolit, odstranit ani vyčíslit Access Control obory názvů. Portál pro správu Access Control ale bude plně funkční a umístěný v `https://\<namespace\>.accesscontrol.windows.net`. Všechny ostatní komponenty Access Control nadále pracují normálně.
-- **7. listopadu 2018**: všechny součásti Access Control jsou trvale vypnuté. Patří sem portál pro správu Access Control, služba pro správu, služba tokenů zabezpečení a modul pravidel transformace tokenů. V tomto okamžiku selžou všechny požadavky odeslané do Access Control (nacházející \<se\>v oboru názvů. AccessControl.Windows.NET). Před tímto časem byste měli všechny stávající aplikace a služby migrovat do jiných technologií.
+- **Listopadu 2017**: prostředí pro správu Azure AD na portálu Azure Classic [je vyřazené](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/). V tomto okamžiku je Správa oboru názvů pro Access Control k dispozici na nové vyhrazené adrese URL: `https://manage.windowsazure.com?restoreClassic=true` . Pomocí této adresy URl můžete zobrazit existující obory názvů, povolit a zakázat obory názvů a odstranit obory názvů, pokud se rozhodnete.
+- **2. dubna 2018**: portál Azure Classic je zcela vyřazený, což znamená Access Control Správa oboru názvů už není dostupná prostřednictvím žádné adresy URL. V tuto chvíli nemůžete zakázat nebo povolit, odstranit ani vyčíslit Access Control obory názvů. Portál pro správu Access Control ale bude plně funkční a umístěný v `https://\<namespace\>.accesscontrol.windows.net` . Všechny ostatní komponenty Access Control nadále pracují normálně.
+- **7. listopadu 2018**: všechny součásti Access Control jsou trvale vypnuté. Patří sem portál pro správu Access Control, služba pro správu, služba tokenů zabezpečení a modul pravidel transformace tokenů. V tomto okamžiku selžou všechny požadavky odeslané na Access Control (umístěné na adrese \<namespace\> . AccessControl.Windows.NET). Před tímto časem byste měli všechny stávající aplikace a služby migrovat do jiných technologií.
 
 > [!NOTE]
 > Zásada zakáže obory názvů, u kterých se pro časové období nepožadoval token. Od první září 2018 je tato doba v současnosti ve 14 dnech nečinnosti, ale zkracuje se na 7 dnů nečinnosti v nadcházejících týdnech. Pokud máte Access Control obory názvů, které jsou aktuálně zakázané, můžete [si stáhnout a nainstalovat službu ACS PowerShell a](#download-and-install-acs-powershell) znovu povolit obory názvů.
@@ -127,7 +127,7 @@ V následujících částech jsou popsána doporučení vysoké úrovně pro mig
 
 Každá cloudová služba Microsoftu, která přijímá tokeny vydané Access Control nyní podporuje alespoň jednu alternativní formu ověřování. Správný ověřovací mechanismus se u každé služby liší. Doporučujeme, abyste si pro každou službu poodkazovali na konkrétní dokumentaci pro oficiální pokyny. Pro usnadnění práce je k dispozici každá sada dokumentace:
 
-| Služba | Doprovodné materiály |
+| Služba | Pokyny |
 | ------- | -------- |
 | Azure Service Bus | [Migrace na sdílené přístupové podpisy](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-migrate-acs-sas) |
 | Azure Service Bus Relay | [Migrace na sdílené přístupové podpisy](https://docs.microsoft.com/azure/service-bus-relay/relay-migrate-acs-sas) |
@@ -148,7 +148,7 @@ Každá cloudová služba Microsoftu, která přijímá tokeny vydané Access Co
 
 Zákazníci SharePoint 2013, 2016 a SharePointu Online používali službu ACS pro účely ověřování v cloudu, místních i hybridních scénářích. Některé funkce SharePointu a případy použití budou ovlivněny vyřazením služby ACS, i když jiné nebudou. Níže uvedená tabulka shrnuje pokyny k migraci pro některé z nejoblíbenějších funkcí SharePointu, které využívají ACS:
 
-| Funkce | Doprovodné materiály |
+| Funkce | Pokyny |
 | ------- | -------- |
 | Ověřují se uživatelé z Azure AD | Dřív služba Azure AD nepodporovala tokeny SAML 1,1 vyžadované službou SharePoint pro ověřování a služba ACS byla použita jako prostředník, který provedl SharePoint kompatibilní s formáty tokenů Azure AD. Teď můžete [SharePoint připojit přímo ke službě Azure AD pomocí aplikace Azure AD Galerie služby SharePoint v místní aplikaci](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial). |
 | [Ověřování aplikací & ověřování serveru ve službě SharePoint místně](https://technet.microsoft.com/library/jj219571(v=office.16).aspx) | Neovlivněné vyřazením služby ACS; nejsou nutné žádné změny. | 

@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/17/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 312d093548b6e3cf3654f45d7610e8fc474a87b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0446dd9e316e145cf93c503ab9634d4eedbc299b
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78187776"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85387826"
 ---
 # <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>Předání přístupového tokenu prostřednictvím toku uživatele do aplikace v Azure Active Directory B2C
 
@@ -44,10 +44,10 @@ Azure AD B2C aktuálně podporuje pouze předávání přístupového tokenu zpr
 
 ## <a name="test-the-user-flow"></a>Testování toku uživatele
 
-Při testování aplikací v Azure AD B2C může být užitečné, aby se token Azure AD B2C vrátil `https://jwt.ms` na kontrolu deklarací identity v něm.
+Při testování aplikací v Azure AD B2C může být užitečné, aby se token Azure AD B2C vrátil na `https://jwt.ms` kontrolu deklarací identity v něm.
 
 1. Na stránce Přehled toku uživatele vyberte **Spustit tok uživatele**.
-2. V případě **aplikace**vyberte svou aplikaci, kterou jste předtím zaregistrovali. Pokud chcete token zobrazit v následujícím příkladu, měla by se zobrazit `https://jwt.ms` **Adresa URL odpovědi** .
+2. V případě **aplikace**vyberte svou aplikaci, kterou jste předtím zaregistrovali. Pokud chcete token zobrazit v následujícím příkladu, měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
 3. Klikněte na **Spustit tok uživatele**a pak se přihlaste pomocí přihlašovacích údajů k účtu. V deklaraci **idp_access_token** by měl být uveden přístupový token poskytovatele identity.
 
     Měl by se zobrazit něco podobného jako v následujícím příkladu:

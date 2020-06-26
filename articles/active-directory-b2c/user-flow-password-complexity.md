@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/11/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c5ef550af0c7e19531ea19093ea937880f7dcf14
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 165529697949bba0233567b89c5a8a077d48a28b
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78185637"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85384018"
 ---
 # <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>Konfigurace požadavků na složitost pro hesla v Azure Active Directory B2C
 
@@ -46,7 +46,7 @@ Pokud používáte vlastní zásady, můžete ([nakonfigurovat složitost hesla 
 
 ### <a name="comparison-chart"></a>Srovnávací graf
 
-| Složitost | Popis |
+| Složitost | Description |
 | --- | --- |
 | Jednoduchý | Heslo, které má alespoň 8 až 64 znaků. |
 | Silné | Heslo, které má alespoň 8 až 64 znaků. Vyžaduje 3 ze 4 malých a velkých písmen, číslic a symbolů. |

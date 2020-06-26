@@ -9,18 +9,18 @@ ms.subservice: azuread-dev
 ms.workload: identity
 ms.tgt_pltfrm: android
 ms.devlang: java
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: brandwe, jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 0b87a9cd0ae29281faad4209f4449d547921835d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 67378cd363e22351198389f4480e3f6792e885bc
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154810"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85383678"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>Postupy: povolení jednotného přihlašování mezi aplikacemi v Androidu pomocí ADAL
 

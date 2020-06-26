@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/30/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c659280ebc8c91b53cbc3a176c84397edd942c23
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 558e6cea4d5e0c9bd0f6222f9070d2b867a5bf44
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78186824"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85384936"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C: přihlášení pomocí aplikace pro iOS
 
@@ -66,15 +66,15 @@ Tuto ukázku vytvořil [projekt iOS AppAuth na GitHubu](https://github.com/openi
 
 Komunikaci s Azure AD B2C můžete nakonfigurovat zadáním identifikátoru URI koncového bodu autorizace i koncového bodu tokenu.  K vygenerování těchto identifikátorů URI potřebujete následující informace:
 * ID tenanta (například contoso.onmicrosoft.com)
-* Název toku uživatele (například B2C\_1\_SignUpIn)
+* Název toku uživatele (například B2C \_ 1 \_ SignUpIn)
 
-Identifikátor URI koncového bodu tokenu se dá vygenerovat\_tak, že nahradíte ID tenanta a název zásady\_v následující adrese URL:
+Identifikátor URI koncového bodu tokenu se dá vygenerovat tak, že nahradíte \_ ID tenanta a \_ název zásady v následující adrese URL:
 
 ```objc
 static NSString *const tokenEndpoint = @"https://<Tenant_name>.b2clogin.com/te/<Tenant_ID>/<Policy_Name>/oauth2/v2.0/token";
 ```
 
-Identifikátor URI koncového bodu autorizace se dá vygenerovat tak\_, že nahradíte\_ID tenanta a název zásady v následující adrese URL:
+Identifikátor URI koncového bodu autorizace se dá vygenerovat tak, že nahradíte \_ ID tenanta a \_ název zásady v následující adrese URL:
 
 ```objc
 static NSString *const authorizationEndpoint = @"https://<Tenant_name>.b2clogin.com/te/<Tenant_ID>/<Policy_Name>/oauth2/v2.0/authorize";
@@ -123,7 +123,7 @@ appDelegate.currentAuthorizationFlow =
 
 Chcete-li nastavit aplikaci tak, aby zpracovávala přesměrování na identifikátor URI s vlastním schématem, je třeba aktualizovat seznam schémat URL v souboru info. pList:
 * Otevřete info. pList.
-* Najeďte myší na řádek, jako je \+ například kód typu operačního systému sady, a klikněte na symbol.
+* Najeďte myší na řádek, jako je například kód typu operačního systému sady, a klikněte na \+ symbol.
 * Přejmenujte nový řádek ' typy URL '.
 * Kliknutím na šipku nalevo od ' typy URL ' otevřete stromovou strukturu.
 * Kliknutím na šipku nalevo od položky ' položka 0 ' otevřete strom.

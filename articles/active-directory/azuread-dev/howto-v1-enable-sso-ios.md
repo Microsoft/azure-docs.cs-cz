@@ -9,18 +9,18 @@ ms.subservice: azuread-dev
 ms.workload: identity
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: brandwe
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 082cbb931c9dae60b39f9ee5323337bf051fb56d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 08b018082c753b9524cb12a72d637fe5458d9114
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154776"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85383695"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Postupy: povolení jednotného přihlašování mezi aplikacemi v iOS pomocí ADAL
 
@@ -214,7 +214,7 @@ Formát těchto identifikátorů URI pro přesměrování je vysvětlen níže. 
 
 Povolení sdílení řetězce klíčů je nad rámec tohoto dokumentu a je pokryté společností Apple v dokumentu [Přidání možností](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html). Důležité je, abyste se rozhodli, co chcete volat do řetězce klíčů, a přidat tuto schopnost napříč všemi aplikacemi.
 
-Pokud máte oprávnění nastavené správně, měli byste zobrazit soubor v adresáři projektu s názvem `entitlements.plist` , který obsahuje něco, co vypadá takto:
+Pokud máte oprávnění nastavené správně, měli byste zobrazit soubor v adresáři projektu `entitlements.plist` s názvem, který obsahuje něco, co vypadá takto:
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
@@ -230,7 +230,7 @@ Pokud máte oprávnění nastavené správně, měli byste zobrazit soubor v adr
 </plist>
 ```
 
-Jakmile v každé z vašich aplikací povolíte nárok na zadání řetězce klíčů a jste připraveni použít jednotné přihlašování, řekněte sadě SDK identity o vašem řetězci klíčů pomocí následujícího nastavení v `ADAuthenticationSettings` následujících nastaveních:
+Jakmile v každé z vašich aplikací povolíte nárok na zadání řetězce klíčů a jste připraveni použít jednotné přihlašování, řekněte sadě SDK identity o vašem řetězci klíčů pomocí následujícího nastavení v následujících nastaveních `ADAuthenticationSettings` :
 
 ```
 defaultKeychainSharingGroup=@"com.myapp.mycache";
@@ -260,7 +260,7 @@ Schopnost vaší aplikace používat zprostředkovatele je zapnutá, když vytvo
 /*! See the ADCredentialsType enumeration definition for details */
 @propertyADCredentialsType credentialsType;
 ```
-`AD_CREDENTIALS_AUTO` Nastavení umožní sadě SDK, aby se pokusila zavolat službě Broker, `AD_CREDENTIALS_EMBEDDED` zabrání sadě SDK v volání do zprostředkovatele.
+`AD_CREDENTIALS_AUTO`Nastavení umožní sadě SDK, aby se pokusila zavolat službě Broker, `AD_CREDENTIALS_EMBEDDED` zabrání sadě SDK v volání do zprostředkovatele.
 
 #### <a name="step-2-registering-a-url-scheme"></a>Krok 2: registrace schématu adresy URL
 
@@ -309,7 +309,7 @@ např.: *msauth://Code/x-msauth-mytestiosapp%3A%2F%2Fcom.myapp.MyTestApp*
 
 #### <a name="step-4-add-a-configuration-parameter-to-your-app"></a>Krok 4: přidejte do své aplikace parametr konfigurace.
 
-ADAL používá – canOpenURL: ke kontrole, jestli je zprostředkovatel nainstalovaný na zařízení. V systému iOS 9 on se společnost Apple zablokuje v tom, v jakých schématech může aplikace dotazovat. V části LSApplicationQueriesSchemes budete muset přidat "msauth" `info.plist file`.
+ADAL používá – canOpenURL: ke kontrole, jestli je zprostředkovatel nainstalovaný na zařízení. V systému iOS 9 on se společnost Apple zablokuje v tom, v jakých schématech může aplikace dotazovat. V části LSApplicationQueriesSchemes budete muset přidat "msauth" `info.plist file` .
 
 ```
     <key>LSApplicationQueriesSchemes</key>

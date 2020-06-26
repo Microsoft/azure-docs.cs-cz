@@ -7,19 +7,19 @@ author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: azuread-dev
-ms.topic: conceptual
+ms.topic: sample
 ms.workload: identity
 ms.date: 07/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: ae283529abb3b71ee50fc710dd1ebe0d17a12be0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 822390200b7a94f2bbf8aac56d26812f36b5f12a
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154827"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85387605"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Ukázka kódu Azure Active Directory (koncový bod verze 1.0)
 
@@ -100,13 +100,13 @@ Webová aplikace ASP.NET  | ![Tento obrázek ukazuje logo .NET.](media/sample-v2
 
 ### <a name="web-api-protected-by-azure-active-directory"></a>Webové rozhraní API chráněné Azure Active Directory
 
-Následující příklad ukazuje, jak chránit webové rozhraní API Node. js pomocí Azure AD.
+Následující příklad ukazuje, jak chránit node.js webového rozhraní API pomocí služby Azure AD.
 
 V předchozích částech tohoto článku můžete také najít další ukázky, které ilustrují klientskou aplikaci, která **volá** rozhraní ASP.NET nebo ASP.NET Core **Web API**. Tyto ukázky se v této části neuvádějí znovu, ale najdete je v posledním sloupci tabulek výše nebo níže.
 
 | Platforma | Ukázka |
 |--------|-------------------|
-| ![Tento obrázek ukazuje logo Node. js.](media/sample-v2-code/logo-nodejs.png)  | [uzel – WebApi](https://github.com/Azure-Samples/active-directory-node-webapi) |
+| ![Tento obrázek ukazuje logo Node.js.](media/sample-v2-code/logo-nodejs.png)  | [uzel – WebApi](https://github.com/Azure-Samples/active-directory-node-webapi) |
 
 ### <a name="web-api-calling-microsoft-graph-or-another-web-api"></a>Volání webového rozhraní API Microsoft Graph nebo jiné webové rozhraní API
 

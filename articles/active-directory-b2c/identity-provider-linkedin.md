@@ -7,22 +7,22 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/08/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d32eb80ffe296d86164a6d27a1b7a28181357243
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2f1099a3564a5891a69429d78bda8177094538e4
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78188096"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85388013"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-linkedin-account-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení pomocí účtu LinkedIn pomocí Azure Active Directory B2C
 
 ## <a name="create-a-linkedin-application"></a>Vytvoření aplikace LinkedIn
 
-Pokud chcete použít účet LinkedIn jako [poskytovatele identity](authorization-code-flow.md) v Azure Active Directory B2C (Azure AD B2C), musíte ve svém tenantovi vytvořit aplikaci, která ho bude představovat. Pokud ještě nemáte účet LinkedIn, můžete se zaregistrovat v [https://www.linkedin.com/](https://www.linkedin.com/).
+Pokud chcete použít účet LinkedIn jako [poskytovatele identity](authorization-code-flow.md) v Azure Active Directory B2C (Azure AD B2C), musíte ve svém tenantovi vytvořit aplikaci, která ho bude představovat. Pokud ještě nemáte účet LinkedIn, můžete se zaregistrovat v [https://www.linkedin.com/](https://www.linkedin.com/) .
 
 1. Přihlaste se na [Web vývojářům LinkedIn](https://www.developer.linkedin.com/) pomocí svých přihlašovacích údajů k účtu LinkedIn.
 1. Vyberte **Moje aplikace**a pak klikněte na **vytvořit aplikaci**.

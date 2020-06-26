@@ -10,18 +10,18 @@ ms.date: 02/14/2020
 ms.subservice: language-understanding
 ms.topic: include
 ms.author: diberry
-ms.openlocfilehash: 192d3d1a7bd792779b068a9c0c7ac34c7bee1c80
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cbb79c6c7467306bbc202d317684a5c62835d53c
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80116988"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374864"
 ---
 Pokud je potřeba, aby vaše aplikace vytvořily jiní uživatelé, musíte do prostředku pro vytváření Azure Portal přidat přidružené e-mailové adresy.
 
-Pokud jste **vlastníkem nebo správcem předplatného Azure**, můžete do prostředku přidat přispěvatele.
+Pokud jste vlastníkem nebo správcem předplatného Azure, můžete do prostředku přidat přispěvatele.
 
-Pokud nejste **vlastníkem ani správcem předplatného Azure**, musí mít `Microsoft.Authorization/roleAssignments/write` váš účet Azure oprávnění.
+Pokud nejste vlastníkem ani správcem předplatného Azure, musí mít váš účet Azure `Microsoft.Authorization/roleAssignments/write` oprávnění.
 
 Pokud máte potíže s přiřazením této role, přečtěte si:
 

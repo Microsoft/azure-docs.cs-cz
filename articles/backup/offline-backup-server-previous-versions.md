@@ -3,12 +3,12 @@ title: Offline zálohování pro Data Protection Manager (DPM) a server pro Micr
 description: Pomocí Azure Backup můžete odesílat data mimo síť pomocí služby Azure import/export. Tento článek vysvětluje pracovní postup offline zálohování pro DPM a Azure Backup Server.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 1deda1f0d2671e1316cf8f5c231207a5c32c10b4
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: f39e93973deab09eb328eeafcff4e49b326483f6
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84632056"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374827"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-previous-versions"></a>Pracovní postup offline zálohování pro DPM a Azure Backup Server (předchozí verze)
 
@@ -55,10 +55,10 @@ Než spustíte pracovní postup offline zálohování, ujistěte se, že jsou sp
 
     | Oblast cloudu svrchovan | Odkaz na soubor nastavení publikování v Azure |
     | --- | --- |
-    | USA | [Propojit](https://portal.azure.us#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
-    | Čína | [Propojit](https://portal.azure.cn/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
+    | USA | [Odkaz](https://portal.azure.us#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
+    | Čína | [Odkaz](https://portal.azure.cn/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
 
-* V předplatném, ze kterého jste stáhli soubor nastavení publikování, byl vytvořen účet služby Azure Storage s modelem nasazení Správce prostředků.
+* V předplatném, ze kterého jste stáhli soubor nastavení publikování, byl vytvořen účet služby Azure Storage s modelem nasazení Správce prostředků. V účtu úložiště vytvořte nový kontejner objektů blob, který se použije jako cíl.
 
   ![Vytvoření účtu úložiště pomocí Správce prostředkůho vývoje](./media/offline-backup-dpm-mabs-previous-versions/storage-account-resource-manager.png)
 
@@ -69,7 +69,7 @@ Než spustíte pracovní postup offline zálohování, ujistěte se, že jsou sp
 ## <a name="prepare-the-server-for-the-offline-backup-process"></a>Příprava serveru pro proces offline zálohování
 
 >[!NOTE]
-> Pokud v instalaci agenta MARS nemůžete najít uvedené nástroje, jako je třeba *AzureOfflineBackupCertGen. exe*, zapište do, abyste k AskAzureBackupTeam@microsoft.com nim měli přístup.
+> Pokud v instalaci agenta MARS nemůžete najít uvedené nástroje, například *AzureOfflineBackupCertGen.exe*, zapište do, abyste k AskAzureBackupTeam@microsoft.com nim měli přístup.
 
 * Na serveru otevřete příkazový řádek se zvýšenými oprávněními a spusťte následující příkaz:
 
@@ -81,13 +81,13 @@ Než spustíte pracovní postup offline zálohování, ujistěte se, že jsou sp
 
     Pokud aplikace již existuje, zobrazí se výzva k ručnímu nahrání certifikátu do aplikace v tenantovi. Podle pokynů v [této části](#manually-upload-an-offline-backup-certificate) Nahrajte certifikát do aplikace ručně.
 
-* Nástroj *AzureOfflineBackup. exe* vygeneruje soubor *OfflineApplicationParams. XML* . Zkopírujte tento soubor na server pomocí MABS nebo DPM.
+* Nástroj *AzureOfflineBackupCertGen.exe* generuje *OfflineApplicationParams.xml* soubor. Zkopírujte tento soubor na server pomocí MABS nebo DPM.
 * Nainstalujte [nejnovějšího agenta Mars](https://aka.ms/azurebackup_agent) na instanci aplikace DPM nebo na server Azure Backup.
 * Zaregistrujte server do Azure.
 * Spusťte následující příkaz:
 
     ```cmd
-    AzureOfflineBackupCertGen.exe AddRegistryEntries SubscriptionId:<subscriptionid> xmlfilepath:<path of the OfflineApplicationParams.xml file>  storageaccountname:<storageaccountname configured with Azure Data Box>
+    AzureOfflineBackupCertGen.exe AddRegistryEntries SubscriptionId:<subscriptionid> xmlfilepath:<path of the OfflineApplicationParams.xml file>  storageaccountname:<storageaccountname to be used for offline backup>
     ```
 
 * Předchozí příkaz vytvoří soubor `C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch\MicrosoftBackupProvider\OfflineApplicationParams_<Storageaccountname>.xml` .
@@ -104,7 +104,7 @@ Pomocí těchto kroků ručně Nahrajte certifikát offline zálohování do dř
 
 1. Vyberte aplikaci. V části **Spravovat** v levém podokně přejdete na **certifikáty & tajných**kódů.
 1. Zkontroluje existující certifikáty nebo veřejné klíče. Pokud žádné nemáte, můžete aplikaci bezpečně odstranit tak, že na stránce **Přehled** aplikace vyberete tlačítko **Odstranit** . Pak můžete opakovat postup pro [přípravu serveru pro offline proces zálohování](#prepare-the-server-for-the-offline-backup-process) a přeskočit následující kroky. V opačném případě pokračujte dále podle těchto kroků z instance aplikace DPM nebo serveru Azure Backup, kde chcete nakonfigurovat offline zálohování.
-1. Vyberte kartu **Správa počítačových certifikátů aplikace**  >  **osobní** . vyhledejte certifikát s názvem `CB_AzureADCertforOfflineSeeding_<ResourceId>` .
+1. V **nabídce Start** – **Spusťte**zadejte *Certlm. msc*. V okně **certifikáty – místní počítač** vyberte kartu **certifikáty – místní počítač**  >  **osobní** . vyhledejte certifikát s názvem `CB_AzureADCertforOfflineSeeding_<ResourceId>` .
 1. Vyberte certifikát, klikněte pravým tlačítkem na **všechny úlohy**a pak vyberte **exportovat**bez privátního klíče ve formátu. cer.
 1. V Azure Portal přejdete do aplikace Azure offline Backup.
 1. Vyberte **Spravovat**  >  **certifikáty & tajných klíčů**  >  **nahrát certifikát**. Nahrajte certifikát exportovaný v předchozím kroku.
