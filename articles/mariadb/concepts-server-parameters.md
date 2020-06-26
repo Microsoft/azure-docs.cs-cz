@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 6/8/2020
-ms.openlocfilehash: 5ea5a94c73adda1328b97c3e985c4b6ac614d1b9
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.date: 6/25/2020
+ms.openlocfilehash: 7d530180b499495e97cb635186fc6a0d5cbd9044
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85255020"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85392722"
 ---
 # <a name="server-parameters-in-azure-database-for-mariadb"></a>Parametry serveru v Azure Database for MariaDB
 
@@ -37,8 +37,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MariaDB](https://ma
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|**Maximální hodnota (v bajtech)**|
 |---|---|---|---|---|
-|Basic|1|872415232|134217728|872415232|
-|Basic|2|2684354560|134217728|2684354560|
+|Základní|1|872415232|134217728|872415232|
+|Základní|2|2684354560|134217728|2684354560|
 |Pro obecné účely|2|3758096384|134217728|3758096384|
 |Pro obecné účely|4|8053063680|134217728|8053063680|
 |Pro obecné účely|8|16106127360|134217728|16106127360|
@@ -55,8 +55,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MariaDB](https://ma
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|**Maximální hodnota (v bajtech)**|
 |---|---|---|---|---|
-|Basic|1|872415232|134217728|872415232|
-|Basic|2|2684354560|134217728|2684354560|
+|Základní|1|872415232|134217728|872415232|
+|Základní|2|2684354560|134217728|2684354560|
 |Pro obecné účely|2|7516192768|134217728|7516192768|
 |Pro obecné účely|4|16106127360|134217728|16106127360|
 |Pro obecné účely|8|32212254720|134217728|32212254720|
@@ -84,8 +84,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MariaDB](https://ma
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|**Maximální hodnota (v bajtech)**|
 |---|---|---|---|---|
-|Basic|1|Nekonfigurovatelné na úrovni Basic|–|–|
-|Basic|2|Nekonfigurovatelné na úrovni Basic|–|–|
+|Základní|1|Nekonfigurovatelné na úrovni Basic|–|–|
+|Základní|2|Nekonfigurovatelné na úrovni Basic|–|–|
 |Pro obecné účely|2|262144|128|268435455|
 |Pro obecné účely|4|262144|128|536870912|
 |Pro obecné účely|8|262144|128|1073741824|
@@ -102,8 +102,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MariaDB](https://ma
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota**|**Minimální hodnota**|**Maximální hodnota**|
 |---|---|---|---|---|
-|Basic|1|50|10|50|
-|Basic|2|100|10|100|
+|Základní|1|50|10|50|
+|Základní|2|100|10|100|
 |Pro obecné účely|2|300|10|600|
 |Pro obecné účely|4|625|10|1250|
 |Pro obecné účely|8|1250|10|2500|
@@ -133,8 +133,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MariaDB](https://ma
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|**Maximální hodnota (v bajtech)**|
 |---|---|---|---|---|
-|Basic|1|Nekonfigurovatelné na úrovni Basic|–|–|
-|Basic|2|Nekonfigurovatelné na úrovni Basic|–|–|
+|Základní|1|Nekonfigurovatelné na úrovni Basic|–|–|
+|Základní|2|Nekonfigurovatelné na úrovni Basic|–|–|
 |Pro obecné účely|2|16777216|16384|268435455|
 |Pro obecné účely|4|16777216|16384|536870912|
 |Pro obecné účely|8|16777216|16384|1073741824|
@@ -155,8 +155,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MariaDB](https://ma
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|* * Maximální hodnota * *|
 |---|---|---|---|---|
-|Basic|1|Nekonfigurovatelné na úrovni Basic|–|–|
-|Basic|2|Nekonfigurovatelné na úrovni Basic|–|–|
+|Základní|1|Nekonfigurovatelné na úrovni Basic|–|–|
+|Základní|2|Nekonfigurovatelné na úrovni Basic|–|–|
 |Pro obecné účely|2|0|0|16777216|
 |Pro obecné účely|4|0|0|33554432|
 |Pro obecné účely|8|0|0|67108864|
@@ -175,8 +175,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MariaDB](https://ma
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|**Maximální hodnota (v bajtech)**|
 |---|---|---|---|---|
-|Basic|1|Nekonfigurovatelné na úrovni Basic|–|–|
-|Basic|2|Nekonfigurovatelné na úrovni Basic|–|–|
+|Základní|1|Nekonfigurovatelné na úrovni Basic|–|–|
+|Základní|2|Nekonfigurovatelné na úrovni Basic|–|–|
 |Pro obecné účely|2|524288|32768|4194304|
 |Pro obecné účely|4|524288|32768|8388608|
 |Pro obecné účely|8|524288|32768|16777216|
@@ -195,8 +195,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MariaDB](https://ma
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|**Maximální hodnota (v bajtech)**|
 |---|---|---|---|---|
-|Basic|1|Nekonfigurovatelné na úrovni Basic|–|–|
-|Basic|2|Nekonfigurovatelné na úrovni Basic|–|–|
+|Základní|1|Nekonfigurovatelné na úrovni Basic|–|–|
+|Základní|2|Nekonfigurovatelné na úrovni Basic|–|–|
 |Pro obecné účely|2|16777216|1024|67108864|
 |Pro obecné účely|4|16777216|1024|134217728|
 |Pro obecné účely|8|16777216|1024|268435456|
@@ -211,7 +211,7 @@ Další informace o tomto parametru najdete v [dokumentaci k MariaDB](https://ma
 
 ### <a name="time_zone"></a>time_zone
 
-Tabulky časových pásem lze naplnit voláním `mysql.az_load_timezone` uložené procedury z nástroje, jako je například příkazový řádek MySQL nebo MySQL Workbench. Informace o tom, jak volat uloženou proceduru a nastavit globální časová pásma na úrovni relace, najdete v článcích [Azure Portal](howto-server-parameters.md#working-with-the-time-zone-parameter) nebo [Azure CLI](howto-configure-server-parameters-cli.md#working-with-the-time-zone-parameter) .
+Při počátečním nasazení zahrnuje server Azure pro MariaDB systémové tabulky pro informace o časovém pásmu, ale tyto tabulky se neplní. Tabulky časových pásem lze naplnit voláním `mysql.az_load_timezone` uložené procedury z nástroje, jako je například příkazový řádek MySQL nebo MySQL Workbench. Informace o tom, jak volat uloženou proceduru a nastavit globální časová pásma na úrovni relace, najdete v článcích [Azure Portal](howto-server-parameters.md#working-with-the-time-zone-parameter) nebo [Azure CLI](howto-configure-server-parameters-cli.md#working-with-the-time-zone-parameter) .
 
 ## <a name="non-configurable-server-parameters"></a>Nekonfigurovatelné parametry serveru
 

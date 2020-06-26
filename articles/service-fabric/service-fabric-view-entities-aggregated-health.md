@@ -1,16 +1,16 @@
 ---
 title: Jak zobrazit agregovaný stav entit služby Azure Service Fabric
 description: Popisuje postup dotazování, zobrazení a hodnocení agregovaného stavu entit Azure Service Fabric, a to prostřednictvím dotazů na stav a obecných dotazů.
-author: oanapl
+author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
-ms.author: oanapl
-ms.openlocfilehash: d02d8f717801bf51e43c9dafa5eb9379d0737674
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: gwallace
+ms.openlocfilehash: 4688664fea29cc07f5895e33ebfff541d61070d1
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75464125"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85392739"
 ---
 # <a name="view-service-fabric-health-reports"></a>Zobrazit Service Fabric sestavy o stavu
 Azure Service Fabric zavádí [model stavu](service-fabric-health-introduction.md) s entitami o stavu, na kterých mohou systémové komponenty a sledovací zařízení nahlásit místní podmínky, které monitorují. [Health Store](service-fabric-health-introduction.md#health-store) agreguje všechna data o stavu, abyste zjistili, jestli jsou entity v pořádku.
@@ -23,7 +23,7 @@ Service Fabric poskytuje několik způsobů, jak získat agregovaný stav entit:
 * Dotazy na stav (prostřednictvím PowerShellu, rozhraní API nebo REST)
 * Obecné dotazy, které vracejí seznam entit, které mají stav jako jednu z vlastností (prostřednictvím PowerShellu, rozhraní API nebo REST)
 
-K předvedení těchto možností použijte místní cluster s pěti uzly a [aplikací Fabric:/WORDCOUNT](https://github.com/Azure-Samples/service-fabric-wordcount/raw/master/WordCountV1.sfpkg). Aplikace **Fabric:/WORDCOUNT** obsahuje dvě výchozí služby, stavovou službu typu `WordCountServiceType`a bezstavovou službu typu. `WordCountWebServiceType` Změnil (a `ApplicationManifest.xml` ) tak, aby vyžadoval sedm cílových replik pro stavovou službu a jeden oddíl. Vzhledem k tomu, že cluster obsahuje jenom pět uzlů, systémové komponenty nahlásí upozornění na oddíl služby, protože je pod počtem cílů.
+K předvedení těchto možností použijte místní cluster s pěti uzly a [aplikací Fabric:/WORDCOUNT](https://github.com/Azure-Samples/service-fabric-wordcount/raw/master/WordCountV1.sfpkg). Aplikace **Fabric:/WORDCOUNT** obsahuje dvě výchozí služby, stavovou službu typu `WordCountServiceType` a bezstavovou službu typu `WordCountWebServiceType` . Změnil (a) `ApplicationManifest.xml` tak, aby vyžadoval sedm cílových replik pro stavovou službu a jeden oddíl. Vzhledem k tomu, že cluster obsahuje jenom pět uzlů, systémové komponenty nahlásí upozornění na oddíl služby, protože je pod počtem cílů.
 
 ```xml
 <Service Name="WordCountService">
@@ -37,7 +37,7 @@ K předvedení těchto možností použijte místní cluster s pěti uzly a [apl
 Service Fabric Explorer poskytuje vizuální zobrazení clusteru. Na obrázku níže vidíte, že:
 
 * **Prostředky infrastruktury aplikace:/WORDCOUNT** jsou červené (v případě chyby), protože má událost Error hlášenou **MyWatchdog** pro **dostupnost**vlastnosti.
-* Jedna ze služeb **Fabric:/WORDCOUNT/WordCountService** je žlutá (v upozornění). Služba je nakonfigurovaná se sedmi replikami a cluster má pět uzlů, takže nejde umístit dvě repliky. I když tady není zobrazený, oddíl služby je žlutý z `System.FM` důvodu systémové sestavy, kterou `Partition is below target replica or instance count`říká. Žlutý oddíl spustí žlutou službu.
+* Jedna ze služeb **Fabric:/WORDCOUNT/WordCountService** je žlutá (v upozornění). Služba je nakonfigurovaná se sedmi replikami a cluster má pět uzlů, takže nejde umístit dvě repliky. I když tady není zobrazený, oddíl služby je žlutý z důvodu systémové sestavy `System.FM` , kterou říká `Partition is below target replica or instance count` . Žlutý oddíl spustí žlutou službu.
 * Cluster je červený z důvodu červené aplikace.
 
 Vyhodnocení používá výchozí zásady z manifestu clusteru a manifestu aplikace. Jsou to přísné zásady a Netolerovat žádné chyby.
@@ -87,7 +87,7 @@ Vrátí stav entity clusteru a obsahuje stav aplikací a uzlů (podřízené pol
 * Volitelné Filtr, který zahrnuje prostředky infrastruktury:/Statistika stavu systému v statistikách stavu. Platí pouze v případě, že nejsou vyloučeny statistiky stavu. Ve výchozím nastavení zahrnují Statistika stavu pouze statistiku pro uživatelské aplikace, nikoli systémovou aplikaci.
 
 ### <a name="api"></a>Rozhraní API
-Chcete-li získat stav clusteru, `FabricClient` vytvořte a zavolejte metodu [GetClusterHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getclusterhealthasync) na své **HealthManager**.
+Chcete-li získat stav clusteru, vytvořte `FabricClient` a zavolejte metodu [GetClusterHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getclusterhealthasync) na své **HealthManager**.
 
 Stav clusteru získá následující volání:
 
@@ -235,7 +235,7 @@ Vrátí stav entity uzlu a obsahuje události stavu hlášené v uzlu. Vstup:
 * Volitelné Filtry pro události, které určují, které položky jsou zajímavé a měly by být vráceny ve výsledku (například jenom chyby nebo upozornění a chyby). Všechny události se používají k vyhodnocení agregovaného stavu entit bez ohledu na filtr.
 
 ### <a name="api"></a>Rozhraní API
-Chcete-li získat stav uzlu prostřednictvím rozhraní API, `FabricClient` vytvořte a zavolejte metodu [GetNodeHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getnodehealthasync) na své HealthManager.
+Chcete-li získat stav uzlu prostřednictvím rozhraní API, vytvořte `FabricClient` a zavolejte metodu [GetNodeHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getnodehealthasync) na své HealthManager.
 
 Následující kód získá stav uzlu pro zadaný název uzlu:
 
@@ -305,7 +305,7 @@ Vrátí stav entity aplikace. Obsahuje stav nasazené aplikace a podřízených 
 * Volitelné Filtr pro vyloučení statistik stavu. Pokud tento parametr nezadáte, zahrnují statistiky stavu OK, upozornění a počet chyb pro všechny podřízené položky aplikace: služby, oddíly, repliky, nasazené aplikace a nasazené balíčky služeb.
 
 ### <a name="api"></a>Rozhraní API
-Chcete-li získat stav aplikace, `FabricClient` vytvořte a zavolejte metodu [GetApplicationHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getapplicationhealthasync) na své HealthManager.
+Chcete-li získat stav aplikace, vytvořte `FabricClient` a zavolejte metodu [GetApplicationHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getapplicationhealthasync) na své HealthManager.
 
 Následující kód získá stav aplikace pro zadaný název aplikace (URI):
 
@@ -451,7 +451,7 @@ Vrátí stav entity služby. Obsahuje stav oddílu. Vstup:
 * Volitelné Filtr pro vyloučení statistik stavu Pokud tento parametr nezadáte, zobrazí se v statistikách o stavu hodnota OK, upozornění a počet chyb pro všechny oddíly a repliky služby.
 
 ### <a name="api"></a>Rozhraní API
-Chcete-li získat stav služby prostřednictvím rozhraní API, `FabricClient` vytvořte a zavolejte metodu [GetServiceHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getservicehealthasync) na své HealthManager.
+Chcete-li získat stav služby prostřednictvím rozhraní API, vytvořte `FabricClient` a zavolejte metodu [GetServiceHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getservicehealthasync) na své HealthManager.
 
 Následující příklad načte stav služby se zadaným názvem služby (URI):
 
@@ -523,7 +523,7 @@ Vrátí stav entity oddílu. Obsahuje stav repliky. Vstup:
 * Volitelné Filtr pro vyloučení statistik stavu Pokud tento parametr nezadáte, zobrazí se v statistikách o stavu počet replik, které jsou v pořádku, upozornění a chybové stavy.
 
 ### <a name="api"></a>Rozhraní API
-Chcete-li získat stav oddílu přes rozhraní API, `FabricClient` vytvořte a zavolejte metodu [GetPartitionHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getpartitionhealthasync) na své HealthManager. Chcete-li zadat volitelné parametry, vytvořte [PartitionHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.partitionhealthquerydescription).
+Chcete-li získat stav oddílu přes rozhraní API, vytvořte `FabricClient` a zavolejte metodu [GetPartitionHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getpartitionhealthasync) na své HealthManager. Chcete-li zadat volitelné parametry, vytvořte [PartitionHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.partitionhealthquerydescription).
 
 ```csharp
 PartitionHealth partitionHealth = await fabricClient.HealthManager.GetPartitionHealthAsync(partitionId);
@@ -614,7 +614,7 @@ Vrátí stav repliky stavové služby nebo instance bezstavové služby. Vstup:
 * Volitelné Filtry pro události, které určují, které položky jsou zajímavé a měly by být vráceny ve výsledku (například jenom chyby nebo upozornění a chyby). Všechny události se používají k vyhodnocení agregovaného stavu entit bez ohledu na filtr.
 
 ### <a name="api"></a>Rozhraní API
-Chcete-li získat stav repliky prostřednictvím rozhraní API, `FabricClient` vytvořte a zavolejte metodu [GetReplicaHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getreplicahealthasync) na své HealthManager. Chcete-li zadat upřesňující parametry, použijte [ReplicaHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.replicahealthquerydescription).
+Chcete-li získat stav repliky prostřednictvím rozhraní API, vytvořte `FabricClient` a zavolejte metodu [GetReplicaHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getreplicahealthasync) na své HealthManager. Chcete-li zadat upřesňující parametry, použijte [ReplicaHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.replicahealthquerydescription).
 
 ```csharp
 ReplicaHealth replicaHealth = await fabricClient.HealthManager.GetReplicaHealthAsync(partitionId, replicaId);
@@ -811,7 +811,7 @@ Výsledek bloku dat zahrnuje podřízené objekty, které jsou v souladu s filtr
 V současné době dotaz na blok dat nevrací hodnocení ve špatném stavu ani události entit. Tyto další informace lze získat pomocí stávajícího dotazu na stav clusteru.
 
 ### <a name="api"></a>Rozhraní API
-Chcete-li získat blok stavu clusteru, `FabricClient` vytvořte a zavolejte metodu [GetClusterHealthChunkAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getclusterhealthchunkasync) na své **HealthManager**. Můžete předat [ClusterHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.clusterhealthchunkquerydescription) a popsat zásady stavu a rozšířené filtry.
+Chcete-li získat blok stavu clusteru, vytvořte `FabricClient` a zavolejte metodu [GetClusterHealthChunkAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getclusterhealthchunkasync) na své **HealthManager**. Můžete předat [ClusterHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.clusterhealthchunkquerydescription) a popsat zásady stavu a rozšířené filtry.
 
 Následující kód Získá blok stavu clusteru s rozšířenými filtry.
 
@@ -1044,7 +1044,7 @@ Dotazy, které obsahují stav **elementu** pro entity, jsou:
   * PowerShell: Get-ServiceFabricDeployedApplication
 
 > [!NOTE]
-> Některé dotazy vracejí stránkované výsledky. Vrácení těchto dotazů je seznam odvozený od [\<PagedList T>](https://docs.microsoft.com/dotnet/api/system.fabric.query.pagedlist-1). Pokud se výsledky nevejdou do zprávy, vrátí se jenom stránka a token continuationtoken, který sleduje, kde se výčet zastavil. Pokračujte v volání stejného dotazu a předejte token pokračování z předchozího dotazu, aby se zobrazily další výsledky.
+> Některé dotazy vracejí stránkované výsledky. Vrácení těchto dotazů je seznam odvozený od [PagedList \<T> ](https://docs.microsoft.com/dotnet/api/system.fabric.query.pagedlist-1). Pokud se výsledky nevejdou do zprávy, vrátí se jenom stránka a token continuationtoken, který sleduje, kde se výčet zastavil. Pokračujte v volání stejného dotazu a předejte token pokračování z předchozího dotazu, aby se zobrazily další výsledky.
 
 ### <a name="examples"></a>Příklady
 Následující kód získá v clusteru poškozené aplikace:
