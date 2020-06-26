@@ -6,14 +6,14 @@ ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 06/23/2020
 ms.author: banders
-ms.openlocfilehash: 12ad1f09c988171b0d6212d79ca61d93acf92d80
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8552b6732736d1d10711479639fa45114f8b039b
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199598"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298000"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>Úhrada předplatných Azure pomocí faktury
 
@@ -101,7 +101,7 @@ Pokud chcete přepnout fakturační profil na platby šekem nebo převodem, post
 
     ![Položka nabídky Fakturační profily, Správa nákladů a fakturace, portál Microsoft Azure](./media/pay-by-invoice/billing-profile.png)
 
-1. Zvolte fakturační profil.
+1. Vyberte fakturační profil.
 1. V nabídce **Fakturační profil** vyberte **Způsoby platby**.
 
    ![Položka nabídky Způsoby platby, Fakturační profily, Správa nákladů, portál Microsoft Azure](./media/pay-by-invoice/billing-profile-payment-methods.png)
@@ -110,8 +110,17 @@ Pokud chcete přepnout fakturační profil na platby šekem nebo převodem, post
 
     ![Banner pro přepnutí na platby šekem nebo převodem, Způsoby platby, portál Microsoft Azure](./media/pay-by-invoice/customer-led-switch-to-invoice.png)
 
-## <a name="check-access-to-a-microsoft-customer-agreement"></a>Ověření přístupu ke smlouvě se zákazníkem Microsoftu
+## <a name="check-access-to-a-microsoft-customer-agreement"></a>Kontrola přístupu k zákaznické smlouvě Microsoftu
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
+
+## <a name="frequently-asked-questions"></a>Nejčastější dotazy
+
+*Proč mi přišla žádost o právní dokument?*
+
+Společnost Microsoft příležitostně potřebuje právní dokumentaci, pokud jsou zadané informace neúplné nebo je nelze ověřit. Příklady:
+
+* Rozdíl mezi názvem účtu a názvem společnosti
+* Změna názvu
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
@@ -119,4 +128,4 @@ Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https
 
 ## <a name="next-steps"></a>Další kroky
 
-- V případě potřeby aktualizujte své kontaktní údaje pro fakturaci v [centru účtů Azure](https://account.azure.com/Profile).
+* V případě potřeby aktualizujte své kontaktní údaje pro fakturaci v [centru účtů Azure](https://account.azure.com/Profile).

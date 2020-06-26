@@ -5,20 +5,20 @@ author: bandersmsft
 ms.reviewer: dhgandhi
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 05/04/2020
+ms.date: 06/19/2020
 ms.author: banders
-ms.openlocfilehash: b198a781da6e18c363e90d8bd5314dafc563dcca
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 91f11502a136ca08d62072808d270f8e840a8710
+ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791149"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85106438"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>Přenos předplatných Azure mezi předplatiteli a CSP
 
 Tento článek popisuje hlavní kroky, které slouží k přenosu předplatných Azure mezi partnery CSP (Cloud Solution Provider) a jejich zákazníky.
 
-## <a name="transfer-ea-subscriptions"></a>Přenos předplatných EA
+## <a name="transfer-ea-subscriptions-to-a-csp-partner"></a>Převody předplatných EA na partnera CSP
 
 Partneři poskytovatelů CSP s přímým účtováním, kteří jsou certifikovaní jako [Poskytovatelé spravovaných služeb Azure Expert (MSP)](https://partner.microsoft.com/membership/azure-expert-msp), můžou požádat o přenos předplatných Azure pro své zákazníky, kteří mají přímou smlouvu Enterprise (EA). Přenosy předplatného jsou povolené jenom pro zákazníky, kteří přijali Smlouvu se zákazníkem Microsoftu (MCA) a koupili si plán Azure.
 
@@ -44,7 +44,7 @@ Aby bylo možné přenést jakékoli jiné předplatné Azure na partnera CSP, m
     > [!IMPORTANT]
     >  - Přesunutí prostředků Azure mezi předplatnými může vést k výpadkům služby na základě prostředků v předplatných.
 
-## <a name="all-subscription-transfers-from-a-csp-partner"></a>Přenosy všech předplatných na partnera CSP
+## <a name="transfer-csp-subscription-to-other-offer"></a>Převod předplatného CSP na jinou nabídku
 
 Aby bylo možné přenést jakékoli další odběry od partnera CSP do jakékoli jiné nabídky Azure, musí předplatitel přesunout prostředky mezi zdrojovými předplatnými a cílovými předplatnými CSP.
 

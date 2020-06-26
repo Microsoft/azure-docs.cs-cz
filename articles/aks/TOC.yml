@@ -132,6 +132,8 @@
           href: upgrade-cluster.md
         - name: Použití smlouvy SLA pro dobu provozu
           href: uptime-sla.md
+        - name: Použití skupin umístění bezkontaktní komunikace (Preview)
+          href: reduce-latency-ppg.md
         - name: Upgrade image uzlu (Preview)
           href: node-image-upgrade.md
         - name: Aktualizace operačního systému procesních uzlů

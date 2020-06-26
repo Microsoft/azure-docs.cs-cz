@@ -11,12 +11,12 @@ metadata:
   author: memildin
   ms.author: memildin
   ms.date: 11/04/2019
-  ms.openlocfilehash: f564113f9a2bb92d1591ac0d3512ae460aa8f58d
-  ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+  ms.openlocfilehash: 13a7ca317630a5a1b0606fa0d2e2022f065fbd4d
+  ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 06/15/2020
-  ms.locfileid: "84783193"
+  ms.lasthandoff: 06/24/2020
+  ms.locfileid: "85317173"
 landingContent:
 - title: Informace o službě Security Center
   linkLists:
@@ -30,18 +30,16 @@ landingContent:
   linkLists:
   - linkListType: whats-new
     links:
-    - text: Ochrana vašich kontejnerů
-      url: container-security.md
-    - text: Integrované hodnocení ohrožení zabezpečení virtuálních počítačů
-      url: built-in-vulnerability-assessment.md
-    - text: Kontrola schémat pro výstrahy zabezpečení
-      url: alerts-schemas.md
-    - text: Automatizace odpovědí na upozornění a doporučení
-      url: workflow-automation.md
-    - text: Export doporučení a výstrah zabezpečení
-      url: continuous-export.md
-    - text: Nastavení služby ochrany před hrozbami pro Azure Key Vault
-      url: advanced-threat-protection-key-vault.md
+    - text: Poznámky k verzi pro Security Center
+      url: release-notes.md
+    - text: Pokročilé zabezpečení dat pro počítače s SQL
+      url: security-center-iaas-advanced-data.md
+    - text: Pravidla potlačení výstrah
+      url: alerts-suppression-rules.md
+    - text: Kompletní popis nových ovládacích prvků zabezpečení
+      url: secure-score-security-controls.md#security-controls-and-their-recommendations
+    - text: Nové rozhraní API bezpečnostního skóre
+      url: secure-score-security-controls.md#getting-your-secure-score-from-the-rest-api
 - title: Začínáme
   linkLists:
   - linkListType: get-started
@@ -64,6 +62,8 @@ landingContent:
       url: tutorial-security-policy.md
     - text: Použití doporučení k vylepšení zabezpečení
       url: security-center-using-recommendations.md
+    - text: Sledování s využitím rozhraní API bezpečnostního skóre
+      url: secure-score-security-controls.md#getting-your-secure-score-from-the-rest-api
 - title: Zmírnění hrozeb
   linkLists:
   - linkListType: how-to-guide

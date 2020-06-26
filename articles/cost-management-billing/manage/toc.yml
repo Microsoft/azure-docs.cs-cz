@@ -121,6 +121,8 @@
       href: troubleshoot-sign-in-issue.md
     - name: Zákaz zobrazení firemních nákladů
       href: enterprise-mgmt-grp-troubleshoot-cost-view.md
+    - name: Fakturační účet se nenašel
+      href: troubleshoot-account-not-found.md
     - name: Kontaktování podpory
       href: ../../azure-portal/supportability/how-to-create-azure-support-request.md
 - name: ukázky

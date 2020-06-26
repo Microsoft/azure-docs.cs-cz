@@ -6,12 +6,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: banders
-ms.openlocfilehash: e924c46632e37c6d196fae2db729c17a99bbae3b
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 3c2f92db1f65a4e9e57ad443a9f000ab3f6567d5
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84765110"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85101026"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Samoobslužné výměny a vrácení peněz za rezervace Azure
 
@@ -20,9 +20,6 @@ Rezervace Azure vám dávají flexibilitu pro zvládání stále se vyvíjejíc�
 Možnost samoobslužné výměny nebo zrušení není k dispozici pro zákazníky s předplatným US Government se smlouvou Enterprise. Podporují se i ostatní typy předplatného US Government, včetně předplatného s průběžnými platbami a CSP (Cloud Solution Provider).
 
 Pokud chcete vyměnit stávající rezervaci nebo za ni vrátit peníze, musíte mít přístup vlastníka k příslušné objednávce rezervace. Můžete [přidat nebo změnit uživatelů, kteří mohou spravovat rezervaci](https://docs.microsoft.com/azure/cost-management-billing/reservations/manage-reserved-vm-instance#add-or-change-users-who-can-manage-a-reservation).
-
-> [!NOTE]
-> Microsoft v současnosti u refundací rezervací neúčtuje poplatky za předčasné ukončení. Možná budeme účtovat poplatky za refundace provedené v budoucnu. Momentálně ale nemáme pro aktivaci tohoto poplatku stanovený žádný pevný termín.
 
 ## <a name="how-to-exchange-or-refund-an-existing-reservation"></a>Postup při výměně nebo refundaci existující rezervace
 
@@ -75,7 +72,7 @@ Azure využívá při zrušení, výměně nebo refundaci následující zásady
 
 **Zásady pro refundace**
 
-- Za předčasné ukončení momentálně neúčtujeme žádný poplatek, ale v budoucnu se za zrušení bude pravděpodobně účtovat poplatek 12 %.
+- V případě zrušení se může účtovat 12% poplatek za předčasné ukončení.
 - Celková výše zrušeného závazku za průběžné období 12 měsíců nesmí překročit 50 000 USD. Příklad: Pro rezervaci na tři roky, která stojí 100 USD měsíčně a vymění se po 18. platbě, se zrušený závazek rovná 1 800 USD. Váš nový dostupný limit po provedení této refundace bude 48 200 USD. Za 365 dnů od provedení této refundace se limit 48 200 USD zvýší o 1 800 USD a znovu budete mít k dispozici 50 000 USD. Z tohoto fondu se odčítají všechny ostatní rezervace a platí pro ně stejná doplňovací logika.
 - Výše vrácených peněz vychází z vaší kupní ceny nebo aktuální ceny rezervace podle toho, která hodnota je nižší.
 - Refundace můžou provádět pouze vlastníci objednávek rezervací. [Přečtěte si, jak přidávat nebo měnit uživatele, kteří mohou spravovat rezervaci](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).

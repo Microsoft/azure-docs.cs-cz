@@ -17,11 +17,11 @@
       href: cognitive-services-apis-create-account.md
     - name: Vytvoření nového prostředku pomocí Azure CLI
       href: cognitive-services-apis-create-account-cli.md
-    - name: Protokolování diagnostiky
-      href: diagnostic-logging.md
-    - name: Šablona ARM
+    - name: Vytvoření nového prostředku pomocí šablony ARM
       displayName: Resource Manager
       href: resource-manager-template.md
+    - name: Protokolování diagnostiky
+      href: diagnostic-logging.md
 - name: ukázky
   items:
     - name: Integrované služby Azure Policy

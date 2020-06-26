@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 4860dcac666f790fed199536338e50a967113c20
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8b823ea97e39dfa05295449fd5a039d2b9debdfa
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76748925"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85412036"
 ---
 Tento článek obsahuje přehled funkcí dostupnosti virtuálních počítačů Azure (VM).
 
@@ -48,17 +48,6 @@ Tento přístup zajišťuje, že při pravidelné údržbě Azure zůstává vž
 ## <a name="virtual-machines-scale-sets"></a>Virtual Machines škálování sad 
 
 Azure Virtual Machine Scale Sets vám umožní vytvořit a spravovat skupinu virtuálních počítačů s vyrovnáváním zatížení. Počet instancí virtuálních počítačů se může automaticky zvyšovat nebo snižovat s ohledem na požadavky nebo definovaný plán. Sady škálování poskytují vysokou dostupnost vašim aplikacím a umožňují centrálně spravovat, konfigurovat a aktualizovat spoustu virtuálních počítačů. Pro zajištění vysoce dostupné aplikace a pro splnění [99,95% smlouvy SLA pro Azure](https://azure.microsoft.com/support/legal/sla/virtual-machines/)doporučujeme, aby se v rámci sady škálování vytvořily dva nebo víc virtuálních počítačů. Pro samotnou sadu škálování se neúčtují žádné náklady. platíte jenom za každou vytvořenou instanci virtuálního počítače. Pokud jeden virtuální počítač používá [Azure Premium SSD](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd), platí Azure SLA pro neplánované události údržby. Virtuální počítače v sadě škálování se dají nasadit mezi více aktualizačními doménami a doménami selhání, aby se maximalizovala dostupnost a odolnost proti výpadkům kvůli výpadkům datového centra a plánovaným nebo neplánovaným událostem údržby. Virtuální počítače v sadě škálování je taky možné nasadit do jedné zóny dostupnosti nebo v regionu. Možnosti nasazení zóny dostupnosti se můžou lišit v závislosti na režimu orchestrace.
-
-### <a name="preview-orchestration-mode-preview"></a>Preview: režim orchestrace Preview
-Sada škálování virtuálních počítačů umožňuje zadat režim orchestrace.  V režimu orchestrace sady virtuálních počítačů (Preview) můžete nyní zvolit, zda má sada škálování orchestrovat virtuální počítače, které jsou vytvořeny explicitně mimo model konfigurace sady škálování nebo instance virtuálních počítačů vytvořené implicitně na základě modelu konfigurace. Vyberte režim orchestrace, který model orchestrace virtuálních počítačů umožňuje seskupit explicitně definované Virtual Machines společně v oblasti nebo v zóně dostupnosti. Virtuální počítače nasazené v zóně dostupnosti nabízí izolaci na virtuálních počítačích, které jsou svázané s hranicí zóny dostupnosti, a nepodléhají jakýmkoli selháním, ke kterým může dojít v jiné zóně dostupnosti v oblasti. 
-
-|   | "orchestrationMode": "VM" (VirtualMachine)| "orchestrationMode": "ScaleSetVM" (VirtualMachineScaleSetVM) |
-|----|----|----|
-| Model konfigurace virtuálních počítačů| Žádné. VirtualMachineProfile není definován v modelu sady škálování. | Povinná hodnota. VirtualMachineProfile se naplní v modelu sady škálování. |
-| Přidání nového virtuálního počítače do sady škálování| Virtuální počítače se při vytvoření virtuálního počítače explicitně přidávají do sady škálování. | Virtuální počítače se implicitně vytvoří a přidají do sady škálování na základě modelu konfigurace virtuálního počítače, počtu instancí a pravidel automatického škálování. |
-| Zóny dostupnosti| Podporuje místní nasazení nebo virtuální počítače v jedné zóně dostupnosti.| Podporuje regionální nasazení nebo více Zóny dostupnosti; Může definovat strategii vyrovnávání zón. |
-| Domény selhání| Může definovat počet domén selhání. 2 nebo 3 založené na místní podpoře a 5 pro zónu dostupnosti. Přiřazená doména selhání virtuálního počítače se uchová s životním cyklem virtuálních počítačů, včetně zrušení přidělení a restartování. | Může definovat 1, 2 nebo 3 domény selhání pro nasazení mimo oblast a 5 pro nasazení zón dostupnosti. Přiřazená doména selhání virtuálního počítače netrvala v životním cyklu virtuálních počítačů, virtuálním počítačům se v době přidělení přiřadí doména selhání. |
-| Aktualizační domény| Není k dispozici. Aktualizace domén se automaticky namapují na domény selhání.| Není k dispozici. Aktualizace domén se automaticky namapují na domény selhání. |
 
 **Domény selhání a aktualizační domény**
 

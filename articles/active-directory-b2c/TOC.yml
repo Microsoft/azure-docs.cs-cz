@@ -325,6 +325,8 @@
                     - name: Azure Multi-Factor Authentication
                       href: multi-factor-auth-technical-profile.md
                       displayName: mfa
+                    - name: Samoobslužné resetování hesla Azure AD
+                      href: aad-sspr-technical-profile.md
                     - name: Transformace deklarací identity
                       href: claims-transformation-technical-profile.md
                     - name: Vydavatel tokenu JWT

@@ -581,6 +581,9 @@
         - name: Úvodní poznámkové bloky
           href: /azure/databricks/delta/intro-notebooks
           maintainContext: true
+        - name: Příjem dat do služby Delta Lake
+          href: /azure/databricks/delta/delta-ingest
+          maintainContext: true
         - name: Dávkové čtení a zápisy tabulek
           href: /azure/databricks/delta/delta-batch
           maintainContext: true
@@ -593,68 +596,65 @@
         - name: Příkazy tabulkových nástrojů
           href: /azure/databricks/delta/delta-utility
           maintainContext: true
-        - name: Reference k rozhraní API Delta Lake
+        - name: API – referenční informace
           href: /azure/databricks/delta/delta-apidoc
           maintainContext: true
         - name: Řízení souběžnosti
           href: /azure/databricks/delta/concurrency-control
           maintainContext: true
-        - name: Optimalizace
-          items:
-            - name: Přehled optimalizací
-              href: /azure/databricks/delta/optimizations/index
-              maintainContext: true
-            - name: Optimalizace výkonu s využitím správy souborů
-              href: /azure/databricks/delta/optimizations/file-mgmt
-              maintainContext: true
-            - name: Automatická optimalizace
-              href: /azure/databricks/delta/optimizations/auto-optimize
-              maintainContext: true
-            - name: Optimalizace výkonu s ukládáním do mezipaměti
-              href: /azure/databricks/delta/optimizations/delta-cache
-              maintainContext: true
-            - name: Úrovně izolace
-              href: /azure/databricks/delta/optimizations/isolation-level
-              maintainContext: true
-            - name: Replikace tabulek MySQL do tabulek Delta Lake
-              href: /azure/databricks/delta/optimizations/mysql-delta
-              maintainContext: true
-            - name: Optimalizace výkonu spojení
-              items:
-                - name: Přehled optimalizace výkonu spojení
-                  href: /azure/databricks/delta/join-performance/index
-                  maintainContext: true
-                - name: Optimalizace spojování pro rozsahy
-                  href: /azure/databricks/delta/join-performance/range-join
-                  maintainContext: true
-                - name: Optimalizace spojování pro nerovnoměrné distribuce
-                  href: /azure/databricks/delta/join-performance/skew-join
-                  maintainContext: true
-            - name: Optimalizovaná transformace dat
-              items:
-                - name: Přehled optimalizované transformace dat
-                  href: /azure/databricks/delta/data-transformation/index
-                  maintainContext: true
-                - name: Funkce vyššího řádu
-                  href: /azure/databricks/delta/data-transformation/higher-order-lambda-functions
-                  maintainContext: true
-                - name: Transformace složitých datových typů
-                  href: /azure/databricks/delta/data-transformation/complex-types
-                  maintainContext: true
-            - name: Osvědčené postupy
-              href: /azure/databricks/delta/best-practices
-              maintainContext: true
-            - name: Správa verzí tabulek
-              href: /azure/databricks/delta/optimizations/versioning
-              maintainContext: true
-            - name: Příklady optimalizace
-              href: /azure/databricks/delta/optimizations/optimization-examples
-              maintainContext: true
+        - name: Osvědčené postupy
+          href: /azure/databricks/delta/best-practices
+          maintainContext: true
         - name: Nejčastější dotazy
           href: /azure/databricks/delta/delta-faq
           maintainContext: true
-        - name: Další zdroje Delta
+        - name: Zdroje a prostředky
           href: /azure/databricks/delta/delta-resources
+          maintainContext: true
+    - name: Delta Engine
+      items:
+        - name: Přehled služby Delta Engine
+          href: /azure/databricks/delta/optimizations/index
+          maintainContext: true
+        - name: Optimalizace výkonu s využitím správy souborů
+          href: /azure/databricks/delta/optimizations/file-mgmt
+          maintainContext: true
+        - name: Automatická optimalizace
+          href: /azure/databricks/delta/optimizations/auto-optimize
+          maintainContext: true
+        - name: Optimalizace výkonu s ukládáním do mezipaměti
+          href: /azure/databricks/delta/optimizations/delta-cache
+          maintainContext: true
+        - name: Úrovně izolace
+          href: /azure/databricks/delta/optimizations/isolation-level
+          maintainContext: true
+        - name: Optimalizace výkonu spojení
+          items:
+            - name: Přehled optimalizace výkonu spojení
+              href: /azure/databricks/delta/join-performance/index
+              maintainContext: true
+            - name: Optimalizace spojování pro rozsahy
+              href: /azure/databricks/delta/join-performance/range-join
+              maintainContext: true
+            - name: Optimalizace spojování pro nerovnoměrné distribuce
+              href: /azure/databricks/delta/join-performance/skew-join
+              maintainContext: true
+        - name: Optimalizovaná transformace dat
+          items:
+            - name: Přehled optimalizované transformace dat
+              href: /azure/databricks/delta/data-transformation/index
+              maintainContext: true
+            - name: Funkce vyššího řádu
+              href: /azure/databricks/delta/data-transformation/higher-order-lambda-functions
+              maintainContext: true
+            - name: Transformace složitých datových typů
+              href: /azure/databricks/delta/data-transformation/complex-types
+              maintainContext: true
+        - name: Správa verzí tabulek
+          href: /azure/databricks/delta/optimizations/versioning
+          maintainContext: true
+        - name: Příklady optimalizace
+          href: /azure/databricks/delta/optimizations/optimization-examples
           maintainContext: true
     - name: Datové rámce a datové sady
       items:
@@ -1899,7 +1899,7 @@
                 - name: Databricks Runtime 7.0
                   href: /azure/databricks/release-notes/runtime/7.0
                   maintainContext: true
-                - name: Databricks Runtime 7.0 ML (beta verze)
+                - name: Databricks Runtime 7.0 ML
                   href: /azure/databricks/release-notes/runtime/7.0ml
                   maintainContext: true
                 - name: Databricks Runtime 7.0 Genomics
