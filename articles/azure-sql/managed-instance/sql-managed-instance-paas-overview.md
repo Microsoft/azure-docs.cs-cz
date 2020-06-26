@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
-ms.date: 04/02/2020
-ms.openlocfilehash: db476d32d3b087e86329f8ed40446caf122c0a00
-ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
+ms.date: 06/25/2020
+ms.openlocfilehash: 43fad6249d5c6f528353a819e03dd7401440e05d
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84944793"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391005"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Co je spravovaná instance Azure SQL?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -53,18 +53,18 @@ Klíčové funkce spravované instance SQL jsou uvedené v následující tabulc
 |Funkce | Description|
 |---|---|
 | Verze SQL Server/Build | Databázový stroj SQL Server (nejnovější stabilní) |
-| Spravované automatizované zálohy | Ano |
-| Integrovaná instance a monitorování databáze a metriky | Ano |
-| Automatické opravy softwaru | Ano |
-| Nejnovější funkce databázového stroje | Ano |
+| Spravované automatizované zálohy | Yes |
+| Integrovaná instance a monitorování databáze a metriky | Yes |
+| Automatické opravy softwaru | Yes |
+| Nejnovější funkce databázového stroje | Yes |
 | Počet datových souborů (řádků) na databázi | Několik |
 | Počet souborů protokolu (protokol) na databázi | 1 |
-| Nasazení VNet-Azure Resource Manager | Ano |
-| Model nasazení sítě VNet – klasický | Ne |
-| Podpora portálu | Ano|
+| Nasazení VNet-Azure Resource Manager | Yes |
+| Model nasazení sítě VNet – klasický | No |
+| Podpora portálu | Yes|
 | Integrovaná integrační služba (SSIS) | No-SSIS je součástí [Azure Data Factory PaaS](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) |
 | Integrovaná služba Analysis Service (SSAS) | No-SSAS je samostatný [PaaS](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) |
-| Integrovaná služba vytváření sestav (SSRS) | Nepoužívejte místo toho [Power BI stránkované sestavy](https://docs.microsoft.com/power-bi/paginated-reports/paginated-reports-report-builder-power-bi) nebo Hostujte službu SSRS na virtuálním počítači Azure. I když spravovaná instance SQL nemůže službu SSRS spustit jako službu, může hostovat databáze katalogu SSRS 2019 pro externí server sestav pomocí ověřování SQL Server. |
+| Integrovaná služba vytváření sestav (SSRS) | Nepoužívejte místo toho [Power BI stránkované sestavy](https://docs.microsoft.com/power-bi/paginated-reports/paginated-reports-report-builder-power-bi) nebo Hostujte službu SSRS na virtuálním počítači Azure. I když spravovaná instance SQL nemůže službu SSRS spustit jako službu, může hostovat [databáze katalogu SSRS](https://docs.microsoft.com/sql/reporting-services/install-windows/ssrs-report-server-create-a-report-server-database#database-server-version-requirements) pro server sestav nainstalovaný na virtuálním počítači Azure pomocí SQL Server ověřování. |
 |||
 
 ## <a name="vcore-based-purchasing-model"></a>Nákupní model založený na virtuálních jádrech
@@ -191,14 +191,14 @@ Následující tabulka shrnuje možnosti zrušení konkrétních operací správ
 
 Kategorie  |Operace  |Zrušitelný  |Odhadovaná doba trvání zrušení  |
 |---------|---------|---------|---------|
-|Nasazení |Vytvoření instance |Ne |  |
-|Aktualizace |Horizontální navýšení kapacity úložiště instance (Pro obecné účely) |Ne |  |
-|Aktualizace |Horizontální navýšení kapacity úložiště instance (Pro důležité obchodní informace) |Ano |90% dokončených operací za 5 minut. |
-|Aktualizace |Instance COMPUTE (virtuální jádra) pro škálování směrem nahoru a dolů (Pro obecné účely) |Ano |90% dokončených operací za 5 minut. |
-|Aktualizace |Instance COMPUTE (virtuální jádra) pro škálování směrem nahoru a dolů (Pro důležité obchodní informace) |Ano |90% dokončených operací za 5 minut. |
-|Aktualizace |Instance instance služby instance (Pro obecné účely až Pro důležité obchodní informace a naopak) |Ano |90% dokončených operací za 5 minut. |
-|Odstranit |Odstranění instance |Ne |  |
-|Odstranit |Odstranění virtuálního clusteru (jako operace iniciované uživatelem) |Ne |  |
+|Nasazení |Vytvoření instance |No |  |
+|Aktualizace |Horizontální navýšení kapacity úložiště instance (Pro obecné účely) |No |  |
+|Aktualizace |Horizontální navýšení kapacity úložiště instance (Pro důležité obchodní informace) |Yes |90% dokončených operací za 5 minut. |
+|Aktualizace |Instance COMPUTE (virtuální jádra) pro škálování směrem nahoru a dolů (Pro obecné účely) |Yes |90% dokončených operací za 5 minut. |
+|Aktualizace |Instance COMPUTE (virtuální jádra) pro škálování směrem nahoru a dolů (Pro důležité obchodní informace) |Yes |90% dokončených operací za 5 minut. |
+|Aktualizace |Instance instance služby instance (Pro obecné účely až Pro důležité obchodní informace a naopak) |Yes |90% dokončených operací za 5 minut. |
+|Odstranit |Odstranění instance |No |  |
+|Odstranit |Odstranění virtuálního clusteru (jako operace iniciované uživatelem) |No |  |
 
 Chcete-li zrušit operaci správy, přejděte do okna Přehled a klikněte na oznamovací políčko probíhající operace. Na pravé straně se zobrazí obrazovka s probíhající operací a bude k dispozici tlačítko pro zrušení operace. Po prvním kliknutí se zobrazí výzva, abyste znovu klikněte na tlačítko a potvrďte, že chcete operaci zrušit.
 

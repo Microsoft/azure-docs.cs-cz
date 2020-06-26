@@ -1,22 +1,22 @@
 ---
 title: 'Rychlý Start: Převod řeči na řeč – služba Speech'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu použijete sadu Speech SDK pro interaktivní převod řeči z jednoho jazyka na text v jiném jazyce.
+description: V tomto rychlém startu použijete sadu Speech SDK k interaktivnímu překladu řeči z jednoho jazyka na text v jiném jazyce.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 02/10/2020
+ms.date: 06/25/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two-with-js
-ms.openlocfilehash: 5722cc714c1ca11b2a018b7b232e261f14c5fa00
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 37b5b8f5c4fef37450a3b83c75a067982143a518
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82978948"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391328"
 ---
 # <a name="quickstart-translate-speech-to-speech"></a>Rychlý Start: Převod řeči na řeč
 

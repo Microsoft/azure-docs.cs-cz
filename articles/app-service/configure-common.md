@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: 18469c94b66acab27b58243e8d15eb924843319b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e4ebb33333dc59432fd269c4847abdeab91d935c
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80811113"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85389767"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Konfigurace aplikace App Service v Azure Portal
 
@@ -25,11 +25,11 @@ V [Azure Portal]vyhledejte a vyberte **App Services**a pak vyberte svou aplikaci
 
 ![Hledat App Services](./media/configure-common/search-for-app-services.png)
 
-V nabídce vlevo aplikace vyberte nastavení **Konfigurace** > **aplikace**.
+V nabídce vlevo aplikace vyberte nastavení **Konfigurace**  >  **aplikace**.
 
 ![Nastavení aplikace](./media/configure-common/open-ui.png)
 
-Pro vývojáře v ASP.NET a ASP.NET Core je nastavení aplikace v App Service `<appSettings>` třeba nastavit v *souboru Web. config* nebo *appSettings. json*, ale hodnoty v App Service přepisují ty v *souboru Web. config* nebo *appSettings. JSON*. Můžete zachovat nastavení pro vývoj (například místní heslo MySQL) v souboru *Web. config* nebo *appSettings. JSON*, ale v App Service jsou bezpečné provozní tajné klíče (například heslo databáze Azure MySQL). Stejný kód používá vaše vývojové nastavení při ladění místně a při nasazení do Azure používá vaše provozní tajemství.
+V případě vývojářů ASP.NET a ASP.NET Core je nastavení aplikace v App Service třeba nastavit v `<appSettings>` v *Web.config* nebo *appsettings.jsna*, ale hodnoty v App Service přepisují ty *Web.config* nebo *appsettings.jsna*. Můžete zachovat nastavení pro vývoj (například místní heslo MySQL) ve *Web.config* nebo *appsettings.jsna*, ale provozní tajemství (například heslo databáze MySQL Azure) jsou v App Service bezpečná. Stejný kód používá vaše vývojové nastavení při ladění místně a při nasazení do Azure používá vaše provozní tajemství.
 
 Další jazykové zásobníky také získají nastavení aplikace jako proměnné prostředí za běhu. Postup pro konkrétní jazykový zásobník najdete v těchto tématech:
 
@@ -86,11 +86,11 @@ Nastavení aplikace má následující formátování JSON:
 
 ## <a name="configure-connection-strings"></a>Konfigurace připojovacích řetězců
 
-V [Azure Portal]vyhledejte a vyberte **App Services**a pak vyberte svou aplikaci. V nabídce vlevo aplikace vyberte nastavení **Konfigurace** > **aplikace**.
+V [Azure Portal]vyhledejte a vyberte **App Services**a pak vyberte svou aplikaci. V nabídce vlevo aplikace vyberte nastavení **Konfigurace**  >  **aplikace**.
 
 ![Nastavení aplikace](./media/configure-common/open-ui.png)
 
-V případě vývojářů ASP.NET a ASP.NET Core je nastavení připojovacích řetězců v App Service jako nastavení `<connectionStrings>` v *souboru Web. config*, ale hodnoty, které jste nastavili App Service přepisují v *souboru Web. config*. Nastavení vývoje (například databázový soubor) v souboru *Web. config* a v produkčních tajných souborech (například SQL Database pověření) můžete v App Service bezpečně. Stejný kód používá vaše vývojové nastavení při ladění místně a při nasazení do Azure používá vaše provozní tajemství.
+V případě vývojářů ASP.NET a ASP.NET Core nastavení připojovacích řetězců v App Service je třeba je nastavovat v `<connectionStrings>` v *Web.config*, ale hodnoty, které nastavíte App Service přepisují ty v *Web.config*. Nastavení vývoje (například databázový soubor) můžete zachovat v *Web.config* a v produkčních tajných klíčích (například SQL Database pověření) v App Service. Stejný kód používá vaše vývojové nastavení při ladění místně a při nasazení do Azure používá vaše provozní tajemství.
 
 Pro jiné jazykové zásobníky je vhodnější místo toho použít [nastavení aplikace](#configure-app-settings) , protože připojovací řetězce vyžadují pro přístup k hodnotám speciální formátování v proměnných klíčů. Tady je jedna výjimka. některé typy databází Azure se ale zálohují společně s aplikací, pokud ve své aplikaci nakonfigurujete své připojovací řetězce. Další informace najdete v tématu [co se zálohuje](manage-backup.md#what-gets-backed-up). Pokud tuto automatizovanou zálohu nepotřebujete, použijte nastavení aplikace.
 
@@ -102,7 +102,7 @@ V době běhu jsou připojovací řetězce k dispozici jako proměnné prostřed
 * Uživatelská`CUSTOMCONNSTR_`
 * PostgreSQL`POSTGRESQLCONNSTR_`  
 
-Například připojovací řetězec MySql s názvem *ConnectionString1* je k dispozici jako proměnná `MYSQLCONNSTR_connectionString1`prostředí. Postup pro konkrétní jazykový zásobník najdete v těchto tématech:
+Například připojovací řetězec MySql s názvem *ConnectionString1* je k dispozici jako proměnná prostředí `MYSQLCONNSTR_connectionString1` . Postup pro konkrétní jazykový zásobník najdete v těchto tématech:
 
 - [ASP.NET Core](containers/configure-language-dotnetcore.md#access-environment-variables)
 - [Node.js](containers/configure-language-nodejs.md#access-environment-variables)
@@ -158,7 +158,7 @@ Připojovací řetězce mají následující formátování JSON:
 
 ## <a name="configure-general-settings"></a>Konfigurace obecných nastavení
 
-V [Azure Portal]vyhledejte a vyberte **App Services**a pak vyberte svou aplikaci. V nabídce vlevo aplikace vyberte **Konfigurace** > **Obecné nastavení**.
+V [Azure Portal]vyhledejte a vyberte **App Services**a pak vyberte svou aplikaci. V nabídce vlevo aplikace vyberte **Konfigurace**  >  **Obecné nastavení**.
 
 ![Obecná nastavení](./media/configure-common/open-general.png)
 
@@ -168,22 +168,22 @@ Tady můžete nakonfigurovat některá společná nastavení aplikace. Některá
 - **Nastavení platformy**: umožňuje konfigurovat nastavení pro hostující platformu, včetně:
     - **Bitová verze**: 32-bit nebo 64-bit.
     - **Protokol WebSocket**: pro [ASP.NET signál] nebo [Socket.IO](https://socket.io/), například.
-    - **Always On**: zachovejte aplikaci i v případě, že nedochází k žádným přenosům. Vyžaduje se pro nepřetržité webové úlohy nebo pro WebJobs, které se spouštějí pomocí výrazu CRON.
+    - **Always On**: aplikace zachovává načtení i v případě, že není k dispozici žádný provoz. Vyžaduje se pro nepřetržité webové úlohy nebo pro WebJobs, které se spouštějí pomocí výrazu CRON.
       > [!NOTE]
-      > Pomocí funkce Always On nemůžete koncový bod ovládat. Vždy pošle požadavek do kořenového adresáře aplikace.
+      > Při použití funkce Always On pošle front-end vyrovnávání zatížení žádost do kořenového adresáře aplikace. Tento koncový bod aplikace App Service nelze nakonfigurovat.
     - **Spravovaná verze kanálu**: [režim kanálu]IIS. Pokud máte starší verzi aplikace, která vyžaduje starší verzi služby IIS, nastavte ji na **klasický** .
     - **Verze protokolu HTTP**: nastavte na **2,0** pro povolení podpory protokolu [https/2](https://wikipedia.org/wiki/HTTP/2) .
     > [!NOTE]
     > Většina moderních prohlížečů podporuje protokol HTTP/2 jenom přes TLS, zatímco nešifrovaný provoz dál používá protokol HTTP/1.1. Pokud chcete zajistit, aby se prohlížeče klienta připojovaly k vaší aplikaci pomocí protokolu HTTP/2, zabezpečte si vlastní název DNS. Další informace najdete v tématu [zabezpečení vlastního názvu DNS s vazbou TLS/SSL v Azure App Service](configure-ssl-bindings.md).
     - **Spřažení ARR**: v nasazení s více instancemi zajistěte, aby byl klient směrován do stejné instance po dobu životnosti relace. Tuto možnost můžete nastavit na **vypnuto** u bezstavových aplikací.
-- **Ladění**: Povolte vzdálené ladění pro aplikace [ASP.NET](troubleshoot-dotnet-visual-studio.md#remotedebug), [ASP.NET Core](/visualstudio/debugger/remote-debugging-azure)nebo [Node. js](containers/configure-language-nodejs.md#debug-remotely) . Tato možnost se automaticky vypne po 48 hodinách.
+- **Ladění**: Povolte vzdálené ladění pro aplikace [ASP.NET](troubleshoot-dotnet-visual-studio.md#remotedebug), [ASP.NET Core](/visualstudio/debugger/remote-debugging-azure)nebo [Node.js](containers/configure-language-nodejs.md#debug-remotely) . Tato možnost se automaticky vypne po 48 hodinách.
 - **Příchozí klientské certifikáty**: vyžadují klientské certifikáty při [vzájemném ověřování](app-service-web-configure-tls-mutual-auth.md).
 
 ## <a name="configure-default-documents"></a>Konfigurovat výchozí dokumenty
 
 Toto nastavení platí jenom pro aplikace pro Windows.
 
-V [Azure Portal]vyhledejte a vyberte **App Services**a pak vyberte svou aplikaci. V nabídce vlevo aplikace vyberte **Konfigurace** > **výchozí dokumenty**.
+V [Azure Portal]vyhledejte a vyberte **App Services**a pak vyberte svou aplikaci. V nabídce vlevo aplikace vyberte **Konfigurace**  >  **výchozí dokumenty**.
 
 ![Výchozí dokumenty](./media/configure-common/open-documents.png)
 
@@ -193,7 +193,7 @@ Pokud aplikace používá moduly, které směrují na základě adresy URL namí
 
 ## <a name="configure-path-mappings"></a>Konfigurace mapování cest
 
-V [Azure Portal]vyhledejte a vyberte **App Services**a pak vyberte svou aplikaci. V nabídce vlevo aplikace vyberte**mapování cest** **Konfigurace** > .
+V [Azure Portal]vyhledejte a vyberte **App Services**a pak vyberte svou aplikaci. V nabídce vlevo aplikace vyberte **Configuration**  >  **mapování cest**konfigurace.
 
 ![Mapování cest](./media/configure-common/open-path.png)
 
@@ -205,13 +205,13 @@ Pro aplikace pro Windows můžete přizpůsobit mapování obslužných rutin sl
 
 Mapování obslužných rutin umožňují přidat vlastní skriptové procesory, které budou zpracovávat požadavky na konkrétní přípony souborů. Chcete-li přidat vlastní obslužnou rutinu, klikněte na tlačítko **Nová obslužná rutina**. Nastavte obslužnou rutinu následujícím způsobem:
 
-- **Přípona**. Přípona souboru, kterou chcete zpracovat, například * \*. php* nebo *obslužných rutin. fcgi*.
+- **Přípona**. Přípona souboru, kterou chcete zpracovat, například * \* . php* nebo *obslužných rutin. fcgi*.
 - **Procesor skriptů**. Absolutní cesta k procesoru skriptu. Požadavky na soubory, které odpovídají příponám souborů, zpracovává procesor skriptu. Použijte cestu `D:\home\site\wwwroot` pro odkaz na kořenový adresář vaší aplikace.
 - **Argumenty**. Volitelné argumenty příkazového řádku pro procesor skriptu.
 
-Každá aplikace má výchozí kořenovou cestu (`/`) namapovanou `D:\home\site\wwwroot`na, kde je váš kód nasazený ve výchozím nastavení. Pokud je kořenový adresář aplikace v jiné složce nebo pokud vaše úložiště obsahuje více než jednu aplikaci, můžete zde upravit nebo přidat virtuální aplikace a adresáře. Klikněte na **Nová virtuální aplikace nebo adresář**.
+Každá aplikace má výchozí kořenovou cestu ( `/` ) namapovanou na `D:\home\site\wwwroot` , kde je váš kód nasazený ve výchozím nastavení. Pokud je kořenový adresář aplikace v jiné složce nebo pokud vaše úložiště obsahuje více než jednu aplikaci, můžete zde upravit nebo přidat virtuální aplikace a adresáře. Klikněte na **Nová virtuální aplikace nebo adresář**.
 
-Chcete-li konfigurovat virtuální aplikace a adresáře, zadejte každý virtuální adresář a jeho odpovídající fyzickou cestu vzhledem k kořenovému`D:\home`adresáři webu (). Volitelně můžete zaškrtnout políčko **aplikace** a označit tak virtuální adresář jako aplikaci.
+Chcete-li konfigurovat virtuální aplikace a adresáře, zadejte každý virtuální adresář a jeho odpovídající fyzickou cestu vzhledem k kořenovému adresáři webu ( `D:\home` ). Volitelně můžete zaškrtnout políčko **aplikace** a označit tak virtuální adresář jako aplikaci.
 
 ### <a name="containerized-apps"></a>Kontejnerové aplikace
 
@@ -253,12 +253,12 @@ Další informace najdete v tématu [Konfigurace vlastního kontejneru Linux pro
 - [Povolení diagnostických protokolů](troubleshoot-diagnostic-logs.md)
 - [Horizontální navýšení kapacity aplikace v Azure App Service]
 - [Základy monitorování v Azure App Service]
-- [Změna nastavení souboru applicationHost. config pomocí souboru applicationHost. xdt](https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples)
+- [Změna nastavení applicationHost.config pomocí souboru applicationHost. xdt](https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples)
 
 <!-- URL List -->
 
 [ASP.NET SignalR]: https://www.asp.net/signalr
-[Portál Azure]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 [Konfigurace vlastního názvu domény v Azure App Service]: ./app-service-web-tutorial-custom-domain.md
 [Nastavení přípravných prostředí ve službě Azure App Service]: ./deploy-staging-slots.md
 [How to: Monitor web endpoint status]: https://go.microsoft.com/fwLink/?LinkID=279906

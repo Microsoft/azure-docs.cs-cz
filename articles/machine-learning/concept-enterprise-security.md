@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 05/19/2020
-ms.openlocfilehash: e030bd1124a93c667070a2b58f2f0e1c10c7d3a6
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.openlocfilehash: be0e24977bbb1aeec74e8847b3fb128267a9ec0e
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84718552"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85392229"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Podnikové zabezpečení pro Azure Machine Learning
 
@@ -176,6 +176,11 @@ Další informace o klíčích spravovaných zákazníkem pomocí Cosmos DB najd
 Všechny Image kontejneru v registru (Azure Container Registry) jsou v klidovém stavu šifrované. Azure tento obrázek před uložením automaticky zašifruje a dešifruje, když Azure Machine Learning načte image.
 
 Pokud chcete své Azure Container Registry šifrovat pomocí vlastních klíčů (spravovaných zákazníkem), musíte si vytvořit vlastní ACR a připojit ho při zřizování pracovního prostoru nebo zašifrování výchozí instance, která se vytvoří v době zřizování pracovního prostoru.
+
+> [!IMPORTANT]
+> Azure Machine Learning vyžaduje, aby byl na svém Azure Container Registry povolen účet správce. Ve výchozím nastavení je toto nastavení zakázáno při vytváření registru kontejnerů. Informace o povolení účtu správce najdete v tématu [účet správce](/azure/container-registry/container-registry-authentication#admin-account).
+>
+> Po vytvoření Azure Container Registry pro pracovní prostor ji neodstraňujte. Tím dojde k přerušení pracovního prostoru Azure Machine Learning.
 
 Příklad vytvoření pracovního prostoru pomocí existující Azure Container Registry najdete v následujících článcích:
 

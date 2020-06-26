@@ -7,17 +7,14 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 79035a2fa2f7f3bed4890faa749661f025cea312
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: c4bbc3510cc273504d7c97287d3aeb1948db2eb2
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362862"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85390665"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Pochopení digitálních vláken a jejich dvojitých grafů
-
-[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 V řešení digitálních vláken Azure jsou entity ve vašem prostředí reprezentovány pomocí **digitálních vláken**Azure. Digitální vlákna je instance jednoho z vašich vlastních definovaných [modelů](concepts-models.md). Dá se připojit k ostatním digitálním **závislostem prostřednictvím vztahů** , které tvoří **dvojitou graf**: Tento neřízený graf je reprezentace celého prostředí.
 
@@ -98,7 +95,7 @@ Data z digitálního vlákna a data relace jsou ukládána ve formátu JSON. To 
 
 Při reprezentaci jako objektu JSON zobrazí digitální vlákna následující pole:
 
-| Název pole | Popis |
+| Název pole | Description |
 | --- | --- |
 | `$dtId` | Uživatelem zadaný řetězec představující ID digitálního vlákna |
 | `$conformance` | Výčet, který obsahuje stav shody tohoto digitálního*vlákna (v* *souladu*s nevyhovujícími, *Neznámý*) |
@@ -164,7 +161,7 @@ Tady je příklad digitálního vlákna formátovaného jako objekt JSON:
 
 Při reprezentaci jako objektu JSON se v relaci z digitálního vlákna zobrazí následující pole:
 
-| Název pole | Popis |
+| Název pole | Description |
 | --- | --- |
 | `$edgeId` | Uživatelem zadaný řetězec představující ID této hraniční relace. Tento řetězec je jedinečný v kontextu zdrojového digitálního vlákna, což také znamená, že `sourceId`  +  `edgeId` je jedinečný v kontextu instance digitálního vlákna Azure. |
 | `$sourceId` | ID zdrojového digitálního vlákna |

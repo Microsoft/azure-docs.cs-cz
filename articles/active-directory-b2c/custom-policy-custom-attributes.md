@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 15623d622a40fa80889a8704e0b7f19d358a052c
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: dbeb2540084fad2cfab3ce360dd15b60a75e5e59
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84295401"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85389322"
 ---
 # <a name="azure-active-directory-b2c-enable-custom-attributes-in-a-custom-profile-policy"></a>Azure Active Directory B2C: povolení vlastních atributů v zásadách vlastního profilu
 
@@ -46,7 +46,7 @@ Atributy rozšíření se dají registrovat jenom u objektu aplikace, i když m�
 
 ## <a name="get-the-application-properties"></a>Získat vlastnosti aplikace
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **Registrace aplikací**a pak vyberte **všechny aplikace**.
@@ -81,11 +81,11 @@ Pokud chcete v zásadách povolit vlastní atributy, zadejte **ID aplikace** a *
 
 ## <a name="upload-your-custom-policy"></a>Nahrání vlastních zásad
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD, a to tak, že v horní nabídce vyberete adresář a filtr **předplatného** a zvolíte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 3. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Registrace aplikací**.
 4. Vyberte **architekturu prostředí identity**.
-5. Vyberte **Odeslat vlastní zásadu**a pak nahrajte soubory zásad TrustFrameworkExtensions. XML, které jste změnili.
+5. Vyberte **Odeslat vlastní zásadu**a pak nahrajte soubory zásad TrustFrameworkExtensions.xml, které jste změnili.
 
 > [!NOTE]
 > Když technický profil služby Azure AD uchovává deklaraci identity do adresáře poprvé, zkontroluje, jestli existuje vlastní atribut. Pokud ne, vytvoří vlastní atribut.  

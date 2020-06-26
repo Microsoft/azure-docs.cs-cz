@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d1989f65f73ac4f9dc8dd328fa9d7ed267eec1aa
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 4f44e9853182a8fcb222b8f895796cf5efc67def
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83636419"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85389594"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Konfigurace toku přihlašovacích údajů pro heslo vlastníka prostředku v Azure AD B2C
 
@@ -50,9 +50,9 @@ Tok přihlašovacích údajů pro heslo vlastníka prostředku (ROPC) je standar
 ## <a name="test-the-user-flow"></a>Testování toku uživatele
 
 Použijte svou oblíbenou aplikaci pro vývoj rozhraní API k vygenerování volání rozhraní API a Projděte si odpověď pro ladění toku uživatele. Sestavte podobné volání s informacemi v následující tabulce jako text požadavku POST:
-- Nahraďte * \< název tenanta>. onmicrosoft.com* názvem vašeho tenanta B2C.
-- * \<>B2C_1A_ROPC_Auth* nahraďte úplným názvem zásady pro přihlašovací údaje hesla vlastníka prostředku.
-- Nahraďte * \< bef2222d56-552f-4a5b-b90a-1988a7d634c3>* s ID aplikace z vaší registrace.
+- Nahraďte * \<tenant-name> . onmicrosoft.com* názvem vašeho tenanta B2C.
+- Nahraďte *\<B2C_1A_ROPC_Auth>* úplným názvem zásady pro přihlašovací údaje hesla vlastníka prostředku.
+- Nahraďte *\<bef2222d56-552f-4a5b-b90a-1988a7d634c3>* ID aplikace z registrace.
 
 `https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_ROPC_Auth/oauth2/v2.0/token`
 
@@ -61,7 +61,7 @@ Použijte svou oblíbenou aplikaci pro vývoj rozhraní API k vygenerování vol
 | uživatelské jméno | leadiocl@outlook.com |
 | heslo | Passxword1 |
 | grant_type | heslo |
-| scope | OpenID \< bef2222d56-552f-4a5b-b90a-1988a7d634c3> offline_access |
+| scope | OpenID \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> offline_access |
 | client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
 | response_type | id_token tokenu |
 

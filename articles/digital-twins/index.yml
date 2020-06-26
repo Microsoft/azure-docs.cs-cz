@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Dokumentace ke službě Azure Digital Twins Preview
-summary: Jak už jsme oznámili na Microsoft Buildu 2020, připravuje se nová verze Public Preview služby Azure Digital Twins. Na tomto místě brzy najdete kompletní dokumentaci k této nové službě a jejím funkcím. Pomocí následujícího odkazu můžete dál využívat přístup k dokumentaci pro první verzi Azure Digital Twins.
+summary: Naučte se využívat službu Azure Digital Twins k vytvoření digitální reprezentace vašich prostředků, prostředí a obchodních systémů, abyste mohli vytvářet řešení IoT nové generace, která modelují reálný svět.
 metadata:
   title: Dokumentace ke službě Azure Digital Twins Preview – kurzy, reference k rozhraní API | Microsoft Docs
   description: Naučte se využívat Azure Digital Twins k propojování osob, míst a věcí a sestavování řešení IoT s využitím inteligentních prostorových analýz.
@@ -10,16 +10,72 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 02/12/2020
-  ms.openlocfilehash: c6822c319489eedf1ecdd7d1fddcd19456c35dd9
-  ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+  ms.openlocfilehash: 105a9de63f13a7a6460638ad967be40edd0783a4
+  ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 06/12/2020
-  ms.locfileid: "84744013"
+  ms.lasthandoff: 06/26/2020
+  ms.locfileid: "85392144"
 landingContent:
-- title: Azure Digital Twins, první verze
+- title: Informace o službě Azure Digital Twins
   linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je služba Azure Digital Twins?
+      url: overview.md
+- title: Začínáme s kurzy
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Kódování klientské aplikace
+      url: tutorial-code.md
+  - linkListType: tutorial
+    links:
+    - text: Seznámení se základy prostřednictvím ukázkové klientské aplikace
+      url: tutorial-command-line-app.md
+  - linkListType: tutorial
+    links:
+    - text: Připojení kompletního řešení
+      url: tutorial-end-to-end.md
+- title: Informace
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Vlastní modely
+      url: concepts-models.md
+  - linkListType: concept
+    links:
+    - text: Digitální dvojčata a graf dvojčat
+      url: concepts-twins-graph.md
+  - linkListType: concept
+    links:
+    - text: Dotazovací jazyk
+      url: concepts-query-language.md
+- title: Vývoj
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Použití rozhraní příkazového řádku Azure Digital Twins
+      url: how-to-use-cli.md
+  - linkListType: how-to-guide
+    links:
+    - text: Vytvoření instance služby Azure Digital Twins
+      url: how-to-set-up-instance.md
+  - linkListType: how-to-guide
+    links:
+    - text: Ověření klientské aplikace
+      url: how-to-authenticate-client.md
+- title: API – referenční informace
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Použití rozhraní API a sad SDK služby Azure Digital Twins
+      url: how-to-use-apis-sdks.md
+  - linkListType: how-to-guide
+    links:
+    - text: Vytváření vlastních sad SDK s využitím AutoRestu
+      url: how-to-create-custom-sdks.md
   - linkListType: reference
     links:
-    - text: 'Dokumentace k předchozím verzím: Azure Digital Twins'
-      url: https://docs.microsoft.com/previous-versions/azure/digital-twins/about-digital-twins
+    - text: Rozhraní REST API
+      url: https://docs.microsoft.com/rest/api/azure-digitaltwins/

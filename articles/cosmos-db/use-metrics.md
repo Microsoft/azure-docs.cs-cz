@@ -7,12 +7,12 @@ ms.reviewer: sngun
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/18/2019
-ms.openlocfilehash: 735c68a3aec4d7bbb5626497de445f61e375b34b
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 157f0a710a0b3aed25455600bbf19d4ae84ed848
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85263394"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391940"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>Monitorování a ladění pomocí metrik v Azure Cosmos DB
 
@@ -46,7 +46,7 @@ V následujících částech se vysvětlují běžné scénáře, kdy můžete p
 
 ## <a name="understand-how-many-requests-are-succeeding-or-causing-errors"></a>Vysvětlení, kolik požadavků je úspěšných nebo způsobujících chyby
 
-Začněte tím, že přejdete na [Azure Portal](https://portal.azure.com) a přejdete na okno **metriky** . V okně vyhledejte * * počet požadavků překročil kapacitu na 1 minutu. Tento graf znázorňuje minuty z celkového počtu minut segmentované na základě stavového kódu. Další informace o stavových kódech HTTP najdete v tématu [stavové kódy HTTP pro Azure Cosmos DB](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb).
+Začněte tím, že přejdete na [Azure Portal](https://portal.azure.com) a přejdete na okno **metriky** . V okně vyhledejte * * počet požadavků překročil kapacitu na 1 minutu. Tento graf znázorňuje minuty z celkového počtu minut segmentované na základě stavového kódu. Další informace o stavových kódech HTTP najdete v tématu [stavové kódy HTTP pro Azure Cosmos DB](/rest/api/cosmos-db/http-status-codes-for-cosmosdb).
 
 Nejběžnější stavový kód chyby je 429 (omezení rychlosti/omezování). Tato chyba znamená, že požadavky na Azure Cosmos DB jsou vyšší než zajištěná propustnost. Nejběžnějším řešením tohoto problému je [horizontální navýšení kapacity ru](./set-throughput.md) pro danou kolekci.
 

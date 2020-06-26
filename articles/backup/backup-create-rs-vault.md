@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak vytvořit Recovery Services trezo
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 410ef023898cc57847b8e2f7a5153d50731e2d4c
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: ac30a57dcbceb4616961c9d100e6ac8639ef2172
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84764396"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391056"
 ---
 # <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 
@@ -58,6 +58,9 @@ Chcete-li vytvořit trezor Služeb zotavení:
 ## <a name="set-storage-redundancy"></a>Nastavit redundanci úložiště
 
 Azure Backup automaticky zpracovává úložiště pro trezor. Musíte určit způsob replikace tohoto úložiště.
+
+>[!NOTE]
+>Nastavení replikace úložiště pro trezor nejsou relevantní pro zálohování sdílené složky Azure, protože aktuální řešení je založené na snímku a do trezoru se nepřenesla žádná data. Snímky se ukládají do stejného účtu úložiště jako zálohovaná sdílená složka.
 
 1. V okně **Trezory služby Recovery Services** klikněte na nový trezor. V části **Nastavení** klikněte na **vlastnosti**.
 2. V části **vlastnosti**v části **Konfigurace zálohování**klikněte na **aktualizovat**.

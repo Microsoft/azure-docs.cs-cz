@@ -1,16 +1,16 @@
 ---
 title: Řešení potíží se systémovými stavovými sestavami
 description: Popisuje sestavy stavu odesílané součástmi Azure Service Fabric a jejich využití při řešení problémů s clustery nebo aplikacemi.
-author: oanapl
+author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
-ms.author: oanapl
-ms.openlocfilehash: a76ae803b1283ce50d2f4e259943ce5ffcf0274c
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.author: gwallace
+ms.openlocfilehash: a3b2f7c22c1afd0a24aafa3bcd9dc9a6c3f725f1
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84692474"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85392569"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Řešení problémů pomocí sestav o stavu systému
 Komponenty služby Azure Service Fabric poskytují zprávy o stavu systému pro všechny entity v clusteru přímo ze seznamu. [Health Store](service-fabric-health-introduction.md#health-store) vytvoří a odstraní entity založené na sestavách systému. Uspořádává je také v hierarchii, která zachycuje interakce entit.
@@ -647,7 +647,7 @@ Vlastnost a text indikují, které rozhraní API bylo zablokováno. Další krok
 
 - **IStatefulServiceReplica. ChangeRole (P)**: Nejčastějším případem je, že Služba nevrátila úlohu z `RunAsync` .
 
-Další volání rozhraní API, která můžou zablokovat, jsou v rozhraní **IReplicator** . Příklad:
+Další volání rozhraní API, která můžou zablokovat, jsou v rozhraní **IReplicator** . Například:
 
 - **IReplicator. CatchupReplicaSet**: Toto upozornění indikuje jednu ze dvou věcí. Neexistují žádné nedostatečné repliky. Pokud se chcete podívat, jestli se jedná o tento případ, podívejte se na stav repliky v oddílu nebo v sestavě stavu System.FM pro zablokované překonfigurování. Nebo repliky nepotvrzující operace. Pomocí rutiny PowerShellu se `Get-ServiceFabricDeployedReplicaDetail` dá určit průběh všech replik. Problém se nachází v replikách, jejichž `LastAppliedReplicationSequenceNumber` hodnota je za hodnotou primární `CommittedSequenceNumber` .
 

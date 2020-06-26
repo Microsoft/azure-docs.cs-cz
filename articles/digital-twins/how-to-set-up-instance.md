@@ -7,17 +7,14 @@ ms.author: baanders
 ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 792b3894bf051298250ea8f402086c1edf297842
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: c9489b9e1afe5e42121f61a3b0b50b28b2401bd3
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362743"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85392280"
 ---
 # <a name="set-up-an-azure-digital-twins-instance"></a>Nastavení instance digitálních vláken Azure
-
-[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Tento článek vás provede základními kroky pro nastavení nové instance digitálních vláken Azure. To zahrnuje vytvoření instance a přiřazení oprávnění [Azure Active Directory (AAD)](../active-directory/fundamentals/active-directory-whatis.md) k instanci pro sebe sama.
 
@@ -58,7 +55,9 @@ Aby bylo možné používat digitální vlákna Azure v rámci klientské aplika
 
 #### <a name="assign-yourself-a-role"></a>Přiřazení role
 
-Pomocí e-mailu přidruženého k tenantovi služby AAD v předplatném Azure vytvořte přiřazení role pro sebe sama. Nejprve se ujistěte, že jste ve svém předplatném Azure klasifikováni jako vlastník. Můžete to zkontrolovat pomocí `az role assignment list --assignee <your-Azure-email>` příkazu, abyste ověřili, že *RoleDefinitionName* je *vlastníkem*. Pak můžete k přiřazení uživatele k roli vlastníka pro instanci digitálního vlákna Azure použít následující příkaz:
+Pomocí e-mailu přidruženého k tenantovi služby AAD v předplatném Azure vytvořte přiřazení role pro sebe sama. 
+
+Nejprve se ujistěte, že jste ve svém předplatném Azure klasifikováni jako vlastník. Můžete to ověřit pomocí `az role assignment list --assignee <your-Azure-email>` příkazu a ověřit, zda je hodnota *roleDefinitionName* *Owner*. Jako vlastník předplatného můžete k přiřazení uživatele k roli vlastníka pro instanci digitálního vlákna Azure použít následující příkaz:
 
 ```azurecli
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<your-AAD-email>" --role "Azure Digital Twins Owner (Preview)"

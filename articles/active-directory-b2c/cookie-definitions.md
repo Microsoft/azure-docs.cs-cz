@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 01/23/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b984b75b3a12606aa0d82c7e7b399d5dce59df33
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5e44e2e1eb37e808e60134a6fba5051552e84029
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78189510"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85389339"
 ---
 # <a name="cookies-definitions-for-azure-ad-b2c"></a>Definice souborů cookie pro Azure AD B2C
 
@@ -28,7 +28,7 @@ Služba Microsoft Azure AD B2C je kompatibilní s konfiguracemi prohlížeče Sa
 
 Aby bylo možné chránit přístup k webům, budou webové prohlížeče zavádět nový zabezpečený model, který předpokládá, že všechny soubory cookie mají být chráněny z externího přístupu, pokud není uvedeno jinak. V prohlížeči Chrome je první implementace této změny od [Chrome 80 v únoru 2020](https://www.chromium.org/updates/same-site). Další informace o přípravě na změnu v Chrome najdete v tématu [vývojáři: Příprava na nové SameSite = None; Nastavení zabezpečeného souboru cookie](https://blog.chromium.org/2019/10/developers-get-ready-for-new.html) na blogu Chromu
 
-Aby mohli vývojáři určit soubory cookie pro přístup `SameSite=None`k více lokalitám, musí použít nové nastavení souborů cookie. Pokud je `SameSite=None` přítomen atribut, je nutné použít `Secure` další atribut, aby soubory cookie mezi weby byly dostupné pouze prostřednictvím připojení HTTPS. Ověří a otestuje všechny vaše aplikace, včetně aplikací, které používají Azure AD B2C.
+`SameSite=None`Aby mohli vývojáři určit soubory cookie pro přístup k více lokalitám, musí použít nové nastavení souborů cookie. Pokud `SameSite=None` je přítomen atribut, je `Secure` nutné použít další atribut, aby soubory cookie mezi weby byly dostupné pouze prostřednictvím připojení HTTPS. Ověří a otestuje všechny vaše aplikace, včetně aplikací, které používají Azure AD B2C.
 
 Další informace naleznete v tématu:
 
@@ -39,7 +39,7 @@ Další informace naleznete v tématu:
 
 V následující tabulce jsou uvedeny soubory cookie používané v Azure AD B2C.
 
-| Název | Domain (Doména) | Konec platnosti | Účel |
+| Name | Domain (Doména) | Konec platnosti | Účel |
 | ----------- | ------ | -------------------------- | --------- |
 | `x-ms-cpim-admin` | main.b2cadmin.ext.azure.com | Konec [relace prohlížeče](session-behavior.md) | Uchovává data o členství uživatelů napříč klienty. Klienti, na kterých je uživatel členem, a úroveň členství (správce nebo uživatel). |
 | `x-ms-cpim-slice` | b2clogin.com, login.microsoftonline.com, značka domény | Konec [relace prohlížeče](session-behavior.md) | Slouží ke směrování požadavků do příslušné provozní instance. |

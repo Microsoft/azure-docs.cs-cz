@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: maquaran
-ms.openlocfilehash: b121d7f5f1ad626f80a03ebe6cd47a932c209672
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: df48be038635799c08be409f7f1600e324cd8380
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85116429"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85392161"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Spolupráce s Azure Cosmos DB
 
@@ -228,7 +228,7 @@ Pro sociální prostředí je nutné sjednotit strategii dělení pomocí způso
 
 Cosmos DB spustí vaše dotazy (včetně [agregací](https://azure.microsoft.com/blog/planet-scale-aggregates-with-azure-documentdb/)) ve všech vašich oddílech transparentně, takže nemusíte přidávat žádnou logiku, protože vaše data roste.
 
-V čase budete nakonec růst provozu a spotřebu prostředků (měřené v [ru](request-units.md)nebo jednotkách žádosti) se zvýší. Při zvětšování uživatelské základny budete číst a zapisovat častěji. Uživatelskou základnu začne vytvářet a číst další obsah. Schopnost **škálování propustnosti** je proto důležitá. Zvýšení ru je snadné. Můžete to udělat několika kliknutími na Azure Portal nebo vyvoláním [příkazů prostřednictvím rozhraní API](https://docs.microsoft.com/rest/api/cosmos-db/replace-an-offer).
+V čase budete nakonec růst provozu a spotřebu prostředků (měřené v [ru](request-units.md)nebo jednotkách žádosti) se zvýší. Při zvětšování uživatelské základny budete číst a zapisovat častěji. Uživatelskou základnu začne vytvářet a číst další obsah. Schopnost **škálování propustnosti** je proto důležitá. Zvýšení ru je snadné. Můžete to udělat několika kliknutími na Azure Portal nebo vyvoláním [příkazů prostřednictvím rozhraní API](/rest/api/cosmos-db/replace-an-offer).
 
 :::image type="content" source="./media/social-media-apps/social-media-apps-scaling.png" alt-text="Škálování a definování klíče oddílu":::
 

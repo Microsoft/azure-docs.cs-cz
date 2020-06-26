@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 06/22/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: d613caa5c2eea4f2add129c640ab322168c536f6
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 084c1c604ac780b133f89eaeeb3fa5e780c2d565
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362488"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85392586"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>Izolace sítě během školení & odvození s privátními virtuálními sítěmi
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -44,7 +44,7 @@ Můžete také [Povolit privátní propojení Azure](how-to-configure-private-li
 > [!TIP]
 > Můžete kombinovat virtuální síť a privátní propojení a chránit tak komunikaci mezi vaším pracovním prostorem a dalšími prostředky Azure. Některé kombinace ale vyžadují pracovní prostor Enterprise Edition. Následující tabulka vám pomůže pochopit, jaké scénáře vyžaduje Enterprise Edition:
 >
-> | Scénář | Enterprise</br>Edition | Basic</br>Edition |
+> | Scénář | Enterprise</br>Edition | Základní</br>Edition |
 > | ----- |:-----:|:-----:| 
 > | Žádná virtuální síť ani privátní odkaz | ✔ | ✔ |
 > | Pracovní prostor bez privátního odkazu Další prostředky (kromě Azure Container Registry) ve virtuální síti | ✔ | ✔ |
@@ -285,6 +285,11 @@ Pokud chcete použít účet úložiště Azure pro pracovní prostor ve virtuá
 >
 > U jiných než výchozích účtů úložiště `storage_account` vám parametr ve [ `Workspace.create()` funkci](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) umožní zadat vlastní účet úložiště podle ID prostředku Azure.
 
+## <a name="machine-learning-studio"></a>Machine Learning Studio
+
+Při přístupu k studiu z prostředku uvnitř virtuální sítě (například výpočetní instance nebo virtuálního počítače) musíte z virtuální sítě do studia dovolit odchozí přenosy. 
+
+Pokud například používáte skupiny zabezpečení sítě (NSG) k omezení odchozího provozu, přidejte pravidlo do cíle __značky služby__ __AzureFrontDoor. FirstParty__.
 
 <a id="aksvnet"></a>
 

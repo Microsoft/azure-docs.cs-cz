@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 05/26/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: beb6b5666be0d3264720c5bc7a3c9516c1bd18f4
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: e26f2ed498b8bfcf6b1518ea34815efb75a8eabe
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84790870"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85392450"
 ---
 # <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>Přidání přiřazení rolí Azure pomocí šablon Azure Resource Manager
 
@@ -68,7 +68,7 @@ objectid=$(az ad sp list --display-name "{name}" --query [].objectId --output ts
 
 Když v Azure RBAC udělíte přístup, přidáte přiřazení role.
 
-### <a name="resource-group-without-parameters"></a>Skupina prostředků (bez parametrů)
+### <a name="resource-group-scope-without-parameters"></a>Obor skupiny prostředků (bez parametrů)
 
 Následující šablona ukazuje základní způsob, jak přidat přiřazení role. Některé hodnoty jsou zadány v rámci šablony. Následující šablona znázorňuje:
 
@@ -111,7 +111,7 @@ Níže vidíte příklad přiřazení role čtenáře uživateli pro skupinu pro
 
 ![Přiřazení role v oboru skupiny prostředků](./media/role-assignments-template/role-assignment-template.png)
 
-### <a name="resource-group-or-subscription"></a>Skupina prostředků nebo předplatné
+### <a name="resource-group-or-subscription-scope"></a>Rozsah skupiny prostředků nebo předplatného
 
 Předchozí šablona není příliš flexibilní. Následující šablona používá parametry a lze ji použít v různých oborech. Následující šablona znázorňuje:
 
@@ -195,7 +195,7 @@ New-AzDeployment -Location centralus -TemplateFile rbac-test.json -principalId $
 az deployment create --location centralus --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
 ```
 
-### <a name="resource"></a>Prostředek
+### <a name="resource-scope"></a>Obor prostředku
 
 Pokud potřebujete přidat přiřazení role na úrovni prostředku, formát přiřazení role se liší. Zadejte obor názvů poskytovatele prostředků a typ prostředku, ke kterému chcete přiřadit roli. Do názvu přiřazení role zadáte také název prostředku.
 

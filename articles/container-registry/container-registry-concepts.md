@@ -2,13 +2,13 @@
 title: O úložištích & imagí
 description: Seznámení se základními koncepty Azure Container Registry, úložišť a imagí kontejnerů.
 ms.topic: article
-ms.date: 09/10/2019
-ms.openlocfilehash: ea6e2577d3eee91626dd613617a0b79e4ff3d6a1
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.date: 06/16/2020
+ms.openlocfilehash: f3a3e2a00b4fb35f9e9dd1415d5c197aef0d39b0
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84711982"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85390444"
 ---
 # <a name="about-registries-repositories-and-images"></a>O registrech, úložištích a obrázcích
 
@@ -24,13 +24,11 @@ Kromě imagí kontejneru Docker Azure Container Registry podporuje související
 
 Adresa artefaktu ve službě Azure Container Registry obsahuje následující prvky. 
 
-`[loginUrl]/[namespace]/[artifact:][tag]`
+`[loginUrl]/[repository:][tag]`
 
 * **loginUrl** – plně kvalifikovaný název hostitele registru. Hostitel registru ve službě Azure Container Registry má formát *myregistry*. azurecr.IO (všechna malá písmena). Je nutné zadat loginUrl při použití Docker nebo jiných klientských nástrojů pro vyžádání nebo nabízení artefaktů do služby Azure Container Registry. 
-* logické seskupení souvisejících imagí nebo artefaktů s oddělovačem **názvů** – lomítko – například pro pracovní skupinu nebo aplikaci
-* **artefakt** – název úložiště pro konkrétní bitovou kopii nebo artefakt
-* **Označit** specifickou verzi obrázku nebo artefaktu uloženého v úložišti
-
+* **úložiště** – název logického seskupení jednoho nebo více souvisejících imagí nebo artefaktů, například obrázky pro aplikaci nebo základní operační systém. Může zahrnovat cestu k *oboru názvů* . 
+* identifikátor **označení** konkrétní verze obrázku nebo artefaktu uloženého v úložišti.
 
 Například úplný název obrázku ve službě Azure Container Registry může vypadat takto:
 
@@ -40,20 +38,24 @@ Podrobnosti o těchto prvcích najdete v následujících oddílech.
 
 ## <a name="repository-name"></a>Název úložiště
 
-Registry kontejnerů spravují *úložiště*, kolekce imagí kontejneru a jiné artefakty se stejným názvem, ale různé značky. Například následující tři obrázky jsou v úložišti "ACR-HelloWorld":
+*Úložiště* je kolekce imagí kontejneru nebo jiných artefaktů se stejným názvem, ale s různými značkami. Například následující tři obrázky jsou v úložišti "ACR-HelloWorld":
 
 
 - *ACR-HelloWorld: nejnovější*
 - *ACR-HelloWorld: V1*
 - *ACR-HelloWorld: v2*
 
-Názvy úložišť můžou zahrnovat taky [obory názvů](container-registry-best-practices.md#repository-namespaces). Obory názvů umožňují seskupovat Image pomocí názvů úložiště s oddělovači lomítka, například:
+Názvy úložišť můžou zahrnovat taky [obory názvů](container-registry-best-practices.md#repository-namespaces). Obory názvů umožňují identifikovat související úložiště a vlastnictví artefaktů ve vaší organizaci pomocí názvů s oddělenými lomítky. Registr ale spravuje všechna úložiště nezávisle, nikoli jako hierarchii. Příklady:
 
 - *Marketing/campaign10-18/web: v2*
 - *Marketing/campaign10 – 18/API: V3*
 - *Marketing/campaign10-18/e-mail – odesilatel: v2*
 - *produkt – vrácení a odeslání na webu: 20180604*
 - *produkt – vrátí nebo starší integrátor: 20180715*
+
+Názvy úložišť můžou obsahovat jenom malé alfanumerické znaky, tečky, pomlčky, podtržítka a lomítka. 
+
+Úplná pravidla pojmenování úložiště najdete v tématu věnovaném [specifikaci distribuce pro iniciativu](https://github.com/docker/distribution/blob/master/docs/spec/api.md#overview)v rámci služby Open container.
 
 ## <a name="image"></a>Image
 
@@ -63,9 +65,11 @@ Obrázek kontejneru nebo jiný artefakt v rámci registru je přidružen k jedn�
 
 *Značka* pro obrázek nebo jiný artefakt určuje jeho verzi. Jednomu artefaktu v rámci úložiště je možné přiřadit jednu nebo více značek a může být také "bez příznaku". To znamená, že můžete odstranit všechny značky z obrázku, zatímco data obrázku (jeho vrstvy) zůstanou v registru.
 
-Úložiště (nebo úložiště a obor názvů) plus značka definuje název obrázku. Můžete vložit a načíst image zadáním jejího názvu v operaci Push nebo Pull.
+Úložiště (nebo úložiště a obor názvů) plus značka definuje název obrázku. Můžete vložit a načíst image zadáním jejího názvu v operaci Push nebo Pull. Tato značka `latest` se používá ve výchozím nastavení, pokud ji nezadáte v příkazech Docker.
 
 Způsob, jakým se ve vašich scénářích vytvářejí nebo nasazují image kontejnerů, najdete v příručce. Například stabilní značky jsou doporučeny pro zachování základních imagí a jedinečné značky pro nasazování imagí. Další informace najdete v tématu [doporučení pro označování a správu verzí imagí kontejneru](container-registry-image-tag-version.md).
+
+Pravidla pro pojmenovávání značek najdete v [dokumentaci k Docker](https://docs.docker.com/engine/reference/commandline/tag/).
 
 ### <a name="layer"></a>Vrstva
 

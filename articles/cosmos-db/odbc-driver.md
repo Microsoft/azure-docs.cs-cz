@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/02/2019
 ms.author: sngun
-ms.openlocfilehash: ef658412e56dca33769a813994f3790a94a5235b
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 250bb5c7bec9cb68ba3236d0cb43938566b60fa8
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262527"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85392501"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Připojení k Azure Cosmos DB pomocí nástrojů BI Analytics s ovladačem ODBC
 
@@ -67,7 +67,7 @@ Pojďme začít s ovladačem ODBC.
 1. Klikněte na tlačítko **test** a ujistěte se, že se můžete připojit k účtu Azure Cosmos DB. 
 
 1.  Klikněte na **Rozšířené možnosti** a nastavte následující hodnoty:
-    *  **REST API verze**: vyberte [verzi REST API](https://docs.microsoft.com/rest/api/cosmos-db/) pro vaše operace. Výchozí hodnota je 2015-12-16. Pokud máte kontejnery s [velkými klíči oddílů](large-partition-keys.md) a vyžadujete REST API verze 2018-12-31:
+    *  **REST API verze**: vyberte [verzi REST API](/rest/api/cosmos-db/) pro vaše operace. Výchozí hodnota je 2015-12-16. Pokud máte kontejnery s [velkými klíči oddílů](large-partition-keys.md) a vyžadujete REST API verze 2018-12-31:
         - Zadejte **2018-12-31** pro REST API verzi.
         - V nabídce **Start** zadejte příkaz regedit a vyhledejte a otevřete aplikaci **Editor registru** .
         - V editoru registru přejděte na cestu: **Computer\HKEY_LOCAL_MACHINE\SOFTWARE\ODBC\ODBC.INI**

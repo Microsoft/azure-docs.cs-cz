@@ -3,12 +3,12 @@ title: Zálohování sdílených složek Azure pomocí Azure CLI
 description: Naučte se používat Azure CLI k zálohování sdílených složek Azure v trezoru Recovery Services.
 ms.topic: conceptual
 ms.date: 01/14/2020
-ms.openlocfilehash: ff1d8c6245521d2d0262b0440177d65713058742
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ee83d4df5a857f0ae5b554514ecda0c257a829ae
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76844037"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391090"
 ---
 # <a name="back-up-azure-file-shares-with-cli"></a>Zálohování sdílených složek Azure pomocí rozhraní příkazového řádku
 
@@ -22,7 +22,7 @@ Na konci tohoto kurzu se dozvíte, jak pomocí Azure CLI provádět následujíc
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud chcete rozhraní příkazového řádku nainstalovat a používat místně, musíte použít Azure CLI verze 2.0.18 nebo novější. Chcete-li zjistit verzi rozhraní `run az --version`příkazového řádku,. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+Pokud chcete rozhraní příkazového řádku nainstalovat a používat místně, musíte použít Azure CLI verze 2.0.18 nebo novější. Chcete-li zjistit verzi rozhraní příkazového řádku, `run az --version` . Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Recovery Services
 
@@ -42,7 +42,7 @@ Pomocí těchto kroků vytvořte Trezor služby Recovery Services:
     eastus      AzureFiles
     ```
 
-2. Pomocí rutiny [AZ Backup trezor Create](https://docs.microsoft.com/cli/azure/backup/vault?view=azure-cli-latest#az-backup-vault-create) vytvořte Trezor. Zadejte stejné umístění pro trezor, které bylo použito pro skupinu prostředků.
+1. Pomocí rutiny [AZ Backup trezor Create](https://docs.microsoft.com/cli/azure/backup/vault?view=azure-cli-latest#az-backup-vault-create) vytvořte Trezor. Zadejte stejné umístění pro trezor, které bylo použito pro skupinu prostředků.
 
     Následující příklad vytvoří trezor služby Recovery Services s názvem *azurefilesvault* v oblasti východní USA.
 
@@ -54,28 +54,6 @@ Pomocí těchto kroků vytvořte Trezor služby Recovery Services:
     Location    Name                ResourceGroup
     ----------  ----------------    ---------------
     eastus      azurefilesvault     azurefiles
-    ```
-
-3. Zadejte typ redundance, který se použije pro úložiště trezoru. Můžete použít [místně redundantní úložiště](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs) nebo [geograficky redundantní úložiště](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs).
-
-    Následující příklad nastaví možnost redundance úložiště pro *azurefilesvault* na geograficky **redundantní** pomocí rutiny [AZ Backup trezor-Properties set](https://docs.microsoft.com/cli/azure/backup/vault/backup-properties?view=azure-cli-latest#az-backup-vault-backup-properties-set) .
-
-    ```azurecli-interactive
-    az backup vault backup-properties set --name azurefilesvault --resource-group azurefiles --backup-storage-redundancy Georedundant
-    ```
-
-    Pokud chcete zjistit, jestli se trezor úspěšně vytvořil, můžete k získání podrobností o vašem trezoru použít rutinu [AZ Backup trezor show](https://docs.microsoft.com/cli/azure/backup/vault?view=azure-cli-latest#az-backup-vault-show) . Následující příklad zobrazí podrobnosti o *azurefilesvault* , které jsme vytvořili v předchozích krocích.
-
-    ```azurecli-interactive
-    az backup vault show --name azurefilesvault --resource-group azurefiles --output table
-    ```
-
-    Výstup bude podobný následující reakci:
-
-    ```output
-    Location     Name               ResourceGroup
-    ----------   ---------------    ---------------
-    eastus       azurefilesvault    azurefiles
     ```
 
 ## <a name="enable-backup-for-azure-file-shares"></a>Povolit zálohování sdílených složek Azure
@@ -108,7 +86,7 @@ Chcete-li aktivovat zálohování na vyžádání, je nutné zadat následujíc�
 * **--Item-Name** je název sdílené složky, pro kterou chcete aktivovat zálohování na vyžádání. Pokud chcete načíst **název** nebo **popisný název** zálohované položky, použijte příkaz [AZ Backup Item list](https://docs.microsoft.com/cli/azure/backup/item?view=azure-cli-latest#az-backup-item-list) .
 * **--zached – dokud** neurčíte, do kdy se má bod obnovení zachovat, do něj bude zachováno datum. Hodnota by měla být nastavena ve formátu času UTC (dd-mm-rrrr).
 
-Následující příklad aktivuje zálohování na vyžádání pro sdílenou složku *azuresfiles* v účtu úložiště *afsaccount* s uchováním do *20-01-2020*.
+Následující příklad aktivuje zálohování na vyžádání pro sdílenou složku *azurefiles* v účtu úložiště *afsaccount* s uchováním do *20-01-2020*.
 
 ```azurecli-interactive
 az backup protection backup-now --vault-name azurefilesvault --resource-group azurefiles --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --retain-until 20-01-2020 --output table
@@ -125,4 +103,4 @@ Atribut **Name** ve výstupu odpovídá názvu úlohy, kterou vytvořila služba
 ## <a name="next-steps"></a>Další kroky
 
 * Informace o tom, jak [obnovit sdílené složky Azure pomocí](restore-afs-cli.md) rozhraní PŘÍKAZového řádku
-* Naučte se [Spravovat Azure File Share ackups pomocí](manage-afs-backup-cli.md) rozhraní PŘÍKAZového řádku.
+* Naučte se [Spravovat zálohy sdílených složek Azure pomocí](manage-afs-backup-cli.md) rozhraní PŘÍKAZového řádku.

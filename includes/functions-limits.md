@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 05/04/2020
 ms.author: glenga
-ms.openlocfilehash: 40d171101c5d99cd33c90ee8751092a3ceebf12e
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.openlocfilehash: 37a61e270f95ffdc420536046e0ce1eda1e489b4
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84906702"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391470"
 ---
 | Prostředek |[Plán Consumption](../articles/azure-functions/functions-scale.md#consumption-plan)|[Plán Premium](../articles/azure-functions/functions-scale.md#premium-plan)|[Vyhrazený plán](../articles/azure-functions/functions-scale.md#app-service-plan)|[ASE](../articles/app-service/environment/intro.md)| [Kubernetes](../articles/aks/quotas-skus-regions.md) |
 | --- | --- | --- | --- | --- | --- |
@@ -23,7 +23,7 @@ ms.locfileid: "84906702"
 | Maximální velikost paměti (GB na instanci) | 1.5 | 3,5 – 14 | 1,75 – 14 | 3,5 – 14 | Podporuje se libovolný uzel. |
 | Aplikace Function App na plán |100 |100 |neohraničené<sup>4</sup> | Unbounded | Unbounded |
 | [Plány služby App Service](../articles/app-service/overview-hosting-plans.md) | 100 na [oblast](https://azure.microsoft.com/global-infrastructure/regions/) |100 na skupinu prostředků |100 na skupinu prostředků | - | - |
-| Úložiště<sup>5</sup> |1 GB |250 GB |50-1000 GB | 1 TB | Není k dispozici |
+| Úložiště<sup>5</sup> |5 TB |250 GB |50-1000 GB | 1 TB | Není k dispozici |
 | Vlastní domény na aplikaci</a> |500<sup>6</sup> |500 |500 | 500 | Není k dispozici |
 | [Podpora protokolu SSL](../articles/app-service/configure-ssl-bindings.md) vlastní domény |zahrnuto do nevázaného SNI SSL připojení | neohraničená SNI SSL a jsou zahrnutá 1 IP SSL připojení. |neohraničená SNI SSL a jsou zahrnutá 1 IP SSL připojení. | neohraničená SNI SSL a jsou zahrnutá 1 IP SSL připojení. | Není k dispozici |
 

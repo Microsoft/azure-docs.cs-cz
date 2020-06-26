@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 06/25/2020
 ms.author: yulili
-ms.openlocfilehash: 37eed03ed839411f1acf5d963d4118a3c6d2c379
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 2c859965c951ad271b1b9e272ce60de64aa3d3d5
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74975920"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391362"
 ---
 # <a name="quickstart-synthesize-speech-in-objective-c-on-macos-using-the-speech-sdk"></a>Rychlý Start: syntetizace řeči v cíli – C v macOS pomocí sady Speech SDK
 
@@ -39,7 +39,7 @@ Dá se použít v projektech Xcode jako [CocoaPod](https://cocoapods.org/), nebo
 
 ## <a name="create-an-xcode-project"></a>Vytvoření projektu Xcode
 
-Spusťte Xcode a spusťte nový projekt kliknutím na **soubor** > **Nový** > **projekt**.
+Spusťte Xcode a spusťte nový projekt kliknutím na **soubor**  >  **Nový**  >  **projekt**.
 V dialogovém okně Výběr šablony vyberte šablonu aplikace pro kakao.
 
 V následujících dialogových oknech proveďte následující výběry:
@@ -63,9 +63,9 @@ V následujících dialogových oknech proveďte následující výběry:
 ## <a name="install-the-sdk-as-a-cocoapod"></a>Instalace sady SDK jako CocoaPod
 
 1. Nainstalujte správce závislostí CocoaPod, jak je popsáno v [pokynech k instalaci](https://guides.cocoapods.org/using/getting-started.html).
-1. Přejděte do adresáře ukázkové aplikace (`helloworld`). Umístěte textový soubor s názvem `Podfile` a následujícím obsahem v tomto adresáři:  
+1. Přejděte do adresáře ukázkové aplikace ( `helloworld` ). Umístěte textový soubor s názvem `Podfile` a následujícím obsahem v tomto adresáři:  
    [!code-ruby[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec/macos/text-to-speech/helloworld/Podfile)]
-1. Přejděte do `helloworld` adresáře v terminálu a spusťte příkaz `pod install`. Tím se vygeneruje `helloworld.xcworkspace` pracovní prostor Xcode obsahující ukázkovou aplikaci a sadu Speech SDK jako závislost. Tento pracovní prostor bude použit v následujících.
+1. Přejděte do `helloworld` adresáře v terminálu a spusťte příkaz `pod install` . Tím se vygeneruje `helloworld.xcworkspace` pracovní prostor Xcode obsahující ukázkovou aplikaci a sadu Speech SDK jako závislost. Tento pracovní prostor bude použit v následujících.
 
 ## <a name="add-the-sample-code"></a>Přidání vzorového kódu
 
@@ -77,8 +77,8 @@ V následujících dialogových oknech proveďte následující výběry:
 
 ## <a name="build-and-run-the-sample"></a>Sestavení a spuštění ukázky
 
-1. Nastavte výstup ladění jako viditelný (**Zobrazit** >  > **konzolu pro aktivaci****oblasti ladění**).
-1. Sestavte a spusťte ukázkový kód tak, že v nabídce vyberete**Spustit** **produkt** -> nebo kliknete na tlačítko **Přehrát** .
+1. Nastavte výstup ladění jako viditelný (**Zobrazit**  >  **Debug Area**  >  **konzolu pro aktivaci**oblasti ladění).
+1. Sestavte a spusťte ukázkový kód tak **Product**, že v nabídce vyberete  ->  **Spustit** produkt nebo kliknete na tlačítko **Přehrát** .
 1. Po zadání nějakého textu a kliknutí na tlačítko v aplikaci byste měli slyšet syntetizované zvuky.
 
 ## <a name="next-steps"></a>Další kroky

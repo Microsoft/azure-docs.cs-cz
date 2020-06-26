@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: reference
+ms.topic: how-to
 ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 716fbafb444985a9c47635f944f6c9c7078c9aa6
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 8939d4546657b049b61eb31c08844dac07c67ae2
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85202649"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85389084"
 ---
 # <a name="localize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Lokalizace uživatelského rozhraní vaší aplikace pomocí vlastní zásady v Azure Active Directory B2C
 
@@ -252,7 +252,7 @@ V následujícím příkladu jsou vlastní řetězce anglické (EN) a španělš
 1. Vyberte zásady, které jste nahráli, a pak vyberte **Spustit nyní**.
 1. Měli byste vidět lokalizovanou stránku pro registraci nebo přihlášení.
 1. Klikněte na odkaz pro registraci a měli byste vidět lokalizovanou stránku pro registraci.
-1. Přepněte výchozí jazyk prohlížeče na španělštinu. Můžete také přidat parametr řetězce dotazu `ui_locales` k žádosti o autorizaci. Příklad: 
+1. Přepněte výchozí jazyk prohlížeče na španělštinu. Můžete také přidat parametr řetězce dotazu `ui_locales` k žádosti o autorizaci. Například: 
 
 ```http
 https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1A_signup_signin/oauth2/v2.0/authorize&client_id=0239a9cc-309c-4d41-12f1-31299feb2e82&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fjwt.ms&scope=openid&response_type=id_token&prompt=login&ui_locales=es

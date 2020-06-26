@@ -7,17 +7,14 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: f83eb6a0cab8bdf2f26888f895aeac8a8fa796bb
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: faad1f812fc5c2cde6847a5208ee4b385f28ab3e
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85296980"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391923"
 ---
 # <a name="build-out-an-end-to-end-solution"></a>Sestavení kompletního řešení
-
-[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 K nastavení kompletního řešení založeného na živých datech z vašeho prostředí můžete propojit instanci digitálních vláken Azure s dalšími službami Azure za účelem správy zařízení a dat.
 

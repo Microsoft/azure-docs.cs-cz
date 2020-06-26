@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: vkukke
-ms.openlocfilehash: 073878d6dfb0637b8d0fb7fdf5c7f6d77d2b2c8d
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: ba3bc14c9b4a9d5d866dbb1b9369557b948078d0
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84672642"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85390189"
 ---
 # <a name="network-security-for-azure-event-grid-resources"></a>Zabezpečení sítě pro prostředky Azure Event Grid
 Tento článek popisuje, jak používat následující funkce zabezpečení pro Azure Event Grid: 
@@ -100,3 +100,5 @@ Funkce **brány firewall protokolu IP** je k dispozici v Event Grid úrovně Bas
 Můžete nakonfigurovat bránu firewall protokolu IP pro prostředek Event Grid, abyste omezili přístup přes veřejný Internet jenom z vybrané sady IP adres nebo rozsahů IP adres. Podrobné pokyny najdete v tématu [Konfigurace brány firewall protokolu IP](configure-firewall.md).
 
 Privátní koncové body můžete nakonfigurovat tak, aby omezily přístup jenom z vybraných virtuálních sítí. Podrobné pokyny najdete v tématu [Konfigurace privátních koncových bodů](configure-private-endpoints.md).
+
+Problémy s připojením k síti najdete v tématu řešení potíží s [připojením k síti](troubleshoot-network-connectivity.md) .

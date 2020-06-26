@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 85f2ab6f8c3e5edda027e44eeda13a3279a88321
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 47fdf445fa11693dd3a998b8c73ac0c3ed8452a8
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79473672"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85389356"
 ---
 #  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>Přidání deklarací identity a přizpůsobení uživatelského vstupu pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -48,7 +48,7 @@ Deklarace identity poskytuje dočasné úložiště dat během provádění zás
 - **UserHelpText** – pomáhá uživateli pochopit, co je potřeba.
 - [UserInputType](claimsschema.md#userinputtype) – typ ovládacího prvku vstupu, jako je textové pole, přepínač výběr, rozevírací seznam nebo vícenásobný výběr.
 
-Otevřete soubor rozšíření vaší zásady. Například <em> `SocialAndLocalAccounts/` </em>.
+Otevřete soubor rozšíření vaší zásady. Například <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em> .
 
 1. Vyhledejte element [BuildingBlocks](buildingblocks.md) . Pokud element neexistuje, přidejte jej.
 1. Vyhledejte element [ClaimsSchema](claimsschema.md) . Pokud element neexistuje, přidejte jej.
@@ -98,7 +98,7 @@ Chcete-li shromáždit deklaraci identity města během registrace, je nutné ji
 <ClaimsProvider>
 ```
 
-Pokud chcete po počátečním přihlášení ke federovanému účtu shromáždit deklaraci města, musíte ji přidat jako výstupní deklaraci do `SelfAsserted-Social` technického profilu. Aby mohli uživatelé s místními a federovaným účty později upravovat svoje data profilu, přidejte do `SelfAsserted-ProfileUpdate` technického profilu výstupní deklaraci identity. Tyto technické profily popište v souboru rozšíření. Zadejte celý seznam výstupních deklarací identity pro řízení pořadí deklarací identity na obrazovce. Vyhledejte element **ClaimsProviders** . Přidejte nový ClaimsProviders následujícím způsobem:
+Pokud chcete po počátečním přihlášení ke federovanému účtu shromáždit deklaraci města, musíte ji přidat jako výstupní deklaraci do `SelfAsserted-Social` technického profilu. Aby mohli uživatelé s místními a federovaným účty později upravovat svoje data profilu, přidejte do technického profilu výstupní deklaraci identity `SelfAsserted-ProfileUpdate` . Tyto technické profily popište v souboru rozšíření. Zadejte celý seznam výstupních deklarací identity pro řízení pořadí deklarací identity na obrazovce. Vyhledejte element **ClaimsProviders** . Přidejte nový ClaimsProviders následujícím způsobem:
 
 ```xml
   <DisplayName>Self Asserted</DisplayName>
@@ -172,7 +172,7 @@ Tyto technické profily popište v souboru rozšíření. Vyhledejte element **C
 
 ## <a name="include-a-claim-in-the-token"></a>Zahrnutí deklarace identity do tokenu 
 
-Pokud chcete vrátit deklaraci města zpět do aplikace předávající strany, přidejte do <em> `SocialAndLocalAccounts/` </em> souboru výstupní deklaraci identity. Po úspěšné cestě uživatele se do tokenu přidá výstupní deklarace identity a pošle se do aplikace. Upravte element Technical Profile v části předávající strany a přidejte město jako výstupní deklaraci identity.
+Pokud chcete vrátit deklaraci města zpět do aplikace předávající strany, přidejte do souboru výstupní deklaraci identity <em>`SocialAndLocalAccounts/`**`SignUpOrSignIn.xml`**</em> . Po úspěšné cestě uživatele se do tokenu přidá výstupní deklarace identity a pošle se do aplikace. Upravte element Technical Profile v části předávající strany a přidejte město jako výstupní deklaraci identity.
  
 ```xml
 <RelyingParty>
@@ -209,7 +209,7 @@ Přihlašovací obrazovka by měla vypadat podobně jako na následujícím sní
 
 ![Snímek obrazovky s upravenou možností registrace](./media/custom-policy-configure-user-input/signup-with-city-claim-dropdown-example.png)
 
-Token, který se odesílá zpátky do vaší aplikace `city` , zahrnuje deklaraci identity.
+Token, který se odesílá zpátky do vaší aplikace, zahrnuje `city` deklaraci identity.
 
 ```json
 {

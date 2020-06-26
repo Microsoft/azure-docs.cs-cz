@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/23/2019
+ms.date: 06/25/2020
 ms.author: chlandsi
-ms.openlocfilehash: c2f0fbe66b26c6eca6e0c0b2530efacba9bae958
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 8f94f2ed810204d739dfd2e6d5e88ef0977ad9a4
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75380588"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391515"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-macos-by-using-the-speech-sdk"></a>Rychlý Start: rozpoznávání řeči v cíli-C v macOS pomocí sady Speech SDK
 
@@ -38,7 +38,7 @@ Sada Cognitive Services Speech SDK for Mac je distribuována jako sada rozhraní
 
 ## <a name="create-an-xcode-project"></a>Vytvoření projektu Xcode
 
-Spusťte Xcode a spusťte nový projekt tak, že vyberete **soubor** > **Nový** > **projekt**. V dialogovém okně Výběr šablony vyberte šablonu aplikace pro **kakao** .
+Spusťte Xcode a spusťte nový projekt tak, že vyberete **soubor**  >  **Nový**  >  **projekt**. V dialogovém okně Výběr šablony vyberte šablonu aplikace pro **kakao** .
 
 V následujících dialogových oknech proveďte následující výběry.
 
@@ -72,21 +72,21 @@ V následujících dialogových oknech proveďte následující výběry.
 1. Přejít do adresáře ukázkové aplikace, což je HelloWorld. Umístěte textový soubor s názvem *souboru podfile* a následujícím obsahem v tomto adresáři:
 
    [!code-ruby[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec/macos/from-microphone/helloworld/Podfile)]
-1. Přejděte do adresáře HelloWorld v terminálu a spusťte příkaz `pod install`. Tento příkaz vygeneruje `helloworld.xcworkspace` pracovní prostor Xcode, který obsahuje ukázkovou aplikaci a sadu Speech SDK jako závislost. Tento pracovní prostor se používá v následujících krocích.
+1. Přejděte do adresáře HelloWorld v terminálu a spusťte příkaz `pod install` . Tento příkaz vygeneruje `helloworld.xcworkspace` pracovní prostor Xcode, který obsahuje ukázkovou aplikaci a sadu Speech SDK jako závislost. Tento pracovní prostor se používá v následujících krocích.
 
 ## <a name="add-the-sample-code"></a>Přidání vzorového kódu
 
 1. Otevřete pracovní prostor `helloworld.xcworkspace` v Xcode.
-1. Obsah automaticky generovaného `AppDelegate.m` souboru nahraďte následujícím kódem:
+1. Obsah automaticky generovaného souboru nahraďte `AppDelegate.m` následujícím kódem:
 
    [!code-objectivec[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec/macos/from-microphone/helloworld/helloworld/AppDelegate.m#code)]
 1. Řetězec `YourSubscriptionKey` nahraďte klíčem předplatného.
-1. Nahraďte řetězec `YourServiceRegion` [oblastí](~/articles/cognitive-services/Speech-Service/regions.md) , která je přidružená k vašemu předplatnému. Použijte `westus` například pro předplatné bezplatné zkušební verze.
+1. Nahraďte řetězec `YourServiceRegion` [oblastí](~/articles/cognitive-services/Speech-Service/regions.md) , která je přidružená k vašemu předplatnému. Použijte například `westus` pro předplatné bezplatné zkušební verze.
 
 ## <a name="build-and-run-the-sample"></a>Sestavení a spuštění ukázky
 
-1. Zpřístupněte výstup ladění tak, že vyberete **Zobrazit** > **oblast** > ladění**aktivovat konzolu**.
-1. Sestavte a spusťte ukázkový kód tak, že v nabídce vyberete**Spustit** **produkt** > . Můžete také vybrat možnost **Přehrát**.
+1. Zpřístupněte výstup ladění tak, že vyberete **Zobrazit**  >  **oblast ladění**  >  **aktivovat konzolu**.
+1. Sestavte a spusťte ukázkový kód tak **Product**, že v nabídce vyberete  >  **Spustit** produkt. Můžete také vybrat možnost **Přehrát**.
 1. Po výběru tlačítka a vyslovení několika slov byste se měli podívat na text, který jste v dolní části obrazovky promluví. Při prvním spuštění aplikace by se vám měla zobrazit výzva k poskytnutí přístupu aplikace k mikrofonu vašeho počítače.
 
 ## <a name="next-steps"></a>Další kroky

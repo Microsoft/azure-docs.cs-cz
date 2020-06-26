@@ -3,14 +3,14 @@ title: Zálohování sdílených složek Azure v Azure Portal
 description: Naučte se používat Azure Portal k zálohování sdílených složek Azure v trezoru Recovery Services.
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: a78760e793704d9ec4580e21ea86e0ba573b3949
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 76bf8e00dede5f227cb862f9c9474844e349e298
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85340704"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391145"
 ---
-# <a name="back-up-azure-file-shares"></a>Zálohování sdílených složek Azure 
+# <a name="back-up-azure-file-shares"></a>Zálohování sdílených složek Azure
 
 Tento článek vysvětluje, jak používat Azure Portal k zálohování [sdílených složek Azure](https://docs.microsoft.com/azure/storage/files/storage-files-introduction).
 
@@ -26,27 +26,6 @@ V tomto článku se dozvíte, jak:
 * Ujistěte se, že se sdílená složka nachází v jednom z [podporovaných typů účtů úložiště](azure-file-share-support-matrix.md).
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
-
-## <a name="modify-storage-replication"></a>Úprava replikace úložiště
-
-Ve výchozím nastavení trezory používají [geograficky redundantní úložiště (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs).
-
-* Pokud je trezor vaším primárním zálohovacím mechanismem, doporučujeme použít GRS.
-* Jako možnost s nízkými náklady můžete použít [místně redundantní úložiště (LRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) .
-
-Postup úpravy typu replikace úložiště:
-
-1. V novém trezoru vyberte v části **Nastavení** možnost **vlastnosti** .
-
-1. Na stránce **vlastnosti** v části **Konfigurace zálohování**vyberte **aktualizovat**.
-
-1. Vyberte typ replikace úložiště a vyberte **Uložit**.
-
-    ![Aktualizovat konfiguraci zálohování](./media/backup-afs/backup-configuration.png)
-
-> [!NOTE]
-> Po nastavení trezoru a obsahujícího zálohované položky nemůžete upravit typ replikace úložiště. Pokud to chcete provést, je třeba znovu vytvořit trezor.
->
 
 ## <a name="discover-file-shares-and-configure-backup"></a>Zjistit sdílené složky a nakonfigurovat zálohování
 

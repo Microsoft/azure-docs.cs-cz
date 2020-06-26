@@ -8,16 +8,16 @@ ms.subservice: cosmosdb-table
 ms.topic: tutorial
 ms.date: 06/05/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 14a6d2b448bb943356ae1738c3d53d9c6fee1a98
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: bab0487b09d7088e75ce762c9e4f0338cea507eb
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84484675"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391889"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>Kurz: Dotazování služby Azure Cosmos DB pomocí rozhraní Table API
 
-Rozhraní [Table API](table-introduction.md) služby Azure Cosmos DB podporuje dotazy OData a [LINQ](https://docs.microsoft.com/rest/api/storageservices/fileservices/writing-linq-queries-against-the-table-service) na data párů klíč-hodnota (tabulková data).  
+Rozhraní [Table API](table-introduction.md) služby Azure Cosmos DB podporuje dotazy OData a [LINQ](/rest/api/storageservices/fileservices/writing-linq-queries-against-the-table-service) na data párů klíč-hodnota (tabulková data).  
 
 Tento článek se zabývá následujícími úkony:
 
@@ -32,7 +32,7 @@ Dotazy v tomto článku využívají následující ukázkovou tabulku `People`:
 | Smith | Ben | Ben@contoso.com| 425-555-0102 |
 | Smith | Jeff | Jeff@contoso.com| 425-555-0104 |
 
-Podrobnosti o dotazování pomocí rozhraní Table API najdete v tématu [Dotazování tabulek a entit](https://docs.microsoft.com/rest/api/storageservices/fileservices/querying-tables-and-entities).
+Podrobnosti o dotazování pomocí rozhraní Table API najdete v tématu [Dotazování tabulek a entit](/rest/api/storageservices/fileservices/querying-tables-and-entities).
 
 Další informace o prémiových funkcích, které služba Azure Cosmos DB nabízí, najdete v tématech [Rozhraní Table API služby Azure Cosmos DB](table-introduction.md) a [Vývoj v .NET s využitím rozhraní Table API](tutorial-develop-table-dotnet.md).
 
@@ -50,7 +50,7 @@ Vzhledem k tomu, že vlastnosti PartitionKey (Klíč oddílu) a RowKey (Klíč �
 https://<mytableendpoint>/People(PartitionKey='Harp',RowKey='Walter')  
 ```
 
-**Důsledk**
+**Výsledky**
 
 | PartitionKey | RowKey | E-mail | PhoneNumber |
 | --- | --- | --- | --- |
@@ -65,7 +65,7 @@ Při vytváření řetězce filtru mějte na paměti tato pravidla:
 * K porovnání vlastnosti s hodnotou použijte logické operátory definované ve specifikaci protokolu OData. Nezapomeňte, že nemůžete porovnat vlastnost s dynamickou hodnotou. Jedna strana výrazu musí být konstanta.
 * Název vlastnosti, operátor a hodnotu konstanty musí být oddělené mezerami zakódovanými do adresy URL. Mezera se do adresy URL kóduje jako `%20`.
 * Ve všech částech řetězce filtru se rozlišují malá a velká písmena.
-* Hodnota konstanty musí být stejného datového typu jako vlastnost, aby filtr vrátil platné výsledky. Další informace o podporovaných typech vlastností najdete v tématu [Vysvětlení datového modelu služby Table Service](https://docs.microsoft.com/rest/api/storageservices/understanding-the-table-service-data-model).
+* Hodnota konstanty musí být stejného datového typu jako vlastnost, aby filtr vrátil platné výsledky. Další informace o podporovaných typech vlastností najdete v tématu [Vysvětlení datového modelu služby Table Service](/rest/api/storageservices/understanding-the-table-service-data-model).
 
 Tady je příklad dotazu, který ukazuje filtrování podle vlastností PartitionKey a Email pomocí filtru OData `$filter`.
 
@@ -75,9 +75,9 @@ Tady je příklad dotazu, který ukazuje filtrování podle vlastností Partitio
 https://<mytableapi-endpoint>/People()?$filter=PartitionKey%20eq%20'Smith'%20and%20Email%20eq%20'Ben@contoso.com'
 ```
 
-Další informace o vytváření výrazů filtru pro různé datové typy najdete v tématu [Dotazování tabulek a entit](https://docs.microsoft.com/rest/api/storageservices/querying-tables-and-entities).
+Další informace o vytváření výrazů filtru pro různé datové typy najdete v tématu [Dotazování tabulek a entit](/rest/api/storageservices/querying-tables-and-entities).
 
-**Důsledk**
+**Výsledky**
 
 | PartitionKey | RowKey | E-mail | PhoneNumber |
 | --- | --- | --- | --- |

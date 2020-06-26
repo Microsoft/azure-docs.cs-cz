@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 164ce87df77d81a7d36d4448f5d8da8287ed0a01
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a66af3f74dbb88818f2490bdfbcbc12284652551
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656716"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85392535"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Šifrování na straně serveru Azure Managed disks
 
@@ -75,12 +75,11 @@ Klíče spravované zákazníkem teď mají následující omezení:
 
 - Pokud je tato funkce pro disk povolená, nemůžete ji zakázat.
     Pokud potřebujete tento problém obejít, musíte [zkopírovat všechna data](disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk) na zcela jiný spravovaný disk, který nepoužívá klíče spravované zákazníkem.
-- Podporovány jsou pouze ["měkké" a "pevné" klíče RSA](../../key-vault/keys/about-keys.md) o velikosti 2080, žádné jiné klíče ani velikosti.
+- Podporují se jenom [softwarové a hardwarové klíče RSA](../../key-vault/keys/about-keys.md) o velikosti 2080, žádné jiné klíče ani velikosti.
 - Disky vytvořené z vlastních imagí šifrovaných pomocí šifrování na straně serveru a klíčů spravovaných zákazníkem musí být šifrované pomocí stejných klíčů spravovaných zákazníkem a musí být ve stejném předplatném.
 - Snímky vytvořené z disků šifrovaných pomocí šifrování na straně serveru a klíčů spravovaných zákazníkem musí být šifrované pomocí stejných klíčů spravovaných zákazníkem.
 - Všechny prostředky, které souvisejí s vašimi klíči spravovanými zákazníky (trezory klíčů Azure, sady šifrování disků, virtuální počítače, disky a snímky), musí být ve stejném předplatném a oblasti.
 - Disky, snímky a image šifrované pomocí klíčů spravovaných zákazníkem se nedají přesunout do jiného předplatného.
-- Pokud k vytvoření sady pro šifrování disků použijete Azure Portal, nemůžete teď snímky použít.
 - Spravované disky šifrované pomocí šifrování na straně serveru s použitím klíčů spravovaných zákazníkem se nedají zašifrovat taky Azure Disk Encryption a naopak.
 - Informace o použití klíčů spravovaných zákazníkem s galeriem sdílených imagí najdete v tématu [verze Preview: použití klíčů spravovaných zákazníkem pro šifrování imagí](../image-version-encryption.md).
 

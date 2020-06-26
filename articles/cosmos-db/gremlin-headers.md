@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 09/03/2019
 author: luisbosquez
 ms.author: lbosq
-ms.openlocfilehash: 95677f4c45c0213de5ffac5521bac1c6bf7294e4
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: d244a5bfb6d0a1e2a0965cc72a8f223e0646fa77
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "72755085"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85390852"
 ---
 # <a name="azure-cosmos-db-gremlin-server-response-headers"></a>Hlavičky odpovědi serveru Azure Cosmos DB Gremlin
 Tento článek se věnuje hlavičkám, které server Gremlin služby Cosmos DB vrací volajícímu po provedení požadavku. Tyto hlavičky jsou užitečné při řešení potíží s výkonem požadavků a vytváření aplikací, které se nativně integrují se službou Cosmos DB, a umožňují zjednodušit zákaznickou podporu.
@@ -21,7 +21,7 @@ Mějte na paměti, že při použití závislosti na těchto hlavičkách omezuj
 
 ## <a name="headers"></a>Hlavičky
 
-| Hlavička | Typ | Ukázková hodnota | Při zahrnutí | Vysvětlení |
+| Záhlaví | Typ | Ukázková hodnota | Při zahrnutí | Vysvětlení |
 | --- | --- | --- | --- | --- |
 | **x-MS-Request-poplatek** | double | 11,3243 | Success and Failure | Velikost kolekce nebo propustnosti databáze spotřebované v [jednotkách žádosti (ru/s nebo ru)](request-units.md) pro zprávu částečné odpovědi. Tato hlavička se nachází v každém pokračování pro požadavky, které mají více bloků dat. Odráží náklady na konkrétní blok odezvy. Pouze pro požadavky, které se skládají z bloku s jednou odpovědí, tato hlavička se shoduje s celkovými náklady na průchod. Ve většině složitých procházení však tato hodnota představuje částečné náklady. |
 | **x-MS-Total – poplatek za požadavek** | double | 423,987 | Success and Failure | Velikost kolekce nebo propustnosti databáze spotřebované v [jednotkách žádosti (ru/s nebo ru)](request-units.md) pro celý požadavek. Tato hlavička se nachází v každém pokračování pro požadavky, které mají více bloků dat. Indikuje kumulativní poplatek od začátku žádosti. Hodnota této hlavičky v posledním bloku indikuje úplný poplatek za požadavek. |
@@ -36,20 +36,20 @@ Mějte na paměti, že při použití závislosti na těchto hlavičkách omezuj
 
 Níže jsou uvedené nejběžnější stavové kódy vrácené serverem.
 
-| Status | Vysvětlení |
+| Stav | Vysvětlení |
 | --- | --- |
 | **401** | Chybová zpráva `"Unauthorized: Invalid credentials provided"` se vrátí, když heslo ověřování neodpovídá Cosmos DB klíč účtu. V Azure Portal přejděte na účet Cosmos DB Gremlin a zkontrolujte, jestli je klíč správný.|
 | **404** | Souběžné operace, které se pokoušejí současně odstranit a aktualizovat stejný okraj nebo vrchol. Chybová zpráva `"Owner resource does not exist"` značí, že v parametrech připojení je nesprávně zadaná databáze nebo kolekce ve formátu `/dbs/<database name>/colls/<collection or graph name>`.|
 | **408** | `"Server timeout"`indikuje, že procházení trvalo více než **30 sekund** a bylo zrušeno serverem. Optimalizujte své procházení tak, aby se rychle spouštěly tím, že filtruje vrcholy nebo hrany na všech segmentech směrování a zúžení rozsahu hledání.|
 | **409** | `"Conflicting request to resource has been attempted. Retry to avoid conflicts."` K tomu obvykle dochází v případě, že v grafu již existuje vrchol nebo hrana s identifikátorem.| 
-| **412** | Stavový kód je doplněn chybovou zprávou `"PreconditionFailedException": One of the specified pre-condition is not met`. Tato chyba je popsána v případě narušení optimistického řízení souběžnosti mezi čtením okraje nebo vrcholu a jejich zápisem zpět do úložiště po úpravě. Většina běžných situací, kdy k této chybě dochází, je úprava vlastností `g.V('identifier').property('name','value')`, například. Gremlin Engine přečetla vrchol, upraví ho a zapíše ho zpátky. Pokud se při paralelním pokusu o zápis stejného vrcholu nebo hrany spustí jiný průchod, zobrazí se tato chyba jedna z nich. Aplikace by měla znovu odeslat průchod serveru.| 
+| **412** | Stavový kód je doplněn chybovou zprávou `"PreconditionFailedException": One of the specified pre-condition is not met` . Tato chyba je popsána v případě narušení optimistického řízení souběžnosti mezi čtením okraje nebo vrcholu a jejich zápisem zpět do úložiště po úpravě. Většina běžných situací, kdy k této chybě dochází, je úprava vlastností, například `g.V('identifier').property('name','value')` . Gremlin Engine přečetla vrchol, upraví ho a zapíše ho zpátky. Pokud se při paralelním pokusu o zápis stejného vrcholu nebo hrany spustí jiný průchod, zobrazí se tato chyba jedna z nich. Aplikace by měla znovu odeslat průchod serveru.| 
 | **429** | Došlo k omezení požadavku a po uplynutí doby uvedené v hlavičce **x-ms-retry-after-ms** by se měl zopakovat.| 
 | **500** | Chybová zpráva obsahující `"NotFoundException: Entity with the specified id does not exist in the system."` značí, že se znovu vytvořila databáze nebo kolekce se stejným názvem. Tato chyba zmizí během 5 minut, jakmile se změna rozšíří a zneplatní mezipaměti v různých komponentách služby Cosmos DB. Pokud se chcete tomuto problému vyhnout, používejte vždy jedinečné názvy databází a kolekcí.| 
 | **1000** | Tento stavový kód se vrátí, když server úspěšně analyzoval zprávu, ale nedokázala ji spustit. Obvykle indikuje problém s dotazem.| 
 | **1001** | Tento kód se vrátí, když server dokončí procházení prochází, ale nedokáže serializovat odpověď zpátky na klienta. K této chybě může dojít, když procházení generuje složitý výsledek, který je příliš velký nebo nevyhovuje specifikaci protokolu TinkerPop. Při výskytu této chyby by aplikace měla zjednodušit procházení. | 
 | **1003** | `"Query exceeded memory limit. Bytes Consumed: XXX, Max: YYY"`se vrátí, když přecházení překročí povolený limit paměti. Limit paměti je **2 GB** na průchod.| 
 | **1004** | Tento stavový kód indikuje špatný požadavek grafu. Požadavek může být poškozen, pokud dojde k chybě deserializace, nehodnotný typ je deserializován jako typ hodnoty nebo Nepodporovaná operace Gremlin. Aplikace by neměla požadavek opakovat, protože nebude úspěšná. | 
-| **1007** | Obvykle je tento stavový kód vrácen chybovou `"Could not process request. Underlying connection has been closed."`zprávou. K této situaci může dojít, když se ovladač klienta pokusí použít připojení, které je serverem zavřeno. Aplikace by měla opakovat procházení na jiném připojení.
+| **1007** | Obvykle je tento stavový kód vrácen chybovou zprávou `"Could not process request. Underlying connection has been closed."` . K této situaci může dojít, když se ovladač klienta pokusí použít připojení, které je serverem zavřeno. Aplikace by měla opakovat procházení na jiném připojení.
 | **1008** | Cosmos DB Gremlin Server může ukončit připojení k rebilanci provozu v clusteru. Ovladače klienta by měly tuto situaci zpracovat a použít pouze živá připojení k odesílání požadavků na server. V některých případech nemusí klientské ovladače zjistit, zda bylo připojení ukončeno. Když dojde k chybě aplikace, `"Connection is too busy. Please retry after sometime or open more connections."` měla by se opakovat procházení na jiném připojení.
 
 ## <a name="samples"></a>ukázky
@@ -107,6 +107,6 @@ try {
 ```
 
 ## <a name="next-steps"></a>Další kroky
-* [Stavové kódy HTTP pro Azure Cosmos DB](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb) 
-* [Běžné hlavičky odpovědí REST Azure Cosmos DB](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers)
+* [Stavové kódy HTTP pro Azure Cosmos DB](/rest/api/cosmos-db/http-status-codes-for-cosmosdb) 
+* [Běžné hlavičky odpovědí REST Azure Cosmos DB](/rest/api/cosmos-db/common-cosmosdb-rest-response-headers)
 * [Požadavky poskytovatele ovladačů TinkerPop Graph]( http://tinkerpop.apache.org/docs/current/dev/provider/#_graph_driver_provider_requirements)

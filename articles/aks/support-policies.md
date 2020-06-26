@@ -6,12 +6,12 @@ author: jnoller
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: jenoller
-ms.openlocfilehash: c4146dd4988be93475dc4d2d0dade06b8738ad83
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: 147fc33d068909fa892023ec00cfc2827203607f
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402457"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85389934"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Zásady podpory pro službu Azure Kubernetes
 
@@ -53,7 +53,7 @@ Společnost Microsoft poskytuje technickou podporu pro následující:
 
 * Připojení ke všem součástem Kubernetes, které poskytuje a podporuje služba Kubernetes, jako je třeba server rozhraní API.
 * Správa, doba provozu, technologie QoS a operace Kubernetesch řídicích rovin služeb (například hlavní uzly Kubernetes, Server rozhraní API, etcd a Kube-DNS).
-* Etcd. Podpora zahrnuje pro plánování havárií a obnovení stavu clusteru automatizované a transparentní zálohy všech etcd dat každých 30 minut. Tyto zálohy nejsou přímo dostupné pro zákazníky nebo uživatele. Zajišťují spolehlivost a konzistenci dat.
+* Etcd. Podpora zahrnuje pro plánování havárií a obnovení stavu clusteru automatizované a transparentní zálohy všech etcd dat každých 30 minut. Tyto zálohy nejsou přímo dostupné pro zákazníky nebo uživatele. Zajišťují spolehlivost a konzistenci dat. Etcd. vrácení zpět nebo obnovení na vyžádání není podporováno jako funkce.
 * Všechny integrační body v ovladači Azure Cloud Provider pro Kubernetes. Mezi ně patří integrace do jiných služeb Azure, jako jsou nástroje pro vyrovnávání zatížení, trvalé svazky nebo sítě (Kubernetes a Azure CNI).
 * Otázky nebo problémy týkající se přizpůsobení komponent roviny ovládacího prvku, jako je například server Kubernetes API, etcd a Kube-DNS.
 * Problémy týkající se sítě, jako je Azure CNI, kubenet nebo další problémy s přístupem a funkcemi pro přístup k síti. Problémy by mohly zahrnovat překlad DNS, ztrátu paketů, směrování atd. Microsoft podporuje různé scénáře sítě:

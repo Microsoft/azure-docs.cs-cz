@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a4902e96cd41a02953b6686b5d52d7912b27809f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6381f678979437fdfc10d2ea63a79ed347183e92
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80330824"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85388914"
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-to-validate-user-input"></a>Návod: integrace REST APIch výměn deklarací identity v cestě uživatele Azure AD B2C k ověření vstupu uživatele
 
@@ -55,7 +55,7 @@ Jakmile REST API ověří data, musí vrátit HTTP 200 (ok) s následujícími d
 }
 ```
 
-Pokud se ověření nepovedlo, REST API musí vrátit HTTP 409 (konflikt) s elementem `userMessage` JSON. IEF očekává `userMessage` deklaraci identity, kterou REST API vrací. Pokud se ověření nezdaří, zobrazí se tato deklarace jako řetězec pro uživatele.
+Pokud se ověření nepovedlo, REST API musí vrátit HTTP 409 (konflikt) s `userMessage` elementem JSON. IEF očekává `userMessage` deklaraci identity, kterou REST API vrací. Pokud se ověření nezdaří, zobrazí se tato deklarace jako řetězec pro uživatele.
 
 ```json
 {
@@ -71,7 +71,7 @@ Nastavení koncového bodu REST API je mimo rámec tohoto článku. Vytvořili j
 
 Deklarace identity poskytuje dočasné úložiště dat během provádění zásad Azure AD B2C. Deklarace identity můžete deklarovat v části [schéma deklarací](claimsschema.md) . 
 
-1. Otevřete soubor rozšíření vaší zásady. Například <em> `SocialAndLocalAccounts/` </em>.
+1. Otevřete soubor rozšíření vaší zásady. Například <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em> .
 1. Vyhledejte element [BuildingBlocks](buildingblocks.md) . Pokud element neexistuje, přidejte jej.
 1. Vyhledejte element [ClaimsSchema](claimsschema.md) . Pokud element neexistuje, přidejte jej.
 1. Do prvku **ClaimsSchema** přidejte následující deklarace identity.  
@@ -128,15 +128,15 @@ Deklarace identity poskytuje dočasné úložiště dat během provádění zás
 </ClaimsProvider>
 ```
 
-V tomto příkladu `userLanguage` se do služby REST pošle jako `lang` v datové části JSON. Hodnota `userLanguage` deklarace identity obsahuje ID jazyka aktuálního uživatele. Další informace najdete v tématu [překladač deklarací identity](claim-resolver-overview.md).
+V tomto příkladu se do `userLanguage` služby REST pošle jako `lang` v datové části JSON. Hodnota `userLanguage` deklarace identity obsahuje ID jazyka aktuálního uživatele. Další informace najdete v tématu [překladač deklarací identity](claim-resolver-overview.md).
 
-Výše uvedené `AuthenticationType` komentáře a `AllowInsecureAuthInProduction` určete změny, které byste měli dělat při přesunu do produkčního prostředí. Informace o tom, jak zabezpečit rozhraní API RESTful pro produkční prostředí, najdete v tématu [Secure RESTFUL API](secure-rest-api.md).
+Výše uvedené komentáře `AuthenticationType` a `AllowInsecureAuthInProduction` Určete změny, které byste měli dělat při přesunu do produkčního prostředí. Informace o tom, jak zabezpečit rozhraní API RESTful pro produkční prostředí, najdete v tématu [Secure RESTFUL API](secure-rest-api.md).
 
 ## <a name="validate-the-user-input"></a>Ověření vstupu uživatele
 
-Pokud chcete získat věrnostní číslo uživatele během registrace, musíte uživateli dovolit, aby na obrazovce zadal tato data. Přidejte výstupní deklaraci identity **loyaltyId** do přihlašovací stránky tak, že ji přidáte do stávajícího `OutputClaims` elementu oddílu registračního technického profilu. Zadejte celý seznam výstupních deklarací identity, abyste mohli řídit pořadí, na kterém jsou deklarace identity zobrazené na obrazovce.  
+Pokud chcete získat věrnostní číslo uživatele během registrace, musíte uživateli dovolit, aby na obrazovce zadal tato data. Přidejte výstupní deklaraci identity **loyaltyId** do přihlašovací stránky tak, že ji přidáte do stávajícího elementu oddílu registračního technického profilu `OutputClaims` . Zadejte celý seznam výstupních deklarací identity, abyste mohli řídit pořadí, na kterém jsou deklarace identity zobrazené na obrazovce.  
 
-Přidejte odkaz na technický profil ověření do technického profilu registrace, který volá `REST-ValidateProfile`. Nový technický profil ověření se přidá na začátek `<ValidationTechnicalProfiles>` kolekce definované v základních zásadách. Toto chování znamená, že až po úspěšném ověření dojde k vytvoření účtu v adresáři, Azure AD B2C se přesune k.   
+Přidejte odkaz na technický profil ověření do technického profilu registrace, který volá `REST-ValidateProfile` . Nový technický profil ověření se přidá na začátek `<ValidationTechnicalProfiles>` kolekce definované v základních zásadách. Toto chování znamená, že až po úspěšném ověření dojde k vytvoření účtu v adresáři, Azure AD B2C se přesune k.   
 
 1. Vyhledejte element **ClaimsProviders** . Přidejte nového zprostředkovatele deklarací identity následujícím způsobem:
 
@@ -192,7 +192,7 @@ Přidejte odkaz na technický profil ověření do technického profilu registra
 
 ## <a name="include-a-claim-in-the-token"></a>Zahrnutí deklarace identity do tokenu 
 
-Pokud chcete vrátit deklaraci propagačního kódu zpátky do aplikace předávající strany, přidejte do <em> `SocialAndLocalAccounts/` </em> souboru výstupní deklaraci identity. Výstupní deklarace identity umožní přidání deklarace do tokenu po úspěšné cestě uživatele a pošle se do aplikace. Upravte element Technical Profile v části předávající strany a přidejte tak `promoCode` jako výstupní deklaraci identity.
+Pokud chcete vrátit deklaraci propagačního kódu zpátky do aplikace předávající strany, přidejte do souboru výstupní deklaraci identity <em>`SocialAndLocalAccounts/`**`SignUpOrSignIn.xml`**</em> . Výstupní deklarace identity umožní přidání deklarace do tokenu po úspěšné cestě uživatele a pošle se do aplikace. Upravte element Technical Profile v části předávající strany a přidejte tak `promoCode` jako výstupní deklaraci identity.
  
 ```xml
 <RelyingParty>
@@ -221,13 +221,13 @@ Pokud chcete vrátit deklaraci propagačního kódu zpátky do aplikace předáv
 1. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD, a to tak, že v horní nabídce vyberete adresář a filtr **předplatného** a zvolíte adresář, který obsahuje vašeho TENANTA Azure AD.
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Registrace aplikací**.
 1. Vyberte **architekturu prostředí identity**.
-1. Vyberte **Odeslat vlastní zásadu**a pak nahrajte soubory zásad, které jste změnili: *TrustFrameworkExtensions. XML*a *SignUpOrSignin. XML*. 
+1. Vyberte **Odeslat vlastní zásadu**a pak nahrajte soubory zásad, které jste změnili: *TrustFrameworkExtensions.xml*a *SignUpOrSignin.xml*. 
 1. Vyberte zásadu registrace nebo přihlašování, kterou jste nahráli, a klikněte na tlačítko **Spustit** .
 1. Měli byste být schopni se zaregistrovat pomocí e-mailové adresy.
 1. Klikněte na odkaz **registrace nyní** .
 1. Do pole **věrnostní ID**zadejte 1234 a klikněte na **pokračovat**. V tomto okamžiku byste měli získat chybovou zprávu ověření.
 1. Přejděte na jinou hodnotu a klikněte na **pokračovat**.
-1. Token, který se odesílá zpátky do vaší aplikace `promoCode` , zahrnuje deklaraci identity.
+1. Token, který se odesílá zpátky do vaší aplikace, zahrnuje `promoCode` deklaraci identity.
 
 ```json
 {

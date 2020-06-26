@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
-ms.openlocfilehash: b277ae91dbdd747aba012d6e7302ed6cba61d938
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: d5aef82fe29ec544e29d7c65950e719110ad276a
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262263"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391855"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>Použití spravovaných identit přiřazených systémem pro přístup k Azure Cosmos DB datům
 
@@ -75,10 +75,10 @@ V tomto scénáři načte aplikace Functions teplotu Aquarium a pak tato data za
 
 Teď máme aplikaci Function App, která má spravovanou identitu přiřazenou systémem pomocí role **Přispěvatel účtu DocumentDB** v oprávněních Azure Cosmos DB. Následující kód aplikace Function App získá Azure Cosmos DB klíčů, vytvoří objekt CosmosClient, získá teplotu Aquarium a pak ho uložte do Azure Cosmos DB.
 
-V této ukázce se k přístupu k klíčům účtu Azure Cosmos DB používá [rozhraní API pro klíče seznamu](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/DatabaseAccounts/ListKeys) .
+V této ukázce se k přístupu k klíčům účtu Azure Cosmos DB používá [rozhraní API pro klíče seznamu](/rest/api/cosmos-db-resource-provider/DatabaseAccounts/ListKeys) .
 
 > [!IMPORTANT] 
-> Pokud chcete přiřadit roli [čtenáře účtu Cosmos DB](#grant-access-to-your-azure-cosmos-account) , budete muset použít [seznam rozhraní API klíče jen pro čtení](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/DatabaseAccounts/ListReadOnlyKeys). Tím se naplní jenom klíče jen pro čtení.
+> Pokud chcete přiřadit roli [čtenáře účtu Cosmos DB](#grant-access-to-your-azure-cosmos-account) , budete muset použít [seznam rozhraní API klíče jen pro čtení](/rest/api/cosmos-db-resource-provider/DatabaseAccounts/ListReadOnlyKeys). Tím se naplní jenom klíče jen pro čtení.
 
 Rozhraní API seznam klíčů vrátí `DatabaseAccountListKeysResult` objekt. Tento typ není definován v knihovnách jazyka C#. Následující kód ukazuje implementaci této třídy:  
 

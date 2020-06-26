@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: sajaya
-ms.openlocfilehash: 0a455ef911d28306b30bed2fbb00edea198181dd
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: f160910024d9d64d22028c72825b98d93f66f15d
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85205420"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85390359"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Nejčastější dotazy týkající se Azure Container Registry
 
@@ -269,6 +269,7 @@ Nastavení služby Azure Container registry pro anonymní (veřejné) zpřístup
 - [Proč Azure Portal neobsahují seznam všech úložišť nebo značek?](#why-does-the-azure-portal-not-list-all-my-repositories-or-tags)
 - [Proč Azure Portal nepodaří načíst úložiště nebo značky?](#why-does-the-azure-portal-fail-to-fetch-repositories-or-tags)
 - [Proč dojde k selhání žádosti o přijetí změn nebo nabízení oznámení s nepovolenou operací?](#why-does-my-pull-or-push-request-fail-with-disallowed-operation)
+- [Formát úložiště je neplatný nebo nepodporovaný.](#repository-format-is-invalid-or-unsupported)
 - [Návody shromažďovat trasování http ve Windows?](#how-do-i-collect-http-traces-on-windows)
 
 ### <a name="check-health-with-az-acr-check-health"></a>Ověřit stav pomocí`az acr check-health`
@@ -313,7 +314,7 @@ unauthorized: authentication required
 ```
 
 Řešení této chyby:
-1. Přidejte možnost `--signature-verification=false` do konfiguračního souboru démona Docker `/etc/sysconfig/docker` . Příklad:
+1. Přidejte možnost `--signature-verification=false` do konfiguračního souboru démona Docker `/etc/sysconfig/docker` . Například:
    
    `OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'`
    
@@ -426,7 +427,7 @@ Pokud používáte prohlížeč Microsoft Edge/IE, můžete vidět maximálně 1
 Prohlížeč nemusí být schopný odeslat žádost o načtení úložišť nebo značek na server. Mohou nastat různé důvody:
 
 * Nedostatečné síťové připojení
-* Brána firewall
+* Firewall
 * Blokování služby AD
 * Chyby služby DNS
 
@@ -439,6 +440,12 @@ Tady je několik scénářů, ve kterých může být operace zakázaná:
 * Bitová kopie nebo úložiště je možná zamčené, aby se nemohlo odstranit ani aktualizovat. Aktuální atributy můžete zobrazit pomocí příkazu [AZ ACR show úložištì](https://docs.microsoft.com/azure/container-registry/container-registry-image-lock) .
 * Pokud je obrázek v karanténě, některé operace jsou zakázané. Přečtěte si další informace o [karanténě](https://github.com/Azure/acr/tree/master/docs/preview/quarantine).
 * Je možné, že váš registr dosáhl svého [limitu úložiště](container-registry-skus.md#service-tier-features-and-limits).
+
+### <a name="repository-format-is-invalid-or-unsupported"></a>Formát úložiště je neplatný nebo nepodporovaný.
+
+Pokud se zobrazí chyba, například "nepodporovaný formát úložiště", "neplatný formát" nebo "požadovaná data neexistují" při zadávání názvu úložiště v operacích úložiště, zkontrolujte pravopis a případ názvu. Platné názvy úložišť můžou obsahovat jenom malé alfanumerické znaky, tečky, pomlčky, podtržítka a lomítka. 
+
+Úplná pravidla pojmenování úložiště najdete v tématu věnovaném [specifikaci distribuce pro iniciativu](https://github.com/docker/distribution/blob/master/docs/spec/api.md#overview)v rámci služby Open container.
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>Návody shromažďovat trasování http ve Windows?
 
@@ -462,7 +469,7 @@ Vyhledejte IP adresu virtuálního přepínače Docker VM:
 
 Nakonfigurujte proxy Docker na výstup předchozího příkazu a portu 8888 (například 10.0.75.1:8888).
 
-## <a name="tasks"></a>Úlohy
+## <a name="tasks"></a>Úkoly
 
 - [Návody Batch zruší spuštění?](#how-do-i-batch-cancel-runs)
 - [Návody do příkazu AZ ACR Build zahrnout složku. Git?](#how-do-i-include-the-git-folder-in-az-acr-build-command)
@@ -494,10 +501,10 @@ V tuto chvíli nepodporujeme GitLab pro aktivační události zdroje.
 
 | Služba Git | Zdrojový kontext | Ruční sestavení | Automatické sestavení prostřednictvím aktivační události potvrzení |
 |---|---|---|---|
-| GitHubu | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | Ano | Ano |
+| GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | Ano | Ano |
 | Azure Repos | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` | Ano | Ano |
-| GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | Ano | Ne |
-| BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | Ano | Ne |
+| GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | Yes | Ne |
+| BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | Yes | Ne |
 
 ## <a name="run-error-message-troubleshooting"></a>Řešení potíží s chybovou zprávou
 

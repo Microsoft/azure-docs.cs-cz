@@ -3,12 +3,12 @@ title: Zálohování sdílené složky Azure pomocí PowerShellu
 description: V tomto článku se dozvíte, jak zálohovat sdílenou složku souborů Azure pomocí služby Azure Backup a PowerShellu.
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 53187152802908e94ee4a8a231d3b7874cf42422
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 2d391c661363a1a2bc4238cd7a976b7e13c4f0b8
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199341"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391073"
 ---
 # <a name="back-up-an-azure-file-share-by-using-powershell"></a>Zálohování sdílené složky Azure pomocí PowerShellu
 
@@ -60,7 +60,7 @@ Nastavte PowerShell následujícím způsobem:
 5. Na webové stránce, která se zobrazí, budete vyzváni k zadání přihlašovacích údajů k účtu.
 
     Alternativně můžete do rutiny **Connect-AzAccount** zahrnout přihlašovací údaje účtu pomocí parametr **-Credential**.
-   
+
     Pokud jste partnerem CSP při práci jménem tenanta, zadejte zákazníka jako tenanta. Použijte své ID klienta nebo název primární domény tenanta. Příkladem je **Connect-AzAccount-tenant "fabrikam.com"**.
 
 6. Přidružte předplatné, které chcete používat s účtem, protože účet může mít několik předplatných:
@@ -95,20 +95,11 @@ Pomocí těchto kroků vytvořte Recovery Services trezor:
    New-AzResourceGroup -Name "test-rg" -Location "West US"
    ```
 
-2. K vytvoření trezoru použijte rutinu [New-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/New-AzRecoveryServicesVault?view=azps-1.4.0) . Zadejte stejné umístění pro trezor, který jste použili pro skupinu prostředků.
+1. K vytvoření trezoru použijte rutinu [New-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/New-AzRecoveryServicesVault?view=azps-1.4.0) . Zadejte stejné umístění pro trezor, který jste použili pro skupinu prostředků.
 
     ```powershell
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName "test-rg" -Location "West US"
     ```
-
-3. Zadejte typ redundance, který se použije pro úložiště trezoru. Můžete použít [místně redundantní úložiště](../storage/common/storage-redundancy-lrs.md) nebo [geograficky redundantní úložiště](../storage/common/storage-redundancy-grs.md).
-   
-   Následující příklad nastaví možnost **-BackupStorageRedundancy** pro rutinu [set-AzRecoveryServicesBackupProperties](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) pro **testvault** nastavenou na geograficky **redundantní**:
-
-   ```powershell
-   $vault1 = Get-AzRecoveryServicesVault -Name "testvault"
-   Set-AzRecoveryServicesBackupProperties  -Vault $vault1 -BackupStorageRedundancy GeoRedundant
-   ```
 
 ### <a name="view-the-vaults-in-a-subscription"></a>Zobrazení trezorů v předplatném
 
@@ -250,16 +241,16 @@ testAzureFS       ConfigureBackup      Completed            11/12/2018 2:15:26 P
 
 Tato část popisuje důležitou změnu v zálohování sdílených složek Azure v přípravě na obecnou dostupnost.
 
-Když zapnete zálohování sdílených složek Azure, uživatel udělí zákazníkovi název sdílení souboru jako název entity a vytvoří se zálohovaná položka. Název zálohované položky je jedinečný identifikátor, který služba Azure Backup vytvoří. Identifikátor je obvykle uživatelsky přívětivý název. Pokud ale chcete zpracovat scénář obnovitelného odstranění, kde se dá odstranit sdílená složka, a může se vytvořit jiná sdílená složka se stejným názvem, jedinečná identita sdílené složky Azure je teď ID. 
+Když zapnete zálohování sdílených složek Azure, uživatel udělí zákazníkovi název sdílení souboru jako název entity a vytvoří se zálohovaná položka. Název zálohované položky je jedinečný identifikátor, který služba Azure Backup vytvoří. Identifikátor je obvykle uživatelsky přívětivý název. Pokud ale chcete zpracovat scénář obnovitelného odstranění, kde se dá odstranit sdílená složka, a může se vytvořit jiná sdílená složka se stejným názvem, jedinečná identita sdílené složky Azure je teď ID.
 
-Chcete-li zjistit jedinečné ID každé položky, spusťte příkaz **Get-AzRecoveryServicesBackupItem** s příslušnými filtry pro **backupManagementType** a **WorkloadType** pro získání všech relevantních položek. Pak Sledujte pole název v vráceném objektu nebo odpovědi prostředí PowerShell. 
+Chcete-li zjistit jedinečné ID každé položky, spusťte příkaz **Get-AzRecoveryServicesBackupItem** s příslušnými filtry pro **backupManagementType** a **WorkloadType** pro získání všech relevantních položek. Pak Sledujte pole název v vráceném objektu nebo odpovědi prostředí PowerShell.
 
 Doporučujeme, abyste v odpovědi vypisovat položky a pak z pole název načetli jejich jedinečný název. Tuto hodnotu použijte k filtrování položek s parametrem *Name* . V opačném případě pomocí parametru *FriendlyName* Načtěte položku s jejím ID.
 
 > [!IMPORTANT]
-> Ujistěte se, že je PowerShell upgradovaný na minimální verzi (AZ. RecoveryServices 2.6.0) pro zálohování sdílených složek Azure. V této verzi je k dispozici filtr *FriendlyName* pro příkaz **Get-AzRecoveryServicesBackupItem** . 
+> Ujistěte se, že je PowerShell upgradovaný na minimální verzi (AZ. RecoveryServices 2.6.0) pro zálohování sdílených složek Azure. V této verzi je k dispozici filtr *FriendlyName* pro příkaz **Get-AzRecoveryServicesBackupItem** .
 >
-> Předejte název sdílené složky Azure do parametru *FriendlyName* . Pokud předáte název sdílené složky do parametru *Name* , tato verze vyvolá upozornění k předání názvu parametru *FriendlyName* . 
+> Předejte název sdílené složky Azure do parametru *FriendlyName* . Pokud předáte název sdílené složky do parametru *Name* , tato verze vyvolá upozornění k předání názvu parametru *FriendlyName* .
 >
 > Pokud nenainstalujete minimální verzi, může dojít k selhání existujících skriptů. Nainstalujte minimální verzi PowerShellu pomocí následujícího příkazu:
 >
@@ -295,5 +286,5 @@ Snímky sdílené složky Azure se používají v době, kdy se provádí záloh
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si o [zálohování souborů Azure v Azure Portal](backup-afs.md).
-- Pokud chcete naplánovat zálohování pomocí sady Runbook Azure Automation, přečtěte si [ukázkový skript na GitHubu](https://github.com/Azure-Samples/Use-PowerShell-for-long-term-retention-of-Azure-Files-Backup) .
+* Přečtěte si o [zálohování souborů Azure v Azure Portal](backup-afs.md).
+* Pokud chcete naplánovat zálohování pomocí sady Runbook Azure Automation, přečtěte si [ukázkový skript na GitHubu](https://github.com/Azure-Samples/Use-PowerShell-for-long-term-retention-of-Azure-Files-Backup) .

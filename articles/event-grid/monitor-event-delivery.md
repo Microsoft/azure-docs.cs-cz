@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: spelluru
-ms.openlocfilehash: e74d2d8982cac961aa65d6576c80a92cb53ce387
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: 75311675ae24f4836ed8f1adb8a7d9802b4d7f0d
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85100492"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85390597"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>Sledování Event Grid doručování zpráv 
 Tento článek popisuje, jak pomocí portálu zobrazit metriky pro Event Grid témata a předplatná a jak na nich vytvářet výstrahy. 
@@ -99,59 +99,8 @@ Grafy s podporovanými metrikami můžete vytvářet pomocí karty **metriky** n
 Další informace o metrikách najdete v tématu [metriky v Azure monitor](../azure-monitor/platform/data-platform-metrics.md)
 
 
-## <a name="set-alerts"></a>Nastavení upozornění
-Můžete nastavit výstrahy na metrikách pro témata a domény v Azure Portal. 
-
-Následující postup ukazuje, jak vytvořit výstrahu pro metriku **událostí s nedoručenými zprávami** pro vlastní téma. V tomto příkladu se odešle e-mail vlastníkovi skupiny prostředků Azure, když počet nedoručených událostí pro téma překročí 10. 
-
-1. Na stránce **Event Grid téma** pro vaše téma v nabídce vlevo vyberte **výstrahy** a pak vyberte **+ nové pravidlo výstrahy**. 
-
-    :::image type="content" source="./media/monitor-event-delivery/new-alert-button.png" alt-text="Stránka výstrahy – tlačítko pro pravidlo nového upozornění":::
-    
-    
-    Výstrahy můžete také vytvořit pomocí stránky **metriky** . Postup je podobný. 
-
-    :::image type="content" source="./media/monitor-event-delivery/metric-page-create-alert-button.png" alt-text="Stránka metrik – tlačítko vytvořit výstrahu":::   
-    
-2. Na stránce **vytvořit pravidlo výstrahy** ověřte, že je pro prostředek vybraný váš článek. Pak klikněte na **vybrat podmínku**. 
-
-    :::image type="content" source="./media/monitor-event-delivery/alert-select-condition.png" alt-text="Stránka výstrahy – výběr podmínky":::    
-3. Na stránce **Konfigurovat logiku signálu** proveďte tyto kroky:
-    1. Vyberte metriku nebo položku protokolu aktivit. V tomto příkladu je vybrána možnost **nedoručené události** . 
-
-        :::image type="content" source="./media/monitor-event-delivery/select-dead-lettered-events.png" alt-text="Vybrat události s nedoručenými písmeny":::        
-    2. Vyberte dimenze (volitelné). 
-        
-        :::image type="content" source="./media/monitor-event-delivery/configure-signal-logic.png" alt-text="Konfigurace logiky signálů":::        
-    3. Posuňte se dolů. V části **logika výstrahy** vyberte **operátor**, **typ agregace**a zadejte **mezní hodnotu**a potom vyberte **Hotovo**. V tomto příkladu se aktivuje výstraha v případě, že celkový počet nedoručených událostí je větší než 10. 
-    
-        :::image type="content" source="./media/monitor-event-delivery/alert-logic.png" alt-text="Logika výstrahy":::                
-4. Zpátky na stránce **vytvořit pravidlo výstrahy** klikněte na **Vybrat skupinu akcí**.
-
-    :::image type="content" source="./media/monitor-event-delivery/select-action-group-button.png" alt-text="Tlačítko pro výběr skupiny akcí":::
-5. Na panelu nástrojů vyberte **vytvořit skupinu akcí** a vytvořte novou skupinu akcí. Můžete také vybrat existující skupinu akcí.        
-6. Na stránce **Přidat skupinu akcí** proveďte tyto kroky:
-    1. Zadejte **název skupiny akcí**.
-    1. Zadejte **krátký název** skupiny akcí.
-    1. Vyberte **předplatné Azure** , ve kterém chcete vytvořit skupinu akcí.
-    1. Vyberte **skupinu prostředků Azure** , ve které chcete vytvořit skupinu akcí.
-    1. Zadejte **název akce**. 
-    1. Vyberte **typ akce**. V tomto příkladu je vybraná **role e-mailu Azure Resource Manager** , konkrétně role **vlastníci** . 
-    1. Kliknutím na **tlačítko OK** stránku zavřete. 
-    
-        :::image type="content" source="./media/monitor-event-delivery/add-action-group-page.png" alt-text="Přidat stránku skupiny akcí":::                   
-7. Zpět na stránce **vytvořit pravidlo výstrahy** zadejte název pravidla výstrahy a pak vyberte **vytvořit pravidlo upozornění**.
-
-    :::image type="content" source="./media/monitor-event-delivery/alert-rule-name.png" alt-text="Název pravidla výstrahy":::  
-8. Nyní se na stránce **výstrahy** v tématu zobrazí odkaz na správu pravidel výstrah, pokud zatím nejsou k dispozici žádná upozornění. Pokud jsou výstrahy, vyberte na panelu nástrojů možnost **pravidla výstrah správce** .  
-
-    :::image type="content" source="./media/monitor-event-delivery/manage-alert-rules.png" alt-text="Správa výstrah":::
-
-    > [!NOTE]
-    > Tento článek se nezabývá všemi různými kroky a kombinacemi, které můžete použít k vytvoření výstrahy. Přehled výstrah najdete v tématu [výstrahy přehled](../azure-monitor/platform/alerts-overview.md).
-
 ## <a name="next-steps"></a>Další kroky
+Viz následující články:
 
-* Pro informace o doručení a opakování události [Event Grid doručování zpráv a akci opakujte](delivery-and-retry.md).
-* Úvod do Event Gridu najdete v článku [Informace o službě Event Grid](overview.md).
-* Pokud chcete rychle začít používat Event Grid, přečtěte si téma [Vytvoření a směrování vlastních událostí pomocí Azure Event Grid](custom-event-quickstart.md).
+- Informace o tom, jak vytvářet upozornění na metriky a operace protokolů aktivit, najdete v tématu [Nastavení výstrah](set-alerts.md).
+- Pro informace o doručení a opakování události [Event Grid doručování zpráv a akci opakujte](delivery-and-retry.md).

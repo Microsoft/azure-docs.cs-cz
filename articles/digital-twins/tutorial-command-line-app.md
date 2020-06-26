@@ -7,17 +7,14 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 18f7657cdaf3eb1fef76ca65856fde3b29b714a7
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: d670ee0cb2396858d908ac13f70819efd57d7f63
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85355875"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391821"
 ---
 # <a name="explore-azure-digital-twins-with-a-sample-client-app"></a>Prozkoumejte digitální vlákna Azure pomocí ukázkové klientské aplikace
-
-[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Tento kurz zavádí ukázkovou aplikaci, která implementuje klientskou aplikaci příkazového řádku pro interakci s instancí digitálních vláken Azure. Klientská aplikace je podobná té, kterou jste napsali v [kurzu: Code a klientská aplikace](tutorial-code.md).
 

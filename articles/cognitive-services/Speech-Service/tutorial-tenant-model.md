@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: tutorial
-ms.date: 02/10/2020
+ms.date: 06/25/2020
 ms.author: erhopf
-ms.openlocfilehash: a83ed5c9cec994c1bc4cadd5cf6208c159823658
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 04a6742d3db8d65e06fe3d7b35ed94ebe5dc13a5
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77469013"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391209"
 ---
 # <a name="tutorial-create-a-tenant-model-preview"></a>Kurz: vytvoření modelu tenanta (Preview)
 
@@ -289,9 +289,9 @@ namespace PrincetonSROnly.FrontEnd.Samples
 
 Dále je nutné znovu sestavit a spustit projekt z příkazového řádku. Před spuštěním příkazu aktualizujte několik parametrů provedením následujícího postupu:
 
-1. Hodnoty `<Username>` a `<Password>` nahraďte platným uživatelem tenanta.
+1. `<Username>`Hodnoty a nahraďte `<Password>` platným uživatelem tenanta.
 1. Nahraďte `<Subscription-Key>` klíčem předplatného pro váš prostředek řeči. Tato hodnota je k dispozici v části **Přehled** prostředku rozpoznávání řeči v [Azure Portal](https://aka.ms/azureportal).
-1. Nahraďte `<Endpoint-Uri>` následujícím koncovým bodem. Ujistěte se, že jste `{your region}` nahradili oblast, ve které byl prostředek řeči vytvořen. Tyto oblasti jsou podporované: `westus`, `westus2`a `eastus`. Informace o vaší oblasti jsou k dispozici v části **Přehled** prostředku rozpoznávání řeči v [Azure Portal](https://aka.ms/azureportal).
+1. Nahraďte `<Endpoint-Uri>` následujícím koncovým bodem. Ujistěte se, že jste nahradili `{your region}` oblast, ve které byl prostředek řeči vytvořen. Tyto oblasti jsou podporované: `westus` , `westus2` a `eastus` . Informace o vaší oblasti jsou k dispozici v části **Přehled** prostředku rozpoznávání řeči v [Azure Portal](https://aka.ms/azureportal).
    ```
    "wss://{your region}.online.princeton.customspeech.ai/msgraphcustomspeech/conversation/v1".
    ```
@@ -305,5 +305,5 @@ V tomto kurzu jste se naučili, jak pomocí dat Office 365 vytvořit vlastní mo
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Studio Speech](https://speech.microsoft.com/)
+* [Speech Studio](https://speech.microsoft.com/)
 * [Speech SDK](speech-sdk.md)

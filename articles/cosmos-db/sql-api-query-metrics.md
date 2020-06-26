@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
-ms.openlocfilehash: 5183591133b6892f6f57db45cf1936851784a45a
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 8776ecae982a4b1c67f6b66f16fceec930a561f0
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262051"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85392127"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Ladění výkonu dotazů pomocí služby Azure Cosmos DB
 
@@ -131,7 +131,7 @@ Hlavičky odpovědí na klíč vrácené z dotazu zahrnují následující:
 | `x-ms-documentdb-query-metrics` | Statistika dotazu pro provedení. Toto je oddělený řetězec, který obsahuje statistiku času stráveného v různých fázích provádění dotazů. Vráceno `x-ms-documentdb-populatequerymetrics` , pokud je nastaveno na `True` . | 
 | `x-ms-request-charge` | Počet [jednotek žádostí](request-units.md) spotřebovaných dotazem. | 
 
-Podrobnosti o hlavičkách a možnostech žádosti o REST API najdete v tématu [dotazování na prostředky pomocí REST API](https://docs.microsoft.com/rest/api/cosmos-db/querying-cosmosdb-resources-using-the-rest-api).
+Podrobnosti o hlavičkách a možnostech žádosti o REST API najdete v tématu [dotazování na prostředky pomocí REST API](/rest/api/cosmos-db/querying-cosmosdb-resources-using-the-rest-api).
 
 ## <a name="best-practices-for-query-performance"></a>Osvědčené postupy pro výkon dotazů
 Níže jsou uvedené nejběžnější faktory, které mají vliv na Azure Cosmos DB výkon dotazů. Dig se podrobněji pro každé z těchto témat v tomto článku.

@@ -7,17 +7,14 @@ ms.author: baanders
 ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: ddbe49f34bbdbf0f9c461a25f23d6f7cbd8600d9
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: e52307c92d9371af6479f64841c6f269ed10e4b4
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362947"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85390818"
 ---
 # <a name="authenticate-a-client-application-with-azure-digital-twins"></a>Ověřování klientské aplikace pomocí digitálních vláken Azure
-
-[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Po [vytvoření instance digitálního vlákna Azure](how-to-set-up-instance.md)můžete vytvořit klientskou aplikaci, kterou použijete k interakci s instancí. Po nastavení klientského projektu Starter se v tomto článku dozvíte, jak správně ověřit tuto klientskou aplikaci s instancí digitálních vláken Azure.
 

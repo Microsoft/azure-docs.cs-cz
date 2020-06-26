@@ -6,31 +6,27 @@ ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: chlound
-ms.openlocfilehash: bbbc2863e06b4602a4175d46bbe21414041583ba
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: c3c9827814b7d638745761dbb5f3c7d2e581491b
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926557"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85389968"
 ---
 # <a name="refresh-with-azure-automation"></a>Aktualizace pomocí Azure Automation
 
 Pomocí Azure Automation a PowerShellových runbooků můžete provádět operace automatizované aktualizace dat ve vašich tabelárních modelech Azure Analysis.  
 
-V příkladu v tomto článku se používají [moduly prostředí PowerShell SQLServer](https://docs.microsoft.com/powershell/module/sqlserver/?view=sqlserver-ps).
+Příklad v tomto článku používá [modul SQL SQLServer](https://docs.microsoft.com/powershell/module/sqlserver/?view=sqlserver-ps). Ukázková sada Runbook PowerShellu, která demonstruje aktualizaci modelu, je k dispozici dále v tomto článku.  
 
-Ukázková sada Runbook PowerShellu, která demonstruje aktualizaci modelu, je k dispozici dále v tomto článku.  
+## <a name="authentication"></a>Ověřování
 
-## <a name="authentication"></a>Authentication
-
-Všechna volání musí být ověřena pomocí platného tokenu Azure Active Directory (OAuth 2).  V příkladu v tomto článku se k ověření Azure Analysis Services použije instanční objekt (SPN).
-
-Další informace o vytváření instančního objektu najdete v tématu [Vytvoření instančního objektu pomocí Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md).
+Všechna volání musí být ověřena pomocí platného tokenu Azure Active Directory (OAuth 2).  Příklad v tomto článku používá k ověření Azure Analysis Services instanční objekt (SPN). Další informace najdete v tématu [Vytvoření instančního objektu pomocí služby Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
 > [!IMPORTANT]
-> Následující příklad předpokládá, že je brána firewall Azure Analysis Services zakázaná. Pokud je brána firewall povolená, musí být v bráně firewall povolená veřejná IP adresa iniciátoru žádosti.
+> Následující příklad předpokládá, že je brána firewall Azure Analysis Services zakázaná. Pokud je povolená brána firewall, musí být do pravidla brány firewall zahrnutá veřejná IP adresa iniciátoru žádosti.
 
 ### <a name="install-sqlserver-modules-from-powershell-gallery"></a>Nainstalujte moduly SqlServer z Galerie prostředí PowerShell.
 
@@ -44,7 +40,7 @@ Další informace o vytváření instančního objektu najdete v tématu [Vytvo�
  
     ![Importovat modul](./media/analysis-services-refresh-azure-automation/2.png)
 
-4. Klikněte na tlačítko **OK**.
+4. Klikněte na **OK**.
  
 ### <a name="create-a-service-principal-spn"></a>Vytvoření instančního objektu (SPN)
 
@@ -68,7 +64,7 @@ Objekt služby, který vytvoříte, musí mít na serveru oprávnění správce 
 
     ![Importovat Runbook](./media/analysis-services-refresh-azure-automation/8.png)
 
-4. Vyhledejte soubor **Refresh-model. ps1** , zadejte **název** a **Popis**a pak klikněte na **vytvořit**.
+4. Vyhledejte soubor **Refresh-Model.ps1** , zadejte **název** a **Popis**a pak klikněte na **vytvořit**.
 
     ![Importovat Runbook](./media/analysis-services-refresh-azure-automation/9.png)
 
@@ -111,7 +107,7 @@ Dá se nakonfigurovat takto:
 
     ![Konfigurovat parametry](./media/analysis-services-refresh-azure-automation/16.png)
 
-5. Klikněte na tlačítko **OK**.
+5. Klikněte na **OK**.
 
 ## <a name="consume-with-data-factory"></a>Využití s Data Factory
 

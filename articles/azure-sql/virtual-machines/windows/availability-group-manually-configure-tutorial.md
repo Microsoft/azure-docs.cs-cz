@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 9845780eaeaa42dc38f97344f86b7e9af3d37180
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: 574e2e1647ecf33fb05600407163c96247b6ce41
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84669375"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391039"
 ---
 # <a name="tutorial-configure-a-sql-server-availability-group-on-azure-virtual-machines-manually"></a>Kurz: Konfigurace skupiny dostupnosti SQL Server v Azure Virtual Machines ručně
 
@@ -39,7 +39,7 @@ V tomto kurzu se předpokládá základní znalost skupin dostupnosti Always On 
 
 V následující tabulce jsou uvedeny předpoklady, které je třeba provést před zahájením tohoto kurzu:
 
-|  |Požadavek |Popis |
+|  |Požadavek |Description |
 |----- |----- |----- |
 |![Square](./media/availability-group-manually-configure-tutorial/square.png) | Dvě instance SQL Server | – V sadě dostupnosti Azure <br/> – V jedné doméně <br/> – Je nainstalovaná funkce clusteringu s podporou převzetí služeb při selhání |
 |![Square](./media/availability-group-manually-configure-tutorial/square.png)| Windows Server | Sdílená složka pro disk s kopií clusteru |  
@@ -199,7 +199,7 @@ Potom povolte funkci **skupiny dostupnosti AlwaysOn** . Proveďte tyto kroky na 
 
     ![Povolit Skupiny dostupnosti AlwaysOn](./media/availability-group-manually-configure-tutorial/54-enableAlwaysOn.png)
 
-4. Vyberte **Apply** (Použít). V automaticky otevíraném okně vyberte **OK** .
+4. Vyberte **Použít**. V automaticky otevíraném okně vyberte **OK** .
 
 5. Restartujte službu SQL Server.
 
@@ -360,7 +360,7 @@ V tomto okamžiku máte skupinu dostupnosti s replikami na dvou instancích SQL 
 
 Na virtuálních počítačích Azure vyžaduje Skupina dostupnosti SQL Server službu pro vyrovnávání zatížení. Nástroj pro vyrovnávání zatížení uchovává IP adresy pro naslouchací procesy skupiny dostupnosti a cluster s podporou převzetí služeb při selhání systému Windows Server. Tato část shrnuje, jak vytvořit nástroj pro vyrovnávání zatížení v Azure Portal.
 
-Nástroj pro vyrovnávání zatížení n Azure může být buď Standard Load Balancer, nebo základní Load Balancer. Standard Load Balancer má více funkcí než základní Load Balancer. V případě skupiny dostupnosti se Standard Load Balancer vyžaduje, pokud použijete zónu dostupnosti (místo skupiny dostupnosti). Podrobnosti o rozdílu mezi SKU nástroje pro vyrovnávání zatížení najdete v tématu [Load Balancer porovnání skladové](../../../load-balancer/skus.md)položky.
+Nástroj pro vyrovnávání zatížení v Azure může být buď Standard Load Balancer, nebo základní Load Balancer. Standard Load Balancer má více funkcí než základní Load Balancer. V případě skupiny dostupnosti se Standard Load Balancer vyžaduje, pokud použijete zónu dostupnosti (místo skupiny dostupnosti). Podrobnosti o rozdílu mezi SKU nástroje pro vyrovnávání zatížení najdete v tématu [Load Balancer porovnání skladové](../../../load-balancer/skus.md)položky.
 
 1. V Azure Portal otevřete skupinu prostředků, kde jsou vaše servery SQL, a vyberte **+ Přidat**.
 1. Vyhledejte **Load Balancer**. Vyberte nástroj pro vyrovnávání zatížení publikovaný Microsoftem.

@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: 7ef7a55c81441077d2217ccfc41a2a9c9578eefe
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 296f212e26d066613c54f7d69802654e5f7b5090
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697563"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391838"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kvóty služby Azure Cosmos DB
 
@@ -117,7 +117,7 @@ Neexistují žádná omezení na datové části položky, jako je počet vlastn
 
 ## <a name="per-request-limits"></a>Omezení podle požadavků
 
-Azure Cosmos DB podporuje [operace CRUD a dotazování](https://docs.microsoft.com/rest/api/cosmos-db/) u prostředků, jako jsou kontejnery, položky a databáze. Podporuje také [transakční dávkové požadavky](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.transactionalbatch) na více položek se stejným klíčem oddílu v kontejneru.
+Azure Cosmos DB podporuje [operace CRUD a dotazování](/rest/api/cosmos-db/) u prostředků, jako jsou kontejnery, položky a databáze. Podporuje také [transakční dávkové požadavky](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.transactionalbatch) na více položek se stejným klíčem oddílu v kontejneru.
 
 | Prostředek | Výchozí omezení |
 | --- | --- |
