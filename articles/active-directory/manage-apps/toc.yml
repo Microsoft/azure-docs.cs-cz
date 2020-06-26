@@ -303,8 +303,6 @@
               href: application-proxy-page-load-speed-problem.md
             - name: Odkazy na stránce aplikace nefungují
               href: application-proxy-page-links-broken-problem.md
-            - name: Jaké porty je potřeba odemknout pro mou aplikaci
-              href: application-proxy-connectivity-ports-how-to.md
             - name: Ve skupině konektorů není žádný fungující konektor pro mou aplikaci
               href: application-proxy-connectivity-no-working-connector.md
             - name: Konfigurace na portálu pro správu
