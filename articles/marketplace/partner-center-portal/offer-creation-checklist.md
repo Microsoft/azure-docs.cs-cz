@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: c34eee74070dfb137311867615f55a7c89522cd5
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: b30afd4ef69b9b4ecb49b99f4455bf136a6e6eb2
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84708985"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374402"
 ---
 # <a name="saas-offer-creation-checklist-in-partner-center"></a>Kontrolní seznam pro vytvoření nabídky SaaS v partnerském centru
 
@@ -92,7 +92,7 @@ Stránka výpisu je místo, kde můžete zadat text a obrázky, které se zákaz
 | Název užitečného odkazu + adresa URL  | Nepovinný parametr. |
 | Název doprovodnéch dokumentů + soubor  | Požadováno, minimum 1 a max 3. Musí se jednat o formát souboru PDF. |
 | Screenshoty  | Požadováno, minimální počet 1 snímek obrazovky a maximální 5; doporučuje se čtyři nebo více. Ve formátu PNG musí být 1280 X 720. |
-| Ukládat loga (malá, střední, Velká, rozsáhlá, Hero)  | Malá (48 × 48) a velká (216 × 216); jiné velikosti volitelné, ale doporučené: střední (90 x 90), roztažitelné (255 x 115), Hero (815 x 290). Musí být ve formátu PNG. |
+| Ukládat loga (malá, střední, Velká, rozsáhlá)  | Malá (48 × 48) a velká (216 × 216); jiné velikosti volitelné, ale doporučené: střední (90 x 90), v šířce (255 × 115). Musí být v. Formát PNG. |
 | Název videa + adresa URL + Miniatura  | Volitelné, doporučené, maximální 4 videa. Miniatura musí být ve formátu PNG 1280 x 720. Video musí být hostované na YouTube nebo Vimeo. |
 | Kontakty (program CSP, strojírenství, podpora)  | Technické a podpůrné kontaktní požadavky (jméno, e-mail a telefonní číslo); Program CSP kontaktuje volitelnou, ale doporučuje se. |
 | Adresa URL podpory  | Povinná hodnota. |

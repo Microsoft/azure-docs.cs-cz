@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 36aa0a4a87e439c128c5247b6850100a7f2e826e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 66ad9c27ca69df230d9ce1d2282e734420fa14f3
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598049"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85373657"
 ---
 # <a name="configure-application-settings-for-azure-static-web-apps-preview"></a>Konfigurace nastavení aplikace pro Azure static Web Apps Preview
 
@@ -60,9 +60,9 @@ Informace o použití proměnných prostředí s vaším JavaScriptovým rozhran
 
 ## <a name="about-api-app-settings"></a>O nastavení aplikace API
 
-Rozhraní API ve službě Azure static Web Apps jsou napájená pomocí Azure Functions, která umožňují definovat nastavení aplikace v souboru _Local. Settings. JSON_ . Tento soubor definuje nastavení aplikace v `Values` Vlastnosti konfigurace.
+Rozhraní API ve statických Web Appsch Azure využívají technologii Azure Functions, která umožňuje definovat nastavení aplikace v _local.settings.js_ souboru. Tento soubor definuje nastavení aplikace v `Values` Vlastnosti konfigurace.
 
-Následující příklad _Local. Settings. JSON_ ukazuje, jak přidat hodnotu pro `DATABASE_CONNECTION_STRING` .
+Následující vzorový _local.settings.js_ ukazuje, jak přidat hodnotu pro `DATABASE_CONNECTION_STRING` .
 
 ```json
 {
@@ -105,15 +105,17 @@ Azure Portal poskytuje rozhraní pro vytváření, aktualizaci a odstraňování
 
     :::image type="content" source="media/application-settings/configuration.png" alt-text="Zobrazení konfigurace statického Web Apps Azure":::
 
-1. Zadejte **název** a **hodnotu** .
+1. Zadejte **název** a **hodnotu**.
 
-1. Klikněte na tlačítko **OK**.
+1. Klikněte na **OK**.
+
+1. Klikněte na **Uložit**.
 
 ### <a name="using-the-azure-cli"></a>Použití Azure CLI
 
 Pomocí `az rest` příkazu můžete hromadně načítat nastavení do Azure. Příkaz přijme nastavení aplikace jako objekty JSON v nadřazené vlastnosti s názvem `properties` .
 
-Nejjednodušší způsob, jak vytvořit soubor JSON s příslušnými hodnotami, je vytvořit upravenou verzi souboru _Local. Settings. JSON_ .
+Nejjednodušší způsob, jak vytvořit soubor JSON s příslušnými hodnotami, je vytvořit upravenou verzi _local.settings.jsv_ souboru.
 
 1. Aby se zajistilo, že váš nový soubor s citlivými daty nebude veřejně vystavený, přidejte do souboru _. gitignore_ následující položku.
 
@@ -121,7 +123,7 @@ Nejjednodušší způsob, jak vytvořit soubor JSON s příslušnými hodnotami,
    local.settings*.json
    ```
 
-2. Dále vytvořte kopii souboru _Local. Settings. JSON_ a pojmenujte ho _Local. Settings. Properties. JSON_.
+2. Dále vytvořte kopii _local.settings.jsna_ soubor a pojmenujte ji _local.settings.properties.jsna_.
 
 3. V novém souboru odeberte všechna ostatní data ze souboru s výjimkou nastavení aplikace a přejmenujte `Values` na `properties` .
 
@@ -150,13 +152,13 @@ Příkaz Azure CLI vyžaduje pro váš účet několik hodnot, které jsou speci
    ```
 
 > [!IMPORTANT]
-> Soubor Local. Settings. Properties. JSON musí být ve stejném adresáři, ve kterém je tento příkaz spuštěn. Tento soubor může být pojmenován cokoli, co chcete. Název není významný.
+> Soubor local.settings.properties.json musí být ve stejném adresáři, ve kterém je tento příkaz spuštěn. Tento soubor může být pojmenován cokoli, co chcete. Název není významný.
 
 ### <a name="view-application-settings-with-the-azure-cli"></a>Zobrazení nastavení aplikace pomocí Azure CLI
 
 Nastavení aplikace jsou k dispozici pro zobrazení prostřednictvím rozhraní příkazového řádku Azure CLI.
 
-1. Z terminálu nebo příkazového řádku spusťte následující příkaz. Zástupné symboly Nezapomeňte nahradit `<YOUR_SUBSCRIPTION_ID>` `<YOUR_RESOURCE_GROUP_NAME>` `<YOUR_STATIC_SITE_NAME>` hodnotami.
+- Z terminálu nebo příkazového řádku spusťte následující příkaz. Zástupné symboly Nezapomeňte nahradit `<YOUR_SUBSCRIPTION_ID>` `<YOUR_RESOURCE_GROUP_NAME>` `<YOUR_STATIC_SITE_NAME>` hodnotami.
 
    ```bash
    az rest --method post --uri "/subscriptions/<YOUR_SUBSCRIPTION_ID>/resourceGroups/<YOUR_RESOURCE_GROUP_NAME>/providers/Microsoft.Web/staticSites/<YOUR_STATIC_SITE_NAME>/listFunctionAppSettings?api-version=2019-12-01-preview"
@@ -165,4 +167,4 @@ Nastavení aplikace jsou k dispozici pro zobrazení prostřednictvím rozhraní 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Nastavit místní vývoj](local-development.md)
+> [Nastavení místního vývoje](local-development.md)

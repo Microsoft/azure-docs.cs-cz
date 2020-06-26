@@ -6,15 +6,15 @@ ms.author: avverma
 ms.topic: troubleshooting
 ms.service: virtual-machine-scale-sets
 ms.subservice: autoscale
-ms.date: 11/16/2017
+ms.date: 06/25/2020
 ms.reviwer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 624f9bf512a28657808d9e2838149601c0bd2f99
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 915b6430378cfff2a847e31de26950fcb9de6ff5
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837225"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374589"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>Řešení potíží s automatickým škálováním se škálovacími sadami virtuálních počítačů
 **Problém** – pomocí služby Virtual Machine Scale Sets jste v Azure Resource Manager vytvořili infrastrukturu automatického škálování – například nasazením šablony, jako je tato: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale – máte definovaná pravidla škálování a funguje Skvělé, ale bez ohledu na to, kolik dat jste do virtuálních počítačů umístili, nefunguje automatické škálování.

@@ -6,12 +6,12 @@ ms.author: t-trtr
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 06/04/2020
-ms.openlocfilehash: f13872352e8b4da89d2dcf955440bc54be0fe000
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.openlocfilehash: fe06d68a7e618b728e314d539dd83dfdf93beaed
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84817332"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85368205"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>Kurz: konfigurace a spuštění poskytovatele Azure Key Vault pro ovladač tajných klíčů úložiště pro Kubernetes
 
@@ -343,4 +343,4 @@ Ověřte, zda se zobrazuje obsah tajného klíče.
 
 Informace o tom, jak zajistit, aby se váš Trezor klíčů mohl obnovit, najdete v těchto tématech:
 > [!div class="nextstepaction"]
-> [Zapnout obnovitelné odstranění](https://docs.microsoft.com/azure/key-vault/general/soft-delete-clid)
+> [Zapnout obnovitelné odstranění](https://docs.microsoft.com/azure/key-vault/general/soft-delete-cli)

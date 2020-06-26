@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/14/2020
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: cc53f7ae6eb6254eaa05bf643ecfa0188650df95
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d7ac494edfb9b1deeceafcac523ac58bccde96b3
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77461853"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85365185"
 ---
 Tato část popisuje, jak vytvořit centrum IoT pomocí [Azure Portal](https://portal.azure.com).
 

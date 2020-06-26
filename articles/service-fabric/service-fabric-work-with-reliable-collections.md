@@ -3,12 +3,12 @@ title: Práce s Reliable Collections
 description: Seznamte se s osvědčenými postupy pro práci s spolehlivými kolekcemi v rámci aplikace Service Fabric v Azure.
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 94836a37a62e3eeffb94d891980cc02694bd973e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f0f1d332b3636e28ffc50ee8b8edcd253474a307
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81409810"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374691"
 ---
 # <a name="working-with-reliable-collections"></a>Práce s Reliable Collections
 Service Fabric nabízí stavový programovací model dostupný vývojářům .NET prostřednictvím spolehlivých kolekcí. Konkrétně Service Fabric poskytuje spolehlivé slovníkové a spolehlivé třídy front. Při použití těchto tříd je váš stav rozdělený na oddíly (pro škálovatelnost), replikovaný (pro dostupnost) a v rámci oddílu (pro sémantiku KYSELování). Pojďme se podívat na typické použití objektu spolehlivého slovníku a podívat se, co dělá ve skutečnosti.
@@ -42,9 +42,14 @@ Všechny operace s objekty spolehlivého slovníku (s výjimkou ClearAsync, kter
 
 Ve výše uvedeném kódu je objekt ITransaction předán metodě AddAsync spolehlivého slovníku. Interně, slovníkové metody, které přijímají klíč, přebírají zámek čtenář/Writer přidružený ke klíči. Pokud metoda upraví hodnotu klíče, metoda pro klíč převezme zámek zápisu a pokud metoda načte jenom z hodnoty klíče, pak se na klíč převezme zámek pro čtení. Vzhledem k tomu, že AddAsync upravuje hodnotu klíče na novou, předanou hodnotu, je pořízen zámek pro zápis klíče. Takže pokud se 2 (nebo více) vlákna pokusí přidat hodnoty stejného klíče současně, jedno vlákno získá zámek pro zápis a ostatní vlákna budou blokovat. Ve výchozím nastavení zablokují pro získání zámku až 4 sekundy. po 4 sekundách metody vyvolávají výjimku TimeoutException. Přetížení metody existují, což vám umožní předat explicitní hodnotu časového limitu, pokud byste chtěli preferovat.
 
-Obvykle napíšete kód pro reakci na TimeoutException tím, že ho zachytíte a zkusíte zopakovat celou operaci (jak je znázorněno v kódu výše). V mém jednoduchém kódu jsem právě volal úlohu. zpoždění před 100 milisekundami. Ve skutečnosti ale můžete být vhodnější pomocí určitého typu exponenciálního zpoždění.
+Obvykle napíšete kód pro reakci na TimeoutException tím, že ho zachytíte a zkusíte zopakovat celou operaci (jak je znázorněno v kódu výše). V tomto jednoduchém kódu právě voláme Task. zpoždění před 100 milisekundami. Ve skutečnosti ale můžete být vhodnější pomocí určitého typu exponenciálního zpoždění.
 
-Po získání zámku AddAsync přidá objekt klíč a hodnota odkazy do interního dočasného slovníku přidruženého k objektu ITransaction. K tomu je potřeba zajistit sémantiku čtení, kterou vlastní zápis. To znamená, že po volání AddAsync bude pozdější volání TryGetValueAsync (pomocí stejného objektu ITransaction) vracet hodnotu, i když jste transakci ještě netvrdili. V dalším kroku AddAsync serializovat klíč a hodnotové objekty pro Bajtová pole a připojí tato pole bajtů do souboru protokolu v místním uzlu. Nakonec AddAsync odešle Bajtová pole všem sekundárním replikám, aby měly stejné informace o klíčích a hodnotách. I když byly informace o klíč/hodnotě zapsány do souboru protokolu, informace nejsou považovány za součást slovníku, dokud není potvrzena transakce, ke které jsou přidruženy.
+Po získání zámku AddAsync přidá objekt klíč a hodnota odkazy do interního dočasného slovníku přidruženého k objektu ITransaction. K tomu je potřeba zajistit sémantiku čtení, kterou vlastní zápis. To znamená, že po volání AddAsync, pozdější volání TryGetValueAsync pomocí stejného objektu ITransaction vrátí hodnotu, i když jste transakci ještě netvrdili.
+
+> [!NOTE]
+> Volání TryGetValueAsync s novou transakcí vrátí odkaz na poslední potvrzenou hodnotu. Neupravujte přímo tento odkaz, protože toto rozhraní obchází mechanismus pro zachování a replikaci změn. Doporučujeme, aby hodnoty byly jen pro čtení, takže jediný způsob, jak změnit hodnotu klíče, je prostřednictvím spolehlivých rozhraní API slovníku.
+
+V dalším kroku AddAsync serializovat klíč a hodnotové objekty pro Bajtová pole a připojí tato pole bajtů do souboru protokolu v místním uzlu. Nakonec AddAsync odešle Bajtová pole všem sekundárním replikám, aby měly stejné informace o klíčích a hodnotách. I když byly informace o klíč/hodnotě zapsány do souboru protokolu, informace nejsou považovány za součást slovníku, dokud není potvrzena transakce, ke které jsou přidruženy.
 
 Ve výše uvedeném kódu volání Commitasync vyvolá výjimka potvrdí všechny operace transakce. Konkrétně připojí informace o potvrzení do souboru protokolu v místním uzlu a odešle záznam o potvrzení také do všech sekundárních replik. Jakmile kvorum (většina) repliky odpovědělo, všechny změny dat jsou považovány za trvalé a všechny zámky přidružené ke klíčům, které byly manipulovány prostřednictvím objektu ITransaction, jsou uvolněny, aby ostatní vlákna a transakce mohly manipulovat se stejnými klíči a jejich hodnotami.
 
@@ -55,7 +60,7 @@ V některých úlohách, jako je replikovaná mezipaměť, můžete například 
 
 V současné době je nestálá podpora k dispozici pouze pro spolehlivé slovníky a spolehlivé fronty, nikoli ReliableConcurrentQueues. Podrobnosti o tom, jestli se mají používat nestálé kolekce, najdete v seznamu [aspektů](service-fabric-reliable-services-reliable-collections-guidelines.md#volatile-reliable-collections) .
 
-Pokud chcete ve službě povolit nestálou podporu, ```HasPersistedState``` nastavte příznak v deklaraci typu ```false```služby na, například takto:
+Pokud chcete ve službě povolit nestálou podporu, nastavte ```HasPersistedState``` příznak v deklaraci typu služby na, například takto ```false``` :
 ```xml
 <StatefulServiceType ServiceTypeName="MyServiceType" HasPersistedState="false" />
 ```
@@ -145,7 +150,7 @@ using (ITransaction tx = StateManager.CreateTransaction())
 ```
 
 ## <a name="define-immutable-data-types-to-prevent-programmer-error"></a>Definování neměnných datových typů, aby se zabránilo chybě programátora
-V ideálním případě chceme, aby kompilátor nahlásil chyby, když omylem vytvoříte kód, který je vhodný pro stav objektu, který byste měli považovat za neměnné. Kompilátor jazyka C# ale nemůže tuto možnost provést. Takže pokud chcete zabránit potenciálním chybám programátora, důrazně doporučujeme, abyste definovali typy, které používáte se spolehlivými kolekcemi, na neměnné typy. Konkrétně to znamená, že se zaměříte na základní typy hodnot (například čísla [Int32, UInt64 atd.], DateTime, GUID, TimeSpan a like). Můžete také použít řetězec. Je nejlepší se vyhnout vlastnostem kolekce jako serializace a deserializace, což může často snížit výkon. Pokud však chcete použít vlastnosti kolekce, důrazně doporučujeme použít. Neměnné knihovny kolekcí ([System. Collections. unmutable](https://www.nuget.org/packages/System.Collections.Immutable/)) netto. Tato knihovna je k dispozici ke https://nuget.orgstažení z. Doporučujeme také zapečetění tříd a zpřístupnění polí jen pro čtení, kdykoli to bude možné.
+V ideálním případě chceme, aby kompilátor nahlásil chyby, když omylem vytvoříte kód, který je vhodný pro stav objektu, který byste měli považovat za neměnné. Kompilátor jazyka C# ale nemůže tuto možnost provést. Takže pokud chcete zabránit potenciálním chybám programátora, důrazně doporučujeme, abyste definovali typy, které používáte se spolehlivými kolekcemi, na neměnné typy. Konkrétně to znamená, že se zaměříte na základní typy hodnot (například čísla [Int32, UInt64 atd.], DateTime, GUID, TimeSpan a like). Můžete také použít řetězec. Je nejlepší se vyhnout vlastnostem kolekce jako serializace a deserializace, což může často snížit výkon. Pokud však chcete použít vlastnosti kolekce, důrazně doporučujeme použít. Neměnné knihovny kolekcí ([System. Collections. unmutable](https://www.nuget.org/packages/System.Collections.Immutable/)) netto. Tato knihovna je k dispozici ke stažení z https://nuget.org . Doporučujeme také zapečetění tříd a zpřístupnění polí jen pro čtení, kdykoli to bude možné.
 
 Následující typ UserInfo ukazuje, jak definovat neproměnlivý typ, který využívá výše uvedená doporučení.
 

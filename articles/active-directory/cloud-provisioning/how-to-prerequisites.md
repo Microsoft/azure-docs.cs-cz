@@ -11,12 +11,12 @@ ms.date: 12/06/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a2ea1cfba9b460f5723f69cd0382c7413b97bef
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: b7eb632405ef17ef4100503f30168c1207179f48
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/25/2020
-ms.locfileid: "85360805"
+ms.locfileid: "85373858"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Předpoklady pro zřizování cloudu Azure AD Connect
 Tento článek poskytuje pokyny k výběru a používání Azure Active Directory (Azure AD) připojení cloudového zřizování jako řešení identity.
@@ -27,7 +27,7 @@ Tento článek poskytuje pokyny k výběru a používání Azure Active Director
 Pro použití Azure AD Connectho zřizování cloudu potřebujete následující:
     
 - Účet správce hybridní identity pro vašeho tenanta Azure AD, který není uživatelem typu Host.
-- Místní server pro zřizovacího agenta se systémem Windows 2012 R2 nebo novějším.
+- Místní server pro zřizovacího agenta se systémem Windows 2012 R2 nebo novějším.  Tento server by měl být serverem vrstvy 0, který je založený na [modelu vrstvy správy služby Active Directory](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material).
 - Místní konfigurace brány firewall.
 
 >[!NOTE]

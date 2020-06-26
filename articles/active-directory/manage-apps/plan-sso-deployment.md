@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/22/2019
-ms.author: kenwith
+ms.date: 06/10/2020
+ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 2a2691935cb38c20e20b6a776acfe70cc458a6ed
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 75e3f7fc98072957f571937a1627247cdc4a9e7e
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84763070"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374436"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Plánování nasazení jednotného přihlašování
 
@@ -195,8 +195,6 @@ K naplánování a nasazení vašeho řešení ve vaší organizaci použijte n�
 
    Volitelně můžete použít deklarace identity vydané v tokenu SAML pro podnikovou aplikaci pomocí [doprovodné dokumentace Microsoftu](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping). Zajistěte, aby se tato mapa namapovala na to, co očekáváte v odpovědi SAML pro vaši aplikaci. Pokud narazíte na problémy při konfiguraci, využijte naše pokyny, [jak ladit integraci jednotného přihlašování](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging).
 
-Registrace vlastní aplikace je Azure AD Premium funkce licence P1 nebo P2.
-
 ### <a name="provide-sso-change-communications-to-end-users"></a>Poskytněte koncovým uživatelům komunikaci se změnou jednotného přihlašování.
 
 Implementujte svůj komunikační plán. Ujistěte se, že zadáváte koncovým uživatelům informace o tom, že se po doručení dokončí změna, co dělat teď a jak se bude hledat pomoc.
@@ -237,11 +235,11 @@ Vždy používejte roli s nejmenším oprávněním, která jsou k dispozici k p
 
 | Nežádoucí| Role | Role Azure AD (v případě potřeby) |
 |--------|-------|-----------------------------|
-| Správce helpdesku | Podpora vrstvy 1 | Žádné |
+| Správce helpdesku | Podpora vrstvy 1 | Žádná |
 | Správce identit | Konfigurace a ladění v případě problémů ovlivňujících službu Azure AD | Globální správce |
-| Správce aplikace | Ověření identity uživatele v aplikaci, konfigurace u uživatelů s oprávněním | Žádné |
+| Správce aplikace | Ověření identity uživatele v aplikaci, konfigurace u uživatelů s oprávněním | Žádná |
 | Správci infrastruktury | Vlastník změna certifikátu | Globální správce |
-| Vlastník/účastník společnosti | Ověření identity uživatele v aplikaci, konfigurace u uživatelů s oprávněním | Žádné |
+| Vlastník/účastník společnosti | Ověření identity uživatele v aplikaci, konfigurace u uživatelů s oprávněním | Žádná |
 
 Pro správu rolí doporučujeme použít [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) (PIM) a zajistit tak další auditování, řízení a kontrolu přístupu pro uživatele s oprávněními k adresáři.
 

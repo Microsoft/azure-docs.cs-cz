@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: c3f3eddf57b559d9e8f4837db453232308869767
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: f459e1dd70850db1d7087b4c99de741b37d3bfda
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118045"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367117"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Zajištění vysoké dostupnosti pomocí Azure Cosmos DB
 
@@ -82,7 +82,7 @@ Redundance zóny je *doplňkovou* funkcí pro replikaci s [více hlavními serve
 
 Když konfigurujete zápisy ve více oblastech pro účet Azure Cosmos, můžete se odhlásit k redundanci zóny bez dalších poplatků. V opačném případě se podívejte na následující poznámku týkající se cen pro podporu redundance zóny. Redundanci zóny můžete povolit ve stávající oblasti svého účtu Azure Cosmos tak, že odstraníte oblast a přidáte ji zpátky s povolenou redundancí zóny.
 
-Tato funkce je dostupná v těchto oblastech: *Velká Británie – jih, jihovýchodní Asie, východní USA, východní USA 2, střed USA, západní Evropa, západní USA 2, Austrálie – východ, Japonsko – východ, Severní Evropa, Francie – střední* oblasti.
+Tato funkce je dostupná v těchto oblastech: *Velká Británie – jih, jihovýchodní Asie, východní USA, východní USA 2, střed USA, západní Evropa, západní USA 2, Japonsko – východ, Severní Evropa, Francie – střední* oblasti.
 
 > [!NOTE]
 > Povolení Zóny dostupnosti pro jednu oblast účtu Azure Cosmos bude mít za následek poplatky, které se rovnají přidání další oblasti do svého účtu. Podrobnosti o cenách najdete na stránce s [cenami](https://azure.microsoft.com/pricing/details/cosmos-db/) a s [náklady na více oblastí v Azure Cosmos DB](optimize-cost-regions.md) článcích.

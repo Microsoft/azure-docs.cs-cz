@@ -11,12 +11,12 @@ ms.date: 06/10/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.custom: mvc
-ms.openlocfilehash: ac9bf7edf6e3973dd2f1f917d26ac280be4648e3
-ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
+ms.openlocfilehash: b5ca24a68b271c08ea7cd4196d5b8659eb0262d2
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84945643"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367372"
 ---
 # <a name="secure-access-to-application-data"></a>Zabezpečený přístup k datům aplikací
 
@@ -39,7 +39,7 @@ K dokončení tohoto kurzu je nutné dokončit předchozí kurz o službě Stora
 
 V této části série kurzů se pro přístup k miniaturám používají tokeny SAS. V tomto kroku nastavíte veřejný přístup ke kontejneru *thumbnails* na hodnotu `off` (vypnuto).
 
-```azurecli-interactive 
+```bash
 blobStorageAccount="<blob_storage_account>"
 
 blobStorageAccountKey=$(az storage account keys list -g myResourceGroup \
@@ -52,6 +52,19 @@ az storage container set-permission \
     --public-access off
 ```
 
+```powershell
+$blobStorageAccount="<blob_storage_account>"
+
+blobStorageAccountKey=$(az storage account keys list -g myResourceGroup `
+    --account-name $blobStorageAccount --query [0].value --output tsv) 
+
+az storage container set-permission `
+    --account-name $blobStorageAccount `
+    --account-key $blobStorageAccountKey `
+    --name thumbnails `
+    --public-access off
+```
+
 ## <a name="configure-sas-tokens-for-thumbnails"></a>Konfigurace tokenů SAS pro miniatury
 
 V první části této série kurzů zobrazovala webová aplikace obrázky z veřejného kontejneru. V této části série použijete tokeny (SAS) sdíleného přístupového podpisu (SAS) k načtení imagí miniatur. Tokeny SAS umožňují zajistit omezený přístup ke kontejneru nebo objektu blob na základě IP adresy, protokolu, časového intervalu nebo povolených oprávnění. Další informace o SAS najdete v tématu [udělení omezeného přístupu k Azure Storage prostředkům pomocí sdílených přístupových podpisů (SAS)](../common/storage-sas-overview.md).
@@ -60,11 +73,19 @@ V tomto příkladu používá úložiště zdrojového kódu větev `sasTokens`,
 
 V následujícím příkazu je `<web-app>` název vaší webové aplikace.
 
-```azurecli-interactive 
+```bash
 az webapp deployment source delete --name <web-app> --resource-group myResourceGroup
 
 az webapp deployment source config --name <web_app> \
     --resource-group myResourceGroup --branch sasTokens --manual-integration \
+    --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp
+```
+
+```powershell
+az webapp deployment source delete --name <web-app> --resource-group myResourceGroup
+
+az webapp deployment source config --name <web_app> `
+    --resource-group myResourceGroup --branch sasTokens --manual-integration `
     --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp
 ```
 

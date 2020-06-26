@@ -13,16 +13,16 @@ ms.author: rolyon
 ms.reviewer: ''
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b1a89acdf189e41f3c72ec12fc84920cd0c795d
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 1bbc1644294a471bbb704d10c5f684d7404eae95
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84731083"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374572"
 ---
 # <a name="close-your-work-or-school-account-in-an-unmanaged-azure-ad-organization"></a>Zavřete svůj pracovní nebo školní účet v nespravované organizaci Azure AD.
 
-Pokud jste uživatel v nespravované organizaci Azure Active Directory (Azure AD) a už nepotřebujete používat aplikace z této organizace ani nemusíte spravovat žádné přidružení, můžete účet kdykoli zavřít. Nespravovaná organizace nemá globálního správce. Uživatelé v nespravované organizaci můžou svoje účty zavřít sami, aniž by museli kontaktovat správce.
+Pokud jste uživatelem v nespravovaném Azure Active Directory (Azure AD) a už nepotřebujete používat aplikace z této organizace ani nemusíte spravovat žádné přidružení, můžete účet kdykoli zavřít. Nespravovaná organizace nemá globálního správce. Uživatelé v nespravované organizaci můžou svoje účty zavřít sami, aniž by museli kontaktovat správce.
 
 Uživatelé v nespravované organizaci se často vytvářejí při registraci samoobslužných služeb. Příkladem může být informační pracovník v organizaci, který si zaregistruje bezplatnou službu. Další informace o samoobslužném přihlášení najdete v tématu [co je samoobslužná registrace pro Azure Active Directory?](directory-self-service-signup.md).
 

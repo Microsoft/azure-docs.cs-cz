@@ -50,7 +50,7 @@ Automatický upgrade používá Azure AD Connect Health pro infrastrukturu upgra
 
 Pokud **Synchronization Service Manager** uživatelské rozhraní běží na serveru, upgrade se pozastaví, dokud se uživatelské rozhraní nezavře.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 Pokud se vaše instalace připojení neupgraduje podle očekávání, postupujte podle těchto kroků a zjistěte, co by mohlo být chybné.
 
 Za prvé byste neměli očekávat, že se automatický upgrade bude pokoušet o první vydání nové verze. Před pokusem o upgrade došlo k úmyslnému náhodnosti, takže pokud se instalace neupgraduje hned, neprovádějte upozornění.
@@ -71,7 +71,7 @@ Teď můžete zobrazit události související se stavem pro automatický upgrad
 
 Kód výsledku obsahuje předponu s přehledem stavu.
 
-| Předpona kódu výsledku | Popis |
+| Předpona kódu výsledku | Description |
 | --- | --- |
 | Úspěch |Instalace byla úspěšně upgradována. |
 | UpgradeAborted |Upgrade zastavil dočasnou podmínku. Bude znovu opakován a očekává se, že bude později úspěšné. |
@@ -79,7 +79,7 @@ Kód výsledku obsahuje předponu s přehledem stavu.
 
 Tady je seznam nejběžnějších zpráv, které najdete. Neobsahuje žádné výpisy, ale zpráva výsledku by měla být nejasná s obsahem problému.
 
-| Zpráva výsledku | Popis |
+| Zpráva výsledku | Description |
 | --- | --- |
 | **UpgradeAborted** | |
 | UpgradeAbortedCouldNotSetUpgradeMarker |Do registru nejde zapisovat. |

@@ -6,15 +6,15 @@ ms.author: mimckitt
 ms.topic: sample
 ms.service: virtual-machine-scale-sets
 ms.subservice: cli
-ms.date: 03/27/2018
+ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 7f80515a0a441f910a2133a36d62a09062c3840f
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: c2c1ea09d10ee177a722a56f6825db0f37da7e9b
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83699791"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374661"
 ---
 # <a name="create-a-virtual-machine-scale-set-with-the-azure-cli"></a>Vytvoření škálovací sady virtuálních počítačů pomocí Azure CLI
 Tento skript vytvoří škálovací sadu virtuálních počítačů Azure s operačním systémem Ubuntu a související síťové prostředky, včetně nástroje pro vyrovnávání zatížení. Po spuštění skriptu můžete k instancím virtuálních počítačů přistupovat přes SSH.

@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/21/2020
+ms.date: 06/24/2020
 ms.author: radeltch
-ms.openlocfilehash: 1dc5cf055e6fee72cb6d73b3c4c5c76eefb037d6
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: ed754e3f69feaf6d5415db8f71cb5c1bb65632e0
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800189"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85368242"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Nastavení Pacemaker na SUSE Linux Enterprise Server v Azure
 
@@ -34,9 +34,9 @@ ms.locfileid: "83800189"
 
 Existují dvě možnosti, jak nastavit cluster Pacemaker v Azure. Můžete použít buď agenta pro oplocení, který postará restartování uzlu, který selhal, přes rozhraní API Azure, nebo můžete použít zařízení SBD.
 
-Zařízení SBD vyžaduje aspoň jeden další virtuální počítač, který funguje jako cílový server iSCSI a poskytuje zařízení SBD. Tyto cílové servery iSCSI je možné sdílet s jinými Pacemaker clustery. Výhodou použití zařízení SBD je rychlejší doba převzetí služeb při selhání a pokud používáte místní zařízení SBD, nevyžaduje žádné změny v tom, jak provozovat cluster Pacemaker. Pro cluster Pacemaker můžete použít až tři SBD zařízení, která umožní, aby se zařízení SBD nedostupné, například během oprav operačního systému cílového serveru iSCSI. Pokud chcete používat více než jedno zařízení SBD na Pacemaker, nezapomeňte nasadit několik cílových serverů iSCSI a připojit jeden SBD od každého cílového serveru iSCSI. Doporučujeme použít buď jedno zařízení SBD, nebo tři. Pokud nakonfigurujete jenom dvě zařízení SBD a jedna z nich není dostupná, Pacemaker nebude moct uzel clusteru automaticky navýšit. Pokud chcete být schopni si je vymezit, když jeden cílový server iSCSI nefunguje, musíte použít tři zařízení SBD, a proto tři cílové servery iSCSI.
+Zařízení SBD vyžaduje aspoň jeden další virtuální počítač, který funguje jako cílový server iSCSI a poskytuje zařízení SBD. Tyto cílové servery iSCSI je možné sdílet s jinými Pacemaker clustery. Výhodou použití zařízení SBD je, pokud už používáte zařízení SBD v místním prostředí, nevyžaduje žádné změny v tom, jak provozovat cluster Pacemaker. Pro cluster Pacemaker můžete použít až tři SBD zařízení, která umožní, aby se zařízení SBD nedostupné, například během oprav operačního systému cílového serveru iSCSI. Pokud chcete používat více než jedno zařízení SBD na Pacemaker, nezapomeňte nasadit několik cílových serverů iSCSI a připojit jeden SBD od každého cílového serveru iSCSI. Doporučujeme použít buď jedno zařízení SBD, nebo tři. Pokud nakonfigurujete jenom dvě zařízení SBD a jedna z nich není dostupná, Pacemaker nebude moct uzel clusteru automaticky navýšit. Pokud chcete být schopni si je vymezit, když jeden cílový server iSCSI nefunguje, musíte použít tři zařízení SBD, a proto tři cílové servery iSCSI, což je nejpružnější konfigurace při použití SBDs.
 
-Pokud nechcete investovat do jednoho dalšího virtuálního počítače, můžete také použít agenta Azure plot. Nevýhodou je to, že převzetí služeb při selhání může trvat 10 až 15 minut, pokud se zastavení prostředku nepovede nebo uzly clusteru už vzájemně nekomunikují.
+Agent Azure plot nevyžaduje nasazení dalších virtuálních počítačů.   
 
 ![Pacemaker on SLES – přehled](./media/high-availability-guide-suse-pacemaker/pacemaker.png)
 
@@ -413,32 +413,36 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
    sudo vi /root/.ssh/authorized_keys
    </code></pre>
 
-1. **[A]** instalovat agenty plotu
+1. **[A]** nainstalujte balíček agentů plotu, pokud používáte zařízení STONITH založené na agentu Azure plot.  
    
    <pre><code>sudo zypper install fence-agents
    </code></pre>
 
    >[!IMPORTANT]
-   > Pokud používáte systém SUSE Linux Enterprise Server pro SAP 15, nezapomeňte aktivovat další modul a nainstalovat další součást, která je předpokladem pro použití agenta Azure plot. Další informace o SUSE modulech a rozšířeních najdete v tématu [vysvětlené moduly a rozšíření](https://www.suse.com/documentation/sles-15/singlehtml/art_modules/art_modules.html). Podle pokynů níže nainstalujte sadu Azure Python SDK. 
+   > Nainstalovaná verze **ochranného balíčku – agenti** musí být aspoň **4.4.0** , aby mohli využívat rychlejší časy převzetí služeb při selhání s agentem Azure plot, pokud je potřeba vytvořit uzly clusteru. Pokud používáte nižší verzi, doporučujeme balíček aktualizovat.  
 
-   Následující pokyny, jak nainstalovat sadu Azure Python SDK, platí jenom pro SUSE Enterprise Server pro SAP **15**.  
 
-    - Pokud používáte vlastní předplatné, postupujte podle těchto pokynů.  
+1. **[A]** instalace sady Azure Python SDK 
+   - V SLES 12 SP4 nebo SLES 12 SP5
+   <pre><code>
+    # You may need to activate the Public cloud extention first
+    SUSEConnect -p sle-module-public-cloud/12/x86_64
+    sudo zypper install python-azure-mgmt-compute
+   </code></pre> 
 
-    <pre><code>
-    #Activate module PackageHub/15/x86_64
-    sudo SUSEConnect -p PackageHub/15/x86_64
-    #Install Azure Python SDK
-    sudo zypper in python3-azure-sdk
-    </code></pre>
-
-     - Pokud používáte předplatné s průběžnými platbami, postupujte podle těchto pokynů.  
-
-    <pre><code>#Activate module PackageHub/15/x86_64
-    zypper ar https://download.opensuse.org/repositories/openSUSE:/Backports:/SLE-15/standard/ SLE15-PackageHub
-    #Install Azure Python SDK
-    sudo zypper in python3-azure-sdk
-    </code></pre>
+   - V SLES 15 a vyšších 
+   <pre><code>
+    # You may need to activate the Public cloud extention first. In this example the SUSEConnect command is for SLES 15 SP1
+    SUSEConnect -p sle-module-public-cloud/15.1/x86_64
+    sudo zypper install python3-azure-mgmt-compute
+   </code></pre> 
+ 
+   >[!IMPORTANT]
+   >V závislosti na vaší verzi a typu image možná budete muset před instalací Azure Python SDK aktivovat rozšíření veřejného cloudu pro vaši verzi operačního systému.
+   >Rozšíření můžete ověřit spuštěním SUSEConnect---rozšíření seznamu.  
+   >Chcete-li dosáhnout rychlejšího převzetí služeb při selhání pomocí agenta Azure Plot:
+   > - v SLES 12 SP4 nebo SLES 12 SP5 nainstalujte verzi **4.6.2** nebo vyšší z balíčku Python – Azure-Správa – Compute.  
+   > - v SLES 15 nainstalujte verzi **4.6.2** nebo vyšší z balíčku Python**3**– Azure-Správa – Compute. 
 
 1. **[A]** nastavení rozlišení názvu hostitele
 
@@ -457,7 +461,7 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
    </code></pre>
 
 1. **[1]** nainstalovat cluster
-
+- Pokud se pro oplocení používá zařízení SBD
    <pre><code>sudo ha-cluster-init -u
    
    # ! NTP is not configured to start at system boot.
@@ -466,6 +470,19 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
    # Address for ring0 [10.0.0.6] <b>Press ENTER</b>
    # Port for ring0 [5405] <b>Press ENTER</b>
    # SBD is already configured to use /dev/disk/by-id/scsi-36001405639245768818458b930abdf69;/dev/disk/by-id/scsi-36001405afb0ba8d3a3c413b8cc2cca03;/dev/disk/by-id/scsi-36001405f88f30e7c9684678bc87fe7bf - overwrite (y/n)? <b>n</b>
+   # Do you wish to configure an administration IP (y/n)? <b>n</b>
+   </code></pre>
+
+- Pokud *nepoužíváte* zařízení SBD pro oplocení
+   <pre><code>sudo ha-cluster-init -u
+   
+   # ! NTP is not configured to start at system boot.
+   # Do you want to continue anyway (y/n)? <b>y</b>
+   # /root/.ssh/id_rsa already exists - overwrite (y/n)? <b>n</b>
+   # Address for ring0 [10.0.0.6] <b>Press ENTER</b>
+   # Port for ring0 [5405] <b>Press ENTER</b>
+   # Do you wish to use SBD (y/n)? <b>n</b>
+   #WARNING: Not configuring SBD - STONITH will be disabled.
    # Do you wish to configure an administration IP (y/n)? <b>n</b>
    </code></pre>
 
@@ -528,8 +545,27 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
    <pre><code>sudo service corosync restart
    </code></pre>
 
+## <a name="default-pacemaker-configuration-for-sbd"></a>Výchozí konfigurace Pacemaker pro SBD
+
+Konfigurace v této části je platná, pouze pokud používáte SBD STONITH.  
+
+1. **[1]** povolit použití zařízení STONITH a nastavit zpoždění plotu
+
+<pre><code>sudo crm configure property stonith-timeout=144
+sudo crm configure property stonith-enabled=true
+
+# List the resources to find the name of the SBD device
+sudo crm resource list
+sudo crm resource stop stonith-sbd
+sudo crm configure delete <b>stonith-sbd</b>
+sudo crm configure primitive <b>stonith-sbd</b> stonith:external/sbd \
+   params pcmk_delay_max="15" \
+   op monitor interval="15" timeout="15"
+</code></pre>
+
 ## <a name="create-azure-fence-agent-stonith-device"></a>Vytvoření zařízení STONITH s agentem Azure plot
 
+Tato část dokumentace je k dispozici, pouze pokud používáte STONITH, a to na základě agenta Azure plot.
 Zařízení STONITH používá instanční objekt k autorizaci proti Microsoft Azure. Pomocí těchto kroků můžete vytvořit instanční objekt.
 
 1. Přejděte na <https://portal.azure.com>.
@@ -553,22 +589,26 @@ Pro vstupní soubor použijte následující obsah. Je potřeba upravit obsah pr
 
 ```json
 {
-  "Name": "Linux Fence Agent Role",
-  "Id": null,
-  "IsCustom": true,
-  "Description": "Allows to deallocate and start virtual machines",
-  "Actions": [
-    "Microsoft.Compute/*/read",
-    "Microsoft.Compute/virtualMachines/deallocate/action",
-    "Microsoft.Compute/virtualMachines/start/action", 
-    "Microsoft.Compute/virtualMachines/powerOff/action" 
-  ],
-  "NotActions": [
-  ],
-  "AssignableScopes": [
-    "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e",
-    "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"
-  ]
+    "properties": {
+        "roleName": "Linux Fence Agent Role",
+        "description": "Allows to power-off and start virtual machines",
+        "assignableScopes": [
+            "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e",
+            "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"
+        ],
+        "permissions": [
+            {
+                "actions": [
+                    "Microsoft.Compute/*/read",
+                    "Microsoft.Compute/virtualMachines/powerOff/action",
+                    "Microsoft.Compute/virtualMachines/start/action"
+                ],
+                "notActions": [],
+                "dataActions": [],
+                "notDataActions": []
+            }
+        ]
+    }
 }
 ```
 
@@ -591,32 +631,23 @@ Opakujte výše uvedené kroky pro druhý uzel clusteru.
 
 Po úpravě oprávnění pro virtuální počítače můžete nakonfigurovat zařízení STONITH v clusteru.
 
-<pre><code># replace the bold string with your subscription ID, resource group, tenant ID, service principal ID and password
+<pre><code>sudo crm configure property stonith-enabled=true
+crm configure property concurrent-fencing=true
+# replace the bold string with your subscription ID, resource group, tenant ID, service principal ID and password
 sudo crm configure primitive rsc_st_azure stonith:fence_azure_arm \
-   params subscriptionId="<b>subscription ID</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" login="<b>login ID</b>" passwd="<b>password</b>"
+  params subscriptionId="<b>subscription ID</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" login="<b>login ID</b>" passwd="<b>password</b>" \
+  pcmk_monitor_retries=4 pcmk_action_limit=3 power_timeout=240 pcmk_reboot_timeout=900 \ 
+  op monitor interval=3600 timeout=120
 
 sudo crm configure property stonith-timeout=900
-sudo crm configure property stonith-enabled=true
+
 </code></pre>
+
+> [!IMPORTANT]
+> Operace monitorování a oplocení jsou rozserializovány. Výsledkem je, že pokud už existuje již běžící operace monitorování a současná událost, dojde k převzetí služeb při selhání clusteru z důvodu již běžící operace monitorování.
 
 > [!TIP]
 >Agent Azure plotu vyžaduje odchozí připojení k veřejným koncovým bodům, jak je popsáno, spolu s možnými řešeními ve veřejných koncových bodech [pro virtuální počítače s využitím Standard interního nástroje](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections).  
-
-## <a name="default-pacemaker-configuration-for-sbd"></a>Výchozí konfigurace Pacemaker pro SBD
-
-1. **[1]** povolit použití zařízení STONITH a nastavit zpoždění plotu
-
-<pre><code>sudo crm configure property stonith-timeout=144
-sudo crm configure property stonith-enabled=true
-
-# List the resources to find the name of the SBD device
-sudo crm resource list
-sudo crm resource stop stonith-sbd
-sudo crm configure delete <b>stonith-sbd</b>
-sudo crm configure primitive <b>stonith-sbd</b> stonith:external/sbd \
-   params pcmk_delay_max="15" \
-   op monitor interval="15" timeout="15"
-</code></pre>
 
 ## <a name="pacemaker-configuration-for-azure-scheduled-events"></a>Konfigurace Pacemaker pro plánované události Azure
 

@@ -1,18 +1,15 @@
 ---
-title: zahrnout soubor
-description: zahrnout soubor
-author: sptramer
-ms.author: sttramer
-manager: carmonm
-ms.date: 06/05/2019
 ms.topic: include
-ms.custom: include file
-ms.openlocfilehash: b833ae69c0edf3e85bebbb5b78ea514a0c81e5c6
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.date: 06/05/2019
+author: dbradish-microsoft
+ms.author: dbradish
+manager: barbkess
+ms.openlocfilehash: 93a7e7994727012cd27f2901f75f23d1b130784d
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "66814835"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85378440"
 ---
 > [!IMPORTANT]
 > Pro obsah v tomto článku se vyžaduje Azure Classic CLI. Jedná se o starší verzi Azure CLI, která by se měla používat pouze s modelem nasazení Azure Classic.

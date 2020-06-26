@@ -9,12 +9,12 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/24/2020
-ms.openlocfilehash: f1887065ef356717e05814a23ad85c7f0e6c6ab0
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 47c3606b0b1ada93aeb8a107f48222fb26483a9c
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362658"
+ms.locfileid: "85368273"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Správa služeb pro Azure Kognitivní hledání v Azure Portal
 
@@ -43,7 +43,8 @@ Azure Kognitivní hledání využívá další služby Azure pro hlubší monito
 Při zřizování služby je určeno několik aspektů služby vyhledávání a nelze je později změnit:
 
 * Název služby (nelze přejmenovat službu)
-* Maximální počet replik a oddílů (určených vrstvou)
+* Umístění služby (aktuálně nemůžete přesunout nedotčenou službu do jiné oblasti)
+* Maximální počet replik a oddílů (určených vrstvou, Basic nebo Standard)
 
 Pokud jste spustili Basic s maximálním počtem jednoho oddílu a teď potřebujete další oddíly, budete muset [vytvořit novou službu](search-create-service-portal.md) na vyšší úrovni a znovu vytvořit obsah nové služby. 
 

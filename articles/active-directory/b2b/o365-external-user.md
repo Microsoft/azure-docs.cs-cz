@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/24/2017
+ms.date: 06/24/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d70aed6fbe0f09ea6284f913c88186ecf94e297
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fcb407735cff5a0c43d3a584ff37a0eabc178381
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74272274"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367440"
 ---
-# <a name="office-365-external-sharing-and-azure-active-directory-b2b-collaboration"></a>Spolupráce s externím sdílením Office 365 a Azure Active Directory spolupráce B2B
+# <a name="office-365-external-sharing-and-azure-active-directory-azure-ad-b2b-collaboration"></a>Spolupráce s B2B pro externí sdílení a Azure Active Directory (Azure AD) pro Office 365
 
-Externí sdílení v Office 365 (OneDrive, SharePoint Online, sjednocené skupiny atd.) a Azure Active Directory (Azure AD) spolupráce B2B jsou pro vás technicky stejná. Všechna externí sdílení (kromě OneDrivu nebo SharePointu Online), včetně hostů ve skupinách Office 365, už používá rozhraní API pozvánky pro spolupráci Azure AD B2B ke sdílení.
+V rámci spolupráce Azure AD B2B a externího sdílení Office 365 (OneDrive, SharePoint Online, sjednocené skupiny atd.) se pomocí Azure AD B2B ověřují externí uživatelé.
 
 ## <a name="how-does-azure-ad-b2b-differ-from-external-sharing-in-sharepoint-online"></a>Jak se Azure AD B2B liší od externího sdílení v SharePointu Online?
 

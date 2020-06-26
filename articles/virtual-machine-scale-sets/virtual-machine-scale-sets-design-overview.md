@@ -7,15 +7,15 @@ ms.author: mimckitt
 ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
 ms.subservice: management
-ms.date: 06/01/2017
+ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 0676a7d31d141e0c264119a54b77ec29a527374b
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: d2160f2c014e1bf7c486c29a48c756936df12788
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83200198"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85373977"
 ---
 # <a name="design-considerations-for-scale-sets"></a>Požadavky na návrh pro sady škálování
 Tento článek popisuje požadavky návrhu pro Virtual Machine Scale Sets. Informace o tom, co Virtual Machine Scale Sets, najdete v tématu [Virtual Machine Scale Sets Overview](virtual-machine-scale-sets-overview.md).

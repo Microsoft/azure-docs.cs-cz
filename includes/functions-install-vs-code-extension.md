@@ -4,18 +4,18 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 11/27/2018
 ms.author: glenga
-ms.openlocfilehash: c63fa01a078c415568b8d3d82701e424b9c72951
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8dc4c77cf54769451928bd1f0dafeac34a889675
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76845404"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85378533"
 ---
 ## <a name="install-the-azure-functions-extension"></a>Instalace rozšíření Azure Functions
 
 K vytváření a testování funkcí a jejich nasazování do Azure můžete použít rozšíření Azure Functions.
 
-1. V Visual Studio Code otevřete **rozšíření** a vyhledejte službu **Azure Functions**nebo [Vyberte tento odkaz v Visual Studio Code](vscode:extension/ms-azuretools.vscode-azurefunctions).
+1. V Visual Studio Code otevřete **rozšíření** a vyhledejte službu **Azure Functions**nebo vyberte tento odkaz v Visual Studio Code: `vscode:extension/ms-azuretools.vscode-azurefunctions` .
 
 1. Vyberte **nainstalovat** pro instalaci rozšíření pro Visual Studio Code:
 

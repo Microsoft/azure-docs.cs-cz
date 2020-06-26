@@ -1,19 +1,19 @@
 ---
-title: Azure Cosmos DB výstupní vazba pro Functions 2. x
+title: Azure Cosmos DB výstupní vazby pro Functions 2. x a vyšší
 description: Naučte se používat výstupní vazbu Azure Cosmos DB v Azure Functions.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: b58924607f002af27d21343389404fcc66d1f35d
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 2228a9609b0e0325dc4e6f7ccbe88417c900b688
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561672"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374334"
 ---
-# <a name="azure-cosmos-db-output-binding-for-azure-functions-2x"></a>Azure Cosmos DB výstupní vazba pro Azure Functions 2. x
+# <a name="azure-cosmos-db-output-binding-for-azure-functions-2x-and-higher"></a>Azure Cosmos DB výstupní vazby pro Azure Functions 2. x a vyšší
 
 Azure Cosmos DB výstupní vazba umožňuje napsat nový dokument do databáze Azure Cosmos DB pomocí rozhraní SQL API.
 
@@ -125,7 +125,7 @@ Tato část obsahuje následující příklady:
 
 ### <a name="queue-trigger-write-one-doc"></a>Aktivační událost fronty, zápis jednoho dokumentu
 
-Následující příklad ukazuje výstupní vazbu Azure Cosmos DB v souboru *Function. JSON* a [funkci skriptu jazyka C#](functions-reference-csharp.md) , která používá vazbu. Funkce používá vstupní vazbu fronty pro frontu, která přijímá JSON v následujícím formátu:
+Následující příklad ukazuje výstupní vazbu Azure Cosmos DB v *function.js* souboru a [funkci skriptu jazyka C#](functions-reference-csharp.md) , která používá vazbu. Funkce používá vstupní vazbu fronty pro frontu, která přijímá JSON v následujícím formátu:
 
 ```json
 {
@@ -146,7 +146,7 @@ Funkce vytvoří pro každý záznam Azure Cosmos DB dokumenty v následujícím
 }
 ```
 
-Tady jsou data vazby v souboru *Function. JSON* :
+Tady jsou data vazby v *function.js* souboru:
 
 ```json
 {
@@ -205,7 +205,7 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-Tady je soubor Function. JSON:
+Tady je function.jssouboru:
 
 ```json
 {
@@ -250,7 +250,7 @@ public static async Task Run(ToDoItem[] toDoItemsIn, IAsyncCollector<ToDoItem> t
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Následující příklad ukazuje výstupní vazbu Azure Cosmos DB v souboru *Function. JSON* a [funkci JavaScriptu](functions-reference-node.md) , která používá vazbu. Funkce používá vstupní vazbu fronty pro frontu, která přijímá JSON v následujícím formátu:
+Následující příklad ukazuje výstupní vazbu Azure Cosmos DB v *function.js* souboru a [funkci JavaScriptu](functions-reference-node.md) , která používá vazbu. Funkce používá vstupní vazbu fronty pro frontu, která přijímá JSON v následujícím formátu:
 
 ```json
 {
@@ -271,7 +271,7 @@ Funkce vytvoří pro každý záznam Azure Cosmos DB dokumenty v následujícím
 }
 ```
 
-Tady jsou data vazby v souboru *Function. JSON* :
+Tady jsou data vazby v *function.js* souboru:
 
 ```json
 {
@@ -307,7 +307,7 @@ Tady je kód JavaScriptu:
 
 Následující příklad ukazuje, jak zapsat dokument do databáze Azure CosmosDB jako výstup funkce.
 
-Definice vazby je definována v *Function. JSON* , kde *typ* je nastaven na `cosmosDB` .
+Definice vazby je definována v *function.jsna* místě, kde je *typ* nastaven na `cosmosDB` .
 
 ```json
 {
@@ -562,9 +562,9 @@ Python nepodporuje atributy.
 
 ## <a name="configuration"></a>Konfigurace
 
-Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v souboru *Function. JSON* a `CosmosDB` atributu.
+Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `CosmosDB` atribut.
 
-|Function. JSON – vlastnost | Vlastnost atributu |Description|
+|function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
 |**textový**     | Není k dispozici | Musí být nastaven na hodnotu `cosmosDB` .        |
 |**direction**     | Není k dispozici | Musí být nastaven na hodnotu `out` .         |
@@ -595,9 +595,9 @@ Ve výchozím nastavení platí, že při zápisu do výstupního parametru ve f
 
 <a name="host-json"></a>
 
-## <a name="hostjson-settings"></a>nastavení Host. JSON
+## <a name="hostjson-settings"></a>host.jsnastavení
 
-Tato část popisuje globální nastavení konfigurace, která jsou k dispozici pro tuto vazbu ve verzi 2. x. Další informace o globálních nastaveních konfigurace verze 2. x naleznete v tématu [reference Host. JSON pro Azure Functions verze 2. x](functions-host-json.md).
+Tato část popisuje globální nastavení konfigurace, která jsou k dispozici pro tuto vazbu ve verzi 2. x. Další informace o nastavení globálních konfigurací ve verzi 2. x najdete v tématu [host.jsv referenčních informacích pro Azure Functions verze 2. x](functions-host-json.md).
 
 ```json
 {

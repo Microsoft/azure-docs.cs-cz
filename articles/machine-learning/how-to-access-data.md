@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 03/24/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: d73427db5fd168a31c478f92ef11307df136a775
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 07d2326d6677ccba93e2d3173bf8abccf309fe70
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85125408"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374708"
 ---
 # <a name="connect-to-azure-storage-services"></a>Připojení ke službám Azure Storage
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -72,7 +72,7 @@ Pro [kontejner objektů blob Azure](https://docs.microsoft.com/azure/storage/blo
 
 [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction?toc=/azure/storage/blobs/toc.json) je postavená na službě Azure Blob Storage a určená pro analýzy velkých objemů dat v podniku. Základní část Data Lake Storage Gen2 je přidání [hierarchického oboru názvů](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace) do úložiště objektů BLOB. Hierarchický obor názvů uspořádává objekty/soubory do hierarchie adresářů pro efektivní přístup k datům.
 
-Když vytvoříte pracovní prostor, kontejner objektů BLOB v Azure a sdílená složka Azure se automaticky zaregistrují do pracovního prostoru. Jsou pojmenované `workspaceblobstore` a `workspacefilestore` v uvedeném pořadí. `workspaceblobstore`slouží k ukládání artefaktů pracovního prostoru a protokolů experimentování ve službě Machine Learning. `workspacefilestore`slouží k ukládání poznámkových bloků a skriptů R autorizovaných pomocí [výpočetní instance](https://docs.microsoft.com/azure/machine-learning/concept-compute-instance#accessing-files). `workspaceblobstore`Kontejner je nastaven jako výchozí úložiště dat.
+Když vytvoříte pracovní prostor, kontejner objektů BLOB v Azure a sdílená složka Azure se automaticky zaregistrují do pracovního prostoru. Jsou pojmenované `workspaceblobstore` a `workspacefilestore` v uvedeném pořadí. `workspaceblobstore`slouží k ukládání artefaktů pracovního prostoru a protokolů experimentování ve službě Machine Learning. `workspacefilestore`slouží k ukládání poznámkových bloků a skriptů R autorizovaných pomocí [výpočetní instance](https://docs.microsoft.com/azure/machine-learning/concept-compute-instance#accessing-files). `workspaceblobstore`Kontejner je nastaven jako výchozí úložiště dat a nelze jej odstranit z pracovního prostoru.
 
 > [!IMPORTANT]
 > Azure Machine Learning Designer (Preview) vytvoří úložiště dat s názvem **azureml_globaldatasets** automaticky, když otevřete ukázku na domovské stránce návrháře. Toto úložiště dat obsahuje jenom ukázkové datové sady. Nepoužívejte **prosím toto** úložiště dat pro přístup k důvěrným datům.
@@ -158,8 +158,6 @@ Pokud je sdílená složka ve virtuální síti, zahrňte parametr `skip_validat
 
 Pro úložiště dat Azure Data Lake Storage generace 2 (ADLS Gen 2) použijte [register_azure_data_lake_gen2 ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#register-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) k registraci úložiště dat přihlašovacích údajů připojeného k úložišti Azure datalake Gen 2 s [oprávněními instančního objektu](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal). Aby bylo možné využívat instanční objekt, potřebujete [zaregistrovat aplikaci](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) a udělit instančnímu objektu přístup ke *čtečce dat objektů BLOB služby Storage* . Přečtěte si další informace o [nastavení řízení přístupu pro adls Gen 2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control). 
 
-Aby bylo možné využívat instanční objekt, potřebujete [zaregistrovat aplikaci](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) a udělit instančnímu objektu správný přístup k datům. Přečtěte si další informace o [nastavení řízení přístupu pro adls Gen 2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control). 
-
 Následující kód vytvoří a zaregistruje `adlsgen2_datastore_name` úložiště dat do `ws` pracovního prostoru. Toto úložiště dat přistupuje k systému souborů `test` v `account_name` účtu úložiště pomocí zadaných přihlašovacích údajů instančního objektu.
 
 ```python 
@@ -237,6 +235,7 @@ Výchozí úložiště dat můžete také změnit pomocí následujícího kódu
 ```Python
  ws.set_default_datastore(new_default_datastore)
 ```
+
 <a name="up-and-down"></a>
 ## <a name="upload-and-download-data"></a>Nahrávání a stahování dat
 

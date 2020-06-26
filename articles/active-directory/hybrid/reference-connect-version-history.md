@@ -12,12 +12,12 @@ ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f54eae8c57d3317c6d654b4a019501410239bf9
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: ff1c0bd880f2052e6ee2ad3c5cdc3bed803f6da1
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85317506"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367763"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydaných verzí
 Tým Azure Active Directory (Azure AD) pravidelně aktualizuje Azure AD Connect s novými funkcemi a funkcemi. Ne všechny dodatky platí pro všechny cílové skupiny.
@@ -569,20 +569,18 @@ Pomocí následujících změn oprávnění v místní službě AD Zablokujte p�
 *   Odebere všechny položky ACE u konkrétního objektu s výjimkou položek ACE specifických pro sebe. Chceme, aby výchozí oprávnění zůstala beze změny, když se dostane do sebe.
 *   Přiřaďte tato konkrétní oprávnění:
 
-Typ     | Název                          | Access               | Platí pro
+Typ     | Name                          | Access               | Platí pro
 ---------|-------------------------------|----------------------|--------------|
 Povolit    | SYSTEM                        | Úplné řízení         | Tento objekt  |
 Povolit    | Enterprise Admins             | Úplné řízení         | Tento objekt  |
 Povolit    | Domain Admins                 | Úplné řízení         | Tento objekt  |
-Povolit    | Administrators                | Úplné řízení         | Tento objekt  |
+Povolit    | Správci                | Úplné řízení         | Tento objekt  |
 Povolit    | Podnikové řadiče domény | Vypsat obsah        | Tento objekt  |
 Povolit    | Podnikové řadiče domény | Číst všechny vlastnosti  | Tento objekt  |
 Povolit    | Podnikové řadiče domény | Oprávnění ke čtení     | Tento objekt  |
 Povolit    | Authenticated Users           | Vypsat obsah        | Tento objekt  |
 Povolit    | Authenticated Users           | Číst všechny vlastnosti  | Tento objekt  |
 Povolit    | Authenticated Users           | Oprávnění ke čtení     | Tento objekt  |
-
-Chcete-li zvýšit nastavení pro účet služba AD DS, můžete spustit [Tento skript prostředí PowerShell](https://gallery.technet.microsoft.com/Prepare-Active-Directory-ef20d978). Skript prostředí PowerShell přiřadí k účtu služba AD DS oprávnění uvedená výše.
 
 #### <a name="powershell-script-to-tighten-a-pre-existing-service-account"></a>Skript PowerShellu pro zpřísnění existujícího účtu služby
 

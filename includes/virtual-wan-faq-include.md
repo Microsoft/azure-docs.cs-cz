@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 03/24/2020
+ms.date: 06/23/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 01ed6d836e5d6bfe139e4a21a0ff6a9708c261d3
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: 7144cb18d19fd6be040b0a6ca4e8bb18498dfe6c
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84977918"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85365275"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Musí mít uživatel k používání Azure Virtual WAN rozbočovač a paprsek se zařízeními SD-WAN/VPN?
 
@@ -29,9 +29,34 @@ Každá brána má dvě instance, k rozdělení dojde, aby každá instance brá
 
 ### <a name="how-do-i-add-dns-servers-for-p2s-clients"></a>Návody přidat servery DNS pro klienty P2S?
 
-Existují dvě možnosti, jak přidat servery DNS pro klienty P2S.
+Existují dvě možnosti, jak přidat servery DNS pro klienty P2S. První způsob je preferovaný, protože přidá vlastní servery DNS do brány místo klienta.
 
-1. Otevřete lístek podpory u Microsoftu a přidejte své servery DNS do centra.
+1. K přidání vlastních serverů DNS použijte následující skript prostředí PowerShell. Nahraďte prosím hodnoty svého prostředí.
+```
+// Define variables
+$rgName = "testRG1"
+$virtualHubName = "virtualHub1"
+$P2SvpnGatewayName = "testP2SVpnGateway1"
+$vpnClientAddressSpaces = 
+$vpnServerConfiguration1Name = "vpnServerConfig1"
+$vpnClientAddressSpaces = New-Object string[] 2
+$vpnClientAddressSpaces[0] = "192.168.2.0/24"
+$vpnClientAddressSpaces[1] = "192.168.3.0/24"
+$customDnsServers = New-Object string[] 2
+$customDnsServers[0] = "7.7.7.7"
+$customDnsServers[1] = "8.8.8.8"
+$virtualHub = $virtualHub = Get-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName
+$vpnServerConfig1 = Get-AzVpnServerConfiguration -ResourceGroupName $rgName -Name $vpnServerConfiguration1Name
+
+// Specify custom dns servers for P2SVpnGateway VirtualHub while creating gateway
+createdP2SVpnGateway = New-AzP2sVpnGateway -ResourceGroupName $rgname -Name $P2SvpnGatewayName -VirtualHub $virtualHub -VpnGatewayScaleUnit 1 -VpnClientAddressPool $vpnClientAddressSpaces -VpnServerConfiguration $vpnServerConfig1 -CustomDnsServer $customDnsServers
+
+// Specify custom dns servers for P2SVpnGateway VirtualHub while updating existing gateway
+$P2SVpnGateway = Get-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName
+$updatedP2SVpnGateway = Update-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName  -CustomDnsServer $customDnsServers 
+
+// Re-generate Vpn profile either from PS/Portal for Vpn clients to have the specified dns servers
+```
 2. Nebo pokud používáte klienta Azure VPN pro Windows 10, můžete změnit stažený soubor XML profilu a přidat ** \<dnsservers> \<dnsserver> \</dnsserver> \</dnsservers> ** značky před jeho importem.
 
 ```
@@ -72,12 +97,19 @@ Informace o krocích automatizace u partnerů najdete v tématu o [automatizaci 
 
 ### <a name="am-i-required-to-use-a-preferred-partner-device"></a>Musím použít preferované partnerské zařízení?
 
-Ne. Můžete použít libovolné zařízení s podporou VPN, které vyhovuje požadavkům Azure na podporu IKEv2/IKEv1 protokolu IPsec.
+Ne. Můžete použít libovolné zařízení s podporou VPN, které vyhovuje požadavkům Azure na podporu IKEv2/IKEv1 protokolu IPsec. Virtuální síť WAN má také CPE Partnerská řešení, která automatizují připojení k virtuální síti WAN Azure, což usnadňuje nastavení připojení VPN s protokolem IPsec ve velkém měřítku.
 
 ### <a name="how-do-virtual-wan-partners-automate-connectivity-with-azure-virtual-wan"></a>Jak partneři pro Virtual WAN automatizují možnosti připojení s využitím Azure Virtual WAN?
 
 Softwarově definovaná řešení možností připojení obvykle spravují svá pobočková zařízení s využitím kontroleru nebo centra pro zřizování zařízení. Kontroler může k automatizaci připojení k Azure Virtual WAN využívat rozhraní API Azure. Automatizace zahrnuje odesílání informací o větvích, stahování konfigurace Azure, nastavování tunelů IPSec na virtuální rozbočovače Azure a automatické nastavení připojení k vytvoření připojení k virtuální síti WAN na Azure. Když máte stovky větví, připojení pomocí virtuálních sítí WAN CPE je snadné, protože možnosti registrace neberou v platnost nutnost nastavovat, konfigurovat a spravovat rozsáhlé připojení IPsec. Další informace najdete v tématu věnovaném [automatizaci partnerů pro Virtual WAN](../articles/virtual-wan/virtual-wan-configure-automation-providers.md).
 
+### <a name="what-if-a-device-i-am-using-is-not-in-the-virtual-wan-partner-list-can-i-still-use-it-to-connect-to-azure-virtual-wan-vpn"></a>Co když zařízení, které používám, není v seznamu partnerů virtuální sítě WAN? Můžu ho I nadále používat pro připojení k síti VPN Azure Virtual WAN?
+
+Ano, pokud zařízení podporuje protokol IPsec IKEv1 nebo IKEv2. Virtuální partneři sítě WAN automatizují připojení ze zařízení k koncovým bodům VPN Azure. To zahrnuje automatizaci kroků, jako je například nahrání informací o větvích, protokol IPsec a konfigurace a připojení. Vzhledem k tomu, že vaše zařízení nepochází z virtuálního partnerského serveru pro partnery WAN, budete muset provést těžkou zvedání ručního nastavování konfigurace Azure a aktualizace vašeho zařízení, aby se nastavilo připojení pomocí protokolu IPsec.
+
+### <a name="how-do-new-partners-that-are-not-listed-in-your-launch-partner-list-get-onboarded"></a>Jak se onboardují noví partneři, kteří nejsou uvedení ve vašem seznamu partnerů pro spouštění?
+
+Všechna rozhraní API Virtual WAN jsou otevřená rozhraní API. Pokud chcete posoudit technickou proveditelnost, přečtěte si dokumentaci k [virtuálním partnerům sítě WAN](../articles/virtual-wan/virtual-wan-configure-automation-providers.md) . Ideální partner je takový, pro jehož zařízení se dá zřídit připojení IKEv1 nebo IKEv2 protokolu IPSec. Jakmile společnost dokončí práci v automatizaci pro svoje zařízení CPE na základě pokynů pro automatizaci, můžete se na to, abyste azurevirtualwan@microsoft.com byli uvedeni tady, připojit [prostřednictvím partnerů]( ../articles/virtual-wan/virtual-wan-locations-partners.md#partners). Pokud jste zákazníkem, který by měl být uveden jako virtuální partner sítě WAN, obraťte se na virtuální síť WAN odesláním e-mailu společnosti azurevirtualwan@microsoft.com .
 
 ### <a name="how-is-virtual-wan-supporting-sd-wan-devices"></a>Jak virtuální síť WAN podporuje zařízení SD-WAN?
 
@@ -132,14 +164,6 @@ Ano. Prohlédněte si stránku s [cenami](https://azure.microsoft.com/pricing/de
 * Pokud jste ExpressRoute bránu z důvodu ExpressRoute okruhů připojujících se k virtuálnímu rozbočovači, měli byste platit za jednotkovou cenu škálování. Každá jednotka škálování v ER je 2 GB/s a každá jednotka připojení se účtuje stejnou sazbou jako jednotka připojení VPN.
 
 * Pokud jste se připojili k rozbočovači virtuální sítě, účtují se poplatky za partnerské vztahy na paprskovém virtuální sítě. 
-
-### <a name="how-do-new-partners-that-are-not-listed-in-your-launch-partner-list-get-onboarded"></a>Jak se onboardují noví partneři, kteří nejsou uvedení ve vašem seznamu partnerů pro spouštění?
-
-Všechna rozhraní API Virtual WAN jsou otevřená rozhraní API. Můžete si projít dokumentaci a vyhodnotit technickou proveditelnost. Pokud máte nějaké dotazy, pošlete e-mail na adresu azurevirtualwan@microsoft.com . Ideální partner je takový, pro jehož zařízení se dá zřídit připojení IKEv1 nebo IKEv2 protokolu IPSec.
-
-### <a name="what-if-a-device-i-am-using-is-not-in-the-virtual-wan-partner-list-can-i-still-use-it-to-connect-to-azure-virtual-wan-vpn"></a>Co když zařízení, které používám, není v seznamu partnerů virtuální sítě WAN? Můžu ho I nadále používat pro připojení k síti VPN Azure Virtual WAN?
-
-Ano, pokud zařízení podporuje protokol IPsec IKEv1 nebo IKEv2. Virtuální partneři sítě WAN automatizují připojení ze zařízení k koncovým bodům VPN Azure. To zahrnuje automatizaci kroků, jako je například nahrání informací o větvích, protokol IPsec a konfigurace a připojení. Vzhledem k tomu, že vaše zařízení nepochází z virtuálního partnerského serveru pro partnery WAN, budete muset provést těžkou zvedání ručního nastavování konfigurace Azure a aktualizace vašeho zařízení, aby se nastavilo připojení pomocí protokolu IPsec.
 
 ### <a name="is-it-possible-to-construct-azure-virtual-wan-with-a-resource-manager-template"></a>Je možné vytvořit Azure Virtual WAN s využitím šablony Resource Manageru?
 

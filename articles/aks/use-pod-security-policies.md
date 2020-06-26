@@ -4,12 +4,12 @@ description: Naučte se řídit přístup pomocí PodSecurityPolicy ve službě 
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: 9e3a17e4775150247ef7924dffec68cc86a0bcac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5bd4e1b85513ed5473b4136b458d20fef4faa79c
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80998360"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374487"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Preview – Zabezpečte svůj cluster pomocí zásad zabezpečení v Azure Kubernetes Service (AKS).
 
@@ -21,11 +21,11 @@ Chcete-li zlepšit zabezpečení clusteru AKS, můžete omezit, které části j
 > * [Zásady podpory AKS][aks-support-policies]
 > * [Nejčastější dotazy k podpoře Azure][aks-faq]
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V tomto článku se předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
 
-Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.61 nebo novější. Verzi `az --version` zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
+Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.61 nebo novější.  `az --version`Verzi zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
 
 ### <a name="install-aks-preview-cli-extension"></a>Nainstalovat rozšíření CLI AKS-Preview
 
@@ -42,9 +42,6 @@ az extension update --name aks-preview
 ### <a name="register-pod-security-policy-feature-provider"></a>Registrace pod poskytovatelem funkcí zásad zabezpečení
 
 Pokud chcete vytvořit nebo aktualizovat cluster AKS pro použití zásad zabezpečení pod, nejdřív Povolte ve svém předplatném příznak funkce. Chcete-li zaregistrovat příznak funkce *PodSecurityPolicyPreview* , použijte příkaz [AZ Feature Register][az-feature-register] , jak je znázorněno v následujícím příkladu:
-
-> [!CAUTION]
-> Když zaregistrujete funkci v rámci předplatného, nemůžete tuto funkci v tuto chvíli zrušit. Po povolení některých funkcí verze Preview se můžou použít výchozí hodnoty pro všechny clustery AKS vytvořené v rámci předplatného. Nepovolujte funkce ve verzi Preview u produkčních předplatných. Použijte samostatné předplatné k testování funkcí ve verzi Preview a získejte zpětnou vazbu.
 
 ```azurecli-interactive
 az feature register --name PodSecurityPolicyPreview --namespace Microsoft.ContainerService
@@ -132,7 +129,7 @@ Je důležité porozumět tomu, jak tyto výchozí zásady pracují s požadavky
 
 ## <a name="create-a-test-user-in-an-aks-cluster"></a>Vytvoření testovacího uživatele v clusteru AKS
 
-Ve výchozím nastavení platí, že když použijete příkaz [AZ AKS Get-Credentials][az-aks-get-credentials] , přidají se do `kubectl` konfigurace přihlašovací údaje *správce* pro cluster AKS. Uživatel s rolí správce obchází vynucování zásad zabezpečení pod. Pokud pro clustery AKS používáte integraci Azure Active Directory, můžete se přihlásit pomocí přihlašovacích údajů uživatele bez oprávnění správce, aby se zobrazilo vynucování zásad v akci. V tomto článku vytvoříme účet testovacího uživatele v clusteru AKS, který můžete použít.
+Ve výchozím nastavení platí, že když použijete příkaz [AZ AKS Get-Credentials][az-aks-get-credentials] , přidají se do konfigurace přihlašovací údaje *správce* pro cluster AKS `kubectl` . Uživatel s rolí správce obchází vynucování zásad zabezpečení pod. Pokud pro clustery AKS používáte integraci Azure Active Directory, můžete se přihlásit pomocí přihlašovacích údajů uživatele bez oprávnění správce, aby se zobrazilo vynucování zásad v akci. V tomto článku vytvoříme účet testovacího uživatele v clusteru AKS, který můžete použít.
 
 Vytvořte ukázkový obor názvů s názvem *PSP-AKS* pro zdroje testu pomocí příkazu [kubectl Create Namespace][kubectl-create] . Pak vytvořte účet služby s názvem *neadmin-User* pomocí příkazu [kubectl Create ServiceAccount][kubectl-create] :
 
@@ -153,7 +150,7 @@ kubectl create rolebinding \
 
 ### <a name="create-alias-commands-for-admin-and-non-admin-user"></a>Vytváření příkazů aliasu pro správce a uživatele bez role správce
 
-Chcete-li zvýraznit rozdíl mezi běžným uživatelem s rolí `kubectl` správce při použití nástroje a uživatelem bez role správce vytvořeným v předchozích krocích, vytvořte dva aliasy příkazového řádku:
+Chcete-li zvýraznit rozdíl mezi běžným uživatelem s rolí správce při použití nástroje `kubectl` a uživatelem bez role správce vytvořeným v předchozích krocích, vytvořte dva aliasy příkazového řádku:
 
 * Alias **kubectl-admin** je určen pro obvyklého uživatele správce a je vymezen na obor názvů *PSP-AKS* .
 * Alias **kubectl-nonadminuser** je pro uživatele, který není *správce* vytvořený v předchozím kroku, a má obor názvů *PSP-AKS* .
@@ -167,7 +164,7 @@ alias kubectl-nonadminuser='kubectl --as=system:serviceaccount:psp-aks:nonadmin-
 
 ## <a name="test-the-creation-of-a-privileged-pod"></a>Testování vytvoření privilegovaného pod
 
-Pojďme nejdřív otestovat, co se stane, když naplánujete pod, pomocí kontextu `privileged: true`zabezpečení. Tento kontext zabezpečení přestupňování oprávnění pod. V předchozí části, která ukázala výchozí zásady zabezpečení AKS pod, by měla zásada *s omezeným přístupem* zamítnout tuto žádost.
+Pojďme nejdřív otestovat, co se stane, když naplánujete pod, pomocí kontextu zabezpečení `privileged: true` . Tento kontext zabezpečení přestupňování oprávnění pod. V předchozí části, která ukázala výchozí zásady zabezpečení AKS pod, by měla zásada *s omezeným přístupem* zamítnout tuto žádost.
 
 Vytvořte soubor s názvem `nginx-privileged.yaml` a vložte následující YAML manifest:
 
@@ -235,7 +232,7 @@ V poli se nedosáhnou fáze plánování, takže před přesunutím na neexistuj
 
 ## <a name="test-creation-of-a-pod-with-a-specific-user-context"></a>Vytvoření testu pod s konkrétním kontextem uživatele
 
-V předchozím příkladu se image kontejneru automaticky pokusila použít kořen k navázání NGINX na port 80. Tuto žádost zamítla výchozí zásada zabezpečení *s omezením* pod, takže se na začátku nespustí. Pojďme teď spustit stejný NGINX pod stejným kontextem uživatele, jako je třeba `runAsUser: 2000`.
+V předchozím příkladu se image kontejneru automaticky pokusila použít kořen k navázání NGINX na port 80. Tuto žádost zamítla výchozí zásada zabezpečení *s omezením* pod, takže se na začátku nespustí. Pojďme teď spustit stejný NGINX pod stejným kontextem uživatele, jako je třeba `runAsUser: 2000` .
 
 Vytvořte soubor s názvem `nginx-unprivileged-nonroot.yaml` a vložte následující YAML manifest:
 

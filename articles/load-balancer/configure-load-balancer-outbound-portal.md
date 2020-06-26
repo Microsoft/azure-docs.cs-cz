@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 09/24/2019
 ms.author: allensu
-ms.openlocfilehash: 30d71333bb29720afd82c7dbbde7126b30a7f6d6
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 2dff916bf005b307f27264ad7a17864fbba50872
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84803685"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367389"
 ---
 # <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-by-using-the-azure-portal"></a>Konfigurace vyrovnávání zatížení a odchozích pravidel v Standard Load Balancer pomocí Azure Portal
 
@@ -45,7 +45,7 @@ V této části vytvoříte Nástroj pro vyrovnávání zatížení, který bude
     | Name                   | **myLoadBalancer**                                   |
     | Oblast         | Vyberte **Západní Evropa**.                                        |
     | Typ          | Vyberte možnost **veřejné**.                                        |
-    | SKU           | Vyberte **Standard** nebo **Basic**. Microsoft doporučuje pro produkční úlohy Standard. |
+    | SKU           | Vyberte **Standard**. |
     | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. Pokud máte existující veřejnou IP adresu, kterou byste chtěli použít, vyberte **použít existující**.  Stávající veřejná IP adresa musí být **standardní** SKU.  Základní veřejné IP adresy nejsou kompatibilní se službou Load Balancer **Standard** SKU.  |
     | Název veřejné IP adresy              | Do textového pole zadejte **myPublicIP** .|
     | Zóna dostupnosti | Chcete-li vytvořit odolný Load Balancer, vyberte **zónu – redundantní** . Pokud chcete vytvořit oblast Load Balancer, vyberte konkrétní zónu z 1, 2 nebo 3. |

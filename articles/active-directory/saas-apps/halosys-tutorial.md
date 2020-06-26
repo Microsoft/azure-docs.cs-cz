@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d224f8fa5d696cd55b4f214111280d9210f836e9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3f7cdc8dce8a4b30b543c4e332207354697a9e0d
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73159114"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367661"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-halosys"></a>Kurz: Azure Active Directory integrace s Halosys
 
@@ -111,7 +111,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Halosys,
     b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://<company-name>.halosys.com/<instance name>`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem a adresou URL odpovědi. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta Halosys](https://halosys.com/halosys#contact) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem a adresou URL odpovědi. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta Halosys](https://www.sonata-software.com/form/contact) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
 5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
@@ -129,7 +129,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Halosys,
 
 ### <a name="configure-halosys-single-sign-on"></a>Konfigurace jednotného přihlašování Halosys
 
-Ke konfiguraci jednotného přihlašování na straně **Halosys** je potřeba odeslat stažený **soubor XML federačních metadat** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory Halosys](https://halosys.com/halosys#contact). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+Ke konfiguraci jednotného přihlašování na straně **Halosys** je potřeba odeslat stažený **soubor XML federačních metadat** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory Halosys](https://www.sonata-software.com/form/contact). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
@@ -149,7 +149,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
+    b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
@@ -184,7 +184,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 ### <a name="create-halosys-test-user"></a>Vytvořit testovacího uživatele Halosys
 
-V této části vytvoříte uživatele s názvem Britta Simon v Halosys. Pokud chcete přidat uživatele na platformě Halosys, pracujte s [týmem podpory Halosys](https://halosys.com/halosys#contact) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem Britta Simon v Halosys. Pokud chcete přidat uživatele na platformě Halosys, pracujte s [týmem podpory Halosys](https://www.sonata-software.com/form/contact) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 

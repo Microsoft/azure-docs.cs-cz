@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: aac3e8d4dcdf0edc8c66069227195e2974cbd3a6
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 08e7805d9eff1f53c43882f2180e298abd008346
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84674546"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85368324"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-cli"></a>Vytvoření a správa privátního odkazu pro Azure Database for MariaDB pomocí rozhraní příkazového řádku
 
@@ -96,7 +96,7 @@ az network private-endpoint create \
     --vnet-name myVirtualNetwork  \  
     --subnet mySubnet \  
     --private-connection-resource-id $(az resource show -g myResourcegroup -n mydemoserver --resource-type "Microsoft.DBforMariaDB/servers" --query "id") \    
-    --group-id mysqlServer \  
+    --group-id mariadbServer \  
     --connection-name myConnection  
  ```
 

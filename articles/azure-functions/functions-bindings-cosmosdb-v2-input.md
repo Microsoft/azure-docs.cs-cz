@@ -1,19 +1,19 @@
 ---
-title: Azure Cosmos DB vstupní vazby pro Functions 2. x
+title: Azure Cosmos DB vstupní vazby pro Functions 2. x a vyšší
 description: Naučte se používat vstupní vazbu Azure Cosmos DB v Azure Functions.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: bce234b0d2fee38f0644ae0bd961cdcd815b0bd2
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: b6daccb7ec4665842fd42a0938e3cbf18e2d7540
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84667892"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374368"
 ---
-# <a name="azure-cosmos-db-input-binding-for-azure-functions-2x"></a>Azure Cosmos DB vstupní vazby pro Azure Functions 2. x
+# <a name="azure-cosmos-db-input-binding-for-azure-functions-2x-and-higher"></a>Azure Cosmos DB vstupní vazby pro Azure Functions 2. x a vyšší
 
 Vstupní vazba služby Azure Cosmos DB načítá pomocí rozhraní SQL API jeden nebo více dokumentů Azure Cosmos DB a předává je do vstupního parametru funkce. Parametry ID dokumentu nebo dotaz se dají určit podle aktivační události, která funkci volá.
 
@@ -1428,7 +1428,7 @@ Z [běhové knihovny Functions jazyka Java](https://docs.microsoft.com/java/api/
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `CosmosDB` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Popis|
+|function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
 |**textový**     | Není k dispozici | Musí být nastaven na hodnotu `cosmosDB` .        |
 |**direction**     | Není k dispozici | Musí být nastaven na hodnotu `in` .         |

@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3d04751cb8796290135cfc045385e1bf4cf3c3c
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: b566081459b0bab0aae9831e128ffbee0efaf4e2
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84759942"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367729"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Aplikace se zástupnými znaky v proxy aplikace Azure Active Directory
 
@@ -62,7 +62,7 @@ I když jsou [vlastní domény](application-proxy-configure-custom-domain.md) vo
 1. Vytvořte ověřenou doménu v rámci Azure.
 1. Nahrajte do svého proxy aplikace certifikát TLS/SSL ve formátu PFX.
 
-Doporučujeme použít certifikát se zástupnými znaky, aby se aplikace, kterou plánujete vytvořit, shodovala. Případně můžete také použít certifikát, který obsahuje pouze určité aplikace. V takovém případě budou prostřednictvím této aplikace se zástupnými znaky přístupné jenom aplikace uvedené v certifikátu.
+Doporučujeme použít certifikát se zástupnými znaky, aby se aplikace, kterou plánujete vytvořit, shodovala. 
 
 Z bezpečnostních důvodů je to pevný požadavek a nebudeme podporovat zástupné znaky pro aplikace, které nemůžou pro externí adresu URL používat vlastní doménu.
 

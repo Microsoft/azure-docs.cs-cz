@@ -3,14 +3,16 @@ title: Použití Azure AD ve službě Azure Kubernetes
 description: Naučte se používat Azure AD ve službě Azure Kubernetes Service (AKS).
 services: container-service
 manager: gwallace
+author: mlearned
 ms.topic: article
-ms.date: 06/04/2020
-ms.openlocfilehash: 8d446d82550a6bc790d162ee944b0753979b6546
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.date: 06/25/2020
+ms.author: mlearned
+ms.openlocfilehash: 280637be417d904de6dbb7ae2e2647026da6c838
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84782666"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374538"
 ---
 # <a name="integrate-aks-managed-azure-ad-preview"></a>Integrace služby Azure AD spravované AKS (Preview)
 
@@ -62,9 +64,6 @@ kubectl version --client
 ```
 
 [Tyto pokyny](https://kubernetes.io/docs/tasks/tools/install-kubectl/) použijte pro jiné operační systémy.
-
-> [!CAUTION]
-> Po registraci funkce v předplatném nemůžete tuto funkci v tuto chvíli zrušit. Pokud povolíte některé funkce verze Preview, můžete použít výchozí nastavení pro všechny clustery AKS vytvořené v rámci předplatného. Nepovolujte funkce ve verzi Preview u produkčních předplatných. Místo toho použijte k testování funkcí ve verzi Preview samostatné předplatné a získejte zpětnou vazbu.
 
 ```azurecli-interactive
 az feature register --name AAD-V2 --namespace Microsoft.ContainerService
@@ -190,7 +189,7 @@ az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster 
 
 ## <a name="non-interactive-login-with-kubelogin"></a>Neinteraktivní přihlášení pomocí kubelogin
 
-Existují některé neinteraktivní scénáře, jako jsou kanály průběžné integrace, které nejsou aktuálně k dispozici v kubectl. [Kubelogin](https://github.com/Azure/kubelogin) můžete použít pro přístup ke clusteru v neinteraktivních scénářích.
+Existují některé neinteraktivní scénáře, jako jsou kanály průběžné integrace, které nejsou aktuálně k dispozici v kubectl. [Kubelogin](https://github.com/Azure/kubelogin) můžete použít pro přístup ke clusteru pomocí neinteraktivního přihlášení instančního objektu.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: 0c7352ce95edf7c6ec5fad9fe658e01a66d88573
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 43b339c030de25ef1eff3599006886dd69539653
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657931"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374062"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Pokyny pro výpis Azure Marketplace
 
@@ -32,7 +32,7 @@ Pro konkrétní typy seznamů jsou k dispozici další požadavky a kontrolní s
 |:--- |:--- |:--- |:--- |
 | 1 | Cíl zájemce | Má nakonfigurovaný cíl zájemce.| Katalog s jedním komerčním partnerem (OCP) obsahuje informace o cíli CRM, které jsou také uvedeny na kartě Partnerská řešení. | 
 | 2 | Název nabídky | Stručně popisuje nabídku řešení. Odpovídá online podpoře řešení na webu partnera. | Obsahuje hledaná klíčová slova. |
-| 3 | Logo | Logo se zobrazí správně. | Logo se zobrazí správně a obsahuje obrázek "Hero image", což je obrázek ve velkém formátu v Azure Portal. |
+| 3 | Logo | Logo se zobrazí správně. | Logo se zobrazí správně. |
 | 4 |  Popis nabídky | <ul><li> Obsahuje 2-3 odstavců.</li><li>Nabídku řešení je snadné chápat na první pohled.</li><li>Je bez pravopisu a gramatických chyb.</li><li>Je vyčerpávající a zachycuje cílovou cílovou skupinu, typ uživatele a důvody, proč je to cenné (hodnota jejich umístění).</li><li>Je v podobě mluveného komentáře s krátkými větami, které je snadné pochopit.</li></ul> | <ul><li> Cílový obor je popsaný (Pokud je relevantní).</li><li>Dobré formátování stylu s každým nadpisem odstavce obsahujícím jednu větu nebo frázi, která shrnuje obsah, který následuje, a pomocí odrážek, pokud je to vhodné, pro zdůraznění klíčových výhod. Cílem je, aby čtenář pochopil nabídku na první pohled ve snadno čitelném formátu a nemusel číst dlouhé odstavce.</li><li>Mezi jednotlivými odstavci je mezera. Přečte se jako brožura na automobilu. To znamená, že je komplexní a popisuje nabídku jednoduše a bez technických žargonu. | 
 | 5 | Kategorie a odvětví | <ul><li>Kategorie odpovídají možnostem nabídky řešení.</li><li>Nezvětšujte do kategorií, které řešení nevyhovuje.</li><li>Optimální obor nebo všechny vybrané obory (pokud nejsou optimálními průmyslovými odvětvími). | <ul><li>Max. 3 kategorie.</li><li>Max. 3 odvětví. |
 | 6 | Obrázky | <ul><li>Není vyžadován žádný obrázek, ale je-li k dispozici, musí být zobrazen jako obrázek s vysokým rozlišením.</li><li>Požadavky na bitovou kopii jsou uvedeny v portál partnerů cloudu (CPP) a zde.</li><li>Text zahrnutý na snímku obrazovky je čitelný a obrázek je jasný. | Nabídka řešení je snadno srozumitelná na první pohled. |
@@ -62,8 +62,8 @@ Pro konkrétní typy seznamů jsou k dispozici další požadavky a kontrolní s
 | 3 | Testovací jednotka | Vyberte *Ano* nebo *Ne*. | Zákazník může snadno pochopit, jaké jsou další kroky: <ol><li>Vyzkoušejte si zkušební verzi.</li><li>Kupte si hned.</li><li>Kontaktování e-mailem nebo telefonním číslem vám umožní zajistit pro ověření koncepce, posouzení nebo přehled.</li></ol> |
 | 4 | Prezentace podrobnosti: Souhrn nabídky | Zobrazí se na stránce vyhledávání vaší aplikace a může mít maximálně 100 znaků. | |
 | 5 | Prezentace podrobnosti: odvětví | Obory (max. 2): Vyberte odvětví, pro které je vaše aplikace nejlépe zarovnaná a platí pro. | |
-| 6 | Popis nabídky | <ul><li>Je povolený jednoduchý HTML, včetně \< p>, \< em>, \< ul>, \< li>, \< ol> a značek hlaviček. Max. 3000 znaků.</li><li>Obsahuje 2-3 odstavců.</li><li>Nabídku řešení je snadné chápat na první pohled.</li><li>Popis je komplexní a zachycuje cílovou cílovou skupinu, typ uživatele a důvody, proč je to cenné (hodnota jejich umístění).</li><li>Je v podobě mluveného komentáře s krátkými větami, které je snadné pochopit. | <ul><li>Cílový obor je popsaný (Pokud je relevantní).</li><li>Dobré formátování stylu s každým nadpisem odstavce obsahujícím jednu větu nebo frázi, která shrnuje obsah, který následuje, a pomocí odrážek, pokud je to vhodné, pro zdůraznění klíčových výhod. Cílem je, aby čtenář pochopil nabídku na první pohled ve snadno čitelném formátu a nemusel číst odstavce.</li><li>Mezi jednotlivými odstavci je mezera. Přečte se jako brožura na automobilu. To znamená, že je komplexní a popisuje nabídku jednoduše a bez technických žargonu. | 
-| 7 | Marketingové artefakty | Loga se zobrazují správně. | <ul><li>Logo obsahuje obrázek "Hero image", což je obrázek ve velkém formátu v Azure Portal.</li><li>Log: malá (48 &#215; 48 pixelů) a velká (216 &#215; 216 pixelů) jsou povinná.</li><li>[Požadavky na Image Hero](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-azure-apps-offer)</li><li>Snímek obrazovky (max. 5): CPP vyžaduje obrázek PNG s rozlišením 1280 &#215; 720 pixelů. |
+| 6 | Popis nabídky | <ul><li>K disřádku je možné použít jednoduché HTML, včetně značek,,,, \<p> \<em> \<ul> \<li> \<ol> a. Max. 3000 znaků.</li><li>Obsahuje 2-3 odstavců.</li><li>Nabídku řešení je snadné chápat na první pohled.</li><li>Popis je komplexní a zachycuje cílovou cílovou skupinu, typ uživatele a důvody, proč je to cenné (hodnota jejich umístění).</li><li>Je v podobě mluveného komentáře s krátkými větami, které je snadné pochopit. | <ul><li>Cílový obor je popsaný (Pokud je relevantní).</li><li>Dobré formátování stylu s každým nadpisem odstavce obsahujícím jednu větu nebo frázi, která shrnuje obsah, který následuje, a pomocí odrážek, pokud je to vhodné, pro zdůraznění klíčových výhod. Cílem je, aby čtenář pochopil nabídku na první pohled ve snadno čitelném formátu a nemusel číst odstavce.</li><li>Mezi jednotlivými odstavci je mezera. Přečte se jako brožura na automobilu. To znamená, že je komplexní a popisuje nabídku jednoduše a bez technických žargonu. | 
+| 7 | Marketingové artefakty | Loga se zobrazují správně. | <ul><li>Log: malá (48 &#215; 48 pixelů) a velká (216 &#215; 216 pixelů) jsou povinná.</li><li>Snímek obrazovky (max. 5): vyžaduje. Obrázek PNG s rozlišením 1280 &#215; 720 pixelů |
 | 8 | Kategorie a odvětví | <ul><li>Kategorie odpovídají možnostem nabídky řešení.</li><li>V automaticky otevíraném okně vyberte alespoň jednu položku.</li><li>Nezvětšujte do kategorií, které řešení nevyhovuje.</li><li>Optimální obor nebo všechny vybrané obory (pokud nejsou optimálními průmyslovými odvětvími). | Max. Pokud je to možné, vyberte 3 kategorie. |
 | 9 | Správa potenciálních zákazníků | Vyberte systém, ve kterém budou vaše potenciální zákazníci ukládat. Informace o tom, jak připojit systém CRM, najdete v článku o [získání zájemců](./partner-center-portal/commercial-marketplace-get-customer-leads.md) . |  |
 | 10 | Kontakty: podpora řešení a pomoc | <ul><li>Technický kontaktní název: název technického kontaktu pro vaši aplikaci. Tento kontakt dostane technickou komunikaci od Microsoftu.</li><li>Technický kontaktní e-mail: e-mailová adresa technického kontaktu pro vaši aplikaci.</li><li>Technický kontakt na telefon: telefonní číslo technického kontaktu. Jsou podporovány [zápisy telefonních čísel ISO](https://en.wikipedia.org/wiki/E.123) .</li><li>Název kontaktu podpory: název kontaktu podpory pro vaši aplikaci. Tento kontakt obdrží od Microsoftu sdělení týkající se podpory.</li><li>Kontaktní e-mail podpory: e-mailová adresa kontaktu podpory pro vaši aplikaci.</li><li>Kontaktní telefon na podporu: telefonní číslo kontaktu podpory. Jsou podporovány [zápisy telefonních čísel ISO](https://en.wikipedia.org/wiki/E.123) .</li><li>Adresa URL podpory: adresa URL vaší stránky podpory. | <ul><li>V seznamu jsou uvedeny všechny metody podpory.</li><li>Placená podpora se poskytuje zdarma během *zkušebního* období nebo *zkušebního* období. |
@@ -77,7 +77,7 @@ Pro konkrétní typy seznamů jsou k dispozici další požadavky a kontrolní s
 |:--- |:--- |:--- |:--- |
 |1 |Nastavení nabídky | <ul><li>ID nabídky: max. 50 znaků.</li><li>ID vydavatele: vyberte ho v rozevíracím seznamu.</li><li>Název: max. 50 znaků. | Zrcadlí styl nadpisu, který je již k dispozici v popisu. Nepoužívejte dlouhé názvy. | 
 | 2 | Skladové položky | Partner vybere nové SKU.| Nadpis zrcadlí styl nadpisu, který je již k dispozici v popisu. Nepoužívejte dlouhé názvy.  |
-| 3 | Artefakty Marketplace | Loga se zobrazují správně. |<ul><li>Logo obsahuje obrázek "Hero image", což je obrázek ve velkém formátu v Azure Portal.</li><li>Log: malá (48 &#215; 48 pixelů) a velká (216 &#215; 216 pixelů) jsou povinná.</li><li>[Požadavky na Image Hero](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-azure-apps-offer)</li><li>Snímek obrazovky (max. 5): CPP vyžaduje obrázek PNG s rozlišením 1280 &#215; 720 pixelů.|
+| 3 | Artefakty Marketplace | Loga se zobrazují správně. |<ul><li>Log: malá (48 x 48 pixelů) a velká (216 &#215; 216 pixelů) jsou povinná.</li><li>Snímek obrazovky (max. 5): vyžaduje. Obrázek PNG s rozlišením 1280 x 720 pixelů.|
 | 4 | Správa potenciálních zákazníků |<ul><li>Řízení vedoucích: vyberte systém, ve kterém budou vaše potenciální zákazníci uložené.</li><li>Informace o tom, jak připojit systém CRM, najdete v článku o [získání zájemců](./partner-center-portal/commercial-marketplace-get-customer-leads.md) . | |
 
 ---
@@ -94,7 +94,7 @@ Pro konkrétní typy seznamů jsou k dispozici další požadavky a kontrolní s
 | 6 | Podpora řešení a pomoc  | Podpora a pomoc nejsou požadovány.  | | 
 | 7 | K dispozici jsou zásady ochrany osobních údajů a podmínek použití  |  Zásady nebo podmínky se nevyžadují.  | | 
 | 8 | Typy služeb | Zajistěte, aby se typ služby shodoval s názvem. | |
-| 9 | Kompetence | Musí mít alespoň jednu z následujících možností kompetence:<ul><li>Vývoj aplikací</li><li>Integrace aplikací</li><li>Správa životního cyklu aplikací</li><li>Cloudová platforma<li>Analýza dat</li><li>Data Center</li><li>Datová platforma</li><li>DevOps |
+| 9 | Kompetence | Musí mít alespoň jednu z následujících možností kompetence:<ul><li>Vývoj aplikací</li><li>Integrace aplikací</li><li>Správa životního cyklu aplikací</li><li>Cloudová platforma<li>Datové analýzy</li><li>Data Center</li><li>Datová platforma</li><li>DevOps |
 | 10 | Produkty | Musí se jednat o produkty Azure. | |
 | 11 | Země | Ujistěte se, že země nebo oblast odpovídají vybrané měně. | |
 | 12 | Další informace  | <ul><li>Odkazy v dolní části (pod popisem, ne Azure Marketplace odkazy na levé straně) vedou k dalším informacím o řešení a jsou veřejně dostupné a jsou zobrazovány správně.</li><li>Odkazy musí obsahovat "popisný název" a nebudou se zobrazovat jako název souboru pro soubory ke stažení. | |

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: kenwith
-ms.openlocfilehash: a1cf2b57665cad4dd09639579b42b29a288eeca1
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: fdcea318fcd0796a790818794f6dd7cd949c17cd
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84975567"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367780"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Plánování nasazení služby Azure Proxy aplikací služby AD
 
@@ -317,7 +317,7 @@ Následující články se týkají běžných scénářů, které lze použít 
 * [Potíže při zobrazování stránky aplikace](application-proxy-page-appearance-broken-problem.md)
 * [Načítání aplikace trvá příliš dlouho](application-proxy-page-load-speed-problem.md)
 * [Odkazy na stránce aplikace nefungují](application-proxy-page-links-broken-problem.md)
-* [Jaké porty je potřeba odemknout pro mou aplikaci](application-proxy-connectivity-ports-how-to.md)
+* [Jaké porty je potřeba odemknout pro mou aplikaci](application-proxy-add-on-premises-application.md)
 * [Ve skupině konektorů není žádný fungující konektor pro mou aplikaci](application-proxy-connectivity-no-working-connector.md)
 * [Konfigurace na portálu pro správu](application-proxy-config-how-to.md)
 * [Konfigurace jednotného přihlašování k mé aplikaci](application-proxy-config-sso-how-to.md)

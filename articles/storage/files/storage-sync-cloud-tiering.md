@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 5b54f87635e1ea972778b0039dc34170c5b7ab8a
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 869614c2e3fe11c289ab6eb7f6c1407f666de2b0
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362284"
+ms.locfileid: "85368137"
 ---
 # <a name="cloud-tiering-overview"></a>Přehled vrstvení cloudu
 Vrstvení cloudu je volitelná funkce Azure File Sync, ve které jsou často používané soubory ukládány do mezipaměti místně na serveru, zatímco všechny ostatní soubory jsou vrstveny do souborů Azure na základě nastavení zásad. Když je soubor vrstvený, Azure File Sync filtr systému souborů (StorageSync.sys) nahradí soubor místně s ukazatelem nebo bodem rozboru. Bod rozboru představuje adresu URL souboru ve službě soubory Azure. Vrstvený soubor má atribut offline i atribut FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS nastavený v systému souborů NTFS, aby aplikace třetích stran mohli bezpečně identifikovat vrstvené soubory.
@@ -82,7 +82,11 @@ Udržování většího množství dat znamená nižší náklady na výstup, pr
 
 <a id="how-long-until-my-files-tier"></a>
 ### <a name="ive-added-a-new-server-endpoint-how-long-until-my-files-on-this-server-tier"></a>Přidal (a) jsem nový koncový bod serveru. Jak dlouho do má být moje soubory na této vrstvě serveru?
-Ve verzích 4,0 a vyšších od agenta Azure File Sync se po nahrání souborů do sdílené složky Azure tyto soubory vrství podle vašich zásad, jakmile se spustí další relace vrstvení, ke které dojde jednou za hodinu. Na starších agentech může zpracování vrstev trvat až 24 hodin.
+
+Bez ohledu na to, jestli je potřeba soubory rozvrstvit na nastavené zásady, se vyhodnotí jednou za hodinu. Při vytvoření nového koncového bodu serveru můžete narazit na dvě situace:
+
+1. Když přidáte nový koncový bod serveru, pak často existují soubory v tomto umístění serveru. Před zahájením vrstvení cloudu je potřeba nejdřív nahrávat. Zásada volného místa svazku nezačne pracovat, dokud nebudou dokončeny počáteční nahrávání všech souborů. Volitelné zásady kalendářních dat ale začnou pracovat na jednotlivých souborech, jakmile se soubor nahraje. V tomto případě platí také interval hodin. 
+2. Když přidáte nový koncový bod serveru, je možné připojit prázdné umístění serveru ke sdílené složce Azure s Vašimi daty. Určuje, jestli je to pro druhý server nebo v případě zotavení po havárii. Pokud se rozhodnete stáhnout obor názvů a odvolat obsah během počátečního stahování na váš server, pak se soubory znovu vrátí na základě posledního upravovaného časového razítka. V rámci zásad pro volné místo svazku a volitelné zásady data budou znovu zavolána pouze tolik souborů.
 
 <a id="is-my-file-tiered"></a>
 ### <a name="how-can-i-tell-whether-a-file-has-been-tiered"></a>Jak zjistím, jestli byl soubor vrstvený?

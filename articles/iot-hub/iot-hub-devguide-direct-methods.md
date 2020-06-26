@@ -10,12 +10,12 @@ ms.author: rezas
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 357fe6f04c79b5ad0cdf569e6716589007f6253b
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: 189ebcc74461a57a4e91bf50262c377540cf885b
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84791958"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367831"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Vysvětlení a volání přímých metod ze služby IoT Hub
 
@@ -33,7 +33,7 @@ Pokud jste nejistí mezi použitím požadovaných vlastností, přímých metod
 
 ## <a name="method-lifecycle"></a>Životní cyklus metody
 
-V zařízení jsou implementovány přímé metody a mohou vyžadovat nula nebo více vstupů v datové části metody pro správné vytvoření instance. Pomocí identifikátoru URI () s přístupem ke službě jste vyvolali přímou metodu `{iot hub}/twins/{device id}/methods/` . Zařízení přijímá přímé metody pomocí MQTTho tématu ( `$iothub/methods/POST/{method name}/` ) nebo prostřednictvím odkazů AMQP ( `IoThub-methodname` `IoThub-status` Vlastnosti aplikace a). 
+V zařízení jsou implementovány přímé metody a mohou vyžadovat nula nebo více vstupů v datové části metody pro správné vytvoření instance. Pomocí identifikátoru URI () s přístupem ke službě jste vyvolali přímou metodu `{iot hub}/twins/{device id}/methods/` . Zařízení přijímá přímé metody pomocí MQTTho tématu ( `$iothub/methods/POST/{method name}/` ) nebo prostřednictvím odkazů AMQP ( `IoThub-methodname` `IoThub-status` Vlastnosti aplikace a).
 
 > [!NOTE]
 > Když na zařízení vyvoláte přímou metodu, názvy vlastností a hodnoty můžou obsahovat jen tisknutelné alfanumerické znaky US-ASCII, s výjimkou jakékoli v následující sadě:``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}``
@@ -41,7 +41,7 @@ V zařízení jsou implementovány přímé metody a mohou vyžadovat nula nebo 
 
 Přímé metody jsou synchronní a buď úspěšné, nebo neúspěšné, po uplynutí časového limitu (výchozí: 30 sekund, nastavitelné v rozmezí 5 až 300 sekund). Přímé metody jsou užitečné v interaktivních scénářích, kde chcete, aby zařízení fungovalo pouze v případě, že je zařízení online a přijímá příkazy. Můžete například zapnout světlo od telefonu. V těchto scénářích se chcete podívat na bezprostřední úspěch nebo neúspěch, aby cloudová služba mohla co nejdříve fungovat s výsledkem. Zařízení může vracet tělo zprávy jako výsledek metody, ale není nutné, aby to metoda provedla. Není zaručeno řazení ani žádná sémantika souběžnosti při voláních metod.
 
-Přímé metody jsou pouze HTTPS ze strany cloudu a HTTPS, MQTT, AMQP, MQTT přes objekty WebSockets nebo AMQP přes objekty WebSocket na straně zařízení.
+Přímé metody jsou pouze HTTPS ze strany cloudu a MQTT, AMQP, MQTT přes objekty WebSockets a AMQP přes objekty WebSocket na straně zařízení.
 
 Datová část pro žádosti o metody a odpovědi je dokument JSON až 128 KB.
 
@@ -80,12 +80,11 @@ Hodnota poskytnutá jako `responseTimeoutInSeconds` v požadavku je doba, po kte
 
 Hodnota poskytnutá jako `connectTimeoutInSeconds` v požadavku je doba, po kterou IoT Hub služba musí čekat na to, aby odpojené zařízení bylo online. Výchozí hodnota je 0, což znamená, že zařízení už musí být online při volání přímé metody. Maximální hodnota pro `connectTimeoutInSeconds` je 300 sekund.
 
-
 #### <a name="example"></a>Příklad
 
 Tento příklad vám umožní bezpečně iniciovat požadavek na vyvolání přímé metody v zařízení IoT, které je zaregistrované ve službě Azure IoT Hub.
 
-Začněte tím, že pomocí [rozšíření Microsoft Azure IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension) vytvoříte SharedAccessSignature. 
+Začněte tím, že pomocí [rozšíření Microsoft Azure IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension) vytvoříte SharedAccessSignature.
 
 ```bash
 az iot hub generate-sas-token -n <iothubName> -du <duration>

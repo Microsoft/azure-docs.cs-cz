@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: 0c7c1f5f633554a88b74694ed2aeafcd30c13a89
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 0aea258ac52e078c48255b39145193272aa65b25
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690548"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367967"
 ---
 # <a name="tutorial-configure-lucidchart-for-automatic-user-provisioning"></a>Kurz: Konfigurace Lucidchart pro Automatické zřizování uživatelů
 
@@ -162,8 +162,9 @@ Jakmile nakonfigurujete zřizování, použijte k monitorování nasazení tyto 
 ## <a name="change-log"></a>Protokol změn
 
 * 04/30/2020 – pro uživatele byla přidána podpora pro atribut Enterprise Extension a Custom Attribute "hodnoty CanEdit".
+* 06/15/2020 – obnovitelné odstraňování uživatelů je povoleno (podpora [aktivního](https://tools.ietf.org/html/rfc7643) atributu).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 06/05/2020
+ms.date: 06/24/2020
 ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1e9ec975a17be2675d2f56b2cee87f91d7e9aae
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 388c40867c21390c3de8a033a1bfa08eb95bd602
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84733122"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367406"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Přidání brandingu na přihlašovací stránku Azure Active Directory vaší organizace
 Použijte logo vaší organizace a vlastní barevná schémata k zajištění konzistentního vzhledu na přihlašovacích stránkách Azure Active Directory (Azure AD). Přihlašovací stránky se zobrazí, když se uživatelé přihlásí k webovým aplikacím vaší organizace, jako je například Office 365, který jako zprostředkovatele identity používá službu Azure AD.
@@ -62,7 +62,17 @@ Vaše vlastní branding se okamžitě nezobrazí, když uživatelé přejdou na 
 
         - **Nápověda k uživatelskému jménu** Zadejte text nápovědy, který se zobrazí uživatelům, pokud zapomene své uživatelské jméno. Tento text musí být v kódování Unicode, bez odkazů nebo kódu a nesmí překročit 64 znaků. Pokud se hosté přihlásí do vaší aplikace, Doporučujeme nepřidávat Tento pomocný parametr.
 
-        - **Text přihlašovací stránky** Zadejte text, který se zobrazí v dolní části přihlašovací stránky. Tento text můžete použít k sdělování dalších informací, jako je telefonní číslo na oddělení technické podpory nebo právní prohlášení. Tento text musí být Unicode a nesmí přesáhnout 256 znaků.
+        - **Text a formátování přihlašovací stránky** Zadejte text, který se zobrazí v dolní části přihlašovací stránky. Tento text můžete použít k sdělování dalších informací, jako je telefonní číslo na oddělení technické podpory nebo právní prohlášení. Tento text musí být Unicode a nesmí přesáhnout 1024 znaků.
+
+           Můžete přizpůsobit text přihlašovací stránky, kterou jste zadali. Chcete-li začít nový odstavec, použijte dvakrát klávesu ENTER. Formátování textu můžete také změnit tak, aby obsahovalo tučné písmo, kurzívu, podtržení nebo odkaz na odkaz. K přidání formátování textu použijte následující syntax: 
+
+          > Cíl```[text](link)``` 
+          
+          > Tučné písmo: ``` **text** ``` nebo``` __text__ ``` 
+          
+          > Kurzíva: ``` *text* ``` nebo``` _text_ ``` 
+          
+          > Podtržení``` ++text++ ``` 
 
     - **Upřesnit nastavení**
             
@@ -129,7 +139,7 @@ Jazyk původní konfigurace nemůžete změnit z výchozího jazyka. Pokud ale p
 ## <a name="add-your-custom-branding-to-pages"></a>Přidání vlastního brandingu na stránky
 Přidejte vlastní branding na stránky úpravou konce adresy URL textem, `?whr=yourdomainname` . Tato úprava funguje na několika stránkách, včetně stránky nastavení Multi-Factor Authentication (MFA), stránky nastavení samoobslužného resetování hesla (SSPR) a přihlašovací stránky.
 
-**4.6**
+**Příklady:**
 
 **Původní adresa URL:**https://aka.ms/MFASetup<br>
 **Vlastní adresa URL:**`https://account.activedirectory.windowsazure.com/proofup.aspx?whr=contoso.com`

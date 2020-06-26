@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 6/10/2020
-ms.openlocfilehash: 35aedbc4a3d1dcb87b23633acd413c4a55448ef9
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.date: 6/24/2020
+ms.openlocfilehash: 29ae9c47ca4ed8cdfedf78ffa7957376c7556076
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84710401"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367477"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Repliky pro čtení ve službě Azure Database for MySQL
 
@@ -47,9 +47,7 @@ Hlavní server můžete mít v libovolné [Azure Database for MySQL oblasti](htt
 ### <a name="universal-replica-regions"></a>Oblasti univerzální repliky
 Repliku pro čtení můžete vytvořit v některé z následujících oblastí bez ohledu na to, kde se nachází váš hlavní server. Mezi podporované oblasti univerzální repliky patří:
 
-Austrálie – východ, Austrálie – jihovýchod, Střed USA, Východní Asie, Východní USA, Východní USA 2, Japonsko – východ, Japonsko – západ, Korea – jih, střed, střed USA – sever, Severní Evropa, střed USA – jih, jihovýchodní Asie, Velká Británie – jih, Velká Británie – západ, Západní Evropa, západní USA.
-
-* Západní USA 2 není dočasně k dispozici jako umístění repliky mezi oblastmi.
+Austrálie – východ, Austrálie – jihovýchod, Střed USA, Východní Asie, Východní USA, Východní USA 2, Japonsko – východ, Japonsko – západ, Korea – jih, střed, střed USA – sever, Severní Evropa, střed USA – jih, jihovýchodní Asie, Velká Británie – jih, Velká Británie – západ, západní Evropa, Západní USA, západní USA 2, Středozápadní USA.
 
 ### <a name="paired-regions"></a>Spárované oblasti
 Kromě oblastí univerzální repliky můžete vytvořit repliku pro čtení ve spárované oblasti Azure vašeho hlavního serveru. Pokud neznáte pár vaší oblasti, můžete získat další informace v [článku spárované oblasti Azure](../best-practices-availability-paired-regions.md).
@@ -58,7 +56,7 @@ Pokud používáte repliky mezi jednotlivými oblastmi pro plánování zotaven�
 
 Je však třeba vzít v úvahu omezení: 
 
-* Regionální dostupnost: Azure Database for MySQL je k dispozici v Západní USA 2, Francii Central, Spojené arabské emiráty Severní a Německo – střed. Nicméně jejich spárované oblasti nejsou k dispozici.
+* Oblast dostupnosti: Azure Database for MySQL je k dispozici ve Francii – střed, Spojené arabské emiráty Severní a Německo – střed. Nicméně jejich spárované oblasti nejsou k dispozici.
     
 * Jednosměrné páry: některé oblasti Azure jsou spárovány pouze v jednom směru. Mezi tyto oblasti patří Západní Indie, Brazílie – jih a US Gov – Virginie. 
    To znamená, že hlavní server v Západní Indie může vytvořit repliku v Jižní Indie. Hlavní server v Jižní Indie ale nemůže vytvořit repliku v Západní Indie. Důvodem je to, že sekundární oblast Západní Indie je Jižní Indie, ale sekundární oblast Jižní Indie není Západní Indie.

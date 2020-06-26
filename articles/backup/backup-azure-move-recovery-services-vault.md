@@ -1,15 +1,14 @@
 ---
 title: Jak přesunout trezory služby Azure Backup Recovery Services
 description: Pokyny, jak přesunout trezor služby Recovery Services napříč předplatnými Azure a skupinami prostředků.
-ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.openlocfilehash: 93c3f2db6500023755796d50e71d44a427a2ce82
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: 9373ea41c3cd5d35c86b8b306a20b5c106105217
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82597990"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85368222"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Přesunutí trezoru Recovery Services napříč předplatnými Azure a skupinami prostředků
 
@@ -37,7 +36,11 @@ Francie – střed, Francie – jih, Německo – severovýchod, Německo – st
 - Postup přesunutí virtuálního počítače se spravovanými disky najdete v tomto [článku](https://azure.microsoft.com/blog/move-managed-disks-and-vms-now-available/).
 - Možnosti přesunutí prostředků nasazených přes klasický model se liší v závislosti na tom, zda přesouváte prostředky v rámci předplatného nebo do nového předplatného. Další informace najdete v tomto [článku](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources).
 - Zásady zálohování definované pro trezor se uchovávají po přesunu trezoru mezi předplatnými nebo do nové skupiny prostředků.
-- Trezor můžete přesunout pouze v případě, že virtuální počítače Azure jsou jedinou zálohované položky v trezoru.
+- Můžete přesunout jenom trezor, který obsahuje některý z následujících typů zálohových položek. Všechny zálohované položky typů, které nejsou uvedené níže, se musí zastavit a data se před přesunutím trezoru trvale odstraní.
+  - Azure Virtual Machines
+  - Agent Microsoft Azure Recovery Services (MARS)
+  - Server Microsoft Azure Backup (MABS)
+  - Data Protection Manager (DPM)
 - Pokud přesunete trezor obsahující data záloh virtuálních počítačů v rámci předplatných, musíte virtuální počítače přesunout do stejného předplatného, a pokud chcete pokračovat v zálohování, použijte stejný název cílové skupiny prostředků virtuálního počítače (stejně jako ve starém předplatném).
 
 > [!NOTE]
@@ -108,7 +111,7 @@ Můžete přesunout Recovery Services trezor a jeho přidružené prostředky do
 
 ## <a name="use-powershell-to-move-recovery-services-vault"></a>Použití PowerShellu k přesunutí trezoru Recovery Services
 
-Pokud chcete přesunout Recovery Services trezor do jiné skupiny prostředků, použijte `Move-AzureRMResource` rutinu. `Move-AzureRMResource`vyžaduje název prostředku a typ prostředku. Z `Get-AzureRmRecoveryServicesVault` rutiny můžete získat obojí.
+Pokud chcete přesunout Recovery Services trezor do jiné skupiny prostředků, použijte `Move-AzureRMResource` rutinu. `Move-AzureRMResource`vyžaduje název prostředku a typ prostředku. Z rutiny můžete získat obojí `Get-AzureRmRecoveryServicesVault` .
 
 ```powershell
 $destinationRG = "<destinationResourceGroupName>"
@@ -116,7 +119,7 @@ $vault = Get-AzureRmRecoveryServicesVault -Name <vaultname> -ResourceGroupName <
 Move-AzureRmResource -DestinationResourceGroupName $destinationRG -ResourceId $vault.ID
 ```
 
-Chcete-li přesunout prostředky do jiného předplatného `-DestinationSubscriptionId` , zahrňte parametr.
+Chcete-li přesunout prostředky do jiného předplatného, zahrňte `-DestinationSubscriptionId` parametr.
 
 ```powershell
 Move-AzureRmResource -DestinationSubscriptionId "<destinationSubscriptionID>" -DestinationResourceGroupName $destinationRG -ResourceId $vault.ID
@@ -132,7 +135,7 @@ Pokud chcete přesunout Recovery Services trezor do jiné skupiny prostředků, 
 az resource move --destination-group <destinationResourceGroupName> --ids <VaultResourceID>
 ```
 
-Pokud chcete přejít k novému předplatnému `--destination-subscription-id` , zadejte parametr.
+Pokud chcete přejít k novému předplatnému, zadejte `--destination-subscription-id` parametr.
 
 ## <a name="post-migration"></a>Po dokončení migrace
 

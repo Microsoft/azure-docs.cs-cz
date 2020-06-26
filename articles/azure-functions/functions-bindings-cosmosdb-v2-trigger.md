@@ -1,19 +1,19 @@
 ---
-title: Aktivační událost Azure Cosmos DB pro Functions 2. x
+title: Aktivační událost Azure Cosmos DB pro Functions 2. x a vyšší
 description: Naučte se používat aktivační událost Azure Cosmos DB v Azure Functions.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: e7a422e0637c6343e1b2757fdf9aee7375ee2c3f
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 1ff8281a420eb1e967cb9f1d4db620d8f816794b
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561632"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374232"
 ---
-# <a name="azure-cosmos-db-trigger-for-azure-functions-2x"></a>Aktivační událost Azure Cosmos DB pro Azure Functions 2. x
+# <a name="azure-cosmos-db-trigger-for-azure-functions-2x-and-higher"></a>Aktivační událost Azure Cosmos DB pro Azure Functions 2. x a vyšší
 
 Aktivační událost Azure Cosmos DB používá [Azure Cosmos DB změnu kanálu](../cosmos-db/change-feed.md) k naslouchání vkládání a aktualizací v různých oddílech. Kanál změn publikuje vkládání a aktualizace, nikoli odstranění.
 
@@ -57,9 +57,9 @@ namespace CosmosDBSamplesV2
 
 # <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
-Následující příklad ukazuje Cosmos DB aktivační vazbu v souboru *Function. JSON* a [funkci skriptu jazyka C#](functions-reference-csharp.md) , která používá vazbu. Funkce zapisuje zprávy protokolu při přidání nebo úpravě záznamů Cosmos DB.
+Následující příklad ukazuje Cosmos DB aktivační vazby v *function.js* souboru a [funkce skriptu jazyka C#](functions-reference-csharp.md) , která používá vazbu. Funkce zapisuje zprávy protokolu při přidání nebo úpravě záznamů Cosmos DB.
 
-Tady jsou data vazby v souboru *Function. JSON* :
+Tady jsou data vazby v *function.js* souboru:
 
 ```json
 {
@@ -93,9 +93,9 @@ Tady je kód skriptu jazyka C#:
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Následující příklad ukazuje Cosmos DB aktivační vazby v souboru *Function. JSON* a [funkci JavaScriptu](functions-reference-node.md) , která používá vazbu. Funkce zapisuje zprávy protokolu při přidání nebo úpravě záznamů Cosmos DB.
+Následující příklad ukazuje Cosmos DB aktivační vazby v *function.js* souboru a [funkci JavaScriptu](functions-reference-node.md) , která používá vazbu. Funkce zapisuje zprávy protokolu při přidání nebo úpravě záznamů Cosmos DB.
 
-Tady jsou data vazby v souboru *Function. JSON* :
+Tady jsou data vazby v *function.js* souboru:
 
 ```json
 {
@@ -122,9 +122,9 @@ Tady je kód JavaScriptu:
 
 # <a name="python"></a>[Python](#tab/python)
 
-Následující příklad ukazuje Cosmos DB aktivační vazby v souboru *Function. JSON* a [funkci Pythonu](functions-reference-python.md) , která používá vazbu. Funkce zapisuje zprávy protokolu při změně Cosmos DBch záznamů.
+Následující příklad ukazuje Cosmos DB aktivační vazby v *function.js* souboru a [funkci Pythonu](functions-reference-python.md) , která používá vazbu. Funkce zapisuje zprávy protokolu při změně Cosmos DBch záznamů.
 
-Tady jsou data vazby v souboru *Function. JSON* :
+Tady jsou data vazby v *function.js* souboru:
 
 ```json
 {
@@ -215,9 +215,9 @@ Z [běhové knihovny Functions jazyka Java](https://docs.microsoft.com/java/api/
 
 ## <a name="configuration"></a>Konfigurace
 
-Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v souboru *Function. JSON* a `CosmosDBTrigger` atributu.
+Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `CosmosDBTrigger` atribut.
 
-|Function. JSON – vlastnost | Vlastnost atributu |Description|
+|function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
 |**textový** | Není k dispozici | Musí být nastaven na hodnotu `cosmosDBTrigger` . |
 |**direction** | Není k dispozici | Musí být nastaven na hodnotu `in` . Tento parametr se nastaví automaticky při vytvoření triggeru v Azure Portal. |

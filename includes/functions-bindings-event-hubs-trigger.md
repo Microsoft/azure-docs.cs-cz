@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: 41e6352afb5eebc6ab09f43feac4e211232fd270
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 7826df83506083e2db1bdb011704cb0fef628801
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85292060"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85378595"
 ---
 Pomocí triggeru funkce můžete reagovat na událost odeslanou do datového proudu událostí centra událostí. K nastavení triggeru musíte mít přístup pro čtení k základnímu centru událostí. Když je funkce aktivována, zpráva předaná funkci je zapsána jako řetězec.
 
@@ -355,7 +355,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**dílčí** |**EventHubName** | Pouze funkce 1. x. Název centra událostí Pokud je v připojovacím řetězci přítomen i název centra událostí, tato hodnota tuto vlastnost Přepisuje za běhu. |
 |**eventHubName** |**EventHubName** | Functions 2. x a vyšší. Název centra událostí Pokud je v připojovacím řetězci přítomen i název centra událostí, tato hodnota tuto vlastnost Přepisuje za běhu. Dá se odkazovat prostřednictvím [nastavení aplikace](../articles/azure-functions/functions-bindings-expressions-patterns.md#binding-expressions---app-settings) .`%eventHubName%` |
 |**Klientská organizace** |**Klientská organizace** | Volitelná vlastnost, která nastaví [skupinu uživatelů](../articles/event-hubs/event-hubs-features.md#event-consumers) použitou k přihlášení k odběru událostí v centru. Je-li tento parametr vynechán, `$Default` je použita skupina uživatelů. |
-|**kardinalita** | Není k dispozici | Pro JavaScript. Nastavte na, aby `many` bylo možné dávkování povolit.  Je-li tento parametr vynechán nebo je nastaven na hodnotu `one` , je do funkce předána jedna zpráva. |
+|**kardinalita** | Není k dispozici | Používá se pro všechny jazyky jiné než C #. Nastavte na, aby `many` bylo možné dávkování povolit.  Je-li tento parametr vynechán nebo je nastaven na hodnotu `one` , je do funkce předána jedna zpráva.<br><br>V jazyce C# je tato vlastnost automaticky přiřazena vždy, když Trigger obsahuje pole pro daný typ.|
 |**vázán** |**Připojení** | Název nastavení aplikace, které obsahuje připojovací řetězec k oboru názvů centra událostí. Zkopírujte tento připojovací řetězec kliknutím na tlačítko **informace o připojení** pro [obor názvů](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace), nikoli v samotném centru událostí. Tento připojovací řetězec musí mít aspoň oprávnění ke čtení pro aktivaci triggeru.|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]

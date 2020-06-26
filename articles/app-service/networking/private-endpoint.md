@@ -9,12 +9,12 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 92fdb48f11d4d8753706d61fab9fd32e2b06f488
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: bc9cd134e4c83aea94ae0049158b3054c602cce8
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84668181"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374419"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>Používání privátních koncových bodů pro webovou aplikaci Azure (Preview)
 
@@ -57,7 +57,7 @@ Z hlediska zabezpečení:
 - Když pro webovou aplikaci povolíte privátní koncový bod, konfigurace [omezení přístupu][accessrestrictions] webové aplikace se nevyhodnotí.
 - Odstraněním všech pravidel NSG, kde destination je tag Internet nebo služby Azure, můžete eliminovat riziko exfiltrace dat z virtuální sítě. Při nasazení privátního koncového bodu pro webovou aplikaci můžete dosáhnout pouze této konkrétní webové aplikace prostřednictvím privátního koncového bodu. Pokud máte jinou webovou aplikaci, musíte pro tuto jinou webovou aplikaci nasadit jiný vyhrazený privátní koncový bod.
 
-V protokolech HTTP webové aplikace se nachází zdrojová IP adresa klienta. To je implementováno pomocí protokolu proxy protokolu TCP, který předává vlastnost IP klienta do webové aplikace. Další informace najdete v tématu [získání informací o připojení pomocí proxy serveru TCP v2][tcpproxy].
+V protokolech HTTP webové aplikace se nachází zdrojová IP adresa klienta. Tato funkce je implementovaná pomocí protokolu proxy protokolu TCP, který předává vlastnost IP adresy klienta do webové aplikace. Další informace najdete v tématu [získání informací o připojení pomocí proxy serveru TCP v2][tcpproxy].
 
 
   > [!div class="mx-imgBorder"]
@@ -65,12 +65,22 @@ V protokolech HTTP webové aplikace se nachází zdrojová IP adresa klienta. To
 
 ## <a name="dns"></a>DNS
 
-Vzhledem k tomu, že tato funkce je ve verzi Preview, nezměníme položku DNS během verze Preview. Je potřeba spravovat položku DNS na privátním serveru DNS nebo Azure DNS privátní zóny sami.
+Ve výchozím nastavení bez privátního koncového bodu je veřejný název vaší webové aplikace kanonický název clusteru.
+Například překlad názvů bude: mywebapp.azurewebsites.net CNAME clustername.azurewebsites.windows.net clustername.azurewebsites.windows.net CNAME cloudservicename.cloudapp.net cloudservicename.cloudapp.net A 40.122.110.154 
+
+Při nasazení privátního koncového bodu změníme položku DNS tak, aby odkazovala na kanonický název mywebapp.privatelink.azurewebsites.net.
+Například překlad názvů bude: mywebapp.azurewebsites.net CNAME mywebapp.privatelink.azurewebsites.net mywebapp.privatelink.azurewebsites.net CNAME clustername.azurewebsites.windows.net clustername.azurewebsites.windows.net CNAME cloudservicename.cloudapp.net cloudservicename.cloudapp.net A 40.122.110.154 
+
+Pokud máte privátní server DNS nebo privátní zónu Azure DNS, musíte nastavit zónu s názvem privatelink.azurewebsites.net. Zaregistrujte si záznam pro vaši webovou aplikaci pomocí záznamu a a IP adresy privátního koncového bodu.
+Například překlad názvů bude: mywebapp.azurewebsites.net CNAME mywebapp.privatelink.azurewebsites.net mywebapp.privatelink.azurewebsites.net A 10.10.10.8 
+
 Pokud potřebujete použít vlastní název DNS, musíte do své webové aplikace přidat vlastní název. Ve verzi Preview se vlastní název musí ověřit jako libovolný vlastní název, a to pomocí veřejného překladu názvů DNS. Další informace najdete v tématu [vlastní ověření DNS][dnsvalidation].
 
 Pokud potřebujete použít konzolu Kudu nebo Kudu REST API (například nasazení s agenty pro samoobslužné hostování Azure DevOps), musíte vytvořit dva záznamy v privátní zóně Azure DNS nebo ve vlastním serveru DNS. 
 - PrivateEndpointIP yourwebappname.azurewebsites.net 
 - PrivateEndpointIP yourwebappname.scm.azurewebsites.net 
+
+Tyto dva záznamy se vyplní automaticky, pokud máte privátní zónu s názvem privatelink.azurewebsites.net propojenou s virtuální sítí, kde vytvoříte soukromý koncový bod.
 
 ## <a name="pricing"></a>Ceny
 
@@ -86,7 +96,7 @@ Pravidelně vylepšujeme funkci privátního propojení a soukromý koncový bod
 
 ## <a name="next-steps"></a>Další kroky
 
-Nasazení privátního koncového bodu pro webovou aplikaci prostřednictvím portálu najdete v tématu [jak se připojit soukromě k webové aplikaci][howtoguide] .
+Postup nasazení privátního koncového bodu pro webovou aplikaci prostřednictvím portálu najdete v tématu [Jak připojit soukromě k webové aplikaci][howtoguide] .
 
 
 

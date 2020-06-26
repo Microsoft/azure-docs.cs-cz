@@ -9,20 +9,20 @@ ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 7d54fa25bc4ab55e62b8f88a3cf76a5ba1130e55
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: fdf1e6cf15279a0ff5be4b45385a13a3b967d22e
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82796756"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374623"
 ---
 # <a name="create-a-vm-using-a-specialized-image"></a>Vytvoření virtuálního počítače pomocí specializované image 
 
-Vytvořte virtuální počítač ze specializované verze Image uložené v galerii sdílených imagí. Pokud chcete vytvořit virtuální počítač s použitím generalizované verze bitové kopie, přečtěte si téma [Vytvoření virtuálního počítače ze specializované verze image](vm-generalized-image-version-powershell.md).
+Vytvořte virtuální počítač ze specializované verze Image uložené v galerii sdílených imagí. Pokud chcete vytvořit virtuální počítač s použitím generalizované image, přečtěte si téma [Vytvoření virtuálního počítače pomocí generalizované image](vm-generalized-image-version-powershell.md).
 
 Jakmile budete mít specializovanou verzi image, můžete vytvořit jeden nebo více nových virtuálních počítačů. Pomocí rutiny [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) . 
 
-V tomto příkladu používáme ID definice image k tomu, abyste zajistili, že váš nový virtuální počítač bude používat nejnovější verzi image. Můžete také použít konkrétní verzi pomocí ID verze image pro `Set-AzVMSourceImage -Id`. Například pro použití image verze *1.0.0* typ: `Set-AzVMSourceImage -Id "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"`. 
+V tomto příkladu používáme ID definice image k tomu, abyste zajistili, že váš nový virtuální počítač bude používat nejnovější verzi image. Můžete také použít konkrétní verzi pomocí ID verze image pro `Set-AzVMSourceImage -Id` . Například pro použití image verze *1.0.0* typ: `Set-AzVMSourceImage -Id "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"` . 
 
 Uvědomte si, že použití konkrétní verze image znamená, že automatizace může selhat, pokud není dostupná konkrétní verze image, protože se odstranila nebo odebrala z oblasti. Pro vytvoření nového virtuálního počítače doporučujeme použít ID definice image, pokud není potřeba konkrétní verze image.
 

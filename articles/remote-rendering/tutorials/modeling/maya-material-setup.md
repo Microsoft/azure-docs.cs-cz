@@ -1,116 +1,124 @@
 ---
-title: Nastavení materiálů PBR (Physically Based Rendering) v Maya
+title: Nastavení fyzicky založených materiálů pro vykreslování v Maya
 description: Vysvětluje, jak nastavit fyzicky založené vykreslovací materiály v Maya a exportovat je do formátu FBX.
 author: muxanickms
 ms.author: misams
 ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: 5579994b0746a2de4b0f2ca927027ac709940024
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: 72742ff4f6aa19fda092b44d8d2237e7d49dd816
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84977821"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85373233"
 ---
-# <a name="tutorial-setting-up-physically-based-rendering-materials-in-maya"></a>Kurz: nastavení fyzicky vycházejících materiálů pro vykreslování v Maya
+# <a name="tutorial-set-up-physically-based-rendering-materials-in-maya"></a>Kurz: nastavení fyzicky vycházejících materiálů pro vykreslování v Maya
 
 ## <a name="overview"></a>Přehled
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 >
-> * Přiřaďte materiály s pokročilým modelem osvětlení objektům ve scéně.
-> * zpracování vytváření instancí objektů a materiálů
-> * Exportujte scénu do formátu FBX a důležité možnosti pro výběr.
+> * Přiřaďte materiály s pokročilým osvětlením na objekty ve scéně.
+> * Zpracování vytváření instancí objektů a materiálů
+> * Exportujte scénu do formátu FBX a vyberte důležité možnosti.
 
-Vytváření [fyzicky vycházejících materiálů pro vykreslování (PBR)](../../overview/features/pbr-materials.md) v nástroji `Maya` je poměrně rovný úkol, podobně jako v mnoha směrech až do PBR nastavování v jiných aplikacích pro vytváření obsahu, jako je `3DS Max` . Následující kurz je průvodcem základní funkce pro vytváření a FBX exportu PBR pro projekty ARR. 
+Vytváření [fyzicky založených materiálů pro vykreslování (PBR)](../../overview/features/pbr-materials.md) v Maya je poměrně jednoduchá úloha. Podobným způsobem je nastavení PBR v dalších aplikacích pro vytváření obsahu, jako je například 3DS Max. Tento kurz je průvodcem pro základní nastavení funkce PBR shader a export FBX pro projekty vzdáleného vykreslování Azure. 
 
-Ukázková scéna v tomto kurzu obsahuje řadu `Polygon Box` objektů, kterým byl přiřazený určitý počet různých materiálů – dřevěné, kovové, malované kovové, plastová a pryžová. V podstatě řečeno, každý materiál obsahuje všechny nebo většinu následujících textur 
+Ukázková scéna v tomto kurzu obsahuje počet objektů mnohoúhelníkového pole. Přidělují se k různým materiálům, jako jsou dřevěné, kovové, malované kovové, plastová a pryžová. V podstatě řečeno, každý materiál obsahuje všechny nebo většinu následujících textur:
 
-* `Albedo`, je mapa barev materiálu, která se také označuje jako `Diffuse` nebo`BaseColor`
-* `Metalness`, který určuje, zda je materiál kovový a které části jsou kovové. 
-* `Roughness`, který určuje, jak je povrch hrubá nebo hladec, ovlivňuje ostrost nebo blurriness odrazů a světel na povrchu.
-* `Normals`, které přidávají podrobnosti na povrch, například na základě prodlev a odsazení na kovové ploše nebo zrn v dřevě, aniž by bylo nutné přidávat další mnohoúhelníky.
-* `Ambient Occlusion`, který se používá k přidání jemných stínování a stínů kontaktu do modelu. Je to mapa odstínů šedi, která označuje, které oblasti modelu získají plné osvětlení (bílá) nebo úplný odstín (černá). 
+* **Albedo**, což je mapa barev materiálu a nazývá se také **difúze** nebo **BaseColor**.
+* **Kov**, který určuje, jestli je materiál kovový a které části jsou kovové. 
+* **Hrubá**, která určuje, jak hrubá nebo hladká plocha je a ovlivňuje ostrost nebo blurriness odrazů a světel na povrchu.
+* **Normal (normální**), který přidává podrobnosti na povrch bez nutnosti přidávat další mnohoúhelníky Příkladem podrobností může být prodleva a odsazení na kovové ploše nebo zrnitosti ve dřevě.
+* **Ambientní překrytí**, který se používá k přidání jemných stínování a stínů kontaktu do modelu. Jedná se o mapu ve stupních šedi, která označuje, které oblasti modelu získají plné osvětlení (bílá) nebo úplné stínování (černá). 
 
 ## <a name="prerequisites"></a>Požadavky
-* `Autodesk Maya 2017`nebo novější
+* Autodesk Maya 2017 nebo novější
 
-## <a name="setting-up-materials-in-the-scene"></a>Nastavení materiálů na scéně
-V Maya je postup pro nastavení materiálu PBR následující:
+## <a name="set-up-materials-in-the-scene"></a>Nastavení materiálů na scéně
+Tady je postup nastavení materiálu PBR v Maya.
 
-Chcete-li začít s, jak vidíte v ukázce scény, vytvořili jsme počet objektů box, z nichž každá představuje jiný typ materiálu. Všimněte si, jak je znázorněno na obrázku níže, aby každý z těchto objektů byl dán vlastním odpovídajícím názvem. 
+Jak vidíte v ukázce scény, vytvořili jsme počet objektů box. Každý objekt představuje jiný typ materiálu. Jak je znázorněno na obrázku, každý z těchto objektů byl dán vlastním vhodným názvem.
 
-> Je potřeba si vyhodnotit, ještě než začnete vytvářet prostředky pro vzdálené vykreslování Azure (ARR), které používá měřiče měření, a směr je v ose Y. Proto je vhodné nastavit jednotky scény v Maya na měřiče. Kromě toho je vhodné při exportu do nastavení jednotek na měřiče v nastaveních exportu FBX. 
+Vzdálené vykreslování Azure používá měřiče měření a směr nahoru je osa Y. Než začnete vytvářet prostředky, doporučujeme, abyste v Maya nastavili jednotky scény na měřiče. Pro export nastavte jednotky na měřiče v nastaveních exportu FBX.
 
 > [!TIP]
-Je vhodné pojmenovat prostředky modelu odpovídajícím způsobem, obvykle s relevantním typem části nebo materiálu, protože názvy usnadňují navigaci v případě velkého množství objektů.
+> Poskytněte modelu prostředky odpovídající názvy na základě relevantního typu části nebo materiálu. Smysluplné názvy usnadňují procházení vysoce náročných scén objektů.
 
 ![Názvy objektů](media/object-names.jpg)
 
-Po vytvoření nebo získání textur – v závislosti na vašich potřebách možná budete chtít vytvořit jedinečné textury pro model v aplikacích Texturing, jako `Quixel Suite` je, `Photoshop` nebo, `Substance Suite` nebo můžete použít obecné textury dlážděnní z jiných zdrojů, můžete je použít v modelu následujícím způsobem:
+Po vytvoření nebo získání některých textur můžete také vytvořit jedinečné textury. Můžete použít aplikace Texturing, jako je Quixel Suite, PhotoShop nebo sada látek, nebo získat obecné textury dlaždic z jiných zdrojů.
 
-* V zobrazení scény vyberte svůj model nebo geometrii a klikněte na něj pravým tlačítkem. V nabídce, která se zobrazí, klikněte na`Assign New Material`
-* V `Assign New Material` možnostech přejít na `Maya` > `Stingray PBS` . Tato akce přiřadí vašemu modelu materiál PBR. 
+Použití textur pro model:
 
-V nástroji je `Maya 2020` k dispozici několik různých shaderů PBR `Maya Standard Surface` , `Arnold Standard Surface` a `Stingray PBR` . `Maya Standard Surface Shader`Ještě není možné exportovat pomocí `FBX plugin 2020` , zatímco se `Arnold Standard Surface Shader` dá exportovat se soubory FBX. Ve většině ostatních ohledech je to stejné jako `Maya Standard Surface Shader` a je analogické jako `Physical Material` v `3D Studio Max` .
+1. V zobrazení scény vyberte svůj model nebo geometrii a klikněte na něj pravým tlačítkem. V zobrazené nabídce vyberte **přiřadit nový materiál**.
+1. V dialogovém okně **přiřadit nový materiál** přejít na **Maya**  >  **Stingray PBS**. Tato akce přiřadí vašemu modelu materiál PBR. 
 
-**`The Stingray PBR Shader`** je kompatibilní s mnoha jinými aplikacemi a nejvíc přesně odpovídá požadavkům nástroje `ARR` a je podporován od verze `Maya 2017` . Také je vhodné, aby byl tento typ materiálů vizuálů v zobrazeních podobný tomu, co bude v ARR později vizuálně vizuální.
+V Maya 2020 je k dispozici několik různých shaderů PBR. Patří mezi ně **Maya úrovně Standard**, **Arnold Standard**a **Stingray PBR**. **Maya úrovně Standard Surface** se ještě neexportují prostřednictvím modulu plug-in FBX 2020. **Arnold standardní Surface shaderu** se dá exportovat pomocí souborů FBX. Ve většině případů je stejný jako **Maya shader Standard Surface**. Je obdobou pro **fyzický materiál** v nástroji 3D Studio Max.
 
-![Materiál Stingray](media/stingray-material.jpg)
+**Shader STINGRAY PBR** je kompatibilní s mnoha dalšími aplikacemi a nejlépe odpovídá požadavkům vzdáleného vykreslování Azure. Podporuje se od Maya 2017. Když je tento typ materiálu v zobrazení vizuálně vizuální, je podobný jako u toho, co je ve vzdáleném vykreslování Azure vizuální.
 
-S vaším materiálem přiřazeným k vašemu assetu a s názvem odpovídajícím způsobem můžete nyní pokračovat v přiřazování různých textur. Následující obrázky podrobně popisují, kde se jednotlivé typy textur vejdou do materiálu PBR. `Stingray PBR`Materiály vám umožní vybrat atributy, které můžete aktivovat, takže před tím, než budete mít `plug in` mapy textur, budete muset aktivovat relevantní atributy: 
+![Stingray materiál](media/stingray-material.jpg)
+
+S vaším materiálem přiřazeným k assetu a s názvem odpovídajícím způsobem teď můžete přiřadit různé textury. Následující obrázky znázorňují, kde se jednotlivé typy textur vejdou do materiálu PBR. Materiál Stingray PBR umožňuje vybrat atributy, které můžete aktivovat. Předtím, než budete moci připojit mapy textur, je nutné aktivovat příslušné atributy.
 
 ![Nastavení materiálu](media/material-setup.jpg)
 
-> [!TIP]
-Je dobré pojmenovat materiály odpovídajícím způsobem a vzít v úvahu jejich použití nebo typ. Materiál, který má být použit v jedinečné části, může být pro danou část pojmenován, zatímco materiál, který lze použít v širším počtu oblastí, lze pojmenovat pro jeho vlastnosti nebo typ.
+Pojmenujte své materiály vhodně tím, že vezmete v úvahu jejich použití nebo typ. Materiál, který se používá v jedinečné části, může být pro danou část pojmenován. Materiál, který se používá v širším rozsahu oblastí, může být pojmenován pro jeho vlastnosti nebo typ.
 
-Přiřaďte textury následujícím způsobem:
+Přiřaďte textury, jak je znázorněno na obrázku.
 
 ![Nastavení textury](media/texture-setup.jpg)
 
-Když vytvoříte a nastavíte vaše materiály PBR, zamyslete se nad vytvářením [instancí objektů](../../how-tos/conversion/configure-model-conversion.md#instancing) ve scéně. Vytváření instancí podobných objektů ve vaší scéně – například NUTS, šrouby, šrouby umyvadel – v podstatě všechny objekty, které jsou stejné, můžou přinést významné úspory z hlediska velikosti souboru. Instance hlavního objektu mohou mít vlastní měřítko, rotaci a transformace, takže je možné je umístit podle potřeby na scéně. V Maya je proces vytváření instancí jednoduchý.
+S vytvořenými a nastavenými materiály PBR zvažte vytváření [instancí objektů](../../how-tos/conversion/configure-model-conversion.md#instancing) ve scéně. Vytváření instancí podobných objektů ve vaší scéně, jako jsou ořechy, šrouby, šrouby a pračky, vydává významné úspory velikosti souborů. Instance hlavního objektu mohou mít vlastní měřítko, rotaci a transformace, aby je bylo možné umístit podle potřeby do scény. 
 
-* V `Edit` nabídce přejděte na adresu `Duplicate Special` a otevřete. `Options` 
-* V `Duplicate Special` přepínačích možnosti `Geometry Type` od `Copy` do `Instance` klikněte na 
-* Klikněte na `Duplicate Special`.
+V Maya je proces vytváření instancí jednoduchý.
 
-![Vytváření instancí](media/instancing.jpg)
+1. V nabídce **Úpravy** přejděte na **duplikovat jinak** a otevřete možnosti.
+1. V dialogovém okně **Duplikovat zvláštní možnosti** vyberte pro **typ geometrie** možnost **instance** . 
+1. Vyberte **duplikovat jinak**.
 
-Tato akce vytvoří instanci objektu, kterou lze přesunout otočený nebo škálovat nezávisle na své nadřazené a jiné instanci tohoto nadřazeného prvku. 
->Všechny změny, které provedete v průběhu v režimu komponent, se ale přenesou do všech instancí vašeho objektu, takže pokud pracujete s instancemi objektů – vrcholy, mnohoúhelníky atd., je nejdřív potřeba, abyste všechny změny, které provedete, ovlivnily všechny tyto instance.
+   ![Vytváření instancí](media/instancing.jpg)
 
-Ve vzorové scéně byly objekty každého jednotlivého pole instance. Tato akce bude mít při exportu scény do formátu FBX význam.
+Tato akce vytvoří instanci objektu. Můžete ho přesunout, otočit nebo škálovat nezávisle na jeho nadřazeném objektu a dalších instancích tohoto nadřazeného objektu. 
+
+Všechny změny, které provedete v případě, že je v režimech komponent, jsou přenášeny do všech instancí objektu. Můžete například pracovat s komponentami s instancemi objektů, jako jsou vrcholy a mnohoúhelníkové obličeje. Ujistěte se, že chcete, aby všechny změny, které jste provedli, ovlivnily všechny tyto instance. 
+
+Ve vzorové scéně byly jednotlivé objekty jednotlivých polí instance. Tato akce bude mít při exportu scény do formátu FBX význam.
 
 ![Přehled scény](media/scene-overview.jpg)
 
->Osvědčenými postupy týkajícími se vytváření instancí v rámci scény je jejich vytvoření při přechodu na sebe, protože pozdější nahrazování kopií u instancí objektů je mimořádně obtížné. 
+> [!TIP]
+> Při procházení můžete vytvářet instance v rámci scény. Nahrazování kopií u instancí objektů později je mimořádně obtížné. 
 
 ## <a name="fbx-export-process"></a>Proces exportu FBX
 
-Nyní můžeme přejít k FBX exportu vašich prostředků scény a scény. Obecně řečeno, dává smysl při exportu prostředků do výběru pouze pro export těchto objektů nebo prostředků z vaší scény, kterou požadujete. Pokud máte na scéně 100 objektů, ale chcete použít pouze 30 z nich, neexistuje žádný bod v exportu celé scény. Takže pokud si nejste spokojeni exportovat celou scénu, udělejte si výběr a pokračujte na:
+Pojďme přejít k FBX exportu vašich prostředků scény nebo scény. Při exportu assetů dává smysl vybrat pouze objekty nebo prostředky z scény, kterou chcete exportovat. Například můžete mít 100 objektů ve scéně. Pokud chcete použít pouze 30 z nich, neexistuje žádný bod v exportu celé scény. 
 
-* `File` > `Export Selection`a v dialogovém okně pro export přejít na konec a nastavte `Files of Type` na `FBX Export` . Toto okno zveřejní nastavení exportu FBX. Primární nastavení pro export FBX jsou na obrázku níže zvýrazněná červeně.
+Chcete-li vybrat:
 
-![Export FBX](media/FBX-exporting.jpg)
+1. Chcete- **File**li  >  otevřít dialogové okno **Export výběru** , vyberte možnost přejít na**Výběr exportu** souboru.
+1. V poli **soubory typu** vyberte **exportovat FBX** a zobrazte nastavení exportu FBX. Primární nastavení pro export FBX jsou v obrázku zvýrazněna červeně.
 
-V závislosti na vašich požadavcích – například můžete chtít odeslat Asset klientovi, ale nechcete odesílat velké počty souborů textury s Assetem, můžete zvolit vložení textur do exportovaného souboru FBX. Tato možnost znamená, že máte jenom jeden soubor, který se má zabalit, ale významně zvětší velikost tohoto FBX prostředku. Možnost vkládání textur můžete povolit přepnutím na `Embed Media` možnost, jak je znázorněno níže.
+   ![Export FBX](media/FBX-exporting.jpg)
+
+V závislosti na vašich požadavcích můžete například chtít odeslat Asset klientovi. Možná nebudete chtít odesílat do assetu velký počet souborů textury. Můžete zvolit vložení textur do exportovaného souboru FBX. Tato možnost znamená, že máte jenom jeden soubor, který se má zabalit, ale velikost tohoto prostředku FBX se výrazně zvyšuje. Můžete povolit možnost vkládání textur výběrem možnosti pro **vložení média** , jak je znázorněno na obrázku.
 
 > [!TIP]
-> Všimněte si, že soubor v tomto případě byl pojmenován tak, aby odrážel tuto podmínku. To je dobrým zvykem způsob, jak udržet přehled o prostředcích. 
+> V této ukázce byl soubor pojmenován, aby odrážel tuto podmínku. Tento styl pojmenování je dobrým způsobem, jak sledovat vaše prostředky. 
 
-Po dokončení nastavení konfigurace pro export klikněte na tlačítko Exportovat výběr v pravém dolním rohu.
+Po nastavení konfigurace pro export vyberte **Exportovat výběr** v pravém dolním rohu.
 
 ![Vložení média](media/embedding-media.jpg)
 
 ## <a name="conclusion"></a>Závěr
 
-Obecně platí, že tento typ materiálu vypadá realističtější, protože je založený na skutečné fyzika světla. Vytvoří další moderní efekt, který se nachází v reálném světě.
+Obecně platí, že tento typ materiálu vypadá realističtější, protože je založen na skutečné fyzika světla. Vytvoří další moderní efekt, aby se v reálném světě zdá, že scéna existuje.
 
 ## <a name="next-steps"></a>Další kroky
 
-Nyní znáte nejdůležitější funkce pro nastavení materiálů s pokročilým osvětlením na objekty ve scéně a jejich export do formátu FBX, který je podporován funkcí ARR. Dalším krokem je převod souboru FBX a vizualizace v ARR.
+Nyní víte, jak nastavit materiály s pokročilým osvětlením pro objekty ve scéně. Dozvíte se taky, jak exportovat objekty do formátu FBX, který podporuje vzdálené vykreslování Azure. Dalším krokem je převod souboru FBX a jeho vizualizace ve vzdáleném vykreslování Azure.
 
 > [!div class="nextstepaction"]
 > [Rychlý Start: převod modelu pro vykreslování](../../quickstarts\convert-model.md)

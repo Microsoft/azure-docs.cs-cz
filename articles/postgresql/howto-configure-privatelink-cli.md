@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: b0b253f8870d7d7c85f0973f0ea78341445597d5
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 7edb8efb8a4ff509287565888a24b69b0dd0ca4e
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84676824"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367801"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-cli"></a>Vytvoření a správa privátního odkazu pro Azure Database for PostgreSQL s jedním serverem pomocí rozhraní příkazového řádku
 
@@ -92,7 +92,7 @@ az network private-endpoint create \
     --vnet-name myVirtualNetwork  \  
     --subnet mySubnet \  
     --private-connection-resource-id $(az resource show -g myResourcegroup -n mydemoserver --resource-type "Microsoft.DBforPostgreSQL/servers" --query "id") \    
-    --group-id mysqlServer \  
+    --group-id postgresqlServer \  
     --connection-name myConnection  
  ```
 

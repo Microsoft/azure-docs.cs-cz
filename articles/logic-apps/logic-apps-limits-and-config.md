@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 06/20/2020
-ms.openlocfilehash: dcb0f60f38fbc1b52e29d7fffe0bce7a59257cb5
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 3c62f9794a4eb963bcd23a294d82b67cd9e37d08
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85119065"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367219"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Informace o omezeních a konfiguraci pro Azure Logic Apps
 
@@ -104,7 +104,7 @@ Tady jsou omezení pro jednu definici aplikace logiky:
 | Akce: provádění za 5 minut | 100 000 je výchozí limit, ale 300 000 je maximální limit. | Pokud chcete změnit výchozí limit, přečtěte si téma [spuštění aplikace logiky v režimu vysoké propustnosti](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode), který je ve verzi Preview. Případně můžete distribuovat úlohy napříč více aplikacemi logiky podle potřeby. |
 | Action: souběžná odchozí volání | ~2500 | Můžete snížit počet souběžných požadavků nebo snížit dobu trvání podle potřeby. |
 | Koncový bod za běhu: souběžná příchozí volání | ~ 1 000 | Můžete snížit počet souběžných požadavků nebo snížit dobu trvání podle potřeby. |
-| Koncový bod za běhu: čtení hovorů za 5 minut  | 60 000 | V případě potřeby můžete distribuovat úlohy napříč více než jednou aplikací. |
+| Koncový bod za běhu: čtení hovorů za 5 minut  | 60 000 | Toto omezení platí pro volání, která získávají nezpracované vstupy a výstupy z historie spuštění aplikace logiky. V případě potřeby můžete úlohy distribuovat napříč více než jednou aplikací. |
 | Koncový bod Runtime: vyvolání volání za 5 minut | 45 000 | V případě potřeby můžete distribuovat úlohy napříč více než jednou aplikací. |
 | Propustnost obsahu za 5 minut | 600 MB | V případě potřeby můžete distribuovat úlohy napříč více než jednou aplikací. |
 ||||
@@ -244,7 +244,7 @@ Cenové sazby najdete v tématu [Logic Apps ceny](https://azure.microsoft.com/pr
 |----------|------|-------|----------|
 | Obchodní smlouvy EDI | 10 | 1 | 1 000 |
 | Obchodní partneři EDI | 25 | 2 | 1 000 |
-| Maps | 25 | 500 | 1 000 |
+| Mapy | 25 | 500 | 1 000 |
 | Schémata | 25 | 500 | 1 000 |
 | Sestavení | 10 | 25 | 1 000 |
 | Certifikáty | 25 | 2 | 1 000 |

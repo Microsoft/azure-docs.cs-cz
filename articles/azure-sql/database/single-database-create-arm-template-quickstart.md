@@ -10,13 +10,13 @@ ms.topic: quickstart
 author: mumian
 ms.author: jgao
 ms.reviewer: carlrab
-ms.date: 06/28/2019
-ms.openlocfilehash: 02e0947de3e7e5c6ce5110740127571ea393b168
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.date: 06/24/2020
+ms.openlocfilehash: 2975b98306b7019022799d5ba69b9d7af5797a2b
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343859"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85368035"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-resource-manager-template"></a>Rychlý Start: vytvoření jedné databáze v Azure SQL Database pomocí šablony Azure Resource Manager
 
@@ -24,39 +24,32 @@ Vytvoření [jedné databáze](single-database-overview.md) je nejrychlejší a 
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/).
+Pokud vaše prostředí splňuje požadavky a Vy jste obeznámeni s používáním šablon ARM, vyberte tlačítko nasadit do Azure. Šablona se otevře v Azure Portal.
+
+[![Nasazení do Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-sql-database%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Požadavky
 
-Žádné
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="create-a-single-database"></a>Vytvoření izolované databáze
+## <a name="review-the-template"></a>Kontrola šablony
 
 Jedna databáze má definovanou sadu výpočetních, paměťových, vstupně-výstupních prostředků a prostředků úložiště pomocí jednoho ze dvou [nákupních modelů](purchasing-models.md). Když vytvoříte izolovanou databázi, nadefinujete taky [Server](logical-servers.md) pro správu a umístění v rámci [skupiny prostředků Azure](../../active-directory-b2c/overview.md) v zadané oblasti.
 
-### <a name="review-the-template"></a>Kontrola šablony
-
 Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-sql-logical-server/).
 
-:::code language="json" source="~/quickstart-templates/101-sql-logical-server/azuredeploy.json" range="1-163" highlight="63-132":::
+:::code language="json" source="~/quickstart-templates/101-sql-database/azuredeploy.json" range="1-67" highlight="41-65":::
 
 Tyto prostředky jsou definované v šabloně:
 
 - [**Microsoft. SQL/servery**](/azure/templates/microsoft.sql/servers)
-- [**Microsoft. SQL/servery/firewallRules**](/azure/templates/microsoft.sql/servers/firewallrules)
-- [**Microsoft. SQL/servery/securityAlertPolicies**](/azure/templates/microsoft.sql/servers/securityalertpolicies)
-- [**Microsoft. SQL/servery/vulnerabilityAssessments**](/azure/templates/microsoft.sql/servers/vulnerabilityassessments)
-- [**Microsoft. SQL/servery/connectionPolicies**](/azure/templates/microsoft.sql/servers/connectionpolicies)
-- [**Microsoft. Storage/storageAccounts**](/azure/templates/microsoft.storage/storageaccounts)
-- [**Microsoft. Storage/storageAccounts/Providers/roleAssignments**](/azure/templates/microsoft.authorization/roleassignments)
+- [**Microsoft. SQL/servery/databáze**](/azure/templates/microsoft.sql/servers/databases)
 
 Další ukázky šablon Azure SQL Database najdete v [šablonách rychlý Start pro Azure](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sql&pageNumber=1&sort=Popular).
 
-### <a name="deploy-the-template"></a>Nasazení šablony
+## <a name="deploy-the-template"></a>Nasazení šablony
 
 Vyberte příkaz **vyzkoušet** z následujícího bloku kódu prostředí PowerShell a otevřete Azure Cloud Shell.
-
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -67,32 +60,10 @@ $adminPassword = Read-Host -Prompt "Enter the SQl server administrator password"
 $resourceGroupName = "${projectName}rg"
 
 New-AzResourceGroup -Name $resourceGroupName -Location $location
-New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-sql-logical-server/azuredeploy.json" -administratorLogin $adminUser -administratorLoginPassword $adminPassword
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-sql-database/azuredeploy.json" -administratorLogin $adminUser -administratorLoginPassword $adminPassword
 
 Read-Host -Prompt "Press [ENTER] to continue ..."
 ```
-
-# <a name="the-azure-cli"></a>[Rozhraní příkazového řádku Azure](#tab/azure-cli)
-
-```azurecli-interactive
-$projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
-$location = Read-Host -Prompt "Enter an Azure location (i.e. centralus)"
-$adminUser = Read-Host -Prompt "Enter the SQL server administrator username"
-$adminPassword = Read-Host -Prompt "Enter the SQl server administrator password" -AsSecureString
-
-$resourceGroupName = "${projectName}rg"
-
-az group create --location $location --name $resourceGroupName
-
-az group deployment create -g $resourceGroupName --template-uri "D:\GitHub\azure-docs-json-samples\SQLServerAndDatabase\azuredeploy.json" `
-    --parameters 'projectName=' + $projectName \
-                 'administratorLogin=' + $adminUser \
-                 'administratorLoginPassword=' + $adminPassword
-
-Read-Host -Prompt "Press [ENTER] to continue ..."
-```
-
-* * *
 
 ## <a name="validate-the-deployment"></a>Ověření nasazení
 
@@ -104,22 +75,10 @@ Pokud chcete přejít k [dalším krokům](#next-steps), zachovejte tuto skupinu
 
 Odstranění skupiny prostředků:
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
 Remove-AzResourceGroup -Name $resourceGroupName
 ```
-
-# <a name="the-azure-cli"></a>[Rozhraní příkazového řádku Azure](#tab/azure-cli)
-
-```azurecli-interactive
-echo "Enter the Resource Group name:" &&
-read resourceGroupName &&
-az group delete --name $resourceGroupName
-```
-
-* * *
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -130,4 +89,3 @@ az group delete --name $resourceGroupName
 - Pokud chcete vytvořit izolovanou databázi pomocí Azure CLI, přečtěte si [ukázky v Azure CLI](az-cli-script-samples-content-guide.md).
 - Chcete-li vytvořit izolovanou databázi pomocí Azure PowerShell, přečtěte si téma [Azure PowerShell Samples](powershell-script-content-guide.md).
 - Další informace o vytváření šablon Správce prostředků najdete v tématu [Vytvoření první šablony](../../azure-resource-manager/templates/template-tutorial-create-first-template.md).
- 

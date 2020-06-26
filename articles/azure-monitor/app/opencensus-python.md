@@ -7,12 +7,12 @@ ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
 ms.custom: tracking-python
-ms.openlocfilehash: 04581826ab6b05333e910a162c7a0ca9566ec334
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: c6b84b25ae85d20ccd7872daf16014e5bed6934b
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85079114"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374147"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Nastavení Azure Monitor pro aplikaci Python
 
@@ -251,9 +251,9 @@ Podrobnosti o tom, jak upravit sledovanou telemetrii před odesláním do Azure 
 
 4. Exportér pošle data metriky Azure Monitor v pevném intervalu. Výchozí hodnota je každých 15 sekund. Sledujeme jednu metriku, takže tato data metriky s libovolným hodnotou a časovým razítkem, které obsahuje, se budou posílat každý interval. Data můžete najít v části `customMetrics` .
 
-#### <a name="standard-metrics"></a>Standardní metriky
+#### <a name="performance-counters"></a>Čítače výkonu
 
-Ve výchozím nastavení odešle Exportér metrik sadu standardních metrik, která bude Azure Monitor. Tuto možnost můžete zakázat nastavením `enable_standard_metrics` příznaku na `False` v konstruktoru pro exportéra metrik.
+Ve výchozím nastavení odešle Exportér metrik sadu čítačů výkonu, které budou Azure Monitor. Tuto možnost můžete zakázat nastavením `enable_standard_metrics` příznaku na `False` v konstruktoru pro exportéra metrik.
 
 ```python
 ...
@@ -262,17 +262,16 @@ exporter = metrics_exporter.new_metrics_exporter(
   connection_string='InstrumentationKey=<your-instrumentation-key-here>')
 ...
 ```
-Níže je uveden seznam standardních metrik, které jsou aktuálně odesílány:
+Níže je uveden seznam čítačů výkonu, které se aktuálně odesílají:
 
 - Dostupná paměť (bajty)
 - Čas procesoru procesoru (v procentech)
 - Míra příchozích požadavků (za sekundu)
 - Průměrná doba provádění příchozího požadavku (milisekundy)
-- Míra odchozích požadavků (za sekundu)
 - Využití procesoru procesem (procento)
 - Zpracovat soukromé bajty (bajty)
 
-Tyto metriky byste měli být schopní zobrazit v `performanceCounters` . Počet příchozích požadavků by byl v rámci `customMetrics` . Další informace najdete v tématu [čítače výkonu](https://docs.microsoft.com/azure/azure-monitor/app/performance-counters).
+Tyto metriky byste měli být schopní zobrazit v `performanceCounters` . Další informace najdete v tématu [čítače výkonu](https://docs.microsoft.com/azure/azure-monitor/app/performance-counters).
 
 #### <a name="modify-telemetry"></a>Úprava telemetrie
 

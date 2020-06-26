@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/21/2020
+ms.date: 06/24/2020
 ms.author: radeltch
-ms.openlocfilehash: 3b65422a9baf33a2b55de9f1bdfcc85918616d65
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 999ab77538a145189e0576c920216fa55d8508f6
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800749"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85366814"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Nastavení Pacemaker na Red Hat Enterprise Linux v Azure
 
@@ -196,6 +196,11 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
    <pre><code>sudo pcs quorum expected-votes 2
    </code></pre>
 
+1. **[1]** povolí souběžné akce plotu.
+
+   <pre><code>sudo pcs property set concurrent-fencing=true
+   </code></pre>
+
 ## <a name="create-stonith-device"></a>Vytvoření zařízení STONITH
 
 Zařízení STONITH používá instanční objekt k autorizaci proti Microsoft Azure. Pomocí těchto kroků můžete vytvořit instanční objekt.
@@ -221,21 +226,26 @@ Pro vstupní soubor použijte následující obsah. Je potřeba upravit obsah pr
 
 ```json
 {
-  "Name": "Linux Fence Agent Role",
-  "Id": null,
-  "IsCustom": true,
-  "Description": "Allows to power-off and start virtual machines",
-  "Actions": [
-    "Microsoft.Compute/*/read",
-    "Microsoft.Compute/virtualMachines/powerOff/action",
-    "Microsoft.Compute/virtualMachines/start/action"
-  ],
-  "NotActions": [
-  ],
-  "AssignableScopes": [
-    "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e",
-    "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"
-  ]
+    "properties": {
+        "roleName": "Linux Fence Agent Role",
+        "description": "Allows to power-off and start virtual machines",
+        "assignableScopes": [
+            "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e",
+            "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"
+        ],
+        "permissions": [
+            {
+                "actions": [
+                    "Microsoft.Compute/*/read",
+                    "Microsoft.Compute/virtualMachines/powerOff/action",
+                    "Microsoft.Compute/virtualMachines/start/action"
+                ],
+                "notActions": [],
+                "dataActions": [],
+                "notDataActions": []
+            }
+        ]
+    }
 }
 ```
 
@@ -267,7 +277,13 @@ K nakonfigurování ochranného zařízení použijte následující příkaz.
 > [!NOTE]
 > Možnost ' pcmk_host_map ' je požadována pouze v příkazu, pokud názvy hostitelů RHEL a názvy uzlů Azure nejsou stejné. Přečtěte si část tučné v příkazu.
 
-<pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm login="<b>login ID</b>" passwd="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:10.0.0.6;prod-cl1-1:10.0.0.7"</b> power_timeout=240 pcmk_reboot_timeout=900</code></pre>
+<pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm login="<b>login ID</b>" passwd="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:10.0.0.6;prod-cl1-1:10.0.0.7"</b> \
+power_timeout=240 pcmk_reboot_timeout=900 pcmk_monitor_timeout=120 pcmk_monitor_retries=4 pcmk_action_limit=3 \
+op monitor interval=3600
+</code></pre>
+
+> [!IMPORTANT]
+> Operace monitorování a oplocení jsou rozserializovány. Výsledkem je, že pokud už existuje již běžící operace monitorování a současná událost, dojde k převzetí služeb při selhání clusteru z důvodu již běžící operace monitorování.  
 
 ### <a name="1-enable-the-use-of-a-stonith-device"></a>**[1]** povolit použití zařízení STONITH
 

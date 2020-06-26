@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 9717c76b42a63479c77f862057bfb141954eacff
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0381418f20e126f94060b9f495fe1fe8b54e713b
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83673403"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85378423"
 ---
 ## <a name="create-a-device-template"></a>Vytvoření šablony zařízení
 
@@ -21,7 +21,7 @@ Vytvořte složku s názvem `environmental-sensor` na místním počítači.
 
 Stáhněte si soubor JSON [modelu schopností environmentálního senzoru](https://raw.githubusercontent.com/Azure/IoTPlugandPlay/9004219bff1e958b7cd6ff2a52209f4b7ae19396/samples/EnvironmentalSensorInline.capabilitymodel.json) a uložte ho do `environmental-sensor` složky.
 
-Pomocí textového editoru nahraďte tyto dvě instance `{YOUR_COMPANY_NAME_HERE}` názvem vaší společnosti v `EnvironmentalSensorInline.capabilitymodel.json` souboru, který jste stáhli.
+Pomocí textového editoru nahraďte tyto dvě instance `{YOUR_COMPANY_NAME_HERE}` názvem vaší společnosti v `EnvironmentalSensorInline.capabilitymodel.json` souboru, který jste stáhli. Používejte pouze znaky a-z, A-Z, 0-9 a podtržítko.
 
 V aplikaci Azure IoT Central vytvořte šablonu zařízení s názvem *senzor okolního prostředí* importem `EnvironmentalSensorInline.capabilitymodel.json` souboru modelu schopností zařízení:
 
@@ -34,8 +34,8 @@ Model schopností zařízení zahrnuje dvě rozhraní: standardní **informace o
 | Vlastnost | Stav zařízení     | Stav zařízení. K dispozici jsou dva stavy online/offline. |
 | Vlastnost (zapisovatelná) | Název zákazníka    | Jméno zákazníka, který aktuálně provozuje zařízení. |
 | Vlastnost (zapisovatelná) | Úroveň jasu | Úroveň jasu světla na zařízení. Může být zadáno jako 1 (vysoká), 2 (střední), 3 (nízká). |
-| Telemetrická data | Teplota | Aktuální teplota zjištěná zařízením. |
-| Telemetrická data | Vlhkost    | Aktuální vlhkost zjištěná zařízením |
+| Telemetrie | Teplota | Aktuální teplota zjištěná zařízením. |
+| Telemetrie | Vlhkost    | Aktuální vlhkost zjištěná zařízením |
 | Příkaz | blikají          | Zahájit blikání indikátoru LED na zařízení pro daný časový interval. |
 | Příkaz | turnon         | Zapněte na zařízení indikátor LED. |
 | Příkaz | turnoff        | Vypněte na zařízení indikátor LED. |
@@ -84,7 +84,7 @@ V aplikaci Azure IoT Central přidejte reálné zařízení do šablony zaříze
 
 1. Vyberte **+ Nový**.
 
-1. Ujistěte se, **že je** **simulovaná** . Pak vyberte **vytvořit**.
+1. Ujistěte se, **že je** **simulovaná** . Potom vyberte **Vytvořit**.
 
 Klikněte na název zařízení a pak vyberte **připojit**. Poznamenejte si informace o připojení zařízení na stránce **připojení zařízení** – **Rozsah ID**, **ID zařízení**a **primární klíč**. Tyto hodnoty budete potřebovat při vytváření kódu zařízení:
 

@@ -5,19 +5,19 @@ services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 06/22/2020
-ms.openlocfilehash: f5b87d048127bf856a5a683397540769a7040fd6
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 382849c30c3520bbb208886de5f302f59fdac98b
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323437"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374452"
 ---
 # <a name="reduce-latency-with-proximity-placement-groups-preview"></a>Snížení latence se skupinami umístění blízkosti (Preview)
 
 > [!Note]
 > Když použijete skupiny umístění pro Proximity s AKS, bude se toto umístění vztahovat jenom na uzly agenta. Vylepšení uzlu na uzel a odpovídající hostované latenci pod Společné umístění nemá vliv na umístění řídicí plochy clusteru.
 
-Při nasazování aplikace v Azure dojde k rozšiřování instancí virtuálních počítačů v různých oblastech nebo zónách dostupnosti k zajištění latence sítě, což může mít vliv na celkový výkon vaší aplikace. Skupina umístění blízkosti je logické seskupení, které se používá k zajištění, že jsou výpočetní prostředky Azure fyzicky umístěné blízko sebe. Některé aplikace, jako jsou hraní her, metodologie a vysoká frekvence obchodování (HFT), vyžadují nízkou latenci a úlohy, které se rychle dokončí. U scénářů s vysokým výkonem (HPC), jako jsou třeba, zvažte použití [skupin umístění blízkosti](https://docs.microsoft.com/azure/virtual-machines/linux/co-location#proximity-placement-groups) pro fondy uzlů clusteru.
+Při nasazování aplikace v Azure dojde k rozšiřování instancí virtuálních počítačů v různých oblastech nebo zónách dostupnosti k zajištění latence sítě, což může mít vliv na celkový výkon vaší aplikace. Skupina umístění blízkosti je logické seskupení, které se používá k zajištění, že jsou výpočetní prostředky Azure fyzicky umístěné blízko sebe. Některé aplikace, jako jsou hraní her, metodologie a vysoká frekvence obchodování (HFT), vyžadují nízkou latenci a úlohy, které se rychle dokončí. U scénářů s vysokým výkonem (HPC), jako jsou třeba, zvažte použití [skupin umístění blízkosti](https://docs.microsoft.com/azure/virtual-machines/linux/co-location#proximity-placement-groups) pro fondy uzlů vašeho clusteru.
 
 ## <a name="limitations"></a>Omezení
 

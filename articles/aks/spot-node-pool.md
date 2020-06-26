@@ -5,12 +5,12 @@ services: container-service
 ms.service: container-service
 ms.topic: article
 ms.date: 02/25/2020
-ms.openlocfilehash: d1dc54810371c4258616ca95b9f0f0abeee4c415
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: ce2871883300e9eb135b51fdb2f5566e451084f6
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84462953"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374606"
 ---
 # <a name="preview---add-a-spot-node-pool-to-an-azure-kubernetes-service-aks-cluster"></a>Preview – přidání fondu uzlů s přímým vložením do clusteru Azure Kubernetes Service (AKS)
 
@@ -28,7 +28,7 @@ Tato funkce je aktuálně ve verzi Preview.
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Když vytvoříte cluster pro použití fondu uzlů s přímým použitím, musí tento cluster také používat Virtual Machine Scale Sets pro fondy uzlů a *standardní* SKU pro vyrovnávání zatížení. Po vytvoření clusteru musíte také přidat další fond uzlů, aby bylo možné použít fond uzlů s přímým použitím. Přidání dalšího fondu uzlů je zahrnuto v pozdějším kroku, ale nejprve je nutné povolit funkci verze Preview.
 
@@ -41,9 +41,6 @@ Když vytvoříte cluster pro použití fondu uzlů s přímým použitím, mus�
 ### <a name="register-spotpoolpreview-preview-feature"></a>Funkce Register spotpoolpreview ve verzi Preview
 
 Pokud chcete vytvořit cluster AKS, který používá fond uzlů s přímým použitím, musíte u svého předplatného povolit příznak funkce *spotpoolpreview* . Tato funkce poskytuje nejnovější sadu vylepšení služby při konfiguraci clusteru.
-
-> [!CAUTION]
-> Když zaregistrujete funkci v rámci předplatného, nemůžete tuto funkci v tuto chvíli zrušit. Po povolení některých funkcí verze Preview se můžou použít výchozí hodnoty pro všechny clustery AKS vytvořené v rámci předplatného. Nepovolujte funkce ve verzi Preview u produkčních předplatných. Použijte samostatné předplatné k testování funkcí ve verzi Preview a získejte zpětnou vazbu.
 
 Pomocí příkazu [AZ Feature Register][az-feature-register] Zaregistrujte příznak funkce *spotpoolpreview* , jak je znázorněno v následujícím příkladu:
 

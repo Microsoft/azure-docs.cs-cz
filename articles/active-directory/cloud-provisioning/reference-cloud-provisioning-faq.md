@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/26/2020
+ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7c92cb120f91f8cb76675ba9fc50bad0517886e
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 3ef482804c80602771963633bcc46feaf014c363
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/25/2020
-ms.locfileid: "85360533"
+ms.locfileid: "85373824"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Nejčastější dotazy k Azure Active Directory Connect
 
@@ -32,9 +32,9 @@ Zřizování cloudu se plánuje spouštět každé 2 minuty. Každé 2 minuty se
 
 To se očekává. Příčinou chyb je objekt uživatele, který není ve službě Azure AD přítomen. Po zřízení uživatele v Azure AD by se měly hodnoty hash hesel zřídit v následném spuštění. Počkejte na několik spuštění a potvrďte, že synchronizace hodnot hash hesel už neobsahuje chyby.
 
-**Otázka: co se stane, pokud instance služby Active Directory obsahuje atributy, které nejsou podporovány službou Cloud provisoning (např. rozšíření adresáře)?**
+**Otázka: co se stane, pokud instance služby Active Directory obsahuje atributy, které nejsou podporovány zřizováním cloudu (např. rozšíření adresáře)?**
 
-Zřizování cloudu se spustí a zřídí podporované atributy. Nepodporované atributy se nezřídí do Azure AD. Zkontrolujte přípony adresářů ve službě Active Directory a ujistěte se, že nepotřebujete, aby tento atribut Flow do služby Azure AD. Pokud je vyžadován jeden nebo více atributů, zvažte použití Azure AD Connect synchronizaci nebo přesunutí požadovaných informací do jednoho z podporovaných atributů (například atributy rozšíření 1-15).
+Zřizování cloudu se spustí a zřídí podporované atributy. Nepodporované atributy se nezřídí do Azure AD. Zkontrolujte přípony adresářů ve službě Active Directory a ujistěte se, že tyto atributy nepotřebujete k toku do služby Azure AD. Pokud je vyžadován jeden nebo více atributů, zvažte použití Azure AD Connect synchronizaci nebo přesunutí požadovaných informací do jednoho z podporovaných atributů (například atributy rozšíření 1-15).
 
 **Otázka: Jaký je rozdíl mezi Azure AD Connect synchronizace a zřizování cloudu?**
 
@@ -62,7 +62,7 @@ Ano, zřizování cloudu vytvoří instanční objekt pro konfiguraci zřizován
 
 **Otázka: co se stane, když se synchronizovaný uživatel při příštím přihlášení vyžaduje, aby změnil heslo?**
 
-Pokud je v zřizování cloudu zapnutá synchronizace hodnot hash hesel a synchronizovaný uživatel musí změnit heslo při příštím přihlášení v místní službě AD, zřizování cloudu nezajistí, aby se hodnota hash hesla změnila na Azure AD. Jakmile uživatel změní heslo, bude hodnota hash hesla uživatele zřízená ze služby AD do služby Azure AD.
+Pokud je v zřizování cloudu zapnutá synchronizace hodnot hash hesel a synchronizovaný uživatel musí změnit heslo při příštím přihlášení v místní službě AD, zřizování cloudu nezřizuje hodnotu hash hesla "Změna" pro heslo pro Azure AD. Jakmile uživatel změní heslo, bude hodnota hash hesla uživatele zřízená ze služby AD do služby Azure AD.
 
 **Otázka: podporuje zřízení cloudu zpětný zápis do MS-DS-consistencyGUID pro libovolný objekt?**
 
@@ -70,7 +70,7 @@ Ne, zřizování cloudu nepodporuje zpětný zápis do MS-DS-consistencyGUID pro
 
 **Otázka: zřizování uživatelů pomocí zřizování cloudu. Odstranil (a) jsem konfiguraci. Proč se stále zobrazují staré synchronizované objekty ve službě Azure AD?** 
 
-Když konfiguraci odstraníte, zřizování cloudu neprovádí čištění synchronizovaných objektů ve službě Azure AD. Aby se zajistilo, že nemáte staré objekty, změňte obor konfigurace na prázdnou skupinu nebo organizační jednotky. Jakmile zřizování spustí a vyčistí objekty, zakažte a odstraňte konfiguraci. 
+Když konfiguraci odstraníte, zřizování cloudu neodstraní automaticky synchronizované objekty ve službě Azure AD. Aby se zajistilo, že nemáte staré objekty, změňte obor konfigurace na prázdnou skupinu nebo organizační jednotky. Jakmile zřizování spustí a vyčistí objekty, zakažte a odstraňte konfiguraci. 
 
 **Otázka: co znamená, že systém Exchange Hybrid není podporován?**
 
@@ -79,6 +79,10 @@ Funkce Hybridní nasazení systému Exchange umožňuje souběžnou existenci po
 **Otázka: mohu nainstalovat agenta zřizování cloudu na Windows serveru Core?**
 
 Ne, instalace agenta na Server Core není podporovaná.
+
+**Otázka: mohu použít pracovní server s agentem zřizování cloudu?**
+
+Ne, pracovní servery se nepodporují.
 
 ## <a name="next-steps"></a>Další kroky 
 

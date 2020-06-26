@@ -3,17 +3,19 @@ title: Instalace hybridního cloudového rozšíření (HCX)
 description: Nastavení řešení HCX (VMware Hybrid Cloud Extension) pro privátní cloud Azure VMware Solution (AVS)
 ms.topic: how-to
 ms.date: 05/19/2020
-ms.openlocfilehash: dc5f7f82b83c82538b2d5a7b4c87131afb3fcc20
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 3037d12ebbb036098cfc00a42521513bc2df6170
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873651"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367542"
 ---
 # <a name="install-hcx-for-azure-vmware-solution"></a>Nainstalovat HCX pro řešení VMware pro Azure
 
-V tomto článku se seznámíme s postupy pro nastavení řešení HCX (VMware Hybrid Cloud Extension) pro privátní cloud řešení Azure VMware (AVS). HCX Advanced (výchozí instalace) podporuje až tři externí weby, kde každá externí lokalita vyžaduje, aby byl nainstalovaný a aktivovaný HCX Enterprise Manager nebo konektor.
-HCX umožňuje migrovat úlohy VMware do cloudu i do jiných připojených webů prostřednictvím různých integrovaných typů migrace HCX. Pokud potřebujete víc než tři lokality, zákazníci mají možnost povolit doplněk HCX Enterprise prostřednictvím podpory. HCX Enterprise přináší zákazníkům po obecné dostupnosti další poplatky (GA), ale poskytuje [Další funkce](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/).
+V tomto článku se seznámíme s postupy pro nastavení řešení HCX (VMWare Hybrid Cloud Extension) pro privátní cloud řešení Azure VMWare (AVS). HCX umožňuje migrovat úlohy VMware do cloudu a další připojené lokality prostřednictvím různých integrovaných typů migrace HCX.
+
+HCX Advanced – výchozí instalace podporuje až tři externí weby. Pokud potřebujete víc než tři lokality, zákazníci mají možnost povolit doplněk HCX Enterprise prostřednictvím podpory. HCX Enterprise Installation pro zákazníky přináší další poplatky za obecnou dostupnost (GA), ale poskytuje [Další funkce](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/).
+
 
 [Před zahájením, před začátkem](#before-you-begin), [požadavky na verzi softwaru](#software-version-requirements)a [požadavky nejprve důkladně](#prerequisites) prostudujte. 
 
@@ -25,9 +27,9 @@ Pak projdeme všemi potřebnými postupy:
 > * Konfigurace sítě pro odchozí připojení a síť služby
 > * Dokončení instalace kontrolou stavu zařízení
 
-Po dokončení instalace se zadávají Doporučené další kroky.
+Po dokončení instalace můžete postupovat podle doporučených dalších kroků uvedených na konci tohoto článku.  
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
     
 * Přečtěte si část [kurz](tutorial-network-checklist.md) Basic AVS software definované datacentrum (SDDC).
 * Přečtěte si [dokumentaci k VMware HCX](https://docs.vmware.com/en/VMware-HCX/index.html) , včetně uživatelské příručky HCX.
@@ -36,17 +38,17 @@ Po dokončení instalace se zadávají Doporučené další kroky.
 * Volitelně si můžete prohlédnout související materiály VMware na HCX, jako je například [série blogů](https://blogs.vmware.com/vsphere/2019/10/cloud-migration-series-part-2.html) VMware VSPHERE v HCX. 
 * Seřazení služby AVS HCX Enterprise Activation prostřednictvím kanálů podpory služby AVS
 
-Přizpůsobení velikosti úloh na výpočetní prostředky a prostředky úložiště je zásadní krok plánování při přípravě na použití řešení HCX privátního cloudu. Tento krok změny velikosti by se měl řešit jako součást prvotního plánování prostředí privátního cloudu. 
+Přizpůsobení velikosti úloh na výpočetní prostředky a prostředky úložiště je zásadní krok plánování při přípravě na použití řešení HCX privátního cloudu. Vyřešte krok změny velikosti jako součást prvotního plánování prostředí privátního cloudu.   
 
 ## <a name="software-version-requirements"></a>Požadavky na verzi softwaru
 Na součástech infrastruktury musí běžet požadovaná minimální verze. 
                                                          
-| Typ součásti                                                          | Požadavky na zdrojové prostředí                                                                   | Požadavky na cílové prostředí                                                                      |
+| Typ součásti    | Požadavky na zdrojové prostředí    | Požadavky na cílové prostředí   |
 | --- | --- | --- |
-| vCenter Server                                                          | 5.1<br/><br/>Pokud používáte 5,5 U1 nebo starší, použijte samostatné uživatelské rozhraní HCX pro operace HCX.         | 6,0 U2 a vyšší                                                                                          |
-| ESXi                                                                    | 5.0                                                                                               | ESXi 6,0 a vyšší                                                                                        |
-| NSX                                                                     | Pro HCX síťové rozšíření logických přepínačů ve zdroji: NSXv 6.2 + nebo NSX-T 2.4 +              | NSXv 6.2 + nebo NSX-T 2.4 +<br/><br/pro směrování blízkosti HCX: NSXv 6.4 + (směrování blízkosti se nepodporuje s NSX-T). |
-| vCloud ředitel                                                         | Nepožadováno – bez interoperability s vCloud ředitelem ve zdrojové lokalitě | Když je cílové prostředí integrované s vCloud Directorem, minimum je 9.1.0.2.              |
+| vCenter Server   | 5.1<br/><br/>Pokud používáte 5,5 U1 nebo starší, použijte samostatné uživatelské rozhraní HCX pro operace HCX.  | 6,0 U2 a vyšší   |
+| ESXi   | 5.0    | ESXi 6,0 a vyšší   |
+| NSX    | Pro HCX síťové rozšíření logických přepínačů ve zdroji: NSXv 6.2 + nebo NSX-T 2.4 +   | NSXv 6.2 + nebo NSX-T 2.4 +<br/><br/>Pro směrování blízkosti HCX: NSXv 6.4 + (směrování blízkosti se nepodporuje s NSX-T). |
+| vCloud ředitel   | Nepožadováno – bez interoperability s vCloud ředitelem ve zdrojové lokalitě | Při integraci cílového prostředí s vCloud Directorem je minimum 9.1.0.2.  |
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -58,7 +60,7 @@ Na součástech infrastruktury musí běžet požadovaná minimální verze.
 
 * Místní HCX IX a NE zařízení by měly být schopné dosáhnout infrastruktury vCenter a ESXi.
 
-* Aby bylo možné nasadit zařízení WAN Interconnect kromě bloku síťových adres CIDR/22 používaného pro nasazení SDDC v Azure Portal, HCX vyžaduje blok/29. Tuto skutečnost byste měli zvážit v plánování vaší sítě.
+* Aby bylo možné nasadit zařízení WAN Interconnect kromě bloku síťových adres CIDR/22 používaného pro nasazení SDDC v Azure Portal, HCX vyžaduje blok/29. Nezapomeňte tento požadavek zvážit do plánování vaší sítě.
 
 ## <a name="deploy-the-vmware-hcx-ova-on-premises"></a>Nasazení HCX vajíček v místním prostředí VMware
 
@@ -66,11 +68,11 @@ Na součástech infrastruktury musí běžet požadovaná minimální verze.
 
     ![Vyberte HCX v nástroji pro systém AVS vCenter.](./media/hybrid-cloud-extension-installation/avs-vsphere-client.png)
 
-1. Chcete-li stáhnout soubor VMware HCX vajíček, **Administration**vyberte možnost  >  **aktualizace systému**správy.
+1. V části **Správa**vyberte možnost **aktualizace systému** a pak vyberte **odkaz pro stažení požadavku** . Stáhněte si soubor VMware HCX vajíček.
 
     ![Získat aktualizace systému](./media/hybrid-cloud-extension-installation/administration-updates.png)
 
-1. Vyberte šablonu OVF pro nasazení do místního serveru vCenter.  
+1. Pak přejdete na místní Server vCenter a vyberte šablonu OVF, která se nasadí do místního serveru vCenter.  
 
     ![Vybrat šablonu OVF](./media/hybrid-cloud-extension-installation/select-template.png)
 
@@ -90,7 +92,10 @@ Na součástech infrastruktury musí běžet požadovaná minimální verze.
 
 Po instalaci proveďte následující kroky.
 
-1. Otevřete HCX Manager na adrese `https://HCXManagerIP:9443` a přihlaste se pomocí svého uživatelského jména a hesla. 
+1. Přihlaste se k místnímu HCX Manageru `https://HCXManagerIP:9443` a přihlaste se pomocí svého uživatelského jména a hesla. 
+
+   > [!IMPORTANT]
+   > Nezapomeňte zahrnout `9443` číslo portu s IP adresou HCX Manageru.
 
 1. V nástroji **licencování**zadejte svůj **HCX rozšířený klíč**.  
 
@@ -99,7 +104,7 @@ Po instalaci proveďte následující kroky.
     > [!NOTE]
     > HCX Manager musí mít nakonfigurován otevřený přístup k Internetu nebo proxy.
 
-1. Nakonfigurujte vCenter.
+1. V případě potřeby upravte informace vCenter v **vCenter**.
 
     ![Konfigurace VCenter](./media/hybrid-cloud-extension-installation/configure-vcenter.png)
 
@@ -109,25 +114,25 @@ Po instalaci proveďte následující kroky.
 
 ## <a name="configure-hcx"></a>Konfigurace HCX 
 
-1. Přihlaste se k místnímu serveru vCenter a pak vyberte **Domů**  >  **HCX**.
+1. Přihlaste se k místnímu serveru vCenter a v části **Domů**vyberte **HCX**.
 
     ![HCX v VCenter](./media/hybrid-cloud-extension-installation/hcx-vcenter.png)
 
-1. Vyberte **Infrastructure**  >  **párování lokalit**infrastruktury  >  **Přidat párování webů**.
+1. V části **infrastruktura**vyberte **párování lokalit**  >  **Přidat párování webu**.
 
     ![Přidat párování webů](./media/hybrid-cloud-extension-installation/site-pairing.png)
 
-1. Zadejte **adresu URL vzdáleného HCXu**, **uživatelské jméno**a **heslo**. Potom vyberte **Připojit**.
+1. Zadejte adresu URL nebo IP adresu vzdáleného HCXu, funkce AVS cloudadmin uživatelské jméno a heslo a pak vyberte **připojit**.
 
    V systému se zobrazuje připojená lokalita.
    
     ![Připojení k webu](./media/hybrid-cloud-extension-installation/site-connection.png)
 
-1. Vyberte **propojit**  >  **službu Multi-Site**  >  **Network profily sítě**  >  **vytvořit profil sítě**.
+1. V části **infrastruktura**vyberte **propojit**  >  **službu Multi-Site**  >  **Network profily sítě**  >  **vytvořit profil sítě**.
 
     ![Vytvořit profil sítě](./media/hybrid-cloud-extension-installation/create-network-profile.png)
 
-1. Zadejte HCX IX a NE rozsahy IP adres (minimálně 2 IP adresy se vyžadují pro zařízení IX a NE).
+1. Pro nový profil sítě zadejte HCX IX a NE rozsahy IP adres (minimálně dvě IP adresy se vyžadují pro zařízení IX a NE).
     
    ![Zadejte rozsahy IP adres](./media/hybrid-cloud-extension-installation/enter-address-ranges.png)
   
@@ -140,7 +145,7 @@ Po instalaci proveďte následující kroky.
 
     ![Vytvořit výpočetní profil](./media/hybrid-cloud-extension-installation/create-compute-profile.png)
 
-1. Vyberte služby, které chcete povolit, jako je například migrace, rozšíření sítě a zotavení po havárii. Vyberte **Pokračovat**.
+1. Vyberte služby, které chcete povolit, například migraci, síťové rozšíření nebo zotavení po havárii, a pak vyberte **pokračovat**.
 
     ![Vybrat služby](./media/hybrid-cloud-extension-installation/select-services.png)
 
@@ -165,7 +170,7 @@ Po instalaci proveďte následující kroky.
 
 1. Vyberte **odchozí připojení k síti** a vyberte **pokračovat**.
       
-    Vyberte jeden nebo více profilů sítě, aby jedna z následujících možností platila:  
+    Vyberte jeden nebo více profilů sítě, aby byla splněna jedna z následujících podmínek:  
     * Zařízení Interconnect na vzdálené lokalitě se dají kontaktovat přes tuto síť.  
     * Zařízení na dálku se můžou připojit k zařízením s místním propojením přes tuto síť.  
     
@@ -175,31 +180,31 @@ Po instalaci proveďte následující kroky.
 
 1. Vyberte **vMotion síťový profil** a vyberte **pokračovat**.
       
-    Vyberte profil sítě, přes který je možné dosáhnout rozhraní vMotion hostitelů ESXi. Pokud jste tento profil sítě ještě nedefinovali, můžete ho vytvořit tady. Pokud nemáte vMotion síť, vyberte možnost **profil sítě pro správu**.  
+   Vyberte profil sítě, přes který je možné dosáhnout rozhraní vMotion hostitelů ESXi. Pokud jste tento profil sítě ještě nedefinovali, můžete ho vytvořit tady. Pokud nemáte vMotion síť, vyberte možnost **profil sítě pro správu**.  
     
-    ![Vybrat vMotion síťový profil](./media/hybrid-cloud-extension-installation/vmotion-network-profile.png)
+   ![Vybrat vMotion síťový profil](./media/hybrid-cloud-extension-installation/vmotion-network-profile.png)
 
-1. Vyberte **profil sítě pro replikaci vSphere** a vyberte **pokračovat**.
+1. V části **Vybrat profil sítě pro replikaci vSphere**vyberte profil sítě vSphere replikačního rozhraní hostitelů ESXi a pak vyberte **pokračovat**.
       
-    Vyberte profil sítě, přes který je možné dosáhnout rozhraní pro replikaci vSphere hostitelů ESXi. Ve většině případů je tento profil stejný jako síťový profil pro správu.  
+   Ve většině případů je tento profil stejný jako síťový profil pro správu.  
     
-    ![Vybrat profil sítě pro replikaci vSphere](./media/hybrid-cloud-extension-installation/vsphere-replication-network-profile.png)
+   ![Vybrat profil sítě pro replikaci vSphere](./media/hybrid-cloud-extension-installation/vsphere-replication-network-profile.png)
 
-1. Vyberte možnost **distribuované přepínače pro rozšíření sítě** a vyberte **pokračovat**.  
+1. V části **Výběr distribuovaných přepínačů pro síťová rozšíření**vyberte Služba DVS, na které máte sítě, které budou integrované a připojené k virtuálním počítačům.  Vyberte **Pokračovat**.  
       
-    Vyberte distribuované virtuální přepínače, na kterých máte sítě, ke kterým jsou připojené Virtual Machines, které se budou migrovat.
-
     ![Výběr distribuovaných virtuálních přepínačů](./media/hybrid-cloud-extension-installation/distributed-switches.png)
 
-1. Zkontrolujte pravidla připojení a vyberte **pokračovat**. Vyberte **Dokončit** a vytvořte tak výpočetní profil.  
+1. Zkontrolujte pravidla připojení a vyberte **pokračovat**.  
 
     ![Vytvořit výpočetní profil](./media/hybrid-cloud-extension-installation/complete-compute-profile.png)
+
+1.  Vyberte **Dokončit** a vytvořte tak výpočetní profil.
 
 ## <a name="configure-network-uplink"></a>Konfigurace odchozího připojení k síti
 
 Teď nakonfigurujte změnu profilu sítě v síťovém připojení AVS SDDC pro odchozí připojení.
 
-1. Přihlaste se k SDDC NSX-T pro vytvoření nového logického přepínače nebo použijte existující logický přepínač, který se dá použít pro odchozí připojení k síti mezi místními a AVS SDDC.
+1. Přihlaste se k SDDC NSX-T pro vytvoření nového logického přepínače nebo použijte existující logický přepínač, který se dá použít pro odchozí připojení k síti mezi místními a funkci AVS SDDC.
 
 1. Vytvořte profil sítě pro odchozí připojení HCX v prostředí AVS SDDC, které se dá použít pro místní připojení k funkci AVS SDDC Communications.  
     
@@ -217,45 +222,45 @@ Teď nakonfigurujte síť mezi místními a SDDC službou AVS.
 
 1. Přihlaste se ke službě AVS SDDC vCenter a vyberte **HCX**.
 
-1. Vyberte **možnost**  >  **Interconnect**  >  **síť služby**Interconnect Interconnect  >  **vytvořit síť sítě**.  Nakonfigurujte profily sítě a výpočetní prostředky vytvořené v předchozích krocích.    
+2. V části **infrastruktura**vyberte **Interconnect**  >  **Service sítě**  >  **vytvořit síť** a nakonfigurujte profily sítě a výpočetní profily vytvořené v předchozích krocích.    
       
     ![Konfigurace sítě](./media/hybrid-cloud-extension-installation/configure-service-mesh.png)
 
-1. Vyberte **vytvořit síť služby** a vyberte **pokračovat**.  
-      
-    Vyberte spárované weby, mezi kterými chcete povolit hybridní mobilitu.  
+3. Vyberte spárované weby a povolte hybridní možnosti a vyberte **pokračovat**.   
     
     ![Vybrat spárované weby](./media/hybrid-cloud-extension-installation/select-paired-sites.png)
 
-1. Vyberte možnost **COMPUTE Profile** a vyberte **pokračovat**.
+4. Vyberte zdrojové a vzdálené výpočetní profily pro povolení služeb hybridního prostředí a vyberte **pokračovat**.
       
-    Vyberte jeden výpočetní profil každého ze zdrojových a vzdálených lokalit a povolte služby hybridního umístění. Výběry budou definovat prostředky, kde Virtual Machines budou moci využívat služby HCX.  
+    Výběry definují prostředky, ve kterých virtuální počítače můžou využívat služby HCX.  
       
     ![Povolit služby hybridního řešení](./media/hybrid-cloud-extension-installation/enable-hybridity.png)
 
-1. Vyberte služby, které chcete povolit pro HCX, a pak vyberte **pokračovat**.  
+5. Vyberte služby, které chcete povolit, a vyberte **pokračovat**.  
       
     ![Výběr služeb HCX Services](./media/hybrid-cloud-extension-installation/hcx-services.png)
 
-1. V **rozšířené konfiguraci – přepsat síťové profily pro odesílání** vyberte **pokračovat**.  
+6. V **rozšířené konfiguraci – přepsat síťové profily pro odesílání** vyberte **pokračovat**.  
       
     Síťové profily odchozího připojení se používají pro připojení k síti, přes kterou je možné oslovit zařízení s propojením vzdálené lokality.  
       
     ![Přepsat profily pro odesílání](./media/hybrid-cloud-extension-installation/override-uplink-profiles.png)
 
-1. V části **Pokročilá konfigurace – síťové rozšíření zařízení horizontální**navýšení kapacity vyberte **Konfigurovat zařízení rozšíření sítě škálovat**. 
+7. Vyberte možnost **Konfigurovat zařízení rozšíření sítě škálovat**. 
       
     ![Horizontální navýšení kapacity rozšíření sítě](./media/hybrid-cloud-extension-installation/network-extension-scale-out.png)
 
-1. Zadejte počet zařízení odpovídající počtu přepínačů Služba DVS.  
+8. Zadejte počet zařízení odpovídající počtu přepínačů Služba DVS.  
       
     ![Konfigurace počtu zařízení](./media/hybrid-cloud-extension-installation/appliance-scale.png)
 
-1. V **Možnosti Pokročilá konfigurace – Analýza provozu**vyberte **pokračovat**.  
+9. Chcete-li přeskočit, vyberte **pokračovat** .  
       
     ![Konfigurace techniků provozu](./media/hybrid-cloud-extension-installation/traffic-engineering.png)
 
-1. Přečtěte si náhled topologie a vyberte **pokračovat**. Pak zadejte uživatelsky přívětivý název pro tuto síť a vyberte **Dokončit** .  
+10. Přečtěte si náhled topologie a vyberte **pokračovat**. 
+
+11. Zadejte uživatelsky přívětivý název pro tuto síť a vyberte **Dokončit** .  
       
     ![Dokončete síť služby.](./media/hybrid-cloud-extension-installation/complete-service-mesh.png)
 

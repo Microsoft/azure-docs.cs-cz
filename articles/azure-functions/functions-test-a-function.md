@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: dae826367661648f3ee56235fd6497d265bf6a1e
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 45a7de4f19b663823a5eff7ba4f352992c3aaf0d
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85339469"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374198"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategie testování kódu ve službě Azure Functions
 
@@ -35,22 +35,22 @@ Následující příklad popisuje, jak vytvořit aplikaci funkcí jazyka C# v ap
 
 Pokud chcete nastavit prostředí, vytvořte funkci a otestujte aplikaci. Následující kroky vám pomůžou vytvořit aplikace a funkce, které jsou potřeba pro podporu testů:
 
-1. [Vytvoření nové aplikace Functions](./functions-create-first-azure-function.md) a pojmenování IT *funkcí*
-2. [Vytvořte funkci http ze šablony](./functions-create-first-azure-function.md) a pojmenujte ji *MyHttpTrigger*.
-3. [Vytvořte funkci časovače ze šablony](./functions-create-scheduled-function.md) a pojmenujte ji *MyTimerTrigger*.
-4. [Vytvořte aplikaci XUnit test](https://xunit.github.io/docs/getting-started-dotnet-core) v aplikaci Visual Studio tak, že kliknete na **soubor > nový > Project > Visual C# > .NET Core > xUnit test Project** a pojmenujte ho IT *Functions. test*. 
+1. [Vytvoření nové aplikace Functions](./functions-create-first-azure-function.md) a pojmenování IT **funkcí**
+2. [Vytvořte funkci http ze šablony](./functions-create-first-azure-function.md) a pojmenujte ji **MyHttpTrigger**.
+3. [Vytvořte funkci časovače ze šablony](./functions-create-scheduled-function.md) a pojmenujte ji **MyTimerTrigger**.
+4. [Vytvořte v řešení aplikaci XUnit test](https://xunit.github.io/docs/getting-started-dotnet-core) a pojmenujte ji **Functions. Tests**. 
 5. Pomocí NuGet přidejte odkaz z testovací aplikace do [Microsoft. AspNetCore. Mvc.](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/)
-6. [Odkázat na aplikaci *Functions* ](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017) z *Functions. test* App.
+6. [Odkázat na aplikaci *Functions* ](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017) v aplikaci *Functions. Tests* .
 
 ### <a name="create-test-classes"></a>Vytváření testovacích tříd
 
-Nyní, když jsou vytvořeny aplikace, můžete vytvořit třídy používané ke spouštění automatizovaných testů.
+Nyní, když jsou vytvořeny projekty, můžete vytvořit třídy používané ke spouštění automatizovaných testů.
 
 Každá funkce převezme instanci [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) , která zpracovává protokolování zpráv. Některé testy buď neprotokolují zprávy, nebo nemají žádné obavy o implementaci protokolování. Jiné testy potřebují k vyhodnocení zpráv protokolovaných za účelem určení, zda test projde.
 
-`ListLogger`Třída implementuje `ILogger` rozhraní a uchovává interní seznam zpráv pro vyhodnocení během testu.
+Vytvoříte novou třídu s názvem `ListLogger` , která obsahuje interní seznam zpráv k vyhodnocení během testování. Chcete-li implementovat požadované `ILogger` rozhraní, třída potřebuje obor. Následující třída napodobá oboru pro testovací případy, které se mají předat `ListLogger` třídě.
 
-**Klikněte pravým tlačítkem** na aplikaci *Functions. test* a vyberte **Přidat > třídu**, pojmenujte ji **NullScope.cs** a zadejte následující kód:
+Vytvořte novou třídu v projektu *Functions. Tests* s názvem **NullScope.cs** a zadejte následující kód:
 
 ```csharp
 using System;
@@ -68,7 +68,7 @@ namespace Functions.Tests
 }
 ```
 
-Potom klikněte **pravým tlačítkem myši** na aplikace *Functions. test* a vyberte **Přidat > třídu**, pojmenujte ji **ListLogger.cs** a zadejte následující kód:
+Dále vytvořte novou třídu v projektu *Functions. Tests* s názvem **ListLogger.cs** a zadejte následující kód:
 
 ```csharp
 using Microsoft.Extensions.Logging;
@@ -114,7 +114,7 @@ namespace Functions.Tests
 
 `Logs`Kolekce je instancí `List<string>` a je inicializována v konstruktoru.
 
-Potom klikněte **pravým tlačítkem myši** na aplikace *Functions. test* a vyberte **Přidat > třídu**, pojmenujte ji **LoggerTypes.cs** a zadejte následující kód:
+Dále vytvořte nový soubor v projektu *Functions. Tests* s názvem **LoggerTypes.cs** a zadejte následující kód:
 
 ```csharp
 namespace Functions.Tests
@@ -129,7 +129,7 @@ namespace Functions.Tests
 
 Tento výčet Určuje typ protokolovacího nástroje používaného testy. 
 
-Potom klikněte **pravým tlačítkem myši** na aplikace *Functions. test* a vyberte **Přidat > třídu**, pojmenujte ji **TestFactory.cs** a zadejte následující kód:
+Nyní vytvořte novou třídu v projektu *Functions. Tests* s názvem **TestFactory.cs** a zadejte následující kód:
 
 ```csharp
 using Microsoft.AspNetCore.Http;
@@ -163,12 +163,11 @@ namespace Functions.Tests
             return qs;
         }
 
-        public static DefaultHttpRequest CreateHttpRequest(string queryStringKey, string queryStringValue)
+        public static HttpRequest CreateHttpRequest(string queryStringKey, string queryStringValue)
         {
-            var request = new DefaultHttpRequest(new DefaultHttpContext())
-            {
-                Query = new QueryCollection(CreateDictionary(queryStringKey, queryStringValue))
-            };
+            var context = new DefaultHttpContext();
+            var request = context.Request;
+            request.Query = new QueryCollection(CreateDictionary(queryStringKey, queryStringValue));
             return request;
         }
 
@@ -201,7 +200,7 @@ namespace Functions.Tests
 
 - **CreateLogger**: v závislosti na typu protokolovacího nástroje Tato metoda vrátí třídu protokolovacího nástroje použitou pro testování. `ListLogger`Uchovává záznam protokolovaných zpráv, které jsou k dispozici pro vyhodnocení v testech.
 
-Potom klikněte **pravým tlačítkem myši** na aplikace *Functions. test* a vyberte **Přidat > třídu**, pojmenujte ji **FunctionsTests.cs** a zadejte následující kód:
+Nakonec vytvořte novou třídu v projektu *Functions. Tests* s názvem **FunctionsTests.cs** a zadejte následující kód:
 
 ```csharp
 using Microsoft.AspNetCore.Mvc;

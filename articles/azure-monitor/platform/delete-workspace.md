@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: 0fad77f4704b9cbd8c2a37e39c09a334b08766ef
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: c93ba19cc70aa6b5df054dcc2e7e06885b02d661
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85193540"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367950"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>Odstranění a obnovení pracovního prostoru Azure Log Analytics
 
@@ -24,7 +24,7 @@ Když odstraníte Log Analytics pracovní prostor, provede se operace obnoviteln
 > [!NOTE]
 > Pokud chcete přepsat chování podmíněného odstranění a trvale odstranit pracovní prostor, postupujte podle kroků v části [trvalé odstranění pracovního prostoru](#permanent-workspace-delete).
 
-Při odstraňování pracovního prostoru chcete postupovat opatrně, protože může dojít k důležitým datům a konfiguracím, které by mohly mít negativní dopad na provoz služby. Přečtěte si, jaké agenty, řešení a další služby a zdroje Azure ukládají svá data v Log Analytics, například:
+Při odstraňování pracovního prostoru chcete postupovat opatrně, protože může dojít k důležitým datům a konfiguracím, které by mohly mít negativní dopad na provoz služby. Přečtěte si, co agenti, řešení a další služby Azure ukládají svá data v Log Analytics, například:
 
 * Řešení pro správu
 * Azure Automation
@@ -104,11 +104,14 @@ Pracovní prostor a všechna jeho data se po operaci obnovení vrátí zpět. Ř
 > [!NOTE]
 > * Po opětovném vytvoření pracovního prostoru během období obnovitelného odstranění se zobrazí informace o tom, že tento název pracovního prostoru se už používá. 
  
-## <a name="troubleshooting"></a>Řešení potíží
-K odstranění pracovního prostoru musíte mít aspoň *Log Analytics oprávnění přispěvatele* .<br>
-Pokud se zobrazí chybová zpráva *Tento název pracovního prostoru se už používá nebo je v* *konfliktu* při vytváření pracovního prostoru, může to být od:
-* Název pracovního prostoru není dostupný a používá ho někdo ve vaší organizaci, nebo jiný zákazník.
-* Pracovní prostor se odstranil za posledních 14 dní a jeho název se zachová rezervovaný pro období obnovitelného odstranění. Chcete-li přepsat obnovitelné odstranění a trvale odstranit pracovní prostor a vytvořit nový pracovní prostor se stejným názvem, postupujte podle následujících kroků a obnovte nejprve pracovní prostor a proveďte trvalé odstranění:<br>
-   1. [Obnovte](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#recover-workspace) pracovní prostor.
-   2. [Trvale odstraňte](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#permanent-workspace-delete) pracovní prostor.
-   3. Vytvoří nový pracovní prostor s použitím stejného názvu pracovního prostoru.
+## <a name="troubleshooting"></a>Poradce při potížích
+
+K odstranění pracovního prostoru musíte mít aspoň *Log Analytics oprávnění přispěvatele* .
+
+* Pokud si nejste jistí, jestli je odstraněný pracovní prostor ve stavu obnovitelného odstranění a je možné ho obnovit, klikněte na stránce *Log Analytics pracovní prostory* na [obnovit](#recover-workspace) a zobrazí se seznam pracovních prostorů odstraněných v rámci předplatného. Trvale odstraněné pracovní prostory nejsou v seznamu zahrnuté.
+* Pokud se zobrazí chybová zpráva *Tento název pracovního prostoru se už používá nebo je v* *konfliktu* při vytváření pracovního prostoru, může to být od:
+  * Název pracovního prostoru není dostupný a používá ho někdo ve vaší organizaci, nebo jiný zákazník.
+  * Pracovní prostor se odstranil za posledních 14 dní a jeho název se zachová rezervovaný pro období obnovitelného odstranění. Chcete-li přepsat obnovitelné odstranění a trvale odstranit pracovní prostor a vytvořit nový pracovní prostor se stejným názvem, postupujte podle následujících kroků a obnovte nejprve pracovní prostor a proveďte trvalé odstranění:<br>
+     1. [Obnovte](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#recover-workspace) pracovní prostor.
+     2. [Trvale odstraňte](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#permanent-workspace-delete) pracovní prostor.
+     3. Vytvoří nový pracovní prostor s použitím stejného názvu pracovního prostoru.

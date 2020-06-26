@@ -10,12 +10,12 @@ ms.date: 05/01/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: tracking-python
-ms.openlocfilehash: 6eb6403ad6d1f181d1f51dde6db266070bf32a56
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: 458cbe35e9d46b8a6afde399e20f3b484dfe6478
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194752"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85373365"
 ---
 # <a name="create-develop-and-maintain-azure-synapse-studio-preview-notebooks"></a>Vytváření, vývoj a údržba notebooků Azure synapse Studio (Preview)
 
@@ -119,7 +119,7 @@ Funkce IntelliSense mají různé úrovně splatnosti pro různé jazyky. Pomoc�
 |PySpark (Python)|Ano|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
 |Spark (Scala)|Ano|Ano|Ano|Ano|-|-|-|Ano|
 |SparkSQL|Ano|Ano|-|-|-|-|-|-|
-|.NET for Spark (C#)|Ano|-|-|-|-|-|-|-|
+|.NET for Spark (C#)|Yes|-|-|-|-|-|-|-|
 
 ### <a name="format-text-cell-with-toolbar-buttons"></a>Formátování textové buňky pomocí tlačítek panelu nástrojů
 
@@ -344,7 +344,7 @@ Podobně jako Jupyter poznámkové bloky mají poznámkové bloky Azure synapse 
 
    ![režim příkazu](./media/apache-spark-development-using-notebooks/synapse-command-mode2.png)
 
-2. Režim úprav je označen textovým kurzorem, který vás vyzve k zadání v oblasti editoru. Když je buňka v režimu úprav, nemůžete do ní zadávat text. Stisknutím `Enter` nebo pomocí myši přejděte na oblast editoru buňky a přejděte do režimu úprav.
+2. Režim úprav je označen textovým kurzorem, který vás vyzve k zadání v oblasti editoru. Když je buňka v režimu úprav, můžete zadat text do buňky. Stisknutím `Enter` nebo pomocí myši přejděte na oblast editoru buňky a přejděte do režimu úprav.
    
    ![rezim-uprav](./media/apache-spark-development-using-notebooks/synapse-edit-mode2.png)
 

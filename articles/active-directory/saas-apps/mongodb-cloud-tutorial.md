@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef8094464b428f1f46017b0d4abaac5aeb1fa428
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 901022e31a917cd499d9a1daf5903c72e96aa9f0
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82024507"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367202"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mongodb-cloud"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s cloudem MongoDB
 
@@ -101,7 +101,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě předchozích atributů očekává cloudová aplikace MongoDB několik dalších atributů, které se vrátí zpět v odpovědi SAML. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle svých požadavků.
     
-    | Název | |  Zdrojový atribut|
+    | Name | |  Zdrojový atribut|
     | ---------------| --------------- | --------- |
     | e-mail | | User. userPrincipalName |
     | firstName | | User. křestní jméno |
@@ -118,11 +118,11 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte **Azure Active Directory** > **Uživatelé** > **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte **Azure Active Directory**  >  **Uživatelé**  >  **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a potom heslo zapište.
    1. Vyberte **Vytvořit**.
 
@@ -130,13 +130,13 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 
 V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup ke cloudu MongoDB.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace** > **všechny aplikace**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**  >  **všechny aplikace**.
 1. V seznamu aplikace vyberte **Cloud MongoDB**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
    ![Snímek obrazovky oddílu Správa se zvýrazněnými uživateli a skupinami](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**. Pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny**.
+1. Vyberte možnost **Přidat uživatele**. Pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny**.
 
     ![Snímek stránky uživatelů a skupin se zvýrazněným možností přidat uživatele](common/add-assign-user.png)
 
@@ -158,7 +158,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když vyberete dlaždici MongoDB Cloud na přístupovém panelu, automaticky jste přihlášení ke cloudu MongoDB, pro který jste nastavili jednotné přihlašování. Další informace najdete v tématu [přihlášení a spouštění aplikací na portálu moje aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [Kurzy integrace aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
@@ -166,7 +166,7 @@ Když vyberete dlaždici MongoDB Cloud na přístupovém panelu, automaticky jst
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Zaregistrujte se do MongoDB Atlas v Azure](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/mongodb.mongodb_atlas_azure_08082019?tab=Overview)
+- [Zaregistrujte se do MongoDB Atlas v Azure](https://azuremarketplace.microsoft.com/marketplace/apps/mongodb.mongodb_atlas_may_2020?tab=Overview)
 
 - [Vyzkoušejte si MongoDB Cloud s Azure AD](https://aad.portal.azure.com/)
 

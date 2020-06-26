@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 06/19/2020
+ms.date: 06/25/2020
 ms.author: jgao
-ms.openlocfilehash: 6cf10ea9693f922ee8edfb6bab5d1a7cde681fcb
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: e3d0c3493039a1c4cda2bec0d949e610321f6c57
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85339424"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85373807"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Použití skriptů nasazení v šablonách (Preview)
 
@@ -108,7 +108,7 @@ Následující kód JSON je příklad.  Nejnovější schéma šablony najdete [
       "storageAccountKey": "myKey"
     },
     "azPowerShellVersion": "3.0",  // or "azCliVersion": "2.0.80"
-    "arguments": "[concat('-name ', parameters('name'))]",
+    "arguments": "-name \\\"John Dole\\\"",
     "environmentVariables": [
       {
         "name": "someSecret",
@@ -142,6 +142,19 @@ Podrobnosti hodnoty vlastnosti:
 - **storageAccountSettings**: Zadejte nastavení pro použití existujícího účtu úložiště. Pokud není zadaný, automaticky se vytvoří účet úložiště. Viz [použití existujícího účtu úložiště](#use-existing-storage-account).
 - **azPowerShellVersion** / **azCliVersion**: Zadejte verzi modulu, která se má použít. Seznam podporovaných verzí PowerShellu a rozhraní příkazového řádku najdete v tématu [požadavky](#prerequisites).
 - **argumenty**: zadejte hodnoty parametrů. Hodnoty jsou oddělené mezerami.
+
+    Skripty nasazení rozdělí argumenty do pole řetězců vyvoláním [CommandLineToArgvW](/windows/win32/api/shellapi/nf-shellapi-commandlinetoargvw) systému. To je nezbytné, protože argumenty jsou předány jako [vlastnost příkazu](/rest/api/container-instances/containergroups/createorupdate#containerexec) službě Azure Container instance a vlastnost Command je pole řetězce.
+
+    Pokud argumenty obsahují řídicí znaky, použijte [JsonEscaper](https://www.jsonescaper.com/) pro dvojitou sekvenci znaků. Vložte původní řídicí řetězec do nástroje a pak vyberte **Escape**.  Nástroj vypíše řetězec s dvojitým řídicím znakem. Například v předchozí ukázkové šabloně je argumentem **název \\ "Jan dole \\ "**.  Řetězec s řídicím řetězcem je **name \\ \\ \\ "Jan dole \\ \\ \\ "**.
+
+    Chcete-li předat parametr šablony ARM typu Object jako argument, převeďte objekt na řetězec pomocí funkce [String ()](./template-functions-string.md#string) a pak použijte funkci [Replace ()](./template-functions-string.md#replace) , která nahradí všechny ** \\ "** into ** \\ \\ \\ "**. Například:
+
+    ```json
+    replace(string(parameters('tables')), '\"', '\\\"')
+    ```
+
+    Chcete-li zobrazit vzorovou šablonu, vyberte [zde](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-jsonEscape.json).
+
 - **environmentVariables**: Určete proměnné prostředí, které se mají předat skriptu. Další informace najdete v tématu [vývoj skriptů nasazení](#develop-deployment-scripts).
 - **scriptContent**: Zadejte obsah skriptu. Pokud chcete spustit externí skript, použijte `primaryScriptUri` místo toho. Příklady najdete v tématu [použití vloženého skriptu](#use-inline-scripts) a [použití externího skriptu](#use-external-scripts).
 - **primaryScriptUri**: zadejte veřejně přístupnou adresu URL ke skriptu primárního nasazení s podporovanými příponami souborů.
@@ -190,7 +203,7 @@ Výstup bude vypadat následovně:
 
 ## <a name="use-external-scripts"></a>Použití externích skriptů
 
-Kromě vložených skriptů můžete použít také externí soubory skriptu. Podporují se jenom primární skripty PowerShellu s příponou souboru **ps1** . U skriptů CLI můžou primární skripty mít jakákoli rozšíření (nebo bez přípony), pokud jsou tyto skripty platné bash skripty. Chcete-li použít externí soubory skriptu, nahraďte parametr `scriptContent` `primaryScriptUri` . Příklad:
+Kromě vložených skriptů můžete použít také externí soubory skriptu. Podporují se jenom primární skripty PowerShellu s příponou souboru **ps1** . U skriptů CLI můžou primární skripty mít jakákoli rozšíření (nebo bez přípony), pokud jsou tyto skripty platné bash skripty. Chcete-li použít externí soubory skriptu, nahraďte parametr `scriptContent` `primaryScriptUri` . Například:
 
 ```json
 "primaryScriptURI": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
@@ -275,7 +288,7 @@ Chcete-li zadat existující účet úložiště, přidejte následující JSON 
 ```
 
 - **storageAccountName**: zadejte název účtu úložiště.
-- **storageAccountKey "**: zadejte jeden z klíčů účtu úložiště. [`listKeys()`](./template-functions-resource.md#listkeys)K načtení klíče lze použít funkci. Příklad:
+- **storageAccountKey "**: zadejte jeden z klíčů účtu úložiště. [`listKeys()`](./template-functions-resource.md#listkeys)K načtení klíče lze použít funkci. Například:
 
     ```json
     "storageAccountSettings": {
@@ -372,15 +385,15 @@ Výstup příkazu list je podobný následujícímu:
 ```json
 [
   {
-    "arguments": "-name 'John Dole'",
+    "arguments": "-name \\\"John Dole\\\"",
     "azPowerShellVersion": "3.0",
     "cleanupPreference": "OnSuccess",
     "containerSettings": {
       "containerGroupName": null
     },
     "environmentVariables": null,
-    "forceUpdateTag": "20200618T194637Z",
-    "id": "/subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourceGroups/myds0618rg/providers/Microsoft.Resources/deploymentScripts/runPowerShellInlineWithOutput",
+    "forceUpdateTag": "20200625T025902Z",
+    "id": "/subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourceGroups/myds0624rg/providers/Microsoft.Resources/deploymentScripts/runPowerShellInlineWithOutput",
     "identity": {
       "tenantId": "01234567-89AB-CDEF-0123-456789ABCDEF",
       "type": "userAssigned",
@@ -399,30 +412,32 @@ Výstup příkazu list je podobný následujícímu:
     },
     "primaryScriptUri": null,
     "provisioningState": "Succeeded",
-    "resourceGroup": "myds0618rg",
+    "resourceGroup": "myds0624rg",
     "retentionInterval": "1 day, 0:00:00",
     "scriptContent": "\r\n          param([string] $name)\r\n          $output = \"Hello {0}\" -f $name\r\n          Write-Output $output\r\n          $DeploymentScriptOutputs = @{}\r\n          $DeploymentScriptOutputs['text'] = $output\r\n        ",
     "status": {
-      "containerInstanceId": "/subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourceGroups/myds0618rg/providers/Microsoft.ContainerInstance/containerGroups/ftnlvo6rlrvo2azscripts",
-      "endTime": "2020-06-18T19:49:45.926522+00:00",
+      "containerInstanceId": "/subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourceGroups/myds0624rg/providers/Microsoft.ContainerInstance/containerGroups/64lxews2qfa5uazscripts",
+      "endTime": "2020-06-25T03:00:16.796923+00:00",
       "error": null,
-      "expirationTime": "2020-06-19T19:49:45.926522+00:00",
-      "startTime": "2020-06-18T19:46:45.667124+00:00",
-      "storageAccountId": "/subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourceGroups/myds0618rg/providers/Microsoft.Storage/storageAccounts/ftnlvo6rlrvo2azscripts"
+      "expirationTime": "2020-06-26T03:00:16.796923+00:00",
+      "startTime": "2020-06-25T02:59:07.595140+00:00",
+      "storageAccountId": "/subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourceGroups/myds0624rg/providers/Microsoft.Storage/storageAccounts/64lxews2qfa5uazscripts"
     },
+    "storageAccountSettings": null,
     "supportingScriptUris": null,
     "systemData": {
-      "createdAt": "2020-06-18T19:46:41.363741+00:00",
-      "createdBy": "someon@contoso.com",
+      "createdAt": "2020-06-25T02:59:04.750195+00:00",
+      "createdBy": "someone@contoso.com",
       "createdByType": "User",
-      "lastModifiedAt": "2020-06-18T19:46:41.363741+00:00",
+      "lastModifiedAt": "2020-06-25T02:59:04.750195+00:00",
       "lastModifiedBy": "someone@contoso.com",
       "lastModifiedByType": "User"
     },
     "tags": null,
     "timeout": "1:00:00",
     "type": "Microsoft.Resources/deploymentScripts"
-  },
+  }
+]
 ```
 
 ### <a name="use-rest-api"></a>Použití rozhraní REST API
@@ -446,9 +461,55 @@ armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups
 
 Výstup je podobný tomuto:
 
-:::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-status.json" range="1-37" highlight="15,34":::
+```json
+{
+  "kind": "AzurePowerShell",
+  "identity": {
+    "type": "userAssigned",
+    "tenantId": "01234567-89AB-CDEF-0123-456789ABCDEF",
+    "userAssignedIdentities": {
+      "/subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourceGroups/myidentity1008rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myuami": {
+        "principalId": "01234567-89AB-CDEF-0123-456789ABCDEF",
+        "clientId": "01234567-89AB-CDEF-0123-456789ABCDEF"
+      }
+    }
+  },
+  "location": "centralus",
+  "systemData": {
+    "createdBy": "someone@contoso.com",
+    "createdByType": "User",
+    "createdAt": "2020-06-25T02:59:04.7501955Z",
+    "lastModifiedBy": "someone@contoso.com",
+    "lastModifiedByType": "User",
+    "lastModifiedAt": "2020-06-25T02:59:04.7501955Z"
+  },
+  "properties": {
+    "provisioningState": "Succeeded",
+    "forceUpdateTag": "20200625T025902Z",
+    "azPowerShellVersion": "3.0",
+    "scriptContent": "\r\n          param([string] $name)\r\n          $output = \"Hello {0}\" -f $name\r\n          Write-Output $output\r\n          $DeploymentScriptOutputs = @{}\r\n          $DeploymentScriptOutputs['text'] = $output\r\n        ",
+    "arguments": "-name \\\"John Dole\\\"",
+    "retentionInterval": "P1D",
+    "timeout": "PT1H",
+    "containerSettings": {},
+    "status": {
+      "containerInstanceId": "/subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourceGroups/myds0624rg/providers/Microsoft.ContainerInstance/containerGroups/64lxews2qfa5uazscripts",
+      "storageAccountId": "/subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourceGroups/myds0624rg/providers/Microsoft.Storage/storageAccounts/64lxews2qfa5uazscripts",
+      "startTime": "2020-06-25T02:59:07.5951401Z",
+      "endTime": "2020-06-25T03:00:16.7969234Z",
+      "expirationTime": "2020-06-26T03:00:16.7969234Z"
+    },
+    "outputs": {
+      "text": "Hello John Dole"
+    },
+    "cleanupPreference": "OnSuccess"
+  },
+  "id": "/subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourceGroups/myds0624rg/providers/Microsoft.Resources/deploymentScripts/runPowerShellInlineWithOutput",
+  "type": "Microsoft.Resources/deploymentScripts",
+  "name": "runPowerShellInlineWithOutput"
+}
 
-Výstup zobrazuje stav nasazení a ID prostředků skriptu nasazení.
+```
 
 Následující REST API vrátí protokol:
 
@@ -472,7 +533,7 @@ K provádění skriptů a odstraňování potíží je potřeba účet úložiš
 
   - **Always**: odstranit automaticky vytvořené prostředky, jakmile se spuštění skriptu dostane do stavu terminálu. Pokud se použije existující účet úložiště, služba skriptu odstraní sdílenou složku vytvořenou v účtu úložiště. Vzhledem k tomu, že prostředek deploymentScripts může být stále přítomen po vyčištění prostředků, služba skriptu uchovává výsledky spuštění skriptu, například stdout, výstupy, návratové hodnoty atd. před odstraněním prostředků.
   - **Úspěch**: Odstraňte automaticky vytvořené prostředky pouze v případě, že je spuštění skriptu úspěšné. Pokud se použije existující účet úložiště, služba skriptu odstraní sdílenou složku, jenom když je spuštění skriptu úspěšné. K vyhledání informací o ladění máte stále přístup k prostředkům.
-  - **Vypršení platnosti**: odstranit automaticky prostředky jenom v případě, že vypršela platnost nastavení **retentionInterval** Pokud se použije existující účet úložiště, služba skriptu odebere sdílenou složku, ale zachová účet úložiště.
+  - **Vypršení platnosti**: odstranit automaticky vytvořené prostředky jenom v případě, že vypršela platnost nastavení **retentionInterval** . Pokud se použije existující účet úložiště, služba skriptu odebere sdílenou složku, ale zachová účet úložiště.
 
 - **retentionInterval**: zadejte časový interval, po který se zachová prostředek skriptu, a potom vyprší platnost a odstraní se.
 

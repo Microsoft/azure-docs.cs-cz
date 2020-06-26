@@ -5,12 +5,12 @@ author: ofirmanor
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: d2fea04e44e9a658f97d006de672fd757d894210
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: b8afaae744522bec5675e5a8c17d8b0ea0be0c37
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84321865"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367134"
 ---
 # <a name="common-alert-schema-definitions"></a>Definice běžných schémat upozornění
 
@@ -221,9 +221,9 @@ Jakákoli instance výstrahy popisuje prostředek, který byl ovlivněn, a pří
                 ]
             }
         ]
-    },
     "IncludeSearchResults": "True",
     "AlertType": "Metric measurement"
+    },
 }
 ```
 

@@ -4,12 +4,12 @@ description: Naučte se, jak můžete pomocí Azure Backup posílat data mimo s�
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.openlocfilehash: 6d448687836842835259fcf7bbad41af815dfb58
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: 5611b5a6fc9ba8bbff11e35449caf0dd9d33fa21
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84629288"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85373298"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Pracovní postup offline zálohování v Azure Backup
 
@@ -90,7 +90,7 @@ Tato část popisuje pracovní postup offline zálohování, aby bylo možné do
 
     * **Pracovní umístění**: dočasné umístění úložiště, do kterého se vytvořila prvotní záložní kopie. Pracovní umístění může být ve sdílené síťové složce nebo na místním počítači. Pokud je počítač kopírování a zdrojový počítač jiný, zadejte úplnou síťovou cestu k pracovnímu umístění.
     * **Azure Resource Manager účet úložiště**: název účtu úložiště Správce prostředků typu (pro obecné účely v1 nebo pro obecné účely v2) v jakémkoli předplatném Azure.
-    * **Azure Storage kontejner**: název cílového objektu BLOB úložiště v účtu služby Azure Storage, do kterého se data záloh importují, než se zkopírují do trezoru Recovery Services.
+    * **Azure Storage kontejner**: název cílového kontejneru úložiště objektů BLOB v účtu služby Azure Storage, do kterého se data záloh importují, než se zkopírují do trezoru Recovery Services.
     * **ID předplatného Azure**: ID předplatného Azure, kde se vytváří účet Azure Storage.
     * **Název úlohy pro import do Azure**: jedinečný název, pomocí kterého služba Azure Import/Export a Azure Backup sleduje přenos dat odeslaných na disky do Azure.
   

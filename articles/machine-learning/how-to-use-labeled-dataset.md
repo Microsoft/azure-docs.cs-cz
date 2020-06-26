@@ -7,14 +7,14 @@ ms.author: nibaccam
 ms.service: machine-learning
 ms.topic: how-to
 ms.date: 05/14/2020
-ms.openlocfilehash: 4cb8062a6cdc653fe69493ed6ae3f02ae71048d4
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 6401d620aea720584df0838cacc6df2f837ca699
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84431089"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374470"
 ---
-# <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>Vytvoření a zkoumání Azure Machine Learning datové sady s popisky
+# <a name="create-and-explore-azure-machine-learning-dataset-with-labels-preview"></a>Vytvoření a prozkoumat Azure Machine Learning datovou sadu s popisky (Preview)
 
 V tomto článku se dozvíte, jak exportovat popisky dat z Azure Machine Learning projektu označování dat a načíst je do oblíbených formátů, jako je například PANDAS dataframe pro zkoumání dat nebo Torchvision datovou sadu pro transformaci obrázku. 
 

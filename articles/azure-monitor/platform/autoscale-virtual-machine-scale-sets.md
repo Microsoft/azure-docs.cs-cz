@@ -6,15 +6,15 @@ ms.author: mimckitt
 ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
 ms.subservice: autoscale
-ms.date: 02/22/2016
+ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 65182ce16b8785a3a0e497b3ed8003fa9e7b67bc
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c003d66f59f932d818740bdd378280049bbeb7d3
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655425"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85373875"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Rozšířená konfigurace automatického škálování pomocí šablon Správce prostředků pro VM Scale Sets
 Můžete škálovat a škálovat v Virtual Machine Scale Sets na základě prahových hodnot metriky výkonu, podle plánu opakování nebo podle konkrétního data. Můžete také nakonfigurovat oznámení e-mailu a Webhooku pro akce škálování. Tento názorný postup ukazuje příklad konfigurace všech těchto objektů pomocí Správce prostředků šablony v sadě škálování virtuálního počítače.
@@ -24,7 +24,7 @@ Můžete škálovat a škálovat v Virtual Machine Scale Sets na základě praho
 >
 >
 
-## <a name="walkthrough"></a>Návod
+## <a name="walkthrough"></a>Názorný postup
 V tomto návodu použijeme [Azure Resource Explorer](https://resources.azure.com/) ke konfiguraci a aktualizaci nastavení automatického škálování pro sadu škálování. Azure Resource Explorer je snadný způsob, jak spravovat prostředky Azure prostřednictvím šablon Správce prostředků. Pokud nástroj Azure Resource Explorer Tool začínáte, přečtěte si [Tento Úvod](https://azure.microsoft.com/blog/azure-resource-explorer-a-new-tool-to-discover-the-azure-api/).
 
 1. Nasaďte novou škálu a nastavte základní nastavení automatického škálování. V tomto článku se používá ten z Galerie Azure pro rychlý Start, který má sadu Windows Scale nastavenou se základní šablonou automatického škálování. Systémy Linux Scale Sets fungují stejným způsobem.
@@ -36,7 +36,7 @@ V tomto návodu použijeme [Azure Resource Explorer](https://resources.azure.com
 
 3. Nyní můžete přidat další profily a pravidla na základě plánu nebo konkrétních požadavků. Vytvoříme nastavení automatického škálování se třemi profily. Pokud chcete pochopit profily a pravidla v automatickém škálování, Projděte si [osvědčené postupy pro automatické škálování](autoscale-best-practices.md).  
 
-    | Profily & pravidla | Popis |
+    | Profily & pravidla | Description |
     |--- | --- |
     | **Profil** |**Na základě výkonu nebo metriky** |
     | Pravidlo |Počet zpráv ve frontě Service Bus > x |

@@ -4,12 +4,12 @@ description: Zjistěte, jak vytvořit privátní cluster služby Azure Kubernete
 services: container-service
 ms.topic: article
 ms.date: 6/18/2020
-ms.openlocfilehash: d2705570f6993ecda0c88241d2dc517fac60695c
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: ebbe2f754aa70c6c65ec7016da29a4a1b0bd7dd6
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194038"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374521"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Vytvoření privátního clusteru služby Azure Kubernetes
 
@@ -100,7 +100,7 @@ Jak už bylo zmíněno, partnerský vztah virtuálních sítí je jedním ze zp�
 
 ## <a name="limitations"></a>Omezení 
 * Pro koncový bod privátního serveru API se nedají použít rozsahy povolených IP adres, které se vztahují jenom na veřejný server API.
-* Zóny dostupnosti jsou v současné době podporovány v některých oblastech, další informace najdete na začátku tohoto dokumentu. 
+* [Zóny dostupnosti][availability-zones] se v současné době podporují pro určité oblasti. 
 * [Omezení služby privátního propojení Azure][private-link-service] se vztahují na soukromé clustery.
 * Pro Azure DevOps agenty hostované Microsoftem s privátními clustery není podporována podpora. Zvažte použití [agentů pro samoobslužné hostování][devops-agents]. 
 * Pro zákazníky, kteří potřebují povolit Azure Container Registry pro práci s privátními AKS, musí mít Container Registry virtuální síť partnerský vztah s virtuální sítí clusteru agenta.
@@ -121,3 +121,4 @@ Jak už bylo zmíněno, partnerský vztah virtuálních sítí je jedním ze zp�
 [azure-bastion]: ../bastion/bastion-create-host-portal.md
 [express-route-or-vpn]: ../expressroute/expressroute-about-virtual-network-gateways.md
 [devops-agents]: https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=azure-devops
+[availability-zones]: availability-zones.md

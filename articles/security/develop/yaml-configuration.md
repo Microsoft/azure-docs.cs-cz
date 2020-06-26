@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: c53954e1aa1779bbf6933f7a81a95d25c8b4043a
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 6985107dd8f13e26875cf5ea7428b3280d00cea1
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362267"
+ms.locfileid: "85367253"
 ---
 # <a name="yaml-configuration-options-to-customize-the-build-tasks"></a>YAML možnosti konfigurace pro přizpůsobení úloh sestavení
 
@@ -27,7 +27,7 @@ V tomto článku jsou uvedené všechny možnosti konfigurace YAML dostupné v k
 
 | **InputType**      | **Typ**     | **To**            | **Požadováno** | **Výchozí hodnota**             | **Možnosti (pro rozevírací seznamy)**                                   | **Popis**                                                                                                                                                                                                                                                                                                                            |
 |------------|---------------|-----------------------|----------|---------------------------|----------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| InputType | Rozevíracího seznamu | stál | True | Basic | Basic, Custom | 
+| InputType | Rozevíracího seznamu | stál | True | Základní | Basic, Custom | 
 | ScanType | Rozevíracího seznamu | InputType = Basic | True | CustomScan | CustomScan, FullSystemScan, QuickScan, YourConfiguredScan | Typ kontroly, který se má použít pro antimalwarovou kontrolu.
 | FileDirPath | filePath | ScanType = CustomScan | True | $ (Build. StagingDirectory) |  | Určuje soubor nebo adresář, který se má prohledat.
 | DisableRemediation | Boolean | ScanType = CustomScan | False | true |  | Je-li zaškrtnuto: 1) vyloučení souborů jsou ignorována. 2) soubory archivu jsou prohledávány. 3) po zjištění se neaplikují akce. 4) položky protokolu událostí se po zjištění nezapisují. 5) zjišťování z vlastní kontroly se nezobrazí v uživatelském rozhraní. 6) výstup konzoly zobrazí seznam detekcí z vlastní kontroly.
@@ -43,7 +43,7 @@ V tomto článku jsou uvedené všechny možnosti konfigurace YAML dostupné v k
 
 | **InputType**      | **Typ**     | **To**            | **Požadováno** | **Výchozí hodnota**             | **Možnosti (pro rozevírací seznamy)**                                   | **Popis**                                                                                                                                                                                                                                                                                                                            |
 |------------|---------------|-----------------------|----------|---------------------------|----------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| InputType | Rozevíracího seznamu | stál | True | Basic | Basic, příkazový řádek | 
+| InputType | Rozevíracího seznamu | stál | True | Základní | Basic, příkazový řádek | 
 | náhodné | řetězec | InputType = příkazový řádek | True |  |  | Standardní argumenty BinSkim příkazového řádku, které se mají provést Výstupní cesta bude odebrána a nahrazena.<br>Další podrobnosti o argumentech příkazového řádku pro tento nástroj **najdete v poli** argumenty a spusťte úlohu sestavení.
 | Funkce | Rozevíracího seznamu | InputType = Basic | True | analyzovat | analyzovat, vypsat, exportConfig, exportRules | 
 | AnalyzeTarget | filePath | InputType = základní && funkce = analyzovat | True | $ (Build. ArtifactStagingDirectory) \* . dll;<br>$ (Build. ArtifactStagingDirectory) \* . exe |  | Jeden nebo více specifikátorů pro vzor souboru, adresáře nebo filtru, který je přeložen na jeden nebo více binárních souborů k analýze. ('; ' oddělený seznam)
@@ -125,7 +125,6 @@ V tomto článku jsou uvedené všechny možnosti konfigurace YAML dostupné v k
 | Antimalwarové | Boolean | AllTools = false | True | true |  | Publikování výsledků generovaných úkoly antimalwarového buildu.
 | BinSkim | Boolean | AllTools = false | True | true |  | Publikování výsledků generovaných úlohami sestavení BinSkim
 | CredScan | Boolean | AllTools = false | True | true |  | Publikování výsledků generovaných úlohami sestavení skeneru přihlašovacích údajů
-| MSRD | Boolean | AllTools = false | True | true |  | Publikujte informace úlohy a adresy URL úloh pro úlohy MSRD spuštěné úlohou sestavení MSRD. Úlohy MSRD jsou dlouho spuštěné a poskytují samostatné sestavy.
 | RoslynAnalyzers | Boolean | AllTools = false | True | false (nepravda) |  | Publikování výsledků generovaných Roslyn analyzátory pro vytváření úloh
 | TSLint | Boolean | AllTools = false | True | true |  | Publikování výsledků generovaných úlohami sestavení TSLint Všimněte si, že sestavy podporují jenom protokoly TSLint ve formátu JSON. Pokud jste zvolili jiný formát, aktualizujte prosím svůj úkol sestavení TSLint odpovídajícím způsobem.
 | ToolLogsNotFoundAction | rozevíracího seznamu | stál | True | Standard | Chyba, žádné, standardní, upozornění | Akce, která se má provést, když se nenaleznou protokoly pro vybraný nástroj (nebo libovolný nástroj, pokud jsou zaškrtnuté všechny nástroje), neznamená to, že se nástroj nespustil.<br/><br/>**Nastavení**<br/>**Žádné:** Zpráva je zapsána do podrobného výstupního datového proudu, který je přístupný pouze nastavením proměnné VSTS **System. Debug** na **hodnotu true**.<br/>**Standard:** (výchozí) zapíše standardní výstupní zprávu, že pro nástroj se nenašly žádné protokoly.<br/>**Upozornění:** Zapíše žlutou zprávu s upozorněním, že pro nástroj se nenašly žádné protokoly, které se zobrazí na stránce souhrnu sestavení jako upozornění.<br/>**Chyba:** Zapíše červenou chybovou zprávu a vyvolá výjimku s přerušením sestavení. Tuto možnost použijte, chcete-li zajistit, aby jednotlivé nástroje běžely pomocí jednotlivých možností nástroje.
@@ -141,7 +140,6 @@ V tomto článku jsou uvedené všechny možnosti konfigurace YAML dostupné v k
 | BinSkim | Boolean | AllTools = false | True | false (nepravda) |  | Výsledky sestavy generované úlohami sestavení BinSkim
 | BinSkimBreakOn | Rozevíracího seznamu | AllTools = true nebo BinSkim = true | True | Chyba | Chyba, WarningAbove | Úroveň výsledků, která se má ohlásit
 | CredScan | Boolean | AllTools = false | True | false (nepravda) |  | Výsledky sestav vygenerované úlohami sestavení skeneru přihlašovacích údajů
-| MSRD | Boolean | AllTools = false | True | false (nepravda) |  | Informace o úloze sestav a adresy URL úloh pro úlohy MSRD spuštěné úlohou sestavení MSRD Úlohy MSRD jsou dlouho spuštěné a poskytují samostatné sestavy.
 | RoslynAnalyzers | Boolean | AllTools = false | True | false (nepravda) |  | Výsledky sestavy generované úlohami sestavení analyzátoru Roslyn
 | RoslynAnalyzersBreakOn | Rozevíracího seznamu | AllTools = true nebo RoslynAnalyzers = true | True | Chyba | Chyba, WarningAbove | Úroveň výsledků, která se má ohlásit
 | TSLint | Boolean | AllTools = false | True | false (nepravda) |  | Výsledky sestavy generované úlohami sestavení TSLint Všimněte si, že sestavy podporují jenom protokoly TSLint ve formátu JSON. Pokud jste zvolili jiný formát, aktualizujte prosím svůj úkol sestavení TSLint odpovídajícím způsobem.

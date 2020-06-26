@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/23/2020
+ms.date: 06/24/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 46864b0af7a4770debaed84cc3805a219f6687e1
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: fd170d505286d57f383af50da282e120167fe499
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/25/2020
-ms.locfileid: "85361281"
+ms.locfileid: "85367355"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Použití Azure k hostování a spouštění scénářů pro úlohy SAP
 
@@ -112,6 +112,8 @@ Informace o integraci služeb Azure do komponent SAP najdete v těchto tématech
 
 ## <a name="change-log"></a>Protokol změn
 
+- 06/24/2020: Změna v [Nastavení Pacemaker v SLES v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) pro vydání nového vylepšeného agenta Azure plot a větší odolné konfigurace STONITH pro zařízení na základě agenta Azure plot 
+- 06/24/2020: Změna v [Nastavení Pacemaker v RHEL v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) pro uvolnění odolné konfigurace STONITH
 - 06/23/2020: změny v [Azure Virtual Machines Planning and Implementation pro SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide) Guide a zavedení [Azure Storage typů pro Průvodce úlohami SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage)
 - 06/22/2020: Přidejte kroky instalace pro nové rozšíření virtuálních počítačů pro SAP do [Průvodce nasazením](deployment-guide.md) .
 - 06/16/2020: Změna [připojení veřejných koncových bodů pro virtuální počítače s využitím Azure Standard interního nástroje ve scénářích SAP ha](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections) pro přidání odkazu do dokumentace k infrastruktuře veřejných cloudů SUSE 101 

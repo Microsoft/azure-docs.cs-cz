@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: b02ba8bd6e3ae858c9e3ded07776a8a83ede171a
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: f214dbbc1991e64f86890687523be256c69e46d3
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212581"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374266"
 ---
 # <a name="create-a-new-saas-offer-in-the-commercial-marketplace"></a>Vytvoření nové nabídky SaaS na komerčním webu Marketplace
 
@@ -287,7 +287,6 @@ Toto pole je vyžadováno.
     - **Střední** (90 × 90, požadováno)
     - **Velký** (216 × 216, požadováno)
     - **Roztažitelné** (255 × 115)
-    - **Hero** (815 x 290)
 
 - **Snímky obrazovky** (povinné) – přidejte maximálně pět snímků obrazovky, které demonstrují vaši nabídku. velikost je 1280 x 720 pixelů. Všechny obrázky musí být v. Formát PNG.
 - **Videa** (volitelné) – přidejte odkazy na videa, která demonstrují vaši nabídku. Můžete použít odkazy na videa YouTube nebo Vimeo, která se zobrazí spolu s vaší nabídkou pro zákazníky. Budete taky muset zadat miniaturu videa, ve formátu PNG se velikost nastaví na 1280 x 720 pixelů. Můžete zobrazit maximálně čtyři videa na jednu nabídku.

@@ -7,15 +7,15 @@ ms.author: jushiman
 ms.topic: how-to
 ms.service: virtual-machine-scale-sets
 ms.subservice: disks
-ms.date: 5/18/2017
+ms.date: 6/25/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 85f8694a017c8de94d987c244994a24ad0929441
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 03cbe4eb56f3b3b99f87048b699f76b30b7937c8
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124886"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85373960"
 ---
 # <a name="convert-a-scale-set-template-to-a-managed-disk-scale-set-template"></a>Převod šablony sady škálování na spravovanou šablonu sady škálování disku
 

@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: fa8baa5f17b0f6d667ce05c027e41120b4a15e82
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: b45714489f13d33d90b5694f458e6339e33595f3
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85316050"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367563"
 ---
 # <a name="what-is-a-logical-sql-server-in-azure-sql-database-and-azure-synapse"></a>Co je logický SQL Server v Azure SQL Database a Azure synapse?
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -87,7 +87,7 @@ Pokud chcete spravovat existující databázi, přejděte na stránku **databáz
 
 Pokud chcete vytvářet a spravovat servery, databáze a brány firewall pomocí Azure PowerShell, použijte následující rutiny PowerShellu. Pokud potřebujete nainstalovat nebo upgradovat PowerShell, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Informace o vytváření a správě elastických fondů najdete v tématu [elastické fondy](elastic-pool-overview.md).
 
-| Rutina | Popis |
+| Rutina | Description |
 | --- | --- |
 |[New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase)|Vytvoří databázi. |
 |[Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase)|Získá jednu nebo více databází.|
@@ -112,7 +112,7 @@ Pokud chcete vytvářet a spravovat servery, databáze a brány firewall pomocí
 
 Pokud chcete vytvořit a spravovat servery, databáze a brány firewall pomocí [Azure CLI](/cli/azure), použijte následující příkazy [Azure CLI SQL Database](/cli/azure/sql/db) . Rozhraní příkazového řádku můžete spustit v prohlížeči pomocí [Cloud Shellu](/azure/cloud-shell/overview) nebo [nainstalovat](/cli/azure/install-azure-cli) v systémech macOS, Linux nebo Windows. Informace o vytváření a správě elastických fondů najdete v tématu [elastické fondy](elastic-pool-overview.md).
 
-| Rutina | Popis |
+| Rutina | Description |
 | --- | --- |
 |[az sql db create](/cli/azure/sql/db#az-sql-db-create) |Vytvoří databázi.|
 |[AZ SQL DB list](/cli/azure/sql/db#az-sql-db-list)|Zobrazí všechny databáze spravované serverem nebo všechny databáze v elastickém fondu.|
@@ -145,12 +145,12 @@ Chcete-li vytvořit a spravovat servery, databáze a brány firewall pomocí jaz
 > [!IMPORTANT]
 > Nemůžete vytvořit nebo odstranit server pomocí jazyka Transact-SQL.
 
-| Příkaz | Popis |
+| Příkaz | Description |
 | --- | --- |
 |[VYTVOŘIT databázi (Azure SQL Database)](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current) | Vytvoří novou databázi v Azure SQL Database. Aby bylo možné vytvořit novou databázi, je nutné, abyste byli připojeni k hlavní databázi.|
 |[Vytvoření databáze (Azure synapse)](/sql/t-sql/statements/create-database-transact-sql?view=azure-sqldw-latest) | Vytvoří novou databázi datového skladu v Azure synapse. Aby bylo možné vytvořit novou databázi, je nutné, abyste byli připojeni k hlavní databázi.|
 | [ALTER DATABASE (Azure SQL Database)](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Upraví databázi nebo elastický fond. |
-|[ALTER DATABASE (Azure SQL Data Warehouse)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azure-sqldw-latest)|Upraví databázi datového skladu v Azure synapse.|
+|[ALTER DATABASE (Azure SQL Data Warehouse)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=sql-server-ver15)|Upraví databázi datového skladu v Azure synapse.|
 |[DROP DATABASE (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Odstraní databázi.|
 |[sys. database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Vrátí hodnotu edice (úroveň služby), cíl služby (cenová úroveň) a název elastického fondu, pokud existuje, pro databázi. Pokud se přihlásíte k hlavní databázi serveru, vrátí informace na všech databázích. V případě Azure synapse musíte být připojeni k hlavní databázi.|
 |[sys. dm_db_resource_stats (Azure SQL Database)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Vrátí CPU, vstupně-výstupní operace a spotřebu paměti pro databázi v Azure SQL Database. Jeden řádek existuje každých 15 sekund, a to i v případě, že databáze neobsahuje žádné aktivity.|
@@ -171,7 +171,7 @@ Chcete-li vytvořit a spravovat servery, databáze a brány firewall pomocí jaz
 
 Pokud chcete vytvářet a spravovat servery, databáze a brány firewall, použijte tyto požadavky REST API.
 
-| Příkaz | Popis |
+| Příkaz | Description |
 | --- | --- |
 |[Servery – vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|Vytvoří nebo aktualizuje nový server.|
 |[Servery – odstranit](https://docs.microsoft.com/rest/api/sql/servers/delete)|Odstraní server.|

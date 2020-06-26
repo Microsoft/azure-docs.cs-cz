@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 04/01/2020
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: 92962c376e2b800a327f44c4cad5cd9fdd4cab8d
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: e46aa28d770cf561df40a0f4b40ef39a70e35687
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560518"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367933"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Kurz: automatizace změny velikosti nahraných imagí pomocí Event Grid
 
@@ -31,7 +31,7 @@ Funkce změny velikosti se do existující aplikace pro nahrávání obrázků p
 
 ![Publikovaná webová aplikace v prohlížeči](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
 
-# <a name="nodejs-v10-sdk"></a>[V10 za účelem SDK pro Node. js](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[SADANode.js V10 ZA ÚČELEM SDK](#tab/nodejsv10)
 
 ![Publikovaná webová aplikace v prohlížeči](./media/resize-images-on-storage-blob-upload-event/upload-app-nodejs-thumb.png)
 
@@ -62,7 +62,11 @@ Pokud nepoužíváte cloudové prostředí, musíte se nejdřív přihlásit pom
 
 Pokud jste ve svém předplatném ještě nezaregistrovali poskytovatele prostředků Event Grid, zaregistrujte ho.
 
-```azurecli-interactive
+```bash
+az provider register --namespace Microsoft.EventGrid
+```
+
+```powershell
 az provider register --namespace Microsoft.EventGrid
 ```
 
@@ -72,22 +76,43 @@ Azure Functions vyžaduje obecný účet úložiště. Kromě účtu BLOB Storag
 
 1. Nastavte proměnnou tak, aby obsahovala název skupiny prostředků, kterou jste vytvořili v předchozím kurzu.
 
-    ```azurecli-interactive
+    ```bash
     resourceGroupName="myResourceGroup"
     ```
-2. Nastavte proměnnou tak, aby obsahovala umístění pro prostředky, které se mají vytvořit. 
 
-    ```azurecli-interactive
+    ```powershell
+    $resourceGroupName="myResourceGroup"
+    ```
+
+1. Nastavte proměnnou tak, aby obsahovala umístění pro prostředky, které se mají vytvořit. 
+
+    ```bash
     location="eastus"
-    ```    
-3. Nastavte proměnnou pro název nového účtu úložiště, který Azure Functions vyžaduje.
-    ```azurecli-interactive
+    ```
+
+    ```powershell
+    $location="eastus"
+    ```
+
+1. Nastavte proměnnou pro název nového účtu úložiště, který Azure Functions vyžaduje.
+
+    ```bash
     functionstorage="<name of the storage account to be used by the function>"
     ```
-4. Vytvořte účet úložiště pro funkci Azure Functions.
 
-    ```azurecli-interactive
+    ```powershell
+    $functionstorage="<name of the storage account to be used by the function>"
+    ```
+
+1. Vytvořte účet úložiště pro funkci Azure Functions.
+
+    ```bash
     az storage account create --name $functionstorage --location $location \
+    --resource-group $resourceGroupName --sku Standard_LRS --kind StorageV2
+    ```
+
+    ```powershell
+    az storage account create --name $functionstorage --location $location `
     --resource-group $resourceGroupName --sku Standard_LRS --kind StorageV2
     ```
 
@@ -99,14 +124,25 @@ V následujícím příkazu zadejte vlastní jedinečný název aplikace Functio
 
 1. Zadejte název aplikace Function App, která se má vytvořit.
 
-    ```azurecli-interactive
+    ```bash
     functionapp="<name of the function app>"
     ```
-2. Vytvořte funkci Azure Functions.
 
-    ```azurecli-interactive
+    ```powershell
+    $functionapp="<name of the function app>"
+    ```
+
+1. Vytvořte funkci Azure Functions.
+
+    ```bash
     az functionapp create --name $functionapp --storage-account $functionstorage \
       --resource-group $resourceGroupName --consumption-plan-location $location \
+      --functions-version 2
+    ```
+
+    ```powershell
+    az functionapp create --name $functionapp --storage-account $functionstorage `
+      --resource-group $resourceGroupName --consumption-plan-location $location `
       --functions-version 2
     ```
 
@@ -118,7 +154,7 @@ Tato funkce potřebuje přihlašovací údaje pro účet úložiště objektů b
 
 # <a name="net-v12-sdk"></a>[\.Sada SDK pro .NET V12](#tab/dotnet)
 
-```azurecli-interactive
+```bash
 storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName \
   --name $blobStorageAccount --query connectionString --output tsv)
 
@@ -127,9 +163,18 @@ az functionapp config appsettings set --name $functionapp --resource-group $reso
   THUMBNAIL_WIDTH=100 FUNCTIONS_EXTENSION_VERSION=~2
 ```
 
-# <a name="nodejs-v10-sdk"></a>[V10 za účelem SDK pro Node. js](#tab/nodejsv10)
+```powershell
+$storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName `
+  --name $blobStorageAccount --query connectionString --output tsv)
 
-```azurecli-interactive
+az functionapp config appsettings set --name $functionapp --resource-group $resourceGroupName `
+  --settings AzureWebJobsStorage=$storageConnectionString THUMBNAIL_CONTAINER_NAME=thumbnails `
+  THUMBNAIL_WIDTH=100 FUNCTIONS_EXTENSION_VERSION=~2
+```
+
+# <a name="nodejs-v10-sdk"></a>[SADANode.js V10 ZA ÚČELEM SDK](#tab/nodejsv10)
+
+```bash
 blobStorageAccountKey=$(az storage account keys list -g $resourceGroupName \
   -n $blobStorageAccount --query [0].value --output tsv)
 
@@ -140,6 +185,20 @@ az functionapp config appsettings set --name $functionapp --resource-group $reso
   --settings FUNCTIONS_EXTENSION_VERSION=~2 BLOB_CONTAINER_NAME=thumbnails \
   AZURE_STORAGE_ACCOUNT_NAME=$blobStorageAccount \
   AZURE_STORAGE_ACCOUNT_ACCESS_KEY=$blobStorageAccountKey \
+  AZURE_STORAGE_CONNECTION_STRING=$storageConnectionString
+```
+
+```powershell
+$blobStorageAccountKey=$(az storage account keys list -g $resourceGroupName `
+  -n $blobStorageAccount --query [0].value --output tsv)
+
+$storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName `
+  --name $blobStorageAccount --query connectionString --output tsv)
+
+az functionapp config appsettings set --name $functionapp --resource-group $resourceGroupName `
+  --settings FUNCTIONS_EXTENSION_VERSION=~2 BLOB_CONTAINER_NAME=thumbnails `
+  AZURE_STORAGE_ACCOUNT_NAME=$blobStorageAccount `
+  AZURE_STORAGE_ACCOUNT_ACCESS_KEY=$blobStorageAccountKey `
   AZURE_STORAGE_CONNECTION_STRING=$storageConnectionString
 ```
 
@@ -155,21 +214,34 @@ Teď můžete nasadit do této aplikace Function App nasadit projekt projektu k�
 
 Ukázková funkce změny velikosti v C# je k dispozici na [GitHubu](https://github.com/Azure-Samples/function-image-upload-resize). Pomocí příkazu [AZ functionapp Deployment source config](/cli/azure/functionapp/deployment/source) nasaďte tento projekt kódu do aplikace Function App.
 
-```azurecli-interactive
+```bash
 az functionapp deployment source config --name $functionapp --resource-group $resourceGroupName \
   --branch master --manual-integration \
   --repo-url https://github.com/Azure-Samples/function-image-upload-resize
 ```
 
-# <a name="nodejs-v10-sdk"></a>[V10 za účelem SDK pro Node. js](#tab/nodejsv10)
+```powershell
+az functionapp deployment source config --name $functionapp --resource-group $resourceGroupName `
+  --branch master --manual-integration `
+  --repo-url https://github.com/Azure-Samples/function-image-upload-resize
+```
+
+# <a name="nodejs-v10-sdk"></a>[SADANode.js V10 ZA ÚČELEM SDK](#tab/nodejsv10)
 
 Ukázková funkce změny velikosti v Node.js je k dispozici na [GitHubu](https://github.com/Azure-Samples/storage-blob-resize-function-node-v10). Pomocí příkazu [az functionapp deployment source config](/cli/azure/functionapp/deployment/source) nasaďte tento projekt kódu funkce do aplikace Function App.
 
-```azurecli-interactive
+```bash
 az functionapp deployment source config --name $functionapp \
   --resource-group $resourceGroupName --branch master --manual-integration \
   --repo-url https://github.com/Azure-Samples/storage-blob-resize-function-node-v10
 ```
+
+```powershell
+az functionapp deployment source config --name $functionapp `
+  --resource-group $resourceGroupName --branch master --manual-integration `
+  --repo-url https://github.com/Azure-Samples/storage-blob-resize-function-node-v10
+```
+
 ---
 
 Funkce změny velikosti obrázků se aktivuje požadavky HTTP, které se do ní odesílají ze služby Event Grid. Službě Event Grid můžete sdělit, že chcete přijímat tato oznámení na adrese URL vaší funkce, vytvořením odběru událostí. Pro účely tohoto kurzu se přihlásíte k odběru událostí vytvářených objekty blob.
@@ -182,9 +254,9 @@ Tento projekt používá aktivační události typu `EventGridTrigger`. Použit�
 
 Další informace o této funkci najdete v [souborech function.json a run.csx](https://github.com/Azure-Samples/function-image-upload-resize/tree/master/ImageFunctions).
 
-# <a name="nodejs-v10-sdk"></a>[V10 za účelem SDK pro Node. js](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[SADANode.js V10 ZA ÚČELEM SDK](#tab/nodejsv10)
 
-Další informace o této funkci naleznete v [souborech Function. JSON a index. js](https://github.com/Azure-Samples/storage-blob-resize-function-node-v10/tree/master/Thumbnail).
+Další informace o této funkci najdete v [souborechfunction.jszapnuto a index.js](https://github.com/Azure-Samples/storage-blob-resize-function-node-v10/tree/master/Thumbnail).
 
 ---
 
@@ -220,7 +292,7 @@ Odběr událostí udává, které události vygenerované zprostředkovatelem ch
 
 1. Přepněte na kartu **filtry** a proveďte následující akce:
     1. Vyberte možnost **Povolit filtrování subjektu** .
-    2. Pro **předmět začíná**na zadejte následující hodnotu: **/blobServices/default/Containers/images/BLOBs/**.
+    1. Pro **předmět začíná**na zadejte následující hodnotu: **/blobServices/default/Containers/images/BLOBs/**.
 
         ![Zadat filtr pro odběr události](./media/resize-images-on-storage-blob-upload-event/event-subscription-filter.png)
 
@@ -240,7 +312,7 @@ Všimněte si, že po ukončení nahraného obrázku se v karuselu **vygenerovan
 
 ![Publikovaná webová aplikace v prohlížeči](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
 
-# <a name="nodejs-v10-sdk"></a>[V10 za účelem SDK pro Node. js](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[SADANode.js V10 ZA ÚČELEM SDK](#tab/nodejsv10)
 
 Klikněte na **zvolit soubor** a vyberte soubor a pak klikněte na **Odeslat obrázek**. Po úspěšném nahrání se v prohlížeči přejde na stránku úspěchu. Klikněte na odkaz a vraťte se na domovskou stránku. V oblasti **vygenerované miniatury** se zobrazí kopie nahraného obrázku. (Pokud se obrázek nezobrazuje napřed, zkuste stránku znovu načíst.) Velikost tohoto obrázku byla změněna funkcí, přidána do kontejneru *miniatur* a stažena webovým klientem.
 

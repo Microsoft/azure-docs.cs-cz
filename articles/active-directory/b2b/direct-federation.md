@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 06/24/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 299b0a677e7ca7bea9481d94ecf98c993af0a6ed
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: c0641272177371ff5e8b6eac98b5bdbd381af931
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591212"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367457"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Přímá federace pomocí AD FS a poskytovatelů třetích stran pro uživatele typu Host (Preview)
 |     |
@@ -31,7 +31,7 @@ Když nastavíte přímou federaci s IdPem partnera, můžou noví uživatelé t
 > Uživatelé typu host s přímým přístupem se musí přihlásit pomocí odkazu, který obsahuje kontext tenanta (například `https://myapps.microsoft.com/?tenantid=<tenant id>` nebo nebo `https://portal.azure.com/<tenant id>` v případě ověřené domény `https://myapps.microsoft.com/\<verified domain>.onmicrosoft.com` ). Přímé odkazy na aplikace a prostředky fungují i tak dlouho, dokud budou zahrnovat kontext tenanta. Uživatelé s přímými federace se momentálně nemůžou přihlásit pomocí běžných koncových bodů, které nemají kontext tenanta. Například použití `https://myapps.microsoft.com` , `https://portal.azure.com` , nebo `https://teams.microsoft.com` způsobí chybu.
  
 ## <a name="when-is-a-guest-user-authenticated-with-direct-federation"></a>Kdy je uživatel typu Host ověřený pomocí přímé federace?
-Po nastavení přímé federace s organizací budou všichni noví uživatelé typu Host, kteří pozvánku nastavili, ověřeni pomocí přímé federace. Je důležité si uvědomit, že nastavení přímé federace nemění metodu ověřování pro uživatele typu Host, kteří už od vás požádali o pozvání. Zde je několik příkladů:
+Po nastavení přímé federace s organizací budou všichni noví uživatelé typu Host, kteří pozvánku nastavili, ověřeni pomocí přímé federace. Je důležité si uvědomit, že nastavení přímé federace nemění metodu ověřování pro uživatele typu Host, kteří už od vás požádali o pozvání. Tady je pár příkladů:
  - Pokud uživatelé typu host už z vaší organizace překládali pozvánky a následně jste nastavili přímo federaci s jejich organizací, budou tito uživatelé typu Host dál používat stejnou metodu ověřování, kterou používali před nastavením přímé federace.
  - Pokud nastavíte přímou federaci s partnerskými organizacemi a budete pozvat uživatele typu Host a partnerská organizace se později přesune do služby Azure AD, budou se uživatelé typu Host, kteří už provedli uplatnění pozvánky, dál používat přímé federace, pokud existují přímé federační zásady ve vašem tenantovi.
  - Pokud odstraníte přímou federaci s partnerskými organizacemi, všichni uživatelé typu Host, kteří aktuálně používají přímou federaci, se nebudou moci přihlásit.
@@ -74,7 +74,7 @@ V současné době nepodporujeme přímou federaci s více doménami ze stejnéh
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 ### <a name="can-i-set-up-direct-federation-with-a-domain-for-which-an-unmanaged-email-verified-tenant-exists"></a>Můžu nastavit přímou federaci s doménou, pro kterou existuje nespravovaný tenant (e-mail ověřený)? 
-Yes. Pokud se doména neověřila a tenant neprošel [převzetím správce](../users-groups-roles/domains-admin-takeover.md), můžete nastavit přímou federaci s touto doménou. Nespravované nebo ověřené e-mailem jsou klienti vytvořeni v případě, že uživatel uplatní pozvánku B2B nebo provede samoobslužnou registraci pro službu Azure AD pomocí domény, která aktuálně neexistuje. S těmito doménami můžete nastavit přímou federaci. Pokud se pokusíte nastavit přímou federaci s doménou ověřenou DNS, ať už v Azure Portal nebo prostřednictvím PowerShellu, zobrazí se chyba.
+Ano. Pokud se doména neověřila a tenant neprošel [převzetím správce](../users-groups-roles/domains-admin-takeover.md), můžete nastavit přímou federaci s touto doménou. Nespravované nebo ověřené e-mailem jsou klienti vytvořeni v případě, že uživatel uplatní pozvánku B2B nebo provede samoobslužnou registraci pro službu Azure AD pomocí domény, která aktuálně neexistuje. S těmito doménami můžete nastavit přímou federaci. Pokud se pokusíte nastavit přímou federaci s doménou ověřenou DNS, ať už v Azure Portal nebo prostřednictvím PowerShellu, zobrazí se chyba.
 ### <a name="if-direct-federation-and-email-one-time-passcode-authentication-are-both-enabled-which-method-takes-precedence"></a>Pokud je povolená přímá federace a e-mailová ověřování jednorázového hesla, která metoda má přednost?
 Pokud je v partnerské organizaci vytvořená přímá federace, má přednost před ověřováním jednorázovým heslem e-mailu pro nové uživatele typu host z této organizace. Pokud uživatel typu Host znovu nastavil pozvánku pomocí jednorázového ověřování hesla před nastavením přímé federace, bude používat jednorázové ověřování pomocí hesla. 
 ### <a name="does-direct-federation-address-sign-in-issues-due-to-a-partially-synced-tenancy"></a>Jsou problémy s přihlašováním přímo v rámci federačních adres způsobeny částečně synchronizovanými tenantů?
@@ -174,7 +174,7 @@ Dále nakonfigurujete federaci s poskytovatelem identity nakonfigurovaným v kro
    Connect-AzureAD
    ```
 1. V příkazovém řádku pro přihlášení se přihlaste pomocí účtu spravovaného globálního správce. 
-2. Spusťte následující příkazy a nahraďte hodnoty ze souboru federačních metadat. Pro AD FS Server a okta je soubor federace federationmetadata. XML, například: `https://sts.totheclouddemo.com/federationmetadata/2007-06/federationmetadata.xml` . 
+2. Spusťte následující příkazy a nahraďte hodnoty ze souboru federačních metadat. Pro AD FS Server a okta je soubor federace federationmetadata.xml, například: `https://sts.totheclouddemo.com/federationmetadata/2007-06/federationmetadata.xml` . 
 
    ```powershell
    $federationSettings = New-Object Microsoft.Open.AzureAD.Model.DomainFederationSettings
@@ -221,3 +221,7 @@ Odebrání přímé federace se zprostředkovatelem identity pomocí prostředí
    ```powershell
    Remove-AzureADExternalDomainFederation -ExternalDomainName  $domainName
    ```
+
+## <a name="next-steps"></a>Další kroky
+
+Přečtěte si další informace o [prostředí pro uplatnění pozvánky](redemption-experience.md) , když se externí uživatelé přihlásí pomocí různých zprostředkovatelů identity.

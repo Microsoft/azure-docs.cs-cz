@@ -3,12 +3,12 @@ title: Preview – informace Azure Policy Kubernetes
 description: Přečtěte si, jak Azure Policy používá Rego a Open Agent zásad ke správě clusterů se systémem Kubernetes v Azure nebo místním prostředí. Tato funkce je ve verzi Preview.
 ms.date: 06/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: ab18b85fc24deb58a6c65ca038d47120056eaa75
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: a044ea33f1a7710c4bb97d30cf8f11d4de2838b1
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84791703"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85373620"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>Vysvětlení Azure Policy pro clustery Kubernetes (Preview)
 
@@ -52,9 +52,6 @@ Před instalací doplňku Azure Policy nebo povolením jakékoli funkce služby 
 1. Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.62 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
 
 1. Zaregistrujte poskytovatele prostředků a funkce ve verzi Preview.
-
-   > [!CAUTION]
-   > Když zaregistrujete funkci v předplatném, nemůžete tuto funkci zrušit. Po povolení některých funkcí verze Preview se můžou použít výchozí hodnoty pro všechny clustery AKS vytvořené v rámci předplatného. Nepovolujte funkce ve verzi Preview u produkčních předplatných. Použijte samostatné předplatné k testování funkcí ve verzi Preview a získejte zpětnou vazbu.
 
    - Azure Portal:
 

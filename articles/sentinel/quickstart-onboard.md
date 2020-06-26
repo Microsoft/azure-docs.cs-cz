@@ -9,18 +9,18 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: a581288259a521f8f2f93ff3fbc16f4926486643
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: a07ba26128d1d4689e820ec8e300ca9420c3c2d2
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84771168"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367083"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>Rychlý Start: zprovoznění služby Azure Sentinel
 
 V tomto rychlém startu se dozvíte, jak připojit k Azure Sentinel. 
 
-Aby bylo možné připojit se k Azure Sentinel, musíte nejdřív povolit službu Azure Sentinel a pak připojit zdroje dat. Služba Azure Sentinel se dodává s řadou konektorů pro řešení Microsoftu, které jsou dostupné mimo kancelář, a poskytuje integraci v reálném čase, včetně řešení ochrany před internetovými útoky, Microsoft 365 zdrojů, včetně Office 365, Azure AD, Azure ATP a Microsoft Cloud App Security a dalších. Kromě toho jsou k dispozici Integrované konektory k širšímu ekosystému zabezpečení pro řešení jiných výrobců než Microsoftu. K propojení zdrojů dat s funkcí Sentinel Azure můžete použít také běžné formáty událostí, syslog nebo REST API.  
+Aby bylo možné připojit se k Azure Sentinel, musíte nejdřív povolit službu Azure Sentinel a pak připojit zdroje dat. Služba Azure Sentinel je dodávána s řadou konektorů pro řešení Microsoftu, které jsou dostupné okamžitě a poskytuje integraci v reálném čase, včetně řešení ochrany před internetovými útoky, Microsoft 365 zdrojů (včetně Office 365), Azure AD, Azure ATP, Microsoft Cloud App Security a dalších. Kromě toho jsou k dispozici Integrované konektory k širšímu ekosystému zabezpečení pro řešení jiných výrobců než Microsoftu. Pomocí protokolu CEF (Common Event Format), syslog nebo REST-API můžete také připojit zdroje dat k Azure Sentinel.  
 
 Po připojení zdrojů dat si můžete vybrat z Galerie odborných vytvořených sešitů, které jsou na základě vašich dat Surface Insights. Tyto sešity je možné snadno přizpůsobit podle svých potřeb.
 

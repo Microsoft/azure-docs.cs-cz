@@ -6,15 +6,15 @@ ms.author: jushiman
 ms.topic: how-to
 ms.service: virtual-machine-scale-sets
 ms.subservice: extensions
-ms.date: 04/05/2017
+ms.date: 6/25/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 4a972cab0559ff8a4bb22588c712515daa2fab16
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 6939339ce8d0f324fbd9e14ba31d23a6febcfcbe
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124837"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85373893"
 ---
 # <a name="using-virtual-machine-scale-sets-with-the-azure-dsc-extension"></a>Použití Virtual Machine Scale Sets s rozšířením Azure DSC
 [Virtual Machine Scale Sets](virtual-machine-scale-sets-overview.md) lze použít s obslužnou rutinou rozšíření [(DSC) konfigurace požadovaného stavu Azure](../virtual-machines/windows/extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) . Virtual Machine Scale Sets nabízí způsob, jak nasadit a spravovat velký počet virtuálních počítačů, a v reakci na zatížení se můžou elasticky škálovat a vystavit. DSC se používá ke konfiguraci virtuálních počítačů tak, jak se dostanou do online režimu, aby používala produkční software.

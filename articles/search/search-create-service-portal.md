@@ -7,13 +7,13 @@ author: tchristiani
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/07/2020
-ms.openlocfilehash: 83b723c815825a255727e9a48d415fedd405c942
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.date: 06/24/2020
+ms.openlocfilehash: 988b26b319c706b97edfbd3545a525b7d685d7f1
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488218"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85368290"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Rychlý Start: vytvoření služby Azure Kognitivní hledání na portálu
 
@@ -24,6 +24,14 @@ V tomto článku se dozvíte, jak vytvořit prostředek v [Azure Portal](https:/
 [![Animovaný GIF](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
 
 Dáváte přednost prostředí PowerShell? Použijte [šablonu služby](https://azure.microsoft.com/resources/templates/101-azure-search-create/) Azure Resource Manageru. Nápovědu k části Začínáme najdete v tématu [Správa služby Azure kognitivní hledání pomocí prostředí PowerShell](search-manage-powershell.md).
+
+## <a name="before-you-start"></a>Než začnete
+
+Po dobu životnosti služby jsou opraveny následující vlastnosti služby. Pozdější změna kterékoli z těchto vlastností bude vyžadovat novou službu:
+
+* name
+* úroveň (Free, Basic, Standard)
+* oblast (vyberte umístění, které obsahuje související služby, například Cognitive Services nebo datové služby)
 
 ## <a name="subscribe-free-or-paid"></a>Předplatné (bezplatné nebo placené)
 

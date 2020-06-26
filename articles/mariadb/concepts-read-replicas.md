@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 6/10/2020
-ms.openlocfilehash: f7606e2cbe6655801903de62ff9080eba8a0dd53
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.date: 6/24/2020
+ms.openlocfilehash: d1d1dbb273ed1da3835f533b5f38743db73816c7
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84708021"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367324"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Repliky pro čtení ve službě Azure Database for MariaDB
 
@@ -47,9 +47,7 @@ Hlavní server můžete mít v libovolné [Azure Database for MariaDB oblasti](h
 ### <a name="universal-replica-regions"></a>Oblasti univerzální repliky
 Repliku pro čtení můžete vytvořit v některé z následujících oblastí bez ohledu na to, kde se nachází váš hlavní server. Mezi podporované oblasti univerzální repliky patří:
 
-Austrálie – východ, Austrálie – jihovýchod, Střed USA, Východní Asie, Východní USA, Východní USA 2, Japonsko – východ, Japonsko – západ, Korea – jih, střed, střed USA – sever, Severní Evropa, střed USA – jih, jihovýchodní Asie, Velká Británie – jih, Velká Británie – západ, Západní Evropa, západní USA.
-
-* Západní USA 2 není dočasně k dispozici jako umístění repliky mezi oblastmi.
+Austrálie – východ, Austrálie – jihovýchod, Střed USA, Východní Asie, Východní USA, Východní USA 2, Japonsko – východ, Japonsko – západ, Korea – jih, střed, střed USA – sever, Severní Evropa, střed USA – jih, jihovýchodní Asie, Velká Británie – jih, Velká Británie – západ, západní Evropa, Západní USA, západní USA 2, Středozápadní USA.
 
 ### <a name="paired-regions"></a>Spárované oblasti
 Kromě oblastí univerzální repliky můžete vytvořit repliku pro čtení ve spárované oblasti Azure vašeho hlavního serveru. Pokud neznáte pár vaší oblasti, můžete získat další informace v [článku spárované oblasti Azure](../best-practices-availability-paired-regions.md).
@@ -58,7 +56,7 @@ Pokud používáte repliky mezi jednotlivými oblastmi pro plánování zotaven�
 
 Je však třeba vzít v úvahu omezení: 
 
-* Regionální dostupnost: Azure Database for MariaDB je k dispozici v Západní USA 2, Francii Central, Spojené arabské emiráty Severní a Německo – střed. Nicméně jejich spárované oblasti nejsou k dispozici.
+* Oblast dostupnosti: Azure Database for MariaDB je k dispozici ve Francii – střed, Spojené arabské emiráty Severní a Německo – střed. Nicméně jejich spárované oblasti nejsou k dispozici.
     
 * Jednosměrné páry: některé oblasti Azure jsou spárovány pouze v jednom směru. Mezi tyto oblasti patří Západní Indie, Brazílie – jih a US Gov – Virginie. 
    To znamená, že hlavní server v Západní Indie může vytvořit repliku v Jižní Indie. Hlavní server v Jižní Indie ale nemůže vytvořit repliku v Západní Indie. Důvodem je to, že sekundární oblast Západní Indie je Jižní Indie, ale sekundární oblast Jižní Indie není Západní Indie.
@@ -79,7 +77,7 @@ Naučte se [vytvořit repliku pro čtení v Azure Portal](howto-read-replicas-po
 
 ## <a name="connect-to-a-replica"></a>Připojení k replice
 
-Při vytváření repliky zdědí pravidla brány firewall hlavního serveru. Následně jsou tato pravidla nezávislá na hlavním serveru.
+Při vytváření repliky zdědí pravidla brány firewall hlavního serveru. Tato pravidla jsou následně nezávislá na hlavním serveru.
 
 Replika dědí účet správce z hlavního serveru. Všechny uživatelské účty na hlavním serveru se replikují do replik pro čtení. K replice pro čtení se můžete připojit pouze pomocí uživatelských účtů, které jsou k dispozici na hlavním serveru.
 

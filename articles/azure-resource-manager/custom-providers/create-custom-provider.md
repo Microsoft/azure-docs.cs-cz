@@ -3,26 +3,38 @@ title: Vytvořit poskytovatele prostředků
 description: Popisuje, jak vytvořit poskytovatele prostředků a nasadit jeho vlastní typy prostředků.
 author: MSEvanhi
 ms.topic: tutorial
-ms.date: 06/19/2020
+ms.date: 06/24/2020
 ms.author: evanhi
-ms.openlocfilehash: ce547c010d3cc814d4e6f6182c19572248228fc3
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 541d140716e52b4fe1db4bc999682914a380a5f0
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85125000"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85368103"
 ---
-# <a name="quickstart-create-custom-provider-and-deploy-custom-resources"></a>Rychlý Start: Vytvoření vlastního zprostředkovatele a nasazení vlastních prostředků
+# <a name="quickstart-create-a-custom-provider-and-deploy-custom-resources"></a>Rychlý Start: Vytvoření vlastního zprostředkovatele a nasazení vlastních prostředků
 
 V tomto rychlém startu vytvoříte vlastního poskytovatele prostředků a nasadíte vlastní typy prostředků pro tohoto poskytovatele prostředků. Další informace o vlastních poskytovatelích najdete v tématu [Přehled vlastních zprostředkovatelů Azure ve verzi Preview](overview.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení kroků v tomto rychlém startu je potřeba volat `REST` operace. Existují [různé způsoby, jak odesílat žádosti REST](/rest/api/azure/).
+- Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+- K dokončení kroků v tomto rychlém startu je potřeba volat `REST` operace. Existují [různé způsoby, jak odesílat žádosti REST](/rest/api/azure/).
 
-Pokud chcete spustit příkazy rozhraní příkazového řádku Azure, použijte [bash v Azure Cloud Shell](/azure/cloud-shell/quickstart). Příkazy [Custom-Providers](/cli/azure/ext/custom-providers/custom-providers/resource-provider) vyžadují rozšíření. Další informace najdete v tématu [použití rozšíření pomocí Azure CLI](/cli/azure/azure-cli-extensions-overview).
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Chcete-li spustit příkazy prostředí PowerShell místně, použijte PowerShell 7 nebo novější a moduly Azure PowerShell. Další informace najdete v tématu [instalace Azure PowerShell](/powershell/azure/install-az-ps). Pokud ještě nemáte Nástroj pro `REST` operace, nainstalujte [ARMClient](https://github.com/projectkudu/ARMClient). Je to open source nástroj příkazového řádku, který zjednodušuje vyvolání rozhraní Azure Resource Manager API.
+- Příkazy [Custom-Providers](/cli/azure/ext/custom-providers/custom-providers/resource-provider) vyžadují rozšíření. Další informace najdete v tématu [použití rozšíření pomocí Azure CLI](/cli/azure/azure-cli-extensions-overview).
+- Příklady použití Azure CLI `az rest` pro `REST` požadavky. Další informace najdete v tématu [AZ REST](/cli/azure/reference-index#az-rest).
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+- Příkazy PowerShellu se spouští místně pomocí PowerShellu 7 nebo novějšího a Azure PowerShellch modulů. Další informace najdete v tématu [instalace Azure PowerShell](/powershell/azure/install-az-ps).
+- Pokud ještě nemáte Nástroj pro `REST` operace, nainstalujte [ARMClient](https://github.com/projectkudu/ARMClient). Je to open source nástroj příkazového řádku, který zjednodušuje vyvolání rozhraní Azure Resource Manager API.
+- Po instalaci **ARMClient** můžete zobrazit informace o použití z příkazového řádku prostředí PowerShell zadáním příkazu: `armclient.exe` . Nebo si přečtěte na [wikiwebu ARMClient](https://github.com/projectkudu/ARMClient/wiki).
+
+---
+
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="deploy-custom-provider"></a>Nasazení vlastního zprostředkovatele
 
@@ -30,14 +42,16 @@ Pokud chcete nastavit vlastního zprostředkovatele, nasaďte do svého předpla
 
 Po nasazení šablony má vaše předplatné následující prostředky:
 
-* Function App s operacemi pro prostředky a akce.
-* Účet úložiště pro ukládání uživatelů vytvořených prostřednictvím vlastního zprostředkovatele.
-* Vlastní zprostředkovatel, který definuje vlastní typy prostředků a akce. Pro odesílání požadavků používá koncový bod aplikace Function App.
-* Vlastní prostředek z vlastního zprostředkovatele.
+- Function App s operacemi pro prostředky a akce.
+- Účet úložiště pro ukládání uživatelů vytvořených prostřednictvím vlastního zprostředkovatele.
+- Vlastní zprostředkovatel, který definuje vlastní typy prostředků a akce. Pro odesílání požadavků používá koncový bod aplikace Function App.
+- Vlastní prostředek z vlastního zprostředkovatele.
 
-Pokud chcete nasadit vlastního zprostředkovatele, použijte rozhraní příkazového řádku Azure nebo PowerShellu:
+Pokud chcete nasadit vlastního zprostředkovatele, použijte Azure CLI, PowerShell nebo Azure Portal:
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Tento příklad vás vyzve k zadání názvu skupiny prostředků, umístění a názvu aplikace Function App poskytovatele. Názvy jsou uloženy v proměnných, které se používají v jiných příkazech. K nasazení prostředků nasaďte příkazy [AZ Group Create](/cli/azure/group#az-group-create) a [AZ Deployment Group Create](/cli/azure/deployment/group#az-deployment-group-create) .
 
 ```azurecli-interactive
 read -p "Enter a resource group name:" rgName &&
@@ -52,6 +66,8 @@ read
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
+Tento příklad vás vyzve k zadání názvu skupiny prostředků, umístění a názvu aplikace Function App poskytovatele. Názvy jsou uloženy v proměnných, které se používají v jiných příkazech. Příkazy [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) a [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) nasazují prostředky.
+
 ```powershell
 $rgName = Read-Host -Prompt "Enter a resource group name"
 $location = Read-Host -Prompt "Enter the location (i.e. eastus)"
@@ -64,7 +80,7 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
 
 ---
 
-Nebo můžete řešení nasadit z Azure Portal pomocí následujícího tlačítka:
+Řešení můžete nasadit také z Azure Portal. Kliknutím na tlačítko **nasadit do Azure** otevřete šablonu v Azure Portal.
 
 [![Nasazení do Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-docs-json-samples%2Fmaster%2Fcustom-providers%2Fcustomprovider.json)
 
@@ -252,7 +268,7 @@ K práci s vaším vlastním poskytovatelem prostředků použijte příkazy [Cu
 
 ### <a name="list-custom-resource-providers"></a>Vypsat vlastní poskytovatele prostředků
 
-Vypíše všechny vlastní poskytovatele prostředků v rámci předplatného. Výchozí seznam vlastních poskytovatelů prostředků pro aktuální předplatné nebo parametr můžete zadat `--subscription` . Chcete-li zobrazit seznam pro skupinu prostředků, použijte `--resource-group` parametr.
+Pomocí `list` příkazu zobrazte všechny vlastní poskytovatele prostředků v rámci předplatného. Ve výchozím nastavení jsou vypsáni vlastní poskytovatelé prostředků aktuálního předplatného nebo můžete zadat `--subscription` parametr. Chcete-li zobrazit seznam pro skupinu prostředků, použijte `--resource-group` parametr.
 
 ```azurecli-interactive
 az custom-providers resource-provider list --subscription $subID
@@ -289,7 +305,7 @@ az custom-providers resource-provider list --subscription $subID
 
 ### <a name="show-the-properties"></a>Zobrazit vlastnosti
 
-Zobrazí vlastnosti vlastního poskytovatele prostředků. Výstupní formát se podobá `list` výstupu.
+Pomocí `show` příkazu můžete zobrazit vlastnosti vlastního poskytovatele prostředků. Výstupní formát se podobá `list` výstupu.
 
 ```azurecli-interactive
 az custom-providers resource-provider show --resource-group $rgName --name $funcName

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 51df588b1ccd41bf05d8851f00399b61292b0736
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 8996335a8d39e4dd9fc79584593fe333b302c8be
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85214093"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85373433"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>Vytvoření nabídky Dynamics 365 for Customer Engagement a PowerApps
 
@@ -213,10 +213,6 @@ Poskytněte logo vaší nabídky ve třech velikostech v pixelech:
 - **Malý** (povinný; 48 × 48)
 - **Velký** (povinný; 216 × 216)
 - **Roztažitelné** (volitelné; 255 × 115)
-
-#### <a name="hero"></a>Hero
-
-Obrázek Hero je nepovinný. Pokud zadáte jednu, musí změřit 815 x 290 pixelů.
 
 #### <a name="screenshots"></a>Screenshoty
 
