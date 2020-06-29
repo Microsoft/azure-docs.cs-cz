@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/26/2020
 ms.subservice: alerts
-ms.openlocfilehash: fe89f932bcf7aa22657a3fcabddd015df4b9913d
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: 65c2e3dbe7cb99c9b7c6e1a84178fd28d5013a69
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85486660"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85507938"
 ---
 # <a name="how-to-update-alert-rules-or-action-rules-when-their-target-resource-moves-to-a-different-azure-region"></a>Jak aktualizovat pravidla upozornění nebo pravidla akcí, když se jejich cílový prostředek přesune do jiné oblasti Azure
 
@@ -32,6 +32,7 @@ Existují dva hlavní důvody, proč můžou vaše pravidla přestat fungovat po
 Když přesunete prostředek, změní se ve většině případů jeho ID prostředku. Po pozadí systém replikuje prostředek do nové oblasti před jeho odstraněním ze staré oblasti. Tento proces vyžaduje, aby v malých časových intervalech existovaly dva prostředky a tedy dvě odlišná ID prostředků. Vzhledem k tomu, že ID prostředku musí být jedinečný, musí být během procesu vytvořen nový identifikátor. 
 
 **Jak přesouvá prostředek vliv na existující pravidla?**
+
 Pravidla výstrah a pravidla akcí mají obor prostředků, na které se vztahují. Rozsahem může být celé předplatné, skupina prostředků nebo jeden nebo několik konkrétních prostředků.
 Tady je například pravidlo s oborem se dvěma prostředky (dva virtuální počítače):
 
@@ -101,8 +102,12 @@ Pokud se přesunuly **jenom některé** prostředky v oboru, je potřeba odebrat
 2. Upravte obor. V případě potřeby ho rozdělte do dvou pravidel (v některých případech upozornění na metriky, jak je uvedeno výše).
 3. Znovu nasaďte pravidlo ([výstrahy metrik](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2), [výstrahy protokolu aktivit](https://docs.microsoft.com/powershell/module/az.monitor/enable-azactivitylogalert), [pravidla akcí](https://docs.microsoft.com/powershell/module/az.alertsmanagement/set-azactionrule)).
 
-### <a name="changing-the-scope-of-a-rule-using-azure-cli"></a>Změna rozsahu pravidla pomocí Azure CLI
+### <a name="change-the-scope-of-a-rule-using-azure-cli"></a>Změna rozsahu pravidla pomocí Azure CLI
 
 1.  Získá stávající pravidlo ([výstrahy metrik](https://docs.microsoft.com/cli/azure/monitor/metrics/alert?view=azure-cli-latest#az-monitor-metrics-alert-show), [výstrahy protokolu aktivit](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list)).
 2.  Přímo aktualizovat rozsah pravidla ([výstrahy metrik](https://docs.microsoft.com/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-update), [výstrahy protokolu aktivit](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert/scope))
 3.  V případě potřeby ho rozdělte do dvou pravidel (v některých případech upozornění na metriky, jak je uvedeno výše).
+
+## <a name="next-steps"></a>Další kroky
+
+Přečtěte si, jak opravit jiné problémy s [upozorněními na výstrahy](alerts-troubleshoot.md), [upozorněními na metriky](alerts-troubleshoot-metric.md)a [výstrahami protokolu](alerts-troubleshoot-log.md). 

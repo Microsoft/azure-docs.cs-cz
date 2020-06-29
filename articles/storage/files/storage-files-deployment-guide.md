@@ -3,16 +3,16 @@ title: Jak nasadit soubory Azure | Microsoft Docs
 description: Přečtěte si, jak nasadit soubory Azure ze začátku do konce.
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/22/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 38339defc9d06f3e809bc24f957ebbb30abb46d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b9df9375dee59df987cea01a4142a22a78eb533e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77598778"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85510804"
 ---
 # <a name="how-to-deploy-azure-files"></a>Nasazení služby Soubory Azure
 [Soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes standardní průmyslový protokol SMB. V tomto článku se dozvíte, jak prakticky nasadit soubory Azure v rámci vaší organizace.
@@ -65,7 +65,7 @@ Následující kroky budou importovat data z místního umístění do sdílené
 
     Může být zadáno více sdílených složek s účtem úložiště. Další informace najdete v tématu [Příprava souboru CSV s datovou sadou](../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) .
 
-5. Vytvořte soubor CSV driveset. V souboru CSV driveset jsou uvedené disky, které jsou k dispozici pro místního exportního agenta. Například následující driveset soubory CSV obsahují seznam `X:`, `Y:`a `Z:` jednotky, které mají být použity v místní úloze exportu:
+5. Vytvořte soubor CSV driveset. V souboru CSV driveset jsou uvedené disky, které jsou k dispozici pro místního exportního agenta. Například následující driveset soubory CSV obsahují seznam `X:` , `Y:` a `Z:` jednotky, které mají být použity v místní úloze exportu:
 
     ```
     DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
@@ -137,7 +137,7 @@ $computer | ForEach-Object { Invoke-Command -ComputerName $_ -ScriptBlock { net 
 ```
 
 ### <a name="linux"></a>Linux
-Jednoduchý skript bash kombinovaný s SSH může vracet stejný výsledek jako v následujícím příkladu. `$computer` Proměnná je obdobně naplněna uživatelem:
+Jednoduchý skript bash kombinovaný s SSH může vracet stejný výsledek jako v následujícím příkladu. `$computer`Proměnná je obdobně naplněna uživatelem:
 
 ```
 computer = ("MyComputer1" "MyComputer2" "MyComputer3" "MyComputer4")

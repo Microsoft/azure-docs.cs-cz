@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: ca5ba8d7b2d78440401e29344361538c3650ba48
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: d3bfb589ec4c152b136e8e1f432864b719c97d58
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779164"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85509315"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Ukládání dat a příchozí přenosy v Azure Time Series Insights ve verzi Preview
 
@@ -56,12 +56,17 @@ Azure Time Series Insights podporuje JSON zakódovaný v kódování UTF-8, kter
 
 Podporované datové typy jsou:
 
-| Datový typ | Description |
+| Datový typ | Popis |
 |---|---|
 | **bool** | Datový typ, který má jeden ze dvou stavů: `true` nebo `false` . |
 | **Hodnotu** | Představuje okamžitý čas, obvykle vyjádřený jako datum a denní dobu. Vyjádřeno ve formátu [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) . |
+| **long** | Podepsané 64 celé číslo se znaménkem  |
 | **double** | 64 desetinná čárka [IEEE 754](https://ieeexplore.ieee.org/document/8766229) s dvojitou přesností. |
-| **řetězec** | Textové hodnoty sestávající ze znaků Unicode.          |
+| **řetezce** | Textové hodnoty sestávající ze znaků Unicode.          |
+
+> [!IMPORTANT]
+>
+> * Vaše prostředí TSI je silného typu. Pokud zařízení nebo značky odesílají integrální i neintegrální data, hodnoty vlastností zařízení se uloží ve dvou oddělených sloupcích a dlouhém sloupci a [funkce COALESCE ()](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax) by se měla použít při volání rozhraní API a definování výrazů proměnných modelu časové řady.
 
 #### <a name="objects-and-arrays"></a>Objekty a pole
 
@@ -232,9 +237,11 @@ Time Series Insights Preview ukládá kopie vašich dat následujícím způsobe
 
 * Druhá, znovu rozdělená kopie je seskupená podle ID časových řad a nachází se ve `PT=TsId` složce:
 
-  `V=1/PT=TsId/Y=<YYYY>/M=<MM>/<YYYYMMDDHHMMSSfff>_<TSI_INTERNAL_SUFFIX>.parquet`
+  `V=1/PT=TsId/<TSI_INTERNAL_STRUCTURE>/<TSI_INTERNAL_NAME>.parquet`
 
-V obou případech vlastnost Time souboru Parquet odpovídá času vytvoření objektu BLOB. Data ve `PT=Time` složce se uchovávají beze změn, jakmile se zapisují do souboru. Data ve `PT=TsId` složce budou optimalizována pro dotazy v průběhu času a nejsou statická.
+Časové razítko v názvech objektů BLOB ve `PT=Time` složce odpovídá době doručení dat do TSI (nikoli od časového razítka událostí).
+
+Data ve `PT=TsId` složce budou optimalizována pro dotazy v průběhu času a nejsou statická. Během přerozdělování můžou být stejné události přítomné ve více objektech blob. Také pojmenování objektů BLOB se může v budoucnu změnit.
 
 > [!NOTE]
 >

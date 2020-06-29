@@ -3,16 +3,16 @@ title: Použití sdílené složky Azure s Windows | Microsoft Docs
 description: Zjistěte, jak používat sdílenou složku Azure s Windows a Windows Serverem.
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 014b980470ee8d0a25df2d6c10f9aa37270d83ab
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: bb9e7582317851d1968e104cd351a2b5e02b1e19
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85214303"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85509774"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Použití sdílené složky Azure s Windows
 Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné bez problémů používat v systémech Windows a Windows Server. Tento článek popisuje důležité informace o používání sdílené složky Azure s Windows a Windows Serverem.
@@ -30,8 +30,8 @@ Sdílené složky Azure můžete používat v instalaci Windows na virtuálním 
 | Windows 8.1 | SMB 3.0 | Ano | Ano |
 | Windows Server 2012 R2 | SMB 3.0 | Ano | Ano |
 | Windows Server 2012 | SMB 3.0 | Ano | Ano |
-| Systém Windows 7<sup>3</sup> | SMB 2.1 | Ano | Ne |
-| Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | Ano | Ne |
+| Systém Windows 7<sup>3</sup> | SMB 2.1 | Yes | Ne |
+| Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | Yes | Ne |
 
 <sup>1</sup> Windows 10, verze 1507, 1607, 1709, 1803, 1809, 1903 a 1909.  
 <sup>2</sup> . Windows Server, verze 1809, 1903 a 1909.  

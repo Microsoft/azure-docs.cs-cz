@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
-ms.openlocfilehash: cc67acca11e7e0f24dc0597dcd19672a38a7bf28
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7bc6659904530bfa40ee54cd55eab5eaca689069
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75495759"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85509213"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-storage-account"></a>Použití více clusterů HDInsight s účtem Azure Data Lake Storage
 
@@ -44,7 +44,7 @@ V tabulce
 - **Instanční objekt** je instanční objekt služby Azure Active Directory (AAD) přidružený k účtu.
 - **FINGRP** je skupina uživatelů vytvořená v AAD, která obsahuje uživatele z organizace finance.
 
-Pokyny k vytvoření aplikace AAD (která také vytvoří instanční objekt) najdete v tématu [Vytvoření aplikace AAD](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Pokyny k vytvoření skupiny uživatelů v AAD najdete v tématu [Správa skupin v Azure Active Directory](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
+Pokyny k vytvoření aplikace AAD (která také vytvoří instanční objekt) najdete v tématu [Vytvoření aplikace AAD](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal). Pokyny k vytvoření skupiny uživatelů v AAD najdete v tématu [Správa skupin v Azure Active Directory](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
 Některé klíčové body, které je třeba vzít v úvahu.
 

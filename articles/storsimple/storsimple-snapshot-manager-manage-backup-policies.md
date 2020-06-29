@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 04415d0b-42f0-4737-8afa-257fb2dbe5d0
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: twooley
-ms.openlocfilehash: 7b2df6c8384e78094d80a17d8982b0db9edf73e1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 871f2313b8cd0e8b94a7daff00e5743ee5cdfd71
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75933364"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85511525"
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-backup-policies"></a>Použití Snapshot Manager StorSimple k vytváření a správě zásad zálohování
 ## <a name="overview"></a>Přehled
@@ -58,7 +58,7 @@ Pomocí následujícího postupu vytvořte nové zásady zálohování.
    2. V části nastavení vyberte **jednu z** **možností**:, **denně**, **týdně**nebo **měsíčně**.
    3. V textovém poli **začátek** klikněte na ikonu kalendáře a vyberte počáteční datum.
    4. V části **Upřesnit nastavení**můžete nastavit volitelné plány opakování a koncové datum.
-   5. Klikněte na tlačítko **OK**.
+   5. Klikněte na **OK**.
 
 Po vytvoření zásady zálohování se v podokně **výsledků** zobrazí následující informace:
 

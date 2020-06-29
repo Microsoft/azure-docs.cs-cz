@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 25f0e0f15a299ef8b946b3d5fa0eb3eddc2272c2
-ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
+ms.openlocfilehash: 92c054b42a83d9753e2fcc9c02646c381da795b8
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84508616"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85510862"
 ---
 # <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Tipy pro rozšíření AI v Azure Kognitivní hledání
 
@@ -49,7 +49,16 @@ V takovém případě může být vhodné říct indexeru, aby ignoroval chyby. 
    }
 }
 ```
-## <a name="tip-4-looking-at-enriched-documents-under-the-hood"></a>Tip 4: prohlížení obohacených dokumentů v digestoři 
+> [!NOTE]
+> Osvědčeným postupem je nastavit maxFailedItems, maxFailedItemsPerBatch na 0 pro produkční úlohy.
+
+## <a name="tip-4-use-debug-sessions-to-identify-and-resolve-issues-with-your-skillset"></a>Tip 4: použití relací ladění k identifikaci a řešení problémů s dovednosti 
+
+Relace ladění je vizuální editor, který pracuje s existujícím dovednosti v Azure Portal. V rámci ladicí relace můžete identifikovat a vyřešit chyby, ověřovat změny a potvrzovat změny v produkčním dovednosti v kanálu pro rozšíření AI. Tato funkce verze Preview [si přečte dokumentaci](https://docs.microsoft.com/azure/search/cognitive-search-debug-session). Další informace o konceptech a o tom, jak začít, najdete v tématu [relace ladění](https://docs.microsoft.com/azure/search/cognitive-search-tutorial-debug-sessions).
+
+Relace ladění fungují na jednom dokumentu, což je skvělý způsob, jak iterativním sestavovat složitější kanály pro obohacení.
+
+## <a name="tip-5-looking-at-enriched-documents-under-the-hood"></a>Tip 5: prohlížení obohacených dokumentů v digestoři 
 Obohacené dokumenty jsou dočasné struktury vytvořené během obohacení a po dokončení zpracování se odstraní.
 
 Pokud chcete zachytit snímek rozšířeného dokumentu vytvořeného během indexování, přidejte do indexu pole s názvem ```enriched```. Indexer do tohoto pole automaticky vypíše řetězcovou reprezentaci všech rozšíření daného dokumentu.
@@ -77,11 +86,7 @@ Přidejte ```enriched``` pole jako součást definice indexu pro účely laděn�
 }
 ```
 
-### <a name="debug-sessions"></a>Ladicí relace
-
-Relace ladění je vizuální editor, který pracuje s existujícím dovednosti v Azure Portal. V rámci ladicí relace můžete identifikovat a vyřešit chyby, ověřovat změny a doručovat změny do produkčního dovednostiu v kanálu pro rozšíření AI. Toto je funkce ve verzi Preview a přístup se uděluje případ od případu. [Přečtěte si dokumentaci](https://docs.microsoft.com/azure/search/cognitive-search-debug-session) a zjistěte, jak požádat o přístup.
-
-## <a name="tip-5-expected-content-fails-to-appear"></a>Tip 5: neúspěšné zobrazení očekávaného obsahu
+## <a name="tip-6-expected-content-fails-to-appear"></a>Tip 6: neúspěšné zobrazení očekávaného obsahu
 
 Chybějící obsah by mohl být výsledkem vynechání dokumentů při indexování. Úrovně Free a Basic mají nízká omezení velikosti dokumentu. Při indexování se vynechává libovolný soubor překračující limit. Odhozené dokumenty můžete vyhledat v Azure Portal. Na řídicím panelu služby Search poklikejte na dlaždici indexery. Zkontrolujte poměr úspěšných indexovaných dokumentů. Pokud není 100%, můžete kliknutím na poměr získat další podrobnosti. 
 
@@ -89,7 +94,7 @@ Pokud se problém týká velikosti souboru, může se zobrazit chyba, napříkla
 
 Druhý důvod pro neúspěšné zobrazení obsahu může souviset s chybami mapování vstupu a výstupu. Například název cíle výstupu je "lidé", ale název pole indexu je malými písmeny "lidé". Systém může vracet 201 zpráv o úspěchu pro celý kanál, takže si myslíte, že indexování bylo úspěšné, když je ve skutečnosti pole prázdné. 
 
-## <a name="tip-6-extend-processing-beyond-maximum-run-time-24-hour-window"></a>Tip 6: rozšířené zpracování více než maximální doba běhu (24 hodinové okno)
+## <a name="tip-7-extend-processing-beyond-maximum-run-time-24-hour-window"></a>Tip 7: rozšířené zpracování více než maximální doba běhu (24 hodinové okno)
 
 Analýza obrázků je poměrně náročná pro dokonce i jednoduché případy, takže pokud jsou obrázky obzvláště velké nebo složité, doba zpracování může překročit maximální povolený čas. 
 
@@ -102,7 +107,7 @@ V případě naplánovaných indexerů se indexování obnoví podle plánu v po
 
 V případě indexování na základě portálu (jak je popsáno v rychlém startu) výběr možnosti indexer "spustit jednou" omezuje zpracování na 1 hodinu ( `"maxRunTime": "PT1H"` ). Je možné, že budete chtít okno zpracování prodloužit na nějakou dobu.
 
-## <a name="tip-7-increase-indexing-throughput"></a>Tip 7: zvýšení propustnosti indexování
+## <a name="tip-8-increase-indexing-throughput"></a>Tip 8: zvýšení propustnosti indexování
 
 V případě [paralelního indexování](search-howto-large-index.md)umístěte data do více kontejnerů nebo více virtuálních složek uvnitř stejného kontejneru. Pak vytvořte více datových zdrojů a párů indexerů. Všechny indexery můžou používat stejný dovednosti a zapisovat do stejného cílového vyhledávacího indexu, takže si vaše vyhledávací aplikace nemusí být vědomá tohoto dělení.
 Další informace najdete v tématu [indexování velkých datových sad](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets).

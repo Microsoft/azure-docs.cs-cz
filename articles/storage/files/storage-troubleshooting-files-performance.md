@@ -3,16 +3,16 @@ title: Průvodce řešením potíží s výkonem služby soubory Azure
 description: Známé problémy s výkonem se sdílenými složkami Azure a souvisejícími alternativními řešeními.
 author: gunjanj
 ms.service: storage
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 09e55abcd97317b87f8a272afa51c6b4ace572e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 64c7e56f14fb06e7b211954eb93e4858563a8f08
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77598081"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85511949"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Řešení potíží s výkonem souborů Azure
 
@@ -113,7 +113,7 @@ Nedostatečná podpora pro zapůjčení adresáře.
 ### <a name="workaround"></a>Alternativní řešení
 
 - Pokud je to možné, vyhněte se nadměrnému otevírání a zavírání popisovačům ve stejném adresáři v krátké době.
-- U virtuálních počítačů se systémem Linux zvyšte časový limit mezipaměti položky adresáře zadáním **actimeo =\<sec>** jako možnosti připojení. Ve výchozím nastavení je to jedna sekunda, takže může pomáhat větší hodnota, například tři nebo pět.
+- U virtuálních počítačů se systémem Linux zvyšte časový limit mezipaměti položky adresáře zadáním **actimeo = \<sec> ** as a Mount. Ve výchozím nastavení je to jedna sekunda, takže může pomáhat větší hodnota, například tři nebo pět.
 - Pro virtuální počítače se systémem Linux upgradujte jádro na 4,20 nebo vyšší.
 
 ## <a name="low-iops-on-centosrhel"></a>Nízká IOPS v CentOS/RHEL
@@ -160,7 +160,7 @@ Pokud je počet volání DirectoryOpen/DirectoryClose mezi horními voláními r
 
 ### <a name="workaround"></a>Alternativní řešení
 
-- Žádné.
+- Žádné
 
 ## <a name="slow-performance-from-windows-81-or-server-2012-r2"></a>Pomalý výkon od Windows 8.1 nebo serveru 2012 R2
 
@@ -187,7 +187,7 @@ Vyšší než očekávaná latence při přístupu k souborům Azure pro úlohy 
 6. V okně **Konfigurovat logiku signálu** přejděte na dimenze **typ odpovědi** , klikněte na rozevírací seznam **hodnoty dimenze** a vyberte **SuccessWithThrottling** (pro SMB) nebo **ClientThrottlingError** (pro REST). 
 
   > [!NOTE]
-  > Pokud není uvedená hodnota dimenze SuccessWithThrottling nebo ClientThrottlingError, znamená to, že prostředek nebyl omezen.  Chcete-li přidat hodnotu dimenze, klikněte **+** na tlačítko vedle rozevíracího seznamu **hodnoty dimenze** , zadejte **SuccessWithThrottling** nebo **ClientThrottlingError**, klikněte na tlačítko **OK** a poté opakujte krok #6.
+  > Pokud není uvedená hodnota dimenze SuccessWithThrottling nebo ClientThrottlingError, znamená to, že prostředek nebyl omezen.  Chcete-li přidat hodnotu dimenze, klikněte na tlačítko **+** vedle rozevíracího seznamu **hodnoty dimenze** , zadejte **SuccessWithThrottling** nebo **ClientThrottlingError**, klikněte na tlačítko **OK** a poté opakujte krok #6.
 
 7. Přejděte do dimenze **sdílení souborů** , klikněte na rozevírací seznam **hodnoty dimenze** a vyberte sdílené složky, na kterých chcete upozornit. 
 

@@ -3,15 +3,15 @@ title: Ověřování koncových uživatelů – REST s Data Lake Storage Gen1 �
 description: Naučte se, jak dosáhnout ověřování koncovými uživateli pomocí Azure Data Lake Storage Gen1 pomocí Azure Active Directory pomocí REST API
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: ac06c9ef355eeba489d2006c435a48b7efcfd7f0
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: f0b79ec08883c81aee535a6eff1176e3e10027d9
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82688065"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85511211"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>Ověřování koncových uživatelů s Azure Data Lake Storage Gen1 pomocí REST API
 > [!div class="op_single_selector"]
@@ -44,7 +44,7 @@ V tomto scénáři aplikace vyzve uživatele k přihlášení a všechny operace
         https://login.microsoftonline.com/<TENANT-ID>/oauth2/authorize?client_id=<APPLICATION-ID>&response_type=code&redirect_uri=<REDIRECT-URI>
 
    > [!NOTE]
-   > \<REDIRECT-URI&gt; musí být zakódovaný, aby se dal použít jako adresa URL. Takže pro https://localhost, použití `https%3A%2F%2Flocalhost`)
+   > \<REDIRECT-URI>musí být kódovány pro použití v adrese URL. Takže pro https://localhost , použití `https%3A%2F%2Flocalhost` )
 
     Pro účely tohoto kurzu můžete ve výše zobrazené adrese URL nahradit zástupné hodnoty a vložit ji do adresního řádku webového prohlížeče. Budete přesměrováni na ověření pomocí přihlášení Azure. Po úspěšném přihlášení se zobrazí v adresním řádku prohlížeče odpověď. Odpověď bude mít tento formát:
 
@@ -60,11 +60,11 @@ V tomto scénáři aplikace vyzve uživatele k přihlášení a všechny operace
         -F code=<AUTHORIZATION-CODE>
 
    > [!NOTE]
-   > V takovém případě nemusí být identifikátor \<REDIRECT-URI> zakódovaný.
+   > V takovém případě \<REDIRECT-URI> nemusí být nutné zakódovat.
    > 
    > 
 
-3. Odpověď je objekt JSON, který obsahuje přístupový token (například `"access_token": "<ACCESS_TOKEN>"`) a obnovovací token (například `"refresh_token": "<REFRESH_TOKEN>"`). Vaše aplikace používá přístupový token při přístupu k Azure Data Lake Storage Gen1 a aktualizačnímu tokenu k získání dalšího přístupového tokenu, když vyprší platnost přístupového tokenu.
+3. Odpověď je objekt JSON, který obsahuje přístupový token (například `"access_token": "<ACCESS_TOKEN>"` ) a obnovovací token (například `"refresh_token": "<REFRESH_TOKEN>"` ). Vaše aplikace používá přístupový token při přístupu k Azure Data Lake Storage Gen1 a aktualizačnímu tokenu k získání dalšího přístupového tokenu, když vyprší platnost přístupového tokenu.
 
         {"token_type":"Bearer","scope":"user_impersonation","expires_in":"3599","expires_on":"1461865782","not_before":    "1461861882","resource":"https://management.core.windows.net/","access_token":"<REDACTED>","refresh_token":"<REDACTED>","id_token":"<REDACTED>"}
 

@@ -4,16 +4,16 @@ titleSuffix: Azure Files
 description: Postup vytvoření sdílené složky Azure pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 2/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: ed6abbac7c5953eaec4fa4584248d0d98b49ba63
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ba6f4bcaffbf9fa11c949853362485d524bec23a
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77596872"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85510012"
 ---
 # <a name="create-an-azure-file-share"></a>Vytvoření sdílené složky Azure
 Pokud chcete vytvořit sdílenou složku Azure, musíte odpovědět na tři otázky týkající se toho, jak ji budete používat:
@@ -45,7 +45,7 @@ Azure podporuje více typů účtů úložiště pro různé scénáře úloži�
 
 - **Účty úložiště**úložiště: účty úložiště úložiště umožňují nasadit sdílené složky Azure na hardware Premium/Solid-State (SSD) na disku (SSD). Účty úložiště souborů se dají použít jenom k ukládání sdílených složek Azure. v účtu úložiště úložiště se nedají nasadit žádné další prostředky úložiště (kontejnery objektů blob, fronty, tabulky atd.).
 
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 Pokud chcete účet úložiště vytvořit přes Azure Portal, vyberte v řídicím panelu **+ vytvořit prostředek** . Ve výsledném okně hledání Azure Marketplace vyhledejte **účet úložiště** a vyberte výsledný výsledek hledání. To bude mít za následek stránku s přehledem pro účty úložiště. Vyberte **vytvořit** a pokračujte v Průvodci vytvořením účtu úložiště.
 
 ![Snímek obrazovky s možností rychlého vytvoření účtu úložiště v prohlížeči](media/storage-how-to-create-file-share/create-storage-account-0.png)
@@ -97,7 +97,7 @@ $storageAccountName = "mystorageacct$(Get-Random)"
 $region = "westus2"
 ```
 
-K vytvoření účtu úložiště, který podporuje ukládání standardních sdílených složek Azure, použijeme následující příkaz. `-SkuName` Parametr se vztahuje k typu redundance, kterou požadujete; Pokud si přejete, aby byl `-EnableLargeFileShare` účet geograficky redundantního nebo geograficky redundantního úložiště, je nutné odebrat i parametr.
+K vytvoření účtu úložiště, který podporuje ukládání standardních sdílených složek Azure, použijeme následující příkaz. `-SkuName`Parametr se vztahuje k typu redundance; Pokud si přejete, aby byl účet geograficky redundantního úložiště nebo geograficky redundantního úložiště, je nutné také odebrat tento `-EnableLargeFileShare` parametr.
 
 ```azurepowershell-interactive
 $storAcct = New-AzStorageAccount `
@@ -109,7 +109,7 @@ $storAcct = New-AzStorageAccount `
     -EnableLargeFileShare
 ```
 
-K vytvoření účtu úložiště, který podporuje ukládání prémiových sdílených složek Azure, použijeme následující příkaz. Všimněte si, `-SkuName` že parametr se změnil tak, `Premium` aby zahrnoval i požadovanou úroveň redundance místně redundantního`LRS`(). Parametr `-Kind` je `FileStorage` místo toho `StorageV2` , aby se v účtu úložiště úložiště místo účtu úložiště GPv2 musely vytvořit soubory Premium.
+K vytvoření účtu úložiště, který podporuje ukládání prémiových sdílených složek Azure, použijeme následující příkaz. Všimněte si, že `-SkuName` parametr se změnil tak, aby zahrnoval i `Premium` požadovanou úroveň redundance místně redundantního ( `LRS` ). `-Kind`Parametr je místo toho, aby se `FileStorage` v účtu úložiště úložiště `StorageV2` místo účtu úložiště GPv2 musely vytvořit soubory Premium.
 
 ```azurepowershell-interactive
 $storAcct = New-AzStorageAccount `
@@ -131,7 +131,7 @@ storageAccountName="mystorageacct$RANDOM"
 region="westus2"
 ```
 
-K vytvoření účtu úložiště, který podporuje ukládání standardních sdílených složek Azure, použijeme následující příkaz. `--sku` Parametr se vztahuje k typu redundance, kterou požadujete; Pokud si přejete, aby byl `--enable-large-file-share` účet geograficky redundantního nebo geograficky redundantního úložiště, je nutné odebrat i parametr.
+K vytvoření účtu úložiště, který podporuje ukládání standardních sdílených složek Azure, použijeme následující příkaz. `--sku`Parametr se vztahuje k typu redundance; Pokud si přejete, aby byl účet geograficky redundantního úložiště nebo geograficky redundantního úložiště, je nutné také odebrat tento `--enable-large-file-share` parametr.
 
 ```azurecli-interactive
 az storage account create \
@@ -143,7 +143,7 @@ az storage account create \
     --output none
 ```
 
-K vytvoření účtu úložiště, který podporuje ukládání prémiových sdílených složek Azure, použijeme následující příkaz. Všimněte si, `--sku` že parametr se změnil tak, `Premium` aby zahrnoval i požadovanou úroveň redundance místně redundantního`LRS`(). Parametr `--kind` je `FileStorage` místo toho `StorageV2` , aby se v účtu úložiště úložiště místo účtu úložiště GPv2 musely vytvořit soubory Premium.
+K vytvoření účtu úložiště, který podporuje ukládání prémiových sdílených složek Azure, použijeme následující příkaz. Všimněte si, že `--sku` parametr se změnil tak, aby zahrnoval i `Premium` požadovanou úroveň redundance místně redundantního ( `LRS` ). `--kind`Parametr je místo toho, aby se `FileStorage` v účtu úložiště úložiště `StorageV2` místo účtu úložiště GPv2 musely vytvořit soubory Premium.
 
 ```azurecli-interactive
 az storage account create \
@@ -163,7 +163,7 @@ U standardních sdílených složek se jedná o horní hranici sdílené složky
 
 U sdílených složek úrovně Premium je kvóta přetížená, což znamená **zřízené velikosti**. Zřízená velikost je množství, které se vám bude účtovat bez ohledu na skutečné využití. Když zřizujete sdílenou složku Premium, budete chtít vzít v úvahu dva faktory: 1) budoucí nárůst podílu z perspektivy využití prostoru a 2) IOPS požadované pro vaše zatížení. Každý zřízený GiB vám opravňuje k dodatečnému rezervovanému a roztržení IOPS. Další informace o tom, jak naplánovat pro sdílenou složku Premium, najdete v tématu [zřizování souborů ke sdílení prémiových souborů](storage-files-planning.md#understanding-provisioning-for-premium-file-shares).
 
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 Pokud jste právě vytvořili účet úložiště, můžete na něj přejít z obrazovky nasazení výběrem možnosti **Přejít k prostředku**. Pokud jste už vytvořili účet úložiště, můžete na něj přejít přes skupinu prostředků, která ho obsahuje. V účtu úložiště vyberte dlaždici s názvem **sdílené složky** (můžete také přejít ke **sdíleným složkám souborů** prostřednictvím obsahu pro účet úložiště).
 
 ![Snímek obrazovky dlaždice sdílení souborů](media/storage-how-to-create-file-share/create-file-share-1.png)
@@ -175,10 +175,10 @@ Na obrazovce by se mělo zobrazit okno nové sdílení souborů. V okně Nová s
 - **Name (název**): název sdílené složky, která se má vytvořit.
 - **Kvóta**: kvóta sdílení souborů pro standardní sdílené složky; zřízená velikost sdílené složky pro sdílené složky prémiových souborů.
 
-Vyberte **vytvořit** a dokončí se vytváření nové sdílené složky. Všimněte si, že pokud je váš účet úložiště ve virtuální síti, nebudete moct úspěšně vytvořit sdílenou složku Azure, pokud je váš klient zároveň ve virtuální síti. Pomocí rutiny Azure PowerShell `New-AzRmStorageShare` můžete také obejít toto omezení bodu v čase.
+Vyberte **vytvořit** a dokončí se vytváření nové sdílené složky. Všimněte si, že pokud je váš účet úložiště ve virtuální síti, nebudete moct úspěšně vytvořit sdílenou složku Azure, pokud je váš klient zároveň ve virtuální síti. Pomocí rutiny Azure PowerShell můžete také obejít toto omezení bodu v čase `New-AzRmStorageShare` .
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-Pomocí [`New-AzRmStorageShare`](/powershell/module/az.storage/New-AzRmStorageShare) rutiny můžete vytvořit sdílenou složku Azure. Následující příkazy PowerShellu předpokládají, že jste `$resourceGroupName` nastavili `$storageAccountName` proměnné a jak je definováno výše v části vytvoření účtu úložiště s Azure PowerShell. 
+Pomocí rutiny můžete vytvořit sdílenou složku Azure [`New-AzRmStorageShare`](/powershell/module/az.storage/New-AzRmStorageShare) . Následující příkazy PowerShellu předpokládají, že jste nastavili proměnné `$resourceGroupName` a `$storageAccountName` jak je definováno výše v části Vytvoření účtu úložiště s Azure PowerShell. 
 
 > [!Important]  
 > Pro sdílené složky Premium `-QuotaGiB` parametr odkazuje na zřízenou velikost sdílené složky. Zřízená velikost sdílené složky je množství, které se vám bude účtovat bez ohledu na využití. Standardní sdílené složky se účtují na základě využití místo zřízené velikosti.
@@ -222,7 +222,7 @@ az storage share create \
     --output none
 ```
 
-Tento příkaz selže, pokud je účet úložiště obsažen v rámci virtuální sítě a počítač, ze kterého tento příkaz vyvoláte, není součástí virtuální sítě. Toto omezení k určitému bodu v čase můžete obejít pomocí rutiny Azure PowerShell `New-AzRmStorageShare` , jak je popsáno výše, nebo spuštěním Azure CLI z počítače, který je součástí virtuální sítě, včetně připojení prostřednictvím sítě VPN.
+Tento příkaz selže, pokud je účet úložiště obsažen v rámci virtuální sítě a počítač, ze kterého tento příkaz vyvoláte, není součástí virtuální sítě. Toto omezení k určitému bodu v čase můžete obejít pomocí `New-AzRmStorageShare` rutiny Azure PowerShell, jak je popsáno výše, nebo spuštěním Azure CLI z počítače, který je součástí virtuální sítě, včetně připojení prostřednictvím sítě VPN.
 
 ---
 

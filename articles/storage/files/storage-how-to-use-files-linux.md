@@ -3,19 +3,19 @@ title: Použití souborů Azure se systémem Linux | Microsoft Docs
 description: Zjistěte, jak připojit sdílenou složku Azure přes protokol SMB v systému Linux.
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: fcc9876caf0c002650ab30b7eaed7dc44e2f135e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8f668844951a2416b25d1649721fc005a0d70b75
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137735"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85509842"
 ---
 # <a name="use-azure-files-with-linux"></a>Použití služby Soubory Azure s Linuxem
-Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné připojit v rámci distribucí systému Linux pomocí [klienta jádra protokolu SMB](https://wiki.samba.org/index.php/LinuxCIFS). Tento článek ukazuje dva způsoby, jak připojit sdílenou složku Azure: na vyžádání pomocí `mount` příkazu a po spuštění vytvořením položky v. `/etc/fstab`
+Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné připojit v rámci distribucí systému Linux pomocí [klienta jádra protokolu SMB](https://wiki.samba.org/index.php/LinuxCIFS). Tento článek ukazuje dva způsoby, jak připojit sdílenou složku Azure: na vyžádání pomocí `mount` příkazu a po spuštění vytvořením položky v `/etc/fstab` .
 
 Doporučený způsob, jak připojit sdílenou složku Azure v systému Linux, je použití protokolu SMB 3,0. Ve výchozím nastavení služba soubory Azure vyžaduje šifrování při přenosu, který podporuje jenom SMB 3,0. Soubory Azure také podporují protokol SMB 2,1, který nepodporuje šifrování při přenosu, ale sdílené složky Azure se službou SMB 2,1 nemůžete z jiných oblastí Azure nebo z místního prostředí připojit z důvodů zabezpečení. Pokud vaše aplikace konkrétně nevyžaduje protokol SMB 2,1, existuje málo důvodů, proč byste ji měli použít od většiny oblíbených, nedávno vydaných distribucí Linux podporuje SMB 3,0:  
 
@@ -28,7 +28,7 @@ Doporučený způsob, jak připojit sdílenou složku Azure v systému Linux, je
 | openSUSE | 13.2 + | 42.3 + |
 | SUSE Linux Enterprise Server | 12+ | 12 SP3 + |
 
-Pokud používáte distribuci systému Linux, která není uvedená v předchozí tabulce, můžete zjistit, jestli vaše distribuce systému Linux podporuje protokol SMB 3,0 se šifrováním, a to kontrolou verze jádra systému Linux. SMB 3,0 se šifrováním bylo přidáno do jádra Linux verze 4,11. `uname` Příkaz vrátí verzi používaného jádra systému Linux:
+Pokud používáte distribuci systému Linux, která není uvedená v předchozí tabulce, můžete zjistit, jestli vaše distribuce systému Linux podporuje protokol SMB 3,0 se šifrováním, a to kontrolou verze jádra systému Linux. SMB 3,0 se šifrováním bylo přidáno do jádra Linux verze 4,11. `uname`Příkaz vrátí verzi používaného jádra systému Linux:
 
 ```bash
 uname -r
@@ -40,26 +40,26 @@ uname -r
 * <a id="install-cifs-utils"></a>**Ujistěte se, že je nainstalovaný balíček CIFS-util.**  
     Balíček CIFS-utils se dá nainstalovat pomocí Správce balíčků na distribuci v systému Linux podle vašeho výběru. 
 
-    V **Ubuntu** distribucích **založených** na Ubuntu a Debian použijte správce `apt` balíčků:
+    V distribucích **založených** na **Ubuntu** a Debian použijte `apt` Správce balíčků:
 
     ```bash
     sudo apt update
     sudo apt install cifs-utils
     ```
 
-    V **Fedora** **Red Hat Enterprise Linux 8 +** a **CentOS 8 +** použijte správce `dnf` balíčků:
+    V **Fedora** **Red Hat Enterprise Linux 8 +** a **CentOS 8 +** použijte `dnf` Správce balíčků:
 
     ```bash
     sudo dnf install cifs-utils
     ```
 
-    Ve starších verzích **Red Hat Enterprise Linux** a **CentOS**použijte správce `yum` balíčků:
+    Ve starších verzích **Red Hat Enterprise Linux** a **CentOS**použijte `yum` Správce balíčků:
 
     ```bash
     sudo yum install cifs-utils 
     ```
 
-    V **openSUSE**použijte správce `zypper` balíčků:
+    V **openSUSE**použijte `zypper` Správce balíčků:
 
     ```bash
     sudo zypper install cifs-utils
@@ -99,7 +99,7 @@ Pokud chcete použít sdílenou složku Azure s distribucí systému Linux, mus�
 V případě potřeby můžete stejnou sdílenou složku Azure připojit k několika přípojným bodům.
 
 ### <a name="mount-the-azure-file-share-on-demand-with-mount"></a>Připojení sdílené složky Azure na vyžádání pomocí`mount`
-1. **Vytvořte složku pro přípojný bod**: Nahraďte `<your-resource-group>`, `<your-storage-account>`a `<your-file-share>` příslušnými informacemi pro vaše prostředí:
+1. **Vytvořte složku pro přípojný bod**: Nahraďte `<your-resource-group>` , `<your-storage-account>` a `<your-file-share>` příslušnými informacemi pro vaše prostředí:
 
     ```bash
     resourceGroupName="<your-resource-group>"
@@ -111,7 +111,7 @@ V případě potřeby můžete stejnou sdílenou složku Azure připojit k něko
     sudo mkdir -p $mntPath
     ```
 
-1. **Připojte sdílenou složku Azure pomocí příkazu připojit**. V následujícím příkladu má místní systém Linux oprávnění k souborům a složkám standardně 0755, což znamená čtení, zápis a spouštění pro vlastníka (na základě souboru/adresáře Linux Owner), čtení a spouštění pro uživatele ve skupině vlastník a pro ostatní v systému. K nastavení ID uživatele `uid` a `gid` ID skupiny pro připojení můžete použít možnosti a připojení. Můžete také použít `dir_mode` a `file_mode` k nastavení vlastních oprávnění podle potřeby. Další informace o tom, jak nastavit oprávnění, najdete v tématu [Číselná notace pro UNIX](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation) v Wikipedii. 
+1. **Připojte sdílenou složku Azure pomocí příkazu připojit**. V následujícím příkladu má místní systém Linux oprávnění k souborům a složkám standardně 0755, což znamená čtení, zápis a spouštění pro vlastníka (na základě souboru/adresáře Linux Owner), čtení a spouštění pro uživatele ve skupině vlastník a pro ostatní v systému. `uid` `gid` K nastavení ID uživatele a ID skupiny pro připojení můžete použít možnosti a připojení. Můžete také použít `dir_mode` a `file_mode` k nastavení vlastních oprávnění podle potřeby. Další informace o tom, jak nastavit oprávnění, najdete v tématu [Číselná notace pro UNIX](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation) v Wikipedii. 
 
     ```bash
     httpEndpoint=$(az storage account show \
@@ -134,7 +134,7 @@ V případě potřeby můžete stejnou sdílenou složku Azure připojit k něko
 Až budete s použitím sdílené složky Azure hotovi, můžete ji použít `sudo umount $mntPath` k odpojení sdílené složky.
 
 ### <a name="create-a-persistent-mount-point-for-the-azure-file-share-with-etcfstab"></a>Vytvoření trvalého přípojného bodu pro sdílenou složku Azure s`/etc/fstab`
-1. **Vytvoření složky pro přípojný bod**: složku pro přípojný bod lze vytvořit kdekoli v systému souborů, ale je to obvyklá konvence, kterou můžete vytvořit v rámci/mnt.. Například následující příkaz vytvoří nový adresář, nahradí `<your-resource-group>`, `<your-storage-account>`a `<your-file-share>` s příslušnými informacemi pro vaše prostředí:
+1. **Vytvoření složky pro přípojný bod**: složku pro přípojný bod lze vytvořit kdekoli v systému souborů, ale je to obvyklá konvence, kterou můžete vytvořit v rámci/mnt.. Například následující příkaz vytvoří nový adresář, nahradí `<your-resource-group>` , `<your-storage-account>` a `<your-file-share>` s příslušnými informacemi pro vaše prostředí:
 
     ```bash
     resourceGroupName="<your-resource-group>"
@@ -173,7 +173,7 @@ Až budete s použitím sdílené složky Azure hotovi, můžete ji použít `su
     sudo chmod 600 $smbCredentialFile
     ```
 
-1. Následující **příkaz použijte k připojení následujícího řádku k `/etc/fstab` **: v následujícím příkladu má místní soubory a složky pro Linux výchozí hodnotu 0755, což znamená čtení, zápis a spouštění pro vlastníka (na základě souboru/adresáře Linux Owner), čtení a spouštění pro uživatele ve skupině vlastník a pro ostatní v systému. K nastavení ID uživatele `uid` a `gid` ID skupiny pro připojení můžete použít možnosti a připojení. Můžete také použít `dir_mode` a `file_mode` k nastavení vlastních oprávnění podle potřeby. Další informace o tom, jak nastavit oprávnění, najdete v tématu [Číselná notace pro UNIX](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation) v Wikipedii.
+1. Následující **příkaz použijte k připojení následujícího řádku k `/etc/fstab` **: v následujícím příkladu má místní soubory a složky pro linux výchozí hodnotu 0755, což znamená čtení, zápis a spouštění pro vlastníka (na základě souboru/adresáře Linux Owner), čtení a spouštění pro uživatele ve skupině vlastník a pro ostatní v systému. `uid` `gid` K nastavení ID uživatele a ID skupiny pro připojení můžete použít možnosti a připojení. Můžete také použít `dir_mode` a `file_mode` k nastavení vlastních oprávnění podle potřeby. Další informace o tom, jak nastavit oprávnění, najdete v tématu [Číselná notace pro UNIX](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation) v Wikipedii.
 
     ```bash
     httpEndpoint=$(az storage account show \
@@ -200,20 +200,20 @@ Až budete s použitím sdílené složky Azure hotovi, můžete ji použít `su
 
     Balíček AutoFS se dá nainstalovat pomocí Správce balíčků na distribuci v systému Linux podle vašeho výběru. 
 
-    V **Ubuntu** distribucích **založených** na Ubuntu a Debian použijte správce `apt` balíčků:
+    V distribucích **založených** na **Ubuntu** a Debian použijte `apt` Správce balíčků:
     ```bash
     sudo apt update
     sudo apt install autofs
     ```
-    V **Fedora** **Red Hat Enterprise Linux 8 +** a **CentOS 8 +** použijte správce `dnf` balíčků:
+    V **Fedora** **Red Hat Enterprise Linux 8 +** a **CentOS 8 +** použijte `dnf` Správce balíčků:
     ```bash
     sudo dnf install autofs
     ```
-    Ve starších verzích **Red Hat Enterprise Linux** a **CentOS**použijte správce `yum` balíčků:
+    Ve starších verzích **Red Hat Enterprise Linux** a **CentOS**použijte `yum` Správce balíčků:
     ```bash
     sudo yum install autofs 
     ```
-    V **openSUSE**použijte správce `zypper` balíčků:
+    V **openSUSE**použijte `zypper` Správce balíčků:
     ```bash
     sudo zypper install autofs
     ```
@@ -244,28 +244,28 @@ Až budete s použitím sdílené složky Azure hotovi, můžete ji použít `su
 ## <a name="securing-linux"></a>Zabezpečení systému Linux
 Aby bylo možné připojit sdílenou složku Azure v systému Linux, musí být port 445 přístupný. Řada organizací port 445 blokuje kvůli bezpečnostním rizikům spojeným s protokolem SMB 1. SMB 1, označované taky jako CIFS (Common Internet File System), je starší protokol systému souborů, který je součástí mnoha distribucí pro Linux. Protokol SMB 1 je zastaralý, neefektivní a hlavně nezabezpečený protokol. Dobrá zpráva je, že soubory Azure nepodporují protokol SMB 1 a počínaje jádrem Linux verze 4,18, Linux umožňuje zakázat protokol SMB 1. Předtím, než použijete sdílené složky SMB v produkčním prostředí, [důrazně doporučujeme](https://aka.ms/stopusingsmb1) zakázat protokol SMB 1 v klientech se systémem Linux.
 
-Od verze Linux kernel 4,18 se modul jádra SMB, který se `cifs` volá z původních důvodů, vystaví nový parametr modulu (často se označuje jako *parametr* různými externími dokumenty) `disable_legacy_dialects`. I když se zavedlo v jádře jádra 4,18, někteří dodavatelé tuto změnu nastavili na starší jádra, kterou podporují. V následující tabulce najdete informace o dostupnosti tohoto parametru modulu u běžných distribucí systému Linux.
+Od verze Linux kernel 4,18 se modul jádra SMB, který se volá `cifs` z původních důvodů, vystaví nový parametr modulu (často se označuje jako *parametr* různými externími dokumenty) `disable_legacy_dialects` . I když se zavedlo v jádře jádra 4,18, někteří dodavatelé tuto změnu nastavili na starší jádra, kterou podporují. V následující tabulce najdete informace o dostupnosti tohoto parametru modulu u běžných distribucí systému Linux.
 
 | Distribuce | Může zakázat protokol SMB 1. |
 |--------------|-------------------|
-| Ubuntu 14.04 – 16.04 | Ne |
-| Ubuntu 18.04 | Ano |
-| Ubuntu 19.04 + | Ano |
-| Debian 8-9 | Ne |
-| Debian 10 + | Ano |
-| Fedora 29 + | Ano |
-| CentOS 7 | Ne | 
-| CentOS 8 + | Ano |
-| Red Hat Enterprise Linux 6. x-7. x | Ne |
-| Red Hat Enterprise Linux 8 + | Ano |
-| openSUSE, přestupné 15,0 | Ne |
-| openSUSE přestupné 15.1 + | Ano |
-| openSUSE Tumbleweed | Ano |
-| SUSE Linux Enterprise 11. x-12. x | Ne |
-| SUSE Linux Enterprise 15 | Ne |
-| SUSE Linux Enterprise 15,1 | Ne |
+| Ubuntu 14.04 – 16.04 | No |
+| Ubuntu 18.04 | Yes |
+| Ubuntu 19.04 + | Yes |
+| Debian 8-9 | No |
+| Debian 10 + | Yes |
+| Fedora 29 + | Yes |
+| CentOS 7 | No | 
+| CentOS 8 + | Yes |
+| Red Hat Enterprise Linux 6. x-7. x | No |
+| Red Hat Enterprise Linux 8 + | Yes |
+| openSUSE, přestupné 15,0 | No |
+| openSUSE přestupné 15.1 + | Yes |
+| openSUSE Tumbleweed | Yes |
+| SUSE Linux Enterprise 11. x-12. x | No |
+| SUSE Linux Enterprise 15 | No |
+| SUSE Linux Enterprise 15,1 | No |
 
-Pomocí následujícího příkazu můžete zjistit, jestli vaše distribuce systému Linux `disable_legacy_dialects` podporuje parametr Module.
+Pomocí následujícího příkazu můžete zjistit, jestli vaše distribuce systému Linux podporuje `disable_legacy_dialects` parametr Module.
 
 ```bash
 sudo modinfo -p cifs | grep disable_legacy_dialects
@@ -301,7 +301,7 @@ Modul můžete ručně načíst pomocí protokolu SMB 1 uvolněného pomocí `mo
 sudo modprobe cifs disable_legacy_dialects=Y
 ```
 
-Nakonec můžete ověřit, že se modul SMB načetl s parametrem, a to tak, že si prohlédněte načtené parametry v `/sys/module/cifs/parameters`:
+Nakonec můžete ověřit, že se modul SMB načetl s parametrem, a to tak, že si prohlédněte načtené parametry v `/sys/module/cifs/parameters` :
 
 ```bash
 cat /sys/module/cifs/parameters/disable_legacy_dialects
@@ -325,4 +325,4 @@ Další informace o službě Soubory Azure najdete na těchto odkazech:
 
 * [Plánování nasazení služby Soubory Azure](storage-files-planning.md)
 * [Nejčastější dotazy](../storage-files-faq.md)
-* [Odstraňování potíží](storage-troubleshoot-linux-file-connection-problems.md)
+* [Řešení potíží](storage-troubleshoot-linux-file-connection-problems.md)

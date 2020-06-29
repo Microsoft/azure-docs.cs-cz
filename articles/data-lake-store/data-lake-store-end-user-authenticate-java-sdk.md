@@ -3,15 +3,15 @@ title: Ověřování koncových uživatelů – Java s Data Lake Storage Gen1 �
 description: Naučte se, jak dosáhnout ověřování koncovými uživateli pomocí Azure Data Lake Storage Gen1 pomocí Azure Active Directory s Java
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 1e03ad657fd40dce22a17f2fff5b67a65eb3eb52
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 9186922803c287f2aa17c151590a0c1b590619d3
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691764"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85511320"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-java"></a>Ověřování koncových uživatelů s Azure Data Lake Storage Gen1 pomocí jazyka Java
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ V tomto článku se dozvíte, jak pomocí sady Java SDK provádět ověřování
 ## <a name="end-user-authentication"></a>Ověřování koncových uživatelů
 1. Vytvořte projekt Maven pomocí příkazu [mvn archetype](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html) z příkazového řádku nebo pomocí integrovaného vývojového rozhraní (IDE). Pokyny k vytvoření projektu jazyka Java s použitím IntelliJ najdete [zde](https://www.jetbrains.com/help/idea/2016.1/creating-and-running-your-first-java-application.html). Pokyny k vytvoření projektu s použitím Eclipse najdete [zde](https://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2FgettingStarted%2Fqs-3.htm).
 
-2. Přidejte k souboru Maven **pom.xml** následující závislosti. Před značku ** \<>/Project** přidejte následující fragment kódu:
+2. Přidejte k souboru Maven **pom.xml** následující závislosti. Přidejte následující fragment kódu před **\</project>** značku:
    
         <dependencies>
           <dependency>
@@ -51,7 +51,7 @@ V tomto článku se dozvíte, jak pomocí sady Java SDK provádět ověřování
           </dependency>
         </dependencies>
    
-    První závislost je použít sadu Data Lake Storage Gen1 SDK (`azure-data-lake-store-sdk`) z úložiště Maven. Druhou závislostí je zadání protokolovacího rozhraní (`slf4j-nop`), které se pro tuto aplikaci použije. Sada Data Lake Storage Gen1 SDK používá [SLF4J](https://www.slf4j.org/) protokolování, které vám umožní vybírat z mnoha oblíbených protokolovacích rozhraní, jako je log4j, protokolování Java, Logback atd., nebo bez protokolování. Pro tento příklad zakážeme protokolování a použijeme tedy vazbu **slf4j-nop**. Pokud chcete ve své aplikaci použít jiné možnosti protokolování, přečtěte si informace [zde](https://www.slf4j.org/manual.html#projectDep).
+    První závislost je použít sadu Data Lake Storage Gen1 SDK ( `azure-data-lake-store-sdk` ) z úložiště Maven. Druhou závislostí je zadání protokolovacího rozhraní (`slf4j-nop`), které se pro tuto aplikaci použije. Sada Data Lake Storage Gen1 SDK používá [SLF4J](https://www.slf4j.org/) protokolování, které vám umožní vybírat z mnoha oblíbených protokolovacích rozhraní, jako je log4j, protokolování Java, Logback atd., nebo bez protokolování. Pro tento příklad zakážeme protokolování a použijeme tedy vazbu **slf4j-nop**. Pokud chcete ve své aplikaci použít jiné možnosti protokolování, přečtěte si informace [zde](https://www.slf4j.org/manual.html#projectDep).
 
 3. Přidejte do své aplikace následující příkazy pro import.
 
@@ -62,7 +62,7 @@ V tomto článku se dozvíte, jak pomocí sady Java SDK provádět ověřování
         import com.microsoft.azure.datalake.store.oauth2.AccessTokenProvider;
         import com.microsoft.azure.datalake.store.oauth2.DeviceCodeTokenProvider;
 
-4. Použijte následující fragment kódu v aplikaci Java k získání tokenu pro nativní aplikaci služby Active Directory, kterou jste vytvořili dříve `DeviceCodeTokenProvider`pomocí. Nahraďte **zde vyplnit** skutečnými hodnotami pro Azure Active Directory nativní aplikaci.
+4. Použijte následující fragment kódu v aplikaci Java k získání tokenu pro nativní aplikaci služby Active Directory, kterou jste vytvořili dříve pomocí `DeviceCodeTokenProvider` . Nahraďte **zde vyplnit** skutečnými hodnotami pro Azure Active Directory nativní aplikaci.
 
         private static String nativeAppId = "FILL-IN-HERE";
             

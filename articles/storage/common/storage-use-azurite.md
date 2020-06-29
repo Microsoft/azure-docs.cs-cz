@@ -6,13 +6,13 @@ ms.author: mhopkins
 ms.date: 05/01/2020
 ms.service: storage
 ms.subservice: common
-ms.topic: conceptual
-ms.openlocfilehash: f4e0bbd546b770b9e81bb9142cdd97e3927db7bd
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.topic: how-to
+ms.openlocfilehash: af846b0c203934468b7f6282234819142093286f
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195947"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85512144"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development-and-testing-preview"></a>Použití emulátoru Azurite pro místní Azure Storage vývoj a testování (Preview)
 
@@ -70,7 +70,7 @@ Podporovaná jsou následující nastavení:
 
 ## <a name="install-and-run-azurite-by-using-npm"></a>Instalace a spuštění Azurite pomocí NPM
 
-Tato metoda instalace vyžaduje, abyste nainstalovali [Node. js verze 8,0 nebo novější](https://nodejs.org) . Správce balíčků Node (npm) je nástroj pro správu balíčků, který je součástí každé instalace Node. js. Po instalaci Node. js spusťte následující `npm` příkaz pro instalaci Azurite.
+Tato metoda instalace vyžaduje, abyste měli nainstalovanou [verziNode.js 8,0 nebo novější](https://nodejs.org) . Správce balíčků Node (npm) je nástroj pro správu balíčků, který je součástí každé instalace Node.js. Po instalaci Node.js spusťte následující `npm` příkaz a nainstalujte Azurite.
 
 ```console
 npm install -g azurite
@@ -148,7 +148,7 @@ Tento příkaz oznamuje Azurite, aby ukládal všechna data do konkrétního adr
 
 Tato část podrobně popisuje přepínače příkazového řádku, které jsou k dispozici při spuštění Azurite.
 
-### <a name="help"></a>Nápověda
+### <a name="help"></a>Help
 
 **Volitelné** – získat nápovědu příkazového řádku pomocí `-h` `--help` přepínače nebo.
 
@@ -355,7 +355,7 @@ Azurite ve výchozím nastavení aktualizuje vlastní názvy účtů a klíče z
 
 ### <a name="connection-strings"></a>Připojovací řetězce
 
-Nejjednodušší způsob, jak se připojit k Azurite z vaší aplikace, je nakonfigurovat připojovací řetězec v konfiguračním souboru vaší aplikace, který odkazuje na zástupce *UseDevelopmentStorage = true*. Tady je příklad připojovacího řetězce v souboru *App. config* :
+Nejjednodušší způsob, jak se připojit k Azurite z vaší aplikace, je nakonfigurovat připojovací řetězec v konfiguračním souboru vaší aplikace, který odkazuje na zástupce *UseDevelopmentStorage = true*. Tady je příklad připojovacího řetězce v souboru *app.config* :
 
 ```xml
 <appSettings>

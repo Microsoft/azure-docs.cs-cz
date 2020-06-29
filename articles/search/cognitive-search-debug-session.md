@@ -8,21 +8,20 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: d325b65b01ea13cfcb141d28343d94866d9e05e2
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.openlocfilehash: 6c658053afcaff99249e5d20ca2dc5a14037470b
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84751537"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85510849"
 ---
 # <a name="debug-sessions-in-azure-cognitive-search"></a>Ladění relací v Azure Kognitivní hledání
 
 Relace ladění je vizuální editor, který pracuje s existujícím dovednosti v Azure Portal. V rámci ladicí relace můžete identifikovat a vyřešit chyby, ověřovat změny a doručovat změny do produkčního dovednostiu v kanálu pro rozšíření AI.
 
 > [!Important]
-> Podpora relací ladění pro Azure Kognitivní hledání je dostupná [na vyžádání](https://aka.ms/DebugSessions) jako verze Preview s omezeným přístupem. Funkce ve verzi Preview se poskytují bez smlouvy o úrovni služeb a nedoporučují se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Relace ladění je funkce ve verzi Preview, která se poskytuje bez smlouvy o úrovni služeb, a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
-> Až budete mít přístup k verzi Preview, budete mít přístup k ladicím relacím pro službu pomocí Azure Portal.
 
 ## <a name="using-debug-sessions"></a>Použití relací ladění
 
@@ -86,6 +85,10 @@ Podokno **obohacení struktury dat** zobrazuje obohacení dokumentu prostřednic
 ## <a name="errorswarnings"></a>Chyby a upozornění
 
 V tomto okně se zobrazí všechny chyby a upozornění, které dovednosti generuje, protože se spustí s dokumentem v relaci ladění.
+
+## <a name="limitations"></a>Omezení
+
+Ladění sesisons práce s využitím všech všeobecně dostupných zdrojů dat ve verzi Preview zdrojů dat pro procesory. Rozhraní MongoDB API (Preview) a rozhraní API Cassandra (Preview) Cosmos DB aktuálně nejsou podporovány.
 
 ## <a name="next-steps"></a>Další kroky
 

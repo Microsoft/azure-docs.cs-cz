@@ -3,21 +3,21 @@ title: Konfigurace předávání DNS pro soubory Azure | Microsoft Docs
 description: Přehled možností sítě pro soubory Azure.
 author: roygara
 ms.service: storage
-ms.topic: overview
+ms.topic: how-to
 ms.date: 3/19/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 35dfbcb274721049f2160719222ca89038c93356
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6404115e64ba0ac1f65ba1cfc8d26604f1ce9cfa
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80082497"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85509961"
 ---
 # <a name="configuring-dns-forwarding-for-azure-files"></a>Konfigurace přesměrování DNS pro Azure Files
 Služba soubory Azure umožňuje vytvářet soukromé koncové body pro účty úložiště obsahující sdílené složky. I když je to užitečné pro mnoho různých aplikací, soukromé koncové body jsou obzvláště užitečné pro připojení ke sdíleným složkám Azure ze své místní sítě pomocí připojení VPN nebo ExpressRoute pomocí privátního partnerského vztahu. 
 
-Aby připojení k vašemu účtu úložiště mohla přecházet přes vaše síťové tunelové propojení, plně kvalifikovaný název domény (FQDN) účtu úložiště se musí přeložit na privátní IP adresu privátního koncového bodu. Abyste to dosáhli, musíte přeslat příponu koncového bodu`core.windows.net` úložiště (pro oblasti veřejného cloudu) do privátní služby DNS Azure přístupné z vaší virtuální sítě. V této příručce se dozvíte, jak nastavit a nakonfigurovat předávání DNS pro správné přeložení na IP adresu privátního koncového bodu účtu úložiště.
+Aby připojení k vašemu účtu úložiště mohla přecházet přes vaše síťové tunelové propojení, plně kvalifikovaný název domény (FQDN) účtu úložiště se musí přeložit na privátní IP adresu privátního koncového bodu. Abyste to dosáhli, musíte přeslat příponu koncového bodu úložiště ( `core.windows.net` pro oblasti veřejného cloudu) do privátní služby DNS Azure přístupné z vaší virtuální sítě. V této příručce se dozvíte, jak nastavit a nakonfigurovat předávání DNS pro správné přeložení na IP adresu privátního koncového bodu účtu úložiště.
 
 Důrazně doporučujeme, abyste si před dokončením kroků popsaných v tomto článku načetli téma [plánování pro nasazení souborů Azure](storage-files-planning.md) a [Azure Files](storage-files-networking-overview.md) .
 
@@ -28,11 +28,11 @@ Soubory Azure poskytují dva hlavní typy koncových bodů pro přístup ke sdí
 
 V účtu služby Azure Storage existují veřejné a privátní koncové body. Účet úložiště je konstrukce správy, která představuje sdílený fond úložiště, ve kterém můžete nasadit více sdílených složek a další prostředky úložiště, jako jsou kontejnery nebo fronty objektů BLOB.
 
-Každý účet úložiště má plně kvalifikovaný název domény (FQDN). Pro oblasti veřejného cloudu tento plně kvalifikovaný název domény řídí `storageaccount.file.core.windows.net` vzor `storageaccount` , kde je název účtu úložiště. Když provedete žádosti s tímto názvem, například připojením sdílené složky na pracovní stanici pomocí protokolu SMB, váš operační systém provede vyhledávání DNS a přeloží plně kvalifikovaný název domény na IP adresu, kterou může použít k odeslání požadavků SMB do.
+Každý účet úložiště má plně kvalifikovaný název domény (FQDN). Pro oblasti veřejného cloudu tento plně kvalifikovaný název domény řídí vzor, `storageaccount.file.core.windows.net` kde `storageaccount` je název účtu úložiště. Když provedete žádosti s tímto názvem, například připojením sdílené složky na pracovní stanici pomocí protokolu SMB, váš operační systém provede vyhledávání DNS a přeloží plně kvalifikovaný název domény na IP adresu, kterou může použít k odeslání požadavků SMB do.
 
-Ve výchozím nastavení `storageaccount.file.core.windows.net` se přeloží na IP adresu veřejného koncového bodu. Veřejný koncový bod pro účet úložiště je hostovaný v clusteru Azure Storage, který hostuje mnoho dalších veřejných koncových bodů účtů úložiště. Při vytváření privátního koncového bodu je privátní zóna DNS propojená s virtuální sítí, do které byla přidána, pomocí mapování `storageaccount.file.core.windows.net` záznamů CNAME na záznam a pro privátní IP adresu privátního koncového bodu vašeho účtu úložiště. To vám umožňuje používat `storageaccount.file.core.windows.net` plně kvalifikovaný název domény v rámci virtuální sítě a překládat ji na IP adresu privátního koncového bodu.
+Ve výchozím nastavení se `storageaccount.file.core.windows.net` přeloží na IP adresu veřejného koncového bodu. Veřejný koncový bod pro účet úložiště je hostovaný v clusteru Azure Storage, který hostuje mnoho dalších veřejných koncových bodů účtů úložiště. Při vytváření privátního koncového bodu je privátní zóna DNS propojená s virtuální sítí, do které byla přidána, pomocí mapování záznamů CNAME `storageaccount.file.core.windows.net` na záznam a pro privátní IP adresu privátního koncového bodu vašeho účtu úložiště. To vám umožňuje používat `storageaccount.file.core.windows.net` plně kvalifikovaný název domény v rámci virtuální sítě a překládat ji na IP adresu privátního koncového bodu.
 
-Vzhledem k tomu, že naším cílem je přistupovat ke sdíleným složkám Azure hostovaným v účtu úložiště z místního počítače pomocí tunelového propojení sítě, jako je připojení VPN nebo ExpressRoute, musíte nakonfigurovat místní servery DNS tak, aby přenesly požadavky na službu soubory Azure do privátní služby DNS Azure. K tomu je potřeba nastavit *podmíněné předávání* `*.core.windows.net` (nebo odpovídající příponu koncového bodu úložiště pro státní správu USA, Německo nebo ČÍNU) na server DNS hostovaný v rámci vaší virtuální sítě Azure. Tento server DNS pak rekurzivně přepošle požadavek na privátní službu DNS Azure, která bude přeložit plně kvalifikovaný název domény účtu úložiště na příslušnou privátní IP adresu.
+Vzhledem k tomu, že naším cílem je přistupovat ke sdíleným složkám Azure hostovaným v účtu úložiště z místního počítače pomocí tunelového propojení sítě, jako je připojení VPN nebo ExpressRoute, musíte nakonfigurovat místní servery DNS tak, aby přenesly požadavky na službu soubory Azure do privátní služby DNS Azure. K tomu je potřeba nastavit *podmíněné předávání* `*.core.windows.net` (nebo odpovídající příponu koncového bodu úložiště pro státní správu USA, Německo nebo Čínu) na server DNS hostovaný v rámci vaší virtuální sítě Azure. Tento server DNS pak rekurzivně přepošle požadavek na privátní službu DNS Azure, která bude přeložit plně kvalifikovaný název domény účtu úložiště na příslušnou privátní IP adresu.
 
 Konfigurace předávání DNS pro soubory Azure vyžaduje, aby virtuální počítač mohl hostovat server DNS, aby předával požadavky, ale toto je jednorázový krok pro všechny sdílené složky Azure hostované ve vaší virtuální síti. Kromě toho se nejedná o výhradní požadavek na soubory Azure – jakákoli služba Azure, která podporuje privátní koncové body, ke kterým chcete získat přístup z místního prostředí, může používat předávání DNS, které budete konfigurovat v této příručce: Azure Blob Storage, SQL Azure, Cosmos DB atd. 
 
@@ -51,7 +51,7 @@ Než budete moct nastavit předávání DNS do služby soubory Azure, musíte pr
 ## <a name="manually-configuring-dns-forwarding"></a>Ruční konfigurace předávání DNS
 Pokud už máte servery DNS v rámci služby Azure Virtual Network, nebo pokud jednoduše dáváte přednost nasazení vlastních virtuálních počítačů na servery DNS podle jakékoli metodologie, kterou vaše organizace používá, můžete DNS nakonfigurovat ručně pomocí integrovaných rutin PowerShell serveru DNS.
 
-Na místních serverech DNS vytvořte podmíněný předávací server pomocí `Add-DnsServerConditionalForwarderZone`. Aby bylo možné zajistit správné předávání provozu do Azure, musí být tento podmíněný předávání nasazený na všech místních serverech DNS. Nezapomeňte nahradit `<azure-dns-server-ip>` odpovídajícími IP adresami pro vaše prostředí.
+Na místních serverech DNS vytvořte podmíněný předávací server pomocí `Add-DnsServerConditionalForwarderZone` . Aby bylo možné zajistit správné předávání provozu do Azure, musí být tento podmíněný předávání nasazený na všech místních serverech DNS. Nezapomeňte nahradit `<azure-dns-server-ip>` odpovídajícími IP adresami pro vaše prostředí.
 
 ```powershell
 $vnetDnsServers = "<azure-dns-server-ip>", "<azure-dns-server-ip>"
@@ -65,7 +65,7 @@ Add-DnsServerConditionalForwarderZone `
         -MasterServers $vnetDnsServers
 ```
 
-Na serverech DNS v rámci služby Azure Virtual Network budete muset místo toho umístit službu pro přesměrování tak, aby požadavky na zónu DNS účtu úložiště byly směrovány na privátní službu DNS Azure, která je frontou rezervované IP adresy `168.63.129.16`. (Nezapomeňte naplnit `$storageAccountEndpoint` , pokud spouštíte příkazy v rámci jiné relace PowerShellu.)
+Na serverech DNS v rámci služby Azure Virtual Network budete muset místo toho umístit službu pro přesměrování tak, aby požadavky na zónu DNS účtu úložiště byly směrovány na privátní službu DNS Azure, která je frontou rezervované IP adresy `168.63.129.16` . (Nezapomeňte naplnit, `$storageAccountEndpoint` Pokud spouštíte příkazy v rámci jiné relace PowerShellu.)
 
 ```powershell
 Add-DnsServerConditionalForwarderZone `
@@ -94,7 +94,7 @@ Import-Module -Name AzFilesHybrid
 
 Nasazení řešení předávání DNS má dva kroky, vytvoření sady pravidel předávání DNS, která definuje služby Azure, na které chcete předávat požadavky, a skutečné nasazení služeb předávání DNS. 
 
-V následujícím příkladu jsou předávány požadavky na účet úložiště, včetně požadavků na soubory Azure, úložiště objektů BLOB v Azure, úložiště tabulek Azure a Azure Queue Storage. V případě potřeby můžete přidat přesměrování pro další službu Azure na pravidlo prostřednictvím `-AzureEndpoints` parametru `New-AzDnsForwardingRuleSet` rutiny. Nezapomeňte nahradit `<virtual-network-resource-group>`, `<virtual-network-name>`a `<subnet-name>` s odpovídajícími hodnotami pro vaše prostředí.
+V následujícím příkladu jsou předávány požadavky na účet úložiště, včetně požadavků na soubory Azure, úložiště objektů BLOB v Azure, úložiště tabulek Azure a Azure Queue Storage. V případě potřeby můžete přidat přesměrování pro další službu Azure na pravidlo prostřednictvím `-AzureEndpoints` parametru `New-AzDnsForwardingRuleSet` rutiny. Nezapomeňte nahradit `<virtual-network-resource-group>` , `<virtual-network-name>` a `<subnet-name>` s odpovídajícími hodnotami pro vaše prostředí.
 
 ```PowerShell
 # Create a rule set, which defines the forwarding rules
@@ -113,16 +113,16 @@ Může vám také být užitečné, abyste mohli dodat několik dalších parame
 | Název parametru | Typ | Popis |
 |----------------|------|-------------|
 | `DnsServerResourceGroupName` | `string` | Ve výchozím nastavení se servery DNS nasadí do stejné skupiny prostředků jako virtuální síť. Pokud to není žádoucí, tento parametr vám umožní vybrat alternativní skupinu prostředků, do které se mají nasadit. |
-| `DnsForwarderRootName` | `string` | Ve výchozím nastavení mají servery DNS, které jsou nasazené v Azure, `DnsFwder-*`názvy, kde je hvězdička naplněna iterátorem. Tento parametr změní kořen daného názvu (tj. `DnsFwder`). |
+| `DnsForwarderRootName` | `string` | Ve výchozím nastavení mají servery DNS, které jsou nasazené v Azure `DnsFwder-*` , názvy, kde je hvězdička naplněna iterátorem. Tento parametr změní kořen daného názvu (tj. `DnsFwder` ). |
 | `VmTemporaryPassword` | `SecureString` | Ve výchozím nastavení se pro dočasný výchozí účet vybere náhodné heslo, které má virtuální počítač předtím, než se připojí k doméně. Po připojení k doméně je výchozí účet zakázaný. |
 | `DomainToJoin` | `string` | Doména, ke které se připojí virtuální počítače DNS pro připojení. Ve výchozím nastavení se tato doména vybere v závislosti na doméně počítače, na kterém spouštíte rutiny. |
 | `DnsForwarderRedundancyCount` | `int` | Počet virtuálních počítačů DNS pro nasazení pro virtuální síť. Ve výchozím nastavení `New-AzDnsForwarder` nasadí dva servery DNS ve virtuální síti Azure ve skupině dostupnosti, aby se zajistila redundance. Toto číslo může být podle potřeby upraveno. |
 | `OnPremDnsHostNames` | `HashSet<string>` | Ručně zadaný seznam místních názvů hostitelů DNS, na kterých se mají vytvořit servery pro přeposílání. Tento parametr je užitečný, když nechcete používat servery pro směrování na všech místních serverech DNS, například když máte celou řadu klientů s ručně zadanými názvy DNS. |
 | `Credential` | `PSCredential` | Přihlašovací údaje, které se mají použít při aktualizaci serverů DNS. To je užitečné v případě, že uživatelský účet, ke kterému jste se přihlásili, nemá oprávnění upravovat nastavení DNS. |
-| `SkipParentDomain` | `SwitchParameter` | Služby DNS pro přeposílání jsou ve výchozím nastavení aplikovány na doménu nejvyšší úrovně, která existuje ve vašem prostředí. Pokud `northamerica.corp.contoso.com` je například podřízenou doménou `corp.contoso.com`, bude pro servery DNS přidružené k serveru vytvořena služba pro vytváření. `corp.contoso.com` Tento parametr způsobí, že se pro přeposílání `northamerica.corp.contoso.com`vytvoří v. |
+| `SkipParentDomain` | `SwitchParameter` | Služby DNS pro přeposílání jsou ve výchozím nastavení aplikovány na doménu nejvyšší úrovně, která existuje ve vašem prostředí. Pokud `northamerica.corp.contoso.com` je například podřízenou doménou, bude `corp.contoso.com` pro servery DNS přidružené k serveru vytvořena služba pro vytváření `corp.contoso.com` . Tento parametr způsobí, že se pro přeposílání vytvoří v `northamerica.corp.contoso.com` . |
 
 ## <a name="confirm-dns-forwarders"></a>Potvrdit servery DNS pro přeposílání
-Před testováním ověřte, jestli se služby DNS pro přeposílání úspěšně nastavily, doporučujeme vyprázdnit mezipaměť DNS na `Clear-DnsClientCache`místní pracovní stanici pomocí. Pokud chcete zjistit, jestli můžete úspěšně přeložit plně kvalifikovaný název domény svého účtu úložiště, použijte `Resolve-DnsName` nebo. `nslookup`
+Před testováním ověřte, jestli se služby DNS pro přeposílání úspěšně nastavily, doporučujeme vyprázdnit mezipaměť DNS na místní pracovní stanici pomocí `Clear-DnsClientCache` . Pokud chcete zjistit, jestli můžete úspěšně přeložit plně kvalifikovaný název domény svého účtu úložiště, použijte `Resolve-DnsName` nebo `nslookup` .
 
 ```powershell
 # Replace storageaccount.file.core.windows.net with the appropriate FQDN for your storage account.

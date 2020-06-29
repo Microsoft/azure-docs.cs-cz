@@ -4,16 +4,16 @@ description: Naučte se, jak nastavit nástroj pro přípravu a opravu jednotky 
 author: twooley
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/15/2017
 ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: f65220a04a709bae5a6892bfd4105195cee35741
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bd74caf391fcf1538bf920f41638b23672b47015
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75978420"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85512230"
 ---
 # <a name="setting-up-the-azure-importexport-tool"></a>Nastavení nástroje Azure pro import/export
 Nástroj Microsoft Azure Import/Export je nástroj pro přípravu a opravu jednotky, který můžete použít se službou Microsoft Azure Import/Export. Nástroj můžete použít pro následující funkce:  
@@ -60,19 +60,19 @@ Pokud se pokoušíte opravit import, který se částečně nezdařil, budete po
 ## <a name="installing-the-azure-importexport-tool"></a>Instalace nástroje Azure import/export  
  Nástroj pro import/export v Azure se skládá z následujících souborů:  
 
-- WAImportExport. exe  
+- WAImportExport.exe  
 
-- WAImportExport. exe. config  
+- WAImportExport.exe.config  
 
-- WAImportExportCore. dll  
+- WAImportExportCore.dll  
 
-- WAImportExportRepair. dll  
+- WAImportExportRepair.dll  
 
-- Microsoft. WindowsAzure. Storage. dll  
+- Microsoft.WindowsAzure.Storage.dll  
 
-- Hddid. dll  
+- Hddid.dll  
 
-  Zkopírujte tyto soubory do pracovního adresáře, například `c:\WAImportExport`. V dalším kroku otevřete okno příkazového řádku v režimu správce a nastavte výše uvedený adresář jako aktuální adresář.  
+  Zkopírujte tyto soubory do pracovního adresáře, například `c:\WAImportExport` . V dalším kroku otevřete okno příkazového řádku v režimu správce a nastavte výše uvedený adresář jako aktuální adresář.  
 
   Pro výstup nápovědu pro příkaz spusťte nástroj bez parametrů:  
 

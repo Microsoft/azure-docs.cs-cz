@@ -3,15 +3,15 @@ title: Ladění výkonu Azure Data Lake Storage Gen1 – MapReduce
 description: Pokyny k ladění výkonu Azure Data Lake Storage Gen1 MapReduce
 author: stewu
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: a645049665bc1d51efa94a879b9d2e4e5529282f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 27dadb7ef5b93f5d6b674116ca8bba1d6e2597fc
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73904590"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85510910"
 ---
 # <a name="performance-tuning-guidance-for-mapreduce-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Pokyny k ladění výkonu pro MapReduce ve službě HDInsight a Azure Data Lake Storage Gen1
 
@@ -110,7 +110,7 @@ Chcete-li zjistit, zda se vám omezilo omezení, je nutné povolit protokolován
 
 2. Aby se konfigurace projevila, restartujte všechny uzly/služby.
 
-3. Pokud se vám omezí omezení, zobrazí se v souboru protokolu PŘÍZ kód chyby HTTP 429. Soubor protokolu PŘÍZe je v/tmp/&lt;User&gt;/YARN.log
+3. Pokud se vám omezí omezení, zobrazí se v souboru protokolu PŘÍZ kód chyby HTTP 429. Soubor protokolu PŘÍZe je v/tmp/ &lt; User &gt; /YARN.log
 
 ## <a name="examples-to-run"></a>Příklady spuštění
 

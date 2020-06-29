@@ -3,15 +3,15 @@ title: Šablona – cluster HDInsight s Data Lake Storage Gen1
 description: Pomocí Azure Resource Manager šablon můžete vytvářet a používat clustery Azure HDInsight s Azure Data Lake Storage Gen1.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 486809201db45e0f5bbeed870e24b1f63770e319
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 593edecd2cc1bbdd3627430af41c64be4d6a022b
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692025"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85508635"
 ---
 # <a name="create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-using-azure-resource-manager-template"></a>Vytvoření clusteru HDInsight s Azure Data Lake Storage Gen1 pomocí šablony Azure Resource Manager
 > [!div class="op_single_selector"]
@@ -82,7 +82,7 @@ Abyste měli jistotu, že jsou ukázková data dostupná z clusteru HDInsight, m
 ## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-data-lake-storage-gen1"></a>Spuštění testovacích úloh v clusteru HDInsight pro použití Data Lake Storage Gen1
 Po nakonfigurování clusteru HDInsight můžete spustit testovací úlohy v clusteru, abyste otestovali, že cluster HDInsight má přístup k Data Lake Storage Gen1. Uděláte to tak, že spustíte ukázkovou úlohu podregistru, která vytvoří tabulku pomocí ukázkových dat, která jste předtím nahráli do svého účtu Data Lake Storage Gen1.
 
-V této části provedete SSH do clusteru HDInsight Linux a spustíte ukázkový dotaz na podregistr. Pokud používáte klienta se systémem Windows, doporučujeme použít výstup, **který je možné**stáhnout z [https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
+V této části provedete SSH do clusteru HDInsight Linux a spustíte ukázkový dotaz na podregistr. Pokud používáte klienta se systémem Windows, doporučujeme použít výstup, **který je možné**stáhnout z [https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) .
 
 Další informace o používání výstupu najdete v tématu [Použití SSH se systémem Linux Hadoop ve službě HDInsight ze systému Windows](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md).
 
@@ -118,7 +118,7 @@ Další informace o používání výstupu najdete v tématu [Použití SSH se s
 ## <a name="access-data-lake-storage-gen1-using-hdfs-commands"></a>Přístup k Data Lake Storage Gen1 pomocí příkazů HDFS
 Jakmile nakonfigurujete cluster HDInsight pro použití Data Lake Storage Gen1, můžete k přístupu do Storu použít příkazy prostředí HDFS.
 
-V této části provedete SSH do clusteru HDInsight Linux a spustíte příkazy HDFS. Pokud používáte klienta se systémem Windows, doporučujeme použít výstup, **který je možné**stáhnout z [https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
+V této části provedete SSH do clusteru HDInsight Linux a spustíte příkazy HDFS. Pokud používáte klienta se systémem Windows, doporučujeme použít výstup, **který je možné**stáhnout z [https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) .
 
 Další informace o používání výstupu najdete v tématu [Použití SSH se systémem Linux Hadoop ve službě HDInsight ze systému Windows](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md).
 
@@ -136,7 +136,7 @@ Found 1 items
 -rwxrwxrwx   0 NotSupportYet NotSupportYet     671388 2015-09-16 22:16 adl://mydatalakestoragegen1.azuredatalakestore.net:443/mynewfolder
 ```
 
-Pomocí `hdfs dfs -put` příkazu můžete také odeslat některé soubory do data Lake Storage Gen1 a potom použít `hdfs dfs -ls` k ověření, jestli se soubory úspěšně nahrály.
+Pomocí příkazu můžete také `hdfs dfs -put` Odeslat některé soubory do data Lake Storage Gen1 a potom použít `hdfs dfs -ls` k ověření, jestli se soubory úspěšně nahrály.
 
 
 ## <a name="next-steps"></a>Další kroky

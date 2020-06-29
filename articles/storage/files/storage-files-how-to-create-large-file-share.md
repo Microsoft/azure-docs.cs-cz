@@ -3,16 +3,16 @@ title: Povolení a vytváření velkých sdílených složek – soubory Azure
 description: V tomto článku se dozvíte, jak povolit a vytvářet velké sdílené složky.
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 16a183776bebad2fd365c3182ae64ea54befe41d
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 427d936353b47e951f8faaf90483691bab856767
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219095"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85510723"
 ---
 # <a name="enable-and-create-large-file-shares"></a>Povolit a vytvořit velké sdílené složky souborů
 
@@ -132,7 +132,7 @@ Vytváření velkých sdílených složek je skoro stejné jako vytvoření stan
 
 1. Z účtu úložiště vyberte **sdílené složky**.
 1. Vyberte **+ Sdílená složka**.
-1. Zadejte název sdílené složky. Můžete také nastavit velikost kvóty, kterou byste chtěli, až 100 TiB. Pak vyberte **vytvořit**. 
+1. Zadejte název sdílené složky. Můžete také nastavit velikost kvóty, kterou byste chtěli, až 100 TiB. Potom vyberte **Vytvořit**. 
 
 ![Azure Portal uživatelské rozhraní zobrazující pole název a kvóta](media/storage-files-how-to-create-large-file-share/large-file-shares-create-share.png)
 

@@ -3,16 +3,16 @@ title: Řešení potíží se soubory Azure v systému Linux | Microsoft Docs
 description: Řešení potíží se soubory Azure v systému Linux
 author: jeffpatt24
 ms.service: storage
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 95e220102cba290664a32cb6bbebef881ae4ffde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3a24f6c7c8339ee5e63fea4c0cd4d7edc9da2a17
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80159485"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85512004"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Řešení potíží se soubory Azure v systému Linux
 
@@ -80,7 +80,7 @@ Ověřte, že jsou pro účet úložiště správně nakonfigurovaná pravidla b
 
 V systému Linux se zobrazí chybová zpráva podobná následující:
 
-**\<název souboru> [oprávnění odepřeno] překročena kvóta disku**
+**\<filename>[oprávnění zamítnuto] Překročena kvóta disku**
 
 ### <a name="cause"></a>Příčina
 
@@ -106,14 +106,14 @@ Chcete-li zavřít otevřené popisovače pro sdílenou složku, adresář nebo 
 - Použijte pravou metodu kopírování:
     - Použijte [AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) pro jakýkoli přenos mezi dvěma sdílenými složkami souborů.
     - Použití CP nebo DD s paralelním může zlepšit rychlost kopírování. počet vláken závisí na vašem případu použití a na zatížení. Následující příklady používají šest: 
-    - CP – příklad (CP použije výchozí velikost bloku systému souborů jako velikost bloku): `find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &`.
+    - CP – příklad (CP použije výchozí velikost bloku systému souborů jako velikost bloku): `find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &` .
     - DD příklad (Tento příkaz explicitně nastaví velikost bloku na 1 MiB):`find * -type f | parallel --will-cite-j 6 dd if={} of=/mnt/share/{} bs=1M`
     - Open Source nástroje třetích stran, jako jsou:
         - [GNU Parallel](https://www.gnu.org/software/parallel/).
         - [Fpart](https://github.com/martymac/fpart) – seřadí soubory a zabalí je do oddílů.
         - [Fpsync](https://github.com/martymac/fpart/blob/master/tools/fpsync) – používá Fpart a nástroj pro kopírování k vytvoření více instancí k migraci dat z src_dir do dst_url.
         - [Více](https://github.com/pkolano/mutil) vláken CP a md5sum s více vlákny založené na systému GNU coreutils.
-- Nastavení velikosti souboru předem. místo toho, aby bylo možné zapisovat do zápisu, pomáhá vylepšit rychlost kopírování ve scénářích, kde je známá velikost souboru. Pokud se vyžaduje rozšíření zápisů, můžete nastavit velikost cílového souboru pomocí `truncate - size <size><file>` příkazu. Pak `dd if=<source> of=<target> bs=1M conv=notrunc`příkaz zkopíruje zdrojový soubor bez opakované aktualizace velikosti cílového souboru. Můžete například nastavit velikost cílového souboru pro každý soubor, který chcete zkopírovat (předpokládá se, že je sdílená složka připojená pod/mnt/share):
+- Nastavení velikosti souboru předem. místo toho, aby bylo možné zapisovat do zápisu, pomáhá vylepšit rychlost kopírování ve scénářích, kde je známá velikost souboru. Pokud se vyžaduje rozšíření zápisů, můžete nastavit velikost cílového souboru pomocí `truncate - size <size><file>` příkazu. Pak `dd if=<source> of=<target> bs=1M conv=notrunc` příkaz zkopíruje zdrojový soubor bez opakované aktualizace velikosti cílového souboru. Můžete například nastavit velikost cílového souboru pro každý soubor, který chcete zkopírovat (předpokládá se, že je sdílená složka připojená pod/mnt/share):
     - `$ for i in `` find * -type f``; do truncate --size ``stat -c%s $i`` /mnt/share/$i; done`
     - a pak zkopírujte soubory bez rozšíření zápisu paralelně:`$find * -type f | parallel -j6 dd if={} of =/mnt/share/{} bs=1M conv=notrunc`
 
@@ -217,19 +217,19 @@ Pro kopírování souborů použijte uživatele účtu úložiště:
 - `Su [storage account name]`
 - `Cp -p filename.txt /share`
 
-## <a name="ls-cannot-access-ltpathgt-inputoutput-error"></a>ls: nejde získat přístup&lt;k&gt;' path ': Chyba vstupu/výstupu
+## <a name="ls-cannot-access-ltpathgt-inputoutput-error"></a>ls: nejde získat přístup k ' &lt; Path &gt; ': Chyba vstupu/výstupu
 
 Když se pokusíte zobrazit seznam souborů ve sdílené složce Azure pomocí příkazu ls, příkaz se při výpisu souboru přestane reagovat. Zobrazí se následující chyba:
 
-**ls: nejde získat přístup&lt;k&gt;' path ': Chyba vstupu/výstupu**
+**ls: nejde získat přístup k ' &lt; Path &gt; ': Chyba vstupu/výstupu**
 
 
 ### <a name="solution"></a>Řešení
 Upgradujte jádro systému Linux na následující verze, které mají opravu tohoto problému:
 
-- 4.4.87 +
-- 4.9.48 +
-- 4.12.11 +
+- 4.4.87 nebo novější
+- 4.9.48 nebo novější
+- 4.12.11 nebo novější
 - Všechny verze, které jsou větší nebo rovny 4,13
 
 ## <a name="cannot-create-symbolic-links---ln-failed-to-create-symbolic-link-t-operation-not-supported"></a>Nejde vytvořit symbolické odkazy – LN: nepovedlo se vytvořit symbolický odkaz t: operace není podporovaná.

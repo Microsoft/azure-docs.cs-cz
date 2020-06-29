@@ -8,17 +8,17 @@ manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/09/2018
 ms.author: elsung
-ms.openlocfilehash: 7d6c826df2a509ffb378809e3682073bd5ab1301
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 471633414603ede123382b46b549acb2fd4fd98e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60612560"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85508703"
 ---
 # <a name="virtual-network-integration-for-azure-data-lake-storage-gen1"></a>Integrace virtuální sítě pro Azure Data Lake Storage Gen1
 
@@ -99,7 +99,7 @@ Mezi dostupné možnosti patří:
 
      ![Výběr koncového bodu služby Microsoft.AzureActiveDirectory](media/data-lake-store-network-security/config-vnet-2.png)
 
-6.  Vyberte podsítě, pro které chcete povolit možnosti připojení. Vyberte **Přidat**.
+6.  Vyberte podsítě, pro které chcete povolit možnosti připojení. Vyberte možnost **Přidat**.
 
     ![Výběr podsítě](media/data-lake-store-network-security/config-vnet-3.png)
 
@@ -124,7 +124,7 @@ Mezi dostupné možnosti patří:
 
     ![Přidání existující virtuální sítě](media/data-lake-store-network-security/config-adls-2.png)
 
-5.  Vyberte virtuální sítě a podsítě, kterým chcete povolit možnosti připojení. Vyberte **Přidat**.
+5.  Vyberte virtuální sítě a podsítě, kterým chcete povolit možnosti připojení. Vyberte možnost **Přidat**.
 
     ![Výběr virtuálních sítí a podsítí](media/data-lake-store-network-security/config-adls-3.png)
 

@@ -4,15 +4,15 @@ description: Konfigurace funkce MPIO na StorSimple připojeném k hostiteli Linu
 author: alkohli
 ms.assetid: ca289eed-12b7-4e2e-9117-adf7e2034f2f
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alkohli
-ms.openlocfilehash: 5dadd231335e93839e947077168f32dbfe96eb45
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c9978be9182bbb2923fa5db0b4e5ada422ef0da9
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76278367"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85511602"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>Konfigurace funkce MPIO na hostiteli StorSimple se systémem CentOS
 Tento článek popisuje kroky potřebné ke konfiguraci funkce MPIO (CentOS) na hostitelském serveru s 6,6 v/v. Hostitelský server je připojený k vašemu zařízení Microsoft Azure StorSimple pro zajištění vysoké dostupnosti prostřednictvím iniciátorů iSCSI. Podrobně popisuje automatické zjišťování zařízení s více cestami a konkrétní nastavení jenom pro StorSimple svazky.
@@ -45,7 +45,7 @@ S více cestami v systému Linux se skládají součásti jádra a součásti u�
    * **Multipath. conf**: konfigurační soubor pro funkci Multipath démona, která se používá k přepsání předdefinované konfigurační tabulky.
 
 ### <a name="about-the-multipathconf-configuration-file"></a>Konfigurační soubor Multipath. conf
-Konfigurační soubor `/etc/multipath.conf` usnadňuje mnoho funkcí s více cestami, které lze konfigurovat uživatelem. `multipath` Příkaz a démon `multipathd` jádra využívají informace, které se nacházejí v tomto souboru. Soubor se prochází jenom při konfiguraci zařízení s více cestami. Před spuštěním `multipath` příkazu se ujistěte, že jsou všechny změny provedené. Pokud soubor upravíte později, budete muset zastavit a znovu spustit více cest, aby se změny projevily.
+Konfigurační soubor `/etc/multipath.conf` usnadňuje mnoho funkcí s více cestami, které lze konfigurovat uživatelem. `multipath`Příkaz a démon jádra `multipathd` využívají informace, které se nacházejí v tomto souboru. Soubor se prochází jenom při konfiguraci zařízení s více cestami. Před spuštěním příkazu se ujistěte, že jsou všechny změny provedené `multipath` . Pokud soubor upravíte později, budete muset zastavit a znovu spustit více cest, aby se změny projevily.
 
 Multipath. conf má pět částí:
 
@@ -68,7 +68,7 @@ Tato část podrobně popisuje požadavky na konfiguraci pro server CentOS a za�
    
     `ifconfig`
    
-    Následující příklad ukazuje výstup, pokud jsou na hostiteli k dispozici dvě síťová rozhraní (`eth0` a `eth1`).
+    Následující příklad ukazuje výstup, pokud `eth0` jsou na hostiteli k dispozici dvě síťová rozhraní (a `eth1` ).
    
         [root@centosSS ~]# ifconfig
         eth0  Link encap:Ethernet  HWaddr 00:15:5D:A2:33:41  
@@ -101,7 +101,7 @@ Tato část podrobně popisuje požadavky na konfiguraci pro server CentOS a za�
           RX bytes:720 (720.0 b)  TX bytes:720 (720.0 b)
 1. Nainstalujte do svého serveru CentOS nástroje pro *iniciátory iSCSI* . Provedením následujících kroků nainstalujete nástroje *iniciátoru iSCSI*.
    
-   1. Přihlaste `root` se jako do hostitele CentOS.
+   1. Přihlaste se jako `root` do hostitele CentOS.
    1. Nainstalujte sady pro *iniciátory iSCSI*. Zadejte:
       
        `yum install iscsi-initiator-utils`
@@ -109,7 +109,7 @@ Tato část podrobně popisuje požadavky na konfiguraci pro server CentOS a za�
       
        `service iscsid start`
       
-       V některých případech `iscsid` se nemusí ve skutečnosti spouštět a může `--force` být potřeba mít možnost.
+       V některých případech se nemusí `iscsid` ve skutečnosti spouštět a `--force` může být potřeba mít možnost.
    1. Chcete-li zajistit, aby byl iniciátor iSCSI povolen během spouštění, použijte `chkconfig` příkaz pro povolení služby.
       
        `chkconfig iscsi on`
@@ -228,7 +228,7 @@ Tento algoritmus vyrovnávání zatížení používá všechny dostupné cesty 
 1. Upravte `/etc/multipath.conf` soubor. Zadejte:
    
     `vi /etc/multipath.conf`
-1. V `defaults` části nastavte `path_grouping_policy` na. `multibus` `path_grouping_policy` Určuje výchozí zásadu seskupování cest, která se má použít u nespecifikovaných cest. Oddíl Defaults (výchozí) bude vypadat jako v následujícím příkladu.
+1. V `defaults` části nastavte na `path_grouping_policy` `multibus` . `path_grouping_policy`Určuje výchozí zásadu seskupování cest, která se má použít u nespecifikovaných cest. Oddíl Defaults (výchozí) bude vypadat jako v následujícím příkladu.
    
         defaults {
                 user_friendly_names yes
@@ -268,7 +268,7 @@ Tento algoritmus vyrovnávání zatížení používá všechny dostupné cesty 
     10.126.162.26:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target
     ```
 
-    Zkopírujte identifikátor IQN zařízení `iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target`StorSimple, z předchozího výstupu.
+    Zkopírujte identifikátor IQN zařízení StorSimple, `iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target` z předchozího výstupu.
 
    b. Připojte se k zařízení pomocí cíle IQN. Zařízení StorSimple je tady cíl iSCSI. Zadejte:
 
@@ -276,7 +276,7 @@ Tento algoritmus vyrovnávání zatížení používá všechny dostupné cesty 
     iscsiadm -m node --login -T <IQN of iSCSI target>
     ```
 
-    Následující příklad ukazuje výstup s cílovým identifikátorem IQN `iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target`. Výstup označuje, že jste úspěšně připojeni ke dvěma síťovým rozhraním podporujícím iSCSI v zařízení.
+    Následující příklad ukazuje výstup s cílovým identifikátorem IQN `iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target` . Výstup označuje, že jste úspěšně připojeni ke dvěma síťovým rozhraním podporujícím iSCSI v zařízení.
 
     ```
     Logging in to [iface: eth0, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.25,3260] (multiple)
@@ -328,7 +328,7 @@ V této části najdete několik užitečných tipů, pokud narazíte na problé
 
 Otázka: Nezobrazují se změny v `multipath.conf` souboru.
 
-A. Pokud jste v `multipath.conf` souboru provedli nějaké změny, budete muset službu s více cestami restartovat. Zadejte následující příkaz:
+A. Pokud jste v souboru provedli nějaké změny `multipath.conf` , budete muset službu s více cestami restartovat. Zadejte následující příkaz:
 
     service multipathd restart
 
@@ -338,7 +338,7 @@ A. Ujistěte se, že tyto dvě cesty jsou ve stejné podsíti a směrovatelný. 
 
 Otázka: Když mám seznam dostupných cest, nevidím žádný výstup.
 
-A. Nezobrazení jakýchkoli cest s více cestami má obvykle problém s démonem s více cestami a je nejpravděpodobnější, že se v `multipath.conf` souboru nachází nějaký problém.
+A. Nezobrazení jakýchkoli cest s více cestami má obvykle problém s démonem s více cestami a je nejpravděpodobnější, že se v souboru nachází nějaký problém `multipath.conf` .
 
 Mělo by to taky znamenat kontrolu nad tím, že se po připojení k cíli zobrazí některé disky, protože žádná odpověď ze seznamu Multipath by také nepředstavovala žádné disky.
 
@@ -428,7 +428,7 @@ Další informace najdete v postupu [při odstraňování více cest](https://ac
 | **Používání více cest** |`service multipathd start` |Spustit proces Multipath |
 | &nbsp; |`service multipathd stop` |Zastavení procesu Multipath |
 | &nbsp; |`service multipathd restart` |Opětovné spuštění procesu Multipath |
-| &nbsp; |`chkconfig multipathd on` </br> NEBO </br> `mpathconf -with_chkconfig y` |Povolit spuštění procesu Multipath v době spuštění |
+| &nbsp; |`chkconfig multipathd on` </br> OR </br> `mpathconf -with_chkconfig y` |Povolit spuštění procesu Multipath v době spuštění |
 | &nbsp; |`multipathd -k` |Spustit interaktivní konzolu pro řešení potíží |
 | &nbsp; |`multipath -l` |Seznam připojení a zařízení se seznamem funkcí Multipath |
 | &nbsp; |`mpathconf --enable` |Vytvoření ukázkového souboru mulitpath. conf v`/etc/mulitpath.conf` |

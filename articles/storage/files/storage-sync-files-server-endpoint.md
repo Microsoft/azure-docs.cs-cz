@@ -3,16 +3,16 @@ title: Přidat nebo odebrat koncový bod serveru Azure File Sync | Microsoft Doc
 description: Zjistěte, co je potřeba vzít v úvahu při plánování nasazení souborů Azure.
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 684b30a24e049722cb531cbc84e3a2cd90912ec8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 70cdf01cb327d1be6b2ac4b9cae414f87e27964f
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79255103"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85509468"
 ---
 # <a name="addremove-an-azure-file-sync-server-endpoint"></a>Přidat nebo odebrat koncový bod serveru Azure File Sync
 Synchronizace souborů Azure umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Dělá to tak, že transformuje servery Windows na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS) a můžete mít libovolný počet mezipamětí po celém světě.
@@ -54,14 +54,14 @@ Pokud chcete zajistit, aby se všechny vrstvené soubory před odebráním konco
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint> -Order CloudTieringPolicy
 ```
-Při `-Order CloudTieringPolicy` zadání se nejdřív odeberou poslední změněné soubory.
+`-Order CloudTieringPolicy`Při zadání se nejdřív odeberou poslední změněné soubory.
 Další volitelné, ale užitečné parametry, které je potřeba vzít v úvahu:
 * `-ThreadCount`Určuje počet souborů, které mohou být vyvolány paralelně.
 * `-PerFileRetryCount`Určuje, jak často se bude opakovat pokus o odvolání souboru, který je aktuálně blokován.
 * `-PerFileRetryDelaySeconds`Určuje dobu v sekundách mezi opakovanými pokusy o odvolání a měla by být vždy použita v kombinaci s předchozím parametrem.
 
 > [!Note]  
-> Pokud místní svazek, který hostuje server, nemá dost volného místa pro odvolání všech vrstvených dat, rutina se `Invoke-StorageSyncFileRecall` nezdařila.  
+> Pokud místní svazek, který hostuje server, nemá dost volného místa pro odvolání všech vrstvených dat, `Invoke-StorageSyncFileRecall` rutina se nezdařila.  
 
 Odebrání koncového bodu serveru:
 

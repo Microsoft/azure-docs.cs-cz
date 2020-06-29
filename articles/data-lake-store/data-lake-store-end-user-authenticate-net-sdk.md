@@ -3,15 +3,15 @@ title: Ověřování koncových uživatelů – .NET s Data Lake Storage Gen1 �
 description: Naučte se, jak dosáhnout ověřování koncovými uživateli pomocí Azure Data Lake Storage Gen1 pomocí Azure Active Directory se sadou .NET SDK.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 37507f686ad2cf3fc66087b89ae77242ec79afdd
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 12f6e0fd34de96677693b7f0d159c7cf9032ca1b
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82688162"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85511296"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Ověřování koncových uživatelů s Azure Data Lake Storage Gen1 pomocí sady .NET SDK
 > [!div class="op_single_selector"]
@@ -34,7 +34,7 @@ V tomto článku se dozvíte, jak používat sadu .NET SDK k ověřování konco
 ## <a name="create-a-net-application"></a>Vytvoření aplikace .NET
 1. V aplikaci Visual Studio vyberte nabídku **soubor** , **Nový**a poté **projekt**.
 2. Zvolte **Konzolová aplikace (.NET Framework)** a pak vyberte **Další**.
-3. Do **název projektu**zadejte `CreateADLApplication`a pak vyberte **vytvořit**.
+3. Do **název projektu**zadejte `CreateADLApplication` a pak vyberte **vytvořit**.
 
 4. Přidejte do projektu balíčky NuGet.
 
@@ -69,7 +69,7 @@ V tomto článku se dozvíte, jak používat sadu .NET SDK k ověřování konco
 ## <a name="end-user-authentication"></a>Ověřování koncových uživatelů
 Přidejte tento fragment kódu do klientské aplikace .NET. Nahraďte zástupné hodnoty hodnotami načtenými z nativní aplikace Azure AD (uvedené jako předpoklad). Tento fragment kódu umožňuje **interaktivní** ověřování aplikace pomocí Data Lake Storage Gen1, což znamená, že se zobrazí výzva k zadání přihlašovacích údajů Azure.
 
-Pro snadné použití následující fragment kódu používá výchozí hodnoty pro ID klienta a identifikátor URI pro přesměrování, které jsou platné pro jakékoli předplatné Azure. V následujícím fragmentu kódu stačí zadat hodnotu pro ID tenanta. ID tenanta můžete načíst pomocí pokynů uvedených na adrese [získat ID tenanta](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
+Pro snadné použití následující fragment kódu používá výchozí hodnoty pro ID klienta a identifikátor URI pro přesměrování, které jsou platné pro jakékoli předplatné Azure. V následujícím fragmentu kódu stačí zadat hodnotu pro ID tenanta. ID tenanta můžete načíst pomocí pokynů uvedených na adrese [získat ID tenanta](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in).
     
 - Funkci main () nahraďte následujícím kódem:
 
@@ -91,7 +91,7 @@ Pro snadné použití následující fragment kódu používá výchozí hodnoty
 
 Několik věcí, které se dozvíte o předchozím fragmentu kódu:
 
-* Předchozí fragment kódu používá pomocné funkce `GetTokenCache` a. `GetCreds_User_Popup` Kód pro tyto pomocné funkce je k dispozici [na GitHubu](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#gettokencache).
+* Předchozí fragment kódu používá pomocné funkce `GetTokenCache` a `GetCreds_User_Popup` . Kód pro tyto pomocné funkce je k dispozici [na GitHubu](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#gettokencache).
 * Pro snadnější dokončení kurzu fragment kódu používá nativní ID klienta aplikace, které je ve výchozím nastavení dostupné pro všechna předplatná Azure. Můžete tedy **použít ve své aplikaci tento fragment kódu bez jakýchkoli úprav**.
 * Pokud však chcete používat vlastní doménu a ID klienta aplikace Azure AD, musíte vytvořit nativní aplikaci Azure AD a pak pro vytvořenou aplikaci použít příslušné ID tenanta, ID klienta a identifikátor URI přesměrování Azure AD. Pokyny najdete v tématu [Vytvoření aplikace Active Directory pro ověřování koncových uživatelů pomocí Data Lake Storage Gen1](data-lake-store-end-user-authenticate-using-active-directory.md) .
 

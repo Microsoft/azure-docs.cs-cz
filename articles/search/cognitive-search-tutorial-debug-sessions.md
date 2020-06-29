@@ -8,22 +8,20 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: 14760eaef309ec5695b423b98e59a8ae1ab5cacb
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 35590fd8aefb8b6a90adeef52fabe773663403c2
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84886764"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85510987"
 ---
 # <a name="tutorial-diagnose-repair-and-commit-changes-to-your-skillset"></a>Kurz: Diagnostika, oprava a potvrzení změn ve vašem dovednosti
 
 V tomto článku použijete Azure Portal k přístupu k relacím ladění, abyste opravili problémy s poskytnutým dovednosti. Dovednosti obsahuje nějaké chyby, které je potřeba řešit. Tento kurz vás provede ladicí relací k identifikaci a řešení problémů se vstupy a výstupy v dovednostech.
 
 > [!Important]
-> Podpora relací ladění pro Azure Kognitivní hledání je dostupná [na vyžádání](https://aka.ms/DebugSessions) jako verze Preview s omezeným přístupem. Funkce ve verzi Preview se poskytují bez smlouvy o úrovni služeb a nedoporučují se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Relace ladění je funkce ve verzi Preview, která se poskytuje bez smlouvy o úrovni služeb, a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
-> Po udělení přístupu ke službě Preview budete mít přístup k ladicím relacím pro vaši službu pomocí Azure Portal.
->   
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 

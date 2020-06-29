@@ -3,22 +3,22 @@ title: Správa účtu Azure Data Lake Storage Gen1 – Azure CLI
 description: Pomocí rozhraní příkazového řádku Azure můžete vytvořit účet Data Lake Storage Gen1 a provádět základní operace.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 4e278981ce7647a53d2e80c5b835c8ed666db541
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 29aa3932f8ba566e4542031ce157fc7bb8c05ce7
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82688173"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85511186"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-cli"></a>Začínáme s Azure Data Lake Storage Gen1 pomocí Azure CLI
 
 [!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
 
 > [!div class="op_single_selector"]
-> * [Portál](data-lake-store-get-started-portal.md)
+> * [Azure Portal](data-lake-store-get-started-portal.md)
 > * [PowerShell](data-lake-store-get-started-powershell.md)
 > * [Azure CLI](data-lake-store-get-started-cli-2.0.md)
 >

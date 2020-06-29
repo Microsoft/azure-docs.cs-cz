@@ -3,16 +3,16 @@ title: Ověřování koncových uživatelů – Data Lake Storage Gen1 s využit
 description: Naučte se, jak dosáhnout ověřování koncovými uživateli pomocí Azure Data Lake Storage Gen1 pomocí Azure Active Directory
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.custom: has-adal-ref
-ms.openlocfilehash: 5a0c3e1df5cd283ad08f905ed0bd4f329dcfcc7e
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: ac585f1c215e5eb7ad5a6628ac85b70e7c76b14e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82688243"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85511315"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Ověřování koncových uživatelů s Azure Data Lake Storage Gen1 pomocí Azure Active Directory
 > [!div class="op_single_selector"]
@@ -41,7 +41,7 @@ Tento článek pojednává o tom, jak vytvořit **nativní aplikaci Azure AD pro
 
     ![Získat doménu AAD](./media/data-lake-store-end-user-authenticate-using-active-directory/get-aad-domain.png)
 
-* Vaše ID tenanta Azure. Pokyny k načtení ID tenanta najdete v tématu [získání ID tenanta](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
+* Vaše ID tenanta Azure. Pokyny k načtení ID tenanta najdete v tématu [získání ID tenanta](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in).
 
 ## <a name="end-user-authentication"></a>Ověřování koncových uživatelů
 Tento mechanismus ověřování je doporučený postup, pokud chcete, aby se koncový uživatel přihlásil k aplikaci přes Azure AD. Vaše aplikace pak může získat přístup k prostředkům Azure se stejnou úrovní přístupu jako koncový uživatel, který se přihlásil. Koncový uživatel musí zadat své přihlašovací údaje pravidelně, aby mohla vaše aplikace zachovat přístup.
@@ -57,7 +57,7 @@ Vaše aplikace může aktivovat automaticky otevírané okno pro autorizaci OAut
 >
 
 ### <a name="directly-passing-in-user-credentials"></a>Přímé předání přihlašovacích údajů uživatele
-Vaše aplikace může přímo poskytnout přihlašovací údaje uživatele do služby Azure AD. Tato metoda funguje jenom s uživatelskými účty ID organizace. není kompatibilní s uživatelskými účty osobní/"Live ID", včetně účtů končících @outlook.com nebo. @live.com Tato metoda navíc není kompatibilní s uživatelskými účty, které vyžadují dvojúrovňové ověřování Azure AD (2FA).
+Vaše aplikace může přímo poskytnout přihlašovací údaje uživatele do služby Azure AD. Tato metoda funguje jenom s uživatelskými účty ID organizace. není kompatibilní s uživatelskými účty osobní/"Live ID", včetně účtů končících @outlook.com nebo @live.com . Tato metoda navíc není kompatibilní s uživatelskými účty, které vyžadují dvojúrovňové ověřování Azure AD (2FA).
 
 ### <a name="what-do-i-need-for-this-approach"></a>Co potřebuji pro tento přístup?
 * Název domény služby Azure AD. Tento požadavek je již uveden v předpokladech tohoto článku.
@@ -78,7 +78,7 @@ Při použití pokynů v odkazu se ujistěte, že jste vybrali možnost **nativn
 
 ## <a name="step-2-get-application-id-and-redirect-uri"></a>Krok 2: získání ID aplikace a identifikátoru URI pro přesměrování
 
-Viz [získání ID aplikace](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in) pro načtení ID aplikace.
+Viz [získání ID aplikace](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) pro načtení ID aplikace.
 
 Pro načtení identifikátoru URI přesměrování proveďte následující kroky.
 

@@ -3,17 +3,17 @@ title: Vývoj pro soubory Azure pomocí Pythonu | Microsoft Docs
 description: Naučte se vyvíjet aplikace a služby v Pythonu, které používají soubory Azure k ukládání dat souborů.
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/14/2018
 ms.author: rogarana
 ms.subservice: files
 ms.custom: tracking-python
-ms.openlocfilehash: d04b158761d501d4a79d91fe551670b57f9847f3
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: c612ddc324144a818dd738b440660d473ec3a1bd
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84678711"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85509638"
 ---
 # <a name="develop-for-azure-files-with-python"></a>Vývoj pro Soubory Azure pomocí Pythonu
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]

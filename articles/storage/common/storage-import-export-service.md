@@ -4,16 +4,16 @@ description: Naučte se vytvářet úlohy importu a exportu v Azure Portal pro p
 author: alkohli
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 120dbe9c4b79755105ba634c68606edfbfdc4ad2
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: a43637071ec1a9962c8aa1b2262e07354293f12b
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872432"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85512424"
 ---
 # <a name="what-is-azure-importexport-service"></a>Co je služba Azure import/export?
 
@@ -118,7 +118,7 @@ Služba Azure import/export podporuje kopírování dat do a ze všech účtů �
 
 ### <a name="supported-shipping-locations"></a>Podporovaná umístění expedice
 
-|Země/region  |Země/region  |Země/region  |Země/region  |
+|Země/oblast  |Země/oblast  |Země/oblast  |Země/oblast  |
 |---------|---------|---------|---------|
 |USA – východ    | Severní Evropa        | Indie – střed        |US Gov – Iowa         |
 |USA – západ     |Západní Evropa         | Indie – jih        | US DoD – východ        |
@@ -135,9 +135,9 @@ Data na jednotce jsou šifrovaná pomocí šifrování AES 256-bit nástroj BitL
 
 Pro úlohy importu se jednotky šifrují dvěma způsoby.  
 
-* Při přípravě jednotky zadejte možnost při použití souboru *DataSet. csv* při spuštění nástroje WAImportExport.
+* Zadejte možnost při použití *dataset.csv* souboru při přípravě jednotky.
 
-* Ručně povolte šifrování BitLockeru na jednotce. Při přípravě jednotky zadejte šifrovací klíč v *souboru driveset. csv* při spuštění příkazového řádku nástroje WAImportExport. Šifrovací klíč BitLockeru se dá dále chránit pomocí ochrany externích klíčů (označované taky jako spravovaný klíč Microsoftu) nebo podle zákaznického klíče spravovaného zákazníkem. Další informace najdete v tématu [použití spravovaného klíče zákazníka k ochraně klíče nástroje BitLocker](storage-import-export-encryption-key-portal.md).
+* Ručně povolte šifrování BitLockeru na jednotce. Zadejte šifrovací klíč v *driveset.csv* při spuštění nástroje WAImportExport na příkazovém řádku během přípravy jednotky. Šifrovací klíč BitLockeru se dá dále chránit pomocí ochrany externích klíčů (označované taky jako spravovaný klíč Microsoftu) nebo podle zákaznického klíče spravovaného zákazníkem. Další informace najdete v tématu [použití spravovaného klíče zákazníka k ochraně klíče nástroje BitLocker](storage-import-export-encryption-key-portal.md).
 
 Pro úlohy exportu se po zkopírování dat na jednotky tato služba před odesláním zpět do vaší jednotky zašifruje pomocí nástroje BitLocker. Šifrovací klíč vám poskytnete prostřednictvím Azure Portal. Jednotku je potřeba odemknout pomocí nástroje WAImporExport pomocí klíče.
 

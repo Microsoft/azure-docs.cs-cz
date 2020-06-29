@@ -3,16 +3,16 @@ title: Vytvoření sdílené složky Azure Premium
 description: V tomto článku se dozvíte, jak vytvořit sdílenou složku Azure na úrovni Premium.
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 271acdb968bf5bbec3632bbc1f6def854196cd8e
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: ae40f94ca6c8c0b92c85a49e634aa02c81a98eff
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84629348"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85509978"
 ---
 # <a name="how-to-create-an-premium-azure-file-share"></a>Vytvoření sdílené složky Azure Premium
 Soubory úrovně Premium jsou nabízeny na úložném médiu SSD (Solid-State disk) a jsou užitečné pro úlohy náročné na v/v, včetně hostitelských databází a prostředí HPC (High Performance Computing). Soubory úrovně Premium se hostují v typu účtu úložiště zvláštního účelu, který se nazývá účet úložiště. Prémiové sdílené složky jsou navržené pro vysoce výkonné a podnikové aplikace, které poskytují konzistentní nízkou latenci, vysoké IOPS a vysoce propustnost sdílených složek.
@@ -27,7 +27,7 @@ Pokud chcete získat přístup k prostředkům Azure, včetně sdílených slož
 
 ### <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 ### <a name="create-a-filestorage-storage-account"></a>Vytvoření účtu úložiště úložiště
 

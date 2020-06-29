@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/26/2017
 ms.author: manuaery
-ms.openlocfilehash: aa69d8b07d31b5cf0386e34c113475cbf4191891
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 483fa81b409e1bd740af85b431a86b6c814831e6
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60319543"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85511514"
 ---
 # <a name="storsimple-locally-pinned-volumes-frequently-asked-questions-faq"></a>StorSimple místně připnuté svazky: nejčastější dotazy
 ## <a name="overview"></a>Přehled
@@ -52,9 +52,9 @@ Vzhledem k tomu, že se k hostování pracovní sady vrstvených svazků použí
 | 1 TB |176,5 TB |477,8 TB |
 | 4 TB |105,9 TB |411,1 TB |
 | 8,5 TB |0 TB |311,1 TB |
-| 10 TB |Není k dispozici |277,8 TB |
-| 15 TB |Není k dispozici |166,7 TB |
-| 22,5 TB |Není k dispozici |0 TB |
+| 10 TB |NA |277,8 TB |
+| 15 TB |NA |166,7 TB |
+| 22,5 TB |NA |0 TB |
 
 **Č.** Proč je místně připnuté vytvoření svazku dlouhodobě běžící operace?
 

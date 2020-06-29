@@ -3,16 +3,16 @@ title: Migrace řady StorSimple 8000 na Azure File Sync
 description: Přečtěte si, jak migrovat zařízení s StorSimple 8100 nebo 8600 do Azure File Sync.
 author: fauhse
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 9091d3bd6b57f14bd12083319595cb855a0d42ee
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: d6ad132513c2ec61dd5a290da1a88e50f0ad6eb0
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858708"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85510358"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>Migrace StorSimple 8100 a 8600 do Azure File Sync
 
@@ -23,7 +23,7 @@ Série StorSimple 8000 se [dokončí do konce životnosti](https://support.micro
 ## <a name="azure-file-sync"></a>Synchronizace souborů Azure
 
 > [!IMPORTANT]
-> Společnost Microsoft se zavazuje pomáhat zákazníkům při jejich migraci. E-mail AzureFiles@microsoft.com pro vlastní plán migrace a také pomoc při migraci.
+> Společnost Microsoft se zavazuje pomáhat zákazníkům při jejich migraci. E-mail AzureFilesMigration@microsoft . com pro vlastní plán migrace a pomoc při migraci.
 
 Azure File Sync je cloudová služba Microsoftu založená na dvou hlavních součástech:
 

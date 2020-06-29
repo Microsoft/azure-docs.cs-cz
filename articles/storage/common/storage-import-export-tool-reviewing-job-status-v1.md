@@ -4,16 +4,16 @@ description: Naučte se, jak používat soubory protokolu vytvořené při spuš
 author: twooley
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/26/2017
 ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: 33e6ecca0eb4ca05b1f6bf53cdb3bd4ac8c8d8a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5ab0dd7f0e0ed90c205c37ddbb7ea3a9fca74ae9
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75978442"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85512255"
 ---
 # <a name="reviewing-azure-importexport-job-status-with-copy-log-files"></a>Kontrola stavu úlohy importu a exportu Azure pomocí kopírování souborů protokolu
 Když služba Microsoft Azure Import/Export zpracovává jednotky přidružené k úloze importu nebo exportu, zapisuje soubory protokolu kopírování do účtu úložiště, do kterého importujete nebo exportujete objekty blob. Soubor protokolu obsahuje podrobný stav jednotlivých importovaných nebo exportovaných souborů. Adresa URL každého souboru protokolu kopírování se vrátí při dotazování na stav dokončené úlohy. Další informace najdete v tématu [získání úlohy](https://docs.microsoft.com/rest/api/storageimportexport/Jobs/Get) .  

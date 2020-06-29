@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 9e4e890ab5491e46ffe5ea0e1c168d168f9cc729
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4fc5c44ab0fcee5cbf1faa2338f65fe12d779f37
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77468605"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85511779"
 ---
 # <a name="fail-over-to-a-storsimple-8000-series-physical-device"></a>Převzetí služeb při selhání u fyzického zařízení řady StorSimple 8000
 
@@ -61,7 +61,7 @@ Provedením následujících kroků obnovíte své zařízení na cílové fyzic
 
         ![Výběr cíle](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev6.png)
 
-   3. Nakonec zkontrolujte všechna nastavení převzetí služeb při selhání v části **Souhrn**. Po zkontrolování nastavení zaškrtněte políčko s oznámením, že svazky ve vybraných kontejnerech svazků jsou offline. Klikněte na tlačítko **OK**.
+   3. Nakonec zkontrolujte všechna nastavení převzetí služeb při selhání v části **Souhrn**. Po zkontrolování nastavení zaškrtněte políčko s oznámením, že svazky ve vybraných kontejnerech svazků jsou offline. Klikněte na **OK**.
 
        ![Kontrola nastavení převzetí služeb při selhání](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev8.png)
   

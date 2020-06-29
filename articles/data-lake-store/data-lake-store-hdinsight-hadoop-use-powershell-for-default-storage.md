@@ -3,15 +3,15 @@ title: PowerShell – cluster HDInsight s Data Lake Storage Gen1 – Azure
 description: Pomocí Azure PowerShell můžete pomocí Azure Data Lake Storage Gen1 vytvářet a používat clustery Azure HDInsight.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 2b4e5fad65d2ad358bca6b5a2b87d4aa36b77e73
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: cd4faec2d57b15dd23fe01dfc49063f06d70639e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692071"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85510975"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>Vytváření clusterů HDInsight s Azure Data Lake Storage Gen1 jako výchozí úložiště pomocí prostředí PowerShell
 
@@ -65,7 +65,7 @@ Pokud chcete vytvořit účet Data Lake Storage Gen1, udělejte toto:
         Register-AzResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
 
     > [!NOTE]
-    > Pokud zaregistrujete poskytovatele prostředků Data Lake Storage Gen1 a obdržíte chybu podobnou `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid`té, nemusí být vaše předplatné na seznamu povolených Data Lake Storage Gen1. Pokud chcete povolit předplatné Azure pro Data Lake Storage Gen1, postupujte podle pokynů v tématu [Začínáme s Azure Data Lake Storage Gen1 pomocí Azure Portal](data-lake-store-get-started-portal.md).
+    > Pokud zaregistrujete poskytovatele prostředků Data Lake Storage Gen1 a obdržíte chybu podobnou té `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` , nemusí být vaše předplatné na seznamu povolených Data Lake Storage Gen1. Pokud chcete povolit předplatné Azure pro Data Lake Storage Gen1, postupujte podle pokynů v tématu [Začínáme s Azure Data Lake Storage Gen1 pomocí Azure Portal](data-lake-store-get-started-portal.md).
     >
 
 2. Účet Data Lake Storage Gen1 je přidružený ke skupině prostředků Azure. Začněte vytvořením skupiny prostředků.
@@ -209,7 +209,7 @@ V této části vytvoříte cluster HDInsight Hadoop Linux s Data Lake Storage G
     Po úspěšném dokončení rutiny by se měl zobrazit výstup, který obsahuje seznam podrobností o clusteru.
 
 ## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-data-lake-storage-gen1"></a>Spuštění testovacích úloh v clusteru HDInsight pro použití Data Lake Storage Gen1
-Po nakonfigurování clusteru HDInsight můžete na něm spustit testovací úlohy, aby se zajistilo, že bude mít přístup k Data Lake Storage Gen1. Uděláte to tak, že spustíte ukázkovou úlohu podregistru a vytvoříte tabulku, která používá ukázková data, která jsou už dostupná v Data Lake Storage Gen1 v * \<kořenovém adresáři clusteru>/example/data/Sample.log*.
+Po nakonfigurování clusteru HDInsight můžete na něm spustit testovací úlohy, aby se zajistilo, že bude mít přístup k Data Lake Storage Gen1. Uděláte to tak, že spustíte ukázkovou úlohu podregistru a vytvoříte tabulku, která používá ukázková data, která jsou už dostupná v Data Lake Storage Gen1 na adrese * \<cluster root> /example/data/Sample.log*.
 
 V této části provedete připojení k Secure Shell (SSH) do clusteru HDInsight Linux, který jste vytvořili, a potom spustíte ukázkový dotaz na podregistr.
 
@@ -230,7 +230,7 @@ V této části provedete připojení k Secure Shell (SSH) do clusteru HDInsight
     V konzole SSH by se měl zobrazit výstup dotazu.
 
     >[!NOTE]
-    >Cesta k ukázkovým datům v předchozím příkazu CREATE TABLE je `adl:///example/data/`, kde `adl:///` je kořenový adresář clusteru. V rámci příkladu kořenového adresáře clusteru uvedeného v tomto kurzu je `adl://hdiadlstore.azuredatalakestore.net/clusters/hdiadlcluster`příkaz. Můžete buď použít kratší alternativu, nebo zadat úplnou cestu k kořenovému adresáři clusteru.
+    >Cesta k ukázkovým datům v předchozím příkazu CREATE TABLE je `adl:///example/data/` , kde `adl:///` je kořenový adresář clusteru. V rámci příkladu kořenového adresáře clusteru uvedeného v tomto kurzu je příkaz `adl://hdiadlstore.azuredatalakestore.net/clusters/hdiadlcluster` . Můžete buď použít kratší alternativu, nebo zadat úplnou cestu k kořenovému adresáři clusteru.
     >
 
 ## <a name="access-data-lake-storage-gen1-by-using-hdfs-commands"></a>Přístup k Data Lake Storage Gen1 pomocí příkazů HDFS
@@ -245,7 +245,7 @@ Po vytvoření připojení seznam souborů v Data Lake Storage Gen1 pomocí nás
 
     hdfs dfs -ls adl:///
 
-Pomocí `hdfs dfs -put` příkazu můžete také odeslat některé soubory do data Lake Storage Gen1 a potom použít `hdfs dfs -ls` k ověření, jestli se soubory úspěšně nahrály.
+Pomocí příkazu můžete také `hdfs dfs -put` Odeslat některé soubory do data Lake Storage Gen1 a potom použít `hdfs dfs -ls` k ověření, jestli se soubory úspěšně nahrály.
 
 ## <a name="see-also"></a>Viz také
 * [Použití Data Lake Storage Gen1 s clustery Azure HDInsight](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)
