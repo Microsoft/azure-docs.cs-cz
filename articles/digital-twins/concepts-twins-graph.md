@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: c4bbc3510cc273504d7c97287d3aeb1948db2eb2
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: c4cdfc35d39be827109c56a16d68f6e51b56ef43
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85390665"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483342"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Pochopení digitálních vláken a jejich dvojitých grafů
 
@@ -95,7 +95,7 @@ Data z digitálního vlákna a data relace jsou ukládána ve formátu JSON. To 
 
 Při reprezentaci jako objektu JSON zobrazí digitální vlákna následující pole:
 
-| Název pole | Description |
+| Název pole | Popis |
 | --- | --- |
 | `$dtId` | Uživatelem zadaný řetězec představující ID digitálního vlákna |
 | `$conformance` | Výčet, který obsahuje stav shody tohoto digitálního*vlákna (v* *souladu*s nevyhovujícími, *Neznámý*) |
@@ -124,7 +124,6 @@ Tady je příklad digitálního vlákna formátovaného jako objekt JSON:
   "component": {
     "TableOccupancy": 1,
     "$metadata": {
-      "$model": "dtmi:com:contoso:Table;1",
       "TableOccupancy": {
         "desiredValue": 1,
         "desiredVersion": 3,
@@ -161,9 +160,9 @@ Tady je příklad digitálního vlákna formátovaného jako objekt JSON:
 
 Při reprezentaci jako objektu JSON se v relaci z digitálního vlákna zobrazí následující pole:
 
-| Název pole | Description |
+| Název pole | Popis |
 | --- | --- |
-| `$edgeId` | Uživatelem zadaný řetězec představující ID této hraniční relace. Tento řetězec je jedinečný v kontextu zdrojového digitálního vlákna, což také znamená, že `sourceId`  +  `edgeId` je jedinečný v kontextu instance digitálního vlákna Azure. |
+| `$relationshipId` | Uživatelem zadaný řetězec představující ID tohoto vztahu. Tento řetězec je jedinečný v kontextu zdrojového digitálního vlákna, což také znamená, že `sourceId`  +  `relationshipId` je jedinečný v kontextu instance digitálního vlákna Azure. |
 | `$sourceId` | ID zdrojového digitálního vlákna |
 | `$targetId` | ID cílového digitálního vlákna |
 | `$relationshipName` | Název vztahu |
@@ -173,9 +172,10 @@ Tady je příklad vztahu naformátovaného jako objekt JSON:
 
 ```json
 {
-  "$edgeId": "Edge-01",
+  "$relationshipId": "relationship-01",
+  "$etag": "W/\"506e8391-2b21-4ac9-bca3-53e6620f6a90\"",
   "$sourceId": "GroundFloor",
-  "$relationship": "contains",
+  "$relationshipName": "contains",
   "$targetId": "Cafe",
   "startDate": "2020-02-04"
 }

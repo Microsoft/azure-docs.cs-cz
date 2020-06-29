@@ -1,23 +1,14 @@
 ---
 title: Integrace prostředí do Azure Pipelines v Azure DevTest Labs
 description: Naučte se integrovat Azure DevTest Labs prostředí do kanálů Azure DevOps Continuous Integration (CI) a průběžného doručování (CD).
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2020
-ms.author: spelluru
-ms.openlocfilehash: bafc4cd08d7b4ee2124c46984121b53cd4651baf
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: be726b2a3f67fd3dada4fdc3cf794922a3c18d06
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84898105"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483019"
 ---
 # <a name="integrate-environments-into-your-azure-devops-cicd-pipelines"></a>Integrace prostředí do kanálů Azure DevOps CI/CD
 Pomocí rozšíření Azure DevTest Labs úlohy, které je nainstalováno v Azure DevOps Services (dříve označované jako Visual Studio Team Services), můžete snadno integrovat kanál pro vytváření sestav průběžné integrace (CI)/průběžné doručování (CD-Release) pomocí Azure DevTest Labs. Tato rozšíření usnadňují rychlé nasazení [prostředí](devtest-lab-test-env.md) pro konkrétní testovací úlohu a jejich odstranění po dokončení testu. 

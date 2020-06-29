@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: 26816a545cb83e0a3d996a8056b96154830e58b6
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: df26a6815a3dde27559f2f55038bdccadd78ea0b
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195512"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482135"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Použití injektáže závislostí ve službě Azure Functions pro .NET
 
@@ -36,11 +36,8 @@ Chcete-li registrovat služby, vytvořte metodu pro konfiguraci a přidání sou
 Chcete-li zaregistrovat metodu, přidejte `FunctionsStartup` atribut Assembly, který určuje název typu použitý při spuštění.
 
 ```csharp
-using System;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Http;
-using Microsoft.Extensions.Logging;
 
 [assembly: FunctionsStartup(typeof(MyNamespace.Startup))]
 
@@ -52,7 +49,7 @@ namespace MyNamespace
         {
             builder.Services.AddHttpClient();
 
-            builder.Services.AddSingleton((s) => {
+            builder.Services.AddSingleton<IMyService>((s) => {
                 return new MyService();
             });
 
@@ -61,6 +58,8 @@ namespace MyNamespace
     }
 }
 ```
+
+V tomto příkladu se používá balíček [Microsoft. Extensions. http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) vyžadovaný k registraci `HttpClient` při spuštění.
 
 ### <a name="caveats"></a>Upozornění
 
@@ -72,48 +71,47 @@ Série kroků registrace se spouští před a po zpracování spouštěcí tří
 
 ## <a name="use-injected-dependencies"></a>Použít vložené závislosti
 
-K dispozici jsou závislosti pomocí injektáže konstruktoru ve funkci. Použití injektáže konstruktoru vyžaduje, abyste nepoužívali statické třídy.
+K dispozici jsou závislosti pomocí injektáže konstruktoru ve funkci. Použití injektáže konstruktoru vyžaduje, abyste pro vložené služby nebo třídy funkcí nepoužívali statické třídy.
 
-Následující příklad ukazuje, jak `IMyService` jsou tyto `HttpClient` závislosti vloženy do funkce aktivované protokolem HTTP. V tomto příkladu se používá balíček [Microsoft. Extensions. http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) vyžadovaný k registraci `HttpClient` při spuštění.
+Následující příklad ukazuje, jak `IMyService` jsou tyto `HttpClient` závislosti vloženy do funkce aktivované protokolem HTTP.
 
 ```csharp
-using System;
-using System.IO;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace MyNamespace
 {
-    public class HttpTrigger
+    public class MyHttpTrigger
     {
-        private readonly IMyService _service;
         private readonly HttpClient _client;
+        private readonly IMyService _service;
 
-        public HttpTrigger(IMyService service, HttpClient httpClient)
+        public MyHttpTrigger(HttpClient httpClient, MyService service)
         {
-            _service = service;
-            _client = httpClient;
+            this._client = httpClient;
+            this._service = service;
         }
 
-        [FunctionName("GetPosts")]
-        public async Task<IActionResult> Get(
-            [HttpTrigger(AuthorizationLevel.Function, "get", Route = "posts")] HttpRequest req,
+        [FunctionName("MyHttpTrigger")]
+        public async Task<IActionResult> Run(
+            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
             ILogger log)
         {
-            log.LogInformation("C# HTTP trigger function processed a request.");
-            var res = await _client.GetAsync("https://microsoft.com");
-            await _service.AddResponse(res);
+            var response = await _client.GetAsync("https://microsoft.com");
+            var message = _service.GetMessage();
 
-            return new OkResult();
+            return new OkObjectResult("Response from function with injected dependencies.");
         }
     }
 }
 ```
+
+V tomto příkladu se používá balíček [Microsoft. Extensions. http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) vyžadovaný k registraci `HttpClient` při spuštění.
 
 ## <a name="service-lifetimes"></a>Životnost služeb
 
@@ -127,7 +125,9 @@ Zobrazit nebo stáhnout [ukázku různých životností služby](https://aka.ms/
 
 ## <a name="logging-services"></a>Protokolovací služby
 
-Pokud potřebujete vlastního zprostředkovatele protokolování, zaregistrujte vlastní typ jako `ILoggerProvider` instanci. Application Insights automaticky přidá Azure Functions.
+Pokud potřebujete vlastního poskytovatele protokolování, zaregistrujte vlastní typ jako instanci nástroje [`ILoggerProvider`](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.iloggerfactory) , která je k dispozici prostřednictvím balíčku NuGet [Microsoft. Extensions. Logging. Abstractions](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Abstractions/) .
+
+Application Insights automaticky přidá Azure Functions.
 
 > [!WARNING]
 > - Nepřidávat `AddApplicationInsightsTelemetry()` do kolekce služeb při registraci služeb, které jsou v konfliktu se službami poskytovanými prostředím.
@@ -135,7 +135,9 @@ Pokud potřebujete vlastního zprostředkovatele protokolování, zaregistrujte 
 
 ### <a name="iloggert-and-iloggerfactory"></a>ILogger <T> a ILoggerFactory
 
-Hostitel vloží `ILogger<T>` a nasadí `ILoggerFactory` služby do konstruktorů.  Ve výchozím nastavení se ale tyto nové filtry protokolování odfiltrují z protokolů funkcí.  Budete muset upravit `host.json` soubor, aby se mohl vyjádřit další filtry a kategorie.  Následující ukázka demonstruje přidání `ILogger<HttpTrigger>` s protokoly, které bude zveřejnit hostitel.
+Hostitel vloží `ILogger<T>` a `ILoggerFactory` služby do konstruktorů.  Ve výchozím nastavení se ale tyto nové filtry protokolování odfiltrují z protokolů funkcí.  Abyste se mohli `host.json` přihlásit k dalším filtrům a kategoriím, musíte upravit soubor.
+
+Následující příklad ukazuje, jak přidat `ILogger<HttpTrigger>` s protokoly, které jsou vystaveny hostiteli.
 
 ```csharp
 namespace MyNamespace
@@ -160,7 +162,7 @@ namespace MyNamespace
 }
 ```
 
-A `host.json` soubor, který přidá filtr protokolu.
+Následující příklad `host.json` souboru Přidá filtr protokolu.
 
 ```json
 {
@@ -251,7 +253,7 @@ public class HttpTrigger
 Další podrobnosti týkající se práce s možnostmi najdete [v tématu vzor možností v ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options) .
 
 > [!WARNING]
-> Vyhněte se pokusu o čtení hodnot ze souborů, jako je *Local. Settings. JSON* nebo *appSettings. { Environment}. JSON* pro plán spotřeby Hodnoty načtené z těchto souborů souvisejících s triggery triggeru nejsou k dispozici, protože tato aplikace se škáluje, protože hostitelská infrastruktura nemá přístup k informacím o konfiguraci, protože řadič škálování vytváří nové instance aplikace.
+> Vyhněte se pokusům o čtení hodnot ze souborů, jako *local.settings.jsna* nebo *appSettings. { Environment}. JSON* pro plán spotřeby Hodnoty načtené z těchto souborů souvisejících s triggery triggeru nejsou k dispozici, protože tato aplikace se škáluje, protože hostitelská infrastruktura nemá přístup k informacím o konfiguraci, protože řadič škálování vytváří nové instance aplikace.
 
 ## <a name="next-steps"></a>Další kroky
 

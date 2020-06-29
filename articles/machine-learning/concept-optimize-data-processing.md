@@ -9,13 +9,13 @@ ms.author: sgilley
 ms.subservice: core
 ms.reviewer: nibaccam
 ms.topic: conceptual
-ms.date: 05/29/2020
-ms.openlocfilehash: 507b03266e70ae082872890c9d5cddb50fdeb703
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 09e48bd5c27dc4835ba0261ccd929f858fdb58b4
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84719987"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85481880"
 ---
 # <a name="optimize-data-processing-with-azure-machine-learning"></a>Optimalizujte zpracování dat pomocí Azure Machine Learning
 
@@ -51,7 +51,7 @@ U více virtuálních procesorů vCPU Pamatujte na to, že chcete, aby se jeden 
 
 Pokud nemůžete přidat k počítači více paměti RAM, můžete použít následující postupy, které vám pomůžou minimalizovat zatížení procesoru a optimalizovat časy zpracování. Tato doporučení se vztahují k jednomu i distribuovaným systémům.
 
-Technika | Description
+Technika | Popis
 ----|----
 Komprese | Pro svá data použijte jiné reprezentace způsobem, který používá méně paměti a významně neovlivní výsledky vašeho výpočtu.<br><br>*Příklad:* Místo uložení položek jako řetězce s přibližně 10 bajtů nebo více za položku uložte je jako logická hodnota, true nebo false, kterou můžete uložit v 1 bajtu.
 Vytváření bloků | Načtení dat do paměti v podmnožinách (bloků), zpracování dat v jednom podmnožině v čase nebo paralelní více dílčích sad. Tato metoda funguje nejlépe, pokud potřebujete zpracovat všechna data, ale není nutné načítat všechna data do paměti najednou. <br><br>*Příklad:* Místo zpracování dat v plném roce v jednom okamžiku načtěte a zpracujte data po měsících.
@@ -61,9 +61,10 @@ Indexování | Použijte a použijte Rejstřík, který vám ukáže, kde najít
 
 Pokud předchozí doporučení nejsou dostatečná a nemůžete získat virtuální počítač, který odpovídá vašim datům, můžete 
 
-* Použijte rozhraní jako `Spark` nebo `Dask` ke zpracování dat z paměti. V této možnosti je datový rámec načten do oddílu RAM podle oddílů a zpracován, přičemž konečný výsledek bude shromážděn na konci. 
+* Použijte rozhraní jako `Spark` nebo `Dask` ke zpracování dat z paměti. V této možnosti je datový rámec načten do oddílu RAM podle oddílů a zpracován, přičemž konečný výsledek bude shromážděn na konci.  
 
 * Horizontální navýšení kapacity na cluster pomocí distribuované architektury. V této možnosti jsou zatížení zpracování dat rozdělená a zpracovaná na více procesorech, které pracují paralelně, s konečným výsledkem shromážděným na konci.
+
 
 ### <a name="recommended-distributed-frameworks"></a>Doporučené distribuované architektury
 
@@ -75,6 +76,8 @@ Pokud jste obeznámeni s`Pandas`| `Modin`nebo datový `Dask` rámec
 Pokud dáváte přednost`Spark` | `PySpark`
 Pro data menší než 1 GB | `Pandas`místně **nebo** vzdálená instance Azure Machine Learning COMPUTE
 Pro data větší než 10 GB| Přejděte ke clusteru pomocí `Ray` , `Dask` nebo`Spark`
+
+`Dask`Clustery v Azure ml Compute Cluster můžete vytvořit pomocí balíčku [dAsK-cloudprovider](https://cloudprovider.dask.org/en/latest/#azure) . Nebo můžete spustit `Dask` místně na výpočetní instanci.
 
 ## <a name="next-steps"></a>Další kroky
 

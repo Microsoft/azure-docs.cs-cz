@@ -1,24 +1,24 @@
 ---
-title: Azure Cosmos DB vazby pro Functions 2. x
+title: Vazby Azure Cosmos DB pro Functions 2. xD a vyšší
 description: Naučte se používat Azure Cosmos DB triggery a vazby v Azure Functions.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2017
 ms.author: cshoe
-ms.openlocfilehash: f258a7aff52796a53540706bc8413575d63c9e7d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2c6efd14bd974de1b01b1725b9810f153df74bf8
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77605759"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482169"
 ---
-# <a name="azure-cosmos-db-trigger-and-bindings-for-azure-functions-2x-overview"></a>Azure Cosmos DB Trigger a vazeb pro Azure Functions 2. x – přehled
+# <a name="azure-cosmos-db-trigger-and-bindings-for-azure-functions-2x-and-higher-overview"></a>Azure Cosmos DB Trigger a vazby pro Azure Functions 2. x a vyšší
 
 > [!div class="op_single_selector" title1="Vyberte verzi Azure Functions runtime, kterou používáte: "]
 > * [Verze 1](functions-bindings-cosmosdb.md)
-> * [Verze 2](functions-bindings-cosmosdb-v2.md)
+> * [Verze 2 a vyšší](functions-bindings-cosmosdb-v2.md)
 
-Tato sada článků vysvětluje, jak pracovat s [Azure Cosmos DBmi](../cosmos-db/serverless-computing-database.md) vazbami v Azure Functions 2. x. Azure Functions podporuje vazby triggeru, vstupu a výstupu pro Azure Cosmos DB.
+Tato sada článků vysvětluje, jak pracovat s [Azure Cosmos DBmi](../cosmos-db/serverless-computing-database.md) vazbami v Azure Functions 2. x a vyšší. Azure Functions podporuje vazby triggeru, vstupu a výstupu pro Azure Cosmos DB.
 
 | Akce | Typ |
 |---------|---------|
@@ -27,9 +27,9 @@ Tato sada článků vysvětluje, jak pracovat s [Azure Cosmos DBmi](../cosmos-db
 | Uložení změn do dokumentu Azure Cosmos DB  |[Výstupní vazba](./functions-bindings-cosmosdb-v2-output.md) |
 
 > [!NOTE]
-> Tento odkaz je určen pro [Azure Functions verze 2. x](functions-versions.md).  Informace o tom, jak tyto vazby použít ve funkcích 1. x, najdete v tématu [Azure Cosmos DB vazby pro Azure Functions 1. x](functions-bindings-cosmosdb.md).
+> Tento odkaz je určen pro [Azure Functions verze 2. x a vyšší](functions-versions.md).  Informace o tom, jak tyto vazby použít ve funkcích 1. x, najdete v tématu [Azure Cosmos DB vazby pro Azure Functions 1. x](functions-bindings-cosmosdb.md).
 >
-> Tato vazba se původně jmenovala jako DocumentDB. Ve funkcích Functions verze 2. x jsou triggery, vazby a balíčky všechny pojmenované Cosmos DB.
+> Tato vazba se původně jmenovala jako DocumentDB. Ve funkcích Functions verze 2. x a vyšší jsou triggery, vazby a balíčky všechny pojmenovány Cosmos DB.
 
 ## <a name="supported-apis"></a>Podporovaná rozhraní API
 

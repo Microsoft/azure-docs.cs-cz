@@ -6,12 +6,12 @@ author: timothymothra
 ms.author: tilee
 ms.date: 01/17/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 92c4ccf7246c4e763cbf92aee3c48398d79e0ecc
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: d9906e43bad296cc850942c01c83c6bfee2651fb
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125702"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482118"
 ---
 # <a name="connection-strings"></a>Připojovací řetězce
 
@@ -57,7 +57,7 @@ Připojení má maximální podporovanou délku 4096 znaků.
 
 Připojovací řetězec se skládá ze seznamu nastavení reprezentovaného jako páry klíč-hodnota oddělených středníkem:`key1=value1;key2=value2;key3=value3`
 
-#### <a name="syntax"></a>Syntaxe
+#### <a name="syntax"></a>Syntax
 
 - `InstrumentationKey`(např.: 00000000-0000-0000-0000-000000000000)  Připojovací řetězec je **povinné** pole.
 - `Authorization`(např.: ikey) (Toto nastavení je volitelné, protože dnes podporujeme jenom autorizaci ikey.)
@@ -182,8 +182,16 @@ Konfigurační soubor .NET:
 </ApplicationInsights>
 ```
 
+Explicitně nastavené NetCore:
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    var options = new ApplicationInsightsServiceOptions { ConnectionString = "InstrumentationKey=00000000-0000-0000-0000-000000000000;" };
+    services.AddApplicationInsightsTelemetry(options: options);
+}
+```
 
-NetCore config. JSON: 
+NetCore config.js: 
 
 ```json
 {
@@ -202,7 +210,7 @@ Explicitně nastavené Java (v 2,5. x):
 TelemetryConfiguration.getActive().setConnectionString("InstrumentationKey=00000000-0000-0000-0000-000000000000");
 ```
 
-ApplicationInsights. XML
+ApplicationInsights.xml
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings">
@@ -239,7 +247,7 @@ appInsights.loadAppInsights();
 appInsights.trackPageView();
 ```
 
-# <a name="nodejs"></a>[Node. js](#tab/nodejs)
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 ```javascript
 const appInsights = require("applicationinsights");
@@ -275,5 +283,5 @@ Začínáme při vývoji:
 * [ASP.NET](../../azure-monitor/app/asp-net.md)
 * [ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
 * [Java](../../azure-monitor/app/java-get-started.md)
-* [Node. js](../../azure-monitor/app/nodejs.md)
+* [Node.js](../../azure-monitor/app/nodejs.md)
 * [Python](../../azure-monitor/app/opencensus-python.md)

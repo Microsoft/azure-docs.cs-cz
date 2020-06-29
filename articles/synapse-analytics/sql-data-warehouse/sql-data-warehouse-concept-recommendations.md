@@ -7,16 +7,16 @@ manager: craigg-msft
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 04/30/2020
+ms.date: 06/26/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 3fcf19ffdce57051e86d6e4bab37d719c91a8a1f
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: e4564005e3b9cc9673cc20596d4114d102174b9e
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85206624"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482849"
 ---
 # <a name="synapse-sql-recommendations"></a>Doporučení SQL synapse
 
@@ -70,3 +70,7 @@ Pokud máte velkou pracovní sadu, můžete zaznamenat procento přístupů do m
 ## <a name="tempdb-contention"></a>Obsah databáze tempdb
 
 Výkon dotazů se může snížit, když dojde k vysokému obsahu databáze tempdb.  K obsahu tempdb může dojít prostřednictvím uživatelsky definovaných dočasných tabulek nebo v případě velkého množství přesunu dat. V tomto scénáři můžete škálovat pro další přidělení databáze tempdb a [konfiguraci tříd prostředků a správy úloh](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-management) , aby bylo možné získat větší množství paměti pro vaše dotazy. 
+
+## <a name="data-loading-misconfiguration"></a>Nepřesná konfigurace načítání dat
+
+Vždycky byste měli načíst data z účtu úložiště ve stejné oblasti jako váš fond SQL, abyste minimalizovali latenci. Použijte [příkaz Copy pro příjem dat s vysokou propustností](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) a rozdělte připravené soubory do svého účtu úložiště, aby se maximalizovala propustnost. Pokud nemůžete použít příkaz COPY, můžete pro lepší propustnost použít rozhraní SqlBulkCopy API nebo BCP s vysokou velikostí dávky. Další doprovodné materiály k načítání dat najdete v následující [dokumentaci](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/guidance-for-loading-data). 

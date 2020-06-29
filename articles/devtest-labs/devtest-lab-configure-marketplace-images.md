@@ -1,25 +1,14 @@
 ---
 title: Konfigurace nastavení Azure Marketplace imagí v Azure DevTest Labs
 description: Nakonfigurovat, které Azure Marketplace image se dají použít při vytváření virtuálního počítače v Azure DevTest Labs
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-editor: ''
-ms.assetid: 804c6af2-17e9-4320-af3a-f454bd398379
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2020
-ms.author: spelluru
-ms.openlocfilehash: 2dc3aa000cefc0e65305b58f8fdce93b94bfd35f
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 9fdb4e3a888e876f91b8af2e4854a9c101eea45c
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84896302"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482713"
 ---
 # <a name="configure-azure-marketplace-image-settings-in-azure-devtest-labs"></a>Konfigurace nastavení Azure Marketplace imagí v Azure DevTest Labs
 DevTest Labs podporuje vytváření virtuálních počítačů na základě Azure Marketplace imagí v závislosti na tom, jak jste nakonfigurovali Azure Marketplace imagí pro použití v testovacím prostředí. V tomto článku se dozvíte, jak určit, které Azure Marketplace image se můžou použít při vytváření virtuálních počítačů v testovacím prostředí. Tím zajistíte, že váš tým bude mít přístup jenom k potřebným imagím Marketplace. 

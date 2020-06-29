@@ -1,25 +1,14 @@
 ---
 title: Konfigurace virtuální sítě v Azure DevTest Labs | Microsoft Docs
 description: Naučte se konfigurovat existující virtuální síť a podsíť a používat je na virtuálním počítači s Azure DevTest Labs
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-editor: ''
-ms.assetid: 6cda99c2-b87e-4047-90a0-5df10d8e9e14
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2019
-ms.author: spelluru
-ms.openlocfilehash: 6cf3d2f82c98a3caab47ff48a600316747932b72
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 0819527cfc2a9dfd4e93226542acb7cb0c6d7273
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84896274"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482645"
 ---
 # <a name="configure-a-virtual-network-in-azure-devtest-labs"></a>Konfigurace virtuální sítě v Azure DevTest Labs
 Jak je vysvětleno v článku [Přidání virtuálního počítače do testovacího prostředí](devtest-lab-add-vm.md), když vytvoříte virtuální počítač v testovacím prostředí, můžete zadat nakonfigurovanou virtuální síť. Například můžete potřebovat přístup k prostředkům Corpnet z virtuálních počítačů pomocí virtuální sítě, která byla nakonfigurovaná se ExpressRoute nebo VPN typu Site-to-site.

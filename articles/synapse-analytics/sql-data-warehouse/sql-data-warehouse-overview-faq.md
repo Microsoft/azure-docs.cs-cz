@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: a0d98a2c58e7629f988d0d3e8015355ba414c07a
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: b3ee3f729e1e2f03d7c72a72081ad2e3f0316cbb
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85201137"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482526"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Nejčastější dotazy k Azure synapse Analytics (dříve SQL DW)
 
@@ -56,10 +56,6 @@ A. Podívejte se na naše aktuální [omezení kapacity](sql-data-warehouse-serv
 Otázka: Proč je můj rozsah/pozastavení/pokračování trvá tak dlouho?
 
 A. Několik faktorů může ovlivnit čas operací správy výpočetních prostředků. Běžným případem dlouhotrvajících operací je vrácení transakční služby za provozu. Při zahájení operace škálování nebo pozastavení jsou všechny příchozí relace blokované a dotazy se vyprázdní. Aby bylo možné systém opustit v stabilním stavu, transakce musí být vráceny zpět před zahájením operace. Čím větší je počet a větší velikost protokolu transakcí, tím déle bude operace zablokované obnovení systému do stabilního stavu.
-
-Otázka: Návody přejmenování publikovaného artefaktu (datová sada, Poznámkový blok, SQL Script atd.) v Azure synapse?
-
-Odpověď: Chcete-li přejmenovat publikovaný soubor artefaktů, nejprve naklonujte soubor a přejmenujte nový soubor na název, kterému dáváte přednost. Budete muset ručně aktualizovat všechny odkazy na artefakt na nový název souboru a odstranit starý.
 
 ## <a name="user-support"></a>Podpora uživatelů
 

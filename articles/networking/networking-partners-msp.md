@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: sukishen
-ms.openlocfilehash: ed94ff96d926630280b379c8c0c3eefb0c12f2ae
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: aa77ac3652d8646a3354cb137ba7cf4240e58e6c
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85209432"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482883"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Informace o sítích Azure pro síťové služby MSP
 
@@ -33,6 +33,7 @@ Odkazy v této části použijte, pokud chcete získat další informace o služ
 |[Skupina ANS UK](https://www.ans.co.uk/)|[Azure Managed svc + ANS Glass 10wk – implementace](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/ans_group.glassms)|[ExpressRoute & připojení: posouzení 2 týdnů](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/ans_group.ans_er)|[Azure Virtual WAN + Fortinet: posouzení 2 týdnů](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/ans_group.ans_vw)|||
 |[Sítě Aryaka](https://www.aryaka.com/azure-msp-vwan-managed-service-provider-launch-partner-aryaka/)||[Aryaka Networks Azure Connect](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/aryaka.cloudconnect_azure_19?tab=Overview)|[Aryaka Networks Azure Virtual WAN](https://azuremarketplace.microsoft.com/marketplace/apps/aryaka.cloudconnect_azure_19?tab=Overview) | | |
 |[BT](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)|[Konzultace k transformaci sítě: 1 – posouzení HR](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/bt-americas-inc.network-transformation-consulting); [Cloudový připojení BT Azure](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bt-americas-inc.bt-cca-lh-001?tab=Overview)|[Cloud BT Connect Azure ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bt-americas-inc.bt-cca-lh-003?tab=Overview)|[Cloud BT Connect Azure VWAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bt-americas-inc.bt-cca-lh-002?tab=Overview)|||
+|[CenturyLink](https://www.centurylink.com/business.html)||[ExpressRoute konzultačního okruhu: 8-týden implementace](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/centurylink2362604-2362604.centurylink_consultingservicesforexpressroute)||||
 |[Spoluvývoj](https://www.coevolve.com/services/azure-networking-services/)|||[Spravovaná virtuální hraniční síť VMware SD – WAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/coevolveptylimited1581027739259.managed-vmware-sdwan-edge?tab=Overview)|||
 |[Colt](https://www.colt.net/why-colt/strategic-alliances/microsoft-partnership/msp/)|[Optimalizace sítě v Azure: 2 – posouzení HR](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/colttechnologyservices.azure_networking)|||||
 |[NTT data](https://us.nttdata.com/en/digital/cloud-transformation)|[Spravované služby: implementace po deseti týdnech](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/nttdata-2932930.managed_service)|||||

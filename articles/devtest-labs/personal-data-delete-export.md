@@ -1,23 +1,14 @@
 ---
 title: Odstranění a export osobních údajů z Azure DevTest Labs
 description: Naučte se, jak odstranit a exportovat osobní data ze služby Azure DevLast Labs, abyste mohli podporovat vaše závazky v rámci Obecné nařízení o ochraně osobních údajů (GDPR).
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2020
-ms.author: spelluru
-ms.openlocfilehash: b59a799b2e2211ee8fd473de2e26a26148777502
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 2c44b2f3aa6f2dfad18ed53804842a5dad8bd94a
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84898084"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483512"
 ---
 # <a name="export-or-delete-personal-data-from-azure-devtest-labs"></a>Export nebo odstranění osobních údajů z Azure DevTest Labs
 Tento článek popisuje kroky pro odstranění a export osobních údajů ze služby Azure DevTest Labs. 
@@ -160,7 +151,7 @@ Teď se podíváme na exportovaná data. Jak bylo zmíněno dříve, po úspěš
 
 **virtualmachines.csv** obsahuje následující sloupce dat:
 
-| Název sloupce | Description |
+| Název sloupce | Popis |
 | ----------- | ----------- | 
 | SubscriptionId | Identifikátor předplatného, ve kterém testovací prostředí existuje. |
 | LabUId | Jedinečný identifikátor GUID pro testovací prostředí |
@@ -169,7 +160,7 @@ Teď se podíváme na exportovaná data. Jak bylo zmíněno dříve, po úspěš
 | ResourceGroupName | Název skupiny prostředků, která obsahuje virtuální počítač | 
 | ResourceId | Plně kvalifikované ID prostředku pro virtuální počítač. |
 | ResourceUId | Identifikátor GUID virtuálního počítače |
-| Name | Název virtuálního počítače |
+| Název | Název virtuálního počítače |
 | CreatedTime | Datum a čas, kdy byl virtuální počítač vytvořen. |
 | DeletedDate | Datum a čas odstranění virtuálního počítače. Pokud je prázdný, odstranění ještě neproběhlo. |
 | ResourceOwner | Vlastník virtuálního počítače Pokud je hodnota prázdná, je to buď vynucený virtuální počítač, nebo vytvořený instančním objektem. |
@@ -188,7 +179,7 @@ Teď se podíváme na exportovaná data. Jak bylo zmíněno dříve, po úspěš
 
 Datové sloupce obsažené v **disks.csv** jsou uvedeny níže:
 
-| Název sloupce | Description | 
+| Název sloupce | Popis | 
 | ----------- | ----------- | 
 | SubscriptionId | ID předplatného, které obsahuje testovací prostředí |
 | LabUId | Identifikátor GUID testovacího prostředí |
@@ -197,7 +188,7 @@ Datové sloupce obsažené v **disks.csv** jsou uvedeny níže:
 | ResourceGroupName | Název skupiny prostředků, která obsahuje testovací prostředí | 
 | ResourceId | Plně kvalifikované ID prostředku pro virtuální počítač. |
 | ResourceUId | Identifikátor GUID virtuálního počítače |
- |Name | Název připojeného disku |
+ |Název | Název připojeného disku |
 | CreatedTime |Datum a čas vytvoření datového disku. |
 | DeletedDate | Datum a čas odstranění datového disku. |
 | ResourceStatus | Stav prostředku Aktivní, pokud prostředek existuje. Neaktivní, když je odstraněn. |

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6141440cdb5b232145417c6051cb340e806f9352
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: b98a5a25ed0aa97a8fa187a9bb1a8075f550d7ba
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85338001"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482390"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Nasazení Hybrid Runbook Worker Windows
 
@@ -187,16 +187,16 @@ Import-Module .\HybridRegistration.psd1
 Nyní spusťte `Add-HybridRunbookWorker` rutinu pomocí následující syntaxe.
 
 ```powershell-interactive
-Add-HybridRunbookWorker –GroupName <String> -EndPoint <Url> -Token <String>
+Add-HybridRunbookWorker –GroupName <String> -Url <Url> -Key <String>
 ```
 
-Můžete získat informace požadované pro parametry `EndPoint` a `Token` ze stránky **klíče** ve vašem účtu Automation. V části **Nastavení účtu** na levé straně stránky vyberte **klíče** .
+Můžete získat informace požadované pro parametry `Url` a `Key` ze stránky **klíče** ve vašem účtu Automation. V části **Nastavení účtu** na levé straně stránky vyberte **klíče** .
 
 ![Stránka Správa klíčů](media/automation-hybrid-runbook-worker/elements-panel-keys.png)
 
-* Pro `EndPoint` parametr Zkopírujte hodnotu pro **URL**.
+* Pro `Url` parametr Zkopírujte hodnotu pro **URL**.
 
-* Pro `Token` parametr Zkopírujte hodnotu **primárního přístupového klíče**.
+* Pro `Key` parametr Zkopírujte hodnotu **primárního přístupového klíče**.
 
 * Pro `GroupName` parametr použijte název skupiny Hybrid Runbook Worker. Pokud tato skupina už v účtu Automation existuje, do ní se přidá aktuální počítač. Pokud tato skupina neexistuje, přidá se.
 
@@ -219,7 +219,7 @@ Moduly, které jsou nainstalovány, musí být v umístění, na `PSModulePath` 
 3. Otevřete relaci PowerShellu v režimu správce a spusťte následující příkaz s hodnotami adresy URL a primárního přístupového klíče. Použijte `Verbose` parametr pro podrobný protokol procesu odebrání. K odebrání zastaralých počítačů ze skupiny Hybrid Worker Použijte volitelný `machineName` parametr.
 
 ```powershell-interactive
-Remove-HybridRunbookWorker -url <URL> -key <primaryAccessKey> -machineName <computerName>
+Remove-HybridRunbookWorker -Url <URL> -Key <primaryAccessKey> -MachineName <computerName>
 ```
 
 ## <a name="remove-a-hybrid-worker-group"></a>Odebrání skupiny Hybrid Worker

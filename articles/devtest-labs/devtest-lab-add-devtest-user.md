@@ -1,25 +1,14 @@
 ---
 title: Přidat vlastníky a uživatele v Azure DevTest Labs | Microsoft Docs
 description: Přidání vlastníků a uživatelů v Azure DevTest Labs pomocí Azure Portal nebo PowerShellu
-services: devtest-lab,virtual-machines
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.assetid: 4f51d9a5-2702-45f0-a2d5-a3635b58c416
-ms.service: devtest-lab
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 06/01/2018
-ms.author: spelluru
-ms.openlocfilehash: a9426c20ae23fd3dad4cdba25590ff2eac271896
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 180c46480d099de4537216a59f0a2b9ab13d5d40
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84895581"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85481319"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Přidat vlastníky a uživatele v Azure DevTest Labs
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
@@ -40,19 +29,19 @@ Následující tabulka ilustruje akce, které mohou provádět uživatelé v ka�
 | **Akce, které mohou uživatelé v této roli provádět** | **Uživatel DevTest Labs** | **Vlastník** | **Přispěvatel** |
 | --- | --- | --- | --- |
 | **Úlohy testovacího prostředí** | | | |
-| Přidání uživatelů do testovacího prostředí |Ne |Ano |Ne |
-| Aktualizovat nastavení nákladů |Ne |Ano |Ano |
+| Přidání uživatelů do testovacího prostředí |No |Yes |Ne |
+| Aktualizovat nastavení nákladů |No |Ano |Ano |
 | **Základní úlohy virtuálních počítačů** | | | |
-| Přidání a odebrání vlastních imagí |Ne |Ano |Ano |
+| Přidání a odebrání vlastních imagí |No |Ano |Ano |
 | Přidávání, aktualizace a odstraňování vzorců |Ano |Ano |Ano |
-| Seznam povolených Azure Marketplace imagí |Ne |Ano |Ano |
+| Seznam povolených Azure Marketplace imagí |No |Ano |Ano |
 | **Úlohy virtuálních počítačů** | | | |
 | Vytvoření virtuálních počítačů |Ano |Ano |Ano |
 | Spuštění, zastavení a odstranění virtuálních počítačů |Jenom virtuální počítače vytvořené uživatelem |Ano |Ano |
-| Aktualizace zásad virtuálních počítačů |Ne |Ano |Ano |
+| Aktualizace zásad virtuálních počítačů |No |Ano |Ano |
 | Přidání/odebrání datových disků do/z virtuálních počítačů |Jenom virtuální počítače vytvořené uživatelem |Ano |Ano |
 | **Úlohy artefaktů** | | | |
-| Přidání a odebrání úložišť artefaktů |Ne |Ano |Ano |
+| Přidání a odebrání úložišť artefaktů |No |Ano |Ano |
 | Použít artefakty |Ano |Ano |Ano |
 
 > [!NOTE]

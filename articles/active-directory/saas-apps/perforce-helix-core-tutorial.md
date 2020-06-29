@@ -12,17 +12,17 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 06/15/2020
+ms.date: 06/23/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ea6531d85670301691e4aa88503d7eee4fb16d9
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.openlocfilehash: 6742b1466ed5055e3906adc96cfe346b7f46be9c
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84905473"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482628"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-perforce-helix-core--helix-authentication-service"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s Perforce Helix Core-Helix Authentication Service
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-perforce-helix-core---helix-authentication-service"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s Perforce Helix Core-Helix Authentication Service
 
 V tomto kurzu se dozvíte, jak integrovat službu Perforce Helix Core-Helix Authentication pomocí Azure Active Directory (Azure AD). Když integrujete službu Perforce Helix Core-Helix Authentication ve službě Azure AD, můžete:
 
@@ -46,7 +46,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 * Perforce Helix Core – služba Helix Authentication Service podporuje jednotné přihlašování na základě služby **SP**
 * Jakmile nakonfigurujete službu Perforce Helix Core-Helix Authentication, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-## <a name="adding-perforce-helix-core--helix-authentication-service-from-the-gallery"></a>Přidání ověřovací služby Perforce Helix Core-Helix z Galerie
+## <a name="adding-perforce-helix-core---helix-authentication-service-from-the-gallery"></a>Přidání ověřovací služby Perforce Helix Core-Helix z Galerie
 
 Pokud chcete nakonfigurovat integraci Perforce Helix Core-Helix Authentication Service do Azure AD, musíte do seznamu spravovaných aplikací Helix přidat Perforce Helix Core-SaaS Authentication Service z galerie.
 
@@ -57,7 +57,7 @@ Pokud chcete nakonfigurovat integraci Perforce Helix Core-Helix Authentication S
 1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **Perforce Helix Core-Helix Authentication Service** .
 1. Z panelu výsledků vyberte **Perforce Helix Core-Helix Authentication Service** a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-perforce-helix-core--helix-authentication-service"></a>Konfigurace a testování jednotného přihlašování Azure AD pro Perforce Helix Core-Helix Authentication Service
+## <a name="configure-and-test-azure-ad-single-sign-on-for-perforce-helix-core---helix-authentication-service"></a>Konfigurace a testování jednotného přihlašování Azure AD pro Perforce Helix Core-Helix Authentication Service
 
 Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí služby Perforce Helix Core-Helix Authentication pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, musíte vytvořit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Perforce Helix Core-Helix Authentication.
 
@@ -66,8 +66,8 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
     1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
     1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
-1. **[Konfigurace Perforce Helix Core-Helix Authentication Service SSO](#configure-perforce-helix-core--helix-authentication-service-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace
-    1. **[Vytvořit testovacího uživatele Perforce Helix Core-Helix Authentication Service](#create-perforce-helix-core--helix-authentication-service-test-user)** – Pokud chcete mít protějšek B. Simon v Perforce ověřování Core-Helix Authentication Service, která je propojená s reprezentací uživatele Azure AD.
+1. **[Konfigurace Perforce Helix Core-Helix Authentication Service SSO](#configure-perforce-helix-core---helix-authentication-service-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace
+    1. **[Vytvořit testovacího uživatele Perforce Helix Core-Helix Authentication Service](#create-perforce-helix-core---helix-authentication-service-test-user)** – Pokud chcete mít protějšek B. Simon v Perforce ověřování Core-Helix Authentication Service, která je propojená s reprezentací uživatele Azure AD.
 1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
@@ -125,11 +125,11 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-## <a name="configure-perforce-helix-core--helix-authentication-service-sso"></a>Konfigurace Perforce Helix Core – Helix Authentication Service pro jednotné přihlašování
+## <a name="configure-perforce-helix-core---helix-authentication-service-sso"></a>Konfigurace Perforce Helix Core – Helix Authentication Service pro jednotné přihlašování
 
 Pokud chcete nakonfigurovat jednotné přihlašování na straně **služby Perforce Helix Core-Helix Authentication** , musíte poslat **adresu URL federačních metadat aplikace** na [Perforce Helix pro tým podpory ověřování Core-Helix](mailto:support@perforce.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
-### <a name="create-perforce-helix-core--helix-authentication-service-test-user"></a>Vytvořit testovacího uživatele Perforce Helix Core-Helix Authentication Service
+### <a name="create-perforce-helix-core---helix-authentication-service-test-user"></a>Vytvořit testovacího uživatele Perforce Helix Core-Helix Authentication Service
 
 V této části vytvoříte uživatele s názvem Britta Simon v Perforce Helix Core-Helix Authentication Service. Pracujte s [Perforce Helix Core-Helix Authentication Service](mailto:support@perforce.com) a přidejte uživatele do platformy Perforce Helix Core-Helix Authentication Service. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 

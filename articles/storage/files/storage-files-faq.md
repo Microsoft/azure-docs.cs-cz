@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 2111ccd65a2944ec5f5ea0526e6e7f577261b213
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.openlocfilehash: 87c1aa4d65b313f4c068ef11c9d2209e9318ef02
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84906815"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482866"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Nejčastější dotazy ke službě Azure Files
 [Soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes standardní [protokol SMB (Server Message Block)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sdílené složky Azure můžete připojit souběžně na cloudové nebo místní nasazení systémů Windows, Linux a macOS. Sdílené složky Azure můžete také ukládat do mezipaměti na počítačích s Windows serverem pomocí Azure File Sync pro rychlý přístup blízko místa, kde se data používají.
@@ -155,11 +155,11 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
     [!INCLUDE [storage-sync-files-remove-server-endpoint](../../../includes/storage-sync-files-remove-server-endpoint.md)]
     
 * <a id="afs-resource-move"></a>
-  **Můžu přesunout službu synchronizace úložiště nebo účet úložiště do jiné skupiny prostředků nebo předplatného?**  
-   Ano, služba synchronizace úložiště nebo účet úložiště se můžou přesunout do jiné skupiny prostředků nebo předplatného v rámci stávajícího tenanta Azure AD. Pokud je účet úložiště přesunutý, musíte mu udělit přístup ke službě hybridní Synchronizace souborů k účtu úložiště (podívejte se, [jestli má Azure File Sync přístup k účtu úložiště](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)).
+  **Můžu přesunout službu synchronizace úložiště nebo účet úložiště do jiné skupiny prostředků, předplatného nebo tenanta Azure AD?**  
+   Ano, služba synchronizace úložiště nebo účet úložiště se dají přesunout do jiné skupiny prostředků, předplatného nebo tenanta Azure AD. Po přesunu služby synchronizace úložiště nebo účtu úložiště musíte aplikaci Microsoft. StorageSync udělit přístup k účtu úložiště ( [Zkontrolujte, jestli Azure File Sync má přístup k účtu úložiště](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)).
 
     > [!Note]  
-    > Azure File Sync nepodporuje přesun předplatného na jiného tenanta Azure AD.
+    > Při vytváření koncového bodu cloudu musí být služba synchronizace úložiště a účet úložiště ve stejném tenantovi Azure AD. Po vytvoření koncového bodu cloudu se služba synchronizace úložiště a účet úložiště můžou přesunout do různých tenantů Azure AD.
     
 * <a id="afs-ntfs-acls"></a>
   **Zachovávají Azure File Sync seznamy ACL na úrovni adresářů nebo souborů společně s daty uloženými ve službě soubory Azure?**

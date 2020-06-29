@@ -1,25 +1,14 @@
 ---
 title: Vytvoření vlastních artefaktů pro virtuální počítač s DevTest Labs | Microsoft Docs
 description: Naučte se vytvářet vlastní artefakty pro použití s Azure DevTest Labs.
-services: devtest-lab,virtual-machines
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.assetid: 32dcdc61-ec23-4a01-b731-78c029ea5316
-ms.service: devtest-lab
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 05/30/2019
-ms.author: spelluru
-ms.openlocfilehash: 69b83590fb9b25c68d231b732b985ba633bb6884
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: f33b6da3354dc3caf9376f249b802d324aa3148c
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84896596"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482951"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>Vytvoření vlastních artefaktů pro virtuální počítač s DevTest Labs
 
@@ -53,7 +42,7 @@ Následující příklad ukazuje oddíly, které tvoří základní strukturu de
       }
     }
 
-| Název elementu | Povinné? | Description |
+| Název elementu | Povinné? | Popis |
 | --- | --- | --- |
 | $schema |No |Umístění souboru schématu JSON. Soubor schématu JSON vám může přispět k otestování platnosti definičního souboru. |
 | title |Yes |Název artefaktu zobrazeného v testovacím prostředí |
@@ -76,7 +65,7 @@ Chcete-li definovat parametry, použijte následující strukturu:
       }
     }
 
-| Název elementu | Povinné? | Description |
+| Název elementu | Povinné? | Popis |
 | --- | --- | --- |
 | typ |Yes |Typ hodnoty parametru Seznam povolených typů najdete v následujícím seznamu. |
 | displayName |Yes |Název parametru, který se zobrazí uživateli v testovacím prostředí. |

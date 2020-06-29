@@ -1,5 +1,5 @@
 ---
-title: Dotazování souborů úložiště pomocí SQL na vyžádání (Preview) v synapse SQL
+title: Přístup k souborům v úložišti pomocí SQL na vyžádání (Preview) v rámci synapse SQL
 description: Popisuje dotazování souborů úložiště pomocí prostředků SQL na vyžádání (ve verzi Preview) v rámci synapse SQL.
 services: synapse-analytics
 author: azaricstefan
@@ -9,220 +9,172 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: bfea79fe232fbb6f1b39c03a5cc8e9fe06bee867
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 4b6331977cc2237801b84647e4edeb5d789cb9e8
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85204935"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482458"
 ---
-# <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>Dotazování souborů úložiště pomocí prostředků SQL na vyžádání (ve verzi Preview) v synapse SQL
+# <a name="accessing-external-storage-in-synapse-sql"></a>Přístup k externímu úložišti v synapse SQL
 
-SQL na vyžádání (Preview) umožňuje dotazovat data v Data Lake. Nabízí oblast dotazu T-SQL, která se vejde na částečně strukturované a nestrukturované datové dotazy.
+Tento dokument popisuje, jak může uživatel číst data ze souborů uložených na Azure Storage v synapse SQL (na vyžádání a ve fondu). Uživatelé mají k dispozici následující možnosti pro přístup k úložišti:
 
-Pro dotazování jsou podporovány následující aspekty T-SQL:
+- Funkce [OpenRowset](develop-openrowset.md) , která umožňuje provádět dotazy ad-hoc přes soubory v Azure Storage.
+- [Externí tabulka](develop-tables-external-tables.md) , která je předdefinovanou datovou strukturou založenou na sadě externích souborů.
 
-- Celý [Výběr](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) oblasti plochy, včetně většiny funkcí SQL, operátorů a tak dále.
-- Možnost vytvořit externí tabulku jako SELECT ([CETAS](develop-tables-cetas.md)) vytvoří [externí tabulku](develop-tables-external-tables.md) a potom exportuje paralelně výsledky příkazu SELECT jazyka Transact-SQL pro Azure Storage.
+Uživatel může použít [jiné metody ověřování](develop-storage-files-storage-access-control.md) , jako je například ověřování předávacího služby Azure AD (výchozí pro objekty zabezpečení Azure AD) a ověřování SAS (výchozí pro objekty zabezpečení SQL).
 
-Další informace o tom, co je vs. v současné době není podporováno, najdete v článku [Přehled SQL na vyžádání](on-demand-workspace-overview.md) .
+## <a name="openrowset"></a>OPENROWSET
 
-Když uživatelé Azure AD spouštějí dotazy, výchozí hodnota je pro účty úložiště, pro které se má přístup provést pomocí předávacího ověřovacího protokolu Azure AD. V takovém případě budou uživatelé zosobněni a oprávnění zkontrolována na úrovni úložiště. Přístup k [úložišti můžete řídit](develop-storage-files-storage-access-control.md) podle svých potřeb.
+Funkce [OpenRowset](develop-openrowset.md) umožňuje uživateli číst soubory z úložiště Azure.
 
-## <a name="extensions"></a>Rozšíření
+### <a name="query-files-using-openrowset"></a>Dotazování souborů pomocí OPENROWSET
 
-Za účelem podpory hladkého prostředí pro účely dotazování na data umístěná v Azure Storage soubory používá SQL na vyžádání funkci [OpenRowset](develop-openrowset.md) s dalšími možnostmi:
+OPENROWSET umožňuje uživatelům dotazovat se na externí soubory ve službě Azure Storage, pokud mají přístup k úložišti. Uživatel, který je připojený k Synapsemu koncovému bodu SQL na vyžádání, by měl použít následující dotaz ke čtení obsahu souborů v Azure Storage:
 
-- [Dotazování na více souborů nebo složek](#query-multiple-files-or-folders)
-- [Formát souboru PARQUET](#parquet-file-format)
-- [Další možnosti pro práci s odděleným textem (ukončovací znak pole, ukončovací znak řádku, řídicí znak)](#additional-options-for-working-with-delimited-text)
-- [Čtení zvolené podmnožiny sloupců](#read-a-chosen-subset-of-columns)
-- [Odvození schématu](#schema-inference)
-- [filename – funkce](#filename-function)
-- [FilePath – funkce](#filepath-function)
-- [Práce se složitými typy a vnořenými nebo opakovanými datovými strukturami](#work-with-complex-types-and-nested-or-repeated-data-structures)
-
-### <a name="query-multiple-files-or-folders"></a>Dotazování na více souborů nebo složek
-
-Chcete-li spustit dotaz T-SQL nad sadou souborů v rámci složky nebo sady složek při jejich zpracování jako jednu entitu nebo sadu řádků, zadejte cestu ke složce nebo vzoru (pomocí zástupných znaků) prostřednictvím sady souborů nebo složek.
-
-Platí následující pravidla:
-
-- Vzory se můžou objevit buď v rámci cesty k adresáři, nebo v názvu souboru.
-- V jednom kroku adresáře nebo názvu souboru se může zobrazit několik vzorů.
-- Pokud je k dispozici více zástupných znaků, budou do výsledné sady souborů zahrnuty soubory v rámci všech vyhovujících cest.
-
-```
-N'https://myaccount.blob.core.windows.net/myroot/*/mysubfolder/*.csv'
+```sql
+SELECT * FROM
+ OPENROWSET(BULK 'http://storage...com/container/file/path/*.csv', format= 'parquet') as rows
 ```
 
-Příklady použití najdete v tématu [složky dotazů a více souborů](query-folders-multiple-csv-files.md) .
+Uživatel může získat přístup k úložišti pomocí následujících pravidel přístupu:
 
-### <a name="parquet-file-format"></a>Formát souboru PARQUET
+- Uživatel Azure AD – OPENROWSET bude používat identitu Azure AD volajícího pro přístup k Azure Storage nebo přístupu k úložišti s anonymním přístupem.
+- Uživatel SQL – OPENROWSET bude mít přístup k úložišti s anonymním přístupem.
 
-K dotazování na zdrojová data Parquet použijte FORMAT = ' PARQUET '.
+Objekty zabezpečení SQL mohou také použít OPENROWSET k přímému dotazování na soubory chráněné pomocí tokenů SAS nebo spravované identity pracovního prostoru. Pokud uživatel SQL tuto funkci spustí, musí mít oprávnění skupiny Power Users se změnou libovolného pověření vytvořit přihlašovací údaje v rozsahu serveru, které odpovídají adrese URL ve funkci (pomocí názvu a kontejneru úložiště) a oprávnění udělených referencí pro toto přihlašovací údaje volajícímu funkce OPENROWSET:
 
-```syntaxsql
-OPENROWSET
-(
-    { BULK 'data_file' ,
-    { FORMATFILE = 'format_file_path' [ <bulk_options>] } }
-)
-AS table_alias(column_alias,...n)
-<bulk_options> ::=
-...
-[ , FORMAT = {'CSV' | 'PARQUET'} ]
+```sql
+EXECUTE AS somepoweruser
+
+CREATE CREDENTIAL [http://storage.dfs.com/container]
+ WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'sas token';
+
+GRANT REFERENCES CREDENTIAL::[http://storage.dfs.com/container] TO sqluser
 ```
 
-Příklady použití najdete v článku o [souborech dotazů Parquet](query-parquet-files.md) .
-
-### <a name="additional-options-for-working-with-delimited-text"></a>Další možnosti pro práci s odděleným textem
-
-Tyto další parametry jsou představené pro práci se soubory CSV (s oddělovači textu):
-
-```syntaxsql
-<bulk_options> ::=
-...
-[ , FIELDTERMINATOR = 'char' ]
-[ , ROWTERMINATOR = 'char' ]
-[ , ESCAPE_CHAR = 'char' ]
-...
-```
-
-- ESCAPE_CHAR = char určuje znak v souboru, který se používá k zaznamenání samotného řídicího panelu a všech hodnot oddělovače v souboru. Je-li řídicí znak následován buď jinou hodnotou než samotná, nebo jakoukoli hodnotou oddělovače, je řídicí znak při čtení hodnoty vynechán.
-Parametr ESCAPE_CHAR bude použit bez ohledu na to, jestli je FIELDQUOTE nebo není povolený. Nepoužije se k řídicímu znaku pro uvozovky. Znak Quota musí být uvozen jiným znakem pro quotování. Znak quotace se může objevit v rámci hodnoty sloupce jenom v případě, že je hodnota zapouzdřená pomocí znaků quote.
-- FIELDTERMINATOR = ' field_terminator ' Určuje ukončovací znak pole, který se má použít. Výchozí ukončovací znak pole je čárka (**,**).
-- ROWTERMINATOR = ' row_terminator ' Určuje ukončovací znak řádku, který má být použit. Výchozí ukončovací znak řádku je znak nového řádku: **\r\n**.
-
-### <a name="read-a-chosen-subset-of-columns"></a>Čtení zvolené podmnožiny sloupců
-
-Chcete-li určit sloupce, které chcete číst, můžete zadat volitelnou klauzuli WITH v rámci příkazu OPENROWSET.
-
-- Pokud jsou k dispozici datové soubory CSV, pro čtení všech sloupců zadejte názvy sloupců a jejich datové typy. Pokud chcete podmnožinu sloupců, použijte řadové číslovky a vyberte sloupce z původních datových souborů podle pořadového čísla. Sloupce budou vázány podle ordinálního označení.
-- Pokud jsou k dispozici datové soubory Parquet, zadejte názvy sloupců, které odpovídají názvům sloupců v původních datových souborech. Sloupce budou vázány podle názvu.
-
-```syntaxsql
-OPENROWSET
-...
-| BULK 'data_file',
-{ FORMATFILE = 'format_file_path' [ <bulk_options>] } }
-) AS table_alias(column_alias,...n) | WITH ( {'column_name' 'column_type' [ 'column_ordinal'] })
-```
-
-Ukázky najdete v tématu [čtení souborů CSV bez zadání všech sloupců](query-single-csv-file.md#returning-subset-of-columns).
-
-### <a name="schema-inference"></a>Odvození schématu
-
-Vyvoláním klauzule WITH z příkazu OPENROWSET můžete dát službě pokyn k automatickému zjištění (odvodit) schématu ze základních souborů.
+Pokud není k dispozici žádné přihlašovací údaje na úrovni serveru, které by odpovídaly adrese URL nebo uživatel SQL nemá oprávnění pro přístup k tomuto pověření, bude vrácena chyba. Objekty zabezpečení SQL se nemůžou zosobnit pomocí nějaké identity Azure AD.
 
 > [!NOTE]
-> Tato funkce aktuálně funguje pouze pro formát souboru PARQUET.
+> Tato verze OPENROWSET je navržená pro rychlé a snadné zkoumání dat pomocí výchozího ověřování. Chcete-li využít zosobnění nebo spravovanou identitu, použijte OPENROWSET se zdrojem dat popsaným v následující části.
+
+### <a name="querying-data-sources-using-openrowset"></a>Dotazování na zdroje dat pomocí OPENROWSET
+
+OPENROWSET umožňuje uživateli zadat dotaz na soubory umístěné na některém externím zdroji dat:
 
 ```sql
-OPENROWSET(
-BULK N'path_to_file(s)', FORMAT='PARQUET');
+SELECT * FROM
+ OPENROWSET(BULK 'file/path/*.csv',
+ DATASOURCE = MyAzureInvoices,
+ FORMAT= 'csv') as rows
 ```
 
-Zajistěte, aby se pro optimální výkon používaly [příslušné odvozené datové typy](best-practices-sql-on-demand.md#check-inferred-data-types) . 
-
-### <a name="filename-function"></a>Filename – funkce
-
-Tato funkce vrátí název souboru, ze kterého pochází řádek. 
-
-Pokud chcete zadat dotaz na konkrétní soubory, přečtěte si oddíl filename v článku věnovaném [dotazům pro konkrétní soubory](query-specific-files.md#filename) .
-
-Návratový typ dat je nvarchar (1024). Pro zajištění optimálního výkonu vždy přetypování výsledku funkce filename na vhodný datový typ. Použijete-li datový typ znaků, ujistěte se, že je použita odpovídající délka.
-
-### <a name="filepath-function"></a>FilePath – funkce
-
-Tato funkce vrací úplnou cestu nebo část cesty:
-
-- Při volání bez parametru vrátí úplnou cestu k souboru, ze které řádek pochází.
-- Při volání s parametrem vrátí část cesty, která odpovídá zástupnému znaku na pozici zadané v parametru. Například hodnota parametru 1 vrátí část cesty, která odpovídá prvnímu zástupnému znaku.
-
-Další informace najdete v části FilePath v článku věnovaném [dotazům pro konkrétní soubory](query-specific-files.md#filepath) .
-
-Návratový typ dat je nvarchar (1024). Pro zajištění optimálního výkonu vždy přetypování výsledku funkce FilePath na vhodný datový typ. Použijete-li datový typ znaků, ujistěte se, že je použita odpovídající délka.
-
-### <a name="work-with-complex-types-and-nested-or-repeated-data-structures"></a>Práce se složitými typy a vnořenými nebo opakovanými datovými strukturami
-
-Aby bylo možné zajistit hladké prostředí při práci s daty uloženými ve vnořených nebo opakovaných datových typech, jako jsou například soubory [Parquet](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#nested-types) , přidají se na vyžádání SQL na vyžádání rozšíření níže.
-
-#### <a name="project-nested-or-repeated-data"></a>Vnořená nebo opakující se data projektu
-
-Chcete-li data projektu, spusťte příkaz SELECT v souboru Parquet, který obsahuje sloupce vnořených datových typů. Ve výstupu budou vnořené hodnoty serializovány do formátu JSON a vráceny jako datový typ varchar (8000) SQL.
+Uživatel s oprávněním k řízení databáze by musel vytvořit pověření s ROZSAHem databáze, která budou použita pro přístup k úložišti a EXTERNÍmu zdroji dat, který určuje adresu URL zdroje dat a přihlašovacích údajů, které by měly být použity:
 
 ```sql
-    SELECT * FROM
-    OPENROWSET
-    (   BULK 'unstructured_data_path' ,
-        FORMAT = 'PARQUET' )
-    [AS alias]
+CREATE DATABASE SCOPED CREDENTIAL AccessAzureInvoices
+ WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
+ SECRET = '******srt=sco&amp;sp=rwac&amp;se=2017-02-01T00:55:34Z&amp;st=201********' ;
+
+CREATE EXTERNAL DATA SOURCE MyAzureInvoices
+ WITH ( LOCATION = 'https://newinvoices.blob.core.windows.net/week3' ,
+ CREDENTIAL = AccessAzureInvoices) ;
 ```
 
-Podrobnější informace najdete v části vnořený nebo opakovaná data v článku věnovaném [dotazům Parquet nesteded Types](query-parquet-nested-types.md#project-nested-or-repeated-data) .
+POVĚŘENÍ v oboru databáze určuje, jak přistupovat k souborům na odkazovaném zdroji dat (aktuálně SAS a spravovanou identitu).
 
-#### <a name="access-elements-from-nested-columns"></a>Přístup k prvkům z vnořených sloupců
+Volající musí mít jedno z následujících oprávnění ke spuštění funkce OPENROWSET:
 
-Pro přístup k vnořeným prvkům z vnořeného sloupce, jako je například struktura, použijte tečkovou notaci k zřetězení názvů polí do cesty. Zadejte cestu jako column_name v klauzuli WITH funkce OPENROWSET.
+- Jedno z oprávnění ke spuštění OPENROWSET:
+  - Správa HROMADných operací umožňuje přihlášení ke spuštění funkce OPENROWSET.
+  - Možnost spravovat HROMADnou operaci databáze umožňuje, aby uživatel s oborem databáze spustil funkci OPENROWSET.
+- ODKAZUJE na přihlašovací údaje VYMEZENé databáze na přihlašovací údaje, na které se odkazuje v EXTERNÍm zdroji dat.
 
-Příklad fragmentu syntaxe je následující:
+#### <a name="accessing-anonymous-data-sources"></a>Přístup k anonymním zdrojům dat
 
-```syntaxsql
-    OPENROWSET
-    (   BULK 'unstructured_data_path' ,
-        FORMAT = 'PARQUET' )
-    WITH ({'column_name' 'column_type',})
-    [AS alias]
-    'column_name' ::= '[field_name.] field_name'
+Uživatel může vytvořit externí zdroj dat bez PŘIHLAŠOVACÍch údajů, který bude odkazovat na úložiště veřejného přístupu nebo používat předávací ověřování Azure AD:
+
+```sql
+CREATE EXTERNAL DATA SOURCE MyAzureInvoices
+ WITH ( LOCATION = 'https://newinvoices.blob.core.windows.net/week3') ;
 ```
 
-Ve výchozím nastavení funkce OPENROWSET odpovídá názvu a cestě zdrojového pole s názvy sloupců, které jsou zadány v klauzuli WITH. Prvky obsažené v různých úrovních vnoření v rámci stejného zdrojového souboru Parquet lze použít prostřednictvím klauzule WITH.
+## <a name="external-table"></a>EXTERNÍ TABULKA
 
-**Vrácené hodnoty**
+Uživatel s oprávněními ke čtení tabulky může získat přístup k externím souborům pomocí externí tabulky vytvořené na základě sady Azure Storage složek a souborů.
 
-- Funkce vrací skalární hodnotu, například int, Decimal, a varchar, ze zadaného elementu a v zadané cestě pro všechny typy Parquet, které nejsou ve skupině vnořeného typu.
-- Pokud cesta odkazuje na element, který je vnořeného typu, funkce vrátí fragment JSON od horního prvku na zadané cestě. Fragment kódu JSON je typu varchar (8000).
-- Pokud vlastnost nebyla nalezena v zadaném column_name, funkce vrátí chybu.
-- Pokud vlastnost nelze nalézt v zadaném column_path v závislosti na [režimu cesty](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#PATHMODE), funkce vrátí chybu v režimu Strict nebo null v režimu Lax.
+Uživatel, který má [oprávnění k vytvoření externí tabulky](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql?view=sql-server-ver15#permissions) (například CREATE TABLE a změnu PŘIHLAŠOVACÍch údajů s rozsahem databáze), může pomocí následujícího skriptu vytvořit tabulku nad Azure Storage zdroj dat:
 
-V případě ukázek dotazů si přečtěte část přístupové prvky z vnořených sloupců v článku [dotaz Parquet nesteded Types](query-parquet-nested-types.md#access-elements-from-nested-columns) .
-
-#### <a name="access-elements-from-repeated-columns"></a>Přístup k prvkům z opakujících se sloupců
-
-Chcete-li získat přístup k prvkům z opakujícího se sloupce, jako je například prvek pole nebo mapa, použijte funkci [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) pro každý skalární prvek, který potřebujete k projektu a poskytnout:
-
-- Vnořený nebo opakovaný sloupec jako první parametr
-- [Cesta JSON](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) , která určuje element nebo vlastnost, pro kterou má být přístup, jako druhý parametr
-
-Chcete-li získat přístup k neskalárním prvkům z opakujícího se sloupce, použijte funkci [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) pro každý neskalární prvek, který potřebujete k projektu a poskytnout:
-
-- Vnořený nebo opakovaný sloupec jako první parametr
-- [Cesta JSON](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) , která určuje element nebo vlastnost, pro kterou má být přístup, jako druhý parametr
-
-Viz fragment syntaxe níže:
-
-```syntaxsql
-    SELECT
-       { JSON_VALUE (column_name, path_to_sub_element), }
-       { JSON_QUERY (column_name [ , path_to_sub_element ]), )
-    FROM
-    OPENROWSET
-    (   BULK 'unstructured_data_path' ,
-        FORMAT = 'PARQUET' )
-    [AS alias]
+```sql
+CREATE EXTERNAL TABLE [dbo].[DimProductexternal]
+( ProductKey int, ProductLabel nvarchar, ProductName nvarchar )
+WITH
+(
+LOCATION='/DimProduct/year=*/month=*' ,
+DATA_SOURCE = AzureDataLakeStore ,
+FILE_FORMAT = TextFileFormat
+) ;
 ```
 
-Můžete najít Ukázky dotazů pro přístup k elementům z opakujících se sloupců v článku [dotaz Parquet nesteded Types](query-parquet-nested-types.md#access-elements-from-repeated-columns) .
+Uživatel s oprávněním řídicí databáze by musel vytvořit pověření v oboru databáze, které bude použito pro přístup k úložišti a EXTERNÍmu zdroji dat, který určuje adresu URL zdroje dat a přihlašovacích údajů, které by měly být použity:
+
+```sql
+CREATE DATABASE SCOPED CREDENTIAL cred
+ WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
+ SECRET = '******srt=sco&sp=rwac&se=2017-02-01T00:55:34Z&st=201********' ;
+
+CREATE EXTERNAL DATA SOURCE AzureDataLakeStore
+ WITH ( LOCATION = 'https://samples.blob.core.windows.net/products' ,
+ CREDENTIAL = cred
+ ) ;
+```
+
+POVĚŘENÍ oboru databáze určuje, jak přistupovat k souborům na odkazovaném zdroji dat.
+
+### <a name="reading-external-files-with-external-table"></a>Čtení externích souborů s externí TABULKou
+
+EXTERNÍ tabulka umožňuje číst data ze souborů, na které se odkazuje přes zdroj dat pomocí standardního příkazu SELECT jazyka SQL:
+
+```sql
+SELECT *
+FROM dbo.DimProductsExternal
+```
+
+Volající musí mít následující oprávnění pro čtení dat:
+- VYBRAT oprávnění pro externí tabulku
+- ODKAZUJE na přihlašovací údaje v oboru databáze, pokud má zdroj dat přihlašovací údaje.
+
+## <a name="permissions"></a>Oprávnění
+
+V následující tabulce jsou uvedena požadovaná oprávnění pro výše uvedené operace.
+
+| Dotaz | Požadovaná oprávnění|
+| --- | --- |
+| OPENROWSET (BULK) bez DataSource | Správa přihlašování SQL HROMADných SPRÁVCů musí mít odkazy na přihlašovací údaje:: \<URL> pro úložiště chráněné přes SAS. |
+| OPENROWSET (hromadné) se zdrojem dat bez přihlašovacích údajů | SPRÁVA HROMADNÝCH SPRÁVCŮ |
+| OPENROWSET (hromadné) se zdrojem dat s přihlašovacími údaji | SPRÁVA HROMADNÝCH PŘIHLAŠOVACÍCH ÚDAJŮ S ROZSAHEM DATABÁZE PRO HROMADNÉ SPRÁVCE |
+| VYTVOŘIT EXTERNÍ ZDROJ DAT | ZMĚNA VŠECH EXTERNÍCH ZDROJŮ DAT ODKAZUJE NA PŘIHLAŠOVACÍ ÚDAJE V OBORU DATABÁZE. |
+| VYTVOŘIT EXTERNÍ TABULKU | CREATE TABLE, ZMĚŇTE LIBOVOLNÉ SCHÉMA, ZMĚŇTE LIBOVOLNÝ EXTERNÍ FORMÁT SOUBORU A ZMĚŇTE LIBOVOLNÝ EXTERNÍ ZDROJ DAT. |
+| VYBRAT Z EXTERNÍ TABULKY | VYBRAT TABULKU |
+| CETAS | Pokud chcete vytvořit tabulku – CREATE TABLE změnit libovolné schéma, změňte libovolný zdroj dat a změňte libovolný externí formát souboru. Čtení dat: HROMADná operace Správce + odkazuje na přihlašovací údaje nebo výběr tabulky pro jednotlivé tabulky, zobrazení a funkce v dotazech + R/W oprávnění k úložišti. |
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o tom, jak zadávat dotazy na různé typy souborů a vytvářet a používat zobrazení, najdete v následujících článcích:
+Nyní jste připraveni pokračovat s následujícím článkem:
 
-- [Dotaz na jeden soubor CSV](query-single-csv-file.md)
+- [Dotazování dat v úložišti](query-data-storage.md)
+
+- [Dotazování souboru CSV](query-single-csv-file.md)
+
+- [Dotazování složek a několika souborů](query-folders-multiple-csv-files.md)
+
+- [Dotazování konkrétních souborů](query-specific-files.md)
+
 - [Dotazování souborů Parquet](query-parquet-files.md)
+
+- [Vnořené typy dotazů](query-parquet-nested-types.md)
+
 - [Dotazování souborů JSON](query-json-files.md)
-- [Dotazování vnořených typů Parquet](query-parquet-nested-types.md)
-- [Složky dotazů a více souborů CSV](query-folders-multiple-csv-files.md)
-- [Použití metadat souboru v dotazech](query-specific-files.md)
+
 - [Vytváření a používání zobrazení](create-use-views.md)

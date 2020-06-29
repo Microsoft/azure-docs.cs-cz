@@ -1,23 +1,14 @@
 ---
 title: Řešení potíží s artefakty v Azure DevTest Labs | Microsoft Docs
 description: Naučte se řešit problémy, ke kterým dochází při aplikování artefaktů ve Azure DevTest Labsm virtuálním počítači.
-services: devtest-lab
-documentationcenter: na
-author: spelluru
-editor: ''
-ms.service: devtest-lab
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 12/03/2019
-ms.author: spelluru
-ms.openlocfilehash: 8da33f5a553b4a671d9d7b9b223f77b301b8440b
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: a89b675a1b3bf134b98e09c7278f0eccb594c325
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84898693"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483189"
 ---
 # <a name="troubleshoot-issues-when-applying-artifacts-in-an-azure-devtest-labs-virtual-machine"></a>Řešení potíží při aplikování artefaktů ve Azure DevTest Labsm virtuálním počítači
 Použití artefaktů na virtuálním počítači může z různých důvodů selhat. Tento článek vás provede některými metodami, které vám pomůžou identifikovat možné příčiny.
@@ -67,7 +58,7 @@ Když se zdá, že artefakt přestane reagovat, nejprve určete, kde je zablokov
     - K protokolu aktivit můžete přistupovat z navigačního panelu stránky testovacího virtuálního počítače. Když vyberete tuto možnost, zobrazí se položka pro **aplikování artefaktů na virtuální počítač** (Pokud se operace použít artefakty aktivovala přímo) nebo **přidá nebo upraví virtuální počítače** (Pokud operace aplikování artefaktů byla součástí procesu vytváření virtuálního počítače).
     - Vyhledejte chyby pod těmito položkami. V některých případech se chyba nebude označit příznakem odpovídajícím způsobem a bude nutné prozkoumat každou položku.
     - Při zkoumání podrobností každého záznamu nezapomeňte zkontrolovat obsah datové části JSON. V dolní části dokumentu se může zobrazit chyba.
-- **Při pokusu o spuštění artefaktu**. Důvodem může být problémy se sítí nebo úložištěm. Podrobnosti najdete v příslušné části dále v tomto článku. Může k tomu také dojít z důvodu způsobu, jakým je skript vytvořen. Příklad:
+- **Při pokusu o spuštění artefaktu**. Důvodem může být problémy se sítí nebo úložištěm. Podrobnosti najdete v příslušné části dále v tomto článku. Může k tomu také dojít z důvodu způsobu, jakým je skript vytvořen. Například:
     - Skript PowerShellu má **povinné parametry**, ale jednomu z nich se nepovede zadat jeho hodnotu, buď proto, že uživateli povolíte jeho prázdné pole, nebo protože nemáte výchozí hodnotu pro vlastnost v artifactfile.jsv definičním souboru. Skript přestane reagovat, protože čeká na vstup uživatele.
     - Skript PowerShellu **vyžaduje vstup uživatele** jako součást provádění. Skripty musí být zapsány pro tichou práci bez nutnosti zásahu uživatele.
 - **Agent virtuálního počítače bude mít dobu potřebnou k přípravě**. Při prvním spuštění virtuálního počítače nebo při první instalaci rozšíření vlastních skriptů k obsluze žádosti o použití artefaktů může virtuální počítač vyžadovat buď upgrade agenta virtuálního počítače, nebo počkat na inicializaci agenta virtuálního počítače. Může se jednat o služby, na kterých agent virtuálního počítače závisí na tom, že se při inicializaci trvá dlouhou dobu. V takových případech najdete další informace o řešení potíží v tématu [Přehled agenta virtuálních počítačů Azure](../virtual-machines/extensions/agent-windows.md) .

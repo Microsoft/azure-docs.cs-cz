@@ -7,19 +7,19 @@ ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
-ms.date: 06/18/2020
-ms.openlocfilehash: 56af098050315e1b2cb0bdde531cc38452db4738
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.date: 06/25/2020
+ms.openlocfilehash: cd4128328ac0c3e9f03ecc80abb6e7b17537b2ee
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85079379"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483053"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Kurz: Konfigurace skupin dostupnosti pro SQL Server virtuálních počítačů s RHEL v Azure 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!NOTE]
-> V tomto kurzu používáme SQL Server 2017 s RHEL 7,6, ale ke konfiguraci vysoké dostupnosti je možné použít SQL Server 2019 v RHEL 7 nebo RHEL 8. Příkazy pro konfiguraci prostředků skupiny dostupnosti se v RHEL 8 změnily. Chcete-li získat další informace o správných příkazech, přečtěte si článek [vytvoření prostředku skupiny dostupnosti](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource) a prostředků RHEL 8.
+> V tomto kurzu používáme SQL Server 2017 s RHEL 7,6, ale ke konfiguraci vysoké dostupnosti je možné použít SQL Server 2019 v RHEL 7 nebo RHEL 8. Příkazy pro konfiguraci prostředků clusteru pacemake a skupin dostupnosti se změnily v RHEL 8 a pro další informace o správných příkazech se můžete podívat na článek [vytvoření prostředků skupiny dostupnosti](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource) a RHEL 8 prostředků.
 
 V tomto kurzu se naučíte:
 
@@ -103,32 +103,118 @@ Po dokončení příkazu byste měli získat následující výsledky:
 
     ```output
     [
-            {
-              "offer": "RHEL-HA",
-              "publisher": "RedHat",
-              "sku": "7.4",
-              "urn": "RedHat:RHEL-HA:7.4:7.4.2019062021",
-              "version": "7.4.2019062021"
-            },
-            {
-              "offer": "RHEL-HA",
-              "publisher": "RedHat",
-              "sku": "7.5",
-              "urn": "RedHat:RHEL-HA:7.5:7.5.2019062021",
-              "version": "7.5.2019062021"
-            },
-            {
-              "offer": "RHEL-HA",
-              "publisher": "RedHat",
-              "sku": "7.6",
-              "urn": "RedHat:RHEL-HA:7.6:7.6.2019062019",
-              "version": "7.6.2019062019"
-            }
+      {
+    "offer": "RHEL-HA",
+    "publisher": "RedHat",
+    "sku": "7.4",
+    "urn": "RedHat:RHEL-HA:7.4:7.4.2019062021",
+    "version": "7.4.2019062021"
+       },
+       {
+    "offer": "RHEL-HA",
+    "publisher": "RedHat",
+    "sku": "7.5",
+    "urn": "RedHat:RHEL-HA:7.5:7.5.2019062021",
+    "version": "7.5.2019062021"
+        },
+        {
+    "offer": "RHEL-HA",
+    "publisher": "RedHat",
+    "sku": "7.6",
+    "urn": "RedHat:RHEL-HA:7.6:7.6.2019062019",
+    "version": "7.6.2019062019"
+         },
+         {
+    "offer": "RHEL-HA",
+    "publisher": "RedHat",
+    "sku": "8.0",
+    "urn": "RedHat:RHEL-HA:8.0:8.0.2020021914",
+    "version": "8.0.2020021914"
+         },
+         {
+    "offer": "RHEL-HA",
+    "publisher": "RedHat",
+    "sku": "8.1",
+    "urn": "RedHat:RHEL-HA:8.1:8.1.2020021914",
+    "version": "8.1.2020021914"
+          },
+          {
+    "offer": "RHEL-HA",
+    "publisher": "RedHat",
+    "sku": "80-gen2",
+    "urn": "RedHat:RHEL-HA:80-gen2:8.0.2020021915",
+    "version": "8.0.2020021915"
+           },
+           {
+    "offer": "RHEL-HA",
+    "publisher": "RedHat",
+    "sku": "81_gen2",
+    "urn": "RedHat:RHEL-HA:81_gen2:8.1.2020021915",
+    "version": "8.1.2020021915"
+           }
     ]
     ```
 
-    Pro tento kurz si vybíráme obrázek `RedHat:RHEL-HA:7.6:7.6.2019062019` .
+    Pro tento kurz si vybíráme obrázek `RedHat:RHEL-HA:7.6:7.6.2019062019` pro příklad RHEL 7 a ZVOLÍTE `RedHat:RHEL-HA:8.1:8.1.2020021914` RHEL 8.
+    
+    Můžete také zvolit SQL Server 2019 předem nainstalované na obrázcích RHEL8-HA. Seznam těchto imagí získáte spuštěním následujícího příkazu:  
+    
+    ```azurecli-interactive
+    az vm image list --all --offer "sql2019-rhel8"
+    ```
 
+    Měly by se zobrazit následující výsledky:
+
+    ```output
+    [
+      {
+    "offer": "sql2019-rhel8",
+    "publisher": "MicrosoftSQLServer",
+    "sku": "enterprise",
+    "urn": "MicrosoftSQLServer:sql2019-rhel8:enterprise:15.0.200317",
+    "version": "15.0.200317"
+       },
+       }
+    "offer": "sql2019-rhel8",
+    "publisher": "MicrosoftSQLServer",
+    "sku": "enterprise",
+    "urn": "MicrosoftSQLServer:sql2019-rhel8:enterprise:15.0.200512",
+    "version": "15.0.200512"
+       },
+       {
+    "offer": "sql2019-rhel8",
+    "publisher": "MicrosoftSQLServer",
+    "sku": "sqldev",
+    "urn": "MicrosoftSQLServer:sql2019-rhel8:sqldev:15.0.200317",
+    "version": "15.0.200317"
+       },
+       {
+    "offer": "sql2019-rhel8",
+    "publisher": "MicrosoftSQLServer",
+    "sku": "sqldev",
+    "urn": "MicrosoftSQLServer:sql2019-rhel8:sqldev:15.0.200512",
+    "version": "15.0.200512"
+       },
+       {
+    "offer": "sql2019-rhel8",
+    "publisher": "MicrosoftSQLServer",
+    "sku": "standard",
+    "urn": "MicrosoftSQLServer:sql2019-rhel8:standard:15.0.200317",
+    "version": "15.0.200317"
+       },
+       {
+    "offer": "sql2019-rhel8",
+    "publisher": "MicrosoftSQLServer",
+    "sku": "standard",
+    "urn": "MicrosoftSQLServer:sql2019-rhel8:standard:15.0.200512",
+    "version": "15.0.200512"
+       }
+    ]
+    ```
+
+    Pokud k vytvoření virtuálních počítačů použijete jednu z výše uvedených imagí, má předinstalované SQL Server 2019. Přeskočte oddíl [Install SQL Server a MSSQL-Tools](#install-sql-server-and-mssql-tools) , jak je popsáno v tomto článku.
+    
+    
     > [!IMPORTANT]
     > Aby bylo možné nastavit skupinu dostupnosti, musí mít názvy počítačů méně než 15 znaků. Uživatelské jméno nemůže obsahovat velká písmena a hesla musí být delší než 12 znaků.
 
@@ -276,9 +362,22 @@ V této části povolíme a spustíte službu pcsd a potom nakonfigurujete clust
 
     - Při spuštění `pcs cluster auth` příkazu pro ověření uzlů clusteru se zobrazí výzva k zadání hesla. Zadejte heslo pro uživatele **hacluster** , který jste vytvořili dříve.
 
+    **RHEL7**
+
     ```bash
     sudo pcs cluster auth <VM1> <VM2> <VM3> -u hacluster
     sudo pcs cluster setup --name az-hacluster <VM1> <VM2> <VM3> --token 30000
+    sudo pcs cluster start --all
+    sudo pcs cluster enable --all
+    ```
+
+    **RHEL8**
+
+    Pro RHEL 8 budete muset uzly ověřovat samostatně. Po zobrazení výzvy zadejte do pole uživatelské jméno a heslo pro **hacluster** ručně.
+
+    ```bash
+    sudo pcs host auth <node1> <node2> <node3>
+    sudo pcs cluster setup <clusterName> <node1> <node2> <node3>
     sudo pcs cluster start --all
     sudo pcs cluster enable --all
     ```
@@ -289,6 +388,8 @@ V této části povolíme a spustíte službu pcsd a potom nakonfigurujete clust
     sudo pcs status
     ```
 
+   **RHEL 7** 
+   
     Pokud jsou všechny uzly online, zobrazí se výstup podobný následujícímu:
 
     ```output
@@ -315,7 +416,36 @@ V této části povolíme a spustíte službu pcsd a potom nakonfigurujete clust
           pacemaker: active/enabled
           pcsd: active/enabled
     ```
-
+   
+   **RHEL 8** 
+   
+    ```output
+    Cluster name: az-hacluster
+     
+    WARNINGS:
+    No stonith devices and stonith-enabled is not false
+     
+    Cluster Summary:
+    * Stack: corosync
+    * Current DC: <VM2> (version 1.1.19-8.el7_6.5-c3c624ea3d) - partition with quorum
+    * Last updated: Fri Aug 23 18:27:57 2019
+    * Last change: Fri Aug 23 18:27:56 2019 by hacluster via crmd on <VM2>
+    * 3 nodes configured
+    * 0 resource instances configured
+     
+   Node List:
+    * Online: [ <VM1> <VM2> <VM3> ]
+   
+   Full List of Resources:
+   * No resources
+     
+   Daemon Status:
+          corosync: active/enabled
+          pacemaker: active/enabled
+          pcsd: active/enabled
+    
+    ```
+    
 1. Nastavte v živém clusteru očekávané hlasy na 3. Tento příkaz ovlivní pouze živý cluster a nemění konfigurační soubory.
 
     Na všech uzlech nastavte pomocí následujícího příkazu očekávané hlasy:
@@ -469,12 +599,18 @@ sudo firewall-cmd --reload
 ```
 
 ## <a name="install-sql-server-and-mssql-tools"></a>Instalace SQL Server a MSSQL-Tools
- 
-Pomocí níže uvedeného oddílu můžete na virtuální počítače nainstalovat SQL Server a nástroje MSSQL. Proveďte každou z těchto akcí na všech uzlech. Další informace najdete v tématu [instalace SQL Server na virtuálním počítači Red Hat](/sql/linux/quickstart-install-connect-red-hat).
+
+> [!NOTE]
+> Pokud jste vytvořili virtuální počítače s SQL Server 2019 předem nainstalovaným na RHEL8-HA, můžete přeskočit níže uvedené kroky a nainstalovat SQL Server a nástroje MSSQL-Tools a po nastavení hesla sa na všech virtuálních počítačích spustit oddíl **Konfigurovat skupinu dostupnosti** tak, že spustíte příkaz `sudo /opt/mssql/bin/mssql-conf set-sa-password` na všech virtuálních počítačích.
+
+Pomocí níže uvedeného oddílu můžete na virtuální počítače nainstalovat SQL Server a nástroje MSSQL. Můžete vybrat jednu z níže uvedených ukázek a nainstalovat SQL Server 2017 na RHEL 7 nebo SQL Server 2019 na RHEL 8. Proveďte každou z těchto akcí na všech uzlech. Další informace najdete v tématu [instalace SQL Server na virtuálním počítači Red Hat](/sql/linux/quickstart-install-connect-red-hat).
+
 
 ### <a name="installing-sql-server-on-the-vms"></a>Instalace SQL Server na virtuální počítače
 
 K instalaci SQL Server slouží následující příkazy:
+
+**RHEL 7 s SQL Server 2017** 
 
 ```bash
 sudo curl -o /etc/yum.repos.d/mssql-server.repo https://packages.microsoft.com/config/rhel/7/mssql-server-2017.repo
@@ -483,6 +619,14 @@ sudo /opt/mssql/bin/mssql-conf setup
 sudo yum install mssql-server-ha
 ```
 
+**RHEL 8 s SQL Server 2019** 
+
+```bash
+sudo curl -o /etc/yum.repos.d/mssql-server.repo https://packages.microsoft.com/config/rhel/8/mssql-server-2019.repo
+sudo yum install -y mssql-server
+sudo /opt/mssql/bin/mssql-conf setup
+sudo yum install mssql-server-ha
+```
 ### <a name="open-firewall-port-1433-for-remote-connections"></a>Otevřete port brány firewall 1433 pro vzdálená připojení.
 
 Aby se bylo možné vzdáleně připojit, budete muset na virtuálním počítači otevřít port 1433. K otevření portu 1433 v bráně firewall každého virtuálního počítače použijte následující příkazy:
@@ -496,8 +640,17 @@ sudo firewall-cmd --reload
 
 Následující příkazy se používají k instalaci SQL Server nástrojů příkazového řádku. Další informace najdete v tématu [Instalace nástrojů příkazového řádku SQL Server](/sql/linux/quickstart-install-connect-red-hat#tools).
 
+**RHEL 7** 
+
 ```bash
 sudo curl -o /etc/yum.repos.d/msprod.repo https://packages.microsoft.com/config/rhel/7/prod.repo
+sudo yum install -y mssql-tools unixODBC-devel
+```
+
+**RHEL 8** 
+
+```bash
+sudo curl -o /etc/yum.repos.d/msprod.repo https://packages.microsoft.com/config/rhel/8/prod.repo
 sudo yum install -y mssql-tools unixODBC-devel
 ```
  
@@ -796,26 +949,47 @@ Po [vytvoření prostředků skupiny dostupnosti v clusteru Pacemaker](/sql/linu
 
 ### <a name="create-the-ag-cluster-resource"></a>Vytvoření prostředku clusteru AG
 
-1. Pomocí následujícího příkazu vytvořte prostředek `ag_cluster` ve skupině dostupnosti `ag1` .
+1. Použijte jeden z následujících příkazů na základě dříve zvoleného prostředí a vytvořte prostředek `ag_cluster` ve skupině dostupnosti `ag1` .
 
-    ```bash
-    sudo pcs resource create ag_cluster ocf:mssql:ag ag_name=ag1 meta failure-timeout=30s master notify=true
-    ```
+      **RHEL 7** 
+  
+        ```bash
+        sudo pcs resource create ag_cluster ocf:mssql:ag ag_name=ag1 meta failure-timeout=30s master notify=true
+        ```
 
-1. Zkontrolujte svůj prostředek a ujistěte se, že jsou online, než budete pokračovat pomocí následujícího příkazu:
+      **RHEL 8** 
+  
+        ```bash
+        sudo pcs resource create ag_cluster ocf:mssql:ag ag_name=ag1 meta failure-timeout=30s promotable notify=true
+        ```
+
+2. Zkontrolujte svůj prostředek a ujistěte se, že jsou online, než budete pokračovat pomocí následujícího příkazu:
 
     ```bash
     sudo pcs resource
     ```
 
     Měl by se zobrazit následující výstup:
-
+    
+    **RHEL 7** 
+    
     ```output
     [<username>@VM1 ~]$ sudo pcs resource
     Master/Slave Set: ag_cluster-master [ag_cluster]
     Masters: [ <VM1> ]
     Slaves: [ <VM2> <VM3> ]
     ```
+    
+    **RHEL 8** 
+    
+    ```output
+    [<username>@VM1 ~]$ sudo pcs resource
+    * Clone Set: ag_cluster-clone [ag_cluster] (promotable):
+    * ag_cluster             (ocf::mssql:ag) :            Slave VMrhel3 (Monitoring) 
+    * ag_cluster             (ocf::mssql:ag) :            Master VMrhel1 (Monitoring)
+    * ag_cluster             (ocf::mssql:ag) :            Slave VMrhel2 (Monitoring)
+    ```
+
 
 ### <a name="create-a-virtual-ip-resource"></a>Vytvoření prostředku virtuální IP adresy
 
@@ -827,13 +1001,13 @@ Po [vytvoření prostředků skupiny dostupnosti v clusteru Pacemaker](/sql/linu
     # The above will scan for all IP addresses that are already occupied in the 10.0.0.x space.
     ```
 
-1. Nastavte vlastnost **stonith-Enabled** na hodnotu false.
+2. Nastavte vlastnost **stonith-Enabled** na hodnotu false.
 
     ```bash
     sudo pcs property set stonith-enabled=false
     ```
 
-1. Vytvořte prostředek virtuální IP adresy pomocí následujícího příkazu:
+3. Vytvořte prostředek virtuální IP adresy pomocí následujícího příkazu:
 
     - `<availableIP>`Hodnotu uvedenou níže nahraďte nepoužitou IP adresou.
 
@@ -845,23 +1019,41 @@ Po [vytvoření prostředků skupiny dostupnosti v clusteru Pacemaker](/sql/linu
 
 1. Aby bylo zajištěno, že IP adresa a prostředek AG běží na stejném uzlu, musí být nakonfigurováno omezení pro společné umístění. Spusťte následující příkaz:
 
+   **RHEL 7**
+  
     ```bash
     sudo pcs constraint colocation add virtualip ag_cluster-master INFINITY with-rsc-role=Master
     ```
 
-1. Vytvořte omezení řazení, aby bylo zajištěno, že prostředek AG bude spuštěn před IP adresou. I když omezení pro společné umístění implikuje omezení řazení, vynutilo ho.
+   **RHEL 8**
+   
+    ```bash
+     sudo pcs constraint colocation add virtualip with master ag_cluster-clone INFINITY with-rsc-role=Master
+    ```
+  
+2. Vytvořte omezení řazení, aby bylo zajištěno, že prostředek AG bude spuštěn před IP adresou. I když omezení pro společné umístění implikuje omezení řazení, vynutilo ho.
 
+   **RHEL 7**
+   
     ```bash
     sudo pcs constraint order promote ag_cluster-master then start virtualip
     ```
 
-1. Chcete-li ověřit omezení, spusťte následující příkaz:
+   **RHEL 8**
+   
+    ```bash
+    sudo pcs constraint order promote ag_cluster-clone then start virtualip
+    ```
+  
+3. Chcete-li ověřit omezení, spusťte následující příkaz:
 
     ```bash
     sudo pcs constraint list --full
     ```
 
     Měl by se zobrazit následující výstup:
+    
+    **RHEL 7**
 
     ```
     Location Constraints:
@@ -869,6 +1061,17 @@ Po [vytvoření prostředků skupiny dostupnosti v clusteru Pacemaker](/sql/linu
           promote ag_cluster-master then start virtualip (kind:Mandatory) (id:order-ag_cluster-master-virtualip-mandatory)
     Colocation Constraints:
           virtualip with ag_cluster-master (score:INFINITY) (with-rsc-role:Master) (id:colocation-virtualip-ag_cluster-master-INFINITY)
+    Ticket Constraints:
+    ```
+    
+    **RHEL 8**
+    
+    ```output
+    Location Constraints:
+    Ordering Constraints:
+            promote ag_cluster-clone then start virtualip (kind:Mandatory) (id:order-ag_cluster-clone-virtualip-mandatory)
+    Colocation Constraints:
+            virtualip with ag_cluster-clone (score:INFINITY) (with-rsc-role:Master) (id:colocation-virtualip-ag_cluster-clone-INFINITY)
     Ticket Constraints:
     ```
 
@@ -917,12 +1120,22 @@ Abychom zajistili, že se konfigurace úspěšně provedla, otestujeme převzet�
 
 1. Spusťte následující příkaz, který ručně převezme služby primární repliky na `<VM2>` . Nahraďte `<VM2>` hodnotou názvu vašeho serveru.
 
+   **RHEL 7**
+   
     ```bash
     sudo pcs resource move ag_cluster-master <VM2> --master
     ```
 
-1. Pokud znovu zkontrolujete vaše omezení, uvidíte, že se kvůli ručnímu převzetí služeb při selhání přidalo jiné omezení:
+   **RHEL 8**
+   
+    ```bash
+    sudo pcs resource move ag_cluster-clone <VM2> --master
+    ```
 
+2. Pokud znovu zkontrolujete vaše omezení, uvidíte, že se kvůli ručnímu převzetí služeb při selhání přidalo jiné omezení:
+    
+    **RHEL 7**
+    
     ```output
     [<username>@VM1 ~]$ sudo pcs constraint list --full
     Location Constraints:
@@ -935,10 +1148,32 @@ Abychom zajistili, že se konfigurace úspěšně provedla, otestujeme převzet�
     Ticket Constraints:
     ```
 
-1. Odeberte omezení s ID `cli-prefer-ag_cluster-master` pomocí následujícího příkazu:
+    **RHEL 8**
+    
+    ```output
+    [<username>@VM1 ~]$ sudo pcs constraint list --full
+    Location Constraints:
+          Resource: ag_cluster-master
+            Enabled on: VM2 (score:INFINITY) (role: Master) (id:cli-prefer-ag_cluster-clone)
+    Ordering Constraints:
+            promote ag_cluster-clone then start virtualip (kind:Mandatory) (id:order-ag_cluster-clone-virtualip-mandatory)
+    Colocation Constraints:
+            virtualip with ag_cluster-clone (score:INFINITY) (with-rsc-role:Master) (id:colocation-virtualip-ag_cluster-clone-INFINITY)
+    Ticket Constraints:
+    ```
+    
+3. Odeberte omezení s ID `cli-prefer-ag_cluster-master` pomocí následujícího příkazu:
 
+    **RHEL 7**
+    
     ```bash
     sudo pcs constraint remove cli-prefer-ag_cluster-master
+    ```
+
+    **RHEL 8**
+    
+    ```bash
+    sudo pcs constraint remove cli-prefer-ag_cluster-clone
     ```
 
 1. Pomocí příkazu zkontrolujte prostředky clusteru `sudo pcs resource` a měli byste vidět, že je primární instance nyní `<VM2>` .

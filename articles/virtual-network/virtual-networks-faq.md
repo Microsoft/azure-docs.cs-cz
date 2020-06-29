@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/12/2019
+ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: d59a2fe32742c2d1d50b9ed33ccace5d377c59c2
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 19824e978af78e85f9e8c790517bd66b1f6c0113
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791982"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85481727"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Nejčastější dotazy ke službě Azure Virtual Network
 
@@ -55,7 +55,14 @@ Virtuální síť můžete vytvořit nebo nakonfigurovat pomocí následujícíc
 * Konfigurační soubor sítě (jenom netcfg – jenom pro klasický virtuální sítě). Informace najdete v článku [Konfigurace sítě VNet pomocí konfiguračního souboru sítě](virtual-networks-using-network-configuration-file.md) .
 
 ### <a name="what-address-ranges-can-i-use-in-my-vnets"></a>Jaké rozsahy adres můžu ve svém virtuální sítě použít?
-Libovolný rozsah IP adres definovaný v [dokumentu RFC 1918](https://tools.ietf.org/html/rfc1918). Například 10.0.0.0/16. Nemůžete přidat tyto rozsahy adres:
+Doporučujeme, abyste používali rozsahy adres uvedené v [dokumentu RFC 1918](https://tools.ietf.org/html/rfc1918), které byly vyjmenovány sdružením IETF pro soukromé Nesměrovatelné adresní prostory:
+* 10.0.0.0 – 10.255.255.255 (předpona 10/8)
+* 172.16.0.0-172.31.255.255 (předpona 172.16/12)
+* 192.168.0.0-192.168.255.255 (předpona 192.168/16)
+
+Další adresní prostory mohou fungovat, ale mohou mít nežádoucí vedlejší účinky.
+
+Kromě toho nemůžete přidat následující rozsahy adres:
 * 224.0.0.0/4 (vícesměrové vysílání)
 * 255.255.255.255/32 (všesměrové vysílání)
 * 127.0.0.0/8 (zpětná smyčka)
@@ -131,7 +138,7 @@ Ano. IP adresy serveru DNS můžete zadat v nastavení virtuální sítě. Toto 
 Odkazy na [omezení Azure](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits).
 
 ### <a name="can-i-modify-my-dns-servers-after-i-have-created-the-network"></a>Můžu po vytvoření sítě změnit svoje servery DNS?
-Ano. V každém okamžiku můžete seznam serverů DNS pro virtuální síť kdykoli změnit. Pokud změníte seznam serverů DNS, musíte provést obnovení zapůjčení DHCP u všech ovlivněných virtuálních počítačů ve virtuální síti, aby se nové nastavení DNS projevilo. Pro virtuální počítače s operačním systémem Windows to můžete provést tak `ipconfig /renew` , že na virtuálním počítači zadáte přímo. Další typy operačních systémů najdete v dokumentaci k obnovení zapůjčení DHCP pro konkrétní typ operačního systému. 
+Ano. V každém okamžiku můžete seznam serverů DNS pro virtuální síť kdykoli změnit. Pokud změníte seznam serverů DNS, musíte provést obnovení zapůjčení DHCP u všech ovlivněných virtuálních počítačů ve virtuální síti, aby se nové nastavení DNS projevilo. Pro virtuální počítače s operačním systémem Windows to můžete provést tak, že `ipconfig /renew` na virtuálním počítači zadáte přímo. Další typy operačních systémů najdete v dokumentaci k obnovení zapůjčení DHCP pro konkrétní typ operačního systému. 
 
 ### <a name="what-is-azure-provided-dns-and-does-it-work-with-vnets"></a>Co je služba DNS poskytovaná Azure a funguje s virtuální sítě?
 DNS poskytovaná Azure je víceklientské služba DNS nabízená Microsoftem. Azure zaregistruje všechny vaše virtuální počítače a instance rolí cloudové služby v této službě. Tato služba poskytuje překlad názvů podle názvu hostitele pro virtuální počítače a instance rolí obsažené v rámci stejné cloudové služby a podle plně kvalifikovaného názvu domény pro virtuální počítače a instance rolí ve stejné virtuální síti. Další informace o DNS najdete v tématu [překlad názvů pro virtuální počítače a Cloud Services instance rolí](virtual-networks-name-resolution-for-vms-and-role-instances.md).
@@ -184,7 +191,7 @@ Ano. Všechny virtuální počítače a Cloud Services instance rolí nasazené 
 ## <a name="azure-services-that-connect-to-vnets"></a>Služby Azure, které se připojují k virtuální sítě
 
 ### <a name="can-i-use-azure-app-service-web-apps-with-a-vnet"></a>Můžu použít Azure App Service Web Apps s virtuální sítí?
-Ano. Můžete nasadit Web Apps v rámci virtuální sítě pomocí pomocného mechanismu řízení (App Service Environment), připojit back-end vašich aplikací k virtuální sítě s integrací virtuální sítě a uzamknout příchozí provoz do vaší aplikace pomocí koncových bodů služby. Další informace najdete v těchto článcích:
+Ano. Můžete nasadit Web Apps v rámci virtuální sítě pomocí pomocného mechanismu řízení (App Service Environment), připojit back-end vašich aplikací k virtuální sítě s integrací virtuální sítě a uzamknout příchozí provoz do vaší aplikace pomocí koncových bodů služby. Další informace najdete v následujících článcích:
 
 * [Funkce App Service sítě](../app-service/networking-features.md)
 * [Vytváření Web Apps v App Service Environment](../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fvirtual-network%2ftoc.json)

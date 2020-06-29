@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 02/19/2020
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: b1e7dce6f652d8c9e0fcf5974c3e72be9e1e7844
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3de9ef12619ed27eb48af64c4bf4bd1a79229d04
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77482172"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483155"
 ---
 # <a name="azure-firewall-certifications"></a>Azure Firewall certifikace
 
@@ -35,7 +35,7 @@ Následující Azure Firewall certifikace jsou pro globální Azure:
 - Ověření identity CSA STAR
 - Certifikace pro CSA STAR
 - Samoobslužné vyhodnocování CSA STAR
-- Kanadské zákony o ochraně osobních údajů
+- Kanadské zákony na ochranu osobních údajů
 - DPP (SPOJENÉ KRÁLOVSTVÍ)
 - IAF EU DOKUMENT AGENTURY ENISA
 - Modelové klauzule EU
@@ -45,9 +45,11 @@ Následující Azure Firewall certifikace jsou pro globální Azure:
 - FFIEC (US)
 - FINMA (Švýcarsko)
 - FSA (Dánsko)
-- GRAMM (US)
+- GLBA (USA)
 - Německo C5
-- GxP (FDA 21 CFR část 11)
+- GxP (FDA 21 CFR, část 11)
+- HIPPA
+- HITECH Act (US)
 - HITRUST
 - ISO 20000-1:2011
 - ISO 22301:2012
@@ -66,11 +68,11 @@ Následující Azure Firewall certifikace jsou pro globální Azure:
 - Nizozemsko BIR 2012
 - OSFI (Kanada)
 - PCI DSS úrovně 1
-- RBI a IRDA (Indie)
+- RBI a IRDAI (Indie)
 - SOC 1 typ 2
 - SOC 2 typ 2
 - SOC 3
-- SOX (US)
+- SOX (USA)
 - Španělsko DPA
 - TISAX
 - TruSight
@@ -87,22 +89,24 @@ Pro Azure Government jsou k disAzure Firewall následující certifikace:
 - Ověření identity CSA STAR
 - DFARS
 - DoD DISA SRG úrovně 2
-- Novák 10 CFR část 810
-- MAZAT
+- DoE 10 CFR, část 810
+- EAR
 - FIPS 140-2
 - FedRAMP High
+- HIPPA
+- HITECH Act (US)
 - HITRUST
 - IRS 1075
 - ITAR
-- MARS-E (US)
+- MARS-E (USA)
 - NERC
 - NIST kyberbezpečnosti Framework
 - NIST SP 800-171
 - SOC 1 typ 2
 - SOC 2 typ 2
 - SOC 3
-- SOX (US)
-- Oddíl 508 šablony VPAT
+- SOX (USA)
+- Šablony VPAT sekce 508
 
 ## <a name="icsa-labs-corporate-firewall-certification"></a>Certifikace podnikové brány firewall pro ICSA Labs
 

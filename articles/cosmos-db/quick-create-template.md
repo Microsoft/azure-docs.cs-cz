@@ -8,20 +8,22 @@ ms.service: cosmos-db
 ms.topic: quickstart
 ms.date: 06/01/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: e626f6e5b65e369c3c77900cd46f2b86cd6f9d52
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 249ff87813fe23505a09db020d4c6ad0f272796d
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85117994"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483291"
 ---
-# <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-azure-resource-manager-template"></a>Rychlý Start: vytvoření Azure Cosmos DB a kontejneru pomocí šablony Azure Resource Manager
+# <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-an-arm-template"></a>Rychlý Start: vytvoření Azure Cosmos DB a kontejneru pomocí šablony ARM
 
-Databáze Azure Cosmos je databázová služba Microsoftu s více modely použitelná v celosvětovém měřítku. Azure Cosmos DB můžete použít k rychlému vytvoření a dotazování databází klíčů a hodnot, databází dokumentů a grafů. Tento rychlý Start se zaměřuje na proces nasazení šablony Správce prostředků pro vytvoření databáze Azure Cosmos a kontejneru v rámci této databáze. Později můžete do tohoto kontejneru ukládat data.
+Databáze Azure Cosmos je databázová služba Microsoftu s více modely použitelná v celosvětovém měřítku. Azure Cosmos DB můžete použít k rychlému vytvoření a dotazování databází klíčů a hodnot, databází dokumentů a grafů. Tento rychlý Start se zaměřuje na proces nasazení šablony Azure Resource Manager (šablona ARM) pro vytvoření databáze Azure Cosmos a kontejneru v rámci této databáze. Později můžete do tohoto kontejneru ukládat data.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud vaše prostředí splňuje požadavky a Vy jste obeznámeni s používáním šablon ARM, vyberte tlačítko **nasadit do Azure** . Šablona se otevře v Azure Portal.
+
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Nasazení do Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -31,11 +33,9 @@ Předplatné Azure nebo bezplatný zkušební účet služby Azure Cosmos DB
 
 - [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-## <a name="create-an-azure-cosmos-account-database-container"></a>Vytvoření účtu Azure Cosmos, databáze, kontejneru
+## <a name="review-the-template"></a>Kontrola šablony
 
-### <a name="review-the-template"></a>Kontrola šablony
-
-Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql/).
+Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql/).
 
 :::code language="json" source="~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json":::
 
@@ -49,7 +49,7 @@ V šabloně jsou definovány tři prostředky Azure:
 
 Další příklady šablon Azure Cosmos DB najdete v [galerii šablon rychlý Start](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Documentdb).
 
-### <a name="deploy-the-template"></a>Nasazení šablony
+## <a name="deploy-the-template"></a>Nasazení šablony
 
 1. Vyberte následující obrázek a přihlaste se k Azure a otevřete šablonu. Šablona vytvoří účet Azure Cosmos, databázi a kontejner.
 
@@ -57,7 +57,7 @@ Další příklady šablon Azure Cosmos DB najdete v [galerii šablon rychlý St
 
 2. Vyberte nebo zadejte následující hodnoty.
 
-   :::image type="content" source="./media/quick-create-template/create-cosmosdb-using-template-portal.png" alt-text="Správce prostředků šablona, Integrace Azure Cosmos DB, nasazení portálu":::
+   :::image type="content" source="./media/quick-create-template/create-cosmosdb-using-template-portal.png" alt-text="Šablona ARM, Integrace Azure Cosmos DB, portál nasazení":::
 
     Pokud není zadaný, použijte k vytvoření prostředků Azure Cosmos výchozí hodnoty.
 
@@ -78,7 +78,7 @@ Další příklady šablon Azure Cosmos DB najdete v [galerii šablon rychlý St
 
 3. Vyberte **Koupit**. Po úspěšném nasazení účtu Azure Cosmos se zobrazí oznámení:
 
-   :::image type="content" source="./media/quick-create-template/resource-manager-template-portal-deployment-notification.png" alt-text="Správce prostředků šablona, integrace Cosmos DB, nasazení oznámení portálu":::
+   :::image type="content" source="./media/quick-create-template/resource-manager-template-portal-deployment-notification.png" alt-text="Šablona ARM, integrace Cosmos DB, oznámení nasazení portálu":::
 
 K nasazení šablony se použije Azure Portal. Kromě Azure Portal můžete použít také Azure PowerShell, Azure CLI a REST API. Další informace o dalších metodách nasazení najdete v tématu [Nasazení šablon](../azure-resource-manager/templates/deploy-powershell.md).
 
@@ -132,7 +132,7 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili účet Azure Cosmos, databázi a kontejner pomocí šablony Azure Resource Manager a ověřili nasazení. Další informace o Azure Cosmos DB a Azure Resource Manager najdete dál v článcích níže.
+V tomto rychlém startu jste vytvořili účet Azure Cosmos, databázi a kontejner pomocí šablony ARM a ověřili nasazení. Další informace o Azure Cosmos DB a Azure Resource Manager najdete dál v článcích níže.
 
 - Přečtěte si [přehled Azure Cosmos DB](introduction.md)
 - Další informace o [Azure Resource Manageru](../azure-resource-manager/management/overview.md)

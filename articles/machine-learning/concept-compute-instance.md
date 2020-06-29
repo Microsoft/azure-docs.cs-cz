@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: 8c03df8fb0cd8f5f092450ebe4c66266d2ff4293
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.openlocfilehash: 8713e7538ae65fc8e750d5b3244482a5503b0e37
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816348"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483257"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Co je výpočetní instance služby Azure Machine Learning?
 
@@ -33,7 +33,7 @@ Výpočetní instance je plně spravovaná cloudová pracovní stanice optimaliz
 
 |Klíčové výhody||
 |----|----|
-|Produktivita|Vědečtí data mohou vytvářet a nasazovat modely pomocí integrovaných poznámkových bloků a ve svém webovém prohlížeči tyto nástroje:<br/>– Jupyter<br/>- JupyterLab<br/>– RStudio|
+|Produktivita|Vědečtí data mohou vytvářet a nasazovat modely pomocí integrovaných poznámkových bloků a ve svém webovém prohlížeči tyto nástroje:<br/>– Jupyter<br/>- JupyterLab<br/>-RStudio (Preview)|
 |Spravované & zabezpečené|Snižte nároky na zabezpečení a přidejte dodržování požadavků podnikového zabezpečení. Výpočetní instance poskytují robustní zásady správy a zabezpečené síťové konfigurace, jako jsou:<br/><br/>– Automatické zřizování z Správce prostředků šablon nebo Azure Machine Learning SDK<br/>- [Řízení přístupu na základě role (RBAC)](/azure/role-based-access-control/overview)<br/>- [Podpora virtuální sítě](how-to-enable-virtual-network.md#compute-instance)<br/>-Zásada SSH pro povolení nebo zakázání přístupu SSH|
 |Předem nakonfigurované &nbsp; nebo &nbsp; ml|Ušetřete čas při instalaci s předem nakonfigurovanými a aktuálními balíčky ML, architekturou pro hloubkové učení a ovladači GPU.|
 |Plně přizpůsobitelné|Široká podpora typů virtuálních počítačů Azure, včetně GPU a trvalého přizpůsobení nízké úrovně, jako je instalace balíčků a ovladačů, vede k pokročilým scénářům Breeze. |
@@ -58,7 +58,7 @@ Tyto nástroje a prostředí se nainstalují do výpočetní instance:
 
 |Prostředí pro & nástrojů **R**|Podrobnosti|
 |----|:----:|
-|Edice Open Source serveru RStudio||
+|RStudio server Open Source Edition (Preview)||
 |Jádro R||
 |Sada SDK Azure Machine Learning pro R|[azuremlsdk](https://azure.github.io/azureml-sdk-for-r/reference/index.html)</br>Ukázky SDK|
 

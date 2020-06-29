@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 03/30/2020
-ms.openlocfilehash: ed65d69c18f2dbcd53324fe3cc18af8c51c546b2
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.date: 06/26/2020
+ms.openlocfilehash: 8b0fa1402452d8e1f348cd353b00d0ef050d866c
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780109"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483274"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Jaké jsou výpočetní cíle v Azure Machine Learning? 
 
@@ -52,21 +52,23 @@ Můžete vytvořit Azure Machine Learning výpočetních instancí (Preview) neb
 * Azure Machine Learning Studio
 * portál Azure
 * Třídy Python SDK [ComputeInstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance(class)?view=azure-ml-py) a [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute(class)?view=azure-ml-py)
-* [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets)
+* [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets) (Preview)
 * Šablona Resource Manageru
-
-Výpočetní clustery můžete vytvořit také pomocí [rozšíření služby Machine Learning pro rozhraní příkazového řádku Azure CLI](tutorial-train-deploy-model-cli.md#create-the-compute-target-for-training).
+* Rozšíření Machine Learning [pro rozhraní příkazového řádku Azure](reference-azure-machine-learning-cli.md#resource-management)  
 
 Když se tyto výpočetní prostředky vytvoří automaticky, na rozdíl od jiných druhů výpočetních cílů.
 
-### <a name="compute-clusters"></a>Výpočetní clustery
 
-Můžete použít výpočetní clustery Azure Machine Learning pro školení a pro Batch Inferencing (Preview).  S tímto výpočetním prostředkem máte tyto:
+|Schopnost  |Výpočtový cluster  |Instance služby Compute  |
+|---------|---------|---------|
+|Cluster s jedním nebo několika uzly     |    **&check;**       |         |
+|Automatické škálování pokaždé, když odešlete běh     |     **&check;**      |         |
+|Automatická správa clusteru a plánování úloh     |   **&check;**        |     **&check;**      |
+|Podpora pro prostředky CPU a GPU     |  **&check;**         |    **&check;**       |
 
-* Cluster s jedním nebo několika uzly
-* Automatické škálování pokaždé, když odešlete běh 
-* Automatická správa clusteru a plánování úloh 
-* Podpora pro prostředky CPU a GPU
+
+> [!NOTE]
+> Pokud je výpočetní cluster nečinný, přiřadí se automatické škálování na 0 uzlů, takže nebudete platit, když se nepoužívá.  *Instance*COMPUTE je ale vždycky zapnutá a neprovádí automatické škálování.  [Výpočetní instanci](tutorial-1st-experiment-sdk-train.md#stop-the-compute-instance) byste měli zastavit, pokud ji nepoužíváte, abyste se vyhnuli dodatečným nákladům.
 
 ### <a name="supported-vm-series-and-sizes"></a>Podporované řady a velikosti virtuálních počítačů
 
@@ -80,17 +82,17 @@ Další informace o podporovaných řadách a omezeních najdete v následujíc�
 
 | **Podporovaná řada virtuálních počítačů**  | **Omezení** |
 |------------|------------|
-| D | Žádné |
-| Dv2 | Žádné |  
-| DSv2 | Žádné |  
-| FSv2 | Žádné |  
+| D | Žádná |
+| Dv2 | Žádná |  
+| DSv2 | Žádná |  
+| FSv2 | Žádná |  
 | M | Vyžaduje schválení |
-| NC | Žádné |    
+| NC | Žádná |    
 | NCsv2 | Vyžaduje schválení |
 | NCsv3 | Vyžaduje schválení |  
 | NDs | Vyžaduje schválení |
 | NDv2 | Vyžaduje schválení |
-| NV | Žádné |
+| NV | Žádná |
 | NVv3 | Vyžaduje schválení | 
 
 

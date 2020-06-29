@@ -11,21 +11,21 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/02/2020
 ms.author: b-juche
-ms.openlocfilehash: b21db3e842898e8ce11b560714888b946373300e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d76af4901103b0eed8cd1cffac744f8fb41d9689
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80616439"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483495"
 ---
 # <a name="set-up-a-capacity-pool"></a>Nastavení fondu kapacity
 
 Nastavení fondu kapacity umožňuje vytvářet v něm svazky.  
 
-## <a name="before-you-begin"></a>Před zahájením 
+## <a name="before-you-begin"></a>Než začnete 
 
 Musíte už mít vytvořený účet NetApp.   
 
@@ -55,10 +55,10 @@ Musíte už mít vytvořený účet NetApp.
       
      ![Nový fond kapacity](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)
 
-4. Klikněte na tlačítko **OK**.
+4. Klikněte na **OK**.
 
 ## <a name="next-steps"></a>Další kroky 
 
 - [Úrovně služeb pro Azure NetApp Files](azure-netapp-files-service-levels.md)
 - Ceny různých úrovní služeb najdete na [stránce s cenami Azure NetApp Files](https://azure.microsoft.com/pricing/details/storage/netapp/) .
-- [Delegování podsítě do Azure NetApp Files](azure-netapp-files-delegate-subnet.md)
+- [Delegování podsítě na službu Azure NetApp Files](azure-netapp-files-delegate-subnet.md)

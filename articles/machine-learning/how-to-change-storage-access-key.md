@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/19/2020
-ms.openlocfilehash: 911fa7d509e756f482b2deefad11e35f9cb5ec01
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 3a99bff20eb7135b384bfef5be4ece9c5fff0461
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85117943"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483308"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>Znovu vygenerovat přístupové klíče účtu úložiště
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -23,6 +23,9 @@ ms.locfileid: "85117943"
 Naučte se, jak změnit přístupové klávesy pro účty Azure Storage používané v Azure Machine Learning. Azure Machine Learning můžou používat účty úložiště k ukládání dat nebo školených modelů.
 
 Z bezpečnostních důvodů možná budete muset změnit přístupové klávesy pro účet Azure Storage. Po opětovném vygenerování přístupového klíče je nutné aktualizovat Azure Machine Learning, aby používala nový klíč. Azure Machine Learning může používat účet úložiště pro úložiště modelů i jako úložiště dat.
+
+> [!IMPORTANT]
+> Přihlašovací údaje registred s úložištěm dat se ukládají do vašich Azure Key Vault přidružených k pracovnímu prostoru. Pokud máte u svého Key Vault povolené [obnovitelné odstranění](https://docs.microsoft.com/azure/key-vault/general/overview-soft-delete) , nezapomeňte při aktualizaci přihlašovacích údajů postupovat podle tohoto článku. Zrušení registrace úložiště dat a jeho opětovné registrace za stejným názvem se nezdaří.
 
 ## <a name="prerequisites"></a>Požadavky
 

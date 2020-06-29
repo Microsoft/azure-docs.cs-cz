@@ -1,24 +1,14 @@
 ---
 title: Vytváření a správa virtuálních počítačů v DevTest Labs pomocí Azure CLI
 description: Naučte se používat Azure DevTest Labs k vytváření a správě virtuálních počítačů pomocí Azure CLI.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2020
-ms.author: spelluru
-ms.openlocfilehash: d3cd104e36cb407e9b1b833335869cac2c69d0ec
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 57510a722ab6a34b9d498e74a140d6f350c8fc02
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84897534"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482832"
 ---
 # <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>Vytváření a správa virtuálních počítačů pomocí DevTest Labs pomocí Azure CLI
 Tento rychlý Start vás provede vytvořením, spuštěním, připojením, aktualizací a vyčištěním vývojového počítače ve vašem testovacím prostředí. 

@@ -1,25 +1,14 @@
 ---
 title: Změna velikosti virtuálního počítače v testovacím prostředí v Azure DevTest Labs
 description: Naučte se, jak změnit velikost virtuálního počítače v Azure DevTest Labs na základě vašich požadavků na výkon procesoru, sítě nebo disku.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-editor: ''
-ms.assetid: 8460f09e-482f-48ba-a57a-c95fe8afa001
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: spelluru
-ms.openlocfilehash: bf7c425766a97aaa1d143133f04502a0aa3c36cb
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 592be0862bc33ead86fe43d37753fb72fde120c6
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84898238"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482016"
 ---
 # <a name="resize-a-vm-in-a-lab-in-azure-devtest-labs"></a>Změna velikosti virtuálního počítače v testovacím prostředí v Azure DevTest Labs
 Jednou z důležitých funkcí virtuálních počítačů Azure je to, že umožňuje změnit velikost virtuálního počítače na základě vašich potřeb pro výkon procesoru, sítě nebo disku. Azure DevTest Labs podporuje tuto funkci pro virtuální počítače v testovacím prostředí. Funkce změny velikosti dodržuje zásady testovacího prostředí pro povolené velikosti virtuálních počítačů v testovacím prostředí. To znamená, že můžete změnit velikost virtuálního počítače jenom na povolené velikosti v testovacím prostředí. 

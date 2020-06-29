@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b655fa2f12eac894e97c61cc931983aa58fff7a9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6c2ae9e7654fa468d499ca6ef8543b98b1e372ca
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74007924"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85481387"
 ---
 # <a name="what-are-azure-active-directory-reports"></a>Co jsou sestavy Azure Active Directory?
 
@@ -37,7 +37,7 @@ Architektura generování sestav se spoléhá na dva hlavní pilíře:
 - [Sestavy zabezpečení](#security-reports)
 - [Sestavy aktivit](#activity-reports)
 
-![Generování sestav](./media/overview-reports/01.png)
+![Vytváření sestav](./media/overview-reports/01.png)
 
 
 ## <a name="security-reports"></a>Sestavy zabezpečení
@@ -81,7 +81,7 @@ Sestavy aktivit vám pomohou pochopit chování uživatelů ve vaší organizaci
 
 #### <a name="what-azure-ad-license-do-you-need-to-access-the-audit-logs-report"></a>Jaká licence Azure AD je potřeba pro přístup k sestavě protokolů auditu?  
 
-Sestava protokolů auditu je dostupná pro funkce, ke kterým máte licence. Pokud máte licenci ke konkrétní funkci, máte u ní také přístup k informacím protokolu auditu. Další podrobnosti najdete v tématu [Azure Active Directory funkce a možnosti](https://www.microsoft.com/cloud-platform/azure-active-directory-features).   
+Sestava protokolů auditu je dostupná pro funkce, ke kterým máte licence. Pokud máte licenci ke konkrétní funkci, máte u ní také přístup k informacím protokolu auditu. Porovnání funkcí deatiled podle [různých typů licencí](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#what-are-the-azure-ad-licenses) se dá zobrazit na stránce s cenami za [Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/). Další podrobnosti najdete v tématu [Azure Active Directory funkce a možnosti](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#which-features-work-in-azure-ad).
 
 ### <a name="sign-ins-report"></a>Sestava přihlášení
 

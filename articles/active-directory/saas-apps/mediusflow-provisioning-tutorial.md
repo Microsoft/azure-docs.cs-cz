@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: 3b194755e96e8b8dec2bd0325417950ffe96241c
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 838542bf4c3d566c76987754c8f336e00250d04a
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85339319"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482407"
 ---
 # <a name="tutorial-configure-mediusflow-for-automatic-user-provisioning"></a>Kurz: Konfigurace MediusFlow pro Automatické zřizování uživatelů
 
@@ -94,7 +94,7 @@ https://success.mediusflow.com/documentation/administration_guide/user_login_and
 
     ![Ověření](./media/mediusflow-provisioning-tutorial/7-confirm-secret.png)
 
-8. Abyste uživatelům naimportovali předem definovanou sadu rolí, společností a dalších obecných konfigurací v MediusFlow, budete ji muset nakonfigurovat jako první. Začněte přidáním konfigurace kliknutím na **Přidat novou konfiguraci**.
+8. Pokud chcete, aby uživatelé naimportovali s předem definovanou sadou rolí, společností a dalšími obecnými konfiguracemi v MediusFlow, budete ji muset nejdřív nakonfigurovat. Začněte přidáním konfigurace kliknutím na **Přidat novou konfiguraci**.
 
     ![Uživatelé konfigurace](./media/mediusflow-provisioning-tutorial/8-configure-user-configuration-1.png)
 

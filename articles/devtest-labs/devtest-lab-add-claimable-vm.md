@@ -1,25 +1,14 @@
 ---
 title: Vytváření a správa virtuálních počítačů s deklarací identity v Azure DevTest Labs | Microsoft Docs
 description: Přečtěte si, jak přidat vynucený virtuální počítač do testovacího prostředí v Azure DevTest Labs
-services: devtest-lab,virtual-machines
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.assetid: f671e66e-9630-4e30-a131-a6bad9ed9c11
-ms.service: devtest-lab
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2019
-ms.author: spelluru
-ms.openlocfilehash: 988e07c03cb8081e3e6014e626d5fcf7a254a8dd
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 7a4e465f0ba6c592f173a0c48aadd51f3e12ea07
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84895546"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85481302"
 ---
 # <a name="create-and-manage-claimable-vms-in-azure-devtest-labs"></a>Vytváření a správa virtuálních počítačů s deklarací identity v Azure DevTest Labs
 Do testovacího prostředí můžete přidat vynucené virtuální počítače podobným způsobem jako při [přidávání standardního virtuálního počítače](devtest-lab-add-vm.md) – od *základu* , který je buď [vlastní image](devtest-lab-create-template.md), [vzorec](devtest-lab-manage-formulas.md)nebo Image na [webu Marketplace](devtest-lab-configure-marketplace-images.md). Tento kurz vás provede použitím Azure Portal k přidání s nárokem na virtuální počítač do testovacího prostředí v DevTest Labs a ukazuje procesy, které uživatel sleduje, aby mohl uplatnit deklaraci virtuálního počítače a uvolnit ho.

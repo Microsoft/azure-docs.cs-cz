@@ -5,19 +5,19 @@ ms.service: cosmos-db
 ms.topic: how-to
 author: kanshiG
 ms.author: govindk
-ms.date: 05/10/2020
-ms.openlocfilehash: 7a7428d3445d1d5846618bfd84c47121dc9a4bc1
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.date: 06/25/2020
+ms.openlocfilehash: 8709389208ba1320685b1834b20893f08ef33ed7
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262748"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482900"
 ---
 # <a name="how-to-monitor-normalized-rus-for-an-azure-cosmos-container-or-an-account"></a>Jak monitorovat normalizovaná RU/s pro kontejner Azure Cosmos nebo účet
 
 Azure Monitor pro Azure Cosmos DB poskytuje zobrazení metrik pro monitorování vašeho účtu a vytváření řídicích panelů. Metriky Azure Cosmos DB jsou ve výchozím nastavení shromažďovány, takže tato funkce nevyžaduje explicitní povolení ani konfiguraci.
 
-**Normalizovaná** metrika použití ru se používá k zobrazení, jak dobře nasycené repliky se týkají spotřeby jednotek požadavků v rozsahu klíče oddílu. Azure Cosmos DB distribuuje propustnost rovnoměrně napříč všemi fyzickými oddíly. Tato metrika poskytuje za sekundu zobrazení maximálního využití propustnosti v rámci sady replik. Pokud při použití této metriky vidíte vysoké procento využití jednotek požadavků, měli byste zvýšit propustnost tak, aby splňovala potřeby vašich úloh.
+**Normalizovaná** metrika použití ru se používá k zobrazení, jak dobře nasycené repliky se týkají spotřeby jednotek požadavků v rozsahu klíče oddílu. Azure Cosmos DB distribuuje propustnost rovnoměrně napříč všemi fyzickými oddíly. Tato metrika poskytuje za sekundu zobrazení maximálního využití propustnosti v rámci sady replik. Pomocí této metriky můžete vypočítat využití RU/s v jednotlivých oddílech pro daný kontejner. Pokud při použití této metriky vidíte vysoké procento využití jednotek požadavků, měli byste zvýšit propustnost tak, aby splňovala potřeby vašich úloh.
 
 ## <a name="what-to-expect-and-do-when-normalized-rus-is-higher"></a>Co očekávat a když je normalizované RU/s vyšší
 

@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 9a291971ce0edead9ca28a47f7ad0689b0f65547
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ff4781109b2572d5555ec0a03c65359ef5a89d8d
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834947"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482509"
 ---
 # <a name="development-best-practices-for-synapse-sql"></a>Osvědčené postupy vývoje pro synapse SQL
 Tento článek popisuje doprovodné materiály a osvědčené postupy při vývoji řešení datového skladu. 
@@ -106,7 +106,7 @@ Vzhledem k tomu, že jsou důležité segmenty columnstore s vysokou kvalitou, j
 Vzhledem k tomu, že tabulky columnstore obecně neobsahují data do komprimovaného segmentu columnstore, dokud nebude existovat více než 1 000 000 řádků na tabulku a každá tabulka fondu SQL je rozdělena do 60 tabulek, tabulky columnstore nebudou využívat dotaz, pokud tabulka neobsahuje více než 60 000 000 řádků.  
 
 > [!TIP]
-> Pro tabulky s méně než 60 000 000 řádky nemusí být optimálním řešením columstore index.  
+> Pro tabulky, které mají méně než 60 000 000 řádků, nemusí mít index columnstore optimální řešení.  
 
 Kromě toho, pokud svá data dělíte, pamatujte na to, že každý oddíl musí mít alespoň 1 milion řádků, abyste využili výhod clusterovaného indexu columnstore.  Pokud má tabulka 100 oddílů, bude muset mít aspoň 6 000 000 000 řádků, abyste využili výhod clusterovaného úložiště sloupců (60 distribuce *100 oddíly* řádky 1 000 000).  
 
@@ -150,7 +150,7 @@ Pokud je to možné, můžete připravit soubory pro lepší výkon:
 
 Data jsou často organizována v oddílech. SQL na vyžádání můžete dát zadat dotaz na konkrétní složky a soubory. Tím se sníží počet souborů a množství dat, které musí dotaz číst a zpracovat. 
 
-V důsledku toho dosáhnete lepšího výkonu. Další informace najdete v tématu funkce [filename](develop-storage-files-overview.md#filename-function) a [FilePath](develop-storage-files-overview.md#filepath-function) a příklady, jak [zadávat dotazy na konkrétní soubory](query-specific-files.md).
+V důsledku toho dosáhnete lepšího výkonu. Další informace najdete v tématu funkce [filename](query-data-storage.md#filename-function) a [FilePath](query-data-storage.md#filepath-function) a příklady, jak [zadávat dotazy na konkrétní soubory](query-specific-files.md).
 
 Pokud vaše data v úložišti nejsou rozdělená na oddíly, zvažte jejich dělení, aby bylo možné použít tyto funkce k optimalizaci dotazů, které cílí na tyto soubory.
 

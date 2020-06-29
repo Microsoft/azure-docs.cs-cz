@@ -1,25 +1,14 @@
 ---
 title: Konfigurace a použití veřejných prostředí v Azure DevTest Labs | Microsoft Docs
 description: Tento článek popisuje, jak nakonfigurovat a používat veřejná prostředí (Azure Resource Manager šablony v úložišti Git) v Azure DevTest Labs.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-editor: ''
-ms.assetid: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2020
-ms.author: spelluru
-ms.openlocfilehash: 127a6986e04cf90f69b2a8ec70b90b877e534708
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 61cabdb296c3fff75137c7ce7e87652241fd2926
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84896281"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482662"
 ---
 # <a name="configure-and-use-public-environments-in-azure-devtest-labs"></a>Konfigurace a použití veřejných prostředí v Azure DevTest Labs
 Azure DevTest Labs má [veřejné úložiště Azure Resource Managerch šablon](https://github.com/Azure/azure-devtestlab/tree/master/Environments) , které můžete použít k vytváření prostředí, aniž byste se museli připojovat k externímu zdroji GitHubu sami. Toto úložiště obsahuje často používané šablony, jako je Azure Web Apps, Service Fabric cluster a vývojové prostředí farmy služby SharePoint. Tato funkce je podobná veřejnému úložišti artefaktů, které jsou zahrnuty pro každé testovací prostředí, které vytvoříte. Úložiště prostředí vám umožní rychle začít s předdefinovanými šablonami prostředí s minimálními vstupními parametry, aby vám poskytovala hladké prostředí Začínáme s PaaS prostředky v rámci Labs. 

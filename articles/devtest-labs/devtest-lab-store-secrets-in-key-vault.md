@@ -1,25 +1,14 @@
 ---
 title: Ukládejte tajné klíče v trezoru klíčů v Azure DevTest Labs | Microsoft Docs
 description: Naučte se ukládat tajné klíče do Azure Key Vault a používat je při vytváření virtuálního počítače, vzorce nebo prostředí.
-services: devtest-lab
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.assetid: ''
-ms.service: devtest-lab
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2018
-ms.author: spelluru
-ms.openlocfilehash: 0ca36a7081aaf70ee2045ee7586184c89591df16
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 5714279ef183cb930d643575466dae3d6cb69bba
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84896778"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85481642"
 ---
 # <a name="store-secrets-in-a-key-vault-in-azure-devtest-labs"></a>Ukládejte tajné klíče v trezoru klíčů v Azure DevTest Labs
 Pokud používáte Azure DevTest Labs: heslo pro virtuální počítač s Windows, veřejný klíč SSH pro virtuální počítač se systémem Linux nebo token pro osobní přístup k klonování úložiště Git pomocí artefaktu, může být potřeba zadat složitý tajný klíč. Tajné kódy jsou obvykle dlouhé a mají náhodné znaky. Zadávání těchto údajů může být obtížné a nepohodlné, obzvláště pokud použijete stejný tajný klíč několikrát.

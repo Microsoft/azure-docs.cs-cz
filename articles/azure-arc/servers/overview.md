@@ -9,14 +9,14 @@ ms.author: magoedte
 keywords: Automatizace Azure, DSC, PowerShell, konfigurace požadovaného stavu, Správa aktualizací, sledování změn, inventarizace, Runbooky, Python, grafický, hybridní
 ms.date: 03/24/2020
 ms.topic: overview
-ms.openlocfilehash: c9e69e221dc21baae96ab814cb9fb0b65ce98126
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: e775945526a5453085946ed4eea2a2e19761ba78
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84449477"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482186"
 ---
-# <a name="what-is-azure-arc-for-servers-preview"></a>Co je Azure ARC pro servery (Preview)
+# <a name="what-is-azure-arc-for-servers-preview"></a>Co je Azure ARC pro servery (Preview)?
 
 Azure ARC pro servery (Preview) umožňuje spravovat počítače se systémem Windows a Linux hostované mimo Azure v podnikové síti nebo jiném poskytovateli cloudu, podobně jako při správě nativních virtuálních počítačů Azure. Když je hybridní počítač připojený k Azure, bude se jednat o připojený počítač, který se považuje za prostředek v Azure. Každý připojený počítač má ID prostředku, je spravován jako součást skupiny prostředků v rámci předplatného a přináší výhody standardních konstrukcí Azure, jako je například Azure Policy a použití značek.
 

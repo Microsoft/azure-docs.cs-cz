@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 06/02/2020
+ms.date: 06/19/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 310023893d25a484cf05dac00628c632a4421edb
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.openlocfilehash: d8f65236fee57b4dc3e2bb012d8cdd222f431ec0
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84719032"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482611"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-smartkargo"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s SmartKargo
 
@@ -92,13 +92,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL, adresy URL odpovědi a identifikátoru. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta SmartKargo](https://www.smartkargo.com/company/contact-2/) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-1. V části **podpisový certifikát SAML** kliknutím na tlačítko **Upravit** otevřete dialogové okno **podpisový certifikát SAML** .
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **XML metadata federace** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
 
-    ![Upravit podpisový certifikát SAML](common/edit-certificate.png)
-
-1. V části **podpisový certifikát SAML** zkopírujte **hodnotu kryptografického otisku** a uložte ji do svého počítače.
-
-    ![Kopírovat hodnotu kryptografického otisku](common/copy-thumbprint.png)
+    ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
 1. V části **Nastavení SmartKargo** zkopírujte na základě vašeho požadavku příslušné adresy URL.
 
@@ -136,7 +132,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ## <a name="configure-smartkargo-sso"></a>Konfigurace jednotného přihlašování SmartKargo
 
-Ke konfiguraci jednotného přihlašování na straně **SmartKargo** je potřeba odeslat **hodnotu kryptografického otisku** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory platformy SmartKargo](https://www.smartkargo.com/company/contact-2/). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+Ke konfiguraci jednotného přihlašování na straně **SmartKargo** je potřeba odeslat stažený **soubor XML federačních metadat** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory SmartKargo Platform](https://www.smartkargo.com/company/contact-2/). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
 ### <a name="create-smartkargo-test-user"></a>Vytvořit testovacího uživatele SmartKargo
 

@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: a9368e67abf3c45981cf1f85fe46a2a2799a6877
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: aa7d67cd6bd1bd422bd257b75ac5bde3bd534d7e
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864330"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85481829"
 ---
 # <a name="partitioning-in-azure-cosmos-db"></a>Dělení ve službě Azure Cosmos DB
 
@@ -35,6 +35,14 @@ Další informace o tom, [jak Azure Cosmos DB spravuje oddíly](partition-data.m
 
 ## <a name="choosing-a-partition-key"></a><a id="choose-partitionkey"></a>Výběr klíče oddílu
 
+Klíč oddílu má dvě komponenty: **cestu ke klíči oddílu** a **hodnotu klíče oddílu**. Představte si třeba položku {"userId": "Andrew", "worksFor": "Microsoft"} Pokud jako klíč oddílu zvolíte "userId", budou to tyto dvě komponenty klíče oddílu:
+
+* Cesta ke klíči oddílu (například: "/userId"). Cesta ke klíči oddílu přijímá alfanumerické znaky a znaky podtržítka (_). Můžete také použít vnořené objekty pomocí standardního zápisu cesty (/).
+
+* Hodnota klíče oddílu (například "Andrew"). Hodnota klíče oddílu může být typu String nebo numeric.
+
+Další informace o limitech propustnosti, úložiště a délky klíče oddílu najdete v článku o [kvótách služby Azure Cosmos DB](concepts-limits.md) .
+
 Výběr klíče oddílu je jednoduchá, ale důležitá volba návrhu v Azure Cosmos DB. Jakmile vyberete klíč oddílu, není možné ho změnit na místě. Pokud potřebujete změnit klíč oddílu, měli byste přesunout data do nového kontejneru s novým požadovaným klíčem oddílu.
 
 Pro **všechny** kontejnery by měl klíč oddílu:
@@ -49,7 +57,7 @@ Pokud budete potřebovat [transakce s kyselými položkami](database-transaction
 
 U většiny kontejnerů je výše uvedená kritéria při vybírání klíče oddílu všechno potřeba zvážit. U velkých kontejnerů pro čtení ale můžete chtít zvolit klíč oddílu, který se často objevuje jako filtr v dotazech. Dotazy mohou být [efektivně směrovány pouze na příslušné fyzické oddíly](how-to-query-container.md#in-partition-query) zahrnutím klíče oddílu do predikátu filtru.
 
-Pokud jsou většina požadavků na vaše úlohy dotazy a většina vašich dotazů má pro stejnou vlastnost filtr rovnosti, může být tato vlastnost vhodnou volbou klíče oddílu. Pokud třeba často spustíte dotaz, který filtrujete `UserID`, pak výběrem možnosti `UserID` klíč oddílu snížíte počet [dotazů mezi oddíly](how-to-query-container.md#avoiding-cross-partition-queries).
+Pokud jsou většina požadavků na vaše úlohy dotazy a většina vašich dotazů má pro stejnou vlastnost filtr rovnosti, může být tato vlastnost vhodnou volbou klíče oddílu. Pokud třeba často spustíte dotaz, který filtrujete `UserID` , pak výběrem možnosti `UserID` klíč oddílu snížíte počet [dotazů mezi oddíly](how-to-query-container.md#avoiding-cross-partition-queries).
 
 Pokud je ale váš kontejner malý, pravděpodobně nemáte dostatek fyzických oddílů, abyste se museli starat o dopad na výkon dotazů mezi oddíly. Většina malých kontejnerů v Azure Cosmos DB vyžaduje pouze jeden nebo dva fyzické oddíly.
 

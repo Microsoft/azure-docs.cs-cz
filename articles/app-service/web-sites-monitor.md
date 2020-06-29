@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 7205f8a842f2086b1cf3a6bbf76c2df48ed679e9
-ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
+ms.openlocfilehash: d83aae778c940958d545a9402b09d24a55b1c5a6
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82738095"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482679"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Monitorování aplikací v Azure App Service
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) poskytuje integrované funkce monitorování pro webové aplikace, mobilní aplikace a aplikace API v [Azure Portal](https://portal.azure.com).
@@ -35,7 +35,7 @@ Kvóty pro bezplatné nebo sdílené aplikace jsou:
 | --- | --- |
 | **PROCESOR (krátký)** | Počet PROCESORů povolených pro tuto aplikaci v intervalu 5 minut. Tato kvóta se resetuje každých pět minut. |
 | **CPU (den)** | Celková velikost procesoru povoleného pro tuto aplikaci za den. Tato kvóta se resetuje každých 24 hodin v půlnoci UTC. |
-| **Rezident** | Celková velikost paměti, která je pro tuto aplikaci povolena. |
+| **Memory (Paměť)** | Celková velikost paměti, která je pro tuto aplikaci povolena. |
 | **Šířka pásma** | Celková velikost odchozí šířky pásma, která je pro tuto aplikaci povolená za den. Tato kvóta se resetuje každých 24 hodin v půlnoci UTC. |
 | **Filesystem** | Celková velikost povoleného úložiště. |
 
@@ -58,7 +58,7 @@ Můžete zvýšit nebo odebrat kvóty z aplikace tím, že upgradujete plán App
 ## <a name="understand-metrics"></a>Principy metrik
 
 > [!NOTE]
-> **Využití systému souborů** je nová metrika, která je globálně nasazená, ale neočekávají se žádná data, pokud jste si je nepřidali do seznamu povolených privátních náhledů.
+> **Využití systému souborů** je nová metrika, která je globálně nasazená, ale neočekávají se žádná data, pokud vám nebyl udělen přístup k privátní verzi Preview.
 > 
 
 > [!IMPORTANT]
@@ -68,12 +68,12 @@ Metriky poskytují informace o chování aplikace nebo naplánování App Servic
 
 V případě aplikace jsou dostupné metriky:
 
-| Metrika | Popis |
+| Metric | Popis |
 | --- | --- |
 | **Doba odezvy** | Doba, kterou aplikace bude obsluhovat požadavky (v sekundách). |
 | **Průměrná doba odezvy (nepoužívané)** | Průměrná doba, jakou trvalo, aby aplikace sloužila požadavkům (v sekundách) |
 | **Průměrná pracovní sada paměti** | Průměrná velikost paměti, kterou aplikace používá, v megabajtech (MiB). |
-| **Připojení** | Počet vázaných soketů existujících v izolovaném prostoru (W3wp. exe a jeho podřízených procesech).  Vázaný soket se vytvoří voláním rozhraní API BIND ()/Connect () a zůstane až do chvíle, kdy je tento soket uzavřený pomocí CloseHandle ()/closesocket (). |
+| **Připojení** | Počet vázaných soketů existujících v izolovaném prostoru (w3wp.exe a jeho podřízených procesech).  Vázaný soket se vytvoří voláním rozhraní API BIND ()/Connect () a zůstane až do chvíle, kdy je tento soket uzavřený pomocí CloseHandle ()/closesocket (). |
 | **Čas procesoru** | Množství procesoru spotřebovaného aplikací v řádu sekund Další informace o této metrikě najdete v části [čas procesoru vs. procento využití procesoru](#cpu-time-vs-cpu-percentage). |
 | **Aktuální sestavení** | Aktuální počet sestavení načtených napříč všemi doménami AppDomain v této aplikaci. |
 | **Data v** | Množství příchozí šířky pásma spotřebované aplikací v souboru MiB. |
@@ -112,7 +112,7 @@ V případě plánu App Service jsou dostupné metriky:
 > Metriky plánu App Service jsou dostupné jenom pro plány v úrovních *Basic*, *Standard*a *Premium* .
 > 
 
-| Metrika | Popis |
+| Metric | Popis |
 | --- | --- |
 | **Procento využití procesoru** | Průměrně využitý procesor napříč všemi instancemi plánu. |
 | **Procento paměti** | Průměrná paměť využitá ve všech instancích plánu. |
@@ -138,13 +138,13 @@ Pokud chcete zkontrolovat stav různých kvót a metrik, které mají vliv na ap
 
 ![Graf kvót v Azure Portal][quotas]
 
-Pokud chcete najít kvóty, vyberte **Nastavení** > **kvóty**. V grafu můžete zkontrolovat: 
+Pokud chcete najít kvóty, vyberte **Nastavení**  >  **kvóty**. V grafu můžete zkontrolovat: 
 1. Název kvóty
 1. Interval jeho resetování.
 1. Jeho aktuální limit.
 1. Její aktuální hodnota.
 
-![Graf metriky v Azure Portal][metrics] můžete získat přístup k metrikám přímo ze stránky **Přehled** prostředků. Tady uvidíte grafy reprezentující některé metriky aplikací.
+![Graf metriky v Azure Portal ][metrics] můžete získat přístup k metrikám přímo ze stránky **Přehled** prostředků. Tady uvidíte grafy reprezentující některé metriky aplikací.
 
 Kliknutím na některý z těchto grafů přejdete k zobrazení metrik, kde můžete vytvářet vlastní grafy, dotazovat se na různé metriky a mnohem víc. 
 

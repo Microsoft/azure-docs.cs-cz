@@ -1,25 +1,14 @@
 ---
 title: Přidání úložiště Git do testovacího prostředí v Azure DevTest Labs | Microsoft Docs
 description: Naučte se, jak do Azure DevTest Labs přidat úložiště GitHubu nebo Azure DevOps Services úložiště Git pro vlastní zdroj artefaktů.
-services: devtest-lab,virtual-machines,visual-studio-online
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.assetid: 01b459f7-eaf2-45a8-b4b5-2c0a821b33c8
-ms.service: devtest-lab
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
-ms.author: spelluru
-ms.openlocfilehash: 1e7587c60e180fb35e1a2bed735b053b6b0c388a
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 225aae5e0a017b711f29a47829b06f8bb7a6a8ee
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84895623"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483138"
 ---
 # <a name="add-a-git-repository-to-store-custom-artifacts-and-resource-manager-templates"></a>Přidání úložiště Git pro uložení vlastních artefaktů a šablon Správce prostředků
 

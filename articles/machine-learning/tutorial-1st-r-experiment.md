@@ -10,17 +10,17 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: dea5b3fb6cf20924666668e59e370399664d6b28
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: d95c0fc9baf1e53e6643660726c72660719908ba
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684751"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483376"
 ---
-# <a name="tutorial-use-r-to-create-a-machine-learning-model"></a>Kurz: použití jazyka R k vytvoření modelu Machine Learning
+# <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>Kurz: použití R k vytvoření modelu Machine Learning (Preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-V tomto kurzu použijete sadu Azure Machine Learning R SDK k vytvoření modelu logistické regrese, který předpovídá pravděpodobnost závažnosti při havárii auta. Uvidíte, jak Azure Machine Learning prostředky cloudu fungují s R, abyste zajistili škálovatelné prostředí pro školení a nasazení modelu.  
+V tomto kurzu použijete Azure Machine Learning R SDK (Preview) k vytvoření modelu logistické regrese, který předpovídá pravděpodobnost závažnosti při havárii auta. Uvidíte, jak Azure Machine Learning prostředky cloudu fungují s R, abyste zajistili škálovatelné prostředí pro školení a nasazení modelu.  
 
 V tomto kurzu provedete následující úlohy:
 > [!div class="checklist"]
@@ -73,7 +73,7 @@ Dokončili jste následující postup experimentování a spouštění v sadě A
 
 1. Seznam složek zobrazuje každého uživatele, který přistupuje k pracovnímu prostoru.  Vyberte složku, do které chcete naklonovat složku **Vignettes** .
 
-## <a name="a-nameopenopen-rstudio"></a><a name="open">Otevřít RStudio
+## <a name="open-rstudio"></a><a name="open"></a>Otevřít RStudio
 
 Ke spuštění tohoto kurzu použijte RStudio na výpočetní instanci nebo na virtuálním počítači poznámkového bloku.  
 
@@ -89,7 +89,7 @@ Ke spuštění tohoto kurzu použijte RStudio na výpočetní instanci nebo na v
 > Zbývající část tohoto článku obsahuje stejný obsah, jaký vidíte v tématu *výuka a nasazení-do-ACI. Soubor RMD* Pokud máte zkušenosti s RMarkdown, můžete použít kód z tohoto souboru.  Nebo můžete zkopírovat nebo vložit fragmenty kódu z nebo z tohoto článku do skriptu R nebo příkazového řádku.  
 
 
-## <a name="set-up-your-development-environment"></a>Nastavíte vývojové prostředí
+## <a name="set-up-your-development-environment"></a>Nastavení vývojového prostředí
 Nastavení pro vývojovou práci v tomto kurzu zahrnuje následující akce:
 
 * Instalace požadovaných balíčků
@@ -124,7 +124,7 @@ library(azuremlsdk)
 Skripty pro školení a bodování ( `accidents.R` a `accident_predict.R` ) mají nějaké další závislosti. Pokud plánujete spouštět tyto skripty místně, ujistěte se, že máte také tyto požadované balíčky.
 
 ### <a name="load-your-workspace"></a>Načtení pracovního prostoru
-Vytvořte instanci objektu pracovního prostoru z existujícího pracovního prostoru. Následující kód načte podrobnosti pracovního prostoru ze souboru **config. JSON** . Pracovní prostor můžete také načíst pomocí [`get_workspace()`](https://azure.github.io/azureml-sdk-for-r/reference/get_workspace.html) .
+Vytvořte instanci objektu pracovního prostoru z existujícího pracovního prostoru. Následující kód načte podrobnosti pracovního prostoru z **config.jsv** souboru. Pracovní prostor můžete také načíst pomocí [`get_workspace()`](https://azure.github.io/azureml-sdk-for-r/reference/get_workspace.html) .
 
 ```R
 ws <- load_workspace_from_config()
