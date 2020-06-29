@@ -1,24 +1,14 @@
 ---
 title: Povolit grafický vzdálenou plochu pro Linux v Azure Lab Services | Microsoft Docs
 description: Přečtěte si, jak povolit vzdálenou plochu pro virtuální počítače se systémem Linux v testovacím prostředí v Azure Lab Services.
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2020
-ms.author: spelluru
-ms.openlocfilehash: 05597f91a70a61ab791a7bd98a64294b60cc6dde
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 4f50510adf978aeb63b2b5337d21e6f9dec76196
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84895882"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445759"
 ---
 # <a name="enable-graphical-remote-desktop-for-linux-virtual-machines-in-azure-lab-services"></a>Povolení grafické vzdálené plochy pro virtuální počítače se systémem Linux v Azure Lab Services
 V tomto článku se dozvíte, jak provádět následující úlohy:

@@ -1,24 +1,14 @@
 ---
 title: Připojení nebo odpojení Galerie sdílených imagí v Azure Lab Services | Microsoft Docs
 description: Tento článek popisuje, jak připojit galerii sdílených imagí k testovacímu prostředí učebny v Azure Lab Services.
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 05/28/2020
-ms.author: spelluru
-ms.openlocfilehash: 5574b490ddf949ce0eaac6ccbed436890fe40f2e
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: e0b29bcabe1cfb234b422982c0f8faab49c30796
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84896043"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445351"
 ---
 # <a name="attach-or-detach-a-shared-image-gallery-in-azure-lab-services"></a>Připojení nebo odpojení Galerie sdílených imagí v Azure Lab Services
 V tomto článku se dozvíte, jak připojit nebo odpojit galerii sdílených imagí k účtu testovacího prostředí. 

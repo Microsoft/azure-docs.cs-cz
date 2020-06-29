@@ -1,24 +1,14 @@
 ---
 title: Konfigurace automatického vypnutí virtuálních počítačů v Azure Lab Services
 description: Tento článek popisuje, jak nakonfigurovat automatické vypínání virtuálních počítačů v účtu testovacího prostředí.
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2020
-ms.author: spelluru
-ms.openlocfilehash: 787b9aa3738335ee0261ab94253cf828c232bd44
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 783e3b310b3ad06f637453f0e1b11f6a78beec3a
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84896015"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445810"
 ---
 # <a name="configure-automatic-shutdown-of-vms-on-disconnect-setting-for-a-lab-account"></a>Konfigurace automatického vypnutí virtuálních počítačů při nastavení odpojení pro účet testovacího prostředí
 Po odpojení připojení ke vzdálené ploše můžete povolit nebo zakázat automatické vypnutí virtuálních počítačů s Windows Lab (šablona nebo student). Můžete také určit, jak dlouho mají služby testovacího prostředí čekat, než se uživatel znovu připojí, než se automaticky vypíná.

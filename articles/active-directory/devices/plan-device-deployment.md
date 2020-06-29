@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97ddc91b5e49cafa87b90113f0160d8aec9c699a
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: aab57d48e8bd95f1ce2aec2dde42303d5d991a58
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85360312"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85444246"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>Plánování nasazení zařízení Azure Active Directory
 
@@ -42,7 +42,7 @@ Než začnete, ujistěte se, že jste obeznámeni s [přehledem správy identit 
 
 Klíčové výhody poskytování identity Azure AD pro vaše zařízení:
 
-* Zvyšte produktivitu – pomocí Azure AD můžou vaši uživatelé dělat [bezproblémové přihlašování (SSO)](/azuread-join-sso.md) k místním i cloudovým prostředkům, což jim umožní zajistit jejich produktivitu bez ohledu na to, kde jsou.
+* Zvyšte produktivitu – pomocí Azure AD můžou vaši uživatelé dělat [bezproblémové přihlašování (SSO)](./azuread-join-sso.md) k místním i cloudovým prostředkům, což jim umožní zajistit jejich produktivitu bez ohledu na to, kde jsou.
 
 * Zvýšení zabezpečení – zařízení Azure AD umožňují použít [zásady podmíněného přístupu (CA)](../conditional-access/require-managed-devices.md) na prostředky na základě identity zařízení nebo uživatele. Zásady certifikační autority mohou nabídnout dodatečnou ochranu pomocí [Azure AD Identity Protection](../identity-protection/overview-identity-protection.md). Předpokladem pro zvýšení zabezpečení pomocí strategie [ověřování bez hesla](../authentication/concept-authentication-passwordless.md) je připojení zařízení k Azure AD.
 

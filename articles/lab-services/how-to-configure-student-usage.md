@@ -1,24 +1,14 @@
 ---
 title: Konfigurace nastavení využití v učebně Labs Azure Lab Services
 description: Přečtěte si, jak nakonfigurovat počet studentů pro testovací prostředí, jak je zaregistrované v testovacím prostředí, určete počet hodin, po které může virtuální počítač používat, a další.
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 02/20/2020
-ms.author: spelluru
-ms.openlocfilehash: 4dfaaf750c80198000ef08af4dff90c41a46f094
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 229147891d1456d7b7b11fd5297755842d85e600
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84896022"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445946"
 ---
 # <a name="add-and-manage-lab-users"></a>Přidání a správa uživatelů testovacího prostředí
 

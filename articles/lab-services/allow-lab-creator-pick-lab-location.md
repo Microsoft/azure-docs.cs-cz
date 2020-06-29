@@ -1,24 +1,14 @@
 ---
 title: Umožňuje tvůrci testovacího prostředí vybrat umístění v Azure Lab Services
 description: Tento článek popisuje, jak může správce účtu testovacího prostředí dovolit tvůrcům testovacího prostředí vybrat umístění pro své laboratoře.
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2020
-ms.author: spelluru
-ms.openlocfilehash: 8d11b0fcf57be35d5a47d720a07fa274acc05b35
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 3b6c2d83414b1abc763755fbf15402b122c2186b
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84899134"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85444195"
 ---
 # <a name="allow-lab-creator-to-pick-location-for-the-lab-in-azure-lab-services"></a>Umožňuje tvůrci testovacího prostředí vybrat umístění pro testovací prostředí v Azure Lab Services
 V Azure Lab Services může vlastník účtu testovacího prostředí dovolit tvůrcům testovacího prostředí (pedagogům) vybrat umístění pro testovací prostředí, které vytvoří. Toto umístění se může lišit od umístění účtu testovacího prostředí. Umístění je skupina oblastí Azure. Například umístění USA je skupina oblastí, například Východní USA, Západní USA a tak dále. 

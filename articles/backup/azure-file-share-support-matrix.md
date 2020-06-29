@@ -4,12 +4,12 @@ description: Obsahuje souhrn nastavení podpory a omezení při zálohování sd
 ms.topic: conceptual
 ms.date: 5/07/2020
 ms.custom: references_regions
-ms.openlocfilehash: 72492ea77534b636d90820c96e36163e6c6efebe
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: 3d9c9e4518ea6cd53c1f1d5e4a50040e3cf025b4
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488456"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85443311"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Matice podpory pro zálohování sdílených složek Azure
 
@@ -31,7 +31,8 @@ Středozápadní USA, Austrálie – jihovýchod, Kanada – střed
 | ------------------------ | ------------------------------------------------------------ |
 | Druh účtu            | Azure Backup podporuje sdílené složky Azure, které jsou k dispozici v obecných účelech V1, pro obecné účely v2 a na typech úložiště souborů. |
 | Výkon              | Azure Backup podporuje sdílení souborů v účtech Standard a Premium Storage. |
-| Replikace              | Sdílené složky Azure Files v účtech úložiště s libovolným typem replikace jsou podporované. |
+| Replikace              | Podpora sdílených složek Azure v účtech úložiště s jakýmkoli typem replikace je podporovaná. |
+| Povolená brána firewall         | Sdílené složky Azure v účtech úložiště s pravidly brány firewall, které umožňují Microsoft Azure služby pro přístup k účtu úložiště, jsou podporované.|
 
 ## <a name="supported-file-shares"></a>Podporované sdílené složky
 
@@ -46,8 +47,10 @@ Středozápadní USA, Austrálie – jihovýchod, Kanada – střed
 
 | Nastavení                                                      | Omezení |
 | ------------------------------------------------------------ | ----- |
-| Maximální počet sdílených složek, které je možné chránit za den na jeden trezor | 200   |
+| Maximální počet sdílených složek, které je možné chránit na trezor za den| 200   |
 | Maximální počet účtů úložiště, které se dají registrovat na trezor za den | 50    |
+| Maximální počet sdílených složek, které se dají chránit na jeden trezor | 2000   |
+| Maximální počet účtů úložiště, které se můžou registrovat na jeden trezor | 200   |
 
 ## <a name="backup-limits"></a>Omezení zálohování
 

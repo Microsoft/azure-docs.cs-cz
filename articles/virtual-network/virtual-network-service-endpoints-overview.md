@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: 3e17df2a3c92d24a7fa662fbf92f8c89b434eb0d
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 692d86fa27ea42df6fe1128b64e408a5d4a4d08b
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85338225"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85444450"
 ---
 # <a name="virtual-network-service-endpoints"></a>Koncové body služby pro virtuální síť
 
@@ -90,7 +90,7 @@ Koncové body služby poskytují následující výhody:
 
 ### <a name="considerations"></a>Požadavky
 
-- Po povolení koncového bodu služby zdrojové IP adresy virtuálních počítačů v přepínači podsítě. Zdrojová IP adresa se při komunikaci se službou z dané podsítě přepne z použití veřejných adres IPv4 na používání jejich privátní IPv4 adresy. Během tohoto přepnutí se ukončí všechna existující otevřená připojení TCP ke službě. Při povolování nebo zakazování koncového bodu služby pro podsíť se ujistěte, že nejsou spuštěné žádné důležité úlohy. Také se ujistěte, že se vaše aplikace můžou po přepnutí IP adres automaticky připojit ke službám Azure.
+- Po povolení koncového bodu služby se zdrojová IP adresa přepne z použití veřejných IPv4 adres na používání jejich privátní IPv4 adresy při komunikaci se službou z této podsítě. Během tohoto přepnutí se ukončí všechna existující otevřená připojení TCP ke službě. Při povolování nebo zakazování koncového bodu služby pro podsíť se ujistěte, že nejsou spuštěné žádné důležité úlohy. Také se ujistěte, že se vaše aplikace můžou po přepnutí IP adres automaticky připojit ke službám Azure.
 
   Přepnutí IP adres ovlivní pouze provoz služeb z vaší virtuální sítě. Neexistuje žádný vliv na žádný jiný provoz adresovaný na veřejné IPv4 adresy přiřazené vašim virtuálním počítačům nebo z nich. Pokud máte pro služby Azure existující pravidla brány firewall používající veřejné IP adresy Azure, tato pravidla s přepnutím na privátní adresy virtuální sítě přestanou fungovat.
 - S koncovými body služby zůstávají záznamy DNS pro služby Azure tak, jak jsou, a nadále se překládají na veřejné IP adresy přiřazené službě Azure.

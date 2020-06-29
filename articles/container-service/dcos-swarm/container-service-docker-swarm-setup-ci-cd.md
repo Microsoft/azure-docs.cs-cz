@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/08/2016
 ms.author: jucoriol
 ms.custom: mvc
-ms.openlocfilehash: 11a6debe735459b617f6f93c3f67a32350dd4623
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ded7d1b6a5f353c009b5c56bcaabe96baf424c51
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76549049"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445402"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-azure-devops-services"></a>ZASTARALÉ Úplný kanál CI/CD pro nasazení aplikace s více kontejnery na Azure Container Service s využitím Docker Swarm pomocí Azure DevOps Services
 
@@ -80,7 +80,7 @@ Nastavte připojení mezi Azure DevOps Services projektu a vaším účtem GitHu
 
     ![Azure DevOps Services – externí připojení](./media/container-service-docker-swarm-setup-ci-cd/vsts-services-menu.png)
 
-1. Na levé straně klikněte na **Nový koncový bod** > služby**GitHub**.
+1. Na levé straně klikněte na **Nový koncový bod služby**  >  **GitHub**.
 
     ![Azure DevOps Services – GitHub](./media/container-service-docker-swarm-setup-ci-cd/vsts-github.png)
 
@@ -171,15 +171,15 @@ Musíte přidat dva kroky Docker pro každý obrázek, jednu pro sestavení imag
 
 ## <a name="step-3-create-the-release-pipeline"></a>Krok 3: vytvoření kanálu pro vydávání verzí
 
-Azure DevOps Services umožňuje [správu vydaných verzí napříč prostředími](https://www.visualstudio.com/team-services/release-management/). Průběžné nasazování můžete povolit, abyste se ujistili, že vaše aplikace je nasazená v různých prostředích (například vývoj, testování, předprodukční a produkční prostředí) plynule. Můžete vytvořit nové prostředí, které představuje váš cluster Azure Container Service Docker Swarm.
+Azure DevOps Services umožňuje [správu vydaných verzí napříč prostředími](https://azure.microsoft.com/services/devops/pipelines/). Průběžné nasazování můžete povolit, abyste se ujistili, že vaše aplikace je nasazená v různých prostředích (například vývoj, testování, předprodukční a produkční prostředí) plynule. Můžete vytvořit nové prostředí, které představuje váš cluster Azure Container Service Docker Swarm.
 
 ![Azure DevOps Services – vydání na službu ACS](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-acs.png) 
 
 ### <a name="initial-release-setup"></a>Instalace počáteční verze
 
-1. Chcete-li vytvořit kanál verze, klikněte na tlačítko **verze** > **a verze** .
+1. Chcete-li vytvořit kanál verze, klikněte na tlačítko **verze**  >  **a verze** .
 
-1. Pokud chcete nakonfigurovat zdroj artefaktů, klikněte na **artefakty** > **propojit se zdrojem artefaktu**. Zde propojte tento nový kanál verze se sestavením, které jste definovali v předchozím kroku. Tím dojde k tomu, že soubor Docker-Compose. yml je k dispozici v procesu vydávání verzí.
+1. Pokud chcete nakonfigurovat zdroj artefaktů, klikněte na **artefakty**  >  **propojit se zdrojem artefaktu**. Zde propojte tento nový kanál verze se sestavením, které jste definovali v předchozím kroku. Tím dojde k tomu, že soubor Docker-Compose. yml je k dispozici v procesu vydávání verzí.
 
     ![Azure DevOps Services – artefakty vydaných verzí](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-artefacts.png) 
 
@@ -201,13 +201,13 @@ Pracovní postup vydání se skládá ze dvou úloh, které přidáte.
 
     Příkaz spuštěný v hlavním serveru používá rozhraní Docker CLI a rozhraní příkazového řádku Docker, které provádí následující úlohy:
 
-   - Přihlaste se ke službě Azure Container Registry (používá tři sestavení variab'les, která jsou definovaná na kartě **proměnné** ).
+   - Přihlaste se ke službě Azure Container Registry (používá tři proměnné sestavení, které jsou definovány na kartě **proměnné** ).
    - Zadejte **DOCKER_HOST** proměnnou pro práci s koncovým bodem Swarm (: 2375)
    - Přejděte do složky pro *nasazení* , kterou vytvořila předchozí úloha zabezpečeného kopírování a která obsahuje soubor Docker-Compose. yml. 
    - Spusťte `docker-compose` příkazy, které vyžádají nové image, zastavte služby, odeberte služby a vytvořte kontejnery.
 
      >[!IMPORTANT]
-     > Jak je znázorněno na předchozí obrazovce, nechejte políčko **při selhání u stderr** nezaškrtnuté. Toto je důležité nastavení, protože `docker-compose` tisk několika diagnostických zpráv, jako jsou například kontejnery, jsou zastaveny nebo odstraňovány na standardním výstupu chyby. Pokud zaškrtnete toto políčko, Azure DevOps Services oznamuje, že při vydání došlo k chybám, i když vše bude dobré.
+     > Jak je znázorněno na předchozí obrazovce, nechejte políčko **při selhání u stderr** nezaškrtnuté. Toto je důležité nastavení, protože `docker-compose` Tisk několika diagnostických zpráv, jako jsou například kontejnery, jsou zastaveny nebo odstraňovány na standardním výstupu chyby. Pokud zaškrtnete toto políčko, Azure DevOps Services oznamuje, že při vydání došlo k chybám, i když vše bude dobré.
      >
 1. Uložte tento nový kanál pro vydávání verzí.
 

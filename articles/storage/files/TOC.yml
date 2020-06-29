@@ -147,7 +147,7 @@
               href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Ověření
       items:
-        - name: Povolení místní autorizace a ověřování
+        - name: Povolení místní autorizace a ověřování AD DS
           items:
             - name: Přehled AD DS
               href: storage-files-identity-auth-active-directory-enable.md

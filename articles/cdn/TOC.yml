@@ -12,8 +12,8 @@
       href: cdn-create-a-storage-account-with-cdn.md
     - name: Vytvoření koncového bodu a profilu
       href: cdn-create-new-endpoint.md
-    - name: Vytvoření profilu pomocí šablony Azure Resource Manageru
-      href: create-profile-resource-manager-template.md
+    - name: Vytvoření koncového bodu a profilu – šablona ARM
+      href: create-profile-endpoint-template.md
 - name: Kurzy
   items:
     - name: Přidání Azure CDN do webové aplikace

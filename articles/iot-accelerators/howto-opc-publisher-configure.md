@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 0ebbf0d41c05f71c571d9665903ba4ba44f71bd0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2128fee29e64c58a8066a681776fb509b3e31b6f
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77198799"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445691"
 ---
 # <a name="configure-opc-publisher"></a>Konfigurace vydavatele OPC
 
@@ -31,7 +31,7 @@ Tato část popisuje možnosti konfigurace publikování uzlu OPC UA pomocí kon
 
 ### <a name="use-a-configuration-file-to-configure-publishing-data-changes"></a>Konfigurace změn dat publikování pomocí konfiguračního souboru
 
-Nejjednodušší způsob, jak nakonfigurovat uzly OPC UA na publikování, je pomocí konfiguračního souboru. Formát konfiguračního souboru je popsán v souboru [publishednodes. JSON](https://github.com/Azure/iot-edge-opc-publisher/blob/master/opcpublisher/publishednodes.json) v úložišti.
+Nejjednodušší způsob, jak nakonfigurovat uzly OPC UA na publikování, je pomocí konfiguračního souboru. Formát konfiguračního souboru je popsán v části [publishednodes.js](https://github.com/Azure/iot-edge-opc-publisher/blob/master/opcpublisher/publishednodes.json) v úložišti.
 
 Syntaxe konfiguračního souboru se v průběhu času změnila. OPC Publisher pořád čte staré formáty, ale převede je do nejnovějšího formátu, když se konfigurace uchovává.
 
@@ -58,7 +58,7 @@ Následující příklad ukazuje formát konfiguračního souboru:
 
 Pokud chcete publikovat události OPC UA, použijte stejný konfigurační soubor jako u změn dat.
 
-Následující příklad ukazuje, jak konfigurovat publikování pro události vygenerované [SimpleEvents serverem](https://github.com/OPCFoundation/UA-.NETStandard/tree/master/SampleApplications/Workshop/SimpleEvents/Server). Server SimpleEvents najdete v [úložišti OPC Foundation](https://github.com/OPCFoundation/UA-.NETStandard) :
+Následující příklad ukazuje, jak konfigurovat publikování pro události vygenerované [SimpleEvents serverem](https://github.com/OPCFoundation/UA-.NETStandard-Samples/tree/master/Workshop/SimpleEvents/Server). Server SimpleEvents najdete v [úložišti OPC Foundation](https://github.com/OPCFoundation/UA-.NETStandard-Samples) :
 
 ```json
 [
@@ -116,7 +116,7 @@ Tato část popisuje volání metod, která můžete použít ke konfiguraci vyd
 
 ### <a name="configure-using-opc-ua-method-calls"></a>Konfigurace pomocí volání metod OPC UA
 
-Vydavatel OPC zahrnuje server OPC UA, který je k dispozici na portu 62222. Pokud je název hostitele **vydavatelem**, pak identifikátor URI koncového `opc.tcp://publisher:62222/UA/Publisher`bodu je:.
+Vydavatel OPC zahrnuje server OPC UA, který je k dispozici na portu 62222. Pokud je název hostitele **vydavatelem**, pak identifikátor URI koncového bodu je: `opc.tcp://publisher:62222/UA/Publisher` .
 
 Tento koncový bod zpřístupňuje následující čtyři metody:
 

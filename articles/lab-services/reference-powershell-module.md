@@ -1,24 +1,14 @@
 ---
 title: Modul PowerShell pro Azure Lab Services | Microsoft Docs
 description: Tento článek poskytuje informace o modulu PowerShellu, který pomáhá spravovat artefakty v Azure Lab Services.
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2019
-ms.author: spelluru
-ms.openlocfilehash: cc82355ee43f9fee4f9c2e1bb1bcc0481e4dcea3
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: d9c184f3917be378eb77d1bf4096bfebb5ee1884
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84895301"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445589"
 ---
 # <a name="azlabservices-powershell-module-preview"></a>Modul PowerShellu Az.LabServices (Preview)
 AZ. LabServices je modul prostředí PowerShell, který zjednodušuje správu Azure Lab Services. Poskytuje funkce pro vytváření, dotazování, aktualizaci a odstraňování účtů testovacího prostředí, cvičení, virtuálních počítačů a imagí. Další informace o tomto modulu najdete na [domovské stránce AZ. LabServices na GitHubu](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Modules/Library).

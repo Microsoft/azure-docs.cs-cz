@@ -2,13 +2,13 @@
 title: Propojení šablon pro nasazení
 description: Popisuje způsob použití propojených šablon v šabloně Azure Resource Manager k vytvoření modulárního řešení šablon. Ukazuje, jak předat hodnoty parametrů, určit soubor parametrů a dynamicky vytvořené adresy URL.
 ms.topic: conceptual
-ms.date: 04/29/2020
-ms.openlocfilehash: 5ade39d014ca309796813cc6ff9259bcc8bdd17b
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.date: 06/26/2020
+ms.openlocfilehash: d8e9617fca38ca2b1f16ba2c6c1599e3663347e7
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194072"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445181"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Použití propojené a vnořené šablony při nasazování prostředků Azure
 
@@ -34,9 +34,9 @@ Chcete-li vnořit šablonu, přidejte do hlavní šablony [prostředek nasazení
   "variables": {},
   "resources": [
     {
-      "name": "nestedTemplate1",
-      "apiVersion": "2019-10-01",
       "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-10-01",
+      "name": "nestedTemplate1",
       "properties": {
         "mode": "Incremental",
         "template": {
@@ -63,9 +63,9 @@ Následující příklad nasadí účet úložiště prostřednictvím vnořené
   },
   "resources": [
     {
-      "name": "nestedTemplate1",
-      "apiVersion": "2019-10-01",
       "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-10-01",
+      "name": "nestedTemplate1",
       "properties": {
         "mode": "Incremental",
         "template": {
@@ -313,8 +313,6 @@ Při odkazování na propojenou šablonu `uri` nemůže být hodnota nesmí být
 > [!NOTE]
 >
 > Můžete odkazovat na šablony pomocí parametrů, které jsou nakonec vyřešeny na něco, co používá **protokol HTTP** nebo **https**, například pomocí parametru, například `_artifactsLocation` :`"uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]",`
-
-
 
 Správce prostředků musí být schopné získat přístup k šabloně. Jednou z možností je umístit propojenou šablonu do účtu úložiště a použít identifikátor URI pro tuto položku.
 
@@ -787,7 +785,7 @@ az deployment group create --resource-group ExampleGroup --template-uri $url?$to
 
 Následující příklady znázorňují běžné použití propojených šablon.
 
-|Hlavní šablona  |Odkazovaná šablona |Description  |
+|Hlavní šablona  |Odkazovaná šablona |Popis  |
 |---------|---------| ---------|
 |[Hello World](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[odkazovaná šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | Vrátí řetězec z propojené šablony. |
 |[Load Balancer s veřejnou IP adresou](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[odkazovaná šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |Vrátí veřejnou IP adresu z propojené šablony a nastaví tuto hodnotu v nástroji pro vyrovnávání zatížení. |

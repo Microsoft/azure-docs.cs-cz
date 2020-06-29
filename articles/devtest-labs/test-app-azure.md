@@ -1,23 +1,14 @@
 ---
 title: Jak testovat aplikaci v Azure | Microsoft Docs
 description: Naučte se, jak vytvořit sdílenou složku v testovacím prostředí a připojit ji na místní počítač a virtuální počítač v testovacím prostředí, a potom do sdílené složky nasadit desktopové a webové aplikace a otestovat je.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 09/04/2018
-ms.author: spelluru
-ms.openlocfilehash: 65d7ee23195e69c67d9235aeea9a7a166a3a22c1
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.date: 06/26/2020
+ms.openlocfilehash: 30e77e67a1674b2170c1d1782f1389274afa4c35
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85211523"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476491"
 ---
 # <a name="test-your-app-in-azure"></a>Testování aplikace v Azure 
 Tento článek popisuje kroky pro testování vaší aplikace v Azure pomocí DevTest Labs. Nejdřív nastavíte sdílenou složku v testovacím prostředí a připojíte ji jako jednotku na místním vývojovém počítači a virtuální počítač v testovacím prostředí. Pak použijete Visual Studio 2019 k nasazení aplikace do sdílené složky, abyste mohli aplikaci spustit na virtuálním počítači v testovacím prostředí.  

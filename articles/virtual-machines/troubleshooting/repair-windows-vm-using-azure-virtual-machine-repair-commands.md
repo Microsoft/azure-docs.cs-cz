@@ -14,19 +14,25 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
-ms.openlocfilehash: b754c9e02567939569bf2ef59359dbb2614a6647
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: f23df5924354fa688743d29919095413ec12ce18
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219895"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85444348"
 ---
 # <a name="repair-a-windows-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Oprava virtuálního počítače s Windows pomocí příkazů pro opravu virtuálních počítačů Azure
 
 Pokud se ve vašem virtuálním počítači s Windows v Azure vyskytne chyba spuštění nebo disku, možná budete muset na samotném disku provést zmírnění. Běžným příkladem může být neúspěšná aktualizace aplikace, která brání úspěšnému spuštění virtuálního počítače. Tento článek podrobně popisuje, jak pomocí příkazů pro opravu virtuálního počítače Azure připojit disk k jinému virtuálnímu počítači s Windows a opravit případné chyby a pak znovu sestavit původní virtuální počítač.
 
 > [!IMPORTANT]
-> Skripty v tomto článku se vztahují pouze na virtuální počítače, které používají [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
+> * Skripty v tomto článku se vztahují pouze na virtuální počítače, které používají [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
+> * Ke spuštění skriptu se vyžaduje odchozí připojení z virtuálního počítače (port 443).
+> * V jednom okamžiku může běžet jenom jeden skript.
+> * Běžící skript nelze zrušit.
+> * Maximální doba, kterou může skript běžet, je 90 minut, po jejichž uplynutí vyprší časový limit.
+> * U virtuálních počítačů, které používají Azure Disk Encryption, se podporují jenom spravované disky šifrované pomocí šifrování s jedním průchozím řetězcem (s KEK nebo bez nich).
+
 
 ## <a name="repair-process-overview"></a>Přehled procesu opravy
 
@@ -44,12 +50,6 @@ Další dokumentaci a pokyny najdete v tématu [AZ VM Repair](https://docs.micro
 
 ## <a name="repair-process-example"></a>Příklad procesu opravy
 
-> [!NOTE]
-> * Ke spuštění skriptu se vyžaduje odchozí připojení z virtuálního počítače (port 443).
-> * V jednom okamžiku může běžet jenom jeden skript.
-> * Běžící skript nelze zrušit.
-> * Maximální doba, kterou může skript běžet, je 90 minut, po jejichž uplynutí vyprší časový limit.
-
 1. Spuštění služby Azure Cloud Shell
 
    Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Zahrnuje běžné nástroje Azure, které jsou předinstalované a nakonfigurované pro použití s vaším účtem.
@@ -59,6 +59,8 @@ Další dokumentaci a pokyny najdete v tématu [AZ VM Repair](https://docs.micro
    Vyberte **Kopírovat** pro zkopírování bloků kódu, poté vložte kód do Cloud Shell a vyberte **ENTER** pro spuštění.
 
    Pokud dáváte přednost místní instalaci a používání rozhraní příkazového řádku, musíte mít Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu ``az --version``. Pokud potřebujete nainstalovat nebo upgradovat rozhraní příkazového řádku Azure CLI, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+   
+   Pokud se potřebujete přihlásit k Cloud Shell s jiným účtem, než jste aktuálně přihlášení k webu Azure Portal, můžete použít ``az login`` [AZ Login reference](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login).  K přepínání mezi předplatnými přidruženými k vašemu účtu můžete použít ``az account set --subscription`` [odkaz AZ Account set reference](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-set).
 
 2. Pokud příkazy použijete poprvé `az vm repair` , přidejte rozšíření rozhraní příkazového řádku pro opravu virtuálního počítače.
 
@@ -72,7 +74,7 @@ Další dokumentaci a pokyny najdete v tématu [AZ VM Repair](https://docs.micro
    az extension update -n vm-repair
    ```
 
-3. Spusťte `az vm repair create`. Tento příkaz vytvoří kopii disku s operačním systémem pro virtuální počítač bez funkčního fungování, vytvoří opravný virtuální počítač v nové skupině prostředků a připojí kopii disku s operačním systémem.  Opravný virtuální počítač bude mít stejnou velikost a oblast jako zadaný virtuální počítač, který není funkční. Skupina prostředků a název virtuálního počítače použité ve všech krocích budou pro virtuální počítač bez funkčního fungování.
+3. Spusťte `az vm repair create`. Tento příkaz vytvoří kopii disku s operačním systémem pro virtuální počítač bez funkčního fungování, vytvoří opravný virtuální počítač v nové skupině prostředků a připojí kopii disku s operačním systémem.  Opravný virtuální počítač bude mít stejnou velikost a oblast jako zadaný virtuální počítač, který není funkční. Skupina prostředků a název virtuálního počítače použité ve všech krocích budou pro virtuální počítač bez funkčního fungování. Pokud váš virtuální počítač používá Azure Disk Encryption příkaz se pokusí odemknout zašifrovaný disk, aby byl přístupný při připojení k opravnému virtuálnímu počítači.
 
    ```azurecli-interactive
    az vm repair create -g MyResourceGroup -n myVM --repair-username username --repair-password password!234 --verbose

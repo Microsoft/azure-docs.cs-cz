@@ -1,24 +1,14 @@
 ---
 title: Laboratoře učeben v Azure Lab Services – nejčastější dotazy | Microsoft Docs
 description: Tento článek obsahuje odpovědi na nejčastější dotazy týkající se učebn Labs v Azure Lab Services.
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 05/07/2020
-ms.author: spelluru
-ms.openlocfilehash: 11cb0d995537b8979c3727bf508045c6e31fc208
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: ca35d70bc1106e46df4e3c68889b03679fd54b86
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84898966"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85443294"
 ---
 # <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Laboratoře učebny v Azure Lab Services – nejčastější dotazy (FAQ)
 Získejte odpovědi na některé nejčastější dotazy týkající se učebn Labs v Azure Lab Services. 

@@ -242,10 +242,14 @@
           href: enable-diagnostic-logs-topic.md
         - name: Řešení chyb
           href: troubleshoot-errors.md
+        - name: Řešení potíží s připojením k síti
+          href: troubleshoot-network-connectivity.md
         - name: Řešení potíží s ověřováním předplatného
           href: troubleshoot-subscription-validation.md
-        - name: Zobrazení metrik a vytváření upozornění
+        - name: Zobrazit metriky
           href: monitor-event-delivery.md
+        - name: Vytváření upozornění
+          href: set-alerts.md
 - name: Referenční informace
   items:
     - name: Azure CLI

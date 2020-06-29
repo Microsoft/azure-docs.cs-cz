@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/27/2017
 ms.author: dimart
 ms.custom: mvc
-ms.openlocfilehash: 1ec7ece6f5afd1bbd2613ae08af04b82e8a156b2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 81be5c4db21e3a2201b8802a2e796f45494fd0dc
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76277918"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445453"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-azure-devops"></a>ZASTARALÉ Úplný kanál CI/CD pro nasazení aplikace s více kontejnery na Azure Container Service s modulem ACS a režimem Docker Swarm s využitím Azure DevOps
 
@@ -67,7 +67,7 @@ V této části nakonfigurujete organizaci Azure DevOps. Pokud chcete nakonfigur
 
 Nastavte připojení mezi vaším projektem Azure DevOps a vaším účtem Azure.
 
-1. Na levé straně klikněte na **Nový koncový bod** > služby**Azure Resource Manager**.
+1. Na levé straně klikněte na **Nový koncový bod služby**  >  **Azure Resource Manager**.
 2. Pokud chcete autorizovat Azure DevOps pracovat s vaším účtem Azure, vyberte své **předplatné** a klikněte na **OK**.
 
     ![Azure DevOps – autorizace Azure](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-azure.PNG)
@@ -76,7 +76,7 @@ Nastavte připojení mezi vaším projektem Azure DevOps a vaším účtem Azure
 
 Nastavte připojení mezi vaším projektem Azure DevOps a vaším účtem GitHub.
 
-1. Na levé straně klikněte na **Nový koncový bod** > služby**GitHub**.
+1. Na levé straně klikněte na **Nový koncový bod služby**  >  **GitHub**.
 2. Pokud chcete autorizovat Azure DevOps pracovat s vaším účtem GitHubu, klikněte na **autorizovat** a postupujte podle pokynů v okně, které se otevře.
 
     ![Azure DevOps – autorizace GitHubu](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-github.png)
@@ -143,7 +143,7 @@ Pro každý obrázek budete potřebovat dva kroky Docker, jednu pro sestavení i
 
     V případě operace sestavení vyberte Azure Container Registry, akci **sestavení obrázku** a souboru Dockerfile, který definuje jednotlivé obrázky. Nastavte **pracovní adresář** jako kořenový adresář souboru Dockerfile, definujte **název bitové kopie**a vyberte **zahrnout nejnovější značku**.
     
-    Název bitové kopie musí být v tomto formátu: ```$(RegistryURL)/[NAME]:$(Build.BuildId)```. Nahraďte **[name]** názvem Image:
+    Název bitové kopie musí být v tomto formátu: ```$(RegistryURL)/[NAME]:$(Build.BuildId)``` . Nahraďte **[name]** názvem Image:
     - ```proxy```
     - ```products-api```
     - ```ratings-api```
@@ -188,15 +188,15 @@ Pro každý obrázek budete potřebovat dva kroky Docker, jednu pro sestavení i
 
 ## <a name="step-3-create-the-release-pipeline"></a>Krok 3: vytvoření kanálu pro vydávání verzí
 
-Azure DevOps umožňuje [Spravovat verze v různých prostředích](https://www.visualstudio.com/team-services/release-management/). Průběžné nasazování můžete povolit, abyste se ujistili, že vaše aplikace je nasazená v různých prostředích (například vývoj, testování, předprodukční a produkční prostředí) plynule. Můžete vytvořit prostředí, které představuje cluster Azure Container Service Docker Swarm Mode.
+Azure DevOps umožňuje [Spravovat verze v různých prostředích](https://azure.microsoft.com/services/devops/pipelines/). Průběžné nasazování můžete povolit, abyste se ujistili, že vaše aplikace je nasazená v různých prostředích (například vývoj, testování, předprodukční a produkční prostředí) plynule. Můžete vytvořit prostředí, které představuje cluster Azure Container Service Docker Swarm Mode.
 
 ![Azure DevOps – vydání na ACS](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-release-acs.png) 
 
 ### <a name="initial-release-setup"></a>Instalace počáteční verze
 
-1. Chcete-li vytvořit kanál verze, klikněte na tlačítko **verze** > **a verze** .
+1. Chcete-li vytvořit kanál verze, klikněte na tlačítko **verze**  >  **a verze** .
 
-2. Pokud chcete nakonfigurovat zdroj artefaktů, klikněte na **artefakty** > **propojit se zdrojem artefaktu**. Zde propojte tento nový kanál verze se sestavením, které jste definovali v předchozím kroku. Následně je soubor Docker-Compose. yml k dispozici v procesu vydávání verzí.
+2. Pokud chcete nakonfigurovat zdroj artefaktů, klikněte na **artefakty**  >  **propojit se zdrojem artefaktu**. Zde propojte tento nový kanál verze se sestavením, které jste definovali v předchozím kroku. Následně je soubor Docker-Compose. yml k dispozici v procesu vydávání verzí.
 
     ![Azure DevOps – artefakty vydaných verzí](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-release-artefacts.png) 
 

@@ -1,24 +1,15 @@
 ---
 title: Správa nákladů a vlastnictví v Azure DevTest Labs
 description: Tento článek poskytuje informace, které vám pomůžou s optimalizací a vyrovnáním vlastnictví napříč vaším prostředím.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 11/26/2019
-ms.author: spelluru
+ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: b82d338f85f1b43712296ac7f27bdad55f8f1919
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: dbf0bb9cae87a51eb6e0a4fb25c700ec6f423ff1
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84898245"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476253"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---manage-cost-and-ownership"></a>Zásady správného řízení infrastruktury Azure DevTest Labs – Správa nákladů a vlastnictví
 Náklady a vlastnictví jsou primárními aspekty, když zvažte vytvoření vývojových a testovacích prostředí. V této části najdete informace, které vám pomůžou s optimalizací a vyrovnáním vlastnictví napříč vaším prostředím.

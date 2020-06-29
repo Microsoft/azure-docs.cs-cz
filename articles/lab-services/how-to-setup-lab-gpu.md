@@ -1,24 +1,16 @@
 ---
 title: Nastavení testovacího prostředí s grafickými procesory v Azure Lab Services | Microsoft Docs
 description: Přečtěte si, jak nastavit testovací prostředí s virtuálními počítači GPU (Graphics Processing Unit).
-services: lab-services
-documentationcenter: na
 author: nicolela
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 05/28/2020
+ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: 0d42d3292c894aec1deff5da548383499ca50db9
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 63b7a8c58bb6d277233268ed4fc0bc870fdd337f
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85338304"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85443396"
 ---
 # <a name="set-up-a-lab-with-gpu-virtual-machines"></a>Nastavení testovacího prostředí s virtuálními počítači GPU
 

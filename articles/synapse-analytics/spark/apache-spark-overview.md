@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 1f1a83bce3a8b46bb49bf78917690851390408e0
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: 0a9a89b6ff3d0e2d3987d4b4281b9e4e1605475f
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194684"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476780"
 ---
 # <a name="what-is-apache-spark-in-azure-synapse-analytics"></a>Co je Apache Spark ve službě Azure synapse Analytics
 
@@ -32,7 +32,7 @@ Apache Spark poskytuje primitivní prvky pro výpočetní clustery v paměti. Ú
 
 Fondy Spark v Azure synapse nabízejí plně spravovanou službu Spark. Tady jsou uvedené výhody vytvoření fondu Spark v synapse Analytics.
 
-| Funkce | Description |
+| Funkce | Popis |
 | --- | --- |
 | Rychlost a efektivita |Instance Spark začínají přibližně 2 minuty pro méně než 60 uzlů a přibližně 5 minut pro více než 60 uzlů. Instance se ukončí, ve výchozím nastavení 5 minut po poslední provedené úloze, pokud není udržována připojením poznámkového bloku. |
 | Snadné vytvoření |Během několika minut můžete vytvořit nový fond Spark v Azure synapse pomocí Azure Portal, Azure PowerShell nebo sady synapse Analytics .NET SDK. Přečtěte si téma Začínáme [se fondy Spark v synapse Analytics](../quickstart-create-apache-spark-pool-studio.md). |
@@ -60,7 +60,7 @@ SparkContext se může připojit ke Správci clusteru, který přiděluje prost�
 
 SparkContext spustí hlavní funkci uživatele a provede různé paralelní operace na uzlech. Potom SparkContext shromažďuje výsledky těchto operací. Uzly čtou a zapisují data z a do systému souborů. Uzly také v mezipaměti transformují data v paměti jako odolné distribuované datové sady (RDD).
 
-SparkContext se připojuje ke fondu Spark a zodpovídá za převod aplikace do orientovaného grafu (DAG). Graf se skládá z jednotlivých úloh, které se spustí v rámci procesu prováděče na uzlech. Každá aplikace získá vlastní procesy exekutora, které zůstávají v provozu po dobu trvání celé aplikace a spouští úlohy ve více vláknech.
+SparkContext se připojuje ke fondu Spark a zodpovídá za převod aplikace do orientovaného grafu acyklického (DAG). Graf se skládá z jednotlivých úloh, které se spustí v rámci procesu prováděče na uzlech. Každá aplikace získá vlastní procesy exekutora, které zůstávají v provozu po dobu trvání celé aplikace a spouští úlohy ve více vláknech.
 
 ## <a name="apache-spark-in-synapse-analytics-use-cases"></a>Apache Spark v případech použití analýzy synapse
 

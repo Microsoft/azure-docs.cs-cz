@@ -1,24 +1,14 @@
 ---
 title: Určení imagí Marketplace pro testovací prostředí v Azure Lab Services
 description: V tomto článku se dozvíte, jak zadat image na webu Marketplace, které může aplikace Lab Creator použít k vytvoření cvičení v účtu testovacího prostředí v Azure Lab Services.
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 04/10/2020
-ms.author: spelluru
-ms.openlocfilehash: 199f7b3b94a8f7a3f181a82ca0d3350d528d7d8f
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 5a353394fec3dadf0f808a25ec66f6e9028820a3
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84897331"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445606"
 ---
 # <a name="specify-marketplace-images-available-to-lab-creators"></a>Určení imagí Marketplace dostupných pro tvůrci testovacího prostředí
 Jako vlastník účtu testovacího prostředí můžete určit image z Marketplace, které můžou autoři testovacích prostředí použít k vytváření testovacích prostředí v tomto účtu testovacího prostředí. 

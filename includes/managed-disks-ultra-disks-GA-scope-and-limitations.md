@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 06/03/2020
+ms.date: 06/25/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: f66bb1c271418b02c2548de486793b4474f40c8b
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: aa9327bd0ba6763aa4e89630611aabb3c5195655
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84337376"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85448702"
 ---
 V současnosti mají extrémně disky další omezení, jsou následující:
 
@@ -26,10 +26,10 @@ V následující tabulce jsou popsány oblasti Ultra disks jsou k dispozici v n�
 
 |Oblasti  |Počet zón dostupnosti podporujících extrémně disky  |
 |---------|---------|
-|USA (Gov) – Virginia     |Žádné         |
-|USA – středojih     |Žádné         |
+|USA (Gov) – Virginia     |Žádná         |
+|USA – středojih     |Žádná         |
 |USA – střed     |Tři zóny         |
-|USA – západ     |Žádné         |
+|USA – západ     |Žádná         |
 |USA – západ 2    |Tři zóny         |
 |USA – východ     |Tři zóny         |
 |USA – východ 2     |Dvě zóny         |
@@ -38,6 +38,7 @@ V následující tabulce jsou popsány oblasti Ultra disks jsou k dispozici v n�
 |Západní Evropa     |Tři zóny          |
 |Spojené království – jih     |Tři zóny          |
 |Japonsko – východ     |Dvě zóny         |
+|Francie – střed    |Dvě zóny        |
 
 
 - Podporují se jenom na následujících řadách virtuálních počítačů:

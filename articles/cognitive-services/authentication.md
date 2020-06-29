@@ -9,21 +9,20 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: erhopf
-ms.openlocfilehash: d36961a12162a587def76b1ffeb2109f9ed63f4d
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 7c2484892f3de3c8eca3f766793be83bc7a29dc8
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587676"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445538"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Ověřování požadavků do Azure Cognitive Services
 
 Každý požadavek na službu rozpoznávání Azure musí obsahovat hlavičku ověřování. Tato hlavička se předává na klíč předplatného nebo přístupového tokenu, který se používá k ověření předplatného služby nebo skupiny služeb. V tomto článku se dozvíte o třech způsobech ověření žádosti a požadavků na jednotlivé služby.
 
-* [Ověřování pomocí klíče předplatného s jednou službou](#authenticate-with-a-single-service-subscription-key)
-* [Ověřování pomocí klíče předplatného s více službami](#authenticate-with-a-multi-service-subscription-key)
-* [Ověřování pomocí tokenu](#authenticate-with-an-authentication-token)
-* [Ověřování pomocí Azure Active Directory (AAD)](#authenticate-with-azure-active-directory)
+* Ověřování pomocí klíče předplatného s [jednou službou](#authenticate-with-a-single-service-subscription-key) nebo [více službami](#authenticate-with-a-multi-service-subscription-key)
+* Ověřování pomocí [tokenu](#authenticate-with-an-authentication-token)
+* Ověřování pomocí [Azure Active Directory (AAD)](#authenticate-with-azure-active-directory)
 
 ## <a name="prerequisites"></a>Požadavky
 

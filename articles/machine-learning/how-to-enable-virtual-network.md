@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 06/22/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 084c1c604ac780b133f89eaeeb3fa5e780c2d565
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 3189fec114ca68dfd862c0973b289b9eff25fed5
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/26/2020
-ms.locfileid: "85392586"
+ms.locfileid: "85445555"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>Izolace sítě během školení & odvození s privátními virtuálními sítěmi
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -289,7 +289,7 @@ Pokud chcete použít účet úložiště Azure pro pracovní prostor ve virtuá
 
 Při přístupu k studiu z prostředku uvnitř virtuální sítě (například výpočetní instance nebo virtuálního počítače) musíte z virtuální sítě do studia dovolit odchozí přenosy. 
 
-Pokud například používáte skupiny zabezpečení sítě (NSG) k omezení odchozího provozu, přidejte pravidlo do cíle __značky služby__ __AzureFrontDoor. FirstParty__.
+Pokud například používáte skupiny zabezpečení sítě (NSG) k omezení odchozího provozu, přidejte pravidlo do cíle __značky služby__ __AzureFrontDoor. front-end__.
 
 <a id="aksvnet"></a>
 
@@ -464,7 +464,7 @@ Informace o použití Azure Machine Learning s Azure Firewall najdete v tématu 
 
 1. Chcete-li najít název Azure Container Registry pro váš pracovní prostor, použijte jednu z následujících metod:
 
-    __portál Azure__
+    __Azure Portal__
 
     V části Přehled pracovního prostoru se hodnota __registru__ odkazuje na Azure Container Registry.
 

@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/18/2019
+ms.date: 06/25/2020
 ms.author: spelluru
-ms.openlocfilehash: ee9a68df685095244fc9471b7d4ab0f6cee0642d
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 0482a8a5cd16ee52146a5e392f7479a757c96009
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84899478"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85414619"
 ---
 # <a name="tutorial-access-a-lab-in-azure-devtest-labs"></a>Kurz: Přístup k testovacímu prostředí v Azure DevTest Labs
 V tomto kurzu použijete testovací prostředí vytvořené v tématu [Kurz: Vytvoření testovacího prostředí v Azure DevTest Labs](tutorial-create-custom-lab.md).

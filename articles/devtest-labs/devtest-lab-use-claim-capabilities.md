@@ -1,24 +1,14 @@
 ---
 title: Použití schopností deklarace identity v Azure DevTest Labs | Microsoft Docs
 description: Přečtěte si o různých scénářích použití funkcí deklarace identity nebo nedeklarované deklarace identity Azure DevTest Labs
-services: devtest-lab
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: devtest-lab
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2019
-ms.author: spelluru
-ms.openlocfilehash: a15148260bccadc59966c86031100f0e0332b0f9
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 73ed3c0b94a66f5d17b5c8e2561c65bb48579aa1
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84898525"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476525"
 ---
 # <a name="use-claim-capabilities-in-azure-devtest-labs"></a>Použití schopností deklarace identity v Azure DevTest Labs
 Služba Azure DevTest Labs zlepšuje efektivitu a efektivitu vývojářů a testerů. Tento článek se zaměřuje na možnost deklarace nebo nedeklarované virtuální počítače v Azure DevTest Labs. Obsahuje také různé způsoby, kterými tato funkce zlepšuje uživatelské prostředí. Než se pustíte do různých scénářů, kde se tato funkce dá použít, Podívejme se na to, jaká je **deklarace identity** , a jak funguje.

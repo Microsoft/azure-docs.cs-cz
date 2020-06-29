@@ -1,23 +1,14 @@
 ---
 title: Ukládání a distribuce imagí v Azure DevTest Labs | Microsoft Docs
 description: Tento článek popisuje kroky pro uložení vlastních imagí z již vytvořených virtuálních počítačů v Azure DevTest Labs.
-services: devtest-lab, lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: spelluru
-ms.openlocfilehash: e5bc8e5041bfe6d95e3ff1a93bb3338ccead5bb4
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: a5278626f8cdd4299912f3c952786422436fe916
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84898329"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476236"
 ---
 # <a name="save-custom-images-and-distribute-to-multiple-labs"></a>Uložení vlastních imagí a jejich distribuce do několika testovacích prostředí
 Tento článek popisuje kroky pro uložení vlastních imagí z již vytvořených virtuálních počítačů (VM). Také se zabývá tím, jak distribuovat tyto vlastní image do dalších DevTest Labs v organizaci.

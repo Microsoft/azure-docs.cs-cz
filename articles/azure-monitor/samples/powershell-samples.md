@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 2/14/2018
-ms.openlocfilehash: 14fe27c28e2eb6a527dc6f026916002cfb5b0147
-ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
+ms.openlocfilehash: 4313d9fec9e858a5d30cfea2bbe7372e6a96169c
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84945252"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85413888"
 ---
 # <a name="azure-monitor-powershell-samples"></a>Ukázky Azure Monitor PowerShellu
 Tento článek ukazuje ukázky příkazů PowerShellu, které vám pomůžou při přístupu k funkcím Azure Monitor.
@@ -150,7 +150,7 @@ Následující tabulka popisuje parametry a hodnoty používané k vytvoření v
 
 | parameter | hodnota |
 | --- | --- |
-| Name |simpletestdiskwrite |
+| Název |simpletestdiskwrite |
 | Umístění tohoto pravidla výstrahy |USA – východ |
 | ResourceGroup |montest |
 | Parametrem targetresourceid |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
@@ -220,6 +220,10 @@ Set-AzActivityLogAlert -Location 'Global' -Name 'alert on VM create' -ResourceGr
 Další vlastnosti Webhooku jsou volitelné. Obsah upozornění protokolu aktivit můžete získat zpět pomocí `Get-AzActivityLogAlert` .
 
 ## <a name="create-and-manage-autoscale-settings"></a>Vytvoření a Správa nastavení automatického škálování
+
+> [!NOTE] 
+> V případě Cloud Services (Microsoft. ClassicCompute) podporuje automatické škálování časové intervaly 5 minut (PT5M). Pro automatické škálování jiných služeb podporuje časové intervaly minimálně 1 minutu (PT1M).
+
 Prostředek (webová aplikace, virtuální počítač, cloudová služba nebo sada škálování virtuálního počítače) může mít nakonfigurované jenom jedno nastavení automatického škálování.
 Každé nastavení automatického škálování ale může mít několik profilů. Například jeden pro profil škálování založený na výkonu a druhý pro profil založený na plánu. Pro každý profil může být nakonfigurována více pravidel. Další informace o automatickém škálování najdete v tématu věnovaném [automatickému škálování aplikace](../../cloud-services/cloud-services-how-to-scale-portal.md).
 

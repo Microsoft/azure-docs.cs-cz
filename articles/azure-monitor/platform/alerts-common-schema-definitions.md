@@ -5,12 +5,12 @@ author: ofirmanor
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: b8afaae744522bec5675e5a8c17d8b0ea0be0c37
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.openlocfilehash: 951894bcd047d93809b41f47213ad670823a27e0
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85367134"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445368"
 ---
 # <a name="common-alert-schema-definitions"></a>Definice běžných schémat upozornění
 
@@ -71,7 +71,7 @@ Jakákoli instance výstrahy popisuje prostředek, který byl ovlivněn, a pří
 
 ## <a name="essentials"></a>Základy
 
-| Pole | Description|
+| Pole | Popis|
 |:---|:---|
 | alertId | Identifikátor GUID jednoznačně identifikující instanci výstrahy. |
 | alertRule | Název pravidla výstrahy, které vytvořilo instanci výstrahy. |
@@ -180,7 +180,7 @@ Jakákoli instance výstrahy popisuje prostředek, který byl ovlivněn, a pří
                 "value": "INC-Gen2Alert"
             }
         ],
-        "SearchResult": {
+        "SearchResults": {
             "tables": [
                 {
                     "name": "PrimaryResult",
@@ -223,7 +223,7 @@ Jakákoli instance výstrahy popisuje prostředek, který byl ovlivněn, a pří
         ]
     "IncludeSearchResults": "True",
     "AlertType": "Metric measurement"
-    },
+    }
 }
 ```
 

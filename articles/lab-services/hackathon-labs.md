@@ -1,23 +1,14 @@
 ---
 title: Použití Azure Lab Services pro Hackathon
 description: Tento článek popisuje, jak používat Azure Lab Services pro vytváření testovacích prostředí, která můžete použít ke spuštění hackathony.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 06/19/2020
-ms.author: spelluru
-ms.openlocfilehash: ba5559289f3d17f1a24a90a0daa466d4c8895c9c
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.date: 06/26/2020
+ms.openlocfilehash: 8727fad6f37d1365983127a1a514e87e3a5003b9
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85120518"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445878"
 ---
 # <a name="use-azure-lab-services-for-your-next-hackathon"></a>Použít Azure Lab Services pro další Hackathon
 Azure Lab Services je navržená tak, aby byla nenáročná a snadno použitelná, takže můžete rychle vymezit nové prostředí virtuálních počítačů (VM) pro vaši Hackathon.  Pomocí následujícího kontrolního seznamu zajistěte, aby váš Hackathon byl co nejrychleji. Tento kontrolní seznam by měl dokončit vaše IT oddělení nebo vyučující, kteří zodpovídají za vytváření a správu testovacího prostředí Hackathon. 

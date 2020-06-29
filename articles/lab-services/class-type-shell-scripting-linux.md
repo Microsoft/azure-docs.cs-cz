@@ -1,24 +1,14 @@
 ---
 title: Nastavení skriptovacího prostředí pro prostředí Linux pomocí Azure Lab Services | Microsoft Docs
 description: Naučte se, jak nastavit testovací prostředí pro učení skriptování prostředí v systému Linux.
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 09/30/2019
-ms.author: spelluru
-ms.openlocfilehash: 67d3bc1977affc83fd7b55d128e3aee503375ff1
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: ba14f2fb5263367014b57741c78d6e509df044b3
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84899008"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85444960"
 ---
 # <a name="set-up-a-lab-to-teach-shell-scripting-on-linux"></a>Nastavení testovacího prostředí pro učení skriptování prostředí v systému Linux
 V tomto článku se dozvíte, jak nastavit testovací prostředí pro učení skriptování prostředí v systému Linux. Skriptování je užitečnou součástí správy systému, která správcům umožňuje vyhnout se opakovaným úlohám. V tomto ukázkovém scénáři třída pokrývá tradiční skripty bash a rozšířené skripty. Rozšířené skripty jsou skripty, které kombinují příkazy bash a Ruby. Tento přístup umožňuje Ruby předávat data kolem a bash příkazů pro interakci s prostředím. 

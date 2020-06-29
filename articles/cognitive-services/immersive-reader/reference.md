@@ -10,14 +10,14 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 5b1471cc43fc506ca798e81ac8e35a5051278ee0
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.openlocfilehash: 6dfcd8d56232f893f881f310b33f3f849e2364a7
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84907376"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85475946"
 ---
-# <a name="immersive-reader-sdk-reference-guide"></a>Referenční příručka k sadě pro moderní čtečku SDK
+# <a name="immersive-reader-javascript-sdk-reference-v11"></a>Referenční dokumentace sady pro moderní čtečku JavaScript SDK (v 1.1)
 
 Sada moderní čtečka SDK obsahuje knihovnu JavaScriptu, která umožňuje integrovat moderní čtečku do vaší aplikace.
 
@@ -33,7 +33,7 @@ Sada SDK zpřístupňuje funkce:
 
 ## <a name="launchasync"></a>launchAsync
 
-Spustí moderní čtečku v rámci `iframe` ve vaší webové aplikaci.
+Spustí moderní čtečku v rámci `iframe` ve vaší webové aplikaci. Všimněte si, že velikost vašeho obsahu je omezená na maximálně 50 MB.
 
 ```typescript
 launchAsync(token: string, subdomain: string, content: Content, options?: Options): Promise<LaunchResponse>;
@@ -41,7 +41,7 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 ### <a name="parameters"></a>Parametry
 
-| Name | Typ | Description |
+| Název | Typ | Description |
 | ---- | ---- |------------ |
 | `token` | řetězec | Ověřovací token Azure AD. |
 | `subdomain` | řetězec | Vlastní subdoména prostředku pro moderní čtečku v Azure. |
@@ -80,7 +80,7 @@ renderButtons(options?: RenderButtonsOptions): void;
 
 ### <a name="parameters"></a>Parametry
 
-| Name | Typ | Popis |
+| Název | Typ | Description |
 | ---- | ---- |------------ |
 | `options` | [RenderButtonsOptions](#renderbuttonsoptions) | Možnosti pro konfiguraci určitého chování funkce renderButtons Nepovinný parametr. |
 
@@ -109,6 +109,70 @@ Jeden blok dat, který se předává do obsahu moderního čtecího zařízení.
 }
 ```
 
+#### <a name="supported-mime-types"></a>Podporované typy MIME
+
+| Typ MIME | Popis |
+| --------- | ----------- |
+| Text/prostý | Prostý text. |
+| text/html | Obsah HTML. [Další informace](#html-support)|
+| Application/MathML + XML | Jazyk MathML (Matematická Markup Language). [Přečtěte si další informace](./how-to/display-math.md).
+| aplikace/vnd.openxmlformats-officedocument.wordprocessingml.document | Dokument formátu Microsoft Word. docx.
+
+### <a name="options"></a>Možnosti
+
+Obsahuje vlastnosti, které konfigurují určité chování moderního čtecího zařízení.
+
+```typescript
+{
+    uiLang?: string;           // Language of the UI, e.g. en, es-ES (optional). Defaults to browser language if not specified.
+    timeout?: number;          // Duration (in milliseconds) before launchAsync fails with a timeout error (default is 15000 ms).
+    uiZIndex?: number;         // Z-index of the iframe that will be created (default is 1000).
+    useWebview?: boolean;      // Use a webview tag instead of an iframe, for compatibility with Chrome Apps (default is false).
+    onExit?: () => any;        // Executes when the Immersive Reader exits.
+    customDomain?: string;     // Reserved for internal use. Custom domain where the Immersive Reader webapp is hosted (default is null).
+    allowFullscreen?: boolean; // The ability to toggle fullscreen (default is true).
+    hideExitButton?: boolean;  // Whether or not to hide the Immersive Reader's exit button arrow (default is false). This should only be true if there is an alternative mechanism provided to exit the Immersive Reader (e.g a mobile toolbar's back arrow).
+    cookiePolicy?: CookiePolicy; // Setting for the Immersive Reader's cookie usage (default is CookiePolicy.Disable). It's the responsibility of the host application to obtain any necessary user consent in accordance with EU Cookie Compliance Policy.
+    disableFirstRun?: boolean; // Disable the first run experience.
+    readAloudOptions?: ReadAloudOptions; // Options to configure Read Aloud.
+    translationOptions?: TranslationOptions; // Options to configure translation.
+    displayOptions?: DisplayOptions; // Options to configure text size, font, etc.
+    preferences?: string; // String returned from onPreferencesChanged representing the user's preferences in the Immersive Reader.
+    onPreferencesChanged?: (value: string) => any; // Executes when the user's preferences have changed.
+}
+```
+
+```typescript
+enum CookiePolicy { Disable, Enable }
+```
+
+```typescript
+type ReadAloudOptions = {
+    voice?: string;      // Voice, either 'male' or 'female'. Note that not all languages support both genders.
+    speed?: number;      // Playback speed, must be between 0.5 and 2.5, inclusive.
+    autoplay?: boolean;  // Automatically start Read Aloud when the Immersive Reader loads.
+};
+```
+
+> [!NOTE]
+> V prohlížeči Safari není funkce automatického přehrávání podporována v důsledku omezení prohlížeče.
+
+```typescript
+type TranslationOptions = {
+    language: string;                         // Set the translation language, e.g. fr-FR, es-MX, zh-Hans-CN. Required to automatically enable word or document translation.
+    autoEnableDocumentTranslation?: boolean;  // Automatically translate the entire document.
+    autoEnableWordTranslation?: boolean;      // Automatically enable word translation.
+};
+```
+
+```typescript
+type DisplayOptions = {
+    textSize?: number;          // Valid values are 14, 20, 28, 36, 42, 48, 56, 64, 72, 84, 96.
+    increaseSpacing?: boolean;  // Set whether increased spacing is enabled.
+    fontFamily?: string;        // Valid values are 'Calibri', 'ComicSans', and 'Sitka'.
+};
+```
+
 ### <a name="launchresponse"></a>LaunchResponse
 
 Obsahuje odpověď od volání `ImmersiveReader.launchAsync` . Všimněte si, že odkaz na `iframe` , který obsahuje moderní čtečku, je k dispozici prostřednictvím `container.firstChild` .
@@ -119,62 +183,7 @@ Obsahuje odpověď od volání `ImmersiveReader.launchAsync` . Všimněte si, ž
     sessionId: string;            // Globally unique identifier for this session, used for debugging
 }
 ```
-
-### <a name="cookiepolicy-enum"></a>Výčet CookiePolicy
-
-Výčet, který slouží k nastavení zásad pro použití souboru cookie pro moderní čtečku. Viz [Možnosti](#options).
-
-```typescript
-enum CookiePolicy { Disable, Enable }
-```
-
-#### <a name="supported-mime-types"></a>Podporované typy MIME
-
-| Typ MIME | Popis |
-| --------- | ----------- |
-| Text/prostý | Prostý text. |
-| text/html | Obsah HTML. [Další informace](#html-support)|
-| Application/MathML + XML | Jazyk MathML (Matematická Markup Language). [Přečtěte si další informace](./how-to/display-math.md).
-| aplikace/vnd.openxmlformats-officedocument.wordprocessingml.document | Dokument formátu Microsoft Word. docx.
-
-### <a name="html-support"></a>Podpora HTML
-
-| HTML | Podporovaný obsah |
-| --------- | ----------- |
-| Styly písma | Tučné, kurzíva, podtržení, kód, přeškrtnutí, horní index, dolní index |
-| Neuspořádané seznamy | Disk, kruh, čtverec |
-| Seřazené seznamy | Decimal, Upper-Alpha, nižší-alfa, horní – Roman, nižší – Roman |
-
-Nepodporované značky budou vykresleny srovnatelně. Obrázky a tabulky se aktuálně nepodporují.
-
-### <a name="options"></a>Možnosti
-
-Obsahuje vlastnosti, které konfigurují určité chování moderního čtecího zařízení.
-
-```typescript
-{
-    uiLang?: string;           // Language of the UI, e.g. en, es-ES (optional). Defaults to browser language if not specified.
-    timeout?: number;          // Duration (in milliseconds) before launchAsync fails with a timeout error (default is 15000 ms).
-    uiZIndex?: number;         // Z-index of the iframe that will be created (default is 1000)
-    useWebview?: boolean;      // Use a webview tag instead of an iframe, for compatibility with Chrome Apps (default is false).
-    onExit?: () => any;        // Executes when the Immersive Reader exits
-    customDomain?: string;     // Reserved for internal use. Custom domain where the Immersive Reader webapp is hosted (default is null).
-    allowFullscreen?: boolean; // The ability to toggle fullscreen (default is true).
-    hideExitButton?: boolean;  // Whether or not to hide the Immersive Reader's exit button arrow (default is false). This should only be true if there is an alternative mechanism provided to exit the Immersive Reader (e.g a mobile toolbar's back arrow).
-    cookiePolicy?: CookiePolicy; // Setting for the Immersive Reader's cookie usage (default is CookiePolicy.Disable). It's the responsibility of the host application to obtain any necessary user consent in accordance with EU Cookie Compliance Policy.
-}
-```
-
-### <a name="renderbuttonsoptions"></a>RenderButtonsOptions
-
-Možnosti pro vykreslování tlačítek pro moderní čtečku
-
-```typescript
-{
-    elements: HTMLDivElement[];    // Elements to render the Immersive Reader buttons in
-}
-```
-
+ 
 ### <a name="error"></a>Chyba
 
 Obsahuje informace o chybě.
@@ -195,6 +204,16 @@ Obsahuje informace o chybě.
 | TokenExpired | Platnost zadaného tokenu vypršela. |
 | Omezené | Překročilo se omezení četnosti volání. |
 
+### <a name="renderbuttonsoptions"></a>RenderButtonsOptions
+
+Možnosti pro vykreslování tlačítek pro moderní čtečku
+
+```typescript
+{
+    elements: HTMLDivElement[];    // Elements to render the Immersive Reader buttons in
+}
+```
+
 ## <a name="launching-the-immersive-reader"></a>Spuštění moderního čtecího zařízení
 
 Sada SDK poskytuje výchozí styl pro tlačítko pro spuštění moderního čtecího zařízení. `immersive-reader-button`Pro povolení tohoto stylu použijte atribut class. Další podrobnosti najdete v [tomto článku](./how-to-customize-launch-button.md) .
@@ -212,6 +231,16 @@ Pomocí následujících atributů můžete nakonfigurovat vzhled a chování tl
 | `data-button-style` | Nastaví styl tlačítka. Může být `icon` , `text` , nebo `iconAndText` . Výchozí hodnota je `icon` . |
 | `data-locale` | Nastaví národní prostředí. Příkladem je `en-US` nebo `fr-FR`. Výchozí hodnota je angličtina `en` . |
 | `data-icon-px-size` | Nastaví velikost ikony v pixelech. Výchozí hodnota je 20px. |
+
+## <a name="html-support"></a>Podpora HTML
+
+| HTML | Podporovaný obsah |
+| --------- | ----------- |
+| Styly písma | Tučné, kurzíva, podtržení, kód, přeškrtnutí, horní index, dolní index |
+| Neuspořádané seznamy | Disk, kruh, čtverec |
+| Seřazené seznamy | Decimal, Upper-Alpha, nižší-alfa, horní – Roman, nižší – Roman |
+
+Nepodporované značky budou vykresleny srovnatelně. Obrázky a tabulky se aktuálně nepodporují.
 
 ## <a name="browser-support"></a>Podpora prohlížečů
 

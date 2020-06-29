@@ -1,25 +1,14 @@
 ---
 title: Vytvoření vlastní image Azure DevTest Labs z virtuálního počítače | Microsoft Docs
 description: Naučte se, jak vytvořit vlastní image v Azure DevTest Labs ze zřízeného virtuálního počítače pomocí Azure Portal
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-editor: ''
-ms.assetid: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 06/12/2020
-ms.author: spelluru
-ms.openlocfilehash: 3c11c8a4076f868e3f8896dac80147a485f166d3
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 597ef49b667cf613b721c645e09f8e6dcb157011
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84896232"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476593"
 ---
 # <a name="create-a-custom-image-from-a-vm"></a>Vytvoření vlastní image z virtuálního počítače
 

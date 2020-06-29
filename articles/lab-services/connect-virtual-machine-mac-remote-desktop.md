@@ -1,24 +1,14 @@
 ---
 title: Jak se připojit k virtuálnímu počítači s Azure Lab Services z Mac | Microsoft Docs
 description: Přečtěte si, jak se připojit z počítače Mac k virtuálnímu počítači v Azure Lab Services.
-services: devtest-lab, lab-services, virtual-machines
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 03/17/2020
-ms.author: spelluru
-ms.openlocfilehash: 091acbab20723ec33d52085a717d23adf261254e
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 674bea13093e185ae991148c2cf96599a273d0bc
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84897380"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85444620"
 ---
 # <a name="connect-to-a-vm-using-remote-desktop-protocol-on-a-mac"></a>Připojení k virtuálnímu počítači pomocí protokol RDP (Remote Desktop Protocol) na Macu
 V této části se dozvíte, jak se student může připojit k virtuálnímu počítači učeben Labs z Mac pomocí protokolu RDP.

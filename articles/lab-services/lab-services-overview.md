@@ -1,24 +1,14 @@
 ---
 title: O službě Azure Lab Services | Microsoft Docs
 description: Zjistěte, jak lze pomocí služby Lab Services zjednodušit vytváření, správu a zabezpečení testovacího prostředí s virtuálními počítači, které můžou využívat vývojáři, testeři, pedagogové, studenti a další uživatelé.
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
-ms.date: 06/16/2020
-ms.author: spelluru
-ms.openlocfilehash: 1c4fb6660f8eaebe2a65e3dba3f9adbb07f1eb22
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 7661b26d16eb2c2acd53c30889ea791689c1eec0
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84882723"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85442801"
 ---
 # <a name="an-introduction-to-azure-lab-services"></a>Seznámení s Azure Lab Services
 **Azure Lab Services** vám umožní vytvářet Labs, jejichž infrastruktura je spravovaná Azure. V současné době je prostředí učebny jediným typem spravovaného testovacího prostředí, které podporuje Azure Lab Services. Služba sám zpracovává veškerou správu infrastruktury pro typ spravovaného testovacího prostředí, od odstřeďování virtuálních počítačů po zpracování chyb a škálování infrastruktury. Jakmile správce IT vytvoří v Azure Lab Services účet testovacího prostředí, může instruktor rychle vytvořit testovací prostředí pro třídu, určit počet a typ virtuálních počítačů, které jsou ve třídě potřeba, a přidat uživatele do třídy. Jakmile se uživatel zaregistruje do třídy, uživatel může získat přístup k virtuálnímu počítači, aby mohl provádět cvičení pro třídu.  

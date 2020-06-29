@@ -1,23 +1,14 @@
 ---
 title: Řešení potíží se selháním virtuálního počítače a prostředí Azure DevTest Labs
 description: Naučte se řešit potíže s vytvářením virtuálních počítačů a prostředí v Azure DevTest Labs.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2020
-ms.author: spelluru
-ms.openlocfilehash: 155a359608cf6d846578306545f5ce0b4003949c
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: b7d3f3ad34d8a5bb48607816623c67121d21d78c
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84895329"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476474"
 ---
 # <a name="troubleshoot-virtual-machine-vm-and-environment-creation-failures-in-azure-devtest-labs"></a>Řešení chyb při vytváření virtuálních počítačů a prostředí v Azure DevTest Labs
 DevTest Labs vám poskytne upozornění, pokud je název počítače neplatný nebo pokud se chystáte porušovat zásady testovacího prostředí. Někdy se zobrazí červená `X` vedle vašeho testovacího virtuálního počítače nebo stavu prostředí, která vás informuje, že došlo k nějaké chybě.  Tento článek poskytuje několik štychů, které můžete použít k vyhledání základního problému a snad, abyste se vyhnuli problému v budoucnu.

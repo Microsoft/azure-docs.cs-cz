@@ -1,22 +1,14 @@
 ---
 title: Rozšíří Azure DevTest Labs pomocí Azure Functions | Microsoft Docs
 description: Naučte se, jak můžete Azure DevTest Labs pomocí Azure Functions roztáhnout.
-services: devtest-lab,lab-services
-documentationcenter: na
-author: spelluru
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 08/22/2019
-ms.author: spelluru
-ms.openlocfilehash: dd1fc4c1076d89c12b25837db9fa6a0ac3e1f3a5
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: bcd12d77065d231198e992fa5c459f0fc210855a
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84898924"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476304"
 ---
 # <a name="use-azure-functions-to-extend-devtest-labs"></a>Rozšíření DevTest Labs s využitím služby Azure Functions
 Azure Functions můžete použít k podpoře dalších scénářů nad rámec těch, které už podporuje DevTest Labs. Azure Functions můžete použít k rozšiřování integrovaných funkcí služby, aby splňovaly potřeby vaší firmy. Následující seznam uvádí některé z možných scénářů. V tomto článku se dozvíte, jak implementovat jeden z těchto ukázkových scénářů.

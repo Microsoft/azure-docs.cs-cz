@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0b926491ef3fc672626317184fb7ed2760919866
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 7bebfeba6da1493557d51777ba8438747e160750
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85210503"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476270"
 ---
 # <a name="best-practices-for-sql-on-demand-preview-in-azure-synapse-analytics"></a>Osvědčené postupy pro SQL na vyžádání (Preview) ve službě Azure synapse Analytics
 
@@ -52,7 +52,7 @@ Pokud je to možné, můžete připravit soubory pro lepší výkon:
 
 ## <a name="push-wildcards-to-lower-levels-in-the-path"></a>Doručovat zástupné znaky na nižší úrovně v cestě
 
-V cestě můžete použít zástupné znaky k [dotazování více souborů a složek](develop-storage-files-overview.md#query-multiple-files-or-folders). SQL na vyžádání obsahuje seznam souborů v účtu úložiště počínaje prvním * použitím rozhraní API úložiště. Eliminuje soubory, které neodpovídají zadané cestě. Zmenšení počátečního seznamu souborů může zlepšit výkon, pokud existuje mnoho souborů, které odpovídají zadané cestě až k prvnímu zástupnému znaku.
+V cestě můžete použít zástupné znaky k [dotazování více souborů a složek](query-data-storage.md#query-multiple-files-or-folders). SQL na vyžádání obsahuje seznam souborů v účtu úložiště počínaje prvním * použitím rozhraní API úložiště. Eliminuje soubory, které neodpovídají zadané cestě. Zmenšení počátečního seznamu souborů může zlepšit výkon, pokud existuje mnoho souborů, které odpovídají zadané cestě až k prvnímu zástupnému znaku.
 
 ## <a name="use-appropriate-data-types"></a>Použití vhodných datových typů
 
@@ -113,7 +113,7 @@ FROM
 
 Data jsou často organizována v oddílech. SQL na vyžádání můžete dát zadat dotaz na konkrétní složky a soubory. Tím se sníží počet souborů a množství dat, které dotaz potřebuje ke čtení a zpracování. Přidaný bonus znamená, že dosáhnete lepšího výkonu.
 
-Další informace najdete v tématu o funkcích [filename](develop-storage-files-overview.md#filename-function) a [FilePath](develop-storage-files-overview.md#filepath-function) a viz příklady pro [dotazování na konkrétní soubory](query-specific-files.md).
+Další informace najdete v tématu o funkcích [filename](query-data-storage.md#filename-function) a [FilePath](query-data-storage.md#filepath-function) a viz příklady pro [dotazování na konkrétní soubory](query-specific-files.md).
 
 > [!TIP]
 > Vždy přetypování výsledků funkcí FilePath a filename na příslušné datové typy. Pokud používáte znakové datové typy, ujistěte se, že použijete příslušnou délku.

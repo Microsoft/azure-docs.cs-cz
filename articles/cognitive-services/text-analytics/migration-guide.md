@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 05/13/2020
+ms.date: 06/25/2020
 ms.author: aahi
-ms.openlocfilehash: 2fd6c908aa95ef22cbf7ea0b62b925d84d66cd28
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 12c09ad8e1db3914263fcc864c9c2d09069d63a6
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84143268"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85412579"
 ---
 # <a name="migrate-to-version-3x-of-the-text-analytics-api"></a>Migrace na verzi 3. x z rozhraní API pro analýzu textu
 
@@ -44,7 +44,7 @@ Pokud vaše aplikace používá REST API, aktualizujte koncový bod požadavku n
 ## <a name="feature-changes"></a>Změny funkcí
 
 > [!NOTE] 
-> V současné době se [kategorie entity V3](named-entity-types.md) vrátí jenom pro anglický text. Rozhraní API vrátí výsledky verze 2,1 pro žádosti v jiných jazycích za předpokladu, že jsou podporované ve verzi 2,1.
+> V současné době se [kategorie entity V3](named-entity-types.md) vrátí jenom pro anglický a španělský text. Rozhraní API vrátí výsledky verze 2,1 pro žádosti v jiných jazycích za předpokladu, že jsou podporované ve verzi 2,1.
 
 Ve verzi 2,1 používá rozhraní API pro analýzu textu jeden koncový bod pro rozpoznávání pojmenovaných entit (NER) a propojení entit. Verze 3 poskytuje rozšířenou detekci pojmenovaných entit a používá samostatné koncové body pro žádosti NER a propojení entit. Počínaje verzí v 3.1 – Preview. 1 může NER dále detekovat osobní `pii` `phi` údaje a informace o stavu. 
 

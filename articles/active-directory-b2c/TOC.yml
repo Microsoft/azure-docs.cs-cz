@@ -191,8 +191,12 @@
               displayName: 'ux, input, cors, html, css'
             - name: Přizpůsobení jazyka
               href: custom-policy-localization.md
-            - name: Vlastní e-mail
-              href: custom-email.md
+            - name: Vlastní ověření e-mailu
+              items:
+                - name: Mailjet
+                  href: custom-email-mailjet.md
+                - name: SendGrid
+                  href: custom-email-sendgrid.md
               displayName: verification
             - name: Zakázání ověření e-mailu
               href: custom-policy-disable-email-verification.md
@@ -373,6 +377,8 @@
           href: partner-trusona.md
         - name: Twilio
           href: partner-twilio.md
+        - name: TypingDNA
+          href: partner-typingdna.md
     - name: Použití b2clogin.com
       items:
         - name: Přehled b2clogin.com

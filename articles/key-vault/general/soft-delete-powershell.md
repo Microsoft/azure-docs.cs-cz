@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f883b8527fff97ea3e16e7ffa7637c432dc33c2f
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.openlocfilehash: 452dd99ae58858b661892e3f962fce8086d4503c
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84783346"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85444654"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>Jak používat obnovitelné odstranění Key Vaultu s využitím PowerShellu
 
@@ -40,7 +40,7 @@ Informace o Key Vault specifických referenčních informacích pro PowerShell n
 
 Operace Key Vault se samostatně spravují prostřednictvím oprávnění řízení přístupu na základě role (RBAC) následujícím způsobem:
 
-| Operace | Description | Oprávnění uživatele |
+| Operace | Popis | Oprávnění uživatele |
 |:--|:--|:--|
 |Seznam|Zobrazí seznam odstraněných trezorů klíčů.|Microsoft. deletedVaults trezor//Read|
 |Zotavit|Obnoví odstraněný Trezor klíčů.|Trezor Microsoft. a trezory/zápis|
@@ -267,7 +267,7 @@ Výpis odstraněných objektů trezoru klíčů se zobrazí také v případě, 
 
 Pokud je zapnutá ochrana vyprázdnění, trezor nebo objekt v odstraněném stavu nelze odstranit, dokud neuplyne doba uchování. Tento trezor nebo objekt je stále možné obnovit. Tato funkce poskytuje přidanou jistotu, že trezor nebo objekt nikdy nebude možné trvale odstranit, dokud neuplyne doba uchování. Výchozí doba uchování je 90 dní, ale během vytváření trezoru klíčů je možné nastavit interval zásad uchovávání informací na hodnotu od 7 do 90 dnů. Zásady uchovávání informací o vyprázdnění ochrany používají stejný interval. Po nastavení se interval zásad uchovávání dat nedá změnit.
 
-Ochranu vyprázdnění můžete povolit jenom v případě, že je povolené i obnovitelné odstranění. 
+Ochranu vyprázdnění můžete povolit jenom v případě, že je povolené i obnovitelné odstranění. Zakázání ochrany vyprázdnění se v tuto chvíli nepodporuje. 
 
 Pokud chcete při vytváření trezoru zapnout ochranu pomocí obnovitelného odstranění i vymazání, použijte rutinu [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault?view=azps-1.5.0) :
 

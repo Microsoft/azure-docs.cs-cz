@@ -12,12 +12,12 @@ ms.workload: mobile
 ms.topic: article
 ms.date: 06/24/2020
 ms.author: apimpm
-ms.openlocfilehash: b74874806585357fe2c7fa2603bfb50751c4d843
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 72899e743e167eef5ee7d1be04cb50cafc1f2a95
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85355484"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445504"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Ochrana rozhraní API pomocí OAuth 2.0 s využitím služeb Azure Active Directory a API Management
 
@@ -224,12 +224,12 @@ Pomocí zásady [ověřit token JWT](https://docs.microsoft.com/azure/api-manage
 
 ## <a name="build-an-application-to-call-the-api"></a>Sestavení aplikace pro volání rozhraní API
 
-V této příručce jste použili konzolu pro vývojáře v API Management jako ukázková klientská aplikace pro volání `Echo API` chráněného OAuth 2,0. Další informace o tom, jak sestavit aplikaci a implementovat OAuth 2,0, najdete v tématu [Azure Active Directory Samples Code](https://docs.microsoft.com/azure/active-directory/develop/sample-v2-code.md).
+V této příručce jste použili konzolu pro vývojáře v API Management jako ukázková klientská aplikace pro volání `Echo API` chráněného OAuth 2,0. Další informace o tom, jak sestavit aplikaci a implementovat OAuth 2,0, najdete v tématu [Azure Active Directory Samples Code](../active-directory/develop/sample-v2-code.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o [Azure Active Directory a OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios.md).
+- Přečtěte si další informace o [Azure Active Directory a OAuth 2.0](../active-directory/develop/authentication-scenarios.md).
 - Podívejte se na další [videa](https://azure.microsoft.com/documentation/videos/index/?services=api-management) o API Management.
-- Další způsoby zabezpečení back-endové služby najdete v tématu [vzájemné ověřování certifikátů](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates).
-- [Vytvořte instanci služby API Management](https://docs.microsoft.com/azure/api-management/get-started-create-service-instance).
-- [Spravujte své první rozhraní API](https://docs.microsoft.com/azure/api-management/import-and-publish).
+- Další způsoby zabezpečení back-endové služby najdete v tématu [vzájemné ověřování certifikátů](./api-management-howto-mutual-certificates.md).
+- [Vytvořte instanci služby API Management](./get-started-create-service-instance.md).
+- [Spravujte své první rozhraní API](./import-and-publish.md).

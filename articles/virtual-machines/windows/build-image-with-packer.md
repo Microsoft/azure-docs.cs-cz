@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 02/22/2019
 ms.author: cynthn
-ms.openlocfilehash: 219685b1f82cea3e85a6d45023e913141345e685
-ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
+ms.openlocfilehash: ec6fcfbc171b7227c79741c00adbc16be4c7ce87
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85106522"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445521"
 ---
 # <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Použití balíčku k vytváření imagí virtuálních počítačů s Windows v Azure
 Každý virtuální počítač (VM) v Azure se vytvoří z image, která definuje distribuci Windows a verzi operačního systému. Obrázky můžou zahrnovat předem nainstalované aplikace a konfigurace. Azure Marketplace poskytuje mnoho prvních a imagí jiných výrobců pro většinu běžných prostředí operačního systému a aplikací, nebo můžete vytvořit vlastní image přizpůsobené vašim potřebám. Tento článek podrobně popisuje, jak používat open source [sadu](https://www.packer.io/) nástrojů k definování a vytváření vlastních imagí v Azure.
@@ -122,7 +122,7 @@ Tato šablona vytvoří virtuální počítač s Windows serverem 2016, nainstal
 
 
 ## <a name="build-packer-image"></a>Obrázek sady Build Pack
-Pokud ještě nemáte v místním počítači nainstalovaný balíček, [postupujte podle pokynů k instalaci nástroje Pack](https://www.packer.io/docs/install/index.html).
+Pokud ještě nemáte v místním počítači nainstalovaný balíček, [postupujte podle pokynů k instalaci nástroje Pack](https://learn.hashicorp.com/packer/getting-started/install).
 
 Sestavte bitovou kopii otevřením příkazového řádku a zadáním souboru šablony balíčku pomocí následujícího postupu:
 

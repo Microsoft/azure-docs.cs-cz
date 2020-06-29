@@ -1,24 +1,14 @@
 ---
 title: Zobrazení a odstranění cvičení v účtu testovacího prostředí v Azure Lab Services
 description: Naučte se zobrazit všechny laboratoře v účtu testovacího prostředí a odstranit testovací prostředí z účtu testovacího prostředí.
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2020
-ms.author: spelluru
-ms.openlocfilehash: 23da222ab43394793afec96c31000bdc8baa54e0
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: cc097e97430462e36a33b982a7394a20c308eab5
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84895742"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85443481"
 ---
 # <a name="manage-labs-in-a-lab-account"></a>Správa testovacích prostředí v účtu testovacího prostředí
 V tomto článku se dozvíte, jak může vlastník nebo správce účtu testovacího prostředí Zobrazit všechny laboratoře v účtu testovacího prostředí a odstranit testovací prostředí v účtu testovacího prostředí. 

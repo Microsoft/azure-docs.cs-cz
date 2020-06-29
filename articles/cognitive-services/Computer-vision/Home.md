@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 99af09ded8759e7f6e2235ce0c1354982568e19d
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 90c2068021f1e9a173f37bdf1098edda10ab3d8d
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117518"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85413463"
 ---
 # <a name="what-is-computer-vision"></a>Co je počítačové zpracování obrazu?
 
@@ -34,7 +34,7 @@ Počítačové zpracování obrazu může výkon mnoha scénářů správy digit
 
 Obrázky můžete analyzovat a poskytnout tak přehled o jejich vizuálních funkcích a vlastnostech. Všechny funkce v tabulce níže jsou poskytovány rozhraním API pro [analýzu imagí](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) .
 
-| Akce | Description |
+| Akce | Popis |
 | ------ | ----------- |
 |**[Označování vizuálních vlastností](concept-tagging-images.md)**|Identifikujte a označte vizuální funkce na obrázku ze sady tisíců rozpoznatelných objektů, živých věcí, krajin a akcí. Pokud jsou značky dvojznačné nebo nejsou běžné znalosti, poskytuje odpověď rozhraní API nápovědu k objasnění kontextu značky. Označování se neomezuje na hlavní předmět, například postavu v popředí, ale zahrnuje také prostředí (interiér nebo exteriér), nábytek, nástroje, rostliny, zvířata, příslušenství, pomůcky atd.|
 |**[Detekovat objekty](concept-object-detection.md)**| Detekce objektu je podobná označování, ale rozhraní API vrací souřadnice ohraničujícího pole pro každou použitou značku. Pokud například obrázek obsahuje pes, Cat a osobu, operace zjišťování zobrazí tyto objekty spolu s jejich souřadnicemi v obrázku. Tuto funkci můžete použít ke zpracování dalších vztahů mezi objekty v imagi. Také vám umožní zjistit, že je v obrázku více instancí stejné značky.|
@@ -52,7 +52,7 @@ Obrázky můžete analyzovat a poskytnout tak přehled o jejich vizuálních fun
 
 Pomocí rozhraní Počítačové zpracování obrazu [Read](concept-recognizing-text.md#read-api) API můžete extrahovat vytištěné a ručně psaný text z obrázků do datového proudu znaků, který je strojově čitelný. Rozhraní API pro čtení používá nejnovější modely a pracuje s textem na nejrůznějších površích a na pozadí, jako jsou například příjmy, plakáty, obchodní karty, dopisy a tabule. V současné době funguje pro sedm různých jazyků (viz [Podpora jazyků](./language-support.md)).
 
-Můžete také použít rozhraní API [optického rozpoznávání znaků (OCR)](concept-recognizing-text.md#ocr-optical-character-recognition-api) k extrakci vytištěného textu v několika jazycích. V případě potřeby optické rozpoznávání znaků opraví natočení rozpoznaného textu a poskytuje souřadnice rámce každého slova. Optické rozpoznávání znaků podporuje 25 jazyků a automaticky detekuje jazyk rozpoznaného textu.
+Můžete také použít rozhraní API [optického rozpoznávání znaků (OCR)](concept-recognizing-text.md) k extrakci vytištěného textu v několika jazycích. V případě potřeby optické rozpoznávání znaků opraví natočení rozpoznaného textu a poskytuje souřadnice rámce každého slova. Optické rozpoznávání znaků podporuje 25 jazyků a automaticky detekuje jazyk rozpoznaného textu.
 
 ## <a name="moderate-content-in-images"></a>Moderování obsahu obrázků
 

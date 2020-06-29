@@ -8,6 +8,12 @@
       href: azure-portal-quickstart-center.md
     - name: Podporované prohlížeče a zařízení
       href: azure-portal-supported-browsers-devices.md
+- name: Rychlé starty
+  items:
+    - name: Vytvoření virtuálního počítače na portálu
+      href: ../virtual-machines/windows/quick-create-portal.md?toc=/azure/azure-portal/toc.json&bc=/azure/azure-portal/breadcrumb/toc.json
+    - name: Vytvoření řídicího panelu – šablona ARM
+      href: quick-create-template.md
 - name: Koncepty
   items:
     - name: Sdílení řídicích panelů prostřednictvím řízení přístupu na základě role

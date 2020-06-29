@@ -3,13 +3,13 @@ title: 'Kurz: Kontrola koncového bodu projevy-LUIS'
 description: V tomto kurzu Vylepšete předpovědi aplikace tím, že ověříte nebo opravíte projevy, které jste obdrželi prostřednictvím koncového bodu HTTP LUIS, který LUIS nedrží. U některých promluv může být potřeba zkontrolovat záměr, zatímco u jiných entitu.
 services: cognitive-services
 ms.topic: tutorial
-ms.date: 04/01/2020
-ms.openlocfilehash: 32d43b36910c8fbfd60463f4062b6a00b9272fdb
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 06/22/2020
+ms.openlocfilehash: c2df8cdba3422c522aa4ccf1fe4138a510355d12
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592572"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445916"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Kurz: Opravte si nejistotu, že předpovědi zkontroluje projevy koncového bodu.
 V tomto kurzu Vylepšete předpovědi aplikací tím, že ověříte nebo opravíte projevy, přijmete prostřednictvím koncového bodu LUIS HTTPS, který LUIS NEsI nedrží. Měli byste zkontrolovat projevy koncového bodu jako běžnou součást plánované údržby LUIS.
@@ -22,7 +22,7 @@ Tento proces revize umožňuje LUIS zjistit vaši doménu aplikace. LUIS vybere 
 
 Kontrolou projevů koncového bodu ověřujete nebo opravujete předpokládaný záměr promluvy.
 
-**V tomto kurzu:**
+**V tomto kurzu se naučíte:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]

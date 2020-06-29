@@ -2,23 +2,16 @@
 title: Jak se připojit k Azure Lab Servicesmu virtuálnímu počítači z Chromebook | Microsoft Docs
 description: Přečtěte si, jak se připojit z Chromebook k virtuálnímu počítači v Azure Lab Services.
 services: devtest-lab, lab-services, virtual-machines
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: nicolela
 ms.topic: article
-ms.date: 05/11/2020
+ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: 5919eb4107ca234951597182017447c2d6ee1c1b
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: d2a936a6acb6491c57cb1460c83ec0253561b102
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84897394"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445657"
 ---
 # <a name="connect-to-a-vm-using-remote-desktop-protocol-on-a-chromebook"></a>Připojení k virtuálnímu počítači pomocí protokol RDP (Remote Desktop Protocol) Chromebook
 V této části se dozvíte, jak se student může připojit k virtuálnímu počítači učeben Labs z Chromebook pomocí protokolu RDP.
