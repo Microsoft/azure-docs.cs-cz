@@ -3,15 +3,15 @@ title: Konfigurace úložiště avere vFXT – Azure
 description: Postup přidání back-endového úložného systému do služby avere vFXT pro Azure
 author: ekpgh
 ms.service: avere-vfxt
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: dfffef90201ba4bbb5a912df6101e8338012df44
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e011b349c9296fd0ca15d119b35c1e6ec6af268a
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79252607"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85505745"
 ---
 # <a name="configure-storage"></a>Konfigurace úložiště
 
@@ -47,7 +47,7 @@ Pomocí těchto kroků přidejte souborového pro NAS Core:
 
 1. V ovládacím panelu avere klikněte na kartu **Nastavení** v horní části.
 
-1. Na levé straně klikněte na **Core souborového** > **Spravovat Core filers** .
+1. Na levé straně klikněte na **Core souborového**  >  **Spravovat Core filers** .
 
 1. Klikněte na **Vytvořit**.
 
@@ -119,7 +119,7 @@ Pokud chcete přidat úložiště objektů BLOB po vytvoření clusteru, postupu
 
    ![Azure Portal grafické uživatelské rozhraní pro kopírování klíče](media/avere-vfxt-copy-storage-key.png)
 
-1. Otevřete ovládací panel avere pro váš cluster. Klikněte **na nastavení**a pak otevřete**přihlašovací údaje cloudového** **clusteru** > v levém navigačním podokně. Na stránce přihlašovací údaje cloudu klikněte na **Přidat přihlašovací údaje**.
+1. Otevřete ovládací panel avere pro váš cluster. Klikněte na **Nastavení**a pak **Cluster**otevřete  >  **přihlašovací údaje cloudového** clusteru v levém navigačním podokně. Na stránce přihlašovací údaje cloudu klikněte na **Přidat přihlašovací údaje**.
 
    ![Klikněte na tlačítko Přidat pověření na stránce konfigurace přihlašovacích údajů cloudu.](media/avere-vfxt-new-credential-button.png)
 
@@ -137,7 +137,7 @@ Pokud chcete přidat úložiště objektů BLOB po vytvoření clusteru, postupu
 
    ![Dokončený formulář přihlašovacích údajů cloudu v Ovládacích panelech avere](media/avere-vfxt-new-credential-submit.png)
 
-1. Dále vytvořte základní souborového. Na levé straně ovládacího panelu avere klikněte na **Core souborového** >  **Spravovat Core filers**.
+1. Dále vytvořte základní souborového. Na levé straně ovládacího panelu avere klikněte na **Core souborového**  >   **Spravovat Core filers**.
 
 1. Klikněte na tlačítko **vytvořit** na stránce **spravovat základní filers** nastavení.
 
@@ -152,7 +152,7 @@ Pokud chcete přidat úložiště objektů BLOB po vytvoření clusteru, postupu
    * Změnit **ověření certifikátu** na **zakázáno**
    * Změnit **režim komprese** na **žádný**
    * Klikněte na **Další**.
-   * Na čtvrté stránce zadejte název kontejneru do pole **název** sady jako *storage_account_name*/*container_name*.
+   * Na čtvrté stránce zadejte název kontejneru do pole **název** sady jako *storage_account_name* / *container_name*.
    * Volitelně můžete nastavit **typ šifrování** na **žádný**.  Azure Storage je ve výchozím nastavení šifrovaný.
    * Klikněte na **přidat souborového**.
 
@@ -166,14 +166,14 @@ Dále musíte [vytvořit spojení](#create-a-junction).
 
 Spojení je cesta, kterou vytvoříte pro klienty. Klienti připojí cestu a dorazí na cíl, který zvolíte.
 
-Můžete například vytvořit `/vfxt/files` pro mapování NetApp Core souborového `/vol0/data` export a `/project/resources` podadresář.
+Můžete například vytvořit `/vfxt/files` pro mapování NetApp Core souborového `/vol0/data` Export a `/project/resources` podadresář.
 
 Další informace o spojeních najdete v [části obor názvů Průvodce konfigurací clusteru avere](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_namespace.html).
 
 V rozhraní ovládacího panelu avere postupujte podle těchto kroků:
 
-* V levém horním rohu klikněte na **VServer** > **obor názvů** .
-* Zadejte cestu k oboru názvů začínající znakem/(lomítko) ``/vfxt/data``, například.
+* **VServer**  >  V levém horním rohu klikněte na VServer**obor názvů** .
+* Zadejte cestu k oboru názvů začínající znakem/(lomítko), například ``/vfxt/data`` .
 * Vyberte si základní souborového.
 * Vyberte základní export souborového.
 * Klikněte na **Další**.

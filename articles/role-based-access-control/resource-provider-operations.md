@@ -8,12 +8,12 @@ ms.workload: identity
 author: rolyon
 ms.author: rolyon
 ms.date: 06/18/2020
-ms.openlocfilehash: 2131912244b2f895ebb7d9bbc28f132ac2404ae7
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: 3e79f0498aa14bed1cda29148a6b3c7e1e9e2a3d
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85414568"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85508465"
 ---
 # <a name="azure-resource-providers-operations"></a>Operace poskytovatelů prostředků Azure
 
@@ -1358,8 +1358,7 @@ Služba Azure: úložiště modelu nasazení Classic
 
 ### <a name="microsoftdatabox"></a>Microsoft. DataBox
 
-Služba Azure: [Azure Data box](../databox-family/index.md)
-
+Služba Azure: [Azure Data box](../databox/index.yml)
 > [!div class="mx-tableFixed"]
 > | Akce | Popis |
 > | --- | --- |
@@ -2523,7 +2522,7 @@ Služba Azure: [App Service](../app-service/index.yml), [Azure Functions](../azu
 > | Microsoft. Web/staticSites/customdomains/ověřit/akce | Ověření, jestli se vlastní doména dá přidat ke statické lokalitě |
 > | Microsoft. Web/staticSites/Functions/Read | Seznam funkcí pro statický Web |
 
-## <a name="containers"></a>Kontejnery
+## <a name="containers"></a>Containers
 
 ### <a name="microsoftcontainerinstance"></a>Microsoft. ContainerInstance
 

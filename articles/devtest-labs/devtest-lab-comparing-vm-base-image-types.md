@@ -1,25 +1,14 @@
 ---
 title: Porovnání vlastních imagí a vzorců v DevTest Labs | Microsoft Docs
 description: Přečtěte si o rozdílech mezi vlastními imagemi a vzorci jako se základy virtuálních počítačů, abyste se mohli rozhodnout, který z nich nejlépe vyhovuje vašemu prostředí.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-editor: ''
-ms.assetid: a3cb259a-7d80-40ec-8ee8-45105704d589
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 04/05/2018
-ms.author: spelluru
-ms.openlocfilehash: ae7556eda817b9eb7be84f9d4a23ea91d3d5440d
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: dac820d0600745906e4b1aeef95806ed5679488a
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84896323"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85484022"
 ---
 # <a name="comparing-custom-images-and-formulas-in-devtest-labs"></a>Porovnání vlastních imagí a vzorců v DevTest Labs
 [Vlastní image](devtest-lab-create-template.md) i [vzorce](devtest-lab-manage-formulas.md) lze použít jako základ pro [vytvoření nových virtuálních počítačů](devtest-lab-add-vm.md). Klíčovým rozdílem mezi vlastními imagemi a vzorci je ale to, že vlastní image je jednoduše image založená na virtuálním pevném disku (VHD), zatímco vzorec je image založená na virtuálním pevném disku ( *kromě* předem nakonfigurovaných nastavení), jako je třeba velikost virtuálního počítače, virtuální síť, podsíť a artefakty. Tato předem nakonfigurovaná nastavení se nastavují s výchozími hodnotami, které se dají přepsat v době vytváření virtuálního počítače. Tento článek popisuje některé výhody (specialisty) a nevýhody (nevýhody) používání vlastních imagí a používání vzorců.

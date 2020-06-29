@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: e4811b1b892fb04400b5a96450db14a260532003
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: 3eb429c4981cbc548c7d68c788008b841ff5d33e
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488830"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85484073"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>Azure Database for PostgreSQL šifrování dat s jedním serverem pomocí klíče spravovaného zákazníkem
 
@@ -136,13 +136,22 @@ Aby nedocházelo k problémům při nastavování šifrování dat spravovaného
 U Azure Database for PostgreSQL podporuje šifrování neaktivních dat pomocí CMK (Customers Key) několik omezení –
 
 * Podpora této funkce je omezená na **pro obecné účely** a **paměťově optimalizované** cenové úrovně.
-* Tato funkce je podporována pouze v oblastech a serverech, které podporují úložiště až do 16TB. Seznam oblastí Azure, které podporují úložiště až do 16TB, najdete v části úložiště [v dokumentaci.](concepts-pricing-tiers.md#storage)
+* Tato funkce se podporuje jen v oblastech a na serverech, které podporují úložiště až do 16 TB. Seznam oblastí Azure, které podporují úložiště až do 16TB, najdete v části úložiště [v dokumentaci.](concepts-pricing-tiers.md#storage)
 
     > [!NOTE]
     > - Všechny nové servery PostgreSQL vytvořené v oblastech uvedených výše jsou **k dispozici**podpora šifrování pomocí klíčů manažera zákazníka. Obnovený bod v čase (PITR) nebo replika čtení se neprojeví, i když je teoreticky "New".
     > - Pokud chcete ověřit, jestli zřízený Server podporuje až 16TB, můžete přejít na okno cenová úroveň na portálu a zobrazit maximální velikost úložiště podporovanou zřízeným serverem. Pokud můžete posuvník přesunout až na 4 TB, váš server možná nepodporuje šifrování se spravovanými klíči zákazníka. Data se ale šifrují pomocí klíčů spravovaných službou. AskAzureDBforPostgreSQL@service.microsoft.comPokud máte nějaké dotazy, obraťte se na něj.
 
 * Šifrování se podporuje jenom s kryptografickým klíčem RSA 2048.
+
+## <a name="infrastructure-double-encryption"></a>Šifrování s dvojitou infrastrukturou
+Azure Database for PostgreSQL používá pro data šifrování úložiště dat [v klidovém](concepts-security.md#at-rest) formátu pomocí spravovaných klíčů společnosti Microsoft. Data včetně záloh se šifrují na disku a toto šifrování je vždycky zapnuté a nedá se zakázat. Šifrování používá šifrovací modul ověřený standardem FIPS 140-2 a šifrovací šifru AES 256 pro šifrování úložiště Azure. 
+
+Šifrování s dvojitou přesností přidává druhou vrstvu šifrování pomocí ověřovaného kryptografického modulu FIPS 140-2 a jiného šifrovacího algoritmu, který zajišťuje další vrstvu ochrany vašich dat v klidovém formátu. Klíč používaný v infrastruktuře s dvojitým šifrováním je také spravován službou. Tato verze není ve výchozím nastavení *zapnutá* , protože bude mít dopad na výkon z důvodu další vrstvy šifrování. 
+
+   > [!NOTE]
+   > - Tato funkce není stále k dispozici globálně. 
+   > - Podpora této funkce je omezená na **pro obecné účely** a **paměťově optimalizované** cenové úrovně.
 
 ## <a name="next-steps"></a>Další kroky
 

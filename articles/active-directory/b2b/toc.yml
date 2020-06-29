@@ -133,8 +133,8 @@
       items:
         - name: Nejčastější dotazy
           href: faq.md
-        - name: Získání podpory pro B2B
-          href: get-support.md
+        - name: Získání podpory
+          href: 'https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-troubleshooting-support-howto'
         - name: Fórum Azure pro názory
           href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
         - name: Plány Azure do budoucna

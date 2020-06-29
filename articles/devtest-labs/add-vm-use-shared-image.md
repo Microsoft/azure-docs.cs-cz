@@ -1,25 +1,14 @@
 ---
 title: Přidání virtuálního počítače pomocí sdílené image v Azure DevTest Labs | Microsoft Docs
 description: Naučte se, jak přidat virtuální počítač s použitím obrázku z Galerie připojených sdílených imagí v Azure DevTest Labs
-services: devtest-lab,virtual-machines
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.assetid: ''
-ms.service: devtest-lab
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 08/02/2019
-ms.author: spelluru
-ms.openlocfilehash: c13b2c3d00a0ab0af0f7785feae645d907ffdaa3
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 9421a1e21be9446b0e59328bd9a3730b57655274
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84898812"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483852"
 ---
 # <a name="add-a-vm-using-an-image-from-the-attached-shared-image-gallery"></a>Přidání virtuálního počítače pomocí obrázku z Galerie připojených sdílených imagí
 Azure DevTest Labs umožňuje připojit galerii sdílených imagí k vašemu testovacímu prostředí a potom použít image v galerii jako základ pro virtuální počítače, které vytvoříte v testovacím prostředí. Informace o tom, jak připojit galerii sdílených imagí k testovacímu prostředí, najdete v tématu [Konfigurace Galerie sdílených imagí](configure-shared-image-gallery.md). V tomto článku se dozvíte, jak do testovacího prostředí přidat virtuální počítač pomocí image z připojené sdílené image z galerie jako základní. 

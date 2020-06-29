@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.subservice: metrics
-ms.openlocfilehash: 2aca113e21d759416580c8876ec2092762893da5
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 930e32cfc57cb5b48180c7695b7b6c7d11df8caa
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299821"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85506969"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Vlastní metriky v Azure Monitor (Preview)
 
@@ -74,7 +74,7 @@ Každý datový bod odeslaný do Azure Monitor musí být označený pomocí ča
 ### <a name="namespace"></a>Obor názvů
 Obory názvů představují způsob kategorizace nebo seskupení podobných metrik dohromady. Pomocí oborů názvů můžete dosáhnout izolace mezi skupinami metrik, které mohou shromažďovat různé přehledy nebo ukazatele výkonu. Například můžete mít obor názvů s názvem **contosomemorymetrics** , který sleduje metriky využití paměti, které profilují vaši aplikaci. Jiný obor názvů s názvem **contosoapptransaction** může sledovat všechny metriky o transakcích uživatelů ve vaší aplikaci.
 
-### <a name="name"></a>Name
+### <a name="name"></a>Název
 **Název** je název metriky, která je hlášena. Obvykle je název dostatečně popisný, aby mohl lépe identifikovat, co je měřené. Příkladem je metrika, která měří počet bajtů paměti použitých na daném virtuálním počítači. Může mít název metriky, například **používané paměťové bajty**.
 
 ### <a name="dimension-keys"></a>Klíče dimenzí
@@ -86,7 +86,7 @@ Při vytváření sestav datového bodu metriky pro každý klíč dimenze na hl
 
 * V názvu metriky by se **používaly paměťové bajty**.
 * Bude **zpracován**klíč dimenze.
-* Hodnota dimenze by byla **ContosoApp. exe**.
+* Hodnota dimenze by byla **ContosoApp.exe**.
 
 Při publikování hodnoty metriky můžete zadat pouze jednu hodnotu dimenze na klíč dimenze. Pokud shromažďujete stejné využití paměti pro více procesů na virtuálním počítači, můžete pro toto časové razítko vykázat více hodnot metriky. Každá hodnota metriky by určovala jinou hodnotu dimenze pro klíč dimenze **procesu** .
 Dimenze jsou volitelné, ne všechny metriky mohou mít rozměry. Pokud příspěvek metriky definuje klíče dimenzí, jsou odpovídající hodnoty dimenze povinné.
@@ -189,28 +189,28 @@ Ve verzi Public Preview je možnost publikovat vlastní metriky k dispozici pouz
 |Oblast Azure |Předpona regionálního koncového bodu|
 |---|---|
 | **USA a Kanada** | |
-|USA – středozápad | https: \/ /westcentralus.Monitoring.Azure.com/ |
-|USA – západ 2       | https: \/ /westus2.Monitoring.Azure.com/ |
+|USA – středozápad | https: \/ /westcentralus.Monitoring.Azure.com |
+|USA – západ 2       | https: \/ /westus2.Monitoring.Azure.com |
 |USA – středosever | https: \/ /northcentralus.Monitoring.Azure.com
-|USA – středojih| https: \/ /southcentralus.Monitoring.Azure.com/ |
+|USA – středojih| https: \/ /southcentralus.Monitoring.Azure.com |
 |USA – střed      | https: \/ /centralus.Monitoring.Azure.com |
-|Střední Kanada | https: \/ /canadacentral.Monitoring.Azure.comc
-|USA – východ| https: \/ /eastus.Monitoring.Azure.com/ |
-|USA – východ 2 | https: \/ /eastus2.Monitoring.Azure.com/
-| **Europe** | |
-|Severní Evropa    | https: \/ /northeurope.Monitoring.Azure.com/ |
-|Západní Evropa     | https: \/ /westeurope.Monitoring.Azure.com/ |
+|Střední Kanada | https: \/ /canadacentral.Monitoring.Azure.com |
+|USA – východ| https: \/ /eastus.Monitoring.Azure.com |
+|USA – východ 2 | https: \/ /eastus2.Monitoring.Azure.com |
+| **Evropa** | |
+|Severní Evropa    | https: \/ /northeurope.Monitoring.Azure.com |
+|Západní Evropa     | https: \/ /westeurope.Monitoring.Azure.com |
 |Spojené království – jih | https: \/ /uksouth.Monitoring.Azure.com
 |Francie – střed | https: \/ /francecentral.Monitoring.Azure.com |
 | **Afrika** | |
-|Jižní Afrika – sever | https: \/ /southafricanorth.Monitoring.Azure.com
+|Jižní Afrika – sever | https: \/ /southafricanorth.Monitoring.Azure.com |
 | **Asie** | |
-|Indie – střed | https: \/ /centralindia.Monitoring.Azure.com
-|Austrálie – východ | https: \/ /australiaeast.Monitoring.Azure.com
-|Japonsko – východ | https: \/ /japaneast.Monitoring.Azure.com
+|Indie – střed | https: \/ /centralindia.Monitoring.Azure.com |
+|Austrálie – východ | https: \/ /australiaeast.Monitoring.Azure.com |
+|Japonsko – východ | https: \/ /japaneast.Monitoring.Azure.com |
 |Jihovýchodní Asie  | https: \/ /southeastasia.Monitoring.Azure.com |
-|Východní Asie | https: \/ /eastasia.Monitoring.Azure.com
-|Jižní Korea – střed   | https: \/ /koreacentral.Monitoring.Azure.com
+|Východní Asie | https: \/ /eastasia.Monitoring.Azure.com |
+|Jižní Korea – střed   | https: \/ /koreacentral.Monitoring.Azure.com |
 
 ## <a name="latency-and-storage-retention"></a>Latence a uchování úložiště
 
@@ -223,7 +223,7 @@ Azure Monitor ukládá následující limity použití pro vlastní metriky:
 
 |Kategorie|Omezení|
 |---|---|
-|Aktivní časová řada/předplatná/oblast|50 000|
+|Aktivní časová řada/předplatná/oblast|50,000|
 |Klíče dimenzí na metriku|10|
 |Délka řetězce pro obory názvů metriky, názvy metrik, klíče dimenzí a hodnoty dimenzí|256 znaků|
 
@@ -231,7 +231,7 @@ Aktivní časová řada je definovaná jako jakákoli jedinečná kombinace metr
 
 ## <a name="next-steps"></a>Další kroky
 Použijte vlastní metriky z různých služeb: 
- - [Virtual Machines](collect-custom-metrics-guestos-resource-manager-vm.md)
+ - [Virtuální počítače](collect-custom-metrics-guestos-resource-manager-vm.md)
  - [Škálovací sada virtuálních počítačů](collect-custom-metrics-guestos-resource-manager-vmss.md)
  - [Virtual Machines Azure (Classic)](collect-custom-metrics-guestos-vm-classic.md)
  - [Virtuální počítač se systémem Linux pomocí agenta telegraf](collect-custom-metrics-linux-telegraf.md)

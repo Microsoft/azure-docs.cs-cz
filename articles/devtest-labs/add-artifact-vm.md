@@ -1,25 +1,14 @@
 ---
 title: Přidání artefaktu do virtuálního počítače v Azure DevTest Labs | Microsoft Docs
 description: Naučte se, jak přidat artefakt do virtuálního počítače v testovacím prostředí v Azure DevTest Labs
-services: devtest-lab,virtual-machines
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.assetid: ''
-ms.service: devtest-lab
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 03/25/2019
-ms.author: spelluru
-ms.openlocfilehash: 27fec279582d845972b87ac635c87c16c239924e
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: b4772755d8077f7a659c4d403961ffaeb9e1d483
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84898847"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483886"
 ---
 # <a name="add-an-artifact-to-a-vm"></a>Přidání artefaktu do virtuálního počítače
 Při vytváření virtuálního počítače můžete do něj přidat existující artefakty. Tyto artefakty můžou být buď z [úložiště Git veřejného DevTest Labs](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts) , nebo z vlastního úložiště Git. V tomto článku se dozvíte, jak přidat artefakty do Azure Portal a pomocí Azure PowerShell. 

@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2c470483cee8b621475fa70dd09c80aa126173be
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: e0f1caf77f0e898b13045e2c840d93f42a5569fc
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609144"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85484039"
 ---
 # <a name="azure-synapse-analytics-workspaces-preview-frequently-asked-questions"></a>Nejčastější dotazy ke službě Azure synapse Analytics (pracovní prostory ve verzi Preview)
 
@@ -48,6 +48,10 @@ Odpověď: Azure synapse má následující možnosti:
 Odpověď: Azure synapse Analytics je vývojem Azure SQL Data Warehouse na analytické platformě, která zahrnuje fond SQL jako řešení datového skladu. Tato platforma kombinuje zkoumání dat, ingestování, transformaci, přípravu a obsluhu analytických vrstev.
 
 ## <a name="use-cases"></a>Případy použití
+
+### <a name="q-how-do-i-rename-a-published-artifact-dataset-notebook-sql-script-and-so-on-in-azure-synapse"></a>Otázka: Návody přejmenování publikovaného artefaktu (datová sada, Poznámkový blok, SQL Script atd.) v Azure synapse?
+
+Odpověď: Chcete-li přejmenovat publikovaný soubor artefaktů, nejprve naklonujte soubor a přejmenujte nový soubor na název, kterému dáváte přednost. Budete muset ručně aktualizovat všechny odkazy na artefakt na nový název souboru a odstranit starý.
 
 ### <a name="q-what-is-a-good-use-case-for-synapse-sql-pool"></a>Otázka: co je dobrým případem použití pro synapse fond SQL
 

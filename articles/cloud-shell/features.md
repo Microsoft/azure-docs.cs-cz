@@ -67,7 +67,7 @@ Prostředí PowerShell v Cloud Shell obsahuje soukromé sestavení modulu Exchan
 
 Cloud Shell zahrnuje předem nakonfigurované ověřování pro open source nástroje, jako jsou Terraformu, Ansible a INSPEC. Vyzkoušejte si to z ukázkových návodů.
 
-## <a name="tools"></a>Nástroje
+## <a name="tools"></a>nástroje
 
 |Kategorie   |Název   |
 |---|---|
@@ -78,7 +78,7 @@ Cloud Shell zahrnuje předem nakonfigurované ověřování pro open source nás
 |Nástroje pro sestavení            |značka<br> maven<br> npm<br> PIP         |
 |Containers             |[Docker Machine](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Helm](https://github.com/kubernetes/helm)<br> [ROZHRANÍ PŘÍKAZOVÉHO ŘÁDKU DC/OS](https://github.com/dcos/dcos-cli)         |
 |Databáze              |Klient MySQL<br> Klient PostgreSql<br> [Nástroj Sqlcmd](https://docs.microsoft.com/sql/tools/sqlcmd-utility)<br> [skript MSSQL](https://github.com/Microsoft/sql-xplat-cli) |
-|Jiné                  |Klient iPython<br> [Cloud Foundry CLI](https://github.com/cloudfoundry/cli)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Ansible](https://www.ansible.com/microsoft-azure)<br> [Nespec](https://www.chef.io/inspec/)<br> [Puppet](https://puppet.com/docs/bolt/latest/bolt.html)<br> [HashiCorp Pack](https://www.packer.io/)<br> [Sada Office 365 CLI](https://pnp.github.io/office365-cli/)|
+|Ostatní                  |Klient iPython<br> [Cloud Foundry CLI](https://github.com/cloudfoundry/cli)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Ansible](https://www.ansible.com/microsoft-azure)<br> [Nespec](https://www.chef.io/inspec/)<br> [Puppet](https://puppet.com/docs/bolt/latest/bolt.html)<br> [HashiCorp Pack](https://www.packer.io/)<br> [Sada Office 365 CLI](https://pnp.github.io/office365-cli/)|
 
 ## <a name="language-support"></a>Podpora jazyků
 

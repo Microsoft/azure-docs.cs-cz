@@ -3,15 +3,15 @@ title: Správa svazků StorSimple (aktualizace 3)
 description: Vysvětluje, jak přidat, upravit, monitorovat a odstranit svazky StorSimple a jak je v případě potřeby převést do režimu offline.
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/08/2017
 ms.author: alkohli
-ms.openlocfilehash: f32f8925bca33d90afa48071d0c0944ba63861cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3d8ab6da9327048469c8b781657bb03b6a4b9669
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254765"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85508244"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>Použití služby StorSimple Device Manager ke správě svazků (Update 3 nebo novější)
 
@@ -163,7 +163,7 @@ Upravte svazek, pokud ho potřebujete rozšířit, nebo změňte hostitele, kte�
 
 7. Pokud rozbalíte svazek, proveďte následující kroky na hostitelském počítači s Windows:
    
-   1. Přejít do ->**správy disků**v **nástroji Správa počítače**.
+   1. Přejít do správy disků v **nástroji Správa počítače**  -> **Disk Management**.
    2. Klikněte pravým tlačítkem na **Správa disků** a vyberte znovu **Prohledat disky**.
    3. V seznamu disků vyberte svazek, který jste aktualizovali, klikněte na něj pravým tlačítkem myši a vyberte možnost **Zvětšit svazek**. Spustí se Průvodce rozšířeným svazkem. Klikněte na **Další**.
    4. Dokončete průvodce a přijměte výchozí hodnoty. Po dokončení průvodce by měl svazek Zobrazit větší velikost.

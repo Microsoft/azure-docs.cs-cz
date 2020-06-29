@@ -3,15 +3,15 @@ title: Ověřování .NET-Service-to-Service – Data Lake Storage Gen1
 description: Naučte se, jak dosáhnout ověřování služby-služba pomocí Azure Data Lake Storage Gen1 pomocí Azure Active Directory pomocí sady .NET SDK.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: bac5fa95ca5ce4e289d4dd18cba9238da7b8a2e2
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 19b4ac619ec3e72c787efc8e9f043f42dbd8b09b
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691617"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85505150"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Ověřování služba-služba s Azure Data Lake Storage Gen1 pomocí sady .NET SDK
 > [!div class="op_single_selector"]
@@ -34,7 +34,7 @@ V tomto článku se dozvíte, jak používat sadu .NET SDK k ověřování služ
 ## <a name="create-a-net-application"></a>Vytvoření aplikace .NET
 1. V aplikaci Visual Studio vyberte nabídku **soubor** , **Nový**a poté **projekt**.
 2. Zvolte **Konzolová aplikace (.NET Framework)** a pak vyberte **Další**.
-3. Do **název projektu**zadejte `CreateADLApplication`a pak vyberte **vytvořit**.
+3. Do **název projektu**zadejte `CreateADLApplication` a pak vyberte **vytvořit**.
 
 4. Přidejte do projektu balíčky NuGet.
 
@@ -84,7 +84,7 @@ private static void Main(string[] args)
 }
 ```
 
-Předchozí fragment kódu používá pomocnou funkci `GetCreds_SPI_SecretKey`. Kód pro tuto pomocnou funkci je k dispozici [na GitHubu](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#getcreds_spi_secretkey).
+Předchozí fragment kódu používá pomocnou funkci `GetCreds_SPI_SecretKey` . Kód pro tuto pomocnou funkci je k dispozici [na GitHubu](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#getcreds_spi_secretkey).
 
 ## <a name="service-to-service-authentication-with-certificate"></a>Ověřování služba-služba s certifikátem
 
@@ -105,7 +105,7 @@ private static void Main(string[] args)
 }
 ```
 
-Předchozí fragment kódu používá pomocnou funkci `GetCreds_SPI_Cert`. Kód pro tuto pomocnou funkci je k dispozici [na GitHubu](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#getcreds_spi_cert).
+Předchozí fragment kódu používá pomocnou funkci `GetCreds_SPI_Cert` . Kód pro tuto pomocnou funkci je k dispozici [na GitHubu](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#getcreds_spi_cert).
 
 ## <a name="next-steps"></a>Další kroky
 V tomto článku jste zjistili, jak používat ověřování služby-služba k ověřování pomocí Data Lake Storage Gen1 pomocí sady .NET SDK. Nyní se můžete podívat na následující články, které vás seznámí s postupem použití sady .NET SDK pro práci s Data Lake Storage Gen1.

@@ -4,15 +4,15 @@ description: Přehled Data Lake Storage Gen1 (dříve označovaných jako Azure 
 services: data-lake-store
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 04/17/2019
 ms.author: twooley
-ms.openlocfilehash: 99384374226fd89cfd672c6b4f851a1743db0764
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 2ca6ceb326a1fd6f7aaf5a9871d043377e60de83
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "67118808"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85508550"
 ---
 # <a name="what-is-azure-data-lake-storage-gen1"></a>Co je Azure Data Lake Storage Gen1?
 
@@ -60,7 +60,7 @@ Data Lake Storage Gen1 používá k ověřování Azure Active Directory (Azure 
 
 | Funkce | Popis |
 | --- | --- |
-| Ověřování |Data Lake Storage Gen1 se integruje s Azure AD pro správu identit a přístupu pro všechna data uložená v Data Lake Storage Gen1. Kvůli integraci Data Lake Storage Gen1 výhody ze všech funkcí služby Azure AD, jako je Multi-Factor Authentication, podmíněný přístup, řízení přístupu na základě role, monitorování využití aplikací, monitorování zabezpečení a upozorňování atd. Data Lake Storage Gen1 podporuje protokol OAuth 2,0 pro ověřování v rámci rozhraní REST. Viz [Data Lake Storage Gen1 ověřování](data-lakes-store-authentication-using-azure-active-directory.md).|
+| Authentication |Data Lake Storage Gen1 se integruje s Azure AD pro správu identit a přístupu pro všechna data uložená v Data Lake Storage Gen1. Kvůli integraci Data Lake Storage Gen1 výhody ze všech funkcí služby Azure AD, jako je Multi-Factor Authentication, podmíněný přístup, řízení přístupu na základě role, monitorování využití aplikací, monitorování zabezpečení a upozorňování atd. Data Lake Storage Gen1 podporuje protokol OAuth 2,0 pro ověřování v rámci rozhraní REST. Viz [Data Lake Storage Gen1 ověřování](data-lakes-store-authentication-using-azure-active-directory.md).|
 | Řízení přístupu |Data Lake Storage Gen1 poskytuje řízení přístupu tím, že podporuje oprávnění ve stylu POSIX vystavené protokolem WebHDFS. Můžete povolit seznamy řízení přístupu (ACL) pro kořenovou složku, podsložky a jednotlivé soubory. Další informace o fungování seznamů ACL v kontextu Data Lake Storage Gen1 najdete v tématu [řízení přístupu v Data Lake Storage Gen1](data-lake-store-access-control.md). |
 | Šifrování |Data Lake Storage Gen1 taky poskytuje šifrování pro data, která jsou uložená v účtu. Nastavení šifrování určíte při vytváření účtu Data Lake Storage Gen1. Můžete se rozhodnout, že vaše data budou zašifrovaná nebo se můžou rozhodnout bez šifrování. Další informace najdete v tématu [šifrování v Data Lake Storage Gen1](data-lake-store-encryption.md). Pokyny, jak poskytnout konfiguraci související s šifrováním, najdete v tématu Začínáme [s Data Lake Storage Gen1 pomocí Azure Portal](data-lake-store-get-started-portal.md). |
 
@@ -78,7 +78,7 @@ Data Lake Storage Gen1 je kompatibilní s většinou open source komponent v eko
 
 K Data Lake Storage Gen1 lze získat přístup prostřednictvím AzureDataLakeFilesystem systému souborů (adl://) v prostředích Hadoop (k dispozici v clusteru HDInsight). Aplikace a služby, které používají adl://, mohou využívat další optimalizace výkonu, které nejsou aktuálně k dispozici v WebHDFS. V důsledku toho vám Data Lake Storage Gen1 poskytuje flexibilitu při použití nejlepšího výkonu s doporučenou možností použití adl://nebo udržování stávajícího kódu tím, že budete pokračovat v používání rozhraní WebHDFS API přímo. Azure HDInsight plně využívá AzureDataLakeFilesystem k zajištění nejlepšího výkonu Data Lake Storage Gen1.
 
-K datům v Data Lake Storage Gen1 můžete přistupovat pomocí `adl://<data_lake_storage_gen1_name>.azuredatalakestore.net`. Další informace o tom, jak získat přístup k datům v Data Lake Storage Gen1, najdete v tématu [zobrazení vlastností uložených dat](data-lake-store-get-started-portal.md#properties).
+K datům v Data Lake Storage Gen1 můžete přistupovat pomocí `adl://<data_lake_storage_gen1_name>.azuredatalakestore.net` . Další informace o tom, jak získat přístup k datům v Data Lake Storage Gen1, najdete v tématu [zobrazení vlastností uložených dat](data-lake-store-get-started-portal.md#properties).
 
 ## <a name="next-steps"></a>Další kroky
 

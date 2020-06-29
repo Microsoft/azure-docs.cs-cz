@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.date: 06/16/2020
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: cb35021ad7e4d735a7dd521e39e4fe5fd102ae01
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 1b21141a4b3f9ae92cdcf1d5a93a457012cb136a
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84888357"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85506584"
 ---
 ### <a name="general-requirements"></a>Obecné požadavky
 
@@ -38,16 +38,14 @@ Další požadavky na virtuální síť se liší podle toho, jestli je fond Bat
 
 **ID podsítě** – Při zadávání podsítě pomocí rozhraní API služby Batch použijte *identifikátor prostředku* podsítě. Identifikátor podsítě má tento formát:
 
-  ```
-  /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/virtualNetworks/{network}/subnets/{subnet}
-  ```
+`/subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/virtualNetworks/{network}/subnets/{subnet}`
 
 **Oprávnění** – Zkontrolujte, jestli vaše zásady zabezpečení nebo zámky na předplatném nebo skupině prostředků virtuální sítě neomezují oprávnění uživatele spravovat tuto virtuální síť.
 
 **Další síťové prostředky** – Batch automaticky přiděluje další síťové prostředky ve skupině prostředků obsahující virtuální síť.
 
 > [!IMPORTANT]
->Pro každý 100 vyhrazený uzel nebo uzly s nízkou prioritou dávka přiděluje: jednu skupinu zabezpečení sítě (NSG), jednu veřejnou IP adresu a jeden nástroj pro vyrovnávání zatížení. Pro tyto prostředky platí omezení [kvót prostředků](../articles/azure-resource-manager/management/azure-subscription-service-limits.md) předplatného. V případě velkých fondů možná bude potřeba požádat o navýšení kvóty pro jeden nebo několik z těchto prostředků.
+> Pro každý 100 vyhrazený uzel nebo uzly s nízkou prioritou dávka přiděluje: jednu skupinu zabezpečení sítě (NSG), jednu veřejnou IP adresu a jeden nástroj pro vyrovnávání zatížení. Pro tyto prostředky platí omezení [kvót prostředků](../articles/azure-resource-manager/management/azure-subscription-service-limits.md) předplatného. V případě velkých fondů možná bude potřeba požádat o navýšení kvóty pro jeden nebo několik z těchto prostředků.
 
 #### <a name="network-security-groups-batch-default"></a>Skupiny zabezpečení sítě: Výchozí hodnota služby Batch
 
@@ -59,11 +57,11 @@ Podsíť musí umožňovat příchozí komunikaci ze služby Batch, aby mohla pl
 * Odchozí provoz do internetu na jakémkoli portu. Toto je možné upravit pravidly NSG na úrovni podsítě (viz níže).
 
 > [!IMPORTANT]
-> Pokud potřebujete upravit nebo přidat pravidla příchozích nebo odchozích přenosů ve skupinách zabezpečení sítě nakonfigurovaných službou Batch, postupujte obezřetně. Pokud je komunikace s výpočetními uzly v zadané podsíti zakázaná skupinou NSG, nastaví služba Batch stav výpočetních uzlů na **nepoužitelné**. Kromě toho by žádné prostředky vytvořené službou Batch neměly mít zámky prostředků, jinak může dojít k tomu, že v důsledku uživatelem zahájených akcí, jako je odstranění fondu, nedojde k vyčištění prostředků.
+> Buďte opatrní při úpravách nebo přidávání příchozích nebo odchozích pravidel v skupin zabezpečení sítěě nakonfigurovaném pro dávkovou práci. Pokud je komunikace s výpočetními uzly v zadané podsíti zamítnutá NSG, služba Batch nastaví stav výpočetních uzlů na **nepoužitelné**. Kromě toho by se neměly žádné zámky prostředků použít pro všechny prostředky vytvořené službou Batch, protože to může zabránit vyčištění prostředků v důsledku akcí iniciované uživatelem, jako je například odstranění fondu.
 
 #### <a name="network-security-groups-specifying-subnet-level-rules"></a>Skupiny zabezpečení sítě: Zadání pravidel na úrovni podsítě
 
-Nemusíte zadávat skupiny zabezpečení sítě na úrovni podsítě virtuální sítě, protože služba Batch konfiguruje vlastní skupiny zabezpečení sítě (viz výše). Pokud máte k podsíti, ve které jsou nasazené výpočetní uzly služby Batch, přidruženou skupinu zabezpečení sítě nebo pokud chcete použít vlastní pravidla NSG a přepsat výchozí nastavení, musíte u této skupiny zabezpečení sítě nakonfigurovat alespoň příchozí a odchozí pravidla zabezpečení, jak je uvedeno v následujících tabulkách.
+Nemusíte zadávat skupin zabezpečení sítě na úrovni podsítě virtuální sítě, protože Batch konfiguruje vlastní skupin zabezpečení sítě (viz výše). Pokud máte NSG přidruženou k podsíti, ve které jsou nasazené dávkové výpočetní uzly, nebo pokud chcete použít vlastní pravidla NSG pro přepsání použitých výchozích nastavení, musíte tento NSG nakonfigurovat alespoň na pravidla zabezpečení příchozích a odchozích připojení uvedená v následujících tabulkách.
 
 Příchozí provoz na portu 3389 (Windows) nebo 22 (Linux) nakonfigurujte pouze v případě, že potřebujete povolit vzdálený přístup k výpočetním uzlům z externích zdrojů. Pokud potřebujete zajistit podporu úkolů s více instancemi a některými moduly runtime MPI, možná bude potřeba v Linuxu povolit pravidla pro port 22. Výpočetní uzly ve fondu budou použitelné i bez povolení provozu na těchto portech.
 
@@ -75,7 +73,7 @@ Příchozí provoz na portu 3389 (Windows) nebo 22 (Linux) nakonfigurujte pouze 
 | Zdrojové IP adresy uživatelů pro vzdálený přístup k výpočetním uzlům nebo podsíti výpočetních uzlů pro úlohy Linuxu s více instancemi, pokud je to potřeba | – | * | Všechny | 3389 (Windows), 22 (Linux) | TCP | Povolit |
 
 > [!WARNING]
-> IP adresy služby Batch se můžou v průběhu času měnit. Proto se důrazně doporučuje používat pro pravidla NSG značku služby `BatchNodeManagement` (nebo regionální variantu). Nedoporučuje se do pravidel NSG přímo doplnit IP adresy služby Batch.
+> IP adresy služby Batch se můžou v průběhu času měnit. Proto se důrazně doporučuje používat `BatchNodeManagement` pro pravidla NSG (neboli regionální variantu) značku služby. Vyhněte se naplnění pravidel NSG s konkrétními IP adresami služby Batch.
 
 **Odchozí pravidla zabezpečení**
 
@@ -89,9 +87,7 @@ Příchozí provoz na portu 3389 (Windows) nebo 22 (Linux) nakonfigurujte pouze 
 
 **ID podsítě** – Při zadávání podsítě pomocí rozhraní API služby Batch použijte *identifikátor prostředku* podsítě. Identifikátor podsítě má tento formát:
 
-  ```
-  /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.ClassicNetwork /virtualNetworks/{network}/subnets/{subnet}
-  ```
+`/subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.ClassicNetwork /virtualNetworks/{network}/subnets/{subnet}`
 
 **Oprávnění** – Instanční objekt `Microsoft Azure Batch` musí mít pro zadanou virtuální síť roli řízení přístupu na základě role `Classic Virtual Machine Contributor`.
 
@@ -99,9 +95,9 @@ Příchozí provoz na portu 3389 (Windows) nebo 22 (Linux) nakonfigurujte pouze 
 
 Podsíť musí umožňovat příchozí komunikaci ze služby Batch, aby mohla plánovat úlohy na výpočetních uzlech, a odchozí komunikaci kvůli komunikaci se službou Azure Storage nebo jinými prostředky.
 
-Není potřeba zadávat skupinu zabezpečení sítě, protože Batch konfiguruje příchozí komunikaci do uzlů fondu pouze z IP adres služby Batch. Pokud má však zadaná podsíť přiřazené skupiny zabezpečení sítě nebo bránu firewall, nakonfigurujte příchozí a odchozí pravidla zabezpečení podle následujících tabulek. Pokud je komunikace s výpočetními uzly v zadané podsíti zakázaná skupinou NSG, nastaví služba Batch stav výpočetních uzlů na **nepoužitelné**.
+Není potřeba zadávat skupinu zabezpečení sítě, protože Batch konfiguruje příchozí komunikaci do uzlů fondu pouze z IP adres služby Batch. Pokud má však zadaná podsíť přiřazené skupiny zabezpečení sítě nebo bránu firewall, nakonfigurujte příchozí a odchozí pravidla zabezpečení podle následujících tabulek. Pokud je komunikace s výpočetními uzly v zadané podsíti zamítnutá NSG, služba Batch nastaví stav výpočetních uzlů na **nepoužitelné**.
 
-Pokud potřebujete povolit přístup k uzlům fondu přes protokol RDP, nakonfigurujte pro Windows příchozí provoz na portu 3389. Uzly fondu budou použitelné i bez této konfigurace.
+Pokud potřebujete povolit přístup k uzlům fondu přes protokol RDP, nakonfigurujte pro Windows příchozí provoz na portu 3389. Tento postup není nutný, pokud se uzly fondu dají použít.
 
 **Příchozí pravidla zabezpečení**
 

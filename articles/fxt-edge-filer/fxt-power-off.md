@@ -3,15 +3,15 @@ title: Vypnutí Microsoft Azure FXT Edge souborového Unit
 description: Postupy pro spuštění a bezpečné vypnutí uzlu Azure FXT Edge souborového
 author: ekpgh
 ms.service: fxt-edge-filer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/01/2019
 ms.author: rohogue
-ms.openlocfilehash: 91445c4219abaa67385105f52515f52c87e2cf06
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92364de82bc3de8229eced4ee02997a27afbde45
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72255998"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85506408"
 ---
 # <a name="how-to-safely-power-off-azure-fxt-edge-filer-hardware"></a>Jak bezpečně vypnout hardware Azure FXT Edge souborového
 
@@ -29,7 +29,7 @@ Po použití uzlu Azure FXT Edge souborového v rámci clusteru byste měli pou�
 Postupujte podle těchto pokynů a bezpečně vypněte uzel Azure FXT Edge souborového:
 
 1. Přihlaste se k ovládacímu panelu clusteru. (Pokyny v [části otevření stránek nastavení](fxt-cluster-create.md#open-the-settings-pages))
-1. Klikněte na kartu **Nastavení** a potom na stránce **cluster** > **FXT Nodes** (načíst uzly clusteru).
+1. Klikněte na kartu **Nastavení** a potom na stránce **cluster**  >  **FXT Nodes** (načíst uzly clusteru).
 1. V seznamu uzlů clusteru Najděte ten, který chcete vypnout. Ve sloupci **Akce** klikněte **na tlačítko vypnout** . 
 1. Chvíli počkejte. Uzel se vypne a zapíná se.
 

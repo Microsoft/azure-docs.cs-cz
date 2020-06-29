@@ -3,15 +3,15 @@ title: Odeslat velkou datovou sadu do metod Azure Data Lake Storage Gen1-offline
 description: Ke kopírování dat z úložiště objektů BLOB v Azure do Azure Data Lake Storage Gen1 použijte službu import/export.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: aa3eb0bcd9ddd2a094563efe326f7af7e9e8708a
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 9b99f7fa88dc933c32077d273221d8551270529c
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73839298"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85508567"
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-data-lake-storage-gen1"></a>Použijte službu import/export Azure pro offline kopírování dat a Data Lake Storage Gen1
 

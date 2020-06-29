@@ -11,20 +11,20 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: 25cae58663f6fa7ef27995c10509eb33e49dd4c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e5e0c43aa8c4fbf0db89065e0fab93ee174a4ede
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "70012575"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483665"
 ---
 # <a name="create-a-netapp-account"></a>Vytvoření účtu NetApp
 Vytvoření účtu NetApp umožňuje nastavit fond kapacity a následně vytvořit svazek. K vytvoření nového účtu NetApp se používá okno Azure NetApp Files.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 Je nutné, abyste obdrželi e-mail od Azure NetApp Files týmu potvrzujícího, že vám byl udělen přístup k této službě. Viz [odeslání žádosti o přístup ke službě pořadníku](azure-netapp-files-register.md#waitlist).
 
 Musíte taky zaregistrovat předplatné pro používání poskytovatele prostředků NetApp. Viz [registrace poskytovatele prostředků NetApp](azure-netapp-files-register.md#resource-provider).

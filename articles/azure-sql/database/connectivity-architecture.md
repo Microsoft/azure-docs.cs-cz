@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
-ms.date: 03/09/2020
-ms.openlocfilehash: 513e198f9184d5789d5b33de7f05cda0c5dc094d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 06/26/2020
+ms.openlocfilehash: fceac1a5852c0be767ffc375ad9ec5de033f17b7
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046618"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85506765"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-connectivity-architecture"></a>Architektura připojení Azure SQL Database a Azure synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -109,6 +109,8 @@ Podrobnosti o tom, jak se bude provoz migrovat na nové brány v konkrétních o
 | Jižní Afrika – západ    | 102.133.24.0       |
 | USA – středojih     | 13.66.62.124, 23.98.162.75, 104.214.16.32   |
 | Jihovýchodní Asie      | 104.43.15.0, 23.100.117.95, 40.78.232.3   |
+| Švýcarsko – sever    | 51.107.56.0, 51.107.57.0 |
+| Švýcarsko – západ     | 51.107.152.0, 51.107.153.0 |
 | Spojené arabské emiráty – střed          | 20.37.72.64        |
 | Spojené arabské emiráty sever            | 65.52.248.0        |
 | Spojené království – jih             | 51.140.184.11      |

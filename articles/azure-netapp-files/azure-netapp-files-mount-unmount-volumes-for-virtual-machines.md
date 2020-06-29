@@ -5,14 +5,14 @@ author: b-juche
 ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/30/2020
-ms.openlocfilehash: d02ceda9dc2c6a822d45c2a31fe91a976610292b
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: b7586fcd0a262fa325e171480ec0becc297f65fe
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610849"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483580"
 ---
 # <a name="mount-or-unmount-a-volume-for-windows-or-linux-virtual-machines"></a>Připojování nebo odpojování svazku pro virtuální počítače s Windows nebo Linuxem 
 
@@ -41,7 +41,7 @@ V případě potřeby můžete připojit nebo odpojit svazek pro virtuální po�
 4. Pokud chcete připojit svazek k systému Windows pomocí systému souborů NFS:
 
     a. Nejdřív připojte svazek k virtuálnímu počítači se systémem UNIX nebo Linux.  
-    b. Spusťte příkaz `chmod 777` nebo `chmod 775` pro svazek.  
+    b. Spusťte `chmod 777` příkaz nebo pro `chmod 775` svazek.  
     c. Připojte svazek přes klienta NFS ve Windows.
 
 ## <a name="next-steps"></a>Další kroky

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 7d32e4100d00a4ecff9f8bd5017d8bc5ab74105e
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.openlocfilehash: 38228e7080cb0bdead2f2b3490729702d923ae36
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84752439"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85504895"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Vytvoření nabídky virtuálních počítačů Azure na Azure Marketplace
 
@@ -175,7 +175,7 @@ Na stránce **seznam nabídek** můžete definovat podrobnosti nabídky, jako je
 
 ### <a name="marketplace-details"></a>Podrobnosti Marketplace
 
-#### <a name="name"></a>Name
+#### <a name="name"></a>Název
 
 Název, který zde zadáte, se zákazníkům zobrazí jako název seznamu nabídek. Toto pole se vyplní názvem, který jste zadali do pole **alias nabídky** při vytváření nabídky. Tento název můžete později změnit. Název:
 
@@ -191,7 +191,7 @@ Zadejte krátký popis vaší nabídky, který se zobrazí ve výsledcích hled�
 
 Zadejte delší popis nabídky, která se zobrazí ve výsledcích hledání Azure Marketplace. Může obsahovat až 256 znaků.
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>Popis
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -221,7 +221,7 @@ Poskytněte web podpory, kde se zákazníci můžou připojit k vašemu týmu po
 
 Poskytněte kontaktní informace partnerům Microsoftu, kteří se použijí, když vaši zákazníci otevřou lístek podpory. Tyto informace nejsou uvedené na Azure Marketplace.
 
-- Name
+- Název
 - E-mail
 - Rozložení
 
@@ -229,7 +229,7 @@ Poskytněte kontaktní informace partnerům Microsoftu, kteří se použijí, kd
 
 Poskytněte kontaktní informace Microsoftu pro použití v případě problémů s vaší nabídkou, včetně problémů s certifikací. Tyto informace nejsou uvedené na Azure Marketplace.
 
-- Name
+- Název
 - E-mail
 - Rozložení
 
@@ -400,10 +400,14 @@ Jednotlivé plány můžete navrhovat tak, aby je bylo možné zobrazit všem u�
 
 **Soukromá skupina**: Nastavte si váš plán viditelný jenom pro předvybranou cílovou skupinu. Po zveřejnění jako soukromého plánu můžete cílovou skupinu aktualizovat nebo ji změnit na veřejné. Po zveřejnění plánu musí být veřejný. Nedá se změnit zpátky na soukromý plán.
 
-**Skupina s omezeným přístupem (ID předplatných Azure)**: přiřaďte cílovou skupinu, která bude mít přístup k tomuto privátnímu plánu, pomocí ID předplatných Azure. Volitelně můžete zahrnout popis každého ID předplatného Azure, které jste přiřadili. Pokud importujete tabulku CSV, přidejte až 10 ID předplatných ručně nebo až 20 000 ID. ID předplatných Azure se reprezentují jako identifikátory GUID a všechna písmena musí být malá.
-
 > [!NOTE]
 > Soukromá nebo omezená skupina se liší od cílové skupiny Preview, kterou jste definovali v podokně **náhledu** . Cílová skupina Preview může získat přístup k vaší nabídce _před tím, než_ se publikuje živě do Azure Marketplace. I když se soukromá cílová skupina vztahuje jenom na konkrétní plán, cílová skupina Preview může zobrazit všechny soukromé a veřejné plány pro účely ověření.
+
+**Skupina s omezeným přístupem (ID předplatných Azure)**: přiřaďte cílovou skupinu, která bude mít přístup k tomuto privátnímu plánu, pomocí ID předplatných Azure. Volitelně můžete zahrnout popis každého ID předplatného Azure, které jste přiřadili. Pokud importujete tabulku CSV, přidejte až 10 ID předplatných ručně nebo až 20 000 ID. ID předplatných Azure se reprezentují jako identifikátory GUID a všechna písmena musí být malá.
+
+>[!Note]
+>Pro předplatná Azure vytvořená prostřednictvím prodejce programu Cloud Solution Provider (CSP) nejsou podporovány soukromé nabídky.
+
 
 #### <a name="hide-a-plan"></a>Skrýt plán
 
@@ -526,7 +530,7 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Marketpla
 4. podmínky a ujednání
 5. Adresa zásad ochrany osobních údajů (odkaz)
 6. Název nabídky
-7. Description
+7. Popis
 8. Užitečné odkazy
 9. Snímky obrazovky a videa
 
@@ -557,8 +561,8 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Marketpla
 
 #### <a name="call-out-descriptions"></a>Popisy volání
 
-1. Name
-2. Description
+1. Název
+2. Popis
 3. Užitečné odkazy
 4. Snímky obrazovky a videa
 

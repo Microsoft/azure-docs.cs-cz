@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: 85021af94c3cc88f45b391690d7481d5498c40a9
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 26376c6b20816d2e7302403c8391195e16092fa3
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84246879"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85504316"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Řešení potíží s konfiguračním serverem
 
@@ -67,7 +67,7 @@ Pokud chcete vyřešit selhání zjišťování vCenter, přidejte Server vCente
 - Spusťte aplikaci Internet Explorer v uživatelském obsahu systému spuštěním následujícího příkazového řádku PsExec-s-i "%programfiles%\Internet Explorer\iexplore.exe".
 - Přidejte nastavení proxy serveru v IE a restartujte službu tmanssvc.
 - Pokud chcete nakonfigurovat nastavení proxy serveru DRA, spusťte CD C:\Program Files\Microsoft Azure Site Recovery Provider.
-- Dále spusťte DRCONFIGURATOR. EXE/Configure/AddBypassUrls [Přidání IP adresy nebo plně kvalifikovaného názvu domény vCenter Server k dispozici během **Konfigurace serveru vCenter Server/vSphere ESXi** pro [nasazení konfiguračního serveru](vmware-azure-deploy-configuration-server.md#configure-settings)]
+- Dále spusťte DRCONFIGURATOR.EXE/Configure/AddBypassUrls [Přidání IP adresy nebo plně kvalifikovaného názvu domény vCenter Server poskytnuté během **Konfigurace serveru vCenter Server/vSphere ESXi** krok [nasazení konfiguračního serveru](vmware-azure-deploy-configuration-server.md#configure-settings)]
 
 ## <a name="change-the-ip-address-of-the-configuration-server"></a>Změna IP adresy konfiguračního serveru
 
@@ -99,7 +99,7 @@ Na zdrojovém počítači spusťte následující příkaz:
 
 Nastavení | Podrobnosti
 --- | ---
-Využití | UnifiedAgentConfigurator. exe/CSEndPoint < IP adresa konfiguračního serveru \> /PassphraseFilePath < cesta k souboru s heslem\>
+Využití | UnifiedAgentConfigurator.exe/CSEndPoint <IP adresa konfiguračního serveru \> /PassphraseFilePath <cesta k souboru hesla\>
 Protokoly konfigurace agenta | Nacházející se pod%ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log.
 /CSEndPoint | Povinný parametr. Určuje IP adresu konfiguračního serveru. Použijte jakoukoli platnou IP adresu.
 /PassphraseFilePath |  Povinné. Umístění přístupového hesla. Použijte jakoukoli platnou cestu UNC nebo místní cestu k souboru.
@@ -173,7 +173,7 @@ Chcete-li identifikovat problém, přejděte na C:\ProgramData\ASRSetupLogs\ CX_
     2018-06-28 14:38:12.971   Rolling back the install changes.
     2018-06-28 14:38:12.971   Upgrade has failed.
 
-Problém vyřešíte takto:
+Řešení tohoto problému:
 
 Ručně zastavte následující služby:
 
@@ -193,7 +193,7 @@ Nemáte dostatečná oprávnění k vytvoření aplikace v Azure Active Director
 Chcete-li tento problém vyřešit, přihlaste se k Azure Portal a proveďte jednu z následujících akcí:
 
 - Vyžádejte si roli vývojáře aplikace v AAD. Další informace o roli vývojář aplikace najdete [v tématu oprávnění role správce v Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
-- Ověřte, jestli je **možnost uživatel může vytvořit příznak aplikace** nastavená na *hodnotu true* v AAD. Další informace najdete v tématu [Postupy: použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
+- Ověřte, jestli je **možnost uživatel může vytvořit příznak aplikace** nastavená na *hodnotu true* v AAD. Další informace najdete v tématu [Postupy: použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app).
 
 ## <a name="process-servermaster-target-are-unable-to-communicate-with-the-configuration-server"></a>Procesový Server nebo hlavní cíl nemůžou komunikovat s konfiguračním serverem. 
 
@@ -216,7 +216,7 @@ Pokud v protokolech MT zjistíte trasování, které je podobné následujícím
  
 K této chybě může dojít, pokud jiné aplikace používají také port 443 nebo kvůli nastavení brány firewall blokujícího port.
 
-Problém vyřešíte takto:
+Řešení tohoto problému:
 
 - Ověřte, že brána firewall neblokuje port 443.
 - Pokud je port nedosažitelný z důvodu jiné aplikace, kterou tento port používá, zastavte a odinstalujte aplikaci.
@@ -228,7 +228,7 @@ Problém vyřešíte takto:
 
 K této chybě může dojít, pokud je v databázi více položek identifikátoru UUID instance konfiguračního serveru (CS). K tomuto problému dochází často při klonování virtuálního počítače konfiguračního serveru.
 
-Problém vyřešíte takto:
+Řešení tohoto problému:
 
 1. Odeberte zastaralý virtuální počítač CS z vCenter. Další informace najdete v tématu [odebrání serverů a zakázání ochrany](site-recovery-manage-registration-and-protection.md).
 2. Přihlaste se k virtuálnímu počítači konfiguračního serveru a připojte se k databázi MySQL svsdb1. 
@@ -251,7 +251,7 @@ Po zadání správného uživatelského jména a hesla na konfiguračním server
 
 K tomuto problému může dojít v případě, že systémový čas není správný.
 
-Problém vyřešíte takto:
+Řešení tohoto problému:
 
 Nastavte na počítači správný čas a znovu se přihlaste. 
  

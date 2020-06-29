@@ -4,15 +4,15 @@ description: zahrnout soubor
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 06/15/2020
+ms.date: 06/26/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 76af1084626944d8399edd2c7ec5dec92e25f3ed
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: 8ee5973afb9312688178abd9a186c5319032c493
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85378574"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85506037"
 ---
 Použití přímých virtuálních počítačů vám umožní využít výhod naší nevyužité kapacity s významnou úsporou nákladů. V jakémkoli okamžiku, kdy Azure potřebuje kapacitu zpátky, vyřadí infrastruktura Azure virtuální počítače na místě. Proto jsou virtuální počítače Skvělé pro úlohy, které mohou zpracovávat přerušení, jako jsou úlohy dávkového zpracování, vývojové a testovací prostředí, velké výpočetní úlohy a další.
 
@@ -21,9 +21,17 @@ Množství dostupné kapacity se může lišit v závislosti na velikosti, oblas
 
 ## <a name="eviction-policy"></a>Zásada vyřazení
 
-Virtuální počítače je možné vyřadit na základě kapacity nebo maximální ceny, kterou jste nastavili. U virtuálních počítačů je zásada vyřazení nastavená tak, aby se přesunuly vaše vyřazené virtuální počítače do stavu Zastaveno (přidělení zrušeno) *, což vám* umožní znovu nasadit vyřazené virtuální počítače později. Změna přidělení virtuálních počítačů na místě bude ale závislá na dostupnosti dostupné kapacity. Navrácené virtuální počítače se budou počítat s vaší kvótou vCPU a bude vám účtováno za vaše základní disky. 
+Virtuální počítače je možné vyřadit na základě kapacity nebo maximální ceny, kterou jste nastavili. Při vytváření virtuálního počítače s přímým použitím můžete nastavit zásady vyřazení, aby se nastavilo zrušení *přidělení* (výchozí) nebo *odstranění*. 
 
-Uživatelé se můžou přihlásit k přijímání oznámení v rámci virtuálního počítače prostřednictvím [Azure Scheduled Events](../articles/virtual-machines/linux/scheduled-events.md). To vám upozorní na to, jestli se virtuální počítače vyloučí a že budete mít 30 sekund na dokončení všech úloh a před vyřazením provést úlohy vypnutí. 
+Zásada zrušení *přidělení* přesune váš virtuální počítač do stavu Zastaveno (přidělení zrušeno), což vám umožní později ho znovu nasadit. Neexistuje však záruka, že přidělení bude úspěšné. Navrácené virtuální počítače se budou počítat s vaší kvótou a za základní disky se vám budou účtovat náklady na úložiště. 
+
+Pokud chcete, aby se virtuální počítač po vyřazení odstranil, můžete nastavit zásadu vyřazení, která se má *Odstranit*. Vyřazení virtuálních počítačů se odstraní společně s jejich podkladovým diskům, takže se za úložiště nebudete nadále účtovat. 
+
+> [!NOTE]
+>
+> Portál v současné době nepodporuje `Delete` možnost vyřazení, ale můžete ho nastavit jenom `Delete` pomocí PowerShellu, CLI a šablon.
+
+Můžete se přihlásit k odběru oznámení na virtuálním počítači prostřednictvím [Azure Scheduled Events](../articles/virtual-machines/linux/scheduled-events.md). To vám upozorní na to, jestli se virtuální počítače vyloučí a že budete mít 30 sekund na dokončení všech úloh a před vyřazením provést úlohy vypnutí. 
 
 
 | Možnost | Výsledek |
@@ -36,6 +44,7 @@ Uživatelé se můžou přihlásit k přijímání oznámení v rámci virtuáln
 | Po vyřazení se cena za virtuální počítač vrátí zpět, aby se < maximální cena. | Virtuální počítač se znovu automaticky nespustí. Virtuální počítač můžete restartovat sami a bude se vám účtovat aktuální cena. |
 | Pokud je maximální cena nastavená na`-1` | Virtuální počítač nebude z důvodu cen vyvyřazen. Maximální cena bude aktuální cena až do ceny za standardní virtuální počítače. Nebudete se vám nikdy účtovat za standardní cenu.| 
 | Změna maximální ceny | Pokud chcete změnit maximální cenu, musíte zrušit přidělení virtuálního počítače. Zrušte přidělení virtuálního počítače, nastavte novou maximální cenu a pak aktualizujte virtuální počítač. |
+
 
 ## <a name="limitations"></a>Omezení
 
@@ -51,11 +60,11 @@ Některé kanály předplatného se nepodporují:
 
 | Kanály Azure               | Dostupnost virtuálních počítačů Azure       |
 |------------------------------|-----------------------------------|
-| Smlouva Enterprise         | Yes                               |
-| Pay As You Go                | Yes                               |
+| Smlouva Enterprise         | Ano                               |
+| Pay As You Go                | Ano                               |
 | Poskytovatel cloudových služeb (CSP) | [Obraťte se na svého partnera.](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
 | Výhody                     | Není k dispozici                     |
-| Financovan                    | Yes                               |
+| Financovan                    | Ano                               |
 | Bezplatná zkušební verze                   | Není k dispozici                     |
 
 

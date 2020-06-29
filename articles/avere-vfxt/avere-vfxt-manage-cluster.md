@@ -3,15 +3,15 @@ title: Správa clusteru avere vFXT – Azure
 description: Jak spravovat cluster avere – přidání nebo odebrání uzlů, restartování, zastavení nebo zničení clusteru vFXT
 author: ekpgh
 ms.service: avere-vfxt
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 94db4a93025b6e3d633368d924e3e0c518d108ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4135bfe528c33a2beaeb21438181deb5b19ad12e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76153475"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85505490"
 ---
 # <a name="manage-the-avere-vfxt-cluster"></a>Správa clusteru Avere vFXT
 
@@ -77,7 +77,7 @@ Když se cluster začne vypínat, odešle stavové zprávy na kartu **řídicí 
 
 vfxt.py je nástroj příkazového řádku pro vytváření a správu clusteru.
 
-vfxt.py je předem nainstalovaný na virtuálním počítači s řadičem clusteru. Pokud ho chcete nainstalovat na jiný systém, přečtěte si dokumentaci na adrese <https://github.com/Azure/AvereSDK>.
+vfxt.py je předem nainstalovaný na virtuálním počítači s řadičem clusteru. Pokud ho chcete nainstalovat na jiný systém, přečtěte si dokumentaci na adrese <https://github.com/Azure/AvereSDK> .
 
 Skript vfxt.py se dá použít pro tyto úlohy správy clusteru:
 
@@ -141,7 +141,7 @@ Vzhledem k tomu, že je cluster zastavený, je nutné předat identifikátory in
 vfxt.py --cloud-type azure --from-environment --destroy --resource-group GROUPNAME --admin-password PASSWORD --management-address ADMIN_IP --location LOCATION --azure-network NETWORK --azure-subnet SUBNET --management-address ADMIN_IP
 ```
 
-Možnost ``--quick-destroy`` se dá použít, pokud nechcete ukládat změněná data z mezipaměti clusteru.
+Možnost se ``--quick-destroy`` dá použít, pokud nechcete ukládat změněná data z mezipaměti clusteru.
 
 Další informace najdete v [příručce k používání vfxt.py](<https://github.com/Azure/AvereSDK/blob/master/docs/README.md>) .
 
@@ -181,7 +181,7 @@ Tuto metodu můžete použít k trvalému odebrání uzlů clusteru poté, co by
 ### <a name="destroy-the-cluster-from-the-azure-portal"></a>Zničit cluster z Azure Portal
 
 > [!NOTE]
-> Pokud chcete, aby se všechny zbývající změny klienta v mezipaměti zapisovaly do back-endu úložiště, buď použijte možnost `--destroy` vfxt.py, nebo pomocí ovládacího panelu avere vypněte cluster čistě před odebráním instancí uzlu v Azure Portal.
+> Pokud chcete, aby se všechny zbývající změny klienta v mezipaměti zapisovaly do back-endu úložiště, buď použijte možnost vfxt.py, `--destroy` nebo pomocí ovládacího panelu avere vypněte cluster čistě před odebráním instancí uzlu v Azure Portal.
 
 Instance uzlů můžete zničit trvale jejich odstraněním v Azure Portal. Můžete je odstranit jednou, jak je popsáno výše, nebo můžete použít stránku **Virtual Machines** k vyhledání všech virtuálních počítačů clusteru, jejich zaškrtnutí pomocí zaškrtávacích políček a kliknutím na tlačítko **Odstranit** je odstranit vše v jedné akci.
 

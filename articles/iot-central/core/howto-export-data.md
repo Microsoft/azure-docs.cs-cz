@@ -4,16 +4,16 @@ description: Jak exportovat data z aplikace Azure IoT Central do Azure Event Hub
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 04/07/2020
+ms.date: 06/25/2020
 ms.topic: how-to
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: f23a91a278b81c1583d88db2ede265ba2ad2d415
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: 6660f413c741b36f4dd28f6e1bcf83873e4f5c26
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85414214"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483920"
 ---
 # <a name="export-iot-data-to-destinations-in-azure"></a>Export dat IoT do cílových umístění v Azure
 
@@ -82,11 +82,9 @@ Teď, když máte cíl pro export dat, postupujte podle těchto kroků a nastavt
     > [!Tip]
     > Pokud nevidíte **exportovat data** v levém podokně, nemáte oprávnění ke konfiguraci exportu dat ve vaší aplikaci. Pokud chcete nastavit export dat, obraťte se na správce.
 
-3. V pravém horním rohu vyberte tlačítko **+ Nový** . Jako cíl exportu vyberte jednu z **Event Hubs Azure**, **Azure Service Bus**nebo **Azure Blob Storage** . Maximální počet exportů na aplikaci je 5.
+3. Vyberte tlačítko **+ Nový** . Vyberte jednu z **BLOB Storage Azure**, **Azure Event Hubs**, **frontu Azure Service Bus**nebo **Azure Service Bus téma** jako cíl exportu. Maximální počet exportů na aplikaci je 5.
 
-    ![Vytvořit nový export dat](media/howto-export-data/new-export-definition.png)
-
-4. V rozevíracím seznamu vyberte **obor názvů Event Hubs**, **Service Bus obor**názvů, **obor názvů účtu úložiště**nebo **Zadejte připojovací řetězec**.
+4. Zadejte název exportu. V rozevíracím seznamu vyberte svůj **obor názvů**nebo **Zadejte připojovací řetězec**.
 
     - V rámci stejného předplatného jako aplikace pro IoT Central se zobrazí jenom účty úložiště, Event Hubs obory názvů a Service Bus obory názvů. Pokud chcete exportovat do cílového umístění mimo toto předplatné, vyberte **zadat připojovací řetězec** a podívejte se na krok 6.
     - U aplikací vytvořených pomocí bezplatného cenového plánu je jediným způsobem, jak nakonfigurovat export dat, prostřednictvím připojovacího řetězce. Pro aplikace v cenovém plánu zdarma nemáte přidružené předplatné Azure.
@@ -108,7 +106,7 @@ Teď, když máte cíl pro export dat, postupujte podle těchto kroků a nastavt
           1. V části **Nastavení**vyberte **přístupové klíče** .
           2. Zkopírujte buď připojovací řetězec klíč1, nebo připojovací řetězec key2.
 
-    Vložte do připojovacího řetězce. Zadejte název instance nebo kontejneru, přičemž mějte na paměti, že se rozlišují malá a velká písmena.
+    Vložte do připojovacího řetězce. Zadejte název instance nebo **kontejneru**, přičemž mějte na paměti, že se rozlišují malá a velká písmena.
 
 7. V části **data, která chcete exportovat**, vyberte typy dat k exportu nastavením typ na **zapnuto**.
 
@@ -754,4 +752,4 @@ V případě **šablon zařízení**jsou významné rozdíly mezi starým a nov�
 Teď, když víte, jak exportovat data do Azure Event Hubs, Azure Service Bus a Azure Blob Storage, přejděte k dalšímu kroku:
 
 > [!div class="nextstepaction"]
-> [Postup vytvoření webhooků](./howto-create-webhooks.md)
+> [Jak spouštět vlastní analýzy pomocí datacihlů](./howto-create-custom-analytics.md)

@@ -11,16 +11,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 06/22/2020
-ms.openlocfilehash: 7765788e9bd0803cd806ef0980991429dbe30af9
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: eed333b5e6a83b140df515fc02767b8a7c7a63c7
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85413837"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85506635"
 ---
 # <a name="quickstart-create-an-azure-sql-managed-instance-using-an-arm-template"></a>Rychlý Start: vytvoření spravované instance Azure SQL pomocí šablony ARM
 
-Tento rychlý Start se zaměřuje na proces nasazení šablony ARM pro vytvoření spravované instance Azure SQL a virtuální sítě. [Spravovaná instance Azure SQL](sql-managed-instance-paas-overview.md) je inteligentní, plně spravovaná, Škálovatelná cloudová databáze s téměř 100% paritou funkcí s databázovým strojem SQL Server.
+Tento rychlý Start se zaměřuje na proces nasazení šablony Azure Resource Manager (šablona ARM) pro vytvoření spravované instance Azure SQL a virtuální sítě. [Spravovaná instance Azure SQL](sql-managed-instance-paas-overview.md) je inteligentní, plně spravovaná, Škálovatelná cloudová databáze s téměř 100% paritou funkcí s databázovým strojem SQL Server.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 

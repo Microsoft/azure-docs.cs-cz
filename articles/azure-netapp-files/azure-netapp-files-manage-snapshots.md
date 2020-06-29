@@ -11,17 +11,17 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/03/2020
 ms.author: b-juche
-ms.openlocfilehash: 48055a774808aea86452e8410b7e717f5019d172
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ed13c61646bd2a6672b613964507d291a69a6821
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78267905"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483597"
 ---
-# <a name="manage-snapshots-by-using-azure-netapp-files"></a>Správa snímků pomocí Azure NetApp Files
+# <a name="manage-snapshots-by-using-azure-netapp-files"></a>Správa snímků s využitím služby Azure NetApp Files
 
 Můžete použít Azure NetApp Files k ručnímu vytvoření snímku na vyžádání pro svazek nebo obnovení ze snímku na nový svazek. Služba Azure NetApp Files nevytváří automaticky snímky svazků.  
 
@@ -41,7 +41,7 @@ Snímky můžete vytvářet pouze na vyžádání. Zásady snímků se momentál
 
     ![Nový snímek](../media/azure-netapp-files/azure-netapp-files-new-snapshot.png)
 
-4. Klikněte na tlačítko **OK**. 
+4. Klikněte na **OK**. 
 
 ## <a name="restore-a-snapshot-to-a-new-volume"></a>Obnovení snímku na nový svazek
 
@@ -81,7 +81,7 @@ V současné době můžete snímek obnovit pouze na nový svazek.
     ![Restored new volume](../media/azure-netapp-files/azure-netapp-files-snapshot-new-volume.png) 
    -->
 
-5. Klikněte na tlačítko **OK**.   
+5. Klikněte na **OK**.   
     Nový svazek, ke kterému se snímek obnoví, se zobrazí v okně svazky.
 
 ## <a name="next-steps"></a>Další kroky

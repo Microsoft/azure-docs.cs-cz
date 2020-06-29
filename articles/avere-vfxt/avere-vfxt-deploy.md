@@ -3,15 +3,15 @@ title: Nasazení avere vFXT pro Azure
 description: Postup nasazení clusteru avere vFXT v Azure
 author: ekpgh
 ms.service: avere-vfxt
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: e70d1dfebcf25ee8f4e90a062cee6dd72a663e02
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4c42abdbfaf5c867a9d8d4cbc6b4519a86adaac0
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79252594"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85505643"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>Nasazení clusteru vFXT
 
@@ -87,7 +87,7 @@ Druhá stránka šablony nasazení vám umožní nastavit velikost clusteru, typ
 
 * **Počet uzlů clusteru avere vFXT** – vyberte počet uzlů v clusteru. Minimum je tři uzly a maximum je 12.
 
-* **Heslo pro správu clusteru** – vytvořte heslo pro správu clusteru. Toto heslo se používá s uživatelským ```admin``` jménem pro přihlášení k ovládacímu panelu clusteru, kde můžete monitorovat cluster a konfigurovat nastavení clusteru.
+* **Heslo pro správu clusteru** – vytvořte heslo pro správu clusteru. Toto heslo se používá s uživatelským jménem ```admin``` pro přihlášení k ovládacímu panelu clusteru, kde můžete monitorovat cluster a konfigurovat nastavení clusteru.
 
 * **Název clusteru avere vFXT** – udělte clusteru jedinečný název.
 

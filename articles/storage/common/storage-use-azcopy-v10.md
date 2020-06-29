@@ -3,16 +3,16 @@ title: Kopírování nebo přesun dat do Azure Storage pomocí AzCopy v10 za ú�
 description: AzCopy je nástroj příkazového řádku, který můžete použít ke kopírování dat do, z nebo mezi účty úložiště. Tento článek vám pomůže stáhnout AzCopy, připojit se k vašemu účtu úložiště a pak přenést soubory.
 author: normesta
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 2cff9a427cf395414c5b0778f51f4587c8578478
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: f0d957c05aded6641377b47c3fe383c141480b30
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85340910"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85504470"
 ---
 # <a name="get-started-with-azcopy"></a>Začínáme s nástrojem AzCopy
 
@@ -65,7 +65,7 @@ Tuto tabulku použijte jako vodítko:
 
 | Typ úložiště | Aktuálně podporovaná metoda autorizace |
 |--|--|
-|**Blob Storage** | & SAS pro Azure AD |
+|**Úložiště objektů BLOB** | & SAS pro Azure AD |
 |**Úložiště objektů BLOB (hierarchický obor názvů)** | & SAS pro Azure AD |
 |**Úložiště souborů** | Pouze SAS |
 

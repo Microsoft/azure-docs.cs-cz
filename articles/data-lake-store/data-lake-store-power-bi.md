@@ -3,15 +3,15 @@ title: Analyzovat data v Azure Data Lake Storage Gen1 Power BI
 description: Pomocí Power BI můžete analyzovat data uložená v Azure Data Lake Storage Gen1.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: eb34199f6f1b304d56c691f56b78d9c035be8a5b
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: a692c5b23eaf23b33eef9bd2baf1e62b4bcca74e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744776"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85504929"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen1-by-using-power-bi"></a>Analýza dat v Azure Data Lake Storage Gen1 pomocí Power BI
 V tomto článku se naučíte, jak pomocí Power BI Desktop analyzovat a vizualizovat data uložená v Azure Data Lake Storage Gen1.
@@ -20,7 +20,7 @@ V tomto článku se naučíte, jak pomocí Power BI Desktop analyzovat a vizuali
 Je nutné, abyste před zahájením tohoto kurzu měli tyto položky:
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Účet Data Lake Storage Gen1**. Postupujte podle pokynů v tématu [Začínáme s Azure Data Lake Storage Gen1 pomocí Azure Portal](data-lake-store-get-started-portal.md). V tomto článku se předpokládá, že jste už vytvořili účet Data Lake Storage Gen1 s názvem **myadlsg1**a nahráli jste do něj Ukázkový datový soubor (**Drivers. txt**). Tento ukázkový soubor je k dispozici ke stažení z [Azure Data Lake úložiště Git](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt).
+* **Účet Data Lake Storage Gen1**. Postupujte podle pokynů v tématu [Začínáme s Azure Data Lake Storage Gen1 pomocí Azure Portal](data-lake-store-get-started-portal.md). V tomto článku se předpokládá, že jste už vytvořili účet Data Lake Storage Gen1 s názvem **myadlsg1**a nahráli jste do něj Ukázkový datový soubor (**Drivers.txt**). Tento ukázkový soubor je k dispozici ke stažení z [Azure Data Lake úložiště Git](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt).
 * **Power BI Desktop**. Můžete si ho stáhnout z [webu Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=45331). 
 
 ## <a name="create-a-report-in-power-bi-desktop"></a>Vytvoření sestavy v Power BI Desktopu
@@ -56,7 +56,7 @@ Je nutné, abyste před zahájením tohoto kurzu měli tyto položky:
 10. V editoru dotazů pod sloupcem **obsah** klikněte na **binární**.
     
     ![Upravit dotazy](./media/data-lake-store-power-bi/convert-query1.png "Úprava dotazů")
-11. Zobrazí se ikona souboru, která představuje soubor **Drivers. txt** , který jste nahráli. Klikněte na soubor pravým tlačítkem a klikněte na **CSV**.    
+11. Zobrazí se ikona souboru, která představuje soubor **Drivers.txt** , který jste nahráli. Klikněte na soubor pravým tlačítkem a klikněte na **CSV**.    
     
     ![Upravit dotazy](./media/data-lake-store-power-bi/convert-query2.png "Úprava dotazů")
 12. Měl by se zobrazit výstup, jak je znázorněno níže. Vaše data jsou teď dostupná ve formátu, který můžete použít k vytváření vizualizací.

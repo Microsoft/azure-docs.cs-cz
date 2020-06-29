@@ -5,15 +5,15 @@ services: storage
 author: alkohli
 ms.service: storage
 ms.subservice: blobs
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: cfe450972acda3affbea6cbe3d262bc4b1956dc9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5b60162800695be67c742554881b296c3d8bb9dc
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262855"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85504368"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>Přenos dat rozsáhlých datových sad se střední až velkou šířkou pásma sítě
  
@@ -67,9 +67,9 @@ Pokud používáte offline přenos dat, použijte následující tabulku pro poc
 |    Velikost dat                        |    Až 35 TBs                 |    Až 80 TBs na zařízení                       |    Až 800 TB na zařízení               |    Proměnná                            |
 |    Datový typ                        |    Objekty blob Azure                  |    Objekty blob Azure<br>Soubory Azure                    |    Objekty blob Azure<br>Soubory Azure            |    Objekty blob Azure<br>Soubory Azure          |
 |    Formulářový faktor                      |    5 SSD na objednávku             |    1 X 50-kg zařízení velikosti stolního počítače na jednu objednávku    |    1 X ~ 500-kg velké zařízení na jednu objednávku    |    Až 10 HDD/SSD na objednávku        |
-|    Čas prvotního nastavení               |    Nízká <br>(15 minut)            |    Nízká až střední <br> (<30 minut)               |    Střední<br>(1-2 hodin)               |    Střední až obtížné<br>variabilní |
+|    Čas prvotního nastavení               |    Nízká <br>(15 minut)            |    Nízká až střední <br> (<30 minut)               |    Pokročilé<br>(1-2 hodin)               |    Střední až obtížné<br>variabilní |
 |    Odesílání dat do Azure               |    Ano                          |    Ano                                           |    Ano                                   |    Ano                                 |
-|    Export dat z Azure           |    Ne                           |    Ne                                            |    Ne                                    |    Ano                                 |
+|    Export dat z Azure           |    Ne                           |    Ne                                            |    No                                    |    Yes                                 |
 |    Šifrování                       |    AES 128-bit                  |    AES 256-bit                                   |    AES 256-bit                           |    AES 128-bit                         |
 |    Hardware                         |     Dodán Microsoft          |    Dodán Microsoft                            |    Dodán Microsoft                    |    Dodán zákazník                   |
 |    Síťové rozhraní                |    USB 3.1/SATA                 |    RJ 45, SFP +                                   |    RJ45, QSFP +                           |    SATA II/SATA III                    |
@@ -87,9 +87,9 @@ Pokud používáte online přenos dat, použijte tabulku v následující část
 |-------------------------------------|------------------------------------|----------------------------------------------|----------------------------------|-----------------------------------------------------------------------|
 |    Datový typ                  |    Objekty blob Azure, soubory Azure, tabulky Azure    |    Objekty blob Azure, soubory Azure, tabulky Azure    |    Objekty blob Azure, soubory Azure                           |   Podporuje 70 + datových konektorů pro úložiště a formáty dat    |
 |    Formulářový faktor                |    Nástroje příkazového řádku                        |    Programové rozhraní                    |    Microsoft poskytuje virtuální <br>nebo fyzické zařízení     |    Služba v Azure Portal                                            |
-|    Počáteční nastavení jednorázového času     |    Snadné               |    Střední                       |    Snadné (<30 minut) až střední (1-2 hodin)            |    Množství                                                          |
-|    Předběžné zpracování dat              |    Ne                                        |    Ne                                        |    Ano (s využitím hraničních výpočtů)                               |    Ano                                                                |
-|    Přenos z jiných cloudů       |    Ne                                        |    Ne                                        |    Ne                                                    |    Ano                                                                |
+|    Počáteční nastavení jednorázového času     |    Snadné               |    Pokročilé                       |    Snadné (<30 minut) až střední (1-2 hodin)            |    Množství                                                          |
+|    Předběžné zpracování dat              |    Ne                                        |    Ne                                        |    Ano (s využitím hraničních výpočtů)                               |    Yes                                                                |
+|    Přenos z jiných cloudů       |    Ne                                        |    Ne                                        |    No                                                    |    Ano                                                                |
 |    Typ uživatele                        |    IT specialisté a vývoj                                       |    Vývoj                                       |    IT profesionál                                                |    IT profesionál                                                             |
 |    Ceny                          |    Bezplatné použití poplatků za výstup dat         |    Bezplatné použití poplatků za výstup dat         |    [Ceny](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                                               |    [Ceny](https://azure.microsoft.com/pricing/details/data-factory/)                                                            |
 

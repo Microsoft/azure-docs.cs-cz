@@ -3,15 +3,15 @@ title: Ověřování služba-Služba – Data Lake Storage Gen1 – Java SDK
 description: Naučte se, jak dosáhnout ověřování služby-služba pomocí Azure Data Lake Storage Gen1 pomocí Azure Active Directory s Java
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: f355da7cd9c035b4ed0845bbd374a93bfb4a7350
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9e282aed68e58409a53546a08699cc7035633f62
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73904537"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85505187"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-java"></a>Ověřování služba-služba s Azure Data Lake Storage Gen1 pomocí jazyka Java
 
@@ -39,7 +39,7 @@ V tomto článku se dozvíte, jak pomocí sady Java SDK provádět ověřování
 
 1. Vytvořte projekt Maven pomocí příkazu [mvn archetype](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html) z příkazového řádku nebo pomocí integrovaného vývojového rozhraní (IDE). Pokyny k vytvoření projektu jazyka Java s použitím IntelliJ najdete [zde](https://www.jetbrains.com/help/idea/2016.1/creating-and-running-your-first-java-application.html). Pokyny k vytvoření projektu s použitím Eclipse najdete [zde](https://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2FgettingStarted%2Fqs-3.htm).
 
-2. Přidejte k souboru Maven **pom.xml** následující závislosti. Před značku ** \<>/Project** přidejte následující fragment kódu:
+2. Přidejte k souboru Maven **pom.xml** následující závislosti. Přidejte následující fragment kódu před **\</project>** značku:
 
         <dependencies>
           <dependency>
@@ -54,7 +54,7 @@ V tomto článku se dozvíte, jak pomocí sady Java SDK provádět ověřování
           </dependency>
         </dependencies>
 
-    První závislost je použít sadu Data Lake Storage Gen1 SDK (`azure-data-lake-store-sdk`) z úložiště Maven. Druhou závislostí je zadání protokolovacího rozhraní (`slf4j-nop`), které se pro tuto aplikaci použije. Sada Data Lake Storage Gen1 SDK používá [slf4j](https://www.slf4j.org/) protokolování, které vám umožní vybírat z mnoha oblíbených protokolovacích rozhraní, jako je log4j, protokolování Java, logback atd., nebo bez protokolování. Pro tento příklad zakážeme protokolování a použijeme tedy vazbu **slf4j-nop**. Pokud chcete ve své aplikaci použít jiné možnosti protokolování, přečtěte si informace [zde](https://www.slf4j.org/manual.html#projectDep).
+    První závislost je použít sadu Data Lake Storage Gen1 SDK ( `azure-data-lake-store-sdk` ) z úložiště Maven. Druhou závislostí je zadání protokolovacího rozhraní (`slf4j-nop`), které se pro tuto aplikaci použije. Sada Data Lake Storage Gen1 SDK používá [slf4j](https://www.slf4j.org/) protokolování, které vám umožní vybírat z mnoha oblíbených protokolovacích rozhraní, jako je log4j, protokolování Java, logback atd., nebo bez protokolování. Pro tento příklad zakážeme protokolování a použijeme tedy vazbu **slf4j-nop**. Pokud chcete ve své aplikaci použít jiné možnosti protokolování, přečtěte si informace [zde](https://www.slf4j.org/manual.html#projectDep).
 
 3. Přidejte do své aplikace následující příkazy pro import.
 
@@ -65,7 +65,7 @@ V tomto článku se dozvíte, jak pomocí sady Java SDK provádět ověřování
         import com.microsoft.azure.datalake.store.oauth2.AccessTokenProvider;
         import com.microsoft.azure.datalake.store.oauth2.ClientCredsTokenProvider;
 
-4. Použijte následující fragment kódu v aplikaci Java k získání tokenu pro webovou aplikaci služby Active Directory, kterou jste vytvořili dříve, pomocí jedné z podtříd `AccessTokenProvider` (Následující příklad používá `ClientCredsTokenProvider`). Poskytovatel tokenu má uložené přihlašovací údaje v mezipaměti a automaticky token obnovuje, pokud má vypršet jeho platnost. Je možné vytvořit vlastní podtřídy `AccessTokenProvider` , takže tokeny jsou získány kódem zákazníka. Teď teď používáme ten, který jste zadali v sadě SDK.
+4. Použijte následující fragment kódu v aplikaci Java k získání tokenu pro webovou aplikaci služby Active Directory, kterou jste vytvořili dříve, pomocí jedné z podtříd `AccessTokenProvider` (Následující příklad používá `ClientCredsTokenProvider` ). Poskytovatel tokenu má uložené přihlašovací údaje v mezipaměti a automaticky token obnovuje, pokud má vypršet jeho platnost. Je možné vytvořit vlastní podtřídy `AccessTokenProvider` , takže tokeny jsou získány kódem zákazníka. Teď teď používáme ten, který jste zadali v sadě SDK.
 
     Místo **FILL-IN-HERE** zadejte skutečné hodnoty pro webovou aplikaci Azure Active Directory.
 

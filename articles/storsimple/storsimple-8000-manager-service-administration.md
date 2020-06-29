@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2017
 ms.author: alkohli
-ms.openlocfilehash: b5490c4e79ee1458b498f539c0db2cc189fce7f7
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: c8d8e3b9058b753dc2a6da35878449c94399225e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60723302"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85508040"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-device"></a>Použití služby StorSimple Device Manager ke správě zařízení StorSimple
 
@@ -37,7 +37,7 @@ Po přečtení tohoto článku se naučíte:
 Služba StorSimple Device Manager běží v Microsoft Azure a připojuje se k více zařízením StorSimple. Ke správě těchto zařízení používáte centrální portál Microsoft Azure běžící v prohlížeči. Pokud se chcete připojit ke službě StorSimple Device Manager, udělejte toto:
 
 #### <a name="to-connect-to-the-service"></a>Připojení ke službě
-1. Přejděte na [https://portal.azure.com/](https://portal.azure.com/).
+1. Přejděte na [https://portal.azure.com/](https://portal.azure.com/) .
 2. Pomocí přihlašovacích údajů pro účet Microsoft se přihlaste k portál Microsoft Azure (nachází se v pravém horním rohu podokna).
 3. Přejděte dolů na levé navigační podokno, abyste měli přístup ke službě StorSimple Device Manager.
 
@@ -64,7 +64,7 @@ Chcete-li získat další informace o jednotlivých pracovních postupech, klikn
 | Šablony šířky pásma</br>Přidat šablonu šířky pásma</br>Upravit šablonu šířky pásma</br>Odstranění šablony šířky pásma</br>Použít výchozí šablonu šířky pásma</br>Vytvoří celodenní šablonu šířky pásma, která začne v zadaném čase. |[Správa šablon šířky pásma](storsimple-8000-manage-bandwidth-templates.md) |
 | O záznamech řízení přístupu</br>Vytvoření záznamu řízení přístupu</br>Upravit záznam řízení přístupu</br>Odstranění záznamu řízení přístupu |[Správa záznamů řízení přístupu](storsimple-8000-manage-acrs.md) |
 | Zobrazení podrobností o úloze</br>Zrušení úlohy |[Správa úloh](storsimple-8000-manage-jobs-u2.md) |
-| Zobrazování oznámení o výstrahách</br>Správa upozornění</br>Zkontrolovat výstrahy |[Zobrazení a správa výstrah StorSimple](storsimple-8000-manage-alerts.md) |
+| Zobrazování oznámení o výstrahách</br>Správa výstrah</br>Zkontrolovat výstrahy |[Zobrazení a správa výstrah StorSimple](storsimple-8000-manage-alerts.md) |
 | Vytváření grafů monitorování |[Monitorování zařízení StorSimple](storsimple-monitor-device.md) |
 | Přidat kontejner svazků</br>Úprava kontejneru svazků</br>Odstranění kontejneru svazků |[Správa kontejnerů svazků](storsimple-8000-manage-volume-containers.md) |
 | Přidat svazek</br>Úprava svazku</br>Přepnout svazek do offline režimu</br>Odstranění svazku</br>Monitorování svazku |[Správa svazků](storsimple-8000-manage-volumes-u2.md) |

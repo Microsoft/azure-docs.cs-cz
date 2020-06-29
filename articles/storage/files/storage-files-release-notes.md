@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: conceptual
-ms.date: 5/19/2020
+ms.date: 6/26/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 8e6105a83aec9c2141c6b1083602c54d1fa545b0
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 54a7f3f50de27747ab15f6895ebfb4f65faf5fdf
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84464823"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85484056"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Poznámky k verzi pro agenta Synchronizace souborů Azure
 Synchronizace souborů Azure umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Vaše instalace Windows Serveru se transformují na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS). Můžete mít libovolný počet mezipamětí po celém světě.
@@ -30,7 +30,7 @@ Agent Synchronizace souborů Azure podporuje následující verze:
 | Verze V10 za účelem – [KB4522409](https://support.microsoft.com/en-us/help/4522409)| 10.0.0.0 | 9. dubna 2020 | Podporuje se |
 | Kumulativní aktualizace z prosince 2019 – [KB4522360](https://support.microsoft.com/help/4522360)| 9.1.0.0 | 12. prosince 2019 | Podporuje se |
 | Verze v9 – [KB4522359](https://support.microsoft.com/help/4522359)| 9.0.0.0 | 2. prosince 2019 | Podporuje se |
-| Verze V8 – [KB4511224](https://support.microsoft.com/help/4511224)| 8.0.0.0 | 8. října 2019 | Podporuje se |
+| Verze V8 – [KB4511224](https://support.microsoft.com/help/4511224)| 8.0.0.0 | 8\. října 2019 | Podporuje se |
 | Kumulativní aktualizace z července 2019 – [KB4490497](https://support.microsoft.com/help/4490497)| 7.2.0.0 | 24. července 2019 | Verze Supported agenta vyprší od 1. září 2020. |
 | Kumulativní aktualizace z července 2019 – [KB4490496](https://support.microsoft.com/help/4490496)| 7.1.0.0 | 12. července 2019 | Verze Supported agenta vyprší od 1. září 2020. |
 | Verze v7 – [KB4490495](https://support.microsoft.com/help/4490495)| 7.0.0.0 | 19. června 2019 | Verze Supported agenta vyprší od 1. září 2020. |
@@ -130,7 +130,7 @@ Následující položky se nesynchronizují, ale zbytek systému bude fungovat n
 
 ### <a name="cloud-endpoint"></a>Koncový bod cloudu
 - Azure File Sync podporuje přímé provádění změn ve sdílené složce Azure. Všechny změny provedené ve sdílené složce Azure se ale nejdřív musí zjistit pomocí úlohy zjišťování změn Azure File Sync. Úloha detekce změn se iniciuje pro koncový bod cloudu každých 24 hodin. K okamžité synchronizaci souborů, které se změnily ve sdílené složce Azure, se dá použít rutina PowerShellu [Invoke-AzStorageSyncChangeDetection](https://docs.microsoft.com/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection) k ručnímu spuštění rozpoznávání změn ve sdílené složce Azure. Kromě toho změny provedené ve sdílené složce Azure přes protokol REST neaktualizují čas poslední změny protokolu SMB a nebudou se zobrazovat jako změny v synchronizaci.
-- Služba synchronizace úložiště nebo účet úložiště se dá přesunout do jiné skupiny prostředků nebo předplatného v rámci stávajícího tenanta Azure AD. Pokud je účet úložiště přesunutý, musíte mu udělit přístup ke službě hybridní Synchronizace souborů k účtu úložiště (podívejte se, [jestli má Azure File Sync přístup k účtu úložiště](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)).
+- Službu synchronizace úložiště nebo účet úložiště můžete přesunout do jiné skupiny prostředků, předplatného nebo tenanta Azure AD. Po přesunu služby synchronizace úložiště nebo účtu úložiště musíte aplikaci Microsoft. StorageSync udělit přístup k účtu úložiště ( [Zkontrolujte, jestli Azure File Sync má přístup k účtu úložiště](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)).
 
     > [!Note]  
     > Při vytváření koncového bodu cloudu musí být služba synchronizace úložiště a účet úložiště ve stejném tenantovi Azure AD. Po vytvoření koncového bodu cloudu se služba synchronizace úložiště a účet úložiště můžou přesunout do různých tenantů Azure AD.
@@ -236,7 +236,7 @@ Následující položky se nesynchronizují, ale zbytek systému bude fungovat n
 ### <a name="cloud-tiering"></a>Vrstvení cloudu
 - Pokud se vrstvený soubor zkopíruje do nového umístění pomocí příkazu Robocopy, výsledný soubor nebude vrstvený. Může však mít nastavený atribut offline, protože příkaz Robocopy nesprávně zahrnuje tento atribut do operací kopírování.
 - Při kopírování souborů pomocí nástroje Robocopy použijte možnost/MIR, která zachová časová razítka souborů. Tím se zajistí, že se starší soubory budou vrstvit dřív než nedávno používané soubory.
-- Pokud je soubor Pagefile. sys umístěný na svazku s povoleným vrstvou cloudu, soubory se nemusí podařit vytvořit do úrovně. Soubor Pagefile. sys by měl být umístěný na svazku, na kterém je zakázaná vrstva cloudu.
+- Pokud se pagefile.sys nachází na svazku s povoleným vrstvou cloudu, soubory se nemusí podařit navrstvit. pagefile.sys by měl být umístěný na svazku, na kterém je zakázaná vrstva cloudu.
 
 ## <a name="agent-version-8000"></a>Verze agenta 8.0.0.0
 Následující poznámky k verzi jsou pro 8.0.0.0 agenta Azure File Sync (vydány 8. října 2019).

@@ -9,18 +9,18 @@ editor: ''
 ms.assetid: 97ee25a1-0ec3-4883-9a0a-54b722598462
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/12/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a7c469be4a1d8aba23857b1ba52ee829c126a431
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5f32ec82c2b4c6d8b902195782b286cca82befb0
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267427"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85507632"
 ---
 # <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>Použití Device Manager StorSimple ke správě výstrah pro virtuální pole StorSimple
 
@@ -39,7 +39,7 @@ Můžete zvolit, zda chcete být upozorňováni e-mailem s podmínkami upozorně
 > [!NOTE]
 > Pro každé virtuální pole můžete zadat maximálně 20 e-mailových adres.
 
-Po povolení e-mailových oznámení pro virtuální pole budou členové seznamu oznámení při každém výskytu kritické výstrahy dostávat e-mailové zprávy. Zprávy budou odeslány z *StorSimple-Alerts-mail.windowsazure.com\@odpovědi* a popíší se podmínky upozornění. Příjemci můžou kliknout na **zrušit odběr** a odebrat si ho ze seznamu e-mailových oznámení.
+Po povolení e-mailových oznámení pro virtuální pole budou členové seznamu oznámení při každém výskytu kritické výstrahy dostávat e-mailové zprávy. Zprávy budou odeslány z *StorSimple-Alerts- \@ mail.windowsazure.com odpovědi* a popíší se podmínky upozornění. Příjemci můžou kliknout na **zrušit odběr** a odebrat si ho ze seznamu e-mailových oznámení.
 
 #### <a name="to-enable-email-notification-for-alerts"></a>Povolení e-mailových oznámení pro výstrahy
 
@@ -53,7 +53,7 @@ Po povolení e-mailových oznámení pro virtuální pole budou členové seznam
    
    1. V poli **Povolit e-mailová oznámení** vyberte **Ano**.
    2. V poli **Správci e-mailové služby** vyberte možnost **Ano** , pokud chcete, aby správce služby a všichni spolusprávci dostávali oznámení o výstrahách.
-   3. Do pole **Další příjemci e-mailu** zadejte e-mailové adresy všech dalších příjemců, kteří by měli dostávat oznámení o výstrahách. Zadejte jména ve formátu *někdo\@Somewhere.com*. Oddělte e-mailové adresy pomocí středníků. Na jedno virtuální zařízení můžete nakonfigurovat maximálně 20 e-mailových adres.
+   3. Do pole **Další příjemci e-mailu** zadejte e-mailové adresy všech dalších příjemců, kteří by měli dostávat oznámení o výstrahách. Zadejte jména ve formátu *někdo \@ Somewhere.com*. Oddělte e-mailové adresy pomocí středníků. Na jedno virtuální zařízení můžete nakonfigurovat maximálně 20 e-mailových adres.
       
        ![Konfigurace oznámení výstrah](./media/storsimple-virtual-array-manage-alerts/alerts6.png)
    4. Pokud chcete poslat testovací e-mailové oznámení, klikněte na **Odeslat zkušební e-mail**. Služba StorSimple Device Manager zobrazí stavové zprávy, když přepošle oznámení o testu.
@@ -137,14 +137,14 @@ V následujících tabulkách jsou uvedeny některé StorSimple výstrahy, se kt
 | Text výstrahy | Událost | Další informace/doporučené akce |
 |:--- |:--- |:--- |
 | Místní konfigurace virtuálních zařízení není podporována. |Pomalý výkon. |Aktuální konfigurace může způsobit snížení výkonu. Ujistěte se, že server splňuje minimální požadavky na konfiguraci. Další informace najdete v požadavcích na [virtuální pole StorSimple](storsimple-ova-system-requirements.md). |
-| Na <*název*\>zařízení dochází místo zřízeného místa na disku. |Upozornění na místo na disku. |Máte dostatek volného místa na disku. Pokud chcete uvolnit místo, zvažte přesunutí úloh na jiný svazek nebo sdílení nebo odstranění dat. |
+| Na <*název zařízení*dochází místo zřízeného místa na disku \> . |Upozornění na místo na disku. |Máte dostatek volného místa na disku. Pokud chcete uvolnit místo, zvažte přesunutí úloh na jiný svazek nebo sdílení nebo odstranění dat. |
 
 ### <a name="job-failure-alerts"></a>Výstrahy selhání úlohy
 
 | Text výstrahy | Událost | Další informace/doporučené akce |
 |:--- |:--- |:--- |
-| Nepovedlo se dokončit zálohování *názvu* \> <zařízení. |Úloha zálohování se nezdařila. |Nebylo možné vytvořit zálohu. Vezměte v úvahu jednu z následujících možností:<ul><li>Operaci zálohování nelze úspěšně dokončit, protože může dojít k problémům s připojením. Ujistěte se, že nedochází k žádným problémům s připojením. Další informace o řešení problémů s připojením najdete v [místním webovém uživatelském rozhraní](storsimple-ova-web-ui-admin.md) pro vaše virtuální zařízení.</li><li>Dosáhli jste limitu dostupného úložiště. Pokud chcete uvolnit místo, zvažte odstranění všech záloh, které už nepotřebujete.</li></ul> Vyřešte problémy, vymažte výstrahu a zkuste operaci zopakovat. |
-| Klonování *názvu* \> zařízení <se nepovedlo dokončit. |Klonování úlohy se nezdařilo. |Nelze vytvořit klon. Vezměte v úvahu jednu z následujících možností:<ul><li>Seznam zálohování možná není platný. Aktualizujte seznam a ověřte, zda je stále platný.</li><li>Operaci klonování se nepodařilo úspěšně dokončit kvůli problémům s připojením. Ujistěte se, že nedochází k žádným problémům s připojením.</li><li>Dosáhli jste limitu dostupného úložiště. Pokud chcete uvolnit místo, zvažte odstranění všech záloh, které už nepotřebujete.</li></ul>Vyřešte problémy, vymažte výstrahu a zkuste operaci zopakovat. |
+| Nepovedlo se dokončit zálohování *názvu <zařízení* \> . |Úloha zálohování se nezdařila. |Nebylo možné vytvořit zálohu. Vezměte v úvahu jednu z následujících možností:<ul><li>Operaci zálohování nelze úspěšně dokončit, protože může dojít k problémům s připojením. Ujistěte se, že nedochází k žádným problémům s připojením. Další informace o řešení problémů s připojením najdete v [místním webovém uživatelském rozhraní](storsimple-ova-web-ui-admin.md) pro vaše virtuální zařízení.</li><li>Dosáhli jste limitu dostupného úložiště. Pokud chcete uvolnit místo, zvažte odstranění všech záloh, které už nepotřebujete.</li></ul> Vyřešte problémy, vymažte výstrahu a zkuste operaci zopakovat. |
+| Klonování *názvu zařízení* <\> se nepovedlo dokončit. |Klonování úlohy se nezdařilo. |Nelze vytvořit klon. Vezměte v úvahu jednu z následujících možností:<ul><li>Seznam zálohování možná není platný. Aktualizujte seznam a ověřte, zda je stále platný.</li><li>Operaci klonování se nepodařilo úspěšně dokončit kvůli problémům s připojením. Ujistěte se, že nedochází k žádným problémům s připojením.</li><li>Dosáhli jste limitu dostupného úložiště. Pokud chcete uvolnit místo, zvažte odstranění všech záloh, které už nepotřebujete.</li></ul>Vyřešte problémy, vymažte výstrahu a zkuste operaci zopakovat. |
 
 ### <a name="networking-alerts"></a>Výstrahy sítě
 
@@ -157,13 +157,13 @@ V následujících tabulkách jsou uvedeny některé StorSimple výstrahy, se kt
 | Text výstrahy | Událost | Další informace/doporučené akce |
 |:--- |:--- |:--- |
 | Dochází k neočekávaným zpožděním při přenosu dat. |Pomalý přenos dat. |K chybám omezování dochází, když překročíte cíle škálovatelnosti služby úložiště. Služba úložiště to dělá tak, aby se zajistilo, že žádný jednotlivý klient ani tenant nemůže službu používat na náklady ostatních. Další informace o řešení potíží s účtem služby Azure Storage najdete v tématu [monitorování, diagnostika a řešení potíží s Microsoft Azure Storage](../storage/common/storage-monitoring-diagnosing-troubleshooting.md). |
-| Na <*název*\>zařízení se spouští místní rezervované místo na disku. |Nízká doba odezvy. |10% celkové zřízené velikosti pro <*název* \> zařízení je rezervované na místním zařízení a na rezervované místo teď dochází. Zatížení <ho *zařízení* \> vygeneruje vyšší míru četnosti změn nebo jste mohli nedávno migrovat velké množství dat. To může vést ke snížení výkonu. K vyřešení tohoto problému zvažte jednu z následujících akcí:<ul><li>Zvyšte šířku pásma cloudu na toto zařízení.</li><li>Snižte nebo přesuňte úlohy na jiný svazek nebo sdílenou složku.</li></ul> |
+| Na <*název zařízení*se spouští místní rezervované místo na disku \> . |Nízká doba odezvy. |10% celkové zřízené velikosti pro <*název zařízení* \> je rezervované na místním zařízení a na rezervované místo teď dochází. Zatížení <ho *zařízení* \> vygeneruje vyšší míru četnosti změn nebo jste mohli nedávno migrovat velké množství dat. To může vést ke snížení výkonu. K vyřešení tohoto problému zvažte jednu z následujících akcí:<ul><li>Zvyšte šířku pásma cloudu na toto zařízení.</li><li>Snižte nebo přesuňte úlohy na jiný svazek nebo sdílenou složku.</li></ul> |
 
 ### <a name="security-alerts"></a>Výstrahy zabezpečení
 
 | Text výstrahy | Událost | Další informace/doporučené akce |
 |:--- |:--- |:--- |
-| Heslo pro <*název* \> zařízení vyprší za <*počet* \> dnů. |Upozornění na heslo |Platnost vašeho hesla vyprší za <*počet* \> dnů. Zvažte změnu hesla. Další informace najdete [v části Změna hesla správce zařízení StorSimple Virtual Array](storsimple-virtual-array-change-device-admin-password.md). |
+| Heslo pro <*název zařízení* \> vyprší za <*počet* \> dnů. |Upozornění na heslo |Platnost vašeho hesla vyprší za <*počet* \> dnů. Zvažte změnu hesla. Další informace najdete [v části Změna hesla správce zařízení StorSimple Virtual Array](storsimple-virtual-array-change-device-admin-password.md). |
 
 ## <a name="next-steps"></a>Další kroky
 

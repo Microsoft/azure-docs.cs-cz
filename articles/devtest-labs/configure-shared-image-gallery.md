@@ -1,25 +1,14 @@
 ---
 title: Konfigurace Galerie sdílených imagí v Azure DevTest Labs | Microsoft Docs
 description: Přečtěte si, jak nakonfigurovat galerii sdílených imagí v Azure DevTest Labs
-services: devtest-lab
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.assetid: ''
-ms.service: devtest-lab
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 06/19/2020
-ms.author: spelluru
-ms.openlocfilehash: 12a7b678130a2c199dd94af540bacffe8d4685f1
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.date: 06/26/2020
+ms.openlocfilehash: f4a80062a245530c5d15e761a9eb7dc95fee091e
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85125718"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483784"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>Konfigurace galerie sdílených imagí v Azure DevTest Labs
 DevTest Labs teď podporuje funkci [Galerie sdílených imagí](../virtual-machines/windows/shared-image-galleries.md) . Umožňuje uživatelům testovacího prostředí přistupovat k obrázkům ze sdíleného umístění při vytváření prostředků testovacího prostředí. Pomůže vám taky vytvářet strukturu a organizaci kolem vašich vlastních imagí virtuálních počítačů spravovaných vaším uživatelem. Funkce Galerie sdílených imagí podporuje:

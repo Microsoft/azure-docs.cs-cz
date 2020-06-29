@@ -1,23 +1,14 @@
 ---
 title: Automatizace přidávání uživatele testovacího prostředí v Azure DevTest Labs | Microsoft Docs
 description: V tomto článku se dozvíte, jak automatizovat přidávání uživatelů do testovacího prostředí v Azure DevTest Labs pomocí šablon Azure Resource Manager, PowerShellu a rozhraní příkazového řádku.
-services: devtest-lab,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2020
-ms.author: spelluru
-ms.openlocfilehash: 81a8c5030f716246caf3dcd8b540bb47fcaf6520
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: b016d6edcb75016302cf652f873881008de18abb
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84898742"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483818"
 ---
 # <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>Automatizace přidání uživatele testovacího prostředí do testovacího prostředí v Azure DevTest Labs
 Azure DevTest Labs umožňuje rychle vytvářet samoobslužná prostředí pro vývoj a testování pomocí Azure Portal. Pokud ale máte několik týmů a několik instancí DevTest Labs, automatizace procesu vytváření může ušetřit čas. [Šablony Azure Resource Manager](https://github.com/Azure/azure-devtestlab/tree/master/Environments) umožňují vytvářet laboratoře, testovací virtuální počítače, vlastní image, vzorce a přidávat uživatele automatizovaným způsobem. Tento článek se zaměřuje především na přidávání uživatelů do instance DevTest Labs.

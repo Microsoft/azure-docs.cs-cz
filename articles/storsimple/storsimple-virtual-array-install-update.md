@@ -9,18 +9,18 @@ editor: ''
 ms.assetid: 9997a97b-9382-43ed-b56e-61369335c987
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7bf064ff01693f7a65c756a99c435d7f1a39840e
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 77d2e61533016de7417446ba4111116e9749ac74
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "61409251"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85507870"
 ---
 # <a name="install-updates-on-your-storsimple-virtual-array---azure-portal"></a>Instalace aktualizací do virtuálního pole StorSimple – Azure Portal
 
@@ -49,7 +49,7 @@ Provedením následujících kroků si stáhněte aktualizace softwaru z Katalog
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>Stažení aktualizace nebo opravy hotfix
 
-1. Spusťte Internet Explorer a přejděte na [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com).
+1. Spusťte Internet Explorer a přejděte na [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com) .
 
 2. Pokud na tomto počítači používáte Katalog služby Microsoft Update poprvé, po zobrazení výzvy k instalaci doplňku Katalog služby Microsoft Update klikněte na **Nainstalovat**.
 
@@ -65,7 +65,7 @@ Provedením následujících kroků si stáhněte aktualizace softwaru z Katalog
 
 6. Klikněte na tlačítko **Stáhnout**. Zadejte místní umístění, do kterého chcete aktualizace stáhnout, nebo do něj přejděte pomocí tlačítka **Procházet**. Aktualizace se stáhnou do zadaného umístění do podsložky se stejným názvem, jako má aktualizace. Složku je také možné zkopírovat do sdílené síťové složky dostupné ze zařízení.
 
-7. Otevřete zkopírovanou složku, měl by se zobrazit soubor `WindowsTH-KB3011067-x64`samostatného balíčku Microsoft Update. Tento soubor se používá k instalaci aktualizace nebo opravy hotfix.
+7. Otevřete zkopírovanou složku, měl by se zobrazit soubor samostatného balíčku Microsoft Update `WindowsTH-KB3011067-x64` . Tento soubor se používá k instalaci aktualizace nebo opravy hotfix.
 
 ### <a name="install-the-update-or-the-hotfix"></a>Instalace aktualizace nebo opravy hotfix
 
@@ -75,7 +75,7 @@ Tuto metodu použijte, chcete-li nainstalovat aktualizace na zařízení s verz�
 
 #### <a name="to-install-the-update-or-the-hotfix"></a>Instalace aktualizace nebo opravy hotfix
 
-1. V místním webovém uživatelském rozhraní přejdete na **Údržba** > **aktualizace softwaru**.
+1. V místním webovém uživatelském rozhraní přejdete na **Údržba**  >  **aktualizace softwaru**.
    
     ![aktualizace zařízení](./media/storsimple-virtual-array-install-update/update1m.png)
 
@@ -91,7 +91,7 @@ Tuto metodu použijte, chcete-li nainstalovat aktualizace na zařízení s verz�
    
     ![aktualizace zařízení](./media/storsimple-virtual-array-install-update/update5m.png)
 
-5. Po dokončení restartování přejdete na **přihlašovací** stránku. Chcete-li ověřit, zda byl software zařízení aktualizován, v místním webovém uživatelském rozhraní, navštivte web**aktualizace softwaru** **Údržba** > . Zobrazená verze softwaru by měla být **10.0.0.0.0.10288.0** pro aktualizaci 0,3.
+5. Po dokončení restartování přejdete na **přihlašovací** stránku. Chcete-li ověřit, zda byl software zařízení aktualizován, v místním webovém uživatelském rozhraní, **Maintenance**navštivte web  >  **aktualizace softwaru**údržba. Zobrazená verze softwaru by měla být **10.0.0.0.0.10288.0** pro aktualizaci 0,3.
    
    > [!NOTE]
    > Verze softwaru oznamujeme trochu jiným způsobem v místním webovém uživatelském rozhraní a Azure Portal. Například místní webové uživatelské rozhraní hlásí **10.0.0.0.0.10288** a sestavy Azure Portal **10.0.10288.0** pro stejnou verzi.

@@ -1,22 +1,14 @@
 ---
 title: Výstrahy zabezpečení pro prostředí v Azure DevTest Labs
 description: V tomto článku se dozvíte, jak zobrazit výstrahy zabezpečení pro prostředí v DevTest Labs a provést příslušnou akci.
-services: devtest-lab,lab-services
-documentationcenter: na
-author: spelluru
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 02/03/2020
-ms.author: spelluru
-ms.openlocfilehash: fbac5a2fab91cdac8ebf626e324f12f209cfade5
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 9eea06066cfca5f67d920456f16e2eb7893dce39
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84898399"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483971"
 ---
 # <a name="security-alerts-for-environments-in-azure-devtest-labs"></a>Výstrahy zabezpečení pro prostředí v Azure DevTest Labs
 Jako uživatel testovacího prostředí teď můžete zobrazit Azure Security Center výstrahy pro testovací prostředí. Security Center automaticky shromažďuje, analyzuje a integruje data protokolu z vašich prostředků Azure, sítě a připojených partnerských řešení, jako jsou brány firewall a řešení ochrany koncových bodů, aby se zjistily skutečné hrozby a snížil počet falešných poplachů. Seznam upřednostňovaných výstrah zabezpečení se zobrazí ve službě Security Center spolu s informacemi, které potřebujete k rychlému prozkoumání problému, a doporučeními týkajícími se řešení útoku. [Přečtěte si další informace o výstrahách zabezpečení v Azure Security Center](../security-center//security-center-alerts-overview.md).  

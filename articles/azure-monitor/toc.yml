@@ -12,6 +12,12 @@
   items:
     - name: Monitorování prostředků Azure
       href: learn/quick-monitor-azure-resource.md
+    - name: Odeslání protokolu aktivit do pracovního prostoru
+      items:
+        - name: portál Azure
+          href: learn/quick-collect-activity-log-portal.md
+        - name: Šablona ARM
+          href: learn/quick-collect-activity-log-arm.md
     - name: Monitorování virtuálních počítačů
       items:
         - name: Virtuální počítače Azure
@@ -455,7 +461,7 @@
             - name: Akce webhooků
               href: platform/alerts-log-webhook.md
             - name: Řešení potíží s upozorněními protokolu
-              href: platform/alert-log-troubleshoot.md
+              href: platform/alerts-troubleshoot-log.md
         - name: Pravidla upozornění protokolu aktivit
           items:
             - name: Upozornění pro událost protokolu aktivit
@@ -506,6 +512,8 @@
           href: platform/api-alerts.md
         - name: Řešení výstrah
           href: platform/alerts-troubleshoot.md
+        - name: Upozornění a přesuny mezi oblastmi
+          href: platform/alerts-resource-move.md
         - name: Správa služeb IT
           items:
             - name: IT Service Management Connector
@@ -555,12 +563,12 @@
             - name: ASP.NET
               displayname: 'ASP.NET, c#, csharp, .NET, NET, dotnet'
               href: app/asp-net.md
+            - name: Konzola ASP.NET
+              displayname: 'console, .NET, dotnet console, dotnet, c#, csharp, NET'
+              href: app/console.md
             - name: Aplikace jiného typu než HTTP nebo aplikace na pozadí
               displayname: 'console, .NET, .NET Core, dotnet console, dotnet, c#, csharp, NET, worker, background, generic host'
               href: app/worker-service.md
-            - name: Konzola .NET
-              displayname: 'console, .NET, dotnet console, dotnet, c#, csharp, NET'
-              href: app/console.md
             - name: Java
               items:
                 - name: Webové aplikace

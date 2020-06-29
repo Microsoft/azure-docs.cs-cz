@@ -3,15 +3,15 @@ title: Přesun dat do avere vFXT pro Azure
 description: Jak přidat data do nového svazku úložiště pro použití s avere vFXT pro Azure
 author: ekpgh
 ms.service: avere-vfxt
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/16/2019
 ms.author: rohogue
-ms.openlocfilehash: c2a38b20fff789faf370e3161a92a31ed5f04c57
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 76bbe60397ebb01aed5694d933b3067f778a4c21
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76153714"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85505592"
 ---
 # <a name="moving-data-to-the-vfxt-cluster---parallel-data-ingest"></a>Přesun dat do clusteru vFXT – paralelní data ingestování
 
@@ -21,11 +21,11 @@ Vzhledem k tomu, že avere vFXT pro cluster Azure je škálovatelná mezipaměť
 
 ![Diagram znázorňující pohyb vícevláknových dat s více klienty: vlevo nahoře je ikona pro místní hardwarové úložiště s více šipkami. Šipky ukazují na čtyři klientské počítače. Z každého klientského počítače tři šipky směřuje k avere vFXT. Z vFXT avere se několik šipek odkazuje na úložiště objektů BLOB.](media/avere-vfxt-parallel-ingest.png)
 
-Příkazy ``cp`` nebo ``copy`` , které se běžně používají k přenosu dat z jednoho úložného systému do jiného, jsou procesy s jedním vláknem, které kopírují pouze jeden soubor v jednom okamžiku. To znamená, že souborový server bude v jednom okamžiku přijímat pouze jeden soubor, což je odpad z prostředků clusteru.
+``cp``Příkazy nebo ``copy`` , které se běžně používají k přenosu dat z jednoho úložného systému do jiného, jsou procesy s jedním vláknem, které kopírují pouze jeden soubor v jednom okamžiku. To znamená, že souborový server bude v jednom okamžiku přijímat pouze jeden soubor, což je odpad z prostředků clusteru.
 
 V tomto článku se dozvíte o strategiích pro vytvoření vícevláknového systému kopírování souborů s více vlákny k přesunu dat do clusteru avere vFXT. Vysvětluje koncepty přenosu souborů a body rozhodování, které lze použít k efektivnímu kopírování dat pomocí více klientů a jednoduchých příkazů kopírování.
 
-Vysvětluje taky některé nástroje, které vám pomůžou. ``msrsync`` Nástroj lze použít k částečnému automatizaci procesu rozdělení datové sady do kontejnerů a používání ``rsync`` příkazů. Tento ``parallelcp`` skript je další nástroj, který čte zdrojový adresář a automaticky vystavuje příkazy kopírování. ``rsync`` Nástroj lze také použít ve dvou fázích k poskytnutí rychlejšího kopírování, které stále poskytuje konzistenci dat.
+Vysvětluje taky některé nástroje, které vám pomůžou. ``msrsync``Nástroj lze použít k částečnému automatizaci procesu rozdělení datové sady do kontejnerů a používání ``rsync`` příkazů. Tento ``parallelcp`` skript je další nástroj, který čte zdrojový adresář a automaticky vystavuje příkazy kopírování. ``rsync``Nástroj lze také použít ve dvou fázích k poskytnutí rychlejšího kopírování, které stále poskytuje konzistenci dat.
 
 Kliknutím na odkaz přejdete do části:
 
@@ -63,13 +63,13 @@ Tento jednoduchý příklad kopíruje dva soubory paralelně:
 cp /mnt/source/file1 /mnt/destination1/ & cp /mnt/source/file2 /mnt/destination1/ &
 ```
 
-Po vystavení tohoto příkazu `jobs` se v příkazu zobrazí, že jsou spuštěná dvě vlákna.
+Po vystavení tohoto příkazu se v `jobs` příkazu zobrazí, že jsou spuštěná dvě vlákna.
 
 ### <a name="predictable-filename-structure"></a>Předvídatelná struktura názvů souborů
 
 Pokud jsou názvy souborů předvídatelné, můžete použít výrazy k vytvoření paralelních vláken kopírování.
 
-Pokud například váš adresář obsahuje soubory 1000, které jsou očíslovány postupně z `0001` na `1000`, můžete použít následující výrazy k vytvoření deseti paralelních vláken, které každý soubor kopie 100:
+Pokud například váš adresář obsahuje soubory 1000, které jsou očíslovány postupně z `0001` na `1000` , můžete použít následující výrazy k vytvoření deseti paralelních vláken, které každý soubor kopie 100:
 
 ```bash
 cp /mnt/source/file0* /mnt/destination1/ & \
@@ -170,7 +170,7 @@ Client4: cp -R /mnt/source/dir3/dir3d /mnt/destination/dir3/ &
 
 Po porozumění výše zmíněných přístupů (více než jedno umístění na jeden cíl, více cílů na každého klienta, více klientů na zdrojový systém souborů přístupný pro síť) zvažte toto doporučení: manifesty souborů sestavení a pak je používejte s příkazy kopírování mezi více klienty.
 
-V tomto scénáři se k ``find`` vytváření manifestů souborů nebo adresářů používá příkaz UNIX:
+V tomto scénáři se ``find`` k vytváření manifestů souborů nebo adresářů používá příkaz UNIX:
 
 ```bash
 user@build:/mnt/source > find . -mindepth 4 -maxdepth 4 -type d
@@ -260,7 +260,7 @@ Cílem je spouštět více vláken těchto skriptů souběžně na jednom klient
 
 ## <a name="use-a-two-phase-rsync-process"></a>Použití dvoufázové rsync procesu
 
-Standardní ``rsync`` nástroj nefunguje dobře pro naplnění cloudového úložiště prostřednictvím avere vFXT pro systém Azure, protože generuje velký počet operací vytvoření a přejmenování souboru, aby se zajistila integrita dat. Tuto ``--inplace`` možnost můžete ale bezpečně použít ``rsync`` k přeskočení podrobnějšího kopírování, pokud budete postupovat s druhým spuštěním, který kontroluje integritu souboru.
+Standardní ``rsync`` Nástroj nefunguje dobře pro naplnění cloudového úložiště prostřednictvím avere vFXT pro systém Azure, protože generuje velký počet operací vytvoření a přejmenování souboru, aby se zajistila integrita dat. Tuto možnost můžete ale bezpečně použít ``--inplace`` ``rsync`` k přeskočení podrobnějšího kopírování, pokud budete postupovat s druhým spuštěním, který kontroluje integritu souboru.
 
 Standardní ``rsync`` operace kopírování vytvoří dočasný soubor a naplní ho daty. Pokud se přenos dat úspěšně dokončí, dočasný soubor se přejmenuje na původní název souboru. Tato metoda zaručuje konzistenci i v případě, že soubory jsou během kopírování k dispozici. Tato metoda ale generuje více operací zápisu, což zpomaluje přesun souborů přes mezipaměť.
 
@@ -278,7 +278,7 @@ Tato metoda představuje jednoduchou a časově efektivní metodu pro datové sa
 
 ## <a name="use-the-msrsync-utility"></a>Použití nástroje msrsync
 
-``msrsync`` Nástroj lze také použít k přesunu dat do back-endové základní souborového clusteru avere. Tento nástroj je určený k optimalizaci využití šířky pásma spuštěním několika paralelních ``rsync`` procesů. Je k dispozici z GitHubu na adrese <https://github.com/jbd/msrsync>.
+``msrsync``Nástroj lze také použít k přesunu dat do back-endové základní souborového clusteru avere. Tento nástroj je určený k optimalizaci využití šířky pásma spuštěním několika paralelních ``rsync`` procesů. Je k dispozici z GitHubu na adrese <https://github.com/jbd/msrsync> .
 
 ``msrsync``rozdělí zdrojový adresář do samostatných "intervalů" a potom spustí jednotlivé ``rsync`` procesy v jednotlivých intervalech.
 
@@ -288,14 +288,14 @@ Můžete také použít ``--inplace`` argument s ``msrsync`` příkazy. Pokud po
 
 ``msrsync``lze zapisovat pouze do místních svazků a z nich. Zdroj a cíl musí být přístupné jako místní připojení ve virtuální síti clusteru.
 
-Pokud chcete ``msrsync`` použít k naplnění cloudového svazku Azure pomocí clusteru avere, postupujte podle těchto pokynů:
+Pokud chcete použít ``msrsync`` k naplnění cloudového svazku Azure pomocí clusteru avere, postupujte podle těchto pokynů:
 
 1. Nainstalovat ``msrsync`` a jeho požadavky (rsync a Python 2,6 nebo novější)
 1. Určete celkový počet souborů a adresářů, které mají být zkopírovány.
 
-   Použijte například nástroj ``prime.py`` avere s argumenty ```prime.py --directory /path/to/some/directory``` (k dispozici stažením adresy URL <https://github.com/Azure/Avere/blob/master/src/clientapps/dataingestor/prime.py>).
+   Použijte například nástroj avere ``prime.py`` s argumenty ```prime.py --directory /path/to/some/directory``` (k dispozici stažením adresy URL <https://github.com/Azure/Avere/blob/master/src/clientapps/dataingestor/prime.py> ).
 
-   Pokud nepoužíváte ``prime.py``, můžete vypočítat počet položek pomocí nástroje GNU ``find`` následujícím způsobem:
+   Pokud nepoužíváte ``prime.py`` , můžete vypočítat počet položek pomocí nástroje GNU následujícím ``find`` způsobem:
 
    ```bash
    find <path> -type f |wc -l         # (counts files)
@@ -311,7 +311,7 @@ Pokud chcete ``msrsync`` použít k naplnění cloudového svazku Azure pomocí 
    msrsync -P --stats -p 64 -f <ITEMS_DIV_64> --rsync "-ahv" <SOURCE_PATH> <DESTINATION_PATH>
    ```
 
-   Pokud používáte ``--inplace``, přidejte druhé spuštění bez možnosti, abyste zkontrolovali, jestli jsou data správně zkopírovaná:
+   Pokud používáte ``--inplace`` , přidejte druhé spuštění bez možnosti, abyste zkontrolovali, jestli jsou data správně zkopírovaná:
 
    ```bash
    msrsync -P --stats -p 64 -f <ITEMS_DIV_64> --rsync "-ahv --inplace" <SOURCE_PATH> <DESTINATION_PATH> && msrsync -P --stats -p 64 -f <ITEMS_DIV_64> --rsync "-ahv" <SOURCE_PATH> <DESTINATION_PATH>
@@ -325,7 +325,7 @@ Pokud chcete ``msrsync`` použít k naplnění cloudového svazku Azure pomocí 
 
 Tento ``parallelcp`` skript může být vhodný také pro přesun dat do back-endu clusteru vFXT.
 
-Do následujícího skriptu se přidá spustitelný soubor `parallelcp`. (Tento skript je určený pro Ubuntu; Pokud používáte jinou distribuci, musíte nainstalovat ``parallel`` samostatně.)
+Do následujícího skriptu se přidá spustitelný soubor `parallelcp` . (Tento skript je určený pro Ubuntu; Pokud používáte jinou distribuci, musíte nainstalovat ``parallel`` samostatně.)
 
 ```bash
 sudo touch /usr/bin/parallelcp && sudo chmod 755 /usr/bin/parallelcp && sudo sh -c "/bin/cat >/usr/bin/parallelcp" <<EOM
@@ -379,12 +379,12 @@ EOM
 
 ### <a name="parallel-copy-example"></a>Příklad paralelního kopírování
 
-V tomto příkladu se používá skript paralelního kopírování ``glibc`` ke kompilaci pomocí zdrojových souborů z clusteru avere.
+V tomto příkladu se používá skript paralelního kopírování ke kompilaci ``glibc`` pomocí zdrojových souborů z clusteru avere.
 <!-- xxx what is stored where? what is 'the avere cluster mount point'? xxx -->
 
 Zdrojové soubory jsou uloženy v přípojném bodu clusteru avere a soubory objektů jsou uloženy na místním pevném disku.
 
-Tento skript používá skript paralelního kopírování. Možnost ``-j`` se používá s ``parallelcp`` a ``make`` k získání paralelismu.
+Tento skript používá skript paralelního kopírování. Možnost se ``-j`` používá s ``parallelcp`` a ``make`` k získání paralelismu.
 
 ```bash
 sudo apt-get update

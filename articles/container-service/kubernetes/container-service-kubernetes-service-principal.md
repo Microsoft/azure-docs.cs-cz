@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 40d4dc898efe6b719ec5e1f1ec0471a9677d3c95
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1653fbcaf81981ca3d32d41c2e2892093922011b
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79371116"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85504735"
 ---
 # <a name="deprecated-set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>ZASTARALÉ Nastavení instančního objektu služby Azure AD pro cluster Kubernetes ve službě Container Service
 
@@ -38,7 +38,7 @@ Můžete vytvořit existující instanční objekt služby Azure AD splňující
 * **Tajný klíč klienta:** Musí to být heslo. V současné době nemůžete použít instanční objekt nastavený pro ověření certifikátu.
 
 > [!IMPORTANT]
-> Abyste mohli vytvořit instanční objekt, musíte mít oprávnění k registraci aplikace v tenantu Azure AD a přiřazení aplikace k roli v předplatném. Pokud chcete zjistit, jestli máte požadovaná oprávnění, [podívejte se na portál](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
+> Abyste mohli vytvořit instanční objekt, musíte mít oprávnění k registraci aplikace v tenantu Azure AD a přiřazení aplikace k roli v předplatném. Pokud chcete zjistit, jestli máte požadovaná oprávnění, [podívejte se na portál](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app).
 >
 
 ## <a name="option-1-create-a-service-principal-in-azure-ad"></a>Možnost 1: Vytvoření instančního objektu v Azure AD
@@ -61,7 +61,7 @@ Výstup je podobný tomuto (zobrazuje se zde zrevidovaně):
 
 ![Vytvoření instančního objektu](./media/container-service-kubernetes-service-principal/service-principal-creds.png)
 
-Zvýrazněné jsou **ID klienta** (`appId`) a **tajný kód klienta** (`password`), který používáte jako parametry instančního objektu pro nasazení clusteru.
+Zvýrazněné jsou **ID klienta** ( `appId` ) a **tajný kód klienta** ( `password` ), který používáte jako parametry instančního objektu pro nasazení clusteru.
 
 
 ### <a name="specify-service-principal-when-creating-the-kubernetes-cluster"></a>Zadání instančního objektu při vytváření clusteru Kubernetes

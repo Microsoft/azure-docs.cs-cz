@@ -9,12 +9,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
-ms.openlocfilehash: 1a39a8e4d09da1f9ec8721c2ea89672e7bfc096a
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 58f41742519effc3959a3868345ed77c64db6341
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118538"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85508499"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>Správa klíčů účtu úložiště pomocí Key Vault a Azure CLI
 
@@ -125,11 +125,11 @@ Po úspěšném spuštění operace zkopírujte výstup.
 "se=2020-01-01&sp=***"
 ```
 
-Tento výstup bude předán `--template-id` parametru v dalším kroku.
+Tento výstup bude předán `--template-uri` parametru v dalším kroku.
 
 ### <a name="generate-a-shared-access-signature-definition"></a>Generování definice sdíleného přístupového podpisu
 
-Pomocí příkazu Azure CLI [AZ klíčů Storage SAS-definition Create](/cli/azure/keyvault/storage/sas-definition?view=azure-cli-latest#az-keyvault-storage-sas-definition-create) a předáním výstupu z předchozího kroku do `--template-id` parametru vytvořte definici sdíleného přístupového podpisu.  Můžete zadat název svého výběru do `-n` parametru.
+Pomocí příkazu Azure CLI [AZ klíčů Storage SAS-definition Create](/cli/azure/keyvault/storage/sas-definition?view=azure-cli-latest#az-keyvault-storage-sas-definition-create) a předáním výstupu z předchozího kroku do `--template-uri` parametru vytvořte definici sdíleného přístupového podpisu.  Můžete zadat název svého výběru do `-n` parametru.
 
 ```azurecli-interactive
 az keyvault storage sas-definition create --vault-name <YourKeyVaultName> --account-name <YourStorageAccountName> -n <YourSASDefinitionName> --validity-period P2D --sas-type account --template-uri <OutputOfSasTokenCreationStep>

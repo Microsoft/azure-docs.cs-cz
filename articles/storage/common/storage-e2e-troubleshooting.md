@@ -4,18 +4,18 @@ titleSuffix: Azure Storage
 description: Kurz demonstrující ucelené řešení potíží s Analýza úložiště Azure, AzCopy a Microsoft Message Analyzer
 author: normesta
 ms.service: storage
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 12/20/2019
 ms.author: normesta
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 4b0145514a884c43ef18518cf25a2a78b1fc3aa3
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: e94810d53bf28aeb03de32a440c56a95232d0c2d
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84809053"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85506340"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Kompletní řešení potíží pomocí metrik a protokolování služby Azure Storage, nástrojů AzCopy a Message Analyzer
 

@@ -1,24 +1,14 @@
 ---
 title: Použití Azure DevTest Labs pro školení | Microsoft Docs
 description: Tento článek poskytuje podrobné kroky, pomocí kterých můžete nastavit testovací prostředí pro školení v Azure DevTest Labs.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.assetid: 57ff4e30-7e33-453f-9867-e19b3fdb9fe2
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: spelluru
-ms.openlocfilehash: 8f0a930d6e3c04548ade71f6d4e3294114eb60a2
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 1a4b39d104d2ffdb45c23db2ad16cc4ee4627fb9
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84896218"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85484141"
 ---
 # <a name="use-azure-devtest-labs-for-training"></a>Použití Azure DevTest Labs pro školení
 Azure DevTest Labs lze použít k implementaci mnoha klíčových scénářů kromě vývoje a testování. Jedním z těchto scénářů je nastavení testovacího prostředí pro školení. Azure DevTest Labs vám umožní vytvořit testovací prostředí, ve kterém můžete zadat vlastní šablony, které může každý praktikant použít k vytvoření identického a izolovaného prostředí pro školení. Můžete použít zásady, abyste zajistili, že jsou školicí prostředí k dispozici pro každého účastníka pouze v případě, že je potřebují a obsahují dostatek prostředků – například virtuální počítače – vyžadované pro školení. Nakonec můžete testovací prostředí snadno sdílet s praktikanty, ke kterým mají přístup jediným kliknutím.

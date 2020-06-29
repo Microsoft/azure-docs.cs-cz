@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 6/10/2020
-ms.openlocfilehash: 00c60a0ff20c67b63b2ca93f9e5997e78a283f26
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.date: 6/26/2020
+ms.openlocfilehash: 2b5da354e8e8b49e40e7d960e368aad8067de659
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84667586"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85506697"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database bez serveru
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -125,7 +125,7 @@ Při nasazování některých aktualizací služby, které vyžadují databázi 
 
 Automatické obnovení se aktivuje, pokud platí kterákoli z následujících podmínek v libovolnou dobu:
 
-|Příznak|Aktivační událost autoresume|
+|Funkce|Aktivační událost autoresume|
 |---|---|
 |Ověřování a autorizace|Přihlásit|
 |Detekce hrozeb|Povolení nebo zakázání nastavení detekce hrozeb na úrovni databáze nebo serveru.<br>Úprava nastavení detekce hrozeb na úrovni databáze nebo serveru.|
@@ -334,7 +334,7 @@ Ve výše uvedeném příkladu je vypočítaná faktura za výpočetní výkon n
 |Časový interval|Virtuální jádra použité za sekundu|Využité GB za sekundu|Dimenze COMPUTE se fakturuje.|vCore sekund se účtují v časovém intervalu.|
 |---|---|---|---|---|
 |0:00-1:00|4|9|Virtuální jádra použito|4 virtuální jádra × 3600 sekund = 14400 vCore sekund|
-|1:00-2:00|1|12|Využitá paměť|12 GB × 1/3 × 3600 sekund = 14400 vCore sekund|
+|1:00-2:00|1|12|Využití paměti|12 GB × 1/3 × 3600 sekund = 14400 vCore sekund|
 |2:00-8:00|0|0|Minimální zřízená paměť|3 GB × 1/3 × 21600 sekund = 21600 vCore sekund|
 |8:00-24:00|0|0|Při pozastavení se neúčtují žádné výpočetní prostředky.|0 vCore sekund|
 |Celkový počet vCore sekund fakturovaných za 24 hodin||||50400 vCore sekund|
@@ -347,7 +347,7 @@ Zvýhodněné hybridní využití Azure (AHB) a slevy za rezervované kapacity s
 
 ## <a name="available-regions"></a>Dostupné oblasti
 
-Výpočetní vrstva bez serveru je dostupná po celém světě s výjimkou následujících oblastí: Čína – východ, Čína – sever, Německo Central, Německo – severovýchod, Velká Británie – sever, Velká Británie – jih 2, Středozápadní USA a US Gov Central (Iowa).
+Výpočetní vrstva bez serveru je dostupná po celém světě s výjimkou následujících oblastí: Čína – východ, Čína – sever, Německo Central, Německo – severovýchod a US Gov Central (Iowa).
 
 ## <a name="next-steps"></a>Další kroky
 

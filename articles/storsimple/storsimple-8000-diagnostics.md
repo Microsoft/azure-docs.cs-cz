@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 48bd909eefbaea15cf6ca2427e106ad9bc0ffbb4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d3e9aff1a38bbabc4f878a4d2e2fb96dafe59c92
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80298746"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85504453"
 ---
 # <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>Řešení potíží se zařízeními 8000 series pomocí nástroje Diagnostika StorSimple
 
@@ -210,7 +210,7 @@ Tento test oznamuje systémové informace, dostupné aktualizace, informace o cl
 
 * Systémové informace zahrnují model, sériové číslo zařízení, časové pásmo, stav kontroléru a podrobnou verzi softwaru spuštěnou v systému. Chcete-li pochopit různé systémové parametry hlášené jako výstup, přečtěte si [informace o interpretaci systémových informací](#appendix-interpreting-system-information).
 
-* Dostupnost aktualizace hlásí, zda jsou k dispozici standardní a údržbářské režimy a jejich přidružené názvy balíčků. Pokud `RegularUpdates` a `MaintenanceModeUpdates` jsou `false`, znamená to, že aktualizace nejsou k dispozici. Vaše zařízení je aktuální.
+* Dostupnost aktualizace hlásí, zda jsou k dispozici standardní a údržbářské režimy a jejich přidružené názvy balíčků. Pokud `RegularUpdates` a `MaintenanceModeUpdates` jsou `false` , znamená to, že aktualizace nejsou k dispozici. Vaše zařízení je aktuální.
 * Informace o clusteru obsahují informace o různých logických součástech všech skupin clusteru klientovi HCS a jejich odpovídajících stavů. Pokud v této části sestavy vidíte offline skupinu clusterů, obraťte se na [Podpora Microsoftu](storsimple-8000-contact-microsoft-support.md).
 * Informace o službě obsahují názvy a stavy všech služeb klientovi HCS a CiS spuštěných na vašem zařízení. Tyto informace jsou užitečné pro podpora Microsoftu při řešení potíží se zařízením.
 
@@ -416,7 +416,7 @@ Tady je Tabulka popisující, k jakým různým parametrům prostředí Windows 
 
 | Parametr PowerShellu    | Popis  |
 |-------------------------|------------------|
-| ID instance             | Každý kontroler má jedinečný identifikátor nebo identifikátor GUID, který je k němu přidružený.|
+| Instance ID             | Každý kontroler má jedinečný identifikátor nebo identifikátor GUID, který je k němu přidružený.|
 | Název                    | Popisný název zařízení nakonfigurovaného prostřednictvím Azure Portal během nasazování zařízení. Výchozím popisným názvem je sériové číslo zařízení. |
 | Model                   | Model zařízení řady StorSimple 8000. Model může být 8100 nebo 8600.|
 | SerialNumber            | Sériové číslo zařízení je přiřazeno k továrně a je 15 znaků dlouhé. Například 8600-SHX0991003G44HT označuje:<br> 8600 – je model zařízení.<br>SHX – je výrobní pracoviště.<br> 0991003 – je konkrétní produkt. <br> G44HT – při posledních 5 číslicích se zvýší a vytvoří se jedinečná sériová čísla. Nemusí se jednat o sekvenční sadu.|

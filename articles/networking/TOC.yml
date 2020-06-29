@@ -4,6 +4,8 @@
       href: networking-overview.md
     - name: Architektura
       items:
+        - name: Azure pro odborníky na sítě
+          href: azure-for-network-engineers.md
         - name: Virtuální datová centra
           href: /azure/architecture/vdc/networking-virtual-datacenter
         - name: Asymetrické směrování s několika síťovými cestami

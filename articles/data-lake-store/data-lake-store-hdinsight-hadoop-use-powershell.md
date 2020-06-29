@@ -3,15 +3,15 @@ title: PowerShell – HDInsight s Data Lake Storage Gen1 – doplněk úložišt
 description: Naučte se, jak pomocí Azure PowerShell nakonfigurovat cluster HDInsight s Azure Data Lake Storage Gen1 jako další úložiště.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: fb4ab1cdb60fff40effc1ff2f12f8600ba263d23
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: b1264475a9e5100e2b38079fe0540ada5d91cd55
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692053"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85504708"
 ---
 # <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-as-additional-storage"></a>Použití Azure PowerShell k vytvoření clusteru HDInsight s Azure Data Lake Storage Gen1 (jako další úložiště)
 
@@ -262,7 +262,7 @@ Mělo by se zobrazit seznam souborů, které jste dříve nahráli do Data Lake 
     Found 1 items
     -rwxrwxrwx   0 NotSupportYet NotSupportYet     671388 2015-09-16 22:16 adl://mydatalakestoragegen1.azuredatalakestore.net:443/mynewfolder
 
-Pomocí `hdfs dfs -put` příkazu můžete také odeslat některé soubory do data Lake Storage Gen1 a potom použít `hdfs dfs -ls` k ověření, jestli se soubory úspěšně nahrály.
+Pomocí příkazu můžete také `hdfs dfs -put` Odeslat některé soubory do data Lake Storage Gen1 a potom použít `hdfs dfs -ls` k ověření, jestli se soubory úspěšně nahrály.
 
 ## <a name="see-also"></a>Viz také
 * [Použití Data Lake Storage Gen1 s clustery Azure HDInsight](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)

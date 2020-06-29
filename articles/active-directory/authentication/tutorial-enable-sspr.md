@@ -10,19 +10,19 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c84aa99608a4fc2ac1842c617cca54e2afc3cdbe
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: de9abcca8d5b02b58bd5d4550dcb100a90853f7f
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82201988"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85505966"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>Kurz: povolení odemknutí účtu nebo resetování hesla uživateli pomocí samoobslužného resetování hesla Azure Active Directory
 
 Samoobslužné resetování hesla (SSPR) Azure Active Directory (Azure AD) umožňuje uživatelům změnit nebo resetovat svoje heslo bez zásahu správce ani helpdesku. Pokud je účet uživatele uzamčený nebo zapomněl heslo, může postupovat podle výzev ke zrušení odblokování a opětovnému získání práce. Tato možnost omezuje volání helpdesku a ztrátu produktivity, když se uživatel nemůže přihlásit ke svému zařízení nebo aplikaci.
 
 > [!IMPORTANT]
-> V tomto rychlém startu se zobrazí správce, jak povolit samoobslužné resetování hesla. Pokud už jste koncoví uživatelé zaregistrovali pro Samoobslužné resetování hesla a potřebujete se zpátky do svého účtu, pokračujte na https://aka.ms/sspr.
+> V tomto rychlém startu se zobrazí správce, jak povolit samoobslužné resetování hesla. Pokud už jste koncoví uživatelé zaregistrovali pro Samoobslužné resetování hesla a potřebujete se zpátky do svého účtu, pokračujte na https://aka.ms/sspr .
 >
 > Pokud váš IT tým nepovolil možnost resetovat si vlastní heslo, obraťte se na helpdesk a získáte další pomoc.
 
@@ -47,7 +47,11 @@ K dokončení tohoto kurzu potřebujete následující prostředky a oprávněn�
 
 ## <a name="enable-self-service-password-reset"></a>Povolení samoobslužného resetování hesel
 
-Azure AD umožňuje povolit SSPR pro *žádné*, *vybrané*nebo *všechny* uživatele. Tato podrobná možnost umožňuje vybrat podmnožinu uživatelů k otestování procesu registrace a pracovního postupu SSPR. Až budete s procesem spokojeni a můžete tyto požadavky sdělit širší skupině uživatelů, můžete vybrat další skupiny uživatelů a povolit pro SSPR. Nebo můžete povolit SSPR pro všechny uživatele v tenantovi Azure AD.
+Azure AD umožňuje povolit SSPR pro *žádné*, *vybrané*nebo *všechny* uživatele. Tato podrobná možnost umožňuje vybrat podmnožinu uživatelů k otestování procesu registrace a pracovního postupu SSPR. Až budete s tímto procesem spokojeni a můžete tyto požadavky sdělit širší skupině uživatelů, můžete vybrat skupinu uživatelů, které chcete povolit pro SSPR. Nebo můžete povolit SSPR pro všechny uživatele v tenantovi Azure AD.
+
+> [!NOTE]
+>
+> Pro SSPR se v tuto chvíli dá povolit jenom jedna skupina Azure AD pomocí Azure Portal. V rámci širšího nasazení SSPR se podporují vnořené skupiny. Ujistěte se, že uživatelé ve skupinách, které jste zvolili, mají přiřazené příslušné licence. V tuto chvíli neexistují žádné ověřovací procesy těchto licenčních požadavků.
 
 V tomto kurzu nakonfigurujte SSPR pro skupinu uživatelů ve skupině testů. V následujícím příkladu se používá skupina *SSPR-test-Group* . Podle potřeby zadejte svou vlastní skupinu Azure AD:
 
@@ -57,8 +61,6 @@ V tomto kurzu nakonfigurujte SSPR pro skupinu uživatelů ve skupině testů. V 
 1. Vyhledejte a vyberte skupinu Azure AD, například *SSPR-test-Group*, a pak zvolte *Vybrat*.
 
     [![](media/tutorial-enable-sspr/enable-sspr-for-group-cropped.png "Select a group in the Azure portal to enable for self-service password reset")](media/tutorial-enable-sspr/enable-sspr-for-group.png#lightbox)
-
-    V rámci širšího nasazení SSPR se podporují vnořené skupiny. Ujistěte se, že uživatelé ve skupinách, které jste zvolili, mají přiřazené příslušné licence. V tuto chvíli neexistují žádné ověřovací procesy těchto licenčních požadavků.
 
 1. Pokud chcete povolit SSPR pro vybrat uživatele, vyberte **Uložit**.
 
@@ -74,7 +76,7 @@ Když uživatelé potřebují odemknout svůj účet nebo resetovat heslo, zobra
 
     * *Oznámení mobilní aplikace*
     * *Kód mobilní aplikace*
-    * *E-mailu*
+    * *E-mail*
     * *Mobilní telefon*
     * *Telefon do kanceláře*
 
@@ -114,10 +116,10 @@ S povoleným a nakonfigurovaným SSPR otestujte proces SSPR s uživatelem, kter�
 > [!NOTE]
 > Při testování samoobslužného resetování hesla použijte účet bez oprávnění správce. Správci jsou vždycky povoleni pro Samoobslužné resetování hesla a jsou potřeba k resetování hesla pomocí dvou metod ověřování.
 
-1. Chcete-li zobrazit proces Ruční registrace, otevřete nové okno prohlížeče v režimu InPrivate nebo anonymním a přejděte na [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)adresu. Uživatelé by měli být přesměrováni na tento registrační portál při příštím přihlášení.
+1. Chcete-li zobrazit proces Ruční registrace, otevřete nové okno prohlížeče v režimu InPrivate nebo anonymním a přejděte na adresu [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) . Uživatelé by měli být přesměrováni na tento registrační portál při příštím přihlášení.
 1. Přihlaste se pomocí testovacího uživatele bez oprávnění správce, jako je například *testuser*, a zaregistrujte kontaktní informace metod ověřování.
 1. Po dokončení vyberte tlačítko s označením **vypadá dobře** a zavřete okno prohlížeče.
-1. Otevřete nové okno prohlížeče v režimu InPrivate nebo anonymním a přejděte na [https://aka.ms/sspr](https://aka.ms/sspr).
+1. Otevřete nové okno prohlížeče v režimu InPrivate nebo anonymním a přejděte na [https://aka.ms/sspr](https://aka.ms/sspr) .
 1. Zadejte informace o účtu nesprávce testovacích uživatelů, jako je například *testuser*, znaky z CAPTCHA a pak vyberte **Další**.
 
     ![Zadání informací o uživatelském účtu pro resetování hesla](media/tutorial-enable-sspr/password-reset-page.png)

@@ -5,23 +5,29 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/29/2020
-ms.openlocfilehash: 87d8b26110eba647975de577e9d7b5b0ed138266
-ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
+ms.date: 06/25/2020
+ms.openlocfilehash: 261e5f17e787fd96697b06a9b338e74ea0409454
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84423968"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85507071"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>Povolit Azure Monitor pro virtuální počítače – přehled
 
-Tento článek poskytuje přehled možností, které jsou k dispozici pro povolení Azure Monitor pro virtuální počítače na virtuálních počítačích za účelem monitorování stavu a výkonu. Objevte závislosti aplikací, které běží na virtuálních počítačích Azure a službě Virtual Machine Scale Sets, místních virtuálních počítačích nebo virtuálních počítačích hostovaných v jiném cloudovém prostředí.  
+Tento článek poskytuje přehled možností, které jsou k dispozici pro povolení Azure Monitor pro virtuální počítače k monitorování stavu a výkonu následujících akcí:
+
+- Virtuální počítače Azure 
+- Škálovací sady virtuálních počítačů Azure
+- Hybridní virtuální počítače připojené pomocí ARC Azure
+- Místní virtuální počítače
+- Virtuální počítače hostované v jiném cloudovém prostředí.  
 
 Nastavení Azure Monitor pro virtuální počítače:
 
-* Povolte jeden virtuální počítač Azure nebo sadu škálování virtuálních počítačů, a to tak, že vyberete **přehledy** přímo z virtuálního počítače nebo sady škálování virtuálních počítačů.
-* Pomocí Azure Policy povolte dva nebo víc virtuálních počítačů Azure a sady škálování virtuálních počítačů. Tato metoda zajišťuje, že u stávajících a nových virtuálních počítačů a sad škálování jsou požadované závislosti nainstalovány a správně nakonfigurovány. Nahlásí se nekompatibilní virtuální počítače a sady škálování, takže se můžete rozhodnout, jestli je chcete povolit, a opravit je.
-* V rámci zadaného předplatného nebo skupiny prostředků v prostředí PowerShell povolte dva nebo víc virtuálních počítačů Azure nebo služby Virtual Machine Scale Sets.
+* Pokud chcete povolit jeden virtuální počítač Azure, Azure VMSS nebo počítač ARC Azure, vyberte **přehledy** přímo z nabídky v Azure Portal.
+* Pomocí Azure Policy povolte více virtuálních počítačů Azure, Azure VMSS nebo počítačů s obloukem Azure ARC. Tato metoda zajišťuje, že u stávajících a nových virtuálních počítačů a sad škálování jsou požadované závislosti nainstalovány a správně nakonfigurovány. Nahlásí se nekompatibilní virtuální počítače a sady škálování, takže se můžete rozhodnout, jestli je chcete povolit, a opravit je.
+* Povolte několik virtuálních počítačů Azure, virtuálních počítačů ARC Azure, Azure VMSS nebo počítačů ARC Azure v rámci zadaného předplatného nebo skupiny prostředků pomocí PowerShellu.
 * Povolte Azure Monitor pro virtuální počítače k monitorování virtuálních počítačů nebo fyzických počítačů hostovaných ve vaší podnikové síti nebo jiném cloudovém prostředí.
 
 ## <a name="prerequisites"></a>Požadavky
@@ -43,6 +49,7 @@ Azure Monitor pro virtuální počítače podporuje pracovní prostor Log Analyt
 - USA – východ 2
 - USA – střed
 - USA – středosever
+- US Gov AZ
 - US Gov VA
 - Střední Kanada
 - Spojené království – jih
@@ -67,15 +74,13 @@ Pokud nemáte pracovní prostor Log Analytics, můžete ho vytvořit pomocí jed
 
 Pracovní prostor můžete také vytvořit, když povolíte monitorování pro jeden virtuální počítač Azure nebo sadu škálování virtuálního počítače v Azure Portal.
 
-Pokud chcete nastavit scénář ve velkém měřítku, který používá Azure Policy, Azure PowerShell nebo šablony Azure Resource Manager, v pracovním prostoru Log Analytics:
-
-* Nainstalujte řešení *ServiceMap* a *InfrastructureInsights* . Tuto instalaci můžete dokončit pomocí zadané Azure Resource Manager šablony. Nebo **na kartě Začínáme** v Azure Portal vyberte **Konfigurovat pracovní prostor**.
-* Nakonfigurujte pracovní prostor Log Analytics pro shromažďování čítačů výkonu.
-
-Pokud chcete nakonfigurovat pracovní prostor pro scénář ve velkém měřítku, použijte jednu z následujících metod:
+Chcete-li nastavit scénář ve velkém měřítku, který používá Azure Policy, Azure PowerShell nebo šablony Azure Resource Manager, je nutné nainstalovat řešení *VMInsights* . Můžete to provést pomocí jedné z následujících metod:
 
 * Použijte [Azure PowerShell](vminsights-enable-at-scale-powershell.md#set-up-a-log-analytics-workspace).
 * Na stránce Azure Monitor pro virtuální počítače [**pokrytí zásad**](vminsights-enable-at-scale-policy.md#manage-policy-coverage-feature-overview) vyberte **Konfigurovat pracovní prostor**. 
+
+### <a name="azure-arc-machines"></a>Počítače ARC Azure
+Azure Monitor pro virtuální počítače je k dispozici pro servery s podporou ARC Azure v oblastech, kde je k dispozici služba rozšíření ARC. Aby bylo možné povolit Azure Monitor pro virtuální počítače na serverech s povoleným obloukem, musí uživatelé používat verzi 0,9 nebo vyšší agenta ARC.
 
 ### <a name="supported-operating-systems"></a>Podporované operační systémy
 
@@ -166,11 +171,11 @@ V hybridním prostředí můžete agenta závislostí stáhnout a nainstalovat r
 
 Následující tabulka popisuje připojené zdroje, které funkce mapy podporuje v hybridním prostředí.
 
-| Připojený zdroj | Podporuje se | Description |
+| Připojený zdroj | Podporuje se | Popis |
 |:--|:--|:--|
-| Agenti systému Windows | Ano | Společně s [agentem Log Analytics pro Windows](../../azure-monitor/platform/log-analytics-agent.md)potřebují agenti pro Windows agenta závislostí. Další informace najdete v tématu [podporované operační systémy](#supported-operating-systems). |
-| Agenti systému Linux | Ano | Společně s [agentem Log Analytics pro Linux](../../azure-monitor/platform/log-analytics-agent.md)musí mít agenti pro Linux agenta závislostí. Další informace najdete v tématu [podporované operační systémy](#supported-operating-systems). |
-| Skupina pro správu nástroje System Center Operations Manager | Ne | |
+| Agenti systému Windows | Yes | Společně s [agentem Log Analytics pro Windows](../../azure-monitor/platform/log-analytics-agent.md)potřebují agenti pro Windows agenta závislostí. Další informace najdete v tématu [podporované operační systémy](#supported-operating-systems). |
+| Agenti systému Linux | Yes | Společně s [agentem Log Analytics pro Linux](../../azure-monitor/platform/log-analytics-agent.md)musí mít agenti pro Linux agenta závislostí. Další informace najdete v tématu [podporované operační systémy](#supported-operating-systems). |
+| Skupina pro správu nástroje System Center Operations Manager | No | |
 
 Agenta závislostí si můžete stáhnout z těchto umístění:
 
@@ -189,12 +194,12 @@ Další informace o tom, jak řídit přístup k pracovnímu prostoru Log Analyt
 
 Povolte Azure Monitor pro virtuální počítače pomocí jedné z metod popsaných v této tabulce:
 
-| Stav nasazení | Metoda | Description |
+| Stav nasazení | Metoda | Popis |
 |------------------|--------|-------------|
-| Jeden virtuální počítač Azure nebo sada škálování virtuálního počítače | [Povolení z virtuálního počítače](vminsights-enable-single-vm.md) | Jeden virtuální počítač Azure můžete povolit tak, že vyberete **přehledy** přímo z virtuálního počítače nebo sady škálování virtuálních počítačů. |
-| Několik virtuálních počítačů Azure nebo sady škálování virtuálních počítačů | [Povolit prostřednictvím Azure Policy](vminsights-enable-at-scale-policy.md) | Pomocí Azure Policy a dostupných definic zásad můžete povolit víc virtuálních počítačů Azure. |
-| Několik virtuálních počítačů Azure nebo sady škálování virtuálních počítačů | [Povolit prostřednictvím šablon Azure PowerShell nebo Azure Resource Manager](vminsights-enable-at-scale-powershell.md) | V rámci zadaného předplatného nebo skupiny prostředků můžete povolit víc virtuálních počítačů Azure nebo virtuálních počítačů pomocí šablon Azure PowerShell nebo Azure Resource Manager. |
-| Hybridní cloud | [Povolit pro hybridní prostředí](vminsights-enable-hybrid-cloud.md) | Můžete ho nasadit do virtuálních počítačů nebo fyzických počítačů hostovaných ve vašem datovém centru nebo v jiných cloudových prostředích. |
+| Jeden virtuální počítač Azure, Azure VMSS nebo počítač ARC Azure | [Povolit z portálu](vminsights-enable-single-vm.md) | Vyberte si **přehledy** přímo z nabídky v Azure Portal. |
+| Několik virtuálních počítačů Azure, Azure VMSS nebo počítače s obloukem Azure | [Povolit prostřednictvím Azure Policy](vminsights-enable-at-scale-policy.md) | Při vytvoření virtuálního počítače nebo VMSS použijte Azure Policy k automatickému povolení. |
+| | [Povolit prostřednictvím šablon Azure PowerShell nebo Azure Resource Manager](vminsights-enable-at-scale-powershell.md) | Pomocí Azure PowerShell nebo Azure Resource Manager šablony můžete povolit více virtuálních počítačů Azure, virtuálního počítače Azure ARC nebo Azure VMSS v rámci zadaného předplatného nebo skupiny prostředků. |
+| Hybridní cloud | [Povolit pro hybridní prostředí](vminsights-enable-hybrid-cloud.md) | Nasazení do virtuálních počítačů nebo fyzických počítačů hostovaných ve vašem datovém centru nebo v jiných cloudových prostředích. |
 
 ## <a name="management-packs"></a>Sady Management Pack
 

@@ -7,17 +7,17 @@ author: priestlg
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 03/05/2020
 ms.author: v-grpr
-ms.openlocfilehash: b90f0f35f908d16b0746075e638fe66769939a64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fb2123bdb0e12571a58a32e414a610665935ebb6
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80658037"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85508210"
 ---
 # <a name="install-update-51-on-your-storsimple-device"></a>Instalace aktualizace 5,1 na zařízení StorSimple
 
@@ -58,7 +58,7 @@ Provedením následujících kroků aktualizujte zařízení tak, aby se [aktual
 
     ![Vybrat zařízení](./media/storsimple-8000-install-update-51/update1.png)
 
-2. Přejděte na **Nastavení** > zařízení**aktualizace zařízení**.
+2. Přejděte na **nastavení zařízení**  >  **aktualizace zařízení**.
 
     ![Klikněte na aktualizace zařízení.](./media/storsimple-8000-install-update-51/update2.png)
 

@@ -1,6 +1,6 @@
 ---
-title: Kopírování dat ze zdrojů ODBC pomocí Azure Data Factory
-description: Naučte se, jak kopírovat data ze zdrojů OData do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
+title: Kopírování dat z a do datových úložišť rozhraní ODBC pomocí Azure Data Factory
+description: Naučte se, jak kopírovat data z a do úložišť dat ODBC pomocí aktivity kopírování v kanálu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/22/2020
 ms.author: jingwang
-ms.openlocfilehash: 71b05d8607c174dbe9298a1c02f4927ed2218374
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: c92428666f0766f78475be16416027cdc6e71f20
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891421"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85506527"
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>Kopírování dat z a do datových úložišť rozhraní ODBC pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -54,15 +54,15 @@ Následující části obsahují podrobné informace o vlastnostech, které slou
 
 Pro propojenou službu ODBC jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type musí být nastavená na: **ODBC** . | Ano |
-| připojovací řetězec | Připojovací řetězec s výjimkou části s přihlašovacími údaji Můžete zadat připojovací řetězec se vzorem, jako `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"`je, nebo použít systémový DSN (název zdroje dat), který jste nastavili na Integration runtimem počítači, a `"DSN=<name of the DSN on IR machine>;"` (je třeba přesto zadat část přihlašovacích údajů v propojené službě odpovídajícím způsobem).<br>Můžete také vložit heslo do Azure Key Vault a `password` získat konfiguraci z připojovacího řetězce.Další podrobnosti najdete [v tématu uložení přihlašovacích údajů v Azure Key Vault](store-credentials-in-key-vault.md) .| Ano |
-| authenticationType | Typ ověřování, který se používá pro připojení k úložišti dat ODBC.<br/>Povolené hodnoty jsou: **základní** a **anonymní**. | Ano |
+| typ | Vlastnost Type musí být nastavená na: **ODBC** . | Yes |
+| připojovací řetězec | Připojovací řetězec s výjimkou části s přihlašovacími údaji Můžete zadat připojovací řetězec se vzorem, jako `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"` je, nebo použít systémový DSN (název zdroje dat), který jste nastavili na Integration runtimem počítači, a `"DSN=<name of the DSN on IR machine>;"` (je třeba přesto zadat část přihlašovacích údajů v propojené službě odpovídajícím způsobem).<br>Můžete také vložit heslo do Azure Key Vault a získat  `password`   konfiguraci z připojovacího řetězce.Další podrobnosti najdete [v tématu uložení přihlašovacích údajů v Azure Key Vault](store-credentials-in-key-vault.md)   .| Yes |
+| authenticationType | Typ ověřování, který se používá pro připojení k úložišti dat ODBC.<br/>Povolené hodnoty jsou: **základní** a **anonymní**. | Yes |
 | userName | Pokud používáte základní ověřování, zadejte uživatelské jméno. | No |
 | heslo | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | No |
 | pověření | Část přístupového pověření v připojovacím řetězci, kterou jste zadali ve formátu hodnoty vlastnosti specifické pro ovladač. Příklad: `"RefreshToken=<secret refresh token>;"`. Označte toto pole jako SecureString. | No |
-| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Integration Runtime v místním prostředí se vyžaduje, jak je uvedeno v [požadavcích](#prerequisites). |Ano |
+| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Integration Runtime v místním prostředí se vyžaduje, jak je uvedeno v [požadavcích](#prerequisites). |Yes |
 
 **Příklad 1: použití základního ověřování**
 
@@ -117,12 +117,12 @@ Pro propojenou službu ODBC jsou podporovány následující vlastnosti:
 
 Pro kopírování dat z úložiště dat kompatibilních s rozhraním ODBC jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type datové sady musí být nastavená na: **ODBC** . | Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na: **ODBC** . | Yes |
 | tableName | Název tabulky v úložišti dat rozhraní ODBC. | Ne pro zdroj (Pokud je zadáno "dotaz" ve zdroji aktivity);<br/>Ano pro jímku |
 
-**Případě**
+**Příklad**
 
 ```json
 {
@@ -151,10 +151,10 @@ Pokud jste používali `RelationalTable` typovou datovou sadu, je stále podporo
 
 Pokud chcete kopírovat data z úložiště dat kompatibilního s rozhraním ODBC, v části **zdroje** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **OdbcSource** . | Ano |
-| query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM MyTable"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **OdbcSource** . | Yes |
+| query | Pro čtení dat použijte vlastní dotaz SQL. Příklad: `"SELECT * FROM MyTable"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
 **Případě**
 
@@ -194,9 +194,9 @@ Pokud jste používali `RelationalSource` typový zdroj, je stále podporován t
 
 Chcete-li kopírovat data do úložiště dat kompatibilního s rozhraním ODBC, nastavte typ jímky v aktivitě kopírování na **OdbcSink**. V části **jímka** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type jímky aktivity kopírování musí být nastavená na: **OdbcSink** . | Ano |
+| typ | Vlastnost Type jímky aktivity kopírování musí být nastavená na: **OdbcSink** . | Yes |
 | writeBatchTimeout |Počkejte, než se operace dávkového vložení dokončí předtím, než vyprší časový limit.<br/>Povolené hodnoty jsou: TimeSpan. Příklad: "00:30:00" (30 minut). |No |
 | writeBatchSize |Když velikost vyrovnávací paměti dosáhne writeBatchSize, vloží data do tabulky SQL.<br/>Povolené hodnoty jsou: celé číslo (počet řádků). |Ne (výchozí hodnota je 0 – automaticky se zjistilo) |
 | preCopyScript |Zadejte dotaz SQL pro aktivitu kopírování, která má být provedena před zápisem dat do úložiště dat v každém spuštění. Tuto vlastnost můžete použít k vyčištění předem načtených dat. |No |

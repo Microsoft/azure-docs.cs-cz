@@ -3,15 +3,15 @@ title: Změnit cestu objektu BLOB z výchozího nastavení
 description: Přečtěte si, jak nastavit funkci Azure pro přejmenování cesty k souboru objektu BLOB.
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 5ba1709ae195631371e4ea72667ba9b2a4bf279e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92925fcf13f91364619262455579392a7457f6b6
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76270634"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85504827"
 ---
 # <a name="change-a-blob-path-from-the-default-path"></a>Změna cesty objektu BLOB z výchozí cesty
 
@@ -193,7 +193,7 @@ Pokud chcete vytvořit funkci Azure Functions, proveďte následující kroky:
         
         ![Odkaz "Zobrazit soubory"](./media/storsimple-data-manager-change-default-blob-path/new-function-add-file.png)
     
-    3. Zadejte **Project. JSON**a potom stiskněte klávesu **ENTER**. Do souboru **Project. JSON** vložte následující kód:
+    3. Zadejte **project.js**a potom stiskněte klávesu **ENTER**. Do **project.jsv** souboru vložte následující kód:
 
         ```
         {

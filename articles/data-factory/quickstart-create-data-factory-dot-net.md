@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 7f0f18e523368e85d9cea0206e98bb7b1a0e6165
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0c2f840333f066afaa22883fb0f5d67072a5c822
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81419370"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85504861"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>Rychlý Start: vytvoření datové továrny a kanálu pomocí sady .NET SDK
 
@@ -47,9 +47,9 @@ Stáhněte sadu [Azure .NET SDK](https://azure.microsoft.com/downloads/) a nains
 
 V části *Postupy: použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům*, postupujte podle pokynů k provedení těchto úloh:
 
-1. V části [vytvořit aplikaci Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)vytvořte aplikaci, která představuje aplikaci .NET, kterou vytváříte v tomto kurzu. Jako přihlašovací adresu URL můžete poskytnout fiktivní URL, jak ukazuje článek (`https://contoso.org/exampleapp`).
-2. V poli [získat hodnoty pro přihlášení](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)Získejte **ID aplikace** a **ID tenanta**a poznamenejte si tyto hodnoty, které použijete později v tomto kurzu. 
-3. V části [certifikáty a tajné](../active-directory/develop/howto-create-service-principal-portal.md#certificates-and-secrets)klíče Získejte **ověřovací klíč**a poznamenejte si tuto hodnotu, kterou použijete později v tomto kurzu.
+1. V části [vytvořit aplikaci Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)vytvořte aplikaci, která představuje aplikaci .NET, kterou vytváříte v tomto kurzu. Jako přihlašovací adresu URL můžete poskytnout fiktivní URL, jak ukazuje článek (`https://contoso.org/exampleapp`).
+2. V poli [získat hodnoty pro přihlášení](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)Získejte **ID aplikace** a **ID tenanta**a poznamenejte si tyto hodnoty, které použijete později v tomto kurzu. 
+3. V části [certifikáty a tajné](../active-directory/develop/howto-create-service-principal-portal.md#upload-a-certificate-or-create-a-secret-for-signing-in)klíče Získejte **ověřovací klíč**a poznamenejte si tuto hodnotu, kterou použijete později v tomto kurzu.
 4. V části [přiřadit aplikaci k roli](../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application)přiřaďte aplikaci roli **Přispěvatel** na úrovni předplatného, aby aplikace mohla vytvářet datové továrny v rámci předplatného.
 
 ## <a name="create-a-visual-studio-project"></a>Vytvoření projektu ve Visual Studiu
@@ -57,13 +57,13 @@ V části *Postupy: použití portálu k vytvoření aplikace a instančního ob
 Dále vytvořte konzolovou aplikaci C# .NET v aplikaci Visual Studio:
 
 1. Spusťte **Visual Studio**.
-2. V okně Start vyberte **vytvořit novou** > **konzolovou aplikaci projektu (.NET Framework)**. Vyžaduje se .NET verze 4.5.2 nebo novější.
+2. V okně Start vyberte **vytvořit novou**  >  **konzolovou aplikaci projektu (.NET Framework)**. Vyžaduje se .NET verze 4.5.2 nebo novější.
 3. Do **název projektu**zadejte **ADFv2QuickStart**.
 4. Vyberte **Vytvořit** a vytvořte projekt.
 
 ## <a name="install-nuget-packages"></a>Instalace balíčků NuGet
 
-1. Vyberte **nástroje** > **správce** > balíčků NuGet**Konzola správce balíčků**.
+1. Vyberte **nástroje**  >  **Správce balíčků NuGet**  >  **Konzola správce balíčků**.
 2. V podokně **konzoly Správce balíčků** spusťte následující příkazy pro instalaci balíčků. Další informace najdete v [balíčku NuGet pro Microsoft. Azure. Management. DataFactory](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/).
 
     ```powershell
@@ -430,7 +430,7 @@ Press any key to exit...
 
 ## <a name="verify-the-output"></a>Ověření výstupu
 
-Kanál automaticky vytvoří výstupní složku v kontejneru objektů BLOB **adftutorial** . Pak zkopíruje soubor **EMP. txt** ze vstupní složky do výstupní složky. 
+Kanál automaticky vytvoří výstupní složku v kontejneru objektů BLOB **adftutorial** . Pak zkopíruje soubor **emp.txt** ze vstupní složky do výstupní složky. 
 
 1. V Azure Portal na stránce kontejneru **adftutorial** , kterou jste zastavili v části [přidání vstupní složky a souboru pro kontejner objektů BLOB](#add-an-input-folder-and-file-for-the-blob-container) výše, vyberte **aktualizovat** , aby se zobrazila výstupní složka. 
 2. V seznamu složka vyberte možnost **výstup**.
