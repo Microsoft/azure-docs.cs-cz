@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: cherylmc
-ms.openlocfilehash: 7848dda09b39f446dd218b7ce1eb2a07664bcaa6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d282cec55d5534957478d6268c8bbd6d74245d8d
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77190418"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514855"
 ---
 # <a name="automation-guidelines-for-virtual-wan-partners"></a>Pokyny pro automatizaci pro virtuální partneři sítě WAN
 
@@ -54,7 +54,7 @@ Seznamte se s očekávaným prostředím pro zákazníky ve spojení s Azure Vir
 
 ###  <a name="access-control"></a><a name="access"></a>Řízení přístupu
 
-Zákazníci musí být schopni nastavit příslušné řízení přístupu pro virtuální síť WAN v uživatelském rozhraní zařízení. Tento postup se doporučuje použít u instančního objektu Azure. Přístup na základě instančního objektu poskytuje řadiči zařízení vhodné ověření pro nahrání informací o větvi. Další informace najdete v tématu [Vytvoření instančního objektu](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). I když se tato funkce nachází mimo nabídku Azure Virtual WAN, seznam je uvedený pod běžnými kroky provedenými při nastavování přístupu v Azure, po kterém jsou příslušné podrobnosti zavedené do řídicího panelu správy zařízení.
+Zákazníci musí být schopni nastavit příslušné řízení přístupu pro virtuální síť WAN v uživatelském rozhraní zařízení. Tento postup se doporučuje použít u instančního objektu Azure. Přístup na základě instančního objektu poskytuje řadiči zařízení vhodné ověření pro nahrání informací o větvi. Další informace najdete v tématu [Vytvoření instančního objektu](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal). I když se tato funkce nachází mimo nabídku Azure Virtual WAN, seznam je uvedený pod běžnými kroky provedenými při nastavování přístupu v Azure, po kterém jsou příslušné podrobnosti zavedené do řídicího panelu správy zařízení.
 
 * Vytvořte aplikaci Azure Active Directory pro místní řadič zařízení.
 * Získat ID aplikace a ověřovací klíč
@@ -227,4 +227,4 @@ Vaše místní zařízení SDWAN/VPN nebo konfigurace SD-WAN musí odpovídat ne
 
 Další informace o virtuální síti WAN najdete v tématu [o Azure Virtual WAN](virtual-wan-about.md) a [nejčastějších dotazech k Azure Virtual WAN](virtual-wan-faq.md).
 
-Pokud potřebujete další informace, pošlete prosím e-mail na <azurevirtualwan@microsoft.com>adresu. V řádku předmětu uveďte název vaší společnosti v hranatých závorkách „[]“.
+Pokud potřebujete další informace, pošlete prosím e-mail na adresu <azurevirtualwan@microsoft.com> . V řádku předmětu uveďte název vaší společnosti v hranatých závorkách „[]“.

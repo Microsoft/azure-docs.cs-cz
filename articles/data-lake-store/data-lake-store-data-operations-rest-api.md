@@ -8,15 +8,15 @@ manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 351c92f1e1a698893f61004d523ba79ebca253e8
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 08c212f2a7986c93caa35d646e5fc3e9b71b4a6a
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60878779"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515605"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-rest-api"></a>Operace systému souborů při Azure Data Lake Storage Gen1 pomocí REST API
 > [!div class="op_single_selector"]
@@ -46,7 +46,7 @@ Ověřování pomocí služby Azure Active Directory můžete provádět dvěma 
 ## <a name="create-folders"></a>Vytváření složek
 Tato operace je založená na volání rozhraní REST API WebHDFS, které je definované [tady](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Make_a_Directory).
 
-Použijte následující příkaz cURL. ** \<Yourstorename>** nahraďte názvem svého účtu Data Lake Storage Gen1.
+Použijte následující příkaz cURL. Nahraďte **\<yourstorename>** názvem vašeho účtu Data Lake Storage Gen1.
 
     curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -d "" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/?op=MKDIRS'
 
@@ -59,7 +59,7 @@ Pokud se operace úspěšně dokončí, měla by se zobrazit odpověď podobná 
 ## <a name="list-folders"></a>Výpis složek
 Tato operace je založená na volání rozhraní REST API WebHDFS, které je definované [tady](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#List_a_Directory).
 
-Použijte následující příkaz cURL. ** \<Yourstorename>** nahraďte názvem svého účtu Data Lake Storage Gen1.
+Použijte následující příkaz cURL. Nahraďte **\<yourstorename>** názvem vašeho účtu Data Lake Storage Gen1.
 
     curl -i -X GET -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/?op=LISTSTATUS'
 
@@ -87,7 +87,7 @@ Pokud se operace úspěšně dokončí, měla by se zobrazit odpověď podobná 
 ## <a name="upload-data"></a>Nahrání dat
 Tato operace je založená na volání rozhraní REST API WebHDFS, které je definované [tady](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Create_and_Write_to_a_File).
 
-Použijte následující příkaz cURL. ** \<Yourstorename>** nahraďte názvem svého účtu Data Lake Storage Gen1.
+Použijte následující příkaz cURL. Nahraďte **\<yourstorename>** názvem vašeho účtu Data Lake Storage Gen1.
 
     curl -i -X PUT -L -T 'C:\temp\list.txt' -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/list.txt?op=CREATE'
 
@@ -114,7 +114,7 @@ Tato operace je založená na volání rozhraní REST API WebHDFS, které je def
 * Nejdřív odešlete požadavek GET na koncový bod `https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN`. Toto volání vrátí umístění, na které je nutné odeslat další požadavek GET.
 * Potom odešlete požadavek GET na koncový bod `https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN&read=true`. Toto volání zobrazí obsah souboru.
 
-Vstupní parametry v prvním a druhém kroku se ale nijak neliší, a proto můžete parametr `-L` použít k odeslání prvního požadavku. Možnost `-L` v podstatě kombinuje dva požadavky do jednoho. Výsledkem je, že cURL zopakuje požadavek na novém umístění. Nakonec se zobrazí výstup ze všech volání požadavků, který bude vypadat přibližně jako v následujícím fragmentu kódu. ** \<Yourstorename>** nahraďte názvem svého účtu Data Lake Storage Gen1.
+Vstupní parametry v prvním a druhém kroku se ale nijak neliší, a proto můžete parametr `-L` použít k odeslání prvního požadavku. Možnost `-L` v podstatě kombinuje dva požadavky do jednoho. Výsledkem je, že cURL zopakuje požadavek na novém umístění. Nakonec se zobrazí výstup ze všech volání požadavků, který bude vypadat přibližně jako v následujícím fragmentu kódu. Nahraďte **\<yourstorename>** názvem vašeho účtu Data Lake Storage Gen1.
 
     curl -i -L GET -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN'
 
@@ -133,7 +133,7 @@ Zobrazený výstup by měl vypadat přibližně jako následující fragment kó
 ## <a name="rename-a-file"></a>Přejmenování souboru
 Tato operace je založená na volání rozhraní REST API WebHDFS, které je definované [tady](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Rename_a_FileDirectory).
 
-Pokud chcete přejmenovat soubor, použijte následující příkaz cURL. ** \<Yourstorename>** nahraďte názvem svého účtu Data Lake Storage Gen1.
+Pokud chcete přejmenovat soubor, použijte následující příkaz cURL. Nahraďte **\<yourstorename>** názvem vašeho účtu Data Lake Storage Gen1.
 
     curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -d "" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=RENAME&destination=/mytempdir/myinputfile1.txt'
 
@@ -147,7 +147,7 @@ Zobrazený výstup by měl vypadat přibližně jako následující fragment kó
 ## <a name="delete-a-file"></a>Odstranění souboru
 Tato operace je založená na volání rozhraní REST API WebHDFS, které je definované [tady](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Delete_a_FileDirectory).
 
-Pokud chcete odstranit soubor, použijte následující příkaz cURL. ** \<Yourstorename>** nahraďte názvem svého účtu Data Lake Storage Gen1.
+Pokud chcete odstranit soubor, použijte následující příkaz cURL. Nahraďte **\<yourstorename>** názvem vašeho účtu Data Lake Storage Gen1.
 
     curl -i -X DELETE -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile1.txt?op=DELETE'
 

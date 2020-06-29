@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/15/2018
 ms.author: alkohli
-ms.openlocfilehash: a987239669e7437a179f5f24034f4dbe45535663
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 6eb983eb5e36c5f3ac6b6eca049239d12bc01a0f
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84711693"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514617"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-hardware-components-and-status"></a>Monitorování hardwarových komponent a stavů pomocí služby StorSimple Device Manager
 
@@ -79,20 +79,20 @@ Chcete-li zobrazit stav hardwaru součásti zařízení, proveďte následujíc�
 ## <a name="component-list-for-primary-enclosure-of-storsimple-device"></a>Seznam součástí pro primární skříň zařízení StorSimple
 Následující tabulka popisuje fyzické a logické komponenty obsažené v primární skříni (v 8100 a 8600) místního zařízení StorSimple.
 
-| Součást | Modul | Typ | Umístění | Přimístit jednotky (FRU) pole? | Description |
+| Součást | Modul | Typ | Umístění | Přimístit jednotky (FRU) pole? | Popis |
 | --- | --- | --- | --- | --- | --- |
-| Jednotka ve slotu [0-11] |Diskové jednotky |Fyzické |Shared |Ano |Jeden řádek se zobrazí pro každou jednotku SSD nebo hard jednotky v primární skříni. |
-| Senzor okolní teploty |Skříně |Fyzické |Shared |Ne |Měří teplotu v rámci skříně. |
-| Senzor teploty střední roviny |Skříně |Fyzické |Shared |Ne |Měří teplotu střední roviny. |
-| Zvukový poplach |Skříně |Fyzické |Shared |Ne |Určuje, jestli je funkční podsystém zvukového alarmu v rámci skříně. |
-| Skříně |Skříně |Fyzické |Shared |Ano |Označuje přítomnost skříně. |
-| Nastavení skříně |Skříně |Fyzické |Shared |Ne |Odkazuje na přední panel skříně. |
-| Senzory napětí čáry |PCM |Fyzické |Shared |Ne |Množství senzorů napětí v řadě je zobrazených stavů, což označuje, zda je měřené napětí v toleranci. |
-| Čára aktuální senzory |PCM |Fyzické |Shared |Ne |Množství čáry aktuální senzory mají zobrazený stav, který označuje, zda je měřený aktuální počet v toleranci. |
-| Senzory teploty v PCM |PCM |Fyzické |Shared |Ne |Množství senzorů teploty, jako jsou vstupní a aktivní senzory, má zobrazený stav, který označuje, jestli je měřená teplota v toleranci. |
-| Zdroj napájení [0-1] |PCM |Fyzické |Shared |Ano |Jeden řádek se zobrazí pro každou spotřebu napájení v obou PCMs, která se nachází na zadní straně zařízení. |
-| Chlazení [0-1] |PCM |Fyzické |Shared |Ano |Pro každý ze čtyř chladicích ventilátorů umístěných v obou PCMs se zobrazí jeden řádek. |
-| Baterie [0-1] |PCM |Fyzické |Shared |Ano |Jeden řádek je zobrazen pro každý z modulů záložní baterie, které jsou umístěny v PCM. |
+| Jednotka ve slotu [0-11] |Diskové jednotky |Fyzické |Shared |Yes |Jeden řádek se zobrazí pro každou jednotku SSD nebo hard jednotky v primární skříni. |
+| Senzor okolní teploty |Skříně |Fyzické |Shared |No |Měří teplotu v rámci skříně. |
+| Senzor teploty střední roviny |Skříně |Fyzické |Shared |No |Měří teplotu střední roviny. |
+| Zvukový poplach |Skříně |Fyzické |Shared |No |Určuje, jestli je funkční podsystém zvukového alarmu v rámci skříně. |
+| Skříně |Skříně |Fyzické |Shared |Yes |Označuje přítomnost skříně. |
+| Nastavení skříně |Skříně |Fyzické |Shared |No |Odkazuje na přední panel skříně. |
+| Senzory napětí čáry |PCM |Fyzické |Shared |No |Množství senzorů napětí v řadě je zobrazených stavů, což označuje, zda je měřené napětí v toleranci. |
+| Čára aktuální senzory |PCM |Fyzické |Shared |No |Množství čáry aktuální senzory mají zobrazený stav, který označuje, zda je měřený aktuální počet v toleranci. |
+| Senzory teploty v PCM |PCM |Fyzické |Shared |No |Množství senzorů teploty, jako jsou vstupní a aktivní senzory, má zobrazený stav, který označuje, jestli je měřená teplota v toleranci. |
+| Zdroj napájení [0-1] |PCM |Fyzické |Shared |Yes |Jeden řádek se zobrazí pro každou spotřebu napájení v obou PCMs, která se nachází na zadní straně zařízení. |
+| Chlazení [0-1] |PCM |Fyzické |Shared |Yes |Pro každý ze čtyř chladicích ventilátorů umístěných v obou PCMs se zobrazí jeden řádek. |
+| Baterie [0-1] |PCM |Fyzické |Shared |Yes |Jeden řádek je zobrazen pro každý z modulů záložní baterie, které jsou umístěny v PCM. |
 | Metis |– |Logické |Shared |– |Zobrazuje stav baterie: to, jestli potřebují zpoplatnění, a blíží se k ukončení životního cyklu. |
 | Cluster |– |Logické |Shared |– |Zobrazuje stav clusteru, který se vytvoří mezi dvěma integrovanými moduly řadiče. |
 | Uzel clusteru |– |Logické |Shared |– |Určuje stav kontroleru v rámci clusteru. |
@@ -105,43 +105,43 @@ Následující tabulka popisuje fyzické a logické komponenty obsažené v prim
 | PAMĚŤ SSD NVRAM |– |Logické |Shared |– |Prostor úložiště ve fondu úložiště SSD, který je vyhrazený pro logiku paměti NVRAM. |
 | Fond úložiště HDD |– |Logické |Shared |– |Zobrazuje stav logického fondu úložiště, který je vytvořený ze zařízení HDD. |
 | Fond úložiště SSD |– |Logické |Shared |– |Zobrazuje stav logického fondu úložiště, který je vytvořený ze zařízení SSD. |
-| Kontroler [0-1] [stav] |I/O |Fyzické |Kontrolér |Ano |Zobrazí stav kontroleru a zda je v rámci skříně v aktivním nebo pohotovostním režimu. |
-| Senzory teploty v kontroleru |I/O |Fyzické |Kontrolér |Ne |Množství senzorů teploty, jako je vstupně-výstupní modul, teplota procesoru, DIMM a senzory PCIe, mají zobrazený stav, který označuje, jestli se zjištěná teplota nachází v toleranci. |
-| Rozšíření SAS |I/O |Fyzické |Kontrolér |Ne |Označuje stav rozšíření SAS (Serial Attached SCSI), které se používá k připojení integrovaného úložiště k řadiči. |
-| Konektor SAS [0-1] |I/O |Fyzické |Kontrolér |Ne |Označuje stav každého konektoru SAS, který se používá k připojení integrovaného úložiště k rozšíření SAS. |
-| Propojení střední roviny SBB |I/O |Fyzické |Kontrolér |Ne |Určuje stav konektoru střední roviny, který se používá pro připojení každého kontroleru k střední rovině. |
-| Jádro procesoru |I/O |Fyzické |Kontrolér |Ne |Určuje stav jader procesoru v rámci každého kontroleru. |
-| Power elektroniky skříně |I/O |Fyzické |Kontrolér |Ne |Určuje stav systému napájení, který skříň používá. |
-| Diagnostika elektroniky skříně |I/O |Fyzické |Kontrolér |Ne |Určuje stav subsystémů diagnostiky, které poskytuje kontroler. |
-| Řadič pro správu základní desky (BMC) |I/O |Fyzické |Kontrolér |Ne |Určuje stav řadiče pro správu základní desky (BMC), což je specializovaný procesor služeb, který monitoruje hardwarové zařízení prostřednictvím senzorů a komunikuje se správcem systému prostřednictvím nezávislého připojení. |
-| Síť Ethernet |I/O |Fyzické |Kontrolér |Ne |Označuje stav každého síťového rozhraní, tedy porty pro správu a data, které jsou k dispozici na řadiči. |
-| NVRAM disku |I/O |Fyzické |Kontrolér |Ne |Označuje stav paměti NVRAM, nestálou paměť náhodného přístupu zálohovanou baterií, která slouží k uchování informací důležitých pro aplikaci v případě výpadku napájení. |
+| Kontroler [0-1] [stav] |I/O |Fyzické |Kontrolér |Yes |Zobrazí stav kontroleru a zda je v rámci skříně v aktivním nebo pohotovostním režimu. |
+| Senzory teploty v kontroleru |I/O |Fyzické |Kontrolér |No |Množství senzorů teploty, jako je vstupně-výstupní modul, teplota procesoru, DIMM a senzory PCIe, mají zobrazený stav, který označuje, jestli se zjištěná teplota nachází v toleranci. |
+| Rozšíření SAS |I/O |Fyzické |Kontrolér |No |Označuje stav rozšíření SAS (Serial Attached SCSI), které se používá k připojení integrovaného úložiště k řadiči. |
+| Konektor SAS [0-1] |I/O |Fyzické |Kontrolér |No |Označuje stav každého konektoru SAS, který se používá k připojení integrovaného úložiště k rozšíření SAS. |
+| Propojení střední roviny SBB |I/O |Fyzické |Kontrolér |No |Určuje stav konektoru střední roviny, který se používá pro připojení každého kontroleru k střední rovině. |
+| Jádro procesoru |I/O |Fyzické |Kontrolér |No |Určuje stav jader procesoru v rámci každého kontroleru. |
+| Power elektroniky skříně |I/O |Fyzické |Kontrolér |No |Určuje stav systému napájení, který skříň používá. |
+| Diagnostika elektroniky skříně |I/O |Fyzické |Kontrolér |No |Určuje stav subsystémů diagnostiky, které poskytuje kontroler. |
+| Řadič pro správu základní desky (BMC) |I/O |Fyzické |Kontrolér |No |Určuje stav řadiče pro správu základní desky (BMC), což je specializovaný procesor služeb, který monitoruje hardwarové zařízení prostřednictvím senzorů a komunikuje se správcem systému prostřednictvím nezávislého připojení. |
+| Síť Ethernet |I/O |Fyzické |Kontrolér |No |Označuje stav každého síťového rozhraní, tedy porty pro správu a data, které jsou k dispozici na řadiči. |
+| NVRAM disku |I/O |Fyzické |Kontrolér |No |Označuje stav paměti NVRAM, nestálou paměť náhodného přístupu zálohovanou baterií, která slouží k uchování informací důležitých pro aplikaci v případě výpadku napájení. |
 
 ## <a name="component-list-for-ebod-enclosure-of-storsimple-device"></a>Seznam součástí pro EBOD skříň zařízení StorSimple
 Následující tabulka popisuje fyzické a logické komponenty obsažené v EBOD skříni (k dispozici pouze v modelu 8600) místního zařízení StorSimple.
 
-| Součást | Modul | Typ | Umístění | JEDNOTKA? | Description |
+| Součást | Modul | Typ | Umístění | JEDNOTKA? | Popis |
 | --- | --- | --- | --- | --- | --- |
-| Jednotka ve slotu [0-11] |Diskové jednotky |Fyzické |Shared |Ano |Jeden řádek se zobrazí pro každou jednotku HDD na začátku EBOD skříně. |
-| Senzor okolní teploty |Skříně |Fyzické |Shared |Ne |Měří teplotu v rámci skříně. |
-| Senzor teploty střední roviny |Skříně |Fyzické |Shared |Ne |Měří teplotu střední roviny. |
-| Zvukový poplach |Skříně |Fyzické |Shared |Ne |Určuje, jestli je funkční podsystém zvukového alarmu v rámci skříně. |
-| Skříně |Skříně |Fyzické |Shared |Ano |Označuje přítomnost skříně. |
-| Nastavení skříně |Skříně |Fyzické |Shared |Ne |Odkazuje na operace nebo na přední panel skříně. |
-| Senzory napětí čáry |PCM |Fyzické |Shared |Ne |Množství senzorů napětí v řadě je zobrazených stavů, což označuje, zda je měřené napětí v toleranci. |
-| Čára aktuální senzory |PCM |Fyzické |Shared |Ne |Množství čáry aktuální senzory mají zobrazený stav, který označuje, zda je měřený aktuální počet v toleranci. |
-| Senzory teploty v PCM |PCM |Fyzické |Shared |Ne |Množství senzorů teploty, jako jsou vstupní a aktivní senzory, má zobrazený stav, který označuje, zda je měřená teplota v toleranci. |
-| Zdroj napájení [0-1] |PCM |Fyzické |Shared |Ano |Jeden řádek se zobrazí pro každou spotřebu napájení v obou PCMs, která se nachází na zadní straně zařízení. |
-| Chlazení [0-1] |PCM |Fyzické |Shared |Ano |Pro každý ze čtyř chladicích ventilátorů umístěných v obou PCMs se zobrazí jeden řádek. |
+| Jednotka ve slotu [0-11] |Diskové jednotky |Fyzické |Shared |Yes |Jeden řádek se zobrazí pro každou jednotku HDD na začátku EBOD skříně. |
+| Senzor okolní teploty |Skříně |Fyzické |Shared |No |Měří teplotu v rámci skříně. |
+| Senzor teploty střední roviny |Skříně |Fyzické |Shared |No |Měří teplotu střední roviny. |
+| Zvukový poplach |Skříně |Fyzické |Shared |No |Určuje, jestli je funkční podsystém zvukového alarmu v rámci skříně. |
+| Skříně |Skříně |Fyzické |Shared |Yes |Označuje přítomnost skříně. |
+| Nastavení skříně |Skříně |Fyzické |Shared |No |Odkazuje na operace nebo na přední panel skříně. |
+| Senzory napětí čáry |PCM |Fyzické |Shared |No |Množství senzorů napětí v řadě je zobrazených stavů, což označuje, zda je měřené napětí v toleranci. |
+| Čára aktuální senzory |PCM |Fyzické |Shared |No |Množství čáry aktuální senzory mají zobrazený stav, který označuje, zda je měřený aktuální počet v toleranci. |
+| Senzory teploty v PCM |PCM |Fyzické |Shared |No |Množství senzorů teploty, jako jsou vstupní a aktivní senzory, má zobrazený stav, který označuje, zda je měřená teplota v toleranci. |
+| Zdroj napájení [0-1] |PCM |Fyzické |Shared |Yes |Jeden řádek se zobrazí pro každou spotřebu napájení v obou PCMs, která se nachází na zadní straně zařízení. |
+| Chlazení [0-1] |PCM |Fyzické |Shared |Yes |Pro každý ze čtyř chladicích ventilátorů umístěných v obou PCMs se zobrazí jeden řádek. |
 | Místní úložiště [HDD] |– |Logické |Shared |– |Zobrazuje stav logického fondu úložiště, který je vytvořený ze zařízení HDD. |
-| Kontroler [0-1] [stav] |I/O |Fyzické |Kontrolér |Ano |Zobrazuje stav řadičů v modulu EBOD. |
-| Senzory teploty v EBOD |I/O |Fyzické |Kontrolér |Ne |Množství senzorů teploty od každého kontroleru se zobrazuje jejich stav, což označuje, jestli se zjištěná teplota nachází v toleranci. |
-| Rozšíření SAS |I/O |Fyzické |Kontrolér |Ne |Určuje stav rozšíření SAS, které se používá k připojení integrovaného úložiště k řadiči. |
-| Konektor SAS [0-2] |I/O |Fyzické |Kontrolér |Ne |Označuje stav každého konektoru SAS, který se používá k připojení integrovaného úložiště k rozšíření SAS. |
-| Propojení střední roviny SBB |I/O |Fyzické |Kontrolér |Ne |Určuje stav konektoru střední roviny, který se používá pro připojení každého kontroleru k střední rovině. |
-| Power elektroniky skříně |I/O |Fyzické |Kontrolér |Ne |Určuje stav systému napájení, který skříň používá. |
-| Diagnostika elektroniky skříně |I/O |Fyzické |Kontrolér |Ne |Určuje stav subsystémů diagnostiky, které poskytuje kontroler. |
-| Připojení k řadiči zařízení |I/O |Fyzické |Kontrolér |Ne |Určuje stav připojení mezi modulem EBOD I/O a řadičem zařízení. |
+| Kontroler [0-1] [stav] |I/O |Fyzické |Kontrolér |Yes |Zobrazuje stav řadičů v modulu EBOD. |
+| Senzory teploty v EBOD |I/O |Fyzické |Kontrolér |No |Množství senzorů teploty od každého kontroleru se zobrazuje jejich stav, což označuje, jestli se zjištěná teplota nachází v toleranci. |
+| Rozšíření SAS |I/O |Fyzické |Kontrolér |No |Určuje stav rozšíření SAS, které se používá k připojení integrovaného úložiště k řadiči. |
+| Konektor SAS [0-2] |I/O |Fyzické |Kontrolér |No |Označuje stav každého konektoru SAS, který se používá k připojení integrovaného úložiště k rozšíření SAS. |
+| Propojení střední roviny SBB |I/O |Fyzické |Kontrolér |No |Určuje stav konektoru střední roviny, který se používá pro připojení každého kontroleru k střední rovině. |
+| Power elektroniky skříně |I/O |Fyzické |Kontrolér |No |Určuje stav systému napájení, který skříň používá. |
+| Diagnostika elektroniky skříně |I/O |Fyzické |Kontrolér |No |Určuje stav subsystémů diagnostiky, které poskytuje kontroler. |
+| Připojení k řadiči zařízení |I/O |Fyzické |Kontrolér |No |Určuje stav připojení mezi modulem EBOD I/O a řadičem zařízení. |
 
 ## <a name="next-steps"></a>Další kroky
 * Pokud chcete ke správě svého zařízení použít službu StorSimple Device Manager, použijte ke [správě zařízení StorSimple službu StorSimple Device Manager](storsimple-8000-manager-service-administration.md).

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: 9fba2a898809c7c4062e1c0115ffce60f5becfdf
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: d53bee594da833a62980ef2a7b950762b19a7dee
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85213804"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514295"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>Vytvoření nabídky Dynamics 365 Business Central
 
@@ -145,10 +145,10 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Microsoft AppSo
 6. Zásady ochrany osobních údajů
 7. Název nabídky
 8. Souhrn
-9. Description
+9. Popis
 10. Snímky obrazovky a videa
 
-### <a name="name"></a>Name
+### <a name="name"></a>Název
 
 Název, který sem zadáte, se zákazníkům zobrazí jako název seznamu nabídek. Toto pole je předem vyplněno textem, který jste zadali pro možnost **alias nabídky** při vytváření nabídky, ale můžete tuto hodnotu změnit. Tento název může být ochranných známek (a může obsahovat symboly ochranných známek a autorských práv). Název nesmí být delší než 50 znaků a nesmí obsahovat žádné emoji.
 
@@ -156,7 +156,7 @@ Název, který sem zadáte, se zákazníkům zobrazí jako název seznamu nabíd
 
 Zadejte krátký popis vaší nabídky, maximálně 100 znaků. Tento popis se dá použít ve výsledcích hledání na webu Marketplace.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Popis
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -416,7 +416,7 @@ Pokud tuto nabídku publikujete poprvé, můžete:
     - *Nedokončeno* – znamená, že oddíl obsahuje chyby, které je potřeba opravit, nebo vyžaduje, aby se poskytly další informace. Vraťte se k oddílům a aktualizujte je.
     - *Complete* – znamená, že část je dokončena, byla zadána všechna požadovaná data a nejsou k dispozici žádné chyby. Aby bylo možné nabídku odeslat, musí být všechny oddíly nabídky v úplném stavu.
 - V části **poznámky k certifikaci** poskytněte certifikačnímu týmu pokyny k testování, aby se zajistilo správné testování vaší aplikace, a to spolu s případnými doplňkovými poznámkami, které jsou užitečné pro porozumění vaší aplikaci.
-- Kliknutím na **Odeslat**nabídku pro publikování odešlete. Až budete mít k dispozici verzi Preview, pošleme vám e-mail, který vám pomůže zkontrolovat a schválit. Vraťte se do partnerského centra a výběrem možnosti **Přejít do živé** nabídky publikujte vaši nabídku na veřejném (nebo v případě soukromé nabídky pro soukromou cílovou skupinu).
+- Kliknutím na **Odeslat**nabídku pro publikování odešlete. Až budete mít k dispozici verzi Preview, pošleme vám e-mail, který vám pomůže zkontrolovat a schválit. Vraťte se do partnerského centra a výběrem možnosti **Přejít do živé** nabídky publikujte vaši nabídku na veřejném.
 
 ## <a name="next-steps"></a>Další kroky
 

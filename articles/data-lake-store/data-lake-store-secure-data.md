@@ -9,15 +9,15 @@ editor: cgronlun
 ms.assetid: ca35e65f-3986-4f1b-bf93-9af6066bb716
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: cebdff5ed233516683df3330e8fd3332ded664e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1ae93dad9a18c18e330b4ff65924dd1db7a1faf0
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260303"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515259"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>Zabezpečení dat uložených ve službě Azure Data Lake Storage Gen1
 Zabezpečení dat v Azure Data Lake Storage Gen1 je třístavový přístup.  Řízení přístupu na základě role (RBAC) a seznamy řízení přístupu (ACL) musí být nastavené tak, aby plně povolovaly přístup k datům pro uživatele a skupiny zabezpečení.
@@ -102,7 +102,7 @@ Přiřazením skupin uživatelů a zabezpečení do Data Lake Storage Gen1 syst�
 4. Kliknutím na ikonu **Přidat** otevřete okno **přiřadit oprávnění** . V tomto okně klikněte na **Vybrat uživatele nebo skupinu**a potom v okně **Vybrat uživatele nebo skupinu** vyhledejte skupinu zabezpečení, kterou jste vytvořili dříve v Azure Active Directory. Pokud máte spoustu skupin, ze kterých můžete vyhledávat, použijte k filtrování názvu skupiny textové pole v horní části. Klikněte na skupinu, kterou chcete přidat, a potom klikněte na **Vybrat**.
    
     ![Přidat skupinu](./media/data-lake-store-secure-data/adl.acl.3.png "Přidat skupinu")
-5. Klikněte na **vybrat oprávnění**, vyberte oprávnění, jestli se mají oprávnění použít pro rekurzivní a jestli chcete přiřadit oprávnění jako přístupový seznam ACL, výchozí seznam ACL nebo obojí. Klikněte na tlačítko **OK**.
+5. Klikněte na **vybrat oprávnění**, vyberte oprávnění, jestli se mají oprávnění použít pro rekurzivní a jestli chcete přiřadit oprávnění jako přístupový seznam ACL, výchozí seznam ACL nebo obojí. Klikněte na **OK**.
    
     ![Přiřazení oprávnění ke skupině](./media/data-lake-store-secure-data/adl.acl.4.png "Přiřazení oprávnění ke skupině")
    

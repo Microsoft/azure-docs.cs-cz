@@ -3,15 +3,15 @@ title: Ověřování služba-Služba – Data Lake Storage Gen1 – Azure
 description: Naučte se, jak dosáhnout ověřování služby-služba pomocí Azure Data Lake Storage Gen1 pomocí Azure Active Directory.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 74ad40eb7f7483bb010cf8eb002776893c50a256
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 03a32b37f5ca29c6a0dd6b810b4e097379c6c32e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82688186"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515157"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Ověřování služba-služba pomocí Azure Data Lake Storage Gen1 s využitím Azure Active Directory
 > [!div class="op_single_selector"]
@@ -43,9 +43,9 @@ Při souladu s pokyny na předchozím odkazu se ujistěte, že jste vybrali mož
 ## <a name="step-2-get-application-id-authentication-key-and-tenant-id"></a>Krok 2: získání ID aplikace, ověřovacího klíče a ID tenanta
 Když se programově přihlašujete, budete potřebovat ID vaší aplikace. Pokud je aplikace spuštěna v rámci svých vlastních přihlašovacích údajů, budete také potřebovat ověřovací klíč.
 
-* Pokyny k načtení ID aplikace a ověřovacího klíče (označovaného také jako tajný klíč klienta) pro vaši aplikaci najdete v tématu [získání ID aplikace a ověřovacího klíče](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
+* Pokyny k načtení ID aplikace a ověřovacího klíče (označovaného také jako tajný klíč klienta) pro vaši aplikaci najdete v tématu [získání ID aplikace a ověřovacího klíče](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in).
 
-* Pokyny, jak načíst ID tenanta, najdete v tématu [získání ID tenanta](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
+* Pokyny, jak načíst ID tenanta, najdete v tématu [získání ID tenanta](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in).
 
 ## <a name="step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder"></a>Krok 3: přiřazení aplikace Azure AD k souboru nebo složce Azure Data Lake Storage Gen1 účtu
 
@@ -63,7 +63,7 @@ Když se programově přihlašujete, budete potřebovat ID vaší aplikace. Poku
 5. Kliknutím na ikonu **Přidat** otevřete okno **Přidat vlastní přístup** . V tomto okně klikněte na **Vybrat uživatele nebo skupinu**a potom v okně **Vybrat uživatele nebo skupinu** vyhledejte aplikaci Azure Active Directory, kterou jste vytvořili dříve. Pokud máte více skupin, ze kterých můžete vyhledávat, použijte k filtrování názvu skupiny textové pole v horní části. Klikněte na skupinu, kterou chcete přidat, a potom klikněte na **Vybrat**.
    
     ![Přidat skupinu](./media/data-lake-store-authenticate-using-active-directory/adl.acl.3.png "Přidat skupinu")
-6. Klikněte na **vybrat oprávnění**, vyberte oprávnění a určete, jestli chcete přiřadit oprávnění jako výchozí seznam ACL, přístup k seznamu ACL nebo obojí. Klikněte na tlačítko **OK**.
+6. Klikněte na **vybrat oprávnění**, vyberte oprávnění a určete, jestli chcete přiřadit oprávnění jako výchozí seznam ACL, přístup k seznamu ACL nebo obojí. Klikněte na **OK**.
    
     ![Přiřazení oprávnění ke skupině](./media/data-lake-store-authenticate-using-active-directory/adl.acl.4.png "Přiřazení oprávnění ke skupině")
    

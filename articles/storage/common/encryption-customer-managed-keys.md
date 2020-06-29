@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 50d889faa4d5b6659ac5358ba49cc49c8531a914
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 5dedd70b51361936808724ef70b96cdf9cfa13f5
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84805358"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515413"
 ---
 # <a name="use-customer-managed-keys-with-azure-key-vault-to-manage-azure-storage-encryption"></a>Použití klíčů spravovaných zákazníkem se Azure Key Vault ke správě šifrování Azure Storage
 
@@ -68,7 +68,7 @@ Další informace o použití klíčů spravovaných zákazníkem s Azure Key Va
 
 Pokud chcete povolit klíče spravované zákazníkem v účtu úložiště, musíte použít Azure Key Vault k uložení klíčů. V trezoru klíčů musíte povolit jak **obnovitelné odstranění** , tak i **Nemazat** vlastnosti.
 
-Azure Storage šifrování podporují jenom 2048 klíčů RSA a RSA-HSM. Další informace o klíčích najdete v tématu **Key Vault Keys** v tématu [informace o Azure Key Vaultch klíčích, tajných klíčích a certifikátech](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys).
+Šifrování úložiště Azure podporuje klíče RSA a RSA-HSM velikostí 2048, 3072 a 4096. Další informace o klíčích najdete v tématu **Key Vault Keys** v tématu [informace o Azure Key Vaultch klíčích, tajných klíčích a certifikátech](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys).
 
 ## <a name="rotate-customer-managed-keys"></a>Otočit klíče spravované zákazníkem
 

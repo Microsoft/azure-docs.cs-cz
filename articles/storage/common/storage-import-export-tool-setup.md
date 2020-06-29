@@ -4,16 +4,16 @@ description: Naučte se, jak nastavit nástroj pro přípravu a opravu jednotky 
 author: twooley
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/29/2017
 ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: 01432ab68fc399f3e97eac2de5a7c356bef7078a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c7d2cac9402477090ae412dcf21265bec4609278
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74979032"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514186"
 ---
 # <a name="setting-up-the-azure-importexport-tool"></a>Nastavení nástroje Azure pro import/export
 
@@ -49,28 +49,28 @@ Pokud se pokoušíte **opravit export** , který se částečně nezdařil, bude
 
 ## <a name="installing-the-azure-importexport-tool"></a>Instalace nástroje Azure import/export
 
-Nejdřív [Stáhněte nástroj pro import/export Azure](https://www.microsoft.com/download/details.aspx?id=55280) a extrahujte ho do adresáře v počítači, například `c:\WAImportExport`.
+Nejdřív [Stáhněte nástroj pro import/export Azure](https://www.microsoft.com/download/details.aspx?id=55280) a extrahujte ho do adresáře v počítači, například `c:\WAImportExport` .
 
 Nástroj pro import/export v Azure se skládá z následujících souborů:
 
-* DataSet. csv
-* driveset. csv
-* hddid. dll
+* dataset.csv
+* driveset.csv
+* hddid.dll
 * Microsoft.Data.Services.Client.dll
-* Microsoft. WindowsAzure. Storage. dll
+* Microsoft.WindowsAzure.Storage.dll
 * Microsoft. WindowsAzure. Storage. pdb
-* Microsoft. WindowsAzure. Storage. XML
-* WAImportExport. exe
-* WAImportExport. exe. config
+* Microsoft.WindowsAzure.Storage.xml
+* WAImportExport.exe
+* WAImportExport.exe.config
 * WAImportExport. pdb
-* WAImportExportCore. dll
+* WAImportExportCore.dll
 * WAImportExportCore. pdb
-* WAImportExportRepair. dll
+* WAImportExportRepair.dll
 * WAImportExportRepair. pdb
 
 V dalším kroku otevřete okno příkazového řádku v **režimu správce**a přejděte do adresáře obsahujícího extrahované soubory.
 
-Pro výstup nápovědu pro příkaz spusťte nástroj (`WAImportExport.exe`) bez parametrů:
+Pro výstup nápovědu pro příkaz spusťte nástroj ( `WAImportExport.exe` ) bez parametrů:
 
 ```
 WAImportExport, a client tool for Windows Azure Import/Export Service. Microsoft (c) 2013

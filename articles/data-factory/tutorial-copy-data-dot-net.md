@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 11/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 182c5b4059874b6e03092481c68b39cf55bc7e62
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: b2293c0dd74903921abb58037afd8eb5db3659d9
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253932"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513257"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Kopírování dat z objektu blob Azure do Azure SQL Database pomocí Azure Data Factory
 
@@ -44,7 +44,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure]
 * *Azure SQL Database*. Tuto databázi použijete jako úložiště dat *jímky*. Pokud nemáte databázi v Azure SQL Database, přečtěte si téma [Vytvoření databáze v Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md).
 * *Visual Studio*. Návod v tomto článku používá Visual Studio 2019.
 * *[Sada Azure SDK pro .NET](/dotnet/azure/dotnet-tools)*
-* *Azure Active Directory aplikace* Pokud nemáte aplikaci Azure Active Directory, přečtěte si část [Vytvoření aplikace Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) tématu [Postupy: použití portálu k vytvoření aplikace služby Azure AD](../active-directory/develop/howto-create-service-principal-portal.md). Zkopírujte následující hodnoty pro použití v pozdějších krocích: **ID aplikace (klienta)**, **ověřovací klíč**a **ID adresáře (tenant)**. Podle pokynů ve stejném článku přiřaďte aplikaci k roli **přispěvatele** .
+* *Azure Active Directory aplikace* Pokud nemáte aplikaci Azure Active Directory, přečtěte si část [Vytvoření aplikace Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal) tématu [Postupy: použití portálu k vytvoření aplikace služby Azure AD](../active-directory/develop/howto-create-service-principal-portal.md). Zkopírujte následující hodnoty pro použití v pozdějších krocích: **ID aplikace (klienta)**, **ověřovací klíč**a **ID adresáře (tenant)**. Podle pokynů ve stejném článku přiřaďte aplikaci k roli **přispěvatele** .
 
 ### <a name="create-a-blob-and-a-sql-table"></a>Vytvoření objektu blob a tabulky SQL
 

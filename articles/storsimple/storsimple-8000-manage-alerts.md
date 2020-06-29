@@ -3,15 +3,15 @@ title: Zobrazení a správa výstrah pro zařízení řady StorSimple 8000
 description: Popisuje podmínky upozornění StorSimple a závažnost, způsob konfigurace oznámení o výstrahách a způsob používání služby StorSimple Device Manager pro správu výstrah.
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/14/2019
 ms.author: alkohli
-ms.openlocfilehash: ff50836e1438b8d35f26ddfdf165084406f52faf
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 4956c511f67fc5929eef2e39797cbe93b5b1d73e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84711931"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515504"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>Použití služby StorSimple Device Manager k zobrazení a správě upozornění StorSimple
 
@@ -219,7 +219,12 @@ Pokud v produkčním zařízení StorSimple dojde k chybě cloudového připojen
 |:--- |:--- |:--- |
 | Nepovedlo se vytvořit balíček pro podporu. |StorSimple nemohl vytvořit balíček. |Zkuste tuto operaci znovu. Pokud se problém nevyřeší, obraťte se na podpora Microsoftu. Po vyřešení problému vymažte toto upozornění ze stránky s upozorněními. |
 
+### <a name="enclosure-environment-alerts"></a>Výstrahy prostředí skříně
+
+| Text výstrahy | Událost | Další informace/doporučené akce |
+|:--- |:--- |:--- |
+| Senzor teploty okolí hardwarových součástí hlásí stav jako neúspěšný.  | Typ skříně: hlavní skříň | Tato výstraha se aktivuje, když okolí vnější teploty kolem StorSimple překračuje přijatelný rozsah. Prohlédněte si vnější teplotu mimo AC otvor v datacentru. Když se teplota vrátí na normální, výstraha se po uplynutí určité doby automaticky vymaže. Pokud potíže trvají, obraťte se na podporu Microsoftu.   |
+
 ## <a name="next-steps"></a>Další kroky
 
 Přečtěte si další informace o [chybách StorSimple a řešení problémů s nasazením zařízení](storsimple-8000-troubleshoot-deployment.md).
-

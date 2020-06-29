@@ -3,15 +3,15 @@ title: PowerShell pro správu zařízení StorSimple
 description: Naučte se používat Windows PowerShell pro StorSimple ke správě zařízení StorSimple.
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 35be2e0b7b5a24261cd8ee15b1964b953c1a3327
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: c1976adba0159b54bd64b2c8830c3aaad9959912
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747708"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513711"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Správa zařízení pomocí rozhraní Windows PowerShell pro StorSimple
 

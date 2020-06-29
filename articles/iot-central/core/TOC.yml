@@ -151,6 +151,10 @@
               href: howto-manage-preferences.md
             - name: Přepnutí živého chatu
               href: howto-show-hide-chat.md
+- name: Referenční informace
+  items:
+    - name: Azure CLI
+      href: /cli/azure/azure-cli-reference-for-IoT
 - name: Zdroje a prostředky
   items:
     - name: Možnosti pomoci a podpory

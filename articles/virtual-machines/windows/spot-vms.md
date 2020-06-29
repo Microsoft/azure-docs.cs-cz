@@ -5,15 +5,15 @@ author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 06/26/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: c453e8a70a6cd4b9d33a6d40bebd2ac0a804e5e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3e4e80048453b7d6e0804bbef670f0544efaca49
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82100579"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514837"
 ---
 # <a name="use-spot-vms-in-azure"></a>Použití bodových virtuálních počítačů v Azure
 
@@ -21,7 +21,7 @@ ms.locfileid: "82100579"
 
 
 ## <a name="next-steps"></a>Další kroky
-K nasazení virtuálních počítačů na místě použijte [portál](spot-portal.md), [CLI](../linux/spot-cli.md) nebo [PowerShell](spot-powershell.md) .
+K nasazení virtuálních počítačů na místě použijte [portál](spot-portal.md), rozhraní příkazového [řádku](../linux/spot-cli.md), [šablonu ARM](../linux/spot-template.md)nebo [PowerShell](spot-powershell.md) .
 
 Můžete také nasadit [sadu škálování s instancemi virtuálních počítačů na místě](../../virtual-machine-scale-sets/use-spot.md).
 

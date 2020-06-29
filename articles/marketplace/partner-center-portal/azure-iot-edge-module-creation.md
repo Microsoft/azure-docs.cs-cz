@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 9129eb905bbdc7d9be24f403f3b3bf318d6d6a6f
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 088639674a3f3a15d33f73fd6f602b3cf1313a65
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85211357"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85512644"
 ---
 # <a name="create-configure-and-publish-an-iot-edge-module-offer-in-azure-marketplace"></a>Vytvoření, konfigurace a publikování nabídky modulu IoT Edge v Azure Marketplace
 
@@ -48,7 +48,7 @@ Vyberte **vytvořit** pro vygenerování nabídky a pokračování.
 
 Na stránce **Přehled nabídky** se zobrazuje vizuální reprezentace kroků požadovaných k publikování této nabídky (dokončené i nadcházející) a o tom, jak dlouho by měly být jednotlivé kroky dokončeny.
 
-Tato stránka obsahuje odkazy na provádění operací s touto nabídkou na základě vámi provedeného výběru. Příklad:
+Tato stránka obsahuje odkazy na provádění operací s touto nabídkou na základě vámi provedeného výběru. Například:
 
 - Pokud je nabídka nabídkou konceptu a [odstranění konceptu](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)
 - Pokud je nabídka živá, [přestanou prodávat nabídku](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan) .
@@ -126,7 +126,7 @@ Tady definujete podrobnosti nabídky, které se zobrazí na webu Marketplace. To
 > [!NOTE]
 > Podrobnosti nabídky nejsou v anglickém jazyce nutné, pokud popis nabídky začíná frází "Tato aplikace je k dispozici pouze v [jazykovém jazyce, který není v angličtině]." Také je v pořádku poskytnutí užitečného odkazu na nabídku obsahu v jazyce, který se liší od toho, který se používá v podrobnostech seznamu nabídky.
 
-### <a name="name"></a>Name
+### <a name="name"></a>Název
 
 Název, který zde zadáte, se zobrazí jako název vaší nabídky. Toto pole je předem vyplněno textem, který jste zadali do pole **alias nabídky** při vytváření nabídky. Tento název můžete později změnit.
 
@@ -144,7 +144,7 @@ Zadejte krátký popis vaší nabídky. Může to být až 100 znaků dlouhé a 
 
 Poskytněte podrobnější popis vaší nabídky. Může to být až 256 znaků dlouhé a používá se ve výsledcích hledání na webu Marketplace.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Popis
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -224,9 +224,9 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Marketpla
 3. Adresa podpory (odkaz)
 4. podmínky a ujednání
 5. Adresa zásad ochrany osobních údajů (odkaz)
-6. Name
+6. Název
 7. Souhrn
-8. Description
+8. Popis
 9. Užitečné odkazy
 10. Snímky obrazovky a videa
 
@@ -246,8 +246,8 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Marketpla
 
 #### <a name="call-out-descriptions"></a>Popisy volání
 
-1. Name
-2. Description
+1. Název
+2. Popis
 3. Užitečné odkazy
 4. Screenshoty
 
@@ -276,9 +276,6 @@ Určete cílovou skupinu Preview pomocí identifikátorů GUID předplatného Az
 > ID vašeho předplatného Azure najdete na stránce Předplatná v Azure Portal.
 
 Přidejte aspoň jedno ID předplatného Azure, a to buď samostatně (až 10), nebo nahráním souboru CSV (až 100). Přidáním těchto ID předplatných určíte, kdo může zobrazit náhled vaší nabídky předtím, než se publikuje živě. Pokud je vaše nabídka už živá, můžete definovat cílovou skupinu verze Preview, která testuje změny nebo aktualizace vaší nabídky.
-
-> [!NOTE]
-> Cílová skupina verze Preview se liší od soukromé cílové skupiny. Cílová skupina **verze Preview** může zobrazit a potvrdit všechny plány nabídky předtím, než budou na webu Marketplace aktivní, včetně těch, které budou publikovány pouze pro **privátní** cílovou skupinu (nastavené na kartě dostupnost).
 
 Než budete pokračovat k další části, vyberte **Uložit koncept** .
 
@@ -479,7 +476,7 @@ Na stránce recenze uvidíte stav publikování:
 
 Pokud chcete odeslat nabídku pro publikování, vyberte **publikovat**.
 
-Pošleme vám e-mail s oznámením, že je k dispozici verze Preview této nabídky ke kontrole a schválení. Pokud chcete svou nabídku publikovat na veřejném (nebo v případě soukromé nabídky, soukromé cílové skupině), přejít do partnerského centra a vyberte **jít-Live**.
+Pošleme vám e-mail s oznámením, že je k dispozici verze Preview této nabídky ke kontrole a schválení. Pokud chcete svou nabídku publikovat na veřejném, klikněte na partnerské centrum a vyberte **jít-Live**.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -3,15 +3,15 @@ title: Streamování dat z Stream Analytics do Data Lake Storage Gen1 – Azure
 description: Použijte Azure Stream Analytics ke streamování dat do Azure Data Lake Storage Gen1.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/30/2018
 ms.author: twooley
-ms.openlocfilehash: f1740d167bedd20f51ad5bf24a56b7e7e787f754
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 42c7894c33fe0f09748beee20508e7670545c0ed
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690985"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515169"
 ---
 # <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>Streamování dat z Azure Storage Blob do Azure Data Lake Storage Gen1 pomocí Azure Stream Analytics
 V tomto článku se naučíte, jak používat Azure Data Lake Storage Gen1 jako výstup pro Azure Stream Analytics úlohu. Tento článek ukazuje jednoduchý scénář, který čte data z Azure Storage objektů BLOB (Input) a zapisuje data do Data Lake Storage Gen1 (výstup).
@@ -100,7 +100,7 @@ Začnete vytvořením úlohy Stream Analytics, která zahrnuje vstupní zdroj a 
 
     Kliknutím na **Spustit** spusťte úlohu. Spuštění úlohy může trvat až několik minut.
 
-3. Chcete-li aktivovat úlohu pro výběr dat z objektu blob, zkopírujte Ukázkový datový soubor do kontejneru objektů BLOB. Ukázkový datový soubor můžete získat z [Azure Data Lake úložiště Git](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt). Pro tento kurz zkopírujte soubor **vehicle1_09142014. csv**. Pro nahrání dat do kontejneru objektů blob můžete použít různé klienty, například [Průzkumník služby Azure Storage](https://storageexplorer.com/).
+3. Chcete-li aktivovat úlohu pro výběr dat z objektu blob, zkopírujte Ukázkový datový soubor do kontejneru objektů BLOB. Ukázkový datový soubor můžete získat z [Azure Data Lake úložiště Git](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt). Pro tento kurz zkopírujte soubor **vehicle1_09142014.csv**. Pro nahrání dat do kontejneru objektů blob můžete použít různé klienty, například [Průzkumník služby Azure Storage](https://storageexplorer.com/).
 
 4. Na kartě **Přehled** v části **monitorování**Zjistěte, jak byla data zpracována.
 
@@ -110,7 +110,7 @@ Začnete vytvořením úlohy Stream Analytics, která zahrnuje vstupní zdroj a 
 
     ![Ověření výstupu](./media/data-lake-store-stream-analytics/run.query.4.png "Ověření výstupu")
 
-    V podokně Průzkumník dat si všimněte, že výstup je zapsán do cesty ke složce, jak je uvedeno v nastavení Data Lake Storage Gen1 Output`streamanalytics/job/output/{date}/{time}`().  
+    V podokně Průzkumník dat si všimněte, že výstup je zapsán do cesty ke složce, jak je uvedeno v nastavení Data Lake Storage Gen1 Output ( `streamanalytics/job/output/{date}/{time}` ).  
 
 ## <a name="see-also"></a>Viz také
 * [Vytvoření clusteru HDInsight pro použití Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)

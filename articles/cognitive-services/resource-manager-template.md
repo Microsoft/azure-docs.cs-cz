@@ -9,16 +9,16 @@ ms.topic: quickstart
 ms.date: 06/18/2020
 ms.author: aahi
 ms.custom: subject-armqs
-ms.openlocfilehash: 30e3f901d9feca07902e20c87f4fbf5b6979a11b
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: fbaa10ec8a0b48d40644bb90144d89f53ab52563
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85299479"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513537"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-an-arm-template"></a>Rychlý Start: vytvoření prostředku Cognitive Services pomocí šablony ARM
 
-Pomocí tohoto článku můžete vytvořit a nasadit prostředek Cognitive Services pomocí šablony Azure Resource Manager (ARM). Tento prostředek s více službami vám umožní:
+Pomocí tohoto článku můžete vytvořit a nasadit prostředek Cognitive Services pomocí šablony Azure Resource Manager (šablona ARM). Tento prostředek s více službami vám umožní:
 * Přístup k více Cognitive Servicesům Azure s jedním klíčem a koncovým bodem.
 * Konsolidujte účtování ze služeb, které používáte.
 
@@ -51,7 +51,7 @@ V této šabloně je definovaný jeden prostředek Azure:
 
 2. Zadejte následující hodnoty.
     
-    |Hodnota  |Description  |
+    |Hodnota  |Popis  |
     |---------|---------|
     | **Předplatné** | Vyberte předplatné služby Azure. |
     | **Skupina prostředků** | Vyberte **vytvořit nový**, zadejte jedinečný název skupiny prostředků a pak klikněte na **OK**. |

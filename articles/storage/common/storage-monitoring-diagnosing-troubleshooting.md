@@ -3,18 +3,18 @@ title: Monitorování, diagnostika a řešení potíží s Azure Storage | Micro
 description: K identifikaci, diagnostice a řešení potíží souvisejících s Azure Storage můžete využít funkce jako Analytics úložiště, protokolování na straně klienta a další nástroje třetích stran.
 author: normesta
 ms.service: storage
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 09/23/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 71f2acfc7c1d227d89f96f753572f4631f4cad65
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 1137a51ab7feb5a6d18c7d137d957d8e779d170e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684656"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513387"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Monitorování, diagnostika a řešení problémů s Microsoft Azure Storage
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -76,7 +76,7 @@ Praktickou příručku pro komplexní řešení potíží v aplikacích Azure St
   * [Příloha 4: použití Excelu k zobrazení metrik a dat protokolu]
   * [Příloha 5: monitorování pomocí Application Insights pro Azure DevOps]
 
-## <a name="introduction"></a><a name="introduction"></a>Ukázek
+## <a name="introduction"></a><a name="introduction"></a>Úvod
 V této příručce se dozvíte, jak používat funkce, jako je Analýza úložiště Azure, protokolování na straně klienta v klientské knihovně Azure Storage a další nástroje třetích stran k identifikaci, diagnostice a řešení potíží souvisejících s Azure Storage.
 
 ![][1]
@@ -535,7 +535,7 @@ Položky protokolu:
 | e2d06d78-... |StringToSign = HEAD.................. x-MS-Client-Request-ID: e2d06d78-.... x-MS-Date: Út, 03. června 2014 10:33:12 GMT. x-MS-Version: 2014-02-14./domemaildist/azuremmblobcontainer. restype: Container. |
 | e2d06d78-... |Čeká se na odpověď. |
 | de8b1c3c-... |Spouští se synchronní požadavek na `https://domemaildist.blob.core.windows.net/azuremmblobcontainer/blobCreated.txt` . |
-| de8b1c3c-... |StringToSign = PUT... 64. qCmF + TQLPhq/YYK50mP9ZQ = =........... x-MS-BLOB-typ: BlockBlob. x-MS-Client-Request-ID: de8b1c3c-.... x-MS-Date: Út, 03 června 2014 10:33:12 GMT. x-MS-Version: 2014-02-14./domemaildist/azuremmblobcontainer/blobCreated. txt. |
+| de8b1c3c-... |StringToSign = PUT... 64. qCmF + TQLPhq/YYK50mP9ZQ = =........... x-MS-BLOB-typ: BlockBlob. x-MS-Client-Request-ID: de8b1c3c-.... x-MS-Date: Út, 03 června 2014 10:33:12 GMT. x-MS-Version: 2014-02-14./domemaildist/azuremmblobcontainer/blobCreated.txt. |
 | de8b1c3c-... |Probíhá příprava na zápis dat žádosti. |
 | e2d06d78-... |Při čekání na odpověď se vyvolala výjimka: vzdálený server vrátil chybu: (404) Nenalezeno. |
 | e2d06d78-... |Přijata odpověď. Stavový kód = 404, ID žádosti = 353ae3bc-..., obsahu-MD5 =, ETag =. |

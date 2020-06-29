@@ -3,15 +3,15 @@ title: Řešení potíží s cíli úložiště systému souborů NFS pro mezipa
 description: Tipy pro předcházení chybám konfigurace a další problémy, které můžou způsobit selhání při vytváření cíle úložiště NFS
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 03/18/2020
 ms.author: rohogue
-ms.openlocfilehash: 72b6b0b78da23fd0891c0571c9137fefbfb0b077
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d576f8660d140a95eb67f7babf1c0af61f04278
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82186613"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515458"
 ---
 # <a name="troubleshoot-nas-configuration-and-nfs-storage-target-issues"></a>Řešení potíží s cílovým úložištěm a konfigurací serveru NFS
 
@@ -58,7 +58,7 @@ Mezipaměť HPC Azure potřebuje přístup k exportům vašeho systému úloži�
 
 Různé systémy úložiště umožňují přístup k tomuto přístupu pomocí různých metod:
 
-* Servery Linux se obecně ``no_root_squash`` přidávají do exportované cesty ``/etc/exports``v.
+* Servery Linux se obecně přidávají ``no_root_squash`` do exportované cesty v ``/etc/exports`` .
 * Systémy NetApp a EMC obvykle kontrolují přístup s pravidly exportu, která jsou vázaná na konkrétní IP adresy nebo sítě.
 
 Pokud používáte pravidla exportu, pamatujte, že mezipaměť může použít několik různých IP adres z podsítě mezipaměti. Povolí přístup z celé řady možných IP adres podsítě.
@@ -79,17 +79,17 @@ Systém může například zobrazit tři podobné exporty:
 * ``/ifs/accounting``
 * ``/ifs/accounting/payroll``
 
-Export ``/ifs/accounting/payroll`` je podřízenou položkou ``/ifs/accounting``a ``/ifs/accounting`` je podřízenou položkou ``/ifs``.
+Export ``/ifs/accounting/payroll`` je podřízenou položkou ``/ifs/accounting`` a ``/ifs/accounting`` je podřízenou položkou ``/ifs`` .
 
-Pokud přidáte ``payroll`` exportovat jako cíl úložiště mezipaměti HPC, mezipaměť ve skutečnosti připojí ``/ifs/`` a přístup k adresáři mzdy z tohoto místa. Takže mezipaměť HPC Azure potřebuje k ``/ifs`` ``/ifs/accounting/payroll`` exportu přístup rootem.
+Pokud přidáte ``payroll`` exportovat jako cíl úložiště mezipaměti HPC, mezipaměť ve skutečnosti připojí ``/ifs/`` a přístup k adresáři mzdy z tohoto místa. Takže mezipaměť HPC Azure potřebuje k ``/ifs`` exportu přístup rootem ``/ifs/accounting/payroll`` .
 
 Tento požadavek souvisí s tím, jak mezipaměť indexuje soubory, a zabraňuje kolizím souborů pomocí popisovačů souborů, které poskytuje systém úložiště.
 
-Systém NAS s hierarchickými exporty může pro stejný soubor poskytnout různé obslužné rutiny souborů, pokud je soubor načten z různých exportů. Klient může například připojit ``/ifs/accounting`` soubor ``payroll/2011.txt``a získat k němu přístup. Další klient připojí ``/ifs/accounting/payroll`` a přistupuje k souboru ``2011.txt``. V závislosti na tom, jak systém úložiště přiřazuje popisovače souborů, můžou tito dva klienti obdržet stejný soubor s různými popisovači souborů ( ``<mount2>/payroll/2011.txt`` jeden pro a ``<mount3>/2011.txt``jeden pro).
+Systém NAS s hierarchickými exporty může pro stejný soubor poskytnout různé obslužné rutiny souborů, pokud je soubor načten z různých exportů. Klient může například připojit ``/ifs/accounting`` soubor a získat k němu přístup ``payroll/2011.txt`` . Další klient připojí ``/ifs/accounting/payroll`` a přistupuje k souboru ``2011.txt`` . V závislosti na tom, jak systém úložiště přiřazuje popisovače souborů, můžou tito dva klienti obdržet stejný soubor s různými popisovači souborů (jeden pro ``<mount2>/payroll/2011.txt`` a jeden pro ``<mount3>/2011.txt`` ).
 
 Back-endové úložné systémy uchovávají interní aliasy pro popisovače souborů, ale mezipaměť prostředí Azure HPC nemůže určit, které popisovače souborů v indexu odkazují na stejnou položku. Proto je možné, že mezipaměť může mít jiné zápisy do mezipaměti pro stejný soubor a změny použít nesprávně, protože neví, že se jedná o stejný soubor.
 
-Aby nedošlo k této možné kolizi souborů v několika exportech, mezipaměť prostředí Azure HPC automaticky připojovat k nejbližšímu dostupnému exportu``/ifs`` v cestě (v příkladu) a používá popisovač souborů daný z tohoto exportu. Pokud více exportů používá stejnou základní cestu, Azure HPC cache potřebuje k této cestě přístup root.
+Aby nedošlo k této možné kolizi souborů v několika exportech, mezipaměť prostředí Azure HPC automaticky připojovat k nejbližšímu dostupnému exportu v cestě ( ``/ifs`` v příkladu) a používá popisovač souborů daný z tohoto exportu. Pokud více exportů používá stejnou základní cestu, Azure HPC cache potřebuje k této cestě přístup root.
 
 ## <a name="enable-export-listing"></a>Povolit výpis exportu
 <!-- link in prereqs article -->

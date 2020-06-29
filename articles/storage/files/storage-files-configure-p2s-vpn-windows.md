@@ -3,16 +3,16 @@ title: Konfigurace sítě VPN typu Point-to-Site (P2S) ve Windows pro použití 
 description: Jak nakonfigurovat síť VPN typu Point-to-Site (P2S) ve Windows pro použití se soubory Azure
 author: roygara
 ms.service: storage
-ms.topic: overview
+ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 95386af4522adca1d65e04b01c2a349a80e9ab8a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: da49d1c94584393bfef066d61c1caf360b249c3b
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81273473"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515318"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-windows-for-use-with-azure-files"></a>Konfigurace sítě VPN typu Point-to-Site (P2S) ve Windows pro použití se soubory Azure
 Pomocí připojení VPN typu Point-to-Site (P2S) můžete připojit sdílené složky Azure přes protokol SMB mimo Azure bez nutnosti otevírat port 445. Připojení VPN typu Point-to-site je připojení VPN mezi Azure a jednotlivými klienty. Pokud chcete použít připojení VPN P2S se soubory Azure, bude nutné nakonfigurovat připojení VPN P2S pro každého klienta, který se chce připojit. Pokud máte mnoho klientů, kteří se potřebují připojit ke sdíleným složkám Azure ze své místní sítě, můžete místo připojení typu Point-to-site pro každého klienta použít připojení VPN typu Site-to-Site (S2S). Další informace najdete v tématu [Konfigurace sítě Site-to-Site VPN pro použití se soubory Azure](storage-files-configure-s2s-vpn.md).
@@ -33,7 +33,7 @@ Abyste měli přístup ke sdílené složce Azure a dalším prostředkům Azure
 
 Následující prostředí PowerShell vytvoří virtuální síť Azure se třemi podsítěmi: jednu pro koncový bod služby účtu úložiště, jednu pro privátní koncový bod účtu úložiště, který je vyžadován pro přístup k místnímu účtu úložiště bez vytváření vlastního směrování pro veřejnou IP adresu účtu úložiště, který se může změnit, a druhý pro bránu virtuální sítě, která poskytuje službu VPN. 
 
-Nezapomeňte nahradit `<region>`, `<resource-group>`a `<desired-vnet-name>` s odpovídajícími hodnotami pro vaše prostředí.
+Nezapomeňte nahradit `<region>` , `<resource-group>` a `<desired-vnet-name>` s odpovídajícími hodnotami pro vaše prostředí.
 
 ```PowerShell
 $region = "<region>"

@@ -180,9 +180,11 @@
           href: geo-disaster-recovery.md
     - name: Zabezpečení
       items:
-        - name: Authentication
+        - name: Ověřování doručování událostí do obslužných rutin událostí
           href: security-authentication.md
-        - name: Autorizace
+        - name: Ověřování klientů publikování
+          href: security-authenticate-publishing-clients.md
+        - name: Autorizace přístupu k prostředkům Event Gridu
           href: security-authorization.md
         - name: Zabezpečení sítě
           href: network-security.md
@@ -202,6 +204,8 @@
           href: create-view-manage-system-topics-cli.md
         - name: Šablona Azure Resource Manageru
           href: create-view-manage-system-topics-arm.md
+    - name: Získání přístupových klíčů pro témata nebo domény
+      href: get-access-keys.md
     - name: Publikování ve vlastním tématu
       href: post-to-custom-topic.md
     - name: Přihlášení k odběru událostí Auth0

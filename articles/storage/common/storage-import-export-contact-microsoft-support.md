@@ -4,16 +4,16 @@ description: Přečtěte si, jak protokolovat žádosti o podporu pro problémy 
 services: storsimple
 author: alkohli
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/29/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 8361c32860d48b78c778ea5106ba04715fcc5f3c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 20ac33a26bfe24eb60e2febc1344859f4e54cdd4
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "67621041"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514412"
 ---
 # <a name="open-a-support-ticket-for-an-importexport-job"></a>Otevření lístku podpory pro úlohu importu/exportu
 
@@ -39,7 +39,7 @@ Chcete-li vytvořit žádost o podporu, proveďte následující kroky:
             ![Výběr správy účtu úložiště](./media/storage-import-export-contact-microsoft-support/import-export-support3.png)
         - Pokud zvolíte možnost **objekt BLOB**, vyberte možnost **prostředek**, **názvy kontejnerů** (volitelné) a **plán podpory**.
             ![Zvolit objekt BLOB](./media/storage-import-export-contact-microsoft-support/import-export-support2.png)
-        - Pokud zvolíte možnost **soubor**, vyberte možnost **prostředek**, **názvy sdílených složek** (volitelné) a **plán** ![podpory zvolit soubor.](./media/storage-import-export-contact-microsoft-support/import-export-support4.png)
+        - Pokud zvolíte možnost **soubor**, vyberte možnost **prostředek**, **názvy sdílených složek** (volitelné) a **plán podpory** ![ zvolit soubor.](./media/storage-import-export-contact-microsoft-support/import-export-support4.png)
     4. Klikněte na **Další**.
 
 3. V **nové žádosti o podporu**vyberte **Krok 2 problém**. V části **problém**proveďte následující kroky:

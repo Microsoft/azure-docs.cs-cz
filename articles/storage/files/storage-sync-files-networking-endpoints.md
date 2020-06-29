@@ -3,18 +3,18 @@ title: Konfigurace koncových bodů Azure File Sync sítě | Microsoft Docs
 description: Přehled možností sítě pro Azure File Sync.
 author: roygara
 ms.service: storage
-ms.topic: overview
+ms.topic: how-to
 ms.date: 5/11/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e62f093c46b4acc4380f43419a2af0f30e9eb540
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 68d2b864b0e825756fbcd8e43fee3d6289c77c36
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84466740"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85512864"
 ---
-# <a name="configuring-azure-file-sync-network-endpoints"></a>Konfigurace koncových bodů Azure File Sync sítě
+# <a name="configuring-azure-file-sync-network-endpoints"></a>Konfigurace koncových bodů sítě pro Synchronizaci souborů Azure
 Soubory Azure a Azure File Sync poskytují dva hlavní typy koncových bodů pro přístup ke sdíleným složkám Azure: 
 - Veřejné koncové body, které mají veřejnou IP adresu a jsou přístupné odkudkoli na světě.
 - Privátní koncové body, které existují v rámci virtuální sítě a které mají privátní IP adresu v adresním prostoru virtuální sítě.

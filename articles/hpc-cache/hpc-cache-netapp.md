@@ -3,15 +3,15 @@ title: Použití mezipaměti HPC Azure a Azure NetApp Files
 description: Jak používat mezipaměť prostředí Azure HPC ke zvýšení přístupu k datům uloženým pomocí Azure NetApp Files
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 6d4dd69b30acb26d02218fe05a60ace9aa855ddc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 374f3106ec42233cd5309c2773b05e3c96bbf98e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82194954"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515497"
 ---
 # <a name="use-azure-hpc-cache-with-azure-netapp-files"></a>Použití mezipaměti prostředí Azure HPC s Azure NetApp Files
 

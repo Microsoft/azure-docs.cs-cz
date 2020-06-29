@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 06/11/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: aa11f7e964f66d0a345e25f307127d75838f872f
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.openlocfilehash: 253d2c80f5a6ff96ba9249eddd127abb74f79a33
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84718712"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515822"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Nastavení a použití výpočetních cílů pro školení modelů 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -42,7 +42,7 @@ Azure Machine Learning má různou podporu napříč různými výpočetními c�
 
 
 > [!NOTE]
-> Azure Machine Learning COMPUTE se dá vytvořit jako trvalý prostředek nebo se dynamicky vytvoří při žádosti o spuštění. Vytváření na základě spuštění po dokončení školení odstraní cíl výpočtů, takže nebudete moct znovu použít výpočetní cíle vytvořené tímto způsobem.
+> Azure Machine Learning výpočetní clustery je možné vytvořit jako trvalý prostředek nebo dynamicky vytvořit, když požádáte o spuštění. Vytváření na základě spuštění po dokončení školení odstraní cíl výpočtů, takže nebudete moct znovu použít výpočetní cíle vytvořené tímto způsobem.
 
 ## <a name="whats-a-run-configuration"></a>Co je konfigurace spuštění?
 
@@ -76,7 +76,8 @@ I když kanály ML můžou prosazovat modely, můžou také připravit data pře
 Pro konfiguraci těchto výpočetních cílů použijte následující části:
 
 * [Místní počítač](#local)
-* [Výpočetní prostředky služby Azure Machine Learning](#amlcompute)
+* [Azure Machine Learning výpočetní cluster](#amlcompute)
+* [Azure Machine Learning výpočetní instance](#instance)
 * [Vzdálené virtuální počítače](#vm)
 * [Azure HDInsight](#hdinsight)
 
@@ -91,9 +92,9 @@ Pro konfiguraci těchto výpočetních cílů použijte následující části:
 
 Teď, když jste připojili výpočetní prostředky a nakonfigurovali svůj běh, je dalším krokem [odeslání školicího běhu](#submit).
 
-### <a name="azure-machine-learning-compute"></a><a id="amlcompute"></a>Výpočetní prostředky služby Azure Machine Learning
+### <a name="azure-machine-learning-compute-cluster"></a><a id="amlcompute"></a>Azure Machine Learning výpočetní cluster
 
-Azure Machine Learning COMPUTE je spravovaná a výpočetní infrastruktura, která umožňuje uživateli snadno vytvořit výpočetní výkon s jedním uzlem nebo několika uzly. Výpočetní prostředí se vytvoří v rámci vaší oblasti pracovního prostoru jako prostředek, který se dá sdílet s ostatními uživateli v pracovním prostoru. Výpočetní výkon se při odeslání úlohy automaticky škáluje a dá se umístit do Azure Virtual Network. Výpočetní výkon se spouští v kontejnerovém prostředí a zabalí závislosti vašich modelů v [kontejneru Docker](https://www.docker.com/why-docker).
+Výpočetní cluster Azure Machine Learning je spravovaná výpočetní infrastruktura, která umožňuje snadno vytvořit výpočetní prostředí s jedním uzlem nebo několika uzly. Výpočetní prostředí se vytvoří v rámci vaší oblasti pracovního prostoru jako prostředek, který se dá sdílet s ostatními uživateli v pracovním prostoru. Výpočetní výkon se při odeslání úlohy automaticky škáluje a dá se umístit do Azure Virtual Network. Výpočetní výkon se spouští v kontejnerovém prostředí a zabalí závislosti vašich modelů v [kontejneru Docker](https://www.docker.com/why-docker).
 
 Azure Machine Learning COMPUTE můžete použít k distribuci školicích procesů napříč clusterem výpočetních uzlů procesoru nebo GPU v cloudu. Další informace o velikostech virtuálních počítačů, které zahrnují GPU, najdete v tématu [velikosti virtuálních počítačů optimalizované pro GPU](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu). 
 
@@ -125,6 +126,41 @@ Azure Machine Learning výpočetní prostředí je možné znovu použít v rám
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=run_amlcompute)]
 
 Teď, když jste připojili výpočetní prostředky a nakonfigurovali svůj běh, je dalším krokem [odeslání školicího běhu](#submit).
+
+
+### <a name="azure-machine-learning-compute-instance"></a><a id="instance"></a>Azure Machine Learning výpočetní instance
+
+[Výpočetní instance Azure Machine Learning](concept-compute-instance.md) je spravovaná výpočetní infrastruktura, která umožňuje snadno vytvořit jeden virtuální počítač. Výpočetní prostředí se vytvoří v rámci vaší oblasti pracovního prostoru, ale na rozdíl od výpočetního clusteru se instance nedá sdílet s ostatními uživateli v pracovním prostoru. Instance se také automaticky nezvětšuje.  Je nutné zastavit prostředek, aby nedocházelo k průběžným poplatkům.
+
+Výpočetní instance může spouštět více úloh paralelně a má frontu úloh. 
+
+Výpočetní instance můžou úlohy spouštět bezpečně ve [virtuálním síťovém prostředí](how-to-enable-virtual-network.md#compute-instance), aniž by museli podniky otevírat porty SSH. Úloha se spustí v kontejnerovém prostředí a zabalí závislosti vašich modelů v kontejneru Docker. 
+
+1. **Vytvořit a připojit**: 
+    
+    [! notebook-Python [] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb? název = create_instance)]
+
+1. **Konfigurace**: Vytvořte konfiguraci spuštění.
+    
+    ```python
+    
+    from azureml.core import ScriptRunConfig
+    from azureml.core.runconfig import DEFAULT_CPU_IMAGE
+    
+    src = ScriptRunConfig(source_directory='', script='train.py')
+    
+    # Set compute target to the one created in previous step
+    src.run_config.target = instance
+    
+    # Set environment
+    src.run_config.environment = myenv
+     
+    run = experiment.submit(config=src)
+    ```
+
+Další příkazy, které jsou užitečné pro výpočetní instanci, najdete v poznámkovém bloku s [výukou computeinstance](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb). Tento Poznámkový blok je také k dispozici ve složce **ukázek** studia v části *školení/výuka-on-computeinstance*.
+
+Teď, když jste připojili výpočetní prostředky a nakonfigurovali svůj běh, je dalším krokem [odeslání školicího běhu](#submit) .
 
 
 ### <a name="remote-virtual-machines"></a><a id="vm"></a>Vzdálené virtuální počítače

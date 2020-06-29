@@ -1,0 +1,92 @@
+---
+title: Zrušení operace API – Microsoft Commercial Marketplace
+description: Rozhraní API pro zrušení aktuálně probíhající operace v nabídce
+author: anbene
+ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
+ms.topic: reference
+ms.date: 06/16/2020
+ms.author: mingshen
+ms.openlocfilehash: 99a6cebd22c88388c68ceff3873ea8f8782b1c87
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516185"
+---
+# <a name="cancel-operation"></a>Zrušit operaci
+
+> [!NOTE]
+> Rozhraní API pro portál partnerů cloudu jsou integrovaná do partnerského centra a budou fungovat i po migraci nabídek do partnerského centra. Integrace přináší malé změny. Projděte si změny uvedené v části [portál partnerů cloudu rozhraní API](./cloud-partner-portal-api-overview.md) , abyste zajistili, že váš kód bude i nadále fungovat po migraci do partnerského centra.
+
+Toto rozhraní API zruší aktuálně probíhající operaci na této nabídce. K předání do tohoto rozhraní API použijte [rozhraní API pro načtení operací](./cloud-partner-portal-api-retrieve-operations.md) `operationId` . Zrušení je obvykle synchronní operace, ale v některých složitých scénářích může být pro zrušení existující operace nutná nová operace. V tomto případě tělo odpovědi HTTP obsahuje umístění operace, které by se mělo použít k dotazování na stav.
+
+  `POST https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>/cancel?api-version=2017-10-31`
+
+## <a name="uri-parameters"></a>Parametry identifikátoru URI
+
+--------------
+
+|  **Název**    |      **Popis**                                  |    **Datový typ**  |
+| ------------ |     ----------------                                  |     -----------   |
+| publisherId  |  Identifikátor vydavatele, například`contoso`         |   Řetězec          |
+| Hodnotami OfferId      |  Identifikátor nabídky                                     |   Řetězec          |
+| verze-api  |  Aktuální verze rozhraní API                               |    Datum           |
+|  |  |  |
+
+## <a name="header"></a>Záhlaví
+------
+
+|  **Název**              |  **Hodnota**         |
+|  ---------             |  ----------        |
+|  Typ obsahu          |  application/json  |
+|  Autorizace         |  Držitel TOKENu |
+|  |  |
+
+## <a name="body-example"></a>Příklad textu
+------------
+
+### <a name="request"></a>Žádost
+
+``` json
+{
+   "metadata": {
+     "notification-emails": "jondoe@contoso.com"
+    }
+}     
+```
+
+### <a name="request-body-properties"></a>Vlastnosti textu žádosti
+
+|  **Název**                |  **Popis**                                               |
+|  --------                |  ---------------                                               |
+|  oznámení – e-maily     | Čárkami oddělený seznam ID e-mailů, které se mají upozornit na průběh operace publikování. |
+|  |  |
+
+### <a name="response"></a>Odpověď
+
+#### <a name="migrated-offers"></a>Migrované nabídky
+
+`Location: /api/publishers/contoso/offers/contoso-offer/operations/56615b67-2185-49fe-80d2-c4ddf77bb2e8?api-version=2017-10-31`
+
+#### <a name="non-migrated-offers"></a>Nemigrované nabídky
+
+`Location: /api/operations/contoso$contoso-offer$2$preview?api-version=2017-10-31`
+
+### <a name="response-header"></a>Hlavička odpovědi
+
+|  **Název**             |    **Hodnota**                       |
+|  ---------            |    ----------                      |
+| Umístění    | Relativní cesta pro načtení stavu této operace. |
+|  |  |
+
+### <a name="response-status-codes"></a>Stavové kódy odpovědí
+
+| **Kód**  |  **Popis**                                                                       |
+|  ------   |  ------------------------------------------------------------------------               |
+|  200      | Ok. Požadavek byl úspěšně zpracován a operace byla zrušena synchronně. |
+|  202      | Přijata. Požadavek byl úspěšně zpracován a probíhá rušení operace. Umístění operace zrušení je vráceno v hlavičce odpovědi. |
+|  400      | Chybná nebo poškozená žádost. Tělo odpovědi na chyby může poskytnout další informace.  |
+|  403      | Přístup je zakázán. Klient nemá přístup k oboru názvů, který je zadaný v požadavku. |
+|  404      | Nenalezeno. Zadaná entita neexistuje. |
+|  |  |

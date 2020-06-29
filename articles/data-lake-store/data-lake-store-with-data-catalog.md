@@ -3,15 +3,15 @@ title: Integrace Data Lake Storage Gen1 s Azure Data Catalog
 description: Naučte se, jak registrovat data z Azure Data Lake Storage Gen1 v Azure Data Catalog, aby bylo možné zjistit data ve vaší organizaci.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 66191a52c6ef1f3d19afd2a47356487b07e9eff4
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 1484c4bf17d5f437d681e32559b7e6ed4115f5f5
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692336"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515139"
 ---
 # <a name="register-data-from-azure-data-lake-storage-gen1-in-azure-data-catalog"></a>Zaregistrujte data z Azure Data Lake Storage Gen1 Azure Data Catalog
 V tomto článku se naučíte, jak integrovat Azure Data Lake Storage Gen1 s Azure Data Catalog k tomu, aby byla data zjistitelná v rámci organizace tím, že je integruje s Data Catalog. Další informace o katalogu dat najdete v tématu [Azure Data Catalog](../data-catalog/data-catalog-what-is-data-catalog.md). Pro pochopení scénářů, ve kterých můžete použít Data Catalog, přečtěte si téma [Azure Data Catalog běžných scénářů](../data-catalog/data-catalog-common-scenarios.md).
@@ -30,7 +30,7 @@ Je nutné, abyste před zahájením tohoto kurzu měli tyto položky:
 
 > [!VIDEO https://channel9.msdn.com/Series/AzureDataLake/ADCwithADL/player]
 
-1. Přejděte na `https://azure.microsoft.com/services/data-catalog`a klikněte na **Začínáme**.
+1. Přejděte na `https://azure.microsoft.com/services/data-catalog` a klikněte na **Začínáme**.
 1. Přihlaste se do portálu Azure Data Catalog a klikněte na tlačítko **Publikovat data**.
 
     ![Registrace zdroje dat](./media/data-lake-store-with-data-catalog/register-data-source.png "Registrace zdroje dat")
@@ -59,7 +59,7 @@ Je nutné, abyste před zahájením tohoto kurzu měli tyto položky:
 
     ![Zobrazit datovou strukturu](./media/data-lake-store-with-data-catalog/view-selected-data-structure.png "Zobrazit datovou strukturu")
 
-    Klikněte na **zaregistrovat**.
+    Klikněte na **Zaregistrovat**.
 1. Následující snímek obrazovky označuje, že data jsou úspěšně registrována v Data Catalog.
 
     ![Registrace dokončena](./media/data-lake-store-with-data-catalog/registration-complete.png "Zobrazit datovou strukturu")

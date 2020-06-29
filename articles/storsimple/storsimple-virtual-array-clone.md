@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: af6e979c-55e3-477c-b53e-a76a697f80c9
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2016
 ms.author: alkohli
-ms.openlocfilehash: feffbb634af62d70a840febcf2a04afb7bdeeddd
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 1596503f5f0a333bf061015827596464aed7558e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60580789"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513632"
 ---
 # <a name="clone-from-a-backup-of-your-storsimple-virtual-array"></a>Klonování ze zálohy vašeho virtuálního pole StorSimple
 
@@ -42,7 +42,7 @@ Tento článek popisuje podrobný postup klonování zálohovací sady sdílený
    
    b.    V zobrazeném seznamu filtrovaných záloh vyberte zálohu, ze které chcete klonovat.
    
-   c.    Klikněte na tlačítko **OK**.
+   c.    Klikněte na **OK**.
    
    ![Klonování zálohy](./media/storsimple-virtual-array-clone/cloneshare3.png)
 3. V okně **klonovat** klikněte na **Nastavení cíle** a pak postupujte takto:
@@ -57,7 +57,7 @@ Tento článek popisuje podrobný postup klonování zálohovací sady sdílený
    
    e.    Přiřaďte správce pro tuto sdílenou složku. Po dokončení klonování budete moci upravit vlastnosti sdílení prostřednictvím Průzkumníka souborů.
    
-   f.    Klikněte na tlačítko **OK**.
+   f.    Klikněte na **OK**.
    
    ![Klonování zálohy](./media/storsimple-virtual-array-clone/cloneshare6.png)
 
@@ -82,7 +82,7 @@ Pokud chcete klonovat ze zálohy, musíte v Azure Portal při klonování sdíle
    
    b.    V zobrazeném seznamu filtrovaných záloh vyberte zálohu, ze které chcete klonovat.
    
-   c.    Klikněte na tlačítko **OK**.
+   c.    Klikněte na **OK**.
    
    ![Klonování zálohy](./media/storsimple-virtual-array-clone/clonevolume3.png)
 3. V okně **klonovat** klikněte na **nastavení cílového svazku** a pak proveďte následující kroky:
@@ -124,7 +124,7 @@ Každá sdílená složka má složku *.* backups obsahující nejnovější zá
    
    Tímto způsobem se zobrazí posledních pět záloh a dá se použít k provedení obnovení na úrovni položek. Pět nedávných záloh zahrnuje výchozí naplánované i ruční zálohy.
    
-   * **Naplánované zálohy** pojmenované jako &lt;název&gt;zařízení parametr DAILYSCHEDULE-RRRRMMDD-HHMMSS-UTC.
+   * **Naplánované zálohy** pojmenované jako &lt; název zařízení &gt; parametr DAILYSCHEDULE-RRRRMMDD-HHMMSS-UTC.
    * **Ruční zálohy** s názvem ad-hoc-RRRRMMDD-HHMMSS-UTC.
      
      ![](./media/storsimple-virtual-array-clone/image14.png)

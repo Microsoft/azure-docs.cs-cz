@@ -6,14 +6,14 @@ ms.author: mhopkins
 ms.date: 01/23/2017
 ms.service: storage
 ms.subservice: common
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: 29ce845fa3239dd48ff2ff0480beff08cf704b30
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 86fc63d8b0615423f4138ed1b09dc3a24d1e527e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82591681"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514446"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>Výpis prostředků Azure Storage v C++
 
@@ -34,7 +34,7 @@ Každá z těchto metod je zobrazena pomocí různých přetížení pro různé
 
 ## <a name="asynchronous-versus-synchronous"></a>Asynchronní versus synchronní
 
-Vzhledem k tomu, že klientská knihovna pro úložiště pro C++ je postavená na [knihovně REST jazyka c++](https://github.com/Microsoft/cpprestsdk), podstatně podporujeme asynchronní operace pomocí aplikace [PPLX:: Task](https://microsoft.github.io/cpprestsdk/classpplx_1_1task.html). Příklad:
+Vzhledem k tomu, že klientská knihovna pro úložiště pro C++ je postavená na [knihovně REST jazyka c++](https://github.com/Microsoft/cpprestsdk), podstatně podporujeme asynchronní operace pomocí aplikace [PPLX:: Task](https://microsoft.github.io/cpprestsdk/classpplx_1_1task.html). Například:
 
 ```cpp
 pplx::task<list_blob_item_segment> list_blobs_segmented_async(continuation_token& token) const;
@@ -115,7 +115,7 @@ Tyto metody byly implementovány jako obálky segmentovaná rozhraní API. Pro k
 
 Tento přístup může fungovat, když účet úložiště nebo tabulka obsahuje malý počet objektů. U zvýšení počtu objektů se ale požadovaná paměť může zvýšit bez omezení, protože všechny výsledky zůstaly v paměti. Jedna operace výpisu může trvat velmi dlouhou dobu, během které volající nedostal žádné informace o jeho průběhu.
 
-Tato hladce vypisující rozhraní API v sadě SDK neexistují v prostředí C#, Java nebo JavaScript Node. js. Abyste se vyhnuli potenciálním problémům s používáním těchto hladových rozhraní API, odebrali jsme je ve verzi Preview 0.6.0 Preview.
+Tato hladce vypisující rozhraní API v sadě SDK neexistují v jazyce C#, Java nebo JavaScript Node.js prostředí. Abyste se vyhnuli potenciálním problémům s používáním těchto hladových rozhraní API, odebrali jsme je ve verzi Preview 0.6.0 Preview.
 
 Pokud váš kód volá tato hladce rozhraní API:
 

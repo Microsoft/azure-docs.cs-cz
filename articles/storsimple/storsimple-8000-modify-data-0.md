@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2017
 ms.author: alkohli
-ms.openlocfilehash: 3cf136c5ddec8f4998d15c597914e1f806453945
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 1d5d57cab9906c04c5c207fa7df2d2fae6f749e7
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60631579"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514613"
 ---
 # <a name="modify-the-data-0-network-interface-settings-on-your-storsimple-8000-series-device"></a>Úprava nastavení síťového rozhraní DATA 0 na zařízení řady StorSimple 8000
 
@@ -38,7 +38,7 @@ Po přečtení tohoto kurzu budete moct:
 Nastavení sítě DATA 0 můžete znovu nakonfigurovat připojením k rozhraní Windows PowerShell zařízení StorSimple a spuštěním relace Průvodce instalací. Chcete-li upravit nastavení DATA 0, proveďte následující kroky:
 
 #### <a name="to-modify-data-0-network-settings-through-setup-wizard"></a>Úprava nastavení sítě DATA 0 pomocí Průvodce instalací
-1. V nabídce Konzola sériového portu klikněte na možnost 1, **Přihlaste se s úplným přístupem**. Po zobrazení výzvy zadejte **heslo správce zařízení**. Výchozí heslo je `Password1`.
+1. V nabídce Konzola sériového portu klikněte na možnost 1, **Přihlaste se s úplným přístupem**. Po zobrazení výzvy zadejte **heslo správce zařízení**. Výchozí heslo je `Password1` .
 2. Na příkazovém řádku zadejte:
    
     `Invoke-HcsSetupWizard`
@@ -51,7 +51,7 @@ Nastavení sítě DATA 0 můžete znovu nakonfigurovat připojením k rozhraní 
 Alternativní způsob, jak znovu nakonfigurovat síťové rozhraní DATA 0, je pomocí `Set-HcsNetInterface` rutiny. Rutina se spustí z rozhraní Windows PowerShell vašeho zařízení StorSimple. Pokud použijete tento postup, můžete nakonfigurovat také pevné IP adresy řadiče. Chcete-li upravit nastavení DATA 0, proveďte následující kroky: 
 
 #### <a name="to-modify-data-0-network-settings-through-the-set-hcsnetinterface-cmdlet"></a>Úprava nastavení sítě DATA 0 pomocí rutiny Set-HcsNetInterface
-1. V nabídce Konzola sériového portu klikněte na možnost 1, **Přihlaste se s úplným přístupem**. Po zobrazení výzvy zadejte heslo správce zařízení. Výchozí heslo je `Password1`.
+1. V nabídce Konzola sériového portu klikněte na možnost 1, **Přihlaste se s úplným přístupem**. Po zobrazení výzvy zadejte heslo správce zařízení. Výchozí heslo je `Password1` .
 2. Na příkazovém řádku zadejte:
    
     `Set-HCSNetInterface -InterfaceAlias Data0 -IPv4Address <> -IPv4Netmask <> -IPv4Gateway <> -Controller0IPv4Address <> -Controller1IPv4Address <> -IsiScsiEnabled 1 -IsCloudEnabled 1`

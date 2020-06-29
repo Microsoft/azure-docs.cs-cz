@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: c8610beb8903c979f0d5f5e71bd6710a3ccb49bd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 05d2ec362a81052b94746bdcfb0653e6366a3b32
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82081978"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513569"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption-with-azure-ad-previous-release"></a>Vytvoření a konfigurace trezoru klíčů pro Azure Disk Encryption s využitím Azure AD (předchozí verze)
 
@@ -106,7 +106,7 @@ Pokud chcete spustit následující příkazy, Získejte a použijte [modul Azur
      $servicePrincipal = New-AzADServicePrincipal –ApplicationId $azureAdApplication.ApplicationId
      ```
 
-3. $AzureAdApplication. ApplicationId je Azure AD ClientID a $aadClientSecret je tajný klíč klienta, který později použijete k povolení Azure Disk Encryption. Zabezpečte si tajný klíč klienta Azure AD správně. Po `$azureAdApplication.ApplicationId` spuštění se zobrazí ApplicationId.
+3. $AzureAdApplication. ApplicationId je Azure AD ClientID a $aadClientSecret je tajný klíč klienta, který později použijete k povolení Azure Disk Encryption. Zabezpečte si tajný klíč klienta Azure AD správně. `$azureAdApplication.ApplicationId`Po spuštění se zobrazí ApplicationId.
 
 
 ### <a name="set-up-an-azure-ad-app-and-service-principal-with-azure-cli"></a>Nastavení aplikace služby Azure AD a instančního objektu pomocí Azure CLI
@@ -123,10 +123,10 @@ Objekty služby můžete spravovat pomocí Azure CLI pomocí příkazů [AZ AD S
 ### <a name="set-up-an-azure-ad-app-and-service-principal-though-the-azure-portal"></a>Nastavení aplikace a instančního objektu služby Azure AD, přestože Azure Portal
 Pomocí kroků z [portálu use vytvořte aplikaci Azure Active Directory a instanční objekt, který má přístup k prostředkům,](../../active-directory/develop/howto-create-service-principal-portal.md) a vytvořte tak aplikaci Azure AD. Každý krok uvedený níže vás převezme přímo do oddílu článku, který se dokončí. 
 
-1. [Ověřit požadovaná oprávnění](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)
-2. [Vytvoření aplikace Azure Active Directory](../../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) 
+1. [Ověřit požadovaná oprávnění](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)
+2. [Vytvoření aplikace Azure Active Directory](../../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal) 
      - Při vytváření aplikace můžete použít libovolný název a adresu URL pro přihlášení.
-3. [Získejte ID aplikace a ověřovací klíč](../../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in). 
+3. [Získejte ID aplikace a ověřovací klíč](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in). 
      - Ověřovací klíč je tajný klíč klienta a používá se jako AadClientSecret pro set-AzVMDiskEncryptionExtension. 
         - Ověřovací klíč používá aplikace jako přihlašovací údaje pro přihlášení ke službě Azure AD. V Azure Portal se tento tajný klíč nazývá klíče, ale nemá žádný vztah k trezorům klíčů. Zabezpečte tento tajný klíč správně. 
      - ID aplikace bude použito později jako AadClientId pro set-AzVMDiskEncryptionExtension a jako ServicePrincipalName pro set-AzKeyVaultAccessPolicy. 

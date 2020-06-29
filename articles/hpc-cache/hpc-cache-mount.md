@@ -3,17 +3,17 @@ title: Připojení mezipaměti HPC Azure
 description: Postup připojení klientů ke službě Azure HPC cache Service
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/15/2020
 ms.author: v-erkel
-ms.openlocfilehash: a44232f06b455e20530271723e816c2117b339a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fb3e4fd4935afc4869e50ccbc35c53333d43b1df
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81458345"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515530"
 ---
-# <a name="mount-the-azure-hpc-cache"></a>Připojení mezipaměti HPC Azure
+# <a name="mount-the-azure-hpc-cache"></a>Připojení služby Azure HPC Cache
 
 Po vytvoření mezipaměti budou klienti systému souborů NFS k němu mít přístup pomocí jednoduchého `mount` příkazu. Příkaz připojí konkrétní cílovou cestu úložiště v mezipaměti HPC Azure do místního adresáře v klientském počítači.
 
@@ -57,7 +57,7 @@ Když připojíte klientský počítač k mezipaměti, přidružíte tuto cestu 
 
 Pomocí stránky s **pokyny k připojení** v Azure Portal můžete vytvořit kopírovací příkaz Mount. Otevřete stránku v části **Konfigurace** zobrazení mezipaměti na portálu.
 
-Před použitím příkazu na klientovi se ujistěte, že klient splňuje požadavky a má software potřebný k použití příkazu NFS `mount` , jak je popsáno výše v tématu [Příprava klientů](#prepare-clients).
+Před použitím příkazu na klientovi se ujistěte, že klient splňuje požadavky a má software potřebný k použití příkazu NFS, `mount` jak je popsáno výše v tématu [Příprava klientů](#prepare-clients).
 
 ![snímek obrazovky instance mezipaměti prostředí Azure HPC na portálu se načtenou stránkou s pokyny ke konfiguraci >ho připojení](media/mount-instructions.png)
 

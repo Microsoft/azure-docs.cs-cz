@@ -3,16 +3,16 @@ title: Azure File Sync místní bránu firewall a nastavení proxy serveru | Mic
 description: Konfigurace místní sítě Azure File Sync
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 415dc4f5609b912163be42605277a33ebcfda589
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 7410e30c892eb083f9ed71b1d9ce379ae9a036b5
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84466183"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515279"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Nastavení proxy a firewallu Synchronizace souborů Azure
 Azure File Sync propojuje vaše místní servery se soubory Azure a povoluje funkce synchronizace více lokalit a vrstvení cloudu. V takovém případě musí být místní server připojený k Internetu. Správce IT musí určit nejlepší cestu pro server, který bude mít přístup k Azure Cloud Services.
@@ -61,7 +61,7 @@ Pokud chcete nakonfigurovat nastavení proxy serveru na úrovni počítače, pos
      C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config  
      C:\Windows\Microsoft.NET\Framework\v4.0.30319\Config\machine.config
 
-   - Do souborů Machine. config přidejte část < System. NET > (pod sekcí < System. serviceModel >).  Změňte 127.0.01:8888 na IP adresu a port proxy server. 
+   - Do souborů machine.config přidejte část <> system.net (pod oddílem <System. serviceModel>).  Změňte 127.0.01:8888 na IP adresu a port proxy server. 
      ```
       <system.net>
         <defaultProxy enabled="true" useDefaultCredentials="true">
@@ -266,7 +266,7 @@ if ($found) {
 Pak můžete použít rozsahy IP adres v nástroji `$ipAddressRanges` k aktualizaci brány firewall. Informace o tom, jak aktualizovat bránu firewall, najdete na webu brány firewall/síťového zařízení.
 
 ## <a name="test-network-connectivity-to-service-endpoints"></a>Otestování připojení k síti ke koncovým bodům služby
-Jakmile je server zaregistrován ve službě Azure File Sync, lze pomocí rutiny Test-StorageSyncNetworkConnectivity a ServerRegistration. exe testovat komunikaci se všemi koncovými body (URL) specifickými pro tento server. Tato rutina může pomoct řešit potíže, pokud nekompletní komunikace brání serveru plně pracovat s Azure File Sync a dá se použít k doladění konfigurací proxy a brány firewall.
+Jakmile je server zaregistrovaný ve službě Azure File Sync, je možné pomocí rutiny Test-StorageSyncNetworkConnectivity a ServerRegistration.exe testovat komunikaci se všemi koncovými body (URL), které jsou specifické pro tento server. Tato rutina může pomoct řešit potíže, pokud nekompletní komunikace brání serveru plně pracovat s Azure File Sync a dá se použít k doladění konfigurací proxy a brány firewall.
 
 Pokud chcete spustit test připojení k síti, nainstalujte agenta Azure File Sync verze 9,1 nebo novější a spusťte následující příkazy PowerShellu:
 ```powershell

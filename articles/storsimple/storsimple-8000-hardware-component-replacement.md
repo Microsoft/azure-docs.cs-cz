@@ -9,18 +9,18 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: e05a37122647d4979089f0ba00b1fc15f9b84b0f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 69b6c4e81446cf6a922fe9a1d0da8452e5ec164d
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60321677"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513204"
 ---
 # <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>Výměna hardwarové součásti na zařízení řady StorSimple 8000
 
@@ -46,17 +46,17 @@ V následující tabulce jsou popsány bezpečnostní ikony používané v těch
 | ![Ikona pro čtení pokynů](./media/storsimple-hardware-component-replacement/ReadInstructions.png) |**Nejprve si přečtěte všechny pokyny.** | |
 | ![Ikona nebezpečí tipu](./media/storsimple-hardware-component-replacement/TipHazard.png) |**Nebezpečí špičky** | |
 
-### <a name="before-you-begin"></a>Před zahájením
+### <a name="before-you-begin"></a>Než začnete
 Seznamte se s bezpečnostními informacemi o zařízení a bezpečnostních ikonách, které se používají v tomto kurzu. Pro úplné informace použijte pro [bezpečnou instalaci a provoz zařízení StorSimple](storsimple-safety.md) . Nezapomeňte si projít [bezpečnostní opatření](storsimple-safety.md#handling-precautions) před zpracováním zařízení StorSimple.
 
 Před pokusem o nahrazení komponenty Vezměte v úvahu následující informace.
 
-![Ikona](./media/storsimple-hardware-component-replacement/Warning.png) ![upozornění ikona](./media/storsimple-hardware-component-replacement/Electric.png) elektrického úrazu – **Upozornění**
+![Ikona upozornění ](./media/storsimple-hardware-component-replacement/Warning.png) ![ ikona elektrického úrazu – ](./media/storsimple-hardware-component-replacement/Electric.png) **Upozornění**
 
 * Při manipulaci s moduly a komponentami zařízení StorSimple se dobře doplní pomocí elektrostatického výboje nebo nestatického materiálu.
 * Nemusíte se dotknout žádného dovody. Použijte dodané popisovače a vodítka při zpracovávání komponent, které mohou mít vystavené dodávání.
 
-![](./media/storsimple-hardware-component-replacement/Warning.png) ![Ikona](./media/storsimple-hardware-component-replacement/NoticeIcon.png) upozornění ikona oznámení **:**
+![Ikona upozornění ikona oznámení ](./media/storsimple-hardware-component-replacement/Warning.png) ![ ](./media/storsimple-hardware-component-replacement/NoticeIcon.png) **:**
 
 Když nahradíte modul, **nikdy nenechávejte prázdné místo na zadní části skříně**. Před odebráním části problému Získejte náhradní nebo prázdný modul.
 
@@ -67,11 +67,11 @@ Hlavní součásti hardwaru v zařízení jsou shrnuté v následujících tabul
 
 | Komponenty | Počet přítomných | Modul plug-in? | Postup nahrazení |
 |:--- |:--- |:--- |:--- |
-| Skříň |1 |Ne |[Výměna skříně na zařízení StorSimple](storsimple-8000-chassis-replacement.md) |
-| Primární řadiče |2 |Ano |[Výměna modulu Controller na zařízení StorSimple](storsimple-8000-controller-replacement.md) |
-| 764W moduly napájení a chlazení (PCMs) |2 |Ano |[Výměna napájecího a chladicího modulu na zařízení StorSimple](storsimple-8000-power-cooling-module-replacement.md) |
-| Záložní baterie |2 |Ano |[Výměna modulu záložní baterie na zařízení StorSimple](storsimple-8000-battery-replacement.md) |
-| Diskové jednotky |12 |Ano |[Výměna diskové jednotky na zařízení StorSimple](storsimple-8000-disk-drive-replacement.md) |
+| Skříň |1 |No |[Výměna skříně na zařízení StorSimple](storsimple-8000-chassis-replacement.md) |
+| Primární řadiče |2 |Yes |[Výměna modulu Controller na zařízení StorSimple](storsimple-8000-controller-replacement.md) |
+| 764W moduly napájení a chlazení (PCMs) |2 |Yes |[Výměna napájecího a chladicího modulu na zařízení StorSimple](storsimple-8000-power-cooling-module-replacement.md) |
+| Záložní baterie |2 |Yes |[Výměna modulu záložní baterie na zařízení StorSimple](storsimple-8000-battery-replacement.md) |
+| Diskové jednotky |12 |Yes |[Výměna diskové jednotky na zařízení StorSimple](storsimple-8000-disk-drive-replacement.md) |
 
 **Tabulka 1** Hardwarové součásti v primární skříni
 
@@ -79,10 +79,10 @@ Primární skříň a skříň EBOD se ve svých vstupně-výstupních modulech 
 
 | Komponenty | Počet přítomných | Modul plug-in? | Postup nahrazení |
 |:--- |:--- |:--- |:--- |
-| Skříň |1 |Ne |[Výměna skříně na zařízení StorSimple](storsimple-8000-chassis-replacement.md) |
-| EBOD řadiče |2 |Ano |[Výměna EBOD kontroleru na zařízení StorSimple](storsimple-8000-ebod-controller-replacement.md) |
-| 580W moduly napájení a chlazení (PCMs) |2 |Ano |[Výměna napájecího a chladicího modulu na zařízení StorSimple](storsimple-8000-power-cooling-module-replacement.md) |
-| Diskové jednotky |12 |Ano |[Výměna diskové jednotky na zařízení StorSimple](storsimple-8000-disk-drive-replacement.md) |
+| Skříň |1 |No |[Výměna skříně na zařízení StorSimple](storsimple-8000-chassis-replacement.md) |
+| EBOD řadiče |2 |Yes |[Výměna EBOD kontroleru na zařízení StorSimple](storsimple-8000-ebod-controller-replacement.md) |
+| 580W moduly napájení a chlazení (PCMs) |2 |Yes |[Výměna napájecího a chladicího modulu na zařízení StorSimple](storsimple-8000-power-cooling-module-replacement.md) |
+| Diskové jednotky |12 |Yes |[Výměna diskové jednotky na zařízení StorSimple](storsimple-8000-disk-drive-replacement.md) |
 
 **Tabulka 2** Hardwarové součásti v skříni EBOD
 

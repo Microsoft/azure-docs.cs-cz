@@ -3,15 +3,15 @@ title: Zaznamenání dat z Event Hubs do Azure Data Lake Storage Gen1
 description: Pomocí Azure Data Lake Storage Gen1 Zachyťte data přijatá službou Azure Event Hubs.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 5cbcdc5cb9713432be5b52898d956506d80d6ea0
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 9d663c2e95ee94811d70a0602b35842a789dd9b3
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690675"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515763"
 ---
 # <a name="use-azure-data-lake-storage-gen1-to-capture-data-from-event-hubs"></a>Použití Azure Data Lake Storage Gen1 k zaznamenání dat z Event Hubs
 
@@ -44,7 +44,7 @@ V této části vytvoříte složku v rámci účtu, ve kterém chcete data zach
 
     ![Přiřadit oprávnění pro kořen Data Lake Storage Gen1](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-root.png "Přiřadit oprávnění pro kořen Data Lake Storage Gen1")
 
-    b. V části **přístup**klikněte na **Přidat**, klikněte na **Vybrat uživatele nebo skupinu**a pak vyhledejte `Microsoft.EventHubs`. 
+    b. V části **přístup**klikněte na **Přidat**, klikněte na **Vybrat uživatele nebo skupinu**a pak vyhledejte `Microsoft.EventHubs` . 
 
     ![Přiřadit oprávnění pro kořen Data Lake Storage Gen1](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "Přiřadit oprávnění pro kořen Data Lake Storage Gen1")
     
@@ -53,11 +53,11 @@ V této části vytvoříte složku v rámci účtu, ve kterém chcete data zach
     c. V části **přiřadit oprávnění**klikněte na **vybrat oprávnění**. Nastavte **oprávnění** na **spouštění**. Nastavte **Přidat do** **této složky a všech podřízených objektů**. Nastavení **Přidat jako** pro **položku oprávnění k přístupu a výchozí položku oprávnění**.
 
     > [!IMPORTANT]
-    > Když vytváříte novou hierarchii složek pro zaznamenávání dat přijatých službou Azure Event Hubs, jedná se o snadný způsob, jak zajistit přístup do cílové složky.  Nicméně přidávání oprávnění do všech podřízených složek nejvyšší úrovně s mnoha podřízenými soubory a složkami může trvat dlouhou dobu.  Pokud kořenová složka obsahuje velký počet souborů a složek, může být rychlejší přidat do každé složky v **Execute** cestě k konečné `Microsoft.EventHubs` cílové složce oprávnění ke spuštění pro jednotlivé složky. 
+    > Když vytváříte novou hierarchii složek pro zaznamenávání dat přijatých službou Azure Event Hubs, jedná se o snadný způsob, jak zajistit přístup do cílové složky.  Nicméně přidávání oprávnění do všech podřízených složek nejvyšší úrovně s mnoha podřízenými soubory a složkami může trvat dlouhou dobu.  Pokud kořenová složka obsahuje velký počet souborů a složek, může být rychlejší přidat do **Execute** `Microsoft.EventHubs` každé složky v cestě k konečné cílové složce oprávnění ke spuštění pro jednotlivé složky. 
 
     ![Přiřadit oprávnění pro kořen Data Lake Storage Gen1](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "Přiřadit oprávnění pro kořen Data Lake Storage Gen1")
 
-    Klikněte na tlačítko **OK**.
+    Klikněte na **OK**.
 
 1. Přiřaďte oprávnění pro složku pod účtem Data Lake Storage Gen1, kde chcete zachytit data.
 
@@ -65,7 +65,7 @@ V této části vytvoříte složku v rámci účtu, ve kterém chcete data zach
 
     ![Přiřadit oprávnění pro složku Data Lake Storage Gen1](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-folder.png "Přiřadit oprávnění pro složku Data Lake Storage Gen1")
 
-    b. V části **přístup**klikněte na **Přidat**, klikněte na **Vybrat uživatele nebo skupinu**a pak vyhledejte `Microsoft.EventHubs`. 
+    b. V části **přístup**klikněte na **Přidat**, klikněte na **Vybrat uživatele nebo skupinu**a pak vyhledejte `Microsoft.EventHubs` . 
 
     ![Přiřadit oprávnění pro složku Data Lake Storage Gen1](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "Přiřadit oprávnění pro složku Data Lake Storage Gen1")
     
@@ -75,7 +75,7 @@ V této části vytvoříte složku v rámci účtu, ve kterém chcete data zach
 
     ![Přiřadit oprávnění pro složku Data Lake Storage Gen1](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp-folder.png "Přiřadit oprávnění pro složku Data Lake Storage Gen1")
     
-    Klikněte na tlačítko **OK**. 
+    Klikněte na **OK**. 
 
 ## <a name="configure-event-hubs-to-capture-data-to-data-lake-storage-gen1"></a>Konfigurace Event Hubs k zaznamenání dat do Data Lake Storage Gen1
 

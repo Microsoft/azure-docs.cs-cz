@@ -4,16 +4,16 @@ description: Naučte se používat sadu Python SDK pro práci s Data Lake Storag
 services: data-lake-store
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.custom: tracking-python
-ms.openlocfilehash: 564de3a38d4f3d2c50d49e570986f2d025a11457
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 6c3fb3dff0fdb9fb6d92b8138f12f09dcdf3eb04
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560476"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515638"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-python"></a>Operace systému souborů při Azure Data Lake Storage Gen1 pomocí Pythonu
 > [!div class="op_single_selector"]
@@ -126,7 +126,7 @@ Následující fragment kódu nejprve vytvoří klienta Data Lake Storage Gen1 �
 ## <a name="next-steps"></a>Další kroky
 * [Operace správy účtů na data Lake Storage Gen1 s využitím Pythonu](data-lake-store-get-started-python.md)
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 * [Reference k Azure Data Lake Storage Gen1 Pythonu (systém souborů)](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core)
 * [Open Source aplikace pro velké objemy dat kompatibilní s Azure Data Lake Storage Gen1](data-lake-store-compatible-oss-other-applications.md)

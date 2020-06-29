@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 23049a2c-055e-4d0e-b8f5-af2a87ecf53f
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2017
 ms.author: alkohli
-ms.openlocfilehash: 650798fdb884e6494990efb533335a1dd8b4d89f
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 0c54b4e3015e255a6948202a6c3ea7a83362032f
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "67875394"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514911"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>Automatizované řešení zotavení po havárii s využitím Azure Site Recovery pro sdílené složky hostované v StorSimple
 
@@ -64,7 +64,7 @@ Chcete-li chránit počítače se službou Active Directory a DNS tak, aby byly 
 #### <a name="option-1"></a>Možnost 1
 Pokud má zákazník malý počet aplikací, jeden řadič domény pro celou místní lokalitu a převezme služby při selhání celou lokalitu, doporučujeme, abyste pomocí Azure Site Recovery replikace replikovat počítač řadiče domény do sekundární lokality (platí pro lokalitu i pro lokalitu i pro Azure).
 
-#### <a name="option-2"></a>2. možnost
+#### <a name="option-2"></a>Možnost 2
 Pokud má zákazník velký počet aplikací, je spuštěná doménová struktura služby Active Directory a při selhání dojde v několika aplikacích najednou, doporučujeme nastavit další řadič domény na webu DR (buď sekundární lokalita, nebo v Azure).
 
 Pokyny k dispozici pro [automatické řešení zotavení po havárii pro Active Directory a DNS pomocí Azure Site Recovery](../site-recovery/site-recovery-active-directory.md) najdete v tématu informace o tom, jak je řadič domény dostupný na webu Dr. Ve zbývající části tohoto dokumentu předpokládáme, že je na webu DR k dispozici řadič domény.
@@ -84,7 +84,7 @@ Tento krok vyžaduje, abyste připravili místní prostředí souborového serve
 
 1. Nainstalujte agenta virtuálního počítače na všechny virtuální počítače souborového serveru. To je nutné, abyste mohli spouštět skripty Azure Automation na virtuálních počítačích převzetí služeb při selhání.
    
-   1. [Stáhněte si agenta](https://aka.ms/vmagentwin) do `C:\\Users\\<username>\\Downloads`nástroje.
+   1. [Stáhněte si agenta](https://aka.ms/vmagentwin) do nástroje `C:\\Users\\<username>\\Downloads` .
    1. Otevřete prostředí Windows PowerShell v režimu správce (Spustit jako správce) a potom zadejte následující příkaz, který přejde do umístění pro stahování:  
          `cd C:\\Users\\<username>\\Downloads\\WindowsAzureVmAgent.2.6.1198.718.rd\_art\_stable.150415-1739.fre.msi`
          
@@ -174,13 +174,13 @@ V ASR můžete vytvořit plán obnovení pro automatizaci procesu převzetí slu
    - _RecoveryPlanName_**-ResourceGroupName**: skupina Správce prostředků, která má prostředek StorSimple.
    - _RecoveryPlanName_**-Manager**: prostředek StorSimple, který má zařízení StorSimple.
    - _RecoveryPlanName_**-název_zařízení**: zařízení StorSimple, u kterého se má převzít převzetí služeb při selhání.
-   - _RecoveryPlanName_**-DeviceIpAddress**: IP adresa zařízení (najdete ho na kartě **zařízení** v části StorSimple Device Manager &gt; **Nastavení** &gt; části **Síťová** &gt; **Služba DNS** ).
+   - _RecoveryPlanName_**-DeviceIpAddress**: IP adresa zařízení (najdete ho na kartě **zařízení** v části StorSimple Device Manager &gt; **Nastavení** části &gt; **Síťová** &gt; **Služba DNS** ).
    - _RecoveryPlanName_**-VolumeContainers**: řetězec kontejnerů svazků oddělený čárkami v zařízení, které je potřeba převzít při selhání; Příklad: volcon1, volcon2, volcon3.
    - _RecoveryPlanName_**-TargetDeviceName**: StorSimple Cloud Appliance, na kterých mají být kontejnery převzetí služeb při selhání.
-   - _RecoveryPlanName_**-TargetDeviceIpAddress**: IP adresa cílového zařízení (dá se najít na kartě &gt; **síť** pro &gt; **Nastavení** části **virtuálního počítače** ).
+   - _RecoveryPlanName_**-TargetDeviceIpAddress**: IP adresa cílového zařízení (dá se najít na kartě síť pro nastavení části **virtuálního počítače** &gt; **Settings** &gt; **Networking** ).
    - _RecoveryPlanName_**-StorageAccountName**: název účtu úložiště, ve kterém se bude ukládat skript (který musí být spuštěný na virtuálním počítači pro převzetí služeb při selhání). Může to být libovolný účet úložiště, který obsahuje nějaké místo pro dočasné uložení skriptu.
    - _RecoveryPlanName_**-StorageAccountKey**: přístupový klíč pro výše uvedený účet úložiště.
-   - _RecoveryPlanName_**-VMGUIDS**: při ochraně virtuálního počítače Azure Site Recovery přiřadí každému virtuálnímu počítači jedinečné ID, které poskytuje podrobnosti o virtuálním počítači, u kterého došlo k převzetí služeb při selhání. VMGUID získáte tak, že vyberete kartu **Recovery Services** a kliknete na položku **skupiny** &gt; ochrany **chráněných položek** &gt; **vlastnosti** **počítače** &gt; . Pokud máte více virtuálních počítačů, přidejte identifikátory GUID jako řetězec oddělený čárkami.
+   - _RecoveryPlanName_**-VMGUIDS**: při ochraně virtuálního počítače Azure Site Recovery přiřadí každému virtuálnímu počítači jedinečné ID, které poskytuje podrobnosti o virtuálním počítači, u kterého došlo k převzetí služeb při selhání. VMGUID získáte tak, že vyberete kartu **Recovery Services** a kliknete na položku skupiny ochrany **chráněných položek** &gt; **Protection Groups** &gt; **Machines** &gt; **vlastnosti**počítače. Pokud máte více virtuálních počítačů, přidejte identifikátory GUID jako řetězec oddělený čárkami.
 
      Například pokud je název plánu obnovení fileServerpredayRP, pak se vaše **proměnné**, karty **připojení** a **certifikáty** by měly zobrazit takto po přidání všech prostředků.
 
@@ -195,7 +195,7 @@ V ASR můžete vytvořit plán obnovení pro automatizaci procesu převzetí slu
             cd C:\scripts\StorSimpleSDKTools
       ```
    1. Stáhněte si NuGet CLI ve stejné složce v Krok 1.
-      Na webu [NuGet ke stažení](https://www.nuget.org/downloads)jsou k dispozici různé verze NuGet. exe. Každý odkaz ke stažení odkazuje přímo na soubor. exe, proto nezapomeňte kliknout pravým tlačítkem a uložit soubor do počítače, nikoli spustit z prohlížeče.
+      Na [stažení NuGet](https://www.nuget.org/downloads)jsou k dispozici různé verze nuget.exe. Každý odkaz ke stažení odkazuje přímo na soubor. exe, proto nezapomeňte kliknout pravým tlačítkem a uložit soubor do počítače, nikoli spustit z prohlížeče.
       
       ```
             wget https://dist.nuget.org/win-x86-commandline/latest/nuget.exe -Out C:\scripts\StorSimpleSDKTools\nuget.exe
@@ -230,7 +230,7 @@ V ASR můžete vytvořit plán obnovení pro automatizaci procesu převzetí slu
             compress-Archive -Path "$moduleDir" -DestinationPath Microsoft.Azure.Management.StorSimple8000Series.zip
       ```
          
-   1. Importujte soubor zip modulu Azure Automation (Microsoft. Azure. Management. StorSimple8000Series. zip), který jste vytvořili v předchozím kroku. Můžete to udělat tak, že vyberete účet Automation, kliknete na **moduly** v části sdílené prostředky a pak na **Přidat modul**.
+   1. Importujte soubor zip modulu Azure Automation (Microsoft.Azure.Management.StorSimple8000Series.zip) vytvořený v předchozím kroku. Můžete to udělat tak, že vyberete účet Automation, kliknete na **moduly** v části sdílené prostředky a pak na **Přidat modul**.
    
    Po importu modulu řady StorSimple 8000 by se měla karta **moduly** zobrazit takto:
    
@@ -282,8 +282,8 @@ V doprovodné příručce k [řešení Active Directory Dr](../site-recovery/sit
    
    ![Spustit převzetí služeb při selhání](./media/storsimple-disaster-recovery-using-azure-site-recovery/image8.png)
    
-1. Kliknutím na **OK** zahajte převzetí služeb při selhání. Průběh můžete sledovat tak, že kliknete na virtuální počítač a otevřete jeho vlastnosti, nebo na **úlohu testovací převzetí služeb při selhání** v &gt; **části název** &gt; trezoru úlohy **Site Recovery úlohy**.
-1. Po dokončení převzetí služeb při selhání byste měli být schopni vidět, že se počítač Azure repliky &gt; zobrazí v **Virtual Machines**Azure Portal. Můžete provádět ověření.
+1. Kliknutím na **OK** zahajte převzetí služeb při selhání. Průběh můžete sledovat tak, že kliknete na virtuální počítač a otevřete jeho vlastnosti, nebo na **úlohu testovací převzetí služeb při selhání** v části název trezoru úlohy &gt; **Jobs** &gt; **Site Recovery úlohy**.
+1. Po dokončení převzetí služeb při selhání byste měli být schopni vidět, že se počítač Azure repliky zobrazí v &gt; **Virtual Machines**Azure Portal. Můžete provádět ověření.
 1. Po dokončení platnosti klikněte na **ověřování dokončeno**. Tím se odeberou svazky StorSimple a vypne se StorSimple Cloud Appliance.
 1. Až skončíte, klikněte na **Vyčištění testovacího převzetí služeb při selhání** v plánu obnovení. V části Poznámky si zaznamenejte a uložte jakékoli připomínky související s testovacím převzetím služeb při selhání. Tato akce odstraní virtuální počítač, který byl vytvořen během testovacího převzetí služeb při selhání.
 
@@ -291,7 +291,7 @@ V doprovodné příručce k [řešení Active Directory Dr](../site-recovery/sit
    Během plánovaného převzetí služeb při selhání se místní virtuální počítač souborového serveru řádně ukončí a vytvoří se snímek záložního cloudu svazků na zařízení StorSimple. Virtuálnímu zařízení se převezmou StorSimple svazky, virtuální počítač repliky se načte do Azure a svazky se připojí k virtuálnímu počítači.
 
 #### <a name="to-perform-a-planned-failover"></a>Provedení plánovaného převzetí služeb při selhání
-1. V Azure Portal vyberte možnost plány obnovení trezoru &gt; **služby Recovery Services** **(Site Recovery)** &gt; **recoveryplan_name** vytvořené pro virtuální počítač souborového serveru.
+1. V Azure Portal vyberte možnost plány obnovení trezoru **služby Recovery Services** &gt; **(Site Recovery)** &gt; **recoveryplan_name** vytvořené pro virtuální počítač souborového serveru.
 1. V okně plán **obnovení klikněte na** &gt; **plánované převzetí služeb při selhání**.  
 
    ![Plán obnovení](./media/storsimple-disaster-recovery-using-azure-site-recovery/image9.png)
@@ -303,7 +303,7 @@ V doprovodné příručce k [řešení Active Directory Dr](../site-recovery/sit
 Během neplánovaného převzetí služeb při selhání se virtuálnímu zařízení převezme StorSimple svazky, virtuální počítač repliky se zaplní do Azure a svazky se připojí k virtuálnímu počítači.
 
 #### <a name="to-perform-a-failover"></a>Provedení převzetí služeb při selhání
-1. V Azure Portal vyberte možnost plány obnovení trezoru &gt; **služby Recovery Services** **(Site Recovery)** &gt; **recoveryplan_name** vytvořené pro virtuální počítač souborového serveru.
+1. V Azure Portal vyberte možnost plány obnovení trezoru **služby Recovery Services** &gt; **(Site Recovery)** &gt; **recoveryplan_name** vytvořené pro virtuální počítač souborového serveru.
 1. V okně plán obnovení klikněte na **Další** &gt; **převzetí služeb při selhání**.  
 1. V okně **Potvrdit převzetí služeb při selhání** vyberte zdrojové a cílové umístění.
 1. Vyberte možnost **vypnout virtuální počítače a synchronizovat nejnovější data** , abyste určili, že Site Recovery by se měla pokusit vypnout chráněný virtuální počítač a synchronizovat data, aby se při selhání převzala nejnovější verze dat.
@@ -314,7 +314,7 @@ Během neplánovaného převzetí služeb při selhání se virtuálnímu zaří
 Během navrácení služeb po obnovení dojde při převzetí služeb při selhání zpět na fyzické zařízení StorSimple kontejnery svazků.
 
 #### <a name="to-perform-a-failback"></a>Provedení navrácení služeb po obnovení
-1. V Azure Portal vyberte možnost plány obnovení trezoru &gt; **služby Recovery Services** **(Site Recovery)** &gt; **recoveryplan_name** vytvořené pro virtuální počítač souborového serveru.
+1. V Azure Portal vyberte možnost plány obnovení trezoru **služby Recovery Services** &gt; **(Site Recovery)** &gt; **recoveryplan_name** vytvořené pro virtuální počítač souborového serveru.
 1. V okně plán **obnovení klikněte na** &gt; **plánované převzetí služeb při selhání**.  
 1. Zvolte zdrojové a cílové umístění, vyberte příslušné možnosti synchronizace dat a vytvoření virtuálního počítače.
 1. Kliknutím na tlačítko **OK** spustíte proces navrácení služeb po obnovení.

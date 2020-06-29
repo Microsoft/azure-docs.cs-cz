@@ -3,15 +3,15 @@ title: Optimalizace výkonu – vyplavení pomocí Azure Data Lake Storage Gen1
 description: Přečtěte si pokyny k ladění výkonu pro cluster s více podmnožinami v Azure Data Lake Storage Gen1.
 author: stewu
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 85a38a4da65d1b4a669a41eba902b39508e9216c
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 47fb385e5e1fb60f860735530356fa87031c51e8
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691650"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513788"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Pokyny k ladění výkonu pro zaplavení v HDInsight a Azure Data Lake Storage Gen1
 
@@ -126,8 +126,8 @@ Pokud jste dosáhli limitu šířky pásma poskytovaného Data Lake Storage Gen1
 
 Pokud chcete zjistit, jestli se vám omezilo omezení, povolte protokolování ladění na straně klienta:
 
-1. V **Ambari** > **Storm**Ambari > . log4j**Konfigurace** > **Advanced**, změňte ** &lt;kořenovou úroveň = "informace"&gt; ** na ** &lt;kořenovou úroveň = "ladění"&gt;**. Restartujte všechny uzly/služby, aby se konfigurace projevila.
-2. Sledujte protokoly rozplavení v uzlech pracovních procesů (&lt;pod/var/log/Storm/Worker-artifacts/em&gt;/&lt;/Worker.log portu&gt;) pro výjimky omezování Data Lake Storage Gen1.
+1. V **Ambari**.  >  **Storm**  >  **Config**  >  **log4j konfigurace Advanced**, změňte ** &lt; kořenovou úroveň = "informace" &gt; ** na ** &lt; kořenovou úroveň = "ladění" &gt; **. Restartujte všechny uzly/služby, aby se konfigurace projevila.
+2. Sledujte protokoly rozplavení v uzlech pracovních procesů (pod/var/log/Storm/Worker-artifacts/em &lt; &gt; / &lt; &gt; /Worker.log portu) pro výjimky omezování Data Lake Storage Gen1.
 
 ## <a name="next-steps"></a>Další kroky
 Na [tomto blogu](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/)se dá odkazovat na další ladění výkonu pro zaplavení.

@@ -4,16 +4,16 @@ description: Naučte se vytvářet úlohy exportu v Azure Portal pro přenos dat
 author: alkohli
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 8605fb3c43e625d86fd4d4008ddc49b0e29c8d44
-ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
+ms.openlocfilehash: c9ce265707743d98f6c93d3facca33e16d1b75ea
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84509470"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513510"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Službu Azure Import/Export můžete použít k exportu dat z úložiště objektů blob v Azure.
 
@@ -155,7 +155,7 @@ Tento *volitelný* krok vám pomůže určit počet jednotek vyžadovaných pro 
 
     Parametry jsou popsány v následující tabulce:
 
-    |Parametr příkazového řádku|Description|  
+    |Parametr příkazového řádku|Popis|  
     |--------------------------|-----------------|  
     |**/logdir:**|Nepovinný parametr. Adresář protokolu. Podrobné soubory protokolu se zapisují do tohoto adresáře. Pokud tento parametr nezadáte, použije se jako adresář protokolu aktuální adresář.|  
     |**SN**|Povinná hodnota. Název účtu úložiště pro úlohu exportu|  
@@ -209,15 +209,15 @@ Number of drives needed:        3
 
 V následující tabulce jsou uvedeny příklady platných cest objektů BLOB:
 
-   | Volič | Cesta objektu BLOB | Description |
+   | Volič | Cesta objektu BLOB | Popis |
    | --- | --- | --- |
    | Začíná na |/ |Exportuje všechny objekty BLOB v účtu úložiště. |
    | Začíná na |/$root/ |Exportuje všechny objekty BLOB v kořenovém kontejneru. |
    | Začíná na |/book |Vyexportuje všechny objekty BLOB v jakémkoli kontejneru, který začíná prefixovou **knihou** . |
    | Začíná na |skladby |Exportuje všechny objekty BLOB v kontejneru **hudba** . |
    | Začíná na |/music/love |Exportuje všechny objekty BLOB v kontejneru s **hudbou** , které začínají na **skvělém** čísle. |
-   | Je rovno |$root/logo.bmp |Exportuje objekt BLOB **logo. bmp** do kořenového kontejneru. |
-   | Je rovno |videa/text. MP4 |Exportuje objekt BLOB **Story. mp4** ve **videích** o kontejnerech. |
+   | Je rovno |$root/logo.bmp |Export objektu BLOB **logo.bmp** do kořenového kontejneru |
+   | Je rovno |videa/story.mp4 |Exportuje **story.mp4** objektů BLOB ve **videích** o kontejnerech. |
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 59dee7b9-ca6d-4fd9-96e6-a0071e8d248e
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
-ms.openlocfilehash: ef8acf1c3c9211168ebacc8d62647f6789c745a2
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 97209dca7d30de037dbd21f5cc145b2941060e70
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60630560"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85512967"
 ---
 # <a name="use-storsimple-monitoring-indicators-to-manage-your-device"></a>Použití indikátorů monitorování StorSimple ke správě zařízení
 
@@ -239,7 +239,7 @@ V následující tabulce jsou popsány různé podmínky alarmu.
 | Ovládání chyby řízení spotřeby |Upozornění – žádná ztráta napájení z jednotky |S1 |Chyba modulu |
 | Ovládání chyby řízení spotřeby |Chyba – kritické; Ztráta napájení jednotky |S1 |Chyba modulu |
 | Jednotka odebrána |Upozornění |Žádná |Chyba modulu |
-| Nedostatek dostupného napájení |Upozornění |Žádná |Chyba modulu |
+| Nedostatek dostupného napájení |Upozornění |žádné |Chyba modulu |
 
 ## <a name="next-steps"></a>Další kroky
 Přečtěte si další informace o [StorSimple hardwarových komponentách a stavu](storsimple-8000-monitor-hardware-status.md).

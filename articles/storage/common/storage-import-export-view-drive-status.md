@@ -4,16 +4,16 @@ description: Zjistěte, jak zobrazit stav úloh importu/exportu a využitých je
 author: alkohli
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/17/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 222c893f06d9adf77f8a8124af18bc03c5d20bdf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7a000ab4a465e3b19efe6f2853bcd19dca47e440
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "72821439"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514133"
 ---
 # <a name="view-the-status-of-azure-importexport-jobs"></a>Zobrazení stavu úloh služby Azure Import/Export
 
@@ -34,7 +34,7 @@ V závislosti na tom, kde se jednotka právě nachází, se zobrazí jedna z ná
 | Shipping | Po odeslání balíčku byste měli aktualizovat informace o sledování v Azure Portal.  Tím se úloha přepíná do stavu **expedice** . Úloha zůstane ve stavu **expedice** po dobu až dvou týdnů. 
 | Přijato | Po přijetí všech jednotek v datovém centru se stav úlohy nastaví na **přijato**. |
 | Pojování | Po zahájení zpracování aspoň jedné jednotky se stav úlohy nastaví na **přenos**. Další informace najdete v informacích o [stavu jednotky](#view-drive-status). |
-| Balení | Po dokončení zpracování všech jednotek se úloha umístí do stavu **balení** , dokud se jednotky nevrátí zpět. |
+| Zabalení | Po dokončení zpracování všech jednotek se úloha umístí do stavu **balení** , dokud se jednotky nevrátí zpět. |
 | Dokončeno | Po odeslání všech jednotek zpět do vás, pokud byla úloha dokončena bez chyb, je úloha nastavena na **dokončeno**. Tato úloha se automaticky odstraní po 90 dnech v **dokončeném** stavu. |
 | Zavřeno | Po odeslání všech jednotek zpět, pokud došlo k nějakým chybám během zpracování úlohy, je úloha nastavena na **Uzavřeno**. Tato úloha se automaticky odstraní po 90 dnech v **zavřeném** stavu. |
 

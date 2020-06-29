@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/11/2020
-ms.openlocfilehash: db941152186127302680b5e659e43cd2d82a8908
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3fa67f6961b146d1dc7f5a4d1780e4060f1fdedc
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77162272"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85512678"
 ---
 # <a name="preview-features-in-azure-cognitive-search"></a>Funkce ve verzi Preview v Azure Kognitivní hledání
 
@@ -37,6 +37,7 @@ Prozkoumejte nejnovější vylepšení rozšíření AI prostřednictvím [rozhr
 | [Dovednost pro detekci PII (Preview)](cognitive-search-skill-pii-detection.md) | Vnímání odbornosti, která se používá při indexování, která extrahuje osobní údaje ze vstupního textu a poskytuje možnost jejich maskování z tohoto textu různými způsoby.| 
 | [Přírůstkové obohacení (Preview)](cognitive-search-incremental-indexing-conceptual.md) | Přidá do kanálu pro rozšíření ukládání do mezipaměti, což vám umožní znovu použít stávající výstup, pokud cílené změny, jako je například aktualizace dovednosti nebo jiného objektu, nezmění obsah. Ukládání do mezipaměti se týká pouze obohacených dokumentů vyprodukovaných dovednosti.| 
 | [Knowledge Store (Preview)](knowledge-store-concept-intro.md) | Nový cíl kanálu rozšíření na bázi AI. Fyzická datová struktura existuje v úložišti objektů BLOB v Azure a v úložišti tabulek Azure a je vytvořená a naplněná při spuštění indexeru, který má připojené rozpoznávání dovednosti. Definice samotného úložiště znalostí je specifikována v rámci definice dovednosti. V rámci definice znalostní báze Knowledge Store můžete řídit fyzické struktury dat prostřednictvím prvků *projekce* , které určují způsob, jakým jsou data uložená v úložišti tabulek nebo objektů blob, a to, jestli existuje více zobrazení.| 
+| [AML dovednosti (Preview)](cognitive-search-aml-skill.md) | Vlastní dovednost vytvořená v Azure Machine Learning (AML) pro rozšíření dokumentů během indexování. Dovednosti v Azure ML usnadňují zjišťování dovedností, ověřování a mapování schématu.|
 
 ## <a name="indexing-and-query-features"></a>Indexování a funkce dotazů
 
@@ -61,7 +62,7 @@ Funkce oznámené v předchozích verzích Preview, pokud nejsou převedené na 
 
 ## <a name="how-to-call-a-preview-api"></a>Jak volat rozhraní API pro verzi Preview
 
-Starší verze Preview jsou pořád funkční, ale v průběhu času se stanou zastaralé. Pokud váš kód volá `api-version=2016-09-01-Preview` nebo `api-version=2017-11-11-Preview`, jsou tato volání stále platná. Jenom nejnovější verze Preview se ale aktualizuje s vylepšeními. 
+Starší verze Preview jsou pořád funkční, ale v průběhu času se stanou zastaralé. Pokud váš kód volá `api-version=2016-09-01-Preview` nebo `api-version=2017-11-11-Preview` , jsou tato volání stále platná. Jenom nejnovější verze Preview se ale aktualizuje s vylepšeními. 
 
 Následující příklad syntaxe znázorňuje volání rozhraní API verze Preview.
 

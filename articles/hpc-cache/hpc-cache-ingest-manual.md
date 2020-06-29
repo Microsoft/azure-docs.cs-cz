@@ -3,15 +3,15 @@ title: Ingestování dat mezipaměti HPC Azure – ruční kopírování
 description: Použití příkazů CP k přesunu dat do cíle úložiště objektů BLOB v mezipaměti HPC Azure
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 1d5f8e6b59a4ae0149f219738952b47ce399c2ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2a5fdc3b76c330619601e171c152d7a2e583ae90
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82194988"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514487"
 ---
 # <a name="azure-hpc-cache-data-ingest---manual-copy-method"></a>Ingestování dat mezipaměti HPC Azure – metoda ručního kopírování
 
@@ -31,13 +31,13 @@ Tento jednoduchý příklad kopíruje dva soubory paralelně:
 cp /mnt/source/file1 /mnt/destination1/ & cp /mnt/source/file2 /mnt/destination1/ &
 ```
 
-Po vystavení tohoto příkazu `jobs` se v příkazu zobrazí, že jsou spuštěná dvě vlákna.
+Po vystavení tohoto příkazu se v `jobs` příkazu zobrazí, že jsou spuštěná dvě vlákna.
 
 ## <a name="copy-data-with-predictable-file-names"></a>Kopírování dat s předvídatelnými názvy souborů
 
 Pokud jsou názvy souborů předvídatelné, můžete použít výrazy k vytvoření paralelních vláken kopírování.
 
-Pokud například váš adresář obsahuje soubory 1000, které jsou očíslovány postupně z `0001` na `1000`, můžete použít následující výrazy k vytvoření 10 paralelních vláken, které každý soubor kopie 100:
+Pokud například váš adresář obsahuje soubory 1000, které jsou očíslovány postupně z `0001` na `1000` , můžete použít následující výrazy k vytvoření 10 paralelních vláken, které každý soubor kopie 100:
 
 ```bash
 cp /mnt/source/file0* /mnt/destination1/ & \
@@ -138,7 +138,7 @@ Client4: cp -R /mnt/source/dir3/dir3d /mnt/destination/dir3/ &
 
 Po porozumění výše zmíněných přístupů (více než jedno umístění na jeden cíl, více cílů na klienta, více klientů na jeden zdrojový souborový systém) zvažte toto doporučení: manifesty souborů sestavení a pak je používejte s příkazy kopírování mezi více klienty.
 
-V tomto scénáři se k ``find`` vytváření manifestů souborů nebo adresářů používá příkaz UNIX:
+V tomto scénáři se ``find`` k vytváření manifestů souborů nebo adresářů používá příkaz UNIX:
 
 ```bash
 user@build:/mnt/source > find . -mindepth 4 -maxdepth 4 -type d

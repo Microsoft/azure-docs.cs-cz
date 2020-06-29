@@ -3,16 +3,16 @@ title: Azure File Sync síťové požadavky | Microsoft Docs
 description: Přehled možností sítě pro Azure File Sync.
 author: roygara
 ms.service: storage
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 06/03/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 95fb967fa33a581096df65c3ed77e575aa3f6268
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: af5561a010ca1c2d45cf10a37a3b302d5e224158
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84466746"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85512573"
 ---
 # <a name="azure-file-sync-networking-considerations"></a>Azure File Sync síťové požadavky
 Ke sdílené složce Azure se můžete připojit dvěma způsoby:
@@ -48,7 +48,7 @@ Souborové servery můžete izolovat z většiny internetových umístění pro 
 
 Azure File Sync vyžaduje rozsahy IP adres pro následující služby, které identifikovaly značky služeb:
 
-| Služba | Description | Značka služby |
+| Služba | Popis | Značka služby |
 |---------|-------------|-------------|
 | Synchronizace souborů Azure | Služba Azure File Sync, jak je reprezentovaná objektem služby synchronizace úložiště, zodpovídá za základní aktivitu synchronizace dat mezi sdílenou složkou Azure a souborovým serverem Windows. | `StorageSyncService` |
 | Soubory Azure | Všechna data synchronizovaná prostřednictvím Azure File Sync se ukládají ve sdílené složce Azure. Soubory změněné na souborových serverech Windows se replikují do sdílené složky Azure a soubory vrstvené na místním souborovém serveru se snadno stáhnou, když si ji uživatel požádá. | `Storage` |

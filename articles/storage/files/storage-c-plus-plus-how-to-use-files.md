@@ -3,16 +3,16 @@ title: Vývoj pro soubory Azure pomocí C++ | Microsoft Docs
 description: Naučte se vyvíjet aplikace a služby C++, které používají soubory Azure k ukládání dat souborů.
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 97af40bd1f57acb5b26d3b6216984dfb8e3a5181
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6b201565ae2bcadccf55cee78ade0e011e603a15
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "68699805"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515390"
 ---
 # <a name="develop-for-azure-files-with-c"></a>Vývoj pro soubory Azure pomocí C++
 
@@ -41,7 +41,7 @@ Chcete-li vytvořit ukázky, bude nutné nainstalovat Azure Storage klientské k
 Chcete-li nainstalovat klienta Azure Storage 2.4.0 pro jazyk C++, můžete použít jednu z následujících metod:
 
 * **Linux:** Postupujte podle pokynů uvedených na stránce [pro Readme klienta Azure Storage klientské knihovny pro C++](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) .
-* **Windows:** V aplikaci Visual Studio klikněte **na &gt; nástroje Správce &gt; balíčků NuGet konzola správce balíčků**. Do [konzoly Správce balíčků NuGet](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) zadejte následující příkaz a stiskněte klávesu **ENTER**.
+* **Windows:** V aplikaci Visual Studio klikněte na **nástroje &gt; Správce balíčků NuGet &gt; Konzola správce balíčků**. Do [konzoly Správce balíčků NuGet](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) zadejte následující příkaz a stiskněte klávesu **ENTER**.
   
 
 ```powershell

@@ -3,16 +3,16 @@ title: Konfigurace sítě VPN typu Site-to-Site (S2S) pro použití se soubory A
 description: Jak nakonfigurovat síť VPN typu Site-to-Site (S2S) pro použití se soubory Azure
 author: roygara
 ms.service: storage
-ms.topic: overview
+ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: ae3d38d92990d7a1af4146c25b017286ebd29352
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4d1d0f9e2a86da8213a9662b68c791a117dcc7fb
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80061036"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515341"
 ---
 # <a name="configure-a-site-to-site-vpn-for-use-with-azure-files"></a>Konfigurace sítě VPN typu Site-to-site pro použití se soubory Azure
 Připojení VPN typu Site-to-Site (S2S) můžete použít k připojení sdílených složek Azure přes protokol SMB z místní sítě bez nutnosti otevření portu 445. SÍŤ VPN typu Site-to-site můžete nastavit pomocí [VPN Gateway Azure](../../vpn-gateway/vpn-gateway-about-vpngateways.md), což je prostředek Azure, který nabízí služby VPN a který je nasazený ve skupině prostředků spolu s účty úložiště nebo jinými prostředky Azure.

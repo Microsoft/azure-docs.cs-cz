@@ -5,15 +5,15 @@ author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 03/25/2020
+ms.date: 06/26/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 321983fbe99d17dc78198feb195eed8ea26de569
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f615ed5183142ca7684c7e705fa6a42bd3124d19
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82100613"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514824"
 ---
 # <a name="deploy-spot-vms-using-azure-powershell"></a>Nasazení virtuálních počítačů na místě pomocí Azure PowerShell
 
@@ -22,17 +22,18 @@ Použití [přímých virtuálních počítačů](spot-vms.md) vám umožní vyu
 
 Ceny pro virtuální počítače na místě jsou proměnné na základě oblastí a SKU. Další informace najdete v tématu ceny virtuálních počítačů pro [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) a [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). Další informace o nastavení maximální ceny najdete v tématu [virtuální počítače – ceny](spot-vms.md#pricing).
 
-Máte možnost nastavit maximální cenu, kterou jste ochotni zaplatit za hodinu pro virtuální počítač. Maximální cena za virtuální počítač na místě se dá nastavit v amerických dolarech (USD), a to s využitím až 5 desetinných míst. Hodnota `0.98765`by měla být například maximální cena $0,98765 USD za hodinu. Pokud nastavíte maximální cenu `-1`, nebude se virtuální počítač vyřadit podle ceny. Cena za virtuální počítač bude aktuální cena za bod nebo cena za standardní virtuální počítač, který je stále menší, pokud je dostupná kapacita a kvóta.
+Máte možnost nastavit maximální cenu, kterou jste ochotni zaplatit za hodinu pro virtuální počítač. Maximální cena za virtuální počítač na místě se dá nastavit v amerických dolarech (USD), a to s využitím až 5 desetinných míst. Hodnota by měla být například `0.98765` maximální cena $0,98765 USD za hodinu. Pokud nastavíte maximální cenu `-1` , nebude se virtuální počítač vyřadit podle ceny. Cena za virtuální počítač bude aktuální cena za bod nebo cena za standardní virtuální počítač, který je stále menší, pokud je dostupná kapacita a kvóta.
 
 
 ## <a name="create-the-vm"></a>Vytvořte virtuální počítač.
 
-Vytvořte spotVM pomocí [New-AzVmConfig](/powershell/module/az.compute/new-azvmconfig) pro vytvoření konfigurace. Zahrňte `-Priority Spot` a `-MaxPrice` nastavte buď na:
+Vytvořte spotVM pomocí [New-AzVmConfig](/powershell/module/az.compute/new-azvmconfig) pro vytvoření konfigurace. Zahrňte `-Priority Spot` a nastavte `-MaxPrice` buď na:
 - `-1`virtuální počítač proto nebude vyřazení na základě ceny.
 - hodnota dolaru, maximálně 5 číslic. Například `-MaxPrice .98765` znamená, že se virtuální počítač bude uvolnit, jakmile cena za spotVM bude přibližně o 98765 za hodinu.
 
 
-Tento příklad vytvoří spotVM, který se nevrátí na základě cen (jenom v případě, že Azure potřebuje kapacitu zpátky).
+Tento příklad vytvoří spotVM, který se nevrátí na základě cen (jenom v případě, že Azure potřebuje kapacitu zpátky). Zásada vyřazení je nastavená tak, aby se virtuální počítač nastavil jako neplatný, aby se mohl později restartovat. Pokud chcete odstranit virtuální počítač a příslušný disk, když je virtuální počítač vyřazený, nastavte `-EvictionPolicy` na `Delete` v `New-AzVMConfig` .
+
 
 ```azurepowershell-interactive
 $resourceGroup = "mySpotRG"
@@ -57,7 +58,7 @@ $nic = New-AzNetworkInterface -Name myNic -ResourceGroupName $resourceGroup -Loc
 
 # Create a virtual machine configuration and set this to be a Spot VM
 
-$vmConfig = New-AzVMConfig -VMName $vmName -VMSize Standard_D1 -Priority "Spot" -MaxPrice -1| `
+$vmConfig = New-AzVMConfig -VMName $vmName -VMSize Standard_D1 -Priority "Spot" -MaxPrice -1 -EvictionPolicy Deallocate | `
 Set-AzVMOperatingSystem -Windows -ComputerName $vmName -Credential $cred | `
 Set-AzVMSourceImage -PublisherName MicrosoftWindowsServer -Offer WindowsServer -Skus 2016-Datacenter -Version latest | `
 Add-AzVMNetworkInterface -Id $nic.Id
@@ -74,6 +75,6 @@ Get-AzVM -ResourceGroupName $resourceGroup | `
 
 ## <a name="next-steps"></a>Další kroky
 
-Můžete také vytvořit virtuální počítač s přímým použitím rozhraní příkazového [řádku Azure](../linux/spot-cli.md) nebo [šablony](../linux/spot-template.md).
+Můžete také vytvořit virtuální počítač s přímým použitím [Azure CLI](../linux/spot-cli.md), [portálu](spot-portal.md) nebo [šablony](../linux/spot-template.md).
 
 Pokud dojde k chybě, přečtěte si [kódy chyb](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

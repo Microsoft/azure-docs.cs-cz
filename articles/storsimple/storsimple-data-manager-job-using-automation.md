@@ -3,15 +3,15 @@ title: Spuštění úlohy v StorSimple Data Manager pomocí Azure Automation
 description: Naučte se používat Azure Automation pro aktivaci StorSimple Data Manager úloh.
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 034b4996672f0961cf31d342aa6055482f099b9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2562e7463ba0a79cf77d21f3bb619f13283c989d
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76273996"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514927"
 ---
 # <a name="use-azure-automation-to-trigger-a-job"></a>Aktivace úlohy pomocí Azure Automation
 
@@ -28,8 +28,8 @@ Než začnete, ujistěte se, že máte následující:
 
 *   Azure PowerShell nainstalované v klientském počítači. [Stáhněte si Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps).
 *   Správně nakonfigurovaná definice úlohy ve StorSimple Data Manager službě v rámci skupiny prostředků.
-*   Stáhněte [`DataTransformationApp.zip`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/raw/master/Azure%20Automation%20For%20Data%20Manager/DataTransformationApp.zip) si soubor z úložiště GitHub. 
-*   Stáhněte [`Trigger-DataTransformation-Job.ps1`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Azure%20Automation%20For%20Data%20Manager/Trigger-DataTransformation-Job.ps1) si skript z úložiště GitHub.
+*   Stáhněte si [`DataTransformationApp.zip`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/raw/master/Azure%20Automation%20For%20Data%20Manager/DataTransformationApp.zip) soubor z úložiště GitHub. 
+*   Stáhněte si [`Trigger-DataTransformation-Job.ps1`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Azure%20Automation%20For%20Data%20Manager/Trigger-DataTransformation-Job.ps1) skript z úložiště GitHub.
 
 ## <a name="step-by-step-procedure"></a>Podrobný postup
 
@@ -86,7 +86,7 @@ Proveďte následující kroky pro import, publikování a spuštění sady Runb
 
 2. V nabídce **Přidat Runbook**klikněte na **importovat existující Runbook**.
 
-3. Přejděte na soubor `Trigger-DataTransformation-Job.ps1` skriptu Azure PowerShell pro **soubor sady Runbook**. Typ Runbooku se vybere automaticky. Zadejte název a nepovinný popis Runbooku. Klikněte na **Vytvořit**.
+3. Přejděte na soubor skriptu Azure PowerShell `Trigger-DataTransformation-Job.ps1` pro **soubor sady Runbook**. Typ Runbooku se vybere automaticky. Zadejte název a nepovinný popis Runbooku. Klikněte na **Vytvořit**.
 
     ![Přidat Runbook 2](./media/storsimple-data-manager-job-using-automation/add-runbook-2.png)
 

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 6ddf3db422a192b82b8d67e8e532a9ae0030d6f7
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 0a247626566a4b0156d879954bf6734d248f01d8
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212512"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513520"
 ---
 # <a name="create-a-power-bi-app-for-microsoft-appsource"></a>Vytvoření aplikace Power BI pro Microsoft AppSource
 
@@ -53,7 +53,7 @@ Vyberte **vytvořit** pro vygenerování nabídky a pokračování.
 
 Tato stránka zobrazuje vizuální znázornění kroků požadovaných k publikování této nabídky (dokončené i nadcházející) a jak dlouho by měly být jednotlivé kroky dokončeny.
 
-Obsahuje odkazy na provádění operací s touto nabídkou na základě vámi provedeného výběru. Příklad:
+Obsahuje odkazy na provádění operací s touto nabídkou na základě vámi provedeného výběru. Například:
 
 - Pokud je nabídka nabídkou konceptu a [odstranění konceptu](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)
 - Pokud je nabídka živá, [přestanou prodávat nabídku](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan) .
@@ -160,10 +160,10 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Microsoft AppSo
 7. Zásady ochrany osobních údajů
 8. Název nabídky
 9. Souhrn
-10. Description
+10. Popis
 11. Snímky obrazovky a videa
 
-### <a name="name"></a>Name
+### <a name="name"></a>Název
 
 Název, který zde zadáte, se zobrazí jako název vaší nabídky. Toto pole je předem vyplněno textem, který jste zadali do pole **alias nabídky** při vytváření nabídky. Tento název můžete později změnit.
 
@@ -177,7 +177,7 @@ Název:
 
 Zadejte krátký popis vaší nabídky. Může to být až 100 znaků dlouhé a používá se ve výsledcích hledání na webu Marketplace.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Popis
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -270,4 +270,4 @@ Na stránce pro kontrolu můžete:
 
 Pokud chcete odeslat nabídku pro publikování, vyberte **publikovat**.
 
-Pošleme vám e-mail s oznámením, že je k dispozici verze Preview této nabídky ke kontrole a schválení. Pokud chcete svou nabídku publikovat na veřejném (nebo v případě soukromé nabídky, soukromé cílové skupině), přejít do partnerského centra a vyberte **jít-Live**.
+Pošleme vám e-mail s oznámením, že je k dispozici verze Preview této nabídky ke kontrole a schválení. Pokud chcete svou nabídku publikovat na veřejném, klikněte na partnerské centrum a vyberte **jít-Live**.

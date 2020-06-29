@@ -10,12 +10,12 @@ ms.date: 03/19/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 30ef840e254355e7db34c626f482d86246e6a738
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 4af70a4e2a698bd280c8c41018bc5aaa1bfa27f8
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84805407"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85512558"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-the-azure-portal"></a>Konfigurace klíčů spravovaných zákazníkem pomocí Azure Key Vault pomocí Azure Portal
 
@@ -32,7 +32,7 @@ Informace o tom, jak tyto vlastnosti v existujícím trezoru klíčů povolit, n
 - [Jak používat obnovitelné odstranění pomocí prostředí PowerShell](../../key-vault/general/soft-delete-powershell.md).
 - [Jak používat obnovitelné odstranění pomocí rozhraní](../../key-vault/general/soft-delete-cli.md)PŘÍKAZového řádku
 
-Azure Storage šifrování podporují jenom 2048 klíčů RSA a RSA-HSM. Další informace o klíčích najdete v tématu **Key Vault Keys** v tématu [informace o Azure Key Vaultch klíčích, tajných klíčích a certifikátech](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys).
+Šifrování úložiště Azure podporuje klíče RSA a RSA-HSM velikostí 2048, 3072 a 4096. Další informace o klíčích najdete v tématu **Key Vault Keys** v tématu [informace o Azure Key Vaultch klíčích, tajných klíčích a certifikátech](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys).
 
 ## <a name="enable-customer-managed-keys"></a>Povolit klíče spravované zákazníkem
 

@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2017
 ms.author: alkohli
-ms.openlocfilehash: 956cf45eb9e246f2e1f917f2bf487ac14deba90e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 62c052f2293c670b43f1c77363c8bbbcc03d0de2
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "65204254"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514287"
 ---
 # <a name="configure-web-proxy-for-your-storsimple-device"></a>Konfigurace webového proxy serveru pro zařízení StorSimple
 
@@ -86,7 +86,7 @@ Webový proxy server je teď povolený. Můžete přeskočit krok [Povolit webov
 Alternativním způsobem konfigurace nastavení webového proxy serveru je pomocí rutin Windows PowerShell pro StorSimple. Pro konfiguraci webového proxy serveru proveďte následující kroky.
 
 #### <a name="to-configure-web-proxy-via-cmdlets"></a>Konfigurace webového proxy prostřednictvím rutin
-1. V nabídce Konzola sériového portu klikněte na možnost 1, **Přihlaste se s úplným přístupem**. Po zobrazení výzvy zadejte **heslo správce zařízení**. Výchozí heslo je `Password1`.
+1. V nabídce Konzola sériového portu klikněte na možnost 1, **Přihlaste se s úplným přístupem**. Po zobrazení výzvy zadejte **heslo správce zařízení**. Výchozí heslo je `Password1` .
 2. Na příkazovém řádku zadejte:
    
     `Set-HcsWebProxy -Authentication NTLM -ConnectionURI "<http://<IP address or FQDN of web proxy server>:<TCP port number>" -Username "<Username for web proxy server>"`
@@ -108,7 +108,7 @@ Webový proxy server je ve výchozím nastavení zakázán. Po nakonfigurování
 Pokud chcete na svém zařízení povolit webový proxy server, proveďte následující kroky v Windows PowerShell pro StorSimple:
 
 #### <a name="to-enable-web-proxy"></a>Povolení webového proxy serveru
-1. V nabídce Konzola sériového portu klikněte na možnost 1, **Přihlaste se s úplným přístupem**. Po zobrazení výzvy zadejte **heslo správce zařízení**. Výchozí heslo je `Password1`.
+1. V nabídce Konzola sériového portu klikněte na možnost 1, **Přihlaste se s úplným přístupem**. Po zobrazení výzvy zadejte **heslo správce zařízení**. Výchozí heslo je `Password1` .
 2. Na příkazovém řádku zadejte:
    
     `Enable-HcsWebProxy`

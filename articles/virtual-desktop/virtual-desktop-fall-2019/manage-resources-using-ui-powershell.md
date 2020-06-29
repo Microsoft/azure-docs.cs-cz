@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5a500ef44170f23c8acdf752393389a4af06a798
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 0ae3bb87bfee681aa518a4dfef064677ffa97119
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85214175"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513392"
 ---
 # <a name="deploy-a-management-tool-with-powershell"></a>Nasazení nástroje pro správu pomocí PowerShellu
 
@@ -40,7 +40,7 @@ Následující prohlížeče jsou kompatibilní s nástrojem pro správu:
 Před nasazením nástroje pro správu budete potřebovat uživatele Azure Active Directory (Azure AD) k vytvoření registrace aplikace a nasazení uživatelského rozhraní pro správu. Tento uživatel musí:
 
 - Mít oprávnění k vytváření prostředků ve vašem předplatném Azure
-- Mít oprávnění k vytvoření aplikace služby Azure AD. Pomocí těchto kroků zkontrolujete, jestli má uživatel požadovaná oprávnění, podle pokynů v tématu [požadovaná oprávnění](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
+- Mít oprávnění k vytvoření aplikace služby Azure AD. Pomocí těchto kroků zkontrolujete, jestli má uživatel požadovaná oprávnění, podle pokynů v tématu [požadovaná oprávnění](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app).
 
 Po nasazení a konfiguraci nástroje pro správu doporučujeme, abyste požádali uživatele, aby spustil uživatelské rozhraní pro správu, aby se zajistilo, že všechno funguje. Uživatel, který spouští uživatelské rozhraní pro správu, musí mít přiřazení role, které jim umožní zobrazit nebo upravit klienta virtuální plochy Windows.
 

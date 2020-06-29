@@ -8,16 +8,16 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: jrasnick
 ms.date: 06/09/2020
-ms.openlocfilehash: 766a41b61f32804c7d7f59c946530f8e1a7b869a
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 3f84cd92a4c4f96831d39cac783df6710c5ea5f4
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85296266"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513418"
 ---
 # <a name="quickstart-create-an-azure-synapse-analytics-sql-pool-by-using-an-arm-template"></a>Rychlý Start: Vytvoření fondu SQL Azure synapse Analytics pomocí šablony ARM
 
-Tato šablona vytvoří fond SQL Azure synapse Analytics s povoleným transparentní šifrování dat. Synapse fond SQL odkazuje na funkce podnikových dat v datovém skladu, které jsou všeobecně dostupné v Azure synapse.
+Tato šablona Azure Resource Manager (šablona ARM) vytvoří fond SQL Azure synapse Analytics s povoleným transparentní šifrování dat. Synapse fond SQL odkazuje na funkce podnikových dat v datovém skladu, které jsou všeobecně dostupné v Azure synapse.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -107,8 +107,8 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili fond SQL Azure synapse Analytics pomocí šablony Azure Resource Manager a ověřili nasazení. Další informace o službě Azure Azure synapse Analytics a Azure Resource Manager najdete v následujících článcích.
+V tomto rychlém startu jste vytvořili fond SQL Azure synapse Analytics pomocí šablony ARM a ověřili nasazení. Další informace o službě Azure synapse Analytics a Azure Resource Manager najdete dál v článcích níže.
 
 - Přečtěte si [Přehled služby Azure synapse Analytics](sql-data-warehouse-overview-what-is.md)
 - Další informace o [Azure Resource Manageru](../../azure-resource-manager/management/overview.md)
-- [Vytvoření a nasazení první šablony Azure Resource Manageru](../../azure-resource-manager/templates/template-tutorial-create-first-template.md)
+- [Vytvoření a nasazení první šablony ARM](../../azure-resource-manager/templates/template-tutorial-create-first-template.md)

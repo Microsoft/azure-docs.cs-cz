@@ -258,36 +258,6 @@
           href: ./cloud-partner-portal/saas-app/cpp-saas-offer.md
         - name: Nabídka virtuálních počítačů
           href: ./cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer.md
-    - name: Referenční materiály k rozhraní API
-      items:
-        - name: Přehled
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-overview.md
-        - name: Požadavky
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-prerequisites.md
-        - name: Požadavky
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-considerations.md
-        - name: Řízení souběžnosti
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-concurrency-control.md
-        - name: Načtení nabídek
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-retrieve-offers.md
-        - name: Načtení konkrétní nabídky
-          href: ./cloud-partner-portal-orig//cloud-partner-portal-api-retrieve-specific-offer.md
-        - name: Přidání nebo úprava nabídky
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-creating-offer.md
-        - name: Načtení stavu nabídky
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-retrieve-offer-status.md
-        - name: Publikování nabídky
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-publish-offer.md
-        - name: Načtení operací
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-retrieve-operations.md
-        - name: Zrušení operací
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-cancel-operations.md
-        - name: Zveřejnění
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-go-live.md
-        - name: Ceny nabídek virtuálních počítačů
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-setting-price.md
-        - name: Řešení potíží s chybami ověřování
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-troubleshooting-authentication-errors.md
     - name: Získání podpory
       href: ./cloud-partner-portal-orig/cloud-partner-portal-support-for-cloud-partner-portal.md
 - name: Komerční marketplace v Partnerském centru
@@ -433,8 +403,6 @@
       href: ./partner-center-portal/update-existing-offer.md
     - name: Aktivace výhod
       href: ./partner-center-portal/marketplace-rewards.md
-    - name: Možnosti podpory
-      href: ./partner-center-portal/support.md
     - name: Analýzy partnerského centra
       items:
         - name: Analýzy pro komerční marketplace
@@ -471,3 +439,35 @@
           href: ./partner-center-portal/payout-policy-details.md
         - name: Podrobné informace o daních
           href: ./partner-center-portal/tax-details-paid-transactions.md
+    - name: Referenční materiály k rozhraní API CPP
+      items:
+        - name: Přehled
+          href: ./cloud-partner-portal-api-overview.md
+        - name: Požadavky
+          href: ./cloud-partner-portal-api-prerequisites.md
+        - name: Požadavky
+          href: ./cloud-partner-portal-api-considerations.md
+        - name: Řízení souběžnosti
+          href: ./cloud-partner-portal-api-concurrency-control.md
+        - name: Načtení nabídek
+          href: ./cloud-partner-portal-api-retrieve-offers.md
+        - name: Načtení konkrétní nabídky
+          href: ./cloud-partner-portal-api-retrieve-specific-offer.md
+        - name: Přidání nebo úprava nabídky
+          href: ./cloud-partner-portal-api-creating-offer.md
+        - name: Načtení stavu nabídky
+          href: ./cloud-partner-portal-api-retrieve-offer-status.md
+        - name: Publikování nabídky
+          href: ./cloud-partner-portal-api-publish-offer.md
+        - name: Načtení operací
+          href: ./cloud-partner-portal-api-retrieve-operations.md
+        - name: Zrušení operací
+          href: ./cloud-partner-portal-api-cancel-operations.md
+        - name: Zveřejnění
+          href: ./cloud-partner-portal-api-go-live.md
+        - name: Ceny nabídek virtuálních počítačů
+          href: ./cloud-partner-portal-api-setting-price.md
+        - name: Řešení potíží s chybami ověřování
+          href: ./cloud-partner-portal-api-troubleshooting-authentication-errors.md
+    - name: Možnosti podpory
+      href: ./partner-center-portal/support.md

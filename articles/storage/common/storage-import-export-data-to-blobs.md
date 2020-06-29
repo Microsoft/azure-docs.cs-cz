@@ -4,16 +4,16 @@ description: Naučte se vytvářet úlohy importu a exportu v Azure Portal pro p
 author: alkohli
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 570c663861361a19190f6fb5d608b6aa029a0885
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6d12c0ce0df44c37f4e7df49df2c11301513917c
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80282490"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514222"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Použití služby Azure import/export k importu dat do Azure Blob Storage
 
@@ -33,11 +33,11 @@ Musíte:
 * Povolte nástroj BitLocker v systému Windows. Přečtěte si téma [Jak povolit nástroj BitLocker](https://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/).
 * [Stáhněte si nejnovější verzi WAImportExport verze 1](https://www.microsoft.com/download/details.aspx?id=42659) v systému Windows. Nejnovější verze nástroje má aktualizace zabezpečení, které umožňují externí ochranu klíče BitLockeru a aktualizovanou funkci režimu odemknutí.
 
-  * Rozbalte do výchozí složky `waimportexportv1`. Například, `C:\WaImportExportV1`.
-* Mít účet FedEx/DHL. Pokud chcete použít nosný operátor jiný než FedEx/DHL, obraťte se na Azure Data Box provozní tým na `adbops@microsoft.com`adrese.  
+  * Rozbalte do výchozí složky `waimportexportv1` . Například, `C:\WaImportExportV1`.
+* Mít účet FedEx/DHL. Pokud chcete použít nosný operátor jiný než FedEx/DHL, obraťte se na Azure Data Box provozní tým na adrese `adbops@microsoft.com` .  
   * Účet musí být platný, měl by mít zůstatek a musí mít možnosti vrácení expedice.
   * Vygenerujte sledovací číslo pro úlohu exportu.
-  * Každá úloha by měla mít samostatné sledovací číslo. Více úloh se stejným číslem sledování se nepodporuje.
+  * Každá úloha by měla mít samostatné sledovací číslo. Více úloh se stejným sledovacím číslem se nepodporuje.
   * Pokud nemáte účet dopravce, přečtěte si:
     * [Vytvořte účet FedEx](https://www.fedex.com/en-us/create-account.html)nebo
     * [Vytvořte účet DHL](http://www.dhl-usa.com/en/express/shipping/open_account.html).
@@ -73,7 +73,7 @@ K přípravě jednotek proveďte následující kroky.
     ./WAImportExport.exe PrepImport /j:<journal file name> /id:session#<session number> /t:<Drive letter> /bk:<BitLocker key> /srcdir:<Drive letter>:\ /dstdir:<Container name>/ /blobtype:<BlockBlob or PageBlob> /skipwrite
     ```
 
-    Soubor deníku se vytvoří ve stejné složce, ve které jste spustili nástroj. Vytvoří se také další dva soubory – soubor *. XML* (složka, ve které jste spustili nástroj), a soubor *Drive-manifest. XML* (složka, ve které jsou data uložena).
+    Soubor deníku se vytvoří ve stejné složce, ve které jste spustili nástroj. Vytvoří se taky další dva soubory – soubor *. XML* (složka, ve které jste nástroj spustili), a *drive-manifest.xml* soubor (složka, ve které se nachází data).
 
     Použité parametry jsou popsány v následující tabulce:
 
@@ -81,23 +81,23 @@ K přípravě jednotek proveďte následující kroky.
     |---------|---------|
     |/j     |Název souboru deníku s příponou. jrn. Vygeneruje se soubor deníku na jednotku. Doporučujeme použít sériové číslo disku jako název souboru deníku.         |
     |/ID     |ID relace Pro každou instanci příkazu použijte jedinečné číslo relace.      |
-    |/t:     |Písmeno jednotky disku, který má být dodán. Například jednotka `D`.         |
+    |/t:     |Písmeno jednotky disku, který má být dodán. Například jednotka `D` .         |
     |/bk:     |Klíč BitLockeru pro jednotku. Jeho číselné heslo z výstupu`manage-bde -protectors -get D:`      |
-    |/srcdir:     |Písmeno jednotky disku, který se má odeslat a potom `:\`. Například, `D:\`.         |
+    |/srcdir:     |Písmeno jednotky disku, který se má odeslat a potom `:\` . Například, `D:\`.         |
     |/dstdir:     |Název cílového kontejneru v Azure Storage.         |
-    |/blobtype:     |Tato možnost určuje typ objektů blob, do kterých chcete importovat data. Pro objekty blob bloku se jedná `BlockBlob` o a pro objekty blob stránky `PageBlob`.         |
+    |/blobtype:     |Tato možnost určuje typ objektů blob, do kterých chcete importovat data. Pro objekty blob bloku se jedná o `BlockBlob` a pro objekty blob stránky `PageBlob` .         |
     |/skipwrite:     |Možnost, která určuje, že se nevyžadují žádná nová data ke zkopírování a stávající data na disku se připravují.          |
-    |/enablecontentmd5:     |Možnost, pokud je povolená, zajistí, že se algoritmus MD5 `Content-md5` vypočítá a nastaví jako vlastnost u každého objektu BLOB. Tuto možnost použijte pouze v případě, že chcete `Content-md5` pole použít po nahrání dat do Azure. <br> Tato možnost nemá vliv na kontrolu integrity dat (ke které dochází ve výchozím nastavení). Nastavení zvyšuje čas potřebný k nahrání dat do cloudu.          |
+    |/enablecontentmd5:     |Možnost, pokud je povolená, zajistí, že se algoritmus MD5 vypočítá a nastaví jako `Content-md5` vlastnost u každého objektu BLOB. Tuto možnost použijte pouze v případě, že chcete `Content-md5` pole použít po nahrání dat do Azure. <br> Tato možnost nemá vliv na kontrolu integrity dat (ke které dochází ve výchozím nastavení). Nastavení zvyšuje čas potřebný k nahrání dat do cloudu.          |
 8. Opakujte předchozí krok pro každý disk, který je třeba odeslat. Soubor deníku se zadaným názvem se vytvoří pro každé spuštění příkazového řádku.
 
     > [!IMPORTANT]
-    > * Společně se souborem deníku se vytvoří i `<Journal file name>_DriveInfo_<Drive serial ID>.xml` soubor ve stejné složce, ve které se nástroj nachází. Soubor. XML se používá místo souboru deníku při vytváření úlohy, pokud je soubor deníku příliš velký.
+    > * Společně se souborem deníku `<Journal file name>_DriveInfo_<Drive serial ID>.xml` se vytvoří i soubor ve stejné složce, ve které se nástroj nachází. Soubor. XML se používá místo souboru deníku při vytváření úlohy, pokud je soubor deníku příliš velký.
 
 ## <a name="step-2-create-an-import-job"></a>Krok 2: vytvoření úlohy importu
 
 Provedením následujících kroků vytvořte v Azure Portal úlohu importu.
 
-1. Přihlaste https://portal.azure.com/se k.
+1. Přihlaste se k https://portal.azure.com/ .
 2. **> úlohy import/export přejít na všechny služby > úložiště**.
 
     ![Přejít na úlohy importu/exportu](./media/storage-import-export-data-to-blobs/import-to-blob1.png)

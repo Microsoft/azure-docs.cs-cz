@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/10/2017
 ms.author: alkohli
-ms.openlocfilehash: e09ff4bcbc141b1a1f80bc278918a291639c1885
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 9b95593dd7ce7e10300ecef9b3636073a3096a7f
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "61445299"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513658"
 ---
 # <a name="install-update-05-on-your-storsimple-virtual-array"></a>Instalace aktualizace 0,5 ve virtuálním poli StorSimple
 
@@ -57,7 +57,7 @@ Provedením následujících kroků si stáhněte aktualizace softwaru z Katalog
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>Stažení aktualizace nebo opravy hotfix
 
-1. Spusťte Internet Explorer a přejděte na [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com).
+1. Spusťte Internet Explorer a přejděte na [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com) .
 
 2. Pokud na tomto počítači používáte Katalog služby Microsoft Update poprvé, po zobrazení výzvy k instalaci doplňku Katalog služby Microsoft Update klikněte na **Nainstalovat**.
 
@@ -75,8 +75,8 @@ Provedením následujících kroků si stáhněte aktualizace softwaru z Katalog
     ![Soubory v balíčku](./media/storsimple-virtual-array-install-update-05/update05folder.png)
 
     Zobrazí se následující:
-    -  Soubor `WindowsTH-KB3011067-x64`samostatného balíčku Microsoft Update. Tento soubor slouží k aktualizaci softwaru zařízení.
-    - Soubor `GenevaMonitoringAgentPackageInstaller`balíčku agenta monitorování v Ženevě. Tento soubor slouží k aktualizaci agenta služby pro monitorování a diagnostiku (MDS). Dvakrát klikněte na soubor CAB. Zobrazí se soubor. msi. Vyberte soubor, klikněte na něj pravým tlačítkem a potom soubor **rozbalte** . K aktualizaci agenta použijete soubor _. msi_ .
+    -  Soubor samostatného balíčku Microsoft Update `WindowsTH-KB3011067-x64` . Tento soubor slouží k aktualizaci softwaru zařízení.
+    - Soubor balíčku agenta monitorování v Ženevě `GenevaMonitoringAgentPackageInstaller` . Tento soubor slouží k aktualizaci agenta služby pro monitorování a diagnostiku (MDS). Dvakrát klikněte na soubor CAB. Zobrazí se soubor. msi. Vyberte soubor, klikněte na něj pravým tlačítkem a potom soubor **rozbalte** . K aktualizaci agenta použijete soubor _. msi_ .
 
         ![Extrahovat soubor aktualizace agenta služby MDS](./media/storsimple-virtual-array-install-update-05/extract-geneva-monitoring-agent-installer.png)
         
@@ -90,7 +90,7 @@ Tuto metodu použijte, chcete-li nainstalovat aktualizace na zařízení s verz�
 
 #### <a name="to-install-the-update-or-the-hotfix"></a>Instalace aktualizace nebo opravy hotfix
 
-1. V místním webovém uživatelském rozhraní přejdete na **Údržba** > **aktualizace softwaru**.
+1. V místním webovém uživatelském rozhraní přejdete na **Údržba**  >  **aktualizace softwaru**.
    
     ![aktualizace zařízení](./media/storsimple-virtual-array-install-update-05/update1m.png)
 
@@ -106,7 +106,7 @@ Tuto metodu použijte, chcete-li nainstalovat aktualizace na zařízení s verz�
    
     ![aktualizace zařízení](./media/storsimple-virtual-array-install-update-05/update5m.png)
 
-5. Po dokončení restartování přejdete na **přihlašovací** stránku. Chcete-li ověřit, zda byl software zařízení aktualizován, v místním webovém uživatelském rozhraní, navštivte web**aktualizace softwaru** **Údržba** > . Zobrazená verze softwaru by měla být **10.0.0.0.0.10290.0** pro aktualizaci 0,5.
+5. Po dokončení restartování přejdete na **přihlašovací** stránku. Chcete-li ověřit, zda byl software zařízení aktualizován, v místním webovém uživatelském rozhraní, **Maintenance**navštivte web  >  **aktualizace softwaru**údržba. Zobrazená verze softwaru by měla být **10.0.0.0.0.10290.0** pro aktualizaci 0,5.
    
    > [!NOTE]
    > Verze softwaru oznamujeme trochu jiným způsobem v místním webovém uživatelském rozhraní a Azure Portal. Například místní webové uživatelské rozhraní hlásí **10.0.0.0.0.10290** a sestavy Azure Portal **10.0.10290.0** pro stejnou verzi.

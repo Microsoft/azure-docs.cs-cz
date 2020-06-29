@@ -4,7 +4,7 @@
   items:
     - name: Co je IoT Plug and Play?
       href: overview-iot-plug-and-play.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Vytvoření zařízení
@@ -19,7 +19,7 @@
           href: quickstart-connect-pnp-device-c-linux.md
         - name: C Windows
           href: quickstart-connect-pnp-device-c-windows.md
-        - name: 'C#'
+        - name: C#
           href: quickstart-connect-pnp-device-csharp.md
         - name: Java
           href: quickstart-connect-pnp-device-java.md
@@ -29,7 +29,7 @@
       href: ../iot-central/core/tutorial-connect-pnp-device.md
     - name: Připojení k zařízení ve vašem řešení
       items:
-        - name: 'C#'
+        - name: C#
           href: quickstart-connect-pnp-device-solution-csharp.md
         - name: Java
           href: quickstart-connect-pnp-device-solution-java.md
@@ -83,6 +83,10 @@
           href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/createorupdatemodel'
         - name: Vygenerování tokenu zabezpečení REST
           href: howto-generate-sas-token.md
+- name: Referenční informace
+  items:
+    - name: Azure CLI
+      href: /cli/azure/azure-cli-reference-for-IoT
 - name: Zdroje a prostředky
   items:
     - name: Možnosti pomoci a podpory
@@ -108,6 +112,6 @@
     - name: Sady Azure IoT SDK
       items:
         - name: Sady SDK pro služby IoT
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
         - name: Sady SDK pro zařízení IoT
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks

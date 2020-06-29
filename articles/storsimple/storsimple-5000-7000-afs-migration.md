@@ -8,17 +8,17 @@ manager: twooley
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/19/2019
 ms.author: alkohli
-ms.openlocfilehash: b46e9ee8fc3e14981a01cc2425a8ce55d06c5a9a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5d656fd8757580b8ce96acf168e92fc847d400ca
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "65150743"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514064"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-azure-file-sync"></a>Migrace dat z řady StorSimple 5000-7000 na Azure File Sync
 
@@ -74,7 +74,7 @@ Provedením následujících kroků migrujete sdílenou složku systému Windows
     - [Nasaďte službu synchronizace úložiště](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#deploy-the-storage-sync-service). 
     - [Zaregistrujte Windows Server se službou synchronizace úložiště](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#register-windows-server-with-storage-sync-service). 
     - [Vytvořte skupinu synchronizace a koncový bod cloudu](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#create-a-sync-group-and-a-cloud-endpoint). Skupiny synchronizace je třeba provést pro každou sdílenou složku systému Windows, kterou je třeba migrovat z hostitele.
-    - [Vytvořte koncový bod serveru](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal#create-a-server-endpoint). Zadejte cestu jako cestu ke svazku StorSimple, který obsahuje data sdílené složky souborů. Pokud je například svazek StorSimple jednotka `J`a vaše data se nachází v `J:/<myafsshare>`, přidejte tuto cestu jako koncový bod serveru. Ponechte **vrstvu** **zakázanou**.
+    - [Vytvořte koncový bod serveru](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal#create-a-server-endpoint). Zadejte cestu jako cestu ke svazku StorSimple, který obsahuje data sdílené složky souborů. Pokud je například svazek StorSimple jednotka `J` a vaše data se nachází v `J:/<myafsshare>` , přidejte tuto cestu jako koncový bod serveru. Ponechte **vrstvu** **zakázanou**.
 2.  Počkejte, než se dokončí synchronizace souborového serveru. Pro každý server v dané skupině synchronizace se ujistěte, že:
     - Časová razítka posledního pokusu o synchronizaci pro nahrávání a stahování jsou poslední.
     - Stav je zelený pro nahrávání i stahování.

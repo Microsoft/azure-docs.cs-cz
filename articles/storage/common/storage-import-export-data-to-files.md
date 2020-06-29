@@ -4,16 +4,16 @@ description: Naučte se vytvářet úlohy importu v Azure Portal pro přenos dat
 author: alkohli
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/08/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 201d0c0a545c5ba7ae1bb0b5e119f7acb1ae362f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cbff2cbed37a4cff91116596f1c20dc3d170cae2
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79268298"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513492"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Import dat do služby Soubory Azure pomocí služby Azure Import/Export
 
@@ -29,11 +29,11 @@ Před vytvořením úlohy importu pro přenos dat do souborů Azure pečlivě zk
 - Mít aspoň jeden Azure Storage účet. Podívejte se na seznam [podporovaných účtů úložiště a typů úložiště pro službu import/export](storage-import-export-requirements.md). Informace o vytvoření nového účtu úložiště najdete v tématu [Vytvoření účtu úložiště](storage-account-create.md).
 - Mít dostatečný počet disků [podporovaných typů](storage-import-export-requirements.md#supported-disks).
 - Má systém Windows s [podporovanou verzí operačního systému](storage-import-export-requirements.md#supported-operating-systems).
-- [Stáhněte si WAImportExport verze 2](https://aka.ms/waiev2) v systému Windows. Rozbalte do výchozí složky `waimportexport`. Například, `C:\WaImportExport`.
-- Mít účet FedEx/DHL. Pokud chcete použít nosný operátor jiný než FedEx/DHL, obraťte se na Azure Data Box provozní tým na `adbops@microsoft.com`adrese.  
+- [Stáhněte si WAImportExport verze 2](https://aka.ms/waiev2) v systému Windows. Rozbalte do výchozí složky `waimportexport` . Například, `C:\WaImportExport`.
+- Mít účet FedEx/DHL. Pokud chcete použít nosný operátor jiný než FedEx/DHL, obraťte se na Azure Data Box provozní tým na adrese `adbops@microsoft.com` .  
     - Účet musí být platný, měl by mít zůstatek a musí mít možnosti vrácení expedice.
     - Vygenerujte sledovací číslo pro úlohu exportu.
-    - Každá úloha by měla mít samostatné sledovací číslo. Více úloh se stejným číslem sledování se nepodporuje.
+    - Každá úloha by měla mít samostatné sledovací číslo. Více úloh se stejným sledovacím číslem se nepodporuje.
     - Pokud nemáte účet dopravce, přečtěte si:
         - [Vytvořte účet FedEx](https://www.fedex.com/en-us/create-account.html)nebo
         - [Vytvořte účet DHL](http://www.dhl-usa.com/en/express/shipping/open_account.html).
@@ -48,9 +48,9 @@ K přípravě jednotek proveďte následující kroky.
 
 1. Připojte naše diskové jednotky k systému Windows přes konektory SATA.
 2. Na každé jednotce vytvořte jeden svazek NTFS. Přiřaďte ke svazku písmeno jednotky. Nepoužívejte mountpoints.
-3. Upravte soubor *DataSet. csv* v kořenové složce, ve které se nástroj nachází. V závislosti na tom, jestli chcete importovat soubor nebo složku nebo obojí, přidejte položky do souboru *DataSet. csv* podobně jako v následujících příkladech.  
+3. Upravte soubor *dataset.csv* v kořenové složce, ve které se nástroj nachází. V závislosti na tom, jestli chcete importovat soubor nebo složku nebo obojí, přidejte do souboru *dataset.csv* položky podobné následujícím příkladům.  
 
-   - **Import souboru**: v následujícím příkladu se data ke zkopírování nacházejí v jednotce F:. Soubor *MyFile1. txt* se zkopíruje do kořenového adresáře *MyAzureFileshare1*. Pokud *MyAzureFileshare1* neexistuje, vytvoří se v účtu Azure Storage. Struktura složek je zachována.
+   - **Import souboru**: v následujícím příkladu se data ke zkopírování nacházejí v jednotce F:. Soubor *MyFile1.txt* je zkopírován do kořenového adresáře *MyAzureFileshare1*. Pokud *MyAzureFileshare1* neexistuje, vytvoří se v účtu Azure Storage. Struktura složek je zachována.
 
        ```
            BasePath,DstItemPathOrPrefix,ItemType,Disposition,MetadataFile,PropertiesFile
@@ -73,9 +73,9 @@ K přípravě jednotek proveďte následující kroky.
      Přečtěte si další informace o [přípravě souboru CSV datové sady](storage-import-export-tool-preparing-hard-drives-import.md).
 
 
-4. V kořenové složce, ve které se nástroj nachází, upravte soubor *driveset. csv* . Přidejte položky do souboru *driveset. csv* podobně jako v následujících příkladech. Soubor driveset obsahuje seznam disků a odpovídajících písmen jednotek, aby nástroj mohl správně vybrat seznam disků, které mají být připraveny.
+4. Upravte soubor *driveset.csv* v kořenové složce, ve které se nástroj nachází. Přidejte položky do souboru *driveset.csv* podobně jako v následujících příkladech. Soubor driveset obsahuje seznam disků a odpovídajících písmen jednotek, aby nástroj mohl správně vybrat seznam disků, které mají být připraveny.
 
-    V tomto příkladu se předpokládá, že jsou připojené dva disky a základní svazky NTFS G:\ a H:\ jsou vytvořeny. H:\is není zašifrováno, zatímco G: je již zašifrováno. Nástroj formátuje a šifruje disk, který je hostitelem H:\ pouze (a ne G:\).
+    V tomto příkladu se předpokládá, že jsou připojené dva disky a základní svazky NTFS G:\ a H:\ jsou vytvořeny. H:\is není zašifrováno, zatímco G: je již zašifrováno. Nástroj formátuje a šifruje disk, který je hostitelem H:\ pouze (a ne G: \) .
 
    - **Pro disk, který není zašifrovaný**: Určete *šifrování* , aby se na disku povolilo šifrování bitlockerem.
 
@@ -105,7 +105,7 @@ K přípravě jednotek proveďte následující kroky.
        .\WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#1  /sk:************* /InitialDriveSet:driveset.csv /DataSet:dataset.csv /logdir:C:\logs
        ```
 
-6. Soubor deníku s názvem, který jste zadali `/j:` s parametrem, je vytvořen pro každé spuštění příkazového řádku. Každá jednotka, kterou připravíte, má soubor deníku, který se musí nahrát při vytváření úlohy importu. Jednotky bez souborů deníku nejsou zpracovány.
+6. Soubor deníku s názvem, který jste zadali s `/j:` parametrem, je vytvořen pro každé spuštění příkazového řádku. Každá jednotka, kterou připravíte, má soubor deníku, který se musí nahrát při vytváření úlohy importu. Jednotky bez souborů deníku nejsou zpracovány.
 
     > [!IMPORTANT]
     > - Po dokončení přípravy disku neměňte data na diskových jednotkách ani v souboru deníku.
@@ -115,7 +115,7 @@ Další ukázky najdete v [ukázkách pro soubory deníku](#samples-for-journal-
 ## <a name="step-2-create-an-import-job"></a>Krok 2: vytvoření úlohy importu
 
 Provedením následujících kroků vytvořte v Azure Portal úlohu importu.
-1. Přihlaste https://portal.azure.com/se k.
+1. Přihlaste se k https://portal.azure.com/ .
 2. **> úlohy import/export přejít na všechny služby > úložiště**.
 
     ![Přejít na import/export](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
@@ -178,7 +178,7 @@ Sledujte úlohu k dokončení. Po dokončení úlohy ověřte, že se data nahr�
 
 Chcete-li **Přidat další jednotky**, vytvořte nový soubor driveset a spusťte příkaz následujícím způsobem.
 
-Pro následné relace kopírování na jiné diskové jednotky, než je určeno v souboru *InitialDriveset. csv* , zadejte nový soubor driveset *. csv* a poskytněte ho jako hodnotu parametru `AdditionalDriveSet`. Použijte **stejný název souboru deníku** a zadejte **nové ID relace**. Formát souboru CSV AdditionalDriveset je stejný jako formát InitialDriveSet.
+Pro následné relace kopírování na jiné diskové jednotky, než je určeno v souboru *InitialDriveset. csv* , zadejte nový soubor driveset *. csv* a poskytněte ho jako hodnotu parametru `AdditionalDriveSet` . Použijte **stejný název souboru deníku** a zadejte **nové ID relace**. Formát souboru CSV AdditionalDriveset je stejný jako formát InitialDriveSet.
 
     ```
     WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> /AdditionalDriveSet:<driveset.csv>
@@ -193,7 +193,7 @@ Příklad importu je uveden níže.
 
 Chcete-li přidat další data do stejného driveset, použijte příkaz PrepImport pro následné relace kopírování ke zkopírování dalších souborů/adresářů.
 
-Pro následné relace kopírování na stejné jednotky pevného disku zadané v souboru *InitialDriveset. csv* zadejte **stejný název souboru deníku** a zadejte **nové ID relace**. není nutné zadávat klíč účtu úložiště.
+Pro následné relace kopírování na stejné jednotky pevného disku zadané v souboru *InitialDriveset.csv* zadejte **stejný název souboru deníku** a zadejte **nové ID relace**. není nutné zadávat klíč účtu úložiště.
 
     ```
     WAImportExport PrepImport /j:<JournalFile> /id:<SessionId> /j:<JournalFile> /id:<SessionId> [/logdir:<LogDirectory>] DataSet:<dataset.csv>

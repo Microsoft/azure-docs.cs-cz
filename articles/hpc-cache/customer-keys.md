@@ -3,15 +3,15 @@ title: Použití klíčů Customer-spravovaných k šifrování dat v mezipamět
 description: Použití Azure Key Vault s mezipamětí Azure HPC k řízení přístupu šifrovacího klíče místo používání výchozích šifrovacích klíčů spravovaných Microsoftem
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/29/2020
 ms.author: v-erkel
-ms.openlocfilehash: 2d10241b8395c33767ffeeb550d9d8060bde3ce3
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: b7b9e9e6858d709e80642603e77bfb36f2e4c0c9
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82597735"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85512907"
 ---
 # <a name="use-customer-managed-encryption-keys-for-azure-hpc-cache"></a>Použití šifrovacích klíčů spravovaných zákazníkem pro mezipaměť HPC Azure
 
@@ -148,4 +148,4 @@ Tyto články vysvětlují Další informace o používání Azure Key Vault a k
 
 Po vytvoření mezipaměti HPC Azure a ověření šifrování založeného na Key Vault pokračujte v nastavení mezipaměti tím, že udělíte přístup k vašim zdrojům dat.
 
-* [Přidání cílů úložiště](hpc-cache-add-storage.md)
+* [Přidat cíle úložiště](hpc-cache-add-storage.md)

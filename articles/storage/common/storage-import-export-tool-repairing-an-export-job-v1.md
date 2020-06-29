@@ -4,16 +4,16 @@ description: Naučte se, jak opravit úlohu exportu, která byla vytvořená a s
 author: twooley
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: b2ba30bddfc6364c79e1bb01d30cde63b261a07f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 10e209228ad12b377b729bc251eb761b51ff5378
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74978011"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514368"
 ---
 # <a name="repairing-an-export-job"></a>Oprava úlohy exportu
 Po dokončení úlohy exportu můžete spustit nástroj Microsoft Azure Import/Export místně a:  

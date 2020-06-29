@@ -3,15 +3,15 @@ title: Vytvoření balíčku podpory řady StorSimple 8000
 description: Naučte se vytvářet, dešifrovat a upravovat balíček pro podporu pro zařízení řady StorSimple 8000.
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 9ca033f6f786c0142261dafa31b93b71a8b3336a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f8f84542cd52d8ad4affd64627637d4e95b1fb10
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76277075"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514046"
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>Vytvoření a Správa balíčku pro podporu pro řady StorSimple 8000
 
@@ -23,7 +23,7 @@ Tento kurz obsahuje podrobné pokyny k vytvoření a správě balíčku pro podp
 
 ## <a name="create-a-support-package"></a>Vytvoření balíčku pro podporu
 
-V některých případech budete muset ručně vytvořit balíček pro podporu prostřednictvím Windows PowerShell pro StorSimple. Příklad:
+V některých případech budete muset ručně vytvořit balíček pro podporu prostřednictvím Windows PowerShell pro StorSimple. Například:
 
 * Pokud potřebujete před sdílením pomocí podpora Microsoftu odebrat citlivé informace ze svých souborů protokolu.
 * Pokud máte potíže při nahrávání balíčku z důvodu problémů s připojením.
@@ -66,12 +66,12 @@ Pomocí rutiny Export-HcsSupportPackage můžete použít následující paramet
 
 | Parametr | Požadováno/volitelné | Popis |
 | --- | --- | --- |
-| `-Path` |Požaduje se |Slouží k zadání umístění sdílené síťové složky, ve které je balíček podpory umístěný. |
-| `-EncryptionPassphrase` |Požaduje se |Použijte k poskytnutí přístupového hesla, který vám může pomoci s šifrováním balíčku pro podporu. |
-| `-Credential` |Nepovinné |Slouží k zadání přihlašovacích údajů pro přístup ke sdílené síťové složce. |
-| `-Force` |Nepovinné |Použijte k přeskočení potvrzovacího kroku šifrovacího hesla. |
-| `-PackageTag` |Nepovinné |Použijte k určení adresáře v *cestě* , ve které je balíček pro podporu umístěný. Výchozí hodnota je [název zařízení]-[aktuální datum a čas: RRRR-MM-DD-HH-MM-SS]. |
-| `-Scope` |Nepovinné |Určete jako **cluster** (výchozí) pro vytvoření balíčku pro podporu pro oba řadiče. Pokud chcete vytvořit balíček jenom pro aktuální kontroler, zadejte **kontroler**. |
+| `-Path` |Vyžadováno |Slouží k zadání umístění sdílené síťové složky, ve které je balíček podpory umístěný. |
+| `-EncryptionPassphrase` |Vyžadováno |Použijte k poskytnutí přístupového hesla, který vám může pomoci s šifrováním balíčku pro podporu. |
+| `-Credential` |Volitelné |Slouží k zadání přihlašovacích údajů pro přístup ke sdílené síťové složce. |
+| `-Force` |Volitelné |Použijte k přeskočení potvrzovacího kroku šifrovacího hesla. |
+| `-PackageTag` |Volitelné |Použijte k určení adresáře v *cestě* , ve které je balíček pro podporu umístěný. Výchozí hodnota je [název zařízení]-[aktuální datum a čas: RRRR-MM-DD-HH-MM-SS]. |
+| `-Scope` |Volitelné |Určete jako **cluster** (výchozí) pro vytvoření balíčku pro podporu pro oba řadiče. Pokud chcete vytvořit balíček jenom pro aktuální kontroler, zadejte **kontroler**. |
 
 ## <a name="edit-a-support-package"></a>Úprava balíčku pro podporu
 

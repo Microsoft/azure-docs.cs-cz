@@ -5,16 +5,16 @@ services: storage
 author: normesta
 ms.service: storage
 ms.subservice: common
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 64d987ff01e596eefa98e8086788546c465e2d83
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: a5b9b4c7d3bdd0c68d3a91a39972389e48ed910d
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195399"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515009"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>Přesunutí účtu Azure Storage do jiné oblasti
 
@@ -113,9 +113,9 @@ Nasazení šablony pomocí Azure Portal:
 
 5. Vyberte **Vytvořit vlastní šablonu v editoru**.
 
-6. Vyberte **načíst soubor**a pak podle pokynů načtěte soubor **template. JSON** , který jste stáhli v poslední části.
+6. Vyberte **načíst soubor**a potom podle pokynů načtěte **template.js** do souboru, který jste stáhli v poslední části.
 
-7. V souboru **template. JSON** pojmenujte cílový účet úložiště nastavením výchozí hodnoty názvu účtu úložiště. V tomto příkladu se nastaví výchozí hodnota názvu účtu úložiště na `mytargetaccount` .
+7. V **template.jsv** souboru pojmenujte cílový účet úložiště nastavením výchozí hodnoty názvu účtu úložiště. V tomto příkladu se nastaví výchozí hodnota názvu účtu úložiště na `mytargetaccount` .
     
     ```json
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -143,7 +143,7 @@ Nasazení šablony pomocí Azure Portal:
 
 Nasazení šablony pomocí prostředí PowerShell:
 
-1. V souboru **template. JSON** pojmenujte cílový účet úložiště nastavením výchozí hodnoty názvu účtu úložiště. V tomto příkladu se nastaví výchozí hodnota názvu účtu úložiště na `mytargetaccount` .
+1. V **template.jsv** souboru pojmenujte cílový účet úložiště nastavením výchozí hodnoty názvu účtu úložiště. V tomto příkladu se nastaví výchozí hodnota názvu účtu úložiště na `mytargetaccount` .
     
     ```json
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -156,7 +156,7 @@ Nasazení šablony pomocí prostředí PowerShell:
     },
     ``` 
 
-2. Upravte vlastnost **umístění** v souboru **template. JSON** do cílové oblasti. Tento příklad nastaví cílovou oblast na `eastus` .
+2. Upravte vlastnost **Location** v **template.js** souboru do cílové oblasti. Tento příklad nastaví cílovou oblast na `eastus` .
 
     ```json
     "resources": [{
@@ -182,7 +182,7 @@ Nasaďte šablonu pro vytvoření nového účtu úložiště v cílové oblasti
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-1. Uložte soubor **template. JSON** .
+1. Uložte **template.jsdo** souboru.
 
 2. Zadejte nebo vyberte hodnoty vlastností:
 
@@ -219,7 +219,7 @@ Některé funkce nebudou exportovány do šablony, takže je budete muset přida
 
 Následující tabulka uvádí tyto funkce spolu s pokyny pro jejich přidání do nového účtu úložiště.
 
-| Příznak    | Doprovodné materiály    |
+| Funkce    | Doprovodné materiály    |
 |--------|-----------|
 | **Zásady správy životního cyklu** | [Správa životního cyklu úložiště objektů blob v Azure](../blobs/storage-lifecycle-management-concepts.md) |
 | **Statické weby** | [Hostování statického webu v Azure Storage](../blobs/storage-blob-static-website-how-to.md) |

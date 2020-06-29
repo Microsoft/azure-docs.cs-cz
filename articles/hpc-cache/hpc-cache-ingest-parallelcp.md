@@ -3,15 +3,15 @@ title: Ingestování dat mezipaměti HPC Azure – paralelní kopírování skri
 description: Jak použít skript paralelního kopírování k přesunu dat do cíle úložiště objektů BLOB v mezipaměti HPC Azure
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 90e05ad3d42b1009b631630fe476669a9f418d33
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5db04b3ee89ab5a0a4f85f3b833ea513310dce18
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74166893"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514786"
 ---
 # <a name="azure-hpc-cache-data-ingest---parallel-copy-script-method"></a>Ingestování dat mezipaměti HPC Azure – paralelní kopírování metody skriptu
 
@@ -21,7 +21,7 @@ Další informace o přesouvání dat do úložiště objektů BLOB pro mezipam�
 
 ## <a name="create-the-parallelcp-script"></a>Vytvoření skriptu parallelcp
 
-Do následujícího skriptu se přidá spustitelný soubor `parallelcp`. (Tento skript je určený pro Ubuntu; Pokud používáte jinou distribuci, musíte nainstalovat ``parallel`` samostatně.)
+Do následujícího skriptu se přidá spustitelný soubor `parallelcp` . (Tento skript je určený pro Ubuntu; Pokud používáte jinou distribuci, musíte nainstalovat ``parallel`` samostatně.)
 
 ```bash
 sudo touch /usr/bin/parallelcp && sudo chmod 755 /usr/bin/parallelcp && sudo sh -c "/bin/cat >/usr/bin/parallelcp" <<EOM
@@ -75,7 +75,7 @@ EOM
 
 ## <a name="parallel-copy-example"></a>Příklad paralelního kopírování
 
-V tomto příkladu se používá skript paralelního kopírování ``glibc`` ke kompilaci pomocí zdrojových souborů v mezipaměti HPC Azure.
+V tomto příkladu se používá skript paralelního kopírování ke kompilaci ``glibc`` pomocí zdrojových souborů v mezipaměti HPC Azure.
 
 Zdrojové soubory jsou ukládány do mezipaměti v bodu připojení mezipaměti služby Azure HPC a soubory objektů jsou uloženy na místním pevném disku.
 

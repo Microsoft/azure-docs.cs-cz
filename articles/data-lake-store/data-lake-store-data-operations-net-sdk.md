@@ -3,15 +3,15 @@ title: .NET SDK – operace se systémem souborů v systému Data Lake Storage G
 description: Použijte sadu Azure Data Lake Storage Gen1 .NET SDK pro operace systému souborů na Data Lake Storage Gen1, jako je například vytváření složek atd.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/03/2020
 ms.author: twooley
-ms.openlocfilehash: 9e52a3cb8d31b5fccc9a0b5a3a76d4e9b43de123
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: eb950f6029511cf834791c161e6a730bcadcabcc
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690965"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515664"
 ---
 # <a name="filesystem-operations-on-data-lake-storage-gen1-using-the-net-sdk"></a>Operace systému souborů při Data Lake Storage Gen1 pomocí sady .NET SDK
 
@@ -41,7 +41,7 @@ Ukázka kódu, která je k dispozici [na GitHubu](https://github.com/Azure-Sampl
 
 1. V aplikaci Visual Studio vyberte nabídku **soubor** , **Nový**a poté **projekt**.
 1. Zvolte **Konzolová aplikace (.NET Framework)** a pak vyberte **Další**.
-1. Do **název projektu**zadejte `CreateADLApplication`a pak vyberte **vytvořit**.
+1. Do **název projektu**zadejte `CreateADLApplication` a pak vyberte **vytvořit**.
 1. Přidejte do projektu balíčky NuGet.
 
    1. V Průzkumníku řešení klikněte pravým tlačítkem na název projektu a klikněte na možnost **Správa balíčků NuGet**.

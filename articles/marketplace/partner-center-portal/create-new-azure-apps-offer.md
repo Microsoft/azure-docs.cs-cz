@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 1755d6808183887ca428f227272c3923d4bae21f
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 3195fd9e367caed352cb4f9881573740399851e4
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85213838"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513549"
 ---
 # <a name="create-an-azure-application-offer"></a>Vytvoření nabídky aplikací Azure
 
@@ -38,8 +38,8 @@ Projděte si následující zdroje při přípravě nabídky aplikací Azure pro
 
 * Rychlá zprovoznění:
 
-    * [Šablony Azure pro rychlé zprovoznění](https://azure.microsoft.com/documentation/templates/)
-    * [Šablony Azure pro rychlý Start pro GitHub](https://github.com/azure/azure-quickstart-templates)
+    * [Šablony pro rychlý Start Azure](https://azure.microsoft.com/documentation/templates/)
+    * [Příručka k osvědčeným postupům pro šablony Azure](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md)
     * [Publikování definice aplikace](https://docs.microsoft.com/azure/managed-applications/publish-service-catalog-app)
     * [Nasazení aplikace katalogu služeb](https://docs.microsoft.com/azure/managed-applications/deploy-service-catalog-quickstart)
 
@@ -181,7 +181,7 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Marketpla
 5. Adresa zásad ochrany osobních údajů (odkaz)
 6. Název nabídky
 7. Souhrn
-8. Description
+8. Popis
 9. Snímky obrazovky a videa
 
 <br>Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Portal:
@@ -195,7 +195,7 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Marketpla
 3. Užitečné odkazy
 4. Screenshoty
 
-#### <a name="name"></a>Name
+#### <a name="name"></a>Název
 
 Název, který sem zadáte, se zákazníkům zobrazí jako název seznamu nabídek. Toto pole je předem vyplněno textem, který jste zadali pro možnost **alias nabídky** při vytváření nabídky, ale můžete tuto hodnotu změnit. Tento název může být ochranných známek (a může obsahovat symboly ochranných známek a autorských práv). Název nesmí být delší než 50 znaků a nesmí obsahovat žádné emoji.
 
@@ -207,7 +207,7 @@ Zadejte krátký popis vaší nabídky, maximálně 100 znaků. Tento popis se d
 
 Zadejte delší popis nabídky, maximálně 256 znaků. Tento popis se dá použít ve výsledcích hledání.
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>Popis
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -426,10 +426,14 @@ Každý plán můžete nakonfigurovat tak, aby byl viditelný pro všechny uživ
 
 Vyberte **Toto je soukromý plán** , aby byl váš plán soukromý a viditelný jenom pro omezený počet uživatelů, kteří si zvolíte. Po zveřejnění jako soukromého plánu můžete cílovou skupinu aktualizovat nebo si vybrat, že plán bude dostupný všem. Jakmile je plán publikován jako viditelný pro všechny, musí zůstat viditelný pro všechny uživatele. nedá se překonfigurovat jako soukromý plán.
 
+>[!Note]
+>Soukromá nebo omezená skupina je odlišná od cílové skupiny Preview, kterou jste definovali na kartě **Preview** . Cílová skupina Preview má přístup k vaší nabídce _před tím, než_ se zveřejní na webu Marketplace. I když se soukromá skupina zvolí jenom pro konkrétní plán, cílová skupina Preview může pro účely ověřování Zobrazit všechny plány (soukromě nebo ne).
+
 Pokud nastavíte plán jako soukromý, zadejte **ID předplatného Azure** a jeho popis. Každé je cílová skupina, která bude mít přístup k tomuto privátnímu plánu. Přístup se přiřazuje pomocí ID předplatných Azure s možností zahrnout popis každého přiřazeného ID předplatného Azure. Přidejte až 10 ID předplatných zákazníků jednotlivě, nebo 20 000 importem souboru CSV. ID předplatných Azure jsou reprezentovaná jako identifikátory GUID a písmena musí být malá.
 
 >[!Note]
->Soukromá nebo omezená skupina je odlišná od cílové skupiny Preview, kterou jste definovali na kartě **Preview** . Cílová skupina Preview má přístup k vaší nabídce _před tím, než_ se zveřejní na webu Marketplace. I když se soukromá skupina zvolí jenom pro konkrétní plán, cílová skupina Preview může pro účely ověřování Zobrazit všechny plány (soukromě nebo ne).
+>Pro předplatná Azure vytvořená prostřednictvím prodejce programu Cloud Solution Provider (CSP) nejsou podporovány soukromé nabídky.
+
 
 ### <a name="technical-configuration"></a>Technická konfigurace 
 

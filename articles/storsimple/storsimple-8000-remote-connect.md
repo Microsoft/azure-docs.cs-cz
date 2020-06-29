@@ -3,16 +3,16 @@ title: Vzdálené připojení k zařízení StorSimple
 description: Vysvětluje, jak nakonfigurovat zařízení pro vzdálenou správu a jak se připojit k Windows PowerShell pro StorSimple přes HTTP nebo HTTPS.
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/02/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 58d61df932da06e32bb4c8f21a3a296b185f02d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1da688dfb00b26ca6b561d5aa0fb548c221381c5
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80299006"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514570"
 ---
 # <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>Vzdálené připojení k zařízení řady StorSimple 8000
 
@@ -155,7 +155,7 @@ Chcete-li povolit vzdálenou správu, proveďte následující kroky v konzole s
     Ujistěte se, že pole **RemoteManagementMode** zobrazuje **HttpsEnabled**. Následující ilustrace znázorňuje tato nastavení v výstupu.
    
      ![Sériové HTTPS povoleno](./media/storsimple-remote-connect/HCS_SerialHttpsEnabled.png)
-4. Z výstupu `Get-HcsSystem`zkopírujte sériové číslo zařízení a uložte ho pro pozdější použití.
+4. Z výstupu `Get-HcsSystem` zkopírujte sériové číslo zařízení a uložte ho pro pozdější použití.
    
    > [!NOTE]
    > Sériové číslo se mapuje na název CN v certifikátu.

@@ -8,17 +8,17 @@ manager: twooley
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 44a05ecb273bdf7582300c3b6a9110e2ada0994c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 181f5433de6653c8b6a2cda085f04e21c64082b9
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77471818"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514663"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>Možnosti migrace dat ze zařízení StorSimple řady 5000–7000 
 
@@ -69,7 +69,7 @@ Nasuni je prostředí, které usnadňuje migraci – Začněte ještě dnes:http
 
 Talon usnadňuje zákazníkům s StorSimple 5000-7000 i nadále využívání výhod, které oceňují, a to v StorSimple platformě (malými nároky na pracoviště zajištěnými neomezenými prostředky cloudu) a ještě větší funkcí.  Díky RYCHLÉmu řešení Talon můžou zákazníci migrovat a uchovávat data v Azure. teď ale mají ještě menší nároky na místo na pracovišti a přidávají výhody, jako je globální zamykání souborů, globální obor názvů a spolupráce s více lokalitami.  Talon je přední řešení ekosystému Azure, které spolupracuje s globálními zákazníky k migraci místních úloh souborového serveru do konsolidovaného prostředí založeného na Azure, aniž by došlo k narušení pracovního postupu nebo zkušeností uživatelů.  
 
-Přečtěte si další informace o tom, jak vyvíjet do cloudu https://www.talonstorage.com/alliances/microsoft-storsimplekonsolidovaného podniku na adrese.
+Přečtěte si další informace o tom, jak vyvíjet do cloudu konsolidovaného podniku na adrese https://www.talonstorage.com/alliances/microsoft-storsimple .
 
 
 ## <a name="migration---frequently-asked-questions"></a>Migrace – Nejčastější dotazy

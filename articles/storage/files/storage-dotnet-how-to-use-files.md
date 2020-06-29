@@ -4,16 +4,16 @@ description: Zjistěte, jak vyvíjet aplikace a služby .NET, které používaj�
 author: roygara
 ms.service: storage
 ms.devlang: dotnet
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4d8be13a75e276d5be6ec71141a13f95601869f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 44602c65a08f2e76fa017022f6137a18481f2edd
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78301433"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515370"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Vývoj pro Soubory Azure pomocí .NET
 
@@ -34,7 +34,7 @@ Další informace o službě soubory Azure najdete v tématu [co je Azure Files?
 
 ## <a name="understanding-the-net-apis"></a>Vysvětlení rozhraní API .NET
 
-Soubory Azure poskytuje dva přístupy ke klientským aplikacím: protokol SMB (Server Message Block) a REST. V rozhraní .NET rozhraní `System.IO` API `WindowsAzure.Storage` a tyto přístupy abstraktní.
+Soubory Azure poskytuje dva přístupy ke klientským aplikacím: protokol SMB (Server Message Block) a REST. V rozhraní .NET rozhraní `System.IO` `WindowsAzure.Storage` API a tyto přístupy abstraktní.
 
 Rozhraní API | Kdy je použít | Poznámky
 ----|-------------|------
@@ -49,7 +49,7 @@ V sadě Visual Studio vytvořte novou konzolovou aplikaci pro Windows. Následuj
 1. V možnosti **vytvořit nový projekt**zvolte **Konzolová aplikace (.NET Framework)** pro C# a pak vyberte **Další**.
 1. V části **Konfigurace nového projektu**zadejte název aplikace a vyberte **vytvořit**.
 
-Všechny příklady kódu v tomto kurzu můžete přidat do `Main()` metody `Program.cs` souboru vaší konzolové aplikace.
+Všechny příklady kódu v tomto kurzu můžete přidat do `Main()` metody souboru vaší konzolové aplikace `Program.cs` .
 
 Můžete použít knihovnu klienta Azure Storage v jakémkoli typu aplikace .NET. Mezi tyto typy patří cloudová služba Azure nebo webová aplikace a desktopové a mobilní aplikace. V této příručce použijeme konzolovou aplikaci kvůli zjednodušení.
 
@@ -80,9 +80,9 @@ K získání obou balíčků můžete použít balíček NuGet. Postupujte násl
 
    * **Microsoft. Azure. Storage. Common**
    * **Microsoft. Azure. Storage. File**
-   * **Microsoft. Azure. ConfigurationManager**
+   * **Microsoft.Azure.ConfigurationManager**
 
-## <a name="save-your-storage-account-credentials-to-the-appconfig-file"></a>Uložte přihlašovací údaje účtu úložiště do souboru App. config.
+## <a name="save-your-storage-account-credentials-to-the-appconfig-file"></a>Uložení přihlašovacích údajů účtu úložiště do souboru App.config
 
 Potom uložte své přihlašovací údaje do `App.config` souboru projektu. V **Průzkumník řešení**dvakrát klikněte `App.config` a upravte soubor tak, aby byl podobný následujícímu příkladu. Nahraďte `myaccount` názvem svého účtu úložiště a `mykey` klíčem účtu úložiště.
 
@@ -428,7 +428,7 @@ Metriky pro soubory Azure můžete povolit z [Azure Portal](https://portal.azure
 
 Následující příklad kódu ukazuje, jak můžete použít Klientskou knihovnu pro úložiště pro .NET k zapnutí metrik pro Soubory Azure.
 
-Nejprve do `Program.cs` souboru přidejte následující `using` direktivy spolu s těmi, které jste přidali výše:
+Nejprve do souboru přidejte následující `using` direktivy `Program.cs` spolu s těmi, které jste přidali výše:
 
 ```csharp
 using Microsoft.Azure.Storage.File.Protocol;
@@ -494,7 +494,7 @@ Další informace o službě soubory Azure najdete v následujících zdrojích 
 * [Začínáme s nástrojem AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
 * [Řešení potíží se službou Azure Files ve Windows](https://docs.microsoft.com/azure/storage/storage-troubleshoot-file-connection-problems)
 
-### <a name="reference"></a>Odkaz
+### <a name="reference"></a>Referenční informace
 
 * [Rozhraní API služby Azure Storage pro .NET](/dotnet/api/overview/azure/storage)
 * [Rozhraní REST API služby File Service](/rest/api/storageservices/File-Service-REST-API)

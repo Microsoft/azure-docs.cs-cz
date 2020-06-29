@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 958244a5-f9f5-455e-b7ef-71a65558872e
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/1/2016
 ms.author: alkohli
-ms.openlocfilehash: bb6bb491ca71e5ced5aecc8137e9e1cbd950e80b
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: d7c7cf335336cc552adaf5d9490bc58d64b0cdc9
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "62123801"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515443"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-virtual-array"></a>Použití služby StorSimple Device Manager ke správě virtuálního pole StorSimple
 ![průběh procesu nastavení](./media/storsimple-virtual-array-manager-service-administration/manage4.png)
@@ -42,7 +42,7 @@ Po přečtení tohoto článku budete umět:
 Služba StorSimple Device Manager běží v Microsoft Azure a připojuje se k několika virtuálním polím StorSimple. Ke správě těchto zařízení používáte centrální portál Microsoft Azure běžící v prohlížeči. Pokud se chcete připojit ke službě StorSimple Device Manager, udělejte toto:
 
 #### <a name="to-connect-to-the-service"></a>Připojení ke službě
-1. Přejít na [https://ms.portal.azure.com](https://ms.portal.azure.com).
+1. Přejít na [https://ms.portal.azure.com](https://ms.portal.azure.com) .
 2. Pomocí přihlašovacích údajů pro účet Microsoft se přihlaste k portál Microsoft Azure (nachází se v pravém horním rohu podokna).
 3. Pokud chcete zobrazit všechny správce zařízení v daném předplatném, přejděte na > Procházet a přejděte na správce zařízení StorSimple.
 
@@ -63,7 +63,7 @@ Chcete-li získat další informace o jednotlivých pracovních postupech, klikn
 | Informace o účtech úložiště</br>Přidat účet úložiště</br>Úprava účtu úložiště</br>Odstranění účtu úložiště |[Správa účtů úložiště pro virtuální pole StorSimple](storsimple-virtual-array-manage-storage-accounts.md) |
 | O záznamech řízení přístupu</br>Přidat nebo upravit záznam řízení přístupu </br>Odstranění záznamu řízení přístupu |[Správa záznamů řízení přístupu pro virtuální pole StorSimple](storsimple-virtual-array-manage-acrs.md) |
 | Zobrazení podrobností o úloze |[Správa úloh virtuálních polí StorSimple](storsimple-virtual-array-manage-jobs.md) |
-| Konfigurace nastavení výstrah</br>Zobrazování oznámení o výstrahách</br>Správa upozornění</br>Zkontrolovat výstrahy |[Zobrazení a správa výstrah pro virtuální pole StorSimple](storsimple-virtual-array-manage-alerts.md) |
+| Konfigurace nastavení výstrah</br>Zobrazování oznámení o výstrahách</br>Správa výstrah</br>Zkontrolovat výstrahy |[Zobrazení a správa výstrah pro virtuální pole StorSimple](storsimple-virtual-array-manage-alerts.md) |
 | Úprava hesla správce zařízení |[Změna hesla správce zařízení StorSimple Virtual Array](storsimple-virtual-array-change-device-admin-password.md) |
 | Instalovat aktualizace softwaru |[Aktualizace virtuálního pole](storsimple-virtual-array-install-update.md) |
 

@@ -13,12 +13,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.custom: seo-python-october2019, tracking-python
-ms.openlocfilehash: b3216277c2d6d341f9123957e3fc1a3210376213
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 3a40ff7fbf021833ff382ad2288eb263378c96c2
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559548"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85512595"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Rychlý Start: vytvoření datové továrny a kanálu pomocí Pythonu
 
@@ -44,7 +44,7 @@ Kanály mohou ingestovat data z různorodých úložišť dat. Kanály zpracová
 
 * [Průzkumník služby Azure Storage](https://storageexplorer.com/) (volitelné).
 
-* [Aplikace v Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Poznamenejte si následující hodnoty, které chcete použít v pozdějších krocích: **ID aplikace**, **ověřovací klíč**a **ID tenanta**. Podle pokynů ve stejném článku přiřaďte aplikaci roli **Přispěvatel** .
+* [Aplikace v Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal). Poznamenejte si následující hodnoty, které chcete použít v pozdějších krocích: **ID aplikace**, **ověřovací klíč**a **ID tenanta**. Podle pokynů ve stejném článku přiřaďte aplikaci roli **Přispěvatel** .
 
 ## <a name="create-and-upload-an-input-file"></a>Vytvoření a nahrání vstupního souboru
 

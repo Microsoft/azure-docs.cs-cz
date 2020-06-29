@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: cd0c8961cff15385249222986e5fb90ee75e3559
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: f7f0a466f288031474b100f42c9ba41aafb9ff9a
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84887329"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515544"
 ---
 # <a name="create-an-azure-container-offer"></a>Vytvoření nabídky kontejneru Azure
 
@@ -48,7 +48,7 @@ Vyberte **vytvořit** pro vygenerování nabídky a pokračování.
 
 Na stránce **Přehled nabídky** se zobrazuje vizuální reprezentace kroků požadovaných k publikování této nabídky (dokončené i nadcházející) a o tom, jak dlouho by měly být jednotlivé kroky dokončeny.
 
-Tato stránka zobrazuje různé odkazy na základě aktuálního stavu nabídky. Příklad:
+Tato stránka zobrazuje různé odkazy na základě aktuálního stavu nabídky. Například:
 
 - Pokud je nabídka nabídkou konceptu a [odstranění konceptu](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)
 - Pokud je nabídka živá, [přestanou prodávat nabídku](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan) .
@@ -126,7 +126,7 @@ Tato stránka umožňuje definovat podrobnosti nabídky, které se zobrazí na k
 > [!NOTE]
 > Podrobnosti nabídky nejsou v anglickém jazyce nutné, pokud popis nabídky začíná frází "Tato aplikace je k dispozici pouze v [jazykovém jazyce, který není v angličtině]." Také je v pořádku poskytnutí užitečného odkazu na nabídku obsahu v jazyce, který se liší od toho, který se používá v podrobnostech seznamu nabídky.
 
-### <a name="name"></a>Name
+### <a name="name"></a>Název
 
 Název, který zde zadáte, se zobrazí jako název vaší nabídky. Toto pole je předem vyplněno textem, který jste zadali do pole **alias nabídky** při vytváření nabídky. Tento název můžete později změnit.
 
@@ -144,7 +144,7 @@ Krátký popis vaší nabídky Může to být až 100 znaků dlouhé a použív�
 
 Podrobnější popis vaší nabídky. Může to být až 256 znaků dlouhé a používá se ve výsledcích hledání na webu Marketplace.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Popis
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -238,9 +238,6 @@ Určete cílovou skupinu Preview pomocí identifikátorů GUID předplatného Az
 > ID vašeho předplatného Azure můžete najít na stránce Předplatná v Azure Portal.
 
 Přidejte aspoň jedno ID předplatného Azure, a to buď samostatně (až 10), nebo nahráním souboru CSV (až 100). Přidáním těchto ID předplatných určíte, kdo může zobrazit náhled vaší nabídky předtím, než bude publikována v reálném čase. Pokud je vaše nabídka už živá, můžete zvolit cílovou skupinu verze Preview, která testuje změny nebo aktualizace vaší nabídky.
-
-> [!NOTE]
-> Cílová skupina verze Preview se liší od soukromé cílové skupiny. Cílová skupina **verze Preview** může zobrazit a potvrdit všechny plány nabídky předtím, než budou na webu Marketplace aktivní, včetně těch, které budou publikovány pouze pro **privátní** cílovou skupinu (nastavené na kartě dostupnost).
 
 Než budete pokračovat, vyberte **Uložit koncept** .
 
@@ -396,7 +393,7 @@ Pokud chcete odeslat nabídku pro publikování, vyberte **publikovat**.
 
 Pošleme vám e-mail s oznámením, že je k dispozici verze Preview této nabídky ke kontrole a schválení.
 
-Pokud chcete svou nabídku publikovat na veřejném (nebo v případě soukromé nabídky, soukromé cílové skupině), přejít do partnerského centra a vyberte **jít-Live**.
+Pokud chcete svou nabídku publikovat na veřejném, klikněte na partnerské centrum a vyberte **jít-Live**.
 
 ## <a name="next-step"></a>Další krok
 

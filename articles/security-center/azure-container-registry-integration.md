@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/19/2019
+ms.date: 06/28/2020
 ms.author: memildin
-ms.openlocfilehash: bb7ffb06bb0cffeefae87ada665e2c123213186a
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 4fb623a77fc97fea1584451b73eef930c725f8a1
+ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84218648"
+ms.lasthandoff: 06/29/2020
+ms.locfileid: "85517418"
 ---
 # <a name="azure-container-registry-integration-with-security-center"></a>Azure Container Registry integrace s Security Center
 
@@ -27,7 +27,7 @@ Pokud pracujete na úrovni Standard Azure Security Center, můžete přidat sadu
 
 Pokaždé, když se do registru vloží obrázek, Security Center automaticky vyhledá tento obrázek. Pokud chcete spustit kontrolu obrázku, nahrajte ho do úložiště.
 
-Až se kontrola dokončí (obvykle po přibližně 10 minutách, ale může to trvat až 48h), nálezy jsou dostupné v Security Center doporučeních, jako je:
+Až se kontrola dokončí (obvykle po přibližně 10 minutách, ale může to být až 40 minut), nálezy jsou dostupné jako Security Center doporučení, jako je:
 
 [![Ukázka Azure Security Center doporučení týkající se ohrožení zabezpečení zjištěného v hostované imagi Azure Container Registry (ACR)](media/azure-container-registry-integration/container-security-acr-page.png)](media/azure-container-registry-integration/container-security-acr-page.png#lightbox)
 

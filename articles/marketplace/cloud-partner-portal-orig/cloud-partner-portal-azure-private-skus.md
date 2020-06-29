@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: dsindona
-ms.openlocfilehash: ee3ab7be4d15b13a3c0bb014a3ca4d4096299b4c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f4f21539979b54d9aba8dcc0e950b2d3f8bf2ea0
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80280384"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515419"
 ---
 <a name="private-skus-and-plans"></a>Soukromé SKU a plány
 ============
@@ -102,7 +102,7 @@ Rozhraní API můžete použít buď k nahrání sdíleného svazku clusteru, ne
 
 Tady je postup, jak programově aktualizovat seznam cílových skupin:
 
-1. [Načíst data nabídky](cloud-partner-portal-api-retrieve-specific-offer.md) :
+1. [Načíst data nabídky](../cloud-partner-portal-api-retrieve-specific-offer.md) :
 
     ```
     GET https://cloudpartner.azure.com/api/publishers//offers/?api-version=2017-10-31&includeAllPricing=true
@@ -126,7 +126,7 @@ Tady je postup, jak programově aktualizovat seznam cílových skupin:
 
     Pro každý objekt skupiny s omezeným přístupem:
 
-    a. Stáhněte si obsah `restrictedAudience.uploadedCsvUri`. Obsah je jednoduše souborem CSV se záhlavími. Příklad:
+    a. Stáhněte si obsah `restrictedAudience.uploadedCsvUri` . Obsah je jednoduše souborem CSV se záhlavími. Například:
 
         type,id,description
         subscriptionId,541a269f-3df2-486e-8fe3-c8f9dcf28205,sub1
@@ -156,9 +156,9 @@ Tady je postup, jak programově aktualizovat seznam cílových skupin:
         ]}
     ```
 
-    a. Pro každý objekt skupiny s omezeným přístupem přidejte nebo odstraňte položky `restrictedAudience.manualEntries` v seznamu podle potřeby.
+    a. Pro každý objekt skupiny s omezeným přístupem přidejte nebo odstraňte položky v `restrictedAudience.manualEntries` seznamu podle potřeby.
 
-4. Až se dokončí aktualizace všech *restrictedAudience* objektů pro každou SKU vaší soukromé nabídky, [aktualizujte nabídku](cloud-partner-portal-api-creating-offer.md):
+4. Až se dokončí aktualizace všech *restrictedAudience* objektů pro každou SKU vaší soukromé nabídky, [aktualizujte nabídku](../cloud-partner-portal-api-creating-offer.md):
 
     ```
     PUT https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>?api-version=2017-10-31

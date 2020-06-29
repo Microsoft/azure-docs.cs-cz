@@ -3,16 +3,16 @@ title: Azure File Sync monitorování | Microsoft Docs
 description: Jak monitorovat Azure File Sync.
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/28/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: ac09f9b59bc6f47adc9311cc910352c1a0d73b5d
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 0232a0c6526d6dcdfec86dedec437c71e7e21080
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "68699286"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515205"
 ---
 # <a name="monitor-azure-file-sync"></a>Sledování služby Synchronizace souborů Azure
 
@@ -68,7 +68,7 @@ Pokud chcete zobrazit registrovaný stav serveru, stav koncového bodu serveru a
 ### <a name="registered-server-health"></a>Stav registrovaného serveru
 
 - Pokud je stav **registrovaného serveru** **online**, server úspěšně komunikuje se službou.
-- Pokud je stav **registrovaného serveru** **zobrazen v režimu offline**, ověřte, zda je spuštěn proces sledování synchronizace úložiště (AzureStorageSyncMonitor. exe) na serveru. Pokud je server za bránou firewall nebo proxy, přečtěte si [Tento článek](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy) , kde můžete nakonfigurovat bránu firewall a proxy server.
+- Pokud je stav **registrovaného serveru** **zobrazený v režimu offline**, ověřte, zda je spuštěn proces sledování synchronizace úložiště (AzureStorageSyncMonitor.exe) na serveru. Pokud je server za bránou firewall nebo proxy, přečtěte si [Tento článek](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy) , kde můžete nakonfigurovat bránu firewall a proxy server.
 
 ### <a name="server-endpoint-health"></a>Stav koncového bodu serveru
 
@@ -132,7 +132,7 @@ Stav vrstvení cloudu:
 
 K monitorování synchronizační aktivity použijte Azure File Sync čítače výkonu na serveru.
 
-Chcete-li zobrazit Azure File Sync čítače výkonu na serveru, spusťte nástroj sledování výkonu (Perfmon. exe). Čítače můžete najít v části **přenesené bajty AFS** a objekty **operace synchronizace AFS** .
+Chcete-li zobrazit Azure File Sync čítače výkonu na serveru, spusťte nástroj sledování výkonu (Perfmon.exe). Čítače můžete najít v části **přenesené bajty AFS** a objekty **operace synchronizace AFS** .
 
 V nástroji Sledování výkonu jsou k dispozici následující čítače výkonu pro Azure File Sync:
 

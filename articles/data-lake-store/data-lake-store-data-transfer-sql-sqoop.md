@@ -4,15 +4,15 @@ description: Kopírování dat mezi Azure SQL Database pomocí Sqoop a Azure Dat
 services: data-lake-store
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/30/2019
 ms.author: twooley
-ms.openlocfilehash: d240a212f898c917fd9c55b837210191eab704e5
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 889da0188c5dba4a7ceb785dcf20d439b4b9d6f5
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85319560"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515577"
 ---
 # <a name="copy-data-between-data-lake-storage-gen1-and-azure-sql-database-using-sqoop"></a>Kopírování dat mezi Data Lake Storage Gen1 a Azure SQL Database pomocí Sqoop
 
@@ -24,7 +24,7 @@ Aplikace pro velké objemy dat jsou přirozenou volbou pro zpracování nestrukt
 
 [Apache Sqoop](https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html) je nástroj určený k přenosu dat mezi relačními databázemi a úložištěm s velkými objemy dat, jako je například Data Lake Storage Gen1. Můžete ji použít k importu dat ze systému pro správu relačních databází (RDBMS), jako je například Azure SQL Database do Data Lake Storage Gen1. Data pak můžete transformovat a analyzovat pomocí úloh s velkými objemy dat a pak je exportovat zpátky do RDBMS. V tomto článku použijete pro import/export do relační databáze databázi v Azure SQL Database.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, musíte mít následující:
 

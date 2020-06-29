@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 8a2b9a84-b0e6-48b9-b366-d16f004241a5
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-ms.openlocfilehash: 9c05bddaeb3c34400db1ec75c624ef00a85d9444
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 31220a8f8b012e08d46195b60a26be9cfc261be5
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "64720714"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514517"
 ---
 # <a name="use-the-service-summary-blade-for-storsimple-device-manager-connected-to-storsimple-virtual-array"></a>Pro StorSimple Device Manager připojená k virtuálnímu poli StorSimple použít okno s přehledem služby
 ## <a name="overview"></a>Přehled

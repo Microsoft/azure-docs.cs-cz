@@ -5,17 +5,17 @@ description: Nakonfigurujte předvolby směrování sítě (Preview) pro váš �
 services: storage
 author: santoshc
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/12/2020
 ms.author: santoshc
 ms.reviewer: tamram
 ms.subservice: common
-ms.openlocfilehash: bdb33ebfb1ca37772a5b0db96acdbddd422578af
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 5b4a1b1f27dff059090d78e24a6a0eca0bbbf01f
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597818"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514202"
 ---
 # <a name="configure-network-routing-preference-for-azure-storage-preview"></a>Konfigurace předvolby směrování sítě pro Azure Storage (Preview)
 

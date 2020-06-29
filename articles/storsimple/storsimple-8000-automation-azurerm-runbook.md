@@ -3,15 +3,15 @@ title: Použití Azure Automation Runbook ke správě zařízení StorSimple
 description: Naučte se používat sadu Runbook Azure Automation k automatizaci úloh StorSimple.
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/23/2017
 ms.author: alkohli
-ms.openlocfilehash: 727bebe0c190ed4dff4408884c45fe166ad541a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 737533cd75ebec8d5d6c614f496e0c9b552217aa
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76276976"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514164"
 ---
 # <a name="use-azure-automation-runbooks-to-manage-storsimple-devices"></a>Použití Azure Automation Runbooky ke správě zařízení StorSimple
 
@@ -41,7 +41,7 @@ Chcete-li vytvořit modul automatizace pro správu zařízení řady StorSimple 
         cd C:\scripts\StorSimpleSDKTools
     ```
 
-2. [Stáhněte si NUGET CLI](https://www.nuget.org/downloads) do složky vytvořené v předchozím kroku. Existují různé verze _NuGet. exe_. Vyberte verzi odpovídající vaší sadě SDK. Každý odkaz ke stažení odkazuje přímo na soubor _. exe_ . Ujistěte se, že kliknete pravým tlačítkem a uložíte soubor do počítače, ale nebudete ho spouštět z prohlížeče.
+2. [Stáhněte si NUGET CLI](https://www.nuget.org/downloads) do složky vytvořené v předchozím kroku. Existují různé verze _nuget.exe_. Vyberte verzi odpovídající vaší sadě SDK. Každý odkaz ke stažení odkazuje přímo na soubor _. exe_ . Ujistěte se, že kliknete pravým tlačítkem a uložíte soubor do počítače, ale nebudete ho spouštět z prohlížeče.
 
     Spuštěním následujícího příkazu můžete také stáhnout a uložit skript ve stejné složce, kterou jste vytvořili dříve.
 
@@ -83,7 +83,7 @@ Chcete-li vytvořit modul automatizace pro správu zařízení řady StorSimple 
         compress-Archive -Path "$moduleDir" -DestinationPath Microsoft.Azure.Management.StorSimple8000Series.zip
     ```
 
-6. Ověřte, že je v `C:\scripts\StorSimpleSDKTools`nástroji vytvořen soubor zip modulu automatizace.
+6. Ověřte, že je v nástroji vytvořen soubor zip modulu automatizace `C:\scripts\StorSimpleSDKTools` .
 
     ![ověření – automatizace-modul](./media/storsimple-8000-automation-azurerm-runbook/verify-automation-module.png)
 
@@ -194,7 +194,7 @@ Chcete-li vytvořit modul automatizace pro správu zařízení řady StorSimple 
 
 4. V nově vytvořeném účtu přejděte na **sdílené prostředky > moduly** a klikněte na **+ Přidat modul**.
 
-5. V okně **Přidat modul** přejděte do umístění modulu zip a vyberte a otevřete modul. Klikněte na tlačítko **OK**.
+5. V okně **Přidat modul** přejděte do umístění modulu zip a vyberte a otevřete modul. Klikněte na **OK**.
 
     ![přidat modul](./media/storsimple-8000-automation-azurerm-runbook/add-module.png)
 

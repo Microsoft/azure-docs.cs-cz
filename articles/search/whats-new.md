@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 06/23/2020
-ms.openlocfilehash: 34aeda7534c15b51b9759b696caaf3fcfac88659
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 086e3cf71012f168851df1c85b19689294fe6302
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85317709"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515736"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Co je nového v Azure Kognitivní hledání
 
@@ -23,11 +23,11 @@ Zjistěte, co je nového ve službě. Pomocí záložky můžete tuto stránku u
 
 ### <a name="june-2020"></a>Červen 2020
 
-+ [Azure Machine Learning (AML) (Preview)](cognitive-search-aml-skill.md) je vnímání dovedností, která se používá při indexování, která zabalí Azure Machine Learning model. Prostřednictvím dovednosti můžete integrovat dříve vyškolený a nasazený vlastní strojové učení do kanálu obohacení AI. [Zaregistrujte se, abyste mohli požádat o přístup](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0jK7x7HQYdDm__YfEsbtcZUMTFGTFVTOE5XMkVUMFlDVFBTTlYzSlpLTi4u). Až budete připraveni přidat AML dovednost, použijte šablonu AML v editoru dovednosti v Azure Portal. V [tomto kurzu](cognitive-search-tutorial-aml-custom-skill.md)se seznámíte s pokyny.
+Azure Machine Learning dovednost je nový typ dovednosti pro integraci koncového bodu Inferencing z Azure Machine Learning. Prostředí portálu podporuje zjišťování a integraci Azure Machine Learningho koncového bodu v rámci Kognitivní hledání dovednosti. Zjišťování vyžaduje, aby vaše Kognitivní hledání a služby Azure ML byly nasazeny ve stejném předplatném. Začněte s [tímto kurzem](cognitive-search-tutorial-aml-custom-skill.md).
 
 ### <a name="may-2020-microsoft-build"></a>Květen 2020 (Microsoft Build)
 
-+ Funkce [relace ladění](cognitive-search-debug-session.md) je teď ve verzi Preview. [Zaregistrujte se, abyste mohli požádat o přístup](https://aka.ms/DebugSessions). Relace ladění poskytují rozhraní založené na portálu pro zkoumání a řešení problémů s dovednosti. Opravy vytvořené v relaci ladění se dají uložit do produkčního dovednostiu. Začněte s [tímto kurzem](cognitive-search-tutorial-debug-sessions.md).
++ Funkce [relace ladění](cognitive-search-debug-session.md) je teď ve verzi Preview. Relace ladění poskytují rozhraní založené na portálu pro zkoumání a řešení problémů s dovednosti. Opravy vytvořené v relaci ladění se dají uložit do produkčního dovednostiu. Začněte s [tímto kurzem](cognitive-search-tutorial-debug-sessions.md).
 
 + Mezi vylepšení zabezpečení patří možnost [nastavit privátní koncový bod hledání (Preview)](service-create-private-endpoint.md) , který je nepřístupný na veřejném Internetu. Můžete také [nakonfigurovat pravidla protokolu IP pro podporu integrovaného bezpečnostního brány firewall (Preview)](service-configure-firewall.md).
 

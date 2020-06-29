@@ -13,12 +13,12 @@ ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 06/10/2019
 ms.author: jingwang
-ms.openlocfilehash: b50217a3a8aeda03996183bf1dc82a0be1f485ae
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 357026bbe17650464716282608bc316c5d4b055e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81419098"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514887"
 ---
 # <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>Rychlý Start: vytvoření datové továrny Azure a kanálu pomocí REST API
 
@@ -42,7 +42,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
 * **Účet Azure Storage**. Úložiště objektů blob použijete jako úložiště dat pro **zdroj** a **jímku**. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../storage/common/storage-account-create.md) , kde najdete kroky, jak ho vytvořit.
 * Vytvořte **kontejner objektů blob** ve službě Blob Storage, v tomto kontejneru vytvořte vstupní **složku** a uložte do ní nějaké soubory. Nástroje, jako je [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/), můžete použít k připojení k úložišti objektů blob v Azure, k vytvoření kontejneru objektů blob, nahrání vstupního souboru a ověření výstupního souboru.
 * Nainstalujte **Azure PowerShell**. Postupujte podle pokynů v tématu [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/install-Az-ps). Tento rychlý start využívá PowerShell k vyvolání volání rozhraní REST API.
-* **V Azure Active Directory** vytvořte aplikaci s využitím [těchto pokynů](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Poznamenejte si následující hodnoty, které použijete v pozdějších krocích: **ID aplikace**, **clientSecrets**a **ID tenanta**. Přiřaďte aplikaci roli **Přispěvatel**.
+* **V Azure Active Directory** vytvořte aplikaci s využitím [těchto pokynů](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal). Poznamenejte si následující hodnoty, které použijete v pozdějších krocích: **ID aplikace**, **clientSecrets**a **ID tenanta**. Přiřaďte aplikaci roli **Přispěvatel**.
 
 ## <a name="set-global-variables"></a>Nastavení globálních proměnných
 

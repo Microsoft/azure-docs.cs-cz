@@ -8,13 +8,13 @@ ms.author: mhopkins
 ms.date: 08/06/2019
 ms.service: storage
 ms.subservice: common
-ms.topic: conceptual
-ms.openlocfilehash: 1495ed55c24a0f94b911d60d1db0f32940ea134a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: 0a8eca9e7b3e890b67daf915ffe733dd54ef5896
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79137054"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515052"
 ---
 # <a name="get-storage-account-type-and-sku-name-with-net"></a>Získání typu účtu úložiště a názvu SKU pomocí .NET
 
@@ -24,9 +24,9 @@ Informace o účtu jsou k dispozici pro verze služby od verze 2018-03-28.
 
 ## <a name="about-account-type-and-sku-name"></a>Informace o typu účtu a názvu SKU
 
-**Typ účtu**: platné typy účtů zahrnují `BlobStorage`, `BlockBlobStorage`, `FileStorage` `Storage`, a `StorageV2`. [Přehled účtu Azure Storage](storage-account-overview.md) obsahuje další informace, včetně popisů různých účtů úložiště.
+**Typ účtu**: platné typy účtů zahrnují `BlobStorage` , `BlockBlobStorage` , `FileStorage` , `Storage` a `StorageV2` . [Přehled účtu Azure Storage](storage-account-overview.md) obsahuje další informace, včetně popisů různých účtů úložiště.
 
-**Název SKU**: platné názvy SKU zahrnují `Premium_LRS`, `Premium_ZRS`, `Standard_GRS`, `Standard_GZRS`, `Standard_LRS`, `Standard_RAGRS`, `Standard_RAGZRS`a `Standard_ZRS`. V názvech SKU jsou rozlišována velká a malá písmena a jsou řetězcová pole ve [třídě SkuName](/dotnet/api/microsoft.azure.management.storage.models.skuname?view=azure-dotnet).
+**Název SKU**: platné názvy SKU zahrnují `Premium_LRS` , `Premium_ZRS` , `Standard_GRS` , `Standard_GZRS` , `Standard_LRS` , `Standard_RAGRS` , `Standard_RAGZRS` a `Standard_ZRS` . V názvech SKU jsou rozlišována velká a malá písmena a jsou řetězcová pole ve [třídě SkuName](/dotnet/api/microsoft.azure.management.storage.models.skuname?view=azure-dotnet).
 
 ## <a name="retrieve-account-information"></a>Načíst informace o účtu
 

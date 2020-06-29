@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/01/2019
-ms.openlocfilehash: 7efae8fb3c00868e2740eac2d4d5bcb3c82f663a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/26/2020
+ms.openlocfilehash: 3a2f7f8edfab635d1c59ce61b60b7c5b5311b283
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75977540"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513353"
 ---
 # <a name="pricing-model-in-azure-cosmos-db"></a>Cenový model ve službě Azure Cosmos DB 
 
@@ -28,16 +28,16 @@ Zřízená propustnost, zadaná jako [jednotky žádosti](request-units.md) za s
 
 Další informace najdete na stránce s [cenami za Azure Cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/) a v článku o [Azure Cosmos DB fakturaci](understand-your-bill.md).
 
-Cenový model v Azure Cosmos DB je konzistentní napříč všemi rozhraními API. Další informace najdete v tématu [jak Azure Cosmos DB cenového modelu pro zákazníky](total-cost-ownership.md)cenově výhodné. V databázi nebo kontejneru je vyžadována minimální propustnost, aby se zajistila SLA, a můžete zvýšit nebo snížit zřízenou propustnost $6 pro každé 100 RU/s.
+Cenový model v Azure Cosmos DB je konzistentní napříč všemi rozhraními API. Další informace najdete v tématu [jak Azure Cosmos DB cenového modelu pro zákazníky](total-cost-ownership.md)cenově výhodné. V databázi nebo kontejneru je vyžadována minimální propustnost, aby se zajistila SLA, a můžete zvýšit nebo snížit zřízenou propustnost pomocí ~ $6 pro každé 100 RU/s.
 
-V současné době je minimální cena pro obě databáze i propustnost založená na kontejneru $24/měsíc (nejnovější informace najdete na [stránce s cenami Azure Cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/) . Pokud vaše úloha používá více kontejnerů, je možné ji optimalizovat pro náklady pomocí propustnosti na úrovni databáze, protože propustnost na úrovni databáze umožňuje mít v databázi, která sdílí propustnost mezi kontejnery, libovolný počet kontejnerů. Následující tabulka shrnuje zřízenou propustnost a náklady na různé entity:
+V současné době je minimální cena pro obě databáze i propustnost založená na kontejneru ~ $24/měsíc (nejnovější informace najdete na [stránce s cenami Azure Cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/) . Pokud vaše úloha používá více kontejnerů, je možné ji optimalizovat pro náklady pomocí propustnosti na úrovni databáze, protože propustnost na úrovni databáze umožňuje mít v databázi, která sdílí propustnost mezi kontejnery, libovolný počet kontejnerů. Následující tabulka shrnuje zřízenou propustnost a náklady na různé entity:
 
 |**Entita**  | **Minimální propustnost & náklady** |**Zvýšení kapacity & náklady** |**Rozsah zřizování** |
 |---------|---------|---------|-------|
-|databáze    | 400 RU/s ($ 24/měsíc)    | 100 RU/s ($ 6/měsíc)   |Propustnost je vyhrazena pro databázi a je sdílena kontejnery v rámci databáze. |
-|Kontejner     | 400 RU/s ($ 24/měsíc)    | 100 RU/s ($ 6/měsíc)  |Propustnost je vyhrazena pro konkrétní kontejner. |
+|databáze    | 400 RU/s (~ $24/měsíc)    | 100 RU/s (~ $6/měsíc)   |Propustnost je vyhrazena pro databázi a je sdílena kontejnery v rámci databáze. |
+|Kontejner     | 400 RU/s (~ $24/měsíc)    | 100 RU/s (~ $6/měsíc)  |Propustnost je vyhrazena pro konkrétní kontejner. |
 
-Jak je znázorněno v předchozí tabulce, minimální propustnost v Azure Cosmos DB začíná za cenu za měsíc + 24 měsíčně. Pokud začnete s minimální propustností a v průběhu času bude zajištěna podpora úloh v produkčním prostředí, vaše náklady budou plynule v přírůstcích po dobu 6 za měsíc. Cenový model v Azure Cosmos DB je elastický a při horizontálním navýšení nebo snížení kapacity dojde k hladkému zvýšení nebo snížení ceny.
+Jak je znázorněno v předchozí tabulce, minimální propustnost v Azure Cosmos DB začíná za cenu ~ $24/měsíc. Pokud začnete s minimální propustností a v průběhu času budete moct zajistit podporu produkčních úloh, náklady budou plynule proniknout v přírůstcích po ~ $6 měsíčně. Cenový model v Azure Cosmos DB je elastický a při horizontálním navýšení nebo snížení kapacity dojde k hladkému zvýšení nebo snížení ceny.
 
 ## <a name="try-azure-cosmos-db-for-free"></a>Vyzkoušejte si Azure Cosmos DB zdarma 
 

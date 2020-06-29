@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: fd006e836432ce775be8cbbefea6d9219e8b13b3
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 0330e72ad74726f97bfdfd78ef8d5f9b24a5d172
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253456"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513320"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Větvení a řetězení aktivit v kanálech Data Factory
 
@@ -54,7 +54,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 Seznam oblastí Azure, ve kterých je Data Factory aktuálně k dispozici, najdete v tématu [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat a výpočetní prostředky můžou být v jiných oblastech. Mezi obchody patří Azure Storage a Azure SQL Database. K výpočtům patří HDInsight, který Data Factory používá.
 
-Vytvořte aplikaci, jak je popsáno v tématu [Vytvoření aplikace Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Přiřaďte aplikaci roli **Přispěvatel** podle pokynů ve stejném článku. Pro pozdější části tohoto kurzu budete potřebovat několik hodnot, jako je například **ID aplikace (klienta)** a **ID adresáře (tenant)**.
+Vytvořte aplikaci, jak je popsáno v tématu [Vytvoření aplikace Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal). Přiřaďte aplikaci roli **Přispěvatel** podle pokynů ve stejném článku. Pro pozdější části tohoto kurzu budete potřebovat několik hodnot, jako je například **ID aplikace (klienta)** a **ID adresáře (tenant)**.
 
 ### <a name="create-a-blob-table"></a>Vytvoření tabulky objektů BLOB
 

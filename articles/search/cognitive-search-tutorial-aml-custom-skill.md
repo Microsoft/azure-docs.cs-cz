@@ -8,24 +8,24 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/10/2020
-ms.openlocfilehash: 1ff29be9cde4a2bd53f0edbe57f3eab603c1796f
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: f673fd4b49a33c2faf6bc8b489520f2a877b0689
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84740365"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513812"
 ---
 # <a name="tutorial-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>Kurz: sestavení a nasazení vlastní dovednosti pomocí Azure Machine Learning 
 
-V tomto kurzu použijete [datovou sadu přezkoumání hotelu](https://www.kaggle.com/datafiniti/hotel-reviews) (distribuovanou v rámci licence Creative-4,0 License [CC-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt)) a vytvoříte [vlastní dovednost](https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-interface) pomocí Azure Machine Learning k extrakci mínění založených na aspektech z revizí. To umožňuje, aby přiřazení pozitivních a záporných mínění v rámci stejné revize bylo správně přiřazené k identifikovaným entitám, jako jsou například zaměstnanci, místnosti, předsálí nebo fondy.
+V tomto kurzu použijete [datovou sadu přezkoumání hotelu](https://www.kaggle.com/datafiniti/hotel-reviews) (distribuovanou v rámci licence Creative-4,0 License [CC-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt)) a vytvoříte [vlastní dovednost](https://docs.microsoft.com/azure/search/cognitive-search-aml-skill) pomocí Azure Machine Learning k extrakci mínění založených na aspektech z revizí. To umožňuje, aby přiřazení pozitivních a záporných mínění v rámci stejné revize bylo správně přiřazené k identifikovaným entitám, jako jsou například zaměstnanci, místnosti, předsálí nebo fondy.
 
-Pro výuku modelu mínění založeného na aspektech budete používat [úložiště recepty NLP](https://github.com/microsoft/nlp-recipes/tree/master/examples/sentiment_analysis/absa). Model se pak nasadí jako koncový bod v clusteru Azure Kubernetes. Po nasazení se model přidá do kanálu pro obohacení jako vlastní dovednost pro použití službou Kognitivní hledání.
+Pro výuku modelu mínění založeného na aspektech v Azure Machine Learning budete používat [úložiště recepty NLP](https://github.com/microsoft/nlp-recipes/tree/master/examples/sentiment_analysis/absa). Model se pak nasadí jako koncový bod v clusteru Azure Kubernetes. Po nasazení se koncový bod přidá do kanálu pro rozšíření jako AML dovednost pro použití službou Kognitivní hledání.
 
 Jsou k dispozici dvě datové sady. Pokud chcete model naučit sami sebe, je vyžadován soubor hotel_reviews_1000.csv. Chcete přeskočit krok školení? Stáhněte hotel_reviews_100.csv.
 
 > [!div class="checklist"]
 > * Vytvoření instance služby Azure Kognitivní hledání
-> * Vytvoření pracovního prostoru Azure Machine Learning
+> * Vytvořte pracovní prostor Azure Machine Learning (vyhledávací služba a pracovní prostor by měly být ve stejném předplatném).
 > * Výuka a nasazení modelu do clusteru Azure Kubernetes
 > * Propojení kanálu rozšíření AI s nasazeným modelem
 > * Ingestovat výstup z nasazeného modelu jako vlastní dovednosti
@@ -84,8 +84,8 @@ Na portálu přejít na dovednosti a vyberte odkaz definice dovednosti (JSON). P
 
 Zkopírujte šablonu dovednosti z okna a vložte ji do definice dovednosti na levé straně. Upravte šablonu, aby poskytovala chybějící hodnoty pro:
 
-* Name
-* Description
+* Název
+* Popis
 * Kontext
 * název a zdroj vstupů
 * název a cílový_název pro výstupy

@@ -11,12 +11,12 @@ manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 05/29/2020
-ms.openlocfilehash: 8566b5d1d1beb87ccf7cd2b25f536732bb8d1f8e
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 907579d44575de56f95e0828c3313d0d1682b29c
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298053"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513890"
 ---
 # <a name="copy-data-to-and-from-azure-sql-managed-instance-by-using-azure-data-factory"></a>Kopírování dat do a ze spravované instance SQL Azure pomocí Azure Data Factory
 
@@ -61,12 +61,12 @@ Pro propojenou službu SQL Managed instance jsou podporovány následující vla
 
 | Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type musí být nastavená na **AzureSqlMI**. | Ano |
-| připojovací řetězec |Tato vlastnost určuje informace **připojovacího řetězce** potřebné pro připojení k spravované instanci SQL pomocí ověřování SQL. Další informace najdete v následujících příkladech. <br/>Výchozí port je 1433. Pokud používáte spravovanou instanci SQL s veřejným koncovým bodem, explicitně zadejte port 3342.<br> Heslo můžete také přidat do Azure Key Vault. Pokud se jedná o ověřování SQL, vyžádejte si z `password` připojovacího řetězce konfiguraci. Další informace najdete v příkladech JSON, které následují po tabulce, a [ukládají přihlašovací údaje v Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
+| typ | Vlastnost Type musí být nastavená na **AzureSqlMI**. | Yes |
+| připojovací řetězec |Tato vlastnost určuje informace **připojovacího řetězce** potřebné pro připojení k spravované instanci SQL pomocí ověřování SQL. Další informace najdete v následujících příkladech. <br/>Výchozí port je 1433. Pokud používáte spravovanou instanci SQL s veřejným koncovým bodem, explicitně zadejte port 3342.<br> Heslo můžete také přidat do Azure Key Vault. Pokud se jedná o ověřování SQL, vyžádejte si z `password` připojovacího řetězce konfiguraci. Další informace najdete v příkladech JSON, které následují po tabulce, a [ukládají přihlašovací údaje v Azure Key Vault](store-credentials-in-key-vault.md). |Yes |
 | servicePrincipalId | Zadejte ID klienta aplikace. | Ano, pokud používáte ověřování Azure AD s instančním objektem |
 | servicePrincipalKey | Zadejte klíč aplikace. Označte toto pole jako **SecureString** a bezpečně ho uložte do Azure Data Factory nebo [odkaz na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano, pokud používáte ověřování Azure AD s instančním objektem |
 | tenant | Zadejte informace o tenantovi, jako je název domény nebo ID tenanta, pod kterým se vaše aplikace nachází. Načtěte ho tak, že najedete myší v pravém horním rohu Azure Portal. | Ano, pokud používáte ověřování Azure AD s instančním objektem |
-| connectVia | Tento [modul runtime integrace](concepts-integration-runtime.md) se používá pro připojení k úložišti dat. Pokud má vaše spravovaná instance veřejný koncový bod a umožňuje Azure Data Factory k němu přistupovat, můžete použít místní prostředí Integration runtime nebo prostředí Azure Integration runtime. Pokud tento parametr nezadáte, použije se výchozí prostředí Azure Integration runtime. |Ano |
+| connectVia | Tento [modul runtime integrace](concepts-integration-runtime.md) se používá pro připojení k úložišti dat. Pokud má vaše spravovaná instance veřejný koncový bod a umožňuje Azure Data Factory k němu přistupovat, můžete použít místní prostředí Integration runtime nebo prostředí Azure Integration runtime. Pokud tento parametr nezadáte, použije se výchozí prostředí Azure Integration runtime. |Yes |
 
 Pro různé typy ověřování se podívejte na následující oddíly týkající se požadavků a ukázek JSON, v uvedeném pořadí:
 
@@ -126,7 +126,7 @@ Chcete-li použít ověřování pomocí tokenu aplikace služby Azure AD založ
 
 1. Postupujte podle kroků a [zřiďte správce Azure Active Directory pro vaši spravovanou instanci](../azure-sql/database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance).
 
-2. [Vytvořte aplikaci Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) z Azure Portal. Poznamenejte si název aplikace a následující hodnoty, které definují propojenou službu:
+2. [Vytvořte aplikaci Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal) z Azure Portal. Poznamenejte si název aplikace a následující hodnoty, které definují propojenou službu:
 
     - ID aplikace
     - Klíč aplikace
@@ -230,7 +230,7 @@ Chcete-li kopírovat data do a z spravované instance SQL, jsou podporovány ná
 
 | Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type datové sady musí být nastavená na **AzureSqlMITable**. | Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na **AzureSqlMITable**. | Yes |
 | XSD | Název schématu. |Ne pro zdroj, Ano pro jímku  |
 | tabulka | Název tabulky/zobrazení |Ne pro zdroj, Ano pro jímku  |
 | tableName | Název tabulky nebo zobrazení se schématem. Tato vlastnost je podporována z důvodu zpětné kompatibility. Pro nové úlohy použijte `schema` a `table` . | Ne pro zdroj, Ano pro jímku |
@@ -266,7 +266,7 @@ Chcete-li kopírovat data z spravované instance SQL, jsou v části zdroje akti
 
 | Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **SqlMISource**. | Ano |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **SqlMISource**. | Yes |
 | sqlReaderQuery |Tato vlastnost používá vlastní dotaz SQL ke čtení dat. Příklad: `select * from MyTable`. |No |
 | sqlReaderStoredProcedureName |Tato vlastnost je název uložené procedury, která čte data ze zdrojové tabulky. Poslední příkaz SQL musí být příkaz SELECT v uložené proceduře. |No |
 | storedProcedureParameters |Tyto parametry jsou pro uloženou proceduru.<br/>Povolené hodnoty jsou páry název-hodnota. Názvy a písmena parametrů se musí shodovat s názvy a písmeny parametrů uložené procedury. |No |
@@ -373,7 +373,7 @@ Chcete-li kopírovat data do spravované instance SQL, v části jímka aktivity
 
 | Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type jímky aktivity kopírování musí být nastavená na **SqlMISink**. | Ano |
+| typ | Vlastnost Type jímky aktivity kopírování musí být nastavená na **SqlMISink**. | Yes |
 | preCopyScript |Tato vlastnost určuje dotaz SQL pro aktivitu kopírování, která se má spustit před zápisem dat do spravované instance SQL. Vyvolá se jenom jednou pro každé spuštění kopírování. Tuto vlastnost můžete použít k vyčištění předem načtených dat. |No |
 | tableOption | Určuje, jestli se má automaticky vytvořit tabulka jímky, pokud na základě schématu zdroje neexistuje. Automatické vytváření tabulek není podporované, pokud jímka určuje uloženou proceduru nebo připravenou kopii nakonfigurovanou v aktivitě kopírování. Povolené hodnoty jsou: `none` (výchozí), `autoCreate` . |No |
 | sqlWriterStoredProcedureName | Název uložené procedury definující, jak se mají zdrojová data použít v cílové tabulce. <br/>Tato uložená procedura je *vyvolána pro každou dávku*. Pro operace, které se spouštějí jenom jednou a které nemají nic dělat se zdrojovými daty, například odstranit nebo zkrátit, použijte `preCopyScript` vlastnost.<br>Viz příklad [vyvolání uložené procedury z jímky SQL](#invoke-a-stored-procedure-from-a-sql-sink). | No |
@@ -585,7 +585,7 @@ Když se data zkopírují do spravované instance SQL a z ní, používají se k
 | ntext |Řetězec, znak [] |
 | numerické |Desetinné číslo |
 | nvarchar |Řetězec, znak [] |
-| real |Single |
+| real |Jeden |
 | rowversion |Byte [] |
 | smalldatetime |DateTime |
 | smallint |Int16 |

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/23/2019
-ms.openlocfilehash: 5e6a0586bc750f8972586920c15dbb297295aa20
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 52f90f3ce6d6cd53fcf17f7c735dafe5411303c4
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79371269"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514502"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>Vytvoření aplikace .NET HDInsight bez interaktivního ověřování
 
@@ -21,9 +21,9 @@ Spusťte aplikaci Microsoft .NET Azure HDInsight buď v rámci vlastní identity
 
 Z aplikace bez interaktivního rozhraní .NET potřebujete:
 
-* ID tenanta předplatného Azure (označuje se také jako *ID adresáře*). Viz [získat ID tenanta](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
-* ID klienta aplikace Azure Active Directory (Azure AD). Viz [Vytvoření aplikace Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) a [získání ID aplikace](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
-* Tajný klíč aplikace služby Azure AD. Viz [získat klíč pro ověření aplikace](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
+* ID tenanta předplatného Azure (označuje se také jako *ID adresáře*). Viz [získat ID tenanta](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in).
+* ID klienta aplikace Azure Active Directory (Azure AD). Viz [Vytvoření aplikace Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal) a [získání ID aplikace](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in).
+* Tajný klíč aplikace služby Azure AD. Viz [získat klíč pro ověření aplikace](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in).
 
 ## <a name="prerequisites"></a>Požadavky
 

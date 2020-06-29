@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
-ms.date: 11/12/2019
+ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 7dcd2015a669d9640f4163e6decc96689bb4ca7b
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 184db0280629e07314f9589338a33cdf442e63cb
+ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84167056"
+ms.lasthandoff: 06/29/2020
+ms.locfileid: "85517358"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>Co je návrhář služby Azure Machine Learning (Preview)? 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -26,7 +26,7 @@ Azure Machine Learning Designer vám umožňuje vizuálně propojit [datové sad
 
 Návrhář používá [pracovní prostor](concept-workspace.md) Azure Machine Learning k uspořádání sdílených prostředků, jako jsou:
 
-+ [Pipelines](#pipeline)
++ [Kanály](#pipeline)
 + [Datové sady](#datasets)
 + [Výpočetní prostředky](#compute)
 + [Registrované modely](concept-azure-machine-learning-architecture.md#models)
@@ -81,7 +81,8 @@ Modul je algoritmus, který je možné provést na datech. Návrhář má někol
 
 Modul může obsahovat sadu parametrů, pomocí kterých je možné konfigurovat jeho vnitřní algoritmy. Když na plátnu vyberete modul, parametry modulu se zobrazí v podokně Vlastnosti napravo od plátna. Úpravou parametrů v tomto podokně můžete model optimalizovat. Můžete nastavit výpočetní prostředky pro jednotlivé moduly v návrháři. 
 
-![Vlastnosti modulu](./media/concept-designer/properties.png)
+:::image type="content" source="./media/concept-designer/properties.png"alt-text="Vlastnosti modulu":::
+
 
 Další nápovědu k dispozici v knihovně strojového učení, najdete v tématu [Přehled modulu & algoritmu](algorithm-module-reference/module-reference.md). Nápovědu k výběru algoritmu najdete v [tahákm listu s algoritmem Azure Machine Learning](algorithm-cheat-sheet.md).
 
@@ -97,7 +98,7 @@ Pomocí výpočetních prostředků z pracovního prostoru můžete spustit kan�
 
 Cíle výpočetní služby jsou připojeny k vašemu [pracovnímu prostoru Azure Machine Learning](concept-workspace.md). Výpočetní cíle můžete spravovat ve vašem pracovním prostoru v [Azure Machine Learning Studiu](https://ml.azure.com).
 
-## <a name="deploy"></a>Nasazení
+## <a name="deploy"></a>Nasadit
 
 Chcete-li provést Inferencing v reálném čase, je nutné nasadit kanál jako **koncový bod v reálném**čase. Koncový bod v reálném čase vytvoří rozhraní mezi externí aplikací a modelem bodování. Volání koncového bodu v reálném čase vrátí výsledky předpovědi do aplikace v reálném čase. Pro volání koncového bodu v reálném čase předáte klíč rozhraní API, který byl vytvořen při nasazení koncového bodu. Koncový bod je založený na REST, oblíbené architektuře, která je vhodná pro projekty webového programování.
 

@@ -441,9 +441,9 @@
     - name: Databáze Cosmos
       tocHref: /azure/cosmos-db/
       topicHref: /azure/cosmos-db/
-    - name: Řada služeb Data Box
-      tocHref: /azure/databox-family/
-      topicHref: /azure/databox-family/
+    - name: Storage
+      tocHref: /azure/storage/
+      topicHref: /azure/storage/
       items:
         - name: Offline přenos Data Boxu
           tocHref: /azure/databox/
