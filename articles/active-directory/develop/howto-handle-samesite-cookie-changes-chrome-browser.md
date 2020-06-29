@@ -8,17 +8,17 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/27/2020
 ms.author: jmprieur
 ms.reviewer: kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: f28d3722d56582bd925d31b43b4a0219bca2ae30
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: df0caf3ae029353742b4b1060ca5241ac9cbb5bd
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81534597"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85477800"
 ---
 # <a name="handle-samesite-cookie-changes-in-chrome-browser"></a>Zpracování změn souborů cookie SameSite v prohlížeči Chrome
 
@@ -33,9 +33,9 @@ Ve výchozím nastavení není `SameSite` hodnota nastavena v prohlížečích a
 
 ## <a name="samesite-changes-and-impact-on-authentication"></a>SameSite změny a dopad na ověřování
 
-Nedávné [aktualizace standardů na SameSite](https://tools.ietf.org/html/draft-west-cookie-incrementalism-00) navrhují ochranu aplikací tím, že se nastaví výchozí chování `SameSite` , když není hodnota nastavená na LAX. Toto zmírnění znamená, že soubory cookie budou omezeny na požadavky HTTP s výjimkou toho, že jsou vytvořeny z jiných lokalit. Kromě toho není k dispozici **žádná hodnota žádného** z důvodů odebrání omezení odesílaných souborů cookie. Tyto aktualizace budou brzy vydány v nadcházející verzi prohlížeče Chrome.
+Nedávné [aktualizace standardů na SameSite](https://tools.ietf.org/html/draft-west-cookie-incrementalism-00) navrhují ochranu aplikací tím, že se nastaví výchozí chování, `SameSite` když není hodnota nastavená na LAX. Toto zmírnění znamená, že soubory cookie budou omezeny na požadavky HTTP s výjimkou toho, že jsou vytvořeny z jiných lokalit. Kromě toho není k dispozici **žádná hodnota žádného** z důvodů odebrání omezení odesílaných souborů cookie. Tyto aktualizace budou brzy vydány v nadcházející verzi prohlížeče Chrome.
 
-Když se webové aplikace ověřují s platformou Microsoft identity pomocí režimu odpovědi form_post, přihlašovací server odpoví na aplikaci pomocí HTTP POST a pošle tokeny nebo ověřovací kód. Vzhledem k tomu, že se jedná o požadavek mezi doménami (od `login.microsoftonline.com` do vaší domény `https://contoso.com/auth`), soubory cookie, které byly nastaveny vaší aplikací, teď spadají do nových pravidel v Chrome. Soubory cookie, které je potřeba použít při scénářích mezi lokalitami, jsou soubory cookie, které obsahují hodnoty *stavu* a hodnoty *nonce* , které se také odesílají v žádosti o přihlášení. Služba Azure AD zahodila jiné soubory cookie, aby se relace mohla uchovávat.
+Když se webové aplikace ověřují s platformou Microsoft identity pomocí režimu odpovědi form_post, přihlašovací server odpoví na aplikaci pomocí HTTP POST a pošle tokeny nebo ověřovací kód. Vzhledem k tomu, že se jedná o požadavek mezi doménami (od `login.microsoftonline.com` do vaší domény `https://contoso.com/auth` ), soubory cookie, které byly nastaveny vaší aplikací, teď spadají do nových pravidel v Chrome. Soubory cookie, které je potřeba použít při scénářích mezi lokalitami, jsou soubory cookie, které obsahují hodnoty *stavu* a hodnoty *nonce* , které se také odesílají v žádosti o přihlášení. Služba Azure AD zahodila jiné soubory cookie, aby se relace mohla uchovávat.
 
 Pokud vaše webové aplikace neaktualizujete, výsledkem tohoto nového chování bude selhání ověřování.
 

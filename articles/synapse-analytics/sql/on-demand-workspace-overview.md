@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3f020abd4d207a49068ccffb9bb7f57b88bc87df
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 35e75037b4bf759fe90d608be0682004d3d3f23c
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85206389"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85480435"
 ---
 # <a name="sql-on-demand-preview-in-azure-synapse-analytics"></a>SQL na vyžádání (Preview) ve službě Azure synapse Analytics 
 
@@ -89,21 +89,21 @@ SQL na vyžádání nemá žádné místní úložiště, ukládají se do datab
 
 Aby bylo možné povolit hladké prostředí pro účely zadávání dotazů na data umístěná v souborech v Data Lake, rozšiřuje SQL na vyžádání existující funkci [OpenRowset](/sql/t-sql/functions/openrowset-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) přidáním následujících možností:
 
-[Dotazování na více souborů nebo složek](develop-storage-files-overview.md#query-multiple-files-or-folders)
+[Dotazování na více souborů nebo složek](query-data-storage.md#query-multiple-files-or-folders)
 
-[Formát souboru PARQUET](develop-storage-files-overview.md#parquet-file-format)
+[Formát souboru PARQUET](query-data-storage.md#query-parquet-files)
 
-[Další možnosti pro práci s odděleným textem (ukončovací znak pole, ukončovací znak řádku, řídicí znak)](develop-storage-files-overview.md#additional-options-for-working-with-delimited-text)
+[Další možnosti pro práci s odděleným textem (ukončovací znak pole, ukončovací znak řádku, řídicí znak)](query-data-storage.md#query-csv-files)
 
-[Čtení zvolené podmnožiny sloupců](develop-storage-files-overview.md#read-a-chosen-subset-of-columns)
+[Čtení zvolené podmnožiny sloupců](query-data-storage.md#read-a-chosen-subset-of-columns)
 
-[Odvození schématu](develop-storage-files-overview.md#schema-inference)
+[Odvození schématu](query-data-storage.md#schema-inference)
 
-[filename – funkce](develop-storage-files-overview.md#filename-function)
+[filename – funkce](query-data-storage.md#filename-function)
 
-[FilePath – funkce](develop-storage-files-overview.md#filepath-function)
+[FilePath – funkce](query-data-storage.md#filepath-function)
 
-[Práce se složitými typy a vnořenými nebo opakovanými datovými strukturami](develop-storage-files-overview.md#work-with-complex-types-and-nested-or-repeated-data-structures)
+[Práce se složitými typy a vnořenými nebo opakovanými datovými strukturami](query-data-storage.md#work-with-complex-types-and-nested-or-repeated-data-structures)
 
 ## <a name="security"></a>Zabezpečení
 
@@ -113,7 +113,7 @@ SQL na vyžádání nabízí mechanismy pro zabezpečení přístupu k datům.
 
 SQL na vyžádání umožňuje centrálně spravovat identity uživatelů databáze a dalších služeb Microsoftu pomocí [Azure Active Directory Integration](../../azure-sql/database/authentication-aad-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). Tato možnost zjednodušuje správu oprávnění a zvyšuje zabezpečení. Azure Active Directory (Azure AD) podporuje [vícefaktorové ověřování](../../azure-sql/database/authentication-mfa-ssms-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (MFA) pro zvýšení zabezpečení dat a aplikací a současně podporuje proces jednotného přihlašování.
 
-#### <a name="authentication"></a>Ověřování
+#### <a name="authentication"></a>Authentication
 
 Ověřování SQL na vyžádání odkazuje na to, jak uživatelé při připojení ke koncovému bodu prokáže svoji identitu. Podporují se dva typy ověřování:
 

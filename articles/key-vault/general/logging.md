@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b62d69220a931bef8d91a85bcbbaedfbce86110a
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 2ac68f1cab6958c0fc79fa6518c61417e75c0a70
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85211387"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85480605"
 ---
 # <a name="azure-key-vault-logging"></a>Protokolování v Azure Key Vaultu
 
@@ -95,7 +95,7 @@ V [úvodním kurzu](../secrets/quick-create-cli.md)se název trezoru klíčů **
 $kv = Get-AzKeyVault -VaultName 'ContosoKeyVault'
 ```
 
-## <a name="enable-logging-using-azure-powershell"></a><a id="enable"></a>Povolení protokolování pomocí Azure PowerShellu
+## <a name="enable-logging-using-azure-powershell"></a><a id="enable"></a>Povolit protokolování pomocí Azure PowerShell
 
 Pokud chcete povolit protokolování pro Key Vault, použijeme rutinu **set-AzDiagnosticSetting** spolu s proměnnými, které jsme vytvořili pro nový účet úložiště a trezoru klíčů. Také nastavíme příznak **-Enabled** na **$true** a nastavíte kategorii na **AuditEvent** (jediná kategorie pro protokolování Key Vault):
 
@@ -188,7 +188,7 @@ Hodnoty data a času používají UTC.
 
 Vzhledem k tomu, že ke shromažďování protokolů pro více prostředků můžete použít stejný účet úložiště, úplné ID prostředku v názvu objektu BLOB je užitečné pro přístup k objektům blob, které potřebujete, nebo ke stažení jenom. Ale předtím se podíváme na to, jak stáhnout všechny objekty blob.
 
-Vytvořte složku pro stažení objektů BLOB. Příklad:
+Vytvořte složku pro stažení objektů BLOB. Například:
 
 ```powershell 
 New-Item -Path 'C:\Users\username\ContosoKeyVaultLogs' -ItemType Directory -Force
@@ -208,7 +208,7 @@ $blobs | Get-AzStorageBlobContent -Destination C:\Users\username\ContosoKeyVault
 
 Když spustíte tento druhý příkaz, **/** oddělovač v názvech objektů BLOB vytvoří v cílové složce úplnou strukturu složek. Pomocí této struktury budete stahovat a ukládat objekty BLOB jako soubory.
 
-Chcete-li stahovat objekty blob selektivně, použijte zástupné znaky. Příklad:
+Chcete-li stahovat objekty blob selektivně, použijte zástupné znaky. Například:
 
 * Máte-li více trezorů klíčů a chcete stáhnout pouze protokoly pro jeden trezor klíčů s názvem CONTOSOKEYVAULT3:
 
@@ -263,7 +263,7 @@ Jednotlivé objekty blob jsou uloženy jako text ve formátu JSON blob. Pojďme 
 
 V následující tabulce jsou uvedené názvy a popisy polí:
 
-| Název pole | Description |
+| Název pole | Popis |
 | --- | --- |
 | **interval** |Datum a čas ve standardu UTC. |
 | **Prostředku** |ID prostředku Azure Resource Manager. U protokolů Key Vault se jedná vždy o Key Vault Resource ID. |
@@ -279,7 +279,7 @@ V následující tabulce jsou uvedené názvy a popisy polí:
 | **odcizen** |Identita z tokenu, který byl předložen v žádosti REST API. Obvykle se jedná o "uživatel", "instanční objekt" nebo kombinaci "User + appId", jako v případě požadavku, který je výsledkem rutiny Azure PowerShell. |
 | **vlastnosti** |Informace, které se liší v závislosti na operaci (**OperationName**). Ve většině případů toto pole obsahuje informace o klientovi (uživatelský agent, který předává klient), přesný REST API identifikátor URI žádosti a stavový kód HTTP. Kromě toho, když se vrátí objekt jako výsledek požadavku (například **Vytvoření** nebo **VaultGet**), obsahuje taky identifikátor URI klíče (as "ID"), identifikátor URI trezoru nebo tajný identifikátor URI. |
 
-Hodnoty polí **OperationName** jsou ve formátu *ObjectVerb* . Příklad:
+Hodnoty polí **OperationName** jsou ve formátu *ObjectVerb* . Například:
 
 * Všechny operace trezoru klíčů mají `Vault<action>` formát, například `VaultGet` a `VaultCreate` .
 * Všechny operace s klíči mají `Key<action>` formát, například `KeySign` a `KeyList` .
@@ -289,7 +289,7 @@ Následující tabulka uvádí hodnoty **OperationName** a odpovídající REST 
 
 | operationName | REST API – příkaz |
 | --- | --- |
-| **Ověřování** |Ověřování prostřednictvím Azure Active Directoryho koncového bodu |
+| **Authentication** |Ověřování prostřednictvím Azure Active Directoryho koncového bodu |
 | **VaultGet** |[Získání informací o trezoru klíčů](https://msdn.microsoft.com/library/azure/mt620026.aspx) |
 | **VaultPut** |[Vytvoření nebo aktualizace trezoru klíčů](https://msdn.microsoft.com/library/azure/mt620025.aspx) |
 | **VaultDelete** |[Odstranění trezoru klíčů](https://msdn.microsoft.com/library/azure/mt620022.aspx) |
@@ -330,5 +330,3 @@ Kurz, který používá Azure Key Vault ve webové aplikaci .NET, najdete v tém
 Programátorské reference najdete v [příručce pro vývojáře Azure Key Vault](developers-guide.md).
 
 Seznam rutin Azure PowerShell 1,0 pro Azure Key Vault najdete v tématu [rutiny Azure Key Vault](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault).
-
-Kurz týkající se střídání klíčů a auditování protokolů pomocí Azure Key Vault najdete v tématu [nastavení Key Vault s koncovým otočením a auditováním klíčů](../secrets/key-rotation-log-monitoring.md).

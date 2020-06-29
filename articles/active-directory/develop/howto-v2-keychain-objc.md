@@ -8,17 +8,17 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: d94bf7ffe955c9ec9ee2a2e7f7c4dbaaa28df270
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 06e197a6e445c7dc1179be696318905f2132ee36
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77085863"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85477732"
 ---
 # <a name="configure-keychain"></a>Konfigurace klíčenky
 
@@ -32,19 +32,19 @@ Tento článek popisuje, jak nakonfigurovat nároky aplikace tak, aby MSAL mohli
 
 MSAL v systému iOS používá `com.microsoft.adalcache` ve výchozím nastavení přístupovou skupinu. Jedná se o sdílenou přístupovou skupinu, kterou používají sady SDK MSAL i Azure AD Authentication Library (ADAL), a zajišťuje nejlepší jednotné přihlašování (SSO) mezi více aplikacemi od stejného vydavatele.
 
-V systému iOS přidejte skupinu `com.microsoft.adalcache` řetězce klíčů do nároku vaší aplikace v Xcode v části > **Možnosti** >  **nastavení projektu****sdílení řetězce klíčů** .
+V systému iOS přidejte `com.microsoft.adalcache` skupinu řetězce klíčů do nároku vaší aplikace v Xcode v části **Možnosti nastavení projektu**  >  **Capabilities**  >  **sdílení řetězce klíčů** .
 
 ### <a name="macos"></a>macOS
 
 MSAL v macOS používá `com.microsoft.identity.universalstorage` ve výchozím nastavení přístupovou skupinu.
 
-Z důvodu omezení řetězce klíčů macOS se MSAL `access group` nepřeloží přímo na atribut přístupové skupiny pro řetězce klíčů (viz [KSecAttrAccessGroup](https://developer.apple.com/documentation/security/ksecattraccessgroup?language=objc)) v MacOS 10,14 a starších. Nicméně se chová podobně jako v perspektivě jednotného přihlašování. zajišťuje, že více aplikací distribuovaných stejným vývojářem Apple může mít tiché jednotné přihlašování.
+Z důvodu omezení řetězce klíčů macOS se MSAL `access group` nepřeloží přímo na atribut přístupové skupiny pro řetězce klíčů (viz [kSecAttrAccessGroup](https://developer.apple.com/documentation/security/ksecattraccessgroup?language=objc)) v MacOS 10,14 a starších. Nicméně se chová podobně jako v perspektivě jednotného přihlašování. zajišťuje, že více aplikací distribuovaných stejným vývojářem Apple může mít tiché jednotné přihlašování.
 
 V macOS 10,15 a vyšším (macOS Catalina) využívá MSAL k zajištění tichého přihlašování () atribut přístupovou skupinu pro řetězce klíčů, podobně jako iOS.
 
 ## <a name="custom-keychain-access-group"></a>Vlastní přístupová skupina pro řetězce klíčů
 
-Pokud chcete použít jinou přístupovou skupinu pro řetězce klíčů, můžete vlastní skupinu předat při vytváření `MSALPublicClientApplicationConfig` před vytvořením `MSALPublicClientApplication`, například takto:
+Pokud chcete použít jinou přístupovou skupinu pro řetězce klíčů, můžete vlastní skupinu předat při vytváření `MSALPublicClientApplicationConfig` před vytvořením, například takto `MSALPublicClientApplication` :
 
 # <a name="objective-c"></a>[Objective-C](#tab/objc)
 

@@ -7,18 +7,18 @@ author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 07/16/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 90189a1d7fd6421b7a24940e8c6ed615fa0df6d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c4e60e7e6a16b3e526d2f1581bfa145b74e5da01
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77084829"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85477494"
 ---
 # <a name="get-a-token-from-the-token-cache-using-msalnet"></a>Získání tokenu z mezipaměti tokenů pomocí MSAL.NET
 
@@ -26,7 +26,7 @@ Při získání přístupového tokenu pomocí knihovny Microsoft Authentication
 
 Doporučeným vzorem je nejprve zavolat `AcquireTokenSilent` metodu.  Pokud `AcquireTokenSilent` dojde k chybě, Získejte token pomocí jiných metod.
 
-V následujícím příkladu se aplikace poprvé pokusí získat token z mezipaměti tokenu.  Pokud je `MsalUiRequiredException` vyvolána výjimka, aplikace získá token interaktivně. 
+V následujícím příkladu se aplikace poprvé pokusí získat token z mezipaměti tokenu.  Pokud `MsalUiRequiredException` je vyvolána výjimka, aplikace získá token interaktivně. 
 
 ```csharp
 AuthenticationResult result = null;

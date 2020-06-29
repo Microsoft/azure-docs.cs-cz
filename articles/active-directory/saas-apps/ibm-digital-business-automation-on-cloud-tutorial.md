@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f33992c7aa205e503c7de150adad7180ff823881
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: c0a8185d81966932c17fd3b0590b5f8ef2f7b6df
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85099665"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85479789"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ibm-digital-business-automation-on-cloud"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s IBM Digital Business Automation v cloudu
 
@@ -93,7 +93,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     > Pokud se hodnoty **adresy URL** pro **identifikátor** a odpověď nezískají automaticky, vyplníte hodnoty ručně podle vašich požadavků.
 
     > [!Note]
-    > Zákazníci mohou získat soubor metadat pro své cloudové předplatné z [týmu DBAoC DevOps](mailto:supportbpmoncloud@us.ibm.com).
+    > Zákazníci mohou získat soubor metadat pro své cloudové předplatné od [společnosti IBM Digital Business Automation na tým podpory cloudových klientů](mailto:supportbpmoncloud@us.ibm.com).
 
 1. Pokud nemáte **soubor metadat poskytovatele služeb**, v **základní části Konfigurace SAML** , pokud chcete nakonfigurovat aplikaci v režimu, který byl spuštěn **IDP** , zadejte hodnoty pro následující pole:
 

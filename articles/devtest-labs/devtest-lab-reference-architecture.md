@@ -1,24 +1,15 @@
 ---
 title: Referenční architektura podniku pro Azure DevTest Labs
 description: Tento článek poskytuje pokyny pro referenční architekturu pro Azure DevTest Labs v podniku.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2019
-ms.author: spelluru
+ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 77e6ab588f74c8b810f211e069c1c24043155111
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 8b71774d9a833adefdd25214ea4f0e8bdaaba485
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84897944"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85480180"
 ---
 # <a name="azure-devtest-labs-reference-architecture-for-enterprises"></a>Referenční architektura Azure DevTest Labs pro podniky
 Tento článek popisuje referenční architekturu, která vám může pomáhat s nasazením řešení na základě Azure DevTest Labs v podniku. Zahrnuje následující:

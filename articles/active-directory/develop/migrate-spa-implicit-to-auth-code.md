@@ -1,46 +1,46 @@
 ---
 title: Migrace jednostránkové aplikace v JavaScriptu z implicitního udělení na tok autorizačního kódu | Azure
 titleSuffix: Microsoft identity platform
-description: Jak aktualizovat rozhraní JavaScript SPA pomocí MSAL. js 1. x a implicitní tok udělení na MSAL. js 2. x a tok autorizačního kódu s podporou PKCE a CORS.
+description: Postup aktualizace zabezpečeného hesla typu JavaScript pomocí MSAL.js 1. x a implicitního toku udělení pro MSAL.js 2. x a toku autorizačního kódu s podporou PKCE a CORS.
 services: active-directory
 author: hahamil
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: tutorial
+ms.topic: how-to
 ms.workload: identity
 ms.date: 06/01/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: 6af203759cca830a6adcf9f70436d42f3d983da4
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 8115f8e767d1bdcbacb74e90606526c98b0820f7
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84301039"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85479534"
 ---
 # <a name="migrate-a-javascript-single-page-app-from-implicit-grant-to-auth-code-flow"></a>Migrace jednostránkové aplikace v JavaScriptu z implicitního udělení na tok kódu ověřování
 
 > [!IMPORTANT]
 > Tato funkce je aktuálně ve verzi Preview. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Některé aspekty této funkce se můžou před všeobecnou dostupností změnit (GA).
 
-Knihovna Microsoft Authentication Library pro JavaScript (MSAL. js) v 2.0 přináší podporu toku autorizačního kódu s PKCE a CORS pro jednostránkové aplikace na platformě Microsoft identity. Použijte postup v následujících částech k migraci aplikace MSAL. js 1. x pomocí implicitního udělení na MSAL. js 2.0 + (dále *2. x*) a toku kódu ověřování.
+Knihovna Microsoft Authentication Library pro JavaScript (MSAL.js) v 2.0 přináší podporu toku autorizačního kódu s PKCE a CORS pro jednostránkové aplikace na platformě Microsoft identity. Postupujte podle kroků v následujících částech a migrujte svou aplikaci MSAL.js 1. x pomocí implicitního udělení MSAL.js 2.0 + (dále *2. x*) a toku kódu ověřování.
 
-MSAL. js 2. x vylepšuje MSAL. js 1. x tím, že podporuje tok autorizačního kódu v prohlížeči místo implicitního toku udělení. MSAL. js 2. **x nepodporuje implicitní** tok.
+MSAL.js 2. x vylepšuje MSAL.js 1. x tím, že podporuje tok autorizačního kódu v prohlížeči místo implicitního toku udělení. MSAL.js 2. **x nepodporuje implicitní** tok.
 
 ## <a name="migration-steps"></a>Kroky migrace
 
-Chcete-li aktualizovat aplikaci na MSAL. js 2. x a tok kódu ověřování, existují tři hlavní kroky:
+Chcete-li aktualizovat aplikaci na MSAL.js 2. x a tok kódu ověřování, existují tři hlavní kroky:
 
 1. Přepněte identifikátor URI přesměrování [Registrace aplikace](#switch-redirect-uris-to-spa-platform) z **webové** platformy na **jednoduchou aplikační** platformu.
-1. Aktualizujte [kód](#switch-redirect-uris-to-spa-platform) z MSAL. js 1. x na **2. x**.
-1. Pokud jste všechny aplikace sdílející registraci aktualizovali na MSAL. js 2. x a tok kódu ověřování, zakažte [implicitní udělení](#disable-implicit-grant-settings) v registraci vaší aplikace.
+1. Aktualizujte [kód](#switch-redirect-uris-to-spa-platform) z MSAL.js 1. x na **2. x**.
+1. Zakáže [implicitní udělení](#disable-implicit-grant-settings) v registraci vaší aplikace, když jsou všechny aplikace sdílející registraci aktualizované tak, aby MSAL.js 2. x a tok kódu ověřování.
 
 V následujících částech jsou podrobněji popsány jednotlivé kroky.
 
 ## <a name="switch-redirect-uris-to-spa-platform"></a>Přepnout identifikátory URI přesměrování na platformu SPA
 
-Pokud chcete pro své aplikace nadále používat stávající registraci aplikace, použijte Azure Portal k aktualizaci identifikátorů URI přesměrování registrace na platformu SPA. Díky tomu je možné tok autorizačního kódu s PKCE a podporou CORS pro aplikace, které používají registraci (stále potřebujete aktualizovat kód vaší aplikace na MSAL. js v2. x).
+Pokud chcete pro své aplikace nadále používat stávající registraci aplikace, použijte Azure Portal k aktualizaci identifikátorů URI přesměrování registrace na platformu SPA. Díky tomu je možné tok autorizačního kódu s PKCE a podporou CORS pro aplikace, které používají registraci (stále potřebujete aktualizovat kód vaší aplikace na MSAL.js v2. x).
 
 Pro registrace aplikací, které jsou aktuálně nakonfigurované pomocí identifikátorů URI přesměrování **webové** platformy, použijte následující postup:
 
@@ -49,7 +49,7 @@ Pro registrace aplikací, které jsou aktuálně nakonfigurované pomocí identi
 1. Na dlaždici **Webová** platforma v části **identifikátory URI pro přesměrování**vyberte informační zpráva s oznámením, že byste měli migrovat identifikátory URI.
 
     :::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-01-implicit-warning-banner.png" alt-text="Informační zpráva k implicitnímu toku na dlaždici webové aplikace v Azure Portal":::
-1. Vyberte *jenom* ty identifikátory URI přesměrování, jejichž aplikace budou používat MSAL. js 2. x, a pak vyberte **Konfigurovat**.
+1. Vyberte *jenom* ty identifikátory URI přesměrování, jejichž aplikace budou používat MSAL.js 2. x, a pak vyberte **Konfigurovat**.
 
     :::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-02-select-redirect-uri.png" alt-text="V podokně hesla vyberte podokno identifikátor URI přesměrování v Azure Portal":::
 
@@ -59,7 +59,7 @@ Tyto identifikátory URI pro přesměrování by se teď měly zobrazit na dlaž
 
 Místo aktualizace identifikátorů URI přesměrování v existující registraci můžete také [vytvořit novou registraci aplikace](scenario-spa-app-registration.md) .
 
-## <a name="update-your-code-to-msaljs-2x"></a>Aktualizujte kód na MSAL. js 2. x
+## <a name="update-your-code-to-msaljs-2x"></a>Aktualizujte kód na MSAL.js 2. x
 
 V MSAL 1. x jste vytvořili instanci aplikace inicializací [UserAgentApplication][msal-js-useragentapplication] následujícím způsobem:
 
@@ -89,7 +89,7 @@ Po aktualizaci všech produkčních aplikací, které používají tuto registra
 
 Když zrušíte kontrolu nastavení implicitního udělení v registraci aplikace, implicitní tok se zakáže pro všechny aplikace, které používají registraci a její ID klienta.
 
-Před aktualizací všech aplikací na MSAL. js 2. x a [PublicClientApplication][msal-js-publicclientapplication] **nepovolujte** tok implicitního udělení.
+**Nepovolujte** tok implicitního udělení před aktualizací všech aplikací na MSAL.js 2. x a [PublicClientApplication][msal-js-publicclientapplication].
 
 ## <a name="next-steps"></a>Další kroky
 

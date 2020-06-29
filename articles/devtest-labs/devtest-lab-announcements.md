@@ -1,25 +1,14 @@
 ---
 title: Zveřejnění oznámení do testovacího prostředí v Azure DevTest Labs | Microsoft Docs
 description: Naučte se, jak přidat oznámení do testovacího prostředí v Azure DevTest Labs
-services: devtest-lab,virtual-machines
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.assetid: 67a09946-4584-425e-a94c-abe57c9cbb82
-ms.service: devtest-lab
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
-ms.author: spelluru
-ms.openlocfilehash: 6381c42114e53068188eb8e81034bd6d2a2665bf
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: bac2b0a4e33a01977418b36ce6e3726999d10ed5
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84896127"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85478990"
 ---
 # <a name="post-an-announcement-to-a-lab-in-azure-devtest-labs"></a>Zveřejnění oznámení do testovacího prostředí v Azure DevTest Labs
 
@@ -160,7 +149,7 @@ Oznámení můžete zadat jako součást šablony Azure Resource Manager, jak je
 
 Šablonu Azure Resource Manager můžete nasadit pomocí některého z následujících způsobů:
 
-- [portál Azure](../azure-resource-manager/templates/deploy-portal.md)
+- [Azure Portal](../azure-resource-manager/templates/deploy-portal.md)
 - [Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
 - [Azure CLI](../azure-resource-manager/templates/deploy-cli.md)
 - [REST API](../azure-resource-manager/templates/deploy-rest.md)

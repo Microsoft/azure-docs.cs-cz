@@ -1,25 +1,14 @@
 ---
 title: Použití Azure DevTest Labs pro vývojáře | Microsoft Docs
 description: Seznamte se s Azure DevTest Labs funkcemi, které se dají použít k splnění požadavků na vývojáře a podrobných kroků, které můžete provést při nastavení testovacího prostředí.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-editor: ''
-ms.assetid: 22e070e5-3d1a-49fe-9d4c-5e07cb0b7fe2
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: spelluru
-ms.openlocfilehash: ae44696f62a085bf1e798f0915e2bd1e27c3a78f
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: c6bb2c4d21ee6b6cb072c550c82c380b3a380f24
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84896918"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85481030"
 ---
 # <a name="use-azure-devtest-labs-for-developers"></a>Použití Azure DevTest Labs pro vývojáře
 Azure DevTest Labs lze použít k implementaci mnoha klíčových scénářů. Jedním z nejzákladnějších je hostování počítačů pro vývojáře. V tomto scénáři poskytuje služba DevTest Labs následující výhody:

@@ -8,17 +8,17 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/8/2019
 ms.author: marsma
 ms.reviewer: lenalepa, alamaral
 ms.custom: aaddev
-ms.openlocfilehash: 3a954167dc0698389680a92511621fb6acf4b12b
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 43ed0bfed1dbe48c4f66a820ecad6fedf11115fe
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82889992"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85478157"
 ---
 # <a name="the-new-azure-portal-app-registration-experience"></a>Nové prostředí pro registraci aplikací Azure Portal
 
@@ -77,7 +77,7 @@ V novém prostředí byly **tajné klíče aplikace** přejmenovány na **certif
 ## <a name="platformsauthentication-reply-urlsredirect-uris"></a>Platformy/ověřování: adresy URL odpovědí/identifikátory URI pro přesměrování
 Ve starém prostředí obsahovala aplikace platformy pro web, nativní a webové rozhraní API ke konfiguraci adres URL pro přesměrování, adresy URL pro odhlášení a implicitního toku.
 
-V novém prostředí se adresy URL odpovědí dají najít v části ověřování aplikace\'. Kromě toho se označují jako identifikátory URI přesměrování a změna formátu identifikátorů URI pro přesměrování se změnila. Musí být přidružené k typu aplikace (webový nebo veřejný klient – mobilní zařízení a Desktop). [Další informace](quickstart-configure-app-access-web-apis.md#add-redirect-uris-to-your-application)
+V novém prostředí se adresy URL odpovědí dají najít v \' části ověřování aplikace. Kromě toho se označují jako identifikátory URI přesměrování a změna formátu identifikátorů URI pro přesměrování se změnila. Musí být přidružené k typu aplikace (webový nebo veřejný klient – mobilní zařízení a Desktop). [Další informace](quickstart-configure-app-access-web-apis.md#add-redirect-uris-to-your-application)
 
 Webová rozhraní API jsou nakonfigurovaná na stránce vystavení rozhraní API.
 
@@ -106,7 +106,7 @@ K dispozici je nové uživatelské rozhraní pro vlastnosti, které se dřív da
 
 -   Obory definované tímto rozhraním API (oauth2Permissions) a autorizované klientské aplikace (preAuthorizedApplications) je možné konfigurovat prostřednictvím stránky vystavení rozhraní API. Další informace o tom, jak nakonfigurovat aplikaci jako webové rozhraní API a jak zveřejnit oprávnění nebo obory, najdete v [tomto rychlém](quickstart-configure-app-expose-web-apis.md)startu.
 
--   Doména vydavatele (která se zobrazí uživatelům v [příkazovém řádku s\'informacemi o souhlasu s aplikací](application-consent-experience.md)), najdete na stránce branding. Další informace o tom, jak nakonfigurovat doménu vydavatele, najdete v [tomto postupu](howto-configure-publisher-domain.md).
+-   Doména vydavatele (která se zobrazí uživatelům v [ \' příkazovém řádku s informacemi o souhlasu s aplikací](application-consent-experience.md)), najdete na stránce branding. Další informace o tom, jak nakonfigurovat doménu vydavatele, najdete v [tomto postupu](howto-configure-publisher-domain.md).
 
 ## <a name="limitations"></a>Omezení
 
@@ -116,7 +116,7 @@ Nové prostředí má následující omezení:
 
 -   Nové prostředí zatím nepodporuje živé aplikace sady SDK vytvořené pomocí osobních účtů Microsoft.
 
--   Změna hodnoty pro podporované účty není v uživatelském rozhraní podporována. Pokud\'přepínáte mezi jedním klientem Azure AD a více klienty, je nutné použít manifest aplikace.
+-   Změna hodnoty pro podporované účty není v uživatelském rozhraní podporována. Pokud \' přepínáte mezi jedním klientem Azure AD a více klienty, je nutné použít manifest aplikace.
 
    > [!NOTE]
    > Pokud jste osobní účet Microsoft uživatele v tenantovi Azure AD a správce tenanta má omezený přístup k Azure Portal, můžete získat přístup odepřený. Pokud však provedete zástupcem zadáním Registrace aplikací na panelu hledání nebo připnete ho, budete mít přístup k novému prostředí.

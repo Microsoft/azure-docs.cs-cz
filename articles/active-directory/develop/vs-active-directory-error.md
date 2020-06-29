@@ -6,16 +6,16 @@ manager: jillfra
 ms.prod: visual-studio-windows
 ms.technology: vs-azure
 ms.workload: azure-vs
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: 4b39aa77ea3895a606ad34a3bc9b70dba924a23f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 10485a5467a63e0b3bb1aa0dbefc4d156c2a9565
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80886088"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85479024"
 ---
 # <a name="diagnosing-errors-with-the-azure-active-directory-connected-service"></a>Diagnostikování chyb pomocí Azure Active Directory připojené služby
 
@@ -25,7 +25,7 @@ Aby bylo možné správně zjistit předchozí ověřovací kód v projektu, je 
 
 ## <a name="project-types"></a>Typy projektů
 
-Připojená služba kontroluje typ projektu, který vyvíjíte, aby mohl vložit správnou logiku ověřování do projektu. Pokud existuje nějaký kontroler, který je odvozen `ApiController` z projektu, projekt je považován za projekt WebAPI. Pokud jsou pouze řadiče, které jsou odvozeny z `MVC.Controller` projektu, projekt je považován za projekt MVC. Připojená služba nepodporuje žádný jiný typ projektu.
+Připojená služba kontroluje typ projektu, který vyvíjíte, aby mohl vložit správnou logiku ověřování do projektu. Pokud existuje nějaký kontroler, který je odvozen z `ApiController` projektu, projekt je považován za projekt WebAPI. Pokud jsou pouze řadiče, které jsou odvozeny z `MVC.Controller` projektu, projekt je považován za projekt MVC. Připojená služba nepodporuje žádný jiný typ projektu.
 
 ## <a name="compatible-authentication-code"></a>Kompatibilní ověřovací kód
 
@@ -80,7 +80,7 @@ Aby bylo možné detekovat individuální ověřování uživatelských účtů,
 </packages>
 ```
 
-Pokud chcete zjistit starou formu ověřování účtu organizace, bude připojená služba Hledat následující prvek v`web.config`:
+Pokud chcete zjistit starou formu ověřování účtu organizace, bude připojená služba Hledat následující prvek v `web.config` :
 
 ```xml
 <configuration>

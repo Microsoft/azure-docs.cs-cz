@@ -1,24 +1,14 @@
 ---
 title: Integrace Azure DevTest Labs a DevOps | Microsoft Docs
 description: Naučte se používat cvičení Azure DevTest Labs v rámci kanálů průběžné integrace (CI)/průběžného doručování (CD) v podnikovém prostředí.
-services: devtest-lab
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: devtest-lab
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 06/10/2019
-ms.author: spelluru
-ms.openlocfilehash: db9e338891a4e8bab9f9b36482815542ae348ec2
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 8a5d35a541e079b7d39cae2ec43da608274533f5
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84896925"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85481064"
 ---
 # <a name="integration-of-azure-devtest-labs-and-azure-devops"></a>Integrace Azure DevTest Labs a Azure DevOps
 DevOps je metodologie vývoje softwaru, která integruje vývoj softwaru (dev) s operacemi (OPS) pro systém. Tento systém může poskytovat nové funkce, aktualizace a opravy v rámci sbližování s obchodními záměry. Tato metodika zahrnuje vše od navrhování nových funkcí na základě cílů, způsobů využití a zpětné vazby od zákazníků. pro opravu, obnovování a posílení zabezpečení systému, když dojde k problémům. Snadno identifikovaná součást této metodologie je kanál kontinuální integrace (CI)/průběžné doručování (CD). Kanál CI/CD přebírá informace, kód a prostředky z potvrzení prostřednictvím série kroků, které zahrnují sestavování, testování a nasazování, k vytvoření systému. Tento článek se zaměřuje na různé způsoby efektivního využití cvičení v rámci kanálu v podnikovém prostředí. 

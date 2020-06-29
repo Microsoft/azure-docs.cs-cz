@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: a8b1c53a5c060f2124a36b69365bdd9b62896b56
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: b85aab2491f4186cf4d6ee73144bc235a40cdeac
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220961"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85478480"
 ---
 # <a name="custom-script-extension-for-windows"></a>Rozšíření vlastních skriptů pro virtuální počítače
 
@@ -66,6 +66,7 @@ Pokud je váš skript na místním serveru, budete možná potřebovat otevřít
 * Rozšíření vlastních skriptů nepodporují nativně proxy servery, ale můžete použít nástroj pro přenos souborů, který podporuje proxy servery ve vašem skriptu, jako je například *kudrlinkou* .
 * Udržujte si přehled o jiných než výchozích umístěních adresářů, na kterých můžou vaše skripty nebo příkazy záviset, a zajistěte si logiku pro řešení takové situace.
 * Rozšíření vlastních skriptů se spustí pod účtem LocalSystem.
+* Pokud plánujete použít vlastnosti *storageAccountName* a *storageAccountKey* , musí být tyto vlastnosti společně umístěného v *protectedSettings*.
 
 ## <a name="extension-schema"></a>Schéma rozšíření
 
@@ -128,7 +129,7 @@ Tyto položky by měly být považovány za citlivá data a specifikována v kon
 | typeHandlerVersion | 1.10 | int |
 | Identifikátory URI (např.) | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | pole |
 | časové razítko (např.) | 123456789 | 32-bitové celé číslo |
-| commandToExecute (např.) | PowerShell – ExecutionPolicy unstrict-File Configure-Music-App. ps1 | řetězec |
+| commandToExecute (např.) | PowerShell – ExecutionPolicy bez omezení – soubor configure-music-app.ps1 | řetězec |
 | storageAccountName (např.) | examplestorageacct | řetězec |
 | storageAccountKey (např.) | TmJK/1N3AbAZ3q/+ hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg = = | řetězec |
 | managedIdentity (např.) | {} nebo {"clientId": "31b403aa-C364-4240-a7ff-d85fb6cd7232"} nebo {"objectId": "12dd289c-0583-46e5-b9b4-115d5c19ef4b"} | objekt JSON |
@@ -342,7 +343,7 @@ kde `<n>` je desítkové celé číslo, které se může změnit mezi spouštěn
 
 Při provádění `commandToExecute` příkazu rozšíření nastaví tento adresář (například `...\Downloads\2` ) jako aktuální pracovní adresář. Tento proces umožňuje použití relativních cest k vyhledání souborů stažených prostřednictvím `fileURIs` Vlastnosti. Příklady najdete v následující tabulce.
 
-Vzhledem k tomu, že absolutní cesta ke stažení se může v průběhu času lišit, je lepší vyjádřit výslovný souhlas s relativními cestami Script/File v `commandToExecute` řetězci, kdykoli je to možné. Příklad:
+Vzhledem k tomu, že absolutní cesta ke stažení se může v průběhu času lišit, je lepší vyjádřit výslovný souhlas s relativními cestami Script/File v `commandToExecute` řetězci, kdykoli je to možné. Například:
 
 ```json
 "commandToExecute": "powershell.exe . . . -File \"./scripts/myscript.ps1\""

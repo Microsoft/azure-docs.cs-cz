@@ -6,18 +6,18 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 40e7a05505bc501c1c622e627a6d97cc57db1cfa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 517d6f7f06025b35dd27fa69d1de1b4139de6c8d
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80884235"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85478004"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>Postupy: Konfigurace podmínek služby a prohlášení o zásadách ochrany osobních údajů pro aplikaci
 
@@ -96,5 +96,5 @@ PATCH https://graph.microsoft.com/v1.0/applications/{application id}
 ```
 
 > [!NOTE]
-> * Dejte pozor, abyste nepřepsali všechny dříve existující hodnoty, které jste přiřadili k některým z `supportUrl`těchto `marketingUrl`polí:, a.`logoUrl`
+> * Dejte pozor, abyste nepřepsali všechny dříve existující hodnoty, které jste přiřadili k některým z těchto polí: `supportUrl` , `marketingUrl` a.`logoUrl`
 > * Rozhraní API pro Microsoft Graph funguje, jenom když se přihlašujete pomocí účtu Azure AD. Osobní účty Microsoft se nepodporují.

@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5049e875c3b8047b99e3256c7bbac60d0af822bb
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: d6ecc2ddab7bc0fa739989e9cfdc2645cc1ccb27
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85392263"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476899"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins"></a>Správa koncových bodů a tras v digitálních prozdvojeních Azure
 
@@ -25,7 +25,10 @@ Mezi podporované typy koncových bodů patří:
 
 Další informace o různých koncových bodech najdete v tématu [Volba mezi službou zasílání zpráv Azure](https://docs.microsoft.com/azure/event-grid/compare-messaging-services).
 
-Koncové body a trasy se spravují pomocí [**rozhraní API EventRoutes**](how-to-use-apis-sdks.md), [sady .NET (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)nebo rozhraní příkazového [řádku Azure Digital revlákens](how-to-use-cli.md).
+Koncové body a trasy se spravují pomocí [**rozhraní API EventRoutes**](how-to-use-apis-sdks.md), [sady .NET (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)nebo rozhraní příkazového [řádku Azure Digital revlákens](how-to-use-cli.md). Dají se taky spravovat prostřednictvím [Azure Portal](https://portal.azure.com).
+
+> [!NOTE]
+> Správa tras událostí prostřednictvím Azure Portal je aktuálně dostupná jenom pro uživatele Azure na účtech podnikových domén. Pokud používáte osobní [účet Microsoft (MSA)](https://account.microsoft.com/account/Account), použijte prosím rozhraní API pro Azure Digital res nebo CLI ke správě směrování událostí, jak je popsáno v tomto článku.
 
 ## <a name="create-an-endpoint-for-azure-digital-twins"></a>Vytvoření koncového bodu pro digitální vlákna Azure
 
@@ -140,7 +143,7 @@ Pokud chcete přidat filtr, můžete použít požadavek PUT na *https://{YourHo
 
 Tady jsou podporované filtry tras.
 
-| Název filtru | Description | Filtrovat schéma | Podporované hodnoty | 
+| Název filtru | Popis | Filtrovat schéma | Podporované hodnoty | 
 | --- | --- | --- | --- |
 | Typ | [Typ toku událostí](./concepts-route-events.md#types-of-event-messages) prostřednictvím vaší digitální instance | `"filter" : "type = '<eventType>'"` | `Microsoft.DigitalTwins.Twin.Create` <br> `Microsoft.DigitalTwins.Twin.Delete` <br> `Microsoft.DigitalTwins.Twin.Update`<br>`Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br> `Microsoft.DigitalTwins.Relationship.Delete` <br> `microsoft.iot.telemetry`  |
 | Zdroj | Název instance digitálního vlákna Azure | `"filter" : "source = '<hostname>'"`|  **Pro oznámení**:`<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net` <br> **Pro telemetrii**:`<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net/digitaltwins/<twinId>`|

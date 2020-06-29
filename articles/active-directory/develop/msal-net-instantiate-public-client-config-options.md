@@ -7,18 +7,18 @@ author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 04/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 1dd06e139f931bbf8554f05f05c5d9b9ccf200e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 171b4ddf9a6f3cb5868f2300ea892ad785cbaf22
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77083594"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85477426"
 ---
 # <a name="instantiate-a-public-client-application-with-configuration-options-using-msalnet"></a>Vytvoření instance veřejné klientské aplikace s možnostmi konfigurace pomocí MSAL.NET
 
@@ -32,7 +32,7 @@ Před inicializací aplikace je nejprve nutné ji [zaregistrovat](quickstart-reg
 - Pro webové aplikace a někdy pro veřejné klientské aplikace (zejména v případě, že vaše aplikace potřebuje použít zprostředkovatele) nastavíte také redirectUri, kde bude poskytovatel identity kontaktovat zpět vaší aplikaci pomocí tokenů zabezpečení.
 
 
-Konzolová aplikace .NET Core může mít následující konfigurační soubor *appSettings. JSON* :
+Konzolová aplikace .NET Core by mohla mít následující *appsettings.js* konfiguračního souboru:
 
 ```json
 {

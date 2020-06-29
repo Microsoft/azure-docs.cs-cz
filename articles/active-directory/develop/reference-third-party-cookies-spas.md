@@ -8,17 +8,17 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: hirsin
 ms.reviewer: kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: cf385ef9af152308bcd96f25df49aebddd25b059
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 1478ee1396390e26d333230b0254578ec748ef6c
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83691058"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85477256"
 ---
 # <a name="handle-itp-in-safari-and-other-browsers-where-third-party-cookies-are-blocked"></a>Zpracování ITP v Safari a dalších prohlížečích, kde jsou soubory cookie třetích stran blokované
 
@@ -36,7 +36,7 @@ Safari není samotným blokováním souborů cookie třetích stran, aby se zvý
 
 ## <a name="overview-of-the-solution"></a>Přehled řešení
 
-Aby bylo možné pokračovat v ověřování uživatelů v jednostránkové, musí vývojáři aplikací použít [tok autorizačního kódu](v2-oauth2-auth-code-flow.md). V toku kódu ověřování vystaví zprostředkovatel identity kód a SPA uplatňuje kód pro přístupový token a obnovovací token. Když aplikace vyžaduje další tokeny, může použít [tok obnovovacího tokenu](v2-oauth2-auth-code-flow.md#refresh-the-access-token) a získat nové tokeny. MSAL. js 2,0, knihovna Microsoft Identity Platform Library pro jednostránkové, implementuje tok autorizačního kódu pro jednostránkové a s menšími aktualizacemi je náhrada pro MSAL. js 1. x.
+Aby bylo možné pokračovat v ověřování uživatelů v jednostránkové, musí vývojáři aplikací použít [tok autorizačního kódu](v2-oauth2-auth-code-flow.md). V toku kódu ověřování vystaví zprostředkovatel identity kód a SPA uplatňuje kód pro přístupový token a obnovovací token. Když aplikace vyžaduje další tokeny, může použít [tok obnovovacího tokenu](v2-oauth2-auth-code-flow.md#refresh-the-access-token) a získat nové tokeny. MSAL.js 2,0, knihovna Microsoft Identity Platform Library pro jednostránkové, implementuje tok autorizačního kódu pro jednostránkové a s menšími aktualizacemi je náhrada pro MSAL.js 1. x.
 
 V případě platformy Microsoft Identity Platform jednostránkové a nativních klientů se řiďte podobnými pokyny k protokolu:
 
@@ -63,7 +63,7 @@ Existují dva způsoby, jak provést přihlášení:
     * Zvažte, že v aplikaci máte sekvenci před načtením, která kontroluje přihlašovací relaci a přesměrovává na přihlašovací stránku předtím, než aplikace zcela rozbalí a spustí datovou část JavaScriptu.
 * **Automaticky otevíraná okna**
     * Pokud uživatelské prostředí (UX) celého přesměrování stránky pro aplikaci nefunguje, zvažte použití místní nabídky pro zpracování ověřování.
-    * Když se po ověření místní nabídka dokončí přesměrování do aplikace, kód v obslužné rutině přesměrování uloží kód a tokeny do místního úložiště, aby se aplikace používala. MSAL. js podporuje automaticky otevíraná okna pro ověřování, stejně jako většina knihoven.
+    * Když se po ověření místní nabídka dokončí přesměrování do aplikace, kód v obslužné rutině přesměrování uloží kód a tokeny do místního úložiště, aby se aplikace používala. MSAL.js podporuje automaticky otevíraná okna pro ověřování, stejně jako většina knihoven.
     * Prohlížeče snižují podporu překryvných oken, takže nemusí být spolehlivější možnost. Aby bylo možné vyhovět požadavkům prohlížeče, může být potřeba, aby před vytvořením překryvného okna byla interakce uživatele s heslem.
 
 >[!NOTE]
@@ -83,4 +83,4 @@ Tento vzor obnovovacího tokenu s omezeným trváním byl vybrán jako rovnováh
 
 Přečtěte si další informace o [toku autorizačního kódu](v2-oauth2-auth-code-flow.md).
 
-Vyzkoušejte tok autorizačního kódu pomocí rychlého startu [MSAL. js 2,0](quickstart-v2-javascript-auth-code.md).
+Vyzkoušejte tok autorizačního kódu pomocí rychlého startu [MSAL.js 2,0](quickstart-v2-javascript-auth-code.md).

@@ -1,25 +1,14 @@
 ---
 title: Opětovné nasazení virtuálního počítače v testovacím prostředí v Azure DevTest Labs | Microsoft Docs
 description: Naučte se znovu nasadit virtuální počítač (přesunout z jednoho uzlu Azure do jiného) v Azure DevTest Labs.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-editor: ''
-ms.assetid: 8460f09e-482f-48ba-a57a-c95fe8afa001
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 06/11/2018
-ms.author: spelluru
-ms.openlocfilehash: 4500fcfa6fbfb346a6e5c7fd045ba0046a901b91
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: da0edf13adaa0d7ecd84ee2c190f376c19b398db
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84898721"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85480231"
 ---
 # <a name="redeploy-a-vm-in-a-lab-in-azure-devtest-labs"></a>Opětovné nasazení virtuálního počítače v testovacím prostředí v Azure DevTest Labs
 Pokud se nemůžete připojit k virtuálnímu počítači v testovacím prostředí prostřednictvím připojení ke vzdálené ploše, znovu nasaďte virtuální počítač a zkuste se k němu připojit znovu. Když znovu nasadíte virtuální počítač, DevTest Labs přesune virtuální počítač z uzlu, na kterém je spuštěný, do nového uzlu v infrastruktuře Azure. Pak spustí virtuální počítač a zachová všechny možnosti konfigurace a přidružené prostředky. Tato funkce šetří čas strávený při řešení potíží s připojením ke vzdálené ploše nebo aplikací k virtuálním počítačům se systémem Windows v testovacím prostředí. 

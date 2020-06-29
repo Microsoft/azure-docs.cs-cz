@@ -8,12 +8,12 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 1e3692920c35a6965a23c0305aeeebfc80505d85
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 62c35eefe50643dc65dcf84305a9b4b3ee64cadb
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77190934"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85478633"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-cognitive-search"></a>Řešení běžných potíží indexerů v Azure Kognitivní hledání
 
@@ -28,18 +28,18 @@ Indexery můžou být spuštěné v množství problémů při indexování dat 
 > [!NOTE]
 > Indexery mají omezené podpory pro přístup ke zdrojům dat a dalším prostředkům zabezpečeným mechanismy zabezpečení sítě Azure. V současné době můžou indexery přistupovat pouze ke zdrojům dat prostřednictvím odpovídajících mechanismů omezení rozsahu IP adres nebo pravidel NSG. Podrobnosti o přístupu ke každému podporovanému zdroji dat najdete níže.
 >
-> IP adresu vaší vyhledávací služby můžete zjistit tak, že otestujete jeho plně kvalifikovaný název domény (např., `<your-search-service-name>.search.windows.net`).
+> IP adresu vaší vyhledávací služby můžete zjistit tak, že otestujete jeho plně kvalifikovaný název domény (např., `<your-search-service-name>.search.windows.net` ).
 >
-> Rozsah `AzureCognitiveSearch` IP adres [značky služby](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) můžete zjistit buď pomocí [souborů JSON ke stažení](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files) , nebo přes [rozhraní API pro zjišťování značek služby](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview). Rozsah IP adres se aktualizuje týdně.
+> Rozsah IP adres `AzureCognitiveSearch` [značky služby](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) můžete zjistit buď pomocí [souborů JSON ke stažení](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files) , nebo přes [rozhraní API pro zjišťování značek služby](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview). Rozsah IP adres se aktualizuje týdně.
 
 ### <a name="configure-firewall-rules"></a>Konfigurace pravidel brány firewall
 
-Azure Storage, CosmosDB a Azure SQL poskytují konfigurovatelnou bránu firewall. V případě povolení brány firewall není k dispozici žádná konkrétní chybová zpráva. Chyby brány firewall jsou obvykle obecné a vypadají jako `The remote server returned an error: (403) Forbidden` nebo `Credentials provided in the connection string are invalid or have expired`.
+Azure Storage, CosmosDB a Azure SQL poskytují konfigurovatelnou bránu firewall. V případě povolení brány firewall není k dispozici žádná konkrétní chybová zpráva. Chyby brány firewall jsou obvykle obecné a vypadají jako `The remote server returned an error: (403) Forbidden` nebo `Credentials provided in the connection string are invalid or have expired` .
 
 Existují dvě možnosti, jak povolit indexerům přístup k těmto prostředkům v takové instanci:
 
 * Bránu firewall zakažte tak, že povolíte přístup ze **všech sítí** (Pokud je to možné).
-* Případně můžete v pravidlech brány firewall prostředku (omezení rozsahu IP adres) dovolit přístup pro IP `AzureCognitiveSearch` [adresu služby Search](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) a rozsah IP adres.
+* Případně můžete `AzureCognitiveSearch` v pravidlech brány firewall prostředku (omezení rozsahu IP adres) dovolit přístup pro IP [adresu služby Search](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) a rozsah IP adres.
 
 Podrobnosti o konfiguraci omezení rozsahu IP adres pro každý typ zdroje dat najdete na následujících odkazech:
 
@@ -51,7 +51,7 @@ Podrobnosti o konfiguraci omezení rozsahu IP adres pro každý typ zdroje dat n
 
 **Omezení**: jak je uvedeno v dokumentaci výše pro Azure Storage, omezení rozsahu IP adres budou fungovat jenom v případě, že vaše vyhledávací služba a váš účet úložiště jsou v různých oblastech.
 
-Funkce Azure Functions (které se dají použít jako [vlastní dovednosti webového rozhraní API](cognitive-search-custom-skill-web-api.md)) podporují také [omezení IP adres](https://docs.microsoft.com/azure/azure-functions/ip-addresses#ip-address-restrictions). Seznam IP adres, které se mají konfigurovat, by představoval IP adresu vaší vyhledávací služby a rozsah IP adres značky `AzureCognitiveSearch` služby.
+Funkce Azure Functions (které se dají použít jako [vlastní dovednosti webového rozhraní API](cognitive-search-custom-skill-web-api.md)) podporují také [omezení IP adres](https://docs.microsoft.com/azure/azure-functions/ip-addresses#ip-address-restrictions). Seznam IP adres, které se mají konfigurovat, by představoval IP adresu vaší vyhledávací služby a rozsah IP adres `AzureCognitiveSearch` značky služby.
 
 [Tady](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md) jsou uvedené podrobnosti o přístupu k datům na SQL serveru na virtuálním počítači Azure.
 
@@ -61,7 +61,7 @@ Při přístupu k datům ve spravované instanci SQL nebo při použití virtuá
 
 V takových případech se virtuální počítač Azure nebo spravovaná instance SQL dají nakonfigurovat tak, aby se nacházely v rámci virtuální sítě. Pak se skupina zabezpečení sítě dá nakonfigurovat tak, aby se vyfiltroval typ síťového provozu, který může přecházet do podsítí a síťových rozhraní virtuální sítě.
 
-Tag `AzureCognitiveSearch` služby se dá přímo použít v příchozích [pravidlech NSG](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#work-with-security-rules) , aniž byste museli hledat jeho rozsah IP adres.
+`AzureCognitiveSearch`Tag služby se dá přímo použít v příchozích [pravidlech NSG](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#work-with-security-rules) , aniž byste museli hledat jeho rozsah IP adres.
 
 Podrobnější informace o přístupu k datům ve spravované instanci SQL jsou uvedené [tady](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md) .
 
@@ -111,6 +111,7 @@ api-key: [admin key]
 Indexery hledají dokumenty ze [zdroje dat](https://docs.microsoft.com/rest/api/searchservice/create-data-source). V některých případech se zdá, že v indexu chybí dokument ze zdroje dat, který by měl být indexován. K těmto chybám může dojít z několika běžných důvodů:
 
 * Dokument nebyl indexován. Na portálu vyhledejte úspěšné spuštění indexeru.
+* Ověřte hodnotu [sledování změn](https://docs.microsoft.com/rest/api/searchservice/create-data-source#data-change-detection-policies) . Pokud je hodnota horní meze nastavená na budoucí čas, pak se v indexeru přeskočí všechny dokumenty, které mají datum menší než toto. Stav sledování změn indexeru můžete pochopit pomocí polí ' initialTrackingState ' a ' finalTrackingState ' ve [stavu indexeru](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status#indexer-execution-result).
 * Po spuštění indexeru se dokument aktualizoval. Pokud je indexer podle [plánu](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-schedule), bude ho nakonec znovu spustit a vybrat.
 * [Dotaz](/rest/api/searchservice/create-data-source) zadaný ve zdroji dat vylučuje dokument. Indexery nemůžou indexovat dokumenty, které nejsou součástí zdroje dat.
 * [Mapování polí](https://docs.microsoft.com/rest/api/searchservice/create-indexer#fieldmappings) nebo [rozšíření AI](https://docs.microsoft.com/azure/search/cognitive-search-concept-intro) změnilo dokument a vypadá jinak, než očekáváte.

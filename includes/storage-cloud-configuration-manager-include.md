@@ -13,7 +13,7 @@ ms.locfileid: "72038165"
 ---
 [Knihovna správce konfigurace Microsoft Azure pro .NET](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/) poskytuje třídu pro potřeby analýzy připojovacího řetězce z konfiguračního souboru. Třída [CloudConfigurationManager](https://msdn.microsoft.com/library/azure/mt634650.aspx) analyzuje nastavení konfigurace. Analyzuje nastavení pro klientské aplikace, které běží na ploše, na mobilním zařízení, na virtuálním počítači Azure nebo v cloudové službě Azure.
 
-Chcete-li `CloudConfigurationManager` odkazovat na balíček, přidejte `using` následující direktivy:
+Chcete-li odkazovat na `CloudConfigurationManager` balíček, přidejte následující `using` direktivy:
 
 ```csharp
 using Microsoft.Azure; //Namespace for CloudConfigurationManager

@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 18e1ab1d01394d585cfb06ced8c5fbac04114177
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2b5c28fccc411a8372ebd6015f796c8309146dfa
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81431953"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476763"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Průvodce vývojáře pro službu Azure Key Vault
 
@@ -28,7 +28,7 @@ Obecnější informace o Azure Key Vault najdete v tématu [co je Key Vault](ove
 
 ## <a name="public-previews"></a>Veřejné náhledy
 
-Pravidelně vydáváme ve verzi Public Preview novou funkci Key Vault. Vyzkoušejte si tyto informace a sdělte nám, co si myslíte prostřednictvím azurekeyvault@microsoft.comnaší e-mailové adresy pro zpětnou vazbu.
+Pravidelně vydáváme ve verzi Public Preview novou funkci Key Vault. Vyzkoušejte si tyto informace a sdělte nám, co si myslíte prostřednictvím azurekeyvault@microsoft.com naší e-mailové adresy pro zpětnou vazbu.
 
 ## <a name="creating-and-managing-key-vaults"></a>Vytváření a Správa trezorů klíčů
 
@@ -43,7 +43,7 @@ Než budete pracovat s klíči, tajnými klíči a certifikáty ve vašem trezor
 - [Vytváření a Správa trezorů klíčů pomocí portu Azure](../secrets/quick-create-portal.md)
 - [Vytváření a Správa trezorů klíčů pomocí Pythonu](../secrets/quick-create-python.md)
 - [Vytváření a Správa trezorů klíčů pomocí Java](../secrets/quick-create-java.md)
-- [Vytváření a Správa trezorů klíčů pomocí Node. js](../secrets/quick-create-node.md)
+- [Vytváření a Správa trezorů klíčů pomocí Node.js](../secrets/quick-create-node.md)
 - [Vytváření a Správa trezorů klíčů pomocí .NET (v4 SDK)](../secrets/quick-create-net.md)
 - [Vytvoření trezoru klíčů a přidání tajného klíče pomocí šablony Azure Resource Manager](../secrets/quick-create-template.md)
 - [Vytváření a Správa trezorů klíčů pomocí REST](/rest/api/keyvault/)
@@ -73,9 +73,9 @@ Další informace o verzi sady .NET SDK 2. x najdete v [poznámkách k verzi](do
 
 #### <a name="nodejs"></a>Node.js
 
-V Node. js rozhraní API pro správu Key Vault a rozhraní API pro Key Vault objektů jsou oddělené. Následující přehledový článek vám umožní přístup k oběma. 
+V Node.js jsou rozhraní API pro správu Key Vault a rozhraní Key Vault objektů API oddělené. Následující přehledový článek vám umožní přístup k oběma. 
 
-[Moduly Azure Key Vault pro Node. js](/javascript/api/overview/azure/key-vault?view=azure-node-latest)
+[Azure Key Vault moduly pro Node.js](/javascript/api/overview/azure/key-vault?view=azure-node-latest)
 
 #### <a name="python"></a>Python
 
@@ -106,7 +106,6 @@ Následující články a scénáře poskytují pokyny pro práci s Azure Key Va
 - [Jak během nasazení předat zabezpečené hodnoty (třeba hesla)](../../azure-resource-manager/templates/key-vault-parameter.md) – Pokud potřebujete před nasazením předat zabezpečenou hodnotu (třeba heslo), můžete tuto hodnotu Uložit jako tajný klíč v Azure Key Vault a odkazovat na hodnotu v jiných šablonách správce prostředků.
 - [Jak používat Key Vault pro rozšiřitelnou správu klíčů pomocí SQL Server](https://msdn.microsoft.com/library/dn198405.aspx) – Konektor SQL Serveru pro Azure Key Vault umožňuje SQL Server a SQL-in-VM k využití služby Azure Key Vault jako poskytovatele technologie EKM (Extensible Key Management) k ochraně svých šifrovacích klíčů pro aplikace. Transparentní šifrování dat, šifrování záloh a šifrování na úrovni sloupce.
 - [Postup nasazení certifikátů do virtuálních počítačů z Key Vault](https://blogs.technet.microsoft.com/kv/2015/07/14/deploy-certificates-to-vms-from-customer-managed-key-vault/) – cloudová aplikace spuštěná ve virtuálním počítači v Azure potřebuje certifikát. Jak tento certifikát do tohoto virtuálního počítače získat ještě dnes?
-- [Jak nastavit Key Vault s koncovým otočením klíčů a auditováním](../secrets/key-rotation-log-monitoring.md) – Toto je návod, jak nastavit rotaci klíčů a auditování pomocí Azure Key Vault.
 - [Nasazení certifikátu webové aplikace Azure prostřednictvím Key Vault]( https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/) poskytuje podrobné pokyny pro nasazení certifikátů uložených v Key Vault jako součást nabídky [App Service Certificate](https://azure.microsoft.com/blog/internals-of-app-service-certificate/) .
 - [Udělení oprávnění mnoha aplikacím pro přístup k trezoru klíčů](group-permissions-for-apps.md) Key Vault zásada řízení přístupu podporuje až 1024 záznamů. Můžete však vytvořit Azure Active Directory skupinu zabezpečení. Přidejte do této skupiny zabezpečení všechny přidružené objekty služby a pak udělte přístup k této skupině zabezpečení Key Vault.
 - Další pokyny pro konkrétní úkoly týkající se integrace a používání trezorů klíčů s Azure najdete v tématu [Ryan Novák ' Azure Resource Manager příklady šablon pro Key Vault](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples).

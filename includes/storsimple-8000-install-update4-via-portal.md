@@ -17,7 +17,7 @@ ms.locfileid: "67175210"
 
     ![Vybrat zařízení](./media/storsimple-8000-install-update4-via-portal/update1.png)
 
-2. Přejděte na **Nastavení** > zařízení**aktualizace zařízení**.
+2. Přejděte na **nastavení zařízení**  >  **aktualizace zařízení**.
 
     ![Klikněte na aktualizace zařízení.](./media/storsimple-8000-install-update4-via-portal/update2.png)
 

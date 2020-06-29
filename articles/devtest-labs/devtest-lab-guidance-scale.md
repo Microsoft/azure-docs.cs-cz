@@ -1,24 +1,15 @@
 ---
 title: Horizontální navýšení kapacity Azure DevTest Labs infrastruktury
 description: Tento článek poskytuje pokyny pro škálování infrastruktury Azure DevTest Labs.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 02/11/2019
-ms.author: spelluru
+ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 3a48cef2210721bf7116b1c4ad1169779288f47d
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 50bf08678a12a1a0499abd08c52a264d03f4a401
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84899211"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85478786"
 ---
 # <a name="scale-up-your-azure-devtest-labs-infrastructure"></a>Horizontální navýšení kapacity Azure DevTest Labs infrastruktury
 Před implementací DevTest Labs v podnikovém měřítku je k dispozici několik klíčových rozhodovacích bodů. Porozumění těmto rozhodovacím bodům na vysoké úrovni pomáhá organizaci s rozhodováním o návrhu v budoucnu. Nicméně tyto body by neměly mít v organizaci zpětnou kontrolu konceptu. V horních třech oblastech pro počáteční plánování horizontálního navýšení kapacity jsou:

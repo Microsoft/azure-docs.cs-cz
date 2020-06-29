@@ -1,26 +1,16 @@
 ---
-title: O službě Azure Lab Services | Microsoft Docs
-description: Zjistěte, jak lze pomocí služby Lab Services zjednodušit vytváření, správu a zabezpečení testovacího prostředí s virtuálními počítači, které můžou využívat vývojáři, testeři, pedagogové, studenti a další uživatelé.
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+title: Azure Lab Services vs. Azure DevTest Labs
+description: Porovnejte Azure DevTest Labs a Azure Lab Services.
 ms.topic: overview
-ms.date: 02/03/2020
-ms.author: spelluru
-ms.openlocfilehash: a1e42a415e99bfaec1c48204efdaacd178005705
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: b1cd476faf6c457033ffeace03cd2e37b51e8578
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84899670"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85480078"
 ---
-# <a name="an-introduction-to-azure-lab-services"></a>Seznámení s Azure Lab Services
+# <a name="compare-azure-devtest-labs-and-azure-lab-services"></a>Porovnat Azure DevTest Labs a Azure Lab Services
 V Azure existují dvě služby, které umožňují nastavit testovací prostředí v cloudu. 
 
 - **Azure DevTest Labs** – tato služba vám umožňuje rychle nastavit prostředí pro váš tým (například vývojové prostředí nebo testovací prostředí v cloudu). Vlastník testovacího prostředí vytvoří testovací prostředí, zřídí virtuální počítače s Windows nebo Linuxem, nainstaluje nezbytný software a nástroje a zpřístupní je uživatelům testovacího prostředí. Uživatelé testovacího prostředí se můžou v testovacím prostředí připojit k virtuálním počítačům (VM) a používat je pro každodenní práci, krátkodobé projekty. Jakmile uživatelé začnou využívat prostředky v testovacím prostředí, správce testovacího prostředí může analyzovat náklady a využití ve všech spravovaných testovacích prostředích a nastavením globálních zásad optimalizovat náklady organizace i jednotlivých týmů.

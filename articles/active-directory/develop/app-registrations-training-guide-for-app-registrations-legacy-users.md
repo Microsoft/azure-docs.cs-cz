@@ -7,17 +7,17 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/25/2019
 ms.author: marsma
 ms.reviewer: lenalepa, keyam
 ms.custom: aaddev
-ms.openlocfilehash: a437d54dac50be7ddaad899a1cf0a3e93aade8f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f72e16afd61d364a2dad634f3502c801f1b99380
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154572"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85478140"
 ---
 # <a name="new-azure-portal-app-registration-training-guide"></a>Nový průvodce školením registrace aplikací na webu Azure Portal
 
@@ -73,13 +73,13 @@ Nové prostředí nemá tuto stránku. Můžete najít ekvivalentní funkce:
 - Funkce řízená přepínačem **více tenantů** ve starších verzích se nahradily **podporovanými typy účtů** na stránce **ověřování** . Další informace najdete v tématu [rychlý Start: Změna účtů podporovaných aplikací](quickstart-modify-supported-accounts.md).
 - **Adresa URL pro odhlášení** se teď nachází na stránce **ověřování** .
 - **Typ aplikace** již není platným polem. Místo toho přesměrujte identifikátory URI, které najdete na stránce **ověřování** , a určete, které typy aplikací se podporují.
-- **Identifikátor URI ID** aplikace se teď nazývá **identifikátor URI ID aplikace** a můžete ho najít na **vystavení rozhraní API**. Ve starší verzi se tato vlastnost zaregistrovala pomocí následujícího formátu: `https://{tenantdomain}/{appID}`například. `https://microsoft.onmicrosoft.com/492439af-3282-44c3-b297-45463339544b` V novém prostředí se automaticky generuje jako `api://{appID}`, ale je potřeba ho explicitně uložit. Ve Azure AD B2Cch tenantech se `https://{tenantdomain}/{appID}` tento formát pořád používá.
+- **Identifikátor URI ID** aplikace se teď nazývá **identifikátor URI ID aplikace** a můžete ho najít na **vystavení rozhraní API**. Ve starší verzi se tato vlastnost zaregistrovala pomocí následujícího formátu: například `https://{tenantdomain}/{appID}` `https://microsoft.onmicrosoft.com/492439af-3282-44c3-b297-45463339544b` . V novém prostředí se automaticky generuje jako `api://{appID}` , ale je potřeba ho explicitně uložit. Ve Azure AD B2Cch tenantech se tento `https://{tenantdomain}/{appID}` Formát pořád používá.
 
 ### <a name="reply-urlsredirect-urls"></a>Adresy URL odpovědí/adresy URL pro přesměrování
 
 Ve starší verzi prostředí měla aplikace na stránce **adresy URL odpovědi** . V novém prostředí se adresy URL odpovědí dají najít na stránce **ověřování** aplikace. Nyní se označují jako **identifikátory URI přesměrování**.
 
-Formát identifikátorů URI pro přesměrování se změnil. Je nutné, aby byly přidruženy k typu aplikace, a to na webu nebo na veřejném. Z bezpečnostních důvodů se nepodporují zástupné znaky a `http://` schémata s *http://localhost*výjimkou.
+Formát identifikátorů URI pro přesměrování se změnil. Je nutné, aby byly přidruženy k typu aplikace, a to na webu nebo na veřejném. Z bezpečnostních důvodů se nepodporují zástupné znaky a `http://` schémata s výjimkou *http://localhost* .
 
 ### <a name="keyscertificates--secrets"></a>Klíče a certifikáty & tajných kódů
 
@@ -118,8 +118,8 @@ Starší a nové prostředí používají různé verze formátu JSON v editoru 
 
 Nové prostředí přidává ovládací prvky uživatelského rozhraní pro následující vlastnosti:
 
-- Stránka **ověřování** má **implicitní tok udělení** (`oauth2AllowImplicitFlow`). Na rozdíl od starší verze prostředí můžete povolit **přístupové tokeny** nebo **tokeny ID**nebo obojí.
-- Stránka **vystavení rozhraní API** obsahuje **obory definované tímto rozhraním API** (`oauth2Permissions`) a **autorizované klientské aplikace** (`preAuthorizedApplications`). Další informace o tom, jak nakonfigurovat aplikaci jako webové rozhraní API a vystavit oprávnění nebo obory, najdete v tématu [rychlý Start: Konfigurace aplikace k vystavení webových rozhraní API](quickstart-configure-app-expose-web-apis.md).
+- Stránka **ověřování** má **implicitní tok udělení** ( `oauth2AllowImplicitFlow` ). Na rozdíl od starší verze prostředí můžete povolit **přístupové tokeny** nebo **tokeny ID**nebo obojí.
+- Stránka **vystavení rozhraní API** obsahuje **obory definované tímto rozhraním API** ( `oauth2Permissions` ) a **autorizované klientské aplikace** ( `preAuthorizedApplications` ). Další informace o tom, jak nakonfigurovat aplikaci jako webové rozhraní API a vystavit oprávnění nebo obory, najdete v tématu [rychlý Start: Konfigurace aplikace k vystavení webových rozhraní API](quickstart-configure-app-expose-web-apis.md).
 - Stránka **branding** obsahuje **doménu vydavatele**. Doména vydavatele se zobrazí uživatelům na [příkazovém řádku aplikace pro vyjádření souhlasu](application-consent-experience.md). Další informace najdete v tématu [Postup: Konfigurace domény vydavatele aplikace](howto-configure-publisher-domain.md).
 
 ## <a name="limitations"></a>Omezení

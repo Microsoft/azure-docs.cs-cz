@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: 68f8a7086dd164c102e42c99bb8d6ba22b71ad6f
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: f7253be2844f40ca52df2f9b3bc9cbba552fea2b
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84710979"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85480129"
 ---
 # <a name="add-network-interfaces-to-or-remove-network-interfaces-from-virtual-machines"></a>Přidání nebo odebrání síťových rozhraní na virtuálních počítačích
 
@@ -151,7 +151,7 @@ Další informace o nastaveních síťových rozhraní a o tom, jak je změnit, 
 
 - Odstraněním virtuálního počítače se neodstraní síťová rozhraní, která jsou k němu připojená. Při odstranění virtuálního počítače se síťová rozhraní odpojí z virtuálního počítače. Tato síťová rozhraní můžete přidat do různých virtuálních počítačů nebo je odstranit.
 
-- Stejně jako u protokolu IPv6 nemůžete připojit síťové rozhraní s povolenými akcelerovanými síťovými službami k virtuálnímu počítači po jeho vytvoření. Aby bylo možné využít urychlené síťové služby, musíte také provést kroky v operačním systému virtuálního počítače. Další informace o akcelerovaných sítích a dalších omezeních při jejich použití pro virtuální počítače se [systémem Windows](create-vm-accelerated-networking-powershell.md) nebo [Linux](create-vm-accelerated-networking-cli.md) .
+- Dosažení optimálního výkonu v dokumentaci vyžaduje urychlení sítě. V některých případech musíte explicitně povolit akcelerované síťové služby pro virtuální počítače s [Windows](create-vm-accelerated-networking-powershell.md) nebo [Linux](create-vm-accelerated-networking-cli.md) .
 
 ## <a name="next-steps"></a>Další kroky
 

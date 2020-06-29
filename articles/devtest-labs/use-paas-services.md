@@ -1,23 +1,14 @@
 ---
 title: Používejte služby PaaS (Platform as a Service) v Azure DevTest Labs
 description: Naučte se používat služby platformy jako služby (pass) v Azure DevTest Labs.
-services: devtest-lab,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2020
-ms.author: spelluru
-ms.openlocfilehash: 88bbf921fedae4bcdba2b6386ce6e08105206cd2
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: eec37527386098174906dc2737d7b763241da3f2
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84895294"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85478735"
 ---
 # <a name="use-platform-as-a-service-paas-services-in-azure-devtest-labs"></a>Používejte služby PaaS (Platform as a Service) v Azure DevTest Labs
 PaaS se v DevTest Labs podporuje přes funkci prostředí. Prostředí v DevTest Labs jsou podporovaná předem nakonfigurovanými šablonami Azure Resource Manager v úložišti Git. Prostředí můžou obsahovat prostředky PaaS i IaaS. Umožňují vytvářet komplexní systémy, které mohou zahrnovat prostředky Azure, jako jsou virtuální počítače, databáze, virtuální sítě a webové aplikace, které jsou přizpůsobené pro práci dohromady. Tyto šablony umožňují konzistentní nasazení a vylepšenou správu prostředí pomocí správy zdrojového kódu. 
