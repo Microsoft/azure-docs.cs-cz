@@ -8,9 +8,13 @@
       href: lab-services-overview.md
 - name: Kurzy
   items:
-    - name: 1. Nastavení testovacího prostředí
-      href: tutorial-create-custom-lab.md
-    - name: 2. Přístup k testovacímu prostředí
+    - name: Nastavení testovacího prostředí
+      items:
+        - name: Použití webu Azure Portal
+          href: tutorial-create-custom-lab.md
+        - name: Použití šablony Resource Manageru
+          href: create-lab-windows-vm-template.md
+    - name: Přístup k testovacímu prostředí
       href: tutorial-use-custom-lab.md
 - name: ukázky
   items:

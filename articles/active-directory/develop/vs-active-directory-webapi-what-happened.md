@@ -6,16 +6,16 @@ manager: jillfra
 ms.workload: azure-vs
 ms.prod: visual-studio-windows
 ms.technology: vs-azure
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: 46fb0ad37b872a1d7ca72114f2f263df776aabf1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7075fbd098736bb297f4a2e3a93aecca5b9182a8
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80886054"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85478854"
 ---
 # <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>Co se stalo s mým projektem WebAPI (připojená služba sady Visual Studio Azure Active Directory)
 
@@ -29,7 +29,7 @@ Informace o práci s připojenou službou najdete v tématu [Začínáme](vs-act
 
 ## <a name="added-references"></a>Přidané odkazy
 
-Má vliv na soubor projektu *. NET References `packages.config` ) a (odkazy na NuGet).
+Má vliv na soubor projektu *. NET References) a `packages.config` (odkazy na NuGet).
 
 | Typ | Referenční informace |
 | --- | --- |
@@ -68,9 +68,9 @@ Následující odkazy jsou odebrány (pouze projekty ASP.NET 4, jako v aplikaci 
 
 - Nastavte vlastnost `IISExpressSSLPort` na jedinečné číslo.
 - Nastavte vlastnost `WebProject_DirectoryAccessLevelKey` na hodnotu 0 nebo 1, pokud jste vybrali možnost **číst data adresáře** .
-- Nastavte vlastnost `IISUrl` na `https://localhost:<port>/` `<port>` `IISExpressSSLPort` hodnotu, kde odpovídá hodnotě.
+- Nastavte vlastnost `IISUrl` na `https://localhost:<port>/` hodnotu, kde `<port>` odpovídá `IISExpressSSLPort` hodnotě.
 
-## <a name="webconfig-or-appconfig-changes"></a>změny souboru Web. config nebo App. config
+## <a name="webconfig-or-appconfig-changes"></a>Změny web.config nebo app.config
 
 - Přidány následující položky konfigurace:
 
@@ -82,15 +82,15 @@ Následující odkazy jsou odebrány (pouze projekty ASP.NET 4, jako v aplikaci 
     </appSettings>
     ```
 
-- Pouze Visual Studio 2017: do části `<appSettings>`"
+- Pouze Visual Studio 2017: do části `<appSettings>` "
 
     ```xml
     <add key="ida:MetadataAddress" value="<domain URL + /federationmetadata/2007-06/federationmetadata.xml>" />
     ```
 
-- Do `<dependentAssembly>` `<runtime><assemblyBinding>` uzlu byly přidány prvky pro `System.IdentityModel.Tokens.Jwt`.
+- Do `<dependentAssembly>` uzlu byly přidány prvky `<runtime><assemblyBinding>` pro `System.IdentityModel.Tokens.Jwt` .
 
-- Pokud jste vybrali možnost **číst data adresáře** , Přidali jsme následující položku konfigurace `<appSettings>`:
+- Pokud jste vybrali možnost **číst data adresáře** , Přidali jsme následující položku konfigurace `<appSettings>` :
 
     ```xml
     <add key="ida:Password" value="<Your Azure AD app's new password>" />
@@ -100,15 +100,15 @@ Následující odkazy jsou odebrány (pouze projekty ASP.NET 4, jako v aplikaci 
 
 - Přidání `[Authorize]` atributu do `Controllers/ValueController.cs` a dalších existujících řadičů.
 
-- Přidali jsme třídu `App_Start/Startup.Auth.cs`pro spuštění ověření, která obsahuje spouštěcí logiku pro ověřování Azure AD, nebo ji odpovídajícím způsobem upravit. Pokud jste vybrali možnost **číst data adresáře** , tento soubor také obsahuje kód pro příjem kódu OAuth a jeho výměnu pro přístupový token.
+- Přidali jsme třídu pro spuštění ověření, `App_Start/Startup.Auth.cs` která obsahuje spouštěcí logiku pro ověřování Azure AD, nebo ji odpovídajícím způsobem upravit. Pokud jste vybrali možnost **číst data adresáře** , tento soubor také obsahuje kód pro příjem kódu OAuth a jeho výměnu pro přístupový token.
 
-- (Pouze aplikace Visual Studio 2015 s aplikací ASP.NET 4) Odebrané `App_Start/IdentityConfig.cs` a přidané `Controllers/AccountController.cs`, `Models/IdentityModel.cs`a `Providers/ApplicationAuthProvider.cs`.
+- (Pouze aplikace Visual Studio 2015 s aplikací ASP.NET 4) Odebrané `App_Start/IdentityConfig.cs` a přidané `Controllers/AccountController.cs` , `Models/IdentityModel.cs` a `Providers/ApplicationAuthProvider.cs` .
 
-- Přidáno `Connected Services/AzureAD/ConnectedService.json` (visual Studio 2017) nebo `Service References/Azure AD/ConnectedService.json` (Visual Studio 2015) obsahující informace, které Visual Studio používá ke sledování přidávání připojené služby.
+- Přidáno `Connected Services/AzureAD/ConnectedService.json` (Visual studio 2017) nebo `Service References/Azure AD/ConnectedService.json` (visual Studio 2015) obsahující informace, které Visual Studio používá ke sledování přidávání připojené služby.
 
 ### <a name="file-backup-visual-studio-2015"></a>Zálohování souborů (Visual Studio 2015)
 
-Při přidávání připojené služby Visual Studio 2015 zálohované a odebrané soubory se změnily. Všechny ovlivněné soubory jsou uloženy ve složce `Backup/AzureAD`. Visual Studio 2017 nevytváří zálohy.
+Při přidávání připojené služby Visual Studio 2015 zálohované a odebrané soubory se změnily. Všechny ovlivněné soubory jsou uloženy ve složce `Backup/AzureAD` . Visual Studio 2017 nevytváří zálohy.
 
 - `Startup.cs`
 - `App_Start\IdentityConfig.cs`

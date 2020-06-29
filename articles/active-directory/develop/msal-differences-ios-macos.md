@@ -7,18 +7,18 @@ author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: 62b79ee7398286b8e6c8ed8612bd001595e1f6ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 41389bc5ed8580cd80dbc40e771c7f15241f5ae7
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77084980"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85479398"
 ---
 # <a name="microsoft-authentication-library-for-ios-and-macos-differences"></a>Microsoft Authentication Library pro iOS a macOS – rozdíly
 
@@ -33,7 +33,7 @@ MSAL for macOS je podmnožinou funkcí dostupných pro iOS.
 
 MSAL for macOS nepodporuje:
 
-- různé typy prohlížečů `ASWebAuthenticationSession`, například, `SFAuthenticationSession`, `SFSafariViewController`.
+- různé typy prohlížečů, například `ASWebAuthenticationSession` , `SFAuthenticationSession` , `SFSafariViewController` .
 - zprostředkované ověřování pomocí Microsoft Authenticator aplikace není pro macOS podporované.
 
 Sdílení řetězce klíčů mezi aplikacemi od stejného vydavatele je více omezené na macOS 10,14 a starších verzích. Pomocí [seznamů řízení přístupu](https://developer.apple.com/documentation/security/keychain_services/access_control_lists?language=objc) určete cesty k aplikacím, které by měly sdílet řetězce klíčů. Uživatel může zobrazit další výzvy pro řetězce klíčů.

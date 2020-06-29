@@ -1,24 +1,16 @@
 ---
 title: Nastavení testovacího prostředí pro učení datových věd pomocí poznámkových bloků Python a Jupyter | Microsoft Docs
 description: Naučte se, jak nastavit testovací prostředí pro učení datových věd pomocí poznámkových bloků Python a Jupyter.
-services: lab-services
-documentationcenter: na
 author: emaher
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 05/21/2020
+ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: 587a982e98789c2c1004d6aedb066b615744db99
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 25fd090f76c0aa11617b34503ea18d1b45a0e1ce
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84899050"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445011"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Nastavení testovacího prostředí pro učení datových věd pomocí poznámkových bloků Python a Jupyter
 Tento článek popisuje, jak nastavit virtuální počítač šablony (VM) v testovacích službách pomocí nástrojů, které jsou potřeba pro učení studentů, jak používat [notebooky Jupyter](http://jupyter-notebook.readthedocs.io/)a jak se můžou studenti připojit ke svým notebookům na svých virtuálních počítačích.

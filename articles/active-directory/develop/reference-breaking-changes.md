@@ -7,17 +7,17 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 5/4/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 09f27c922df4a15858236b2635b962f4bc92811b
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 55adff17445639ee5685613b418054075c704449
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871537"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85477239"
 ---
 # <a name="whats-new-for-authentication"></a>Co je nového pro ověřování?
 
@@ -47,9 +47,9 @@ V tuto chvíli není naplánováno žádné.  Níže najdete informace o změná
 
 **Ovlivněný protokol**: všechny toky
 
-Od 1. června 2018 se oficiální autorita Azure Active Directory (AAD) pro Azure Government `https://login-us.microsoftonline.com` změnila `https://login.microsoftonline.us`z na. Tato změna se taky aplikuje na Microsoft 365e vysoké a DoD, které Azure Government AAD i služby. Pokud vlastníte aplikaci v rámci tenanta státní správy USA, je nutné aplikaci aktualizovat, aby se uživatelé v `.us` koncovém bodě mohli podepisovat.  
+Od 1. června 2018 se oficiální autorita Azure Active Directory (AAD) pro Azure Government změnila z `https://login-us.microsoftonline.com` na `https://login.microsoftonline.us` . Tato změna se taky aplikuje na Microsoft 365e vysoké a DoD, které Azure Government AAD i služby. Pokud vlastníte aplikaci v rámci tenanta státní správy USA, je nutné aplikaci aktualizovat, aby se uživatelé v `.us` koncovém bodě mohli podepisovat.  
 
-Od 5. května Azure AD zahájí vynucování změny koncového bodu a zablokuje uživatelům státní správy, aby se přihlásili k aplikacím hostovaným v`microsoftonline.com`klientech státní správy USA pomocí veřejného koncového bodu ().  Ovlivněné aplikace začnou vidět chybu `AADSTS900439`  -  `USGClientNotSupportedOnPublicEndpoint`. Tato chyba označuje, že se aplikace pokouší přihlásit se k veřejnému koncovému bodu veřejného cloudu na uživatele státní správy USA. Pokud je vaše aplikace ve veřejném cloudu a je určená pro podporu pro státní správu USA, budete muset [aplikaci aktualizovat, aby se podporovala explicitně](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud). To může vyžadovat vytvoření nové registrace aplikace v cloudu pro státní správu USA. 
+Od 5. května Azure AD zahájí vynucování změny koncového bodu a zablokuje uživatelům státní správy, aby se přihlásili k aplikacím hostovaným v klientech státní správy USA pomocí veřejného koncového bodu ( `microsoftonline.com` ).  Ovlivněné aplikace začnou vidět chybu `AADSTS900439`  -  `USGClientNotSupportedOnPublicEndpoint` . Tato chyba označuje, že se aplikace pokouší přihlásit se k veřejnému koncovému bodu veřejného cloudu na uživatele státní správy USA. Pokud je vaše aplikace ve veřejném cloudu a je určená pro podporu pro státní správu USA, budete muset [aplikaci aktualizovat, aby se podporovala explicitně](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud). To může vyžadovat vytvoření nové registrace aplikace v cloudu pro státní správu USA. 
 
 Vynucování této změny se provádí postupným zavedením na základě toho, jak často se uživatelé z cloudu pro státní správu USA přihlásí k aplikaci – aplikace, které se přihlašují uživatelům z oblasti státní správy USA zřídka, uvidí vynucování jako první a aplikace, které často používají uživatelé státní správy USA, budou platit jako poslední. Očekáváme, že se vynucení dokončí napříč všemi aplikacemi v červnu 2020. 
 
@@ -104,7 +104,7 @@ Od týdne 9/2 budou žádosti o ověření, které používají metodu POST, ov�
 
 Příklad:
 
-`?e=    "f"&g=h` Dnes se analyzuje stejně `?e=f&g=h` jako `e`  ==  `f`.  Tato změna by teď mohla být analyzována tak, `e`  ==  `    "f"` aby byla nepravděpodobná platná argument a požadavek by nyní byl neúspěšný.
+Dnes `?e=    "f"&g=h` se analyzuje stejně jako `?e=f&g=h` `e`  ==  `f` .  Tato změna by teď mohla být analyzována tak, aby byla `e`  ==  `    "f"` nepravděpodobná platná argument a požadavek by nyní byl neúspěšný.
 
 
 ## <a name="july-2019"></a>Červenec 2019
@@ -117,7 +117,7 @@ Příklad:
 
 **Ovlivněný protokol**: [přihlašovací údaje klienta (tokeny jenom pro aplikace)](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)
 
-Změna zabezpečení 26a v reálném čase, která mění způsob, jakým jsou vydávány tokeny jenom pro aplikace (prostřednictvím udělení přihlašovacích údajů klienta). Dříve byly aplikacím dovoleno získat tokeny pro volání jakékoli jiné aplikace bez ohledu na přítomnost v tenantovi nebo rolích, které jsou pro tuto aplikaci přijaté.  Toto chování bylo aktualizováno, aby pro prostředky (někdy nazývané webová rozhraní API) bylo nastaveno na jeden tenant (výchozí), klientská aplikace musí existovat v tenantovi prostředku.  Počítejte s tím, že stávající souhlas mezi klientem a rozhraním API ještě není nutný a aplikace by měly i nadále provádět vlastní kontroly autorizace, aby se `roles` zajistilo, že je přítomná deklarace identity a že obsahuje očekávanou hodnotu pro rozhraní API.
+Změna zabezpečení 26a v reálném čase, která mění způsob, jakým jsou vydávány tokeny jenom pro aplikace (prostřednictvím udělení přihlašovacích údajů klienta). Dříve byly aplikacím dovoleno získat tokeny pro volání jakékoli jiné aplikace bez ohledu na přítomnost v tenantovi nebo rolích, které jsou pro tuto aplikaci přijaté.  Toto chování bylo aktualizováno, aby pro prostředky (někdy nazývané webová rozhraní API) bylo nastaveno na jeden tenant (výchozí), klientská aplikace musí existovat v tenantovi prostředku.  Počítejte s tím, že stávající souhlas mezi klientem a rozhraním API ještě není nutný a aplikace by měly i nadále provádět vlastní kontroly autorizace, aby se zajistilo, že `roles` je přítomná deklarace identity a že obsahuje očekávanou hodnotu pro rozhraní API.
 
 Chybová zpráva pro tento scénář nyní uvádí:
 
@@ -127,7 +127,7 @@ Pokud chcete tento problém vyřešit, použijte prostředí pro vyjádření so
 
 #### <a name="example-request"></a>Příklad požadavku
 
-`https://login.microsoftonline.com/contoso.com/oauth2/authorize?resource=https://gateway.contoso.com/api&response_type=token&client_id=14c88eee-b3e2-4bb0-9233-f5e3053b3a28&...`V tomto příkladu je tenant prostředků (autorita) contoso.com, aplikace prostředků je klientská aplikace pro jednoho tenanta, která `gateway.contoso.com/api` je volána pro tenanta contoso, a klientská aplikace `14c88eee-b3e2-4bb0-9233-f5e3053b3a28`je.  Pokud má klientská aplikace v rámci služby Contoso.com instanční objekt, může tento požadavek pokračovat.  Pokud ale ne, požadavek se nezdaří s chybou uvedenou výše.
+`https://login.microsoftonline.com/contoso.com/oauth2/authorize?resource=https://gateway.contoso.com/api&response_type=token&client_id=14c88eee-b3e2-4bb0-9233-f5e3053b3a28&...`V tomto příkladu je tenant prostředků (autorita) contoso.com, aplikace prostředků je klientská aplikace pro jednoho tenanta, která je volána `gateway.contoso.com/api` pro tenanta contoso, a klientská aplikace je `14c88eee-b3e2-4bb0-9233-f5e3053b3a28` .  Pokud má klientská aplikace v rámci služby Contoso.com instanční objekt, může tento požadavek pokračovat.  Pokud ale ne, požadavek se nezdaří s chybou uvedenou výše.
 
 Pokud se ale jednalo o aplikaci pro více tenantů, bude mít žádost i nadále bez ohledu na klientskou aplikaci, která má instanční objekt v rámci služby Contoso.com.
 
@@ -139,7 +139,7 @@ Pokud se ale jednalo o aplikaci pro více tenantů, bude mít žádost i nadále
 
 **Ovlivněný protokol**: všechny toky
 
-V rámci [RFC 6749](https://tools.ietf.org/html/rfc6749#section-3.1.2)můžou aplikace Azure AD nyní registrovat a používat přesměrované identifikátory URI (Reply) s parametry statického `https://contoso.com/oauth2?idp=microsoft`dotazu (například) pro žádosti OAuth 2,0.  Dynamické identifikátory URI pro přesměrování jsou stále zakázané, protože představují bezpečnostní riziko, a nelze je použít k uchování informací o stavu v rámci požadavku na ověření – pro to `state` použijte parametr.
+V rámci [RFC 6749](https://tools.ietf.org/html/rfc6749#section-3.1.2)můžou aplikace Azure AD nyní registrovat a používat přesměrované identifikátory URI (Reply) s parametry statického dotazu (například `https://contoso.com/oauth2?idp=microsoft` ) pro žádosti OAuth 2,0.  Dynamické identifikátory URI pro přesměrování jsou stále zakázané, protože představují bezpečnostní riziko, a nelze je použít k uchování informací o stavu v rámci požadavku na ověření – pro to použijte `state` parametr.
 
 Parametr statického dotazu podléhá párování řetězců pro identifikátory URI přesměrování, jako jakákoli jiná část identifikátoru URI přesměrování – Pokud není zaregistrován žádný řetězec, který by odpovídal identifikátoru URI-Dekódovatelné redirect_uri, požadavek se odmítne.  Pokud se identifikátor URI najde v registraci aplikace, použije se celý řetězec pro přesměrování uživatele, včetně parametru statického dotazu.
 
@@ -158,7 +158,7 @@ Všimněte si, že v tuto chvíli (konec července 2019) se uživatelské rozhra
 
 V některých případech se může stát, že se klientské aplikace v krátké době vydávají stovky stejné přihlašovací žádosti.  Tyto požadavky můžou nebo nemusí být úspěšné, ale všechny přispívat ke špatnému uživatelskému prostředí a zvýšenému zatížení pro IDP, což zvyšuje latenci pro všechny uživatele a snižuje dostupnost IDP.  Tyto aplikace pracují mimo hranice normálního využití a měly by se aktualizovat tak, aby se chovaly správně.
 
-Klientům, kteří vydávají duplicitní žádosti víckrát, se pošle `invalid_grant` Chyba `AADSTS50196: The server terminated an operation because it encountered a loop while processing a request`:.
+Klientům, kteří vydávají duplicitní žádosti víckrát, se pošle `invalid_grant` Chyba: `AADSTS50196: The server terminated an operation because it encountered a loop while processing a request` .
 
 Většina klientů nebude muset změnit chování, aby se předešlo této chybě.  Touto chybou ovlivní jenom nesprávně nakonfigurované klienty (bez mezipaměti tokenů nebo těch, které vykazují smyčky výzev).  Klienti jsou sledováni na základě jednotlivých instancí místně (prostřednictvím souboru cookie) na následujících faktorech:
 
@@ -172,9 +172,9 @@ Většina klientů nebude muset změnit chování, aby se předešlo této chyb�
 
 * Typ a režim odpovědi
 
-Aplikace, které provádějí více požadavků (15 +) v krátkém časovém intervalu (5 minut), `invalid_grant` zobrazí chybu s vysvětlením, že se jedná o smyčky.  Vyžádané tokeny mají dostatečně dlouhou dobu životnosti (ve výchozím nastavení je to 10 minut minimálně, 60 minut), takže opakované žádosti v tomto časovém období nejsou potřebné.
+Aplikace, které provádějí více požadavků (15 +) v krátkém časovém intervalu (5 minut) `invalid_grant` , zobrazí chybu s vysvětlením, že se jedná o smyčky.  Vyžádané tokeny mají dostatečně dlouhou dobu životnosti (ve výchozím nastavení je to 10 minut minimálně, 60 minut), takže opakované žádosti v tomto časovém období nejsou potřebné.
 
-Všechny aplikace by se `invalid_grant` měly zpracovat zobrazením interaktivní výzvy místo tichého vyžadování tokenu.  Aby se zabránilo této chybě, klienti by měli zajistit správné ukládání tokenů, které obdrží, do mezipaměti.
+Všechny aplikace by se měly zpracovat `invalid_grant` zobrazením interaktivní výzvy místo tichého vyžadování tokenu.  Aby se zabránilo této chybě, klienti by měli zajistit správné ukládání tokenů, které obdrží, do mezipaměti.
 
 
 ## <a name="october-2018"></a>Říjen 2018
@@ -209,5 +209,5 @@ Pokud chcete tuto změnu obejít, můžete postupovat takto:
 
 1. Vytvořte webové rozhraní API pro vaši aplikaci s jedním nebo více obory. Tento explicitní vstupní bod umožní jemnější kontrolu a zabezpečení.
 1. V manifestu vaší aplikace v [Azure Portal](https://portal.azure.com) nebo na [portálu pro registraci aplikací](https://apps.dev.microsoft.com)zajistěte, aby aplikace mohla vystavovat přístupové tokeny prostřednictvím implicitního toku. To se řídí `oauth2AllowImplicitFlow` klíčem.
-1. Když klientská aplikace požaduje id_token přes `response_type=id_token`, vyžádá si také přístupový token (`response_type=token`) pro webové rozhraní API vytvořené výše. Proto při použití koncového bodu v 2.0 by `scope` měl parametr vypadat podobně jako `api://GUID/SCOPE`. U koncového bodu v 1.0 by `resource` parametr měl být identifikátorem URI aplikace webového rozhraní API.
+1. Když klientská aplikace požaduje id_token přes `response_type=id_token` , vyžádá si také přístupový token ( `response_type=token` ) pro webové rozhraní API vytvořené výše. Proto při použití koncového bodu v 2.0 `scope` by měl parametr vypadat podobně jako `api://GUID/SCOPE` . U koncového bodu v 1.0 `resource` by parametr měl být identifikátorem URI aplikace webového rozhraní API.
 1. Předejte tento přístupový token do prostřední vrstvy místo id_token.

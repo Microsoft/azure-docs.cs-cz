@@ -7,18 +7,18 @@ author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 04/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 1a520c5a1002e401f880fba84f8fc02a0a678133
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a76935c5b826f8aa686167f702f7170522744155
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77084731"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85477460"
 ---
 # <a name="instantiate-a-confidential-client-application-with-configuration-options-using-msalnet"></a>Vytvoření instance aplikace důvěrného klienta s možnostmi konfigurace pomocí MSAL.NET
 
@@ -35,7 +35,7 @@ Před inicializací aplikace je nejprve nutné ji [zaregistrovat](quickstart-reg
 ## <a name="configure-the-application-from-the-config-file"></a>Konfigurace aplikace z konfiguračního souboru
 Název vlastností možností v MSAL.NET se shoduje s názvem vlastností `AzureADOptions` v ASP.NET Core, takže nemusíte psát žádný spojovací kód.
 
-Konfigurace aplikace ASP.NET Core je popsána v souboru *appSettings. JSON* :
+Konfigurace aplikace ASP.NET Core je popsána v *appsettings.js* souboru:
 
 ```json
 {
@@ -60,7 +60,7 @@ Konfigurace aplikace ASP.NET Core je popsána v souboru *appSettings. JSON* :
 
 Od MSAL.NET v3. x můžete svoji důvěrnou klientskou aplikaci nakonfigurovat z konfiguračního souboru.
 
-Ve třídě, kde chcete konfigurovat a vytvářet instance aplikace, je nutné deklarovat `ConfidentialClientApplicationOptions` objekt.  Navažte konfiguraci načtenou ze zdroje (včetně souboru appconfig. JSON) do instance možností aplikace pomocí `IConfigurationRoot.Bind()` metody z [balíčku NuGet Microsoft. Extensions. Configuration. Binder](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder):
+Ve třídě, kde chcete konfigurovat a vytvářet instance aplikace, je nutné deklarovat `ConfidentialClientApplicationOptions` objekt.  Navažte konfiguraci načtenou ze zdroje (včetně appconfig.jsdo souboru) do instance možností aplikace pomocí `IConfigurationRoot.Bind()` metody z [Microsoft.Extensions.Configuration. Balíček NuGet pro pořadač](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder):
 
 ```csharp
 using Microsoft.Identity.Client;
@@ -70,7 +70,7 @@ _applicationOptions = new ConfidentialClientApplicationOptions();
 configuration.Bind("AzureAD", _applicationOptions);
 ```
 
-To umožňuje svázat obsah oddílu "AzureAD" souboru *appSettings. JSON* s odpovídajícími vlastnostmi `ConfidentialClientApplicationOptions` objektu.  V dalším kroku Sestavte `ConfidentialClientApplication` objekt:
+To umožňuje, aby se obsah oddílu "AzureAD" v souboru *appsettings.jsv* souboru navázán na odpovídající vlastnosti `ConfidentialClientApplicationOptions` objektu.  V dalším kroku Sestavte `ConfidentialClientApplication` objekt:
 
 ```csharp
 IConfidentialClientApplication app;

@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 5bdb77d27b01f576ca06aa5b6d3df0572b3b1ea6
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: eb2a7d4f83b3d8bda0d06e14b4dab9bb4872885e
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307556"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85414279"
 ---
-# <a name="set-up-web-endpoints"></a>Nastavení koncových bodů webu
+# <a name="set-up-web-endpoints"></a>Nastavení webových koncových bodů
 
-V tomto článku se dozvíte, jak nastavit koncové body webu v aplikaci s vlastními příkazy, které vám umožní vytvářet požadavky HTTP z klientské aplikace. Dokončili jste následující úkoly:
+V tomto článku se naučíte, jak nastavit koncové body webu v aplikaci s vlastními příkazy, které vám umožní vytvářet požadavky HTTP z klientské aplikace. Provedete následující úlohy:
 
 - Nastavení koncových bodů webu v aplikaci Custom Commands
 - Volání webových koncových bodů v aplikaci Custom Commands
@@ -43,7 +43,7 @@ V tomto článku se dozvíte, jak nastavit koncové body webu v aplikaci s vlast
 
    | Nastavení | Navrhovaná hodnota | Popis |
    | ------- | --------------- | ----------- |
-   | Name | UpdateDeviceState | Název webového koncového bodu |
+   | Název | UpdateDeviceState | Název webového koncového bodu |
    | URL | https://webendpointexample.azurewebsites.net/api/DeviceState | Adresa URL koncového bodu, ke kterému se má vaše aplikace pro vlastní příkazy mluvit |
    | Metoda | POST | Povolené interakce (například GET, POST) s vaším koncovým bodem.|
    | Hlavičky | Key: aplikace, hodnota: jedinečný název vaší aplikace | Parametry záhlaví, které mají být zahrnuty v hlavičce požadavku.|

@@ -3,12 +3,12 @@ title: Poskytovatelé prostředků podle služeb Azure
 description: Vypíše všechny obory názvů poskytovatele prostředků pro Azure Resource Manager a zobrazí službu Azure pro tento obor názvů.
 ms.topic: conceptual
 ms.date: 06/05/2020
-ms.openlocfilehash: 70abbfe09f3200f0d26978727d21a033e1d4ee34
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: d4dea1dc5ee46d9be7bbc92166535aa93db46275
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84462851"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85506799"
 ---
 # <a name="resource-providers-for-azure-services"></a>Poskytovatelé prostředků pro služby Azure
 
@@ -19,7 +19,7 @@ V tomto článku se dozvíte, jak se mapují obory názvů poskytovatele prostř
 | Obor názvů poskytovatele prostředků | Služba Azure |
 | --------------------------- | ------------- |
 | Microsoft. AAD | [Azure Active Directory Domain Services](../../active-directory-domain-services/index.yml) |
-| Microsoft. addons | core |
+| Microsoft. addons | Core |
 | Microsoft. ADHybridHealthService<sup>1</sup> | [Azure Active Directory](/azure/active-directory/) |
 | Microsoft. Advisor | [Azure Advisor](../../advisor/index.yml) |
 | Microsoft. AlertsManagement | [Azure Monitor](../../azure-monitor/index.yml) |
@@ -34,17 +34,17 @@ V tomto článku se dozvíte, jak se mapují obory názvů poskytovatele prostř
 | Microsoft. AVS | [Azure VMware Solution](../../azure-vmware/index.yml) |
 | Microsoft. Azureactivedirectory selhala | [Azure Active Directory B2C](../../active-directory-b2c/index.yml) |
 | Microsoft. AzureData | Registr SQL Server |
-| Microsoft. AzureStack | core |
+| Microsoft. AzureStack | Core |
 | Microsoft. AzureStackHCI | [Azure Stack HCI](/azure-stack/hci/overview) |
 | Microsoft.Batch | [Batch](../../batch/index.yml) |
 | Microsoft. fakturace<sup>1</sup> | [Cost Management a fakturace](/azure/billing/) |
-| Microsoft. BingMaps | [Mapy Bingu](https://docs.microsoft.com/BingMaps/#pivot=main&panel=BingMapsAPI) |
+| Microsoft. BingMaps | [Mapy Bing](https://docs.microsoft.com/BingMaps/#pivot=main&panel=BingMapsAPI) |
 | Microsoft. blockchain | [Služba Azure Blockchain](/azure/blockchain/workbench/) |
 | Microsoft. BlockchainTokens | [Azure Blockchain Tokens](https://azure.microsoft.com/services/blockchain-tokens/) |
 | Microsoft. detail | [Azure Blueprint](/azure/governance/blueprints/) |
 | Microsoft. BotService | [Azure Bot Service](/azure/bot-service/) |
 | Microsoft. cache | [Azure Cache for Redis](/azure/azure-cache-for-redis/) |
-| Microsoft. Capacity | core |
+| Microsoft. Capacity | Core |
 | Microsoft. CDN | [Content Delivery Network](../../cdn/index.yml) |
 | Microsoft. CertificateRegistration | [App Service certifikátů](../../app-service/configure-ssl-certificate.md#import-an-app-service-certificate) |
 | Microsoft. ChangeAnalysis | [Azure Monitor](../../azure-monitor/index.yml) |
@@ -54,8 +54,8 @@ V tomto článku se dozvíte, jak se mapují obory názvů poskytovatele prostř
 | Microsoft. ClassicStorage | Úložiště modelu nasazení Classic |
 | Microsoft. ClassicSubscription<sup>1</sup> | Model nasazení Classic |
 | Microsoft. Cognitiveservices Account | [Cognitive Services](/azure/cognitive-services/) |
-| Microsoft. Commerce<sup>1</sup> | core |
-| Microsoft.Compute | [Virtual Machines](/azure/virtual-machines/)<br />[Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets/) |
+| Microsoft. Commerce<sup>1</sup> | Core |
+| Microsoft.Compute | [Virtuální počítače](/azure/virtual-machines/)<br />[Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets/) |
 | Microsoft. spotřeba<sup>1</sup> | [Správa nákladů](/azure/cost-management/) |
 | Microsoft. ContainerInstance | [Container Instances](/azure/container-instances/) |
 | Microsoft. ContainerRegistry | [Container Registry](/azure/container-registry/) |
@@ -64,7 +64,7 @@ V tomto článku se dozvíte, jak se mapují obory názvů poskytovatele prostř
 | Microsoft. CostManagementExports | [Správa nákladů](/azure/cost-management/) |
 | Microsoft. CustomerLockbox | [Customer Lockbox pro Microsoft Azure](../../security/fundamentals/customer-lockbox-overview.md) |
 | Microsoft. CustomProviders | [Vlastní poskytovatelé Azure](../custom-providers/overview.md) |
-| Microsoft. DataBox | [Azure Data Box](/azure/databox-family/) |
+| Microsoft. DataBox | [Azure Data Box](/azure/databox/) |
 | Microsoft. DataBoxEdge | [Azure Stack Edge](../../databox-online/azure-stack-edge-overview.md) |
 | Cihly Microsoft. | [Azure Databricks](/azure/azure-databricks/) |
 | Microsoft. datacatalog | [Data Catalog](/azure/data-catalog/) |
@@ -84,7 +84,7 @@ V tomto článku se dozvíte, jak se mapují obory názvů poskytovatele prostř
 | Microsoft. DevSpaces | [Azure Dev Spaces](/azure/dev-spaces/) |
 | Microsoft. DevTestLab | [Azure Lab Services](../../lab-services/index.yml) |
 | Microsoft. DigitalTwins | [Azure Digital Twins](../../digital-twins/about-digital-twins.md) |
-| Microsoft. DocumentDB | [Azure Cosmos DB](../../cosmos-db/index.yml) |
+| Microsoft.DocumentDB | [Azure Cosmos DB](../../cosmos-db/index.yml) |
 | Microsoft. DomainRegistration | [App Service](/azure/app-service/) |
 | Microsoft. EnterpriseKnowledgeGraph | Podnikový graf znalostní báze |
 | Microsoft. EventGrid | [Event Grid](/azure/event-grid/) |
@@ -114,9 +114,9 @@ V tomto článku se dozvíte, jak se mapují obory názvů poskytovatele prostř
 | Microsoft. ManagedServices | [Azure Lighthouse](/azure/lighthouse/) |
 | Microsoft. Management | [Skupiny pro správu](/azure/governance/management-groups/) |
 | Microsoft. Maps | [Azure Maps](../../azure-maps/index.yml) |
-| Microsoft. Marketplace | core |
-| Microsoft. MarketplaceApps | core |
-| Microsoft. MarketplaceOrdering<sup>1</sup> | core |
+| Microsoft. Marketplace | Core |
+| Microsoft. MarketplaceApps | Core |
+| Microsoft. MarketplaceOrdering<sup>1</sup> | Core |
 | Microsoft. Media | [Media Services](../../media-services/index.yml) |
 | Microsoft. migruje | [Azure Migrate](../../migrate/migrate-overview.md) |
 | Microsoft. MixedReality | [Azure Spatial Anchors](/azure/spatial-anchors/) |
@@ -140,7 +140,7 @@ V tomto článku se dozvíte, jak se mapují obory názvů poskytovatele prostř
 | Microsoft. ResourceGraph<sup>1</sup> | [Azure Resource Graph](/azure/governance/resource-graph/) |
 | Microsoft. ResourceHealth | [Azure Service Health](../../service-health/index.yml) |
 | Microsoft. Resources<sup>1</sup> | [Azure Resource Manager](../index.yml) |
-| Microsoft. SaaS | core |
+| Microsoft. SaaS | Core |
 | Microsoft. Scheduler | [Scheduler](/azure/scheduler/) |
 | Microsoft. Search | [Azure Cognitive Search](../../search/index.yml) |
 | Microsoft.Security | [Security Center](../../security-center/index.yml) |
@@ -149,7 +149,7 @@ V tomto článku se dozvíte, jak se mapují obory názvů poskytovatele prostř
 | Microsoft.ServiceBus | [Service Bus](/azure/service-bus/) |
 | Microsoft. ServiceFabric | [Service Fabric](../../service-fabric/index.yml) |
 | Microsoft. ServiceFabricMesh | [Service Fabric Mesh](../../service-fabric-mesh/index.yml) |
-| Microsoft. Services | core |
+| Microsoft. Services | Core |
 | Microsoft. SignalRService | [Služba Azure SignalR](../../azure-signalr/index.yml) |
 | Microsoft. SoftwarePlan | Licence |
 | Microsoft. Solutions | [Azure Managed Applications](../managed-applications/index.yml) |
@@ -159,8 +159,8 @@ V tomto článku se dozvíte, jak se mapují obory názvů poskytovatele prostř
 | Microsoft. StorageSync | [Storage](../../storage/index.yml) |
 | Microsoft. StorSimple | [StorSimple](/azure/storsimple/) |
 | Microsoft. StreamAnalytics | [Azure Stream Analytics](../../stream-analytics/index.yml) |
-| Microsoft. Subscription | core |
-| Microsoft. support<sup>1</sup> | core |
+| Microsoft. Subscription | Core |
+| Microsoft. support<sup>1</sup> | Core |
 | Microsoft. synapse | [Azure Synapse Analytics](/azure/sql-data-warehouse/) |
 | Microsoft. TimeSeriesInsights | [Azure Time Series Insights](../../time-series-insights/index.yml) |
 | Microsoft. token | Token |

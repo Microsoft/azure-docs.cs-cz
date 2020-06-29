@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f96ec80b529c594a383be8d668fd28b77372cd80
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: b9803726bf3a54eb31d3c2ebaddce11fb96472be
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82900919"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85413719"
 ---
 # <a name="about-azure-key-vault-keys"></a>O Azure Key Vaultch klíčích
 
@@ -30,10 +30,10 @@ Kryptografické klíče v Key Vault jsou reprezentovány jako objekty webového 
 
 Základní specifikace JWK/JWA se také rozšiřují tak, aby umožňovaly použití typů klíčů jedinečných pro Key Vault implementaci. Například import klíčů pomocí balení specifického pro dodavatele HSM umožňuje zabezpečenou přepravu klíčů, které se dají používat jenom v Key Vault HSM. 
 
-Azure Key Vault podporuje jak měkké, tak pevné klíče:
+Azure Key Vault podporuje klíče chráněné softwarem i ochranou HSM:
 
-- **"Tiché" klíče**: klíč zpracovaný v softwaru Key Vault, ale je zašifrovaný v klidovém formátu pomocí systémového klíče, který je v modulu hardwarového zabezpečení. Klienti mohou importovat stávající klíč RSA nebo EC (eliptická křivka) nebo požádat, aby ho Key Vault vygeneroval.
-- Klíčové **klíče**: klíč zpracovaný v modulu HSM (Hardware Security Module). Tyto klíče jsou chráněné v jednom z Key Vault Zabezpečení HSM světů (pro zachování izolace existuje jeden celosvětový svět na geografickou oblast). Klienti mohou importovat klíč RSA nebo ES, v případě slabé formy nebo exportováním z kompatibilního zařízení HSM. Klienti si taky můžou vyžádat Key Vault, aby vygenerovali klíč. Tento typ klíče přidá atribut key_hsm do JWK pro získání materiálu klíče HSM.
+- **Klíče chráněné softwarem**: klíč zpracovaný v softwaru Key Vault, ale je zašifrovaný v klidovém formátu pomocí systémového klíče, který je v modulu hardwarového zabezpečení. Klienti mohou importovat stávající klíč RSA nebo EC (eliptická křivka) nebo požádat, aby ho Key Vault vygeneroval.
+- **Klíče HSM-potected**: klíč zpracovaný v modulu HSM (Hardware Security Module). Tyto klíče jsou chráněné v jednom z Key Vault Zabezpečení HSM světů (pro zachování izolace existuje jeden celosvětový svět na geografickou oblast). Klienti mohou importovat klíč RSA nebo ES, ve formuláři chráněném softwarem nebo pomocí exportu z kompatibilního zařízení HSM. Klienti si taky můžou vyžádat Key Vault, aby vygenerovali klíč. Tento typ klíče přidá atribut key_hsm do JWK pro získání materiálu klíče HSM.
 
 Další informace o geografických hranicích najdete v tématu [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/privacy/) .  
 
@@ -41,9 +41,9 @@ Další informace o geografických hranicích najdete v tématu [Microsoft Azure
 
 Key Vault podporuje pouze klíče RSA a eliptické křivky. 
 
--   **ES**: "měkký" klíč eliptické křivky.
+-   **ES**: klíč eliptické křivky chráněný softwarem.
 -   **ES-HSM**: "tvrdý" eliptický klíč křivky.
--   **RSA**: "měkký" klíč RSA.
+-   **RSA**: klíč RSA chráněný softwarem.
 -   **RSA-HSM**: "pevný" klíč RSA.
 
 Key Vault podporuje klíče RSA velikosti 2048, 3072 a 4096. Key Vault podporuje typy klíčů eliptické křivky P-256, P-384, P-521 a P-256 (SECP256K1).
@@ -119,7 +119,7 @@ Další informace o objektech JWK naleznete v tématu [JSON web Key (JWK)](https
 
 Vedle nastavení týkajících se klíčů samotných je možné ještě zadat následující atributy. V požadavku JSON jsou klíčové slovo atributů a složené závorky ({' '} ') vyžadovány i v případě, že nejsou zadány žádné atributy.  
 
-- *povoleno*: logická hodnota, volitelná, výchozí hodnota je **true**. Určuje, jestli je klíč povolený a použitelný pro kryptografické operace. Atribut *Enabled* se používá ve spojení s *NBF* a *exp*. Pokud dojde k operaci mezi *NBF* a *exp*, bude povoleno pouze v případě, že je vlastnost *Enabled* nastavena na **hodnotu true**. Operace mimo okno s*expem* *NBF* / se automaticky nepovolují, s výjimkou určitých typů operací za určitých [podmínek](#date-time-controlled-operations).
+- *povoleno*: logická hodnota, volitelná, výchozí hodnota je **true**. Určuje, jestli je klíč povolený a použitelný pro kryptografické operace. Atribut *Enabled* se používá ve spojení s *NBF* a *exp*. Pokud dojde k operaci mezi *NBF* a *exp*, bude povoleno pouze v případě, že je vlastnost *Enabled* nastavena na **hodnotu true**. Operace mimo okno *nbf*s  /  *expem* NBF se automaticky nepovolují, s výjimkou určitých typů operací za určitých [podmínek](#date-time-controlled-operations).
 - *NBF*: IntDate, volitelné, výchozí nastavení je teď. Atribut *NBF* (nikoli před) určuje dobu, po jejímž uplynutí nesmí být klíč použit pro kryptografické operace, s výjimkou určitých typů operací za určitých [podmínek](#date-time-controlled-operations). Zpracování atributu *NBF* vyžaduje, aby aktuální datum a čas musel být pozdější nebo rovno datu a času, které je uvedené v atributu *NBF* . Key Vault může poskytovat některé malé Leeway, obvykle ne více než několik minut, aby se zohlednila časová zkosená část. Jeho hodnota musí být číslo obsahující hodnotu IntDate.  
 - *exp*: IntDate, volitelné, výchozí je "navždy". Atribut *exp* (čas vypršení platnosti) identifikuje čas vypršení platnosti nebo po jehož uplynutí se klíč nesmí používat pro kryptografickou operaci s výjimkou určitých typů operací za určitých [podmínek](#date-time-controlled-operations). Zpracování atributu *exp* vyžaduje, aby aktuální datum a čas musely být před datem a časem vypršení platnosti uvedené v atributu *exp* . Key Vault může poskytovat malým leewayům, obvykle ne více než několik minut, pro účet pro časové zkosení. Jeho hodnota musí být číslo obsahující hodnotu IntDate.  
 
@@ -132,7 +132,7 @@ Další informace o IntDate a dalších datových typech najdete v tématu [info
 
 ### <a name="date-time-controlled-operations"></a>Operace kontrolovaného data a času
 
-Neplatných klíčů a klíčů s vypršenou platností *nbf* / mimo okno*exp exp* budou fungovat pro **dešifrování**, **rozbalení**a **ověření** operací (nevrátí 403, zakázáno). K tomu, aby bylo možné použít neplatný stav, je povolení testování klíče před použitím v produkčním prostředí. Odůvodnění použití stavu s vypršenou platností je povolení operací obnovení u dat, která byla vytvořena při platnosti klíče. Můžete také zakázat přístup k klíči pomocí zásad Key Vault nebo aktualizací atributu *Enabled* Key na **hodnotu false (NEPRAVDA**).
+Neplatných klíčů a klíčů s vypršenou platností *nbf*  /  mimo okno*exp exp* budou fungovat pro **dešifrování**, **rozbalení**a **ověření** operací (nevrátí 403, zakázáno). K tomu, aby bylo možné použít neplatný stav, je povolení testování klíče před použitím v produkčním prostředí. Odůvodnění použití stavu s vypršenou platností je povolení operací obnovení u dat, která byla vytvořena při platnosti klíče. Můžete také zakázat přístup k klíči pomocí zásad Key Vault nebo aktualizací atributu *Enabled* Key na **hodnotu false (NEPRAVDA**).
 
 Další informace o typech dat najdete v tématu [datové typy](../general/about-keys-secrets-certificates.md#data-types).
 
@@ -182,4 +182,4 @@ Další informace o práci s klíči naleznete v tématu [klíčové operace v o
 - [Informace o tajných kódech](../secrets/about-secrets.md)
 - [Informace o certifikátech](../certificates/about-certificates.md)
 - [Ověřování, žádosti a odpovědi](../general/authentication-requests-and-responses.md)
-- [Průvodce vývojáře pro Key Vault](../general/developers-guide.md)
+- [Průvodce vývojáře pro službu Key Vault](../general/developers-guide.md)

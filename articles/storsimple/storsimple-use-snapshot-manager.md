@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: twooley
 ms.custom: ''
-ms.openlocfilehash: 56771d2e62289485017f34c6a9ab26e1d53610ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6a94a533dbc31e2f2d4ddb5d1985c77da8b29032
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75933977"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476967"
 ---
 # <a name="use-storsimple-snapshot-manager-user-interface-to-manage-backup-jobs-and-backup-catalog"></a>Použití uživatelského rozhraní StorSimple Snapshot Manager ke správě úloh zálohování a katalogu záloh
 
@@ -112,20 +112,20 @@ Následující tabulka obsahuje abecední seznam akcí StorSimple Snapshot Manag
 | Ověření |Klikněte na uzel **zařízení** a v podokně **výsledků** klikněte pravým tlačítkem na zařízení. |Kliknutím na **ověřit** zadejte heslo, které jste nakonfigurovali pro zařízení. |
 | Klonování |Rozbalte **Katalog zálohování**, rozbalte **cloudové snímky**, klikněte na zálohu s datem a potom v podokně **výsledků** vyberte svazek. |Kliknutím na **klonovat** vytvořte kopii snímku cloudu a uložte ji do umístění, které určíte. |
 | Konfigurace zařízení |Klikněte pravým tlačítkem myši na uzel **zařízení** . |Kliknutím na **Konfigurovat zařízení** nakonfigurujte jedno zařízení nebo více zařízení pro připojení k hostiteli Windows. |
-| Vytvořit zásady zálohování |Proveďte jednu z těchto akcí:<ul><li>Klikněte pravým tlačítkem na **zásady zálohování**.</li><li>Klikněte nebo rozbalte **skupiny svazků**a potom klikněte pravým tlačítkem na skupinu svazků.</li><li>Klikněte nebo rozbalte **Katalog zálohování**a potom klikněte pravým tlačítkem na skupinu svazků.</li></ul> |Klikněte na **vytvořit zásadu zálohování** a nakonfigurujte naplánované zálohování pro skupinu svazků. |
-| Vytvořit skupinu svazků |Proveďte jednu z těchto akcí:<ul><li>Klikněte na uzel **svazky** a potom v podokně **výsledků** klikněte pravým tlačítkem na svazek.</li><li>Klikněte pravým tlačítkem myši na uzel **skupiny svazků** .</li></ul> |Kliknutím na **vytvořit skupinu svazků** přiřaďte svazky ke skupině svazků. |
+| Vytvořit zásady zálohování |Proveďte jednu z následujících akcí:<ul><li>Klikněte pravým tlačítkem na **zásady zálohování**.</li><li>Klikněte nebo rozbalte **skupiny svazků**a potom klikněte pravým tlačítkem na skupinu svazků.</li><li>Klikněte nebo rozbalte **Katalog zálohování**a potom klikněte pravým tlačítkem na skupinu svazků.</li></ul> |Klikněte na **vytvořit zásadu zálohování** a nakonfigurujte naplánované zálohování pro skupinu svazků. |
+| Vytvořit skupinu svazků |Proveďte jednu z následujících akcí:<ul><li>Klikněte na uzel **svazky** a potom v podokně **výsledků** klikněte pravým tlačítkem na svazek.</li><li>Klikněte pravým tlačítkem myši na uzel **skupiny svazků** .</li></ul> |Kliknutím na **vytvořit skupinu svazků** přiřaďte svazky ke skupině svazků. |
 | Odstranit |Klikněte na uzel nebo výsledek (Tato položka se zobrazí v řadě **akcí** a podoknech **akcí** .) |Kliknutím na tlačítko **Odstranit** odstraníte uzel nebo výsledek, který jste vybrali. Až se zobrazí potvrzovací dialogové okno, potvrďte nebo zrušte odstranění. |
 | Podrobnosti |Klikněte na uzel **zařízení** a potom v podokně **výsledků** klikněte pravým tlačítkem na zařízení. |Kliknutím na **Podrobnosti** zobrazíte podrobnosti o konfiguraci zařízení. |
 | Upravit |Klikněte na **zásady zálohování**a potom v podokně **výsledků** klikněte pravým tlačítkem na zásadu. |Klikněte na **Upravit** a změňte plán zálohování pro skupinu svazků. |
 | Exportovat seznam |Klikněte na libovolný uzel nebo výsledek (Tato položka se zobrazí v podoknech všechny **Akce** a **Akce** ). |Kliknutím na **Exportovat seznam** uložte seznam do souboru s hodnotami oddělenými čárkou (CSV). Tento soubor pak můžete importovat do aplikace v tabulce pro účely analýzy. |
-| Nápověda |Klikněte na libovolný uzel nebo výsledek. (Tato položka se zobrazí v podoknech všechny **Akce** **a akce.** ) |Kliknutím na tlačítko **Zobrazit** otevřete online nápovědě v samostatném okně prohlížeče. |
+| Help |Klikněte na libovolný uzel nebo výsledek. (Tato položka se zobrazí v podoknech všechny **Akce** **a akce.** ) |Kliknutím na tlačítko **Zobrazit** otevřete online nápovědě v samostatném okně prohlížeče. |
 | New Window from Here |Klikněte na libovolný uzel nebo výsledek (Tato položka se zobrazí v podoknech všechny **Akce** a **Akce** ). |Kliknutím na **nové okno z tohoto místa** otevřete nové okno StorSimple Snapshot Manager. |
-| Obnovení |Klikněte na libovolný uzel nebo výsledek (Tato položka se zobrazí v podoknech všechny **Akce** a **Akce** ). |Kliknutím na **aktualizovat** aktualizujte aktuálně zobrazené Snapshot Manager okno StorSimple. |
+| Aktualizovat |Klikněte na libovolný uzel nebo výsledek (Tato položka se zobrazí v podoknech všechny **Akce** a **Akce** ). |Kliknutím na **aktualizovat** aktualizujte aktuálně zobrazené Snapshot Manager okno StorSimple. |
 | Aktualizovat zařízení |Klikněte na uzel **zařízení** a v podokně **výsledků** klikněte pravým tlačítkem na zařízení. |Kliknutím na **aktualizovat zařízení** synchronizujete konkrétní připojené zařízení s Snapshot Manager StorSimple. |
 | Aktualizovat zařízení |Klikněte pravým tlačítkem myši na uzel **zařízení** . |Kliknutím na **aktualizovat zařízení** synchronizujete seznam připojených zařízení s Snapshot Manager StorSimple. |
 | Znovu prohledat svazky |Klikněte pravým tlačítkem na uzel **svazky** . |Kliknutím na možnost **Prohledat svazky** aktualizujte seznam svazků, které se zobrazí v podokně **výsledků** . |
 | Obnovení |Rozbalte **Katalog zálohování**, rozbalte skupinu svazků, rozbalte **místní snímky** nebo **cloudové snímky**a potom klikněte pravým tlačítkem na zálohu. |Kliknutím na **obnovit** nahraďte aktuální data skupiny svazků daty z vybrané zálohy. |
-| Provést zálohování |Proveďte jednu z těchto akcí:<ul><li>Rozbalte položku **skupiny svazků**a potom klikněte pravým tlačítkem myši na skupinu svazků.</li><li>Rozbalte položku **katalog záloh**a potom klikněte pravým tlačítkem na skupinu svazků.</li></ul> |Kliknutím na **vytvořit zálohu** spusťte úlohu zálohování okamžitě. |
+| Provést zálohování |Proveďte jednu z následujících akcí:<ul><li>Rozbalte položku **skupiny svazků**a potom klikněte pravým tlačítkem myši na skupinu svazků.</li><li>Rozbalte položku **katalog záloh**a potom klikněte pravým tlačítkem na skupinu svazků.</li></ul> |Kliknutím na **vytvořit zálohu** spusťte úlohu zálohování okamžitě. |
 | Přepnout zobrazení importů |Pravým tlačítkem myši klikněte na nejvyšší uzel v podokně **oboru** ( **StorSimple Snapshot Manager** v příkladech). |Kliknutím na tlačítko **Přepnout importy zobrazíte** nebo skryjete skupiny svazků a přidružené zálohy, které byly naimportovány z řídicího panelu služby StorSimple Device Manager. |
 
 ### <a name="view-menu"></a>Nabídka Zobrazit
@@ -356,7 +356,7 @@ Následující tabulka popisuje kombinace klávesových zkratek pro panel nabíd
 
 | Zástupce | Výsledek | Klávesová zkratka nabídky | Výsledek |
 |:--- |:--- |:--- |:--- |
-| ALT + F |Otevře nabídku **soubor** . |Ne |Otevře novou instanci konzoly. |
+| ALT + F |Otevře nabídku **soubor** . |N |Otevře novou instanci konzoly. |
 |  |O |Otevře stránku **Nástroje pro správu** . | |
 |  |S |Uloží konzolu Snapshot Manager StorSimple. | |
 |  |A |Otevře stránku **Uložit jako** . | |
@@ -372,7 +372,7 @@ Následující tabulka popisuje kombinace klávesových zkratek pro panel nabíd
 |  |U |Otevře stránku **přizpůsobit zobrazení** . | |
 | ALT+O |Otevře nabídku **Oblíbené** . |A |Otevře stránku **Přidat k oblíbeným položkám** . |
 |  |O |Otevře stránku **Uspořádat oblíbené položky** . | |
-| ALT + W |Otevře nabídku **okna** . |Ne |Otevře jiné okno Snapshot Manager StorSimple. |
+| ALT + W |Otevře nabídku **okna** . |N |Otevře jiné okno Snapshot Manager StorSimple. |
 |  |C |Zobrazí všechna otevřená okna konzoly v Kaskádovém stylu. | |
 |  |T |Zobrazí všechna otevřená okna konzoly ve vzoru mřížky. | |
 |  |I |Uspořádá ikony do vodorovného řádku v dolní části obrazovky. | |
@@ -428,7 +428,7 @@ V následujících tabulkách jsou uvedeny kombinace klávesových zkratek pro k
 | V |Otevře nabídku **zobrazení** . |
 | W |Otevře novou StorSimple Snapshot Manager konzolu zaměřenou na uzel **skupiny svazků** . |
 | F |Aktualizuje konzolu Snapshot Manager StorSimple. |
-| L |Otevře stránku * * Export seznamu * *. |
+| L |Otevře stránku **seznam exportu** . |
 | H |Otevře online nápovědě. |
 
 #### <a name="backup-catalog-node-shortcut-keys"></a>Klávesové zkratky uzlu katalogu zálohování

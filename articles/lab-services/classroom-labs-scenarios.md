@@ -1,24 +1,14 @@
 ---
 title: Používání Učebn Labs pro školení – Azure Lab Services
 description: Tento článek popisuje, jak použít Azure DevTest Labs pro vytváření cvičení v Azure pro scénáře školení.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.assetid: 57ff4e30-7e33-453f-9867-e19b3fdb9fe2
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2020
-ms.author: spelluru
-ms.openlocfilehash: cd5a2fb55e1c2ec360d1585155f53b9213a72179
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 582508968609ba53de14b95b71ee75b5fec9ba93
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84897387"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445249"
 ---
 # <a name="use-classroom-labs-for-trainings"></a>Používání Učebn Labs pro školení
 Služby Azure Labs umožňují pedagogům (učitelům, profesoryům, instruktorům a pomocníkům pro vzdělávání atd.) rychle a snadno vytvořit online prostředí pro zřizování předem nakonfigurovaných výukových prostředí pro praktikanty. Každý praktikant by mohl pro školení použít stejné a izolované prostředí. Zásady je možné použít, aby se zajistilo, že školicí prostředí jsou k dispozici pro každého účastníka pouze v případě, že je potřebují a obsahují dostatek prostředků, jako jsou třeba virtuální počítače – vyžadované pro školení. 

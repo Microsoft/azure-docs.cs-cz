@@ -1,24 +1,14 @@
 ---
 title: Přidat uživatele jako autora testovacího prostředí v Azure Lab Services
 description: Tento článek ukazuje, jak přidat uživatele do role testovacího prostředí pro účet testovacího prostředí v Azure Lab Services. Tvůrci testovacího prostředí můžou vytvářet Labs v rámci tohoto účtu testovacího prostředí.
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2020
-ms.author: spelluru
-ms.openlocfilehash: 3b46255fa4cb9cbeafab84be9102a1a3a2d9d7a9
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 34fbf9085f36d008607b648825585d3435cc2895
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84899176"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85444280"
 ---
 # <a name="add-lab-creators-to-a-lab-account-in-azure-lab-services"></a>Přidání tvůrců testovacího prostředí do účtu testovacího prostředí v Azure Lab Services
 V tomto článku se dozvíte, jak přidat uživatele jako tvůrci testovacích prostředí do účtu testovacího prostředí v Azure Lab Services. Tato použití pak mohou v účtu testovacího prostředí vytvořit učebnu. 

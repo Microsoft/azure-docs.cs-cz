@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 06/03/2020
+ms.date: 06/25/2020
 ms.author: aahi
-ms.openlocfilehash: 4fd893691f68c8b51fa3ef234d7828b1bd70cea5
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 367e214a3945ec9d6ed0ffc5b11e6af25dc41503
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465588"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85413327"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Podpora jazyka rozhraní API pro analýzu textu V3 
 
@@ -57,7 +57,7 @@ ms.locfileid: "84465588"
 #### <a name="named-entity-recognition-ner"></a>[Rozpoznávání pojmenovaných entit (NER)](#tab/named-entity-recognition)
 
 > [!NOTE]
-> * NER V3 aktuálně podporuje pouze anglickou jazyk. Pokud voláte NER v3 s jiným jazykem, rozhraní API vrátí výsledky v 2.1 za předpokladu, že je jazyk podporován ve verzi 2,1.
+> * NER V3 aktuálně podporuje pouze anglické a španělské jazyky. Pokud voláte NER v3 s jiným jazykem, rozhraní API vrátí výsledky v 2.1 za předpokladu, že je jazyk podporován ve verzi 2,1.
 > * v 2.1 vrátí jenom kompletní sadu dostupných entit pro anglické, zjednodušené, francouzské, německé a španělské jazyky.  Entity "Person", "Location" a "Organization" jsou vráceny pro ostatní podporované jazyky.
 
 | Jazyk               | Kód jazyka | Podpora verze 2.1 | Podpora V3 | Od verze V3 model: |       Poznámky        |
@@ -82,7 +82,7 @@ ms.locfileid: "84465588"
 | portugalština (Portugalsko) |    `pt-PT`    |     ✓      |            |                                 | `pt`také přijato |
 | Portugalština (Brazílie)   |    `pt-BR`    |     ✓      |            |                                 |                    |
 | Ruština              |     `ru`      |     ✓      |            |                                 |                    |
-| Španělština               |     `es`      |     ✓      |            |                                 |                    |
+| Španělština               |     `es`      |     ✓      |     ✓       |              2020-04-01                   |                    |
 | Švédština               |     `sv`      |     ✓      |            |                                 |                    |
 | Turečtina               |     `tr`      |     ✓      |            |                                 |                    |
 

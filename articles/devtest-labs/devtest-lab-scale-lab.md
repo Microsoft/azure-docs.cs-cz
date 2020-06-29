@@ -1,24 +1,14 @@
 ---
 title: Kvóty a limity škálování v testovacím prostředí v Azure DevTest Labs | Microsoft Docs
 description: Tento článek popisuje, jak můžete škálovat testovací prostředí v Azure DevTest Labs. Zobrazení kvót a omezení využití a vyžádání zvýšení.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.assetid: ae624155-9181-45fa-bd2b-1983339b7e0e
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: spelluru
-ms.openlocfilehash: c1074c074b39e107e78a46a6e979e487aea1e0f2
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 9c999760a649d4df4b34221633491b8ece784f52
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84898161"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85477087"
 ---
 # <a name="scale-quotas-and-limits-in-devtest-labs"></a>Kvóty a omezení škálování v DevTest Labs
 Při práci v DevTest Labs si můžete všimnout, že existují určitá výchozí omezení pro některé prostředky Azure, což může ovlivnit službu DevTest Labs. Tato omezení se označují jako **kvóty**.

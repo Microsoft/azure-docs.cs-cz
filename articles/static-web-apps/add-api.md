@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
-ms.openlocfilehash: 1720ea31c8f0b15485df194e62e463671d092b26
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 7101d23d4611f4eea9b5a9e2a7f3ba417c9fcb1a
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310848"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476117"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>Přidání rozhraní API do služby Azure static Web Apps Preview pomocí Azure Functions
 
@@ -25,7 +25,7 @@ Do služby Azure static Web Apps můžete přidat rozhraní API bez serveru pros
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Azure Functions rozšíření](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) pro Visual Studio Code
 - Rozšíření pro [živý Server Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) .
-- [Node. js](https://nodejs.org/download/) pro místní spuštění aplikace API
+- [Node.js](https://nodejs.org/download/) pro místní spuštění aplikace API
 
 ## <a name="create-a-git-repository"></a>Vytvoření úložiště Git
 
@@ -89,7 +89,7 @@ Vaše aplikace teď má strukturu projektu podobnou následujícímu příkladu.
 
 Dále změníte `GetMessage` funkci tak, aby vracela zprávu na front-end.
 
-1. Aktualizujte `GetMessage` funkci v části _API/GetMessage/index. js_ následujícím kódem.
+1. Aktualizujte `GetMessage` funkci v části _API/GetMessage/index.js_ s následujícím kódem.
 
     ```javascript
     module.exports = async function (context, req) {
@@ -162,7 +162,7 @@ Při nasazení do Azure jsou požadavky na rozhraní API automaticky směrovány
 
 #### <a name="update-html-files-to-access-the-api"></a>Aktualizace souborů HTML pro přístup k rozhraní API
 
-1. Dále aktualizujte obsah souboru _index. html_ pomocí následujícího kódu, který načte text z funkce rozhraní API a zobrazí ho na obrazovce:
+1. Dále aktualizujte obsah souboru _index.html_ pomocí následujícího kódu, který načte text z funkce rozhraní API a zobrazí ho na obrazovce:
 
    ```html
    <!DOCTYPE html>
@@ -178,7 +178,7 @@ Při nasazení do Azure jsou požadavky na rozhraní API automaticky směrovány
    <body>
      <main>
        <h1>Vanilla JavaScript App</h1>
-       <p>Loading message from the API: <b id="name">...</b></p>
+       <p>Loading content from the API: <b id="name">...</b></p>
      </main>
 
      <script>

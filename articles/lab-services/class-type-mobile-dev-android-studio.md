@@ -2,18 +2,16 @@
 title: Nastavení testovacího prostředí pro učení vývoje mobilních aplikací pomocí Android Studio
 titleSuffix: Azure Lab Services
 description: Naučte se, jak nastavit testovací prostředí pro výuku třídy pro vývoj dat mobilní aplikace, která používá Android Studio.  Článek také popisuje úpravy, které je třeba provést při použití Android Studio na virtuálním počítači v Azure.
-services: lab-services
 author: emaher
-ms.service: lab-services
 ms.topic: article
-ms.date: 1/23/2020
+ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: 0c257589a2e93ac4c15a639e7156d0c0944b033c
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: ff996a096cddbb85f1e1c84cd051c18a7ab4ad79
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84899029"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85444977"
 ---
 # <a name="set-up-a-lab-to-teach-data-mobile-application-development-with-android-studio"></a>Nastavení testovacího prostředí pro učení dat vývoje mobilních aplikací pomocí Android Studio
 

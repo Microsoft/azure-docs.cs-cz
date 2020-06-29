@@ -3,12 +3,12 @@ title: Odstranění trezoru Microsoft Azure Recovery Services
 description: V tomto článku se dozvíte, jak odebrat závislosti a jak odstranit Azure Backup trezoru Recovery Services.
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 946b199119ee9e03ec9348c4e180f8e4c9b9a776
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.openlocfilehash: 986b3c3ef5bd3903a764726281b6bd0a25ba76a4
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84751868"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85506819"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Odstranění trezoru Azure Backup Recovery Services
 
@@ -118,6 +118,9 @@ Po dokončení tohoto procesu můžete odstranit zálohované položky z konzoly
 
 ### <a name="delete-backup-items-from-the-mars-management-console"></a>Odstranit zálohované položky z konzoly pro správu MARS
 
+>[!NOTE]
+>Pokud jste zdrojový počítač odstranili nebo ztratili bez zastavení zálohování, další naplánované zálohování se nezdaří. Původní bod obnovení vyprší podle zásad, ale poslední jeden bod obnovení se vždy zachová, dokud neukončíte zálohování a neodstraníte data. To můžete provést podle kroků v [této části](#delete-protected-items-on-premises).
+
 1. Otevřete konzolu pro správu MARS, klikněte na podokno **Akce** a vyberte **naplánovat zálohování**.
 2. Na stránce **změnit nebo zastavit naplánované zálohování** vyberte možnost **ukončit používání tohoto plánu zálohování a odstraňte všechny uložené zálohy**. Pak vyberte **Další**.
 
@@ -140,6 +143,9 @@ Po dokončení tohoto procesu můžete odstranit zálohované položky z konzoly
 Po odstranění místních zálohových položek postupujte podle dalších kroků na portálu.
 
 ### <a name="delete-backup-items-from-the-mabs-management-console"></a>Odstranit zálohované položky z konzoly pro správu MABS
+
+>[!NOTE]
+>Pokud jste zdrojový počítač odstranili nebo ztratili bez zastavení zálohování, další naplánované zálohování se nezdaří. Původní bod obnovení vyprší podle zásad, ale poslední jeden bod obnovení se vždy zachová, dokud neukončíte zálohování a neodstraníte data. To můžete provést podle kroků v [této části](#delete-protected-items-on-premises).
 
 Existují dvě metody, které můžete použít k odstranění zálohovaných položek z konzoly pro správu MABS.
 

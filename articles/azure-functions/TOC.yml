@@ -65,7 +65,7 @@
       href: 'https://www.serverlesslibrary.net/'
     - name: Ukázky Azure
       items:
-        - name: 'C#'
+        - name: C#
           href: /samples/browse/?products=azure-functions&languages=csharp
         - name: Java
           href: /samples/browse/?products=azure-functions&languages=java
@@ -112,11 +112,11 @@
       items:
         - name: Podporované jazyky
           href: supported-languages.md
-        - name: 'Jazyk C# (knihovna tříd)'
+        - name: Jazyk C# (knihovna tříd)
           href: functions-dotnet-class-library.md
-        - name: 'Skript jazyka C# (.csx)'
+        - name: Skript jazyka C# (.csx)
           href: functions-reference-csharp.md
-        - name: 'F#'
+        - name: F#
           href: functions-reference-fsharp.md
         - name: JavaScript
           href: functions-reference-node.md
@@ -127,7 +127,7 @@
         - name: Python
           href: functions-reference-python.md
         - name: TypeScript
-          href: 'functions-reference-node.md#typescript'
+          href: functions-reference-node.md#typescript
     - name: Zabezpečení
       items:
         - name: Přehled zabezpečení
@@ -377,7 +377,7 @@
             - name: Functions 1.x
               href: functions-bindings-cosmosdb.md
               displayName: Azure Cosmos DB
-            - name: Functions 2.x
+            - name: Functions 2.x a novější
               displayName: Azure Cosmos DB
               items:
                 - name: Přehled
@@ -507,7 +507,7 @@
     - name: Cenová kalkulačka
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Informace o kvótách
-      href: 'functions-scale.md#service-limits'
+      href: functions-scale.md#service-limits
     - name: Regionální dostupnost
       href: 'https://azure.microsoft.com/regions/services/'
     - name: Videa

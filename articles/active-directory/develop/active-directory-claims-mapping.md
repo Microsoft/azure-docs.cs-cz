@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 91a70395bc359f0c5e199f91a739a7cef9205605
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: d9c46368b42cac1d06f7d78d5e0d03ad2de0bada
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84673271"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85478395"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Postupy: přizpůsobení deklarací, které byly vygenerovány v tokenech pro konkrétní aplikaci v tenantovi (Preview)
 
@@ -321,7 +321,7 @@ Element ID určuje, která vlastnost ve zdroji poskytuje hodnotu pro deklaraci i
 | Uživatel | othermail | Jiná pošta |
 | Uživatel | country | Země/oblast |
 | Uživatel | city | Město |
-| Uživatel | state | State |
+| Uživatel | state | Stav |
 | Uživatel | jobtitle | Název pozice |
 | Uživatel | zaměstnance | Identifikační číslo zaměstnance |
 | Uživatel | facsimiletelephonenumber | Telefonní číslo faxu |
@@ -411,7 +411,7 @@ Na základě zvolené metody se očekává sada vstupů a výstupů. Definujte *
 
 | TransformationMethod | Omezení |
 | ----- | ----- |
-| ExtractMailPrefix | Žádné |
+| ExtractMailPrefix | Žádná |
 | Spojit | Připojená přípona musí být ověřená doména tenanta prostředků. |
 
 ### <a name="custom-signing-key"></a>Vlastní podpisový klíč

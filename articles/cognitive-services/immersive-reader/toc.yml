@@ -29,9 +29,15 @@
       href: how-to-customize-launch-button.md
     - name: Uložení ověřovacího tokenu do mezipaměti
       href: how-to-cache-token.md
+    - name: Konfigurace čtení nahlas
+      href: how-to-configure-read-aloud.md
+    - name: Konfigurace překladu
+      href: how-to-configure-translation.md
+    - name: Ukládání předvoleb uživatelů
+      href: how-to-store-user-preferences.md
 - name: Referenční informace
   items:
-    - name: Referenční informace k sadě SDK
+    - name: JavaScript SDK
       href: reference.md
 - name: Zdroje a prostředky
   items:

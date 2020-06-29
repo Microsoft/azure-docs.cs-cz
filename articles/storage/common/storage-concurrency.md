@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 45eb227d5e2608f4fbe6a75f3d95e46dbc3bdee4
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 099711bf09fc29a1168ca8ce73ea6ae93f810a08
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655928"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85504283"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Správa souběžnosti v Microsoft Azure Storage
 
@@ -90,13 +90,13 @@ Následující tabulka shrnuje operace kontejneru, které přijímají podmíně
 
 | Operace | Vrátí hodnotu ETag kontejneru. | Akceptuje podmíněná záhlaví |
 |:--- |:--- |:--- |
-| Vytvoření kontejneru |Ano |Ne |
-| Získat vlastnosti kontejneru |Ano |Ne |
-| Získat metadata kontejneru |Ano |Ne |
+| Vytvoření kontejneru |Yes |No |
+| Získat vlastnosti kontejneru |Yes |No |
+| Získat metadata kontejneru |Yes |No |
 | Nastavení metadat kontejneru |Ano |Ano |
-| Získat seznam ACL kontejneru |Ano |Ne |
-| Nastavení seznamu ACL kontejneru |Ano |Ano (*) |
-| Odstranění kontejneru |Ne |Ano |
+| Získat seznam ACL kontejneru |Yes |No |
+| Nastavení seznamu ACL kontejneru |Yes |Ano (*) |
+| Odstranění kontejneru |No |Yes |
 | Kontejner zapůjčení |Ano |Ano |
 | Výpis objektů BLOB |Ne |Ne |
 
@@ -114,12 +114,12 @@ Následující tabulka shrnuje operace objektů blob, které přijímají podmí
 | Nastavení metadat objektu BLOB |Ano |Ano |
 | Objekt BLOB zapůjčení (*) |Ano |Ano |
 | Pořízení snímku objektu blob |Ano |Ano |
-| Zkopírování objektu blob |Ano |Ano (pro zdrojový a cílový objekt BLOB) |
+| Zkopírování objektu blob |Yes |Ano (pro zdrojový a cílový objekt BLOB) |
 | Přerušit kopii objektu BLOB |Ne |Ne |
-| Odstranění objektu blob |Ne |Ano |
+| Odstranění objektu blob |No |Yes |
 | Blok vložení |Ne |Ne |
 | Seznam blokovaných umístění |Ano |Ano |
-| Získat seznam blokovaných webů |Ano |Ne |
+| Získat seznam blokovaných webů |Yes |No |
 | Vložit stránku |Ano |Ano |
 | Získat rozsahy stránek |Ano |Ano |
 
@@ -244,13 +244,13 @@ Následující tabulka shrnuje, jak operace entity tabulky používají hodnoty 
 
 | Operace | Vrátí hodnotu ETag. | Vyžaduje hlavičku požadavku If-Match. |
 |:--- |:--- |:--- |
-| Entity dotazu |Ano |Ne |
-| Vložit entitu |Ano |Ne |
+| Entity dotazu |Yes |Ne |
+| Vložit entitu |Yes |Ne |
 | Aktualizovat entitu |Ano |Ano |
 | Sloučit entitu |Ano |Ano |
-| Odstranit entitu |Ne |Ano |
-| Vložit nebo nahradit entitu |Ano |Ne |
-| Vložit nebo sloučit entitu |Ano |Ne |
+| Odstranit entitu |No |Yes |
+| Vložit nebo nahradit entitu |Yes |Ne |
+| Vložit nebo sloučit entitu |Yes |Ne |
 
 Všimněte si, že operace **vložení nebo nahrazení entit** a **vložení nebo sloučení entit** *neprovede žádné* kontroly souběžnosti, protože neodesílají hodnotu ETag do služby Table Service.  
 

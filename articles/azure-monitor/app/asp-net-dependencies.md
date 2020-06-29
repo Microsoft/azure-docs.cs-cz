@@ -2,13 +2,13 @@
 title: Sledování závislostí v Azure Application Insights | Microsoft Docs
 description: Monitorování volání závislostí z vaší místní nebo Microsoft Azure webové aplikace s využitím Application Insights.
 ms.topic: conceptual
-ms.date: 03/26/2020
-ms.openlocfilehash: 759e465a21b421c22a62245536827546acc2d79e
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.date: 06/26/2020
+ms.openlocfilehash: 17fa2120df45b5cb940f6c1b6887718023a3926f
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84204748"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445215"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Sledování závislostí v Azure Application Insights 
 
@@ -80,7 +80,7 @@ Například Pokud sestavíte kód se sestavením, které jste nenapsali sami, mo
 
 Alternativně `TelemetryClient` poskytuje metody rozšíření `StartOperation` , `StopOperation` které lze použít k ručnímu sledování závislostí, jak je znázorněno [zde](custom-operations-tracking.md#outgoing-dependencies-tracking) .
 
-Pokud chcete přepnout na standardní modul sledování závislostí, odeberte odkaz na DependencyTrackingTelemetryModule v [souboru ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) pro aplikace ASP.NET. V případě aplikací ASP.NET Core postupujte podle [pokynů.](asp-net-core.md#configuring-or-removing-default-telemetrymodules)
+Pokud chcete přepnout na standardní modul sledování závislostí, odeberte odkaz na DependencyTrackingTelemetryModule v [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) pro aplikace ASP.NET. V případě aplikací ASP.NET Core postupujte podle [pokynů.](asp-net-core.md#configuring-or-removing-default-telemetrymodules)
 
 ## <a name="tracking-ajax-calls-from-web-pages"></a>Sledování volání AJAX z webových stránek
 
@@ -95,14 +95,22 @@ U ASP.NET Corech aplikací se teď vyžaduje, aby se ke kolekci textů SQL mohla
 services.ConfigureTelemetryModule<DependencyTrackingTelemetryModule>((module, o) => { module. EnableSqlCommandTextInstrumentation = true; });
 ```
 
-V případě aplikací ASP.NET je celý dotaz SQL shromážděn pomocí instrumentace bajtového kódu, která vyžaduje modul instrumentace nebo použití balíčku NuGet [Microsoft. data. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) namísto knihovny System. data. SqlClient. Další kroky specifické pro platformu, jak je popsáno níže, jsou povinné.
+V případě aplikací ASP.NET je úplný text dotazu SQL shromážděn pomocí instrumentace kódu, která vyžaduje použití modulu instrumentace nebo použití balíčku NuGet [Microsoft. data.](https://www.nuget.org/packages/Microsoft.Data.SqlClient) SqlClient namísto knihovny System. data. SqlClient. Kroky specifické pro platformu pro povolení úplné kolekce dotazů SQL jsou popsané níže:
 
 | Platforma | Krok (y) potřebný k získání úplného dotazu SQL |
 | --- | --- |
 | Webová aplikace Azure |V ovládacím panelu webové aplikace otevřete okno [Application Insights](../../azure-monitor/app/azure-web-apps.md) a povolte příkazy SQL pod položkou .NET. |
 | Server IIS (virtuální počítač Azure, on-Prem atd.) | Pomocí balíčku NuGet [Microsoft. data. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) nebo pomocí modulu monitorování stavu PowerShellu [nainstalujte modul instrumentace](../../azure-monitor/app/status-monitor-v2-api-reference.md) a restartujte službu IIS. |
 | Cloudová služba Azure | Přidat [úlohu po spuštění pro instalaci StatusMonitor](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional) <br> Vaše aplikace by se měla připojit k ApplicationInsights SDK v době sestavení instalací balíčků NuGet pro [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) nebo [aplikace ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) . |
-| IIS Express | Použití balíčku NuGet [Microsoft. data. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient)
+| IIS Express | Použijte balíček NuGet [Microsoft. data. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) .
+
+Kromě výše uvedených kroků specifických pro platformu je **také nutné explicitně vyjádřit výslovný souhlas s povolením shromažďování příkazů SQL** úpravou souboru applicationInsights.config následujícím způsobem:
+
+```xml
+<Add Type="Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule, Microsoft.AI.DependencyCollector">
+<EnableSqlCommandTextInstrumentation>true</EnableSqlCommandTextInstrumentation>
+</Add>
+```
 
 Ve výše uvedených případech je správným způsobem, jak ověřit, že je modul instrumentace správně nainstalovaný, ověření, že je shromážděná verze sady SDK `DependencyTelemetry` "rddp". ' rdddsd ' nebo ' rddf ' označuje závislosti, které jsou shromažďovány prostřednictvím zpětného volání DiagnosticSource nebo EventSource, takže plný dotaz SQL nebude zachycen.
 

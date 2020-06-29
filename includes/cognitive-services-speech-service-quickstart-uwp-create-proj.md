@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 5ab0b9abd32ef2e5eb7ea02d6118e387ef753348
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: a24c0a3129a851eb94c43158424f786b1df5a532
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609275"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85414350"
 ---
 Chcete-li vytvořit projekt sady Visual Studio pro Univerzální platforma Windows (UWP), je nutné nastavit vývojové možnosti sady Visual Studio, vytvořit projekt, vybrat cílovou architekturu, nastavit záznam zvuku a nainstalovat sadu Speech SDK.
 
@@ -70,7 +70,7 @@ Teď vyberte cílovou architekturu platformy. Na panelu nástrojů sady Visual S
 
 ### <a name="set-up-audio-capture"></a>Nastavení záznamu zvuku
 
-Pak umožněte zachytávání zvukového vstupu v projektu:
+Umožněte zachytávání zvukového vstupu v projektu:
 
 1. V **Průzkumník řešení**dvakrát klikněte na **Package. appxmanifest** a otevřete manifest aplikace balíčku.
 

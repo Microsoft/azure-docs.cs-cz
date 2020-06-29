@@ -8,17 +8,17 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 144fad249011d547ac6a8cf2d404cb3f8fe74f96
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aedf5d710b82185cb634fcd92e6981a2c358ad52
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80884252"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85477885"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Postupy: Přidání rolí aplikace do aplikace a jejich přijetí v tokenu
 
@@ -43,18 +43,18 @@ Tyto aplikační role jsou definovány v [Azure Portal](https://portal.azure.com
 1. Upravte manifest aplikace tak, že vyhledáte `appRoles` nastavení a přidáte všechny vaše aplikační role.
 
      > [!NOTE]
-     > Každá definice role aplikace v tomto manifestu musí mít v kontextu manifestu pro danou `id` vlastnost jiný platný identifikátor GUID.
+     > Každá definice role aplikace v tomto manifestu musí mít v kontextu manifestu pro danou vlastnost jiný platný identifikátor GUID `id` .
      >
-     > `value` Vlastnost každé definice role aplikace by měla přesně odpovídat řetězcům, které jsou používány v kódu v aplikaci. `value` Vlastnost nemůže obsahovat mezery. Pokud k tomu dojde, při ukládání manifestu dojde k chybě.
+     > `value`Vlastnost každé definice role aplikace by měla přesně odpovídat řetězcům, které jsou používány v kódu v aplikaci. `value`Vlastnost nemůže obsahovat mezery. Pokud k tomu dojde, při ukládání manifestu dojde k chybě.
 
 1. Uložte manifest.
 
 ### <a name="examples"></a>Příklady
 
-Následující příklad ukazuje `appRoles` , který lze přiřadit k `users`.
+Následující příklad ukazuje `appRoles` , který lze přiřadit k `users` .
 
 > [!NOTE]
->`id` Musí se jednat o jedinečný identifikátor GUID.
+>`id`Musí se jednat o jedinečný identifikátor GUID.
 
 ```Json
 "appId": "8763f1c4-f988-489c-a51e-158e9ef97d6a",
@@ -74,9 +74,9 @@ Následující příklad ukazuje `appRoles` , který lze přiřadit k `users`.
 ```
 
 > [!NOTE]
->`displayName` Nesmí obsahovat mezery.
+>`displayName`Nesmí obsahovat mezery.
 
-Můžete definovat aplikační role pro cílení `users`, `applications`nebo obojí. Pokud je k `applications`dispozici pro, role aplikace se zobrazí jako oprávnění aplikace v okně **požadovaná oprávnění** . Následující příklad ukazuje aplikační roli `Application`, která je zacílená směrem k.
+Můžete definovat aplikační role pro cílení `users` , `applications` nebo obojí. Pokud je k dispozici pro `applications` , role aplikace se zobrazí jako oprávnění aplikace v okně **požadovaná oprávnění** . Následující příklad ukazuje aplikační roli, která je zacílená směrem k `Application` .
 
 ```Json
 "appId": "8763f1c4-f988-489c-a51e-158e9ef97d6a",

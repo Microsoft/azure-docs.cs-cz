@@ -6,12 +6,12 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: c4b80e62d3800392b847a411dfc66c3278e72bba
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 597b12a584e7b4c17ec21635e18368f897ad168a
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77661860"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85443872"
 ---
 # <a name="quickstart-monitor-an-azure-resource-with-azure-monitor"></a>Rychlý Start: monitorování prostředku Azure pomocí Azure Monitor
 [Azure monitor](../overview.md) spustí shromažďování dat z prostředků Azure okamžikem, kdy se vytváří. V tomto rychlém startu najdete Stručný návod k datům, která se automaticky shromažďují pro určitý prostředek, a o tom, jak je zobrazit v Azure Portal pro konkrétní prostředek. Později můžete přidat konfiguraci pro shromažďování dalších dat a můžete přejít do nabídky Azure Monitor a použít stejné nástroje pro přístup k datům shromážděným pro všechny prostředky v rámci vašeho předplatného.
@@ -67,7 +67,7 @@ Metriky jsou číselné hodnoty, které popisují určitý aspekt prostředku v 
 
 
 ## <a name="next-steps"></a>Další kroky
-V tomto rychlém startu jste si prohlíželi protokol aktivit a metriky pro prostředek Azure, které se automaticky shromažďují pomocí Azure Monitor. Protokoly prostředků poskytují přehled o podrobnostech o provozu prostředku, ale musí být nakonfigurované, aby se daly shromažďovat. Pokračujte v kurzu shromažďování protokolů o prostředcích do Log Analytics pracovního prostoru, kde je lze analyzovat pomocí dotazů protokolu.
+V tomto rychlém startu jste si prohlíželi protokol aktivit a metriky pro prostředek Azure, které se automaticky shromažďují pomocí Azure Monitor. Pokračujte dalším rychlým startem, který vám ukáže, jak shromažďovat protokol aktivit do Log Analytics pracovního prostoru, kde je lze analyzovat pomocí [dotazů protokolu](../log-query/log-query-overview.md).
 
 > [!div class="nextstepaction"]
-> [Shromažďování a analýza protokolů prostředků pomocí Azure Monitor](tutorial-resource-logs.md)
+> [Odeslání protokolu aktivit Azure do pracovního prostoru Log Analytics](quick-monitor-azure-resource.md)

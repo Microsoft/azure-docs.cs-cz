@@ -3,15 +3,15 @@ title: Alternativní řešení avere vFXT, které není vlastníkem – Azure
 description: Alternativní řešení umožňující uživatelům bez oprávnění vlastníka předplatného nasazovat avere vFXT pro Azure
 author: ekpgh
 ms.service: avere-vfxt
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/19/2019
 ms.author: rohogue
-ms.openlocfilehash: 1b411fe465a67f8ea5421ac0dc93348b4e92e8ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0d9b1060ee35af6cbc2e1b95b0f7813072c52d2e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76153271"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85505371"
 ---
 # <a name="authorize-non-owners-to-deploy-avere-vfxt"></a>Oprávnění k nasazení Avere vFXT pro jiné uživatele než vlastníky
 
@@ -26,7 +26,7 @@ Vlastník předplatného musí také [přijmout podmínky použití](avere-vfxt-
 > [!IMPORTANT]
 > Všechny tyto kroky musí provést uživatel s oprávněním vlastníka v předplatném, které se bude používat pro cluster.
 
-1. Zkopírujte tyto řádky a uložte je do souboru (například `averecreatecluster.json`). V `AssignableScopes` příkazu použijte své ID předplatného.
+1. Zkopírujte tyto řádky a uložte je do souboru (například `averecreatecluster.json` ). V příkazu použijte své ID předplatného `AssignableScopes` .
 
    ```json
    {

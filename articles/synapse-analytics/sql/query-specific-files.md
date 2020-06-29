@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 9c573e6ea3f80369f9b5cced66302caf12d727a4
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: bf62d57aab07f5b1f2839b9e6e45c42e6b1b2c51
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85206356"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85478412"
 ---
 # <a name="using-file-metadata-in-queries"></a>Použití metadat souboru v dotazech
 
@@ -22,7 +22,7 @@ Dotazovací služba SQL na vyžádání může adresovat více souborů a slože
 
 V některých případech možná budete muset zjistit, který zdroj souborů nebo složek je v sadě výsledků v souvislosti s konkrétním řádkem.
 
-Pomocí funkce a můžete `filepath` `filename` vracet názvy souborů nebo cestu v sadě výsledků dotazu. Můžete je také použít k filtrování dat na základě názvu souboru nebo cesty ke složce. Tyto funkce jsou popsány v oddílu syntaxe [filename](develop-storage-files-overview.md#filename-function) a funkce [FilePath](develop-storage-files-overview.md#filepath-function). Níže najdete krátké popisy v rámci ukázek.
+Pomocí funkce a můžete `filepath` `filename` vracet názvy souborů nebo cestu v sadě výsledků dotazu. Můžete je také použít k filtrování dat na základě názvu souboru nebo cesty ke složce. Tyto funkce jsou popsány v oddílu syntaxe [filename](query-data-storage.md#filename-function) a funkce [FilePath](query-data-storage.md#filepath-function). Níže najdete krátké popisy v rámci ukázek.
 
 ## <a name="prerequisites"></a>Požadavky
 

@@ -5,15 +5,15 @@ services: storage
 author: alkohli
 ms.service: storage
 ms.subservice: blobs
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: fb49802adf6242f445b700d06622d7e6aa336b4d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9ffa35e158d34a1fc6945ee2730dcf136d13edb5
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "67357040"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85504333"
 ---
 # <a name="solutions-for-periodic-data-transfer"></a>Řešení pro pravidelné přenosy dat
  
@@ -55,12 +55,12 @@ Následující tabulka shrnuje rozdíly v klíčových funkcích.
 | Funkce                                       | Data Box Gateway | Data Box Edge   | Azure Data Factory        |
 |----------------------------------|-----------------------------------------|--------------------------|---------------------------|
 | Formulářový faktor                                   | Virtuální zařízení             | Fyzické zařízení          | Služba v Azure Portal, místní Agent                                                            |
-| Hardware                                      | Váš hypervisor            | Dodává se společností Microsoft    | Není k dispozici                                                            |
+| Hardware                                      | Váš hypervisor            | Dodává se společností Microsoft    | NA                                                            |
 | Počáteční úsilí při nastavení                          | Nízká (<30 minut)            | Střední (~ pár hodin) | Velký (počet dní: ~)                                                 |
 | Formát dat                                   | Objekty blob Azure, soubory Azure   | Objekty blob Azure, soubory Azure | [Podporuje 70 + datových konektorů pro úložiště a formáty dat](https://docs.microsoft.com/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats)|
-| Předběžné zpracování dat                           | Ne                         | Ano, přes hranice výpočetní technologie    | Ano                                                           |
-| Místní mezipaměť<br>(ukládat místní data)    | Ano                        | Ano                      | Ne                                                            |
-| Přenos z jiných cloudů                    | Ne                         | Ne                       | Ano                                                           |
+| Předběžné zpracování dat                           | No                         | Ano, přes hranice výpočetní technologie    | Yes                                                           |
+| Místní mezipaměť<br>(ukládat místní data)    | Ano                        | Ano                      | No                                                            |
+| Přenos z jiných cloudů                    | Ne                         | No                       | Yes                                                           |
 | Ceny                                       | [Ceny](https://azure.microsoft.com/pricing/details/storage/databox/gateway/)                    | [Ceny](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                  | [Ceny](https://azure.microsoft.com/pricing/details/data-factory/)                                                       |
 
 ## <a name="next-steps"></a>Další kroky

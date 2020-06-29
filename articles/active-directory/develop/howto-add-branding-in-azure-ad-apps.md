@@ -7,18 +7,18 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: arielgo
 ms.custom: aaddev, signin_art
-ms.openlocfilehash: c5b63fb0b66c78b33fb073eca919ed55bd05107c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c11bbe4aab064c8c1f32cf273cd3e0b6c2a3ae8f
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80884422"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85478191"
 ---
 # <a name="branding-guidelines-for-applications"></a>Pokyny pro branding aplikací
 
@@ -63,11 +63,11 @@ Vaše aplikace může nabízet jiné prostředí pro registraci i přihlášení
 
 Váš odkaz na získání aplikace musí uživatele přesměrovat na stránku Azure AD pro udělení přístupu (autorizaci), abyste správcům organizací umožnili autorizovat přístup vaší aplikace k datům jejich organizací, která hostuje Microsoft. Postup požádání o přístup je podrobně popsaný v článku [Integrace aplikací se službou Azure Active Directory](quickstart-v1-integrate-apps-with-azure-ad.md).
 
-Jakmile správci souhlasí s vaší aplikací, můžou se rozhodnout přidat je do prostředí spouštěče aplikace pro uživatele Office 365 (přístupné z dlaždice a z [https://portal.office.com/myapps](https://portal.office.com/myapps)). Pokud chcete tuto možnost inzerovat, můžete použít termíny jako „Přidejte si tuto aplikaci do vaší organizace“ a zobrazit tlačítko jako v následujícím příkladu:
+Jakmile správci souhlasí s vaší aplikací, můžou se rozhodnout přidat je do prostředí spouštěče aplikace pro uživatele Office 365 (přístupné z dlaždice a z [https://portal.office.com/myapps](https://portal.office.com/myapps) ). Pokud chcete tuto možnost inzerovat, můžete použít termíny jako „Přidejte si tuto aplikaci do vaší organizace“ a zobrazit tlačítko jako v následujícím příkladu:
 
 ![Tlačítko, které zobrazuje text loga Microsoftu a "Přidat k mojí organizaci"](./media/howto-add-branding-in-azure-ad-apps/add-to-my-org.png)
 
-Doporučujeme však nespoléhat na tlačítka a napsat vysvětlující text. Příklad:
+Doporučujeme však nespoléhat na tlačítka a napsat vysvětlující text. Například:
 
 > *Pokud už používáte Office 365 nebo jiné obchodní služby od Microsoftu, můžete udělit <your_app_name> přístup k datům vaší organizace. Uživatelé tak budou mít přístup k <your_app_name> se stávajícími pracovními účty.*
 

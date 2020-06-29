@@ -1,31 +1,31 @@
 ---
-title: Vyhnout se opětovnému načtení stránky (MSAL. js) | Azure
+title: Vyhnout se opětovnému načtení stránky (MSAL.js) | Azure
 titleSuffix: Microsoft identity platform
-description: Přečtěte si, jak se vyhnout opětovnému načítání stránek při opakovaném získání a obnovování tokenů pomocí knihovny Microsoft Authentication Library pro JavaScript (MSAL. js).
+description: Přečtěte si, jak se vyhnout opětovnému načítání stránek při opakovaném získání a obnovování tokenů pomocí knihovny Microsoft Authentication Library pro JavaScript (MSAL.js).
 services: active-directory
 author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 05/29/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 63944a5a9af34c2d4cf98eeb870a730df49654e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5eb30f7dcf4b459b0af0bd8de965971fbbe44863
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77084951"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85477647"
 ---
-# <a name="avoid-page-reloads-when-acquiring-and-renewing-tokens-silently-using-msaljs"></a>Vyhněte se opětovnému načítání stránek při získávání a obnovování tokenů v tichém režimu pomocí MSAL. js.
-Knihovna Microsoft Authentication Library pro JavaScript (MSAL. js) `iframe` používá skryté prvky pro získání a obnovení tokenů v tichém režimu na pozadí. Azure AD vrátí token zpátky do registrované redirect_uri zadaného v žádosti o token (ve výchozím nastavení se jedná o kořenovou stránku aplikace). Vzhledem k tomu, že odpověď je 302, má za následek, že kód `redirect_uri` HTML odpovídá načtení v `iframe`. Obvykle `redirect_uri` je kořenová stránka aplikace a to způsobí, že se znovu načte.
+# <a name="avoid-page-reloads-when-acquiring-and-renewing-tokens-silently-using-msaljs"></a>Vyhněte se opětovnému načítání stránek při získávání a obnovování tokenů v tichém režimu pomocí MSAL.js
+Knihovna Microsoft Authentication Library pro JavaScript (MSAL.js) používá `iframe` ke tiché získávání a obnovování tokenů na pozadí skryté prvky. Azure AD vrátí token zpátky do registrované redirect_uri zadaného v žádosti o token (ve výchozím nastavení se jedná o kořenovou stránku aplikace). Vzhledem k tomu, že odpověď je 302, má za následek, že kód HTML odpovídá načtení `redirect_uri` v `iframe` . Obvykle `redirect_uri` je kořenová stránka aplikace a to způsobí, že se znovu načte.
 
 V ostatních případech se při přechodu na kořenovou stránku aplikace vyžaduje ověření, může to vést k vnořeným `iframe` prvkům nebo `X-Frame-Options: deny` chybě.
 
-Vzhledem k tomu, že MSAL. js nemůže přeskočit 302, který vystavila služba Azure AD a který je vyžadován ke zpracování `redirect_uri` vráceného tokenu, `iframe`nemůže zabránit v načtení z v.
+Vzhledem k tomu, že MSAL.js nemůže zrušit 302 vydaný službou Azure AD a je vyžadován ke zpracování vráceného tokenu, nemůže zabránit v `redirect_uri` načtení z `iframe` .
 
 Chcete-li se vyhnout opětovnému opětovnému načtení celé aplikace nebo k jiným chybám způsobeným tímto způsobem, postupujte podle těchto alternativních řešení.
 
@@ -35,9 +35,9 @@ Nastavte `redirect_uri` vlastnost na konfiguraci na jednoduchou stránku, která
 
 ## <a name="initialization-in-your-main-app-file"></a>Inicializace v hlavním souboru aplikace
 
-Pokud je vaše aplikace strukturována tak, že existuje jeden centrální soubor JavaScriptu, který definuje inicializaci, směrování a další věci aplikace, můžete podmíněně načíst moduly aplikací na základě toho, jestli se aplikace načítá `iframe` nebo ne. Příklad:
+Pokud je vaše aplikace strukturována tak, že existuje jeden centrální soubor JavaScriptu, který definuje inicializaci, směrování a další věci aplikace, můžete podmíněně načíst moduly aplikací na základě toho, jestli se aplikace načítá `iframe` nebo ne. Například:
 
-V AngularJS: App. js
+V AngularJS: app.js
 
 ```javascript
 // Check that the window is an iframe and not popup
@@ -146,4 +146,4 @@ export class MsalComponent {
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Přečtěte si další informace o [vytváření jednostránkové aplikace (Spa)](scenario-spa-overview.md) pomocí MSAL. js.
+Přečtěte si další informace o [vytváření jednostránkové aplikace (Spa)](scenario-spa-overview.md) pomocí MSAL.js.

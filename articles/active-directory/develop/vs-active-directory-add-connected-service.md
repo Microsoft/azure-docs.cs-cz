@@ -7,15 +7,15 @@ ms.prod: visual-studio-windows
 ms.technology: vs-azure
 ms.custom: aaddev, vs-azure
 ms.workload: azure-vs
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: ghogen
-ms.openlocfilehash: d5b6452684757aead684356fd9bb032b90c58c4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b77241b1413fea09e5a16e8bd5cbcda8db5b2327
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535821"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85477120"
 ---
 # <a name="add-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Přidání Azure Active Directory pomocí připojených služeb v aplikaci Visual Studio
 
@@ -44,7 +44,7 @@ Služba Active Directory Connected v současné době nepodporuje ASP.NET Core a
 
     ![Úvodní stránka](./media/vs-azure-active-directory/configure-azure-ad-wizard-1.png)
 
-1. Na stránce **jednotného přihlašování** vyberte v rozevíracím seznamu **doména** doménu. Seznam obsahuje všechny domény, které jsou přístupné z účtů uvedených v dialogovém okně nastavení účtu v aplikaci Visual Studio (**Nastavení účtu souborového >...**). Jako alternativu můžete zadat název domény, pokud nenajdete tu, kterou hledáte, například `mydomain.onmicrosoft.com`. Můžete zvolit možnost vytvoření aplikace Azure Active Directory nebo použít nastavení z existující aplikace Azure Active Directory. Po dokončení vyberte **Další** .
+1. Na stránce **jednotného přihlašování** vyberte v rozevíracím seznamu **doména** doménu. Seznam obsahuje všechny domény, které jsou přístupné z účtů uvedených v dialogovém okně nastavení účtu v aplikaci Visual Studio (**Nastavení účtu souborového >...**). Jako alternativu můžete zadat název domény, pokud nenajdete tu, kterou hledáte, například `mydomain.onmicrosoft.com` . Můžete zvolit možnost vytvoření aplikace Azure Active Directory nebo použít nastavení z existující aplikace Azure Active Directory. Po dokončení vyberte **Další** .
 
     ![Stránka jednotného přihlašování](./media/vs-azure-active-directory/configure-azure-ad-wizard-2.png)
 

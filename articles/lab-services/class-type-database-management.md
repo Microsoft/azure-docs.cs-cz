@@ -1,24 +1,16 @@
 ---
 title: Nastavení testovacího prostředí pro učení správy databází pro relační databáze | Microsoft Docs
 description: Naučte se, jak nastavit testovací prostředí pro učení správy relačních databází.
-services: lab-services
-documentationcenter: na
 author: emaher
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 11/19/2019
+ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: 4c375487b30595251753021033c98cf0ca1e8dd7
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 49f1528f1bb8b422374050512a9ae642ad129fac
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84899099"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85444008"
 ---
 # <a name="set-up-a-lab-to-teach-database-management-for-relational-databases"></a>Nastavení testovacího prostředí pro správu databází pro relační databáze
 

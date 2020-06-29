@@ -11,24 +11,28 @@ ms.topic: quickstart
 ms.custom: mvc,subject-armqs
 ms.date: 02/27/2020
 ms.author: jgao
-ms.openlocfilehash: 273a467f5db2201015352aaf4a232f5a42e29673
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5206c73ac225f31ee8c40105e292726a9f951a79
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81618079"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85478923"
 ---
-# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-resource-manager-template"></a>Rychlý Start: nastavení a načtení tajného klíče z Azure Key Vault pomocí šablony Správce prostředků
+# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-an-arm-template"></a>Rychlý Start: nastavení a načtení tajného klíče z Azure Key Vault pomocí šablony ARM
 
-[Azure Key Vault](../general/overview.md) je cloudová služba, která poskytuje zabezpečené úložiště tajných kódů, jako jsou klíče, hesla, certifikáty a další tajné kódy. Tento rychlý Start se zaměřuje na proces nasazení šablony Správce prostředků pro vytvoření trezoru klíčů a tajného klíče.
+[Azure Key Vault](../general/overview.md) je cloudová služba, která poskytuje zabezpečené úložiště tajných kódů, jako jsou klíče, hesla, certifikáty a další tajné kódy. Tento rychlý Start se zaměřuje na proces nasazení šablony Azure Resource Manager (šablona ARM) pro vytvoření trezoru klíčů a tajného klíče.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud vaše prostředí splňuje požadavky a Vy jste obeznámeni s používáním šablon ARM, vyberte tlačítko **nasadit do Azure** . Šablona se otevře v Azure Portal.
+
+[![Nasazení do Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-key-vault-create%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto článku potřebujete:
+Postup dokončení tohoto článku:
+
+* Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 * Šablona potřebuje ke konfiguraci oprávnění vaše ID objektu uživatele Azure AD. Následující procedura získá ID objektu (GUID).
 
@@ -53,22 +57,20 @@ K dokončení tohoto článku potřebujete:
 
     2. Zapište ID objektu. Budete ho potřebovat v další části tohoto rychlého startu.
 
-## <a name="create-a-vault-and-a-secret"></a>Vytvoření trezoru a tajného klíče
-
-### <a name="review-the-template"></a>Kontrola šablony
+## <a name="review-the-template"></a>Kontrola šablony
 
 Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-key-vault-create/).
 
-:::code language="json" source="~/quickstart-templates/101-key-vault-create/azuredeploy.json" range="1-150" highlight="107-148":::
+:::code language="json" source="~/quickstart-templates/101-key-vault-create/azuredeploy.json" range="1-150" highlight="106-148":::
 
 V šabloně jsou definované dva prostředky Azure:
 
 * Trezory [**a trezory Microsoft.**](/azure/templates/microsoft.keyvault/vaults)webkey: vytvoření trezoru klíčů Azure.
 * [**Trezor a tajné kódy Microsoft.**](/azure/templates/microsoft.keyvault/vaults/secrets)webkey: Vytvořte tajný klíč trezoru klíčů.
 
-Další ukázky šablon Azure Key Vault najdete [tady](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Keyvault).
+Další ukázky šablon Azure Key Vault najdete v [šablonách rychlý Start pro Azure](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Keyvault&pageNumber=1&sort=Popular).
 
-### <a name="deploy-the-template"></a>Nasazení šablony
+## <a name="deploy-the-template"></a>Nasazení šablony
 
 1. Vyberte následující obrázek a přihlaste se k Azure a otevřete šablonu. Šablona vytvoří Trezor klíčů a tajný klíč.
 
@@ -76,24 +78,24 @@ Další ukázky šablon Azure Key Vault najdete [tady](https://azure.microsoft.c
 
 2. Vyberte nebo zadejte následující hodnoty.
 
-    ![Správce prostředků šablona, integrace Key Vault, nasazení portálu](../media/quick-create-template/create-key-vault-using-template-portal.png)
+    ![Šablona ARM, integrace Key Vault, portál nasazení](../media/quick-create-template/create-key-vault-using-template-portal.png)
 
     Pokud není zadaný, použijte k vytvoření trezoru klíčů a tajného klíče výchozí hodnotu.
 
     * **Předplatné:** Vyberte předplatné Azure.
     * **Skupina prostředků**: vyberte **vytvořit novou**, zadejte jedinečný název skupiny prostředků a pak klikněte na **OK**.
-    * **Umístění:** Vyberte prosím umístění.  Například **střed USA**.
+    * **Umístění:** Vyberte prosím umístění. Například **USA – střed**.
     * **Key Vault název**: zadejte název trezoru klíčů, který musí být globálně jedinečný v rámci oboru názvů. Vault.Azure.NET. Při ověřování nasazení budete potřebovat název v další části.
-    * **ID tenanta**: funkce šablony automaticky NAČTE vaše ID tenanta.  Neměňte výchozí hodnotu.
+    * **ID tenanta**: funkce šablony automaticky NAČTE vaše ID tenanta. Neměňte výchozí hodnotu.
     * **ID uživatele AD**: Zadejte ID vašeho uživatelského objektu Azure AD, které jste získali z [požadovaných součástí](#prerequisites).
-    * **Název tajného**kódu: zadejte název tajného klíče, který ukládáte do trezoru klíčů.  Například **AdminPassword**.
-    * **Hodnota tajného klíče**: zadejte tajnou hodnotu.  Pokud ukládáte heslo, doporučuje se použít vygenerované heslo, které jste vytvořili v části požadavky.
+    * **Název tajného**kódu: zadejte název tajného klíče, který ukládáte do trezoru klíčů. Například **AdminPassword**.
+    * **Hodnota tajného klíče**: zadejte tajnou hodnotu. Pokud ukládáte heslo, doporučuje se použít vygenerované heslo, které jste vytvořili v části požadavky.
     * **Souhlasím s podmínkami a ujednáními uvedenými nahoře:** Toto políčko zaškrtněte.
 3. Vyberte **Koupit**. Po úspěšném nasazení trezoru klíčů obdržíte oznámení:
 
-    ![Správce prostředků šablona, integrace Key Vault, nasazení oznámení portálu](../media/quick-create-template/resource-manager-template-portal-deployment-notification.png)
+    ![Šablona ARM, integrace Key Vault, oznámení nasazení portálu](../media/quick-create-template/resource-manager-template-portal-deployment-notification.png)
 
-Azure Portal slouží k nasazení šablony. Kromě Azure Portal můžete použít také Azure PowerShell, Azure CLI a REST API. Další informace o dalších metodách nasazení najdete v tématu [Nasazení šablon](../../azure-resource-manager/templates/deploy-powershell.md).
+K nasazení šablony se použije Azure Portal. Kromě Azure Portal můžete použít také Azure PowerShell, Azure CLI a REST API. Další informace o dalších metodách nasazení najdete v tématu [Nasazení šablon](../../azure-resource-manager/templates/deploy-powershell.md).
 
 ## <a name="review-deployed-resources"></a>Kontrola nasazených prostředků
 
@@ -122,13 +124,14 @@ Výstup bude vypadat nějak takto:
 
 # <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
 
-![Správce prostředků šablona, integrace Key Vault, nasazení výstupu ověření portálu](../media/quick-create-template/resource-manager-template-portal-deployment-cli-output.png)
+![Šablona ARM, integrace Key Vault, nasazení výstupu ověření portálu](../media/quick-create-template/resource-manager-template-portal-deployment-cli-output.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
-![Správce prostředků šablona, integrace Key Vault, nasazení výstupu ověření portálu](../media/quick-create-template/resource-manager-template-portal-deployment-powershell-output.png)
+![Šablona ARM, integrace Key Vault, nasazení výstupu ověření portálu](../media/quick-create-template/resource-manager-template-portal-deployment-powershell-output.png)
 
 ---
+
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Další rychlé starty a kurzy týkající se služby Key Vault vycházejí z tohoto rychlého startu. Pokud chcete pokračovat v práci s dalšími rychlými starty a kurzy, možná budete chtít tyto prostředky zachovat.
@@ -155,8 +158,8 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili Trezor klíčů a tajný kód pomocí šablony Azure Resource Manager a ověření nasazení bylo ověřeno. Další informace o Key Vault a Azure Resource Manager najdete dál v článcích níže.
+V tomto rychlém startu jste vytvořili Trezor klíčů a tajný klíč pomocí šablony ARM a nasazování ověřili. Další informace o Key Vault a Azure Resource Manager najdete dál v článcích níže.
 
 - Přečtěte si [přehled Azure Key Vault](../general/overview.md)
-- Další informace o [Azure Resource Manager](../../azure-resource-manager/management/overview.md)
+- Další informace o [Azure Resource Manageru](../../azure-resource-manager/management/overview.md)
 - Kontrola [Azure Key Vault osvědčených postupů](../general/best-practices.md)

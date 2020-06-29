@@ -11,21 +11,20 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54b78526ea1409f22b000aed8b20db90dfc9d143
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 324737611d2d05411012050fcf7140bee48d35b0
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253558"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85505830"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Začínáme s Azure Active Directory Identity Protection a Microsoft Graph
 
 Microsoft Graph je koncový bod rozhraní Microsoft Unified API a jeho Domovská stránka rozhraní API pro [Azure Active Directory Identity Protection](../active-directory-identityprotection.md) . K dispozici jsou čtyři rozhraní API, která zveřejňují informace o rizikových uživatelích a přihlášeních. První rozhraní API, **riskDetection**, umožňuje zadat dotaz na Microsoft Graph seznam uživatelů a jejich přihlašování a související informace o detekci. Druhé rozhraní API, **riskyUsers**, vám umožní dotazovat se na Microsoft Graph informace o ochraně identity uživatelů zjištěné jako rizika. Třetí rozhraní API vám umožní dotazovat **se na**Microsoft Graph pro informace o přihlášeních k Azure AD s konkrétními vlastnostmi, které se týkají stavu rizika, podrobností a úrovně. Čtvrté rozhraní API **identityRiskEvents**umožňuje zadat dotaz na seznam [detekcí rizik](../reports-monitoring/concept-risk-events.md) a přidružených informací v Microsoft Graph. Rozhraní identityRiskEvents API bude zastaralé 10. ledna 2020; Doporučujeme místo toho použít rozhraní **riskDetections** API. Tento článek vám pomůže začít s připojením k Microsoft Graph a dotazování na tato rozhraní API. Podrobné informace o tom, úplnou dokumentaci a přístup k Průzkumníku graphu, najdete na [webu Microsoft Graph](https://graph.microsoft.io/) nebo v konkrétní referenční dokumentaci pro tato rozhraní API:
 
-* [rozhraní API pro riskDetection](/graph/api/resources/riskdetection?view=graph-rest-beta)
-* [rozhraní API pro riskyUsers](/graph/api/resources/riskyuser?view=graph-rest-beta)
-* [Přihlášení k rozhraní API](/graph/api/resources/signin?view=graph-rest-beta)
-* [rozhraní identityRiskEvents API](/graph/api/resources/identityriskevent?view=graph-rest-beta) *bude zastaralé 10. ledna 2020*
+* [rozhraní API pro riskDetection](/graph/api/resources/riskdetection?view=graph-rest-v1.0)
+* [rozhraní API pro riskyUsers](/graph/api/resources/riskyuser?view=graph-rest-v1.0)
+* [Přihlášení k rozhraní API](/graph/api/resources/signin?view=graph-rest-v1.0)
 
 ## <a name="connect-to-microsoft-graph"></a>Připojit k Microsoft graphu
 
@@ -201,7 +200,7 @@ Tato tři rozhraní API poskytují řadu příležitostí k načtení informací
 V případě rizikových zásad přihlašování pomocí Identity Protection můžete podmínky v případě zjištění rizika v reálném čase použít. Ale jaká zjištění se zjistila v režimu offline? Chcete-li pochopit, k jakým detekcím došlo offline, a proto by neaktivovaly zásady rizik přihlašování, můžete zadat dotaz na rozhraní riskDetection API.
 
 ```
-GET https://graph.microsoft.com/beta/riskDetections?$filter=detectionTimingType eq 'offline'
+GET https://graph.microsoft.com/v1.0/identityProtection/riskDetections?$filter=detectionTimingType eq 'offline'
 ```
 
 ### <a name="get-all-of-the-users-who-successfully-passed-an-mfa-challenge-triggered-by-risky-sign-ins-policy-riskyusers-api"></a>Získat všechny uživatele, kteří úspěšně prošli výzvou MFA aktivovanou zásadou pro rizikové přihlášení (riskyUsers API)
@@ -209,16 +208,9 @@ GET https://graph.microsoft.com/beta/riskDetections?$filter=detectionTimingType 
 Aby bylo možné pochopit, jaký dopad má vaše organizace zásady na rizika ochrany identity, můžete zadat dotaz na všechny uživatele, kteří úspěšně prošli výzvou MFA aktivovanými zásadami rizikových přihlášení. Tyto informace vám můžou porozumět tomu, kteří uživatelé Identity Protection možná nepravdivě zjistili riziko a že legitimní uživatelé můžou provádět akce, které AI považuje za rizikové.
 
 ```
-GET https://graph.microsoft.com/beta/riskyUsers?$filter=riskDetail eq 'userPassedMFADrivenByRiskBasedPolicy'
+GET https://graph.microsoft.com/v1.0/identityProtection/riskyUsers?$filter=riskDetail eq 'userPassedMFADrivenByRiskBasedPolicy'
 ```
 
-### <a name="get-all-the-risky-sign-ins-for-a-specific-user-signin-api"></a>Získání všech rizikových přihlášení pro konkrétního uživatele (přihlášení k rozhraní API)
-
-Pokud se domníváte, že došlo k ohrožení uživatele, můžete lépe pochopit stav jejich rizik tím, že načtete všechna jejich riziková přihlášení. 
-
-```
-https://graph.microsoft.com/beta/identityRiskEvents?`$filter=userID eq '<userID>' and riskState eq 'atRisk'
-```
 ## <a name="next-steps"></a>Další kroky
 
 Blahopřejeme, právě jste nastavili své první volání do Microsoft Graph!  
@@ -232,4 +224,4 @@ Související informace najdete v těchto tématech:
 - [Typy detekce rizik zjištěné Azure Active Directory Identity Protection](../reports-monitoring/concept-risk-events.md)
 - [Microsoft Graph](https://developer.microsoft.com/graph/)
 - [Přehled Microsoft Graphu](https://developer.microsoft.com/graph/docs)
-- [Kořenová služba Azure AD Identity Protection](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityprotection_root)
+- [Kořenová služba Azure AD Identity Protection](https://docs.microsoft.com/graph/api/resources/identityprotectionroot?view=graph-rest-1.0)

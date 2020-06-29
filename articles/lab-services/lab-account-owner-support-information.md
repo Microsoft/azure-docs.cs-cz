@@ -1,17 +1,14 @@
 ---
 title: Azure Lab Services – nastavení informací o podpoře (vlastník účtu testovacího prostředí)
 description: Popisuje, jak může vlastník účtu testovacího prostředí nastavit kontaktní informace podpory. Tvůrci testovacích prostředí a uživatelé testovacího prostředí si můžou zobrazit a použít ho k získání užitečného pomocníka.
-author: spelluru
-ms.author: spelluru
-ms.date: 05/15/2020
+ms.date: 06/26/2020
 ms.topic: how-to
-ms.service: lab-services
-ms.openlocfilehash: fca414c6220ddf5a8481ee616d669581d14bff83
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 17456f61352b1e26a33c042b27faa2d3aa44d73a
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84895756"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445079"
 ---
 # <a name="set-up-support-information-lab-account-owner-in-azure-lab-services"></a>Nastavení informací o podpoře (vlastník účtu testovacího prostředí v Azure Lab Services)
 V tomto článku se dozvíte, jak vy (jako vlastník účtu testovacího prostředí) můžete určit informace o podpoře, které mohou tvůrci testovacích prostředí (pedagogů) a uživatelé testovacího prostředí využít k získání pomoci, pokud budou pracovat s technickými problémy s použitím účtu testovacího prostředí nebo testovacího prostředí. 

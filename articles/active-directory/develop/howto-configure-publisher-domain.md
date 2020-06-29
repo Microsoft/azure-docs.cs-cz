@@ -7,18 +7,18 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 04/05/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
-ms.openlocfilehash: 68040c8ee22454c300296493b6c840eabbca98aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 408d8856130947e9be9c6d2714310332d9935cdd
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76697128"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85477987"
 ---
 # <a name="how-to-configure-an-applications-publisher-domain"></a>Postupy: Konfigurace domény vydavatele aplikace
 
@@ -85,7 +85,7 @@ Pokud vaše aplikace není registrovaná v tenantovi, zobrazí se jenom možnost
 
 1. Zástupný symbol *{Your-App-ID-tady}* nahraďte ID aplikace (klienta), které odpovídá vaší aplikaci.
 
-1. Hostovat soubor v umístění: `https://{YOUR-DOMAIN-HERE}.com/.well-known/microsoft-identity-association.json`. Nahraďte zástupný symbol *{a-Domain}* , aby odpovídal ověřené doméně.
+1. Hostovat soubor v umístění: `https://{YOUR-DOMAIN-HERE}.com/.well-known/microsoft-identity-association.json` . Nahraďte zástupný symbol *{a-Domain}* , aby odpovídal ověřené doméně.
 
 1. Klikněte na tlačítko **ověřit a uložit doménu** .
 
@@ -94,7 +94,7 @@ Pokud vaše aplikace není registrovaná v tenantovi, zobrazí se jenom možnost
 - Pokud má váš tenant ověřené domény, vyberte jednu z domén v rozevíracím seznamu **Vybrat ověřenou doménu** .
 
 >[!Note]
-> Očekávala se hlavička Content-Type, která by se `application/json`měla vrátit. Může se zobrazit chyba, jak je uvedeno níže, pokud použijete něco jiného jako`application/json; charset=utf-8` 
+> Očekávala se hlavička Content-Type, která by se měla vrátit `application/json` . Může se zobrazit chyba, jak je uvedeno níže, pokud použijete něco jiného jako`application/json; charset=utf-8` 
 > 
 >``` "Verification of publisher domain failed. Error getting JSON file from https:///.well-known/microsoft-identity-association. The server returned an unexpected content type header value. " ```
 >
