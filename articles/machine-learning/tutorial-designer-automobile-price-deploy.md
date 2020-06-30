@@ -8,14 +8,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 11/04/2019
+ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 41b6fb38798e9aa7264000676d81101db1c83236
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: e10e5050912788732128a8b765716c22fe9e576e
+ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656538"
+ms.lasthandoff: 06/29/2020
+ms.locfileid: "85517444"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>Kurz: nasazení modelu strojového učení pomocí návrháře (Preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -40,7 +40,7 @@ Pokud chcete svůj kanál nasadit, musíte nejdřív převést kanál školení 
 
 1. Nad plátnem kanálu vyberte **vytvořit odvození kanálu**  >  **odvození kanálu v reálném čase**.
 
-    ![Snímek obrazovky ukazující, kde najít tlačítko vytvořit kanál](./media/tutorial-designer-automobile-price-deploy/tutorial2-create-inference-pipeline.png)
+    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/tutorial2-create-inference-pipeline.png"alt-text="Snímek obrazovky ukazující, kde najít tlačítko vytvořit kanál":::
 
     Váš kanál by teď měl vypadat takto: 
 
@@ -72,7 +72,7 @@ V dialogovém okně, které se zobrazí, můžete vybrat z existujících cluste
 1. Na pásu karet navigace vyberte **odvozené clustery**  >  **+ nové**.
 
     ![Snímek obrazovky znázorňující, jak se dostat k novému podoknu clusteru odvození](./media/tutorial-designer-automobile-price-deploy/new-inference-cluster.png)
-
+   
 1. V podokně odvození clusteru nakonfigurujte novou službu Kubernetes.
 
 1. Jako **výpočetní název**zadejte *AKS-COMPUTE* .
@@ -96,8 +96,8 @@ Až se dokončí zřizování služby AKS, vraťte se do kanálu Inferencing v r
 1. Vyberte cluster AKS, který jste vytvořili.
 
 1. Vyberte **Nasadit**.
-
-    ![Snímek obrazovky ukazující, jak nastavit nový koncový bod v reálném čase](./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png)
+    
+    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png"alt-text="Snímek obrazovky ukazující, jak nastavit nový koncový bod v reálném čase":::
 
     Po dokončení nasazení se zobrazí oznámení o úspěchu nad plátnem. Může to trvat několik minut.
 

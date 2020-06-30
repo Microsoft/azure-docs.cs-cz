@@ -3,12 +3,12 @@ title: Ukázka podrobného plánu DoD Impact Level 4 – přehled
 description: Přehled ukázky pro DoD Impact Level 4 Tento ukázkový podrobný plán pomáhá zákazníkům vyhodnotit konkrétní kontroly DoD Impact Level 4.
 ms.date: 03/12/2020
 ms.topic: sample
-ms.openlocfilehash: a67dae5399d3e2e24c226c53f915b91e2524e735
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 3b032e1a26c4fb5e97b1c7ab4fff65bc1b046f21
+ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "79415372"
+ms.lasthandoff: 06/29/2020
+ms.locfileid: "85517248"
 ---
 # <a name="overview-of-the-dod-impact-level-4-blueprint-sample"></a>Přehled ukázky podrobného plánu DoD Impact Level 4
 

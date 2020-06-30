@@ -8,14 +8,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 05/12/2020
+ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 2fab23e9f765d9ab4908cc4be69d8b747c6856b9
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: 7068c1e795e7a607776c48d1b026562a1be6b25d
+ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84790530"
+ms.lasthandoff: 06/29/2020
+ms.locfileid: "85517596"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Kurz: předpověď ceny automobilu pomocí návrháře (Preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -107,8 +107,8 @@ Můžete vizualizovat data a pochopit datovou sadu, kterou budete používat.
 1. V podokně podrobností modulu napravo od plátna vyberte **výstupy + protokol**.
 
 1. Vyberte ikonu grafu pro vizualizaci dat.
-
-    ![Vizualizace dat](./media/tutorial-designer-automobile-price-train-score/visualize-data.png)
+    
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/visualize-data.png"alt-text="Sem zadejte alternativní text.":::
 
 1. Výběrem různých sloupců v okně data zobrazíte informace o každém z nich.
 
@@ -180,8 +180,8 @@ V datové sadě ještě chybí hodnoty po odebrání sloupce **normalizované zt
 1. V podokně podrobností modulu napravo od plátna vyberte pole **Komentář** a zadejte *odebrat řádky chybějících hodnot*. 
 
     Váš kanál by teď měl vypadat nějak takto:
-    
-    ![Vybrat – sloupec](./media/tutorial-designer-automobile-price-train-score/pipeline-clean.png)
+
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-clean.png"alt-text="Vybrat – sloupec":::
 
 ## <a name="train-a-machine-learning-model"></a>Výuka modelu strojového učení
 
@@ -229,7 +229,7 @@ Vytvořte si model tak, že mu udělíte datovou sadu, která obsahuje cenu. Alg
     > [!IMPORTANT]
     > Ujistěte se, že levé výstupní porty **rozdělených dat** se připojují ke **výukového modelu**. Levý port obsahuje sadu školení. Pravý port obsahuje sadu testů.
 
-    ![Snímek obrazovky znázorňující správnou konfiguraci modulu vlakového modelu. Modul lineární regrese se připojí k levému portu modulu vlakového modelu a modul rozdělit data se připojí k pravému portu modelu vlaku.](./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png)
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png"alt-text="Snímek obrazovky znázorňující správnou konfiguraci modulu vlakového modelu. Modul lineární regrese se připojí k levému portu modulu typu vlak a modul rozdělení dat se připojí k pravému portu modelu vlaku.":::
 
 1. Vyberte modul **vlakového modelu** .
 
@@ -244,7 +244,7 @@ Vytvořte si model tak, že mu udělíte datovou sadu, která obsahuje cenu. Alg
 
     Váš kanál by měl vypadat takto:
 
-    ![Snímek obrazovky, který zobrazuje správnou konfiguraci kanálu po přidání modulu vlakového modelu.](./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png)
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png"alt-text="Snímek obrazovky, který zobrazuje správnou konfiguraci kanálu po přidání modulu vlakového modelu.":::
 
 ### <a name="add-the-score-model-module"></a>Přidat modul určení skóre modelu
 
@@ -264,7 +264,7 @@ Pomocí modulu **vyhodnocení modelu** můžete vyhodnotit, jak dobře model vyh
 
     Konečný kanál by měl vypadat přibližně takto:
 
-    ![Snímek obrazovky znázorňující správnou konfiguraci kanálu](./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png)
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png"alt-text="Snímek obrazovky znázorňující správnou konfiguraci kanálu":::
 
 ## <a name="submit-the-pipeline"></a>Odeslat kanál
 
@@ -295,7 +295,7 @@ Po dokončení běhu můžete zobrazit výsledky spuštění kanálu. Nejprve se
 
     Tady vidíte předpovězené ceny a skutečné ceny z testovacích dat.
 
-    ![Snímek obrazovky výstupní vizualizace, která zvýrazňuje sloupec popisku s skóre](./media/tutorial-designer-automobile-price-train-score/score-result.png)
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/score-result.png"alt-text="Snímek obrazovky výstupní vizualizace, která zvýrazňuje sloupec popisku s skóre":::
 
 ### <a name="evaluate-models"></a>Vyhodnotit modely
 

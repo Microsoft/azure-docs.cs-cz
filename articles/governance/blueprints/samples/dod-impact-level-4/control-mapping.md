@@ -3,12 +3,12 @@ title: Ukázkové ovládací prvky podrobného plánu pro úrovni DoD úrovně 4
 description: Mapování ovládacího prvku pro ukázku plánu dopadu DoD. 4. Každý ovládací prvek je namapován na jednu nebo více zásad Azure, které pomáhají s posouzením.
 ms.date: 05/12/2020
 ms.topic: sample
-ms.openlocfilehash: 48734e62f47c38feb8bc34409f9ba41af2648e7a
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 3da2450b935d33ccb5b6b5d23bde6333540a79e6
+ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84168977"
+ms.lasthandoff: 06/29/2020
+ms.locfileid: "85517265"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-4-blueprint-sample"></a>Mapování ovládacího prvku pro ukázku plánu dopadu na 3. plán na úrovni.
 
