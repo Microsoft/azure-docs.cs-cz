@@ -1,5 +1,5 @@
 ---
-title: Použití služby Azure Table Storage nebo Azure Cosmos DB rozhraní API pro tabulky z Node. js
+title: Použití služby Azure Table Storage nebo Azure Cosmos DB rozhraní API pro tabulky z Node.js
 description: Ukládejte si strukturovaná data v cloudu pomocí služby Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 04/05/2018
 author: sakash279
 ms.author: akshanka
-ms.openlocfilehash: d04cf082f5dc7ca3ae07b60dc193c66613fa5c4f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 35435bd318596ffd0a46e5d272565358c092bc03
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76771082"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85562686"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Jak používat službu Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB z Node.js
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -41,16 +41,19 @@ Pokud chcete používat službu Azure Storage nebo Azure Cosmos DB, potřebujete
 1. Použijte rozhraní příkazového řádku, jako je **PowerShell** (Windows), **Terminál** (Mac) nebo **Bash** (Unix), a přejděte do složky, ve které jste vytvořili svou aplikaci.
 2. Do příkazového okna zadejte **npm install azure-storage**. Výstup příkazu je podobný následujícímu příkladu.
 
-       azure-storage@0.5.0 node_modules\azure-storage
-       +-- extend@1.2.1
-       +-- xmlbuilder@0.4.3
-       +-- mime@1.2.11
-       +-- node-uuid@1.4.3
-       +-- validator@3.22.2
-       +-- underscore@1.4.4
-       +-- readable-stream@1.0.33 (string_decoder@0.10.31, isarray@0.0.1, inherits@2.0.1, core-util-is@1.0.1)
-       +-- xml2js@0.2.7 (sax@0.5.2)
-       +-- request@2.57.0 (caseless@0.10.0, aws-sign2@0.5.0, forever-agent@0.6.1, stringstream@0.0.4, oauth-sign@0.8.0, tunnel-agent@0.4.1, isstream@0.1.2, json-stringify-safe@5.0.1, bl@0.9.4, combined-stream@1.0.5, qs@3.1.0, mime-types@2.0.14, form-data@0.2.0, http-signature@0.11.0, tough-cookie@2.0.0, hawk@2.3.1, har-validator@1.8.0)
+   ```bash
+    azure-storage@0.5.0 node_modules\azure-storage
+    +-- extend@1.2.1
+    +-- xmlbuilder@0.4.3
+    +-- mime@1.2.11
+    +-- node-uuid@1.4.3
+    +-- validator@3.22.2
+    +-- underscore@1.4.4
+    +-- readable-stream@1.0.33 (string_decoder@0.10.31, isarray@0.0.1, inherits@2.0.1, core-util-is@1.0.1)
+    +-- xml2js@0.2.7 (sax@0.5.2)
+    +-- request@2.57.0 (caseless@0.10.0, aws-sign2@0.5.0, forever-agent@0.6.1, stringstream@0.0.4, oauth-sign@0.8.0, tunnel-agent@0.4.1, isstream@0.1.2, json-stringify-safe@5.0.1, bl@0.9.4, combined-stream@1.0.5, qs@3.1.0, mime-types@2.0.14, form-data@0.2.0, http-signature@0.11.0, tough-cookie@2.0.0, hawk@2.3.1, har-validator@1.8.0)
+   ```
+
 3. Můžete ručně spustit příkaz **ls** a ověřit, že se vytvořila složka **node_modules**. Uvnitř této složky najdete balíček **azure-storage** obsahující knihovny, které potřebujete pro přístup k úložišti.
 
 ### <a name="import-the-package"></a>Import balíčku
@@ -68,7 +71,7 @@ var tableSvc = azure.createTableService('myaccount', 'myaccesskey');
 ```
 
 ## <a name="add-an-azure-cosmos-db-connection"></a>Přidání připojení ke službě Azure Cosmos DB
-Pokud chcete přidat připojení ke službě Azure Cosmos DB, vytvořte objekt **TableService** a zadejte název, primární klíč a koncový bod vašeho účtu. Tyto hodnoty můžete zkopírovat z **Nastavení** > **připojovací řetězec** v Azure Portal pro účet Cosmos DB. Příklad:
+Pokud chcete přidat připojení ke službě Azure Cosmos DB, vytvořte objekt **TableService** a zadejte název, primární klíč a koncový bod vašeho účtu. Tyto hodnoty můžete zkopírovat z **Nastavení**  >  **připojovací řetězec** v Azure Portal pro účet Cosmos DB. Příklad:
 
 ```javascript
 var tableSvc = azure.createTableService('myaccount', 'myprimarykey', 'myendpoint');
@@ -136,8 +139,6 @@ var task = {
 
 > [!NOTE]
 > Každý záznam obsahuje také pole **Timestamp**, které nastaví Azure při vložení nebo aktualizaci entity.
->
->
 
 K vytváření entit můžete využít také **entityGenerator**. Následující příklad vytvoří stejnou entitu úlohy pomocí generátoru **entityGenerator**.
 
@@ -173,8 +174,6 @@ Příklad odpovědi:
 > Ve výchozím nastavení **insertEntity** jako součást `response` nevrací informace o vložené entitě. Pokud s touto entitou plánujete provádět další operace nebo chcete informace uložit do mezipaměti, může být užitečné vrátit informace jako součást `result`. Můžete to provést povolením možnosti **echoContent** následujícím způsobem:
 >
 > `tableSvc.insertEntity('mytable', task, {echoContent: true}, function (error, result, response) {...}`
->
->
 
 ## <a name="update-an-entity"></a>Aktualizace entity
 Existující entitu můžete aktualizovat několika metodami:

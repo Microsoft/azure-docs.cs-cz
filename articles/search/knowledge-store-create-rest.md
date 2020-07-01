@@ -1,24 +1,21 @@
 ---
-title: Vytvoření úložiště znalostí (Preview) pomocí REST
+title: Vytvoření úložiště znalostí pomocí REST
 titleSuffix: Azure Cognitive Search
-description: Pomocí REST API a post se vytvoří Azure Kognitivní hledání Knowledge Store pro zachování rozšíření z kanálu pro rozšíření AI. Tato funkce je aktuálně ve verzi Public Preview.
+description: Pomocí REST API a post se vytvoří Azure Kognitivní hledání Knowledge Store pro zachování rozšíření z kanálu pro rozšíření AI.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/23/2020
-ms.openlocfilehash: f030fc81ab33ecd0531040662346e1ed44f5d17c
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.date: 06/30/2020
+ms.openlocfilehash: f496413cf1a5175cee65bce46a2f7f6260d5451d
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85263020"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565218"
 ---
 # <a name="create-a-knowledge-store-using-rest-and-postman"></a>Vytvoření úložiště znalostí pomocí REST a předzálohovacího
-
-> [!IMPORTANT] 
-> Znalostní databáze je aktuálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API verze 2019-05-06-Preview](search-api-preview.md) poskytuje funkce ve verzi Preview. V současné době je omezená podpora portálu a žádná podpora sady .NET SDK.
 
 Znalostní báze obsahuje výstup z kanálu rozšíření Azure Kognitivní hledání pro pozdější analýzu nebo jiné zpracování dat. Kanál obohacený AI akceptuje soubory obrázků nebo nestrukturované textové soubory, indexuje je pomocí Azure Kognitivní hledání, aplikuje rozšíření AI z Cognitive Services (například analýzu obrázků a zpracování přirozeného jazyka) a pak výsledky uloží do úložiště znalostí v Azure Storage. Pomocí nástrojů, jako je Power BI nebo Průzkumník služby Storage, můžete v Azure Portal prozkoumat znalostní bázi Knowledge Store.
 
@@ -81,7 +78,7 @@ Pokud chcete získat hodnotu pro `admin-key` , přejděte do služby Azure kogni
 | Proměnná    | Kde je lze získat |
 |-------------|-----------------|
 | `admin-key` | Na stránce **klíče** služby Azure kognitivní hledání.  |
-| `api-version` | Ponechte jako **2019-05-06-Preview**. |
+| `api-version` | Nechejte jako **2020-06-30**. |
 | `datasource-name` | Ponechte jako **hotelové recenze – DS**. | 
 | `indexer-name` | Ponechte jako **hotelové recenze – IXR**. | 
 | `index-name` | Ponechte jako **hotelové recenze – IX**. | 

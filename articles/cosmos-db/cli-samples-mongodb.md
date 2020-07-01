@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 06/03/2020
 ms.author: mjbrown
-ms.openlocfilehash: 88b795b52955a6bd323e7a900c0cd62dab1dd2d4
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 7536a2e3fc32aeb330aad52625a5946e856d6646
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262935"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85556040"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db-mongodb-api"></a>Ukázky v Azure CLI pro rozhraní Azure Cosmos DB MongoDB API
 
@@ -21,7 +21,7 @@ Následující tabulka obsahuje odkazy na ukázkové skripty Azure CLI pro Azure
 > [!NOTE]
 > V současné době můžete pomocí šablon PowerShellu, CLI a Správce prostředků vytvořit jenom 3,2 verze (tj. účty používající koncový bod ve formátu `*.documents.azure.com` ) Azure Cosmos DB API pro účty MongoDB. Pokud chcete vytvořit 3,6 verze účtů, použijte místo toho Azure Portal.
 
-| |  |
+|Úkol | Popis |
 |---|---|
 | [Vytvoření účtu Azure Cosmos, databáze a kolekce](scripts/cli/mongodb/create.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvoří účet Azure Cosmos DB, databázi a kolekci pro rozhraní API MongoDB. |
 | [Změna propustnosti](scripts/cli/mongodb/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Aktualizujte RU/s na databázi a kolekci.|

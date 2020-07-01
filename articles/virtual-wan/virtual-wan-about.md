@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: overview
-ms.date: 05/14/2020
+ms.date: 06/29/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 8bdba64445212c564a3d4762bc8497be15f7d9a0
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: de939f2bfe55541dca9d93f6778e4b098d067daa
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657009"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565969"
 ---
 # <a name="about-azure-virtual-wan"></a>Informace o službě Azure Virtual WAN
 
@@ -64,7 +64,7 @@ Pro konfiguraci virtuální sítě WAN mezi koncovými body vytvořte následuj�
 
 **Další prostředky virtuální sítě WAN**
 
-  * **Lokalita:** Tento prostředek se používá jenom pro připojení Site-to-site. Prostředek sítě je **vpnsite**. Představuje vaše místní zařízení VPN a jeho nastavení. Pokud využíváte služeb partnera pro Virtual WAN, máte integrované řešení, které automaticky exportuje tyto informace do Azure.
+* **Lokalita:** Tento prostředek se používá jenom pro připojení Site-to-site. Prostředek sítě je **vpnsite**. Představuje vaše místní zařízení VPN a jeho nastavení. Pokud využíváte služeb partnera pro Virtual WAN, máte integrované řešení, které automaticky exportuje tyto informace do Azure.
 
 ## <a name="types-of-connectivity"></a><a name="connectivity"></a>Typy připojení
 
@@ -72,21 +72,9 @@ Virtuální síť WAN umožňuje následující typy připojení: Site-to-Site V
 
 ### <a name="site-to-site-vpn-connections"></a><a name="s2s"></a>Připojení VPN typu site-to-site
 
-![Diagram virtuální sítě WAN](./media/virtual-wan-about/virtualwan.png)
+K prostředkům v Azure se můžete připojit přes připojení typu Site-to-site IPsec/IKE (IKEv2). Další informace najdete v tématu [vytvoření připojení typu Site-to-site pomocí virtuální sítě WAN](virtual-wan-site-to-site-portal.md). 
 
-Když vytváříte virtuální připojení WAN typu Site-to-site, můžete pracovat s dostupným partnerem. Pokud nechcete použít partnera, můžete nakonfigurovat připojení ručně. Další informace najdete v tématu [vytvoření připojení typu Site-to-site pomocí virtuální sítě WAN](virtual-wan-site-to-site-portal.md).
-
-#### <a name="virtual-wan-partner-workflow"></a><a name="s2spartner"></a>Pracovní postup partnera virtuální sítě WAN
-
-Když pracujete s virtuálním partnerem WAN, je pracovní postup:
-
-1. Řadič zařízení pobočky (VPN/SDWAN) je ověřený pro export informací orientovaných na lokalitu do Azure pomocí [instančního objektu Azure](../active-directory/develop/howto-create-service-principal-portal.md).
-2. Řadič zařízení pobočky (VPN/SDWAN) získá informace o konfiguraci připojení k Azure a aktualizuje místní zařízení. To umožňuje automatizovat stažení konfigurace místního zařízení VPN i jeho úpravu a aktualizaci.
-3. Jakmile má zařízení správnou konfiguraci Azure, je možné vytvořit propojení typu Site-to-Site (dva aktivní tunely) v rámci sítě Azure WAN. Azure podporuje IKEv1 i IKEv2. Protokol BGP je volitelný.
-
-#### <a name="partners-for-site-to-site-virtual-wan-connections"></a><a name="partners"></a>Partneři pro připojení typu Site-to-site k virtuální síti WAN
-
-Seznam dostupných partnerů a umístění najdete v článku věnovaném [virtuálním partnerům a umístěním sítě WAN](virtual-wan-locations-partners.md) .
+Tento typ připojení vyžaduje zařízení VPN nebo virtuální partnerská zařízení WAN. Virtuální partneři sítě WAN poskytují automatizaci pro připojení, což je schopnost exportovat informace o zařízení do Azure, stáhnout konfiguraci Azure a navázat připojení ke službě Azure Virtual WAN hub. Seznam dostupných partnerů a umístění najdete v článku věnovaném [virtuálním partnerům a umístěním sítě WAN](virtual-wan-locations-partners.md) . Pokud váš poskytovatel zařízení VPN/SD-WAN není uvedený na zmíněném odkazu, můžete zjednodušit pomocí podrobného pokynu [vytvořit připojení typu Site-to-site pomocí virtuální sítě WAN](virtual-wan-site-to-site-portal.md) a nastavit připojení.
 
 ### <a name="user-vpn-point-to-site-connections"></a><a name="uservpn"></a>Připojení uživatele VPN (Point-to-site)
 
@@ -95,9 +83,50 @@ K prostředkům v Azure se můžete připojit přes připojení IPsec/IKE (IKEv2
 ### <a name="expressroute-connections"></a><a name="er"></a>Připojení ExpressRoute
 ExpressRoute umožňuje připojit místní síť k Azure prostřednictvím privátního připojení. Pokud chcete vytvořit připojení, přečtěte si téma [vytvoření připojení ExpressRoute pomocí virtuální sítě WAN](virtual-wan-expressroute-portal.md).
 
+### <a name="hub-to-vnet-connections"></a><a name="hub"></a>Připojení z centra na virtuální síť
+
+Virtuální síť Azure se dá připojit k virtuálnímu rozbočovači. Další informace najdete v tématu [připojení virtuální sítě k rozbočovači](virtual-wan-site-to-site-portal.md#vnet).
+
+### <a name="transit-connectivity"></a><a name="transit"></a>Přenosové připojení
+
+#### <a name="transit-connectivity-between-vnets"></a><a name="transit-vnet"></a>Tranzitní připojení mezi virtuální sítě
+
+Virtuální síť WAN umožňuje přenosové připojení mezi virtuální sítě. Virtuální sítě se připojit k virtuálnímu rozbočovači prostřednictvím připojení k virtuální síti. Přenosová konektivita mezi virtuální sítě ve **standardní virtuální síti WAN** je povolená v důsledku přítomnosti směrovače v každém virtuálním rozbočovači. Tento směrovač je vytvořen při prvním vytvoření virtuálního rozbočovače.
+
+Směrovač může mít čtyři stavy směrování: zřizování, zřizování, neúspěšné nebo žádné. **Stav směrování** je umístěný v Azure Portal tak, že přejdete na stránku virtuálního centra.
+
+* Stav **žádný** označuje, že virtuální rozbočovač nezřídil směrovač. K tomu může dojít, pokud je virtuální síť WAN typu *Basic*nebo pokud byl virtuální rozbočovač nasazen před zpřístupněním služby.
+* Stav **selhání** indikuje selhání při vytváření instance. Chcete-li vytvořit instanci nebo resetovat směrovač, můžete najít možnost **resetovat směrovač** tak, že přejdete na stránku Přehled virtuálního centra v Azure Portal.
+
+Každý směrovač virtuálního rozbočovače podporuje agregovanou propustnost až do 50 GB/s. Připojení mezi virtuálními síťovými připojeními předpokládá celkem 2000 úloh virtuálních počítačů ve všech virtuální sítě ve virtuální síti WAN.
+
+#### <a name="transit-connectivity-between-vpn-and-expressroute"></a><a name="transit-er"></a>Tranzitní připojení mezi VPN a ExpressRoute
+
+Virtuální síť WAN umožňuje přenosové připojení mezi VPN a ExpressRoute. To znamená, že weby připojené k síti VPN nebo vzdálení uživatelé můžou komunikovat s ExpressRoute lokalitami. K dispozici je také implicitní předpoklad, že je povolen **příznak větvení na větve** . Tento příznak může být umístěný v nastavení Azure Virtual WAN v Azure Portal. Veškerou správu tras poskytuje směrovač virtuálního rozbočovače, který taky umožňuje přenosové připojení mezi virtuálními sítěmi.
+
+### <a name="custom-routing"></a><a name="routing"></a>Vlastní směrování
+
+Virtual WAN nabízí pokročilá vylepšení směrování. Možnost nastavení vlastních směrovacích tabulek, optimalizaci směrování virtuální sítě pomocí přiřazování a šíření tras, logických skupin směrování tabulek s popisky a zjednodušením různých scénářů směrování síťových virtuálních zařízení nebo sdílených služeb.
+
+### <a name="global-vnet-peering"></a><a name="global"></a>Globální partnerský vztah virtuální sítě
+
+Globální VNet peering poskytuje mechanismus pro propojení dvou virtuální sítě v různých oblastech. Virtuální síťová připojení ve virtuální síti WAN připojují virtuální sítě k virtuálním rozbočovačům. Uživatel nemusí explicitně nastavovat globální partnerský vztah virtuální sítě. Virtuální sítě připojené k virtuálnímu rozbočovači se účtují za stejné oblasti jako poplatky za partnerský vztah virtuální sítě. Virtuální sítě připojené k virtuálnímu rozbočovači v jiné oblasti účtují globální poplatky VNet peering.
+
+### <a name="expressroute-traffic-encryption"></a><a name="encryption"></a>Šifrování provozu ExpressRoute
+
+Azure Virtual WAN poskytuje možnost šifrovat ExpressRoute provoz. Technika poskytuje zašifrovaný přenos mezi místními sítěmi a virtuálními sítěmi Azure přes ExpressRoute, a to bez toho, aby prochází veřejným internetem nebo pomocí veřejných IP adres. Další informace najdete v tématu [protokol IPSec přes ExpressRoute pro virtuální síť WAN](vpn-over-expressroute.md).
+
 ## <a name="locations"></a><a name="locations"></a>Umístění
 
 Informace o umístění naleznete v článku [virtuální partneři a umístění sítě WAN](virtual-wan-locations-partners.md) .
+
+## <a name="route-tables-in-basic-and-standard-virtual-wans"></a><a name="route"></a>Směrovací tabulky v základních a standardních virtuálních sítích WAN
+
+Směrovací tabulky teď mají funkce pro přidružení a šíření. Již existující směrovací tabulka je směrovací tabulka, která nemá tyto funkce. Pokud máte již existující směrovací tabulku, vezměte v úvahu následující skutečnosti:
+
+* **Standardní virtuální zákazníci sítě WAN s předem existujícími směrovacími tabulkami**: Chcete-li používat nové funkce směrovací tabulky, odstraňte všechny existující směrovací tabulky a znovu vytvořte nové.
+
+* **Základní virtuální zákazníci sítě WAN s předem existujícími směrovacími tabulkami**: Pokud chcete používat nové možnosti směrovací tabulky, odstraňte všechny existující směrovací tabulky a potom **upgradujte** základní virtuální síť WAN na standardní virtuální síť WAN. Viz [upgrade virtuální sítě WAN z úrovně Basic na standard](upgrade-virtual-wan.md).
 
 ## <a name="faq"></a><a name="faq"></a>Nejčastější dotazy
 

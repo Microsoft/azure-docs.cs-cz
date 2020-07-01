@@ -11,25 +11,24 @@ ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: t-bebon
 ms.custom: seodec18
-ms.openlocfilehash: 65e1613eb8fda934899afe692f45a38fca04bff2
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: 416a7edfdcd7e7915aa7886a8f53cf822b43fe93
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85414008"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85560798"
 ---
-# <a name="read-text-from-images-and-documents"></a>Přečíst text z obrázků a dokumentů
+# <a name="read-text-from-images-and-documents"></a>Čtení textu z obrázků a dokumentů
 
 Počítačové zpracování obrazu zahrnují nové funkce optického rozpoznávání znaků (OCR) založené na hloubkovém učení, které extrahují vytištěný nebo rukou psaný text z obrázků a dokumentů PDF. Počítačové zpracování obrazu extrahuje text z obou obdobných dokumentů (obrázky, naskenované dokumenty) a dokumentů s více číslicemi. Můžete extrahovat text z obrázků v nevolném formátu, například fotografie z licenčních desek nebo kontejnerů se sériovými čísly a také z dokumentů – faktury, Bill, finanční sestavy, články a další. Tato funkce OCR je dostupná jako součást spravované služby v cloudu nebo v místním prostředí (kontejnery). Také podporuje virtuální sítě a soukromé koncové body, aby splňovaly požadavky na dodržování předpisů a ochranu osobních údajů vaší organizace.
 
 ## <a name="read-api"></a>Rozhraní API pro čtení 
 
-[Rozhraní API pro čtení](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) počítačové zpracování obrazu je nejnovější technologie OCR od Microsoftu, která extrahuje vytištěný text, psaný text (jenom v angličtině), číslice a symboly měny z obrázků a dokumentů PDF. Je optimalizovaná pro extrakci textu z obrázků v nevolném formátu, obrázků s vizuálním hlukem, dokumentů PDF, které jsou buď digitální, nebo naskenované, a textově silných obrázků. Podporuje tištěné a rukopisné texty (anglicky) a smíšené jazyky ve stejném obrázku nebo dokumentu. Úplný seznam podporovaných jazyků najdete na stránce [Podpora jazyků pro počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#text-recognition) .
-
+[Rozhraní API pro čtení](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) počítačové zpracování obrazu je nejnovější technologie OCR od Microsoftu, která extrahuje vytištěný text (sedm jazyků), psaný text (jenom v angličtině), číslice a symboly měny z obrázků a VÍCESTRÁNKOVÉ dokumenty PDF. Je optimalizovaná pro extrakci textu z textu ve velkém a vícestránkovém dokumentu PDF se smíšenými jazyky. Podporuje detekci vytištěného a rukopisného textu (jenom v angličtině) ve stejném obrázku nebo dokumentu. Úplný seznam podporovaných jazyků najdete na stránce [Podpora jazyků pro počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#text-recognition) .
 
 ### <a name="how-it-works"></a>Jak to funguje
 
-[Rozhraní API pro čtení](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) je asynchronní. Prvním krokem je zavolat operaci čtení. Operace čtení bere jako vstup obrázek nebo dokument PDF a vrátí ID operace. 
+[Rozhraní API pro čtení](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) podporuje textově náročné dokumenty až na 2000 stránek, a proto se provádí asynchronně. Prvním krokem je zavolat operaci čtení. Operace čtení bere jako vstup obrázek nebo dokument PDF a vrátí ID operace. 
 
 Druhým krokem je volání operace [Get Results](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) . Tato operace přebírá ID operace, kterou vytvořila operace čtení. Pak vrátí extrahovaný textový obsah z obrázku nebo dokumentu ve formátu JSON. Odpověď JSON uchovává původní spojnici rozpoznaných slov. Obsahuje extrahované textové řádky a jejich Souřadnice ohraničovacího rámečku. Každý textový řádek obsahuje všechna extrahovaná slova s jejich souřadnicemi a hodnocení spolehlivosti.
 
@@ -90,7 +89,7 @@ Stejně jako u všech služeb rozpoznávání by měli vývojáři, kteří pou�
 
 ## <a name="ocr-api"></a>ROZHRANÍ API PRO OPTICKÉ ROZPOZNÁVÁNÍ ZNAKŮ
 
-[Rozhraní API pro rozpoznávání OCR](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) používá starší model rozpoznávání. Podporuje pouze jeden obrázek, nikoli soubory PDF a vrací okamžitou odpověď. Podporuje [více jazyků](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#text-recognition) než rozhraní API pro čtení.
+[Rozhraní API pro rozpoznávání OCR](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) používá starší model rozpoznávání, podporuje pouze image a provádí synchronní operace se zjištěným textem. Podporuje [více jazyků](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#text-recognition) než rozhraní API pro čtení.
 
 ## <a name="next-steps"></a>Další kroky
 

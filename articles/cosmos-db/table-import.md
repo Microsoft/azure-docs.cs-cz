@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/07/2017
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 3d1efc0a116a38686fa929a2058fa88e4c2cfa82
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 0023308c74d58b1c94bf13fcb47ffb8aa7ade1d6
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85119473"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85557632"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-table-api-account"></a>Migrace dat do účtu rozhraní Table API služby Azure Cosmos DB
 
@@ -45,26 +45,26 @@ Pokud chcete provést migraci tabulkových dat, proveďte následující úlohy:
     dt.exe [/<option>:<value>] /s:<source-name> [/s.<source-option>:<value>] /t:<target-name> [/t.<target-option>:<value>] 
    ```
 
-Možnosti příkazu jsou:
+Podporované možnosti pro tento příkaz:
 
-    /ErrorLog: Optional. Name of the CSV file to redirect data transfer failures
-    /OverwriteErrorLog: Optional. Overwrite error log file
-    /ProgressUpdateInterval: Optional, default is 00:00:01. Time interval to refresh on-screen data transfer progress
-    /ErrorDetails: Optional, default is None. Specifies that detailed error information should be displayed for the following errors: None, Critical, All
-    /EnableCosmosTableLog: Optional. Direct the log to a cosmos table account. If set, this defaults to destination account connection string unless /CosmosTableLogConnectionString is also provided. This is useful if multiple instances of DT are being run simultaneously.
-    /CosmosTableLogConnectionString: Optional. ConnectionString to direct the log to a remote cosmos table account. 
+* **/Errorlog:** Volitelné. Název souboru CSV pro přesměrování selhání přenosu dat
+* **/OverwriteErrorLog:** Volitelné. Přepsat soubor protokolu chyb
+* **/ProgressUpdateInterval:** Volitelné, výchozí hodnota je 00:00:01. Časový interval pro obnovení průběhu přenosu dat na obrazovce
+* **/ErrorDetails:** Volitelné, výchozí hodnota je None. Určuje, že se mají zobrazit podrobné informace o chybách pro následující chyby: žádné, kritické, vše.
+* **/EnableCosmosTableLog:** Volitelné. Nasměrujte protokol na účet tabulky Cosmos. Pokud je tato hodnota nastavená, použije se výchozí hodnota připojovací řetězec cílového účtu, pokud není k dispozici ani/CosmosTableLogConnectionString. To je užitečné v případě, že je současně spuštěno více instancí DT.
+* **/CosmosTableLogConnectionString:** Volitelné. ConnectionString pro přesměrování protokolu na vzdálený účet tabulky Cosmos.
 
 ### <a name="command-line-source-settings"></a>Nastavení zdroje na příkazovém řádku
 
 Při definování služby Azure Table Storage nebo rozhraní Table API Preview jako zdroje migrace použijte následující možnosti zdroje.
 
-    /s:AzureTable: Reads data from Azure Table storage
-    /s.ConnectionString: Connection string for the table endpoint. This can be retrieved from the Azure portal
-    /s.LocationMode: Optional, default is PrimaryOnly. Specifies which location mode to use when connecting to Azure Table storage: PrimaryOnly, PrimaryThenSecondary, SecondaryOnly, SecondaryThenPrimary
-    /s.Table: Name of the Azure Table
-    /s.InternalFields: Set to All for table migration as RowKey and PartitionKey are required for import.
-    /s.Filter: Optional. Filter string to apply
-    /s.Projection: Optional. List of columns to select
+* **/s: Azure:** Čte data z Azure Table Storage.
+* **/s.ConnectionString:** Připojovací řetězec pro koncový bod tabulky Dá se načíst z Azure Portal
+* **/s.LocationMode:** Volitelné, výchozí nastavení je PrimaryOnly. Určuje, který režim umístění se má použít při připojování ke službě Azure Table Storage: PrimaryOnly, PrimaryThenSecondary, SecondaryOnly, SecondaryThenPrimary.
+* **/s.Table:** Název tabulky Azure
+* **/s.InternalFields:** Pro import je potřeba nastavit vše pro migraci tabulky jako RowKey a PartitionKey.
+* **/s.Filter:** Volitelné. Řetězec filtru, který se má použít
+* **/s.projection:** Volitelné. Seznam sloupců k výběru
 
 Pokud chcete načíst zdrojový připojovací řetězec při importu z Azure Table Storage, otevřete Azure Portal a klikněte na **Storage accounts**  >  **Account**  >  **přístupové klíče**účtu úložiště a pak pomocí tlačítka Kopírovat zkopírujte **připojovací řetězec**.
 
@@ -82,28 +82,29 @@ Pokud chcete při importu z účtu Azure Cosmos DB rozhraní API pro tabulky (Pr
 
 Při definování rozhraní Table API služby Azure Storage jako cíle migrace použijte následující možnosti cíle.
 
-    /t:TableAPIBulk: Uploads data into Azure CosmosDB Table in batches
-    /t.ConnectionString: Connection string for the table endpoint
-    /t.TableName: Specifies the name of the table to write to
-    /t.Overwrite: Optional, default is false. Specifies if existing values should be overwritten
-    /t.MaxInputBufferSize: Optional, default is 1GB. Approximate estimate of input bytes to buffer before flushing data to sink
-    /t.Throughput: Optional, service defaults if not specified. Specifies throughput to configure for table
-    /t.MaxBatchSize: Optional, default is 2MB. Specify the batch size in bytes
+* **/t: TableAPIBulk:** Nahrává data do tabulky Azure CosmosDB v dávkách.
+* **/t.ConnectionString:** Připojovací řetězec pro koncový bod tabulky
+* **/t.TableName:** Určuje název tabulky, do které se má zapisovat.
+* **/t.Overwrite:** Volitelné, výchozí hodnota je false. Určuje, zda mají být přepsány existující hodnoty.
+* **/t.MaxInputBufferSize:** Volitelné, výchozí hodnota je 1 GB. Přibližný odhad vstupních bajtů do vyrovnávací paměti před vyprázdněním dat do jímky
+* **/t.throughput:** Volitelné, výchozí nastavení služby, pokud není zadáno. Určuje propustnost, která se má nakonfigurovat pro tabulku.
+* **/t.MaxBatchSize:** Volitelné, výchozí nastavení je 2 MB. Zadejte velikost dávky v bajtech.
 
 <a id="azure-table-storage"></a>
 ### <a name="sample-command-source-is-azure-table-storage"></a>Ukázkový příkaz: Zdrojem je Azure Table Storage
 
 Tady je ukázka příkazového řádku znázorňující provedení importu ze služby Azure Table Storage do rozhraní Table API:
 
-```
+```bash
 dt /s:AzureTable /s.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Table storage account name>;AccountKey=<Account Key>;EndpointSuffix=core.windows.net /s.Table:<Table name> /t:TableAPIBulk /t.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Cosmos DB account name>;AccountKey=<Azure Cosmos DB account key>;TableEndpoint=https://<Account name>.table.cosmosdb.azure.com:443 /t.TableName:<Table name> /t.Overwrite
 ```
+
 <a id="table-api-preview"></a>
 ### <a name="sample-command-source-is-azure-cosmos-db-table-api-preview"></a>Ukázkový příkaz: Zdrojem je rozhraní Table API služby Azure Cosmos DB (Preview)
 
 Tady je ukázka příkazového řádku pro import z rozhraní Table API Preview do obecně dostupného rozhraní Table API:
 
-```
+```bash
 dt /s:AzureTable /s.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Table API preview account name>;AccountKey=<Table API preview account key>;TableEndpoint=https://<Account Name>.documents.azure.com; /s.Table:<Table name> /t:TableAPIBulk /t.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Cosmos DB account name>;AccountKey=<Azure Cosmos DB account key>;TableEndpoint=https://<Account name>.table.cosmosdb.azure.com:443 /t.TableName:<Table name> /t.Overwrite
 ```
 
@@ -115,7 +116,7 @@ Při provádění importu do služby Azure Cosmos DB použijte jako referenci n�
 
 Ukázka příkazu pro import:
 
-```
+```bash
 AzCopy /Source:C:\myfolder\ /Dest:https://myaccount.table.cosmosdb.windows.net/mytable1/ /DestKey:key /Manifest:"myaccount_mytable_20140103T112020.manifest" /EntityOperation:InsertOrReplace
 ```
 
@@ -123,7 +124,6 @@ AzCopy /Source:C:\myfolder\ /Dest:https://myaccount.table.cosmosdb.windows.net/m
 
 > [!WARNING]
 > Pokud chcete okamžitě začít využívat výhod obecně dostupných tabulek, migrujte své stávající tabulky verze Preview, jak je popsáno v této části. Jinak pro stávající zákazníky verze Preview v nadcházejících týdnech provedeme automatickou migraci. Mějte však na paměti, že pro automaticky migrované databáze verze Preview budou platit určitá omezení, která se na nově vytvořené tabulky vztahovat nebudou.
-> 
 
 Rozhraní Table API je teď obecně dostupné. Mezi tabulkami verze Preview a obecně dostupnými tabulkami existují rozdíly jak v kódu, který běží v cloudu, tak v kódu, který běží v klientovi. Proto se nedoporučuje pokoušet se o kombinaci klienta sady SDK verze Preview a účtu obecně dostupného rozhraní Table API a naopak. Zákazníci rozhraní Table API Preview, kteří chtějí i nadále používat své stávající tabulky, ale v produkčním prostředí, musí provést migraci z verze Preview do obecně dostupného prostředí nebo počkat na automatickou migraci. Pokud počkáte na automatickou migraci, dostanete upozornění na omezení migrovaných tabulek. Po migraci budete ve svém stávajícím účtu moct vytvářet nové tabulky bez omezení (omezení se budou vztahovat pouze na migrované tabulky).
 

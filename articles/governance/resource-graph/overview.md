@@ -1,14 +1,14 @@
 ---
 title: Přehled služby Azure Resource Graph
 description: Seznamte se s tím, jak služba Azure Resource Graph umožňuje složitý dotazování na prostředky ve velkém rozsahu napříč předplatnými a klienty.
-ms.date: 03/02/2020
+ms.date: 06/29/2020
 ms.topic: overview
-ms.openlocfilehash: a084215f6f2d1b5a8ed34ca59266e1c0087f608b
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 055bb0be75de4d5f6a5a27c5fb3b218fda8777d7
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84167260"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565676"
 ---
 # <a name="what-is-azure-resource-graph"></a>Co je Azure Resource Graph?
 
@@ -52,8 +52,7 @@ Teď, když máte lepší přehled o tom, co je Azure Resource Graph, se můžem
 
 Je důležité pochopit, že dotazovací jazyk pro Azure Resource Graph je založený na [jazyce dotazů Kusto](/azure/data-explorer/data-explorer-overview) , který používá Azure Průzkumník dat.
 
-Nejprve se podívejte na podrobnosti o operacích a funkcích, které lze použít s Azure Resource Graph, viz [ jazyk dotazu pro graf zdrojů ](./concepts/query-language.md).
-Chcete-li procházet zdroje, podívejte se na [ prozkoumat zdroje ](./concepts/explore-resources.md).
+Nejprve se podívejte na podrobnosti o operacích a funkcích, které lze použít s Azure Resource Graph, viz [ jazyk dotazu pro graf zdrojů ](./concepts/query-language.md). Chcete-li procházet zdroje, podívejte se na [ prozkoumat zdroje ](./concepts/explore-resources.md).
 
 ## <a name="permissions-in-azure-resource-graph"></a>Oprávnění v Azure Resource Graph
 
@@ -62,8 +61,7 @@ Pokud chcete používat Resource Graph, musíte mít odpovídající oprávněn�
 > [!NOTE]
 > V grafu prostředků se při přihlášení používají předplatná, která jsou k objektu zabezpečení k dispozici. Chcete-li zobrazit prostředky nového předplatného přidaného během aktivní relace, objekt zabezpečení musí kontext aktualizovat. Tato akce se provádí automaticky při odhlašování a zpátky v.
 
-Azure CLI a Azure PowerShell používají předplatná, ke kterým má uživatel přístup. Při přímém použití REST API se seznam předplatných poskytuje uživateli. Pokud má uživatel přístup k jakémukoli předplatnému v seznamu, vrátí se výsledky dotazu pro předplatná, ke kterým má uživatel přístup. Toto chování je stejné jako při volání [skupin prostředků – seznam](/rest/api/resources/resourcegroups/list) \- , ke kterému se dostanete skupiny prostředků, ke kterým máte přístup, aniž by bylo nutné uvádět, že výsledek může být částečný.
-Pokud v seznamu odběrů nejsou žádná předplatná, ke kterým má uživatel příslušná práva, odpověď je _403_ (zakázáno).
+Azure CLI a Azure PowerShell používají předplatná, ke kterým má uživatel přístup. Při přímém použití REST API se seznam předplatných poskytuje uživateli. Pokud má uživatel přístup k jakémukoli předplatnému v seznamu, vrátí se výsledky dotazu pro předplatná, ke kterým má uživatel přístup. Toto chování je stejné jako při volání [skupin prostředků – seznam](/rest/api/resources/resourcegroups/list) \- , ke kterému se dostanete skupiny prostředků, ke kterým máte přístup, aniž by bylo nutné uvádět, že výsledek může být částečný. Pokud v seznamu odběrů nejsou žádná předplatná, ke kterým má uživatel příslušná práva, odpověď je _403_ (zakázáno).
 
 ## <a name="throttling"></a>Throttling
 

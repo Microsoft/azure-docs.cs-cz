@@ -1,14 +1,14 @@
 ---
 title: 'Vzor: vlastnosti pole v definici zásady'
 description: Tento model Azure Policy poskytuje příklad použití vlastností pole v definici zásady.
-ms.date: 01/31/2020
+ms.date: 06/29/2020
 ms.topic: sample
-ms.openlocfilehash: e65767dd9cbe7b2192c21f779643289e5a7fc45e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 87c550e5fb3ef0efbf219efc738a69071d2e89ba
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77172860"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565720"
 ---
 # <a name="azure-policy-pattern-field-properties"></a>Azure Policy – vzor: vlastnosti pole
 
@@ -26,7 +26,7 @@ Tato definice zásad vám umožní definovat povolené oblasti, které splňují
 
 Operátor **pole** se používá třikrát v rámci [logického operátoru](../concepts/definition-structure.md#logical-operators) **allOf**.
 
-- První použití vyhodnotí `location` vlastnost s podmínkou **NotIn** pro parametr **listOfAllowedLocations** . **notIn** funguje, protože očekává _pole_ a parametr je _pole_. Pokud se `location` z vytvořeného nebo aktualizovaného prostředku nenachází v seznamu schválených, tento prvek se vyhodnotí jako true.
+- První použití vyhodnotí `location` vlastnost s podmínkou **notIn** pro parametr **listOfAllowedLocations** . **notIn** funguje, protože očekává _pole_ a parametr je _pole_. Pokud se `location` z vytvořeného nebo aktualizovaného prostředku nenachází v seznamu schválených, tento prvek se vyhodnotí jako true.
 - Druhé použití také vyhodnotí `location` vlastnost, ale pomocí podmínky **notEquals** zjistí, zda je prostředek _globální_. Pokud je `location` z vytvořeného nebo aktualizovaného prostředku _globální_, tento prvek se vyhodnotí jako true.
 - Poslední použití vyhodnotí `type` vlastnost a pomocí podmínky **notEquals** ověří, že typ prostředku není _Microsoft. azureactivedirectory selhala/b2cDirectories_. Pokud není, tento prvek je vyhodnocen jako true.
 

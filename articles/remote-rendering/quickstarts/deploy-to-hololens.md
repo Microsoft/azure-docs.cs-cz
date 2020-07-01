@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: 75b6629ea924ec17888ec2f981ff85ed917434c9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d6acc16780179654975d63ab2c0b04caf141510c
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80679734"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85557046"
 ---
 # <a name="quickstart-deploy-unity-sample-to-hololens"></a>Rychlý Start: nasazení ukázky Unity do HoloLens
 
@@ -36,12 +36,14 @@ Ujistěte se, že vaše přihlašovací údaje jsou ve scéně správně uložen
 1. Změnit *platformu* na **Univerzální platforma Windows**
 1. Nastavit *cílové zařízení* na **HoloLens**
 1. Nastavit *architekturu* na **ARM64**
-1. Nastavení *typu sestavení* na nastavení sestavení **projektu D3D** ![](./media/unity-build-settings.png)
+1. Nastavení *typu sestavení* na **projekt D3D**\
+    ![Nastavení sestavení](./media/unity-build-settings.png)
 1. Vybrat **přepínač na platformu**
 1. Při stisknutí tlačítka **sestavit** (nebo ' sestavit a spustit ') budete požádáni o výběr některé složky, do které má být řešení uloženo.
 1. Otevřete vygenerovaný **rychlý Start. sln** pomocí sady Visual Studio
 1. Změna konfigurace na **release** a **ARM64**
-1. Přepnout režim ladicího programu do konfigurace řešení **vzdáleného počítače** ![](media/unity-deploy-config.png)
+1. Přepnout režim ladicího programu na **vzdálený počítač**\
+    ![Konfigurace řešení](media/unity-deploy-config.png)
 1. Sestavení řešení (F7)
 1. Pro projekt ' Start ', přejít na *vlastnosti > ladění*
     1. Ujistěte se, že je *verze* konfigurace aktivní.

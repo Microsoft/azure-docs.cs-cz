@@ -10,20 +10,20 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: a207118af0b07be79c934a9665f47e73c5eecde0
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 680e3647e7a5847e132a53986e2cf17150bceac3
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589189"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85560167"
 ---
 # <a name="language-support-for-computer-vision"></a>Jazyková podpora pro Počítačové zpracování obrazu
 
 Některé funkce Počítačové zpracování obrazu podporují více jazyků. všechny funkce, které tady nejsou uvedené, podporují jenom angličtinu.
 
-## <a name="text-recognition"></a>Rozpoznávání textu
+## <a name="text-detection-ocr"></a>Detekce textu (OCR)
 
-Počítačové zpracování obrazu umí rozpoznávat text v mnoha jazycích. Rozhraní API pro rozpoznávání OCR a čtení nevyžadují, abyste zadali kód jazyka. Další informace o této funkci a výhodách jednotlivých rozhraní API najdete v tématu [rozpoznávání vytištěného a rukopisného textu](concept-recognizing-text.md) .
+Počítačové zpracování obrazu umí detekovat text v mnoha jazycích. Rozhraní API pro čtení a rozpoznávání OCR nevyžadují, abyste zadali kód jazyka. Další informace o této funkci a výhodách jednotlivých rozhraní API najdete v tématu [čtení textu z obrázků a dokumentů](concept-recognizing-text.md) .
 
 |Jazyk| Kód jazyka | ROZHRANÍ API PRO OPTICKÉ ROZPOZNÁVÁNÍ ZNAKŮ | Rozhraní API pro čtení |
 |:-----|:----:|:-----:|:---:|

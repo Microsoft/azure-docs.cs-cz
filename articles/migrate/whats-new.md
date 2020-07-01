@@ -4,12 +4,12 @@ description: Seznamte se s novinkami a nejnovějšími aktualizacemi ve službě
 ms.topic: overview
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: be617590ce0c96c3ec8ea705732534c8395ac0ce
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: 58c77dccd1e43ed497cd56b2831eb2ab914d8d5d
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85052319"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85556921"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Co je nového v Azure Migrate
 
@@ -17,6 +17,7 @@ ms.locfileid: "85052319"
 
 ## <a name="update-june-2020"></a>Aktualizace (červen 2020)
 
+- Pro migraci místních virtuálních počítačů VMware do [Řešení Azure VMware (AVS)](https://go.microsoft.com/fwlink/?linkid=2132637) se teď podporuje vyhodnocení. [Další informace](how-to-create-azure-vmware-solution-assessment.md)
 - Podpora více přihlašovacích údajů na zařízení pro zjištění fyzického serveru.
 - Podpora pro povolení přihlášení Azure ze zařízení pro tenanta, ve kterém je nakonfigurované omezení tenanta.
 - Nové verze Azure Migrate zařízení, jak je uvedeno níže.
@@ -46,7 +47,7 @@ Azure Migrate podporuje nasazení v Azure Government.
 
 - Můžete zjišťovat a hodnotit virtuální počítače VMware, virtuální počítače Hyper-V a fyzické servery.
 - Do Azure můžete migrovat virtuální počítače VMware, virtuální počítače Hyper-V a fyzické servery.
-- Pro migraci VMware můžete použít migraci bez agentů nebo agenta na základě agentů. [Přečtěte si další informace](server-migrate-overview.md).
+- Pro migraci VMware můžete použít migraci bez agentů nebo agenta na základě agentů. [Další informace](server-migrate-overview.md).
 - [Kontrola](migrate-support-matrix.md#supported-geographies-azure-government) podporovaných geografických oblastí a oblastí pro Azure Government.
 - [Analýza závislostí založená na agentech](concepts-dependency-visualization.md#agent-based-analysis) není v Azure Government podporovaná.
 - Funkce ve verzi Preview jsou podporované v Azure Government, konkrétně v případě [analýzy závislostí bez agenta](concepts-dependency-visualization.md#agentless-analysis)a [zjišťování aplikací](how-to-discover-applications.md).

@@ -1,24 +1,22 @@
 ---
-title: Co je verze Preview Azure Firewall Manageru?
+title: Co je Azure Firewall Manager?
 description: Další informace o funkcích Azure Firewall Manageru
 author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 06/11/2020
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: bef948def487e2b60764641e6cf38a3e122e2f87
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: 8b457198655af50427545a0e93e2cfe6903131c8
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84792149"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563748"
 ---
-# <a name="what-is-azure-firewall-manager-preview"></a>Co je verze Preview Azure Firewall Manageru?
+# <a name="what-is-azure-firewall-manager"></a>Co je Azure Firewall Manager?
 
-[!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
-
-Verze Preview služby Azure Firewall Manager je služba pro správu zabezpečení, která poskytuje centrální zásady zabezpečení a správu směrování pro hraniční zabezpečení na základě cloudu. 
+Azure Firewall Manager je služba pro správu zabezpečení, která poskytuje centrální zásady zabezpečení a správu směrování pro hraniční zabezpečení na základě cloudu. 
 
 Správce brány firewall může poskytovat správu zabezpečení pro dva typy síťové architektury:
 
@@ -33,9 +31,9 @@ Podrobné porovnání *zabezpečeného virtuálního rozbočovače* a architektu
 
 ![firewall – správce](media/overview/trusted-security-partners.png)
 
-## <a name="azure-firewall-manager-preview-features"></a>Funkce Preview nástroje Azure Firewall Manager
+## <a name="azure-firewall-manager-features"></a>Funkce Azure Firewall Manageru
 
-Verze Preview nástroje Azure Firewall Manager nabízí tyto funkce:
+Azure Firewall Manager nabízí následující funkce:
 
 ### <a name="central-azure-firewall-deployment-and-configuration"></a>Nasazení a konfigurace centrálního Azure Firewall
 
@@ -43,7 +41,7 @@ Můžete centrálně nasazovat a konfigurovat víc instancí Azure Firewall, kte
 
 ### <a name="hierarchical-policies-global-and-local"></a>Hierarchické zásady (globální a místní)
 
-Pomocí nástroje Azure Firewall Manager Preview můžete centrálně spravovat zásady Azure Firewall napříč několika zabezpečenými virtuálními rozbočovači. Vaše centrální týmy IT můžou vytvářet globální zásady brány firewall, aby vynutily zásady brány firewall pro celou organizaci napříč týmy. Místně vytvořené zásady brány firewall umožňují pro lepší flexibilitu DevOps model samoobslužných služeb.
+Pomocí nástroje Azure Firewall Manager můžete centrálně spravovat zásady Azure Firewall napříč několika zabezpečenými virtuálními rozbočovači. Vaše centrální týmy IT můžou vytvářet globální zásady brány firewall, aby vynutily zásady brány firewall pro celou organizaci napříč týmy. Místně vytvořené zásady brány firewall umožňují pro lepší flexibilitu DevOps model samoobslužných služeb.
 
 ### <a name="integrated-with-third-party-security-as-a-service-for-advanced-security"></a>Integrace se zabezpečením od jiných výrobců jako služby pro pokročilé zabezpečení
 
@@ -60,7 +58,7 @@ Tato funkce je dostupná jenom u zabezpečených nasazení virtuálních rozboč
 
    Využijte možnosti připojení a globální distribuce Azure a jednoduše přidejte filtrování třetích stran pro scénáře do Internetu.
 
-Další informace o důvěryhodných poskytovatelích zabezpečení najdete v tématu [co jsou důvěryhodné bezpečnostní partneři Azure firewall Manageru (Preview)?](trusted-security-partners.md)
+Další informace o zprostředkovatelích zabezpečení najdete v tématu [co jsou poskytovatelé partnerů zabezpečení Azure firewall Manageru?](trusted-security-partners.md)
 
 ### <a name="centralized-route-management"></a>Centralizovaná správa tras
 
@@ -76,20 +74,17 @@ Zásady Azure Firewall lze používat napříč oblastmi. Můžete například v
 
 ## <a name="known-issues"></a>Známé problémy
 
-Verze Preview Azure Firewall Manageru má následující známé problémy:
+Azure Firewall Manager má následující známé problémy:
 
 |Problém  |Popis  |Omezení rizik  |
 |---------|---------|---------|
-|Omezení filtrování třetích stran.|Filtrování přenosů V2I s poskytovateli třetích stran není podporované u Azure Firewallch B2V a V2V.|Prověřování|
 |Rozdělení provozu není v současné době podporováno.|Rozdělování provozu Office 365 a Azure Public PaaS se v tuto chvíli nepodporuje. V takovém případě je třeba vybrat poskytovatele třetí strany pro V2I nebo B2I také odeslat veškerý provoz Azure Public PaaS a Office 365 prostřednictvím partnerské služby.|Zkoumání rozdělení provozu v centru.
 |Jeden zabezpečený virtuální rozbočovač na oblast.|Pro každou oblast nemůžete mít více než jedno zabezpečené virtuální rozbočovače.|Vytvoření více virtuálních sítí WAN v určité oblasti.|
 |Základní zásady musí být ve stejné oblasti jako místní zásady.|Vytvořte všechny místní zásady ve stejné oblasti jako základní zásady. Můžete přesto použít zásadu, která byla vytvořena v jedné oblasti v zabezpečeném centru z jiné oblasti.|Prověřování|
 |Komunikace mezi rozbočovači nefunguje s zabezpečeným virtuálním rozbočovačem|Zabezpečené virtuální rozbočovače na zabezpečenou komunikaci virtuálního rozbočovače ještě není podporovaná.|Prověřování|
 |Všechna zabezpečená virtuální centra, která sdílejí stejnou virtuální síť WAN, musí být ve stejné skupině prostředků.|Toto chování je v současné době zarovnané na virtuální rozbočovače WAN.|Vytvořte více virtuálních sítí WAN, aby bylo možné vytvořit zabezpečené virtuální rozbočovače v různých skupinách prostředků.|
-|Skupiny IP adres nejsou v zásadách brány firewall podporovány.|Skupiny IP adres jsou ve verzi Public Preview a aktuálně jsou podporovány pouze s tradičními pravidly brány firewall.|Probíhá oprava.
-|Odběry poskytovatele Cloud Solution Provider (CSP) nejsou podporovány.|V současné době nejsou [předplatná CSP](https://azure.microsoft.com/offers/ms-azr-0145p/) podporována.|Prověřování
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Přehled nasazení Preview Azure firewall Manageru](deployment-overview.md)
+- [Přehled nasazení Azure firewall Manageru](deployment-overview.md)
 - Přečtěte si o [zabezpečených virtuálních rozbočovačích](secured-virtual-hub.md).

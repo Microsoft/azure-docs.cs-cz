@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: tracking-python
-ms.openlocfilehash: 61402a851ddac1cc279c51a59e48bed7949da273
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: c84e36f668a9b5cd7fdb61103300d971fdf6c0fa
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85412851"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563085"
 ---
 # <a name="quickstart-extract-text-and-layout-information-using-the-form-recognizer-rest-api-with-python"></a>Rychlý Start: extrakce informací o textu a rozložení pomocí REST API pro rozpoznávání formulářů v Pythonu
 
@@ -39,7 +39,7 @@ K dokončení tohoto rychlého startu musíte mít:
 
 ## <a name="analyze-the-form-layout"></a>Analyzovat rozložení formuláře
 
-Chcete-li zahájit analýzu rozložení, zavolejte rozhraní API **[analyzovat rozložení](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeLayoutAsync)** pomocí skriptu Pythonu níže. Před spuštěním skriptu proveďte tyto změny:
+Chcete-li zahájit analýzu rozložení, zavolejte rozhraní API **[analyzovat rozložení](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync)** pomocí skriptu Pythonu níže. Před spuštěním skriptu proveďte tyto změny:
 
 1. Nahraďte `<Endpoint>` koncovým bodem, který jste získali v rámci předplatného pro rozpoznávání formulářů.
 1. Nahraďte `<path to your form>` cestou k místnímu dokumentu formuláře.
@@ -283,4 +283,4 @@ Podívejte se na následující obrázek faktury a příslušný výstup JSON. V
 V tomto rychlém startu jste k extrakci rozložení textu faktury použili REST API pro rozpoznávání formulářů pomocí Pythonu. Dále si přečtěte referenční dokumentaci a prozkoumejte rozhraní API pro rozpoznávání formulářů ve větší hloubkě.
 
 > [!div class="nextstepaction"]
-> [Referenční dokumentace REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeLayoutAsync)
+> [Referenční dokumentace REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync)

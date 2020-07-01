@@ -1,6 +1,6 @@
 ---
 title: 'Rychlý Start: zprovoznění v Azure Sentinel'
-description: Pomocí tohoto dokumentu pro rychlý Start se dozvíte, jak shromažďovat data v Azure Sentinel.
+description: V tomto rychlém startu se dozvíte, jak nejdřív povolit Sentinel a pak připojit zdroje dat do zprovoznění Azure Sentinel.
 services: sentinel
 author: yelevin
 ms.author: yelevin
@@ -9,12 +9,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: a07ba26128d1d4689e820ec8e300ca9420c3c2d2
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.openlocfilehash: d895ff3a16f8e21f73845c03d8bec83ded9bcd43
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85367083"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85564547"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>Rychlý Start: zprovoznění služby Azure Sentinel
 
@@ -47,7 +47,7 @@ Po připojení zdrojů dat si můžete vybrat z Galerie odborných vytvořených
 
    ![search](./media/quickstart-onboard/search-product.png)
 
-1. Vyberte možnost **Přidat**.
+1. Vyberte **Přidat**.
 
 1. Vyberte pracovní prostor, který chcete použít, nebo vytvořte nový. Službu Azure Sentinel můžete spustit ve více než jednom pracovním prostoru, ale data jsou izolovaná do jednoho pracovního prostoru.
 

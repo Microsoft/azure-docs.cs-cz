@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: 7ba8d201c29b5e3835fec52d8c479a388ca07f71
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d457e911dec481e2b1a8bdae1ca05f80452bb883
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81312997"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85557181"
 ---
 # <a name="quickstart-convert-a-model-for-rendering"></a>Rychlý Start: převod modelu pro vykreslování
 
@@ -48,9 +48,9 @@ Budete potřebovat:
 
 ## <a name="azure-setup"></a>Nastavení Azure
 
-Pokud ještě nemáte účet, přejděte na [https://azure.microsoft.com/get-started/](https://azure.microsoft.com/get-started/), klikněte na možnost bezplatný účet a postupujte podle pokynů.
+Pokud ještě nemáte účet, přejděte na [https://azure.microsoft.com/get-started/](https://azure.microsoft.com/get-started/) , klikněte na možnost bezplatný účet a postupujte podle pokynů.
 
-Jakmile budete mít účet Azure, pokračujte na [https://ms.portal.azure.com/#home](https://ms.portal.azure.com/#home).
+Jakmile budete mít účet Azure, pokračujte na [https://ms.portal.azure.com/#home](https://ms.portal.azure.com/#home) .
 
 ### <a name="storage-account-creation"></a>Vytvoření účtu úložiště
 
@@ -70,7 +70,7 @@ Po kliknutí na toto tlačítko se zobrazí následující obrazovka s vlastnost
 Vyplňte formulář následujícím způsobem:
 
 * Na odkaz pod rozevíracím seznamem vytvořte novou skupinu prostředků a pojmenujte ji **ARR_Tutorial**
-* Do pole **název účtu úložiště**zadejte jedinečný název. **Tento název musí být globálně jedinečný**, jinak se zobrazí výzva, která vás informuje, že název je připravený. V rámci tohoto rychlého startu pojmenujte IT **arrtutorialstorage**. V tomto rychlém startu je tedy budete muset nahradit vaším jménem pro všechny výskyty.
+* Do pole **název účtu úložiště**zadejte jedinečný název. **Tento název musí být globálně jedinečný**. v opačném případě se zobrazí výzva s dotazem, že název je již obsazen. V rámci tohoto rychlého startu pojmenujte IT **arrtutorialstorage**. V tomto rychlém startu je tedy budete muset nahradit vaším jménem pro všechny výskyty.
 * Vyberte **umístění** , které je blízko vás. V ideálním případě používejte stejné umístění, které se používá k nastavení vykreslování v druhém rychlém startu.
 * **Výkon** je nastavený na standardní.
 * **Typ účtu** je nastavený na StorageV2 (obecné účely v2).
@@ -108,7 +108,7 @@ Teď byste měli mít dva kontejnery úložiště objektů BLOB:
 
 ## <a name="run-the-conversion"></a>Spuštění převodu
 
-Aby bylo snazší volat službu převodu assetů, poskytujeme skript nástrojů. Je umístěný ve složce *Scripts* a nazývá se **Conversion. ps1**.
+Aby bylo snazší volat službu převodu assetů, poskytujeme skript nástrojů. Je umístěný ve složce *Scripts* a nazývá se **Conversion.ps1**.
 
 Konkrétně tento skript
 
@@ -117,7 +117,7 @@ Konkrétně tento skript
 1. cyklické dotazování na rozhraní API stavu převodu s načteným ID převodu, dokud se proces převodu neukončí s úspěchem nebo selháním
 1. Načte odkaz na převedený prostředek ve výstupním úložišti.
 
-Skript načte svou konfiguraci ze souboru *Scripts\arrconfig.JSON*. Otevřete tento soubor JSON v textovém editoru.
+Skript načte svou konfiguraci ze souboru *Scripts\arrconfig.jsv*. Otevřete tento soubor JSON v textovém editoru.
 
 ```json
 {
@@ -149,15 +149,15 @@ Konfigurace v rámci skupiny **accountSettings** (ID účtu a klíč) by měla b
 Ve skupině **assetConversionSettings** se ujistěte, že měníte skupinu **Resources**, **blobInputContainerName**a **blobOutputContainerName** , jak vidíte výše.
 Všimněte si, že hodnota **arrtutorialstorage** musí být nahrazena jedinečným názvem, který jste vybrali během vytváření účtu úložiště.
 
-Změňte **localAssetDirectoryPath** tak, aby odkazoval na adresář na disku, který obsahuje model, který chcete převést. Pozor na správné řídicí lomítka ("\\") v cestě pomocí dvojitých zpětných lomítek (\\\\"").
+Změňte **localAssetDirectoryPath** tak, aby odkazoval na adresář na disku, který obsahuje model, který chcete převést. Pozor na správné řídicí lomítka (" \\ ") v cestě pomocí dvojitých zpětných lomítek (" \\ \\ ").
 
-Všechna data z cesty zadané v **localAssetDirectoryPath** se nahrají do kontejneru objektů BLOB **blobInputContainerName** pod podcestou určenou **inputFolderPath**. Proto se v příkladu konfigurace nad rámec obsahu adresáře "D:\\TMP\\robot" nahraje do kontejneru objektů blob "arrinput" účtu úložiště "arrtutorialstorage" v cestě "robotConversion". Již existující soubory budou přepsány.
+Všechna data z cesty zadané v **localAssetDirectoryPath** se nahrají do kontejneru objektů BLOB **blobInputContainerName** pod podcestou určenou **inputFolderPath**. Proto se v příkladu konfigurace nad rámec obsahu adresáře "D: \\ TMP \\ robot" nahraje do kontejneru objektů blob "arrinput" účtu úložiště "arrtutorialstorage" v cestě "robotConversion". Již existující soubory budou přepsány.
 
-Změňte **inputAssetPath** na cestu k modelu, který se má převést – cesta je relativní k localAssetDirectoryPath. Jako oddělovač cest použijte "/"\\místo "". Takže pro soubor robot. FBX, který se nachází přímo v "D:\\TMP\\robot", používá "robot. FBX".
+Změňte **inputAssetPath** na cestu k modelu, který se má převést – cesta je relativní k localAssetDirectoryPath. Jako oddělovač cest použijte "/" místo " \\ ". Takže pro soubor robot. FBX, který se nachází přímo v "D: \\ TMP \\ robot", používá "robot. FBX".
 
 Až se model převede, zapíše se zpátky do kontejneru úložiště, který je zadaný pomocí **blobOutputContainerName**. Je možné zadat dílčí cestu zadáním volitelné **outputFolderPath**. Ve výše uvedeném příkladu se "robot. arrAsset" zkopíruje do výstupního kontejneru objektů BLOB v části převedený/robot.
 
-Nastavení konfigurace **outputAssetFileName** Určuje název převedeného prostředku – parametr je nepovinný a název výstupního souboru bude odvozený ze vstupního souboru jinak. 
+Nastavení konfigurace **outputAssetFileName** Určuje název převedeného prostředku – parametr je nepovinný a název výstupního souboru bude odvozený ze vstupního souboru jinak.
 
 Otevřete PowerShell, ujistěte se, že jste nainstalovali *Azure PowerShell* , jak je uvedeno v části [požadavky](#prerequisites). Pak se přihlaste k předplatnému pomocí následujícího příkazu a postupujte podle pokynů na obrazovce:
 
@@ -174,7 +174,9 @@ Přejděte do `azure-remote-rendering\Scripts` adresáře a spusťte převodní 
 .\Conversion.ps1 -UseContainerSas
 ```
 
-Mělo by se zobrazit něco podobného ![: Conversion. ps1](./media/successful-conversion.png)
+Mělo by se zobrazit něco podobného: ![Conversion.ps1](./media/successful-conversion.png)
+
+## <a name="insert-new-model-into-quickstart-sample-app"></a>Vložení nového modelu do ukázkové aplikace pro rychlé zprovoznění
 
 Převodní skript generuje identifikátor URI *sdíleného přístupového podpisu (SAS)* pro převedený model. Teď můžete tento identifikátor URI zkopírovat jako **název modelu** do ukázkové aplikace pro rychlé zprovoznění (viz [rychlý Start: vykreslení modelu pomocí Unity](render-model.md)).
 
@@ -186,9 +188,9 @@ Převodní skript generuje identifikátor URI *sdíleného přístupového podpi
 
 Identifikátor URI SAS vytvořený skriptem pro převod bude platný pouze 24 hodin. Po vypršení platnosti však nemusíte model znovu převádět. Místo toho můžete vytvořit nové SAS na portálu, jak je popsáno v následujících krocích:
 
-1. Přejděte na web [Azure Portal](https://www.portal.azure.com).
-1. Klikněte na prostředek **účtu úložiště** : ![přístup k podpisu](./media/portal-storage-accounts.png)
-1. Na následující obrazovce klikněte na Průzkumník služby **Storage** na levém panelu a v kontejneru úložiště objektů BLOB *arroutput* Najděte svůj výstupní model (soubor *. arrAsset* ). Klikněte pravým tlačítkem na soubor a v místní nabídce vyberte **získat sdílený přístupový podpis** : ![přístup k podpisu](./media/portal-storage-explorer.png)
+1. Přejít na [Azure Portal](https://www.portal.azure.com)
+1. Klikněte na prostředek **účtu úložiště** : ![ přístup k podpisu](./media/portal-storage-accounts.png)
+1. Na následující obrazovce klikněte na Průzkumník služby **Storage** na levém panelu a v kontejneru úložiště objektů BLOB *arroutput* Najděte svůj výstupní model (soubor *. arrAsset* ). Klikněte pravým tlačítkem na soubor a v místní nabídce vyberte **získat sdílený přístupový podpis** : ![ přístup k podpisu](./media/portal-storage-explorer.png)
 1. Otevře se nová obrazovka, kde můžete vybrat datum vypršení platnosti. Stiskněte **vytvořit**a zkopírujte identifikátor URI, který je zobrazen v následujícím dialogovém okně. Tento nový identifikátor URI nahrazuje dočasný identifikátor URI, který skript vytvořil.
 
 ## <a name="next-steps"></a>Další kroky
@@ -198,4 +200,4 @@ Teď, když znáte základy, podíváme se na naše kurzy, abyste získali podro
 Pokud se chcete seznámit s podrobnostmi o převodu modelu, podívejte [se na převod modelu REST API](../how-tos/conversion/conversion-rest-api.md).
 
 > [!div class="nextstepaction"]
-> [Kurz: vytvoření projektu Unity od začátku](../tutorials/unity/project-setup.md)
+> [Kurz: zobrazení vzdáleně generovaných modelů](../tutorials/unity/view-remote-models/view-remote-models.md)

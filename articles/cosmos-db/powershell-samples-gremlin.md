@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/12/2020
 ms.author: mjbrown
-ms.openlocfilehash: 30a3e4be070d0bdc628fbf891755049e1979e503
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 62036a507061a956febb1eb63e6607abcce7467c
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85263377"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563881"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db-gremlin-api"></a>Ukázky Azure PowerShell pro rozhraní API pro Azure Cosmos DB Gremlin
 
@@ -20,7 +20,7 @@ Následující tabulka obsahuje odkazy na ukázkové Azure PowerShell skripty pr
 > [!NOTE]
 > Ukázky využívají rutiny [AZ. CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) Management. Pravidelně prosím zkontrolujte aktualizace `Az.CosmosDB` .
 
-| | |
+|Úkol | Popis |
 |---|---|
 |[Vytvoření účtu, databáze a grafu](scripts/powershell/gremlin/ps-gremlin-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoří účet Azure Cosmos, databázi a graf. |
 |[Vypsat nebo získat databáze nebo grafy](scripts/powershell/gremlin/ps-gremlin-list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vypíše nebo Získá databázi nebo graf. |

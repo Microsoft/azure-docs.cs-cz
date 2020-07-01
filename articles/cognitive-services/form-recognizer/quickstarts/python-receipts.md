@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: tracking-python
-ms.openlocfilehash: bb57d61f3f60e6461243ade8be855ffe4d119345
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 5a2b72e87f77d29e62336f0d3b9c2b956ec417e1
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85341349"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563072"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-python"></a>Rychlý Start: extrakce údajů o příjemcích pomocí REST API pro rozpoznávání formulářů v Pythonu
 
@@ -38,7 +38,7 @@ K dokončení tohoto rychlého startu musíte mít:
 
 ## <a name="analyze-a-receipt"></a>Analýza účtenky
 
-Chcete-li zahájit analýzu účtenky, zavolejte rozhraní API **[analýzy pro příjem](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeReceiptAsync)** pomocí níže uvedeného skriptu Pythonu. Před spuštěním skriptu proveďte tyto změny:
+Chcete-li zahájit analýzu účtenky, zavolejte rozhraní API **[analýzy pro příjem](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync)** pomocí níže uvedeného skriptu Pythonu. Před spuštěním skriptu proveďte tyto změny:
 
 1. Nahraďte `<Endpoint>` koncovým bodem, který jste získali v rámci předplatného pro rozpoznávání formulářů.
 1. Nahraďte `<your receipt URL>` adresou URL obrázku účtenky.
@@ -94,7 +94,7 @@ https://cognitiveservice/formrecognizer/v2.0/prebuilt/receipt/operations/54f0b07
 
 ## <a name="get-the-receipt-results"></a>Získání výsledků pro příjem
 
-Po volání funkce **analyzovat příjem** rozhraní API zavoláte rozhraní API pro **[získání výsledku analýzy](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/GetAnalyzeReceiptResult)** pro získání stavu operace a extrahovaná data. Do dolní části skriptu Pythonu přidejte následující kód. Použije se hodnota ID operace v novém volání rozhraní API. Tento skript volá rozhraní API v pravidelných intervalech, dokud nebudou k dispozici výsledky. Doporučujeme interval jednoho sekundy nebo více.
+Po volání funkce **analyzovat příjem** rozhraní API zavoláte rozhraní API pro **[získání výsledku analýzy](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeReceiptResult)** pro získání stavu operace a extrahovaná data. Do dolní části skriptu Pythonu přidejte následující kód. Použije se hodnota ID operace v novém volání rozhraní API. Tento skript volá rozhraní API v pravidelných intervalech, dokud nebudou k dispozici výsledky. Doporučujeme interval jednoho sekundy nebo více.
 
 ```python
 n_tries = 10
@@ -466,4 +466,4 @@ Podívejte se na následující obrázek účtenky a příslušný výstup JSON.
 V tomto rychlém startu jste k extrakci obsahu prodejní příjemky použili REST API pro rozpoznávání formuláře pomocí Pythonu. Dále si přečtěte referenční dokumentaci a prozkoumejte rozhraní API pro rozpoznávání formulářů ve větší hloubkě.
 
 > [!div class="nextstepaction"]
-> [Referenční dokumentace REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeReceiptAsync)
+> [Referenční dokumentace REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync)

@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: sample
 ms.date: 12/03/2019
-ms.openlocfilehash: 6e1dc5f0016c27d987361aa52e59682806a31c95
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: d85176ee092011d7c697856921f911da6a5e235a
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118912"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85561681"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>Začínáme s rozhraním Azure Cosmos DB API pro tabulky a Azure Table Storage s využitím .NET SDK
 
@@ -255,7 +255,7 @@ Klikněte pravým tlačítkem na projekt **CosmosTableSamples**. Vyberte **Přid
  }
 ```
 
-### <a name="get-an-entity-from-a-partition"></a>Získat entitu z oddílu
+## <a name="get-an-entity-from-a-partition"></a>Získat entitu z oddílu
 
 Entitu můžete získat z oddílu pomocí metody načíst pod třídou [TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableoperation) . Následující příklad kódu získá klíč řádku klíč oddílu, e-mail a telefonní číslo entity zákazníka. Tento příklad také vytiskne jednotky žádosti spotřebované pro dotazování na entitu. Chcete-li zadat dotaz na entitu, přidejte následující kód do souboru **SamplesUtils.cs** : 
 

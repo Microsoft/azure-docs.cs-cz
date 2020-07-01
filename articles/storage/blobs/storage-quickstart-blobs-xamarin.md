@@ -7,12 +7,12 @@ ms.date: 05/08/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: e0845e7cdc2ce6dc57ed5a18d263f117f0c2005c
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: c66766b39ae104cf4a031c3fd73c173e81d47fb8
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83006241"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563482"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-with-xamarin"></a>Rychlý Start: Klientská knihovna pro úložiště objektů BLOB v Azure V12 s využitím Xamarin
 
@@ -26,7 +26,7 @@ Použijte klientskou knihovnu služby Azure Blob Storage V12 s Xamarin na:
 * Stažení objektu blob do zařízení
 * Odstranění kontejneru
 
-[API reference documentation](/dotnet/api/azure.storage.blobs) | [Ukázková](https://github.com/Azure-Samples/storage-blobs-xamarin-quickstart) dokumentace k rozhraní API – ukázka balíčku[zdrojového kódu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs) | knihovny[(NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs) | 
+[Referenční dokumentace k](/dotnet/api/azure.storage.blobs)  |  rozhraní API [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs)  |  [Balíček (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs)  |  [Ukázka](https://github.com/Azure-Samples/storage-blobs-xamarin-quickstart)
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
@@ -86,10 +86,10 @@ Na následujícím diagramu jsou vztahy těchto prostředků.
 
 Pro interakci s těmito prostředky použijte následující třídy .NET:
 
-* [BlobServiceClient](/dotnet/api/azure.storage.blobs.blobserviceclient): `BlobServiceClient` třída umožňuje manipulovat s Azure Storage prostředky a kontejnery objektů BLOB.
-* [BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient): `BlobContainerClient` třída umožňuje manipulovat s kontejnery Azure Storage a jejich objekty blob.
-* [BlobClient](/dotnet/api/azure.storage.blobs.blobclient): `BlobClient` třída umožňuje manipulovat s objekty blob Azure Storage.
-* [BlobDownloadInfo](/dotnet/api/azure.storage.blobs.models.blobdownloadinfo): `BlobDownloadInfo` třída představuje vlastnosti a obsah vrácený stažením objektu BLOB.
+* [BlobServiceClient](/dotnet/api/azure.storage.blobs.blobserviceclient): `BlobServiceClient` Třída umožňuje manipulovat s Azure Storage prostředky a kontejnery objektů BLOB.
+* [BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient): `BlobContainerClient` Třída umožňuje manipulovat s kontejnery Azure Storage a jejich objekty blob.
+* [BlobClient](/dotnet/api/azure.storage.blobs.blobclient): `BlobClient` Třída umožňuje manipulovat s objekty blob Azure Storage.
+* [BlobDownloadInfo](/dotnet/api/azure.storage.blobs.models.blobdownloadinfo): `BlobDownloadInfo` Třída představuje vlastnosti a obsah vrácený stažením objektu BLOB.
 
 ## <a name="code-examples"></a>Příklady kódu
 
@@ -150,8 +150,8 @@ protected async override void OnAppearing()
 
 Následující fragment kódu:
 
-1. `MemoryStream` Vytvoří text.
-1. Nahraje text do objektu BLOB voláním funkce [UploadAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.uploadblobasync?view=azure-dotnet#Azure_Storage_Blobs_BlobContainerClient_UploadBlobAsync_System_String_System_IO_Stream_System_Threading_CancellationToken_) třídy [BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient) a předáním názvu souboru, který definuje proměnnou úrovně třídy a `MemoryStream` textu. Tato metoda vytvoří objekt blob, pokud ještě neexistuje, a přepíše ho, pokud už existoval.
+1. Vytvoří `MemoryStream` text.
+1. Nahraje text do objektu BLOB voláním funkce [UploadAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.uploadblobasync?view=azure-dotnet#Azure_Storage_Blobs_BlobContainerClient_UploadBlobAsync_System_String_System_IO_Stream_System_Threading_CancellationToken_) třídy [BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient) a jejím předáním do souboru FileName a `MemoryStream` textu. Tato metoda vytvoří objekt blob, pokud ještě neexistuje, a přepíše ho, pokud už existoval.
 
 Přidejte tento kód do souboru *MainPage.XAML.cs* :
 

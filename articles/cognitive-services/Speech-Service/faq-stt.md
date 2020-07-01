@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/4/2019
 ms.author: panosper
-ms.openlocfilehash: a279aebdd19ebd3a41ddad0c1c279937e00838c2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c572c03936a809ce2f5ccb0071352d6c84c2ee90
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77168466"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85561569"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Časté otázky týkající se řeči na text
 
@@ -100,7 +100,7 @@ Pro zvýšení souběžnosti pro ***vlastní model***potřebujeme následující
   - přihlásit (v případě potřeby)
   - Vyberte svůj projekt a nasazení,
   - Vyberte koncový bod, pro který potřebujete zvýšení souběžnosti,
-  - Zkopírujte `Endpoint ID`.
+  - Zkopírujte `Endpoint ID` .
 
 Pro zvýšení souběžnosti pro ***základní model***potřebujeme následující informace:
 
@@ -114,10 +114,13 @@ a buď
 
 - ID prostředku pro vaše předplatné:
   - Přejít na [Azure Portal](https://portal.azure.com),
-  - do `Cognitive Services` vyhledávacího pole vyberte.
+  - `Cognitive Services`do vyhledávacího pole vyberte.
   - ze zobrazených služeb vyberte službu rozpoznávání řeči, pro kterou chcete, aby se souběžnost zvýšila,
   - Zobrazit `Properties` pro tuto službu,
-  - Zkopírujte dokončeno `Resource ID`.
+  - Zkopírujte dokončeno `Resource ID` .
+  
+>[!NOTE]
+>[Kontejnery](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-container-howto) nevyžadují zvýšení omezení souběžnosti, protože kontejnery jsou omezené jenom procesory hardwaru, na kterých jsou hostované.
 
 ## <a name="importing-data"></a>Importing data
 
@@ -197,5 +200,5 @@ Prostředí pro rozpoznávání řeči, která jsou integrovaná do Office 365, 
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Odstraňování potíží](troubleshooting.md)
-- [Poznámky k verzi](releasenotes.md)
+- [Řešení potíží](troubleshooting.md)
+- [Zpráva k vydání verze](releasenotes.md)

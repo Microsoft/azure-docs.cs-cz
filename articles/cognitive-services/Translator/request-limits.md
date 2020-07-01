@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 05/26/2020
+ms.date: 06/29/2020
 ms.author: swmachan
-ms.openlocfilehash: 100084a244944bcaf0d566e347d56dd4a03ecfae
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: d9fda476a184731cd00317facbeceaf7bdf55edf
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995781"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85561472"
 ---
 # <a name="request-limits-for-translator"></a>Omezení požadavků pro překladatele
 
@@ -31,8 +31,8 @@ Následující tabulka uvádí prvky pole a omezení znaků pro každou operaci 
 |:----|:----|:----|:----|
 | Překlad | 5 000    | 100    | 5 000 |
 | Transliterace | 5 000    | 10    | 5 000 |
-| Zjišťování | 10 000 |    100 |    50 000 |
-| BreakSentence | 10 000    | 100 |    50 000 |
+| Zjišťování | 10 000 |    100 |    50,000 |
+| BreakSentence | 10 000    | 100 |    50,000 |
 | Slovníkové vyhledávání| 100 |    10    | 1 000 |
 | Příklady slovníku | 100 pro text a 100 pro překlad (200 celkem)| 10|    2 000 |
 
@@ -66,14 +66,13 @@ Při použití funkce [BreakSentence](https://docs.microsoft.com/azure/cognitive
 
 | Jazyk | Kód | Omezení počtu znaků |
 |----------|------|-----------------|
-| Čínština | ZH | 132 |
-| Němčina | & | 290 |
-| Italština | její | 280 |
-| Japonština | dža | 150 |
-| Portugalština | pt | 290 |
-| Španělština | Ano | 280 |
-| Italština | její | 280 |
-| Thajština | Kolik | 258 |
+| Čínština | ZH | 166 |
+| Němčina | & | 800 |
+| Italština | její | 800 |
+| Japonština | dža | 166 |
+| Portugalština | pt | 800 |
+| Španělština | Ano | 800 |
+| Thajština | Kolik | 180 |
 
 > [!NOTE]
 > Toto omezení se nevztahuje na překlady.

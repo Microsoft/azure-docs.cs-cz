@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: spuštění PlayBook ve službě Azure Sentinel'
-description: 'Kurz: Tento článek popisuje, jak spustit PlayBook ve službě Azure Sentinel.'
+description: Tento kurz vám pomůžete používat playbooky zabezpečení v Azure Sentinel k nastavení automatizovaných odpovědí na hrozby pro problémy související se zabezpečením.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/18/2019
 ms.author: yelevin
-ms.openlocfilehash: f6adcb978dbe540d3bdd352089d4dde407d0fb4c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5bc6ca30b9dff3686b16fe5237f815f16f849e9e
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77585080"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85558479"
 ---
 # <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel"></a>Kurz: nastavení automatických odpovědí na hrozby v Azure Sentinel
 

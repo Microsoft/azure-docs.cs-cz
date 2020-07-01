@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 05/27/2020
+ms.date: 06/29/2020
 ms.author: pafarley
-ms.openlocfilehash: 04418e39b1bd0a180a1f1130b2230e31050faa4b
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: ec39b4c6a478af22363e7ff30fee81ae3509f724
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118628"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85555875"
 ---
 # <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>Kurz: středně náročné image produktů elektronického obchodování s využitím Azure Content Moderator
 
@@ -109,7 +109,7 @@ Obrázky se zobrazí na kartě Revize [Nástroje pro kontrolu Content moderator]
 
 ## <a name="submit-a-list-of-test-images"></a>Odeslat seznam imagí testu
 
-Jak vidíte v metodě **Main** , tento program hledá adresář "C:test" se souborem _URL. txt_ , který obsahuje seznam adres URL obrázků. Vytvořte tento soubor a adresář, nebo změňte cestu tak, aby odkazovala na textový soubor. Pak tento soubor naplňte pomocí adres URL imagí, které chcete testovat.
+Jak vidíte v metodě **Main** , tento program hledá adresář "C:test" se souborem _Urls.txt_ , který obsahuje seznam adres URL obrázků. Vytvořte tento soubor a adresář, nebo změňte cestu tak, aby odkazovala na textový soubor. Pak tento soubor naplňte pomocí adres URL imagí, které chcete testovat.
 
 [!code-csharp[Main: set up test directory, read lines](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=38-51)]
 

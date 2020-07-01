@@ -1,24 +1,21 @@
 ---
-title: Vytvoření úložiště znalostí (Preview) v Azure Portal
+title: Vytvoření úložiště znalostí v Azure Portal
 titleSuffix: Azure Cognitive Search
-description: Pomocí Průvodce importem dat vytvoříte úložiště znalostí používané pro zachování obohaceného obsahu. Připojte se ke službě Knowledge Store pro analýzu z jiných aplikací nebo odešlete obohacený obsah do navazujících procesů. Tato funkce je aktuálně ve verzi Public Preview.
+description: Pomocí Průvodce importem dat vytvoříte úložiště znalostí používané pro zachování obohaceného obsahu. Připojte se ke službě Knowledge Store pro analýzu z jiných aplikací nebo odešlete obohacený obsah do navazujících procesů.
 author: HeidiSteen
 ms.author: heidist
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/07/2020
-ms.openlocfilehash: 06ddb50173299bbb99518921d1589d2f15b0aa88
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.date: 06/30/2020
+ms.openlocfilehash: 5d21508a794683096009f53314bebca4e4f2ac98
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488677"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565310"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>Rychlý Start: vytvoření služby Azure Kognitivní hledání Knowledge Store v Azure Portal
-
-> [!IMPORTANT] 
-> Znalostní databáze je aktuálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v tématu [doplňujících podmínek použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 
 Znalostní báze je funkce služby Azure Kognitivní hledání, která uchovává výstup z kanálu zpracování obsahu pro následné analýzy nebo zpracování pro příjem dat. 
 
@@ -43,7 +40,7 @@ Než začnete, musíte mít následující:
 
 V následujících krocích nastavte kontejner objektů BLOB v Azure Storage, aby se ukládaly heterogenní soubory obsahu.
 
-1. [Stáhněte soubor HotelReviews_Free. csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?sp=r&st=2019-11-04T01:23:53Z&se=2025-11-04T16:00:00Z&spr=https&sv=2019-02-02&sr=b&sig=siQgWOnI%2FDamhwOgxmj11qwBqqtKMaztQKFNqWx00AY%3D). Tato data jsou data recenze pro hotely uložená v souboru CSV (pocházející z Kaggle.com) a obsahují 19 kusů zpětné vazby od zákazníků k jednomu hotelu. 
+1. [Stáhněte si HotelReviews_Free.csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?sp=r&st=2019-11-04T01:23:53Z&se=2025-11-04T16:00:00Z&spr=https&sv=2019-02-02&sr=b&sig=siQgWOnI%2FDamhwOgxmj11qwBqqtKMaztQKFNqWx00AY%3D). Tato data jsou data recenze pro hotely uložená v souboru CSV (pocházející z Kaggle.com) a obsahují 19 kusů zpětné vazby od zákazníků k jednomu hotelu. 
 
 1. [Vytvořte si účet Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) nebo v rámci aktuálního předplatného [Najděte existující účet](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) . Použijete službu Azure Storage pro import nezpracovaného obsahu a úložiště Knowledge v konečném výsledku.
 
@@ -55,7 +52,7 @@ V následujících krocích nastavte kontejner objektů BLOB v Azure Storage, ab
 
     ![Nahrajte data](media/knowledge-store-create-portal/upload-command-bar.png "Nahrajte recenze hotelu.")
 
-1. Vyberte soubor **HotelReviews-Free. csv** , který jste stáhli v prvním kroku.
+1. Vyberte soubor **HotelReviews-Free.csv** , který jste si stáhli v prvním kroku.
 
     ![Vytvoření kontejneru objektů blob Azure](media/knowledge-store-create-portal/hotel-reviews-blob-container.png "Vytvoření kontejneru objektů blob Azure")
 
@@ -93,7 +90,7 @@ Nyní jste připraveni na přesun průvodce **importem dat** .
 
 V tomto kroku průvodce vytvoříte dovednosti s obohacením vnímání dovedností. Zdrojová data se skládají z revizí zákazníků v několika jazycích. Mezi dovednosti, které jsou pro tuto datovou sadu relevantní, patří extrakce klíčových frází, detekce mínění a překlad textu. V pozdějším kroku budou tato rozšíření "" provedená "do úložiště znalostní báze jako tabulky Azure.
 
-1. Rozbalte položku **připojit Cognitive Services**. Ve výchozím nastavení je vybrané **bezplatné (omezená rozšíření)** . Tento prostředek můžete použít, protože počet záznamů v HotelReviews-Free. CSV je 19 a tento bezplatný prostředek umožňuje až 20 transakcí za den.
+1. Rozbalte položku **připojit Cognitive Services**. Ve výchozím nastavení je vybrané **bezplatné (omezená rozšíření)** . Tento prostředek můžete použít, protože počet záznamů v HotelReviews-Free.csv je 19 a tento bezplatný prostředek umožňuje až 20 transakcí za den.
 
 1. Rozbalte položku **Přidat rozšíření**.
 

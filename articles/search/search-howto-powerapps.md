@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: tutorial
 ms.date: 04/25/2020
-ms.openlocfilehash: 2a2e292390b2f060bf31d739605d7506203a5619
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: 66289c512a746a30ed8dbd3e5c2df92bea27d907
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901403"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565833"
 ---
 # <a name="tutorial-query-a-cognitive-search-index-from-power-apps"></a>Kurz: dotazování indexu Kognitivní hledání z Power Apps
 
@@ -43,7 +43,7 @@ Konektor v Power Apps je připojení ke zdroji dat. V tomto kroku vytvoříte vl
 
 1. [Přihlaste](http://make.powerapps.com) se k Power Apps.
 
-1. Na levé straně rozbalte položku **Data** > **vlastní konektory**dat.
+1. Na levé straně rozbalte položku **Data**  >  **vlastní konektory**dat.
  
     :::image type="content" source="./media/search-howto-powerapps/1-2-custom-connector.png" alt-text="Nabídka vlastních konektorů" border="true":::
 
@@ -57,7 +57,7 @@ Konektor v Power Apps je připojení ke zdroji dat. V tomto kroku vytvoříte vl
 
    * Barva pozadí ikony (např. #007ee5)
    * Popis (např. "konektor do Azure Kognitivní hledání")
-   * V hostiteli budete muset zadat adresu URL vyhledávací služby (například `<yourservicename>.search.windows.net`).
+   * V hostiteli budete muset zadat adresu URL vyhledávací služby (například `<yourservicename>.search.windows.net` ).
    * Pro základní adresu URL stačí zadat "/".
 
     :::image type="content" source="./media/search-howto-powerapps/1-5-general-info.png" alt-text="Obecný dialog informací" border="true":::
@@ -74,9 +74,9 @@ Konektor v Power Apps je připojení ke zdroji dat. V tomto kroku vytvoříte vl
 
    * Vyberte operaci.`GET`
 
-   * Pro adresu URL zadejte ukázkový dotaz pro index vyhledávání (`search=*` vrátí všechny dokumenty, `$select=` umožňuje zvolit pole). Verze rozhraní API je povinná. V plném rozsahu adresa URL může vypadat takto:`https://mydemo.search.windows.net/indexes/hotels-sample-index/docs?search=*&$select=HotelName,Description,Address/City&api-version=2019-05-06`
+   * Pro adresu URL zadejte ukázkový dotaz pro index vyhledávání ( `search=*` vrátí všechny dokumenty, `$select=` umožňuje zvolit pole). Verze rozhraní API je povinná. V plném rozsahu adresa URL může vypadat takto:`https://mydemo.search.windows.net/indexes/hotels-sample-index/docs?search=*&$select=HotelName,Description,Address/City&api-version=2020-06-30`
 
-   * Pro záhlaví zadejte `Content-Type`. 
+   * Pro záhlaví zadejte `Content-Type` . 
 
      **Power Apps** použije syntaxi k extrakci parametrů z dotazu. Všimněte si, že jsme explicitně definovali vyhledávací pole. 
 
@@ -90,15 +90,15 @@ Konektor v Power Apps je připojení ke zdroji dat. V tomto kroku vytvoříte vl
 
     :::image type="content" source="./media/search-howto-powerapps/1-10-1-parameter-metadata-search.png" alt-text="Vyhledat metadata parametrů" border="true":::
 
-1. U *pole vybrat*: `HotelName,Description,Address/City` nastavit jako **výchozí hodnotu**nastavte hodnotu **požadováno** na *false*a nastavte vlastnost **visibility** na *none*.  
+1. U pole *Vybrat*: nastavit `HotelName,Description,Address/City` jako **výchozí hodnotu**nastavte hodnotu **požadováno** na *false*a nastavte vlastnost **visibility** na *none*.  
 
     :::image type="content" source="./media/search-howto-powerapps/1-10-4-parameter-metadata-select.png" alt-text="Metadata parametrů verze" border="true":::
 
-1. Pro *rozhraní API-Version*: `2019-05-06` nastavte jako **výchozí hodnotu** **, nastavte na** *true*a nastavte **visibility** jako *interní*.  
+1. Pro *rozhraní API-Version*: `2020-06-30` nastavte jako **výchozí hodnotu**, nastavte **required** na *true*a nastavte **visibility** jako *interní*.  
 
     :::image type="content" source="./media/search-howto-powerapps/1-10-2-parameter-metadata-version.png" alt-text="Metadata parametrů verze" border="true":::
 
-1. Pro *typ obsahu*: nastavte na `application/json`.
+1. Pro *typ obsahu*: nastavte na `application/json` .
 
 1. Po provedení těchto změn přepněte do zobrazení **Editor Swagger** . V části Parameters by se měla zobrazit následující konfigurace:
 
@@ -106,14 +106,14 @@ Konektor v Power Apps je připojení ke zdroji dat. V tomto kroku vytvoříte vl
     parameters:
       - {name: search, in: query, required: false, type: string, default: '*'}
       - {name: $select, in: query, required: false, type: string, default: 'HotelName,Description,Address/City'}
-      - {name: api-version, in: query, required: true, type: string, default: '2019-05-06',
+      - {name: api-version, in: query, required: true, type: string, default: '2020-06-30',
         x-ms-visibility: internal}
       - {name: Content-Type, in: header, required: false, type: string}
     ```
 
 1. Vraťte se na **3. Krok žádosti** a přejděte dolů do části Response (odpověď). Klikněte na **Přidat výchozí odpověď**. To je důležité, protože pomůže Power Apps pochopit schéma odpovědi. 
 
-1. Vložte ukázkovou odpověď. Snadný způsob, jak zachytit ukázkovou odpověď, je prostřednictvím Průzkumníka služby Search v Azure Portal. V Průzkumníku služby Search byste měli zadat stejný dotaz jako u žádosti, ale přidáním **$Top = 2** omezit výsledky pouze na dva dokumenty:: `search=*&$select=HotelName,Description,Address/City&$top=2`. 
+1. Vložte ukázkovou odpověď. Snadný způsob, jak zachytit ukázkovou odpověď, je prostřednictvím Průzkumníka služby Search v Azure Portal. V Průzkumníku služby Search byste měli zadat stejný dotaz jako u žádosti, ale přidáním **$Top = 2** omezit výsledky pouze na dva dokumenty:: `search=*&$select=HotelName,Description,Address/City&$top=2` . 
 
    Power Apps potřebuje k detekci schématu jenom pár výsledků.
 
@@ -176,7 +176,7 @@ Pro tento úkol budete potřebovat [klíč rozhraní API pro dotazy](search-secu
 
 V tomto kroku vytvoříte aplikaci Power, která má vyhledávací pole, tlačítko vyhledávání a oblast zobrazení pro výsledky. Power App se připojí k nedávno vytvořenému vlastnímu konektoru a získá data z Azure Search.
 
-1. Na levé straně rozbalte **aplikace** > **a nové** > **plátno**aplikace.
+1. Na levé straně rozbalte **aplikace**  >  **a nové**  >  **plátno**aplikace.
 
     :::image type="content" source="./media/search-howto-powerapps/2-1-create-canvas.png" alt-text="Vytvoření aplikace plátna" border="true":::
 

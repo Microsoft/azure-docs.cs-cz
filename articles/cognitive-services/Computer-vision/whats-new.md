@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 02/28/2020
+ms.date: 06/29/2020
 ms.author: pafarley
-ms.openlocfilehash: bed9424fd7e7dfcb03610fb9d7796cefc5b016be
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 75d191c9d65cc639522c3fbba5b8c438b8b83448
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589087"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85560129"
 ---
 # <a name="whats-new-in-computer-vision"></a>Co je nového v Počítačové zpracování obrazu
 
-Zjistěte, co je nového ve službě. Tyto položky můžou vydávat poznámky, videa, příspěvky na blogu a další typy informací. Pomocí záložky můžete tuto stránku udržovat v aktualizovaném stavu.
+Zjistěte, co je nového ve službě. Tyto položky můžou být poznámky k verzi, videa, příspěvky na blogu a další typy informací. Tuto stránku můžete označit tak, aby byla stále aktuální se službou.
 
 ## <a name="may-2020"></a>Květen 2020
 Rozhraní API pro počítačové zpracování obrazu v 3.0 vstoupila všeobecná dostupnost s aktualizacemi [rozhraní API pro čtení](concept-recognizing-text.md):

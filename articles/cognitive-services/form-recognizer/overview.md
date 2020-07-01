@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 241d91a8c8670c32461684ed964b6fc0fd7c1672
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 8885f66b3501217ead302486d2e5ef7de63f5f47
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85206406"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563246"
 ---
 # <a name="what-is-form-recognizer"></a>Co je služba Rozpoznávání formulářů?
 
@@ -74,14 +74,14 @@ Pomocí rychlého startu můžete začít extrahovat data z formulářů. Při u
 
 Pomocí následujících rozhraní API můžete vyškolit modely a extrahovat strukturovaná data z formulářů.
 
-|Name |Description |
+|Name |Popis |
 |---|---|
 | **Vlastní model výuky**| Vytvořte nový model pro analýzu formulářů s použitím pěti forem stejného typu. Nastavte parametr _useLabelFile_ na `true` Výukový program s ručně označenými daty. |
 | **Analyzovat formulář** |Analyzujte jeden dokument předaný jako datový proud pro extrakci textu, párů klíč/hodnota a tabulek z formuláře pomocí vlastního modelu.  |
 | **Analyzovat příjem** |Analyzujte jeden příjmový doklad pro extrakci klíčových informací a dalšího textu příjmu.|
 | **Analyzovat rozložení** |Umožňuje analyzovat rozložení formuláře pro extrakci textu a struktury tabulky.|
 
-Další informace najdete v [referenční dokumentaci k REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeWithCustomForm) . Pokud jste obeznámeni s předchozí verzí rozhraní API, přečtěte si článek [co je nového](./whats-new.md) , kde se dozvíte o nejnovějších změnách.
+Další informace najdete v [referenční dokumentaci k REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm) . Pokud jste obeznámeni s předchozí verzí rozhraní API, přečtěte si článek [co je nového](./whats-new.md) , kde se dozvíte o nejnovějších změnách.
 
 ## <a name="input-requirements"></a>Požadavky na vstup
 ### <a name="custom-model"></a>Vlastní model
@@ -104,4 +104,4 @@ Stejně jako u všech služeb rozpoznávání by měli vývojáři, kteří pou�
 
 ## <a name="next-steps"></a>Další kroky
 
-Dokončete [rychlý Start](quickstarts/curl-train-extract.md) , abyste mohli začít s [rozhraními API pro rozpoznávání formulářů](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeWithCustomForm).
+Dokončete [rychlý Start](quickstarts/curl-train-extract.md) , abyste mohli začít s [rozhraními API pro rozpoznávání formulářů](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm).

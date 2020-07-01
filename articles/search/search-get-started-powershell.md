@@ -9,25 +9,25 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 02/10/2020
-ms.openlocfilehash: 612751c2405cd55ad0b3760aa8e093e434a22f57
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 96ab2b7c8e80375f97df550ed6c83e7bb3e2f3e3
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77121604"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85562077"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-powershell-using-rest-apis"></a>Rychlý Start: vytvoření indexu Azure Kognitivní hledání v PowerShellu pomocí rozhraní REST API
 > [!div class="op_single_selector"]
 > * [PowerShell (REST)](search-create-index-rest-api.md)
-> * [R #](search-create-index-dotnet.md)
+> * [C#](search-create-index-dotnet.md)
 > * [Post (REST)](search-get-started-postman.md)
 > * [Python](search-get-started-python.md)
-> * [Portál](search-create-index-portal.md)
+> * [Azure Portal](search-create-index-portal.md)
 > 
 
 Tento článek vás provede procesem vytvoření, načtení a dotazování indexu služby Azure Kognitivní hledání pomocí prostředí PowerShell a [rozhraní REST API azure kognitivní hledání](https://docs.microsoft.com/rest/api/searchservice/). Tento článek vysvětluje, jak interaktivně spustit příkazy prostředí PowerShell. Případně můžete [Stáhnout a spustit skript prostředí PowerShell](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart) , který provede stejné operace.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -43,7 +43,7 @@ Volání REST vyžadují pro každý požadavek adresu URL služby a přístupov
 
 1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
 
-2. V části **Nastavení** > **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
+2. V části **Nastavení**  >  **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
 
 ![Získání koncového bodu HTTP a přístupového klíče](media/search-get-started-postman/get-url-key.png "Získání koncového bodu HTTP a přístupového klíče")
 
@@ -63,7 +63,7 @@ Všechny požadavky vyžadují klíč rozhraní API na všech žádostech odesla
 2. Vytvořte objekt **$URL** , který určuje kolekci indexů služby. Nahraďte název služby (služba-SEARCH-SERVICE-NAME) platnou vyhledávací službou.
 
     ```powershell
-    $url = "https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes?api-version=2019-05-06&$select=name"
+    $url = "https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes?api-version=2020-06-30&$select=name"
     ```
 
 3. Spuštěním rutiny **Invoke-RestMethod** odešlete službě požadavek GET a ověřte připojení. Přidejte **ConvertTo-JSON** , abyste mohli zobrazit odpovědi, které se ze služby odesílají zpátky.
@@ -123,7 +123,7 @@ Tento index má název "hotely-rychlý Start" a obsahuje definice polí, které 
 2. Nastavte identifikátor URI pro kolekci indexů ve vaší službě a index *rychlé* spuštění v hotelů.
 
     ```powershell
-    $url = "https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart?api-version=2019-05-06"
+    $url = "https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart?api-version=2020-06-30"
     ```
 
 3. Spusťte příkaz s **$URL**, **$Headers**a **$body** k vytvoření indexu ve službě. 
@@ -183,7 +183,7 @@ K odesílání dokumentů použijte požadavek HTTP POST na koncový bod adresy 
 
 1. Vložte tento příklad do PowerShellu a vytvořte objekt **$body** obsahující dokumenty, které chcete nahrát. 
 
-    Tato žádost obsahuje dva úplné a jeden částečný záznam. Částečný záznam ukazuje, že můžete nahrávat nedokončené dokumenty. `@search.action` Parametr určuje, jak je indexování provedeno. Platné hodnoty zahrnují nahrávání, sloučení, mergeOrUpload a odstranění. Chování mergeOrUpload buď vytvoří nový dokument pro hotelId = 3, nebo aktualizuje obsah, pokud již existuje.
+    Tato žádost obsahuje dva úplné a jeden částečný záznam. Částečný záznam ukazuje, že můžete nahrávat nedokončené dokumenty. `@search.action`Parametr určuje, jak je indexování provedeno. Platné hodnoty zahrnují nahrávání, sloučení, mergeOrUpload a odstranění. Chování mergeOrUpload buď vytvoří nový dokument pro hotelId = 3, nebo aktualizuje obsah, pokud již existuje.
 
     ```powershell
     $body = @"
@@ -273,7 +273,7 @@ K odesílání dokumentů použijte požadavek HTTP POST na koncový bod adresy 
 1. Nastavte koncový bod do kolekce dokumentů pro *rychlé zprovoznění hotelů* a zahrňte operaci indexu (indexy/hotely – rychlý Start, dokumentace/index).
 
     ```powershell
-    $url = "https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs/index?api-version=2019-05-06"
+    $url = "https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs/index?api-version=2020-06-30"
     ```
 
 1. Spusťte příkaz s **$URL**, **$Headers**a **$body** k načtení dokumentů do indexu pro rychlé spuštění v hotelů.
@@ -326,7 +326,7 @@ Nezapomeňte použít jednoduché uvozovky při hledání $urls. Řetězce dotaz
    Tento řetězec spustí prázdné hledání (Search = *) a vrátí Neseřazený seznam (skóre hledání = 1,0) libovolných dokumentů. Ve výchozím nastavení Azure Kognitivní hledání vrátí 50 shod v čase. Jako strukturovaný tento dotaz vrátí celou strukturu dokumentů a hodnot. Přidejte **$Count = true** pro získání počtu všech dokumentů ve výsledcích.
 
     ```powershell
-    $url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=*&$count=true'
+    $url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2020-06-30&search=*&$count=true'
     ```
 
 1. Spuštěním příkazu odešlete **$URL** službě.
@@ -375,21 +375,21 @@ Vyzkoušejte si několik dalších příkladů dotazů, které vám pomohou s sy
 # Query example 1
 # Search the entire index for the terms 'restaurant' and 'wifi'
 # Return only the HotelName, Description, and Tags fields
-$url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=restaurant wifi&$count=true&$select=HotelName,Description,Tags'
+$url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2020-06-30&search=restaurant wifi&$count=true&$select=HotelName,Description,Tags'
 
 # Query example 2 
 # Apply a filter to the index to find hotels rated 4 or highter
 # Returns the HotelName and Rating. Two documents match.
-$url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=*&$filter=Rating gt 4&$select=HotelName,Rating'
+$url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2020-06-30&search=*&$filter=Rating gt 4&$select=HotelName,Rating'
 
 # Query example 3
 # Take the top two results, and show only HotelName and Category in the results
-$url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=boutique&$top=2&$select=HotelName,Category'
+$url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2020-06-30&search=boutique&$top=2&$select=HotelName,Category'
 
 # Query example 4
 # Sort by a specific field (Address/City) in ascending order
 
-$url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=pool&$orderby=Address/City asc&$select=HotelName, Address/City, Tags, Rating'
+$url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2020-06-30&search=pool&$orderby=Address/City asc&$select=HotelName, Address/City, Tags, Rating'
 ```
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 03/13/2020
+ms.date: 06/29/2020
 ms.author: pafarley
-ms.openlocfilehash: 666b70ba8b632cb2cadf20de384e3e615acb2b3d
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 550cec535343d48ad74dd35e6886af78bdd15701
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79203547"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563288"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>Rychlý Start: Vyzkoušejte Content Moderator na webu
 
@@ -32,7 +32,7 @@ Nástroj pro kontrolu Content Moderator je webový nástroj, který umožňuje l
 
 ## <a name="create-a-review-team"></a>Vytvořit tým pro revize
 
-Dále vytvořte tým revize. V pracovním scénáři se jedná o skupinu uživatelů, kteří budou ručně kontrolovat rozhodnutí o moderování služby. Chcete-li vytvořit tým, je nutné vybrat **oblast**a zadat **název týmu** a **ID týmu**. Pokud chcete kolegům pozvat do týmu, můžete to udělat tak, že zadáte e-mailovou adresu.
+Dále vytvořte tým revize. V pracovním scénáři se jedná o skupinu uživatelů, kteří ručně kontrolují rozhodnutí o moderování služby. Chcete-li vytvořit tým, je nutné vybrat **oblast**a zadat **název týmu** a **ID týmu**. Pokud chcete kolegům pozvat do týmu, můžete to udělat tak, že zadáte e-mailovou adresu.
 
 > [!NOTE]
 > **Název týmu** je popisný název pro váš tým recenze. Toto je název zobrazený v Azure Portal. **ID týmu** je to, co se používá k identifikaci programově týmu.

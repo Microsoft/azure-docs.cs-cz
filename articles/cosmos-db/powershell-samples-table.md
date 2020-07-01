@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/12/2020
 ms.author: mjbrown
-ms.openlocfilehash: 5d947c9f3f5aedd419662936c7007fc45a57b087
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 751fa9daabaaef05abb5df8229e84975b87cffc1
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262986"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563825"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db---table-api"></a>Azure PowerShell ukázky pro Azure Cosmos DB-rozhraní API pro tabulky
 
@@ -20,7 +20,7 @@ Následující tabulka obsahuje odkazy na ukázkové Azure PowerShell skripty pr
 > [!NOTE]
 > Ukázky využívají rutiny [AZ. CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) Management. Pravidelně prosím zkontrolujte aktualizace `Az.CosmosDB` .
 
-| | |
+|Úkol | Popis |
 |---|---|
 |[Vytvoření účtu a tabulky](scripts/powershell/table/ps-table-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoří účet Azure Cosmos a tabulku. |
 |[Vypsat nebo získat tabulky](scripts/powershell/table/ps-table-list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vypíše nebo získá tabulky. |

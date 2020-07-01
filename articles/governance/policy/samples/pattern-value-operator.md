@@ -1,14 +1,14 @@
 ---
 title: 'Vzor: operátor hodnoty v definici zásady'
 description: Tento model Azure Policy poskytuje příklad použití operátoru value v definici zásady.
-ms.date: 01/31/2020
+ms.date: 06/29/2020
 ms.topic: sample
-ms.openlocfilehash: ace7b7cd4a765cdb8c7aa764b52b180c60508ab2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e246e3a5e2517fa80626081227070bcb2f967784
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77172783"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565671"
 ---
 # <a name="azure-policy-pattern-the-value-operator"></a>Vzor Azure Policy: operátor hodnoty
 

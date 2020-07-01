@@ -7,18 +7,18 @@ ms.subservice: cosmosdb-table
 ms.topic: how-to
 ms.date: 06/03/2020
 ms.author: mjbrown
-ms.openlocfilehash: 36e85ccf4c145b6881670cb95f5e84ec177ce2a5
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 8c6456074e29efe47819e4f31235d957bde81cfb
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262918"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85560608"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db-table-api"></a>Ukázky v Azure CLI pro Azure Cosmos DB rozhraní API pro tabulky
 
 Následující tabulka obsahuje odkazy na ukázkové skripty Azure CLI pro Azure Cosmos DB rozhraní API pro tabulky. Referenční stránky pro všechny příkazy rozhraní příkazového řádku Azure Cosmos DB jsou k dispozici v [referenčních informacích k Azure CLI](/cli/azure/cosmosdb). Všechny ukázkové skripty Azure Cosmos DB CLI najdete v [úložišti GitHub Azure Cosmos DB CLI](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb).
 
-| |  |
+|Úkol | Popis |
 |---|---|
 | [Vytvoření účtu Azure Cosmos a tabulky](scripts/cli/table/create.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvoří účet Azure Cosmos DB a tabulku pro rozhraní API pro tabulky. |
 | [Změna propustnosti](scripts/cli/table/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Aktualizujte RU/s na tabulce.|

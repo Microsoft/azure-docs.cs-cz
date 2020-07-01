@@ -7,20 +7,27 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 06/15/2020
-ms.openlocfilehash: bd68778eb3f0ca9c2af456cdb88cdcc9fe5862dc
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: fd2d7006e0c13f7e652b4edd973a36f94f2e2265
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85393864"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85560505"
 ---
-# <a name="quickstart-create-a-dashboard-in-the-azure-portal-by-using-an-azure-resource-manager-template"></a>Rychlý Start: Vytvoření řídicího panelu v Azure Portal pomocí šablony Azure Resource Manager
+# <a name="quickstart-create-a-dashboard-in-the-azure-portal-by-using-an-arm-template"></a>Rychlý Start: Vytvoření řídicího panelu v Azure Portal pomocí šablony ARM
 
-Řídicí panel v Azure Portal je cílené a organizované zobrazení vašich cloudových prostředků. Tento rychlý Start se zaměřuje na proces nasazení šablony Správce prostředků k vytvoření řídicího panelu. Řídicí panel zobrazuje výkon virtuálního počítače a také některé statické informace a odkazy.
+Řídicí panel v Azure Portal je cílené a organizované zobrazení vašich cloudových prostředků. Tento rychlý Start se zaměřuje na proces nasazení šablony Azure Resource Manager (šablona ARM) k vytvoření řídicího panelu. Řídicí panel zobrazuje výkon virtuálního počítače a také některé statické informace a odkazy.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud vaše prostředí splňuje požadavky a Vy jste obeznámeni s používáním šablon ARM, vyberte tlačítko **nasadit do Azure** . Šablona se otevře v Azure Portal.
+
+[![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azure-portal-dashboard%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>Požadavky
+
+- Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+- Existující virtuální počítač.
 
 ## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
@@ -63,7 +70,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 1. Vyberte nebo zadejte následující hodnoty a pak vyberte **zkontrolovat + vytvořit**.
 
-    ![Správce prostředků šablona, vytvoření řídicího panelu, nasazení portálu](media/quick-create-template/create-dashboard-using-template-portal.png)
+    ![Šablona ARM, vytvoření řídicího panelu, nasazení portálu](media/quick-create-template/create-dashboard-using-template-portal.png)
 
     Pokud není zadaný, použijte k vytvoření řídicího panelu výchozí hodnoty.
 
@@ -75,7 +82,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 1. Vyberte **vytvořit** nebo **koupit**. Po úspěšném nasazení řídicího panelu se zobrazí oznámení:
 
-    ![Správce prostředků šablona, vytvoření řídicího panelu, nasazení oznámení na portálu](media/quick-create-template/resource-manager-template-portal-deployment-notification.png)
+    ![Šablona ARM, vytvoření řídicího panelu, nasazení oznámení na portálu](media/quick-create-template/resource-manager-template-portal-deployment-notification.png)
 
 Azure Portal se použila k nasazení šablony. Kromě webu Azure Portal můžete také použít také Azure PowerShell, Azure CLI a REST API. Další informace o dalších metodách nasazení najdete v tématu [Nasazení šablon](../azure-resource-manager/templates/deploy-powershell.md).
 

@@ -1,26 +1,24 @@
 ---
-title: 'Kurz: zabezpečení služby hub Virtual Network pomocí správce Azure Firewall ve verzi Preview'
+title: 'Kurz: zabezpečení služby hub Virtual Network pomocí správce Azure Firewall'
 description: V tomto kurzu se naučíte zabezpečit svou virtuální síť pomocí Azure Firewall Manageru pomocí Azure Portal.
 services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 02/18/2020
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: cdd416bdb833e4784334a6847d724a7375e2ef8d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3d4d1e65c2200aee178abefb46d3e330acbd3108
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77459949"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563638"
 ---
-# <a name="tutorial-secure-your-hub-virtual-network-using-azure-firewall-manager-preview"></a>Kurz: zabezpečení služby hub Virtual Network pomocí správce Azure Firewall ve verzi Preview 
-
-[!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
+# <a name="tutorial-secure-your-hub-virtual-network-using-azure-firewall-manager"></a>Kurz: zabezpečení služby hub Virtual Network pomocí správce Azure Firewall
 
 Když připojíte místní síť k virtuální síti Azure a vytvoříte hybridní síť, bude mít možnost řídit přístup k síťovým prostředkům Azure důležitou součást celkového plánu zabezpečení.
 
-Pomocí služby Azure Firewall Manager Preview můžete vytvořit virtuální síť rozbočovače, která zajistí zabezpečení hybridního síťového provozu určeného na privátní IP adresy, Azure PaaS a Internet. Nástroj Azure Firewall Manager můžete použít k řízení přístupu k síti v hybridní síti pomocí zásad, které definují povolený a zakázaný síťový provoz.
+Pomocí správce Azure Firewall můžete vytvořit virtuální síť centrální sítě, která zajistí zabezpečení hybridních síťových přenosů určených na privátní IP adresy, Azure PaaS a Internet. Nástroj Azure Firewall Manager můžete použít k řízení přístupu k síti v hybridní síti pomocí zásad, které definují povolený a zakázaný síťový provoz.
 
 Správce brány firewall taky podporuje zabezpečenou architekturu virtuálního rozbočovače. Porovnání typů architektury zabezpečeného virtuálního centra a centra virtuálních sítí najdete v tématu [co jsou možnosti architektury Azure firewall Manageru?](vhubs-and-vnets.md)
 
@@ -67,7 +65,7 @@ Postup vytvoření těchto tras najdete v části [Vytvoření pravidel](#create
 >[!NOTE]
 >Provoz mezi přímo rovnocenným virtuální sítě je směrován přímo, i když jako výchozí bránu UDR body Azure Firewall. Aby bylo možné odeslat podsíť do brány firewall v tomto scénáři, musí UDR v obou podsítích explicitně obsahovat předponu sítě cílové podsítě.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="create-a-firewall-policy"></a>Vytvoření zásady brány firewall
 
@@ -354,7 +352,7 @@ Vytvořte virtuální počítač ve virtuální síti paprsků a spusťte služb
 3. Zadejte pro virtuální počítač tyto hodnoty:
     - **Skupina prostředků** – vyberte **FW-Hybrid-test**.
     - **Název virtuálního počítače**: *VM-paprsek-01*.
-    - **Oblast** - *(US) východní USA)*.
+    - **Oblast**  -  *(US) východní USA)*.
     - **Uživatelské jméno**: *azureuser*.
     - **Heslo**: zadejte heslo.
 
@@ -392,8 +390,8 @@ Toto je virtuální počítač, který používáte k připojení pomocí vzdál
 2. V části **Oblíbené**vyberte **Windows Server 2016 Datacenter**.
 3. Zadejte pro virtuální počítač tyto hodnoty:
     - **Skupina prostředků** – vyberte existující a pak vyberte **FW-Hybrid-test**.
-    - **Virtuální počítač název** - *VM-OnPrem*.
-    - **Oblast** - *(US) východní USA)*.
+    - **Název**  -  virtuálního počítače *VM-OnPrem*.
+    - **Oblast**  -  *(US) východní USA)*.
     - **Uživatelské jméno**: *azureuser*.
     - **Heslo**: zadejte heslo.
 
@@ -413,9 +411,9 @@ Toto je virtuální počítač, který používáte k připojení pomocí vzdál
 <!---2. Open a Windows PowerShell command prompt on **VM-Onprem**, and ping the private IP for **VM-spoke-01**.
 
    You should get a reply.--->
-3. Otevřete webový prohlížeč na **virtuálním počítači-OnPrem**a vyhledejte privátní IP\<adresu\>virtuálního počítače http://-paprsek-01.
+3. Otevřete webový prohlížeč na **virtuálním počítači-OnPrem**a přejděte na http:// \<VM-spoke-01 private IP\> .
 
-   Měla by se zobrazit webová stránka **VM-paprsek-01** webová ![stránka VM-paprsk-01.](media/secure-hybrid-network/vm-spoke-01-web.png)
+   Měla by se zobrazit webová stránka **VM-paprsek-01** webová stránka ![ VM-paprsk-01.](media/secure-hybrid-network/vm-spoke-01-web.png)
 
 4. Z virtuálního počítače **VM-OnPrem** otevřete vzdálenou plochu **virtuálního počítače-paprsek-01** na privátní IP adrese.
 
@@ -444,4 +442,4 @@ Prostředky brány firewall si můžete ponechat pro další kurz, nebo můžete
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Kurz: zabezpečení virtuální sítě WAN pomocí správce Azure Firewall Preview](secure-cloud-network.md)
+> [Kurz: zabezpečení virtuální sítě WAN pomocí správce Azure Firewall](secure-cloud-network.md)

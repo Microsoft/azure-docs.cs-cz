@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 9cf012df65560a921f2c9f12f6c0362a033300be
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: b62441a4b1307a232ad2f592f13253c0759b5431
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561636"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85564198"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware"></a>Kurz: zřízení Azure Data Box Gateway ve VMware
 
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 > * Zřízení virtuálního zařízení ve VMware
 > * Spuštění virtuálního zařízení a získání IP adresy
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -87,7 +87,7 @@ Pomocí následujících kroků ve svém hypervisoru zřiďte virtuální zaří
 
 1. Zkopírujte do svého systému image virtuálního zařízení. Tuto virtuální image (dva soubory) jste si stáhli přes Azure Portal. Poznamenejte si umístění, do kterého jste image zkopírovali, protože tuto image použijete v pozdější části tohoto postupu.
 
-2. Přihlaste se k serveru ESXi prostřednictvím prohlížeče na této adrese URL `https://<IP address of the ESXi server>`:. K vytvoření virtuálního počítače potřebujete mít oprávnění správce.
+2. Přihlaste se k serveru ESXi prostřednictvím prohlížeče na této adrese URL: `https://<IP address of the ESXi server>` . K vytvoření virtuálního počítače potřebujete mít oprávnění správce.
 
    ![Přihlašovací stránka](./media/data-box-gateway-deploy-provision-vmware/image1.png)
   
@@ -145,7 +145,7 @@ Pomocí následujících kroků ve svém hypervisoru zřiďte virtuální zaří
 
     Na stejné stránce klikněte na **Přidat pevný disk** a vyberte **Existující pevný disk**. V úložišti dat vyberte soubor VMDK. Tím přidáte disk s operačním systémem. 
 
-     ! Stránka pro přizpůsobení nastavení[](./media/data-box-gateway-deploy-provision-vmware/image14.png)
+     ![Stránka pro přizpůsobení nastavení](./media/data-box-gateway-deploy-provision-vmware/image14.png)
 
     Posuňte se dolů, dokud se nezobrazí **Nový pevný disk**, a rozbalte ho, aby se zobrazilo nastavení. Nastavte **Uzel virtuálního zařízení** na **Kontroler IDE 0**.
 
@@ -157,8 +157,8 @@ Pomocí následujících kroků ve svém hypervisoru zřiďte virtuální zaří
 
 18. Na stránce **Připraveno k dokončení** zkontrolujte všechna nastavení přidružená k novému virtuálnímu počítači. Ověřte, že počet CPU je 4, paměť má velikost 8 192 MB, počet síťových rozhraní je 1 a Pevný disk 2 má kontroler IDE 0. Klikněte na **Finish** (Dokončit).
    
-    ![](./media/data-box-gateway-deploy-provision-vmware/image16.png)
-    ![dokončení stránky](./media/data-box-gateway-deploy-provision-vmware/image17.png)
+    ![Stránka připravena k dokončení ](./media/data-box-gateway-deploy-provision-vmware/image16.png)
+     ![ stránky](./media/data-box-gateway-deploy-provision-vmware/image17.png)
 
 Váš virtuální počítač je teď zřízený. Zobrazí se o tom oznámení a nový virtuální počítač se přidá do seznamu virtuálních počítačů.
 

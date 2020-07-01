@@ -7,7 +7,11 @@
 - name: Rychlé starty
   items:
     - name: Konfigurace výstrah pro události Service Health
-      href: ../azure-monitor/platform/alerts-activity-log-service-notifications.md
+      items:
+        - name: portál Azure
+          href: alerts-activity-log-service-notifications-portal.md
+        - name: Šablona ARM
+          href: alerts-activity-log-service-notifications-arm.md
 - name: Koncepty
   items:
     - name: Stavová stránka Azure

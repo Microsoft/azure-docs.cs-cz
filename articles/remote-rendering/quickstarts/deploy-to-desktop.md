@@ -5,12 +5,12 @@ author: christophermanthei
 ms.author: chmant
 ms.date: 03/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: 4e9ddeddf616c581b116d48738e110dd8cdac2d3
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: dc566d2702fb24ef551e4900bed7b828d2597383
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84659927"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85557059"
 ---
 # <a name="quickstart-deploy-unity-sample-to-desktop"></a>Rychlý Start: nasazení ukázky Unity do desktopu
 
@@ -38,7 +38,7 @@ Na ploše se aktuálně podporují jenom ploché aplikace klasické pracovní pl
 1. Na levé straně vyberte **Player** .
 1. Vyberte kartu **nastavení Univerzální platforma Windows** .
 1. Rozbalte **Nastavení XR**.
-1. Zakáže **virtuální realitu**, která je podporovaná.
+1. Zakázat **virtuální realitu**, která je podporována. \
     ![nastavení přehrávače](./media/unity-disable-xr.png)
 1. Nad *nastavením XR*rozbalte položku **Nastavení publikování**.
 1. V **podporovaných rodinách zařízení**se ujistěte, že je zaškrtnuté políčko **plocha** .
@@ -49,13 +49,13 @@ Na ploše se aktuálně podporují jenom ploché aplikace klasické pracovní pl
 1. Změna *platformy* na **Univerzální platforma Windows** (**samostatná verze počítače** se podporuje taky, ale tady se nepoužívá, viz [omezení platformy](../reference/limits.md#platform-limitations)).
 1. Nastavte *cílové zařízení* na **počítač**.
 1. Nastavte *architekturu* na **x86**.
-1. Nastavte *typ sestavení* na **projekt D3D**.
+1. Nastavte *typ sestavení* na **projekt D3D**. \
   ![Nastavení sestavení](./media/unity-build-settings-pc.png)
 1. Vyberte **přepínač přepnout na platformu**.
 1. Při stisknutí tlačítka **sestavit** (nebo ' sestavit a spustit ') se zobrazí výzva, abyste vybrali složku, do které má být řešení uloženo.
 1. Otevřete vygenerovaný **rychlý Start. sln** pomocí sady Visual Studio.
 1. Změňte konfiguraci na **release** a **x86**.
-1. Přepněte režim ladicího programu na **místní počítač**.
+1. Přepněte režim ladicího programu na **místní počítač**. \
   ![Konfigurace řešení](./media/unity-deploy-config-pc.png)
 1. Sestavte řešení (F7).
 

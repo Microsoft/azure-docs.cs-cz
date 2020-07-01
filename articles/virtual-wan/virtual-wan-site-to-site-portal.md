@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 11/04/2019
+ms.date: 06/29/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: b4278cb2e8c5152f522258a37c37acda5efbacf8
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 13949bef7b26058c577a3ab85b4fb2e736bba8f5
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84687918"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85562964"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Kurz: Vytvoření připojení typu site-to-site pomocí služby Azure Virtual WAN
 
@@ -29,7 +29,7 @@ Co se v tomto kurzu naučíte:
 > * Připojení lokality VPN k centru
 > * Připojení virtuální sítě k rozbočovači
 > * Stažení konfiguračního souboru
-> * Zobrazení virtuální sítě WAN
+> * Konfigurace služby VPN Gateway
 
 > [!NOTE]
 > Pokud máte hodně lokalit, doporučujeme využít k vytvoření této konfigurace [partnera pro Virtual WAN](https://aka.ms/virtualwan). Pokud se ale vyznáte ve vytváření sítí a umíte nakonfigurovat vlastní zařízení VPN, můžete tuto konfiguraci vytvořit sami.
@@ -251,11 +251,20 @@ Pokud potřebujete pokyny ke konfiguraci zařízení, můžete použít pokyny n
 * Nová virtuální síť WAN podporuje jak IKEv1, tak IKEv2.
 * Virtuální síť WAN může používat jak zařízení VPN založená na zásadách, tak i pokyny k zařízením.
 
-## <a name="view-your-virtual-wan"></a><a name="viewwan"></a>Zobrazení virtuální sítě WAN
+## <a name="configure-your-vpn-gateway"></a><a name="gateway-config"></a>Konfigurace služby VPN Gateway
 
-1. Přejděte na virtuální síť WAN.
-2. Na stránce **Přehled** představuje každý bod na mapě rozbočovač. Najeďte myší na libovolný bod, abyste zobrazili souhrn stavu centra, stav připojení a počet bajtů v/v.
-3. V části centra a připojení můžete zobrazit stav centra, weby sítě VPN atd. Můžete kliknout na konkrétní název centra a přejít na web VPN, kde najdete další podrobnosti.
+Nastavení služby VPN Gateway můžete kdykoli zobrazit a nakonfigurovat tak, že vyberete **Zobrazit nebo konfigurovat**.
+
+:::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-1.png" alt-text="Zobrazit konfiguraci" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-1-expand.png":::
+
+Na stránce **upravit VPN Gateway** můžete zobrazit následující nastavení:
+
+* VPN Gateway veřejné IP adresy (přiděluje Azure)
+* VPN Gateway privátní IP adresa (přiřazená Azure)
+* VPN Gateway výchozí IP adresu protokolu BGP (přiřazený přes Azure)
+* Možnost konfigurace pro vlastní IP adresu protokolu BGP: Toto pole je vyhrazené pro APIPa (automatické přidělování privátních IP adres). Azure podporuje IP adresu protokolu BGP v oblastech 169.254.21. * a 169.254.22. *
+
+   :::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-2.png" alt-text="Zobrazit konfiguraci" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-2-expand.png":::
 
 ## <a name="next-steps"></a>Další kroky
 

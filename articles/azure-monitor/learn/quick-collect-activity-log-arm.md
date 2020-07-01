@@ -6,12 +6,12 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
-ms.openlocfilehash: b4b8bb991685ce13be89eff26a4442f32cde7206
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.openlocfilehash: ed2a18f4d7e9784566036a598098a015d3050dbd
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85446371"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563544"
 ---
 # <a name="send-azure-activity-log-to-log-analytics-workspace-using-azure-resource-manager-template"></a>Odeslání protokolu aktivit Azure do Log Analytics pracovního prostoru pomocí šablony Azure Resource Manager
 Protokol aktivit je protokol platformy v Azure, který poskytuje přehled o událostech na úrovni předplatného. To zahrnuje informace, jako je například změna prostředku nebo spuštění virtuálního počítače. Protokol aktivit můžete zobrazit v Azure Portal nebo načíst položky pomocí PowerShellu a rozhraní příkazového řádku. V tomto rychlém startu se dozvíte, jak pomocí šablon ARM vytvořit pracovní prostor Log Analytics a nastavení diagnostiky k odeslání protokolu aktivit do Azure Monitor protokolů, kde je můžete analyzovat pomocí [dotazů protokolu](../log-query/log-query-overview.md) a povolit další funkce, jako jsou například výstrahy a [sešity](../platform/workbooks-overview.md) [protokolu](../platform/alerts-log-query.md) . 
@@ -121,7 +121,7 @@ Následující šablona vytvoří prázdný pracovní prostor Log Analytics. Tut
 ```
 
 ### <a name="deploy-the-template"></a>Nasazení šablony
-Nasaďte šablonu pomocí libovolné standardní metody pro [nasazení šablony ARM](/azure-resource-manager/templates/deploy-portal) , jako jsou následující příklady, pomocí rozhraní příkazového řádku a PowerShellu. Nahraďte ukázkové hodnoty pro **skupinu prostředků**, **pracovní prostor**a **umístění** odpovídajícími hodnotami pro vaše prostředí. Název pracovního prostoru musí být jedinečný mezi všemi předplatnými Azure.
+Nasaďte šablonu pomocí libovolné standardní metody pro [nasazení šablony ARM](../../azure-resource-manager/templates/deploy-portal.md) , jako jsou následující příklady, pomocí rozhraní příkazového řádku a PowerShellu. Nahraďte ukázkové hodnoty pro **skupinu prostředků**, **pracovní prostor**a **umístění** odpovídajícími hodnotami pro vaše prostředí. Název pracovního prostoru musí být jedinečný mezi všemi předplatnými Azure.
 
 # <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI1)
 
@@ -278,6 +278,24 @@ Vyzkoušejte složitější dotaz, například to, `AzureActivity | summarize co
 
 ![Složitý dotaz](media/quick-collect-activity-log/query-02.png)
 
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+Pokud máte v úmyslu pokračovat v práci s dalšími rychlými starty a kurzy, možná budete chtít tyto prostředky ponechat na místě. Pokud už je nepotřebujete, odstraňte skupinu prostředků, která odstraní pravidlo upozornění a související prostředky. Odstranění skupiny prostředků pomocí rozhraní příkazového řádku Azure nebo Azure PowerShell
+
+
+ 
+# <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI3)
+
+```azurecli
+az group delete --name my-resource-group
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell3)
+
+```powershell
+Remove-AzResourceGroup -Name my-resource-group
+```
+
+---
 
 ## <a name="next-steps"></a>Další kroky
 V tomto rychlém startu jste nakonfigurovali protokol aktivit, který se má odeslat do Log Analytics pracovního prostoru. Teď můžete nakonfigurovat další data, která se mají shromáždit, do pracovního prostoru, kde je můžete analyzovat pomocí [dotazů protokolu](../log-query/log-query-overview.md) v Azure monitor a využívat funkce, jako jsou výstrahy a [sešity](../platform/workbooks-overview.md) [protokolu](../platform/alerts-log-query.md) . Měli byste další shromáždit [protokoly prostředků](../platform/resource-logs.md) z vašich prostředků Azure, které vám poskytnou přehled o operacích, které byly provedeny v rámci jednotlivých prostředků v protokolu aktivit.

@@ -9,19 +9,19 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 02/10/2020
-ms.openlocfilehash: c502886aac9d13f7a470a9b83f1fc12334913beb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c68c813c9c9ecdcb7c7b75102940aa1f1a57b4f0
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77121629"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85562185"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-postman-using-rest-apis"></a>Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání v části post pomocí rozhraní REST API
 > [!div class="op_single_selector"]
 > * [Postman](search-get-started-postman.md)
-> * [R #](search-create-index-dotnet.md)
+> * [C#](search-create-index-dotnet.md)
 > * [Python](search-get-started-python.md)
-> * [Portál](search-get-started-portal.md)
+> * [Azure Portal](search-get-started-portal.md)
 > * [PowerShell](search-howto-dotnet-sdk.md)
 >*
 
@@ -29,7 +29,7 @@ Jedním z nejjednodušších způsobů, jak prozkoumat [rozhraní REST API pro A
 
 Tento článek vysvětluje, jak interaktivně formulovat požadavky. Alternativně můžete [Stáhnout a importovat kolekci post](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Quickstart) pro použití předdefinovaných požadavků.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -45,7 +45,7 @@ Volání REST vyžadují pro každý požadavek adresu URL služby a přístupov
 
 1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
 
-1. V části **Nastavení** > **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
+1. V části **Nastavení**  >  **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
 
 ![Získání koncového bodu HTTP a přístupového klíče](media/search-get-started-postman/get-url-key.png "Získání koncového bodu HTTP a přístupového klíče")
 
@@ -57,9 +57,9 @@ V této části můžete pomocí svého webového nástroje vybrat nastavení p�
 
 Pro kterýkoli nástroj musíte zvolit příkaz (GET, POST, PUT a tak dále), poskytnout koncový bod adresy URL a pro některé úlohy v těle žádosti zadat JSON. Nahraďte název vyhledávací služby (název služby-SEARCH-SERVICE-NAME) platnou hodnotou. Přidat `$select=name` pro vrácení pouze názvu každého indexu. 
 
-    https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes?api-version=2019-05-06&$select=name
+    https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes?api-version=2020-06-30&$select=name
 
-Všimněte si předpony HTTPS, názvu služby, názvu objektu (v tomto případě kolekce indexů) a [verze API-Version](search-api-versions.md). Verze API-Version je povinný, malý řetězec zadaný jako `?api-version=2019-05-06` aktuální verze. Verze rozhraní API se pravidelně aktualizují. Zahrnutím verze api-version v každé žádosti získáte úplnou kontrolu nad tím, která se použije.  
+Všimněte si předpony HTTPS, názvu služby, názvu objektu (v tomto případě kolekce indexů) a [verze API-Version](search-api-versions.md). Verze API-Version je povinný, malý řetězec zadaný jako `?api-version=2020-06-30` aktuální verze. Verze rozhraní API se pravidelně aktualizují. Zahrnutím verze api-version v každé žádosti získáte úplnou kontrolu nad tím, která se použije.  
 
 Sestavování hlaviček žádosti zahrnuje dva prvky, typ obsahu a navíc klíč rozhraní API, který se používá k ověření do Azure Kognitivní hledání. Nahraďte klíč rozhraní API pro správu (vaše – AZURE-SEARCH-ADMIN-API-KEY) platnou hodnotou. 
 
@@ -74,13 +74,13 @@ V poli pro odeslání si formulujte požadavek, který vypadá jako na následuj
 
 V Azure Kognitivní hledání obvykle index vytvoříte předtím, než ho načtete s daty. Pro tento úkol se používá [REST API pro vytvoření indexu](https://docs.microsoft.com/rest/api/searchservice/create-index) . 
 
-Adresa URL je rozšířena tak, `hotels` aby obsahovala název indexu.
+Adresa URL je rozšířena tak, aby obsahovala `hotels` název indexu.
 
 Provedete to po:
 
 1. Změňte operaci na **Put**.
 
-2. Kopírovat v této adrese `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart?api-version=2019-05-06`URL.
+2. Kopírovat v této adrese URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart?api-version=2020-06-30` .
 
 3. Zadejte definici indexu (kód připravený ke kopírování je uveden níže) v těle žádosti.
 
@@ -128,13 +128,13 @@ Po odeslání této žádosti byste měli získat odpověď HTTP 201, která zna
 
 Vytvoření indexu a jeho naplnění jsou samostatné kroky. V Azure Kognitivní hledání index obsahuje všechna hledaná data, která můžete zadat jako dokumenty JSON. Pro tento úkol se používá [REST API přidat, aktualizovat nebo odstranit dokumenty](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) . 
 
-Adresa URL je rozšířena tak, `docs` aby zahrnovala kolekce a `index` operace.
+Adresa URL je rozšířena tak, aby zahrnovala `docs` kolekce a `index` operace.
 
 Provedete to po:
 
 1. Změňte operaci na **POST**.
 
-2. Kopírovat v této adrese `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/docs/index?api-version=2019-05-06`URL.
+2. Kopírovat v této adrese URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/docs/index?api-version=2020-06-30` .
 
 3. Poskytněte dokumenty JSON (kód připravený k kopírování je níže) v těle žádosti.
 
@@ -247,7 +247,7 @@ Provedete to po:
 
 1. Změňte operaci na **Get**.
 
-2. Kopírovat v této adrese `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/docs?search=*&$count=true&api-version=2019-05-06`URL.
+2. Kopírovat v této adrese URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/docs?search=*&$count=true&api-version=2020-06-30` .
 
 3. Klikněte na **Odeslat**.
 
@@ -262,31 +262,31 @@ Aktuální adresu URL zaměňte tak, že na ně kliknete níže, a zobrazíte v�
 ```
 # Query example 1 - Search on restaurant and wifi
 # Return only the HotelName, Description, and Tags fields
-https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?search=restaurant wifi&$count=true&$select=HotelName,Description,Tags&api-version=2019-05-06
+https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?search=restaurant wifi&$count=true&$select=HotelName,Description,Tags&api-version=2020-06-30
 
 # Query example 2 - Apply a filter to the index to find hotels rated 4 or highter
 # Returns the HotelName and Rating. Two documents match
-https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?search=*&$filter=Rating gt 4&$select=HotelName,Rating&api-version=2019-05-06
+https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?search=*&$filter=Rating gt 4&$select=HotelName,Rating&api-version=2020-06-30
 
 # Query example 3 - Take the top two results, and show only HotelName and Category in the results
-https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?search=boutique&$top=2&$select=HotelName,Category&api-version=2019-05-06
+https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?search=boutique&$top=2&$select=HotelName,Category&api-version=2020-06-30
 
 # Query example 4 - Sort by a specific field (Address/City) in ascending order
-https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?search=pool&$orderby=Address/City asc&$select=HotelName, Address/City, Tags, Rating&api-version=2019-05-06
+https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?search=pool&$orderby=Address/City asc&$select=HotelName, Address/City, Tags, Rating&api-version=2020-06-30
 ```
 
 ## <a name="get-index-properties"></a>Získat vlastnosti indexu
 K dotazování na počty dokumentů a velikost indexu můžete použít také možnost [získat statistiku](https://docs.microsoft.com/rest/api/searchservice/get-index-statistics) : 
 
 ```
-https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/stats?api-version=2019-05-06
+https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/stats?api-version=2020-06-30
 ```
 
 Přidání `/stats` do adresy URL vrátí informace o indexu. V nástroji Postman by vaše žádost měla vypadat podobně jako v následujícím příkladu a odpověď by měla obsahovat počet dokumentů a využité místo v bajtech.
 
  ![Získat informace o indexu](media/search-get-started-postman/postman-system-query.png "Získat informace o indexu")
 
-Všimněte si, že syntaxe api-version se liší. Pro tuto žádost použijte k připojení verze api-version znak `?`. `?` Odděluje cestu URL od řetězce dotazu, zatímco & odděluje každou dvojici název = hodnota v řetězci dotazu. V tomto dotazu je api-version první a také jedinou položkou v řetězci dotazu.
+Všimněte si, že syntaxe api-version se liší. Pro tuto žádost použijte k připojení verze api-version znak `?`. `?`Odděluje cestu URL od řetězce dotazu, zatímco & odděluje každou dvojici název = hodnota v řetězci dotazu. V tomto dotazu je api-version první a také jedinou položkou v řetězci dotazu.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

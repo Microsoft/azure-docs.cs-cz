@@ -1,14 +1,14 @@
 ---
 title: 'Rychlý Start: nové přiřazení zásad pomocí Azure CLI'
 description: V tomto rychlém startu pomocí Azure CLI vytvoříte přiřazení Azure Policy k identifikaci prostředků, které nedodržují předpisy.
-ms.date: 01/11/2020
+ms.date: 06/29/2020
 ms.topic: quickstart
-ms.openlocfilehash: b1d93cdb4dfa1c82e8004af4052c22bba60f3a3a
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 33db6b4098dc0a69f4dabbea62fc9627cdc948eb
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745746"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85558929"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-azure-cli"></a>Rychlý Start: vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy, pomocí Azure CLI
 

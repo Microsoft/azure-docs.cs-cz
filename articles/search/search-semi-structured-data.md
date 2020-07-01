@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: 64cb864b50f44f70bb9ceccc9983641970116cc7
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 0e6759837519feccf6069e805e3fe0f72562fb7b
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85261439"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85559023"
 ---
 # <a name="tutorial-index-json-blobs-from-azure-storage-using-rest"></a>Kurz: indexování objektů BLOB JSON z Azure Storage pomocí REST
 
@@ -112,13 +112,13 @@ V části hlavičky nastavte typ Content-Type na `application/json` a nastavte `
 
   ![Adresa URL a záhlaví žádosti post](media/search-get-started-postman/postman-url.png "Adresa URL a záhlaví žádosti post")
 
-Identifikátory URI musí určovat verzi rozhraní API a každé volání by mělo vrátit **vytvořenou 201**. Obecně dostupná verze API-Version pro použití polí JSON je `2019-05-06` .
+Identifikátory URI musí určovat verzi rozhraní API a každé volání by mělo vrátit **vytvořenou 201**. Obecně dostupná verze API-Version pro použití polí JSON je `2020-06-30` .
 
 ## <a name="3---create-a-data-source"></a>3. vytvoření zdroje dat
 
 [Rozhraní API pro vytvoření zdroje dat](https://docs.microsoft.com/rest/api/searchservice/create-data-source) vytvoří objekt Azure kognitivní hledání, který určuje, jaká data se mají indexovat.
 
-1. Nastavte koncový bod tohoto volání na `https://[service name].search.windows.net/datasources?api-version=2019-05-06` . Nahraďte `[service name]` názvem vaší služby Search. 
+1. Nastavte koncový bod tohoto volání na `https://[service name].search.windows.net/datasources?api-version=2020-06-30` . Nahraďte `[service name]` názvem vaší služby Search. 
 
 1. Zkopírujte následující kód JSON do textu žádosti.
 
@@ -161,7 +161,7 @@ Identifikátory URI musí určovat verzi rozhraní API a každé volání by mě
     
 Druhé volání je [vytvořit index API](https://docs.microsoft.com/rest/api/searchservice/create-index), což vytvoří index služby Azure kognitivní hledání, který ukládá všechna hledaná data. Index určuje všechny parametry a jejich atributy.
 
-1. Nastavte koncový bod tohoto volání na `https://[service name].search.windows.net/indexes?api-version=2019-05-06` . Nahraďte `[service name]` názvem vaší služby Search.
+1. Nastavte koncový bod tohoto volání na `https://[service name].search.windows.net/indexes?api-version=2020-06-30` . Nahraďte `[service name]` názvem vaší služby Search.
 
 1. Zkopírujte následující kód JSON do textu žádosti.
 
@@ -236,7 +236,7 @@ Druhé volání je [vytvořit index API](https://docs.microsoft.com/rest/api/sea
 
 Indexer se připojuje ke zdroji dat, importuje data do cílového vyhledávacího indexu a volitelně poskytuje plán pro automatizaci aktualizace dat. REST API je [vytvořit indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
 
-1. Nastavte identifikátor URI pro toto volání na `https://[service name].search.windows.net/indexers?api-version=2019-05-06` . Nahraďte `[service name]` názvem vaší služby Search.
+1. Nastavte identifikátor URI pro toto volání na `https://[service name].search.windows.net/indexers?api-version=2020-06-30` . Nahraďte `[service name]` názvem vaší služby Search.
 
 1. Zkopírujte následující kód JSON do textu žádosti.
 
@@ -281,7 +281,7 @@ Hledání můžete zahájit hned po načtení prvního dokumentu.
 
 1. Změňte operaci na **Get**.
 
-1. Nastavte identifikátor URI pro toto volání na `https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&api-version=2019-05-06&$count=true` . Nahraďte `[service name]` názvem vaší služby Search.
+1. Nastavte identifikátor URI pro toto volání na `https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&api-version=2020-06-30&$count=true` . Nahraďte `[service name]` názvem vaší služby Search.
 
 1. Odešlete požadavek. Toto je neurčený fulltextový vyhledávací dotaz, který vrací všechna pole, která jsou označena jako načístelné v indexu, spolu s počtem dokumentů. Odpověď by měla vypadat nějak takto:
 
@@ -313,7 +313,7 @@ Hledání můžete zahájit hned po načtení prvního dokumentu.
             . . . 
     ```
 
-1. Přidejte `$select` parametr dotazu pro omezení výsledků na méně polí: `https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&$select=Gender,metadata_storage_size&api-version=2019-05-06&$count=true` .  Pro tento dotaz se 100 dokumentů shodují, ale ve výchozím nastavení Azure Kognitivní hledání vrátí do výsledků pouze 50.
+1. Přidejte `$select` parametr dotazu pro omezení výsledků na méně polí: `https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&$select=Gender,metadata_storage_size&api-version=2020-06-30&$count=true` .  Pro tento dotaz se 100 dokumentů shodují, ale ve výchozím nastavení Azure Kognitivní hledání vrátí do výsledků pouze 50.
 
    ![Parameterizovaný dotaz](media/search-semi-structured-data/lastquery.png "Dotaz Paramterized")
 
@@ -333,7 +333,7 @@ Ve fázích předčasného experimentu vývoje je nejužitečnějším přístup
 Portál můžete použít k odstranění indexů, indexerů a zdrojů dat. Nebo použijte **Delete** a poskytněte adresy URL pro každý objekt. Následující příkaz odstraní indexer.
 
 ```http
-DELETE https://[YOUR-SERVICE-NAME].search.windows.net/indexers/clinical-trials-json-indexer?api-version=2019-05-06
+DELETE https://[YOUR-SERVICE-NAME].search.windows.net/indexers/clinical-trials-json-indexer?api-version=2020-06-30
 ```
 
 Při úspěšném odstranění se vrátí kód stavu 204.

@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 519520538c16b1bde18f0810344864d37090accf
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: d9300d3bbc5e6432e16f7656c7b4764df9b759cb
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84342642"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85558569"
 ---
 # <a name="assess-servers-by-using-imported-data"></a>Posouzení serverů pomocí importovaných dat
 
@@ -103,7 +103,7 @@ Shromážděte data serveru a přidejte je do souboru CSV.
 
 Následující tabulka shrnuje pole souborů k vyplnění:
 
-**Název pole** | **Závaznou** | **Zobrazí**
+**Název pole** | **Závaznou** | **Podrobnosti**
 --- | --- | ---
 **Název serveru** | Ano | Doporučujeme zadat plně kvalifikovaný název domény (FQDN).
 **IP adresa** | Ne | Adresa serveru.
@@ -179,10 +179,21 @@ Ověření, že se servery zobrazí v Azure Portal po zjištění:
 
 Pomocí posouzení serveru můžete vytvořit dva typy posouzení.
 
-**Typ posouzení** | **Zobrazí** | **Data**
+
+**Typ posouzení** | **Podrobnosti**
+--- | --- 
+**Virtuální počítač Azure** | Posouzení migrace vašich místních serverů do virtuálních počítačů Azure. <br/><br/> Pomocí tohoto typu posouzení můžete vyhodnotit místní [virtuální počítače VMware](how-to-set-up-appliance-vmware.md), [virtuální počítače Hyper-V](how-to-set-up-appliance-hyper-v.md)a [fyzické servery](how-to-set-up-appliance-physical.md) pro migraci do Azure. (concepts-assessment-calculation.md)
+**Azure VMware Solution (AVS)** | Posouzení migrace místních serverů do [Řešení Azure VMware (AVS)](https://docs.microsoft.com/azure/azure-vmware/introduction). <br/><br/> Pomocí tohoto typu posouzení můžete vyhodnotit místní [virtuální počítače VMware](how-to-set-up-appliance-vmware.md) pro migraci do řešení Azure VMware (AVS). [Další informace](concepts-azure-vmware-solution-assessment-calculation.md)
+
+### <a name="sizing-criteria"></a>Kritéria změny velikosti
+
+Posouzení serveru poskytuje dvě možnosti pro kritéria změny velikosti:
+
+**Kritéria změny velikosti** | **Podrobnosti** | **Data**
 --- | --- | ---
-**Na základě výkonu** | Posouzení na základě zadaných hodnot dat o výkonu. | **Doporučená velikost virtuálního počítače**: na základě dat o využití procesoru a paměti.<br/><br/> **Doporučený typ disku (spravovaný disk Standard nebo Premium)**: na základě vstupně-výstupních operací za sekundu (IOPS) a propustnosti místních disků.
-**Jako místní** | Posouzení na základě místních velikostí. | **Doporučená velikost virtuálního počítače**: na základě zadané velikosti serveru.<br/><br> **Doporučený typ disku**: na základě nastavení typu úložiště, které jste vybrali pro posouzení.
+**Na základě výkonu** | Posouzení, která vytvářejí doporučení na základě shromážděných údajů o výkonu | **Posouzení virtuálního počítače Azure**: doporučení velikosti virtuálního počítače vychází z dat využití procesoru a paměti.<br/><br/> Doporučení pro typ disku (standardní disková jednotka/SSD nebo Premium – spravované disky) vychází z IOPS a propustnosti místních disků.<br/><br/> **Posouzení řešení Azure VMware (AVS)**: doporučení pro služby AVS jsou založená na datech využití procesoru a paměti.
+**V místním prostředí** | Posouzení, které nepoužívají údaje o výkonu k vytváření doporučení. | **Posouzení virtuálního počítače Azure**: doporučení velikosti virtuálního počítače je založené na velikosti místního virtuálního počítače.<br/><br> Doporučený typ disku je založený na tom, co jste vybrali v nastavení typ úložiště pro posouzení.<br/><br/> **Posouzení řešení Azure VMware (AVS)**: doporučení pro služby AVS jsou založená na velikosti místního virtuálního počítače.
+
 
 Spuštění posouzení:
 
@@ -191,24 +202,31 @@ Spuštění posouzení:
 
     ![Posouzení](./media/tutorial-assess-physical/assess.png)
 
-3. V poli **vyhodnotit servery**zadejte název posouzení.
+3. V poli **vyhodnotit servery**zadejte název posouzení a vyberte typ **posouzení** jako *virtuální počítač Azure* , pokud chcete provést posouzení virtuálních počítačů Azure nebo *Řešení Azure VMware (AVS)* , pokud chcete provádět posouzení služby AVS.
+
+    ![Základy hodnocení](./media/how-to-create-assessment/assess-servers-azurevm.png)
+
 4. Ve **zdroji zjišťování**vyberte **počítače přidané prostřednictvím importu do Azure Migrate**.
+
 5. Pokud chcete zobrazit vlastnosti posouzení, vyberte **Zobrazit vše**.
 
     ![Vlastnosti posouzení](./media/tutorial-assess-physical/view-all.png)
 
-6. V **Vyberte nebo vytvořte skupinu**vyberte **vytvořit novou**a zadejte název skupiny. Skupina shromažďuje jeden nebo více virtuálních počítačů dohromady pro posouzení.
+6. Klikněte na tlačítko **Další** a **Vyberte počítače, které chcete vyhodnotit**. V **Vyberte nebo vytvořte skupinu**vyberte **vytvořit novou**a zadejte název skupiny. Skupina shromažďuje jeden nebo více virtuálních počítačů dohromady pro posouzení.
 7. V části **přidat počítače do skupiny**vyberte servery, které chcete přidat do skupiny.
-8. Vyberte **vytvořit vyhodnocení** , aby se vytvořila skupina, a potom spusťte posouzení.
+8. Kliknutím **next** na další **Projděte si téma** a podrobnější informace o posouzení a Projděte si podrobnosti o posouzení.
+9. Kliknutím na **vytvořit vyhodnocení** vytvořte skupinu a pak spusťte posouzení.
 
     ![Vytvoření posouzení](./media/tutorial-assess-physical/assessment-create.png)
 
 9. Po vytvoření posouzení ho zobrazte na stránce **servery**  >  **Azure Migrate: vyhodnocení vyhodnocení serveru**  >  **Assessments**.
 10. Vyberte **vyhodnocování exportu** a stáhněte ho jako soubor Microsoft Excelu.
 
-## <a name="review-an-assessment"></a>Kontrola posouzení
+Pokud chcete získat další podrobnosti o posouzení **Řešení Azure VMware (AVS)** , přečtěte si prosím [Toto](how-to-create-azure-vmware-solution-assessment.md). 
 
-Posouzení popisuje:
+## <a name="review-an-azure-vm-assessment"></a>Kontrola posouzení virtuálních počítačů Azure
+
+Posouzení virtuálního počítače Azure popisuje:
 
 - **Připravenost na Azure**: jestli jsou servery vhodné pro migraci do Azure.
 - **Odhad měsíčních nákladů**: Odhadované měsíční náklady na výpočetní prostředky a úložiště pro spouštění serverů v Azure.
@@ -234,7 +252,7 @@ Posouzení popisuje:
 
 ### <a name="review-cost-details"></a>Podrobnosti o kontrole nákladů
 
-Toto zobrazení ukazuje odhadované náklady na výpočetní prostředky a úložiště pro provozování virtuálních počítačů v Azure. Další možnosti:
+Toto zobrazení ukazuje odhadované náklady na výpočetní prostředky a úložiště pro provozování virtuálních počítačů v Azure. Můžete:
 
 - Projděte si měsíční náklady na výpočetní prostředky a úložiště. Náklady se sčítají pro všechny servery v hodnocené skupině.
 

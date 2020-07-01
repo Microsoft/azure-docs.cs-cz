@@ -1,24 +1,22 @@
 ---
-title: 'Kurz: zabezpečení virtuální sítě WAN pomocí správce Azure Firewall Preview'
-description: V tomto kurzu se naučíte zabezpečit virtuální síť WAN pomocí Azure Firewall Manageru pomocí Azure Portal.
+title: 'Kurz: zabezpečení virtuálního centra pomocí správce Azure Firewall'
+description: V tomto kurzu se naučíte zabezpečit virtuální rozbočovač pomocí nástroje Azure Firewall Manager pomocí Azure Portal.
 services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 05/01/2020
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: b13f3b4eeb57c34f51152bb6d1914f6c80f31be1
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: c44daa67b4029c73c57ca82d72ee0a9759dd4c2d
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691026"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563660"
 ---
-# <a name="tutorial-secure-your-virtual-wan-using-azure-firewall-manager-preview"></a>Kurz: zabezpečení virtuální sítě WAN pomocí správce Azure Firewall Preview 
+# <a name="tutorial-secure-your-virtual-hub-using-azure-firewall-manager"></a>Kurz: zabezpečení virtuálního centra pomocí správce Azure Firewall
 
-[!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
-
-Pomocí služby Azure Firewall Manager Preview můžete vytvořit zabezpečená virtuální centra pro zabezpečení síťového provozu určeného na privátní IP adresy, Azure PaaS a Internet. Směrování provozu do brány firewall je automatizované, takže není nutné vytvářet trasy definované uživatelem (udr).
+Pomocí správce Azure Firewall můžete vytvořit zabezpečená virtuální centra pro zabezpečení síťového provozu určeného na privátní IP adresy, do Azure PaaS a na Internet. Směrování provozu do brány firewall je automatizované, takže není nutné vytvářet trasy definované uživatelem (udr).
 
 ![zabezpečení cloudové sítě](media/secure-cloud-network/secure-cloud-network.png)
 
@@ -95,7 +93,7 @@ Nyní můžete vytvořit partnerský vztah k rozbočovači a paprsku virtuální
 5. V případě **rozbočovačů**vyberte možnost **hub-01**.
 6. Jako **skupinu prostředků**vyberte **FW-Manager**.
 7. V případě **virtuální sítě**vyberte **paprskový-01**.
-8. Vyberte **OK**.
+8. Vyberte **Vytvořit**.
 
 ## <a name="create-a-firewall-policy-and-secure-your-hub"></a>Vytvoření zásady brány firewall a zabezpečení centra
 
@@ -111,16 +109,18 @@ Zásady brány firewall definují kolekce pravidel pro směrování provozu na j
 8. Jako **Priorita**zadejte **100**.
 9. Zajistěte, aby **akce kolekce pravidel** byla **povolená**.
 10. Jako **název** pravidla zadejte **Allow-MSFT**.
-11. Pro **zdrojovou adresu**zadejte **\***.
-12. V případě **protokolu**zadejte **http, https**.
-13. Zajistěte, aby byl cílový typ " **plně kvalifikovaný název domény**".
-14. Pro **cíl**zadejte ** \*. Microsoft.com**.
-15. Vyberte **Přidat**.
-16. Vyberte **Další: rozbočovače**.
-17. Na kartě **centra** vyberte **přidružit virtuální rozbočovače**.
-18. Vyberte možnost **hub-01** a pak vyberte **Přidat**.
-1. Vyberte **Zkontrolovat a vytvořit**.
-2. Vyberte **Vytvořit**.
+11. Jako **typ zdroje**vyberte **IP adresa**.
+12. Jako **zdroj**zadejte **\*** .
+13. V případě **protokolu**zadejte **http, https**.
+14. Ujistěte se, že **cílový typ** je **plně kvalifikovaný název domény**.
+15. Pro **cíl**zadejte ** \* . Microsoft.com**.
+16. Vyberte **Přidat**.
+17. Vyberte **Další: Analýza hrozeb**.
+18. Vyberte **Další: rozbočovače**.
+19. Na kartě **centra** vyberte **přidružit virtuální rozbočovače**.
+20. Vyberte možnost **hub-01** a pak vyberte **Přidat**.
+21. Vyberte **Zkontrolovat a vytvořit**.
+22. Vyberte **Vytvořit**.
 
 To může trvat přibližně pět minut nebo i déle.
 
@@ -130,13 +130,11 @@ Nyní je nutné zajistit, aby byl síťový provoz směrován přes bránu firew
 
 1. V nástroji Správce brány firewall vyberte **Zabezpečená virtuální rozbočovače**.
 2. Vyberte možnost **hub-01**.
-3. V části **Nastavení**vyberte **nastavení směrování**.
-4. V části **internetový provoz**, **provoz z virtuálních sítí**vyberte **Odeslat prostřednictvím Azure firewall**.
-5. V části **privátní přenos v Azure**zadejte **do virtuálních sítí**možnost **Odeslat prostřednictvím Azure firewall**.
-6. Vyberte **Upravit předpony IP adres**.
-8. Jako adresu podsítě úloh zadejte **10.0.1.0/24** a vyberte **Save (Uložit**).
-9. V části **Nastavení**vyberte **připojení**.
+3. V části **Nastavení**vyberte **Konfigurace zabezpečení**.
+4. V části **internetový provoz**vyberte **Azure firewall**.
+5. V části **privátní přenos**vyberte **Odeslat prostřednictvím Azure firewall**.
 10. Ověřte, že připojení **hub-paprsek** zobrazuje **internetový provoz** jako **zabezpečený**.
+11. Vyberte **Uložit**.
 
 
 ## <a name="test-your-firewall"></a>Otestování brány firewall
@@ -204,7 +202,7 @@ Nyní otestujte pravidla brány firewall a potvrďte, že funguje podle očekáv
 2. Připojte vzdálenou plochu k virtuálnímu počítači **skoku** a přihlaste se. Odtud otevřete připojení ke vzdálené ploše v rámci **úlohy-SRV** privátní IP adresa.
 
 3. Otevřete prohlížeč Internet Explorer a přejděte na adresu https://www.microsoft.com.
-4. V okně výstrahy zabezpečení aplikace Internet Explorer vyberte **OK** > **Zavřít** .
+4. **OK**  >  V okně výstrahy zabezpečení aplikace Internet Explorer vyberte OK**Zavřít** .
 
    Měla by se zobrazit Domovská stránka společnosti Microsoft.
 

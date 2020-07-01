@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/07/2020
-ms.openlocfilehash: 061907783d21372f0e926e529730e9e82b7a4ddb
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: 2829f451b90a20c5ad399796b0485c6e533bbb23
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488762"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85562287"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání v Azure Portal
 > [!div class="op_single_selector"]
@@ -150,7 +150,7 @@ Teď už byste měli mít vyhledávací index, který je připravený na dotazov
 
    ![Příkaz průzkumníka služby Search](media/search-get-started-portal/search-explorer-cmd.png)
 
-2. V rozevíracím seznamu **index** vyberte *hotely-Sample-index*. Klikněte na rozevírací seznam **verze rozhraní API** , abyste viděli, která rozhraní REST API jsou k dispozici. Pro následující dotazy použijte všeobecně dostupnou verzi (2019-05-06).
+2. V rozevíracím seznamu **index** vyberte *hotely-Sample-index*. Klikněte na rozevírací seznam **verze rozhraní API** , abyste viděli, která rozhraní REST API jsou k dispozici. Pro následující dotazy použijte všeobecně dostupnou verzi (2020-06-30).
 
    ![Příkazy rozhraní API a index](media/search-get-started-portal/search-explorer-changeindex.png)
 

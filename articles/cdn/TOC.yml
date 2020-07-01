@@ -13,6 +13,7 @@
     - name: Vytvoření koncového bodu a profilu
       href: cdn-create-new-endpoint.md
     - name: Vytvoření koncového bodu a profilu – šablona ARM
+      displayName: Resource Manager
       href: create-profile-endpoint-template.md
 - name: Kurzy
   items:

@@ -8,14 +8,14 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/24/2020
-ms.openlocfilehash: 988b26b319c706b97edfbd3545a525b7d685d7f1
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.openlocfilehash: f802ec10410d0a412e29d9ad51bb409a5d099f31
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85368290"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85562543"
 ---
-# <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Rychlý Start: vytvoření služby Azure Kognitivní hledání na portálu
+# <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Rychlé zprovoznění: Vytvoření služby Azure Cognitive Search na portálu
 
 Azure Kognitivní hledání je samostatný prostředek, který slouží k připojení vyhledávacího prostředí do vlastních aplikací. Kognitivní hledání se snadno integruje s jinými službami Azure, aplikacemi na síťových serverech nebo se softwarem běžícím na jiných cloudových platformách.
 
@@ -27,11 +27,11 @@ Dáváte přednost prostředí PowerShell? Použijte [šablonu služby](https://
 
 ## <a name="before-you-start"></a>Než začnete
 
-Po dobu životnosti služby jsou opraveny následující vlastnosti služby. Pozdější změna kterékoli z těchto vlastností bude vyžadovat novou službu:
+Následující vlastnosti služby jsou pevně dané pro dobu života služby a jejich změna vyžaduje novou službu. Při vytváření služby si představte, jak ji budete používat:
 
-* name
-* úroveň (Free, Basic, Standard)
-* oblast (vyberte umístění, které obsahuje související služby, například Cognitive Services nebo datové služby)
+* název (přezkoumání [těchto doporučení](#name-the-service) pro názvy služeb)
+* úroveň (Free, Basic, Standard, [má vliv na fakturaci](search-sku-tier.md) a nastaví limit nahoru na kapacitu)
+* oblast (vyberte umístění, které obsahuje související služby. Pro integraci s Cognitive Services nebo Azure Machine Learning je požadavek společné lokalizace služeb ve stejné oblasti.)
 
 ## <a name="subscribe-free-or-paid"></a>Předplatné (bezplatné nebo placené)
 

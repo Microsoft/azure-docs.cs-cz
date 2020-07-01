@@ -1,27 +1,27 @@
 ---
-title: 'Rychlý Start: zabezpečení virtuálního centra pomocí Azure Firewall Manager Preview – šablona Správce prostředků'
-description: Přečtěte si, jak zabezpečit virtuální rozbočovač pomocí správce Azure Firewall ve verzi Preview.
+title: 'Rychlý Start: zabezpečené virtuální rozbočovače pomocí nástroje Azure Firewall Manager – šablona Správce prostředků'
+description: Naučte se zabezpečit virtuální rozbočovač pomocí správce Azure Firewall.
 services: firewall-manager
 author: vhorne
 ms.service: firewall
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 05/19/2020
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 9c51fdb5142159e390ac4fcf59a04aa3dd747469
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 6641cc29025d39ddff33e706dd9b1b0da517b884
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84167192"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563686"
 ---
 # <a name="quickstart-secure-your-virtual-hub-using-azure-firewall-manager---resource-manager-template"></a>Rychlý Start: zabezpečení virtuálního rozbočovače pomocí nástroje Azure Firewall Manager – šablona Správce prostředků
 
-V tomto rychlém startu použijete šablonu Správce prostředků k zabezpečení virtuálního centra pomocí nástroje Azure Firewall Manager Preview. Nasazená brána firewall má pravidlo aplikace, které umožňuje připojení `www.microsoft.com` . K otestování brány firewall jsou nasazeny dva virtuální počítače s Windows serverem 2019. K připojení k serveru úloh se používá jeden server skoků. Ze serveru úloh se můžete připojit pouze k `www.microsoft.com` .
+V tomto rychlém startu použijete šablonu Správce prostředků k zabezpečení svého virtuálního rozbočovače pomocí nástroje Azure Firewall Manager. Nasazená brána firewall má pravidlo aplikace, které umožňuje připojení `www.microsoft.com` . K otestování brány firewall jsou nasazeny dva virtuální počítače s Windows serverem 2019. K připojení k serveru úloh se používá jeden server skoků. Ze serveru úloh se můžete připojit pouze k `www.microsoft.com` .
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Další informace o nástroji Azure Firewall Manager Preview najdete v tématu [co je verze preview Azure firewall Manageru?](overview.md).
+Další informace o Azure Firewall Manageru najdete v tématu [co je Azure firewall Manager?](overview.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -29,11 +29,11 @@ Další informace o nástroji Azure Firewall Manager Preview najdete v tématu [
 
 ## <a name="create-a-secured-virtual-hub"></a>Vytvoření zabezpečeného virtuálního rozbočovače
 
-Tato šablona vytvoří zabezpečeného virtuálního rozbočovače pomocí nástroje Azure Firewall Manager Preview společně s nezbytnými prostředky pro podporu tohoto scénáře.
+Tato šablona vytvoří zabezpečeného virtuálního rozbočovače pomocí nástroje Azure Firewall Manager spolu s nezbytnými prostředky pro podporu tohoto scénáře.
 
 ### <a name="review-the-template"></a>Kontrola šablony
 
-Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/fwm-docs-qs/).
+Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/fwm-docs-qs/).
 
 :::code language="json" source="~/quickstart-templates/fwm-docs-qs/azuredeploy.json" range="001-477" highlight="47-76":::
 
@@ -101,4 +101,4 @@ Remove-AzResourceGroup -Name "<your resource group name>"
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Další informace o důvěryhodných partnerech zabezpečení](trusted-security-partners.md)
+> [Další informace o poskytovatelích partnerů zabezpečení](trusted-security-partners.md)

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
 ms.author: dapine
-ms.openlocfilehash: 4ebd0b7b02036ca9aed6848ee261d32245ba4973
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 904144b044a0a0223d4807372407b5ce0b9f127b
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82979651"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85570139"
 ---
 ## <a name="start-with-some-boilerplate-code"></a>Začínáme s některým často používaným kódem
 
@@ -159,7 +159,7 @@ Než budete moct inicializovat `SpeechRecognizer` objekt, musíte vytvořit konf
 
 ## <a name="create-an-audio-configuration"></a>Vytvoření konfigurace zvuku
 
-Nyní je třeba vytvořit `AudioConfig` objekt, který odkazuje na vstupní devic3. Vložte tento kód do `startIntentRecognizeAsyncButton.addEventListener()` metody hned pod konfigurací řeči.
+Nyní je třeba vytvořit `AudioConfig` objekt, který odkazuje na vstupní zařízení. Vložte tento kód do `startIntentRecognizeAsyncButton.addEventListener()` metody hned pod konfigurací řeči.
 
 ```JavaScript
         var audioConfig = SpeechSDK.AudioConfig.fromDefaultMicrophoneInput();

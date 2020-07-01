@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 1/11/2019
 ms.author: msangapu
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 27f085543869b1a77db9c97ca2e7ae7d3d3b7b88
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 891e0c18b3f95dca905fbc14b957af773135eeec
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80046421"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85557903"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Seznámení se službou Azure App Service v Linuxu
 
@@ -21,7 +21,7 @@ ms.locfileid: "80046421"
 
 ## <a name="languages"></a>Jazyky
 
-App Service v Linuxu podporuje řadu integrovaných imagí za účelem zvýšení produktivity vývojářů. Mezi jazyky patří: Node. js, Java (JRE 8 & JRE 11), PHP, Python, .NET Core a Ruby. Spusťte [`az webapp list-runtimes --linux`](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes) , chcete-li zobrazit nejnovější jazyky a podporované verze. Pokud modul runtime, který vaše aplikace vyžaduje, není v integrovaných imagích podporovaný, tady najdete pokyny k [sestavení vlastní image Dockeru](tutorial-custom-docker-image.md) pro nasazení do služby Web App for Containers.
+App Service v Linuxu podporuje řadu integrovaných imagí za účelem zvýšení produktivity vývojářů. Mezi jazyky patří: Node.js, Java (JRE 8 & JRE 11), PHP, Python, .NET Core a Ruby. Spusťte [`az webapp list-runtimes --linux`](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes) , chcete-li zobrazit nejnovější jazyky a podporované verze. Pokud modul runtime, který vaše aplikace vyžaduje, není v integrovaných imagích podporovaný, tady najdete pokyny k [sestavení vlastní image Dockeru](tutorial-custom-docker-image.md) pro nasazení do služby Web App for Containers.
 
 ## <a name="deployments"></a>Nasazení
 
@@ -54,7 +54,7 @@ Podívejte se na [řídicí panel stavu Azure](https://azure.microsoft.com/statu
 
 Na webu Azure Portal se zobrazují pouze funkce, které jsou aktuálně funkční pro službu Web App for Containers. Další funkce se na portálu budou zobrazovat s tím, jak je budeme povolovat.
 
-App Service na Linux se podporuje jenom v plánech služby App Service [úrovně Free, Basic, Standard a Premium](https://azure.microsoft.com/pricing/details/app-service/plans/) a nemá [sdílenou](https://azure.microsoft.com/pricing/details/app-service/plans/) úroveň. Nemůžete vytvořit webovou aplikaci pro Linux v plánu App Service, který už hostuje Web Apps jiného výrobce než Linux.  
+App Service na Linux se podporuje jenom s plány [Free, Basic, Standard, Premium a Isolated](https://azure.microsoft.com/pricing/details/app-service/plans/) App Service, které nemají [sdílenou](https://azure.microsoft.com/pricing/details/app-service/plans/) úroveň. Nemůžete vytvořit webovou aplikaci pro Linux v plánu App Service, který už hostuje Web Apps jiného výrobce než Linux.  
 
 Na základě současného omezení pro stejnou skupinu prostředků nemůžete kombinovat aplikace pro Windows a Linux ve stejné oblasti.
 
@@ -65,7 +65,7 @@ Na základě současného omezení pro stejnou skupinu prostředků nemůžete k
 >
 >
 
-Pokud se aplikaci nepodaří spustit nebo pokud chcete zkontrolovat protokolování z aplikace, zkontrolujte protokoly Dockeru v adresáři LogFiles. Přístup k tomuto adresáři získáte prostřednictvím webu SCM nebo přes protokol FTP. Chcete-li `stdout` protokolovat a `stderr` z vašeho kontejneru, je nutné povolit **protokolování aplikace** v části **protokoly App Service**. Nastavení se projeví okamžitě. App Service detekuje změnu a automaticky restartuje kontejner.
+Pokud se aplikaci nepodaří spustit nebo pokud chcete zkontrolovat protokolování z aplikace, zkontrolujte protokoly Dockeru v adresáři LogFiles. Přístup k tomuto adresáři získáte prostřednictvím webu SCM nebo přes protokol FTP. Chcete-li protokolovat `stdout` a `stderr` z vašeho kontejneru, je nutné povolit **protokolování aplikace** v části **protokoly App Service**. Nastavení se projeví okamžitě. App Service detekuje změnu a automaticky restartuje kontejner.
 
 Na web SCM můžete přejít přes možnost **Rozšířené nástroje** v nabídce **Vývojové nástroje**.
 
