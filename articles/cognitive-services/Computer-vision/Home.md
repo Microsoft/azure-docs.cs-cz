@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 90c2068021f1e9a173f37bdf1098edda10ab3d8d
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: cfd8dd7474cf7926ef2230e6be53a967a97645db
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85413463"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85554390"
 ---
 # <a name="what-is-computer-vision"></a>Co je počítačové zpracování obrazu?
 
@@ -48,11 +48,9 @@ Obrázky můžete analyzovat a poskytnout tak přehled o jejich vizuálních fun
 |**[Vytvoření miniatury](concept-generating-thumbnails.md)**|Analyzuje obsah obrázku a vytvoří pro obrázek odpovídající miniaturu. Počítačové zpracování obrazu nejprve vygeneruje miniaturu s vysokou kvalitou a následně analyzuje objekty v rámci obrázku a určí *oblast zájmu*. Počítačové zpracování obrazu potom obrázek ořízne tak, aby odpovídal požadavkům oblasti zájmu. Vytvořená miniatura může mít podle vašich potřeb jiný poměr stran než původní obrázek.|
 |**[Získat oblast zájmu](concept-generating-thumbnails.md#area-of-interest)**|Analyzujte obsah obrázku a vraťte tak souřadnice *oblasti zájmu*. Místo oříznutí obrázku a vygenerování miniatury Počítačové zpracování obrazu vrátí souřadnice ohraničujícího pole oblasti, aby volající aplikace mohl původní obrázek upravit podle potřeby.|
 
-## <a name="extract-text-from-images"></a>Extrakce textu z obrázků
+## <a name="detect-text-from-images"></a>Rozpoznat text z obrázků
 
-Pomocí rozhraní Počítačové zpracování obrazu [Read](concept-recognizing-text.md#read-api) API můžete extrahovat vytištěné a ručně psaný text z obrázků do datového proudu znaků, který je strojově čitelný. Rozhraní API pro čtení používá nejnovější modely a pracuje s textem na nejrůznějších površích a na pozadí, jako jsou například příjmy, plakáty, obchodní karty, dopisy a tabule. V současné době funguje pro sedm různých jazyků (viz [Podpora jazyků](./language-support.md)).
-
-Můžete také použít rozhraní API [optického rozpoznávání znaků (OCR)](concept-recognizing-text.md) k extrakci vytištěného textu v několika jazycích. V případě potřeby optické rozpoznávání znaků opraví natočení rozpoznaného textu a poskytuje souřadnice rámce každého slova. Optické rozpoznávání znaků podporuje 25 jazyků a automaticky detekuje jazyk rozpoznaného textu.
+Rozhraní API rozhraní API pro [detekci textu](concept-recognizing-text.md) počítačové zpracování obrazu můžete použít k extrakci vytištěného a rukopisného textu z obrázků do datového proudu znaků, který je strojově čitelný. Rozhraní API pro čtení používá nejnovější modely a pracuje s textem na nejrůznějších površích a na pozadí, jako jsou například příjmy, plakáty, obchodní karty, dopisy a tabule. Tato dvě rozhraní API pro detekci textu podporují extrakci vytištěného textu v [několika jazycích](./language-support.md).
 
 ## <a name="moderate-content-in-images"></a>Moderování obsahu obrázků
 

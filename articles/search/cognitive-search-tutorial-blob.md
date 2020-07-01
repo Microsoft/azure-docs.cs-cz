@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/26/2020
-ms.openlocfilehash: 8acafa14afab507b704806056efac0f877a47684
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d2783d658d3420575da5d9d480fb705afe2495fc
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78190718"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85550349"
 ---
 # <a name="tutorial-use-rest-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Kurz: použití REST a AI k vygenerování prohledávatelných obsahu z objektů blob Azure
 
@@ -109,9 +109,9 @@ Stejně jako u služby Azure Blob Storage si pro získání přístupového klí
 
 ### <a name="get-an-admin-api-key-and-url-for-azure-cognitive-search"></a>Získání klíčového rozhraní API pro správu a adresy URL pro Azure Kognitivní hledání
 
-1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte název vaší vyhledávací služby. Název služby můžete potvrdit zkontrolováním adresy URL koncového bodu. Pokud byla `https://mydemo.search.windows.net`adresa URL koncového bodu, název vaší služby `mydemo`by byl.
+1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte název vaší vyhledávací služby. Název služby můžete potvrdit zkontrolováním adresy URL koncového bodu. Pokud byla adresa URL koncového bodu `https://mydemo.search.windows.net` , název vaší služby by byl `mydemo` .
 
-2. V části **Nastavení** > **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
+2. V části **Nastavení**  >  **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
 
    Získejte taky klíč dotazu. Osvědčeným postupem je vystavovat požadavky na dotazy s přístupem jen pro čtení.
 
@@ -140,7 +140,7 @@ Ve službě Azure Kognitivní hledání se při indexování (nebo ingestování
 1. Použijte **post** a následující adresu URL, kde nahraďte název vaší služby skutečným názvem vaší služby.
 
    ```http
-   https://[YOUR-SERVICE-NAME].search.windows.net/datasources?api-version=2019-05-06
+   https://[YOUR-SERVICE-NAME].search.windows.net/datasources?api-version=2020-06-30
    ```
 
 1. V **textu**žádosti zkopírujte následující definici JSON a nahraďte ji `connectionString` skutečným připojením svého účtu úložiště. 
@@ -161,7 +161,7 @@ Ve službě Azure Kognitivní hledání se při indexování (nebo ingestování
     ```
 1. Odešlete požadavek. Měl by se zobrazit stavový kód 201 potvrzující úspěch. 
 
-Pokud dostanete chybu 403 nebo 404, zkontrolujte vytvoření požadavku: v koncovém bodu by mělo být `api-version=2019-05-06`, v hlavičce za `Content-Type` by mělo být `api-key` a jeho hodnota musí být pro vyhledávací službu platná. Dokument JSON můžete chtít spustit pomocí online validátoru JSON, abyste se ujistili, že je syntaxe správná. 
+Pokud dostanete chybu 403 nebo 404, zkontrolujte vytvoření požadavku: v koncovém bodu by mělo být `api-version=2020-06-30`, v hlavičce za `Content-Type` by mělo být `api-key` a jeho hodnota musí být pro vyhledávací službu platná. Dokument JSON můžete chtít spustit pomocí online validátoru JSON, abyste se ujistili, že je syntaxe správná. 
 
 ### <a name="step-2-create-a-skillset"></a>Krok 2: vytvoření dovednosti
 
@@ -170,7 +170,7 @@ Pokud dostanete chybu 403 nebo 404, zkontrolujte vytvoření požadavku: v konco
 1. Použijte příkaz **Put** a následující adresu URL, kde nahraďte název vaší služby skutečným názvem vaší služby.
 
     ```http
-    https://[YOUR-SERVICE-NAME].search.windows.net/skillsets/cog-search-demo-ss?api-version=2019-05-06
+    https://[YOUR-SERVICE-NAME].search.windows.net/skillsets/cog-search-demo-ss?api-version=2020-06-30
     ```
 
 1. Do **textu**žádosti ZKOPÍRUJTE definici JSON níže. Tento dovednosti se skládá z následujících integrovaných dovedností.
@@ -182,9 +182,9 @@ Pokud dostanete chybu 403 nebo 404, zkontrolujte vytvoření požadavku: v konco
    | [Rozdělení textu](cognitive-search-skill-textsplit.md)  | Před voláním dovednosti pro extrakci klíčových frází rozdělí velký obsah do menších bloků dat. Extrakce klíčových frází přijímá vstup složený z 50 000 znaků nebo méně. Některé ze zdrojových souborů je nutné rozdělit, aby se do tohoto limitu vešly. |
    | [Extrakce klíčových frází](cognitive-search-skill-keyphrases.md) | Vyžádá si hlavní klíčové fráze. |
 
-   Pro obsah dokumentu se využijí jednotlivé dovednosti. Během zpracování Azure Kognitivní hledání napraskliní každý dokument, aby četl obsah z různých formátů souborů. Nalezený text, který pochází ze zdrojového souboru, se umístí do vygenerovaného pole ```content```, jednoho pro každý dokument. V takovém případě se vstup ```"/document/content"```bude.
+   Pro obsah dokumentu se využijí jednotlivé dovednosti. Během zpracování Azure Kognitivní hledání napraskliní každý dokument, aby četl obsah z různých formátů souborů. Nalezený text, který pochází ze zdrojového souboru, se umístí do vygenerovaného pole ```content```, jednoho pro každý dokument. V takovém případě se vstup bude ```"/document/content"``` .
 
-   Pro extrakci klíčových frází, protože používáme rozdělovač textu k přerušení větších souborů na stránky, kontext pro extrakci klíčových frází je ```"document/pages/*"``` (pro každou stránku v dokumentu) místo. ```"/document/content"```
+   Pro extrakci klíčových frází, protože používáme rozdělovač textu k přerušení větších souborů na stránky, kontext pro extrakci klíčových frází je ```"document/pages/*"``` (pro každou stránku v dokumentu) místo ```"/document/content"``` .
 
     ```json
     {
@@ -255,10 +255,10 @@ Pokud dostanete chybu 403 nebo 404, zkontrolujte vytvoření požadavku: v konco
 1. Použijte příkaz **Put** a následující adresu URL, kde nahraďte název vaší služby skutečným názvem vaší služby a pojmenujte index.
 
    ```http
-   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx?api-version=2019-05-06
+   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx?api-version=2020-06-30
    ```
 
-1. Do **textu**žádosti zkopírujte následující definici JSON. `content` Pole slouží k uložení samotného dokumentu. Další pole pro `languageCode`, `keyPhrases`a `organizations` reprezentují nové informace (pole a hodnoty) vytvořené pomocí dovednosti.
+1. Do **textu**žádosti zkopírujte následující definici JSON. Pole slouží k `content` uložení samotného dokumentu. Další pole pro `languageCode` , `keyPhrases` a `organizations` reprezentují nové informace (pole a hodnoty) vytvořené pomocí dovednosti.
 
     ```json
     {
@@ -339,14 +339,14 @@ Pokud dostanete chybu 403 nebo 404, zkontrolujte vytvoření požadavku: v konco
 1. Použijte příkaz **Put** a následující adresu URL, kde NAHRAĎte název vaší služby skutečným názvem vaší služby a pojmenujte indexer.
 
    ```http
-   https://[servicename].search.windows.net/indexers/cog-search-demo-idxr?api-version=2019-05-06
+   https://[servicename].search.windows.net/indexers/cog-search-demo-idxr?api-version=2020-06-30
    ```
 
 1. Do **textu**žádosti ZKOPÍRUJTE definici JSON níže. Všimněte si elementů mapování polí; Tato mapování jsou důležitá, protože definují tok dat. 
 
    Je `fieldMappings` zpracována před dovednosti a odesílá obsah ze zdroje dat do cílových polí v indexu. K odeslání existujícího nezměněného obsahu do indexu budete používat mapování polí. Pokud jsou názvy polí a typy na obou koncích stejné, není nutné žádné mapování.
 
-   Je `outputFieldMappings` pro pole, která jsou vytvořena pomocí dovedností a následně zpracována po spuštění dovednosti. Odkazy na `sourceFieldNames` v `outputFieldMappings` nástroji neexistují, dokud je nevytvoří dokument trhliny nebo rozšíření. `targetFieldName` Je pole v indexu definované ve schématu indexu.
+   Je `outputFieldMappings` pro pole, která jsou vytvořena pomocí dovedností a následně zpracována po spuštění dovednosti. Odkazy na `sourceFieldNames` v nástroji `outputFieldMappings` neexistují, dokud je nevytvoří dokument trhliny nebo rozšíření. `targetFieldName`Je pole v indexu definované ve schématu indexu.
 
     ```json
     {
@@ -421,7 +421,7 @@ Pokud dostanete chybu 403 nebo 404, zkontrolujte vytvoření požadavku: v konco
 
 Skript nastaví ```"maxFailedItems"``` na -1, což dá modulu indexování pokyn, aby během importování dat ignoroval chyby. To je přijatelné, protože v ukázkovém zdroji dat je k dispozici několik dokumentů. Pro větší zdroje dat by tato hodnota byla větší než 0.
 
-```"dataToExtract":"contentAndMetadata"``` Příkaz říká indexeru, aby automaticky rozbalí obsah z různých formátů souborů a také metadata týkající se jednotlivých souborů. 
+```"dataToExtract":"contentAndMetadata"```Příkaz říká indexeru, aby automaticky rozbalí obsah z různých formátů souborů a také metadata týkající se jednotlivých souborů. 
 
 Když se extrahuje obsah, můžete nastavit ```imageAction```, aby se z obrázků nalezených ve zdroji dat extrahoval text. V ```"imageAction":"generateNormalizedImages"``` kombinaci s dovedností optického textu a dovednosti pro sloučení textu říká indexeru, aby vyextrahovali text z obrázků (například slovo "Stop" z znaku zastavení provozu) a vloží ho jako součást pole Content. Toto chování platí jak pro obrázky vložené do dokumentů (třeba obrázek v souboru PDF), tak pro obrázky nalezené ve zdroji dat, např. soubor JPG.
 
@@ -432,7 +432,7 @@ Indexování a obohacení začne ihned po odeslání žádosti o vytvoření ind
 1. Použijte **Get** a následující adresu URL, kde nahraďte název vaší služby skutečným názvem vaší služby a pojmenujte indexer.
 
    ```http
-   https://[YOUR-SERVICE-NAME].search.windows.net/indexers/cog-search-demo-idxr/status?api-version=2019-05-06
+   https://[YOUR-SERVICE-NAME].search.windows.net/indexers/cog-search-demo-idxr/status?api-version=2020-06-30
    ```
 
 1. Přečtěte si odpověď, kde se dozvíte, jestli je indexer spuštěný, nebo jestli chcete zobrazit informace o chybách a upozorněních.  
@@ -446,12 +446,12 @@ Pokud používáte úroveň Free, očekává se následující zpráva: "" z dok
 
 Teď, když jste vytvořili nová pole a informace, můžeme spustit některé dotazy, abychom porozuměli hodnotě hledání rozpoznávání v souvislosti s běžným scénářem hledání.
 
-Odvoláme, že jsme začali s obsahem objektu blob, kde se celý dokument balí `content` do jednoho pole. Můžete hledat v tomto poli a vyhledat odpovídající dotazy.
+Odvoláme, že jsme začali s obsahem objektu blob, kde se celý dokument balí do jednoho `content` pole. Můžete hledat v tomto poli a vyhledat odpovídající dotazy.
 
-1. Použijte příkaz **Get** a následující adresu URL, kde nahraďte název vaší služby skutečným názvem vaší služby, vyhledejte výskyty podmínky nebo fráze a vraťte `content` pole a počet odpovídajících dokumentů.
+1. Použijte příkaz **Get** a následující adresu URL, kde nahraďte název vaší služby skutečným názvem vaší služby, vyhledejte výskyty podmínky nebo fráze `content` a vraťte pole a počet odpovídajících dokumentů.
 
    ```http
-   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx?search=*&$count=true&$select=content?api-version=2019-05-06
+   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx?search=*&$count=true&$select=content?api-version=2020-06-30
    ```
    
    Výsledky tohoto dotazu vrátí obsah dokumentu, což je stejný výsledek jako při použití indexeru objektů BLOB bez kanálu vyhledávání v rozpoznávání. Toto pole je možné prohledávat, ale nefunguje, pokud chcete použít omezující vlastnosti, filtry nebo automatické dokončování.
@@ -461,7 +461,7 @@ Odvoláme, že jsme začali s obsahem objektu blob, kde se celý dokument balí 
 1. Pro druhý dotaz vraťte některá z nových polí vytvořených kanálem (osoby, organizace, umístění, languageCode). Vynecháváme klíčová fráze pro zkrácení, ale pokud chcete zobrazit tyto hodnoty, měli byste je zahrnout.
 
    ```http
-   https://mydemo.search.windows.net/indexes/cog-search-demo-idx/docs?search=*&$count=true&$select=metadata_storage_name,persons,organizations,locations,languageCode&api-version=2019-05-06
+   https://mydemo.search.windows.net/indexes/cog-search-demo-idx/docs?search=*&$count=true&$select=metadata_storage_name,persons,organizations,locations,languageCode&api-version=2020-06-30
    ```
    Pole v příkazu $select obsahují nové informace vytvořené z možností zpracování v přirozeném jazyce Cognitive Services. Jak byste mohli očekávat, došlo k nějakému šumu ve výsledcích a variaci v rámci dokumentů, ale v mnoha instancích analytické modely poskytují přesné výsledky.
 
@@ -472,7 +472,7 @@ Odvoláme, že jsme začali s obsahem objektu blob, kde se celý dokument balí 
 1. Chcete-li zjistit, jak byste mohli využít tato pole, přidejte parametr omezující podmínky, který vrátí agregaci vyhovujících dokumentů podle umístění.
 
    ```http
-   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx/docs?search=*&facet=locations&api-version=2019-05-06
+   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx/docs?search=*&facet=locations&api-version=2020-06-30
    ``` 
 
    V tomto příkladu pro každé umístění existuje 2 nebo 3 shoda.
@@ -483,7 +483,7 @@ Odvoláme, že jsme začali s obsahem objektu blob, kde se celý dokument balí 
 1. V tomto konečném příkladu použijte filtr pro kolekci organizace a vraťte dvě shody pro kritéria filtru založené na NASDAQ.
 
    ```http
-   cog-search-demo-idx/docs?search=*&$filter=organizations/any(organizations: organizations eq 'NASDAQ')&$select=metadata_storage_name,organizations&$count=true&api-version=2019-05-06
+   cog-search-demo-idx/docs?search=*&$filter=organizations/any(organizations: organizations eq 'NASDAQ')&$select=metadata_storage_name,organizations&$count=true&api-version=2020-06-30
    ```
 
 Tyto dotazy znázorňují několik způsobů, jak můžete pracovat se syntaxí dotazů a filtry pro nová pole vytvořená pomocí rozpoznávání rozpoznávání. Další příklady dotazů naleznete v tématu [Příklady v dokumentu hledání REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples), [jednoduché příklady dotazů syntaxe](search-query-simple-examples.md)a [úplné příklady dotazů na Lucene](search-query-lucene-examples.md).
@@ -501,7 +501,7 @@ Portál můžete použít k odstranění indexů, indexerů, zdrojů dat a doved
 Nebo použijte **Delete** a poskytněte adresy URL pro každý objekt. Následující příkaz odstraní indexer.
 
 ```http
-DELETE https://[YOUR-SERVICE-NAME].search.windows.net/indexers/cog-search-demo-idxr?api-version=2019-05-06
+DELETE https://[YOUR-SERVICE-NAME].search.windows.net/indexers/cog-search-demo-idxr?api-version=2020-06-30
 ```
 
 Při úspěšném odstranění se vrátí kód stavu 204.
@@ -510,7 +510,7 @@ Při úspěšném odstranění se vrátí kód stavu 204.
 
 Tento kurz ukazuje základní postup sestavení kanálu pro rozšířené indexování, při kterém se vytvářejí součásti: zdroj dat, sada dovedností, index a indexer.
 
-Byly představeny [předdefinované dovednosti](cognitive-search-predefined-skills.md) společně s definicí dovednosti a mechanismy zřetězení dovedností prostřednictvím vstupů a výstupů. Zjistili jste taky, `outputFieldMappings` že v definici indexeru se vyžaduje směrování hodnot obohacených z kanálu do indexu s možností vyhledávání ve službě Azure kognitivní hledání.
+Byly představeny [předdefinované dovednosti](cognitive-search-predefined-skills.md) společně s definicí dovednosti a mechanismy zřetězení dovedností prostřednictvím vstupů a výstupů. Zjistili jste taky, že `outputFieldMappings` v definici indexeru se vyžaduje směrování hodnot obohacených z kanálu do indexu s možností vyhledávání ve službě Azure kognitivní hledání.
 
 Nakonec jste se dozvěděli, jak testovat výsledky a resetovat systém pro další iterace. Zjistili jste, že zasílání dotazů na index vrací výstup vytvořený kanálem rozšířeného indexování. 
 

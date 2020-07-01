@@ -7,19 +7,21 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 06/23/2020
-ms.openlocfilehash: 7075753049e6ba6f4804d23aa31796cbd5bc9141
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.date: 06/30/2020
+ms.openlocfilehash: 9d081dea8e4a59a7b872bde8626cbb8674eebd7e
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85263224"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85554330"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Co je kognitivní hledání Azure?
 
-Azure Kognitivní hledání ([dřív označované jako "Azure Search"](whats-new.md#new-service-name)) je cloudové řešení hledání jako služby, které vývojářům poskytuje rozhraní API a nástroje pro přidání bohatých možností vyhledávání přes soukromý, heterogenní obsah ve webových, mobilních a podnikových aplikacích. Váš kód nebo nástroj vyvolá přijímání dat (indexování) pro vytvoření a načtení indexu. Volitelně můžete přidat dovednosti rozpoznávání pro použití procesů AI během indexování. Díky tomu můžete přidat nové informace a struktury užitečné pro hledání a další scénáře.
+Azure Kognitivní hledání ([dřív označované jako "Azure Search"](whats-new.md#new-service-name)) je cloudové řešení hledání jako služby, které vývojářům poskytuje rozhraní API a nástroje pro přidání bohatých možností vyhledávání přes soukromý, heterogenní obsah ve webových, mobilních a podnikových aplikacích. 
 
-Na druhé straně služby váš kód aplikace vystavuje požadavky na dotazy a zpracovává odpovědi. Možnosti vyhledávání jsou ve vašem klientovi definované pomocí funkcí z Azure Kognitivní hledání. provádění dotazů se provádí prostřednictvím trvalého indexu, který vytvoříte, vlastníte a ukládáte do své služby.
+Ve vlastním řešení je vyhledávací služba mezi dvěma primárními úlohami: ingestování obsahu a dotazy. Váš kód nebo nástroj definuje schéma a vyvolá příjem dat (indexování) pro načtení indexu do Azure Kognitivní hledání. Volitelně můžete přidat dovednosti rozpoznávání pro použití procesů AI během indexování. V takovém případě můžete vytvořit nové informace a struktury užitečné pro scénáře hledání a dolování ve znalostní bázi.
+
+Jakmile index existuje, váš kód aplikace bude vystavovat dotazy požadavky na vyhledávací službu a zpracovává odpovědi. Možnosti vyhledávání jsou ve vašem klientovi definované pomocí funkcí z Azure Kognitivní hledání. provádění dotazů se provádí prostřednictvím trvalého indexu, který vytvoříte, vlastníte a ukládáte do své služby.
 
 ![Architektura Azure Kognitivní hledání](media/search-what-is-azure-search/azure-search-diagram.svg "Architektura Azure Kognitivní hledání")
 
@@ -31,7 +33,7 @@ Azure Kognitivní hledání je vhodné pro následující scénáře aplikací:
 
 + Konsolidace heterogenních typů obsahu do privátního, jednoduchého indexu s možností prohledávání. Dotazy jsou vždycky na indexu, který vytvoříte a načtete pomocí dokumentů, a index se vždycky nachází v cloudu ve službě Azure Kognitivní hledání. Index můžete naplnit pomocí datových proudů dokumentů JSON z libovolného zdroje nebo platformy. Pro obsah ve zdroji v Azure můžete také použít *indexer* , který načte data do indexu. Klíčovým důvodem pro používání služby Azure Kognitivní hledání je definice indexu a Správa/vlastnictví.
 
-+ Nezpracovaný obsah je velký nerozlišený text, soubory obrázků nebo soubory aplikace, jako jsou typy obsahu Office ve zdroji dat Azure, jako je Azure Blob Storage nebo Cosmos DB. Můžete použít odbornosti rozpoznávání během indexování pro přidání struktury nebo extrakce z obrázků a souborů aplikace.
++ Nezpracovaný obsah je velký nerozlišený text, soubory obrázků nebo soubory aplikace, jako jsou typy obsahu Office ve zdroji dat Azure, jako je Azure Blob Storage nebo Cosmos DB. K přidání struktury nebo extrakci prohledávatelných textů z obrázku a souborů aplikace můžete použít dovednosti rozpoznávání během indexování.
 
 + Snadná implementace funkcí souvisejících s vyhledáváním Rozhraní API pro Azure Kognitivní hledání zjednodušují vytváření dotazů, omezující navigaci, filtry (včetně geografického hledání), mapování synonym, dotazy typeahead a optimalizaci závažnosti. Pomocí integrovaných funkcí můžete vyhovět očekáváním koncových uživatelů při hledání podobného komerčním vyhledávacím webům.
 
@@ -53,8 +55,8 @@ Azure Kognitivní hledání je vhodné pro následující scénáře aplikací:
 
 | &nbsp;Obohacení AI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       | Funkce |
 |-------------------|----------|
-|Zpracování AI při indexování | [**Rozšíření AI**](cognitive-search-concept-intro.md) pro analýzu obrázků a textu lze použít pro kanál indexování k extrakci textových informací z nezpracovaného obsahu. Mezi příklady [integrovaných dovedností](cognitive-search-predefined-skills.md) patří optické rozpoznávání znaků (umožňuje prohledávání naskenovaných obrázků JPEG), rozpoznávání entit (identifikuje organizaci, název nebo umístění) a rozpoznávání klíčových frází. Můžete také [naprogramovat vlastní dovednosti](cognitive-search-create-custom-skill-example.md), které připojíte ke kanálu. |
-| Ukládání obohaceného obsahu pro analýzu a spotřebu ve scénářích bez vyhledávání | [**Znalostní báze Knowledge Store (Preview)**](knowledge-store-concept-intro.md) je rozšíření indexování založené na AI. Díky službě Azure Storage jako back-endu můžete ukládat rozšíření vytvořená během indexování. Tyto artefakty lze použít k návrhu lepšího dovednostií nebo k vytváření tvarů a strukturování z Amorphous nebo nejednoznačných dat. Můžete vytvořit projekce těchto struktur, které cílí na konkrétní úlohy nebo uživatele. Můžete také přímo analyzovat extrahovaná data nebo je načíst do jiných aplikací.<br/><br/> |
+|Zpracování AI při indexování | [**Rozšíření AI**](cognitive-search-concept-intro.md) pro analýzu obrázků a textu lze použít pro kanál indexování k extrakci textových informací z nezpracovaného obsahu. Mezi příklady [integrovaných dovedností](cognitive-search-predefined-skills.md) patří optické rozpoznávání znaků (umožňuje prohledávání naskenovaných obrázků JPEG), rozpoznávání entit (identifikuje organizaci, název nebo umístění) a rozpoznávání klíčových frází. Můžete také [naprogramovat vlastní dovednosti](cognitive-search-create-custom-skill-example.md), které připojíte ke kanálu. Můžete také [integrovat Azure Machine Learning vytvořené dovednosti](https://docs.microsoft.com/azure/search/cognitive-search-tutorial-aml-custom-skill). |
+| Ukládání obohaceného obsahu pro analýzu a spotřebu ve scénářích bez vyhledávání | [**Znalostní báze**](knowledge-store-concept-intro.md) je rozšíření indexování založené na AI. Při Azure Storage jako back-endu můžete ukládat obohacení vytvořené během indexování. Tyto artefakty lze použít k návrhu lepšího dovednostií nebo k vytváření tvarů a strukturování z Amorphous nebo nejednoznačných dat. Můžete vytvořit projekce těchto struktur, které cílí na konkrétní úlohy nebo uživatele. Můžete také přímo analyzovat extrahovaná data nebo je načíst do jiných aplikací.<br/><br/> |
 | Obsah uložený v mezipaměti | [**Přírůstkové obohacení (verze Preview)**](cognitive-search-incremental-indexing-conceptual.md) omezuje zpracování na pouze dokumenty, které byly změněny konkrétní úpravou v kanálu, a to pomocí obsahu uloženého v mezipaměti pro části kanálu, které se nemění. |
 
 | &nbsp;Import/indexování dat | Funkce |
@@ -127,9 +129,9 @@ Mezi naše zákazníky dokázali využít nejširší škálu funkcí v Azure Ko
 
 I když je možné na portálu provádět mnoho úloh, Azure Kognitivní hledání je určený pro vývojáře, kteří chtějí integrovat funkce vyhledávání do stávajících aplikací. Dostupná jsou následující programovací rozhraní.
 
-|Platforma |Description |
+|Platforma |Popis |
 |-----|------------|
-|[REST](/rest/api/searchservice/) | Příkazy HTTP podporované každou programovací platformou a jazykem, včetně Xamarinu, Javy a JavaScriptu.|
+|[REST](/rest/api/searchservice/) | Příkazy HTTP podporované všemi programovacími platformami a jazyky, včetně jazyků Java, Python a JavaScript|
 |[.NET SDK](search-howto-dotnet-sdk.md) | Obálka .NET pro REST API nabízí efektivní kódování v jazyce C# a dalších jazycích spravovaného kódu určených pro rozhraní .NET Framework. |
 
 ## <a name="free-trial"></a>Bezplatná zkušební verze

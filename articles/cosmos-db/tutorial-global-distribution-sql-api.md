@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
 ms.custom: tracking-python
-ms.openlocfilehash: d50217bed3850f0e9021dda4bf1b577d006839d1
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 52a76e685a9db58870c9a18b419ef725f559a969
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84674478"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85553001"
 ---
 # <a name="tutorial-set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Kurz: nastavení globální distribuce Azure Cosmos DB pomocí rozhraní SQL API
 
@@ -104,7 +104,6 @@ const client = new CosmosClient{ endpoint, key, connectionPolicy: { preferredLoc
 Následující kód ukazuje, jak nastavit Upřednostňovaná umístění pomocí sady Python SDK:
 
 ```python
-
 connectionPolicy = documents.ConnectionPolicy()
 connectionPolicy.PreferredLocations = ['West US', 'East US', 'North Europe']
 client = cosmos_client.CosmosClient(ENDPOINT, {'masterKey': MASTER_KEY}, connectionPolicy)
@@ -130,14 +129,13 @@ Následující kód ukazuje, jak nastavit Upřednostňovaná umístění pomocí
 --- 
 
 ## <a name="rest"></a>REST
-Po zpřístupnění účtu databáze ve více oblastech můžou klienti dotazovat její dostupnost provedením požadavku GET na následující identifikátor URI.
-
-    https://{databaseaccount}.documents.azure.com/
+Po zpřístupnění účtu databáze ve více oblastech můžou klienti zadat dotaz na jeho dostupnost provedením žádosti o získání tohoto identifikátoru URI.`https://{databaseaccount}.documents.azure.com/`
 
 Služba vrátí seznam oblastí a jejich odpovídajících identifikátorů URI koncových bodů služby Azure Cosmos DB pro repliky. V odpovědi bude uvedená aktuální oblast pro zápis. Klient si pak může vybrat vhodný koncový bod pro všechny další požadavky rozhraní REST API následujícím způsobem.
 
 Příklad odpovědi
 
+```json
     {
         "_dbs": "//dbs/",
         "media": "//media/",
@@ -167,7 +165,7 @@ Příklad odpovědi
         "_ts": 0,
         "_etag": null
     }
-
+```
 
 * Všechny požadavky PUT,POST a DELETE musí směřovat na uvedený identifikátor URI pro zápis.
 * Všechny požadavky GET a další žádosti jen pro čtení (například dotazy) můžou přejít na libovolný koncový bod ve výběru klienta.

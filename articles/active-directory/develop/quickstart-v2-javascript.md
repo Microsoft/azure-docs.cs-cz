@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript
-ms.openlocfilehash: d0c705ffba84b9d34f8bc3d6e4c06d4bdb90fa21
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 047e03c4fa5916119036c5e539674dc48a6c77aa
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84322817"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85554012"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Rychlý Start: přihlášení uživatelů a získání přístupového tokenu v ZABEZPEČENÉm kódu JavaScript
 
@@ -73,10 +73,10 @@ V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se jednostránkové
 #### <a name="step-2-download-the-project"></a>Krok 2: Stažení projektu
 
 > [!div renderon="docs"]
-> Chcete-li spustit projekt s webovým serverem pomocí Node. js, [Stáhněte si základní soubory projektu](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip).
+> Chcete-li spustit projekt s webovým serverem pomocí Node.js, [Stáhněte si základní soubory projektu](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip).
 
 > [!div renderon="portal"]
-> Spustit projekt s webovým serverem pomocí Node. js
+> Spustit projekt s webovým serverem pomocí Node.js
 
 > [!div renderon="portal" id="autoupdate" class="nextstepaction"]
 > [Stažení ukázky kódu](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip)
@@ -84,7 +84,7 @@ V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se jednostránkové
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-your-javascript-app"></a>Krok 3: Konfigurace aplikace JavaScriptu
 >
-> Ve složce *JavaScriptSPA* upravte *authConfig. js*a nastavte `clientID` `authority` `redirectUri` hodnoty a v části `msalConfig` .
+> Ve složce *JavaScriptSPA* upravte *authConfig.js*a nastavte `clientID` `authority` `redirectUri` hodnoty a v části `msalConfig` .
 >
 > ```javascript
 >
@@ -126,7 +126,7 @@ V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se jednostránkové
 
 > [!div renderon="docs"]
 >
-> Potom stále ve stejné složce upravte soubor *graphConfig. js* pro nastavení `graphMeEndpoint` a `graphMeEndpoint` pro `apiConfig` objekt.
+> Potom stále ve stejné složce upravte soubor *graphConfig.js* pro nastavení `graphMeEndpoint` a `graphMeEndpoint` pro `apiConfig` objekt.
 > ```javascript
 >   // Add here the endpoints for MS Graph API services you would like to use.
 >   const graphConfig = {
@@ -148,7 +148,7 @@ V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se jednostránkové
 >
 > #### <a name="step-4-run-the-project"></a>Krok 4: spuštění projektu
 
-Spusťte projekt s webovým serverem pomocí [Node. js](https://nodejs.org/en/download/):
+Spusťte projekt s webovým serverem pomocí [Node.js](https://nodejs.org/en/download/):
 
 1. Chcete-li spustit server, spusťte následující příkaz z adresáře projektu:
     ```batch
@@ -167,17 +167,17 @@ Poté, co prohlížeč načte aplikaci, vyberte možnost **Přihlásit**se. Při
 
 ![Jak ukázka ZABEZPEČENÉho kódu JavaScript funguje: 1. SPA inicializuje přihlášení. 2. SPA získá token ID z platformy Microsoft identity. 3. Zabezpečené ověřování hesla volá token získání. 4. Platforma Microsoft Identity vrací přístupový token do zabezpečeného hesla. 5. Protokol SPA vytvoří požadavek a HTTP GET s tokenem ACE pro rozhraní Microsoft Graph API. 6. Graph API vrátí odpověď protokolu HTTP do zabezpečeného hesla.](media/quickstart-v2-javascript/javascriptspa-intro.svg)
 
-### <a name="msaljs"></a>msal. js
+### <a name="msaljs"></a>msal.js
 
-Knihovna MSAL se přihlásí uživatelům a požádá o tokeny, které se používají pro přístup k rozhraní API, které je chráněné platformou Microsoft identity. Soubor *. html s indexem* pro rychlý Start obsahuje odkaz na knihovnu:
+Knihovna MSAL se přihlásí uživatelům a požádá o tokeny, které se používají pro přístup k rozhraní API, které je chráněné platformou Microsoft identity. Soubor rychlý Start *index.html* obsahuje odkaz na knihovnu:
 
 ```html
 <script type="text/javascript" src="https://alcdn.msftauth.net/lib/1.2.1/js/msal.js" integrity="sha384-9TV1245fz+BaI+VvCjMYL0YDMElLBwNS84v3mY57pXNOt6xcUYch2QLImaTahcOP" crossorigin="anonymous"></script>
 ```
 > [!TIP]
-> Předchozí verzi můžete nahradit nejnovější vydanou verzí ve [verzích MSAL. js](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases).
+> Předchozí verzi můžete nahradit nejnovější vydanou verzí v části [MSAL.js releases](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases).
 
-Případně, pokud máte nainstalován Node. js, si můžete stáhnout nejnovější verzi prostřednictvím Správce balíčků Node. js (npm):
+Případně, pokud máte Node.js nainstalované, můžete nejnovější verzi stáhnout prostřednictvím Správce balíčků Node.js (npm):
 
 ```batch
 npm install msal
@@ -204,7 +204,7 @@ Kód pro rychlý Start také ukazuje, jak inicializovat knihovnu MSAL:
 const myMSALObj = new Msal.UserAgentApplication(msalConfig);
 ```
 
-> |Kde  |  |
+> |Kde  | Popis |
 > |---------|---------|
 > |`clientId`     | ID aplikace, která je zaregistrována v Azure Portal.|
 > |`authority`    | Volitelné Adresa URL autority, která podporuje typy účtů, jak je popsáno výše v části konfigurace. Výchozí autorita je `https://login.microsoftonline.com/common` . |
@@ -232,7 +232,7 @@ myMSALObj.loginPopup(loginRequest)
 });
 ```
 
-> |Kde  |  |
+> |Kde  | Popis |
 > |---------|---------|
 > | `scopes`   | Volitelné Obsahuje obory, které jsou požadovány pro souhlas uživatele v době přihlášení. Například `[ "user.read" ]` pro Microsoft Graph nebo `[ "<Application ID URL>/scope" ]` pro vlastní webová rozhraní API (tj `api://<Application ID>/access_as_user` .). |
 
@@ -262,7 +262,7 @@ myMSALObj.acquireTokenSilent(tokenRequest)
     });
 ```
 
-> |Kde  |  |
+> |Kde  | Popis |
 > |---------|---------|
 > | `scopes`   | Obsahuje požadované obory, které mají být vráceny v přístupovém tokenu pro rozhraní API. Například `[ "mail.read" ]` pro Microsoft Graph nebo `[ "<Application ID URL>/scope" ]` pro vlastní webová rozhraní API (tj `api://<Application ID>/access_as_user` .).|
 
@@ -305,4 +305,4 @@ Podrobnější návod k sestavování aplikace pro tento rychlý Start najdete v
 K procházení úložiště MSAL pro dokumentaci, nejčastější dotazy, problémy a další informace najdete v těchto tématech:
 
 > [!div class="nextstepaction"]
-> [Úložiště GitHub MSAL. js](https://github.com/AzureAD/microsoft-authentication-library-for-js)
+> [MSAL.js úložiště GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js)

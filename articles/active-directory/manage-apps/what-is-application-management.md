@@ -1,6 +1,6 @@
 ---
 title: Správa aplikací pomocí služby Azure Active Directory | Microsoft Docs
-description: Tento článek popisuje výhody Integrace Azure Active Directory s vašimi místními, cloudem a SaaS aplikacemi.
+description: Přehled použití Azure Active Directory (AD) jako systému správy identit a autorizace (IAM) pro vaše cloudové a místní aplikace.
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -8,26 +8,50 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: overview
 ms.workload: identity
-ms.date: 06/05/2019
+ms.date: 07/01/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f826f5cc3e56dcf88ee110265724779a9d1f624
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 1d69da3f1e9a505d14974a7a3089acca0e17c713
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84762917"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85549532"
 ---
-# <a name="application-management-with-azure-active-directory"></a>Správa aplikací pomocí Azure Active Directory
+# <a name="what-is-application-management"></a>Co je správa aplikací?
 
-Azure Active Directory (Azure AD) zjednodušuje způsob správy aplikací tím, že poskytuje jeden systém identit pro cloudové a místní aplikace. Do Azure AD můžete přidat své aplikace SaaS (software jako služba), místní aplikace a obchodní aplikace (LOB). Pak se uživatelé přihlásí jednou k bezpečnému a bezproblémovému přístupu k těmto aplikacím společně se sadou Office 365 a dalšími podnikovými aplikacemi od Microsoftu. [Automatizaci zřizování uživatelů](../app-provisioning/user-provisioning.md)můžete snížit náklady na správu. K zajištění zabezpečeného přístupu k aplikacím můžete použít taky službu Multi-Factor Authentication a zásady podmíněného přístupu.
+Azure AD je systém pro správu identit a autorizací (IAM). Poskytuje jediné místo pro ukládání informací o digitálních identitách. Softwarové aplikace můžete nakonfigurovat tak, aby používaly Azure AD jako místo, kde jsou uložené informace o uživateli. 
 
-![Diagram, který zobrazuje aplikace federované přes Azure AD](media/what-is-application-management/app-management-overview.png)
+Služba Azure AD musí být nakonfigurovaná tak, aby se mohla integrovat s aplikací. Jinými slovy, musí znát, co aplikace používají jako systém identit. Proces uchovávání těchto aplikací na základě služby Azure AD a způsobu jejich zpracování se označuje jako Správa aplikací.
+
+Aplikace spravujete v okně **podnikové aplikace** , které najdete v části Správa na portálu Azure Active Directory.
+
+![Možnost podnikové aplikace v části spravovat na portálu Azure AD.](media/what-is-application-management/enterprise-applications-in-nav.png)
+
+## <a name="what-is-an-identity-and-authorization-management-iam-system"></a>Co je systém pro správu identit a autorizací (IAM)?
+Aplikace je software, který se používá k nějakému účelu. Většina aplikací vyžaduje, aby se uživatelé přihlásili, aby aplikace mohla poskytovat přizpůsobené prostředí pro konkrétního uživatele. Jinými slovy aplikace potřebuje znát identitu uživatele pomocí aplikace. Protože ví, jakou funkci má uživatel nabízet nebo odebírat,
+
+Pokud každá aplikace udržuje přehled o uživatelích samostatně, pak by výsledkem bylo silo různých uživatelských jmen a přihlášení pro každou aplikaci. Jedna aplikace by neznala žádné informace o uživatelích v jiných aplikacích.
+
+Centralizovaný systém identit tento problém vyřeší tím, že poskytuje jediné místo pro ukládání informací o uživateli, které mohou být použity všemi aplikacemi. Tyto systémy jsou známé jako systémy správy identit a autorizací (IAM). Azure Active Directory je systém IAM pro Cloud Microsoftu.
+
+>[!TIP]
+>Systém IAM poskytuje jediné místo, kde si můžete sledovat identity uživatelů. Azure AD je systém IAM pro Cloud Microsoftu.
+
 
 ## <a name="why-manage-applications-with-a-cloud-solution"></a>Proč spravovat aplikace pomocí cloudového řešení?
 
 Organizace mají často stovky aplikací, které uživatelé potřebují k výkonu své práce. Uživatelé tyto aplikace používají na různých zařízeních a v různých umístěních. Každý den se přidávají, vyvíjejí a vyřazují nové aplikace. Díky tomu, že mnoho aplikací a přístupových bodů je důležitější než dřív, použití cloudového řešení ke správě přístupu uživatelů ke všem aplikacím.
+
+>[!TIP]
+>Galerie aplikací Azure AD obsahuje mnoho oblíbených aplikací, které už jsou předem nakonfigurované tak, aby fungovaly se službou Azure AD jako zprostředkovatel identity.
+
+## <a name="how-does-azure-ad-work-with-applications"></a>Jak Azure AD pracuje s aplikacemi?
+
+Azure AD zjednodušuje způsob správy aplikací tím, že poskytuje jeden systém identit pro cloudové a místní aplikace. Do Azure AD můžete přidat své aplikace SaaS (software jako služba), místní aplikace a obchodní aplikace (LOB). Pak se uživatelé přihlásí jednou k bezpečnému a bezproblémovému přístupu k těmto aplikacím společně se sadou Office 365 a dalšími podnikovými aplikacemi od Microsoftu. [Automatizaci zřizování uživatelů](../app-provisioning/user-provisioning.md)můžete snížit náklady na správu. K zajištění zabezpečeného přístupu k aplikacím můžete použít taky službu Multi-Factor Authentication a zásady podmíněného přístupu.
+
+![Diagram, který zobrazuje aplikace federované přes Azure AD](media/what-is-application-management/app-management-overview.png)
 
 ## <a name="what-types-of-applications-can-i-integrate-with-azure-ad"></a>Jaké typy aplikací je možné integrovat se službou Azure AD?
 
@@ -35,11 +59,17 @@ Existují čtyři hlavní typy aplikací, které můžete přidat do **podnikov�
 
 - **Aplikace Galerie Azure AD** – Azure AD obsahuje galerii obsahující tisíce aplikací, které jsou předem integrované pro jednotné přihlašování pomocí Azure AD. Galerie pravděpodobně obsahuje i některé aplikace, které využívá vaše organizace. [Přečtěte si, jak naplánovat integraci aplikací](plan-an-application-integration.md), nebo Získejte podrobné kroky integrace pro jednotlivé aplikace v [kurzech k aplikacím SaaS](https://docs.microsoft.com/azure/active-directory/saas-apps/).
 
-- **Místní aplikace s proxy aplikací** – s Azure proxy aplikací služby AD můžete integrovat místní webové aplikace se službou Azure AD, aby podporovaly jednotné přihlašování. Pak koncoví uživatelé budou mít přístup k místním webovým aplikacím stejným způsobem jako přistupující k Office 365 a dalším aplikacím SaaS. [Zjistěte, proč používat proxy aplikace a jak funguje](what-is-application-proxy.md).
+- **Místní aplikace s proxy aplikací** – s Azure proxy aplikací služby AD můžete integrovat místní webové aplikace se službou Azure AD, aby podporovaly jednotné přihlašování. Pak koncoví uživatelé budou mít přístup k místním webovým aplikacím stejným způsobem jako přístup k Office 365 a dalším aplikacím SaaS, najdete je v článku [o poskytování vzdáleného přístupu k místním aplikacím prostřednictvím proxy aplikací služby Azure AD](application-proxy.md).
 
 - **Vlastní aplikace vyvíjené** – při vytváření vlastních obchodních aplikací je můžete integrovat se službou Azure AD a podporovat jednotné přihlašování. Díky registraci aplikace ve službě Azure AD máte kontrolu nad zásadami ověřování pro aplikaci. Další informace najdete v tématu [doprovodné materiály pro vývojáře](developer-guidance-for-integrating-applications.md).
 
-- **Aplikace mimo galerii** – Přineste si vlastní aplikace! Podpora jednotného přihlašování pro jiné aplikace jejich přidáním do služby Azure AD. Můžete integrovat libovolný webový odkaz, který chcete, nebo libovolnou aplikaci, která vykresluje pole uživatelské jméno a heslo, podporuje protokoly SAML nebo OpenID Connect nebo podporuje SCIM. Další informace najdete v tématu [Konfigurace jednotného přihlašování pro aplikace mimo galerii](configure-single-sign-on-non-gallery-applications.md).
+- **Aplikace mimo galerii** – Přineste si vlastní aplikace! Podpora jednotného přihlašování pro jiné aplikace jejich přidáním do služby Azure AD. Existuje několik způsobů, jak integrovat aplikaci, některé z nich jsou uvedeny níže. Další informace najdete v tématu [Konfigurace jednotného přihlašování pro aplikace mimo galerii](configure-single-sign-on-non-gallery-applications.md).
+
+>[!TIP]
+>Službu Azure AD můžete integrovat s aplikací i v případě, že ještě není předem nakonfigurovaná a v galerii aplikací. **Službu Azure AD můžete integrovat s některým** z následujících způsobů:
+> - Libovolný webový odkaz nebo aplikace, které vykreslí **pole uživatelské jméno a heslo**.
+> - Všechny aplikace, které podporují **protokoly SAML nebo OpenID Connect**.
+> - Všechny aplikace, které podporují **systém pro správu identit mezi doménami (SCIM)** .
 
 ## <a name="manage-risk-with-conditional-access-policies"></a>Řízení rizik pomocí zásad podmíněného přístupu
 
@@ -59,7 +89,12 @@ Pomocí Azure AD můžete monitorovat přihlašování k aplikacím prostřednic
 
 Migrací do Azure AD můžete snížit náklady a zbavit se nepříjemností spojených se správou místní infrastruktury. Azure AD navíc poskytuje samoobslužný přístup k aplikacím, což ušetří čas jak správcům, tak i uživatelům. Jednotné přihlašování eliminuje hesla pro konkrétní aplikace. Tato možnost přihlásit se pouze jednou šetří náklady spojené s resetováním hesel pro aplikace a pomáhá předejít ztrátě produktivity při načítání hesel.
 
+Pro aplikace zaměřené na lidské zdroje nebo jiné aplikace s velkou sadou uživatelů můžete využít zřizování aplikací k automatizaci procesu zřizování a rušení zřizování uživatelů, viz téma [co je zřizování aplikací?](../app-provisioning/user-provisioning.md).
+
 ## <a name="next-steps"></a>Další kroky
 
-- [Co je proxy aplikací?](what-is-application-proxy.md)
+- [Zobrazení aplikací, které jsou už ve vašem tenantovi Azure AD nakonfigurované](view-applications-portal.md)
 - [Rychlý Start: Přidání aplikace Galerie do tenanta Azure AD](add-application-portal.md)
+- [Přidání aplikace Galerie do vaší organizace Azure AD](add-gallery-app.md)
+- [Začínáme s integrací aplikací](plan-an-application-integration.md)
+- [Informace o automatizaci zřizování](../app-provisioning/user-provisioning.md)

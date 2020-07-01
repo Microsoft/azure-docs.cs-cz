@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/14/2020
 ms.author: allensu
-ms.openlocfilehash: 94ef9b9754527bbb36ef1028f80e957da8c631dd
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 80e2ba8df9c81d2a34f63b2f1bc943ee5d731bae
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84688394"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85549577"
 ---
 # <a name="what-is-virtual-network-nat"></a>Co je Virtual Network NAT?
 
@@ -144,7 +144,7 @@ Virtual Network překlad adres (NAT) a prostředek brány NAT jsou k dispozici v
 
 Překlad adres (NAT) je podporován prostřednictvím běžných kanálů podpory.
 
-## <a name="feedback"></a>Váš názor
+## <a name="suggestions"></a>Návrhy
 
 Chceme zjistit, jak můžeme službu vylepšit. Navrhněte a hlasujte, co by se mělo na webu [UserVoice pro překlad adres (NAT)](https://aka.ms/natuservoice)sestavit dál.
 

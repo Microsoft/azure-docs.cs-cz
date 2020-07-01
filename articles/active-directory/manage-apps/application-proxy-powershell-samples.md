@@ -12,12 +12,12 @@ ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e624be8103097a8356ae4167cb8f21cce819649
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 57efd88b9d194442920496107d4c37ba2baf94d3
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84760166"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85554981"
 ---
 # <a name="azure-ad-powershell-examples-for-azure-ad-application-proxy"></a>Příklady Azure AD PowerShellu pro Azure Proxy aplikací služby AD
 
@@ -26,7 +26,7 @@ Následující tabulka obsahuje odkazy na příklady skriptu PowerShellu pro Azu
 
 Další informace o rutinách použitých v těchto ukázkách najdete v tématu Správa [aplikací proxy](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management) aplikací a [Správa konektoru proxy aplikací](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_connector_management).
 
-| | |
+| Odkaz | Popis |
 |---|---|
 |**Aplikace proxy aplikací**||
 | [Seznam základních informací pro všechny aplikace proxy aplikací](scripts/powershell-get-all-app-proxy-apps-basic.md) | Uvádí základní informace o všech aplikacích proxy aplikací ve vašem adresáři (AppId, DisplayName, ObjId). |

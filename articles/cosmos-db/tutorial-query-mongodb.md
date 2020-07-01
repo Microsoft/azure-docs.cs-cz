@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: tutorial
 ms.date: 12/03/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 5b9bc78f6af833d89a3404de0295ddad78ebdf20
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 853133297567546d2e5259aee9a24ab52a6a4614
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74870135"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85552926"
 ---
 # <a name="query-data-by-using-azure-cosmos-dbs-api-for-mongodb"></a>Dotazování dat pomocí rozhraní API Azure Cosmos DB pro MongoDB
 
@@ -63,11 +63,14 @@ Dotazy v tomto článku využívají následující ukázkový dokument.
 S použitím výše uvedeného dokumentu family (rodina) vrátí následující dotaz dokumenty, jejichž pole ID odpovídá `WakefieldFamily`.
 
 **Dotaz**
-    
-    db.families.find({ id: "WakefieldFamily"})
+
+```bash
+db.families.find({ id: "WakefieldFamily"})
+```
 
 **Výsledky**
 
+```json
     {
     "_id": "ObjectId(\"58f65e1198f3a12c7090e68c\")",
     "id": "WakefieldFamily",
@@ -107,17 +110,21 @@ S použitím výše uvedeného dokumentu family (rodina) vrátí následující 
     "creationDate": 1431620462,
     "isRegistered": false
     }
+```
 
 ## <a name="example-query-2"></a><a id="examplequery2"></a>Příklad dotazu 2 
 
 Další dotaz vrátí všechny děti v rodině. 
 
 **Dotaz**
-    
-    db.families.find( { id: "WakefieldFamily" }, { children: true } )
+
+```bash 
+db.families.find( { id: "WakefieldFamily" }, { children: true } )
+``` 
 
 **Výsledky**
 
+```json
     {
     "_id": "ObjectId("58f65e1198f3a12c7090e68c")",
     "children": [
@@ -139,26 +146,35 @@ Další dotaz vrátí všechny děti v rodině.
       }
     ]
     }
-
+```
 
 ## <a name="example-query-3"></a><a id="examplequery3"></a>Příklad dotazu 3 
 
 Další dotaz vrátí všechny zaregistrované rodiny. 
 
 **Dotaz**
-    
-    db.families.find( { "isRegistered" : true })
-**Výsledky** Nevrátí se žádný dokument. 
+
+```bash
+db.families.find( { "isRegistered" : true })
+``` 
+
+**Výsledky**
+
+Nebude vrácen žádný dokument. 
 
 ## <a name="example-query-4"></a><a id="examplequery4"></a>Příklad dotazu 4
 
 Další dotaz vrátí všechny nezaregistrované rodiny. 
 
 **Dotaz**
-    
-    db.families.find( { "isRegistered" : false })
+
+```bash
+db.families.find( { "isRegistered" : false })
+``` 
+
 **Výsledky**
 
+```json
      {
     "_id": ObjectId("58f65e1198f3a12c7090e68c"),
     "id": "WakefieldFamily",
@@ -193,17 +209,21 @@ Další dotaz vrátí všechny nezaregistrované rodiny.
     "creationDate": 1431620462,
     "isRegistered": false
 }
+```
 
 ## <a name="example-query-5"></a><a id="examplequery5"></a>Příklad dotazu 5
 
 Další dotaz vrátí všechny nezaregistrované rodiny ve státě NY. 
 
 **Dotaz**
-    
-     db.families.find( { "isRegistered" : false, "address.state" : "NY" })
+
+```bash
+db.families.find( { "isRegistered" : false, "address.state" : "NY" })
+``` 
 
 **Výsledky**
 
+```json
      {
     "_id": ObjectId("58f65e1198f3a12c7090e68c"),
     "id": "WakefieldFamily",
@@ -238,18 +258,21 @@ Další dotaz vrátí všechny nezaregistrované rodiny ve státě NY.
     "creationDate": 1431620462,
     "isRegistered": false
 }
-
+```
 
 ## <a name="example-query-6"></a><a id="examplequery6"></a>Příklad dotazu 6
 
 Další dotaz vrátí všechny rodiny s dětmi v 8. ročníku.
 
 **Dotaz**
-  
-     db.families.find( { children : { $elemMatch: { grade : 8 }} } )
+
+```bash
+db.families.find( { children : { $elemMatch: { grade : 8 }} } )
+```
 
 **Výsledky**
 
+```json
      {
     "_id": ObjectId("58f65e1198f3a12c7090e68c"),
     "id": "WakefieldFamily",
@@ -284,14 +307,17 @@ Další dotaz vrátí všechny rodiny s dětmi v 8. ročníku.
     "creationDate": 1431620462,
     "isRegistered": false
 }
+```
 
 ## <a name="example-query-7"></a><a id="examplequery7"></a>Příklad dotazu 7
 
 Další dotaz vrátí všechny rodiny s polem children (děti) velikosti 3.
 
 **Dotaz**
-  
-      db.Family.find( {children: { $size:3} } )
+
+```bash
+db.Family.find( {children: { $size:3} } )
+```
 
 **Výsledky**
 

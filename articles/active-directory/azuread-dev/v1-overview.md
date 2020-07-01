@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5489c65a0e955183b034e173706b6decfa6df9d5
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: db158a50cfc164a0fc839e858cc6e7c46558eb77
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85387486"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85551591"
 ---
 # <a name="azure-active-directory-for-developers-v10-overview"></a>Přehled Azure Active Directory pro vývojáře (v 1.0)
 
@@ -29,11 +29,8 @@ Azure Active Directory (Azure AD) je cloudová služba identit umožňující v�
 > [!NOTE]
 > Většina obsahu na této stránce se zaměřuje na koncový bod a platformu v 1.0, které podporují jenom pracovní nebo školní účty Microsoftu. Pokud se chcete přihlásit k uživatelským nebo osobním účtům Microsoft, přečtěte si informace na [koncovém bodu a platformě verze 2.0](../develop/v2-overview.md). Koncový bod v 2.0 nabízí jednotné vývojářské prostředí pro aplikace, které se chtějí přihlašovat ke všem identitám Microsoftu.
 
-| | |
-| --- | --- |
-|[Základy ověřování](v1-authentication-scenarios.md) | Úvod k ověřování pomocí Azure AD |
-|[Typy aplikací](app-types.md) | Přehled scénářů ověřování, které podporuje Azure AD |
-| | |
+- [Základy ověřování](v1-authentication-scenarios.md) Úvod k ověřování pomocí Azure AD.
+- [Typy aplikací](app-types.md) Přehled scénářů ověřování, které podporuje Azure AD
 
 ## <a name="get-started"></a>Začínáme
 
@@ -47,12 +44,9 @@ Podrobné informace a návody nejběžnějších úloh v Azure AD najdete v tém
 
 Následující články poskytují podrobné informace o rozhraních API, zprávách protokolů a termínech používaných v Azure AD.
 
-|                                                                                   | |
-| ----------------------------------------------------------------------------------| --- |
-| [Knihovny ověřování (ADAL)](active-directory-authentication-libraries.md)   | Přehled knihoven a sad SDK, které poskytuje Azure AD |
-| [Ukázky kódu](sample-v1-code.md)                                  | Seznam všech ukázek kódu Azure AD |
-| [Glosář](../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)                                      | Terminologie a definice slov, která se používají v této dokumentaci |
-|  |  |
+- [Knihovny ověřování (ADAL)](active-directory-authentication-libraries.md) Přehled knihoven a sad SDK, které poskytuje Azure AD.
+- [Ukázky kódu](sample-v1-code.md) Seznam všech ukázek kódu Azure AD.
+- [Glosář](../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) Terminologie a definice slov, která se používají v této dokumentaci
 
 ## <a name="videos"></a>Videa
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b89ab7e44bc71fa442f332cbba35af450f7d5155
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 4ddf754bb48bf588451f2eea595e8d1036d20b3e
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84760656"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85555285"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-tenant"></a>Rychlý start: Přidání aplikace do tenanta Azure Active Directory
 
@@ -97,7 +97,7 @@ Teď, když jste našli aplikaci, ji můžete otevřít a nakonfigurovat její v
 
    - Chování pro **přiřazené** uživatele:
 
-       | Nastavení vlastností aplikace | | | Prostředí pro přiřazené uživatele | |
+       | Vlastnost aplikace | Vlastnost aplikace | Vlastnost aplikace | Prostředí pro přiřazené uživatele | Prostředí pro přiřazené uživatele |
        |---|---|---|---|---|
        | Mohou se uživatelé přihlásit? | Je přiřazení uživatelů povinné? | Uvidí ji uživatelé? | Mohou se přiřazení uživatelé přihlásit? | Zobrazí se aplikace přiřazeným uživatelům?* |
        | ano | ano | ano | ano | ano  |
@@ -111,7 +111,7 @@ Teď, když jste našli aplikaci, ji můžete otevřít a nakonfigurovat její v
 
    - Chování pro **nepřiřazené** uživatele:
 
-       | Nastavení vlastností aplikace | | | Prostředí pro nepřiřazené uživatele | |
+       | Vlastnost aplikace | Vlastnost aplikace | Vlastnost aplikace | Prostředí pro nepřiřazené uživatele | Prostředí pro nepřiřazené uživatele |
        |---|---|---|---|---|
        | Povolit uživatelům přihlášení? | Je přiřazení uživatelů povinné? | Uvidí ji uživatelé? | Mohou se nepřiřazení uživatelé přihlásit? | Zobrazí se aplikace nepřiřazeným uživatelům?* |
        | ano | ano | ano | ne  | ne   |

@@ -26,7 +26,7 @@
     - name: Vytvoření datové továrny – šablona Resource Manageru
       href: quickstart-create-data-factory-resource-manager-template.md
     - name: Zabezpečení – povolení šifrování klíčů spravovaných zákazníkem
-      href: quickstart-enable-customer-managed-key.md
+      href: enable-customer-managed-key.md
     - name: Vytvoření toku dat
       href: data-flow-create.md
 - name: Kurzy
@@ -576,7 +576,7 @@
         - name: Spravovaná identita pro Data Factory
           href: data-factory-service-identity.md
         - name: Šifrování s využitím klíčů spravovaných zákazníkem
-          href: quickstart-enable-customer-managed-key.md
+          href: enable-customer-managed-key.md
     - name: Monitorování a správa
       items:
         - name: Vizuální monitorování

@@ -12,12 +12,12 @@ ms.date: 10/29/2019
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f2002414836dcb77a09f633f30ec0fcbb7981de
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 77b1794f5dde4d7e346e45c2da5d24195d69b50e
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84760520"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85555190"
 ---
 # <a name="add-a-gallery-app-to-your-azure-ad-organization"></a>Přidání aplikace Galerie do vaší organizace Azure AD
 
@@ -67,7 +67,7 @@ Azure Active Directory (Azure AD) obsahuje galerii obsahující tisíce předem 
 
       Chování pro **přiřazené** uživatele:
 
-       | Nastavení vlastností aplikace | | | Prostředí pro přiřazené uživatele | |
+       | Vlastnost aplikace | Vlastnost aplikace | Vlastnost aplikace | Prostředí pro přiřazené uživatele | Prostředí pro přiřazené uživatele |
        |---|---|---|---|---|
        | Mohou se uživatelé přihlásit? | Je přiřazení uživatelů povinné? | Uvidí ji uživatelé? | Mohou se přiřazení uživatelé přihlásit? | Zobrazí se aplikace přiřazeným uživatelům?* |
        | ano | ano | ano | ano | ano  |

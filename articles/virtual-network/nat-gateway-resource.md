@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2020
 ms.author: allensu
-ms.openlocfilehash: db50a8938459fe063553f08c495149867ee36f43
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 0b025b3e017c8a7702b411e9d91cbdf22f915aba
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84710061"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85549634"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>Navrhování virtuálních sítí pomocí prostředků brány NAT
 
@@ -325,8 +325,7 @@ Port SNAT je k dispozici pro opakované použití na stejnou cílovou IP adresu 
 - Protokolování toku NSG se při použití překladu adres (NAT) nepodporuje.
 - Překlad adres (NAT) nemůže zahrnovat víc virtuálních sítí.
 
-
-## <a name="feedback"></a>Váš názor
+## <a name="suggestions"></a>Návrhy
 
 Chceme zjistit, jak můžeme službu vylepšit. Chybí funkce? Udělejte si případ, co by se mělo na webu [UserVoice pro překlad adres (NAT)](https://aka.ms/natuservoice)sestavit dál.
 

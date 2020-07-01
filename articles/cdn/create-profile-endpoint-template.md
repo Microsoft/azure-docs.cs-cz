@@ -9,44 +9,48 @@ ms.service: azure-cdn
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
+ms.custom: subject-armqs
 ms.date: 06/25/2020
 ms.author: allensu
-ms.openlocfilehash: bdb30fed4dadef84fe012c11893661b8d9d70325
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: 39f10ed627320527a7a34fec52d540739f36e9ce
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85483036"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85554429"
 ---
-# <a name="quickstart-create-an-azure-cdn-profile-and-endpoint---resource-manager-template"></a>Rychlý Start: vytvoření profilu Azure CDN a koncového bodu – šablona Správce prostředků
+# <a name="quickstart-create-an-azure-cdn-profile-and-endpoint---arm-template"></a>Rychlý Start: vytvoření profilu Azure CDN a šablony koncového bodu – ARM
 
-Začněte s Azure CDN pomocí Azure Resource Manager šablony.  Tato šablona nasadí profil a koncový bod.
+Začínáme s Azure Content Delivery Network (CDN) pomocí šablony Azure Resource Manager (šablona ARM). Šablona nasadí profil a koncový bod.
+
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Pokud vaše prostředí splňuje požadavky a Vy jste obeznámeni s používáním šablon ARM, vyberte tlačítko **nasadit do Azure** . Šablona se otevře v Azure Portal.
+
+[![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cdn-with-custom-origin%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-cdn-profile-and-endpoint"></a>Vytvořit profil a koncový bod CDN
+## <a name="review-the-template"></a>Kontrola šablony
+
+Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-cdn-with-custom-origin/).
 
 Tato šablona je nakonfigurovaná tak, aby vytvořila:
 
 * Profil
 * Koncový bod
 
-### <a name="review-the-template"></a>Kontrola šablony
-
-Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-cdn-with-custom-origin/azuredeploy.json) .
-
-:::code language="json" source="~/quickstart-templates/101-cdn-with-custom-origin/azuredeploy.json" range="1-125" highlight="46-117":::
-
+:::code language="json" source="~/quickstart-templates/101-cdn-with-custom-origin/azuredeploy.json" range="1-125" highlight="45-117":::
 
 V této šabloně je definovaný jeden prostředek Azure:
 
-**Microsoft. CDN**
-
 * **[Microsoft. CDN/profily](https://docs.microsoft.com/azure/templates/microsoft.cdn/profiles)**
 
-### <a name="deploy-the-template"></a>Nasazení šablony
+## <a name="deploy-the-template"></a>Nasazení šablony
 
-**Azure CLI**
+### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
 read -p "Enter the location (i.e. eastus): " location
@@ -62,7 +66,7 @@ az group deployment create \
 --template-uri  $templateUri
 ```
 
-**Azure PowerShell**
+### <a name="powershell"></a>PowerShell
 
 ```azurepowershell-interactive
 $location = Read-Host -Prompt "Enter the location (i.e. eastus)"
@@ -74,7 +78,7 @@ New-AzResourceGroup -Name $resourceGroupName -Location $location
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri
 ```
 
-**Azure Portal**
+### <a name="portal"></a>Portál
 
 [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cdn-with-custom-origin%2Fazuredeploy.json)
 
@@ -92,7 +96,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-**Azure CLI**
+### <a name="azure-cli"></a>Azure CLI
 
 Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků a všech prostředků obsažených v nástroji použít příkaz [AZ Group Delete](/cli/azure/group#az-group-delete) .
 
@@ -101,7 +105,7 @@ Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků a všech
     --name myResourceGroupCDN
 ```
 
-**Azure PowerShell**
+### <a name="powershell"></a>PowerShell
 
 Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků a všech prostředků obsažených v nástroji použít příkaz [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=latest) .
 
@@ -109,7 +113,7 @@ Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků a všech
 Remove-AzResourceGroup -Name myResourceGroupCDN
 ```
 
-**Azure Portal**
+### <a name="portal"></a>Portál
 
 Pokud už je nepotřebujete, odstraňte skupinu prostředků, profil CDN a všechny související prostředky. Vyberte skupinu prostředků **myResourceGroupCDN** , která obsahuje profil a koncový bod CDN, a pak vyberte **Odstranit**.
 

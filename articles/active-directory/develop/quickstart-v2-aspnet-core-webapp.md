@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 50b6244e5db6f812d1f9e3d23ea5fa88ea3bebea
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 2924a950e7b52a41939d1c06305bad2d1b243476
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84456806"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85554141"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Rychlý Start: Přidání přihlašování s Microsoftem do webové aplikace ASP.NET Core
 V tomto rychlém startu se naučíte, jak může webová aplikace ASP.NET Core přihlašovat osobní účty (hotmail.com, outlook.com, ostatní) a pracovní a školní účty z jakékoli instance Azure Active Directory (Azure AD). (Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.)
@@ -79,7 +79,7 @@ V tomto rychlém startu se naučíte, jak může webová aplikace ASP.NET Core p
 > #### <a name="step-3-run-your-visual-studio-project"></a>Krok 3: spuštění projektu sady Visual Studio
 > 1. Extrahujte soubor zip do místní složky v kořenové složce, například **C:\Azure-Samples**
 > 1. Otevřete řešení v aplikaci Visual Studio
-> 1. Upravte soubor **appSettings. JSON** . Vyhledejte `ClientId` a aktualizujte hodnotu `ClientId` s hodnotou **ID aplikace (klienta)** aplikace, kterou jste zaregistrovali.
+> 1. Upravte **appsettings.jsv** souboru. Vyhledejte `ClientId` a aktualizujte hodnotu `ClientId` s hodnotou **ID aplikace (klienta)** aplikace, kterou jste zaregistrovali.
 >
 >    ```json
 >    "ClientId": "Enter_the_Application_Id_here"
@@ -145,7 +145,7 @@ Metoda `AddAuthentication` nakonfiguruje službu tak, aby přidala ověřování
 
 Řádek, který obsahuje `.AddAzureAd` , přidá do vaší aplikace ověřování Microsoft Identity Platform. Pak se nakonfiguruje tak, aby se přihlásilo pomocí koncového bodu Microsoft Identity Platform.
 
-> |Kde  |  |
+> |Kde | Popis |
 > |---------|---------|
 > | ClientId  | ID aplikace (klienta) z aplikace zaregistrované v Azure Portal. |
 > | Autorita | Koncový bod služby STS pro uživatele, který se má ověřit Obvykle je to <https://login.microsoftonline.com/{tenant}/v2.0> pro veřejný cloud, kde {tenant} je název vašeho tenanta nebo ID tenanta nebo *společný* odkaz na společný koncový bod (používaný pro víceklientské aplikace). |
