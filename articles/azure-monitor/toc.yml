@@ -17,6 +17,7 @@
         - name: portál Azure
           href: learn/quick-collect-activity-log-portal.md
         - name: Šablona ARM
+          displayName: Resource Manager
           href: learn/quick-collect-activity-log-arm.md
     - name: Monitorování virtuálních počítačů
       items:
