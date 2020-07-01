@@ -3,20 +3,14 @@
 - name: Přehled
   expanded: true
   items:
-    - name: Co je správa cloudových aplikací a jednotné přihlašování?
+    - name: Co je správa aplikací?
       href: what-is-application-management.md
-    - name: Co je proxy aplikací pro místní aplikace?
-      href: what-is-application-proxy.md
-    - name: Běžné scénáře správy aplikací
-      href: common-scenarios.md
-    - name: Co je zřizování aplikací?
-      href: /azure/active-directory/app-provisioning/user-provisioning?context=azure/active-directory/manage-apps/context/manage-apps-context
 - name: Rychlé starty
   items:
-    - name: Přidání cloudové aplikace z galerie
-      href: add-application-portal.md
     - name: Zobrazení podnikových aplikací
       href: view-applications-portal.md
+    - name: Přidání cloudové aplikace z galerie
+      href: add-application-portal.md
 - name: Kurzy
   items:
     - name: 'Integrované aplikace v galerii (např. ServiceNow, Salesforce, Dropbox)'
@@ -32,6 +26,8 @@
   items:
     - name: Osvědčené postupy správy aplikací
       href: application-management-fundamentals.md
+    - name: Běžné scénáře správy aplikací
+      href: common-scenarios.md
     - name: Cloudové aplikace a jednotné přihlašování
       items:
         - name: Plánování integrace cloudových aplikací
@@ -80,6 +76,8 @@
       items:
         - name: Proxy aplikací
           href: application-proxy.md
+        - name: Co je proxy aplikací pro místní aplikace?
+          href: what-is-application-proxy.md
         - name: Plánování nasazení proxy aplikací
           href: application-proxy-deployment-plan.md
         - name: Konektory

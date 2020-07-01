@@ -10,7 +10,7 @@
       items:
         - name: Compute
           href: concepts/mainframe-compute-azure.md
-        - name: Úložiště
+        - name: Storage
           href: concepts/mainframe-storage-azure.md
     - name: Micro Focus
       items:
@@ -18,6 +18,8 @@
           href: microfocus/get-started.md
         - name: Instalace Enterprise Serveru
           href: microfocus/set-up-micro-focus-azure.md
+        - name: Nasazení Enterprise Serveru do AKS
+          href: microfocus/deploy-micro-focus-enterprise-server.md
         - name: Spuštění CICS BankDemo
           href: microfocus/demo.md
         - name: Enterprise Server v kontejnerech

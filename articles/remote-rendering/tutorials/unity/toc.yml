@@ -1,6 +1,14 @@
-- name: Nastavení projektu Unity od začátku
-  href: project-setup.md
-- name: Práce se vzdálenými entitami v Unity
-  href: working-with-remote-entities.md
-- name: Změna prostředí a materiálů
-  href: changing-environment-and-materials.md
+- name: Přehled
+  href: tutorial-landing.md
+- name: Zobrazení vzdáleně vykresleného modelu
+  href: view-remote-models/view-remote-models.md
+- name: Rozhraní a vlastní modely
+  href: custom-models/custom-models.md
+- name: Manipulace s modely
+  href: manipulate-models/manipulate-models.md
+- name: 'Zpřesňování materiálů, osvětlení a efektů'
+  href: materials-lighting-effects/materials-lighting-effects.md
+- name: Zabezpečení služby Securing Azure Remote Rendering a úložiště modelů
+  href: security/security.md
+- name: Vytvoření aplikace Azure Remote Rendering připravené pro komerční využití
+  href: commercial-ready/commercial-ready.md

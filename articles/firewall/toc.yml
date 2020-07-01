@@ -58,6 +58,8 @@
       href: central-management.md
     - name: Podpora práce na dálku
       href: remote-work-support.md
+    - name: FQDN v pravidlech sítě
+      href: fqdn-filtering-network-rules.md
 - name: Návody
   items:
     - name: Nasazení s využitím Azure PowerShellu
@@ -80,6 +82,10 @@
       href: create-ip-group.md
     - name: Ochrana služby Windows Virtual Desktop
       href: protect-windows-virtual-desktop.md
+    - name: Ochrana služby Azure Kubernetes Service (AKS)
+      href: protect-azure-kubernetes-service.md
+    - name: Nastavení DNS
+      href: dns-settings.md
 - name: Referenční informace
   items:
     - name: Azure CLI

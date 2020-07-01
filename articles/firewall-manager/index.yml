@@ -10,12 +10,12 @@ metadata:
   author: vhorne
   ms.author: victorh
   ms.date: 10/10/2019
-  ms.openlocfilehash: e3b98f3954ee70b5e002bb844147d4d51b1f6d9d
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: bf7474f1519fbd94be3de8daa15a43775a6a6a0a
+  ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "73508665"
+  ms.lasthandoff: 06/30/2020
+  ms.locfileid: "85561426"
 landingContent:
 - title: Další informace o službě Azure Firewall Manager
   linkLists:
@@ -31,15 +31,15 @@ landingContent:
     links:
     - text: Co je zabezpečené virtuální centrum?
       url: secured-virtual-hub.md
-- title: Důvěryhodní partneři pro zabezpečení
+- title: Poskytovatelé partnerů pro zabezpečení
   linkLists:
   - linkListType: concept
     links:
-    - text: Kdo jsou důvěryhodní partneři pro zabezpečení (Preview)?
+    - text: Kdo jsou poskytovatelé partnerů pro zabezpečení?
       url: trusted-security-partners.md
   - linkListType: how-to-guide
     links:
-    - text: Nasazení důvěryhodného partnera pro zabezpečení (Preview)
+    - text: Nasazení poskytovatele partnera pro zabezpečení
       url: deploy-trusted-security-partner.md
 - title: Zabezpečení cloudové sítě Azure
   linkLists:

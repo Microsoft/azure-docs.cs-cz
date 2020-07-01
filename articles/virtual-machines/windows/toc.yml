@@ -855,6 +855,8 @@
           href: incremental-snapshots.md
         - name: Migrace a převod
           items:
+            - name: Převod na šifrování na straně serveru
+              href: disks-ade-sse-conversion-powershell.md
             - name: Převod disku mezi úrovněmi Standard a Premium
               href: convert-disk-storage.md
             - name: Migrace na Premium Storage s Azure Site Recovery

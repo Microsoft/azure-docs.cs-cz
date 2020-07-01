@@ -117,6 +117,8 @@
       items:
         - name: Přidání podpory pro datový typ Long
           href: time-series-insights-long-data-type.md
+        - name: Změny úložiště a zplošťování JSON
+          href: ingestion-rules-update.md
 - name: Referenční informace
   items:
     - name: Time Series Insights

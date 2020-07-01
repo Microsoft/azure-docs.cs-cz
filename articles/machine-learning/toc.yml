@@ -172,6 +172,9 @@
               href: how-to-change-storage-access-key.md
             - name: Použití Azure Firewallu
               href: how-to-access-azureml-behind-firewall.md
+            - name: Zabezpečené kódování
+              href: concept-secure-code-best-practice.md
+              displayName: security threat
         - name: Nastavení ověřování
           displayName: 'authentication, auth, oauth'
           href: how-to-setup-authentication.md
@@ -314,6 +317,8 @@
             - name: Vysvětlení automatizovaných modelů ML
               displayName: 'SDK, interpret, interpret, explain, explanability, interpretability, automated ML, automl, auto ml'
               href: how-to-machine-learning-interpretability-automl.md
+        - name: Posouzení a zmírnění nestrannosti modelů
+          href: how-to-machine-learning-fairness-aml.md
         - name: Použití služby Key Vault během trénování
           displayName: secrets keyvault
           href: how-to-use-secrets-in-runs.md

@@ -4,6 +4,14 @@
   items:
     - name: Co je Azure Advisor?
       href: advisor-overview.md
+- name: Rychlé starty
+  items:
+    - name: Konfigurace upozornění pro nová doporučení
+      items:
+        - name: portál Azure
+          href: advisor-alerts-portal.md
+        - name: Šablona ARM
+          href: advisor-alerts-arm.md
 - name: Kurzy
   items:
     - name: Začínáme se službou Advisor
@@ -25,7 +33,7 @@
     - name: Oprávnění a blokované akce
       href: permissions.md
     - name: Konfigurace výstrah pro doporučení
-      href: advisor-alerts.md
+      href: advisor-alerts-portal.md
     - name: Hromadná náprava pro doporučení
       href: advisor-quick-fix.md
     - name: Data Advisoru v Azure Resource Graphu

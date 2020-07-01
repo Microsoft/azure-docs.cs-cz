@@ -1,13 +1,13 @@
 - name: Dokumentace ke kognitivnímu hledání Azure
   href: index.yml
 - name: Přehled
+  expanded: true
   items:
     - name: Co je kognitivní hledání Azure?
       href: search-what-is-azure-search.md
     - name: Co je nového
       href: whats-new.md
 - name: Rychlé starty
-  expanded: true
   items:
     - name: Portál
       items:
@@ -85,7 +85,7 @@
     - name: Ukázky Pythonu
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=python'
     - name: Ukázky REST
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=rest'
+      href: 'https://docs.microsoft.com/samples/browse/?languages=http&expanded=azure&products=azure-cognitive-search'
     - name: Integrované služby Azure Policy
       displayName: 'samples, policies, definitions'
       href: ./policy-samples.md
@@ -388,10 +388,10 @@
           href: /dotnet/api/overview/azure/search/management?view=azure-dotnet
     - name: REST
       items:
-        - name: Search 2019-05-06
+        - name: Search 2020-06-30
           href: /rest/api/searchservice
-        - name: Search 2019-05-06-Preview
-          href: /rest/api/searchservice/index-2019-05-06-preview
+        - name: Search 2020-06-30-Preview
+          href: /rest/api/searchservice/index-preview
         - name: Management 2020-03-13
           href: /rest/api/searchmanagement
         - name: Management 2019-10-01-Preview

@@ -7,12 +7,15 @@
 - name: Rychlé starty
   expanded: true
   items:
-    - name: Vytváření aplikací logiky – Azure Portal
+    - name: Vytváření aplikací logiky – portál
       href: quickstart-create-first-logic-app-workflow.md
     - name: Vytváření aplikací logiky – Visual Studio
       href: quickstart-create-logic-apps-with-visual-studio.md
     - name: Vytváření aplikací logiky – Visual Studio Code
       href: quickstart-create-logic-apps-visual-studio-code.md
+    - name: Vytváření aplikací logiky – šablona Resource Manageru
+      displayName: Resource Manager
+      href: quickstart-create-deploy-azure-resource-manager-template.md
 - name: Kurzy
   items:
     - name: Vytváření pracovních postupů založených na plánech

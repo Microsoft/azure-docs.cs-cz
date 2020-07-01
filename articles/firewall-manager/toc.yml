@@ -12,7 +12,7 @@
       href: quick-secure-virtual-hub.md
 - name: Kurzy
   items:
-    - name: Zabezpečení virtuální sítě WAN – portál
+    - name: Zabezpečení virtuálního centra – portál
       href: secure-cloud-network.md
     - name: Zabezpečení virtuální sítě WAN rozbočovače – portál
       href: secure-hybrid-network.md
@@ -26,16 +26,24 @@
       href: deployment-overview.md
     - name: Poskytovatelé partnerů pro zabezpečení
       href: trusted-security-partners.md
+    - name: Skupiny IP adres
+      href: ip-groups.md
     - name: Logika zpracování pravidel
       href: rule-processing.md
     - name: Možnosti architektury
       href: vhubs-and-vnets.md
+    - name: Nastavení analýzy hrozeb
+      href: threat-intelligence-settings.md
+    - name: FQDN v pravidlech sítě
+      href: fqdn-filtering-network-rules.md
 - name: Návody
   items:
     - name: Nasazení poskytovatelů partnerů pro zabezpečení
       href: deploy-trusted-security-partner.md
     - name: Migrace na zásady firewallu – PowerShell
       href: migrate-to-policy.md
+    - name: Nastavení DNS
+      href: dns-settings.md
 - name: Referenční informace
   items:
     - name: Azure CLI

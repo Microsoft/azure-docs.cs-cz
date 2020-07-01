@@ -8,7 +8,7 @@
 - name: Rychlé starty
   expanded: true
   items:
-    - name: Spusťte svůj první dotaz – Azure Portal
+    - name: Spuštění prvního dotazu – portál
       displayName: 'portal, resource, graph, explorer'
       href: ./first-query-portal.md
     - name: Spusťte svůj první dotaz – Azure CLI
@@ -26,6 +26,9 @@
     - name: Spuštění prvního dotazu – Python
       displayName: 'library, azure-mgmt, cli'
       href: ./first-query-python.md
+    - name: Vytvoření sdíleného dotazu – Azure CLI
+      displayName: 'extension, docker, queries'
+      href: ./shared-query-azure-cli.md
     - name: Nasazení sdíleného dotazu – šablona ARM
       displayName: 'resource manager, queries'
       href: ./shared-query-template.md

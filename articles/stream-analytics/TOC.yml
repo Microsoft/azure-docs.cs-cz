@@ -30,7 +30,7 @@
       href: stream-analytics-with-azure-functions.md
     - name: 3. Nasazení s využitím průběžné integrace a doručování v Azure Pipelines
       href: stream-analytics-tools-visual-studio-cicd-vsts.md
-    - name: '4. Spuštění funkce definované uživatelem v C#'
+    - name: 4. Spuštění funkce definované uživatelem v C#
       href: stream-analytics-edge-csharp-udf.md
     - name: 5. Vytvoření vlastního deserializátoru .NET
       href: custom-deserializer.md
@@ -82,10 +82,12 @@
           href: stream-analytics-javascript-user-defined-functions.md
         - name: JavaScript UDA
           href: stream-analytics-javascript-user-defined-aggregates.md
-        - name: 'Uživatelsky definovaná funkce v C#'
+        - name: Uživatelsky definovaná funkce v C#
           href: stream-analytics-edge-csharp-udf-methods.md
         - name: Uživatelsky definovaná funkce v pro strojové učení
           href: machine-learning-udf.md
+        - name: Ladění uživatelsky definovaných funkcí a aktualizací
+          href: debug-user-defined-functions.md
     - name: Optimalizace úlohy Stream Analytics
       items:
         - name: Principy a úpravy jednotek streamování
@@ -228,6 +230,8 @@
           href: visual-studio-code-local-run.md
         - name: Místní testování s využitím živých dat
           href: visual-studio-code-local-run-live-input.md
+        - name: Ladění dotazů s využitím diagramu úloh
+          href: debug-locally-using-job-diagram-vs-code.md
         - name: Nastavení kanálu CI/CD
           href: setup-cicd-vs-code.md
         - name: Zkoumání úloh

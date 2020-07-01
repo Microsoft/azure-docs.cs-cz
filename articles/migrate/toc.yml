@@ -86,8 +86,10 @@
       href: hyper-v-migration-architecture.md
     - name: Architektura migrace založené na agentech pro VMware
       href: agent-based-migration-architecture.md
-    - name: Přehled hodnocení
+    - name: Přehled hodnocení virtuálních počítačů Azure
       href: concepts-assessment-calculation.md
+    - name: Přehled hodnocení AWS
+      href: concepts-azure-vmware-solution-assessment-calculation.md
     - name: Osvědčené postupy pro vyhodnocení
       href: best-practices-assessment.md
     - name: Přehled analýz závislostí
@@ -124,8 +126,10 @@
       href: how-to-create-group-machine-dependencies.md
     - name: Analýza závislostí počítačů (bez agentů)
       href: how-to-create-group-machine-dependencies-agentless.md
-    - name: Vytvoření posouzení
+    - name: Vytvoření hodnocení virtuálních počítačů Azure
       href: how-to-create-assessment.md
+    - name: Vytvoření hodnocení AVS
+      href: how-to-create-azure-vmware-solution-assessment.md
     - name: Posouzení databáze SQL Serveru
       href: 'https://docs.microsoft.com/sql/dma/dma-assess-sql-data-estate-to-sqldb'
     - name: Přizpůsobení posouzení

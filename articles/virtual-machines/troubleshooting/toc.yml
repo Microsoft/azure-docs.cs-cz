@@ -103,6 +103,8 @@
           href: unresponsive-vm-apply-group-policy.md
         - name: Virtuální počítač nereaguje při použití zásad zabezpečení
           href: unresponsive-vm-apply-security-policy.md
+        - name: Chyba zastavení Windows – stav nedostatku paměti
+          href: troubleshoot-windows-stop-error.md
 - name: Nejde se připojit k virtuálnímu počítači
   items:
     - name: Protokol RDP

@@ -9,13 +9,13 @@ metadata:
   ms.collection: collection
   author: DCtheGeek
   ms.author: dacoulte
-  ms.date: 06/16/2020
-  ms.openlocfilehash: d3a25af9f7d8e16fbb008fd84aff6e29c57680da
-  ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+  ms.date: 06/29/2020
+  ms.openlocfilehash: c066c3a7cc5b8208a61962ce4f51f7eef4be192b
+  ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 06/24/2020
-  ms.locfileid: "85321952"
+  ms.lasthandoff: 06/30/2020
+  ms.locfileid: "85549944"
 landingContent:
 - title: O službě Azure Policy
   linkLists:
@@ -39,11 +39,11 @@ landingContent:
     links:
     - text: Přiřazení zásad (portál)
       url: ./assign-policy-portal.md
-    - text: Přiřazení zásad (PowerShell)
-      url: ./assign-policy-powershell.md
     - text: Přiřazení zásad (Azure CLI)
       url: ./assign-policy-azurecli.md
-    - text: Přiřazení zásad (šablona)
+    - text: Přiřazení zásad (Azure PowerShell)
+      url: ./assign-policy-powershell.md
+    - text: Přiřazení zásad (šablona Resource Manageru)
       url: ./assign-policy-template.md
   - linkListType: tutorial
     links:
