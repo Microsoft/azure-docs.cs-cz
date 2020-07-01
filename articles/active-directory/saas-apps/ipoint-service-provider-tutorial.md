@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10d9feb7f3cd369fcd13986ebd5f48a63905252e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 69b04914bcdaac394b38c25e6d4f843155d481bc
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80295749"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608620"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ipoint-service-provider"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s poskytovatelem služeb iPoint
 
@@ -86,11 +86,11 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí jednoho z následujících vzorů:
 
-    |||
-    |-|-|
-    | `https://<CUSTOMERNAME>.ipoint-systems.com/dashboard/`|
-    | `https://<CUSTOMERNAME>.ipoint-systems.com/ipca-web/`|
-    | `https://<CUSTOMERNAME>.ipoint-systems.com/authserver/saml/ssoLogin`|
+    ```https
+    https://<CUSTOMERNAME>.ipoint-systems.com/dashboard/
+    https://<CUSTOMERNAME>.ipoint-systems.com/ipca-web/
+    https://<CUSTOMERNAME>.ipoint-systems.com/authserver/saml/ssoLogin
+    ```
 
 1. Klikněte na **Uložit**.
 
@@ -100,7 +100,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho aplikace poskytovatele služeb iPoint očekává, že se v odpovědi SAML vrátí další atributy, které jsou uvedené dál. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | ------------ | --------- |
     | Jedinečný identifikátor uživatele | User. objectID |
 
@@ -120,7 +120,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
@@ -156,7 +156,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Po kliknutí na dlaždici poskytovatele služby iPoint na přístupovém panelu byste se měli automaticky přihlášeni k poskytovateli služeb iPoint, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

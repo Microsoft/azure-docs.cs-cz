@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98458f8be162d0903f5ea0d1f7d4651d46f78e8e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d7092ea68f2b7f35e372013a94108e43a83c8777
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80048435"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608621"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-iprova"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s iProva
 
@@ -78,11 +78,10 @@ V této části načtete informace z iProva ke konfiguraci jednotného přihlaš
 
 1. Otevřete webový prohlížeč a na stránce **typu Saml2 informace** v iProva použijte následující vzor adresy URL:
 
-    | | |
-    |-|-|
-    | `https://SUBDOMAIN.iprova.nl/saml2info`|
-    | `https://SUBDOMAIN.iprova.be/saml2info`|
-    | | |
+    ```https
+    https://SUBDOMAIN.iprova.nl/saml2info
+    https://SUBDOMAIN.iprova.be/saml2info
+    ```
 
     ![Zobrazit informační stránku iProva typu Saml2](media/iprova-tutorial/iprova-saml2-info.png)
 
@@ -112,7 +111,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace iProva několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Název | Zdrojový atribut| Obor názvů  |
+    | Name | Zdrojový atribut| Obor názvů  |
     | ---------------| -------- | -----|
     | `samaccountname` | `user.onpremisessamaccountname`| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
 
@@ -128,7 +127,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
@@ -162,13 +161,13 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 5. Vyberte **Přidat**.
 
-6. Do pole **uživatelské jméno** zadejte uživatelské jméno, jako třeba `B.Simon@contoso.com`.
+6. Do pole **uživatelské jméno** zadejte uživatelské jméno, jako třeba `B.Simon@contoso.com` .
 
 7. Do pole **jméno a příjmení** zadejte celé jméno uživatele (například **B. Simon**).
 
 8. Vyberte možnost **bez hesla (použít jednotné přihlašování)** .
 
-9. Do pole **e-mailová adresa** zadejte e-mailovou adresu `B.Simon@contoso.com`uživatele.
+9. Do pole **e-mailová adresa** zadejte e-mailovou adresu uživatele `B.Simon@contoso.com` .
 
 10. Přejděte dolů na konec stránky a vyberte **Dokončit**.
 
@@ -210,7 +209,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 16. V rozevíracím seznamu **deklarace k použití** vyberte **atributech uživatelů windowsaccountname**.
 
-17. Vyberte **Finish** (Dokončit).
+17. Vyberte **Dokončit**.
 
 18. Nyní se vrátíte na obrazovku **Upravit obecné nastavení** . Posuňte se dolů k dolní části stránky a kliknutím na **OK** uložte svou konfiguraci.
 
@@ -220,7 +219,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici iProva, měli byste se automaticky přihlásit k iProva, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

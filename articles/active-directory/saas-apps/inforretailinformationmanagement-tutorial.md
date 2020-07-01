@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6572560833e6336495b3bec782a096b584be1ec0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c180b303fc1437f9f0f1763406760545d808c7a5
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67100272"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85605612"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infor-retail--information-management"></a>Kurz: Azure Active Directory integrace s informacemi v maloobchodních prodejích – Správa informací
 
@@ -108,10 +108,10 @@ Pokud chcete nakonfigurovat jednotné přihlašování služby Azure AD pomocí 
 
     a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:
     
-    | |
-    |--|
-    | `https://<company name>.mingle.infor.com` |
-    | `http://<company name>.mingledev.infor.com` |
+        ```https
+        https://<company name>.mingle.infor.com
+        http://<company name>.mingledev.infor.com
+        ```
 
     b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://<company name>.mingle.infor.com/sp/ACS.saml2`
 
@@ -160,7 +160,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte `brittasimon@yourcompanydomain.extension`. Například BrittaSimon@contoso.com.
+    b. Do pole **uživatelské jméno** zadejte `brittasimon@yourcompanydomain.extension` . Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 

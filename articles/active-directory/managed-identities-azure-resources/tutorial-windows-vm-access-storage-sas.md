@@ -1,5 +1,5 @@
 ---
-title: Kurz`:` použití spravované identity pro přístup k Azure Storage pomocí pověření SAS – Azure AD
+title: Kurz `:` použití spravované identity pro přístup k Azure Storage pomocí pověření SAS – Azure AD
 description: V tomto kurzu se dozvíte, jak používat spravovanou identitu přiřazenou systémem Windows VM k přístupu k Azure Storage pomocí přihlašovacích údajů SAS místo přístupového klíče účtu úložiště.
 services: active-directory
 documentationcenter: ''
@@ -9,18 +9,18 @@ editor: daveba
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/24/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c344c25a696500182030ff849a001ad586c92032
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: c1ed86db85de8d4665c9eecfbde96b0909b12362
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74232159"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608309"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-a-sas-credential"></a>Kurz: použití spravované identity přiřazené systémem Windows VM pro přístup k Azure Storage prostřednictvím přihlašovacích údajů SAS
 
@@ -126,7 +126,7 @@ V tomto požadavku použijeme k vytvoření pověření SAS následující param
 
 Tato parametry se zahrnou do textu požadavku POST na pověření SAS. Další informace o parametrech pro vytvoření pověření SAS najdete v [referenčních informacích k REST pro výpis SAS služby](/rest/api/storagerp/storageaccounts/listservicesas).
 
-Nejdřív převeďte parametry na JSON a potom zavolejte koncový bod úložiště `listServiceSas` , aby se vytvořily přihlašovací údaje SAS:
+Nejdřív převeďte parametry na JSON a potom zavolejte `listServiceSas` koncový bod úložiště, aby se vytvořily přihlašovací údaje SAS:
 
 ```powershell
 $params = @{canonicalizedResource="/blob/<STORAGE-ACCOUNT-NAME>/<CONTAINER-NAME>";signedResource="c";signedPermission="rcw";signedProtocol="https";signedExpiry="2017-09-23T00:00:00Z"}

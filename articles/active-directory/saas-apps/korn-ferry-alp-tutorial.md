@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57801403f2d0e29fb32b6919a7078ae3fb895fdf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7ab11c4fe957ab81dde3fb4f75a4dd82a6d4e5d2
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73159630"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608700"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-korn-ferry-alp"></a>Kurz: Azure Active Directory integrace s Korn trajekt ALP
 
@@ -108,19 +108,19 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí ALP pro 
 
     a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:
 
-    | |
-    |--|
-    | `https://intappextin01/portalweb/sso/client/audience?guid=<customerguid>` | 
-    | `https://qaassessment.kfnaqa.com/portalweb/sso/client/audience?guid=<customerguid>` |
-    | `https://assessments.kornferry.com/portalweb/sso/client/audience?guid=<customerguid>` |
+        ```https
+        https://intappextin01/portalweb/sso/client/audience?guid=<customerguid>
+        https://qaassessment.kfnaqa.com/portalweb/sso/client/audience?guid=<customerguid>
+        https://assessments.kornferry.com/portalweb/sso/client/audience?guid=<customerguid>
+        ```
 
     b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:
     
-    | |
-    |--|
-    | `https://intappextin01/portalweb/sso/client/audience?guid=<customerguid>` |
-    | `https://qaassessment.kfnaqa.com/portalweb/sso/client/audience?guid=<customerguid>` |
-    | `https://assessments.kornferry.com/portalweb/sso/client/audience?guid=<customerguid>` |
+        ```https
+        https://intappextin01/portalweb/sso/client/audience?guid=<customerguid>
+        https://qaassessment.kfnaqa.com/portalweb/sso/client/audience?guid=<customerguid>
+        https://assessments.kornferry.com/portalweb/sso/client/audience?guid=<customerguid>
+        ```
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pokud chcete získat tyto hodnoty, kontaktujte [tým podpory Korn trajekt Alp Client support](mailto:noreply@kornferry.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -151,7 +151,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
+    b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.

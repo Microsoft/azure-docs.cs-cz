@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd021b9547048e9f5218ce4f2b8b110b15d05963
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 151ec17308a593bd9361bff6ad6340cccd82edd5
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80048563"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85607326"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-deputy"></a>Kurz: Azure Active Directory integrace s nástrojem náměstek
 
@@ -108,43 +108,43 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí nástroj
 
     a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:
 
-    |  |
-    | ----|
-    | `https://<subdomain>.<region>.au.deputy.com` |
-    | `https://<subdomain>.<region>.ent-au.deputy.com` |
-    | `https://<subdomain>.<region>.na.deputy.com`|
-    | `https://<subdomain>.<region>.ent-na.deputy.com`|
-    | `https://<subdomain>.<region>.eu.deputy.com` |
-    | `https://<subdomain>.<region>.ent-eu.deputy.com` |
-    | `https://<subdomain>.<region>.as.deputy.com` |
-    | `https://<subdomain>.<region>.ent-as.deputy.com` |
-    | `https://<subdomain>.<region>.la.deputy.com` |
-    | `https://<subdomain>.<region>.ent-la.deputy.com` |
-    | `https://<subdomain>.<region>.af.deputy.com` |
-    | `https://<subdomain>.<region>.ent-af.deputy.com` |
-    | `https://<subdomain>.<region>.an.deputy.com` |
-    | `https://<subdomain>.<region>.ent-an.deputy.com` |
-    | `https://<subdomain>.<region>.deputy.com` |
+        ```https
+        https://<subdomain>.<region>.au.deputy.com
+        https://<subdomain>.<region>.ent-au.deputy.com
+        https://<subdomain>.<region>.na.deputy.com
+        https://<subdomain>.<region>.ent-na.deputy.com
+        https://<subdomain>.<region>.eu.deputy.com
+        https://<subdomain>.<region>.ent-eu.deputy.com
+        https://<subdomain>.<region>.as.deputy.com
+        https://<subdomain>.<region>.ent-as.deputy.com
+        https://<subdomain>.<region>.la.deputy.com
+        https://<subdomain>.<region>.ent-la.deputy.com
+        https://<subdomain>.<region>.af.deputy.com
+        https://<subdomain>.<region>.ent-af.deputy.com
+        https://<subdomain>.<region>.an.deputy.com
+        https://<subdomain>.<region>.ent-an.deputy.com
+        https://<subdomain>.<region>.deputy.com
+        ```
 
     b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:
     
-    | |
-    |----|
-    | `https://<subdomain>.<region>.au.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.ent-au.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.na.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.ent-na.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.eu.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.ent-eu.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.as.deputy.com/exec/devapp/samlacs.` |
-    | `https://<subdomain>.<region>.ent-as.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.la.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.ent-la.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.af.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.ent-af.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.an.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.ent-an.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.deputy.com/exec/devapp/samlacs` |
+        ```https
+        https://<subdomain>.<region>.au.deputy.com/exec/devapp/samlacs
+        https://<subdomain>.<region>.ent-au.deputy.com/exec/devapp/samlacs
+        https://<subdomain>.<region>.na.deputy.com/exec/devapp/samlacs
+        https://<subdomain>.<region>.ent-na.deputy.com/exec/devapp/samlacs
+        https://<subdomain>.<region>.eu.deputy.com/exec/devapp/samlacs
+        https://<subdomain>.<region>.ent-eu.deputy.com/exec/devapp/samlacs
+        https://<subdomain>.<region>.as.deputy.com/exec/devapp/samlacs.
+        https://<subdomain>.<region>.ent-as.deputy.com/exec/devapp/samlacs
+        https://<subdomain>.<region>.la.deputy.com/exec/devapp/samlacs
+        https://<subdomain>.<region>.ent-la.deputy.com/exec/devapp/samlacs
+        https://<subdomain>.<region>.af.deputy.com/exec/devapp/samlacs
+        https://<subdomain>.<region>.ent-af.deputy.com/exec/devapp/samlacs
+        https://<subdomain>.<region>.an.deputy.com/exec/devapp/samlacs
+        https://<subdomain>.<region>.ent-an.deputy.com/exec/devapp/samlacs
+        https://<subdomain>.<region>.deputy.com/exec/devapp/samlacs
+        ```
 
 5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
@@ -174,7 +174,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí nástroj
 
 ### <a name="configure-deputy-single-sign-on"></a>Konfigurace jednotného přihlašování náměstkem
 
-1. Přejděte na následující adresu URL:`https://(your-subdomain).deputy.com/exec/config/system_config`. Přejděte na **nastavení zabezpečení** a klikněte na **Upravit**.
+1. Přejděte na následující adresu URL: `https://(your-subdomain).deputy.com/exec/config/system_config` . Přejděte na **nastavení zabezpečení** a klikněte na **Upravit**.
    
     ![Konfigurace jednotného přihlašování](./media/deputy-tutorial/tutorial_deputy_004.png)
 
@@ -188,9 +188,9 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí nástroj
    
     c. Do textového pole URL jednotného přihlašování SAML zadejte`https://<your subdomain>.deputy.com/exec/devapp/samlacs?dpLoginTo=<saml sso url>`
     
-    d. V textovém poli adresy URL jednotného přihlašování `<your subdomain>` SAML nahraďte subdoménou.
+    d. V textovém poli adresy URL jednotného přihlašování SAML nahraďte `<your subdomain>` subdoménou.
    
-    e. V textovém poli adresy URL jednotného přihlašování `<saml sso url>` SAML nahraďte **přihlašovací adresou URL** , kterou jste zkopírovali z Azure Portal.
+    e. V textovém poli adresy URL jednotného přihlašování SAML nahraďte `<saml sso url>` **přihlašovací adresou URL** , kterou jste zkopírovali z Azure Portal.
    
     f. Klikněte na **Uložit nastavení**.
 
@@ -212,7 +212,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
+    b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.

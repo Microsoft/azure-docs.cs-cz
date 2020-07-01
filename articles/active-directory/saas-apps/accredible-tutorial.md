@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5be397ca14a90c333e20f0a1a42b63e0c9f0ae0e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: af40becf09468dba25ad7090a6a7c2829884ab61
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73154155"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85609142"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-accredible"></a>Kurz: Azure Active Directory integrace s Accredible
 
@@ -108,11 +108,10 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Accredib
 
     a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:
 
-    | |
-    |--|
-    |  `https://api.accredible.com/sp/admin/accredible` |
-    | `https://api.accredible.com/sp/user/accredible` |
-    | |
+        ```https
+        https://api.accredible.com/sp/admin/accredible
+        https://api.accredible.com/sp/user/accredible
+        ```
 
     b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://api.accredible.com/v1/saml/admin/<Unique id>/consume`
 
@@ -155,7 +154,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
+    b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.

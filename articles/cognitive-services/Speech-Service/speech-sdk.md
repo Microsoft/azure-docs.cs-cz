@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: f663c9af8c352d0170c633fe76b3fbc5268aad1e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5dc0a7fc9797948e834b8b3cb802bb92fce0eb59
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81399885"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85610757"
 ---
 # <a name="about-the-speech-sdk"></a>Informace o sadě Speech SDK
 
@@ -37,7 +37,7 @@ Převod [textu na řeč](text-to-speech.md) (označovaný také jako *syntéza �
 
 ### <a name="voice-assistants"></a>Hlasoví asistenti
 
-Hlasové asistenti, kteří používají sadu Speech SDK, umožňují vývojářům vytvářet pro své aplikace a prostředí přirozené rozhraní pro konverzaci podobné člověku. Služba hlasového asistenta poskytuje rychlou a spolehlivou interakci mezi zařízením a asistentem. Implementace používá kanál s přímým přístupem rozhraní bot Framework nebo integrovaný vlastní příkaz (Preview) služby pro dokončení úkolu. Pomocí vlastního hlasového [portálu](https://aka.ms/customvoice) můžete také vytvořit jedinečné prostředí pro hlasové asistenty.
+[Hlasové asistenti](voice-assistants.md) , kteří používají sadu Speech SDK, umožňují vývojářům vytvářet pro své aplikace a prostředí přirozené rozhraní pro konverzaci podobné člověku. Služba hlasového asistenta poskytuje rychlou a spolehlivou interakci mezi zařízením a asistentem. Implementace používá kanál s přímým přístupem rozhraní bot Framework nebo integrovaný vlastní příkaz (Preview) služby pro dokončení úkolu. Kromě toho můžou asistenti hlasu použít vlastní hlasy vytvořené na [vlastním hlasovém portálu](https://aka.ms/customvoice) a přidat tak jedinečné prostředí pro hlasové výstupy.
 
 #### <a name="keyword-spotting"></a>Klíčové slovo hledání
 
@@ -65,7 +65,7 @@ Sadu Speech SDK lze použít pro scénáře zdlouhavého přepisováního centra
 
 ### <a name="codec-compressed-audio-input"></a>Komprimovaný zvukový vstup kodeku
 
-Několik programovacích jazyků pro sadu Speech SDK podporuje kodeky komprimované zvukové vstupní proudy. Další informace najdete v tématu <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">použití komprimovaných formátů <span class="docon docon-navigate-external x-hidden-focus"> </span>zvukového vstupu </a>.
+Několik programovacích jazyků pro sadu Speech SDK podporuje kodeky komprimované zvukové vstupní proudy. Další informace najdete v tématu <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">použití komprimovaných formátů <span class="docon docon-navigate-external x-hidden-focus"></span> zvukového vstupu </a>.
 
 ## <a name="rest-api"></a>REST API
 

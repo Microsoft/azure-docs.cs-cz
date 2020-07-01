@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc7d481b757a76ba65e0c78a93bde1bc58ace7cc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fc5ae5532acdd66e091891c55e3cebb79cb3d227
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72791640"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608599"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-knowledgeowl"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s KnowledgeOwl
 
@@ -86,34 +86,34 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:
     
-    | | |
-    |-|-|
-    | `https://app.knowledgeowl.com/sp`|
-    | `https://app.knowledgeowl.com/sp/id/<unique ID>`|
+        ```https
+        https://app.knowledgeowl.com/sp        
+        https://app.knowledgeowl.com/sp/id/<unique ID>
+        ```
 
     b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:
     
-    | | |
-    |-|-|
-    | `https://subdomain.knowledgeowl.com/help/saml-login`|
-    | `https://subdomain.knowledgeowl.com/docs/saml-login`|
-    | `https://subdomain.knowledgeowl.com/home/saml-login`|
-    | `https://privatedomain.com/help/saml-login`|
-    | `https://privatedomain.com/docs/saml-login`|
-    | `https://privatedomain.com/home/saml-login`|
+        ```https
+        https://subdomain.knowledgeowl.com/help/saml-login
+        https://subdomain.knowledgeowl.com/docs/saml-login
+        https://subdomain.knowledgeowl.com/home/saml-login
+        https://privatedomain.com/help/saml-login
+        https://privatedomain.com/docs/saml-login
+        https://privatedomain.com/home/saml-login
+        ```
 
 1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:
     
-    | | |
-    |-|-|
-    | `https://subdomain.knowledgeowl.com/help/saml-login`|
-    | `https://subdomain.knowledgeowl.com/docs/saml-login`|
-    | `https://subdomain.knowledgeowl.com/home/saml-login`|
-    | `https://privatedomain.com/help/saml-login`|
-    | `https://privatedomain.com/docs/saml-login`|
-    | `https://privatedomain.com/home/saml-login`|
+        ```https
+        https://subdomain.knowledgeowl.com/help/saml-login
+        https://subdomain.knowledgeowl.com/docs/saml-login
+        https://subdomain.knowledgeowl.com/home/saml-login
+        https://privatedomain.com/help/saml-login
+        https://privatedomain.com/docs/saml-login
+        https://privatedomain.com/home/saml-login
+        ```
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Tuto hodnotu budete muset aktualizovat ze skutečného identifikátoru, adresy URL odpovědi a přihlašovací adresy URL, která se vysvětluje později v tomto kurzu.
@@ -124,7 +124,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace KnowledgeOwl několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Název | Zdrojový atribut | Obor názvů |
+    | Name | Zdrojový atribut | Obor názvů |
     | ------------ | -------------------- | -----|
     | ssoid | uživatel. pošta | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
 
@@ -144,7 +144,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
@@ -190,16 +190,16 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     f. Do textového pole **Adresa URL pro odhlášení IDP** vložte hodnotu **URL pro odhlášení** , kterou jste zkopírovali z Azure Portal
 
-    g. Kliknutím na **nahrát IDP certifikát**nahrajte stažený certifikát Azure Portal na formulář.
+    například Kliknutím na **nahrát IDP certifikát**nahrajte stažený certifikát Azure Portal na formulář.
 
     h. Klikněte na **mapování atributů SAML** pro mapování atributů a proveďte následující kroky:
 
     ![Konfigurace KnowledgeOwl](./media/knowledgeowl-tutorial/configure3.png)
 
-    * Zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/ssoid` do TEXTOVÉHO pole **ID jednotného přihlašování** .
-    * Do `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` textového pole **uživatelské jméno/e-mail** zadejte.
-    * Do `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` textového pole **název zadejte jméno** .
-    * Do `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` textového pole **příjmení** zadejte.
+    * Zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/ssoid` do textového pole **ID jednotného přihlašování** .
+    * `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`Do textového pole **uživatelské jméno/e-mail** zadejte.
+    * `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`Do textového pole **název zadejte jméno** .
+    * `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`Do textového pole **příjmení** zadejte.
     * Klikněte na **Uložit** .
 
     i. V dolní části stránky klikněte na **Uložit**.
@@ -219,7 +219,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici KnowledgeOwl, měli byste se automaticky přihlásit k KnowledgeOwl, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

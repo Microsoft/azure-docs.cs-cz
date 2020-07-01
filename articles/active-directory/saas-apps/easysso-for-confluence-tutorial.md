@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/28/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81f33972f80075281b735ad69848631e81d2366e
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.openlocfilehash: 5c7570a21d8135e98024486372aaa49587b0d052
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84905065"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608777"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-easysso-for-confluence"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s EasySSO pro Confluence
 
@@ -101,13 +101,13 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace EasySSO for Confluence u odpovědi SAML méně dalších atributů, které jsou uvedené dál. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
     
-    | Name |  |  Zdrojový atribut|
-    | ---------------| --------------- | --------- |
-    | urn: OID: 0.9.2342.19200300.100.1.1 | | User. userPrincipalName |
-    | urn: OID: 0.9.2342.19200300.100.1.3 | | uživatel. pošta |
-    | urn: OID: 2.16.840.1.113730.3.1.241 | | User. DisplayName |
-    | urn: OID: 2.5.4.4 | | User. příjmení |
-    | urn: OID: 2.5.4.42 | | User. křestní jméno |
+    | Name | Zdrojový atribut|
+    | ---------------| --------- |
+    | urn: OID: 0.9.2342.19200300.100.1.1 | User. userPrincipalName |
+    | urn: OID: 0.9.2342.19200300.100.1.3 | uživatel. pošta |
+    | urn: OID: 2.16.840.1.113730.3.1.241 | User. DisplayName |
+    | urn: OID: 2.5.4.4 | User. příjmení |
+    | urn: OID: 2.5.4.42 | User. křestní jméno |
     
     V případě, že mají uživatelé Azure AD nakonfigurovaný **sAMAccountName** , budete muset mapovat **název urn: OID: 0.9.2342.19200300.100.1.1** na atribut **sAMAccountName** .
     

@@ -9,18 +9,18 @@ editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32d8944b55794412eb322697469933030e2fbb56
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: 39e2d72ba63633d7c5d3da3094cfa00e076513af
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74184036"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85609108"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-the-azure-portal"></a>Konfigurace spravovaných identit pro prostředky Azure v sadě škálování virtuálních počítačů pomocí Azure Portal
 
@@ -86,7 +86,7 @@ V současné době Azure Portal nepodporuje přiřazení spravované identity p�
 ### <a name="assign-a-user-assigned-managed-identity-to-an-existing-virtual-machine-scale-set"></a>Přiřazení spravované identity přiřazené uživatelem do existující sady škálování virtuálních počítačů
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu přidruženého k předplatnému Azure, které obsahuje sadu škálování virtuálního počítače.
-2. Přejděte na požadovanou sadu škálování virtuálního počítače a klikněte na **Identita**, **přiřazený uživatel** a ** \+** pak na Přidat.
+2. Přejděte na požadovanou sadu škálování virtuálního počítače a klikněte na **Identita**, **přiřazený uživatel** a pak na ** \+ Přidat**.
 
    ![Přidání identity přiřazené uživatelem do VMSS](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vmss-screenshot1.png)
 

@@ -3,20 +3,25 @@ title: Odeslání protokolu aktivit Azure do Log Analytics pracovního prostoru 
 description: Použijte šablony ARM k vytvoření pracovního prostoru Log Analytics a nastavení diagnostiky pro odeslání protokolu aktivit do protokolů Azure Monitor.
 ms.subservice: logs
 ms.topic: quickstart
+ms.custom: subject-armqs
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
-ms.openlocfilehash: ed2a18f4d7e9784566036a598098a015d3050dbd
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: ce7c8df0fcea66d21ba2640ba26213a49efcb1c0
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85563544"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85601645"
 ---
-# <a name="send-azure-activity-log-to-log-analytics-workspace-using-azure-resource-manager-template"></a>Odeslání protokolu aktivit Azure do Log Analytics pracovního prostoru pomocí šablony Azure Resource Manager
-Protokol aktivit je protokol platformy v Azure, který poskytuje přehled o událostech na úrovni předplatného. To zahrnuje informace, jako je například změna prostředku nebo spuštění virtuálního počítače. Protokol aktivit můžete zobrazit v Azure Portal nebo načíst položky pomocí PowerShellu a rozhraní příkazového řádku. V tomto rychlém startu se dozvíte, jak pomocí šablon ARM vytvořit pracovní prostor Log Analytics a nastavení diagnostiky k odeslání protokolu aktivit do Azure Monitor protokolů, kde je můžete analyzovat pomocí [dotazů protokolu](../log-query/log-query-overview.md) a povolit další funkce, jako jsou například výstrahy a [sešity](../platform/workbooks-overview.md) [protokolu](../platform/alerts-log-query.md) . 
+# <a name="quickstart-send-azure-activity-log-to-log-analytics-workspace-using-an-arm-template"></a>Rychlý Start: odeslání protokolu aktivit Azure do Log Analytics pracovního prostoru pomocí šablony ARM
+Protokol aktivit je protokol platformy v Azure, který poskytuje přehled o událostech na úrovni předplatného. To zahrnuje informace, jako je například změna prostředku nebo spuštění virtuálního počítače. Protokol aktivit můžete zobrazit v Azure Portal nebo načíst položky pomocí PowerShellu a rozhraní příkazového řádku. V tomto rychlém startu se dozvíte, jak pomocí šablon Azure Resource Manager (šablony ARM) vytvořit pracovní prostor Log Analytics a nastavení diagnostiky pro odeslání protokolu aktivit do Azure Monitor protokolů, kde je můžete analyzovat pomocí [dotazů protokolu](../log-query/log-query-overview.md) a povolit další funkce, jako jsou například výstrahy a [sešity](../platform/workbooks-overview.md) [protokolu](../platform/alerts-log-query.md) .
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
+
+## <a name="prerequisites"></a>Požadavky
+
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="create-a-log-analytics-workspace"></a>Vytvoření pracovního prostoru služby Log Analytics
 
@@ -25,100 +30,104 @@ Následující šablona vytvoří prázdný pracovní prostor Log Analytics. Tut
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-      "workspaceName": {
-          "type": "string",
-          "metadata": {
-            "description": "Name of the workspace."
-          }
-      },
-      "sku": {
-          "type": "string",
-          "allowedValues": [
-            "pergb2018",
-            "Free",
-            "Standalone",
-            "PerNode",
-            "Standard",
-            "Premium"
-            ],
-          "defaultValue": "pergb2018",
-          "metadata": {
-          "description": "Pricing tier: PerGB2018 or legacy tiers (Free, Standalone, PerNode, Standard or Premium) which are not available to all customers."
-          }
-        },
-        "location": {
-          "type": "string",
-          "allowedValues": [
-          "australiacentral", 
-          "australiaeast", 
-          "australiasoutheast", 
-          "brazilsouth",
-          "canadacentral", 
-          "centralindia", 
-          "centralus", 
-          "eastasia", 
-          "eastus", 
-          "eastus2", 
-          "francecentral", 
-          "japaneast", 
-          "koreacentral", 
-          "northcentralus", 
-          "northeurope", 
-          "southafricanorth", 
-          "southcentralus", 
-          "southeastasia",
-          "switzerlandnorth",
-          "switzerlandwest",
-          "uksouth", 
-          "ukwest", 
-          "westcentralus", 
-          "westeurope", 
-          "westus", 
-          "westus2" 
-          ],
-          "metadata": {
-              "description": "Specifies the location for the workspace."
-              }
-        },
-        "retentionInDays": {
-          "type": "int",
-          "defaultValue": 120,
-          "metadata": {
-            "description": "Number of days to retain data."
-          }
-        },
-        "resourcePermissions": {
-          "type": "bool",
-          "defaultValue": true,
-          "metadata": {
-            "description": "true to use resource or workspace permissions. false to require workspace permissions."
-          }
+    "workspaceName": {
+      "type": "string",
+        "metadata": {
+          "description": "Name of the workspace."
         }
-      },
-      "resources": [
-      {
-          "type": "Microsoft.OperationalInsights/workspaces",
-          "name": "[parameters('workspaceName')]",
-          "apiVersion": "2020-03-01-preview",
-          "location": "[parameters('location')]",
-          "properties": {
-              "sku": {
-                  "name": "[parameters('sku')]"
-              },
-              "retentionInDays": "[parameters('retentionInDays')]",
-              "features": {
-                  "searchVersion": 1,
-                  "legacy": 0,
-                  "enableLogAccessUsingOnlyResourcePermissions": "[parameters('resourcePermissions')]"
-              }
-          }
+    },
+    "sku": {
+      "type": "string",
+      "allowedValues": [
+        "pergb2018",
+        "Free",
+        "Standalone",
+        "PerNode",
+        "Standard",
+        "Premium"
+      ],
+      "defaultValue": "pergb2018",
+      "metadata": {
+        "description": "Pricing tier: PerGB2018 or legacy tiers (Free, Standalone, PerNode, Standard or Premium) which are not available to all customers."
       }
+    },
+    "location": {
+      "type": "string",
+      "allowedValues": [
+        "australiacentral",
+        "australiaeast",
+        "australiasoutheast",
+        "brazilsouth",
+        "canadacentral",
+        "centralindia",
+        "centralus",
+        "eastasia",
+        "eastus",
+        "eastus2",
+        "francecentral",
+        "japaneast",
+        "koreacentral",
+        "northcentralus",
+        "northeurope",
+        "southafricanorth",
+        "southcentralus",
+        "southeastasia",
+        "switzerlandnorth",
+        "switzerlandwest",
+        "uksouth",
+        "ukwest",
+        "westcentralus",
+        "westeurope",
+        "westus",
+        "westus2"
+      ],
+      "metadata": {
+        "description": "Specifies the location for the workspace."
+      }
+    },
+    "retentionInDays": {
+      "type": "int",
+      "defaultValue": 120,
+      "metadata": {
+        "description": "Number of days to retain data."
+      }
+    },
+    "resourcePermissions": {
+      "type": "bool",
+      "defaultValue": true,
+      "metadata": {
+        "description": "true to use resource or workspace permissions. false to require workspace permissions."
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces",
+      "apiVersion": "2020-03-01-preview",
+      "name": "[parameters('workspaceName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "sku": {
+          "name": "[parameters('sku')]"
+        },
+        "retentionInDays": "[parameters('retentionInDays')]",
+        "features": {
+          "searchVersion": 1,
+          "legacy": 0,
+          "enableLogAccessUsingOnlyResourcePermissions": "[parameters('resourcePermissions')]"
+        }
+      }
+    }
   ]
 }
 ```
+
+Tato šablona definuje jeden prostředek:
+
+- [Microsoft. OperationalInsights/pracovní prostory](/azure/templates/microsoft.operationalinsights/workspaces)
 
 ### <a name="deploy-the-template"></a>Nasazení šablony
 Nasaďte šablonu pomocí libovolné standardní metody pro [nasazení šablony ARM](../../azure-resource-manager/templates/deploy-portal.md) , jako jsou následující příklady, pomocí rozhraní příkazového řádku a PowerShellu. Nahraďte ukázkové hodnoty pro **skupinu prostředků**, **pracovní prostor**a **umístění** odpovídajícími hodnotami pro vaše prostředí. Název pracovního prostoru musí být jedinečný mezi všemi předplatnými Azure.
@@ -145,7 +154,7 @@ New-AzResourceGroupDeployment -Name AzureMonitorDeployment -ResourceGroupName my
 
 ---
 
-### <a name="verify-the-deployment"></a>Ověření nasazení
+### <a name="validate-the-deployment"></a>Ověření nasazení
 Ověřte, zda byl pracovní prostor vytvořen pomocí jednoho z následujících příkazů. Nahraďte vzorové hodnoty pro **skupinu prostředků** a parametrem **pracovního prostoru** hodnotami, které jste použili výše.
 
 # <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI2)
@@ -163,67 +172,73 @@ Get-AzOperationalInsightsWorkspace -Name my-workspace-01 -ResourceGroupName my-r
 ---
 
 ## <a name="create-diagnostic-setting"></a>Vytvoření nastavení diagnostiky
+
+### <a name="review-the-template"></a>Kontrola šablony
 Následující šablona vytvoří nastavení diagnostiky, které odesílá protokol aktivit do Log Analytics pracovního prostoru. Tuto šablonu uložte jako *CreateDiagnosticSetting.jsna*.
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "settingName": {
-            "type": "String"
-        },
-        "workspaceId": {
-            "type": "String"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "settingName": {
+        "type": "String"
     },
-    "resources": [
-        {
-          "type": "Microsoft.Insights/diagnosticSettings",
-          "apiVersion": "2017-05-01-preview",
-          "name": "[parameters('settingName')]",
-          "dependsOn": [],
-          "properties": {
-            "workspaceId": "[parameters('workspaceId')]",
-            "logs": [
-              {
-                "category": "Administrative",
-                "enabled": true
-              },
-              {
-                "category": "Alert",
-                "enabled": true
-              },
-              {
-                "category": "Autoscale",
-                "enabled": true
-              },
-              {
-                "category": "Policy",
-                "enabled": true
-              },
-              {
-                "category": "Recommendation",
-                "enabled": true
-              },
-              {
-                "category": "ResourceHealth",
-                "enabled": true
-              },
-              {
-                "category": "Security",
-                "enabled": true
-              },
-              {
-                "category": "ServiceHealth",
-                "enabled": true
-              }
-            ]
+    "workspaceId": {
+        "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Insights/diagnosticSettings",
+      "apiVersion": "2017-05-01-preview",
+      "name": "[parameters('settingName')]",
+      "dependsOn": [],
+      "properties": {
+        "workspaceId": "[parameters('workspaceId')]",
+        "logs": [
+          {
+          "category": "Administrative",
+          "enabled": true
+          },
+          {
+          "category": "Alert",
+          "enabled": true
+          },
+          {
+          "category": "Autoscale",
+          "enabled": true
+          },
+          {
+          "category": "Policy",
+          "enabled": true
+          },
+          {
+          "category": "Recommendation",
+          "enabled": true
+          },
+          {
+          "category": "ResourceHealth",
+          "enabled": true
+          },
+          {
+          "category": "Security",
+          "enabled": true
+          },
+          {
+          "category": "ServiceHealth",
+          "enabled": true
           }
-        }
-    ]
+        ]
+      }
+    }
+  ]
 }
 ```
+
+Tato šablona definuje jeden prostředek:
+
+- [Microsoft. Insights/diagnosticSettings](/azure/templates/microsoft.insights/diagnosticsettings)
 
 ### <a name="deploy-the-template"></a>Nasazení šablony
 Nasaďte šablonu pomocí libovolné standardní metody pro [nasazení šablony ARM](/azure-resource-manager/templates/deploy-portal) , jako jsou následující příklady, pomocí rozhraní příkazového řádku a PowerShellu. Nahraďte ukázkové hodnoty pro **skupinu prostředků**, **pracovní prostor**a **umístění** odpovídajícími hodnotami pro vaše prostředí. Název pracovního prostoru musí být jedinečný mezi všemi předplatnými Azure.
@@ -242,7 +257,7 @@ New-AzSubscriptionDeployment -Name CreateDiagnosticSetting -location eastus -Tem
 ```
 ---
 
-### <a name="verify-the-deployment"></a>Ověření nasazení
+### <a name="validate-the-deployment"></a>Ověření nasazení
 Ověřte, zda bylo nastavení diagnostiky vytvořeno pomocí jednoho z následujících příkazů. Nahraďte vzorové hodnoty pro předplatné a název nastavení hodnotami, které jste použili výše.
 
 > [!NOTE]

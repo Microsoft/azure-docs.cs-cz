@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0b1471abd7e057af919ed274547daf94d356c2b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7095608427a429c26ac5f7b83577d66912e5d773
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "70213604"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85607323"
 ---
 # <a name="tutorial-integrate-the-cloud-security-fabric-with-azure-active-directory"></a>Kurz: integrace prostředků infrastruktury cloudového zabezpečení s Azure Active Directory
 
@@ -85,17 +85,17 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL:
 
-    | |
-    |--|
-    | `https://platform.cloudlock.com` |
-    | `https://app.cloudlock.com` |
+        ```https
+        https://platform.cloudlock.com
+        https://app.cloudlock.com
+        ```
 
     b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:
 
-    | |
-    |--|
-    | `https://platform.cloudlock.com/gate/saml/sso/<subdomain>` |
-    | `https://app.cloudlock.com/gate/saml/sso/<subdomain>` |
+        ```https
+        https://platform.cloudlock.com/gate/saml/sso/<subdomain>
+        https://app.cloudlock.com/gate/saml/sso/<subdomain>
+        ```
 
     > [!NOTE]
     > Hodnota identifikátoru není reálné číslo. Aktualizujte hodnotu skutečným identifikátorem. Pokud chcete získat hodnotu, obraťte [se na tým podpory pro klienta podpory Cloud Security Fabric](mailto:support@cloudlock.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -129,7 +129,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 

@@ -9,14 +9,14 @@ ms.assetid: 2575A80C-FC74-4631-AE5D-8101CF2591D3
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: tutorial
-ms.date: 12/19/2019
+ms.date: 06/24/2020
 ms.author: aahi
-ms.openlocfilehash: 1c8e0bb136fddeb84dc991e63a761378b38cc470
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 272a10e211e99e200b82807b188d828a9ece42d8
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75382323"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85609431"
 ---
 # <a name="build-a-console-app-search-client-in-c"></a>Sestavení klienta hledání konzolové aplikace v C #
 
@@ -31,8 +31,9 @@ V tomto kurzu se dozvíte, jak:
 
 Abyste mohli postupovat podle tohoto kurzu, budete potřebovat:
 
-- Visual Studio. Pokud ho nemáte, [Stáhněte si a nainstalujte bezplatnou edici Visual Studio 2017 Community](https://www.visualstudio.com/downloads/).
-- Klíč předplatného pro rozhraní API Bingu pro vyhledávání na webu. Pokud ho nemáte, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).
+* Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services/) .
+* Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" vytvořte prostředek vyhledávání Bingu vytvoření prostředku "  target="_blank"> Vyhledávání Bingu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
+* [Integrované vývojové prostředí sady Visual Studio](https://www.visualstudio.com/downloads/).
 
 ## <a name="create-a-new-console-app-project"></a>Vytvořit nový projekt konzolové aplikace
 
@@ -47,7 +48,7 @@ Pojmenujte aplikaci **MyConsoleSearchApp**a pak klikněte na **OK**.
 JSON.net umožňuje pracovat se odpověďmi JSON vrácenými rozhraním API. Přidejte svůj balíček NuGet do projektu:
 
 - V **Průzkumník řešení** klikněte pravým tlačítkem na projekt a vyberte **Spravovat balíčky NuGet...**.
-- Na kartě **Procházet** vyhledejte `Newtonsoft.Json`. Vyberte nejnovější verzi a pak klikněte na **nainstalovat**.
+- Na kartě **Procházet** vyhledejte `Newtonsoft.Json` . Vyberte nejnovější verzi a pak klikněte na **nainstalovat**.
 - V okně **Zkontrolovat změny** klikněte na tlačítko **OK** .
 - Zavřete kartu sady Visual Studio s názvem **NuGet: MyConsoleSearchApp**.
 
@@ -137,8 +138,8 @@ static void RunQueryAndDisplayResults(string userQuery)
 
 Tato metoda:
 
-- Vytvoří dotaz `HttpClient` na rozhraní vyhledávání na webu API.
-- Nastaví hlavičku `Ocp-Apim-Subscription-Key` protokolu HTTP, kterou Bing používá k ověření žádosti.
+- Vytvoří `HttpClient` dotaz na rozhraní vyhledávání na webu API.
+- Nastaví `Ocp-Apim-Subscription-Key` hlavičku protokolu HTTP, kterou Bing používá k ověření žádosti.
 - Provede požadavek a použije JSON.net k deserializaci výsledků.
 - Volání `DisplayAllRankedResults(responseObjects)` pro zobrazení všech výsledků v pořadí podle pořadí
 
@@ -221,7 +222,7 @@ Než se pustíte do zobrazení výsledků v pořadí podle pořadí, podívejte 
 }
 ```
 
-Objekt `rankingResponse` JSON ([dokumentace](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse)) popisuje odpovídající pořadí zobrazení výsledků hledání. Zahrnuje jednu nebo více následujících možností s určením prioritních skupin:
+`rankingResponse`Objekt JSON ([dokumentace](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse)) popisuje odpovídající pořadí zobrazení výsledků hledání. Zahrnuje jednu nebo více následujících možností s určením prioritních skupin:
 
 - `pole`: Výsledky hledání pro získání nejužitečnějších úprav (například zobrazené nad hlavní a postranní panel).
 - `mainline`: Výsledky hledání, které se mají zobrazit v hlavní

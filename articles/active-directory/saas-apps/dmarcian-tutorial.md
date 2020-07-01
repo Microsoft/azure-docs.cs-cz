@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 602c885deca429b56417181971ced495831ba5d3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 845a09610fa7855dfa2be71e3736371f8f45078f
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68823694"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85607072"
 ---
 # <a name="tutorial-integrate-dmarcian-with-azure-active-directory"></a>Kurz: integrace dmarcian s Azure Active Directory
 
@@ -85,29 +85,29 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:
 
-    | |
-    | -- |
-    | `https://us.dmarcian.com/sso/saml/<ACCOUNT_ID>/sp.xml` |
-    | `https://dmarcian-eu.com/sso/saml/<ACCOUNT_ID>/sp.xml` |
-    | `https://dmarcian-ap.com/sso/saml/<ACCOUNT_ID>/sp.xml` |
+        ```https
+        https://us.dmarcian.com/sso/saml/<ACCOUNT_ID>/sp.xml
+        https://dmarcian-eu.com/sso/saml/<ACCOUNT_ID>/sp.xml
+        https://dmarcian-ap.com/sso/saml/<ACCOUNT_ID>/sp.xml
+        ```
 
     b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:
 
-    | |
-    |--|
-    | `https://us.dmarcian.com/login/<ACCOUNT_ID>/handle/` |
-    | `https://dmarcian-eu.com/login/<ACCOUNT_ID>/handle/` |
-    | `https://dmarcian-ap.com/login/<ACCOUNT_ID>/handle/` |
+        ```https
+        https://us.dmarcian.com/login/<ACCOUNT_ID>/handle/
+        https://dmarcian-eu.com/login/<ACCOUNT_ID>/handle/
+        https://dmarcian-ap.com/login/<ACCOUNT_ID>/handle/
+        ```
 
 5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:
     
-    | |
-    |--|
-    | `https://us.dmarcian.com/login/<ACCOUNT_ID>` |
-    | `https://dmarcian-eu.com/login/<ACCOUNT_ID>` |
-    | `https://dmarciam-ap.com/login/<ACCOUNT_ID>` |
+        ```https
+        https://us.dmarcian.com/login/<ACCOUNT_ID>
+        https://dmarcian-eu.com/login/<ACCOUNT_ID>
+        https://dmarciam-ap.com/login/<ACCOUNT_ID>
+        ```
      
     > [!NOTE] 
     > Tyto hodnoty nejsou reálné. Tyto hodnoty budete aktualizovat skutečným identifikátorem, adresou URL odpovědi a adresou URL pro přihlášení, která je vysvětlena dále v tomto kurzu.
@@ -163,7 +163,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
@@ -205,7 +205,7 @@ Aby se uživatelé Azure AD mohli přihlašovat k dmarcian, musí se zřídit v 
 
     ![Nový uživatel](./media/dmarcian-tutorial/tutorial_dmarcian_save.png)
 
-    a. Do textového pole **E-mail nového uživatele** zadejte e-maily uživatele, jako je **\@brittasimon contoso.com**.
+    a. Do textového pole **E-mail nového uživatele** zadejte e-maily uživatele, jako je **brittasimon \@ contoso.com**.
 
     b. Pokud chcete uživateli udělit práva pro správu, vyberte **nastavit uživatele jako správce**.
 

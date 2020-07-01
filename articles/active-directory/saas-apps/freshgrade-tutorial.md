@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 852cd728f17902a83f5efeb3ccfb596f67ba37e5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9c7a6716bbc4b297973c8bfb0305434ee08a4730
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73158123"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85606337"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshgrade"></a>Kurz: Azure Active Directory integrace s FreshGrade
 
@@ -107,17 +107,17 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí FreshGra
 
      a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujících vzorů:
 
-      | |
-      |--|
-      | `https://<subdomain>.freshgrade.com/login` |
-      | `https://<subdomain>.onboarding.freshgrade.com/login` |
+        ```https        
+        https://<subdomain>.freshgrade.com/login
+        https://<subdomain>.onboarding.freshgrade.com/login
+        ```
 
     b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujících vzorů:
     
-      | |
-      |--|
-      | `https://login.onboarding.freshgrade.com:443/saml/metadata/alias/<instancename>` |
-      | `https://login.freshgrade.com:443/saml/metadata/alias/<instancename>` |
+        ```https
+        https://login.onboarding.freshgrade.com:443/saml/metadata/alias/<instancename>
+        https://login.freshgrade.com:443/saml/metadata/alias/<instancename>
+        ```
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL a identifikátoru. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta FreshGrade](mailto:support@freshgrade.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -148,7 +148,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
+    b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.

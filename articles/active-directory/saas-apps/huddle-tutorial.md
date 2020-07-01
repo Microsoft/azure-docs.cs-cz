@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1faf1c1fcdefb0c93d36c195f0cf44626a555f44
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 439a904c4e70a6e7e9633757c6d89fd3ce0a3a90
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73158986"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608734"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-huddle"></a>Kurz: Azure Active Directory integrace s Huddle
 
@@ -111,20 +111,18 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Huddle, 
 
     a. Do textového pole **identifikátor** zadejte adresu URL:
 
-    | | |
-    |--|--|
-    | `https://login.huddle.net`|
-    | `https://login.huddle.com`|
-    | |
+        ```https
+        https://login.huddle.net
+        https://login.huddle.com
+        ```
 
     b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL:
 
-    | | |
-    |--|--|
-    | `https://login.huddle.net/saml/browser-sso`|
-    | `https://login.huddle.com/saml/browser-sso`|
-    | `https://login.huddle.com/saml/idp-initiated-sso`|
-    | |
+        ```https
+        https://login.huddle.net/saml/browser-sso
+        https://login.huddle.com/saml/browser-sso
+        https://login.huddle.com/saml/idp-initiated-sso
+        ```
 
 5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
@@ -132,11 +130,10 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Huddle, 
 
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:
 
-    | | |
-    |--|--|
-    | `https://<customsubdomain>.huddle.com`|
-    | `https://us.huddle.com`|
-    | |
+        ```https
+        https://<customsubdomain>.huddle.com
+        https://us.huddle.com
+        ```
 
     > [!NOTE]
     > Hodnota přihlašovací adresy URL není reálné číslo. Aktualizujte tuto hodnotu pomocí skutečné přihlašovací adresy URL. Pokud chcete získat tuto hodnotu, obraťte se na [tým podpory klienta Huddle](https://huddle.zendesk.com) .
@@ -180,7 +177,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
+    b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
@@ -223,7 +220,7 @@ Aby se uživatelé Azure AD mohli přihlásit k Huddle, musí se zřídit v Hudd
 
 2. Klikněte na **pracovní prostor**.
 
-3. Klikněte **na \> lidé pozvat lidi**.
+3. Klikněte na **lidé \> pozvat lidi**.
 
     ![People](./media/huddle-tutorial/ic787838.png "People")
 

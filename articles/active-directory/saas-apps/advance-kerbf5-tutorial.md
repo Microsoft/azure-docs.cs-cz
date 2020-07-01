@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 984fd0c7946a50922315269c87e08b1c35b74348
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0fc56fe040528df5b4bd5e9217bd614c4a640c15
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74074764"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608044"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s F5
 
@@ -116,7 +116,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
@@ -172,7 +172,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     ![F5 (rozšířený protokol Kerberos) – konfigurace](./media/advance-kerbf5-tutorial/configure08.png)
  
-1. Klikněte na tlačítko **OK**.
+1. Klikněte na **OK**.
 
 1. Vyberte konfiguraci SP a klikněte na **vytvořit vazbu nebo zrušit vazbu konektorů IDP**.
 
@@ -281,20 +281,20 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 1. Níže je uveden celý seznam výchozích atributů SAML. Zadaný řetězec je reprezentován pomocí následujícího řetězce.
 `session.saml.last.attr.name.http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
 
-| | |
+| Relace | Atribut |
 | -- | -- |
 | eb46b6b6. Session. SAML. Last. assertionID | `<TENANT ID>` |
 | eb46b6b6. Session. SAML. Last. assertionIssueInstant  | `<ID>` |
 | eb46b6b6. Session. SAML. Last. assertionIssuer | `https://sts.windows.net/<TENANT ID>`/ |
-| eb46b6b6. Session. SAML. Last. attr. Name. http:\//schemas.Microsoft.com/Claims/authnmethodsreferences | `http://schemas.microsoft.com/ws/2008/06/identity/authenticationmethod/password` |
-| eb46b6b6. Session. SAML. Last. attr. Name. http:\//schemas.Microsoft.com/identity/claims/DisplayName | user0 |
-| eb46b6b6. Session. SAML. Last. attr. Name. http:\//schemas.Microsoft.com/identity/claims/IdentityProvider | `https://sts.windows.net/<TENANT ID>/` |
-| eb46b6b6. Session. SAML. Last. attr. Name. http:\//schemas.Microsoft.com/identity/claims/ObjectIdentifier | `<TENANT ID>` |
-| eb46b6b6. Session. SAML. Last. attr. Name. http:\//schemas.Microsoft.com/identity/claims/tenantid | `<TENANT ID>` |
-| eb46b6b6. Session. SAML. Last. attr. Name. http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress | `user0@superdemo.live` |
-| eb46b6b6. Session. SAML. Last. attr. Name. http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/givenName | user0 |
-| eb46b6b6. Session. SAML. Last. attr. Name. http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/Name | `user0@superdemo.live` |
-| eb46b6b6. Session. SAML. Last. attr. Name. http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/surname | 0 |
+| eb46b6b6. Session. SAML. Last. attr. Name. http: \/ /schemas.Microsoft.com/Claims/authnmethodsreferences | `http://schemas.microsoft.com/ws/2008/06/identity/authenticationmethod/password` |
+| eb46b6b6. Session. SAML. Last. attr. Name. http: \/ /schemas.Microsoft.com/identity/claims/DisplayName | user0 |
+| eb46b6b6. Session. SAML. Last. attr. Name. http: \/ /schemas.Microsoft.com/identity/claims/IdentityProvider | `https://sts.windows.net/<TENANT ID>/` |
+| eb46b6b6. Session. SAML. Last. attr. Name. http: \/ /schemas.Microsoft.com/identity/claims/ObjectIdentifier | `<TENANT ID>` |
+| eb46b6b6. Session. SAML. Last. attr. Name. http: \/ /schemas.Microsoft.com/identity/claims/tenantid | `<TENANT ID>` |
+| eb46b6b6. Session. SAML. Last. attr. Name. http: \/ /schemas.xmlSOAP.org/ws/2005/05/identity/claims/emailaddress | `user0@superdemo.live` |
+| eb46b6b6. Session. SAML. Last. attr. Name. http: \/ /schemas.xmlSOAP.org/ws/2005/05/identity/claims/givenName | user0 |
+| eb46b6b6. Session. SAML. Last. attr. Name. http: \/ /schemas.xmlSOAP.org/ws/2005/05/identity/claims/Name | `user0@superdemo.live` |
+| eb46b6b6. Session. SAML. Last. attr. Name. http: \/ /schemas.xmlSOAP.org/ws/2005/05/identity/claims/surname | 0 |
 | eb46b6b6. Session. SAML. Last. cílová skupina | `https://kerbapp.superdemo.live` |
 | eb46b6b6. Session. SAML. Last. authNContextClassRef | urn: Oasis: names: TC: SAML: 2.0: AC: Classes: Password |
 | eb46b6b6. Session. SAML. Last. authNInstant | `<ID>` |
@@ -326,7 +326,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Po kliknutí na dlaždici F5 na přístupovém panelu byste měli být automaticky přihlášeni k F5, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

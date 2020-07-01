@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 233ddde25645cbdd9073011eeec2a20e42c8e9a8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 27803187e06ee523ff7e6b773bd302eed7422111
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73157407"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608859"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>Kurz: Azure Active Directory integrace s ClickTime
 
@@ -110,10 +110,10 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí ClickTim
 
     b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:
     
-    | |
-    |--|
-    | `https://app.clicktime.com/Login/` |
-    | `https://app.clicktime.com/App/Login/Consume.aspx` |
+        ```https
+        https://app.clicktime.com/Login/
+        https://app.clicktime.com/App/Login/Consume.aspx
+        ```
 
 4. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
@@ -165,7 +165,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
+    b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
@@ -224,7 +224,7 @@ V případě ClickTime je zřizování ručním úkolem.
    
     a.  Do textového pole **celé jméno** zadejte jméno a příjmení uživatele, jako je **Britta Simon**. 
   
-    b.  Do textového pole **e-mailová adresa** zadejte e-maily uživatele, jako je **brittasimon\@contoso.com**.
+    b.  Do textového pole **e-mailová adresa** zadejte e-maily uživatele, jako je **brittasimon \@ contoso.com**.
        
     > [!NOTE]
     > Pokud chcete, můžete nastavit další vlastnosti objektu New Person.
@@ -237,7 +237,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici ClickTime, měli byste se automaticky přihlásit k ClickTime, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

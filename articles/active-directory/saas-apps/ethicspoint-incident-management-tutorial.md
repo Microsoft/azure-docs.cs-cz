@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 029e45fc4768084b0dcd89b32c5392d26192f7d6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 917e70374007d230c4a675f882457b05ba3a021b
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73157157"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85606892"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ethicspoint-incident-management-epim"></a>Kurz: Azure Active Directory integrace se správou incidentů EthicsPoint (EPIM)
 
@@ -108,10 +108,10 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí správy 
 
     a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:
     
-    | |
-    |--|
-    | `https://<companyname>.navexglobal.com`|
-    | `https://<companyname>.ethicspointvp.com`|
+        ```https
+        https://<companyname>.navexglobal.com
+        https://<companyname>.ethicspointvp.com
+        ```
 
     b. Do pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://<companyname>.navexglobal.com/adfs/services/trust`
 
@@ -156,7 +156,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
+    b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.

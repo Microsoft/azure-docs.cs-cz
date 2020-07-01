@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8218b3dbe09e5ce7e6c28e1084b26c6eec4a16ca
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: b8f5ff42597a457a8849e424e041f1677c28b383
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772986"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608938"
 ---
 # <a name="tutorial-integrate-amazon-business-with-azure-active-directory"></a>Kurz: integrace Amazon Business s Azure Active Directory
 
@@ -85,7 +85,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     1. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí jednoho z následujících vzorů:
     
-       | | |
+       | URL | Oblast |
        |-|-|
        | `https://www.amazon.com`| Severní Amerika |
        | `https://www.amazon.co.jp`| Východní Asie |
@@ -93,7 +93,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     1. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí jednoho z následujících vzorů:
     
-       | | |
+       | URL | Oblast |
        |-|-|
        | `https://www.amazon.com/bb/feature/sso/action/3p_redirect?idpid={idpid}`| Severní Amerika |
        | `https://www.amazon.co.jp/bb/feature/sso/action/3p_redirect?idpid={idpid}`| Východní Asie |

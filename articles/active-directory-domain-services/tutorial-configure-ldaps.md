@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: f532976e80c4284addcf09d81d8a32fd5f6f8827
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 60248d1326d872734a49a93a689625cf2603f929
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84733938"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85601696"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Kurz: Konfigurace zabezpečeného protokolu LDAP pro Azure Active Directory Domain Services spravovanou doménu
 
@@ -230,7 +230,7 @@ Když je přístup přes Internet zabezpečený pomocí protokolu LDAP, aktualiz
 
 ![Zobrazení externí IP adresy zabezpečeného protokolu LDAP pro spravovanou doménu v Azure Portal](./media/tutorial-configure-ldaps/ldaps-external-ip-address.png)
 
-Nakonfigurujte externího poskytovatele DNS tak, aby vytvořil záznam hostitele, například *LDAPS*, který se bude překládat na tuto externí IP adresu. K místnímu testování na svém počítači můžete vytvořit položku v souboru hostitelů systému Windows. Pokud chcete úspěšně upravit soubor hostitelů na místním počítači, otevřete *Poznámkový blok* jako správce a pak otevřete soubor *C:\WINDOWS\SYSTEM32\DRIVERS\ETC* .
+Nakonfigurujte externího poskytovatele DNS tak, aby vytvořil záznam hostitele, například *LDAPS*, který se bude překládat na tuto externí IP adresu. K místnímu testování na svém počítači můžete vytvořit položku v souboru hostitelů systému Windows. Pokud chcete úspěšně upravit soubor hostitelů na místním počítači, otevřete *Poznámkový blok* jako správce a pak otevřete soubor *C:\Windows\System32\drivers\etc\hosts* .
 
 Následující příklad položky DNS, buď s vaším externím poskytovatelem DNS, nebo v místním souboru hostitelů, vyřeší přenos pro *LDAPS.aaddscontoso.com* na externí IP adresu *168.62.205.103*:
 

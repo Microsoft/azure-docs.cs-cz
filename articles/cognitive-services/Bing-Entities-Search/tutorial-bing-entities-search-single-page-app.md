@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: d45b9a153b770dd10da9dd61e8a7b3d138345b8a
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 33c5cbd47213d021d374f52c1dadaf20d508ae37
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78943140"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608564"
 ---
 # <a name="tutorial-single-page-web-app"></a>Kurz: Jednostránková webová aplikace
 
@@ -58,7 +58,12 @@ V tomto kurzu probereme jen vybrané části zdrojového kódu. Úplný zdrojov�
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli postupovat podle tohoto kurzu, potřebujete klíče předplatného pro rozhraní Vyhledávání Bingu API a rozhraní API pro mapy Bing. Pokud je nemáte, můžete použít [zkušební klíč](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) a [základní klíč mapy Bing](https://www.microsoft.com/maps/create-a-bing-maps-key).
+Abyste mohli postupovat podle tohoto kurzu, potřebujete klíče předplatného pro rozhraní Vyhledávání Bingu API a rozhraní API pro mapy Bing. 
+
+* Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services/) .
+* Jakmile budete mít předplatné Azure:
+  * <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="Vytvořte prostředek Vyhledávání Bingu "  target="_blank"> vytvořte v Azure Portal prostředek vyhledávání Bingu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> , abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
+  * <a href="https://www.microsoft.com/maps/create-a-bing-maps-key.aspx"  title="Vytvořte prostředek Počítačové zpracování obrazu "  target="_blank"> vytvořit prostředek mapy Bing <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal a získat tak klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
 
 ## <a name="app-components"></a>Komponenty aplikace
 
@@ -86,7 +91,7 @@ Kód HTML také obsahuje úseky (značky HTML `<div>`), kde se zobrazují výsle
 ## <a name="managing-subscription-keys"></a>Správa klíčů předplatného
 
 > [!NOTE]
-> Tato aplikace vyžaduje klíče předplatného jak pro rozhraní API pro vyhledávání Bingu, tak pro rozhraní API Map Bingu. Můžete použít [zkušební klíč vyhledávání Bingu](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) a [základní klíč Map Bing](https://www.microsoft.com/maps/create-a-bing-maps-key).
+> Tato aplikace vyžaduje klíče předplatného jak pro rozhraní API pro vyhledávání Bingu, tak pro rozhraní API Map Bingu.
 
 Aby se nemusely klíče předplatného rozhraní API pro vyhledávání Bingu a Map Bing zahrnout do kódu, používáme k uložení klíčů trvalé úložiště prohlížeče. Pokud není žádný z klíčů uložený, vyzveme k jeho zadání a uložíme ho pro pozdější použití. Když později rozhraní API klíč odmítne, zneplatníme uložený klíč. Uživatel o něj bude při příštím hledání požádán znovu.
 
@@ -394,7 +399,7 @@ Chyby se zpracovávají voláním `renderErrorMessage()` se všemi známými pod
 
 ## <a name="displaying-search-results"></a>Zobrazení výsledků hledání
 
-Rozhraní API Bingu pro vyhledávání entit [vyžaduje zobrazení výsledků v určeném pořadí](use-display-requirements.md). Vzhledem k tomu, že rozhraní API může vrátit dva různé druhy odpovědí, nestačí iterovat jenom nejvyšší úroveň kolekce `Entities` nebo `Places` v odpovědi JSON a pak tyto výsledky zobrazit. (Pokud chcete jenom jeden typ výsledku, použijte parametr dotazu `responseFilter`.)
+Rozhraní API Bingu pro vyhledávání entit [vyžaduje zobrazení výsledků v určeném pořadí](use-display-requirements.md). Vzhledem k tomu, že rozhraní API může vracet dva různé druhy odpovědí, není nutné iterovat na nejvyšší úrovni `Entities` nebo `Places` kolekci v odpovědi JSON a zobrazovat tyto výsledky. (Pokud chcete jenom jeden typ výsledku, použijte parametr dotazu `responseFilter`.)
 
 Místo toho použijeme kolekci `rankingResponse` výsledků hledání k řazení výsledků pro zobrazení. Tento objekt odkazuje na položky v kolekcích `Entitiess` nebo `Places`.
 
@@ -520,7 +525,7 @@ Naše funkce rendereru entity:
 
 Odpovědi z rozhraní API Bingu pro vyhledávání můžou zahrnovat hlavičku `X-MSEdge-ClientID`, která by se měla v následujících požadavcích posílat zpět do rozhraní API. Pokud se používá více rozhraní API pro vyhledávání Bingu, mělo by se pro všechny používat stejné ID klienta, pokud je to možné.
 
-Poskytnutí hlavičky `X-MSEdge-ClientID` umožňuje rozhraním API Bingu spojit si všechna uživatelova vyhledávání. To má dvě důležité výhody.
+Když zadáte `X-MSEdge-ClientID` hlavičku, umožníte rozhraním API Bingu přidružit všechna hledání uživatele, která mají dvě důležité výhody.
 
 Zaprvé to umožňuje, aby vyhledávací web Bing na vyhledávání použil minulý kontext a našel výsledky, které uživatele více uspokojí. Pokud uživatel v minulosti vyhledával třeba výrazy týkající se lodí, pozdější vyhledání „doků“ může přednostně vrátit informace o docích používaných pro kotvení lodí.
 
@@ -531,7 +536,7 @@ Zásady zabezpečení prohlížeče (CORS) můžou bránit tomu, aby byla hlavi�
 > [!NOTE]
 > Při tvorbě webové aplikace byste měli provádět žádost na straně serveru tak jako tak. Jinak musí být klíč rozhraní API pro vyhledávání Bingu součástí webové stránky, kde je k dispozici každému, kdo si zobrazí zdroj. Účtuje se vám veškeré využívání vašeho klíče předplatného rozhraní API, dokonce i požadavky provedené neoprávněnými stranami, proto je důležité klíč nezveřejňovat.
 
-Pro účely vývoje můžete požadavek na rozhraní API Bingu pro vyhledávání na webu provést prostřednictvím proxy serveru CORS. Odpověď z takového proxy serveru má hlavičku `Access-Control-Expose-Headers`, která přidává hlavičky odpovědí na seznam povolených a zpřístupňuje je pro JavaScript.
+Pro účely vývoje můžete požadavek na rozhraní API Bingu pro vyhledávání na webu provést prostřednictvím proxy serveru CORS. Odpověď z takového serveru proxy má `Access-Control-Expose-Headers` záhlaví, které povoluje seznam hlaviček odpovědí a zpřístupňuje je pro JavaScript.
 
 Nainstalovat proxy server CORS a povolit naší ukázkové aplikaci přístup k hlavičce ID klienta je snadné. Nejdřív [nainstalujte Node.js](https://nodejs.org/en/download/), pokud jste to ještě neudělali. Pak zadejte v příkazovém okně tento příkaz:
 

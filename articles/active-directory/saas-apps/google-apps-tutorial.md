@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b025d98c230bc82b86a736785fb8e6581ec4519c
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: f87a80d5300b58b9f888d3e485d5e9dbf90c4a80
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864415"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608670"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-google-cloud-g-suite-connector"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s konektorem Google Cloud (G Suite)
 
@@ -129,20 +129,19 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     b. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:
 
-    | |
-    |--|
-    | `google.com/a/<yourdomain.com>` |
-    | `google.com` |
-    | `https://google.com` |
-    | `https://google.com/a/<yourdomain.com>` |
+        ```https
+        google.com/a/<yourdomain.com>
+        google.com
+        https://google.com
+        https://google.com/a/<yourdomain.com>
+        ```
 
     c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: 
 
-    | |
-    |--|
-    | `https://www.google.com` |
-    | `https://www.google.com/a/<yourdomain.com>` |
-
+        ```https
+        https://www.google.com
+        https://www.google.com/a/<yourdomain.com>
+        ```
 
 1. Pokud chcete pro **Google Cloud Platform** nakonfigurovat **základní konfigurační oddíl SAML** , proveďte následující kroky:
 
@@ -150,22 +149,22 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     b. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:
     
-    | |
-    |--|
-    | `google.com/a/<yourdomain.com>` |
-    | `google.com` |
-    | `https://google.com` |
-    | `https://google.com/a/<yourdomain.com>` |
+        ```https
+        google.com/a/<yourdomain.com>
+        google.com
+        https://google.com
+        https://google.com/a/<yourdomain.com>
+        ```
     
     c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: 
     
-    | |
-    |--|
-    | `https://www.google.com` |
-    | `https://www.google.com/a/<yourdomain.com>` |
+        ```https
+        https://www.google.com
+        https://www.google.com/a/<yourdomain.com>
+        ```
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL a identifikátoru. Konektor Google Cloud (G Suite) při konfiguraci jednotného přihlašování neposkytuje hodnotu ID nebo identifikátoru entity, takže když zrušíte kontrolu **specifického vystavitele domény** , hodnota identifikátoru bude `google.com`. Pokud zaškrtnete možnost **vystavitele specifické** pro doménu `google.com/a/<yourdomainname.com>`, bude. Pokud chcete zaškrtnout/zrušit kontrolu pro **vystavitele specifické pro doménu** , musíte přejít do části **Konfigurace konektoru pro jednotné přihlašování Google Cloud (G Suite)** , který se vysvětluje později v tomto kurzu. Další informace získáte od [týmu podpory konektoru pro Google Cloud (G Suite)](https://www.google.com/contact/).
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL a identifikátoru. Konektor Google Cloud (G Suite) při konfiguraci jednotného přihlašování neposkytuje hodnotu ID nebo identifikátoru entity, takže když zrušíte kontrolu **specifického vystavitele domény** , hodnota identifikátoru bude `google.com` . Pokud zaškrtnete možnost **vystavitele specifické pro doménu** , bude `google.com/a/<yourdomainname.com>` . Pokud chcete zaškrtnout/zrušit kontrolu pro **vystavitele specifické pro doménu** , musíte přejít do části **Konfigurace konektoru pro jednotné přihlašování Google Cloud (G Suite)** , který se vysvětluje později v tomto kurzu. Další informace získáte od [týmu podpory konektoru pro Google Cloud (G Suite)](https://www.google.com/contact/).
 
 1. Vaše aplikace konektoru Google Cloud (G Suite) očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Příklad ukazuje následující snímek obrazovky. Výchozí hodnota **jedinečného identifikátoru uživatele** je **User. userPrincipalName** , ale konektor Google Cloud (G Suite) očekává, že bude namapován pomocí e-mailové adresy uživatele. Pro tuto funkci můžete použít atribut **User. mail** ze seznamu nebo použít odpovídající hodnotu atributu na základě konfigurace vaší organizace.
 
@@ -188,7 +187,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
@@ -238,7 +237,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     f. Zaškrtnout/zrušit kontrolu **použití možnosti vystavitele specifické pro doménu** podle poznámky uvedené výše v části **základní konfigurace SAML** ve službě Azure AD.
 
-    g. Klikněte na **Save Changes** (Uložit změny).
+    například Klikněte na **Save Changes** (Uložit změny).
 
 ### <a name="create-google-cloud-g-suite-connector-test-user"></a>Vytvořit testovacího uživatele konektoru Google Cloud (G Suite)
 

@@ -3,12 +3,12 @@ title: Popisek entity příkladu utterance
 description: Naučte se, jak označit entitu strojového učení s podentitami na příkladu utterance na stránce s podrobnostmi záměru na portálu LUIS.
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 959b9c6b25a7a76a87112fcbd1a10e7da12db1dd
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: f576f42f46930d81212ff754a14ee30c75b79624
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83722639"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85610485"
 ---
 # <a name="label-machine-learning-entity-in-an-example-utterance"></a>Označení entity strojového učení v příkladu utterance
 
@@ -16,7 +16,7 @@ Označení entity v příkladu utterance poskytuje LUIS příklad, co je entita 
 
 Můžete označovat prvky, které se naučily počítač, a subentity.
 
-Vzhledem k tomu, že nemůžete označovat regulární výraz, seznam nebo předem sestavené entity, vytvořte entitu nebo subentitu, pak přidejte tyto entity funkce, pokud je to možné, na entitu nebo subentitu.
+Vzhledem k tomu, že nemůžete označit regulární výraz, seznam nebo předem sestavené entity, vytvořte entitu nebo subentitu a přidejte tyto entity jako funkce, pokud jsou k dispozici, na entitu nebo subentitu.
 
 ## <a name="label-example-utterances-from-the-intent-detail-page"></a>Příklad popisku projevy na stránce s podrobnostmi záměru
 

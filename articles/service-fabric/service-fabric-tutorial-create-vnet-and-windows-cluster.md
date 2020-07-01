@@ -4,12 +4,12 @@ description: V tomto kurzu se naučíte nasadit cluster Windows Service Fabric d
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 2d170057a85a8e223fa9d1bc2bfc17e0c284afcd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dfcee93ffa5eea0b2aa0b9a93ff53ad7b61ea245
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80756038"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611658"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Kurz: nasazení clusteru Service Fabric se systémem Windows do virtuální sítě Azure
 
@@ -58,10 +58,10 @@ Následující postupy vytvoří cluster se sedmi uzly Service Fabric. Pomocí [
 
 Stáhněte následující soubory šablon Azure Resource Manager:
 
-* [azuredeploy. JSON][template]
+* [azuredeploy.jsna][template]
 * [azuredeploy.parameters.json][parameters]
 
-Tato šablona nasadí zabezpečený cluster sedmi virtuálních počítačů a tří typů uzlů do virtuální sítě a skupiny zabezpečení sítě.  Další ukázkové šablony najdete na [GitHubu](https://github.com/Azure-Samples/service-fabric-cluster-templates). [Azuredeploy. JSON][template] nasadí řadu prostředků včetně následujících.
+Tato šablona nasadí zabezpečený cluster sedmi virtuálních počítačů a tří typů uzlů do virtuální sítě a skupiny zabezpečení sítě.  Další ukázkové šablony najdete na [GitHubu](https://github.com/Azure-Samples/service-fabric-cluster-templates). [azuredeploy.jsv systému][template] nasadí řadu prostředků včetně následujících.
 
 ### <a name="service-fabric-cluster"></a>Cluster Service Fabric
 
@@ -73,12 +73,12 @@ V prostředku **Microsoft.ServiceFabric/clusters** se konfiguruje cluster s Wind
 * Zabezpečený certifikát (lze konfigurovat v parametrech šablony).
 * [Reverzní proxy](service-fabric-reverseproxy.md) je povolený.
 * [Služba DNS](service-fabric-dnsservice.md) je povolena.
-* Bronzová [úroveň odolnosti](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) (konfigurovatelné v parametrech šablony)
-* [Úroveň spolehlivosti](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) stříbrného (konfigurovatelné v parametrech šablony).
+* Bronzová [úroveň odolnosti](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) (konfigurovatelné v parametrech šablony)
+* [Úroveň spolehlivosti](service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster) stříbrného (konfigurovatelné v parametrech šablony).
 * Koncový bod připojení klienta: 19000 (konfigurovatelné v parametrech šablony).
 * Koncový bod brány HTTP: 19080 (konfigurovatelné v parametrech šablony).
 
-### <a name="azure-load-balancer"></a>Azure Load Balancer
+### <a name="azure-load-balancer"></a>Nástroj pro vyrovnávání zatížení Azure
 
 V prostředku **Microsoft. Network/loadBalancers** je nakonfigurován Nástroj pro vyrovnávání zatížení. Testy a pravidla se nastavují pro následující porty:
 
@@ -143,14 +143,14 @@ Ve výchozím nastavení je [antivirový program v programu Windows Defender](/w
 
 Soubor s parametry [azuredeploy.parameters.json][parameters] deklaruje mnoho hodnot používaných pro nasazení clusteru a přidružených prostředků. Níže jsou uvedené parametry, které je potřeba upravit pro vaše nasazení:
 
-**Ukazatele** | **Příklad hodnoty** | **Poznámky** 
+**Parametr** | **Příklad hodnoty** | **Poznámky** 
 |---|---|---|
 |adminUserName|vmadmin| Uživatelské jméno správce pro virtuální počítače clusteru. [Požadavky na uživatelské jméno pro virtuální počítač](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-username-requirements-when-creating-a-vm) |
 |adminPassword|Password#1234| Heslo správce pro virtuální počítače clusteru. [Požadavky na heslo pro virtuální počítač](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm).|
 |clusterName|mysfcluster123| Název clusteru. Může obsahovat jenom písmena a číslice. Může mít délku 3 až 23 znaků.|
 |location|southcentralus| Umístění clusteru. |
 |certificateThumbprint|| <p>Pokud vytváříte certifikát podepsaný svým držitelem nebo poskytujete soubor certifikátu, měla by být hodnota prázdná.</p><p>Pokud chcete použít existující certifikát, který se dříve odeslal do trezoru klíčů, vyplňte hodnotu kryptografického otisku certifikátu SHA1. Příklad: „6190390162C988701DB5676EB81083EA608DCCF3“.</p> |
-|certificateUrlValue|| <p>Pokud vytváříte certifikát podepsaný svým držitelem nebo poskytujete soubor certifikátu, měla by být hodnota prázdná. </p><p>Pokud chcete použít existující certifikát, který byl dříve odeslán do trezoru klíčů, vyplňte URL certifikátu. Například "https:\//mykeyvault.Vault.Azure.NET:443/Secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346".</p>|
+|certificateUrlValue|| <p>Pokud vytváříte certifikát podepsaný svým držitelem nebo poskytujete soubor certifikátu, měla by být hodnota prázdná. </p><p>Pokud chcete použít existující certifikát, který byl dříve odeslán do trezoru klíčů, vyplňte URL certifikátu. Například "https: \/ /mykeyvault.Vault.Azure.NET:443/Secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346".</p>|
 |sourceVaultValue||<p>Pokud vytváříte certifikát podepsaný svým držitelem nebo poskytujete soubor certifikátu, měla by být hodnota prázdná.</p><p>Pokud chcete použít existující certifikát, který byl dříve odeslán do trezoru klíčů, vyplňte hodnotu zdrojového trezoru. Například: /subscriptions/333cc2c84-12fa-5778-bd71-c71c07bf873f/resourceGroups/MyTestRG/providers/Microsoft.KeyVault/vaults/MYKEYVAULT</p>|
 
 ## <a name="set-up-azure-active-directory-client-authentication"></a>Nastavení ověřování klienta Azure Active Directory
@@ -172,7 +172,7 @@ Pro zjednodušení kroků týkajících se konfigurace služby Azure AD pomocí 
 ### <a name="create-azure-ad-applications-and-assign-users-to-roles"></a>Vytváření aplikací Azure AD a přiřazení uživatelů k rolím
 Vytvořte dvě aplikace Azure AD pro řízení přístupu ke clusteru: jednu webovou aplikaci a jednu nativní aplikaci. Po vytvoření aplikací, které reprezentují váš cluster, přiřaďte uživatele k [rolím, které podporuje Service Fabric](service-fabric-cluster-security-roles.md): jen pro čtení a správce.
 
-Spusťte `SetupApplications.ps1`příkaz a jako parametry zadejte ID klienta, název clusteru a adresu URL odpovědi webové aplikace. Zadejte uživatelská jména a hesla pro uživatele. Příklad:
+Spusťte `SetupApplications.ps1` příkaz a jako parametry zadejte ID klienta, název clusteru a adresu URL odpovědi webové aplikace. Zadejte uživatelská jména a hesla pro uživatele. Příklad:
 
 ```powershell
 $Configobj = .\SetupApplications.ps1 -TenantId '<MyTenantID>' -ClusterName 'mysfcluster123' -WebApplicationReplyUrl 'https://mysfcluster123.eastus.cloudapp.azure.com:19080/Explorer/index.html' -AddResourceAccess
@@ -183,18 +183,18 @@ $Configobj = .\SetupApplications.ps1 -TenantId '<MyTenantID>' -ClusterName 'mysf
 > [!NOTE]
 > Pro národní cloudy (například Azure Government, Azure Čína, Azure Německo) zadejte `-Location` parametr.
 
-*TenantId*nebo ID adresáře můžete najít v [Azure Portal](https://portal.azure.com). Vyberte **Azure Active Directory** > **vlastnosti** a zkopírujte hodnotu **ID adresáře** .
+*TenantId*nebo ID adresáře můžete najít v [Azure Portal](https://portal.azure.com). Vyberte **Azure Active Directory**  >  **vlastnosti** a zkopírujte hodnotu **ID adresáře** .
 
 *Název_clusteru* slouží k vytvoření předpony aplikací služby Azure AD, které jsou vytvořeny pomocí skriptu. Nemusí přesně odpovídat skutečnému názvu clusteru. Usnadňuje mapování artefaktů Azure AD na Service Fabric používaný cluster.
 
 *WebApplicationReplyUrl* je výchozí koncový bod, který Azure AD vrátí vašim uživatelům po dokončení přihlášení. Nastavte tento koncový bod jako koncový bod Service Fabric Explorer pro váš cluster, který je ve výchozím nastavení:
 
-https://&lt;cluster_domain&gt;: 19080/Explorer
+https:// &lt; cluster_domain &gt; : 19080/Explorer
 
 Budete vyzváni k přihlášení k účtu, který má oprávnění správce pro tenanta Azure AD. Po přihlášení vytvoří skript webové a nativní aplikace, které reprezentují váš Service Fabric cluster. V aplikacích klienta v [Azure Portal](https://portal.azure.com)byste měli vidět dvě nové položky:
 
-   * *ClusterName*\_Cluster název_clusteru
-   * *Klient název_clusteru*\_
+   * *Název clusteru* \_ Služby
+   * *Název clusteru* \_ Služba
 
 Skript vytiskne JSON vyžadovaný šablonou Správce prostředků při vytváření clusteru, takže je vhodné ponechat okno PowerShellu otevřené.
 
@@ -207,7 +207,7 @@ Skript vytiskne JSON vyžadovaný šablonou Správce prostředků při vytváře
 ```
 
 ### <a name="add-azure-ad-configuration-to-use-azure-ad-for-client-access"></a>Přidání konfigurace Azure AD pro použití Azure AD pro klientský přístup
-V [azuredeploy. JSON][template]NAKONFIGURUJTE Azure AD v části **Microsoft. ServiceFabric/clustery** . Přidejte parametry pro ID tenanta, ID aplikace clusteru a ID klientské aplikace.  
+V [azuredeploy.jsna][template]portálu NAKONFIGURUJTE Azure AD v části **Microsoft. ServiceFabric/clustery** . Přidejte parametry pro ID tenanta, ID aplikace clusteru a ID klientské aplikace.  
 
 ```json
 {
@@ -249,7 +249,7 @@ V [azuredeploy. JSON][template]NAKONFIGURUJTE Azure AD v části **Microsoft. Se
 }
 ```
 
-Přidejte hodnoty parametrů do souboru parametrů [azuredeploy. Parameters. JSON][parameters] . Příklad:
+Přidejte hodnoty parametrů do souboru parametrů [azuredeploy.parameters.js][parameters] . Příklad:
 
 ```json
 "aadTenantId": {
@@ -271,7 +271,7 @@ Jedním ze způsobů, jak nahrávat a shromažďovat protokoly, je použít roz�
 
 Pokud s tímto kurzem pracujete, kolekce diagnostiky je už v [šabloně][template]nakonfigurovaná.
 
-Pokud máte existující cluster, který nemá nasazenou diagnostiku, můžete ho přidat nebo aktualizovat prostřednictvím šablony clusteru. Upravte šablonu Správce prostředků, která se používá k vytvoření existujícího clusteru, nebo stažení šablony z portálu. Upravte soubor Template. JSON prováděním následujících úloh:
+Pokud máte existující cluster, který nemá nasazenou diagnostiku, můžete ho přidat nebo aktualizovat prostřednictvím šablony clusteru. Upravte šablonu Správce prostředků, která se používá k vytvoření existujícího clusteru, nebo stažení šablony z portálu. Upravte template.jsv souboru prováděním následujících úloh:
 
 Přidejte nový prostředek úložiště do části Resources (prostředky) v šabloně:
 ```json
@@ -597,7 +597,7 @@ Přidejte rozšíření agenta Log Analytics do každé sady škálování virtu
 
 ## <a name="deploy-the-virtual-network-and-cluster"></a>Nasazení virtuální sítě a clusteru
 
-Dále nastavte topologii sítě a nasaďte cluster Service Fabric. Šablona Správce prostředků [azuredeploy. JSON][template] vytvoří virtuální síť, podsíť a skupinu zabezpečení sítě pro Service Fabric. Šablona také nasadí cluster s povoleným zabezpečením pomocí certifikátu. Pro produkční clustery použijte certifikát od certifikační autority jako certifikát clusteru. K zabezpečení testovacích clusterů můžete použít certifikát podepsaný svým držitelem.
+Dále nastavte topologii sítě a nasaďte cluster Service Fabric. Šablona [azuredeploy.json][template] správce prostředků vytvoří virtuální síť, podsíť a skupinu zabezpečení sítě pro Service Fabric. Šablona také nasadí cluster s povoleným zabezpečením pomocí certifikátu. Pro produkční clustery použijte certifikát od certifikační autority jako certifikát clusteru. K zabezpečení testovacích clusterů můžete použít certifikát podepsaný svým držitelem.
 
 Šablona v tomto článku nasadí cluster, který používá kryptografický otisk certifikátu k identifikaci certifikátu clusteru. Žádné dva certifikáty nemohou mít stejný kryptografický otisk, což ztěžuje správu certifikátů. Přepínání nasazeného clusteru z kryptografických otisků certifikátů na běžné názvy certifikátů usnadňuje správu certifikátů. Pokud se chcete dozvědět, jak cluster aktualizovat tak, aby používal běžné názvy certifikátů pro správu certifikátů, přečtěte si téma [Změna clusteru do společné správy názvů certifikátů](service-fabric-cluster-change-cert-thumbprint-to-cn.md).
 

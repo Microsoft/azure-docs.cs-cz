@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/15/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8b2af6ff99db384586dad359285a08ad187bd5d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c1226d181a47f48e294d8a7da4c42467c9ade488
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83666076"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608605"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-insuite"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s InSuite
 
@@ -84,19 +84,19 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí jednoho z následujících vzorů:
 
-    | | |
-    |-|-|
-    | `https://<CUSTOMER_NAME>.m.diol.jp/cgi-bin/saml_sso.cgi`|
-    | `https://<CUSTOMER_NAME>.dacl.jp/cgi-bin/saml_sso.cgi`|
+        ```https
+        https://<CUSTOMER_NAME>.m.diol.jp/cgi-bin/saml_sso.cgi
+        https://<CUSTOMER_NAME>.dacl.jp/cgi-bin/saml_sso.cgi
+        ```
 
     b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:`DreamArts_insuite_TENANTNAME`
 
     c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí jednoho z následujících vzorů:
 
-    | | |
-    |-|-|
-    | `https://<CUSTOMER_NAME>.m.diol.jp/cgi-bin/saml_sso.cgi`|
-    | `https://<CUSTOMER_NAME>.dacl.jp/cgi-bin/saml_sso.cgi`|
+        ```https
+        https://<CUSTOMER_NAME>.m.diol.jp/cgi-bin/saml_sso.cgi
+        https://<CUSTOMER_NAME>.dacl.jp/cgi-bin/saml_sso.cgi
+        ```
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí vlastního přihlašovací adresy URL, identifikátoru a adresy URL odpovědi. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory pro klienty InSuite](mailto:e-support@dreamarts.co.jp) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.

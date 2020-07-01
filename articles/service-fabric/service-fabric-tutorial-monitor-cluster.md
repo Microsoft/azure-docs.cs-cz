@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: srrengar
 ms.custom: mvc
-ms.openlocfilehash: 338ebc584cc718fd9d3b587d17ec0895483dfb0c
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 048161ec13edbd0cf474fb6598fdd9ff981077ae
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560438"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611675"
 ---
 # <a name="tutorial-monitor-a-service-fabric-cluster-in-azure"></a>Kurz: monitorování clusteru Service Fabric v Azure
 
@@ -41,7 +41,7 @@ V této sérii kurzů se naučíte:
 Než začnete s tímto kurzem:
 
 * Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
-* Nainstalujte [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) nebo rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli).
+* Nainstalujte [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) nebo rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli).
 * Vytvoření zabezpečeného [clusteru s Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) 
 * Nastavení [kolekce diagnostiky](service-fabric-tutorial-create-vnet-and-windows-cluster.md#configurediagnostics_anchor) pro cluster
 * Povolení [služby eventstoru](service-fabric-tutorial-create-vnet-and-windows-cluster.md#configureeventstore_anchor) v clusteru
@@ -191,7 +191,7 @@ ServiceFabricReliableServiceEvent
 | sort by TimeGenerated desc
 ```
 
-V případě, že je služba RunAsync spuštěná a dokončená, což se obvykle stává při nasazení a upgradech, se můžete podívat na různé události.
+V případě, že `runasync` je služba spuštěná a dokončená, což obvykle probíhá při nasazení a upgradech, se můžete podívat na různé události.
 
 ![Reliable Services řešení Service Fabric](media/service-fabric-tutorial-monitor-cluster/oms-reliable-services-events-selection.png)
 
@@ -487,5 +487,5 @@ Potom přejděte k následujícímu kurzu, kde se dozvíte, jak škálovat clust
 > [!div class="nextstepaction"]
 > [Škálování clusteru](service-fabric-tutorial-scale-cluster.md)
 
-[durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
+[durability]: service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster
 [template]: https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json

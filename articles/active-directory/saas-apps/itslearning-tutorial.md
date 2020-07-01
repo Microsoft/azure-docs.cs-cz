@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 9a4a95452c11993f57674bcbd16cf3ed5ea828e4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c07c518b4898f64e7ef726ec173c7e31083dae7d
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67099556"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85605345"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itslearning"></a>Kurz: Azure Active Directory integrace s itslearning
 
@@ -107,11 +107,10 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí itslearn
 
     a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL:
     
-    | |
-    |--|
-    | `https://www.itslearning.com/index.aspx`|
-    | `https://us1.itslearning.com/index.aspx`|
-    | |
+        ```https
+        https://www.itslearning.com/index.aspx
+        https://us1.itslearning.com/index.aspx
+        ```
 
     b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL:`urn:mace:saml2v2.no:services:com.itslearning`
 
@@ -151,7 +150,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte `brittasimon@yourcompanydomain.extension`. Například, BrittaSimon@contoso.com.
+    b. Do pole **uživatelské jméno** zadejte `brittasimon@yourcompanydomain.extension` . Například, BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 

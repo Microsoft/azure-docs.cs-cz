@@ -3,19 +3,19 @@ title: Zabezpečení
 titleSuffix: Azure Cognitive Services
 description: Přečtěte si o různých faktorech zabezpečení pro Cognitive Services využití.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 05/11/2020
-ms.author: dapine
+ms.date: 06/30/2020
+ms.author: aahi
 ms.custom: tracking-python
-ms.openlocfilehash: be1f6bd05069024194cb9312b17941c609d544dd
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: d97b944d5d18a39d6eaf84b55363f487a2c17dbf
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608447"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611403"
 ---
 # <a name="azure-cognitive-services-security"></a>Zabezpečení Azure Cognitive Services
 
@@ -205,7 +205,7 @@ Customer Lockbox je k dispozici pro tuto službu pro rozpoznávání:
 
 V případě Language Understanding nebudou mít technici Microsoftu přístup k žádným zákaznickým datům v SKU E0. Chcete-li požádat o možnost použití skladové položky E0, vyplňte a odešlete [formulář žádosti o služby Luis](https://aka.ms/cogsvc-cmk). Bude to trvat přibližně 3-5 pracovních dnů, než se vrátí na stav vaší žádosti. V závislosti na poptávce můžete být do fronty zařazené a schválené, protože místo bude k dispozici. Po schválení pro použití skladové položky E0 s LUIS budete muset vytvořit nový prostředek Language Understanding z Azure Portal a vybrat E0 jako cenovou úroveň. Uživatelé nebudou moct upgradovat z F0 na novou SKLADOVOU položku E0.
 
-Služba Speech v současné době nepodporuje Customer Lockbox. Zákaznická data ale můžete ukládat pomocí BYOS, což vám umožní dosáhnout podobných ovládacích prvků pro data [Customer Lockbox](../security/fundamentals/customer-lockbox-overview.md). Pamatujte, že data služby Speech Service zůstanou a jsou zpracována v oblasti, ve které byl prostředek řeči vytvořen. To platí pro veškerá data v klidovém režimu a data při přenosu. Pokud používáte funkce vlastního nastavení, jako je Custom Speech a vlastní hlas, všechna zákaznická data se přenesou, ukládají a zpracovávají ve stejné oblasti, ve které se nachází BYOS (Pokud se používá) a prostředek služby Speech.
+Služba Speech v současné době nepodporuje Customer Lockbox. Zákaznická data ale můžete ukládat pomocí BYOS ("Přineste si vlastní úložiště"), což vám umožní dosáhnout podobných ovládacích prvků dat [Customer Lockbox](../security/fundamentals/customer-lockbox-overview.md). Pamatujte, že data služby Speech Service zůstanou a jsou zpracována v oblasti, ve které byl prostředek řeči vytvořen. To platí pro veškerá data v klidovém režimu a data při přenosu. Pokud používáte funkce vlastního nastavení, jako je Custom Speech a vlastní hlas, všechna zákaznická data se přenesou, ukládají a zpracovávají ve stejné oblasti, ve které se nachází BYOS (Pokud se používá) a prostředek služby Speech.
 
 > [!IMPORTANT]
 > Společnost **Microsoft nepoužívá** zákaznická data ke zlepšení svých modelů řeči. Pokud je navíc protokolování koncových bodů zakázané a nepoužívá se žádné vlastní nastavení, neukládají se žádná zákaznická data. 

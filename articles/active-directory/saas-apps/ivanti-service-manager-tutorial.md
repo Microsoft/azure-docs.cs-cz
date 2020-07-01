@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e45903bfc54f2c685abea0a8e2924274a21e07b3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 87ceeeb1a712c37bc74e12e910645013d77e8df6
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73157971"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85605283"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ivanti-service-manager-ism"></a>Kurz: Azure Active Directory integrace s Ivanti Service Manager (ISM)
 
@@ -109,11 +109,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Ivanti S
 
     a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:
     
-    | |
-    |--|
-    | `https://<customer>.saasit.com/` |
-    | `https://<customer>.saasiteu.com/` |
-    | `https://<customer>.saasitau.com/` |
+        ```https
+        https://<customer>.saasit.com/
+        https://<customer>.saasiteu.com/
+        https://<customer>.saasitau.com/
+        ```
 
     b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://<customer>/handlers/sso/SamlAssertionConsumerHandler.ashx`
 
@@ -162,7 +162,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
+    b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.

@@ -10,13 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: trbye
-zone_pivot_groups: programming-languages-set-nineteen
-ms.openlocfilehash: a9fac89f529cfefbb8a8d82135838bb96e2689db
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+zone_pivot_groups: programming-languages-speech-services-nomore-variant
+ms.openlocfilehash: df8fe6301a629e4f21478d6da4d892afec44c889
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84669813"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85601220"
 ---
 # <a name="automatic-language-detection-for-speech-to-text"></a>Automatické zjišování jazyka pro rozpoznávání řeči na text
 
@@ -135,6 +135,20 @@ NSString *detectedLanguage = [languageDetectionResult language];
 
 ::: zone-end
 
+::: zone pivot="programming-language-javascript"
+
+```Javascript
+var autoDetectConfig = SpeechSDK.AutoDetectSourceLanguageConfig.fromLanguages(["en-US", "de-DE"]);
+var speechRecognizer = SpeechSDK.SpeechRecognizer.FromConfig(speechConfig, audioConfig, autoDetectConfig);
+speechRecognizer.recognizeOnceAsync((result: SpeechSDK.SpeechRecognitionResult) => {
+        var languageDetectionResult = SpeechSDK.AutoDetectSourceLanguageResult.fromResult(result);
+        var detectedLanguage = languageDetectionResult.language;
+},
+{});
+```
+
+::: zone-end
+
 ## <a name="use-a-custom-model-for-automatic-language-detection"></a>Použití vlastního modelu pro automatické zjišování jazyka
 
 Kromě rozpoznávání jazyka pomocí modelů služby Speech můžete pro lepší rozpoznávání zadat vlastní model. Pokud není k dispozici vlastní model, služba použije výchozí jazykový model.
@@ -209,6 +223,16 @@ SPXSourceLanguageConfiguration* frLanguageConfig = \
 NSArray *languageConfigs = @[enLanguageConfig, frLanguageConfig];
 SPXAutoDetectSourceLanguageConfiguration* autoDetectSourceLanguageConfig = \
         [[SPXAutoDetectSourceLanguageConfiguration alloc]initWithSourceLanguageConfigurations:languageConfigs];
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-javascript"
+
+```Javascript
+var enLanguageConfig = SpeechSDK.SourceLanguageConfig.fromLanguage("en-US");
+var frLanguageConfig = SpeechSDK.SourceLanguageConfig.fromLanguage("fr-FR", "The Endpoint Id for custom model of fr-FR");
+var autoDetectConfig = SpeechSDK.AutoDetectSourceLanguageConfig.fromSourceLanguageConfigs([enLanguageConfig, frLanguageConfig]);
 ```
 
 ::: zone-end

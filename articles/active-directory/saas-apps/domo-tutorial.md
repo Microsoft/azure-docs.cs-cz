@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/26/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0141b8e3e0953a1b436b9e3b1da72249dae19eb1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5ba0bdd58dfcadf4c524e9c386aac94628f77c8a
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "70163390"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608768"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-domo"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Domo
 
@@ -87,20 +87,19 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:
 
-    | |
-    |--|
-    | `https://<companyname>.domo.com` |
-    | `https://<companyname>.beta.domo.com` |
-    | `https://<companyname>.demo.domo.com` |
-    | `https://<companyname>.dev.domo.com` |
-    | `https://<companyname>.fastage1.domo.com` |
-    | `https://<companyname>.frdev.domo.com` |
-    | `https://<companyname>.gastage.domo.com` |
-    | `https://<companyname>.load.domo.com` |
-    | `https://<companyname>.local.domo.com` |
-    | `https://<companyname>.qa.domo.com` |
-    | `https://<companyname>.stage.domo.com` |
-    | | |
+        ```https
+        https://<companyname>.domo.com` |
+        https://<companyname>.beta.domo.com` |
+        https://<companyname>.demo.domo.com` |
+        https://<companyname>.dev.domo.com` |
+        https://<companyname>.fastage1.domo.com` |
+        https://<companyname>.frdev.domo.com` |
+        https://<companyname>.gastage.domo.com` |
+        https://<companyname>.load.domo.com` |
+        https://<companyname>.local.domo.com` |
+        https://<companyname>.qa.domo.com` |
+        https://<companyname>.stage.domo.com` |
+        ```
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta Domo](mailto:support@domo.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -121,7 +120,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
@@ -157,7 +156,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Domo, měli byste se automaticky přihlásit k Domo, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

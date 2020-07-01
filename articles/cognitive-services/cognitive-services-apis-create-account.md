@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: aahi
-ms.openlocfilehash: 33200f8807ad28ac160bb377b1107548f4e42d51
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 4a73ff517347baa2cf589432be025bd922597ed3
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83590804"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611386"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-portal"></a>Vytvoření prostředku Cognitive Services pomocí Azure Portal
 
@@ -25,24 +25,24 @@ V tomto rychlém startu můžete začít používat Azure Cognitive Services. Po
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Platné předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/).
+* Platné předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/).
 
 ## <a name="create-a-new-azure-cognitive-services-resource"></a>Vytvořit nový prostředek služby Azure Cognitive Services
 
 1. Vytvořit prostředek.
 
     #### <a name="multi-service-resource"></a>[Prostředek s více službami](#tab/multiservice)
-    
+
     Prostředek s více službami se jmenuje **Cognitive Services** na portálu. [Vytvořte prostředek Cognitive Services](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne).
-    
+
     Prostředek s více službami v současnosti umožňuje přístup k následujícím Cognitive Services:
-    
+
     |                  |                                                      |                    |                               |                  |
     |------------------|------------------------------------------------------|--------------------|-------------------------------|------------------|
     | Počítačové zpracování obrazu  | Content Moderator                                    | Rozpoznávání tváře               | Language Understanding (LUIS) | Analýza textu   |
-    | Translator  | Vyhledávání Bingu v7 <br>(Web, obrázek, novinky, video, vizuál) | Vlastní vyhledávání Bingu | Vyhledávání entit Bingu            | Automatické návrhy Bingu |
+    | Překladač  | Vyhledávání Bingu v7 <br>(Web, obrázek, novinky, video, vizuál) | Vlastní vyhledávání Bingu | Vyhledávání entit Bingu            | Automatické návrhy Bingu |
     | Kontrola pravopisu Bingu |                                                      |                    |                               |                  |
-    
+
     #### <a name="single-service-resource"></a>[Prostředek s jednou službou](#tab/singleservice)
 
     K vytvoření prostředku pro dostupné Cognitive Services použijte odkazy níže:

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/07/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13f6de35400280d68227af1dd7e3a981494d9e61
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: de3ebba84a56a0dd997a2d0309bbc203cd606fa1
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77088211"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85607952"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bic-cloud-design"></a>Kurz: Azure Active Directory integraci jednotného přihlašování pomocí jednotného přihlašování (SSO) s návrhem cloudu BIC
 
@@ -97,10 +97,10 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:
 
-    |||
-    |-|-|
-    | `https://<customer-specific-name/tenant>.biccloud.com`|
-    | `https://<customer-specific-name/tenant>.biccloud.de` |
+    ```https
+    https://<customer-specific-name/tenant>.biccloud.com
+    https://<customer-specific-name/tenant>.biccloud.de
+    ```
 
     > [!Note]
     > Pokud hodnota **identifikátoru** nezíská auto polulated, vyplňte prosím hodnotu ručně podle vašeho požadavku. Hodnota přihlašovací adresy URL není reálné číslo. Aktualizujte tuto hodnotu pomocí skutečné přihlašovací adresy URL. Pokud chcete získat tuto hodnotu, obraťte se na [tým podpory klienta pro návrh cloudu společnosti BIC](mailto:bicsupport@gbtec.de) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -111,9 +111,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě výše očekává aplikace programu pro vytváření cloudových aplikací BIC v odpovědi SAML méně dalších atributů, které jsou uvedené dál. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | ------------ | --------- |
-    | Název | user.name |
+    | Name | user.name |
     | E-mailová adresa | uživatel. pošta |
     | ID jména | User. userPrincipalName |
     | e-mail | uživatel. pošta |
@@ -131,7 +131,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
@@ -167,7 +167,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Po kliknutí na dlaždici návrh nástroje BIC Cloud na přístupovém panelu byste měli být automaticky přihlášení k návrhu cloudu BIC, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
