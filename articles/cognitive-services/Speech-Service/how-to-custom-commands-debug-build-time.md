@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: b0a26b4d3f0f59f8e05c5990bbc64ee55f12f124
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 6624c8072c60793771d4f4b9943e15f1b276cd34
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307555"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85604688"
 ---
 # <a name="debug-errors-when-authoring-a-custom-commands-application"></a>Ladění chyb při vytváření vlastní aplikace příkazů
 
@@ -26,7 +26,7 @@ Vlastní příkazy také při vytváření vlastní aplikace pomocí příkazu v
 
 [Luis omezuje počet aplikací na prostředek pro vytváření obsahu 500](https://docs.microsoft.com/azure/cognitive-services/luis/luis-limits). Vytvoření aplikace LUIS může selhat, pokud používáte prostředek pro vytváření obsahu, který už má aplikace 500. 
 
-Ujistěte se, že vybraný prostředek pro vytváření obsahu LUIS má méně než 500. V takovém případě můžete nový LUIS prostředek pro vytváření, přepnout na jiný nebo se pokusit vyčistit aplikace LUIS.  
+Ujistěte se, že vybraný prostředek pro vytváření obsahu LUIS má méně než 500 aplikací. V takovém případě můžete vytvořit nový prostředek pro vytváření obsahu LUIS, přepnout na jiný nebo se pokusit vyčistit aplikace LUIS.  
 
 ## <a name="errors-when-deleting-an-application"></a>Chyby při odstraňování aplikace
 ### <a name="cant-delete-luis-application"></a>Nejde odstranit aplikaci LUIS.
@@ -48,8 +48,8 @@ Při použití nemůžete odstranit parametr. Odeberte prosím všechny odkazy t
 Při použití nemůžete odstranit webový koncový bod. Odeberte prosím všechny akce **webového koncového bodu volání** , které používají tento koncový bod webu, před odebráním webového koncového bodu.
 
 ## <a name="errors-when-training-an-application"></a>Chyby při školení aplikace
-### <a name="build-in-intents"></a>Sestavení v záměrech
-LUIS má sestavení v ano/ne. V případě ukázkových vět, které mají pouze "Ano", "ne" by školení nevyhovělo. 
+### <a name="built-in-intents"></a>Předdefinované záměry
+LUIS má integrované záměry ano/ne. V případě ukázkových vět, které mají pouze "Ano", "ne" by školení nevyhovělo. 
 
 | Klíčové slovo | Odchylky | 
 | ------- | --------- | 
@@ -72,7 +72,7 @@ V vzorových větách se používá minimálně jeden parametr, ale není defino
 ### <a name="training-takes-too-long"></a>Školení trvá moc dlouho.
 Školení LUIS je určeno pro rychlé seznámení s méně příklady. Nepřidávejte příliš mnoho ukázkových vět. 
 
-Pokud máte mnoho ukázkových vět podobné, definujte parametr, vyabstraktní je do vzoru a přidejte ho do ukázkových vět.
+Pokud máte mnoho vzorových vět, které jsou podobné, definujte parametr, vyabstrakcte je do vzoru a přidejte ho k příkladům vět.
 
 Například můžete definovat parametr {vehikul} pro níže uvedené příklady vět a přidat k příkladům pouze "knihu a {vehikulum}".
 

@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: provedení hledání na webu pomocí Node. js – Vyhledávání na webu Bingu REST API'
+title: 'Rychlý Start: provedení vyhledávání na webu pomocí Node.js-Vyhledávání na webu Bingu REST API'
 titleSuffix: Azure Cognitive Services
-description: Pomocí tohoto rychlého startu můžete odesílat požadavky na Vyhledávání na webu Bingu REST API pomocí Node. js a přijímat odpověď JSON.
+description: Pomocí tohoto rychlého startu můžete odesílat požadavky na Vyhledávání na webu Bingu REST API pomocí Node.js a přijímat odpověď JSON.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,16 +11,16 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 4a96f31588e199d5696e2d9eff351051d46c1f96
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 872a90a0b4f5b348e45b04998067f9e97a3ae987
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873965"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611318"
 ---
-# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-nodejs"></a>Rychlý Start: vyhledávání na webu pomocí Vyhledávání na webu Bingu REST API a Node. js
+# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-nodejs"></a>Rychlý Start: vyhledávání na webu pomocí Vyhledávání na webu Bingu REST API a Node.js
 
-V tomto rychlém startu můžete provést první volání rozhraní API Bingu pro vyhledávání na webu. Tato aplikace Node. js odešle požadavek na hledání do rozhraní API a zobrazí odpověď ve formátu JSON. I když je tato aplikace napsaná v JavaScriptu, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
+V tomto rychlém startu můžete provést první volání rozhraní API Bingu pro vyhledávání na webu. Tato Node.js aplikace odešle požadavek na hledání do rozhraní API a zobrazí odpověď JSON. I když je tato aplikace napsaná v JavaScriptu, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -33,7 +33,7 @@ Tady je pár věcí, které budete potřebovat na začátku tohoto rychlého sta
 
 ## <a name="create-a-project-and-declare-required-modules"></a>Vytvoření projektu a deklarace požadovaných modulů
 
-Ve svém oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt Node.js. Pak zkopírujte následující fragment kódu do projektu v souboru s názvem Search. js:
+Ve svém oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt Node.js. Pak zkopírujte následující fragment kódu do projektu v souboru s názvem search.js:
 
 ```javascript
 // Use this simple app to query the Bing Web Search API and get a JSON response.
@@ -43,7 +43,7 @@ const https = require('https')
 
 ## <a name="set-the-subscription-key"></a>Nastavení klíče předplatného
 
-Tento fragment kódu používá `AZURE_SUBSCRIPTION_KEY` proměnnou prostředí k uložení klíče předplatného, což je dobrý postup k tomu, abyste zabránili nechtěnému vystavení klíčů při nasazování kódu. Pokud chcete vyhledat klíč předplatného, podívejte se na [vaše rozhraní API](https://azure.microsoft.com/try/cognitive-services/my-apis/?apiSlug=search-api-v7).
+Tento fragment kódu používá `AZURE_SUBSCRIPTION_KEY` proměnnou prostředí k uložení klíče předplatného, což je dobrý postup k tomu, abyste zabránili nechtěnému vystavení klíčů při nasazování kódu.
 
 Pokud nejste obeznámeni s používáním proměnných prostředí nebo chcete tuto aplikaci spustit co nejrychleji, nahraďte `process.env['AZURE_SUBSCRIPTION_KEY']` pomocí klíče předplatného nastaveného jako řetězec.
 

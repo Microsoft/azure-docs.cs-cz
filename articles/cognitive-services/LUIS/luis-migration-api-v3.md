@@ -2,14 +2,14 @@
 title: Změny koncového bodu předpovědi v rozhraní V3 API
 description: Rozhraní API pro koncový bod pro předpověď dotazu se změnila. Tento průvodce vám pomůže pochopit, jak migrovat na rozhraní API koncového bodu verze 3.
 ms.topic: how-to
-ms.date: 05/15/2020
+ms.date: 06/30/2020
 ms.author: diberry
-ms.openlocfilehash: 293cbd583e1493c5f142604457a00a8055c7a802
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: d3d8f4d77793390484c64b03393fb528dfa643b7
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84338188"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85610876"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>Předpověď změn koncového bodu pro v3
 
@@ -86,17 +86,7 @@ Pokud se chcete dotazovat podle verze, musíte nejdřív [publikovat přes rozhr
 
 ### <a name="query-string-changes"></a>Změny řetězce dotazu
 
-Rozhraní API V3 má jiné parametry řetězce dotazu.
-
-|Název param|Typ|Verze|Výchozí|Účel|
-|--|--|--|--|--|
-|`log`|Boolean|V2 & V3|false (nepravda)|Dotaz na uložení v souboru protokolu. Výchozí hodnota je false.|
-|`query`|řetězec|Jenom V3|Žádná výchozí hodnota – v žádosti GET se vyžaduje.|**V v2**je utterance, který má být předpovězen, v `q` parametru. <br><br>**V v3**je funkce předána do `query` parametru.|
-|`show-all-intents`|Boolean|Jenom V3|false (nepravda)|Vrátí všechny záměry s odpovídajícím skóre v objektu **předpověď. záměrs** . Záměry jsou vráceny jako objekty v nadřazeném `intents` objektu. To umožňuje programový přístup bez nutnosti najít záměr v poli: `prediction.intents.give` . V v2 byly vráceny v poli. |
-|`verbose`|Boolean|V2 & V3|false (nepravda)|**V v2**při nastavení na hodnotu true byly vráceny všechny předpovězené záměry. Pokud potřebujete všechny předpovídané záměry, použijte parametr V3 `show-all-intents` .<br><br>**V v3**tento parametr poskytuje pouze podrobnosti o metadatech entit pro předpovědi entit.  |
-|`timezoneOffset`|řetězec|V2|-|Časové pásmo bylo použito pro datetimeV2 entity.|
-|`datetimeReference`|řetězec|Technologie|-|[Časové pásmo](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) bylo použito pro datetimeV2 entity. Nahrazuje `timezoneOffset` z v2.|
-
+[!INCLUDE [V3 query params](./includes/v3-prediction-query-params.md)]
 
 ### <a name="v3-post-body"></a>Tělo pro POST verze V3
 

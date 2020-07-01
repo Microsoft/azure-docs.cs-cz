@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: 5d1b0b19523eb37aa83aa59b24114be9f76ffa55
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d459222327ef3535202e82f640f5b513f0426d54
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68882785"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85609465"
 ---
 # <a name="add-analytics-to-the-bing-search-apis"></a>Přidání analýzy do rozhraní API pro vyhledávání Bingu
 
 Statistika Bingu poskytuje analýzy pro rozhraní API pro vyhledávání Bingu. Tyto analýzy zahrnují objem volání, nejčastější řetězce dotazů, geografické distribuce a další. Statistiku Bingu můžete v [Azure Portal](https://ms.portal.azure.com) povolit tak, že přejdete do svého prostředku Azure a kliknete na **Povolit statistiku Bingu**.
 
 > [!IMPORTANT]
-> * Statistika Bingu není k dispozici v rámci bezplatné zkušební verze předplatného `F0` nebo prostředků na cenové úrovni Free.
+> * Statistika Bingu není k dispozici u prostředků na `F0` cenové úrovni Free.
 > * Nemůžete použít žádná data, která jsou k dispozici prostřednictvím řídicího panelu statistiky Bingu k vytváření aplikací pro distribuci třetím stranám.
 > * Povolením statistik Bingu se zvýší míra předplatného. Podrobnosti najdete v tématu [ceny](https://aka.ms/bingstatisticspricing) .
 
@@ -86,15 +86,15 @@ Níže jsou uvedené možné metriky a omezení koncových bodů.
   > [!NOTE]  
   > Některé výrazy dotazu je možné potlačit a odebrat tak důvěrné informace, jako jsou e-maily, telefonní čísla, rodné číslo atd.
 
-- **Geografická distribuce**: trhy, kde pocházejí výsledky hledání. Například `en-us` (čeština, USA). Bing používá parametr `mkt` dotazu k určení trhu, pokud je zadaný. V opačném případě Bing používá ke zjištění trhu signály, jako je IP adresa volajícího.
+- **Geografická distribuce**: trhy, kde pocházejí výsledky hledání. Například `en-us` (Čeština, USA). Bing používá `mkt` parametr dotazu k určení trhu, pokud je zadaný. V opačném případě Bing používá ke zjištění trhu signály, jako je IP adresa volajícího.
 
 - **Distribuce kódu odezvy**: stavové kódy http všech volání během období generování sestav.
 
 - **Distribuce zdroje volání**: typy prohlížečů používaných uživateli. Například Microsoft Edge, Chrome, Safari a FireFox. V rámci knihoven se seskupují volání z mimo prohlížeč (například roboty, post nebo using kudrlinkou z konzolové aplikace). Počátek se určuje pomocí hodnoty hlavičky User-Agent. Pokud žádost neobsahuje hlavičku User-Agent, Bing se pokusí odvodit původ z jiných signálů.  
 
-- **Distribuce bezpečného vyhledávání**: distribuce bezpečných vyhledávacích hodnot. Například off, mírná nebo Strict. Parametr `safeSearch` dotazu obsahuje hodnotu, je-li zadán. V opačném případě Bing nastaví hodnotu na střední.  
+- **Distribuce bezpečného vyhledávání**: distribuce bezpečných vyhledávacích hodnot. Například off, mírná nebo Strict. `safeSearch`Parametr dotazu obsahuje hodnotu, je-li zadán. V opačném případě Bing nastaví hodnotu na střední.  
 
-- **Odpovědi požadovaly distribuci**: vyhledávání na webu odpovědi rozhraní API, které jste požadovali v parametru `responseFilter` dotazu.  
+- **Odpovědi požadovaly distribuci**: vyhledávání na webu odpovědi rozhraní API, které jste požadovali v `responseFilter` parametru dotazu.  
 
 - Odpověď **vrátila distribuci**: odpovědi, které vyhledávání na webu rozhraní API vrátilo v odpovědi.
 

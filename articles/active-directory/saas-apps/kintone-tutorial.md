@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 6786b44aca9ceed3cec5daf0f858a51e2dd12833
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 453c1f19945c309e4bcc224b55c2b359b6194789
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74227584"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85605349"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kintone"></a>Kurz: Azure Active Directory integrace s Kintone
 
@@ -109,10 +109,10 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Kintone,
 
     b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:
     
-    | |
-    |--|
-    | `https://<companyname>.cybozu.com` |
-    | `https://<companyname>.kintone.com` |
+        ```https
+        https://<companyname>.cybozu.com
+        https://<companyname>.kintone.com
+        ```
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta Kintone](https://www.kintone.com/contact/) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -143,9 +143,9 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Kintone,
 
     ![Uživatelé & Správa systému](./media/kintone-tutorial/ic785880.png "Uživatelé & Správa systému")
 
-1. V části **zabezpečení \> správy systému** klikněte na **Přihlásit**.
+1. V části ** \> zabezpečení správy systému** klikněte na **Přihlásit**.
 
-    ![Hlas](./media/kintone-tutorial/ic785881.png "Přihlásit")
+    ![Přihlásit](./media/kintone-tutorial/ic785881.png "Přihlásit")
 
 1. Klikněte na **Povolit ověřování SAML**.
 

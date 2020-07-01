@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: overview
 ms.date: 12/19/2019
 ms.author: scottwhi
-ms.openlocfilehash: 52e3e65fb4f42530373decca547674a28a60f759
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 14acebb71538dddfd2421fbb27794f456b6c9c8f
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75446662"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611505"
 ---
 # <a name="what-is-the-bing-visual-search-api"></a>Co je rozhraní API pro vizuální vyhledávání Bingu?
 
@@ -48,7 +48,7 @@ Výsledky Vizuální vyhledávání Bingu také obsahují ohraničující pole p
 
 Rozhraní API pro vizuální vyhledávání Bingu je webová služba RESTful, která usnadňuje volání ze všech programovacích jazyků, které mohou provádět požadavky HTTP a analyzovat JSON. Pro službu můžete použít buď REST API, nebo sadu SDK.
 
-1. Pro přístup k rozhraní API pro vyhledávání Bingu vytvořte [účet Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) . Pokud nemáte předplatné Azure, můžete si [účet zdarma vytvořit](https://azure.microsoft.com/free/). Klíč předplatného můžete získat z [Azure Portal](../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) po vytvoření účtu nebo [webu Azure](https://azure.microsoft.com/try/cognitive-services/my-apis) po aktivaci bezplatné zkušební verze.
+1. Pro přístup k rozhraní API pro vyhledávání Bingu vytvořte [účet Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) . Pokud nemáte předplatné Azure, můžete si [účet zdarma vytvořit](https://azure.microsoft.com/free/cognitive-services/).
 2. Odešle požadavek do rozhraní API platným vyhledávacím dotazem.
 3. Zpracujte odpověď rozhraní API parsováním vrácené zprávy JSON.
 
@@ -57,7 +57,7 @@ Rozhraní API pro vizuální vyhledávání Bingu je webová služba RESTful, kt
 Nejprve vyzkoušejte rozhraní API pro vizuální vyhledávání Bingu [interaktivní ukázku](https://azure.microsoft.com/services/cognitive-services/bing-visual-search/).
 Ukázka vám ukáže, jak rychle upravit vyhledávací dotaz a projeďte web pro obrázky.
 
-Pokud chcete rychle začít s prvním požadavkem, přečtěte si rychlý Start: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [Node. js](quickstarts/nodejs.md) | [Python](quickstarts/python.md).
+Pokud chcete rychle začít s prvním požadavkem, přečtěte si rychlý Start: [C#](quickstarts/csharp.md)  |  [Java](quickstarts/java.md)  |  [node.js](quickstarts/nodejs.md)  |  [Python](quickstarts/python.md).
 
 ## <a name="see-also"></a>Viz také
 

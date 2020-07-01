@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd85042d30be0bb37de590fe9b011948b9acf0db
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 556fd1f9fe4ba5753d882fa81c6d5a89051bcd91
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85361366"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85604977"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kisi-physical-security"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s fyzickým zabezpečením Kisi
 
@@ -102,11 +102,11 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace Kisi fyzického zabezpečení, že se v odpovědi SAML vrátí další atributy, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
     
-    | Název |  |  Zdrojový atribut|
-    | ---------------| --------------- | --------- |
-    | FirstName | | User. křestní jméno |
-    | LastName | | User. příjmení |
-    | E-mail | | User. userPrincipalName |
+    | Name | Zdrojový atribut|
+    | ---------------| --------- |
+    | FirstName | User. křestní jméno |
+    | LastName | User. příjmení |
+    | E-mail | User. userPrincipalName |
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** kliknutím na tlačítko Kopírovat zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do svého počítače.
 

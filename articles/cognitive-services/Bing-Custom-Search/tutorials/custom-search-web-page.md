@@ -10,16 +10,16 @@ ms.subservice: bing-custom-search
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
-ms.openlocfilehash: c7b41f77f8eb57c39489f1e5a69b0ac1c3c9c7d4
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 588751c178205ceb21617f8d9271bfa9ed76193d
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78943915"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85603345"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>Kurz: Vytvoření webové stránky pro vlastní vyhledávání
 
-Vlastní vyhledávání Bingu umožňuje vytvářet přizpůsobená vyhledávací prostředí pro témata, o která máte zájem. Pokud například vlastníte web věnovaný bojovým uměním, který poskytuje možnosti vyhledávání, můžete určit domény, podřízené weby a webové stránky, které Bing prohledává. Uživatelům se budou zobrazovat výsledky hledání přizpůsobené obsahu, který je zajímá, a nebudou tak muset procházet obecné výsledky hledání, které můžou obsahovat irelevantní obsah. 
+Vlastní vyhledávání Bingu umožňuje vytvářet přizpůsobená vyhledávací prostředí pro témata, o která máte zájem. Pokud například vlastníte web Martial umění, který poskytuje vyhledávání, můžete určit domény, podřízené weby a webové stránky, které vyhledávání Bingu. Uživatelům se budou zobrazovat výsledky hledání přizpůsobené obsahu, který je zajímá, a nebudou tak muset procházet obecné výsledky hledání, které můžou obsahovat irelevantní obsah. 
 
 Tento kurz ukazuje postup konfigurace instance vlastního vyhledávání a její integrace do nové webové stránky.
 
@@ -34,7 +34,7 @@ Probírají se tyto úlohy:
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Abyste mohli postupovat podle tohoto kurzu, potřebujete klíč předplatného pro rozhraní API pro vlastní vyhledávání Bingu.  Pokud chcete získat klíč, [vytvořte v Azure Portal prostředek vlastní vyhledávání Bingu](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch) . můžete použít také [zkušební klíč](https://azure.microsoft.com/try/cognitive-services).
+- Abyste mohli postupovat podle tohoto kurzu, potřebujete klíč předplatného pro rozhraní API pro vlastní vyhledávání Bingu.  Pokud chcete získat klíč, [vytvořte v Azure Portal prostředek vlastní vyhledávání Bingu](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch) .
 - Pokud ještě nemáte nainstalovanou aplikaci Visual Studio 2017 nebo novější, můžete si stáhnout a použít **bezplatnou** [edici Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/).
 
 ## <a name="create-a-custom-search-instance"></a>Vytvoření instance vlastního vyhledávání
@@ -116,7 +116,7 @@ Vlastní vyhledávání poskytuje hostované uživatelské rozhraní pro vykresl
 
    ![Snímek obrazovky s kartou Hostované uživatelské rozhraní a krokem Pokročilá konfigurace](./media/custom-search-hosted-ui-advanced-configurations.png)  
   
-5. V rozevíracím seznamu vyberte klíče svého předplatného. Případně můžete klíč předplatného zadat ručně. Informace o získání klíčů najdete v tématu [Zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search-api).  
+5. V rozevíracím seznamu vyberte klíče svého předplatného. Případně můžete klíč předplatného zadat ručně.
   
    ![Snímek obrazovky s kartou Hostované uživatelské rozhraní a krokem Další konfigurace](./media/custom-search-hosted-ui-subscription-key.png)
 
@@ -130,7 +130,7 @@ Hostované uživatelské rozhraní můžete používat dvěma způsoby.
 - Možnost 1: Integrace poskytnutého fragmentu kódu JavaScriptu do aplikace
 - Možnost 2: Použití poskytnutého koncového bodu HTML
 
-Zbývající část tohoto kurzu ilustruje **Možnost 1: Fragment kódu JavaScriptu**.  
+Zbývající část tohoto kurzu ilustruje **možnost 1: fragment kódu JavaScriptu**.  
 
 ## <a name="set-up-your-visual-studio-solution"></a>Nastavení řešení v sadě Visual Studio
 
