@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 06/29/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: de939f2bfe55541dca9d93f6778e4b098d067daa
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 92b88c84650227e43755e6e34d09cc26003457dc
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85565969"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800575"
 ---
 # <a name="about-azure-virtual-wan"></a>Informace o službě Azure Virtual WAN
 
@@ -122,11 +122,11 @@ Informace o umístění naleznete v článku [virtuální partneři a umístěn�
 
 ## <a name="route-tables-in-basic-and-standard-virtual-wans"></a><a name="route"></a>Směrovací tabulky v základních a standardních virtuálních sítích WAN
 
-Směrovací tabulky teď mají funkce pro přidružení a šíření. Již existující směrovací tabulka je směrovací tabulka, která nemá tyto funkce. Pokud máte již existující směrovací tabulku, vezměte v úvahu následující skutečnosti:
+Směrovací tabulky teď mají funkce pro přidružení a šíření. Již existující směrovací tabulka je směrovací tabulka, která nemá tyto funkce. Pokud máte již existující trasy ve směrování centra a chcete používat nové funkce, vezměte v úvahu následující skutečnosti:
 
-* **Standardní virtuální zákazníci sítě WAN s předem existujícími směrovacími tabulkami**: Chcete-li používat nové funkce směrovací tabulky, odstraňte všechny existující směrovací tabulky a znovu vytvořte nové.
+* **Standardní virtuální zákazníci sítě WAN s již existujícími trasami ve virtuálním centru**: Pokud chcete použít nové funkce směrovací tabulky, odstraňte všechny existující trasy z oddílu směrování pro centrum v Azure Portal a pak se pokuste vytvořit nové směrovací tabulky v části směrovací tabulky pro centrum.
 
-* **Základní virtuální zákazníci sítě WAN s předem existujícími směrovacími tabulkami**: Pokud chcete používat nové možnosti směrovací tabulky, odstraňte všechny existující směrovací tabulky a potom **upgradujte** základní virtuální síť WAN na standardní virtuální síť WAN. Viz [upgrade virtuální sítě WAN z úrovně Basic na standard](upgrade-virtual-wan.md).
+* **Základní virtuální zákazníci sítě WAN s již existujícími trasami ve virtuálním centru**: Pokud chcete použít nové funkce směrovací tabulky, odstraňte všechny existující trasy z části směrování centra na webu Azure Portal a potom **upgradujte** základní virtuální síť WAN na standard Virtual WAN. Viz [upgrade virtuální sítě WAN z úrovně Basic na standard](upgrade-virtual-wan.md).
 
 ## <a name="faq"></a><a name="faq"></a>Nejčastější dotazy
 

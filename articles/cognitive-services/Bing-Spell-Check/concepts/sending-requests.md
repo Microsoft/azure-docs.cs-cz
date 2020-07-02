@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: 893317b8f46415b1df540d67ebf28b65c5ba6d32
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4f79e3d8d8d32bb577e8c6c6f6f6c247de13c58a
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68883441"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85801236"
 ---
 # <a name="sending-requests-to-the-bing-spell-check-api"></a>Odesílání požadavků do rozhraní API pro kontrolu pravopisu Bingu
 
@@ -25,7 +25,7 @@ Pokud chcete zkontrolovat pravopisné a gramatické chyby v textovém řetězci,
 https://api.cognitive.microsoft.com/bing/v7.0/spellcheck
 ```  
   
-Požadavek musí používat protokol HTTPS.
+Tento požadavek musí používat protokol HTTPS.
 
 Doporučujeme, aby všechny požadavky pocházely ze serveru. Distribuce klíče v rámci klientské aplikace poskytuje škodlivým třetím stranám víc příležitostí získat k ní přístup. Server také poskytuje jeden bod upgradu pro budoucí verze rozhraní API.
 
@@ -46,15 +46,18 @@ Pokud chcete tento problém vyřešit, můžete žádost o rozhraní API Bingu p
 
 Je snadné nainstalovat proxy CORS, aby [aplikace tutorial](../tutorials/spellcheck.md) mohla získat přístup k volitelným hlavičkám klienta. Nejdřív [nainstalujte Node.js](https://nodejs.org/en/download/), pokud jste to ještě neudělali. Pak na příkazovém řádku zadejte následující příkaz.
 
-    npm install -g cors-proxy-server
+```console
+npm install -g cors-proxy-server
+```
 
-Dále změňte koncový bod rozhraní API Bingu pro kontrolu pravopisu v souboru HTML na:
-
-    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/spellcheck/
+Dále změňte koncový bod rozhraní API Bingu pro kontrolu pravopisu v souboru HTML na: \
+`http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/spellcheck/`
 
 Nakonec spusťte proxy server CORS pomocí tohoto příkazu:
 
-    cors-proxy-server
+```console
+cors-proxy-server
+```
 
 Při používání ukázkové aplikace nechte příkazové okno otevřené. Zavřením okna se zastaví proxy server. V části rozbalit hlavičky HTTP pod výsledky hledání se teď můžete podívat na `X-MSEdge-ClientID` záhlaví (mimo jiné) a ověřit, jestli je pro každý požadavek stejný.
 

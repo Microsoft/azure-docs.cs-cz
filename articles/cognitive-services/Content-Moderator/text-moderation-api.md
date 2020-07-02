@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 31bd6a2680d8c71df6b6030187ff44ca10d09440
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: fa292f0441369ed13f3f85035a2ec8cc3f5c6723
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561034"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800087"
 ---
 # <a name="learn-text-moderation-concepts"></a>Základní informace o principech moderování textu
 
@@ -36,13 +36,15 @@ Odpověď služby zahrnuje následující informace:
 
 Pokud rozhraní API zjistí jakékoli vulgární výrazy v některém z [podporovaných jazyků](Text-Moderation-API-Languages.md), jsou tyto výrazy součástí odpovědi. Odpověď také obsahuje jejich umístění ( `Index` ) v původním textu. `ListId`V následujícím ukázkovém formátu JSON odkazuje na podmínky nalezené v [seznamech vlastních termínů](try-terms-list-api.md) , pokud jsou k dispozici.
 
-    "Terms": [
+```json
+"Terms": [
     {
         "Index": 118,
         "OriginalIndex": 118,
         "ListId": 0,
         "Term": "crap"
     }
+```
 
 > [!NOTE]
 > Pro parametr **jazyka** přiřaďte `eng` nebo nechejte prázdný, aby se zobrazila odpověď s podporou počítače **classification** (funkce Preview). **Tato funkce podporuje jenom angličtinu**.
@@ -55,18 +57,20 @@ Pokud rozhraní API zjistí jakékoli vulgární výrazy v některém z [podporo
 
 Následující extrakce v extrakci JSON ukazuje příklad výstupu:
 
-    "Classification": {
-        "ReviewRecommended": true,
-        "Category1": {
-              "Score": 1.5113095059859916E-06
-            },
-        "Category2": {
-              "Score": 0.12747249007225037
-            },
-        "Category3": {
-              "Score": 0.98799997568130493
-        }
+```json
+"Classification": {
+    "ReviewRecommended": true,
+    "Category1": {
+        "Score": 1.5113095059859916E-06
+    },
+    "Category2": {
+        "Score": 0.12747249007225037
+    },
+    "Category3": {
+        "Score": 0.98799997568130493
     }
+}
+```
 
 ### <a name="explanation"></a>Vysvětlení
 
@@ -127,11 +131,11 @@ Následující příklad ukazuje ukázkovou odpověď:
 
 Předpokládejme, že je vstupní text (lzay a F0X je úmyslné):
 
-    The qu!ck brown f0x jumps over the lzay dog.
+> Qu! CK Brown F0X přeskočí přes lzay pes.
 
 Pokud si vyžádáte automatické opravy, odpověď obsahuje opravenou verzi textu:
 
-    The quick brown fox jumps over the lazy dog.
+> Rychlý hnědý Fox přeskočí přes opožděný pes.
 
 ## <a name="creating-and-managing-your-custom-lists-of-terms"></a>Vytváření a Správa vlastních seznamů podmínek
 
@@ -143,13 +147,15 @@ I když výchozí globální seznam pojmů funguje skvěle pro většinu přípa
 
 Následující příklad ukazuje ID odpovídajícího seznamu:
 
-    "Terms": [
+```json
+"Terms": [
     {
         "Index": 118,
         "OriginalIndex": 118,
         "ListId": 231.
         "Term": "crap"
     }
+```
 
 Content Moderator poskytuje [rozhraní API pro seznam termínů](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f) s operacemi pro správu vlastních seznamů termínů. Začněte s [termínem obsahuje konzolu rozhraní API](try-terms-list-api.md) a použijte ukázky kódu REST API. Podívejte se také na [pojem seznam rychlých startů .NET](term-lists-quickstart-dotnet.md) , pokud jste obeznámeni se sadou Visual Studio a C#.
 

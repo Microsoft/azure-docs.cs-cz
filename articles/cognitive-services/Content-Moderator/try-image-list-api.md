@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: 27d9b12d9e1a0237050243c2b5f07edaa8d8857a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0035d367017c92bd151c27e14d744ef41eace069
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72757197"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800144"
 ---
 # <a name="moderate-with-custom-image-lists-in-the-api-console"></a>Střední s vlastními seznamy obrázků v konzole API
 
@@ -77,15 +77,17 @@ Až provedete změny v seznamu obrázků, je nutné aktualizovat index, aby byly
 
 6. Použijte zástupné symboly dvojice klíč-hodnota k přiřazení dalších popisných metadat k seznamu.
 
-       {
-          "Name": "MyExclusionList",
-          "Description": "MyListDescription",
-          "Metadata": 
-          {
+    ```json
+    {
+        "Name": "MyExclusionList",
+        "Description": "MyListDescription",
+        "Metadata": 
+        {
             "Category": "Competitors",
             "Type": "Exclude"
-          }
-       }
+        }
+    }
+    ```
 
    Přidejte metadata seznamu jako páry klíč-hodnota, nikoli skutečné obrázky.
  

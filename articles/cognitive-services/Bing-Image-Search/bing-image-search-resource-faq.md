@@ -10,12 +10,12 @@ ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 6841e573446103466e2719797da9e4161b70b5a6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3114c19ecff1a8ae70012592592078302d4a6222
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68881702"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800019"
 ---
 # <a name="frequently-asked-questions-faq-about-the-bing-image-search-api"></a>Nejčastější dotazy týkající se rozhraní API Bingu pro vyhledávání obrázků
 
@@ -39,15 +39,18 @@ Pokud chcete získat přístup k hlavičkám, můžete žádost o rozhraní API 
 
 Je snadné nainstalovat proxy CORS, aby mohla naše [aplikace](tutorial-bing-image-search-single-page-app.md) získat přístup k volitelným hlavičkám klienta. Nejdřív [nainstalujte Node.js](https://nodejs.org/en/download/), pokud jste to ještě neudělali. Pak na příkazovém řádku zadejte následující příkaz.
 
-    npm install -g cors-proxy-server
+```console
+npm install -g cors-proxy-server
+```
 
-Dále změňte koncový bod rozhraní API Bingu pro vyhledávání obrázků v souboru HTML na:
-
-    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
+Dále změňte koncový bod rozhraní API Bingu pro vyhledávání obrázků v souboru HTML na: \
+`http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search`
 
 Nakonec spusťte proxy server CORS pomocí tohoto příkazu:
 
-    cors-proxy-server
+```console
+cors-proxy-server
+```
 
 Při používání ukázkové aplikace nechte příkazové okno otevřené. Zavřením okna se zastaví proxy server. V rozbalitelné sekci hlaviček HTTP pod výsledky hledání teď uvidíte hlavičku `X-MSEdge-ClientID` (mimo jiné) a můžete zkontrolovat, jestli je stejná pro každý požadavek.
 
@@ -63,6 +66,6 @@ Tento přístup také chrání klíč rozhraní API před expozicí veřejnosti,
 
 Máte dotaz ohledně chybějící funkce nebo funkce? Zvažte vyžádání nebo hlasování na webu našeho [uživatelského hlasu](https://cognitive.uservoice.com/forums/555907-bing-search).
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
  [Stack Overflow: Cognitive Services](https://stackoverflow.com/questions/tagged/bing-api)

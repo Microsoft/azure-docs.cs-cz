@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 95ebfaef863a1fa05e8a5d3b46fca9659c61f6b7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7933d5e5cf7d82de013e18b221f3a0c3ce6b5229
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74110616"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800524"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>rozhraní API Bingu pro vyhledávání na webu struktury odpovědí a typů odpovědí  
 
@@ -38,7 +38,7 @@ Když odešlete Vyhledávání na webu Bingu požadavek hledání, vrátí [`Sea
 }, ...
 ```
 
-Vyhledávání na webu Bingu obvykle vrací podmnožinu odpovědí. Pokud se například termín dotazu *dodinghies*, může odpověď zahrnovat `webPages`, `images`a. `rankingResponse` Pokud jste nepoužívali [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) k odfiltrování webových stránek, odpověď vždy obsahuje odpovědi `webpages` a `rankingResponse` .
+Vyhledávání na webu Bingu obvykle vrací podmnožinu odpovědí. Pokud se například termín dotazu *dodinghies*, může odpověď zahrnovat `webPages` , `images` a `rankingResponse` . Pokud jste nepoužívali [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) k odfiltrování webových stránek, odpověď vždy obsahuje `webpages` odpovědi a `rankingResponse` .
 
 [!INCLUDE [cognitive-services-bing-url-note](../../../includes/cognitive-services-bing-url-note.md)]
 
@@ -105,13 +105,13 @@ Miniaturu můžete také zvětšit, když na ni uživatel najedete kurzorem. Pok
 ![Expanded view of thumbnail image](./media/cognitive-services-bing-web-api/bing-web-image-thumbnail-expansion.PNG)
 -->
 
-Pokud uživatel klikne na miniaturu, `webSearchUrl` použijte k převzetí uživatele na stránku výsledků hledání Bingu pro obrázky, které obsahují směs imagí.
+Pokud uživatel klikne na miniaturu, použijte `webSearchUrl` k převzetí uživatele na stránku výsledků hledání Bingu pro obrázky, které obsahují směs imagí.
 
 Podrobnosti o odpovědích a obrázcích imagí najdete v tématu [vyhledávání obrázků API](../bing-image-search/search-the-web.md).
 
 ## <a name="related-searches-answer"></a>Odpověď související s vyhledáváním
 
-[RelatedSearches](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse-relatedsearches) odpověď obsahuje seznam nejoblíbenějších souvisejících dotazů, které udělali jiní uživatelé. Každý [dotaz](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query_obj) v seznamu obsahuje řetězec dotazu (`text`), řetězec dotazu se znaky zvýrazňování hledaného znaku (`displayText`) a adresu URL (`webSearchUrl`) na stránku výsledků hledání ve službě Bing pro daný dotaz.
+[RelatedSearches](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse-relatedsearches) odpověď obsahuje seznam nejoblíbenějších souvisejících dotazů, které udělali jiní uživatelé. Každý [dotaz](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query_obj) v seznamu obsahuje řetězec dotazu ( `text` ), řetězec dotazu se znaky zvýrazňování `displayText` hledaného znaku () a adresu URL ( `webSearchUrl` ) na stránku výsledků hledání ve službě Bing pro daný dotaz.
 
 ```json
 {
@@ -121,9 +121,9 @@ Podrobnosti o odpovědích a obrázcích imagí najdete v tématu [vyhledáván�
 }, ...
 ```
 
-Použijte řetězec `displayText` dotazu a `webSearchUrl` adresu URL k vytvoření hypertextového odkazu, který uživateli přiřadí na stránku výsledků hledání Bingu pro související dotaz. Můžete také použít řetězec `text` dotazu ve vlastním vyhledávání na webu dotaz rozhraní API a zobrazit výsledky sami.
+Použijte `displayText` řetězec dotazu a `webSearchUrl` adresu URL k vytvoření hypertextového odkazu, který uživateli přiřadí na stránku výsledků hledání Bingu pro související dotaz. Můžete také použít `text` řetězec dotazu ve vlastním vyhledávání na webu dotaz rozhraní API a zobrazit výsledky sami.
 
-Informace o tom, jak zpracovávat značky zvýraznění v nástroji `displayText`, naleznete v tématu [zvýrazňování přístupů](../bing-web-search/hit-highlighting.md).
+Informace o tom, jak zpracovávat značky zvýraznění v nástroji `displayText` , naleznete v tématu [zvýrazňování přístupů](../bing-web-search/hit-highlighting.md).
 
 V následujícím příkladu vidíte příklad použití souvisejících dotazů v Bing.com.
 
@@ -208,7 +208,7 @@ Odpověď na [zprávy](https://docs.microsoft.com/rest/api/cognitiveservices-bin
 }, ...
 ```
 
-V závislosti na zařízení uživatele by se vám zobrazila podmnožina novinek s možností, jak si uživatel zobrazit zbývající články. Pomocí `name` a `url` vytvořte hypertextový odkaz, který uživatele přenese na zpravodajský článek na webu hostitele. Pokud článek obsahuje obrázek, vytvářený obrázek je na něj použit `url`. Nezapomeňte uvést zdroj článku pomocí `provider`.
+V závislosti na zařízení uživatele by se vám zobrazila podmnožina novinek s možností, jak si uživatel zobrazit zbývající články. Pomocí `name` a `url` vytvořte hypertextový odkaz, který uživatele přenese na zpravodajský článek na webu hostitele. Pokud článek obsahuje obrázek, vytvářený obrázek je na něj použit `url` . Nezapomeňte uvést zdroj článku pomocí `provider`.
 
 <!-- Remove until this can be replaced with a sanitized version.
 The following shows an example of how you might display articles in a search results page.
@@ -220,7 +220,7 @@ Podrobnosti o odpovědích a novinkách zpráv najdete v tématu [vyhledávání
 
 ## <a name="computation-answer"></a>Odpověď výpočtu
 
-Pokud uživatel zadá matematický výraz nebo dotaz na převod jednotek, odpověď může obsahovat odpověď [výpočtu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#computation) . `computation` Odpověď obsahuje normalizovaný výraz a jeho výsledek.
+Pokud uživatel zadá matematický výraz nebo dotaz na převod jednotek, odpověď může obsahovat odpověď [výpočtu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#computation) . `computation`Odpověď obsahuje normalizovaný výraz a jeho výsledek.
 
 Dotaz na převod jednotek je dotaz, který převede jednu jednotku na jinou. Například *kolik metrů v 10 metrech?* nebo *kolik Tablespoons ve 1/4* .
 
@@ -294,7 +294,7 @@ Matematický výraz může obsahovat následující symboly:
 |------------|-----------------|
 |+|Sčítání|
 |-|Odčítání|
-|/|Dělení|
+|/|Oddělení|
 |*|Násobení|
 |^|Napájení|
 |!|Faktoriál|
@@ -330,7 +330,7 @@ Matematické výrazy, které obsahují proměnné (například 4x + 6 = 18, kde 
 
 Pokud uživatel zadá dotaz na čas nebo datum, odpověď může obsahovat odpověď [časového pásma](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#timezone) . Tato odpověď podporuje implicitní nebo explicitní dotazy. Implicitní dotaz, jako je například *čas?*, vrátí místní čas na základě umístění uživatele. Explicitní dotaz, jako je například *čas v Seattlu?*, vrátí místní čas pro Seattle, WA.
 
-`timeZone` Odpověď poskytuje název umístění, aktuální datum a čas UTC v zadaném umístění a posun UTC. Pokud se hranice umístění nachází v několika časových pásmech, odpověď obsahuje aktuální datum a čas UTC všech časových pásem v rámci hranice. Například vzhledem k tomu, že stav Florida spadá do dvou časových pásem, odpověď obsahuje místní datum a čas obou časových pásem.  
+`timeZone`Odpověď poskytuje název umístění, aktuální datum a čas UTC v zadaném umístění a posun UTC. Pokud se hranice umístění nachází v několika časových pásmech, odpověď obsahuje aktuální datum a čas UTC všech časových pásem v rámci hranice. Například vzhledem k tomu, že stav Florida spadá do dvou časových pásem, odpověď obsahuje místní datum a čas obou časových pásem.  
 
 Pokud dotaz požádá o čas stavu nebo země nebo oblasti, Bing určí primární město v rámci geografické hranice umístění a vrátí jej v `primaryCityTime` poli. Pokud hranice obsahuje více časových pásem, zbývající časová pásma se vrátí do `otherCityTimes` pole.
 
@@ -449,15 +449,18 @@ Pokud chcete získat přístup k hlavičkám, můžete žádost o rozhraní API 
 
 Je snadné nainstalovat proxy CORS, aby mohla naše [aplikace](tutorial-bing-web-search-single-page-app.md) získat přístup k volitelným hlavičkám klienta. Nejdřív [nainstalujte Node.js](https://nodejs.org/en/download/), pokud jste to ještě neudělali. Pak na příkazovém řádku zadejte následující příkaz.
 
-    npm install -g cors-proxy-server
+```console
+npm install -g cors-proxy-server
+```
 
-Dále změňte koncový bod rozhraní API Bingu pro vyhledávání na webu v souboru HTML na:
-
-    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
+Dále změňte koncový bod rozhraní API Bingu pro vyhledávání na webu v souboru HTML na: \
+`http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search`
 
 Nakonec spusťte proxy server CORS pomocí tohoto příkazu:
 
-    cors-proxy-server
+```console
+cors-proxy-server
+```
 
 Při používání ukázkové aplikace nechte příkazové okno otevřené. Zavřením okna se zastaví proxy server. V rozbalitelné sekci hlaviček HTTP pod výsledky hledání teď uvidíte hlavičku `X-MSEdge-ClientID` (mimo jiné) a můžete zkontrolovat, jestli je stejná pro každý požadavek.
 
@@ -477,6 +480,6 @@ Následující příklad ukazuje, jak Bing používá návrh pravopisu.
 
 * Projděte si dokumentaci [omezení žádostí](throttling-requests.md) .  
 
-## <a name="see-also"></a>Viz také  
+## <a name="see-also"></a>Viz také:  
 
 * [Odkaz na rozhraní API Bingu pro vyhledávání na webu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)
