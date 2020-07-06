@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 11/29/2018
 ms.topic: conceptual
 ms.openlocfilehash: 8100914e9a1d1489cb80de55a689e17f6d28a941
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61443328"
 ---
 # <a name="import-an-automatic-device-management-package-into-your-remote-monitoring-solution-accelerator"></a>Import automatického balíčku pro správu zařízení do akcelerátoru řešení vzdáleného monitorování
@@ -39,7 +39,7 @@ Pomocí Azure Portal exportujte automatickou konfiguraci správy zařízení z v
 
     [![Stažení konfiguračního souboru](./media/iot-accelerators-remote-monitoring-import-adm-package/download-inline.png)](./media/iot-accelerators-remote-monitoring-import-adm-package/download-expanded.png#lightbox)
 
-1. Uložte soubor JSON jako místní soubor s názvem **Configuration. JSON**.
+1. Uložte soubor JSON jako místní soubor s názvem **configuration.jsv**.
 
 Nyní máte soubor, který obsahuje automatickou konfiguraci správy zařízení. V další části naimportujete tuto konfiguraci jako balíček do řešení vzdáleného monitorování.
 
@@ -47,9 +47,9 @@ Nyní máte soubor, který obsahuje automatickou konfiguraci správy zařízení
 
 Pomocí následujícího postupu naimportujte automatickou konfiguraci správy zařízení jako balíček do svého řešení:
 
-1. Přejděte na stránku **balíčky** ve webovém uživatelském rozhraní vzdáleného monitorování: balíčky ![.](media/iot-accelerators-remote-monitoring-import-adm-package/packagepage.png)
+1. Přejděte na stránku **balíčky** ve webovém uživatelském rozhraní vzdáleného monitorování: ![ balíčky.](media/iot-accelerators-remote-monitoring-import-adm-package/packagepage.png)
 
-1. Klikněte na **+ nový balíček**, zvolte **Konfigurace** jako typ balíčku a klikněte na **Procházet** a vyberte soubor **Configuration. JSON** , který jste uložili v předchozí části:
+1. Klikněte na **+ nový balíček**, zvolte **Konfigurace** jako typ balíčku a klikněte na **Procházet** a vyberte **configuration.jspro** soubor, který jste uložili v předchozí části:
 
     ![Vybrat konfiguraci](media/iot-accelerators-remote-monitoring-import-adm-package/uploadpackage.png)
 

@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6f5d3125b7b77e8ce7a943f640c44615049ab160
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60455758"
 ---
 # <a name="user-privacy-and-azure-ad-connect"></a>Ochrana osobních údajů uživatelů a Azure AD Connect 
@@ -48,10 +48,10 @@ Azure AD Connect zákazníci by při odebírání uživatelských dat měli pou�
 Data o osobě se automaticky odeberou z databáze Azure AD Connect, když se data této osoby odeberou ze zdrojového systému, ze kterého pochází. Žádná konkrétní akce od správců nemusí být GDPR kompatibilní.  Ale vyžaduje, aby se data Azure AD Connect synchronizovaná se zdrojem dat minimálně v každém dvou dnech.
 
 ## <a name="delete-the-azure-ad-connect-installation-log-file-folder-contents"></a>Odstranění obsahu složky souboru protokolu instalace Azure AD Connect
-Pravidelně kontrolujte a odstraňujte obsah složky **c:\programdata\aadconnect** – s výjimkou souboru **PersistedState. XML** . Tento soubor udržuje stav předchozí instalace Azure A připojuje se a používá se při provádění instalace upgradu. Tento soubor neobsahuje žádná data o osobě a neměl by být odstraněn.
+Pravidelně kontrolujte a odstraňujte obsah složky **c:\programdata\aadconnect** – s výjimkou souboru **PersistedState.Xml** . Tento soubor udržuje stav předchozí instalace Azure A připojuje se a používá se při provádění instalace upgradu. Tento soubor neobsahuje žádná data o osobě a neměl by být odstraněn.
 
 >[!IMPORTANT]
->Neodstraňujte soubor PersistedState. XML.  Tento soubor neobsahuje žádné informace o uživateli a udržuje stav předchozí instalace.
+>Neodstraňujte soubor PersistedState.xml.  Tento soubor neobsahuje žádné informace o uživateli a udržuje stav předchozí instalace.
 
 Tyto soubory můžete buď zkontrolovat a odstranit pomocí Průzkumníka Windows, nebo můžete použít skript podobný následujícímu k provedení nezbytných akcí:
 

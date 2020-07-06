@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/19/2019
 ms.author: alkohli
 ms.openlocfilehash: 71e0ebf7d7851ae65a6fba67a1695d755fd98bb1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61436490"
 ---
 # <a name="azure-data-box-blob-storage-requirements"></a>Azure Data Box požadavky na úložiště objektů BLOB
@@ -55,9 +55,9 @@ Pro Data Box BLOB Storage existují konkrétní klientské knihovny a specifick�
 
 | Klientská knihovna     |Verze podporované úložištěm objektů BLOB Data Box     | Odkaz   |     Specifikace koncového bodu      |
 |--------------------|--------------------------------------------|--------|---------------------------------|
-|    .NET                |    9.2.0                                           |    Balíček NuGet:https://www.nuget.org/packages/WindowsAzure.Storage/9.2.0    <br>Verze GitHubu:https://github.com/Azure/azure-storage-net/releases/tag/v9.2.0                                                                                                                                                                                               |    soubor App. config                 |
+|    .NET                |    9.2.0                                           |    Balíček NuGet:https://www.nuget.org/packages/WindowsAzure.Storage/9.2.0    <br>Verze GitHubu:https://github.com/Azure/azure-storage-net/releases/tag/v9.2.0                                                                                                                                                                                               |    Soubor app.config                 |
 |    Java                |    7.0.0                                           |    Balíček Maven:https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/6.1.0   <br>Verze GitHubu:https://github.com/Azure/azure-storage-java/releases/tag/v7.0.0                                                                                                                                                                              |    Nastavení připojovacího řetězce         |
-|    Node.js             |    2.8.3                                           |    Odkaz na NPM https://www.npmjs.com/package/azure-storage : (Run `npm install azure-storage@2.7.0`:)   <br>Verze GitHubu:https://github.com/Azure/azure-storage-node/releases/tag/v2.8.3                                                                                                                                                                        |    Deklarace instance služby    |
+|    Node.js             |    2.8.3                                           |    Odkaz na NPM: https://www.npmjs.com/package/azure-storage (Run: `npm install azure-storage@2.7.0` )   <br>Verze GitHubu:https://github.com/Azure/azure-storage-node/releases/tag/v2.8.3                                                                                                                                                                        |    Deklarace instance služby    |
 |    C++                 |    5.2.0                                           |    Balíček NuGet:https://www.nuget.org/packages/wastorage.v140/5.2.0   <br>Verze GitHubu:https://github.com/Azure/azure-storage-cpp/releases/tag/v5.2.0                                                                                                                                                                                                     |    Nastavení připojovacího řetězce         |
 |    PHP                 |    1.2.0                                           |    Verze GitHubu:<br>Obecnýhttps://github.com/Azure/azure-storage-php/releases/tag/v1.2.0-common   <br>Příznakyhttps://github.com/Azure/azure-storage-php/releases/tag/v1.2.0-blob      <br>Instalovat přes skladatele (Další informace najdete v podrobnostech níže)                                                                                                             |    Nastavení připojovacího řetězce         |
 |    Python              |    1.1.0                                           |    Verze GitHubu:<br>Obecnýhttps://github.com/Azure/azure-storage-python/releases/tag/v1.0.0-common <br>Příznakyhttps://github.com/Azure/azure-storage-python/releases/tag/v1.1.0-blob                                                                                                                                                                          |    Deklarace instance služby    |
@@ -68,7 +68,7 @@ Pro Data Box BLOB Storage existují konkrétní klientské knihovny a specifick�
 ### <a name="install-php-client-via-composer---current"></a>Instalovat klienta PHP prostřednictvím skladatele – aktuální
 
 Instalace prostřednictvím skladatele: (jako příklad Vezměte objekt BLOB jako příklad).
-1. V kořenovém adresáři projektu vytvořte soubor s názvem skladatel. JSON s následujícím kódem:
+1. V kořenovém adresáři projektu vytvořte soubor s názvem composer.jss následujícím kódem:
 
     ```
     {
@@ -83,13 +83,13 @@ Instalace prostřednictvím skladatele: (jako příklad Vezměte objekt BLOB jak
 
 ### <a name="endpoint-declaration"></a>Deklarace koncového bodu
 
-Koncový bod služby Azure Data Box BLOB Storage zahrnuje dvě části: název oblasti a doménu Data Box. V sadě Data Box BLOB Storage je `\<serial no. of the device>.microsoftdatabox.com`výchozím koncovým bodem.  Další informace o koncovém bodu služby BLOB Service najdete v pro [připojení prostřednictvím data box BLOB Storage](data-box-deploy-copy-data-via-rest.md).
+Koncový bod služby Azure Data Box BLOB Storage zahrnuje dvě části: název oblasti a doménu Data Box. V sadě Data Box BLOB Storage je výchozím koncovým bodem `\<serial no. of the device>.microsoftdatabox.com` .  Další informace o koncovém bodu služby BLOB Service najdete v pro [připojení prostřednictvím data box BLOB Storage](data-box-deploy-copy-data-via-rest.md).
  
 ## <a name="examples"></a>Příklady
 
 ### <a name="net"></a>.NET
 
-V případě úložiště objektů BLOB Data Box je v `app.config` souboru Zadaná přípona koncového bodu:
+V případě úložiště objektů BLOB Data Box je v souboru Zadaná přípona koncového bodu `app.config` :
 
 ```
 <add key="StorageConnectionString"

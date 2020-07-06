@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: 3331db51f4d141cf142d1bd0578043ca6681f3cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61454491"
 ---
 # <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-c"></a>Připojení zařízení malinu pi k akcelerátoru řešení vzdáleného monitorování (C)
@@ -75,7 +75,7 @@ V textovém editoru otevřete soubor **remote_monitoring. c** ve složce **Sampl
 
 Následující postup popisuje, jak pomocí *cmake* vytvořit klientskou aplikaci. Klientská aplikace vzdáleného monitorování je sestavena jako součást procesu sestavení pro sadu SDK.
 
-1. Upravte soubor **remote_monitoring. c** , který chcete `<connectionstring>` nahradit připojovacím řetězcem zařízení, který jste si poznamenali na začátku tohoto průvodce, když jste přidali zařízení do akcelerátoru řešení.
+1. Upravte soubor **remote_monitoring. c** , který chcete nahradit `<connectionstring>` připojovacím řetězcem zařízení, který jste si poznamenali na začátku tohoto průvodce, když jste přidali zařízení do akcelerátoru řešení.
 
 1. Přejděte do kořenového adresáře klonovaného úložiště [sad SDK služby Azure IoT C](https://github.com/Azure/azure-iot-sdk-c) a spuštěním následujících příkazů Sestavte klientskou aplikaci:
 

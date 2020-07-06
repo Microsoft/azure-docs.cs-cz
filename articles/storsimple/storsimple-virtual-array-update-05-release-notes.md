@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 05/08/2017
 ms.author: alkohli
 ms.openlocfilehash: 385d9126d578250064659153f6f0f54eec696790
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60870668"
 ---
 # <a name="storsimple-virtual-array-update-05-release-notes"></a>Zpráva k vydání verze pro StorSimple Virtual Array Update 0,5
@@ -50,7 +50,7 @@ Následující tabulka poskytuje souhrn chyb opravených v této verzi.
 | Ne. | Funkce | Problém |
 | --- | --- | --- |
 | 1 |Odolnost proti zálohování| V dřívějších verzích byly zálohy opakovány pouze pro určité výjimky. Tato verze obsahuje opravu pro zajištění větší odolnosti před opakováním všech výjimek zálohování.|
-| 2 |Monitorování| Monitorování využití úložiště pro řady virtuálních zařízení StorSimple se od 30. června 2017 už nepoužívá. Tato akce má vliv na grafy monitorování ve službě StorSimple Device Manager běžící na virtuálních polích StorSimple (1200 modelu). Tato verze obsahuje aktualizace, které umožňují uživateli pokračovat ve využívání monitorování využívání úložiště u virtuálních polí po 30. června 2017.|
+| 2 |Sledování| Monitorování využití úložiště pro řady virtuálních zařízení StorSimple se od 30. června 2017 už nepoužívá. Tato akce má vliv na grafy monitorování ve službě StorSimple Device Manager běžící na virtuálních polích StorSimple (1200 modelu). Tato verze obsahuje aktualizace, které umožňují uživateli pokračovat ve využívání monitorování využívání úložiště u virtuálních polí po 30. června 2017.|
 | 3 |Souborový server| V dřívějších verzích mohl uživatel omylem zkopírovat šifrované soubory do virtuálního pole. Tato verze obsahuje opravu, která neumožňuje kopírování šifrovaných souborů do virtuálního pole. Pokud zařízení obsahuje před aktualizací existující šifrované soubory, zálohy budou pokračovat, dokud se všechny šifrované soubory ze systému neodstraní. |
 
 
@@ -80,7 +80,7 @@ Následující tabulka obsahuje souhrn známých problémů pro virtuální pole
 ## <a name="next-step"></a>Další krok
 [Nainstalujte aktualizaci 0,5](storsimple-virtual-array-install-update-05.md) na virtuální pole StorSimple.
 
-## <a name="references"></a>Odkazy
+## <a name="references"></a>Reference
 Hledáte starší poznámku k verzi? Přejít na:
 
 * [Zpráva k vydání verze pro StorSimple Virtual Array Update 0,4](storsimple-virtual-array-update-04-release-notes.md)

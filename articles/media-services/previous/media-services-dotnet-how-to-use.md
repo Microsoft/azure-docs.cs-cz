@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 51fffbd170daecfec6fcea95caa0526e6d881407
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "64724117"
 ---
 # <a name="media-services-development-with-net"></a>Media Services vývoj pomocí .NET 
@@ -57,13 +57,13 @@ Alternativně můžete získat nejnovější Media Services sady .NET SDK z GitH
    
     4. Projekt je upraven a odkazuje na rozšíření Media Services .NET SDK, Media Services .NET SDK a další závislá sestavení jsou přidána.
 4. Pokud chcete zvýšit úroveň čisticího vývojového prostředí, zvažte možnost povolit obnovení balíčku NuGet. Další informace najdete v tématu [obnovení balíčku NuGet](https://docs.nuget.org/consume/package-restore).
-5. Přidejte odkaz na sestavení **System. Configuration** . Toto sestavení obsahuje System. Configuration. Třída **ConfigurationManager** , která se používá pro přístup ke konfiguračním souborům (například App. config).
+5. Přidejte odkaz na **System.Configuration** sestavení. Toto sestavení obsahuje System.Configuration. Třída **ConfigurationManager** , která se používá pro přístup ke konfiguračním souborům (například App.config).
    
     1. Chcete-li přidat odkazy pomocí dialogu spravovat odkazy, klikněte pravým tlačítkem myši na název projektu v Průzkumník řešení. Pak klikněte na **Přidat**a pak na **odkaz...**.
    
     2. Zobrazí se dialogové okno spravovat odkazy.
-    3. V části sestavení rozhraní .NET Framework vyhledejte a vyberte sestavení System. Configuration a klikněte na tlačítko **OK**.
-6. Otevřete soubor App. config a přidejte do souboru oddíl **appSettings** . Nastavte hodnoty, které jsou potřeba pro připojení k rozhraní Media Services API. Další informace najdete v tématu [přístup k rozhraní Azure Media Services API pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
+    3. V části sestavení rozhraní .NET Framework vyhledejte a vyberte System.Configuration sestavení a stiskněte **OK**.
+6. Otevřete soubor App.config a přidejte do souboru oddíl **appSettings** . Nastavte hodnoty, které jsou potřeba pro připojení k rozhraní Media Services API. Další informace najdete v tématu [přístup k rozhraní Azure Media Services API pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
 
     Nastavte hodnoty, které jsou potřeba pro připojení pomocí metody ověřování **instančního objektu** .
 
@@ -79,7 +79,7 @@ Alternativně můžete získat nejnovější Media Services sady .NET SDK z GitH
                 </configuration>
         ```
 
-7. Přidejte do projektu odkaz **System. Configuration** .
+7. Přidejte do projektu odkaz **System.Configuration** .
 8. Přepsat existující příkazy **using** na začátku souboru program.cs pomocí následujícího kódu:
 
     ```csharp      

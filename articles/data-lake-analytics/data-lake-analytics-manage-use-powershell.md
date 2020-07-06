@@ -10,10 +10,10 @@ ms.assetid: ad14d53c-fed4-478d-ab4b-6d2e14ff2097
 ms.topic: conceptual
 ms.date: 06/29/2018
 ms.openlocfilehash: 4273828c9c2bdb75fcbc1de45da55c5a03dd615f
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "66156428"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>Správa Azure Data Lake Analytics pomocí Azure PowerShell
@@ -59,7 +59,7 @@ Connect-AzAccount -SubscriptionName $subname
 
 ## <a name="saving-authentication-context"></a>Ukládá se kontext ověřování.
 
-`Connect-AzAccount` Rutina vždy vyzve k zadání přihlašovacích údajů. K tomu se můžete vyhnout, když použijete následující rutiny:
+`Connect-AzAccount`Rutina vždy vyzve k zadání přihlašovacích údajů. K tomu se můžete vyhnout, když použijete následující rutiny:
 
 ```powershell
 # Save login session information
@@ -257,7 +257,7 @@ Get-AdlJob -Account $adla -State Ended -Result Failed
 
 ### <a name="list-jobs-by-job-submitter"></a>Výpis úloh podle odesílatele úlohy
 
-`-Submitter` Parametr vám pomůže zjistit, kdo úlohu odeslal.
+`-Submitter`Parametr vám pomůže zjistit, kdo úlohu odeslal.
 
 ```powershell
 Get-AdlJob -Account $adla -Submitter "joe@contoso.com"
@@ -265,7 +265,7 @@ Get-AdlJob -Account $adla -Submitter "joe@contoso.com"
 
 ### <a name="list-jobs-by-submission-time"></a>Vypíše úlohy podle času odeslání.
 
-`-SubmittedAfter` Je užitečné při filtrování do časového rozsahu.
+`-SubmittedAfter`Je užitečné při filtrování do časového rozsahu.
 
 
 ```powershell
@@ -327,7 +327,7 @@ $recurrence = Get-AdlJobRecurrence -Account $adla -RecurrenceId "<recurrence ID>
 
 ### <a name="list-existing-compute-policies"></a>Vypsat existující výpočetní zásady
 
-`Get-AdlAnalyticsComputePolicy` Rutina načte informace o zásadách výpočtů pro účet Data Lake Analytics.
+`Get-AdlAnalyticsComputePolicy`Rutina načte informace o zásadách výpočtů pro účet Data Lake Analytics.
 
 ```powershell
 $policies = Get-AdlAnalyticsComputePolicy -Account $adla
@@ -335,7 +335,7 @@ $policies = Get-AdlAnalyticsComputePolicy -Account $adla
 
 ### <a name="create-a-compute-policy"></a>Vytvoření výpočetních zásad
 
-`New-AdlAnalyticsComputePolicy` Rutina vytvoří novou výpočetní zásadu pro účet Data Lake Analytics. V tomto příkladu se nastaví maximální jednotky Austrálie dostupné pro zadaného uživatele na 50 a minimální priorita úlohy na 250.
+`New-AdlAnalyticsComputePolicy`Rutina vytvoří novou výpočetní zásadu pro účet Data Lake Analytics. V tomto příkladu se nastaví maximální jednotky Austrálie dostupné pro zadaného uživatele na 50 a minimální priorita úlohy na 250.
 
 ```powershell
 $userObjectId = (Get-AzAdUser -SearchString "garymcdaniel@contoso.com").Id
@@ -557,5 +557,5 @@ foreach ($sub in $subs)
 
 ## <a name="next-steps"></a>Další kroky
 * [Přehled služby Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
-* Začínáme s Data Lake Analytics pomocí rozhraní příkazového[řádku Azure](data-lake-analytics-get-started-cli.md) [Azure Portal](data-lake-analytics-get-started-portal.md) | [Azure PowerShell](data-lake-analytics-get-started-powershell.md) | 
-* Správa Azure Data Lake Analytics pomocí rozhraní příkazového[řádku](data-lake-analytics-manage-use-cli.md) [Azure Portal](data-lake-analytics-manage-use-portal.md) | [Azure PowerShell](data-lake-analytics-manage-use-powershell.md) |  
+* Začínáme s Data Lake Analytics pomocí rozhraní příkazového [Azure portal](data-lake-analytics-get-started-portal.md)  |  [Azure PowerShell](data-lake-analytics-get-started-powershell.md)  |  [řádku Azure](data-lake-analytics-get-started-cli.md) Azure Portal Azure PowerShell
+* Správa Azure Data Lake Analytics pomocí [Azure portal](data-lake-analytics-manage-use-portal.md)rozhraní příkazového  |  [Azure PowerShell](data-lake-analytics-manage-use-powershell.md)  |  [řádku](data-lake-analytics-manage-use-cli.md) Azure Portal Azure PowerShell 

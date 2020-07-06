@@ -8,10 +8,10 @@ services: iot-accelerators
 ms.date: 04/19/2018
 ms.topic: conceptual
 ms.openlocfilehash: 1552c54afe2195d58a032e9cc7bfa5aa70c844b1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61447585"
 ---
 # <a name="customize-and-redeploy-a-microservice"></a>Přizpůsobení a opakované nasazení mikroslužby
@@ -44,7 +44,7 @@ V této části zavoláte výchozí rozhraní API mikroslužeb Správce služby 
 
 1. Ujistěte se, že je na vašem počítači místně spuštěné řešení vzdáleného monitorování.
 2. Vyhledejte, kam jste stáhli po stažení, a otevřete ji.
-3. V části post zadejte následující příkaz GET: `http://localhost:8080/iothubmanager/v1/status`.
+3. V části post zadejte následující příkaz GET: `http://localhost:8080/iothubmanager/v1/status` .
 4. Zobrazte si návrat a měli byste vidět "stav": "OK: Alive a well".
 
     ![Alive a správně odeslaná zpráva](./media/iot-accelerators-microservices-example/postman-alive-well.png)
@@ -144,7 +144,7 @@ Dokončete tak, že znovu nasadíte místní instanci řešení vzdáleného mon
     ```
 
 3. Vyhledejte, kam jste stáhli po stažení, a otevřete ji.
-4. V části post zadejte do GET: `http://localhost:8080/iothubmanager/v1/status`následující požadavek. Nyní byste měli vidět "stav": "OK: nové úpravy provedené!".
+4. V části post zadejte do GET: následující požadavek `http://localhost:8080/iothubmanager/v1/status` . Nyní byste měli vidět "stav": "OK: nové úpravy provedené!".
 
 ![Nové úpravy provedené v tomto příspěvku odesílají zprávy](./media/iot-accelerators-microservices-example/new-postman-message.png)
 

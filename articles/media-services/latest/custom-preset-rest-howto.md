@@ -13,17 +13,17 @@ ms.custom: ''
 ms.date: 05/14/2019
 ms.author: juliako
 ms.openlocfilehash: 30e22cb786e5dc2a667fe41ca8edf398cf0b7613
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "65761795"
 ---
 # <a name="how-to-encode-with-a-custom-transform---rest"></a>Jak kódovat pomocí vlastní transformace – REST
 
 Při kódování pomocí Azure Media Services můžete rychle začít s jedním z doporučených integrovaných přednastavení na základě osvědčených postupů, jak je znázorněno v kurzu [streamování souborů](stream-files-tutorial-with-rest.md#create-a-transform) . Můžete také vytvořit vlastní předvolby, která bude cílit na konkrétní scénář nebo požadavky na zařízení.
 
-## <a name="considerations"></a>Požadavky
+## <a name="considerations"></a>Důležité informace
 
 Při vytváření vlastních přednastavení platí následující požadavky:
 
@@ -39,7 +39,7 @@ Při vytváření vlastních přednastavení platí následující požadavky:
 
 Následující příklad definuje tělo žádosti o novou transformaci. Definujeme sadu výstupů, které chceme vygenerovat při použití této transformace. 
 
-V tomto příkladu jsme nejdřív přidali vrstvu AacAudio pro kódování zvuku a dvě vrstvy H264Video pro kódování videa. Ve vrstvách videa přiřadíme popisky, aby je bylo možné použít v názvech výstupních souborů. Dále chceme, aby výstup zahrnoval také miniatury. V následujícím příkladu určíme obrázky ve formátu PNG vygenerované v 50% rozlišení vstupního videa a tři časová razítka – {25%, 50%, 75} délky vstupního videa. Nakonec určíme formát pro výstupní soubory – jeden pro video a zvuk a druhý pro miniatury. Vzhledem k tomu, že máme více H264Layers, musíme použít makra, která vytvoří jedinečné názvy na každou vrstvu. Můžeme buď použít makro `{Label}` nebo `{Bitrate}` , v příkladu se zobrazí předchozí.
+V tomto příkladu jsme nejdřív přidali vrstvu AacAudio pro kódování zvuku a dvě vrstvy H264Video pro kódování videa. Ve vrstvách videa přiřadíme popisky, aby je bylo možné použít v názvech výstupních souborů. Dále chceme, aby výstup zahrnoval také miniatury. V následujícím příkladu určíme obrázky ve formátu PNG vygenerované v 50% rozlišení vstupního videa a tři časová razítka – {25%, 50%, 75} délky vstupního videa. Nakonec určíme formát pro výstupní soubory – jeden pro video a zvuk a druhý pro miniatury. Vzhledem k tomu, že máme více H264Layers, musíme použít makra, která vytvoří jedinečné názvy na každou vrstvu. Můžeme buď použít `{Label}` `{Bitrate}` makro nebo, v příkladu se zobrazí předchozí.
 
 ```json
 {
@@ -135,7 +135,7 @@ V tomto příkladu jsme nejdřív přidali vrstvu AacAudio pro kódování zvuku
 
 V tomto příkladu vytvoříme **transformaci** , která je založena na vlastní předvolbě, které jsme definovali dříve. Při vytváření transformace byste nejprve měli použít příkaz [Get](https://docs.microsoft.com/rest/api/media/transforms/get) a ověřit, zda již existuje. Pokud transformace existuje, znovu ji použijte. 
 
-V kolekci, kterou jste stáhli, vyberte Transformers **a úlohy**->**vytvořit nebo aktualizovat transformaci**.
+V kolekci, kterou jste stáhli, vyberte Transformers **a úlohy** -> **vytvořit nebo aktualizovat transformaci**.
 
 Metoda **Put** http je podobná:
 

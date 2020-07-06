@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
 ms.openlocfilehash: 7f597bb5cba1a12bdb93325fe2b877ffc644e3e4
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60199185"
 ---
 # <a name="using-the-azure-cloud-shell-editor"></a>Použití editoru Azure Cloud Shell
@@ -37,13 +37,13 @@ Pokud chcete editor otevřít pomocí tlačítka uživatelského rozhraní, klik
 
 ## <a name="closing-the-editor"></a>Zavření editoru
 
-Chcete-li Editor zavřít, otevřete `...` panel akce v pravém horním rohu editoru a vyberte `Close editor`.
+Chcete-li Editor zavřít, otevřete `...` panel akce v pravém horním rohu editoru a vyberte `Close editor` .
 
 ![Zavřít editor](media/using-cloud-shell-editor/close-editor.png)
 
 ## <a name="command-palette"></a>Paleta příkazů
 
-Chcete-li spustit paletu příkazů, `F1` použijte klíč při nastavení fokusu v editoru. Otevření palety příkazů lze provést také prostřednictvím panelu akcí.
+Chcete-li spustit paletu příkazů, použijte `F1` klíč při nastavení fokusu v editoru. Otevření palety příkazů lze provést také prostřednictvím panelu akcí.
 
 ![Paleta cmd](media/using-cloud-shell-editor/cmd-palette.png)
 
@@ -52,5 +52,5 @@ Chcete-li spustit paletu příkazů, `F1` použijte klíč při nastavení fokus
 Podpora zvýraznění jazyka v editoru Cloud Shell je podporovaná prostřednictvím funkcí pro odesílání dat v [editoru Monako](https://github.com/Microsoft/monaco-editor)použití definic syntaxe Monarch. Informace o tom, jak vytvořit příspěvky, najdete v [příručce pro přispěvatele](https://github.com/Microsoft/monaco-editor/blob/master/CONTRIBUTING.md)pro spolupráci.
 
 ## <a name="next-steps"></a>Další kroky
-[Vyzkoušejte si rychlý Start pro bash v Cloud Shell](quickstart.md)
-[zobrazení úplného seznamu integrovaných nástrojů Cloud Shell](features.md)
+[Vyzkoušejte si rychlý Start pro bash v Cloud Shell](quickstart.md) 
+ [Zobrazit úplný seznam integrovaných nástrojů Cloud Shell](features.md)

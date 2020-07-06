@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: yagupta
 ms.openlocfilehash: a009f212bd8baaa353d602dc6090aeeccddd4936
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60878363"
 ---
 # <a name="encryption-of-data-in-azure-data-lake-storage-gen1"></a>Šifrování dat v Azure Data Lake Storage Gen1
@@ -59,8 +59,8 @@ Tady je stručné porovnání možností, které nabízí dva režimy správy hl
 |Jsou nějaké šifrovací klíče uložené v nezašifrované podobě mimo službu Key Vault? |Ne|Ne|
 |Může služba Key Vault načíst hlavní šifrovací klíč?|Ne. Po uložení hlavního šifrovacího klíče ve službě Key Vault ho lze použít pouze k šifrování a dešifrování.|Ne. Po uložení hlavního šifrovacího klíče ve službě Key Vault ho lze použít pouze k šifrování a dešifrování.|
 |Kdo je vlastníkem instance služby Key Vault a hlavního šifrovacího klíče?|Služba Data Lake Storage Gen1|Vlastníte instanci služby Key Vault, která patří do vašeho předplatného Azure. Hlavní šifrovací klíč ve službě Key Vault může být spravovaný softwarem nebo hardwarem.|
-|Můžete odvolat přístup k hlavní šifrovací klíč pro službu Data Lake Storage Gen1?|Ne|Ano. Můžete spravovat seznamy řízení přístupu v Key Vault a odebrat položky řízení přístupu k identitě služby Data Lake Storage Gen1.|
-|Je možné trvale odstranit hlavní šifrovací klíč?|Ne|Ano. Odstraníte-li hlavní šifrovací klíč z Key Vault, nelze data v Data Lake Storage Gen1m účtu dešifrovat nikdo, včetně služby Data Lake Storage Gen1. <br><br> Pokud jste hlavní šifrovací klíč před odstraněním ze služby Key Vault explicitně zazálohovali, je možné ho obnovit a následně obnovit i data. Pokud jste ale hlavní šifrovací klíč ještě před odstraněním z Key Vault nezálohovali, data v Data Lake Storage Gen1m účtu už nebude možné dešifrovat.|
+|Můžete odvolat přístup k hlavní šifrovací klíč pro službu Data Lake Storage Gen1?|Ne|Yes. Můžete spravovat seznamy řízení přístupu v Key Vault a odebrat položky řízení přístupu k identitě služby Data Lake Storage Gen1.|
+|Je možné trvale odstranit hlavní šifrovací klíč?|Ne|Yes. Odstraníte-li hlavní šifrovací klíč z Key Vault, nelze data v Data Lake Storage Gen1m účtu dešifrovat nikdo, včetně služby Data Lake Storage Gen1. <br><br> Pokud jste hlavní šifrovací klíč před odstraněním ze služby Key Vault explicitně zazálohovali, je možné ho obnovit a následně obnovit i data. Pokud jste ale hlavní šifrovací klíč ještě před odstraněním z Key Vault nezálohovali, data v Data Lake Storage Gen1m účtu už nebude možné dešifrovat.|
 
 
 Kromě tohoto rozdílu, tedy kdo spravuje hlavní šifrovací klíče a instanci služby Key Vault, ve které se nachází, je zbytek návrhu pro oba režimy stejný.
@@ -74,7 +74,7 @@ Při výběru režimu pro hlavní šifrovací klíče je důležité pamatovat n
 
 V návrhu šifrování dat používají tři typy klíčů. Následující tabulka poskytuje souhrn:
 
-| Key                   | Zkratka | Přidružený k | Umístění úložiště                             | Typ       | Poznámky                                                                                                   |
+| Klíč                   | Zkratka | Přidružený k | Umístění úložiště                             | Typ       | Poznámky                                                                                                   |
 |-----------------------|--------------|-----------------|----------------------------------------------|------------|---------------------------------------------------------------------------------------------------------|
 | Hlavní šifrovací klíč | MEK          | Účet Data Lake Storage Gen1 | Key Vault                              | Asymetrický | Dá se spravovat pomocí Data Lake Storage Gen1 nebo.                                                              |
 | Šifrovací klíč dat   | DEK          | Účet Data Lake Storage Gen1 | Trvalé úložiště spravované službou Data Lake Storage Gen1 | Symetrický  | Klíč DEK je šifrovaný klíčem MEK. Na trvalé médium se ukládá šifrovaný klíč DEK. |
@@ -115,7 +115,7 @@ Všimněte si, že pokud použijete výchozí možnosti šifrování, vaše data
 
 ### <a name="how-to-rotate-the-mek-in-data-lake-storage-gen1"></a>Jak otočit hlavní šifrovací klíč v Data Lake Storage Gen1
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 2. Přejděte do instance Key Vault, kde jsou uložené vaše klíče přidružené k vašemu účtu Data Lake Storage Gen1. Vyberte **Klíče**.
 
     ![Snímek obrazovky služby Key Vault](./media/data-lake-store-encryption/keyvault.png)

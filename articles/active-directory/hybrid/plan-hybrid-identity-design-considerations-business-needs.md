@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9ecc90e13f49c231d8d3ab0cff1de91443b80f21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "65950893"
 ---
 # <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>Určení požadavků na identitu pro vaše řešení hybridní identity
@@ -29,7 +29,7 @@ Prvním krokem při návrhu řešení hybridní identity je určení požadavků
 
 Abyste se seznámili s tím, co je teď požadavkem a co se v budoucnu plánuje společnost, musíte projít tyto klíčové aspekty firmy. Pokud nevidíte dlouhodobou strategii pro návrh hybridních identit, je pravděpodobné, že vaše řešení nebude škálovatelné podle toho, jak se budou obchodní potřeby růst a měnit. Následující diagram ukazuje příklad architektury hybridní identity a úloh, které jsou pro uživatele odemknuté. Toto je jenom příklad všech nových možností, které se dají odemknout a doručovat pomocí plné strategie hybridních identit. 
 
-Některé součásti, které jsou součástí architektury hybridní identity architektury ![hybridní identity](./media/plan-hybrid-identity-design-considerations/hybrid-identity-architechture.png)
+Některé součásti, které jsou součástí architektury hybridní identity architektury hybridní identity ![](./media/plan-hybrid-identity-design-considerations/hybrid-identity-architechture.png)
 
 ## <a name="determine-business-needs"></a>Určení obchodních potřeb
 Každá společnost bude mít různé požadavky, i když jsou tyto společnosti součástí stejného odvětví, skutečné obchodní požadavky se mohou lišit. Můžete i nadále využívat osvědčené postupy z odvětví, ale v konečném případě se jedná o obchodní potřeby společnosti, které vám pomohou určit požadavky pro návrh hybridní identity. 
@@ -110,6 +110,6 @@ Je také nutné vyhodnotit požadavky uživatele. Toto vyhodnocení je důležit
 ## <a name="next-steps"></a>Další kroky
 [Určení požadavků na synchronizaci adresářů](plan-hybrid-identity-design-considerations-directory-sync-requirements.md)
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 [Přehled otázek návrhu](plan-hybrid-identity-design-considerations-overview.md)
 

@@ -1,6 +1,6 @@
 ---
-title: Jak používat e-mailovou službu SendGrid (Node. js) | Microsoft Docs
-description: Přečtěte si, jak odeslat e-mail pomocí e-mailové služby SendGrid v Azure. Ukázky kódu napsané pomocí rozhraní Node. js API.
+title: Jak používat e-mailovou službu SendGrid (Node.js) | Microsoft Docs
+description: Přečtěte si, jak odeslat e-mail pomocí e-mailové služby SendGrid v Azure. Ukázky kódu napsané pomocí rozhraní Node.js API.
 services: ''
 documentationcenter: nodejs
 author: erikre
@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 01/05/2016
 ms.author: erikre
 ms.openlocfilehash: f2d653441598a47986913d525057672eed24b435
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60931700"
 ---
-# <a name="how-to-send-email-using-sendgrid-from-nodejs"></a>Odeslání e-mailu pomocí SendGrid z Node. js
+# <a name="how-to-send-email-using-sendgrid-from-nodejs"></a>Odeslání e-mailu pomocí SendGrid z Node.js
 
-Tato příručka ukazuje, jak provádět běžné programovací úlohy pomocí e-mailové služby SendGrid v Azure. Ukázky jsou zapisovány pomocí rozhraní Node. js API. Mezi zahrnuté scénáře patří **vytváření e-mailů**, **posílání e-mailů**, **přidávání příloh**, **používání filtrů**a **aktualizace vlastností**. Další informace o SendGrid a odesílání e-mailů najdete v části [Další kroky](#next-steps) .
+Tato příručka ukazuje, jak provádět běžné programovací úlohy pomocí e-mailové služby SendGrid v Azure. Ukázky se napíší pomocí rozhraní Node.js API. Mezi zahrnuté scénáře patří **vytváření e-mailů**, **posílání e-mailů**, **přidávání příloh**, **používání filtrů**a **aktualizace vlastností**. Další informace o SendGrid a odesílání e-mailů najdete v části [Další kroky](#next-steps) .
 
 ## <a name="what-is-the-sendgrid-email-service"></a>Co je e-mailová služba SendGrid?
 
@@ -36,15 +36,15 @@ SendGrid je [Cloudová e-mailová služba] , která poskytuje spolehlivé zasíl
 * Předávání dotazů zákazníkům
 * E-mailová oznámení z vaší aplikace
 
-Další informace najdete v tématu [https://sendgrid.com](https://sendgrid.com).
+Další informace najdete na webu [https://sendgrid.com](https://sendgrid.com).
 
 ## <a name="create-a-sendgrid-account"></a>Vytvoření účtu SendGrid
 
 [!INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
 
-## <a name="reference-the-sendgrid-nodejs-module"></a>Odkazování na modul SendGrid Node. js
+## <a name="reference-the-sendgrid-nodejs-module"></a>Odkazování na modul SendGrid Node.js
 
-Modul SendGrid pro Node. js lze nainstalovat pomocí uzlu Správce balíčků (npm) pomocí následujícího příkazu:
+Modul SendGrid pro Node.js lze nainstalovat pomocí uzlu Správce balíčků (npm) pomocí následujícího příkazu:
 
 ```bash
 npm install sendgrid
@@ -211,7 +211,7 @@ SendGrid nabízí webová rozhraní API, která můžete použít k využití da
 
 Teď, když jste se seznámili se základy e-mailové služby SendGrid, získáte další informace na následujících odkazech.
 
-* SendGrid úložiště modulu Node. js: [SendGrid-NodeJS][sendgrid-nodejs]
+* Úložiště modulu SendGrid Node.js: [SendGrid-NodeJS][sendgrid-nodejs]
 * Dokumentace k rozhraní SendGrid API:<https://sendgrid.com/docs>
 * SendGrid speciální nabídka pro zákazníky Azure:[http://sendgrid.com/azure.html](https://sendgrid.com/windowsazure.html)
 

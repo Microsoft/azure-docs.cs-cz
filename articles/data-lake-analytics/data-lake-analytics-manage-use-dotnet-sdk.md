@@ -10,10 +10,10 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/18/2017
 ms.openlocfilehash: 0a10af73d754596e9b5bb34b2974d7f1647d06f8
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60617703"
 ---
 # <a name="manage-azure-data-lake-analytics-a-net-app"></a>Správa služby Azure Data Lake Analytics pomocí aplikace .NET
@@ -30,7 +30,7 @@ Tento článek popisuje, jak spravovat účty Azure Data Lake Analytics, zdroje 
 
 ### <a name="install-nuget-packages"></a>Instalace balíčků NuGet
 
-|Balíček|Version|
+|Balíček|Verze|
 |-------|-------|
 |[Microsoft. REST. ClientRuntime. Azure. Authentication](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication)| kládají|
 |[Microsoft.Azure.Management.DataLake.Analytics](https://www.nuget.org/packages/Microsoft.Azure.Management.DataLake.Analytics)|3.0.0|
@@ -220,7 +220,7 @@ if (adlaClient.Account.Exists(rg, adla))
 Data Lake Analytics aktuálně podporuje následující zdroje dat:
 
 * [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)
-* [Účet Azure Storage](../storage/common/storage-introduction.md)
+* [Účet služby Azure Storage](../storage/common/storage-introduction.md)
 
 ### <a name="link-to-an-azure-storage-account"></a>Odkaz na účet Azure Storage
 

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 543c1a6706f794b81c4f93fc6fff3a61ed3fb9e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60246317"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Azure AD Connect synchronizace: principy deklarativního zřizování
@@ -105,7 +105,7 @@ V tokůch atributů je k dispozici nastavení určující, zda mají být atribu
 
 K dispozici jsou také **slučované** a **MergeCaseInsensitive**. Tyto možnosti umožňují sloučit hodnoty z různých zdrojů. Můžete ji například použít ke sloučení atributu member nebo proxyAddresses z několika různých doménových struktur. Při použití této možnosti musí všechna pravidla synchronizace v oboru pro objekt používat stejný typ sloučení. Nelze definovat **aktualizaci** z jednoho konektoru a **Sloučit** z jiného. Pokud se pokusíte, zobrazí se chyba.
 
-Rozdíl mezi **sloučením** a **MergeCaseInsensitive** je způsob zpracování duplicitních hodnot atributů. Synchronizační modul zajišťuje, že duplicitní hodnoty nejsou vloženy do atributu target. V případě **MergeCaseInsensitive**nejsou k dispozici duplicitní hodnoty pouze s rozdílem v případě, že nejsou k dispozici. V cílovém atributu byste například neměli vidět obě "SMTP:bob@contoso.com" i "smtp:bob@contoso.com". **Sloučení** se díváte jenom na přesné hodnoty a několik hodnot, u kterých se může vyskytovat jenom rozdíl.
+Rozdíl mezi **sloučením** a **MergeCaseInsensitive** je způsob zpracování duplicitních hodnot atributů. Synchronizační modul zajišťuje, že duplicitní hodnoty nejsou vloženy do atributu target. V případě **MergeCaseInsensitive**nejsou k dispozici duplicitní hodnoty pouze s rozdílem v případě, že nejsou k dispozici. V cílovém atributu byste například neměli vidět obě " SMTP:bob@contoso.com " i " smtp:bob@contoso.com ". **Sloučení** se díváte jenom na přesné hodnoty a několik hodnot, u kterých se může vyskytovat jenom rozdíl.
 
 Možnost **nahradit** je stejná jako **aktualizace**, ale není použita.
 

@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 08/06/2018
 ms.topic: conceptual
 ms.openlocfilehash: 9d5d572c3e32e3645e65ba8d6fc28b567b3c1e9a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "65827196"
 ---
 # <a name="configure-access-controls-for-the-time-series-insights-telemetry-explorer"></a>Konfigurace ovládacích prvků přístupu pro Time Series Insights Průzkumník telemetrie
@@ -25,7 +25,7 @@ Zásady přístupu k datům udělují oprávnění k vydávání dotazů na data
 
 Pomocí těchto kroků udělíte přístup k datům pro objekt zabezpečení uživatele:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 2. Najděte své Time Series Insights prostředí. Do **vyhledávacího** pole zadejte **časovou řadu** . Ve výsledcích hledání vyberte **prostředí Time Series** . 
 

@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/22/2018
 ms.author: alkohli
 ms.openlocfilehash: 55103d6307614f8796c41c35d6345e1fc3aca261
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60789633"
 ---
 # <a name="storsimple-virtual-array-update-11-release-notes"></a>Zpráva k vydání verze pro StorSimple Virtual Array Update 1,1
@@ -83,7 +83,7 @@ Následující tabulka obsahuje souhrn známých problémů pro virtuální pole
 ## <a name="next-steps"></a>Další kroky
 [Nainstalujte aktualizaci 1,1](storsimple-virtual-array-install-update-11.md) na virtuální pole StorSimple.
 
-## <a name="references"></a>Odkazy
+## <a name="references"></a>Reference
 Hledáte starší poznámku k verzi? Přejít na:
 * [Zpráva k vydání verze pro StorSimple Virtual Array Update 1,0](storsimple-virtual-array-update-1-release-notes.md)
 * [Zpráva k vydání verze pro StorSimple Virtual Array Update 0,6](storsimple-virtual-array-update-06-release-notes.md)

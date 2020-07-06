@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 12d11cddf077d4d07732490255d44e89ddaf3217
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60531056"
 ---
 # <a name="storsimple-8000-series-update-22-release-notes"></a>Zpráva k vydání verze pro StorSimple 8000 Series Update 2,2
@@ -56,7 +56,7 @@ Následující tabulky obsahují souhrn problémů vyřešených v aktualizacíc
 | 4 |Vytvoření snímku |Došlo k potížím souvisejícím s vytvářením přírůstkových snímků ve scénářích s velkými objemy a minimálními nároky na změny dat. Tyto problémy jsou opravené v této verzi. |Ano |Ano |
 | 5 |OpenStack ověřování |Při použití OpenStack jako poskytovatele cloudových služeb by se uživatel spouštěl v nečasté chybě související s ověřováním, kde analyzátor JSON způsobil chybu. Tato chyba je opravena v této verzi. |Ano |Ne |
 | 6 |Kopírování na straně hostitele |V dřívějších verzích softwaru byla při kopírování dat z jednoho svazku do jiného svazku zjištěna nečastá chyba související s časováním ODX. Výsledkem by bylo převzetí služeb při selhání řadiče a systém může potenciálně přejít do režimu obnovení. Tato chyba je opravena v této verzi. |Ano |Ne |
-| 7 |Rozhraní WMI (Windows Management Instrumentation) (WMI) |V předchozích verzích softwaru se vyskytlo několik instancí webového proxy serveru s výjimkou "\<ManagementException> zprostředkovatel selhání načtení". Tato chyba byla připsána k nevracení paměti WMI a je nyní opravena. |Ano |Ne |
+| 7 |Rozhraní WMI (Windows Management Instrumentation) (WMI) |V předchozích verzích softwaru existovala několik instancí webového proxy serveru s výjimkou " \<ManagementException> selhání načtení zprostředkovatele". Tato chyba byla připsána k nevracení paměti WMI a je nyní opravena. |Ano |Ne |
 | 8 |Aktualizace |V některých vzácných instancích v předchozích verzích softwaru uživatel při pokusu o kontrolu nebo instalaci aktualizací obdržel "CisPowershellHcsscripterror". Tento problém je opravený v této verzi. |Ano |Ano |
 | 9 |Balíček pro podporu |V této verzi jsme nastavili vylepšení způsobu, jakým se balíček pro podporu shromáždí a nahraje. |Ano |Ano |
 

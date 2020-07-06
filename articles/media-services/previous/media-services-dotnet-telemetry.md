@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 1ffaefc51121aeb7421d6e49a3c0e58c76d4391e
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61464942"
 ---
 # <a name="configuring-azure-media-services-telemetry-with-net"></a>Konfigurace telemetrie Azure Media Services pomocí .NET 
@@ -69,7 +69,7 @@ Informace o využívání informací telemetrie najdete v [tomto](media-services
 
 1. Nastavte své vývojové prostředí a v souboru app.config vyplňte informace o připojení, jak je popsáno v tématu [Vývoj pro Media Services v .NET](media-services-dotnet-how-to-use.md). 
 
-2. Přidejte následující element do **appSettings** definované v souboru App. config:
+2. Přidejte následující element do **appSettings** definované v souboru app.config:
 
     ```xml
         <add key="StorageAccountName" value="storage_name" />

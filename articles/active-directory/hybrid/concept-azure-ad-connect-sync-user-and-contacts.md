@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 661747754369c17ca98ae69d477e04124b6a2942
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60245481"
 ---
 # <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Azure AD Connect synchronizace: principy uživatelů, skupin a kontaktů
@@ -47,13 +47,13 @@ Důležité body, které je potřeba znát při synchronizaci skupin ze služby 
 
     * Pokud je atribut *ProxyAddress* skupiny prázdný, musí mít jeho atribut *mail* hodnotu.
 
-    * Pokud atribut *ProxyAddress* skupiny není prázdný, musí obsahovat alespoň jednu hodnotu adresy proxy serveru SMTP. Zde je několik příkladů:
+    * Pokud atribut *ProxyAddress* skupiny není prázdný, musí obsahovat alespoň jednu hodnotu adresy proxy serveru SMTP. Tady je pár příkladů:
     
       * Skupina služby Active Directory, jejíž atribut proxyAddress má hodnotu *{"X500:/0 = contoso. com/ou = Users/CN = test Group"}* nebude v Azure AD povolena pro poštu. Nemá adresu SMTP.
       
-      * Skupina služby Active Directory, jejíž atribut proxyAddress má hodnoty *{"X500:/0 = contoso. com/ou = Users/CN = test Group", "SMTP:\@johndoe contoso.com"}* bude v Azure AD povolená pro poštu.
+      * Skupina služby Active Directory, jejíž atribut proxyAddress má hodnoty *{"X500:/0 = contoso. com/ou = Users/CN = test Group", "SMTP: johndoe \@ contoso.com"}* bude v Azure AD povolená pro poštu.
       
-      * Skupina služby Active Directory, jejíž atribut proxyAddress má hodnoty *{"X500:/0 = contoso. com/ou = Users/CN = test Group", "SMTP:\@johndoe contoso.com"}* bude také ve službě Azure AD zapnutá pro poštu.
+      * Skupina služby Active Directory, jejíž atribut proxyAddress má hodnoty *{"X500:/0 = contoso. com/ou = Users/CN = test Group", "SMTP: johndoe \@ contoso.com"}* bude také ve službě Azure AD zapnutá pro poštu.
 
 ## <a name="contacts"></a>Kontakty
 Kontakty, které představují uživatele v jiné doménové struktuře, jsou běžné po sloučení & získání, kde řešení GALSync přemostění dvou nebo více doménových struktur Exchange. Objekt Contact se vždy připojuje z prostoru konektoru k úložišti Metaverse pomocí atributu mail. Pokud již existuje objekt kontaktu nebo objekt uživatele se stejnou e-mailovou adresou, jsou objekty spojeny dohromady. Tato konfigurace je nakonfigurovaná v pravidle **z AD – kontaktujte připojení**. Existuje taky pravidlo s názvem **ve službě AD – kontakt je společný** s tokem atributů na atribut úložiště metaverse **sourceObjectType** s konstantním **kontaktem**. Toto pravidlo má velmi nízkou prioritu, takže pokud je libovolný objekt uživatele připojený ke stejnému objektu úložiště metaverse, pak pravidlo **v rámci služby AD – společný uživatel** přispěje uživateli hodnotu k tomuto atributu. S tímto pravidlem bude mít tento atribut hodnotu Contact, pokud není připojen žádný uživatel a hodnota uživatel, pokud byl nalezen alespoň jeden uživatel.

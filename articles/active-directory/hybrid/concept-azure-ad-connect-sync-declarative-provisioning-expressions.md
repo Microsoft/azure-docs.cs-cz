@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cdc7c9dba49bf37db1f039d43b0450c65884c74b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60245504"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect synchronizace: principy deklarativních zřizovacích výrazů
@@ -53,7 +53,7 @@ Parametr je definován buď pomocí konektoru, nebo správcem pomocí prostřed�
 
 Konektor služby Active Directory, který poskytuje následující parametry pro pravidla příchozí synchronizace:
 
-| Název parametru | Poznámka |
+| Název parametru | Komentář |
 | --- | --- |
 | Doména. NetBIOS |Formát rozhraní NetBIOS aktuálně importované domény, například FABRIKAMSALES |
 | Doména. FQDN |Plně kvalifikovaný název domény aktuálně importované domény, například sales.fabrikam.com |
@@ -72,19 +72,19 @@ Tady je příklad, který naplní doménu atributu Metaverse názvem domény pro
 Můžete použít následující operátory:
 
 * **Porovnání**: <, <=,  <>, =, >, >=
-* **Matematické**: +,-, \*,-
+* **Matematické**: +,-, \* ,-
 * **Řetězec**: & (zřetězení)
 * **Logický**:  &&  (a), | | ani
 * **Pořadí vyhodnocování**: ()
 
-Operátory jsou vyhodnoceny zleva doprava a mají stejnou prioritu hodnocení. To znamená, že \* (násobitel) není vyhodnocen před-(odčítání). 2\*(5 + 3) není totéž jako 2\*5 + 3. Hranaté závorky () se používají ke změně pořadí vyhodnocování v případě, že levé a pravé pořadí vyhodnocení není vhodné.
+Operátory jsou vyhodnoceny zleva doprava a mají stejnou prioritu hodnocení. To znamená, že \* (násobitel) není vyhodnocen před-(odčítání). 2 \* (5 + 3) není totéž jako 2 \* 5 + 3. Hranaté závorky () se používají ke změně pořadí vyhodnocování v případě, že levé a pravé pořadí vyhodnocení není vhodné.
 
 ## <a name="multi-valued-attributes"></a>Vícehodnotových atributů
 Funkce mohou fungovat jak v atributu s jednou hodnotou, tak i s více hodnotami. U vícehodnotových atributů funkce funguje v každé hodnotě a použije stejnou funkci na každou hodnotu.
 
 Příklad:  
 `Trim([proxyAddresses])`Proveďte oříznutí všech hodnot v atributu proxyAddress.  
-`Word([proxyAddresses],1,"@") & "@contoso.com"`U každé hodnoty s @-signhodnotou nahraďte doménu hodnotou. @contoso.com  
+`Word([proxyAddresses],1,"@") & "@contoso.com"`U každé hodnoty s hodnotou @-sign nahraďte doménu hodnotou @contoso.com .  
 `IIF(InStr([proxyAddresses],"SIP:")=1,NULL,[proxyAddresses])`Vyhledejte adresu SIP a odeberte ji z hodnot.
 
 ## <a name="next-steps"></a>Další kroky

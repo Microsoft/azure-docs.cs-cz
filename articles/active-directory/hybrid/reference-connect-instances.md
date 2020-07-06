@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c342eac5460d8d52422b0497b1283f367660eb3c
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "66298817"
 ---
 # <a name="azure-ad-connect-special-considerations-for-instances"></a>Azure AD Connect: zvláštní předpoklady pro instance
@@ -64,7 +64,7 @@ Následující kroky ruční konfigurace se používají k zajištění, aby Azu
 
 1. Spusťte instalaci Azure AD Connect.
 2. Po zobrazení první stránky, na kterou chcete přijmout smlouvu EULA, nepokračujte, ale ponechejte Průvodce instalací spuštěný.
-3. Spusťte příkaz regedit a změňte klíč `HKLM\SOFTWARE\Microsoft\Azure AD Connect\AzureInstance` registru na hodnotu `4`.
+3. Spusťte příkaz regedit a změňte klíč registru `HKLM\SOFTWARE\Microsoft\Azure AD Connect\AzureInstance` na hodnotu `4` .
 4. Vraťte se zpět do Průvodce instalací Azure AD Connect, přijměte smlouvu EULA a pokračujte. Během instalace se ujistěte, že používáte vlastní cestu k instalaci **Konfigurace** (a ne expresní instalaci), a potom pokračujte v instalaci obvyklým způsobem.
 
 ## <a name="next-steps"></a>Další kroky

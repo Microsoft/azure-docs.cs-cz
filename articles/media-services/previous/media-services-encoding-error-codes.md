@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 5c038f0be31acea52c2ef07d43f0dbaf3434a371
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "64709524"
 ---
 # <a name="encoding-error-codes"></a>Kódy chyb kódování
@@ -30,7 +30,7 @@ V následující tabulce jsou uvedeny kódy chyb, které by mohly být vráceny 
 | Není známo |Neznámá chyba při provádění úlohy |
 | ErrorDownloadingInputAssetMalformedContent |Kategorie chyb, které pokrývají chyby při stahování vstupních assetů, jako jsou například chybné názvy souborů, soubory s nulovou délkou, nesprávné formáty atd. |
 | ErrorDownloadingInputAssetServiceFailure |Kategorie chyb, které pokrývají problémy na straně služby – například chyby sítě nebo úložiště při stahování. |
-| ErrorParsingConfiguration |Kategorie chyb, kde Task \<uvidí cref = "MediaTask. PrivateData"/> (konfigurace) není platná, například konfigurace není platná předvolba systému nebo obsahuje neplatný kód XML. |
+| ErrorParsingConfiguration |Kategorie chyb, kde úloha \<see cref="MediaTask.PrivateData"/> (konfigurace) není platná, například konfigurace není platná pro Předvolby systému nebo obsahuje neplatný kód XML. |
 | ErrorExecutingTaskMalformedContent |Kategorie chyb během provádění úlohy, kde problémy uvnitř vstupních mediálních souborů způsobují selhání. |
 | ErrorExecutingTaskUnsupportedFormat |Kategorie chyb, ve kterých procesor médií nemůže zpracovat zadané soubory – formát média není podporován nebo se neshoduje s konfigurací. Například pokus o vystavení výstupu jenom pro zvukový výstup z assetu, který má jenom video. |
 | ErrorProcessingTask |Kategorie dalších chyb, ke kterým má procesor multimédií během zpracování úlohy, která nesouvisí s obsahem. |

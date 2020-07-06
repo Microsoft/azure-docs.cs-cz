@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.openlocfilehash: 922ab731ccd76e6a1336d61abe4b0251e358beb7
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60780816"
 ---
 # <a name="custom-caching-in-azure-api-management"></a>Vlastní ukládání do mezipaměti ve službě Azure API Management
@@ -65,7 +65,7 @@ key="@("userprofile-" + context.Variables["enduserid"])"
 variable-name="userprofile" />
 ```
 
-Pokud v mezipaměti není žádná položka, která by odpovídala hodnotě klíče, není vytvořena žádná `userprofile` kontextová proměnná. API Management kontroluje úspěšnost vyhledávání pomocí zásad toku `choose` řízení.
+Pokud v mezipaměti není žádná položka, která by odpovídala hodnotě klíče, `userprofile` není vytvořena žádná kontextová proměnná. API Management kontroluje úspěšnost vyhledávání pomocí `choose` zásad toku řízení.
 
 ```xml
 <choose>
@@ -184,7 +184,7 @@ Stejný druh ukládání fragmentů do mezipaměti můžete také provést na ba
 ## <a name="transparent-versioning"></a>Transparentní Správa verzí
 Je běžné, že se v jednom okamžiku podporuje více různých implementačních verzí rozhraní API. Například pro podporu různých prostředí (vývoj, testování, produkce atd.) nebo pro podporu starších verzí rozhraní API, aby uživatelé rozhraní API mohli migrovat na novější verze. 
 
-Jeden z přístupů k tomu, aby vývojáři klientů nemuseli měnit adresy URL z `/v1/customers` na `/v2/customers` , je uložit v datech profilu uživatele, která verze rozhraní API aktuálně chce použít a zavolat příslušnou adresu URL pro back-end. Chcete-li určit správnou adresu URL back-endu pro volání konkrétního klienta, je nutné zadat dotaz na některá konfigurační data. Uložením těchto konfiguračních dat API Management může minimalizovat snížení výkonu při tomto vyhledávání.
+Jeden z přístupů k tomu, aby vývojáři klientů nemuseli měnit adresy URL z `/v1/customers` na, `/v2/customers` je uložit v datech profilu uživatele, která verze rozhraní API aktuálně chce použít a zavolat příslušnou adresu URL pro back-end. Chcete-li určit správnou adresu URL back-endu pro volání konkrétního klienta, je nutné zadat dotaz na některá konfigurační data. Uložením těchto konfiguračních dat API Management může minimalizovat snížení výkonu při tomto vyhledávání.
 
 Prvním krokem je určení identifikátoru používaného ke konfiguraci požadované verze. V tomto příkladu se rozhodnete přidružit verzi k klíči předplatného produktu. 
 

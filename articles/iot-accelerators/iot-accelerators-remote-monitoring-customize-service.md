@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 10/02/2018
 ms.topic: conceptual
 ms.openlocfilehash: e44aa8ade512a6005959e795cb1d4ad861da1338
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61447042"
 ---
 # <a name="add-a-custom-service-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Přidání vlastní služby do webového uživatelského rozhraní akcelerátoru řešení vzdáleného monitorování
@@ -45,25 +45,25 @@ Chcete-li přidat službu do webového uživatelského rozhraní, je třeba při
 
 Chcete-li začít, složka **Src/pronávody/služby** obsahuje soubory, které definují jednoduchou službu:
 
-**exampleService. js**
+**exampleService.js**
 
 [!code-javascript[Example service](~/remote-monitoring-webui/src/walkthrough/services/exampleService.js?name=service "Example service")]
 
 Další informace o tom, jak se služby implementují, najdete v tématu [Úvod do reaktivního programování, které jste si vyzkoušeli](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754).
 
-**model/exampleModels. js**
+**model/exampleModels.js**
 
 [!code-javascript[Example model](~/remote-monitoring-webui/src/walkthrough/services/models/exampleModels.js?name=models "Example model")]
 
-Zkopírujte **exampleService. js** do složky **Src/Services** a zkopírujte **exampleModels. js** do složky **Src/Services/modely** .
+Zkopírujte **exampleService.js** do složky **Src/services** a zkopírujte **exampleModels.js** do složky **Src/Services/modely** .
 
-Aktualizujte soubor **index. js** ve složce **Src/Services** pro export nové služby:
+Aktualizujte soubor **index.js** ve složce **Src/Services** pro export nové služby:
 
 ```js
 export * from './exampleService';
 ```
 
-Aktualizujte soubor **index. js** ve složce **Src/Services/modely** pro export nového modelu:
+Aktualizujte soubor **index.js** ve složce **Src/Services/modely** pro export nového modelu:
 
 ```js
 export * from './exampleModels';
@@ -73,17 +73,17 @@ export * from './exampleModels';
 
 Chcete-li začít, složka **Src/názor/Store/reduktorů** obsahuje i redukci ukázek:
 
-**exampleReducer. js**
+**exampleReducer.js**
 
 [!code-javascript[Example reducer](~/remote-monitoring-webui/src/walkthrough/store/reducers/exampleReducer.js?name=reducer "Example reducer")]
 
-Zkopírujte **exampleReducer. js** do složky **Src/Store/reduktorů** .
+Zkopírujte **exampleReducer.js** do složky **Src/Store/reduktorů** .
 
 Další informace o nástroji pro zmenšení a **náměty**najdete v tématu [Redux-pozorovatelný](https://redux-observable.js.org/).
 
 ### <a name="configure-the-middleware"></a>Konfigurace middlewaru
 
-Chcete-li nakonfigurovat middleware, přidejte do souboru **rootReducer. js** ve složce **Src/Store** tento modul:
+Chcete-li nakonfigurovat middleware, přidejte do souboru **rootReducer.js** do složky **Src/Store** :
 
 ```js
 import { reducer as exampleReducer } from './reducers/exampleReducer';
@@ -97,7 +97,7 @@ const rootReducer = combineReducers({
 });
 ```
 
-Přidejte náměty do souboru **rootEpics. js** ve složce **Src/Store** :
+Do souboru **rootEpics.js** do složky **Src/Store** přidejte náměty:
 
 ```js
 import { epics as exampleEpics } from './reducers/exampleReducer';
