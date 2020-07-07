@@ -9,10 +9,10 @@ ms.date: 11/05/2019
 ms.author: wesmc
 ms.custom: include file
 ms.openlocfilehash: a737e130d616a67bab28c7c96c0372216a6707af
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73720330"
 ---
 ### <a name="retrieve-host-name-ports-and-access-keys-from-the-azure-portal"></a>Načtení názvu hostitele, portů a přístupových klíčů z Azure Portal
@@ -23,7 +23,7 @@ Aby bylo možné připojit se k mezipaměti Azure pro instanci Redis, klienti me
   
   ![Azure cache pro klíče Redis](media/redis-cache-access-keys/redis-cache-keys.png)
 
-- Pokud chcete získat název hostitele a porty, z levé navigační možnosti mezipaměti vyberte **vlastnosti**. Název hostitele má formát * \<DNS název>. Redis.cache.Windows.NET*.
+- Pokud chcete získat název hostitele a porty, z levé navigační možnosti mezipaměti vyberte **vlastnosti**. Název hostitele je ve formátu * \<DNS name> . Redis.cache.Windows.NET*.
 
   ![Azure cache pro vlastnosti Redis](media/redis-cache-access-keys/redis-cache-hostname-ports.png)
 

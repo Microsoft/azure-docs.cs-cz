@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: 8ba34edfc382f0f03abe080d78a6a47dcb65501b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82105756"
 ---
 # <a name="azure-signalr-service-internals"></a>Interní informace služby Azure SignalR Service
@@ -31,7 +31,7 @@ Aplikační server ASP.NET Coreového signálu v místním prostředí naslouch�
 
 Pomocí služby signalizace už aplikační server nepřijímá trvalá připojení klientů, místo toho:
 
-1. Sada `negotiate` SDK služby Azure signaler zveřejňuje koncový bod pro každé centrum.
+1. `negotiate`Sada SDK služby Azure signaler zveřejňuje koncový bod pro každé centrum.
 1. Tento koncový bod bude odpovídat na požadavky na vyjednávání klienta a přesměrování klientů na službu Signal.
 1. Nakonec budou klienti připojení ke službě signalizace.
 

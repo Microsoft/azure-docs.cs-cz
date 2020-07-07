@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: c7598aafea85e91f28233645d3d71bf85bf45425
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82130981"
 ---
 # <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-projects"></a>Vytvoření kanálu CI/CD pro IoT Edge s využitím Azure DevOps Projects
@@ -32,7 +32,7 @@ DevOps Projects vytvoří kanál CI/CD ve službě Azure DevOps. Můžete vytvo�
 
 ## <a name="create-a-new-application-pipeline"></a>Vytvořit nový kanál aplikace
 
-1. Vaše moduly Azure IoT Edge můžou být napsané v [jazycích C#](tutorial-csharp-module.md), [Node. js](tutorial-node-module.md), [Python](tutorial-python-module.md), [C](tutorial-c-module.md) a [Java](tutorial-java-module.md). Vyberte preferovaný jazyk pro spuštění nové aplikace: **.NET**, **Node. js**, **Python**, **C**nebo **Java**. Pokračujte výběrem tlačítka **Next** (Další).
+1. Vaše moduly Azure IoT Edge můžou být napsané v [jazycích C#](tutorial-csharp-module.md), [Node.js](tutorial-node-module.md), [Python](tutorial-python-module.md), [C](tutorial-c-module.md) a [Java](tutorial-java-module.md). Vyberte preferovaný jazyk pro spuštění nové aplikace: **.NET**, **Node.js**, **Python**, **C**nebo **Java**. Pokračujte výběrem tlačítka **Next** (Další).
 
    ![Vyberte jazyk pro vytvoření nové aplikace.](./media/how-to-devops-project/select-language.png)
 
@@ -76,9 +76,9 @@ DevOps Projects vytvořit úložiště Git pro váš projekt v Azure Repos. V t�
 
 2. Následující kroky vás provedou použitím webového prohlížeče k provedení změn kódu. Pokud chcete úložiště klonovat místně, vyberte v pravém horním rohu okna **klonovat** . K naklonování úložiště Git v Visual Studio Code nebo preferovaném vývojovém nástroji použijte poskytnutou adresu URL.
 
-3. Úložiště již obsahuje kód pro modul s názvem **FilterModule** na základě jazyka aplikace, který jste zvolili v procesu vytváření. Otevřete soubor **modules/FilterModule/Module. JSON** .
+3. Úložiště již obsahuje kód pro modul s názvem **FilterModule** na základě jazyka aplikace, který jste zvolili v procesu vytváření. Otevřete **moduly/FilterModule/module.jsv** souboru.
 
-   ![Otevřete soubor Module. JSON v Azure Repos](./media/how-to-devops-project/open-module-json.png)
+   ![Otevřít module.jsv souboru v Azure Repos](./media/how-to-devops-project/open-module-json.png)
 
 4. Všimněte si, že tento soubor používá v parametru **Version** [proměnné buildu Azure DevOps](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=vsts#build-variables) . Tato konfigurace zajišťuje, že se nová verze modulu vytvoří při každém spuštění nového buildu.
 

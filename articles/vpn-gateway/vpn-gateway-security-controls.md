@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 6fc5b4c901254decdb2d34281a10ababd4d79d45
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82127859"
 ---
 # <a name="security-controls-for-azure-vpn-gateway"></a>Řízení zabezpečení pro Azure VPN Gateway
@@ -25,8 +25,8 @@ Tento článek popisuje ovládací prvky zabezpečení integrované do Azure VPN
 
 | Řízení zabezpečení | Ano/Ne | Poznámky |
 |---|---|--|
-| Podpora koncového bodu služby| – | |
-| Podpora vkládání virtuální sítě| – | |
+| Podpora koncového bodu služby| Není k dispozici | |
+| Podpora vkládání virtuální sítě| Není k dispozici | |
 | Izolace sítě a podpora brány firewall| Ano | Brány VPN jsou vyhrazené instance virtuálních počítačů pro jednotlivé zákazníky Virtual Network  |
 | Podpora vynuceného tunelování| Ano |  |
 
@@ -34,7 +34,7 @@ Tento článek popisuje ovládací prvky zabezpečení integrované do Azure VPN
 
 | Řízení zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Podpora monitorování Azure (Log Analytics, App Insights atd.)| Ano | Viz výstraha [protokolu Azure monitor výstrah](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md) & [Azure monitor metriky](vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md).  |
+| Podpora monitorování Azure (Log Analytics, App Insights atd.)| Ano | Viz výstraha [protokolu Azure monitor výstrah](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md)  &  [Azure monitor metriky](vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md).  |
 | Protokolování a audit roviny řízení a správy| Ano | Azure Resource Manager protokolu aktivit. |
 | Protokolování a audit roviny dat | Ano | [Protokoly aktivit Azure monitor](../azure-resource-manager/management/view-activity-logs.md) pro protokolování a AUDITOVÁNÍ připojení VPN. |
 
@@ -42,17 +42,17 @@ Tento článek popisuje ovládací prvky zabezpečení integrované do Azure VPN
 
 | Řízení zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Authentication| Ano | [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) pro správu služby a konfiguraci služby Azure VPN Gateway. |
+| Ověřování| Ano | [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) pro správu služby a konfiguraci služby Azure VPN Gateway. |
 | Autorizace| Ano | Umožňuje autorizaci pomocí [RBAC](../role-based-access-control/overview.md). |
 
 ## <a name="data-protection"></a>Ochrana dat
 
 | Řízení zabezpečení | Ano/Ne | Poznámky |
 |---|---|--|
-| Šifrování na straně serveru v klidovém umístění: klíče spravované společností Microsoft | – | Zákaznická data služby VPN Gateway neukládají zákaznická data |
+| Šifrování na straně serveru v klidovém umístění: klíče spravované společností Microsoft | Není k dispozici | Zákaznická data služby VPN Gateway neukládají zákaznická data |
 | Šifrování při přenosu (například šifrování ExpressRoute, šifrování virtuální sítě a šifrování virtuální sítě)| Ano | Brána VPN Gateway zašifruje pakety zákazníků mezi bránami Azure VPN a místními zařízeními VPN (P2S) zákazníků. Brány VPN také podporují šifrování VNet-to-VNet. |
 | Šifrování na straně serveru v klidovém umístění: klíče spravované zákazníkem (BYOK) | Ne | Předem sdílené klíče zadané zákazníkem jsou zašifrované v klidovém stavu. ale zatím není integrovaná do CMK. |
-| Šifrování na úrovni sloupce (Azure Data Services)| – | |
+| Šifrování na úrovni sloupce (Azure Data Services)| Není k dispozici | |
 | Zašifrovaná volání rozhraní API| Ano | Prostřednictvím [Azure Resource Manager](../azure-resource-manager/index.yml) a https  |
 
 ## <a name="configuration-management"></a>Správa konfigurace

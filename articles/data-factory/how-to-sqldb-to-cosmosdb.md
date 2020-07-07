@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/29/2020
 ms.author: makromer
 ms.openlocfilehash: 3d2ef6fb0cd7af444b9bff755eee4eee70d03d15
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82691901"
 ---
 # <a name="migrate-normalized-database-schema-from-azure-sql-database-to-azure-cosmosdb-denormalized-container"></a>Migrace normalizovaného schématu databáze z Azure SQL Database do denormalizovaného kontejneru Azure CosmosDB
@@ -23,7 +23,7 @@ Schémata SQL jsou obvykle modelovaná pomocí třetího normálního tvaru, co�
 
 Pomocí Azure Data Factory vytvoříme kanál, který používá jediný tok dat mapování ke čtení ze dvou Azure SQL Database normalizovaných tabulek, které jako vztah entity obsahují primární a cizí klíče. ADF se spojí s těmito tabulkami s jedním datovým proudem pomocí modulu Spark toku dat, shromáždí spojené řádky do polí a vytvoří jednotlivé vyčištěné dokumenty pro vložení do nového kontejneru Azure CosmosDB.
 
-V tomto průvodci se vytvoří nový kontejner s názvem Orders, který bude používat tabulky ```SalesOrderHeader``` a ```SalesOrderDetail``` ze standardní ukázkové databáze SQL Server AdventureWorks. Tyto tabulky reprezentují prodejní transakce ```SalesOrderID```spojené s. Každý jedinečný podrobný záznam má svůj vlastní primární klíč ```SalesOrderDetailID```. Vztah mezi hlavičkou a podrobnostmi ```1:M```je. Připojíme ```SalesOrderID``` se k programu ADF a pak všechny související záznamy podrobností načteme do pole s názvem "Detail".
+V tomto průvodci se vytvoří nový kontejner s názvem Orders, který bude používat ```SalesOrderHeader``` ```SalesOrderDetail``` tabulky a ze standardní ukázkové databáze SQL Server AdventureWorks. Tyto tabulky reprezentují prodejní transakce spojené s ```SalesOrderID``` . Každý jedinečný podrobný záznam má svůj vlastní primární klíč ```SalesOrderDetailID``` . Vztah mezi hlavičkou a podrobnostmi je ```1:M``` . Připojíme se k ```SalesOrderID``` programu ADF a pak všechny související záznamy podrobností načteme do pole s názvem "Detail".
 
 Zástupce dotazu SQL pro tuto příručku:
 
@@ -56,19 +56,19 @@ Výsledný kontejner CosmosDB vloží vnitřní dotaz do jediného dokumentu a b
 
 ![Graf toku dat](media/data-flow/cosmosb1.png)
 
-5. Definujte zdroj pro "SourceOrderDetails". Pro datovou sadu vytvořte novou Azure SQL Database datovou sadu, která ```SalesOrderDetail``` odkazuje na tabulku.
+5. Definujte zdroj pro "SourceOrderDetails". Pro datovou sadu vytvořte novou Azure SQL Database datovou sadu, která odkazuje na ```SalesOrderDetail``` tabulku.
 
-6. Definujte zdroj pro "SourceOrderHeader". Pro datovou sadu vytvořte novou Azure SQL Database datovou sadu, která ```SalesOrderHeader``` odkazuje na tabulku.
+6. Definujte zdroj pro "SourceOrderHeader". Pro datovou sadu vytvořte novou Azure SQL Database datovou sadu, která odkazuje na ```SalesOrderHeader``` tabulku.
 
-7. V horním zdroji přidejte transformaci odvozeného sloupce za "SourceOrderDetails". Zavolejte novou transformaci "přetypovat". Musíme ```UnitPrice``` sloupec zaokrouhlit a přetypovat na datový typ Double pro CosmosDB. Nastavte vzorec na: ```toDouble(round(UnitPrice,2))```.
+7. V horním zdroji přidejte transformaci odvozeného sloupce za "SourceOrderDetails". Zavolejte novou transformaci "přetypovat". Musíme sloupec zaokrouhlit ```UnitPrice``` a přetypovat na datový typ Double pro CosmosDB. Nastavte vzorec na: ```toDouble(round(UnitPrice,2))``` .
 
-8. Přidejte další odvozený sloupec a zavolejte ho "MakeStruct". Tady vytvoříme hierarchickou strukturu, která bude uchovávat hodnoty z tabulky details. Pamatujte, že ```M:1``` podrobnosti jsou vztah k hlavičce. Pojmenujte novou ```orderdetailsstruct``` strukturu a tímto způsobem vytvořte hierarchii a nastavte jednotlivé podsloupce na název příchozího sloupce:
+8. Přidejte další odvozený sloupec a zavolejte ho "MakeStruct". Tady vytvoříme hierarchickou strukturu, která bude uchovávat hodnoty z tabulky details. Pamatujte, že podrobnosti jsou ```M:1``` vztah k hlavičce. Pojmenujte novou strukturu ```orderdetailsstruct``` a tímto způsobem vytvořte hierarchii a nastavte jednotlivé podsloupce na název příchozího sloupce:
 
 ![Vytvořit strukturu](media/data-flow/cosmosb9.png)
 
 9. Teď přejdeme na zdroj prodejní hlavičky. Přidejte transformaci JOIN. Pro pravou stranu vyberte "MakeStruct". Nechejte nastavenou na vnitřní spojení a vyberte ```SalesOrderID``` pro obě strany podmínky spojení.
 
-10. V novém připojení, které jste přidali, klikněte na kartu náhled dat, abyste viděli výsledky až do tohoto okamžiku. Měli byste vidět všechny řádky záhlaví spojené s řádky podrobností. Jedná se o výsledek připojení, které je vytvořeno z ```SalesOrderID```. Dále zkombinujeme podrobnosti z běžných řádků do struktury Details a agreguje společné řádky.
+10. V novém připojení, které jste přidali, klikněte na kartu náhled dat, abyste viděli výsledky až do tohoto okamžiku. Měli byste vidět všechny řádky záhlaví spojené s řádky podrobností. Jedná se o výsledek připojení, které je vytvořeno z ```SalesOrderID``` . Dále zkombinujeme podrobnosti z běžných řádků do struktury Details a agreguje společné řádky.
 
 ![Spojit](media/data-flow/cosmosb4.png)
 
@@ -78,17 +78,17 @@ Výsledný kontejner CosmosDB vloží vnitřní dotaz do jediného dokumentu a b
 
 ![Čištění sloupců](media/data-flow/cosmosb5.png)
 
-13. Nyní se teď znovu přiblíží sloupec měny ```TotalDue```. Stejně jako v kroku 7 jsme nastavili vzorec na: ```toDouble(round(TotalDue,2))```.
+13. Nyní se teď znovu přiblíží sloupec měny ```TotalDue``` . Stejně jako v kroku 7 jsme nastavili vzorec na: ```toDouble(round(TotalDue,2))``` .
 
-14. V tomto umístění budeme normalizovat řádky seskupením podle společného klíče ```SalesOrderID```. Přidejte agregační transformaci a nastavte skupinu na ```SalesOrderID```.
+14. V tomto umístění budeme normalizovat řádky seskupením podle společného klíče ```SalesOrderID``` . Přidejte agregační transformaci a nastavte skupinu na ```SalesOrderID``` .
 
-15. V agregačním vzorci přidejte nový sloupec s názvem "Details" a pomocí tohoto vzorce Shromážděte hodnoty ve struktuře, kterou jsme dříve vytvořili s názvem ```orderdetailsstruct```: ```collect(orderdetailsstruct)```.
+15. V agregačním vzorci přidejte nový sloupec s názvem "Details" a pomocí tohoto vzorce Shromážděte hodnoty ve struktuře, kterou jsme dříve vytvořili s názvem ```orderdetailsstruct``` : ```collect(orderdetailsstruct)``` .
 
 16. Agregovaná transformace bude mít pouze výstupní sloupce, které jsou součástí agregačních nebo skupinových vzorců. Proto je potřeba zahrnout i sloupce z hlavičky Sales. K tomu přidejte vzor sloupce ve stejné agregační transformaci. Tento model bude obsahovat všechny ostatní sloupce ve výstupu:
 
 ```instr(name,'OrderQty')==0&&instr(name,'UnitPrice')==0&&instr(name,'SalesOrderID')==0```
 
-17. Použijte syntaxi "This" ve dalších vlastnostech, abyste zachovali stejné názvy sloupců a ```first()``` funkci používali jako agregaci:
+17. Použijte syntaxi "This" ve dalších vlastnostech, abyste zachovali stejné názvy sloupců a funkci používali ```first()``` jako agregaci:
 
 ![Agregace](media/data-flow/cosmosb6.png)
 

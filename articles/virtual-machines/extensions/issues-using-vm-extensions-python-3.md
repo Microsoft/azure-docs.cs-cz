@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 04/22/2020
 ms.assetid: 3cd520fd-eaf7-4ef9-b4d3-4827057e5028
 ms.openlocfilehash: 944abc62f25473ea52836af7dc1fdcd1e16d9269
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82120779"
 ---
 # <a name="issues-using-vm-extensions-in-python-3-enabled-linux-azure-virtual-machines-systems"></a>Problémy s používáním rozšíření virtuálních počítačů v Pythonu 3 – Virtual Machines systémech Linux Azure s podporou
@@ -28,7 +28,7 @@ ms.locfileid: "82120779"
 >
 > Před instalací **Python 2. x** v produkčním prostředí Zvažte otázku dlouhodobé podpory Python 2. x, zejména jejich schopnosti přijímat aktualizace zabezpečení. Jako produkty, včetně některých uvedených rozšíření, aktualizujte pomocí podpory **python 3,8** , byste měli přestat používat Python 2. x.
 
-Některé distribuce systému Linux přešly do Pythonu 3,8 a zcela odebraly `/usr/bin/python` starší verze vstupního bodu pro Python. Tento přechod se týká předem připraveného automatického nasazení určitých rozšíření virtuálních počítačů (VM) s následujícími podmínkami:
+Některé distribuce systému Linux přešly do Pythonu 3,8 a zcela odebraly starší verze `/usr/bin/python` vstupního bodu pro Python. Tento přechod se týká předem připraveného automatického nasazení určitých rozšíření virtuálních počítačů (VM) s následujícími podmínkami:
 
 - Rozšíření, která stále přecházejí do podpory Python 3. x
 - Rozšíření, která používají starší `/usr/bin/python` vstupní bod

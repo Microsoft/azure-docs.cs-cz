@@ -1,5 +1,5 @@
 ---
-title: Dekódovat zprávy EDIFACT
+title: Dekódování zpráv EDIFACT
 description: Ověřte EDI a generujte potvrzení pomocí dekodéru zpráv EDIFACT pro Azure Logic Apps s Enterprise Integration Pack
 services: logic-apps
 ms.suite: integration
@@ -9,15 +9,15 @@ ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
 ms.date: 04/22/2020
 ms.openlocfilehash: c32b3ee5c4689e960834d543de1ca377e918751d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82106283"
 ---
 # <a name="decode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Dekódovat zprávy EDIFACT pro Azure Logic Apps s Enterprise Integration Pack
 
-Pomocí nástroje dekódovat konektor zpráv EDIFACT můžete ověřit vlastnosti EDI a partner, rozdělit vzájemnou změnu na sady transakcí nebo zachovat celá propojení a generovat potvrzení pro zpracované transakce. Pokud chcete použít tento konektor, musíte přidat konektor k existující triggeru ve vaší aplikaci logiky.
+Pomocí konektoru pro dekódování zpráv EDIFACT můžete ověřit vlastnosti specifické pro EDI a partnera, rozdělit výměnu na sady transakcí nebo zachovat celé výměny a generovat potvrzení pro zpracované transakce. Pokud chcete tento konektor použít, musíte ho přidat do existujícího triggeru v aplikaci logiky.
 
 ## <a name="before-you-start"></a>Než začnete
 
@@ -28,7 +28,7 @@ Tady jsou položky, které potřebujete:
 * Alespoň dva [partneři](logic-apps-enterprise-integration-partners.md) , kteří jsou již definováni v účtu integrace
 * [Smlouva EDIFACT](logic-apps-enterprise-integration-edifact.md) , která je už definovaná v účtu integrace
 
-## <a name="decode-edifact-messages"></a>Dekódovat zprávy EDIFACT
+## <a name="decode-edifact-messages"></a>Dekódování zpráv EDIFACT
 
 > [!IMPORTANT]
 > Konektor EDIFACT podporuje pouze znaky UTF-8.
@@ -84,13 +84,13 @@ Dekódovaný EDIFACT konektor provádí tyto úlohy:
   * Kontroluje kontrolní číslo sady transakcí s jinými čísly řízení sady transakcí v této skupině.
 * Rozdělí výměnu na sady transakcí nebo zachová celý výměnu:
   * Rozdělit výměnu jako sady transakcí – pozastavit sady transakcí při chybě: rozdělí výměnu na sady transakcí a analyzuje každou sadu transakcí. 
-  Akce dekódování X12 výstupuje pouze ty sady transakcí, které selžou `badMessages`při ověřování, a výstup zbývajících transakcí nastaví `goodMessages`na.
+  Akce dekódování X12 výstupuje pouze ty sady transakcí, které selžou při ověřování `badMessages` , a výstup zbývajících transakcí nastaví na `goodMessages` .
   * Rozdělit výměnu jako sady transakcí – pozastavit výměnu při chybě: rozděluje výměnu do sad transakcí a analyzuje každou sadu transakcí. 
-  Pokud jedna nebo více transakcí v rámci výměny selže, akce dekódování X12 vypíše všechny sady transakcí v tomto přenosu do `badMessages`.
+  Pokud jedna nebo více transakcí v rámci výměny selže, akce dekódování X12 vypíše všechny sady transakcí v tomto přenosu do `badMessages` .
   * Zachovat výměnu – pozastavit sady transakcí při chybě: zachovejte výměnu a zpracujte celý dávkový vydaný výměnný. 
-  Akce dekódování X12 výstupuje pouze ty sady transakcí, které selžou `badMessages`při ověřování, a výstup zbývajících transakcí nastaví `goodMessages`na.
+  Akce dekódování X12 výstupuje pouze ty sady transakcí, které selžou při ověřování `badMessages` , a výstup zbývajících transakcí nastaví na `goodMessages` .
   * Zachovat výměnu – pozastavit výměnu při chybě: zachovejte výměnu a zpracujte celý dávkový výměnný. 
-  Pokud jedna nebo více transakcí v rámci výměny selže, akce dekódování X12 vypíše všechny sady transakcí v tomto přenosu do `badMessages`.
+  Pokud jedna nebo více transakcí v rámci výměny selže, akce dekódování X12 vypíše všechny sady transakcí v tomto přenosu do `badMessages` .
 * Generuje technický (ovládací) nebo funkční potvrzení (Pokud je nakonfigurováno).
   * Technické potvrzení nebo potvrzení CONTRLu hlásí výsledky syntaktické kontroly kompletního přijímaného přenosu.
   * Funkční potvrzení potvrdí přijetí nebo odmítnutí přijatého výměny nebo skupiny.

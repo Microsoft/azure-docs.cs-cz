@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 8e37d443d75dccae8704bc1ff7856e1d24131766
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82652701"
 ---
 #  <a name="xamarin-android-system-browser-considerations-for-using-msalnet"></a>Předpoklady pro prohlížeč systému Xamarin Android pro použití MSAL.NET
@@ -67,7 +67,7 @@ V následující tabulce jsou uvedena zařízení a prohlížeče, které byly t
 Pokud uživatel nemá na zařízení povolený prohlížeč, MSAL.NET vyvolá `AndroidActivityNotFound` výjimku.  
   - **Zmírnění rizika**: požádejte uživatele, aby na svém zařízení povolil prohlížeč. Doporučuje se použít prohlížeč, který podporuje vlastní karty.
 
-Pokud se ověření nezdaří (například pokud se ověřování spustí s DuckDuckGo), MSAL.NET vrátí `AuthenticationCanceled MsalClientException`. 
+Pokud se ověření nezdaří (například pokud se ověřování spustí s DuckDuckGo), MSAL.NET vrátí `AuthenticationCanceled MsalClientException` . 
   - **Problém s kořenovým adresářem**: v zařízení není povolený prohlížeč, který podporuje vlastní karty. Ověřování bylo spuštěno s prohlížečem, který nemůže dokončit ověřování. 
   - **Zmírnění rizika**: požádejte uživatele, aby na svém zařízení povolil prohlížeč. Doporučuje se použít prohlížeč, který podporuje vlastní karty.
 

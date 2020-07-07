@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: tisande
 ms.openlocfilehash: 8ef41edb687a5df39243880c897d12e83c008ec9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80063562"
 ---
 # <a name="operators-in-azure-cosmos-db"></a>Operátory v Azure Cosmos DB
@@ -21,19 +21,19 @@ Tento článek podrobně popisuje různé operátory podporované nástrojem Azu
 
 Následující tabulka ukazuje výsledek porovnání rovnosti v rozhraní SQL API mezi libovolnými dvěma typy JSON.
 
-| **Evřít** | **Nedefinované** | **Platnost** | **Logická hodnota** | **Automatické** | **Řetězec** | **Předmětů** | **Pole** |
+| **Evřít** | **Nedefinované** | **Null** | **Logická hodnota** | **Číselná** | **Řetězec** | **Předmětů** | **Pole** |
 |---|---|---|---|---|---|---|---|
 | **Nedefinované** | Nedefinované | Nedefinované | Nedefinované | Nedefinované | Nedefinované | Nedefinované | Nedefinované |
-| **Platnost** | Nedefinované | **Ok** | Nedefinované | Nedefinované | Nedefinované | Nedefinované | Nedefinované |
+| **Null** | Nedefinované | **Ok** | Nedefinované | Nedefinované | Nedefinované | Nedefinované | Nedefinované |
 | **Logická hodnota** | Nedefinované | Nedefinované | **Ok** | Nedefinované | Nedefinované | Nedefinované | Nedefinované |
-| **Automatické** | Nedefinované | Nedefinované | Nedefinované | **Ok** | Nedefinované | Nedefinované | Nedefinované |
+| **Číselná** | Nedefinované | Nedefinované | Nedefinované | **Ok** | Nedefinované | Nedefinované | Nedefinované |
 | **Řetězec** | Nedefinované | Nedefinované | Nedefinované | Nedefinované | **Ok** | Nedefinované | Nedefinované |
 | **Předmětů** | Nedefinované | Nedefinované | Nedefinované | Nedefinované | Nedefinované | **Ok** | Nedefinované |
 | **Pole** | Nedefinované | Nedefinované | Nedefinované | Nedefinované | Nedefinované | Nedefinované | **Ok** |
 
-Pro operátory porovnání, jako `>`například `>=`, `!=`, `<`,, `<=`a, porovnání mezi typy nebo mezi dvěma objekty nebo poli `Undefined`generuje.  
+Pro operátory porovnání, jako `>` například,, `>=` `!=` , `<` , a `<=` , porovnání mezi typy nebo mezi dvěma objekty nebo poli generuje `Undefined` .  
 
-Pokud je `Undefined`výsledek skalárního výrazu, položka není obsažena ve výsledku, protože `Undefined` se nerovná. `true`
+Pokud je výsledek skalárního výrazu `Undefined` , položka není obsažena ve výsledku, protože se `Undefined` nerovná `true` .
 
 ## <a name="logical-and-or-and-not-operators"></a>Operátory logických operátorů (AND, OR a NOT)
 
@@ -41,22 +41,22 @@ Logické operátory pracují s logickými hodnotami. V následujících tabulká
 
 **OR – operátor**
 
-Vrátí `true` , pokud je `true`jedna z podmínek.
+Vrátí `true` , pokud je jedna z podmínek `true` .
 
-|  | **True** | **False** | **Nedefinované** |
+|  | **Podmínka** | **Chybné** | **Nedefinované** |
 | --- | --- | --- | --- |
-| **True** |True |True |True |
-| **False** |True |False |Nedefinované |
+| **Podmínka** |True |True |True |
+| **Chybné** |True |False |Nedefinované |
 | **Nedefinované** |True |Nedefinované |Nedefinované |
 
 **AND – operátor**
 
-Vrátí `true` , pokud jsou `true`oba výrazy.
+Vrátí `true` , pokud jsou oba výrazy `true` .
 
-|  | **True** | **False** | **Nedefinované** |
+|  | **Podmínka** | **Chybné** | **Nedefinované** |
 | --- | --- | --- | --- |
-| **True** |True |False |Nedefinované |
-| **False** |False |False |False |
+| **Podmínka** |True |False |Nedefinované |
+| **Chybné** |False |False |False |
 | **Nedefinované** |Nedefinované |False |Nedefinované |
 
 **NOT – operátor**
@@ -65,13 +65,13 @@ Obrátí hodnotu libovolného logického výrazu.
 
 |  | **MĚNÍ** |
 | --- | --- |
-| **True** |False |
-| **False** |True |
+| **Podmínka** |False |
+| **Chybné** |True |
 | **Nedefinované** |Nedefinované |
 
 **Priorita operátorů**
 
-Logické operátory `OR`, `AND`a `NOT` mají úroveň priority zobrazenou níže:
+Logické operátory `OR` , `AND` a `NOT` mají úroveň priority zobrazenou níže:
 
 | **Operátor** | **Priorita** |
 | --- | --- |
@@ -81,13 +81,13 @@ Logické operátory `OR`, `AND`a `NOT` mají úroveň priority zobrazenou níže
 
 ## <a name="-operator"></a>* – operátor
 
-Speciální operátor * projektuje celou položku tak, jak je. Při použití musí být jediným projektovým polem. Dotaz, jako `SELECT * FROM Families f` je platný, ale `SELECT VALUE * FROM Families f` `SELECT *, f.id FROM Families f` je neplatný.
+Speciální operátor * projektuje celou položku tak, jak je. Při použití musí být jediným projektovým polem. Dotaz, jako `SELECT * FROM Families f` je platný, ale je neplatný `SELECT VALUE * FROM Families f` `SELECT *, f.id FROM Families f` .
 
 ## <a name="-and--operators"></a>? a?? operátory
 
 Můžete použít operátory Ternární (?) a COALESCE (??) k sestavení podmíněných výrazů, jako v programovacích jazycích, jako je C# nebo JavaScript.
 
-Můžete použít? operátor pro vytvoření nových vlastností JSON za běhu. Například následující dotaz klasifikuje úrovně stupňů do `elementary` nebo: `other`
+Můžete použít? operátor pro vytvoření nových vlastností JSON za běhu. Například následující dotaz klasifikuje úrovně stupňů do `elementary` nebo `other` :
 
 ```sql
      SELECT (c.grade < 5)? "elementary": "other" AS gradeLevel
@@ -103,7 +103,7 @@ Můžete také vnořit volání do? – operátor, jak je uvedeno v následujíc
 
 Stejně jako u jiných operátorů dotazů? operátor vyloučí položky, pokud nebyly nalezeny odkazované vlastnosti nebo se porovnávané typy liší.
 
-Chcete použít? operátor pro efektivní kontrolu vlastnosti v položce při dotazování na částečně strukturovaných nebo smíšených dat typu. Například následující dotaz vrátí `lastName` , pokud je k dispozici, `surname` nebo `lastName` Pokud není k dispozici.
+Chcete použít? operátor pro efektivní kontrolu vlastnosti v položce při dotazování na částečně strukturovaných nebo smíšených dat typu. Například následující dotaz vrátí `lastName` , pokud je k dispozici, nebo `surname` Pokud `lastName` není k dispozici.
 
 ```sql
     SELECT f.lastName ?? f.surname AS familyName

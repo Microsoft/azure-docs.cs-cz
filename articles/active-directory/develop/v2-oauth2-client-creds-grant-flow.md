@@ -13,10 +13,10 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: e25af1f629ea6fa7db14ce89dfffaa340486a989
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82689789"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft Identity Platform a tok přihlašovacích údajů klienta OAuth 2,0
@@ -46,9 +46,9 @@ Tyto dvě metody jsou nejběžnější ve službě Azure AD a doporučujeme je p
 
 ### <a name="access-control-lists"></a>Seznamy řízení přístupu
 
-Poskytovatel prostředků může vymáhat kontrolu autorizace na základě seznamu ID aplikace (klientů), který zná, a udělí konkrétní úroveň přístupu k. Když prostředek obdrží token z koncového bodu Microsoft Identity Platform, může token dekódovat a extrahovat ID aplikace klienta z deklarací identity `appid` a. `iss` Pak porovná aplikaci se seznamem řízení přístupu (ACL), které udržuje. Členitost a metoda seznamu ACL se můžou podstatně lišit mezi prostředky.
+Poskytovatel prostředků může vymáhat kontrolu autorizace na základě seznamu ID aplikace (klientů), který zná, a udělí konkrétní úroveň přístupu k. Když prostředek obdrží token z koncového bodu Microsoft Identity Platform, může token dekódovat a extrahovat ID aplikace klienta z `appid` `iss` deklarací identity a. Pak porovná aplikaci se seznamem řízení přístupu (ACL), které udržuje. Členitost a metoda seznamu ACL se můžou podstatně lišit mezi prostředky.
 
-Běžným případem použití je použití seznamu ACL ke spuštění testů pro webovou aplikaci nebo webové rozhraní API. Webové rozhraní API může udělit pouze podmnožinu úplných oprávnění pro konkrétního klienta. Chcete-li spustit ucelené testy v rozhraní API, vytvořte testovacího klienta, který získá tokeny z koncového bodu Microsoft Identity Platform a poté je odešle do rozhraní API. Rozhraní API pak zkontroluje seznam ACL pro ID aplikace testovacího klienta, aby měl úplný přístup k celé funkci rozhraní API. Použijete-li tento druh seznamu ACL, ověřte, zda není pouze `appid` hodnota volajícího, ale také ověřte, zda `iss` je hodnota tokenu důvěryhodná.
+Běžným případem použití je použití seznamu ACL ke spuštění testů pro webovou aplikaci nebo webové rozhraní API. Webové rozhraní API může udělit pouze podmnožinu úplných oprávnění pro konkrétního klienta. Chcete-li spustit ucelené testy v rozhraní API, vytvořte testovacího klienta, který získá tokeny z koncového bodu Microsoft Identity Platform a poté je odešle do rozhraní API. Rozhraní API pak zkontroluje seznam ACL pro ID aplikace testovacího klienta, aby měl úplný přístup k celé funkci rozhraní API. Použijete-li tento druh seznamu ACL, ověřte, zda není pouze hodnota volajícího, `appid` ale také ověřte, zda `iss` je hodnota tokenu důvěryhodná.
 
 Tento typ autorizace je společný pro démony a účty služeb, které potřebují přístup k datům vlastněných uživateli, kteří mají osobní účty Microsoft. Pro data vlastněná organizacemi doporučujeme, abyste získali potřebnou autorizaci prostřednictvím oprávnění aplikace.
 
@@ -88,7 +88,7 @@ Pokud uživatele podepíšete do vaší aplikace, můžete určit organizaci, ke
 Až budete připraveni požádat o oprávnění od správce organizace, můžete uživatele přesměrovat na *koncový bod souhlasu správce*Microsoft Identity Platform.
 
 > [!TIP]
-> Zkuste tento požadavek provést v nástroji post! (Pro nejlepší výsledky použijte vlastní ID aplikace – kurz aplikace nebude vyžadovat užitečná oprávnění.) [Pokus o spuštění této žádosti v předzálohovacím ![](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> Zkuste tento požadavek provést v nástroji post! (Pro nejlepší výsledky použijte vlastní ID aplikace – kurz aplikace nebude vyžadovat užitečná oprávnění.) [ ![ Pokus o spuštění této žádosti v předzálohovacím](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 ```HTTP
 // Line breaks are for legibility only.
@@ -107,9 +107,9 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 
 | Parametr | Podmínka | Popis |
 | --- | --- | --- |
-| `tenant` | Požaduje se | Tenant adresáře, ze kterého chcete požádat o oprávnění. Může se jednat o formát GUID nebo popisný název. Pokud nevíte, ke kterému tenantovi uživatel patří, a chcete jim umožnit, aby se přihlásili pomocí libovolného tenanta `common`, použijte. |
-| `client_id` | Požaduje se | **ID aplikace (klienta)** , které [Azure Portal – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) prostředí přiřazené k vaší aplikaci. |
-| `redirect_uri` | Požaduje se | Identifikátor URI přesměrování, kde má být odeslána odpověď pro zpracování vaší aplikace. Musí přesně odpovídat jednomu z identifikátorů URI přesměrování, které jste zaregistrovali na portálu, s výjimkou toho, že musí být zakódovaný URL a může mít další segmenty cesty. |
+| `tenant` | Vyžadováno | Tenant adresáře, ze kterého chcete požádat o oprávnění. Může se jednat o formát GUID nebo popisný název. Pokud nevíte, ke kterému tenantovi uživatel patří, a chcete jim umožnit, aby se přihlásili pomocí libovolného tenanta, použijte `common` . |
+| `client_id` | Vyžadováno | **ID aplikace (klienta)** , které [Azure Portal – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) prostředí přiřazené k vaší aplikaci. |
+| `redirect_uri` | Vyžadováno | Identifikátor URI přesměrování, kde má být odeslána odpověď pro zpracování vaší aplikace. Musí přesně odpovídat jednomu z identifikátorů URI přesměrování, které jste zaregistrovali na portálu, s výjimkou toho, že musí být zakódovaný URL a může mít další segmenty cesty. |
 | `state` | Doporučené | Hodnota, která je obsažena v požadavku, který je také vrácen v odpovědi na token. Může to být řetězec libovolného obsahu, který chcete. Stav se používá ke kódování informací o stavu uživatele v aplikaci předtím, než došlo k žádosti o ověření, jako je například stránka nebo zobrazení, na kterých se nachází. |
 
 V tomto okamžiku Azure AD vynutilo, že k dokončení žádosti se může přihlásit jenom správce klienta. Správce bude požádán o schválení všech přímých oprávnění aplikace, která jste si vyžádali pro vaši aplikaci na portálu pro registraci aplikací.
@@ -145,10 +145,10 @@ Po přijetí úspěšné odpovědi z koncového bodu zřizování aplikace získ
 
 ## <a name="get-a-token"></a>Získání tokenu
 
-Po získání potřebné autorizace pro vaši aplikaci pokračujte v získání přístupových tokenů pro rozhraní API. Pokud chcete získat token pomocí udělení přihlašovacích údajů klienta, odešlete požadavek POST na koncový `/token` bod Microsoft Identity Platform:
+Po získání potřebné autorizace pro vaši aplikaci pokračujte v získání přístupových tokenů pro rozhraní API. Pokud chcete získat token pomocí udělení přihlašovacích údajů klienta, odešlete požadavek POST na `/token` koncový bod Microsoft Identity Platform:
 
 > [!TIP]
-> Zkuste tento požadavek provést v nástroji post! (Pro nejlepší výsledky použijte vlastní ID aplikace – kurz aplikace nebude vyžadovat užitečná oprávnění.) [Pokus o spuštění této žádosti v předzálohovacím ![](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> Zkuste tento požadavek provést v nástroji post! (Pro nejlepší výsledky použijte vlastní ID aplikace – kurz aplikace nebude vyžadovat užitečná oprávnění.) [ ![ Pokus o spuštění této žádosti v předzálohovacím](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 ### <a name="first-case-access-token-request-with-a-shared-secret"></a>První případ: žádost přístupového tokenu se sdíleným tajným klíčem
 
@@ -170,11 +170,11 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=
 
 | Parametr | Podmínka | Popis |
 | --- | --- | --- |
-| `tenant` | Požaduje se | Tenant adresáře, na který aplikace plánuje pracovat, v identifikátoru GUID nebo ve formátu názvu domény. |
-| `client_id` | Požaduje se | ID aplikace přiřazené vaší aplikaci. Tyto informace najdete na portálu, kde jste zaregistrovali vaši aplikaci. |
-| `scope` | Požaduje se | Hodnota předaná pro `scope` parametr v této žádosti by měla být identifikátorem prostředku (identifikátor URI ID aplikace) prostředku, který chcete připojit, a to s `.default` příponou. V příkladu Microsoft Graph je `https://graph.microsoft.com/.default`hodnota. <br/>Tato hodnota oznamuje koncovému bodu Microsoft Identity Platform, který má všechna přímá oprávnění aplikace nakonfigurovaná pro vaši aplikaci, koncový bod by měl vydávat token pro ty, které jsou přidružené k prostředku, který chcete použít. Další informace o tomto `/.default` oboru najdete v [dokumentaci k vyjádření souhlasu](v2-permissions-and-consent.md#the-default-scope). |
-| `client_secret` | Požaduje se | Tajný kód klienta, který jste vygenerovali pro vaši aplikaci na portálu pro registraci aplikací. Tajný klíč klienta musí být před odesláním zakódovaný na adrese URL. |
-| `grant_type` | Požaduje se | Musí být nastaven na `client_credentials`hodnotu. |
+| `tenant` | Vyžadováno | Tenant adresáře, na který aplikace plánuje pracovat, v identifikátoru GUID nebo ve formátu názvu domény. |
+| `client_id` | Vyžadováno | ID aplikace přiřazené vaší aplikaci. Tyto informace najdete na portálu, kde jste zaregistrovali vaši aplikaci. |
+| `scope` | Vyžadováno | Hodnota předaná pro `scope` parametr v této žádosti by měla být identifikátorem prostředku (identifikátor URI ID aplikace) prostředku, který chcete připojit, a to s `.default` příponou. V příkladu Microsoft Graph je hodnota `https://graph.microsoft.com/.default` . <br/>Tato hodnota oznamuje koncovému bodu Microsoft Identity Platform, který má všechna přímá oprávnění aplikace nakonfigurovaná pro vaši aplikaci, koncový bod by měl vydávat token pro ty, které jsou přidružené k prostředku, který chcete použít. Další informace o tomto `/.default` oboru najdete v [dokumentaci k vyjádření souhlasu](v2-permissions-and-consent.md#the-default-scope). |
+| `client_secret` | Vyžadováno | Tajný kód klienta, který jste vygenerovali pro vaši aplikaci na portálu pro registraci aplikací. Tajný klíč klienta musí být před odesláním zakódovaný na adrese URL. |
+| `grant_type` | Vyžadováno | Musí být nastaven na hodnotu `client_credentials` . |
 
 ### <a name="second-case-access-token-request-with-a-certificate"></a>Druhý případ: žádost o přístupový token s certifikátem
 
@@ -192,12 +192,12 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 
 | Parametr | Podmínka | Popis |
 | --- | --- | --- |
-| `tenant` | Požaduje se | Tenant adresáře, na který aplikace plánuje pracovat, v identifikátoru GUID nebo ve formátu názvu domény. |
-| `client_id` | Požaduje se |ID aplikace (klienta), které je přiřazeno vaší aplikaci. |
-| `scope` | Požaduje se | Hodnota předaná pro `scope` parametr v této žádosti by měla být identifikátorem prostředku (identifikátor URI ID aplikace) prostředku, který chcete připojit, a to s `.default` příponou. V příkladu Microsoft Graph je `https://graph.microsoft.com/.default`hodnota. <br/>Tato hodnota informuje koncový bod platformy Microsoft Identity Platform, který obsahuje všechna přímá oprávnění aplikace, která jste pro svou aplikaci nakonfigurovali, a měla by vydávat token pro ty, které jsou přidružené k prostředku, který chcete použít. Další informace o tomto `/.default` oboru najdete v [dokumentaci k vyjádření souhlasu](v2-permissions-and-consent.md#the-default-scope). |
-| `client_assertion_type` | Požaduje se | Hodnota musí být nastavena na `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`. |
-| `client_assertion` | Požaduje se | Kontrolní výraz (webový token JSON), který potřebujete k vytvoření a podepsání certifikátu, který jste zaregistrovali jako přihlašovací údaje pro vaši aplikaci. Přečtěte si informace o [přihlašovacích údajích k certifikátu](active-directory-certificate-credentials.md) , kde se dozvíte, jak zaregistrovat certifikát a formát kontrolního výrazu.|
-| `grant_type` | Požaduje se | Musí být nastaven na `client_credentials`hodnotu. |
+| `tenant` | Vyžadováno | Tenant adresáře, na který aplikace plánuje pracovat, v identifikátoru GUID nebo ve formátu názvu domény. |
+| `client_id` | Vyžadováno |ID aplikace (klienta), které je přiřazeno vaší aplikaci. |
+| `scope` | Vyžadováno | Hodnota předaná pro `scope` parametr v této žádosti by měla být identifikátorem prostředku (identifikátor URI ID aplikace) prostředku, který chcete připojit, a to s `.default` příponou. V příkladu Microsoft Graph je hodnota `https://graph.microsoft.com/.default` . <br/>Tato hodnota informuje koncový bod platformy Microsoft Identity Platform, který obsahuje všechna přímá oprávnění aplikace, která jste pro svou aplikaci nakonfigurovali, a měla by vydávat token pro ty, které jsou přidružené k prostředku, který chcete použít. Další informace o tomto `/.default` oboru najdete v [dokumentaci k vyjádření souhlasu](v2-permissions-and-consent.md#the-default-scope). |
+| `client_assertion_type` | Vyžadováno | Hodnota musí být nastavena na `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` . |
+| `client_assertion` | Vyžadováno | Kontrolní výraz (webový token JSON), který potřebujete k vytvoření a podepsání certifikátu, který jste zaregistrovali jako přihlašovací údaje pro vaši aplikaci. Přečtěte si informace o [přihlašovacích údajích k certifikátu](active-directory-certificate-credentials.md) , kde se dozvíte, jak zaregistrovat certifikát a formát kontrolního výrazu.|
+| `grant_type` | Vyžadováno | Musí být nastaven na hodnotu `client_credentials` . |
 
 Všimněte si, že parametry jsou skoro stejné jako v případě požadavku pomocí sdíleného tajného klíče s tím rozdílem, že parametr client_secret je nahrazen dvěma parametry: client_assertion_type a client_assertion.
 
@@ -216,7 +216,7 @@ Všimněte si, že parametry jsou skoro stejné jako v případě požadavku pom
 | Parametr | Popis |
 | --- | --- |
 | `access_token` | Požadovaný přístupový token Aplikace může tento token použít k ověření zabezpečeného prostředku, například k webovému rozhraní API. |
-| `token_type` | Určuje hodnotu typu tokenu. Jediným typem, který podporuje platforma Microsoft Identity Platform `bearer`, je. |
+| `token_type` | Určuje hodnotu typu tokenu. Jediným typem, který podporuje platforma Microsoft Identity Platform, je `bearer` . |
 | `expires_in` | Doba, po kterou je přístupový token platný (v sekundách). |
 
 ### <a name="error-response"></a>Chybová odezva

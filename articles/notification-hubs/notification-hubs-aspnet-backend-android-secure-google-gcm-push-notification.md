@@ -18,10 +18,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 419a9f9b5ce698c7516edd55856cbea9891ba029
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71212182"
 ---
 # <a name="sending-secure-push-notifications-with-azure-notification-hubs"></a>Posílání zabezpečených nabízených oznámení pomocí Azure Notification Hubs
@@ -65,7 +65,7 @@ Aby bylo možné dosáhnout tohoto cíle, je nutné zajistit, aby vaše aplikace
 
 Teď upravte tok *přihlášení* , aby se uložila hodnota hlavičky ověřování ve sdílených preferencích vaší aplikace. Obdobná mechanismy se dají použít k uložení jakéhokoli ověřovacího tokenu (například tokeny OAuth), který musí aplikace používat, aniž by museli vyžadovat přihlašovací údaje uživatele.
 
-1. V projektu aplikace pro Android přidejte do horní části `MainActivity` třídy následující konstanty:
+1. V projektu aplikace pro Android přidejte do horní části třídy následující konstanty `MainActivity` :
 
     ```java
     public static final String NOTIFY_USERS_PROPERTIES = "NotifyUsersProperties";
@@ -86,7 +86,7 @@ Teď upravte tok *přihlášení* , aby se uložila hodnota hlavičky ověřová
         return basicAuthHeader;
     }
     ```
-3. Na začátek `MainActivity` souboru `import` přidejte následující příkazy:
+3. `import`Na začátek souboru přidejte následující příkazy `MainActivity` :
 
     ```java
     import android.content.SharedPreferences;
@@ -103,7 +103,7 @@ Nyní Změňte obslužnou rutinu, která je volána při přijetí oznámení.
         retrieveNotification(secureMessageId);
     }
     ```
-2. Pak přidejte `retrieveNotification()` metodu a nahraďte zástupný symbol `{back-end endpoint}` koncovým bodem back-end získaným při nasazení back-endu:
+2. Pak přidejte `retrieveNotification()` metodu a nahraďte zástupný symbol koncovým `{back-end endpoint}` bodem back-end získaným při nasazení back-endu:
 
     ```java
     private void retrieveNotification(final String secureMessageId) {

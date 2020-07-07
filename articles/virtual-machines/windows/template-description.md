@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: cynthn
 ms.openlocfilehash: 04dba192488744d1b54b0a0e2d885c0b1766bdc6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82100528"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Virtuální počítače v šabloně Azure Resource Manager
@@ -404,7 +404,7 @@ I když jsou [rozšíření](extensions-features.md) samostatným prostředkem, 
 
 Tento prostředek rozšíření používá proměnnou úložiště a diagnostické proměnné k poskytnutí hodnot. Pokud chcete změnit data shromážděná tímto rozšířením, můžete přidat další čítače výkonu do proměnné wadperfcounters. Můžete také zvolit, aby diagnostická data byla vložena do jiného účtu úložiště, než kde jsou uloženy disky virtuálních počítačů.
 
-Na virtuálním počítači můžete nainstalovat spoustu rozšíření, ale nejužitečnější je pravděpodobně [rozšíření vlastních skriptů](extensions-customscript.md). V tomto příkladu se skript prostředí PowerShell s názvem Start. ps1 spustí na každém virtuálním počítači, když se poprvé spustí:
+Na virtuálním počítači můžete nainstalovat spoustu rozšíření, ale nejužitečnější je pravděpodobně [rozšíření vlastních skriptů](extensions-customscript.md). V tomto příkladu se skript prostředí PowerShell s názvem start.ps1 při prvním spuštění spouští na každém virtuálním počítači:
 
 ```json
 {
@@ -431,7 +431,7 @@ Na virtuálním počítači můžete nainstalovat spoustu rozšíření, ale nej
 }
 ```
 
-Skript Start. ps1 může provést mnoho úloh konfigurace. Například datové disky, které jsou přidány do virtuálních počítačů v příkladu, nejsou inicializovány. k jejich inicializaci můžete použít vlastní skript. Pokud máte více úloh po spuštění, můžete použít soubor Start. ps1 ke volání dalších skriptů PowerShellu ve službě Azure Storage. V příkladu se používá PowerShell, ale můžete použít libovolnou metodu skriptování, která je k dispozici v operačním systému, který používáte.
+Skript start.ps1 může provádět mnoho úloh konfigurace. Například datové disky, které jsou přidány do virtuálních počítačů v příkladu, nejsou inicializovány. k jejich inicializaci můžete použít vlastní skript. Pokud máte více úloh po spuštění, můžete použít soubor start.ps1 pro volání dalších skriptů PowerShellu v Azure Storage. V příkladu se používá PowerShell, ale můžete použít libovolnou metodu skriptování, která je k dispozici v operačním systému, který používáte.
 
 Stav nainstalovaných rozšíření můžete zobrazit z nastavení rozšíření na portálu:
 

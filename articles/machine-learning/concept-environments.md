@@ -10,10 +10,10 @@ ms.author: trbye
 author: trevorbye
 ms.date: 03/18/2020
 ms.openlocfilehash: 50ddbffd00e0cbbd0641089613aaa40d03658c9e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80064189"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>Co jsou Azure Machine Learning prostředí?
@@ -21,7 +21,7 @@ ms.locfileid: "80064189"
 
 Azure Machine Learning prostředí určují balíčky Pythonu, proměnné prostředí a nastavení softwaru kolem vašich školicích a vyhodnocovacích skriptů. Určují také časy spuštění (Python, Spark nebo Docker). Prostředí jsou spravovaná a entitami se správou verzí v rámci vašeho Machine Learning pracovního prostoru, které umožňují reprodukovatelné pracovní postupy, které lze auditovat a přenosné strojové učení napříč různými výpočetními cíli.
 
-`Environment` Objekt na místním výpočetním prostředí můžete použít k těmto akcím:
+`Environment`Objekt na místním výpočetním prostředí můžete použít k těmto akcím:
 * Vytvořte školicí skript.
 * Používejte stejné prostředí v Azure Machine Learning COMPUTE pro modelové školení ve velkém měřítku.
 * Nasaďte model se stejným prostředím.
@@ -36,7 +36,7 @@ Prostředí se můžou v podstatě rozdělit do tří *kategorií: řízená*, *
 
 Dodaná prostředí jsou poskytována Azure Machine Learning a jsou ve výchozím nastavení k dispozici ve vašem pracovním prostoru. Obsahují kolekce balíčků a nastavení Pythonu, které vám pomůžou začít s různými architekturami strojového učení. 
 
-V prostředích spravovaných uživatelem zodpovídáte za nastavení vašeho prostředí a instalaci každého balíčku, který váš školicí skript potřebuje na výpočetním cíli. Conda nekontroluje vaše prostředí ani neinstaluje cokoli za vás. Pokud definujete vlastní prostředí, musíte vytvořit seznam `azureml-defaults` s verzí `>= 1.0.45` jako závislostí PIP. Tento balíček obsahuje funkce, které jsou potřeba pro hostování modelu jako webové služby.
+V prostředích spravovaných uživatelem zodpovídáte za nastavení vašeho prostředí a instalaci každého balíčku, který váš školicí skript potřebuje na výpočetním cíli. Conda nekontroluje vaše prostředí ani neinstaluje cokoli za vás. Pokud definujete vlastní prostředí, musíte `azureml-defaults` vytvořit seznam s verzí `>= 1.0.45` jako závislostí PIP. Tento balíček obsahuje funkce, které jsou potřeba pro hostování modelu jako webové služby.
 
 Prostředí spravovaná systémem se používají, když chcete, aby [conda](https://conda.io/docs/) spravovalo prostředí Pythonu a závislosti skriptů za vás. Služba ve výchozím nastavení předpokládá tento typ prostředí, protože se jedná o užitečnost vzdálených výpočetních cílů, které se nedají ručně konfigurovat.
 
@@ -93,9 +93,9 @@ Podívejte se na následující diagram, který obsahuje tři definice prostřed
 ![Diagram ukládání do mezipaměti prostředí jako imagí Docker](./media/concept-environments/environment-caching.png)
 
 >[!IMPORTANT]
-> Pokud vytvoříte prostředí s nepřipojenou závislostí balíčku, například ```numpy```toto prostředí bude používat verzi balíčku nainstalovanou _v době vytváření prostředí_. I jakékoli budoucí prostředí s vyhovující definicí bude dál používat starou verzi. 
+> Pokud vytvoříte prostředí s nepřipojenou závislostí balíčku, například ```numpy``` Toto prostředí bude používat verzi balíčku nainstalovanou _v době vytváření prostředí_. I jakékoli budoucí prostředí s vyhovující definicí bude dál používat starou verzi. 
 
-Chcete-li aktualizovat balíček, zadejte číslo verze pro vynucení opětovného sestavení bitové kopie ```numpy==1.18.1```, například. Všimněte si, že se nainstalují nové závislosti včetně vnořených objektů, které by mohly přerušit předchozí pracovní scénář.
+Chcete-li aktualizovat balíček, zadejte číslo verze pro vynucení opětovného sestavení bitové kopie, například ```numpy==1.18.1``` . Všimněte si, že se nainstalují nové závislosti včetně vnořených objektů, které by mohly přerušit předchozí pracovní scénář.
 
 > [!WARNING]
 >  Metoda [prostředí. Build](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#build-workspace--image-build-compute-none-) znovu sestaví bitovou kopii v mezipaměti s případným vedlejším účinkem aktualizace nepřipnutých balíčků a zásadní reprodukovatelnosti pro všechny definice prostředí odpovídající tomuto obrázku v mezipaměti.

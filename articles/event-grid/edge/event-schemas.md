@@ -10,10 +10,10 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: ba261aeedf6574f69d3c05f8fd005c912dcc59d1
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73242463"
 ---
 # <a name="event-schemas"></a>Schémata událostí
@@ -54,16 +54,16 @@ Schéma EventGrid se skládá ze sady požadovaných vlastností, které musí e
 
 Všechny události mají následující data nejvyšší úrovně:
 
-| Vlastnost | Typ | Požaduje se | Popis |
+| Vlastnost | Typ | Vyžadováno | Popis |
 | -------- | ---- | ----------- |-----------
-| téma | řetězec | Ne | By se mělo shodovat s tématem, na kterém je publikovaná. Event Grid ji naplní názvem tématu, na kterém je publikovaná, pokud není zadaný. |
+| téma | řetězec | No | By se mělo shodovat s tématem, na kterém je publikovaná. Event Grid ji naplní názvem tématu, na kterém je publikovaná, pokud není zadaný. |
 | závislosti | řetězec | Ano | Cesta k předmětu události, kterou definuje vydavatel. |
 | Typ | řetězec | Ano | Typ události pro tento zdroj události, například BlobCreated. |
 | eventTime | řetězec | Ano | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
-| ID | řetězec | Ne | Jedinečný identifikátor události |
-| data | objekt | Ne | Slouží k zaznamenání dat události, která jsou specifická pro entitu publikování. |
+| ID | řetězec | No | Jedinečný identifikátor události |
+| data | odkazy objektů | Ne | Slouží k zaznamenání dat události, která jsou specifická pro entitu publikování. |
 | dataVersion | řetězec | Ano | Verze schématu datového objektu. Verzi schématu definuje vydavatel. |
-| metadataVersion | řetězec | Ne | Verze schématu metadat události. Schéma vlastností nejvyšší úrovně definuje Event Grid. Tuto hodnotu poskytuje Event Grid. |
+| metadataVersion | řetězec | No | Verze schématu metadat události. Schéma vlastností nejvyšší úrovně definuje Event Grid. Tuto hodnotu poskytuje Event Grid. |
 
 ### <a name="example--eventgrid-schema-event"></a>Příklad: událost schématu EventGrid
 

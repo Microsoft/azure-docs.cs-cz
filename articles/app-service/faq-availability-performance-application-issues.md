@@ -10,10 +10,10 @@ ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: 021e680a2ca5f7c00f113c4a17421b2648ca6230
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82159979"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Nejčastější dotazy týkající se výkonu aplikací pro Web Apps v Azure
@@ -46,20 +46,20 @@ K správě a údržbě App Service webových aplikací můžete použít rutiny 
 
 Chcete-li zobrazit protokoly událostí vaší webové aplikace:
 
-1. Přihlaste se k **webu Kudu** (`https://*yourwebsitename*.scm.azurewebsites.net`).
-2. V nabídce vyberte **ladit konzolu** > **cmd**.
+1. Přihlaste se k **webu Kudu** ( `https://*yourwebsitename*.scm.azurewebsites.net` ).
+2. V nabídce vyberte **ladit konzolu**  >  **cmd**.
 3. Vyberte složku **soubory protokolů** .
-4. Chcete-li zobrazit protokoly událostí, vyberte ikonu tužky vedle **EventLog. XML**.
-5. Pokud chcete stáhnout protokoly, spusťte rutinu `Save-AzureWebSiteLog -Name webappname`PowerShellu.
+4. Chcete-li zobrazit protokoly událostí, vyberte ikonu tužky vedle **eventlog.xml**.
+5. Pokud chcete stáhnout protokoly, spusťte rutinu PowerShellu `Save-AzureWebSiteLog -Name webappname` .
 
 ## <a name="how-do-i-capture-a-user-mode-memory-dump-of-my-web-app"></a>Návody zachytit výpis paměti moje webové aplikace v uživatelském režimu?
 
 Postup při zaznamenání výpisu paměti ve vaší webové aplikaci v uživatelském režimu:
 
-1. Přihlaste se k **webu Kudu** (`https://*yourwebsitename*.scm.azurewebsites.net`).
+1. Přihlaste se k **webu Kudu** ( `https://*yourwebsitename*.scm.azurewebsites.net` ).
 2. Vyberte nabídku **Průzkumník procesů** .
-3. Klikněte pravým tlačítkem na proces **W3wp. exe** nebo na proces webové úlohy.
-4. Vyberte možnost **Stáhnout výpis stavu** > paměti –**úplný výpis**.
+3. Klikněte pravým tlačítkem na proces **w3wp.exe** nebo na proces webové úlohy.
+4. Vyberte možnost **Stáhnout výpis stavu paměti**–  >  **úplný výpis**.
 
 ## <a name="how-do-i-view-process-level-info-for-my-web-app"></a>Návody zobrazit informace na úrovni procesu pro moji webovou aplikaci?
 
@@ -67,11 +67,11 @@ Pro zobrazení informací na úrovni procesu pro vaši webovou aplikaci máte dv
 
 *   Na webu Azure Portal:
     1. Otevřete **Průzkumníka procesů** pro webovou aplikaci.
-    2. Chcete-li zobrazit podrobnosti, vyberte proces **W3wp. exe** .
+    2. Chcete-li zobrazit podrobnosti, vyberte proces **w3wp.exe** .
 *   V konzole Kudu:
-    1. Přihlaste se k **webu Kudu** (`https://*yourwebsitename*.scm.azurewebsites.net`).
+    1. Přihlaste se k **webu Kudu** ( `https://*yourwebsitename*.scm.azurewebsites.net` ).
     2. Vyberte nabídku **Průzkumník procesů** .
-    3. V případě procesu **W3wp. exe** vyberte možnost **vlastnosti**.
+    3. V případě procesu **w3wp.exe** vyberte možnost **vlastnosti**.
 
 ## <a name="when-i-browse-to-my-app-i-see-error-403---this-web-app-is-stopped-how-do-i-resolve-this"></a>Při procházení k aplikaci se zobrazí zpráva "Chyba 403-Tato webová aplikace je zastavená". Jak to můžu vyřešit?
 
@@ -101,14 +101,14 @@ Ve výchozím nastavení jsou webové aplikace uvolněny, pokud nejsou po stanov
 Zapnutí trasování chybných požadavků:
 
 1. V Azure Portal přejdete do své webové aplikace.
-3. Vyberte **všechna nastavení** > **diagnostické protokoly**.
+3. Vyberte **všechna nastavení**  >  **diagnostické protokoly**.
 4. Pro **trasování chybných požadavků**vyberte **zapnuto**.
 5. Vyberte **Uložit**.
 6. V okně webová aplikace vyberte **nástroje**.
 7. Vyberte **Visual Studio Online**.
 8. Pokud nastavení není **zapnuto**, vyberte **zapnuto**.
 9. Vyberte **Přejít**.
-10. Vyberte soubor **Web. config**.
+10. Vyberte **Web.config**.
 11. V System. webServer přidejte tuto konfiguraci (pro zachycení konkrétní adresy URL):
 
     ```xml
@@ -142,8 +142,8 @@ Zapnutí trasování chybných požadavků:
     </tracing>
     ```
 13. Pokud si chcete stáhnout trasování chybných požadavků, na [portálu](https://portal.azure.com)přejdete na svůj web.
-15. Vyberte **nástroje** > **Kudu** > **Přejít**.
-18. V nabídce vyberte **ladit konzolu** > **cmd**.
+15. Vyberte **nástroje**  >  **Kudu**  >  **Přejít**.
+18. V nabídce vyberte **ladit konzolu**  >  **cmd**.
 19. Vyberte složku **soubory protokolu** a potom vyberte složku s názvem, který začíná na **W3SVC**.
 20. Chcete-li zobrazit soubor XML, vyberte ikonu tužky.
 
@@ -174,7 +174,7 @@ Tento problém je opravený v Kestrel verze 1.0.2. Tato verze je součástí akt
 
 Pokud používáte funkci místní mezipaměti App Service, jsou ovlivněny struktury složek protokolů a složek dat pro vaši instanci App Service. Při použití místní mezipaměti se v protokolech úložiště a složkách dat vytvoří podsložky. Podsložky používají vzor pojmenování "jedinečný identifikátor" + časové razítko. Každá podsložka odpovídá instanci virtuálního počítače, ve které je webová aplikace spuštěná nebo spuštěná.
 
-Chcete-li zjistit, zda používáte místní mezipaměť, zkontrolujte kartu **nastavení aplikace** App Service. Pokud se používá místní mezipaměť, nastavení `WEBSITE_LOCAL_CACHE_OPTION` aplikace je nastaveno na. `Always`
+Chcete-li zjistit, zda používáte místní mezipaměť, zkontrolujte kartu **nastavení aplikace** App Service. Pokud se používá místní mezipaměť, nastavení aplikace `WEBSITE_LOCAL_CACHE_OPTION` je nastaveno na `Always` .
 
 Pokud nepoužíváte místní mezipaměť a dochází k tomuto problému, odešlete žádost o podporu.
 

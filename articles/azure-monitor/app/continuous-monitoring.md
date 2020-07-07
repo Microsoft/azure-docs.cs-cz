@@ -4,10 +4,10 @@ description: Poskytuje pokyny pro rychlé nastavení nepřetržitého monitorov�
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.openlocfilehash: 0d47fb1eccdfcfc7b2719825575f06dc85e62452
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82652755"
 ---
 # <a name="add-continuous-monitoring-to-your-release-pipeline"></a>Přidání průběžného monitorování do kanálu pro vydávání verzí
@@ -20,7 +20,7 @@ Díky průběžnému monitorování můžou kanály vydávání verzí zahrnovat
 
 1. V [Azure DevOps](https://dev.azure.com)vyberte organizaci a projekt.
    
-1. V levé nabídce stránky projektu vyberte možnost**vydané verze** **kanálů** > . 
+1. V levé nabídce stránky projektu vyberte možnost **Pipelines**  >  **vydané verze**kanálů. 
    
 1. Přetáhněte šipku vedle tlačítka **Nový** a vyberte **Nový kanál vydání**. Nebo, pokud ještě nemáte kanál, vyberte na zobrazené stránce **Nový kanál** .
    

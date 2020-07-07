@@ -16,10 +16,10 @@ ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: juliako
 ms.openlocfilehash: 44095cb85c62fd40032263d96ad678bdeb5effc0
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82159399"
 ---
 # <a name="hybrid-design-of-drm-subsystems"></a>Hybridní návrh subsystémů DRM 
@@ -93,7 +93,7 @@ Prostřednictvím konfigurace zásad doručení assetů můžete řídit násled
 
 ## <a name="scenarios-and-samples"></a>Scénáře a ukázky
 
-Na základě vysvětlení v předchozí části používají následující pět hybridních scénářů příslušné kombinace konfigurace **Content key**-**zásad doručení assetů** obsahu (ukázky uvedené v posledním sloupci následují v tabulce):
+Na základě vysvětlení v předchozí části používají následující pět hybridních scénářů příslušné **Content key** - kombinace konfigurace**zásad doručení assetů** obsahu (ukázky uvedené v posledním sloupci následují v tabulce):
 
 |**Hostování obsahu & původu**|**Šifrování DRM**|**Doručování licencí DRM**|**Konfigurovat klíč obsahu**|**Konfigurace zásad doručení assetu**|**Ukázka**|
 |---|---|---|---|---|---|

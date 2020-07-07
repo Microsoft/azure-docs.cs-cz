@@ -14,16 +14,16 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.author: abarora
-ms.openlocfilehash: afecc84748ae8ce85c07e3b482bd9b596bdca251
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: af9d92c47982a58530a42a4ecdd41032196a9da9
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75433680"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856485"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-core-app"></a>Kurz: použití dynamické konfigurace v aplikaci .NET Core
 
-Klientská knihovna .NET Core konfigurace aplikace podporuje aktualizaci sady nastavení konfigurace na vyžádání, aniž by způsobila restartování aplikace. To může být implementováno tak, že nejprve získá `IConfigurationRefresher` instanci z možností pro poskytovatele konfigurace a potom zavolá `Refresh` tuto instanci kdekoli v kódu.
+Klientská knihovna .NET Core konfigurace aplikace podporuje aktualizaci sady nastavení konfigurace na vyžádání, aniž by způsobila restartování aplikace. To může být implementováno tak, že nejprve získá instanci `IConfigurationRefresher` z možností pro poskytovatele konfigurace a potom zavolá `Refresh` tuto instanci kdekoli v kódu.
 
 Aby se nastavení zachovalo jako aktualizované a zabránilo se příliš velkému počtu volání do úložiště konfigurace, použije se pro každé nastavení mezipaměť. Dokud neuplyne hodnota nastavení uložené v mezipaměti, operace aktualizace neaktualizuje hodnotu, a to ani v případě, že se hodnota v úložišti konfigurace změnila. Výchozí doba vypršení platnosti každé žádosti je 30 sekund, ale v případě potřeby může být přepsána.
 
@@ -91,7 +91,7 @@ class Program
 }
 ```
 
-`ConfigureRefresh` Metoda se používá k určení nastavení, která se použijí k aktualizaci konfiguračních dat pomocí úložiště konfigurace aplikace při aktivaci operace aktualizace. Instance `IConfigurationRefresher` může `GetRefresher` být načtena voláním metody na možnosti poskytované `AddAzureAppConfiguration` metodě a `Refresh` metoda v této instanci může být použita k aktivaci operace aktualizace kdekoli v kódu.
+`ConfigureRefresh`Metoda se používá k určení nastavení, která se použijí k aktualizaci konfiguračních dat pomocí úložiště konfigurace aplikace při aktivaci operace aktualizace. Instance `IConfigurationRefresher` může být načtena voláním `GetRefresher` metody na možnosti poskytované `AddAzureAppConfiguration` metodě a `Refresh` metoda v této instanci může být použita k aktivaci operace aktualizace kdekoli v kódu.
     
 > [!NOTE]
 > Výchozí doba vypršení platnosti mezipaměti pro konfigurační nastavení je 30 sekund, ale lze ji přepsat voláním `SetCacheExpiration` metody v inicializátoru možnosti předaného jako argument `ConfigureRefresh` metody.
@@ -100,31 +100,41 @@ class Program
 
 1. Nastavte proměnnou prostředí s názvem **ConnectionString**a nastavte ji na přístupový klíč na úložiště konfigurace aplikace. Použijete-li příkazový řádek systému Windows, spusťte následující příkaz a restartujte příkazový řádek, aby se změna projevila:
 
-        setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```console
+     setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```
 
     Pokud používáte Windows PowerShell, spusťte následující příkaz:
 
-        $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
+    ```powershell
+     $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
+    ```
 
     Pokud používáte macOS nebo Linux, spusťte následující příkaz:
 
-        export ConnectionString='connection-string-of-your-app-configuration-store'
+    ```console
+     export ConnectionString='connection-string-of-your-app-configuration-store'
+    ```
 
 1. Spusťte následující příkaz, který sestaví konzolovou aplikaci:
 
-        dotnet build
+    ```console
+     dotnet build
+    ```
 
 1. Po úspěšném dokončení sestavení spusťte následující příkaz pro místní spuštění aplikace:
 
-        dotnet run
+    ```console
+     dotnet run
+    ```
 
     ![Spuštění aplikace pro rychlý Start – místní](./media/quickstarts/dotnet-core-app-run.png)
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky**a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky**a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
 
 1. Vyberte **Průzkumník konfigurace**a aktualizujte hodnoty následujících klíčů:
 
-    | Key | Hodnota |
+    | Klíč | Hodnota |
     |---|---|
     | TestApp: nastavení: zpráva | Data z konfigurace aplikace Azure – Aktualizováno |
 
@@ -133,7 +143,7 @@ class Program
     ![Rychlé obnovení místní aktualizace aplikace](./media/quickstarts/dotnet-core-app-run-refresh.png)
     
     > [!NOTE]
-    > Vzhledem k tomu, že doba vypršení platnosti mezipaměti byla nastavena `SetCacheExpiration` na 10 sekund pomocí metody při určování konfigurace pro operaci aktualizace, bude hodnota nastavení konfigurace aktualizována pouze v případě, že od poslední aktualizace tohoto nastavení uplynula alespoň 10 sekund.
+    > Vzhledem k tomu, že doba vypršení platnosti mezipaměti byla nastavena na 10 sekund pomocí `SetCacheExpiration` metody při určování konfigurace pro operaci aktualizace, bude hodnota nastavení konfigurace aktualizována pouze v případě, že od poslední aktualizace tohoto nastavení uplynula alespoň 10 sekund.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

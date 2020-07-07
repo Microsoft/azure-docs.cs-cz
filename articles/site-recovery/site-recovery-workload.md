@@ -4,10 +4,10 @@ description: Popisuje úlohy, které se dají chránit pomocí zotavení po hav�
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.openlocfilehash: 2b901425a0020c0ccc7b834ee36d965910028018
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80062840"
 ---
 # <a name="about-disaster-recovery-for-on-premises-apps"></a>Informace o zotavení po havárii pro místní aplikace
@@ -50,7 +50,7 @@ Site Recovery dokáže replikovat jakoukoli aplikaci spuštěnou na podporované
 | Linux (operační systém a aplikace) |Ano (testováno společností Microsoft) |Ano (testováno společností Microsoft) |Ano (testováno společností Microsoft) |Ano (testováno společností Microsoft) |Ano (testováno společností Microsoft)|
 | Dynamics AX |Ano |Ano |Ano |Ano |Ano|
 | Souborový server systému Windows |Ano |Ano |Ano |Ano |Ano|
-| Citrix XenApp a XenDesktop |Ano|– |Ano |– |Ano |
+| Citrix XenApp a XenDesktop |Ano|Není k dispozici |Ano |Není k dispozici |Ano |
 
 ## <a name="replicate-active-directory-and-dns"></a>Replikace služby Active Directory a DNS
 

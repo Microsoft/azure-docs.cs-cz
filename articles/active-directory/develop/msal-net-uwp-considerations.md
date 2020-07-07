@@ -14,21 +14,21 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 0654bce86cf5fb0b5bd117e444721e95f137dd47
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82652695"
 ---
 # <a name="considerations-for-using-universal-windows-platform-with-msalnet"></a>Důvody pro použití Univerzální platforma Windows s MSAL.NET
 Vývojáři aplikací, které používají Univerzální platforma Windows (UWP) se MSAL.NET, by měly zvážit koncepty tohoto článku.
 
 ## <a name="the-usecorporatenetwork-property"></a>Vlastnost UseCorporateNetwork
-Na platformě prostředí Windows Runtime (WinRT) `PublicClientApplication` má vlastnost `UseCorporateNetwork`Boolean. Tato vlastnost umožňuje Windows 8.1 aplikacím a aplikacím UWP těžit z integrovaného ověřování systému Windows (IWA), pokud je uživatel přihlášený k účtu, který má tenanta federovaného Azure Active Directory (Azure AD). Uživatelům, kteří jsou přihlášení k operačnímu systému, mohou také používat jednotné přihlašování (SSO). Když nastavíte `UseCorporateNetwork` vlastnost, MSAL.NET použije nástroj Web Authentication broker (WAB).
+Na platformě prostředí Windows Runtime (WinRT) `PublicClientApplication` má vlastnost Boolean `UseCorporateNetwork` . Tato vlastnost umožňuje Windows 8.1 aplikacím a aplikacím UWP těžit z integrovaného ověřování systému Windows (IWA), pokud je uživatel přihlášený k účtu, který má tenanta federovaného Azure Active Directory (Azure AD). Uživatelům, kteří jsou přihlášení k operačnímu systému, mohou také používat jednotné přihlašování (SSO). Když nastavíte `UseCorporateNetwork` vlastnost, MSAL.NET použije nástroj Web Authentication broker (WAB).
 
 > [!IMPORTANT]
-> Nastavení `UseCorporateNetwork` vlastnosti na hodnotu true předpokládá, že vývojář aplikace povolil IWA v aplikaci. Povolení IWA:
-> - V aplikaci `Package.appxmanifest`UWP na kartě **Možnosti** Povolte následující možnosti:
+> Nastavení `UseCorporateNetwork` vlastnosti na hodnotu true předpokládá, že vývojář aplikace POVOLIL IWA v aplikaci. Povolení IWA:
+> - V aplikaci UWP `Package.appxmanifest` na kartě **Možnosti** Povolte následující možnosti:
 >   - **Podnikové ověřování**
 >   - **Privátní sítě (klient & Server)**
 >   - **Sdílený uživatelský certifikát**

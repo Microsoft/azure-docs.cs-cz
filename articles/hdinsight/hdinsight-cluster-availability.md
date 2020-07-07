@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/01/2020
 ms.openlocfilehash: 4b26128b794a6a667edc578f56ad0bc9fb8303a7
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82691153"
 ---
 # <a name="how-to-monitor-cluster-availability-with-apache-ambari-in-azure-hdinsight"></a>Jak monitorovat dostupnost clusteru pomocí Apache Ambari ve službě Azure HDInsight
@@ -23,7 +23,7 @@ V tomto článku se dozvíte, jak pomocí Ambari monitorovat cluster a provedou 
 
 ## <a name="dashboard"></a>Řídicí panel
 
-K řídicímu panelu Ambari se dostanete tak, že v části **řídicí panely clusteru** v tématu Přehled služby HDInsight v Azure Portal, jak vidíte níže, vyberete odkaz **Domů Ambari** . K němu můžete případně přejít tak, že přejdete `https://CLUSTERNAME.azurehdinsight.net` do prohlížeče, kde název_clusteru je název vašeho clusteru.
+K řídicímu panelu Ambari se dostanete tak, že v části **řídicí panely clusteru** v tématu Přehled služby HDInsight v Azure Portal, jak vidíte níže, vyberete odkaz **Domů Ambari** . K němu můžete případně přejít tak, že přejdete do `https://CLUSTERNAME.azurehdinsight.net` prohlížeče, kde název_clusteru je název vašeho clusteru.
 
 ![Zobrazení portálu prostředků HDInsight](media/hdinsight-cluster-availability/azure-portal-dashboard-ambari.png)
 
@@ -80,7 +80,7 @@ Volitelně můžete také nakonfigurovat e-mailová oznámení pro Ambari výstr
 
 ![Akce spravovat oznámení Ambari](media/hdinsight-cluster-availability/ambari-manage-notifications.png)
 
-Otevře se dialogové okno pro správu oznámení výstrah. **+** Vyberte v dolní části dialogového okna a vyplňte požadovaná pole a poskytněte Ambari podrobnosti e-mailového serveru, ze kterých se mají posílat e-maily.
+Otevře se dialogové okno pro správu oznámení výstrah. Vyberte v **+** dolní části dialogového okna a vyplňte požadovaná pole a poskytněte Ambari podrobnosti e-mailového serveru, ze kterých se mají posílat e-maily.
 
 > [!TIP]
 > Nastavení e-mailových oznámení Ambari může být dobrým způsobem, jak přijímat výstrahy na jednom místě při správě mnoha clusterů HDInsight.

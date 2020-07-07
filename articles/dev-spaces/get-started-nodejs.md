@@ -1,18 +1,18 @@
 ---
-title: 'Vytvoření Kubernetesho vývojového prostoru: Visual Studio Code & Node. js'
+title: 'Vytvoření Kubernetesho vývojového prostoru: Visual Studio Code & Node.js'
 services: azure-dev-spaces
 ms.date: 09/26/2018
 ms.topic: tutorial
-description: V tomto kurzu se dozvíte, jak používat Azure Dev Spaces a Visual Studio Code k ladění a rychlému iteraci aplikace Node. js ve službě Azure Kubernetes.
+description: V tomto kurzu se dozvíte, jak pomocí Azure Dev Spaces a Visual Studio Code ladit a rychle iterovat Node.js aplikace ve službě Azure Kubernetes.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
-ms.openlocfilehash: 6571e23c3ca9b67d4db3c9c7bcea1e4a3b80e4c1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3ee8ec8eb78ccb8a7405fd00654ee00ebba8b7c1
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80240515"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85854975"
 ---
-# <a name="create-a-kubernetes-dev-space-visual-studio-code-and-nodejs-with-azure-dev-spaces"></a>Vytvoření Kubernetes vývojového prostoru: Visual Studio Code a Node. js s Azure Dev Spaces
+# <a name="create-a-kubernetes-dev-space-visual-studio-code-and-nodejs-with-azure-dev-spaces"></a>Vytvoření Kubernetesho vývojového prostoru: Visual Studio Code a Node.js pomocí Azure Dev Spaces
 
 V tomto průvodci se naučíte:
 
@@ -88,7 +88,7 @@ Výkonné funkce, jako je ladění Kubernetes, jsou prostřednictvím editoru VS
 V této části vytvoříte webovou aplikaci Node.js a spustíte ji v kontejneru v prostředí Kubernetes.
 
 ### <a name="create-a-nodejs-web-app"></a>Vytvoření webové aplikace Node.js
-Stáhněte si kód z GitHubu tak, [https://github.com/Azure/dev-spaces](https://github.com/Azure/dev-spaces) že přejdete na adresu a vyberete **klonovat nebo stáhnout** a stáhnete úložiště GitHub do svého místního prostředí. Kód tohoto průvodce je tady: `samples/nodejs/getting-started/webfrontend`.
+Stáhněte si kód z GitHubu tak, že přejdete na adresu [https://github.com/Azure/dev-spaces](https://github.com/Azure/dev-spaces) a vyberete **klonovat nebo stáhnout** a stáhnete úložiště GitHub do svého místního prostředí. Kód tohoto průvodce je tady: `samples/nodejs/getting-started/webfrontend`.
 
 ## <a name="prepare-code-for-docker-and-kubernetes-development"></a>Příprava kódu pro vývoj Docker a Kubernetes
 Zatím máte základní webovou aplikaci, kterou můžete spustit místně. Teď ji vytvořením prostředků, které definují kontejner aplikace a způsob nasazení do Kubernetes, kontejnerizujete. Tento úkol snadno provedete v Azure Dev Spaces: 
@@ -138,9 +138,9 @@ Service 'webfrontend' port 'http' is available at http://webfrontend.1234567890a
 Service 'webfrontend' port 80 (TCP) is available at 'http://localhost:<port>'
 ```
 
-Identifikujte veřejnou adresu URL pro službu ve výstupu `up` příkazu. Končí na `.azds.io`. Ve výše uvedeném příkladu je `http://webfrontend.1234567890abcdef1234.eus.azds.io/`veřejná adresa URL.
+Identifikujte veřejnou adresu URL pro službu ve výstupu `up` příkazu. Končí na `.azds.io` . Ve výše uvedeném příkladu je veřejná adresa URL `http://webfrontend.1234567890abcdef1234.eus.azds.io/` .
 
-Webovou aplikaci zobrazíte otevřením veřejné adresy URL v prohlížeči. Všimněte si také `stdout` , `stderr` že když pracujete s webovou aplikací, Všimněte si také, že oznámení a výstup jsou streamované do okna *azds Trace* Terminal. V případě, že procházejí systémem, uvidíte také informace o sledování požadavků HTTP. Díky tomu je snazší sledovat komplexní volání více služeb během vývoje. Toto sledování požadavků poskytuje instrumentace, kterou přidávají vývojové prostory.
+Webovou aplikaci zobrazíte otevřením veřejné adresy URL v prohlížeči. Všimněte si také, že když pracujete s webovou aplikací, Všimněte si také, `stdout` že oznámení a `stderr` výstup jsou streamované do okna *azds Trace* Terminal. V případě, že procházejí systémem, uvidíte také informace o sledování požadavků HTTP. Díky tomu je snazší sledovat komplexní volání více služeb během vývoje. Toto sledování požadavků poskytuje instrumentace, kterou přidávají vývojové prostory.
 
 > [!Note]
 > Kromě veřejné adresy URL můžete použít alternativní `http://localhost:<portnumber>` adresu URL, která se zobrazí ve výstupu konzoly. Pokud použijete adresu URL místního hostitele, může se zdát, že je kontejner spuštěný místně, ale ve skutečnosti běží v Azure. Azure Dev Spaces používá k namapování portu localhost na kontejner spuštěný v AKS funkci Kubernetes pro *přeposílání portů* . To usnadňuje interakci se službou z místního počítače.
@@ -164,7 +164,7 @@ Otevřete webovou aplikaci na mobilním zařízení s použitím veřejné adres
 
 Pokud chcete problém opravit, přidejte metaznačku `viewport`:
 1. Otevřete soubor `./public/index.html`.
-1. Do existujícího `viewport` `head` elementu, který začíná [na řádku 6](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/public/index.html#L6), přidejte metaznačku:
+1. `viewport`Do existujícího `head` elementu, který začíná [na řádku 6](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/public/index.html#L6), přidejte metaznačku:
 
     ```html
     <head>
@@ -232,13 +232,13 @@ Podobně jako při příkazu `up` se na začátku ladění synchronizuje kód s 
 
 ![](media/common/vscode-status-bar-url.png)
 
-Nastavte zarážku v souboru kódu `app.get('/api'...` na straně serveru, například v hlavičce na [řádku 13 `server.js` ](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13). 
+Nastavte zarážku v souboru kódu na straně serveru, například v `app.get('/api'...` hlavičce na [řádku 13 `server.js` ](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13). 
 
-    ```javascript
-    app.get('/api', function (req, res) {
-        res.send('Hello from webfrontend');
-    });
-    ```
+```javascript
+app.get('/api', function (req, res) {
+    res.send('Hello from webfrontend');
+});
+```
 
 Aktualizujte stránku prohlížeče, nebo stiskněte tlačítko *řekněte ho znovu* a měli byste se dostat ke zarážce a být schopni krokovat kód.
 

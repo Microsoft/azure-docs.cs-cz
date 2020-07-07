@@ -8,10 +8,10 @@ ms.assetid: bdf27b4d-6f58-4093-ab83-4fa3a99b5650
 ms.topic: conceptual
 ms.date: 08/02/2017
 ms.openlocfilehash: 2d33a6ec5ff6b687913914e9433b85765aaa7aec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71309938"
 ---
 # <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics"></a>Použití prohlížeče úloh a zobrazení úloh pro Azure Data Lake Analytics
@@ -158,9 +158,9 @@ Podrobnosti úlohy zobrazují podrobné informace o úloze, včetně skriptu, pr
 * Skript
   
     Skript U-SQL úlohy je uložený v úložišti dotazů. V případě potřeby můžete zobrazit původní skript U-SQL a v případě potřeby ho znovu odeslat.
-* Zdroje a prostředky
+* Zdroje
   
-    Výstupy kompilace úlohy uložené v úložišti dotazů můžete najít prostřednictvím prostředků. Například můžete najít "algebraický. XML", který se používá k zobrazení grafu úlohy, vámi registrovaných sestavení atd.
+    Výstupy kompilace úlohy uložené v úložišti dotazů můžete najít prostřednictvím prostředků. Například můžete najít "algebra.xml", který se používá k zobrazení grafu úlohy, vámi registrovaných sestavení atd.
 * Zobrazení spuštění vrcholu
   
     Zobrazuje podrobnosti o spuštění vrcholů. Profil úlohy archivuje každý protokol spouštění vrcholů, jako je například celkový počet čtení/zápisu, doba běhu, stav atd. V tomto zobrazení můžete získat další podrobnosti o tom, jak byla úloha spuštěna. Další informace naleznete v tématu [použití zobrazení spuštění vrcholu v nástroji Data Lake Tools for Visual Studio](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md).

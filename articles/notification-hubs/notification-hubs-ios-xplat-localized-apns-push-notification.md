@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: a8614156be5d516d16aff698b604cf0e661d7311
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72385659"
 ---
 # <a name="tutorial-send-localized-push-notifications-to-ios-using-azure-notification-hubs"></a>Kurz: odeslání lokalizovaných nabízených oznámení do systému iOS pomocí Azure Notification Hubs
@@ -82,7 +82,7 @@ Další informace o šablonách najdete v článku [šablony](notification-hubs-
 
 V této části upravíte aplikaci s novinkami, kterou jste vytvořili v tématu [použití Notification Hubs k odesílání novinek] k odesílání lokalizovaných zpráv pomocí šablon.
 
-`MainStoryboard_iPhone.storyboard`Přidejte do něj segmentované řízení se třemi jazyky: angličtina, francouzština a mandarinek.
+Přidejte do `MainStoryboard_iPhone.storyboard` něj segmentované řízení se třemi jazyky: angličtina, francouzština a mandarinek.
 
 ![Vytvoření scénáře uživatelského rozhraní iOS][13]
 
@@ -92,7 +92,7 @@ Pak nezapomeňte přidat IBOutlet do soubor viewcontroller. h, jak je znázorně
 
 ## <a name="build-the-ios-app"></a>Sestavení aplikace pro iOS
 
-1. V `Notification.h`, přidejte `retrieveLocale` metodu a upravte úložiště a odběr metod, jak je znázorněno v následujícím kódu:
+1. V `Notification.h` , přidejte `retrieveLocale` metodu a upravte úložiště a odběr metod, jak je znázorněno v následujícím kódu:
 
     ```objc
     - (void) storeCategoriesAndSubscribeWithLocale:(int) locale categories:(NSSet*) categories completion: (void (^)(NSError* error))completion;
@@ -103,7 +103,7 @@ Pak nezapomeňte přidat IBOutlet do soubor viewcontroller. h, jak je znázorně
 
     - (int) retrieveLocale;
     ```
-    V `Notification.m`, upravte `storeCategoriesAndSubscribe` metodu tak, že přidáte `locale` parametr a uložíte ho do výchozích hodnot uživatele:
+    V `Notification.m` , upravte `storeCategoriesAndSubscribe` metodu tak, že přidáte `locale` parametr a uložíte ho do výchozích hodnot uživatele:
 
     ```objc
     - (void) storeCategoriesAndSubscribeWithLocale:(int) locale categories:(NSSet *)categories completion:(void (^)(NSError *))completion {
@@ -141,7 +141,7 @@ Pak nezapomeňte přidat IBOutlet do soubor viewcontroller. h, jak je znázorně
     }
     ```
 
-    Místo použijte metodu `registerTemplateWithDeviceToken` `registerNativeWithDeviceToken`. Když se zaregistrujete na šablonu, musíte zadat šablonu JSON a také název šablony (protože aplikace může chtít registrovat jiné šablony). Ujistěte se, že jste své kategorie zaregistrovali jako značky, abyste je mohli dostávat pro tyto zprávy.
+    Místo použijte metodu `registerTemplateWithDeviceToken` `registerNativeWithDeviceToken` . Když se zaregistrujete na šablonu, musíte zadat šablonu JSON a také název šablony (protože aplikace může chtít registrovat jiné šablony). Ujistěte se, že jste své kategorie zaregistrovali jako značky, abyste je mohli dostávat pro tyto zprávy.
 
     Přidejte metodu pro načtení národního prostředí z výchozího nastavení uživatele:
 
@@ -155,13 +155,13 @@ Pak nezapomeňte přidat IBOutlet do soubor viewcontroller. h, jak je znázorně
     }
     ```
 
-2. Teď, když jste změnili `Notifications` třídu, musíte se ujistit, že `ViewController` využívá nové. `UISegmentControl` Do `viewDidLoad` metody přidejte následující řádek, abyste se ujistili, že chcete zobrazit aktuálně vybrané národní prostředí:
+2. Teď, když jste změnili `Notifications` třídu, musíte se ujistit, že využívá `ViewController` nové `UISegmentControl` . Do metody přidejte následující řádek `viewDidLoad` , abyste se ujistili, že chcete zobrazit aktuálně vybrané národní prostředí:
 
     ```objc
     self.Locale.selectedSegmentIndex = [notifications retrieveLocale];
     ```
 
-    Potom v `subscribe` metodě změňte vaše volání `storeCategoriesAndSubscribe` na následující kód:
+    Potom v `subscribe` metodě změňte vaše volání na `storeCategoriesAndSubscribe` následující kód:
 
     ```objc
     [notifications storeCategoriesAndSubscribeWithLocale: self.Locale.selectedSegmentIndex categories:[NSSet setWithArray:categories] completion: ^(NSError* error) {

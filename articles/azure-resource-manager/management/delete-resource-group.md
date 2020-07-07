@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 09/03/2019
 ms.custom: seodec18
 ms.openlocfilehash: 7c03296f8bec24da1fc85bae14e91ca742054d02
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82136477"
 ---
 # <a name="azure-resource-manager-resource-group-and-resource-deletion"></a>Azure Resource Manager skupiny prostředků a odstraňování prostředků
@@ -21,7 +21,7 @@ Když odstraníte skupinu prostředků, Správce prostředků určí pořadí, v
 
 1. Všechny podřízené (vnořené) prostředky se odstraní.
 
-2. Prostředky, které spravují jiné prostředky, se odstraní dále. Prostředek může mít nastavenou `managedBy` vlastnost, která označuje, že ho spravuje jiný prostředek. Je-li tato vlastnost nastavena, bude prostředek, který spravuje jiný prostředek, odstraněn před ostatními prostředky.
+2. Prostředky, které spravují jiné prostředky, se odstraní dále. Prostředek může mít `managedBy` nastavenou vlastnost, která označuje, že ho spravuje jiný prostředek. Je-li tato vlastnost nastavena, bude prostředek, který spravuje jiný prostředek, odstraněn před ostatními prostředky.
 
 3. Zbývající prostředky se odstraní za předchozí dvě kategorie.
 
@@ -61,7 +61,7 @@ Pro jiné kódy chyb Správce prostředků neúspěšné odstranění prostředk
 
 Chcete-li odstranit skupinu prostředků, použijte jednu z následujících metod.
 
-# <a name="powershell"></a>[Prostředí](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name ExampleResourceGroup
@@ -73,7 +73,7 @@ Remove-AzResourceGroup -Name ExampleResourceGroup
 az group delete --name ExampleResourceGroup
 ```
 
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 1. Na [portálu](https://portal.azure.com)vyberte skupinu prostředků, kterou chcete odstranit.
 
@@ -89,7 +89,7 @@ az group delete --name ExampleResourceGroup
 
 K odstranění prostředku použijte jednu z následujících metod.
 
-# <a name="powershell"></a>[Prostředí](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 Remove-AzResource `
@@ -107,7 +107,7 @@ az resource delete \
   --resource-type "Microsoft.Compute/virtualMachines"
 ```
 
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 1. Na [portálu](https://portal.azure.com)vyberte prostředek, který chcete odstranit.
 

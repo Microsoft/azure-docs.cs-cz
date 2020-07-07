@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: ghogen
 ms.openlocfilehash: af0065db087595167ca71bb79b968cc4ad339acd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82116838"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Přidání Key Vault do webové aplikace pomocí připojených služeb sady Visual Studio
@@ -33,7 +33,7 @@ Podrobnosti o změnách, které připojené služby vytvoří v projektu, aby um
 
 Než začnete, ujistěte se, že jste se přihlásili do sady Visual Studio. Přihlaste se pomocí stejného účtu, který používáte pro předplatné Azure. Pak otevřete webový projekt ASP.NET 4.7.1 nebo novější verze nebo ASP.NET Core 2,0 a postupujte podle následujících kroků:
 
-1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt, do kterého chcete přidat podporu Key Vault a vyberte možnost **Přidat** > **připojenou službu**.
+1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt, do kterého chcete přidat podporu Key Vault a vyberte možnost **Přidat**  >  **připojenou službu**.
    Zobrazí se stránka Připojená služba se službami, které můžete přidat do projektu.
 1. V nabídce dostupných služeb vyberte možnost **zabezpečené tajné klíče pomocí Azure Key Vault**.
 
@@ -41,7 +41,7 @@ Než začnete, ujistěte se, že jste se přihlásili do sady Visual Studio. Př
 
 1. Vyberte předplatné, které chcete použít, a pak zvolte nové nebo existující Key Vault. Pokud zvolíte novou Key Vault, zobrazí se odkaz **Upravit** . Vyberte ji pro konfiguraci nového Key Vault.
 
-   ![Vyberte své předplatné.](../media/vs-key-vault-add-connected-service/key-vault-connected-service-select-vault.png)
+   ![Výběr předplatného](../media/vs-key-vault-add-connected-service/key-vault-connected-service-select-vault.png)
 
 1. Do pole **upravit Azure Key Vault**zadejte název, který chcete použít pro Key Vault.
 
@@ -156,9 +156,9 @@ Aplikaci můžete spustit místně, abyste ověřili, že se tajný klíč úsp�
 
 ## <a name="access-your-secrets-aspnet"></a>Přístup k vašim tajným klíčům (ASP.NET)
 
-Konfiguraci můžete nastavit tak, aby soubor Web. config měl fiktivní hodnotu v `appSettings` elementu, který je nahrazen hodnotou true za běhu. Pak můžete přistupovat přes `ConfigurationManager.AppSettings` datovou strukturu.
+Konfiguraci můžete nastavit tak, aby soubor web.config měl v prvku zástupnou hodnotu `appSettings` , která je nahrazena skutečnou hodnotou za běhu. Pak můžete přistupovat přes `ConfigurationManager.AppSettings` datovou strukturu.
 
-1. Upravte soubor Web. config.  Vyhledejte značku appSettings, přidejte atribut `configBuilders="AzureKeyVault"`a přidejte řádek:
+1. Upravte soubor web.config.  Vyhledejte značku appSettings, přidejte atribut `configBuilders="AzureKeyVault"` a přidejte řádek:
 
    ```xml
       <add key="mysecret" value="dummy"/>
@@ -190,10 +190,10 @@ Pokud vaše Key Vault běží na jiném účet Microsoft než na tom, co jste p�
 
 1. Zvolte **zásady přístupu**, pak **Přidat zásady přístupu**a zvolte účet, ke kterému jste přihlášeni jako objekt zabezpečení.
 
-1. V aplikaci Visual Studio vyberte **File** > **Nastavení účtu**souboru.
+1. V aplikaci Visual Studio vyberte **File**  >  **Nastavení účtu**souboru.
 V části **všechny účty** vyberte **Přidat účet** . Přihlaste se pomocí účtu, který jste zvolili jako objekt zabezpečení vašich zásad přístupu.
 
-1. Vyberte **Tools** > **Možnosti**nástroje a vyhledejte **ověřování služby Azure**. Pak vyberte účet, který jste právě přidali do sady Visual Studio.
+1. Vyberte **Tools**  >  **Možnosti**nástroje a vyhledejte **ověřování služby Azure**. Pak vyberte účet, který jste právě přidali do sady Visual Studio.
 
 Když teď ladíte aplikaci, Visual Studio se připojí k účtu, na kterém se nachází Key Vault.
 
@@ -215,9 +215,9 @@ Má vliv na soubor projektu .NET References a odkazy na balíček NuGet.
 
 ### <a name="project-file-changes-for-aspnet-core"></a>Změny souborů projektu pro ASP.NET Core
 
-- Přidala se skupina a `ConnectedServices.json` soubor položek připojené služby.
+- Přidala se skupina a soubor položek připojené služby `ConnectedServices.json` .
 
-### <a name="launchsettingsjson-changes-for-aspnet-core"></a>změny launchsettings. JSON pro ASP.NET Core
+### <a name="launchsettingsjson-changes-for-aspnet-core"></a>launchsettings.jszměny pro ASP.NET Core
 
 - Do profilu IIS Express byly přidány následující záznamy o proměnné prostředí a profil, který odpovídá názvu vašeho webového projektu:
 
@@ -254,10 +254,10 @@ Má vliv na soubor projektu .NET References a `packages.config` (odkazy NuGet).
 
 ### <a name="project-file-changes-for-aspnet-framework"></a>Změny souborů projektu pro ASP.NET Framework
 
-- Přidal se soubor Items a připojených služeb. JSON připojené služby.
+- Do souboru se přidala skupina položek připojené služby a ConnectedServices.js.
 - Odkazy na sestavení .NET popsaná v části [přidané odkazy](#added-references-for-aspnet-framework) .
 
-### <a name="webconfig-or-appconfig-changes"></a>změny souboru Web. config nebo App. config
+### <a name="webconfig-or-appconfig-changes"></a>Změny web.config nebo app.config
 
 - Přidány následující položky konfigurace:
 

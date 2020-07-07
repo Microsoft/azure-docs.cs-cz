@@ -15,10 +15,10 @@ ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
 ms.openlocfilehash: 869453d92f536a62aacc2be52598223158566ae0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71122733"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>Řešení potíží s rolemi cloudových služeb, které se nedaří spustit
@@ -42,13 +42,13 @@ Když přejdete na web, který je nasazený ve webové roli, a v prohlížeči s
 ![Chyba serveru v aplikaci/](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503388.png)
 
 ## <a name="diagnose-issues-by-turning-off-custom-errors"></a>Diagnostikujte problémy vypnutím vlastních chyb.
-Další informace o kompletní chybě lze zobrazit tak, že nakonfigurujete Web. config pro webovou roli a nastavíte vlastní režim chyb na vypnuto a znovu nasadíte službu.
+Další informace o kompletní chybě najdete v části Konfigurace web.config pro webovou roli pro nastavení vlastního režimu chyb na vypnuto a opětovné nasazení služby.
 
 Zobrazení dalších úplných chyb bez použití funkce Vzdálená plocha:
 
 1. Otevřete řešení v Microsoft Visual Studio.
-2. V **Průzkumník řešení**vyhledejte soubor Web. config a otevřete jej.
-3. V souboru Web. config vyhledejte část System. Web a přidejte následující řádek:
+2. V **Průzkumník řešení**vyhledejte soubor web.config a otevřete ho.
+3. V souboru web.config vyhledejte část System. Web a přidejte následující řádek:
 
     ```xml
     <customErrors mode="Off" />
@@ -82,7 +82,7 @@ Příklad:
 ![Explicitní chyba serveru v aplikaci/](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503389.png)
 
 ## <a name="diagnose-issues-by-using-the-compute-emulator"></a>Diagnostika problémů pomocí emulátoru COMPUTE
-Emulátor Microsoft Azure COMPUTE můžete použít k diagnostice a řešení potíží s chybějícími závislostmi a chybami Web. config.
+Emulátor Microsoft Azure COMPUTE můžete použít k diagnostice a řešení potíží s chybějícími závislostmi a web.configmi chybami.
 
 Pro dosažení nejlepších výsledků použití této metody diagnostiky byste měli použít počítač nebo virtuální počítač, který má čistou instalaci systému Windows. Pro optimální simulaci prostředí Azure použijte Windows Server 2008 R2 x64.
 
@@ -90,8 +90,8 @@ Pro dosažení nejlepších výsledků použití této metody diagnostiky byste 
 2. Na vývojovém počítači Sestavte projekt cloudové služby.
 3. V Průzkumníku Windows přejděte do složky bin\Debug projektu cloudové služby.
 4. Zkopírujte složku. csx a soubor. cscfg do počítače, který používáte k ladění problémů.
-5. Na čistém počítači otevřete okno příkazového řádku sady Azure SDK a zadejte `csrun.exe /devstore:start`.
-6. Do příkazového řádku zadejte `run csrun <path to .csx folder> <path to .cscfg file> /launchBrowser`.
+5. Na čistém počítači otevřete okno příkazového řádku sady Azure SDK a zadejte `csrun.exe /devstore:start` .
+6. Do příkazového řádku zadejte `run csrun <path to .csx folder> <path to .cscfg file> /launchBrowser` .
 7. Po spuštění role se v Internet Exploreru zobrazí podrobné informace o chybě. K dalšímu diagnostikování problému můžete také použít standardní nástroje pro řešení potíží se systémem Windows.
 
 ## <a name="diagnose-issues-by-using-intellitrace"></a>Diagnostika problémů pomocí IntelliTrace
@@ -102,7 +102,7 @@ Pomocí těchto kroků nasaďte službu s povoleným IntelliTrace:
 1. Potvrďte, že je nainstalovaná sada Azure SDK 1,3 nebo novější.
 2. Nasaďte řešení pomocí sady Visual Studio. Během nasazování zaškrtněte políčko **Povolit IntelliTrace pro role .NET 4** .
 3. Po spuštění instance otevřete **Průzkumník serveru**.
-4. Rozbalte uzel **Azure\\Cloud Services** a vyhledejte nasazení.
+4. Rozbalte uzel **Azure \\ Cloud Services** a vyhledejte nasazení.
 5. Rozbalte nasazení, dokud neuvidíte instance role. Klikněte pravým tlačítkem na jednu z těchto instancí.
 6. Vyberte možnost **Zobrazit protokoly IntelliTrace**. Otevře se **Souhrn IntelliTrace** .
 7. Vyhledejte část s výjimkami v části Souhrn. Pokud existují výjimky, oddíl bude označovat **data výjimky**.

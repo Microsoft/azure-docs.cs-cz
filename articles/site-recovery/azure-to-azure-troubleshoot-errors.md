@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
 ms.openlocfilehash: bbb2ddaa1fb84590f9dec1c84ac4bc87a8e03022
-ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82738112"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Řešení chyb replikace virtuálních počítačů z Azure do Azure
@@ -73,7 +73,7 @@ Pokud chcete získat nejnovější důvěryhodné kořenové certifikáty a sezn
 
 Vzhledem k tomu, že SUSE Linux používá k údržbě seznamu certifikátů symbolické odkazy nebo symbolických odkazů, použijte následující postup:
 
-1. Přihlaste se jako uživatel **root** . Výchozím příkazovým řádkem je symbol hash (`#`).
+1. Přihlaste se jako uživatel **root** . `#`Výchozím příkazovým řádkem je symbol hash ().
 
 1. Chcete-li změnit adresář, spusťte tento příkaz:
 
@@ -278,14 +278,14 @@ Chcete-li znovu nastavit stav replikace virtuálního počítače, můžete zvol
 
 #### <a name="to-protect-the-disks"></a>Ochrana disků
 
-1. Přejít na**disky**s názvem **replikované položky** > _název_ > virtuálního počítače.
+1. Přejít na disky s názvem **replikované položky**  >  _název virtuálního počítače_  >  **Disks**.
 1. Vyberte nechráněný disk a pak vyberte **Povolit replikaci**:
 
    :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/add-disk.png" alt-text="Povolte replikaci na discích virtuálních počítačů.":::
 
 #### <a name="to-dismiss-the-warning"></a>Zavření upozornění
 
-1. Přejít na_název virtuálního počítače_ **replikovaných položek** > .
+1. Přejít na **Replicated items**  >  _název virtuálního počítače_replikovaných položek.
 1. V části **Přehled** vyberte upozornění a pak vyberte **OK**.
 
    :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/dismiss-warning.png" alt-text="Zavřít upozornění na nový disk":::
@@ -300,7 +300,7 @@ Toto upozornění můžete ignorovat, pokud už nemáte v úmyslu chránit tento
 > Pokud toto čištění neprovedete:
 >
 > - Pokud povolíte replikaci pomocí trezoru Recovery Services, virtuální počítač se nebude zobrazovat v seznamu.
-> - Pokud se pokusíte ochránit virtuální počítač pomocí**Nastavení** >  **virtuálního počítače** > **zotavení po havárii**, operace se nezdaří a replikace zpráv se **nedá povolit kvůli existujícím zastaralým odkazům na virtuální počítač**.
+> - Pokud se pokusíte ochránit virtuální počítač pomocí nastavení **virtuálního počítače**  >  **Settings**  >  **zotavení po havárii**, operace se nezdaří a replikace zpráv se **nedá povolit kvůli existujícím zastaralým odkazům na virtuální počítač**.
 
 ### <a name="fix-the-problem"></a>Oprava problému
 
@@ -312,7 +312,7 @@ Toto upozornění můžete ignorovat, pokud už nemáte v úmyslu chránit tento
    :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="Odeberte z virtuálního počítače zámek.":::
 
 1. Stáhněte si skript, kterým [odeberete starou konfiguraci Site Recovery](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1).
-1. Spusťte skript _Cleanup-stale-ASR-config-Azure-VM. ps1_. Jako parametry zadejte **ID předplatného**, **skupinu prostředků virtuálního počítače**a **název virtuálního počítače** .
+1. Spusťte skript _Cleanup-stale-asr-config-Azure-VM.ps1_. Jako parametry zadejte **ID předplatného**, **skupinu prostředků virtuálního počítače**a **název virtuálního počítače** .
 1. Pokud se zobrazí výzva k zadání přihlašovacích údajů Azure, poskytněte je. Pak ověřte, že se skript spouští bez jakýchkoli selhání.
 
 ## <a name="replication-not-enabled-on-vm-with-stale-resources-error-code-150226"></a>Replikace není povolená na virtuálním počítači se zastaralými prostředky (kód chyby 150226).
@@ -337,7 +337,7 @@ Pokud jste povolili replikaci pro virtuální počítač Azure pomocí Site Reco
    :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="Odeberte z virtuálního počítače zámek.":::
 
 1. Stáhněte si skript, kterým [odeberete starou konfiguraci Site Recovery](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1).
-1. Spusťte skript _Cleanup-stale-ASR-config-Azure-VM. ps1_. Jako parametry zadejte **ID předplatného**, **skupinu prostředků virtuálního počítače**a **název virtuálního počítače** .
+1. Spusťte skript _Cleanup-stale-asr-config-Azure-VM.ps1_. Jako parametry zadejte **ID předplatného**, **skupinu prostředků virtuálního počítače**a **název virtuálního počítače** .
 1. Pokud se zobrazí výzva k zadání přihlašovacích údajů Azure, poskytněte je. Pak ověřte, že se skript spouští bez jakýchkoli selhání.
 
 ## <a name="cant-select-vm-or-resource-group-in-enable-replication-job"></a>V úloze povolení replikace nejde vybrat virtuální počítač nebo skupinu prostředků.
@@ -346,7 +346,7 @@ Pokud jste povolili replikaci pro virtuální počítač Azure pomocí Site Reco
 
 Site Recovery aktuálně vyžaduje, aby byla skupina prostředků zdrojové oblasti a virtuální počítače ve stejném umístění. Pokud ne, nebudete při pokusu o použití ochrany moci najít virtuální počítač nebo skupinu prostředků.
 
-Jako alternativní řešení můžete místo Recovery Services trezoru povolit replikaci z virtuálního počítače. Přejít na**vlastnosti** >  **zdrojového virtuálního počítače** > **zotavení po havárii** a povolení replikace.
+Jako alternativní řešení můžete místo Recovery Services trezoru povolit replikaci z virtuálního počítače. Přejít na **vlastnosti zdrojového virtuálního počítače**  >  **Properties**  >  **zotavení po havárii** a povolení replikace.
 
 ### <a name="issue-2-the-resource-group-isnt-part-of-the-selected-subscription"></a>Problém 2: Skupina prostředků není součástí vybraného předplatného.
 
@@ -363,14 +363,14 @@ Pokud na virtuálním počítači Azure existuje stará Site Recovery konfigurac
 ### <a name="fix-the-problem"></a>Oprava problému
 
 > [!NOTE]
-> Před použitím skriptu uvedeného v `AzureRM.Resources` této části nezapomeňte aktualizovat modul. Při provádění těchto kroků Site Recovery neodstraní zdrojový virtuální počítač nebo ho nijak neovlivní.
+> `AzureRM.Resources`Před použitím skriptu uvedeného v této části nezapomeňte aktualizovat modul. Při provádění těchto kroků Site Recovery neodstraní zdrojový virtuální počítač nebo ho nijak neovlivní.
 
 1. Odeberte zámek (pokud existuje) z virtuálního počítače nebo skupiny prostředků virtuálního počítače. Například na následujícím obrázku musí být odstraněn zámek prostředků na virtuálním počítači s názvem `MoveDemo` :
 
    :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="Odeberte z virtuálního počítače zámek.":::
 
 1. Stáhněte si skript, kterým [odeberete starou konfiguraci Site Recovery](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1).
-1. Spusťte skript _Cleanup-stale-ASR-config-Azure-VM. ps1_. Jako parametry zadejte **ID předplatného**, **skupinu prostředků virtuálního počítače**a **název virtuálního počítače** .
+1. Spusťte skript _Cleanup-stale-asr-config-Azure-VM.ps1_. Jako parametry zadejte **ID předplatného**, **skupinu prostředků virtuálního počítače**a **název virtuálního počítače** .
 1. Pokud se zobrazí výzva k zadání přihlašovacích údajů Azure, poskytněte je. Pak ověřte, že se skript spouští bez jakýchkoli selhání.
 
 ## <a name="unable-to-select-a-vm-for-protection"></a>Nejde vybrat virtuální počítač pro ochranu.
@@ -381,7 +381,7 @@ Virtuální počítač má rozšíření nainstalované v neúspěšném nebo ne
 
 ### <a name="fix-the-problem"></a>Oprava problému
 
-Přejít na**rozšíření** **Nastavení** >  **virtuálních počítačů** > a vyhledat všechna rozšíření ve stavu selhání. Odinstalujte všechna neúspěšná rozšíření a pak to zkuste znovu, abyste virtuální počítač chránili.
+Přejít na rozšíření nastavení **virtuálních počítačů**  >  **Settings**  >  **Extensions** a vyhledat všechna rozšíření ve stavu selhání. Odinstalujte všechna neúspěšná rozšíření a pak to zkuste znovu, abyste virtuální počítač chránili.
 
 ## <a name="vm-provisioning-state-isnt-valid-error-code-150019"></a>Stav zřizování virtuálního počítače není platný (kód chyby 150019).
 
@@ -408,7 +408,7 @@ Pokud je zdrojový virtuální počítač součástí virtuální sítě a v kon
 
 ### <a name="issue-2-you-previously-protected-the-vm-and-then-you-disabled-the-replication"></a>Problém 2: dříve jste chránili virtuální počítač a potom jste zakázali replikaci.
 
-Vypnutím replikace virtuálního počítače se neodstraní mapování sítě. Mapování je nutné odstranit z Recovery Services trezoru, ve kterém byl virtuální počítač chráněn. Vyberte **Recovery Services trezor** a přejít na **Správa** > **Site Recovery infrastruktury** > pro**mapování sítě****virtuálních počítačů** > Azure.
+Vypnutím replikace virtuálního počítače se neodstraní mapování sítě. Mapování je nutné odstranit z Recovery Services trezoru, ve kterém byl virtuální počítač chráněn. Vyberte **Recovery Services trezor** a přejít na **Správa**  >  **Site Recovery infrastruktury**  >  **pro**  >  **mapování sítě**virtuálních počítačů Azure.
 
 :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/delete_nw_mapping.png" alt-text="Odstraňte mapování sítě.":::
 
@@ -459,7 +459,7 @@ Ujistěte se, že velikost disku je v rozsahu podporované velikosti, a potom op
 
 ### <a name="possible-causes"></a>Možné příčiny
 
-Konfigurační soubory pro Linux Grand Unified zaváděcí program (GRUB) (_/boot/grub/menu.lst_, _/boot/grub/grub.cfg_, _/boot/grub2/grub.cfg_nebo _/etc/default/grub_) můžou zadat skutečné názvy zařízení namísto univerzálních jedinečných hodnot identifikátorů (UUID) pro parametry `root` a `resume` . Site Recovery vyžaduje identifikátory UUID, protože se můžou změnit názvy zařízení. Po restartování se může stát, že virtuální počítač nebude při převzetí služeb při selhání pracovat se stejným názvem, což vede k problémům.
+Konfigurační soubory pro Linux Grand Unified zaváděcí program (GRUB) (_/boot/grub/menu.lst_, _/boot/grub/grub.cfg_, _/boot/grub2/grub.cfg_nebo _/etc/default/grub_) můžou zadat skutečné názvy zařízení namísto univerzálních jedinečných hodnot identifikátorů (UUID) pro `root` parametry a `resume` . Site Recovery vyžaduje identifikátory UUID, protože se můžou změnit názvy zařízení. Po restartování se může stát, že virtuální počítač nebude při převzetí služeb při selhání pracovat se stejným názvem, což vede k problémům.
 
 V následujících příkladech jsou řádky ze souborů GRUB, kde se místo požadovaných identifikátorů UUID zobrazují názvy zařízení:
 
@@ -475,7 +475,7 @@ V následujících příkladech jsou řádky ze souborů GRUB, kde se místo po�
 
 Nahraďte názvy každého zařízení odpovídajícím identifikátorem UUID:
 
-1. Vyhledá UUID zařízení provedením příkazu `blkid <device name>`. Příklad:
+1. Vyhledá UUID zařízení provedením příkazu `blkid <device name>` . Příklad:
 
    ```shell
    blkid /dev/sda1
@@ -484,7 +484,7 @@ Nahraďte názvy každého zařízení odpovídajícím identifikátorem UUID:
    /dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3"
    ```
 
-1. Nahraďte název zařízení identifikátorem UUID ve formátech `root=UUID=<UUID>` a. `resume=UUID=<UUID>` Například po nahrazení by čára z _/boot/grub/menu.lst_ vypadala jako následující řádek:
+1. Nahraďte název zařízení identifikátorem UUID ve formátech `root=UUID=<UUID>` a `resume=UUID=<UUID>` . Například po nahrazení by čára z _/boot/grub/menu.lst_ vypadala jako následující řádek:
 
    `kernel /boot/vmlinuz-3.0.101-63-default root=UUID=62927e85-f7ba-40bc-9993-cc1feeb191e4 resume=UUID=6f614b44-433b-431b-9ca1-4dd2f6f74f6b splash=silent crashkernel=256M-:128M showopts vga=0x314`
 
@@ -494,7 +494,7 @@ Nahraďte názvy každého zařízení odpovídajícím identifikátorem UUID:
 
 ### <a name="possible-cause"></a>Možná příčina
 
-Konfigurační soubory GRUB (_/boot/grub/menu.lst_, _/boot/grub/grub.cfg_, _/boot/grub2/grub.cfg_nebo _/etc/default/grub_) můžou obsahovat parametry `rd.lvm.lv` nebo. `rd_LVM_LV` Tyto parametry identifikují zařízení LVM (Logical Volume Manager), která mají být zjištěna při spuštění. Pokud tato zařízení LVM neexistují, samotný chráněný systém se nespustí a zablokuje se v procesu spouštění. Stejný problém se také zobrazí u virtuálního počítače s podporou převzetí služeb při selhání. Tady je několik příkladů:
+Konfigurační soubory GRUB (_/boot/grub/menu.lst_, _/boot/grub/grub.cfg_, _/boot/grub2/grub.cfg_nebo _/etc/default/grub_) můžou obsahovat parametry `rd.lvm.lv` nebo `rd_LVM_LV` . Tyto parametry identifikují zařízení LVM (Logical Volume Manager), která mají být zjištěna při spuštění. Pokud tato zařízení LVM neexistují, samotný chráněný systém se nespustí a zablokuje se v procesu spouštění. Stejný problém se také zobrazí u virtuálního počítače s podporou převzetí služeb při selhání. Tady je několik příkladů:
 
 - Soubor: _/boot/grub2/grub.cfg_ na RHEL7:
 
@@ -508,7 +508,7 @@ Konfigurační soubory GRUB (_/boot/grub/menu.lst_, _/boot/grub/grub.cfg_, _/boo
 
   `kernel /vmlinuz-2.6.32-754.el6.x86_64 ro root=UUID=36dd8b45-e90d-40d6-81ac-ad0d0725d69e rd_NO_LUKS LANG=en_US.UTF-8 rd_NO_MD SYSFONT=latarcyrheb-sun16 crashkernel=auto rd_LVM_LV=rootvg/lv_root  KEYBOARDTYPE=pc KEYTABLE=us rd_LVM_LV=rootvg/lv_swap rd_NO_DM rhgb quiet`
 
-V každém příkladu musí GRUB detekovat dvě zařízení LVM s názvy `root` a `swap` ze skupiny `rootvg`svazků.
+V každém příkladu musí GRUB detekovat dvě zařízení LVM s názvy `root` a `swap` ze skupiny svazků `rootvg` .
 
 ### <a name="fix-the-problem"></a>Oprava problému
 

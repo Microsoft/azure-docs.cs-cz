@@ -4,10 +4,10 @@ description: Naučte se, jak můžete použít Azure Data Box k osazení velkýc
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.openlocfilehash: e45b8e26d332019b03ac41c3993e311480494040
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82160951"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Azure Backup offline zálohování pomocí Azure Data Box
@@ -25,7 +25,7 @@ V tomto článku se dozvíte, jak můžete použít Azure Data Box k počátečn
 
 Proces pro osazení dat z agenta MARS pomocí Azure Data Box je podporován v následujících SKU systému Windows.
 
-| **OS**                                 | **SKLADOVÉ**                                                      |
+| **OS**                                 | **SKU**                                                      |
 | -------------------------------------- | ------------------------------------------------------------ |
 | **Pracovní stanice**                        |                                                              |
 | Windows 10, 64bitová verze                     | Enterprise, Pro, Home                                       |
@@ -51,7 +51,7 @@ Proces pro osazení dat z agenta MARS pomocí Azure Data Box je podporován v n�
 | >7,2 TB a <= 80 TB * *                                      | [Azure Data Box (100 TB)](https://docs.microsoft.com/azure/databox/data-box-overview) |
 
 * Typické kompresní frekvence se liší od 10% do 20%. <br>
-* * Pokud očekáváte, že budete mít více než 80 TB počátečních dat zálohování pro jeden server MARS, [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com)kontaktujte.
+* * Pokud očekáváte, že budete mít více než 80 TB počátečních dat zálohování pro jeden server MARS, kontaktujte [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .
 
 >[!IMPORTANT]
 >Počáteční data zálohy z jednoho serveru musí být obsažena v rámci jedné Azure Data Box instance nebo Azure Data Box disku a nemohou být sdílena mezi více zařízeními stejné nebo jiné SKU. Zařízení Azure Data Box může ale obsahovat počáteční zálohy z více serverů.
@@ -124,7 +124,7 @@ Proces offline zálohování pomocí MARS a Azure Data Box vyžaduje, aby byla D
 
 1. Ujistěte se, že jste odinstalovali všechny předchozí instalace agenta MARS.
 1. Stáhněte si nejnovějšího agenta MARS z [tohoto webu](https://aka.ms/azurebackup_agent).
-1. Spusťte *soubor marsagentinstaller. exe*a proveďte *pouze* kroky pro [instalaci a registraci agenta](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent) do trezoru Recovery Services, kde chcete ukládat zálohy.
+1. Spusťte *MARSAgentInstaller.exe*a proveďte *pouze* kroky pro [instalaci a registraci agenta](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent) do trezoru Recovery Services, kde chcete ukládat zálohy.
 
    > [!NOTE]
    > Trezor Recovery Services musí být ve stejném předplatném jako úloha Azure Data Box.
@@ -153,8 +153,8 @@ Agent MARS funguje v kontextu místního systému, takže vyžaduje, aby byla k 
 K zajištění toho, aby zařízení Data Box bylo možné připojit jako místní systém pomocí protokolu NFS:
 
 1. Povolte na Windows serveru s nainstalovaným agentem MARS klienta pro funkci NFS. Zadejte alternativní zdrojový soubor *WIM: D: \zdroje\install.wim: 4*.
-1. Stáhněte si PSExec <https://download.sysinternals.com/files/PSTools.zip> ze serveru s nainstalovaným agentem Mars.
-1. Otevřete příkazový řádek se zvýšenými oprávněními a spusťte následující příkaz s adresářem, který obsahuje *PsExec. exe* jako aktuální adresář.
+1. Stáhněte si PSExec ze <https://download.sysinternals.com/files/PSTools.zip> serveru s nainstalovaným agentem Mars.
+1. Otevřete příkazový řádek se zvýšenými oprávněními a spusťte následující příkaz s adresářem, který obsahuje *PSExec.exe* jako aktuální adresář.
 
     ```cmd
     psexec.exe  -s  -i  cmd.exe
@@ -212,7 +212,7 @@ K zajištění toho, aby zařízení Data Box bylo možné připojit jako místn
     >
     >![Kořenový adresář Azure Data Boxho disku](./media/offline-backup-azure-data-box/root-directory.png)
     >
-    >Pokud je `\\mydomain\myserver\disk1\` například cesta k disku a *Disk1* obsahuje adresář s názvem *PageBlob*, cesta, kterou zadáte na stránce průvodce agentem Mars, je `\\mydomain\myserver\disk1\`.
+    >Pokud je například cesta k disku `\\mydomain\myserver\disk1\` a *Disk1* obsahuje adresář s názvem *PageBlob*, cesta, kterou zadáte na stránce průvodce agentem Mars, je `\\mydomain\myserver\disk1\` .
     >
     >Pokud jste [nastavili Azure Data Box 100-TB zařízení](#set-up-azure-data-box-devices), zadejte `\\<DeviceIPAddress>\<StorageAccountName>_PageBlob` jako síťovou cestu k zařízení.
 
@@ -247,7 +247,7 @@ V této části najdete popis kroků, které je potřeba provést po úspěšné
 
 - Poté, co agent MARS úspěšně vytvoří bod obnovení, který odpovídá prvotnímu zálohování, můžete odstranit účet úložiště nebo konkrétní obsah přidružený k Azure Data Box úlohy.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Agent Microsoft Azure Backup (MAB) Vytvoří aplikaci Azure Active Directory (Azure AD) pro vás ve vašem tenantovi. Tato aplikace vyžaduje certifikát pro ověřování, který se vytvoří a nahraje při konfiguraci zásad pro počáteční nastavení offline. K vytvoření a nahrání certifikátu do aplikace Azure AD používáme Azure PowerShell.
 
@@ -259,7 +259,7 @@ Při konfiguraci offline zálohování se můžete setkat s problémem v důsled
 
 Chcete-li zjistit, zda je váš problém stejný jako dříve popsaný, proveďte jeden z následujících kroků.
 
-#### <a name="step-1"></a>Krok 1
+#### <a name="step-1"></a>Step 1
 
 Zkontrolujte, jestli se v konzole MAB při konfiguraci offline zálohování zobrazuje následující chybová zpráva.
 
@@ -269,22 +269,22 @@ Zkontrolujte, jestli se v konzole MAB při konfiguraci offline zálohování zob
 
 1. Otevřete složku **TEMP** v instalační cestě. Výchozí cesta k dočasné složce je *C:\Program Files\Microsoft Azure Recovery Services Agent\Temp*. Vyhledejte soubor *CBUICurr* a soubor otevřete.
 
-1. V souboru *CBUICurr* se posuňte na poslední řádek a zkontrolujte, jestli je problém stejný jako ten v této chybové zprávě: `Unable to create an Azure AD application credential in customer's account. Exception: Update to existing credential with KeyId <some guid> is not allowed`.
+1. V souboru *CBUICurr* se posuňte na poslední řádek a zkontrolujte, jestli je problém stejný jako ten v této chybové zprávě: `Unable to create an Azure AD application credential in customer's account. Exception: Update to existing credential with KeyId <some guid> is not allowed` .
 
 ### <a name="workaround"></a>Alternativní řešení
 
 Chcete-li tento problém vyřešit, postupujte podle následujících kroků a opakujte konfiguraci zásad.
 
-#### <a name="step-1"></a>Krok 1
+#### <a name="step-1"></a>Step 1
 
 Přihlaste se k PowerShellu, který se zobrazí v uživatelském rozhraní MAB pomocí jiného účtu s přístupem správce k předplatnému, které bude mít vytvořenou úlohu importu nebo exportu.
 
 #### <a name="step-2"></a>Krok 2
 
-Pokud na žádném jiném serveru není nakonfigurované počáteční nastavování offline a na `AzureOfflineBackup_<Azure User Id>` aplikaci není závislý žádný jiný server, odstraňte tuto aplikaci. Vyberte **Azure Portal** > **Azure Active Directory** > **Registrace aplikací**.
+Pokud na žádném jiném serveru není nakonfigurované počáteční nastavování offline a na aplikaci není závislý žádný jiný server `AzureOfflineBackup_<Azure User Id>` , odstraňte tuto aplikaci. Vyberte **Azure Portal**  >  **Azure Active Directory**  >  **Registrace aplikací**.
 
 >[!NOTE]
-> Zkontrolujte, jestli `AzureOfflineBackup_<Azure User Id>` aplikace nemá nakonfigurované žádné další offline nastavení, a jestli není na této aplikaci závislý žádný jiný server. V části **veřejné klíče** pokračujte na**klíče** **Nastavení** > . Neměl by mít přidané žádné jiné veřejné klíče. Odkaz najdete na následujícím snímku obrazovky.
+> Zkontrolujte, jestli aplikace nemá `AzureOfflineBackup_<Azure User Id>` nakonfigurované žádné další offline nastavení, a jestli není na této aplikaci závislý žádný jiný server. **Settings**  >  V části **veřejné klíče** pokračujte na**klíče** nastavení. Neměl by mít přidané žádné jiné veřejné klíče. Odkaz najdete na následujícím snímku obrazovky.
 >
 >![Veřejné klíče](./media/offline-backup-azure-data-box/public-keys.png)
 
@@ -292,23 +292,23 @@ Pokud na žádném jiném serveru není nakonfigurované počáteční nastavov�
 
 Ze serveru, který se pokoušíte nakonfigurovat pro offline zálohování, proveďte následující akce.
 
-1. Přejít na kartu **Správa počítačového certifikátu** > **osobní** a vyhledejte certifikát s názvem `CB_AzureADCertforOfflineSeeding_<ResourceId>`.
+1. Přejít na kartu **Správa počítačového certifikátu**  >  **osobní** a vyhledejte certifikát s názvem `CB_AzureADCertforOfflineSeeding_<ResourceId>` .
 
 2. Vyberte certifikát, klikněte pravým tlačítkem na **všechny úlohy**a vyberte **exportovat** bez privátního klíče ve formátu. cer.
 
-3. V kroku 2 přejdete do aplikace Azure offline Backup. Vyberte **Nastavení** > **klíče** > **nahrát veřejný klíč**. Nahrajte certifikát, který jste exportovali v předchozím kroku.
+3. V kroku 2 přejdete do aplikace Azure offline Backup. Vyberte **Nastavení**  >  **klíče**  >  **nahrát veřejný klíč**. Nahrajte certifikát, který jste exportovali v předchozím kroku.
 
     ![Odeslat veřejný klíč](./media/offline-backup-azure-data-box/upload-public-key.png)
 
 4. Na serveru otevřete registr zadáním příkazu **Regedit** v okně Spustit.
 
-5. Přejít na počítač registru *\ HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\Config\CloudBackupProvider.* Klikněte pravým tlačítkem na **CloudBackupProvider**a přidejte novou řetězcovou hodnotu s názvem `AzureADAppCertThumbprint_<Azure User Id>`.
+5. Přejít na počítač registru *\ HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\Config\CloudBackupProvider.* Klikněte pravým tlačítkem na **CloudBackupProvider**a přidejte novou řetězcovou hodnotu s názvem `AzureADAppCertThumbprint_<Azure User Id>` .
 
     >[!NOTE]
     > Pokud chcete získat ID uživatele Azure, proveďte jednu z následujících akcí:
     >
     >- Z PowerShellu připojeného k Azure spusťte `Get-AzureRmADUser -UserPrincipalName "Account Holder's email as defined in the portal"` příkaz.
-    > - Přejít na cestu `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\DbgSettings\OnlineBackup` k registru s názvem *CurrentUserId*.
+    > - Přejít na cestu k registru `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\DbgSettings\OnlineBackup` s názvem *CurrentUserId*.
 
 6. Klikněte pravým tlačítkem na řetězec přidaný v předchozím kroku a vyberte **změnit**. V poli hodnota zadejte kryptografický otisk certifikátu, který jste exportovali v kroku 2. Vyberte **OK**.
 
@@ -318,4 +318,4 @@ Ze serveru, který se pokoušíte nakonfigurovat pro offline zálohování, prov
 
 ## <a name="questions"></a>Dotazy
 
-V případě jakýchkoli otázek nebo objasnění problémů, se kterými se [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com)sami čelíte, kontaktujte.
+V případě jakýchkoli otázek nebo objasnění problémů, se kterými se sami čelíte, kontaktujte [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .

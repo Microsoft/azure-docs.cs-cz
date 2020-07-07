@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 10/21/2019
 ms.author: lcozzens
-ms.openlocfilehash: 5ea9749c07aadc7037e753160e9b053992bebae2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bf2ccd93a94036c6ab5b6224456cd1f5a13239c5
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77619316"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855007"
 ---
 # <a name="quickstart-add-feature-flags-to-a-net-framework-app"></a>Rychlý Start: Přidání příznaků funkcí do aplikace .NET Framework
 
@@ -37,16 +37,16 @@ Knihovny pro správu funkcí .NET rozšíří rozhraní s kompletní podporou p�
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Vyberte **správce** > funkcí **+ Přidat** a přidejte příznak funkce s názvem `Beta`.
+6. Vyberte **správce funkcí**  >  **+ Přidat** a přidejte příznak funkce s názvem `Beta` .
 
     > [!div class="mx-imgBorder"]
     > ![Povolit příznak funkce s názvem beta](media/add-beta-feature-flag.png)
 
-    Pro `label` teď nechte nedefinovaného.
+    `label`Pro teď nechte nedefinovaného.
 
 ## <a name="create-a-net-console-app"></a>Vytvoření konzolové aplikace .NET
 
-1. Spusťte Visual Studio a vyberte **soubor** > **Nový** > **projekt**.
+1. Spusťte Visual Studio a vyberte **soubor**  >  **Nový**  >  **projekt**.
 
 1. V části **vytvořit nový projekt**, vyfiltrujte typ projektu **konzoly** a klikněte na **Konzolová aplikace (.NET Framework)**. Klikněte na **Další**.
 
@@ -71,7 +71,7 @@ Knihovny pro správu funkcí .NET rozšíří rozhraní s kompletní podporou p�
     using Microsoft.FeatureManagement;
     ```
 
-1. Aktualizujte `Main` metodu pro připojení ke konfiguraci aplikace a určete `UseFeatureFlags` možnost, aby se načetly příznaky funkcí. Pokud je příznak `Beta` funkce povolený, zobrazí se zpráva.
+1. Aktualizujte `Main` metodu pro připojení ke konfiguraci aplikace a určete `UseFeatureFlags` možnost, aby se načetly příznaky funkcí. Pokud `Beta` je příznak funkce povolený, zobrazí se zpráva.
 
     ```csharp
         public static async Task Main(string[] args)
@@ -105,11 +105,15 @@ Knihovny pro správu funkcí .NET rozšíří rozhraní s kompletní podporou p�
 
 1. Nastavte proměnnou prostředí s názvem **ConnectionString** na připojovací řetězec úložiště konfigurace vaší aplikace. Pokud použijete příkazový řádek Windows, spusťte následující příkaz:
 
+    ```console
         setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```
 
     Pokud používáte Windows PowerShell, spusťte následující příkaz:
 
+    ```powershell
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
+    ```
 
 1. Pokud chcete, aby se změna projevila, restartujte Visual Studio. 
 

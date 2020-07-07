@@ -8,10 +8,10 @@ ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: xujing
 ms.openlocfilehash: c85eef1a5d035e23c7e63632ac92c21440b15cae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82101548"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Jak nasadit Windows 10 v Azure s právy pro hostování s více klienty 
@@ -72,13 +72,13 @@ Nasazení **pomocí Azure Resource Managerho nasazení šablony** V rámci šabl
     }
 ```
 
-**Nasazení prostřednictvím PowerShellu** Při nasazení virtuálního počítače s Windows serverem prostřednictvím PowerShellu máte další parametr pro `-LicenseType`. Po nahrání virtuálního pevného disku do Azure vytvoříte virtuální počítač pomocí příkazu `New-AzVM` a zadáte typ licencování následujícím způsobem:
+**Nasazení prostřednictvím PowerShellu** Při nasazení virtuálního počítače s Windows serverem prostřednictvím PowerShellu máte další parametr pro `-LicenseType` . Po nahrání virtuálního pevného disku do Azure vytvoříte virtuální počítač pomocí příkazu `New-AzVM` a zadáte typ licencování následujícím způsobem:
 ```powershell
 New-AzVM -ResourceGroupName "myResourceGroup" -Location "West US" -VM $vm -LicenseType "Windows_Client"
 ```
 
 ## <a name="verify-your-vm-is-utilizing-the-licensing-benefit"></a>Ověřte, že váš virtuální počítač využívá výhod licencování.
-Po nasazení virtuálního počítače pomocí metody nasazení PowerShellu nebo Správce prostředků Ověřte typ `Get-AzVM` licence následujícím způsobem:
+Po nasazení virtuálního počítače pomocí metody nasazení PowerShellu nebo Správce prostředků Ověřte typ licence následujícím `Get-AzVM` způsobem:
 ```powershell
 Get-AzVM -ResourceGroup "myResourceGroup" -Name "myVM"
 ```
