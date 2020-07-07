@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
 ms.openlocfilehash: 3032585c6f0a5cc6143eee06b12b6def50cd7cd0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80297708"
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>StorSimple 8000 series software, vysoká dostupnost a síťové požadavky
@@ -63,7 +63,7 @@ Následující požadavky na software jsou pro volitelné součásti StorSimple 
 
 Zařízení StorSimple je uzamčené. Porty ale musí být v bráně firewall otevřené, aby bylo možné provozovat přenosy z iSCSI, cloudu a správy. Následující tabulka uvádí porty, které je třeba otevřít v bráně firewall. V této tabulce se *v* nebo *příchozí* odkazuje na směr, ze kterého příchozí klient žádá o přístup k vašemu zařízení. *Výstupní* nebo *odchozí* odkazuje na směr, ve kterém vaše zařízení StorSimple odesílá data externě, mimo nasazení: například odchozí na Internet.
 
-| Číslo portu.<sup>1, 2</sup> | V nebo ven | Rozsah portů | Požaduje se | Poznámky |
+| Číslo portu.<sup>1, 2</sup> | V nebo ven | Rozsah portů | Vyžadováno | Poznámky |
 | --- | --- | --- | --- | --- |
 | TCP 80 (HTTP)<sup>3</sup> |Out |Síť WAN |Ne |<ul><li>Odchozí port se používá pro přístup k Internetu k načtení aktualizací.</li><li>Odchozí webový proxy server je uživatelsky konfigurovatelné.</li><li>Aby se mohly aktualizovat systémové aktualizace, musí být tento port taky otevřený pro pevné IP adresy řadiče.</li></ul> |
 | TCP 443 (HTTPS)<sup>3</sup> |Out |Síť WAN |Ano |<ul><li>Odchozí port se používá pro přístup k datům v cloudu.</li><li>Odchozí webový proxy server je uživatelsky konfigurovatelné.</li><li>Aby se mohly aktualizovat systémové aktualizace, musí být tento port taky otevřený pro pevné IP adresy řadiče.</li><li>Tento port se používá také na obou řadičích pro uvolňování paměti.</li></ul> |
@@ -122,7 +122,7 @@ Doporučujeme, abyste nastavili pravidla brány firewall pro odchozí přenosy n
 
 Metrika směrování je přidružená k rozhraním a bráně, která směruje data do zadaných sítí. Metriky směrování používá směrovací protokol k výpočtu nejlepší cesty k danému cíli, pokud se zjistí, že existuje více cest ke stejnému cíli. Čím nižší je metrika směrování, tím vyšší je priorita.
 
-Pokud je v kontextu StorSimple více síťových rozhraní a bran pro přenos provozu, budou metriky směrování odesílány do hry, aby určily relativní pořadí, ve kterém se rozhraní budou používat. Metriky směrování nemůže změnit uživatel. K vytištění směrovací tabulky `Get-HcsRoutingTable` (a metrik) na zařízení StorSimple ale můžete použít rutinu. Další informace o rutině Get-HcsRoutingTable najdete v [řešení potíží s nasazením StorSimple](storsimple-troubleshoot-deployment.md).
+Pokud je v kontextu StorSimple více síťových rozhraní a bran pro přenos provozu, budou metriky směrování odesílány do hry, aby určily relativní pořadí, ve kterém se rozhraní budou používat. Metriky směrování nemůže změnit uživatel. `Get-HcsRoutingTable`K vytištění směrovací tabulky (a metrik) na zařízení StorSimple ale můžete použít rutinu. Další informace o rutině Get-HcsRoutingTable najdete v [řešení potíží s nasazením StorSimple](storsimple-troubleshoot-deployment.md).
 
 Algoritmus metriky směrování použitý pro aktualizaci 2 a novější verze se dá vysvětlit následujícím způsobem.
 
@@ -233,7 +233,7 @@ StorSimple Device model 8600 obsahuje kromě primárního skříňku i skříň 
 * Zajistěte, aby byly současně nainstalovány oba moduly EBOD skříně, jak kabely SAS, tak i všechny jednotky pevného disku.
 * Pokud dojde k chybě modulu EBOD skříni, vyžádejte ihned náhradu.
 * Pokud dojde k selhání modulu EBOD skříni, ujistěte se, že je modul druhého kontroleru aktivní, než nahradíte neúspěšný modul. Pokud chcete ověřit, jestli je kontroler aktivní, použijte k [identifikaci aktivního řadiče na zařízení](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device).
-* Při nahrazení modulu eBOD Controller nepřetržitě Sledujte stav součásti ve službě StorSimple Device Manager, a to tak, že se přihlásíte ke **sledování** > **stavu hardwaru**.
+* Při nahrazení modulu eBOD Controller nepřetržitě Sledujte stav součásti ve službě StorSimple Device Manager, a to tak, že se přihlásíte ke **sledování**  >  **stavu hardwaru**.
 * Pokud kabel SAS dojde k chybě nebo pokud vyžaduje nahrazení (podpora Microsoftu by se mělo zapojit do takového rozhodnutí), nezapomeňte odebrat jenom kabel SAS, který vyžaduje nahrazení.
 * Neprovádějte souběžné odebrání obou kabelů SAS ze systému v libovolném časovém okamžiku.
 

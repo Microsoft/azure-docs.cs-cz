@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 04/08/2019
 ms.author: sharadag
 ms.openlocfilehash: 5e3e44c4aee84fe9e2e21174a1d65fdf26b765a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80295479"
 ---
 # <a name="url-redirect"></a>Přesměrování adresy URL
@@ -40,13 +40,13 @@ Můžete nastavit protokol, který se bude používat pro přesměrování. To u
 - **Požadavek shody**: Tato možnost zachovává protokol používaný příchozím požadavkem. Požadavek HTTP tedy zůstane HTTP a požadavek HTTPS zůstane přesměrování post protokolu HTTPS.
 
 ## <a name="destination-host"></a>Cílový hostitel
-V rámci konfigurace směrování přesměrování můžete také změnit název hostitele nebo doménu pro požadavek na přesměrování. Nastavením tohoto pole můžete změnit název hostitele v adrese URL pro přesměrování nebo jinak zachovat název hostitele z příchozího požadavku. Pomocí tohoto pole pak můžete přesměrovat všechny požadavky odeslané `https://www.contoso.com/*` na. `https://www.fabrikam.com/*`
+V rámci konfigurace směrování přesměrování můžete také změnit název hostitele nebo doménu pro požadavek na přesměrování. Nastavením tohoto pole můžete změnit název hostitele v adrese URL pro přesměrování nebo jinak zachovat název hostitele z příchozího požadavku. Pomocí tohoto pole pak můžete přesměrovat všechny požadavky odeslané na `https://www.contoso.com/*` `https://www.fabrikam.com/*` .
 
 ## <a name="destination-path"></a>Cílová cesta
-V případě, že chcete jako součást přesměrování nahradit segment cesty adresy URL, můžete toto pole nastavit s novou hodnotou cesty. V opačném případě můžete zvolit zachování hodnoty cesty jako součást přesměrování. Pomocí tohoto pole pak můžete přesměrovat všechny požadavky odeslané na `https://www.contoso.com/\*` `https://www.contoso.com/redirected-site`.
+V případě, že chcete jako součást přesměrování nahradit segment cesty adresy URL, můžete toto pole nastavit s novou hodnotou cesty. V opačném případě můžete zvolit zachování hodnoty cesty jako součást přesměrování. Pomocí tohoto pole pak můžete přesměrovat všechny požadavky odeslané na `https://www.contoso.com/\*` `https://www.contoso.com/redirected-site` .
 
 ## <a name="query-string-parameters"></a>Parametry řetězce dotazu
-Můžete také nahradit parametry řetězce dotazu v přesměrované adrese URL. Chcete-li nahradit všechny existující řetězce dotazu z adresy URL příchozího požadavku, nastavte toto pole na hodnotu Replace a pak nastavte příslušnou hodnotu. V opačném případě můžete původní sadu řetězců dotazů zachovat nastavením pole na zachovat. Pomocí tohoto pole můžete například přesměrovat veškerý provoz odeslaný na `https://www.contoso.com/foo/bar` do. `https://www.contoso.com/foo/bar?&utm_referrer=https%3A%2F%2Fwww.bing.com%2F` 
+Můžete také nahradit parametry řetězce dotazu v přesměrované adrese URL. Chcete-li nahradit všechny existující řetězce dotazu z adresy URL příchozího požadavku, nastavte toto pole na hodnotu Replace a pak nastavte příslušnou hodnotu. V opačném případě můžete původní sadu řetězců dotazů zachovat nastavením pole na zachovat. Pomocí tohoto pole můžete například přesměrovat veškerý provoz odeslaný na `https://www.contoso.com/foo/bar` do `https://www.contoso.com/foo/bar?&utm_referrer=https%3A%2F%2Fwww.bing.com%2F` . 
 
 ## <a name="destination-fragment"></a>Fragment cíle
 Cílový fragment je část adresy URL po #, která se obvykle používá v prohlížečích k pozemkům na určité části stránky. Nastavením tohoto pole můžete přidat fragment na adresu URL pro přesměrování.

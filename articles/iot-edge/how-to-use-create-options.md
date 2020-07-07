@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: c07e161042a497a232cbd5e3f11128893a095381
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80550341"
 ---
 # <a name="how-to-configure-container-create-options-for-iot-edge-modules"></a>Jak nakonfigurovat možnosti vytváření kontejnerů pro IoT Edge moduly
@@ -52,15 +52,15 @@ Manifest nasazení IoT Edge přijímá možnosti vytváření formátované jako
 
 Tento příklad edgeHub používá parametr **Hostconfig. PortBindings** k mapování vystavených portů na kontejneru na port v hostitelském zařízení.
 
-Pokud používáte rozšíření Azure IoT Tools pro Visual Studio nebo Visual Studio Code, můžete v souboru **Deployment. template. JSON** napsat možnosti pro vytvoření ve formátu JSON. Poté, když použijete rozšíření k sestavení IoT Edge řešení nebo vygenerování manifestu nasazení, bude stringify JSON pro vás ve formátu, který očekává IoT Edge runtime. Příklad:
+Pokud používáte rozšíření Azure IoT Tools pro Visual Studio nebo Visual Studio Code, můžete napsat možnosti vytvoření ve formátu JSON v **deployment.template.js** souboru. Poté, když použijete rozšíření k sestavení IoT Edge řešení nebo vygenerování manifestu nasazení, bude stringify JSON pro vás ve formátu, který očekává IoT Edge runtime. Příklad:
 
 ```json
 "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}]}}}"
 ```
 
-Jedním z `docker inspect` tipů pro psaní možností vytváření je použití příkazu. V rámci procesu vývoje spusťte modul místně pomocí nástroje `docker run <container name>`. Jakmile modul funguje způsobem, který chcete, spusťte `docker inspect <container name>`. Tento příkaz vypíše podrobnosti o modulu ve formátu JSON. Vyhledejte parametry, které jste nakonfigurovali, a zkopírujte kód JSON. Příklad:
+Jedním z tipů pro psaní možností vytváření je použití `docker inspect` příkazu. V rámci procesu vývoje spusťte modul místně pomocí nástroje `docker run <container name>` . Jakmile modul funguje způsobem, který chcete, spusťte `docker inspect <container name>` . Tento příkaz vypíše podrobnosti o modulu ve formátu JSON. Vyhledejte parametry, které jste nakonfigurovali, a zkopírujte kód JSON. Příklad:
 
-[![Výsledky kontroly edgeHub](./media/how-to-use-create-options/docker-inspect-edgehub-inline-and-expanded.png) Docker](./media/how-to-use-create-options/docker-inspect-edgehub-inline-and-expanded.png#lightbox)
+[![Výsledky kontroly edgeHub ](./media/how-to-use-create-options/docker-inspect-edgehub-inline-and-expanded.png) Docker](./media/how-to-use-create-options/docker-inspect-edgehub-inline-and-expanded.png#lightbox)
 
 ## <a name="common-scenarios"></a>Typické scénáře
 
@@ -75,11 +75,11 @@ Možnosti vytváření kontejnerů umožňují řadu scénářů, ale tady je n�
 Pokud váš modul potřebuje komunikovat se službou mimo IoT Edge řešení a nepoužívá směrování zpráv, musíte port hostitele namapovat na port modulu.
 
 >[!TIP]
->Toto mapování portů není nutné pro komunikaci mezi moduly na stejném zařízení. Pokud modul potřebuje pro dotazování rozhraní API hostovaného v modulu B, může to udělat bez mapování portů. Modul B musí ve svém souboru dockerfileu vystavovat port, například: `EXPOSE 8080`. Pak se modul A může dotazovat rozhraní API pomocí názvu modulu B, například: `http://ModuleB:8080/api`.
+>Toto mapování portů není nutné pro komunikaci mezi moduly na stejném zařízení. Pokud modul potřebuje pro dotazování rozhraní API hostovaného v modulu B, může to udělat bez mapování portů. Modul B musí ve svém souboru dockerfileu vystavovat port, například: `EXPOSE 8080` . Pak se modul A může dotazovat rozhraní API pomocí názvu modulu B, například: `http://ModuleB:8080/api` .
 
 Nejdřív se ujistěte, že je port uvnitř modulu vystavený pro naslouchat připojení. To můžete provést pomocí instrukcí [vystavení](https://docs.docker.com/engine/reference/builder/#expose) v souboru Dockerfile. Například, `EXPOSE 8080`. Pokud není zadaný, použije se ve výchozím nastavení protokol TCP, pokud není zadaný, nebo můžete zadat UDP.
 
-Pak pomocí nastavení **PortBindings** ve skupině **Hostconfig** [kontejneru Docker vytvořte možnosti](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) mapování vystaveného portu v modulu na port v hostitelském zařízení. Pokud jste například vystavili port 8080 uvnitř modulu a chcete ho namapovat na port 80 hostitelského zařízení, možnosti vytváření v souboru template. JSON by vypadaly jako v následujícím příkladu:
+Pak pomocí nastavení **PortBindings** ve skupině **Hostconfig** [kontejneru Docker vytvořte možnosti](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) mapování vystaveného portu v modulu na port v hostitelském zařízení. Pokud jste například vystavili port 8080 uvnitř modulu a chcete ho namapovat na port 80 hostitelského zařízení, možnosti vytvoření v template.jssouboru by vypadaly jako v následujícím příkladu:
 
 ```json
 "createOptions": {
@@ -109,7 +109,7 @@ Můžete deklarovat, kolik prostředků hostitele může modul použít. Tento o
 * **MemorySwap**: celkový limit paměti (paměť a swap). Například 536870912 bajtů = 512 MB
 * **CpuPeriod**: Délka periody procesoru v mikrosekundách. Výchozí hodnota je 100000, takže například hodnota 25000 omezí kontejner na 25% prostředků procesoru.
 
-Ve formátu Template. JSON by tyto hodnoty vypadaly jako v následujícím příkladu:
+V template.jsve formátu by tyto hodnoty vypadaly jako v následujícím příkladu:
 
 ```json
 "createOptions": {

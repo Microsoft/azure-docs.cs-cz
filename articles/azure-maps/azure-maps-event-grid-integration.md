@@ -10,10 +10,10 @@ services: azure-maps
 manager: timlt
 ms.custom: mvc
 ms.openlocfilehash: 9c9483af191e5439af0c0b5e433187d6475c178c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335720"
 ---
 # <a name="react-to-azure-maps-events-by-using-event-grid"></a>Reakce na události Azure Maps pomocí Event Grid 
@@ -82,7 +82,7 @@ Aplikace, které zpracovávají Azure Maps události geografického plotu, by m�
 
 * Nakonfigurujte více předplatných pro směrování událostí do stejné obslužné rutiny události. Je důležité, aby se nepředpokládalo, že události jsou z konkrétního zdroje. Vždy zkontrolujte téma zprávy a ujistěte se, že zpráva pochází ze zdroje, který jste očekávali.
 * Pomocí `X-Correlation-id` pole v hlavičce odpovědi můžete pochopit, jestli jsou informace o objektech aktuální. Zprávy mohou být doručeny mimo pořadí nebo po zpoždění.
-* Při volání metody GET nebo POST v rozhraní API geografické plotu s parametrem Mode nastaveným na `EnterAndExit`je vygenerována událost Enter nebo Exit pro každou geometrii v geografickém stavu, pro který byl změněn stav z předchozího volání rozhraní API geografické ploty.
+* Při volání metody GET nebo POST v rozhraní API geografické plotu s parametrem Mode nastaveným na je `EnterAndExit` vygenerována událost Enter nebo Exit pro každou geometrii v geografickém stavu, pro který byl změněn stav z předchozího volání rozhraní API geografické ploty.
 
 ## <a name="next-steps"></a>Další kroky
 

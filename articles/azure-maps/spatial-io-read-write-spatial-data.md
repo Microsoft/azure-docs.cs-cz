@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 4c47335689401ebce98224992c74c3396821a1dd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80334155"
 ---
 # <a name="read-and-write-spatial-data"></a>Čtení a zápis prostorových dat
@@ -34,19 +34,19 @@ Tyto další části obsahují přehled všech různých nástrojů pro čtení 
 
 ## <a name="read-spatial-data"></a>Čtení prostorových dat
 
-`atlas.io.read` Funkce je hlavní funkcí, která slouží ke čtení běžných formátů prostorových dat, jako jsou KML, GPX, GeoRSS, injson a CSV, s prostorovými daty. Tato funkce může také číst komprimované verze těchto formátů, jako soubor ZIP nebo soubor KMZ. Formát souboru KMZ je komprimovaná verze KML, která může také zahrnovat prostředky, jako jsou obrázky. Alternativně může funkce Read převzít adresu URL, která odkazuje na soubor v libovolném z těchto formátů. Adresy URL by se měly hostovat na koncovém bodu s povoleným CORS nebo by měla být v možnostech čtení uvedená proxy služba. Služba proxy se používá k načtení prostředků v doménách, které nejsou povolené CORS. Funkce Read vrací příslib pro přidání ikon obrázku na mapu a zpracovává asynchronně data pro minimalizaci dopadu na vlákno uživatelského rozhraní.
+`atlas.io.read`Funkce je hlavní funkcí, která slouží ke čtení běžných formátů prostorových dat, jako jsou KML, GPX, GeoRSS, injson a CSV, s prostorovými daty. Tato funkce může také číst komprimované verze těchto formátů, jako soubor ZIP nebo soubor KMZ. Formát souboru KMZ je komprimovaná verze KML, která může také zahrnovat prostředky, jako jsou obrázky. Alternativně může funkce Read převzít adresu URL, která odkazuje na soubor v libovolném z těchto formátů. Adresy URL by se měly hostovat na koncovém bodu s povoleným CORS nebo by měla být v možnostech čtení uvedená proxy služba. Služba proxy se používá k načtení prostředků v doménách, které nejsou povolené CORS. Funkce Read vrací příslib pro přidání ikon obrázku na mapu a zpracovává asynchronně data pro minimalizaci dopadu na vlákno uživatelského rozhraní.
 
 Při čtení komprimovaného souboru buď jako zip, nebo jako KMZ, bude vyhledán a prohledán první platný soubor. Například DOC. KML nebo soubor s jiným platným rozšířením, například:. KML,. XML, injson,. JSON,. csv,. TSV nebo. txt. Pak jsou image, na které se odkazuje v souborech KML a GeoRSS, předem načetly, aby byly dostupné. Nepřístupná data obrázku mohou načíst alternativní záložní bitovou kopii nebo bude odebrána ze stylů. Obrázky extrahované ze souborů KMZ budou převedeny na identifikátory URI dat.
 
-Výsledek z funkce Read je `SpatialDataSet` objekt. Tento objekt rozšiřuje třídu rozhraní injson pro funkci. Dá se snadno předat `DataSource` jako, aby se vykreslily jeho funkce na mapě. `SpatialDataSet` Obsahuje nejen informace o funkci, ale může zahrnovat i překrytí KML, zpracování metrik a další podrobnosti, jak je uvedeno v následující tabulce.
+Výsledek z funkce Read je `SpatialDataSet` objekt. Tento objekt rozšiřuje třídu rozhraní injson pro funkci. Dá se snadno předat `DataSource` jako, aby se vykreslily jeho funkce na mapě. `SpatialDataSet`Obsahuje nejen informace o funkci, ale může zahrnovat i překrytí KML, zpracování metrik a další podrobnosti, jak je uvedeno v následující tabulce.
 
 | Název vlastnosti | Typ | Popis | 
 |---------------|------|-------------|
 | `bbox` | `BoundingBox` | Ohraničující rámeček všech dat v datové sadě. |
 | `features` | `Feature[]` | Funkce pro injson v rámci datové sady. |
 | `groundOverlays` | `(atlas.layer.ImageLayer | atlas.layers.OgcMapLayer)[]` | Pole KML GroundOverlays. |
-| `icons` | Řetězec&lt;záznamu, řetězec&gt; | Sada adres URL ikony. Klíč = název ikony, hodnota = adresa URL. |
-| properties | jakýmikoli | Informace o vlastnostech poskytované na úrovni dokumentu sady prostorových dat |
+| `icons` | &lt;Řetězec záznamu, řetězec&gt; | Sada adres URL ikony. Klíč = název ikony, hodnota = adresa URL. |
+| properties | Libovolný | Informace o vlastnostech poskytované na úrovni dokumentu sady prostorových dat |
 | `stats` | `SpatialDataSetStats` | Statistika týkající se obsahu a času zpracování sady prostorových dat |
 | `type` | `'FeatureCollection'` | Hodnota typu geografického zápisu jen pro čtení. |
 
@@ -56,14 +56,14 @@ Následující kód ukazuje, jak načíst prostorovou datovou sadu a vykreslit j
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Jednoduché načítání prostorových dat' src='//codepen.io/azuremaps/embed/yLNXrZx/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se, jak se v CodePen (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a> <a href='https://codepen.io/azuremaps/pen/yLNXrZx/'>načítají Data prostorů</a> pro pero Azure Maps jednoduché.
+<iframe height='500' scrolling='no' title='Jednoduché načítání prostorových dat' src='//codepen.io/azuremaps/embed/yLNXrZx/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se, jak se v CodePen () na <a href='https://codepen.io/azuremaps/pen/yLNXrZx/'>načítají data prostorů</a> pro pero Azure Maps jednoduché <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
-Další ukázka kódu ukazuje, jak číst a načíst KML nebo KMZ na mapě. KML může obsahovat základní překryvy, které budou ve formě `ImageLyaer` nebo. `OgcMapLayer` Tyto překryvy je nutné přidat na mapě odděleně od funkcí. Kromě toho, pokud má datová sada vlastní ikony, musí být tyto ikony načteny do prostředků map předtím, než jsou funkce načteny.
+Další ukázka kódu ukazuje, jak číst a načíst KML nebo KMZ na mapě. KML může obsahovat základní překryvy, které budou ve formě `ImageLyaer` nebo `OgcMapLayer` . Tyto překryvy je nutné přidat na mapě odděleně od funkcí. Kromě toho, pokud má datová sada vlastní ikony, musí být tyto ikony načteny do prostředků map předtím, než jsou funkce načteny.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Načíst KML na mapě' src='//codepen.io/azuremaps/embed/XWbgwxX/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se, jak se <a href='https://codepen.io/azuremaps/pen/XWbgwxX/'>KML pero načítají</a> na<a href='https://codepen.io/azuremaps'>@azuremaps</a>mapu podle Azure Maps () na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Načíst KML na mapě' src='//codepen.io/azuremaps/embed/XWbgwxX/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se, jak se <a href='https://codepen.io/azuremaps/pen/XWbgwxX/'>KML pero načítají na mapu</a> podle Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 Volitelně můžete poskytnout proxy službu pro přístup k prostředkům mezi doménami, u kterých pravděpodobně není povolená CORS. Funkce čtení se pokusí získat přístup k souborům v jiné doméně, a to nejprve pomocí CORS. Po prvním pokusu o přístup k jakémukoli prostředku v jiné doméně pomocí CORS bude vyžadován pouze další soubor, pokud byla poskytnuta proxy služba. Funkce Read připojí adresu URL souboru ke konci poskytnuté adresy URL proxy serveru. Tento fragment kódu ukazuje, jak předat proxy službu do funkce Read:
@@ -85,18 +85,18 @@ Níže uvedená ukázka ukazuje, jak si přečíst soubor s oddělovači a jak h
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Přidat soubor s oddělovači' src='//codepen.io/azuremaps/embed/ExjXBEb/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se, jak pero <a href='https://codepen.io/azuremaps/pen/ExjXBEb/'>přidá soubor s oddělovači</a> pomocí<a href='https://codepen.io/azuremaps'>@azuremaps</a>Azure Maps () na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Přidat soubor s oddělovači' src='//codepen.io/azuremaps/embed/ExjXBEb/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se, jak pero <a href='https://codepen.io/azuremaps/pen/ExjXBEb/'>přidá soubor s oddělovači</a> pomocí Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="write-spatial-data"></a>Zápis prostorových dat
 
-V modulu pro prostorové vstupně-výstupní operace jsou dvě hlavní funkce zápisu. `atlas.io.write` Funkce vygeneruje řetězec, zatímco `atlas.io.writeCompressed` funkce vygeneruje komprimovaný soubor zip. Komprimovaný soubor zip by obsahoval textový soubor s prostorovými daty. Obě tyto funkce vrací příslib pro přidání dat do souboru. A oba můžou zapisovat následující data `SpatialDataSet`:, `DataSource`, `ImageLayer`, `OgcMapLayer`, kolekce funkcí, funkce, geometrie nebo pole libovolné kombinace těchto datových typů. Při psaní pomocí obou funkcí můžete zadat požadovaný formát souboru. Pokud formát souboru není zadán, budou data zapsána jako KML.
+V modulu pro prostorové vstupně-výstupní operace jsou dvě hlavní funkce zápisu. `atlas.io.write`Funkce vygeneruje řetězec, zatímco `atlas.io.writeCompressed` funkce vygeneruje komprimovaný soubor zip. Komprimovaný soubor zip by obsahoval textový soubor s prostorovými daty. Obě tyto funkce vrací příslib pro přidání dat do souboru. A oba můžou zapisovat následující data: `SpatialDataSet` , `DataSource` , `ImageLayer` , `OgcMapLayer` , kolekce funkcí, funkce, geometrie nebo pole libovolné kombinace těchto datových typů. Při psaní pomocí obou funkcí můžete zadat požadovaný formát souboru. Pokud formát souboru není zadán, budou data zapsána jako KML.
 
 Následující nástroj ukazuje většinu možností zápisu, které lze použít s `atlas.io.write` funkcí.
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Možnosti zápisu prostorových dat' src='//codepen.io/azuremaps/embed/YzXxXPG/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na <a href='https://codepen.io/azuremaps/pen/YzXxXPG/'>Možnosti psaní prostorových dat</a> pro pero<a href='https://codepen.io/azuremaps'>@azuremaps</a>pomocí Azure Maps () na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='700' scrolling='no' title='Možnosti zápisu prostorových dat' src='//codepen.io/azuremaps/embed/YzXxXPG/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na <a href='https://codepen.io/azuremaps/pen/YzXxXPG/'>Možnosti psaní prostorových dat</a> pro pero pomocí Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="example-of-writing-spatial-data"></a>Příklad psaní prostorových dat
@@ -105,7 +105,7 @@ Následující ukázka umožňuje přetáhnout a pak načíst prostorové soubor
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Přetažení prostorových souborů na mapě' src='//codepen.io/azuremaps/embed/zYGdGoO/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na pero <a href='https://codepen.io/azuremaps/pen/zYGdGoO/'>přetahování prostorových souborů na mapu</a> pomocí Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='700' scrolling='no' title='Přetažení prostorových souborů na mapě' src='//codepen.io/azuremaps/embed/zYGdGoO/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na pero <a href='https://codepen.io/azuremaps/pen/zYGdGoO/'>přetahování prostorových souborů na mapu</a> pomocí Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 Volitelně můžete poskytnout proxy službu pro přístup k prostředkům mezi doménami, u kterých pravděpodobně není povolená CORS. Tento fragment kódu ukazuje, že můžete začlenit proxy službu:
@@ -124,7 +124,7 @@ atlas.io.read(data, {
 
 ## <a name="read-and-write-well-known-text-wkt"></a>Přečíst a zapsat dobře známý text (Well)
 
-[Dobře známý text](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry) (Well) je standard pro Open GEOSPATIAL CONSORTIUM (OGC), který představuje prostorové geometrií jako text. Mnohé geoprostorové systémy podporují Well, jako je Azure SQL a Azure PostgreSQL, pomocí modulu plug-in PostGIS. Podobně jako u většiny standardů OGC se souřadnice naformátují jako zeměpisná šířka, aby se zarovnaly konvenci x y. Příkladem je, že bod v délce-110 a zeměpisná šířka 45 lze zapsat `POINT(-110 45)` jako použití formátu Well.
+[Dobře známý text](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry) (Well) je standard pro Open GEOSPATIAL CONSORTIUM (OGC), který představuje prostorové geometrií jako text. Mnohé geoprostorové systémy podporují Well, jako je Azure SQL a Azure PostgreSQL, pomocí modulu plug-in PostGIS. Podobně jako u většiny standardů OGC se souřadnice naformátují jako zeměpisná šířka, aby se zarovnaly konvenci x y. Příkladem je, že bod v délce-110 a zeměpisná šířka 45 lze zapsat jako `POINT(-110 45)` použití formátu Well.
 
 Známý text lze číst pomocí `atlas.io.ogc.WKT.read` funkce a napsaný pomocí `atlas.io.ogc.WKT.write` funkce.
 
@@ -134,24 +134,24 @@ Následující kód ukazuje, jak přečíst známý textový řetězec `POINT(-1
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Dobře známý text pro čtení' src='//codepen.io/azuremaps/embed/XWbabLd/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na <a href='https://codepen.io/azuremaps/pen/XWbabLd/'>dobře známý text</a> pomocí pera Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Dobře známý text pro čtení' src='//codepen.io/azuremaps/embed/XWbabLd/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na <a href='https://codepen.io/azuremaps/pen/XWbabLd/'>dobře známý text</a> pomocí pera Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 Následující kód ukazuje čtení a zápis dobře známého textu zpátky a zpátky.
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Přečíst a zapsat dobře známý text' src='//codepen.io/azuremaps/embed/JjdyYav/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na <a href='https://codepen.io/azuremaps/pen/JjdyYav/'>text</a> , který je ve správném Azure Maps textu, a<a href='https://codepen.io/azuremaps'>@azuremaps</a>na CodePen () na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='700' scrolling='no' title='Přečíst a zapsat dobře známý text' src='//codepen.io/azuremaps/embed/JjdyYav/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na <a href='https://codepen.io/azuremaps/pen/JjdyYav/'>text</a> , který je ve správném Azure Maps textu, a <a href='https://codepen.io/azuremaps'>@azuremaps</a> na <a href='https://codepen.io'>CodePen</a>() na.
 </iframe>
 
 ## <a name="read-and-write-gml"></a>Čtení a zápis GML
 
 GML je specifikace prostorového souboru XML, která se často používá jako rozšíření jiných specifikací XML. Data o injson se dají zapsat jako XML pomocí značek GML pomocí `atlas.io.core.GmlWriter.write` funkce. XML obsahující GML lze číst pomocí `atlas.io.core.GmlReader.read` funkce. Funkce Read má dvě možnosti:
 
-- Možnost `isAxisOrderLonLat` – pořadí osy souřadnic "Zeměpisná šířka, délka" nebo "Zeměpisná šířka" se může v datových sadách lišit a není vždy správně definovaná. Ve výchozím nastavení čtecí modul GML čte data souřadnic jako zeměpisná šířka, zeměpisná délka, ale při nastavení této možnosti na hodnotu true se tato možnost načtou jako Zeměpisná délka, zeměpisná šířka.
-- `propertyTypes` Možnost – tato možnost je vyhledávací tabulka hodnot klíče, kde klíč je název vlastnosti v datové sadě. Hodnota je typ objektu, na který se má přetypování hodnota při analýze. Podporované hodnoty typu jsou `string`:, `number`, `boolean`a. `date` Pokud vlastnost není ve vyhledávací tabulce nebo není definován typ, bude vlastnost analyzována jako řetězec.
+- `isAxisOrderLonLat`Možnost – pořadí osy souřadnic "Zeměpisná šířka, délka" nebo "Zeměpisná šířka" se může v datových sadách lišit a není vždy správně definovaná. Ve výchozím nastavení čtecí modul GML čte data souřadnic jako zeměpisná šířka, zeměpisná délka, ale při nastavení této možnosti na hodnotu true se tato možnost načtou jako Zeměpisná délka, zeměpisná šířka.
+- `propertyTypes`Možnost – tato možnost je vyhledávací tabulka hodnot klíče, kde klíč je název vlastnosti v datové sadě. Hodnota je typ objektu, na který se má přetypování hodnota při analýze. Podporované hodnoty typu jsou: `string` , `number` , a `boolean` `date` . Pokud vlastnost není ve vyhledávací tabulce nebo není definován typ, bude vlastnost analyzována jako řetězec.
 
-`atlas.io.read` Funkce bude ve `atlas.io.core.GmlReader.read` výchozím nastavení fungovat, když zjistí, že vstupní data jsou XML, ale data nejsou jedním z formátů prostorového formátu XML.
+`atlas.io.read`Funkce bude ve výchozím nastavení `atlas.io.core.GmlReader.read` fungovat, když zjistí, že vstupní data jsou XML, ale data nejsou jedním z formátů prostorového formátu XML.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -178,7 +178,7 @@ Další informace o třídách a metodách, které se používají v tomto člá
 Další ukázky kódu pro přidání do vašich map najdete v následujících článcích:
 
 > [!div class="nextstepaction"]
-> [Přidat vrstvu mapy OGC](spatial-io-add-ogc-map-layer.md)
+> [Přidání vrstvy mapy OGC](spatial-io-add-ogc-map-layer.md)
 
 > [!div class="nextstepaction"]
 > [Připojení ke službě WFS](spatial-io-connect-wfs-service.md)
@@ -187,4 +187,4 @@ Další ukázky kódu pro přidání do vašich map najdete v následujících �
 > [Využití základních operací](spatial-io-core-operations.md)
 
 > [!div class="nextstepaction"]
-> [Podrobnosti o podporovaném formátu dat](spatial-io-supported-data-format-details.md)
+> [Podrobnosti o podporovaných formátech dat](spatial-io-supported-data-format-details.md)

@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: cf0e5267885df1ace51271c53bb2d68ee5002f00
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335432"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>Vyhledat umístění pomocí služby Azure Maps Search Services
@@ -39,7 +39,7 @@ V tomto příkladu používáme Azure Maps [získat rozhraní API pro vyhledáv�
 
 Pokud máte sadu adres pro INCODE, můžete k odeslání dávky dotazů v jednom volání rozhraní API použít [rozhraní API pro dávkové vyhledávání](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressbatch) .
 
-1. V příspěvku klikněte na **nový požadavek** | **získat žádost** a pojmenujte ho **Vyhledat**.
+1. V příspěvku klikněte na **nový požadavek**  |  **získat žádost** a pojmenujte ho **Vyhledat**.
 
 2. Na kartě tvůrce vyberte metodu **Get** http, zadejte adresu URL žádosti pro koncový bod rozhraní API a vyberte autorizační protokol (pokud nějaký existuje).
 
@@ -55,10 +55,10 @@ Pokud máte sadu adres pro INCODE, můžete k odeslání dávky dotazů v jednom
 
 ![Hledání adres](./media/how-to-search-for-address/address_search_params.png) 
 
-| Key | Hodnota | 
+| Klíč | Hodnota | 
 |------------------|-------------------------| 
 | verze-api | 1.0 | 
-| předplatné – klíč | \<váš Azure Maps klíč\> | 
+| předplatné – klíč | \<your Azure Maps key\> | 
 | query | 400, široká, Praha, WA 98109 | 
 
 4. Klikněte na **Odeslat** a zkontrolujte text odpovědi. 
@@ -73,7 +73,7 @@ V tomto případě jste zadali kompletní dotaz na adresu a v těle odpovědi p�
 
 6. Do oddílu **param** přidejte následující dvojici klíč/hodnota a klikněte na **Odeslat**: 
 
-| Key | Hodnota | 
+| Klíč | Hodnota | 
 |-----|------------| 
 | typeahead | true | 
 
@@ -83,7 +83,7 @@ Příznak **typeahead** oznamuje rozhraní API pro vyhledávání adres, aby se 
 
 Azure Maps[ rozhraní API pro vyhledávání s fuzzy logikou](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) se doporučuje používat v případě, že nevíte, jaké jsou uživatelské vstupy pro vyhledávací dotaz. Rozhraní API kombinuje hledání POI (Point of Interest) a geografické kódování na kanonickém "jednořádkovém hledání". Rozhraní API může například zpracovat vstupy libovolné kombinace adres nebo POI tokenu. Může být také vážená s kontextovou polohou (lat./lon. párové), plně omezená souřadnicí a poloměrem nebo bez jakýchkoli geografických posunutí bodu ukotvení.
 
-Většina vyhledávacích dotazů je `maxFuzzyLevel=1` ve výchozím nastavení tak, aby získala výkon a snížila neobvyklé výsledky. Tato výchozí hodnota se dá přepsat podle potřeby na žádost předáním parametru `maxFuzzyLevel=2` dotazu nebo. `3`
+Většina vyhledávacích dotazů je ve výchozím nastavení tak, aby `maxFuzzyLevel=1` získala výkon a snížila neobvyklé výsledky. Tato výchozí hodnota se dá přepsat podle potřeby na žádost předáním parametru dotazu `maxFuzzyLevel=2` nebo `3` .
 
 ### <a name="search-for-an-address-using-fuzzy-search"></a>Hledání adresy pomocí hledání přibližných výsledků
 
@@ -105,10 +105,10 @@ Většina vyhledávacích dotazů je `maxFuzzyLevel=1` ve výchozím nastavení 
 
     ![Hledání přibližných výsledků](./media/how-to-search-for-address/fuzzy_search_params.png)
 
-    | Key | Hodnota |
+    | Klíč | Hodnota |
     |------------------|-------------------------|
     | verze-api | 1.0 |
-    | předplatné – klíč | \<váš Azure Maps klíč\> |
+    | předplatné – klíč | \<your Azure Maps key\> |
     | query | Pizza |
 
 4. Klikněte na **Odeslat** a zkontrolujte text odpovědi.
@@ -119,7 +119,7 @@ Většina vyhledávacích dotazů je `maxFuzzyLevel=1` ve výchozím nastavení 
 
 5. Do oddílu **param** přidejte následující dvojici klíč/hodnota a klikněte na **Odeslat**:
 
-    | Key | Hodnota |
+    | Klíč | Hodnota |
     |------------------|-------------------------|
     | countrySet | USA |
   
@@ -131,7 +131,7 @@ Většina vyhledávacích dotazů je `maxFuzzyLevel=1` ve výchozím nastavení 
 
     ![Hledání přibližných výsledků](./media/how-to-search-for-address/fuzzy_search_latlon.png)
   
-    | Key | Hodnota |
+    | Klíč | Hodnota |
     |-----|------------|
     | připojí | 47,620525 |
     | lon | -122,349274 |
@@ -143,7 +143,7 @@ Azure Maps [získat reverzní rozhraní API]( https://docs.microsoft.com/rest/ap
 Pokud máte k dispozici sadu souřadnicových umístění, můžete pomocí [rozhraní API pro reverzní vyhledávání](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressreversebatch) odeslat dávku dotazů v jednom volání rozhraní API.
 
 
-1. V příspěvku klikněte na **nový požadavek** | **získat žádost** a pojmenujte ho pro **zpětné vyhledávání adres**.
+1. V příspěvku klikněte na **nový požadavek**  |  **získat žádost** a pojmenujte ho pro **zpětné vyhledávání adres**.
 
 2. Na kartě tvůrce vyberte metodu **Get** http a zadejte adresu URL žádosti pro koncový bod rozhraní API.
   
@@ -159,10 +159,10 @@ Pokud máte k dispozici sadu souřadnicových umístění, můžete pomocí [roz
   
     ![Parametry vyhledávání zpětné adresy](./media/how-to-search-for-address/reverse_address_search_params.png)
   
-    | Key | Hodnota |
+    | Klíč | Hodnota |
     |------------------|-------------------------|
     | verze-api | 1.0 |
-    | předplatné – klíč | \<váš Azure Maps klíč\> |
+    | předplatné – klíč | \<your Azure Maps key\> |
     | query | 47.591180,-122,332700 |
   
 4. Klikněte na **Odeslat** a zkontrolujte text odpovědi.
@@ -171,7 +171,7 @@ Pokud máte k dispozici sadu souřadnicových umístění, můžete pomocí [roz
   
 5. Do oddílu **param** přidejte následující dvojici klíč/hodnota a klikněte na **Odeslat**:
 
-    | Key | Hodnota |
+    | Klíč | Hodnota |
     |-----|------------|
     | číslo | true |
 
@@ -179,7 +179,7 @@ Pokud máte k dispozici sadu souřadnicových umístění, můžete pomocí [roz
   
 6. Do oddílu **param** přidejte následující dvojici klíč/hodnota a klikněte na **Odeslat**:
 
-    | Key | Hodnota |
+    | Klíč | Hodnota |
     |-----|------------|
     | returnSpeedLimit | true |
   
@@ -187,7 +187,7 @@ Pokud máte k dispozici sadu souřadnicových umístění, můžete pomocí [roz
 
 7. Do oddílu **param** přidejte následující dvojici klíč/hodnota a klikněte na **Odeslat**:
 
-    | Key | Hodnota |
+    | Klíč | Hodnota |
     |-----|------------|
     | returnRoadUse | true |
 
@@ -195,7 +195,7 @@ Pokud máte k dispozici sadu souřadnicových umístění, můžete pomocí [roz
 
 8. Do oddílu **param** přidejte následující dvojici klíč/hodnota a klikněte na **Odeslat**:
 
-    | Key | Hodnota |
+    | Klíč | Hodnota |
     |-----|------------|
     | roadUse | true |
 
@@ -203,7 +203,7 @@ Pokud máte k dispozici sadu souřadnicových umístění, můžete pomocí [roz
   
 ## <a name="search-for-cross-street-using-reverse-address-cross-street-search"></a>Hledání meziulici pomocí zpětného vyhledávání přes meziulici
 
-1. V příspěvku klikněte na **nový požadavek** | **získat žádost** a pojmenujte ho **obrátit na hledání mezi ulice**.
+1. V příspěvku klikněte na **nový požadavek**  |  **získat žádost** a pojmenujte ho **obrátit na hledání mezi ulice**.
 
 2. Na kartě tvůrce vyberte metodu **Get** http a zadejte adresu URL žádosti pro koncový bod rozhraní API.
   
@@ -217,10 +217,10 @@ Pokud máte k dispozici sadu souřadnicových umístění, můžete pomocí [roz
   
 3. Klikněte na **parametry**a zadejte následující páry klíč/hodnota, které se použijí jako parametry dotazu nebo cesty v adrese URL požadavku:
   
-    | Key | Hodnota |
+    | Klíč | Hodnota |
     |------------------|-------------------------|
     | verze-api | 1.0 |
-    | předplatné – klíč | \<váš Azure Maps klíč\> |
+    | předplatné – klíč | \<your Azure Maps key\> |
     | query | 47.591180,-122,332700 |
   
 4. Klikněte na **Odeslat** a zkontrolujte text odpovědi.

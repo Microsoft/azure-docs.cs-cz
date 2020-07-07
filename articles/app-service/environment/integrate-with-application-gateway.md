@@ -8,10 +8,10 @@ ms.date: 03/03/2018
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: e4838597c50898748eb4b33e81ff22eaeea37b30
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80476889"
 ---
 # <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>Integrace služby App Service Environment s interním nástrojem pro vyrovnávání zatížení se službou Azure Application Gateway #
@@ -40,7 +40,7 @@ K integraci svého Application Gateway s App Service Environment interního nás
 * INTERNÍHO nástroje App Service Environment.
 * Aplikace spuštěná v interního nástroje App Service Environment.
 * Název internetové IP domény, který se má používat s vaší aplikací v interního nástroje App Service Environment.
-* Adresa interního nástroje, kterou používá vaše interního nástroje App Service Environment. Tyto informace jsou na portálu App Service Environment v části **Nastavení** > **IP adresy**:
+* Adresa interního nástroje, kterou používá vaše interního nástroje App Service Environment. Tyto informace jsou na portálu App Service Environment v části **Nastavení**  >  **IP adresy**:
 
     ![Příklad seznamu IP adres, které používá App Service Environment interního nástroje][9]
     
@@ -56,7 +56,7 @@ Bránu nemůžete umístit ani do podsítě, kterou používá interního nástr
 
 ## <a name="configuration-steps"></a>Postup konfigurace ##
 
-1. V Azure Portal přejít na **Nový** > **síťový** > **Application Gateway**.
+1. V Azure Portal přejít na **Nový**  >  **síťový**  >  **Application Gateway**.
 
 2. V oblasti **základy** :
 

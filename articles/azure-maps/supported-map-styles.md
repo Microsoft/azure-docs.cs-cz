@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 2eafe3c16a89723d55ec52fde785e9ec69e45e0c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80334039"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Azure Maps podporované styly mapy
@@ -34,7 +34,7 @@ Mapa **cest** je standardní mapa, která zobrazuje cesty, přirozené a umělé
 **Prázdné** a **blank_accessible** styly mapy poskytují prázdné plátno, na kterém se data vizualizují. Styl **blank_accessible** bude dál poskytovat aktualizace čtečky obrazovky s podrobnostmi o umístění mapy, i když základní mapa není zobrazená.
 
 > [!Note]
-> V sadě web SDK můžete změnit barvu pozadí mapy nastavením stylu CSS `background-color` prvku div mapy.
+> V sadě web SDK můžete změnit barvu pozadí mapy nastavením `background-color` stylu CSS prvku div mapy.
 
 **Platná rozhraní API:**
 * Mapový ovládací prvek sady web SDK

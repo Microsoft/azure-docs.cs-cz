@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: f2d6603c264c9da3f2700f460a8c61b24681fac6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80546195"
 ---
 # <a name="properties-of-the-iot-edge-agent-and-iot-edge-hub-module-twins"></a>Vlastnosti IoT Edge agenta a modulu IoT Edge centra pro vlákna
@@ -31,7 +31,7 @@ Nevlákenný modul obsahuje:
 
 Pro agenta IoT Edge je volána `$edgeAgent` nefunkční modul a koordinuje komunikaci mezi agentem IoT Edge spuštěným v zařízení a IoT Hub. Požadované vlastnosti jsou nastaveny při použití manifestu nasazení na určitém zařízení jako součást nasazení v jednom zařízení nebo ve velkém měřítku.
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 | -------- | ----------- | -------- |
 | schemaVersion | Musí být "1,0" | Ano |
 | Runtime. Type | Musí být "Docker" | Ano |
@@ -52,9 +52,9 @@ Pro agenta IoT Edge je volána `$edgeAgent` nefunkční modul a koordinuje komun
 | systemModules.edgeHub.configuration.id | ID nasazení, které tento modul nasadilo. | IoT Hub tuto vlastnost nastavuje při použití manifestu pomocí nasazení. Není součástí manifestu nasazení. |
 | Aktualizuj. {moduleId}. verze | Uživatelsky definovaný řetězec představující verzi tohoto modulu. | Ano |
 | Aktualizuj. {moduleId}. Type | Musí být "Docker" | Ano |
-| Aktualizuj. {moduleId}. status | {"spuštěno \| " "zastaveno"} | Ano |
-| Aktualizuj. {moduleId}. restartPolicy | {"nikdy" \| "neúspěchně \| " "nefunkční \| " "Always"} | Ano |
-| Aktualizuj. {moduleId}. imagePullPolicy | {"on-Create" \| nikdy "} | Ne |
+| Aktualizuj. {moduleId}. status | {"Running" \| "zastaveno"} | Ano |
+| Aktualizuj. {moduleId}. restartPolicy | {"nikdy" \| "Chyba" při \| nesprávném stavu "" \| Always "} | Ano |
+| Aktualizuj. {moduleId}. imagePullPolicy | {"on-Create" \| "nikdy"} | Ne |
 | Aktualizuj. {moduleId}. env | Seznam proměnných prostředí, které se mají předat modulu. Má formát`"<name>": {"value": "<value>"}` | Ne |
 | Aktualizuj. {moduleId}. Settings. Image | Identifikátor URI k imagi modulu | Ano |
 | Aktualizuj. {moduleId}. Settings. createOptions | Dokument JSON obsahující možnosti pro vytvoření kontejneru modulu. [Možnosti vytvoření Docker](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | Ne |
@@ -80,20 +80,20 @@ Následující tabulka neobsahuje informace, které jsou zkopírovány z požado
 | lastDesiredVersion | Toto celé číslo odkazuje na poslední verzi požadovaných vlastností zpracovaných agentem IoT Edge. |
 | lastDesiredStatus. Code | Tento stavový kód odkazuje na poslední požadované vlastnosti, které uvidí agent IoT Edge. Povolené hodnoty: `200` úspěch, `400` neplatná konfigurace, `412` neplatná verze schématu, `417` požadované vlastnosti jsou prázdné, `500` selhaly. |
 | lastDesiredStatus. Description | Textový popis stavu |
-| Přidružený | `healthy`Pokud je běhový stav všech modulů buď `running` nebo `stopped`, jinak `unhealthy` |
-| configurationHealth. stav: {deploymentId}. | `healthy`Pokud je stav modulu runtime pro všechny moduly nastavené nasazením {deploymentId} buď `running` nebo `stopped`, `unhealthy` jinak |
+| Přidružený | `healthy`Pokud je běhový stav všech modulů buď `running` nebo `stopped` , `unhealthy` jinak |
+| configurationHealth. stav: {deploymentId}. | `healthy`Pokud je stav modulu runtime pro všechny moduly nastavené nasazením {deploymentId} buď `running` nebo `stopped` , `unhealthy` jinak |
 | Runtime. Platform. OS | Hlášení operačního systému běžícího na zařízení |
 | Runtime. Platform. Architecture | Vytváření sestav architektury procesoru v zařízení |
-| systemModules.edgeAgent.runtimeStatus | Stav hlášené IoT Edge agenta: {"spouštění" \| "není v pořádku"} |
+| systemModules.edgeAgent.runtimeStatus | Stav hlášené IoT Edge agenta: {"spouštění" "není v \| pořádku"} |
 | systemModules. edgeAgent. statusDescription | Popis stavu hlášeného agenta IoT Edge. |
-| systemModules.edgeHub.runtimeStatus | Stav centra \| IoT Edge: {"běžící" "zastavené \| " "neúspěšné \| " omezení rychlosti \| "", "není v pořádku"} |
+| systemModules.edgeHub.runtimeStatus | Stav centra IoT Edge: {"běžící" "zastavené" "neúspěšné" omezení rychlosti "", "není v \| \| \| \| pořádku"} |
 | systemModules. edgeHub. statusDescription | Textový popis stavu centra IoT Edge, pokud není v pořádku. |
 | systemModules. edgeHub. exitCode | Ukončovací kód, který je hlášen kontejnerem centra IoT Edge v případě ukončení kontejneru |
 | systemModules.edgeHub.startTimeUtc | Čas posledního spuštění centra IoT Edge |
 | systemModules.edgeHub.lastExitTimeUtc | Čas posledního ukončení IoT Edgeho centra |
 | systemModules.edgeHub.lastRestartTimeUtc | Čas, kdy byl naposledy restartován IoT Edge hub |
 | systemModules.edgeHub.restartCount | Počet restartování tohoto modulu v rámci zásad restartování |
-| Aktualizuj. {moduleId}. runtimeStatus | Stav modulu: \| {"spouštění" "zastaveno \| \| " "omezení rychlosti \| " "není v pořádku"} |
+| Aktualizuj. {moduleId}. runtimeStatus | Stav modulu: {"spouštění" "zastaveno" "omezení rychlosti" "není v \| \| \| \| pořádku"} |
 | Aktualizuj. {moduleId}. statusDescription | Textový popis stavu modulu, pokud není v pořádku. |
 | Aktualizuj. {moduleId}. exitCode | Ukončovací kód hlášených kontejnerem modulu, pokud se kontejner ukončí |
 | Aktualizuj. {moduleId}. startTimeUtc | Čas posledního spuštění modulu |
@@ -103,12 +103,12 @@ Následující tabulka neobsahuje informace, které jsou zkopírovány z požado
 
 ## <a name="edgehub-desired-properties"></a>EdgeHub požadované vlastnosti
 
-Pro IoT Edge se volá modul, který se zavolá `$edgeHub` , a koordinuje komunikaci mezi IoT Edgem rozbočovačem běžícím na zařízení a IoT Hub. Požadované vlastnosti jsou nastaveny při použití manifestu nasazení na určitém zařízení jako součást nasazení v jednom zařízení nebo ve velkém měřítku.
+Pro IoT Edge se volá modul, který se zavolá, `$edgeHub` a koordinuje komunikaci mezi IoT Edgem rozbočovačem běžícím na zařízení a IoT Hub. Požadované vlastnosti jsou nastaveny při použití manifestu nasazení na určitém zařízení jako součást nasazení v jednom zařízení nebo ve velkém měřítku.
 
 | Vlastnost | Popis | Vyžadováno v manifestu nasazení |
 | -------- | ----------- | -------- |
 | schemaVersion | Musí být "1,0" | Ano |
-| tras. RouteName | Řetězec představující trasu centra IoT Edge. Další informace naleznete v tématu [Declare Routes](module-composition.md#declare-routes). | `routes` Element může být přítomen, ale prázdný. |
+| tras. RouteName | Řetězec představující trasu centra IoT Edge. Další informace naleznete v tématu [Declare Routes](module-composition.md#declare-routes). | `routes`Element může být přítomen, ale prázdný. |
 | storeAndForwardConfiguration.timeToLiveSecs | Čas v sekundách, po který IoT Edge hub udržuje zprávy, pokud je odpojený od koncových bodů směrování, ať už IoT Hub nebo místní modul. Hodnota může být libovolné kladné celé číslo. | Ano |
 
 ## <a name="edgehub-reported-properties"></a>EdgeHub hlášené vlastnosti

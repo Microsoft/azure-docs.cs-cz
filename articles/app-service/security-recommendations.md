@@ -8,10 +8,10 @@ ms.date: 06/17/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
 ms.openlocfilehash: 50e2666aa533a5111055a095c612b58bfe6f9db4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80546706"
 ---
 # <a name="security-recommendations-for-app-service"></a>Doporučení zabezpečení pro App Service
@@ -52,7 +52,7 @@ Tento článek obsahuje doporučení zabezpečení pro Azure App Service. Implem
 | Použití zabezpečených připojení při přístupu k místním prostředkům | Pomocí [hybridních připojení](app-service-hybrid-connections.md), [Virtual Network integrace](web-sites-integrate-with-vnet.md)nebo [App Service prostředí](environment/intro.md) se můžete připojit k místním prostředkům. |
 | Omezit expozici příchozímu síťovému provozu | Skupiny zabezpečení sítě umožňují omezit přístup k síti a řídit počet vystavených koncových bodů. Další informace najdete v tématu [řízení příchozího provozu do App Service Environment](environment/app-service-app-service-environment-control-inbound-traffic.md). |
 
-## <a name="monitoring"></a>Monitorování
+## <a name="monitoring"></a>Sledování
 
 | Doporučení | Komentáře |
 |-|-|

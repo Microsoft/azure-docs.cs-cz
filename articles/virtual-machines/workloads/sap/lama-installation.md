@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
 ms.openlocfilehash: fda62ff0af29c7cf681d9438b02420d299535701
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80293951"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Konektor SAP LaMa pro Azure
@@ -47,7 +47,7 @@ V této příručce se dozvíte, jak nastavit konektor Azure pro SAP LaMa, vytvo
 > [!NOTE]
 > Konektor je k dispozici pouze v edici SAP LaMa Enterprise.
 
-## <a name="resources"></a>Zdroje a prostředky
+## <a name="resources"></a>Zdroje
 
 Následující poznámky SAP souvisejí s tématem SAP LaMa v Azure:
 
@@ -153,7 +153,7 @@ Doporučujeme použít samostatnou podsíť pro všechny virtuální počítače
 > [!NOTE]
 > Pokud je to možné, odeberte všechna rozšíření virtuálních počítačů, protože by mohla způsobit, že se odpojí disky z virtuálního počítače s dlouhou dobou běhu.
 
-Ujistěte se, že \<user hanasid>ADM \<, sapsid>ADM a sapsys skupiny existují na CÍLOVÉM počítači se stejným ID a GID nebo použijte LDAP. Povolte a spusťte server NFS na virtuálních počítačích, které by měly být použity ke spuštění SAP NetWeaver (A) SCS.
+Ujistěte se, že \<hanasid> \<sapsid> na cílovém počítači existuje ADM, ADM a skupina sapsys se stejným ID a GID nebo používá protokol LDAP. Povolte a spusťte server NFS na virtuálních počítačích, které by měly být použity ke spuštění SAP NetWeaver (A) SCS.
 
 ### <a name="manual-deployment"></a>Ruční nasazení
 
@@ -163,7 +163,7 @@ SAP LaMa komunikuje s virtuálním počítačem pomocí agenta hostitele SAP. Po
 
 Vytvořte nový virtuální počítač s jedním z podporovaných operačních systémů uvedených v části SAP Note [2343511]. Přidejte další konfigurace protokolu IP pro instance SAP. Každá instance potřebuje aspoň na IP adresu a musí se nainstalovat pomocí virtuálního hostitele.
 
-Instance SAP NetWeaver ASCS potřebuje disky pro/sapmnt/\<SAPSID>,/usr/sap/\<SAPSID>,/usr/sap/trans a/usr/SAP/\<SAPSID>ADM. Aplikační servery SAP NetWeaver nepotřebují další disky. Všechno, co souvisí s instancí SAP, se musí ukládat na ASCS a exportovat přes systém souborů NFS. V opačném případě není nyní možné přidat další aplikační servery pomocí SAP LaMa.
+Instance SAP NetWeaver ASCS potřebuje disky pro/sapmnt/ \<SAPSID> ,/usr/SAP/ \<SAPSID> ,/usr/SAP/trans a/usr/SAP/ \<sapsid> ADM. Aplikační servery SAP NetWeaver nepotřebují další disky. Všechno, co souvisí s instancí SAP, se musí ukládat na ASCS a exportovat přes systém souborů NFS. V opačném případě není nyní možné přidat další aplikační servery pomocí SAP LaMa.
 
 ![SAP NetWeaver ASCS v systému Linux](media/lama/sap-lama-ascs-app-linux.png)
 
@@ -212,7 +212,7 @@ K nasazení šablony jsou nutné tyto součásti. Nejjednodušší způsob, jak 
 
 Šablony mají následující parametry:
 
-* sapSystemId: ID systému SAP. Slouží k vytvoření rozložení disku (například/usr/SAP/\<sapsid>).
+* sapSystemId: ID systému SAP. Slouží k vytvoření rozložení disku (například/usr/SAP/ \<sapsid> ).
 
 * názevpočítače: název počítače nového virtuálního počítače. Tento parametr je také používán SAP LaMa. Když použijete tuto šablonu k zřízení nového virtuálního počítače v rámci systémové kopie, SAP LaMa počká, dokud nebude dostupný hostitel s tímto názvem počítače.
 
@@ -276,7 +276,7 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h ah1-as
 
 Spusťte SWPM a pro *název hostitele instance ASCS*použijte *ah1-ASCS* .
 
-![Linux][Logo_Linux] Linux  
+![Linux ][Logo_Linux] Linux  
 Do profilu agenta hostitele SAP, který se nachází na adrese/usr/SAP/hostctrl/exe/host_profile, přidejte následující parametr profilu. Další informace najdete v tématu SAP Note [2628497].
 ```
 acosprep/nfs_paths=/home/ah1adm,/usr/sap/trans,/sapmnt/AH1,/usr/sap/AH1
@@ -319,7 +319,7 @@ V rámci účtu NetApp rozsah kapacity určuje velikost a typ disků pro každý
 
 ![Fond kapacit SAP LaMa NetApp se vytvořil. ](media/lama/sap-lama-capacitypool-list.png)
 
-Svazky NFS se teď dají definovat. Vzhledem k tomu, že budou existovat svazky pro více systémů v jednom fondu, je třeba zvolit schéma pojmenování na základě sebe. Přidáním identifikátoru zabezpečení (SID) lze seskupit související svazky dohromady. Pro ASCS a instanci as jsou potřeba následující připojení: */sapmnt/\<\>SID*, */usr/SAP/\<SID\>* a ADM pro */Home/\<SID\>*. Volitelně se */usr/SAP/trans* potřebuje pro adresář centrálního přenosu, který se aspoň používá pro všechny systémy na jednom místě.
+Svazky NFS se teď dají definovat. Vzhledem k tomu, že budou existovat svazky pro více systémů v jednom fondu, je třeba zvolit schéma pojmenování na základě sebe. Přidáním identifikátoru zabezpečení (SID) lze seskupit související svazky dohromady. Pro ASCS a instanci as jsou potřeba následující připojení: */sapmnt/ \<SID\> *, */usr/SAP/ \<SID\> *a */Home/ \<sid\> ADM*. Volitelně se */usr/SAP/trans* potřebuje pro adresář centrálního přenosu, který se aspoň používá pro všechny systémy na jednom místě.
 
 > [!NOTE]
 > Během fáze BETA verze musí být názvy svazků v rámci předplatného jedinečné.
@@ -485,7 +485,7 @@ Pro *název hostitele instance služby pas* v dialogu *instance primárního apl
 ### <a name="errors-and-warnings-during-a-system-copy"></a>Chyby a varování během kopírování ze systému
 
 * Při ověřování kroku zřizování systému došlo k chybě.
-  * Příčinou je: com. SAP. NW. LM. ACI. Engine. Base. API. util. Exception. HAOperationException volání "/usr/SAP/hostctrl/exe/sapacext-a ShowHanaBackups-m HN1-f 50-h HN1-DB-o Level = 0\;status = 5\;port = 35013 PF =/usr/SAP/hostctrl/exe/Host_profile-r-T dev_lvminfo-u System-p Hook-R" | /usr/SAP/hostctrl/exe/sapacext-a ShowHanaBackups-m HN1-f 50-h HN1-DB-o Level = 0\;status = 5\;port = 35013 PF =/usr/SAP/hostctrl/exe/Host_profile-R-T dev_lvminfo-u System-p Hook-r
+  * Příčinou je: com. SAP. NW. LM. ACI. Engine. Base. API. util. Exception. HAOperationException Calling '/usr/SAP/hostctrl/exe/sapacext-a ShowHanaBackups-m HN1-f 50-h HN1-DB-o Level = 0 \; status = 5 \; port = 35013 PF =/usr/SAP/hostctrl/exe/Host_profile-R-T dev_lvminfo-u System-p Hook-R ' |/usr/SAP/hostctrl/exe/sapacext-a ShowHanaBackups-m HN1-f 50-h HN1-DB-o Level = 0 \; status = 5 \; port = 35013 PF =/usr/SAP/hostctrl/exe/Host_profile-R-T dev_lvminfo-u System-p Hook-R
   * Řešení  
     Pořídit zálohu všech databází ve zdrojovém systému HANA
 
@@ -497,19 +497,19 @@ Pro *název hostitele instance služby pas* v dialogu *instance primárního apl
 ### <a name="errors-and-warnings-during-a-system-clone"></a>Chyby a varování během klonování systému
 
 * Došlo k chybě při pokusu o registraci agenta instance v kroku *vynucené registrace a spuštění agenta instance* aplikačního serveru nebo ASCS.
-  * Při pokusu o registraci agenta instance došlo k chybě. (RemoteException: ' nepovedlo se načíst data instance z\\profilu ' AS1-ascs\sapmnt\as1\sys\profile\ AS1_D00_as1-di-0 ': nejde získat\\přístup k profilu ' AS1-ascs\sapmnt\as1\sys\profile\ AS1_D00_as1-di-0 ': žádný takový soubor nebo adresář. ')
+  * Při pokusu o registraci agenta instance došlo k chybě. (RemoteException: ' nepovedlo se načíst data instance z profilu ' \\ as1-ascs\sapmnt\as1\sys\profile\ AS1_D00_as1-di-0 ': nejde získat přístup k profilu ' \\ AS1-ascs\sapmnt\as1\sys\profile\ AS1_D00_as1-di-0 ': žádný takový soubor nebo adresář. ')
   * Řešení  
    Ujistěte se, že sdílená složka sapmnt na ASCS/SCS má úplný přístup k SAP_AS1_GlobalAdmin
 
 * Chyba v kroku *Povolení ochrany při spuštění pro klon*
-  * Nepovedlo se otevřít\\soubor AS1-ascs\sapmnt\as1\sys\profile\ AS1_D00_as1-di-0. Příčina: žádný takový soubor nebo adresář.
+  * Nepovedlo se otevřít soubor \\ as1-ascs\sapmnt\as1\sys\profile\ AS1_D00_as1-di-0. Příčina: žádný takový soubor nebo adresář.
   * Řešení  
     Účet počítače aplikačního serveru potřebuje k profilu přístup pro zápis.
 
 ### <a name="errors-and-warnings-during-create-system-replication"></a>Chyby a varování během vytváření replikace systému
 
 * Výjimka při kliknutí na vytvoření systémové replikace
-  * Příčinou je: com. SAP. NW. LM. ACI. Engine. Base. API. util. Exception. HAOperationException volání "/usr/SAP/hostctrl/exe/sapacext-a ShowHanaBackups-m HN1-f 50-h HN1-DB-o Level = 0\;status = 5\;port = 35013 PF =/usr/SAP/hostctrl/exe/Host_profile-r-T dev_lvminfo-u System-p Hook-R" | /usr/SAP/hostctrl/exe/sapacext-a ShowHanaBackups-m HN1-f 50-h HN1-DB-o Level = 0\;status = 5\;port = 35013 PF =/usr/SAP/hostctrl/exe/Host_profile-R-T dev_lvminfo-u System-p Hook-r
+  * Příčinou je: com. SAP. NW. LM. ACI. Engine. Base. API. util. Exception. HAOperationException Calling '/usr/SAP/hostctrl/exe/sapacext-a ShowHanaBackups-m HN1-f 50-h HN1-DB-o Level = 0 \; status = 5 \; port = 35013 PF =/usr/SAP/hostctrl/exe/Host_profile-R-T dev_lvminfo-u System-p Hook-R ' |/usr/SAP/hostctrl/exe/sapacext-a ShowHanaBackups-m HN1-f 50-h HN1-DB-o Level = 0 \; status = 5 \; port = 35013 PF =/usr/SAP/hostctrl/exe/Host_profile-R-T dev_lvminfo-u System-p Hook-R
   * Řešení  
     Test, zda lze sapacext spustit jako `<hanasid`>ADM
 
@@ -533,7 +533,7 @@ Pro *název hostitele instance služby pas* v dialogu *instance primárního apl
 ### <a name="errors-and-warnings-during-application-server-installation"></a>Chyby a upozornění při instalaci aplikačního serveru
 
 * Chyba při provádění kroku SAPinst: getProfileDir
-  * Chyba: (poslední chyba hlášená krokem: zachycená ESAPinstException v modulu volání: validátor kroku | NW_DI | najít | nenajít | | 0 | 0 | NW_GetSidFromProfiles | najít | najít | najít | getSid | 0 | NW_readProfileDir | zaznamenal | možnost | nenašlo | zareadProfile | 0 | getProfileDir ohlásil chybu: uzel \\\as1-ascs\sapmnt\AS1\SYS\profile neexistuje. Pokud chcete tento problém vyřešit, spusťte v interaktivním režimu SAPinst.)
+  * Chyba: (poslední chyba hlášená krokem: zachycená ESAPinstException v modulu volání: validátor kroku | NW_DI | najít | nenajít | | 0 | 0 | NW_GetSidFromProfiles | najít | najít | najít | getSid | 0 | NW_readProfileDir | zaznamenal | možnost | nenašlo | zareadProfile | 0 | getProfileDir ohlásil chybu: uzel \\ \as1-ascs\sapmnt\AS1\SYS\profile neexistuje. Pokud chcete tento problém vyřešit, spusťte v interaktivním režimu SAPinst.)
   * Řešení  
     Ujistěte se, že je SWPM spuštěný s uživatelem, který má přístup k tomuto profilu. Tento uživatel se dá nakonfigurovat v Průvodci instalací aplikačního serveru.
 
@@ -545,17 +545,17 @@ Pro *název hostitele instance služby pas* v dialogu *instance primárního apl
     Pokud chcete tento problém obejít, nastavte parametr profilu OS_UNICODE = UC ve výchozím profilu systému SAP.
 
 * Chyba při provádění kroku SAPinst: dCheckGivenServer
-  * Při provádění kroku SAPinst došlo k chybě: dCheckGivenServer "Version =" 1.0 "ERROR: (poslední chyba hlášená \<krokem: p> instalace byla zrušena uživatelem. \</p>
+  * Při provádění kroku SAPinst došlo k chybě: dCheckGivenServer "Version =" 1.0 "ERROR: (poslední chyba hlášená krokem: \<p> Instalace byla zrušena uživatelem. \</p>
   * Řešení  
     Ujistěte se, že je SWPM spuštěný s uživatelem, který má přístup k tomuto profilu. Tento uživatel se dá nakonfigurovat v Průvodci instalací aplikačního serveru.
 
 * Chyba při provádění kroku SAPinst: checkClient
-  * Při provádění kroku SAPinst došlo k chybě: checkClient "Version =" 1.0 "ERROR: (poslední chyba hlášená \<krokem: p> instalace byla zrušena uživatelem. \</p>)
+  * Při provádění kroku SAPinst došlo k chybě: checkClient "Version =" 1.0 "ERROR: (poslední chyba hlášená krokem: \<p> Instalace byla zrušena uživatelem. \</p>)
   * Řešení  
     Ujistěte se, že je na virtuálním počítači, na který chcete nainstalovat aplikační server, nainstalovaný ovladač Microsoft ODBC Driver for SQL Server.
 
 * Chyba při provádění kroku SAPinst: copyScripts
-  * Poslední chyba hlášená krokem: systémové volání selhalo. Podrobnosti: Chyba 13 (0x0000000d) (zamítnuté oprávnění) při provádění systémového volání "fopenU" s parametrem\\(\ AS1-ASCS/SAPMNT/AS1/sys/exe/UC/NTAMD64/strdbs. cmd, w), line (494) v souboru (\ bas/bas/749_REL/bc_749_REL/src/ins/sapinst/impl/src/SysLib/FileSystem/syxxcfstrm2.cpp), trasování zásobníku:  
+  * Poslední chyba hlášená krokem: systémové volání selhalo. Podrobnosti: Chyba 13 (0x0000000d) (zamítnuté oprávnění) při provádění systémového volání "fopenU" s parametrem ( \\ \ AS1-ASCS/sapmnt/AS1/sys/exe/UC/NTAMD64/strdbs. cmd, w), line (494) v souboru (\ Bas/Bas/749_REL/bc_749_REL/src/ins/sapinst/impl/src/SysLib/FileSystem/syxxcfstrm2.cpp), trasování zásobníku:  
   CThrThread. cpp: 85: CThrThread:: threadFunction ()  
   CSiServiceSet. cpp: 63: CSiServiceSet:: executeService ()  
   CSiStepExecute. cpp: 913: CSiStepExecute:: Execute ()  
@@ -567,7 +567,7 @@ Pro *název hostitele instance služby pas* v dialogu *instance primárního apl
   syxxcfile. cpp: 233: CSyFileImpl:: openStream (ISyFile:: eFileOpenMode)  
   syxxcfstrm. cpp: 29: CSyFileStreamImpl:: CSyFileStreamImpl (CSyFileStream *, iastring, ISyFile:: eFileOpenMode)  
   syxxcfstrm. cpp: 265: CSyFileStreamImpl:: Open ()  
-  syxxcfstrm2. cpp: 58: CSyFileStream2Impl:: CSyFileStream2Impl (const CSyPath \\& \ AW1-ASCS/SAPMNT/AW1/sys/exe/UC/NTAMD64/strdbs. cmd, 0x4)  
+  syxxcfstrm2. cpp: 58: CSyFileStream2Impl:: CSyFileStream2Impl (const CSyPath & \\ \ AW1-ASCS/sapmnt/AW1/sys/exe/UC/NTAMD64/strdbs. cmd, 0x4)  
   syxxcfstrm2. cpp: 456: CSyFileStream2Impl:: Open ()
   * Řešení  
     Ujistěte se, že je SWPM spuštěný s uživatelem, který má přístup k tomuto profilu. Tento uživatel se dá nakonfigurovat v Průvodci instalací aplikačního serveru.

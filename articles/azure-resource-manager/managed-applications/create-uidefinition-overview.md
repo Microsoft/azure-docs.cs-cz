@@ -1,20 +1,20 @@
 ---
-title: Soubor CreateUiDefinition. JSON pro podokno portálu
+title: CreateUiDefinition.jsv souboru pro podokno portálu
 description: Popisuje, jak vytvořit definice uživatelského rozhraní pro Azure Portal. Používá se při definování Azure Managed Applications.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: tomfitz
 ms.openlocfilehash: 2956c76f5bec353639b39228b982db21b6932deb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80294898"
 ---
 # <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>Soubor createUiDefinition.json pro prostředí pro vytváření spravovaných aplikací Azure
 
-Tento dokument zavádí základní koncepty souboru **createUiDefinition. JSON** , který Azure Portal používá k definování uživatelského rozhraní při vytváření spravované aplikace.
+Tento dokument představuje základní koncepty **createUiDefinition.jsv** souboru, který Azure Portal používá k definování uživatelského rozhraní při vytváření spravované aplikace.
 
 Tato šablona je následující:
 
@@ -35,20 +35,20 @@ Tato šablona je následující:
 CreateUiDefinition vždy obsahuje tři vlastnosti: 
 
 * popisovač
-* version
+* verze
 * parameters
 
-Obslužná rutina by měla `Microsoft.Azure.CreateUIDef`být vždycky a nejnovější podporovaná verze `0.1.2-preview`je.
+Obslužná rutina by měla být vždycky `Microsoft.Azure.CreateUIDef` a nejnovější podporovaná verze je `0.1.2-preview` .
 
-Schéma vlastnosti Parameters závisí na kombinaci zadané obslužné rutiny a verze. U spravovaných aplikací jsou `basics`podporované vlastnosti, `steps`a. `outputs` Základní a postupové vlastnosti obsahují [prvky](create-uidefinition-elements.md) , jako jsou textová pole a rozevírací seznamy, které se mají zobrazit v Azure Portal. Vlastnost Outputs slouží k mapování výstupních hodnot určených prvků na parametry šablony nasazení Azure Resource Manager.
+Schéma vlastnosti Parameters závisí na kombinaci zadané obslužné rutiny a verze. U spravovaných aplikací jsou podporované vlastnosti `basics` , `steps` a `outputs` . Základní a postupové vlastnosti obsahují [prvky](create-uidefinition-elements.md) , jako jsou textová pole a rozevírací seznamy, které se mají zobrazit v Azure Portal. Vlastnost Outputs slouží k mapování výstupních hodnot určených prvků na parametry šablony nasazení Azure Resource Manager.
 
-Zahrnutí `$schema` je doporučeno, ale volitelné. Je-li tento parametr zadán `version` , musí hodnota pro odpovídat verzi `$schema` v identifikátoru URI.
+Zahrnutí `$schema` je doporučeno, ale volitelné. Je-li tento parametr zadán, musí hodnota pro `version` odpovídat verzi v `$schema` identifikátoru URI.
 
 Pomocí editoru JSON můžete vytvořit createUiDefinition a potom ho otestovat v [izolovaném prostoru createUiDefinition](https://portal.azure.com/?feature.customPortal=false&#blade/Microsoft_Azure_CreateUIDef/SandboxBlade) a zobrazit jeho náhled. Další informace o izolovaném prostoru naleznete v tématu [Test rozhraní portálu pro Azure Managed Applications](test-createuidefinition.md).
 
 ## <a name="basics"></a>Základy
 
-Základy je první krok vygenerovaný při Azure Portal analyzuje soubor. Kromě zobrazení prvků určených v `basics`portálu vloží portál prvky pro uživatele pro výběr předplatného, skupiny prostředků a umístění pro nasazení. Pokud je to možné, v tomto kroku by se měly použít prvky, které dotazují parametry pro nasazení na úrovni pro nasazení, jako je název clusteru nebo přihlašovací údaje správce.
+Základy je první krok vygenerovaný při Azure Portal analyzuje soubor. Kromě zobrazení prvků určených v `basics` portálu vloží portál prvky pro uživatele pro výběr předplatného, skupiny prostředků a umístění pro nasazení. Pokud je to možné, v tomto kroku by se měly použít prvky, které dotazují parametry pro nasazení na úrovni pro nasazení, jako je název clusteru nebo přihlašovací údaje správce.
 
 ## <a name="steps"></a>Kroky
 
@@ -58,7 +58,7 @@ Vlastnost kroků může obsahovat nula nebo více dalších kroků, které se zo
 
 Azure Portal používá `outputs` vlastnost k mapování prvků z `basics` a `steps` na parametry šablony nasazení Azure Resource Manager. Klíče tohoto slovníku jsou názvy parametrů šablony a hodnoty jsou vlastnosti výstupních objektů z odkazovaných prvků.
 
-Chcete-li nastavit název prostředku spravované aplikace, je nutné zahrnout hodnotu s `applicationResourceName` názvem ve vlastnosti výstupy. Pokud tuto hodnotu nenastavíte, aplikace přiřadí identifikátor GUID pro název. Do uživatelského rozhraní můžete zahrnout textové pole, které požádá o jméno od uživatele.
+Chcete-li nastavit název prostředku spravované aplikace, je nutné zahrnout hodnotu s názvem `applicationResourceName` ve vlastnosti výstupy. Pokud tuto hodnotu nenastavíte, aplikace přiřadí identifikátor GUID pro název. Do uživatelského rozhraní můžete zahrnout textové pole, které požádá o jméno od uživatele.
 
 ```json
 "outputs": {
@@ -91,11 +91,11 @@ CreateUiDefinition poskytuje [funkce](create-uidefinition-functions.md) pro prá
 
 ## <a name="next-steps"></a>Další kroky
 
-Samotný soubor createUiDefinition. JSON má jednoduché schéma. Skutečná hloubka se nachází ze všech podporovaných elementů a funkcí. Tyto položky jsou popsány podrobněji na adrese:
+createUiDefinition.jsv samotném souboru má jednoduché schéma. Skutečná hloubka se nachází ze všech podporovaných elementů a funkcí. Tyto položky jsou popsány podrobněji na adrese:
 
-- [Elementy](create-uidefinition-elements.md)
+- [Elements](create-uidefinition-elements.md)
 - [Functions](create-uidefinition-functions.md)
 
-Aktuální schéma JSON pro createUiDefinition je k dispozici zde `https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json`:.
+Aktuální schéma JSON pro createUiDefinition je k dispozici zde: `https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json` .
 
-Příklad souboru uživatelského rozhraní naleznete v tématu [createUiDefinition. JSON](https://github.com/Azure/azure-managedapp-samples/blob/master/Managed%20Application%20Sample%20Packages/201-managed-app-using-existing-vnet/createUiDefinition.json).
+Příklad souboru uživatelského rozhraní naleznete v tématu [createUiDefinition.json](https://github.com/Azure/azure-managedapp-samples/blob/master/Managed%20Application%20Sample%20Packages/201-managed-app-using-existing-vnet/createUiDefinition.json).

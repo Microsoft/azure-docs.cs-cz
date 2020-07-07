@@ -14,19 +14,19 @@ ms.date: 01/21/2020
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 7e4f1141a9d4bd58451782e8412063a22565556d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80584537"
 ---
 # <a name="filtering-ordering-and-paging-of-media-services-entities"></a>Filtrování, řazení a stránkování Media Services entit
 
 Toto téma popisuje možnosti dotazů OData a Podpora stránkování, která je dostupná při výpisu Azure Media Servicesch entit v3.
 
-## <a name="considerations"></a>Požadavky
+## <a name="considerations"></a>Důležité informace
 
-* Vlastnosti entit, které jsou `Datetime` typu, jsou vždy ve formátu UTC.
+* Vlastnosti entit, které jsou typu, `Datetime` jsou vždy ve formátu UTC.
 * Prázdný znak v řetězci dotazu by měl být zakódovaný pomocí adresy URL před odesláním žádosti.
 
 ## <a name="comparison-operators"></a>Operátory porovnání
@@ -45,7 +45,7 @@ Operátory rozsahu:
 - `ge`: Otestujte, zda je pole *větší než nebo rovno* konstantní hodnotě.
 - `le`: Otestujte, zda je pole *menší nebo rovno* konstantní hodnotě.
 
-## <a name="filter"></a>Filtr
+## <a name="filter"></a>Filtrovat
 
 Použijte `$filter` k poskytnutí parametru filtru OData, abyste našli jenom objekty, které vás zajímají.
 
@@ -70,11 +70,11 @@ Použijte `$orderby` k řazení vrácených objektů zadaným parametrem. Přík
 GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01$orderby=properties/created%20gt%202018-05-11T17:39:08.387Z
 ```
 
-K řazení výsledků ve vzestupném nebo sestupném pořadí, přidejte `asc` buď `desc` nebo k názvu pole oddělené mezerou. Například: `$orderby properties/created desc`.
+K řazení výsledků ve vzestupném nebo sestupném pořadí, přidejte buď `asc` nebo `desc` k názvu pole oddělené mezerou. Například: `$orderby properties/created desc`.
 
 ## <a name="skip-token"></a>Přeskočit token
 
-Pokud odpověď dotazu obsahuje mnoho položek, vrátí služba hodnotu `$skiptoken` (`@odata.nextLink`), kterou použijete k získání další stránky výsledků. Použijte ji ke stránkám celé sady výsledků dotazu.
+Pokud odpověď dotazu obsahuje mnoho položek, vrátí služba `$skiptoken` `@odata.nextLink` hodnotu (), kterou použijete k získání další stránky výsledků. Použijte ji ke stránkám celé sady výsledků dotazu.
 
 V Media Services V3 nemůžete konfigurovat velikost stránky. Velikost stránky se liší podle typu entity. Přečtěte si jednotlivé části, které následují za podrobnosti.
 
@@ -83,7 +83,7 @@ Pokud jsou entity vytvářeny nebo smazány při stránkování prostřednictví
 > [!TIP]
 > Vždy použít `nextLink` k zobrazení výčtu kolekce a nezáleží na konkrétní velikosti stránky.
 >
-> `nextLink` Hodnota bude přítomna pouze v případě, že existuje více než jedna stránka entit.
+> `nextLink`Hodnota bude přítomna pouze v případě, že existuje více než jedna stránka entit.
 
 Vezměte v úvahu následující příklad `$skiptoken` použití. Ujistěte se, že jste nahradili *amstestaccount* názvem vašeho účtu a nastavíte hodnotu *rozhraní API-Version* na nejnovější verzi.
 
@@ -156,27 +156,27 @@ client.Jobs.List(config.ResourceGroup, config.AccountName, VideoAnalyzerTransfor
 
 Následující tabulka ukazuje, jak můžete použít možnosti filtrování a řazení u různých entit:
 
-|Název entity|Název vlastnosti|Filtr|Objednání|
+|Název entity|Název vlastnosti|Filtrovat|Objednání|
 |---|---|---|---|
-|[Prostředky](https://docs.microsoft.com/rest/api/media/assets/)|jméno|`eq`, `gt`, `lt`, `ge`, `le`|`asc` a `desc`|
+|[Prostředky](https://docs.microsoft.com/rest/api/media/assets/)|name|`eq`, `gt`, `lt`, `ge`, `le`|`asc` a `desc`|
 ||Properties. alternateId |`eq`||
 ||Properties. assetId |`eq`||
 ||vlastnosti. vytvořeno| `eq`, `gt`, `lt`| `asc` a `desc`|
-|[Zásady pro klíč obsahu](https://docs.microsoft.com/rest/api/media/contentkeypolicies)|jméno|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
+|[Zásady symetrických klíčů](https://docs.microsoft.com/rest/api/media/contentkeypolicies)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
 ||vlastnosti. vytvořeno    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
 ||vlastnosti. Description    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`||
 ||Properties. lastModified|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
 ||Properties. policyId|`eq`, `ne`||
-|[Úlohy](https://docs.microsoft.com/rest/api/media/jobs)| jméno  | `eq`            | `asc` a `desc`|
+|[Úlohy](https://docs.microsoft.com/rest/api/media/jobs)| name  | `eq`            | `asc` a `desc`|
 ||vlastnosti. State        | `eq`, `ne`        |                         |
 ||vlastnosti. vytvořeno      | `gt`, `ge`, `lt`, `le`| `asc` a `desc`|
 ||Properties. lastModified | `gt`, `ge`, `lt`, `le` | `asc` a `desc`| 
-|[Lokátory streamování](https://docs.microsoft.com/rest/api/media/streaminglocators)|jméno|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
+|[Lokátory streamování](https://docs.microsoft.com/rest/api/media/streaminglocators)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
 ||vlastnosti. vytvořeno    |`eq`, `ne`, `ge`, `le`,  `gt`, `lt`|`asc` a `desc`|
 ||vlastnosti. čas_ukončení    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
-|[Zásady streamování](https://docs.microsoft.com/rest/api/media/streamingpolicies)|jméno|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
+|[Zásady streamování](https://docs.microsoft.com/rest/api/media/streamingpolicies)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
 ||vlastnosti. vytvořeno    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
-|[Transformace](https://docs.microsoft.com/rest/api/media/transforms)| jméno | `eq`            | `asc` a `desc`|
+|[Transformace](https://docs.microsoft.com/rest/api/media/transforms)| name | `eq`            | `asc` a `desc`|
 || vlastnosti. vytvořeno      | `gt`, `ge`, `lt`, `le`| `asc` a `desc`|
 || Properties. lastModified | `gt`, `ge`, `lt`, `le`| `asc` a `desc`|
 

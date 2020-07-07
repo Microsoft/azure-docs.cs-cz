@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
 ms.openlocfilehash: 4a760fe1e5df7cf614a68f8fa8a05926326d3edf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80583224"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>Vyřazení funkcí Security Center (červenec 2019)
@@ -53,7 +53,7 @@ Vyřadíme řídicí panel události, který se zobrazil při výběru pracovní
 
 Doporučujeme, abyste k zobrazení důležitých událostí v pracovních prostorech používali nativní možnosti Azure Log Analytics.
 
-Pokud jste v Security Center vytvořili vlastní významné události, budou k dispozici. V Log Analytics klikněte na **vybrat pracovní prostor** > **uložená hledání**. Vaše data se neztratí ani nezmění. Nativní významné události jsou k dispozici také ze stejné obrazovky Log Analytics.
+Pokud jste v Security Center vytvořili vlastní významné události, budou k dispozici. V Log Analytics klikněte na **vybrat pracovní prostor**  >  **uložená hledání**. Vaše data se neztratí ani nezmění. Nativní významné události jsou k dispozici také ze stejné obrazovky Log Analytics.
 
 ![Hledání uložených pracovních prostorů][3]
 

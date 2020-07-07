@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
 ms.openlocfilehash: 986da8980a569583ef454833957ace85dd1bfbb6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80351056"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Zpráva k vydání verze Průzkumníka služby Microsoft Azure Storage
@@ -168,7 +168,7 @@ Pokud si chcete stáhnout předchozí verze Průzkumník služby Storage, může
   * Automaticky aktualizovat #1526
   * Povolit AzCopy
   * AzCopy (SAS): Pokud existují další nastavení, která byste chtěli přidat, [otevřete prosím problém na GitHubu](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=%3Abulb%3A%20setting%20candidate&template=feature_request.md&title=) s popisem nastavení, které chcete zobrazit.
-* Průzkumník služby Storage teď podporuje Managed Disks. Můžete:
+* Průzkumník služby Storage teď podporuje Managed Disks. Další možnosti:
   * Nahrání místního virtuálního pevného disku na nový disk
   * Stažení disku
   * Kopírování a vkládání disků napříč skupinami prostředků a oblastmi
@@ -242,7 +242,7 @@ Nahrávání, stahování a kopírování disků v různých oblastech využív�
     * Doba trvání SAS AzCopy
 
     Pokud jsou k dispozici další nastavení, která byste chtěli přidat, [otevřete prosím problém na GitHubu s popisem nastavení, které chcete zobrazit](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=%3Abulb%3A%20setting%20candidate&template=feature_request.md&title=).
-* Průzkumník služby Storage teď podporuje Managed Disks. Můžete:
+* Průzkumník služby Storage teď podporuje Managed Disks. Další možnosti:
     * Nahrání místního virtuálního pevného disku na nový disk
     * Stažení disku
     * Kopírování a vkládání disků napříč skupinami prostředků a oblastmi
@@ -810,7 +810,7 @@ Nakonec bude podpora pro použití AzCopy se sdílenými složkami přizvána v 
    * Přizpůsobte zobrazovaný název prostředku, který chcete připojit. [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
    * Připojte se k několika místním emulátorům pomocí různých portů. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
    * Přidejte připojené prostředky k rychlému přístupu. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* Průzkumník služby Storage teď podporuje obnovitelné odstranění. Můžete:
+* Průzkumník služby Storage teď podporuje obnovitelné odstranění. Další možnosti:
    * Zásadu obnovitelného odstranění můžete nakonfigurovat kliknutím pravým tlačítkem myši na uzel kontejnery objektů BLOB pro váš účet úložiště.
    * V editoru objektů BLOB vyberte aktivní a odstraněné objekty BLOB a v rozevíracím seznamu vedle navigačního panelu zobrazte měkké odstraněné objekty blob.
    * Obnovit obnovitelné odstraněné objekty blob.
@@ -866,7 +866,7 @@ Nakonec bude podpora pro použití AzCopy se sdílenými složkami přizvána v 
    * Přizpůsobte zobrazovaný název prostředku, který chcete připojit. [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
    * Připojte se k několika místním emulátorům pomocí různých portů. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
    * Přidejte připojené prostředky k rychlému přístupu. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* Průzkumník služby Storage teď podporuje obnovitelné odstranění. Můžete:
+* Průzkumník služby Storage teď podporuje obnovitelné odstranění. Další možnosti:
    * Zásadu obnovitelného odstranění můžete nakonfigurovat kliknutím pravým tlačítkem myši na uzel kontejnery objektů BLOB pro váš účet úložiště.
    * V editoru objektů BLOB vyberte aktivní a odstraněné objekty BLOB a v rozevíracím seznamu vedle navigačního panelu zobrazte měkké odstraněné objekty blob.
    * Obnovit obnovitelné odstraněné objekty blob.
@@ -921,7 +921,7 @@ Nakonec bude podpora pro použití AzCopy se sdílenými složkami přizvána v 
    * Přizpůsobte zobrazovaný název prostředku, který chcete připojit. [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
    * Připojte se k několika místním emulátorům pomocí různých portů. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
    * Přidejte připojené prostředky k rychlému přístupu. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* Průzkumník služby Storage teď podporuje obnovitelné odstranění. Můžete:
+* Průzkumník služby Storage teď podporuje obnovitelné odstranění. Další možnosti:
    * Zásadu obnovitelného odstranění můžete nakonfigurovat kliknutím pravým tlačítkem myši na uzel kontejnery objektů BLOB pro váš účet úložiště.
    * V editoru objektů BLOB vyberte aktivní a odstraněné objekty BLOB a v rozevíracím seznamu vedle navigačního panelu zobrazte měkké odstraněné objekty blob.
    * Obnovit obnovitelné odstraněné objekty blob.
@@ -981,7 +981,7 @@ Nakonec bude podpora pro použití AzCopy se sdílenými složkami přizvána v 
    * Přizpůsobte zobrazovaný název prostředku, který chcete připojit. [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
    * Připojte se k několika místním emulátorům pomocí různých portů. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
    * Přidejte připojené prostředky k rychlému přístupu. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* Průzkumník služby Storage teď podporuje obnovitelné odstranění. Můžete:
+* Průzkumník služby Storage teď podporuje obnovitelné odstranění. Další možnosti:
    * Zásadu obnovitelného odstranění můžete nakonfigurovat kliknutím pravým tlačítkem myši na uzel kontejnery objektů BLOB pro váš účet úložiště.
    * V editoru objektů BLOB vyberte aktivní a odstraněné objekty BLOB a v rozevíracím seznamu vedle navigačního panelu zobrazte měkké odstraněné objekty blob.
    * Obnovit obnovitelné odstraněné objekty blob.
@@ -1201,7 +1201,7 @@ Nakonec bude podpora pro použití AzCopy se sdílenými složkami přizvána v 
 * Rozšířené ověřování, které umožňuje Průzkumník služby Storage použít stejné úložiště účtů jako Visual Studio 2017. Pokud chcete používat tuto funkci, budete se muset znovu přihlásit k vašim účtům a znovu nastavit filtrované odběry.
 * U účtů Azure Stack zálohovaných službou AAD Průzkumník služby Storage nyní získá Azure Stack předplatná, pokud je povolená možnost cílový Azure Stack. Už nemusíte vytvářet vlastní prostředí pro přihlášení.
 * Bylo přidáno několik klávesových zkratek umožňujících rychlejší navigaci. Patří mezi ně přepínání různých panelů a přesun mezi editory. Další podrobnosti najdete v nabídce zobrazení.
-* Průzkumník služby Storage zpětná vazba nyní bydlí na GitHubu. Na stránku problémů se dostanete tak, že kliknete na tlačítko zpětná vazba v dolní části doleva [https://github.com/Microsoft/AzureStorageExplorer/issues](https://github.com/Microsoft/AzureStorageExplorer/issues)nebo přejdete na. Nebojte se vytvářet návrhy, nahlásit problémy, klást dotazy nebo opustit jakoukoli jinou formu zpětné vazby.
+* Průzkumník služby Storage zpětná vazba nyní bydlí na GitHubu. Na stránku problémů se dostanete tak, že kliknete na tlačítko zpětná vazba v dolní části doleva nebo přejdete na [https://github.com/Microsoft/AzureStorageExplorer/issues](https://github.com/Microsoft/AzureStorageExplorer/issues) . Nebojte se vytvářet návrhy, nahlásit problémy, klást dotazy nebo opustit jakoukoli jinou formu zpětné vazby.
 * Pokud používáte k problémům s certifikátem TLS/SSL a nemůžete najít problematický certifikát, můžete teď Průzkumník služby Storage spustit z příkazového řádku s `--ignore-certificate-errors` příznakem. Při spuštění s tímto příznakem Průzkumník služby Storage bude ignorovat chyby certifikátu TLS/SSL.
 * V kontextové nabídce pro položky BLOB a soubor je teď možnost stáhnout.
 * Vylepšená podpora pro usnadnění přístupu a čtečky obrazovky. Pokud se spoléháte na funkce přístupnosti, najdete další informace v [dokumentaci k usnadnění](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-accessibility) .
@@ -1627,7 +1627,7 @@ Nakonec bude podpora pro použití AzCopy se sdílenými složkami přizvána v 
 * Nyní se můžete přihlásit k účtům Azure Stack na základě Azure Active Directory (AAD).
 * Soubory archivu teď můžete nahrávat přes 32MB do účtů Premium Storage.
 * Vylepšená podpora usnadnění přístupu
-* Přidáním důvěryhodných certifikátů Standard-64 s kódováním TLS/SSL teď můžete přidat do nabídky upravit –&gt; certifikáty SSL –&gt; importovat certifikáty.
+* Přidáním důvěryhodných certifikátů Standard-64 s kódováním TLS/SSL teď můžete přidat do nabídky upravit – &gt; certifikáty SSL – &gt; importovat certifikáty.
 
 #### <a name="fixes"></a>Opravy
 
@@ -1730,7 +1730,7 @@ Nakonec bude podpora pro použití AzCopy se sdílenými složkami přizvána v 
 * Provedli jsme opětovné uvedení oboru hledání s využitím našeho nového rozšířeného vyhledávání dílčího řetězce, takže teď máte dvě možnosti hledání:
     * Globální vyhledávání – stačí zadat hledaný výraz do textového pole hledání.
     * Vymezené vyhledávání – klikněte na ikonu lupy vedle uzlu, pak přidejte hledaný termín na konec cesty, nebo klikněte pravým tlačítkem a vyberte Hledat odsud.
-* Přidali jsme různé motivy: světlá (výchozí), tmavě, Vysoký kontrastová, černá a Vysoký kontrast bílá. Pokud chcete změnit svoje&gt; předvolby, přejděte na Upravit – motivy.
+* Přidali jsme různé motivy: světlá (výchozí), tmavě, Vysoký kontrastová, černá a Vysoký kontrast bílá. Pokud chcete &gt; změnit svoje předvolby, přejděte na Upravit – motivy.
 * Můžete upravit vlastnosti objektů BLOB a souborů
 * Nyní podporujeme kódované zprávy ve frontě (Base64) a nekódované fronty.
 * V systému Linux se nyní vyžaduje 64 operační systém. V této verzi podporujeme jenom 64-bit Ubuntu 16.04.1 LTS
@@ -1889,7 +1889,7 @@ Nakonec bude podpora pro použití AzCopy se sdílenými složkami přizvána v 
 
 #### <a name="known-issues"></a>Známé problémy
 
-* Tabulky: Přidání, úpravy nebo import entity, která má vlastnost s nejednoznačnou číselnou hodnotou, jako je "1" nebo "1,0" a uživatel se pokusí odeslat jako `Edm.String`, hodnota se vrátí prostřednictvím klientského rozhraní API jako EDM. Double
+* Tabulky: Přidání, úpravy nebo import entity, která má vlastnost s nejednoznačnou číselnou hodnotou, jako je "1" nebo "1,0" a uživatel se pokusí odeslat jako `Edm.String` , hodnota se vrátí prostřednictvím klientského rozhraní API jako EDM. Double
 
 03/31/2016
 
@@ -1912,11 +1912,11 @@ Nakonec bude podpora pro použití AzCopy se sdílenými složkami přizvána v 
 
 * Vylepšení výkonu a spolehlivosti
 
-### <a name="known-issues-amp-mitigations"></a>Rizika se &amp; známými problémy
+### <a name="known-issues-amp-mitigations"></a>Rizika se známými problémy &amp;
 
 * Stažení velkých souborů BLOB nefunguje správně – při řešení tohoto problému doporučujeme použít AzCopy.
 * Přihlašovací údaje účtu se nenačte ani neuloží do mezipaměti, pokud se domovská složka nedá najít nebo do ní nejde zapisovat.
-* Pokud přidáváte, upravujete nebo importujete entitu, která má vlastnost s nejednoznačnou číselnou hodnotou, například "1" nebo "1,0" a uživatel se pokusí odeslat jako `Edm.String`, hodnota se vrátí přes klientské rozhraní API jako EDM. Double
+* Pokud přidáváte, upravujete nebo importujete entitu, která má vlastnost s nejednoznačnou číselnou hodnotou, například "1" nebo "1,0" a uživatel se pokusí odeslat jako `Edm.String` , hodnota se vrátí přes klientské rozhraní API jako EDM. Double
 * Při importu souborů CSV s víceřádkovými záznamy se můžou data zobrazit roztrhané nebo zakódovat.
 
 02/03/2016

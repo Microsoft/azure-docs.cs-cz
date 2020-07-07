@@ -9,22 +9,22 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: b753ecfc07cfb3806838f8a05dbe33ef0bb92730
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80334284"
 ---
 # <a name="add-a-map-layer-from-the-open-geospatial-consortium-ogc"></a>Přidat vrstvu mapy z Open Geospatial Consortium (OGC)
 
-`atlas.layer.OgcMapLayer` Třída může překrývat na mapě webové mapy služby (WMS) a WMTS (Web Map Tile Services). WMS je standardní protokol vyvinutý společností OGC pro poskytování imagí map s použitím miniatur přes Internet. Geografická odkazování na obrázek je procesy přidružení obrázku k geografickému umístění. WMTS je také standardní protokol vyvinutý pomocí OGC. Je navržena pro obsluhu předem vykreslených a geograficky podrobnějších dlaždic mapy.
+`atlas.layer.OgcMapLayer`Třída může překrývat na mapě webové mapy služby (WMS) a WMTS (Web Map Tile Services). WMS je standardní protokol vyvinutý společností OGC pro poskytování imagí map s použitím miniatur přes Internet. Geografická odkazování na obrázek je procesy přidružení obrázku k geografickému umístění. WMTS je také standardní protokol vyvinutý pomocí OGC. Je navržena pro obsluhu předem vykreslených a geograficky podrobnějších dlaždic mapy.
 
 Následující části popisují funkce služby webové mapy, které jsou podporovány `OgcMapLayer` třídou.
 
 **Služba webového mapování (WMS)**
 
-- Podporované verze: `1.0.0`, `1.1.0`, `1.1.1`a`1.3.0`
-- Služba musí podporovat systém `EPSG:3857` projekce nebo reprojekce.
+- Podporované verze: `1.0.0` , `1.1.0` , `1.1.1` a`1.3.0`
+- Služba musí podporovat `EPSG:3857` systém projekce nebo reprojekce.
 - GetFeatureInfo vyžaduje, aby služba podporovala `EPSG:4326` nebo zpracovala reprojekce. 
 - Podporované operace:
 
@@ -32,14 +32,14 @@ Následující části popisují funkce služby webové mapy, které jsou podpor
     | :-- | :-- |
     | GetCapabilities | Načte metadata služby s podporovanými možnostmi. |
     | GetMap | Načte obrázek mapy pro zadanou oblast. |
-    | GetFeatureInfo | Načte `feature_info`, který obsahuje základní data o funkci. |
+    | GetFeatureInfo | Načte `feature_info` , který obsahuje základní data o funkci. |
 
 **Služba dlaždic webového mapy (WMTS)**
 
 - Podporované verze:`1.0.0`
-- Dlaždice musí být čtvercové, například `TileWidth == TileHeight`.
-- Podporovaný počítačový počítač `EPSG:3857` : nebo`GoogleMapsCompatible` 
-- Identifikátor TileMatrix musí být celočíselná hodnota, která odpovídá úrovni přiblížení na mapě. V mapě Azure je úroveň přiblížení hodnota mezi `"0"` a. `"22"` `"0"` Takže se podporuje, ale `"00"` nepodporuje se.
+- Dlaždice musí být čtvercové, například `TileWidth == TileHeight` .
+- Podporovaný počítačový počítač: `EPSG:3857` nebo`GoogleMapsCompatible` 
+- Identifikátor TileMatrix musí být celočíselná hodnota, která odpovídá úrovni přiblížení na mapě. V mapě Azure je úroveň přiblížení hodnota mezi `"0"` a `"22"` . Takže se `"0"` podporuje, ale nepodporuje se `"00"` .
 - Podporované operace:
 
     | | |
@@ -49,13 +49,13 @@ Následující části popisují funkce služby webové mapy, které jsou podpor
 
 ## <a name="overlay-an-ogc-map-layer"></a>Překrytí vrstvy mapy OGC
 
-`url` Může to být základní adresa URL služby nebo úplná adresa URL s dotazem pro získání schopností služby. V závislosti na zadaných podrobnostech může klient WFS vyzkoušet několik standardních formátů adresy URL, které určují, jak zpočátku přistupovat ke službě.
+`url`Může to být základní adresa URL služby nebo úplná adresa URL s dotazem pro získání schopností služby. V závislosti na zadaných podrobnostech může klient WFS vyzkoušet několik standardních formátů adresy URL, které určují, jak zpočátku přistupovat ke službě.
 
 Následující kód ukazuje, jak překrýt vrstvu mapy OGC na mapě.
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Příklad vrstvy mapy OGC' src='//codepen.io/azuremaps/embed/xxGLZWB/?height=700&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>V OGC () na <a href='https://codepen.io'>CodePen</a>se podívejte na <a href='https://codepen.io/azuremaps/pen/xxGLZWB/'>vrstvu mapy</a> pro pero – příklad Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>).
+<iframe height='700' scrolling='no' title='Příklad vrstvy mapy OGC' src='//codepen.io/azuremaps/embed/xxGLZWB/?height=700&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>V OGC () na CodePen se podívejte na <a href='https://codepen.io/azuremaps/pen/xxGLZWB/'>vrstvu mapy</a> pro pero – příklad Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ). <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 ## <a name="ogc-map-layer-options"></a>Možnosti vrstvy mapy OGC
@@ -64,7 +64,7 @@ Následující příklad ukazuje různé možnosti vrstvy mapy OGC. Můžete kli
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Možnosti vrstvy mapy OGC' src='//codepen.io/azuremaps/embed/abOyEVQ/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Prohlédněte si <a href='https://codepen.io/azuremaps/pen/abOyEVQ/'>Možnosti vrstvy mapy OGC</a> pera od Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='700' scrolling='no' title='Možnosti vrstvy mapy OGC' src='//codepen.io/azuremaps/embed/abOyEVQ/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Prohlédněte si <a href='https://codepen.io/azuremaps/pen/abOyEVQ/'>Možnosti vrstvy mapy OGC</a> pera od Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="ogc-web-map-service-explorer"></a>Průzkumník služby Webová mapa OGC
@@ -73,7 +73,7 @@ Následující nástroj překrývá v rámci vrstev v podobě obrázků ze služ
 
 <br/>
 
-<iframe height='750' style='width: 100%;' scrolling='no' title='Průzkumník služby Webová mapa OGC' src='//codepen.io/azuremaps/embed/YzXxYdX/?height=750&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>OGC () na <a href='https://codepen.io'>CodePen</a>najdete v tématu věnovaném Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() v <a href='https://codepen.io/azuremaps/pen/YzXxYdX/'>Průzkumníku služby Web Map</a> .
+<iframe height='750' style='width: 100%;' scrolling='no' title='Průzkumník služby Webová mapa OGC' src='//codepen.io/azuremaps/embed/YzXxYdX/?height=750&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>OGC () na CodePen najdete v tématu věnovaném Azure Maps () v <a href='https://codepen.io/azuremaps/pen/YzXxYdX/'>Průzkumníku služby Web Map</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 Můžete také zadat nastavení mapování pro použití proxy služby. Služba proxy umožňuje načíst prostředky hostované v doménách, které nemají povolenou CORS.
@@ -97,4 +97,4 @@ Podívejte se na následující články, které obsahují ukázky kódu, které
 > [Využití základních operací](spatial-io-core-operations.md)
 
 > [!div class="nextstepaction"]
-> [Podrobnosti o podporovaném formátu dat](spatial-io-supported-data-format-details.md)
+> [Podrobnosti o podporovaných formátech dat](spatial-io-supported-data-format-details.md)

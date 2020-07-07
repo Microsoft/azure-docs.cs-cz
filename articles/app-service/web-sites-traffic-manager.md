@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 02/25/2016
 ms.custom: seodec18
 ms.openlocfilehash: 040f84288c66f4506919e775b9ea41324b617cfa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80437898"
 ---
 # <a name="controlling-azure-app-service-traffic-with-azure-traffic-manager"></a>Řízení provozu Azure App Service s využitím Azure Traffic Manager
@@ -40,7 +40,7 @@ Při používání Azure Traffic Manager s Azure mějte na paměti následujíc�
 * Pro nasazení ve stejné oblasti, která používá App Service ve spojení s jinou cloudovou službou Azure, můžete kombinovat oba typy koncových bodů a povolit tak hybridní scénáře.
 * V profilu můžete zadat jenom jeden App Service koncový bod na oblast. Když vyberete aplikaci jako koncový bod pro jednu oblast, zbývající aplikace v této oblasti nebudou k dispozici pro výběr tohoto profilu.
 * Koncové body App Service, které zadáte v profilu Azure Traffic Manager, se zobrazí v části **názvy domén** na stránce konfigurace pro aplikaci v profilu, ale zde se nedají konfigurovat.
-* Když přidáte aplikaci do profilu, **Adresa URL webu** na řídicím panelu na stránce portálu aplikace zobrazí adresu URL vlastní domény aplikace, pokud jste ji nastavili. V opačném případě se zobrazí adresa URL profilu Traffic Manager (například `contoso.trafficmanager.net`). Přímý název domény aplikace i adresa URL Traffic Manager jsou viditelné na stránce konfigurace aplikace v části **názvy domén** .
+* Když přidáte aplikaci do profilu, **Adresa URL webu** na řídicím panelu na stránce portálu aplikace zobrazí adresu URL vlastní domény aplikace, pokud jste ji nastavili. V opačném případě se zobrazí adresa URL profilu Traffic Manager (například `contoso.trafficmanager.net` ). Přímý název domény aplikace i adresa URL Traffic Manager jsou viditelné na stránce konfigurace aplikace v části **názvy domén** .
 * Vaše vlastní názvy domén pracují podle očekávání, ale kromě jejich přidání do aplikací musíte také nakonfigurovat mapu DNS tak, aby odkazovala na adresu URL Traffic Manager. Informace o tom, jak nastavit vlastní doménu pro aplikaci App Service, najdete v tématu [Konfigurace vlastního názvu domény v Azure App Service s Traffic Manager Integration](configure-domain-traffic-manager.md).
 * Do profilu Azure Traffic Manager můžete přidat jenom aplikace, které jsou v režimu Standard nebo Premium.
 * Přidání aplikace do profilu Traffic Manager způsobí, že se aplikace restartuje.

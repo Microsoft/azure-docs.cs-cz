@@ -9,13 +9,13 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 6becb504671c1fa380207fda9d7d553fca8ceddf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335237"
 ---
-# <a name="use-the-azure-maps-map-control"></a>Použití ovládacího prvku Azure Maps mapa
+# <a name="use-the-azure-maps-map-control"></a>Použití mapového ovládacího prvku Azure Maps
 
 Ovládací prvek Mapa knihovna JavaScriptu na straně klienta umožňuje vykreslovat mapy a vložené Azure Maps funkce do vaší webové nebo mobilní aplikace.
 
@@ -52,7 +52,7 @@ Mapu můžete vložit do webové stránky pomocí Ovládací prvek Mapa knihovny
     > import * as atlas from 'azure-maps-control';
     > ```
 
-3. Chcete-li vykreslit mapu, aby vyplnila celé tělo stránky, přidejte do `<style>` `<head>` elementu následující element.
+3. Chcete-li vykreslit mapu, aby vyplnila celé tělo stránky, přidejte `<style>` do elementu následující element `<head>` .
 
    ```HTML
     <style>
@@ -75,7 +75,7 @@ Mapu můžete vložit do webové stránky pomocí Ovládací prvek Mapa knihovny
     </body>
    ```
 
-5. Pro inicializaci mapového ovládacího prvku definujte v těle HTML novou značku skriptu. Při vytváření instance `id` `Map` třídy předejte `<div>` v mapě `HTMLElement` nebo (například `document.getElementById('myMap')`) jako první parametr. Použijte vlastní klíč účtu Azure Maps nebo přihlašovací údaje pro Azure Active Directory (AAD) k ověření mapování pomocí [možností ověřování](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions). 
+5. Pro inicializaci mapového ovládacího prvku definujte v těle HTML novou značku skriptu. `id` `<div>` Při vytváření instance třídy předejte v mapě nebo `HTMLElement` (například `document.getElementById('myMap')` ) jako první parametr `Map` . Použijte vlastní klíč účtu Azure Maps nebo přihlašovací údaje pro Azure Active Directory (AAD) k ověření mapování pomocí [možností ověřování](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions). 
 
    Pokud potřebujete vytvořit účet nebo najít klíč, postupujte podle pokynů v tématu [Vytvoření účtu](quick-demo-map-app.md#create-an-account-with-azure-maps) a [získání primárního klíče](quick-demo-map-app.md#get-the-primary-key-for-your-account) . 
 
@@ -233,7 +233,7 @@ Při použití modulu služeb musí být při vytváření instance koncového b
 var searchURL = new atlas.service.SearchURL(pipeline, 'atlas.azure.us');
 ```
 
-Pokud máte přímý přístup ke službě Azure Maps REST, změňte doménu adresy URL `atlas.azure.us`na. Pokud například používáte službu rozhraní API pro hledání, změňte doménu adresy URL z `https://atlas.microsoft.com/search/` na. `https://atlas.azure.us/search/`
+Pokud máte přímý přístup ke službě Azure Maps REST, změňte doménu adresy URL na `atlas.azure.us` . Pokud například používáte službu rozhraní API pro hledání, změňte doménu adresy URL z `https://atlas.microsoft.com/search/` na `https://atlas.azure.us/search/` .
 
 ## <a name="next-steps"></a>Další kroky
 

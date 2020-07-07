@@ -8,10 +8,10 @@ ms.date: 01/24/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 4aec7fa78292f224952dd2ae929d2b8bfd97ab9b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80477684"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Důležité aspekty sítí pro službu App Service Environment #
@@ -90,7 +90,7 @@ Služba pomocného mechanismu oznamuje přístup k Internetu adres na těchto po
 | NTP | 123 |
 | CRL, aktualizace Windows, závislosti Linux, služby Azure | 80/443 |
 | Azure SQL | 1433 | 
-| Monitorování | 12000 |
+| Sledování | 12000 |
 
 Odchozí závislosti jsou uvedené v dokumentu, který popisuje [uzamykání App Service Environment odchozích přenosů](./firewall-integration.md). Pokud přístupový modul pro přístup ztratí přístup k jeho závislostem, přestane fungovat. Pokud k tomu dojde dostatečně dlouho, pozastaví se pomocného mechanismu. 
 
@@ -177,9 +177,9 @@ Při zohlednění vstupních a odchozích požadavků by měl skupin zabezpečen
 
 ![Příchozí pravidla zabezpečení][4]
 
-Výchozí pravidlo povoluje, aby IP adresy ve virtuální síti komunikovaly s podsítí pomocného mechanismu. Další výchozí pravidlo povolí službě Vyrovnávání zatížení, která se označuje jako veřejná VIP, ke komunikaci s pomocným mechanismem řízení. Pokud chcete zobrazit výchozí pravidla, vyberte **výchozí pravidla** vedle ikony **Přidat** . Pokud před výchozími pravidly vložíte pravidlo Odepřít vše jiného, zabráníte tak provozu mezi VIP a pomocným mechanismem řízení. Pokud chcete zabránit provozu v rámci virtuální sítě, přidejte vlastní pravidlo, které povolí příchozí. Použijte **zdroj, který** se rovná AzureLoadBalancer, s cílovým umístěním a rozsahem **\*** portů. Vzhledem k tomu, že pravidlo NSG se používá pro podsíť pomocného mechanismu, nemusíte být v cíli specifická.
+Výchozí pravidlo povoluje, aby IP adresy ve virtuální síti komunikovaly s podsítí pomocného mechanismu. Další výchozí pravidlo povolí službě Vyrovnávání zatížení, která se označuje jako veřejná VIP, ke komunikaci s pomocným mechanismem řízení. Pokud chcete zobrazit výchozí pravidla, vyberte **výchozí pravidla** vedle ikony **Přidat** . Pokud před výchozími pravidly vložíte pravidlo Odepřít vše jiného, zabráníte tak provozu mezi VIP a pomocným mechanismem řízení. Pokud chcete zabránit provozu v rámci virtuální sítě, přidejte vlastní pravidlo, které povolí příchozí. Použijte **zdroj, který** se rovná AzureLoadBalancer, s cílovým umístěním a rozsahem portů **\*** . Vzhledem k tomu, že pravidlo NSG se používá pro podsíť pomocného mechanismu, nemusíte být v cíli specifická.
 
-Pokud jste aplikaci přiřadili IP adresu, zajistěte, aby byly porty otevřené. Porty zobrazíte tak, že vyberete **App Service Environment** > **IP adresy**.  
+Pokud jste aplikaci přiřadili IP adresu, zajistěte, aby byly porty otevřené. Porty zobrazíte tak, že vyberete **App Service Environment**  >  **IP adresy**.  
 
 Všechny položky zobrazené v následujících odchozích pravidlech jsou potřeba s výjimkou poslední položky. Umožňují síťovému přístupu ke závislostem pomocného mechanismu, které byly popsány dříve v tomto článku. Pokud je některý z nich zablokujete, váš pomocného programu přestane fungovat. Poslední položka v seznamu umožňuje vašemu přihlášenému uživatelům komunikovat s ostatními prostředky ve vaší virtuální síti.
 
@@ -194,11 +194,11 @@ Vynucené tunelování je při nastavování tras ve virtuální síti, aby odch
 Při vytváření pomocného mechanismu na portálu vytvoříme také sadu směrovacích tabulek v podsíti, která je vytvořená pomocí pomocného mechanismu služby.  Tyto trasy jednoduše říkají odeslání odchozího provozu přímo na Internet.  
 Chcete-li vytvořit stejné trasy ručně, postupujte podle následujících kroků:
 
-1. Přejděte na web Azure Portal. Vyberte **sítě** > **směrovací tabulky**.
+1. Přejděte na web Azure Portal. Vyberte **sítě**  >  **směrovací tabulky**.
 
 2. Vytvořte novou směrovací tabulku ve stejné oblasti, ve které je vaše virtuální síť.
 
-3. V uživatelském rozhraní směrovací tabulky vyberte **trasy** > **Přidat**.
+3. V uživatelském rozhraní směrovací tabulky vyberte **trasy**  >  **Přidat**.
 
 4. Nastavte **typ dalšího segmentu směrování** na **Internet** a **předponu adresy** na **0.0.0.0/0**. Vyberte **Uložit**.
 

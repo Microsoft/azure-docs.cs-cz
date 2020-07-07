@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: v-mibufo
 ms.openlocfilehash: 9f0c6350b89dcfecefcadcc166f7af35abc4b128
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80300976"
 ---
 # <a name="boot-error--this-is-not-a-bootable-disk"></a>Chyba spuštění – toto není spouštěcí disk.
@@ -59,7 +59,7 @@ Tato chybová zpráva znamená, že proces spouštění operačního systému ne
 
 Virtuální počítače 1. generace by měly nejdřív ověřit, že oddíl s operačním systémem, který obsahuje úložiště BCD, je označený jako *aktivní*. Pokud máte virtuální počítač 2. generace, přeskočte před [opravou diskového oddílu](#fix-the-disk-partition), protože příznak *stavu* byl v pozdější generaci zastaralý.
 
-1. Otevřete příkazový řádek se zvýšenými oprávněními *(cmd. exe)*.
+1. Otevřete příkazový řádek se zvýšenými oprávněními *(cmd.exe)*.
 2. Zadáním příkazu *DiskPart* spusťte nástroj Diskpart.
 3. Zadejte *disk se seznamem* pro výpis disků v systému a identifikaci připojeného virtuálního pevného disku s operačním systémem.
 4. Po umístění připojeného virtuálního pevného disku s operačním systémem zadejte k výběru disku položku *sel disk #* .  Viz obrázek 2, kde disk 1 je připojený virtuální pevný disk s operačním systémem.
@@ -96,7 +96,7 @@ Virtuální počítače 1. generace by měly nejdřív ověřit, že oddíl s op
 
 ### <a name="fix-the-disk-partition"></a>Opravit diskový oddíl
 
-1. Otevřete příkazový řádek se zvýšenými oprávněními (cmd. exe).
+1. Otevřete příkazový řádek se zvýšenými oprávněními (cmd.exe).
 2. Pomocí následujícího příkazu spusťte na discích *příkaz Chkdsk* a opravte chyby:
 
    `chkdsk <DRIVE LETTER>: /f`

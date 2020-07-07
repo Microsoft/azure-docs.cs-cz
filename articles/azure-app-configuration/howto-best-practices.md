@@ -13,10 +13,10 @@ ms.date: 05/02/2019
 ms.author: lcozzens
 ms.custom: mvc
 ms.openlocfilehash: df56f53b64a35737700529b80c004efeb31eaabc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80348659"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Osvědčené postupy pro konfiguraci aplikací Azure
@@ -32,7 +32,7 @@ Konfigurace aplikace nabízí dvě možnosti pro uspořádání klíčů:
 
 K seskupení klíčů můžete použít buď jednu, nebo obě možnosti.
 
-*Předpony klíčů* jsou počátečními částmi klíčů. Můžete logicky seskupovat sadu klíčů pomocí stejné předpony v jejich názvech. Předpony mohou obsahovat více součástí, které jsou propojeny pomocí oddělovače, `/`například, podobně jako cesta URL, pro vytvoření oboru názvů. Tyto hierarchie jsou užitečné, když ukládáte klíče pro spoustu aplikací, služeb komponent a prostředí v jednom úložišti konfigurace aplikace.
+*Předpony klíčů* jsou počátečními částmi klíčů. Můžete logicky seskupovat sadu klíčů pomocí stejné předpony v jejich názvech. Předpony mohou obsahovat více součástí, které jsou propojeny pomocí oddělovače, například `/` , podobně jako cesta URL, pro vytvoření oboru názvů. Tyto hierarchie jsou užitečné, když ukládáte klíče pro spoustu aplikací, služeb komponent a prostředí v jednom úložišti konfigurace aplikace.
 
 Je důležité si uvědomit, že klíče jsou v souladu s tím, jak kód aplikace odkazuje na načtení hodnot odpovídajících nastavení. Klíče by se neměly měnit, jinak budete muset kód kdykoli upravovat.
 
@@ -62,7 +62,7 @@ configBuilder.AddAzureAppConfiguration(options => {
 
 Pokud chcete získat přístup k úložišti konfigurace aplikace, můžete použít jeho připojovací řetězec, který je k dispozici v Azure Portal. Protože připojovací řetězce obsahují informace o přihlašovacích údajích, považují se za tajné klíče. Tyto tajné klíče je potřeba uložit v Azure Key Vault a váš kód se musí ověřit, aby se Key Vault, aby se načetly.
 
-Lepší možností je použít funkci spravované identity v Azure Active Directory. U spravovaných identit potřebujete jenom adresu URL koncového bodu konfigurace aplikace, abyste mohli spustit přístup k úložišti konfigurace aplikace. Adresu URL můžete vložit do kódu aplikace (například v souboru *appSettings. JSON* ). Podrobnosti najdete v tématu věnovaném [integraci se spravovanými identitami Azure](howto-integrate-azure-managed-service-identity.md) .
+Lepší možností je použít funkci spravované identity v Azure Active Directory. U spravovaných identit potřebujete jenom adresu URL koncového bodu konfigurace aplikace, abyste mohli spustit přístup k úložišti konfigurace aplikace. Do kódu aplikace můžete vložit adresu URL (například v *appsettings.js* souboru). Podrobnosti najdete v tématu věnovaném [integraci se spravovanými identitami Azure](howto-integrate-azure-managed-service-identity.md) .
 
 ## <a name="app-or-function-access-to-app-configuration"></a>Přístup aplikací nebo funkcí k konfiguraci aplikace
 

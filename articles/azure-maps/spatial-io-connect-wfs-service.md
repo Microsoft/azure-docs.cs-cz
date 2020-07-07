@@ -9,21 +9,21 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 8b511395eb61e8845aaa11e5ca7a490dc461424d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80334203"
 ---
 # <a name="connect-to-a-wfs-service"></a>Připojení ke službě WFS
 
-Služba webové funkce (WFS) je webová služba pro dotazování prostorových dat s standardizovaným rozhraním API, které je definováno Open Geospatial Consortium (OGC). `WfsClient` Třída v modulu pro prostorové vstupně-výstupní operace umožňuje vývojářům připojit se ke službě WFS a dotazovat se na data ze služby.
+Služba webové funkce (WFS) je webová služba pro dotazování prostorových dat s standardizovaným rozhraním API, které je definováno Open Geospatial Consortium (OGC). `WfsClient`Třída v modulu pro prostorové vstupně-výstupní operace umožňuje vývojářům připojit se ke službě WFS a dotazovat se na data ze služby.
 
-`WfsClient` Třída podporuje následující funkce:
+Třída podporuje následující funkce `WfsClient` :
 
-- Podporované verze: `1.0.0`, `1.1.0`a`2.0.0`
-- Podporované operátory filtru: binární porovnávání, Logic, Math, Value a `bbox`.
-- Žádosti se provádějí jenom `HTTP GET` pomocí.
+- Podporované verze: `1.0.0` , `1.1.0` a`2.0.0`
+- Podporované operátory filtru: binární porovnávání, Logic, Math, Value a `bbox` .
+- Žádosti se provádějí `HTTP GET` jenom pomocí.
 - Podporované operace:
 
     | | |
@@ -34,13 +34,13 @@ Služba webové funkce (WFS) je webová služba pro dotazování prostorových d
 
 ## <a name="using-the-wfs-client"></a>Použití klienta WFS
 
-`atlas.io.ogc.WfsClient` Třída v modulu pro prostorové vstupně-výstupní operace usnadňuje dotazování na službu WFS a převádění odpovědí na objekty třídyal JSON. Tento objekt pro objektiv JSON se pak dá použít pro jiné účely mapování.
+`atlas.io.ogc.WfsClient`Třída v modulu pro prostorové vstupně-výstupní operace usnadňuje dotazování na službu WFS a převádění odpovědí na objekty třídyal JSON. Tento objekt pro objektiv JSON se pak dá použít pro jiné účely mapování.
 
 Následující kód dotazuje službu WFS a vykresluje vrácené funkce na mapě.
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Příklad jednoduchého WFSu' src='//codepen.io/azuremaps/embed/MWwvVYY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io/azuremaps/pen/MWwvVYY/'>příklad jednoduchého WFS</a> pera na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='700' scrolling='no' title='Příklad jednoduchého WFSu' src='//codepen.io/azuremaps/embed/MWwvVYY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na Azure Maps <a href='https://codepen.io/azuremaps/pen/MWwvVYY/'>příklad jednoduchého WFS</a> pera <a href='https://codepen.io/azuremaps'>@azuremaps</a> na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="supported-filters"></a>Podporované filtry
@@ -82,7 +82,7 @@ Následující kód demonstruje použití různých filtrů s klientem WFS.
 
 <br/>
 
-<iframe height='500' scrolling='no' title= 'Příklady filtru WFS' src='//codepen.io/azuremaps/embed/NWqvYrV/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>V tématu Azure Maps () na <a href='https://codepen.io'>CodePen</a>se podívejte<a href='https://codepen.io/azuremaps'>@azuremaps</a>na <a href='https://codepen.io/azuremaps/pen/NWqvYrV/'>Příklady filtru per WFS</a> ().
+<iframe height='500' scrolling='no' title= 'Příklady filtru WFS' src='//codepen.io/azuremaps/embed/NWqvYrV/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>V tématu Azure Maps () na CodePen se podívejte na <a href='https://codepen.io/azuremaps/pen/NWqvYrV/'>Příklady filtru per WFS</a> ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="wfs-service-explorer"></a>Průzkumník služby WFS
@@ -91,10 +91,10 @@ Následující kód používá klienta WFS k prozkoumání služeb WFS. Vyberte 
 
 <br/>
 
-<iframe height='700' style='width: 100%;' scrolling='no' title= 'Průzkumník služby WFS' src='//codepen.io/azuremaps/embed/bGdrvmG/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>V <a href='https://codepen.io/azuremaps/pen/bGdrvmG/'>WFS</a> (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>se podívejte na Azure Maps službu pera pro pero.
+<iframe height='700' style='width: 100%;' scrolling='no' title= 'Průzkumník služby WFS' src='//codepen.io/azuremaps/embed/bGdrvmG/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>V <a href='https://codepen.io/azuremaps/pen/bGdrvmG/'>WFS</a> ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>se podívejte na Azure Maps službu pera pro pero.
 </iframe>
 
-Pokud chcete získat přístup ke službám WFS hostovaným na koncových bodech, které nejsou povoleny pro CORS, můžete předat `proxyService` službu proxy s podporou CORS do možnosti klienta WFS, jak je znázorněno níže. 
+Pokud chcete získat přístup ke službám WFS hostovaným na koncových bodech, které nejsou povoleny pro CORS, můžete předat službu proxy s podporou CORS do `proxyService` Možnosti klienta WFS, jak je znázorněno níže. 
 
 ```JavaScript
 //Create the WFS client to access the service and use the proxy service settings
@@ -120,4 +120,4 @@ Další ukázky kódu pro přidání do vašich map najdete v následujících �
 > [Využití základních operací](spatial-io-core-operations.md)
 
 > [!div class="nextstepaction"]
-> [Podrobnosti o podporovaném formátu dat](spatial-io-supported-data-format-details.md)
+> [Podrobnosti o podporovaných formátech dat](spatial-io-supported-data-format-details.md)

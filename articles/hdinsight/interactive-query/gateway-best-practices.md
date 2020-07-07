@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.openlocfilehash: 924b1132efeb3ee4211593da190f5b7251029ae3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80586974"
 ---
 # <a name="gateway-deep-dive-and-best-practices-for-apache-hive-in-azure-hdinsight"></a>Podrobně a osvědčené postupy brány pro Apache Hive ve službě Azure HDInsight
@@ -20,7 +20,7 @@ Brána Azure HDInsight (brána) je front-end HTTPS pro clustery HDInsight. Brán
 
 ## <a name="the-hdinsight-gateway"></a>Brána HDInsight
 
-Brána HDInsight je jediná část clusteru HDInsight, která je veřejně přístupná prostřednictvím Internetu. Služba brány je k dispozici bez nutnosti přecházet přes veřejný Internet pomocí koncového bodu `clustername-int.azurehdinsight.net` interní brány. Koncový bod interní brány umožňuje navázat připojení ke službě brány bez opuštění virtuální sítě clusteru. Brána zpracovává všechny požadavky, které se odesílají do clusteru, a předává tyto požadavky na správné komponenty a hostitele clusteru.
+Brána HDInsight je jediná část clusteru HDInsight, která je veřejně přístupná prostřednictvím Internetu. Služba brány je k dispozici bez nutnosti přecházet přes veřejný Internet pomocí `clustername-int.azurehdinsight.net` koncového bodu interní brány. Koncový bod interní brány umožňuje navázat připojení ke službě brány bez opuštění virtuální sítě clusteru. Brána zpracovává všechny požadavky, které se odesílají do clusteru, a předává tyto požadavky na správné komponenty a hostitele clusteru.
 
 Následující diagram poskytuje hrubou ilustraci, jak brána poskytuje abstrakci před všemi různými možnostmi rozlišení hostitele v rámci služby HDInsight.
 
@@ -30,9 +30,9 @@ Následující diagram poskytuje hrubou ilustraci, jak brána poskytuje abstrakc
 
 Motivace pro vložení brány do clusterů HDInsight je poskytnout rozhraní pro zjišťování služeb a ověřování uživatelů. Mechanismy ověřování poskytované bránou jsou obzvláště důležité pro clustery s podporou protokolu ESP.
 
-Pro zjišťování služeb je výhodou brány, že každá součást v clusteru je přístupná jako jiný koncový bod na webu brány ( `clustername.azurehdinsight.net/hive2`), a to na rozdíl od velkého množství `host:port` párů.
+Pro zjišťování služeb je výhodou brány, že každá součást v clusteru je přístupná jako jiný koncový bod na webu brány ( `clustername.azurehdinsight.net/hive2` ), a to na rozdíl od velkého množství `host:port` párů.
 
-Pro ověřování brána umožňuje uživatelům ověřování pomocí páru `username:password` přihlašovacích údajů. U clusterů s podporou protokolu ESP by toto pověření představovalo uživatelské jméno a heslo v doméně uživatele. Ověřování clusterů HDInsight přes bránu nevyžaduje, aby klient získal lístek protokolu Kerberos. Vzhledem k tomu, `username:password` že brána přijímá přihlašovací údaje a získá v zastoupení uživatele lístek protokolu Kerberos, lze zabezpečená připojení k bráně z libovolného hostitele klienta, včetně klientů připojených k různým doménám AA-DDS než cluster (ESP).
+Pro ověřování brána umožňuje uživatelům ověřování pomocí `username:password` páru přihlašovacích údajů. U clusterů s podporou protokolu ESP by toto pověření představovalo uživatelské jméno a heslo v doméně uživatele. Ověřování clusterů HDInsight přes bránu nevyžaduje, aby klient získal lístek protokolu Kerberos. Vzhledem k tomu, že brána přijímá `username:password` přihlašovací údaje a získá v zastoupení uživatele lístek protokolu Kerberos, lze zabezpečená připojení k bráně z libovolného hostitele klienta, včetně klientů připojených k různým doménám AA-DDS než cluster (ESP).
 
 ## <a name="best-practices"></a>Osvědčené postupy
 
@@ -54,7 +54,7 @@ V clusterech s podporou sady Enterprise Security Pack můžou dostatečně slož
 
 Existuje několik míst pro zmírnění rizik a porozumění problémům s výkonem, které jsou splněné v rámci výše uvedeného chování. Použijte následující kontrolní seznam při vykonávání snížení výkonu dotazů prostřednictvím brány HDInsight:
 
-* Při provádění velkých dotazů **Select** použijte klauzuli **limit** . Klauzule **limit** omezuje celkové řádky hlášené na hostitele klienta. Klauzule **limit** ovlivňuje pouze generování výsledků a nemění plán dotazu. Chcete-li použít klauzuli **limit** pro plán dotazu, použijte konfiguraci `hive.limit.optimize.enable`. **Limit** lze kombinovat s posunem pomocí omezení formuláře argumentu **x, y**.
+* Při provádění velkých dotazů **Select** použijte klauzuli **limit** . Klauzule **limit** omezuje celkové řádky hlášené na hostitele klienta. Klauzule **limit** ovlivňuje pouze generování výsledků a nemění plán dotazu. Chcete-li použít klauzuli **limit** pro plán dotazu, použijte konfiguraci `hive.limit.optimize.enable` . **Limit** lze kombinovat s posunem pomocí omezení formuláře argumentu **x, y**.
 
 * Pojmenujte sloupce důležité při spuštění dotazů **Select** namísto použití **Select \* **. Výběr méně sloupců sníží množství čtených dat.
 
@@ -66,17 +66,17 @@ Existuje několik míst pro zmírnění rizik a porozumění problémům s výko
 
 * Pokud používáte externí podregistr metastore, ověřte, že metastore úložiště Azure SQL DB pro podregistr nedosáhlo svého limitu. Pokud se DTU blíží ke svému limitu, budete muset zvětšit velikost databáze.
 
-* Zajistěte, aby všechny nástroje třetích stran, jako je PBI nebo Tableau, používaly stránkování k zobrazení tabulek nebo databází. Pokud potřebujete pomoc s stránkováním, obraťte se na partnery podpory pro tyto nástroje. Hlavním nástrojem použitým pro stránkování je parametr JDBC `fetchSize` . Velikost malého načtení může způsobit snížení výkonu brány, ale příliš velká velikost načtení může mít za následek časový limit brány. Ladění velikosti načtení se musí provádět na základě zatížení.
+* Zajistěte, aby všechny nástroje třetích stran, jako je PBI nebo Tableau, používaly stránkování k zobrazení tabulek nebo databází. Pokud potřebujete pomoc s stránkováním, obraťte se na partnery podpory pro tyto nástroje. Hlavním nástrojem použitým pro stránkování je `fetchSize` parametr JDBC. Velikost malého načtení může způsobit snížení výkonu brány, ale příliš velká velikost načtení může mít za následek časový limit brány. Ladění velikosti načtení se musí provádět na základě zatížení.
 
 * Pokud váš datový kanál zahrnuje čtení velkého množství dat z podkladového úložiště clusteru HDInsight, zvažte použití nástroje, který rozhraní přímo s Azure Storage, například Azure Data Factory
 
 * Při spouštění interaktivních úloh zvažte použití Apache Hive LLAP, protože LLAP může poskytovat plynulejší prostředí pro rychlé vracení výsledků dotazu.
 
-* Zvažte zvýšení počtu vláken dostupných pro službu metastore podregistru pomocí `hive.server2.thrift.max.worker.threads`. Toto nastavení je obzvláště důležité, když velký počet souběžných uživatelů posílá dotazy do clusteru.
+* Zvažte zvýšení počtu vláken dostupných pro službu metastore podregistru pomocí `hive.server2.thrift.max.worker.threads` . Toto nastavení je obzvláště důležité, když velký počet souběžných uživatelů posílá dotazy do clusteru.
 
 * Snižte počet opakovaných pokusů, které se použily pro přístup k bráně z jakýchkoli externích nástrojů. Je-li použito více opakovaných pokusů, zvažte následující zásady exponenciálního pokusu o opakování.
 
-* Zvažte možnost Povolit podregistr komprese pomocí konfigurací `hive.exec.compress.output` a `hive.exec.compress.intermediate`.
+* Zvažte možnost Povolit podregistr komprese pomocí konfigurací `hive.exec.compress.output` a `hive.exec.compress.intermediate` .
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 0eca73b5acae715283c05125181e12729ed5a772
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335591"
 ---
 # <a name="add-a-symbol-layer-to-a-map-using-azure-maps-android-sdk"></a>Přidání vrstvy symbolů na mapu pomocí Azure Maps Android SDK
@@ -27,7 +27,7 @@ Chcete-li provést úplné provedení kroků v tomto článku, je nutné nainsta
 
 Chcete-li přidat značku na mapě pomocí vrstvy symbolů, postupujte podle následujících kroků:
 
-1. Upravte **res** > **layout**rozložení > res**activity_main. XML** , aby vypadala jako následující kód XML:
+1. Upravit **res**  >  **rozložení** zdrojů  >  **activity_main.xml** tak, aby vypadal jako následující kód XML:
     
     ```XML
     <?xml version="1.0" encoding="utf-8"?>

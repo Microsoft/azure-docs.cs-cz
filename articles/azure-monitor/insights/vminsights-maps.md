@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/20/2020
 ms.openlocfilehash: acb96984a49e4ad8535f87a41da11b3b63ae207b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80283850"
 ---
 # <a name="use-the-map-feature-of-azure-monitor-for-vms-to-understand-application-components"></a>Použití funkce map Azure Monitor pro virtuální počítače k porozumění součástem aplikace
@@ -19,7 +19,7 @@ V Azure Monitor pro virtuální počítače můžete zobrazit zjištěné souč�
 Informace o konfiguraci Azure Monitor pro virtuální počítače najdete v tématu [povolení Azure monitor pro virtuální počítače](vminsights-enable-overview.md).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
-Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 ## <a name="introduction-to-the-map-experience"></a>Seznámení s mapovým prostředím
 Předtím, než se začnete na mapové prostředí, byste měli pochopit, jak prezentuje a vizualizují informace. Bez ohledu na to, jestli vyberete funkci mapa přímo z virtuálního počítače nebo z Azure Monitor, funkce mapa prezentuje konzistentní prostředí. Jediným rozdílem je, že od Azure Monitor jedna mapa zobrazuje všechny členy více aplikací nebo clusterů s více vrstvami.
@@ -114,7 +114,7 @@ Ve výchozím nastavení Mapa zobrazuje posledních 30 minut. Pokud chcete vidě
 ![Přehled mapování přímých virtuálních počítačů](./media/vminsights-maps/map-direct-vmss-01.png)
 
 >[!NOTE]
->Přístup k mapě konkrétní instance můžete získat také ze zobrazení **instance** pro sadu škálování virtuálního počítače. V části **Nastavení** přejdete na **instance** > **přehledy**.
+>Přístup k mapě konkrétní instance můžete získat také ze zobrazení **instance** pro sadu škálování virtuálního počítače. V části **Nastavení** přejdete na **instance**  >  **přehledy**.
 
 ## <a name="view-a-map-from-azure-monitor"></a>Zobrazit mapu z Azure Monitor
 

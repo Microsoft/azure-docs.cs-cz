@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: mayg
 ms.openlocfilehash: 2cf4f22be2a4407d73fcc7bb340fad647c8aa145
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80546520"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>Nastavení zotavení po havárii pro služby Active Directory a DNS
@@ -104,11 +104,11 @@ Když zahájíte testovací převzetí služeb při selhání, nezahrnujte všec
 
 Počínaje systémem Windows Server 2012 [jsou do Active Directory Domain Services (služba AD DS) integrována další bezpečnostní opatření](/windows-server/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100). Tato ochrana chrání virtualizované řadiče domény proti vrácení hodnoty USN (Update Sequence Number), pokud základní platforma hypervisoru podporuje **VM-GenerationID**. Azure podporuje **VM-GenerationID**. Z tohoto důvodu mají řadiče domény, na kterých běží Windows Server 2012 nebo novější, na virtuálních počítačích Azure tyto další bezpečnostní opatření.
 
-Když se resetuje **VM-GenerationID** , obnoví se taky hodnota **InvocationID** databáze služba AD DS. Kromě toho je fond relativního ID (RID) zahozen a `SYSVOL` složka je označena jako neautoritativní. Další informace najdete v tématu [Úvod do Active Directory Domain Services virtualizace](/windows-server/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100) a [bezpečné virtualizace systém souborů DFS (DISTRIBUTED File System) replikace (DFSR)](https://techcommunity.microsoft.com/t5/storage-at-microsoft/safely-virtualizing-dfsr/ba-p/424671).
+Když se resetuje **VM-GenerationID** , obnoví se taky hodnota **InvocationID** databáze služba AD DS. Kromě toho je fond relativního ID (RID) zahozen a `SYSVOL` Složka je označena jako neautoritativní. Další informace najdete v tématu [Úvod do Active Directory Domain Services virtualizace](/windows-server/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100) a [bezpečné virtualizace systém souborů DFS (DISTRIBUTED File System) replikace (DFSR)](https://techcommunity.microsoft.com/t5/storage-at-microsoft/safely-virtualizing-dfsr/ba-p/424671).
 
 Převzetí služeb při selhání do Azure může způsobit resetování **virtuálního počítače – GenerationID** . Resetování **virtuálního počítače – GenerationID** aktivuje dodatečnou ochranu, když se virtuální počítač řadiče domény spustí v Azure. To může mít za následek výrazné zpoždění při přihlášení k virtuálnímu počítači řadiče domény.
 
-Vzhledem k tomu, že tento řadič domény se používá jenom v testovacím převzetí služeb při selhání, není ochrana virtualizace nutná. Abyste se ujistili, že se hodnota **GenerationID** virtuálního počítače pro virtuální počítač řadiče domény nemění, můžete v místním řadiči domény `DWORD` změnit hodnotu v následujících hodnotách na **4** :
+Vzhledem k tomu, že tento řadič domény se používá jenom v testovacím převzetí služeb při selhání, není ochrana virtualizace nutná. Abyste se ujistili, že se hodnota **GenerationID** virtuálního počítače pro virtuální počítač řadiče domény nemění, můžete v místním řadiči domény změnit hodnotu v následujících hodnotách `DWORD` na **4** :
 
 `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\gencounter\Start`
 
@@ -139,7 +139,7 @@ Pokud se po testovacím převzetí služeb při selhání aktivují bezpečnostn
 > [!IMPORTANT]
 > Některé z konfigurací popsaných v této části nejsou standardní nebo výchozí konfigurace řadiče domény. Pokud nechcete provádět tyto změny v produkčním řadiči domény, můžete vytvořit řadič domény, který je vyhrazený pro Site Recovery testovací převzetí služeb při selhání. Změny proveďte pouze pro vyhrazený řadič domény.
 
-1. Na příkazovém řádku spusťte následující příkaz, který zkontroluje, jestli `SYSVOL` je složka a `NETLOGON` složka sdílená:
+1. Na příkazovém řádku spusťte následující příkaz, který zkontroluje, jestli `SYSVOL` je složka a `NETLOGON` Složka sdílená:
 
     `NET SHARE`
 
@@ -165,13 +165,13 @@ Pokud jsou předchozí podmínky splněné, je pravděpodobnější, že řadič
 
       Můžete také použít funkce PowerShellu. Další informace najdete v tématu [funkce prostředí PowerShell pro autoritativní nebo neautoritativní obnovení systému DFSR-SYSVOL](/archive/blogs/thbouche/dfsr-sysvol-authoritative-non-authoritative-restore-powershell-functions).
 
-1. Vynechejte požadavek na počáteční synchronizaci nastavením následujícího klíče registru na **hodnotu 0** v místním řadiči domény. `DWORD` Pokud neexistuje, můžete ho vytvořit pod uzlem **parametry** .
+1. Vynechejte požadavek na počáteční synchronizaci nastavením následujícího klíče registru na **hodnotu 0** v místním řadiči domény. Pokud `DWORD` neexistuje, můžete ho vytvořit pod uzlem **parametry** .
 
    `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NTDS\Parameters\Repl Perform Initial Synchronizations`
 
    Další informace najdete v tématu [řešení potíží s ID události dns 4013: Server DNS nemohl načíst zóny DNS integrované se službou Active Directory](https://support.microsoft.com/kb/2001093).
 
-1. Zakažte požadavek, aby byl server globálního katalogu dostupný pro ověření přihlášení uživatele. Uděláte to tak, že v místním řadiči domény nastavíte následující klíč registru na hodnotu **1**. `DWORD` Pokud neexistuje, můžete ho vytvořit pod uzlem **LSA** .
+1. Zakažte požadavek, aby byl server globálního katalogu dostupný pro ověření přihlášení uživatele. Uděláte to tak, že v místním řadiči domény nastavíte následující klíč registru na hodnotu **1**. Pokud `DWORD` neexistuje, můžete ho vytvořit pod uzlem **LSA** .
 
    `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa\IgnoreGCFailures`
 
@@ -181,7 +181,7 @@ Pokud jsou předchozí podmínky splněné, je pravděpodobnější, že řadič
 
 Pokud používáte řadič domény a DNs na stejném virtuálním počítači, můžete tento postup přeskočit.
 
-Pokud DNS není na stejném virtuálním počítači jako řadič domény, musíte pro testovací převzetí služeb při selhání vytvořit virtuální počítač DNS. Můžete použít nový server DNS a vytvořit všechny požadované zóny. Pokud je `contoso.com`například doména služby Active Directory, můžete vytvořit zónu DNS s názvem `contoso.com`. Položky, které odpovídají službě Active Directory, je třeba aktualizovat v DNS následujícím způsobem:
+Pokud DNS není na stejném virtuálním počítači jako řadič domény, musíte pro testovací převzetí služeb při selhání vytvořit virtuální počítač DNS. Můžete použít nový server DNS a vytvořit všechny požadované zóny. Pokud je například doména služby Active Directory `contoso.com` , můžete vytvořit ZÓNU DNS s názvem `contoso.com` . Položky, které odpovídají službě Active Directory, je třeba aktualizovat v DNS následujícím způsobem:
 
 1. Zajistěte, aby byla tato nastavení zavedena před tím, než se spustí kterýkoli jiný virtuální počítač v plánu obnovení:
 

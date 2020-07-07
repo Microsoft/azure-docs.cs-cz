@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
 ms.openlocfilehash: 72cfdf172e4524e302ef2e22826d4f78ce32daf0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80582733"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Koncové body streamování (počátek) v Azure Media Services
@@ -34,24 +34,24 @@ Nezapomeňte si také projít téma [dynamického balení](dynamic-packaging-ove
 
 ## <a name="naming-convention"></a>Konvence pojmenování
 
-Formát názvu hostitele adresy URL streamování je: `{servicename}-{accountname}-{regionname}.streaming.media.azure.net`, kde `servicename` = název koncového bodu streamování nebo název živé události.
+Formát názvu hostitele adresy URL streamování je: `{servicename}-{accountname}-{regionname}.streaming.media.azure.net` , kde `servicename` = název koncového bodu streamování nebo název živé události.
 
-Při použití výchozího koncového bodu streamování `servicename` se vynechá Tato adresa URL `{accountname}-{regionname}.streaming.azure.net`:.
+Při použití výchozího koncového bodu streamování `servicename` se vynechá Tato adresa URL: `{accountname}-{regionname}.streaming.azure.net` .
 
 ### <a name="limitations"></a>Omezení
 
 * Název koncového bodu streamování má maximální hodnotu 24 znaků.
-* Název by měl splňovat tento vzor [regulárního výrazu](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) : `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$`.
+* Název by měl splňovat tento vzor [regulárního výrazu](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) : `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$` .
 
 ## <a name="types"></a>Typy
 
-Existují dva typy **koncových bodů streamování** : **Standard** (Preview) a **Premium**. Typ je definovaný počtem jednotek škálování (`scaleUnits`), které přidělíte pro koncový bod streamování.
+Existují dva typy **koncových bodů streamování** : **Standard** (Preview) a **Premium**. Typ je definovaný počtem jednotek škálování ( `scaleUnits` ), které přidělíte pro koncový bod streamování.
 
 Popis těchto typů najdete v následující tabulce:
 
 |Typ|Jednotky škálování|Popis|
 |--------|--------|--------|  
-|**Standard**|0|Výchozí koncový bod streamování je **standardní** typ – dá se změnit na typ Premium úpravou `scaleUnits`.|
+|**Standard**|0|Výchozí koncový bod streamování je **standardní** typ – dá se změnit na typ Premium úpravou `scaleUnits` .|
 |**Premium**|> 0|Úroveň **Premium** Koncové body streamování jsou vhodné pro pokročilé úlohy a poskytují vyhrazenou a škálovatelnou kapacitu šířky pásma. Přesunete se na typ **Premium** úpravou `scaleUnits` (jednotky streamování). `scaleUnits`Poskytněte vyhrazenou výstupní kapacitu, kterou můžete koupit v přírůstcích po 200 MB/s. Při použití typu **Premium** poskytuje každá povolená jednotka pro aplikaci další kapacitu šířky pásma. |
 
 > [!NOTE]
@@ -65,7 +65,7 @@ Funkce|Standard|Premium
 ---|---|---
 Propustnost |Až 600 MB/s a při použití CDN může poskytovat mnohem vyšší efektivní propustnost.|200 MB/s na jednotku streamování (SU). Může poskytovat mnohem vyšší efektivní propustnost při použití CDN.
 CDN|Azure CDN, CDN třetí strany nebo bez CDN.|Azure CDN, CDN třetí strany nebo bez CDN.
-Fakturuje se poměrná hodnota| denně|denně
+Fakturuje se poměrná hodnota| Každý den|Každý den
 Dynamické šifrování|Ano|Ano
 Dynamické balení|Ano|Ano
 Měřítko|Automatické škálování až na cílovou propustnost.|Další služba SUs
@@ -79,23 +79,23 @@ Doporučené použití |Doporučuje se pro velká většina scénářů streamov
 
 V této části jsou uvedeny podrobnosti o některých vlastnostech koncového bodu streamování. Příklady, jak vytvořit nový koncový bod streamování a popisy všech vlastností, najdete v tématu [koncový bod streamování](https://docs.microsoft.com/rest/api/media/streamingendpoints/create).
 
-- `accessControl`: Používá se ke konfiguraci následujících nastavení zabezpečení pro tento koncový bod streamování: Akamai klíče pro ověřování a IP adresy, které se můžou připojit k tomuto koncovému bodu. Tato vlastnost může být nastavena pouze v `cdnEnabled` případě, že je nastavena na hodnotu false.
+- `accessControl`: Používá se ke konfiguraci následujících nastavení zabezpečení pro tento koncový bod streamování: Akamai klíče pro ověřování a IP adresy, které se můžou připojit k tomuto koncovému bodu. Tato vlastnost může být nastavena pouze v případě, že `cdnEnabled` je nastavena na hodnotu false.
 
-- `cdnEnabled`: Určuje, jestli je povolená Integrace Azure CDN pro tento koncový bod streamování (ve výchozím nastavení zakázaná). Pokud nastavíte `cdnEnabled` hodnotu true, následující konfigurace se zablokují `customHostNames` : `accessControl`a.
+- `cdnEnabled`: Určuje, jestli je povolená Integrace Azure CDN pro tento koncový bod streamování (ve výchozím nastavení zakázaná). Pokud nastavíte `cdnEnabled` hodnotu true, následující konfigurace se zablokují: `customHostNames` a `accessControl` .
 
     Ne všechna datová centra podporují integraci Azure CDN. Pokud chcete zjistit, jestli je v datovém centru dostupná Azure CDN integrace, proveďte následující kroky:
 
-  - Zkuste nastavit `cdnEnabled` na hodnotu true.
+  - Zkuste nastavit na `cdnEnabled` hodnotu true.
   - Ověřte vrácený výsledek pro `HTTP Error Code 412` (PreconditionFailed) se zprávou o tom, že vlastnost CdnEnabled koncového bodu streamování nelze nastavit na hodnotu true, protože funkce CDN není v aktuální oblasti k dispozici.
 
     Pokud se zobrazí tato chyba, datové centrum je nepodporuje. Vyzkoušejte jiné datové centrum.
 
-- `cdnProfile`: Když `cdnEnabled` je nastavená hodnota true, můžete také předávat `cdnProfile` hodnoty. `cdnProfile`je název profilu CDN, kde se vytvoří koncový bod CDN. Můžete zadat existující cdnProfile nebo použít nový. Pokud má Value hodnotu NULL `cdnEnabled` a má hodnotu true, použije se výchozí hodnota "AzureMediaStreamingPlatformCdnProfile". Pokud již zadaná `cdnProfile` instance existuje, je pod ní vytvořen koncový bod. Pokud profil neexistuje, vytvoří se automaticky nový profil.
+- `cdnProfile`: Když `cdnEnabled` je nastavená hodnota true, můžete také předávat `cdnProfile` hodnoty. `cdnProfile`je název profilu CDN, kde se vytvoří koncový bod CDN. Můžete zadat existující cdnProfile nebo použít nový. Pokud má Value hodnotu NULL a `cdnEnabled` má hodnotu true, použije se výchozí hodnota "AzureMediaStreamingPlatformCdnProfile". Pokud již zadaná `cdnProfile` instance existuje, je pod ní vytvořen koncový bod. Pokud profil neexistuje, vytvoří se automaticky nový profil.
 - `cdnProvider`: Pokud je povoleno CDN, můžete také předat `cdnProvider` hodnoty. `cdnProvider`Určuje, který zprostředkovatel bude použit. V současné době jsou podporovány tři hodnoty: "StandardVerizon", "PremiumVerizon" a "StandardAkamai". Pokud není zadána žádná hodnota a `cdnEnabled` je true, použije se "StandardVerizon" (to je výchozí hodnota).
 - `crossSiteAccessPolicies`: Používá se k určení zásad přístupu mezi weby pro různé klienty. Další informace najdete v tématu [specifikace souborů zásad pro různé domény](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html) a [zpřístupnění služby napříč hranicemi domén](https://msdn.microsoft.com/library/cc197955\(v=vs.95\).aspx). Nastavení platí pouze pro Smooth Streaming.
-- `customHostNames`: Používá se ke konfiguraci koncového bodu streamování pro příjem provozu směrovaného na vlastní název hostitele. Tato vlastnost je platná pro koncové body streamování Standard a Premium a dá se `cdnEnabled`nastavit, když: false.
+- `customHostNames`: Používá se ke konfiguraci koncového bodu streamování pro příjem provozu směrovaného na vlastní název hostitele. Tato vlastnost je platná pro koncové body streamování Standard a Premium a dá se nastavit, když `cdnEnabled` : false.
 
-    Vlastnictví názvu domény musí potvrdit Media Services. Media Services ověří vlastnictví názvu domény tím, že vyžaduje `CName` záznam obsahující Media Services ID účtu jako součást, která se má přidat do domény, která se používá. Například pro "sports.contoso.com", který se má použít jako název vlastního hostitele pro koncový bod streamování, musí být záznam pro `<accountId>.contoso.com` , který odkazuje na jeden z Media Services názvů hostitelů pro ověření. Název ověřovacího hostitele se skládá z verifydns. \<MediaServices-dns-> zón.
+    Vlastnictví názvu domény musí potvrdit Media Services. Media Services ověří vlastnictví názvu domény tím, že vyžaduje `CName` záznam obsahující Media Services ID účtu jako součást, která se má přidat do domény, která se používá. Například pro "sports.contoso.com", který se má použít jako název vlastního hostitele pro koncový bod streamování, musí být záznam pro, který `<accountId>.contoso.com` odkazuje na jeden z Media Services názvů hostitelů pro ověření. Název ověřovacího hostitele se skládá z verifydns. \<mediaservices-dns-zone> .
 
     Níže jsou uvedené očekávané zóny DNS, které se použijí v záznamu ověření pro různé oblasti Azure.
   
@@ -113,7 +113,7 @@ V této části jsou uvedeny podrobnosti o některých vlastnostech koncového b
 
     Pokud se pokusíte nastavit vlastní název hostitele bez správného ověření `CName` záznamu, odpověď DNS se nezdařila a po nějaké době se uloží do mezipaměti. Jakmile je uložen správný záznam, může chvíli trvat, než se znovu ověří odpověď uložená v mezipaměti. V závislosti na poskytovateli DNS pro vlastní doménu trvá několik minut do hodiny, než se záznam znovu ověří.
 
-    Kromě toho, `CName` který je namapován `<accountId>.<parent domain>` na `verifydns.<mediaservices-dns-zone>`, je nutné vytvořit jiný `CName` , který mapuje název vlastního hostitele (například `sports.contoso.com`) na název hostitele koncového bodu streamování Media Services (například `amstest-usea.streaming.media.azure.net`).
+    Kromě toho, `CName` který je namapován `<accountId>.<parent domain>` na `verifydns.<mediaservices-dns-zone>` , je nutné vytvořit jiný `CName` , který mapuje název vlastního hostitele (například `sports.contoso.com` ) na název hostitele koncového bodu streamování Media Services (například `amstest-usea.streaming.media.azure.net` ).
 
     > [!NOTE]
     > Koncové body streamování nacházející se ve stejném datovém centru nemůžou sdílet stejný vlastní název hostitele.
@@ -130,7 +130,7 @@ V této části jsou uvedeny podrobnosti o některých vlastnostech koncového b
     - Zastavení: probíhá přechod do stavu Zastaveno.
     - Odstraňování: se odstraňuje.
 
-- `scaleUnits`: Poskytněte vyhrazenou výstupní kapacitu, kterou můžete koupit v přírůstcích po 200 MB/s. Pokud potřebujete přejít na typ **Premium** , upravte `scaleUnits`.
+- `scaleUnits`: Poskytněte vyhrazenou výstupní kapacitu, kterou můžete koupit v přírůstcích po 200 MB/s. Pokud potřebujete přejít na typ **Premium** , upravte `scaleUnits` .
 
 ## <a name="why-use-multiple-streaming-endpoints"></a>Proč používat více koncových bodů streamování?
 
@@ -163,7 +163,7 @@ Viz následující články:
 
 Podívejte se na článek o [komunitě Azure Media Services](media-services-community.md) a podívejte se na různé způsoby, jak můžete klást otázky, sdělit svůj názor a získávat aktualizace Media Services.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 [Dynamické balení](dynamic-packaging-overview.md)
 

@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 7a793ff35675c876dc429976ebee96887b12735a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335592"
 ---
 # <a name="add-a-shape-to-a-map-using-azure-maps-android-sdk"></a>Přidání obrazce na mapu pomocí Azure Maps Android SDK
@@ -28,7 +28,7 @@ Chcete-li dokončit proces v tomto článku, je nutné nainstalovat [Azure Maps 
 
 K mapě můžete přidat čáru pomocí **spojnicové vrstvy**, podle následujících kroků přidejte čáru na mapě.
 
-1. Upravte **> layout > activity_main. XML** , aby vypadal takto:
+1. Upravte **rozvržení > rozložení > activity_main.xml** tak, jak vypadá níže:
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -185,7 +185,7 @@ Pokud teď svou aplikaci spustíte, měli byste vidět čáru na mapě, jak vid�
 
 **Mnohoúhelníková vrstva** umožňuje vykreslit oblast mnohoúhelníku na mapu. Pomocí následujících kroků přidejte mnohoúhelník na mapě.
 
-1. Upravte **> layout > activity_main. XML** , aby vypadal takto:
+1. Upravte **rozvržení > rozložení > activity_main.xml** tak, jak vypadá níže:
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>

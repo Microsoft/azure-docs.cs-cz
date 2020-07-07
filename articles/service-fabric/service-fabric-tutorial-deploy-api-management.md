@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: mvc
 ms.openlocfilehash: 7bd781a21a32ca29fe3f5dd2f4432dbf1e5ca411
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80292145"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>Integrace API Management s Service Fabric v Azure
@@ -134,7 +134,7 @@ Zadejte popisný zobrazovaný název (**displayName**) a popis (**description**)
 
 * **displayName** (zobrazovaný název) může být jakýkoli název vašeho rozhraní API. V tomto článku použijte Service Fabric App.
 * **name** (název) představuje jedinečný a popisný název rozhraní API, například service-fabric-app. Tento název se zobrazí na portálech pro vývojáře a vydavatele.
-* **serviceUrl** (adresa URL služby) odkazuje na službu HTTP implementující toto rozhraní API. Služba API Management na tuto adresu směruje požadavky. Pro back-endy Service Fabric se tato hodnota adresy URL nepoužívá. Sem můžete zadat jakoukoli hodnotu. V tomto článku například "http:\//servicefabric".
+* **serviceUrl** (adresa URL služby) odkazuje na službu HTTP implementující toto rozhraní API. Služba API Management na tuto adresu směruje požadavky. Pro back-endy Service Fabric se tato hodnota adresy URL nepoužívá. Sem můžete zadat jakoukoli hodnotu. V tomto článku například "http: \/ /servicefabric".
 * **path** (cesta) se připojí k základní adrese URL služby API Management. Základní adresa URL je společná pro všechna rozhraní API hostovaná jednou instancí služby API Management. Služba API Management rozlišuje rozhraní API podle jejich přípony, proto musí být přípona jedinečná pro každé rozhraní API daného vydavatele.
 * **protocols** (protokoly) určuje, které protokoly je možné použít k přístupu k rozhraní API. V tomto článku vypíšete **http** a **https**.
 * **path** (cesta) je přípona rozhraní API. Pro tento článek použijte "myapp".
@@ -147,7 +147,7 @@ Pokud chcete přidat front-end operaci rozhraní API, vyplňte následující ho
 
 * **displayName** (zobrazovaný název) a **description** (popis) popisujíc operaci. V tomto článku použijte "Values".
 * **method** (metoda) určuje příkaz HTTP.  V tomto článku zadejte **Get**.
-* **urlTemplate** (šablona adresy URL) se připojí k základní adrese URL rozhraní API a identifikuje jednu operaci HTTP.  V tomto článku použijte `/api/values` , pokud jste přidali službu back-end rozhraní `getMessage` .NET nebo jste přidali back-end službu Java.  Zde zadaná cesta URL je ve výchozím nastavení cestou URL, která se odesílá do back-end služby Service Fabric. Pokud tady použijete stejnou cestu URL, jakou používá vaše služba, například /api/values, bude operace fungovat bez dalších úprav. Můžete tady zadat také jinou cestu URL, než kterou používá vaše back-end služba Service Fabric. V takovém případě je potřeba později také určit přepsání cesty v zásadách operace.
+* **urlTemplate** (šablona adresy URL) se připojí k základní adrese URL rozhraní API a identifikuje jednu operaci HTTP.  V tomto článku použijte, `/api/values` Pokud jste přidali službu back-end rozhraní .NET nebo `getMessage` jste přidali back-end službu Java.  Zde zadaná cesta URL je ve výchozím nastavení cestou URL, která se odesílá do back-end služby Service Fabric. Pokud tady použijete stejnou cestu URL, jakou používá vaše služba, například /api/values, bude operace fungovat bez dalších úprav. Můžete tady zadat také jinou cestu URL, než kterou používá vaše back-end služba Service Fabric. V takovém případě je potřeba později také určit přepsání cesty v zásadách operace.
 
 ### <a name="microsoftapimanagementserviceapispolicies"></a>Microsoft.ApiManagement/service/apis/policies
 
@@ -303,7 +303,7 @@ Přečtěte si další informace o použití [API Management](/azure/api-managem
 
 <!-- pics -->
 [sf-apim-topology-overview]: ./media/service-fabric-tutorial-deploy-api-management/sf-apim-topology-overview.png
-Vice-Fabric-Scripts-and-Templates/BLOB/Master/Templates/Service-Integration/Network-APIM. Parameters. JSONn
+viceprezidenti-Fabric-Scripts-and-Templates/BLOB/Master/Templates/Service-Integration/network-apim.parameters.jsonn
 
 <!-- pics -->
 [sf-apim-topology-overview]: ./media/service-fabric-tutorial-deploy-api-management/sf-apim-topology-overview.png

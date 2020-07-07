@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 1837d342c4476633ee33a8579abe7389ac9bbddf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80476825"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>Správa instancí v Durable Functions v Azure
@@ -24,7 +24,7 @@ V Durable Functions máte možnosti, jak chcete implementovat jednotlivé operac
 
 Je důležité, abyste mohli spustit instanci orchestrace. To se obvykle provádí při použití vazby Durable Functions v triggeru jiné funkce.
 
-Metoda `StartNewAsync` (.NET) nebo `startNew` (JavaScript) na [vazbě klienta Orchestration](durable-functions-bindings.md#orchestration-client) spouští novou instanci. Interně Tato metoda zařadí zprávu do fronty ovládacích prvků, která pak aktivuje začátek funkce se zadaným názvem, který používá [aktivační vazbu orchestrace](durable-functions-bindings.md#orchestration-trigger).
+`StartNewAsync`Metoda (.NET) nebo `startNew` (JavaScript) na [vazbě klienta Orchestration](durable-functions-bindings.md#orchestration-client) spouští novou instanci. Interně Tato metoda zařadí zprávu do fronty ovládacích prvků, která pak aktivuje začátek funkce se zadaným názvem, který používá [aktivační vazbu orchestrace](durable-functions-bindings.md#orchestration-trigger).
 
 Tato asynchronní operace se dokončí při úspěšném naplánování procesu orchestrace.
 
@@ -54,13 +54,13 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> Předchozí kód jazyka C# je pro Durable Functions 2. x. Pro Durable Functions `OrchestrationClient` 1. x je nutné použít atribut namísto `DurableClient` atributu a místo toho musíte použít typ `DurableOrchestrationClient` parametru. `IDurableOrchestrationClient` Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
+> Předchozí kód jazyka C# je pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `OrchestrationClient` atribut namísto `DurableClient` atributu a místo toho musíte použít `DurableOrchestrationClient` typ parametru `IDurableOrchestrationClient` . Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-<a name="javascript-function-json"></a>Pokud není uvedeno jinak, používají příklady na této stránce Trigger HTTP s následujícím souborem Function. JSON.
+<a name="javascript-function-json"></a>Pokud není uvedeno jinak, příklady na této stránce používají aktivační událost HTTP s následujícími function.jsv.
 
-**Function. JSON**
+**function.jsna**
 
 ```json
 {
@@ -87,9 +87,9 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> Tento příklad cílí na Durable Functions verze 2. x. Ve verzi 1. x použijte `orchestrationClient` místo. `durableClient`
+> Tento příklad cílí na Durable Functions verze 2. x. Ve verzi 1. x použijte `orchestrationClient` místo `durableClient` .
 
-**index. js**
+**index.js**
 
 ```javascript
 const df = require("durable-functions");
@@ -108,14 +108,14 @@ module.exports = async function(context, input) {
 
 Instanci můžete také spustit přímo pomocí příkazu [Azure Functions Core Tools](../functions-run-local.md) `durable start-new` . Má následující parametry:
 
-* (povinné): název funkce, která se má spustit. ** `function-name` **
-* (volitelné): Zadejte funkci, buď vloženou, nebo prostřednictvím souboru JSON. ** `input` ** Pro soubory přidejte předponu k cestě k souboru `@`, například. `@path/to/file.json`
-* (volitelné): ID instance orchestrace. ** `id` ** Pokud tento parametr nezadáte, použije příkaz náhodný identifikátor GUID.
-* (volitelné): název nastavení aplikace, které obsahuje připojovací řetězec úložiště, který se má použít. ** `connection-string-setting` ** Výchozí hodnota je AzureWebJobsStorage.
-* (volitelné): název Durable Functionsho centra úloh, které se má použít. ** `task-hub-name` ** Výchozí hodnota je DurableFunctionsHub. Tuto hodnotu můžete nastavit také v souboru [Host. JSON](durable-functions-bindings.md#host-json) pomocí DurableTask: HubName.
+* ** `function-name` (povinné)**: název funkce, která se má spustit.
+* ** `input` (volitelné)**: Zadejte funkci, buď vloženou, nebo prostřednictvím souboru JSON. Pro soubory přidejte předponu k cestě k souboru `@` , například `@path/to/file.json` .
+* ** `id` (volitelné)**: ID instance orchestrace. Pokud tento parametr nezadáte, použije příkaz náhodný identifikátor GUID.
+* ** `connection-string-setting` (volitelné)**: název nastavení aplikace, které obsahuje připojovací řetězec úložiště, který se má použít. Výchozí hodnota je AzureWebJobsStorage.
+* ** `task-hub-name` (volitelné)**: název Durable Functionsho centra úloh, které se má použít. Výchozí hodnota je DurableFunctionsHub. Tuto možnost lze také nastavit v [host.jspro](durable-functions-bindings.md#host-json) pomocí DurableTask: HubName.
 
 > [!NOTE]
-> Základní příkazy nástrojů předpokládají, že je spouštíte z kořenového adresáře aplikace Function App. Pokud explicitně zadáte parametry `connection-string-setting` a `task-hub-name` , můžete spustit příkazy z libovolného adresáře. I když můžete spustit tyto příkazy bez hostitele aplikace Function App, může se stát, že nebudete mít pozor na některé efekty, pokud hostitel neběží. `start-new` Příkaz například zařazování počáteční zprávy do cílového centra úloh, ale orchestrace se ve skutečnosti nespustí, pokud není spuštěn hostitelský proces aplikace Function App, který může zprávu zpracovat.
+> Základní příkazy nástrojů předpokládají, že je spouštíte z kořenového adresáře aplikace Function App. Pokud explicitně zadáte `connection-string-setting` parametry a `task-hub-name` , můžete spustit příkazy z libovolného adresáře. I když můžete spustit tyto příkazy bez hostitele aplikace Function App, může se stát, že nebudete mít pozor na některé efekty, pokud hostitel neběží. `start-new`Příkaz například zařazování počáteční zprávy do cílového centra úloh, ale orchestrace se ve skutečnosti nespustí, pokud není spuštěn hostitelský proces aplikace Function App, který může zprávu zpracovat.
 
 Následující příkaz spustí funkci s názvem HelloWorld a předá obsah souboru `counter-data.json` :
 
@@ -127,13 +127,13 @@ func durable start-new --function-name HelloWorld --input @counter-data.json --t
 
 V rámci snahy o správu orchestrací budete pravděpodobně potřebovat shromáždit informace o stavu instance orchestrace (například bez ohledu na to, zda byla dokončena normálně nebo neúspěšná).
 
-Metoda `GetStatusAsync` (.NET) nebo `getStatus` (JavaScript) na [vazbě klienta Orchestration](durable-functions-bindings.md#orchestration-client) se dotazuje na stav instance Orchestration.
+`GetStatusAsync`Metoda (.NET) nebo `getStatus` (JavaScript) na [vazbě klienta Orchestration](durable-functions-bindings.md#orchestration-client) se dotazuje na stav instance Orchestration.
 
-Provede `instanceId` (povinné) `showHistory` (volitelné), (volitelné) `showHistoryOutput` , (nepovinné) a `showInput` (volitelné) jako parametry.
+Provede (povinné) (volitelné), (volitelné), (nepovinné) `instanceId` `showHistory` `showHistoryOutput` a `showInput` (volitelné) jako parametry.
 
-* **`showHistory`**: Pokud je nastaveno `true`na, odpověď obsahuje historii spuštění.
-* **`showHistoryOutput`**: Pokud je nastaveno `true`na, historie spouštění obsahuje výstupy aktivit.
-* **`showInput`**: Pokud je nastaveno `false`na, odpověď nebude obsahovat vstup funkce. Výchozí hodnota je `true`.
+* **`showHistory`**: Pokud je nastaveno na `true` , odpověď obsahuje historii spuštění.
+* **`showHistoryOutput`**: Pokud je nastaveno na `true` , historie spouštění obsahuje výstupy aktivit.
+* **`showInput`**: Pokud je nastaveno na `false` , odpověď nebude obsahovat vstup funkce. Výchozí hodnota je `true`.
 
 Metoda vrátí objekt s následujícími vlastnostmi:
 
@@ -141,7 +141,7 @@ Metoda vrátí objekt s následujícími vlastnostmi:
 * **InstanceId**: ID instance orchestrace (měla by být stejná jako `instanceId` vstup).
 * **CreatedTime**: čas spuštění funkce Orchestrator.
 * **LastUpdatedTime**: čas poslední kontrolního bodu orchestrace.
-* **Input**: vstup funkce jako hodnota JSON. Toto pole není naplněné, pokud `showInput` má hodnotu false.
+* **Input**: vstup funkce jako hodnota JSON. Toto pole není naplněné `showInput` , pokud má hodnotu false.
 * **CustomStatus**: stav vlastní orchestrace ve formátu JSON.
 * **Výstup**: výstup funkce jako hodnota JSON (Pokud byla funkce dokončená). Pokud se funkce Orchestrator nezdařila, obsahuje tato vlastnost podrobnosti o selhání. Pokud byla funkce Orchestrator ukončena, obsahuje tato vlastnost důvod ukončení (pokud existuje).
 * **RuntimeStatus**: jedna z následujících hodnot:
@@ -151,7 +151,7 @@ Metoda vrátí objekt s následujícími vlastnostmi:
   * **ContinuedAsNew**: instance se sama restartovala s novou historií. Tento stav je přechodný.
   * **Selhalo**: instance se nezdařila s chybou.
   * **Ukončeno**: instance byla náhle zastavena.
-* **History**: historie spouštění orchestrace. Toto pole je vyplněno pouze v `showHistory` případě, že `true`je nastavena na hodnotu.
+* **History**: historie spouštění orchestrace. Toto pole je vyplněno pouze v případě `showHistory` , že je nastavena na hodnotu `true` .
 
 Tato metoda vrátí `null` (.NET) nebo `undefined` (JavaScript), pokud instance neexistuje.
 
@@ -169,7 +169,7 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> Předchozí kód jazyka C# je pro Durable Functions 2. x. Pro Durable Functions `OrchestrationClient` 1. x je nutné použít atribut namísto `DurableClient` atributu a místo toho musíte použít typ `DurableOrchestrationClient` parametru. `IDurableOrchestrationClient` Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
+> Předchozí kód jazyka C# je pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `OrchestrationClient` atribut namísto `DurableClient` atributu a místo toho musíte použít `DurableOrchestrationClient` typ parametru `IDurableOrchestrationClient` . Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -184,7 +184,7 @@ module.exports = async function(context, instanceId) {
 }
 ```
 
-Viz [počáteční instance](#javascript-function-json) pro konfiguraci Function. JSON.
+Viz [začátek instancí](#javascript-function-json) function.jsv konfiguraci.
 
 ---
 
@@ -192,11 +192,11 @@ Viz [počáteční instance](#javascript-function-json) pro konfiguraci Function
 
 Stav instance orchestrace je také možné získat přímo pomocí příkazu [Azure Functions Core Tools](../functions-run-local.md) `durable get-runtime-status` . Má následující parametry:
 
-* (povinné): ID instance orchestrace. ** `id` **
-* (volitelné): Pokud je nastavena `true`na, odpověď obsahuje vstup funkce. ** `show-input` ** Výchozí hodnota je `false`.
-* (volitelné): Pokud je nastaveno `true`na, odpověď obsahuje výstup funkce. ** `show-output` ** Výchozí hodnota je `false`.
-* (volitelné): název nastavení aplikace, které obsahuje připojovací řetězec úložiště, který se má použít. ** `connection-string-setting` ** Výchozí formát je `AzureWebJobsStorage`.
-* (volitelné): název Durable Functionsho centra úloh, které se má použít. ** `task-hub-name` ** Výchozí formát je `DurableFunctionsHub`. Dá se taky nastavit v souboru [Host. JSON](durable-functions-bindings.md#host-json)pomocí DurableTask: HubName.
+* ** `id` (povinné)**: ID instance orchestrace.
+* ** `show-input` (volitelné)**: Pokud je nastavena na `true` , odpověď obsahuje vstup funkce. Výchozí hodnota je `false`.
+* ** `show-output` (volitelné)**: Pokud je nastaveno na `true` , odpověď obsahuje výstup funkce. Výchozí hodnota je `false`.
+* ** `connection-string-setting` (volitelné)**: název nastavení aplikace, které obsahuje připojovací řetězec úložiště, který se má použít. Výchozí formát je `AzureWebJobsStorage`.
+* ** `task-hub-name` (volitelné)**: název Durable Functionsho centra úloh, které se má použít. Výchozí formát je `DurableFunctionsHub`. Dá se nastavit také v [host.jsna](durable-functions-bindings.md#host-json), pomocí DurableTask: HubName.
 
 Následující příkaz načte stav (včetně vstupu a výstupu) instance s ID instance orchestrace 0ab8c55a66644d68a3a8b220b12d209c. Předpokládá, že spouštíte `func` příkaz z kořenového adresáře aplikace Function App:
 
@@ -206,9 +206,9 @@ func durable get-runtime-status --id 0ab8c55a66644d68a3a8b220b12d209c --show-inp
 
 Pomocí `durable get-history` příkazu můžete načíst historii instance Orchestration. Má následující parametry:
 
-* (povinné): ID instance orchestrace. ** `id` **
-* (volitelné): název nastavení aplikace, které obsahuje připojovací řetězec úložiště, který se má použít. ** `connection-string-setting` ** Výchozí formát je `AzureWebJobsStorage`.
-* (volitelné): název Durable Functionsho centra úloh, které se má použít. ** `task-hub-name` ** Výchozí formát je `DurableFunctionsHub`. Dá se taky nastavit v souboru Host. JSON pomocí durableTask: HubName.
+* ** `id` (povinné)**: ID instance orchestrace.
+* ** `connection-string-setting` (volitelné)**: název nastavení aplikace, které obsahuje připojovací řetězec úložiště, který se má použít. Výchozí formát je `AzureWebJobsStorage`.
+* ** `task-hub-name` (volitelné)**: název Durable Functionsho centra úloh, které se má použít. Výchozí formát je `DurableFunctionsHub`. Dá se nastavit také v host.jsna, pomocí durableTask: HubName.
 
 ```bash
 func durable get-history --id 0ab8c55a66644d68a3a8b220b12d209c
@@ -218,7 +218,7 @@ func durable get-history --id 0ab8c55a66644d68a3a8b220b12d209c
 
 Spíše než dotazování jedné instance orchestrace v čase, může být efektivnější dotazování na ně.
 
-Můžete použít metodu `GetStatusAsync` (.NET) nebo `getStatusAll` (JavaScript) pro dotazování stavů všech instancí orchestrace. V rozhraní .NET můžete předat `CancellationToken` objekt pro případ, že ho chcete zrušit. Metoda vrátí objekty se stejnými vlastnostmi jako `GetStatusAsync` metoda s parametry.
+Můžete použít `GetStatusAsync` metodu (.NET) nebo `getStatusAll` (JavaScript) pro dotazování stavů všech instancí orchestrace. V rozhraní .NET můžete předat `CancellationToken` objekt pro případ, že ho chcete zrušit. Metoda vrátí objekty se stejnými vlastnostmi jako `GetStatusAsync` Metoda s parametry.
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -238,7 +238,7 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> Předchozí kód jazyka C# je pro Durable Functions 2. x. Pro Durable Functions `OrchestrationClient` 1. x je nutné použít atribut namísto `DurableClient` atributu a místo toho musíte použít typ `DurableOrchestrationClient` parametru. `IDurableOrchestrationClient` Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
+> Předchozí kód jazyka C# je pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `OrchestrationClient` atribut namísto `DurableClient` atributu a místo toho musíte použít `DurableOrchestrationClient` typ parametru `IDurableOrchestrationClient` . Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -255,7 +255,7 @@ module.exports = async function(context, req) {
 };
 ```
 
-Viz [počáteční instance](#javascript-function-json) pro konfiguraci Function. JSON.
+Viz [začátek instancí](#javascript-function-json) function.jsv konfiguraci.
 
 ---
 
@@ -263,10 +263,10 @@ Viz [počáteční instance](#javascript-function-json) pro konfiguraci Function
 
 Je také možné zadat dotaz přímo na instance pomocí příkazu [Azure Functions Core Tools](../functions-run-local.md) `durable get-instances` . Má následující parametry:
 
-* (volitelné): Tento příkaz podporuje stránkování. ** `top` ** Tento parametr odpovídá počtu instancí načtených na požadavek. Výchozí hodnota je 10.
-* (volitelné): token, který označuje, kterou stránku nebo oddíl instancí se má načíst. ** `continuation-token` ** Každé `get-instances` spuštění vrátí token k další sadě instancí.
-* (volitelné): název nastavení aplikace, které obsahuje připojovací řetězec úložiště, který se má použít. ** `connection-string-setting` ** Výchozí formát je `AzureWebJobsStorage`.
-* (volitelné): název Durable Functionsho centra úloh, které se má použít. ** `task-hub-name` ** Výchozí formát je `DurableFunctionsHub`. Dá se taky nastavit v souboru [Host. JSON](durable-functions-bindings.md#host-json)pomocí DurableTask: HubName.
+* ** `top` (volitelné)**: Tento příkaz podporuje stránkování. Tento parametr odpovídá počtu instancí načtených na požadavek. Výchozí hodnota je 10.
+* ** `continuation-token` (volitelné)**: token, který označuje, kterou stránku nebo oddíl instancí se má načíst. Každé `get-instances` spuštění vrátí token k další sadě instancí.
+* ** `connection-string-setting` (volitelné)**: název nastavení aplikace, které obsahuje připojovací řetězec úložiště, který se má použít. Výchozí formát je `AzureWebJobsStorage`.
+* ** `task-hub-name` (volitelné)**: název Durable Functionsho centra úloh, které se má použít. Výchozí formát je `DurableFunctionsHub`. Dá se nastavit také v [host.jsna](durable-functions-bindings.md#host-json), pomocí DurableTask: HubName.
 
 ```bash
 func durable get-instances
@@ -276,7 +276,7 @@ func durable get-instances
 
 Co když opravdu nepotřebujete všechny informace, které může dotaz standardní instance poskytnout? Například co když hledáte jenom čas vytvoření orchestrace, nebo běhový stav orchestrace? Dotaz můžete zúžit použitím filtrů.
 
-Použijte metodu `GetStatusAsync` (.NET) nebo `getStatusBy` (JavaScript) k získání seznamu instancí orchestrace, které odpovídají sadě předdefinovaných filtrů.
+Použijte `GetStatusAsync` metodu (.NET) nebo `getStatusBy` (JavaScript) k získání seznamu instancí orchestrace, které odpovídají sadě předdefinovaných filtrů.
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -304,7 +304,7 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> Předchozí kód jazyka C# je pro Durable Functions 2. x. Pro Durable Functions `OrchestrationClient` 1. x je nutné použít atribut namísto `DurableClient` atributu a místo toho musíte použít typ `DurableOrchestrationClient` parametru. `IDurableOrchestrationClient` Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
+> Předchozí kód jazyka C# je pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `OrchestrationClient` atribut namísto `DurableClient` atributu a místo toho musíte použít `DurableOrchestrationClient` typ parametru `IDurableOrchestrationClient` . Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -329,23 +329,23 @@ module.exports = async function(context, req) {
 };
 ```
 
-Viz [počáteční instance](#javascript-function-json) pro konfiguraci Function. JSON.
+Viz [začátek instancí](#javascript-function-json) function.jsv konfiguraci.
 
 ---
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-V Azure Functions Core Tools můžete použít také `durable get-instances` příkaz s filtry. Kromě výše `top`uvedených `continuation-token` `connection-string-setting`parametrů,, a `task-hub-name` můžete použít tři parametry filtru (`created-after`, `created-before`, a `runtime-status`).
+V Azure Functions Core Tools můžete použít také `durable get-instances` příkaz s filtry. Kromě výše uvedených parametrů, `top` , `continuation-token` `connection-string-setting` a `task-hub-name` můžete použít tři parametry filtru ( `created-after` , `created-before` , a `runtime-status` ).
 
-* (volitelné): načíst instance vytvořené po tomto datu a čase (UTC). ** `created-after` ** Byly přijaty hodnoty DateTime ve formátu ISO 8601.
-* (volitelné): načíst instance vytvořené před tímto datem a časem (UTC). ** `created-before` ** Byly přijaty hodnoty DateTime ve formátu ISO 8601.
-* (volitelné): načíst instance s určitým stavem (například spuštěno nebo dokončeno). ** `runtime-status` ** Může poskytovat více stavů (oddělené místo).
-* (volitelné): počet načtených instancí na žádost. ** `top` ** Výchozí hodnota je 10.
-* (volitelné): token, který označuje, kterou stránku nebo oddíl instancí se má načíst. ** `continuation-token` ** Každé `get-instances` spuštění vrátí token k další sadě instancí.
-* (volitelné): název nastavení aplikace, které obsahuje připojovací řetězec úložiště, který se má použít. ** `connection-string-setting` ** Výchozí formát je `AzureWebJobsStorage`.
-* (volitelné): název Durable Functionsho centra úloh, které se má použít. ** `task-hub-name` ** Výchozí formát je `DurableFunctionsHub`. Dá se taky nastavit v souboru [Host. JSON](durable-functions-bindings.md#host-json)pomocí DurableTask: HubName.
+* ** `created-after` (volitelné)**: načíst instance vytvořené po tomto datu a čase (UTC). Byly přijaty hodnoty DateTime ve formátu ISO 8601.
+* ** `created-before` (volitelné)**: načíst instance vytvořené před tímto datem a časem (UTC). Byly přijaty hodnoty DateTime ve formátu ISO 8601.
+* ** `runtime-status` (volitelné)**: načíst instance s určitým stavem (například spuštěno nebo dokončeno). Může poskytovat více stavů (oddělené místo).
+* ** `top` (volitelné)**: počet načtených instancí na žádost. Výchozí hodnota je 10.
+* ** `continuation-token` (volitelné)**: token, který označuje, kterou stránku nebo oddíl instancí se má načíst. Každé `get-instances` spuštění vrátí token k další sadě instancí.
+* ** `connection-string-setting` (volitelné)**: název nastavení aplikace, které obsahuje připojovací řetězec úložiště, který se má použít. Výchozí formát je `AzureWebJobsStorage`.
+* ** `task-hub-name` (volitelné)**: název Durable Functionsho centra úloh, které se má použít. Výchozí formát je `DurableFunctionsHub`. Dá se nastavit také v [host.jsna](durable-functions-bindings.md#host-json), pomocí DurableTask: HubName.
 
-Pokud nezadáte žádné filtry`created-after`(, `created-before`nebo `runtime-status`), příkaz jednoduše načte `top` instance bez ohledu na stav modulu runtime nebo čas vytvoření.
+Pokud nezadáte žádné filtry ( `created-after` , `created-before` nebo `runtime-status` ), příkaz jednoduše načte `top` instance bez ohledu na stav modulu runtime nebo čas vytvoření.
 
 ```bash
 func durable get-instances --created-after 2018-03-10T13:57:31Z --created-before  2018-03-10T23:59Z --top 15
@@ -355,7 +355,7 @@ func durable get-instances --created-after 2018-03-10T13:57:31Z --created-before
 
 Máte-li instanci orchestrace, která trvá příliš dlouho, nebo ji pouze potřebujete zastavit, než se z nějakého důvodu dokončí, máte možnost ji ukončit.
 
-K ukončení instancí můžete `TerminateAsync` použít metodu (.NET) `terminate` nebo (JavaScript) [vazby klienta Orchestration](durable-functions-bindings.md#orchestration-client) . Dva parametry jsou `instanceId` a `reason` řetězec, který se zapisuje do protokolů a do stavu instance.
+`TerminateAsync`K ukončení instancí můžete použít metodu (.NET) nebo `terminate` (JavaScript) [vazby klienta Orchestration](durable-functions-bindings.md#orchestration-client) . Dva parametry jsou `instanceId` a `reason` řetězec, který se zapisuje do protokolů a do stavu instance.
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -371,7 +371,7 @@ public static Task Run(
 ```
 
 > [!NOTE]
-> Předchozí kód jazyka C# je pro Durable Functions 2. x. Pro Durable Functions `OrchestrationClient` 1. x je nutné použít atribut namísto `DurableClient` atributu a místo toho musíte použít typ `DurableOrchestrationClient` parametru. `IDurableOrchestrationClient` Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
+> Předchozí kód jazyka C# je pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `OrchestrationClient` atribut namísto `DurableClient` atributu a místo toho musíte použít `DurableOrchestrationClient` typ parametru `IDurableOrchestrationClient` . Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -386,11 +386,11 @@ module.exports = async function(context, instanceId) {
 };
 ```
 
-Viz [počáteční instance](#javascript-function-json) pro konfiguraci Function. JSON.
+Viz [začátek instancí](#javascript-function-json) function.jsv konfiguraci.
 
 ---
 
-Ukončená instance bude nakonec přejít do `Terminated` stavu. Tento přechod ale nebude hned probíhat. Místo toho bude operace ukončení zařazena do fronty v centru úloh spolu s dalšími operacemi této instance. Rozhraní API pro [dotazování instance](#query-instances) můžete použít k zjištění, `Terminated` kdy ukončená instance skutečně dosáhla stavu.
+Ukončená instance bude nakonec přejít do `Terminated` stavu. Tento přechod ale nebude hned probíhat. Místo toho bude operace ukončení zařazena do fronty v centru úloh spolu s dalšími operacemi této instance. Rozhraní API pro [dotazování instance](#query-instances) můžete použít k zjištění, kdy ukončená instance skutečně dosáhla `Terminated` stavu.
 
 > [!NOTE]
 > Ukončení instance v současné době nešíří. Funkce aktivity a dílčí orchestrace jsou spouštěny k dokončení bez ohledu na to, zda jste ukončili instanci orchestrace, která je jim volána.
@@ -399,10 +399,10 @@ Ukončená instance bude nakonec přejít do `Terminated` stavu. Tento přechod 
 
 Instanci orchestrace můžete také ukončit přímo pomocí příkazu [Azure Functions Core Tools](../functions-run-local.md) `durable terminate` . Má následující parametry:
 
-* (povinné): ID instance orchestrace, která se má ukončit. ** `id` **
-* (volitelné): důvod ukončení. ** `reason` **
-* (volitelné): název nastavení aplikace, které obsahuje připojovací řetězec úložiště, který se má použít. ** `connection-string-setting` ** Výchozí formát je `AzureWebJobsStorage`.
-* (volitelné): název Durable Functionsho centra úloh, které se má použít. ** `task-hub-name` ** Výchozí formát je `DurableFunctionsHub`. Dá se taky nastavit v souboru [Host. JSON](durable-functions-bindings.md#host-json)pomocí DurableTask: HubName.
+* ** `id` (povinné)**: ID instance orchestrace, která se má ukončit.
+* ** `reason` (volitelné)**: důvod ukončení.
+* ** `connection-string-setting` (volitelné)**: název nastavení aplikace, které obsahuje připojovací řetězec úložiště, který se má použít. Výchozí formát je `AzureWebJobsStorage`.
+* ** `task-hub-name` (volitelné)**: název Durable Functionsho centra úloh, které se má použít. Výchozí formát je `DurableFunctionsHub`. Dá se nastavit také v [host.jsna](durable-functions-bindings.md#host-json), pomocí DurableTask: HubName.
 
 Následující příkaz ukončí instanci orchestrace s ID 0ab8c55a66644d68a3a8b220b12d209c:
 
@@ -414,7 +414,7 @@ func durable terminate --id 0ab8c55a66644d68a3a8b220b12d209c --reason "It was ti
 
 V některých scénářích je důležité, aby funkce nástroje Orchestrator dokázala počkat a naslouchat externím událostem. To zahrnuje [funkce](durable-functions-overview.md#monitoring) a funkce monitorování, které čekají na [lidskou interakci](durable-functions-overview.md#human).
 
-Odešlete oznámení o událostech na spuštěné instance `RaiseEventAsync` pomocí metody (.NET) nebo `raiseEvent` metody (JavaScript) [vazby klienta Orchestration](durable-functions-bindings.md#orchestration-client). Instance, které mohou zpracovávat tyto události, jsou ty, které čekají na volání `WaitForExternalEvent` (.NET) nebo mají volání `waitForExternalEvent` (JavaScript).
+Odešlete oznámení o událostech na spuštěné instance pomocí `RaiseEventAsync` metody (.NET) nebo `raiseEvent` metody (JavaScript) [vazby klienta Orchestration](durable-functions-bindings.md#orchestration-client). Instance, které mohou zpracovávat tyto události, jsou ty, které čekají na volání `WaitForExternalEvent` (.NET) nebo mají `waitForExternalEvent` volání (JavaScript).
 
 Parametry pro `RaiseEventAsync` (.NET) a `raiseEvent` (JavaScript) jsou následující:
 
@@ -436,7 +436,7 @@ public static Task Run(
 ```
 
 > [!NOTE]
-> Předchozí kód jazyka C# je pro Durable Functions 2. x. Pro Durable Functions `OrchestrationClient` 1. x je nutné použít atribut namísto `DurableClient` atributu a místo toho musíte použít typ `DurableOrchestrationClient` parametru. `IDurableOrchestrationClient` Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
+> Předchozí kód jazyka C# je pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `OrchestrationClient` atribut namísto `DurableClient` atributu a místo toho musíte použít `DurableOrchestrationClient` typ parametru `IDurableOrchestrationClient` . Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -451,7 +451,7 @@ module.exports = async function(context, instanceId) {
 };
 ```
 
-Viz [počáteční instance](#javascript-function-json) pro konfiguraci Function. JSON.
+Viz [začátek instancí](#javascript-function-json) function.jsv konfiguraci.
 
 ---
 
@@ -462,11 +462,11 @@ Viz [počáteční instance](#javascript-function-json) pro konfiguraci Function
 
 Událost můžete také vyvolat přímo do instance orchestrace pomocí příkazu [Azure Functions Core Tools](../functions-run-local.md) `durable raise-event` . Má následující parametry:
 
-* (povinné): ID instance orchestrace. ** `id` **
+* ** `id` (povinné)**: ID instance orchestrace.
 * **`event-name`**: Název události, která má být vyvolána.
-* (volitelné): data, která se mají odeslat do instance orchestrace. ** `event-data` ** Může to být cesta k souboru JSON nebo data můžete zadat přímo na příkazovém řádku.
-* (volitelné): název nastavení aplikace, které obsahuje připojovací řetězec úložiště, který se má použít. ** `connection-string-setting` ** Výchozí formát je `AzureWebJobsStorage`.
-* (volitelné): název Durable Functionsho centra úloh, které se má použít. ** `task-hub-name` ** Výchozí formát je `DurableFunctionsHub`. Dá se taky nastavit v souboru [Host. JSON](durable-functions-bindings.md#host-json)pomocí DurableTask: HubName.
+* ** `event-data` (volitelné)**: data, která se mají odeslat do instance orchestrace. Může to být cesta k souboru JSON nebo data můžete zadat přímo na příkazovém řádku.
+* ** `connection-string-setting` (volitelné)**: název nastavení aplikace, které obsahuje připojovací řetězec úložiště, který se má použít. Výchozí formát je `AzureWebJobsStorage`.
+* ** `task-hub-name` (volitelné)**: název Durable Functionsho centra úloh, které se má použít. Výchozí formát je `DurableFunctionsHub`. Dá se nastavit také v [host.jsna](durable-functions-bindings.md#host-json), pomocí DurableTask: HubName.
 
 ```bash
 func durable raise-event --id 0ab8c55a66644d68a3a8b220b12d209c --event-name MyEvent --event-data @eventdata.json
@@ -480,7 +480,7 @@ func durable raise-event --id 1234567 --event-name MyOtherEvent --event-data 3
 
 V dlouhotrvající orchestraci můžete chtít počkat a získat výsledky orchestrace. V těchto případech je také užitečné, abyste mohli definovat dobu časového limitu pro orchestraci. Pokud dojde k překročení časového limitu, měl by se místo výsledků vracet stav orchestrace.
 
-Metodu `WaitForCompletionOrCreateCheckStatusResponseAsync` (.NET) nebo `waitForCompletionOrCreateCheckStatusResponse` (JavaScript) lze použít k synchronnímu získání skutečného výstupu z instance orchestrace. Ve výchozím nastavení tyto metody používají výchozí hodnotu 10 sekund pro `timeout`, a 1 sekundu pro. `retryInterval`  
+`WaitForCompletionOrCreateCheckStatusResponseAsync`Metodu (.NET) nebo `waitForCompletionOrCreateCheckStatusResponse` (JavaScript) lze použít k synchronnímu získání skutečného výstupu z instance orchestrace. Ve výchozím nastavení tyto metody používají výchozí hodnotu 10 sekund pro `timeout` , a 1 sekundu pro `retryInterval` .  
 
 Tady je příklad funkce triggeru HTTP, která ukazuje, jak používat toto rozhraní API:
 
@@ -492,7 +492,7 @@ Tady je příklad funkce triggeru HTTP, která ukazuje, jak používat toto rozh
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpSyncStart/index.js)]
 
-Viz [počáteční instance](#javascript-function-json) pro konfiguraci Function. JSON.
+Viz [začátek instancí](#javascript-function-json) function.jsv konfiguraci.
 
 ---
 
@@ -542,9 +542,9 @@ V závislosti na době potřebné k získání odpovědi z instance orchestrace 
 
 ## <a name="retrieve-http-management-webhook-urls"></a>Načíst adresy URL Webhooku pro správu HTTP
 
-Externí systém můžete použít k monitorování nebo vyvolání událostí pro orchestraci. Externí systémy mohou komunikovat s Durable Functions prostřednictvím adres URL Webhooku, které jsou součástí výchozí odpovědi popsané v tématu [zjišťování adresy URL protokolu HTTP API](durable-functions-http-features.md#http-api-url-discovery). Adresy URL Webhooku můžete případně programově přistupovat pomocí [vazby klienta Orchestration](durable-functions-bindings.md#orchestration-client). Metody `CreateHttpManagementPayload` (.NET) nebo `createHttpManagementPayload` (JavaScript) lze použít k získání serializovatelných objektů, které obsahují tyto adresy URL Webhooku.
+Externí systém můžete použít k monitorování nebo vyvolání událostí pro orchestraci. Externí systémy mohou komunikovat s Durable Functions prostřednictvím adres URL Webhooku, které jsou součástí výchozí odpovědi popsané v tématu [zjišťování adresy URL protokolu HTTP API](durable-functions-http-features.md#http-api-url-discovery). Adresy URL Webhooku můžete případně programově přistupovat pomocí [vazby klienta Orchestration](durable-functions-bindings.md#orchestration-client). `CreateHttpManagementPayload`Metody (.NET) nebo `createHttpManagementPayload` (JavaScript) lze použít k získání serializovatelných objektů, které obsahují tyto adresy URL Webhooku.
 
-Metody `CreateHttpManagementPayload` (.NET) a `createHttpManagementPayload` (JavaScript) mají jeden parametr:
+`CreateHttpManagementPayload`Metody (.NET) a `createHttpManagementPayload` (JavaScript) mají jeden parametr:
 
 * **InstanceId**: jedinečné ID instance.
 
@@ -578,7 +578,7 @@ public static void SendInstanceInfo(
 ```
 
 > [!NOTE]
-> Předchozí kód jazyka C# je pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableActivityContext` místo `IDurableActivityContext` `OrchestrationClient` `DurableClient` atributu atribut, a je nutné použít typ `DurableOrchestrationClient` parametru místo. `IDurableOrchestrationClient` Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
+> Předchozí kód jazyka C# je pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableActivityContext` místo `IDurableActivityContext` `OrchestrationClient` `DurableClient` atributu atribut, a je nutné použít `DurableOrchestrationClient` typ parametru místo `IDurableOrchestrationClient` . Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -598,7 +598,7 @@ modules.exports = async function(context, ctx) {
 };
 ```
 
-Viz [počáteční instance](#javascript-function-json) pro konfiguraci Function. JSON.
+Viz [začátek instancí](#javascript-function-json) function.jsv konfiguraci.
 
 ---
 
@@ -609,9 +609,9 @@ Pokud dojde k selhání orchestrace z neočekávaného důvodu, můžete instanc
 > [!NOTE]
 > Toto rozhraní API není určeno jako náhrada za správné zpracování chyb a zásady opakování. Místo toho je určeno pro použití pouze v případě, že instance Orchestration selžou z neočekávaných důvodů. Další informace o zpracování chyb a zásadách opakování najdete v článku o [zpracování chyb](durable-functions-error-handling.md) .
 
-Použijte metodu `RewindAsync` (.NET) nebo `rewind` (JavaScript) [vazby klienta Orchestration](durable-functions-bindings.md#orchestration-client) k umístění orchestrace zpátky do *běžícího* stavu. Tato metoda také spustí opětovné spuštění aktivity nebo selhání provádění dílčí orchestrace, které způsobily selhání orchestrace.
+Použijte `RewindAsync` metodu (.NET) nebo `rewind` (JavaScript) [vazby klienta Orchestration](durable-functions-bindings.md#orchestration-client) k umístění orchestrace zpátky do *běžícího* stavu. Tato metoda také spustí opětovné spuštění aktivity nebo selhání provádění dílčí orchestrace, které způsobily selhání orchestrace.
 
-Řekněme například, že máte pracovní postup zahrnující řadu [lidských schválení](durable-functions-overview.md#human). Předpokládejme, že existuje řada funkcí aktivity, které upozorní uživatele, že je potřeba jejich schválení, a vyčkejte na odpověď v reálném čase. Po přijetí odpovědí nebo vypršení časového limitu u všech aktivit schválení dojde k chybě z důvodu nesprávné konfigurace aplikace, jako je například Neplatný připojovací řetězec databáze. Výsledkem je selhání orchestrace hluboko do pracovního postupu. S rozhraním API `RewindAsync` (.NET `rewind` ) nebo (JavaScript) může správce aplikace opravit chybu konfigurace a převinout neúspěšnou orchestraci zpátky do stavu hned před selháním. Žádný z kroků lidské interakce není nutné znovu schválit a orchestraci je teď možné úspěšně dokončit.
+Řekněme například, že máte pracovní postup zahrnující řadu [lidských schválení](durable-functions-overview.md#human). Předpokládejme, že existuje řada funkcí aktivity, které upozorní uživatele, že je potřeba jejich schválení, a vyčkejte na odpověď v reálném čase. Po přijetí odpovědí nebo vypršení časového limitu u všech aktivit schválení dojde k chybě z důvodu nesprávné konfigurace aplikace, jako je například Neplatný připojovací řetězec databáze. Výsledkem je selhání orchestrace hluboko do pracovního postupu. S `RewindAsync` rozhraním API (.NET) nebo `rewind` (JavaScript) může správce aplikace opravit chybu konfigurace a převinout neúspěšnou orchestraci zpátky do stavu hned před selháním. Žádný z kroků lidské interakce není nutné znovu schválit a orchestraci je teď možné úspěšně dokončit.
 
 > [!NOTE]
 > Funkce *Rewind* nepodporuje převíjení instancí orchestrace, které používají trvalé časovače.
@@ -630,7 +630,7 @@ public static Task Run(
 ```
 
 > [!NOTE]
-> Předchozí kód jazyka C# je pro Durable Functions 2. x. Pro Durable Functions `OrchestrationClient` 1. x je nutné použít atribut namísto `DurableClient` atributu a místo toho musíte použít typ `DurableOrchestrationClient` parametru. `IDurableOrchestrationClient` Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
+> Předchozí kód jazyka C# je pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `OrchestrationClient` atribut namísto `DurableClient` atributu a místo toho musíte použít `DurableOrchestrationClient` typ parametru `IDurableOrchestrationClient` . Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -645,7 +645,7 @@ module.exports = async function(context, instanceId) {
 };
 ```
 
-Viz [počáteční instance](#javascript-function-json) pro konfiguraci Function. JSON.
+Viz [začátek instancí](#javascript-function-json) function.jsv konfiguraci.
 
 ---
 
@@ -653,10 +653,10 @@ Viz [počáteční instance](#javascript-function-json) pro konfiguraci Function
 
 Instanci orchestrace můžete také převinout přímo pomocí příkazu [Azure Functions Core Tools](../functions-run-local.md) `durable rewind` . Má následující parametry:
 
-* (povinné): ID instance orchestrace. ** `id` **
-* (volitelné): důvod pro převinutí instance Orchestration. ** `reason` **
-* (volitelné): název nastavení aplikace, které obsahuje připojovací řetězec úložiště, který se má použít. ** `connection-string-setting` ** Výchozí formát je `AzureWebJobsStorage`.
-* (volitelné): název Durable Functionsho centra úloh, které se má použít. ** `task-hub-name` ** Ve výchozím nastavení se používá název centra úloh v souboru [Host. JSON](durable-functions-bindings.md#host-json) .
+* ** `id` (povinné)**: ID instance orchestrace.
+* ** `reason` (volitelné)**: důvod pro převinutí instance Orchestration.
+* ** `connection-string-setting` (volitelné)**: název nastavení aplikace, které obsahuje připojovací řetězec úložiště, který se má použít. Výchozí formát je `AzureWebJobsStorage`.
+* ** `task-hub-name` (volitelné)**: název Durable Functionsho centra úloh, které se má použít. Ve výchozím nastavení se používá název centra úloh v [host.js](durable-functions-bindings.md#host-json) souboru.
 
 ```bash
 func durable rewind --id 0ab8c55a66644d68a3a8b220b12d209c --reason "Orchestrator failed and needs to be revived."
@@ -664,7 +664,7 @@ func durable rewind --id 0ab8c55a66644d68a3a8b220b12d209c --reason "Orchestrator
 
 ## <a name="purge-instance-history"></a>Vymazat historii instance
 
-Chcete-li odebrat všechna data přidružená k orchestraci, můžete historii instancí vyprázdnit. Například můžete chtít odstranit všechny řádky tabulky Azure a velké objekty blob zpráv přidružené k dokončené instanci. K tomu použijte metodu `PurgeInstanceHistoryAsync` (.NET) nebo `purgeInstanceHistory` (JavaScript) [vazby klienta Orchestration](durable-functions-bindings.md#orchestration-client).
+Chcete-li odebrat všechna data přidružená k orchestraci, můžete historii instancí vyprázdnit. Například můžete chtít odstranit všechny řádky tabulky Azure a velké objekty blob zpráv přidružené k dokončené instanci. K tomu použijte `PurgeInstanceHistoryAsync` metodu (.NET) nebo `purgeInstanceHistory` (JavaScript) [vazby klienta Orchestration](durable-functions-bindings.md#orchestration-client).
 
 Tato metoda má dvě přetížení. První přetížení vymaže historii ID instance Orchestration:
 
@@ -691,7 +691,7 @@ module.exports = async function(context, instanceId) {
 };
 ```
 
-Viz [počáteční instance](#javascript-function-json) pro konfiguraci Function. JSON.
+Viz [začátek instancí](#javascript-function-json) function.jsv konfiguraci.
 
 ---
 
@@ -716,13 +716,13 @@ public static Task Run(
 ```
 
 > [!NOTE]
-> Předchozí kód jazyka C# je pro Durable Functions 2. x. Pro Durable Functions `OrchestrationClient` 1. x je nutné použít atribut namísto `DurableClient` atributu a místo toho musíte použít typ `DurableOrchestrationClient` parametru. `IDurableOrchestrationClient` Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
+> Předchozí kód jazyka C# je pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `OrchestrationClient` atribut namísto `DurableClient` atributu a místo toho musíte použít `DurableOrchestrationClient` typ parametru `IDurableOrchestrationClient` . Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-`purgeInstanceHistoryBy` Metodu lze použít k podmíněné mazání historie instancí pro více instancí.
+`purgeInstanceHistoryBy`Metodu lze použít k podmíněné mazání historie instancí pro více instancí.
 
-**Function. JSON**
+**function.jsna**
 
 ```json
 {
@@ -744,9 +744,9 @@ public static Task Run(
 ```
 
 > [!NOTE]
-> Tento příklad cílí na Durable Functions verze 2. x. Ve verzi 1. x použijte `orchestrationClient` místo. `durableClient`
+> Tento příklad cílí na Durable Functions verze 2. x. Ve verzi 1. x použijte `orchestrationClient` místo `durableClient` .
 
-**index. js**
+**index.js**
 
 ```javascript
 const df = require("durable-functions");
@@ -769,11 +769,11 @@ module.exports = async function (context, myTimer) {
 
 Historii instance orchestrace můžete vyprázdnit pomocí příkazu [Azure Functions Core Tools](../functions-run-local.md) `durable purge-history` . Podobně jako druhý příklad v jazyce C# v předchozí části vyprázdní historii pro všechny instance Orchestration vytvořené během zadaného časového intervalu. Vyčištěné instance můžete dále filtrovat podle běhového stavu. Příkaz má několik parametrů:
 
-* (volitelné): vyprázdní historii instancí vytvořených po tomto datu a čase (UTC). ** `created-after` ** Byly přijaty hodnoty DateTime ve formátu ISO 8601.
-* (volitelné): vyprázdní historii instancí vytvořených před tímto datem a časem (UTC). ** `created-before` ** Byly přijaty hodnoty DateTime ve formátu ISO 8601.
-* (volitelné): vyprázdní historii instancí s určitým stavem (například spuštěno nebo dokončeno). ** `runtime-status` ** Může poskytovat více stavů (oddělené místo).
-* (volitelné): název nastavení aplikace, které obsahuje připojovací řetězec úložiště, který se má použít. ** `connection-string-setting` ** Výchozí formát je `AzureWebJobsStorage`.
-* (volitelné): název Durable Functionsho centra úloh, které se má použít. ** `task-hub-name` ** Ve výchozím nastavení se používá název centra úloh v souboru [Host. JSON](durable-functions-bindings.md#host-json) .
+* ** `created-after` (volitelné)**: vyprázdní historii instancí vytvořených po tomto datu a čase (UTC). Byly přijaty hodnoty DateTime ve formátu ISO 8601.
+* ** `created-before` (volitelné)**: vyprázdní historii instancí vytvořených před tímto datem a časem (UTC). Byly přijaty hodnoty DateTime ve formátu ISO 8601.
+* ** `runtime-status` (volitelné)**: vyprázdní historii instancí s určitým stavem (například spuštěno nebo dokončeno). Může poskytovat více stavů (oddělené místo).
+* ** `connection-string-setting` (volitelné)**: název nastavení aplikace, které obsahuje připojovací řetězec úložiště, který se má použít. Výchozí formát je `AzureWebJobsStorage`.
+* ** `task-hub-name` (volitelné)**: název Durable Functionsho centra úloh, které se má použít. Ve výchozím nastavení se používá název centra úloh v [host.js](durable-functions-bindings.md#host-json) souboru.
 
 Následující příkaz odstraní historii všech neúspěšných instancí vytvořených před 14. listopadu 2018 na 7:35 odp. (UTC).
 
@@ -785,8 +785,8 @@ func durable purge-history --created-before 2018-11-14T19:35:00.0000000Z --runti
 
 Pomocí příkazu [Azure Functions Core Tools](../functions-run-local.md) `durable delete-task-hub` můžete odstranit všechny artefakty úložiště přidružené ke konkrétnímu centru úloh, včetně tabulek, front a objektů BLOB služby Azure Storage. Příkaz má dva parametry:
 
-* (volitelné): název nastavení aplikace, které obsahuje připojovací řetězec úložiště, který se má použít. ** `connection-string-setting` ** Výchozí formát je `AzureWebJobsStorage`.
-* (volitelné): název Durable Functionsho centra úloh, které se má použít. ** `task-hub-name` ** Ve výchozím nastavení se používá název centra úloh v souboru [Host. JSON](durable-functions-bindings.md#host-json) .
+* ** `connection-string-setting` (volitelné)**: název nastavení aplikace, které obsahuje připojovací řetězec úložiště, který se má použít. Výchozí formát je `AzureWebJobsStorage`.
+* ** `task-hub-name` (volitelné)**: název Durable Functionsho centra úloh, které se má použít. Ve výchozím nastavení se používá název centra úloh v [host.js](durable-functions-bindings.md#host-json) souboru.
 
 Následující příkaz odstraní všechna data služby Azure Storage přidružená k `UserTest` centru úloh.
 

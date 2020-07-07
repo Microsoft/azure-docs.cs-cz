@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
 ms.openlocfilehash: 4112555347ce1d718375fbab3f166c6f2f5deeaa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80333506"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>Řešení potíží s agentem Log Analytics pro Windows 
@@ -58,7 +58,7 @@ Existuje několik způsobů, jak můžete ověřit, zda agent úspěšně komuni
 
     ![Výsledky spuštění nástroje TestCloudConnection](./media/agent-windows-troubleshoot/output-testcloudconnection-tool-01.png)
 
-- Filtrujte protokol událostí *Operations Manager* podle **zdrojů** - událostí*Health Service moduly*, *HealthService*a *konektor služby* a filtrujte podle *Upozornění* na **úrovni události** a *chybu* , abyste se ujistili, zda mají v následující tabulce zapsané události. Pokud jsou, Projděte si postup řešení, který je součástí jednotlivých možných událostí.
+- Filtrujte protokol událostí *Operations Manager* podle **zdrojů událostí**  -  *Health Service moduly*, *HealthService*a *konektor služby* a filtrujte podle *Upozornění* na **úrovni události** a *chybu* , abyste se ujistili, zda mají v následující tabulce zapsané události. Pokud jsou, Projděte si postup řešení, který je součástí jednotlivých možných událostí.
 
     |ID události |Zdroj |Popis |Řešení |
     |---------|-------|------------|-----------|
@@ -68,7 +68,7 @@ Existuje několik způsobů, jak můžete ověřit, zda agent úspěšně komuni
     |2 127 |Moduly Health Service |Chyba při odesílání dat přijatý kód chyby |Pokud k tomu dochází pouze pravidelně během dne, může to být pouze náhodná anomálie, kterou lze ignorovat. Sledujte, jak často dochází k tomu. Pokud k tomu dojde často v průběhu dne, nejprve ověřte konfiguraci sítě a nastavení proxy serveru. Pokud popis obsahuje kód chyby HTTP 404 a je první, když se agent pokusí odeslat data službě, bude obsahovat chybu 500 s vnitřním kódem chyby 404. 404 se nenašly, což znamená, že se stále zřizuje oblast úložiště pro nový pracovní prostor. Při příštím opakování budou data v pracovním prostoru úspěšně zapsána podle očekávání. Chyba protokolu HTTP 403 může indikovat problém s oprávněním nebo přihlašovacími údaji. V případě chyby 403 jsou k dispozici další informace, které vám pomůžou problém vyřešit.|
     |4000 |Konektor služby |Překlad názvu DNS se nezdařil. |Počítač nemohl přeložit internetovou adresu, která se používá při odesílání dat službě. To může být nastavení překladače DNS na vašem počítači, nesprávné nastavení proxy serveru nebo možná dočasný problém DNS s vaším poskytovatelem. Pokud k tomu dojde pravidelně, může to být způsobeno přechodným problémem souvisejícím se sítí.|
     |4001 |Konektor služby |Připojení ke službě se nezdařilo. |K této chybě může dojít, pokud Agent nemůže komunikovat přímo nebo přes bránu firewall/proxy server ke službě Azure Monitor. Ověřte nastavení proxy serveru agenta nebo síťová brána firewall/proxy umožňuje provoz TCP z počítače do služby.|
-    |4002 |Konektor služby |Služba vrátila stavový kód HTTP 403 v reakci na dotaz. Obraťte se na správce služby se stavem služby. Dotaz se bude opakovat později. |Tato chyba se zapisuje během fáze prvotní registrace agenta a zobrazí se adresa URL podobná následující: *https://\<id pracovního prostoru>. OMS.opinsights.Azure.com/AgentService.svc/AgentTopologyRequest*. Kód chyby 403 znamená zakázaný a může být způsoben nesprávně zadaným ID pracovního prostoru nebo klíčem nebo jsou data a čas v počítači nesprávné. Pokud je čas +/-15 minut od aktuálního času, registrace se nezdařila. Tuto chybu opravíte tak, že aktualizujete datum nebo časové pásmo počítače s Windows.|
+    |4002 |Konektor služby |Služba vrátila stavový kód HTTP 403 v reakci na dotaz. Obraťte se na správce služby se stavem služby. Dotaz se bude opakovat později. |Tato chyba se zapisuje během fáze prvotní registrace agenta a zobrazí se adresa URL podobná následující: *https:// \<workspaceID> . OMS.opinsights.Azure.com/AgentService.svc/AgentTopologyRequest*. Kód chyby 403 znamená zakázaný a může být způsoben nesprávně zadaným ID pracovního prostoru nebo klíčem nebo jsou data a čas v počítači nesprávné. Pokud je čas +/-15 minut od aktuálního času, registrace se nezdařila. Tuto chybu opravíte tak, že aktualizujete datum nebo časové pásmo počítače s Windows.|
 
 ## <a name="data-collection-issues"></a>Problémy se shromažďováním dat
 
@@ -91,7 +91,7 @@ Heartbeat
 
 Pokud dotaz vrátí výsledky, je nutné určit, zda určitý datový typ není shromážděn a předán do služby. To může být způsobeno tím, že agent neobdrží aktualizovanou konfiguraci ze služby nebo nějaký jiný příznak, který brání v běžném provozu agenta. K dalšímu řešení potíží proveďte následující kroky.
 
-1. V počítači otevřete příkazový řádek se zvýšenými oprávněními a restartujte službu agenta zadáním `net stop healthservice && net start healthservice`příkazu.
+1. V počítači otevřete příkazový řádek se zvýšenými oprávněními a restartujte službu agenta zadáním příkazu `net stop healthservice && net start healthservice` .
 2. Otevřete protokol událostí *Operations Manager* a vyhledejte **ID událostí** *7023, 7024, 7025, 7028* a *1210* ze **zdroje událostí** *HealthService*.  Tyto události označují, že agent úspěšně přijímá konfiguraci od Azure Monitor a aktivně monitoruje počítač. Popis události pro ID události 1210 se také určí na posledním řádku všechna řešení a přehledy, které jsou součástí rozsahu monitorování v agentovi.  
 
     ![Popis události s ID 1210](./media/agent-windows-troubleshoot/event-id-1210-healthservice-01.png)

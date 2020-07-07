@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: rohink
 ms.openlocfilehash: 4863ffd383cfcd46bad462156e26293d145fd418
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80294854"
 ---
 # <a name="how-traffic-manager-works"></a>Jak Traffic Manager funguje
@@ -34,7 +34,7 @@ Když se klient pokusí připojit se ke službě, musí nejprve přeložit náze
 
 ## <a name="traffic-manager-example"></a>Příklad Traffic Manager
 
-Společnost Contoso Corp vyvinula nový Partnerský portál. Adresa URL tohoto portálu je `https://partners.contoso.com/login.aspx`. Aplikace je hostována ve třech oblastech Azure. Pro zlepšení dostupnosti a maximalizace globálního výkonu používají Traffic Manager k distribuci klientského provozu do nejbližšího dostupného koncového bodu.
+Společnost Contoso Corp vyvinula nový Partnerský portál. Adresa URL tohoto portálu je `https://partners.contoso.com/login.aspx` . Aplikace je hostována ve třech oblastech Azure. Pro zlepšení dostupnosti a maximalizace globálního výkonu používají Traffic Manager k distribuci klientského provozu do nejbližšího dostupného koncového bodu.
 
 Chcete-li dosáhnout této konfigurace, proveďte následující kroky:
 
@@ -49,7 +49,7 @@ Chcete-li dosáhnout této konfigurace, proveďte následující kroky:
 
 ### <a name="how-clients-connect-using-traffic-manager"></a>Jak se klienti připojují pomocí Traffic Manager
 
-Když klient požádá o stránku `https://partners.contoso.com/login.aspx`, provede následující kroky, aby VYŘEŠIL název DNS a navázal připojení:
+Když klient požádá o stránku `https://partners.contoso.com/login.aspx` , provede následující kroky, aby vyřešil název DNS a navázal připojení:
 
 ![Vytvoření připojení pomocí Traffic Manager][2]
 

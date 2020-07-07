@@ -8,10 +8,10 @@ ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: e06fcdbac097e85c039e34274c61cb51ee06bcd6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80478318"
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Vytvoření pomocného objektu pomocí šablony Azure Resource Manager
@@ -27,7 +27,7 @@ Pomocného programu se dá vytvořit pomocí Azure Portal nebo šablony Azure Re
 Při vytváření pomocného mechanismu pro Azure Portal můžete vytvořit virtuální síť ve stejnou dobu nebo zvolit stávající virtuální síť, do které se mají nasadit. Při vytváření pomocného mechanismu ze šablony musíte začít s: 
 
 * Virtuální síť Správce prostředků.
-* Podsíť v této virtuální síti. Pro účely `/24` budoucího růstu a škálování doporučujeme velikost podsítě pro pomocného mechanismu řízení s 256 adresami. Po vytvoření pomocného mechanismu se velikost nedá změnit.
+* Podsíť v této virtuální síti. Pro účely budoucího růstu a škálování doporučujeme velikost podsítě pro pomocného mechanismu řízení `/24` s 256 adresami. Po vytvoření pomocného mechanismu se velikost nedá změnit.
 * ID prostředku z vaší virtuální sítě. Tyto informace můžete získat z Azure Portal ve vlastnostech virtuální sítě.
 * Předplatné, do kterého chcete nasadit.
 * Umístění, do kterého chcete nasadit.
@@ -38,19 +38,19 @@ Automatizace vytváření pomocného mechanismu:
 
 2. Po vytvoření pomocného mechanismu interního nástroje se nahraje certifikát TLS/SSL, který odpovídá vaší doméně pomocného mechanismu pro interního nástroje.
 
-3. Nahraný certifikát TLS/SSL se přiřadí k interního nástroje pomocnému modulu pro zápis prostřednictvím výchozího certifikátu TLS/SSL.  Tento certifikát se používá pro přenos TLS/SSL do aplikací v interního nástroje pomocném modulu pro zápis, když používají společnou kořenovou doménu, která je přiřazená k `https://someapp.mycustomrootdomain.com`pomocnému mechanismu řízení (například).
+3. Nahraný certifikát TLS/SSL se přiřadí k interního nástroje pomocnému modulu pro zápis prostřednictvím výchozího certifikátu TLS/SSL.  Tento certifikát se používá pro přenos TLS/SSL do aplikací v interního nástroje pomocném modulu pro zápis, když používají společnou kořenovou doménu, která je přiřazená k pomocnému mechanismu řízení (například `https://someapp.mycustomrootdomain.com` ).
 
 
 ## <a name="create-the-ase"></a>Vytvoření pomocného mechanismu
 [V příkladu][quickstartasev2create] na GitHubu je k dispozici šablona správce prostředků, která vytvoří pomocného průvodce a soubor přidružených parametrů.
 
-Chcete-li vytvořit interního nástroje pomocného mechanismu pro vytváření, použijte tyto [Příklady][quickstartilbasecreate]šablon Správce prostředků. Využívají k tomuto případu použití. Většina parametrů v souboru *azuredeploy. Parameters. JSON* je společná pro vytváření interního nástroje služby ASE a externí služby ase. Následující seznam volá parametry zvláštní poznámky, nebo které jsou jedinečné, když vytvoříte interního nástroje pomocného programu pro vytváření:
+Chcete-li vytvořit interního nástroje pomocného mechanismu pro vytváření, použijte tyto [Příklady][quickstartilbasecreate]šablon Správce prostředků. Využívají k tomuto případu použití. Většina parametrů v souboru *azuredeploy.parameters.jsv* souboru je společná pro vytváření interního nástrojech služby ASE a externích služby ase. Následující seznam volá parametry zvláštní poznámky, nebo které jsou jedinečné, když vytvoříte interního nástroje pomocného programu pro vytváření:
 
 * *internalLoadBalancingMode*: ve většině případů nastavte tuto hodnotu na 3, což znamená, že přenos HTTP/HTTPS na portech 80/443 a porty ovládacího prvku/datového kanálu, na které naslouchá služba FTP v pomocném mechanismu řízení, bude vázán na interní adresu přidělené virtuální sítě. Pokud je tato vlastnost nastavená na hodnotu 2, budou se na interního nástroje adrese svázat jenom porty související se službou FTP (ovládací prvky a kanály dat). Přenosy HTTP/HTTPS zůstávají ve veřejné virtuální IP adrese.
 * *dnsSuffix*: Tento parametr definuje výchozí kořenovou doménu, která je přiřazená k pomocnému objektu pro řízení. Ve veřejné variaci Azure App Service je výchozí kořenová doména pro všechny webové aplikace *azurewebsites.NET*. Vzhledem k tomu, že interního nástroje pomocného uživatele je interní pro virtuální síť zákazníka, nemá smysl používat výchozí kořenovou doménu veřejné služby. Místo toho by měl mít interního nástroje pomocného programu k dispozici výchozí kořenovou doménu, která dává smysl pro použití v interní virtuální síti společnosti. Společnost Contoso může například používat výchozí kořenovou doménu *internal-contoso.com* pro aplikace, které mají být přeložitelný a přístupné pouze v rámci virtuální sítě společnosti Contoso. 
-* *ipSslAddressCount*: Tento parametr se automaticky nastaví na hodnotu 0 v souboru *azuredeploy. JSON* , protože interního nástroje služby ASE má jenom jednu adresu interního nástroje. Pro interního nástroje pomocného mechanismu zabezpečení nejsou k dispozici žádné explicitní adresy IP-SSL. Proto fond adres IP-SSL pro interního nástroje pomocného modulu musí být nastaven na hodnotu nula. V opačném případě dojde k chybě zřizování. 
+* *ipSslAddressCount*: Tento parametr se automaticky nastaví na hodnotu 0 v *azuredeploy.js* souboru, protože interního nástroje služby ASE má jenom jednu adresu interního nástroje. Pro interního nástroje pomocného mechanismu zabezpečení nejsou k dispozici žádné explicitní adresy IP-SSL. Proto fond adres IP-SSL pro interního nástroje pomocného modulu musí být nastaven na hodnotu nula. V opačném případě dojde k chybě zřizování. 
 
-Po vyplnění souboru *azuredeploy. Parameters. JSON* vytvořte pomocí fragmentu kódu PowerShellu pomocného programu. Změňte cestu k souboru tak, aby odpovídala umístěním souborů šablony Správce prostředků na vašem počítači. Nezapomeňte zadejte vlastní hodnoty pro název nasazení Správce prostředků a název skupiny prostředků:
+Po vyplnění *azuredeploy.parameters.js* v souboru vytvořte pomocí fragmentu kódu PowerShellu pomocného programu. Změňte cestu k souboru tak, aby odpovídala umístěním souborů šablony Správce prostředků na vašem počítači. Nezapomeňte zadejte vlastní hodnoty pro název nasazení Správce prostředků a název skupiny prostředků:
 
 ```powershell
 $templatePath="PATH\azuredeploy.json"
@@ -98,16 +98,16 @@ $fileContentEncoded | set-content ($fileName + ".b64")
 
 Po úspěšném vygenerování certifikátu TLS/SSL a jeho převedení na řetězec kódovaný v kódování Base64 použijte šablonu ukázka Správce prostředků a [nakonfigurujte výchozí certifikát SSL][quickstartconfiguressl] na GitHubu. 
 
-Parametry v souboru *azuredeploy. Parameters. JSON* jsou uvedeny zde:
+Tady jsou uvedené parametry *azuredeploy.parameters.js* v souboru:
 
 * *appServiceEnvironmentName*: Název konfigurovaného pomocného programu interního nástroje.
 * *existingAseLocation*: textový řetězec obsahující oblast Azure, ve které byl nasazený pomocný modul interního nástroje.  Například: "Střed USA – jih".
 * *pfxBlobString*: řetězcová reprezentace souboru. pfx zakódovaná based64. Použijte dříve zobrazený fragment kódu a zkopírujte řetězec obsažený v souboru "exportedcert. pfx. B64". Vložte ho jako hodnotu atributu *pfxBlobString* .
 * *heslo*: heslo použité k zabezpečení souboru. pfx.
 * *certificateThumbprint*: kryptografický otisk certifikátu. Pokud tuto hodnotu načtete z PowerShellu (například *$Certificate. Kryptografický otisk* z dřívějšího fragmentu kódu) můžete použít hodnotu jako. Pokud zkopírujete hodnotu z dialogového okna certifikát systému Windows, nezapomeňte oddělit nadbytečné mezery. *CertificateThumbprint* by měl vypadat nějak takto: AF3143EB61D43F6727842115BB7F17BBCECAECAE.
-* identifikátor *certifikátu*: popisný identifikátor řetězce, který se používá k identifikaci certifikátu. Název se používá jako součást jedinečného identifikátoru Správce prostředků pro entitu *Microsoft. Web/Certificates* , která představuje certifikát TLS/SSL. Název *musí* končit následující příponou: \_yourASENameHere_InternalLoadBalancingASE. Azure Portal používá tuto příponu jako indikátor, který certifikát používá k zabezpečení interního NÁSTROJEho přihlašování s povoleným protokolem.
+* identifikátor *certifikátu*: popisný identifikátor řetězce, který se používá k identifikaci certifikátu. Název se používá jako součást jedinečného identifikátoru Správce prostředků pro entitu *Microsoft. Web/Certificates* , která představuje certifikát TLS/SSL. Název *musí* končit následující příponou: \_ yourASENameHere_InternalLoadBalancingASE. Azure Portal používá tuto příponu jako indikátor, který certifikát používá k zabezpečení interního NÁSTROJEho přihlašování s povoleným protokolem.
 
-Zde je zobrazen zkrácený příklad *azuredeploy. Parameters. JSON* :
+Zde je zobrazen zkrácený příklad *azuredeploy.parameters.jsv* :
 
 ```json
 {
@@ -136,7 +136,7 @@ Zde je zobrazen zkrácený příklad *azuredeploy. Parameters. JSON* :
 }
 ```
 
-Po vyplnění souboru *azuredeploy. Parameters. JSON* nakonfigurujte výchozí certifikát TLS/SSL pomocí fragmentu kódu prostředí PowerShell. Změňte cesty k souboru tak, aby odpovídaly, kde jsou soubory šablon Správce prostředků umístěny na vašem počítači. Nezapomeňte zadejte vlastní hodnoty pro název nasazení Správce prostředků a název skupiny prostředků:
+Po vyplnění *azuredeploy.parameters.js* v souboru nakonfigurujte výchozí certifikát TLS/SSL pomocí fragmentu kódu prostředí PowerShell. Změňte cesty k souboru tak, aby odpovídaly, kde jsou soubory šablon Správce prostředků umístěny na vašem počítači. Nezapomeňte zadejte vlastní hodnoty pro název nasazení Správce prostředků a název skupiny prostředků:
 
 ```powershell
 $templatePath="PATH\azuredeploy.json"

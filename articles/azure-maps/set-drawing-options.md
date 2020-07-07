@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 711609f9382e2153cbc738d544933796dbbe2e99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80334315"
 ---
 # <a name="use-the-drawing-tools-module"></a>Použití modulu nástrojů pro kreslení
@@ -23,7 +23,7 @@ Sada Azure Maps Web SDK poskytuje *modul nástrojů pro kreslení*. Tento modul 
 
 1. Vytvořte nový soubor HTML a [implementujte mapování obvyklým způsobem](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control).
 2. Načtěte modul nástrojů Azure Maps Drawing Tools. Můžete ho načíst jedním ze dvou způsobů:
-    - Použijte globálně hostovanou verzi Content Delivery Network služby Azure Maps Services v rámci Azure. Do `<head>` prvku souboru přidejte odkaz na šablonu stylů JavaScript a CSS:
+    - Použijte globálně hostovanou verzi Content Delivery Network služby Azure Maps Services v rámci Azure. Do prvku souboru přidejte odkaz na šablonu stylů JavaScript a CSS `<head>` :
 
         ```html
         <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/drawing/0/atlas-drawing.min.css" type="text/css" />
@@ -61,7 +61,7 @@ Níže uvedený kód je úplným příkladem, jak nastavit režim vykreslování
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Nakreslit mnohoúhelník" src="//codepen.io/azuremaps/embed/YzKVKRa/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Podívejte se, že pero <a href='https://codepen.io/azuremaps/pen/YzKVKRa/'>nakreslí mnohoúhelník</a> o<a href='https://codepen.io/azuremaps'>@azuremaps</a>Azure Maps () na <a href='https://codepen.io'>CodePen</a>.
+Podívejte se, že pero <a href='https://codepen.io/azuremaps/pen/YzKVKRa/'>nakreslí mnohoúhelník</a> o Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 
@@ -73,7 +73,7 @@ Správce kreslení podporuje tři různé způsoby interakce s mapou k vykreslov
 * `freehand `-Souřadnice se přidávají při přetahování myši nebo dotyku na mapě. 
 * `hybrid`-Souřadnice se přidávají při kliknutí nebo přetahování myši nebo dotykem.
 
-Následující kód povoluje režim kreslení mnohoúhelníku a nastavuje typ interakce kresby, na `freehand`kterou má Správce výkresu dodržet. 
+Následující kód povoluje režim kreslení mnohoúhelníku a nastavuje typ interakce kresby, na kterou má Správce výkresu dodržet `freehand` . 
 
 ```Javascript
 //Create an instance of the drawing manager and set drawing mode.
@@ -88,7 +88,7 @@ drawingManager = new atlas.drawing.DrawingManager(map,{
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Vykreslování volných rukou" src="//codepen.io/azuremaps/embed/ZEzKoaj/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Přečtěte si <a href='https://codepen.io/azuremaps/pen/ZEzKoaj/'>Free-hand drawing</a> , jak Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>vykreslování na ruky.
+Přečtěte si <a href='https://codepen.io/azuremaps/pen/ZEzKoaj/'>Free-hand drawing</a> , jak Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>vykreslování na ruky.
 </iframe>
 
 
@@ -98,7 +98,7 @@ Předchozí příklady ukázaly, jak přizpůsobit možnosti kreslení při vytv
 
 <br/>
 
-<iframe height="685" title="Přizpůsobení Správce výkresu" src="//codepen.io/azuremaps/embed/LYPyrxR/?height=600&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true" style='width: 100%;'>Podívejte se, <a href='https://codepen.io/azuremaps/pen/LYPyrxR/'>jak pero získá data</a> z Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() na <a href='https://codepen.io'>CodePen</a>.
+<iframe height="685" title="Přizpůsobení Správce výkresu" src="//codepen.io/azuremaps/embed/LYPyrxR/?height=600&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true" style='width: 100%;'>Podívejte se, <a href='https://codepen.io/azuremaps/pen/LYPyrxR/'>jak pero získá data</a> z Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 

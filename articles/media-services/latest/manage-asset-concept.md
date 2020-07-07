@@ -14,10 +14,10 @@ ms.date: 03/26/2020
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 9136fd702fad5c12a8ec97a68ff8a592a203d7d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80582203"
 ---
 # <a name="manage-assets"></a>Správa prostředků
@@ -43,9 +43,9 @@ Než začnete s vývojem, přečtěte si:
 
 Až se digitální soubory nahrají do úložiště a přidruží se k Assetu, dají se použít v Media Services kódování, streamování a analýze pracovních postupů obsahu. Jedním ze běžných Media Services pracovních postupů je nahrání, kódování a streamování souboru. Tato část popisuje obecné kroky.
 
-1. Použijte rozhraní API Media Services verze 3 k vytvoření nového vstupního aktiva. Tato operace vytvoří kontejner v účtu úložiště přidruženém k vašemu účtu Media Services. Rozhraní API vrátí název kontejneru (například `"container": "asset-b8d8b68a-2d7f-4d8c-81bb-8c7bbbe67ee4"`).
+1. Použijte rozhraní API Media Services verze 3 k vytvoření nového vstupního aktiva. Tato operace vytvoří kontejner v účtu úložiště přidruženém k vašemu účtu Media Services. Rozhraní API vrátí název kontejneru (například `"container": "asset-b8d8b68a-2d7f-4d8c-81bb-8c7bbbe67ee4"` ).
 
-    Pokud již máte kontejner objektů blob, který chcete přidružit k Assetu, můžete zadat název kontejneru při vytváření Assetu. Platforma Media Services momentálně podporuje jenom objekty blob v kořenové složce kontejneru, a ne s cestou v názvu souboru. Proto bude kontejner s názvem souboru „input.mp4“ fungovat. Kontejner s názvem souboru video/vstupy/Input. mp4 ale nebude fungovat.
+    Pokud již máte kontejner objektů blob, který chcete přidružit k Assetu, můžete zadat název kontejneru při vytváření Assetu. Platforma Media Services momentálně podporuje jenom objekty blob v kořenové složce kontejneru, a ne s cestou v názvu souboru. Proto bude kontejner s názvem souboru „input.mp4“ fungovat. Kontejner s názvem souboru video/vstupy/input.mp4 ale nebude fungovat.
 
     K nahrání přímo do jakékoli účtu úložiště a kontejneru, ke kterým máte oprávnění v rámci vašeho předplatného, můžete použít rozhraní Azure CLI.
 
@@ -58,7 +58,7 @@ Až se digitální soubory nahrají do úložiště a přidruží se k Assetu, d
 
     K [vypsání adres URL kontejnerů aktiv](https://docs.microsoft.com/rest/api/media/assets/listcontainersas) můžete použít rozhraní API Media Services.
 
-    **AssetContainerSas. listContainerSas** převezme parametr [ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) , na kterém jste `expiryTime`nastavili. Čas by měl být nastaven na < 24 hodin.
+    **AssetContainerSas. listContainerSas** převezme parametr [ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) , na kterém jste nastavili `expiryTime` . Čas by měl být nastaven na < 24 hodin.
 
     [ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) vrací několik adres URL SAS, protože pro každý účet úložiště jsou k dispozici dva klíče účtu úložiště. Účet úložiště má dva klíče, protože pomáhá při převzetí služeb při selhání a bezproblémovém střídání klíčů účtu úložiště. První adresa URL SAS představuje první klíč účtu úložiště a druhá adresa URL SAS představuje druhý klíč.
 3. Použijte rozhraní API Azure Storage nebo sady SDK (například [úložiště REST API](../../storage/common/storage-rest-api-auth.md) nebo [sadu .NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)) k nahrání souborů do kontejneru assetů.
@@ -100,7 +100,7 @@ curl -X PUT \
  Asset asset = await client.Assets.CreateOrUpdateAsync(resourceGroupName, accountName, assetName, new Asset());
 ```
 
-### <a name="see-also"></a>Viz také
+### <a name="see-also"></a>Viz také:
 
 * [Vytvoření vstupu úlohy z místního souboru](job-input-from-local-file-how-to.md)
 * [Vytvoření vstupu úlohy z adresy URL HTTPS](job-input-from-http-how-to.md)
@@ -109,7 +109,7 @@ curl -X PUT \
 
 V Media Services je objekt [živého výstupu](https://docs.microsoft.com/rest/api/media/liveoutputs) podobný digitálnímu záznamu videa, který zachytí a zaznamená svůj živý stream do assetu v účtu Media Services. Zaznamenaný obsah je trvale uložen do kontejneru definovaného prostředkem [assetu](https://docs.microsoft.com/rest/api/media/assets) .
 
-Další informace naleznete v tématu:
+Další informace naleznete v tématech:
 
 * [Použití cloudového DVR](live-event-cloud-dvr.md)
 * [Kurz živého streamování](stream-live-tutorial-with-api.md)
@@ -118,7 +118,7 @@ Další informace naleznete v tématu:
 
 V Media Services při zpracování videí (například kódování nebo analýzy) potřebujete vytvořit výstupní [Asset](assets-concept.md) pro uložení výsledku vaší [úlohy](transforms-jobs-concept.md).
 
-Další informace naleznete v tématu:
+Další informace naleznete v tématech:
 
 * [Kódování videa](encoding-concept.md)
 * [Vytvoření vstupu úlohy z místního souboru](job-input-from-local-file-how-to.md)
@@ -127,7 +127,7 @@ Další informace naleznete v tématu:
 
 Chcete-li publikovat Asset pro streamování, je nutné vytvořit [Lokátor streamování](streaming-locators-concept.md). Lokátor streamování musí znát název assetu, který chcete publikovat. 
 
-Další informace naleznete v tématu:
+Další informace naleznete v tématech:
 
 [Kurz: nahrávání, kódování a streamování videí pomocí Media Services V3](stream-files-tutorial-with-api.md)
 

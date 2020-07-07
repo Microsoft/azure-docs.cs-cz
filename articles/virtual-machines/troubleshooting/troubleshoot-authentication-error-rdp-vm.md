@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
 ms.openlocfilehash: 03356c0b4a93f4befdbc529523e58642137a8887
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80420820"
 ---
 # <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>Řešení chyb ověřování při připojování k virtuálnímu počítači Azure pomocí protokolu RDP
@@ -163,7 +163,7 @@ Pokud je komunikace mezi řadičem domény a virtuálním počítačem dobrá, a
 
 Pokud předchozí příkazy neopravily problém komunikace s doménou, můžete tento virtuální počítač znovu připojit k doméně. Postupujte přitom takto:
 
-1. Vytvořte skript s názvem unjoin. ps1 pomocí následujícího obsahu a potom tento skript nasaďte jako rozšíření vlastních skriptů na Azure Portal:
+1. Pomocí následujícího obsahu vytvořte skript s názvem Unjoin.ps1 a potom tento skript nasaďte jako rozšíření vlastních skriptů na Azure Portal:
 
     ```cmd
     cmd /c "netdom remove <<MachineName>> /domain:<<DomainName>> /userD:<<DomainAdminhere>> /passwordD:<<PasswordHere>> /reboot:10 /Force"
@@ -171,7 +171,7 @@ Pokud předchozí příkazy neopravily problém komunikace s doménou, můžete 
     
     Tento skript vynutí, aby se virtuální počítač vypnul z domény nuceně a později se restartuje 10 sekund. Pak je nutné vyčistit objekt počítače na straně domény.
 
-2.  Po dokončení vyčištění znovu připojte tento virtuální počítač k doméně. Provedete to tak, že vytvoříte skript s názvem JoinDomain. ps1 pomocí následujícího obsahu a potom tento skript nasadíte jako rozšíření vlastních skriptů na Azure Portal: 
+2.  Po dokončení vyčištění znovu připojte tento virtuální počítač k doméně. Provedete to tak, že vytvoříte skript s názvem JoinDomain.ps1 pomocí následujícího obsahu a potom tento skript nasadíte jako rozšíření vlastních skriptů na Azure Portal: 
 
     ```cmd
     cmd /c "netdom join <<MachineName>> /domain:<<DomainName>> /userD:<<DomainAdminhere>> /passwordD:<<PasswordHere>> /reboot:10"

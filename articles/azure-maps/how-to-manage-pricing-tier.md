@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 35e23d4d5babccb4507473826237997afec5f2cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335494"
 ---
 # <a name="manage-the-pricing-tier-of-your-azure-maps-account"></a>Správa cenové úrovně účtu Azure Maps
@@ -25,13 +25,13 @@ Získejte další informace o [výběru správné cenové úrovně v Azure Maps]
 
 Pokud chcete zobrazit vybranou cenovou úroveň, přejděte v nabídce nastavení na možnost **cenová úroveň** .
 
-[![Zobrazení zvolené cenové úrovně](./media/how-to-manage-pricing-tier/view-pricing-tier.png)](./media/how-to-manage-pricing-tier/view-pricing-tier.png#lightbox)
+[![Zobrazení zvolené cenové úrovně ](./media/how-to-manage-pricing-tier/view-pricing-tier.png)](./media/how-to-manage-pricing-tier/view-pricing-tier.png#lightbox)
 
 ## <a name="change-a-pricing-tier"></a>Změna cenové úrovně
 
 Po vytvoření účtu Azure Maps můžete aktualizovat nebo downgradovat cenovou úroveň pro účet Azure Maps. Pokud chcete upgradovat nebo downgradovat, přejděte na možnost **cenová úroveň** v nabídce nastavení. Vyberte cenovou úroveň, která není zvýrazněná. Kliknutím na tlačítko **Uložit** uložte zvolenou možnost cenové úrovně.
 
-[![Změna cenové úrovně](./media/how-to-manage-pricing-tier/change-pricing-tier.png)](./media/how-to-manage-pricing-tier/change-pricing-tier.png#lightbox)
+[![Změna cenové úrovně ](./media/how-to-manage-pricing-tier/change-pricing-tier.png)](./media/how-to-manage-pricing-tier/change-pricing-tier.png#lightbox)
 
 > [!NOTE]
 > Pokud upgradujete nebo downgradete cenovou úroveň pro účet Azure Maps, nemusíte generovat nové klíče předplatného nebo ID klienta (pro ověřování Azure AD).

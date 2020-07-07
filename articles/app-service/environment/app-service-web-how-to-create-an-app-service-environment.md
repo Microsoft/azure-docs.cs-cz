@@ -8,10 +8,10 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 89dc96370f65ff20d7f8be38ff78d6c1664305d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80477791"
 ---
 # <a name="how-to-create-an-app-service-environment-v1"></a>Vytvoření App Service Environment v1 
@@ -36,7 +36,7 @@ Je důležité vědět, co nemůžete změnit. Tyto aspekty nemůžete po vytvo�
 Když vybíráte virtuální síť a zadáváte podsíť, ujistěte se, že je dostatečně velká, aby vyhovovala budoucímu růstu. 
 
 ### <a name="creating-an-app-service-environment-v1"></a>Vytvoření App Service Environment v1
-Pokud chcete vytvořit App Service Environment V1, můžete vyhledat Azure Marketplace ***App Service Environment v1***nebo si projít **vytvořením prostředku** -> **web a mobilní zařízení** -> **App Service Environment**. Vytvoření ASEv1:
+Pokud chcete vytvořit App Service Environment V1, můžete vyhledat Azure Marketplace ***App Service Environment v1***nebo si projít **vytvořením prostředku**  ->  **web a mobilní zařízení**  ->  **App Service Environment**. Vytvoření ASEv1:
 
 1. Zadejte název vašeho pomocného programu. Název, který zadáte pro pomocného nástroje, se použije pro aplikace vytvořené v pomocném mechanismu. Pokud je název pomocného mechanismu appsvcenvdemo, název subdomény by byl: *appsvcenvdemo.p.azurewebsites.NET*. Pokud tedy vytvoříte aplikaci s názvem *MyTestApp*, bude se adresovat na *MyTestApp.appsvcenvdemo.p.azurewebsites.NET*. V názvu vašeho pomocného mechanismu se nedá použít prázdné znaky. Použijete-li velká písmena v názvu, bude název domény celková verze tohoto názvu. Pokud použijete interního nástroje, vaše jméno pomocného mechanismu se nepoužije v subdoméně, ale místo toho je explicitně uvedeno během vytváření pomocného mechanismu.
    

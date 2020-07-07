@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: 18b165d83bfa154348842542bd8323a40330aa2a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80293474"
 ---
 # <a name="backends-and-backend-pools-in-azure-front-door"></a>Back-endy a back-endové fondy v Azure front-endu
@@ -43,7 +43,7 @@ Back-endové přední dveře odkazují na název hostitele nebo veřejnou IP adr
 
 Požadavky předané předními dveřmi do back-endu obsahují pole hlavičky hostitele, které back-end používá k načtení cílového prostředku. Hodnota tohoto pole obvykle pochází z back-endu URI a má hostitele a port.
 
-Například žádost, která byla vytvořena pro `www.contoso.com` , bude mít hlavičku hostitele www.contoso.com. Pokud ke konfiguraci back-endu použijete Azure Portal, výchozí hodnota tohoto pole je název hostitele back-endu. Pokud je váš back-end contoso-westus.azurewebsites.net, v Azure Portal bude automaticky vyplněná hodnota pro hlavičku hostitele back-end contoso-westus.azurewebsites.net. Pokud však použijete šablony Azure Resource Manager nebo jinou metodu bez explicitního nastavení tohoto pole, odešle fronta název příchozího hostitele jako hodnotu pro hlavičku hostitele. Pokud se žádost nastavila pro\.webcontoso.com a vaše back-end je contoso-westus.azurewebsites.NET, který má prázdné pole hlavičky, nastaví se na začátku jako na webové\.contoso.com záhlaví hostitele.
+Například žádost, která byla vytvořena pro, `www.contoso.com` bude mít hlavičku hostitele www.contoso.com. Pokud ke konfiguraci back-endu použijete Azure Portal, výchozí hodnota tohoto pole je název hostitele back-endu. Pokud je váš back-end contoso-westus.azurewebsites.net, v Azure Portal bude automaticky vyplněná hodnota pro hlavičku hostitele back-end contoso-westus.azurewebsites.net. Pokud však použijete šablony Azure Resource Manager nebo jinou metodu bez explicitního nastavení tohoto pole, odešle fronta název příchozího hostitele jako hodnotu pro hlavičku hostitele. Pokud se žádost nastavila pro \. webcontoso.com a vaše back-end je contoso-westus.azurewebsites.NET, který má prázdné pole hlavičky, nastaví se na začátku jako na webové \. contoso.com záhlaví hostitele.
 
 Většina back-endy aplikace (Azure Web Apps, BLOB Storage a Cloud Services) vyžaduje, aby Hlavička hostitele odpovídala doméně back-endu. Nicméně hostitel s front-end, který směruje na váš back-end, bude používat jiný název hostitele, například www.contoso.net.
 
@@ -67,7 +67,7 @@ Back-end fond definuje, jak by se měly vyhodnocovat různé back-endy prostřed
 ### <a name="health-probes"></a>Sondy stavu
 Přední dveře odesílají pravidelné zkušební požadavky HTTP/HTTPS na všechny vaše nakonfigurované back-endy. Požadavky na testování určují vzdálenost a stav každého back-endu pro vyrovnávání zatížení vašich požadavků koncových uživatelů. Nastavení sond stavu pro back-end fond definují, jak se dotazuje na stav back-endu aplikace. Pro konfiguraci vyrovnávání zatížení jsou k dispozici následující nastavení:
 
-- **Cesta**: adresa URL, která se používá k testování požadavků pro všechny back-endy ve fondu back-endu. Například pokud je jeden z vašich back-endu contoso-westus.azurewebsites.net a cesta je nastavená na/PROBE/test.aspx, pak na front-endové prostředí, za předpokladu, že je protokol nastavený na HTTP, bude odesílat požadavky sondy stavu do http\://contoso-westus.azurewebsites.NET/PROBE/test.aspx.
+- **Cesta**: adresa URL, která se používá k testování požadavků pro všechny back-endy ve fondu back-endu. Například pokud je jeden z vašich back-endu contoso-westus.azurewebsites.net a cesta je nastavená na/PROBE/test.aspx, pak na front-endové prostředí, za předpokladu, že je protokol nastavený na HTTP, bude odesílat požadavky sondy stavu do http \: //Contoso-westus.azurewebsites.NET/PROBE/test.aspx.
 
 - **Protokol**: Určuje, jestli se mají odesílat požadavky sondy stavu z předních dveří do back-endu s protokolem HTTP nebo HTTPS.
 

@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 4dfc6793bba473c4046863937baa292dde7bf421
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80478701"
 ---
 # <a name="data-structures-in-azure-maps-mobility-service"></a>Datové struktury ve službě Azure Maps mobility
@@ -23,7 +23,7 @@ Tento článek představuje koncept oblasti metro ve [službě Azure Maps mobili
 
 Data služby mobility se seskupují podle podporovaných oblastí Metro. Oblasti metro nenásledují na hranicích měst. Oblast Metro může obsahovat více měst, hustě vyplněné města a okolní města. Ve skutečnosti může být země nebo oblast jedna oblast Metro. 
 
-`metroID` Je ID oblasti metro, které se dá použít k volání [rozhraní API pro informace o oblasti Get Metro](https://aka.ms/AzureMapsMobilityMetroAreaInfo). Pomocí Azure Maps získat rozhraní API služby Metro pro vyžádání typů přenosů, přenosných úřadů, aktivních výstrah a dalších podrobností pro zvolenou službu Metro. Můžete si také vyžádat podporované oblasti metro a metroIDs. ID oblasti metro se mohou změnit.
+`metroID`Je ID oblasti metro, které se dá použít k volání [rozhraní API pro informace o oblasti Get Metro](https://aka.ms/AzureMapsMobilityMetroAreaInfo). Pomocí Azure Maps získat rozhraní API služby Metro pro vyžádání typů přenosů, přenosných úřadů, aktivních výstrah a dalších podrobností pro zvolenou službu Metro. Můžete si také vyžádat podporované oblasti metro a metroIDs. ID oblasti metro se mohou změnit.
 
 **metroID:** 522 **Název:** Seattle-Tacoma-Bellevue
 

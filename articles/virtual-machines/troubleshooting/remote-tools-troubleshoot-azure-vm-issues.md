@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 01/11/2018
 ms.author: delhan
 ms.openlocfilehash: d29b2b7c2b9194f20afe4c74d117847f0e343b12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80422609"
 ---
 # <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>Řešení potíží s virtuálními počítači Azure pomocí nástrojů Remote Tools
@@ -39,7 +39,7 @@ psexec \\<computer>-u user -s cmd
 
 >[!NOTE]
 >* Příkaz musí být spuštěný na počítači, který je ve stejné virtuální síti.
->* K nahrazení \<> počítače se dá použít DIP nebo název hostitele.
+>* K nahrazení lze použít DIP nebo název hostitele \<computer> .
 >* Parametr-s zajistí, že se příkaz vyvolá pomocí systémového účtu (oprávnění správce).
 >* PsExec používá porty TCP 135 a 445. V důsledku toho musí být oba porty otevřeny v bráně firewall.
 
@@ -212,9 +212,9 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 >
 >U virtuálních počítačů RDFE musíte mít koncový bod s privátním portem 5986 a veřejným portem. Také je nutné otevřít tento veřejně přístupný port na NSG.
 
-1. Z jiného virtuálního počítače ve stejné virtuální síti otevřete Editor registru (Regedit. exe).
+1. Z jiného virtuálního počítače ve stejné virtuální síti otevřete Editor registru (regedit.exe).
 
-2. Vyberte **soubor** > **připojit síťový registr**.
+2. Vyberte **soubor**  >  **připojit síťový registr**.
 
    ![Editor registru](./media/remote-tools-troubleshoot-azure-vm-issues/remote-registry.png) 
 

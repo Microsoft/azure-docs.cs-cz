@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: e5611eeb08ac370e12cf452d57a87e449fbd80da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335380"
 ---
 # <a name="show-traffic-data-on-the-map-using-azure-maps-android-sdk"></a>Zobrazit data o přenosech na mapě pomocí Azure Maps Android SDK
@@ -25,13 +25,13 @@ Než budete moci zobrazit provoz na mapě, je třeba [vytvořit účet Azure](qu
 
 ## <a name="incidents-traffic-data"></a>Data o provozu incidentů 
 
-K volání `setTraffic` a `incidents`budete muset importovat následující knihovny:
+K volání a budete muset importovat následující knihovny `setTraffic` `incidents` :
 
 ```java
 import static com.microsoft.com.azure.maps.mapcontrol.options.TrafficOptions.incidents;
 ```
 
- Následující fragment kódu ukazuje, jak zobrazit data o přenosech na mapě. `incidents` Metodě předáte logickou hodnotu a předáte ji do `setTraffic` metody. 
+ Následující fragment kódu ukazuje, jak zobrazit data o přenosech na mapě. Metodě předáte logickou hodnotu `incidents` a předáte ji do `setTraffic` metody. 
 
 ```java
 protected void onCreate(Bundle savedInstanceState) {
@@ -44,14 +44,14 @@ protected void onCreate(Bundle savedInstanceState) {
 
 ## <a name="flow-traffic-data"></a>Data toku přenosu dat
 
-Nejdřív budete muset naimportovat následující knihovny pro volání `setTraffic` a: `flow`
+Nejdřív budete muset naimportovat následující knihovny pro volání `setTraffic` a `flow` :
 
 ```java
 import com.microsoft.azure.maps.mapcontrol.options.TrafficFlow;
 import static com.microsoft.azure.maps.mapcontrol.options.TrafficOptions.flow;
 ```
 
-Pomocí následujícího fragmentu kódu nastavte data toku provozu. Podobně jako u kódu v předchozí části předáte vrácenou hodnotu `flow` metody `setTraffic` metodě. Existují čtyři hodnoty, které lze předat do `flow`, přičemž každá hodnota by mohla triggerem `flow` vracet příslušnou hodnotu. Návratová hodnota `flow` se pak předává jako argument do `setTraffic`. Tyto čtyři hodnoty najdete v následující tabulce:
+Pomocí následujícího fragmentu kódu nastavte data toku provozu. Podobně jako u kódu v předchozí části předáte vrácenou hodnotu `flow` metody metodě `setTraffic` . Existují čtyři hodnoty, které lze předat do `flow` , přičemž každá hodnota by mohla triggerem `flow` vracet příslušnou hodnotu. Návratová hodnota `flow` se pak předává jako argument do `setTraffic` . Tyto čtyři hodnoty najdete v následující tabulce:
 
 | | |
 | :-- | :-- |
@@ -73,7 +73,7 @@ protected void onCreate(Bundle savedInstanceState) {
 
 Chcete-li získat incidenty pro konkrétní funkci, můžete použít následující kód. Při kliknutí na funkci logika kódu zkontroluje incidenty a vytvoří zprávu o incidentu. V dolní části obrazovky se zobrazí zpráva s podrobnostmi.
 
-1. Nejprve je třeba upravit **> rozložení res > activity_main. XML**, aby vypadala níže. Můžete nahradit `mapcontrol_centerLat`, `mapcontrol_centerLng`a `mapcontrol_zoom` s požadovanými hodnotami. Odvolání, úroveň přiblížení je hodnota mezi 0 a 22. Na úrovni přiblížení 0 se celý svět vejde na jednu dlaždici.
+1. Nejprve je třeba upravit **> rozložení res > activity_main.xml**, aby vypadala níže. Můžete nahradit `mapcontrol_centerLat` , `mapcontrol_centerLng` a `mapcontrol_zoom` s požadovanými hodnotami. Odvolání, úroveň přiblížení je hodnota mezi 0 a 22. Na úrovni přiblížení 0 se celý svět vejde na jednu dlaždici.
 
    ```XML
    <?xml version="1.0" encoding="utf-8"?>
@@ -221,7 +221,7 @@ Chcete-li získat incidenty pro konkrétní funkci, můžete použít následuj�
    }
    ```
 
-3. Po začlenění výše uvedeného kódu do aplikace budete moci kliknout na funkci a zobrazit podrobnosti o incidentech provozu. V závislosti na hodnotách Zeměpisná šířka a délka a úroveň přiblížení, které jste použili v souboru **activity_main. XML** , se zobrazí podobné výsledky jako na následujícím obrázku:
+3. Po začlenění výše uvedeného kódu do aplikace budete moci kliknout na funkci a zobrazit podrobnosti o incidentech provozu. V závislosti na hodnotách Zeměpisná šířka, zeměpisná délka a úroveň přiblížení, které jste použili v souboru **activity_main.xml** , se zobrazí podobné výsledky jako na následujícím obrázku:
 
    <center>
 

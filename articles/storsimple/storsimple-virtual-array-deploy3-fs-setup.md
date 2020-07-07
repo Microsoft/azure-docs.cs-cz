@@ -16,10 +16,10 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 16a5e0bb3e50e3a90951572e8d2847d379c1b114
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80297650"
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>Nasazení virtuálního pole StorSimple – nastavení jako souborového serveru prostřednictvím Azure Portal
@@ -70,7 +70,7 @@ Pomocí následujících podrobných pokynů nastavte a nakonfigurujte virtuáln
 6. Na stránce **nastavení zařízení** :
    
    1. Přiřaďte zařízení jedinečný **název** . Tento název může být 1-15 znaků a může obsahovat písmena, číslice a spojovníky.
-   2. Klikněte na ikonu ![](./media/storsimple-virtual-array-deploy3-fs-setup/image6.png) **souborového serveru** pro **typ** zařízení, které vytváříte. Souborový server vám umožní vytvořit sdílené složky.
+   2. Klikněte na ikonu **souborového serveru** ![](./media/storsimple-virtual-array-deploy3-fs-setup/image6.png) pro **typ** zařízení, které vytváříte. Souborový server vám umožní vytvořit sdílené složky.
    3. Jelikož je vaše zařízení souborový server, budete ho muset připojit k doméně. Zadejte **název domény**.
    4. Klikněte na **Použít**.
 7. Zobrazí se dialogové okno. Zadejte svoje přihlašovací údaje do domény v zadaném formátu. Klikněte na ikonu zaškrtněte. Pověření domény jsou ověřena. Pokud jsou přihlašovací údaje nesprávné, zobrazí se chybová zpráva.
@@ -90,7 +90,7 @@ Pomocí následujících podrobných pokynů nastavte a nakonfigurujte virtuáln
    
    Na stránce **webového proxy serveru** :
    
-   1. Zadejte **adresu URL webového proxy serveru** v tomto formátu *:&lt;http://hostitel-IP adresa nebo&gt;plně kvalifikovaný název domény:P číslo hodnoty*. Upozorňujeme, že adresy URL protokolu HTTPS nejsou podporovány.
+   1. Zadejte **adresu URL webového proxy serveru** v tomto formátu: *http:// &lt; hostitel-IP adresa nebo plně kvalifikovaný název domény &gt; :P číslo hodnoty*. Upozorňujeme, že adresy URL protokolu HTTPS nejsou podporovány.
    2. Zadejte **ověřování** jako **základní** nebo **žádné**.
    3. Pokud používáte ověřování, budete také muset zadat **uživatelské jméno** a **heslo**.
    4. Klikněte na **Použít**. Tím se ověří a použije nakonfigurovaná nastavení webového proxy serveru.
@@ -110,7 +110,7 @@ Pomocí následujících podrobných pokynů nastavte a nakonfigurujte virtuáln
     2. Pokud se jedná o první zařízení, které s touto službou zaregistrujete, zobrazí se vám **šifrovací klíč dat služby**. Klíč zkopírujte a uložte na bezpečném místě. Tento klíč je vyžadován s registračním klíčem služby k registraci dalších zařízení ve službě StorSimple Device Manager. 
        
        Pokud se nejedná o první zařízení, které zaregistrujete v rámci této služby, budete muset zadat šifrovací klíč dat služby. Další informace najdete v tématu Získání [šifrovacího klíče dat služby](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) v místním webovém uživatelském rozhraní.
-    3. Klikněte na **zaregistrovat**. Tím se zařízení restartuje. Možná budete muset počkat na 2-3 minut, než se zařízení úspěšně zaregistruje. Jakmile se zařízení restartuje, přejdete na přihlašovací stránku.
+    3. Klikněte na **Zaregistrovat**. Tím se zařízení restartuje. Možná budete muset počkat na 2-3 minut, než se zařízení úspěšně zaregistruje. Jakmile se zařízení restartuje, přejdete na přihlašovací stránku.
        
        ![](./media/storsimple-virtual-array-deploy3-fs-setup/image13.png)
 12. Vraťte se na Azure Portal. Přejít na **všechny prostředky**, vyhledejte službu StorSimple Device Manager.
@@ -185,7 +185,7 @@ Provedením následujících kroků na webu [Azure Portal](https://portal.azure.
    3. **Typ** pro sdílenou složku. Typ lze **Převrstvený** nebo **lokálně připnout**s vrstvou jako výchozí. Pro úlohy, které vyžadují místní záruky, nízkou latenci a vyšší výkon, vyberte **místně připojenou** sdílenou složku. U všech ostatních dat vyberte **vrstvenou** sdílenou složku.
       Místně připnuté sdílení je silným způsobem zajišťováno a zajišťuje, aby primární data ve sdílené složce zůstala místní pro zařízení a nepřesahují se do cloudu. Vrstvená sdílená složka je na druhé straně dynamicky zřízená. Když vytvoříte vrstvenou sdílenou složku, na místní úrovni se zřídí 10% místa a 90% místa se zřídí v cloudu. Pokud jste například zřídili svazek o velikosti 1 TB, 100 GB by se nacházelo v místním prostoru a v cloudu se v případě datových vrstev používalo 900 GB. To znamená, že pokud vyčerpáte z místního prostoru na zařízení, nemůžete zřídit vrstvenou sdílenou složku.
    
-   4. V poli **nastavit výchozí všechna oprávnění na** pole přiřaďte uživateli nebo skupině, která přistupuje k této sdílené složce. Zadejte jméno uživatele nebo skupiny uživatelů ve formátu *jan\@contoso.com* . Pro povolení přístupu k těmto sdíleným složkám doporučujeme použít skupinu uživatelů (místo jednoho uživatele). Jakmile tady přiřadíte oprávnění, můžete pak tato oprávnění upravit pomocí Průzkumníka souborů.
+   4. V poli **nastavit výchozí všechna oprávnění na** pole přiřaďte uživateli nebo skupině, která přistupuje k této sdílené složce. Zadejte jméno uživatele nebo skupiny uživatelů ve formátu *jan \@ contoso.com* . Pro povolení přístupu k těmto sdíleným složkám doporučujeme použít skupinu uživatelů (místo jednoho uživatele). Jakmile tady přiřadíte oprávnění, můžete pak tato oprávnění upravit pomocí Průzkumníka souborů.
    
    5. Kliknutím na **Přidat** vytvořte sdílenou složku. 
     
@@ -203,7 +203,7 @@ Provedením následujících kroků na webu [Azure Portal](https://portal.azure.
 Nyní se budete muset připojit k jedné nebo více sdíleným složkám, které jste vytvořili v předchozím kroku. Proveďte tyto kroky na hostiteli Windows serveru připojeném k vašemu virtuálnímu poli StorSimple.
 
 #### <a name="to-connect-to-the-share"></a>Připojení ke sdílené složce
-1. Stiskněte ![](./media/storsimple-virtual-array-deploy3-fs-setup/image22.png) klávesu + R. V okně Spustit zadejte *&#92;&#92;&lt;název&gt; souborového serveru* jako cestu a nahraďte *název souborového serveru* názvem zařízení, který jste přiřadili k souborovému serveru. Klikněte na tlačítko **OK**.
+1. Stiskněte klávesu ![](./media/storsimple-virtual-array-deploy3-fs-setup/image22.png) + R. V okně Spustit zadejte *&#92;&#92;&lt; &gt; název souborového serveru* jako cestu a nahraďte *název souborového serveru* názvem zařízení, který jste přiřadili k souborovému serveru. Klikněte na **OK**.
    
    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image23.png)
 2. Otevře se Průzkumník souborů. Sdílené složky, které jste vytvořili, by se teď měly zobrazit jako složky. Pokud chcete zobrazit obsah sdílené složky, vyberte příslušnou složku a dvakrát na ni klikněte.

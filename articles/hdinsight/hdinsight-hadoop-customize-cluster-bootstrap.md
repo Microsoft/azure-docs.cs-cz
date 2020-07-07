@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/01/2020
 ms.openlocfilehash: 796dbc53d1adf310028e06dea319b9a60d5cf54b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80529351"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>Přizpůsobení clusterů HDInsight pomocí Bootstrap
@@ -27,21 +27,21 @@ Existují tři přístupy k nastavení konfiguračního souboru při vytvářen�
 
 Pomocí těchto programových metod můžete například nakonfigurovat možnosti v těchto souborech:
 
-* clusterIdentity. XML
-* Core-site. XML
-* Gateway. XML
-* HBase-env. XML
-* HBase-site. XML
-* HDFS-site. XML
-* Hive-env. XML
-* Hive-site. XML
+* clusterIdentity.xml
+* core-site.xml
+* gateway.xml
+* hbase-env.xml
+* hbase-site.xml
+* hdfs-site.xml
+* hive-env.xml
+* hive-site.xml
 * mapred – lokalita
-* Oozie-site. XML
-* Oozie-env. XML
-* Storm-site. XML
-* tez-site. XML
-* webhcat-site. XML
-* YARN-site. XML
+* oozie-site.xml
+* oozie-env.xml
+* storm-site.xml
+* tez-site.xml
+* webhcat-site.xml
+* yarn-site.xml
 * Server. Properties (Kafka-Broker Configuration)
 
 Informace o instalaci dalších komponent v clusteru HDInsight během vytváření najdete v tématu [Přizpůsobení clusterů HDInsight pomocí akce skriptu (Linux)](hdinsight-hadoop-customize-cluster-linux.md).
@@ -85,8 +85,8 @@ New-AzHDInsightCluster `
 
 **Ověření změny:**
 
-1. Přejděte na `https://CLUSTERNAME.azurehdinsight.net/` místo `CLUSTERNAME` , kde je název vašeho clusteru.
-1. V nabídce vlevo přejděte na**Konfigurace** >  **podregistru** > **Upřesnit**.
+1. Přejděte na `https://CLUSTERNAME.azurehdinsight.net/` místo, kde `CLUSTERNAME` je název vašeho clusteru.
+1. V nabídce vlevo přejděte na konfigurace **podregistru**  >  **Configs**  >  **Upřesnit**.
 1. Rozbalte položku **pokročilý podregistr – lokalita**.
 1. Vyhledejte **podregistr. metastore. Client. Socket. Timeout** a potvrďte, že hodnota je **90**.
 
@@ -138,7 +138,7 @@ Ukázka fragmentu šablony Správce prostředků pro přepínání konfigurace v
 }
 ```
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 * [Vytváření clusterů Apache Hadoop ve službě HDInsight](hdinsight-hadoop-provision-linux-clusters.md) poskytuje pokyny, jak vytvořit cluster HDInsight pomocí dalších vlastních možností.
 * [Vývoj skriptů akcí skriptu pro HDInsight](hdinsight-hadoop-script-actions-linux.md)
@@ -147,7 +147,7 @@ Ukázka fragmentu šablony Správce prostředků pro přepínání konfigurace v
 
 ## <a name="appendix-powershell-sample"></a>Příloha: Ukázka PowerShellu
 
-Tento skript PowerShellu vytvoří cluster HDInsight a přizpůsobí nastavení podregistru. Nezapomeňte zadat hodnoty pro `$nameToken`, `$httpPassword`a. `$sshPassword`
+Tento skript PowerShellu vytvoří cluster HDInsight a přizpůsobí nastavení podregistru. Nezapomeňte zadat hodnoty pro `$nameToken` , `$httpPassword` a `$sshPassword` .
 
 ```powershell
 ####################################

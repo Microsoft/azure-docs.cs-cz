@@ -8,10 +8,10 @@ ms.custom:
 - seodec18
 - fasttrack-edit
 ms.openlocfilehash: e8a9fbe6072f3628d755ad3ad5aa5a623fc3ab23
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80519945"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-google-login"></a>Konfigurace App Service nebo Azure Functions aplikace pro používání přihlášení Google
@@ -25,8 +25,8 @@ Chcete-li dokončit postup v tomto tématu, musíte mít účet Google, který m
 ## <a name="register-your-application-with-google"></a><a name="register"> </a>Registrace aplikace pomocí Google
 
 1. Pokud chcete vytvořit ID klienta a tajný klíč klienta, postupujte podle dokumentace Google na webu [Google Signing pro aplikace na straně serveru](https://developers.google.com/identity/sign-in/web/server-side-flow) . Není nutné dělat žádné změny kódu. Stačí použít následující informace:
-    - U **autorizovaných zdrojů JavaScriptu**použijte `https://<app-name>.azurewebsites.net` s názvem vaší aplikace v * \<>App-Name *.
-    - Pro **autorizovaný identifikátor URI přesměrování**použijte `https://<app-name>.azurewebsites.net/.auth/login/google/callback`.
+    - U **autorizovaných zdrojů JavaScriptu**použijte `https://<app-name>.azurewebsites.net` s názvem vaší aplikace v *\<app-name>* .
+    - Pro **autorizovaný identifikátor URI přesměrování**použijte `https://<app-name>.azurewebsites.net/.auth/login/google/callback` .
 1. Zkopírujte ID aplikace a hodnoty tajného klíče aplikace.
 
     > [!IMPORTANT]
@@ -35,7 +35,7 @@ Chcete-li dokončit postup v tomto tématu, musíte mít účet Google, který m
 ## <a name="add-google-information-to-your-application"></a><a name="secrets"> </a>Přidání informací Google do aplikace
 
 1. V [Azure Portal]přejdete do aplikace App Service.
-1. Vyberte **Nastavení** > **ověřování/autorizace**a ujistěte se, že je **zapnuté** **ověřování App Service** .
+1. Vyberte **Nastavení**  >  **ověřování/autorizace**a ujistěte se, že je **zapnuté** **ověřování App Service** .
 1. Vyberte **Google**a potom vložte ID aplikace a hodnoty tajného klíče aplikace, které jste získali dříve. Povolte všechny rozsahy, které vaše aplikace vyžaduje.
 1. Vyberte **OK**.
 
@@ -65,5 +65,5 @@ Teď jste připravení použít Google pro ověřování ve vaší aplikaci.
 
 [Google apis]: https://go.microsoft.com/fwlink/p/?LinkId=268303
 
-[portál Azure]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 

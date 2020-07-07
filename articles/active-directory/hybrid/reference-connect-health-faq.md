@@ -17,10 +17,10 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f0c6484f46731e0ff2d16d00cb0038202511d193
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80331080"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health nejčastějších dotazech
@@ -107,7 +107,7 @@ Přečtěte si další informace o [konfiguraci proxy serveru HTTP pro agenty st
 
 Pokud během registrace agenta potřebujete nakonfigurovat proxy server, může být nutné změnit nastavení proxy serveru aplikace Internet Explorer předem.
 
-1. Otevřete Internet Explorer > **Nastavení** > **Možnosti** > Internetu**připojení** > **nastavení sítě LAN**.
+1. Otevřete Internet Explorer > **Nastavení**  >  **Možnosti Internetu**  >  **připojení**  >  **nastavení sítě LAN**.
 2. Vyberte možnost **použít proxy server pro vaši síť LAN**.
 3. Pokud máte různé proxy porty pro HTTP a HTTPS/zabezpečení, vyberte **Upřesnit** .
 
@@ -139,7 +139,7 @@ Registraci agenta stavu z následujících možných důvodů se může zdařit:
 
 **Otázka: zobrazuje se upozornění, že "Health Service data nejsou aktuální." Návody řešení problému?**
 
-Azure AD Connect Health vygeneruje výstrahu, pokud neobdrží všechny datové body ze serveru za poslední dvě hodiny. [Přečtěte si další informace](how-to-connect-health-data-freshness.md).
+Azure AD Connect Health vygeneruje výstrahu, pokud neobdrží všechny datové body ze serveru za poslední dvě hodiny. [Další informace](how-to-connect-health-data-freshness.md).
 
 ## <a name="operations-questions"></a>Dotazy na operace
 **Otázka: Potřebuji povolit auditování na proxy serverech webových aplikací?**
@@ -192,7 +192,7 @@ CheckForMS17-010
 
 **Otázka: Proč nejsou generovány moje audity služby AD FS?**
 
-Ověřte prosím pomocí rutiny PowerShellu <i>Get-AdfsProperties-AuditLevel</i> , jestli protokoly auditu nejsou v zakázaném stavu. Přečtěte si další informace o [protokolech auditu služby ADFS](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016). Všimněte si, že pokud jsou na server ADFS vložená Pokročilá nastavení auditu, budou všechny změny v nástroji Auditpol. exe přepsány (událost, pokud aplikace vygenerovaná není). V takovém případě prosím nastavte místní zásady zabezpečení na protokolování chyb generovaných aplikací a úspěchu.
+Ověřte prosím pomocí rutiny PowerShellu <i>Get-AdfsProperties-AuditLevel</i> , jestli protokoly auditu nejsou v zakázaném stavu. Přečtěte si další informace o [protokolech auditu služby ADFS](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016). Všimněte si, že v případě, že jsou na server ADFS vložená Pokročilá nastavení auditu, budou všechny změny v auditpol.exe přepsány (událost, pokud aplikace vygenerovaná není). V takovém případě prosím nastavte místní zásady zabezpečení na protokolování chyb generovaných aplikací a úspěchu.
 
 **Otázka: kdy bude certifikát agenta pro vypršení platnosti automaticky obnoven?**
 Certifikát agenta se automaticky obnoví na **6 měsíců** před datem vypršení platnosti. Pokud se neobnoví, ujistěte se, že je síťové připojení agenta stabilní. Problém můžete vyřešit i tak, že restartujete služby agenta nebo aktualizujete na nejnovější verzi.

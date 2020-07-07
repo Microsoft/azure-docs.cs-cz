@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: a4d761abf54682ed0263922d0a118debc9eccf0a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80334355"
 ---
 # <a name="set-map-style-using-azure-maps-android-sdk"></a>Nastavení stylu mapy pomocí Azure Maps Android SDK
@@ -27,7 +27,7 @@ Chcete-li dokončit proces v tomto článku, je nutné nainstalovat [Azure Maps 
 
 ## <a name="set-map-style-in-the-layout"></a>Nastavení stylu mapy v rozložení
 
-Můžete nastavit styl mapy v souboru rozložení pro třídu Activity. Upravte **> rozložení res > activity_main. XML**, takže vypadá takto:
+Můžete nastavit styl mapy v souboru rozložení pro třídu Activity. Upravte **> rozložení res > activity_main.xml**, takže vypadá takto:
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -51,7 +51,7 @@ Můžete nastavit styl mapy v souboru rozložení pro třídu Activity. Upravte 
 </FrameLayout>
 ```
 
-`mapcontrol_style` Atribut výše nastaví styl mapy na **grayscale_dark**. 
+`mapcontrol_style`Atribut výše nastaví styl mapy na **grayscale_dark**. 
 
 <center>
 

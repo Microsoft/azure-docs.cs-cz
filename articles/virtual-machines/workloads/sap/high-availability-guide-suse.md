@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/26/2020
 ms.author: radeltch
 ms.openlocfilehash: 05effb7d2e64c5f27acabad4b086ba27d6849cc8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80348826"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server pro aplikace SAP
@@ -91,32 +91,32 @@ Server NFS, SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver OLAJÍCÍCH a d
 * Konfigurace front-endu
   * 10.0.0.7 IP adres
 * Port testu paměti
-  * Port 620<strong>&lt;Nr&gt;</strong>
+  * Port 620<strong> &lt; Nr &gt; </strong>
 * Pravidla vyrovnávání zatížení
   * Pokud používáte Standard Load Balancer, vyberte **porty ha** .
   * Pokud používáte základní Load Balancer, vytvořte pravidla vyrovnávání zatížení pro následující porty.
-    * 32<strong>&lt;Nr&gt; </strong> TCP
-    * 36<strong>&lt;Nr&gt; </strong> TCP
-    * 39<strong>&lt;Nr&gt; </strong> TCP
-    * 81<strong>&lt;Nr&gt; </strong> TCP
-    * 5<strong>&lt;Nr&gt;</strong>13 TCP
-    * 5<strong>&lt;Nr&gt;</strong>14 TCP
-    * 5.16 TCP<strong>&lt;&gt;</strong>
+    * 32<strong> &lt; Nr &gt; </strong> TCP
+    * 36<strong> &lt; Nr &gt; </strong> TCP
+    * 39<strong> &lt; Nr &gt; </strong> TCP
+    * 81<strong> &lt; Nr &gt; </strong> TCP
+    * 5<strong> &lt; Nr &gt; </strong>13 TCP
+    * 5<strong> &lt; Nr &gt; </strong>14 TCP
+    * 5<strong>. &lt; 16 TCP &gt; </strong>
 
 ### <a name="ers"></a>OLAJÍCÍCH
 
 * Konfigurace front-endu
   * 10.0.0.8 IP adres
 * Port testu paměti
-  * Port 621<strong>&lt;Nr&gt;</strong>
+  * Port 621<strong> &lt; Nr &gt; </strong>
 * Pravidla vyrovnávání zatížení
   * Pokud používáte Standard Load Balancer, vyberte **porty ha** .
   * Pokud používáte základní Load Balancer, vytvořte pravidla vyrovnávání zatížení pro následující porty.
-    * 32<strong>&lt;Nr&gt; </strong> TCP
-    * 33<strong>&lt;Nr&gt; </strong> TCP
-    * 5<strong>&lt;Nr&gt;</strong>13 TCP
-    * 5<strong>&lt;Nr&gt;</strong>14 TCP
-    * 5.16 TCP<strong>&lt;&gt;</strong>
+    * 32<strong> &lt; Nr &gt; </strong> TCP
+    * 33<strong> &lt; Nr &gt; </strong> TCP
+    * 5<strong> &lt; Nr &gt; </strong>13 TCP
+    * 5<strong> &lt; Nr &gt; </strong>14 TCP
+    * 5<strong>. &lt; 16 TCP &gt; </strong>
 
 * Konfigurace back-endu
   * Připojeno k primárním síťovým rozhraním všech virtuálních počítačů, které by měly být součástí clusteru (A) SCS/OLAJÍCÍCH
@@ -156,7 +156,7 @@ K nasazení všech požadovaných prostředků můžete použít jednu z šablon
    9. Uživatelské jméno správce a heslo správce  
       Vytvoří se nový uživatel, který se dá použít k přihlášení k počítači.
    10. ID podsítě  
-   Pokud chcete virtuální počítač nasadit do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá jako/Subscriptions/**&lt;&gt;ID odběru**/resourceGroups/**&lt;název skupiny&gt;prostředků**/Providers/Microsoft.Network/virtualNetworks/**&lt;název virtuální sítě&gt;**/subnets/**&lt;název podsítě&gt; **
+   Pokud chcete virtuální počítač nasadit do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá jako/Subscriptions/** &lt; ID &gt; odběru**/ResourceGroups/název** &lt; &gt; skupiny prostředků**** &lt; &gt; ** /Providers/Microsoft.Network/virtualNetworks/název** &lt; virtuální sítě &gt; **/subnets/název podsítě
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>Ruční nasazení Linux pomocí Azure Portal
 
@@ -175,7 +175,7 @@ Nejprve je třeba vytvořit virtuální počítače pro tento cluster systému s
    SLES for SAP Applications 12 SP1 se používá  
    Vybrat skupinu dostupnosti vytvořenou dříve  
 1. Přidejte alespoň jeden datový disk do obou virtuálních počítačů.  
-   Datové disky se používají pro> adresář/usr/SAP/`<SAPSID`
+   Datové disky se používají pro `<SAPSID`> adresář/usr/SAP/
 1. Vytvořit nástroj pro vyrovnávání zatížení (interní, standardní):  
    1. Vytvoření IP adresy front-endu
       1. IP adresa 10.0.0.7 pro ASCS
@@ -803,7 +803,7 @@ Následující testy jsou kopie testovacích případů v SUSE průvodců osvěd
 
 1. HAGetFailoverConfig testů, HACheckConfig a HACheckFailoverConfig
 
-   Spusťte následující příkazy jako \<sapsid>ADM na uzlu, ve kterém je aktuálně spuštěná instance ASCS. Pokud se příkazy nezdaří s CHYBou: nedostatek paměti, může to být způsobeno pomlčkami ve vašem názvu hostitele. Jedná se o známý problém, který bude opraven nástrojem SUSE v balíčku SAP-SUSE-cluster-Connector.
+   \<sapsid>Na uzlu, kde je aktuálně spuštěná instance ASCS, spusťte následující příkazy jako ADM. Pokud se příkazy nezdaří s CHYBou: nedostatek paměti, může to být způsobeno pomlčkami ve vašem názvu hostitele. Jedná se o známý problém, který bude opraven nástrojem SUSE v balíčku SAP-SUSE-cluster-Connector.
 
    <pre><code>nw1-cl-0:nw1adm 54> sapcontrol -nr <b>00</b> -function HAGetFailoverConfig
    
@@ -915,7 +915,7 @@ Následující testy jsou kopie testovacích případů v SUSE průvodců osvěd
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-0
    </code></pre>
 
-   Spusťte následující příkazy jako \<sapsid>ADM k migraci instance ASCS.
+   \<sapsid>Pro migraci instance ASCS spusťte následující příkazy jako ADM.
 
    <pre><code>nw1-cl-0:nw1adm 55> sapcontrol -nr 00 -host nw1-ascs -user nw1adm &lt;password&gt; -function HAFailoverToNode ""
    
@@ -1034,7 +1034,7 @@ Následující testy jsou kopie testovacích případů v SUSE průvodců osvěd
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-0
    </code></pre>
 
-   Vytvořte zámek zařazení do fronty, například upravit uživatele v su01 transakce. Spusťte následující příkazy jako \<sapsid>ADM v uzlu, ve kterém je spuštěná instance ASCS. Příkazy zazastaví instanci ASCS a znovu se spustí. Pokud používáte architekturu serveru fronty 1, očekává se, že se v tomto testu ztratí zámek fronty. Pokud používáte architekturu Server 2 pro zařazování do fronty, zachová se. 
+   Vytvořte zámek zařazení do fronty, například upravit uživatele v su01 transakce. \<sapsid>Na uzlu, kde je spuštěná instance ASCS, spusťte následující příkazy jako ADM. Příkazy zazastaví instanci ASCS a znovu se spustí. Pokud používáte architekturu serveru fronty 1, očekává se, že se v tomto testu ztratí zámek fronty. Pokud používáte architekturu Server 2 pro zařazování do fronty, zachová se. 
 
    <pre><code>nw1-cl-1:nw1adm 54> sapcontrol -nr 00 -function StopWait 600 2
    </code></pre>

@@ -5,10 +5,10 @@ ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 03/24/2017
 ms.openlocfilehash: 1d7d28d813df82a5e1ea0fe424bba2ef5a9a2684
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80421335"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>Zálohování serveru Exchange do Azure pomocí Azure Backup Server
@@ -53,7 +53,7 @@ Chcete-li nainstalovat agenta MABS Protection na server Exchange, postupujte pod
     Po výběru této možnosti se kontrola konzistence zálohy spustí na MABS, aby se předešlo vstupně-výstupnímu přenosu generovanému spuštěním příkazu **eseutil** na serveru Exchange.
 
    > [!NOTE]
-   > Pokud chcete použít tuto možnost, musíte zkopírovat soubory ESE. dll a Eseutil. exe do adresáře C:\Program Files\Microsoft Azure Backup\DPM\DPM\bin na serveru MABS. V opačném případě se aktivuje následující chyba:  
+   > Pokud chcete použít tuto možnost, musíte zkopírovat Ese.dll a Eseutil.exe soubory do adresáře C:\Program Files\Microsoft Azure Backup\DPM\DPM\bin na serveru MABS. V opačném případě se aktivuje následující chyba:  
    > ![Chyba programu Eseutil](./media/backup-azure-backup-exchange-server/eseutil-error.png)
    >
    >

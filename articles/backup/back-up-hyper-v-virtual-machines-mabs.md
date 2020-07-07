@@ -4,10 +4,10 @@ description: Tento článek obsahuje postupy pro zálohování a obnovení virtu
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.openlocfilehash: 71cf446472ef0cf4f50bf64e47d359ea08ccc087
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80420405"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Zálohování virtuálních počítačů s technologií Hyper-V pomocí Azure Backup Server
@@ -66,7 +66,7 @@ Toto jsou požadavky pro zálohování virtuálních počítačů s technologií
 |Požadavky virtuálních počítačů Hyper-V|-Verze integračních komponent, které běží na virtuálním počítači, by měla být stejná jako verze hostitele Hyper-V. <br />– Pro každou zálohu virtuálního počítače budete potřebovat volné místo na svazku, který je hostitelem souborů virtuálního pevného disku, abyste zajistili technologii Hyper-V dost místa pro rozdílové porovnávání disků (AVHD) během zálohování. Prostor musí být minimálně roven času vypočítanému jako **Počáteční velikost disku\*Klidové vytížení\*Zálohování**. Pokud spouštíte více záloh v clusteru, budete potřebovat dostatečnou kapacitu úložiště (použijte tento výpočet) pro AVHD na všech virtuálních počítačích.<br />– Chcete-li zálohovat virtuální počítače nacházející se na hostitelských serverech technologie Hyper-V se systémem Windows Server 2012 R2, musí mít virtuální počítač zadaný řadič SCSI, a to i v případě, že není připojen k žádnému. (V online zálohování Windows Serveru 2012 R2 Hostitel Hyper-V připojí nový virtuální pevný disk ve virtuálním počítači a později ho odpojí. To může podporovat jenom řadič SCSI, a proto se vyžaduje pro online zálohování virtuálního počítače.  Bez tohoto nastavení se při pokusu o zálohování virtuálního počítače vydá událost s ID 10103.)|
 |Požadované součásti systému Linux|– Virtuální počítače se systémem Linux můžete zálohovat pomocí MABS. Podporovány jsou pouze snímky konzistentních souborů.|
 |Zálohování virtuálních počítačů s úložištěm CSV|– K úložišti CSV nainstalujte na server Hyper-V zprostředkovatele hardwaru služby Stínová kopie svazku (VSS). Kontaktujte dodavatele sítě SAN pro poskytovatele hardwaru VSS.<br />– Pokud se jeden uzel v clusteru CSV neočekávaně ukončí, MABS provede kontrolu konzistence u virtuálních počítačů, které v tomto uzlu běžely.<br />– Pokud potřebujete restartovat server Hyper-V, který má na clusteru CSV povolený nástroj BitLocker Drive Encryption, je potřeba, abyste spustili kontrolu konzistence virtuálních počítačů Hyper-V.|
-|Zálohování virtuálních počítačů s úložištěm SMB|– Zapnutím automatického připojení na serveru, který používá technologii Hyper-V, povolte ochranu virtuálních počítačů.<br />   – Zakažte funkci TCP Chimney Offload.<br />– Zajistěte, aby všechny účty machine$ s technologií Hyper-V měly úplná oprávnění v konkrétních vzdálených sdílených složkách souborů SMB.<br />– Ujistěte se, že cesta k souboru pro všechny součásti virtuálního počítače během obnovení do alternativního umístění je kratší než 260 znaků. Pokud ne, obnovení může být úspěšné, ale technologie Hyper-V nebude moci připojit virtuální počítač.<br />– Následující scénáře nejsou podporovány:<br />     Nasazení, ve kterých jsou některé součásti virtuálního počítače na místních svazcích a některé součásti na vzdálených svazcích; adresa IPv4 nebo IPv6 pro souborový server umístění úložiště a obnovení virtuálního počítače do počítače, který používá vzdálené sdílené složky protokolu SMB.<br />– Službu agenta VSS souborového serveru budete muset povolit na každém serveru SMB – přidat ho v části **Přidat role a funkce** > **Vybrat role** > serveru**souborové služby** > **a služba úložiště** > Souborová služba souborového serveru**Služba** > **agenta VSS**.|
+|Zálohování virtuálních počítačů s úložištěm SMB|– Zapnutím automatického připojení na serveru, který používá technologii Hyper-V, povolte ochranu virtuálních počítačů.<br />   – Zakažte funkci TCP Chimney Offload.<br />– Zajistěte, aby všechny účty machine$ s technologií Hyper-V měly úplná oprávnění v konkrétních vzdálených sdílených složkách souborů SMB.<br />– Ujistěte se, že cesta k souboru pro všechny součásti virtuálního počítače během obnovení do alternativního umístění je kratší než 260 znaků. Pokud ne, obnovení může být úspěšné, ale technologie Hyper-V nebude moci připojit virtuální počítač.<br />– Následující scénáře nejsou podporovány:<br />     Nasazení, ve kterých jsou některé součásti virtuálního počítače na místních svazcích a některé součásti na vzdálených svazcích; adresa IPv4 nebo IPv6 pro souborový server umístění úložiště a obnovení virtuálního počítače do počítače, který používá vzdálené sdílené složky protokolu SMB.<br />– Službu agenta VSS souborového serveru budete muset povolit na každém serveru SMB – přidat ho v části **Přidat role a funkce**  >  **Vybrat role serveru**souborové služby a služba úložiště Souborová služba souborového  >  **File and Storage Services**  >  **File Services**  >  **File Service**  >  **serveru služba agenta VSS**.|
 
 ## <a name="back-up-virtual-machines"></a>Zálohování virtuálních počítačů
 
@@ -78,13 +78,13 @@ Toto jsou požadavky pro zálohování virtuálních počítačů s technologií
 
 2. Nastavte agenta ochrany MABS Protection na serverech Hyper-V nebo na uzlech clusteru Hyper-V. Pokud provádíte zálohování na úrovni hosta, nainstalujete agenta na virtuální počítače, které chcete zálohovat na úrovni hosta.
 
-3. V konzole pro správu MABS klikněte na **ochrana** > **vytvořit skupinu ochrany** a otevřete průvodce **vytvořením nové skupiny ochrany** .
+3. V konzole pro správu MABS klikněte na **ochrana**  >  **vytvořit skupinu ochrany** a otevřete průvodce **vytvořením nové skupiny ochrany** .
 
 4. Na stránce **Vybrat členy skupiny** vyberte virtuální počítače, které chcete chránit, a to z hostitelských serverů Hyper-V, na kterých jsou umístěny. Všechny virtuální počítače se stejnými zásadami ochrany doporučujeme dát do jedné skupiny ochrany. Pokud chcete šetřit místem, zapněte kolokaci. Kolokace umožňuje najít data z různých skupin ochrany na stejném disku nebo pásce, aby více zdrojů dat mělo jen jednu repliku a jeden svazek bodu obnovení.
 
 5. Na stránce **Vyberte způsob ochrany dat** zadejte název skupiny ochrany. Pokud chcete zálohovat data na Azure pomocí služby Zálohování Azure, vyberte **Chci krátkodobou ochranu pomocí disku** a potom **Chci online ochranu** .
 
-6. V oblasti **určení krátkodobých cílů** > **Rozsah uchování**určete, jak dlouho chcete uchovat data na disku. V části **četnost synchronizací**určete, jak často se má spouštět přírůstkové zálohování dat. Nebo můžete místo intervalu přírůstkového zálohování vybrat možnost **Těsně před bodem obnovení**. Pokud je toto nastavení povoleno, MABS spustí expresní úplné zálohování těsně před každým naplánovaným bodem obnovení.
+6. V oblasti **určení krátkodobých cílů**  >  **Rozsah uchování**určete, jak dlouho chcete uchovat data na disku. V části **četnost synchronizací**určete, jak často se má spouštět přírůstkové zálohování dat. Nebo můžete místo intervalu přírůstkového zálohování vybrat možnost **Těsně před bodem obnovení**. Pokud je toto nastavení povoleno, MABS spustí expresní úplné zálohování těsně před každým naplánovaným bodem obnovení.
 
     > [!NOTE]
     >

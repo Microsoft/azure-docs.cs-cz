@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 836a924bb371aaf2879e951501c6febbe51e182e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80333943"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Azure Maps pokrytí provozu
@@ -23,7 +23,7 @@ Mapy ale nemají stejnou úroveň informací a přesnosti pro všechny země neb
 
 ## <a name="americas"></a>Amerika
 
-|Země/region  |Incidenty  |Tok  |
+|Země/oblast  |Incidenty  |Tok  |
 |---------|:---------:|:---------:|
 |Argentina      |✓         |✓         |
 |Brazílie     |✓         |✓         |
@@ -32,18 +32,18 @@ Mapy ale nemají stejnou úroveň informací a přesnosti pro všechny země neb
 |Kolumbie      |✓         |✓         |
 |Mexiko     |✓         |✓         |
 |Peru       |✓         |✓         | 
-|Spojené státy     |✓         |✓        |
+|USA     |✓         |✓        |
 |+ Portoriko     |✓         |✓         |
 |Uruguay |✓         |✓         |
 
 
 ## <a name="asia-pacific"></a>Asie a Tichomoří
 
-|Země/region   |Incidenty  |Tok  |
+|Země/oblast   |Incidenty  |Tok  |
 |---------|:---------:|:---------:|
 |Austrálie     |✓         |✓        |
 |Brunej   |✓         |✓        |
-|Hongkong – zvláštní správní oblast     |✓         |✓         |
+|Hongkong – zvláštní administrativní oblast     |✓         |✓         |
 |Indie   |✓         |✓         |
 |Indonésie     |✓         |✓         |
 |Kazachstán    |✓         |✓         |
@@ -59,7 +59,7 @@ Mapy ale nemají stejnou úroveň informací a přesnosti pro všechny země neb
 
 ## <a name="europe"></a>Evropa
 
-|Země/region   |Incidenty  |Tok  |
+|Země/oblast   |Incidenty  |Tok  |
 |---------|:---------:|:---------:|
 |Andorra   |✓         |✓         |
 |Rakousko     |✓         |✓         |
@@ -117,7 +117,7 @@ Mapy ale nemají stejnou úroveň informací a přesnosti pro všechny země neb
 
 ## <a name="middle-east-and-africa"></a>Střední východ a Afrika
 
-|Země/region |Incidenty  |Tok  |
+|Země/oblast |Incidenty  |Tok  |
 |---------|:---------:|:---------:|
 |Bahrajn     |✓         |✓         |
 |Egypt     |✓         |✓         |

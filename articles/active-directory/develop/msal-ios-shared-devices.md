@@ -14,10 +14,10 @@ ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.openlocfilehash: 7cecbc48eb362c2c0f1741352e6f7f5f6ad40c9e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80550250"
 ---
 # <a name="shared-device-mode-for-ios-devices"></a>Režim sdíleného zařízení pro zařízení s iOS
@@ -45,7 +45,7 @@ Pokud chcete vytvořit sdílenou aplikaci v režimu zařízení, vývojáři a s
 
 1. [**Vyžadováno pouze během Public Preview**] Uživatel s rolí [správce cloudového zařízení](../users-groups-roles/directory-assign-admin-roles.md#cloud-device-administrator) musí potom spustit [aplikaci Microsoft Authenticator](../user-help/user-help-auth-app-overview.md) a připojit své zařízení k organizaci.
 
-    Pokud chcete nakonfigurovat členství vaší organizační role v Azure Portal: **Azure Active Directory** > **role a správci** > **cloudového zařízení správce**
+    Pokud chcete nakonfigurovat členství vaší organizační role v Azure Portal: **Azure Active Directory**  >  **role a správci**  >  **cloudového zařízení správce**
 
 Následující části vám pomůžou aktualizovat aplikaci tak, aby podporovala režim sdíleného zařízení.
 
@@ -90,7 +90,7 @@ Při změně uživatele byste měli zkontrolovat, že se data předchozího uži
 
 Zjišťování režimu sdíleného zařízení je pro vaši aplikaci důležité. Mnoho aplikací bude při použití aplikace na sdíleném zařízení vyžadovat změnu v uživatelském prostředí (UX). Například vaše aplikace může mít funkci "registrace", která není vhodná pro pracovní proces Firstline, protože už pravděpodobně má účet. Pokud je v režimu sdíleného zařízení, můžete také pro zpracování dat aplikace přidat další zabezpečení.
 
-K určení `getDeviceInformationWithParameters:completionBlock:` , jestli je aplikace spuštěná na zařízení v režimu sdíleného zařízení, použijte rozhraní API v. `MSALPublicClientApplication`
+`getDeviceInformationWithParameters:completionBlock:` `MSALPublicClientApplication` K určení, jestli je aplikace spuštěná na zařízení v režimu sdíleného zařízení, použijte rozhraní API v.
 
 Následující fragmenty kódu ukazují příklady použití `getDeviceInformationWithParameters:completionBlock:` rozhraní API.
 
@@ -128,7 +128,7 @@ application.getDeviceInformation(with: nil, completionBlock: { (deviceInformatio
 
 Další důležitou součástí podpory režimu sdíleného zařízení je určení stavu uživatele v zařízení a vymazání dat aplikací, pokud se uživatel změnil nebo pokud na zařízení není vůbec žádný uživatel. Zodpovídáte za to, že nebudete moct data nevrácená jinému uživateli.
 
-Rozhraní API můžete `getCurrentAccountWithParameters:completionBlock:` použít k dotazování aktuálně přihlášeného účtu v zařízení.
+`getCurrentAccountWithParameters:completionBlock:`Rozhraní API můžete použít k dotazování aktuálně přihlášeného účtu v zařízení.
 
 #### <a name="swift"></a>Swift
 
@@ -180,7 +180,7 @@ Následující kód odstraní přihlášený účet a vymaže tokeny uložené v
 > [!NOTE]
 > Následující krok je vyžadován pouze během veřejné verze Preview.
 
-V této verzi Public Preview [modul plug-in Microsoft Enterprise SSO pro zařízení Apple](apple-sso-plugin.md) vymaže stav jenom pro aplikace. V prohlížeči Safari není tento stav jasný. Doporučujeme, abyste ručně vymazali relaci prohlížeče, abyste se ujistili, že nezbývá žádné trasování stavu uživatele. K vymazání všech souborů cookie `signoutFromBrowser` můžete použít volitelnou vlastnost uvedenou níže. To způsobí, že se prohlížeč na zařízení krátce spustí.
+V této verzi Public Preview [modul plug-in Microsoft Enterprise SSO pro zařízení Apple](apple-sso-plugin.md) vymaže stav jenom pro aplikace. V prohlížeči Safari není tento stav jasný. Doporučujeme, abyste ručně vymazali relaci prohlížeče, abyste se ujistili, že nezbývá žádné trasování stavu uživatele. `signoutFromBrowser`K vymazání všech souborů cookie můžete použít volitelnou vlastnost uvedenou níže. To způsobí, že se prohlížeč na zařízení krátce spustí.
 
 #### <a name="swift"></a>Swift
 

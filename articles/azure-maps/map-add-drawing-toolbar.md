@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: bebf1ddfbca3aec5a551193609381cf3510bc3ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80334498"
 ---
 # <a name="add-a-drawing-tools-toolbar-to-a-map"></a>Přidání panelu nástrojů nástrojů pro kreslení na mapu
@@ -38,7 +38,7 @@ Níže je uvedená ukázka kompletního běžícího kódu pro výše uvedené f
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Přidání panelu nástrojů pro kreslení" src="//codepen.io/azuremaps/embed/ZEzLeRg/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Podívejte se na <a href='https://codepen.io/azuremaps/pen/ZEzLeRg/'>panel nástrojů přidat kreslení</a> pomocí Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() na <a href='https://codepen.io'>CodePen</a>.
+Podívejte se na <a href='https://codepen.io/azuremaps/pen/ZEzLeRg/'>panel nástrojů přidat kreslení</a> pomocí Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 
@@ -62,13 +62,13 @@ Níže je uvedená ukázka kompletního běžícího kódu pro výše uvedené f
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Přidat kreslicí nástroj mnohoúhelníku" src="//codepen.io/azuremaps/embed/OJLWWMy/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Prohlédněte si pero <a href='https://codepen.io/azuremaps/pen/OJLWWMy/'>Přidání mnohoúhelníkového kreslicího nástroje</a> pomocí<a href='https://codepen.io/azuremaps'>@azuremaps</a>Azure Maps () na <a href='https://codepen.io'>CodePen</a>.
+Prohlédněte si pero <a href='https://codepen.io/azuremaps/pen/OJLWWMy/'>Přidání mnohoúhelníkového kreslicího nástroje</a> pomocí Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 
 ## <a name="change-drawing-rendering-style"></a>Změnit styl vykreslování kresby
 
-Styl nakreslených tvarů lze přizpůsobit načtením základních vrstev Správce výkresu pomocí `drawingManager.getLayers()` funkce a poté nastavením možností na jednotlivých vrstvách. Táhla přetažení, která se zobrazí pro souřadnice při úpravách obrazce, jsou značky HTML. Styl úchytů přetažení lze přizpůsobit předáním možností značek HTML do možností `dragHandleStyle` a `secondaryDragHandleStyle` Správce výkresu.  
+Styl nakreslených tvarů lze přizpůsobit načtením základních vrstev Správce výkresu pomocí `drawingManager.getLayers()` funkce a poté nastavením možností na jednotlivých vrstvách. Táhla přetažení, která se zobrazí pro souřadnice při úpravách obrazce, jsou značky HTML. Styl úchytů přetažení lze přizpůsobit předáním možností značek HTML do `dragHandleStyle` `secondaryDragHandleStyle` možností a Správce výkresu.  
 
 Následující kód získá vrstvy vykreslování ze Správce výkresu a upraví jejich možnosti pro změnu stylu vykreslování pro kreslení. V tomto případě budou body vykresleny s modrou ikonou značek. Čáry budou červené a čtyři pixelů na šířku. Mnohoúhelníky budou mít zelenou barvu výplně a oranžový obrys. Poté změní styly úchytů pro přetahování na čtvercové ikony. 
 
@@ -122,7 +122,7 @@ Níže je uvedená ukázka kompletního běžícího kódu pro výše uvedené f
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Změnit styl vykreslování kresby" src="//codepen.io/azuremaps/embed/OJLWpyj/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Podívejte se na <a href='https://codepen.io/azuremaps/pen/OJLWpyj/'>styl vykreslování kresby změnit</a> u Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+Podívejte se na <a href='https://codepen.io/azuremaps/pen/OJLWpyj/'>styl vykreslování kresby změnit</a> u Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 

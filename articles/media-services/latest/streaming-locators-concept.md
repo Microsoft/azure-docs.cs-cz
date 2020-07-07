@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 03/04/2020
 ms.author: juliako
 ms.openlocfilehash: 41b2d0ad1e072fb2bf5860ae80f8f25f886b37f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80582678"
 ---
 # <a name="streaming-locators"></a>Lokátory streamování
@@ -28,11 +28,11 @@ Při vytváření **lokátoru streamování**musíte zadat název **assetu** a n
 
 * [Prostředky](assets-concept.md)
 * [Zásady streamování](streaming-policy-concept.md)
-* [Zásady symetrických klíčů](content-key-policy-concept.md)
+* [Zásady pro klíč obsahu](content-key-policy-concept.md)
 
 Můžete také zadat čas zahájení a ukončení na lokátoru streamování, který umožní uživateli přehrávat obsah mezi těmito časy (například mezi 5/1/2019 a 5/5/2019).  
 
-## <a name="considerations"></a>Požadavky
+## <a name="considerations"></a>Důležité informace
 
 * **Lokátory streamování** nejde aktualizovat. 
 * Vlastnosti **lokátorů streamování** , které jsou typu DateTime, jsou vždycky ve formátu UTC.
@@ -98,11 +98,11 @@ Chcete-li získat Lokátory streamování na základě přidruženého názvu As
 |Java|[AssetStreamingLocator](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators#assetstreaminglocator)|
 |Node.js|[listStreamingLocators](https://docs.microsoft.com/javascript/api/@azure/arm-mediaservices/assets#liststreaminglocators-string--string--string--msrest-requestoptionsbase-)|
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 * [Prostředky](assets-concept.md)
 * [Zásady streamování](streaming-policy-concept.md)
-* [Zásady symetrických klíčů](content-key-policy-concept.md)
+* [Zásady pro klíč obsahu](content-key-policy-concept.md)
 * [Kurz: nahrávání, kódování a streamování videí pomocí .NET](stream-files-tutorial-with-api.md)
 
 ## <a name="next-steps"></a>Další kroky

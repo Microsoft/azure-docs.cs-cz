@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: hahamil
 ms.custom: aaddev, identitypla | Azuretformtop40
 ms.openlocfilehash: d9874e27c21906512c2f6c841767b4d6591dbeaf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80550263"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>Režim sdíleného zařízení pro zařízení s Androidem
@@ -36,7 +36,7 @@ Režim sdíleného zařízení taky poskytuje zpětnou správu v rámci identity
 Pokud chcete vytvořit sdílenou aplikaci v režimu zařízení, vývojáři a správci cloudových zařízení spolupracují:
 
 - Vývojáři napsané aplikace s jedním účtem (aplikace s více účty se v režimu sdíleného zařízení nepodporují), přidají `"shared_device_mode_supported": true` do konfigurace aplikace a napíší kód, který bude zpracovávat věci, jako je třeba přihlášení ke sdílenému zařízení.
-- Správci zařízení připraví zařízení pro sdílení instalací ověřovací aplikace a nastavením zařízení do sdíleného režimu pomocí ověřovací aplikace. Pouze uživatelé, kteří jsou v roli [správce cloudového zařízení](../users-groups-roles/directory-assign-admin-roles.md#cloud-device-administrator-permissions) , mohou do sdíleného režimu umístit zařízení pomocí [ověřovací aplikace](../user-help/user-help-auth-app-overview.md). Členství v organizačních rolích můžete nakonfigurovat v Azure Portal prostřednictvím: **Azure Active Directory** > **role a správci** > **správce cloudového zařízení**.
+- Správci zařízení připraví zařízení pro sdílení instalací ověřovací aplikace a nastavením zařízení do sdíleného režimu pomocí ověřovací aplikace. Pouze uživatelé, kteří jsou v roli [správce cloudového zařízení](../users-groups-roles/directory-assign-admin-roles.md#cloud-device-administrator-permissions) , mohou do sdíleného režimu umístit zařízení pomocí [ověřovací aplikace](../user-help/user-help-auth-app-overview.md). Členství v organizačních rolích můžete nakonfigurovat v Azure Portal prostřednictvím: **Azure Active Directory**  >  **role a správci**  >  **správce cloudového zařízení**.
 
  Tento článek se zaměřuje především na to, co by si vývojáři měli představit.
 
@@ -63,7 +63,7 @@ Následující objektový model znázorňuje typ objektu, který můžete obdrž
 
 ![model dědičnosti aplikace veřejného klienta](media/v2-shared-device-mode/ipublic-client-app-inheritance.png)
 
-Při získávání `PublicClientApplication` objektu budete muset provést kontrolu typu a přetypovat na příslušné rozhraní. Následující kód kontroluje režim více účtů nebo režim jednoho účtu a odpovídajícím způsobem přetypování objektu aplikace:
+Při získávání objektu budete muset provést kontrolu typu a přetypovat na příslušné rozhraní `PublicClientApplication` . Následující kód kontroluje režim více účtů nebo režim jednoho účtu a odpovídajícím způsobem přetypování objektu aplikace:
 
 ```java
 private IPublicClientApplication mApplication;

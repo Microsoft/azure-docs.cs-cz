@@ -7,10 +7,10 @@ ms.date: 04/01/2020
 ms.topic: conceptual
 ms.author: ramamill
 ms.openlocfilehash: 6547bcf2061213cd01550367171d432900693ea5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80584133"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Povolení replikace do Azure pro virtuální počítače VMware
@@ -49,7 +49,7 @@ Při replikaci virtuálních počítačů VMware mějte na paměti tyto informac
 
 Před provedením kroků v této části si přečtěte následující informace:
 
-- Azure Site Recovery se teď replikuje přímo na spravované disky pro všechny nové replikace. Procesový Server zapisuje protokoly replikace do účtu úložiště mezipaměti v cílové oblasti. Tyto protokoly slouží k vytváření bodů obnovení na spravovaných discích repliky, které mají `asrseeddisk`zásady vytváření názvů.
+- Azure Site Recovery se teď replikuje přímo na spravované disky pro všechny nové replikace. Procesový Server zapisuje protokoly replikace do účtu úložiště mezipaměti v cílové oblasti. Tyto protokoly slouží k vytváření bodů obnovení na spravovaných discích repliky, které mají zásady vytváření názvů `asrseeddisk` .
 - Podpora PowerShellu pro replikaci na spravované disky je k dispozici od začátku pomocí [AZ. RecoveryServices Module verze 2.0.0](https://www.powershellgallery.com/packages/Az.RecoveryServices/2.0.0-preview) .
 - V době převzetí služeb při selhání se k vytvoření cíle spravovaného disku použije vybraný bod obnovení.
 - Virtuální počítače, které byly dřív nakonfigurované pro replikaci na cílové účty úložiště, to neovlivní.
@@ -57,7 +57,7 @@ Před provedením kroků v této části si přečtěte následující informace
 
 Pokud chcete povolit replikaci, postupujte následovně:
 
-1. Přejít na **Krok 2: replikování** > **zdroje**aplikace. Po prvním povolení replikace vyberte **+ replikovat** v trezoru, abyste povolili replikaci pro další virtuální počítače.
+1. Přejít na **Krok 2: replikování**  >  **zdroje**aplikace. Po prvním povolení replikace vyberte **+ replikovat** v trezoru, abyste povolili replikaci pro další virtuální počítače.
 1. **Na zdrojové stránce >** **zdroj**vyberte konfigurační server.
 1. Jako **typ počítače**vyberte **Virtual Machines** nebo **fyzické počítače**.
 1. V části **vCenter/vSphere Hypervisor** vyberte vCenter Server, který spravuje hostitele vSphere, nebo vyberte samotného hostitele. Toto nastavení není relevantní, pokud provádíte replikaci fyzických počítačů.
@@ -75,16 +75,16 @@ Pokud chcete povolit replikaci, postupujte následovně:
 
    :::image type="content" source="./media/vmware-azure-enable-replication/enable-rep3.png" alt-text="Povolit cílové okno replikace":::
 
-1. Pro **virtuální počítače** > **vyberte virtuální**počítače a vyberte všechny virtuální počítače, které chcete replikovat. Můžete vybrat jenom virtuální počítače, pro které je možné povolit replikaci. Pak vyberte **OK**. Pokud nemůžete zobrazit nebo vybrat žádný konkrétní virtuální počítač, přečtěte si téma [zdrojový počítač není uveden v Azure Portal](vmware-azure-troubleshoot-replication.md#step-3-troubleshoot-source-machines-that-arent-available-for-replication) k vyřešení problému.
+1. Pro **virtuální počítače**  >  **vyberte virtuální**počítače a vyberte všechny virtuální počítače, které chcete replikovat. Můžete vybrat jenom virtuální počítače, pro které je možné povolit replikaci. Pak vyberte **OK**. Pokud nemůžete zobrazit nebo vybrat žádný konkrétní virtuální počítač, přečtěte si téma [zdrojový počítač není uveden v Azure Portal](vmware-azure-troubleshoot-replication.md#step-3-troubleshoot-source-machines-that-arent-available-for-replication) k vyřešení problému.
 
    :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication5.png" alt-text="Povolit okno Vybrat virtuální počítače pro replikaci":::
 
-1. V části **vlastnosti** > **Konfigurace vlastností**vyberte účet, který procesový Server používá k automatické instalaci služby Site Recovery mobility na virtuálním počítači. Také vyberte typ cílového spravovaného disku, který se má použít pro replikaci na základě vzorů četnosti změn dat.
+1. V části **vlastnosti**  >  **Konfigurace vlastností**vyberte účet, který procesový Server používá k automatické instalaci služby Site Recovery mobility na virtuálním počítači. Také vyberte typ cílového spravovaného disku, který se má použít pro replikaci na základě vzorů četnosti změn dat.
 1. Ve výchozím nastavení se replikují všechny disky zdrojového virtuálního počítače. Pokud chcete vyloučit disky z replikace, zrušte zaškrtnutí políčka **Zahrnout** pro všechny disky, které nechcete replikovat. Pak vyberte **OK**. Později můžete nastavit další vlastnosti. [Přečtěte si další informace](vmware-azure-exclude-disk.md) o vyloučení disků.
 
    :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication6.png" alt-text="Povolit okno pro konfiguraci replikace – vlastnosti":::
 
-1. V **Nastavení** > replikace**nakonfigurujte nastavení replikace**a ověřte, jestli je vybraná správná zásada replikace. Nastavení > zásad replikace můžete upravit nastavením zásady **Settings****replikace** > nastavení_název_ > **Upravit nastavení**. Změny použité u zásad platí taky pro replikaci a nové virtuální počítače.
+1. V **nastavení replikace**  >  **nakonfigurujte nastavení replikace**a ověřte, jestli je vybraná správná zásada replikace. Nastavení zásad replikace můžete upravit nastavením zásady **Settings**  >  **replikace**nastavení  >  _název_  >  **Upravit nastavení**. Změny použité u zásad platí taky pro replikaci a nové virtuální počítače.
 1. Pokud chcete shromáždit virtuální počítače do replikační skupiny, povolte **konzistenci pro víc virtuálních počítačů**. Zadejte název skupiny a pak vyberte **OK**.
 
    > [!NOTE]
@@ -93,15 +93,15 @@ Pokud chcete povolit replikaci, postupujte následovně:
 
    :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication7.png" alt-text="Povolit okno replikace":::
 
-1. Vyberte **Povolit replikaci**. Průběh úlohy **Povolení ochrany** můžete sledovat v části **Nastavení** > **úlohy** > **Site Recovery úlohy**. Po spuštění úlohy **Dokončit ochranu** je virtuální počítač připravený na převzetí služeb při selhání.
+1. Vyberte **Povolit replikaci**. Průběh úlohy **Povolení ochrany** můžete sledovat v části **Nastavení**  >  **úlohy**  >  **Site Recovery úlohy**. Po spuštění úlohy **Dokončit ochranu** je virtuální počítač připravený na převzetí služeb při selhání.
 
 ## <a name="view-and-manage-vm-properties"></a>Zobrazení a správa vlastností virtuálního počítače
 
 Pak ověřte vlastnosti zdrojového virtuálního počítače. Pamatujte, že název virtuálního počítače Azure musí splňovat [požadavky na virtuální počítače Azure](vmware-physical-azure-support-matrix.md#replicated-machines).
 
-1. Přejít na **Nastavení** > **replikované položky**a potom vyberte virtuální počítač. Na stránce **základy** se zobrazí informace o nastavení a stavu virtuálního počítače.
+1. Přejít na **Nastavení**  >  **replikované položky**a potom vyberte virtuální počítač. Na stránce **základy** se zobrazí informace o nastavení a stavu virtuálního počítače.
 1. V části **vlastnosti**můžete zobrazit informace o replikaci a převzetí služeb při selhání pro virtuální počítač.
-1. V **výpočetních a síťových** > **výpočetních vlastnostech**můžete změnit více vlastností virtuálního počítače.
+1. V **výpočetních a síťových**  >  **výpočetních vlastnostech**můžete změnit více vlastností virtuálního počítače.
 
    :::image type="content" source="./media/vmware-azure-enable-replication/vmproperties.png" alt-text="Okno Vlastnosti výpočtů a sítě":::
 

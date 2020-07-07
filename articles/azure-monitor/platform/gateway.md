@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
 ms.openlocfilehash: a92e96a835f24ac54fa55b05086a35b9a91d609e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80298338"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Připojení počítačů bez přístupu k Internetu pomocí Log Analytics brány v Azure Monitor
@@ -114,16 +114,16 @@ Pokud chcete bránu Log Analytics z Azure Portal získat, postupujte takto:
  
    ![Snímek obrazovky s postupem, jak stáhnout bránu Log Analytics](./media/gateway/download-gateway.png)
 
-– nebo – 
+nebo 
 
 1. V okně pracovního prostoru v části **Nastavení**vyberte **Upřesnit nastavení**.
-1. Přejít na **připojené zdroje** > **Windows servery** a vyberte **Stáhnout Log Analytics bránu**.
+1. Přejít na **připojené zdroje**  >  **Windows servery** a vyberte **Stáhnout Log Analytics bránu**.
 
 ## <a name="install-log-analytics-gateway-using-setup-wizard"></a>Instalace brány Log Analytics pomocí Průvodce instalací
 
 Chcete-li nainstalovat bránu pomocí Průvodce instalací, postupujte podle těchto kroků. 
 
-1. V cílové složce poklikejte na **Log Analytics Gateway. msi**.
+1. Z cílové složky poklikejte na **Log Analytics gateway.msi**.
 1. Na **úvodní** stránce vyberte **Další**.
 
    ![Snímek obrazovky úvodní stránky v Průvodci instalací brány](./media/gateway/gateway-wizard01.png)
@@ -201,7 +201,7 @@ Informace o tom, jak navrhnout a nasadit cluster programu pro vyrovnávání zat
 
     ![Správce vyrovnávání zatížení sítě – přidat hostitele do clusteru: připojit](./media/gateway/nlb03.png) 
 
-### <a name="azure-load-balancer"></a>Azure Load Balancer
+### <a name="azure-load-balancer"></a>Nástroj pro vyrovnávání zatížení Azure
 
 Informace o tom, jak navrhnout a nasadit Azure Load Balancer, najdete v tématu [co je Azure Load Balancer?](../../load-balancer/load-balancer-overview.md). Pokud chcete nasadit základní nástroj pro vyrovnávání zatížení, postupujte podle kroků uvedených v tomto [rychlém](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) startu s výjimkou kroků uvedených v části **Vytvoření back-endové serverů**.   
 
@@ -260,17 +260,17 @@ Pokud chcete nakonfigurovat integraci, aktualizujte konfiguraci proxy serveru po
 
    `netsh winhttp set proxy <proxy>:<port>`
 
-Po dokončení integrace s Log Analytics odeberte změnu spuštěním `netsh winhttp reset proxy`. V konzoli Operations Console pak pomocí možnosti **konfigurovat proxy server** určete server brány Log Analytics. 
+Po dokončení integrace s Log Analytics odeberte změnu spuštěním `netsh winhttp reset proxy` . V konzoli Operations Console pak pomocí možnosti **konfigurovat proxy server** určete server brány Log Analytics. 
 
 1. V konzole Operations Manager v části **Operations Management Suite**vyberte **připojení**a pak vyberte **konfigurovat proxy server**.
 
    ![Snímek obrazovky Operations Manager zobrazující výběr konfigurace proxy serveru](./media/gateway/scom01.png)
 
-1. Vyberte **použít proxy server pro přístup k Operations Management Suite** a pak zadejte IP adresu serveru Log Analytics brány nebo virtuální IP adresy nástroje pro vyrovnávání zatížení. Buďte opatrní a začněte s předponou `http://`.
+1. Vyberte **použít proxy server pro přístup k Operations Management Suite** a pak zadejte IP adresu serveru Log Analytics brány nebo virtuální IP adresy nástroje pro vyrovnávání zatížení. Buďte opatrní a začněte s předponou `http://` .
 
    ![Snímek obrazovky Operations Manager se zobrazením proxy server adresy](./media/gateway/scom02.png)
 
-1. Vyberte **Finish** (Dokončit). Vaše skupina pro správu Operations Manager je teď nakonfigurovaná tak, aby komunikovala se serverem brány ke službě Log Analytics.
+1. Vyberte **Dokončit**. Vaše skupina pro správu Operations Manager je teď nakonfigurovaná tak, aby komunikovala se serverem brány ke službě Log Analytics.
 
 ### <a name="configure-operations-manager-where-specific-agents-use-a-proxy-server"></a>Konfigurace Operations Manager, kde konkrétní agenti používají proxy server
 
@@ -288,7 +288,7 @@ Konfigurace určitých serverů nebo skupin pro použití serveru Log Analytics 
 1. Do pole **Hledat** zadejte **Health Service** a vyberte ho ze seznamu. Vyberte **OK**.  
 1. Vyhledejte **pravidlo nastavení proxy serveru Advisor**. 
 1. Na panelu nástrojů Operations Manager vyberte možnost **Overrides** a pak nastavte možnost **přepsat Rule\For specifický objekt třídy: Health Service** a vybrat objekt ze seznamu.  Nebo vytvořte vlastní skupinu, která obsahuje objekt služby stavu serverů, na které chcete toto přepsání použít. Pak použijte přepsání na vlastní skupinu.
-1. V dialogovém okně **přepsat vlastnosti** zaškrtněte políčko ve sloupci **přepsat** vedle parametru **WebProxyAddress** .  Do pole **přepsat hodnotu** zadejte adresu URL serveru Log Analytics brány. Buďte opatrní a začněte s předponou `http://`.  
+1. V dialogovém okně **přepsat vlastnosti** zaškrtněte políčko ve sloupci **přepsat** vedle parametru **WebProxyAddress** .  Do pole **přepsat hodnotu** zadejte adresu URL serveru Log Analytics brány. Buďte opatrní a začněte s předponou `http://` .  
 
     >[!NOTE]
     > Toto pravidlo není nutné povolit. Je už spravovaný automaticky s přepsáním v Management Pack přepsání zabezpečeného odkazu služby Microsoft System Center Advisor cílí na skupinu monitorovacích serverů služby Microsoft System Center Advisor.
@@ -327,9 +327,9 @@ Pomocí rutin můžete dokončit úlohy aktualizace nastavení konfigurace Log A
 
 Chyba v kroku 3 znamená, že modul nebyl naimportován. K této chybě může dojít, když PowerShell nemůže najít modul. Modul najdete v instalační cestě brány OMS: *C:\Program Files\Microsoft OMS Gateway\PowerShell\OmsGateway*.
 
-| **Rutina** | **Parametry** | **Popis** | **Případě** |
+| **Rutina** | **Parametry** | **Popis** | **Příklad** |
 | --- | --- | --- | --- |  
-| `Get-OMSGatewayConfig` |Key |Získá konfiguraci služby. |`Get-OMSGatewayConfig` |  
+| `Get-OMSGatewayConfig` |Klíč |Získá konfiguraci služby. |`Get-OMSGatewayConfig` |  
 | `Set-OMSGatewayConfig` |Klíč (povinné) <br> Hodnota |Změní konfiguraci služby. |`Set-OMSGatewayConfig -Name ListenPort -Value 8080` |  
 | `Get-OMSGatewayRelayProxy` | |Získá adresu proxy předávacího (nadřazeného) serveru. |`Get-OMSGatewayRelayProxy` |  
 | `Set-OMSGatewayRelayProxy` |Adresa<br> Uživatelské jméno<br> Heslo (zabezpečený řetězec) |Nastaví adresu (a přihlašovací údaje) proxy předávacího (nadřazeného) serveru. |1. Nastavte proxy server přenosu a přihlašovací údaje:<br> `Set-OMSGatewayRelayProxy`<br>`-Address http://www.myproxy.com:8080`<br>`-Username user1 -Password 123` <br><br> 2. Nastavte přenosového proxy serveru, který nepotřebuje ověřování:`Set-OMSGatewayRelayProxy`<br> `-Address http://www.myproxy.com:8080` <br><br> 3. Vymažte nastavení předávacího proxy serveru:<br> `Set-OMSGatewayRelayProxy` <br> `-Address ""` |  
@@ -350,7 +350,7 @@ Pokud chcete shromažďovat události zaznamenané bránou, měli byste mít nai
 
 Následující tabulka ukazuje ID událostí a popisy pro události protokolu Log Analytics brány.
 
-| **ÚČET** | **Popis** |
+| **ID** | **Popis** |
 | --- | --- |
 | 400 |Jakákoli chyba aplikace, která nemá žádné konkrétní ID. |
 | 401 |Nesprávná konfigurace Například listenPort = "text" místo Integer. |

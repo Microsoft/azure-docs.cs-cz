@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
 ms.openlocfilehash: c230e1e950bb924631032940642a6202acf4ade8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80382932"
 ---
 # <a name="monitor-media-services-metrics"></a>Monitorování metrik služby Media Services
@@ -40,7 +40,7 @@ Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně j
     Na pravé straně se zobrazí okno **Vybrat prostředek** se seznamem dostupných zdrojů. V takovém případě se zobrazí:
 
     * &lt;Název účtu Media Services&gt;
-    * &lt;Název koncového&gt;/&lt;bodu streamování názvu Media Services účtu&gt;
+    * &lt;&gt; / &lt; Název koncového bodu streamování názvu Media Services účtu&gt;
     * &lt;název účtu úložiště&gt;
 
     Vyberte prostředek a stiskněte **použít**. Podrobnosti o podporovaných prostředcích a metrikách najdete v tématu [monitorování Media Services metriky](media-services-metrics-diagnostic-logs.md).
@@ -67,7 +67,7 @@ az monitor metrics list --resource \
 
 Pokud chcete získat další metriky, nahraďte "výstup" pro název metriky, které vás zajímá.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 * [Azure Monitor metriky](../../azure-monitor/platform/data-platform.md)
 * [Umožňuje vytvářet, zobrazovat a spravovat výstrahy metrik pomocí Azure monitor](../../azure-monitor/platform/alerts-metric.md).
