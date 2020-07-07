@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 08/26/2019
 ms.author: juliako
 ms.openlocfilehash: 780d3ab5047bff321d0c554880ba2995bcf25524
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70102916"
 ---
 # <a name="scaling-media-processing-overview"></a>Přehled škálování zpracování médií 
@@ -37,7 +37,7 @@ Následující tabulka vám pomůže při rozhodování o tom, jak určit různ�
 | **S2**|Jedna přenosová rychlost a s více přenosovými rychlostmi.<br/>Normální použití pro kódování SD i HD.|Kódování s přednastavenou H264 Single přenosovou rychlostí 720p trvá přibližně 6 minut.<br/><br/>Kódování s přednastaveným H264 Multiple přenosovou rychlostí 720p trvá přibližně 12 minut.|
 | **S3**|Jedna přenosová rychlost a s více přenosovými rychlostmi.<br/>Kompletní videa o rozlišení HD a 4K. Kódování citlivé na čas, rychlejší zadoba vyřízení.|Kódování pomocí přednastavené H264 s jednou přenosovou rychlostí 1080p trvá přibližně 3 minuty.<br/><br/>Kódování s přednastavenou H264 s více přenosovými rychlostmi 1080p trvá přibližně 8 minut.|
 
-## <a name="considerations"></a>Požadavky
+## <a name="considerations"></a>Důležité informace
 > [!IMPORTANT]
 > Projděte si pokyny popsané v této části.  
 > 
@@ -58,7 +58,7 @@ Pomocí jedné z těchto technologií zajistěte úlohu zpracování médií s m
 
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-encoding-units.md)
-> * [Portál](media-services-portal-scale-media-processing.md)
+> * [Azure Portal](media-services-portal-scale-media-processing.md)
 > * [REST](https://docs.microsoft.com/rest/api/media/operations/encodingreservedunittype)
 > * [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
 > * [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)

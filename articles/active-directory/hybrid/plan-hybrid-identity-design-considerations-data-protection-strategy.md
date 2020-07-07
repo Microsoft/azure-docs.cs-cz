@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e0186d862968259aae73071cfecd7d62443d0256
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67109357"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>Definování strategie ochrany dat pro vaše řešení hybridní identity
@@ -45,8 +45,8 @@ V závislosti na tom, jak jste odpověděli na otázky v části [Určení poža
 
 | Možnosti ochrany dat | V klidovém umístění v cloudu | Místní místní umístění | Při přenosu |
 | --- | --- | --- | --- |
-| BitLocker Drive Encryption |× |× | |
-| SQL Server k šifrování databází |× |× | |
+| BitLocker Drive Encryption |X |X | |
+| SQL Server k šifrování databází |X |X | |
 | Šifrování z virtuálního počítače do virtuálního počítače | | |× |
 | PROTOKOL SSL/TLS | | |× |
 | Síť VPN | | |× |

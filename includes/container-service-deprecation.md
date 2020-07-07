@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/27/2018
 ms.author: iainfou
 ms.openlocfilehash: c7a34256bff46247ed6c97bc2931942f631bbf09
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67175559"
 ---
 > [!WARNING]

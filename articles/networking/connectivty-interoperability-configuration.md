@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
 ms.openlocfilehash: 9c4a57111566248d3537cab0d9d85c0c3be874a1
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68335940"
 ---
 # <a name="interoperability-in-azure-back-end-connectivity-features-test-configuration-details"></a>Interoperabilita funkcí back-end připojení Azure: podrobnosti konfigurace testu
@@ -29,14 +29,14 @@ Následující obrázek ukazuje podrobnosti partnerského vztahu Azure Virtual N
 
 Následující obrázek ukazuje podrobnosti partnerského vztahu virtuální sítě pro virtuální síť centra. Pokud chcete, aby virtuální síť rozbočovače povolovala použití bran rozbočovače, vyberte možnost **Povolit přenos brány**.
 
-[![odst]][2]
+[![2]][2]
 
 ## <a name="branch-vnet-connectivity-by-using-a-site-to-site-vpn"></a>Připojení k virtuální síti větví pomocí sítě VPN typu Site-to-site
 
 Nastavte připojení VPN typu Site-to-site mezi centrem a větví virtuální sítě pomocí bran VPN Gateway v Azure VPN Gateway. Ve výchozím nastavení používají brány sítě VPN a brány Azure ExpressRoute privátní hodnotu autonomního systému číslo (ASN) **65515**. Hodnotu ASN můžete změnit v VPN Gateway. V nastavení testu se hodnota ASN brány VPN virtuální sítě pro větev změnila na **65516** , aby podporovala eBGP směrování mezi virtuální sítě centra a větví.
 
 
-[![1]][3]
+[![3]][3]
 
 
 ## <a name="on-premises-location-1-connectivity-by-using-expressroute-and-a-site-to-site-vpn"></a>Připojení k místnímu umístění 1 pomocí ExpressRoute a VPN typu Site-to-site

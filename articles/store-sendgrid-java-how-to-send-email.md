@@ -16,10 +16,10 @@ ms.date: 10/30/2014
 ms.author: erikre
 ms.reviewer: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork
 ms.openlocfilehash: 8ae948e9c79cff4cd0c896b250743fd9dc521752
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67876512"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java"></a>Odeslání e-mailu pomocí SendGrid z Java

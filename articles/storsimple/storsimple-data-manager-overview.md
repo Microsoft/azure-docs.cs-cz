@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 05/21/2018
 ms.author: alkohli
 ms.openlocfilehash: 2ffe17bf7ef4f01c18d2c26f4a045add7302272d
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67876102"
 ---
 # <a name="storsimple-data-manager-solution-overview"></a>Přehled řešení StorSimple Data Manager
@@ -72,7 +72,7 @@ Naše doporučení:
     
 Microsoft usiluje o to, aby byly služby Azure vždycky dostupné ve všech oblastech. Neplánované výpadky služby se ale můžou vyskytnout pro krátká období v určité oblasti. V takových případech můžete uvést Data Manager a definici úlohy v oblasti, která není ovlivněná výpadkem, a spustit úlohu transformace. V takovém případě může dojít k nějaké další latenci, ale může to být vaše strategie obnovení ve vzácných případech v oblasti regionu výpadku.
 
-## <a name="security-considerations"></a>Aspekty zabezpečení
+## <a name="security-considerations"></a>Důležité informace o zabezpečení
 
 StorSimple Data Manager potřebuje šifrovací klíč dat služby k transformaci z formátu StorSimple do nativního formátu. Šifrovací klíč dat služby se vygeneruje, když se první zařízení zaregistruje ve službě StorSimple. Další informace o tomto klíči najdete v [StorSimple Security](storsimple-8000-security.md).
 

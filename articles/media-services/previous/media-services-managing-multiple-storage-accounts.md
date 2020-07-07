@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: 252d5e551dad56108ad952eb0c7c3b39df0585d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "69901776"
 ---
 # <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>Správa Media Servicesch prostředků napříč několika účty úložiště  
@@ -31,7 +31,7 @@ Tento článek ukazuje, jak připojit více účtů úložiště k účtu Media 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="considerations"></a>Požadavky
+## <a name="considerations"></a>Důležité informace
 
 Při připojování více účtů úložiště k vašemu Media Services účtu platí následující požadavky:
 
@@ -40,7 +40,7 @@ Při připojování více účtů úložiště k vašemu Media Services účtu p
 * Primární účet úložiště je ten, který je uvedený během Media Services čas vytvoření účtu. V současné době nemůžete změnit výchozí účet úložiště. 
 * Pokud chcete do účtu AMS přidat studený účet úložiště, musí být účet úložiště typem objektu BLOB a nastaveným na neprimární.
 
-Další důležité informace:
+Další požadavky:
 
 Media Services používá hodnotu vlastnosti **IAssetFile.Name** při vytváření adres URL pro obsah streamování (například http://{WAMSAccount}. Origin. MediaServices. Windows. NET/{GUID}/{IAssetFile. Name}/streamingParameters.) Z tohoto důvodu není povolena procentuální kódování. Hodnota vlastnosti Name nemůže obsahovat žádný z následujících [znaků rezervovaných v procentech](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! * ' ();: @ &= + $,/?% # [] ". Také může existovat pouze jedna z těchto '. ' pro příponu názvu souboru.
 

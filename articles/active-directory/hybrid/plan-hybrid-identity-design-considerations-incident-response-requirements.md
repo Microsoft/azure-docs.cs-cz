@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 52b5e37c29e4b3df3f171f683266b5d0a3e0c95d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67109280"
 ---
 # <a name="determine-incident-response-requirements-for-your-hybrid-identity-solution"></a>Určení požadavků na reakci na incidenty pro vaše řešení hybridní identity

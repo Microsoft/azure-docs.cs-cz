@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 11/18/2016
 ms.author: cawa
 ms.openlocfilehash: ef9d3c7c479df9c71a855f0a243b5b9d0da947d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68359499"
 ---
 # <a name="use-an-azure-powershell-command-to-create-an-empty-cloud-service-container"></a>Vytvoření prázdného kontejneru cloudové služby pomocí Azure PowerShell příkazu
@@ -52,4 +52,4 @@ Get-help New-AzureService
 ### <a name="next-steps"></a>Další kroky
 
 * Pokud chcete spravovat nasazení cloudové služby, přečtěte si příkazy [Get-AzureService](/powershell/module/servicemanagement/azure/Get-AzureService?view=azuresmps-4.0.0), [Remove-AzureService](/powershell/module/servicemanagement/azure/Remove-AzureService?view=azuresmps-4.0.0)a [set-AzureService](/powershell/module/servicemanagement/azure/set-azureservice?view=azuresmps-4.0.0) . Můžete si také všimnout, [jak nakonfigurovat cloudové služby](cloud-services-how-to-configure-portal.md) pro další informace.
-* Pokud chcete projekt cloudové služby publikovat do Azure, přečtěte si ukázku kódu **PublishCloudService. ps1** z [archivovaného úložiště Cloud Services](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Scripts/cloud-services-continuous-delivery).
+* Pokud chcete publikovat projekt cloudové služby do Azure, přečtěte si ukázku kódu **PublishCloudService.ps1** z [archivovaného úložiště Cloud Services](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Scripts/cloud-services-continuous-delivery).

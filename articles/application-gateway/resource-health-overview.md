@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 7/9/2019
 ms.author: victorh
 ms.openlocfilehash: db29551a8150b70e797d45fe659482470c8aca2a
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67659499"
 ---
 # <a name="azure-application-gateway-resource-health-overview"></a>Přehled služby Azure Application Gateway Resource Health
@@ -25,7 +25,7 @@ Další podrobnosti o tom, jak je stav hodnocen, najdete v úplném seznamu typ�
 
 Stav pro Application Gateway se zobrazuje jako jeden z následujících stavů:
 
-## <a name="available"></a>K dispozici.
+## <a name="available"></a>K dispozici
 
 **Dostupný** stav znamená, že služba nezjistila žádné události, které mají vliv na stav prostředku. V případě, že se brána v posledních 24 hodinách obnovila z neplánovaného výpadku, uvidíte **nedávno vyřešené** oznámení.
 

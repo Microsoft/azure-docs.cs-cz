@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/29/2019
 ms.author: alkohli
 ms.openlocfilehash: ea7e4801dfaad533403c0f927a03735ae409cc52
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "66420600"
 ---
 # <a name="storsimple-virtual-array-update-12-release-notes"></a>Zpráva k vydání verze pro StorSimple Virtual Array Update 1,2
@@ -59,7 +59,7 @@ V aktualizaci 1,2 se neuvedly žádné nové problémy. Všechny problémy zazna
 
 Stáhněte si KB4502035 a [použijte aktualizaci prostřednictvím místního webového uživatelského rozhraní](storsimple-virtual-array-install-update-11.md#use-the-local-web-ui).
 
-## <a name="references"></a>Odkazy
+## <a name="references"></a>Reference
 
 Hledáte starší poznámku k verzi? Přejít na:
 * [Zpráva k vydání verze pro StorSimple Virtual Array Update 1,1](storsimple-virtual-array-update-11-release-notes.md)

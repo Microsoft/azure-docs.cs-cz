@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/18/2016
 ms.author: mikejo
 ms.openlocfilehash: 21270d3c7143ce063ffe30d939368b9813e9072e
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70094109"
 ---
 # <a name="testing-the-performance-of-a-cloud-service-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>Místní testování výkonu cloudové služby v emulátoru služby COMPUTE Azure pomocí profileru sady Visual Studio
@@ -30,7 +30,7 @@ Můžete také chtít profilovat aplikaci místně v emulátoru služby COMPUTE,
 Tento článek se věnuje metodě profilování vzorkování procesoru, která se dá provést místně v emulátoru. Vzorkování procesoru je metoda profilování, která není velmi rušivá. V rámci určeného intervalu vzorkování vybere Profiler snímek zásobníku volání. Data se shromažďují v časovém intervalu a zobrazují se v sestavě. Tato metoda profilace představuje v úmyslu označovat, kde je většina práce s PROCESORem náročná na výpočetní výkon.  Díky tomu se můžete soustředit na "horkou cestu", kde je vaše aplikace nejvíc vytráví.
 
 ## <a name="1-configure-visual-studio-for-profiling"></a>1: konfigurace sady Visual Studio pro profilaci
-Nejdřív je několik možností konfigurace sady Visual Studio, které mohou být užitečné při profilaci. Chcete-li mít smysl sestav profilace, budete potřebovat symboly (soubory PDB) pro vaši aplikaci a také symboly pro systémové knihovny. Budete chtít, abyste se ujistili, že budete odkazovat na dostupné servery symbolů. To provedete tak, že v nabídce **nástroje** v aplikaci Visual Studio kliknete na možnost **Možnosti**a pak na položku **ladění**a **symboly**. Ujistěte se, že jsou servery symbolů společnosti Microsoft uvedeny v části **umístění souborů symbolů (. pdb)**.  Můžete také odkazovat https://referencesource.microsoft.com/symbolsna, které mohou mít další soubory symbolů.
+Nejdřív je několik možností konfigurace sady Visual Studio, které mohou být užitečné při profilaci. Chcete-li mít smysl sestav profilace, budete potřebovat symboly (soubory PDB) pro vaši aplikaci a také symboly pro systémové knihovny. Budete chtít, abyste se ujistili, že budete odkazovat na dostupné servery symbolů. To provedete tak, že v nabídce **nástroje** v aplikaci Visual Studio kliknete na možnost **Možnosti**a pak na položku **ladění**a **symboly**. Ujistěte se, že jsou servery symbolů společnosti Microsoft uvedeny v části **umístění souborů symbolů (. pdb)**.  Můžete také odkazovat https://referencesource.microsoft.com/symbols na, které mohou mít další soubory symbolů.
 
 ![Možnosti symbolu][4]
 
@@ -83,13 +83,13 @@ K připojení profileru k procesu klikněte v nabídce **analyzovat** na možnos
 
 ![Možnost připojení profilu][6]
 
-V případě role pracovního procesu vyhledejte proces WaWorkerHost. exe.
+V případě role pracovního procesu Najděte WaWorkerHost.exe procesu.
 
 ![WaWorkerHost proces][7]
 
 Pokud je složka projektu na síťové jednotce, Profiler vás vyzve k zadání jiného umístění pro uložení sestav profilace.
 
- Můžete se také připojit k webové roli připojením k WaIISHost. exe.
+ K webové roli se můžete připojit taky tak, že se připojíte k WaIISHost.exe.
 Pokud je v aplikaci více procesů role pracovního procesu, je nutné použít rozhraní processID k jejich rozlišení. Můžete zadat dotaz na processID programově pomocí přístupu k objektu procesu. Například pokud přidáte tento kód do metody Run třídy odvozené od RoleEntryPoint v roli, můžete si prohlédnout protokol v uživatelském rozhraní emulátoru COMPUTE a zjistit, ke kterému procesu se chcete připojit.
 
 ```csharp
@@ -153,14 +153,14 @@ Sestavy zvýrazňují rozdíly mezi dvěma spuštěními.
 
 ![Sestava porovnání][16]
 
-Blahopřejeme! V profileru jste začali pracovat.
+Gratulujeme! V profileru jste začali pracovat.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 * Nezapomeňte profilovat sestavení pro vydání a spustit bez ladění.
 * Pokud v nabídce profileru není povolená možnost připojit/odpojit, spusťte Průvodce výkonem.
 * K zobrazení stavu aplikace použijte uživatelské rozhraní emulátoru Compute. 
 * Pokud máte problémy se spouštěním aplikací v emulátoru nebo připojením profileru, vypněte emulátor COMPUTE a restartujte ho. Pokud se tím problém nevyřeší, zkuste restartovat. K tomuto problému může dojít, pokud použijete emulátor služby COMPUTE k pozastavení a odebrání spuštěných nasazení.
-* Pokud jste použili některý z příkazů profilace z příkazového řádku, zejména globální nastavení, ujistěte se, že byla volána možnost VSPerfClrEnv/globaloff a že se VsPerfMon. exe vypnul.
+* Pokud jste použili některý z příkazů profilace z příkazového řádku, zejména globální nastavení, zajistěte, aby byla zavolána metoda VSPerfClrEnv/globaloff a VsPerfMon.exe byla ukončena.
 * Pokud se při vzorkování zobrazí zpráva "PRF0025: nebyla shromážděna žádná data", zkontrolujte, že proces, ke kterému jste připojeni, má aktivitu CPU. Aplikace, které nemají žádnou výpočetní práci, nemusí vydávat žádná data vzorkování.  Je také možné, že byl proces ukončen před dokončením vzorkování. Zkontrolujte, že metoda Run pro roli, kterou vytváříte, nekončí.
 
 ## <a name="next-steps"></a>Další kroky

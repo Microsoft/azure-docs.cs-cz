@@ -16,15 +16,15 @@ ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
 ms.openlocfilehash: 37969986b1d015ed08113da42a309eef42df569c
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "69015506"
 ---
 # <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multi-bitrate-streams-with-net"></a>Postup živého streamování využívajícího službu Azure Media Services k vytvoření datových proudů s více přenosovými rychlostmi pomocí rozhraní .NET
 > [!div class="op_single_selector"]
-> * [Portál](media-services-portal-creating-live-encoder-enabled-channel.md)
+> * [Azure Portal](media-services-portal-creating-live-encoder-enabled-channel.md)
 > * [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
 > * [REST API](https://docs.microsoft.com/rest/api/media/operations/channel)
 > 
@@ -96,7 +96,7 @@ K dokončení kurzu potřebujete následující:
 * Musíte používat sadu Media Services .NET SDK verze 3.2.0.0 nebo novější.
 * Webová kamera a kodér, který dokáže odesílat živý datový proud s jednou přenosovou rychlostí.
 
-## <a name="considerations"></a>Požadavky
+## <a name="considerations"></a>Důležité informace
 * V současné době doporučujeme maximální dobu trvání živé události v délce 8 hodin. Pokud potřebujete, aby kanál běžel delší dobu, kontaktujte nás na adrese amshelp@microsoft.com.
 * Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy). Pokud vždy používáte stejné dny / přístupová oprávnění, například zásady pro lokátory, které mají zůstat na místě po dlouhou dobu (zásady bez odeslání), měli byste použít stejné ID zásad. Další informace najdete v [tomto](media-services-dotnet-manage-entities.md#limit-access-policies) článku.
 

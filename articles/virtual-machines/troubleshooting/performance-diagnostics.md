@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 9/20/2018
 ms.author: anandh
 ms.openlocfilehash: 16be3d1695608165405a3490b686a01ba6a2a62c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70080605"
 ---
 # <a name="performance-diagnostics-for-azure-virtual-machines"></a>Diagnostika výkonu pro virtuální počítače Azure
@@ -37,10 +37,10 @@ Windows 10, Windows 8, Windows 8 Enterprise, Windows 8 pro, Windows 8.1, Windows
 
 ### <a name="linux"></a>Linux
 
-Oracle Linux Server 6,10 [`*`], 7,3, 7,6, 7,5 (Oracle-Database-EE 13,8 Marketplace image), CentOS 6,5 [`*`], 7,6, RHEL 7,2, 7,5, 8,0 [`*`], Ubuntu 14,04, 16,04, 18,04, Debian 8, 9, 10 [`*`], SLES 12 SP4 [`*`]
+Oracle Linux Server 6,10 [ `*` ], 7,3, 7,6, 7,5 (Oracle-Database-Ee 13,8 Marketplace image), CentOS 6,5 [ `*` ], 7,6, RHEL 7,2, 7,5, 8,0 [ `*` ], Ubuntu 14,04, 16,04, 18,04, Debian 8, 9, 10 [ `*` ], SLES 12 SP4 [ `*` ]
 
 >[!Note]
->[`*`] Podívejte se na [známé problémy](how-to-use-perfinsights-linux.md#known-issues) .
+>[ `*` ] Podívejte se na [známé problémy](how-to-use-perfinsights-linux.md#known-issues) .
 
 ## <a name="install-and-run-performance-diagnostics-on-your-vm"></a>Nainstalujte a spusťte na svém VIRTUÁLNÍm počítači diagnostiku výkonu.
 
@@ -86,7 +86,7 @@ Následující scénáře analýzy jsou k dispozici na Azure Portal. Vyberte ana
     Zahrnuje všechny kontroly v analýze výkonu a zachycuje trasování sítě a čítače protokolu SMB. Tento scénář použijte k odstranění potíží s výkonem služby soubory Azure. Spuštění této analýzy trvá 30 až 15 minut, a to v závislosti na vybrané době trvání. [Další informace](https://aka.ms/perfinsights/azurefiles)
 
 >[!Note]
->[`*`] Tyto scénáře analýzy jsou podporovány pouze v systému Windows.
+>[ `*` ] Tyto scénáře analýzy jsou podporovány pouze v systému Windows.
 
 ![Snímek obrazovky okna spustit diagnostiku v okně diagnostiku výkonu](media/performance-diagnostics/run-diagnostics-pane.png)
 
@@ -109,7 +109,7 @@ Oznámení se zobrazí při zahájení instalace diagnostiky výkonu. Po dokonč
 Po dokončení analýzy se do tabulek Azure a kontejneru binárního rozsáhlého objektu (BLOB) v zadaném účtu úložiště nahrají následující položky:
 
 * Všechny přehledy a související informace o běhu
-* Výstupní komprimovaný soubor (ZIP) (s názvem **PerformanceDiagnostics_yyyy-mm-dd_hh-mm-SS-FFF. zip** ) ve Windows a soubor tar míč (nazvaný **PerformanceDiagnostics_yyyy-mm-dd_hh-mm-SS-FFF. tar. gz** ) v systému Linux, který obsahuje soubory protokolu
+* Výstupní komprimovaný soubor (s příponou. zip) (nazvaný **PerformanceDiagnostics_yyyy-MM-dd_hh-mm-ss-fff.zip** ) ve Windows a soubor tar míč (nazvaný **PerformanceDiagnostics_yyyy-mm-dd_hh-mm-SS-FFF. tar. gz** ) v systému Linux, který obsahuje soubory protokolu
 * Sestava HTML
 
 Po nahrání se v Azure Portal zobrazí nová zpráva o diagnostice.

@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 4a947c01d63e3842ead91481e480024a54380144
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "69015058"
 ---
 # <a name="get-started-with-delivering-content-on-demand-by-using-the-azure-portal"></a>Začínáme s doručováním obsahu na vyžádání pomocí webu Azure Portal
@@ -51,8 +51,8 @@ Jedním z nejběžnějších scénářů při práci se službou Azure Media Ser
 
 Spuštění koncového bodu streamování:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. Vyberte **Nastavení** > **koncových bodů streamování**. 
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+2. Vyberte **Nastavení**  >  **koncových bodů streamování**. 
 3. Vyberte výchozí koncový bod streamování. Zobrazí se okno **výchozí koncový bod streamování – podrobnosti** .
 4. Vyberte ikonu **Spustit**.
 5. Vyberte tlačítko **Uložit**.
@@ -61,7 +61,7 @@ Spuštění koncového bodu streamování:
 Pokud chcete streamovat videa pomocí služby Media Services, musíte nahrát zdrojová videa, zakódovat je do více přenosových rychlostí a pak publikovat výsledek. První krok pokrývá tato část. 
 
 1. Na webu [Azure Portal](https://portal.azure.com/) zvolte účet Azure Media Services.
-2. Vyberte **Nastavení** > **prostředky**. Pak vyberte tlačítko **Nahrát**.
+2. Vyberte **Nastavení**  >  **prostředky**. Pak vyberte tlačítko **Nahrát**.
    
     ![Nahrání souborů](./media/media-services-portal-vod-get-started/media-services-upload.png)
    
@@ -84,7 +84,7 @@ Pokud chcete využít výhod dynamického balení, musíte zdrojový soubor zak�
 Kódování obsahu pomocí procesoru Media Encoder Standard na webu Azure Portal:
 
 1. Na webu [Azure Portal](https://portal.azure.com/) zvolte účet Azure Media Services.
-2. Vyberte **Nastavení** > **prostředky**. Vyberte prostředek, který chcete kódovat.
+2. Vyberte **Nastavení**  >  **prostředky**. Vyberte prostředek, který chcete kódovat.
 3. Vyberte tlačítko **Kódovat**.
 4. V podokně **Kódovat prostředek** vyberte procesor **Media Encoder Standard** a jednu z předvoleb. Informace o předvolbách najdete v tématech [Automatické generování žebříčku přenosových rychlostí](media-services-autogen-bitrate-ladder-with-mes.md) a [Předvolby úloh pro Media Encoder Standard](media-services-mes-presets-overview.md). Je důležité, abyste zvolili předvolbu, která je pro vaše vstupní video nejvhodnější. Pokud například víte, že vaše vstupní video má rozlišení 1920 &#215; 1080 pixelů, můžete zvolit předvolbu **H264 Multiple Bitrate 1080p**. Pokud máte video s nízkým rozlišením (640 &#215; 360), neměli byste používat předvolbu **H264 Multiple Bitrate 1080p**.
    
@@ -132,10 +132,10 @@ K aktualizaci data vypršení platnosti lokátoru můžete použít rozhraní [R
 
 ### <a name="to-use-the-portal-to-publish-an-asset"></a>Postup publikování assetu pomocí portálu
 1. Na webu [Azure Portal](https://portal.azure.com/) zvolte účet Azure Media Services.
-2. Vyberte **Nastavení** > **prostředky**. Vyberte asset, který chcete publikovat.
+2. Vyberte **Nastavení**  >  **prostředky**. Vyberte asset, který chcete publikovat.
 3. Vyberte tlačítko **Publikovat**.
 4. Vyberte typ lokátoru.
-5. Vyberte **Přidat**.
+5. Vyberte možnost **Přidat**.
    
     ![Publikování videa](./media/media-services-portal-vod-get-started/media-services-publish1.png)
 

@@ -16,10 +16,10 @@ ms.date: 04/02/2019
 ms.author: rimayber
 ms.reviewer: dgoddard, stegag, steveesp, minale, btalb, prachank
 ms.openlocfilehash: bb23484903ac3ce129c6e7a7a27e0765c227fb1d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68297788"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>Ladění výkonu protokolu TCP/IP pro virtuální počítače Azure
@@ -201,29 +201,29 @@ Faktor škálování o hodnotě 14 má za následek velikost okna protokolu TCP 
 
 #### <a name="support-for-tcp-window-scaling"></a>Podpora škálování okna protokolu TCP
 
-Systém Windows může nastavit různé faktory škálování pro různé typy připojení. (Třídy připojení zahrnují datové centrum, Internet atd.) Pomocí příkazu `Get-NetTCPConnection` PowerShellu zobrazíte typ připojení škálování okna:
+Systém Windows může nastavit různé faktory škálování pro různé typy připojení. (Třídy připojení zahrnují datové centrum, Internet atd.) Pomocí `Get-NetTCPConnection` příkazu PowerShellu zobrazíte typ připojení škálování okna:
 
 ```powershell
 Get-NetTCPConnection
 ```
 
-K zobrazení hodnot jednotlivých `Get-NetTCPSetting` tříd můžete použít příkaz prostředí PowerShell:
+`Get-NetTCPSetting`K zobrazení hodnot jednotlivých tříd můžete použít příkaz prostředí PowerShell:
 
 ```powershell
 Get-NetTCPSetting
 ```
 
-Počáteční velikost okna TCP a faktor škálování TCP v systému Windows můžete nastavit pomocí příkazu `Set-NetTCPSetting` prostředí PowerShell. Další informace najdete v tématu [set-NetTCPSetting](https://docs.microsoft.com/powershell/module/nettcpip/set-nettcpsetting?view=win10-ps).
+Počáteční velikost okna TCP a faktor škálování TCP v systému Windows můžete nastavit pomocí `Set-NetTCPSetting` příkazu prostředí PowerShell. Další informace najdete v tématu [set-NetTCPSetting](https://docs.microsoft.com/powershell/module/nettcpip/set-nettcpsetting?view=win10-ps).
 
 ```powershell
 Set-NetTCPSetting
 ```
 
-Jedná se o platná nastavení TCP pro `AutoTuningLevel`:
+Jedná se o platná nastavení TCP pro `AutoTuningLevel` :
 
 | | | | |
 |-|-|-|-|
-|**AutoTuningLevel**|**Faktor škálování**|**Násobení měřítka**|**Vzorec pro<br/>výpočet maximální velikosti okna**|
+|**AutoTuningLevel**|**Faktor škálování**|**Násobení měřítka**|**Vzorec pro <br/> výpočet maximální velikosti okna**|
 |Zakázáno|Žádná|Žádná|Velikost okna|
 |S omezeným přístupem|4|2 ^ 4|Velikost okna * (2 ^ 4)|
 |Vysoce omezené|2|2 ^ 2|Velikost okna * (2 ^ 2)|

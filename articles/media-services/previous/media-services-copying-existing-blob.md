@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: a1da207a295b40f8d455635d687083bf69e90fdf
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67068894"
 ---
 # <a name="copying-existing-blobs-into-a-media-services-asset"></a>Kopírování existujících objektů blob do prostředku Media Services

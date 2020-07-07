@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 05/16/2019
 ms.author: amverma
 ms.openlocfilehash: 62e4d3dbd7357f8c98df3307c1c8fe52cbed1c5e
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67707764"
 ---
 # <a name="hb-series-virtual-machines-overview"></a>Přehled virtuálních počítačů s více než jednou řadou

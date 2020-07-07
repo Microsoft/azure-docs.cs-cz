@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8a829d39ff21a1abeafd3b4362747894d196d9d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67109385"
 ---
 # <a name="plan-for-hybrid-identity-lifecycle"></a>Plán pro hybridní životní cyklus identity
@@ -61,7 +61,7 @@ Při definování těchto požadavků zajistěte, aby byly zodpovězeny alespoň
 ## <a name="synchronization-management"></a>Správa synchronizace
 Jedním z cílů správce identit, aby bylo možné přenést všechny zprostředkovatele identity a zachovat jejich synchronizaci. Data jsou synchronizovaná na základě autoritativního poskytovatele hlavní identity. V případě hybridních identit můžete s synchronizovaným modelem správy spravovat všechny identity uživatelů a zařízení na místním serveru a synchronizovat účty a volitelně také hesla ke cloudu. Uživatel zadá stejné heslo místně, jako v cloudu, a při přihlášení se ověří heslo pomocí řešení identity. Tento model používá nástroj pro synchronizaci adresářů.
 
-![synchronizace](./media/plan-hybrid-identity-design-considerations/Directory_synchronization.png) adresářů do správného návrhu synchronizace řešení hybridní identity zajistěte, aby byly zodpovězeny následující otázky:
+![synchronizace adresářů ](./media/plan-hybrid-identity-design-considerations/Directory_synchronization.png) do správného návrhu synchronizace řešení hybridní identity zajistěte, aby byly zodpovězeny následující otázky:
 *    Jaká jsou řešení synchronizace dostupná pro řešení hybridní identity?
 *    Jaké jsou možnosti jednotného přihlašování k dispozici?
 *    Jaké jsou možnosti federace identit mezi B2B a B2C?

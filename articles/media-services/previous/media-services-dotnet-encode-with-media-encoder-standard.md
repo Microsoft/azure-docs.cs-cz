@@ -16,10 +16,10 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.openlocfilehash: 259e32d55f25c4a146b7ff358eb503763dd5fab2
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "69016590"
 ---
 # <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>Kódování assetu pomocí Media Encoder Standard pomocí .NET  
@@ -46,9 +46,9 @@ Media Encoder Standard se konfiguruje pomocí některého z přednastavení kod�
 ### <a name="input-and-output-metadata"></a>Vstupní a výstupní metadata
 Při kódování vstupního prostředku (nebo prostředků) pomocí nástroje pro vytváření se systémem získáte výstupní Asset po úspěšném dokončení této úlohy kódování. Výstupní Asset obsahuje video, zvuk, miniatury, manifest atd. na základě použité předvolby kódování.
 
-Výstupní Asset obsahuje také soubor s metadaty o vstupním prostředku. Název souboru XML metadat má následující formát: <asset_id>_metadata. XML (například 41114ad3-eb5e-4c57-8d92-5354e2b7d4a4_metadata. XML), kde <asset_id> je AssetId hodnota vstupního assetu. Schéma těchto vstupních metadat XML je popsáno [zde](media-services-input-metadata-schema.md).
+Výstupní Asset obsahuje také soubor s metadaty o vstupním prostředku. Název souboru XML s metadaty má následující formát: <asset_id # C1_metadata.xml (například 41114ad3-eb5e-4c57-8d92-5354e2b7d4a4_metadata.xml), kde <asset_id> je AssetId hodnotou vstupního assetu. Schéma těchto vstupních metadat XML je popsáno [zde](media-services-input-metadata-schema.md).
 
-Výstupní Asset obsahuje také soubor s metadaty o výstupním prostředku. Název souboru XML s metadaty má následující formát: <source_file_name>_manifest. XML (například BigBuckBunny_manifest. XML). Schéma tohoto výstupního metadat XML je popsáno [zde](media-services-output-metadata-schema.md).
+Výstupní Asset obsahuje také soubor s metadaty o výstupním prostředku. Název souboru XML s metadaty má následující formát: <source_file_name # C1_manifest.xml (například BigBuckBunny_manifest.xml). Schéma tohoto výstupního metadat XML je popsáno [zde](media-services-output-metadata-schema.md).
 
 Pokud chcete prostudovat některé ze dvou souborů metadat, můžete vytvořit Lokátor SAS a stáhnout soubor do místního počítače. Můžete najít příklad, jak vytvořit Lokátor SAS a stáhnout soubor pomocí rozšíření Media Services .NET SDK.
 
@@ -210,6 +210,6 @@ namespace MediaEncoderStandardSample
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>Další kroky
-[Jak vygenerovat miniaturu pomocí Media Encoder Standard s](media-services-dotnet-generate-thumbnail-with-mes.md)
-[přehledem kódování .NET Media Services](media-services-encode-asset.md)
+[Jak generovat miniaturu pomocí Media Encoder Standard s .NET](media-services-dotnet-generate-thumbnail-with-mes.md) 
+ [Přehled kódování Media Services](media-services-encode-asset.md)
 

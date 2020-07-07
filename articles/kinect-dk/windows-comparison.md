@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: article
 keywords: Kinect, Windows, v2, Azure Kinect, porovnání, SDK, rozdíly, hardware, software
 ms.openlocfilehash: ec105cef0c52b02c763487fbe5b2d8c018315f4c
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67452511"
 ---
 # <a name="azure-kinect-and-kinect-windows-v2-comparison"></a>Porovnání Azure Kinect a Kinect Windows v2
@@ -71,7 +71,7 @@ Sada funkcí sady Azure Kinect SDK se liší od Kinect pro Windows v2, jak je po
 | | BodyIndexFrame | Sada SDK pro sledování textu  |
 | Mapování souřadnic|CoordinateMapper| [SADA senzorů – transformace obrázků](use-image-transformation.md) |
 |Sledování obličeje | FaceFrame | [Cognitive Services: Face](https://azure.microsoft.com/services/cognitive-services/face/)       |
-|    Rozpoznávání řeči    |    –                      |    [Cognitive Services: řeč](https://azure.microsoft.com/services/cognitive-services/directory/speech/)     |
+|    Rozpoznávání řeči    |    Není k dispozici                      |    [Cognitive Services: řeč](https://azure.microsoft.com/services/cognitive-services/directory/speech/)     |
 
 ## <a name="next-steps"></a>Další kroky
 

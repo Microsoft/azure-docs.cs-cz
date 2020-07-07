@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
 ms.openlocfilehash: fb1623c4a409f1c6cba94bad56d773e166d2b182
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "69637325"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-php-application-on-azure"></a>Jak uskutečnit telefonní hovor pomocí Twilio v aplikaci PHP v Azure
@@ -26,13 +26,13 @@ Následující příklad ukazuje, jak můžete pomocí Twilio uskutečnit volán
 
 Chcete-li použít kód v tomto tématu, musíte provést následující:
 
-1. Získejte účet Twilio a ověřovací token z [konzoly Twilio][twilio_console]. Pokud chcete začít s Twilio, vyhodnoťte ceny [https://www.twilio.com/pricing][twilio_pricing]na adrese. Zkušební účet si můžete zaregistrovat na adrese [https://www.twilio.com/try-twilio][try_twilio].
+1. Získejte účet Twilio a ověřovací token z [konzoly Twilio][twilio_console]. Pokud chcete začít s Twilio, vyhodnoťte ceny na adrese [https://www.twilio.com/pricing][twilio_pricing] . Zkušební účet si můžete zaregistrovat na adrese [https://www.twilio.com/try-twilio][try_twilio] .
 2. Získejte [knihovnu Twilio pro php](https://github.com/twilio/twilio-php) nebo ji nainstalujte jako balíček pro hrušky. Další informace najdete v [souboru Readme](https://github.com/twilio/twilio-php/blob/master/README.md).
 3. Nainstalujte sadu Azure SDK pro PHP. 
 <!-- For an overview of the SDK and instructions on installing it, see [Set up the Azure SDK for PHP](app-service-web/web-sites-php-mysql-deploy-use-git.md) -->
 
 ## <a name="create-a-web-form-for-making-a-call"></a>Vytvoření webového formuláře pro volání
-Následující kód HTML ukazuje, jak vytvořit webovou stránku (**callform. html**), která načte data uživatelů pro volání:
+Následující kód HTML ukazuje, jak vytvořit webovou stránku (**callform.html**), která načte uživatelská data pro volání:
 
 ```html
 <!DOCTYPE html>
@@ -67,7 +67,7 @@ Následující kód HTML ukazuje, jak vytvořit webovou stránku (**callform. ht
 ```
 
 ## <a name="create-the-code-to-make-the-call"></a>Vytvoření kódu pro volání
-Následující kód ukazuje, jak sestavit **MakeCall. php**, který se volá, když uživatel odešle formulář zobrazený pomocí **callform. html**. Kód zobrazený níže vytvoří zprávu volání a vygeneruje volání. Také se ujistěte, že používáte účet Twilio a ověřovací token z [konzoly Twilio][twilio_console] místo zástupných hodnot přiřazených **$SID** a **$token** v následujícím kódu.
+Následující kód ukazuje, jak sestavit **MakeCall. php**, který se volá, když uživatel odešle formulář zobrazený pomocí **callform.html**. Kód zobrazený níže vytvoří zprávu volání a vygeneruje volání. Také se ujistěte, že používáte účet Twilio a ověřovací token z [konzoly Twilio][twilio_console] místo zástupných hodnot přiřazených **$SID** a **$token** v následujícím kódu.
 
 ```html
 <html>
@@ -100,7 +100,7 @@ echo "URI resource: " . $call->uri . "<br />";
 </html>
 ```
 
-Kromě toho, že **MakeCall. php** , zobrazuje některá metadata volání, jak je znázorněno na obrázku níže. Další informace o metadatech volání naleznete v [https://www.twilio.com/docs/api/rest/call#instance-properties][twilio_call_properties]tématu.
+Kromě toho, že **MakeCall. php** , zobrazuje některá metadata volání, jak je znázorněno na obrázku níže. Další informace o metadatech volání naleznete v tématu [https://www.twilio.com/docs/api/rest/call#instance-properties][twilio_call_properties] .
 
 ![Odpověď volání Azure pomocí Twilio a PHP][twilio_php_response]
 
@@ -111,10 +111,10 @@ Dalším krokem je [nasazení vaší aplikace do Azure Web Apps v Gitu](app-serv
 Tento kód vám poskytne základní funkce využívající Twilio v PHP v Azure. Před nasazením do Azure v produkčním prostředí budete možná chtít přidat další zpracování chyb nebo jiné funkce. Příklad:
 
 * Místo používání webového formuláře můžete použít objekty blob služby Azure Storage nebo SQL Database k ukládání telefonních čísel a volání textu. Informace o použití objektů BLOB služby Azure Storage v PHP najdete v tématu [použití Azure Storage s aplikacemi php][howto_blob_storage_php]. Informace o použití SQL Database v PHP najdete v tématu [použití SQL Database s aplikacemi php][howto_sql_azure_php].
-* Kód **MakeCall. php** používá Twilio adresu URL ([https://twimlets.com/message][twimlet_message_url]) k poskytnutí odpovědi Twilio Markup Language (TwiML), která informuje Twilio, jak pokračovat v volání. Například vrácený TwiML může obsahovat `<Say>` příkaz, který je výsledkem mluveného textu pro příjemce volání. Místo použití adresy URL poskytnuté v Twilio můžete vytvořit vlastní službu, která bude reagovat na žádost Twilio. Další informace najdete v tématu [použití Twilio pro hlasové a SMS funkce v php][howto_twilio_voice_sms_php]. Další informace o TwiML najdete na adrese [https://www.twilio.com/docs/api/twiml][twiml]a další informace o `<Say>` a dalších příkazech Twilio najdete na adrese. [https://www.twilio.com/docs/api/twiml/say][twilio_say]
-* Přečtěte si pokyny pro zabezpečení [https://www.twilio.com/docs/security][twilio_docs_security]Twilio na adrese.
+* Kód **MakeCall. php** používá Twilio adresu URL ( [https://twimlets.com/message][twimlet_message_url] ) k poskytnutí odpovědi Twilio Markup Language (TwiML), která informuje Twilio, jak pokračovat v volání. Například vrácený TwiML může obsahovat `<Say>` příkaz, který je výsledkem mluveného textu pro příjemce volání. Místo použití adresy URL poskytnuté v Twilio můžete vytvořit vlastní službu, která bude reagovat na žádost Twilio. Další informace najdete v tématu [použití Twilio pro hlasové a SMS funkce v php][howto_twilio_voice_sms_php]. Další informace o TwiML najdete na adrese a [https://www.twilio.com/docs/api/twiml][twiml] Další informace o `<Say>` a dalších příkazech Twilio najdete na adrese [https://www.twilio.com/docs/api/twiml/say][twilio_say] .
+* Přečtěte si pokyny pro zabezpečení Twilio na adrese [https://www.twilio.com/docs/security][twilio_docs_security] .
 
-Další informace o Twilio najdete v tématu [https://www.twilio.com/docs][twilio_docs].
+Další informace o Twilio najdete v tématu [https://www.twilio.com/docs][twilio_docs] .
 
 ## <a name="see-also"></a>Viz také
 * [Použití Twilio pro hlasové funkce a možnosti SMS v PHP](partner-twilio-php-how-to-use-voice-sms.md)

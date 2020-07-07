@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4743195fc79d43571ec79a13b8518edc7e81379b
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67109296"
 ---
 # <a name="determine-multi-factor-authentication-requirements-for-your-hybrid-identity-solution"></a>Určení požadavků služby Multi-Factor Authentication pro vaše řešení hybridní identity
@@ -58,6 +58,6 @@ Po zodpovězení předchozích otázek budete mít přehled o tom, jestli je už
 ## <a name="next-steps"></a>Další kroky
 [Definice strategie přijetí hybridní identity](plan-hybrid-identity-design-considerations-identity-adoption-strategy.md)
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 [Přehled otázek návrhu](plan-hybrid-identity-design-considerations-overview.md)
 

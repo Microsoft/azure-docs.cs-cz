@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: dobett
 ms.openlocfilehash: 6062f8b3992732e0e0f9bbdae9549e69c393f4ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67080488"
 ---
 # <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>Přizpůsobení způsobu, jakým řešení propojené továrny zobrazuje data ze serverů OPC UA
@@ -71,9 +71,9 @@ Další informace o mapování a agregaci dat pro splnění konkrétních požad
 
 ## <a name="deploy-the-changes"></a>Nasazení změn
 
-Až dokončíte provádění změn v souboru **ContosoTopologyDescription. JSON** , je nutné znovu nasadit řešení propojené továrny do svého účtu Azure.
+Po dokončení změn **ContosoTopologyDescription.jsv** souboru musíte řešení propojené továrny znovu nasadit do svého účtu Azure.
 
-Úložiště **Azure-IoT-Connected-Factory** obsahuje skript prostředí PowerShell pro **sestavení. ps1** , který můžete použít k opětovnému sestavení a nasazení řešení.
+Úložiště **Azure-IoT-Connected-Factory** zahrnuje **build.ps1** skript PowerShellu, který můžete použít k opětovnému sestavení a nasazení řešení.
 
 ## <a name="next-steps"></a>Další kroky
 

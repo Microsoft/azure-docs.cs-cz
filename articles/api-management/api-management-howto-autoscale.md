@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
 ms.openlocfilehash: 8c1c96fdb1f4f42c7592791881b855f74d411171
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70018293"
 ---
 # <a name="automatically-scale-an-azure-api-management-instance"></a>Automatické škálování instance služby Azure API Management  

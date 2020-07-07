@@ -16,10 +16,10 @@ ms.date: 03/20/2019
 ms.author: ril
 ms.reviewer: juliako
 ms.openlocfilehash: a8db8de6ef062dcf757f3d264379677d6550ea3a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "69997676"
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>Azure Media Analytics návodu k redigování
@@ -67,11 +67,11 @@ Výstup bude obsahovat soubor JSON poznámky s daty o poloze obličeje a také j
 
     ![Rozmazání obličejů](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough005.png)
 
-2. Volitelné Nahrajte soubor Dance_idlist. txt, který obsahuje seznam identifikátorů ID, které chcete redigování, oddělený novým řádkem. 
+2. Volitelné Nahrajte soubor Dance_idlist.txt, který obsahuje seznam identifikátorů ID, které chcete vyhodnotit, na nový řádek. 
 
     ![Rozmazání obličejů](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough006.png)
 
-3. Volitelné Proveďte jakékoli úpravy souboru poznámky. JSON, jako je například zvětšení hranic ohraničovacího rámečku. 
+3. Volitelné Proveďte úpravy annotations.jsv souboru, například zvětšení hranic ohraničovacího rámečku. 
 4. Klikněte pravým tlačítkem myši na výstupní prostředek od prvního průchodu, vyberte redigování a spusťte s režimem **redigování** . 
 
     ![Rozmazání obličejů](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough007.png)
@@ -95,11 +95,11 @@ Pokud jste vývojář, který se pokouší analyzovat data anotace JSON, podíve
     ![Rozmazání obličejů](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough009.png)
 
 2.  Stáhněte [si ffmpeg odsud.](https://ffmpeg.org/download.html) Tento projekt byl původně vyvinut s verzí be1d324 (2016-10-04) se statickým propojením. 
-3.  Zkopírujte ffmpeg. exe a ffprobe. exe do stejné výstupní složky jako AzureMediaRedactor. exe. 
+3.  Zkopírujte ffmpeg.exe a ffprobe.exe do stejné výstupní složky jako AzureMediaRedactor.exe. 
 
     ![Rozmazání obličejů](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough010.png)
 
-4. Spusťte AzureMediaRedactor. exe. 
+4. Spusťte AzureMediaRedactor.exe. 
 
 ### <a name="use-the-tool"></a>Použití nástroje
 
@@ -113,10 +113,10 @@ Pokud jste vývojář, který se pokouší analyzovat data anotace JSON, podíve
     
     ![Rozmazání obličejů](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough012.png)
 
-5.  Dolní textové pole se aktualizuje s ID tváře. Vytvořte soubor s názvem "idlist. txt" s těmito ID jako seznam s odděleným novým řádkem. 
+5.  Dolní textové pole se aktualizuje s ID tváře. Vytvoří soubor s názvem "idlist.txt" s těmito ID jako seznam s odděleným novým řádkem. 
 
     >[!NOTE]
-    > Idlist. txt by se měl uložit ve standardu ANSI. Pomocí poznámkového bloku můžete ušetřit v ANSI.
+    > idlist.txt by měl být uložen ve standardu ANSI. Pomocí poznámkového bloku můžete ušetřit v ANSI.
     
 6.  Nahrajte tento soubor do výstupního prostředku z kroku 1. Nahrajte také původní video do tohoto assetu a nastavte ho jako primární Asset. 
 7.  Spusťte úlohu redigování na tomto assetu pomocí režimu "redigování", abyste získali konečné navýšení videa. 

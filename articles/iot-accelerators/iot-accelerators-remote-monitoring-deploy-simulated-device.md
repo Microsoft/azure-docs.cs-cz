@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 08/15/2018
 ms.topic: conceptual
 ms.openlocfilehash: 7cbab38db859935c9f4490d79a131d6c9a7e302b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "66427563"
 ---
 # <a name="deploy-a-new-simulated-device"></a>Nasazení nového simulovaného zařízení
@@ -40,7 +40,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 Pokud chcete postupovat podle tohoto návodu, budete potřebovat:
 
 - Nasazená instance [akcelerátoru řešení vzdáleného monitorování](https://www.azureiotsolutions.com/Accelerators#solutions/types/RM2).
-- Místní prostředí **bash** pro spuštění příkazů `ssh` a `scp` . V systému Windows je snadný způsob, jak nainstalovat **bash** , je nainstalovat [Git](https://git-scm.com/download/win).
+- Místní prostředí **bash** pro spuštění `ssh` `scp` příkazů a. V systému Windows je snadný způsob, jak nainstalovat **bash** , je nainstalovat [Git](https://git-scm.com/download/win).
 - Vlastní soubory modelu zařízení, například ty, které jsou popsány v tématu [Vytvoření a otestování nového simulovaného zařízení](iot-accelerators-remote-monitoring-create-simulated-device.md).
 
 [!INCLUDE [iot-solution-accelerators-access-vm](../../includes/iot-solution-accelerators-access-vm.md)]

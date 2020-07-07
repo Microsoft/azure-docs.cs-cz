@@ -16,10 +16,10 @@ ms.date: 10/30/2014
 ms.author: erikre
 ms.reviewer: vibhork;dominic.may@sendgrid.com;elmer.thomas@sendgrid.com
 ms.openlocfilehash: 35307848c09391ae4468afc00adafd8171aaaa7b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67876485"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java-in-an-azure-deployment"></a>Odeslání e-mailu pomocí SendGrid z Java v nasazení Azure
@@ -33,7 +33,7 @@ Výsledný e-mail bude vypadat podobně jako na následujícím snímku obrazovk
 
 Chcete-li použít kód v tomto tématu, musíte provést následující:
 
-1. Získejte javax. mail jar, například z <https://www.oracle.com/technetwork/java/javamail/index.html>.
+1. Získejte javax. mail jar, například z <https://www.oracle.com/technetwork/java/javamail/index.html> .
 2. Přidejte jar do cesty k sestavení Java.
 3. Pokud k vytvoření této aplikace v jazyce Java používáte zatmění, můžete do souboru nasazení aplikace (WAR) zahrnout knihovny SendGrid pomocí funkce sestavení nasazení v zatmění. Pokud k vytvoření této aplikace v jazyce Java nepoužíváte zatmění, zajistěte, aby byly knihovny zahrnuty v rámci stejné role Azure jako aplikace Java a přidaly se do cesty třídy vaší aplikace.
 
@@ -42,7 +42,7 @@ K odeslání e-mailu musíte mít také vlastní uživatelské jméno a heslo pr
 Kromě toho se seznamte s informacemi při [vytváření Hello World aplikace pro Azure v zatmění](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app?view=azure-java-stable)nebo s jinými postupy pro hostování aplikací Java v Azure, pokud nepoužíváte zatmění, důrazně se doporučuje.
 
 ## <a name="create-a-web-form-for-sending-email"></a>Vytvoření webového formuláře pro odesílání e-mailů
-Následující kód ukazuje, jak vytvořit webový formulář pro načtení uživatelských dat pro odesílání e-mailů. Pro účely tohoto obsahu se soubor JSP jmenuje **emailform. jsp**.
+Následující kód ukazuje, jak vytvořit webový formulář pro načtení uživatelských dat pro odesílání e-mailů. Pro účely tohoto obsahu se soubor JSP jmenuje **emailform.jsp**.
 
     <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
         pageEncoding="ISO-8859-1" %>
@@ -98,7 +98,7 @@ Následující kód ukazuje, jak vytvořit webový formulář pro načtení uži
     </html>
 
 ## <a name="create-the-code-to-send-the-email"></a>Vytvoření kódu k odeslání e-mailu
-Následující kód, který je volán po vyplnění formuláře v emailform. jsp, vytvoří e-mailovou zprávu a odešle ji. Pro účely tohoto obsahu se soubor JSP jmenuje **SendEmail. jsp**.
+Následující kód, který je volán při dokončování formuláře v emailform.jsp, vytvoří e-mailovou zprávu a odešle ji. Pro účely tohoto obsahu se soubor JSP jmenuje **sendemail.jsp**.
 
     <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
         pageEncoding="ISO-8859-1" import="javax.activation.*, javax.mail.*, javax.mail.internet.*, java.util.Date, java.util.Properties" %>
@@ -205,12 +205,12 @@ Následující kód, který je volán po vyplnění formuláře v emailform. jsp
     </body>
     </html>
 
-Kromě odeslání e-mailu poskytuje emailform. jsp výsledek pro uživatele. Příkladem je následující snímek obrazovky:
+Kromě posílání e-mailů poskytuje emailform.jsp výsledek pro uživatele. Příkladem je následující snímek obrazovky:
 
 ![Odeslat výsledek pošty][emailresult]
 
 ## <a name="next-steps"></a>Další kroky
-Nasaďte aplikaci do emulátoru služby COMPUTE a v prohlížeči spusťte emailform. jsp, zadejte hodnoty do formuláře, klikněte na **Odeslat tento e-mail**a potom se podívejte na výsledky v SendEmail. jsp.
+Nasaďte aplikaci do emulátoru služby COMPUTE a v rámci prohlížeče spusťte emailform.jsp, zadejte hodnoty do formuláře, klikněte na **Odeslat tento e-mail**a potom se podívejte na výsledky v sendemail.jsp.
 
 Tento kód vám ukáže, jak používat SendGrid v jazyce Java v Azure. Před nasazením do Azure v produkčním prostředí budete možná chtít přidat další zpracování chyb nebo jiné funkce. Příklad: 
 

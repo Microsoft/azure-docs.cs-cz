@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
 ms.openlocfilehash: 4822e6feb29f5a17c653a60937b895ec584e0ee4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "69637203"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-ruby"></a>Použití Twilio pro hlasové funkce a možnosti SMS v Ruby
@@ -28,7 +28,7 @@ Twilio je telefonní rozhraní API pro webové služby, které umožňuje použ�
 **Twilio Voice** umožňuje vašim aplikacím vytvářet a přijímat telefonní hovory. **TWILIO SMS** umožňuje vašim aplikacím vytvářet a přijímat zprávy SMS. **Klient Twilio** umožňuje aplikacím povolit hlasovou komunikaci pomocí stávajících připojení k Internetu, včetně mobilních připojení.
 
 ## <a name="twilio-pricing-and-special-offers"></a><a id="Pricing"></a>Ceny Twilio a speciální nabídky
-Informace o cenách Twilio jsou dostupné v [Twilio cenách][twilio_pricing]. Zákazníci Azure obdrží [speciální nabídku][special_offer]: bezplatný kredit 1000ch textů nebo 1000 příchozích minut. Pokud se chcete přihlásit k této nabídce nebo získat další informace, navštivte [https://ahoy.twilio.com/azure][special_offer]prosím.  
+Informace o cenách Twilio jsou dostupné v [Twilio cenách][twilio_pricing]. Zákazníci Azure obdrží [speciální nabídku][special_offer]: bezplatný kredit 1000ch textů nebo 1000 příchozích minut. Pokud se chcete přihlásit k této nabídce nebo získat další informace, navštivte prosím [https://ahoy.twilio.com/azure][special_offer] .  
 
 ## <a name="concepts"></a><a id="Concepts"></a>Koncepty
 Rozhraní Twilio API je rozhraní RESTful API, které poskytuje funkce hlasu a SMS pro aplikace. Klientské knihovny jsou k dispozici v několika jazycích. seznam najdete v tématu [knihovny rozhraní API pro Twilio][twilio_libraries].
@@ -46,20 +46,20 @@ Například následující TwiML převede text **Hello World** na řeč.
 Všechny dokumenty TwiML mají `<Response>` jako svůj kořenový element. Odtud použijete příkazy Twilio k definování chování aplikace.
 
 ### <a name="twiml-verbs"></a><a id="Verbs"></a>Operace TwiML
-Příkazy Twilio jsou značky XML, které oznamují Twilio, co **dělat**. Například příkaz ** &lt;vyslovit&gt; ** instruuje Twilio, aby audibly doručení zprávy na volání. 
+Příkazy Twilio jsou značky XML, které oznamují Twilio, co **dělat**. Například příkaz ** &lt; vyslovit &gt; ** instruuje Twilio, aby audibly doručení zprávy na volání. 
 
 Následuje seznam operací Twilio.
 
-* Vytočit: připojí volajícího k jinému telefonu. ** &lt;&gt;**
-* Shromáždit: shromažďuje číselné číslice, které jsou zadány na klávesnici na telefonu. ** &lt;&gt;**
-* Hangup: ukončí volání. ** &lt;&gt;**
-* Přehrát: přehraje zvukový soubor. ** &lt;&gt;**
-* Pozastavit: netiché čekání po zadaný počet sekund. ** &lt;&gt;**
-* Záznam: zaznamenává hlas volajícího a vrátí adresu URL souboru, který obsahuje záznam. ** &lt;&gt;**
-* Přesměrování: přenáší řízení volání nebo SMS na TwiML na jinou adresu URL. ** &lt;&gt;**
-* Odmítnout: odmítne příchozí volání na číslo Twilio bez fakturace. ** &lt;&gt;**
-* Řekněme: převede text na řeč, který se provádí na volání. ** &lt;&gt;**
-* SMS: pošle zprávu SMS. ** &lt;&gt;**
+* ** &lt; Vytočit &gt; **: připojí volajícího k jinému telefonu.
+* ** &lt; Shromáždit &gt; **: shromažďuje číselné číslice, které jsou zadány na klávesnici na telefonu.
+* ** &lt; Hangup &gt; **: ukončí volání.
+* ** &lt; Přehrát &gt; **: přehraje zvukový soubor.
+* ** &lt; Pozastavit &gt; **: netiché čekání po zadaný počet sekund.
+* ** &lt; Záznam &gt; **: zaznamenává hlas volajícího a vrátí adresu URL souboru, který obsahuje záznam.
+* ** &lt; Přesměrování &gt; **: přenáší řízení volání nebo SMS na TwiML na jinou adresu URL.
+* ** &lt; Odmítnout &gt; **: odmítne příchozí volání na číslo Twilio bez fakturace.
+* ** &lt; Řekněme &gt; **: převede text na řeč, který se provádí na volání.
+* ** &lt; SMS &gt; **: pošle zprávu SMS.
 
 Další informace o příkazech Twilio, jejich atributech a TwiML naleznete v tématu [TwiML][twiml]. Další informace o rozhraní Twilio API najdete v tématu [rozhraní Twilio API][twilio_api].
 
@@ -86,7 +86,7 @@ Připojte se k novému VIRTUÁLNÍmu počítači přes SSH a vytvořte adresář
     gem 'sinatra'
     gem 'thin'
 
-Na příkazovém řádku spusťte `bundle install`příkaz. Tím se nainstalují výše uvedené závislosti. Dále vytvořte soubor s názvem `web.rb`. To bude místo, kde je kód vaší webové aplikace život. Vložte do něj následující kód:
+Na příkazovém řádku spusťte příkaz `bundle install` . Tím se nainstalují výše uvedené závislosti. Dále vytvořte soubor s názvem `web.rb` . To bude místo, kde je kód vaší webové aplikace život. Vložte do něj následující kód:
 
     require 'sinatra'
 
@@ -94,14 +94,14 @@ Na příkazovém řádku spusťte `bundle install`příkaz. Tím se nainstalují
         "Hello Monkey!"
     end
 
-V tomto okamžiku byste měli být moci spustit příkaz `ruby web.rb -p 5000`. Tím se vytočí malý webový server na portu 5000. Měli byste být schopni přejít do této aplikace v prohlížeči, a to návštěvou adresy URL, kterou jste nastavili pro virtuální počítač Azure. Až se dostanete k webové aplikaci v prohlížeči, můžete začít vytvářet aplikace v Twilio.
+V tomto okamžiku byste měli být moci spustit příkaz `ruby web.rb -p 5000` . Tím se vytočí malý webový server na portu 5000. Měli byste být schopni přejít do této aplikace v prohlížeči, a to návštěvou adresy URL, kterou jste nastavili pro virtuální počítač Azure. Až se dostanete k webové aplikaci v prohlížeči, můžete začít vytvářet aplikace v Twilio.
 
 ## <a name="configure-your-application-to-use-twilio"></a><a id="configure_app"></a>Konfigurace aplikace tak, aby používala Twilio
-Webovou aplikaci můžete nakonfigurovat tak, aby používala knihovnu Twilio, a to `Gemfile` tak, že se aktualizuje tak, aby zahrnovala tento řádek:
+Webovou aplikaci můžete nakonfigurovat tak, aby používala knihovnu Twilio, a to tak, že `Gemfile` se aktualizuje tak, aby zahrnovala tento řádek:
 
     gem 'twilio-ruby'
 
-Na příkazovém řádku spusťte `bundle install`příkaz. Nyní otevřete `web.rb` a včetně tohoto řádku v horní části:
+Na příkazovém řádku spusťte příkaz `bundle install` . Nyní otevřete `web.rb` a včetně tohoto řádku v horní části:
 
     require 'twilio-ruby'
 
@@ -110,7 +110,7 @@ Teď jste vše nastavili pro použití pomocné knihovny Twilio pro Ruby ve vaš
 ## <a name="how-to-make-an-outgoing-call"></a><a id="howto_make_call"></a>Postupy: provedení odchozího volání
 Následující příklad ukazuje, jak provést odchozí volání. Klíčové koncepty zahrnují použití pomocné knihovny Twilio pro Ruby, která umožňuje REST API volání a vykreslování TwiML. Vysaďte hodnoty pro čísla **z** a **na** telefonní číslo a ujistěte se, že jste před spuštěním kódu ověřili předplatné **z** telefonního čísla účtu Twilio.
 
-Přidat tuto funkci do `web.md`:
+Přidat tuto funkci do `web.md` :
 
     # Set your account ID and authentication token.
     sid = "your_twilio_account_sid";
@@ -140,16 +140,16 @@ Přidat tuto funkci do `web.md`:
        </Response>"
     end
 
-Pokud otevřete `http://yourdomain.cloudapp.net/make_call` v prohlížeči, který aktivuje volání rozhraní Twilio API, aby mohl telefonní hovor uskutečnit. První dva parametry v `client.account.calls.create` jsou poměrně vysvětlované: číslo volání `from` a číslo, které je `to`volání. 
+Pokud otevřete `http://yourdomain.cloudapp.net/make_call` v prohlížeči, který aktivuje volání rozhraní Twilio API, aby mohl telefonní hovor uskutečnit. První dva parametry v jsou poměrně vysvětlované `client.account.calls.create` : číslo volání `from` a číslo, které je volání `to` . 
 
-Třetí parametr (`url`) je adresa URL, kterou Twilio požadavky na informace o tom, co se má provést po připojení volání. V tomto případě nastavíme adresu URL (`http://yourdomain.cloudapp.net`), která vrátí jednoduchý dokument TwiML a pomocí `<Say>` příkazu provede určitý převod textu na řeč a vysloví "Hello opice" osobě, která hovor přijme.
+Třetí parametr ( `url` ) je adresa URL, kterou Twilio požadavky na informace o tom, co se má provést po připojení volání. V tomto případě nastavíme adresu URL ( `http://yourdomain.cloudapp.net` ), která vrátí jednoduchý dokument TwiML a pomocí `<Say>` příkazu provede určitý převod textu na řeč a vysloví "Hello opice" osobě, která hovor přijme.
 
 ## <a name="how-to-receive-an-sms-message"></a><a id="howto_receive_sms"></a>Postupy: přijetí zprávy SMS
 V předchozím příkladu jsme iniciovali **odchozí** telefonní hovor. Tentokrát použijeme telefonní číslo, které vám Twilio při registraci pomohlo zpracovat **příchozí** zprávu SMS.
 
 Nejdřív se přihlaste ke svému [řídicímu panelu Twilio][twilio_account]. V horním navigačním navigačním panelu klikněte na čísla a pak klikněte na Twilio číslo, které jste zadali. Zobrazí se dvě adresy URL, které můžete konfigurovat. Adresa URL požadavku hlasu a adresa URL požadavku serveru SMS. Jedná se o adresy URL, které Twilio volá při každém provedení telefonního hovoru, nebo se pošle SMS na vaše číslo. Adresy URL se označují také jako Webhooky.
 
-Chceme zpracovat příchozí zprávy SMS, takže pojďme adresu URL aktualizovat na `http://yourdomain.cloudapp.net/sms_url`. Pokračujte a v dolní části stránky klikněte na Uložit změny. Teď se vraťte do `web.rb` programu, abychom tuto aplikaci zpracovali:
+Chceme zpracovat příchozí zprávy SMS, takže pojďme adresu URL aktualizovat na `http://yourdomain.cloudapp.net/sms_url` . Pokračujte a v dolní části stránky klikněte na Uložit změny. Teď se vraťte do `web.rb` programu, abychom tuto aplikaci zpracovali:
 
     post '/sms_url' do
       "<Response>

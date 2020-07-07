@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: apimpm
 ms.openlocfilehash: c10939b50a66cd608d27a71f02d959fbc2380f59
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70072307"
 ---
 # <a name="policies-in-azure-api-management"></a>Zásady ve službě Azure API Management
@@ -38,7 +38,7 @@ Kliknutím na příkaz Enabled přidáte příslušný kód XML do umístění k
 > 
 > 
 
-Konfigurace je rozdělena do `inbound`, `backend`, `outbound`a `on-error`. Řada zadaných příkazů zásad se spustí v pořadí podle požadavku a odpovědi.
+Konfigurace je rozdělena do `inbound` , `backend` , `outbound` a `on-error` . Řada zadaných příkazů zásad se spustí v pořadí podle požadavku a odpovědi.
 
 ```xml
 <policies>
@@ -58,7 +58,7 @@ Konfigurace je rozdělena do `inbound`, `backend`, `outbound`a `on-error`. Řada
 </policies> 
 ```
 
-Pokud během zpracování požadavku dojde k chybě, všechny zbývající kroky `inbound`v, `backend`nebo `outbound` se přeskočí a provádění přejde na příkazy v `on-error` části. Vložením příkazů zásad v `on-error` části můžete zkontrolovat chybu pomocí `context.LastError` vlastnosti, zkontrolovat a přizpůsobit chybovou odpověď pomocí `set-body` zásad a nakonfigurovat, co se stane, když dojde k chybě. K dispozici jsou kódy chyb pro integrované kroky a chyby, ke kterým může dojít během zpracování příkazů zásad. Další informace najdete v tématu [zpracování chyb v zásadách API Management](/azure/api-management/api-management-error-handling-policies).
+Pokud během zpracování požadavku dojde k chybě, všechny zbývající kroky v `inbound` , `backend` nebo se přeskočí `outbound` a provádění přejde na příkazy v `on-error` části. Vložením příkazů zásad v `on-error` části můžete zkontrolovat chybu pomocí `context.LastError` vlastnosti, zkontrolovat a přizpůsobit chybovou odpověď pomocí `set-body` zásad a nakonfigurovat, co se stane, když dojde k chybě. K dispozici jsou kódy chyb pro integrované kroky a chyby, ke kterým může dojít během zpracování příkazů zásad. Další informace najdete v tématu [zpracování chyb v zásadách API Management](/azure/api-management/api-management-error-handling-policies).
 
 ## <a name="how-to-configure-policies"></a><a name="scopes"> </a>Postup konfigurace zásad
 
@@ -92,7 +92,7 @@ V příkladu výše uvedené definice zásad se `cross-domain` příkaz spustí 
 
 ### <a name="restrict-incoming-requests"></a>Omezit příchozí požadavky
 
-Chcete-li přidat nový příkaz pro omezení příchozích požadavků na zadané IP adresy, umístěte kurzor přímo do obsahu elementu `inbound` XML a klikněte na příkaz omezit počet **IP adres volajícího** .
+Chcete-li přidat nový příkaz pro omezení příchozích požadavků na zadané IP adresy, umístěte kurzor přímo do obsahu `inbound` elementu XML a klikněte na příkaz omezit počet **IP adres volajícího** .
 
 ![Zásady omezení][policies-restrict]
 

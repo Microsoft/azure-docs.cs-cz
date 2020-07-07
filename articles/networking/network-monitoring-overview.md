@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: agummadi
 ms.openlocfilehash: 2912488286745bf8d2e567d09e445b0a44dc7c39
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67672182"
 ---
 # <a name="network-monitoring-solutions"></a>Řešení monitorování sítě 
@@ -70,7 +70,7 @@ NPM for ExpressRoute nabízí komplexní monitorování ExpressRoute pro privát
 
 ![Geografické mapování znázorňující přenos napříč oblastmi](./media/network-monitoring-overview/expressroute-topology-map.png) 
 
-Další informace najdete v těchto článcích:
+Další informace najdete v následujících článcích:
 
 * [Konfigurace Network Performance Monitoru pro ExpressRoute](../expressroute/how-to-npm.md)
 * [Příspěvek na blogu](https://aka.ms/NPMExRmonitorGA)
@@ -86,7 +86,7 @@ Díky monitorování připojení služby teď můžete testovat dostupnost aplik
 * Určení aktivních bodů v síti, které mohou způsobovat špatný výkon aplikace
 * Pomocí integrovaných testů pro systém Microsoft Office 365, Dynamics 365, Skype pro firmy a dalších služeb Microsoftu můžete monitorovat dostupnost aplikací Office 365.
 
-Další informace najdete v těchto článcích:
+Další informace najdete v následujících článcích:
 
 * [Konfigurace Network Performance Monitor pro monitorování koncových bodů služby](../azure-monitor/insights/network-performance-monitor-service-connectivity.md#configuration)
 * [Příspěvek na blogu](https://aka.ms/svcendptmonitor)

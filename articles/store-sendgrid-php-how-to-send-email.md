@@ -16,10 +16,10 @@ ms.date: 10/30/2014
 ms.author: erikre
 ms.reviewer: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork; matt.bernier@sendgrid.com
 ms.openlocfilehash: b3a9fee09d1eac6fb4d716af83c348cb2c21f7a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67870914"
 ---
 # <a name="how-to-use-the-sendgrid-email-service-from-php"></a>Jak používat e-mailovou službu SendGrid z PHP
@@ -37,7 +37,7 @@ SendGrid je [Cloudová e-mailová služba] , která poskytuje spolehlivé zasíl
 * Předávání dotazů zákazníkům
 * E-mailová oznámení z vaší aplikace
 
-Další informace najdete v tématu [https://sendgrid.com][https://sendgrid.com].
+Další informace najdete na webu [https://sendgrid.com][https://sendgrid.com].
 
 ## <a name="create-a-sendgrid-account"></a>Vytvoření účtu SendGrid
 
@@ -53,7 +53,7 @@ Můžete posílat e-maily buď pomocí protokolu SMTP, nebo webového rozhraní 
 
 ### <a name="smtp-api"></a>API SMTP
 
-Pokud chcete odesílat e-maily pomocí rozhraní API služby SendGrid SMTP, použijte k posílání e-mailů z aplikací PHP knihovnu založenou na komponentě *SWIFT*. Můžete si stáhnout [poštovní knihovnu SWIFT](https://swiftmailer.symfony.com/) v 5.3.0 (použijte [skladatele] k instalaci poštovního pole SWIFT). Odesílání e-mailů s knihovnou zahrnuje vytváření `Swift\_SmtpTransport`instancí `Swift\_Mailer`tříd, `Swift\_Message` , a nastavení odpovídajících vlastností a volání `Swift\_Mailer::send` metody.
+Pokud chcete odesílat e-maily pomocí rozhraní API služby SendGrid SMTP, použijte k posílání e-mailů z aplikací PHP knihovnu založenou na komponentě *SWIFT*. Můžete si stáhnout [poštovní knihovnu SWIFT](https://swiftmailer.symfony.com/) v 5.3.0 (použijte [skladatele] k instalaci poštovního pole SWIFT). Odesílání e-mailů s knihovnou zahrnuje vytváření `Swift\_SmtpTransport` instancí `Swift\_Mailer` tříd,, a `Swift\_Message` nastavení odpovídajících vlastností a volání `Swift\_Mailer::send` metody.
 
 ```php
 <?php
@@ -239,7 +239,7 @@ Další řádek kódu je následující:
  $message->attach(Swift_Attachment::fromPath("path\to\file")->setFileName('file_name'));
 ```
 
-Tento řádek kódu volá metodu Attach `Swift\_Message` objektu a používá statickou metodu `fromPath` pro `Swift\_Attachment` třídu k získání a připojení souboru ke zprávě.
+Tento řádek kódu volá metodu Attach `Swift\_Message` objektu a používá statickou metodu pro `fromPath` `Swift\_Attachment` třídu k získání a připojení souboru ke zprávě.
 
 ### <a name="web-api"></a>Webové rozhraní API
 

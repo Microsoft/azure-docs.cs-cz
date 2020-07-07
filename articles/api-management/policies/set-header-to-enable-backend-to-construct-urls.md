@@ -13,17 +13,17 @@ ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
 ms.openlocfilehash: e525029ae8eab086d11126a4e18958423e207aa1
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70067504"
 ---
 # <a name="add-a-forwarded-header"></a>Přidat předanou hlavičku
 
 Tento článek ukazuje ukázku zásad služby Azure API Management, která ukazuje, jak přidat předanou hlavičku ve vstupní žádosti, aby back-end rozhraní API umožnilo vytváření správných adres URL. Pokud chcete nastavit nebo upravit kód zásady, postupujte podle kroků popsaných v tématu [nastavení nebo úprava zásad](../set-edit-policies.md). Další příklady najdete v tématu [ukázky zásad](../policy-samples.md).
 
-## <a name="code"></a>kód
+## <a name="code"></a>Kód
 
 Vložte kód do **vstupního** bloku.
 

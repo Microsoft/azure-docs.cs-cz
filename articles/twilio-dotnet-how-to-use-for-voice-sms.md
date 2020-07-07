@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 04/24/2015
 ms.author: gwallace
 ms.openlocfilehash: 22b33d7b4b0ff69a2e751cadff70453f73ed4f8e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "69876810"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-from-azure"></a>Jak používat Twilio pro hlasové funkce a SMS z Azure
@@ -38,7 +38,7 @@ Rozhraní Twilio API je rozhraní RESTful API, které poskytuje funkce hlasu a S
 Klíčovými aspekty rozhraní Twilio API jsou Twilio příkazy a Twilio Markup Language (TwiML).
 
 ### <a name="twilio-verbs"></a><a id="Verbs"></a>Operace Twilio
-Rozhraní API využívá operace Twilio; Například příkaz ** &lt;vyslovit&gt; ** instruuje Twilio, aby audibly doručení zprávy na volání.
+Rozhraní API využívá operace Twilio; Například příkaz ** &lt; vyslovit &gt; ** instruuje Twilio, aby audibly doručení zprávy na volání.
 
 Následuje seznam operací Twilio.  Přečtěte si o dalších příkazech a funkcích prostřednictvím [dokumentace jazyka Twilio Markup Language](https://www.twilio.com/docs/api/twiml).
 
@@ -98,7 +98,7 @@ Ukázky uvedené v této příručce používají knihovnu Twilio. API.
 
 Knihovny lze [nainstalovat pomocí rozšíření Správce balíčků NuGet](https://www.twilio.com/docs/csharp/install) dostupného pro sadu Visual Studio 2010 až 2015.  Zdrojový kód je hostovaný na [GitHubu][twilio_github_repo], který obsahuje wiki, který obsahuje ucelenou dokumentaci pro používání knihoven.
 
-Ve výchozím nastavení Microsoft Visual Studio 2010 nainstaluje verzi 1,2 sady NuGet. Instalace knihoven Twilio vyžaduje verzi 1,6 nástroje NuGet nebo vyšší. Informace o instalaci nebo aktualizaci NuGet najdete v tématu [https://nuget.org/][nuget].
+Ve výchozím nastavení Microsoft Visual Studio 2010 nainstaluje verzi 1,2 sady NuGet. Instalace knihoven Twilio vyžaduje verzi 1,6 nástroje NuGet nebo vyšší. Informace o instalaci nebo aktualizaci NuGet najdete v tématu [https://nuget.org/][nuget] .
 
 > [!NOTE]
 > Chcete-li nainstalovat nejnovější verzi nástroje NuGet, je nutné nejprve odinstalovat načtenou verzi pomocí Správce rozšíření sady Visual Studio. K tomu je nutné spustit aplikaci Visual Studio jako správce. V opačném případě je tlačítko odinstalovat zakázané.
@@ -106,7 +106,7 @@ Ve výchozím nastavení Microsoft Visual Studio 2010 nainstaluje verzi 1,2 sady
 >
 
 ### <a name="to-add-the-twilio-libraries-to-your-visual-studio-project"></a><a id="use_nuget"></a>Přidání knihoven Twilio do projektu aplikace Visual Studio:
-1. Otevřete řešení v aplikaci Visual Studio.
+1. Otevřete své řešení v prostředí Visual Studio.
 2. Klikněte pravým tlačítkem na **odkazy**.
 3. Klikněte na **Spravovat balíčky NuGet...**
 4. Klikněte na možnost **online**.
@@ -139,7 +139,7 @@ var call = CallResource.Create(
     }
 ```
 
-Další informace o parametrech předaných metodě **CallResource. Create** naleznete v tématu [https://www.twilio.com/docs/api/rest/making-calls][twilio_rest_making_calls].
+Další informace o parametrech předaných metodě **CallResource. Create** naleznete v tématu [https://www.twilio.com/docs/api/rest/making-calls][twilio_rest_making_calls] .
 
 Jak bylo zmíněno, tento kód používá Twilio web k vrácení TwiML odpovědi. Místo toho můžete k poskytnutí odpovědi TwiML použít svůj vlastní web. Další informace najdete v tématu [Postup: poskytování TwiML odpovědí z vašeho vlastního webu](#howto_provide_twiml_responses).
 
@@ -171,10 +171,10 @@ catch (TwilioException ex)
 ```
 
 ## <a name="how-to-provide-twiml-responses-from-your-own-website"></a><a id="howto_provide_twiml_responses"></a>Postupy: poskytování odpovědí TwiML z vašeho vlastního webu
-Když vaše aplikace zahájí volání rozhraní Twilio API – například prostřednictvím metody **CallResource. Create** -Twilio odešle vaši žádost na adresu URL, která by měla vrátit odpověď TwiML. Příklad v tématu [Postup: provedení odchozího volání](#howto_make_call) používá adresu URL [https://twimlets.com/message][twimlet_message_url] poskytnutou Twilio k vrácení odpovědi.
+Když vaše aplikace zahájí volání rozhraní Twilio API – například prostřednictvím metody **CallResource. Create** -Twilio odešle vaši žádost na adresu URL, která by měla vrátit odpověď TwiML. Příklad v tématu [Postup: provedení odchozího volání](#howto_make_call) používá adresu URL poskytnutou Twilio [https://twimlets.com/message][twimlet_message_url] k vrácení odpovědi.
 
 > [!NOTE]
-> I když je TwiML navržený pro použití webovými službami, můžete si Zobrazit TwiML v prohlížeči. Například kliknutím [https://twimlets.com/message][twimlet_message_url] zobrazíte prázdný `<Response>` element. jako další příklad můžete kliknutím [https://twimlets.com/message?Message%5B0%5D=Hello%20World](https://twimlets.com/message?Message%5B0%5D=Hello%20World) zobrazit `<Response>` prvek, který obsahuje element &lt;řekněme.&gt;
+> I když je TwiML navržený pro použití webovými službami, můžete si Zobrazit TwiML v prohlížeči. Například kliknutím [https://twimlets.com/message][twimlet_message_url] zobrazíte prázdný `<Response>` prvek. jako jiný příklad [https://twimlets.com/message?Message%5B0%5D=Hello%20World](https://twimlets.com/message?Message%5B0%5D=Hello%20World) můžete kliknutím zobrazit `<Response>` prvek, který obsahuje &lt; &gt; element řekněme.
 >
 
 Místo toho, abyste museli spoléhat na adresu URL zadanou v Twilio, můžete vytvořit vlastní adresu URL, která bude vracet odpovědi HTTP. Web můžete vytvořit v jakémkoli jazyce, který vrací odpovědi HTTP. Toto téma předpokládá, že budete hostovat adresu URL z obecné obslužné rutiny ASP.NET.
@@ -251,7 +251,7 @@ namespace WebRole1
 }
 ```
 
-Další informace o TwiML najdete v tématu [https://www.twilio.com/docs/api/twiml](https://www.twilio.com/docs/api/twiml).
+Další informace o TwiML najdete v tématu [https://www.twilio.com/docs/api/twiml](https://www.twilio.com/docs/api/twiml) .
 
 Jakmile nastavíte způsob, jak poskytnout odpovědi TwiML, můžete tuto adresu URL předat metodě **CallResource. Create** . Například pokud máte webovou aplikaci s názvem MyTwiML nasazenou do cloudové služby Azure a název vaší obslužné rutiny ASP.NET je MyTwiML. ashx, adresa URL může být předána **CallResource. Create** , jak je znázorněno v následující ukázce kódu:
 

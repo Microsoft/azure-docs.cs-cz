@@ -14,10 +14,10 @@ ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 33d52f871de75a7f7d34016b040e44d6f1623fd8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70101260"
 ---
 # <a name="disaster-recovery-principles"></a>Principy zotavení po havárii
@@ -64,7 +64,7 @@ Dalším krokem je instalace druhé instance SAP HANA na velké jednotce instanc
 
 - Proveďte krok 2 pro přípravu snímku úložiště, který je popsaný v tématu [zálohování a obnovení](hana-backup-restore.md).
 - Pokud jste tak ještě neučinili, vytvořte veřejný klíč pro jednotku velkých instancí HANA jednotky pro zotavení po havárii. Viz krok 3 přípravy snímku úložiště, který je popsaný v tématu [zálohování a obnovení](hana-backup-restore.md).
-- Udržujte *HANABackupCustomerDetails. txt* s novou instancí Hana a otestujete, jestli připojení k úložišti funguje správně.  
+- Udržujte *HANABackupCustomerDetails.txt* s novou instancí Hana a otestujete, jestli připojení k úložišti funguje správně.  
 - Zastavte nově nainstalovanou instanci SAP HANA na jednotce velkých instancí HANA v oblasti Azure DR.
 - Odpojte tyto svazky PRD a obraťte se SAP HANA na správu služeb Azure. Svazky nemůžou zůstat připojené k jednotce, protože nemůžou být dostupné, když budou fungovat jako cíl replikace úložiště.  
 
