@@ -14,10 +14,10 @@ ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: f3bb4dd1c564e5f6c4a8ee1bb5bf7424a74a339e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81533985"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>Použití MSAL v národním cloudovém prostředí
@@ -29,8 +29,8 @@ Kromě celosvětového cloudu společnosti Microsoft Microsoft Authentication Li
 Zahrnutí globálního cloudu Azure Active Directory (Azure AD) je nasazeno v následujících národních cloudech:  
 
 - Azure Government
-- Azure China 21Vianet
-- Azure Germany
+- Azure (Čína) 21Vianet
+- Azure (Německo)
 
 Tato příručka ukazuje, jak se přihlásit k pracovním a školním účtům, získat přístupový token a volat rozhraní API Microsoft Graph v [cloudovém prostředí Azure Government](https://azure.microsoft.com/global-infrastructure/government/) .
 
@@ -66,11 +66,11 @@ Následující kurzy ukazují, jak vytvořit webovou aplikaci .NET Core 2,2 MVC.
 
 ## <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Chcete-li povolit aplikaci MSAL. js pro cloudy svrchovaného prostředí:
+Povolení aplikace MSAL.js pro cloudy svrchovaného prostředí:
 
 ### <a name="step-1-register-your-application"></a>Krok 1: Registrace aplikace
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.us/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.us/).
 
    Pokud chcete najít Azure Portal koncových bodů pro jiné národní cloudy, přečtěte si téma [koncové body registrace aplikace](authentication-national-cloud.md#app-registration-endpoints).
 
@@ -89,7 +89,7 @@ Chcete-li povolit aplikaci MSAL. js pro cloudy svrchovaného prostředí:
 
 - [Stáhněte si soubory projektu](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip) pro místní webový server, jako je například Node.
 
-  – nebo –
+  nebo
 
 - [Stáhněte si projekt sady Visual Studio](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip).
 
@@ -101,7 +101,7 @@ Použijte postup v [kurzu JavaScriptu](tutorial-v2-javascript-spa.md#create-your
 
 ### <a name="step-4-configure-your-javascript-spa"></a>Krok 4: konfigurace vašeho JavaScriptu SPA
 
-V `index.html` souboru vytvořeném během nastavení projektu přidejte informace o registraci aplikace. Do `<script></script>` značek v těle `index.html` souboru přidejte následující kód:
+V `index.html` souboru vytvořeném během nastavení projektu přidejte informace o registraci aplikace. Do `<script></script>` značek v těle souboru přidejte následující kód `index.html` :
 
 ```javascript
 const msalConfig = {
@@ -125,7 +125,7 @@ V tomto kódu:
 - `Enter_the_Application_Id_here`je hodnota **ID aplikace (klienta)** pro aplikaci, kterou jste zaregistrovali.
 - `Enter_the_Tenant_Info_Here`je nastavená na jednu z následujících možností:
     - Pokud vaše aplikace podporuje **účty v tomto organizačním adresáři**, nahraďte tuto hodnotu ID tenanta nebo názvem tenanta (například contoso.Microsoft.com).
-    - Pokud vaše aplikace podporuje **účty v jakémkoli organizačním adresáři**, nahraďte tuto `organizations`hodnotu hodnotou.
+    - Pokud vaše aplikace podporuje **účty v jakémkoli organizačním adresáři**, nahraďte tuto hodnotu hodnotou `organizations` .
 
     Pokud chcete najít koncové body ověřování pro všechny národní cloudy, přečtěte si téma [koncové body ověřování Azure AD](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints).
 
@@ -184,7 +184,7 @@ Tady je příklad koncového bodu grafu s rozsahem:
 
 ## <a name="objective-c"></a>[Objective-C](#tab/objc)
 
-MSAL pro iOS a macOS se dají použít k získání tokenů v národních cloudech, ale při vytváření `MSALPublicClientApplication`vyžaduje další konfiguraci.
+MSAL pro iOS a macOS se dají použít k získání tokenů v národních cloudech, ale při vytváření vyžaduje další konfiguraci `MSALPublicClientApplication` .
 
 Například pokud chcete, aby vaše aplikace byla víceklientské aplikace v národním cloudu (zde USA – státní správa), můžete napsat:
 
@@ -207,7 +207,7 @@ MSALPublicClientApplication *application =
 
 ## <a name="swift"></a>[Swift](#tab/swift)
 
-MSAL pro iOS a macOS se dají použít k získání tokenů v národních cloudech, ale při vytváření `MSALPublicClientApplication`vyžaduje další konfiguraci.
+MSAL pro iOS a macOS se dají použít k získání tokenů v národních cloudech, ale při vytváření vyžaduje další konfiguraci `MSALPublicClientApplication` .
 
 Například pokud chcete, aby vaše aplikace byla víceklientské aplikace v národním cloudu (zde USA – státní správa), můžete napsat:
 
@@ -222,9 +222,9 @@ if let application = try? MSALPublicClientApplication(configuration: config) { /
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace:
+Přečtěte si další informace:
 
 - [Ověřování v národních cloudech](authentication-national-cloud.md)
 - [Azure Government](https://docs.microsoft.com/azure/azure-government/)
-- [Azure China 21Vianet](https://docs.microsoft.com/azure/china/)
+- [Azure (Čína) 21Vianet](https://docs.microsoft.com/azure/china/)
 - [Azure (Německo)](https://docs.microsoft.com/azure/germany/)

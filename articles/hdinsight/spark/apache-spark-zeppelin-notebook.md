@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
 ms.openlocfilehash: 931114a56d774c506b0b33fe4f4fc39e564c06c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82195090"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Použití poznámkových bloků Apache Zeppelin s clusterem Apache Spark ve službě Azure HDInsight
@@ -22,7 +22,7 @@ Clustery HDInsight Spark obsahují poznámkové bloky [Apache Zeppelin](https://
 ## <a name="prerequisites"></a>Požadavky
 
 * Cluster Apache Spark ve službě HDInsight. Pokyny najdete v tématu [Vytváření clusterů Apache Spark ve službě Azure HDInsight](apache-spark-jupyter-spark-sql.md).
-* Schéma identifikátoru URI pro primární úložiště clusterů. Schéma bude `wasb://` pro Azure Blob Storage `abfs://` pro Azure Data Lake Storage Gen2 nebo `adl://` pro Azure Data Lake Storage Gen1. Pokud je pro Blob Storage povolený zabezpečený přenos, identifikátor URI `wasbs://`by byl.  Další informace najdete v tématu [vyžadování zabezpečeného přenosu v Azure Storage](../../storage/common/storage-require-secure-transfer.md) .
+* Schéma identifikátoru URI pro primární úložiště clusterů. Schéma bude `wasb://` pro Azure Blob Storage pro `abfs://` Azure Data Lake Storage Gen2 nebo `adl://` pro Azure Data Lake Storage Gen1. Pokud je pro Blob Storage povolený zabezpečený přenos, identifikátor URI by byl `wasbs://` .  Další informace najdete v tématu [vyžadování zabezpečeného přenosu v Azure Storage](../../storage/common/storage-require-secure-transfer.md) .
 
 ## <a name="launch-an-apache-zeppelin-notebook"></a>Spuštění poznámkového bloku Apache Zeppelin
 
@@ -33,7 +33,7 @@ Clustery HDInsight Spark obsahují poznámkové bloky [Apache Zeppelin](https://
    >
    > `https://CLUSTERNAME.azurehdinsight.net/zeppelin`
 
-2. Vytvořte nový poznámkový blok. V podokně záhlaví přejděte na **Poznámkový blok** > **vytvořit novou poznámku**.
+2. Vytvořte nový poznámkový blok. V podokně záhlaví přejděte na **Poznámkový blok**  >  **vytvořit novou poznámku**.
 
     ![Vytvoření nového poznámkového bloku Zeppelin](./media/apache-spark-zeppelin-notebook/hdinsight-create-zeppelin-notebook.png "Vytvoření nového poznámkového bloku Zeppelin")
 
@@ -43,7 +43,7 @@ Clustery HDInsight Spark obsahují poznámkové bloky [Apache Zeppelin](https://
 
     ![Stav poznámkového bloku Zeppelin](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-connected.png "Stav poznámkového bloku Zeppelin")
 
-4. Načtěte vzorová data do dočasné tabulky. Při vytváření clusteru Spark ve službě HDInsight se Ukázkový datový soubor `hvac.csv`zkopíruje do přidruženého účtu úložiště v části. `\HdiSamples\SensorSampleData\hvac`
+4. Načtěte vzorová data do dočasné tabulky. Při vytváření clusteru Spark ve službě HDInsight se Ukázkový datový soubor `hvac.csv` zkopíruje do přidruženého účtu úložiště v části `\HdiSamples\SensorSampleData\hvac` .
 
     V novém poznámkovém bloku vložte následující fragment kódu do prázdného odstavce, který je ve výchozím nastavení vytvořen.
 
@@ -80,7 +80,7 @@ Clustery HDInsight Spark obsahují poznámkové bloky [Apache Zeppelin](https://
     > [!NOTE]  
     > % spark2 překladače není podporován v poznámkových blocích Zeppelin napříč všemi verzemi HDInsight a překladač% SH nebude podporován od HDInsight 4,0 a vyšší.
 
-5. V `hvac` tabulce teď můžete spustit příkazy Spark SQL. Vložte následující dotaz do nového odstavce. Dotaz načte ID sestavení. Také rozdíl mezi cílovou a skutečnou teplotou pro každé sestavení v daném datu. Stiskněte **SHIFT + ENTER**.
+5. V tabulce teď můžete spustit příkazy Spark SQL `hvac` . Vložte následující dotaz do nového odstavce. Dotaz načte ID sestavení. Také rozdíl mezi cílovou a skutečnou teplotou pro každé sestavení v daném datu. Stiskněte **SHIFT + ENTER**.
 
     ```sql
     %sql
@@ -93,7 +93,7 @@ Clustery HDInsight Spark obsahují poznámkové bloky [Apache Zeppelin](https://
 
     ![Spuštění příkazu Spark SQL pomocí notebook1](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-1.png "Spuštění příkazu Spark SQL pomocí notebook1")
 
-7. Příkazy Spark SQL můžete také spouštět pomocí proměnných v dotazu. Další fragment kódu ukazuje, jak definovat proměnnou `Temp`v dotazu s možnými hodnotami, se kterými se chcete dotazovat. Při prvním spuštění dotazu se automaticky vyplní rozevírací seznam hodnotami, které jste zadali pro proměnnou.
+7. Příkazy Spark SQL můžete také spouštět pomocí proměnných v dotazu. Další fragment kódu ukazuje, jak definovat proměnnou `Temp` v dotazu s možnými hodnotami, se kterými se chcete dotazovat. Při prvním spuštění dotazu se automaticky vyplní rozevírací seznam hodnotami, které jste zadali pro proměnnou.
 
     ```sql
     %sql  
@@ -125,7 +125,7 @@ V tomto článku se dozvíte, jak používat balíček [Spark-CSV](https://searc
 
     ![Změnit Interpret settings1](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-1.png "Změnit Interpret settings1")
 
-3. Přejděte na klíč `livy.spark.jars.packages`a nastavte jeho hodnotu ve formátu `group:id:version`. Pokud tedy chcete použít balíček [Spark-CSV](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) , je nutné nastavit hodnotu klíče na `com.databricks:spark-csv_2.10:1.4.0`.
+3. Přejděte na klíč `livy.spark.jars.packages` a nastavte jeho hodnotu ve formátu `group:id:version` . Pokud tedy chcete použít balíček [Spark-CSV](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) , je nutné nastavit hodnotu klíče na `com.databricks:spark-csv_2.10:1.4.0` .
 
     ![Změnit Interpret settings2](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-2.png "Změnit Interpret settings2")
 
@@ -153,7 +153,7 @@ Tato akce uloží Poznámkový blok jako soubor JSON do umístění pro stahová
 
 ## <a name="use-shiro-to-configure-access-to-zeppelin-interpreters-in-enterprise-security-package-esp-clusters"></a>Slouží `Shiro` ke konfiguraci přístupu k překladačům Zeppelin v clusterech balíček zabezpečení podniku (ESP).
 
-Jak bylo uvedeno výše, `%sh` překladač není podporován od HDInsight 4,0 a vyšší. Vzhledem `%sh` k tomu, že překladač zavádí možné problémy se zabezpečením, jako jsou například přístupové karty pomocí příkazů prostředí, byl odebrán také z clusterů HDInsight 3,6 ESP. To znamená `%sh` , že překladač není k dispozici, když ve výchozím nastavení kliknete na možnost **vytvořit novou poznámku** nebo v uživatelském rozhraní překladače.
+Jak bylo uvedeno výše, `%sh` překladač není podporován od HDInsight 4,0 a vyšší. Vzhledem `%sh` k tomu, že překladač zavádí možné problémy se zabezpečením, jako jsou například přístupové karty pomocí příkazů prostředí, byl odebrán také z clusterů HDInsight 3,6 ESP. To znamená, že `%sh` překladač není k dispozici, když ve výchozím nastavení kliknete na možnost **vytvořit novou poznámku** nebo v uživatelském rozhraní překladače.
 
 Uživatelé privilegovaných domén mohou použít `Shiro.ini` soubor k řízení přístupu k uživatelskému rozhraní překladače. Pouze tito uživatelé mohou vytvořit nové `%sh` překladače a nastavit oprávnění u každého nového `%sh` překladače. K řízení přístupu pomocí `shiro.ini` souboru použijte následující postup:
 
@@ -164,7 +164,7 @@ Uživatelé privilegovaných domén mohou použít `Shiro.ini` soubor k řízen�
     adminGroupName = *
     ```
 
-2. Přidejte novou roli pro přístup k překladačům Zeppelin. V následujícím příkladu mají všichni uživatelé v `adminGroupName` nástroji udělen přístup k překladačům Zeppelin a mohou vytvářet nové překladače. Mezi závorky `roles[]`můžete umístit více rolí oddělených čárkami. Uživatelé s potřebnými oprávněními pak mají přístup k překladačům Zeppelin.
+2. Přidejte novou roli pro přístup k překladačům Zeppelin. V následujícím příkladu mají všichni uživatelé v nástroji `adminGroupName` udělen přístup k překladačům Zeppelin a mohou vytvářet nové překladače. Mezi závorky můžete umístit více rolí `roles[]` oddělených čárkami. Uživatelé s potřebnými oprávněními pak mají přístup k překladačům Zeppelin.
 
     ```
     [urls]
@@ -193,7 +193,7 @@ V takovém případě je třeba provést následující kroky, aby bylo možné 
 
 Pokud chcete službu ověřit z Ambari, přejděte do `https://CLUSTERNAME.azurehdinsight.net/#/main/services/ZEPPELIN/summary` umístění název_clusteru, kde je název vašeho clusteru.
 
-Chcete-li ověřit službu z příkazového řádku, SSH k hlavnímu uzlu. Přepněte uživatele na Zeppelin pomocí příkazu `sudo su zeppelin`. Stavové příkazy:
+Chcete-li ověřit službu z příkazového řádku, SSH k hlavnímu uzlu. Přepněte uživatele na Zeppelin pomocí příkazu `sudo su zeppelin` . Stavové příkazy:
 
 |Příkaz |Popis |
 |---|---|
@@ -207,18 +207,18 @@ Chcete-li ověřit službu z příkazového řádku, SSH k hlavnímu uzlu. Přep
 |---|---|
 |Zeppelin – Server|/usr/hdp/current/zeppelin-server/|
 |Protokoly serveru|/var/log/zeppelin|
-|Interpret konfigurace, `Shiro`, site. XML, log4j|/usr/HDP/Current/Zeppelin-Server/conf nebo/etc/Zeppelin/conf|
+|Interpret konfigurace, `Shiro` , site.xml, log4j|/usr/HDP/Current/Zeppelin-Server/conf nebo/etc/Zeppelin/conf|
 |Adresář PID|/var/run/zeppelin|
 
 ### <a name="enable-debug-logging"></a>Povolit protokolování ladění
 
 1. Přejděte do `https://CLUSTERNAME.azurehdinsight.net/#/main/services/ZEPPELIN/summary` složky název_clusteru, kde je název vašeho clusteru.
 
-1. Přejděte do **Konfigurace** > **Upřesnit Zeppelin-log4j-Properties** > **log4j_properties_content**.
+1. Přejděte do **Konfigurace**  >  **Upřesnit Zeppelin-log4j-Properties**  >  **log4j_properties_content**.
 
-1. Upravit `log4j.appender.dailyfile.Threshold = INFO` na `log4j.appender.dailyfile.Threshold = DEBUG`.
+1. Upravit `log4j.appender.dailyfile.Threshold = INFO` na `log4j.appender.dailyfile.Threshold = DEBUG` .
 
-1. Přidat `log4j.logger.org.apache.zeppelin.realm=DEBUG`.
+1. Přidat `log4j.logger.org.apache.zeppelin.realm=DEBUG` .
 
 1. Uložte změny a restartujte službu.
 

@@ -7,10 +7,10 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.openlocfilehash: e6de10ed712688e4ee9dccc22176e81ad5e574ca
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71315850"
 ---
 # <a name="best-practices-for-managing-u-sql-assemblies-in-a-cicd-pipeline"></a>Osvědčené postupy pro správu sestavení U-SQL v kanálu CI/CD
@@ -30,12 +30,12 @@ Pro správu zdrojového kódu sestavení C# a skriptů DDL U-SQL registrace sest
 Projekt databáze U-SQL může odkazovat na knihovnu tříd (pro aplikaci U-SQL). Sestavení registrovaná v databázi U-SQL můžete vytvořit pomocí odkazovaného zdrojového kódu C# z této knihovny tříd (pro aplikace U-SQL).
 
 Pomocí těchto kroků můžete vytvořit projekty a přidat odkazy.
-1. Vytvořte projekt knihovny tříd (pro aplikaci u-SQL) tak, že vyberete **soubor** > **Nový** > **projekt**. Projekt je pod uzlem **Azure Data Lake > U-SQL** .
+1. Vytvořte projekt knihovny tříd (pro aplikaci u-SQL) tak, že vyberete **soubor**  >  **Nový**  >  **projekt**. Projekt je pod uzlem **Azure Data Lake > U-SQL** .
 
    ![Data Lake Tools for Visual Studio – vytvoření projektu knihovny tříd C#](./media/data-lake-analytics-cicd-manage-assemblies/create-c-sharp-class-library-project.png)
 1. Přidejte uživatelem definovaný kód C# do knihovny tříd (pro aplikaci U-SQL).
 
-1. Vytvořte projekt U-SQL tak, že vyberete **soubor** > **Nový** > **projekt**. Projekt je pod uzlem **Azure Data Lake** > **U-SQL** .
+1. Vytvořte projekt U-SQL tak, že vyberete **soubor**  >  **Nový**  >  **projekt**. Projekt je pod uzlem **Azure Data Lake**  >  **U-SQL** .
 
    ![Data Lake Tools for Visual Studio – vytvoření databázového projektu U-SQL](media/data-lake-analytics-cicd-manage-assemblies/create-u-sql-database-project.png)
 1. Přidejte odkaz na projekt knihovny tříd jazyka C# pro projekt databáze U-SQL.
@@ -54,15 +54,15 @@ Pomocí těchto kroků můžete vytvořit projekty a přidat odkazy.
 
 7. Přidejte **spravované závislosti** a **Další soubory**, pokud existují. Když přidáte další soubory, nástroj použije relativní cestu k tomu, aby bylo zajištěno, že bude moci najít sestavení v místním počítači a v počítači sestavení později.
 
-_DeployTempDirectory v okně editoru v dolní části je předdefinovaná proměnná, která tento nástroj odkazuje na výstupní složku sestavení. ** \@** V rámci výstupní složky sestavení má každé sestavení podsložku s názvem sestavení. Všechny knihovny DLL a další soubory jsou v této podsložce.
+** \@ _DeployTempDirectory** v okně editoru v dolní části je předdefinovaná proměnná, která tento nástroj odkazuje na výstupní složku sestavení. V rámci výstupní složky sestavení má každé sestavení podsložku s názvem sestavení. Všechny knihovny DLL a další soubory jsou v této podsložce.
 
 ## <a name="build-a-u-sql-database-project"></a>Vytvoření databázového projektu U-SQL
 
-Výstup sestavení pro projekt databáze U-SQL je balíček pro nasazení U-SQL Database. Má název s příponou `.usqldbpack`. `.usqldbpack` Balíček je soubor. zip, který obsahuje všechny příkazy DDL v jednom skriptu U-SQL ve složce DDL. Všechny sestavené soubory DLL a další soubory pro sestavení jsou v dočasné složce.
+Výstup sestavení pro projekt databáze U-SQL je balíček pro nasazení U-SQL Database. Má název s příponou `.usqldbpack` . `.usqldbpack`Balíček je soubor. zip, který obsahuje všechny příkazy DDL v jednom skriptu U-SQL ve složce DDL. Všechny sestavené soubory DLL a další soubory pro sestavení jsou v dočasné složce.
 
 ## <a name="deploy-a-u-sql-database"></a>Nasazení databáze U-SQL
 
-`.usqldbpack` Balíček se dá nasadit buď do místního účtu, nebo do účtu Azure Data Lake Analytics. Použijte sadu Visual Studio nebo sadu SDK nasazení. 
+`.usqldbpack`Balíček se dá nasadit buď do místního účtu, nebo do účtu Azure Data Lake Analytics. Použijte sadu Visual Studio nebo sadu SDK nasazení. 
 
 ### <a name="deploy-a-u-sql-database-in-visual-studio"></a>Nasazení databáze U-SQL v aplikaci Visual Studio
 
@@ -82,7 +82,7 @@ Databázi U-SQL můžete nasadit pomocí databázového projektu U-SQL nebo `.us
 
 ### <a name="deploy-a-u-sql-database-in-azure-devops"></a>Nasazení databáze U-SQL v Azure DevOps
 
-`PackageDeploymentTool.exe`poskytuje rozhraní pro programování a příkazový řádek, která usnadňují nasazení databází U-SQL. Sada SDK je součástí [balíčku NuGet U-SQL SDK](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/), který se nachází na `build/runtime/PackageDeploymentTool.exe`adrese.
+`PackageDeploymentTool.exe`poskytuje rozhraní pro programování a příkazový řádek, která usnadňují nasazení databází U-SQL. Sada SDK je součástí [balíčku NuGet U-SQL SDK](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/), který se nachází na adrese `build/runtime/PackageDeploymentTool.exe` .
 
 V Azure DevOps můžete k nastavení kanálu automatizace pro obnovení databáze U-SQL použít úlohu příkazového řádku a tuto sadu SDK. [Přečtěte si další informace o sadě SDK a o tom, jak vytvořit kanál CI/CD pro nasazení databáze U-SQL](data-lake-analytics-cicd-overview.md#deploy-u-sql-database-through-azure-pipelines).
 

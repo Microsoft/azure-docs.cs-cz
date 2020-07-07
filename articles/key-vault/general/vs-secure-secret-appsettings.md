@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: cawa
 ms.openlocfilehash: bcacd5d2ed9e325383ec7ae75002ae0a6213111c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81429756"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Bezpečně uložit nastavení tajné aplikace pro webovou aplikaci
@@ -22,7 +22,7 @@ ms.locfileid: "81429756"
 ## <a name="overview"></a>Přehled
 Tento článek popisuje, jak bezpečně uložit nastavení konfigurace tajných aplikací pro aplikace Azure.
 
-Tradičně se všechna nastavení konfigurace webové aplikace ukládají do konfiguračních souborů, jako je například web. config. Tento postup vede k vrácení nastavení tajného klíče, jako jsou například přihlašovací údaje cloudu, do veřejných systémů správy zdrojového kódu, jako je GitHub. V obou případech by mohlo být obtížné podléhat osvědčeným postupům zabezpečení z důvodu režie nutné ke změně zdrojového kódu a překonfigurování nastavení vývoje.
+Všechna nastavení konfigurace webové aplikace se tradičně ukládají do konfiguračních souborů, jako je Web.config. Tento postup vede k vrácení nastavení tajného klíče, jako jsou například přihlašovací údaje cloudu, do veřejných systémů správy zdrojového kódu, jako je GitHub. V obou případech by mohlo být obtížné podléhat osvědčeným postupům zabezpečení z důvodu režie nutné ke změně zdrojového kódu a překonfigurování nastavení vývoje.
 
 Chcete-li zajistit, aby byl proces vývoje zabezpečený, jsou vytvořeny knihovny nástrojů a architektury pro bezpečné uložení nastavení tajného klíče aplikace s minimální nebo žádnou změnou zdrojového kódu.
 
@@ -87,7 +87,7 @@ Pokud již máte vytvořenou webovou aplikaci, udělte webové aplikaci přístu
 
         private static string GetKeyVaultEndpoint() => Environment.GetEnvironmentVariable("KEYVAULT_ENDPOINT");
     ```
-6. Přidejte adresu URL Key Vault do souboru launchsettings. JSON. Název proměnné prostředí *KEYVAULT_ENDPOINT* je definován v kódu, který jste přidali v kroku 6.
+6. Přidejte adresu URL Key Vault pro launchsettings.jssouboru. Název proměnné prostředí *KEYVAULT_ENDPOINT* je definován v kódu, který jste přidali v kroku 6.
 
     ![Přidat adresu URL Key Vault jako proměnnou prostředí projektu](../media/vs-secure-secret-appsettings/add-keyvault-url.png)
 
@@ -117,7 +117,7 @@ Pokud píšete rychlý prototyp a nechcete zřizovat prostředky Azure, Projdět
     </root>
     ```
 
-3. V souboru Web. config definujte tajný soubor, který bude tvůrcem konfigurace. Tuto část vložte do oddílu *appSettings* .
+3. V souboru Web.config definujte tajný soubor, který bude tvůrcem konfigurace. Tuto část vložte do oddílu *appSettings* .
 
     ```xml
     <configBuilders>
@@ -151,7 +151,7 @@ Postupujte podle pokynů v části ASP.NET Core a nakonfigurujte Key Vault pro s
    Microsoft.Configuration.ConfigurationBuilders.UserSecrets
    ```
 
-2. Definujte Key Vault Configuration Builder v souboru Web. config. Tuto část vložte do oddílu *appSettings* . Pokud používáte svrchovaný Cloud, nahraďte název *trezoru* názvem Key Vault, pokud je váš Key Vault ve veřejném Azure nebo v ÚPLNÉm identifikátoru URI.
+2. Definujte Key Vault Configuration Builder v Web.config. Tuto část vložte do oddílu *appSettings* . Pokud používáte svrchovaný Cloud, nahraďte název *trezoru* názvem Key Vault, pokud je váš Key Vault ve veřejném Azure nebo v ÚPLNÉm identifikátoru URI.
 
     ```xml
     <configSections>

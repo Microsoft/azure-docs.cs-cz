@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87ceeeb1a712c37bc74e12e910645013d77e8df6
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 32bccdf538b637b7706824b4cf5499bed63af9dc
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/01/2020
-ms.locfileid: "85605283"
+ms.locfileid: "85799152"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ivanti-service-manager-ism"></a>Kurz: Azure Active Directory integrace s Ivanti Service Manager (ISM)
 
@@ -109,11 +109,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Ivanti S
 
     a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:
     
-        ```https
-        https://<customer>.saasit.com/
-        https://<customer>.saasiteu.com/
-        https://<customer>.saasitau.com/
-        ```
+    ```http
+    https://<customer>.saasit.com/
+    https://<customer>.saasiteu.com/
+    https://<customer>.saasitau.com/
+    ```
 
     b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://<customer>/handlers/sso/SamlAssertionConsumerHandler.ashx`
 

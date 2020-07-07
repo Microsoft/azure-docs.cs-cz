@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
 ms.openlocfilehash: 4e0f71369bc02fdce5625d9c74e1d52264ed86be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335746"
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Ukázka lidské interakce v Durable Functions-telefon ověřování
@@ -45,11 +45,11 @@ Tento článek vás provede následujícími funkcemi v ukázkové aplikaci:
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/PhoneVerification.cs?range=17-70)]
 
 > [!NOTE]
-> V první době nemusí být zřejmé, ale tato funkce Orchestrator je zcela deterministické. Je deterministický, protože `CurrentUtcDateTime` vlastnost se používá k výpočtu času vypršení platnosti časovače a vrací stejnou hodnotu pro každé přehrání v tomto okamžiku v kódu Orchestrator. Toto chování je důležité, aby bylo zajištěno `winner` , že budou stejné výsledky z `Task.WhenAny`každého opakovaného volání.
+> V první době nemusí být zřejmé, ale tato funkce Orchestrator je zcela deterministické. Je deterministický `CurrentUtcDateTime` , protože vlastnost se používá k výpočtu času vypršení platnosti časovače a vrací stejnou hodnotu pro každé přehrání v tomto okamžiku v kódu Orchestrator. Toto chování je důležité, aby bylo zajištěno, že budou stejné `winner` výsledky z každého opakovaného volání `Task.WhenAny` .
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Funkce **E4_SmsPhoneVerification** používá standardní *funkci Function. JSON* pro funkce Orchestrator.
+Funkce **E4_SmsPhoneVerification** používá standardní *function.js* pro funkce nástroje Orchestrator.
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/E4_SmsPhoneVerification/function.json)]
 
@@ -58,7 +58,7 @@ Zde je kód, který implementuje funkci:
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SmsPhoneVerification/index.js)]
 
 > [!NOTE]
-> V první době nemusí být zřejmé, ale tato funkce Orchestrator je zcela deterministické. Je deterministický, protože `currentUtcDateTime` vlastnost se používá k výpočtu času vypršení platnosti časovače a vrací stejnou hodnotu pro každé přehrání v tomto okamžiku v kódu Orchestrator. Toto chování je důležité, aby bylo zajištěno `winner` , že budou stejné výsledky z `context.df.Task.any`každého opakovaného volání.
+> V první době nemusí být zřejmé, ale tato funkce Orchestrator je zcela deterministické. Je deterministický `currentUtcDateTime` , protože vlastnost se používá k výpočtu času vypršení platnosti časovače a vrací stejnou hodnotu pro každé přehrání v tomto okamžiku v kódu Orchestrator. Toto chování je důležité, aby bylo zajištěno, že budou stejné `winner` výsledky z každého opakovaného volání `context.df.Task.any` .
 
 ---
 
@@ -83,11 +83,11 @@ Funkce **E4_SendSmsChallenge** používá vazbu Twilio k odeslání zprávy SMS 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/PhoneVerification.cs?range=72-89)]
 
 > [!NOTE]
-> Pro spuštění ukázkového kódu budete `Microsoft.Azure.WebJobs.Extensions.Twilio` muset nainstalovat balíček NuGet.
+> `Microsoft.Azure.WebJobs.Extensions.Twilio`Pro spuštění ukázkového kódu budete muset nainstalovat balíček NuGet.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-*Funkce Function. JSON* je definována takto:
+*function.jsv* je definován následujícím způsobem:
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/E4_SendSmsChallenge/function.json)]
 
@@ -118,9 +118,9 @@ Location: http://{host}/runtime/webhooks/durabletask/instances/741c65651d4c40cea
 {"id":"741c65651d4c40cea29acdd5bb47baf1","statusQueryGetUri":"http://{host}/runtime/webhooks/durabletask/instances/741c65651d4c40cea29acdd5bb47baf1?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}","sendEventPostUri":"http://{host}/runtime/webhooks/durabletask/instances/741c65651d4c40cea29acdd5bb47baf1/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}","terminatePostUri":"http://{host}/runtime/webhooks/durabletask/instances/741c65651d4c40cea29acdd5bb47baf1/terminate?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}"}
 ```
 
-Funkce Orchestrator obdrží poskytnuté telefonní číslo a okamžitě pošle zprávu SMS s náhodně generovaným ověřovacím kódem &mdash; se čtyřmi číslicemi, například *2168*. Funkce pak pro odpověď vyčká 90 sekund.
+Funkce Orchestrator obdrží poskytnuté telefonní číslo a okamžitě pošle zprávu SMS s náhodně generovaným ověřovacím kódem se čtyřmi číslicemi &mdash; , například *2168*. Funkce pak pro odpověď vyčká 90 sekund.
 
-Chcete-li odpovědět s kódem, můžete použít [ `RaiseEventAsync` (.NET) nebo `raiseEvent` (JavaScript)](durable-functions-instance-management.md) uvnitř jiné funkce nebo vyvolat Webhook **sendEventUrl** http post, na který odkazuje odpověď 202, nahraďte `{eventName}` názvem události `SmsChallengeResponse`:
+Chcete-li odpovědět s kódem, můžete použít [ `RaiseEventAsync` (.NET) nebo `raiseEvent` (JavaScript)](durable-functions-instance-management.md) uvnitř jiné funkce nebo vyvolat Webhook **sendEventUrl** http POST, na který odkazuje odpověď 202, nahraďte `{eventName}` názvem události `SmsChallengeResponse` :
 
 ```
 POST http://{host}/runtime/webhooks/durabletask/instances/741c65651d4c40cea29acdd5bb47baf1/raiseEvent/SmsChallengeResponse?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
@@ -130,7 +130,7 @@ Content-Type: application/json
 2168
 ```
 
-Pokud tuto zprávu odešlete před vypršením platnosti časovače, orchestrace se `output` dokončí a pole `true`se nastaví na hodnotu, což indikuje úspěšné ověření.
+Pokud tuto zprávu odešlete před vypršením platnosti časovače, orchestrace se dokončí a `output` pole se nastaví na hodnotu `true` , což indikuje úspěšné ověření.
 
 ```
 GET http://{host}/runtime/webhooks/durabletask/instances/741c65651d4c40cea29acdd5bb47baf1?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
@@ -144,7 +144,7 @@ Content-Type: application/json; charset=utf-8
 {"runtimeStatus":"Completed","input":"+1425XXXXXXX","output":true,"createdTime":"2017-06-29T19:10:49Z","lastUpdatedTime":"2017-06-29T19:12:23Z"}
 ```
 
-Pokud necháte vypršení platnosti časovače, nebo pokud zadáte špatný kód čtyřikrát, můžete zadat dotaz na stav a zobrazit výstup funkce `false` orchestrace, což značí, že se nezdařilo ověření telefonu.
+Pokud necháte vypršení platnosti časovače, nebo pokud zadáte špatný kód čtyřikrát, můžete zadat dotaz na stav a zobrazit `false` výstup funkce orchestrace, což značí, že se nezdařilo ověření telefonu.
 
 ```
 HTTP/1.1 200 OK

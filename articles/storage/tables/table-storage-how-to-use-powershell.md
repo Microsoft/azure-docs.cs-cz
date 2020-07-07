@@ -8,10 +8,10 @@ ms.date: 04/05/2019
 ms.author: rogarana
 ms.subservice: tables
 ms.openlocfilehash: 746044aa835df52e61c234c8b5ca61164fffbbc5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80545954"
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>Provádění operací úložiště Azure Table pomocí Azure PowerShell 
@@ -31,7 +31,7 @@ Tento článek s návody popisuje běžné operace úložišť tabulek Azure. Z�
 
 V tomto článku se dozvíte, jak vytvořit nový účet Azure Storage v nové skupině prostředků, abyste ho mohli po skončení snadno odebrat. Pokud místo toho chcete použít existující účet úložiště, můžete to udělat.
 
-Příklady vyžadují AZ PowerShell modules `Az.Storage (1.1.0 or greater)` a `Az.Resources (1.2.0 or greater)`. V okně PowerShellu spusťte příkaz `Get-Module -ListAvailable Az*` a vyhledejte verzi. Pokud se nic nezobrazí nebo potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps).
+Příklady vyžadují AZ PowerShell modules `Az.Storage (1.1.0 or greater)` a `Az.Resources (1.2.0 or greater)` . V okně PowerShellu spusťte příkaz `Get-Module -ListAvailable Az*` a vyhledejte verzi. Pokud se nic nezobrazí nebo potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps).
 
 > [!IMPORTANT]
 > Použití této funkce Azure z PowerShellu vyžaduje, abyste `Az` modul nainstalovali. Aktuální verze nástroje `AzTable` není kompatibilní s starším modulem AzureRM.
@@ -91,7 +91,7 @@ $ctx = $storageAccount.Context
 
 ## <a name="create-a-new-table"></a>Vytvořit novou tabulku
 
-Chcete-li vytvořit tabulku, použijte rutinu [New-AzStorageTable](/powershell/module/az.storage/New-AzStorageTable) . V tomto příkladu je volána `pshtesttable`tabulka.
+Chcete-li vytvořit tabulku, použijte rutinu [New-AzStorageTable](/powershell/module/az.storage/New-AzStorageTable) . V tomto příkladu je volána tabulka `pshtesttable` .
 
 ```powershell
 $tableName = "pshtesttable"

@@ -2,7 +2,8 @@
 title: Automatizace úloh
 description: Použití automatizace úloh ke spouštění skriptů jazyka Transact-SQL (T-SQL) v sadě jedné nebo více databází
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
+ms.subservice: features
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: overview
@@ -10,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 03/10/2020
-ms.openlocfilehash: 1b27eac1a8b5989734d3451bf21c5b13dd5cc0af
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 537c989271800c15444d5323cfce8e133c8eeeba
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220569"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984638"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Automatizace úloh správy pomocí databázových úloh
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -54,8 +55,8 @@ Je třeba poznamenat několik rozdílů mezi agentem SQL (dostupnými místně a
 
 | |Elastické úlohy |Agent SQL |
 |---------|---------|---------|
-|Rozsah | Libovolný počet databází v Azure SQL Database nebo datových skladech ve stejném cloudu Azure jako Agent úlohy. Cíle můžou být na různých serverech, předplatných a/nebo oblastech. <br><br>Cílové skupiny se můžou skládat z jednotlivých databází nebo datových skladů nebo ze všech databází na serveru, ve fondu nebo v mapě horizontálních oddílů (dynamicky se zjišťují za běhu úlohy). | Všechny jednotlivé databáze ve stejné instanci jako Agent SQL. |
-|Podporovaná rozhraní API a nástroje | Portál, PowerShell, T-SQL, Azure Resource Manager | T-SQL, SQL Server Management Studio (SSMS) |
+|**Rozsah** | Libovolný počet databází v Azure SQL Database nebo datových skladech ve stejném cloudu Azure jako Agent úlohy. Cíle můžou být na různých serverech, předplatných a/nebo oblastech. <br><br>Cílové skupiny se můžou skládat z jednotlivých databází nebo datových skladů nebo ze všech databází na serveru, ve fondu nebo v mapě horizontálních oddílů (dynamicky se zjišťují za běhu úlohy). | Všechny jednotlivé databáze ve stejné instanci jako Agent SQL. |
+|**Podporovaná rozhraní API a nástroje** | Portál, PowerShell, T-SQL, Azure Resource Manager | T-SQL, SQL Server Management Studio (SSMS) |
 
 ## <a name="sql-agent-jobs"></a>Úlohy agenta SQL
 

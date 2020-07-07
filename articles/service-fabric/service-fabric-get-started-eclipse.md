@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 04/06/2018
 ms.author: rapatchi
 ms.openlocfilehash: d37c7be65eb0c03065c095196a6fec39a2509a3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82193424"
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>Modul plug-in Service Fabric pro vývoj aplikací v Eclipse Javě
@@ -30,12 +30,12 @@ Modul plug-in Service Fabric můžete nainstalovat do Eclipse. Tento modul plug-
 > V Ubuntu doporučujeme provést instalaci přímo z webu Eclipse, a nepoužívat instalační program balíčků (`apt` nebo `apt-get`). Tím zajistíte, že budete mít nejnovější verzi Eclipse. 
 
 Nainstalujte Eclipse Neon nebo novější verzi z [webu Eclipse](https://www.eclipse.org).  Nainstalujte také Buildship verze 2.2.1 nebo novější (modul plug-in Service Fabric není kompatibilní se staršími verzemi Buildshipu):
--   Chcete-li ověřit verze nainstalovaných komponent, Projděte si v části zatmění **nápovědu** > **o** > **podrobnostech instalace**na zatmění.
+-   Chcete-li ověřit verze nainstalovaných komponent, Projděte si v části zatmění **nápovědu**  >  **o**  >  **podrobnostech instalace**na zatmění.
 -   Pokud chcete aktualizovat Buildship, přečtěte si téma [Eclipse Buildship: Moduly plug-in Eclipse pro Gradle][buildship-update].
--   Chcete-li vyhledat a nainstalovat aktualizace pro zatmění, vyhledejte **Help** > **aktualizace**v nápovědě.
+-   Chcete-li vyhledat a nainstalovat aktualizace pro zatmění, vyhledejte **Help**  >  **aktualizace**v nápovědě.
 
-Nainstalujte modul plug-in Service Fabric, v části zatmění, přejít na adresu **usnadnění** > **instalace nového softwaru**.
-1. Do pole **work with (pracovat s** ) zadejte\/https:/dl.Microsoft.com/Eclipse.
+Nainstalujte modul plug-in Service Fabric, v části zatmění, přejít na adresu **usnadnění**  >  **instalace nového softwaru**.
+1. Do pole **work with (pracovat s** ) zadejte https: \/ /dl.Microsoft.com/Eclipse.
 2. Klikněte na tlačítko **Add** (Přidat).
 
    ![Modul plug-in Service Fabric pro Eclipse][sf-eclipse-plugin-install]
@@ -43,12 +43,12 @@ Nainstalujte modul plug-in Service Fabric, v části zatmění, přejít na adre
 4. Dokončete instalaci a přijměte licenční podmínky pro software společnosti Microsoft.
   
 Pokud už máte modul plug-in Service Fabric nainstalovaný, nainstalujte nejnovější verzi. 
-1. Pokud chcete vyhledat dostupné aktualizace, přečtěte si **nápovědu** > **o** > **podrobnostech instalace**na zatmění. 
+1. Pokud chcete vyhledat dostupné aktualizace, přečtěte si **nápovědu**  >  **o**  >  **podrobnostech instalace**na zatmění. 
 2. V seznamu nainstalovaných modulů plug-in vyberte Service Fabric a potom klikněte na **Aktualizovat**. Nainstalují se dostupné aktualizace.
 3. Jakmile aktualizujete modul plug-in Service Fabric, aktualizujte také projekt Gradle.  Klikněte pravým tlačítkem na **build.gradle** a vyberte **Aktualizovat**.
 
 > [!NOTE]
-> Pokud je instalace nebo aktualizace modulu plug-in Service Fabric pomalá, může být důvodem nastavení Eclipse. Eclipse shromažďuje metadata o všech změnách, aby aktualizoval weby, které jsou registrované pro vaši instanci Eclipse. Pokud chcete proces vyhledávání a instalace aktualizace modulu plug-in Service Fabric urychlit, přejděte k části **Available Software Sites** (Dostupné softwarové servery). Zrušte zaškrtnutí políček pro všechny weby kromě toho, který odkazuje na umístění modulu plug-in Service Fabric (https:\//dl.Microsoft.com/Eclipse/Azure/servicefabric).
+> Pokud je instalace nebo aktualizace modulu plug-in Service Fabric pomalá, může být důvodem nastavení Eclipse. Eclipse shromažďuje metadata o všech změnách, aby aktualizoval weby, které jsou registrované pro vaši instanci Eclipse. Pokud chcete proces vyhledávání a instalace aktualizace modulu plug-in Service Fabric urychlit, přejděte k části **Available Software Sites** (Dostupné softwarové servery). Zrušte zaškrtnutí políček pro všechny weby kromě toho, který odkazuje na umístění modulu plug-in Service Fabric (https: \/ /dl.Microsoft.com/Eclipse/Azure/servicefabric).
 
 > [!NOTE]
 >Pokud Eclipse nefunguje na vašem počítači Mac podle očekávání nebo vyžaduje spuštění od superuživatele, přepněte se do složky **ECLIPSE_INSTALLATION_PATH** a přejděte do podsložky **Eclipse.app/Contents/MacOS**. Spusťte Eclipse spuštěním příkazu `./eclipse`.
@@ -56,7 +56,7 @@ Pokud už máte modul plug-in Service Fabric nainstalovaný, nainstalujte nejnov
 
 ## <a name="create-a-service-fabric-application-in-eclipse"></a>Vytvoření aplikace Service Fabric pomocí Eclipse
 
-1.  V zatmění přejdete na **soubor** > **Nový** > **.** Vyberte **Service Fabric Project** (Projekt Service Fabric) a potom klikněte na **Next** (Další).
+1.  V zatmění přejdete na **soubor**  >  **Nový**  >  **Other**. Vyberte **Service Fabric Project** (Projekt Service Fabric) a potom klikněte na **Next** (Další).
 
     ![Nový projekt Service Fabric – stránka 1][create-application/p1]
 
@@ -102,7 +102,7 @@ Po vytvoření aplikace Service Fabric postupujte podle těchto kroků a nasaďt
 
 3.  V místní nabídce klikněte na **nasadit aplikaci**.
 4.  Průběh operace nasazení můžete sledovat v okně konzoly.
-5.  Pokud chcete ověřit, jestli je vaše aplikace spuštěná, otevřete Service Fabric Explorer v místním clusteru v okně `http://localhost:19080/Explorer`prohlížeče. Rozbalte uzel **aplikace** a zajistěte, aby byla aplikace spuštěná. 
+5.  Pokud chcete ověřit, jestli je vaše aplikace spuštěná, otevřete Service Fabric Explorer v místním clusteru v okně prohlížeče `http://localhost:19080/Explorer` . Rozbalte uzel **aplikace** a zajistěte, aby byla aplikace spuštěná. 
 
 Informace o tom, jak ladit aplikaci v zatmění pomocí místního clusteru, najdete [v tématu ladění služby Java v zatmění](./service-fabric-debugging-your-application-java.md).
 
@@ -110,11 +110,11 @@ Můžete také nasadit aplikaci do místního clusteru pomocí příkazu **publi
 
 1. Klikněte pravým tlačítkem na svou aplikaci Service Fabric a pak vyberte **Service Fabric**.
 2. V místní nabídce klikněte na **publikovat aplikaci...**.
-3. V okně **publikovat aplikaci** vyberte jako cílový profil možnost **PublishProfiles/Local. JSON** a klikněte na **publikovat**.
+3. V okně **publikovat aplikaci** vyberte jako cílový profil možnost **PublishProfiles/Local.js** a klikněte na **publikovat**.
 
     ![Dialogové okno publikování – místní prostředí](./media/service-fabric-get-started-eclipse/localjson.png)
 
-    Ve výchozím nastavení je místní profil publikování. JSON nastavený tak, aby se publikoval do místního clusteru. Další informace o připojení a parametrech koncového bodu, které jsou k dispozici v profilech publikování, najdete v další části.
+    Ve výchozím nastavení je Local.jsprofil publikování nastaven na publikování v místním clusteru. Další informace o připojení a parametrech koncového bodu, které jsou k dispozici v profilech publikování, najdete v další části.
 
 ## <a name="publish-your-service-fabric-application-to-azure-with-eclipse"></a>Publikování aplikace Service Fabric do Azure pomocí zatmění
 
@@ -128,12 +128,12 @@ K publikování aplikace v cloudu použijte následující postup:
 
    Pokud soubor PFX není chráněný heslem, použijte `--passin pass:` pro poslední parametr.
 
-2. V adresáři **PublishProfiles** otevřete soubor **Cloud. JSON** . Pro váš cluster budete muset nakonfigurovat koncový bod clusteru a přihlašovací údaje zabezpečení.
+2. Otevřete **Cloud.jsv** souboru v adresáři **PublishProfiles** . Pro váš cluster budete muset nakonfigurovat koncový bod clusteru a přihlašovací údaje zabezpečení.
 
-   - `ConnectionIPOrURL` Pole obsahuje IP adresu nebo adresu URL vašeho clusteru. Všimněte si, že hodnota neobsahuje schéma adresy URL (`https://`).
-   - Ve výchozím nastavení `ConnectionPort` by mělo být `19080`pole, pokud jste tento port pro cluster výslovně nezměnili.
-   - `ClientKey` Pole by mělo ukazovat na PEM soubor. pem nebo. Key na místním počítači, který obsahuje privátní klíč pro certifikát klienta nebo clusteru.
-   - `ClientCert` Pole by mělo ukazovat na PEM soubor. pem nebo. CRT na místním počítači, který obsahuje data certifikátu pro klienta nebo cluster. certifikát. 
+   - `ConnectionIPOrURL`Pole obsahuje IP adresu nebo adresu URL vašeho clusteru. Všimněte si, že hodnota neobsahuje schéma adresy URL ( `https://` ).
+   - Ve výchozím nastavení `ConnectionPort` by mělo být pole `19080` , pokud jste tento port pro cluster výslovně nezměnili.
+   - `ClientKey`Pole by mělo ukazovat na PEM soubor. pem nebo. Key na místním počítači, který obsahuje privátní klíč pro certifikát klienta nebo clusteru.
+   - `ClientCert`Pole by mělo ukazovat na PEM soubor. pem nebo. CRT na místním počítači, který obsahuje data certifikátu pro klienta nebo cluster. certifikát. 
 
      ```bash
      {
@@ -149,12 +149,12 @@ K publikování aplikace v cloudu použijte následující postup:
 
 2. Klikněte pravým tlačítkem na svou aplikaci Service Fabric a pak vyberte **Service Fabric**.
 3. V místní nabídce klikněte na **publikovat aplikaci...**.
-3. V okně **publikovat aplikaci** vyberte jako cílový profil možnost **PublishProfiles/Cloud. JSON** a klikněte na **publikovat**.
+3. V okně **publikovat aplikaci** vyberte jako cílový profil možnost **PublishProfiles/Cloud.js** a klikněte na **publikovat**.
 
     ![Dialogové okno publikování – cloud](./media/service-fabric-get-started-eclipse/cloudjson.png)
 
 4. Průběh operace publikování můžete sledovat v okně konzoly.
-5. Pokud chcete ověřit, jestli je vaše aplikace spuštěná, otevřete Service Fabric Explorer v clusteru Azure v okně prohlížeče. V příkladu výše by to bylo: `https://lnxxug0tlqm5.westus.cloudapp.azure.com:19080/Explorer`. Rozbalte uzel **aplikace** a zajistěte, aby byla aplikace spuštěná. 
+5. Pokud chcete ověřit, jestli je vaše aplikace spuštěná, otevřete Service Fabric Explorer v clusteru Azure v okně prohlížeče. V příkladu výše by to bylo: `https://lnxxug0tlqm5.westus.cloudapp.azure.com:19080/Explorer` . Rozbalte uzel **aplikace** a zajistěte, aby byla aplikace spuštěná. 
 
 
 Pokud vaše aplikace obsahuje služby Reliable Services Services, je třeba v systému zabezpečit clustery se systémem Linux nakonfigurovat certifikát, který mohou vaše služby používat k volání rozhraní API modulu runtime Service Fabric. Další informace najdete v tématu [Konfigurace aplikace Reliable Services pro spouštění v clusterech se systémem Linux](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).
@@ -165,7 +165,7 @@ Stručné informace o tom, jak nasadit Service Fabric Reliable Services aplikaci
 
 Existuje alternativní způsob nasazení aplikace Service Fabric pomocí konfigurací spuštění Eclipse.
 
-1. V zatmění klikněte na **Spustit** > **Konfigurace spuštění**.
+1. V zatmění klikněte na **Spustit**  >  **Konfigurace spuštění**.
 2. Vyberte konfiguraci spuštění **ServiceFabricDeployer** v části **Gradle Project** (Projekt Gradle).
 3. V pravém podokně na kartě **argumenty** ověřte, zda jsou parametry **IP**, **port**, **clientCert**a **clientKey** nastaveny odpovídajícím způsobem pro vaše nasazení. Ve výchozím nastavení jsou parametry nastaveny pro nasazení na místní cluster, jako na následujícím snímku obrazovky. Pokud chcete publikovat aplikaci do Azure, můžete změnit parametry tak, aby obsahovaly podrobnosti koncového bodu a přihlašovací údaje zabezpečení pro váš cluster Azure. Další informace najdete v předchozí části, [publikování aplikace Service Fabric do Azure pomocí zatmění](#publish-your-service-fabric-application-to-azure-with-eclipse).
 
@@ -211,7 +211,7 @@ Nejdřív proveďte úpravy aplikace a znovu sestavte upravenou službu. Aktuali
 
 Pokud chcete k upgradu aplikace použít Eclipse, můžete vytvořit duplicitní profil konfigurace spuštění. Potom ho podle potřeby využijte k upgradu vaší aplikace.
 
-1.  Přejít na **Run** > **Konfigurace spuštění spuštění**. v levém podokně klikněte na malou šipku nalevo od možnosti **Gradle Project** (Projekt Gradle).
+1.  Přejít na **Run**  >  **Konfigurace spuštění spuštění**. v levém podokně klikněte na malou šipku nalevo od možnosti **Gradle Project** (Projekt Gradle).
 2.  Klikněte pravým tlačítkem na **ServiceFabricDeployer** a potom vyberte **Duplicate** (Duplikovat). Zadejte nový název pro tuto konfiguraci, třeba **ServiceFabricUpgrader**.
 3.  Na pravém panelu na kartě **Arguments** (Argumenty) změňte **-Pconfig='deploy'** na **-Pconfig=upgrade** a potom klikněte na **Apply** (Použít).
 

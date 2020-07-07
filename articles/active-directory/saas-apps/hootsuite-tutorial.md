@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2639a52fbd1de266bfa9446bf6106952ba8e3573
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 1b282f8e592ffa6b5c8cb36b2f3b2276bdeb0f58
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/01/2020
-ms.locfileid: "85606099"
+ms.locfileid: "85799135"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hootsuite"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s HootSuite
 
@@ -90,10 +90,10 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     Do textového pole **Adresa URL odpovědi** zadejte jednu z adres URL pomocí následujícího vzoru:
 
-        ```https
-        https://hootsuite.com/member/sso-complete
-        https://hootsuite.com/sso/<ORG_ID>
-        ```
+    ```http
+    https://hootsuite.com/member/sso-complete
+    https://hootsuite.com/sso/<ORG_ID>
+    ```
 
 1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 

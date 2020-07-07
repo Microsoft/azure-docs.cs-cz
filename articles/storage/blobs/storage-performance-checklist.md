@@ -9,10 +9,10 @@ ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: b94725d4d3eb9fd6f13a39d00486b4ab085b9ef9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80473929"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>Kontrolní seznam pro výkon a škálovatelnost pro úložiště objektů BLOB
@@ -42,7 +42,7 @@ Tento článek organizuje osvědčené postupy pro výkon do kontrolního seznam
 | &nbsp; |Konfigurace .NET |[Nakonfigurovali jste klienta tak, aby používal dostatečný počet souběžných připojení?](#increase-default-connection-limit) |
 | &nbsp; |Konfigurace .NET |[Pro aplikace .NET jste nakonfigurovali .NET pro použití dostatečného počtu vláken?](#increase-minimum-number-of-threads) |
 | &nbsp; |Paralelismu |[Měli byste zajistit, aby byl paralelismu správně ohraničený, takže nebudete přetěžovat možnosti svého klienta nebo se přiblížíte cílům škálovatelnosti?](#unbounded-parallelism) |
-| &nbsp; |Nástroje |[Používáte nejnovější verze klientských knihoven a nástrojů od společnosti Microsoft?](#client-libraries-and-tools) |
+| &nbsp; |nástroje |[Používáte nejnovější verze klientských knihoven a nástrojů od společnosti Microsoft?](#client-libraries-and-tools) |
 | &nbsp; |Opakování |[Používáte zásady opakování s exponenciálním omezení rychlosti pro omezení chyb a časových limitů?](#timeout-and-server-busy-errors) |
 | &nbsp; |Opakování |[Vyloučí vaše aplikace opakované pokusy o neopakující se chyby?](#non-retryable-errors) |
 | &nbsp; |Kopírování objektů BLOB |[Kopírujete objekty blob nejúčinnějším způsobem?](#blob-copy-apis) |
@@ -236,7 +236,7 @@ Azure Storage poskytuje řadu řešení pro kopírování a přesouvání objekt
 
 ### <a name="blob-copy-apis"></a>Rozhraní API pro kopírování objektů BLOB
 
-K kopírování objektů BLOB mezi účty úložiště použijte operaci [vložení bloku z adresy URL](/rest/api/storageservices/put-block-from-url) . Tato operace kopíruje data synchronně z libovolného zdroje adresy URL do objektu blob bloku. Při migraci `Put Block from URL` dat mezi účty úložiště může použití operace významně snížit požadovanou šířku pásma. Vzhledem k tomu, že operace kopírování probíhá na straně služby, není nutné data stahovat a znovu nahrávat.
+K kopírování objektů BLOB mezi účty úložiště použijte operaci [vložení bloku z adresy URL](/rest/api/storageservices/put-block-from-url) . Tato operace kopíruje data synchronně z libovolného zdroje adresy URL do objektu blob bloku. `Put Block from URL`Při migraci dat mezi účty úložiště může použití operace významně snížit požadovanou šířku pásma. Vzhledem k tomu, že operace kopírování probíhá na straně služby, není nutné data stahovat a znovu nahrávat.
 
 Pokud chcete kopírovat data v rámci stejného účtu úložiště, použijte operaci [Kopírovat objekt BLOB](/rest/api/storageservices/Copy-Blob) . Kopírování dat v rámci stejného účtu úložiště se obvykle dokončí rychle.  
 

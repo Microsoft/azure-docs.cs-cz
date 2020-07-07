@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 9da629929ca88f406dc503710477104be94c47e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71212202"
 ---
 # <a name="azure-notification-hubs-rich-push"></a>Azure Notification Hubs Rich push
@@ -50,7 +50,7 @@ Na nejvyšší úrovni:
 4. Když je vybraná image, změňte její akci sestavení v okno Vlastnosti na **Integrovaný prostředek**.
 
     ![][IOS2]
-5. Do `Notifications.cs`přidejte následující příkaz using:
+5. Do `Notifications.cs` přidejte následující příkaz using:
 
     ```csharp
     using System.Reflection;
@@ -105,7 +105,7 @@ Na nejvyšší úrovni:
    > [!NOTE]
    > volitelné Další informace o tom, jak přidat a získat projektové prostředky, najdete v tématu [jak vkládat a přistupovat k prostředkům pomocí jazyka Visual C#](https://support.microsoft.com/kb/319292) .
 
-7. V `NotificationsController.cs`, předefinujte ' NotificationsController ' pomocí následujících fragmentů kódu. Tím se pošle počáteční tiché ID oznámení na zařízení a povolí se načtení image na straně klienta:
+7. V `NotificationsController.cs` , předefinujte ' NotificationsController ' pomocí následujících fragmentů kódu. Tím se pošle počáteční tiché ID oznámení na zařízení a povolí se načtení image na straně klienta:
 
     ```csharp
     // Return http response with image binary
@@ -147,7 +147,7 @@ Teď, když jste změnili back-end aplikace tak, aby odesílaly jenom *ID* ozná
 2. Klikněte na **Možnosti**, zapnout **režimy na pozadí**a zaškrtněte políčko **Vzdálená oznámení** .
 
     ![][IOS3]
-3. Otevřete `Main.storyboard` [a v tomto](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) kurzu se ujistěte, že máte kontroler zobrazení (v tomto kurzu se označuje jako kontroler domovského zobrazení).
+3. Otevřete `Main.storyboard` a v tomto kurzu se ujistěte, že máte kontroler zobrazení (v tomto kurzu se označuje jako kontroler [Notify User](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) domovského zobrazení).
 4. Přidejte do scénáře **navigační kontroler** a pomocí ovládacího prvku přetáhněte ho do řídicího panelu pro zobrazení domů, aby byl **kořenovým zobrazením** navigace. Ujistěte se, že je zaškrtnuto políčko **je prvotní kontroler zobrazení** v inspektoru atributů pouze pro navigační kontroler.
 5. Přidejte **kontroler zobrazení** do scénáře a přidejte **zobrazení obrázku**. Toto je stránka, kterou uživatelé uvidí, až se po výběru zobrazí další informace kliknutím na oznámení. Scénář by měl vypadat takto:
 
@@ -161,13 +161,13 @@ Teď, když jste změnili back-end aplikace tak, aby odesílaly jenom *ID* ozná
     @property (weak, nonatomic) IBOutlet UIImageView *myImage;
     @property (strong) UIImage* imagePayload;
     ```
-10. V `imageViewController.m`přidejte následující na konci `viewDidload`:
+10. V `imageViewController.m` přidejte následující na konci `viewDidload` :
 
     ```objc
     // Display the UI Image in UI Image View
     [self.myImage setImage:self.imagePayload];
     ```
-11. V `AppDelegate.m`nástroji importujte vytvořený kontroler imagí:
+11. V nástroji `AppDelegate.m` importujte vytvořený kontroler imagí:
 
     ```objc
     #import "imageViewController.h"
@@ -189,7 +189,7 @@ Teď, když jste změnili back-end aplikace tak, aby odesílaly jenom *ID* ozná
 
     @end
     ```
-13. V `AppDelegate`nástroji se ujistěte, že vaše aplikace registruje pro `application: didFinishLaunchingWithOptions`tichá oznámení v nástroji:
+13. V nástroji `AppDelegate` se ujistěte, že vaše aplikace registruje pro tichá oznámení v nástroji `application: didFinishLaunchingWithOptions` :
 
     ```objc
     // Software version
@@ -242,7 +242,7 @@ Teď, když jste změnili back-end aplikace tak, aby odesílaly jenom *ID* ozná
     homeViewController *hvc = (homeViewController *)[nc.viewControllers objectAtIndex:0];
     hvc.deviceToken = deviceToken;
     ```
-15. Pak přidejte následující metody k `AppDelegate.m` načtení obrázku z koncového bodu a odeslání místního oznámení po dokončení načítání. Nezapomeňte zástupný text `{backend endpoint}` nahradit koncovým bodem back-end:
+15. Pak přidejte následující metody k `AppDelegate.m` načtení obrázku z koncového bodu a odeslání místního oznámení po dokončení načítání. Nezapomeňte zástupný text nahradit `{backend endpoint}` koncovým bodem back-end:
 
     ```objc
     NSString *const GetNotificationEndpoint = @"{backend endpoint}/api/notifications";
@@ -323,7 +323,7 @@ Teď, když jste změnili back-end aplikace tak, aby odesílaly jenom *ID* ozná
         // Add "else if" here to handle more types of rich content such as url, sound files, etc.
     }
     ```
-16. Pořídí místní oznámení výše, a to otevřením kontroleru zobrazení imagí `AppDelegate.m` v nástroji pomocí následujících metod:
+16. Pořídí místní oznámení výše, a to otevřením kontroleru zobrazení imagí v `AppDelegate.m` nástroji pomocí následujících metod:
 
     ```objc
     // Helper: redirect users to image view controller

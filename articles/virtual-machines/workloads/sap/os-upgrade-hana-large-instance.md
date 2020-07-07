@@ -14,10 +14,10 @@ ms.date: 07/04/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8485f3474da18e052bc0eab6c053be084ef884a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82192412"
 ---
 # <a name="operating-system-upgrade"></a>Upgrade operačního systému
@@ -96,7 +96,7 @@ SAP ve velkých instancích Azure HANA (typ I) může být po upgradu v nespouš
 
 *   Provést `multipath -ll` příkaz.
 *   Získejte ID logické jednotky (LUN), jejíž velikost je přibližně 50G, nebo použijte příkaz:`fdisk -l | grep mapper`
-*   Aktualizuje `/etc/default/grub_installdevice` soubor řádek `/dev/mapper/<LUN ID>`. Příklad:/dev/Mapper/3600a09803830372f483f495242534a56
+*   Aktualizuje `/etc/default/grub_installdevice` soubor řádek `/dev/mapper/<LUN ID>` . Příklad:/dev/Mapper/3600a09803830372f483f495242534a56
 >[!NOTE]
 >ID logické jednotky (LUN) se liší od serveru k serveru.
 
@@ -119,7 +119,7 @@ Aby se změny projevily, je potřeba restartovat počítač. Spusťte `lsmod` p�
 
 
 ### <a name="kernel-parameters"></a>Parametry jádra
-   Ujistěte se, že je použito `transparent_hugepage`správné `numa_balancing`nastavení `processor.max_cstate`pro `ignore_ce` , `intel_idle.max_cstate` , a.
+   Ujistěte se, že je použito správné nastavení pro `transparent_hugepage` , `numa_balancing` , a `processor.max_cstate` `ignore_ce` `intel_idle.max_cstate` .
 
 * intel_idle. max_cstate = 1
 * procesor. max_cstate = 1

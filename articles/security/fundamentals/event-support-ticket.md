@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/13/2017
 ms.author: terrylan
 ms.openlocfilehash: fc5899fe5aca4bbaa9250cf41b240816e2cbedb0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80548592"
 ---
 # <a name="how-to-log-a-security-event-support-ticket"></a>Jak zadat lístek podpory pro událost zabezpečení
@@ -32,7 +32,7 @@ ms.locfileid: "80548592"
 
     i. Jaký je problém nebo chyba zabezpečení?
 
-    ii. V případě ohrožení zabezpečení zadejte CVE (mitre.org) nebo vyplněnou kalkulačku CVSS3 V3 (https://www.first.org/cvss/calculator/3.0).
+    ii. V případě ohrožení zabezpečení zadejte CVE (mitre.org) nebo vyplněnou kalkulačku CVSS3 V3 ( https://www.first.org/cvss/calculator/3.0) .
 
     iii. Existuje řešení nebo zmírnění rizik? Pokud ano, zadejte prosím nápravný postup.
 

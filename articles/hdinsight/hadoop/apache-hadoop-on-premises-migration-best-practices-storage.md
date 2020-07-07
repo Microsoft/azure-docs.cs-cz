@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/10/2019
 ms.openlocfilehash: f19d4adad675cdf95f59aca0f752f46211b75e8f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80436917"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight"></a>Migrace místních Apache Hadoopových clusterů do Azure HDInsight
@@ -41,7 +41,7 @@ Pro přístup k datům, která jsou uložená v Azure Storage, se dá použít j
 
 [Cíle škálovatelnosti pro účty úložiště úrovně Standard](../../storage/common/scalability-targets-standard-account.md) obsahují aktuální limity pro účty Azure Storage. Pokud požadavky aplikace překročí cíle škálovatelnosti jednoho účtu úložiště, může být aplikace sestavená tak, aby používala více účtů úložiště, a pak rozdělit datové objekty mezi tyto účty úložiště.
 
-[Analýza úložiště Azure](../../storage/storage-analytics.md) poskytuje metriky pro všechny služby úložiště a Azure Portal je možné nakonfigurovat tak, aby byly metriky shromažďovány pro vizuální grafy. Výstrahy se dají vytvořit, pokud chcete upozorňovat na dosažení prahových hodnot pro metriky prostředků úložiště.
+[Analýza úložiště Azure](../../storage/storage-analytics.md)   poskytuje metriky pro všechny služby úložiště a Azure Portal lze konfigurovat shromažďování metrik pro vizuální selektory. Výstrahy se dají vytvořit, pokud chcete upozorňovat na dosažení prahových hodnot pro metriky prostředků úložiště.
 
 Azure Storage nabízí [obnovitelné odstranění objektů BLOB](../../storage/blobs/storage-blob-soft-delete.md) , které vám pomůžou obnovit data v případě, že je omylem upravována nebo odstraněna aplikací nebo jiným uživatelem účtu úložiště.
 
@@ -70,7 +70,7 @@ Ověřte, že přidaný certifikát je v úložišti důvěryhodnosti.
 keytool -list -v -keystore /path/to/jre/lib/security/cacerts
 ```
 
-Další informace najdete v těchto článcích:
+Další informace najdete v následujících článcích:
 
 - [Použití Azure Storage s clustery Azure HDInsight](../hdinsight-hadoop-use-blob-storage.md)
 - [Cíle škálovatelnosti pro účty úložiště úrovně Standard](../../storage/common/scalability-targets-standard-account.md)
@@ -83,7 +83,7 @@ Další informace najdete v těchto článcích:
 
 Azure Data Lake Storage implementuje model řízení přístupu k stylu aplikace HDFS a POSIX. Poskytuje pro jemně odstupňované řízení přístupu první integraci třídy s AAD. Neexistují žádná omezení velikosti dat, která může uložit, nebo schopnost spouštět výkonné paralelní analýzy.
 
-Další informace najdete v těchto článcích:
+Další informace najdete v následujících článcích:
 
 - [Vytváření clusterů HDInsight pomocí Data Lake Storage pomocí Azure Portal](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)
 - [Použití Data Lake Storage s clustery Azure HDInsight](../hdinsight-hadoop-use-data-lake-store.md)
@@ -94,11 +94,11 @@ Azure Data Lake Storage Gen2 je nejnovější nabídka úložiště. Sjednocuje 
 
 ADLS Gen 2 je postaven na [službě Azure Blob Storage](../../storage/blobs/storage-blobs-introduction.md) a umožňuje rozhraní s daty pomocí systémů souborů i úložišť objektů. Funkce z [Azure Data Lake Storage Gen1](../../data-lake-store/index.yml), jako jsou sémantika systému souborů, zabezpečení na úrovni souborů a škálování, jsou kombinovány s nízkými náklady, vrstvenými úložištěm, vysoce dostupnými možnostmi zotavení po havárii a rozsáhlým EKOSYSTÉMEM sady SDK/nástrojů ze služby [Azure Blob Storage](../../storage/blobs/storage-blobs-introduction.md). V Data Lake Storage Gen2 všechny kvality úložiště objektů zůstanou při přidávání výhod rozhraní systému souborů optimalizovaného pro analytické úlohy.
 
-Základní funkcí data Lake Storage Gen2 je přidání [hierarchického oboru názvů](../../storage/data-lake-storage/namespace.md) ke službě BLOB Storage, která uspořádá objekty a soubory do hierarchie adresářů pro účely přístupu k datům.Hierarchická struktura umožňuje operace, jako je například přejmenování nebo odstranění adresáře, aby byly jednou atomické operace s metadaty v adresáři, nikoli vytváření výčtu a zpracování všech objektů, které sdílejí předponu názvu adresáře.
+Základní funkcí Data Lake Storage Gen2 je přidání [hierarchického oboru názvů](../../storage/data-lake-storage/namespace.md)   ke službě BLOB Storage, která uspořádá objekty a soubory do hierarchie adresářů pro účely přístupu k datům.Hierarchická struktura umožňuje operace, jako je například přejmenování nebo odstranění adresáře, aby byly jednou atomické operace s metadaty v adresáři, nikoli vytváření výčtu a zpracování všech objektů, které sdílejí předponu názvu adresáře.
 
 V minulosti se cloudové analýzy musely napadnout v oblasti výkonu, správy a zabezpečení. Klíčové funkce Azure Data Lake Storage (ADLS) Gen2 jsou následující:
 
-- **Přístup**s platformou hadoop: Azure Data Lake Storage Gen2 umožňuje správu a přístup k datům stejně, jako byste použili [systém souborů DFS (DISTRIBUTED File System) Hadoop (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Nový [ovladač](../../storage/data-lake-storage/abfs-driver.md) ABFS je dostupný ve všech Apache Hadoop prostředích, která jsou součástí [Azure HDInsight](../index.yml). Tento ovladač vám umožní získat přístup k datům uloženým v Data Lake Storage Gen2.
+- **Přístup**s platformou hadoop: Azure Data Lake Storage Gen2 umožňuje správu a přístup k datům stejně, jako byste použili [systém souborů DFS (DISTRIBUTED File System) Hadoop (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Nový [ovladač ABFS](../../storage/data-lake-storage/abfs-driver.md)   je dostupný ve všech Apache Hadoop prostředích, která jsou součástí [Azure HDInsight](../index.yml). Tento ovladač vám umožní získat přístup k datům uloženým v Data Lake Storage Gen2.
 
 - **Nadmnožina oprávnění POSIX**: model zabezpečení pro data Lake Gen2 plně podporuje oprávnění ACL a POSIX spolu s některými dalšími podrobnostmi, které jsou specifické pro data Lake Storage Gen2. Nastavení lze nakonfigurovat prostřednictvím nástrojů pro správu nebo prostřednictvím architektury, jako je například podregistr a Spark.
 
@@ -106,13 +106,13 @@ V minulosti se cloudové analýzy musely napadnout v oblasti výkonu, správy a 
 
 - **Spolupracuje s nástroji, architekturami a aplikacemi služby Blob Storage**: Data Lake Storage Gen2 nadále pracovat se spoustou nástrojů, platforem a aplikací, které existují v dnešní době pro úložiště objektů BLOB.
 
-- **Optimalizovaný ovladač**: ovladač systému souborů objektů BLOB v Azure (ABFS) je [optimalizován speciálně](../../storage/data-lake-storage/abfs-driver.md) pro analýzu velkých objemů dat. Odpovídající rozhraní REST API se procházejí prostřednictvím koncového bodu DFS dfs.core.windows.net.
+- **Optimalizovaný ovladač**: ovladač systému souborů objektů BLOB v Azure (ABFS) je [optimalizován speciálně](../../storage/data-lake-storage/abfs-driver.md)   pro analýzu velkých objemů dat. Odpovídající rozhraní REST API se procházejí prostřednictvím koncového bodu DFS dfs.core.windows.net.
 
 Pro přístup k datům, která jsou uložená v ADLS Gen2, se dá použít jeden z následujících formátů:
 - `abfs:///`: Přístup k výchozímu Data Lake Storage clusteru.
 - `abfs://file_system@account_name.dfs.core.windows.net`: Používá se při komunikaci s jiným než výchozím Data Lake Storage.
 
-Další informace najdete v těchto článcích:
+Další informace najdete v následujících článcích:
 
 - [Úvod do Azure Data Lake Storage Gen2](../../storage/data-lake-storage/introduction.md)
 - [Ovladač systému souborů objektů BLOB v Azure (ABFS.md)](../../storage/data-lake-storage/abfs-driver.md)
@@ -128,7 +128,7 @@ Azure Storage klíčů, které jsou přidány do konfiguračních souborů Hadoo
 hadoop credential create fs.azure.account.key.account.blob.core.windows.net -value <storage key> -provider jceks://hdfs@headnode.xx.internal.cloudapp.net/path/to/jceks/file
 ```
 
-**Pokud chcete přidat výše uvedenou cestu zprostředkovatele k souboru Core-site. XML nebo ke konfiguraci Ambari v části vlastní Core-site:**
+**Postup přidání výše uvedené cesty poskytovatele do core-site.xml nebo do konfigurace Ambari v části vlastní Core-site:**
 
 ```xml
 <property>
@@ -141,7 +141,7 @@ hadoop credential create fs.azure.account.key.account.blob.core.windows.net -val
 ```
 
 > [!Note]
-> Do příkazového řádku Distcp se dá přidat taky vlastnost cesta zprostředkovatele místo uložení klíče na úrovni clusteru v souboru Core-site. XML následujícím způsobem:
+> Do příkazového řádku Distcp se dá přidat taky vlastnost cesta zprostředkovatele místo uložení klíče na úrovni clusteru core-site.xml takto:
 
 ```bash
 hadoop distcp -D hadoop.security.credential.provider.path=jceks://hdfs@headnode.xx.internal.cloudapp.net/path/to/jceks /user/user1/ wasb:<//yourcontainer@youraccount.blob.core.windows.net/>user1
@@ -183,9 +183,9 @@ Ve výchozím nastavení má služba HDInsight úplný přístup k datům v úč
 
 Existují tři důležité věci, jak si pamatovat v používání tokenů SAS v Azure:
 
-1. Pokud jsou tokeny SAS vytvořené pomocí oprávnění číst a seznam, uživatelé, kteří přistupují k kontejneru objektů BLOB s tímto tokenem SAS, nebudou moct zapisovat a odstraňovat data. Uživatelé, kteří přistupují k kontejneru objektů BLOB pomocí tohoto tokenu SAS a operaci zápisu nebo odstranění, obdrží zprávu, `"This request is not authorized to perform this operation"`jako je.
+1. Pokud jsou tokeny SAS vytvořené pomocí oprávnění číst a seznam, uživatelé, kteří přistupují k kontejneru objektů BLOB s tímto tokenem SAS, nebudou moct zapisovat a odstraňovat data. Uživatelé, kteří přistupují k kontejneru objektů BLOB pomocí tohoto tokenu SAS a operaci zápisu nebo odstranění, obdrží zprávu, jako je `"This request is not authorized to perform this operation"` .
 
-2. Pokud jsou tokeny SAS generovány `READ + LIST + WRITE` s oprávněním ( `DELETE` pouze pro omezení), `hadoop fs -put` příkazy, jako je `\_COPYING\_` například zápis do souboru, a poté pokus o přejmenování souboru. Tato operace HDFS se mapuje na `copy+delete` pro WASB. Vzhledem k `DELETE` tomu, že oprávnění nebylo zadáno, "Put" selže. `\_COPYING\_` Operace je funkce Hadoop určená k poskytnutí nějakého řízení souběžnosti. V současné době neexistuje způsob, jak omezit pouze operaci "odstranit", aniž by to ovlivnilo i "WRITE" operace.
+2. Pokud jsou tokeny SAS generovány s `READ + LIST + WRITE` oprávněním ( `DELETE` pouze pro omezení), příkazy, jako `hadoop fs -put` je například zápis do `\_COPYING\_` souboru, a poté pokus o přejmenování souboru. Tato operace HDFS se mapuje na `copy+delete` pro WASB. Vzhledem k `DELETE` tomu, že oprávnění nebylo zadáno, "Put" selže. `\_COPYING\_`Operace je funkce Hadoop určená k poskytnutí nějakého řízení souběžnosti. V současné době neexistuje způsob, jak omezit pouze operaci "odstranit", aniž by to ovlivnilo i "WRITE" operace.
 
 3. Poskytovatel pověření Hadoop a zprostředkovatel dešifrovacího klíče (ShellDecryptionKeyProvider) v současné době nepracují s tokeny SAS, takže v současné době není možné je chránit před viditelností.
 
@@ -202,7 +202,7 @@ Všechna data zapsaná do Azure Storage se automaticky šifrují pomocí [šifr
 
 Azure Data Lake Storage poskytuje místně redundantní úložiště (LRS), ale měli byste také zkopírovat kritická data do jiného účtu Data Lake Storage v jiné oblasti s frekvencí, která je zarovnaná na požadavky plánu zotavení po havárii.Existují různé metody kopírování dat, včetně [ADLCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md), [DistCp](https://hadoop.apache.org/docs/current/hadoop-distcp/DistCp.html), [Azure PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md)nebo [Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md).Doporučuje se také vyhovět zásadám přístupu pro účet Data Lake Storage, abyste zabránili nechtěnému odstranění.
 
-Další informace najdete v těchto článcích:
+Další informace najdete v následujících článcích:
 
 - [Replikace Azure Storage](../../storage/common/storage-redundancy.md)
 - [Pokyny k havárii pro Azure Data Lake Storage (ADLS)](../../data-lake-store/data-lake-store-disaster-recovery-guidance.md)

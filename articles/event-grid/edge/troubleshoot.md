@@ -10,10 +10,10 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 95181d0eb23d5956b2c6af52c77f85714b107345
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73100162"
 ---
 # <a name="common-issues"></a>Běžné problémy
@@ -42,7 +42,7 @@ sudo docker logs eventgridmodule
 
 * Pokud se jedná o komunikaci modulu k modulům, ujistěte se, že provádíte volání na portu **4438** a název modulu se shoduje s tím, co je nasazeno. 
 
-  Pokud byl například modul Event Grid nasazen s názvem **eventgridmodule** , měla by být **https://eventgridmodule:4438**adresa URL. Ujistěte se, že velikost písmen a číslo portu jsou správné.
+  Pokud byl například modul Event Grid nasazen s názvem **eventgridmodule** , měla by být adresa URL **https://eventgridmodule:4438** . Ujistěte se, že velikost písmen a číslo portu jsou správné.
     
 * Pokud se jedná o modul mimo IoT, ujistěte se, že Event Grid port je namapovaný na hostitelský počítač během nasazování, například
 
@@ -64,7 +64,7 @@ sudo docker logs eventgridmodule
 
 * Pokud se jedná o komunikaci modulu k modulům, ujistěte se, že provádíte volání na portu **5888** a název modulu se shoduje s tím, co je nasazeno. 
 
-  Pokud byl například modul Event Grid nasazen s názvem **eventgridmodule** , měla by být **http://eventgridmodule:5888**adresa URL. Ujistěte se, že velikost písmen a číslo portu jsou správné.
+  Pokud byl například modul Event Grid nasazen s názvem **eventgridmodule** , měla by být adresa URL **http://eventgridmodule:5888** . Ujistěte se, že velikost písmen a číslo portu jsou správné.
     
 * Pokud se jedná o modul mimo IoT, ujistěte se, že Event Grid port je namapovaný na hostitelský počítač během nasazování, například
 
@@ -108,4 +108,4 @@ Mezi obvyklé příčiny patří:
 
 ## <a name="next-steps"></a>Další kroky
 
-Nahlaste všechny problémy, návrhy pomocí Event Grid v IoT Edge [https://github.com/Azure/event-grid-iot-edge/issues](https://github.com/Azure/event-grid-iot-edge/issues)na.
+Nahlaste všechny problémy, návrhy pomocí Event Grid v IoT Edge na [https://github.com/Azure/event-grid-iot-edge/issues](https://github.com/Azure/event-grid-iot-edge/issues) .

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/13/2019
 ms.openlocfilehash: dfa1ad318ccc9e891b646ec050f6a0776e108206
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81418231"
 ---
 # <a name="copy-data-to-an-azure-cognitive-search-index-using-azure-data-factory"></a>Kopírování dat do indexu služby Azure Kognitivní hledání pomocí Azure Data Factory
@@ -42,9 +42,9 @@ Následující části obsahují podrobné informace o vlastnostech, které slou
 
 Pro propojenou službu Azure Kognitivní hledání se podporují tyto vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type musí být nastavená na: **AzureSearch** . | Ano |
+| typ | Vlastnost Type musí být nastavená na: **AzureSearch** . | Ano |
 | url | Adresa URL služby vyhledávání | Ano |
 | key | Klíč správce pro vyhledávací službu. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Můžete použít Azure Integration Runtime nebo místní Integration Runtime (Pokud je úložiště dat umístěné v privátní síti). Pokud není zadaný, použije se výchozí Azure Integration Runtime. |Ne |
@@ -52,7 +52,7 @@ Pro propojenou službu Azure Kognitivní hledání se podporují tyto vlastnosti
 > [!IMPORTANT]
 > Když kopírujete data z cloudového úložiště dat do indexu vyhledávání, v propojené službě Azure Kognitivní hledání musíte odkazovat Azure Integration Runtime s explicitní oblastí v connactVia. Nastavte oblast jako tu, kde se nachází vaše vyhledávací služba. Další informace o [Azure Integration runtime](concepts-integration-runtime.md#azure-integration-runtime).
 
-**Případě**
+**Příklad:**
 
 ```json
 {
@@ -80,12 +80,12 @@ Pro propojenou službu Azure Kognitivní hledání se podporují tyto vlastnosti
 
 Pokud chcete kopírovat data do Azure Kognitivní hledání, podporují se tyto vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type datové sady musí být nastavená na: **AzureSearchIndex** . | Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na: **AzureSearchIndex** . | Ano |
 | indexName | Název indexu hledání Data Factory nevytváří index. Index musí existovat v Azure Kognitivní hledání. | Ano |
 
-**Případě**
+**Příklad:**
 
 ```json
 {
@@ -112,9 +112,9 @@ Pokud chcete kopírovat data do Azure Kognitivní hledání, podporují se tyto 
 
 Pokud chcete kopírovat data do Azure Kognitivní hledání, nastavte typ zdroje v aktivitě kopírování na **AzureSearchIndexSink**. V části **jímka** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **AzureSearchIndexSink** . | Ano |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **AzureSearchIndexSink** . | Ano |
 | writeBehavior | Určuje, zda se má sloučit nebo nahradit, když dokument v indexu již existuje. Podívejte se na [vlastnost WriteBehavior](#writebehavior-property).<br/><br/>Povolené hodnoty jsou: **Merge** (výchozí) a **nahrání**. | Ne |
 | writeBatchSize | Když velikost vyrovnávací paměti dosáhne writeBatchSize, nahraje data do indexu vyhledávání. Podrobnosti najdete ve [vlastnosti WriteBatchSize](#writebatchsize-property) .<br/><br/>Povolené hodnoty jsou: celé číslo 1 až 1 000; Výchozí hodnota je 1000. | Ne |
 
@@ -133,7 +133,7 @@ Výchozí chování je **sloučeno**.
 
 Služba Azure Kognitivní hledání podporuje zápis dokumentů jako dávky. Dávka může obsahovat 1 až 1 000 akcí. Akce zpracovává jeden dokument k provedení operace Odeslat/sloučit.
 
-**Případě**
+**Příklad:**
 
 ```json
 "activities":[
@@ -177,8 +177,8 @@ Následující tabulka určuje, jestli je datový typ Azure Kognitivní hledán�
 | Double | Ano |
 | Logická hodnota | Ano |
 | DataTimeOffset | Ano |
-| Pole řetězců | Ne |
-| GeographyPoint | Ne |
+| Pole řetězců | N |
+| GeographyPoint | N |
 
 V současné době nejsou podporovány jiné datové typy, například ComplexType. Úplný seznam podporovaných datových typů Azure Kognitivní hledání najdete v tématu [podporované datové typy (Azure kognitivní hledání)](https://docs.microsoft.com/rest/api/searchservice/supported-data-types).
 

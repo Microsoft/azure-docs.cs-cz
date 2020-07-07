@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/12/2018
 ms.openlocfilehash: 2690ded0ac45719cb1082c85ab535c91ad491172
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81417959"
 ---
 # <a name="system-variables-supported-by-azure-data-factory"></a>Systémové proměnné podporované nástrojem Azure Data Factory
@@ -41,8 +41,8 @@ V případě, že je Trigger typu "ScheduleTrigger", mohou být tyto systémové
 
 | Název proměnné | Popis |
 | --- | --- |
-| @trigger().scheduledTime |Čas, kdy byla aktivační událost naplánována k vyvolání spuštění kanálu. Například pro Trigger, který se aktivuje každých 5 minut, tato proměnná vrátí `2017-06-01T22:20:00Z`, `2017-06-01T22:25:00Z`v `2017-06-01T22:30:00Z` uvedeném pořadí.|
-| @trigger(). Čas_spuštění |Čas, kdy se Trigger **skutečně** vyvolal pro vyvolání spuštění kanálu. Například pro Trigger, který se aktivuje každých 5 minut, může tato proměnná vracet něco podobného `2017-06-01T22:20:00.4061448Z`, `2017-06-01T22:25:00.7958577Z`v `2017-06-01T22:30:00.9935483Z` uvedeném pořadí. (Poznámka: ve výchozím nastavení je časové razítko ve formátu ISO 8601.)|
+| @trigger().scheduledTime |Čas, kdy byla aktivační událost naplánována k vyvolání spuštění kanálu. Například pro Trigger, který se aktivuje každých 5 minut, tato proměnná vrátí `2017-06-01T22:20:00Z` , v `2017-06-01T22:25:00Z` `2017-06-01T22:30:00Z` uvedeném pořadí.|
+| @trigger(). Čas_spuštění |Čas, kdy se Trigger **skutečně** vyvolal pro vyvolání spuštění kanálu. Například pro Trigger, který se aktivuje každých 5 minut, může tato proměnná vracet něco podobného `2017-06-01T22:20:00.4061448Z` , `2017-06-01T22:25:00.7958577Z` v `2017-06-01T22:30:00.9935483Z` uvedeném pořadí. (Poznámka: ve výchozím nastavení je časové razítko ve formátu ISO 8601.)|
 
 ## <a name="tumbling-window-trigger-scope"></a>Rozsah triggeru pro bubnový interval
 V případě, že je Trigger typu "TumblingWindowTrigger", mohou být tyto systémové proměnné odkazovány kdekoli v triggeru JSON.

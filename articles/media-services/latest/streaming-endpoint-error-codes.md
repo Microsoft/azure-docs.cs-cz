@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: juliako
 ms.openlocfilehash: 7d3a85e6fcc5b9d1c5ca1511cd7edd05ff5d9ae4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80582688"
 ---
 # <a name="streaming-endpoint-origin-errors"></a>Chyby koncového bodu streamování (Origin) 
@@ -34,7 +34,7 @@ Požadavek obsahuje neplatné informace a je odmítnut s těmito kódy chyb a z 
 |MPE_ENC_ENCRYPTION_NOT_SPECIFIED_IN_URL |0x8088024C|Požadavek nemá v adrese URL žádnou šifrovací značku. Požadavky CMAF vyžadují v adrese URL značku šifrování. Jiné protokoly, které jsou nakonfigurované s více než jedním typem šifrování, vyžadují také šifrovací značku pro nejednoznačnost. |
 |MPE_STORAGE_BAD_URL_SYNTAX |0x808900E9|Požadavek na úložiště pro splnění žádosti se nezdařil s chybou požadavku. |
 
-## <a name="403-forbidden"></a>403 zakázané
+## <a name="403-forbidden"></a>403 – Zakázáno
 
 Požadavek není povolen z některého z následujících důvodů:
 
@@ -68,7 +68,7 @@ Operace se pokouší jednat o prostředek, který již neexistuje. Prostředek m
 
 ## <a name="409-conflict"></a>409 konflikt
 
-IDENTIFIKÁTOR poskytnutý pro prostředek v operaci `PUT` nebo `POST` byl proveden existujícím prostředkem. K vyřešení tohoto problému použijte jiné ID prostředku.
+IDENTIFIKÁTOR poskytnutý pro prostředek v `PUT` operaci nebo byl `POST` proveden existujícím prostředkem. K vyřešení tohoto problému použijte jiné ID prostředku.
 
 |Kód chyby|Hexadecimální hodnota |Popis chyby|
 |---|---|---|
@@ -198,7 +198,7 @@ Server momentálně nemůže přijímat požadavky. Tato chyba může být způs
 
 Podívejte se na článek o [komunitě Azure Media Services](media-services-community.md) a podívejte se na různé způsoby, jak můžete klást otázky, sdělit svůj názor a získávat aktualizace Media Services.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 - [Kódy chyb kódování](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)
 - [Azure Media Services koncepty](concepts-overview.md)

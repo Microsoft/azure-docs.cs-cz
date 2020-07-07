@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: seodec18
 ms.openlocfilehash: a670e32058794daeaa233464ba7d054f45ef25e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81536314"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Vytváření Time Series Insightsch prostředků pomocí šablon Azure Resource Manager
@@ -64,8 +64,8 @@ Následující postup popisuje, jak pomocí PowerShellu nasadit šablonu Azure R
      | eventHubNamespaceName | Obor názvů zdrojového centra událostí |
      | eventHubName | Název zdrojového centra událostí. |
      | consumerGroupName | Název skupiny uživatelů, kterou bude služba Time Series Insights používat ke čtení dat z centra událostí. **Poznámka:** Aby se zabránilo kolizi prostředků, musí být tato skupina uživatelů vyhrazena službě Time Series Insights a nesdílela se s ostatními čtenáři. |
-     | environmentName | Název prostředí. Název nesmí obsahovat tyto řídicí `<`znaky `>`: `%`, `&`, `:`, `\\`, `?`, `/`,, a. Všechny ostatní znaky jsou povolené.|
-     | eventSourceName | Název podřízeného prostředku zdroje události. Název nesmí obsahovat tyto řídicí `<`znaky `>`: `%`, `&`, `:`, `\\`, `?`, `/`,, a. Všechny ostatní znaky jsou povolené. |
+     | environmentName | Název prostředí. Název nesmí obsahovat tyto `<` `>` řídicí znaky:,,,, `%` `&` `:` , `\\` , `?` , `/` a. Všechny ostatní znaky jsou povolené.|
+     | eventSourceName | Název podřízeného prostředku zdroje události. Název nesmí obsahovat tyto `<` `>` řídicí znaky:,,,, `%` `&` `:` , `\\` , `?` , `/` a. Všechny ostatní znaky jsou povolené. |
 
     <div id="optional-parameters"></div>
 

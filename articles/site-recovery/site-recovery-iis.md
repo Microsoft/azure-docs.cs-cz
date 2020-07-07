@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
 ms.openlocfilehash: dfed398124ca20771e169f6f9e7d08d4d799ee1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80478287"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Nastavení zotavení po havárii pro webovou aplikaci založenou na službě IIS
@@ -63,13 +63,13 @@ Scénář | Do sekundární lokality | Do Azure
 Hyper-V | Ano | Ano
 VMware | Ano | Ano
 Fyzický server | Ne | Ano
-Azure|Není k dispozici|Ano
+Azure|NA|Ano
 
 ## <a name="replicate-virtual-machines"></a>Replikace virtuálních počítačů
 
 Pokud chcete začít replikovat všechny virtuální počítače webové farmy služby IIS do Azure, postupujte podle pokynů v části [testovací převzetí služeb při selhání do Azure v Site Recovery](site-recovery-test-failover-to-azure.md).
 
-Pokud používáte statickou IP adresu, můžete zadat IP adresu, kterou má virtuální počítač převzít. IP adresu nastavíte tak, že přejdete na **výpočty a nastavení** > sítě**cílová IP**adresa.
+Pokud používáte statickou IP adresu, můžete zadat IP adresu, kterou má virtuální počítač převzít. IP adresu nastavíte tak, že přejdete na **výpočty a nastavení sítě**  >  **cílová IP**adresa.
 
 ![Snímek obrazovky, který ukazuje, jak nastavit cílovou IP adresu v podokně Site Recovery výpočty a síť](./media/site-recovery-active-directory/dns-target-ip.png)
 
@@ -97,7 +97,7 @@ Aby webová farma služby IIS fungovala správně, možná budete muset provést
 #### <a name="dns-update"></a>Aktualizace DNS
 Pokud je pro dynamickou aktualizaci DNS nakonfigurovaný DNS, virtuální počítače při jejich spuštění obvykle aktualizují DNS novou IP adresou. Pokud chcete přidat explicitní krok pro aktualizaci DNS s novými IP adresami virtuálních počítačů, přidejte [skript, který aktualizuje IP adresu v DNS](https://aka.ms/asr-dns-update) jako akci po převzetí služeb při selhání u skupin plánů obnovení.  
 
-#### <a name="connection-string-in-an-applications-webconfig"></a>Připojovací řetězec v souboru Web. config aplikace
+#### <a name="connection-string-in-an-applications-webconfig"></a>Připojovací řetězec v web.config aplikace
 Připojovací řetězec Určuje databázi, se kterou web komunikuje. Pokud připojovací řetězec přenese název databázového virtuálního počítače, po převzetí služeb při selhání už nejsou potřeba žádné další kroky. Aplikace může automaticky komunikovat s databází. Pokud je navíc IP adresa pro virtuální počítač databáze zachována, není nutné aktualizovat připojovací řetězec. 
 
 Pokud připojovací řetězec odkazuje na virtuální počítač databáze pomocí IP adresy, je nutné aktualizovat po převzetí služeb při selhání. Například následující připojovací řetězec odkazuje na databázi s IP adresou 127.0.1.2:

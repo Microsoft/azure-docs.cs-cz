@@ -17,10 +17,10 @@ ms.workload: na
 ms.date: 07/18/2019
 ms.author: terrylan
 ms.openlocfilehash: 49b51a5f14f305afa915ec1d0fae42ca9ded6b1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81461663"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-app-service"></a>Osvědčené postupy pro zabezpečení webových a mobilních aplikací PaaS pomocí Azure App Service
@@ -41,7 +41,7 @@ Nezáleží na tom, jaký je dobrý způsob zabezpečení při ztrátě klíčů
 ## <a name="restrict-incoming-source-ip-addresses"></a>Omezit příchozí IP adresy příchozích dat
 [Prostředí App Service](../../app-service/environment/intro.md) mají funkci Integrace virtuální sítě, která vám pomůže omezit příchozí IP adresy příchozích dat prostřednictvím skupin zabezpečení sítě (skupin zabezpečení sítě). Pokud nejste obeznámeni s virtuálními sítěmi Azure (virtuální sítě), jedná se o funkci, která umožňuje umístit spoustu prostředků Azure do sítě, která není Internet, směrovat do sítě, ke které ovládáte přístup. Další informace najdete v tématu [integrace aplikace s Virtual Network Azure](../../app-service/web-sites-integrate-with-vnet.md).
 
-Pro App Service ve Windows můžete také dynamicky omezit IP adresy konfigurací souboru Web. config. Další informace najdete v tématu [dynamické zabezpečení protokolu IP](/iis/configuration/system.webServer/security/dynamicIpSecurity/).
+Pro App Service ve Windows můžete také dynamicky omezit IP adresy tím, že nakonfigurujete web.config. Další informace najdete v tématu [dynamické zabezpečení protokolu IP](/iis/configuration/system.webServer/security/dynamicIpSecurity/).
 
 
 ## <a name="next-steps"></a>Další kroky

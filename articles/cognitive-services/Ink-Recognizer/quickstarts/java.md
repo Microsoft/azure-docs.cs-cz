@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 06/30/2020
 ms.author: aahi
-ms.openlocfilehash: d2cd4e56477ea39587ce318538c9ddd84c51b03b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: bc7dfcef45917081ec9ea1e97f4c36e4348dd9e7
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448121"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985271"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-java"></a>Rychlý Start: rozpoznávání digitálního inkoustu pomocí nástroje pro rozpoznávání rukopisu REST API a Java
 
@@ -31,7 +31,7 @@ Zdrojový kód pro tento rychlý Start najdete na [GitHubu](https://go.microsoft
 
 ## <a name="prerequisites"></a>Požadavky
 
-- [Java&trade; Development Kit (JDK) 7](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) nebo novější.
+- [Java &trade; Development Kit (JDK) 7](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) nebo novější.
 
 - Importovat tyto knihovny z úložiště Maven
     - [JSON v balíčku Java](https://mvnrepository.com/artifact/org.json/json)
@@ -57,15 +57,15 @@ Zdrojový kód pro tento rychlý Start najdete na [GitHubu](https://go.microsoft
 
 1. Vytvořte novou funkci s názvem `sendRequest()` , která přijímá proměnné vytvořené výše. Pak proveďte následující kroky.
 
-2. Vytvořte `CloseableHttpClient` objekt, který může odesílat požadavky do rozhraní API. Odešlete požadavek do objektu `HttpPut` žádosti kombinací koncového bodu a adresy URL nástroje pro rozpoznávání rukopisu.
+2. Vytvořte `CloseableHttpClient` objekt, který může odesílat požadavky do rozhraní API. Odešlete požadavek do `HttpPut` objektu žádosti kombinací koncového bodu a adresy URL nástroje pro rozpoznávání rukopisu.
 
-3. Pomocí `setHeader()` funkce Request nastavte `Content-Type` hlavičku na `application/json`a přidejte do `Ocp-Apim-Subscription-Key` hlavičky klíč předplatného.
+3. Pomocí `setHeader()` funkce Request nastavte `Content-Type` hlavičku na `application/json` a přidejte do hlavičky klíč předplatného `Ocp-Apim-Subscription-Key` .
 
 4. Použijte `setEntity()` funkci žádosti na data, která chcete odeslat.   
 
 5. Použijte `execute()` funkci klienta k odeslání žádosti a uložte ji do `CloseableHttpResponse` objektu. 
 
-6. Vytvořte `HttpEntity` objekt pro uložení obsahu odpovědi. Získejte obsah pomocí `getEntity()`. Pokud odpověď není prázdná, vraťte ji.
+6. Vytvořte `HttpEntity` objekt pro uložení obsahu odpovědi. Získejte obsah pomocí `getEntity()` . Pokud odpověď není prázdná, vraťte ji.
     
     [!code-java[send a request](~/cognitive-services-rest-samples/java/InkRecognition/quickstart/RecognizeInk.java?name=sendRequest)]
 

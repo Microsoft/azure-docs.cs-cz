@@ -17,10 +17,10 @@ ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 02fbfc83c16cb13376cce820f19b247a7cd7db59
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82232304"
 ---
 # <a name="email-notifications-in-pim"></a>E-mailová oznámení v PIM
@@ -31,7 +31,7 @@ Privileged Identity Management (PIM) vám umožní zjistit, kdy se v organizaci 
 
 E-maily odeslané z Privileged Identity Management pro role prostředků Azure AD a Azure mají následující e-mailovou adresu odesílatele:
 
-- E-mailová adresa: **Azure\@-Microsoft.com Reply**
+- E-mailová adresa: **Azure- \@ Microsoft.com Reply**
 - Zobrazovaný název: Microsoft Azure
 
 Tyto e-maily obsahují předponu **PIM** v řádku předmětu. Tady je příklad:

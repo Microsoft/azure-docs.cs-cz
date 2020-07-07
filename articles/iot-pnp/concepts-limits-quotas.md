@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: cce99b7d9de09134fd01afb36c41bce3966e8536
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80518173"
 ---
 # <a name="iot-plug-and-play-preview-limits-quotas-and-throttles"></a>Limity, kvóty a omezení pro IoT technologie Plug and Play Preview
@@ -29,7 +29,7 @@ Ve verzi Public Preview platí následující omezení a kvóty pro Centrum IoT:
 | Maximální počet DCMs, které se můžou registrovat na zařízení | 1 ||
 | Maximální velikost rozhraní/souboru DCM | 512 kB ||
 | Maximální velikost názvu rozhraní | 256 znaků ||
-| Maximální velikost názvu vlastnosti  | 64 bajtů, 7 úrovní hloubky (a první úroveň je vyhrazena pro `$iotin`) | Povolené znaky: a-z, A-Z, 0-9 (nikoli jako první znak) a podtržítko. |
+| Maximální velikost názvu vlastnosti  | 64 bajtů, 7 úrovní hloubky (a první úroveň je vyhrazena pro `$iotin` ) | Povolené znaky: a-z, A-Z, 0-9 (nikoli jako první znak) a podtržítko. |
 | Maximální velikost hodnoty vlastnosti | 512 bajtů ||
 | Maximální velikost názvu příkazu | 100 bajtů ||
 | Velikost vlákna zařízení | Stejné jako [omezení IoT Hub](../iot-hub/iot-hub-devguide-device-twins.md#device-twin-size) ||
