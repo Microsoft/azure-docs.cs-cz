@@ -8,10 +8,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/24/2020
 ms.openlocfilehash: e01ac332e61f51909ff1617f1716cd719b67c319
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82127866"
 ---
 # <a name="visualize-azure-cognitive-search-logs-and-metrics-with-power-bi"></a>Vizualizace protokolů a metrik služby Azure Kognitivní hledání pomocí Power BI
@@ -33,7 +33,7 @@ Můžete najít Power BI App template **kognitivní hledání Azure: Analýza pr
     1. Zaregistrujte se **do účtu úložiště**, zadejte informace o svém účtu úložiště a pak ověřte **OperationLogs** a **AllMetrics** .
 
         ![](media/search-monitor-logs-powerbi/add-diagnostic-setting.png)
-    1. Vybrat **Uložit**
+    1. Vyberte **Uložit**.
 
 1. Po povolení protokolování můžete pomocí vyhledávací služby začít generovat protokoly a metriky. Může to trvat až hodinu, než se kontejnery zobrazí v úložišti objektů BLOB v těchto protokolech. Zobrazí se kontejner **Insights-logs-operationlogs** pro protokoly pro vyhledávání a kontejner Insights- **Metrics-pt1m** pro metriky.
 
@@ -102,4 +102,4 @@ Pokud zjistíte, že se data nezobrazí, postupujte podle těchto kroků pro ře
 
 [Co je Power BI?](https://docs.microsoft.com/power-bi/fundamentals/power-bi-overview)
 
-[Základní pojmy pro návrháře služby Power BI](https://docs.microsoft.com/power-bi/service-basic-concepts)
+[Základní pojmy pro návrháře ve službě Power BI](https://docs.microsoft.com/power-bi/service-basic-concepts)

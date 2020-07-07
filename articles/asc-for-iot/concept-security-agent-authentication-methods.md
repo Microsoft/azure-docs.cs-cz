@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: 0d9d51292c3cae9634af917819b558cdfd2fa04b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81311519"
 ---
 # <a name="security-agent-authentication-methods"></a>Metody ověřování agenta zabezpečení
@@ -77,7 +77,7 @@ Chcete-li po nasazení změnit metody ověřování, je nutné ručně upravit k
 
 ### <a name="c-based-security-agent"></a>Agent zabezpečení založený na jazyce C#
 
-Upravte soubor _Authentication. config_ následujícími parametry:
+Upravte _Authentication.config_ s následujícími parametry:
 
 ```xml
 <Authentication>
@@ -92,7 +92,7 @@ Upravte soubor _Authentication. config_ následujícími parametry:
 
 ### <a name="c-based-security-agent"></a>Agent zabezpečení založený na jazyce C
 
-Upravte _LocalConfiguration. JSON_ s následujícími parametry:
+Upravte _LocalConfiguration.js_ s následujícími parametry:
 
 ```json
 "Authentication" : {
@@ -104,7 +104,7 @@ Upravte _LocalConfiguration. JSON_ s následujícími parametry:
 }
 ```
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 - [Přehled agentů zabezpečení](security-agent-architecture.md)
 - [Nasadit agenta zabezpečení](how-to-deploy-agent.md)

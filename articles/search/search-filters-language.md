@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/22/2020
 ms.openlocfilehash: b0ebbbb64e173e1501f08f8385b14c365759a804
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82116277"
 ---
 # <a name="how-to-filter-by-language-in-azure-cognitive-search"></a>Postup filtrování podle jazyka v Azure Kognitivní hledání 
@@ -60,7 +60,7 @@ parameters =
 > [!Note]
 > I když v dotazu není žádný $filter argument, je tento případ použití silně spojený s koncepty filtru, takže se zobrazí jako scénář filtrování.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 + [Filtry v Azure Kognitivní hledání](search-filters.md)
 + [Analyzátory jazyka](https://docs.microsoft.com/rest/api/searchservice/language-support)

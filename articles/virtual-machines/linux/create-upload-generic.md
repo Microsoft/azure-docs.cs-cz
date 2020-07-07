@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 10/08/2018
 ms.author: guybo
 ms.openlocfilehash: f700dec6486bad9e7024d7c908a70dd0ff2b342c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80066764"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>Informace pro neschválené distribuce
@@ -24,11 +24,11 @@ Všechna distribuce běžící v Azure mají řadu požadavků. Tento článek n
 
 Doporučujeme, abyste začali s jedním ze systému [Linux v rámci schválených distribucí v Azure](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Následující články ukazují, jak připravit různé schválené distribuce systému Linux podporované v Azure:
 
-* **[Distribuce na základě CentOS](create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
+* **[Distribuce založené na CentOS](create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Debian Linux](debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Oracle Linux](oracle-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Red Hat Enterprise Linux](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[SLES & openSUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
+* **[SLES a openSUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Ubuntu](create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 
 Tento článek se zaměřuje na obecné pokyny pro provozování distribuce systému Linux v Azure.
@@ -39,7 +39,7 @@ Tento článek se zaměřuje na obecné pokyny pro provozování distribuce syst
 * Maximální velikost povolená pro virtuální pevný disk je 1 023 GB.
 * Při instalaci systému Linux doporučujeme místo Správce logických svazků (LVM) používat standardní oddíly, což je výchozí nastavení pro mnoho instalací. Použití standardních oddílů zabrání v konfliktu LVM názvů s klonovanými virtuálními počítači, zejména pokud je disk s operačním systémem někdy připojený k jinému stejnému virtuálnímu počítači pro řešení potíží. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) nebo [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) se můžou používat na datových discích.
 * Podpora jádra pro připojení systémů souborů UDF je nezbytná. Při prvním spuštění v Azure se konfigurace zřizování předává virtuálnímu počítači se systémem Linux pomocí média ve formátu UDF, které je připojené k hostu. Agent Azure Linux musí připojit systém souborů UDF a načíst jeho konfiguraci a zřídit virtuální počítač.
-* Verze jádra Linux starší než 2.6.37 nepodporují architekturu NUMA na technologii Hyper-V s většími velikostmi virtuálních počítačů. Tento problém se týká především starších distribucí pomocí nadřazeného jádra Red Hat 2.6.32 a byl opraven v Red Hat Enterprise Linux (RHEL) 6,6 (kernel-2.6.32-504). Systémy s vlastními jádry staršími než 2.6.37 nebo jádry založenými na RHEL, které jsou starší než 2.6.32-504 `numa=off` , musí nastavit parametr boot v příkazovém řádku jádra v souboru GRUB. conf. Další informace najdete v článku [Red Hat KB 436883](https://access.redhat.com/solutions/436883).
+* Verze jádra Linux starší než 2.6.37 nepodporují architekturu NUMA na technologii Hyper-V s většími velikostmi virtuálních počítačů. Tento problém se týká především starších distribucí pomocí nadřazeného jádra Red Hat 2.6.32 a byl opraven v Red Hat Enterprise Linux (RHEL) 6,6 (kernel-2.6.32-504). Systémy s vlastními jádry staršími než 2.6.37 nebo jádry založenými na RHEL, které jsou starší než 2.6.32-504, musí nastavit parametr boot v `numa=off` příkazovém řádku jádra v souboru GRUB. conf. Další informace najdete v článku [Red Hat KB 436883](https://access.redhat.com/solutions/436883).
 * Nekonfigurujte odkládací oddíl na disku s operačním systémem. Agent pro Linux se dá nakonfigurovat tak, aby na dočasném disku prostředků vytvořil odkládací soubor, jak je popsáno v následujícím postupu.
 * Všechny virtuální pevné disky v Azure musí mít virtuální velikost zarovnaná na 1 MB. Při převodu z nezpracovaného disku na virtuální pevný disk musíte zajistit, aby velikost nezpracovaného disku byla před převodem násobkem 1 MB, jak je popsáno v následujícím postupu.
 
@@ -64,9 +64,9 @@ Mechanismus pro nové sestavení image image initrd nebo initramfs se může li�
 ### <a name="resizing-vhds"></a>Změna velikosti virtuálních pevných disků
 Image VHD v Azure musí mít virtuální velikost zarovnaná na 1 MB.  Virtuální pevné disky vytvořené pomocí technologie Hyper-V jsou obvykle zarovnané správně.  Pokud se virtuální pevný disk nerovná správně, může se při pokusu o vytvoření image z VHD zobrazit chybová zpráva podobná následující.
 
-* Virtuální pevný disk http\//\<: mystorageaccount>. blob.Core.Windows.NET/VHDs/MyLinuxVM.VHD má nepodporovanou virtuální velikost 21475270656 bajtů. Velikost musí být celé číslo (v MB).
+* Virtuální pevný disk http: \/ / \<mystorageaccount> . blob.Core.Windows.NET/VHDs/MyLinuxVM.VHD má nepodporovanou virtuální velikost 21475270656 bajtů. Velikost musí být celé číslo (v MB).
 
-V takovém případě změňte velikost virtuálního počítače pomocí konzoly Správce technologie Hyper-V nebo rutiny [změnit velikost-VHD](https://technet.microsoft.com/library/hh848535.aspx) PowerShell.  Pokud nepoužíváte v prostředí Windows, doporučujeme použít příkaz k `qemu-img` převedení (v případě potřeby) a změně velikosti VHD.
+V takovém případě změňte velikost virtuálního počítače pomocí konzoly Správce technologie Hyper-V nebo rutiny [změnit velikost-VHD](https://technet.microsoft.com/library/hh848535.aspx) PowerShell.  Pokud nepoužíváte v prostředí Windows, doporučujeme použít příkaz `qemu-img` k převedení (v případě potřeby) a změně velikosti VHD.
 
 > [!NOTE]
 > Verze [qemu-img obsahuje známou chybu](https://bugs.launchpad.net/qemu/+bug/1490611) >= 2.2.1, která má za následek nesprávně naformátovaný virtuální pevný disk. Tento problém byl opravený v QEMU 2,6. Doporučujeme použít buď `qemu-img` 2.2.0, nebo nižší, nebo 2,6 nebo vyšší.
@@ -93,7 +93,7 @@ V takovém případě změňte velikost virtuálního počítače pomocí konzol
     echo "Rounded Size = $rounded_size"
     ```
 
-3. Změňte velikost nezpracovaného `$rounded_size` disku pomocí výše uvedeného nastavení.
+3. Změňte velikost nezpracovaného disku pomocí `$rounded_size` výše uvedeného nastavení.
 
     ```bash
     qemu-img resize MyLinuxVM.raw $rounded_size
@@ -142,7 +142,7 @@ V jádru musí být zahrnuté následující opravy. Tento seznam se nedá dokon
 * [scsi_sysfs: Ochrana před dvojitým provedením __scsi_remove_device](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/scsi_sysfs.c?id=be821fd8e62765de43cc4f0e2db363d0e30a7e9b)
 
 ## <a name="the-azure-linux-agent"></a>Agent Azure Linux
-`waagent` [Agent Azure Linux](../extensions/agent-linux.md) zřídí virtuální počítač Linux v Azure. Můžete získat nejnovější verzi, problémy se soubory nebo odeslat žádosti o získání dat v [úložišti GitHub agenta pro Linux](https://github.com/Azure/WALinuxAgent).
+[Agent Azure Linux](../extensions/agent-linux.md) `waagent` zřídí virtuální počítač Linux v Azure. Můžete získat nejnovější verzi, problémy se soubory nebo odeslat žádosti o získání dat v [úložišti GitHub agenta pro Linux](https://github.com/Azure/WALinuxAgent).
 
 * Agent pro Linux se uvolní v rámci licence Apache 2,0. Mnoho distribucí již pro agenta poskytuje balíčky ot. deb a tyto balíčky lze snadno nainstalovat a aktualizovat.
 * Agent Azure Linux vyžaduje Python v 2.6 +.
@@ -160,7 +160,7 @@ V jádru musí být zahrnuté následující opravy. Tento seznam se nedá dokon
     ```  
     rhgb quiet crashkernel=auto
     ```
-    Grafické a tiché spouštění se nehodí v cloudovém prostředí, kde chceme, aby se všechny protokoly odesílaly na sériový port. Možnost `crashkernel` v případě potřeby může být nakonfigurované, ale Všimněte si, že tento parametr snižuje množství dostupné paměti virtuálního počítače minimálně 128 MB, což může být problematické pro menší velikosti virtuálních počítačů.
+    Grafické a tiché spouštění se nehodí v cloudovém prostředí, kde chceme, aby se všechny protokoly odesílaly na sériový port. `crashkernel`Možnost v případě potřeby může být nakonfigurované, ale Všimněte si, že tento parametr snižuje množství dostupné paměti virtuálního počítače minimálně 128 MB, což může být problematické pro menší velikosti virtuálních počítačů.
 
 1. Nainstalujte agenta Azure Linux.
   
@@ -186,7 +186,7 @@ V jádru musí být zahrnuté následující opravy. Tento seznam se nedá dokon
      logout
      ```  
    > [!NOTE]
-   > V VirtualBox se může po spuštění `waagent -force -deprovision` tohoto říká `[Errno 5] Input/output error`zobrazit následující chyba. Tato chybová zpráva není kritická a je možné ji ignorovat.
+   > V VirtualBox se může po spuštění tohoto říká zobrazit následující chyba `waagent -force -deprovision` `[Errno 5] Input/output error` . Tato chybová zpráva není kritická a je možné ji ignorovat.
 
 * Vypněte virtuální počítač a nahrajte virtuální pevný disk do Azure.
 

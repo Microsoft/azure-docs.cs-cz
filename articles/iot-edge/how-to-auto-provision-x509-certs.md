@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: ccd8d383db265826d8644ee89d7300128fc3a350
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82131313"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>Vytvoření a zřízení zařízení IoT Edge pomocí certifikátů X. 509
@@ -241,7 +241,7 @@ provisioning:
     identity_pk: "<REQUIRED URI TO DEVICE IDENTITY PRIVATE KEY>"
 ```
 
-Nahraďte zástupné `scope_id`hodnoty `identity_cert`pro `identity_pk` , s ID oboru z vaší instance DPS a identifikátory URI pro řetěz certifikátů a umístění souborů klíčů na vašem zařízení. Pokud chcete `registration_id` zařízení zaregistrovat, zadejte ho pro zařízení, nebo ponechte tento řádek Zakomentovat a zaregistrujte zařízení s názvem CN certifikátu identity.
+Nahraďte zástupné hodnoty pro `scope_id` , `identity_cert` `identity_pk` s ID oboru z vaší instance DPS a identifikátory URI pro řetěz certifikátů a umístění souborů klíčů na vašem zařízení. `registration_id`Pokud chcete zařízení zaregistrovat, zadejte ho pro zařízení, nebo ponechte tento řádek Zakomentovat a zaregistrujte zařízení s názvem CN certifikátu identity.
 
 Po aktualizaci souboru config. yaml vždy restartujte proces zabezpečení.
 
@@ -268,7 +268,7 @@ Podrobnější informace o instalaci IoT Edge ve Windows, včetně požadavků a
 
 1. Příkaz **Initialize-IoTEdge** nakonfiguruje IoT Edge modul runtime na vašem počítači. Příkaz je standardně nastaven na ruční zřizování, pokud nepoužijete `-Dps` příznak pro Automatické zřizování.
 
-   Nahraďte zástupné `{scope_id}`hodnoty `{identity cert chain path}`pro, `{identity key path}` a odpovídajícími hodnotami z instance DPS a cesty k souborům na vašem zařízení. Chcete-li zadat ID registrace, zahrňte `-RegistrationId {registration_id}` také zástupný text nahraďte podle potřeby.
+   Nahraďte zástupné hodnoty pro `{scope_id}` , `{identity cert chain path}` a `{identity key path}` odpovídajícími hodnotami z instance DPS a cesty k souborům na vašem zařízení. Chcete-li zadat ID registrace, zahrňte `-RegistrationId {registration_id}` také zástupný text nahraďte podle potřeby.
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `

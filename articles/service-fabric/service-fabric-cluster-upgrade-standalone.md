@@ -4,10 +4,10 @@ description: Přečtěte si informace o upgradu verze nebo konfigurace samostatn
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.openlocfilehash: ac3e80aae440c6709057e4211f7a4f6a1beea058
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82790639"
 ---
 # <a name="upgrading-and-updating-a-service-fabric-standalone-cluster"></a>Upgrade a aktualizace samostatného clusteru Service Fabric
@@ -21,7 +21,7 @@ Cluster můžete nastavit tak, aby přijímal automatické upgrady prostředků 
 
 ## <a name="customize-configuration-settings"></a>Přizpůsobení nastavení konfigurace
 
-V souboru *ClusterConfig. JSON* můžete nastavit mnoho různých [nastavení konfigurace](service-fabric-cluster-manifest.md) , jako je například úroveň spolehlivosti clusteru a vlastností uzlu.  Pokud se chcete dozvědět víc, přečtěte si téma [Upgrade konfigurace samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md).  Mnoho dalších, pokročilejších nastavení, je také možné přizpůsobit.  Další informace najdete v tématu [Service Fabric nastavení prostředků infrastruktury clusteru](service-fabric-cluster-fabric-settings.md).
+V souboru *ClusterConfig.js* se dá nastavit mnoho různých [nastavení konfigurace](service-fabric-cluster-manifest.md) , jako je například úroveň spolehlivosti clusteru a vlastností uzlu.  Pokud se chcete dozvědět víc, přečtěte si téma [Upgrade konfigurace samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md).  Mnoho dalších, pokročilejších nastavení, je také možné přizpůsobit.  Další informace najdete v tématu [Service Fabric nastavení prostředků infrastruktury clusteru](service-fabric-cluster-fabric-settings.md).
 
 ## <a name="define-node-properties"></a>Definovat vlastnosti uzlu
 Někdy možná budete chtít zajistit, aby některé úlohy běžely jenom na určitých typech uzlů v clusteru. Některé úlohy můžou například vyžadovat GPU nebo SSD, zatímco jiné nemusí. Pro každý typ uzlu v clusteru můžete přidat vlastní vlastnosti uzlu do uzlů clusteru. Omezení umístění jsou příkazy připojené k jednotlivým službám, které jsou vybrané pro jednu nebo více vlastností uzlu. Omezení umístění definují, kde by měly služby běžet.

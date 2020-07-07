@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: 515fd9bfedc5bc5d3cefda2a357c351f515fb5f5
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: ebf948fdb1df76cb7bcb03ee5d85f581d856524f
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194667"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85918733"
 ---
 # <a name="introduction"></a>Úvod
 
@@ -30,7 +30,7 @@ Azure synapse Apache Spark fond až synapse SQL Connector je implementace zdroje
 
 ## <a name="authentication-in-azure-synapse-analytics"></a>Ověřování ve službě Azure synapse Analytics
 
-Ověřování mezi systémy je v Azure synapse Analytics bezproblémové. Existuje služba tokenů, která se připojuje k Azure Active Directory, aby získala tokeny zabezpečení pro použití při přístupu k účtu úložiště nebo k serveru datového skladu. 
+Ověřování mezi systémy je v Azure synapse Analytics bezproblémové. Existuje služba tokenů, která se připojuje k Azure Active Directory, aby získala tokeny zabezpečení pro použití při přístupu k účtu úložiště nebo k serveru datového skladu.
 
 Z tohoto důvodu není nutné vytvářet přihlašovací údaje ani je zadat v rozhraní API konektoru, pokud je v účtu úložiště a na serveru datového skladu nakonfigurováno AAD-auth. V takovém případě může být zadáno ověřování SQL. Další podrobnosti najdete v části věnované [používání](#usage) .
 
@@ -40,19 +40,27 @@ Z tohoto důvodu není nutné vytvářet přihlašovací údaje ani je zadat v r
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Měli byste mít **db_exporter** roli v databázi nebo ve fondu SQL, do které chcete přenést data.
+- Musí být členem role **db_exporter** v databázi nebo ve fondu SQL, do které chcete přenést data.
+- Musí být členem role Přispěvatel dat objektů BLOB úložiště ve výchozím účtu úložiště.
 
-Chcete-li vytvořit uživatele, připojte se k databázi a postupujte podle těchto příkladů:
+Chcete-li vytvořit uživatele, připojte se k databázi fondu SQL a postupujte podle těchto příkladů:
 
 ```sql
+--SQL User
 CREATE USER Mary FROM LOGIN Mary;
+
+--Azure Active Directory User
 CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
 ```
 
 Přiřazení role:
 
 ```sql
+--SQL User
 EXEC sp_addrolemember 'db_exporter', 'Mary';
+
+--Azure Active Directory User
+EXEC sp_addrolemember 'db_exporter',[mike@contoso.com]
 ```
 
 ## <a name="usage"></a>Využití
@@ -72,7 +80,7 @@ Příkazy import nejsou vyžadovány, jsou předem importovány pro prostředí 
 #### <a name="read-api"></a>Rozhraní API pro čtení
 
 ```scala
-val df = spark.read.sqlanalytics("[DBName].[Schema].[TableName]")
+val df = spark.read.sqlanalytics("<DBName>.<Schema>.<TableName>")
 ```
 
 Výše uvedené rozhraní API bude fungovat pro interní (spravované) i externí tabulky ve fondu SQL.
@@ -80,17 +88,51 @@ Výše uvedené rozhraní API bude fungovat pro interní (spravované) i extern�
 #### <a name="write-api"></a>Zapisovat rozhraní API
 
 ```scala
-df.write.sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
+df.write.sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
-kde TableType můžou být konstanty. INTERNAL nebo konstanty. EXTERNAL
+Rozhraní Write API vytvoří tabulku ve fondu SQL a potom vyvolá základ, aby data načetla.  Tabulka nesmí existovat ve fondu SQL nebo se bude vracet zpráva s oznámením, že již existuje objekt s názvem.
+
+Hodnoty TableType
+
+- Konstanty. interní spravovaná tabulka ve fondu SQL
+- Konstanty. EXTERNAL – externí tabulka ve fondu SQL
+
+Spravovaná tabulka fondu SQL
 
 ```scala
-df.write.sqlanalytics("[DBName].[Schema].[TableName]", Constants.INTERNAL)
-df.write.sqlanalytics("[DBName].[Schema].[TableName]", Constants.EXTERNAL)
+df.write.sqlanalytics("<DBName>.<Schema>.<TableName>", Constants.INTERNAL)
 ```
 
-Ověřování pro úložiště a SQL Server je dokončeno.
+Externí tabulka fondu SQL
+
+Aby bylo možné zapisovat do externí tabulky fondu SQL, externí zdroj dat a externí formát souboru musí existovat ve fondu SQL.  Další informace najdete v [tématu Vytvoření externího zdroje dat](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) a [formátů externích souborů](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ve fondu SQL.  Níže jsou uvedeny příklady pro vytvoření externího zdroje dat a formátů externích souborů ve fondu SQL.
+
+```sql
+--For an external table, you need to pre-create the data source and file format in SQL pool using SQL queries:
+CREATE EXTERNAL DATA SOURCE <DataSourceName>
+WITH
+  ( LOCATION = 'abfss://...' ,
+    TYPE = HADOOP
+  ) ;
+
+CREATE EXTERNAL FILE FORMAT <FileFormatName>
+WITH (  
+    FORMAT_TYPE = PARQUET,  
+    DATA_COMPRESSION = 'org.apache.hadoop.io.compress.SnappyCodec'  
+);
+```
+
+EXTERNÍ objekt PŘIHLAŠOVACÍch údajů není nutný při použití Azure Active Directory předávacího ověřování pro účet úložiště.  Ujistěte se, že jste členem role "Přispěvatel dat objektů BLOB úložiště" v účtu úložiště.
+
+```scala
+
+df.write.
+    option(Constants.DATA_SOURCE, <DataSourceName>).
+    option(Constants.FILE_FORMAT, <FileFormatName>).
+    sqlanalytics("<DBName>.<Schema>.<TableName>", Constants.EXTERNAL)
+
+```
 
 ### <a name="if-you-are-transferring-data-to-or-from-a-sql-pool-or-database-outside-the-workspace"></a>Pokud přenášíte data do nebo z fondu nebo databáze SQL mimo pracovní prostor
 
@@ -114,8 +156,8 @@ sqlanalytics("<DBName>.<Schema>.<TableName>")
 
 ```scala
 df.write.
-option(Constants.SERVER, "[samplews].[database.windows.net]").
-sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
+option(Constants.SERVER, "samplews.database.windows.net").
+sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
 ### <a name="using-sql-auth-instead-of-aad"></a>Použití ověřování SQL místo AAD
@@ -127,8 +169,8 @@ V současné době konektor nepodporuje ověřování na základě tokenů pro f
 ```scala
 val df = spark.read.
 option(Constants.SERVER, "samplews.database.windows.net").
-option(Constants.USER, [SQLServer Login UserName]).
-option(Constants.PASSWORD, [SQLServer Login Password]).
+option(Constants.USER, <SQLServer Login UserName>).
+option(Constants.PASSWORD, <SQLServer Login Password>).
 sqlanalytics("<DBName>.<Schema>.<TableName>")
 ```
 
@@ -136,10 +178,10 @@ sqlanalytics("<DBName>.<Schema>.<TableName>")
 
 ```scala
 df.write.
-option(Constants.SERVER, "[samplews].[database.windows.net]").
-option(Constants.USER, [SQLServer Login UserName]).
-option(Constants.PASSWORD, [SQLServer Login Password]).
-sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
+option(Constants.SERVER, "samplews.database.windows.net").
+option(Constants.USER, <SQLServer Login UserName>).
+option(Constants.PASSWORD, <SQLServer Login Password>).
+sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
 ### <a name="using-the-pyspark-connector"></a>Použití konektoru PySpark
@@ -166,7 +208,7 @@ pysparkdftemptable.write.sqlanalytics("sqlpool.dbo.PySparkTable", Constants.INTE
 
 Podobně ve scénáři čtení si přečtěte data pomocí Scala a zapište je do dočasné tabulky a pomocí Spark SQL v PySpark se Dotazujte dočasnou tabulku do datového rámce.
 
-## <a name="allowing-other-users-to-use-the-dw-connector-in-your-workspace"></a>Povolení použití konektoru DW v pracovním prostoru jiným uživatelům
+## <a name="allowing-other-users-to-use-the-azure-synapse-apache-spark-to-synapse-sql-connector-in-your-workspace"></a>Povolení, aby jiní uživatelé používali Azure synapse Apache Spark ke konektoru SQL synapse ve vašem pracovním prostoru
 
 V účtu úložiště ADLS Gen2 připojeném k pracovnímu prostoru musíte být vlastníkem dat objektu BLOB úložiště, abyste mohli změnit chybějící oprávnění pro ostatní. Ujistěte se, že uživatel má přístup k pracovnímu prostoru a oprávnění ke spouštění poznámkových bloků.
 
@@ -178,7 +220,7 @@ V účtu úložiště ADLS Gen2 připojeném k pracovnímu prostoru musíte být
 
 - Zadejte následující seznamy ACL pro strukturu složek:
 
-| Složka | / | synapse | pracovní prostory  | <workspacename> | sparkpools | <sparkpoolname>  | sparkpoolinstances  |
+| Složka | / | synapse | pracovní prostory  | \<workspacename> | sparkpools | \<sparkpoolname>  | sparkpoolinstances  |
 |--|--|--|--|--|--|--|--|
 | Přístupová oprávnění | --X | --X | --X | --X | --X | --X | – WX |
 | Výchozí oprávnění | ---| ---| ---| ---| ---| ---| ---|

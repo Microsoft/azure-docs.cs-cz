@@ -9,18 +9,18 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/27/2020
 ms.openlocfilehash: 545c1720ef379ec74bd2e7c0bc68f6a2fcbba789
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82115495"
 ---
-# <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Zprávy Exchange AS2 pro integraci B2B Enterprise v Azure Logic Apps s využitím Enterprise Integration Pack
+# <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Výměna zpráv AS2 pro podnikovou integraci B2B v Azure Logic Apps s využitím rozšíření Enterprise Integration Pack
 
 > [!IMPORTANT]
 > Původní konektor AS2 se už nepoužívá, proto použijte místo toho konektor **AS2 (v2)** . Tato verze poskytuje stejné možnosti jako původní verze, je nativní pro modul runtime Logic Apps a přináší významná vylepšení výkonu z hlediska propustnosti a velikosti zpráv. Nativní konektor v2 také nevyžaduje, abyste vytvořili připojení k účtu pro integraci. Místo toho, jak je popsáno v části požadavky, nezapomeňte propojit účet pro integraci do aplikace logiky, ve které plánujete konektor používat.
 
-Pokud chcete pracovat se AS2 zprávami v Azure Logic Apps, můžete použít konektor AS2, který poskytuje triggery a akce pro správu komunikace AS2. Chcete-li například vytvořit zabezpečení a spolehlivost při odesílání zpráv, můžete použít tyto akce:
+Pokud chcete v Azure Logic Apps pracovat se zprávami AS2, můžete použít konektor AS2, který poskytuje triggery a akce pro správu komunikace AS2. Chcete-li například vytvořit zabezpečení a spolehlivost při odesílání zpráv, můžete použít tyto akce:
 
 * [ **AS2 zakódovat** ](#encode) pro poskytování šifrování, digitálního podepisování a potvrzení prostřednictvím oznámení o vyřazení zpráv (MDN), které vám pomůžou zajistit Neodmítnutí. Tato akce například používá hlavičky AS2/HTTP a při konfiguraci provádí tyto úlohy:
 
@@ -97,7 +97,7 @@ Tento článek ukazuje, jak přidat akce kódování a dekódování AS2 do exis
 
 <a name="decode"></a>
 
-## <a name="decode-as2-messages"></a>Dekódovat zprávy AS2
+## <a name="decode-as2-messages"></a>Dekódování zpráv AS2
 
 1. Pokud jste to ještě neudělali, v [Azure Portal](https://portal.azure.com)otevřete aplikaci logiky v návrháři aplikace logiky.
 

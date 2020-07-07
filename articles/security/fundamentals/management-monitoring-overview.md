@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
 ms.openlocfilehash: 7ad7a29a92d25556190b4cf44f4e48158a6f0952
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73162748"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Přehled správy a monitorování zabezpečení Azure
@@ -32,9 +32,9 @@ Access Control na základě rolí (RBAC) poskytuje podrobnou správu přístupu 
 Další informace:
 
 * [Blog týmu služby Active Directory na RBAC](https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory)
-* [Řízení přístupu na základě role v Azure](../../role-based-access-control/role-assignments-portal.md)
+* [Access Control na základě rolí Azure](../../role-based-access-control/role-assignments-portal.md)
 
-## <a name="antimalware"></a>Antimalware
+## <a name="antimalware"></a>antimalware
 
 S Azure můžete použít antimalwarový software od hlavních dodavatelů zabezpečení, jako jsou Microsoft, Symantec, Trend Micro, McAfee a Kaspersky. Tento software pomáhá chránit vaše virtuální počítače před škodlivými soubory, adwarem a dalšími hrozbami.
 

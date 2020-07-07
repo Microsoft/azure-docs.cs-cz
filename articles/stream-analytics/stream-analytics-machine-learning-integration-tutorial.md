@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.custom: seodec18
 ms.openlocfilehash: b33aeeee03fa57d87a60fd4c1904d5e4a86dd004
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80067095"
 ---
 # <a name="perform-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-classic"></a>Provádění analýzy mínění s využitím Azure Stream Analytics a Azure Machine Learning Studio (Classic)
@@ -55,19 +55,19 @@ Na nejvyšší úrovni, abyste dokončili úlohy popsané v tomto článku, prov
 ## <a name="create-a-storage-container-and-upload-the-csv-input-file"></a>Vytvoření kontejneru úložiště a nahrání vstupního souboru CSV
 V tomto kroku můžete použít libovolný soubor CSV, například ten dostupný z GitHubu.
 
-1. V Azure Portal klikněte na **vytvořit prostředek** > **Storage** > úložiště**účet**úložiště.
+1. V Azure Portal klikněte na **vytvořit prostředek**  >  **úložiště**  >  **účet**úložiště.
 
-2. Zadejte název (`samldemo` v tomto příkladu). Název může obsahovat jenom malá písmena a číslice a musí být jedinečný v rámci Azure. 
+2. Zadejte název ( `samldemo` v tomto příkladu). Název může obsahovat jenom malá písmena a číslice a musí být jedinečný v rámci Azure. 
 
 3. Zadejte existující skupinu prostředků a zadejte umístění. Pro umístění doporučujeme, aby všechny prostředky vytvořené v tomto kurzu používaly stejné umístění.
 
     ![Zadejte podrobnosti účtu úložiště.](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account1.png)
 
-4. V Azure Portal vyberte účet úložiště. V okně účet úložiště klikněte na **kontejnery** a pak klikněte na ** + &nbsp;kontejner** . tím vytvoříte úložiště objektů BLOB.
+4. V Azure Portal vyberte účet úložiště. V okně účet úložiště klikněte na **kontejnery** a pak klikněte na ** + &nbsp; kontejner** . tím vytvoříte úložiště objektů BLOB.
 
     ![Vytvořit kontejner úložiště objektů BLOB pro vstup](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account2.png)
 
-5. Zadejte název kontejneru (`azuresamldemoblob` v příkladu) a ověřte, zda je **typ přístupu** nastaven na hodnotu **BLOB**. Až to budete mít, klikněte na **OK**.
+5. Zadejte název kontejneru ( `azuresamldemoblob` v příkladu) a ověřte, zda je **typ přístupu** nastaven na hodnotu **BLOB**. Až to budete mít, klikněte na **OK**.
 
     ![zadat podrobnosti kontejneru objektů BLOB](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account3.png)
 
@@ -77,7 +77,7 @@ V tomto kroku můžete použít libovolný soubor CSV, například ten dostupný
 
     ![Tlačítko nahrát pro kontejner](./media/stream-analytics-machine-learning-integration-tutorial/create-sa-upload-button.png)
 
-8. V okně **nahrát objekt BLOB** nahrajte soubor **sampleinput. csv** , který jste si stáhli dříve. Jako **typ objektu BLOB**vyberte **objekt blob bloku** a nastavte velikost bloku na 4 MB, což pro tento kurz postačuje.
+8. V okně **nahrát objekt BLOB** nahrajte soubor **sampleinput.csv** , který jste si stáhli dříve. Jako **typ objektu BLOB**vyberte **objekt blob bloku** a nastavte velikost bloku na 4 MB, což pro tento kurz postačuje.
 
 9. Klikněte na tlačítko **nahrát** v dolní části okna.
 
@@ -122,9 +122,9 @@ Nyní můžete vytvořit úlohu Stream Analytics, která přečte vzorový tweet
 
 1. Přejít na [Azure Portal](https://portal.azure.com).  
 
-2. Klikněte na **vytvořit prostředek** > **Internet věcí** > **Stream Analytics úlohy**. 
+2. Klikněte na **vytvořit prostředek**  >  **Internet věcí**  >  **Stream Analytics úlohy**. 
 
-3. Pojmenujte `azure-sa-ml-demo`úlohu, zadejte předplatné, zadejte existující skupinu prostředků nebo vytvořte novou a vyberte umístění úlohy.
+3. Pojmenujte úlohu `azure-sa-ml-demo` , zadejte předplatné, zadejte existující skupinu prostředků nebo vytvořte novou a vyberte umístění úlohy.
 
    ![Zadejte nastavení pro novou úlohu Stream Analytics](./media/stream-analytics-machine-learning-integration-tutorial/create-stream-analytics-job-1.png)
    
@@ -134,7 +134,7 @@ Nyní můžete vytvořit úlohu Stream Analytics, která přečte vzorový tweet
 
 1. Po vytvoření úlohy klikněte v části **topologie úlohy** v okně úloha na možnost **vstupy** .    
 
-2. V okně **vstupy** klikněte na **Přidat streamovat vstupní** >**úložiště objektů BLOB** .
+2. V okně **vstupy** klikněte na **Přidat streamovat vstupní**  > **úložiště objektů BLOB** .
 
 3. Vyplňte okno **BLOB Storage** s těmito hodnotami:
 
@@ -143,7 +143,7 @@ Nyní můžete vytvořit úlohu Stream Analytics, která přečte vzorový tweet
    |---------|---------|
    |**Alias vstupu** | Použijte název `datainput` a vyberte **v předplatném možnost vybrat úložiště objektů BLOB** .       |
    |**Účet úložiště**  |  Vyberte dříve vytvořený účet úložiště.  |
-   |**Kontejner**  | Vyberte kontejner, který jste vytvořili dříve`azuresamldemoblob`()        |
+   |**Kontejner**  | Vyberte kontejner, který jste vytvořili dříve ( `azuresamldemoblob` )        |
    |**Formát serializace události**  |  Vybrat **sdílený svazek clusteru**       |
 
    ![Nastavení pro nový vstup úlohy Stream Analytics](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-create-sa-input-new-portal.png)
@@ -155,7 +155,7 @@ Nyní můžete vytvořit úlohu Stream Analytics, která přečte vzorový tweet
 
 1. V části **topologie úlohy** v okně úloha klikněte na možnost **výstupy** .  
 
-2. V okně **výstupy** klikněte na **Přidat** >**úložiště objektů BLOB**a pak přidejte výstup s aliasem `datamloutput`. 
+2. V okně **výstupy** klikněte na **Přidat**  > **úložiště objektů BLOB**a pak přidejte výstup s aliasem `datamloutput` . 
 
 3. Vyplňte okno **BLOB Storage** s těmito hodnotami:
 
@@ -163,7 +163,7 @@ Nyní můžete vytvořit úlohu Stream Analytics, která přečte vzorový tweet
    |---------|---------|
    |**Alias pro výstup** | Použijte název `datamloutput` a vyberte **v předplatném možnost vybrat úložiště objektů BLOB** .       |
    |**Účet úložiště**  |  Vyberte dříve vytvořený účet úložiště.  |
-   |**Kontejner**  | Vyberte kontejner, který jste vytvořili dříve`azuresamldemoblob`()        |
+   |**Kontejner**  | Vyberte kontejner, který jste vytvořili dříve ( `azuresamldemoblob` )        |
    |**Formát serializace události**  |  Vybrat **sdílený svazek clusteru**       |
 
    ![Nastavení pro nový výstup úlohy Stream Analytics](./media/stream-analytics-machine-learning-integration-tutorial/create-stream-analytics-output.png) 
@@ -172,21 +172,21 @@ Nyní můžete vytvořit úlohu Stream Analytics, která přečte vzorový tweet
 
 
 ### <a name="add-the-machine-learning-function"></a>Přidání funkce Machine Learning 
-Dříve jste publikovali Machine Learning model pro webovou službu. Pokud se v tomto scénáři spustí úloha analýzy streamu, pošle Každá ukázka z vstupu do webové služby pro analýzu mínění. Webová služba Machine Learning vrací mínění (`positive`, `neutral`nebo `negative`) a pravděpodobnost nesprávného prokladu. 
+Dříve jste publikovali Machine Learning model pro webovou službu. Pokud se v tomto scénáři spustí úloha analýzy streamu, pošle Každá ukázka z vstupu do webové služby pro analýzu mínění. Webová služba Machine Learning vrací mínění ( `positive` , `neutral` nebo `negative` ) a pravděpodobnost nesprávného prokladu. 
 
 V této části kurzu definujete funkci v úloze Stream Analysis. Funkci lze vyvolat pro odeslání přípravku do webové služby a získání odpovědi zpět. 
 
 1. Ujistěte se, že máte adresu URL webové služby a klíč rozhraní API, které jste si stáhli dříve v excelovém sešitu.
 
-2. Přejděte do okna úlohy > **funkce** > **+ Přidat** > **AzureML** .
+2. Přejděte do okna úlohy > **funkce**  >  **+ Přidat**  >  **AzureML** .
 
 3. Vyplňte okno **Azure Machine Learning funkce** s těmito hodnotami:
 
    |Pole  |Hodnota  |
    |---------|---------|
    | **Alias funkce** | Použijte název `sentiment` a vyberte možnost **zadat Azure Machine Learning nastavení funkce ručně** , což vám umožní zadat adresu URL a klíč.      |
-   | **Adresa URL**| Vložte adresu URL webové služby.|
-   |**Key** | Vložte klíč rozhraní API. |
+   | **URL**| Vložte adresu URL webové služby.|
+   |**Zkrat** | Vložte klíč rozhraní API. |
   
    ![Nastavení pro přidání funkce Machine Learning pro Stream Analytics úlohy](./media/stream-analytics-machine-learning-integration-tutorial/add-machine-learning-function.png)  
     
@@ -213,7 +213,7 @@ Stream Analytics používá deklarativní dotaz založený na jazyce SQL k prohl
     FROM sentiment  
     ```    
 
-    Dotaz vyvolá funkci, kterou jste vytvořili dříve (`sentiment`), aby provedla analýzu mínění na všech prodaných prodaných ve vstupu. 
+    Dotaz vyvolá funkci, kterou jste vytvořili dříve ( `sentiment` ), aby provedla analýzu mínění na všech prodaných prodaných ve vstupu. 
 
 4. Kliknutím na **Uložit** dotaz uložte.
 
@@ -235,7 +235,7 @@ Nyní můžete spustit úlohu Stream Analytics.
 
 2. Pokud máte nástroj, který běžně používáte k prohlédnutí obsahu úložiště objektů blob, použijte tento nástroj k prohlédnutí `azuresamldemoblob` kontejneru. Případně proveďte následující kroky v Azure Portal:
 
-    1. Na portálu Najděte účet `samldemo` úložiště a v rámci účtu Najděte `azuresamldemoblob` kontejner. V kontejneru vidíte dva soubory: soubor obsahující ukázkovou tweety a soubor CSV vygenerovaný úlohou Stream Analytics.
+    1. Na portálu Najděte `samldemo` účet úložiště a v rámci účtu Najděte `azuresamldemoblob` kontejner. V kontejneru vidíte dva soubory: soubor obsahující ukázkovou tweety a soubor CSV vygenerovaný úlohou Stream Analytics.
     2. Klikněte pravým tlačítkem na vygenerovaný soubor a pak vyberte **Stáhnout**. 
 
    ![Stažení výstupu úlohy CSV z úložiště objektů BLOB](./media/stream-analytics-machine-learning-integration-tutorial/download-output-csv-file.png)  

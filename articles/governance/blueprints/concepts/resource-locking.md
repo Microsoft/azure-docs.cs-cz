@@ -4,10 +4,10 @@ description: Přečtěte si o možnostech uzamykání v plánech Azure k ochran�
 ms.date: 03/25/2020
 ms.topic: conceptual
 ms.openlocfilehash: 94ed8efd0d6c654cba129dfc69fbfe5add7a0824
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81383594"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Vysvětlení uzamykání prostředků v semodrotiskych Azure
@@ -24,7 +24,7 @@ Blokovací režimy se ale nedají změnit mimo plány Azure.
 
 Prostředky vytvořené artefakty v přiřazení podrobného plánu mají čtyři stavy: **Neuzamčeno**, jen **pro čtení**, **nelze je upravit nebo odstranit**nebo **nelze odstranit**. Každý typ artefaktu může být ve stavu **Neuzamčeno** . K určení stavu prostředku lze použít následující tabulku:
 
-|Mode|Typ prostředku artefaktu|Stav|Popis|
+|Mode|Typ prostředku artefaktu|State|Popis|
 |-|-|-|-|
 |Nezamknout|*|Neuzamčeno|Prostředky nejsou chráněny pomocí Azure modrotisky. Tento stav se používá také pro prostředky přidané do **pouze pro čtení** nebo **neodstraňují** artefakt skupiny prostředků z vnějšího přiřazení podrobného plánu.|
 |Jen pro čtení|Skupina prostředků|Nelze upravit/odstranit|Skupina prostředků je jen pro čtení a značky ve skupině prostředků nejde upravovat. Do této skupiny prostředků se dají přidat, přesunout, změnit nebo odstranit prostředky, **které nejsou zamčené** .|
@@ -177,7 +177,7 @@ Podobně jako při [vyloučení objektu zabezpečení](#exclude-a-principal-from
 },
 ```
 
-Zatímco **excludedPrincipals** musí být explicitní, položky **excludedActions** mohou využívat zástupné znaky `*` pro porovnání operací RBAC.
+Zatímco **excludedPrincipals** musí být explicitní, položky **excludedActions** mohou využívat `*` zástupné znaky pro porovnání operací RBAC.
 
 ## <a name="next-steps"></a>Další kroky
 

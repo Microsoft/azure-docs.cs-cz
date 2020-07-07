@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/04/2020
 ms.openlocfilehash: e2db6d1d60026a00fa8e766fbaa1c72975fa2e99
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82786610"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Plánování virtuální sítě pro Azure HDInsight
@@ -136,7 +136,7 @@ Chcete-li povolit překlad názvů mezi virtuální sítí a prostředky v přip
 
 2. Nakonfigurujte virtuální síť tak, aby používala vlastní server DNS.
 
-3. Najděte příponu DNS přiřazenou k Azure pro vaši virtuální síť. Tato hodnota je podobná `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net`. Informace o vyhledání přípony DNS najdete v části [Příklad: vlastní DNS](hdinsight-create-virtual-network.md#example-dns) .
+3. Najděte příponu DNS přiřazenou k Azure pro vaši virtuální síť. Tato hodnota je podobná `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net` . Informace o vyhledání přípony DNS najdete v části [Příklad: vlastní DNS](hdinsight-create-virtual-network.md#example-dns) .
 
 4. Nakonfigurujte přesměrování mezi servery DNS. Konfigurace závisí na typu vzdálené sítě.
 
@@ -168,7 +168,7 @@ Další informace najdete v dokumentu [překlad názvů pro virtuální počíta
 
 ## <a name="directly-connect-to-apache-hadoop-services"></a>Přímé připojení k Apache Hadoop službám
 
-Ke clusteru se můžete připojit na adrese `https://CLUSTERNAME.azurehdinsight.net`. Tato adresa používá veřejnou IP adresu, která může být dosažitelná, pokud jste použili skupin zabezpečení sítě k omezení příchozího provozu z Internetu. Navíc platí, že když nasadíte cluster ve virtuální síti, můžete k němu přistupovat pomocí `https://CLUSTERNAME-int.azurehdinsight.net`privátního koncového bodu. Tento koncový bod se překládá na privátní IP adresu uvnitř virtuální sítě pro přístup k clusteru.
+Ke clusteru se můžete připojit na adrese `https://CLUSTERNAME.azurehdinsight.net` . Tato adresa používá veřejnou IP adresu, která může být dosažitelná, pokud jste použili skupin zabezpečení sítě k omezení příchozího provozu z Internetu. Navíc platí, že když nasadíte cluster ve virtuální síti, můžete k němu přistupovat pomocí privátního koncového bodu `https://CLUSTERNAME-int.azurehdinsight.net` . Tento koncový bod se překládá na privátní IP adresu uvnitř virtuální sítě pro přístup k clusteru.
 
 Pokud se chcete připojit k Apache Ambari a dalším webovým stránkám prostřednictvím virtuální sítě, použijte následující postup:
 
@@ -194,7 +194,7 @@ Pokud se chcete připojit k Apache Ambari a dalším webovým stránkám prostř
     az network nic list --resource-group RESOURCEGROUP --output table --query "[?contains(name,'node')].{NICname:name,InternalIP:ipConfigurations[0].privateIpAddress,InternalFQDN:dnsSettings.internalFqdn}"
     ```
 
-    V seznamu vrácených uzlů Najděte plně kvalifikovaný název domény pro hlavní uzly a pomocí plně kvalifikovaných názvů domény se připojte k Ambari a dalším webovým službám. Použijte `http://<headnode-fqdn>:8080` například pro přístup k Ambari.
+    V seznamu vrácených uzlů Najděte plně kvalifikovaný název domény pro hlavní uzly a pomocí plně kvalifikovaných názvů domény se připojte k Ambari a dalším webovým službám. Použijte například `http://<headnode-fqdn>:8080` pro přístup k Ambari.
 
     > [!IMPORTANT]  
     > Některé služby hostované v hlavních uzlech jsou aktivní jenom na jednom uzlu. Pokud se pokusíte o přístup ke službě na jednom hlavním uzlu a vrátí se chyba 404, přepněte na jiný hlavní uzel.

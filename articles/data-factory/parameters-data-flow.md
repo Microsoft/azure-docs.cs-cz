@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.openlocfilehash: 8e88e5e8a9fbe1881959c5183dc01b11ac681bdf
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82780367"
 ---
 # <a name="parameterizing-mapping-data-flows"></a>Parametrizace mapování toků dat
@@ -64,31 +64,31 @@ Při přiřazování parametru výrazu kanálu typu String budou přidány vých
 
 ![Nastavení parametru toku dat](media/data-flow/string-parameter.png "Nastavení parametru toku dat")
 
-Pokud parametr `stringParam` toku dat odkazuje na parametr kanálu s hodnotou `upper(column1)`. 
+Pokud parametr toku dat `stringParam` odkazuje na parametr kanálu s hodnotou `upper(column1)` . 
 
-- Pokud je výraz zaškrtnutý `$stringParam` , vyhodnotí se hodnota Sloupec1 vše velkými písmeny.
+- Pokud je výraz zaškrtnutý, `$stringParam` vyhodnotí se hodnota Sloupec1 vše velkými písmeny.
 - Pokud výraz není zaškrtnuto (výchozí chování), `$stringParam` vyhodnotí se`'upper(column1)'`
 
 #### <a name="passing-in-timestamps"></a>Předávání do časových razítek
 
-V jazyce výrazu kanálu jsou systémové proměnné, jako například `pipeline().TriggerTime` , a funkce `utcNow()` jako návratová časová razítka ve formátu yyyy-mm-\'DD\'T hh: mm: ss. SSSSSSZ'. Chcete-li je převést na parametry toku dat typu timestamp, použijte interpolaci řetězce k zahrnutí požadovaného časového razítka `toTimestamp()` do funkce. Chcete-li například převést dobu triggeru kanálu na parametr toku dat, můžete použít `toTimestamp(left('@{pipeline().TriggerTime}', 23), 'yyyy-MM-dd\'T\'HH:mm:ss.SSS')`. 
+V jazyce výrazu kanálu jsou systémové proměnné, jako například `pipeline().TriggerTime` , a funkce jako `utcNow()` návratová časová razítka ve formátu yyyy-MM-DD \' T \' HH: mm: ss. SSSSSSZ'. Chcete-li je převést na parametry toku dat typu timestamp, použijte interpolaci řetězce k zahrnutí požadovaného časového razítka do `toTimestamp()` funkce. Chcete-li například převést dobu triggeru kanálu na parametr toku dat, můžete použít `toTimestamp(left('@{pipeline().TriggerTime}', 23), 'yyyy-MM-dd\'T\'HH:mm:ss.SSS')` . 
 
 ![Nastavení parametru toku dat](media/data-flow/parameter-timestamp.png "Nastavení parametru toku dat")
 
 > [!NOTE]
-> Toky dat můžou podporovat jenom až 3 milisekundové číslice. `left()` Funkce se používá pro oříznutí dalších číslic.
+> Toky dat můžou podporovat jenom až 3 milisekundové číslice. `left()`Funkce se používá pro oříznutí dalších číslic.
 
 #### <a name="pipeline-parameter-example"></a>Příklad parametru kanálu
 
-Řekněme, že máte parametr `intParam` typu Integer, který odkazuje na parametr kanálu typu String,. `@pipeline.parameters.pipelineParam` 
+Řekněme, že máte parametr typu Integer, `intParam` který odkazuje na parametr kanálu typu String, `@pipeline.parameters.pipelineParam` . 
 
 ![Nastavení parametru toku dat](media/data-flow/parameter-pipeline-2.png "Nastavení parametru toku dat")
 
-`@pipeline.parameters.pipelineParam`je přiřazena hodnota `abs(1)` za běhu.
+`@pipeline.parameters.pipelineParam`je přiřazena hodnota za `abs(1)` běhu.
 
 ![Nastavení parametru toku dat](media/data-flow/parameter-pipeline-4.png "Nastavení parametru toku dat")
 
-Pokud `$intParam` je odkazováno ve výrazu, jako je například odvozený sloupec, vyhodnotí `abs(1)` se vrátí zpět. `1` 
+Pokud `$intParam` je odkazováno ve výrazu, jako je například odvozený sloupec, vyhodnotí se `abs(1)` vrátí zpět `1` . 
 
 ![Nastavení parametru toku dat](media/data-flow/parameter-pipeline-3.png "Nastavení parametru toku dat")
 
@@ -102,9 +102,9 @@ Vyberete-li **výraz tok dat** , otevře se Tvůrce výrazů toku dat. V rámci 
 
 ### <a name="passing-in-a-column-name-as-a-parameter"></a>Předání názvu sloupce jako parametru
 
-Běžným vzorem je předat název sloupce jako hodnotu parametru. Pokud je sloupec definován ve schématu toku dat, můžete na něj odkazovat přímo jako řetězcový výraz. Pokud sloupec není definován ve schématu, použijte `byName()` funkci. Nezapomeňte přetypovat sloupec na příslušný typ pomocí funkce přetypování, jako je například `toString()`.
+Běžným vzorem je předat název sloupce jako hodnotu parametru. Pokud je sloupec definován ve schématu toku dat, můžete na něj odkazovat přímo jako řetězcový výraz. Pokud sloupec není definován ve schématu, použijte `byName()` funkci. Nezapomeňte přetypovat sloupec na příslušný typ pomocí funkce přetypování, jako je například `toString()` .
 
-Například pokud jste chtěli namapovat sloupec řetězců na základě parametru `columnName`, můžete přidat transformaci odvozeného sloupce EQUAL. `toString(byName($columnName))`
+Například pokud jste chtěli namapovat sloupec řetězců na základě parametru `columnName` , můžete přidat transformaci odvozeného sloupce Equal `toString(byName($columnName))` .
 
 ![Předání názvu sloupce jako parametru](media/data-flow/parameterize-column-name.png "Předání názvu sloupce jako parametru")
 

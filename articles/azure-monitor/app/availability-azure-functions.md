@@ -6,10 +6,10 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/04/2020
 ms.openlocfilehash: 81040adf6cfbb8820ec7f306c7d614830e3a2613
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82791101"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>Vytvoření a spuštění vlastních testů dostupnosti pomocí Azure Functions
@@ -45,7 +45,7 @@ Zkopírujte následující kód do souboru run. CSX (Tato akce nahradí již exi
 >![Běh. csx funkce Azure Functions v Azure Portal](media/availability-azure-functions/runcsx.png)
 
 > [!NOTE]
-> Pro adresu koncového bodu použijte: `EndpointAddress= https://dc.services.visualstudio.com/v2/track`. Pokud se prostředek nenachází v oblasti, jako je Azure Government nebo Azure Čína, najdete v tomto článku o [přepsání výchozích koncových bodů](https://docs.microsoft.com/azure/azure-monitor/app/custom-endpoints#regions-that-require-endpoint-modification) a výběru příslušného koncového bodu kanálu telemetrie pro vaši oblast.
+> Pro adresu koncového bodu použijte: `EndpointAddress= https://dc.services.visualstudio.com/v2/track` . Pokud se prostředek nenachází v oblasti, jako je Azure Government nebo Azure Čína, najdete v tomto článku o [přepsání výchozích koncových bodů](https://docs.microsoft.com/azure/azure-monitor/app/custom-endpoints#regions-that-require-endpoint-modification) a výběru příslušného koncového bodu kanálu telemetrie pro vaši oblast.
 
 ```C#
 #load "runAvailabilityTest.csx"
@@ -160,7 +160,7 @@ public async static Task RunAvailbiltyTestAsync(ILogger log)
 Abyste se ujistili, že všechno funguje, můžete se podívat na graf na kartě Dostupnost prostředku Application Insights.
 
 > [!NOTE]
-> Pokud jste implementovali vlastní obchodní logiku v runAvailabilityTest. csx, zobrazí se úspěšné výsledky, jako na snímcích obrazovky níže, pokud jste tak nepracovali, zobrazí se neúspěšné výsledky. Testy vytvořené pomocí `TrackAvailability()` se zobrazí s **vlastním** názvem testu vedle názvu testu.
+> Pokud jste implementovali vlastní obchodní logiku v runAvailabilityTest. csx, zobrazí se úspěšné výsledky, jako na snímcích obrazovky níže, pokud jste tak nepracovali, zobrazí se neúspěšné výsledky. Testy vytvořené pomocí se `TrackAvailability()` zobrazí s **vlastním** názvem testu vedle názvu testu.
 
 >[!div class="mx-imgBorder"]
 >![Karta dostupnost s úspěšnými výsledky](media/availability-azure-functions/availability-custom.png)

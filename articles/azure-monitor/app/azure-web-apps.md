@@ -4,10 +4,10 @@ description: Sledování výkonu aplikací pro Azure App Services. Zatížení g
 ms.topic: conceptual
 ms.date: 12/11/2019
 ms.openlocfilehash: 0f4d4dedab30839db56cb47ac7ac103413f2d4be
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82733443"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Monitorování výkonu služby Azure App Service
@@ -15,7 +15,7 @@ ms.locfileid: "82733443"
 Povolení monitorování webových aplikací založených na ASP.NET a ASP.NET Core běžících na [Azure App Services](https://docs.microsoft.com/azure/app-service/) je teď jednodušší než kdy dřív. Vzhledem k tomu, že jste předtím museli ručně nainstalovat rozšíření lokality, je ve výchozím nastavení do image služby App Service standardně integrováno nejnovější rozšíření nebo agent. Tento článek vás provede povolením Application Insights monitorování a poskytuje předběžné pokyny pro automatizaci procesu pro rozsáhlá nasazení.
 
 > [!NOTE]
-> Ruční přidání rozšíření Application Insights webu prostřednictvím rozšíření **nástrojů** > **Extensions** pro vývoj je zastaralé. Tato metoda instalace rozšíření byla závislá na ruční aktualizaci pro každou novou verzi. Nejnovější stabilní verze rozšíření je teď [předinstalována](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions) jako součást image App Service. Soubory jsou umístěny v `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` a jsou automaticky aktualizovány s každou stabilní verzí. Pokud budete postupovat podle pokynů na základě agentů a zapnout monitorování níže, automaticky se odebere zastaralé rozšíření za vás.
+> Ruční přidání rozšíření Application Insights webu prostřednictvím rozšíření **nástrojů pro vývoj**  >  **Extensions** je zastaralé. Tato metoda instalace rozšíření byla závislá na ruční aktualizaci pro každou novou verzi. Nejnovější stabilní verze rozšíření je teď [předinstalována](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions) jako součást image App Service. Soubory jsou umístěny v `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` a jsou automaticky aktualizovány s každou stabilní verzí. Pokud budete postupovat podle pokynů na základě agentů a zapnout monitorování níže, automaticky se odebere zastaralé rozšíření za vás.
 
 ## <a name="enable-application-insights"></a>Povolení Application Insights
 
@@ -66,9 +66,9 @@ Existují dva způsoby, jak povolit monitorování aplikací pro hostované apli
 | Zlepšení přesnosti metrik APM v případě zatížení při použití vzorkování | Ano |Ano |
 | Korelace mikroslužeb napříč požadavky a závislostmi | Ne (jenom možnosti APM s jednou instancí) |Ano |
 
-3. Chcete-li nakonfigurovat nastavení jako vzorkování, které byste mohli dříve řídit prostřednictvím souboru ApplicationInsights. config, můžete nyní s těmito nastaveními pracovat pomocí nastavení aplikace s odpovídající předponou. 
+3. Pokud chcete nakonfigurovat nastavení, jako je vzorkování, které byste mohli dříve řídit prostřednictvím souboru applicationinsights.config, můžete teď s těmito nastaveními pracovat pomocí nastavení aplikace s odpovídající předponou. 
 
-    * Chcete-li například změnit procento počátečního vzorkování, můžete vytvořit nastavení aplikace pro: `MicrosoftAppInsights_AdaptiveSamplingTelemetryProcessor_InitialSamplingPercentage` a hodnotu. `100`
+    * Chcete-li například změnit procento počátečního vzorkování, můžete vytvořit nastavení aplikace pro: `MicrosoftAppInsights_AdaptiveSamplingTelemetryProcessor_InitialSamplingPercentage` a hodnotu `100` .
 
     * Seznam podporovaných nastavení procesoru telemetrie pro adaptivní vzorkování můžete zobrazit v [kódu](https://github.com/microsoft/ApplicationInsights-dotnet/blob/master/BASE/Test/ServerTelemetryChannel.Test/TelemetryChannel.Tests/AdaptiveSamplingTelemetryProcessorTest.cs) a v [související dokumentaci](https://docs.microsoft.com/azure/azure-monitor/app/sampling).
 
@@ -95,7 +95,7 @@ Použití cílení na úplné rozhraní z rozhraní .NET Core, samostatného nas
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-V App Service webové aplikace v části **Nastavení** > **Vyberte Application Insights** > **Povolit**. Monitorování založené na agentech Node. js je aktuálně ve verzi Preview.
+V App Service webové aplikace v části **Nastavení**  >  **Vyberte Application Insights**  >  **Povolit**. Monitorování založené na agentech Node.js je aktuálně ve verzi Preview.
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -132,7 +132,7 @@ Monitorování na straně klienta je **ve výchozím nastavení povolené** pro 
 
 Pokud z nějakého důvodu chcete vypnout monitorování na straně klienta:
 
-* Vybrat **Nastavení** > **aplikace**
+* Vybrat **Nastavení**  >  **aplikace**
    * V části nastavení aplikace přidejte název a **hodnotu** **Nastavení nové aplikace** :
 
      Jméno:`APPINSIGHTS_JAVASCRIPT_ENABLED`
@@ -145,7 +145,7 @@ Pokud z nějakého důvodu chcete vypnout monitorování na straně klienta:
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-Chcete-li povolit monitorování na straně klienta pro aplikaci Node. js, je nutné [do aplikace ručně přidat sadu JavaScript SDK na straně klienta](https://docs.microsoft.com/azure/azure-monitor/app/javascript).
+Chcete-li povolit monitorování na straně klienta pro aplikaci Node.js, je nutné [do aplikace ručně přidat sadu JavaScript SDK na straně klienta](https://docs.microsoft.com/azure/azure-monitor/app/javascript).
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -169,8 +169,8 @@ Aby bylo možné povolit shromažďování telemetrie s Application Insights, je
 |-----------------|:------------|-------------:|
 |ApplicationInsightsAgent_EXTENSION_VERSION | Hlavní rozšíření, které řídí monitorování za běhu. | `~2` |
 |XDT_MicrosoftApplicationInsights_Mode |  Jenom ve výchozím režimu jsou k dispozici základní funkce, aby se zajistil optimální výkon. | `default` nebo `recommended`. |
-|InstrumentationEngine_EXTENSION_VERSION | Určuje, zda bude modul `InstrumentationEngine` binárního zápisu zapnutý. Toto nastavení má vliv na výkon a má vliv na čas spuštění a spuštění. | `~1` |
-|XDT_MicrosoftApplicationInsights_BaseExtensions | Ovládací prvky, pokud se v SQL & text tabulky Azure bude zachytávat spolu s voláními závislostí. Upozornění na výkon: bude to mít vliv na počáteční čas spuštění aplikace. Toto nastavení vyžaduje `InstrumentationEngine`. | `~1` |
+|InstrumentationEngine_EXTENSION_VERSION | Určuje, zda bude modul binárního zápisu `InstrumentationEngine` zapnutý. Toto nastavení má vliv na výkon a má vliv na čas spuštění a spuštění. | `~1` |
+|XDT_MicrosoftApplicationInsights_BaseExtensions | Ovládací prvky, pokud se v SQL & text tabulky Azure bude zachytávat spolu s voláními závislostí. Upozornění na výkon: bude to mít vliv na počáteční čas spuštění aplikace. Toto nastavení vyžaduje `InstrumentationEngine` . | `~1` |
 
 ### <a name="app-service-application-settings-with-azure-resource-manager"></a>App Service nastavení aplikace s Azure Resource Manager
 
@@ -355,35 +355,35 @@ Níže najdete naše podrobné pokyny k odstraňování potíží pro monitorov�
 > [!NOTE]
 > Aplikace Java se podporují jenom v Azure App Services prostřednictvím ruční instrumentace založené na sadě SDK, a proto se tyto kroky nevztahují na tyto scénáře.
 
-1. Ověřte, že je aplikace monitorována `ApplicationInsightsAgent`prostřednictvím.
-    * Ověřte, `ApplicationInsightsAgent_EXTENSION_VERSION` že nastavení aplikace je nastavené na hodnotu ~ 2.
+1. Ověřte, že je aplikace monitorována prostřednictvím `ApplicationInsightsAgent` .
+    * Ověřte, že `ApplicationInsightsAgent_EXTENSION_VERSION` nastavení aplikace je nastavené na hodnotu ~ 2.
 2. Ujistěte se, že aplikace splňuje požadavky, které se mají monitorovat.
     * Přejít na`https://yoursitename.scm.azurewebsites.net/ApplicationInsights`
 
-    ![Snímek stránky https://yoursitename.scm.azurewebsites/applicationinsights výsledků](./media/azure-web-apps/app-insights-sdk-status.png)
+    ![Snímek https://yoursitename.scm.azurewebsites/applicationinsights stránky výsledků](./media/azure-web-apps/app-insights-sdk-status.png)
 
-    * Potvrďte, `Application Insights Extension Status` že je`Pre-Installed Site Extension, version 2.8.12.1527, is running.`
+    * Potvrďte, že `Application Insights Extension Status` je`Pre-Installed Site Extension, version 2.8.12.1527, is running.`
         * Pokud není spuštěný, postupujte podle [pokynů pro monitorování povolení Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#enable-application-insights) .
 
     * Potvrďte, že zdroj stavu existuje a vypadá takto:`Status source D:\home\LogFiles\ApplicationInsights\status\status_RD0003FF0317B6_4248_1.json`
         * Pokud není k dispozici podobná hodnota, znamená to, že aplikace momentálně není spuštěná nebo není podporovaná. Chcete-li zajistit, aby aplikace běžela, zkuste ručně navštívit koncové body adresy URL nebo aplikace, čímž umožníte zpřístupnění běhových informací.
 
-    * Potvrďte `IKeyExists` , že je`true`
-        * Pokud je `false`, přidejte `APPINSIGHTS_INSTRUMENTATIONKEY` a `APPLICATIONINSIGHTS_CONNECTION_STRING` s identifikátorem GUID ikey do nastavení aplikace.
+    * Potvrďte, že `IKeyExists` je`true`
+        * Pokud je `false` , přidejte `APPINSIGHTS_INSTRUMENTATIONKEY` a `APPLICATIONINSIGHTS_CONNECTION_STRING` s identifikátorem GUID ikey do nastavení aplikace.
 
-    * Potvrďte, že nejsou k dispozici `AppContainsDiagnosticSourceAssembly`žádné položky `AppContainsAspNetTelemetryCorrelationAssembly`pro `AppAlreadyInstrumented`, a.
-        * Pokud existuje kterákoli z těchto položek, odeberte z aplikace následující balíčky: `Microsoft.ApplicationInsights`, `System.Diagnostics.DiagnosticSource`a. `Microsoft.AspNet.TelemetryCorrelation`
+    * Potvrďte, že nejsou k dispozici žádné položky pro `AppAlreadyInstrumented` , `AppContainsDiagnosticSourceAssembly` a `AppContainsAspNetTelemetryCorrelationAssembly` .
+        * Pokud existuje kterákoli z těchto položek, odeberte z aplikace následující balíčky:, a `Microsoft.ApplicationInsights` `System.Diagnostics.DiagnosticSource` `Microsoft.AspNet.TelemetryCorrelation` .
 
 Následující tabulka obsahuje podrobnější vysvětlení toho, co tyto hodnoty znamenají, jejich základní příčiny a Doporučené opravy:
 
 |Hodnota problému|Vysvětlení|Oprava
 |---- |----|---|
-| `AppAlreadyInstrumented:true` | Tato hodnota označuje, že rozšíření zjistilo, že některé aspekty sady SDK už v aplikaci existují a že se bude zálohovat. Důvodem může být odkaz na `System.Diagnostics.DiagnosticSource`, `Microsoft.AspNet.TelemetryCorrelation`, nebo`Microsoft.ApplicationInsights`  | Odeberte odkazy. Některé z těchto odkazů jsou ve výchozím nastavení přidány z určitých šablon sady Visual Studio a starší verze sady Visual Studio mohou přidat odkazy `Microsoft.ApplicationInsights`na.
+| `AppAlreadyInstrumented:true` | Tato hodnota označuje, že rozšíření zjistilo, že některé aspekty sady SDK už v aplikaci existují a že se bude zálohovat. Důvodem může být odkaz na `System.Diagnostics.DiagnosticSource` , `Microsoft.AspNet.TelemetryCorrelation` , nebo`Microsoft.ApplicationInsights`  | Odeberte odkazy. Některé z těchto odkazů jsou ve výchozím nastavení přidány z určitých šablon sady Visual Studio a starší verze sady Visual Studio mohou přidat odkazy na `Microsoft.ApplicationInsights` .
 |`AppAlreadyInstrumented:true` | Pokud je aplikace cílena na rozhraní .NET Core 2,1 nebo 2,2 a odkazuje na soubor [Microsoft. AspNetCore. All](https://www.nuget.org/packages/Microsoft.AspNetCore.All) meta-package, pak Application Insights a rozšíření bude zase vypnuto. | Pro zákazníky s .NET Core 2.1, 2.2 se místo toho [doporučuje](https://github.com/aspnet/Announcements/issues/287) použít meta-package Microsoft. AspNetCore. app.|
 |`AppAlreadyInstrumented:true` | Tato hodnota může být také způsobena přítomností výše uvedených knihoven DLL ve složce aplikace z předchozího nasazení. | Vyčistěte složku aplikace, abyste měli jistotu, že se odeberou tyto knihovny DLL. Ověřte adresář Bin místní aplikace a adresář wwwroot na App Service. (Pokud chcete kontrolovat adresář wwwroot vaší App Service webové aplikace: Rozšířené nástroje (Kudu) > ladit konzolu > CMD > home\site\wwwroot).
-|`AppContainsAspNetTelemetryCorrelationAssembly: true` | Tato hodnota označuje, že rozšíření zjistilo `Microsoft.AspNet.TelemetryCorrelation` odkazy na v aplikaci a bude se přepínat. | Odeberte odkaz.
-|`AppContainsDiagnosticSourceAssembly**:true`|Tato hodnota označuje, že rozšíření zjistilo `System.Diagnostics.DiagnosticSource` odkazy na v aplikaci a bude se přepínat.| Odeberte odkaz.
-|`IKeyExists:false`|Tato hodnota označuje, že klíč instrumentace není přítomen v AppSetting, `APPINSIGHTS_INSTRUMENTATIONKEY`. Možné příčiny: tyto hodnoty se možná omylem odeberou, zapomněli jste nastavit hodnoty v automatizačním skriptu atd. | Ujistěte se, že se nastavení nachází v nastavení aplikace App Service.
+|`AppContainsAspNetTelemetryCorrelationAssembly: true` | Tato hodnota označuje, že rozšíření zjistilo odkazy na `Microsoft.AspNet.TelemetryCorrelation` v aplikaci a bude se přepínat. | Odeberte odkaz.
+|`AppContainsDiagnosticSourceAssembly**:true`|Tato hodnota označuje, že rozšíření zjistilo odkazy na `System.Diagnostics.DiagnosticSource` v aplikaci a bude se přepínat.| Odeberte odkaz.
+|`IKeyExists:false`|Tato hodnota označuje, že klíč instrumentace není přítomen v AppSetting, `APPINSIGHTS_INSTRUMENTATIONKEY` . Možné příčiny: tyto hodnoty se možná omylem odeberou, zapomněli jste nastavit hodnoty v automatizačním skriptu atd. | Ujistěte se, že se nastavení nachází v nastavení aplikace App Service.
 
 ### <a name="appinsights_javascript_enabled-and-urlcompression-is-not-supported"></a>APPINSIGHTS_JAVASCRIPT_ENABLED a urlCompression se nepodporují.
 

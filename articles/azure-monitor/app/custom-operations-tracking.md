@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 11/26/2019
 ms.reviewer: sergkanz
 ms.openlocfilehash: 316c1b7ea32f661b009bfee7a89cb7e5ed082f3b
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82690863"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Sledování vlastních operací pomocí sady Application Insights .NET SDK
@@ -213,7 +213,7 @@ Můžete taky chtít korelovat ID operace Application Insights s ID žádosti ú
 #### <a name="enqueue"></a>Zařazování
 Vzhledem k tomu, že fronty úložiště podporují rozhraní API protokolu HTTP, jsou všechny operace s frontou automaticky sledovány Application Insights. V mnoha případech by měla být tato instrumentace dostatečná. Chcete-li však korelovat trasování na straně spotřebitele pomocí trasování od výrobce, je nutné předat nějaký kontext korelace podobně jako v protokolu HTTP pro korelaci. 
 
-Tento příklad ukazuje, jak sledovat `Enqueue` operaci. Můžete:
+Tento příklad ukazuje, jak sledovat `Enqueue` operaci. Další možnosti:
 
  - **Korelace pokusů (pokud existují)**: všichni mají jednu společnou nadřazenou položku, která je `Enqueue` operace. V opačném případě jsou sledovány jako podřízené položky příchozího požadavku. Pokud fronta obsahuje více logických požadavků, může být obtížné zjistit, které volání vedlo k opakovaným pokusům.
  - **Korelace protokolů úložiště (Pokud je potřeba a v případě potřeby)**: jsou ve vztahu k Application Insights telemetrie.
@@ -261,16 +261,16 @@ public async Task Enqueue(CloudQueue queue, string message)
 }  
 ```
 
-Chcete-li snížit množství telemetrie v sestavách aplikace nebo pokud nechcete sledovat operaci `Enqueue` z jiných důvodů, použijte `Activity` rozhraní API přímo:
+Chcete-li snížit množství telemetrie v sestavách aplikace nebo pokud nechcete sledovat `Enqueue` operaci z jiných důvodů, použijte `Activity` rozhraní API přímo:
 
 - Vytvořte (a začněte) novou `Activity` místo spuštění operace Application Insights. *Nemusíte* jim přiřazovat žádné vlastnosti s výjimkou názvu operace.
-- Serializovat `yourActivity.Id` do datové části zprávy místo `operation.Telemetry.Id`. Můžete také použít `Activity.Current.Id`.
+- Serializovat `yourActivity.Id` do datové části zprávy místo `operation.Telemetry.Id` . Můžete také použít `Activity.Current.Id` .
 
 
 #### <a name="dequeue"></a>Odstranění z fronty
-Podobně platí `Enqueue`, že skutečný požadavek HTTP na frontu úložiště se automaticky sleduje pomocí Application Insights. `Enqueue` Operace se však předpokládá v nadřazeném kontextu, jako je například příchozí kontext požadavku. Application Insights sady SDK automaticky korelují takovou operaci (a její část HTTP) s nadřazeným požadavkem a další telemetrie hlášenou ve stejném oboru.
+Podobně platí `Enqueue` , že skutečný požadavek HTTP na frontu úložiště se automaticky sleduje pomocí Application Insights. Operace se však `Enqueue` předpokládá v nadřazeném kontextu, jako je například příchozí kontext požadavku. Application Insights sady SDK automaticky korelují takovou operaci (a její část HTTP) s nadřazeným požadavkem a další telemetrie hlášenou ve stejném oboru.
 
-`Dequeue` Operace je obtížné. Sada SDK pro Application Insights automaticky sleduje požadavky HTTP. Ale neví kontext korelace, dokud se zpráva neanalyzuje. Není možné sladit požadavek protokolu HTTP a získat zprávu se zbytkem telemetrie zvlášť, pokud je přijata více než jedna zpráva.
+`Dequeue`Operace je obtížné. Sada SDK pro Application Insights automaticky sleduje požadavky HTTP. Ale neví kontext korelace, dokud se zpráva neanalyzuje. Není možné sladit požadavek protokolu HTTP a získat zprávu se zbytkem telemetrie zvlášť, pokud je přijata více než jedna zpráva.
 
 ```csharp
 public async Task<MessagePayload> Dequeue(CloudQueue queue)
@@ -337,12 +337,12 @@ Podobně je možné instrumentovat další operace s frontou. Operace náhledu b
 
 Při odstraňování zprávy instrumentace se ujistěte, že jste nastavili identifikátory operace (korelace). Alternativně můžete použít `Activity` rozhraní API. Pak nemusíte pro položky telemetrie nastavovat identifikátory operací, protože Application Insights SDK to dělá za vás:
 
-- Až budete mít `Activity` položku z fronty, vytvořte novou.
+- `Activity`Až budete mít položku z fronty, vytvořte novou.
 - Slouží `Activity.SetParentId(message.ParentId)` ke sladění protokolů příjemců a výrobců.
-- Spusťte `Activity`.
+- Spusťte `Activity` .
 - Sledujte operace vyřazování z fronty, procesů a odstraňování pomocí `Start/StopOperation` pomocníků. Udělejte to ze stejného asynchronního toku řízení (kontext spuštění). Tímto způsobem jsou správně přihlášeny.
-- Zastavte `Activity`.
-- Použijte `Start/StopOperation`nebo zavolejte `Track` telemetrii ručně.
+- Zastavte `Activity` .
+- Použijte `Start/StopOperation` nebo zavolejte `Track` telemetrii ručně.
 
 ### <a name="dependency-types"></a>Typy závislostí
 
@@ -352,7 +352,7 @@ Application Insights používá typ závislosti k přizpůsobení prostředí u�
 - `Azure Service Bus`pro Azure Service Bus
 
 ### <a name="batch-processing"></a>Dávkové zpracování
-U některých front můžete vyřadit více zpráv s jednou žádostí. Zpracování takových zpráv je pravděpodobně nezávislé a patří do různých logických operací. Tuto `Dequeue` operaci není možné korelovat s konkrétní zpracovávanou zprávou.
+U některých front můžete vyřadit více zpráv s jednou žádostí. Zpracování takových zpráv je pravděpodobně nezávislé a patří do různých logických operací. Tuto operaci není možné korelovat `Dequeue` s konkrétní zpracovávanou zprávou.
 
 Každá zpráva by měla být zpracována ve vlastním asynchronním toku řízení. Další informace najdete v části [odchozí sledování závislostí](#outgoing-dependencies-tracking) .
 
@@ -390,19 +390,19 @@ async Task BackgroundTask()
 
 V tomto příkladu `telemetryClient.StartOperation` vytvoří `DependencyTelemetry` a vyplní kontext korelace. Řekněme, že máte nadřazenou operaci, která byla vytvořena pomocí příchozích požadavků, které naplánovaly operaci. Pokud se `BackgroundTask` spustí ve stejném asynchronním toku řízení jako příchozí požadavek, je koreluje s touto nadřazenou operací. `BackgroundTask`a všechny vnořené položky telemetrie jsou automaticky korelační s požadavkem, který ji způsobil, i po ukončení žádosti.
 
-Když se úloha spustí z vlákna na pozadí, ke kterému není přidružena`Activity`žádná operace (), `BackgroundTask` nemá žádnou nadřazenou položku. Může ale mít vnořené operace. Všechny položky telemetrie hlášené z úlohy jsou ve vztahu k `DependencyTelemetry` vytvořenému v. `BackgroundTask`
+Když se úloha spustí z vlákna na pozadí, ke kterému není přidružena žádná operace ( `Activity` ), nemá `BackgroundTask` žádnou nadřazenou položku. Může ale mít vnořené operace. Všechny položky telemetrie hlášené z úlohy jsou ve vztahu k `DependencyTelemetry` vytvořenému v `BackgroundTask` .
 
 ## <a name="outgoing-dependencies-tracking"></a>Sledování odchozích závislostí
 Můžete sledovat vlastní druh závislosti nebo operaci, kterou Application Insights nepodporuje.
 
-`Enqueue` Metoda ve frontě Service Bus nebo ve frontě úložiště může sloužit jako příklady pro takové vlastní sledování.
+`Enqueue`Metoda ve frontě Service Bus nebo ve frontě úložiště může sloužit jako příklady pro takové vlastní sledování.
 
 Obecným přístupem k vlastnímu sledování závislostí je:
 
-- Zavolejte metodu `TelemetryClient.StartOperation` (Extension), která vyplní `DependencyTelemetry` vlastnosti potřebné pro korelaci a některé další vlastnosti (časové razítko času, doba trvání).
-- Nastavte další vlastní vlastnosti na `DependencyTelemetry`, například název a jakýkoli jiný kontext, který potřebujete.
+- Zavolejte `TelemetryClient.StartOperation` metodu (Extension), která vyplní `DependencyTelemetry` vlastnosti potřebné pro korelaci a některé další vlastnosti (časové razítko času, doba trvání).
+- Nastavte další vlastní vlastnosti na `DependencyTelemetry` , například název a jakýkoli jiný kontext, který potřebujete.
 - Proveďte volání závislosti a počkejte na ni.
-- `StopOperation` Po dokončení operace zastavte.
+- Po dokončení operace zastavte `StopOperation` .
 - Zpracování výjimek.
 
 ```csharp
@@ -423,9 +423,9 @@ public async Task RunMyTaskAsync()
 }
 ```
 
-Operace disposing způsobí zastavení operace, takže ji můžete použít místo volání `StopOperation`.
+Operace disposing způsobí zastavení operace, takže ji můžete použít místo volání `StopOperation` .
 
-*Upozornění*: v některých případech [je možné,](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-finally) `finally` že v některých případech není zavolána výjimka, takže operace nemusí být sledovány.
+*Upozornění*: v některých případech [je možné,](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-finally) že v některých případech `finally` není zavolána výjimka, takže operace nemusí být sledovány.
 
 ### <a name="parallel-operations-processing-and-tracking"></a>Paralelní zpracování a sledování operací
 
@@ -447,7 +447,7 @@ telemetryClient.StopOperation(firstOperation);
 await secondTask;
 ```
 
-Ujistěte se, že jste `StartOperation` vždy volali a zpracovali operaci ve stejné **asynchronní** metodě pro izolaci operací, které běží paralelně. Pokud je operace synchronní (nebo není asynchronní), zabalte proces a sledujte `Task.Run`:
+Ujistěte se, že jste vždy volali `StartOperation` a zpracovali operaci ve stejné **asynchronní** metodě pro izolaci operací, které běží paralelně. Pokud je operace synchronní (nebo není asynchronní), zabalte proces a sledujte `Task.Run` :
 
 ```csharp
 public void RunMyTask(string name)

@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 4ee89f4bba70bb5e81eef21247d556f65a2a1f16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80065193"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Brána Správa dat – vysoká dostupnost a škálovatelnost (Preview)
@@ -185,9 +185,9 @@ Můžete povolit **Rozšířená nastavení** na stránce **brány** a zobrazit 
 
 Vlastnost monitorování | Popis
 :------------------ | :---------- 
-Název | Název logické brány a uzlů přidružených k bráně  
+Name | Název logické brány a uzlů přidružených k bráně  
 Status | Stav logické brány a uzlů brány. Příklad: online/offline/omezený/atd. Informace o těchto stavech najdete v části [stav brány](#gateway-status) . 
-Version | Zobrazuje verzi logické brány a všech uzlů brány. Verze logické brány je určena na základě verze většiny uzlů ve skupině. Pokud v instalaci logické brány existují uzly s různými verzemi, budou správně fungovat pouze uzly se stejným číslem verze jako logická brána. Ostatní jsou v omezeném režimu a je potřeba je ručně aktualizovat (jenom v případě, že se automatická aktualizace nezdařila). 
+Verze | Zobrazuje verzi logické brány a všech uzlů brány. Verze logické brány je určena na základě verze většiny uzlů ve skupině. Pokud v instalaci logické brány existují uzly s různými verzemi, budou správně fungovat pouze uzly se stejným číslem verze jako logická brána. Ostatní jsou v omezeném režimu a je potřeba je ručně aktualizovat (jenom v případě, že se automatická aktualizace nezdařila). 
 Dostupná paměť | Dostupná paměť v uzlu brány Tato hodnota je snímkem téměř v reálném čase. 
 Využití procesoru | Využití procesoru uzlu brány Tato hodnota je snímkem téměř v reálném čase. 
 Sítě (za sekundu) | Využití sítě uzlu brány. Tato hodnota je snímkem téměř v reálném čase. 
@@ -238,15 +238,15 @@ Pokud není dostupná paměť a procesor dobře využité, ale kapacita nečinno
 
 ## <a name="known-issuesbreaking-changes"></a>Známé problémy/zásadní změny
 
-- V současné době můžete mít až čtyři uzly fyzické brány pro jednu logickou bránu. Pokud potřebujete více než čtyři uzly z důvodu výkonu, odešlete e-mail na [DMGHelp@microsoft.com](mailto:DMGHelp@microsoft.com)adresu.
+- V současné době můžete mít až čtyři uzly fyzické brány pro jednu logickou bránu. Pokud potřebujete více než čtyři uzly z důvodu výkonu, odešlete e-mail na adresu [DMGHelp@microsoft.com](mailto:DMGHelp@microsoft.com) .
 - Nemůžete znovu zaregistrovat uzel brány s ověřovacím klíčem z jiné logické brány pro přepnutí z aktuální logické brány. Pokud se chcete znovu zaregistrovat, odinstalujte bránu z uzlu, znovu nainstalujte bránu a zaregistrujte ji pomocí ověřovacího klíče pro druhou logickou bránu. 
-- Pokud je pro všechny uzly brány vyžadován proxy server HTTP, nastavte proxy v souboru diahost. exe. config a diawp. exe. config a pomocí Správce serveru zajistěte, aby všechny uzly měly stejné diahost. exe. config a diawip. exe. config. Podrobnosti najdete v části [Konfigurace nastavení proxy serveru](data-factory-data-management-gateway.md#configure-proxy-server-settings) . 
+- Pokud je pro všechny uzly brány vyžadován proxy server HTTP, nastavte proxy server v diahost.exe.config a diawp.exe.config a pomocí Správce serveru zajistěte, aby všechny uzly měly stejné diahost.exe.config a diawip.exe.config. Podrobnosti najdete v části [Konfigurace nastavení proxy serveru](data-factory-data-management-gateway.md#configure-proxy-server-settings) . 
 - Pokud chcete změnit režim šifrování pro komunikaci mezi uzly v Configuration Manager brány, odstraňte všechny uzly na portálu s výjimkou jednoho. Po změně režimu šifrování pak přidejte uzly zpátky.
 - Pokud se rozhodnete šifrovat komunikační kanál mezi uzly, použijte oficiální certifikát TLS. Certifikát podepsaný svým držitelem může způsobit problémy s připojením, protože stejný certifikát nemusí být důvěryhodný v seznamu certifikační autority na jiných počítačích. 
 - Uzel brány nejde zaregistrovat k logické bráně, pokud je verze uzlu nižší než verze logické brány. Odstraňte všechny uzly logické brány z portálu, abyste mohli registrovat nižší verzi uzlu (downgrade). Pokud odstraníte všechny uzly logické brány, ručně nainstalujte a zaregistrujte nové uzly na tuto logickou bránu. Expresní instalace není v tomto případě podporována.
 - Expresní instalaci nemůžete použít k instalaci uzlů do existující logické brány, která pořád používá cloudové přihlašovací údaje. Můžete kontrolovat, kde jsou přihlašovací údaje uložené, Configuration Manager brány na kartě nastavení.
 - Expresní instalaci nelze použít k instalaci uzlů do existující logické brány s povoleným šifrováním mezi uzly. Protože nastavení režimu šifrování zahrnuje Ruční přidávání certifikátů, Expresní instalace není další možností. 
-- V případě kopírování souborů z místního prostředí byste už neměli používat \\localhost ani C:\files, protože localhost nebo místní disk nemusí být přístupné přes všechny uzly. Místo toho použijte \\ServerName\files k určení umístění Files.
+- V případě kopírování souborů z místního prostředí byste už neměli používat \\ localhost ani C:\files, protože localhost nebo místní disk nemusí být přístupné přes všechny uzly. Místo toho použijte \\ ServerName\files k určení umístění Files.
 
 
 ## <a name="rolling-back-from-the-preview"></a>Vrácení zpět z verze Preview 

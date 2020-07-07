@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
 ms.openlocfilehash: 55373f71c78b6d45b9c78c52dea61a37b89b4a00
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81383047"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>Použití služby Azure Kubernetes s Apache Kafka v HDInsight
 
-Naučte se používat službu Azure Kubernetes Service (AKS) s [Apache Kafka](https://kafka.apache.org/) v clusteru HDInsight. Kroky v tomto dokumentu používají aplikaci Node. js hostovanou v AKS k ověření připojení pomocí Kafka. Tato aplikace používá balíček [Kafka-Node](https://www.npmjs.com/package/kafka-node) ke komunikaci s Kafka. Používá [Socket.IO](https://socket.io/) pro zasílání zpráv řízených událostmi mezi klientem prohlížeče a back-end hostovaným v AKS.
+Naučte se používat službu Azure Kubernetes Service (AKS) s [Apache Kafka](https://kafka.apache.org/) v clusteru HDInsight. Kroky v tomto dokumentu používají Node.js aplikaci hostovanou v AKS k ověření připojení pomocí Kafka. Tato aplikace používá balíček [Kafka-Node](https://www.npmjs.com/package/kafka-node) ke komunikaci s Kafka. Používá [Socket.IO](https://socket.io/) pro zasílání zpráv řízených událostmi mezi klientem prohlížeče a back-end hostovaným v AKS.
 
 [Apache Kafka](https://kafka.apache.org) je open source distribuovaná streamovací platforma, kterou lze použít k vytváření aplikací a kanálů pro streamování dat v reálném čase. Služba Azure Kubernetes spravuje vaše hostované prostředí Kubernetes a umožňuje rychlé a snadné nasazení kontejnerových aplikací. Pomocí Virtual Network Azure můžete tyto dvě služby propojit.
 
@@ -73,7 +73,7 @@ Pokud ještě nemáte cluster AKS, použijte jeden z následujících dokumentů
 
 ### <a name="create-virtual-network"></a>Vytvoření virtuální sítě
 
-1. Pokud chcete vytvořit virtuální síť pro HDInsight, přejděte na __+ vytvořit prostředek__ > __sítě__ > __virtuální síť__.
+1. Pokud chcete vytvořit virtuální síť pro HDInsight, přejděte na __+ vytvořit prostředek__  >  __sítě__  >  __virtuální síť__.
 
 1. Vytvořte síť pomocí následujících pokynů pro určité vlastnosti:
 
@@ -92,9 +92,9 @@ Pokud ještě nemáte cluster AKS, použijte jeden z následujících dokumentů
 
     |Vlastnost |Hodnota |
     |---|---|
-    |Název partnerského vztahu z \<této vn> do vzdálené virtuální sítě.|Zadejte jedinečný název pro tuto konfiguraci partnerského vztahu.|
+    |Název partnerského vztahu z \<this VN> do vzdálené virtuální sítě|Zadejte jedinečný název pro tuto konfiguraci partnerského vztahu.|
     |Virtuální síť|Vyberte virtuální síť pro **cluster AKS**.|
-    |Název partnerského vztahu od \<AKS vn> k \<tomuto vn>|Zadejte jedinečný název.|
+    |Název partnerského vztahu od \<AKS VN> do\<this VN>|Zadejte jedinečný název.|
 
     Ponechte všechna ostatní pole na výchozí hodnotě a pak výběrem __OK__ nakonfigurujte partnerský vztah.
 
@@ -132,9 +132,9 @@ Pomocí následujících kroků nakonfigurujte Kafka, aby inzerovala IP adresy m
     echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092" >> /usr/hdp/current/kafka-broker/conf/server.properties
     ```
 
-6. Chcete-li nakonfigurovat rozhraní, na kterém naslouchá Kafka, `listeners` zadejte do pole __filtru__ v pravém horním rohu.
+6. Chcete-li nakonfigurovat rozhraní, na kterém naslouchá Kafka, zadejte `listeners` do pole __filtru__ v pravém horním rohu.
 
-7. Chcete-li nakonfigurovat Kafka pro naslouchání na všech síťových rozhraních, změňte hodnotu v poli `PLAINTEXT://0.0.0.0:9092` __naslouchací procesy__ na.
+7. Chcete-li nakonfigurovat Kafka pro naslouchání na všech síťových rozhraních, změňte hodnotu v poli __naslouchací procesy__ na `PLAINTEXT://0.0.0.0:9092` .
 
 8. Chcete-li uložit změny konfigurace, použijte tlačítko __Uložit__ . Zadejte textovou zprávu popisující změny. Po uložení změn klikněte na __OK__ .
 
@@ -156,14 +156,14 @@ V tomto okamžiku Kafka a služba Azure Kubernetes komunikují prostřednictvím
 
 1. Vytvořte Kafka téma, které se používá v testovací aplikaci. Informace o vytváření Kafkach témat najdete v dokumentu o [Vytvoření clusteru Apache Kafka](apache-kafka-get-started.md) .
 
-2. Stáhněte si ukázkovou aplikaci [https://github.com/Blackmist/Kafka-AKS-Test](https://github.com/Blackmist/Kafka-AKS-Test)z.
+2. Stáhněte si ukázkovou aplikaci z [https://github.com/Blackmist/Kafka-AKS-Test](https://github.com/Blackmist/Kafka-AKS-Test) .
 
 3. Upravte `index.js` soubor a změňte následující řádky:
 
     * `var topic = 'mytopic'`: Nahraďte `mytopic` názvem tématu Kafka použitým touto aplikací.
     * `var brokerHost = '176.16.0.13:9092`: Nahraďte `176.16.0.13` interní IP adresou jednoho z hostitelů zprostředkovatele pro váš cluster.
 
-        Interní IP adresu hostitelů zprostředkovatele (workernodes) v clusteru najdete v dokumentu [Apache Ambari REST API](../hdinsight-hadoop-manage-ambari-rest-api.md#get-the-internal-ip-address-of-cluster-nodes) . Vyberte IP adresu jedné z položek, kde začíná název domény `wn`.
+        Interní IP adresu hostitelů zprostředkovatele (workernodes) v clusteru najdete v dokumentu [Apache Ambari REST API](../hdinsight-hadoop-manage-ambari-rest-api.md#get-the-internal-ip-address-of-cluster-nodes) . Vyberte IP adresu jedné z položek, kde začíná název domény `wn` .
 
 4. Z příkazového řádku v `src` adresáři nainstalujte závislosti a pomocí Docker Sestavte image pro nasazení:
 
@@ -184,7 +184,7 @@ V tomto okamžiku Kafka a služba Azure Kubernetes komunikují prostřednictvím
     > [!NOTE]  
     > Pokud neznáte svůj Azure Container Registry název, nebo neznáte použití rozhraní příkazového řádku Azure pro práci se službou Azure Kubernetes, přečtěte si [kurz AKS](../../aks/tutorial-kubernetes-prepare-app.md).
 
-6. Označte místní `kafka-aks-test` obrázek pomocí LOGINSERVER vašeho ACR. Přidejte `:v1` také na konec k označení verze Image:
+6. Označte místní `kafka-aks-test` obrázek pomocí loginServer vašeho ACR. Přidejte také `:v1` na konec k označení verze Image:
 
     ```bash
     docker tag kafka-aks-test <acrLoginServer>/kafka-aks-test:v1
@@ -198,7 +198,7 @@ V tomto okamžiku Kafka a služba Azure Kubernetes komunikují prostřednictvím
 
     Dokončení této operace trvá několik minut.
 
-8. Upravte soubor manifestu Kubernetes (`kafka-aks-test.yaml`) a nahraďte `microsoft` názvem ACR loginServer, který jste získali v kroku 4.
+8. Upravte soubor manifestu Kubernetes ( `kafka-aks-test.yaml` ) a nahraďte `microsoft` názvem ACR loginServer, který jste získali v kroku 4.
 
 9. Pomocí následujícího příkazu nasaďte nastavení aplikace z manifestu:
 
@@ -206,7 +206,7 @@ V tomto okamžiku Kafka a služba Azure Kubernetes komunikují prostřednictvím
     kubectl create -f kafka-aks-test.yaml
     ```
 
-10. Pro `EXTERNAL-IP` sledování aplikace použijte následující příkaz:
+10. Pro sledování aplikace použijte následující příkaz `EXTERNAL-IP` :
 
     ```bash
     kubectl get service kafka-aks-test --watch

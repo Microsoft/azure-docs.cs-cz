@@ -11,10 +11,10 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: 28cdc96020d085c6f44c8b6818aa76dd7eb29891
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82788979"
 ---
 # <a name="create-an-azure-shared-image-gallery-using-the-portal"></a>Vytvoření galerie sdílených imagí Azure pomocí portálu
@@ -36,7 +36,7 @@ Funkce Galerie sdílených imagí má více typů prostředků. V tomto článku
 
 
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Chcete-li dokončit příklad v tomto článku, musíte mít existující spravovanou bitovou kopii zobecněného virtuálního počítače nebo snímek specializovaného virtuálního počítače. Postup najdete v [kurzu: Vytvoření vlastní image virtuálního počítače Azure s Azure PowerShell](tutorial-custom-images.md) pro vytvoření spravované Image nebo [vytvoření snímku](../windows/snapshot-copy-managed-disk.md) pro specializovaný virtuální počítač. U spravovaných imagí i snímků nemůže být velikost datového disku větší než 1 TB.
 
@@ -55,7 +55,7 @@ Nyní můžete vytvořit jeden nebo více nových virtuálních počítačů. Te
 1. Do **název virtuálního počítače**zadejte *myVM*.
 1. V **oblasti oblast**vyberte *východní USA*.
 1. U **možností dostupnosti**ponechte výchozí možnost *bez nutnosti redundance infrastruktury*.
-1. Hodnota pro **Image** se automaticky vyplní verzí `latest` image, pokud jste začali ze stránky pro definici image.
+1. Hodnota pro **Image** se automaticky vyplní `latest` verzí image, pokud jste začali ze stránky pro definici image.
 1. Jako **Velikost**zvolte velikost virtuálního počítače ze seznamu dostupných velikostí a pak zvolte **Vybrat**.
 1. V části **účet správce**, pokud byl zdrojový virtuální počítač zobecněný, zadejte svoje **uživatelské jméno** a **veřejný klíč SSH**. Pokud byl zdrojový virtuální počítač specializovaný, budou tyto možnosti šedé, protože se používají informace ze zdrojového virtuálního počítače.
 1. Pokud chcete povolit vzdálený přístup k virtuálnímu počítači, vyberte v části **veřejné příchozí porty**možnost **Povolit vybrané porty** a v rozevíracím seznamu vyberte **SSH (22)** . Pokud nechcete povolit vzdálený přístup k virtuálnímu počítači, nechte **žádné** vybrané pro **veřejné příchozí porty**.

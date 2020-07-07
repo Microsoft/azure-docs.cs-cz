@@ -9,21 +9,21 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.openlocfilehash: b0de9103fd022dc74e7c75017a602eb6701686fe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73494657"
 ---
 # <a name="create-an-apache-spark-machine-learning-pipeline"></a>Vytvoření kanálu strojového učení Apache Sparku
 
-Škálovatelná knihovna MLlib (Machine Learning Library) Apache Spark přináší možnosti modelování distribuovanému prostředí. Balíček [`spark.ml`](https://spark.apache.org/docs/latest/ml-pipeline.html) Spark je sada rozhraní API na vysoké úrovni postavená na objektech dataframes. Tato rozhraní API vám pomůžou vytvořit a ladit praktické kanály strojového učení.  *Spark Machine Learning* odkazuje na toto rozhraní API založené na MLlib dataframe, nikoli na starší rozhraní API kanálu založeného na RDD.
+Škálovatelná knihovna MLlib (Machine Learning Library) Apache Spark přináší možnosti modelování distribuovanému prostředí. Balíček spark [`spark.ml`](https://spark.apache.org/docs/latest/ml-pipeline.html) je sada rozhraní API na vysoké úrovni postavená na objektech Dataframes. Tato rozhraní API vám pomůžou vytvořit a ladit praktické kanály strojového učení.  *Spark Machine Learning* odkazuje na toto rozhraní API založené na MLlib dataframe, nikoli na starší rozhraní API kanálu založeného na RDD.
 
 Kanál strojového učení (ML) je kompletní pracovní postup, který kombinuje více algoritmů strojového učení dohromady. Může se jednat o mnoho kroků potřebných ke zpracování a získání informací z dat, což vyžaduje sekvenci algoritmů. Kanály definují fáze a pořadí procesu strojového učení. V MLlib jsou fáze kanálu reprezentovány určitým pořadím PipelineStages, kde transformátor a Estimator provádí úlohy.
 
 Transformátor je algoritmus, který transformuje jeden datový rámec na jiný pomocí `transform()` metody. Například transformátor funkce by mohl přečíst jeden sloupec datového rámce, namapovat ho do jiného sloupce a vytvořit výstup nového datového rámce s připojeným mapovaným sloupcem.
 
-Estimator je abstrakce výukových algoritmů a zodpovídá za přizpůsobení nebo školení na datové sadě za účelem vytvoření transformátoru. Estimator implementuje metodu s názvem `fit()`, která přijímá datový rámec a vytvoří datový rámec, což je transformátor.
+Estimator je abstrakce výukových algoritmů a zodpovídá za přizpůsobení nebo školení na datové sadě za účelem vytvoření transformátoru. Estimator implementuje metodu s názvem `fit()` , která přijímá datový rámec a vytvoří datový rámec, což je transformátor.
 
 Každá Bezstavová instance transformátoru nebo Estimator má svůj vlastní jedinečný identifikátor, který se používá při zadávání parametrů. Pro zadání těchto parametrů obojí používá jednotné rozhraní API.
 
@@ -33,8 +33,8 @@ V tomto příkladu se k předvedení praktického použití kanálu ML použív�
 
 Následující kód:
 
-1. Definuje `LabeledDocument`, který ukládá `BuildingID`, `SystemInfo` (identifikátor a stáří systému) a a `label` (1,0, pokud je budova příliš horká, 0,0 jinak).
-2. Vytvoří vlastní funkci `parseDocument` analyzátoru, která provede řádek (řádek) dat a určí, zda je budova "horká" porovnáním cílové teploty se skutečnou teplotou.
+1. Definuje `LabeledDocument` , který ukládá `BuildingID` , `SystemInfo` (identifikátor a stáří systému) a a `label` (1,0, pokud je budova příliš horká, 0,0 jinak).
+2. Vytvoří vlastní funkci analyzátoru `parseDocument` , která provede řádek (řádek) dat a určí, zda je budova "horká" porovnáním cílové teploty se skutečnou teplotou.
 3. Použije analyzátor při extrakci zdrojových dat.
 4. Vytvoří školicí data.
 
@@ -78,11 +78,11 @@ documents = data.filter(lambda s: "Date" not in s).map(parseDocument)
 training = documents.toDF()
 ```
 
-Tento příklad kanálu má tři fáze: `Tokenizer` a `HashingTF` (oba transformátory) a `Logistic Regression` (Estimator).  Extrahovaná a Analyzovaná data v `training` dataframe přecházejí prostřednictvím kanálu při `pipeline.fit(training)` volání.
+Tento příklad kanálu má tři fáze: `Tokenizer` a `HashingTF` (oba transformátory) a `Logistic Regression` (Estimator).  Extrahovaná a Analyzovaná data v `training` Dataframe přecházejí prostřednictvím kanálu při `pipeline.fit(training)` volání.
 
-1. První fáze, `Tokenizer`, rozdělí `SystemInfo` vstupní sloupec (skládající se z identifikátoru systému a věkové hodnoty) do `words` výstupního sloupce. Tento nový `words` sloupec se přidá do datového rámce. 
-2. Druhá fáze, `HashingTF`, převede nový `words` sloupec na vektory funkce. Tento nový `features` sloupec se přidá do datového rámce. Tyto první dvě fáze jsou transformátory. 
-3. Třetí fáze, `LogisticRegression`, je Estimator, a proto kanál volá `LogisticRegression.fit()` metodu pro vytvoření. `LogisticRegressionModel` 
+1. První fáze, `Tokenizer` , rozdělí `SystemInfo` vstupní sloupec (skládající se z identifikátoru systému a věkové hodnoty) do `words` výstupního sloupce. Tento nový `words` sloupec se přidá do datového rámce. 
+2. Druhá fáze, `HashingTF` , převede nový `words` sloupec na vektory funkce. Tento nový `features` sloupec se přidá do datového rámce. Tyto první dvě fáze jsou transformátory. 
+3. Třetí fáze, `LogisticRegression` , je Estimator, a proto kanál volá `LogisticRegression.fit()` metodu pro vytvoření `LogisticRegressionModel` . 
 
 ```python
 tokenizer = Tokenizer(inputCol="SystemInfo", outputCol="words")
@@ -95,7 +95,7 @@ pipeline = Pipeline(stages=[tokenizer, hashingTF, lr])
 model = pipeline.fit(training)
 ```
 
-Chcete-li zobrazit `words` nové `features` sloupce a přidané pomocí `Tokenizer` `HashingTF` transformátorů a vzorek `LogisticRegression` Estimator, spusťte v původním dataframe `PipelineModel.transform()` metodu. V produkčním kódu bude další krok předávat do testu dataframe za účelem ověření školení.
+Chcete-li zobrazit `words` nové `features` sloupce a přidané pomocí `Tokenizer` `HashingTF` transformátorů a vzorek `LogisticRegression` Estimator, spusťte `PipelineModel.transform()` v původním dataframe metodu. V produkčním kódu bude další krok předávat do testu dataframe za účelem ověření školení.
 
 ```python
 peek = model.transform(training)
@@ -130,8 +130,8 @@ peek.show()
 only showing top 20 rows
 ```
 
-`model` Objekt se teď dá použít k vytvoření předpovědi. Úplnou ukázku této aplikace pro strojové učení a podrobné pokyny pro její spuštění najdete v tématu [sestavování aplikací Apache Spark Machine Learning v Azure HDInsight](apache-spark-ipython-notebook-machine-learning.md).
+`model`Objekt se teď dá použít k vytvoření předpovědi. Úplnou ukázku této aplikace pro strojové učení a podrobné pokyny pro její spuštění najdete v tématu [sestavování aplikací Apache Spark Machine Learning v Azure HDInsight](apache-spark-ipython-notebook-machine-learning.md).
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 * [Datové vědy s využitím Scala a Apache Spark v Azure](../../machine-learning/team-data-science-process/scala-walkthrough.md)

@@ -11,10 +11,10 @@ ms.workload: genomics
 ms.topic: troubleshooting
 ms.date: 10/29/2018
 ms.openlocfilehash: c508c10d619cde1a16d89b446c5cfd1a3ce81daf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82100902"
 ---
 # <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží
@@ -27,7 +27,7 @@ Tady je několik tipů pro řešení potíží s některými běžnými problém
 Můžete najít chybové zprávy přidružené k pracovnímu postupu:
 
 1. Použití příkazového řádku a psaní`msgen status`
-2. Prozkoumání obsahu StandardOutput. txt.
+2. Prozkoumání obsahu standardoutput.txt.
 
 ### <a name="1-using-the-command-line-msgen-status"></a>1. používání příkazového řádku`msgen status`
 
@@ -75,21 +75,21 @@ Existují tři povinné argumenty:
   > [!NOTE]
   >  Případně můžete místo přímého zadání adresy URL a klíče použít cestu k konfiguračnímu souboru. Pokud zahrnete tyto argumenty do příkazového řádku i do konfiguračního souboru, budou mít argumenty příkazového řádku přednost.  
 
-Pro pracovní postup s ID 1001 a soubor config. txt umístěný ve stejné cestě jako spustitelný soubor msgen bude příkaz vypadat takto:
+Pro pracovní postup s ID 1001 a config.txt soubor umístěný ve stejné cestě jako spustitelný soubor msgen bude příkaz vypadat takto:
 
 ```bash
 msgen status -w 1001 -f "config.txt"
 ```
 
-### <a name="2--examine-the-contents-of-standardoutputtxt"></a>2. prověřte obsah StandardOutput. txt. 
+### <a name="2--examine-the-contents-of-standardoutputtxt"></a>2. Projděte si obsah standardoutput.txt 
 Vyhledejte kontejner výstupu pro daný pracovní postup. MSGEN vytvoří `[workflowfilename].logs.zip` složku po každém spuštění pracovního postupu. Rozbalte složku pro zobrazení jejího obsahu:
 
-* outputFileList. txt – seznam výstupních souborů vyprodukovaných během pracovního postupu
-* StandardError. txt – Tento soubor je prázdný.
-* StandardOutput. txt – protokoluje všechny stavové zprávy nejvyšší úrovně včetně chyb, ke kterým došlo při spuštění pracovního postupu.
+* outputFileList.txt – seznam výstupních souborů vyprodukovaných během pracovního postupu
+* standarderror.txt – tento soubor je prázdný.
+* standardoutput.txt – protokoluje všechny stavové zprávy nejvyšší úrovně včetně chyb, ke kterým došlo při spuštění pracovního postupu.
 * Soubory protokolu GENOME – všechny ostatní soubory ve `logs` složce
 
-V případě řešení potíží zkontrolujte obsah StandardOutput. txt a poznamenejte si všechny zobrazené chybové zprávy.
+Při řešení potíží zkontrolujte obsah standardoutput.txt a poznamenejte si všechny zobrazené chybové zprávy.
 
 
 ## <a name="step-2-try-recommended-steps-for-common-errors"></a>Krok 2: Vyzkoušejte doporučené kroky pro běžné chyby

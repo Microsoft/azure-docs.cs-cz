@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/02/2017
 ms.author: mimckitt
 ms.openlocfilehash: ab846eeb09c4f3d2db71abf58ef5d55dc74962a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82112044"
 ---
 # <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>Postup aktualizace agenta Azure Linux na virtuálním počítači
@@ -352,7 +352,7 @@ sudo systemctl restart walinuxagent.service
 
 ## <a name="oracle-linux-6-and-oracle-linux-7"></a>Oracle Linux 6 a Oracle Linux 7
 
-V případě Oracle Linux se ujistěte, že `Addons` je úložiště povolené. Vyberte `/etc/yum.repos.d/public-yum-ol6.repo`soubor, který chcete upravit (Oracle Linux 6) `/etc/yum.repos.d/public-yum-ol7.repo`nebo (Oracle Linux), a v tomto `enabled=0` souboru `enabled=1` změňte řádek na **[ol6_addons]** nebo **[ol7_addons]** .
+V případě Oracle Linux se ujistěte, že `Addons` je úložiště povolené. Vyberte soubor, který chcete upravit `/etc/yum.repos.d/public-yum-ol6.repo` (Oracle Linux 6) nebo `/etc/yum.repos.d/public-yum-ol7.repo` (Oracle Linux), a `enabled=0` v tomto souboru změňte řádek na `enabled=1` **[ol6_addons]** nebo **[ol7_addons]** .
 
 Pak pro instalaci nejnovější verze agenta Azure Linux zadejte:
 
@@ -390,15 +390,15 @@ Pak zadejte:
 sudo yum update WALinuxAgent
 ```
 
-To je obvykle všechno, co potřebujete, ale pokud z https://github.com nějakého důvodu potřebujete instalaci instalovat přímo, použijte následující postup.
+To je obvykle všechno, co potřebujete, ale pokud z nějakého důvodu potřebujete instalaci instalovat https://github.com přímo, použijte následující postup.
 
 
 ## <a name="update-the-linux-agent-when-no-agent-package-exists-for-distribution"></a>Aktualizace agenta pro Linux, pokud pro distribuci neexistují žádné balíčky agentů
 
-Nainstalujte wget (ve výchozím nastavení je k dispozici několik distribuce, které neinstaluje, jako je Red Hat, CentOS a Oracle Linux verze 6,4 a 6,5) `sudo yum install wget` , a to tak, že na příkazovém řádku zadáte.
+Nainstalujte wget (ve výchozím nastavení je k dispozici několik distribuce, které neinstaluje, jako je Red Hat, CentOS a Oracle Linux verze 6,4 a 6,5), a to tak, že `sudo yum install wget` na příkazovém řádku zadáte.
 
 ### <a name="1-download-the-latest-version"></a>1. Stáhněte si nejnovější verzi.
-Otevřete [verzi agenta Azure Linux](https://github.com/Azure/WALinuxAgent/releases) na webu GitHub na webové stránce a vyhledejte nejnovější číslo verze. (Svou aktuální verzi můžete vyhledat zadáním `waagent --version`.)
+Otevřete [verzi agenta Azure Linux](https://github.com/Azure/WALinuxAgent/releases) na webu GitHub na webové stránce a vyhledejte nejnovější číslo verze. (Svou aktuální verzi můžete vyhledat zadáním `waagent --version` .)
 
 #### <a name="for-version-22x-or-later-type"></a>Pro verzi 2.2. x nebo novější zadejte:
 ```bash

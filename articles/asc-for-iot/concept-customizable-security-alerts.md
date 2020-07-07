@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/04/2020
 ms.author: mlottner
 ms.openlocfilehash: 3b39d70c60a4c9701d0a8bafde17b241fe01cc46
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81311642"
 ---
 # <a name="azure-security-center-for-iot-security-alerts"></a>Výstrahy zabezpečení ve službě Azure Security Center pro IoT
@@ -31,7 +31,7 @@ Následující seznam Azure Security Center pro výstrahy IoT můžete definovat
 
 ## <a name="iot-hub-alerts-available-for-customization"></a>Výstrahy IoT Hub k dispozici pro přizpůsobení
 
-| Severity | Název výstrahy | Zdroj dat | Popis | Navrhovaná náprava|
+| Severity | Název upozornění | Zdroj dat | Popis | Navrhovaná náprava|
 |---|---|---|---|---|
 | Nízká      | Vlastní upozornění – počet zpráv v cloudu na zařízení v protokolu AMQP je mimo povolený rozsah.          | IoT Hub     | Počet zpráv z cloudu na zařízení (AMQP Protocol) v rámci určitého časového období je mimo aktuálně nakonfigurovaný a povolený rozsah.||
 | Nízká      | Vlastní upozornění – počet odmítnutých zpráv v cloudu na zařízení v protokolu AMQP je mimo povolený rozsah. | IoT Hub     | Počet zpráv z cloudu na zařízení (Protokol AMQP) zamítnutý zařízením v rámci určitého časového období je mimo aktuálně nakonfigurovaný a povolený rozsah.||
@@ -51,7 +51,7 @@ Následující seznam Azure Security Center pro výstrahy IoT můžete definovat
 
 ## <a name="agent-alerts-available-for-customization"></a>Výstrahy agenta dostupné pro přizpůsobení
 
-| Severity | Název výstrahy | Zdroj dat | Popis | Navrhovaná náprava|
+| Severity | Název upozornění | Zdroj dat | Popis | Navrhovaná náprava|
 |---|---|---|---|---|
 | Nízká      | Vlastní upozornění – počet aktivních připojení je mimo povolený rozsah.  | Agent       | Počet aktivních připojení v rámci určitého časového období je mimo aktuálně nakonfigurovaný a povolený rozsah.|  Prozkoumejte protokoly zařízení. Zjistěte, kde připojení pochází, a zjistěte, jestli je neškodný nebo škodlivý. Pokud máte škodlivou, odstraňte možný malware a porozumět zdroji. Pokud je neškodný, přidejte zdroj do seznamu povolených připojení.  |
 | Nízká      | Vlastní výstraha – odchozí připojení vytvořené na IP adresu, která není povolená                             | Agent       | Odchozí připojení bylo vytvořeno na IP adresu, která je mimo povolený seznam IP adres. |Prozkoumejte protokoly zařízení. Zjistěte, kde připojení pochází, a zjistěte, jestli je neškodný nebo škodlivý. Pokud máte škodlivou, odstraňte možný malware a porozumět zdroji. Pokud je neškodný, přidejte zdroj do seznamu povolených IP adres.                        |

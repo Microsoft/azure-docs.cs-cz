@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 02/06/2020
 ms.author: tagore
 ms.openlocfilehash: ff829e9ffbd6d6ae0766998e62634ac873afc748
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80066664"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Plánování migrace prostředků IaaS z nasazení Classic do Azure Resource Manageru
@@ -146,7 +146,7 @@ Následující byly problémy zjištěné v řadě větších migrací. Nejedná
 
 - **Stav virtuálního počítače neznámý** – Pokud se migrace zastaví kvůli neznámé chybové zprávě **stavu role** , zkontrolujte virtuální počítač pomocí portálu a ujistěte se, že je spuštěný. Tato chyba obvykle vznikne vlastní (bez potřeby nápravy) po několika minutách a často se jedná o přechodný typ, který se často zobrazuje během operace **spuštění**, **zastavení**a **restartování** virtuálního počítače. **Doporučený postup:** zkuste migraci opakovat znovu za několik minut.
 
-- **Cluster prostředků infrastruktury neexistuje** – v některých případech je nemůžete migrovat některé virtuální počítače z různých lichých důvodů. Jedním z těchto známých případů je, že se virtuální počítač v poslední době vytvořil (během posledního týdne) a že se nacházel cluster Azure, který ještě není vybavený pro Azure Resource Manager úlohy.  Zobrazí se chyba, která říká, že **cluster Fabric neexistuje** a virtuální počítač nejde migrovat. Při čekání na několik dní se obvykle vyřeší tento konkrétní problém, protože cluster brzy získá Azure Resource Manager povolenou. Jediným alternativním řešením je však, že `stop-deallocate` se k virtuálnímu počítači bude dál přenášet migrace a po migraci spustit virtuální počítač znovu v Azure Resource Manager.
+- **Cluster prostředků infrastruktury neexistuje** – v některých případech je nemůžete migrovat některé virtuální počítače z různých lichých důvodů. Jedním z těchto známých případů je, že se virtuální počítač v poslední době vytvořil (během posledního týdne) a že se nacházel cluster Azure, který ještě není vybavený pro Azure Resource Manager úlohy.  Zobrazí se chyba, která říká, že **cluster Fabric neexistuje** a virtuální počítač nejde migrovat. Při čekání na několik dní se obvykle vyřeší tento konkrétní problém, protože cluster brzy získá Azure Resource Manager povolenou. Jediným alternativním řešením je však, že se k virtuálnímu počítači bude dál přenášet `stop-deallocate` migrace a po migraci spustit virtuální počítač znovu v Azure Resource Manager.
 
 ### <a name="pitfalls-to-avoid"></a>Nástrah, abyste se vyhnuli
 

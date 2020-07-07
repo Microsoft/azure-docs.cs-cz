@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.openlocfilehash: 9883065993f35054338079c8b9647a8420574414
-ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82738061"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Opětovné zapnutí ochrany virtuálních počítačů Azure v primární oblasti
@@ -29,7 +29,7 @@ Při [převzetí služeb při selhání](site-recovery-failover.md) virtuálníc
 
 ## <a name="reprotect-a-vm"></a>Opětovné zapnutí ochrany virtuálního počítače
 
-1. V **trezoru** > **replikované položky**klikněte pravým tlačítkem na virtuální počítač převzetí služeb při selhání a vyberte **znovu zapnout ochranu**. Směr další ochrany by se měl zobrazit ze sekundárního na primární.
+1. V **trezoru**  >  **replikované položky**klikněte pravým tlačítkem na virtuální počítač převzetí služeb při selhání a vyberte **znovu zapnout ochranu**. Směr další ochrany by se měl zobrazit ze sekundárního na primární.
 
    ![Znovunastavení ochrany](./media/site-recovery-how-to-reprotect-azure-to-azure/reprotect.png)
 
@@ -58,21 +58,21 @@ Během ochrany můžete přizpůsobit následující vlastnosti cílového virtu
 Ve výchozím nastavení dojde k následujícímu:
 
 1. Účet úložiště mezipaměti se vytvoří v oblasti, ve které běží virtuální počítač pro převzetí služeb při selhání.
-1. Pokud cílový účet úložiště (původní účet úložiště v primární oblasti) neexistuje, vytvoří se nový. Přiřazený název účtu úložiště je název účtu úložiště používaného sekundárním virtuálním počítačem, který je s `asr`příponou.
+1. Pokud cílový účet úložiště (původní účet úložiště v primární oblasti) neexistuje, vytvoří se nový. Přiřazený název účtu úložiště je název účtu úložiště používaného sekundárním virtuálním počítačem, který je s příponou `asr` .
 1. Pokud virtuální počítač používá spravované disky, v primární oblasti se vytvoří replika spravované disky pro ukládání dat replikovaných z disků sekundárního virtuálního počítače.
 1. Pokud cílová skupina dostupnosti neexistuje, vytvoří se nová v rámci úlohy opětovného ochrany v případě potřeby. Pokud jste upravili nastavení ochrany, použije se vybraná sada.
 
 Když aktivujete úlohu opětovné ochrany a cílový virtuální počítač existuje, dojde k následujícímu:
 
 1. Cílový virtuální počítač je vypnutý, pokud je spuštěný.
-1. Pokud virtuální počítač používá spravované disky, vytvoří se kopie původního disku s `-ASRReplica` příponou. Původní disky se odstraní. `-ASRReplica` Kopie se používají pro replikaci.
+1. Pokud virtuální počítač používá spravované disky, vytvoří se kopie původního disku s `-ASRReplica` příponou. Původní disky se odstraní. `-ASRReplica`Kopie se používají pro replikaci.
 1. Pokud virtuální počítač používá nespravované disky, jsou datové disky cílového virtuálního počítače odpojeny a použity pro replikaci. Na virtuálním počítači se vytvoří a připojí kopie disku s operačním systémem. Původní disk s operačním systémem je odpojený a používá se k replikaci.
 1. Synchronizují se jenom změny mezi zdrojovým diskem a cílovým diskem. Rozdíly jsou vypočítány porovnáním disků a pak přenesených. Níže najdete informace o odhadované době pro dokončení ochrany.
 1. Po dokončení synchronizace se spustí rozdílová replikace a v souladu se zásadami replikace se vytvoří bod obnovení.
 
 Když aktivujete úlohu opětovné ochrany a cílový virtuální počítač a disky neexistují, dojde k následujícímu:
 
-1. Pokud virtuální počítač používá spravované disky, vytvoří se disketa repliky `-ASRReplica` s příponou. `-ASRReplica` Kopie se používají pro replikaci.
+1. Pokud virtuální počítač používá spravované disky, vytvoří se disketa repliky s `-ASRReplica` příponou. `-ASRReplica`Kopie se používají pro replikaci.
 1. Pokud virtuální počítač používá nespravované disky, vytvoří se na cílovém účtu úložiště disketa repliky.
 1. Všechny disky se zkopírují z oblasti převzetí služeb při selhání do nové cílové oblasti.
 1. Po dokončení synchronizace se spustí rozdílová replikace a v souladu se zásadami replikace se vytvoří bod obnovení.

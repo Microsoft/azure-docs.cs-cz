@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.openlocfilehash: 165e7984c21b74fa7730fc02756b9e75b4b33aa7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82131247"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>Protokolování auditu Azure Database for PostgreSQL – jeden server
@@ -37,7 +37,7 @@ Informace o tom, jak nastavit protokolování do protokolů Azure Storage, Event
 
 ## <a name="installing-pgaudit"></a>Instalace pgAudit
 
-Chcete-li nainstalovat pgAudit, je třeba jej zahrnout do sdílených předem načtených knihoven serveru. Změna `shared_preload_libraries` parametru Postgres vyžaduje, aby se restart serveru projevil. Parametry můžete měnit pomocí [Azure Portal](howto-configure-server-parameters-using-portal.md), rozhraní příkazového [řádku Azure](howto-configure-server-parameters-using-cli.md)nebo [REST API](/rest/api/postgresql/configurations/createorupdate).
+Chcete-li nainstalovat pgAudit, je třeba jej zahrnout do sdílených předem načtených knihoven serveru. Změna parametru Postgres vyžaduje, `shared_preload_libraries` aby se restart serveru projevil. Parametry můžete měnit pomocí [Azure Portal](howto-configure-server-parameters-using-portal.md), rozhraní příkazového [řádku Azure](howto-configure-server-parameters-using-cli.md)nebo [REST API](/rest/api/postgresql/configurations/createorupdate).
 
 Použití [Azure Portal](https://portal.azure.com):
 
@@ -53,7 +53,7 @@ Použití [Azure Portal](https://portal.azure.com):
       ```
 
 > [!TIP]
-> Pokud se zobrazí chyba, potvrďte, že jste po uložení `shared_preload_libraries`Server restartovali.
+> Pokud se zobrazí chyba, potvrďte, že jste po uložení Server restartovali `shared_preload_libraries` .
 
 ## <a name="pgaudit-settings"></a>nastavení pgAudit
 
@@ -65,25 +65,25 @@ pgAudit umožňuje konfigurovat protokolování auditu relace nebo objektů. [Pr
 Jakmile [nainstalujete pgAudit](#installing-pgaudit), můžete nakonfigurovat jeho parametry pro spuštění protokolování. [Dokumentace k pgAudit](https://github.com/pgaudit/pgaudit/blob/master/README.md#settings) poskytuje definici každého parametru. Nejprve otestujte parametry a potvrďte, že se vám zobrazuje očekávané chování.
 
 > [!NOTE]
-> Nastavení `pgaudit.log_client` na zapnuto bude přesměrovat protokoly do klientského procesu (například psql) místo zápisu do souboru. Toto nastavení by se obecně mělo nechávat zakázané. <br> <br>
-> `pgaudit.log_level`je povoleno pouze v `pgaudit.log_client` případě, že je zapnuto.
+> Nastavení na `pgaudit.log_client` zapnuto bude přesměrovat protokoly do klientského procesu (například psql) místo zápisu do souboru. Toto nastavení by se obecně mělo nechávat zakázané. <br> <br>
+> `pgaudit.log_level`je povoleno pouze `pgaudit.log_client` v případě, že je zapnuto.
 
 > [!NOTE]
-> V Azure Database for PostgreSQL nelze `pgaudit.log` nastavit pomocí zástupce znaménka `-` (minus), jak je popsáno v dokumentaci k pgAudit. Všechny požadované třídy příkazů (ČTENÍ, ZÁPIS atd.) je potřeba zadat zvlášť.
+> V Azure Database for PostgreSQL `pgaudit.log` nelze nastavit pomocí `-` zástupce znaménka (minus), jak je popsáno v dokumentaci k pgAudit. Všechny požadované třídy příkazů (ČTENÍ, ZÁPIS atd.) je potřeba zadat zvlášť.
 
 ### <a name="audit-log-format"></a>Formát protokolu auditu
 Každá položka auditu je uvedena `AUDIT:` poblíž začátku řádku protokolu. Formát zbytku položky je podrobně popsán v [dokumentaci k pgAudit](https://github.com/pgaudit/pgaudit/blob/master/README.md#format).
 
-Pokud k splnění požadavků na audit potřebujete další pole, použijte parametr `log_line_prefix`Postgres. `log_line_prefix`je řetězec, který je výstupem na začátku každého řádku protokolu Postgres. Například následující `log_line_prefix` nastavení poskytuje časové razítko, uživatelské jméno, název databáze a ID procesu:
+Pokud k splnění požadavků na audit potřebujete další pole, použijte parametr Postgres `log_line_prefix` . `log_line_prefix`je řetězec, který je výstupem na začátku každého řádku protokolu Postgres. Například následující `log_line_prefix` nastavení poskytuje časové razítko, uživatelské jméno, název databáze a ID procesu:
 
 ```
 t=%m u=%u db=%d pid=[%p]:
 ```
 
-Další informace o `log_line_prefix`najdete v [dokumentaci k PostgreSQL](https://www.postgresql.org/docs/current/runtime-config-logging.html#GUC-LOG-LINE-PREFIX).
+Další informace o `log_line_prefix` najdete v [dokumentaci k PostgreSQL](https://www.postgresql.org/docs/current/runtime-config-logging.html#GUC-LOG-LINE-PREFIX).
 
 ### <a name="getting-started"></a>Začínáme
-Chcete-li rychle začít, `pgaudit.log` nastavte `WRITE`na, a otevřete protokoly a zkontrolujte výstup. 
+Chcete-li rychle začít, nastavte `pgaudit.log` na `WRITE` , a otevřete protokoly a zkontrolujte výstup. 
 
 ## <a name="viewing-audit-logs"></a>Zobrazení protokolů auditu
 Pokud používáte soubory. log, budou se protokoly auditu zahrnovat do stejného souboru jako protokoly chyb PostgreSQL. Soubory protokolu si můžete stáhnout z webu Azure [Portal](howto-configure-server-logs-in-portal.md) nebo rozhraní příkazového [řádku](howto-configure-server-logs-using-cli.md). 
