@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 9c7a6716bbc4b297973c8bfb0305434ee08a4730
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: b2bceac127645717947d1da712d1e3699a04bee0
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/01/2020
-ms.locfileid: "85606337"
+ms.locfileid: "85799203"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshgrade"></a>Kurz: Azure Active Directory integrace s FreshGrade
 
@@ -107,17 +107,17 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí FreshGra
 
      a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujících vzorů:
 
-        ```https        
-        https://<subdomain>.freshgrade.com/login
-        https://<subdomain>.onboarding.freshgrade.com/login
-        ```
+    ```http       
+    https://<subdomain>.freshgrade.com/login
+    https://<subdomain>.onboarding.freshgrade.com/login
+    ```
 
     b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujících vzorů:
     
-        ```https
-        https://login.onboarding.freshgrade.com:443/saml/metadata/alias/<instancename>
-        https://login.freshgrade.com:443/saml/metadata/alias/<instancename>
-        ```
+    ```http
+    https://login.onboarding.freshgrade.com:443/saml/metadata/alias/<instancename>
+    https://login.freshgrade.com:443/saml/metadata/alias/<instancename>
+    ```
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL a identifikátoru. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta FreshGrade](mailto:support@freshgrade.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.

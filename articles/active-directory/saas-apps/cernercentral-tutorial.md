@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92f0895cbad547dbbb4ab040e69f1963c95df425
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 4690269775d68b23fd7b7d8c14b94c6188832934
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/01/2020
-ms.locfileid: "85607442"
+ms.locfileid: "85799225"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cerner-central"></a>Kurz: Azure Active Directory integrací se CERN – střed
 
@@ -109,17 +109,17 @@ Pokud chcete nakonfigurovat jednotné přihlašování služby Azure AD pomocí 
 
     a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:
 
-        ```https
-        https://<instancename>.cernercentral.com/session-api/protocol/saml2/metadata
-        https://<instancename>.sandboxcernercentral.com/session-api/protocol/saml2/metadata
-        ```
+    ```http
+    https://<instancename>.cernercentral.com/session-api/protocol/saml2/metadata
+    https://<instancename>.sandboxcernercentral.com/session-api/protocol/saml2/metadata
+    ```
 
     b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:
 
-        ```https
-        https://<instancename>.cernercentral.com/session-api/protocol/saml2/sso
-        https://<instancename>.sandboxcernercentral.com/session-api/protocol/saml2/sso
-        ```
+    ```http
+    https://<instancename>.cernercentral.com/session-api/protocol/saml2/sso
+    https://<instancename>.sandboxcernercentral.com/session-api/protocol/saml2/sso
+    ```
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem a adresou URL odpovědi. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory pro hlavního klienta společnosti CERN](mailto:SISupport@cbre.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.

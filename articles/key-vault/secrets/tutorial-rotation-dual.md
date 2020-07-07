@@ -1,6 +1,6 @@
 ---
-title: Kurz pro rotaci duálních přihlašovacích údajů
-description: V tomto kurzu se dozvíte, jak automatizovat rotaci tajného klíče pro prostředky, které používají ověřování pomocí duálních přihlašovacích údajů.
+title: Kurz rotace pro prostředky se dvěma sadami přihlašovacích údajů
+description: V tomto kurzu se dozvíte, jak automatizovat rotaci tajného klíče pro prostředky, které používají dvě sady ověřovacích přihlašovacích údajů.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,18 +10,18 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: 9ab8a35808f94c04c1d57cd18a8d45b5a59c5160
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: ba9ff0ead1131b091aa1a5ece2ecf94d2319a968
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85486970"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800693"
 ---
-# <a name="automate-the-rotation-of-a-secret-for-resources-that-use-dual-credential-authentication"></a>Automatizace rotace tajného klíče pro prostředky, které používají ověřování pomocí duálních přihlašovacích údajů
+# <a name="automate-the-rotation-of-a-secret-for-resources-with-two-sets-of-authentication-credentials"></a>Automatizace rotace tajného klíče pro prostředky se dvěma sadami ověřovacích přihlašovacích údajů
 
 Nejlepším způsobem, jak ověřit služby Azure, je použití [spravované identity](../general/managed-identity.md), ale v některých případech se nejedná o možnost. V těchto případech se používají přístupové klíče nebo hesla. Přístupové klíče a hesla by se měly často otáčet.
 
-V tomto kurzu se dozvíte, jak automatizovat pravidelnou rotaci tajných kódů pro databáze a služby, které používají ověřování pomocí duálních přihlašovacích údajů. Konkrétně tento kurz otočí Azure Storage klíčů účtu uložených v Azure Key Vault jako tajné klíče pomocí funkce aktivované Azure Event Gridm oznámením. :
+V tomto kurzu se dozvíte, jak automatizovat pravidelnou rotaci tajných kódů pro databáze a služby, které používají dvě sady ověřovacích přihlašovacích údajů. Konkrétně tento kurz otočí Azure Storage klíčů účtu uložených v Azure Key Vault jako tajné klíče pomocí funkce aktivované Azure Event Gridm oznámením. :
 
 > [!NOTE]
 > Klíče účtu úložiště se dají automaticky spravovat v Key Vault tím, že poskytují tokeny sdíleného přístupového podpisu pro delegovaný přístup k účtu úložiště. Existují služby, které vyžadují připojovací řetězec účtu úložiště s přístupovým klíčem a pro tento scénář se toto řešení doporučuje.
@@ -47,7 +47,7 @@ Pokud nemáte existující Trezor klíčů a účty úložiště, můžete použ
 
 1. V části **Skupina prostředků**vyberte **vytvořit novou**. Pojmenujte skupinu **akvrotation** a klikněte na **OK**.
 1. Vyberte **zkontrolovat + vytvořit**.
-1. Vyberte **vytvořit** .
+1. Vyberte **Vytvořit**.
 
     ![Vytvoření skupiny prostředků](../media/secrets/rotation-dual/dual-rotation-1.png)
 
@@ -91,7 +91,7 @@ Funkce rotace aplikace funkcí vyžadují tyto komponenty a konfiguraci:
 1. Do **název tajného klíče**zadejte tajný název, kde se budou ukládat přístupové klíče.
 1. Do pole **Adresa URL úložiště**zadejte umístění GitHubu pro kód funkce umístění ( **https://github.com/jlichwa/KeyVault-Rotation-StorageAccountKey-PowerShell.git** ).
 1. Vyberte **zkontrolovat + vytvořit**.
-1. Vyberte **vytvořit** .
+1. Vyberte **Vytvořit**.
 
    ![Zkontrolovat a vytvořit](../media/secrets/rotation-dual/dual-rotation-2.png)
 
@@ -165,7 +165,7 @@ Přidání dalších klíčů účtu úložiště pro otočení do existující 
 1. Do **Function App název**zadejte název aplikace Function App.
 1. Do **název tajného klíče**zadejte tajný název, kde se budou ukládat přístupové klíče.
 1. Vyberte **zkontrolovat + vytvořit**.
-1. Vyberte **vytvořit** .
+1. Vyberte **Vytvořit**.
 
    ![Zkontrolovat a vytvořit](../media/secrets/rotation-dual/dual-rotation-7.png)
 

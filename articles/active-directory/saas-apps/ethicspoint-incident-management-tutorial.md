@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 917e70374007d230c4a675f882457b05ba3a021b
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 01ad3a1fb23aac9badefcef7414521e014476eef
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/01/2020
-ms.locfileid: "85606892"
+ms.locfileid: "85799560"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ethicspoint-incident-management-epim"></a>Kurz: Azure Active Directory integrace se správou incidentů EthicsPoint (EPIM)
 
@@ -108,10 +108,10 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí správy 
 
     a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:
     
-        ```https
-        https://<companyname>.navexglobal.com
-        https://<companyname>.ethicspointvp.com
-        ```
+    ```http
+    https://<companyname>.navexglobal.com
+    https://<companyname>.ethicspointvp.com
+    ```
 
     b. Do pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://<companyname>.navexglobal.com/adfs/services/trust`
 

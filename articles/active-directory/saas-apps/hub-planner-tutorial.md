@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/12/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc1cc89beb1e704428fdb4e10868e72e837804d3
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 0b5a52d0a54a9671052b9b7d46810cc65c22951f
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84765547"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799877"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hub-planner"></a>Kurz: Azure Active Directory integraci jednotného přihlašování pomocí centra Planneru
 
@@ -43,7 +43,7 @@ Chcete-li začít, potřebujete následující položky:
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Centrum plánovače podporuje jednotné přihlašování iniciované v **SP**
+* Centrum plánovače podporuje jednotné přihlašování iniciované v **SP** .
 * Po konfiguraci plánovače centra můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-hub-planner-from-the-gallery"></a>Přidání plánovače centra z Galerie
@@ -85,9 +85,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<SUBDOMAIN>.hubplanner.com`
 
-    b. Do pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://<SUBDOMAIN>.hubplanner.com/sso/metadata`
+    b. Do pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://app.hubplanner.com/sso/metadata`
 
-    c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://<SUBDOMAIN>.hubplanner.com/sso/callback`
+    c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://app.hubplanner.com/sso/callback`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL, identifikátoru a adresy URL odpovědi. Pro získání těchto hodnot [tým podpory centra pro plánování](mailto:hello@hubplanner.com) kontaktů. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -133,9 +133,29 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 Ke konfiguraci jednotného přihlašování na straně **plánovače centra** je potřeba odeslat stažený **certifikát (Base64)** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory centra Planner](mailto:hello@hubplanner.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
+### <a name="install-the-extension-in-hub-planner"></a>Instalace rozšíření v centru Planner
+
+Pokud chcete povolit funkci jednotného přihlašování, musíte nejdřív povolit rozšíření. Jako vlastník účtu nebo s ekvivalentními oprávněními proveďte tyto kroky:
+
+1. Přejít na **Nastavení**.
+1. V postranní nabídce vyberte **Spravovat rozšíření**  >  **Přidat nebo odebrat rozšíření**.
+1. Najděte rozšíření pro jednotné přihlašování a přidejte nebo Vyzkoušejte zdarma.
+1. Po zobrazení výzvy vyjádřete souhlas s podmínkami a ujednáními a pak vyberte **Přidat nyní**.
+
+### <a name="enable-sso"></a>Povolení jednotného přihlašování
+
+Po povolení rozšíření musíte pro svůj účet povolit jednotné přihlašování. 
+
+1. Přejít na **Nastavení**.
+1. V postranní nabídce vyberte **ověřování**.
+1. Vyberte **jednotné přihlašování (jednotné přihlašování)**.
+1. Zadejte další ověřovací informace, jak je znázorněno na následujícím obrázku, a pak vyberte **Uložit**.
+
+![Snímek obrazovky s nastavením jednotného přihlašování](media/hub-planner-tutorial/sso-settings.png)
+
 ### <a name="create-hub-planner-test-user"></a>Vytvořit testovacího uživatele plánovače centra
 
-V této části vytvoříte uživatele s názvem Britta Simon v centru Planner. Pokud chcete přidat uživatele na platformě plánovače centra, pracujte s [týmem podpory centra Planner](mailto:hello@hubplanner.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+Pokud chcete přidat další uživatele, přečtěte si **Nastavení**  >  **Správa prostředků** a přidejte uživatele odsud. Ujistěte se, že jste přidali e-mailovou adresu a pozvali je. Po pozvání obdrží e-mail a bude možné ho zadat pomocí jednotného přihlašování. 
 
 ## <a name="test-sso"></a>Test SSO 
 

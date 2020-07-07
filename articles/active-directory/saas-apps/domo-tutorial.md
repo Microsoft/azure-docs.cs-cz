@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/26/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ba0bdd58dfcadf4c524e9c386aac94628f77c8a
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 7a791fb2e40e46c1081dbb50a85af780d45f528e
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/01/2020
-ms.locfileid: "85608768"
+ms.locfileid: "85799526"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-domo"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Domo
 
@@ -87,19 +87,19 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:
 
-        ```https
-        https://<companyname>.domo.com` |
-        https://<companyname>.beta.domo.com` |
-        https://<companyname>.demo.domo.com` |
-        https://<companyname>.dev.domo.com` |
-        https://<companyname>.fastage1.domo.com` |
-        https://<companyname>.frdev.domo.com` |
-        https://<companyname>.gastage.domo.com` |
-        https://<companyname>.load.domo.com` |
-        https://<companyname>.local.domo.com` |
-        https://<companyname>.qa.domo.com` |
-        https://<companyname>.stage.domo.com` |
-        ```
+    ```http
+    https://<companyname>.domo.com
+    https://<companyname>.beta.domo.com
+    https://<companyname>.demo.domo.com
+    https://<companyname>.dev.domo.com
+    https://<companyname>.fastage1.domo.com
+    https://<companyname>.frdev.domo.com
+    https://<companyname>.gastage.domo.com
+    https://<companyname>.load.domo.com
+    https://<companyname>.local.domo.com
+    https://<companyname>.qa.domo.com
+    https://<companyname>.stage.domo.com
+    ```
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta Domo](mailto:support@domo.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.

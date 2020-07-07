@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec9349d8ed330a00a64922a44f99910f9eeeb0df
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6a2d4799966e070f7c50c39c350456b594664c9a
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79136444"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800663"
 ---
 # <a name="tutorial-integrate-qlik-sense-enterprise-with-azure-active-directory"></a>Kurz: integrace Qlik Sense Enterprise s Azure Active Directory
 
@@ -87,11 +87,10 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     b. Do textového pole **identifikátor** zadejte adresu URL pomocí jednoho z následujících vzorů:
 
-    | |
-    |--|
-    | `https://<Fully Qualified Domain Name>.qlikpoc.com`|
-    | `https://<Fully Qualified Domain Name>.qliksense.com`|
-    | |
+    ```http
+    https://<Fully Qualified Domain Name>.qlikpoc.com
+    https://<Fully Qualified Domain Name>.qliksense.com
+    ```
 
     c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:
 
@@ -112,7 +111,7 @@ V této části vytvoříte testovacího uživatele v Azure Portal s názvem Bri
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `Britta Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `BrittaSimon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `BrittaSimon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
@@ -143,7 +142,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
     ![QlikSense][qs24]
 
-    a. Otevřete soubor FederationMetaData. XML, který jste stáhli z Azure Portal v textovém editoru.
+    a. Otevřete FederationMetaData.xml soubor, který jste stáhli z Azure Portal v textovém editoru.
 
     b. Vyhledejte hodnotu **RoleDescriptor**.  Existují čtyři položky (dvě dvojice levé a pravé značky elementu).
 
@@ -191,9 +190,9 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
     e. **Metadata IDP SAML** je soubor upravený dříve v části **Upravit metadata federace z Azure AD Configuration** .  **Před nahráním metadat IDP je potřeba upravit soubor,** aby se odebraly informace, aby se zajistila správná operace mezi Azure AD a serverem Qlik Sense.  **Pokud je soubor ještě upravován, přečtěte si prosím pokyny výše.**  Pokud je soubor upravený, klikněte na tlačítko Procházet a vyberte upravený soubor metadat, který chcete odeslat do konfigurace virtuálního proxy serveru.
 
-    f. Zadejte název atributu nebo odkaz na schéma pro atribut SAML představující **ID uživatele** Azure AD, který je odesílán na Qlik Server pro rozpoznávání.  Referenční informace schématu jsou k dispozici na stránce Azure App screens po konfiguraci.  Chcete-li použít atribut Name, `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`zadejte.
+    f. Zadejte název atributu nebo odkaz na schéma pro atribut SAML představující **ID uživatele** Azure AD, který je odesílán na Qlik Server pro rozpoznávání.  Referenční informace schématu jsou k dispozici na stránce Azure App screens po konfiguraci.  Chcete-li použít atribut Name, zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` .
 
-    g. Zadejte hodnotu pro **adresář uživatele** , který se připojí uživatelům při ověřování k serveru Qlik Sense prostřednictvím služby Azure AD.  Hodnoty pevně zakódované musí být obklopeny **hranatými závorkami []**.  Pokud chcete použít atribut odeslaný v kontrolním výrazu SAML služby Azure AD, zadejte název atributu do tohoto textového pole **bez** hranatých závorek.
+    například Zadejte hodnotu pro **adresář uživatele** , který se připojí uživatelům při ověřování k serveru Qlik Sense prostřednictvím služby Azure AD.  Hodnoty pevně zakódované musí být obklopeny **hranatými závorkami []**.  Pokud chcete použít atribut odeslaný v kontrolním výrazu SAML služby Azure AD, zadejte název atributu do tohoto textového pole **bez** hranatých závorek.
 
     h. **Podpisový algoritmus SAML** nastaví poskytovatele služeb (v tomto případě Qlik Server pro rozpoznávání certifikátů) pro konfiguraci virtuálního proxy serveru.  Pokud server Qlik Sense používá důvěryhodný certifikát vygenerovaný pomocí rozšířených zprostředkovatelů šifrování RSA a AES společnosti Microsoft, změňte podpisový algoritmus SAML na **SHA-256**.
 
@@ -259,7 +258,7 @@ Qlik Sense Enterprise podporuje **zřizování za běhu**, uživatelé se automa
 
 Když na přístupovém panelu vyberete dlaždici Qlik Sense Enterprise, měli byste být automaticky přihlášeni ke Qlik, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: ffa0176c4dde6334e70b9a56b066a677d1610b48
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 128c4d1699e6e243a5c1c1573892efa516adade1
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73160193"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800813"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-periscope-data"></a>Kurz: Azure Active Directory integrace s daty Periscope
 
@@ -107,10 +107,10 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Periscop
 
     a. Do textového pole **přihlašovací adresa URL** zadejte libovolnou z těchto adres URL:
     
-    | |
-    |--|
-    | `https://app.periscopedata.com/` |
-    | `https://app.periscopedata.com/app/<SITENAME>` |
+    ```https
+    https://app.periscopedata.com/
+    https://app.periscopedata.com/app/<SITENAME>
+    ```
 
     b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:`https://app.periscopedata.com/<SITENAME>/sso`
 
@@ -125,7 +125,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Periscop
 
 1. V jiném okně webového prohlížeče se přihlaste k datům Periscope jako správce.
 
-2. Otevřete nabídku ozubeného kolečka v levém dolním rohu a otevřete nabídku**zabezpečení** **fakturace** > a proveďte následující kroky. K těmto nastavením mají přístup jenom správci.
+2. Otevřete nabídku ozubeného kolečka v levém dolním rohu **Billing**a otevřete  >  nabídku**zabezpečení** fakturace a proveďte následující kroky. K těmto nastavením mají přístup jenom správci.
 
     ![Informace o konfiguraci Periscope dat](./media/periscope-data-tutorial/configure01.png)
 
@@ -141,7 +141,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Periscop
 
     f. Vyhledejte první značku souboru XML, zkopírujte hodnotu **entityID** a vložte ji do textového pole **vystavitele** .
 
-    g. Vyhledejte tag **IDPSSODescriptor** s protokolem SAML. V této části Najděte **popisovač** klíč značek pomocí **Use = Signing**. Zkopírujte hodnotu **certifikátu x509** a vložte ji do textového pole **certifikátu** .
+    například Vyhledejte tag **IDPSSODescriptor** s protokolem SAML. V této části Najděte **popisovač** klíč značek pomocí **Use = Signing**. Zkopírujte hodnotu **certifikátu x509** a vložte ji do textového pole **certifikátu** .
 
     h. Lokality s více mezerami můžou zvolit výchozí prostor z rozevíracího seznamu **výchozí prostor** . Toto je místo, kde se nové uživatele přidají, když se přihlásí k Periscope dat poprvé a zřídí se pomocí jednotného přihlašování služby Active Directory.
 
@@ -167,7 +167,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
+    b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
@@ -220,7 +220,7 @@ Aby se uživatelé Azure AD mohli přihlašovat k Periscope datům, musí se zř
 
     b. Do textového pole **příjmení** zadejte příjmení uživatele, jako je **Simon**.
 
-    c. Do textového pole **e-mail** zadejte e-maily uživatele, jako je **brittasimon\@contoso.com**.
+    c. Do textového pole **e-mail** zadejte e-maily uživatele, jako je **brittasimon \@ contoso.com**.
 
     d. Klikněte na tlačítko **Přidat**.
 

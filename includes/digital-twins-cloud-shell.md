@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: 4aa016294f0ef3bd26f7f3ef6fa374e9367b672d
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 8be070826de0334483f4150925c05cb4dfb73f2c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85296963"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85805573"
 ---
 [!INCLUDE [cloud-shell-try-it.md](cloud-shell-try-it.md)]
 
@@ -29,16 +29,33 @@ Pokud jste toto předplatné použili u digitálních vláken Azure jako první,
 az provider register --namespace 'Microsoft.DigitalTwins'
 ```
 
-Dále přidáte [**Microsoft Azure rozšíření IoT pro Azure CLI**](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot?view=azure-cli-latest) do vašeho Cloud Shell, abyste povolili příkazy pro interakci s digitálními interakcemi Azure a dalšími službami IoT. Pomocí tohoto příkazu přidejte rozšíření:
+Dále přidáte [**Microsoft Azure rozšíření IoT pro Azure CLI**](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot?view=azure-cli-latest) do vašeho Cloud Shell, abyste povolili příkazy pro interakci s digitálními interakcemi Azure a dalšími službami IoT. 
 
-   ```azurecli-interactive
-   az extension add --name azure-iot
-   ```
+Nejdřív spuštěním tohoto příkazu zobrazíte seznam všech rozšíření, která jste už nainstalovali.
 
-Pokud jste rozšíření nainstalovali v minulosti, může výstup vyslovit "rozšíření" Azure-IoT "už je nainstalované." Pokud k tomu dojde, spusťte následující příkaz, abyste měli jistotu, že máte nejnovější aktualizaci: 
+```azurecli-interactive
+az extension list
+```
+
+Ve výstupu vyhledejte `"name"` pole pro každou položku seznamu, abyste viděli názvy rozšíření.
+
+Pomocí výstupu určete, které z následujících příkazů se má spustit pro instalaci rozšíření (můžete spustit více než jeden).
+* Pokud seznam obsahuje `azure-iot` : rozšíření již máte. Spusťte tento příkaz, abyste se ujistili, že máte nejnovější aktualizaci:
 
    ```azurecli-interactive
    az extension update --name azure-iot
+   ```
+
+* Pokud **seznam neobsahuje** `azure-iot` : bude nutné nainstalovat rozšíření. Použijte tento příkaz:
+
+    ```azurecli-interactive
+    az extension add --name azure-iot
+    ```
+
+* Pokud seznam obsahuje `azure-iot-cli-ext` : Jedná se o starší verzi rozšíření. Současně by měla být nainstalována pouze jedna verze rozšíření, proto byste měli odinstalovat starší verzi rozšíření. Použijte tento příkaz:
+
+   ```azurecli-interactive
+   az extension remove --name azure-cli-iot-ext
    ```
 
 Nyní jste připraveni pracovat s digitálními úkoly Azure v Cloud Shell.

@@ -4,20 +4,16 @@ ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/08/2020
-ms.openlocfilehash: 748f6dea8f6d057274c8e6c9f04690be05218f0c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b085e3da5f4f390e8e392a36a8d4a5154d091803
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650189"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85805386"
 ---
 ## <a name="create-an-azure-resource"></a>Vytvoření prostředku Azure
 
 Začněte používat rozhraní API Bingu pro vyhledávání entit tím, že vytvoříte jeden z následujících prostředků Azure.
-
-### <a name="trial-resource"></a>[Prostředek zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)
-   * Není potřeba žádné předplatné Azure.
-   * Platí po dobu sedmi dnů zdarma. Po registraci se na [webu Azure](https://azure.microsoft.com/try/cognitive-services/my-apis/)zpřístupní zkušební klíč a koncový bod.
 
 ### <a name="bing-entity-search-resource"></a>[Prostředek Vyhledávání entit Bingu](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingEntitySearch)
    * K dispozici prostřednictvím Azure Portal, dokud prostředek neodstraníte.

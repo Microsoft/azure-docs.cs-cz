@@ -2,14 +2,14 @@
 title: Kurz – vytvoření geograficky replikovaného registru
 description: Vytvořte registr kontejnerů Azure, nakonfigurujte geografickou replikaci, připravte image Dockeru a nasaďte ji do registru. První část třídílné série.
 ms.topic: tutorial
-ms.date: 04/30/2017
+ms.date: 06/30/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 70dc664d27fde3b7cf9fe4e5e3a99c041236ac16
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 159426b7258d83fc28fc7d126c064167bbe00975
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84693224"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799439"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Kurz: Příprava geograficky replikovaného registru kontejnerů Azure
 
@@ -37,53 +37,66 @@ Azure Cloud Shell neobsahuje součásti Dockeru nutné pro dokončení všech kr
 
 ## <a name="create-a-container-registry"></a>Vytvoření registru kontejnerů
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+Pro tento kurz potřebujete službu Azure Container Registry ve vrstvě služeb Premium. Pokud chcete vytvořit nový službu Azure Container Registry, postupujte podle kroků v této části.
+
+> [!TIP]
+> Pokud jste dříve vytvořili registr a potřebujete provést upgrade, přečtěte si téma [Změna vrstev](container-registry-skus.md#changing-tiers). 
+
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 Vyberte **vytvořit**  >  **kontejnery**prostředků  >  **Azure Container Registry**.
 
-![Vytvoření registru kontejnerů na webu Azure Portal][tut-portal-01]
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-01.png" alt-text="Vytvoření registru kontejnerů na webu Azure Portal":::
 
-Nakonfiguruje nový registr pomocí následujících nastavení:
+Nakonfigurujte nový registr s následujícím nastavením. Na kartě **základy** :
 
 * **Název registru:** Vytvořte název registru, který je globálně jedinečný v rámci Azure a obsahuje 5 až 50 alfanumerických znaků.
 * **Skupina prostředků**: **vytvořit novou** > `myResourceGroup`
 * **Umístění**:`West US`
-* **Uživatel s oprávněními správce**: `Enable` (vyžadováno Web App for Containers k vyžádání imagí)
 * **SKU**: `Premium` (vyžadováno pro geografickou replikaci)
 
-Vyberte **Vytvořit** a nasaďte instanci služby ACR.
+Vyberte **zkontrolovat + vytvořit** a pak **vytvořit** a vytvořte instanci registru.
 
-![Vytvoření registru kontejnerů na webu Azure Portal][tut-portal-02]
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-02.png" alt-text="Konfigurace registru kontejneru v Azure Portal":::
 
 V celé zbývající části tohoto kurzu používáme `<acrName>` jako zástupný symbol pro **název registru** kontejneru, který jste zvolili.
 
 > [!TIP]
 > Vzhledem k tomu, že registry kontejnerů Azure jsou obvykle dlouhodobé prostředky, které se používají na více hostitelích kontejnerů, doporučujeme vytvořit registr ve vlastní skupině prostředků. Když budete konfigurovat geograficky replikované registry a webhooky, umístí se tyto další prostředky do stejné skupiny prostředků.
->
 
 ## <a name="configure-geo-replication"></a>Konfigurace geografické replikace
 
 Když teď máte registr úrovně Premium, můžete nakonfigurovat geografickou replikaci. Vaše webová aplikace, kterou v dalším kurzu nakonfigurujete pro spouštění ve dvou oblastech, si pak bude moci stáhnout image kontejnerů z nejbližšího registru.
 
-Na webu Azure Portal přejděte do svého nového registru kontejnerů a v části **SLUŽBY** vyberte **Replikace**.
+Přejděte do nového registru kontejneru v Azure Portal a v části **služby**vyberte **replikace** :
 
-![Replikace v uživatelském rozhraní registru kontejnerů na webu Azure Portal][tut-portal-03]
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-03.png" alt-text="Replikace v uživatelském rozhraní registru kontejnerů na webu Azure Portal":::
 
 Zobrazí se mapa se zelenými šestiúhelníky, které představují oblasti Azure dostupné pro geografickou replikaci:
 
- ![Mapa oblastí na webu Azure Portal][tut-map-01]
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-map-01.png" alt-text="Mapa oblastí na webu Azure Portal":::
 
 Replikujte svůj registr do oblasti USA – východ tak, že vyberete příslušný zelený šestiúhelník a pak v části **Vytvořit replikaci** vyberete **Vytvořit**:
 
- ![Vytvoření replikace v uživatelském rozhraní na webu Azure Portal][tut-portal-04]
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-04.png" alt-text="Vytvoření replikace v uživatelském rozhraní na webu Azure Portal":::
 
 Po dokončení replikace se na portálu u obou oblastí zobrazí stav *Připraveno*. Pomocí tlačítka **Aktualizovat** aktualizujte stav replikace. Vytvoření a synchronizace replik může trvat několik minut.
 
-![Stav replikace v uživatelském rozhraní na webu Azure Portal][tut-portal-05]
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-05.png" alt-text="Stav replikace v uživatelském rozhraní na webu Azure Portal":::
+
+
+## <a name="enable-admin-account"></a>Povolit účet správce
+
+V dalších kurzech nasadíte image kontejneru z registru přímo do Web App for Containers. Pokud chcete tuto funkci povolit, musíte taky povolit [účet správce](container-registry-authentication.md#admin-account)registru.
+
+Přejděte do nového registru kontejneru v Azure Portal a v části **Nastavení**vyberte **přístupové klíče** . V části **Uživatel s rolí správce** vyberte **Povolit**.
+
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-06.png" alt-text="Povolit účet správce v Azure Portal":::
+
 
 ## <a name="container-registry-login"></a>Přihlášení k registru kontejneru
 
-Když teď máte nakonfigurovanou geografickou replikaci, sestavte image kontejneru a nasdílejte ji do svého registru. Před nahráním imagí do instance služby ACR se k ní musíte přihlásit.
+Když teď máte nakonfigurovanou geografickou replikaci, sestavte image kontejneru a nasdílejte ji do svého registru. Před nahráním imagí do registru se musíte nejdřív přihlásit do svého registru.
 
 Pomocí příkazu [az acr login](https://docs.microsoft.com/cli/azure/acr#az-acr-login) se ověřte a uložte do mezipaměti přihlašovací údaje pro váš registr. `<acrName>` nahraďte názvem registru, který jste vytvořili dříve.
 
@@ -97,7 +110,7 @@ Příkaz po dokončení vrátí zprávu `Login Succeeded` (Přihlášení bylo �
 
 Ukázka v tomto kurzu zahrnuje malou webovou aplikaci vytvořenou v [ASP.NET Core][aspnet-core]. Aplikace slouží jako stránka HTML zobrazující oblast, ze které služba Azure Container Registry nasadila image.
 
-![Ukázková aplikace zobrazená v prohlížeči][tut-app-01]
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-app-01.png" alt-text="Ukázková aplikace zobrazená v prohlížeči":::
 
 Pomocí Gitu stáhněte ukázku do místního adresáře a pomocí příkazu `cd` do tohoto adresáře přejděte:
 
@@ -228,15 +241,6 @@ Přejděte k dalšímu kurzu, kde nasadíte kontejner do více instancí služby
 
 > [!div class="nextstepaction"]
 > [Nasazení webové aplikace ze služby Azure Container Registry](container-registry-tutorial-deploy-app.md)
-
-<!-- IMAGES -->
-[tut-portal-01]: ./media/container-registry-tutorial-prepare-registry/tut-portal-01.png
-[tut-portal-02]: ./media/container-registry-tutorial-prepare-registry/tut-portal-02.png
-[tut-portal-03]: ./media/container-registry-tutorial-prepare-registry/tut-portal-03.png
-[tut-portal-04]: ./media/container-registry-tutorial-prepare-registry/tut-portal-04.png
-[tut-portal-05]: ./media/container-registry-tutorial-prepare-registry/tut-portal-05.png
-[tut-app-01]: ./media/container-registry-tutorial-prepare-registry/tut-app-01.png
-[tut-map-01]: ./media/container-registry-tutorial-prepare-registry/tut-map-01.png
 
 <!-- LINKS - External -->
 [acr-helloworld-zip]: https://github.com/Azure-Samples/acr-helloworld/archive/master.zip

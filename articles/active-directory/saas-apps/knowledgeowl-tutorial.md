@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc5ae5532acdd66e091891c55e3cebb79cb3d227
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 9e3931baa8bab6f21d0edfefd17b95f7ecf3f7be
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/01/2020
-ms.locfileid: "85608599"
+ms.locfileid: "85799815"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-knowledgeowl"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s KnowledgeOwl
 
@@ -86,34 +86,34 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:
     
-        ```https
-        https://app.knowledgeowl.com/sp        
-        https://app.knowledgeowl.com/sp/id/<unique ID>
-        ```
+    ```http
+    https://app.knowledgeowl.com/sp
+    https://app.knowledgeowl.com/sp/id/<unique ID>
+    ```
 
     b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:
     
-        ```https
-        https://subdomain.knowledgeowl.com/help/saml-login
-        https://subdomain.knowledgeowl.com/docs/saml-login
-        https://subdomain.knowledgeowl.com/home/saml-login
-        https://privatedomain.com/help/saml-login
-        https://privatedomain.com/docs/saml-login
-        https://privatedomain.com/home/saml-login
-        ```
+    ```http
+    https://subdomain.knowledgeowl.com/help/saml-login
+    https://subdomain.knowledgeowl.com/docs/saml-login
+    https://subdomain.knowledgeowl.com/home/saml-login
+    https://privatedomain.com/help/saml-login
+    https://privatedomain.com/docs/saml-login
+    https://privatedomain.com/home/saml-login
+    ```
 
 1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:
     
-        ```https
-        https://subdomain.knowledgeowl.com/help/saml-login
-        https://subdomain.knowledgeowl.com/docs/saml-login
-        https://subdomain.knowledgeowl.com/home/saml-login
-        https://privatedomain.com/help/saml-login
-        https://privatedomain.com/docs/saml-login
-        https://privatedomain.com/home/saml-login
-        ```
+    ```http
+    https://subdomain.knowledgeowl.com/help/saml-login
+    https://subdomain.knowledgeowl.com/docs/saml-login
+    https://subdomain.knowledgeowl.com/home/saml-login
+    https://privatedomain.com/help/saml-login
+    https://privatedomain.com/docs/saml-login
+    https://privatedomain.com/home/saml-login
+    ```
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Tuto hodnotu budete muset aktualizovat ze skutečného identifikátoru, adresy URL odpovědi a přihlašovací adresy URL, která se vysvětluje později v tomto kurzu.

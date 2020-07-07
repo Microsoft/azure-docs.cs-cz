@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7095608427a429c26ac5f7b83577d66912e5d773
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 397fe8c111870f4a1a6489e6502ff4365f80d1e3
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/01/2020
-ms.locfileid: "85607323"
+ms.locfileid: "85799574"
 ---
 # <a name="tutorial-integrate-the-cloud-security-fabric-with-azure-active-directory"></a>Kurz: integrace prostředků infrastruktury cloudového zabezpečení s Azure Active Directory
 
@@ -85,17 +85,17 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL:
 
-        ```https
-        https://platform.cloudlock.com
-        https://app.cloudlock.com
-        ```
+      ```http
+      https://platform.cloudlock.com
+      https://app.cloudlock.com
+      ```
 
     b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:
 
-        ```https
-        https://platform.cloudlock.com/gate/saml/sso/<subdomain>
-        https://app.cloudlock.com/gate/saml/sso/<subdomain>
-        ```
+      ```http
+      https://platform.cloudlock.com/gate/saml/sso/<subdomain>
+      https://app.cloudlock.com/gate/saml/sso/<subdomain>
+      ```
 
     > [!NOTE]
     > Hodnota identifikátoru není reálné číslo. Aktualizujte hodnotu skutečným identifikátorem. Pokud chcete získat hodnotu, obraťte [se na tým podpory pro klienta podpory Cloud Security Fabric](mailto:support@cloudlock.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.

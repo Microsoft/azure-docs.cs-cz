@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 439a904c4e70a6e7e9633757c6d89fd3ce0a3a90
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 46a421ca9ab8efc69775966504fa393be9efba04
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/01/2020
-ms.locfileid: "85608734"
+ms.locfileid: "85799917"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-huddle"></a>Kurz: Azure Active Directory integrace s Huddle
 
@@ -111,18 +111,18 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Huddle, 
 
     a. Do textového pole **identifikátor** zadejte adresu URL:
 
-        ```https
-        https://login.huddle.net
-        https://login.huddle.com
-        ```
+    ```http
+    https://login.huddle.net
+    https://login.huddle.com
+    ```
 
     b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL:
 
-        ```https
-        https://login.huddle.net/saml/browser-sso
-        https://login.huddle.com/saml/browser-sso
-        https://login.huddle.com/saml/idp-initiated-sso
-        ```
+    ```http
+    https://login.huddle.net/saml/browser-sso
+    https://login.huddle.com/saml/browser-sso
+    https://login.huddle.com/saml/idp-initiated-sso
+    ```
 
 5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
@@ -130,127 +130,127 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Huddle, 
 
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:
 
-        ```https
-        https://<customsubdomain>.huddle.com
-        https://us.huddle.com
+    ```http
+    https://<customsubdomain>.huddle.com
+    https://us.huddle.com
         ```
 
     > [!NOTE]
-    > Hodnota přihlašovací adresy URL není reálné číslo. Aktualizujte tuto hodnotu pomocí skutečné přihlašovací adresy URL. Pokud chcete získat tuto hodnotu, obraťte se na [tým podpory klienta Huddle](https://huddle.zendesk.com) .
+    > The Sign-on URL value is not real. Update this value with the actual Sign-On URL. Contact [Huddle Client support team](https://huddle.zendesk.com) to get this value.
 
-6. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+6. On the **Set up Single Sign-On with SAML** page, in the **SAML Signing Certificate** section, click **Download** to download the **Certificate (Base64)** from the given options as per your requirement and save it on your computer.
 
-    ![Odkaz na stažení certifikátu](common/certificatebase64.png)
+    ![The Certificate download link](common/certificatebase64.png)
 
-7. V části **Nastavení Huddle** zkopírujte příslušné adresy URL podle vašich požadavků.
+7. On the **Set up Huddle** section, copy the appropriate URL(s) as per your requirement.
 
-    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
+    ![Copy configuration URLs](common/copy-configuration-urls.png)
 
-    a. Přihlašovací adresa URL
+    a. Login URL
 
-    b. Identifikátor Azure AD
+    b. Azure Ad Identifier
 
-    c. Odhlašovací adresa URL
+    c. Logout URL
 
-### <a name="configure-huddle-single-sign-on"></a>Konfigurace jednotného přihlašování Huddle
+### Configure Huddle Single Sign-On
 
-Ke konfiguraci jednotného přihlašování na straně **Huddle** je potřeba odeslat stažený **certifikát (Base64)** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory Huddle](https://huddle.zendesk.com/). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+To configure single sign-on on **Huddle** side, you need to send the downloaded **Certificate (Base64)** and appropriate copied URLs from Azure portal to [Huddle support team](https://huddle.zendesk.com/). They set this setting to have the SAML SSO connection set properly on both sides.
 
 > [!NOTE]
-> Je potřeba, aby se v rámci týmu podpory Huddle povolilo jednotné přihlašování. Až se konfigurace dokončí, dostanete oznámení.
+> Single sign-on needs to be enabled by the Huddle support team. You get a notification when the configuration has been completed.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
+### Create an Azure AD test user
 
-Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
+The objective of this section is to create a test user in the Azure portal called Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. In the Azure portal, in the left pane, select **Azure Active Directory**, select **Users**, and then select **All users**.
 
-    ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
+    ![The "Users and groups" and "All users" links](common/users.png)
 
-2. V horní části obrazovky vyberte **Nový uživatel** .
+2. Select **New user** at the top of the screen.
 
-    ![Tlačítko pro nového uživatele](common/new-user.png)
+    ![New user Button](common/new-user.png)
 
-3. Ve vlastnostech uživatele proveďte následující kroky.
+3. In the User properties, perform the following steps.
 
-    ![Uživatelský dialog](common/user-properties.png)
+    ![The User dialog box](common/user-properties.png)
 
-    a. Do pole **název** zadejte **BrittaSimon**.
+    a. In the **Name** field enter **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
-    Například BrittaSimon@contoso.com.
+    b. In the **User name** field type **brittasimon\@yourcompanydomain.extension**  
+    For example, BrittaSimon@contoso.com
 
-    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
+    c. Select **Show password** check box, and then write down the value that's displayed in the Password box.
 
-    d. Klikněte na **Vytvořit**.
+    d. Click **Create**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+### Assign the Azure AD test user
 
-V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Huddle.
+In this section, you enable Britta Simon to use Azure single sign-on by granting access to Huddle.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Huddle**.
+1. In the Azure portal, select **Enterprise Applications**, select **All applications**, then select **Huddle**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Enterprise applications blade](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte **Huddle**.
+2. In the applications list, select **Huddle**.
 
-    ![Odkaz Huddle v seznamu aplikací](common/all-applications.png)
+    ![The Huddle link in the Applications list](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
+3. In the menu on the left, select **Users and groups**.
 
-    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
+    ![The "Users and groups" link](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+4. Click the **Add user** button, then select **Users and groups** in the **Add Assignment** dialog.
 
-    ![Podokno přidat přiřazení](common/add-assign-user.png)
+    ![The Add Assignment pane](common/add-assign-user.png)
 
-5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+5. In the **Users and groups** dialog select **Britta Simon** in the Users list, then click the **Select** button at the bottom of the screen.
 
-6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+6. If you are expecting any role value in the SAML assertion then in the **Select Role** dialog select the appropriate role for the user from the list, then click the **Select** button at the bottom of the screen.
 
-7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+7. In the **Add Assignment** dialog click the **Assign** button.
 
-### <a name="create-huddle-test-user"></a>Vytvořit testovacího uživatele Huddle
+### Create Huddle test user
 
-Aby se uživatelé Azure AD mohli přihlásit k Huddle, musí se zřídit v Huddle. V případě Huddle je zřizování ručním úkolem.
+To enable Azure AD users to log in to Huddle, they must be provisioned into Huddle. In the case of Huddle, provisioning is a manual task.
 
-**Při konfiguraci zřizování uživatelů proveďte následující kroky:**
+**To configure user provisioning, perform the following steps:**
 
-1. Přihlaste se k webu společnosti **Huddle** jako správce.
+1. Log in to your **Huddle** company site as administrator.
 
-2. Klikněte na **pracovní prostor**.
+2. Click **Workspace**.
 
-3. Klikněte na **lidé \> pozvat lidi**.
+3. Click **People \> Invite People**.
 
     ![People](./media/huddle-tutorial/ic787838.png "People")
 
-4. V části **vytvořit novou pozvánku** proveďte následující kroky:
+4. In the **Create a new invitation** section, perform the following steps:
   
-    ![Nová pozvánka](./media/huddle-tutorial/ic787839.png "Nová pozvánka")
+    ![New Invitation](./media/huddle-tutorial/ic787839.png "New Invitation")
   
-    a. V seznamu **Zvolte tým pro pozvání lidí** vyberte možnost **tým**.
+    a. In the **Choose a team to invite people to join** list, select **team**.
 
-    b. Zadáním **e-mailové adresy** platného účtu Azure AD, který chcete zřídit, **zadáte e-mailovou adresu lidem, které chcete pozvat do** textového pole.
+    b. Type the **Email Address** of a valid Azure AD account you want to provision in to **Enter email address for people you'd like to invite** textbox.
 
-    c. Klikněte na **pozvat**.
+    c. Click **Invite**.
 
     > [!NOTE]
-    > Držitel účtu Azure AD obdrží e-mail s odkazem na potvrzení účtu, než se aktivuje.
+    > The Azure AD account holder will receive an email including a link to confirm the account before it becomes active.
 
 > [!NOTE]
-> K zřizování uživatelských účtů Azure AD můžete použít jiné nástroje pro vytváření uživatelských účtů Huddle nebo rozhraní API poskytovaná Huddle.
+> You can use any other Huddle user account creation tools or APIs provided by Huddle to provision Azure AD user accounts.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### Test single sign-on
 
-V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
+In this section, you test your Azure AD single sign-on configuration using the Access Panel.
 
-Když na přístupovém panelu kliknete na dlaždici Huddle, měli byste se automaticky přihlásit k Huddle, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+When you click the Huddle tile in the Access Panel, you should be automatically signed in to the Huddle for which you set up SSO. For more information about the Access Panel, see [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## Additional Resources
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

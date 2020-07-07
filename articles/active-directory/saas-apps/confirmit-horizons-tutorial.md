@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: b5b43a871eefa313982275b90e2c31f99badcf97
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 04d6d79000b38116cbda6de960f078608964b6ca
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/01/2020
-ms.locfileid: "85608843"
+ms.locfileid: "85799594"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-confirmit-horizons"></a>Kurz: Azure Active Directory integrace s Confirmit horizonty
 
@@ -109,23 +109,23 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Confirmi
 
     a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:
 
-        ```https
-        https://<SUBDOMAIN>.confirmit.com/identity/AuthServices/<UNIQUEID>
-        https://<SUBDOMAIN>.confirmit.com.au/identity/AuthServices/<UNIQUEID>
-        https://<SUBDOMAIN>.confirmit.ca/identity/AuthServices/<UNIQUEID>
-        https://<SUBDOMAIN>.confirmit.hk/identity/AuthServices/<UNIQUEID>
-        https://sso.us.confirmit.com/<UNIQUEID>
-        ```
+    ```http
+    https://<SUBDOMAIN>.confirmit.com/identity/AuthServices/<UNIQUEID>
+    https://<SUBDOMAIN>.confirmit.com.au/identity/AuthServices/<UNIQUEID>
+    https://<SUBDOMAIN>.confirmit.ca/identity/AuthServices/<UNIQUEID>
+    https://<SUBDOMAIN>.confirmit.hk/identity/AuthServices/<UNIQUEID>
+    https://sso.us.confirmit.com/<UNIQUEID>
+    ```
 
     b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:
 
-        ```https
-        https://<SUBDOMAIN>.confirmit.com/identity/AuthServices/<UNIQUEID>/acs
-        https://<SUBDOMAIN>.confirmit.com.au/identity/AuthServices/<UNIQUEID>/acs
-        https://<SUBDOMAIN>.confirmit.ca/identity/AuthServices/<UNIQUEID>/acs
-        https://<SUBDOMAIN>.confirmit.hk/identity/AuthServices/<UNIQUEID>/acs
-        https://sso.us.confirmit.com/<UNIQUEID>/saml/acs
-        ```
+    ```http
+    https://<SUBDOMAIN>.confirmit.com/identity/AuthServices/<UNIQUEID>/acs
+    https://<SUBDOMAIN>.confirmit.com.au/identity/AuthServices/<UNIQUEID>/acs
+    https://<SUBDOMAIN>.confirmit.ca/identity/AuthServices/<UNIQUEID>/acs
+    https://<SUBDOMAIN>.confirmit.hk/identity/AuthServices/<UNIQUEID>/acs
+    https://sso.us.confirmit.com/<UNIQUEID>/saml/acs
+    ```
 
 5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
@@ -133,13 +133,13 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Confirmi
 
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:
 
-        ```https
-        https://<SUBDOMAIN>.confirmit.com/identity/<UNIQUEID>
-        https://<SUBDOMAIN>.confirmit.com.au/identity/<UNIQUEID>
-        https://<SUBDOMAIN>.confirmit.ca/identity/<UNIQUEID>
-        https://<SUBDOMAIN>.confirmit.hk/identity/<UNIQUEID>
-        https://sso.us.confirmit.com/<UNIQUEID>
-        ```
+    ```http
+    https://<SUBDOMAIN>.confirmit.com/identity/<UNIQUEID>
+    https://<SUBDOMAIN>.confirmit.com.au/identity/<UNIQUEID>
+    https://<SUBDOMAIN>.confirmit.ca/identity/<UNIQUEID>
+    https://<SUBDOMAIN>.confirmit.hk/identity/<UNIQUEID>
+    https://sso.us.confirmit.com/<UNIQUEID>
+    ```
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Chcete-li získat tyto hodnoty, obraťte se na [tým podpory klientů Confirmit Horizon](mailto:support@confirmit.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
