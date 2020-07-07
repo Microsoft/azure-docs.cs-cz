@@ -10,12 +10,11 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 04/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3ccb9c7aff6eb59c4883bc3218e205fb7877e86e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 08649a537ac8f9de5f444ca3e4fe5ed509910294
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80618385"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045837"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Kurz: nastavení prostředí pro Azure Time Series Insights Preview
 
@@ -204,7 +203,7 @@ V této části provedete základní analýzy dat časových řad pomocí [Průz
 
 ## <a name="define-and-apply-a-model"></a>Definování a použití modelu
 
-V této části použijete model ke strukturování dat. Pro dokončení modelu definujete typy, hierarchie a instance. Další informace o modelování dat získáte v [modelu časové řady](./time-series-insights-update-tsm.md)pro čtení.
+V této části použijete model ke strukturování dat. Pro dokončení modelu definujete typy, hierarchie a instance. Další informace o modelování dat získáte v [modelu časové řady](./concepts-model-overview.md)pro čtení.
 
 1. V Průzkumníku vyberte kartu **model** :
 
@@ -226,8 +225,8 @@ V této části použijete model ke strukturování dat. Pro dokončení modelu 
     | Parametr | Akce |
     | --- | --- |
     | **Název** | Zadejte **průměrnou teplotu**. |
-    | **Plnění** | Vybrat **číselné** |
-    | **Osa** | Vyberte možnost z předvolby: vyberte **teplotu (Double)**. <br /> Poznámka: když Azure Time Series Insights Preview začne přijímat události, může trvat několik minut, než se **hodnota** automaticky naplní.|
+    | **Druh** | Vybrat **číselné** |
+    | **Hodnota** | Vyberte možnost z předvolby: vyberte **teplotu (Double)**. <br /> Poznámka: když Azure Time Series Insights Preview začne přijímat události, může trvat několik minut, než se **hodnota** automaticky naplní.|
     | **Agregační operace** | Rozbalte položku **Pokročilá nastavení**. <br /> Vyberte **prům**. |
 
     Vyberte **Použít**. Pak **+ přidat proměnnou** znovu a nastavte následující hodnoty:
@@ -235,8 +234,8 @@ V této části použijete model ke strukturování dat. Pro dokončení modelu 
     | Parametr | Akce |
     | --- | --- |
     | **Název** | Zadejte **průměrné vibrace**. |
-    | **Plnění** | Vybrat **číselné** |
-    | **Osa** | Vyberte možnost z předvolby: vyberte **vibrace (dvojitá)**. <br /> Poznámka: když Azure Time Series Insights Preview začne přijímat události, může trvat několik minut, než se **hodnota** automaticky naplní.|
+    | **Druh** | Vybrat **číselné** |
+    | **Hodnota** | Vyberte možnost z předvolby: vyberte **vibrace (dvojitá)**. <br /> Poznámka: když Azure Time Series Insights Preview začne přijímat události, může trvat několik minut, než se **hodnota** automaticky naplní.|
     | **Agregační operace** | Rozbalte položku **Pokročilá nastavení**. <br /> Vyberte **prům**. |
 
     Vyberte **Použít**. Pak **+ přidat proměnnou** znovu a nastavte následující hodnoty pro třetí a poslední proměnnou:
@@ -244,9 +243,9 @@ V této části použijete model ke strukturování dat. Pro dokončení modelu 
     | Parametr | Akce |
     | --- | --- |
     | **Název** | Zadejte **podlahovou základnu**. |
-    | **Plnění** | Vybrat **kategorií** |
-    | **Osa** | Vyberte možnost z předvolby: vyberte **podlahová (dvojitá)**. <br /> Poznámka: když Azure Time Series Insights Preview začne přijímat události, může trvat několik minut, než se **hodnota** automaticky naplní.|
-    | **Kategorie** | <span style="text-decoration: underline">Hodnoty popisků </span>   -  <span style="text-decoration: underline">Values</span> <br /> Nižší: 1, 2, 3, 4 <br /> Uprostřed: 5, 6, 7, 8, 9, 9 <br /> Horní: 10, 11, 12, 13, 14, 15 |
+    | **Druh** | Vybrat **kategorií** |
+    | **Hodnota** | Vyberte možnost z předvolby: vyberte **podlahová (dvojitá)**. <br /> Poznámka: když Azure Time Series Insights Preview začne přijímat události, může trvat několik minut, než se **hodnota** automaticky naplní.|
+    | **Kategorie** | <span style="text-decoration: underline">Popisek</span>   -  <span style="text-decoration: underline">Hodnoty</span> <br /> Nižší: 1, 2, 3, 4 <br /> Uprostřed: 5, 6, 7, 8, 9, 9 <br /> Horní: 10, 11, 12, 13, 14, 15 |
     | **Výchozí kategorie** | Zadejte **Neznámý** |
 
     [![Přidejte proměnné typu.](media/v2-update-provision/tsi-add-type-variables.png)](media/v2-update-provision/tsi-add-type-variables.png#lightbox)
@@ -349,15 +348,15 @@ V tomto kurzu jste se naučili:
 
 Teď, když víte, jak vytvořit vlastní prostředí pro Azure Time Series Insights Preview, získáte další informace o klíčových konceptech v Azure Time Series Insights.
 
-Přečtěte si o konfiguraci úložiště Azure Time Series Insights:
+Přečtěte si o ingestování Azure Time Series Insights::
 
 > [!div class="nextstepaction"]
-> [Azure Time Series Insights a příchozí úložiště ve verzi Preview](./time-series-insights-update-storage-ingress.md)
+> [Přehled ingestování dat Azure Time Series Insights](./concepts-ingestion-overview.md)
 
 Další informace o modelech časových řad:
 
 > [!div class="nextstepaction"]
-> [Modelování dat ve verzi Preview Azure Time Series Insights](./time-series-insights-update-tsm.md)
+> [Modelování dat ve verzi Preview Azure Time Series Insights](./concepts-model-overview.md)
 
 Další informace o připojení prostředí k Power BI
 

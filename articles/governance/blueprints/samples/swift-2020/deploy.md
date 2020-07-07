@@ -3,12 +3,11 @@ title: Ukázka nasazení SWIFT CSP – CSCF v2020 podrobný plán
 description: Nasaďte kroky pro ukázku "SWIFT CSP-CSCF v2020 Details Sample, včetně podrobností parametrů artefaktu podrobného plánu.
 ms.date: 05/13/2020
 ms.topic: sample
-ms.openlocfilehash: 971b69dcc5c64d7e51e9237e09ee8474551ac43a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.openlocfilehash: 84d219f47df99e5bb87bab13b9ff43b79484117f
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657063"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044256"
 ---
 # <a name="deploy-the-swift-csp-cscf-v2020-blueprint-sample"></a>Ukázka ukázky pro SWIFT CSP – CSCF v2020 podrobný plán
 
@@ -91,9 +90,9 @@ Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji 
 
 Následující tabulka uvádí seznam parametrů artefaktu podrobného plánu:
 
-|Název artefaktu|Typ artefaktu|Název parametru|Popis|
+|Název artefaktu|Typ artefaktu|Název parametru|Description|
 |-|-|-|-|
-|\[Preview \] : Auditovat SWIFT CSP – CSCF v2020 ovládací prvky a nasazovat specifická rozšíření virtuálních počítačů pro podporu požadavků na audit|Přiřazení zásad|Seznam typů prostředků, které by měly mít povolené diagnostické protokoly|Seznam typů prostředků, které se mají auditovat v případě, že nastavení diagnostického protokolu není povolené. Přijatelné hodnoty najdete v [Azure monitor schématech diagnostických protokolů](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type).|
+|\[Preview \] : Auditovat SWIFT CSP – CSCF v2020 ovládací prvky a nasazovat specifická rozšíření virtuálních počítačů pro podporu požadavků na audit|Přiřazení zásad|Seznam typů prostředků, které by měly mít povolené diagnostické protokoly|Seznam typů prostředků, které se mají auditovat v případě, že nastavení diagnostického protokolu není povolené. Přijatelné hodnoty najdete v [Azure monitor schématech diagnostických protokolů](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas).|
 |\[Preview \] : Auditovat SWIFT CSP – CSCF v2020 ovládací prvky a nasazovat specifická rozšíření virtuálních počítačů pro podporu požadavků na audit|Přiřazení zásad|ID připojených pracovních prostorů|Středníkem oddělený seznam ID pracovních prostorů, ke kterým by měl být agent Log Analytics připojený|
 |\[Preview \] : Auditovat SWIFT CSP – CSCF v2020 ovládací prvky a nasazovat specifická rozšíření virtuálních počítačů pro podporu požadavků na audit|Přiřazení zásad|Seznam uživatelů, které by měly být zahrnuté ve skupině Správci virtuálních počítačů s Windows|Středníkem oddělený seznam členů, kteří by měli být zahrnutí do místní skupiny Administrators. Např.: Správce; myUser1; myUser2|
 |\[Preview \] : Auditovat SWIFT CSP – CSCF v2020 ovládací prvky a nasazovat specifická rozšíření virtuálních počítačů pro podporu požadavků na audit|Přiřazení zásad|Název domény (FQDN)|Plně kvalifikovaný název domény (FQDN), ke kterému by se měly připojit virtuální počítače s Windows|
@@ -105,7 +104,7 @@ Následující tabulka uvádí seznam parametrů artefaktu podrobného plánu:
 |\[Verze Preview \] : nasazení agenta Log Analytics pro Windows VM Scale Sets (VMSS)|Přiřazení zásad|Volitelné: seznam imagí virtuálních počítačů s podporovaným operačním systémem Windows, který se má přidat do oboru|Prázdné pole se dá použít k označení žádných volitelných parametrů:\[\]|
 |\[Verze Preview \] : nasazení agenta Log Analytics pro virtuální počítače s Windows|Přiřazení zásad|Log Analytics pracovní prostor pro virtuální počítače s Windows|Pokud je tento pracovní prostor mimo rozsah přiřazení, je nutné ručně udělit oprávnění "Log Analytics přispěvatele" (nebo podobné) ID objektu zabezpečení přiřazení zásad.|
 |\[Verze Preview \] : nasazení agenta Log Analytics pro virtuální počítače s Windows|Přiřazení zásad|Volitelné: seznam imagí virtuálních počítačů s podporovaným operačním systémem Windows, který se má přidat do oboru|Prázdné pole se dá použít k označení žádných volitelných parametrů:\[\]|
-|Nasazení rozšířené ochrany před internetovými útoky na účty úložiště|Přiřazení zásad|Účinek|Informace o účincích na zásady najdete v [porozumět Azure Policych důsledcích](../../../policy/concepts/effects.md) .|
+|Nasazení rozšířené ochrany před internetovými útoky na účty úložiště|Přiřazení zásad|Efekt|Informace o účincích na zásady najdete v [porozumět Azure Policych důsledcích](../../../policy/concepts/effects.md) .|
 |Nasazení auditování na SQL serverech|Přiřazení zásad|Hodnota v dnech doby uchování (0 označuje neomezené uchovávání)|Počet dnů uchování (volitelné, 180 dní, pokud není zadaný)|
 |Nasazení auditování na SQL serverech|Přiřazení zásad|Název skupiny prostředků pro účet úložiště pro auditování SQL serveru|Audit zapisuje události databáze do protokolu auditu ve vašem účtu Azure Storage (účet úložiště se vytvoří v každé oblasti, kde se vytvoří SQL Server, který bude sdílen všemi servery v této oblasti). Důležité: kvůli správnému fungování auditu neodstraňujte ani neměňte skupinu prostředků ani účty úložiště.|
 |Nasadit nastavení diagnostiky pro skupiny zabezpečení sítě|Přiřazení zásad|Předpona účtu úložiště pro diagnostiku skupiny zabezpečení sítě|Tato předpona bude kombinována s umístěním skupiny zabezpečení sítě, aby vytvořila název vytvořeného účtu úložiště.|

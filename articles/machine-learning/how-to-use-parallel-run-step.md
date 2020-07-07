@@ -11,12 +11,11 @@ ms.author: tracych
 author: tracychms
 ms.date: 06/23/2020
 ms.custom: Build2020, tracking-python
-ms.openlocfilehash: ae79a4f7264224f29db4ede0944ae079130b6394
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
-ms.translationtype: MT
+ms.openlocfilehash: e5665bd5ad2baa35b497c8b4fe19b0cb93bdb2a7
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362607"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023359"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Spuštění dávkového odvozování pro velké objemy dat pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -112,9 +111,6 @@ Tento krok můžete změnit tak, aby odkazoval na kontejner objektů BLOB tím, 
 from azureml.core import Datastore
 from azureml.core import Workspace
 
-# Load workspace authorization details from config.json
-ws = Workspace.from_config()
-
 mnist_blob = Datastore.register_azure_blob_container(ws, 
                       datastore_name="mnist_datastore", 
                       container_name="sampledata", 
@@ -140,8 +136,6 @@ Další informace o Azure Machine Learning datových sadách najdete v tématu [
 
 ```python
 from azureml.core.dataset import Dataset
-
-mnist_ds_name = 'mnist_sample_data'
 
 path_on_datastore = mnist_blob.path('mnist/')
 input_mnist_ds = Dataset.File.from_files(path=path_on_datastore, validate=False)
@@ -218,6 +212,7 @@ Skript *musí obsahovat* dvě funkce:
 # (https://aka.ms/batch-inference-notebooks)
 # for the implementation script.
 
+%%writefile digit_identification.py
 import os
 import numpy as np
 import tensorflow as tf
@@ -311,12 +306,14 @@ batch_env.docker.base_image = DEFAULT_GPU_IMAGE
 
 Můžete zadat `mini_batch_size` , `node_count` ,, `process_count_per_node` `logging_level` , `run_invocation_timeout` a jako, aby při opětovném `run_max_try` `PipelineParameter` odeslání běhu kanálu mohli doladit hodnoty parametrů. V tomto příkladu použijete PipelineParameter pro `mini_batch_size` a `Process_count_per_node` a pak změníte tyto hodnoty, když znovu odešlete spustit později. 
 
+V tomto příkladu se předpokládá, že používáte `digit_identification.py` skript, který jste si poznamenali dříve. Pokud používáte vlastní skript, změňte `source_directory` `entry_script` parametry a odpovídajícím způsobem.
+
 ```python
 from azureml.pipeline.core import PipelineParameter
 from azureml.pipeline.steps import ParallelRunConfig
 
 parallel_run_config = ParallelRunConfig(
-    source_directory=scripts_folder,
+    source_directory='.',
     entry_script="digit_identification.py",
     mini_batch_size=PipelineParameter(name="batch_size_param", default_value="5"),
     error_threshold=10,
@@ -384,9 +381,8 @@ pipeline_run.wait_for_completion(show_output=True)
 Vzhledem k tomu, že jste provedli vstupy a několik nakonfigurujících jako `PipelineParameter` , můžete znovu odeslat spuštění odvození dávky s jiným vstupem datové sady a doladit parametry bez nutnosti vytvářet zcela nový kanál. Použijete stejné úložiště dat, ale použijete pouze jeden obrázek jako vstup dat.
 
 ```python
-path_on_datastore = mnist_data.path('mnist/0.png')
+path_on_datastore = mnist_blob.path('mnist/0.png')
 single_image_ds = Dataset.File.from_files(path=path_on_datastore, validate=False)
-single_image_ds._ensure_saved(ws)
 
 pipeline_run_2 = experiment.submit(pipeline, 
                                    pipeline_parameters={"mnist_param": single_image_ds, 

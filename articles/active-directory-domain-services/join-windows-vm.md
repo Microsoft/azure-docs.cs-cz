@@ -7,14 +7,13 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/30/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: ac7af2f4500f6702dcacad546b0985e41159dc6e
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.openlocfilehash: 8123608cbf2c1a4cbe0dc51d81d42b288bf2a91d
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734669"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024923"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Kurz: připojení virtuálního počítače s Windows serverem k spravované doméně Azure Active Directory Domain Services
 
@@ -72,7 +71,7 @@ Pokud už máte virtuální počítač, ke kterému se chcete připojit k domén
     | Uživatelské jméno             | Zadejte uživatelské jméno pro účet místního správce, který se má vytvořit na virtuálním počítači, například *azureuser* . |
     | Heslo             | Zadejte a potvrďte zabezpečené heslo pro místního správce, které se má na virtuálním počítači vytvořit. Nezadávejte přihlašovací údaje účtu uživatele domény. |
 
-1. Virtuální počítače vytvořené v Azure jsou ve výchozím nastavení přístupné z Internetu pomocí protokolu RDP. Když je protokol RDP povolený, pravděpodobně dojde k útokům prostřednictvím automatického přihlašování, které by mohlo v důsledku několika neúspěšných pokusů o přihlášení způsobit, že účty s běžnými názvy, jako je *správce* nebo *správce* .
+1. Virtuální počítače vytvořené v Azure jsou ve výchozím nastavení přístupné z Internetu pomocí protokolu RDP. Když je protokol RDP povolený, pravděpodobně dojde k automatickým útokům při přihlašování, které by mohlo vést k neúspěšným pokusům o přihlášení, které by mohly začínat pomocí běžných názvů, jako je *správce* nebo *správce* .
 
     Protokol RDP by měl být povolen pouze v případě potřeby a omezen na sadu autorizovaných rozsahů IP adres. Tato konfigurace pomáhá zlepšit zabezpečení virtuálního počítače a snižuje oblast pro možný útok. Nebo můžete vytvořit a použít hostitele Azure bastionu, který umožňuje přístup pouze prostřednictvím Azure Portal přes protokol TLS. V dalším kroku tohoto kurzu použijete hostitele Azure bastionu k zabezpečenému připojení k virtuálnímu počítači.
 
@@ -110,7 +109,7 @@ Pokud už máte virtuální počítač, ke kterému se chcete připojit k domén
 
 1. Vytvoření podsítě trvá několik sekund. Po vytvoření vyberte *X* , čímž zavřete okno podsíť.
 1. Zpátky v podokně **sítě** Chcete-li vytvořit virtuální počítač, vyberte podsíť, kterou jste vytvořili, z rozevírací nabídky, jako je například *Správa*. Znovu se ujistěte, že jste vybrali správnou podsíť a nesadíte virtuální počítač ve stejné podsíti jako vaše spravovaná doména.
-1. U **veřejné IP**adresy vyberte v rozevírací nabídce možnost *žádné* , protože se ke správě připojíte pomocí Azure bastionu a nepotřebujete přiřazenou veřejnou IP adresu.
+1. V rozevírací nabídce pro **veřejnou IP adresu**vyberte *None (žádné* ). Když v tomto kurzu použijete Azure bastionu a připojíte se ke správě, nepotřebujete k virtuálnímu počítači přiřazenou veřejnou IP adresu.
 1. U ostatních možností ponechte výchozí hodnoty a pak vyberte **Správa**.
 1. Nastavte **diagnostiku spouštění** na *vypnuto*. U ostatních možností ponechte výchozí hodnoty a pak vyberte **zkontrolovat + vytvořit**.
 1. Zkontrolujte nastavení virtuálního počítače a pak vyberte **vytvořit**.
@@ -121,7 +120,7 @@ Vytvoření virtuálního počítače trvá několik minut. Azure Portal zobrazu
 
 ## <a name="connect-to-the-windows-server-vm"></a>Připojení k virtuálnímu počítači s Windows serverem
 
-K zabezpečenému připojení k virtuálním počítačům použijte hostitele Azure bastionu. S Azure bastionu je spravovaný hostitel nasazený do vaší virtuální sítě a poskytuje webové připojení RDP nebo SSH k virtuálním počítačům. Pro virtuální počítače nejsou nutné žádné veřejné IP adresy a nemusíte otevírat pravidla skupiny zabezpečení sítě pro externí vzdálený provoz. K virtuálním počítačům se můžete připojit pomocí Azure Portal z webového prohlížeče.
+K zabezpečenému připojení k virtuálním počítačům použijte hostitele Azure bastionu. S Azure bastionu je spravovaný hostitel nasazený do vaší virtuální sítě a poskytuje webové připojení RDP nebo SSH k virtuálním počítačům. Pro virtuální počítače nejsou nutné žádné veřejné IP adresy a nemusíte otevírat pravidla skupiny zabezpečení sítě pro externí vzdálený provoz. K virtuálním počítačům se můžete připojit pomocí Azure Portal z webového prohlížeče. V případě potřeby [Vytvořte hostitele Azure bastionu][azure-bastion].
 
 Pokud se chcete k VIRTUÁLNÍmu počítači připojit pomocí hostitele bastionu, proveďte následující kroky:
 
@@ -152,7 +151,9 @@ Když je vytvořený virtuální počítač a webové připojení RDP vytvořen�
 
     ![Zadejte spravovanou doménu, ke které se chcete připojit.](./media/join-windows-vm/join-domain.png)
 
-1. Zadejte přihlašovací údaje domény pro připojení k doméně. Použijte přihlašovací údaje uživatele, který je součástí spravované domény. Účet musí být součástí spravované domény nebo tenanta Azure AD – účty z externích adresářů přidružených k vašemu tenantovi Azure AD se nemůžou správně ověřit během procesu připojení k doméně. Pověření účtu lze zadat jedním z následujících způsobů:
+1. Zadejte přihlašovací údaje domény pro připojení k doméně. Zadejte přihlašovací údaje uživatele, který je součástí spravované domény. Účet musí být součástí spravované domény nebo tenanta Azure AD – účty z externích adresářů přidružených k vašemu tenantovi Azure AD se nemůžou správně ověřit během procesu připojení k doméně.
+
+    Pověření účtu lze zadat jedním z následujících způsobů:
 
     * **Formát UPN** (doporučeno) – zadejte příponu hlavního názvu uživatele (UPN) pro uživatelský účet, jak je nakonfigurováno ve službě Azure AD. Například přípona hlavního názvu uživatele (UPN) uživatelského *contosoadmin* by byla `contosoadmin@aaddscontoso.onmicrosoft.com` . K dispozici je několik běžných případů použití, kdy je možné použít spolehlivý formát UPN pro přihlášení k doméně, nikoli formát *sAMAccountName* :
         * Pokud je předpona hlavního názvu uživatele (UPN) dlouhá, například *deehasareallylongname*, může být parametr *sAMAccountName* automaticky vygenerován.
@@ -180,7 +181,7 @@ Po restartování virtuálního počítače s Windows serverem se do virtuální
 
 V dalším kurzu použijete tento virtuální počítač s Windows serverem k instalaci nástrojů pro správu, které vám umožní spravovat spravovanou doménu. Pokud v této sérii kurzů nechcete pokračovat, Projděte si následující postup vyčištění a [Odstraňte virtuální počítač](#delete-the-vm). V opačném případě [přejděte k dalšímu kurzu](#next-steps).
 
-### <a name="un-join-the-vm-from-the-managed-domain"></a>Zrušit připojení k virtuálnímu počítači ze spravované domény
+### <a name="unjoin-the-vm-from-the-managed-domain"></a>Odpojte virtuální počítač ze spravované domény.
 
 Pokud chcete virtuální počítač odebrat ze spravované domény, postupujte podle kroků znovu a [Připojte se k virtuálnímu počítači k doméně](#join-the-vm-to-the-managed-domain). Místo připojení ke spravované doméně vyberte možnost připojit se k pracovní skupině, jako je například výchozí *pracovní skupina*. Po restartování virtuálního počítače se objekt počítače odebere ze spravované domény.
 

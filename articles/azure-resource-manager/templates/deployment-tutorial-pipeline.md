@@ -4,12 +4,11 @@ description: Naučte se průběžně sestavovat, testovat a nasazovat šablony A
 ms.date: 04/22/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: dacbdbcbebbbd696c14745e055ed9f7bd7905b1d
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
-ms.translationtype: MT
+ms.openlocfilehash: 55fd66a002584a5181eacebc84cbd1b732510120
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82731930"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055745"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Kurz: průběžná integrace šablon Azure Resource Manager s Azure Pipelines
 
@@ -37,9 +36,9 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 K dokončení tohoto článku potřebujete:
 
-* **Účet GitHubu**, kde ho použijete k vytvoření úložiště pro šablony. Pokud ho ještě nemáte, můžete si [ho vytvořit zdarma](https://github.com). Další informace o použití úložišť GitHub najdete v tématu [sestavení úložišť GitHubu](/azure/devops/pipelines/repos/github).
+* **Účet GitHubu**, kde ho použijete k vytvoření úložiště pro šablony. Pokud účet nemáte, můžete si ho [zdarma vytvořit](https://github.com). Další informace o použití úložišť GitHub najdete v tématu [sestavení úložišť GitHubu](/azure/devops/pipelines/repos/github).
 * **Nainstalujte Git**. Tato instrukce kurzu používá *Git bash* nebo *git shell*. Pokyny najdete v tématu [instalace Gitu]( https://www.atlassian.com/git/tutorials/install-git).
-* **Organizace Azure DevOps**. Pokud ho ještě nemáte, můžete si ho vytvořit zdarma. Viz [vytvoření organizace nebo kolekce projektů]( https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization?view=azure-devops).
+* **Organizace Azure DevOps**. Pokud účet nemáte, můžete si ho zdarma vytvořit. Viz [vytvoření organizace nebo kolekce projektů](/azure/devops/organizations/accounts/create-organization?view=azure-devops).
 * volitelné **Visual Studio Code s rozšířením nástrojů Správce prostředků Tools**. Pokud [chcete vytvořit Azure Resource Manager šablony](use-vs-code-to-create-template.md), přečtěte si téma použití Visual Studio Code.
 
 ## <a name="prepare-a-github-repository"></a>Příprava úložiště GitHub
@@ -57,7 +56,7 @@ Pokud nemáte účet GitHubu, přečtěte si téma [požadavky](#prerequisites).
 
 1. Vyberte **nové**a zelené tlačítko.
 1. Do **název úložiště**zadejte název úložiště.  Například **AzureRmPipeline-úložiště**. Nezapomeňte nahradit libovolný z **AzureRmPipeline** názvem vašeho projektu. V rámci tohoto kurzu můžete vybrat buď **veřejné** , nebo **soukromé** . A pak vyberte **vytvořit úložiště**.
-1. Zapište adresu URL. Adresa URL úložiště má následující formát: **`https://github.com/[YourAccountName]/[YourRepositoryName]`**.
+1. Zapište adresu URL. Adresa URL úložiště má následující formát: **`https://github.com/[YourAccountName]/[YourRepositoryName]`** .
 
 Toto úložiště se označuje jako *vzdálené úložiště*. Každý z vývojářů stejného projektu může klonovat své vlastní *místní úložiště*a sloučit změny do vzdáleného úložiště.
 
@@ -90,11 +89,11 @@ Název složky i názvy souborů se používají tak, jak jsou v kanálu.  Pokud
 
 ### <a name="push-the-template-to-the-remote-repository"></a>Vložení šablony do vzdáleného úložiště
 
-Azuredeploy. JSON se přidal do místního úložiště. V dalším kroku nahrajete šablonu do vzdáleného úložiště.
+azuredeploy.jsv byla přidána do místního úložiště. V dalším kroku nahrajete šablonu do vzdáleného úložiště.
 
 1. Otevřete *prostředí Git* nebo *Git bash*, pokud není otevřené.
 1. Změňte adresář na složku CreateWebApp v místním úložišti.
-1. Ověřte, zda je soubor **azuredeploy. JSON** ve složce.
+1. Ověřte, že **azuredeploy.js** v souboru je ve složce.
 1. Spusťte následující příkaz:
 
     ```bash
@@ -104,8 +103,8 @@ Azuredeploy. JSON se přidal do místního úložiště. V dalším kroku nahraj
     ```
 
     Může se zobrazit upozornění na LF. Upozornění můžete ignorovat. **Hlavní** větev je hlavní.  Pro každou aktualizaci obvykle vytvoříte větev. Pro zjednodušení tohoto kurzu budete používat hlavní větev přímo.
-1. Přejděte do úložiště GitHub z prohlížeče.  Adresa URL je **`https://github.com/[YourAccountName]/[YourGitHubRepository]`**. V rámci složky se zobrazí složka **CreateWebApp** a tři soubory.
-1. Vyberte **linkedStorageAccount. JSON** a otevřete šablonu.
+1. Přejděte do úložiště GitHub z prohlížeče.  Adresa URL je **`https://github.com/[YourAccountName]/[YourGitHubRepository]`** . V rámci složky se zobrazí složka **CreateWebApp** a tři soubory.
+1. Vyberte **linkedStorageAccount.js** pro otevření šablony.
 1. Vyberte tlačítko **nezpracované** . Adresa URL začíná na **raw.githubusercontent.com**.
 1. Zkopírujte adresu URL.  Tuto hodnotu musíte zadat při konfiguraci kanálu později v tomto kurzu.
 
@@ -174,7 +173,7 @@ Vytvoření kanálu s krokem pro nasazení šablony:
     * **Skupina prostředků**: zadejte nový název skupiny prostředků. Například **AzureRmPipeline-RG**.
     * **Umístění**: vyberte umístění pro skupinu prostředků, například **střed USA**.
     * **Umístění šablony**: vyberte **propojený artefakt**, což znamená, že úloha hledá soubor šablony přímo z připojeného úložiště.
-    * **Šablona**: zadejte **CreateWebApp/azuredeploy. JSON**. Pokud jste změnili název složky a název souboru, musíte tuto hodnotu změnit.
+    * **Šablona**: zadejte **CreateWebApp/azuredeploy.jsna**. Pokud jste změnili název složky a název souboru, musíte tuto hodnotu změnit.
     * **Parametry šablony**: nechte toto pole prázdné. Hodnoty parametrů určíte v parametrech * * přepsat šablony.
     * **overrideParameters**: zadejte **-ProjectName [EnterAProjectName]-linkedTemplateUri [EnterTheLinkedTemplateURL]**. Nahraďte název projektu a adresu URL propojené šablony. Adresa URL propojené šablony je to, co jste napsali na konci [vytváření úložiště GitHubu](#create-a-github-repository).
     * **Režim nasazení**: vyberte **přírůstkové**.
@@ -182,7 +181,7 @@ Vytvoření kanálu s krokem pro nasazení šablony:
 
     ![Krok Azure Resource Manager Azure DevOps Azure Pipelines](./media/deployment-tutorial-pipeline/resource-manager-template-pipeline-configure.png)
 
-1. Vyberte **Přidat**.
+1. Vyberte možnost **Přidat**.
 
     Další informace o úloze najdete v tématu [Úloha nasazení skupiny prostředků Azure](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment)a [úloha nasazení šablony Azure Resource Manager](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md) .
 
@@ -198,7 +197,7 @@ Vytvoření kanálu s krokem pro nasazení šablony:
 
 ## <a name="verify-the-deployment"></a>Ověření nasazení
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Otevřete skupinu prostředků. Název je to, co jste zadali v souboru YAML kanálu.  Uvidíte, že se vytvořil jeden účet úložiště.  Název účtu úložiště začíná na **Storu**.
 1. Vyberte název účtu úložiště, který chcete otevřít.
 1. Vyberte **Vlastnosti**. Všimněte si, že **replikace** je **místně redundantní úložiště (LRS)**.
@@ -207,7 +206,7 @@ Vytvoření kanálu s krokem pro nasazení šablony:
 
 Když aktualizujete šablonu a nahrajete změny do vzdáleného úložiště, kanál v tomto případě automaticky aktualizuje prostředky a účet úložiště.
 
-1. Otevřete **linkedStorageAccount. JSON** z místního úložiště v Visual Studio Code nebo v libovolném textovém editoru.
+1. Otevřete **linkedStorageAccount.js** z místního úložiště v Visual Studio Code nebo v libovolném textovém editoru.
 1. Aktualizujte **defaultValue** hodnotu DefaultValue **storageAccountType** na **Standard_GRS**. Viz následující snímek obrazovky:
 
     ![Azure Resource Manager Azure DevOps Azure Pipelines Update YAML](./media/deployment-tutorial-pipeline/azure-resource-manager-devops-pipelines-update-yml.png)
@@ -224,7 +223,7 @@ Když aktualizujete šablonu a nahrajete změny do vzdáleného úložiště, ka
 
     První příkaz (pull) synchronizuje místní úložiště se vzdáleným úložištěm. Soubor YAML kanálu se přidal jenom do vzdáleného úložiště. Spuštění příkazu PULL stáhne kopii souboru YAML do místní větve.
 
-    Čtvrtý příkaz (push) nahraje revidovaný soubor linkedStorageAccount. JSON do vzdáleného úložiště. Když se hlavní větev vzdáleného úložiště aktualizuje, kanál se znovu aktivuje.
+    Čtvrtý příkaz (push) nahraje revidované linkedStorageAccount.jssouboru do vzdáleného úložiště. Když se hlavní větev vzdáleného úložiště aktualizuje, kanál se znovu aktivuje.
 
 Chcete-li ověřit změny, můžete zkontrolovat vlastnost replikace účtu úložiště.  Viz [Ověření nasazení](#verify-the-deployment).
 
@@ -241,7 +240,7 @@ Možná budete chtít odstranit i úložiště GitHub a projekt Azure DevOps.
 
 ## <a name="next-steps"></a>Další kroky
 
-Gratulujeme, dokončili jste tento Správce prostředků kurz nasazení šablony. Dejte nám vědět, pokud máte komentáře a návrhy v části věnované zpětné vazbě. Děkujeme!
+Gratulujeme, dokončili jste tento Správce prostředků kurz nasazení šablony. Dejte nám vědět, pokud máte komentáře a návrhy v části věnované zpětné vazbě. Díky!
 Jste připraveni přejít k pokročilejším koncepcím o šablonách. V dalším kurzu se dozvíte víc o používání Referenční dokumentace k šablonám, které vám pomůžou definovat prostředky k nasazení.
 
 > [!div class="nextstepaction"]

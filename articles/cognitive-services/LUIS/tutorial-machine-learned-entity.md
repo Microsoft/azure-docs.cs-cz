@@ -3,12 +3,11 @@ title: 'Kurz: extrakce strukturovaných dat pomocí entity Machine-Learning – 
 description: Extrahujte strukturovaná data z utterance pomocí entity Machine-Learning. Chcete-li zvýšit přesnost extrakce, přidejte dílčí entity s funkcemi.
 ms.topic: tutorial
 ms.date: 05/08/2020
-ms.openlocfilehash: e16badfb2e024c5d82f1aed8a02aa901dca2c2a9
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
-ms.translationtype: MT
+ms.openlocfilehash: eb9761a3d3a98a3318fe0adc6fa170652639a9a1
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85611012"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045599"
 ---
 # <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learning-entities-in-language-understanding-luis"></a>Kurz: extrakce strukturovaných dat ze utterance uživatelů pomocí entit strojového učení v Language Understanding (LUIS)
 
@@ -108,7 +107,7 @@ Přidání seznamu známých velikostí, které klientská aplikace rozpozná, p
 
 1. V nabídce vlevo vyberte **entity** a pak vyberte **+ vytvořit**.
 
-1. Nastavte název entity, `SizeListentity` aby bylo možné je snadno identifikovat ve srovnání s `SizePhraselist` vytvořeným v předchozí části.
+1. Nastavte název entity jako `SizeListentity` a nastavte typ jako **seznam** , aby bylo možné ho snadno identifikovat ve srovnání s `SizePhraselist` vytvořeným v předchozí části.
 
 1. Přidejte velikosti, které klientská aplikace očekává: `Small` , `Medium` , `Large` a `XLarge` pak přidejte synonyma pro každou z nich. Synonyma by měla být termínem, který uživatel zadá do robota chatu. Entita se extrahuje entitou seznamu, pokud odpovídá přesně normalizované hodnotě nebo synonymům.
 

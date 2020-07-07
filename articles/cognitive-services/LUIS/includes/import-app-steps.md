@@ -7,16 +7,15 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/22/2020
 ms.author: diberry
-ms.openlocfilehash: 2cf588ed120b353958cc708189c86481cd247d8e
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
-ms.translationtype: MT
+ms.openlocfilehash: 37f1b85b4ce8510d5e288df985a55dba659f0c9b
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85445915"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86035491"
 ---
 1. Na stránce **Moje aplikace** na [portálu Luis](https://www.luis.ai)vyberte **+ Nová aplikace pro konverzaci**a pak **importovat jako JSON**. Vyhledejte uložený soubor JSON z předchozího kroku. Nemusíte měnit název aplikace. Vyberte **Hotovo** .
 
-1. V části **Správa** na kartě **verze** vyberte `sentiment` verzi, pak vyberte **klonovat** , aby se naklonoval verze, a zadejte nový název a `ml-entity` potom vyberte **Hotovo** pro dokončení procesu klonování. Název verze je součástí cesty URL, a proto smí obsahovat jenom znaky, které jsou platné v adresách URL.
+1. V části **Správa** na kartě **verze** vyberte `0.1` verzi, pak vyberte **klonovat** , aby se naklonoval verze, a zadejte nový název a `ml-entity` potom vyberte **Hotovo** pro dokončení procesu klonování. Název verze je součástí cesty URL, a proto smí obsahovat jenom znaky, které jsou platné v adresách URL.
 
     > [!TIP]
     > Naklonování do nové verze je osvědčeným postupem před úpravou aplikace. Až dokončíte změnu verze, exportujte verzi (jako soubor. JSON nebo. Lu) a Prohlédněte si soubor do systému správy zdrojového kódu.

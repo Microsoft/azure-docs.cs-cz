@@ -3,12 +3,11 @@ title: Ukázka podrobného plánu úrovně účinku DoD. 4
 description: Nasaďte kroky pro ukázku podrobného plánu na úrovni DoD – 4, včetně podrobností parametrů artefaktu podrobného plánu.
 ms.date: 06/30/2020
 ms.topic: sample
-ms.openlocfilehash: 2dc6c4ae70ce18a75f277495665ed5afdce2713c
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
-ms.translationtype: MT
+ms.openlocfilehash: bb2599399284b2be5a9a7f88ef1d0244812ec4b2
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85800405"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044970"
 ---
 # <a name="deploy-the-dod-impact-level-4-blueprint-sample"></a>Nasazení ukázky podrobného plánu úrovně dopadu DoD. 4
 
@@ -91,7 +90,7 @@ Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji 
 
 Následující tabulka uvádí seznam parametrů artefaktu podrobného plánu:
 
-|Název artefaktu|Typ artefaktu|Název parametru|Popis|
+|Název artefaktu|Typ artefaktu|Název parametru|Description|
 |-|-|-|-|
 |Povolená umístění|Přiřazení zásad|Povolené lokality|Tyto zásady umožňují omezit umístění, která může vaše organizace zadat při nasazování prostředků. Můžete je využít k vynucování vašich požadavků na geografické dodržování předpisů.|
 |Povolená umístění pro skupiny prostředků|Přiřazení zásad |Povolené lokality|Tato zásada vám umožní omezit umístění, ve kterých může organizace vytvářet skupiny prostředků. Můžete je využít k vynucování vašich požadavků na geografické dodržování předpisů.|
@@ -109,7 +108,7 @@ Následující tabulka uvádí seznam parametrů artefaktu podrobného plánu:
 |Nasazení agenta Log Analytics pro virtuální počítače s Windows|Přiřazení zásad|Volitelné: seznam imagí virtuálních počítačů s podporovaným operačním systémem Windows, který se má přidat do oboru|Prázdné pole se dá použít k označení žádných volitelných parametrů:\[\]|
 |\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásad|Členové, kteří mají být zahrnuti do místní skupiny Administrators|Středníkem oddělený seznam členů, kteří by měli být vyloučení v místní skupině Administrators. Např.: Správce; myUser1; myUser2|
 |\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásad|Členové, kteří mají být vyloučeni v místní skupině Administrators|Středníkem oddělený seznam členů, kteří by měli být zahrnutí do místní skupiny Administrators. Např.: Správce; myUser1; myUser2|
-|\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásad|Seznam typů prostředků, které by měly mít povolené diagnostické protokoly|Seznam typů prostředků, které se mají auditovat v případě, že nastavení diagnostického protokolu není povolené. Přijatelné hodnoty najdete v [Azure monitor schématech diagnostických protokolů](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type).|
+|\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásad|Seznam typů prostředků, které by měly mít povolené diagnostické protokoly|Seznam typů prostředků, které se mají auditovat v případě, že nastavení diagnostického protokolu není povolené. Přijatelné hodnoty najdete v [Azure monitor schématech diagnostických protokolů](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas).|
 |\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásad|ID pracovního prostoru Log Analytics, pro který by se měly virtuální počítače nakonfigurovat|Toto je ID (GUID) Log Analyticsho pracovního prostoru, pro který by se měly virtuální počítače nakonfigurovat.|
 |\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásad|Pro databáze SQL Azure by mělo být povolené dlouhodobé geograficky redundantní zálohování.|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
 |\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásad|Na spravovaných instancích SQL by mělo být povolené posouzení ohrožení zabezpečení|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
@@ -128,7 +127,7 @@ Následující tabulka uvádí seznam parametrů artefaktu podrobného plánu:
 |\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásad|Musí být nainstalované aktualizace systému ve virtuálních počítačích Virtual Machine Scale Sets.|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
 |\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásad|Pro účty s oprávněním ke čtení vašeho předplatného by se měla povolit vícefaktorové ověřování.|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
 |\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásad|Pro účty s oprávněním vlastníka pro vaše předplatné by se měla povolit vícefaktorové ověřování.|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
-|\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásad|Pro účty s oprávněním k zápisu do vašeho předplatného by se měla povolit vícefaktorové ověřování.|Informace o účincích zásad najdete na adrese [principy Azure Policych účinků] (.. /.. /.. /policy/concepts/effects.
+|\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásad|Pro účty s oprávněním k zápisu do vašeho předplatného by se měla povolit vícefaktorové ověřování.|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
 
 ## <a name="next-steps"></a>Další kroky
 

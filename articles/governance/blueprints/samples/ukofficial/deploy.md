@@ -3,12 +3,11 @@ title: Nasazení OFICIÁLNÍch ukázek pro Spojené království & NHS UK
 description: Nasaďte kroky pro oficiální Spojené království a ukázky pro Spojené království (NHS), včetně podrobností parametrů artefaktu podrobného plánu.
 ms.date: 05/08/2020
 ms.topic: sample
-ms.openlocfilehash: 7fa78eab463c9a3202b2ec08e1952e275e51b20d
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
-ms.translationtype: MT
+ms.openlocfilehash: 2ac2d17c08b3f585f86d1b2d339c3c7cf52844ce
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005588"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037167"
 ---
 # <a name="deploy-the-uk-official-and-uk-nhs-blueprint-samples"></a>Nasazení ukázek pro Spojené království a ukázky pro Spojené království NHS podrobný plán
 
@@ -19,7 +18,7 @@ K nasazení ukázek pro Spojené království a NHS podrobného plánu je potře
 > - Označení kopie ukázky jako **publikované**
 > - Přiřazení kopie podrobného plánu k existujícímu předplatnému
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free), ještě než začnete.
 
 ## <a name="create-blueprint-from-sample"></a>Vytvořit podrobný plán z ukázky
 
@@ -91,19 +90,19 @@ Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji 
 
 Následující tabulka uvádí seznam parametrů artefaktu podrobného plánu:
 
-Název artefaktu|Typ artefaktu|Název parametru|Popis|
+Název artefaktu|Typ artefaktu|Název parametru|Description|
 |-|-|-|-|
-|Iniciativa pro Spojené království a oficiální nebo Velká Británie NHS|Přiřazení zásad |Typy prostředků pro audit diagnostických protokolů (zásady: podrobný plán iniciativ pro Spojené království a oficiální nebo Velká Británie NHS) |Seznam typů prostředků, které se mají auditovat, pokud je v nastavení diagnostického protokolu zapnutá možnost Poznámka  Přijatelné hodnoty najdete v tématu [podporované služby, schémata a kategorie pro diagnostické protokoly Azure](../../../../azure-monitor/platform/diagnostic-logs-schema.md). |
-|\[Verze\]Preview: nasazení agenta Log Analytics pro virtuální počítače se systémem Linux |Přiřazení zásad |Volitelné: seznam imagí virtuálních počítačů, které jsou podporované operačním systémem Linux pro přidání do oboru ( \[zásady\]: verze Preview: nasazení agenta Log Analytics pro virtuální počítače se systémem Linux) |Volitelné Výchozí hodnota je _none_. Další informace najdete v tématu [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
-|\[Verze\]Preview: nasazení agenta Log Analytics pro virtuální počítače s Windows |Přiřazení zásad |Volitelné: seznam imagí virtuálních počítačů s podporovaným operačním systémem Windows, který se má přidat do \[oboru\](Policy: Preview: nasazení Log Analytics Agent pro virtuální počítače s Windows) |Volitelné Výchozí hodnota je _none_. Další informace najdete v tématu [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
+|Iniciativa pro Spojené království a oficiální nebo Velká Británie NHS|Přiřazení zásad |Typy prostředků pro audit diagnostických protokolů (zásady: podrobný plán iniciativ pro Spojené království a oficiální nebo Velká Británie NHS) |Seznam typů prostředků, které se mají auditovat, pokud je v nastavení diagnostického protokolu zapnutá možnost Poznámka  Přijatelné hodnoty najdete v tématu [podporované služby, schémata a kategorie pro diagnostické protokoly Azure](../../../../azure-monitor/platform/resource-logs-schema.md). |
+|\[Verze Preview \] : nasazení agenta Log Analytics pro virtuální počítače se systémem Linux |Přiřazení zásad |Volitelné: seznam imagí virtuálních počítačů, které jsou podporované operačním systémem Linux pro přidání do oboru (zásady: \[ verze Preview \] : nasazení agenta Log Analytics pro virtuální počítače se systémem Linux) |Volitelné Výchozí hodnota je _none_. Další informace najdete v tématu [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
+|\[Verze Preview \] : nasazení agenta Log Analytics pro virtuální počítače s Windows |Přiřazení zásad |Volitelné: seznam imagí virtuálních počítačů s podporovaným operačním systémem Windows, který se má přidat do oboru (Policy: \[ Preview \] : nasazení Log Analytics Agent pro virtuální počítače s Windows) |Volitelné Výchozí hodnota je _none_. Další informace najdete v tématu [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
 
 ## <a name="next-steps"></a>Další kroky
 
 Teď, když jste si prohlédli kroky k nasazení ukázek OFICIÁLNÍch a NHS podrobných plánů na Velká Británie, najdete v následujících článcích informace o přehledu a mapování ovládacích prvků:
 
 > [!div class="nextstepaction"]
-> [Oficiální a NHS plány Spojené království – přehled](./index.md)
-> [oficiálních a britských NHS modrotisky – mapování ovládacích prvků](./control-mapping.md)
+> [Oficiální a NHSové plány Spojené království – přehled](./index.md) 
+>  [Oficiální Velká Británie a NHS v modrotisky – mapování ovládacích prvků](./control-mapping.md)
 
 Další články věnované podrobným plánům a postupu jejich využití:
 

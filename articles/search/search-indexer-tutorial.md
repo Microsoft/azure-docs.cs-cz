@@ -8,12 +8,11 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: c2972d13b25d167c2144c4f66e36822e85e29690
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
-ms.translationtype: MT
+ms.openlocfilehash: a3a7657aa83a675982adc304de01ba0fcc26d193
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85320994"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045446"
 ---
 # <a name="tutorial-index-azure-sql-data-using-the-net-sdk"></a>Kurz: indexování dat SQL Azure pomocí sady .NET SDK
 
@@ -253,4 +252,4 @@ Prostředky můžete najít a spravovat na portálu pomocí odkazu všechny pros
 Teď, když jste obeznámení se základy indexování SQL Database, se podíváme na konfiguraci indexeru.
 
 > [!div class="nextstepaction"]
-> [Konfigurace indexeru SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
+> [Konfigurace SQL Database indexeru](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)

@@ -7,12 +7,11 @@ ms.author: cschorm
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: bf200a8c7da6910f9d844c9b72e926e8103df6bc
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
-ms.translationtype: MT
+ms.openlocfilehash: deb69f6ca8f1499f43c12d606434719571a1f400
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391787"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027892"
 ---
 # <a name="coding-with-the-azure-digital-twins-apis"></a>Kódování pomocí rozhraní API digitálních vláken Azure
 
@@ -285,6 +284,7 @@ Přidejte nový `using` příkaz v horní části, protože budete potřebovat v
 
 ```csharp
 using System.Text.Json;
+using Azure.DigitalTwins.Core.Serialization;
 ```
 
 Pak na konec metody přidejte následující kód, `Main` který vytvoří a inicializuje tři digitální vlákna na základě tohoto modelu.
@@ -315,7 +315,7 @@ Všimněte si, že není vyvolána žádná chyba při druhém vytvoření vlák
 
 V dalším kroku můžete vytvořit **relace** mezi dvojitými vytvořenými podmnožinami a propojit je s **dvojitým grafem**. K reprezentaci celého prostředí se používají [Dvojitá grafu](concepts-twins-graph.md) .
 
-Aby bylo možné vytvářet relace, přidejte `using` příkaz pro základní typ vztahu v sadě SDK:
+Aby bylo možné vytvářet relace, přidejte `using` příkaz pro základní typ vztahu v sadě SDK: tuto přeskočit, pokud již byla přidána.
 ```csharp
 using Azure.DigitalTwins.Core.Serialization;
 ```

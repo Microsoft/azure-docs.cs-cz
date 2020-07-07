@@ -6,12 +6,11 @@ ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 12990238455046d837b175318225bb4f3d317706
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 80692cce114b18148340cfbe9070123c6990b708
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82185043"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055779"
 ---
 # <a name="tutorial-utilize-the-resource-manager-template-reference"></a>Kurz: využití odkazu na šablonu Správce prostředků
 
@@ -42,7 +41,7 @@ K dokončení tohoto článku potřebujete:
 
 [Šablony pro rychlý Start Azure](https://azure.microsoft.com/resources/templates/) jsou úložiště pro šablony ARM. Místo vytvoření šablony úplně od začátku si můžete najít ukázkovou šablonu a přizpůsobit ji. Šablona, kterou jsme použili v tomto rychlém startu, se nazývá [Create a standard storage account](https://azure.microsoft.com/resources/templates/101-storage-account-create/) (Vytvoření standardního účtu úložiště). Šablona definuje prostředek účtu služby Azure Storage.
 
-1. Z Visual Studio Code vyberte **soubor**>**otevřít soubor**.
+1. Z Visual Studio Code vyberte **soubor** > **otevřít soubor**.
 1. Do pole **File name** (Název souboru) vložte následující adresu URL:
 
     ```url
@@ -50,7 +49,7 @@ K dokončení tohoto článku potřebujete:
     ```
 
 1. Výběrem **Open** (Otevřít) soubor otevřete.
-1. Vyberte **soubor**>**Uložit jako** a uložte soubor jako **azuredeploy. JSON** do místního počítače.
+1. Vyberte **soubor** > **Uložit jako** a uložte soubor jako **azuredeploy.js** do svého místního počítače.
 
 ## <a name="understand-the-schema"></a>Vysvětlené schématu
 
@@ -75,7 +74,7 @@ K dokončení tohoto článku potřebujete:
 
 ## <a name="find-the-template-reference"></a>Vyhledání referenčních informací k šablonám
 
-1. Přejděte na [odkaz šablony Azure](https://docs.microsoft.com/azure/templates/).
+1. Přejděte na [odkaz šablony Azure](/azure/templates/).
 1. V poli **filtrovat podle názvu** zadejte **účty úložiště**a v části **referenční > úložiště**vyberte první **účty úložiště** .
 
     ![Odkaz šablony Azure Resource Manageru na účet úložiště](./media/template-tutorial-use-template-reference/resource-manager-template-resources-reference-storage-accounts.png)

@@ -4,16 +4,15 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: e7717cdeec33a32f926cb5ef4c1f6d28c25f9d93
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 20397339c1675686f2a670dc60899bfd4bd4c3ba
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76989076"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050273"
 ---
 ## <a name="create-a-self-hosted-integration-runtime"></a>Vytvoření místního prostředí Integration Runtime
 
-V této části vytvoříte místní prostředí Integration Runtime a přidružíte ho k místnímu počítači s databází SQL Serveru. Místní prostředí Integration runtime je komponenta, která kopíruje data z SQL Server ve vašem počítači do služby Azure SQL Database. 
+V této části vytvoříte místní prostředí Integration Runtime a přidružíte ho k místnímu počítači s databází SQL Serveru. Místní prostředí Integration runtime je komponenta, která kopíruje data z SQL Server ve vašem počítači do Azure SQL Database. 
 
 1. Vytvořte proměnnou pro název prostředí Integration Runtime. Použijte jedinečný název a poznamenejte si ho. Použijete ho později v tomto kurzu. 
 
@@ -131,7 +130,7 @@ V této části vytvoříte místní prostředí Integration Runtime a přidruž
 
     f. Zadejte uživatelské jméno.
 
-    g. Zadejte heslo, které je přidruženo k pro uživatelské jméno.
+    například Zadejte heslo, které je přidruženo k pro uživatelské jméno.
 
     h. Pokud chcete potvrdit, že se prostředí Integration Runtime může připojit k SQL Serveru, vyberte **Test**. Pokud je připojení úspěšné, zobrazí se zelená značka zaškrtnutí. Jestliže připojení není úspěšné, zobrazí se chybová zpráva. Opravte všechny problémy a ověřte, že se prostředí Integration Runtime může připojit k SQL Serveru.    
 

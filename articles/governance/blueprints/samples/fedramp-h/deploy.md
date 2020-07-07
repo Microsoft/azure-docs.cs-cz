@@ -3,12 +3,11 @@ title: Ukázka nasazení FedRAMP High details
 description: Nasaďte kroky pro ukázku FedRAMP High Details, včetně podrobností parametrů artefaktu podrobného plánu.
 ms.date: 01/31/2020
 ms.topic: sample
-ms.openlocfilehash: 96b033c153789b3edbfb6a197981fe3d56f12076
-ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
-ms.translationtype: MT
+ms.openlocfilehash: c4b2915222bc2d1772a2772c719d5d6cc4b59657
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2020
-ms.locfileid: "85517130"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044800"
 ---
 # <a name="deploy-the-fedramp-high-blueprint-sample"></a>Nasazení ukázky FedRAMP High details
 
@@ -91,10 +90,10 @@ Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji 
 
 Následující tabulka uvádí seznam parametrů artefaktu podrobného plánu:
 
-|Název artefaktu|Typ artefaktu|Název parametru|Popis|
+|Název artefaktu|Typ artefaktu|Název parametru|Description|
 |-|-|-|-|
 |\[Verze Preview \] : Auditovat FedRAMP High Controls a nasazovat specifická rozšíření virtuálních počítačů pro podporu požadavků na audit|Přiřazení zásad|ID pracovního prostoru Log Analytics, pro který by se měly virtuální počítače nakonfigurovat|Toto je ID (GUID) Log Analyticsho pracovního prostoru, pro který by se měly virtuální počítače nakonfigurovat.|
-|\[Verze Preview \] : Auditovat FedRAMP High Controls a nasazovat specifická rozšíření virtuálních počítačů pro podporu požadavků na audit|Přiřazení zásad|Seznam typů prostředků, které by měly mít povolené diagnostické protokoly|Seznam typů prostředků, které se mají auditovat v případě, že nastavení diagnostického protokolu není povolené. Přijatelné hodnoty najdete v [Azure monitor schématech diagnostických protokolů](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type).|
+|\[Verze Preview \] : Auditovat FedRAMP High Controls a nasazovat specifická rozšíření virtuálních počítačů pro podporu požadavků na audit|Přiřazení zásad|Seznam typů prostředků, které by měly mít povolené diagnostické protokoly|Seznam typů prostředků, které se mají auditovat v případě, že nastavení diagnostického protokolu není povolené. Přijatelné hodnoty najdete v [Azure monitor schématech diagnostických protokolů](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas).|
 |\[Verze Preview \] : Auditovat FedRAMP High Controls a nasazovat specifická rozšíření virtuálních počítačů pro podporu požadavků na audit|Přiřazení zásad|Seznam uživatelů, kteří mají být vyloučeni ze skupiny správců virtuálních počítačů s Windows|Středníkem oddělený seznam členů, kteří by měli být vyloučení v místní skupině Administrators. Např.: Správce; myUser1; myUser2|
 |\[Verze Preview \] : Auditovat FedRAMP High Controls a nasazovat specifická rozšíření virtuálních počítačů pro podporu požadavků na audit|Přiřazení zásad|Seznam uživatelů, které by měly být zahrnuté ve skupině Správci virtuálních počítačů s Windows|Středníkem oddělený seznam členů, kteří by měli být zahrnutí do místní skupiny Administrators. Např.: Správce; myUser1; myUser2|
 |\[Verze Preview \] : nasazení agenta Log Analytics pro Linux VM Scale Sets (VMSS)|Přiřazení zásad|Log Analytics pracovní prostor pro Linux VM Scale Sets (VMSS)|Pokud je tento pracovní prostor mimo rozsah přiřazení, je nutné ručně udělit oprávnění "Log Analytics přispěvatele" (nebo podobné) ID objektu zabezpečení přiřazení zásad.|

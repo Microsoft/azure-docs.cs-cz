@@ -5,12 +5,11 @@ author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b62cca48323d4e12a92c89d64ab67bf5b783c36f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: d770632958e046eb2b3494999d564bb4a6956b04
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82183823"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054470"
 ---
 # <a name="tutorial-create-multiple-resource-instances-with-arm-templates"></a>Kurz: vytvoření více instancí prostředků pomocí šablon ARM
 
@@ -37,15 +36,15 @@ K dokončení tohoto článku potřebujete:
 
 [Šablony pro rychlý Start Azure](https://azure.microsoft.com/resources/templates/) jsou úložiště pro šablony ARM. Místo vytvoření šablony úplně od začátku si můžete najít ukázkovou šablonu a přizpůsobit ji. Šablona, kterou jsme použili v tomto rychlém startu, se nazývá [Create a standard storage account](https://azure.microsoft.com/resources/templates/101-storage-account-create/) (Vytvoření standardního účtu úložiště). Šablona definuje prostředek účtu služby Azure Storage.
 
-1. Z Visual Studio Code vyberte **soubor**>**otevřít soubor**.
+1. Z Visual Studio Code vyberte **soubor** > **otevřít soubor**.
 2. Do pole **File name** (Název souboru) vložte následující adresu URL:
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
     ```
 3. Výběrem **Open** (Otevřít) soubor otevřete.
-4. Šablona obsahuje definici prostředku Microsoft.Storage/storageAccounts. Porovnejte tuto šablonu s [referenčními informacemi k šablonám](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts). Než začnete šablonu přizpůsobovat, je vhodné se s ní nejprve trochu seznámit.
-5. Vyberte **soubor**>**Uložit jako** a uložte soubor jako **azuredeploy. JSON** do místního počítače.
+4. Šablona obsahuje definici prostředku Microsoft.Storage/storageAccounts. Porovnejte tuto šablonu s [referenčními informacemi k šablonám](/azure/templates/Microsoft.Storage/storageAccounts). Než začnete šablonu přizpůsobovat, je vhodné se s ní nejprve trochu seznámit.
+5. Vyberte **soubor** > **Uložit jako** a uložte soubor jako **azuredeploy.js** do svého místního počítače.
 
 ## <a name="edit-the-template"></a>Úprava šablony
 

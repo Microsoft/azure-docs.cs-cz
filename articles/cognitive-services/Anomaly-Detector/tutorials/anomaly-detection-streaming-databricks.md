@@ -11,12 +11,11 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: d3f3842265e0c8a36c7eb4b14abca771bd3d38f2
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
-ms.translationtype: MT
+ms.openlocfilehash: b8263e0445f7997469ba9165decbaccfa9ed2d6e
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85918925"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027855"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>Kurz: detekce anomálií pro streamovaná data pomocí Azure Databricks
 
@@ -41,7 +40,7 @@ Tento kurz se zabývá následujícími úkony:
 
 > [!Note]
 > * Tento kurz zavádí přístup k implementaci doporučené [architektury řešení](https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/) pro rozhraní API detektoru anomálií.
-> * Tento kurz nejde dokončit s bezplatnou zkušební verzí rozhraní API detektoru anomálií nebo Azure Databricks. 
+> * Tento kurz nejde dokončit pomocí `F0` předplatného úrovně Free () pro rozhraní API detektoru anomálií nebo Azure Databricks. 
 
 Pokud nemáte [předplatné Azure](https://azure.microsoft.com/free/) , vytvořte ho.
 
@@ -161,7 +160,7 @@ V tomto kurzu použijete rozhraní API pro detekci [anomálií v Azure Cognitive
 
 4. V dialogovém okně **Vytvořit** zadejte následující hodnoty:
 
-    |Hodnota |Popis  |
+    |Hodnota |Description  |
     |---------|---------|
     |Name     | Název prostředku detektoru anomálií.        |
     |Předplatné     | Předplatné Azure, ke kterému bude prostředek přidružen.        |

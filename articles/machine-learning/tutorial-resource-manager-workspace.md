@@ -9,29 +9,31 @@ ms.date: 05/26/2020
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.openlocfilehash: 76f37beb22e28c0232efd0d62e82c8d3b60c78dc
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.openlocfilehash: 098d82e6521a4a355ac31809937b589f984816f2
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84345083"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027150"
 ---
-# <a name="tutorial-deploy-an-azure-machine-learning-workspace-using-a-resource-manager-template"></a>Kurz: nasazení pracovního prostoru Azure Machine Learning pomocí šablony Správce prostředků
+# <a name="tutorial-deploy-an-azure-machine-learning-workspace-using-an-arm-template"></a>Kurz: nasazení pracovního prostoru Azure Machine Learning pomocí šablony ARM
+
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Tento kurz vám ukáže, jak vytvořit pracovní prostor Azure Machine Learning pomocí šablony Azure Resource Manager. Pracovní prostory Azure Machine Learning organizují všechny vaše prostředky strojového učení od datových sad směrného plánu až po nasazené modely. Pracovní prostory jsou jediné místo, kde můžete spolupracovat s kolegy při vytváření, spouštění a revizi experimentů, spravovat vaše školicí a Inferencing výpočetní prostředky a modely a monitorovat nasazené verze.
+V tomto kurzu se dozvíte, jak vytvořit pracovní prostor Azure Machine Learning pomocí šablony Azure Resource Manager (šablona ARM). Pracovní prostory Azure Machine Learning organizují všechny vaše prostředky strojového učení od datových sad směrného plánu až po nasazené modely. Pracovní prostory jsou jediné místo, kde můžete spolupracovat s kolegy při vytváření, spouštění a revizi experimentů, spravovat vaše školicí a Inferencing výpočetní prostředky a modely a monitorovat nasazené verze.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
+Pokud vaše prostředí splňuje požadavky a Vy jste obeznámeni s používáním šablon ARM, vyberte tlačítko **nasadit do Azure** . Šablona se otevře v Azure Portal.
+
+[![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-machine-learning-create%2Fazuredeploy.json)
+
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLFree) před tím, než začnete.
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/services/machine-learning/), ještě než začnete.
 
-* Pokud chcete v tomto dokumentu použít příkazy rozhraní příkazového řádku z vašeho **místního prostředí**, potřebujete [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) .
+* Pokud chcete v tomto dokumentu použít příkazy rozhraní příkazového řádku z vašeho **místního prostředí**, potřebujete [Azure CLI](/cli/azure/install-azure-cli).
 
-## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
-
-### <a name="review-the-template"></a>Kontrola šablony
+## <a name="review-the-template"></a>Kontrola šablony
 
 Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-machine-learning-create/).
 
@@ -41,9 +43,9 @@ V šabloně jsou definované následující prostředky:
 
 * [Microsoft. MachineLearningServices/pracovní prostory](/azure/templates/microsoft.machinelearningservices/workspaces): Vytvořte pracovní prostor Azure ml. V této šabloně je umístění a název parametry, které může uživatel předat nebo interaktivně zadat.
 
-### <a name="deploy-the-template"></a>Nasazení šablony 
+## <a name="deploy-the-template"></a>Nasazení šablony
 
-Pokud chcete použít šablonu z Azure CLI, přihlaste se a vyberte předplatné (viz [přihlášení pomocí Azure CLI](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)). Potom následujícím příkazem:
+Pokud chcete použít šablonu z Azure CLI, přihlaste se a vyberte předplatné (viz [přihlášení pomocí Azure CLI](/cli/azure/authenticate-azure-cli)). Potom následujícím příkazem:
 
 ```azurecli-interactive
 read -p "Enter a project name that is used for generating resource names:" projectName &&
@@ -52,25 +54,25 @@ templateUri="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/
 resourceGroupName="${projectName}rg" &&
 workspaceName="${projectName}ws" &&
 az group create --name $resourceGroupName --location "$location" &&
-az deployment group create --resource-group $resourceGroupName --template-uri $templateUri --parameters workspaceName=$workspaceName location=$location && 
+az deployment group create --resource-group $resourceGroupName --template-uri $templateUri --parameters workspaceName=$workspaceName location=$location &&
 echo "Press [ENTER] to continue ..." &&
 read
 ```
 
 Když spustíte výše uvedený příkaz, zadejte:
 
-1. Název projektu, který bude tvořit základ názvů vytvořené skupiny prostředků a pracovního prostoru Azure ML
-1. Umístění Azure, ve kterém chcete provést nasazení
+1. Název projektu, který bude tvořit základ názvů vytvořené skupiny prostředků a pracovního prostoru Azure ML.
+1. Umístění Azure, ve kterém chcete provést nasazení.
 
 ## <a name="review-deployed-resources"></a>Kontrola nasazených prostředků
 
 Postup zobrazení pracovního prostoru Azure ML:
 
-1. Přejděte na https://portal.azure.com. 
-1. Přihlásit se 
+1. Přejděte do části https://portal.azure.com (Soubor > Nový > Jiné).
+1. Přihlásit se.
 1. Vyberte pracovní prostor, který jste právě vytvořili.
 
-Uvidíte domovskou stránku Azure Machine Learning: 
+Uvidíte domovskou stránku Azure Machine Learning:
 
 :::image type="content" source="media/tutorial-resource-manager-workspace/workspace-home.png" alt-text="Snímek obrazovky pracovního prostoru Azure ML":::
 
@@ -78,7 +80,7 @@ Pokud chcete zobrazit všechny prostředky přidružené k nasazení, klikněte 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud tento pracovní prostor nechcete používat, odstraňte ho. Vzhledem k tomu, že je pracovní prostor přidružený k jiným prostředkům, jako je například účet úložiště, budete pravděpodobně chtít odstranit celou vytvořenou skupinu prostředků. Skupinu prostředků můžete odstranit pomocí portálu kliknutím na tlačítko Odstranit a potvrzením. Případně můžete skupinu prostředků z CLI odstranit pomocí: 
+Pokud tento pracovní prostor nechcete používat, odstraňte ho. Vzhledem k tomu, že je pracovní prostor přidružený k jiným prostředkům, jako je například účet úložiště, budete pravděpodobně chtít odstranit celou vytvořenou skupinu prostředků. Skupinu prostředků můžete odstranit pomocí portálu kliknutím na tlačítko **Odstranit** a potvrzením. Případně můžete skupinu prostředků z CLI odstranit pomocí:
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -89,7 +91,7 @@ echo "Press [ENTER] to continue ..."
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste vytvořili Azure Machine Learning pracovní prostor ze Azure Resource Manager šablony. Pokud chcete prozkoumat Azure Machine Learning, pokračujte v tomto kurzu. 
+V tomto kurzu jste vytvořili Azure Machine Learning pracovní prostor ze šablony ARM. Pokud chcete prozkoumat Azure Machine Learning, pokračujte v tomto kurzu.
 
 > [!div class="nextstepaction"]
 > [Kurz: Začínáme s vytvářením prvního experimentu ML pomocí sady Python SDK](tutorial-1st-experiment-sdk-setup.md)

@@ -10,12 +10,11 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 03/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5d064b0953d8d6e9089dcfa765ff29bb97088f34
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
-ms.translationtype: MT
+ms.openlocfilehash: 680b6ec17b65cd9452dd3bd5c0c470e395688cb8
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801106"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86025671"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Kurz: nasazení modelu klasifikace imagí v Azure Container Instances
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -39,7 +38,7 @@ Container Instances je skvělé řešení pro testování a porozumění pracovn
 
 Pokud chcete spustit Poznámkový blok, nejdřív dokončete školení modelu v [kurzu (část 1): výuka modelu klasifikace imagí](tutorial-train-models-with-aml.md).   Pak otevřete Poznámkový blok *img-Classification-Část2-Deploy. ipynb* v naklonovaných *kurzech/složce image-Classification-mnist ručně zapsaných-data* .
 
-Tento kurz je také k dispozici na [GitHubu](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) , pokud ho chcete použít ve svém vlastním [místním prostředí](how-to-configure-environment.md#local).  Ujistěte se, že máte `matplotlib` nainstalované `scikit-learn` a ve vašem prostředí. 
+Tento kurz je také k dispozici na [GitHubu](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) , pokud ho chcete použít ve svém vlastním [místním prostředí](how-to-configure-environment.md#local).  Ujistěte se, že máte nainstalované `matplotlib` a `scikit-learn` ve vašem prostředí. 
 
 > [!Important]
 > Zbývající část tohoto článku obsahuje stejný obsah, jaký vidíte v poznámkovém bloku.  
@@ -128,7 +127,7 @@ Odhadovaný čas dokončení: **přibližně 2-5 minut**
 
 Nakonfigurujte image a nasaďte ji. Následující kód provede tyto kroky:
 
-1. Vytvoří objekt prostředí obsahující závislosti, které model potřebuje, pomocí prostředí (`tutorial-env`) uloženého během školení.
+1. Vytvoří objekt prostředí obsahující závislosti, které model potřebuje, pomocí prostředí ( `tutorial-env` ) uloženého během školení.
 1. Vytvořte odvozenou konfiguraci nezbytnou k nasazení modelu jako webové služby pomocí:
    * Soubor vyhodnocení (`score.py`)
    * objekt prostředí vytvořený v předchozím kroku
@@ -235,18 +234,19 @@ print('Overall accuracy:', np.average(y_hat == y_test))
 
 Výstup zobrazuje chybovou matici:
 
-    [[ 960    0    1    2    1    5    6    3    1    1]
-     [   0 1112    3    1    0    1    5    1   12    0]
-     [   9    8  920   20   10    4   10   11   37    3]
-     [   4    0   17  921    2   21    4   12   20    9]
-     [   1    2    5    3  915    0   10    2    6   38]
-     [  10    2    0   41   10  770   17    7   28    7]
-     [   9    3    7    2    6   20  907    1    3    0]
-     [   2    7   22    5    8    1    1  950    5   27]
-     [  10   15    5   21   15   27    7   11  851   12]
-     [   7    8    2   13   32   13    0   24   12  898]]
-    Overall accuracy: 0.9204
-   
+```output
+[[ 960    0    1    2    1    5    6    3    1    1]
+ [   0 1112    3    1    0    1    5    1   12    0]
+ [   9    8  920   20   10    4   10   11   37    3]
+ [   4    0   17  921    2   21    4   12   20    9]
+ [   1    2    5    3  915    0   10    2    6   38]
+ [  10    2    0   41   10  770   17    7   28    7]
+ [   9    3    7    2    6   20  907    1    3    0]
+ [   2    7   22    5    8    1    1  950    5   27]
+ [  10   15    5   21   15   27    7   11  851   12]
+ [   7    8    2   13   32   13    0   24   12  898]]
+Overall accuracy: 0.9204
+```
 
 Pomocí knihovny `matplotlib` zobrazíte chybovou matici jako graf. V tomto grafu osa X představuje skutečné hodnoty a osa Y představuje předpovídané hodnoty. Barva v jednotlivých polích mřížky představuje chybovost. Čím světlejší je barva, tím vyšší je chybovost. Například mnoho hodnot 5 je chybně klasifikovaných jako hodnoty 3. Zobrazí se Světlá mřížka na (5, 3).
 

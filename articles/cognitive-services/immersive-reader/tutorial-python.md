@@ -4,19 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: V tomto kurzu vytvoříte aplikaci v Pythonu, která spustí moderní čtečku.
 services: cognitive-services
 author: dylankil
-manager: nitinme
+manager: guillasi
 ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: dylankil
 ms.custom: tracking-python
-ms.openlocfilehash: fb95e21f9df5cf5eded03ea51f56bab86bbbecb3
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.openlocfilehash: ea9e6e1f06bacd28a4e9894039de824c3a5b4af4
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609127"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044936"
 ---
 # <a name="tutorial-launch-the-immersive-reader-using-the-python-sample-project"></a>Kurz: spuštění moderního čtečky pomocí ukázkového projektu Python
 
@@ -217,7 +216,7 @@ sudo nano /etc/paths
 - Přejděte do dolní části souboru a zadejte cestu, kterou chcete přidat jako poslední položku seznamu, např. `PATH=$PATH:/usr/local/bin` .
 - Stisknutím klávesy CTRL-x ukončíte.
 - Zadáním `Y` uložte upravenou vyrovnávací paměť.
-- A je to! Chcete-li ji otestovat, v okně nové okno terminálu zadejte: `echo $PATH` .
+- A to je vše! Chcete-li ji otestovat, v okně nové okno terminálu zadejte: `echo $PATH` .
 
 Nainstalovat baňce.
 

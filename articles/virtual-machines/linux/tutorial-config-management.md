@@ -15,12 +15,11 @@ ms.workload: infrastructure
 ms.date: 09/27/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 5dd35ed2f4533d19cc3a59788d6422416dce13f5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: cac17d15d792622d9a26ff7c228ce1f0ba76bbc4
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79239291"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027575"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-linux-virtual-machine-in-azure"></a>Kurz: monitorování změn a aktualizace virtuálního počítače se systémem Linux v Azure
 
@@ -29,7 +28,7 @@ Azure [Change Tracking](../../automation/change-tracking.md) umožňuje snadno i
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Správa aktualizací pro Windows
+> * Správa aktualizací pro Linux
 > * Monitorování změn a inventáře
 
 ## <a name="launch-azure-cloud-shell"></a>Spuštění služby Azure Cloud Shell
@@ -113,7 +112,7 @@ Pokud chcete vytvořit nové nasazení aktualizace, vyberte **naplánovat nasaze
 
 | Vlastnost | Popis |
 | --- | --- |
-| Název |Jedinečný název pro identifikaci nasazení aktualizace. |
+| Name |Jedinečný název pro identifikaci nasazení aktualizace. |
 |Operační systém| Linux nebo Windows|
 | Skupiny, které se mají aktualizovat |V případě počítačů Azure definujte dotaz založený na kombinaci předplatného, skupin prostředků, umístění a značek, abyste vytvořili dynamickou skupinu virtuálních počítačů Azure, které chcete zahrnout do nasazení. </br></br>V případě počítačů mimo Azure vyberte existující uložené hledání a vyberte skupinu počítačů mimo Azure, které chcete zahrnout do nasazení. </br></br>Další informace najdete v tématu [dynamické skupiny](../../automation/automation-update-management-groups.md) .|
 | Počítače, které se mají aktualizovat |V rozevíracím seznamu vyberte uložené hledání, importovanou skupinu nebo vyberte možnost počítač a vyberte jednotlivé počítače. Pokud zvolíte možnost **Počítače**, ve sloupci **PŘIPRAVENOST AGENTA AKTUALIZACE** se zobrazí připravenost počítačů.</br> Další informace o různých metodách vytváření skupin počítačů v protokolu Azure Monitor najdete v tématu [skupiny počítačů v protokolech Azure monitor](../../azure-monitor/platform/computer-groups.md) |

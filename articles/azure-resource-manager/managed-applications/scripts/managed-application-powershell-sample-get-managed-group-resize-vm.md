@@ -6,12 +6,11 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 10/27/2017
 ms.author: tomfitz
-ms.openlocfilehash: 695023f4700370cbe5e9b345f513e38d1cf1fc0c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 602aaeb67ca081ebac71ca1d6d24a2de3c020603
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75650181"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055983"
 ---
 # <a name="get-resources-in-a-managed-resource-group-and-resize-vms-with-powershell"></a>Získání prostředků ve spravované skupině prostředků a změna velikosti virtuálních počítačů pomocí PowerShellu
 
@@ -32,12 +31,12 @@ Tento skript k nasazení spravované aplikace používá následující příkaz
 
 | Příkaz | Poznámky |
 |---|---|
-| [Get-AzManagedApplication](https://docs.microsoft.com/powershell/module/az.resources/get-azmanagedapplication) | Vypíše spravované aplikace. Zadáním názvu skupiny prostředků se zaměřte na výsledky. |
-| [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) | Vypíše prostředky. Zadejte skupinu prostředků a typ prostředku pro zaměření na výsledek. |
-| [Update-AzVM](https://docs.microsoft.com/powershell/module/az.compute/update-azvm) | Aktualizuje velikost virtuálního počítače. |
+| [Get-AzManagedApplication](/powershell/module/az.resources/get-azmanagedapplication) | Vypíše spravované aplikace. Zadáním názvu skupiny prostředků se zaměřte na výsledky. |
+| [Get-AzResource](/powershell/module/az.resources/get-azresource) | Vypíše prostředky. Zadejte skupinu prostředků a typ prostředku pro zaměření na výsledek. |
+| [Update-AzVM](/powershell/module/az.compute/update-azvm) | Aktualizuje velikost virtuálního počítače. |
 
 
 ## <a name="next-steps"></a>Další kroky
 
 * Úvod ke spravovaným aplikacím najdete v [přehledu spravovaných aplikací Azure](../overview.md).
-* Další informace o PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+* Další informace o PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/get-started-azureps).

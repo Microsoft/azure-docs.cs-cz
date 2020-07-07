@@ -5,12 +5,11 @@ author: tfitzmac
 ms.topic: tutorial
 ms.date: 07/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: a42ee5d6f7f40d391acb743ef85f671f25804749
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: dcd036f09982cba8271ed6057a167eb7440303a9
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79472992"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054487"
 ---
 # <a name="tutorial-publish-azure-managed-applications-in-the-marketplace"></a>Kurz: publikování spravovaných aplikací Azure na webu Marketplace
 
@@ -44,7 +43,7 @@ Nabídka pro spravované aplikace odpovídá třídě nabídky produktů od vyda
 
 1. Přihlaste se na [portál partnerů cloudu](https://cloudpartner.azure.com/).
 
-1. V navigačním podokně na levé straně vyberte **+ Nová nabídka** > **aplikace Azure**.
+1. V navigačním podokně na levé straně vyberte **+ Nová nabídka**  >  **aplikace Azure**.
 
 1. V zobrazení **Editor** uvidíte požadované formuláře. Každý z formulářů je popsán dále v tomto článku.
 
@@ -70,7 +69,7 @@ SKU je nejmenší zakoupitelná jednotka nabídky. Skladové položky v rámci s
 
 Skladová položka se na marketplace zobrazí pod příslušnou nadřazenou nabídkou. Na webu Azure Portal se zobrazí jako samostatná entita s možností zakoupení.
 
-1. Vyberte **SKU** > **Nová SKU**.
+1. Vyberte **SKU**  >  **Nová SKU**.
 
 1. Z**ID skladové položky**. ID skladové položky je jedinečný identifikátor SKU v rámci nabídky. Tento identifikátor se zobrazuje na adresách URL produktu, v šablonách Resource Manageru a ve fakturačních sestavách. Může se skládat jenom z malých alfanumerických znaků nebo pomlček (-). ID nemůže končit pomlčkou a jeho délka je omezená na maximálně 50 znaků. Po publikování nabídky je toto pole zamčené. V rámci nabídky může existovat několik skladových položek. Budete potřebovat skladovou položku pro každou image, kterou plánujete publikovat.
 
@@ -96,7 +95,7 @@ Skladová položka se na marketplace zobrazí pod příslušnou nadřazenou nab�
    * **Přizpůsobit povolené akce zákazníků?**: vyberte **Ano** a určete akce, které můžou uživatelé provádět na spravovaných prostředcích.
    * **Povolené akce zákazníků**: Pokud pro předchozí nastavení vyberete **Ano** , můžete určit, které akce mají uživatelé povoleno pro uživatele pomocí [přiřazení Odepřít pro prostředky Azure](../../role-based-access-control/deny-assignments.md).
 
-     Dostupné akce najdete v tématu [Azure Resource Manager operací poskytovatele prostředků](../../role-based-access-control/resource-provider-operations.md). Například pokud chcete, aby uživatelé mohli restartovat virtuální počítače, přidejte `Microsoft.Compute/virtualMachines/restart/action` do povolených akcí. `*/read` Akce je povolena automaticky, takže nemusíte toto nastavení zahrnovat.
+     Dostupné akce najdete v tématu [Azure Resource Manager operací poskytovatele prostředků](../../role-based-access-control/resource-provider-operations.md). Například pokud chcete, aby uživatelé mohli restartovat virtuální počítače, přidejte `Microsoft.Compute/virtualMachines/restart/action` do povolených akcí. `*/read`Akce je povolena automaticky, takže nemusíte toto nastavení zahrnovat.
    * **PrincipalId:** Tato vlastnost je identifikátor Azure Active Directory (Azure AD) pro uživatele, skupinu uživatelů nebo aplikaci, kteří mají přístup k prostředkům v předplatném uživatele. Definice role popisuje tato oprávnění.
    * **Role Definition (Definice role):** Tato vlastnost je seznamem všech integrovaných rolí pro řízení přístupu na základě role (RBAC), které poskytuje Azure AD. Můžete vybrat roli, která je nejvhodnější pro správu prostředků v zastoupení uživatele.
    * **Nastavení zásad:** Použijte na svou spravovanou aplikaci zásady [Azure Policy](../../governance/policy/overview.md), abyste u nasazených řešení určili požadavky na dodržování předpisů. Z dostupných možností vyberte požadované zásady. V části **Parametry zásad** zadejte řetězec JSON s hodnotami parametrů. Definice zásad a formátování hodnot parametrů najdete v tématu [Ukázky Azure Policy](../../governance/policy/samples/index.md).
@@ -172,6 +171,6 @@ Po vyplnění všech částí vyberte **Publish** (Publikovat). Zahájíte tak p
 
 ## <a name="next-steps"></a>Další kroky
 
-* Informace o tom, co se stane po kliknutí na **publikovat**, najdete v tématu [publikování nabídky aplikací Azure](../../marketplace/cloud-partner-portal/azure-applications/cpp-publish-offer.md) .
+* Informace o tom, co se stane po kliknutí na **publikovat**, najdete v tématu [publikování nabídky aplikací Azure](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md) .
 * Úvod ke spravovaným aplikacím najdete v [přehledu spravovaných aplikací](overview.md).
 * Informace o publikování spravované aplikace katalogu služeb najdete v tématu věnovaném [vytvoření a publikování spravované aplikace katalogu služeb](publish-service-catalog-app.md).

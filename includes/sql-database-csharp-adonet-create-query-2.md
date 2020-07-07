@@ -4,16 +4,15 @@ ms.service: sql-database
 ms.topic: include
 ms.date: 12/10/2018
 ms.author: genemi
-ms.openlocfilehash: e30651cb0ed7d74082163a92acbc428c21018255
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 7943ea13d93fa68b76d333bda5438fb5738f5cd1
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67175085"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050375"
 ---
 ## <a name="c-program-example"></a>Příklad programu C#
 
-V dalších částech tohoto článku se nachází program v jazyce C#, který používá ADO.NET k posílání příkazů jazyka Transact-SQL (T-SQL) do databáze SQL. Program C# předvádí následující akce:
+V dalších částech tohoto článku se nachází program v jazyce C#, který používá ADO.NET k posílání příkazů jazyka Transact-SQL (T-SQL) k SQL Database. Program C# předvádí následující akce:
 
 - [Připojení k SQL Database pomocí ADO.NET](#cs_1_connect)
 - [Metody, které vracejí příkazy T-SQL](#cs_2_return)
@@ -24,7 +23,7 @@ V dalších částech tohoto článku se nachází program v jazyce C#, který p
 
 ### <a name="entity-relationship-diagram-erd"></a>Diagram vztahů mezi entitami (ERD)
 
-`CREATE TABLE` Příkazy zahrnují klíčové slovo **References** k vytvoření vztahu *cizího klíče* (FK) mezi dvěma tabulkami. Pokud používáte *databázi tempdb*, přidejte komentář k `--REFERENCES` klíčovému slovu pomocí dvojice počátečních pomlček.
+`CREATE TABLE`Příkazy zahrnují klíčové slovo **References** k vytvoření vztahu *cizího klíče* (FK) mezi dvěma tabulkami. Pokud používáte *databázi tempdb*, přidejte komentář k `--REFERENCES` klíčovému slovu pomocí dvojice počátečních pomlček.
 
 Záchranná disketa zobrazuje vztah mezi oběma tabulkami. Hodnoty v *podřízeném* sloupci **tabEmployee. DepartmentCode** jsou omezeny na hodnoty z *nadřazeného* sloupce **tabDepartment. DepartmentCode** .
 
@@ -37,7 +36,7 @@ Záchranná disketa zobrazuje vztah mezi oběma tabulkami. Hodnoty v *podřízen
 
 Program v jazyce C# je logicky jeden soubor. cs a fyzicky je rozdělen do několika bloků kódu, aby bylo snazší pochopit jednotlivé bloky. Chcete-li zkompilovat a spustit program, proveďte následující kroky:
 
-1. Vytvořte projekt C# v aplikaci Visual Studio. Typ projektu by měl být *Konzola*, která se nachází v části **šablony** > **Visual C#** > **Windows Desktop** > **Konzolová aplikace (.NET Framework)**.
+1. Vytvořte projekt C# v aplikaci Visual Studio. Typ projektu by měl být *Konzola*, která se nachází v části **šablony**  >  **Visual C#**  >  **Windows Desktop**  >  **Konzolová aplikace (.NET Framework)**.
 
 1. V souboru *program.cs*nahraďte počáteční řádky kódu následujícím postupem:
 
@@ -48,9 +47,9 @@ Program v jazyce C# je logicky jeden soubor. cs a fyzicky je rozdělen do někol
         - *CB. Datového*
         - *CB. UserID*
         - *CB. Zadáno*
-        - *CB. Vlastnost InitialCatalog*
+        - *cb.InitialCatalog*
 
-1. Ověřte, že je odkazováno na sestavení *System. data. dll* . Chcete-li ověřit, rozbalte uzel **odkazy** v podokně **Průzkumník řešení** .
+1. Ověřte, že je odkazováno na *System.Data.dll* sestavení. Chcete-li ověřit, rozbalte uzel **odkazy** v podokně **Průzkumník řešení** .
 
 1. Chcete-li vytvořit a spustit program ze sady Visual Studio, vyberte tlačítko **Start** . Výstup sestavy se zobrazí v okně programu, i když se hodnoty GUID mezi testovacími běhy budou lišit.
 

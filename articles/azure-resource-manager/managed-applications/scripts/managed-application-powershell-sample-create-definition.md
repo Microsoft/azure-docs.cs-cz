@@ -6,12 +6,11 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 10/27/2017
 ms.author: tomfitz
-ms.openlocfilehash: 09fe1455f0dba57fd23aeeb66acb1f99fc2513d4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: b605d63db09b81bfe73eca8f4abd7a38d2325004
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75650202"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056017"
 ---
 # <a name="create-a-managed-application-definition-with-powershell"></a>Vytvoření definice spravované aplikace pomocí PowerShellu
 
@@ -32,10 +31,10 @@ Tento skript k vytvoření definice spravované aplikace používá následujíc
 
 | Příkaz | Poznámky |
 |---|---|
-| [New-AzManagedApplicationDefinition](https://docs.microsoft.com/powershell/module/az.resources/new-azmanagedapplicationdefinition) | Vytvoří definici spravované aplikace. Zadejte balíček obsahující požadované soubory. |
+| [New-AzManagedApplicationDefinition](/powershell/module/az.resources/new-azmanagedapplicationdefinition) | Vytvoří definici spravované aplikace. Zadejte balíček obsahující požadované soubory. |
 
 
 ## <a name="next-steps"></a>Další kroky
 
 * Úvod ke spravovaným aplikacím najdete v [přehledu spravovaných aplikací Azure](../overview.md).
-* Další informace o PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+* Další informace o PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/get-started-azureps).

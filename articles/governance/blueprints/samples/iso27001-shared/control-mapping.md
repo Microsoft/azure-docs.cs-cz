@@ -3,12 +3,11 @@ title: Ukázkové ovládací prvky podrobného plánu sdílených služeb ISO 27
 description: Kontrola mapování kontrolního plánu sdílených služeb ISO 27001 Každý ovládací prvek je namapován na jednu nebo více zásad Azure, které pomáhají s posouzením.
 ms.date: 01/13/2020
 ms.topic: sample
-ms.openlocfilehash: 448808a54cd313ca0acf0b8db40172bc8e0f1e06
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
-ms.translationtype: MT
+ms.openlocfilehash: 0c400ebde894e03116c1b87c1c3655f9efa1ce0a
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85919855"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044732"
 ---
 # <a name="control-mapping-of-the-iso-27001-shared-services-blueprint-sample"></a>Mapování ovládacího prvku ukázka podrobného plánu sdílených služeb ISO 27001
 
@@ -28,7 +27,7 @@ Jenom jeden vlastník předplatného Azure nepovoluje redundanci správy. I kdy�
 
 ## <a name="a821-classification-of-information"></a>A. 8.2.1 klasifikace informací
 
-[Služba posouzení ohrožení zabezpečení SQL](/azure/sql-database/sql-vulnerability-assessment) Azure vám může pomáhat najít citlivá data uložená ve vašich databázích a obsahuje doporučení ke klasifikaci těchto dat. Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overview.md) k vyhodnocení, že chyby zabezpečení zjištěné při kontrole posouzení ohrožení zabezpečení SQL jsou opraveny.
+[Služba posouzení ohrožení zabezpečení SQL](../../../../azure-sql/database/sql-vulnerability-assessment.md) Azure vám může pomáhat najít citlivá data uložená ve vašich databázích a obsahuje doporučení ke klasifikaci těchto dat. Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overview.md) k vyhodnocení, že chyby zabezpečení zjištěné při kontrole posouzení ohrožení zabezpečení SQL jsou opraveny.
 
 - \[Preview \] : sledujte výsledky posouzení ohrožení zabezpečení SQL Azure Security Center
 

@@ -5,15 +5,15 @@ description: Pomocí šablony kódu MLOpsPython zapněte experimentální pozná
 author: bjcmit
 ms.author: brysmith
 ms.service: machine-learning
+ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/30/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 25ff9bdb2c4ec1b3367c522c497fad9cfb0ba588
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.openlocfilehash: eabd4ceced77e90646169d80d08338c81af96e2f
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558312"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86025637"
 ---
 # <a name="tutorial-convert-ml-experiments-to-production-python-code"></a>Kurz: převod experimentů ML na produkční kód v Pythonu
 

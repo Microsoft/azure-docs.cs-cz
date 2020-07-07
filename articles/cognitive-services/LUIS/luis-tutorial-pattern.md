@@ -2,19 +2,18 @@
 title: 'Kurz: vzory – LUIS'
 description: Pomocí vzorů můžete zvýšit záměr a předpověď entit a v tomto kurzu poskytnout méně ukázkového projevy. Vzor je k dispozici jako příklad šablony utterance, který obsahuje syntaxi pro identifikaci entit a ignorovatelné texty.
 ms.topic: tutorial
-ms.date: 05/07/2020
-ms.openlocfilehash: c9bbd521d49d669e8ebd18b29bda9f2add8f7739
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: MT
+ms.date: 07/06/2020
+ms.openlocfilehash: 3ca8bb15d19b0fa0dd6b33d35a380c0b1b07abe0
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592912"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039496"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats-to-improve-predictions"></a>Kurz: Přidání běžných formátů šablon vzorků utterance ke zlepšení předpovědi
 
 V tomto kurzu použijete vzory ke zvýšení záměru a předpovědi entit, což vám umožní poskytnout méně ukázkového projevy. Vzor je šablona utterance přiřazená k záměru, který obsahuje syntaxi k identifikaci entit a ignorovatelné texty.
 
-**V tomto kurzu:**
+**V tomto kurzu se naučíte:**
 
 > [!div class="checklist"]
 > * Vytvořit vzor
@@ -39,12 +38,10 @@ Vzor se použije jako kombinace porovnávání textu a strojového učení.  Ša
 
 Použijte k tomu následující postup:
 
-1.  Stáhněte a uložte [soubor JSON aplikace](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-batchtest-HumanResources.json?raw=true).
+1.  Stáhněte a uložte [soubor JSON aplikace](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/tutorial-fix-unsure-predictions.json?raw=true).
 
 1. Přihlaste se k [portálu Luis](https://www.luis.ai)a vyberte své **předplatné** a **prostředek pro vytváření obsahu** , abyste viděli aplikace přiřazené k tomuto zdrojovému prostředku.
-1. Importujte JSON do nové aplikace na [portál Luis](https://www.luis.ai). Na stránce **Moje aplikace** vyberte **+ Nová aplikace pro konverzaci**a pak vyberte **importovat jako JSON**. Vyberte soubor, který jste stáhli v předchozím kroku.
-
-1. V části **Správa** na kartě **verze** vyberte aktivní verze a pak vyberte **klonovat**. Pojmenujte klonovaných verzí `patterns` . Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. Název verze je součástí cesty URL, a proto smí obsahovat jenom znaky, které jsou platné v adresách URL.
+1. Importujte JSON do nové aplikace na [portál Luis](https://www.luis.ai). Na stránce **Moje aplikace** vyberte **+ Nová aplikace pro konverzaci**a pak vyberte **importovat jako JSON**. Vyberte soubor, který jste si stáhli v předchozím kroku, a pojmenujte aplikaci `Patterns tutorial` .
 
 ## <a name="create-new-intents-and-their-utterances"></a>Tvorba nových záměrů a jejich promluv
 
@@ -67,8 +64,6 @@ Tyto dva záměry naleznou vedoucí nebo přímé sestavy vedoucí na základě 
     |`Who is John W. Smith's manager?`|
     |`Who does Jill Jones directly report to?`|
     |`Who is Jill Jones supervisor?`|
-
-    Nedělejte si starosti, když je entita keyPhrase označená v promluvách záměru místo v entitě zaměstnance. Obě se správně predikují v testovacím podokně a koncovém bodu.
 
 1. Na levém navigačním panelu vyberte **Intents** (Záměry).
 
@@ -109,50 +104,50 @@ Tyto dva záměry naleznou vedoucí nebo přímé sestavy vedoucí na základě 
             "topIntent": "OrgChart-Manager",
             "intents": {
                 "OrgChart-Manager": {
-                    "score": 0.313054234
+                    "score": 0.326605469
                 },
                 "OrgChart-Reports": {
-                    "score": 0.2462688
+                    "score": 0.127583548
                 },
                 "EmployeeFeedback": {
-                    "score": 0.0488328524
-                },
-                "GetJobInformation": {
-                    "score": 0.0156933
+                    "score": 0.0299124215
                 },
                 "MoveEmployee": {
-                    "score": 0.011265873
+                    "score": 0.01159851
                 },
-                "Utilities.StartOver": {
-                    "score": 0.003065792
-                },
-                "Utilities.Stop": {
-                    "score": 0.00300148362
-                },
-                "Utilities.Cancel": {
-                    "score": 0.00271081156
-                },
-                "None": {
-                    "score": 0.00212835032
+                "GetJobInformation": {
+                    "score": 0.0104600191
                 },
                 "ApplyForJob": {
-                    "score": 0.0020669254
+                    "score": 0.007508645
                 },
-                "Utilities.Confirm": {
-                    "score": 0.00200891262
+                "Utilities.StartOver": {
+                    "score": 0.00359402061
+                },
+                "Utilities.Stop": {
+                    "score": 0.00336530479
                 },
                 "FindForm": {
-                    "score": 0.00194145238
+                    "score": 0.002653719
+                },
+                "Utilities.Cancel": {
+                    "score": 0.00263288687
+                },
+                "None": {
+                    "score": 0.00238638581
                 },
                 "Utilities.Help": {
-                    "score": 0.00182301877
+                    "score": 0.00226386427
+                },
+                "Utilities.Confirm": {
+                    "score": 0.00211663754
                 }
             },
             "entities": {
                 "keyPhrase": [
                     "boss of Jill Jones"
                 ],
-                "Employee": [
+                "EmployeeListEntity": [
                     [
                         "Employee-45612"
                     ]
@@ -171,9 +166,9 @@ Tyto dva záměry naleznou vedoucí nebo přímé sestavy vedoucí na základě 
                             ]
                         }
                     ],
-                    "Employee": [
+                    "EmployeeListEntity": [
                         {
-                            "type": "Employee",
+                            "type": "EmployeeListEntity",
                             "text": "Jill Jones",
                             "startIndex": 19,
                             "length": 10,
@@ -190,32 +185,28 @@ Tyto dva záměry naleznou vedoucí nebo přímé sestavy vedoucí na základě 
     }
     ```
 
-Skóre obou nejvyšších záměrů je blízko, ale nejvyšší záměr není významně vysoký (více než 60%). a ještě mnohem větší než skóre dalšího záměru.
+Byl dosažen správný nejvyšší záměr, `OrgChart-Manager` ale skóre není vyšší než 70% a v nejbližším nejvyšším záměru není dost daleko. Použitím vzorů výrazně procentuálně zvýšíte skóre správného záměru a zvětšíte tak jeho odstup od druhého nejvyššího skóre.
 
-Vzhledem k tomu, že školení LUIS není přesně stejné, pokaždé, když (existuje bitová variace), může tato horní dvě skóre v dalším školicím cyklu Invertovat. Výsledkem pak může být vrácení špatného záměru.
-
-Použitím vzorů výrazně procentuálně zvýšíte skóre správného záměru a zvětšíte tak jeho odstup od druhého nejvyššího skóre.
-
-Toto druhé okno prohlížeče ponechte otevřené. Použijete je později v průběhu kurzu.
+Toto druhé okno prohlížeče ponechte otevřené. Později ji budete používat později v tomto kurzu.
 
 ## <a name="template-utterances"></a>Šablony promluv
-Vzhledem k povaze domény subjektu lidských zdrojů existuje několik běžných způsobů, jak v organizacích zeptat se na vztahy zaměstnanců. Například:
+Vzhledem k povaze domény subjektu lidských zdrojů existuje několik běžných způsobů, jak v organizacích zeptat se na vztahy zaměstnanců. Příklad:
 
 |Projevy|
 |--|
 |`Who does Jill Jones report to?`|
 |`Who reports to Jill Jones?`|
 
-Tyto promluvy jsou si příliš blízké na to, aby bylo možné určit jejich obsahovou jedinečnost bez poskytnutí mnoha příkladů promluv. LUIS se učí obecné vzory promluv pro určitý záměr bez dodání většího množství příkladů promluv tak, že přidává vzory k záměru.
+Tyto projevy jsou příliš blízko k určení kontextové jedinečnosti každé bez poskytování _mnoha_ příkladů utterance. Přidáním vzoru pro záměr se LUIS učí běžné utterance vzory pro záměr bez nutnosti dodávání mnohem dalších utterance příkladů.
 
 Šablony příkladů promluvy pro tento záměr zahrnují:
 
 |Šablony příkladů promluv|význam syntaxe|
 |--|--|
-|`Who does {Employee} report to[?]`|zaměnitelné`{Employee}`<br>ohled`[?]`|
-|`Who reports to {Employee}[?]`|zaměnitelné`{Employee}`<br>ohled`[?]`|
+|`Who does {EmployeeListEntity} report to[?]`|zaměnitelné`{EmployeeListEntity}`<br>ohled`[?]`|
+|`Who reports to {EmployeeListEntity}[?]`|zaměnitelné`{EmployeeListEntity}`<br>ohled`[?]`|
 
-Syntaxe `{Employee}` označí umístění entity v šabloně promluvy a to, o jakou entitu se jedná. Volitelná syntaxe, `[?]` , označuje slova nebo [interpunkční znaménka](luis-reference-application-settings.md#punctuation-normalization) , která jsou volitelná. LUIS páruje promluvy a ignoruje volitelný text v závorkách.
+Syntaxe `{EmployeeListEntity}` označí umístění entity v šabloně promluvy a to, o jakou entitu se jedná. Volitelná syntaxe, `[?]` , označuje slova nebo [interpunkční znaménka](luis-reference-application-settings.md#punctuation-normalization) , která jsou volitelná. LUIS páruje promluvy a ignoruje volitelný text v závorkách.
 
 I když syntaxe vypadá jako regulární výraz, nejedná se o regulární výraz. Podporovaná je pouze syntaxe se složenými `{}` a hranatými `[]` závorkami. Můžou být vnořené až dvě úrovně.
 
@@ -233,35 +224,35 @@ Aby se model shodoval s utterance, musí _nejdřív_ entity v rámci utterance o
 
     |Šablony promluv|
     |:--|
-    |`Who is {Employee} the subordinate of[?]`|
-    |`Who does {Employee} report to[?]`|
-    |`Who is {Employee}['s] manager[?]`|
-    |`Who does {Employee} directly report to[?]`|
-    |`Who is {Employee}['s] supervisor[?]`|
-    |`Who is the boss of {Employee}[?]`|
+    |`Who is {EmployeeListEntity} the subordinate of[?]`|
+    |`Who does {EmployeeListEntity} report to[?]`|
+    |`Who is {EmployeeListEntity}['s] manager[?]`|
+    |`Who does {EmployeeListEntity} directly report to[?]`|
+    |`Who is {EmployeeListEntity}['s] supervisor[?]`|
+    |`Who is the boss of {EmployeeListEntity}[?]`|
 
-    Tyto šablony projevy obsahují entitu **Zaměstnanec** se zápisem do složených závorek.
+    Tyto šablony projevy obsahují entitu **EmployeeListEntity** se zápisem složené závorky.
 
 1. Pořád na stránce vzory vyberte záměr **organizačního diagramu – sestavy** a potom zadejte následující šablonu projevy:
 
     |Šablony promluv|
     |:--|
-    |`Who are {Employee}['s] subordinates[?]`|
-    |`Who reports to {Employee}[?]`|
-    |`Who does {Employee} manage[?]`|
-    |`Who are {Employee} direct reports[?]`|
-    |`Who does {Employee} supervise[?]`|
-    |`Who does {Employee} boss[?]`|
+    |`Who are {EmployeeListEntity}['s] subordinates[?]`|
+    |`Who reports to {EmployeeListEntity}[?]`|
+    |`Who does {EmployeeListEntity} manage[?]`|
+    |`Who are {EmployeeListEntity} direct reports[?]`|
+    |`Who does {EmployeeListEntity} supervise[?]`|
+    |`Who does {EmployeeListEntity} boss[?]`|
 
 ### <a name="query-endpoint-when-patterns-are-used"></a>Dotaz koncovému bodu při použití šablon
 
-Teď, když se do aplikace přidávají vzory, můžete ji publikovat a dotazovat na koncový bod předpovědi za běhu.
+Teď, když se do aplikace přidají vzory, naučit se, zveřejňují a dotazují aplikaci na předpokládaném koncovém bodu modulu runtime.
 
 1. Vyberte **vlak**. Po dokončení školení vyberte **publikovat** a vyberte **produkční** slot a potom vyberte **Hotovo**.
 
 1. Po dokončení publikování přepněte karty prohlížeče zpátky na kartu Adresa URL koncového bodu.
 
-1. V adresním řádku pokračujte na konec adresy URL a nahraďte _YOUR_QUERY_HERE_ :`Who is the boss of Jill Jones?`
+1. V adresním řádku přejde na konec adresy URL a ověří, jestli je váš dotaz pořád a `Who is the boss of Jill Jones?` pak odešle adresu URL pro novou předpověď.
 
     ```json
     {
@@ -270,50 +261,50 @@ Teď, když se do aplikace přidávají vzory, můžete ji publikovat a dotazova
             "topIntent": "OrgChart-Manager",
             "intents": {
                 "OrgChart-Manager": {
-                    "score": 0.999997854
+                    "score": 0.999999046
                 },
                 "OrgChart-Reports": {
-                    "score": 6.13748343E-05
+                    "score": 3.237443E-05
                 },
                 "EmployeeFeedback": {
-                    "score": 8.052567E-06
+                    "score": 4.364242E-06
                 },
                 "GetJobInformation": {
-                    "score": 1.18197136E-06
+                    "score": 1.616159E-06
                 },
                 "MoveEmployee": {
-                    "score": 7.65549657E-07
-                },
-                "None": {
-                    "score": 3.975E-09
-                },
-                "Utilities.StartOver": {
-                    "score": 1.53E-09
-                },
-                "Utilities.Confirm": {
-                    "score": 1.38181822E-09
-                },
-                "Utilities.Help": {
-                    "score": 1.38181822E-09
-                },
-                "Utilities.Stop": {
-                    "score": 1.38181822E-09
-                },
-                "Utilities.Cancel": {
-                    "score": 1.25833333E-09
-                },
-                "FindForm": {
-                    "score": 1.15384613E-09
+                    "score": 7.575752E-07
                 },
                 "ApplyForJob": {
-                    "score": 5.26923061E-10
+                    "score": 5.234157E-07
+                },
+                "None": {
+                    "score": 3.3E-09
+                },
+                "Utilities.StartOver": {
+                    "score": 1.26E-09
+                },
+                "FindForm": {
+                    "score": 1.13636367E-09
+                },
+                "Utilities.Cancel": {
+                    "score": 1.13636367E-09
+                },
+                "Utilities.Confirm": {
+                    "score": 1.13636367E-09
+                },
+                "Utilities.Help": {
+                    "score": 1.13636367E-09
+                },
+                "Utilities.Stop": {
+                    "score": 1.13636367E-09
                 }
             },
             "entities": {
                 "keyPhrase": [
                     "boss of Jill Jones"
                 ],
-                "Employee": [
+                "EmployeeListEntity": [
                     [
                         "Employee-45612"
                     ]
@@ -332,9 +323,9 @@ Teď, když se do aplikace přidávají vzory, můžete ji publikovat a dotazova
                             ]
                         }
                     ],
-                    "Employee": [
+                    "EmployeeListEntity": [
                         {
-                            "type": "Employee",
+                            "type": "EmployeeListEntity",
                             "text": "Jill Jones",
                             "startIndex": 19,
                             "length": 10,
@@ -351,7 +342,7 @@ Teď, když se do aplikace přidávají vzory, můžete ji publikovat a dotazova
     }
     ```
 
-Předpověď záměrů je teď významně spolehlivější a hodnocení dalšího nejvyššího záměru je výrazně nižší. Tyto dva záměry se při výuce Překlopí.
+Předpověď záměrů je teď výrazně spolehlivější a skóre dalšího nejvyššího záměru je velmi nízké. Tyto dva záměry se při výuce Překlopí.
 
 ### <a name="working-with-optional-text-and-prebuilt-entities"></a>Práce s volitelným textem a předpřipravenými entitami
 
@@ -372,8 +363,8 @@ Příklad šablony projevy, která umožňuje tyto volitelné informace:
 
 |Záměr|Ukázkové promluvy s volitelným textem a předpřipravenými entitami|
 |:--|:--|
-|OrgChart-Manager|`who was {Employee}['s] manager [[on]{datetimeV2}?]`|
-|OrgChart-Manager|`who is {Employee}['s] manager [[on]{datetimeV2}?]`|
+|OrgChart-Manager|`who was {EmployeeListEntity}['s] manager [[on]{datetimeV2}?]`|
+|OrgChart-Manager|`who is {EmployeeListEntity}['s] manager [[on]{datetimeV2}?]`|
 
 
 Použití volitelné syntaxe v hranatých závorkách `[]` usnadňuje přidávání volitelného textu do šablony promluvy. Tato syntaxe může být vnořená až na druhou úroveň `[[]]` a obsahovat entity nebo text.
@@ -383,9 +374,10 @@ Použití volitelné syntaxe v hranatých závorkách `[]` usnadňuje přidává
 
 **Otázka: Když se 3. březen predikuje jako číslo `3` i jako datum `March 3`, proč nejsou předpřipravená čísla součástí šablony promluvy?** Šablona promluvy podle kontextu použije datum buď doslova jako `March 3`, nebo abstrahovanou jako `in a month`. Datum sice může obsahovat číslo, ale ne každé číslo musí být nutně datum. Používejte vždy takovou entitu, která nejlépe vystihuje typ požadovaný ve výsledcích JSON predikce.
 
-**Otázka: Co chabě formulované promluvy, jako třeba `Who will {Employee}['s] manager be on March 3?`.** Gramaticky rozdílné slovesné časy, jako tady, kde jsou `will` a `be` oddělené, musejí být v samostatných šablonách promluvy. Existující šablona promluvy se s nimi nespáruje. I když se záměr promluvy nezměnil, změnil se pořádek slov v promluvě. Tato změna ovlivní predikci LUIS. K kombinování těchto projevy můžete [Seskupit a nebo](#use-the-or-operator-and-groups) příkaz-časů.
+**Otázka: Co chabě formulované promluvy, jako třeba `Who will {EmployeeListEntity}['s] manager be on March 3?`.** Gramaticky rozdílné slovesné časy, jako tady, kde jsou `will` a `be` oddělené, musejí být v samostatných šablonách promluvy. Existující šablona promluvy se s nimi nespáruje. I když se záměr promluvy nezměnil, změnil se pořádek slov v promluvě. Tato změna ovlivní predikci LUIS. K kombinování těchto projevy můžete [Seskupit a nebo](#use-the-or-operator-and-groups) příkaz-časů.
 
-**Pamatujte: nejdřív se najdou entity, pak se teprve spáruje vzor.**
+> [!CAUTION]
+> **Pamatujte: nejdřív se najdou entity, pak se teprve spáruje vzor.**
 
 ### <a name="add-new-pattern-template-utterances"></a>Přidání nových vzorů šablony promluv
 
@@ -393,9 +385,9 @@ Použití volitelné syntaxe v hranatých závorkách `[]` usnadňuje přidává
 
     |Záměr|Ukázkové promluvy s volitelným textem a předpřipravenými entitami|
     |--|--|
-    |OrgChart-Manager|`who was {Employee}['s] manager [[on]{datetimeV2}?]`|
-    |OrgChart-Manager|`who will be {Employee}['s] manager [[in]{datetimeV2}?]`|
-    |OrgChart-Manager|`who will be {Employee}['s] manager [[on]{datetimeV2}?]`|
+    |OrgChart-Manager|`who was {EmployeeListEntity}['s] manager [[on]{datetimeV2}?]`|
+    |OrgChart-Manager|`who will be {EmployeeListEntity}['s] manager [[in]{datetimeV2}?]`|
+    |OrgChart-Manager|`who will be {EmployeeListEntity}['s] manager [[on]{datetimeV2}?]`|
 
 2. Pro výuku aplikace vyberte v navigačním panelu možnost **vlak** .
 
@@ -403,7 +395,7 @@ Použití volitelné syntaxe v hranatých závorkách `[]` usnadňuje přidává
 
 4. Zadejte několik testovacích promluv. Ověříte tak, jestli je vzor spárovaný a skóre záměru výrazně vysoké.
 
-    Po zadání první promluvy vyberte **Zkontrolovat** pod výsledkem. Zobrazíte tak všechny výsledky predikce. Každý utterance by měl mít záměr **vedoucího organizačního diagramu** a měl by extrahovat hodnoty pro entity Employee a datetimeV2.
+    Po zadání první promluvy vyberte **Zkontrolovat** pod výsledkem. Zobrazíte tak všechny výsledky predikce. Každý utterance by měl mít záměr **vedoucího organizačního diagramu** a měl by extrahovat hodnoty `EmployeeListEntity` `datetimeV2` entit a.
 
     |Promluva|
     |--|
@@ -425,18 +417,21 @@ Toto použití zadaných vzorů:
 
 Některé z předchozích šablon projevy jsou velmi blízko. Pomocí **skupiny** `()` a **nebo** `|` syntaxe zmenšete projevy šablony.
 
-Následující dva vzory se dají zkombinovat do jednoho vzoru pomocí `()` syntaxe Group a nebo `|` .
+Následující dva vzorce se můžou zkombinovat do jednoho vzoru pomocí `()` syntaxe Group a nebo `|` .
 
 |Záměr|Ukázkové promluvy s volitelným textem a předpřipravenými entitami|
 |--|--|
-|OrgChart-Manager|`who will be {Employee}['s] manager [[in]{datetimeV2}?]`|
-|OrgChart-Manager|`who will be {Employee}['s] manager [[on]{datetimeV2}?]`|
+|OrgChart-Manager|`who will be {EmployeeListEntity}['s] manager [[in]{datetimeV2}?]`|
+|OrgChart-Manager|`who will be {EmployeeListEntity}['s] manager [[on]{datetimeV2}?]`|
 
 Nová šablona utterance bude:
 
-`who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]`.
+`who ( was | is | will be ) {EmployeeListEntity}['s] manager [([in]|[on]){datetimeV2}?]`.
 
 To používá **skupinu** kolem požadovaného příkazu vhodné a volitelnou `in` a `on` s kanálem **nebo** mezi nimi.
+
+> [!NOTE]
+> Při použití symbolu _nebo_ `|` (kanálu) nezapomeňte symbol kanálu oddělit mezerou před a za ním v ukázkové šabloně.
 
 1. Na stránce **vzory** vyberte filtr **správce organizačního diagramu** . Zužte seznam hledáním `manager` .
 
@@ -444,7 +439,7 @@ To používá **skupinu** kolem požadovaného příkazu vhodné a volitelnou `i
 
 1. Změňte šablonu promluvy na 
 
-    `who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]`
+    `who ( was | is | will be ) {EmployeeListEntity}['s] manager [([in]|[on]){datetimeV2}?]`
 
 2. Pro výuku aplikace vyberte v navigačním panelu možnost **vlak** .
 

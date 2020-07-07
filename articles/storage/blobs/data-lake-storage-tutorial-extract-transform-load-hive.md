@@ -8,23 +8,22 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 1e408f27d4c9b2686bd9f56ca754f5553a446440
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.openlocfilehash: b247a72b5d7db9892c6a2a763b7b71dc5f972d95
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014906"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045293"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>Kurz: extrakce, transformace a načtení dat pomocí Azure HDInsight
 
-V tomto kurzu provedete operaci ETL: extrakce, transformace a načtení dat. Můžete mít nezpracovaný datový soubor CSV, naimportovat ho do clusteru Azure HDInsight, transformovat ho pomocí Apache Hive a načíst ho do Azure SQL Database s Apache Sqoop.
+V tomto kurzu provedete operaci ETL: extrakce, transformace a načtení dat. Použijete nezpracovaný datový soubor CSV, naimportujete ho do clusteru Azure HDInsight, transformujte ho pomocí Apache Hive a načtete ho do Azure SQL Database pomocí Apache Sqoop.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Extrahujte a nahrajte data do clusteru HDInsight.
 > * Transformujte data pomocí Apache Hive.
-> * Načtěte data do databáze SQL Azure pomocí Sqoop.
+> * Načtěte data pro Azure SQL Database pomocí Sqoop.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -38,7 +37,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
     Další informace najdete [v tématu rychlý Start: Začínáme s Apache Hadoop a Apache Hive v Azure HDInsight pomocí Azure Portal](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-linux-create-cluster-get-started-portal).
 
-* **Azure SQL Database**: jako cílové úložiště dat použijete databázi SQL Azure. Pokud databázi SQL nemáte, přečtěte si téma [Vytvoření databáze Azure SQL na webu Azure Portal](../../sql-database/sql-database-get-started.md).
+* **Azure SQL Database**: jako cílové úložiště dat používáte Azure SQL Database. Pokud nemáte databázi v SQL Database, přečtěte si téma [Vytvoření databáze v Azure SQL Database v Azure Portal](../../sql-database/sql-database-get-started.md).
 
 * **Azure CLI**: Pokud jste nenainstalovali Azure CLI, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
@@ -54,7 +53,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
    | --- | --- |
    | Filter Year (Filtr roku) |2013 |
    | Filter Period (Filtr období) |January (Leden) |
-   | Pole |Year, FlightDate, Reporting_Airline, IATA_CODE_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, původ, OriginCityName, OriginState, DestAirportID, cíl, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay. |
+   | Fields (Pole) |Year, FlightDate, Reporting_Airline, IATA_CODE_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, původ, OriginCityName, OriginState, DestAirportID, cíl, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay. |
    
    Zrušte zaškrtnutí všech ostatních polí.
 
@@ -224,7 +223,7 @@ V rámci úlohy Apache Hive naimportujete data ze souboru. CSV do tabulky Apache
 
 ## <a name="create-a-sql-database-table"></a>Vytvoření tabulky databáze SQL
 
-Pro tuto operaci budete potřebovat název serveru z vaší databáze SQL. Pokud chcete najít název vašeho serveru, proveďte tyto kroky.
+Pro tuto operaci budete potřebovat název serveru z SQL Database. Pokud chcete najít název vašeho serveru, proveďte tyto kroky.
 
 1. Přejít na [Azure Portal](https://portal.azure.com).
 
@@ -300,7 +299,7 @@ Pro tuto operaci budete potřebovat název serveru z vaší databáze SQL. Pokud
 
 ## <a name="export-and-load-the-data"></a>Exportovat a načíst data
 
-V předchozích částech jste do umístění zkopírovali transformovaná data `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` . V této části použijete Sqoop k exportu dat z `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` do tabulky, kterou jste vytvořili ve službě Azure SQL Database.
+V předchozích částech jste do umístění zkopírovali transformovaná data `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` . V této části použijete Sqoop k exportu dat z `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` do tabulky, kterou jste vytvořili v Azure SQL Database.
 
 1. Pomocí následujícího příkazu ověřte, že má Sqoop vhled do vaší databáze SQL:
 

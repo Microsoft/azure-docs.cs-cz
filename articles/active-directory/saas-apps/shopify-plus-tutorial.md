@@ -15,12 +15,11 @@ ms.topic: tutorial
 ms.date: 06/18/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ebbb73b6fc4e2a934c7c4235cfcdc39b8fa81b60
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
-ms.translationtype: MT
+ms.openlocfilehash: cd71789d6c2fb54007f3d6623ba8d14f98383b5a
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85126260"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027643"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-shopify-plus"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s Shopify plus
 
@@ -139,11 +138,31 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ## <a name="configure-shopify-plus-sso"></a>Konfigurace jednotného přihlašování Shopify plus
 
-Pokud chcete nakonfigurovat jednotné přihlašování na **Shopify plus** , musíte odeslat **adresu URL federačních metadat aplikace** [týmu podpory Shopify plus](mailto:plus-user-management@shopify.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+Postup zobrazení úplných kroků najdete v [dokumentaci k Shopify o nastavení integrace SAML](https://help.shopify.com/en/manual/shopify-plus/saml).
+
+Pokud chcete nakonfigurovat jednotné přihlašování na straně **Shopify plus** , zkopírujte **adresu URL federačních metadat aplikace** z Azure Active Directory. Pak se přihlaste ke [správci organizace](https://shopify.plus) a pokračujte **Users**na  >  **zabezpečení**uživatelů. Vyberte **nastavit konfiguraci**a potom do oddílu **Adresa URL metadat poskytovatele identity** vložte adresu URL federačních metadat aplikace. Chcete-li dokončit tento krok, vyberte možnost **Přidat** .
 
 ### <a name="create-shopify-plus-test-user"></a>Vytvořit Shopify a testovacího uživatele
 
-V této části vytvoříte uživatele s názvem B. Simon v Shopify Plus. Pracujte s [týmem podpory Shopify plus](mailto:plus-user-management@shopify.com) a přidejte uživatele na platformě Shopify Plus. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem B. Simon v Shopify Plus. Vraťte se do části **Uživatelé** a přidejte uživatele zadáním jejich e-mailu a oprávnění. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+
+### <a name="enforce-saml-authentication"></a>Vynutilo ověřování SAML
+
+> [!NOTE]
+> Před použitím jednotlivých uživatelů doporučujeme testování integrace.
+
+Jednotliví uživatelé:
+1. Přejít na stránku individuálního uživatele v Shopify Plus s e-mailovou doménou spravovanou službou Azure AD a ověřit v Shopify Plus.
+1. V části ověřování SAML vyberte možnost **Upravit**, vyberte možnost **požadováno**a pak vyberte **Uložit**.
+1. Otestujte, jestli se tento uživatel může úspěšně přihlásit přes idP a iniciované toky SP.
+
+Pro všechny uživatele v e-mailové doméně:
+1. Vraťte se na stránku **zabezpečení** .
+1. Vyberte možnost **požadováno** pro nastavení ověřování SAML. Vynutilo protokol SAML pro všechny uživatele s touto e-mailovou doménou v Shopify Plus.
+1. Vyberte **Uložit**.
+
+> [!IMPORTANT]
+> Povolení protokolu SAML pro všechny uživatele v e-mailové doméně má vliv na všechny uživatele, kteří používají tuto aplikaci. Uživatelé se nebudou moci přihlásit pomocí běžné přihlašovací stránky. Budou mít k aplikaci přístup jenom prostřednictvím Azure Active Directory. Shopify neposkytuje přihlašovací adresu URL pro zálohování, na které se uživatelé můžou přihlásit pomocí normálního uživatelského jména a hesla. V případě potřeby můžete kontaktovat podporu Shopify a vypnout SAML.
 
 ## <a name="test-sso"></a>Test SSO 
 
@@ -155,7 +174,7 @@ Když kliknete na dlaždici Shopify Plus na přístupovém panelu, měli byste s
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

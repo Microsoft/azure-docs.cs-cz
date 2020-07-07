@@ -7,12 +7,11 @@ ms.topic: how-to
 ms.date: 01/28/2020
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 77cf98cae943b8652e20ed48fd41ed717d1e4fc5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: ba90bb89d731c343dfcb3778433d444f2d9a617a
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262119"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86025858"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Nastavení kanálu CI/CD pomocí úlohy sestavení emulátoru služby Azure Cosmos DB v Azure DevOps
 
@@ -26,14 +25,14 @@ Tento článek ukazuje, jak v Azure DevOps nastavit kanál CI pro aplikaci ASP.N
 
 Abychom mohli použít úlohu sestavení, musíme ji nejprve nainstalovat do naší organizace Azure DevOps. Rozšíření **Emulátor Azure Cosmos DB** vyhledejte na webu [Marketplace](https://marketplace.visualstudio.com/items?itemName=azure-cosmosdb.emulator-public-preview) a klikněte na tlačítko pro **získání zdarma**.
 
-![Vyhledání a instalace úlohy sestavení emulátoru služby Azure Cosmos DB na webu Azure DevOps Marketplace](./media/tutorial-setup-ci-cd/addExtension_1.png)
+:::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_1.png" alt-text="Vyhledání a instalace úlohy sestavení emulátoru služby Azure Cosmos DB na webu Azure DevOps Marketplace":::
 
 Potom vyberte organizaci, do které se má rozšíření nainstalovat. 
 
 > [!NOTE]
 > Pokud chcete nainstalovat rozšíření do organizace Azure DevOps, musíte být vlastníkem účtu nebo správcem kolekce projektu. Pokud nemáte oprávnění, ale jste členem účtu, můžete o rozšíření požádat. [Další informace](https://docs.microsoft.com/azure/devops/marketplace/faq-extensions?view=vsts)
 
-![Zvolit organizaci Azure DevOps, do které se má nainstalovat rozšíření](./media/tutorial-setup-ci-cd/addExtension_2.png)
+:::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_2.png" alt-text="Zvolit organizaci Azure DevOps, do které se má nainstalovat rozšíření":::
 
 ## <a name="create-a-build-definition"></a>Vytvoření definice sestavení
 
@@ -41,11 +40,11 @@ Když je teď rozšíření nainstalované, přihlaste se ke svému účtu Azure
 
 1. Pokud chcete vytvořit novou definici sestavení, přejděte v Azure DevOps na kartu **Builds** (Sestavení). Vyberte **+ Nový.** \> **Nový kanál sestavení**
 
-   ![Vytvoření nového kanálu sestavení](./media/tutorial-setup-ci-cd/CreateNewBuildDef_1.png)
+   :::image type="content" source="./media/tutorial-setup-ci-cd/CreateNewBuildDef_1.png" alt-text="Vytvoření nového kanálu sestavení":::
 
 2. Vyberte požadovaný **zdroj**, **Týmový projekt**, **Úložiště** a **Výchozí větev pro ruční a plánovaná sestavení**. Až zvolíte požadované možnosti, vyberte **Pokračovat**.
 
-   ![Výběr týmového projektu, úložiště a větve pro kanál sestavení](./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png)
+   :::image type="content" source="./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png" alt-text="Výběr týmového projektu, úložiště a větve pro kanál sestavení":::
 
 3. Nakonec vyberte požadovanou šablonu pro kanál sestavení. V tomto kurzu vybereme šablonu **ASP.NET**. Nyní máte kanál sestavení, který můžete nastavit tak, aby používal úlohu sestavení emulátoru Azure Cosmos DB. 
 
@@ -65,7 +64,7 @@ Start-CosmosDbEmulator
 
 1. Dále vyberte **+** symbol vedle úlohy agenta a přidejte tak úlohu sestavení pro emulátor. Ve vyhledávacím poli vyhledejte **cosmos**, vyberte **Emulátor služby Azure Cosmos DB** a přidejte ho k úloze agenta. Úloha sestavení spustí kontejner s již spuštěnou instancí emulátoru služby Cosmos DB. Úloha emulátoru služby Azure Cosmos DB se musí nacházet před všemi ostatními úlohami, které očekávají, že je emulátor spuštěný.
 
-   ![Přidání úlohy sestavení emulátoru k definici sestavení](./media/tutorial-setup-ci-cd/addExtension_3.png)
+   :::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_3.png" alt-text="Přidání úlohy sestavení emulátoru k definici sestavení":::
 
 V tomto kurzu přidáte úlohu na začátek, abyste zajistili, že emulátor bude dostupný před provedením testů.
 
@@ -140,21 +139,21 @@ namespace todo.Tests
 
 V úkolu nástroje Visual Studio Test přejděte na Execution Options (Možnosti spuštění). V možnosti **Settings file** (Soubor nastavení) specifikujte, že testy jsou nakonfigurovány pomocí souboru **.runsettings**. V možnosti **Override test run parameters** (Přepsat parametry testovacího běhu) přidejte `-endpoint $(CosmosDbEmulator.Endpoint)`. Nakonfigurujete tak úkol testu, aby odkazoval na koncový bod úlohy sestavení emulátoru, nikoli na bod definovaný v souboru **.runsettings**.  
 
-![Přepsání proměnné koncového bodu koncovým bodem úlohy sestavení emulátoru](./media/tutorial-setup-ci-cd/addExtension_5.png)
+:::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_5.png" alt-text="Přepsání proměnné koncového bodu koncovým bodem úlohy sestavení emulátoru":::
 
 ## <a name="run-the-build"></a>Spuštění sestavení
 
 Teď pro sestavení vyberte **Uložit a vložit do fronty**. 
 
-![Uložení a spuštění sestavení](./media/tutorial-setup-ci-cd/runBuild_1.png)
+:::image type="content" source="./media/tutorial-setup-ci-cd/runBuild_1.png" alt-text="Uložení a spuštění sestavení":::
 
 Jakmile se sestavení spustí, podívejte se, že úloha emulátoru Cosmos DB začala stahovat image Dockeru s nainstalovaným emulátorem. 
 
-![Uložení a spuštění sestavení](./media/tutorial-setup-ci-cd/runBuild_4.png)
+:::image type="content" source="./media/tutorial-setup-ci-cd/runBuild_4.png" alt-text="Uložení a spuštění sestavení":::
 
 Jakmile se sestavení dokončí, podívejte se, že vaše testy byly úspěšné a spustily se v emulátoru Cosmos DB z úlohy sestavení.
 
-![Uložení a spuštění sestavení](./media/tutorial-setup-ci-cd/buildComplete_1.png)
+:::image type="content" source="./media/tutorial-setup-ci-cd/buildComplete_1.png" alt-text="Uložení a spuštění sestavení":::
 
 ## <a name="set-up-using-yaml"></a>Nastavení pomocí YAML
 

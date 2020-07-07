@@ -5,12 +5,11 @@ author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e17bad915fd913f6e3894ed386e914e65aa46c01
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
-ms.translationtype: MT
+ms.openlocfilehash: 2bc160418df7cb2d68f474da541f8f81ebb819fc
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85250328"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054743"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>Kurz: Import souborů SQL BACPAC pomocí šablon ARM
 
@@ -112,8 +111,8 @@ Soubor BACPAC musí být uložený v účtu Azure Storage, aby se mohl importova
 
     V šabloně jsou definované dva prostředky:
 
-   * `Microsoft.Sql/servers`. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.sql/servers).
-   * `Microsoft.SQL.servers/databases`. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases).
+   * `Microsoft.Sql/servers`. Viz [referenční informace k šablonám](/azure/templates/microsoft.sql/servers).
+   * `Microsoft.SQL.servers/databases`. Viz [referenční informace k šablonám](/azure/templates/microsoft.sql/servers/databases).
 
         Před přizpůsobením šablony je užitečné získat základní informace o této šabloně.
 1. Vyberte **soubor**  >  **Uložit jako** a uložte kopii souboru do místního počítače s názvem *azuredeploy.js*.
@@ -194,7 +193,7 @@ Soubor BACPAC musí být uložený v účtu Azure Storage, aby se mohl importova
 
         ![Šablona s rozšířením SQL Database](./media/template-tutorial-deploy-sql-extensions-bacpac/resource-manager-tutorial-deploy-sql-extensions-bacpac.png)
 
-        Vysvětlení definice prostředku najdete v [referenčních informacích k rozšíření služby SQL Database](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases/extensions). Tady je několik důležitých elementů:
+        Vysvětlení definice prostředku najdete v [referenčních informacích k rozšíření služby SQL Database](/azure/templates/microsoft.sql/servers/databases/extensions). Tady je několik důležitých elementů:
 
         * **dependsOn**: prostředek rozšíření se musí vytvořit po vytvoření databáze.
         * **storageKeyType**: zadejte typ klíče úložiště, který se má použít. Hodnota může být `StorageAccessKey` nebo `SharedAccessKey`. Použijte `StorageAccessKey` v tomto kurzu.

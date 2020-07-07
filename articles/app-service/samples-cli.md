@@ -4,14 +4,13 @@ description: V některých běžných scénářích App Service najdete ukázky 
 tags: azure-service-management
 ms.assetid: 53e6a15a-370a-48df-8618-c6737e26acec
 ms.topic: sample
-ms.date: 12/12/2017
+ms.date: 07/07/2020
 ms.custom: mvc
-ms.openlocfilehash: 857d6cdc26e41f5ea7b1d66aaff6efb4056c47c4
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
-ms.translationtype: MT
+ms.openlocfilehash: ce10c0e95d77103f386174c7bd0ffd56adff871b
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254493"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054538"
 ---
 # <a name="cli-samples-for-azure-app-service"></a>Ukázky rozhraní příkazového řádku pro Azure App Service
 
@@ -25,7 +24,8 @@ Následující tabulka obsahuje odkazy na skripty Bash vytvořené pomocí Azure
 | [Vytvoření aplikace s průběžným nasazováním z GitHubu](./scripts/cli-continuous-deployment-github.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvoří aplikaci App Service s průběžným publikováním z úložiště GitHub, které vlastníte. |
 | [Vytvoření aplikace a nasazení kódu z místního úložiště Git](./scripts/cli-deploy-local-git.md?toc=%2fcli%2fazure%2ftoc.json) | Vytvoří aplikaci App Service a nakonfiguruje vložení kódu z místního úložiště Git. |
 | [Vytvoření aplikace a nasazení kódu do přípravného prostředí](./scripts/cli-deploy-staging-environment.md?toc=%2fcli%2fazure%2ftoc.json) | Vytvoří aplikaci App Service s slotem nasazení pro změny kódu přípravy. |
-| [Vytvoření aplikace ASP.NET Core v kontejneru Docker](./scripts/cli-linux-docker-aspnetcore.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvoří aplikaci App Service v systému Linux a načte image Docker z Docker Hub. |
+| [Vytvoření aplikace ASP.NET Core v kontejneru Docker](./scripts/cli-linux-docker-aspnetcore.md?toc=%2fcli%2fazure%2ftoc.json) | Vytvoří aplikaci App Service v systému Linux a načte image Docker z Docker Hub. |
+| [Vytvoření aplikace a její zpřístupnění pomocí privátního koncového bodu](./scripts/cli-deploy-privateendpoint.md?toc=%2fcli%2fazure%2ftoc.json) | Vytvoří aplikaci App Service a soukromý koncový bod. |
 |**Konfigurace aplikace**||
 | [Mapování vlastní domény na aplikaci](./scripts/cli-configure-custom-domain.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvoří aplikaci App Service a namapuje na ni vlastní název domény. |
 | [Vytvoření vazby vlastního certifikátu TLS/SSL k aplikaci](./scripts/cli-configure-ssl-certificate.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvoří aplikaci App Service a váže certifikát TLS/SSL vlastního názvu domény. |

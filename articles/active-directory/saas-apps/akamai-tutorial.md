@@ -15,12 +15,11 @@ ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fef2d7e3afb0cdda3c3c3e2506b39ba542e0760
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
-ms.translationtype: MT
+ms.openlocfilehash: 17d0c91d31f7746c53d62af87670c40e9902554c
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956872"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026810"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Akamai
 
@@ -79,7 +78,7 @@ Aplikace Akamai EAA se nastavuje individuálně na portálu Azure AD. Správce m
 
 • Můžete definovat jednotlivé zásady certifikační autority.
 
-• Všechny aplikace jsou reprezentovány na panelu 0365 dlaždice a myApps.microsoft.com.
+• Všechny aplikace jsou reprezentovány na panelu O365 dlaždice a myApps.microsoft.com.
 
 **Nevýhody**:
 
@@ -280,7 +279,7 @@ Akamai ověřování na základě hlaviček
 
     ![Konfigurace Akamai](./media/header-akamai-tutorial/configure08.png)
 
-#### <a name="authentication"></a>Ověřování
+#### <a name="authentication"></a>Authentication
 
 1. Vyberte kartu **ověřování** .
 
@@ -344,7 +343,7 @@ Klikněte na Uložit a přejděte na ověřování.
 
     ![Konfigurace Akamai](./media/header-akamai-tutorial/configure19.png)
 
-#### <a name="authentication"></a>Ověřování
+#### <a name="authentication"></a>Authentication
 
 Klikněte na **Uložit a přejděte na služby**.
 
@@ -406,7 +405,7 @@ Klikněte na **Uložit a přejděte na Upřesnit nastavení**.
 
     e. Zadejte umístění konektoru a zvolte konektor.
 
-#### <a name="authentication"></a>Ověřování
+#### <a name="authentication"></a>Authentication
 
 Klikněte na **Uložit a přejděte na služby**.
 

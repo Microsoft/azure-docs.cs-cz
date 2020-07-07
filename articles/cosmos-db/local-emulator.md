@@ -6,12 +6,11 @@ ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
 ms.date: 01/31/2020
-ms.openlocfilehash: 227e60486f0a6712b0d29de47983bad737481bd4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: e06a2eac5387cd02e95d8252ae04edc356683ed9
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85800541"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86028248"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Použití emulátoru Azure Cosmos pro místní vývoj a testování
 
@@ -64,9 +63,11 @@ Emulátor Azure Cosmos můžete stáhnout a nainstalovat z webu [Microsoft Downl
 
 Emulátor Azure Cosmos spustíte tak, že vyberete tlačítko Start nebo stisknete klávesu Windows. Začněte psát **emulátor Azure Cosmos**a vyberte ze seznamu aplikací emulátor.
 
-![Vyberte tlačítko Start nebo stiskněte klávesu Windows, začněte psát * * emulátor Azure Cosmos * * a vyberte emulátor ze seznamu aplikací.](./media/local-emulator/database-local-emulator-start.png)
+:::image type="content" source="./media/local-emulator/database-local-emulator-start.png" alt-text="Vyberte tlačítko Start nebo stiskněte klávesu Windows, začněte psát emulátor Azure Cosmos a vyberte ze seznamu aplikací emulátor.":::
 
-Po spuštění emulátoru se v oznamovací oblasti hlavního panelu Windows zobrazí jeho ikona. ![Oznámení o Azure Cosmos DB hlavním emulátoru hlavního emulátoru](./media/local-emulator/database-local-emulator-taskbar.png)
+Po spuštění emulátoru se v oznamovací oblasti hlavního panelu Windows zobrazí jeho ikona. 
+
+:::image type="content" source="./media/local-emulator/database-local-emulator-taskbar.png" alt-text="Oznámení o Azure Cosmos DB hlavním emulátoru hlavního emulátoru":::
 
 Emulátor Azure Cosmos ve výchozím nastavení běží na místním počítači (localhost), který naslouchá na portu 8081.
 
@@ -222,7 +223,7 @@ Jazyky a moduly runtime rozhraní .NET používají k bezpečnému připojení k
 
 Pokud chcete získat certifikát pro použití s jazyky a moduly runtime, které se neintegrují s úložištěm certifikátů systému Windows, budete ho muset exportovat pomocí Správce certifikátů systému Windows. Můžete ji spustit spuštěním Certlm. msc nebo podle podrobných pokynů v tématu [export certifikátů emulátoru Azure Cosmos](./local-emulator-export-ssl-certificates.md). Jakmile je správce certifikátů spuštěn, otevřete osobní certifikáty, jak je zobrazeno níže, a exportujte certifikát s popisným názvem „DocumentDBEmulatorCertificate“ jako soubor X.509 (.cer) s kódováním BASE-64.
 
-![Azure Cosmos DB certifikát TLS/SSL místního emulátoru](./media/local-emulator/database-local-emulator-ssl_certificate.png)
+:::image type="content" source="./media/local-emulator/database-local-emulator-ssl_certificate.png" alt-text="Azure Cosmos DB certifikát TLS/SSL místního emulátoru":::
 
 Certifikát X.509 lze importovat do úložiště certifikátů Javy podle pokynů v tématu o [přidání certifikátu do úložiště certifikátů certifikační autority Javy](https://docs.microsoft.com/azure/java-add-certificate-ca-store). Až se certifikát naimportuje do úložiště certifikátů, klienti pro SQL a Azure Cosmos DB API pro MongoDB se budou moct připojit k emulátoru Azure Cosmos.
 
@@ -470,7 +471,7 @@ Pokud pracujete na platformě Linux, aplikace .NET Relay na OpenSSL provede ově
    update-ca-certificates
    ```
 
-### <a name="mac-os"></a>Mac OS
+### <a name="macos"></a>macOS
 
 Pokud pracujete na Macu, použijte následující postup:
 
